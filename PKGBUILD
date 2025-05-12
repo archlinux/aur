@@ -2,26 +2,31 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
 _name="ghostscript"
-pkgbase="lib32-${_name}"
-pkgname=('lib32-ghost'{'script','xps','pcl'})
-pkgver=10.05.0
+pkgname="lib32-${_name}"
+pkgver=10.05.1
 pkgrel=1
 pkgdesc="An interpreter for the PostScript language (32-bit)"
 arch=('x86_64')
 url="https://www.ghostscript.com"
+_url="https://github.com/ArtifexSoftware/ghostpdl-downloads"
 license=('AGPL-3.0-or-later')
 depends=("${_name}>=${pkgver}" 'lib32-fontconfig' 'lib32-gcc-libs'
          'lib32-glibc' 'lib32-ijs' 'lib32-jbig2dec' 'lib32-lcms2'
-         'lib32-leptonica' 'lib32-libcups' 'lib32-libjpeg-turbo'
+         'lib32-leptonica' 'lib32-libcups' 'lib32-libidn' 'lib32-libjpeg-turbo'
          'lib32-libpaper' 'lib32-libpng' 'lib32-libtiff' 'lib32-libx11'
          'lib32-libxt' 'lib32-openjpeg2' 'lib32-tesseract>=4.1' 'lib32-zlib')
-makedepends=('lib32-expat' 'lib32-libidn' 'lib32-gtk3')
+makedepends=('lib32-gtk3')
+provides=('libgs.so') # 'lib32-ghost'{'script','xps','pcl'})
+conflicts=('lib32-ghost'{'script','xps','pcl'})
+replaces=('lib32-ghost'{'script','xps','pcl'})
 options=('!lto')
-_pkgsrc="ghostpdl-${pkgver}"
-source=("${_pkgsrc}.tar.xz::https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${pkgver//./}/${_pkgsrc}.tar.xz"
-        '2010_add_build_timestamp_setting.patch')
-sha512sums=('01d59cd7e062f4653095f31d4648226a4d40627a99d3eae44f8f67a3cb586f013e9d37550a3485cd204beecddff1026307d3329f9025a9cd536fb54bfc37ba74'
-            'cd7794ee4f28b11177021b950196385200b610127ed6cb94a45e3202b690b721a0dfcc0276ff39448d4dab64c1b31a76e6c323696a8315aad9edc22077f18a3d')
+_pkgsrc="${_name}-${pkgver}"
+source=("${_pkgsrc}.tar.xz::${_url}/releases/download/gs${pkgver//./}/${_pkgsrc}.tar.xz"
+        '2010_add_build_timestamp_setting.patch'
+        'gcc15.patch')
+sha512sums=('1a3f2b0f53db9a00a245df19ce8fdce0fbccc6fad47b64d14fc9058b494ab07c77e21bb073df8d4a2522b3ccb0df26735f8224a9e36c07367031ed2262fb26af'
+            'cd7794ee4f28b11177021b950196385200b610127ed6cb94a45e3202b690b721a0dfcc0276ff39448d4dab64c1b31a76e6c323696a8315aad9edc22077f18a3d'
+            '248ff8c61f8988286705aec0931b891287546db5d0e60564fa6878198490b0b7b8922d61ef9a1d059aade200e1a3c856b8d39cde04f9f67ec076a616d868aeac')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -46,7 +51,7 @@ prepare() {
   # ^ this one doesn't affect package size - so let's keep it
 
   # force it to use system-libs
-  rm -rf cups/libs expat ijs jbig2dec jpeg lcms2mt libpng openjpeg tiff zlib
+  rm -rf cups/libs ijs jbig2dec jpeg lcms2mt libpng openjpeg tiff zlib
   # using tree freetype because of https://bugs.archlinux.org/task/56849
   # lcms2mt is the new lcms2 fork aimed to replace lcms2 in a thread safe way
   
@@ -57,67 +62,44 @@ prepare() {
   # Remove internal CMaps (CMaps from poppler-data are used instead)
   rm -rf Resource/CMap
 
-  # Debian: # allow the build timestamp to be externally set
+  # Debian: allow the build timestamp to be externally set
   patch -Np1 -i "${srcdir}/2010_add_build_timestamp_setting.patch"
+  patch -Np1 -i "${srcdir}/gcc15.patch"
 }
 
 build() {
   export CFLAGS+=" -m32 -Wno-incompatible-pointer-types -Wno-int-conversion"
   export CXXFLAGS+=" -m32"
-  export LDFLAGS+=" -m32" # -Wl,--no-warn-search-mismatch
+  export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  local configure_options=(
+    --prefix='/usr'
+    --program-suffix='-32'
+    --lib{exec,}dir='/usr/lib32'
+    --build=i686-pc-linux-gnu
+    --with-ijs
+    --with-jbig2dec
+    --with-x
+    --with-drivers=ALL
+    --with-fontpath='/usr/share/fonts/gsfonts'
+    --without-versioned-path
+    --enable-fontconfig
+    --enable-freetype
+    --enable-openjpeg
+    --with-system-libtiff
+    --with-libpaper
+    --disable-compile-inits # needed for linking with system-zlib
+    # --help
+  )
 
   cd "${srcdir}/${_pkgsrc}"
-  ./autogen.sh \
-    --prefix='/usr' \
-    --program-suffix='-32' \
-    --lib{exec,}dir='/usr/lib32' \
-    --build=i686-pc-linux-gnu \
-    --with-ijs \
-    --with-jbig2dec \
-    --with-x \
-    --with-drivers=ALL \
-    --with-fontpath=/usr/share/fonts/gsfonts \
-    --without-versioned-path \
-    --enable-fontconfig \
-    --enable-freetype \
-    --enable-openjpeg \
-    --with-system-libtiff \
-    --with-libpaper \
-    --disable-compile-inits #--help # needed for linking with system-zlib
+  ./autogen.sh "${configure_options[@]}"
   make so-only
 }
 
-package_lib32-ghostscript() {
-  depends+=('lib32-libidn')
-
+package() {
   cd "${srcdir}/${_pkgsrc}"
-  make DESTDIR="${pkgdir}" install-so-gs
-
-  cd "${pkgdir}/usr"
-  rm -rf "bin" "include" "share"
-}
-
-package_lib32-ghostxps() {
-  pkgdesc="${pkgdesc/PostScript/XPS document}"
-  depends+=('lib32-expat')
-
-  cd "${srcdir}/${_pkgsrc}"
-  make DESTDIR="${pkgdir}" install-so-gxps
-
-  cd "${pkgdir}/usr"
-  rm -rf "bin" "include" "share"
-
-  # fix file conflict - FS#70238
-  cd "lib32"
-  rm -f "libgxps.so"
-}
-
-package_lib32-ghostpcl() {
-  pkgdesc="${pkgdesc/PostScript/PCL 6}"
-
-  cd "${srcdir}/${_pkgsrc}"
-  make DESTDIR="${pkgdir}" install-so-gpcl6
+  make DESTDIR="${pkgdir}" install-so
 
   cd "${pkgdir}/usr"
   rm -rf "bin" "include" "share"

@@ -1,0 +1,11 @@
+--- a/base/stdpre.h
++++ b/base/stdpre.h
+@@ -345,7 +345,7 @@
+ #ifdef __BEOS__
+ typedef unsigned char bool;
+ #else
+-typedef int bool;
++#include <stdbool.h>
+ #endif
+ #endif
+ /*
