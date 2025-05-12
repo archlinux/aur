@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rauthy-bin
 _pkgname='Rauthy TOTP'
-pkgver=0.0.6
-pkgrel=2
+pkgver=0.0.7
+pkgrel=1
 pkgdesc="An Opensource TOTP (Time-based One-Time Password) app that allow you to manage your 2FA (2 Factor Authentication) tokens. It is like Authy or Google Authenticator.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/charlesschaefer/rauthy-totp"
@@ -17,7 +17,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/app-v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('a9579e4fb23d60a560d2be0d6737253015e6e6c4629b589c91df950bc55c417f')
+sha256sums=('36d6642e9310c56d7d2e3b902b6ecde51f6fa45115e143b75a7f051eab2b2fe5')
 prepare() {
     sed -i -e "
         s/Comment=A Tauri App/Comment=${pkgdesc}/g
