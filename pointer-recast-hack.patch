@@ -1,0 +1,15 @@
+diff --no-dereference -urpN a/stage2/stage2.c b/stage2/stage2.c
+--- a/stage2/stage2.c	2025-05-12 13:42:56.480940365 +0200
++++ b/stage2/stage2.c	2025-05-12 13:46:43.285305908 +0200
+@@ -939,9 +939,9 @@ cmain (void)
+ 		  if((tmp = grub_strstr(p, ":")) != NULL)
+ 		  {
+ 		    *tmp++;
+-		    grub_strcpy(&def, &tmp);
++		    grub_strcpy((const char *)&def, (char *)&tmp);
+ 		  }else
+-		    grub_strcpy(&def, &p);
++		    grub_strcpy((const char *)&def, (char *)&p);
+ 		  
+ 		  safe_parse_maxint (&def, &saved_entryno);
+ 		}

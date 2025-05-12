@@ -1,7 +1,7 @@
 pkgbase = grub-legacy
 	pkgdesc = A GNU multiboot boot loader
 	pkgver = 0.97
-	pkgrel = 29
+	pkgrel = 30
 	url = http://www.gnu.org/software/grub/
 	arch = i686
 	arch = x86_64
@@ -52,6 +52,8 @@ pkgbase = grub-legacy
 	source = ext4_support.patch
 	source = ext4_fix_variable_sized_inodes.patch
 	source = ext4_block_group.patch
+	source = pointer-recast-hack.patch
+	source = fix-clear-func.patch
 	validpgpkeys = 1C2F76A695C9C8DCA55E4A431DDAE7A2FE06BDEF
 	sha1sums = 2580626c4579bd99336d3af4482c346c95dac4fb
 	sha1sums = SKIP
@@ -90,6 +92,8 @@ pkgbase = grub-legacy
 	sha1sums = 028bcd02efa5cf6b1dab5e6cbc8690b50ea7425f
 	sha1sums = 421ed77f2bb7aacce7ae558c2d97a4b209a07ca0
 	sha1sums = 02a24bc24ab672d7d5e2b6ec2af6e8240b29fba9
+	sha1sums = 460706ef6b115d282cd50be3e39381522cdad10d
+	sha1sums = ef757f83a43901e677c0d0cc586211cefe15fc15
 	makedepends_x86_64 = gcc-multilib
 
 pkgname = grub-legacy

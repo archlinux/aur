@@ -1,0 +1,12 @@
+diff --no-dereference -urpN a/stage2/builtins.c b/stage2/builtins.c
+--- a/stage2/builtins.c	2025-05-12 14:01:23.857970003 +0200
++++ b/stage2/builtins.c	2025-05-12 14:04:36.934811431 +0200
+@@ -1105,7 +1105,7 @@ static struct builtin builtin_viewport =
+ 
+ /* clear */
+ static int 
+-clear_func() 
++clear_func(char *, int) 
+ {
+   if (current_term->cls)
+     current_term->cls();

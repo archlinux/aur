@@ -5,7 +5,7 @@
 pkgname=grub-legacy
 _srcname=grub
 pkgver=0.97
-pkgrel=29
+pkgrel=30
 pkgdesc="A GNU multiboot boot loader"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -50,7 +50,9 @@ source=(ftp://alpha.gnu.org/gnu/grub/${_srcname}-${pkgver}.tar.gz{,.sig}
         static-vars-on-stack.patch
         ext4_support.patch
         ext4_fix_variable_sized_inodes.patch
-        ext4_block_group.patch)
+        ext4_block_group.patch
+        pointer-recast-hack.patch
+        fix-clear-func.patch)
 backup=('boot/grub/menu.lst')
 sha1sums=('2580626c4579bd99336d3af4482c346c95dac4fb'
           'SKIP'
@@ -88,7 +90,9 @@ sha1sums=('2580626c4579bd99336d3af4482c346c95dac4fb'
           '51b4dfd479491a3decc25d7ef66d434a7cbe12a2'
           '028bcd02efa5cf6b1dab5e6cbc8690b50ea7425f'
           '421ed77f2bb7aacce7ae558c2d97a4b209a07ca0'
-          '02a24bc24ab672d7d5e2b6ec2af6e8240b29fba9')
+          '02a24bc24ab672d7d5e2b6ec2af6e8240b29fba9'
+          '460706ef6b115d282cd50be3e39381522cdad10d'
+          'ef757f83a43901e677c0d0cc586211cefe15fc15')
 validpgpkeys=('1C2F76A695C9C8DCA55E4A431DDAE7A2FE06BDEF') # Yoshinori K. Okuji <SURNAME at gnu org>
 
 prepare() {
@@ -127,6 +131,8 @@ prepare() {
     patch -Np1 -i ../ext4_support.patch
     patch -Np1 -i ../ext4_fix_variable_sized_inodes.patch
     patch -Np1 -i ../ext4_block_group.patch
+    patch -Np1 -i ../pointer-recast-hack.patch
+    patch -Np1 -i ../fix-clear-func.patch
 }
 
 build() {
