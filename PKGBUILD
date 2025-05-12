@@ -3,7 +3,7 @@
 pkgname=ceccomp
 _reponame=Ceccomp
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A C-based seccomp analysis tool"
 arch=(x86_64)
 url="https://github.com/dbgbgtf1/Ceccomp"
@@ -30,11 +30,11 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname"
-	make ceccomp DEBUG=1 -j
+  cd "$pkgname"
+  make ceccomp DEBUG=1 -j
 }
 
 package() {
-	cd "$pkgname"
+  cd "$pkgname"
   make install DEST_DIR="$pkgdir"
 }

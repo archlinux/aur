@@ -1,7 +1,7 @@
 pkgbase = ceccomp
 	pkgdesc = A C-based seccomp analysis tool
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dbgbgtf1/Ceccomp
 	arch = x86_64
 	license = GPL-3.0-or-later
