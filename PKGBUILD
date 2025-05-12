@@ -3,7 +3,7 @@
 _binname=xenia_canary
 _branchname=canary_experimental
 pkgname=xenia-canary-git
-pkgver=r7838.2c8acf7b9
+pkgver=r7839.e85c2392b
 pkgrel=1
 pkgdesc='An experimental emulator for the Xbox 360.'
 arch=('x86_64')
@@ -64,7 +64,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '6df34559e1bb42e1c0a67152a8f1ebd8c59bd890f6d7625f711ae80859165822'
-            '6980275e2c0da49bb055b12824a43a28a30494fa6efb06452597cb911d142c26')
+            '51d8882d67ad9120e00ace0fab206141eca481642237e467b4cc363cd16c57a8')
 
 pkgver() {
   printf 'r%s.%s' "$(git -C ${pkgname} rev-list --count HEAD)" "$(git -C ${pkgname} rev-parse --short HEAD)"

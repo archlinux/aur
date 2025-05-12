@@ -1,4 +1,4 @@
-From 2284402a09e62ad8554e471b3671a0aca6b47a95 Mon Sep 17 00:00:00 2001
+From 5addd60a43eebc811ca01fe8fa39db80fe6eac00 Mon Sep 17 00:00:00 2001
 From: David Hummel <hummeltech@sherpaguru.com>
 Date: Sun, 11 May 2025 20:22:11 -0700
 Subject: [PATCH] Use system dependencies
