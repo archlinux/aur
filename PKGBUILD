@@ -2,7 +2,7 @@
 # Contributor: Siavash Askari Nasr <ciavash@protonmail.com>
 pkgname=restfox-bin
 _pkgname=Restfox
-pkgver=0.36.0
+pkgver=0.37.0
 _electronversion=29
 pkgrel=1
 pkgdesc="Offline-First Minimalistic HTTP & Socket Testing Client for the Web & Desktop.(Prebuilt version.Use system-wide electron)"
@@ -24,7 +24,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/flawiddsouza/Restfox/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a639afa76832572435330fd4b5cfa6ebcaa07d3d0728271c435568942b5efdb1'
+sha256sums=('d082ed53e25f8261f067f2a4a8c3d406819420b7599d3193684f500e34148ce3'
             '82601c8ed24f59528b28c23a2fb309f9743dffc860ba06ce8d253e1ed8959a16'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
