@@ -24,10 +24,10 @@ true "${QUIET:=}" "${logpipe:=}"
 set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}"
-_pkgver='1.3.9'
+_pkgver='1.4.0'
 pkgver="${_pkgver//-/.}"
 pkgrel=1
-_pkgverhbb='20250328-81b932b7bfa2ff8bc60189625fd6538db2fa9ea1'
+_pkgverhbb='20250509-6e556f7e1751a3a709cd5cca0df7268ba3cb1c48'
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
 url='https://rustdesk.com/'
@@ -95,8 +95,8 @@ source+=("${_vcs[@]}")
     )
   fi
 ####
-md5sums=('d3930a82249bf80d5888d8fb4a9bc1cb'
-         '47eb1a7a6bb92a9907215c47cc92b37f'
+md5sums=('1f874983696b9e83332261c4ea66e503'
+         'f9d9e4ab0e266bf6a274906247ba8c37'
          '6acc4b5b14befec55ef84006b60c7ff5'
          '9b997c2eb989a044704fd7c1d2152d02'
          'a77a4586f30f77de2eed63e160b3a051'
@@ -109,8 +109,8 @@ md5sums=('d3930a82249bf80d5888d8fb4a9bc1cb'
          '557a08d88aa605ee6cf4156686ce4cc2'
          '74dc171bf2cfc1ada56b6e284adabca8'
          'cc8e5418ff0c163228aabbe385ba2596')
-sha256sums=('4b97cd6b59017babbd43170f4a5a95a6bbf6dec4e8d319d19c5cf11c0b65eee4'
-            '80af7f48735877f80cd55113425426fe012108ae28e761c28e3d6247f1431b04'
+sha256sums=('67d8600ba4aeff8152e3b05723d69ec286b6923f1e4324b1d45b700859994f59'
+            '4d18bae204222037c2b2dd2d983931f7f3c5693e9c3e15125d42b0a66f80165e'
             '8f7f1019404ce47dc012ba7c546ad634b973452fc2c57ac64b62cdc7c1f54ea3'
             '17ad644a9987ad2dc8ddaf68e62e026c1825b3ecae46254ea98d985c5d5df582'
             '82757ee1ab6b956a3c601f7db82e2d9ad80dbbcf2ba68c63059f0b529426ccd0'
@@ -409,9 +409,10 @@ EOF
     pushd "${srcdir}/flutter_rust_bridge/frb_codegen"; nice cargo install --path . ; popd
     pushd flutter ; flutter clean; flutter pub get ; popd
     local _CGdefault=~/.cargo
-    "${CARGO_HOME:-${_CGdefault}}"/bin/flutter_rust_bridge_codegen --rust-input ./src/flutter_ffi.rs --dart-output ./flutter/lib/generated_bridge.dart
+    local _CARGO_HOME_RUSTDESK="${CARGO_HOME:-${_CGdefault}}"
+    "${_CARGO_HOME_RUSTDESK}"/bin/flutter_rust_bridge_codegen --rust-input ./src/flutter_ffi.rs --dart-output ./flutter/lib/generated_bridge.dart
     if :; then
-      find ~/.cargo/git -type 'f' -name 'mkvparser.cc' -execdir sh -c "patch --no-backup-if-mismatch -Nup0 -i \"${srcdir}/0003-mkvparser.cc-cstdint.patch\"; rm -f mkvparser.cc.rej; true" ';'
+      find "${_CARGO_HOME_RUSTDESK}/git" -type 'f' -name 'mkvparser.cc' -execdir sh -c "patch --no-backup-if-mismatch -Nup0 -i \"${srcdir}/0003-mkvparser.cc-cstdint.patch\"; rm -f mkvparser.cc.rej; true" ';'
     fi
     if [ "${_opt_BUILD_PY}" -ne 0 ]; then
       nice ./build.py --flutter
