@@ -32,6 +32,7 @@ depends=(alsa-lib libasound.so
          zlib libz.so
          zstd libzstd.so)
 makedepends=(cargo
+             cargo-about
              clang
              cmake
              protobuf
