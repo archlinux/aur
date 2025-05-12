@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=taratormusic-bin
 _pkgname=TaratorMusic
-pkgver=1.4.0
+pkgver=1.4.6
 _electronversion=31
 pkgrel=1
 pkgdesc="A music player application with playlist support and Discord integration.(Prebuilt version.Use system-wide electron)"
@@ -14,14 +14,17 @@ depends=(
     "electron${_electronversion}"
     'nodejs'
 )
+makedepends=(
+    'fuse2'
+)
 options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d7d6115ef94a23160b91fd6a2cb2a339e0e781442b9e51c1b447908c84bf86a6'
+sha256sums=('019894a29caf9b16e03cf4986572c6047f935b6d47ded79f11ee52025066ce6b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -31,17 +34,21 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i -e "
-        s/\/opt\/${_pkgname}\///g
+        s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Audio/AudioVideo/g
-    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    find "${srcdir}/squashfs-root/resources/" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/"{app,lib}  "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/"{app,lib}  "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
