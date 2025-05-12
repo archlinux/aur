@@ -5,7 +5,7 @@
 
 pkgname=notepadnext
 pkgver=0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform reimplementation of Notepad++"
 arch=('x86_64')
 url="https://github.com/dail8859/NotepadNext"
@@ -17,16 +17,22 @@ source=("$pkgname::git+$url#tag=v$pkgver"
     'git+https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System'
     'git+https://github.com/editorconfig/editorconfig-core-qt'
     'git+https://github.com/itay-grudev/SingleApplication'
-    'git+https://gitlab.freedesktop.org/uchardet/uchardet.git/')
+    'git+https://gitlab.freedesktop.org/uchardet/uchardet.git/'
+    'missing_stdlib_hdr.patch')
+
 sha256sums=('5e0062af581a0006ee3eece84ef71bef7e94de4e3b1c77539815ca8f2ae35622'
     'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
-    'SKIP')
+    'SKIP'
+    'fc13d8633f55957aad51218548c622a51ada3002a6fcdffeaea00cd5708c1b4a')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
+
+    patch -p1 <"${srcdir}/missing_stdlib_hdr.patch"
+
     git submodule init
     git config submodule.src/QSimpleUpdater.url "$srcdir/QSimpleUpdater"
     git config submodule.src/src/ads.url "$srcdir/Qt-Advanced-Docking-System"
