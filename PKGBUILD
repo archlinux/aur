@@ -3,24 +3,24 @@
 
 pkgname=python-ginga
 _pyname=${pkgname#python-}
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="A viewer for astronomical data FITS (Flexible Image Transport System) files."
 arch=('any')
 url="https://ejeschke.github.io/ginga"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
-             'python-wheel'
              'python-build'
-             'python-installer')
+             'python-installer')  # wheel required by new setuptools
 checkdepends=('python-pytest-astropy-header'
+#             'python-pytest-xdist'
               'python-photutils'
               'python-puremagic'
               'python-regions'
-              'python-astlib')  # pillow <- matplotlib, scipy required by astlib
+              'python-astlib')  # pillow <- matplotlib <- astlib, scipy required by astlib, photutils
 #             'python-starlink-pyast'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a488be9ed17f13289c4082b48a9e1fd8')
+md5sums=('1426d9cee51e3a43e29106bf8e786584')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -37,16 +37,15 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -Wdefault
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #-Wdefault
 }
 
 package() {
-    depends=('python-astropy>=5.0'
-             'python-qtpy>=2.0.1'
-             'python-pillow>=9.2'
+    depends=('python-astropy>=6.0.1'
+             'python-qtpy>=2.4.1'
+             'python-pillow>=11.1.0'
              'python-puremagic>=1.28'
              'python-yaml>=6.0'
-             'python-tomli>=2.0.1'
              'python-packaging>=23.1'
              'hicolor-icon-theme')
     optdepends=('python-scipy>=0.18.1: required by Pick, some built-in auto cuts algorithms used when you load an image'

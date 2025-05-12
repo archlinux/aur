@@ -1,6 +1,6 @@
 pkgbase = python-ginga
 	pkgdesc = A viewer for astronomical data FITS (Flexible Image Transport System) files.
-	pkgver = 5.2.0
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://ejeschke.github.io/ginga
 	arch = any
@@ -11,19 +11,17 @@ pkgbase = python-ginga
 	checkdepends = python-regions
 	checkdepends = python-astlib
 	makedepends = python-setuptools-scm
-	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-5.2.0.tar.gz
-	md5sums = a488be9ed17f13289c4082b48a9e1fd8
+	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-5.3.0.tar.gz
+	md5sums = 1426d9cee51e3a43e29106bf8e786584
 
 pkgname = python-ginga
-	depends = python-astropy>=5.0
-	depends = python-qtpy>=2.0.1
-	depends = python-pillow>=9.2
+	depends = python-astropy>=6.0.1
+	depends = python-qtpy>=2.4.1
+	depends = python-pillow>=11.1.0
 	depends = python-puremagic>=1.28
 	depends = python-yaml>=6.0
-	depends = python-tomli>=2.0.1
 	depends = python-packaging>=23.1
 	depends = hicolor-icon-theme
 	optdepends = python-scipy>=0.18.1: required by Pick, some built-in auto cuts algorithms used when you load an image
