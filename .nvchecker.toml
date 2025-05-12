@@ -1,0 +1,4 @@
+[nerdlog-bin]
+source = "git"
+git = "https://github.com/dimonomid/nerdlog.git"
+prefix = "v"
