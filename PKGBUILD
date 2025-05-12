@@ -1,8 +1,10 @@
-# Maintainer : Jay Tsung<int8@foxmail.com>
+# Maintainer: Jonas Gunz <arch@jonasgunz.de>
+# Former Maintainer : Jay Tsung<int8@foxmail.com>
 # Contributor: <aur@entropy-collector.net>
+
 pkgname=libradtran
 _pkgname=libRadtran
-pkgver=2.0.4
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="library for radiative transfer"
 arch=('x86_64')
@@ -10,18 +12,15 @@ url="http://www.libradtran.org"
 license=('GPL')
 depends=('netcdf'
          'gsl')
-makedepends=('python2'
+makedepends=('python'
              'gcc-fortran')
 optdepends=('perl: run the tests and some of the tools')
-source=("http://www.libradtran.org/download/$_pkgname-$pkgver.tar.gz"
-        "$_pkgname-$pkgver.patch")
-sha256sums=('eb840e00f2b59648e77775df83d8ae2337880cec155d145228cd65365e3c816f'
-            'a6207444d9ae8bc47f5150ed318bd43fc8a6a95005792e1b919d9605d3c34ce2')
+source=("http://www.libradtran.org/download/$_pkgname-$pkgver.tar.gz")
+sha256sums=('64930cc40b6e4a37aa220520974d330fc1563796f466a649b2238131f2d69840')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
 	find -name .depend -delete
-	patch -p1 -i "$srcdir/$_pkgname-$pkgver.patch"
 }
 
 build() {

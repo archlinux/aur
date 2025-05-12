@@ -1,18 +1,16 @@
 pkgbase = libradtran
 	pkgdesc = library for radiative transfer
-	pkgver = 2.0.4
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = http://www.libradtran.org
 	arch = x86_64
 	license = GPL
-	makedepends = python2
+	makedepends = python
 	makedepends = gcc-fortran
 	depends = netcdf
 	depends = gsl
 	optdepends = perl: run the tests and some of the tools
-	source = http://www.libradtran.org/download/libRadtran-2.0.4.tar.gz
-	source = libRadtran-2.0.4.patch
-	sha256sums = eb840e00f2b59648e77775df83d8ae2337880cec155d145228cd65365e3c816f
-	sha256sums = a6207444d9ae8bc47f5150ed318bd43fc8a6a95005792e1b919d9605d3c34ce2
+	source = http://www.libradtran.org/download/libRadtran-2.0.6.tar.gz
+	sha256sums = 64930cc40b6e4a37aa220520974d330fc1563796f466a649b2238131f2d69840
 
 pkgname = libradtran
