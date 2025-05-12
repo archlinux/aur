@@ -1,6 +1,6 @@
 pkgbase = fluffychat
 	pkgdesc = The cutest instant messenger in the [matrix]
-	pkgver = 1.26.0
+	pkgver = 1.26.1
 	pkgrel = 1
 	url = https://github.com/krille-chan/fluffychat
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = fluffychat
 	depends = openssl
 	options = !strip
 	options = !debug
-	source = fluffychat-1.26.0.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v1.26.0.tar.gz
-	sha256sums = a59737d12282799439e7764c6792ee6b0df0d8575c7a93b334a8302b84849111
+	source = fluffychat-1.26.1.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v1.26.1.tar.gz
+	sha256sums = ca5d32ae785e8a8688d433a9f16524d217c18b685fcb5b9369700fbfabf3f5f4
 
 pkgname = fluffychat
