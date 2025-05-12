@@ -7,7 +7,7 @@ pkgrel=4
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
 arch=('i686' 'x86_64')
 url='https://assault.cubers.net/'
-license=('ZLIB' 'custom')
+license=('Zlib' 'custom')
 depends=('zlib' 'gcc-libs')
 makedepends=('mesa' 'clang' 'sdl2' 'sdl2_image' 'openal' 'libvorbis' 'libgl')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/assaultcube/AC/archive/refs/tags/v${pkgver}.tar.gz"
@@ -48,20 +48,20 @@ build() {
 
 package_assaultcube-common() {
 	install -dm755 "${pkgdir}/usr/share/games/${pkgbase}"
-	
+
 	cp -r "${_srcdir}"/{config,docs,bot} "${pkgdir}/usr/share/games/${pkgbase}"
-	
+
 	rm "${pkgdir}/usr/share/games/${pkgbase}/config/servercmdline.txt"
 	find "${pkgdir}/usr/share/games/${pkgbase}/docs" -type f -exec chmod -R 0644 '{}' \;
 	find "${pkgdir}/usr/share/games/${pkgbase}/docs" -type d -exec chmod -R 0755 '{}' \;
-	
+
 	install -Dm644 "${_srcdir}"/{README.html,README.md,SECURITY.md,GOVERNANCE.md} -t "${pkgdir}/usr/share/games/${pkgbase}"
 	install -Dm644 "${_srcdir}/docs/package_copyrights.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_assaultcube-client() {
 	depends+=('assaultcube-common' 'sdl2' 'sdl2_image' 'openal' 'libvorbis' 'libgl')
-	
+
 	install -dm755 "${pkgdir}/usr/share/games/${pkgbase}"
 	install -Dm755 "${_srcdir}"/{assaultcube.sh,check_install.sh,install_or_remove_menuitem.sh} \
 		-t "${pkgdir}/usr/share/games/${pkgbase}"
@@ -75,13 +75,13 @@ package_assaultcube-client() {
 package_assaultcube-server() {
 	depends+=('assaultcube-common' 'systemd')
 	backup=('etc/assaultcube/servercmdline.txt')
-	
+
 	install -Dm755 "${pkgbase}-server" -t "${pkgdir}/usr/bin"
 	install -Dm644 "${_srcdir}/config/servercmdline.txt" -t "${pkgdir}/etc/${pkgbase}"
-	
+
 	install -Dm755 "${_srcdir}/bin_unix"/*_server "${pkgdir}/usr/share/games/${pkgbase}/bin_unix/native_server"
 	install -Dm755 "${_srcdir}"/{server.sh,server_wizard.sh} -t "${pkgdir}/usr/share/games/${pkgbase}"
-	
+
 	install -Dm644 "systemd-${pkgbase}-sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgbase}.conf"
 	install -Dm644 "systemd-${pkgbase}-server.service" "${pkgdir}/usr/lib/systemd/system/${pkgbase}-server.service"
 }
