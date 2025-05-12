@@ -1,16 +1,17 @@
 pkgbase = python-classdiff
 	pkgdesc = Utility to diff classes
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://pypi.org/project/classdiff/
 	arch = any
 	license = Apache-2.0
 	makedepends = python-build
+	makedepends = python-poetry-core
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-dictdiffer
 	depends = python-deepdiff
-	source = https://files.pythonhosted.org/packages/source/c/classdiff/classdiff-0.5.0.tar.gz
-	sha256sums = 1224b5858e88b388acfe301f594a34b4b23245f5b02a3826f232c9a1c05e2073
+	source = https://files.pythonhosted.org/packages/source/c/classdiff/classdiff-0.5.1.tar.gz
+	sha256sums = 0f98690bb73cf554fc39cc8654b94cbb2b14ce714933f84904c24a9f79907450
 
 pkgname = python-classdiff
