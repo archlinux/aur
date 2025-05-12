@@ -1,6 +1,6 @@
 pkgbase = deck-bin
 	pkgdesc = Configuration management and drift detection for Kong and Kong Enterprise
-	pkgver = 1.47.0
+	pkgver = 1.47.1
 	pkgrel = 1
 	url = https://github.com/Kong/deck
 	arch = aarch64
@@ -8,9 +8,9 @@ pkgbase = deck-bin
 	license = Apache-2.0
 	provides = deck
 	conflicts = deck
-	source_aarch64 = deck-1.47.0-aarch64.tar.gz::https://github.com/Kong/deck/releases/download/v1.47.0/deck_1.47.0_linux_arm64.tar.gz
-	b2sums_aarch64 = 009a2e4754a552f6c117070d0be9ed6c49f8672ce3073e2b8c7714e1626424389d20dc8a02a227ec8a91fe9af0e2ea9c7862358a3d4a0466b28a681388ac372f
-	source_x86_64 = deck-1.47.0-x86_64.tar.gz::https://github.com/Kong/deck/releases/download/v1.47.0/deck_1.47.0_linux_amd64.tar.gz
-	b2sums_x86_64 = df70dc8c7f1d0c9a82a31b3f3b29b3019181e3fc552fa760efb3b808cac0e654d47c1250f069ed1b2f172b49ac26db12a816febdb5d2802168e45c4cb2e7e78c
+	source_aarch64 = deck-1.47.1-aarch64.tar.gz::https://github.com/Kong/deck/releases/download/v1.47.1/deck_1.47.1_linux_arm64.tar.gz
+	b2sums_aarch64 = 056ac86afbae6f1c134d375702c6870a87519fcce376612d36d32712f9b2214c5240bee74f4996e2cdbea47c1ef530d149975ecf05388f67d7a01cf0b2b389bc
+	source_x86_64 = deck-1.47.1-x86_64.tar.gz::https://github.com/Kong/deck/releases/download/v1.47.1/deck_1.47.1_linux_amd64.tar.gz
+	b2sums_x86_64 = 1031714d237ff624d6cf6a730becccd581d466edb3e7de8e69a9805a09ea0354ed00a3180b591e083f19a937c3f63fc2732e12242ab23d006db57d0bd692a3c5
 
 pkgname = deck-bin
