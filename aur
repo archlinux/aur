@@ -1,0 +1,598 @@
+#!/bin/bash
+
+
+
+
+
+# Colors
+
+
+RED='\033[0;31m'
+
+
+GREEN='\033[0;32m'
+
+
+YELLOW='\033[0;33m'
+
+
+BLUE='\033[0;34m'
+
+
+NC='\033[0m'
+
+
+
+
+
+# Config
+
+
+AUR_DIR="$HOME/.aur_packages"
+
+
+LOG_FILE="$AUR_DIR/aur.log"
+
+
+MAX_RETRIES=2
+
+
+
+
+
+# Initialize
+
+
+init() {
+
+
+    mkdir -p "$AUR_DIR" || die "Failed to create AUR directory"
+
+
+    touch "$LOG_FILE" || die "Failed to create log file"
+
+
+}
+
+
+
+
+
+# Error handler
+
+
+die() {
+
+
+    echo -e "${RED}ERROR: $1${NC}" >&2
+
+
+    echo "ERROR: $1" >> "$LOG_FILE"
+
+
+    exit 1
+
+
+}
+
+
+
+
+
+# Logger
+
+
+log() {
+
+
+    local level="$1"
+
+
+    local message="$2"
+
+
+    local color
+
+
+    
+
+
+    case "$level" in
+
+
+        "INFO") color="${BLUE}" ;;
+
+
+        "WARN") color="${YELLOW}" ;;
+
+
+        "SUCCESS") color="${GREEN}" ;;
+
+
+        *) color="${NC}" ;;
+
+
+    esac
+
+
+    
+
+
+    echo -e "${color}[$level]${NC} $message"
+
+
+    echo "[$level] $message" >> "$LOG_FILE"
+
+
+}
+
+
+
+
+
+# Dependency check
+
+
+check_deps() {
+
+
+    local deps=("git" "makepkg" "sudo" "patch" "sed")
+
+
+    for dep in "${deps[@]}"; do
+
+
+        if ! command -v "$dep" >/dev/null 2>&1; then
+
+
+            die "Missing dependency: $dep"
+
+
+        fi
+
+
+    done
+
+
+}
+
+
+
+
+
+# Build package with retries
+
+
+build_pkg() {
+
+
+    local pkg_dir="$1"
+
+
+    local retries=0
+
+
+    
+
+
+    cd "$pkg_dir" || die "Can't enter package directory: $pkg_dir"
+
+
+    
+
+
+    while [ $retries -lt $MAX_RETRIES ]; do
+
+
+        log "INFO" "Attempt $((retries+1)) to build $pkg_dir"
+
+
+        
+
+
+        # Clean previous attempts
+
+
+        makepkg --cleanbuild --noconfirm >> "$LOG_FILE" 2>&1
+
+
+        
+
+
+        # Build with more verbosity
+
+
+        if makepkg -si --noconfirm --needed --log >> "$LOG_FILE" 2>&1; then
+
+
+            log "SUCCESS" "Built $pkg_dir successfully"
+
+
+            return 0
+
+
+        fi
+
+
+        
+
+
+        retries=$((retries+1))
+
+
+        log "WARN" "Build attempt $retries failed"
+
+
+        
+
+
+        # Apply common fixes for known issues
+
+
+        apply_build_fixes "$pkg_dir"
+
+
+    done
+
+
+    
+
+
+    die "Failed to build $pkg_dir after $MAX_RETRIES attempts"
+
+
+}
+
+
+
+
+
+# Common build fixes
+
+
+apply_build_fixes() {
+
+
+    local pkg_dir="$1"
+
+
+    
+
+
+    # Fix for missing depends
+
+
+    if grep -q "Could not resolve all dependencies" "$LOG_FILE"; then
+
+
+        log "INFO" "Attempting to install missing dependencies"
+
+
+        sudo pacman -Sy --noconfirm $(grep "cannot find" "$LOG_FILE" | awk '{print $4}') >> "$LOG_FILE" 2>&1
+
+
+    fi
+
+
+    
+
+
+    # Fix for version conflicts
+
+
+    if grep -q "version mismatch" "$LOG_FILE"; then
+
+
+        log "INFO" "Adjusting pkgver in PKGBUILD"
+
+
+        sed -i 's/^pkgver=.*/pkgver=new_version/' "$pkg_dir/PKGBUILD"
+
+
+    fi
+
+
+    
+
+
+    # Fix for patch failures
+
+
+    if grep -q "patch failed" "$LOG_FILE"; then
+
+
+        log "INFO" "Applying manual patch fixes"
+
+
+        patch --strip=1 --ignore-whitespace --fuzz=3 < *.patch >> "$LOG_FILE" 2>&1
+
+
+    fi
+
+
+}
+
+
+
+
+
+# Install package
+
+
+install_pkg() {
+
+
+    local pkg="$1"
+
+
+    local pkg_dir="$AUR_DIR/$pkg"
+
+
+    
+
+
+    log "INFO" "Installing $pkg from AUR"
+
+
+    
+
+
+    if [ -d "$pkg_dir" ]; then
+
+
+        log "WARN" "Package directory exists - updating"
+
+
+        cd "$pkg_dir" && git pull >> "$LOG_FILE" 2>&1 || die "Failed to update repo"
+
+
+    else
+
+
+        git clone "https://aur.archlinux.org/${pkg}.git" "$pkg_dir" >> "$LOG_FILE" 2>&1 || die "Failed to clone repo"
+
+
+    fi
+
+
+    
+
+
+    build_pkg "$pkg_dir"
+
+
+}
+
+
+
+
+
+# Remove package
+
+
+remove_pkg() {
+
+
+    local pkg="$1"
+
+
+    log "INFO" "Removing $pkg"
+
+
+    
+
+
+    if sudo pacman -R --noconfirm "$pkg" >> "$LOG_FILE" 2>&1; then
+
+
+        log "SUCCESS" "Removed $pkg successfully"
+
+
+    else
+
+
+        die "Failed to remove $pkg"
+
+
+    fi
+
+
+}
+
+
+
+
+
+# Update all packages
+
+
+update_pkgs() {
+
+
+    log "INFO" "Updating all AUR packages"
+
+
+    
+
+
+    for dir in "$AUR_DIR"/*; do
+
+
+        if [ -d "$dir" ]; then
+
+
+            local pkg=$(basename "$dir")
+
+
+            log "INFO" "Processing $pkg"
+
+
+            
+
+
+            cd "$dir" || continue
+
+
+            git pull >> "$LOG_FILE" 2>&1
+
+
+            
+
+
+            # Check if updates were pulled
+
+
+            if [ $(git rev-list --count HEAD..origin/HEAD) -gt 0 ]; then
+
+
+                build_pkg "$dir"
+
+
+            else
+
+
+                log "INFO" "$pkg is already up-to-date"
+
+
+            fi
+
+
+        fi
+
+
+    done
+
+
+}
+
+
+
+
+
+# Show usage
+
+
+usage() {
+
+
+    echo -e "${YELLOW}Usage:${NC}"
+
+
+    echo "  aur install <package> [package2...]  # Install packages"
+
+
+    echo "  aur remove <package> [package2...]   # Remove packages"
+
+
+    echo "  aur update                           # Update all packages"
+
+
+    echo "  aur log                              # View installation log"
+
+
+    exit 1
+
+
+}
+
+
+
+
+
+# Main function
+
+
+main() {
+
+
+    init
+
+
+    check_deps
+
+
+    
+
+
+    case "$1" in
+
+
+        install)
+
+
+            shift
+
+
+            [ $# -eq 0 ] && die "No packages specified"
+
+
+            for pkg in "$@"; do
+
+
+                install_pkg "$pkg"
+
+
+            done
+
+
+            ;;
+
+
+        remove)
+
+
+            shift
+
+
+            [ $# -eq 0 ] && die "No packages specified"
+
+
+            for pkg in "$@"; do
+
+
+                remove_pkg "$pkg"
+
+
+            done
+
+
+            ;;
+
+
+        update)
+
+
+            update_pkgs
+
+
+            ;;
+
+
+        log)
+
+
+            less -R "$LOG_FILE"
+
+
+            ;;
+
+
+        *)
+
+
+            usage
+
+
+            ;;
+
+
+    esac
+
+
+}
+
+
+
+
+
+main "$@"
