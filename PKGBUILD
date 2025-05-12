@@ -6,7 +6,7 @@
 _pkgname='dstask'
 pkgname="$_pkgname-git"
 pkgver=0.27.r4.gbd08b11
-pkgrel=3
+pkgrel=4
 pkgdesc='Git-powered terminal-based todo/note manager with full markdown note for each task (development version)'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64' )
 url='https://github.com/naggie/dstask'
@@ -53,20 +53,22 @@ build() {
 
   go build -ldflags="$_GOLDFLAGS" -o dstask        ./cmd/dstask/main.go
   go build -ldflags="$_GOLDFLAGS" -o dstask-import ./cmd/dstask-import/main.go
+
+  for _shell in bash fish zsh; do
+    ./dstask "$_shell-completion" > "_completion.$_shell"
+  done
 }
 
 package() {
   cd "$_pkgname"
 
   install -vDm0755 -t "$pkgdir/usr/bin" dstask{,-import}
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
-  ./dstask bash-completion \
-    | install -vDm0644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-  ./dstask fish-completion \
-    | install -vDm0644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
-  ./dstask zsh-completion  \
-    | install -vDm0644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
+  install -vDm0644 _completion.bash "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+  install -vDm0644 _completion.fish "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
+  install -vDm0644 _completion.zsh  "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
+
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 
 # eof
