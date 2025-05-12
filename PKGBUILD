@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Turn based tactical RPG with several campaigns, written in Rust.'
 arch=('x86_64')
 url='https://www.sulisgame.com/'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('alsa-lib')
 makedepends=('rust' 'cargo' 'gendesk' 'cmake' 'fontconfig')
 source=(
@@ -38,18 +38,18 @@ package() {
 	install -Dm755 'sulis-editor' -t "${pkgdir}/usr/bin"
 	install -Dm755 'target/release/main' -t "${pkgdir}/opt/${pkgname}"
 	install -Dm755 'target/release/editor' -t "${pkgdir}/opt/${pkgname}/editor"
-	
+
 	install -Dm644 'sulis.desktop' -t "${pkgdir}/usr/share/applications"
 	install -Dm644 'sulis editor.desktop' -t "${pkgdir}/usr/share/applications"
 	install -Dm644 'sulis.png' -t "${pkgdir}/usr/share/pixmaps"
-	
+
 	cd "${_srcdir}"
 	install -Dm644 'config.sample.yml' -t "${pkgdir}/opt/${pkgname}"
 	cp -r 'data' "${pkgdir}/opt/${pkgname}/"
 	cp -r 'campaigns' "${pkgdir}/opt/${pkgname}/"
 	cp -r 'mods' "${pkgdir}/opt/${pkgname}/"
-	
+
 	install -Dm644 'docs/GPLv3-LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	
+
 	#cargo install --no-track --locked --all-features --target-dir="../target" --root "$pkgdir/usr/" --path "${_srcdir}"
 }
