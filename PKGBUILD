@@ -1,9 +1,9 @@
 # Contributor:  Vitalii Kuzhdin <vitaliikuzhdin at gmail dot com>
 
 pkgname=cursor-electron
-pkgver=0.50.0
-pkgrel=2
-pkgdesc="The AI Code Editor"
+pkgver=0.50.1
+pkgrel=1
+pkgdesc="The AI Code Editor (on system-wide electron)"
 arch=('x86_64')
 url="https://www.cursor.com"
 license=('custom') #should be fixed
@@ -15,9 +15,10 @@ optdepends=('electron: /usr/share/cursor/cursor-latestron'
 makedepends=(sed)
 provides=(cursor{,-bin})
 conflicts=(cursor{,-bin})
-source=("src.iso::https://downloads.cursor.com/production/bbfa51c1211255cbbde8b558e014a593f44051f4/linux/x64/Cursor-${pkgver}-${arch}.AppImage"
+_source=81bf18c2ba01d6e7e886875bdb6d1d04ac31c1f7
+source=("src.iso::https://downloads.cursor.com/production/${_source}/linux/x64/Cursor-${pkgver}-${arch}.AppImage"
 		"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
-sha256sums=('d49032ada9c7f405a0efb98db34abdb87de26d297ae43c2a9a75009806ec184e'
+sha256sums=('18f2bb1049bd18135a39ee48faca0dd75e3cd2b8548f9acd0859fc4b1d25e1ee'
             '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
 #options=(!strip)
 prepare() {
