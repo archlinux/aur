@@ -8,10 +8,10 @@ url="https://github.com/npc-gnu/yaud"
 license=('GNU General Public Lisence v3')
 depends=('bash' 'coreutils') 
 source=("https://github.com/npc-gnu/yaud/raw/main/yaud_bin/yaud_bin.tar.gz") 
-sha256sums=('fd4ac236a7ad5a12f89e02026124f54d0c188b073238cb73690c22cadec5743f') 
+sha256sums=('SKIP') 
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 yaud "$pkgdir/usr/local/bin/yaud" 
+  install -Dm755 yaud "$pkgdir/usr/local/bin/" 
 }
 
