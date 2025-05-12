@@ -7,14 +7,13 @@ pkgname=(
   'aider-chat-docs'
 )
 _gitpkgname=aider
-pkgver=0.82.0
+pkgver=0.83.0
 pkgrel=1
 pkgdesc='AI pair programming in your terminal'
 arch=('any')
 url='https://github.com/Aider-AI/aider'
 license=('Apache-2.0')
 depends=(
-  'flake8'
   'litellm'
   'python'
   'python-beautifulsoup4'
@@ -22,8 +21,10 @@ depends=(
   'python-diff-match-patch'
   'python-diskcache'
   'python-dotenv'
+  'python-flake8'
   'python-gitpython'
-  'python-grep-ast>=0.8.1'
+  'python-google-generativeai'
+  'python-grep-ast'
   'python-httpx'
   'python-importlib_resources'
   'python-json5'
@@ -31,6 +32,7 @@ depends=(
   'python-mixpanel'
   'python-networkx'
   'python-numpy'
+  'python-oslex'
   'python-packaging'
   'python-pathspec'
   'python-pexpect'
@@ -44,6 +46,7 @@ depends=(
   'python-pyperclip'
   'python-requests'
   'python-rich'
+  'python-shtab'
   'python-sounddevice'
   'python-soundfile'
   'python-tqdm'
@@ -73,6 +76,7 @@ checkdepends=(
 optdepends=(
   'aider-chat-docs: offline documentation'
   'chromium: for web scraping'
+  'python-babel: support for more locales'
   # Packages are yet to be written, see comment in `check()`
   # 'python-llama-index-embeddings-huggingface: to use the interactive `/help` feature'
   'python-playwright: for web scraping'
@@ -86,9 +90,9 @@ source=(
   'fix-build-from-tarball.patch'
 )
 
-sha512sums=('265c506e258f460e7ec8616e7f2cc491df915accc1e765a465ff4d08891f32f9b4f2e9642b0b752d217fe8f7c7a0100025cf5c1dfe723a11ce55c229f07f8d08'
-            'abd72fc596f3b5f0e96dfe069f017d3cdbb8700d1734f32c6b4b2cc9d61b06a66eed4151959b013cae52cf3339d02715d6cc4d83e9e3ba473d739fcf6e0bdd2c'
-            'a6fb5e00ae88ed02db00b61b36bb4b5ffef3e79ccfdc2314c9a702f50ffe4d7e5556a0b1eceb21c23b3d8ed2192af7eb47b6676bd0d9aaa568a7797b6badd174'
+sha512sums=('5eeba79f7b8618004ddcfe139f028f04a69ab36a38f8daf1c8d91fff5c3e2e22d6c9ca125c596d24ed8b15455df66df72901a622b8d26cc19f2a4b33aa7649b4'
+            'afd6b5dde669abe54c968bbedefaac3d577e2dfdfd33382201aeb30794df7ea518465d97c4fb9749e768e99132f80226c075c5961cb581c649689f8a713aaf94'
+            'bc0b34c169a558f82a16ced6e8db5c871fa6263cc92802cfc7f11b73dede6c36e74fa4dd16b4165fd8cdaa1044296e8dd20acd5b85db547629377b50b9fbb74e'
             '87b05d1b08007f32707fc9ed598eb6d31af1c29f5e4bcebf4a4fe08c4a6042ebb6c56dee8cb8e86e17be91af801a8852e4b39344d90da1990b44130b0b51125b')
 
 prepare() {

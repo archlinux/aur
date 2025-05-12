@@ -1,17 +1,17 @@
-From 6324fea96f39001a603f0f9a7c38e1bf79201f2c Mon Sep 17 00:00:00 2001
+From 49089f00dee6f26b1e1804e8e2678fa90e1907a6 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 27 Mar 2025 22:05:25 +0100
-Subject: [PATCH 1/4] Arch-Linux-specific: install optdeps via pacman
+Subject: [PATCH 1/3] Arch-Linux-specific: install optdeps via pacman
 
 ---
- aider/scrape.py | 34 +++++++++++++---------------------
- 1 file changed, 13 insertions(+), 21 deletions(-)
+ aider/scrape.py | 43 +++++++++++++++----------------------------
+ 1 file changed, 15 insertions(+), 28 deletions(-)
 
 diff --git a/aider/scrape.py b/aider/scrape.py
-index 7977a854..8ccef18f 100755
+index 3d5cfa86..1159581a 100755
 --- a/aider/scrape.py
 +++ b/aider/scrape.py
-@@ -18,9 +18,9 @@ def install_playwright(io):
+@@ -18,9 +18,9 @@ def check_env():
      try:
          from playwright.sync_api import sync_playwright
  
@@ -23,11 +23,23 @@ index 7977a854..8ccef18f 100755
  
      try:
          with sync_playwright() as p:
-@@ -29,40 +29,32 @@ def install_playwright(io):
+@@ -29,50 +29,37 @@ def check_env():
      except Exception:
          has_chromium = False
  
+-    return has_pip, has_chromium
+-
+-
+-def has_playwright():
+-    has_pip, has_chromium = check_env()
+-    return has_pip and has_chromium
++    return has_playwright, has_chromium
+ 
+ 
+ def install_playwright(io):
+-    has_pip, has_chromium = check_env()
 -    if has_pip and has_chromium:
++    has_playwright, has_chromium = check_env()
 +    if has_playwright and has_chromium:
          return True
  
@@ -79,20 +91,20 @@ index 7977a854..8ccef18f 100755
 2.49.0
 
 
-From 95cf9e2579e201f0a549d371f00854006a62d619 Mon Sep 17 00:00:00 2001
+From 9981c2aad65dc7dceea4f891d3e293cba6f81747 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 14:43:05 +0100
-Subject: [PATCH 2/4] Arch-Linux-specific: use system Chromium
+Subject: [PATCH 2/3] Arch-Linux-specific: use system Chromium
 
 ---
  aider/scrape.py | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/aider/scrape.py b/aider/scrape.py
-index 8ccef18f..c3c828a6 100755
+index 1159581a..1fc85aa7 100755
 --- a/aider/scrape.py
 +++ b/aider/scrape.py
-@@ -24,7 +24,7 @@ def install_playwright(io):
+@@ -24,7 +24,7 @@ def check_env():
  
      try:
          with sync_playwright() as p:
@@ -101,7 +113,7 @@ index 8ccef18f..c3c828a6 100755
              has_chromium = True
      except Exception:
          has_chromium = False
-@@ -130,7 +130,7 @@ class Scraper:
+@@ -135,7 +135,7 @@ class Scraper:
  
          with sync_playwright() as p:
              try:
@@ -114,10 +126,10 @@ index 8ccef18f..c3c828a6 100755
 2.49.0
 
 
-From 55736fd692f88878683b2362761187644489964e Mon Sep 17 00:00:00 2001
+From 62ed6cfa15f1bf6c2a1d7c0d2a4a0cd929ed83cd Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 27 Mar 2025 22:06:15 +0100
-Subject: [PATCH 3/4] Arch-Linux-specific: install boto3 via pacman
+Subject: [PATCH 3/3] Arch-Linux-specific: install boto3 via pacman
 
 ---
  aider/models.py |  6 +++---
@@ -125,7 +137,7 @@ Subject: [PATCH 3/4] Arch-Linux-specific: install boto3 via pacman
  2 files changed, 35 insertions(+), 3 deletions(-)
 
 diff --git a/aider/models.py b/aider/models.py
-index a711065e..bf8bcc11 100644
+index d69ae2d5..9c4b59c7 100644
 --- a/aider/models.py
 +++ b/aider/models.py
 @@ -18,7 +18,7 @@ from PIL import Image
@@ -137,7 +149,7 @@ index a711065e..bf8bcc11 100644
  
  RETRY_TIMEOUT = 60
  
-@@ -957,8 +957,8 @@ def check_for_dependencies(io, model_name):
+@@ -1081,8 +1081,8 @@ def check_for_dependencies(io, model_name):
      """
      # Check if this is a Bedrock model and ensure boto3 is installed
      if model_name.startswith("bedrock/"):
@@ -149,10 +161,10 @@ index a711065e..bf8bcc11 100644
  
      # Check if this is a Vertex AI model and ensure google-cloud-aiplatform is installed
 diff --git a/aider/utils.py b/aider/utils.py
-index 322a4431..1204db17 100644
+index 80cb0f38..6d791e0d 100644
 --- a/aider/utils.py
 +++ b/aider/utils.py
-@@ -370,6 +370,38 @@ def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_update=Fal
+@@ -474,6 +474,38 @@ def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_update=Fal
      print(printable_shell_command(cmd))
  
  
@@ -191,57 +203,6 @@ index 322a4431..1204db17 100644
  def printable_shell_command(cmd_list):
      """
      Convert a list of command arguments to a properly shell-escaped string.
--- 
-2.49.0
-
-
-From f9fb8c0f252abf35c935d1960f535f3f2343e95c Mon Sep 17 00:00:00 2001
-From: Claudia Pellegrino <claui@users.noreply.github.com>
-Date: Mon, 10 Mar 2025 12:17:21 +0100
-Subject: [PATCH 4/4] AUR-specific: replace auto-updater with a notice
-
----
- aider/versioncheck.py | 26 ++++----------------------
- 1 file changed, 4 insertions(+), 22 deletions(-)
-
-diff --git a/aider/versioncheck.py b/aider/versioncheck.py
-index ac511a02..bf1490ab 100644
---- a/aider/versioncheck.py
-+++ b/aider/versioncheck.py
-@@ -36,29 +36,11 @@ def install_upgrade(io, latest_version=None):
-     else:
-         new_ver_text = "Install latest version of aider?"
- 
--    docker_image = os.environ.get("AIDER_DOCKER_IMAGE")
--    if docker_image:
--        text = f"""
--{new_ver_text} To upgrade, run:
--
--    docker pull {docker_image}
-+    text = f"""
-+{new_ver_text} To upgrade, use the latest version available on the AUR.
- """
--        io.tool_warning(text)
--        return True
--
--    success = utils.check_pip_install_extra(
--        io,
--        None,
--        new_ver_text,
--        ["aider-chat"],
--        self_update=True,
--    )
--
--    if success:
--        io.tool_output("Re-run aider to use new version.")
--        sys.exit()
--
--    return
-+    io.tool_warning(text)
-+    return True
- 
- 
- def check_version(io, just_check=False, verbose=False):
 -- 
 2.49.0
 
