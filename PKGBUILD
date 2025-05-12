@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=salesforce2sql-bin
-pkgver=0.10.0
-_electronversion=28
-pkgrel=5
+pkgver=0.12.0
+_electronversion=36
+pkgrel=1
 pkgdesc="Electron app to convert a Salesforce org's schema into a similarly shaped database.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/acrosman/Salesforce2Sql"
@@ -11,18 +11,19 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'python>3'
+    'python'
     'python-setuptools'
     'nodejs'
 )
 options=(
     '!strip'
+    '!emptydirs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5abdb9dfc1c43bb2fa6cc6e11bc98d049051d7589d3fe123d3184284fc9ccf49'
+sha256sums=('dbb155c637959396de96fd372fd94bf200aff13f1cce4cd77feb7cd231c0a3cc'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
