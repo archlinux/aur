@@ -1,0 +1,15 @@
+pkgbase = zhongtaiko_filter_py
+	pkgdesc = Filters ghost key events from ZhongTaiko [Pro] drum controllers using a root-run systemd service
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/zDEFz/zhongtaiko_filter_py
+	install = zhongtaiko_filter_py.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-evdev
+	source = git+https://github.com/zDEFz/zhongtaiko_filter_py.git
+	sha256sums = SKIP
+
+pkgname = zhongtaiko_filter_py
