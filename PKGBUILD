@@ -8,8 +8,8 @@
 # https://blog.e-zest.com/ossec-hids-installation-and-configuration-on-amazon-ec2-instance
 
 pkgname="ossec-hids-server"
-pkgver=3.7.0
-pkgrel=7
+pkgver=3.8.0
+pkgrel=1
 pkgdesc="Open Source Host-based Intrusion Detection System - Server only"
 url="https://www.ossec.net/"
 license=("GPL2")
@@ -36,7 +36,7 @@ source=("ossec-hids.config"
 sha256sums=('bd5c74db93a8dfd939463d606813028a8c1e16d72920ced4a635019e68c1d4bc'
             '077a1382f5b1b07854007dd8525011c30566ac8d52db421d3723218ab747d34b'
             'c6b7848e4a8b7f581ee2cee5628ed439797284e6f2189a35aab0ffb97a392bcc'
-            '23f5ede50f5de449db0a571fc453977f7079b4b47ce90b0ef31feed20df100e9')
+            'bd857a2dd7d0559ef59b4a9ec276f3a8ade6830f8aed257e8f4a62106cfe5f38')
 # why no configuration files in /etc and logs in /var/log? https://groups.google.com/g/wazuh/c/0HDde9QcOgI
 backup=("var/lib/ossec-hids/etc/ossec.conf"
         "var/lib/ossec-hids/etc/client.keys"
