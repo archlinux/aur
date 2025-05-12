@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.11.r183.g945d508b
+pkgver=1.0.12.r18.g244b0454
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -13,11 +13,13 @@ license=('GPL-2.0-only')
 depends=(
   bash
   bpf
-  glibc
   gcc-libs
+  glibc
   jq
+  libseccomp
   libbpf
   libelf
+  protobuf
   zlib
 )
 makedepends=(
@@ -26,7 +28,6 @@ makedepends=(
   llvm
   llvm-libs
   meson
-  protobuf
   python
   rust
 )
@@ -74,7 +75,12 @@ prepare() {
 
 build() {
   cd $_gitname
-  arch-meson . build -D openrc=disabled -D libbpf_a=disabled -D cargo_home="$srcdir"/scx
+  arch-meson . build -D openrc=disabled \
+    -D libbpf_a=disabled \
+    -D bpftool=disabled \
+    -D b_lto=true \
+    -D b_lto_mode=thin \
+    -D cargo_home="$srcdir"/scx
   meson compile -C build
 }
 
