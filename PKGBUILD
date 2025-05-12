@@ -1,4 +1,4 @@
-pkgname=aur-helper
+pkgname=aur-manager
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="aur package manager"
