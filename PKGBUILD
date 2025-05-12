@@ -11,6 +11,7 @@ license=('GPL3')
 depends=('neo4j-community' 'java-runtime>=11')
 makedepends=('electron' 'npm' 'python-sphinx' 'python-sphinx_rtd_theme')
 optdepends=('python-bloodhound: Python injest tool that runs on natively on Linux')
+conflicts=('bloodhound')
 source=("https://github.com/ly4k/BloodHound/archive/refs/tags/v${pkgver}-ly4k.tar.gz"
 	"bloodhound.desktop")
 sha256sums=('0f57d5cba9996ccf6b9ef3c02ca3e40b8d7a10f3bde9a9d20a96b60cd549f60f'
