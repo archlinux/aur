@@ -1,6 +1,6 @@
 pkgbase = bluespec-git
 	pkgdesc = Bluespec Compiler (BSC)
-	pkgver = r885.d5a43d69
+	pkgver = r886.e9187c10
 	pkgrel = 1
 	url = https://github.com/B-Lang-org/bsc
 	arch = x86_64
@@ -18,8 +18,6 @@ pkgbase = bluespec-git
 	optdepends = tcl: bluesim and bluetcl
 	source = git+https://github.com/b-lang-org/bsc.git
 	source = git+https://github.com/SRI-CSL/yices2.git
-	source = pr-787.diff::https://github.com/b-lang-org/bsc/pull/787.diff
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
