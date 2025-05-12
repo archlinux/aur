@@ -1,0 +1,18 @@
+pkgbase = sdl3_sound-git
+	pkgdesc = An abstract soundfile decoder (development version)
+	pkgver = 2.0.2.r45.g68d18fe
+	pkgrel = 1
+	url = https://icculus.org/SDL_sound/
+	arch = i686
+	arch = x86_64
+	license = Zlib
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = sdl3
+	provides = sdl3_sound
+	conflicts = sdl3_sound
+	source = git+https://github.com/icculus/SDL_sound.git
+	md5sums = SKIP
+
+pkgname = sdl3_sound-git
