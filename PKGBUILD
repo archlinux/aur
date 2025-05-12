@@ -1,13 +1,13 @@
 appname=zen
 pkgname="${appname}-adblocker-git"
 _pkgname=Zen
-pkgver=0.8.0.r17.g373d974
+pkgver=0.10.0.r1.g0bf14bb
 _nodeversion=22
 pkgrel=1
 pkgdesc="An open-source system-wide ad-blocker and privacy guard."
 arch=('any')
 url="https://zenprivacy.net/"
-_ghurl="https://github.com/anfragment/zen"
+_ghurl="https://github.com/ZenPrivacy/zen-desktop"
 license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
@@ -23,8 +23,8 @@ makedepends=(
     'gendesk'
     'curl'
     'wails'
-    'gcc'
     'nvm'
+    'go-task'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
@@ -57,6 +57,7 @@ build() {
         echo 'registry=https://registry.npmmirror.com' >> frontend/.npmrc
 		echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> frontend/.npmrc
     fi
+    NODE_ENV=development npm install --prefix frontend
     wails build -o "${pkgname%-git}" -platform "linux" -ldflags "-X ./internal/cfg.Version=${pkgver}" -m -skipbindings
 }
 package() {
