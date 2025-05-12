@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-# Maintainer :  Biginoz 
+# Maintainer :  Biginoz
 # Contributor :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
 # Contributor : Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 pkgname=whalebird-bin
 _pkgname=Whalebird
-pkgver=6.2.1
+pkgver=6.2.2
 _electronversion=34
 pkgrel=1
 pkgdesc="Single-column Fediverse client for desktop.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('18bf1d8fd7f874ebb2c970d12daa543b00c4a5312993fbf21119a51b19b707aa'
+sha256sums=('653cc708e22f8d868da096295328adf031d8243dd216394d07f17f0eb29ca677'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
