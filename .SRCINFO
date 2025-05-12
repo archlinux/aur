@@ -1,0 +1,16 @@
+pkgbase = ros2-jazzy-ament_cmake_mypy
+	pkgdesc = The CMake API for ament_mypy to perform static type analysis on python code with mypy.
+	pkgver = 0.17.2
+	pkgrel = 1
+	url = https://github.com/ament/ament_lint
+	arch = any
+	license = Apache-2.0
+	checkdepends = gtest
+	checkdepends = python-pytest
+	makedepends = cmake
+	depends = boost
+	depends = ros2-jazzy
+	source = ros2-jazzy-ament_cmake_mypy-0.17.2.tar.gz::https://github.com/ament/ament_lint/archive/0.17.2.tar.gz
+	sha256sums = 1404cdea90e26392e55e2e5b78e00b7c78df29ca9ae7373ddf67c331535d81e9
+
+pkgname = ros2-jazzy-ament_cmake_mypy
