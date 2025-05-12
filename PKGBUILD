@@ -5,7 +5,7 @@ _pkgname=Typora
 pkgver=1.14.3
 _typoraver=0.11.18
 _electronversion=13
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal markdown editor and reader(free version).With obgnail/typora_plugin plugins."
 arch=(
     'aarch64'
@@ -25,13 +25,14 @@ conflicts=(
 )
 depends=(
     "electron${_electronversion}"
+    'alsa-lib'
 )
 source=(
-    "${_appname}-plugin-${pkgver}.tar.gz::${_pluginurl}/archive/refs/tags/${pkgver}.tar.gz"
+    "${_appname}-plugin-${pkgver}.zip::${_pluginurl}/releases/download/${pkgver}/${_appname}-plugin@v${pkgver}.zip"
 )
 source_aarch64=("${pkgname}-${_typoraver}-aarch64.deb::${_dlurl}/releases/download/v${_typoraver}/${_appname}_${_typoraver}_arm64.deb")
 source_x86_64=("${pkgname}-${_typoraver}-x86_64.deb::${_dlurl}/releases/download/v${_typoraver}/${_appname}_${_typoraver}_amd64.deb")
-sha256sums=('bc1fe491154d52e204586d41696a8536dee2852cf066d11f24eac40b3ba26dc1')
+sha256sums=('29733d354ffc7927c623350ba3b96fda92f622d6e87f2dd4d7c2f57e14d47262')
 sha256sums_aarch64=('12ad46732c4da7d9414701c584fee942baf83b89165563f18ba03d859eb59ad8')
 sha256sums_x86_64=('a202935a754c4b7344cc947db143e12885e4a716ca5f70f607f0318c346bb6c6')
 prepare() {
@@ -42,7 +43,7 @@ prepare() {
     " "${srcdir}/usr/share/applications/${_appname}.desktop"
     sed -i "s/<script src=\".\/appsrc\/window\/frame.js\" defer=\"defer\"><\/script>/<script src=\".\/appsrc\/window\/frame.js\" defer=\"defer\"><\/script><script src=\".\/plugin\/index.js\" defer=\"defer\"><\/script>/g" \
         "${srcdir}/usr/share/${_appname}/resources/window.html"
-    cp -Pr --no-preserve=ownership "${srcdir}/${_appname}_plugin-${pkgver}/"{assets,plugin} "${srcdir}/usr/share/${_appname}/resources"
+    cp -Pr --no-preserve=ownership "${srcdir}/plugin" "${srcdir}/usr/share/${_appname}/resources"
     _file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
         libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
     for _files in "${_file_list[@]}";do
@@ -60,4 +61,6 @@ package() {
     done
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/usr/share/doc/${_appname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    chmod 777 "${pkgdir}/usr/lib/${pkgname}/resources/plugin"
+    chmod 0777 "${pkgdir}/usr/lib/${pkgname}/resources/plugin/global/settings/"{settings.user.toml,custom_plugin.user.toml}
 }
