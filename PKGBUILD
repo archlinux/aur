@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-downloader-bin
 _pkgname=Ghost-Downloader
-pkgver=3.5.9
+pkgver=3.5.10
 pkgrel=1
 pkgdesc="A multi-threading async downloader with QThread based on PyQt/PySide (Prebuilt version) 多线程下载器 协程下载器."
 arch=(
@@ -20,6 +20,8 @@ depends=(
     'xcb-util-image'
     'gtk3'
     'libpulse'
+    'qt6-base'
+    'libxkbcommon-x11'
 )
 makedepends=(
     'gendesk'
@@ -33,8 +35,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-Linux-x86_64.zip")
 sha256sums=('f98dd87dd1e00000397e3121276be851bf3dd435c844d68c709bdceab2e7ccaa'
             'f003b130010311751a619cae8188af15f003369d71c59f7b34bbc26c98e615d5')
-sha256sums_aarch64=('651968ae9aa0479b8d1d9bd01c5a8fcb5713a92abef426146b4f18f12eae1ae7')
-sha256sums_x86_64=('6611830118a98adf62a91b1148275a148ddc2bf949a1939999107183205176ca')
+sha256sums_aarch64=('cada0c78f49b63fa5005d5b965c01707a463b85868cff68a60303e10e49d2bf8')
+sha256sums_x86_64=('f7f8681e4b5a3041147ac468010b9156c0876bba929a8f757d86fa3dcffcc840')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
