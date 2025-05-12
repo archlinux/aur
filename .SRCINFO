@@ -1,6 +1,6 @@
 pkgbase = python-spython
-	pkgdesc = CLI tool for working with Singularity Python
-	pkgver = 0.2.1
+	pkgdesc = streamlined singularity python client (spython) for singularity
+	pkgver = 0.3.14
 	pkgrel = 1
 	url = https://github.com/singularityhub/singularity-cli
 	arch = any
@@ -8,12 +8,9 @@ pkgbase = python-spython
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-pytest-runner
-	makedepends = python-setuptools
-	makedepends = python-wheel
-	depends = python-requests
-	depends = python-semver
-	optdepends = singularity-container: use and manipulate Singularity Containers
-	source = python-spython-0.2.1.tar.gz::https://files.pythonhosted.org/packages/source/s/spython/spython-0.2.1.tar.gz
-	sha256sums = beb8866751268ebbc38e05ee7d14d99a144f2a9b21409b16e3bcab9ebd452a19
+	optdepends = singularity-container
+	optdepends = apptainer
+	source = https://files.pythonhosted.org/packages/source/s/spython/spython-0.3.14.tar.gz
+	sha256sums = 8ad53ef034395cfa2d8a710cc1c3638e4475e5bbc6a2842d317db8013c2e4188
 
 pkgname = python-spython
