@@ -1,0 +1,22 @@
+pkgbase = hace-bin
+	pkgdesc = A task-launching app (think make)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ralsina/hace
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = hace
+	conflicts = hace
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/ralsina/hace/v0.4.0/LICENSE
+	source = README-0.4.0.md::https://raw.githubusercontent.com/ralsina/hace/v0.4.0/README.md
+	source = CHANGELOG-0.4.0.md::https://raw.githubusercontent.com/ralsina/hace/v0.4.0/CHANGELOG.md
+	sha256sums = e50dacbce1f6e8737ee91f43aa0b3a322aabda7e15ea0011b4059cb51dc9a274
+	sha256sums = 54f0fafaf1aeb89b6de8035cc15b06ad373da29a02d4058c6ab8980ca771342e
+	sha256sums = e36819728e458ccf07eeac469e6b6a8f4983a9ebf89caddcc12db8a9a58e3cad
+	source_x86_64 = https://github.com/ralsina/hace/releases/download/v0.4.0/hace-static-linux-amd64
+	sha256sums_x86_64 = b16ccf886a3189cafd1e60ac98e8b5d0aaf75ebb7b84f2b0a555958987dc0635
+	source_aarch64 = https://github.com/ralsina/hace/releases/download/v0.4.0/hace-static-linux-arm64
+	sha256sums_aarch64 = 4008b771088635385db6c8f91867de0f3548e46089f5e57fb2636129676821bd
+
+pkgname = hace-bin
