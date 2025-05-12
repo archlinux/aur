@@ -1,7 +1,7 @@
 pkgbase = mstflint425
 	pkgdesc = Open-source version of MFT (Mellanox Firmware Tools) - old version for ConnectX-3 Pro
 	pkgver = 4.25.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Mellanox/mstflint
 	arch = x86_64
 	arch = aarch64

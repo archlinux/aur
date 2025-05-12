@@ -5,7 +5,7 @@ _pkgname=mstflint
 pkgname=${_pkgname}425
 _pkgver='4.25.0-1'
 pkgver=${_pkgver//-/.}
-pkgrel='1'
+pkgrel=2
 pkgdesc='Open-source version of MFT (Mellanox Firmware Tools) - old version for ConnectX-3 Pro'
 arch=('x86_64' 'aarch64')
 url="https://github.com/Mellanox/${_pkgname}"
@@ -36,7 +36,8 @@ prepare() {
     --sysconfdir="/etc" \
     --localstatedir="/var/${_pkgname}" \
     --enable-fw-mgr \
-    --enable-xml2
+    --enable-xml2 \
+    CFLAGS='-std=gnu17'  # gcc defaults to (GNU) C23 where bool is a keyword
 }
 
 build() {
@@ -46,7 +47,7 @@ build() {
 
 package() {
   cd "${_pkgname}-${_pkgver}"
-  make DESTDIR="${pkgdir}" install
+  make -j1 DESTDIR="${pkgdir}" install
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README" "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
