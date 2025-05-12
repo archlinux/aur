@@ -3,12 +3,12 @@
 # Contributor: adiprasetya <ignilium.inc@gmail.com>
 
 pkgname=mihomo-bin
-pkgver=1.19.5
+pkgver=1.19.7
 pkgrel=1
 pkgdesc="Binary version of mihomo."
 arch=("i686" "x86_64" "armv7h" "aarch64" "loong64" "riscv64")
 url="https://github.com/MetaCubeX/mihomo"
-license=("GPL3")
+license=("GPL-3.0-or-later")
 groups=()
 depends=("glibc")
 makedepends=()
@@ -21,9 +21,9 @@ backup=("etc/mihomo/config.yaml")
 options=()
 install=${pkgname}.install
 changelog=
-source=("mihomo.service"
-        "mihomo@.service"
-        "config.yaml::https://raw.githubusercontent.com/MetaCubeX/mihomo/refs/tags/v${pkgver}/docs/config.yaml")
+source=("mihomo.service::https://raw.githubusercontent.com/MetaCubeX/mihomo/refs/tags/v${pkgver}/.github/release/mihomo.service"
+        "mihomo@.service::https://raw.githubusercontent.com/MetaCubeX/mihomo/refs/tags/v${pkgver}/.github/release/mihomo@.service"
+        "config.yaml::https://raw.githubusercontent.com/MetaCubeX/mihomo/refs/tags/v${pkgver}/.github/release/config.yaml")
 source_i686=("${pkgname}-i686-${pkgver}.gz::${url}/releases/download/v${pkgver}/mihomo-linux-386-v${pkgver}.gz")
 source_x86_64=("${pkgname}-x86_64-${pkgver}.gz::${url}/releases/download/v${pkgver}/mihomo-linux-amd64-compatible-v${pkgver}.gz")
 source_armv7h=("${pkgname}-armv7h-${pkgver}.gz::${url}/releases/download/v${pkgver}/mihomo-linux-armv7-v${pkgver}.gz")
@@ -31,15 +31,15 @@ source_aarch64=("${pkgname}-aarch64-${pkgver}.gz::${url}/releases/download/v${pk
 source_loong64=("${pkgname}-loong64-${pkgver}.gz::${url}/releases/download/v${pkgver}/mihomo-linux-loong64-abi2-v${pkgver}.gz")
 source_riscv64=("${pkgname}-riscv64-${pkgver}.gz::${url}/releases/download/v${pkgver}/mihomo-linux-riscv64-v${pkgver}.gz")
 
-sha256sums=('87bede7cb2ae10e087bdaa0672f98c4899a3c51cadddde2ff2ec74d5facfb105'
-            '4549a95ecac88545366ffee2f9c32d08560d0423fa9afa5bdb2a46458ab544e9'
-            '97d510afb526721f555a39a8c642b8018c409ca8bb10d6c9b1e13932b82e3dde')
-sha256sums_i686=('97298b3e577db8557a150fba944839efd15a33845a270c5b3a7734885414f976')
-sha256sums_x86_64=('079f2cd4935271c99b229dde29a02093b90f0b505d0410f84c74ad0829c97d78')
-sha256sums_armv7h=('d6a1def2b6b18fc17915fbceba31a0b7fa62d43078fec513689b54410248b682')
-sha256sums_aarch64=('a821053aab3fe973bdb9a2fd22abdd61d90f9034f7301964f4a440d3c0b1dbd2')
-sha256sums_loong64=('92518a809c34595291ea724658dfbce65cd6d371911d2f03996ec96357c2eaee')
-sha256sums_riscv64=('ebd0fea0a0bb22b3f0e54d93f551100a02b9ad0a80a4d36e33d90936fc3275ae')
+sha256sums=('b4b011a4b5670b09cc7d21a73cbaf47e038ff3f504deb16afab460555572f3a4'
+            'b4b011a4b5670b09cc7d21a73cbaf47e038ff3f504deb16afab460555572f3a4'
+            '65696f4b2ac4ec31987b3783b712a2452418cbe464c23b648fca2a515e478377')
+sha256sums_i686=('c4e0b9e53a65d8920ce8ccab4b1c621250da7d49bd8d0b8557e3ec050dade41c')
+sha256sums_x86_64=('9d4a4f84fdc0d5bf0cf886aee6c4d83ab5ecf83f4aea20f86f3e8fba6fa5e8bb')
+sha256sums_armv7h=('9bcb7750459ff8764c363250b5f1aa00fb175bcc700389d175f3aef32f17fe98')
+sha256sums_aarch64=('e6ac8c4436936410e0f815066dd9cbcbfad99d683f565469b9afb0d82ce2a48b')
+sha256sums_loong64=('8a49d0513434d7d5e41467054a1af849e5c13745a90bf40adfa5ee36f9723769')
+sha256sums_riscv64=('3da5179f8bac40a850a3b6713cc00f92aaeb9fa2af69f25b8c89795feb48dfa2')
 
 package() {
     cd "${srcdir}"

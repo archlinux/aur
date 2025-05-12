@@ -5,6 +5,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!*.service
 !*.install
-!*.yaml
