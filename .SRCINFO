@@ -10,6 +10,7 @@ pkgbase = publii-git
 	makedepends = git
 	makedepends = curl
 	makedepends = python
+	makedepends = gendesk
 	depends = electron31
 	depends = nodejs
 	depends = libsecret
