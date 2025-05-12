@@ -5,6 +5,7 @@ pkgbase = easyeda-bin
 	url = https://easyeda.com/
 	arch = x86_64
 	license = LicenseRef-EasyEDA-Proprietary
+	makedepends = curl
 	depends = gtk3
 	depends = nss
 	depends = libxss
@@ -12,8 +13,6 @@ pkgbase = easyeda-bin
 	provides = easyeda
 	conflicts = easyeda
 	source = easyeda-6.5.46.zip::https://image.easyeda.com/files/easyeda-linux-x64-6.5.46.zip
-	source = LICENSE-6.5.46.html::https://easyeda.com/page/legal
 	sha256sums = ef31679409866db0c95c53d93830e8431897c17bc59104c4eca6f84b4a178548
-	sha256sums = SKIP
 
 pkgname = easyeda-bin

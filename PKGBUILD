@@ -10,13 +10,16 @@ arch=('x86_64')
 url="https://easyeda.com/"
 license=('LicenseRef-EasyEDA-Proprietary')
 depends=('gtk3' 'nss' 'libxss' 'alsa-lib')
-makedepends=()
+makedepends=('curl')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}-${pkgver}.zip::https://image.easyeda.com/files/${_pkgname}-linux-x64-${pkgver}.zip"
-        "LICENSE-$pkgver.html::https://easyeda.com/page/legal")
-sha256sums=('ef31679409866db0c95c53d93830e8431897c17bc59104c4eca6f84b4a178548'
-            'SKIP')
+source=("${_pkgname}-${pkgver}.zip::https://image.easyeda.com/files/${_pkgname}-linux-x64-${pkgver}.zip")
+sha256sums=('ef31679409866db0c95c53d93830e8431897c17bc59104c4eca6f84b4a178548')
+
+prepare() {
+    # https://gitlab.archlinux.org/pacman/pacman-contrib/-/issues/119
+    curl -sSfL -o "LICENSE-$pkgver.html" "https://easyeda.com/page/legal"
+}
 
 package() {
     install -dm755 ${pkgdir}/opt/${_pkgname}
