@@ -21,8 +21,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('560193834c9cfbb519ab5a36f440160813b1b7c56ed3cc527a03ed0077c58ace')
-sha256sums_x86_64=('80dba5d8cf95c33954194ca9464c0d79758db5cd8826de6cd9f573e94c9be57e')
+sha256sums_aarch64=('e6b544d53714ae1aed8475d13676567e658bb43d8ea0d49abd612a8d421443ee')
+sha256sums_x86_64=('78103232d15655b874288d42731e5f3f3c59e7ec2d1bb97bbdfc52d9b2cc21d5')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
