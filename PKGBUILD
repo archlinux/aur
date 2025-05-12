@@ -4,8 +4,8 @@
 
 pkgname='kanzi-git'
 _pkgname="${pkgname/-git}"
-pkgver=2.3.0.r223.ga440ce53
-pkgrel=2
+pkgver=2.3.0.r228.g4f2fad4e
+pkgrel=1
 pkgdesc='Modern, modular, portable and efficient lossless data compressor and decompressor (development version)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/flanglet/kanzi-cpp'
@@ -37,7 +37,11 @@ build() {
   mkdir -p build \
   && cd build \
   && cmake .. \
-  && make
+  && make kanzi  # We do not need the shared library and the tests
+
+  cd "$srcdir/$_pkgname"
+
+  gunzip kanzi.1.gz
 }
 
 package() {
@@ -45,12 +49,10 @@ package() {
 
   install -vDm0755 -t "$pkgdir/usr/bin/" \
     src/build/kanzi
-
+  install -vDm0644 -t "$pkgdir/usr/share/man/man1/" \
+    kanzi.1
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
     {README,SECURITY}.md
-
-  install -vDm0644 -t "$pkgdir/usr/share/man/man1/" \
-    kanzi.1.gz
 }
 
 sha256sums=('SKIP')
