@@ -1,0 +1,16 @@
+pkgbase = moonlight-ptb-bin
+	pkgdesc = A convenient launcher for the moonlight Discord mod (ptb)
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/MeguminSama/moonlight-launcher
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = libmoonlight-launcher
+	optdepends = discord: An install of Discord is required to run the launcher
+	provides = moonlight-ptb
+	source = moonlight-ptb-bin-0.1.9.tar.gz::https://github.com/MeguminSama/moonlight-launcher/releases/download/v0.1.9/moonlight-ptb-v0.1.9.tar.gz
+	source = moonlight-ptb.desktop
+	sha256sums = 23fd27354315cf3bb744d61cbb29dedf2f2b7e7da2bb93454ba474b7993898e4
+	sha256sums = 94009dcac58ff72cb56bdb043e7ae903a6ddcc93a1ae5d6421872127e4c1910a
+
+pkgname = moonlight-ptb-bin

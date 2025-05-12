@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=moonlight PTB
+Comment=moonlight PTB Launcher
+GenericName=Internet Messenger
+Exec=/usr/bin/moonlight-ptb
+Icon=moonlight-ptb
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;
+StartupWMClass=moonlight-ptb
