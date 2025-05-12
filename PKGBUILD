@@ -3,7 +3,7 @@
 
 pkgname=zeal-i3-shortcuts
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Offline API documentation browser, with X11/i3 shortcut patches'
 arch=('x86_64')
 url='https://zealdocs.org'
