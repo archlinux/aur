@@ -11,7 +11,7 @@ source=("https://github.com/npc-gnu/yaud/raw/main/yaud_bin/yaud_bin.tar.gz")
 sha256sums=('SKIP') 
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir"
   install -Dm755 yaud "$pkgdir/usr/local/bin/" 
 }
 
