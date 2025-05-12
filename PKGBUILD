@@ -2,8 +2,8 @@
 # Contributor: Spider.007 <archPackage@spider007.net>
 pkgname=netatop-dkms
 _pkgname=netatop
-pkgver=3.1
-pkgrel=2
+pkgver=3.2.2
+pkgrel=1
 pkgdesc="Atop network kernel module, enables network statistics in atop"
 url="http://www.atoptool.nl/"
 groups=('modules')
@@ -15,7 +15,7 @@ source=("http://atoptool.nl/download/netatop-${pkgver}.tar.gz"
         "netatop-dkms.conf"
         "netatop-dkms.install")
 install="netatop-dkms.install"
-sha256sums=('736f43572c31a90748f023f0a5a814bff58d44c0c3f060d776cfd6e6e8435c62'
+sha256sums=('508a8977cd3d1cdd67587a13c25e3a414647b48f92d1ce38fc138b5914aea3f6'
             '56e9094e396fcdabadde4db8a9f21945484e4db93359dc22f2fb76436b1b2ea9'
             '0cda5de65ab96445951e39decfc18b50aad90245f661eb58438ac402cd2496b7')
 arch=('x86_64' 'i686')
@@ -53,24 +53,17 @@ package() {
 #		exit 1
 #	fi
 
-	# fix references
-	cd $srcdir/$_pkgname-$pkgver/module
-	sed -i 's|../netatop.h|netatop.h|g' netatop.c
-	sed -i 's|../netatopversion.h|netatopversion.h|g' netatop.c
 	# copy module sources
-	cd $srcdir/$_pkgname-$pkgver/module
+	cd $srcdir/$_pkgname-$pkgver
 	mkdir -p ${pkgdir}/usr/src/${_pkgname}-${pkgver}
 	cp -RL * ${pkgdir}/usr/src/${_pkgname}-${pkgver}
-	# copy headers
-	cd $srcdir/$_pkgname-$pkgver
-	cp -L *.h ${pkgdir}/usr/src/${_pkgname}-${pkgver}
 	# copy dkms.conf
 	sed -i "s|PACKAGE_VERSION=\"0.5\"|PACKAGE_VERSION=\"${pkgver}\"|g" "${srcdir}/netatop-dkms.conf"
 	install -D -m 644 "${srcdir}/netatop-dkms.conf" "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
 
 	# package remaining stuff
 	cd $srcdir/$_pkgname-$pkgver
-	install -D daemon/netatopd $pkgdir/usr/bin/netatopd
+	install -D netatopd $pkgdir/usr/bin/netatopd
 	install -D man/netatop.4 $pkgdir/usr/share/man/man4/netatop.4
 	install -D man/netatopd.8 $pkgdir/usr/share/man/man8/netatopd.8
 	install -D netatop.service $pkgdir/usr/lib/systemd/system/netatop.service
