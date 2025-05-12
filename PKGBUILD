@@ -8,7 +8,7 @@
 readonly _pkgname="bench"
 
 pkgname="frappe-bench"
-pkgver="5.25.0"
+pkgver="5.25.1"
 pkgrel="1"
 pkgdesc="CLI to manage multi-tenant deployments for Frappe apps."
 arch=("any")
