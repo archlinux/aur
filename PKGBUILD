@@ -3,7 +3,7 @@
 pkgname=krux-installer-bin
 _pkgname="org.selfcustody.${pkgname%-bin}"
 pkgver=0.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI based application to flash Krux firmware on K210 based devices.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/selfcustody/krux-installer"
@@ -18,10 +18,10 @@ source=(
 sha256sums=('23b1c0ae646aa7255b19b50725f1e9576faf50162c48df5bfded4afcc836a742'
             '75486ea0af9309140ca6e2c401d7e67bea8f4892344e5707f6394dc5e83dfc44')
 prepare() {
-    sed -e "
-        s/\/usr\/local\/bin\/${pkgname%-bin}/${pkgname%-bin}/g
+    sed -i -e "
+        s/\/usr\/local\/bin\///g
         s/\/usr\/share\/icons\/hicolor\/512x512\/apps\/${pkgname%-bin}.png/${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/local/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"

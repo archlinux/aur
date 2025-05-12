@@ -1,7 +1,7 @@
 pkgbase = krux-installer-bin
 	pkgdesc = A GUI based application to flash Krux firmware on K210 based devices.(Prebuilt version)
 	pkgver = 0.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/selfcustody/krux-installer
 	arch = x86_64
 	license = MIT
