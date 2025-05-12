@@ -1,7 +1,7 @@
 pkgbase = mongodb-compass-isolated-bin
 	pkgdesc = The official GUI for MongoDB - Isolated Edition - binary version
 	pkgver = 1.46.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
 	license = SSPL-1.0
@@ -30,10 +30,10 @@ pkgbase = mongodb-compass-isolated-bin
 	depends = zlib
 	depends = krb5
 	depends = libsecret
-	depends = lsb-release
 	optdepends = org.freedesktop.secrets
 	provides = mongodb-compass-isolated=1.46.2
 	conflicts = mongodb-compass-isolated
+	options = !debug
 	backup = etc/mongodb-compass.conf
 	source = mongodb-compass-isolated-bin-1.46.2.rpm::https://downloads.mongodb.com/compass/mongodb-compass-isolated-1.46.2.x86_64.rpm
 	source = mongodb-compass.conf

@@ -4,7 +4,7 @@ _edition=' Isolated Edition'
 pkgname="$_pkgname-bin"
 _pkgver='1.46.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - binary version'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
@@ -15,9 +15,10 @@ depends=(
 	'harfbuzz' 'icu' 'libdrm' 'libevent' 'libffi' 'libjpeg' 'libpng' 'libpulse'
 	'libwebp' 'libxml2' 'libxslt' 'minizip' 'nss' 'opus' 'zlib'
 	# compass
-	'krb5' 'libsecret' 'lsb-release'
+	'krb5' 'libsecret'
 )
 optdepends=('org.freedesktop.secrets')
+options=('!debug')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 backup=('etc/mongodb-compass.conf')
@@ -38,13 +39,18 @@ check() {
 package() {
 	cd "$srcdir/"
 
-	install -dm755 "$pkgdir/opt/"
-	cp -r --no-preserve=ownership --preserve=mode "usr/lib/$_pkgname/" "$pkgdir/opt/$_pkgname/"
+	install -dm755 "$pkgdir/usr/lib/"
+	cp -r "usr/lib/$_pkgname/" "$pkgdir/usr/lib/$_pkgname/"
 
-	chmod u+s "$pkgdir/opt/$_pkgname/chrome-sandbox"
+	# Fix permissions
+	find "$pkgdir" -type d -exec chmod 755 {} +
+	find "$pkgdir" -type f -exec chmod 644 {} +
+	chmod +x "$pkgdir/usr/lib/$_pkgname/chrome_crashpad_handler"
+	chmod +x "$pkgdir/usr/lib/$_pkgname/chrome-sandbox"
+	chmod +x "$pkgdir/usr/lib/$_pkgname/MongoDB Compass$_edition"
 
 	install -dm755 "$pkgdir/usr/bin/"
-	ln -sf "/opt/$_pkgname/MongoDB Compass$_edition" "$pkgdir/usr/bin/$_pkgname"
+	ln -sf "/usr/lib/$_pkgname/MongoDB Compass$_edition" "$pkgdir/usr/bin/$_pkgname"
 
 	install -Dm644 "$srcdir/mongodb-compass.conf" "$pkgdir/etc/mongodb-compass.conf"
 
@@ -53,6 +59,6 @@ package() {
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
 
-	ln -sf "/opt/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/SSPL-1.0"
-	ln -sf "/opt/$_pkgname/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
+	ln -sf "/usr/lib/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/SSPL-1.0"
+	ln -sf "/usr/lib/$_pkgname/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 }
