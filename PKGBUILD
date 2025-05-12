@@ -2,15 +2,14 @@
 
 pkgname=zig-git
 pkgver=0.14.0.r134.g0cb9ffc
-pkgrel=1
+pkgrel=2
 pkgdesc='General-purpose programming language and toolchain'
 arch=('aarch64' 'x86_64')
 url='https://ziglang.org/'
 license=('MIT')
 options=('!lto')
 conflicts=(zig)
-replaces=(zig)
-provides=(zig)
+provides=("zig=${pkgver%%.r*}")
 depends=("clang>=19.1" icu libffi libxml2 "lld>=19.1" "llvm-libs>=19.1" ncurses xz zlib zstd)
 makedepends=(cmake "llvm>=19.1")
 checkdepends=(lib32-glibc)

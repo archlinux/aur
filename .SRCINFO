@@ -1,7 +1,7 @@
 pkgbase = zig-git
 	pkgdesc = General-purpose programming language and toolchain
 	pkgver = 0.14.0.r134.g0cb9ffc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ziglang.org/
 	arch = aarch64
 	arch = x86_64
@@ -19,9 +19,8 @@ pkgbase = zig-git
 	depends = xz
 	depends = zlib
 	depends = zstd
-	provides = zig
+	provides = zig=0.14.0
 	conflicts = zig
-	replaces = zig
 	options = !lto
 	source = git+https://github.com/ziglang/zig.git#branch=0.14.x
 	source = skip-localhost-test.patch
