@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Game of automation and programming in a voxel world"
 arch=('x86_64')
 url='https://www.blackvoxel.com/'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('glew' 'hicolor-icon-theme' 'mesa' 'sdl')
 _srcdir="${pkgname}_source_2_50"
 source=("${pkgname}-${pkgver}.tar.bz2::${url}/dm_download.php?file=170&key=1")
