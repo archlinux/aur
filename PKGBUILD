@@ -3,7 +3,7 @@
 _pkgauthor=n0-computer
 _pkgname=sendme
 pkgname=${_pkgname}-bin
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc='A tool to send files and directories'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -23,8 +23,8 @@ source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linu
 sha256sums=('974857d00c8d3e956c4f75d41e4a631f55fe1de895d99f8ea28d3b86520f47bd'
             'b801c8d677ef9701149e05cf98f28b82a56832dd67c94d96d36d25d063b1b353'
             '7ee92352fcac2b427c4754822087d0aeb3afc99951b71bd15cc4c2e5c61c1b60')
-sha256sums_x86_64=('d8b37c57dc16f3905297cb8025f8567977cf480d033d77a68a9b3efc8f360727')
-sha256sums_aarch64=('08919ce10aeca6b663a939abf82f3a40987e7decf154d15e2923af1b02b74194')
+sha256sums_x86_64=('115af3f2fe5a8dd82f4afc97621bb488d081e35d6d8844bb1a359cac3e2cc60f')
+sha256sums_aarch64=('35b7aad0f25bb1ee5cefa66be7545b7059ed8f58ccc3820071de45cda75bba14')
 
 package() {
   cd "${srcdir}/" || exit
