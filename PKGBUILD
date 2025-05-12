@@ -24,6 +24,7 @@ depends=('capstone'
          'hicolor-icon-theme'
          'pugixml'
          'sdl2'
+         'snappy'
          'zarchive')
 conflicts=('xenia' 'xenia-git')
 provides=('xenia')
@@ -43,7 +44,6 @@ source=("${pkgname}::git+https://github.com/xenia-canary/xenia-canary.git#branch
         'premake-cmake::git+https://github.com/JoelLinn/premake-cmake.git'
         'premake-export-compile-commands::git+https://github.com/xenia-project/premake-export-compile-commands.git'
         'rapidcsv::git+https://github.com/d99kris/rapidcsv.git'
-        'snappy::git+https://github.com/xenia-project/snappy.git'
         'tabulate::git+https://github.com/p-ranav/tabulate.git'
         'utfcpp::git+https://github.com/nemtrif/utfcpp.git'
         'xbyak::git+https://github.com/herumi/xbyak.git'
@@ -67,9 +67,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             '6df34559e1bb42e1c0a67152a8f1ebd8c59bd890f6d7625f711ae80859165822'
-            '1e2ac4d6a1237eafa63b117ecbeaaa3769ddf8033428e7b4a6987d877da10f45')
+            'b8f0d7e0b00936c6d9303e1d79a5eedd6c3604541bda75eccbcdf63efcaaa662')
 
 pkgver() {
   printf 'r%s.%s' "$(git -C ${pkgname} rev-list --count HEAD)" "$(git -C ${pkgname} rev-parse --short HEAD)"

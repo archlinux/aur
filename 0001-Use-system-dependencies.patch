@@ -1,11 +1,11 @@
-From 32020407d6c9c9c98d97186211807ede2bae1421 Mon Sep 17 00:00:00 2001
+From c2f105e5890fc731b55da08f7e611ce05574331f Mon Sep 17 00:00:00 2001
 From: David Hummel <hummeltech@sherpaguru.com>
 Date: Sun, 11 May 2025 20:22:11 -0700
 Subject: [PATCH] Use system dependencies
 
 ---
- .gitmodules                                   | 36 ----------------
- premake5.lua                                  | 42 ++++++++++++++-----
+ .gitmodules                                   | 39 ----------------
+ premake5.lua                                  | 46 ++++++++++++++-----
  src/xenia/apu/sdl/premake5.lua                |  2 +-
  src/xenia/emulator.cc                         |  2 +-
  src/xenia/helper/sdl/premake5.lua             |  2 +-
@@ -28,6 +28,7 @@ Subject: [PATCH] Use system dependencies
  third_party/fmt/include                       |  1 +
  third_party/pugixml                           |  1 -
  third_party/pugixml/src/pugixml.hpp           |  1 +
+ third_party/snappy                            |  2 +-
  third_party/tomlplusplus                      |  1 -
  third_party/tomlplusplus/impl                 |  1 +
  third_party/tomlplusplus/include              |  1 +
@@ -38,7 +39,7 @@ Subject: [PATCH] Use system dependencies
  third_party/zarchive/include                  |  1 +
  third_party/zlib                              |  1 -
  third_party/zlib/zlib.h                       |  1 +
- 34 files changed, 51 insertions(+), 64 deletions(-)
+ 35 files changed, 55 insertions(+), 69 deletions(-)
  delete mode 160000 third_party/SDL2
  create mode 120000 third_party/SDL2/include
  delete mode 160000 third_party/SPIRV-Tools
@@ -56,6 +57,7 @@ Subject: [PATCH] Use system dependencies
  create mode 120000 third_party/fmt/include
  delete mode 160000 third_party/pugixml
  create mode 120000 third_party/pugixml/src/pugixml.hpp
+ mode change 160000 => 120000 third_party/snappy
  delete mode 160000 third_party/tomlplusplus
  create mode 120000 third_party/tomlplusplus/impl
  create mode 120000 third_party/tomlplusplus/include
@@ -68,10 +70,10 @@ Subject: [PATCH] Use system dependencies
  create mode 120000 third_party/zlib/zlib.h
 
 diff --git a/.gitmodules b/.gitmodules
-index 6c40a386d..c17824a76 100644
+index 6c40a386d..24fb85c8d 100644
 --- a/.gitmodules
 +++ b/.gitmodules
-@@ -7,9 +7,6 @@
+@@ -7,15 +7,9 @@
  [submodule "third_party/binutils-ppc-cygwin"]
  	path = third_party/binutils-ppc-cygwin
  	url = https://github.com/benvanik/binutils-ppc-cygwin.git
@@ -81,7 +83,13 @@ index 6c40a386d..c17824a76 100644
  [submodule "third_party/premake-core"]
  	path = third_party/premake-core
  	url = https://github.com/premake/premake-core.git
-@@ -28,24 +25,9 @@
+-[submodule "third_party/snappy"]
+-	path = third_party/snappy
+-	url = https://github.com/xenia-project/snappy.git
+ [submodule "third_party/premake-export-compile-commands"]
+ 	path = third_party/premake-export-compile-commands
+ 	url = https://github.com/xenia-project/premake-export-compile-commands.git
+@@ -28,24 +22,9 @@
  [submodule "third_party/aes_128"]
  	path = third_party/aes_128
  	url = https://github.com/openluopworld/aes_128.git
@@ -106,7 +114,7 @@ index 6c40a386d..c17824a76 100644
  [submodule "third_party/disruptorplus"]
  	path = third_party/disruptorplus
  	url = https://github.com/xenia-canary/disruptorplus.git
-@@ -58,9 +40,6 @@
+@@ -58,9 +37,6 @@
  [submodule "third_party/date"]
  	path = third_party/date
  	url = https://github.com/HowardHinnant/date.git
@@ -116,7 +124,7 @@ index 6c40a386d..c17824a76 100644
  [submodule "third_party/FFmpeg"]
  	path = third_party/FFmpeg
  	url = https://github.com/xenia-canary/FFmpeg_radixsplit.git
-@@ -73,36 +52,21 @@
+@@ -73,36 +49,21 @@
  [submodule "third_party/FidelityFX-FSR"]
  	path = third_party/FidelityFX-FSR
  	url = https://github.com/GPUOpen-Effects/FidelityFX-FSR.git
@@ -154,10 +162,10 @@ index 6c40a386d..c17824a76 100644
  	path = third_party/libusb
  	url = https://github.com/libusb/libusb.git
 diff --git a/premake5.lua b/premake5.lua
-index 8f44e9d1a..b7b6388a0 100644
+index 8f44e9d1a..c79ee4833 100644
 --- a/premake5.lua
 +++ b/premake5.lua
-@@ -119,13 +119,33 @@ filter("platforms:Linux")
+@@ -119,13 +119,35 @@ filter("platforms:Linux")
    buildoptions({
      -- "-mlzcnt",  -- (don't) Assume lzcnt is supported.
    })
@@ -171,6 +179,7 @@ index 8f44e9d1a..b7b6388a0 100644
 +  pkg_config.all("libzstd")
 +  pkg_config.all("pugixml")
 +  pkg_config.all("sdl2")
++  pkg_config.all("snappy")
 +  pkg_config.all("zarchive")
 +  pkg_config.all("zlib")
    links({
@@ -184,6 +193,7 @@ index 8f44e9d1a..b7b6388a0 100644
      "pthread",
 +    "pugixml",
      "rt",
++    "snappy",
 +    "stdc++fs",
 +    "xxhash",
 +    "z",
@@ -192,7 +202,7 @@ index 8f44e9d1a..b7b6388a0 100644
    })
  
  filter({"platforms:Linux", "kind:*App"})
-@@ -263,22 +283,22 @@ workspace("xenia")
+@@ -263,22 +285,22 @@ workspace("xenia")
    configurations({"Checked", "Debug", "Release"})
  
    include("third_party/aes_128.lua")
@@ -210,12 +220,13 @@ index 8f44e9d1a..b7b6388a0 100644
    include("third_party/glslang-spirv.lua")
    include("third_party/imgui.lua")
    include("third_party/mspack.lua")
-   include("third_party/snappy.lua")
+-  include("third_party/snappy.lua")
 -  include("third_party/xxhash.lua")
 -  include("third_party/zarchive.lua")
 -  include("third_party/zstd.lua")
 -  include("third_party/zlib.lua")
 -  include("third_party/pugixml.lua")
++  -- include("third_party/snappy.lua")
 +  -- include("third_party/xxhash.lua")
 +  -- include("third_party/zarchive.lua")
 +  -- include("third_party/zstd.lua")
@@ -224,7 +235,7 @@ index 8f44e9d1a..b7b6388a0 100644
  
    if os.istarget("windows") then
      include("third_party/libusb.lua")
-@@ -291,7 +311,7 @@ workspace("xenia")
+@@ -291,7 +313,7 @@ workspace("xenia")
      -- one controller (Nvidia Shield) being supported, digital triggers are also
      -- not supported; lifecycle management (especially surface loss) is also
      -- complicated.
@@ -251,7 +262,7 @@ index 8f0e9ab61..21bf598ba 100644
    local_platform_files()
 -  sdl2_include()
 diff --git a/src/xenia/emulator.cc b/src/xenia/emulator.cc
-index 56f8fc75b..c33e51658 100644
+index fa346e616..b608dd1c4 100644
 --- a/src/xenia/emulator.cc
 +++ b/src/xenia/emulator.cc
 @@ -17,7 +17,7 @@
@@ -437,6 +448,21 @@ index 000000000..2dc728a92
 +++ b/third_party/pugixml/src/pugixml.hpp
 @@ -0,0 +1 @@
 +/usr/include/pugixml.hpp
+\ No newline at end of file
+diff --git a/third_party/snappy b/third_party/snappy
+deleted file mode 160000
+index 303cd2c64..000000000
+--- a/third_party/snappy
++++ /dev/null
+@@ -1 +0,0 @@
+-Subproject commit 303cd2c64c62c579a8592236f723b611afd3bc15
+diff --git a/third_party/snappy b/third_party/snappy
+new file mode 120000
+index 000000000..408ea0f82
+--- /dev/null
++++ b/third_party/snappy
+@@ -0,0 +1 @@
++/usr/include
 \ No newline at end of file
 diff --git a/third_party/tomlplusplus b/third_party/tomlplusplus
 deleted file mode 160000
