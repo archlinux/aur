@@ -1,7 +1,7 @@
 pkgbase = passkeez
 	pkgdesc = FIDO2/Passkey compatible authenticator implementation
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zig-Sec/PassKeeZ
 	arch = aarch64
 	arch = x86_64

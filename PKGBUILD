@@ -4,7 +4,7 @@
 _Name="PassKeeZ"
 pkgname="${_Name,,}"
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="FIDO2/Passkey compatible authenticator implementation"
 arch=('aarch64' 'x86_64')
 url="https://github.com/Zig-Sec/${_Name}"
@@ -45,5 +45,5 @@ package() {
   find "script" -type f -name '*.rules'   -execdir \
     install -vDm644 "{}" "${pkgdir}/usr/lib/udev/rules.d/{}" \;
   find "script" -type f -name '*.service' -execdir \
-    install -vDm644 "{}" "${pkgdir}/usr/lib/systemd/system/{}" \; 
+    install -vDm644 "{}" "${pkgdir}/usr/lib/systemd/user/{}" \;
 }
