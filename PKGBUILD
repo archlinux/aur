@@ -3,7 +3,7 @@
 
 pkgbase=parabolic
 pkgname=(parabolic-gtk parabolic-qt)
-pkgver=2025.5.1
+pkgver=2025.5.3
 pkgrel=1
 pkgdesc="Download web video and audio"
 arch=('x86_64')
@@ -37,7 +37,7 @@ provides=('tube-converter')
 conflicts=('tube-converter')
 replaces=('tube-converter')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('cf74977ba31a1d19e1a9d6df658e286660875e1f1e9c3e260d5bc16539c88843')
+sha256sums=('51a4de3cdf191ccfe7a7459ca3f0bc857c83ac00b0f5b3158df26d91cfafd140')
 
 build() {
     cmake -B build-gtk -S "${pkgbase^}-${pkgver}" \
