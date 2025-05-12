@@ -2,12 +2,13 @@
 
 pkgname=opencollada-blender-git
 pkgver=r1733.4526eb8a
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of OpenCollada to use with Blender"
 arch=('x86_64')
 url="https://github.com/aras-p/OpenCOLLADA"
 license=('GPL')
 depends=('libxml2')
+provides=('opencollada')
 conflicts=('opencollada')
 makedepends=('git' 'cmake')
 source=("git+https://github.com/aras-p/OpenCOLLADA.git")
