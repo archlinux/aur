@@ -17,7 +17,16 @@ for file in "$CONFIG_FOLDER"/*.json; do
     filename=$(basename "$file" .json)
     command_name="netbird-$filename"
     alias $command_name="/usr/bin/netbird --daemon-addr unix:///var/run/netbird-$filename.sock"
+    complete -o default -F __start_netbird $command_name
   fi
 done
 
-alias "netbird"="echo 'You are using a multi-config setup. Please use the config name as a command, e.g. netbird-<config_name>.'"
+function __netbird__noop() {
+  if [[ "__complete" == "$1" ]]; then
+    exit 0
+  fi
+
+  printf 'You are using a multi-config setup. Please use the config name as a command, e.g. netbird-<config_name>.\n'
+}
+
+alias "netbird"="__netbird__noop"

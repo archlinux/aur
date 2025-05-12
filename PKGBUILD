@@ -1,7 +1,7 @@
 # Maintainer: Zoe Wetzel <aur@commanderred.xyz>
 pkgname=netbird-multiconfig
 
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A small script to help with multiple netbird configs using the systemd template"
 
@@ -32,5 +32,5 @@ package() {
   printf "================================================================================================\n\n"
 }
 
-sha256sums=('c9a0ed3d36fe62c4405e3a8d6773d7525ed3215e3eef0413bf6c2d65c527ee6a'
+sha256sums=('fa1171fbdbb567ecb0b5d125d31802126ff9b126ffff051e86aa08972348ccfb'
             '47d949c093ef91cdb6fe2289927f1ca2190639d6a46a9a8642ede283a7270027')
