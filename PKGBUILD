@@ -2,7 +2,7 @@
 
 _pkgname="protolint"
 pkgname="${_pkgname}-bin"
-pkgver=0.55.1
+pkgver=0.55.2
 pkgrel=1
 pkgdesc="A pluggable linter and fixer to enforce Protocol Buffer style and conventions"
 arch=('aarch64' 'armv6h' 'armv7h' 'x86_64')
@@ -15,10 +15,10 @@ source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/
 source_armv6h=("${_pkgsrc}-armv6h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_armv6.tar.gz")
 source_armv7h=("${_pkgsrc}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_armv7.tar.gz")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_amd64.tar.gz")
-sha256sums_aarch64=('5f142778c3bab7843a077b0fb27b7e46f63c4488edeaf283f34f0407e2eebc1f')
-sha256sums_armv6h=('efe78290b1e2d93f74083c7887f1391edc89de5e328fb870a86eb1d8f372d41a')
-sha256sums_armv7h=('7643a4ac0544dffd4d26c80eac0f2a7cfc94eefef1301ee403c74cd5d6365131')
-sha256sums_x86_64=('2deada2a211351f7a37bf3c51ae1702b58b502ee8236440bf55a96c31d7f6519')
+sha256sums_aarch64=('b66df92c1b3f1b04b327af01677c12692c99cd4be1e3483f87924d952b13e9c4')
+sha256sums_armv6h=('0eba50b868868e9bfd3991e50929e4d240490f636a443d7bcf54436954c6a285')
+sha256sums_armv7h=('c32d29a43cb707036e6cb3ac5023400e76d562327cc7d44c49041932dd2c3e48')
+sha256sums_x86_64=('2b4747aa3568bd70bb84c7ce76d1e6f3968fa3024012b68977e9defd28cb7760')
 
 package() {
   cd "${srcdir}"
