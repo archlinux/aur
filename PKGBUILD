@@ -1,39 +1,118 @@
-# Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
-
-pkgname=mongodb-compass
-pkgver=1.46.2
-pkgrel=1
-pkgdesc="The MongoDB GUI"
-arch=('x86_64')
-url="https://www.mongodb.com/products/compass"
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
+_target='compass'
+_edition=''
+pkgname="mongodb-$_target"
+_pkgver='1.46.2'
+pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
+pkgrel='2'
+pkgdesc='The official GUI for MongoDB'
+arch=('x86_64' 'armv7h' 'aarch64')
+url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
-depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss')
+_electronpkg='electron32'
+depends=("$_electronpkg" 'krb5' 'libmongocrypt>=1.12.0' 'libsecret' 'lsb-release' 'nodejs>=18.19.1')
+makedepends=('git' 'npm>=10.2.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
-options=('!debug')
-source=("https://downloads.mongodb.com/compass/${pkgname}_${pkgver}_amd64.deb"
-        "https://github.com/mongodb-js/compass/raw/main/LICENSE")
-noextract=("${pkgname}_${pkgver}_amd64.deb")
-b2sums=('86d6c7dd3dc84c8c86fd2fabb1802790b1b53ae03f2dc31c4dc99e1d32d50b7f246286a8d1d5f8a7b2f2c286dd55581a3242088279ce041723294b1c6ca06708'
-        '3db19ea220a8fec79eb55aa2657a3d9c920cf9eaa4ed6737e4a4688e1ba573c36d7de1b52a165340f61c740dfda98f656596b0d8b9f3492cffa0f4e418bf7ef3')
+backup=('etc/mongodb-compass.conf')
+source=(
+	"$pkgname-$pkgver.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
+	'update-dependencies.diff'
+	'hadron-build-ffmpeg.diff'
+	'fix-argv.diff'
+	'mongodb-compass.conf'
+)
+b2sums=('eb01a18f2e6b22da590e6fbc0af7aa0d54c625bb867240fb61d74d373079f3ddcf2b0be69f9597e49ca0681a03d725b1df31de34e0561857c6023a7b6fe7bbb4'
+        'f4b3d86ede6f787a7adf3762911f8e74bf0ff658c906092a764d8080248c1a32cc8d2e536d14a19d7ced3374b267bc6b82f1a6d639ba623db21a5f2ea35af5b0'
+        '339cb2f14805ce8f186064d823b3b01630ea02b16052fb764a46a4df2c9b06f8d12b012e764d00aaa1906639e8019869816ddbb6c02fedac2cb06caeefab28ef'
+        '69154b5491c8c3149195743bcbcb0ae7b18b8e83635f7afa29e9ef7b50a42343a2877760b41662c5943b8f7d390df85548cbcd253772fa92e33b9f231ab19436'
+        '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
+
+_sourcedirectory="compass-$_pkgver"
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Set npm overrides for various dependencies
+	patch --forward -p1 < "$srcdir/update-dependencies.diff"
+
+	# Set system Electron version for ABI compatibility
+	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'package.json'
+	npm update electron --package-lock-only
+
+	# Force the newest version of electron-to-chromium to make sure we support the Electron version set above
+	npm update electron-to-chromium --package-lock-only
+
+	# Fix build of ssh2
+	npm update ssh2 --package-lock-only
+
+	# Don't use the bundled ffmpeg
+	patch --forward -p1 < "$srcdir/hadron-build-ffmpeg.diff"
+
+	# Apply argv fixes
+	patch --forward -p1 < "$srcdir/fix-argv.diff"
+
+	# Run the bootstrap command
+	HUSKY=0 GYP_DEFINES='libmongocrypt_link_type=dynamic' npm run bootstrap
+}
+
+build() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# electron-packager does not support building against a local electron binary,
+	# the best we can do for now is to just set the electron version in package.json
+	# and let electron-packager use it for building
+	# https://github.com/electron/electron-packager/issues/187
+	HADRON_DISTRIBUTION="${_target%-beta}" HADRON_SKIP_INSTALLER='true' npm run package-compass
+}
 
 package() {
-    bsdtar -O -xf "${pkgname}_${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
+	local _distFolder
+	_distFolder="$srcdir/$_sourcedirectory/packages/compass/dist/MongoDB Compass$_edition-linux"
 
-    # Permission fix
-    find "${pkgdir}" -type d -exec chmod 755 {} +
-    find "${pkgdir}" -type f -exec chmod 644 {} +
-    chmod +x "${pkgdir}"/usr/lib/mongodb-compass/chrome_crashpad_handler
-    chmod +x "${pkgdir}"/usr/lib/mongodb-compass/chrome-sandbox
-    chmod +x "${pkgdir}"/usr/lib/mongodb-compass/"MongoDB Compass"
+	case "$CARCH" in
+		armv7h)
+			_distFolder="$_distFolder-armv7l"
+		;;
+		aarch64)
+			_distFolder="$_distFolder-arm64"
+		;;
+		*)
+			_distFolder="$_distFolder-x64"
+		;;
+	esac
+	cd "$_distFolder/"
 
-    # Remove all unnecessary stuff
-    rm -rf "${pkgdir}/usr/share/lintian"
-    rm -rf "${pkgdir}/usr/share/doc"
+	install -Dm644 'resources/app.asar' "$pkgdir/usr/lib/$pkgname/app.asar"
+	cp -r --no-preserve=ownership --preserve=mode 'resources/app.asar.unpacked/' "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/"
 
-    # Prevent creation of unnecessary logs in `${HOME}/.mongodb`
-    sed -i 's/Exec=/Exec=env MONGODB_COMPASS_TEST_LOG_DIR=\/dev\/null /' \
-      "${pkgdir}"/usr/share/applications/mongodb-compass.desktop
+	install -dm755 "$pkgdir/usr/bin/"
+	cat << EOF > "$pkgdir/usr/bin/$pkgname"
+#!/bin/sh
+NODE_ENV=production exec $_electronpkg '/usr/lib/$pkgname/app.asar' "\$@"
+EOF
+	chmod +x "$pkgdir/usr/bin/$pkgname"
 
-    # Install license
-    install -Dm 644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	install -dm755 "$pkgdir/usr/share/applications/"
+	cat << EOF > "$pkgdir/usr/share/applications/$pkgname.desktop"
+[Desktop Entry]
+Name=MongoDB Compass$_edition
+Comment=The official GUI for MongoDB
+Exec=$pkgname %U
+Icon=$pkgname
+Type=Application
+StartupNotify=true
+Categories=Office;Database;Building;Debugger;IDE;GUIDesigner;Profiling;
+EOF
+
+	install -Dm644 "$srcdir/mongodb-compass.conf" "$pkgdir/etc/mongodb-compass.conf"
+
+	if [[ "$_target" =~ -beta$ ]]; then
+		install -Dm644 "$srcdir/$_sourcedirectory/packages/compass/app-icons/linux/mongodb-compass-logo-beta.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	else
+		install -Dm644 "$srcdir/$_sourcedirectory/packages/compass/app-icons/linux/mongodb-compass-logo-stable.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	fi
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/SSPL-1.0"
+	install -Dm644 'LICENSES.chromium.html' "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 }

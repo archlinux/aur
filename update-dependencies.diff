@@ -1,0 +1,15 @@
+diff --git a/package.json b/package.json
+index d25b01690..03075d979 100644
+--- a/package.json
++++ b/package.json
+@@ -102,6 +102,9 @@
+     },
+     "chai-enzyme": {
+       "cheerio": "1.0.0-rc.10"
+-    }
++    },
++    "electron": "%%ELECTRON_VERSION%%",
++    "electron-to-chromium": "latest",
++    "ssh2": "1.16.0"
+   }
+ }
