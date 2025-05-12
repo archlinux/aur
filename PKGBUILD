@@ -8,7 +8,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="yazi"
 pkgname="$_pkgname-git"
-pkgver=0.4.0.r3.g7498b97
+pkgver=25.4.8.r39.gea90b04
 pkgrel=1
 pkgdesc="Blazing fast terminal file manager written in Rust, based on async I/O"
 url="https://github.com/sxyazi/yazi"
@@ -17,12 +17,12 @@ license=("MIT")
 
 depends=(
   'gcc-libs'
+  'oniguruma'
   'ttf-nerd-fonts-symbols'
 )
 makedepends=(
   'cargo'
   'git'
-  'imagemagick'
 )
 optdepends=(
   'chafa: for previewing images'
@@ -58,6 +58,8 @@ prepare() {
 }
 
 build() {
+  export export RUSTONIG_SYSTEM_LIBONIG=1
+
   cd "$_pkgsrc"
   VERGEN_GIT_SHA="Arch Linux" YAZI_GEN_COMPLETIONS=true cargo build --release --frozen --no-default-features
   YAZI_GEN_COMPLETIONS=true cargo build --release -p "$_pkgname-cli"
@@ -76,11 +78,7 @@ package() {
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "assets/yazi.desktop" "$pkgdir/usr/share/applications/yazi.desktop"
 
-  local r
-  for r in 16 24 32 48 64 128 256; do
-    install -dm755 "$pkgdir/usr/share/icons/hicolor/${r}x${r}/apps"
-    magick assets/logo.png -resize "${r}x${r}" "$pkgdir/usr/share/icons/hicolor/${r}x${r}/apps/yazi.png"
-  done
+  install -Dm644 assets/logo.png "$pkgdir/usr/share/pixmaps/yazi.png"
 
   cd "$srcdir/$_pkgsrc/yazi-boot/completions"
   install -Dm644 "yazi.bash" "$pkgdir/usr/share/bash-completion/completions/yazi"
