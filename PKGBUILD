@@ -3,13 +3,13 @@
 
 pkgbase=linux-lts515
 pkgver=5.15.182
-pkgrel=1
+pkgrel=2
 pkgdesc='LTS Linux 5.15.x'
 url="https://www.kernel.org/"
 arch=(x86_64 pentium4 i686 i486)
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz python
+  bc libelf pahole cpio perl tar xz python gcc14
 )
 options=('!strip')
 _srcname=linux-$pkgver
@@ -69,7 +69,7 @@ prepare() {
 build() {
   cd $_srcname
 # breaks brilliantly, disabled htmldocs
-  make all
+  make CC=gcc-14 all
 }
 
 _package() {

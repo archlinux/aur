@@ -1,7 +1,7 @@
 pkgbase = linux-lts515
 	pkgdesc = LTS Linux 5.15.x
 	pkgver = 5.15.182
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	arch = pentium4
@@ -16,6 +16,7 @@ pkgbase = linux-lts515
 	makedepends = tar
 	makedepends = xz
 	makedepends = python
+	makedepends = gcc14
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.182.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.182.tar.sign
