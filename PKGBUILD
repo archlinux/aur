@@ -2,7 +2,7 @@
 _base=foamlib
 pkgname=python-${_base}
 pkgdesc="A Python interface for interacting with OpenFOAM"
-pkgver=0.8.11
+pkgver=0.9.1
 pkgrel=1
 arch=(any)
 url="https://github.com/gerlero/${_base}"
@@ -11,7 +11,7 @@ depends=(python-aioshutil python-numpy python-pyparsing openfoam-com)
 makedepends=(python-build python-installer python-hatchling python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('bf14028232330a802d657c612c62a2d9a0eacd89962e770550b3e31df5be9ab0daa884b2942040ecb322a272ae85df2f2649b9d3902d2e4e0e4bae642e6343c1')
+sha512sums=('3f5a1ee2b0bed066cec9f731de8fc263470604a5209b9d8f7388985f2b1a071fcb306b51993d872a894195820f38086f3b2789e622fcd41aa728d32fabecd933')
 
 build() {
   cd ${_base}-${pkgver}
