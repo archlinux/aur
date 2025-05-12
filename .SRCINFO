@@ -1,6 +1,6 @@
 pkgbase = uwu_colors-git
 	pkgdesc = a dead simple language server to colorize hex color strings via textDocument/documentColor
-	pkgver = r0
+	pkgver = r29.b0b7ba5
 	pkgrel = 1
 	url = https://codeberg.org/q60/uwu_colors
 	arch = x86_64
