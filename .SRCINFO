@@ -1,6 +1,6 @@
 pkgbase = buildg
 	pkgdesc = Interactive debugger for Dockerfile, with support for IDEs (VS Code, Emacs, Neovim, etc.)
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/ktock/buildg
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = buildg
 	depends = runc
 	optdepends = rootlesskit: rootless execution
 	optdepends = slirp4netns: rootless execution
-	source = https://github.com/ktock/buildg/releases/download/v0.5.2/buildg-v0.5.2-linux-amd64.tar.gz
-	sha256sums = 70371949ac56d118e55306091640e63537069a538a97c151eb7475c07cb5a8a4
+	source = https://github.com/ktock/buildg/releases/download/v0.5.3/buildg-v0.5.3-linux-amd64.tar.gz
+	sha256sums = c289a454ae8673ff99acf56dec9ba97274c20d2015e80f7ac3b8eb8e4f77888f
 
 pkgname = buildg
