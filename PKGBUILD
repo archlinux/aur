@@ -8,7 +8,7 @@ license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ChristianRegueiro/linker/releases/download/$pkgver/linker-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('7c3663843a405f98c27d11311158804d134751d6b75cbe7e5cc21e67a5a86b59')
 
 package() {
   cd release
