@@ -2,7 +2,7 @@
 
 pkgname="python-grep-ast"
 _pkgname="grep_ast"
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Grep source code and see useful code context about matching lines"
 url="https://github.com/paul-gauthier/grep-ast"
@@ -11,7 +11,7 @@ makedepends=("python-setuptools" "python-build" "python-installer" "python-wheel
 license=("Apache2")
 arch=("any")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('1c8dad6f5005ae21502b1a2c059937bdd0883923bd83db965f9da67b67aaf1ebe0a0a721fd9c35fb2f08e28a5380744ba3b5be093de6b6ad689f39dad0009a08')
+b2sums=('c4e6244ff9ac4795cb836a7b759279309d8f5d8fbeaa16409c7278bee4025fb20b07a4e0326596ea7c1b46e82e381ab41139fdb4f82c8a61b3f938c44e065900')
 
 build(){
  cd "$_pkgname-$pkgver"
