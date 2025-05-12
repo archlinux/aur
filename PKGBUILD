@@ -3,8 +3,8 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-ffmpeg
-pkgver=7.1
-pkgrel=3
+pkgver=7.1.1
+pkgrel=1
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
@@ -68,8 +68,8 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-zlib")
 
 if [ "${_android_arch}" != riscv64 ]; then
-    depends+=("android-${_android_arch}-librsvg"
-              "android-${_android_arch}-rav1e")
+#    depends+=("android-${_android_arch}-librsvg")
+    depends+=("android-${_android_arch}-rav1e")
 fi
 
 makedepends=('android-configure'
@@ -84,7 +84,7 @@ optdepends=("android-${_android_arch}-avisynthplus: AviSynthPlus support"
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'configure.patch')
-md5sums=('623aa63a72139a82ccb99cd6ee477b94'
+md5sums=('26f2bd7d20c6c616f31d7130c88d7250'
          'c1851376794c16bcb37cfa8918e10cba')
 
 prepare() {
@@ -151,7 +151,8 @@ build() {
     fi
 
     if [ "${_android_arch}" != riscv64 ]; then
-        extra_options="${extra_options} --enable-librsvg --enable-librav1e"
+#         extra_options="${extra_options} --enable-librsvg"
+        extra_options="${extra_options} --enable-librav1e"
     fi
 
     # Not yet available.
