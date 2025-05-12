@@ -1,7 +1,8 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=bunnymodxt
-pkgver=2023.07.23
+pkgver=2024.11.11
+_commit=cbc496b1ba7f6c242a961c33f16d3b5741371dd6
 pkgrel=1
 pkgdesc='Speedrun and TAS tool for Half-Life & friends'
 url='https://github.com/YaLTeR/BunnymodXT'
@@ -22,7 +23,7 @@ makedepends=(
 
 # the proper source archive does not contain links to submodules
 source=(
-  "$pkgname-$pkgver::git+$url#tag=abf3d6c50f7b3dfcf972c57fba555278fdc1653a"
+  "$pkgname-$pkgver::git+$url#tag=$_commit"
   bunnymodxt.sh
 )
 b2sums=('SKIP'
@@ -38,6 +39,7 @@ build() {
   cmake -B build -S $pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -Wno-dev
 
   cmake --build build
