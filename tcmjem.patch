@@ -1,6 +1,6 @@
---- configure_cmake.sh  2024-06-04 01:36:04.000000000 +0530
-+++ configure_cmake.sh  2024-06-07 16:12:51.571006354 +0530
-@@ -159,6 +159,8 @@
+--- configure_cmake.sh	2025-05-08 23:56:14.000000000 +0530
++++ configure_cmake.sh	2025-05-12 09:44:37.405868752 +0530
+@@ -164,6 +164,8 @@
  build_type=""
  [ -z "$CFLAGS" ] && [ -z "$CXXFLAGS" ] && build_type="RelWithDebInfo"
  
