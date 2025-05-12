@@ -15,6 +15,7 @@ pkgbase = wfview
 	depends = qt5-websockets
 	depends = opus
 	depends = hidapi
+	depends = portaudio
 	provides = wfview
 	source = https://gitlab.com/eliggett/wfview/
 	md5sums = fc3e829798a7b795e0350e3d62793e87

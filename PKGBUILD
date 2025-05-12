@@ -1,12 +1,12 @@
 # Maintainer: FuzzyCheese
 pkgname=wfview
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Interface for Icom transceivers"
 arch=('i686' 'x86_64')
 url="https://wfview.org/"
 license=('GPL3')
-depends=('qt5-serialport' 'qt5-multimedia' 'qcustomplot' 'eigen' 'qt5-gamepad' 'rtaudio' 'qt5-websockets' 'opus' 'hidapi')
+depends=('qt5-serialport' 'qt5-multimedia' 'qcustomplot' 'eigen' 'qt5-gamepad' 'rtaudio' 'qt5-websockets' 'opus' 'hidapi' 'portaudio')
 
 provides=('wfview')
 source=("https://gitlab.com/eliggett/wfview/-/archive/v$pkgver/wfview-v$pkgver.tar.gz")
