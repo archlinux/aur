@@ -4,7 +4,7 @@ pkgbase=python-s3path
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A pathlib extension for AWS S3 Service"
 arch=('any')
@@ -18,12 +18,11 @@ makedepends=('python-setuptools-scm')
 checkdepends=('python-pytest'
 #             'python-pytest-xdist'
               'python-boto3'
-              'python-requests'
               'python-smart_open'
-              'python-moto')   # only pass for moto>=5
+              'python-moto')   # only pass for moto>=5; requests <- smart_open
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "${pkgver}-conftest.py::https://github.com/liormizr/s3path/raw/${pkgver}/tests/conftest.py")
-md5sums=('3ad8a2e181487e2153ea3eb9ac8993d3'
+md5sums=('7fe580f38c32bb7bb7d199694223d5a6'
          'ecf19dfe89edde8462b7887ef823dbaf')
 
 prepare() {
@@ -48,7 +47,7 @@ check() {
 }
 
 package_python-s3path() {
-    depends=('python>=3.8' 'python-boto3>=1.16.35' 'python-smart_open>=5.1.0')
+    depends=('python>=3.9' 'python-boto3>=1.16.35' 'python-smart_open>=5.1.0')
 #   optdepends=('python-s3path-doc: Documentation for s3path')
     cd ${srcdir}/${_pyname}-${pkgver}
 
