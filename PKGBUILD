@@ -1,5 +1,5 @@
 pkgname=linker-cli
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Link manager from the terminal"
 arch=('x86_64')
