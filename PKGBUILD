@@ -8,7 +8,7 @@
 
 _pkgname="nextcloud-client"
 pkgname="$_pkgname-git"
-pkgver=3.16.2.r181.g976f8a8
+pkgver=3.16.4.r439.gd2712e8
 pkgrel=1
 pkgdesc="Nextcloud desktop client"
 url="https://github.com/nextcloud/desktop"
@@ -46,14 +46,8 @@ conflicts=('nextcloud-client' 'nextcloud-client-cloudproviders')
 backup=('etc/Nextcloud/sync-exclude.lst')
 
 _pkgsrc="$_pkgname"
-source=(
-  "$_pkgsrc"::"git+https://github.com/nextcloud/desktop.git"
-  'dschmidt.libcrashreporter-qt'::'git+https://github.com/dschmidt/libcrashreporter-qt.git'
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+source=("$_pkgsrc"::"git+https://github.com/nextcloud/desktop.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
@@ -63,23 +57,6 @@ pkgver() {
   local _hash=$(git rev-parse --short=7 HEAD)
 
   printf '%s.r%s.g%s' "${_ver:?}" "${_rev:?}" "${_hash:?}"
-}
-
-prepare() {
-  _submodule_update() {
-    local _module
-    for _module in "${_submodules[@]}"; do
-      git submodule init "${_module##*::}"
-      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
-      git -c protocol.file.allow=always submodule update "${_module##*::}"
-    done
-  }
-
-  cd "$srcdir/$_pkgsrc"
-  local _submodules=(
-    'dschmidt.libcrashreporter-qt'::'src/3rdparty/libcrashreporter-qt'
-  )
-  _submodule_update
 }
 
 build() {
