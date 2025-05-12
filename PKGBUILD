@@ -78,7 +78,7 @@ build() {
 check() {
 	cd "$_basename"
 	export QT_QPA_PLATFORM=offscreen
-	./build/bin/unittests
+	./build/bin/legacytests
 }
 
 package() {
