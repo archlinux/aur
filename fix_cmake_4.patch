@@ -1,0 +1,90 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 05f84c5..270dd66 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.0...3.15)
+ 
+ project(livox_sdk2)
+ 
+diff --git a/samples/CMakeLists.txt b/samples/CMakeLists.txt
+index 77c05c7..09d533e 100644
+--- a/samples/CMakeLists.txt
++++ b/samples/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.0...3.15)
+ 
+ project(livox_sdk2)
+ 
+diff --git a/samples/debug_point_cloud/CMakeLists.txt b/samples/debug_point_cloud/CMakeLists.txt
+index c94f254..9d35a22 100644
+--- a/samples/debug_point_cloud/CMakeLists.txt
++++ b/samples/debug_point_cloud/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.0...3.15)
+ 
+ set(DEMO_NAME debug_point_cloud)
+ add_executable(${DEMO_NAME} main.cpp)
+diff --git a/samples/lidar_cmd_observer/CMakeLists.txt b/samples/lidar_cmd_observer/CMakeLists.txt
+index 503ff6f..681451c 100644
+--- a/samples/lidar_cmd_observer/CMakeLists.txt
++++ b/samples/lidar_cmd_observer/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.0...3.15)
+ 
+ set(DEMO_NAME lidar_cmd_observer)
+ add_executable(${DEMO_NAME} main.cpp)
+diff --git a/samples/livox_lidar_quick_start/CMakeLists.txt b/samples/livox_lidar_quick_start/CMakeLists.txt
+index 3f17580..0a168c3 100644
+--- a/samples/livox_lidar_quick_start/CMakeLists.txt
++++ b/samples/livox_lidar_quick_start/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.0...3.15)
+ 
+ set(DEMO_NAME livox_lidar_quick_start)
+ add_executable(${DEMO_NAME} main.cpp)
+diff --git a/samples/livox_lidar_rmc_time_sync/CMakeLists.txt b/samples/livox_lidar_rmc_time_sync/CMakeLists.txt
+index c976087..070331e 100644
+--- a/samples/livox_lidar_rmc_time_sync/CMakeLists.txt
++++ b/samples/livox_lidar_rmc_time_sync/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.0...3.15)
+ 
+ set(DEMO_NAME livox_lidar_rmc_time_sync)
+ if (WIN32)
+diff --git a/samples/logger/CMakeLists.txt b/samples/logger/CMakeLists.txt
+index 72b625b..0d2310f 100644
+--- a/samples/logger/CMakeLists.txt
++++ b/samples/logger/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.0...3.15)
+ 
+ set(DEMO_NAME logger)
+ add_executable(${DEMO_NAME} main.cpp)
+diff --git a/samples/multi_lidars_upgrade/CMakeLists.txt b/samples/multi_lidars_upgrade/CMakeLists.txt
+index 74f08d6..dcb2c5c 100644
+--- a/samples/multi_lidars_upgrade/CMakeLists.txt
++++ b/samples/multi_lidars_upgrade/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.0...3.15)
+ 
+ set(DEMO_NAME multi_lidars_upgrade)
+ add_executable(${DEMO_NAME} main.cpp)
+diff --git a/sdk_core/CMakeLists.txt b/sdk_core/CMakeLists.txt
+index e2300de..8023dd6 100644
+--- a/sdk_core/CMakeLists.txt
++++ b/sdk_core/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.0...3.15)
+ 
+ set(SDK_LIBRARY_STATIC livox_lidar_sdk_static)
+ set(SDK_LIBRARY_SHARED livox_lidar_sdk_shared)

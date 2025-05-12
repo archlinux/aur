@@ -1,0 +1,12 @@
+diff --git a/sdk_core/logger_handler/file_manager.h b/sdk_core/logger_handler/file_manager.h
+index 242a431..14cd76a 100644
+--- a/sdk_core/logger_handler/file_manager.h
++++ b/sdk_core/logger_handler/file_manager.h
+@@ -28,6 +28,7 @@
+ #include <string>
+ #include <vector>
+ #include <map>
++#include <cstdint>
+ 
+ namespace livox {
+ namespace lidar {
