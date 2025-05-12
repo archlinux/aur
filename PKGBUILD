@@ -1,7 +1,7 @@
 # Maintainer: Zoddo <archlinux+aur@zoddo.fr>
 
 pkgname=ofxstatement-qif
-pkgver=0.6.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='A plugin for ofxstatement to convert Quicken Interchange Format (QIF) formatted bank transaction files to OFX format.'
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
 	python-setuptools-scm
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e1bace9ace1d048a4a6a38778406f295e0e1e3ed1ba56a950f4833eb5af5f5b9')
+sha256sums=('3021ec5c267f8c126e572b1b34d581b5defad3efe7d0dea48285e16c1a5fcc2a')
 
 build() {
 	export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
