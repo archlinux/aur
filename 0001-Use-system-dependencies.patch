@@ -1,16 +1,17 @@
-From c2f105e5890fc731b55da08f7e611ce05574331f Mon Sep 17 00:00:00 2001
+From 2284402a09e62ad8554e471b3671a0aca6b47a95 Mon Sep 17 00:00:00 2001
 From: David Hummel <hummeltech@sherpaguru.com>
 Date: Sun, 11 May 2025 20:22:11 -0700
 Subject: [PATCH] Use system dependencies
 
 ---
- .gitmodules                                   | 39 ----------------
- premake5.lua                                  | 46 ++++++++++++++-----
+ .gitmodules                                   | 39 ---------------
+ premake5.lua                                  | 50 +++++++++++++------
  src/xenia/apu/sdl/premake5.lua                |  2 +-
  src/xenia/emulator.cc                         |  2 +-
  src/xenia/helper/sdl/premake5.lua             |  2 +-
  src/xenia/hid/sdl/premake5.lua                |  2 +-
  src/xenia/kernel/premake5.lua                 |  2 +-
+ src/xenia/ui/premake5.lua                     |  4 +-
  third_party/SDL2                              |  1 -
  third_party/SDL2/include                      |  1 +
  third_party/SPIRV-Tools                       |  1 -
@@ -39,7 +40,7 @@ Subject: [PATCH] Use system dependencies
  third_party/zarchive/include                  |  1 +
  third_party/zlib                              |  1 -
  third_party/zlib/zlib.h                       |  1 +
- 35 files changed, 55 insertions(+), 69 deletions(-)
+ 36 files changed, 58 insertions(+), 74 deletions(-)
  delete mode 160000 third_party/SDL2
  create mode 120000 third_party/SDL2/include
  delete mode 160000 third_party/SPIRV-Tools
@@ -162,10 +163,17 @@ index 6c40a386d..24fb85c8d 100644
  	path = third_party/libusb
  	url = https://github.com/libusb/libusb.git
 diff --git a/premake5.lua b/premake5.lua
-index 8f44e9d1a..c79ee4833 100644
+index 8f44e9d1a..f619e68b8 100644
 --- a/premake5.lua
 +++ b/premake5.lua
-@@ -119,13 +119,35 @@ filter("platforms:Linux")
+@@ -1,6 +1,4 @@
+ include("tools/build")
+-require("third_party/premake-export-compile-commands/export-compile-commands")
+-require("third_party/premake-androidndk/androidndk")
+ require("third_party/premake-cmake/cmake")
+ 
+ location(build_root)
+@@ -119,13 +117,35 @@ filter("platforms:Linux")
    buildoptions({
      -- "-mlzcnt",  -- (don't) Assume lzcnt is supported.
    })
@@ -202,7 +210,16 @@ index 8f44e9d1a..c79ee4833 100644
    })
  
  filter({"platforms:Linux", "kind:*App"})
-@@ -263,22 +285,22 @@ workspace("xenia")
+@@ -168,7 +188,7 @@ filter({"platforms:Linux", "language:C++", "toolset:clang", "files:*.cc or *.cpp
+ filter("platforms:Android-*")
+   system("android")
+   systemversion("24")
+-  cppstl("c++")
++  -- cppstl("c++")
+   staticruntime("On")
+   -- Hidden visibility is needed to prevent dynamic relocations in FFmpeg
+   -- AArch64 Neon libavcodec assembly with PIC (accesses extern lookup tables
+@@ -263,22 +283,22 @@ workspace("xenia")
    configurations({"Checked", "Debug", "Release"})
  
    include("third_party/aes_128.lua")
@@ -235,7 +252,7 @@ index 8f44e9d1a..c79ee4833 100644
  
    if os.istarget("windows") then
      include("third_party/libusb.lua")
-@@ -291,7 +313,7 @@ workspace("xenia")
+@@ -291,7 +311,7 @@ workspace("xenia")
      -- one controller (Nvidia Shield) being supported, digital triggers are also
      -- not supported; lifecycle management (especially surface loss) is also
      -- complicated.
@@ -321,6 +338,26 @@ index bd00330bc..e790907be 100644
      "pugixml",
      "xenia-apu",
      "xenia-base",
+diff --git a/src/xenia/ui/premake5.lua b/src/xenia/ui/premake5.lua
+index 5c55c8c88..f9637baf2 100644
+--- a/src/xenia/ui/premake5.lua
++++ b/src/xenia/ui/premake5.lua
+@@ -16,7 +16,7 @@ project("xenia-ui")
+   removefiles({"windowed_app_main_*.cc"})
+   filter("platforms:Android-*")
+     -- Exports JNI functions.
+-    wholelib("On")
++    -- wholelib("On")
+ 
+   filter("platforms:Windows")
+     links({
+@@ -30,4 +30,4 @@ project("xenia-ui")
+       "xcb",
+       "X11",
+       "X11-xcb"
+-    })
+\ No newline at end of file
++    })
 diff --git a/third_party/SDL2 b/third_party/SDL2
 deleted file mode 160000
 index e11183ea6..000000000

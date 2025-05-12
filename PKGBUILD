@@ -7,7 +7,7 @@ pkgver=r7838.2c8acf7b9
 pkgrel=1
 pkgdesc='An experimental emulator for the Xbox 360.'
 arch=('x86_64')
-url='http://xenia.jp'
+url='https://github.com/xenia-canary/xenia-canary'
 license=('BSD-3-Clause')
 checkdepends=('catch2-v2')
 makedepends=('clang'
@@ -40,9 +40,7 @@ source=("${pkgname}::git+https://github.com/xenia-canary/xenia-canary.git#branch
         'disruptorplus::git+https://github.com/xenia-canary/disruptorplus.git'
         'glslang::git+https://github.com/KhronosGroup/glslang.git'
         'imgui::git+https://github.com/ocornut/imgui.git'
-        'premake-androidndk::git+https://github.com/Triang3l/premake-androidndk.git'
         'premake-cmake::git+https://github.com/JoelLinn/premake-cmake.git'
-        'premake-export-compile-commands::git+https://github.com/xenia-project/premake-export-compile-commands.git'
         'rapidcsv::git+https://github.com/d99kris/rapidcsv.git'
         'tabulate::git+https://github.com/p-ranav/tabulate.git'
         'utfcpp::git+https://github.com/nemtrif/utfcpp.git'
@@ -65,10 +63,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
             '6df34559e1bb42e1c0a67152a8f1ebd8c59bd890f6d7625f711ae80859165822'
-            'b8f0d7e0b00936c6d9303e1d79a5eedd6c3604541bda75eccbcdf63efcaaa662')
+            '6980275e2c0da49bb055b12824a43a28a30494fa6efb06452597cb911d142c26')
 
 pkgver() {
   printf 'r%s.%s' "$(git -C ${pkgname} rev-list --count HEAD)" "$(git -C ${pkgname} rev-parse --short HEAD)"
