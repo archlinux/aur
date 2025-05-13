@@ -1,9 +1,9 @@
-# Maintainer: William Gathoye <william + aur at gathoye dot be>
+# Contributor: William Gathoye <william + aur at gathoye dot be>
 # Contributor: Michal Malek <michalm@fastmail.fm>
 # Contributor: Sharif Olorin <sio@tesser.org>
 
 pkgname=orthanc
-pkgver=1.12.1
+pkgver=1.12.7
 pkgrel=1
 pkgdesc='Open-source, lightweight DICOM server'
 arch=('x86_64' 'i686')
@@ -11,20 +11,20 @@ url='https://www.orthanc-server.com/'
 license=('GPL3')
 
 depends=(
-    'boost-libs' 'curl' 'dcmtk' 'jsoncpp' 'libjpeg-turbo' 'lua' 'pugixml' 'sqlite'
+    'boost-libs' 'curl' 'dcmtk' 'jsoncpp' 'libjpeg-turbo' 'lua' 'protobuf' 'pugixml' 'sqlite'
 )
 makedepends=(
     'boost' 'cmake' 'doxygen' 'gtest' 'make' 'python' 'unzip'
 )
 backup=("etc/webapps/${pkgname}/config.json")
 source=(
-    "https://www.orthanc-server.com/downloads/get.php?path=/orthanc/Orthanc-${pkgver}.tar.gz"
+    "https://orthanc.uclouvain.be/downloads/sources/orthanc/Orthanc-${pkgver}.tar.gz"
     "${pkgname}.service"
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles"
 )
 sha512sums=(
-    '1a15004497821601275f3da404e3f46ffb39b0f2c57c3d552bdf85ae251747f88ee6c22b0b10a4dfc9752f3506cca3db784562ce9d2dbae38a0c8d6ab71b8a83'
+    '0c36444418f0a47915314675099219010e32f688faf95b7a9bc77b6a1346343c7051202b05c4b95692ed8702be21792373dc806609d45941cfbec863c0de563a'
     'cd69b74eff5eea43191341ec35cef53d026a1939bb6fdc6a71734c0f9339ff47effc0eb611c16fd609d6ffcf1e332f48cfaa533ccf8d7f71ce7e61f04b4fabca'
     '30d63bafdcfff751e12f6187115bac5d1630eb31848eab6d06d10359118e3a3c404a845ef14852ee578df0b25f622f2195d0b0546fe62cdc8a2702f2ffb59634'
     '2dffd683e6c9bd0e495a1478bf2c6f90833a5c260c7619828136804d410da1d38b385db5db094a065352e21c54c0da1b5dcdd83bce129bd4bcba9c4a11361d18'
@@ -56,7 +56,7 @@ build() {
     make doc
 }
 
-check() {
+_check() {
     cd "${srcdir}"/build
     ./UnitTests
 }
