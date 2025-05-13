@@ -2,13 +2,13 @@
 
 pkgname=scooter
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An interactive find and replace in the terminal'
 arch=(any)
 url=https://github.com/thomasschafer/scooter
 license=(MIT)
 
-depends=(gcc-libs glibc)
+depends=(gcc-libs glibc onigurama)
 makedepends=(cargo)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
 sha256sums=(9f2a6ebfef3339cfb13895e9233c1fef684c7d6c23d8b190b4435d369962283a)
@@ -23,6 +23,7 @@ build() {
     cd "$srcdir"/$pkgname-$pkgver
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export RUSTONIG_SYSTEM_LIBONIG=1
     cargo build --frozen --release
 }
 

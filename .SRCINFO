@@ -1,13 +1,14 @@
 pkgbase = scooter
 	pkgdesc = An interactive find and replace in the terminal
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thomasschafer/scooter
 	arch = any
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
+	depends = onigurama
 	source = scooter-0.5.0.tar.gz::https://github.com/thomasschafer/scooter/archive/v0.5.0.tar.gz
 	sha256sums = 9f2a6ebfef3339cfb13895e9233c1fef684c7d6c23d8b190b4435d369962283a
 
