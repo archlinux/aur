@@ -2,7 +2,7 @@
 _appname=clouddm
 pkgname="${_appname}-personal-bin"
 _pkgname=CloudDM
-pkgver=3.0.4
+pkgver=3.0.5
 _electronversion=22
 pkgrel=1
 pkgdesc="One-stop multi-source development management tool.(Prebuilt version.Use system-wide electron)一站式多数据源开发管理工具"
@@ -28,7 +28,7 @@ source=(
     "LICENSE.html::https://www.clougence.com/cc-doc/protocol/terms_of_use"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5b39897a788260d8b3d8091007ca671bdc75d41e48ff90d55d180cf1f3dc71e7'
+sha256sums=('7d304bb4819fa3d313f288bce7f31cf730686570f3661a4e9a3649189048dc55'
             '909136537f9cb324b6bf765873fe1627201a5d7f2611cb102ed82b76ad19ea1f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
@@ -43,7 +43,10 @@ prepare() {
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g;s/Utility/Development/g" "${srcdir}/squashfs-root/${_appname}.desktop"
+    sed -i -e "
+        s/AppRun --no-sandbox/${pkgname%-bin}/g
+        s/Utility/Development/g
+    " "${srcdir}/squashfs-root/${_appname}.desktop"
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} +
 }
 package() {
