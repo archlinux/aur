@@ -2,7 +2,7 @@
 _base=codepy
 pkgname=python-${_base}
 pkgdesc="Generate and execute native code at run time"
-pkgver=2023.1
+pkgver=2025.1
 pkgrel=1
 arch=(x86_64)
 url="https://documen.tician.de/${_base}"
@@ -11,7 +11,7 @@ depends=(python-cgen boost)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('ebc4e6a5e9747176d1ef6e254efe4d81f590ef5486476326383afe133b3b712a38d59d7c9a5cdb576fd19380baa87f9cc9b4874bc051b0f7e70693d8c225406f')
+sha512sums=('af093007697a12d4cbdf1e38d977c8e1740ac81c5aafe10a1912d70fe55cf0d2067838503172dac267cb2a09697a189b3435546e40fb57dad73d3ed9738399b8')
 
 build() {
   cd ${_base}-${pkgver}
