@@ -3,7 +3,7 @@
 
 pkgname=hextazy
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A coloful hexadecimal editor"
 arch=('x86_64')
 url="https://github.com/0xfalafel/hextazy"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('d5842a92da0434ac1af0e595d3058e1ab3cb5f277d2481d1d728a34ce857034655948c46d94aa64fa358c7ef5a996894fe66cd44a4b9891d4f6364671b11d6c8')
+sha512sums=('a41021fafcf26804c35e31d80a0b54300d39a65fc8f0553f1c4cb84659f19a12087cc436fcf59db49ea4ef6f9d5a0e2c147d08dd6e370d99d034ff8d40e62720')
 
 prepare() {
   cd "$pkgname-$pkgver"
