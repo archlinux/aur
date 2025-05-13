@@ -2,7 +2,7 @@
 _pkgbase=local-ai
 _pkgname=LocalAI
 pkgname="${_pkgbase}-sycl-f16"
-pkgver=2.28.0 # renovate: datasource=github-tags depName=mudler/LocalAI
+pkgver=2.29.0 # renovate: datasource=github-tags depName=mudler/LocalAI
 pkgrel=1
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with Intel SYCL GPU optimizations and F16)"
 arch=('x86_64')
