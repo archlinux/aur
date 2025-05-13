@@ -1,5 +1,5 @@
 diff --git a/diff-image b/diff-image
-index 0f6a316..7ec4bab 100755
+index 0f6a316..137eacd 100755
 --- a/diff-image
 +++ b/diff-image
 @@ -134,7 +134,7 @@ exif()
@@ -7,10 +7,26 @@ index 0f6a316..7ec4bab 100755
  diff_clean_names()
  {
 -    diff -u "$1" --label "$name1" "$2" --label "$name2" || true
-+    diff -u --color=always "$1" --label "$name1" "$2" --label "$name2" || true
++    diff -u --color=always "$1" --label "$name1" "$2" --label "$name2"
  }
  
  
+@@ -143,13 +143,13 @@ if which exiftool > /dev/null
+ then
+   d1="$(exif "$f1")"
+   d2="$(exif "$f2")"
+-  diff_clean_names "$d1" "$d2"
++  diff_clean_names "$d1" "$d2" && diff_clean_names "$f1" "$f2" || true
+   set +e
+   diff -q "$d1" "$d2" >/dev/null
+   exifdiff=$?
+   set -e
+ else
+-  diff_clean_names "$f1" "$f2"
++  diff_clean_names "$f1" "$f2" || true
+ fi
+ 
+ if $exif_only
 @@ -208,7 +208,7 @@ fi
  density_flag=
  do_compare()

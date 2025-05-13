@@ -2,7 +2,7 @@
 
 pkgname="git-diff-image-git"
 pkgver="0.0.0.r62.gf12098b"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="An extension to 'git diff' that provides support for diffing images."
 arch=("any")
 url="https://github.com/ewanmellor/git-diff-image"
@@ -19,7 +19,7 @@ conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+https://github.com/ewanmellor/git-diff-image.git#branch=master"
         "${pkgname%-*}.patch")
 sha256sums=("SKIP"
-            "22e7a5fb626ab19f979729cfd0c9b9327f27bfce88ca1663009987a92bbd83f0")
+            "8cafcc3b170c436fef7da0c13722dd79be2d9873068fffb48bc63383a45dce7a")
 
 pkgver() {
     local vers
