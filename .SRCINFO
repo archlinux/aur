@@ -1,7 +1,7 @@
 pkgbase = youtube-desktop-bin
 	pkgdesc = A simple YouTube Desktop application, built using Electron.js.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mikepruett3/youtube-desktop
 	arch = x86_64
 	license = MIT
