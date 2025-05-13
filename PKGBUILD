@@ -4,7 +4,7 @@ _pkgname=Akuse
 pkgver=1.10.1
 _electronversion=26
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and easy to use anime streaming desktop app without ads.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/akuse-app/Akuse"
@@ -18,14 +18,15 @@ makedepends=(
     'npm'
     'nvm'
     'curl'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}#tag=${pkgver}"
     "clientData.js"
     "${pkgname}.sh"
 )
-sha256sums=('fedc286fa68cd76c885e49330576179f0e61c963043b632d296a5087c82c5ad0'
-            'bb6c1e7914d849dc1e44f8d6510f6141545953b669e837cd8e4d25daa02da96d'
+sha256sums=('e2f96066de1dfe2ae55995f09b73400c6571aab4420323691b1df13abb1f5ad0'
+            '091d0d9b3a06579647ed4c1989d7edff13754cec34fcdbb7fbc24529bd01ed48'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -34,24 +35,24 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname}-beta/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -65,10 +66,11 @@ prepare() {
     install -Dm644 "${srcdir}/clientData.js" -t "${srcdir}/${pkgname//-/.}/src/modules"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
-    NODE_ENV=production     npx ts-node ./.erb/scripts/clean.js dist
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    NODE_ENV=production     npx ts-node ./.erb/scripts/clean.js dist
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder build --linux dir -c.electronDist=${electronDist}"
 }
@@ -76,7 +78,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/release/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/release/build/linux-"*/resources/assets "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/${_icons}.png" \
