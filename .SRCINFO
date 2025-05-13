@@ -1,6 +1,6 @@
 pkgbase = akuse-git
 	pkgdesc = Simple and easy to use anime streaming desktop app without ads.(Use system-wide electron)
-	pkgver = 1.9.0.r6.g0a3049a
+	pkgver = 1.10.1.r4.gc16536d
 	pkgrel = 1
 	url = https://github.com/akuse-app/Akuse
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = akuse-git
 	makedepends = curl
 	makedepends = libxcrypt
 	depends = electron26
-	provides = akuse=1.9.0
+	provides = akuse=1.10.1
 	conflicts = akuse
 	source = akuse.git::git+https://github.com/akuse-app/Akuse.git
 	source = clientData.js
