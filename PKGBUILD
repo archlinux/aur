@@ -15,8 +15,8 @@ source=("git+https://github.com/AlbanDAVID/Toutui.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    printf git describe --tags --long | sed 's/^v//;s/-/./g'
+    cd "$_pkgname"
+    git describe --tags --long | sed 's/^v//;s/-/./g'
 }
 
 build() {
