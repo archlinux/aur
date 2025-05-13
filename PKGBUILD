@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=107.r7931
-pkgrel=4
+pkgrel=5
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracut-ng/dracut'
@@ -66,9 +66,10 @@ optdepends=(
   'openssh: install ssh and scp along with config files and specified keys (ssh-client module)'
   'pigz: faster gzip compression'
   'plymouth: plymouth boot splash'
-  'rng-tools: enable rngd service to help generating entropy early during boot'
-  'rsyslog: enable logging with rsyslog'
   'qrencode: systemd-bsod'
+  'rng-tools: enable rngd service to help generating entropy early during boot'
+  'rust: dracut cpio'
+  'rsyslog: enable logging with rsyslog'
   'sbsigntools: uefi_secureboot_cert/key configuration option support'
   'systemd: systemd'
   'systemd-ukify: Unified Kernel Image'
