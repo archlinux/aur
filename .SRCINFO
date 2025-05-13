@@ -1,6 +1,6 @@
 pkgbase = r-biotmle
 	pkgdesc = Targeted Learning with Moderated Statistics for Biomarker Discovery
-	pkgver = 1.32.0
+	pkgver = 1.32.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/biotmle
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-biotmle
 	optdepends = r-rmarkdown
 	optdepends = r-superlearner
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/biotmle_1.32.0.tar.gz
-	sha256sums = bbcb4613bb9a18ca39ae327b92ad29827e331e3b2e99fffc4804b0663a529fe6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biotmle_1.32.1.tar.gz
+	sha256sums = babaa246d0cc342516dacad0c0f64ba43c5a8ca1aca3b4bdc8c62d00050b2c72
 
 pkgname = r-biotmle
