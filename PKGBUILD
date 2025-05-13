@@ -2,7 +2,7 @@
 pkgname=akuse-bin
 pkgver=1.10.1
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and easy to use anime streaming desktop app without ads.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/akuse-app/akuse"
@@ -22,18 +22,18 @@ source=(
 sha256sums=('cf7617d4161339545bc2082b392795f4e4d3cf31f3deda835baac1ae4051368e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}-beta/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}-beta/${pkgname%-bin}/g
         s/Icon=${pkgname%-bin}-beta/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}-beta.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}-beta.desktop"
     asar e "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/dist/main" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
