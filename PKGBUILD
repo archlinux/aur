@@ -1,13 +1,13 @@
 pkgname=eblanfetch
-pkgver=1.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 pkgdesc="Stupid fetch written in Python"
 arch=('any')
 url="https://github.com/dirolov/eblanfetch"
 license=('MIT')
 depends=('python')
 source=("eblanfetch.py")
-sha256sums=('SKIP')
+sha256sums=('674a5d9770d137d413ffff86b4e7d5b3ee805ad025b06668bbf660a8839446a3')
 
 package() {
   install -Dm755 "$srcdir/eblanfetch.py" "$pkgdir/usr/bin/eblanfetch"
