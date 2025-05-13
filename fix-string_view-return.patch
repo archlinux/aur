@@ -1,0 +1,22 @@
+diff --git a/src/steamnetworkingsockets/steamnetworkingsockets_internal.h b/src/steamnetworkingsockets/steamnetworkingsockets_internal.h
+index 50dba23..89a58b4 100644
+--- a/src/steamnetworkingsockets/steamnetworkingsockets_internal.h
++++ b/src/steamnetworkingsockets/steamnetworkingsockets_internal.h
+@@ -29,6 +29,8 @@
+ 
+ #include <tier0/memdbgon.h>
+ 
++#include <string>
++
+ #ifdef STEAMNETWORKINGSOCKETS_ENABLE_MEM_OVERRIDE
+ 	#define STEAMNETWORKINGSOCKETS_DECLARE_CLASS_OPERATOR_NEW \
+ 		static void* operator new( size_t s ) noexcept { return malloc( s ); } \
+@@ -670,7 +672,7 @@ extern bool BSteamNetworkingIdentityToProtobufInternal( const SteamNetworkingIde
+ #define SteamNetworkingIdentityToProtobuf( identity, msg, field_identity_string, field_identity_legacy_binary, field_legacy_steam_id ) \
+ 	{ SteamDatagramErrMsg identityToProtobufErrMsg; \
+ 		if ( !BSteamNetworkingIdentityToProtobuf( identity, msg, field_identity_string, field_identity_legacy_binary, field_legacy_steam_id, identityToProtobufErrMsg ) ) { \
+-			AssertMsg2( false, "Failed to serialize identity to %s message.  %s", msg.GetTypeName().c_str(), identityToProtobufErrMsg ); \
++			AssertMsg2( false, "Failed to serialize identity to %s message.  %s", std::string(msg.GetTypeName()).c_str(), identityToProtobufErrMsg ); \
+ 		} \
+ 	}
+ 
