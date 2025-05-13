@@ -5,13 +5,13 @@
 
 pkgbase=linux-hardened-git
 _srcname=${pkgbase/-git/}
-_gitbranch=6.7
-pkgver=6.7.r1235754.gf18e7b54b04b
+_gitbranch=6.14
+pkgver=6.14.r1337641.g27e15960936d
 pkgrel=1
 pkgdesc='Security-Hardened Linux'
 url='https://github.com/anthraxx/linux-hardened'
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2.0-only)
 makedepends=(
   bc
   cpio
@@ -21,6 +21,9 @@ makedepends=(
   pahole
   perl
   python
+  rust
+  rust-bindgen
+  rust-src
   tar
   xz
 
@@ -28,9 +31,13 @@ makedepends=(
   graphviz
   imagemagick
   python-sphinx
+  python-yaml
   texlive-latexextra
 )
-options=('!strip')
+options=(
+  !debug
+  !strip
+)
 source=(
   "${_srcname}::git+https://github.com/anthraxx/linux-hardened#branch=${_gitbranch}?signed"
   config  # the main kernel config file
@@ -41,7 +48,7 @@ validpgpkeys=(
   E240B57E2C4630BA768E2F26FC1B547C8D8172C8  # Levente Polyak
 )
 sha256sums=('SKIP'
-            '45236d37e2f07bb9fae5f41f18554fe44c8ab24f4ba6e1c75713847520c47904')
+            '9875be8419c28bdeed2c0018ad25bdc3bd2dceb135c85d9d826a3a315de05513')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -92,6 +99,7 @@ build() {
   local pid_docs=$!
 
   make all
+  make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
   wait "${pid_docs}"
 }
 
@@ -103,12 +111,14 @@ _package() {
     kmod
   )
   optdepends=(
-    'wireless-regdb: to set the correct wireless channels of your country'
     'linux-firmware: firmware images needed for some devices'
+    'scx-scheds: to use sched-ext schedulers'
+    'wireless-regdb: to set the correct wireless channels of your country'
     'usbctl: deny_new_usb control'
   )
   provides=(
     KSMBD-MODULE
+    NTSYNC-MODULE
     VIRTUALBOX-GUEST-MODULES
     WIREGUARD-MODULE
   )
@@ -143,16 +153,17 @@ _package-headers() {
 
   echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    localversion.* version vmlinux
+    localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
+  ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
-  # install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
@@ -175,6 +186,14 @@ _package-headers() {
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
+
+  # echo "Installing Rust files..."
+  # install -Dt "$builddir/rust" -m644 rust/*.rmeta
+  # install -Dt "$builddir/rust" rust/*.so
+
+  echo "Installing unstripped VDSO..."
+  make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
+    link=  # Suppress build-id symlinks
 
   echo "Removing unneeded architectures..."
   local arch
