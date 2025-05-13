@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lipidr
-_pkgver=2.22.0
+_pkgver=2.22.1
 pkgname=r-${_pkgname,,}
-pkgver=2.22.0
+pkgver=2.22.1
 pkgrel=1
 pkgdesc='Data Mining and Analysis of Lipidomics Datasets'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a98edfe00cea910d7dfd2cad780a09ca58538662581b90a7ec7f639e688f32e3')
+sha256sums=('166cf0584698ee6ac6c698a59b22a539bf44269c315a7b6647e0c7b76995c637')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
