@@ -1,7 +1,7 @@
 pkgbase = amcrest-desktop-bin
 	pkgdesc = A simple Desktop application for Amcrest NVR, built using Electron.js.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/mikepruett3/amcrest-desktop
 	arch = x86_64
 	license = MIT
