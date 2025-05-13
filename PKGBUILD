@@ -15,8 +15,8 @@ source=("git+https://github.com/AlbanDAVID/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname" || exit
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
