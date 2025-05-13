@@ -1,6 +1,6 @@
 # Maintainer: drzee <info@drzee.net>
 pkgname=aws-mountpoint-s3-bin
-pkgver=1.16.2
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Offical AWS S3 mount tools. This allows mounting S3 buckets into the file system. Not full POSIX support, see: https://docs.aws.amazon.com/AmazonS3/latest/userguide/mountpoint.html for details"
 arch=('x86_64')
@@ -11,8 +11,10 @@ depends=('fuse3')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=(https://s3.amazonaws.com/mountpoint-s3-release/${pkgver}/x86_64/mount-s3-${pkgver}-x86_64.tar.gz)
-md5sums=('eebbf4f349f712cb7f0286a2dccaecf4')
+md5sums=('399f57078dd5cb6a8bc4389c8730a4c2')
 noextract=()
+# We set options here to superseed the default makepkg.conf options. We dont whant debug build or strip debug info from the package. Its not relevant for a binary repackage of the upstream package.
+options=(!debug !strip)
 
 package() {
   cd "$srcdir"
