@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.1.25.r0.g0b0c27b
-_electronversion=34
-_nodeversion=20
+pkgver=3.1.29.r0.g38e402f
+_electronversion=35
+_nodeversion=22
 pkgrel=1
 pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.(Use system-wide electron)"
 arch=('x86_64')
@@ -47,17 +47,17 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    cd "${srcdir}/${pkgname//-/.}/app"
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/SiYuan-Electron/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
-    sed -i "2i\Name[zh_CN]=思源笔记" "${srcdir}/${pkgname%-git}.desktop"
-    cd "${srcdir}/${pkgname//-/.}/app"
+    sed -i "2i\Name[zh_CN]=思源笔记" "${srcdir}/${pkgname//-/.}/app/${pkgname%-git}.desktop"
     export CGO_ENABLED=1
     export GO111MODULE=on
     export GOOS=linux
@@ -108,5 +108,5 @@ package() {
     install -Dm644 "${srcdir}/${pkgname//-/.}/app/build/linux-"*/resources/pandoc.zip -t "${pkgdir}/usr/lib/${pkgname%-git}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/app/build/linux-"*/resources/{app,appearance,guide,kernel,stage} "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/app/appearance/boot/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/app/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
