@@ -2,7 +2,7 @@
 pkgname=imagenie-bin
 _pkgname=Imagenie
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-powered desktop app for stunning image transformations.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/zhongweili/imagenie"
@@ -20,8 +20,11 @@ source=(
 )
 sha256sums=('08acba9417788dbefd8a016fd319c4321385099982c1064e8185ba7cb456ef70'
             '7e63113a957314b982f46623bdaf855ddba75824b9a6a50c25a1eb5bf362a43b')
-build() {
-    sed -i "s/Categories=/Categories=Graphics;/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+prepare() {
+    sed -i -e "
+        s/Categories=/Categories=Graphics;/g
+        s/Name=${pkgname%-bin}/Name=${_pkgname}/g
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
