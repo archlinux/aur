@@ -1,6 +1,6 @@
 pkgbase = amd-debug-tools-git
 	pkgdesc = Debug tools for AMD zen systems.
-	pkgver = 0.1.0+8.r319.20250430.9b106af
+	pkgver = 0.2.0+8.r458.20250509.1c5293d
 	pkgrel = 1
 	epoch = 0
 	url = https://git.kernel.org/pub/scm/linux/kernel/git/superm1/amd-debug-tools
@@ -23,11 +23,11 @@ pkgbase = amd-debug-tools-git
 	optdepends = python-cysystemd: To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd_s2idle').
 	optdepends = python-systemd: To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd_s2idle') | Needed to run 'amd_bios'.
 	optdepends = util-linux: To access the kernel log via 'dmesg' ('amd_s2idle').
-	provides = amd-debug-tools=0.1.0+8.r319.20250430.9b106af
-	provides = amd-bios-logging-control-script=0.1.0+8.r319.20250430.9b106af
-	provides = amd-psr-identification-script=0.1.0+8.r319.20250430.9b106af
-	provides = amd-pstate-analysis-script=0.1.0+8.r319.20250430.9b106af
-	provides = amd-s2idle-analysis-script=0.1.0+8.r319.20250430.9b106af
+	provides = amd-debug-tools=0.2.0+8.r458.20250509.1c5293d
+	provides = amd-bios-logging-control-script=0.2.0+8.r458.20250509.1c5293d
+	provides = amd-psr-identification-script=0.2.0+8.r458.20250509.1c5293d
+	provides = amd-pstate-analysis-script=0.2.0+8.r458.20250509.1c5293d
+	provides = amd-s2idle-analysis-script=0.2.0+8.r458.20250509.1c5293d
 	provides = amdgpu-test-scripts-common
 	conflicts = amd-debug-tools
 	conflicts = amd-bios-logging-control-script
