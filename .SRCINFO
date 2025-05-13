@@ -1,7 +1,7 @@
 pkgbase = gptm-bin
 	pkgdesc = 🤖A modern AI chat client based on Electron + Vue3 + TypeScript.(Prebuilt version.Use system-wide electron)一个基于 Electron + Vue3 + TypeScript 开发的现代化 AI 聊天客户端
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Technicalflight/Gptm
 	arch = any
 	license = LicenseRef-custom
