@@ -1,7 +1,7 @@
 # Maintainer: adrienb39 <adrienb39@yahoo.com>
 pkgname=gestereg
 pkgver=0.95
-pkgrel=1
+pkgrel=2
 pkgdesc="Gestereg ERP CRM: modern software package to manage your company"
 arch=('any')
 url="https://gestereg.fr/"
@@ -14,7 +14,7 @@ optdepends=('php-tcpdf: pdf export')
 options=('!strip' 'emptydirs')
 backup=("etc/$pkgname/conf.php")
 install=gestereg.install
-source=("https://github.com/adrienb39/$_pkgname/archive/refs/tags/v$pkgver-$pkgrel.tar.gz"
+source=("https://github.com/adrienb39/$pkgname/archive/refs/tags/v$pkgver-$pkgrel.tar.gz"
         gestereg.conf
         nginx.conf.example
         apache.conf.example)
