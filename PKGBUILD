@@ -2,7 +2,7 @@
 
 _binname="gsa"
 pkgname="go-size-analyzer"
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A tool for analyzing the dependencies in compiled Golang binaries"
 arch=('aarch64' 'x86_64')
@@ -13,25 +13,32 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('98c9b5a46692397d035ca7983063aedd6dcb2048c632f0961a090fb3a253aaca41d32722e854829e4a9d42f951f315916cd6b9ba3de8f3e1d3ab1741c4e3260a')
+b2sums=('c0b943e02131cc279277e7c97bec1728c038461b0d5520d1b7e20696a3983f34856059cca82105f05a10a51e333ff7252d67e40e6d4ac823605ba112a039e275')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
+  go mod download -x
+  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
+  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+
   mkdir -p "build"
 }
 
 build() {
-  local build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${_binname}" -ldflags "\
+
+  cd "${srcdir}/${_pkgsrc}"
+  go build -v -o "build/${_binname}" -ldflags "\
     -X ${_url#https://}.version=${pkgver} \
-    -X ${_url#https://}.buildDate=${build_date}" \
+    -X ${_url#https://}.buildDate=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
     ./"cmd/${_binname}"
 }
 
