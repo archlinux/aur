@@ -3,13 +3,13 @@
 
 _pkgname=gnucap
 pkgname=$_pkgname-git
-pkgver=20241210.dev.r0.git
+pkgver=20250301.dev.r86.g28914f11
 pkgrel=1
 pkgdesc="GNU Circuit Analysis Package (develop branch)"
 arch=('x86_64')
 url="http://gnucap.org/"
 license=('GPL')
-depends=('readline' 'termcap')
+depends=('readline')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
