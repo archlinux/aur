@@ -1,8 +1,9 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-astrocut
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Tools for making image cutouts from sets of TESS full frame images"
 arch=('any')
@@ -24,7 +25,7 @@ checkdepends=('python-pytest-doctestplus'
               'python-pytest-astropy-header'
               'python-pillow')   # gwcs, scipy, s3fs, s3path, cachetools, spherical_geometry already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('bee08cd0848813edcdf2839076c9fbd9')
+md5sums=('bd457d48d9515befb8d90c47541c18e0')
 
 #get_pyver() {
 #    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -69,7 +70,7 @@ check() {
 
 package_python-astrocut() {
     depends=('python>=3.9'
-             'python-asdf>=2.15.0'
+             'python-asdf>=4.1.0'
              'python-astropy>=5.2'
              'python-cachetools>=5.3.2'
              'python-fsspec>=2022.8.2'
@@ -79,7 +80,7 @@ package_python-astrocut() {
              'python-requests>=2.32.3'
              'python-scipy'
              'python-pillow'
-             'python-roman-datamodels>=0.17.0'
+             'python-roman-datamodels>=0.19.0'
              'python-s3path>=0.5.7'
              'python-spherical_geometry>=1.3.0')
     optdepends=('python-astrocut-doc: Documentation for astrocut')
