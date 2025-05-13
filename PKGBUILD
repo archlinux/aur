@@ -13,7 +13,7 @@
 
 
 pkgname=dungeondraft
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Dungeondraft is a tabletop encounter map creation tool designed to draw aesthetic maps without the typical frustrations and time investment'
 
@@ -26,6 +26,7 @@ makedepends=('unzip')
 
 
 red_color='\033[0;31m'
+yellow_color='\033[0;33m'
 bold_font='\033[1m'
 no_color='\033[0m'
 
@@ -43,8 +44,17 @@ if [[ ! $DUNGEONDRAFT_DOWNLOAD_URL =~ ^https://cdn.humble.com/humblebundle/tailw
 fi
 
 source=("$DUNGEONDRAFT_DOWNLOAD_URL")
-md5sums=('SKIP')
 pkgver="$(echo "$DUNGEONDRAFT_DOWNLOAD_URL" | grep -oE '[0-9]+(\.[0-9]+)*' | head -n 1)"
+if [[ "$pkgver" == "1.1.0.6" ]]; then
+	md5sums=('11c548c3c9ad238a0e96fef11d64b26f')
+elif [[ "$pkgver" == "1.1.1.1" ]]; then
+	md5sums=('373c52a353b3f17412d766070cb28816')
+elif [[ "$pkgver" == "1.0.3.2" ]]; then
+	md5sums=('3f6ceb8096fca8fd48fb6f1438b21236')
+else
+	echo -e "${yellow_color}${bold_font}==> WARNING:${no_color}${bold_font} No md5sum for v$pkgver found, cannot validate your download!"
+	md5sums=('SKIP')
+fi
 
 package() {
 	local destdir="$pkgdir/opt/Dungeondraft"
