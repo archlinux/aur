@@ -1,0 +1,19 @@
+pkgbase = jellyfetch-git
+	pkgdesc = A Jelly Hoshiumi themed neofetch parody written in C just for lulz.
+	pkgver = 32617eb
+	pkgrel = 1
+	url = https://github.com/jffops/jfetch
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = gcc
+	depends = glibc
+	depends = gcc-libs
+	source = git+https://github.com/jffops/jfetch.git
+	sha256sums = SKIP
+
+pkgname = jellyfetch-git
