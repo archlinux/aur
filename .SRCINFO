@@ -8,6 +8,7 @@ pkgbase = acodec-bin
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = gendesk
 	depends = java-runtime
 	provides = acodec=2.6.0
 	conflicts = acodec
