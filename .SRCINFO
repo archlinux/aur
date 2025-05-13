@@ -1,0 +1,13 @@
+pkgbase = garble-git
+	pkgdesc = Obfuscate Go builds
+	pkgver = 0.14.2.r12.gbe4462
+	pkgrel = 1
+	url = https://github.com/burrowers/garble
+	arch = x86_64
+	license = BSD3
+	makedepends = go
+	provides = garble
+	source = git+https://github.com/burrowers/garble.git
+	sha1sums = SKIP
+
+pkgname = garble-git
