@@ -1,7 +1,7 @@
 # Maintainer: Alban <albdav.dev@gmail.com>
 pkgname=toutui-git
 _pkgname=Toutui
-pkgver=1
+pkgver=0
 pkgrel=1
 pkgdesc="TUI Audiobookshelf client. Listen to your audiobooks and podcasts from your terminal."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    git describe --tags --long | sed 's/^v//;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/-/./g;s/.beta//'
 }
 
 build() {
