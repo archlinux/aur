@@ -9,7 +9,6 @@ pkgbase = toutui-git
 	license = GPL3
 	makedepends = git
 	makedepends = rust
-	makedepends = cargo
 	depends = vlc
 	depends = gnu-netcat
 	provides = toutui
