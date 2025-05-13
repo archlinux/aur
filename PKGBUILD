@@ -3,7 +3,7 @@
 pkgname=ceccomp
 _reponame=Ceccomp
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A C-based seccomp analysis tool"
 arch=(x86_64)
 url="https://github.com/dbgbgtf1/Ceccomp"
@@ -17,8 +17,8 @@ makedepends=(
 )
 source=(git+https://github.com/dbgbgtf1/Ceccomp.git#tag=v${pkgver}?signed)
 
-sha256sums=('5de4758236227089335b2bae2c405de4196c860c18b438decce25b09579a4e2c')
-b2sums=('630cbb5de06645368c227803c264b0c91b16198879475e60d7274037380adf33a4b59ba65cab325b6599db6a2f9d5cbec6619ba402e620b18560e9029bbf6fb4')
+sha256sums=('e3748820b1cb1af4c3d6ab1591d9660dd1de22a871adece6480fdf9ae7d0489e')
+b2sums=('b5e9f1dd45a8eb54b5518bc4874460fd9bb93c4a23e211afb30cda0a9933ca5951edc545e303e9612e9280f7c293fe4f4ac3e76cce1144f39c309a87c926cd6e')
 
 validpgpkeys=(
   '0816A179BB09248F30468BD6542A0969B5CEDCDB' # dbgbgtf1 <dudududumaxver@outlook.com>
