@@ -3,8 +3,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname="pa-dlna"
 pkgver=1.0
-pkgrel=1
-pkgdesc="Forwards audio to DLNA devices via PulseAudio or PipeWira (via 'python-libpulse')"
+pkgrel=2
+pkgdesc="Forwards audio to DLNA devices via PulseAudio or PipeWire (via 'python-libpulse')"
 arch=(
   'any'
 )
@@ -18,16 +18,15 @@ provides=(
   "python-pa_dlna-git=${pkgver}"
   "PULSEAUDIO-DLNA-SINK"
 )
-conflicts=(
-  "upnp-cmd"
-  "python-pa_dlna"
-)
+
 depends=(
   'libpulse' # For `parec` executable
   'python'
   'python-psutil'
   'python-libpulse'
+  'python-systemd'
 )
+
 makedepends=(
   'git'
   'python-build'
@@ -38,12 +37,14 @@ makedepends=(
   'python-sphinx_rtd_theme'
   'python-wheel'
 )
+
 optdepends=(
   'ffmpeg: multiple formats support'
   'flac: flac transcoding support'
   'lame: mp3 transcoding support'
   'pulse-native-provider: To be used by a local pulseaudio implementation'
   'pipewire-pulse: To be used by a local pipewire implementation'
+  'pulseaudio-dlna: Service file for pa-dlna in systemd format'
 )
 source=(
   "git+${url}.git#tag=${pkgver}"
@@ -53,6 +54,11 @@ sha256sums=('996f22943e03cb93fda2a1ef3ccc6731f09f0430c3e1f4ffe41e3fe3d849acc6')
 build() {
   cd "$pkgname"
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$pkgname"
+  pytest -k 'not test_main'
 }
 
 package() {
