@@ -4,7 +4,7 @@
 
 _pkgname=sdrpp
 pkgname="$_pkgname-git"
-pkgver=1.0.4.r561.eab4264
+pkgver=1.0.4.r826.dd9b8db6
 pkgrel=1
 pkgdesc="The bloat-free SDR receiver"
 arch=(x86_64)
@@ -29,7 +29,8 @@ build() {
 		-DOPT_BUILD_LIMESDR_SOURCE=ON \
 		-DOPT_BUILD_SDRPLAY_SOURCE=ON \
 		-DOPT_BUILD_NEW_PORTAUDIO_SINK=ON \
-		-DOPT_BUILD_M17_DECODER=ON
+		-DOPT_BUILD_M17_DECODER=ON \
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	make -C build
 }
 

@@ -1,6 +1,6 @@
 pkgbase = sdrpp-git
 	pkgdesc = The bloat-free SDR receiver
-	pkgver = 1.0.4.r561.eab4264
+	pkgver = 1.0.4.r826.dd9b8db6
 	pkgrel = 1
 	url = https://www.sdrpp.org/
 	arch = x86_64
