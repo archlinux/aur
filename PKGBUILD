@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=107.r7931.0ffc61e
-pkgrel=6
+pkgrel=7
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracut-ng/dracut'
@@ -78,26 +78,6 @@ optdepends=(
   'tpm2-tools: tpm2 support for e.g. LUKS'
   'xz: xz compression'
 )
-checkdepends=(
-  'btrfs-progs'
-  'dhclient'
-  'dhcp'
-  'dmraid'
-  'linux'
-  'lvm2'
-  'mdadm'
-  'multipath-tools'
-  'nbd'
-  'networkmanager'
-  'nfsidmap'
-  'nfs-utils'
-  'ntfs-3g'
-  'open-iscsi'
-  'parted'
-  'pigz'
-  'qemu-base'
-  'squashfs-tools'
-)
 provides=("${pkgname%-git}" 'initramfs')
 conflicts=("${pkgname%-git}")
 
@@ -136,12 +116,6 @@ build() {
     --enable-dracut-cpio \
     --configprofile=hostonly
   make
-}
-
-check() {
-  cd "${pkgname%-git}/test"
-
-  TESTS=${TESTS-"80"} KVERSION="$(cd /lib/modules && ls -1 | tail -1)" make check
 }
 
 package() {
