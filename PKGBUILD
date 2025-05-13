@@ -17,8 +17,8 @@ makedepends=(
 )
 source=(git+https://github.com/dbgbgtf1/Ceccomp.git#tag=v${pkgver}?signed)
 
-sha256sums=('cddf4b85e2b2da6800bfb7629eda6a89a85de46f7bdd90313931e94d430db8f8')
-b2sums=('90d2470f88eda7395c529f646b818193190af819148197e7cb7416a63d0390f928ceafc9d9cfb6beabdff9752648a3c95f7bd1be5d93db4a264c353acc9719f7')
+sha256sums=('e5887b2db130e9ab4c3519bb223bd2953cea5d2ed29acfb35ace512120345cb8')
+b2sums=('5c8cce870a195dc2818896182251542c95150e79df58fa0d578a62ac1fb138030e6a2f26e210e22fa4ba79fc1cb7f2079f0c5d18ef99be7b24047bfb89bf6f44')
 
 validpgpkeys=(
   '0816A179BB09248F30468BD6542A0969B5CEDCDB' # dbgbgtf1 <dudududumaxver@outlook.com>
