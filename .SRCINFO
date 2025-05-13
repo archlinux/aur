@@ -1,13 +1,13 @@
 pkgbase = linker-cli
 	pkgdesc = Link manager from the terminal
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/ChristianRegueiro/linker
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = linker-cli-0.1.4.tar.gz::https://github.com/ChristianRegueiro/linker/releases/download/0.1.4/linker-0.1.4-x86_64-unknown-linux-gnu.tar.gz
+	source = linker-cli-0.1.5.tar.gz::https://github.com/ChristianRegueiro/linker/releases/download/0.1.5/linker-0.1.5-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = 7c3663843a405f98c27d11311158804d134751d6b75cbe7e5cc21e67a5a86b59
 
 pkgname = linker-cli
