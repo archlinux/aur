@@ -5,7 +5,6 @@ pkgbase = itime-git
 	url = https://github.com/AZCodingAccount/iTime
 	arch = any
 	license = MIT
-	makedepends = npm
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
