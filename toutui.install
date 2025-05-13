@@ -1,0 +1,8 @@
+post_install() {
+    echo "[SETUP POST-INSTALL]"
+    echo "mkdir -p ~/.config/toutui"
+    echo "cp /usr/share/toutui/config.example.toml ~/.config/toutui/config.toml"
+    echo "Token encryption in the database (NOTE: replace 'secret')"
+    echo "echo 'TOUTUI_SECRET_KEY=secret' >> ~/.config/toutui/.env"
+}
+

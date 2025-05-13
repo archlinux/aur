@@ -1,0 +1,23 @@
+pkgbase = toutui-git
+	pkgdesc = TUI Audiobookshelf client. Listen to your audiobooks and podcasts from your terminal.
+	pkgver = 0.4.0.r0.g170062b
+	pkgrel = 1
+	url = https://github.com/AlbanDAVID/Toutui
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = openssl
+	makedepends = sqlite3
+	depends = vlc
+	depends = netcat
+	provides = toutui
+	conflicts = toutui
+	conflicts = toutui-bin
+	source = git+https://github.com/AlbanDAVID/Toutui.git
+	sha256sums = SKIP
+
+pkgname = toutui-git
