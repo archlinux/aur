@@ -1,7 +1,7 @@
 pkgbase = gestereg
 	pkgdesc = Gestereg ERP CRM: modern software package to manage your company
 	pkgver = 0.95
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gestereg.fr/
 	install = gestereg.install
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = gestereg
 	options = !strip
 	options = emptydirs
 	backup = etc/gestereg/conf.php
-	source = https://github.com/adrienb39/gestereg/archive/refs/tags/v0.95-1.tar.gz
+	source = https://github.com/adrienb39/gestereg/archive/refs/tags/v0.95-2.tar.gz
 	source = gestereg.conf
 	source = nginx.conf.example
 	source = apache.conf.example
