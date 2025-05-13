@@ -13,7 +13,7 @@
 
 
 pkgname=dungeondraft
-pkgrel=2
+pkgrel=1
 
 pkgdesc='Dungeondraft is a tabletop encounter map creation tool designed to draw aesthetic maps without the typical frustrations and time investment'
 
