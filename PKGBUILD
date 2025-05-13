@@ -1,7 +1,7 @@
 # MAINTAINER: haagch <christoph.haag@collabora.com>
 
 pkgname=basalt-monado-git
-pkgver=r492.ce92fa7
+pkgver=r505.0ced9e5
 pkgrel=1
 pkgdesc="Visual-Inertial Mapping with Non-Linear Factor Recovery"
 arch=('i686' 'x86_64')
@@ -47,7 +47,8 @@ build() {
 		-DBASALT_INSTANTIATIONS_DOUBLE=OFF \
 		-DBASALT_BUILD_SHARED_LIBRARY_ONLY=ON \
 		-Bbuild \
-		-GNinja
+		-GNinja \
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 
 	msg "Building the project"
 	ninja -C build
