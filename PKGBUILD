@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=an-anime-game-launcher-bwrap
-pkgver=3.13.1
+pkgver=3.14.0
 pkgrel=1
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("git+$url.git"
 	"portable-config"
 	"start.sh")
 sha256sums=('SKIP'
-            'd00b17f2db3c3271778981290205229f05f66caea7e7aef12d5ed867a7261a14'
+            '6a4eab21264da3cb6db6c0c058fba494042e864d6341246c1ff061c4bb582e92'
             'c4efe09cb144042a073a7cc83de416dd78c19941687253d25e34a1cbe90a1a77')
 
 prepare() {
