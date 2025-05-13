@@ -1,7 +1,7 @@
 # Maintainer: fenuks
 
 pkgname=bstone
-pkgver=1.2.15
+pkgver=1.2.16
 pkgrel=1
 pkgdesc="Unofficial source port for Blake Stone series (Aliens Of Gold and Planet Strike)."
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -14,7 +14,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5ce25c9df617b1dab8e5d013a8c0c7885685629d84c342e6c1cafa521c346a8a')
+sha256sums=('f9c4947149626f76707fd45da0827b555c4f13e75ad2acc423bd4b09dac2de23')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
