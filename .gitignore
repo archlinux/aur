@@ -5,3 +5,4 @@
 *.zip
 *.zst
 *.log*
+/seadrive-gui-v*/

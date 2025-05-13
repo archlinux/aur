@@ -6,15 +6,15 @@
 
 pkgname=seadrive-gui
 pkgver=3.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI part of seadrive"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
 license=('Apache')
 depends=('qt5-webengine' 'qt5-tools' 'seadrive-daemon' 'libsearpc')
 makedepends=("cmake")
-source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('16f9e64f2db89e450a135f10629b502524298c0e309636befdd48f3630a9ce11')
+source=("${pkgname}-v${pkgver}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('05ad562ba32a7fcf4e7891eb2039956c18673225fdca360d797c9f3f44ce9f17')
 
 prepare() {
     # Create build dir
@@ -30,7 +30,7 @@ build () {
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        "${srcdir}/${pkgname}-${pkgver}"
+        "${srcdir}/${pkgname}-v${pkgver}"
     make
 }
 
