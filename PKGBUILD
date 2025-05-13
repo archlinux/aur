@@ -1,11 +1,11 @@
 # Maintainer: Tiago Ribeiro <tiago.d.ribeiro@hotmail.com>
 pkgname=systemd-services-manager
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A GUI application to manage systemd services"
 arch=('x86_64')
 url="https://github.com/TiagoRibeiro25/systemd-services-manager"
-license=('GPL3')
+license=('MIT')
 depends=()  # No runtime dependencies needed if using PyInstaller
 makedepends=('pyinstaller' 'python' 'git')  # PyInstaller from the AUR
 source=("git+https://github.com/TiagoRibeiro25/systemd-services-manager.git")
