@@ -9,12 +9,13 @@ pkgbase = aero-browser
 	makedepends = npm
 	makedepends = nvm
 	makedepends = curl
+	makedepends = git
 	depends = electron23
 	provides = aero-browser
 	conflicts = aero-browser
-	source = aero-browser-0.2.2_alpha.tar.gz::https://github.com/FrostBreker/Aero/archive/refs/tags/v0.2.2-alpha.tar.gz
+	source = aero-browser-0.2.2_alpha::git+https://github.com/FrostBreker/Aero#tag=v0.2.2-alpha
 	source = aero-browser.sh
-	sha256sums = 77b1cd25139304d506ed5477d2b224dc9352b157d32debb14bd5ad9773760388
+	sha256sums = f38456566201902febaa9412a481ad299cdcbd867dc9dc1b4ee5a8b5d6a2b945
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = aero-browser
