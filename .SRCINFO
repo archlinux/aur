@@ -1,6 +1,6 @@
 pkgbase = pflux-git
 	pkgdesc = The easiest way to get started with dataflow testing including control flow graph, program slice and du-path.(Use system-wide electron)
-	pkgver = r88.cc320b7
+	pkgver = 0.3.1.r0.gb1b7635
 	pkgrel = 1
 	url = https://github.com/gaspardruan/pflux
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = pflux-git
 	makedepends = curl
 	makedepends = gendesk
 	depends = electron26
-	provides = pflux=r88.cc320b7
+	provides = pflux=0.3.1
 	conflicts = pflux
 	source = pflux.git::git+https://github.com/gaspardruan/pflux.git
 	source = pflux.sh
