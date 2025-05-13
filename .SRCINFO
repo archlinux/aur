@@ -1,6 +1,6 @@
 pkgbase = dotnet-sdk-8.0.300-bin
 	pkgver = 8.0.6.sdk302
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -51,7 +51,7 @@ pkgname = dotnet-sdk-8.0.300-bin
 
 pkgname = dotnet-targeting-pack-8.0.300-bin
 	pkgdesc = The .NET Core targeting pack (binary)
-	depends = netstandard-targeting-pack-8.0.300-bin
+	depends = netstandard-targeting-pack
 	provides = dotnet-targeting-pack=8.0.6
 	provides = dotnet-targeting-pack-8.0.300-bin
 	conflicts = dotnet-targeting-pack=8.0.6
