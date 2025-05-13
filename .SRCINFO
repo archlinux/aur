@@ -1,7 +1,7 @@
 pkgbase = aihub-bin
 	pkgdesc = A collection of large model capabilities of the client.(Prebuilt version.Use system-wide electron)一款集合多家大模型能力的客户端.
 	pkgver = 1.8.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/classfang/AIHub
 	arch = x86_64
 	license = Apache-2.0

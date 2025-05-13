@@ -3,7 +3,7 @@ pkgname=aihub-bin
 _pkgname=AIHub
 pkgver=1.8.9
 _electronversion=30
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of large model capabilities of the client.(Prebuilt version.Use system-wide electron)一款集合多家大模型能力的客户端."
 arch=('x86_64')
 url="https://github.com/classfang/AIHub"
@@ -20,15 +20,15 @@ source=(
 sha256sums=('d4918b38e20543d8a3e3b03af2c66e0ce19d245b8ef072c8e637a9fc5524f14f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
