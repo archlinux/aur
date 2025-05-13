@@ -1,6 +1,6 @@
 pkgbase = osdctl-bin
 	pkgdesc = CLI for the OSD utilities
-	pkgver = 0.44.0
+	pkgver = 0.44.1
 	pkgrel = 1
 	url = https://github.com/openshift/osdctl
 	arch = aarch64
@@ -8,9 +8,9 @@ pkgbase = osdctl-bin
 	license = Apache-2.0
 	provides = osdctl
 	conflicts = osdctl
-	source_aarch64 = osdctl-0.44.0-aarch64.tar.gz::https://github.com/openshift/osdctl/releases/download/v0.44.0/osdctl_0.44.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 0f368c8e32f1b3de26d2fa36301eef21f075699b4ab36ad5f042463ae9fde6b5
-	source_x86_64 = osdctl-0.44.0-x86_64.tar.gz::https://github.com/openshift/osdctl/releases/download/v0.44.0/osdctl_0.44.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 018c42a4289f7cfe8d5dffdf305801aff358b3725c73e12de6ca710988c1c0d6
+	source_aarch64 = osdctl-0.44.1-aarch64.tar.gz::https://github.com/openshift/osdctl/releases/download/v0.44.1/osdctl_0.44.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d825d570f5ed8fbf053c6c737b665f43ede820d69e90fbf61b724ea0cd4a2395
+	source_x86_64 = osdctl-0.44.1-x86_64.tar.gz::https://github.com/openshift/osdctl/releases/download/v0.44.1/osdctl_0.44.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 10db42ad9ca0c62150735038f0dc2a7b70e092094defc4580296656c56c9d815
 
 pkgname = osdctl-bin
