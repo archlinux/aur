@@ -8,7 +8,7 @@ pkgname=(
 )
 _gitpkgname=aider
 pkgver=0.83.0
-pkgrel=1
+pkgrel=2
 pkgdesc='AI pair programming in your terminal'
 arch=('any')
 url='https://github.com/Aider-AI/aider'
@@ -137,6 +137,15 @@ build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
   python -m build --wheel --no-isolation
 
+  echo >&2 'Generating shell completions'
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  mkdir -p completions/{bash,zsh}
+  "test-env/bin/${_gitpkgname}" --shell-completions bash \
+    > 'completions/bash/aider'
+  "test-env/bin/${_gitpkgname}" --shell-completions zsh \
+    > 'completions/zsh/_aider'
+
   cd aider/website
 
   echo >&2 'Generating HTML documentation'
@@ -146,8 +155,6 @@ build() {
 
 check() {
   cd "${_gitpkgname}-${pkgver}"
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
 
   # Use a clean environment (env -i) to avoid incurring unintended
   # LLM API usage costs.
@@ -190,6 +197,12 @@ package_aider-chat() {
   echo >&2 'Packaging the license'
   install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
     LICENSE.txt
+
+  echo >&2 'Packaging shell completions'
+  install -D -m 644 -t "${pkgdir}/usr/share/bash-completion/completions" \
+    'completions/bash/aider'
+  install -D -m 644 -t "${pkgdir}/usr/share/zsh/site-functions" \
+    'completions/zsh/_aider'
 }
 
 # shellcheck disable=SC2128
