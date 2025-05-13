@@ -7,6 +7,6 @@ pkgbase = eblanfetch
 	license = MIT
 	depends = python
 	source = eblanfetch.py
-	sha256sums = skip
+	sha256sums = SKIP
 
 pkgname = eblanfetch

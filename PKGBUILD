@@ -7,7 +7,7 @@ url="https://github.com/dirolov/eblanfetch"
 license=('MIT')
 depends=('python')
 source=("eblanfetch.py")
-sha256sums=('skip')
+sha256sums=('SKIP')
 
 package() {
   install -Dm755 "$srcdir/eblanfetch.py" "$pkgdir/usr/bin/eblanfetch"
