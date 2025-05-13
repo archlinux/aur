@@ -1,5 +1,6 @@
 # Maintainer: Alban <albdav.dev@gmail.com>
 pkgname=toutui-git
+_pkgname=Toutui
 pkgver=0
 pkgrel=1
 pkgdesc="TUI Audiobookshelf client. Listen to your audiobooks and podcasts from your terminal."
@@ -14,17 +15,17 @@ source=("git+https://github.com/AlbanDAVID/Toutui.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "Toutui"
+    cd "$_pkgname"
     git describe --tags --long | sed 's/^v//;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/Toutui"
+    cd "$_pkgname"
     cargo build --release --locked
 }
 
 package() {
-    cd "$srcdir/Toutui"
+    cd "$_pkgname"
 
     install -Dm755 "target/release/toutui" "$pkgdir/usr/bin/toutui"
     install -Dm644 "config.example.toml" "$pkgdir/usr/share/toutui/config.example.toml"
