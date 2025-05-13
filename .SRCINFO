@@ -1,6 +1,6 @@
 pkgbase = scooter-git
 	pkgdesc = An interactive find and replace in the terminal
-	pkgver = 0.3.0.r0.9b815a9
+	pkgver = 0.5.0.r38.3fc8053
 	pkgrel = 1
 	url = https://github.com/thomasschafer/scooter
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = scooter-git
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
+	depends = oniguruma
 	provides = scooter
 	conflicts = scooter
 	source = git+https://github.com/thomasschafer/scooter

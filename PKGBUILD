@@ -2,7 +2,7 @@
 
 _pkgname=scooter
 pkgname=$_pkgname-git
-pkgver=0.3.0.r0.9b815a9
+pkgver=0.5.0.r38.3fc8053
 pkgrel=1
 pkgdesc='An interactive find and replace in the terminal'
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 
 provides=($_pkgname)
 conflicts=($_pkgname)
-depends=(gcc-libs glibc)
+depends=(gcc-libs glibc oniguruma)
 makedepends=(git cargo)
 source=(git+$url)
 sha512sums=(SKIP)
@@ -31,6 +31,7 @@ prepare() {
 build() {
     cd "$srcdir"/$_pkgname
     export CARGO_TARGET_DIR=target
+    export RUSTONIG_SYSTEM_LIBONIG=1
     cargo build --frozen --release
 }
 
