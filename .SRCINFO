@@ -1,7 +1,7 @@
 pkgbase = foomuuri
 	pkgdesc = Multizone bidirectional nftables firewall
 	pkgver = 0.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FoobarOy/foomuuri
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -13,6 +13,7 @@ pkgbase = foomuuri
 	depends = python-systemd
 	depends = python-gobject
 	depends = python-requests
+	depends = nftables
 	source = foomuuri-0.28.tar.gz::https://github.com/FoobarOy/foomuuri/archive/v0.28.tar.gz
 	sha256sums = f558245041baeb771f34f2fe02db3d7676b1666eb2ae5e6dc9dd52becc179a64
 
