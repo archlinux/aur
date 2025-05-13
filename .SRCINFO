@@ -1,6 +1,6 @@
 pkgbase = r-yamss
 	pkgdesc = Tools for high-throughput metabolomics
-	pkgver = 1.34.0
+	pkgver = 1.34.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/yamss
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-yamss
 	optdepends = r-mtbls2
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/yamss_1.34.0.tar.gz
-	sha256sums = 08150f9ebe4826d285f4704670784f3d6e56a6082165b23aa28a68aecf91c7cd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/yamss_1.34.1.tar.gz
+	sha256sums = 0c48713c8a9b31e4112a62bee6cc64db65f93968dabd910ee83ee3167bc3e22a
 
 pkgname = r-yamss
