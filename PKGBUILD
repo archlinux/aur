@@ -3,7 +3,7 @@ pkgname=catalystplus-desktop-bin
 _pkgname=CatalystPlus
 pkgver=3.8.2
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-terminal and interoperable scientific research professional information aggregation platform client to improve the efficiency of researchers' access to the latest research results in the field.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://www.researchercosmos.com/"
@@ -12,6 +12,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
+    'xpdf'
 )
 makedepends=(
     'fuse2'
@@ -32,10 +33,13 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
+    ln -sf "/usr/bin/xpdf" "${srcdir}/squashfs-root/resources/app.asar.unpacked/resources/xpdf.exe"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

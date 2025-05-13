@@ -1,12 +1,13 @@
 pkgbase = catalystplus-desktop-bin
 	pkgdesc = A multi-terminal and interoperable scientific research professional information aggregation platform client to improve the efficiency of researchers' access to the latest research results in the field.(Prebuilt version.Use system-wide electron)
 	pkgver = 3.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.researchercosmos.com/
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
 	depends = electron22
+	depends = xpdf
 	provides = catalystplus-desktop=3.8.2
 	conflicts = catalystplus-desktop
 	source = catalystplus-desktop-3.8.2.AppImage::https://assets.catalystplus.cn/CatalystPlusDesktopPackage/linux/%E5%82%AC%E5%8C%96%E5%89%82%E5%8A%A0%20CatalystPlus-3.8.2.AppImage
