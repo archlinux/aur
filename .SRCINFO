@@ -1,0 +1,16 @@
+pkgbase = librewolf-extension-synclair-bin
+	pkgdesc = Customizable home page/new tab using html, css and sheets of links
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://codeberg.org/MorsMortium/Synclair
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = zip
+	depends = librewolf
+	provides = librewolf-extension-synclair
+	conflicts = librewolf-extension-synclair
+	source = https://codeberg.org/MorsMortium/Synclair/releases/download/1.4.1/Synclair@morsmortium.codeberg.page.xpi
+	sha512sums = e6904409a101963d5873671258e6dc7a356ebb43a2b09b7ae0abf18deb0648622441f37727eef7cfc1071c5a12195e3f5cc7b5f45ac8097c061e88a3d0193438
+
+pkgname = librewolf-extension-synclair-bin
