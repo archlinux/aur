@@ -1,7 +1,7 @@
-# Maintainer: Roosted7 <mail@thomasroos.nl>
-# Maintainer: liamtimms <timms5000@gmail.com>
+# Contributor: Roosted7 <mail@thomasroos.nl>
+# Contributor: liamtimms <timms5000@gmail.com>
 pkgname=dcm2niix
-pkgver=1.0.20230411
+pkgver=1.0.20241211
 pkgrel=1
 pkgdesc="A tool for converting images from the complicated formats used by scanner manufacturers (DICOM, PAR/REC) to the simple NIfTI format"
 arch=(x86_64)
@@ -13,12 +13,13 @@ optdepends=('pigz')
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rordenlab/dcm2niix/archive/v${pkgver}.tar.gz")
-sha512sums=('fe4b5a564c6bcc7cdd0377a560e06ac5de4a1181685964b8904c86616341c837de760ea34dfbfc2d949e8b794465a4f1ff0cf81d8b859e160b36bc621f3dabbd')
+sha512sums=('745a3692e45e7218bdb8b5bb81ac6865f2b9229092501ade2fe097fa461ae5df3d418da9a69dafbdc96da8d84863e73f17879906781dc94c4812429cb87e9a89')
 
 
 build()
 {
 	cd "$srcdir/$pkgname-$pkgver"
+	export CMAKE_POLICY_VERSION_MINIMUM=3.5
 	mkdir build
 	cd build
 
