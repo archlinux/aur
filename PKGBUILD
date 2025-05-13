@@ -14,7 +14,7 @@ source=("git+https://github.com/AlbanDAVID/Toutui.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/Toutui"
+    cd "Toutui"
     git describe --tags --long | sed 's/^v//;s/-/./g'
 }
 
