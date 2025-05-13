@@ -1,0 +1,15 @@
+pkgbase = fastbash
+	pkgdesc = A simple script manager for fast Bash scripting.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vinceTheProgrammer/fastbash
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	options = debug
+	options = !strip
+	source = fastbash-1.0.0.tar.gz::https://github.com/vinceTheProgrammer/fastbash/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 264a758ae06eefd6b904688c2f88b79bb50a33e9991d5a413073b3b5b098d7ce
+
+pkgname = fastbash
