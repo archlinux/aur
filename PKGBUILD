@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=107.r7931
-pkgrel=5
+pkgrel=6
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracut-ng/dracut'
@@ -83,11 +83,12 @@ conflicts=("${pkgname%-git}")
 
 source=(
   git+${url}.git
+  90-dracut-install.hook
   1322.patch::${url}/commit/bcf0093.patch # fix: improve hostonly sloppy mode
   1194.patch::${url}/commit/d567b94.patch # feat(initqueue): factor out initqueue into its own module
 )
 
-sha512sums=('SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -130,4 +131,5 @@ package() {
   cd "${pkgname%-git}"
 
   DESTDIR="$pkgdir" enable_test=no make install
+  install -Dm644 "${srcdir}/90-dracut-install.hook" "${pkgdir}/usr/share/libalpm/hooks/90-dracut-install.hook"
 }
