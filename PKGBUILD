@@ -1,7 +1,7 @@
 # Contributor: Matthias Fulz < mfulz [at] olznet [dot] de >
 
 pkgname=gvmd
-pkgver=25.2.1
+pkgver=26.0.0
 pkgrel=1
 pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         ${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc
         "archlinux_postgres_headers.patch"
         "gvmd.tmpfiles")
-sha512sums=('6d5474bf6972e08013f51e46b73dfb07b42bc26c15b560a9e5d3574449510371bad4a78dc72619e6bedede78fee287ab660b19b0026d290807052087aa960b41'
+sha512sums=('cc5c10a03589482a03f658f5ac0d45c34e5e809114e4be1999325b58e114b36ff81dbf248268a0460043f407dd2b193286eb27e20b7dd5655de110496472a4b0'
             'SKIP'
             'ec2cbedf87bfd8cc1abfc6be9c566b6d2e6f7b1f902f5596d496b01faf208c9921b502d77ec9281ef3c0d03462f2d49bb973f4f9216a106116cd824e938951c2'
             '6c95fadda6646288ea86c725fa9cbebb46a6b1c6249faeb56de563435fe01f7ef21e66a91b27cf820eab97a2aa2fa88dd4300e61279a896915d21d129039fa88')
@@ -30,12 +30,14 @@ prepare() {
 }
 
 build() {
+  # Not compatible with C23
+  CFLAGS+=' -std=gnu17'
+
   cmake \
     -B build \
     -S "$pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DSBINDIR=/usr/bin \
     -DLIBDIR=/usr/lib \
     -DSYSCONFDIR=/etc \
