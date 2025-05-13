@@ -30,17 +30,19 @@ source=(
 sha256sums=('9c81fa659acffa74b7576e5dfbc62486d8131157b9d4bfc2a34bdc567bc080c8'
             '72bf32e1daa153b870aff8200c06521b4d15d7aedba46d4c37570c49cacc1ace'
             '97155fcff09b03405209fd5bb1f341d0d0d92e83ca9cf96c219d19214456e9b1')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "
+    sed -i -e "
         s/${_pkgname}_desktop/${pkgname%-bin}/g
         s/${_pkgname}/${pkgname%-bin}/g
-    " -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    " "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
