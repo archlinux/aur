@@ -6,8 +6,8 @@
 pkgname=python-speechrecognition
 _pkg=speechrecognition
 _pkgdir=speech_recognition
-pkgver=3.14.2
-pkgrel=6
+pkgver=3.14.3
+pkgrel=1
 pkgdesc="Google-powered speech recognition for Python"
 arch=('x86_64')
 url="https://github.com/Uberi/speech_recognition"
@@ -51,7 +51,7 @@ checkdepends=(
   'python-httpx'
   'python-respx')
 source=("git+https://github.com/Uberi/speech_recognition.git#tag=${pkgver}")
-sha256sums=('2761e8013d3b720f2d73a3cfe354be131e812525d598274a928e6150b2e2ac51')
+sha256sums=('6330348e101e2115e56e9f14e16b8908727ebc01c0d236aa78ea637a244d5fc9')
 
 build() {
   cd "$_pkgdir"
