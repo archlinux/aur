@@ -4,7 +4,7 @@
 # Contributor: liberodark Frederic Bezies
 
 pkgname=stacer-bin
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Linux System Optimizer and Monitoring"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('glibc' 'gcc-libs' 'libsm' 'libx11' 'e2fsprogs' 'harfbuzz' 'libglvnd' '
 source=("${pkgname}.install")
 source_x86_64=("https://launchpad.net/~quentiumyt/+archive/ubuntu/${pkgname%-bin}/+files/${pkgname%-bin}_${pkgver}-${pkgrel}+noble_all.deb")
 sha512sums=('7bed61f1ca2c53bb441f69a35d5e8a313a229bc34f114d121977379f48c3b9aa426d7a39a4c0363f1cad0cb8637b292263800d25bd317eceb517c19947bec3cd')
-sha512sums_x86_64=('8d96a5085bc52cded174ad5fec63aeeec7ab585620dea9a0e175b9c1f2005039f705a07013ded479cc6eab3b7a44596cc5ac69217f70226ed1ef039ee25572c8')
+sha512sums_x86_64=('bd33039846b17b16a45f3e99e99756e58df38cddbc9433bedbc800686b39890db23bbc8bc89adad720891c529ab314c92932db4f164b767a564685c786a151d5')
 options=('!strip')
 install="${pkgname}.install"
 conflicts=('stacer' 'stacer-git')
