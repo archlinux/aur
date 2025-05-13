@@ -3,8 +3,8 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-ffmpeg-minimal
-pkgver=7.1
-pkgrel=3
+pkgver=7.1.1
+pkgrel=1
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
@@ -33,7 +33,7 @@ conflicts=(${pkgname%-minimal})
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'configure.patch')
-md5sums=('623aa63a72139a82ccb99cd6ee477b94'
+md5sums=('26f2bd7d20c6c616f31d7130c88d7250'
          'c1851376794c16bcb37cfa8918e10cba')
 
 prepare() {
@@ -123,8 +123,6 @@ build() {
         --disable-outdev=v4l2 \
         --disable-alsa \
         --disable-avfilter \
-        --disable-filters \
-        --disable-bsfs \
         --disable-encoders \
         --enable-encoder=aac \
         --enable-encoder=libaom_av1 \
