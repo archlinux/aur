@@ -1,8 +1,8 @@
 # Maintainer: daneallenjohnson AT protonmail DOT com
 pkgname=guile-g-golf
 _pkgname=g-golf
-pkgver=0.8.0.rc.9
-_pkgver=0.8.0-rc9
+pkgver=0.8.1
+_pkgver=0.8.1
 pkgrel=1
 pkgdesc="A library for developing modern applications (GTK) in Guile Scheme."
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('autoconf' 'automake' 'texinfo')
 optdepends=('gtk4: For using GTK-4 bindings'
 	    'gtk3: For using GTK-3 bindings')
 source=("http://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${_pkgver}.tar.gz")
-sha256sums=('e2b170f8d876870c0e7cb9158db9bde0cf4c3b2bbbe6e5d96f2bca51a5e12127')
+sha256sums=('ca5e6948435870eab1ed35169b34971e18f4d87b82afe6a4e14b13b432318f22')
 validpgpkeys=('842265459B413377EEAC91DEF374FD93A3057AD7')
 
 build() {
