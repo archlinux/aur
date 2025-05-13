@@ -3,7 +3,7 @@
 pkgbase=python-stcal
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="STScI tools and algorithms used in calibration pipelines"
 arch=('i686' 'x86_64')
@@ -13,18 +13,18 @@ makedepends=('python-setuptools-scm>=3.4'
              'cython>=0.29.21'
              'python-build'
              'python-installer'
-             'python-numpy'
+             'python-numpy>=2.0.0'
              'python-sphinx-asdf'
              'python-drizzle'
              'python-scikit-image'
              'python-tweakwcs'
-             'graphviz')  # wheel required by new setuptools
+             'graphviz')  # wheel required by new setuptools; gwcs, spherical_geometry, stsci.. <- tweakwcs
 #checkdepends=('python-pytest-doctestplus'
-##             'python-pytest-xdist'
+#             'python-pytest-xdist'
 #              'python-opencv'
-#             )   # gwcs(requests) tweakwcs drizzle skimage(requests) already in makedepends
+#             )   # gwcs(requests <- .. <- scipy) <- tweakwcs drizzle skimage(requests) already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('8e5590b257504b19c992ca6dcd470e57')
+md5sums=('3e7fea254abc5477a3225cdca1ef17d7')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
