@@ -1,0 +1,12 @@
+pkgbase = eblanfetch
+	pkgdesc = Stupid fetch written in Python
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/dirolov/eblanfetch
+	arch = any
+	license = MIT
+	depends = python
+	source = eblanfetch.py
+	sha256sums = SKIP
+
+pkgname = eblanfetch
