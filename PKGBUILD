@@ -8,6 +8,8 @@ url="https://github.com/AlbanDAVID/Toutui"
 license=('GPL3')
 conflict=('toutui')
 depends=('vlc' 'netcat')
+provides=('toutui')
+conflicts=('toutui' 'toutui-git')
 source=("https://github.com/AlbanDAVID/Toutui/releases/download/v${pkgver}-beta/toutui-x86_64-unknown-linux-gnu.tar.gz" 
         "https://github.com/AlbanDAVID/Toutui/releases/download/v${pkgver}-beta/toutui-aarch64-unknown-linux-gnu.tar.gz"
         "https://github.com/AlbanDAVID/Toutui/releases/download/v${pkgver}-beta/config.example.toml"
