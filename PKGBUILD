@@ -2,7 +2,7 @@
 _pkgname=slimjet
 pkgname="${_pkgname}-beta-bin"
 _appname="flashpeak-${_pkgname}"
-pkgver=46.0.1.0
+pkgver=46.0.2.0
 _libffmpegver=0.99.1
 pkgrel=1
 pkgdesc="Fast, smart and powerful browser based on Blink.(Prebuilt beta version)"
@@ -45,7 +45,7 @@ source=(
     "${pkgname%-bin}-${pkgver}_amd64.deb::${_dlurl}/beta/${_pkgname}_amd64.deb"
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
 )
-sha256sums=('3d423bf595c8858cc64d0bdb61b1685f219ee3cf206965c32b552af6716488c1'
+sha256sums=('7cad561c62a87ac4e29880860b9ead53f82588d7ed2fed936595305616fa0b69'
             'db0ffaba9e65ef018a673e9d01acc6111f1f7d2b474f0fbcdd8e190ff416c16d')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
