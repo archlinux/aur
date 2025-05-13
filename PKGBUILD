@@ -15,17 +15,17 @@ source=("git+https://github.com/AlbanDAVID/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname" || exit
+	cd "$srcdir/$_pkgname" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_pkgname"
     cargo build --release
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_pkgname"
 
     install -Dm755 "target/release/toutui" "$pkgdir/usr/bin/toutui"
     install -Dm644 "config.example.toml" "$pkgdir/usr/share/toutui/config.example.toml"
