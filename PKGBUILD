@@ -13,7 +13,7 @@ optdepends=('php-xsl: xlsx export')
 optdepends=('php-tcpdf: pdf export')
 options=('!strip' 'emptydirs')
 backup=("etc/$pkgname/conf.php")
-install=dolibarr.install
+install=gestereg.install
 source=("https://github.com/adrienb39/$_pkgname/archive/refs/tags/v$pkgver-$pkgrel.tar.gz"
         gestereg.conf
         nginx.conf.example
