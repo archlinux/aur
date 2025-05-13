@@ -1,7 +1,7 @@
 pkgbase = airdrop-tool-bin
 	pkgdesc = Fetch & analyse blockchain tickets. View leaderboards and user tickets. Calculate and perform provably fair airdrops.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.3.31
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/BTS-CM/airdrop_tool
 	arch = x86_64
 	license = MIT
