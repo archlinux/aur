@@ -1,7 +1,7 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgbase=gcc-snapshot
-pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-cobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
+pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-gcobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
 pkgver=16.0.0.snapshot20250511
 _pkgver=16-20250511
 _majorver=${_pkgver//-*}
@@ -10,7 +10,7 @@ _realver=${pkgver//.s*}
 _gmpver=6.3.0
 _mpcver=1.3.1
 _mpfrver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection (snapshot)'
 arch=(x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
@@ -347,12 +347,12 @@ package_gcc-ada-snapshot() {
     ${pkgdir}/usr/share/licenses/${pkgname}/
 }
 
-package_gcc-cobol-snapshot() {
+package_gcc-gcobol-snapshot() {
   pkgdesc='Cobol front-end for GCC (snapshot)'
   depends=("gcc-snapshot=${pkgver}-${pkgrel}")
-  provides=(${pkgname}-multilib gcc-cobol-multilib gcc-cobol)
-  replaces=(${pkgname}-multilab gcc-cobol-multilib gcc-cobol)
-  conflicts=(gcc-cobol-multilib gcc-cobol)
+  provides=(${pkgname}-multilib gcc-gcobol-multilib gcc-gcobol)
+  replaces=(${pkgname}-multilab gcc-gcobol-multilib gcc-gcobol)
+  conflicts=(gcc-gcobol-multilib gcc-gcobol)
   options=(!emptydirs lto strip staticlibs)
 
   cd gcc-build
