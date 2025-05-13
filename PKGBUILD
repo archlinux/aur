@@ -2,8 +2,8 @@
 # Contributor: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
-pkgver=107.r7931.0ffc61e
-pkgrel=9
+pkgver=107.r7931
+pkgrel=1
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracut-ng/dracut'
@@ -84,9 +84,10 @@ conflicts=("${pkgname%-git}")
 source=(
   git+${url}.git
   1322.patch::${url}/commit/bcf0093.patch # fix: improve hostonly sloppy mode
+  1194.patch::${url}/commit/d567b94.patch # feat(initqueue): factor out initqueue into its own module
 )
 
-sha512sums=('SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -95,7 +96,7 @@ pkgver() {
   source dracut-version.sh
 
   # use number of revisions since beginning of the history
-  printf "%s.r%s.%s" "$DRACUT_VERSION" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  printf "%s.r%s" "$DRACUT_VERSION" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
