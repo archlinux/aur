@@ -17,8 +17,9 @@ pkgbase = neuralrack-git
 	depends = gcc-libs
 	depends = glibc
 	depends = libx11
-	provides = NeuralRack
-	provides = NeuralRack.lv2
+	provides = Neuralrack.lv2
+	provides = Neuralrack_ui.so
+	provides = Neuralrack.so
 	source = git+https://github.com/brummer10/NeuralRack.git
 	sha256sums = SKIP
 
