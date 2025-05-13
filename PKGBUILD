@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elastron-bin
 _pkgname=Elastron
-pkgver=1.6.2
-_electronversion=34
+pkgver=1.7.0
+_electronversion=36
 pkgrel=1
 pkgdesc="Full featured elasticsearch client(Prebuilt version.Use system-wide electron)."
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('588311ded45570d2b2587ac22c8fc9230dcbad1c36627716f5d7371e0f5e8a2c'
+sha256sums=('adafaf9cff567949a153594803cd2dad81e9338193fc211740c91a4fd4481529'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
