@@ -5,7 +5,7 @@
 
 _pkgname=grub4dos-efi
 pkgname="${_pkgname}-git"
-pkgver=r766.20250326.ec3edb3
+pkgver=r767.20250510.b5c60c9
 pkgrel=1
 pkgdesc="GRUB4DOS EFI binaries."
 arch=(
