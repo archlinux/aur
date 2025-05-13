@@ -4,7 +4,7 @@
 
 pkgname='epics-base'
 pkgver=7.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Physics and Industrial Control System"
 arch=('any')
 url="https://epics-controls.org"
@@ -15,11 +15,13 @@ makedepends=()
 source=("https://epics-controls.org/download/base/base-${pkgver}.tar.gz"{,.asc}
         '01_install_permissions.patch'
         '02_no_rpath.patch'
+        '03_new_gcc_version_fix.patch'
 )
 sha512sums=('40accd1954ba750d250c88ef60289e99921d30235180824575a6b82325f10fe6d920b740e6895da9908be5465a2fa9b8004b8f004694e01f38cdc63e8c9ed430'
             'SKIP'
             '8d8ea744e1bd011c0a01c645a37cd29c420830389ce340820975ea798c6138ce28d7d5e066fe503025fb353a2e19c1a33169a3d5777414e60b42eb5b3874091a'
-            '394b023fe3003e61701c8c31d44c17281297a3b67f3bbe604e9191f38267986c34b06fe24eae5e778a29b466b022bdce5d4d0f4061da9c91a44467f1e0d266a3')
+            '394b023fe3003e61701c8c31d44c17281297a3b67f3bbe604e9191f38267986c34b06fe24eae5e778a29b466b022bdce5d4d0f4061da9c91a44467f1e0d266a3'
+            'd6e52695cb34647ffa4105f648898bb31dd5f77d67e8bf02e3f6650225ea75399383480278a9e63f0ee608fb1487c98702d27297b90cb8827b2c5377d761a113')
 validpgpkeys=('4B688BF5CAF9452CBD5BE86FD306120EEACB4576') # Andrew Johnson (Argonne)
 
 prepare() {
@@ -28,6 +30,7 @@ prepare() {
     # apply patches
     patch --forward --strip=1 --input="${srcdir}/01_install_permissions.patch"
     patch --forward --strip=1 --input="${srcdir}/02_no_rpath.patch"
+    patch --forward --strip=1 --input="${srcdir}/03_new_gcc_version_fix.patch"
 
     # install files to staging area
     echo "INSTALL_LOCATION=${srcdir}/staging/usr/lib/epics" >'configure/CONFIG_SITE.local'
@@ -126,6 +129,4 @@ package() {
     sed -i "s|${srcdir}/staging/usr/lib/epics|./usr/lib/epics|g" "${pkgdir}/usr/lib/epics/configure/CONFIG_SITE.local"
 
     # TODO: makepkg complains the package contains references to $srcdir
-
-    # TODO: split the package into base and modules
 }

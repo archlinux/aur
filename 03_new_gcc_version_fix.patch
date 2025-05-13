@@ -1,0 +1,96 @@
+diff '--color=auto' '--color=auto' --unified --recursive --text src.orig/modules/database/src/ioc/dbStatic/dbStaticLib.c src.next/modules/database/src/ioc/dbStatic/dbStaticLib.c
+--- src.orig/modules/database/src/ioc/dbStatic/dbStaticLib.c  2025-02-22 00:31:33.000000000 +0100
++++ src.next/modules/database/src/ioc/dbStatic/dbStaticLib.c    2025-05-13 07:54:14.673648696 +0200
+@@ -3456,7 +3456,7 @@
+                     " - get_ioint_info()"
+                 };
+                 int i, n = pdevSup->pdset->number;
+-                DEVSUPFUN *pfunc = &pdevSup->pdset->report;
++                DEVSUPFUN *pfunc = (DEVSUPFUN *)&pdevSup->pdset->report;
+ 
+                 printf("\t    number: %d\n", n);
+                 for (i = 0; i < n; ++i, ++pfunc) {
+diff '--color=auto' '--color=auto' --unified --recursive --text src.orig/modules/database/test/ioc/db/dbLinkdset.c src.next/modules/database/test/ioc/db/dbLinkdset.c
+--- src.orig/modules/database/test/ioc/db/dbLinkdset.c        2025-02-22 00:31:33.000000000 +0100
++++ src.next/modules/database/test/ioc/db/dbLinkdset.c  2025-05-13 08:39:12.876852342 +0200
+@@ -24,14 +24,18 @@
+     return 0;
+ }
+ 
+-static
+-long link_test_noop(void *junk)
+-{ return 0; }
+-
+-
++static long link_test_noop_report(int lvl) { return 0; }
++static long link_test_noop_record(struct dbCommon *prec) { return 0; }
++static long link_test_noop_ioint(int, struct dbCommon *, IOSCANPVT *) { return 0; }
+ 
+ #define DEFDSET(LTYPE) \
+-    static dset devxLTest ## LTYPE = {4, NULL, &link_test_init, &link_test_noop, &link_test_noop}; \
++    static typed_dset devxLTest ## LTYPE = { \
++        4, \
++        link_test_noop_report, \
++        link_test_init, \
++        link_test_noop_record, \
++        link_test_noop_ioint \
++    }; \
+     epicsExportAddress(dset, devxLTest ## LTYPE);
+ 
+ DEFDSET(JSON_LINK)
+diff '--color=auto' '--color=auto' --unified --recursive --text src.orig/modules/database/test/std/rec/asTestLib.c src.next/modules/database/test/std/rec/asTestLib.c
+--- src.orig/modules/database/test/std/rec/asTestLib.c        2025-02-22 00:31:33.000000000 +0100
++++ src.next/modules/database/test/std/rec/asTestLib.c  2025-05-13 08:16:13.892849137 +0200
+@@ -283,10 +283,28 @@
+     DEVSUPFUN linconv;
+ };
+ 
+-static long noop() {return 0;}
++static long noop_report(int lvl) { return 0; }
++static long noop_init(int after) { return 0; }
++static long noop_get_ioint_info(int, struct dbCommon *, IOSCANPVT *) { return 0; }
++static long noop_proc(struct dbCommon *) { return 0; }
++static long noop_linconv(struct dbCommon *, int) { return 0; }
+ 
+-static struct dset6 devAOasTest = { {6, NULL, NULL, (DEVSUPFUN)initRec0, NULL}, (DEVSUPFUN)noop, NULL};
+-static struct dset6 devWFasTest = { {6, NULL, NULL, (DEVSUPFUN)initRec1, NULL}, (DEVSUPFUN)noop, NULL};
++static struct dset6 devAOasTest = {
++    {6,
++     noop_report,
++     noop_init,
++     (long (*)(struct dbCommon *))initRec0,
++     noop_get_ioint_info},
++    (DEVSUPFUN)noop_proc,
++    (DEVSUPFUN)noop_linconv};
++static struct dset6 devWFasTest = {
++    {6,
++     noop_report,
++     noop_init,
++     (long (*)(struct dbCommon *))initRec1,
++     noop_get_ioint_info},
++    (DEVSUPFUN)noop_proc,
++    (DEVSUPFUN)noop_linconv};
+ 
+ epicsExportAddress(dset, devAOasTest);
+ epicsExportAddress(dset, devWFasTest);
+diff '--color=auto' '--color=auto' --unified --recursive --text src.orig/modules/libcom/src/log/iocLogServer.c src.next/modules/libcom/src/log/iocLogServer.c
+--- src.orig/modules/libcom/src/log/iocLogServer.c    2025-02-22 00:31:33.000000000 +0100
++++ src.next/modules/libcom/src/log/iocLogServer.c      2025-05-13 07:50:13.192994111 +0200
+@@ -480,14 +480,14 @@
+      * this task will find out and exit
+      */
+     {
+-        long true = 1;
++        long on = 1;
+ 
+         status = setsockopt(
+                 pclient->insock,
+                 SOL_SOCKET,
+                 SO_KEEPALIVE,
+-                (char *)&true,
+-                sizeof(true) );
++                (char *)&on,
++                sizeof(on) );
+         if(status<0){
+             fprintf(stderr, "Keepalive option set failed\n");
+         }
