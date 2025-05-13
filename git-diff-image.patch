@@ -1,0 +1,22 @@
+diff --git a/diff-image b/diff-image
+index 0f6a316..7ec4bab 100755
+--- a/diff-image
++++ b/diff-image
+@@ -134,7 +134,7 @@ exif()
+ 
+ diff_clean_names()
+ {
+-    diff -u "$1" --label "$name1" "$2" --label "$name2" || true
++    diff -u --color=always "$1" --label "$name1" "$2" --label "$name2" || true
+ }
+ 
+ 
+@@ -208,7 +208,7 @@ fi
+ density_flag=
+ do_compare()
+ {
+-  if which gm > /dev/null
++  if compare --version | head -1 | grep -q "GraphicsMagick"
+   then
+     echo "NOTICE: GraphicsMagick does not support 'compare -fuzz', so omitting it"
+     compare $density_flag $color_flag $backgroundcolor_flag -file png:- "$f1" "$f2" | \
