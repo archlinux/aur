@@ -1,0 +1,13 @@
+pkgbase = kmonad-contrib-autostart-git
+	pkgdesc = Additional KMonad config files
+	pkgver = r24.c1a6b3a
+	pkgrel = 1
+	url = https://github.com/kmonad/kmonad-contrib
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	source = kmonad-contrib-autostart-git::git+https://github.com/kmonad/kmonad-contrib
+	sha256sums = SKIP
+
+pkgname = kmonad-contrib-autostart-git
