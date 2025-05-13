@@ -14,6 +14,8 @@ pkgbase = toutui-git
 	provides = toutui
 	conflicts = toutui
 	conflicts = toutui-bin
+	options = !debug
+	options = !lto
 	source = git+https://github.com/AlbanDAVID/Toutui.git
 	sha256sums = SKIP
 

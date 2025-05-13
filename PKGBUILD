@@ -13,6 +13,7 @@ provides=('toutui')
 conflicts=('toutui' 'toutui-bin')
 source=("git+https://github.com/AlbanDAVID/${_pkgname}.git")
 sha256sums=('SKIP')
+options=(!debug !lto)
 
 pkgver() {
     cd "$_pkgname"
