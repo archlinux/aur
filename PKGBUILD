@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=107.r7931
-pkgrel=3
+pkgrel=4
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracut-ng/dracut'
@@ -128,5 +128,5 @@ build() {
 package() {
   cd "${pkgname%-git}"
 
-  DESTDIR="$pkgdir" make install
+  DESTDIR="$pkgdir" enable_test=no make install
 }
