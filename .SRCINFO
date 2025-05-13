@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-hip
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)
-	pkgver = b5361
+	pkgver = b5365
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
@@ -28,11 +28,11 @@ pkgbase = llama.cpp-hip
 	provides = llama.cpp
 	conflicts = llama.cpp
 	options = lto
-	source = git+https://github.com/ggerganov/llama.cpp#tag=b5361
+	source = git+https://github.com/ggerganov/llama.cpp#tag=b5365
 	source = git+https://github.com/nomic-ai/kompute.git
 	source = llama.cpp.conf
 	source = llama.cpp.service
-	sha256sums = 8958a45fe1109cd53c94c2619821c75b9b269e40e02b776a35cabbcf2e3e7bdf
+	sha256sums = 92ab77841835f69ede498691462bb010e4cec3f76226091677008b3382a34360
 	sha256sums = SKIP
 	sha256sums = 53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87
 	sha256sums = 0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d
