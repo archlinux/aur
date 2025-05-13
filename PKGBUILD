@@ -15,17 +15,17 @@ source=("git+https://github.com/AlbanDAVID/Toutui.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
+    cd "$srcdir/$_pkgname"
     git describe --tags --long | sed 's/^v//;s/-/./g'
 }
 
 build() {
-    cd "$_pkgname"
+    cd "$srcdir/$_pkgname"
     cargo build --release --locked
 }
 
 package() {
-    cd "$_pkgname"
+    cd "$srcdir/$_pkgname"
 
     install -Dm755 "target/release/toutui" "$pkgdir/usr/bin/toutui"
     install -Dm644 "config.example.toml" "$pkgdir/usr/share/toutui/config.example.toml"
