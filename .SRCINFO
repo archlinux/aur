@@ -1,7 +1,7 @@
 pkgbase = adagate-bin
 	pkgdesc = A kid-friendly 3D dungeon escape game within a Stargate fantasy setting.(Prebuilt version)
 	pkgver = 7.4.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fastrgv/AdaGate
 	arch = x86_64
 	license = GPL-3.0-only
