@@ -11,7 +11,7 @@ pkgname=(
 pkgver=8.0.6.sdk302
 _runtimever=8.0.6
 _sdkver=8.0.302
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -35,8 +35,8 @@ package_dotnet-runtime-8.0.300-bin() {
     'openssl'
   )
   optdepends=('lttng-ust: CoreCLR tracing')
-  provides=("dotnet-runtime=${_runtimever}" "dotnet-runtime-8.0.300-bin")
-  conflicts=("dotnet-runtime=${_runtimever}" "dotnet-runtime-8.0.300-bin")
+  provides=("dotnet-runtime=${_runtimever}" "dotnet-runtime-8.0.300")
+  conflicts=("dotnet-runtime=${_runtimever}" "dotnet-runtime-8.0.300")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -46,8 +46,8 @@ package_dotnet-runtime-8.0.300-bin() {
 package_aspnet-runtime-8.0.300-bin() {
   pkgdesc='The ASP.NET Core runtime (binary)'
   depends=('dotnet-runtime-8.0.300-bin')
-  provides=("aspnet-runtime=${_runtimever}" "aspnet-runtime-8.0.300-bin")
-  conflicts=("aspnet-runtime=${_runtimever}" "aspnet-runtime-8.0.300-bin")
+  provides=("aspnet-runtime=${_runtimever}" "aspnet-runtime-8.0.300")
+  conflicts=("aspnet-runtime=${_runtimever}" "aspnet-runtime-8.0.300")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -73,8 +73,8 @@ package_dotnet-sdk-8.0.300-bin() {
 package_dotnet-targeting-pack-8.0.300-bin() {
   pkgdesc='The .NET Core targeting pack (binary)'
   depends=(netstandard-targeting-pack)
-  provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-8.0.300-bin)
-  conflicts=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-8.0.300-bin)
+  provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-8.0.300)
+  conflicts=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-8.0.300)
 
   if [ $CARCH = 'x86_64' ]; then msarch=x64;
   elif [ $CARCH = 'armv7h' ]; then msarch=arm;
@@ -88,8 +88,8 @@ package_dotnet-targeting-pack-8.0.300-bin() {
 package_aspnet-targeting-pack-8.0.300-bin() {
   pkgdesc='The ASP.NET Core targeting pack (binary)'
   depends=(dotnet-targeting-pack-8.0.300-bin)
-  provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-8.0.300-bin)
-  conflicts=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-8.0.300-bin)
+  provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-8.0.300)
+  conflicts=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-8.0.300)
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
   cp -dr --no-preserve='ownership' packs/Microsoft.AspNetCore.App.Ref "${pkgdir}"/usr/share/dotnet/packs/
