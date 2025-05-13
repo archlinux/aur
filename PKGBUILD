@@ -2,7 +2,7 @@
 
 pkgname=yin-yang
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Light/dark theme switcher for Linux. Supports popular Desktops, text editors and more!"
 arch=('any')
 url="https://github.com/oskarsh/Yin-Yang"
@@ -25,7 +25,7 @@ package() {
         "$pkgdir/usr/lib/mozilla/native-messaging-hosts/"
         "$pkgdir/usr/share/applications/"
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
-        "$pkgdir/usr/share/licenses/yin_yang"
+        "$pkgdir/usr/share/licenses/yin-yang"
     )
     for dir in "${DIRS[@]}"
     do
