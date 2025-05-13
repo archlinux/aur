@@ -1,7 +1,7 @@
 pkgbase = rbdoom-3-bfg
 	pkgdesc = Doom 3 BFG Edition with modern engine features like PBR, Baked Global Illumination, Soft Shadows
-	pkgver = 1.5.1
-	pkgrel = 12
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://github.com/RobertBeckebans/RBDOOM-3-BFG
 	install = rbdoom-3-bfg.install
 	arch = x86_64
@@ -22,12 +22,12 @@ pkgbase = rbdoom-3-bfg
 	optdepends = python-pyxdg: for the included launcher script
 	optdepends = mergerfs: required by the included launcher script to setup the correct file structure
 	options = !lto
-	source = git+https://github.com/RobertBeckebans/RBDOOM-3-BFG.git#tag=v1.5.1
+	source = git+https://github.com/RobertBeckebans/RBDOOM-3-BFG.git#tag=v1.6.0
 	source = rbdoom-3-bfg.png
 	source = rbdoom-3-bfg.desktop
 	source = rbdoom-3-bfg-launcher
 	source = rbdoom-3-bfg-launcher.desktop
-	sha256sums = 6d2a7917efeebb77a6e2c0b872bd6f2c639897ec4ce8dd63be1e70395ead7435
+	sha256sums = 7360cae94ee9a09817e552a1c2b18f31b8c41f2f9f1147266b7980774d409b55
 	sha256sums = 0fb6a3bb9b47cad65d5012ba20dc9de3b1487f4ac1908ee847e6087511b7f09e
 	sha256sums = f317d503d30ecc6e0a70e353cb020d2ea78ecb05d8d2e0250f39cfd8a4fe16a5
 	sha256sums = a3c3006c254ce25ff890494acc8cfbfb88d406661f4468b56aaefc144227db21

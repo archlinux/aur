@@ -3,9 +3,9 @@
 # Based on the rbdoom3-bfg-git package by M0Rf30
 
 pkgname=rbdoom-3-bfg
-_srctag=1.5.1
+_srctag=1.6.0
 pkgver=${_srctag//-/.}
-pkgrel=12
+pkgrel=1
 pkgdesc="Doom 3 BFG Edition with modern engine features like PBR, Baked Global Illumination, Soft Shadows"
 arch=('x86_64')
 url="https://github.com/RobertBeckebans/RBDOOM-3-BFG"
@@ -44,7 +44,6 @@ source=(
 prepare() {
   cd RBDOOM-3-BFG
   git remote set-url origin https://github.com/RobertBeckebans/RBDOOM-3-BFG.git
-  git cherry-pick -n feffa4a4dd9a2a5f3c608f720cde41bea37797d3
   git submodule update --init --filter=tree:0 --recursive
 }
 
@@ -54,7 +53,6 @@ build() {
   cmake \
     -S RBDOOM-3-BFG/neo \
     -B build \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE="Release" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBINKDEC=OFF \
@@ -62,8 +60,6 @@ build() {
     -DWINDOWS10=OFF \
     -DUSE_DX12=OFF \
     -DUSE_VULKAN=ON \
-    -DUSE_SYSTEM_LIBJPEG=OFF \
-    -DUSE_SYSTEM_LIBPNG=OFF \
     -DUSE_SYSTEM_RAPIDJSON=OFF \
     -DUSE_SYSTEM_ZLIB=OFF \
     -DUSE_PRECOMPILED_HEADERS=OFF \
@@ -82,7 +78,7 @@ package() {
   install -Dm644 -t "$pkgdir"/usr/share/pixmaps/ rbdoom-3-bfg.png
 }
 
-sha256sums=('6d2a7917efeebb77a6e2c0b872bd6f2c639897ec4ce8dd63be1e70395ead7435'
+sha256sums=('7360cae94ee9a09817e552a1c2b18f31b8c41f2f9f1147266b7980774d409b55'
             '0fb6a3bb9b47cad65d5012ba20dc9de3b1487f4ac1908ee847e6087511b7f09e'
             'f317d503d30ecc6e0a70e353cb020d2ea78ecb05d8d2e0250f39cfd8a4fe16a5'
             'a3c3006c254ce25ff890494acc8cfbfb88d406661f4468b56aaefc144227db21'
