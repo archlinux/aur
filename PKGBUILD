@@ -4,7 +4,7 @@ _pkgname=Agendapp
 pkgver=1.4.0
 _electronversion=20
 _nodeversion=16
-pkgrel=7
+pkgrel=8
 pkgdesc="One of the best software to simplify school calendar management and facilitate classroom notes.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/johan-perso/agendapp"
@@ -19,16 +19,17 @@ makedepends=(
     'npm'
     'nvm'
     'curl'
+    'git'
 )
 options=(
     '!strip'
     '!emptydirs'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('5be49a54d0ec5d17131b7a4e827968d646f83865c92928dbd1b39cfeb5cd6c6e'
+sha256sums=('af48ed31462c54a7f6c93cdb2443661b69ab2e74a804b32a0cb75ade9e933021'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -37,24 +38,24 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
