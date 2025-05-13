@@ -11,7 +11,7 @@ pkgname=(
 pkgver=8.0.6.sdk302
 _runtimever=8.0.6
 _sdkver=8.0.302
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -72,7 +72,9 @@ package_dotnet-sdk-8.0.300-bin() {
 
 package_dotnet-targeting-pack-8.0.300-bin() {
   pkgdesc='The .NET Core targeting pack (binary)'
-  depends=(netstandard-targeting-pack)
+  depends=(
+    'netstandard-targeting-pack'
+  )
   provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-8.0.300)
   conflicts=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-8.0.300)
 
@@ -87,7 +89,9 @@ package_dotnet-targeting-pack-8.0.300-bin() {
 
 package_aspnet-targeting-pack-8.0.300-bin() {
   pkgdesc='The ASP.NET Core targeting pack (binary)'
-  depends=(dotnet-targeting-pack-8.0.300-bin)
+  depends=(
+    'dotnet-targeting-pack-8.0.300-bin'
+  )
   provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-8.0.300)
   conflicts=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-8.0.300)
 
