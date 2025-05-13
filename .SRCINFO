@@ -1,6 +1,6 @@
 pkgbase = git-it-electron-git
 	pkgdesc = A Desktop App for Learning Git and GitHub.(Use system-wide electron)
-	pkgver = 6.0.0.r0.g433fe95
+	pkgver = 6.0.0.r23.g88c78e6
 	pkgrel = 1
 	url = https://github.com/Git-it-App/git-it-electron
 	arch = any
