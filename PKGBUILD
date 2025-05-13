@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=107.r7931
-pkgrel=1
+pkgrel=3
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracut-ng/dracut'
@@ -25,7 +25,6 @@ makedepends=(
   'asciidoc'
   'bash-completion'
   'git'
-  'rust'
 )
 optdepends=(
   'binutils: --uefi option support'
@@ -122,7 +121,6 @@ build() {
 
   ./configure \
     --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion) \
-    --enable-dracut-cpio \
     --configprofile=hostonly
   make
 }

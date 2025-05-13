@@ -1,14 +1,13 @@
 pkgbase = dracut-git
 	pkgdesc = An event driven initramfs infrastructure
 	pkgver = 107.r7931
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/dracut-ng/dracut
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = asciidoc
 	makedepends = bash-completion
 	makedepends = git
-	makedepends = rust
 	depends = bash
 	depends = coreutils
 	depends = cpio
