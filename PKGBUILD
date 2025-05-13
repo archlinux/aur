@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TrajectoryUtils
-_pkgver=1.16.0
+_pkgver=1.16.1
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc='Single-Cell Trajectory Analysis Utilities'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2c7766cfc6f495c28e41ab885bde397bbda1e72cfeeced6fd385a471658129d7')
+sha256sums=('0ee5e2c885fc6e2207c0e620c14f1a8ace1090ff9ae18bf9c991b286a042115d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
