@@ -4,7 +4,7 @@
 # Contributor: Zhuoyun Wei <wzyboy@wzyboy.org>
 
 pkgname=nghttp2
-pkgver=1.64.0
+pkgver=1.65.0
 pkgrel=1
 pkgdesc='Client, server and proxy programs from the nghttp2 library'
 arch=(x86_64)
@@ -17,7 +17,7 @@ backup=(
   etc/nghttpx/nghttpx.conf
   etc/logrotate.d/nghttpx
 )
-sha256sums=('88bb94c9e4fd1c499967f83dece36a78122af7d5fb40da2019c56b9ccc6eb9dd')
+sha256sums=('f1b9df5f02e9942b31247e3d415483553bc4ac501c87aa39340b6d19c92a9331')
 
 build() {
   cd nghttp2-$pkgver
@@ -25,7 +25,8 @@ build() {
   autoreconf -i
   ./configure \
     --prefix=/usr \
-    --disable-examples
+    --disable-examples \
+    --enable-zerobleed
   make
 }
 
