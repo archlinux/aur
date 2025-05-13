@@ -17,7 +17,9 @@ makedepends=(
 	python-hatchling
 )
 checkdepends=()
-optdepends=()
+optdepends=(
+	"python-inquirer: tui configuration"
+)
 provides=()
 conflicts=()
 replaces=()
