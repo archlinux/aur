@@ -3,7 +3,7 @@
 pkgsubn=aic8800d80
 pkgname=aic8800d80-dkms
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 
 pkgdesc="Kernel modules for WIFI AX900 8800d80 / Tenda"
 arch=('x86_64')
