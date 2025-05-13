@@ -1,10 +1,10 @@
 pkgbase = email-to-pdf-converter-bin
 	pkgdesc = Converts email files (eml, msg) to pdf
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nickrussler/email-to-pdf-converter
 	arch = any
-	license = APACHE
+	license = Apache-2.0
 	depends = java-runtime
 	depends = wkhtmltopdf
 	provides = email-to-pdf-converter

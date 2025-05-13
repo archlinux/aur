@@ -3,11 +3,11 @@
 _name=email-to-pdf-converter
 pkgname=${_name}-bin
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Converts email files (eml, msg) to pdf"
 arch=('any')
 url="https://github.com/nickrussler/${_name}"
-license=('APACHE')
+license=('Apache-2.0')
 depends=('java-runtime' 'wkhtmltopdf')
 provides=("${_name}")
 conflicts=("${_name}")
