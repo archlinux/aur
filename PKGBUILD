@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=stageR
-_pkgver=1.30.0
+_pkgver=1.30.1
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.30.1
 pkgrel=1
 pkgdesc='stageR: stage-wise analysis of high throughput gene expression data in R'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3fa1bca5c307c6d0ac224f8604d622000627474b2ec20598949b8f68be118a60')
+sha256sums=('655d27db14408fa519a09cfcf561600ed65a33f8eb4e171f1415bb74411aa44a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
