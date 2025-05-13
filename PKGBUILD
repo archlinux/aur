@@ -11,7 +11,7 @@ arch=('any')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 makedepends=('qt5-tools' 'python' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr' 'libxss' 'libxcomposite' 'libxkbfile'
-             'gperf' 'nss' 'clang' 'nodejs')
+             'gperf' 'nss' 'clang' 'nodejs' 'ninja')
 groups=('qt5')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/single/$_pkgfqn.tar.xz"
@@ -29,6 +29,8 @@ prepare() {
 
   patch -d qtbase -p1 < "$srcdir"/no-qmake.patch # Use system qmake
   patch -d qtwebengine -p1 < "$srcdir"/qt5-webengine-python3.patch # Fix build with Python 3
+# Fix build with python 3.13
+  sed -e '/import pipes/d' -i qtwebengine/src/3rdparty/chromium/build/android/gyp/util/build_utils.py
 }
 
 build() {

@@ -21,6 +21,7 @@ pkgbase = qt5-doc
 	makedepends = nss
 	makedepends = clang
 	makedepends = nodejs
+	makedepends = ninja
 	source = https://download.qt.io/official_releases/qt/5.15/5.15.16/single/qt-everywhere-opensource-src-5.15.16.tar.xz
 	source = qt5-webengine-python3.patch
 	source = no-qmake.patch
