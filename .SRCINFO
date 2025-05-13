@@ -1,7 +1,7 @@
 pkgbase = mootool-bin
 	pkgdesc = Handy tool set for developers.(Prebuilt version)开发者常备小工具
 	pkgver = 1.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rememberber/MooTool
 	arch = x86_64
 	license = MIT

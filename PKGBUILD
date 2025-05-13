@@ -2,7 +2,7 @@
 pkgname=mootool-bin
 _pkgname=MooTool
 pkgver=1.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Handy tool set for developers.(Prebuilt version)开发者常备小工具"
 arch=('x86_64')
 url="https://github.com/rememberber/MooTool"
@@ -23,15 +23,15 @@ sha256sums=('6d1e973095af60c3b3c791c3e0de77eec7c243aa9aca705723d68ab874c76ea4'
             '91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333'
             '74b5601e17710cdf781ec411f54075c2c477370fdc317ff75c18bdae0662b498')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
         s/\/opt\/${_pkgname}\/${_pkgname} %U/${pkgname%-bin} %U/g
         s/\/opt\/${_pkgname}\/${_pkgname}.png/${pkgname%-bin}/g
         s/Categories=Utility/Categories=Development;/g
-    " -i "${srcdir}/opt/${_pkgname}/${_pkgname}.desktop"
+    " "${srcdir}/opt/${_pkgname}/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname}"
