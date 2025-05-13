@@ -8,7 +8,7 @@ pkgbase = google-crc32c
 	makedepends = cmake
 	makedepends = git
 	depends = gcc-libs
-	source = google-crc32c-1.1.2::git+https://github.com/google/crc32c.git#tag=2bbb3be42e20a0e6c0f7b39dc07dc863d9ffbc07
+	source = google-crc32c::git+https://github.com/google/crc32c.git#tag=2bbb3be42e20a0e6c0f7b39dc07dc863d9ffbc07
 	sha256sums = 622e752bac7eb19110e53639b1c86ae9188a4882dca8796f81eb0bcb088262f1
 
 pkgname = google-crc32c
