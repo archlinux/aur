@@ -1,7 +1,7 @@
 pkgbase = syng
 	pkgdesc = All in one karaoke software
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/christofsteel/syng
 	arch = any
 	license = AGPL-3.0-or-later
@@ -19,7 +19,7 @@ pkgbase = syng
 	sha256sums = 1db7e2edc125ffc7ef9eb91c8631546abf2191908d5d6eb408ab62b7fc14eb30
 
 pkgname = syng-common
-	pkgdesc = Common files for syng, the karaoke software
+	pkgdesc = All in one karaoke software (common)
 	depends = python
 	depends = python-aiohttp
 	depends = python-platformdirs
@@ -29,7 +29,7 @@ pkgname = syng-common
 	optdepends = syng-client: Client requirements for syng
 
 pkgname = syng-client
-	pkgdesc = Client for syng, the karaoke software
+	pkgdesc = All in one karaoke software (client)
 	depends = python-minio
 	depends = python-mpv
 	depends = python-pillow
@@ -42,6 +42,6 @@ pkgname = syng-client
 	depends = syng-common
 
 pkgname = syng-server
-	pkgdesc = Server for syng, the karaoke software
+	pkgdesc = All in one karaoke software (server)
 	depends = python-alt-profanity-check
 	depends = syng-common

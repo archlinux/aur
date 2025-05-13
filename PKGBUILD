@@ -2,7 +2,7 @@
 pkgbase=syng
 pkgname=(syng-common syng-client syng-server)
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="All in one karaoke software"
 arch=(any)
 url="https://github.com/christofsteel/syng"
@@ -33,7 +33,7 @@ build() {
     python -m build --wheel --no-isolation
 }
 package_syng-common() {
-    pkgdesc="Common files for syng, the karaoke software"
+    pkgdesc="All in one karaoke software (common)"
     pkgname=syng-common
     depends=(
         python
@@ -53,7 +53,7 @@ package_syng-common() {
     install -vDm644 ../syng.desktop "$pkgdir/usr/share/applications/syng.desktop"
 }
 package_syng-server() {
-    pkgdesc="Server for syng, the karaoke software"
+    pkgdesc="All in one karaoke software (server)"
     pkgname=syng-server
     depends=(
         python-alt-profanity-check
@@ -61,7 +61,7 @@ package_syng-server() {
     )
 }
 package_syng-client() {
-    pkgdesc="Client for syng, the karaoke software"
+    pkgdesc="All in one karaoke software (client)"
     pkgname=syng-client
     depends=(
         python-minio
