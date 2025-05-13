@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=huaweicloudmeeting-bin
 _pkgname=HuaWeiCloudMeeting
-_zhsname="华为云会议"
+_zhsname='华为云会议'
 pkgver=9.12.5
 _electronversion=22
 pkgrel=6
@@ -27,18 +27,18 @@ source=(
 sha256sums=('60e15e2a93c0529c4573a6c616e76b3e74f61f4f160e7d3279fde28993982f1f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\"\/opt\/${_zhsname}\/${pkgname%-bin}\"/${pkgname%-bin}/g
         s/Education/Network/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
