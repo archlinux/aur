@@ -1,0 +1,19 @@
+pkgbase = gocurl-bin
+	pkgdesc = Simplified version of curl written in pure Go with additional features
+	pkgver = 1.4.8
+	pkgrel = 1
+	url = https://github.com/ameshkov/gocurl
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = gocurl
+	conflicts = gocurl
+	source_x86_64 = https://github.com/ameshkov/gocurl/releases/download/v1.4.8/gocurl-linux-amd64-v1.4.8.tar.gz
+	sha256sums_x86_64 = 0dc7c7b5cfc773dc6afac240c320b671a291a04c690f6b55a9caf61a47c4c64a
+	source_i686 = https://github.com/ameshkov/gocurl/releases/download/v1.4.8/gocurl-linux-386-v1.4.8.tar.gz
+	sha256sums_i686 = d3714e90a8de04b81333557730f1106992a8f8e5323a4ccbfcc46fef0ff14cc5
+	source_aarch64 = https://github.com/ameshkov/gocurl/releases/download/v1.4.8/gocurl-linux-arm64-v1.4.8.tar.gz
+	sha256sums_aarch64 = 98c536f3fab08b32b7e5dc9650031fba33e7c464db49773ea2c6a03ed5cfdfa6
+
+pkgname = gocurl-bin
