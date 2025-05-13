@@ -1,7 +1,7 @@
-diff -Naur xfce4-panel-4.20.0-orig/plugins/pager/pager.c xfce4-panel-4.20.0/plugins/pager/pager.c
---- xfce4-panel-4.20.0-orig/plugins/pager/pager.c	2024-10-23 18:27:20.000000000 +0200
-+++ xfce4-panel-4.20.0/plugins/pager/pager.c	2024-12-29 20:53:43.800000000 +0100
-@@ -446,31 +446,96 @@
+diff -Naur xfce4-panel-4.20.4-orig/plugins/pager/pager.c xfce4-panel-4.20.4/plugins/pager/pager.c
+--- xfce4-panel-4.20.4-orig/plugins/pager/pager.c	2025-03-22 07:17:47.000000000 +0100
++++ xfce4-panel-4.20.4/plugins/pager/pager.c	2025-03-28 19:04:43.044454596 +0100
+@@ -445,31 +445,96 @@
    active_ws = xfw_workspace_group_get_active_workspace (plugin->workspace_group);
    active_n = xfw_workspace_get_number (active_ws);
  
