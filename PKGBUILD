@@ -18,6 +18,7 @@ makedepends=(
   'cmake'
   'git'
   'go'
+  'go.rice'
   'grpc'
   'make'
   'openssl'
