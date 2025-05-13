@@ -40,7 +40,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  
+
   export CUDA_HOME="/opt/cuda"
   export PATH="$CUDA_HOME/bin:$PATH"
 
@@ -73,8 +73,8 @@ package() {
     "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
 
-sha256sums=('b75f7cffb3b105c1f5e7cd4aa2d5c18cf461b6af0977d150d654d596f1dc8d79'
-            '8e530e32d96d02c01192c987e8bffaf0bb67db34bf999fccdfa8d0777789233b'
-            '90e042d0f5885b63a6aa4db7f87d6b931956f6c9b022407593466f61f6973312'
-            '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
-            'bd420ec530cbfdb7f29b309e3c0c8cd72de6346b7c8e9882e917a071c65b344c')
+sha256sums=('c6e27c467d8eb8c9a39b96c65de64a264b8fc2e50557fbad143ea351a0e09d3e'
+  '8e530e32d96d02c01192c987e8bffaf0bb67db34bf999fccdfa8d0777789233b'
+  '90e042d0f5885b63a6aa4db7f87d6b931956f6c9b022407593466f61f6973312'
+  '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
+  'bd420ec530cbfdb7f29b309e3c0c8cd72de6346b7c8e9882e917a071c65b344c')
