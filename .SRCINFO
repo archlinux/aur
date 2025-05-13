@@ -1,16 +1,20 @@
 pkgbase = vscodium-prod-patcher
 	pkgdesc = Universal patcher for VSCodium
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
+	url = https://github.com/fnr1r/vscodium-prod-patcher
 	arch = any
 	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = vscodium
+	depends = python-toml
 	options = !debug
-	source = features-patch.json
-	source = util.py
-	source = vscodium-prod-patcher.hook
-	sha256sums = 18266dd33e987ad007ea56da2533925d3ddb84e1bac9c013cb2d513b79c0d59b
+	source = git+https://github.com/fnr1r/vscodium-prod-patcher#tag=v1.0.1
+	source = vscodium-prod-patcher.hook.in
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 0b3c4a42ba232ece67c2cb9a6004b907fc1cec2244286350409a380a180ae5d8
 
 pkgname = vscodium-prod-patcher
