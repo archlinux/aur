@@ -7,11 +7,11 @@
 
 pkgname=redis
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An in-memory database that persists on disk'
 arch=('x86_64')
 url='https://redis.io/'
-license=('BSD')
+license=('AGPL-3.0-only')
 depends=('jemalloc' 'grep' 'shadow' 'systemd-libs')
 # pkg-config fails to detect systemd libraries if systemd is not installed
 makedepends=('systemd' 'openssl')
@@ -49,7 +49,7 @@ package() {
   cd $pkgname-$pkgver
   make PREFIX="$pkgdir"/usr install
 
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/redis/LICENSE
+  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/redis/LICENSE
   install -Dm644 -t "$pkgdir"/etc/redis redis.conf sentinel.conf
   install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ ../redis.service ../redis-sentinel.service
   install -Dm644 "$srcdir"/redis.sysusers "$pkgdir"/usr/lib/sysusers.d/redis.conf

@@ -1,11 +1,11 @@
 pkgbase = redis
 	pkgdesc = An in-memory database that persists on disk
 	pkgver = 8.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://redis.io/
 	install = redis.install
 	arch = x86_64
-	license = BSD
+	license = AGPL-3.0-only
 	makedepends = systemd
 	makedepends = openssl
 	depends = jemalloc
