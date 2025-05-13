@@ -5,8 +5,8 @@
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
 _appname=SiYuan
-pkgver=3.1.28
-_electronversion=34
+pkgver=3.1.29
+_electronversion=35
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -30,14 +30,14 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('0498415e1941b674285bc19bf3a4bc11bc37cae748b78baf9173e53c0b18f094')
-sha256sums_x86_64=('d952c9b4e5b8abe2016b0244a2bf2133910470a252ccd973ce7b6d05b5501281')
+sha256sums_aarch64=('3b4a0c6bfc91a00638e3700990888fcb53dbc1bff8ecb810a0b58021764afc3e')
+sha256sums_x86_64=('b29a914eb73ceee33661117c6898b68811e5c33b568e6a70cdd3480e0c417550')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app/g
-        s/@cfgdirname@/SiYuan-Electron/g
+        s/@cfgdirname@/${_appname}-Electron/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
