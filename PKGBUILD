@@ -1,7 +1,7 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=buchable
 _pkgname=buchable
-pkgver=1.7.9
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="The unofficial cross-platform app for Audiobookshelf"
 arch=('x86_64')
@@ -36,6 +36,11 @@ prepare() {
 
 build() {
     cd "abs_flutter-$pkgver"
+    
+    # Fix build error
+    export CFLAGS="${CFLAGS} -Wno-error=deprecated-declarations"
+    export CXXFLAGS="${CXXFLAGS} -Wno-error=deprecated-declarations"
+    
     flutter build linux --release
 }
 
