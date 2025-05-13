@@ -2,7 +2,7 @@
 
 pkgname=python-sdbus
 _reponame=sdbus
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Modern Python library for D-Bus"
 url="https://github.com/python-sdbus/python-sdbus"
@@ -23,7 +23,7 @@ makedepends=(
 	'python-setuptools'
 )
 source=("https://pypi.org/packages/source/${_reponame::1}/${_reponame}/${_reponame}-${pkgver}.tar.gz")
-sha256sums=('801bd46608ee82614d42960c8ba8ae9300edb1bf5bbeb534bc8fd21f13d2c20e')
+sha256sums=('41d61b76cc05a9ea41d10d70a11e9f9a86ed95f40f713630c5e18340e0e4c76f')
 
 build() {
 	cd "${srcdir}/${_reponame}-${pkgver}"

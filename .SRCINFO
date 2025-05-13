@@ -1,6 +1,6 @@
 pkgbase = python-sdbus
 	pkgdesc = Modern Python library for D-Bus
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/python-sdbus/python-sdbus
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-sdbus
 	depends = python
 	optdepends = python-jinja: for code generator
 	optdepends = python-sphinx: for autodoc
-	source = https://pypi.org/packages/source/s/sdbus/sdbus-0.13.0.tar.gz
-	sha256sums = 801bd46608ee82614d42960c8ba8ae9300edb1bf5bbeb534bc8fd21f13d2c20e
+	source = https://pypi.org/packages/source/s/sdbus/sdbus-0.14.0.tar.gz
+	sha256sums = 41d61b76cc05a9ea41d10d70a11e9f9a86ed95f40f713630c5e18340e0e4c76f
 
 pkgname = python-sdbus
