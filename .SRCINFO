@@ -4,11 +4,11 @@ pkgbase = r-timetk
 	pkgrel = 5
 	url = https://cran.r-project.org/package=timetk
 	arch = any
-	license = MIT
+	license = GPL
 	checkdepends = r-testthat
 	depends = r-anytime
 	depends = r-dplyr
-	depends = r-forcast
+	depends = r-forecast
 	depends = r-forcats
 	depends = r-generics
 	depends = r-ggplot2
