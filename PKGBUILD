@@ -6,8 +6,8 @@ pkgdesc="A Navidrome client built with Tauri and Svelte."
 arch=("$CARCH")
 url="https://github.com/vMohammad24/NaviThingy"
 license=('MIT')
-depends=('nodejs' 'npm' 'gtk3' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
-makedepends=('git' 'rustup' 'pkg-config' 'clang' 'lld' 'webkit2gtk-4.1' 'openssl' 'openssl-1.1' 'glib2' 'zlib' 'patchelf')
+depends=('gtk3' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
+makedepends=('git' 'rustup' 'curl' 'pkg-config' 'clang' 'lld' 'webkit2gtk-4.1' 'openssl' 'openssl-1.1' 'glib2' 'zlib' 'patchelf')
 optdepends=(
     "libappindicator-gtk3: System tray support"
     "gst-plugin-pipewire: Required for PipeWire-based audio playback"
@@ -36,18 +36,22 @@ prepare() {
     rustup update stable
     rustup target add "$(rustc -vV | grep host | awk '{print $2}')"
 
-    npm install
+    curl -fsSL https://bun.sh/install | bash
+    export PATH="$HOME/.bun/bin:$PATH"
+
+    bun install --no-cache
 }
 
 build() {
     cd "$srcdir/NaviThingy"
+    export PATH="$HOME/.bun/bin:$PATH"
 
     export RUSTFLAGS="-C link-arg=-fuse-ld=lld"
     export CC=clang
     export CXX=clang++
 
-    npm run build
-    npm run tauri build -- --no-bundle
+    bun run build
+    bun run tauri build -- --no-bundle
 }
 
 package() {
