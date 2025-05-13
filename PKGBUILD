@@ -1,7 +1,7 @@
 # Maintainer: Prasanth Baskar <bupdprasanth@gmail.com>
 
 pkgname=dagger-git
-pkgver=0.18.6
+pkgver=0.18.7
 pkgrel=1
 pkgdesc='A portable devkit for CI/CD pipelines'
 arch=('x86_64')
@@ -16,10 +16,10 @@ sha512sums=('SKIP')
 b2sums=('SKIP')
 
 prepare() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
 
   # create directory for build output
-  mkdir build
+  mkdir -p build
 
   # download dependencies
   export GOPATH="${srcdir}"
@@ -27,7 +27,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
 
   # set Go flags
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -44,7 +44,7 @@ build() {
     -extldflags '${LDFLAGS}' \
     -X github.com/dagger/dagger/engine.Version=v$pkgver \
     -X github.com/dagger/dagger/engine.Tag=v$pkgver" \
-    -o build \
+    -o "$srcdir/$pkgname/build" \
     ./cmd/...
 }
 
@@ -56,7 +56,7 @@ build() {
 #}
 
 package() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
 
   install -vDm755 -t "$pkgdir/usr/bin" build/dagger
 }
