@@ -1,7 +1,7 @@
 pkgbase = libretro-melondsds-git
 	pkgdesc = Nintendo DS core
 	pkgver = 1.2.0.r1.g5d2ece5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JesseTG/melonds-ds
 	arch = aarch64
 	arch = armv7h
@@ -19,6 +19,7 @@ pkgbase = libretro-melondsds-git
 	depends = libretro-core-info>=1.17
 	provides = libretro-melondsds=1.2.0.r1.g5d2ece5
 	conflicts = libretro-melondsds
+	options = !lto
 	source = libretro-melondsds::git+https://github.com/JesseTG/melonds-ds.git
 	source = date::git+https://github.com/HowardHinnant/date.git
 	source = embed-binaries::git+https://github.com/andoalon/embed-binaries.git

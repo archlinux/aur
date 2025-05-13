@@ -2,7 +2,7 @@
 _pkgname=libretro-melondsds
 pkgname=$_pkgname-git
 pkgver=1.2.0.r1.g5d2ece5
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo DS core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/JesseTG/melonds-ds"
@@ -12,6 +12,7 @@ depends=('gcc-libs' 'glibc' 'libretro-core-info>=1.17')
 makedepends=('cmake>=3.19' 'git' 'libgl')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
+options=('!lto') # https://github.com/melonDS-emu/melonDS/issues/2314
 source=(
 	"$_pkgname::git+$url.git"
 	"date::git+https://github.com/HowardHinnant/date.git"
@@ -54,6 +55,7 @@ build() {
 		-D CMAKE_POLICY_VERSION_MINIMUM=3.5
 		-D DATE_REPOSITORY_URL="$srcdir"/date
 		-D EMBED_BINARIES_REPOSITORY_URL="$srcdir"/embed-binaries
+		-D ENABLE_LTO_RELEASE=OFF
 		-D FMT_REPOSITORY_URL="$srcdir"/fmt
 		-D GLM_REPOSITORY_URL="$srcdir"/glm
 		-D LIBRETRO_COMMON_REPOSITORY_URL="$srcdir"/jessetg-libretro-common
