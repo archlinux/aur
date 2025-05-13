@@ -12,7 +12,7 @@ _name='compiz'
 _pkgname='compiz-easy-patch'
 pkgname="${_pkgname}"
 pkgver=0.9.14.2
-pkgrel=9
+pkgrel=10
 pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE."
 url="https://launchpad.net/compiz"
 arch=('i686' 'x86_64')
@@ -23,18 +23,19 @@ license=(
 )
 
 depends=(
-  'boost-libs'
-  'fuse2'
   'glibmm'
   'glu'
+  'libice'
   'libnotify'
+  'libsm'
   'libwnck3'
   'libxslt'
   'metacity'
   'protobuf'
+  'python'
   'python-cairo'
+  'python-dbus'
   'python-gobject'
-  'xorg-server'
   'zenity'
 )
 makedepends=(
@@ -42,6 +43,7 @@ makedepends=(
   'cmake'
   'cython'
   'intltool'
+  'ninja'
   'python-setuptools'
 )
 optdepends=(
@@ -163,19 +165,17 @@ build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
-
-    -DCMAKE_CXX_STANDARD=17
+    -G Ninja
     -DCMAKE_BUILD_TYPE=None
-    -DCMAKE_INSTALL_PREFIX="/usr"
-    -DCMAKE_INSTALL_LIBDIR="/usr/lib"
-    -DCOMPIZ_DISABLE_SCHEMAS_INSTALL=ON
-    -DCOMPIZ_BUILD_WITH_RPATH=OFF
-    -DCOMPIZ_PACKAGING_ENABLED=ON
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_CXX_STANDARD=17
     -DBUILD_GTK=ON
     -DBUILD_METACITY=ON
-    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,expo,grid,regex,animation,ccp"
-
     -DCOMPIZ_BUILD_TESTING=OFF
+    -DCOMPIZ_BUILD_WITH_RPATH=OFF
+    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,expo,grid,regex,animation,ccp"
+    -DCOMPIZ_DISABLE_SCHEMAS_INSTALL=ON
+    -DCOMPIZ_PACKAGING_ENABLED=ON
     -DCOMPIZ_WERROR=OFF
     -Wno-dev
   )
