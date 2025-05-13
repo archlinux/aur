@@ -1,7 +1,7 @@
 # Maintainer: Alban <albdav.dev@gmail.com>
 pkgname=toutui-git
 _pkgname=Toutui
-pkgver=r887.cd62b88
+pkgver=v0.4.0.beta.r0.g170062b
 pkgrel=1
 pkgdesc="TUI Audiobookshelf client. Listen to your audiobooks and podcasts from your terminal."
 arch=('x86_64' 'aarch64' 'armv7h')
