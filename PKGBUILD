@@ -51,7 +51,7 @@ build() {
     export CXX=clang++
 
     bun run build
-    bun run tauri build -- --no-bundle
+    bun run tauri build --
 }
 
 package() {
