@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = @PACKAGE_NAME@
+
+[Action]
+Description = [@PACKAGE_NAME@] Regenerating hook file
+Exec = /usr/bin/@PACKAGE_NAME@ hook
+When = PostTransaction
