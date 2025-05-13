@@ -1,3 +1,5 @@
+pkg/
+src/
 pkgbuild_old
 pixum-fotowelt-*.pkg.tar.zst
 setup_Pixum_Fotowelt.tgz
