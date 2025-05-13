@@ -12,7 +12,7 @@ _name='compiz'
 _pkgname='compiz-easy-patch'
 pkgname="${_pkgname}"
 pkgver=0.9.14.2
-pkgrel=10
+pkgrel=11
 pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE."
 url="https://launchpad.net/compiz"
 arch=('i686' 'x86_64')
@@ -159,9 +159,16 @@ prepare() {
       patch -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
+
+  #build fix 2025/05/01 https://aur.archlinux.org/cgit/aur.git/commit/?h=compiz&id=3973b9fb7dcb3fa6a37ee1bbd084d23016b48a2e
+  sed -E \
+    -e 's&^(destroy_(bare|normal|switcher)_frame)\s?.*;$&\1 (decor_frame_t *frame);&' \
+    -i "gtk/window-decorator/gtk-window-decorator.h"
 }
 
 build() {
+  export CXXFLAGS+=" -Wno-error=incompatible-pointer-types" #build fix 2025/05/01
+
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
