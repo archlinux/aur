@@ -1,0 +1,7 @@
+Alias /gestereg "/usr/share/gestereg"
+<Directory "/usr/share/gestereg/htdocs">
+  DirectoryIndex index.html index.php
+  AllowOverride All
+  Options FollowSymlinks
+  Require all granted
+</Directory>
