@@ -1,6 +1,6 @@
 # Maintainer: Matthias Baur <aur@matthiasbaur.me>
 pkgname=noson-app
-pkgver=5.6.9
+pkgver=5.6.10
 pkgrel=1
 pkgdesc="The essential to control music from your SONOS devices on Linux platforms"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg' 'libpu
 makedepends=('cmake' 'git')
 source=("git+https://github.com/janbar/noson-app.git#tag=${pkgver}")
 
-sha256sums=('b7219193256a91b198297a54ce0fa4bdcc6cf430fcdfc44e877b9e9f27ec61b5')
+sha256sums=('c8f63c23bdb5560bc040ce8c0670346bc029568a349a4feab3d13e7cb005683a')
 
 build() {
 	mkdir -p "$srcdir/build"
