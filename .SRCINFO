@@ -1,16 +1,17 @@
 pkgbase = geckodriver-git
-	pkgdesc = Proxy for using W3C WebDriver-compatible clients to interact with Gecko-based browsers
-	pkgver = v0.11.1.r29.2658357
+	pkgdesc = WebDriver for Firefox
+	pkgver = 138.0.3.r5880.g917c73cfe1a5
 	pkgrel = 1
-	arch = any
-	license = MPL
+	url = https://github.com/mozilla-firefox/firefox/tree/main/testing/geckodriver
+	arch = i686
+	arch = x86_64
+	license = MPL-2.0
 	makedepends = git
 	makedepends = cargo
-	provides = geckodriver
+	depends = gcc-libs
+	provides = geckodriver=138.0.3.r5880.g917c73cfe1a5
 	conflicts = geckodriver
-	conflicts = geckodriver-bin
-	source = git+https://github.com/mozilla/geckodriver.git
-	md5sums = SKIP
+	source = git+https://github.com/mozilla-firefox/firefox.git
+	sha256sums = SKIP
 
 pkgname = geckodriver-git
-
