@@ -3,7 +3,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-prerelease
-pkgver=2.7.61.2
+pkgver=2.7.61.3
 _pkgtag=$pkgver
 # https://github.com/supermerill/SuperSlicer/blob/2.7.61.0/deps/%2BLibBGCode/LibBGCode.cmake
 _libbgcode=6f43cb004ef3d3bda37dde49f6235e24d2717629
@@ -48,7 +48,7 @@ source=("https://github.com/supermerill/SuperSlicer/archive/$_pkgtag.tar.gz"
         "0002-addlib-expat.patch"
         "0003-openexr3.patch"
         "0004-cgal6.patch")
-sha512sums=('de4574fe075bfbf74f482697d1e655bb8da794792f42d83d497058b89efbc20ffc969a75f5cc571f861b9bcce587885850440383745c58459b6e4b9ff4c613b8'
+sha512sums=('941d33a0d8ee4a1ab71e7de6ecbc6c9817ee81a992282ddf027dc34002b8953444a44964d82726c3485a0c847bdfbcc63ada056e6fc223ecc031ef935e5f16f0'
             '04cb7cb69d887e1fa5ced5c0219b0ee6cab81f09d1bc1226ebd26563e2ce60b85fb6e5aef11a36dffd3e00779849906fc5c19ad2cdd22d45360226912b6af31b'
             'ecbe9bdec72a372dfdc25b32dee382a9937c544567fa2da42a30467ddff2594495bf244a773401f655930301a2debc94636a362383239fa08808d0e51bc687a4'
             '1b8561d0f148ce2c38b7211eb78facc6e0cc2b89481e7c7700353534c7946a7b885e517852597b3252c6c21de527736f406f27ab01833d0f275c64103a8111f7'
