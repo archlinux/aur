@@ -6,7 +6,7 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc
-pkgver=1.11.1
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
@@ -37,7 +37,7 @@ source=("https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz"
         0008-Fix-hdrmd5-check-of-downloaded-packages-from-DoD-rep.patch
         0009-Add-buildlog-option-to-fetch-buildlog-not-relative-t.patch
        )
-sha256sums=('58d568a571b2182aa697934ca0af7dde645b1f8c69b83b7be5fb8358ea475802'
+sha256sums=('730f8729fb7d29425d852c99d0359e94c5ba77575be9fe0521ff39b219910d67'
             'fc66a9f1d00ed7c4d80d15b00d612138b966c73bbf9c7a49562f80149ce8e661'
             'be574baf4b1915fa01a83b42f4948b0587797bc4ff3a3df260d50e3201785636'
             'b90a0d94a5dd30addc66e3f3849ddf3281e17dc08c84bd5d279fe18858e7fad3'
