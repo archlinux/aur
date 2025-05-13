@@ -1,0 +1,16 @@
+pkgbase = attofetch
+	pkgdesc = A pretty minimal, and small in size, fetching tool written in bash.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/davyidx/attofetch
+	arch = any
+	license = MIT
+	depends = bash
+	source = attofetch
+	source = attoscript.sh
+	source = ascii.txt
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = attofetch
