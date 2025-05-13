@@ -19,7 +19,7 @@ build() {
     -DUSE_IPOLATES=ON -DBLA_VENDOR=OpenBLAS \
     -DUSE_AEC=ON \
     -DUSE_NETCDF=ON \
-    -DUSE_OPENJPEG=ON
+    -DUSE_G2CLIB_LOW=ON
   cmake --build build
 }
 
