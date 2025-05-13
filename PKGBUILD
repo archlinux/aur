@@ -35,7 +35,7 @@ _prams_Fnac=(fr_FR 18455 'Atelier Photo Fnac' 7.1.3)
 _prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 8.0.2 'CEWE Fotobuch')
 _prams_Fotowelt=(de_DE 6822 'CEWE Fotowelt' 7.4.0)
 _prams_Germany=(de_DE 24441 'CEWE Fotowelt' 8.0.2)
-_prams_Pixum=(de_DE 1291 'Pixum Fotowelt' 7.4.2)
+_prams_Pixum=(de_DE 1291 'Pixum Fotowelt' 8.0.2)
 _prams_Italy=(it_IT 19991 'CEWE.IT Foto World' 7.1.5)
 _prams_Luxemburg=(de_LU 32905 'CEWE Photoservice' 7.1.5)
 _prams_Luxembourg=(fr_LU 32905 'CEWE Photoservice' 7.1.4)
@@ -94,7 +94,7 @@ depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy' 'libxcrypt-compat')
 makedepends=('unzip' 'xdg-utils')
 arch=('i686' 'x86_64')
 source=($source 'updater.pl')
-md5sums=('7ef05b1f6cd85c1ede2f9f29eeeb1572'
+md5sums=('838058aae62a2d64a6ce68df5e5823bd'
          '6dbb622ce7c602a6a42e808a05f1561a')
 install="$pkgname.install"
 
