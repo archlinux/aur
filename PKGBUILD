@@ -2,7 +2,7 @@
 # Contributor: Michele Mocciola <mimocciola@yahoo.com>
 _base=TFEL
 pkgname=${_base,,}
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="TFEL/MFront introduces DSLs based on C++ to handle material knowledge"
 arch=(x86_64)
@@ -13,7 +13,7 @@ provides=(mfront)
 makedepends=(cmake gcc-fortran)
 optdepends=()
 source=(${url}/archive/${_base}-${pkgver}.tar.gz)
-sha512sums=('eb0d27a8a59fdcedda29b24c0567e3e3708298734275a5c39a1147955e305f8dc48adf55b23762357a8bc19bfc1ef5c36e955a1f85596c5a8a52f9dc4c37cee0')
+sha512sums=('2818dd86788dce1299d2df29deac4db60a5f62fc7438c2b3cd332eb524f580802059711079d375ae5ce3edbd572ec024c708c485d792be87a1bba39338dacb76')
 
 build() {
   cmake \
