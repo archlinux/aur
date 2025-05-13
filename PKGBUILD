@@ -10,7 +10,7 @@ depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg' 'libpu
 makedepends=('cmake' 'git')
 source=("git+https://github.com/janbar/noson-app.git#tag=${pkgver}")
 
-sha1sums=('SKIP')
+sha256sums=('b7219193256a91b198297a54ce0fa4bdcc6cf430fcdfc44e877b9e9f27ec61b5')
 
 build() {
 	mkdir -p "$srcdir/build"
