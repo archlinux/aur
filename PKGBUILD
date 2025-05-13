@@ -2,23 +2,23 @@
 
 _pkgname="gotz"
 pkgname="${_pkgname}-bin"
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="A simple CLI timezone info tool"
-arch=('aarch64' 'armv6h' 'i686' 'x86_64')
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/merschformann/${_pkgname}"
 license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_arm64.tar.gz")
-source_armv6h=("${_pkgsrc}-armv6h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_armv6.tar.gz")
+source_armv7h=("${_pkgsrc}-armv6h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_armv6.tar.gz")
 source_i686=("${_pkgsrc}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_386.tar.gz")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_amd64.tar.gz")
-sha256sums_aarch64=('7de98af92cbbd020c028ab98cb15ed25a45e72eac3860df293f9593f28467ea8')
-sha256sums_armv6h=('e9ceca394c73fe35841a225895ec11679e53e787eea914568cb4f1ebc50c54f5')
-sha256sums_i686=('303795cc11d81367bfd4bc60b39a050e9dcb264254023055d3741b7de385fc38')
-sha256sums_x86_64=('8e14aac3232616d5863bd7a2b4b62736f67d1d4edc3922521754e23b5a39b35f')
+sha256sums_aarch64=('8cd548bb713ea926f710945aad2953ed4ce41965bbd4da4237cefd2f2152f3cb')
+sha256sums_armv7h=('314ac595f0b2042add0540cb1a2d0058cd9f1d252c8b351b2f8a726007f9d092')
+sha256sums_i686=('bcb2bbbbd0df13102f791e19f3318c1a0e50963299b86190d751b11b31e99f2a')
+sha256sums_x86_64=('2a2766c2e96407ddd2be8bc1e6da5d234251b80c2df77b034d58d1862996372f')
 
 package() {
   cd "${srcdir}"
