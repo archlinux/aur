@@ -2,8 +2,8 @@
 # Maintainer: RocketDev <ma2014119@outlook.com>
 pkgname=ceccomp
 _reponame=Ceccomp
-pkgver=1.2
-pkgrel=3
+pkgver=1.3
+pkgrel=1
 pkgdesc="A C-based seccomp analysis tool"
 arch=(x86_64)
 url="https://github.com/dbgbgtf1/Ceccomp"
