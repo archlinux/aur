@@ -9,6 +9,7 @@ pkgbase = local-ai-clblas
 	makedepends = cmake
 	makedepends = git
 	makedepends = go
+	makedepends = go.rice
 	makedepends = grpc
 	makedepends = make
 	makedepends = openssl
