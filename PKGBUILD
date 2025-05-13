@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=alpaca-electron-bin
-_pkgname="Alpaca Electron"
+_pkgname='Alpaca Electron'
 pkgver=1.0.5
 _electronversion=13
-pkgrel=10
+pkgrel=11
 pkgdesc="The simplest way to run Alpaca (and other LLaMA-based local LLMs) on your own computer.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/ItsPi3141/alpaca-electron"
@@ -29,14 +29,20 @@ source=(
 sha256sums=('f77cbb049b831a89be19ddc4b7334d3d5ad7779649d4f8410ba00c70a740f912'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin} %U"
+    find "${srcdir}/release-builds/${_pkgname}-linux-x64/resources/app" -type d \( -name "linux-ia32" -o -name "linux-arm*" \) -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
