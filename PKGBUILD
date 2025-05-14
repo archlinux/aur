@@ -1,7 +1,7 @@
 # Maintainer: Katie Varkony (tristanandlucky@gmail.com)
 
 pkgname=nbtworkbench-git
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A modern NBT (Minecraft's Named Binary Tags) Editor written in Rust."
 url='https://github.com/RealRTTV/nbtworkbench'
