@@ -1,7 +1,7 @@
 pkgbase = procmail
 	pkgdesc = Mail processing and sorting program
 	pkgver = 3.24
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/BuGlessRB/procmail
 	arch = x86_64
 	license = GPL-2.0-or-later

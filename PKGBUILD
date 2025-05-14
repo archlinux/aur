@@ -3,7 +3,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 pkgname=procmail
 pkgver=3.24
-pkgrel=4
+pkgrel=5
 pkgdesc="Mail processing and sorting program"
 arch=('x86_64')
 url="https://github.com/BuGlessRB/procmail"
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  yes n | make CFLAGS0="${CFLAGS} ${LDFLAGS}" LOCKINGTEST="/tmp ."
+  yes n | make CFLAGS0="${CFLAGS} -std=gnu89 ${LDFLAGS}" LOCKINGTEST="/tmp ."
 }
 
 package() {
