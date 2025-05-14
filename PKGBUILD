@@ -1,7 +1,7 @@
 # Maintainer: witt <1989161762 at qq dot com>
 
 pkgname=bongo-cat
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="BongoCat 是一个可爱地互动桌面宠物应用，让你的桌面充满乐趣！"
 arch=('any')
@@ -15,7 +15,7 @@ source=(
   "${pkgname%-bin}-${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/BongoCat_${pkgver}_amd64.deb"
   "LICENSE::https://raw.githubusercontent.com/ayangweb/BongoCat/refs/heads/master/LICENSE"
 )
-sha256sums=('ce38c8a93c4285de166ab06ccfd89e66e5a6f8b8f987922f80ca151101cb602f'
+sha256sums=('4774d257153b6ab1508fec939797588d1e1500593f02a128ebf9c815806094cf'
             '1a164304cda4e01afc74bed12c93ef7d366958bf596d66477e63d315e42a23ce')
 
 build() {
