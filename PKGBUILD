@@ -5,12 +5,18 @@
 pkgname=gurush
 _origpkgname=gurush
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Shell AI Agent."
 arch=("x86_64")
 url='https://pypi.org/project/gurush/'
 license=("MIT")
-depends=()
+depends=(
+	"python"
+	"confz"
+	"python-inquirerpy"
+	"python-langchain"
+	"python-langchain-community"
+)
 makedepends=(
 	"python-build"
 	"python-installer"

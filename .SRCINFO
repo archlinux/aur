@@ -1,7 +1,7 @@
 pkgbase = gurush
 	pkgdesc = Linux Shell AI Agent.
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/gurush/
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,11 @@ pkgbase = gurush
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-hatchling
+	depends = python
+	depends = confz
+	depends = python-inquirerpy
+	depends = python-langchain
+	depends = python-langchain-community
 	source = https://files.pythonhosted.org/packages/66/27/019fad69b1fc65893bd758513bb6b4a4b7c7a0f417cd4ba980bb3c2369d1/gurush-0.1.6.tar.gz
 	sha256sums = 944c7800b619401af461c1828ccb4016d6759053bec69894c2446f1842e60da6
 
