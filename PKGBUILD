@@ -24,7 +24,7 @@ pkgver() {
 build() {
     cd $_pkgname
     ./configure --prefix=/usr --sysconfdir=/etc
-    make
+    make LIBREADLINE=-lreadline
 }
 
 package() {
