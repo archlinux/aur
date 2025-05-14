@@ -7,7 +7,10 @@ arch=('x86_64')
 url="https://github.com/KhronosGroup/OpenCL-ICD-Loader"
 license=('Apache-2.0')
 depends=('glibc')
-makedepends=('cmake' 'opencl-headers')
+makedepends=(
+  'cmake'
+  'opencl-headers'
+)
 optdepends=('opencl-driver: packaged opencl driver')
 provides=('libOpenCL.so=1' 'ocl-icd')
 conflicts=('ocl-icd')
