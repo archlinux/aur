@@ -3,32 +3,19 @@
 
 pkgname=abdownloadmanager-bin
 _pkgname=ABDownloadManager
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A Download Manager that speeds up your downloads"
-arch=('x86_64')
+arch=("x86_64")
 url="https://abdownloadmanager.com/"
-license=('Apache-2.0')
-depends=(
-    'glibc'
-    'java-runtime'
-    'zlib'
-    'alsa-lib'
-    'libglvnd'
-    'libxi'
-    'freetype2'
-    'libxtst'
-    'libxrender'
-    'fontconfig'
-    'libx11'
-    'libxext'
-    )
-provides=('abdownloadmanager')
-conflicts=('abdownloadmanager')
+license=("Apache-2.0")
+depends=("glibc" "java-runtime" "zlib" "alsa-lib" "libglvnd" "libxi" "freetype2" "libxtst" "libxrender" "fontconfig" "libx11" "libxext")
+provides=("abdownloadmanager")
+conflicts=("abdownloadmanager")
 options=(!debug)
 source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux_x64.tar.gz"
         "${_pkgname}.desktop")
-sha256sums=("41abab1e205d1bb8d650263007aff066b8bc7576928a2303dd1bf0605f648910"
+sha256sums=("fbeffef550fb32f7c16b1376e539d84914044e5610bd1916f98ac732f758a395"
             "233bc90afae18aa215b47850a1ded67e653c7123845f2bddb0334873e8d21036")
 
 package() {
