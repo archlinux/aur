@@ -1,6 +1,6 @@
 pkgbase = switchhosts-git
 	pkgdesc = An app for managing hosts file,and switch hosts quickly ! (Use system-wide electron)
-	pkgver = 4.2.0.r13.ge59d97e
+	pkgver = 4.2.0.r21.g76fd1e8
 	pkgrel = 1
 	url = https://switchhosts.vercel.app
 	arch = any
