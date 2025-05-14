@@ -1,6 +1,6 @@
 pkgbase = ab-download-manager-git
 	pkgdesc = A Download Manager that speeds up your downloads
-	pkgver = 1.4.1.r7.gd0c6ae5
+	pkgver = 1.6.1.r0.gbd69c86
 	pkgrel = 1
 	url = https://abdownloadmanager.com
 	arch = any
@@ -19,6 +19,6 @@ pkgbase = ab-download-manager-git
 	source = ab-download-manager::git+https://github.com/amir1376/ab-download-manager.git
 	source = abdownloadmanager.desktop
 	sha256sums = SKIP
-	sha256sums = d194cf142921d78c8a2a8c6c2b3a8b41bf2545eb2c7147a8f866946528227031
+	sha256sums = 5a4bf7f33c90e750d1755da005cfd81a80913620ab0abe256d9b91ec6dd01ccf
 
 pkgname = ab-download-manager-git
