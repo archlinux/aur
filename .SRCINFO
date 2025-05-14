@@ -6,7 +6,7 @@ pkgbase = murgafetch
 	arch = any
 	license = GPL3
 	depends = bash
-	source = https://github.com/f3d31206/murgafetch/raw/main/murgafetch
+	source = https://github.com/f3d31206/murgafetch/blob/master/.murgafetch
 	md5sums = SKIP
 
 pkgname = murgafetch
