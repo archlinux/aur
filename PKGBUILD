@@ -1,11 +1,12 @@
 # Maintainer: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
 pkgname=sail-riscv
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Sail RISC-V model"
 arch=(x86_64)
 url="https://github.com/riscv/sail-riscv"
 license=('BSD')
+depends=(gmp)
 makedepends=(sail-isa-spec)
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('4f11b4f93e4d6c37246cd3e56c30578ec67266b031a429ee91f28c458271e149')
