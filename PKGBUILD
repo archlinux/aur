@@ -1,0 +1,66 @@
+# Maintainer: peippo <christoph.fink@gmail.com>
+
+pkgname=martin
+pkgdesc="A tile server able to generate and serve vector tiles on the fly"
+url="https://maplibre.org/martin/"
+
+pkgver=0.16.0
+pkgrel=1
+
+arch=("x86_64" "i686")
+license=("Apache-2.0 OR MIT")
+
+depends=(
+    "gcc-libs"
+    "glibc"
+)
+makedepends=(
+    "cargo"
+    "npm"
+)
+
+options=("!lto")
+
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate"
+    "${pkgname}-${pkgver}-LICENSE-APACHE::https://github.com/maplibre/martin/raw/refs/heads/main/LICENSE-APACHE"
+    "${pkgname}-${pkgver}-LICENSE-MIT::https://github.com/maplibre/martin/raw/refs/heads/main/LICENSE-MIT"
+)
+b2sums=(
+    "1f3ec9a6a4e17cc0874cea73282be827bad5112d1dd2bebcc60675bd625e4a3d4809f29295a273ee3bc4ed8a2480c94af9c98c832936d5c50d334b639010f936"
+    "21fadd835dd2d39db33e007a95f4ce46277c5c87902a6e8a530673ceab9b4d13246fb80f93906e9cc684db6e35f6ead13cf71c553468f3a07df6e1c7d9b85b4b"
+    "fc19c34e958648930a8d8cc56542ffd8eabdea36954d61e9e2f8c6b7f48bef66a61233c5097a5b4f40b79321bfb16b8ef445de0460af115413f7fd3dea825bc9"
+)
+
+prepare() {
+    cd "${srcdir}"/${pkgname}-${pkgver}
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    cd "${srcdir}"/${pkgname}-${pkgver}
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    LDFLAGS+=' -Wl,-z,cet-report=error'
+    cargo build --frozen --release --all-features
+}
+
+package() {
+    cd "${srcdir}"/${pkgname}-${pkgver}
+    install -Dm 0755 \
+        "target/release/martin" \
+        "${pkgdir}/usr/bin/martin"
+    install -Dm 0755 \
+        "target/release/martin-cp" \
+        "${pkgdir}/usr/bin/martin-cp"
+    install -Dm 0644 \
+        "README.md" \
+        "${pkgdir}/usr/share/docs/martin/README.md"
+    install -Dm 0644 \
+        "../${pkgname}-${pkgver}-LICENSE-APACHE" \
+        "${pkgdir}/usr/share/licenses/martin/LICENSE-APACHE"
+    install -Dm 0644 \
+        "../${pkgname}-${pkgver}-LICENSE-MIT" \
+        "${pkgdir}/usr/share/licenses/martin/LICENSE-MIT"
+}
