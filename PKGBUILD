@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=m2r2
 pkgname=python-${_base}
-pkgver=0.3.3.post2
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Markdown and reStructuredText in a single file"
 arch=(any)
@@ -14,8 +14,8 @@ checkdepends=(python-pytest python-six python-sphinx)
 changelog=CHANGES.md
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   setuptools_compatibility.patch::${url}/pull/22.patch)
-sha512sums=('066dcbd63fcf3b1ca2319e11fe3af59010b8937f9b4a17e451212b6c7a43488ef20d1f8944b49295cdddaed57c8a27fe08b0159f26a345ae457cd87af8526c21'
-  '3686b8b8bf21f9e7c905e215766ded8aa66b14c7e20a4844ef21c926efabae0b56cc27e946ae626799c060c7d5323c9915198601a81d818a62ae57ce5be8cc95')
+sha512sums=('4a6fffab0f1d9d388c44e7e4879c818ddd437809238901c1f27b57fb3e3718db9ce5185528a209c74f3ef7aa084605248c2944dc7b596f8e0833d6eb35c09a34'
+            '3686b8b8bf21f9e7c905e215766ded8aa66b14c7e20a4844ef21c926efabae0b56cc27e946ae626799c060c7d5323c9915198601a81d818a62ae57ce5be8cc95')
 
 prepare() {
   cd ${_base}-${pkgver}
