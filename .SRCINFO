@@ -1,7 +1,7 @@
 pkgbase = tiny-games-bin
 	pkgdesc = Play games with friends without needing extra controllers or hardware.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://c0mplexity0.github.io/tiny-games/
 	arch = x86_64
 	license = GPL-3.0-only
