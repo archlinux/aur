@@ -1,6 +1,7 @@
 # Maintainer: prime-run <prime-run@githiub.com>
 
-pkgname=hyde-ipc
+pkgname=hyde-ipc-git
+_pkgname=hyde-ipc
 
 pkgver=0.1.2
 pkgrel=1
@@ -20,14 +21,14 @@ sha256sums=(SKIP)
 
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   git describe --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
 
     export RUSTUP_TOOLCHAIN=stable
-    cd "$pkgname"
+    cd "$_pkgname"
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -35,12 +36,12 @@ prepare() {
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cd "$pkgname"
+    cd "$_pkgname"
     cargo build --frozen --release
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_pkgname"
     install -Dm755 "target/release/hyde-ipc" "$pkgdir/usr/bin/hyde-ipc"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
