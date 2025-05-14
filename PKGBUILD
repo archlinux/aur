@@ -3,7 +3,7 @@
 _pkgname=pylibjpeg-rle
 pkgname=python-pylibjpeg-rle
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast DICOM RLE plugin for pylibjpeg'
 arch=('x86_64')
 url='https://github.com/pydicom/pylibjpeg-rle'
@@ -28,5 +28,6 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:
