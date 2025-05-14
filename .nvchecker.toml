@@ -1,0 +1,5 @@
+[asm-processor-bin]
+source = "github"
+github = "simonlindholm/asm-processor"
+use_latest_release = true
+prefix = "v"
