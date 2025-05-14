@@ -1,6 +1,6 @@
 # Maintainer: Wasabi <wasabithumbs@gmail.com>
 pkgname=open-goal-launcher-bin
-pkgver="2.5.0"
+pkgver="2.7.4"
 pkgrel=1
 pkgdesc="A launcher for the OpenGOAL Project to simplify usage and installation"
 arch=("x86_64")
@@ -8,9 +8,9 @@ url='https://github.com/open-goal/launcher'
 license=('ISC')
 depends=('fuse')
 conflicts=('open-goal-launcher')
-_image="open-goal-launcher_${pkgver}_amd64.AppImage"
-source_x86_64=("https://github.com/open-goal/launcher/releases/download/v2.5.0/${_image}")
-md5sums_x86_64=("8d98b8d6ef414dbbfccac9f0b260cee5")
+_image="OpenGOAL-Launcher_${pkgver}_amd64.AppImage"
+source_x86_64=("https://github.com/open-goal/launcher/releases/download/v2.7.4/${_image}")
+md5sums_x86_64=("2c22a5d46a969902f8bbc0037e08a63c")
 options=(!strip)
 
 prepare() {
@@ -21,22 +21,22 @@ prepare() {
 
 build() {
 	cd "${srcdir}/squashfs-root"
-	sed -i '/^Type=/d' open-goal-launcher.desktop
-	sed -i '/^Exec=/d' open-goal-launcher.desktop
-	sed -i '/^Comment=/d' open-goal-launcher.desktop
-	sed -i '/^Version=/d' open-goal-launcher.desktop
-	sed -i '/^X-AppImage-Version=/d' open-goal-launcher.desktop
-	echo "Type=Application" >> open-goal-launcher.desktop
-	echo "Exec=/usr/bin/${pkgname}" >> open-goal-launcher.desktop
-	echo "Comment=${pkgdesc}" >> open-goal-launcher.desktop
-	echo "Version=${pkgver}" >> open-goal-launcher.desktop
+	sed -i '/^Type=/d' OpenGOAL-Launcher.desktop
+	sed -i '/^Exec=/d' OpenGOAL-Launcher.desktop
+	sed -i '/^Comment=/d' OpenGOAL-Launcher.desktop
+	sed -i '/^Version=/d' OpenGOAL-Launcher.desktop
+	sed -i '/^X-AppImage-Version=/d' OpenGOAL-Launcher.desktop
+	echo "Type=Application" >> OpenGOAL-Launcher.desktop
+	echo "Exec=/usr/bin/${pkgname}" >> OpenGOAL-Launcher.desktop
+	echo "Comment=${pkgdesc}" >> OpenGOAL-Launcher.desktop
+	echo "Version=${pkgver}" >> OpenGOAL-Launcher.desktop
 	chmod -R a-x+rX usr
 }
 
 package() {
 	install -Dm755 "${srcdir}/${_image}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
 
-	install -Dm644 "${srcdir}/squashfs-root/open-goal-launcher.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm644 "${srcdir}/squashfs-root/OpenGOAL-Launcher.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
 	install -dm755 "${pkgdir}/usr/share/"
 	cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
