@@ -27,19 +27,21 @@ sha256sums=('c5e0ebc37c7508920043b3e099d10b10353e80404b37b91b46479070fef7bfe2'
             '94498661dd39a1b98f9de887a8566146b200bbf7a644b08a5beacbbac927134f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_appname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "
+    sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    " "${srcdir}/squashfs-root/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
