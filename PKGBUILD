@@ -13,7 +13,7 @@ depends=(hidapi opus portaudio qcustomplot qt5-base qt5-gamepad qt5-multimedia q
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 
-source=("http://ftp.debian.org/debian/pool/main/w/$_pkgbase/${_pkgbase}_$pkgver-$pkgrel_amd64.deb")
+source=("http://ftp.debian.org/debian/pool/main/w/$_pkgbase/${_pkgbase}_$pkgver-${pkgrel}_amd64.deb")
 md5sums=('4b086ac303401cc2a645d9936ac96e80')
 
 package() {
