@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=webcam-glass-git
-_pkgname="Webcam Glass"
+_pkgname='Webcam Glass'
 pkgver=0.7.2.r96.g9a908f7
-_electronversion=22
-_nodeversion=18
+_electronversion=36
+_nodeversion=22
 pkgrel=1
-pkgdesc="Cross-platform tool for making video tutorials and video conferencing, blending the webcam over the screen.Use system-wide electron."
+pkgdesc="Making video tutorials and video conferencing, blending the webcam over the screen.(Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/jersonlatorre/webcam-glass-app"
 license=('GPL-3.0-only')
@@ -19,6 +19,7 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
+    'curl'
 )
 source=(
     "${pkgname%-git}.git::git+${url}.git"
@@ -39,13 +40,13 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
@@ -59,7 +60,6 @@ prepare() {
         rm -rf bun.lockb
     fi
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        export npm_config_disturl="https://registry.npmmirror.com/-/binary/node/"
         export npm_config_electron_mirror="https://registry.npmmirror.com/-/binary/electron/"
         export npm_config_electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
         export sqlite3_binary_site="https://registry.npmmirror.com/-/sqlite3/"
@@ -69,6 +69,7 @@ prepare() {
         } >> bunfig.toml
     fi
     rm -rf dist node_modules
+    sed -i "28i\    this.setIcon(require(\'path\').join(__dirname, \'..\/assets\/icon-4\/icon.png\'))" ipc-main/main-window.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g;s/dist\/linux/dist/g" package.json
     bun install
 }
@@ -80,7 +81,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/icon-4/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
