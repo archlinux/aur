@@ -1,0 +1,20 @@
+pkgbase = uptime-kuma-git
+	pkgdesc = A fancy self-hosted monitoring tool
+	pkgver = 2.0.0+beta.2+temp+31+gcd6dc144
+	pkgrel = 1
+	url = https://github.com/louislam/uptime-kuma-git
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = uptime-kuma
+	conflicts = uptime-kuma
+	backup = etc/uptime-kuma.env
+	source = git+https://github.com/louislam/uptime-kuma.git
+	source = uptime-kuma.service
+	source = uptime-kuma.env
+	b2sums = SKIP
+	b2sums = 2a34be5f79794b7933ab6f1994da9d9c216ca368123cdf30c67ca773c8bf40d1e18aedbdaefaaa889b98ee73f71670c288e11a61440282a68bdc8c4391755dbd
+	b2sums = d5e40af358ace62bb063dd965f09dacd65272eb5f0d411576703c0834488b705ad9e5d7437708953f3abdab20cb8cfff097b9c81b1a3927142d875cae7b020c2
+
+pkgname = uptime-kuma-git
