@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Zen
+Comment=Your Comprehensive Ad-Blocker and Privacy Guard
+Exec=zen-adblocker
+Icon=zen-adblocker
+Terminal=false
+StartupNotify=false
+Categories=Utility;
