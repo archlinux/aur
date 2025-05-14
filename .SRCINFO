@@ -1,0 +1,12 @@
+pkgbase = sail-riscv
+	pkgdesc = Sail RISC-V model
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/riscv/sail-riscv
+	arch = x86_64
+	license = BSD
+	makedepends = sail-isa-spec
+	source = https://github.com/riscv/sail-riscv/archive/refs/tags/0.7.tar.gz
+	sha256sums = 4f11b4f93e4d6c37246cd3e56c30578ec67266b031a429ee91f28c458271e149
+
+pkgname = sail-riscv
