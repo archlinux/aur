@@ -11,7 +11,7 @@ pkgver() {
     printf %s "${v//-/+}"
 }
 
-pkgrel=3
+pkgrel=4
 pkgdesc='A fancy self-hosted monitoring tool'
 
 arch=('any')
