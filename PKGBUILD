@@ -1,8 +1,8 @@
 # Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=qtgmc
-pkgver=3.384
-pkgrel=2
+pkgver=3.386
+pkgrel=1
 pkgdesc='A very high quality deinterlacer with a range of features for both quality and convenience.'
 arch=(any)
 license=(None)
@@ -23,7 +23,7 @@ source=(
 	"qtgmc.vpy"
 )
 sha256sums=(
-	"c4e8e3f7d0e75f17ced148c6c66d651ae2c70fc97a1f0f1923877be90a4f29c5"
+	"a5cdd524be9196b9af197560844309ace6205ec40116637781983e71267d825e"
 	"SKIP"
 )
 
