@@ -1,7 +1,7 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=css-loader-desktop-bin
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="The official desktop app for CSSLoader (Decky Loader Required)"
 arch=(x86_64)
@@ -49,8 +49,8 @@ echo "[Desktop Entry]
 	Exec=css-loader-desktop
 	Terminal=false
 	Type=Application
-	Icon=css-loader-desktop
-	Categories=Accessories;" >>"$pkgdir/usr/share/applications/css-loader-desktop.desktop"
+	Icon=css-loader-desktop;
+	Categories=Utility;Game" >>"$pkgdir/usr/share/applications/css-loader-desktop.desktop"
    cp -r $srcdir/squashfs-root/usr/share/icons/ $pkgdir/usr/share/
 
 }
