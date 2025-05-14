@@ -1,7 +1,7 @@
 pkgbase = cursor-electron
 	pkgdesc = The AI Code Editor (system-wide electron)
-	pkgver = 0.50.1
-	pkgrel = 2
+	pkgver = 0.50.3
+	pkgrel = 1
 	url = https://www.cursor.com
 	arch = x86_64
 	license = custom
@@ -17,9 +17,9 @@ pkgbase = cursor-electron
 	provides = cursor-bin
 	conflicts = cursor
 	conflicts = cursor-bin
-	source = src.iso::https://downloads.cursor.com/production/81bf18c2ba01d6e7e886875bdb6d1d04ac31c1f7/linux/x64/Cursor-0.50.1-x86_64.AppImage
+	source = src.iso::https://downloads.cursor.com/production/7ae22cf8cd5af9e08b62585dd03d10f5f610acf9/linux/x64/Cursor-0.50.3-x86_64.AppImage
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh
-	sha256sums = 18f2bb1049bd18135a39ee48faca0dd75e3cd2b8548f9acd0859fc4b1d25e1ee
+	sha256sums = 60042b8cdaa3391818f47f0449661f40ef9e1f472fc97e7a79d8b9487315717c
 	sha256sums = 5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1
 
 pkgname = cursor-electron
