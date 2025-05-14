@@ -63,12 +63,8 @@ package() {
 	install -Dm755 run-safe.sh usr/bin/windsurf
 	ln -sf /usr/bin/windsurf usr/share/windsurf/windsurf
 	# Replacements
-	_fd=usr/share/windsurf/resources/app/extensions/windsurf/bin/fd
-	rm ${_fd}.LICENSE # unexistence is detected as failure
-	ln -svf /usr/bin/fd ${_fd}
-	_rgdir=usr/share/windsurf/resources/app/node_modules/@vscode/ripgrep
-	rm ${_rgdir}/LICENSE # unexistence is detected as failure
-	ln -svf /usr/bin/rg ${_rgdir}/bin/rg
+	ln -svf /usr/bin/fd usr/share/windsurf/resources/app/extensions/windsurf/bin/fd
+	ln -svf /usr/bin/rg usr/share/windsurf/resources/app/node_modules/@vscode/ripgrep/bin/rg
 	# Icon (1024^2 is unusable at KDE)
 	install -Dm644 "usr/share/${pkgname}/resources/app/out/media/code-icon.svg" "usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 	mv usr "${pkgdir}"
