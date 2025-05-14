@@ -3,7 +3,7 @@
 _basename=exscript
 pkgname="python-${_basename}"
 pkgver=2.6.30
-pkgrel=3
+pkgrel=4
 pkgdesc="A Python module making Telnet and SSH easy"
 arch=('any')
 url="https://github.com/knipknap/exscript"
@@ -17,6 +17,15 @@ depends=(
 makedepends=('git' 'python-setuptools')
 source=("${_basename}"::"git+https://github.com/knipknap/exscript.git#commit=9d5b035f3de4237dc6ecb7437b3ebd0c162bb6ec")
 md5sums=('SKIP')
+
+prepare() {
+	cd ${_basename}
+	# A hack untill https://github.com/knipknap/exscript/pull/243 is merged
+	find . -type f -name "*.py" -exec sed -i '/from future import standard_library/d;/standard_library\.install_aliases()/d' {} +
+	sed -i '/^future$/d' requirements.txt
+	sed -i "s/'future', //" setup.py
+	sed -i '/^    future$/d' tox.ini
+}
 
 build() {
 	cd ${_basename}
