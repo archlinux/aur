@@ -1,14 +1,14 @@
 pkgbase = jchempaint
-	pkgdesc = Chemical 2D structure editor application/applet based on the Chemistry Development Kit
-	pkgver = 3.3.1210
-	pkgrel = 3
-	url = https://github.com/JChemPaint/jchempaint
+	pkgdesc = A 2D chemical structure editor written in Java (beta version)
+	pkgver = 3.4b
+	pkgrel = 1
+	url = https://jchempaint.github.io/
 	arch = x86_64
-	license = GPL
-	makedepends = imagemagick
-	depends = java-environment
-	noextract = jchempaint-3.3-1210.jar
-	source = https://github.com/downloads/JChemPaint/jchempaint/jchempaint-3.3-1210.jar
-	md5sums = 2732ecc2e01759ba91619398ff0fe614
+	license = LGPL
+	depends = java-runtime
+	source = https://github.com/JChemPaint/jchempaint/releases/download/3.4b/JChemPaint.jar
+	source = jchempaint.sh
+	sha256sums = 34ed419e7b3a1a3eda1e934cf15dbb8c11a7beb216b79132f695993e488d3563
+	sha256sums = d58f8bb2e48b3e0ca3e70522c5bad316229d044c4f99a0fe411360de1fc90866
 
 pkgname = jchempaint
