@@ -3,12 +3,12 @@
 # Contributor: robertfoster
 
 pkgname=rtpengine
-pkgver=13.2.1.1
+pkgver=13.3.1.4
 pkgrel=1
 pkgdesc="A media relay for RTP sessions"
 arch=('x86_64')
 url="https://github.com/sipwise/rtpengine"
-license=('GPL-2.0-only')
+license=('GPL-3.0-or-later')
 depends=(
   'bcg729'
   'curl'
@@ -69,7 +69,7 @@ backup=('etc/rtpengine/rtpengine.conf'
         'etc/rtpengine/rtpengine-recording.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr${pkgver}.tar.gz"
         "${pkgname}.sysusers")
-sha256sums=('58783a03576f8d4a1738b11c7e28173de2850b6b3876257538fec8b71d586f09'
+sha256sums=('b67f3589b9cf51df80908d80645f323a2bcaf35ee59326b4dc3660a721ed8250'
             '9ee6664c7368cc0466d813c199c997ac4889eb0e72f7f0b51149510cf0ae0b3e')
 
 build() {

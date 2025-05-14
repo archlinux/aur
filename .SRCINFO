@@ -1,10 +1,10 @@
 pkgbase = rtpengine
 	pkgdesc = A media relay for RTP sessions
-	pkgver = 13.2.1.1
+	pkgver = 13.3.1.4
 	pkgrel = 1
 	url = https://github.com/sipwise/rtpengine
 	arch = x86_64
-	license = GPL-2.0-only
+	license = GPL-3.0-or-later
 	checkdepends = bash
 	checkdepends = perl-crypt-openssl-rsa
 	checkdepends = perl-crypt-rijndael
@@ -57,9 +57,9 @@ pkgbase = rtpengine
 	options = !emptydirs
 	backup = etc/rtpengine/rtpengine.conf
 	backup = etc/rtpengine/rtpengine-recording.conf
-	source = rtpengine-13.2.1.1.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr13.2.1.1.tar.gz
+	source = rtpengine-13.3.1.4.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr13.3.1.4.tar.gz
 	source = rtpengine.sysusers
-	sha256sums = 58783a03576f8d4a1738b11c7e28173de2850b6b3876257538fec8b71d586f09
+	sha256sums = b67f3589b9cf51df80908d80645f323a2bcaf35ee59326b4dc3660a721ed8250
 	sha256sums = 9ee6664c7368cc0466d813c199c997ac4889eb0e72f7f0b51149510cf0ae0b3e
 
 pkgname = rtpengine
