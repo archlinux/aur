@@ -1,11 +1,13 @@
 pkgbase = mpy-repl-tool-git
 	pkgdesc = Communicate and transfer files from and to MicroyPython boards via REPL
-	pkgver = r139.0f4a716
+	pkgver = r179.1831fc6
 	pkgrel = 1
 	url = https://github.com/zsquareplusc/mpy-repl-tool
 	arch = any
 	license = custom
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = git
 	depends = python-pyserial
 	depends = python-colorama
@@ -16,4 +18,3 @@ pkgbase = mpy-repl-tool-git
 	md5sums = SKIP
 
 pkgname = mpy-repl-tool-git
-

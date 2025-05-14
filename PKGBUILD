@@ -2,14 +2,14 @@
 
 pkgname=mpy-repl-tool-git
 _name="${pkgname%-git}"
-pkgver=r139.0f4a716
+pkgver=r179.1831fc6
 pkgrel=1
 pkgdesc="Communicate and transfer files from and to MicroyPython boards via REPL"
 arch=('any')
-url="https://github.com/zsquareplusc/mpy-repl-tool"
+url="https://github.com/zsquareplusc/${_name}"
 license=('custom')
 depends=('python-pyserial' 'python-colorama')
-makedepends=('python-setuptools' 'git')
+makedepends=(python-build python-installer python-wheel git)
 optdepends=('python-fusepy: for mounting the micropython filesystem')
 conflicts=('mpy-repl-tool')
 provides=('mpy-repl-tool')
@@ -22,12 +22,13 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_name}"
-  python setup.py build
+    cd $_name
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_name}"
-  python setup.py install --root="${pkgdir}"
-  install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd $_name
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+    install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
 }
