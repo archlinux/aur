@@ -2,7 +2,7 @@
 pkgname=pandora-box-bin
 _pkgname=Pandora-Box
 pkgver=0.2.29
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple Mihomo GUI.(Written in Go,prebuilt version)"
 arch=('x86_64')
 url="https://github.com/snakem982/Pandora-Box"
@@ -33,6 +33,6 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-amd64" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
