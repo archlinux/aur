@@ -1,6 +1,6 @@
 # Maintainer: fnrir <fnr1r0@protonmail.com>
 pkgname=vscodium-prod-patcher
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 epoch=
 pkgdesc="Universal patcher for VSCodium"
@@ -32,7 +32,7 @@ source=(
 noextract=()
 sha256sums=(
 	SKIP
-	0b3c4a42ba232ece67c2cb9a6004b907fc1cec2244286350409a380a180ae5d8
+	69511beee552992451ffe9fdeda4e42fd69729b973410d7eafe6dc05b7485209
 )
 validpgpkeys=()
 
