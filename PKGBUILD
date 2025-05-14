@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=ValveResourceFormat
 pkgname=source2viewer
-pkgver=11.1
+pkgver=12.0
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('valveresourceformat')
 replaces=('valveresourcefromat')
 install=$pkgname.install
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('701c72a19131462de733fb3b33da0c9ef5ae4dc51e9d76a146a467fa388a36ba')
+sha256sums=('a34bbc74094fb012615f0d3c7775a651c51f22649d076b4acbb055eb4e2ad5ed')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
