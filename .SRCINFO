@@ -1,10 +1,11 @@
 pkgbase = otf-andada-git
 	pkgdesc = Organic-slab serif font made for Guaraní and Spanish
-	pkgver = r169.74ef333d
+	pkgver = r174.49278d5d
 	pkgrel = 1
 	url = https://github.com/huertatipografica/Andada
 	arch = any
 	license = OFL-1.1-no-RFN
+	makedepends = git
 	provides = otf-andada
 	conflicts = otf-andada
 	source = git+https://github.com/huertatipografica/Andada.git
