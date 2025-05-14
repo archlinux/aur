@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=musicat-git
 _pkgname=Musicat
-pkgver=0.11.0.r0.g27a601f
+pkgver=0.12.0.r22.g4a693b0
 _nodeversion=18
 pkgrel=1
 pkgdesc="A sleek desktop music player and tagger for offline music 🪕 With experimental features like map view, GPT analysis, artist toolkit."
@@ -23,7 +23,6 @@ makedepends=(
     'git'
     'gendesk'
     'cmake'
-    'gcc'
     'rust'
     'curl'
 )
@@ -44,8 +43,8 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    _ensure_local_nvm
     cd "${srcdir}/${pkgname//-/.}"
+    _ensure_local_nvm
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export CARGO_HOME="${srcdir}/.cargo"
@@ -54,7 +53,7 @@ prepare() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-		    echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
         } >> .npmrc
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
         export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
@@ -62,11 +61,12 @@ prepare() {
         sed "s/github.com/github.moeyy.xyz\/https:\/\/github.com/" -i src-tauri/Cargo.toml
     fi
     sed "/cli-win32-x64-msvc/d" -i package.json
-    NODE_ENV=development    npm install
+    NODE_ENV=development    npm install --legacy-peer-deps
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
-    NODE_ENV=production     npx tauri build -b deb
+    sed -i "s/targets\"\: \"all/targets\"\: \"deb/g" src-tauri/{tauri.conf.json,tauri.linux.conf.json}
+    NODE_ENV=production     npm run tauri build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/bin/"${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-git}"
