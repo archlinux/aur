@@ -5,7 +5,7 @@
 pkgname=dooble-bin
 _pkgname=Dooble
 pkgver=2024.12.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Web browser based on QtWebEngine.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -74,24 +74,22 @@ makedepends=(
     'findutils'
 )
 source=(
-  "LICENSE-${pkgver}::https://raw.githubusercontent.com/textbrowser/dooble/${pkgver}/LICENSE"
-  "${pkgname%-bin}.sh"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/textbrowser/dooble/${pkgver}/LICENSE"
+    "${pkgname%-bin}.sh"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}_amd64.deb")
 sha256sums=('c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd'
-            '29b1db96c081272e804e319cec3d35978ace6bbf5b930bfb5cdb11f35d8e9a6e')
+            '062f45de85a166d6ad01bf85eb58916b420c52ac122c55e7ed8668defb11c030')
 sha256sums_aarch64=('4c14ddba9390d462473dfbed19746cc5c3dc97a56ba1ae360f716c37cf17e1aa')
 sha256sums_x86_64=('d078fb98bc59af988a3d97ef68cabc6eae366278045a188ba25718027f09f008')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    cp "${srcdir}/opt/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN_simple.qm" \
-       "${srcdir}/opt/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN.qm"
-    sed -i "s/\/usr\/bin\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/usr\/bin\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
