@@ -1,4 +1,4 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Maintainer of AUR version: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Filip Brcic <brcha at gna dot org>
 
 pkgname=mingw-w64-pdcurses
@@ -9,7 +9,8 @@ pkgdesc="Public Domain Curses wincon port (mingw-w64)"
 arch=('any')
 url="https://www.projectpluto.com/win32a.htm"
 depends=('mingw-w64-crt')
-makedepends=('mingw-w64-gcc')
+makedepends=('mingw-w64-gcc' 'mingw-w64-environment')
+[[ $pkgname =~ .*-clang-.* ]] && makedepends+=('mingw-w64-configure')  # for the sake of pulling in toolchain
 options=(staticlibs !buildflags !strip)
 license=("public domain")
 source=(pdcurses-${pkgver}.tar.gz::"https://github.com/Bill-Gray/PDCursesMod/archive/v${pkgver}.tar.gz"
@@ -30,10 +31,10 @@ build() {
     cp -rf wingui wingui-shared-${_arch}
     pushd wingui-shared-${_arch}
       make \
-        CC=${_arch}-gcc \
-        LINK=${_arch}-gcc \
-        STRIP=${_arch}-strip \
-        AR=${_arch}-ar \
+        CC="$CC" \
+        LIBEXE="$CC $CFLAGS" \
+        STRIP="$STRIP" \
+        AR="$AR" \
         WIDE=Y \
         UTF8=Y \
         DLL=Y
@@ -42,13 +43,13 @@ build() {
     cp -rf wingui wingui-static-${_arch}
     pushd wingui-static-${_arch}
       make \
-        CC=${_arch}-gcc \
-        LINK=${_arch}-gcc \
-        STRIP=${_arch}-strip \
-        AR=${_arch}-ar \
+        CC="$CC" \
+        LIBEXE="$AR" \
+        STRIP="$STRIP" \
+        AR="$AR" \
         WIDE=Y \
         UTF8=Y
-    popd 
+    popd
   done
 }
 
@@ -57,7 +58,7 @@ package() {
   for _arch in ${_architectures} ; do
     mkdir -p ${pkgdir}/usr/${_arch}/{bin,include,lib}
     mkdir ${pkgdir}/usr/${_arch}/include/pdcurses
-    
+
     install wingui-shared-${_arch}/libpdcurses.dll ${pkgdir}/usr/${_arch}/bin/
     install wingui-shared-${_arch}/libpdcurses.dll.a ${pkgdir}/usr/${_arch}/lib/libpdcurses.dll.a
     install wingui-shared-${_arch}/libpdcurses.dll.a ${pkgdir}/usr/${_arch}/lib/libcurses.dll.a

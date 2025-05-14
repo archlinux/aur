@@ -6,6 +6,7 @@ pkgbase = mingw-w64-pdcurses
 	arch = any
 	license = public domain
 	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-environment
 	depends = mingw-w64-crt
 	provides = mingw-w64-curses
 	options = staticlibs
