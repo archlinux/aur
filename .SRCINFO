@@ -1,6 +1,6 @@
 pkgbase = python-imcpy
 	pkgdesc = Python bindings for Inter-Module Communication Protocol (IMC)
-	pkgver = 1.1.0
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/oysstu/imcpy
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-imcpy
 	depends = python
 	depends = python-ifaddr
 	optdepends = python-pandas: LSFExporter
-	source = git+https://github.com/oysstu/imcpy.git#tag=v1.1.0
+	source = git+https://github.com/oysstu/imcpy.git#tag=v1.1.2
 	sha256sums = SKIP
 
 pkgname = python-imcpy
