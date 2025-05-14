@@ -2,7 +2,7 @@
 
 pkgname=grub-customizer
 pkgver=5.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical grub2 settings manager"
 url="https://launchpad.net/grub-customizer"
 arch=(x86_64)
@@ -46,6 +46,7 @@ build(){
     -B build
     -D CMAKE_INSTALL_PREFIX=/usr
     -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5
     -S $pkgname-$pkgver
     -W no-dev
   )
