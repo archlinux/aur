@@ -1,6 +1,6 @@
 pkgbase = cmake-git
 	pkgdesc = A cross-platform open-source make system
-	pkgver = 3.27.4.645.g72beefa91b
+	pkgver = 4.0.2.1197.gc4b4e26019
 	pkgrel = 1
 	url = http://www.cmake.org/
 	arch = x86_64
