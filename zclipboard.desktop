@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ZClipboard
+Comment=A modern, fast clipboard manager
+Exec=zclipboard
+Icon=icon
+Terminal=false
+Type=Application
+Categories=Utility
