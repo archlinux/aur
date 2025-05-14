@@ -1,17 +1,17 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-gitsigns
-pkgver=0.5
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Git signs written in pure Lua"
 arch=('any')
 url="https://github.com/lewis6991/gitsigns.nvim"
 license=('MIT')
 groups=('neovim-plugins')
-depends=('git' 'neovim' 'neovim-plenary')
+depends=('git' 'neovim')
 install=gitsigns.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('781b48328d3659d521afae728eac7c389d809037ac1a2784d60fb3599158f09e')
+sha256sums=('4e34c2ab2079a84e99db2925c5562c60d9ee7c4c350dcad8813276f71c878a45')
 
 package() {
 	cd "gitsigns.nvim-$pkgver"
