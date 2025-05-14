@@ -2,8 +2,8 @@
 # Contributor: Jove Yu <yushijun110@126.com>
 pkgname=netease-cloud-music-gtk-bin
 _appname=com.gitee.gmg137.NeteaseCloudMusicGtk4
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.5.2
+pkgrel=1
 pkgdesc="NetEase Cloud Music Player Based on Rust + GTK in Linux Platform.(Prebuilt version)Linux 平台下基于 Rust + GTK 开发的网易云音乐播放器"
 arch=('x86_64')
 url="https://github.com/gmg137/netease-cloud-music-gtk"
@@ -27,9 +27,9 @@ optdepends=(
     'gst-plugins-good: extra media codecs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_dlurl}/x86_64/${pkgname%-bin}-${pkgver}-1.3.${CARCH}.rpm"
+    "${pkgname%-bin}-${pkgver}.rpm::${_dlurl}/x86_64/${pkgname%-bin}-${pkgver}-1.1.${CARCH}.rpm"
 )
-sha256sums=('6b68d7953af0863a70cb642742c2d0d1eba68c08327016a53f00c2f88846237a')
+sha256sums=('ec1365d89ec09a0b7c3140ab58b18a3f0ac3635346f422f6da9a545ea66cbb3f')
 prepare() {
     sed -i -e "
         s/${pkgname%-bin}4/${pkgname%-bin}/g
