@@ -3,7 +3,7 @@
 
 _pkgname=qterminal
 pkgname=$_pkgname-git
-pkgver=1.4.0.17.g8c5ff85
+pkgver=2.2.1.5.g1233838
 pkgrel=1
 pkgdesc="Lightweight Qt-based terminal emulator"
 arch=("i686" "x86_64")
@@ -11,7 +11,7 @@ url="https://github.com/lxqt/qterminal"
 license=("GPL2")
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-depends=("qtermwidget-git" "qt6-translations" "libcanberra")
+depends=("qtermwidget-git" "qt6-translations" "libcanberra" "layer-shell-qt")
 makedepends=("cmake" "git" "lxqt-build-tools-git" "qt6-tools"
              # Not actually needed, to be fixed in https://github.com/lxqt/qterminal/pull/1110
              "qt6-5compat" )
