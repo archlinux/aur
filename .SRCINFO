@@ -6,7 +6,6 @@ pkgbase = zclipboard
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = cmake
-	makedepends = gcc
 	makedepends = make
 	depends = qt6-base
 	depends = clang
