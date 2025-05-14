@@ -2,13 +2,13 @@
 
 pkgname=ammo-git
 _pkgname=ammo
-pkgver=0.1.0.r403.1ea7590
+pkgver=0.1.0.r461.b28e50e
 _pkgver=0.1.0
-_commit=1ea75902eb2c12e09e51b11bcebdf3ea75a06642
+_commit=b28e50e4cbd5152ee8ab89a48c6d862a77ea024e
 pkgrel=1
 pkgdesc="Almost Manual Mod Organizer - Linux MO for Bethesda Games"
 url="https://github.com/cyberrumor/ammo"
-license=('GPL-2.0')
+license=('GPL-2.0-only')
 arch=('any')
 depends=('python' '7zip')
 provides=('ammo')
