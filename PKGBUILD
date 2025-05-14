@@ -3,10 +3,10 @@
 _sdk=9.0
 _Name="YoutubeDownloader"
 pkgname="${_Name,,}"
-pkgver=1.14.2
+pkgver=1.15
 pkgrel=1
 pkgdesc="Downloads videos and playlists from YouTube"
-arch=('x86_64')
+arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/Tyrrrz/${_Name}"
 license=('MIT')
 depends=("dotnet-runtime>=${_sdk}" 'ffmpeg')
@@ -15,8 +15,12 @@ options=('!strip' '!debug' 'staticlibs')
 _pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}_xdg_settings.patch")
-b2sums=('90fe7b0fb9357113325ce1755a67f5a949da457e32dcaeb4eee53f2521c39b9ce013610e299bb74411592ceb277e7afb5a1d66740e10340998177312dfc5d4e4'
-        '2abd236b80032bd0cadd3f44b8e9071f7de848ed0f474663dec8b7fc7e2f7a25e5c9db2b8af04ec874d736a1159cc45ce6cf2c69f220c5b4d37fcbc7f903f170')
+b2sums=('7be51668d82d0c60f6bd7e54b2623083ba4e5a6684f2fdf18f8991c4a790facb2a94de65eebabd3f3520ee8dd99d6802bf3e9e8cbc696b14fdfe3102d4e8a165'
+        '422e82520465e646ddc1a0f2d0dbd0c624141df292a5e6a5ebd4cee9c4025769ae518e8c373d35632ee804148b68de109232d64ebd33c455eb81d6dbf3663817')
+
+if [ "${CARCH}" = 'x86_64' ]; then _msarch=x64;
+elif [ "${CARCH}" = 'armv7h' ]; then _msarch=arm;
+elif [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64; fi
 
 _srcenv() {
   export NUGET_PACKAGES="${srcdir}/.nuget"
@@ -29,14 +33,16 @@ prepare() {
   _srcenv
   local dotnet_restore_options=(
     -p:TargetFrameworks="net${_sdk}"
-    -p:RuntimeIdentifiers=linux-x64
+    -p:RuntimeIdentifiers="linux-${_msarch}" 
   )
 
   cd "${srcdir}/${_pkgsrc}"
   patch -Np1 -i "${srcdir}/${pkgname}_xdg_settings.patch"
 
   find . -type f -name '*.csproj' -exec \
-    sed -i '/CSharpier/d' "{}" +
+    sed -e '/CSharpier/d' \
+        -e 's|<DownloadFFmpeg>true|<DownloadFFmpeg>false|g' \
+        -i "{}" +
 
   dotnet restore ./"${_Name}" "${dotnet_restore_options[@]}"
 }
@@ -45,14 +51,15 @@ build() {
   _srcenv
   local dotnet_publish_options=(
     --framework "net${_sdk}"
+    --runtime "linux-${_msarch}"
     --configuration Release
-    --runtime linux-x64
     --no-self-contained
     --no-restore
     --output build
     -p:Version="${pkgver%%.[A-Za-z]*}"
     # -p:PublishTrimmed=true
     -p:CSharpier_Bypass=true
+    -p:PublishMacOSBundle=false
   )
 
   cd "${srcdir}"

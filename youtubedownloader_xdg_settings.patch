@@ -1,7 +1,7 @@
 --- a/YoutubeDownloader/Services/SettingsService.cs
 +++ b/YoutubeDownloader/Services/SettingsService.cs
-@@ -17,10 +17,21 @@
- [INotifyPropertyChanged]
+@@ -15,10 +15,21 @@
+ [ObservableObject]
  public partial class SettingsService()
      : SettingsBase(
 -        Path.Combine(AppContext.BaseDirectory, "Settings.dat"),
@@ -20,6 +20,6 @@
 +        return Path.Combine(configDir, "Settings.dat");
 +    }
 +
-     private bool _isUkraineSupportMessageEnabled = true;
-     public bool IsUkraineSupportMessageEnabled
-     {
+     [ObservableProperty]
+     public partial bool IsUkraineSupportMessageEnabled { get; set; } = true;
+ 
