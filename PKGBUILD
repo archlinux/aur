@@ -2,17 +2,21 @@
 
 _basename=mrpack-install
 pkgname="${_basename}-bin"
-pkgver=0.16.10
-pkgrel=2
+pkgver=0.20.0.beta
+pkgrel=1
 pkgdesc="Modrinth Modpack server deployment"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/nothub/mrpack-install"
 license=('MIT')
 provides=('mrpack-install')
 conflicts=('mrpack-install')
-source=("${_basename}"::"https://github.com/nothub/mrpack-install/releases/download/v${pkgver}/mrpack-install-linux")
-sha256sums=('01eb5c05423a7a94a7f844bde946c1963e296ecd9757c770923aeaf933f06bc1')
+_version="${pkgver/\.beta/\-beta}"
+source_x86_64=("${_basename}"::"https://github.com/nothub/mrpack-install/releases/download/v${_version}/mrpack-install_${_version}_linux_amd64.tar.gz")
+source_aarch64=("${_basename}"::"https://github.com/nothub/mrpack-install/releases/download/v${_version}/mrpack-install_${_version}_linux_arm64.tar.gz")
+sha256sums_x86_64=('38b016bbbe0699f22917837e238db21e6a340dcec388a6b6239c4c15daabde0f')
+sha256sums_aarch64=('38b016bbbe0699f22917837e238db21e6a340dcec388a6b6239c4c15daabde0f')
 
 package() {
 	install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/mrpack-install"
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${_basename}" "${srcdir}/LICENSE.txt"
 }
