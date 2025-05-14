@@ -11,7 +11,7 @@ pkgver() {
     printf %s "${v//-/+}"
 }
 
-pkgrel=2
+pkgrel=3
 pkgdesc='A fancy self-hosted monitoring tool'
 
 arch=('any')
@@ -57,7 +57,8 @@ package() {
     }
 
     mkdir -p "$pkgdir"/usr/lib/node_modules/uptime-kuma
-    install-include server/server.js
+    install -D -m 755 "$srcdir/uptime-kuma/esbuild-dist/server.js" "$pkgdir/usr/lib/node_modules/uptime-kuma/server/server.js"
+
     install-include src/util.js
     install-include db
     install-include dist
