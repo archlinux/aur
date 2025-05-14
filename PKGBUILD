@@ -4,7 +4,7 @@ _gitname="GoZen"
 _godot_version="4.4.1"
 
 pkgname=gozen
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=2 # Increment this if you change the PKGBUILD but not pkgver.
 pkgdesc="A minimalistic video editor"
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=(
     "godot-editor.zip::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}-stable/Godot_v${_godot_version}-stable_linux.x86_64.zip"
     "godot-templates.tpz::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}-stable/Godot_v${_godot_version}-stable_export_templates.tpz"
 )
-sha256sums=('15503ccb4a99dff70f19495a29246b624263e0de7af314ca01affc3e98632b48'
+sha256sums=('5d303d3f52ce51543f57591874e980ccdf3be32e7a7eb66c329913dd0a095b23'
             'd6e382fb531019f85630c1f485a561a0d20c4a2344b6c3847735cfee7da812aa'
             '7a8d14ade489fd4d22f178193021fe8a876a9e51068ed4dde26dac3ae4c59a88')
 
@@ -51,11 +51,16 @@ prepare() {
 	sed -i '/\[dependencies\]/,$d' "src/gozen.gdextension"
 	
 	# Prepare Godot export templates directory structure.
-	mkdir -p "$HOME/.local/share/godot/export_templates/${_godot_version}.stable"
-	unzip -o -d "$HOME/.local/share/godot/export_templates/${_godot_version}.stable" "${srcdir}/godot-templates.tpz"
-	mv "$HOME/.local/share/godot/export_templates/${_godot_version}.stable/templates/"* \
-	   "$HOME/.local/share/godot/export_templates/${_godot_version}.stable/"
-	rmdir "$HOME/.local/share/godot/export_templates/${_godot_version}.stable/templates"
+    if [ ! -d ~/.local/share/godot/export_templates/${_godot_version}.stable ]; then
+		msg "Preparing Godot export templates ..."
+		mkdir -p "$HOME/.local/share/godot/export_templates/${_godot_version}.stable"
+		unzip -o -d "$HOME/.local/share/godot/export_templates/${_godot_version}.stable" "${srcdir}/godot-templates.tpz"
+		mv "$HOME/.local/share/godot/export_templates/${_godot_version}.stable/templates/"* \
+		   "$HOME/.local/share/godot/export_templates/${_godot_version}.stable/"
+		rmdir "$HOME/.local/share/godot/export_templates/${_godot_version}.stable/templates"
+    else
+		msg "Godot export templates found in cache."
+	fi
 	
 	# Make Godot editor executable.
 	chmod +x "${srcdir}/Godot_v${_godot_version}-stable_linux.x86_64"
