@@ -1,6 +1,6 @@
 # Maintainer: noodle <silentnoodle@cock.li>
 pkgname=dwarfs-bin
-pkgver=0.12.3
+pkgver=0.12.4
 pkgrel=1
 pkgdesc='A fast high compression read-only file system (pre-compiled binaries)'
 url='https://github.com/mhx/dwarfs'
@@ -9,14 +9,12 @@ source_aarch64=("dwarfs-${pkgver}-Linux-aarch64.tar.xz::https://github.com/mhx/d
 arch=('x86_64' 'aarch64')
 license=('GPL3 AND MIT')
 depends=(
-  'fuse3' 'openssl' 'boost-libs' 'jemalloc' 'xxhash'
-  'lz4' 'xz' 'zstd' 'libarchive'
-  'libunwind' 'google-glog' 'fmt' 'gflags' 'double-conversion'
+  'fuse3'
 )
 conflicts=('dwarfs')
 provides=('dwarfs')
-sha256sums_x86_64=('9a2590deb3069d7e677604304d94226fa10b7385ccee46ba8c66f4e6c902168c')
-sha256sums_aarch64=('7e2c1d6f4bf8f19cedc8f050f405906e269d96197e238226f334c7ae2fb1f489')
+sha256sums_x86_64=('bff9da50918cf9272dbb9322733a629ccd84efc723e355a86eafcd075081f968')
+sha256sums_aarch64=('1492c0796ab3479a80e4e191e651f20c005e634b73ec684edd48465830f0aab3')
 
 package() {
   cd "${srcdir}/dwarfs-${pkgver}-Linux-$arch"
