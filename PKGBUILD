@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TreeTools
-_pkgver=1.13.1
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,8 +42,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('036f697094011a13729dcf584d1b5a4e')
-b2sums=('42893b37efb718e9eba789fb94d98dd8a77dd07d5892c6c75b0320650dd23f3fcc4f60fed3de3f2273402179b0cf63bb47fabd1a7df555d6ce522dd98ed2f1a5')
+md5sums=('a4c412a91ea293e87076c2f33edd2a07')
+b2sums=('ab55717e076408a1f27fee8d045619a2198053e9adcec9303ada31def79cd823457331b206b5a6e7ac0937c02fa340a44d570f56969d5f3dc1f1e083fed0442a')
 
 prepare() {
   # skip failing tests
