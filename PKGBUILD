@@ -2,7 +2,7 @@
 
 _basename=mrpack-install
 pkgname="${_basename}-git"
-pkgver=r237.ca99c1a
+pkgver=r369.82610e1
 pkgrel=1
 pkgdesc="Modrinth Modpack server deployment"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/nothub/mrpack-install"
 license=('MIT')
 provides=('mrpack-install')
 conflicts=('mrpack-install')
-makedepends=('go')
+makedepends=('git' 'go' 'goreleaser')
 source=("${_basename}"::"git+https://github.com/nothub/mrpack-install.git")
 md5sums=('SKIP')
 
@@ -24,9 +24,10 @@ pkgver() {
 
 build() {
 	cd "$_basename"
-	make
+	goreleaser build --clean --snapshot --single-target --output mrpack-install
 }
 
 package() {
-	install -Dm755 -t "${pkgdir}/usr/bin" "${_basename}/out/mrpack-install"
+	install -Dm755 -t "${pkgdir}/usr/bin" "${_basename}/mrpack-install"
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${_basename}" "${_basename}/LICENSE.txt"
 }
