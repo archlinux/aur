@@ -7,6 +7,7 @@ arch=(any)
 url="https://codeberg.org/Application-Maker/pacman-mirrors-helper"
 license=(GPL-3.0-or-later)
 depends=(bash coreutils curl gawk ncurses pacman sed util-linux)
+optdepends=('sudo: The script will use sudo if available')
 makedepends=(coreutils git)
 source=("git+https://codeberg.org/Application-Maker/pacman-mirrors-helper.git#branch=main")
 sha256sums=(SKIP)

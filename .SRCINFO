@@ -15,6 +15,7 @@ pkgbase = pacman-mirrors-helper-git
 	depends = pacman
 	depends = sed
 	depends = util-linux
+	optdepends = sudo: The script will use sudo if available
 	source = git+https://codeberg.org/Application-Maker/pacman-mirrors-helper.git#branch=main
 	sha256sums = SKIP
 
