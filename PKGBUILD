@@ -8,7 +8,7 @@ url="https://github.com/salvoton/parus"
 license=("GPL")
 depends=("paru" "skim" "bash")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("aee595197b739e6bbd88668d3f29027432b5e84e6669430ed0939f1dd3709fb2")
+sha256sums=("36c84e526b320dc7d41ff09be6cd70e4c0217363462c678494411c5cc766bc8b")
 
 package() {
 	install -Dm775 "$srcdir/$pkgname-$pkgver/parus" "$pkgdir/usr/bin/parus"

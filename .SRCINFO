@@ -9,6 +9,6 @@ pkgbase = parus
 	depends = skim
 	depends = bash
 	source = parus-1.1.0.tar.gz::https://github.com/salvoton/parus/archive/refs/tags/1.1.0.tar.gz
-	sha256sums = aee595197b739e6bbd88668d3f29027432b5e84e6669430ed0939f1dd3709fb2
+	sha256sums = 36c84e526b320dc7d41ff09be6cd70e4c0217363462c678494411c5cc766bc8b
 
 pkgname = parus
