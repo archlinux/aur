@@ -2,7 +2,8 @@
 #Contributor:  	ZorinArch < zorinarch at protonmail dot com >
 
 pkgname=abdownloadmanager-bin
-pkgver=1.5.7
+_pkgname=ABDownloadManager
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A Download Manager that speeds up your downloads"
 arch=('x86_64')
@@ -25,35 +26,16 @@ depends=(
 provides=('abdownloadmanager')
 conflicts=('abdownloadmanager')
 options=(!debug)
-source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux_x64.deb")
-sha256sums=("eed9c82230133b5cbd1e0ac2205fce30fae307109734c2157d7d15b3f67c524b")
-
-prepare() {
-	bsdtar -xvf "${srcdir}/data.tar.zst" -C "${srcdir}/"
-}
-
-build() {
-	sed -e 's|AB Download Manager|Network;|' \
-        -e 's|Icon=\/opt\/abdownloadmanager\/lib\/ABDownloadManager.png|Icon=abdownloadmanager|' \
-        -e 's|Comment=ABDownloadManager|Comment=Download Manager that speeds up your downloads|' \
-        -e 's|MimeType=|StartupNotify=false|' \
-        -e '$aStartupWMClass=com.abdownloadmanager.ABDownloadManager' \
-		-e '$aGenericName=Download Manager' \
-		-i "${srcdir}/opt/abdownloadmanager/lib/abdownloadmanager-ABDownloadManager.desktop"
-}
+source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux_x64.tar.gz"
+        "${_pkgname}.desktop")
+sha256sums=("41abab1e205d1bb8d650263007aff066b8bc7576928a2303dd1bf0605f648910"
+            "233bc90afae18aa215b47850a1ded67e653c7123845f2bddb0334873e8d21036")
 
 package() {
-    rm -rf "${srcdir}/opt/abdownloadmanager/share/"
-    install -dm755 "${pkgdir}/opt"
-    cp --preserve=mode -r "${srcdir}/opt" "${pkgdir}/"
+    install -d "${pkgdir}/opt/"
+    install -d "${pkgdir}/usr/share/"{applications,pixmaps}
 
-    install -dm755 "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/opt/abdownloadmanager/lib/abdownloadmanager-ABDownloadManager.desktop" \
-       "${pkgdir}/usr/share/applications/abdownloadmanager.desktop"
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-    cp "${srcdir}/opt/abdownloadmanager/lib/ABDownloadManager.png" \
-       "${pkgdir}/usr/share/icons/hicolor/512x512/apps/abdownloadmanager.png"
-
-    rm -f "${pkgdir}/opt/abdownloadmanager/lib/abdownloadmanager-ABDownloadManager.desktop"
-    rm -f "${pkgdir}/opt/abdownloadmanager/lib/ABDownloadManager.png"
+    install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    mv "${srcdir}/${_pkgname}/lib/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+    mv "${srcdir}/${_pkgname}" "${pkgdir}/opt"
 }
