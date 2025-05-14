@@ -122,17 +122,24 @@ prepare() {
   RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-mimalloc-rs || cargo build --release --target $TARGET
   #export CC=$CC_
   msg '2. Convert SudachiDict to Mozc System Dictionary format. It may take some time...'
-  cat "${srcdir}"/mozc/src/data/dictionary_oss/dictionary*.txt > all-dict.txt
+  #cat "${srcdir}"/mozc/src/data/dictionary_oss/dictionary*.txt > all-dict.txt
   cat ${srcdir}/small_lex.csv ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv > all.csv
   cp ${srcdir}/mozc/src/data/dictionary_oss/id.def ./
-  ./target/$TARGET/release/dict-to-mozc -s -i ./id.def -f all.csv >> all-dict.txt
+  ./target/$TARGET/release/dict-to-mozc -s -i ./id.def -f all.csv > all-dict.txt
   msg '3. Convert MeCab-unidic-Neologd to Mozc System Dictionary format. It may take some time...'
   ./target/$TARGET/release/dict-to-mozc -n -i ./id.def -f ${srcdir}/mecab-unidic-user-dict-seed.20200910.csv >> all-dict.txt
   msg '4. Convert MeCab-ipadic-Neologd to Mozc System Dictionary format. It may take some time...'
   ./target/$TARGET/release/dict-to-mozc -n -P 12 -N 10 -i ./id.def -f ${srcdir}/mecab-user-dict-seed.20200910.csv >> all-dict.txt
   msg '5. Duplicate data will be removed.'
+
+  # 読み、表記による重複チェック。件数を抑制するために、品詞IDを無視し、読みと表記のみで重複チェック。
+  awk 'BEGIN{FS="\t";OFS="\t"}{if (!a[$1,$5]++) {print $0}}' all-dict.txt|sort > finish-dict-pre.txt
+  # 「ろっ」「ろっき」からはじまる単語が多いと、「ろっき」の入力ができないエラー抑止のため一括削除
+  sed -i "/^ろっき/d" finish-dict-pre.txt
+  # Mozcソースのデータとの重複は品詞IDもチェック
+  cat "${srcdir}"/mozc/src/data/dictionary_oss/dictionary*.txt finish-dict-pre.txt|sort>> finish-dict-pre-2.txt
   # 読み、品詞ID、右品詞ID、表記による重複チェック
-  awk 'BEGIN{FS="\t";OFS="\t"}{if (!a[$1,$2,$3,$5]++) {print $0}}' all-dict.txt|sort > finish-dict.txt
+  awk 'BEGIN{FS="\t";OFS="\t"}{if (!a[$1,$2,$3,$5]++) {print $0}}' finish-dict-pre-2.txt|sort > finish-dict.txt
   msg '6. Finally, add the SudachiDict, MeCab-unidic-Neologd and MeCab-ipadic-Neologd dictionary to the Mozc source.'
   mkdir -p tmp
   cd tmp
