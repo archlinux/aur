@@ -8,8 +8,8 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=v3.13.24.r1.g4549808c3
-pkgrel=1
+pkgver=v3.15.42.r1.gd1ca4e091
+pkgrel=2
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 
@@ -35,7 +35,6 @@ depends=(
   'python-guessit>=3.2.0'
   'python-rebulk>=2.0.0'
   'python-apscheduler>=3.2.0'
-  'python-terminaltables>=3.1.0'
   'python-colorclass>=2.2.0'
   'python-cherrypy>=18.0.0'
   'python-flask>=0.7'
