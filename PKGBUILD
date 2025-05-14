@@ -2,7 +2,7 @@
 
 _basename=jan
 pkgname=${_basename}
-pkgver=0.5.15
+pkgver=0.5.16
 pkgrel=1
 pkgdesc="An open source alternative to ChatGPT that runs 100% offline on your computer"
 url="https://jan.ai/"
@@ -12,7 +12,7 @@ source=(
 	"$_basename::git+https://github.com/janhq/jan.git#tag=v$pkgver"
 	'jan.desktop'
 )
-sha256sums=('5db9e959ba2e31d5f69c79f1128d451c43e6325c28fc73429842a1ceb3702692'
+sha256sums=('99368386ae385b7b95d9670da1b0c59ee840dac9bc6313393fedbc2e5680a043'
             '689c50321d61f2c40a275c004865e9956501038782867bbe73e9d42128f40048')
 provides=("$_basename")
 conflicts=("$_basename")
