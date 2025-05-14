@@ -4,12 +4,12 @@
 _gemname=fastlane
 pkgname=$_gemname
 pkgver=2.227.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
 url='https://fastlane.tools'
 license=(MIT)
-depends=(ruby)
+depends=(ruby ruby-abbrev)
 makedepends=(ruby-rake make gcc)
 options=(!emptydirs)
 source=(
