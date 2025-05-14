@@ -2,7 +2,7 @@
 pkgname=jakana
 pkgver=0.2.1
 pkgrel=1
-pkgdesc='Learn Japanese kana on cli'
+pkgdesc='learn Japanese kana on cli'
 arch=('any')
 url='https://github.com/Catalina-sys456/jakana'
 license=('MIT')
@@ -13,7 +13,7 @@ makedepends=(python-build
 	     python-hatchling)
 source=(        
   $pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('878d8c35983638cb1c6073541db01abdb77e40b2ebc5b1380b39ec3fbab8432e49e2d1cf556460baa7275ebde114c264af36dafb0af00226a15ebc6fc962d77f')
+sha512sums=('42f5e17d7d996b6ca62e3beef02af007eae15af9a04c571f27c6ccea68da9d0760e55e3f6311b7bbbcc37332dbb647f996e7041e4e167d2510e430f0e1b5a6b1')
 
 build() {
     cd $pkgname-$pkgver
