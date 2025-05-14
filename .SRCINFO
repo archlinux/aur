@@ -1,7 +1,7 @@
 pkgbase = spie-bin
 	pkgdesc = A minimal serial monitor application using Electron, Node SerialPort and Ionic/Angular.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/robsonos/spie
 	arch = x86_64
 	license = MIT
