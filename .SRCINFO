@@ -1,6 +1,6 @@
 pkgbase = python-simsimd
 	pkgdesc = A Fast Dot Products & Similarity Metrics for Python using SIMD
-	pkgver = 6.4.3
+	pkgver = 6.4.4
 	pkgrel = 1
 	url = https://github.com/ashvardanian/simsimd
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-simsimd
 	makedepends = python-wheel
 	depends = gcc-libs
 	depends = glibc
-	source = SimSIMD-6.4.3.tar.gz::https://github.com/ashvardanian/SimSIMD/archive/refs/tags/v6.4.3.tar.gz
-	sha512sums = a3bfe00d0c7a7e03022fa63fddf8442be32a5480f7bd5de43ec69bfccd97ce026fd4ff082c5872d6780f6d2681217f9e0b02262371c3b3ca8019640432e3e28d
+	source = SimSIMD-6.4.4.tar.gz::https://github.com/ashvardanian/SimSIMD/archive/refs/tags/v6.4.4.tar.gz
+	sha512sums = 56cdbe43844233a658d21d4c4e52a65407c2390f3c35f67b84b2697761f682ff9fc6dd84447f7a0d6969fdfb38ed0eb9cb871927b45d83fe3cfc53b70906a454
 
 pkgname = python-simsimd
