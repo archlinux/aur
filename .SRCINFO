@@ -1,0 +1,16 @@
+pkgbase = zclipboard
+	pkgdesc = A modern, fast clipboard manager
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/reim-developer/zclipboard
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	depends = qt6-base
+	depends = clang
+	source = https://github.com/reim-developer/zclipboard/archive/v1.0.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = zclipboard
