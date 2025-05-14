@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/reim-developer/zclipboard "
 license=('GPL-3.0')
 depends=('qt6-base' 'clang')
-makedepends=('cmake' 'gcc' 'make')
+makedepends=('cmake' 'make')
 source=("https://github.com/reim-developer/zclipboard/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
