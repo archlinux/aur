@@ -1,7 +1,7 @@
 pkgbase = anubias-bin
 	pkgdesc = Develope mobile apps so easy and native with GUI.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.0_beta1
-	pkgrel = 10
+	pkgrel = 11
 	url = https://anubias.app
 	arch = x86_64
 	license = GPL-3.0-only
