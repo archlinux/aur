@@ -1,6 +1,6 @@
 # Maintainer: fnrir <fnr1r0@protonmail.com>
 pkgname=vscodium-prod-patcher
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 epoch=
 pkgdesc="Universal patcher for VSCodium"
