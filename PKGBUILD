@@ -1,6 +1,6 @@
 # Maintainer: Furkan Bekçi (salvoton) <furo@tuta.io>
 pkgname=parus
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A package search tool for Paru using Skim"
 arch=("any")
