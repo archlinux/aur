@@ -9,7 +9,7 @@ license=('MPL-2.0')
 makedepends=('cargo' 'git')
 depends=()
 arch=('x86_64')
-source=("git+https://github.com/RealRTTV/nbtworkbench")
+source=("git+$url.git")
 b2sums=('SKIP')
 
 prepare() {
