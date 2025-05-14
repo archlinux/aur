@@ -1,0 +1,4 @@
+[asm-processor]
+source = "git"
+git = "https://github.com/simonlindholm/asm-processor.git"
+prefix = "v"
