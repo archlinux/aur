@@ -1,12 +1,16 @@
 pkgbase = reclog
 	pkgdesc = Command-line tool to capture command output to a file.
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gavv/reclog
 	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
 	license = MIT
 	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
 	source = reclog-0.1.3.tar.gz::https://crates.io/api/v1/crates/reclog/0.1.3/download
 	sha256sums = 496d3120f162b7226c85638a1686128cfb2afea861395d208eae627a56e3e7ba
 
