@@ -1,0 +1,39 @@
+pkgbase = gr-scopy-git
+	pkgdesc = Scopy IIO blocks for GNU Radio.
+	pkgver = 1.0.0+r11.20220602.a69ccb2
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/analogdevicesinc/gr-scopy
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = bison
+	makedepends = boost
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = flex
+	makedepends = fmt
+	makedepends = git
+	makedepends = libvolk
+	makedepends = python>=3
+	makedepends = spdlog
+	makedepends = swig
+	depends = boost-libs
+	depends = gcc-libs
+	depends = glibc
+	depends = gmp
+	depends = gnuradio>=3.10
+	depends = gnuradio<3.11
+	depends = libfmt.so
+	depends = libspdlog.so
+	depends = libvolk.so
+	provides = gr-scopy=1.0.0+r11.20220602.a69ccb2
+	provides = gr-scopy-doc=1.0.0+r11.20220602.a69ccb2
+	provides = libgnuradio-scopy.so
+	conflicts = gr-scopy
+	conflicts = gr-scopy-doc
+	conflicts = libgnuradio-scopy.so
+	source = gr-scopy::git+https://github.com/analogdevicesinc/gr-scopy.git#branch=3.10
+	sha256sums = SKIP
+
+pkgname = gr-scopy-git
