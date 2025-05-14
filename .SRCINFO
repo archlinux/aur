@@ -1,6 +1,6 @@
 pkgbase = difftastic-git
 	pkgdesc = a diff that understands syntax
-	pkgver = 0.57.0.r7.f52ca706f
+	pkgver = 0.63.0.r35.bbe681013
 	pkgrel = 1
 	url = https://github.com/Wilfred/difftastic
 	arch = i686
@@ -16,5 +16,6 @@ pkgbase = difftastic-git
 	source = difftastic-git::git+https://github.com/Wilfred/difftastic.git
 	source = remove-makedepends-jq.patch
 	md5sums = SKIP
+	md5sums = 2f9a02d83bb816de9d261fba8909aaaa
 
 pkgname = difftastic-git

@@ -2,7 +2,7 @@
 # Contributor: Gunar C. Gessner <gunar@gunar.uk>
 _pkgname="difftastic"
 pkgname="${_pkgname}-git"
-pkgver=0.57.0.r7.f52ca706f
+pkgver=0.63.0.r35.bbe681013
 pkgrel=1
 pkgdesc="a diff that understands syntax"
 arch=("i686" "x86_64")
@@ -44,7 +44,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  export CFLAGS+=" -ffat-lto-objects"
+  export CFLAGS+=" -ffat-lto-objects -std=gnu17"
 
   cargo build --frozen --release --all-features
 }
