@@ -1,0 +1,4 @@
+[cvector]
+source='regex'
+regex='Release.([0-9.]+)'
+url='https://cvector.sourceforge.net/'
