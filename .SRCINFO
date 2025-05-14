@@ -1,0 +1,12 @@
+pkgbase = murgafetch
+	pkgdesc = The best f*cking fetch ever
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/f3d31206/murgafetch
+	arch = any
+	license = GPL3
+	depends = bash
+	source = https://github.com/f3d31206/murgafetch/raw/main/murgafetch
+	md5sums = SKIP
+
+pkgname = murgafetch
