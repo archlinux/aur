@@ -1,14 +1,14 @@
 # Maintainer: John Patrick <john.patrick@gmail.com>
 pkgname=archlinux-tweak-tool-git
 _pkgname=archlinux-tweak-tool
-pkgver=r1165.5b3751c
+pkgver=r1190.bcba8d7
 pkgrel=1
 pkgdesc="Arch Linux Tweak Tool or ATT"
 arch=('x86_64')
-url="https://github.com/arcolinux/archlinux-tweak-tool"
+url="https://github.com/erikdubois/archlinux-tweak-tool"
 license=('GPL3')
 depends=('python-gobject' 'polkit-gnome' 'lsb-release' 'python-distro' 'python-numpy' 'python-psutil')
-optdepends=('reflector' 'alacritty' 'alacritty-themes' 'arcolinux-mirrorlist-git' 'arcolinux-keyring' 'chaotic-mirrorlist' 'chaotic-keyring' 'endeavouros-keyring' 'endeavouros-mirrorlist' 'neofetch')
+optdepends=('reflector' 'alacritty' 'chaotic-mirrorlist' 'chaotic-keyring')
 makedepends=('git')
 options=(!strip !emptydirs)
 replaces=(arcolinux-tweak-tool-git)
