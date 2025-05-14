@@ -1,8 +1,8 @@
 # Maintainer: Sean E. Russell <ser@ser1.net> -> also the developer
 
 pkgname=rook
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="A lightweight, stand-alone, headless secret service tool backed by a Keepass v2 database."
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://hg.sr.ht/~ser/rook"
@@ -60,4 +60,4 @@ package() {
     && install -Dm755 utils/getAttr.sh  "${pkgdir}/usr/bin/rook-getattr" \
     || true
 }
-sha256sums=('144a60cf4f2478d971e12cd494e656f631813b9cfee566816e05f036aeee43a6')
+sha256sums=('37be90ef5032ae634c53cb21aa39d81d546541cb2738fea99a31422436b82e7d')
