@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('gsl' 'wcslib' 'libgit2' 'ghostscript' 'libjpeg')
 optdepends=('ds9: for astscript-fits-view')
 url='https://www.gnu.org/software/gnuastro/'
-source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("http://ftpmirror.gnu.org/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('f22fd194f8c3d80645438f4b3906153e')
 
 prepare() {

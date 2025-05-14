@@ -11,7 +11,7 @@ pkgbase = gnuastro
 	depends = ghostscript
 	depends = libjpeg
 	optdepends = ds9: for astscript-fits-view
-	source = http://ftp.gnu.org/gnu/gnuastro/gnuastro-0.23.tar.gz
+	source = http://ftpmirror.gnu.org/gnuastro/gnuastro-0.23.tar.gz
 	md5sums = f22fd194f8c3d80645438f4b3906153e
 
 pkgname = gnuastro

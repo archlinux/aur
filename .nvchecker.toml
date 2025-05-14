@@ -1,4 +1,4 @@
 [gnuastro]
 source='regex'
-regex="ftpmirror.gnu.org.gnuastro.gnuastro-([0-9.]+).tar.gz"
-url='https://www.gnu.org/software/gnuastro/#download'
+regex="gnuastro-([0-9.]+).tar.gz"
+url='https://ftpmirror.gnu.org/gnuastro'
