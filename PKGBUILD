@@ -24,6 +24,6 @@ package() {
 
   make DESTDIR="$pkgdir/" install
 
-  install -Dm644  ../zclipboard.desktop "$pkgdir/usr/share/applications/zclipboard.desktop"
-  install -Dm644 ../icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/icon.png"
+  install -Dm644  ../../../zclipboard.desktop "$pkgdir/usr/share/applications/zclipboard.desktop"
+  install -Dm644 ../../../icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/icon.png"
 }
