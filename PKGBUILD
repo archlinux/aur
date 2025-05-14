@@ -2,7 +2,7 @@
 
 _name='mausoleum'
 pkgname="$_name"
-pkgver=0.11.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='A Python GUI application, command line interface, and wrapper for Tomb'
 arch=('any')
@@ -15,27 +15,27 @@ depends=(
   'python-click'
   'python-appdirs'
 )
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 conflicts=("$_name-git")
 provides=("$_name" "$_name-gui")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mandeep/Mausoleum/archive/v$pkgver.tar.gz"
+source=("git+https://github.com/mandeep/Mausoleum#tag=v$pkgver"
         "mausoleum.desktop")
-sha512sums=('008346c0ef23459d50cf8a86ddb315764433d8f06ba7a8f2457a75117294abaa37a9a2dc30dceb6db31073f25b96527c56190f3b3ba0127e36d24bd2b09aff84'
+sha512sums=('SKIP'
             'fdb2db16c6e8fa3f86a51198d732e50387ea174384ed5f23d7db35f62c00137c84add144fb2e0305d1ea52ee233f8f9f779ef49778ac97f26410ae1a2a2d8ed3')
 
 prepare() {
   # Use latest archlinux dependencies
-  cd "Mausoleum-$pkgver"
+  cd "Mausoleum"
   sed -i -e "s/==[0-9.]*//g" setup.py
 }
 
 build() {
-  cd "Mausoleum-$pkgver"
+  cd "Mausoleum"
   python setup.py build
 }
 
 package() {
-  cd "Mausoleum-$pkgver"
+  cd "Mausoleum"
 
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
