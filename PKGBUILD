@@ -37,7 +37,7 @@ build() {
     cd "$srcdir/uptime-kuma"
     npm install
     npm run build # generate dist folder
-    npx --yes esbuild server/server.js --bundle --outdir=esbuild-dist --minify --platform=node --packages=external
+    # npx --yes esbuild server/server.js --bundle --outdir=esbuild-dist --minify --platform=node --packages=external
     # npx --yes esbuild server/server.js --bundle --outdir=esbuild-dist --minify --platform=node --log-limit=9999 --external:aws-sdk --external:better-sqlite3 --external:deasync --external:mock-aws-s3 --external:mysql --external:nock --external:oracledb --external:pg-query-stream --external:sqlite3 '--external:*.html'
 }
 
@@ -57,8 +57,8 @@ package() {
     }
 
     mkdir -p "$pkgdir"/usr/lib/node_modules/uptime-kuma
-    install -D -m 755 "$srcdir/uptime-kuma/esbuild-dist/server.js" "$pkgdir/usr/lib/node_modules/uptime-kuma/server/server.js"
 
+    install-include server
     install-include src/util.js
     install-include db
     install-include dist
