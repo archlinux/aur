@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/f3d31206/murgafetch"  # O tu web personal
 license=('GPL3')  # O lo que corresponda
 depends=('bash')  # Dependencias necesarias
-source=("https://github.com/f3d31206/murgafetch/raw/master/Documentos/.murgafetch")
+source=("murgafetch::https://github.com/f3d31206/murgafetch/raw/master/Documentos/.murgafetch")
 md5sums=('SKIP')
 
 package() {
