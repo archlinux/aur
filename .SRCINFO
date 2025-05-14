@@ -1,6 +1,6 @@
 pkgbase = navithingy-git
 	pkgdesc = A Navidrome client built with Tauri and Svelte.
-	pkgver = 0.8.1.r56.07435d1
+	pkgver = 0.8.1.r65.75b4eb0
 	pkgrel = 1
 	url = https://github.com/vMohammad24/NaviThingy
 	install = navithingy-git.install
@@ -18,6 +18,7 @@ pkgbase = navithingy-git
 	makedepends = glib2
 	makedepends = zlib
 	makedepends = patchelf
+	makedepends = jq
 	depends = gtk3
 	depends = gstreamer
 	depends = gst-plugins-base

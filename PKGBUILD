@@ -1,13 +1,13 @@
 # Maintainer: creations <creations@creations.works>
 pkgname=navithingy-git
-pkgver=0.8.1.r56.07435d1
+pkgver=0.8.1.r65.75b4eb0
 pkgrel=1
 pkgdesc="A Navidrome client built with Tauri and Svelte."
 arch=("$CARCH")
 url="https://github.com/vMohammad24/NaviThingy"
 license=('MIT')
 depends=('gtk3' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
-makedepends=('git' 'rustup' 'curl' 'pkg-config' 'clang' 'lld' 'webkit2gtk-4.1' 'openssl' 'openssl-1.1' 'glib2' 'zlib' 'patchelf')
+makedepends=('git' 'rustup' 'curl' 'pkg-config' 'clang' 'lld' 'webkit2gtk-4.1' 'openssl' 'openssl-1.1' 'glib2' 'zlib' 'patchelf' 'jq')
 optdepends=(
     "libappindicator-gtk3: System tray support"
     "gst-plugin-pipewire: Required for PipeWire-based audio playback"
@@ -28,7 +28,6 @@ pkgver() {
     echo "${tag}.r${rev}.${commit}"
 }
 
-
 prepare() {
     cd "$srcdir/NaviThingy"
 
@@ -40,18 +39,21 @@ prepare() {
     export PATH="$HOME/.bun/bin:$PATH"
 
     bun install --no-cache
+
+    cargo install tauri-cli --locked
 }
 
 build() {
     cd "$srcdir/NaviThingy"
     export PATH="$HOME/.bun/bin:$PATH"
-
     export RUSTFLAGS="-C link-arg=-fuse-ld=lld"
     export CC=clang
     export CXX=clang++
 
+    jq '.bundle.active = false' src-tauri/tauri.conf.json > src-tauri/tauri.conf.json.patched && mv src-tauri/tauri.conf.json.patched src-tauri/tauri.conf.json
+
     bun run build
-    bun run tauri build --
+    cargo tauri build
 }
 
 package() {
