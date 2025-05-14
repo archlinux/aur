@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='A modern NBT Editor written in Rust.'
 url='https://github.com/RealRTTV/nbtworkbench'
 license=('MPL-2.0')
-makedepends=('cargo')
+makedepends=('cargo', 'git')
 depends=()
 arch=('x86_64')
 source=("git+$url")
@@ -22,13 +22,13 @@ build() {
     cd nbtworkbench
     export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    cargo +nightly build --frozen --release --all-features
 }
 
 check() {
     cd nbtworkbench
     export RUSTUP_TOOLCHAIN=nightly
-    cargo test --frozen --all-features
+    cargo +nightly test --frozen --all-features
 }
 
 package() {
