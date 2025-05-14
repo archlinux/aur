@@ -2,7 +2,7 @@
 _pkgname=tuxedo-drivers
 _reponame=${_pkgname}-nocompatcheck
 pkgname=${_reponame}-dkms
-pkgver=4.12.2
+pkgver=4.13.0
 pkgrel=1
 pkgdesc="TUXEDO Computers kernel module drivers. Compatibility check disabled - works when using identical models from other brands, example being TUXEDO Pulse 14 Gen 4 and Schenker Via 14 Pro (M24)"
 url="https://gitlab.com/kreny/${_reponame}"
@@ -27,9 +27,9 @@ provides=('tuxedo-drivers-dkms' 'tuxedo-keyboard'
 	'ite_829x')
 conflicts=('tuxedo-drivers-dkms' 'tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
 source=($pkgname-$pkgver.tar.gz::https://gitlab.com/kreny/${_reponame}/-/archive/v${pkgver}-patched.${pkgrel}/tuxedo-drivers-v${pkgver}-patched.${pkgrel}.tar.gz tuxedo_io.conf)
-sha256sums=('5fc28ac403c71de9a89b705b162ff5326ed08426ef245783a73951abe04953b5'
+sha256sums=('4c5f562ee303b8c8df4b12d630f5d9ae5388779017e2931cc56131ba419e1706'
 	'd94d305bfd2767ad047bc25cc5ce986e76804e7376c3dd4d8e500ebe2c7bef3c')
-sha512sums=('43e21400dd89d7cc12e8696c58f503898feee262944b1ed068c859458789cf52a9e8c509bb40c536ebb776e20e3ff7b38536abfcb04c7ffb649dcb4169f18afc'
+sha512sums=('8d549bcf4a50dba917e2e37923a865de0c92881b63f306cafcc7a64e264409a1b683e0d712a09a47a692fef382481e0675cc3190a942af83fa37d36f96b48ed4'
 	'3101d1063e9c45eccb505fa21578cba33ae5c85b3d5b1c62c90806ad9d7b04410c91ded7a7115a85d1f6ecbd90ccc9e5f2ecf269dac4a557baa017a629bbcf81')
 
 package() {
