@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-git
 _pkgname=Mailspring
-pkgver=1.15.0.r1.gbe22f19
+pkgver=1.15.1.r1.g3cde64f
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -21,8 +21,7 @@ makedepends=(
     'npm'
     'git'
     'nvm'
-    'gcc'
-    'dpkg'
+    'curl'
     'gendesk'
 )
 source=(
@@ -44,36 +43,38 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    cd "${srcdir}/${pkgname//-/.}"
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto --password-store=\"gnome-libsecret\"/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname//-/.}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
-        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
+        sed -i "s/github.com/github.moeyy.xyz\/https:\/\/github.com/g" .gitmodules
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/, 'create-rpm-installer'//g" app/build/Gruntfile.js
     sed -i "s/execstack --clear-execstack//g" app/script/mkdeb
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install
+    git submodule update --depth=1 --init --recursive
+    NODE_ENV=development    npm install --legacy-peer-deps
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
