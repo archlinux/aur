@@ -1,7 +1,7 @@
 pkgbase = aniflix-bin
 	pkgdesc = Anime Streaming Desktop App.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.0.1
-	pkgrel = 12
+	pkgrel = 13
 	url = https://aniflix.lamaau.space/
 	arch = x86_64
 	license = MIT
