@@ -3,12 +3,13 @@
 
 _pkgbase=edl
 pkgname=$_pkgbase-git
-pkgver=r549.d2c585e
+pkgver=r594.407f1a9
 pkgrel=1
 pkgdesc="Inofficial Qualcomm Firehose / Sahara / Streaming / Diag Tools"
 arch=('any')
 url="https://github.com/bkerler/edl"
 license=('GPL-3.0')
+options=(!strip)
 makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 depends=(
 	'android-tools'
