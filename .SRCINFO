@@ -1,0 +1,18 @@
+pkgbase = python-can-i-charge
+	pkgdesc = A CLI to fetch the status of charging stations
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = https://github.com/boosterl/can-i-charge
+	arch = any
+	license = GPLv3
+	makedepends = python-build
+	makedepends = python-installer
+	depends = glibc
+	depends = python
+	depends = python-click
+	depends = python-prometheus_client
+	depends = python-shellrecharge
+	source = python-can-i-charge::git+https://github.com/boosterl/can-i-charge.git#tag=0.6.5
+	sha256sums = SKIP
+
+pkgname = python-can-i-charge
