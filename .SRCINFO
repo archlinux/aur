@@ -1,12 +1,13 @@
 pkgbase = kerl
 	pkgdesc = Easy building and installing of Erlang/OTP instances
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kerl/kerl
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	depends = bash
-	source = kerl-4.3.0.tar.gz::https://github.com/kerl/kerl/archive/4.3.0.tar.gz
-	b2sums = 623025404407cf04a9a9c10c3d944769cb7c442dcf737105574b1ad9e47121ef1ed07adbe4cbec69822cd59f5ca283532c1c309d2c60210dd9f68c2e9119e06f
+	source = kerl::git+https://github.com/kerl/kerl.git#tag=4.3.0
+	sha256sums = 253652c5ac99148940c65a7752b2316cbcb56983a8bdfced9c78c73f1538820c
 
 pkgname = kerl
