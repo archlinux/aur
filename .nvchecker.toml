@@ -1,0 +1,4 @@
+[opencl-icd-loader]
+source = "git"
+git = "https://github.com/KhronosGroup/OpenCL-ICD-Loader.git"
+prefix = "v"
