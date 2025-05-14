@@ -1,6 +1,6 @@
 pkgbase = freesmlauncher
 	pkgdesc = Minecraft launcher with offline accounts support
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://freesmlauncher.windstone.space/
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = freesmlauncher
 	optdepends = visualvm: Profiling support
 	optdepends = xorg-xrandr: for older minecraft versions
 	optdepends = flite: minecraft voice narration
-	source = git+https://github.com/FreesmTeam/FreesmLauncher#tag=sequoia-1.2.0
-	sha256sums = 378e70e7650be1efc568fc3ec38d20df32fcc560b4c640b3fed641b38c512afa
+	source = git+https://github.com/FreesmTeam/FreesmLauncher#tag=sequoia-1.3.0
+	sha256sums = e012a504c45b0e215c0f1c46456eefde44e7b6e3b4fef1a36c7ffe87c90fb703
 
 pkgname = freesmlauncher
