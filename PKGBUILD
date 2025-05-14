@@ -53,6 +53,9 @@ prepare() {
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
+	# Temporary for GCC 15 defaulting to C23
+	export CFLAGS="$CFLAGS -std=gnu11"
+
 	# libswresample is disabled in Arch ffmpeg, therefore libav
 	# (which is e.g. used for transcoding) has to be disabled
 	./configure \
