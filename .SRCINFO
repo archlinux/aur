@@ -1,7 +1,7 @@
 pkgbase = remindr-bin
-	pkgdesc = Desktop app to help you keep track of what you need to get done.(Prebuilt version.Use system-wide electron)
+	pkgdesc = Keep track of what you need to get done.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mrdavidrios.github.io/remindr
 	arch = x86_64
 	license = GPL-3.0-only

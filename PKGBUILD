@@ -3,9 +3,9 @@ pkgname=remindr-bin
 _pkgname=Remindr
 pkgver=2.2.1
 _electronversion=33
-pkgrel=1
-pkgdesc="Desktop app to help you keep track of what you need to get done.(Prebuilt version.Use system-wide electron)"
-arch=("x86_64")
+pkgrel=2
+pkgdesc="Keep track of what you need to get done.(Prebuilt version.Use system-wide electron)"
+arch=('x86_64')
 url="https://mrdavidrios.github.io/remindr"
 _ghurl="https://github.com/MrDavidRios/remindr"
 license=("GPL-3.0-only")
@@ -21,15 +21,15 @@ source=(
 sha256sums=('b8d59053a453a109f7829206582b1da80d2207472e9e91e0a947edc845b12904'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" 
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" 
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
