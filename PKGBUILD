@@ -5,25 +5,22 @@
 
 pkgname=cpr
 pkgver=1.11.2
-pkgrel=3
+pkgrel=4
 pkgdesc='C++ Requests: Curl for People, a spiritual port of Python Requests.'
 arch=('x86_64')
 url="https://github.com/libcpr/cpr"
 license=('MIT')
 depends=('curl')
-makedepends=('cmake' 'git' 'gtest')
+makedepends=('cmake' 'git' 'gtest>=1.17') # gtest 1.17 fixes an issue that made this build fail
 provides=('libcpr.so=1-64')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-        '0001-disable-failing-tests.patch'
-        '0002-fix-gtest-werror.patch')
+        '0001-disable-failing-tests.patch')
 sha256sums=('3795a3581109a9ba5e48fbb50f9efe3399a3ede22f2ab606b71059a615cd6084'
-            '793379badbbc21f5f00215539854a6afb62697e2a4d84256a4281cb52c783946'
-            'da0fc18276cdea26ed3dc04e436ac59aa4745a2292a53f08e35908a4e7282b7a')
+            '793379badbbc21f5f00215539854a6afb62697e2a4d84256a4281cb52c783946')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
 	patch -p1 -i ../0001-disable-failing-tests.patch
-	patch -p1 -i ../0002-fix-gtest-werror.patch
 }
 
 build() {
