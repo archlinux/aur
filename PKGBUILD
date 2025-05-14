@@ -2,7 +2,7 @@
 # Maintainer: RocketDev <ma2014119@outlook.com>
 pkgname=ceccomp
 pkgver=1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A C-based seccomp analysis tool"
 arch=(x86_64)
 url="https://github.com/dbgbgtf1/Ceccomp"
@@ -15,7 +15,7 @@ depends=(
 makedepends=(git)
 source=("$pkgname"::git+https://github.com/dbgbgtf1/Ceccomp.git#tag=v${pkgver}?signed)
 
-b2sums=('4f453e9a447fca9f190fe15594e540b752740ebfe6d065698538ce0c0fb73222f3ddf487f57fa7a5c2496c5bad0073e314aba68a04b2ef36e930e37f1b474900')
+b2sums=('7334a3663a9926b13df7fc7fe82c8c326281680e6e94c1e8cbe69f13bd06d3cb090f0a357c3fcd9c7d58397d211ac06f25323316fc57d0155a2e17b3941f27eb')
 
 validpgpkeys=(
     '0816A179BB09248F30468BD6542A0969B5CEDCDB' # dbgbgtf1 <dudududumaxver@outlook.com>
