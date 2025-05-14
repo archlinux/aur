@@ -2,7 +2,7 @@
 
 pkgname=lightningcss-cli-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.29.3
+pkgver=1.30.1
 pkgrel=1
 pkgdesc='Extremely fast CSS parser, transformer, and minifier'
 license=(MPL-2.0)
@@ -10,8 +10,8 @@ license=(MPL-2.0)
 url="https://lightningcss.dev/"
 source_x86_64=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$_pkgname-linux-x64-gnu/-/$_pkgname-linux-x64-gnu-$pkgver.tgz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$_pkgname-linux-arm64-gnu/-/$_pkgname-linux-arm64-gnu-$pkgver.tgz")
-sha256sums_x86_64=('bad164c624887b6b870c902f676bafbb786739fbbbf19b0dec2eda97d0493aa8')
-sha256sums_aarch64=('bad164c624887b6b870c902f676bafbb786739fbbbf19b0dec2eda97d0493aa8')
+sha256sums_x86_64=('09b52732cb9c8c9daca1461911407a0334ad9d817a7a706505eeb2baef7304f6')
+sha256sums_aarch64=('09b52732cb9c8c9daca1461911407a0334ad9d817a7a706505eeb2baef7304f6')
 
 arch=(x86_64 aarch64)
 depends=(glibc gcc-libs)
