@@ -6,7 +6,7 @@
 _pkgname=grub4dos-efi
 pkgname="${_pkgname}-git"
 pkgver=r767.20250510.b5c60c9
-pkgrel=1
+pkgrel=2
 pkgdesc="GRUB4DOS EFI binaries."
 arch=(
   'i386'
@@ -189,6 +189,17 @@ build() {
   CXXFLAGS=("`grep -E '^CXXFLAGS=.+' /etc/makepkg.conf | cut -d '"' -f 2`")
   LDFLAGS=("`grep -E '^LDFLAGS=.+' /etc/makepkg.conf | cut -d '"' -f 2`")
   CPPFLAGS=("`grep -E '^CPPFLAGS=.+' /etc/makepkg.conf | cut -d '"' -f 2`")
+
+  local _NO_WERRORS _no_werror _CFLAGSADDITIONS
+  _NO_WERRORS=("incompatible-pointer-types") # See https://github.com/chenall/grub4dos/issues/444
+  _CFLAGSADDITIONS=""
+  for _no_werror in "${_NO_WERRORS[@]}"; do
+    _CFLAGSADDITIONS+=" -Wno-error=${_no_werror}"
+  done
+  CFLAGS+="${_CFLAGSADDITIONS}"
+  CXXFLAGS+="${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
 
   case "$CARCH" in
     'i386'|'i486'|'i586'|'i686')
