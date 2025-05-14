@@ -7,7 +7,7 @@ _pkgname="${_pkgbase}"
 pkgname="${pkgbase}"
 epoch=0
 pkgver=0.2.0+8.r458.20250509.1c5293d
-pkgrel=1
+pkgrel=2
 pkgdesc="Debug tools for AMD zen systems."
 arch=(
   'any'
@@ -20,20 +20,22 @@ depends=(
   'acpica'
   'dbus-python'
   'python>=3.7'
-  'python-distro'
+  #'python-distro'
   'python-packaging'
   'python-pandas'
   'python-pyudev'
   'python-tabulate'
 )
 optdepends=(
-  "fwupd>=2:         For device firmware checks ('amd_s2idle')."
-  "python-common:    For optional model checks ('amd_s2idle')."
-  "glib2:            For device firmware checks ('amd_s2idle')."
-  "python-gobject:   For device firmware checks ('amd_s2idle')."
-  "python-cysystemd: To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd_s2idle')."
-  "python-systemd:   To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd_s2idle') | Needed to run 'amd_bios'."
-  "util-linux:       To access the kernel log via 'dmesg' ('amd_s2idle')."
+  "fwupd>=2:          For device firmware checks ('amd-s2idle')."
+  "python-common:     For optional model checks ('amd-s2idle')."
+  "glib2:             For device firmware checks ('amd-s2idle')."
+  "python-gobject:    For device firmware checks ('amd-s2idle')."
+  "python-cysystemd:  To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd-s2idle')."
+  "python-systemd:    To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd-s2idle') | Needed to run 'amd-bios'."
+  "python-matplotlib: For 'site-packages/amd_debug/sleep_report.py', used by 'amd-s2idle'"
+  "python-seaborn:    For 'site-packages/amd_debug/sleep_report.py', used by 'amd-s2idle'."
+  "util-linux:        To access the kernel log via 'dmesg' ('amd-s2idle')."
 )
 makedepends=(
   'git'

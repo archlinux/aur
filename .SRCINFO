@@ -1,7 +1,7 @@
 pkgbase = amd-debug-tools-git
 	pkgdesc = Debug tools for AMD zen systems.
 	pkgver = 0.2.0+8.r458.20250509.1c5293d
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://git.kernel.org/pub/scm/linux/kernel/git/superm1/amd-debug-tools
 	arch = any
@@ -16,18 +16,19 @@ pkgbase = amd-debug-tools-git
 	depends = acpica
 	depends = dbus-python
 	depends = python>=3.7
-	depends = python-distro
 	depends = python-packaging
 	depends = python-pandas
 	depends = python-pyudev
 	depends = python-tabulate
-	optdepends = fwupd>=2: For device firmware checks ('amd_s2idle').
-	optdepends = python-common: For optional model checks ('amd_s2idle').
-	optdepends = glib2: For device firmware checks ('amd_s2idle').
-	optdepends = python-gobject: For device firmware checks ('amd_s2idle').
-	optdepends = python-cysystemd: To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd_s2idle').
-	optdepends = python-systemd: To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd_s2idle') | Needed to run 'amd_bios'.
-	optdepends = util-linux: To access the kernel log via 'dmesg' ('amd_s2idle').
+	optdepends = fwupd>=2: For device firmware checks ('amd-s2idle').
+	optdepends = python-common: For optional model checks ('amd-s2idle').
+	optdepends = glib2: For device firmware checks ('amd-s2idle').
+	optdepends = python-gobject: For device firmware checks ('amd-s2idle').
+	optdepends = python-cysystemd: To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd-s2idle').
+	optdepends = python-systemd: To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd-s2idle') | Needed to run 'amd-bios'.
+	optdepends = python-matplotlib: For 'site-packages/amd_debug/sleep_report.py', used by 'amd-s2idle'
+	optdepends = python-seaborn: For 'site-packages/amd_debug/sleep_report.py', used by 'amd-s2idle'.
+	optdepends = util-linux: To access the kernel log via 'dmesg' ('amd-s2idle').
 	provides = amd-debug-tools=0.2.0+8.r458.20250509.1c5293d
 	provides = amd-bios-logging-control-script=0.2.0+8.r458.20250509.1c5293d
 	provides = amd-psr-identification-script=0.2.0+8.r458.20250509.1c5293d
