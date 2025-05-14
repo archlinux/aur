@@ -10,7 +10,7 @@ url='https://jookdb.com/'
 license=('unknown')
 options=(!strip)
 # https://jookdb.com/download/jookdb_7.3_linux_x64.AppImage
-source=("https://jookdb.com/download/${pkgname}_${pkgver}_linux_x64.AppImage")
+source=("${pkgname}_${pkgver}_linux_x64.AppImage::https://jookdb.com/download/${pkgname}_${pkgver}_linux_x64.AppImage")
 noextract=("${pkgname}_${pkgver}_linux_x64.AppImage")
 sha512sums=('df50d5ce4f482ca7a805fcd529b83cbce0574aed2e7cacb39c22e205b9003239c5b3c39e8018eef647968baa15b56d0c4e5c04414fd0a9d11c09eee52ba4116d')
 
