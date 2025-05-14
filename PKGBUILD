@@ -2,7 +2,7 @@
 
 set -u
 pkgname='dj64-git'
-pkgver=0.0.r4160.e5db293
+pkgver=0.0.r4268.8652119
 pkgrel=1
 pkgdesc='djgpp 64 bit compiler'
 arch=('x86_64')
@@ -61,7 +61,7 @@ build() {
   if [ ! -s 'Makefile.conf' ]; then
     ./configure --prefix='/usr'
   fi
-  nice make -j1
+  nice -n1 make
   set +u
 }
 
