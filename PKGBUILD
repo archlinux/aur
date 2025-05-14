@@ -2,8 +2,8 @@
 
 pkgname=hyde-ipc-git
 _pkgname=hyde-ipc
-pkgver=0.1.2
-pkgrel=1
+pkgver=0.1.1
+pkgrel=2
 pkgdesc="Control Hyprland, query its state, listen for events, and create automated reactions to events."
 arch=("x86_64")
 license=('MIT')
