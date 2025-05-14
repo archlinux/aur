@@ -4,7 +4,7 @@
 #
 pkgname=gurush
 _origpkgname=gurush
-pkgver=0.1.10
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="Linux Shell AI Agent."
 arch=("x86_64")
@@ -17,7 +17,9 @@ depends=(
 	"python-rich"
 	"python-term-image"
 	"python-langchain-openai"
-	"python-langchain"	
+	"python-langchain"
+	"python-openai"
+	"python-tiktoken"
 )
 makedepends=(
 	"python-build"
@@ -26,8 +28,8 @@ makedepends=(
 	"python-setuptools"
 	"python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/74/12/ddae47c43b1b22837fa18cb69d96f72d53d61480958459459262e6eed60c/gurush-0.1.10.tar.gz")
-sha256sums=("80db18b6ba65a807708955476173d3fc9f6069a07f36aa947509abbbc7ad4e60")
+source=("https://files.pythonhosted.org/packages/1d/01/a83e002f0405630fbd6cef9d2e79285d8e6c3db768125f6bfa197d44cb3f/gurush-0.1.12.tar.gz")
+sha256sums=("52db461f9e1f61a048bb10c58f955139ef5bdf8895e0ea12efc63f10879d379f")
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
