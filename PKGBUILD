@@ -2,15 +2,15 @@
 # Contributer: n0n1m
 
 pkgname=pyhoster
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A simple tool for servers that host python projects"
 arch=('any')
 url="https://github.com/mbutsk/pyhoster"
 license=('MIT')
-depends=(python3 python-psutil)
+depends=(python3)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('09db1e1e6d2effefe08adac21018d4096d026c1cef779bc673eb583ca87f15cb')
+sha256sums=('4f7fa4ea9c3ed71a1d8b1ce540a8a3c617ce797a80e4d0f192d04aab48a59d34')
 conflicts=(pyhoster-git)
 
 package() {
