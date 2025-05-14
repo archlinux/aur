@@ -1,3 +1,4 @@
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: TrialnError <autumn-wind@web.de>
 # Contributor: Qingxu <me@linioi.com>
 pkgname=switchhosts
