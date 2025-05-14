@@ -14,7 +14,7 @@
   <a href="https://nazdridoy.github.io/ngpt/installation/#android-termux"><img src="https://img.shields.io/badge/Android-Termux-blue?logo=android" alt="Android"></a>
 </p> 
 
-🤖 nGPT: A Swiss army knife for LLMs: powerful CLI and interactive chatbot in one package. Seamlessly work with OpenAI, Ollama, Groq, Claude, Gemini, or any OpenAI-compatible API to generate code, craft git commits, rewrite text, and execute shell commands. Fast, lightweight, and designed for both casual users and developers.
+🤖 nGPT, A Swiss army knife for LLMs: A fast, lightweight CLI and interactive chat tool that brings the power of any OpenAI-compatible LLM (OpenAI, Ollama, Groq, Claude, Gemini, etc.) straight to your terminal. rewrite texts or refine code, craft git commit messages, generate and run OS-aware shell commands, seamlessly switching between single-shot prompts and an interactive chat when you need back-and-forth assistance.
 
 
 ![ngpt-i](https://raw.githubusercontent.com/nazdridoy/ngpt/main/previews/ngpt-i.png)
