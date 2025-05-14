@@ -6,6 +6,7 @@ pkgbase = nbtworkbench-git
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = cargo
+	makedepends = git
 	source = git+https://github.com/RealRTTV/nbtworkbench
 	b2sums = SKIP
 
