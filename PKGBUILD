@@ -1,16 +1,16 @@
 _pkgname=aha
 pkgname=aha-git
-pkgver=0.5.8.g50b5135
+pkgver=0.5.1.14.g5eaec96
 pkgrel=1
 pkgdesc="Ansi HTML Adapter: convert ANSI escape sequences to HTML."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 makedepends=('git')
 url="https://github.com/theZiz/aha"
-license=('MPL' 'LGPL')
+license=('MPL-1.1' 'LGPL-2.0-or-later')
 provides=('aha')
 conflicts=('aha')
 
-source=('git://github.com/theZiz/aha.git#branch=master')
+source=('git+https://github.com/theZiz/aha.git#branch=master')
 sha512sums=('SKIP')
 
 pkgver() {
