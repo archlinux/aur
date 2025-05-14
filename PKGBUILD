@@ -1,12 +1,12 @@
-# Maintainer:  mzwing <mzwing@mzwing.eu.org>
-# Contributor: Misaka13514 <Misaka13514 at gmail dot com>
-# Contributor: Henry-ZHR <henry-zhr@qq.com>
+# Maintainer:    mzwing <mzwing@mzwing.eu.org>
+# Co-Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
+# Contributor:   Henry-ZHR <henry-zhr@qq.com>
 
 _pkgname=serenity
 pkgname=serenity-bin
-_pkgver=1.0.0-beta.17
-pkgver=${_pkgver//-/_}
-pkgrel=2
+_pkgver='1.1.0-beta.3'
+pkgver=1.1.0beta.3
+pkgrel=1
 pkgdesc='The configuration generator for sing-box'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url='https://github.com/SagerNet/serenity'
@@ -16,15 +16,15 @@ provides=('serenity')
 conflicts=('serenity' 'serenity-git')
 backup=("etc/$_pkgname/config.json")
 source=("LICENSE"::$url/raw/dev/LICENSE)
-source_i686=("${_pkgname}_${_pkgver}_linux_i686.pkg.tar.zst::$url/releases/download/v$_pkgver/${_pkgname}_${_pkgver}_linux_386.pkg.tar.zst")
-source_x86_64=("${_pkgname}_${_pkgver}_linux_x86_64.pkg.tar.zst::$url/releases/download/v$_pkgver/${_pkgname}_${_pkgver}_linux_amd64.pkg.tar.zst")
-source_aarch64=("${_pkgname}_${_pkgver}_linux_aarch64.pkg.tar.zst::$url/releases/download/v$_pkgver/${_pkgname}_${_pkgver}_linux_arm64.pkg.tar.zst")
-source_armv7h=("${_pkgname}_${_pkgver}_linux_armv7h.pkg.tar.zst::$url/releases/download/v$_pkgver/${_pkgname}_${_pkgver}_linux_armv7.pkg.tar.zst")
+source_i686=("${_pkgname}_${_pkgver}_i686.tar.zst::$url/releases/download/v$_pkgver/${_pkgname}_${_pkgver}_linux_386.pkg.tar.zst")
+source_x86_64=("${_pkgname}_${_pkgver}_x86_64.tar.zst::$url/releases/download/v$_pkgver/${_pkgname}_${_pkgver}_linux_amd64.pkg.tar.zst")
+source_aarch64=("${_pkgname}_${_pkgver}_aarch64.tar.zst::$url/releases/download/v$_pkgver/${_pkgname}_${_pkgver}_linux_arm64.pkg.tar.zst")
+source_armv7h=("${_pkgname}_${_pkgver}_armv7h.tar.zst::$url/releases/download/v$_pkgver/${_pkgname}_${_pkgver}_linux_armv7.pkg.tar.zst")
 sha256sums=('650d5e3b99a446fb38e820fa87a49562e0c79eab868fff58618ac487a58e554c')
-sha256sums_i686=('0c3151ffafd0762ab94d8a731140b9aba8a945c87eea489d0dff3b2ac94a38ec')
-sha256sums_x86_64=('2b8d157ef08dcb15e56ed6c4e910f44a60c12bcb2753648d98d11723fa6d1125')
-sha256sums_aarch64=('79e808b5d2f66bbf4b59bd39398ee2aac79d2c310071f2026cab78e79c239172')
-sha256sums_armv7h=('31bb2cae115260f101874b51ea65b3c9deadb826e71154402a2ac07363dfe459')
+sha256sums_i686=('941c7ca18c4634ff2abbf76f07f6ed764bdab52bd61bdfdc0b8736fa8b582742')
+sha256sums_x86_64=('76c90048247f03382f3316d63cabd934c8d0bc2d22a308661c2fe2f90dc11c21')
+sha256sums_aarch64=('519f44a26dc921edcf083af38be8a7f1acde8139f577757ce92bb64cc18e7598')
+sha256sums_armv7h=('4ed71b36b8a3039e6ffecb289f5e5a9036bbc18155056250aca06039a713197e')
 
 package() {
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
