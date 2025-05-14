@@ -2,7 +2,7 @@
 _pkgname=lfs-dal
 pkgname=lfs-dal-git
 pkgbase=lfs-dal-git
-pkgver=0.1.3
+pkgver=0.1.3.r0.g7518ad2
 pkgrel=1
 pkgdesc='A custom transfer agent for Git LFS powered by OpenDAL.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
