@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="updatecli"
-pkgver=0.99.0
+pkgver=0.100.0
 pkgrel=1
 pkgdesc="A declarative dependency management command line tool"
 arch=('aarch64' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('go')
 # checkdepends=('docker')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('992ca4b623c88ebd306f7745e512a51bd7fd7ded824b94b18718ca276cb5dad14ea7e396000bae354e95272ae4243e91a91f75bf683b65d2fc6beff60ac24ee3')
+b2sums=('72c1cedd8cd68819e2fe5dd063793874d9c57be833ba16e84a48ce5a89f7732410fbcc9bdb7add272e0ce136f1423e46820184fab3994a1a4ab16f7ef09274bd')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
