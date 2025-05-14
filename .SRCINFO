@@ -1,12 +1,13 @@
 pkgbase = clash-verge-rev-alpha-bin
 	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri | Alpha Version
-	pkgver = 2.0.0
+	pkgver = 2.2.4
 	pkgrel = 25
 	url = https://github.com/clash-verge-rev/clash-verge-rev
 	install = .install
 	arch = x86_64
+	arch = arm64
 	license = GPL3
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libayatana-appindicator
 	conflicts = clash-verge-rev-bin
@@ -14,7 +15,8 @@ pkgbase = clash-verge-rev-alpha-bin
 	conflicts = clash-verge-rev-git
 	conflicts = clash-verge
 	conflicts = clash-verge-bin
-	source_x86_64 = clash-verge-rev-2.0.0-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/Clash.Verge_2.0.0-rc.5_amd64.deb
+	source_x86_64 = clash-verge-rev-2.2.4-alpha-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/Clash.Verge_2.2.4-alpha_amd64.deb
 	sha512sums_x86_64 = SKIP
+	source_arm64 = clash-verge-rev-2.2.4-alpha-arm64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/Clash.Verge_2.2.4-alpha_arm64.deb
 
 pkgname = clash-verge-rev-alpha-bin
