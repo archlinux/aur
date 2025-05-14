@@ -26,6 +26,12 @@ build() {
     cargo build --release --frozen
 }
 
+check() {
+  cd "${srcdir}/git/pyrefly"
+  CC=clang RUSTFLAGS+=" -Clinker-plugin-lto -Clinker=clang -Clink-arg=-fuse-ld=lld" \
+    cargo check
+}
+
 package() {
   cd "${srcdir}/git/pyrefly"
   install -D -m 0755 -t "${pkgdir}/usr/bin/" "target/release/pyrefly"
