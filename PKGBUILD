@@ -1,7 +1,7 @@
 # Maintainer: Peter Züger <zueger.peter@icloud.com>
 
 pkgname=mpy-repl-tool-git
-_pkgname="${pkgname%-git}"
+_name="${pkgname%-git}"
 pkgver=r139.0f4a716
 pkgrel=1
 pkgdesc="Communicate and transfer files from and to MicroyPython boards via REPL"
@@ -17,17 +17,17 @@ source=('git+https://github.com/zsquareplusc/mpy-repl-tool.git')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
+    cd "$_name"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_name}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_name}"
   python setup.py install --root="${pkgdir}"
   install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
