@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-pure-git
-pkgver=10.7.r99.gccb99cd00f5
+pkgver=10.7.r147.ga7d7024479e
 pkgrel=1
 source=(
   "git+https://gitlab.winehq.org/wine/wine.git"
@@ -32,7 +32,7 @@ sha256sums=(
   'SKIP'
   '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
   '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
-  'af9cf70f8ea0d0b6469849b27ec42119b9bd682e96a11a66b67162621a0c75ec'
+  'b2afa7102677b788c46df38aa199770b419fae63eeb92ea6186df70508782716'
   'ff689d9a71190ab28c9de27bc6640172b136eb6bcc7fcaee3f49f012831f1370'
   '5f1065a4a404ee424fd80baf2c4f66f1ada83a088d56bc57e99260a2444ee006'
   '13c94740b1030818c41c8745928c8d4125386066e794a7ddcd0b2f48a09ccd60'

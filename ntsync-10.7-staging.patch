@@ -1490,10 +1490,10 @@ index bd86433a954..fb00f30d14a 100644
  #undef HAVE_LINUX_PARAM_H
  
 diff --git a/include/wine/server_protocol.h b/include/wine/server_protocol.h
-index 865102a83a4..9bae0c0593c 100644
+index 2c0e8c27fb5..0bae2621076 100644
 --- a/include/wine/server_protocol.h
 +++ b/include/wine/server_protocol.h
-@@ -5940,6 +5940,81 @@ struct set_keyboard_repeat_reply
+@@ -5936,6 +5936,81 @@ struct set_keyboard_repeat_reply
      char __pad_12[4];
  };
  
@@ -1575,7 +1575,7 @@ index 865102a83a4..9bae0c0593c 100644
  
  enum request
  {
-@@ -6237,6 +6312,11 @@ enum request
+@@ -6233,6 +6308,11 @@ enum request
      REQ_get_next_process,
      REQ_get_next_thread,
      REQ_set_keyboard_repeat,
@@ -1587,7 +1587,7 @@ index 865102a83a4..9bae0c0593c 100644
      REQ_NB_REQUESTS
  };
  
-@@ -6538,6 +6618,11 @@ union generic_request
+@@ -6534,6 +6614,11 @@ union generic_request
      struct get_next_process_request get_next_process_request;
      struct get_next_thread_request get_next_thread_request;
      struct set_keyboard_repeat_request set_keyboard_repeat_request;
@@ -1599,7 +1599,7 @@ index 865102a83a4..9bae0c0593c 100644
  };
  union generic_reply
  {
-@@ -6837,8 +6922,13 @@ union generic_reply
+@@ -6833,8 +6918,13 @@ union generic_reply
      struct get_next_process_reply get_next_process_reply;
      struct get_next_thread_reply get_next_thread_reply;
      struct set_keyboard_repeat_reply set_keyboard_repeat_reply;
@@ -1610,8 +1610,8 @@ index 865102a83a4..9bae0c0593c 100644
 +    struct get_inproc_alert_event_reply get_inproc_alert_event_reply;
  };
  
--#define SERVER_PROTOCOL_VERSION 869
-+#define SERVER_PROTOCOL_VERSION 872
+-#define SERVER_PROTOCOL_VERSION 872
++#define SERVER_PROTOCOL_VERSION 875
  
  #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
 diff --git a/server/Makefile.in b/server/Makefile.in
@@ -3303,7 +3303,7 @@ index af0efe72132..671e1a77e36 100644
          release_object( mutex );
      }
 diff --git a/server/named_pipe.c b/server/named_pipe.c
-index 6e4ae371a1b..2ce27560845 100644
+index 61395cf574a..104ced9be3b 100644
 --- a/server/named_pipe.c
 +++ b/server/named_pipe.c
 @@ -131,6 +131,7 @@ static const struct object_ops named_pipe_ops =
@@ -3563,10 +3563,10 @@ index 1648e46fe98..160dc4b4b43 100644
  
  /* process functions */
 diff --git a/server/protocol.def b/server/protocol.def
-index 0370ad58bee..5db75b8c608 100644
+index 683dc548091..f9c07729346 100644
 --- a/server/protocol.def
 +++ b/server/protocol.def
-@@ -4124,3 +4124,46 @@ struct handle_info
+@@ -4120,3 +4120,46 @@ struct handle_info
  @REPLY
      int enable;                /* previous state of auto-repeat enable */
  @END
@@ -3837,7 +3837,7 @@ index 2254315b79e..24a4f779e68 100644
      master_socket_destroy          /* destroy */
  };
 diff --git a/server/request_handlers.h b/server/request_handlers.h
-index 0a5c6f3d9bd..8a55f9b7bb2 100644
+index 82bc1bc32ba..d0568d9a073 100644
 --- a/server/request_handlers.h
 +++ b/server/request_handlers.h
 @@ -301,6 +301,11 @@ DECL_HANDLER(resume_process);
@@ -3864,7 +3864,7 @@ index 0a5c6f3d9bd..8a55f9b7bb2 100644
  };
  
  C_ASSERT( sizeof(abstime_t) == 8 );
-@@ -2295,3 +2305,15 @@ C_ASSERT( offsetof(struct set_keyboard_repeat_request, period) == 20 );
+@@ -2291,3 +2301,15 @@ C_ASSERT( offsetof(struct set_keyboard_repeat_request, period) == 20 );
  C_ASSERT( sizeof(struct set_keyboard_repeat_request) == 24 );
  C_ASSERT( offsetof(struct set_keyboard_repeat_reply, enable) == 8 );
  C_ASSERT( sizeof(struct set_keyboard_repeat_reply) == 16 );
@@ -3881,10 +3881,10 @@ index 0a5c6f3d9bd..8a55f9b7bb2 100644
 +C_ASSERT( offsetof(struct get_inproc_alert_event_reply, handle) == 8 );
 +C_ASSERT( sizeof(struct get_inproc_alert_event_reply) == 16 );
 diff --git a/server/request_trace.h b/server/request_trace.h
-index bd5dad7e048..052d9d198f1 100644
+index 7156d1bb0ad..a0099f3250c 100644
 --- a/server/request_trace.h
 +++ b/server/request_trace.h
-@@ -3382,6 +3382,39 @@ static void dump_set_keyboard_repeat_reply( const struct set_keyboard_repeat_rep
+@@ -3378,6 +3378,39 @@ static void dump_set_keyboard_repeat_reply( const struct set_keyboard_repeat_rep
      fprintf( stderr, " enable=%d", req->enable );
  }
  
@@ -3924,7 +3924,7 @@ index bd5dad7e048..052d9d198f1 100644
  typedef void (*dump_func)( const void *req );
  
  static const dump_func req_dumpers[REQ_NB_REQUESTS] =
-@@ -3680,6 +3713,11 @@ static const dump_func req_dumpers[REQ_NB_REQUESTS] =
+@@ -3676,6 +3709,11 @@ static const dump_func req_dumpers[REQ_NB_REQUESTS] =
      (dump_func)dump_get_next_process_request,
      (dump_func)dump_get_next_thread_request,
      (dump_func)dump_set_keyboard_repeat_request,
@@ -3936,7 +3936,7 @@ index bd5dad7e048..052d9d198f1 100644
  };
  
  static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
-@@ -3978,6 +4016,11 @@ static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
+@@ -3974,6 +4012,11 @@ static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
      (dump_func)dump_get_next_process_reply,
      (dump_func)dump_get_next_thread_reply,
      (dump_func)dump_set_keyboard_repeat_reply,
@@ -3948,7 +3948,7 @@ index bd5dad7e048..052d9d198f1 100644
  };
  
  static const char * const req_names[REQ_NB_REQUESTS] =
-@@ -4276,6 +4319,11 @@ static const char * const req_names[REQ_NB_REQUESTS] =
+@@ -4272,6 +4315,11 @@ static const char * const req_names[REQ_NB_REQUESTS] =
      "get_next_process",
      "get_next_thread",
      "set_keyboard_repeat",
@@ -4425,7 +4425,7 @@ index 3cdb9e5be5f..87cfde364be 100644
      token_destroy              /* destroy */
  };
 diff --git a/server/window.c b/server/window.c
-index 1eb815dfe3e..31529c38cfb 100644
+index 914d376a44a..80458b193aa 100644
 --- a/server/window.c
 +++ b/server/window.c
 @@ -119,6 +119,7 @@ static const struct object_ops window_ops =
