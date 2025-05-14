@@ -41,7 +41,7 @@ for ((i = 0; i < y_padding; i++)); do
   y="$y\n"
 done
 
-until [ $x -eq $((h + y_padding)) ]
+until [ $x -eq $h ]
 do
     printf "%-$((w + x_padding + 7))s %-50s\n" "$(echo -e "${asciif}$(sed -n "$((x + 1))p" "/usr/share/attofetch/$ascii")")" "$(echo -e "${text[$((x + 20 - y_padding))]}")"
     (( x++ ))
