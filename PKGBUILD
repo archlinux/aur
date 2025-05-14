@@ -1,7 +1,7 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=kh-melonmix-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A fork of MelonDS, focused on remastering Kingdom Hearts: 358/2 Days and Re:coded"
 arch=(x86_64)
@@ -21,9 +21,13 @@ install=kh-melonmix.install
 changelog=
 source=("$url/releases/download/v$pkgver/MelonMix-ubuntu-$arch.zip"
 https://cdn2.steamgriddb.com/icon/da31235cecfce300dec24b9b88e80316.png
-	)
+https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/khDaysMM.png
+https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/khCodedMM.png
+)
 noextract=()
 sha256sums=(SKIP
+SKIP
+SKIP
 SKIP
 	)
 validpgpkeys=()
@@ -65,7 +69,7 @@ echo "[Desktop Entry]
 	Path=/opt/Kingdom Hearts Melon Mix/
 	Type=Application
 	Icon=kh-melonmix
-	Categories=Accessories;" >>"$pkgdir/usr/share/applications/kh-melonmix.desktop"
+	Categories=Game;" >>"$pkgdir/usr/share/applications/kh-melonmix.desktop"
 
 
  chmod +x $pkgdir/usr/bin/kh-melonmix-owndir
@@ -77,8 +81,8 @@ echo "[Desktop Entry]
 	Terminal=false
 	Path=/opt/Kingdom Hearts Melon Mix/
 	Type=Application
-	Icon=kh-melonmix
-	Categories=Accessories;" >>"$pkgdir/usr/share/applications/kh-melonmix-days.desktop"
+	Icon=kh-melonmix-days
+	Categories=Game;" >>"$pkgdir/usr/share/applications/kh-melonmix-days.desktop"
 
 echo "[Desktop Entry]
 	Name=Kingdom Hearts: Re:Coded Melon Mix
@@ -87,10 +91,12 @@ echo "[Desktop Entry]
 	Terminal=false
 	Path=/opt/Kingdom Hearts Melon Mix
 	Type=Application
-	Icon=kh-melonmix
-	Categories=Accessories;" >>"$pkgdir/usr/share/applications/kh-melonmix-recoded.desktop"
+	Icon=kh-melonmix-coded
+	Categories=Game;" >>"$pkgdir/usr/share/applications/kh-melonmix-recoded.desktop"
 
-# and finally installing the icon I took from SteamGridDB
+# and finally installing the icon I took from SteamGridDB & the rest of them from the github
 cp $srcdir/da31235cecfce300dec24b9b88e80316.png $pkgdir/usr/share/icons/hicolor/256x256/apps/kh-melonmix.png
+cp $srcdir/khCodedMM.png $pkgdir/usr/share/icons/hicolor/256x256/apps/kh-melonmix-coded.png
+cp $srcdir/khDaysMM.png $pkgdir/usr/share/icons/hicolor/256x256/apps/kh-melonmix-days.png
 }
 
