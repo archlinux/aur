@@ -1,4 +1,5 @@
-# Maintainer: Wasabi <wasabithumbs@gmail.com>
+# Maintainer: Mattia Moffa <mattia [at] moffa [dot] xyz>
+# Previous maintainer: Wasabi <wasabithumbs@gmail.com>
 pkgname=open-goal-launcher-bin
 pkgver="2.7.4"
 pkgrel=1
