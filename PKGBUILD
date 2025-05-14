@@ -1,6 +1,6 @@
 # Maintainer: Nick77 <qwiko20@tutamail.com>
 pkgname=jakana
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Learn Japanese kana on cli'
 arch=('any')
