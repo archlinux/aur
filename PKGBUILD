@@ -4,7 +4,7 @@
 
 _name="babl"
 pkgname="lib32-${_name}"
-pkgver=0.1.112
+pkgver=0.1.114
 pkgrel=1
 pkgdesc="Dynamic, any to any, pixel format conversion library (32-bit)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('meson>=0.55')
 provides=("lib${_name}-${pkgver%.*}.so")
 _pkgsrc="${_name}-${_name^^}_${pkgver//./_}"
 source=("${_pkgsrc}.tar.gz::${_url}/-/archive/${_name^^}_${pkgver//./_}/${_pkgsrc}.tar.gz")
-sha512sums=('c0dae49b511e8022af05cdbd5fe11650d96af2e0c69ae6553f9612b7d9a2e99dd0fde35b58bc914408763189a1d684c3a067bcff253f9e80f6d9c1634be1a349')
+sha512sums=('c050c35f13551b0495f3a5615dff1066f0e71b51fcaf9d44e91cb6b231f062caf713d61d269066f5d38461f9668c08fa9625b24feffcf0df35834381dd66fe3a')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
