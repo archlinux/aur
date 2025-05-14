@@ -45,8 +45,8 @@ index 36b52dc1..3d57469b 100644
        capacity = load_capacity;
    }
  
-+  if (config_.max_memory_usage > 0.0f && GetMemoryUsage() < config_.max_memory_usage ) {
-+    capacity = 1;
++  if (config_.max_memory_usage > 0.0f && GetMemoryUsage() > config_.max_memory_usage ) {
++    capacity = 0;
 +  }
 +
    if (capacity < 0)

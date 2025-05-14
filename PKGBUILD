@@ -9,7 +9,7 @@ _ver="v1.12.1"
 _fragment="#tag=$_ver"
 pkgname=ninja-mem
 pkgver=${_ver%v}
-pkgrel=1
+pkgrel=2
 pkgdesc='Small build system with a focus on speed (with trashing feature)'
 arch=('i686' 'x86_64')
 url='https://ninja-build.org/'
@@ -23,7 +23,7 @@ install=ninja-git.install
 source=("git+https://github.com/ninja-build/ninja.git${_fragment}"
 	'0001-Limit-job-execution-dependant-on-available-memory-m.patch')
 b2sums=('959957c27f4444b6a7e547fcfa8042033dee9d279cc0833265b6bc4bddf128b19060473a115f06c215bf42271b243b896a9fe7efa00f4ef9dec3fa4c885af2a3'
-        'e2c1a0b1fc817ca38a2a4bc57ce4a293e950655011c7afa632e0480934ceaf264489bf1367b88bac1885fe7bb4be87b7f8c789adad1d09a2092d797a14ca11b0')
+        '0e3006f86d921eaf550b9d588a7c38bf423389921430dbdd9465ed76f2153c5631a829e182ee656d24c23554dfb5742f0e0bbecf03c32783aa92dc4f475dd12b')
 
 function prepare {
 	git -C ninja apply -v "${srcdir}/0001-Limit-job-execution-dependant-on-available-memory-m.patch"
