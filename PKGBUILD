@@ -28,12 +28,6 @@ build() {
 		--infodir=/usr/share/info
 		# --with-readline  # I recommend rlwrap instead for persistent history
 
-	# Fix compilation error
-	sed -i '/#include <config.h>/d' lib/number.c
-
-	# Optimize crossover point (see README) to your CPU. Takes up to 10 minutes.
-	make timetest
-
 	make -j1
 }
 
