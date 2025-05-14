@@ -1,6 +1,6 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=sonyheadphonesclient-bluetooth-bin
-pkgver=1.3.13
+pkgver=1.3.14
 pkgrel=1
 epoch=
 pkgdesc="A fork of Plutoberth's SonyHeadphonesClient by mos9527, now updated with support for Sony's newer Bluetooth/TWS devices"
@@ -12,7 +12,6 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=("sonyheadphonesclient-bin")
 replaces=()
 backup=()
 options=()
@@ -40,20 +39,20 @@ validpgpkeys=()
 # }
 
 package() {
-	mv SonyHeadphonesClient-linux-x64 sonyheadphonesclient
+	mv SonyHeadphonesClient-linux-x64 sonyheadphonesclient-bluetooth
 	mkdir -p "$pkgdir/usr/bin/"
-	mv sonyheadphonesclient "$pkgdir/usr/bin/"
-	chmod +x "$pkgdir/usr/bin/sonyheadphonesclient"
+	mv sonyheadphonesclient-bluetooth "$pkgdir/usr/bin/"
+	chmod +x "$pkgdir/usr/bin/sonyheadphonesclient-bluetooth"
 
 	mkdir -p "$pkgdir/usr/share/applications/"
 	echo "[Desktop Entry]
 	Name=Sony Headphones Client
 	GenericName=[XM5+] A Linux client recreating the functionality of the Sony Headphones app
-	Exec=sonyheadphonesclient
+	Exec=sonyheadphonesclient-bluetooth
 	Terminal=false
+	Categories=Utility;
 	Type=Application
-	Icon=audio-headphones
-	Categories=Accessories;" >>"$pkgdir/usr/share/applications/sonyheadphonesclient.desktop"
+	Icon=audio-headphones" >>"$pkgdir/usr/share/applications/sonyheadphonesclient-bluetooth.desktop"
 
 #	License
 #	mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
