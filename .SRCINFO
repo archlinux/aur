@@ -1,0 +1,16 @@
+pkgbase = reclog-git
+	pkgdesc = Command-line tool to capture command output to a file.
+	pkgver = r17.4e02838
+	pkgrel = 1
+	url = https://github.com/gavv/reclog
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = reclog
+	conflicts = reclog
+	source = git+https://github.com/gavv/reclog
+	sha256sums = SKIP
+
+pkgname = reclog-git
