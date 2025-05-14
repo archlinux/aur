@@ -42,4 +42,5 @@ package() {
 	cd gnubc
 
 	make DESTDIR="${pkgdir}" install
+	install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
