@@ -19,7 +19,7 @@ license=(
 depends=(
   'acpica'
   'dbus-python'
-  'python>=3'
+  'python>=3.7'
   'python-distro'
   'python-packaging'
   'python-pandas'
@@ -37,7 +37,12 @@ optdepends=(
 )
 makedepends=(
   'git'
-  'python>=3'
+  'python-build'
+  'python-installer'
+  'python-setuptools>=59.8.0'
+  'python-setuptools-git-versioning>=2.0'
+  'python-setuptools-git-versioning<3'
+  'python-wheel'
 )
 checkdepends=()
 source=(
@@ -96,27 +101,38 @@ pkgver() {
   fi
 }
 
+build() {
+  cd "${srcdir}/${_pkgbase}"
+
+  printf '%s\n' " --> building ..."
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "${srcdir}/${_pkgbase}"
 
-  ## Install python libraries
-  local _pysitepkgdir="$(python -c "import site; print(site.getsitepackages()[0])")"
-  install -dvm775 "${pkgdir}/${_pysitepkgdir}"
-  cp -rv amd_debug "${pkgdir}/${_pysitepkgdir}"/
-
-  ## Install executables
-  local _amdbin _bin
-  for _amdbin in amd_bios amd_pstate amd_s2idle; do
-    install -Dvm755 "${_amdbin}.py" "${pkgdir}/usr/bin/${_amdbin}"
-  done
+  printf '%s\n' " --> installing ..."
+  python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
+  local bin
   for _bin in psr; do
-    install -Dvm755 "${_bin}.py" "${pkgdir}/usr/bin/amd_${_bin}"
+    install -Dvm755 "${_bin}.py" "${pkgdir}/usr/bin/amd-${_bin}"
   done
-  ## Create symlinks to be compatible with the content of the `replaces`/ 'provides` array(s)
-  ln -svr "${pkgdir}/usr/bin/amd_bios"   "${pkgdir}/usr/bin/amd_bios-logging"
-  ln -svr "${pkgdir}/usr/bin/amd_psr"    "${pkgdir}/usr/bin/amd_psr-identification"
-  ln -svr "${pkgdir}/usr/bin/amd_pstate" "${pkgdir}/usr/bin/amd_pstate-analysis"
-  ln -svr "${pkgdir}/usr/bin/amd_s2idle" "${pkgdir}/usr/bin/amd_s2idle-analysis"
+
+#   ## Install python libraries
+#   local _pysitepkgdir="$(python -c "import site; print(site.getsitepackages()[0])")"
+#   install -dvm775 "${pkgdir}/${_pysitepkgdir}"
+#   cp -rv amd_debug "${pkgdir}/${_pysitepkgdir}"/
+# 
+#   ## Install executables
+#   local _amdbin
+#   for _amdbin in amd_bios amd_pstate amd_s2idle; do
+#     install -Dvm755 "${_amdbin}.py" "${pkgdir}/usr/bin/${_amdbin}"
+#   done
+#   ## Create symlinks to be compatible with the content of the `replaces`/ 'provides` array(s)
+  ln -svr "${pkgdir}/usr/bin/amd-bios"   "${pkgdir}/usr/bin/amd_bios-logging"
+  ln -svr "${pkgdir}/usr/bin/amd-psr"    "${pkgdir}/usr/bin/amd_psr-identification"
+  ln -svr "${pkgdir}/usr/bin/amd-pstate" "${pkgdir}/usr/bin/amd_pstate-analysis"
+  ln -svr "${pkgdir}/usr/bin/amd-s2idle" "${pkgdir}/usr/bin/amd_s2idle-analysis"
 
   ## Install documentation
   for _docfile in git.log website.url README.md; do
