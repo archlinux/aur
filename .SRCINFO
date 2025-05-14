@@ -1,7 +1,7 @@
 pkgbase = animestream-bin
 	pkgdesc = A simple project designed for streaming and downloading your favorite anime!(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/frostnova721/animestream-electron
 	arch = x86_64
 	license = AGPL-3.0-only

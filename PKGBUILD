@@ -3,7 +3,7 @@ pkgname=animestream-bin
 pkgver=1.0.0
 _subver=alpha_3
 _electronversion=27
-pkgrel=6
+pkgrel=7
 pkgdesc="A simple project designed for streaming and downloading your favorite anime!(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/frostnova721/animestream-electron"
@@ -20,13 +20,13 @@ source=(
 sha256sums=('01c928a44d8574b448800ddecb460cfcc63e1409e0e5528070677dfa8382705d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
 package() {
