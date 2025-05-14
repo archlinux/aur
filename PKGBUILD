@@ -4,7 +4,7 @@
 
 pkgname=('python-ultralytics')
 _pkgname='ultralytics'
-pkgver=8.3.133
+pkgver=8.3.134
 _pkgdir=${_pkgname}-${pkgver}
 pkgrel=1
 pkgdesc="Object detection, multi-object tracking, instance segmentation, pose estimation and image classification."
@@ -35,7 +35,7 @@ checkdepends=(ipython)
 license=('AGPL-3.0-or-later')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ultralytics/ultralytics/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6eb85cda76e21b28884dab35cb030ec4bbee15ebc7786d7c83c0a4204e902bc6')
+sha256sums=('54b74ec745dd85332f79524c26d94e37421e872d61dbd8d46a2319a6d02d2a31')
 
 build() {
   cd "${_pkgdir}"
