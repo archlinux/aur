@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=teamide-bin
 _pkgname=TeamIDE
-pkgver=2.6.34
+pkgver=2.6.35
 _electronversion=22
 pkgrel=1
 pkgdesc="Integrate MySQL, Oracle, Kingbase, Dameng, Shentong databases, SSH, FTP, Redis, Zookeeper, Kafka, Elasticsearch, Mongodb, small tools and other management tools.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('de6b63a7c97ee346bbba6a9493c824503111d091a4a727d81b6910b849a4a871'
+sha256sums=('d27ae7107209bcd78ac7f5268a7d539bae1c9e2948450274bdd3e97b21ee4d83'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -32,7 +32,9 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
