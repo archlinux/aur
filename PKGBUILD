@@ -118,17 +118,6 @@ package() {
     install -Dvm755 "${_bin}.py" "${pkgdir}/usr/bin/amd-${_bin}"
   done
 
-#   ## Install python libraries
-#   local _pysitepkgdir="$(python -c "import site; print(site.getsitepackages()[0])")"
-#   install -dvm775 "${pkgdir}/${_pysitepkgdir}"
-#   cp -rv amd_debug "${pkgdir}/${_pysitepkgdir}"/
-# 
-#   ## Install executables
-#   local _amdbin
-#   for _amdbin in amd_bios amd_pstate amd_s2idle; do
-#     install -Dvm755 "${_amdbin}.py" "${pkgdir}/usr/bin/${_amdbin}"
-#   done
-#   ## Create symlinks to be compatible with the content of the `replaces`/ 'provides` array(s)
   ln -svr "${pkgdir}/usr/bin/amd-bios"   "${pkgdir}/usr/bin/amd_bios-logging"
   ln -svr "${pkgdir}/usr/bin/amd-psr"    "${pkgdir}/usr/bin/amd_psr-identification"
   ln -svr "${pkgdir}/usr/bin/amd-pstate" "${pkgdir}/usr/bin/amd_pstate-analysis"
