@@ -1,0 +1,13 @@
+pkgbase = hyde-ipc-bin
+	pkgdesc = Control Hyprland, query its state, listen for events, and create automated reactions to events.
+	pkgver = 0.1.2
+	pkgrel = 2
+	url = https://github.com/HyDE-Project/hyde-ipc
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = hyprland
+	source = hyde-ipc-0.1.2.tar.gz::https://github.com/HyDE-Project/hyde-ipc/releases/download/v0.1.2/hyde-ipc-0.1.2-linux-x86_64.tar.gz
+	sha256sums = SKIP
+
+pkgname = hyde-ipc-bin
