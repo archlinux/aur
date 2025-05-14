@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pihead-gui-git
 _pkgname='PiHead GUI'
-pkgver=r18.9112317
-_electronversion=30
+pkgver=r3.39751c7
+_electronversion=27
 _nodeversion=20
 pkgrel=1
 pkgdesc="A modern, feature-rich vehicle head unit interface built with Electron 和 React.(Use system-wide electron)"
@@ -16,11 +16,10 @@ depends=(
 )
 makedepends=(
     'gendesk'
-    'npm'
+    'bun'
     'nvm'
     'git'
     'curl'
-    'gcc'
 )
 source=(
     "${pkgname%-git}.git::git+${url}"
@@ -41,47 +40,50 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    cd "${srcdir}/${pkgname%-git}.git"
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    {
-        echo -e '\n'	
-        #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-    } >> .npmrc
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        } >> .npmrc
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+    if [ -f bunfig.toml ]; then
+        rm -rf bunfig.toml
     fi
-    sed -i "s/\/\${version}//g" electron-builder.json5
+        if [ -f bun.lockb ];then
+        rm -rf bun.lockb
+    fi
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        export npm_config_electron_mirror="https://registry.npmmirror.com/-/binary/electron/"
+        export npm_config_electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+        export sqlite3_binary_site="https://registry.npmmirror.com/-/sqlite3/"
+        {
+            echo '[install]'
+            echo 'registry = "https://registry.npmmirror.com"'
+        } >> bunfig.toml
+    fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install
+    sed -i "/carplay.svg/d" src/renderer/src/components/Home/CarPlayButton.tsx
+    NODE_ENV=development    bun install
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
-    NODE_ENV=production     npx vite build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.json5"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    NODE_ENV=production     bun electron-vite build
+    NODE_ENV=production     bun exec "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.yml"
+    rm -rf "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar.unpacked/node_modules/usb/prebuilds/{android-*,darwin-*,win32-*}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/release/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/carplay.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/src/public/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/README.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
