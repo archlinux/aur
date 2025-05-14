@@ -1,19 +1,17 @@
 pkgbase = tiny-games-git
 	pkgdesc = Play games with friends without needing extra controllers or hardware.(Use system-wide electron)
-	pkgver = 0.1.0.r185.g3c0f065
+	pkgver = 0.1.3.r38.g81b3915
 	pkgrel = 1
 	url = https://c0mplexity0.github.io/tiny-games/
 	arch = any
 	license = GPL-3.0-only
 	makedepends = gendesk
-	makedepends = npm
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
 	makedepends = yarn
-	makedepends = gcc
-	depends = electron33
-	provides = tiny-games=0.1.0
+	depends = electron34
+	provides = tiny-games=0.1.3
 	conflicts = tiny-games
 	source = tiny-games.git::git+https://github.com/C0mplexity0/tiny-games
 	source = tiny-games.sh
