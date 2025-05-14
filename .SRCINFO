@@ -11,6 +11,7 @@ pkgbase = zen-adblocker
 	makedepends = nvm
 	makedepends = wails
 	depends = ca-certificates-utils
+	depends = coreutils
 	depends = gtk3
 	depends = libsoup3
 	depends = networkmanager

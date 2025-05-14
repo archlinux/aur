@@ -1,5 +1,4 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-
 pkgname=zen-adblocker
 pkgver=0.10.0
 pkgrel=1
@@ -10,6 +9,7 @@ url="https://zenprivacy.net"
 license=('MIT')
 depends=(
   'ca-certificates-utils'
+  'coreutils'
   'gtk3'
   'libsoup3'
   'networkmanager'
@@ -56,7 +56,6 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
   wails build \
     -ldflags "-X 'github.com/ZenPrivacy/zen-desktop/internal/cfg.Version=${pkgver}' \
     -X 'github.com/ZenPrivacy/zen-desktop/internal/selfupdate.NoSelfUpdate=true'" \
