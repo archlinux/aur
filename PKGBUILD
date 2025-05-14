@@ -2,7 +2,7 @@
 
 _basename=gnome-shell-extension-pano
 pkgname=${_basename}-bin
-pkgver=23.alpha4
+pkgver=23.alpha5
 pkgrel=1
 pkgdesc="Next-gen Clipboard Manager for Gnome Shell "
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 provides=("$_basename")
 conflicts=("$_basename")
 source=("https://github.com/oae/gnome-shell-pano/releases/download/v${pkgver/\./-}/pano@elhan.io.zip")
-sha256sums=('786c6d729cd1954bc3c18ef57aff3f95d167b0dee0475c4c709fb75a912a60ca')
+sha256sums=('b72a5b243a621ff73539b88c970c2e78041e3b67c9b32de24107b6383aa4be0b')
 
 package() {
 	mkdir -p "$pkgdir/usr/share/gnome-shell/extensions/pano@elhan.io"
