@@ -1,7 +1,7 @@
 pkgbase = apollo-neo-env-manager-dev
 	pkgdesc = Apollo Environment Manager.
 	pkgver = 10.0.0rc1.r4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://apollo.baidu.com/
 	install = apollo-neo-env-manager-dev.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = apollo-neo-env-manager-dev
 	depends = curl
 	depends = gnupg
 	depends = ca-certificates
+	depends = inetutils
 	optdepends = google-cloud-cli: Google Cloud Service
 	provides = apollo-neo-env-manager-dev
 	conflicts = apollo-neo-env-manager-dev

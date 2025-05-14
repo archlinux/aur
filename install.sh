@@ -1,78 +1,53 @@
-basename=slk-eng
-pkgname=dict-freedict-$basename
-dictd_conf=/etc/dict/dictd.conf
-datadir=/usr/share/dictd
-conf="database $basename {
-	data $datadir/$basename.dict.dz
-	index $datadir/$basename.index
-}"
-
-post_install()
-{
-	echo
-	if pacman -Qq dictd > /dev/null 2>&1
-	then
-		if grep -q "^database *$basename" "$dictd_conf"
-		then
-			echo "$pkgname already configured in $dictd_conf"
-		else
-			echo "Adding configuration for $pkgname to $dictd_conf"
-			echo "$conf" >> "$dictd_conf"
-		fi
-		
-		if systemctl -q is-active dictd.service
-		then
-			echo "Restarting dictd service in order to" \
-				 "use the new dictionary database"
-			systemctl restart dictd.service
-		else
-			echo "Starting dictd service in order to" \
-				 "use the new dictionary database"
-			systemctl start dictd.service
-		fi
-	else
-		echo "dictd does not appear to be installed."
-		echo "In order to use this database you should either" \
-		     "install dictd or alternatively" \
-		     "another dict server and configure it on your own."
-	fi
-	echo
+post_install() {
+  echo "Setting up Apollo Neo Environment Manager..."
+  
+  # Create necessary symbolic links
+  ln -snf /opt/apollo/aem/aem /usr/bin/aem
+  mkdir -p /etc/bash_completion.d && ln -snf /opt/apollo/aem/auto_complete.bash /etc/bash_completion.d/aem
+  mkdir -p /usr/share/zsh/functions/Completion/Unix && ln -snf /opt/apollo/aem/auto_complete.zsh /usr/share/zsh/functions/Completion/Unix/_aem
+  
+  # Import GPG key
+  if [ ! -d /etc/apt/keyrings ]; then
+    mkdir -p /etc/apt/keyrings
+  fi
+  
+  cat /usr/share/apollo-neo-env-manager-dev/apollo.gpg.key | gpg --dearmor > /etc/apt/keyrings/apolloauto.gpg
+  chmod a+r /etc/apt/keyrings/apolloauto.gpg
+  
+  # Create Apollo repository configuration
+  if [ ! -d /etc/apt/sources.list.d ]; then
+    mkdir -p /etc/apt/sources.list.d
+  fi
+  
+  # Add Apollo repository configuration for Ubuntu compatibility
+  cat > /etc/apt/sources.list.d/apolloauto.list << EOF
+deb [arch=amd64 signed-by=/etc/apt/keyrings/apolloauto.gpg] https://apollo-pkg-beta.cdn.bcebos.com/apollo/core jammy main
+EOF
+  
+  echo "Installation complete. You can use the 'aem' command to start Apollo Environment Manager."
+  echo "Note: This is a package ported from Ubuntu, some features may need adaptation for Arch Linux environment."
 }
 
-post_upgrade()
-{
-	if pacman -Qq dictd > /dev/null 2>&1    && \
-	   systemctl -q is-active dictd.service
-	then
-		echo -e "\nRestarting dictd service in order to" \
-		        "use the updated dictionary database"
-		systemctl restart dictd.service
-	fi
+post_upgrade() {
+  post_install
 }
 
-post_remove()
-{
-	if pacman -Qq dictd > /dev/null 2>&1
-	then
-		current_conf="$(grep -A 3 "^database *$basename" "$dictd_conf")"
-		if test -n "$current_conf"
-		then
-			echo
-			if test "$current_conf" = "$conf"
-			then
-				echo "Removing configuration for $pkgname from $dictd_conf"
-				sed -i "/database $basename {/,/}/d" "$dictd_conf"
-			else
-				echo "User created / modified configuration" \
-					 "for $pkgname in $dictd_conf is left untouched."
-			fi
-		fi
-
-		if systemctl -q is-active dictd.service
-		then
-			echo "Restarting dictd service in order to" \
-			     "stop using the removed dictionary database"
-			systemctl restart dictd.service
-		fi
-	fi
-}
+pre_remove() {
+  echo "Cleaning up Apollo Neo Environment Manager..."
+  
+  # Clean up symbolic links
+  rm -f /etc/bash_completion.d/aem
+  rm -f /usr/share/zsh/functions/Completion/Unix/_aem
+  rm -f /usr/bin/aem
+  rm -rf /opt/apollo/neo/packages/env-manager-dev
+  
+  # Clean up GPG key
+  if [ -f /etc/apt/keyrings/apolloauto.gpg ]; then
+    rm -f /etc/apt/keyrings/apolloauto.gpg
+  fi
+  
+  # Clean up repository configuration
+  if [ -f /etc/apt/sources.list.d/apolloauto.list ]; then
+    rm -f /etc/apt/sources.list.d/apolloauto.list
+  fi
+} 
