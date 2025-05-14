@@ -1,0 +1,52 @@
+From ca07381d3779194c37ba7bc19978deabb8d0eb04 Mon Sep 17 00:00:00 2001
+From: Gert Wollny <gw.fossdev@gmail.com>
+Date: Mon, 22 Jan 2018 17:01:45 +0100
+Subject: [PATCH] Implement GSettings configuration storage.
+
+This is required, since gconf is obsolete.
+---
+ configuration/Makefile.am                  |  18 +-
+ configuration/aconfiguration-gconf.cpp     |   1 +
+ configuration/aconfiguration-gsettings.cpp | 369 +++++++++++++++++++++++++++++
+ configuration/aconfiguration-win32.cpp     |   1 +
+ configuration/aconfiguration.cpp           |  16 +-
+ configuration/aconfiguration.h             |   9 +-
+ configure.ac                               |  38 ++-
+ imagepool/poolinstance.h                   |   2 +-
+ src/Makefile.am                            |  10 +
+ src/org.gnu.aeskulap.gschema.xml           |  76 ++++++
+ 10 files changed, 512 insertions(+), 28 deletions(-)
+ create mode 100644 configuration/aconfiguration-gsettings.cpp
+ create mode 100644 src/org.gnu.aeskulap.gschema.xml
+
+--- a/configuration/aconfiguration.cpp
++++ b/configuration/aconfiguration.cpp
+@@ -21,6 +21,7 @@
+ 
+ #include "aconfiguration.h"
+ #include "gettext.h"
++#include <config.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"
+--- a/configuration/aconfiguration.h
++++ b/configuration/aconfiguration.h
+@@ -26,6 +26,7 @@
+ #include <string>
+ #include <map>
+ #include <vector>
++#include <config.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"
+--- a/configure.ac
++++ b/configure.ac
+@@ -40,8 +40,6 @@ GMSGFMT=msgfmt
+ AC_SUBST(GMSGFMT)
+ fi
+ 
+-AM_GCONF_SOURCE_2
+-
+ dnl
+ dnl gettext package
+ dnl

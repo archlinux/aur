@@ -1,0 +1,269 @@
+Author: Gert Wollny <gewo@debian.org>
+Description: correct code for newDicomElement now being a member of DcmItem
+Bug: https://bugs.debian.org/865591
+
+--- a/imagepool/netloader.cpp
++++ b/imagepool/netloader.cpp
+@@ -102,29 +102,29 @@ bool NetLoader::run() {
+ 		DcmDataset query;
+ 		DcmElement* e = NULL;
+ 		
+-		e = newDicomElement(DCM_QueryRetrieveLevel);
++		e = DcmItem::newDicomElement(DCM_QueryRetrieveLevel);
+ 		e->putString("STUDY");
+ 		query.insert(e);
+ 
+-		e = newDicomElement(DCM_PatientName);
++		e = DcmItem::newDicomElement(DCM_PatientName);
+ 		query.insert(e);
+ 
+-		e = newDicomElement(DCM_PatientID);
++		e = DcmItem::newDicomElement(DCM_PatientID);
+ 		query.insert(e);
+ 
+-		e = newDicomElement(DCM_StudyDate);
++		e = DcmItem::newDicomElement(DCM_StudyDate);
+ 		query.insert(e);
+ 
+-		e = newDicomElement(DCM_StudyTime);
++		e = DcmItem::newDicomElement(DCM_StudyTime);
+ 		query.insert(e);
+ 
+-		e = newDicomElement(DCM_AccessionNumber);
++		e = DcmItem::newDicomElement(DCM_AccessionNumber);
+ 		query.insert(e);
+ 
+-		e = newDicomElement(DCM_StudyID);
++		e = DcmItem::newDicomElement(DCM_StudyID);
+ 		query.insert(e);
+ 	
+-		e = newDicomElement(DCM_StudyInstanceUID);
++		e = DcmItem::newDicomElement(DCM_StudyInstanceUID);
+ 		e->putString(studyinstanceuid.c_str());
+ 		query.insert(e);
+ 	
+@@ -150,22 +150,22 @@ bool NetLoader::run() {
+ 			DcmDataset query;
+ 			DcmElement* e = NULL;
+ 			
+-			e = newDicomElement(DCM_QueryRetrieveLevel);
++			e = DcmItem::newDicomElement(DCM_QueryRetrieveLevel);
+ 			e->putString("SERIES");
+ 			query.insert(e);
+ 		
+-			e = newDicomElement(DCM_StudyInstanceUID);
++			e = DcmItem::newDicomElement(DCM_StudyInstanceUID);
+ 			e->putString(studyinstanceuid.c_str());
+ 			query.insert(e);
+ 		
+-			e = newDicomElement(DCM_SeriesInstanceUID);
++			e = DcmItem::newDicomElement(DCM_SeriesInstanceUID);
+ 			e->putString(i->c_str());
+ 			query.insert(e);
+ 
+-			e = newDicomElement(DCM_Modality);
++			e = DcmItem::newDicomElement(DCM_Modality);
+ 			query.insert(e);
+ 
+-			e = newDicomElement(DCM_SeriesNumber);
++			e = DcmItem::newDicomElement(DCM_SeriesNumber);
+ 			query.insert(e);
+ 
+ 			std::cout << "C-Move request:" << std::endl;
+--- a/imagepool/netquery.cpp
++++ b/imagepool/netquery.cpp
+@@ -196,64 +196,64 @@ void query_from_net(
+ 	DcmDataset query;
+ 	DcmElement* e = NULL;
+ 	
+-	e = newDicomElement(DCM_QueryRetrieveLevel);
++	e = DcmItem::newDicomElement(DCM_QueryRetrieveLevel);
+ 	e->putString("STUDY");
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_SpecificCharacterSet);
++	e = DcmItem::newDicomElement(DCM_SpecificCharacterSet);
+ 	e->putString(dicom_enc.c_str());
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_PatientName);
++	e = DcmItem::newDicomElement(DCM_PatientName);
+ 	e->putString(patientsname.c_str());
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_PatientID);
++	e = DcmItem::newDicomElement(DCM_PatientID);
+ 	e->putString(convert_string_to(patientid.c_str(), system_enc).c_str());
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_SOPClassesInStudy);
++	e = DcmItem::newDicomElement(DCM_SOPClassesInStudy);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_ModalitiesInStudy);
++	e = DcmItem::newDicomElement(DCM_ModalitiesInStudy);
+ 	e->putString(modality.c_str());
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_PatientBirthDate);
++	e = DcmItem::newDicomElement(DCM_PatientBirthDate);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_PatientSex);
++	e = DcmItem::newDicomElement(DCM_PatientSex);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_StudyDate);
++	e = DcmItem::newDicomElement(DCM_StudyDate);
+ 	e->putString(date.c_str());
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_StudyTime);
++	e = DcmItem::newDicomElement(DCM_StudyTime);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_NumberOfStudyRelatedSeries);
++	e = DcmItem::newDicomElement(DCM_NumberOfStudyRelatedSeries);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_NumberOfStudyRelatedInstances);
++	e = DcmItem::newDicomElement(DCM_NumberOfStudyRelatedInstances);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_AccessionNumber);
++	e = DcmItem::newDicomElement(DCM_AccessionNumber);
+ 	e->putString(accessionnumber.c_str());
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_StudyID);
++	e = DcmItem::newDicomElement(DCM_StudyID);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_StudyInstanceUID);
++	e = DcmItem::newDicomElement(DCM_StudyInstanceUID);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_StudyDescription);
++	e = DcmItem::newDicomElement(DCM_StudyDescription);
+ 	e->putString(description.c_str());
+ 	query.insert(e);
+ 
+ 	// StationName not allowed in StudyRoot
+-	/*e = newDicomElement(DCM_StationName);
++	/*e = DcmItem::newDicomElement(DCM_StationName);
+ 	e->putString(station.c_str());
+ 	query.insert(e);*/
+ 
+@@ -284,36 +284,36 @@ void query_series_from_net(const std::st
+ 	DcmDataset query;
+ 	DcmElement* e = NULL;
+ 	
+-	e = newDicomElement(DCM_QueryRetrieveLevel);
++	e = DcmItem::newDicomElement(DCM_QueryRetrieveLevel);
+ 	e->putString("SERIES");
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_SpecificCharacterSet);
++	e = DcmItem::newDicomElement(DCM_SpecificCharacterSet);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_StudyInstanceUID);
++	e = DcmItem::newDicomElement(DCM_StudyInstanceUID);
+ 	e->putString(studyinstanceuid.c_str());
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_SeriesInstanceUID);
++	e = DcmItem::newDicomElement(DCM_SeriesInstanceUID);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_SeriesNumber);
++	e = DcmItem::newDicomElement(DCM_SeriesNumber);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_Modality);
++	e = DcmItem::newDicomElement(DCM_Modality);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_SeriesDescription);
++	e = DcmItem::newDicomElement(DCM_SeriesDescription);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_SeriesTime);
++	e = DcmItem::newDicomElement(DCM_SeriesTime);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_StationName);
++	e = DcmItem::newDicomElement(DCM_StationName);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_NumberOfSeriesRelatedInstances);
++	e = DcmItem::newDicomElement(DCM_NumberOfSeriesRelatedInstances);
+ 	query.insert(e);
+ 
+ 
+@@ -357,22 +357,22 @@ int query_series_instances(const std::st
+ 	DcmDataset query;
+ 	DcmElement* e = NULL;
+ 	
+-	e = newDicomElement(DCM_QueryRetrieveLevel);
++	e = DcmItem::newDicomElement(DCM_QueryRetrieveLevel);
+ 	e->putString("IMAGE");
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_StudyInstanceUID);
++	e = DcmItem::newDicomElement(DCM_StudyInstanceUID);
+ 	e->putString(studyinstanceuid.c_str());
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_SeriesInstanceUID);
++	e = DcmItem::newDicomElement(DCM_SeriesInstanceUID);
+ 	e->putString(seriesinstanceuid.c_str());
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_SOPInstanceUID);
++	e = DcmItem::newDicomElement(DCM_SOPInstanceUID);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_InstanceNumber);
++	e = DcmItem::newDicomElement(DCM_InstanceNumber);
+ 	query.insert(e);
+ 
+ 	std::cout << "NEW QUERY:" << std::endl;
+@@ -394,21 +394,21 @@ int query_study_series(const std::string
+ 	DcmDataset query;
+ 	DcmElement* e = NULL;
+ 	
+-	e = newDicomElement(DCM_QueryRetrieveLevel);
++	e = DcmItem::newDicomElement(DCM_QueryRetrieveLevel);
+ 	e->putString("SERIES");
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_StudyInstanceUID);
++	e = DcmItem::newDicomElement(DCM_StudyInstanceUID);
+ 	e->putString(studyinstanceuid.c_str());
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_SeriesInstanceUID);
++	e = DcmItem::newDicomElement(DCM_SeriesInstanceUID);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_SeriesNumber);
++	e = DcmItem::newDicomElement(DCM_SeriesNumber);
+ 	query.insert(e);
+ 
+-	e = newDicomElement(DCM_Modality);
++	e = DcmItem::newDicomElement(DCM_Modality);
+ 	query.insert(e);
+ 
+ 	std::cout << "NEW QUERY:" << std::endl;
+--- a/imagepool/poolassociation.h
++++ b/imagepool/poolassociation.h
+@@ -101,7 +101,7 @@ public:
+ 			return false;
+ 			}
+ 
+-		DcmElement *elem = newDicomElement(tag);
++		DcmElement *elem = DcmItem::newDicomElement(tag);
+ 		if (elem == NULL) {
+ 			printf("cannot create element for tag: (%04x,%04x)", g, e);
+ 			return false;

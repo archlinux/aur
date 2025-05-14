@@ -1,0 +1,21 @@
+Description: GCONF_SCHEMAS_INSTALL is unknown - just ignore the if statement
+Author: Andreas Tille <tille@debian.org>
+Last-Update: Fri, 26 Oct 2018 20:32:30 +0200
+
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -62,10 +62,10 @@ schema_DATA = aeskulap.schemas
+ 
+ @INTLTOOL_SCHEMAS_RULE@
+ 
+-if GCONF_SCHEMAS_INSTALL
+-install-data-local:
+-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
+-endif
++#if GCONF_SCHEMAS_INSTALL
++#install-data-local:
++#	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
++#endif
+ endif 
+ endif
+ 
