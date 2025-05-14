@@ -1,29 +1,48 @@
-# Maintainer: prime-run <prime-run@github.com>
+# Maintainer: prime-run <prime-run@githiub.com>
 
 pkgname=hyde-ipc
-_pkgname=hyde-ipc
-pkgver=0.1.1
-pkgrel=2
-pkgdesc="Control Hyprland, query its state, listen for events, and create automated reactions to events."
-arch=('x86_64')
-url="https://github.com/HyDE-Project/hyde-ipc"
-license=('MIT')
-depends=(hyprland)
 
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('SKIP')
+pkgver=0.1.2
+pkgrel=1
+
+pkgdesc="Control Hyprland, query its state, listen for events, and create automated reactions to events."
+
+arch=("x86_64"  "aarch64")
+license=('MIT')
+url="https://github.com/HyDE-Project/hyde-ipc"
+
+depends=(hyprland)
+makedepends=("cargo" "git")
+
+source=("git+$url.git")
+sha256sums=(SKIP)
+
+conflicts=('hyde-ipc-git')
+
+
+
+pkgver() {
+  cd "$pkgname"
+  git describe --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+
+    export RUSTUP_TOOLCHAIN=stable
+    cd "$pkgname"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+
+build() {
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cd "$_pkgname"
+    cargo build --frozen --release
+}
 
 package() {
-  cd "$srcdir"
-
-  BINARY="hyde-ipc"
-
-  if [ ! -f "$BINARY" ]; then
-    echo "Error: Could not find the binary '$BINARY'"
-    find . -type f | sort
-    exit 1
-  fi
-
-  install -Dm755 "$BINARY" "$pkgdir/usr/bin/$_pkgname"
-
+    cd "$pkgname"
+    install -Dm755 "target/release/hyde-ipc" "$pkgdir/usr/bin/hyde-ipc"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
