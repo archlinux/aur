@@ -3,7 +3,7 @@
 _pkgname=pineflash
 pkgname="${_pkgname}-git"
 pkgver=0.5.5+4.r311.20250206.897bad8
-pkgrel=4
+pkgrel=5
 arch=(
   'i686'
   'x86_64'
@@ -29,7 +29,7 @@ makedepends=(
   'base-devel'
   # 'cargo-ndk' # To verify some integrity checksums of rust modules
   'git'
-  'zopflipng-parallel'
+  'zopfli'
   'pkgconf'
   'rust'
 )
@@ -84,7 +84,11 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  zopflipng-parallel -m -- assets/*.png
+  ## shrinking PNG files losslessy:
+  local _png
+  for _png in assets/*.png; do
+    zopflipng -y -m "${_png}" "${_png}"
+  done
 
   CARGO_HOME="${srcdir}/cargo"
   export CARGO_HOME
