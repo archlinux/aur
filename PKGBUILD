@@ -1,7 +1,7 @@
 # deasdavid9@gmail.com
 pkgname=attofetch
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A pretty minimal, and small in size, fetching tool written in bash."
 arch=('any')
 url="https://github.com/davyidx/attofetch"
