@@ -1,5 +1,5 @@
 diff --git a/Cargo.lock b/Cargo.lock
-index 810b9983..d6f157cd 100644
+index 003b2fa2..eb41d6c5 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -54,15 +54,6 @@ version = "0.2.21"
@@ -207,7 +207,7 @@ index 810b9983..d6f157cd 100644
  
 -[[package]]
 -name = "core_tester"
--version = "0.0.19"
+-version = "0.0.20"
 -dependencies = [
 - "anyhow",
 - "assert_cmd",
@@ -426,8 +426,8 @@ index 810b9983..d6f157cd 100644
 -
  [[package]]
  name = "io-uring"
- version = "0.6.4"
-@@ -1497,28 +1245,6 @@ dependencies = [
+ version = "0.7.6"
+@@ -1498,28 +1246,6 @@ dependencies = [
   "syn 2.0.100",
  ]
  
@@ -456,7 +456,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "jobserver"
  version = "0.1.32"
-@@ -1547,26 +1273,6 @@ dependencies = [
+@@ -1548,26 +1274,6 @@ dependencies = [
   "chrono",
  ]
  
@@ -483,7 +483,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "lazy_static"
  version = "1.5.0"
-@@ -1625,7 +1331,6 @@ checksum = "c0ff37bd590ca25063e35af745c343cb7a0271906fb7b37e4813e8f79f00268d"
+@@ -1626,7 +1332,6 @@ checksum = "c0ff37bd590ca25063e35af745c343cb7a0271906fb7b37e4813e8f79f00268d"
  dependencies = [
   "bitflags 2.9.0",
   "libc",
@@ -491,7 +491,7 @@ index 810b9983..d6f157cd 100644
  ]
  
  [[package]]
-@@ -1634,7 +1339,6 @@ version = "0.32.0"
+@@ -1635,7 +1340,6 @@ version = "0.32.0"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "fbb8270bb4060bd76c6e96f20c52d80620f1d82a3470885694e41e0f81ef6fe7"
  dependencies = [
@@ -499,13 +499,13 @@ index 810b9983..d6f157cd 100644
   "pkg-config",
   "vcpkg",
  ]
-@@ -1651,44 +1355,6 @@ dependencies = [
+@@ -1652,44 +1356,6 @@ dependencies = [
   "vcpkg",
  ]
  
 -[[package]]
 -name = "limbo"
--version = "0.0.19"
+-version = "0.0.20"
 -dependencies = [
 - "limbo_core",
 - "thiserror 2.0.12",
@@ -514,14 +514,14 @@ index 810b9983..d6f157cd 100644
 -
 -[[package]]
 -name = "limbo-go"
--version = "0.0.19"
+-version = "0.0.20"
 -dependencies = [
 - "limbo_core",
 -]
 -
 -[[package]]
 -name = "limbo-java"
--version = "0.0.19"
+-version = "0.0.20"
 -dependencies = [
 - "jni",
 - "limbo_core",
@@ -530,7 +530,7 @@ index 810b9983..d6f157cd 100644
 -
 -[[package]]
 -name = "limbo-wasm"
--version = "0.0.19"
+-version = "0.0.20"
 -dependencies = [
 - "console_error_panic_hook",
 - "getrandom 0.2.15",
@@ -543,17 +543,17 @@ index 810b9983..d6f157cd 100644
 -
  [[package]]
  name = "limbo_cli"
- version = "0.0.19"
-@@ -1700,7 +1366,7 @@ dependencies = [
+ version = "0.0.20"
+@@ -1701,7 +1367,7 @@ dependencies = [
   "comfy-table",
   "csv",
   "ctrlc",
 - "dirs 5.0.1",
 + "dirs",
   "env_logger 0.10.2",
+  "libc",
   "limbo_core",
-  "miette",
-@@ -1740,14 +1406,10 @@ dependencies = [
+@@ -1743,14 +1409,10 @@ dependencies = [
   "libloading",
   "libm",
   "limbo_completion",
@@ -568,7 +568,7 @@ index 810b9983..d6f157cd 100644
   "limbo_sqlite3_parser",
   "limbo_time",
   "limbo_uuid",
-@@ -1759,7 +1421,7 @@ dependencies = [
+@@ -1762,7 +1424,7 @@ dependencies = [
   "pprof",
   "quickcheck",
   "quickcheck_macros",
@@ -577,13 +577,13 @@ index 810b9983..d6f157cd 100644
   "rand_chacha 0.9.0",
   "regex",
   "regex-syntax 0.8.5",
-@@ -1774,19 +1436,6 @@ dependencies = [
+@@ -1777,19 +1439,6 @@ dependencies = [
   "tracing",
  ]
  
 -[[package]]
 -name = "limbo_crypto"
--version = "0.0.19"
+-version = "0.0.20"
 -dependencies = [
 - "blake3",
 - "data-encoding",
@@ -596,14 +596,14 @@ index 810b9983..d6f157cd 100644
 -
  [[package]]
  name = "limbo_ext"
- version = "0.0.19"
-@@ -1825,74 +1474,6 @@ dependencies = [
+ version = "0.0.20"
+@@ -1828,74 +1477,6 @@ dependencies = [
   "syn 2.0.100",
  ]
  
 -[[package]]
 -name = "limbo_node"
--version = "0.0.19"
+-version = "0.0.20"
 -dependencies = [
 - "limbo_core",
 - "napi",
@@ -613,7 +613,7 @@ index 810b9983..d6f157cd 100644
 -
 -[[package]]
 -name = "limbo_percentile"
--version = "0.0.19"
+-version = "0.0.20"
 -dependencies = [
 - "limbo_ext",
 - "mimalloc",
@@ -621,7 +621,7 @@ index 810b9983..d6f157cd 100644
 -
 -[[package]]
 -name = "limbo_regexp"
--version = "0.0.19"
+-version = "0.0.20"
 -dependencies = [
 - "limbo_ext",
 - "mimalloc",
@@ -630,7 +630,7 @@ index 810b9983..d6f157cd 100644
 -
 -[[package]]
 -name = "limbo_series"
--version = "0.0.19"
+-version = "0.0.20"
 -dependencies = [
 - "limbo_ext",
 - "mimalloc",
@@ -640,7 +640,7 @@ index 810b9983..d6f157cd 100644
 -
 -[[package]]
 -name = "limbo_sim"
--version = "0.0.19"
+-version = "0.0.20"
 -dependencies = [
 - "anarchist-readable-name-generator-lib",
 - "chrono",
@@ -661,7 +661,7 @@ index 810b9983..d6f157cd 100644
 -
 -[[package]]
 -name = "limbo_sqlite3"
--version = "0.0.19"
+-version = "0.0.20"
 -dependencies = [
 - "env_logger 0.11.7",
 - "libc",
@@ -671,21 +671,20 @@ index 810b9983..d6f157cd 100644
 -
  [[package]]
  name = "limbo_sqlite3_parser"
- version = "0.0.19"
-@@ -1913,22 +1494,6 @@ dependencies = [
+ version = "0.0.20"
+@@ -1916,21 +1497,6 @@ dependencies = [
   "uncased",
  ]
  
 -[[package]]
 -name = "limbo_stress"
--version = "0.0.19"
+-version = "0.0.20"
 -dependencies = [
 - "anarchist-readable-name-generator-lib",
 - "antithesis_sdk",
 - "clap",
 - "hex",
 - "limbo",
-- "serde_json",
 - "tokio",
 - "tracing",
 - "tracing-appender",
@@ -694,8 +693,8 @@ index 810b9983..d6f157cd 100644
 -
  [[package]]
  name = "limbo_time"
- version = "0.0.19"
-@@ -1956,26 +1521,6 @@ version = "0.5.6"
+ version = "0.0.20"
+@@ -1958,26 +1524,6 @@ version = "0.5.6"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "0717cef1bc8b636c6e1c1bbdefc09e6322da8a9321966e8928ef80d20f7f770f"
  
@@ -722,7 +721,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "linux-raw-sys"
  version = "0.4.15"
-@@ -2028,12 +1573,6 @@ dependencies = [
+@@ -2030,12 +1576,6 @@ dependencies = [
   "regex-automata 0.1.10",
  ]
  
@@ -735,7 +734,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "memchr"
  version = "2.7.4"
-@@ -2049,15 +1588,6 @@ dependencies = [
+@@ -2051,15 +1591,6 @@ dependencies = [
   "libc",
  ]
  
@@ -750,13 +749,13 @@ index 810b9983..d6f157cd 100644
 -
  [[package]]
  name = "miette"
- version = "7.5.0"
-@@ -2092,88 +1622,19 @@ dependencies = [
+ version = "7.6.0"
+@@ -2093,86 +1624,19 @@ dependencies = [
  [[package]]
  name = "mimalloc"
- version = "0.1.44"
+ version = "0.1.46"
 -source = "registry+https://github.com/rust-lang/crates.io-index"
--checksum = "99585191385958383e13f6b822e6b6d8d9cf928e7d286ceb092da92b43c87bc1"
+-checksum = "995942f432bbb4822a7e9c3faa87a695185b0d09273ba85f097b54f4e458f2af"
 -dependencies = [
 - "libmimalloc-sys",
 -]
@@ -825,11 +824,9 @@ index 810b9983..d6f157cd 100644
 - "once_cell",
 - "proc-macro2",
 - "quote",
-- "regex",
-- "semver",
 - "syn 2.0.100",
 +source = "registry+https://github.com/rust-lang/crates.io-index"
-+checksum = "99585191385958383e13f6b822e6b6d8d9cf928e7d286ceb092da92b43c87bc1"
++checksum = "995942f432bbb4822a7e9c3faa87a695185b0d09273ba85f097b54f4e458f2af"
 +dependencies = [
 + "libmimalloc-sys",
  ]
@@ -848,7 +845,7 @@ index 810b9983..d6f157cd 100644
  ]
  
  [[package]]
-@@ -2196,17 +1657,6 @@ dependencies = [
+@@ -2195,17 +1659,6 @@ dependencies = [
   "libc",
  ]
  
@@ -866,7 +863,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "nix"
  version = "0.29.0"
-@@ -2219,31 +1669,6 @@ dependencies = [
+@@ -2218,31 +1671,6 @@ dependencies = [
   "libc",
  ]
  
@@ -898,7 +895,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "nu-ansi-term"
  version = "0.46.0"
-@@ -2404,7 +1829,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -2403,7 +1831,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "3c80231409c20246a13fddb31776fb942c38553c51e871f8cbd687a4cfb5843d"
  dependencies = [
   "phf_shared",
@@ -907,7 +904,7 @@ index 810b9983..d6f157cd 100644
  ]
  
  [[package]]
-@@ -2544,33 +1969,6 @@ dependencies = [
+@@ -2543,33 +1971,6 @@ dependencies = [
   "zerocopy 0.8.24",
  ]
  
@@ -941,13 +938,13 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "proc-macro2"
  version = "1.0.94"
-@@ -2580,81 +1978,6 @@ dependencies = [
+@@ -2579,81 +1980,6 @@ dependencies = [
   "unicode-ident",
  ]
  
 -[[package]]
 -name = "py-limbo"
--version = "0.0.19"
+-version = "0.0.20"
 -dependencies = [
 - "anyhow",
 - "limbo_core",
@@ -1023,7 +1020,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "quick-xml"
  version = "0.26.0"
-@@ -2679,9 +2002,7 @@ version = "1.0.3"
+@@ -2678,9 +2004,7 @@ version = "1.0.3"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "588f6378e4dd99458b60ec275b4477add41ce4fa9f64dcba6f15adccb19b50d6"
  dependencies = [
@@ -1034,7 +1031,7 @@ index 810b9983..d6f157cd 100644
  ]
  
  [[package]]
-@@ -2731,17 +2052,6 @@ dependencies = [
+@@ -2730,17 +2054,6 @@ dependencies = [
   "rand_core 0.6.4",
  ]
  
@@ -1052,7 +1049,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "rand_chacha"
  version = "0.3.1"
-@@ -2820,17 +2130,6 @@ dependencies = [
+@@ -2819,17 +2132,6 @@ dependencies = [
   "thiserror 1.0.69",
  ]
  
@@ -1070,7 +1067,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "regex"
  version = "1.11.1"
-@@ -2881,19 +2180,6 @@ version = "1.9.3"
+@@ -2880,19 +2182,6 @@ version = "1.9.3"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "ba39f3699c378cd8970968dcbff9c43159ea4cfbd88d43c00b22f2ef10a435d2"
  
@@ -1090,7 +1087,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "rgb"
  version = "0.8.50"
-@@ -2903,20 +2189,6 @@ dependencies = [
+@@ -2902,20 +2191,6 @@ dependencies = [
   "bytemuck",
  ]
  
@@ -1111,7 +1108,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "rstest"
  version = "0.18.2"
-@@ -2975,16 +2247,6 @@ dependencies = [
+@@ -2974,16 +2249,6 @@ dependencies = [
   "semver",
  ]
  
@@ -1128,7 +1125,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "rustix"
  version = "0.38.44"
-@@ -3125,15 +2387,6 @@ version = "1.3.0"
+@@ -3124,15 +2389,6 @@ version = "1.3.0"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "0fda2ff0d084019ba4d7c6f371c95d8fd75ce3524c3cb8fb653a3023f6323e64"
  
@@ -1144,7 +1141,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "siphasher"
  version = "1.0.1"
-@@ -3155,25 +2408,6 @@ version = "1.14.0"
+@@ -3154,25 +2410,6 @@ version = "1.14.0"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "7fcf8323ef1faaee30a44a340193b1ac6814fd9b7b4e88e9d4519a3e4abe1cfd"
  
@@ -1170,7 +1167,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "stable_deref_trait"
  version = "1.2.0"
-@@ -3313,12 +2547,6 @@ dependencies = [
+@@ -3312,12 +2549,6 @@ dependencies = [
   "yaml-rust",
  ]
  
@@ -1183,7 +1180,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "tempfile"
  version = "3.19.1"
-@@ -3351,12 +2579,6 @@ dependencies = [
+@@ -3350,12 +2581,6 @@ dependencies = [
   "windows-sys 0.59.0",
  ]
  
@@ -1196,7 +1193,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "test-log"
  version = "0.2.17"
-@@ -3490,35 +2712,6 @@ dependencies = [
+@@ -3489,35 +2714,6 @@ dependencies = [
   "serde_json",
  ]
  
@@ -1232,7 +1229,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "tracing"
  version = "0.1.41"
-@@ -3631,18 +2824,6 @@ version = "0.2.0"
+@@ -3630,18 +2826,6 @@ version = "0.2.0"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "1fc81956842c57dac11422a97c3b8195a1ff727f06e85c84ed2e8aa277c9a0fd"
  
@@ -1251,7 +1248,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "url"
  version = "2.5.4"
-@@ -3654,12 +2835,6 @@ dependencies = [
+@@ -3653,12 +2837,6 @@ dependencies = [
   "percent-encoding",
  ]
  
@@ -1264,7 +1261,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "utf16_iter"
  version = "1.0.5"
-@@ -3705,15 +2880,6 @@ version = "0.9.5"
+@@ -3704,15 +2882,6 @@ version = "0.9.5"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a"
  
@@ -1280,7 +1277,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "walkdir"
  version = "2.5.0"
-@@ -3765,19 +2931,6 @@ dependencies = [
+@@ -3764,19 +2933,6 @@ dependencies = [
   "wasm-bindgen-shared",
  ]
  
@@ -1300,7 +1297,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "wasm-bindgen-macro"
  version = "0.2.100"
-@@ -3866,15 +3019,6 @@ version = "0.1.1"
+@@ -3865,15 +3021,6 @@ version = "0.1.1"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "76840935b766e1b0a05c0066835fb9ec80071d4c09a16f6bd5f7e655e3c14c38"
  
@@ -1316,7 +1313,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "windows-sys"
  version = "0.48.0"
-@@ -3902,21 +3046,6 @@ dependencies = [
+@@ -3901,21 +3048,6 @@ dependencies = [
   "windows-targets 0.52.6",
  ]
  
@@ -1338,7 +1335,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "windows-targets"
  version = "0.48.5"
-@@ -3948,12 +3077,6 @@ dependencies = [
+@@ -3947,12 +3079,6 @@ dependencies = [
   "windows_x86_64_msvc 0.52.6",
  ]
  
@@ -1351,7 +1348,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "windows_aarch64_gnullvm"
  version = "0.48.5"
-@@ -3966,12 +3089,6 @@ version = "0.52.6"
+@@ -3965,12 +3091,6 @@ version = "0.52.6"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "32a4622180e7a0ec044bb555404c800bc9fd9ec262ec147edd5989ccd0c02cd3"
  
@@ -1364,7 +1361,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "windows_aarch64_msvc"
  version = "0.48.5"
-@@ -3984,12 +3101,6 @@ version = "0.52.6"
+@@ -3983,12 +3103,6 @@ version = "0.52.6"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "09ec2a7bb152e2252b53fa7803150007879548bc709c039df7627cabbd05d469"
  
@@ -1377,7 +1374,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "windows_i686_gnu"
  version = "0.48.5"
-@@ -4008,12 +3119,6 @@ version = "0.52.6"
+@@ -4007,12 +3121,6 @@ version = "0.52.6"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "0eee52d38c090b3caa76c563b86c3a4bd71ef1a819287c19d586d7334ae8ed66"
  
@@ -1390,7 +1387,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "windows_i686_msvc"
  version = "0.48.5"
-@@ -4026,12 +3131,6 @@ version = "0.52.6"
+@@ -4025,12 +3133,6 @@ version = "0.52.6"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "240948bc05c5e7c6dabba28bf89d89ffce3e303022809e73deaefe4f6ec56c66"
  
@@ -1403,7 +1400,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "windows_x86_64_gnu"
  version = "0.48.5"
-@@ -4044,12 +3143,6 @@ version = "0.52.6"
+@@ -4043,12 +3145,6 @@ version = "0.52.6"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "147a5c80aabfbf0c7d901cb5895d1de30ef2907eb21fbbab29ca94c5b08b1a78"
  
@@ -1416,7 +1413,7 @@ index 810b9983..d6f157cd 100644
  [[package]]
  name = "windows_x86_64_gnullvm"
  version = "0.48.5"
-@@ -4062,12 +3155,6 @@ version = "0.52.6"
+@@ -4061,12 +3157,6 @@ version = "0.52.6"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "24d5b23dc417412679681396f2b49f3de8c1473deb516bd34410872eff51ed0d"
  
@@ -1430,7 +1427,7 @@ index 810b9983..d6f157cd 100644
  name = "windows_x86_64_msvc"
  version = "0.48.5"
 diff --git a/Cargo.toml b/Cargo.toml
-index a2dfb3e3..9834fd2f 100644
+index 774de264..eb4c7586 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -3,29 +3,8 @@
@@ -1466,21 +1463,21 @@ index a2dfb3e3..9834fd2f 100644
  
 @@ -39,14 +18,10 @@ repository = "https://github.com/tursodatabase/limbo"
  [workspace.dependencies]
- limbo_completion = { path = "extensions/completion", version = "0.0.19" }
- limbo_core = { path = "core", version = "0.0.19" }
--limbo_crypto = { path = "extensions/crypto", version = "0.0.19" }
- limbo_ext = { path = "extensions/core", version = "0.0.19" }
- limbo_ext_tests = { path = "extensions/tests", version = "0.0.19" }
- limbo_ipaddr = { path = "extensions/ipaddr", version = "0.0.19" }
- limbo_macros = { path = "macros", version = "0.0.19" }
--limbo_percentile = { path = "extensions/percentile", version = "0.0.19" }
--limbo_regexp = { path = "extensions/regexp", version = "0.0.19" }
--limbo_series = { path = "extensions/series", version = "0.0.19" }
- limbo_sqlite3_parser = { path = "vendored/sqlite3-parser", version = "0.0.19" }
- limbo_time = { path = "extensions/time", version = "0.0.19" }
- limbo_uuid = { path = "extensions/uuid", version = "0.0.19" }
+ limbo_completion = { path = "extensions/completion", version = "0.0.20" }
+ limbo_core = { path = "core", version = "0.0.20" }
+-limbo_crypto = { path = "extensions/crypto", version = "0.0.20" }
+ limbo_ext = { path = "extensions/core", version = "0.0.20" }
+ limbo_ext_tests = { path = "extensions/tests", version = "0.0.20" }
+ limbo_ipaddr = { path = "extensions/ipaddr", version = "0.0.20" }
+ limbo_macros = { path = "macros", version = "0.0.20" }
+-limbo_percentile = { path = "extensions/percentile", version = "0.0.20" }
+-limbo_regexp = { path = "extensions/regexp", version = "0.0.20" }
+-limbo_series = { path = "extensions/series", version = "0.0.20" }
+ limbo_sqlite3_parser = { path = "vendored/sqlite3-parser", version = "0.0.20" }
+ limbo_time = { path = "extensions/time", version = "0.0.20" }
+ limbo_uuid = { path = "extensions/uuid", version = "0.0.20" }
 diff --git a/core/Cargo.toml b/core/Cargo.toml
-index a790a0ca..55631cac 100644
+index d51a3440..e200f021 100644
 --- a/core/Cargo.toml
 +++ b/core/Cargo.toml
 @@ -19,11 +19,7 @@ fs = ["limbo_ext/vfs"]
@@ -1495,7 +1492,7 @@ index a790a0ca..55631cac 100644
  ipaddr = ["limbo_ipaddr/static"]
  completion = ["limbo_completion/static"]
  testvfs = ["limbo_ext_tests/static"]
-@@ -58,11 +54,7 @@ rand = "0.8.5"
+@@ -60,11 +56,7 @@ rand = "0.8.5"
  libm = "0.2"
  limbo_macros = { workspace = true }
  limbo_uuid = { workspace = true, optional = true, features = ["static"] }
@@ -1508,10 +1505,10 @@ index a790a0ca..55631cac 100644
  limbo_completion = { workspace = true, optional = true, features = ["static"] }
  limbo_ext_tests = { workspace = true, optional = true, features = ["static"] }
 diff --git a/core/ext/mod.rs b/core/ext/mod.rs
-index 939fe3e0..f52919bd 100644
+index 939fe3e0..1a419514 100644
 --- a/core/ext/mod.rs
 +++ b/core/ext/mod.rs
-@@ -174,26 +174,10 @@ impl Connection {
+@@ -174,30 +174,10 @@ impl Connection {
          if unsafe { !limbo_uuid::register_extension_static(&mut ext_api).is_ok() } {
              return Err("Failed to register uuid extension".to_string());
          }
@@ -1535,6 +1532,10 @@ index 939fe3e0..f52919bd 100644
 -        if unsafe { !limbo_series::register_extension_static(&mut ext_api).is_ok() } {
 -            return Err("Failed to register series extension".to_string());
 -        }
-         #[cfg(feature = "ipaddr")]
-         if unsafe { !limbo_ipaddr::register_extension_static(&mut ext_api).is_ok() } {
-             return Err("Failed to register ipaddr extension".to_string());
+-        #[cfg(feature = "ipaddr")]
+-        if unsafe { !limbo_ipaddr::register_extension_static(&mut ext_api).is_ok() } {
+-            return Err("Failed to register ipaddr extension".to_string());
+-        }
+         #[cfg(feature = "completion")]
+         if unsafe { !limbo_completion::register_extension_static(&mut ext_api).is_ok() } {
+             return Err("Failed to register completion extension".to_string());
