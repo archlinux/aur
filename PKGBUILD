@@ -1,9 +1,9 @@
 # Maintainer: Ludvig Hozman <ludvig.hozman@gmail.com>
 
 pkgname=plex-desktop
-pkgver=1.108.1.307
-_pkghash=dd5b87aa
-pkgrel=3
+pkgver=1.109.0.329
+_pkghash=ea562b95
+pkgrel=1
 pkgdesc="Plex desktop client for linux"
 arch=('x86_64')
 url='http://plex.tv'
@@ -62,7 +62,7 @@ source=("https://artifacts.plex.tv/plex-desktop-stable/$pkgver-$_pkghash/linux/P
   "https://github.com/flathub/tv.plex.PlexDesktop/raw/master/tv.plex.PlexDesktop.desktop"
   "https://github.com/flathub/tv.plex.PlexDesktop/raw/master/tv.plex.PlexDesktop.png"
   "iconpatch.patch")
-sha256sums=('98f1a7d105fcb6d262b8de47f9ce2f7a260f5fceccb98b9b7e5f1aed02596a9c'
+sha256sums=('4fb3147eecc7f020459fa4454eb7282c94abd5d29d0b68627e1c04a05ddbd51f'
             '8abc2b1ca77a458bbbcdeb6af5d85316260977370fa2518d017222b3584d9653'
             '2215f6bb3a2bbe50ceb3bedcb93f53d11f6a51ec7512f08f68af91da8253261b'
             '565178841c318fb4926acf65a68df6dae484c0b705be6dd736858e7408a261d5'
