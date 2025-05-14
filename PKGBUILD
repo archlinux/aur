@@ -1,4 +1,4 @@
-# Maintainer: Federico Shestenge <fshestenge@gmail.com>
+﻿# Maintainer: Federico Shestenge <fshestenge@gmail.com>
 
 pkgname=murgafetch
 pkgver=1.0
@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/f3d31206/murgafetch"
 license=('GPL3')
 depends=('bash')
-source=("murgafetch::https://raw.githubusercontent.com/f3d31206/murgafetch/main/.murgafetch")
+source=("murgafetch::https://github.com/f3d31206/murgafetch/blob/master/.murgafetch”)
 md5sums=('SKIP')
 
 package() {
