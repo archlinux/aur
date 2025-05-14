@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=source2viewer-bin
-pkgver=11.1
+pkgver=12.0
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -19,11 +19,11 @@ source_x86_64=(cli-linux-x64-${pkgver}.zip::"$url/releases/download/$pkgver/cli-
 "Source2Viewer-${pkgver}.exe::$url/releases/download/$pkgver/Source2Viewer.exe")
 source_armv7h=(cli-linux-arm-${pkgver}.zip::"$url/releases/download/$pkgver/cli-linux-arm.zip")
 source_aarch64=(cli-linux-arm64-${pkgver}.zip::"$url/releases/download/$pkgver/cli-linux-arm64.zip")
-sha256sums=('701c72a19131462de733fb3b33da0c9ef5ae4dc51e9d76a146a467fa388a36ba')
-sha256sums_x86_64=('5a1a4ac741f8ac7e5f30461f5e793ac22da13eb691423ce80a4b0e855d642b21'
-                   'ac31da72fdd0c015edaa2d2ecc2fca5d7d34316050c0ba76db5a202908b80e34')
-sha256sums_armv7h=('e3528d1ca44c21e3954775cd4707019369a41577f901f926c66cadb87d31ed43')
-sha256sums_aarch64=('bdd95de834a42f0fbe4750a35855b05cd86f81dc8e98bc299bc7e728f1822cdc')
+sha256sums=('a34bbc74094fb012615f0d3c7775a651c51f22649d076b4acbb055eb4e2ad5ed')
+sha256sums_x86_64=('cad8bcfd61079a70837c8248cbe50c6ec897ddd5f8cec0414eabc3d30defe630'
+                   'b015af17cf2124170ae9c40a8146d6c80376036594cc6471a4b6336e217e9c1a')
+sha256sums_armv7h=('ee7f90b59ac24c575bc0dd3d2efa4fa1685bf478a6cfb6e993ee1b1cf408fa7c')
+sha256sums_aarch64=('c75884e991ecdd6ac72821cd17f9831494b2e11a9a6408454f308df1a3a74ecb')
 
 
 package() {
