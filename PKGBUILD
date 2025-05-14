@@ -5,14 +5,14 @@ _pkgname='gr-rds'
 pkgname="${_pkgname}-git"
 epoch=1
 pkgver=3.10+r355.20250305.c1cba54
-pkgrel=1
+pkgrel=2
 pkgdesc="An FM-RDS Receiver for GNU Radio"
 arch=('i686' 'x86_64')
 license=('GPL-3.0-or-later')
 depends=('boost-libs' 'gcc-libs' 'glibc' 'gnuradio>=3.9' 'python>=3' 'python-pyqt5')
 makedepends=('boost' 'cmake' 'doxygen' 'fmt' 'git' 'libvolk' 'pybind11' 'python-pygccxml' 'spdlog' 'swig')
 optdepends=()
-provides=("${_pkgname}" "${_pkgname}=${pkgver}")
+provides=("${_pkgname}-doc=${pkgver}" "${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-doc")
 url="https://github.com/bastibl/gr-rds"
 source=("${_pkgname}::git+https://github.com/bastibl/gr-rds.git")
