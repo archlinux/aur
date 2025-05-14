@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=eagle-animation-bin
-_pkgname="Eagle Animation"
-pkgver=2.11.0
+_pkgname='Eagle Animation'
+pkgver=2.11.1
 _electronversion=36
 pkgrel=1
 pkgdesc="An awesome, free and open-source animation software.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2775ea0eafb317bc3338462f4bd5a515c5670d812b880744853a1c93e1c19c3e'
+sha256sums=('830a0becbfb89c1477f0bf9604ff1b7c6156adc966a1c555b388eb8d7c2d9a14'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
