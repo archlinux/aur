@@ -3,7 +3,7 @@
 pkgname=nbtworkbench-git
 pkgver=1.6.0
 pkgrel=1
-pkgdesc='A modern NBT Editor written in Rust.'
+pkgdesc="A modern NBT (Minecraft's Named Binary Tags) Editor written in Rust."
 url='https://github.com/RealRTTV/nbtworkbench'
 license=('MPL-2.0')
 makedepends=('cargo' 'git')
