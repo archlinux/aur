@@ -1,5 +1,5 @@
 pkgbase = jookdb
-	pkgdesc = DataBase Manager for MySQL, MariaDB, Oracle, PostgreSQL, DB2, SQLite, MongoDB, Redis, DM, OceanBase, kingbase, TiDB and SQLServer
+    pkgdesc = Free universal database Manager for MySQL, MariaDB, Oracle, PostgreSQL, DB2, SQLite, MongoDB, Redis, DM, OceanBase, Kingbase, TiDB and SQLServer
 	pkgver = 7.3
 	pkgrel = 1
 	url = https://jookdb.com
