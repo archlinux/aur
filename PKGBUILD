@@ -14,7 +14,7 @@ depends=('qt6-base')
 makedepends=('git' 'gcc')
 backup=('opt/DoomRunner')
 source=("DoomRunner-${pkgver}.tar.gz::https://github.com/Youda008/DoomRunner/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('3615e4b5129abf3ae0b355a5450f16f6')
+md5sums=('94184e01b174c95aba3a908a0069ec24')
 
 build() {
     mkdir -p "${srcdir}/DoomRunner-${pkgver}/build-dynamic"

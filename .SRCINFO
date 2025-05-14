@@ -10,6 +10,5 @@ pkgbase = doomrunner
 	depends = qt6-base
 	backup = opt/DoomRunner
 	source = DoomRunner-1.9.1.tar.gz::https://github.com/Youda008/DoomRunner/archive/refs/tags/v1.9.1.tar.gz
-	md5sums = 3615e4b5129abf3ae0b355a5450f16f6
-
+	md5sums = 94184e01b174c95aba3a908a0069ec24
 pkgname = doomrunner
