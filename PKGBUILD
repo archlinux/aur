@@ -5,13 +5,13 @@
 # Contributor: Geoffrey Teale <tealeg@googlemail.com>
 pkgname=google-breakpad-git
 pkgver=r2275.5359c233
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source multi-platform crash reporting system"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://chromium.googlesource.com/breakpad/breakpad/"
 license=('BSD-3-Clause')
 makedepends=('git')
-depends=('glibc' 'libgcc' 'libstdc++' 'zlib')
+depends=('glibc' 'libgcc' 'libstdc++' 'zlib' 'zstd')
 conflicts=('google-breakpad')
 provides=('google-breakpad')
 source=("git+https://chromium.googlesource.com/breakpad/breakpad"
@@ -38,7 +38,7 @@ pkgver() {
 build() {
   cd "$srcdir/breakpad"
 
-  ./configure --prefix=/usr --libexecdir=/usr/lib
+  ./configure --prefix=/usr --libexecdir=/usr/lib --enable-zstd
   make
 }
 
