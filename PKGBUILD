@@ -27,7 +27,7 @@ prepare() {
 build() {
   cd $pkgname$pkgver
   mv ../config.guess config.guess
-  ./configure
+  CFLAGS="-g -O2 -std=gnu18" ./configure
   make
 }
 
