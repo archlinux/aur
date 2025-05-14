@@ -1,0 +1,12 @@
+diff -rU1 pa-dlna.orig/systemd/pa-dlna.service pa-dlna/systemd/pa-dlna.service
+--- pa-dlna.orig/systemd/pa-dlna.service	2025-05-14 15:43:14.363004996 +0200
++++ pa-dlna/systemd/pa-dlna.service	2025-05-14 15:43:57.198001897 +0200
+@@ -13,3 +13,3 @@
+ # add a delay to the pa-dlna start up sequence with the directive:
+-#       ExecStartPre=/bin/sleep 1
++#       ExecStartPre=/bin/sleep 1 (EDIT: Done by default, with delay of 2.)
+ #
+@@ -30,2 +30,3 @@
+ Type=notify
++ExecStartPre=/bin/sleep 2
+ ExecStart=/usr/bin/pa-dlna --systemd

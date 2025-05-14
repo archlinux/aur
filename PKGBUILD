@@ -6,7 +6,7 @@
 _pkgname=pa-dlna
 pkgname="${_pkgname}-git"
 pkgver=1.0.r438.20250413.b9c59a4
-pkgrel=1
+pkgrel=2
 pkgdesc="Forwards audio streams to DLNA devices. For PulseAudio or PipeWira (via 'python-libpulse'). Latest git checkout."
 arch=(
   'any'
@@ -50,16 +50,19 @@ optdepends=(
   'ffmpeg: multiple formats support'
   'flac: flac transcoding support'
   'lame: mp3 transcoding support'
-  'pulse-native-provider: To be used by a local pulseaudio implementation'
   'pipewire-pulse: To be used by a local pipewire implementation'
+  'pulse-native-provider: To be used by a local pulseaudio implementation'
+  'python-systemd: For systemd support.'
 )
 source=(
   "${_pkgname}::git+${url}.git"
   "pa-dlna-${pkgver}.pdf::https://pa-dlna.readthedocs.io/_/downloads/en/latest/pdf/"
+  "systemd-add-startup-delay.patch"
 )
 sha256sums=(
   'SKIP'
   'SKIP'
+  'bc5a81514fea014b6179e2819f6fe9caed3f3983d910e34675ed41ea9a52f268'
 )
 
 prepare() {
@@ -72,10 +75,10 @@ prepare() {
 
   cd "${srcdir}/${_pkgname}"
 
-  # for _patch in "${srcdir}"/[...].patch; do
-  #   plain "Applying patch '$(basename "${_patch}" ...)'"
-  #   patch -Np1 --follow-symlinks -i "${_patch}"
-  # done
+  for _patch in "${srcdir}"/systemd-add-startup-delay.patch; do
+    plain "Applying patch '$(basename "${_patch}" ...)'"
+    patch -Np1 --follow-symlinks -i "${_patch}"
+  done
 
   git log > git.log
 }
@@ -113,6 +116,8 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  install -Dvm644 -t "${pkgdir}/usr/lib/systemd/user/" systemd/pa-dlna.service
 
   _docfiles=(
     README.rst
