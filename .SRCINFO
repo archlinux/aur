@@ -1,0 +1,13 @@
+pkgbase = sail-ISA-spec-bin
+	pkgdesc = Sail architecture definition language
+	pkgver = 0.19
+	pkgrel = 1
+	url = https://github.com/rems-project/sail
+	arch = x86_64
+	license = GPL
+	provides = sail-ISA-spec
+	conflicts = sail-ISA-spec
+	source = https://github.com/rems-project/sail/releases/download/0.19-linux-binary/sail.tar.gz
+	sha256sums = 0965ccab502312e01f02ada053df2aeca2437d59cb948373397029db740d7c86
+
+pkgname = sail-ISA-spec-bin
