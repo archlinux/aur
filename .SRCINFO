@@ -1,0 +1,15 @@
+pkgbase = python-pyevdi
+	pkgdesc = a python wrapper for libevdi.
+	pkgver = 1.14.10
+	pkgrel = 1
+	url = https://github.com/DisplayLink/evdi
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	depends = evdi
+	depends = pybind11
+	source = https://github.com/DisplayLink/evdi/archive/v1.14.10/evdi-1.14.10.tar.gz
+	sha256sums = 9fc0165d02e88507135d6a67ccaa06f7b5cd651e375394a1674d5ea4ec7a00aa
+
+pkgname = python-pyevdi
