@@ -8,18 +8,19 @@ pkgdesc="This module performs conversions between Python values and C bit field 
 arch=('any')
 url="https://github.com/eerimoq/${_name}"
 license=('MIT')
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-wheel)
 depends=('python')
-source=("https://files.pythonhosted.org/packages/ae/f5/ba6bf7ab575a095bb3d76ef40cccd4e60b1bda9996bfba8e640d54c00488/${_name}-${pkgver}.tar.gz")
-sha256sums=('ff0be4968a45caf8688e075f55cca7a3fe9212b069ba67e5b27b0926a11948ac')
+source=(${_name}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha256sums=('bec3ed1aad90b4debb5b9a54859928667d1a49104d2dfa3fa829a4b92b026c45')
 
 build() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py build
+    cd $_name-$pkgver
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd $_name-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
 }

@@ -5,9 +5,11 @@ pkgbase = python-bitstruct
 	url = https://github.com/eerimoq/bitstruct
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/ae/f5/ba6bf7ab575a095bb3d76ef40cccd4e60b1bda9996bfba8e640d54c00488/bitstruct-8.21.0.tar.gz
-	sha256sums = ff0be4968a45caf8688e075f55cca7a3fe9212b069ba67e5b27b0926a11948ac
+	source = bitstruct-8.21.0.tar.gz::https://github.com/eerimoq/bitstruct/archive/8.21.0.tar.gz
+	sha256sums = bec3ed1aad90b4debb5b9a54859928667d1a49104d2dfa3fa829a4b92b026c45
 
 pkgname = python-bitstruct
