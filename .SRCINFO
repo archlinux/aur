@@ -1,15 +1,16 @@
 pkgbase = neartree
-	pkgdesc = A library for finding nearest neighbors among points in spaces of arbitrary dimensions
-	pkgver = 3.1.1
-	pkgrel = 2
+	pkgdesc = library for finding nearest neighbors among points in spaces of arbitrary dimensions
+	pkgver = 5.1.1
+	pkgrel = 1
 	url = http://neartree.sourceforge.net/
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	depends = glibc
 	depends = cvector
-	source = http://downloads.sf.net/neartree/NearTree-3.1.1.tar.gz
-	md5sums = c728f5aa4dabdf34eb8a0e8d75eaaa1d
+	source = http://downloads.sf.net/neartree/NearTree-5.1.1.tar.gz
+	source = typo.patch
+	md5sums = 4f7484496fa626da3b753025851568bf
+	md5sums = ecdedf1726457e22b2e69066daed5d40
 
 pkgname = neartree
-

@@ -1,0 +1,20 @@
+--- src/NearTree-5.1.1/TNear.h	2016-04-30 15:14:10.000000000 -0400
++++ src_patch/NearTree-5.1.1/TNear.h	2025-05-13 22:22:10.948092762 -0400
+@@ -8728,7 +8728,7 @@
+ #ifdef CNEARTREE_INSTRUMENTED
+                         colcount = 1;
+ #endif
+-                        tFarthest.insert( tFarthest.end(), make_triple( -dDR, m_ObjectStore[pt->m_ptRight], pt->m_pt_Right ) );
++                        tFarthest.insert( tFarthest.end(), make_triple( -dDR, m_ObjectStore[pt->m_ptRight], pt->m_ptRight ) );
+                         if (k == 1 && dDR > dRadius) dRadius = dDR;
+                         if( tFarthest.size( ) > k ) K_Resize( k, t, tFarthest, dRadius );
+                         collide = pt->m_ptRight;
+@@ -10053,7 +10053,7 @@
+ #ifdef CNEARTREE_INSTRUMENTED
+                         colcount = 1;
+ #endif
+-                        tFarthest.insert( tFarthest.end(), make_triple( -dDR, m_ObjectStore[pt->m_ptRight], pt->m_pt_Right ) );
++                        tFarthest.insert( tFarthest.end(), make_triple( -dDR, m_ObjectStore[pt->m_ptRight], pt->m_ptRight ) );
+                         if (k == 1 && dDR > dRadius) dRadius = dDR;
+                         if( tFarthest.size( ) > k ) K_Resize( k, t, tFarthest, dRadius );
+                         collide = pt->m_ptRight;
