@@ -1,17 +1,16 @@
 pkgbase = python-exscript
 	pkgdesc = A Python module making Telnet and SSH easy
 	pkgver = 2.6.30
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/knipknap/exscript
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
-	depends = python-future
 	depends = python-configparser
 	depends = python-pycryptodomex
-	depends = python-paramiko>=1.17
+	depends = python-paramiko
 	source = exscript::git+https://github.com/knipknap/exscript.git#commit=9d5b035f3de4237dc6ecb7437b3ebd0c162bb6ec
 	md5sums = SKIP
 
