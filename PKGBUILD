@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=107.r7931
-pkgrel=6
+pkgrel=7
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracut-ng/dracut'
@@ -12,6 +12,7 @@ depends=(
   'bash'
   'coreutils'
   'cpio'
+  'filesystem'
   'findutils'
   'gawk'
   'grep'
@@ -19,6 +20,7 @@ depends=(
   'pkgconf'
   'procps-ng'
   'sed'
+  'udev'
   'util-linux'
 )
 makedepends=(
@@ -83,12 +85,14 @@ conflicts=("${pkgname%-git}")
 
 source=(
   git+${url}.git
+  dracut-{install,remove}.script
   90-dracut-install.hook
+  60-dracut-remove.hook
   1322.patch::${url}/commit/bcf0093.patch # fix: improve hostonly sloppy mode
   1194.patch::${url}/commit/d567b94.patch # feat(initqueue): factor out initqueue into its own module
 )
 
-sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -131,5 +135,9 @@ package() {
   cd "${pkgname%-git}"
 
   DESTDIR="$pkgdir" enable_test=no make install
-  install -Dm644 "${srcdir}/90-dracut-install.hook" "${pkgdir}/usr/share/libalpm/hooks/90-dracut-install.hook"
+
+  # pacman hooks
+  install -Dm755 "${srcdir}"/dracut-install.script "${pkgdir}"/usr/share/libalpm/scripts/dracut-install
+  install -Dm755 "${srcdir}"/dracut-remove.script "${pkgdir}"/usr/share/libalpm/scripts/dracut-remove
+  install -Dm644 -t "${pkgdir}"/usr/share/libalpm/hooks "${srcdir}"/*.hook
 }

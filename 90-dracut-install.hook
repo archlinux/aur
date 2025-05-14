@@ -15,6 +15,7 @@ Type = Path
 Operation = Install
 Operation = Upgrade
 Target = usr/lib/modules/*/vmlinuz
+Target = usr/lib/modules/*/pkgbase
 
 [Trigger]
 Type = Package
@@ -26,5 +27,5 @@ Target = dracut-git
 [Action]
 Description = Updating linux initramfs...
 When = PostTransaction
-Exec = /usr/bin/dracut --force --regenerate-all
+Exec = /usr/share/libalpm/scripts/dracut-install
 NeedsTargets
