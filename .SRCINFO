@@ -1,4 +1,4 @@
-pkgbase = hyde-ipc
+pkgbase = hyde-ipc-git
 	pkgdesc = Control Hyprland, query its state, listen for events, and create automated reactions to events.
 	pkgver = 0.1.2
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = hyde-ipc
 	source = git+https://github.com/HyDE-Project/hyde-ipc.git
 	sha256sums = SKIP
 
-pkgname = hyde-ipc
+pkgname = hyde-ipc-git

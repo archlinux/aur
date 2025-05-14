@@ -1,6 +1,7 @@
 # Maintainer: prime-run <prime-run@githiub.com>
 
-pkgname=hyde-ipc
+pkgname=hyde-ipc-git
+_pkgname=hyde-ipc
 pkgver=0.1.2
 pkgrel=1
 pkgdesc="Control Hyprland, query its state, listen for events, and create automated reactions to events."
@@ -33,7 +34,7 @@ build() {
 }
 
 package() {
-  install -Dm755 "./target/release/hyde-ipc" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "./target/release/hyde-ipc" "$pkgdir/usr/bin/$_pkgname"
 }
 post_install() {
   hyde-ipc --help
