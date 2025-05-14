@@ -6,7 +6,7 @@ epoch=0
 _gnuradioversion=3.10
 _gnuradionextversion=3.11
 pkgver=1.0.0+r11.20220602.a69ccb2
-pkgrel=1
+pkgrel=2
 pkgdesc="Scopy IIO blocks for GNU Radio."
 arch=('i686' 'x86_64')
 license=('GPL-3.0-or-later')
@@ -106,6 +106,11 @@ package() {
   cd "${srcdir}"
 
   make -C build DESTDIR="${pkgdir}" install
+
+  ## Do some compatibility symlinks:
+  cd "${pkgdir}/usr/lib/cmake/gnuradio-scopy"
+  ln -sv gnuradio-scopyTargets.cmake gnuradio-scopyTarget.cmake
+  ln -sv gnuradio-scopyTargets-release.cmake gnuradio-scopyTarget-release.cmake
 
   cd "${srcdir}/${_pkgname}"
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log MANIFEST.md README.md

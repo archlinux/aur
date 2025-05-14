@@ -1,7 +1,7 @@
 pkgbase = gr-scopy-git
 	pkgdesc = Scopy IIO blocks for GNU Radio.
 	pkgver = 1.0.0+r11.20220602.a69ccb2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/analogdevicesinc/gr-scopy
 	arch = i686
