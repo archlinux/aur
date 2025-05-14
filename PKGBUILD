@@ -1,8 +1,8 @@
 # Maintainer: Koutheir Attouchi <koutheir at gmail dot com>
 _github_user_name='sevaa'
 pkgname=dwex
-pkgver=4.49
-pkgrel=2
+pkgver=4.51
+pkgrel=1
 pkgdesc='GUI viewer for DWARF debug information'
 arch=('x86_64')
 url="https://github.com/${_github_user_name}/${pkgname}"
@@ -16,21 +16,15 @@ backup=()
 options=()
 install=
 source=("https://github.com/${_github_user_name}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz" \
-        "${pkgname}.png" "${pkgname}.desktop" "$pkgname-$pkgver.patch")
+        "${pkgname}.png" "${pkgname}.desktop")
 noextract=()
-sha256sums=(7a9c37a94dd2adcc3c77771b7686f5fe7b0eea313a46f1f6393c2baa880b79cb \
+sha256sums=(0b5000a279ae1d3e1168f0ef8d7b546be9e4d2069c564e7fb18fc0defb5ffe6f \
             d92d16891381310a4b18cc8ae59a1a0ac99a07ca80599a7e3c003970622ba03f \
-            155036828925419fe6ab40d600d5e5ada249e1b47095d17bddf7aa694a0cdb6d \
-            cf4f68b033e35fe3e7f9f71b737f6b69fb540d2f5bfc142d5e0cbf1c9bc87265)
+            155036828925419fe6ab40d600d5e5ada249e1b47095d17bddf7aa694a0cdb6d)
 validpgpkeys=()
 
 prepare() {
-    # https://github.com/sevaa/dwex/pull/72
-    # https://github.com/sevaa/dwex/pull/73
-
     cd "$pkgname-$pkgver"
-
-    patch --strip=1 "--input=$srcdir/$pkgname-$pkgver.patch"
 }
 
 build() {
