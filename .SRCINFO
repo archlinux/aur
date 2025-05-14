@@ -1,15 +1,16 @@
 pkgbase = simsu
 	pkgdesc = Basic Sudoku game
-	pkgver = 1.4.5
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = https://gottcode.org/simsu/
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = appstream
 	makedepends = cmake
 	makedepends = qt6-tools
 	depends = hicolor-icon-theme
 	depends = qt6-base
-	source = https://gottcode.org/simsu/simsu-1.4.5.tar.bz2
-	sha256sums = 44818819769a0510cd28de92f36da057255d80190381d3e58d3e3230827780b6
+	source = https://gottcode.org/simsu/simsu-1.4.6.tar.bz2
+	sha256sums = 22f9f3c3206860f3f20b84f75ec66f070bea3e1e7350bf641a2396c98703f0a7
 
 pkgname = simsu

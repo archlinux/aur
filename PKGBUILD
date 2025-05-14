@@ -1,16 +1,16 @@
 # Maintainer: Graeme Gott <graeme@gottcode.org>
 
 pkgname=simsu
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 pkgdesc='Basic Sudoku game'
 arch=('x86_64')
 url="https://gottcode.org/${pkgname}/"
 license=('GPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'qt6-base')
-makedepends=('cmake' 'qt6-tools')
+makedepends=('appstream' 'cmake' 'qt6-tools')
 source=("https://gottcode.org/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('44818819769a0510cd28de92f36da057255d80190381d3e58d3e3230827780b6')
+sha256sums=('22f9f3c3206860f3f20b84f75ec66f070bea3e1e7350bf641a2396c98703f0a7')
 
 build() {
   cmake -B build -S "${pkgname}-${pkgver}" \
