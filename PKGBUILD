@@ -2,8 +2,8 @@
 
 pkgname=hyde-ipc
 _pkgname=hyde-ipc
-pkgver=0.2.0
-pkgrel=1
+pkgver=0.1.1
+pkgrel=2
 pkgdesc="Control Hyprland, query its state, listen for events, and create automated reactions to events."
 arch=('x86_64')
 url="https://github.com/HyDE-Project/hyde-ipc"
@@ -26,5 +26,4 @@ package() {
 
   install -Dm755 "$BINARY" "$pkgdir/usr/bin/$_pkgname"
 
-  
 }
