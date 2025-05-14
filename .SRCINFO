@@ -1,6 +1,6 @@
 pkgbase = neovim-gitsigns-git
 	pkgdesc = Git signs written in pure Lua
-	pkgver = 0.3.r14.g1859435
+	pkgver = 1.0.2.r40.g43b0c85
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/lewis6991/gitsigns.nvim
@@ -9,8 +9,7 @@ pkgbase = neovim-gitsigns-git
 	groups = neovim-plugins
 	license = MIT
 	depends = git
-	depends = neovim>=0.5.0
-	depends = neovim-plenary
+	depends = neovim
 	provides = neovim-gitsigns
 	conflicts = neovim-gitsigns
 	source = neovim-gitsigns-git::git+https://github.com/lewis6991/gitsigns.nvim
