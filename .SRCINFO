@@ -10,7 +10,6 @@ pkgbase = sonic3air-bin
 	depends = sdl2
 	depends = zenity
 	depends = yad
-	optdepends = discord: Discord rich presence support
 	provides = sonic3air
 	source = sonic3air_v24.02.02.1.tar.gz::https://github.com/Eukaryot/sonic3air/releases/download/v24.02.02.0-stable/sonic3air_game.tar.gz
 	source = https://gitlab.com/linuxbombay/sonic3air/sonic3air/-/archive/1.0.2/sonic3air-1.0.2.tar.bz2

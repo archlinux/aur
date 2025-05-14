@@ -11,7 +11,6 @@ url='https://sonic3air.org/'
 license=('GPL 3.0')
 depends=('opengl-driver' 'sdl2' 'zenity' 'yad')
 depends_aarch64=('box64')
-optdepends=('discord: Discord rich presence support')
 provides=(sonic3air)
 source=(
 	"sonic3air_$pkgver.tar.gz::https://github.com/Eukaryot/sonic3air/releases/download/v24.02.02.0-stable/sonic3air_game.tar.gz"
