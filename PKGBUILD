@@ -18,6 +18,13 @@ build() {
     python -m build --wheel --no-isolation
 }
 
+check(){
+    cd $_name-$pkgver
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
+    test-env/bin/python -m unittest discover -v
+}
+
 package() {
     cd $_name-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
