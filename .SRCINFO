@@ -1,0 +1,17 @@
+pkgbase = lfs-dal-git
+	pkgdesc = A custom transfer agent for Git LFS powered by OpenDAL.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/regen100/lfs-dal
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	conflicts = lfs-dal
+	source = lfs-dal::git+https://github.com/regen100/lfs-dal
+	sha256sums = SKIP
+
+pkgname = lfs-dal-git
