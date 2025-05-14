@@ -5,3 +5,15 @@ diff -rU1 gnsstk.orig/core/lib/GNSSCore/ObsID.hpp gnsstk/core/lib/GNSSCore/ObsID
  #include <string>
 +#include <cstdint>
  #include <map>
+diff --git a/core/lib/NewNav/GLOCNavHeader.cpp b/core/lib/NewNav/GLOCNavHeader.cpp
+index f75597645..85714a6f7 100644
+--- a/core/lib/NewNav/GLOCNavHeader.cpp
++++ b/core/lib/NewNav/GLOCNavHeader.cpp
+@@ -36,6 +36,7 @@
+ //                            release, distribution is unlimited.
+ //
+ //==============================================================================
++#include <cstdint>
+ #include "GLOCNavHeader.hpp"
+ #include "GLOCBits.hpp"
+ #include "TimeString.hpp"

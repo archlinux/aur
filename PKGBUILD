@@ -4,7 +4,7 @@
 _pkgname=gnsstk
 pkgname="${_pkgname}-git"
 pkgver=14.3.0+25.r7729.20231218.cbba16f6d
-pkgrel=5
+pkgrel=6
 pkgdesc="Library for GNSS (Global Navigation Satellite System) stuff: Provides a core library to facilitate the development of GNSS applications."
 arch=(
   "i686"
@@ -41,7 +41,7 @@ source=(
 )
 sha256sums=(
   'SKIP'                                                              # Main upstream source
-  '51b758815ec736ea5608c117d1721780bba7988edde1f6cf0f02dd6141b1f10c'  # 01_-_add-include-cstdint.patch
+  'a3b37807791bf08d97e5623861637a709ce8d5a2ffe642873fcc376631fb1174'  # 01_-_add-include-cstdint.patch
 )
 
 prepare() {
