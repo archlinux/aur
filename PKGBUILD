@@ -25,7 +25,7 @@ depends=('python'
   'python-requests'
   'keeper-secrets-manager-core>=16.6.0'
   'python-aiortc'
-  'google-crc32c-git' #aur/google-crc32 is currently broken - it's a dependancy of aur/python-aiortc - this line can be removed when aur/google-crc32 is updated
+  'google-crc32c'
   'python-protobuf'
   'python-cryptography'
   'python-pykeepass'

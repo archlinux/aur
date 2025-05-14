@@ -26,7 +26,7 @@ pkgbase = keeper-commander
 	depends = python-requests
 	depends = keeper-secrets-manager-core>=16.6.0
 	depends = python-aiortc
-	depends = google-crc32c-git
+	depends = google-crc32c
 	depends = python-protobuf
 	depends = python-cryptography
 	depends = python-pykeepass
