@@ -12,7 +12,7 @@
 
 pkgname='getmail6'
 pkgdesc="mail retriever with support for POP3, IMAP4, SDPS; fork of getmail 5.14 modified to support python3"
-pkgver=6.19.07
+pkgver=6.19.08
 pkgrel=1
 arch=('any')
 url='http://getmail6.org/'
@@ -22,7 +22,7 @@ makedepends=('python-setuptools')
 optdepends=('python-keyring: secure password store'
             'python-keyrings-alt: alternative backends')
 source=("${pkgname}-${pkgver}.tgz::https://github.com/getmail6/getmail6/archive/v${pkgver}.tar.gz")
-sha512sums=('34153ac53cbb9698108eef70957d374d7c02fc5ffd72ba940461ad40bbc582f7992bf7c8060ac33128d01447728bb820536a32f1a3bd97a3ecbb523fb9a974bf')
+sha512sums=('23a9770bdc4ed6425c94df11d6ba62dc678105e4430b024c0f696d44c35893427b13c1b26b25629ad3157fcde32a41d11482a1dfc7ba4f4940e21de2c5022ea4')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
