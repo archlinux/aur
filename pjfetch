@@ -1,0 +1,80 @@
+#!/bin/bash
+
+prox_elec="2027-10-10 00:00:00"
+
+
+now=$(date +%s)
+target=$(date -d "$prox_elec" +%s)
+
+
+diff=$((target - now))
+
+days=$((diff / 86400))
+hours=$(( (diff % 86400) / 3600 ))
+minutes=$(( (diff % 3600) / 60 ))
+seconds=$((diff % 60))
+
+# Ascii
+ascii_art=(
+"     A        A    v          A  Av       "
+"    rv rmvmrr A rr A rrrmvmr v    vvAA    "
+"    v         A    1         A    A  vvA  "
+"   AAAAAAAAAAAAAAAAAAAAAAAAAA   A       A "
+"  A                           r    AAvr   "
+"  A                            A         A"
+" AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0A"
+"A   vrrrrrrrrrrrrrrrrrrrrrrrrrvv         A"
+"A vARIIIIIIIINW066666WIIIIIIIIIR rAA AA  A"
+"A rIi11111111iRRRRRRRAii111111R1 vAA AA  A"
+"A rI611111111iRd666606Ai111111R1 vAA AA  A"
+"A rI611111116iR066666dRi611116W6  AR AA  A"
+"A rI611111110iR6666666Rdi11i01NR   RR    A"
+"A rI61111111iAR66666666Aii0iA  A mA   A  A"
+"A rI61111111iR1idd0d0ddRidA    A vAAvAA  A"
+"A rI61111111diAAAIAWAAAiA   rr A vAA AA  A"
+"A rI611111116iiiiiAddiIr  rrrr A vAN AA  A"
+"A rI611111111idWE   vvv  rrrrr A  dARA v A"
+"A rI6111111iiiA           vr   A 0    iv A"
+"A rI61111110AA   AAAAAAAAivv A A rAA AA  A"
+"A rI61111d66  A  A        v  i A vAA AA  A"
+"A rI6d6WIIA v  A A rrrrvv   A  A vAA AA  A"
+"A rIINAvv   rr     mrrr   dA   A  AA AA  A"
+"A r v   rrrrrrr  A  vr  vAm1 v A v  EA v A"
+"A rirrrrrrrrrrr A A rr A 6   v A v AAA r A"
+"A rirrrrrrrmdmm A Ardd A v vrr A vAE  vr A"
+"A v  rrrvmi0mmRvr vvrr   rrvvr A vvvvrrr A"
+"A vA     r     vvvrrrvrvvvrrvv A rrrrrrr A"
+" 0vvvAAAAEEAAARrvvvvrvrrrvvrrv A rrrrrrr A"
+"  AArrrrrrrrrrrr6v  vrvvrrvvrr A rrrrrrvvA"
+"              ArmrA  rvvvrrv   RvrrrrrvrR "
+"                AvvA       rrIAvvrv vr6A  "
+"                 NvvrrAAAARrrv vm60AA     "
+"                   A         NAr          "
+)
+
+# Obtener información del sistema
+info_lines=(
+"usuario=$(whoami)@$(hostname)"
+"SO=$(grep "^PRETTY_NAME" /etc/os-release | cut -d= -f2 | tr -d '"')"
+"kernel=$(uname -r)"
+"$(uptime -p)"
+"disco=$(df -h / | awk 'NR==2 {print $3 " / " $2 " used"}')"
+"RAM=""Usaste $(free -h | awk '/Mem:/ {print $3}') / $(free -h | awk '/Mem:/ {print $2}')"""
+"Próximas elecciones pres. en $days días, $hours horas y $minutes minutos"
+"Bienvenido a la terminal, compañero. ¡Viva la patria!"
+)
+
+# Determinar el número máximo de líneas
+max_lines=${#ascii_art[@]}
+if [ ${#info_lines[@]} -gt $max_lines ]; then
+  max_lines=${#info_lines[@]}
+fi
+
+# Imprimir lado a lado
+for ((i = 0; i < max_lines; i++)); do
+  art="${ascii_art[i]}"
+  info="${info_lines[i]}"
+  printf "\033[1;36m%-15s\033[0m  %s\n" "$art" "$info" 
+done
+
+
