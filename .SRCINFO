@@ -1,0 +1,21 @@
+pkgbase = python-shellrecharge
+	pkgdesc = Python 3 package to retrieve public and private EV charger data from Shell Recharge
+	pkgver = 0.1.21
+	pkgrel = 1
+	url = https://github.com/cyberjunky/python-shellrecharge
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pdm-backend
+	depends = glibc
+	depends = python
+	depends = python-aiohttp
+	depends = python-aiohttp-retry
+	depends = python-bs4
+	depends = python-pydantic
+	depends = python-yarl
+	source = python-shellrecharge::git+https://github.com/cyberjunky/python-shellrecharge.git#tag=0.1.21
+	sha256sums = SKIP
+
+pkgname = python-shellrecharge
