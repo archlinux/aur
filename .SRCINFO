@@ -1,17 +1,22 @@
 pkgbase = python-google-genai
 	pkgdesc = GenAI Python SDK.
-	pkgver = 1.7.0
+	pkgver = 1.15.0
 	pkgrel = 1
-	url = https://github.com/googleapis/python-genai/
+	url = https://github.com/googleapis/python-genai
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-pytest-cov
+	checkdepends = python-certifi
+	checkdepends = python-pillow
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-twine
+	makedepends = python-packaging
+	makedepends = python-pkginfo
 	depends = python>=3.9
 	depends = python-anyio
 	depends = python-google-auth
@@ -20,8 +25,7 @@ pkgbase = python-google-genai
 	depends = python-requests
 	depends = python-websockets
 	depends = python-typing_extensions
-	optdepends = python-pillow
-	source = https://github.com/googleapis/python-genai/archive/refs/tags/v1.7.0.tar.gz
-	sha256sums = c1e4b17c8e3feb6bb4ef8408869145f6172e68ec5db2b47abd0ec9433817e683
+	source = https://github.com/googleapis/python-genai/archive/refs/tags/v1.15.0.tar.gz
+	sha256sums = 1ecd2715a2682751f815b943a09ac58f1c31d2ae9429232b8a93d53b639dbd3c
 
 pkgname = python-google-genai

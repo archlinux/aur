@@ -2,18 +2,17 @@
 
 _name=google-genai
 pkgname=python-${_name}
-pkgver=1.7.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
-url='https://github.com/googleapis/python-genai/'
+url='https://github.com/googleapis/python-genai'
 license=('Apache-2.0')
-source=("https://github.com/googleapis/python-genai/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c1e4b17c8e3feb6bb4ef8408869145f6172e68ec5db2b47abd0ec9433817e683')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('1ecd2715a2682751f815b943a09ac58f1c31d2ae9429232b8a93d53b639dbd3c')
 depends=('python>=3.9' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pydantic' 'python-requests' 'python-websockets' 'python-typing_extensions')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-cov')
-optdepends=('python-pillow')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-twine' 'python-packaging' 'python-pkginfo')
+checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-cov' 'python-certifi' 'python-pillow')
 
 build() {
   cd "${srcdir}"/${pkgname//google-/}-${pkgver}
@@ -54,6 +53,7 @@ check() {
     --ignore google/genai/tests/models/test_generate_content_media_resolution.py
     --ignore google/genai/tests/models/test_generate_content_model.py
     --ignore google/genai/tests/models/test_generate_content_part.py
+    --ignore google/genai/tests/models/test_generate_content_thought.py
     --ignore google/genai/tests/models/test_generate_content_tools.py
     --ignore google/genai/tests/models/test_generate_images.py
     --ignore google/genai/tests/models/test_generate_videos.py
@@ -64,11 +64,12 @@ check() {
     --ignore google/genai/tests/tunings/test_get.py
     --ignore google/genai/tests/tunings/test_list.py
     --ignore google/genai/tests/tunings/test_tune.py
+    --ignore google/genai/tests/models/test_generate_content_thought.py
     --deselect google/genai/tests/chats/test_send_message.py
     --deselect google/genai/tests/files/test_download.py
     --deselect google/genai/tests/files/test_upload.py
     --deselect google/genai/tests/models/test_generate_content_from_apikey.py
-    --deselect google/genai/tests/models/test_generate_content_thought.py
+    #--deselect google/genai/tests/models/test_generate_content_thought.py
     --deselect google/genai/tests/public_samples/test_gemini_text_only.py
     --deselect google/genai/tests/tunings/test_end_to_end.py
   )
