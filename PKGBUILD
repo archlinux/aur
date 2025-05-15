@@ -9,7 +9,7 @@
 _pkgname="equibop"
 pkgname="$_pkgname-git"
 pkgdesc="Forked Custom Discord desktop app with Equicord preinstalled"
-pkgver=2.1.3.r0.g339f3cf
+pkgver=2.1.4.r1.ge126858
 pkgrel=1
 url="https://github.com/Equicord/Equibop"
 license=('GPL-3.0-only')
@@ -61,14 +61,6 @@ pkgver() {
 }
 
 build() {
-  export SYSTEM_ELECTRON_VERSION=$(< "/usr/lib/electron${_electron_version:-}/version")
-  export ELECTRONVERSION=${SYSTEM_ELECTRON_VERSION%%.*}
-
-  sed -E \
-    -e 's&^(\s*)("electron"): "(.*)"(,?)$&\1\2: "'"$SYSTEM_ELECTRON_VERSION"'"\4&' \
-    -e '/linux/s&^&"electronDist": "/usr/lib/electron'"${_electron_version:-}"'",\n&' \
-    -i "$_pkgsrc/package.json"
-
   cd "$_pkgsrc"
   pnpm install
   pnpm package:dir
