@@ -1,0 +1,39 @@
+pre_install() {
+  pre_remove
+}
+
+pre_upgrade() {
+  pre_remove
+}
+
+pre_remove() {
+  SIGNER="/opt/certiliamiddleware/CertiliaSigner /usr/lib/akd/certiliamiddleware/Signer /usr/lib/akd/eidkidmiddleware/Signer /usr/lib/akd/eidmiddleware/Signer"
+  for s in $SIGNER; do
+    signerPID=`pidof $s` || continue
+    if [ -n "$signerPID" ]; then
+      echo "Killing running Signer instance: $signerPID"
+      kill $signerPID
+    fi
+  done
+}
+
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  echo "Updating CA certificates"
+  update-ca-trust
+  echo "Enabling and starting pcscd.service"
+  systemctl enable --now pcscd.service
+  echo
+  echo "-------------------------------------------------------------------"
+  echo "| Certilia Middleware installed successfully.                     |"
+  echo "| Please restart your computer or start Certilia Signer manually. |"
+  echo "-------------------------------------------------------------------"
+  echo
+}
+
+post_remove() {
+  update-ca-trust
+}

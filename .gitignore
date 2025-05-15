@@ -2,5 +2,6 @@
 
 *
 !.gitignore
+!certiliamiddleware.install
 !.SRCINFO
 !PKGBUILD

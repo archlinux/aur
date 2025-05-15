@@ -1,19 +1,22 @@
 # Maintainer: Certilia <support@certilia.com>
 
 pkgname=certiliamiddleware
-pkgver=3.7.8.1
+pkgver=3.9.4
 pkgrel=1
 pkgdesc="Certilia Middleware for Certilia smart cards"
-arch=('x86_64')
+arch=("x86_64")
 url="https://www.certilia.com"
-license=('custom')
-depends=('qt5-base' 'openssl-1.0' 'ccid')
-source=("${url}/update/${pkgname}_v${pkgver}_amd64.deb")
-options=('!strip' 'staticlibs')
-sha512sums=('46f63be9575221b4ebcce3b85e0c4e25ac99e380a5db15c9aa06bb25c05c7cc0b3ac5d15fdf61e4e8f6636b48584281b03e6735136ff95ff5b771b7584aec058')
+license=("custom")
+depends=("ca-certificates-utils" "ccid" "qt6-base" "xcb-util-cursor")
+source=("${url}/update/${pkgname}_${pkgver}-${pkgrel}_amd64.deb")
+options=("!strip" "staticlibs")
+install="certiliamiddleware.install"
+sha512sums=("fcb244cbaef8da7865e5223d5432079be8c463fe476d36675a145fffbedfa50052d1903f612f455d6d3fcda5a870667bff3c1fb482c287095f4b03a906aa086b")
 
 package() {
-
-  tar --no-same-owner -xJf data.tar.xz -C "${pkgdir}"
-  install -Dm644 "${pkgdir}/usr/share/doc/akd/${pkgname}/copyright" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  tar --no-same-owner --zstd -xvf data.tar.zst -C ${pkgdir}
+  rm -rv ${pkgdir}/etc/apt
+  mkdir -pv ${pkgdir}/usr/share/ca-certificates/trust-source
+  mv -v ${pkgdir}/usr/share/ca-certificates/akd ${pkgdir}/usr/share/ca-certificates/trust-source/anchors
+  install -vDm644 "${pkgdir}/usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
