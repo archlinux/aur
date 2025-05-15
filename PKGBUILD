@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcisTarget
-_pkgver=1.28.0
+_pkgver=1.28.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -41,8 +41,8 @@ optdepends=(
   r-visnetwork
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2176f88064c0b45e7b403b638d178ae9')
-b2sums=('d1c8fb340025e9a6fa4db7915a65fafd4ea880483f70aa860102c42a025b1e1d58ef068c96aca46ab7bda2f55fa94477a746f71f6f00e66b54f6e02cca5ebba2')
+md5sums=('d55e855ba3ba141df24368bd5396fd20')
+b2sums=('b7d8a30609b2f81686c679e023935e3b482a6e2a7fe6ae06dad204a6fc23517c9ccdd4fb2b4cc56f964a9c63470460b62413f1d32d3e718000ab04aae0b881a7')
 
 build() {
   mkdir build
