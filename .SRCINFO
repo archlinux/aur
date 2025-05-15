@@ -1,8 +1,8 @@
 pkgbase = lyricistant-bin
 	pkgdesc = A helpful writing assistant for lyricists!(Prebuilt version.Use system-wide electron)
 	pkgver = 3.4.7
-	pkgrel = 1
-	url = https://github.com/wardellbagby/lyricistant
+	pkgrel = 2
+	url = https://lyricistant.app/
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
