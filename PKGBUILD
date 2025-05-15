@@ -4,7 +4,7 @@
 #
 pkgname=python-condense-json
 _origpkgname=condense_json
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Python function for condensing JSON using replacement strings"
 arch=("x86_64")
@@ -12,19 +12,19 @@ url='https://pypi.org/project/condense-json/'
 license=("Apache-2.0")
 depends=()
 makedepends=(
-	"python-build"
-	"python-installer"
-	"python-wheel"
-	"python-setuptools"
-	"python-hatchling"
+  "python-build"
+  "python-installer"
+  "python-wheel"
+  "python-setuptools"
+  "python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/ca/c7/fb14dfac23e6e27170f8a94bf13355987d15f8db62df99146f81bf6b2508/condense_json-0.1.2.tar.gz")
-sha256sums=("a161e1984122ad35801cc14ecfe2b38d9d638c8c089e04cb545d26300fdc485e")
+source=("https://files.pythonhosted.org/packages/94/b3/d784cbc05556192ea1e798cae96363835d649fe7420ff030190789645be1/condense_json-0.1.3.tar.gz")
+sha256sums=("25fe8d434fdafd849e8d98f21a3e18f96ae2d6dbc2c17565f29e4843d039d2bc")
 package() {
-	cd "${_origpkgname}-${pkgver}" || exit
-	python -m build --wheel --no-isolation
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${_origpkgname}-${pkgver}" || exit
+  python -m build --wheel --no-isolation
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
