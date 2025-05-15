@@ -3,7 +3,7 @@
 # Maintainer: Max <max@swk-web.com>
 
 pkgname='shopware-cli-bin'
-pkgver=0.5.23
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A cli which contains handy helpful commands for daily Shopware tasks'
 url='https://developer.shopware.com/'
@@ -13,11 +13,11 @@ provides=('shopware-cli')
 conflicts=('shopware-cli')
 depends=('git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/shopware/shopware-cli/releases/download/0.5.23/shopware-cli_Linux_arm64.tar.gz")
-sha256sums_aarch64=('13d33d6fc18969dd663fcc2d02af26a8ac310233c13467c9f88eb4fe052351b5')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/shopware/shopware-cli/releases/download/0.6.0/shopware-cli_Linux_arm64.tar.gz")
+sha256sums_aarch64=('0bce325de9639b28572de77ee128b392f2df0e9fddd529fa195deedcc9f11324')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/shopware/shopware-cli/releases/download/0.5.23/shopware-cli_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('c2a0a6ff10e21a3b7e9df6daccacddd480c2e0e21e233893abbedffcfa5e448e')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/shopware/shopware-cli/releases/download/0.6.0/shopware-cli_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('15cc83bd1c3be6938fc57eea3240b7e69550bfcedd6f448ee99111010b448698')
 
 package() {
   install -Dm755 "./shopware-cli" "${pkgdir}/usr/bin/shopware-cli"
