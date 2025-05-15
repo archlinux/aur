@@ -1,6 +1,6 @@
 pkgbase = vudit-git
 	pkgdesc = A cross-platform desktop file viewer.(Use system-wide electron)
-	pkgver = r85.f8726f5
+	pkgver = r87.be85b60
 	pkgrel = 1
 	url = https://github.com/praharshjain/Vudit-Desktop
 	arch = any
@@ -10,11 +10,9 @@ pkgbase = vudit-git
 	makedepends = git
 	makedepends = curl
 	makedepends = gendesk
-	makedepends = gcc
-	depends = electron33
-	depends = python
+	depends = electron35
 	depends = nodejs
-	provides = vudit=r85.f8726f5
+	provides = vudit=r87.be85b60
 	conflicts = vudit
 	source = vudit.git::git+https://github.com/praharshjain/Vudit-Desktop
 	source = vudit.sh
