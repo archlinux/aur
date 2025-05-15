@@ -1,7 +1,7 @@
 pkgbase = ulogviewer-bin
-	pkgdesc = Cross-Platform Universal Log Viewer.(Prebuilt version)
+	pkgdesc = Universal Log Viewer,supports reading, parsing and analysing various type of logs.(Prebuilt version)
 	pkgver = 4.1.3.111
-	pkgrel = 1
+	pkgrel = 2
 	url = https://carina-studio.github.io/ULogViewer/
 	arch = aarch64
 	arch = x86_64

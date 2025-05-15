@@ -2,8 +2,8 @@
 pkgname=ulogviewer-bin
 _pkgname=ULogViewer
 pkgver=4.1.3.111
-pkgrel=1
-pkgdesc="Cross-Platform Universal Log Viewer.(Prebuilt version)"
+pkgrel=2
+pkgdesc="Universal Log Viewer,supports reading, parsing and analysing various type of logs.(Prebuilt version)"
 arch=(
     'aarch64'
     'x86_64'
@@ -39,11 +39,16 @@ sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea'
 sha256sums_aarch64=('68ea48b6a79ed8d0aa3aafda48cb4ed05347d72ceae3efcac8f0cc6d9564d9cd')
 sha256sums_x86_64=('34661e821e9266d52cf9fa83f5d63ebf124a7b448e2c1f425f1c9cbbc3f10456')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin} %U"
     install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
     chmod 755 "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}"
