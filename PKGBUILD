@@ -4,7 +4,7 @@
 pkgname=apk-editor-studio-bin
 _appname=application-vnd.android.package-archive
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful yet easy to use APK reverse-engineering tool.(Prebuilt version)"
 arch=('x86_64')
 provides=("${pkgname%-bin}")
@@ -39,11 +39,13 @@ source=(
 sha256sums=('4b20d5ea5fd9cfab3810600c9b1c07398705d90ef4a36bba1c9f7f32f7ee7027'
             'b3e9c2ea2115387e381b4f66d286e59c0ad4a16b94eed5313b03ce05fadc8863')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }
 package() {
