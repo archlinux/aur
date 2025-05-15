@@ -3,8 +3,8 @@
 # Contributor: boromil@gmail.com
 
 pkgname=raw-thumbnailer
-pkgver=47.0.1
-pkgrel=4
+pkgver=48.0.0
+pkgrel=1
 pkgdesc="A lightweight and fast raw image thumbnailer that can be used by file managers."
 url="https://gitlab.gnome.org/World/gnome-raw-thumbnailer/"
 license=('GPL-2.0-or-later')
@@ -13,7 +13,7 @@ depends=('libopenraw')
 makedepends=('meson' 'python' 'ninja' 'cargo' 'git')
 conflicts=('raw-thumbnailer-entry')
 source=("$url/-/archive/$pkgver/gnome-$pkgname-$pkgver.tar.gz")
-sha256sums=('56b76fa25febf8a5795a63a8c6c85428d2c326924adfebd63192e2b208f1b4fc')
+sha256sums=('94726a4e546da866b3f3f1cfd79b25988699a4e11a00bba471915a31d96b95fd')
 
 prepare() {
   meson subprojects download --sourcedir=gnome-$pkgname-$pkgver
