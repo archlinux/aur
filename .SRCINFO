@@ -1,18 +1,17 @@
 pkgbase = 18xx-maker-git
 	pkgdesc = 🚂 Prototyping tool for 18xx games 💸.(Use system-wide electron)
-	pkgver = 1.0.0.beta.110.r0.g53a5a4b
+	pkgver = 1.0.0.beta.112.r3.g2027b25
 	pkgrel = 1
 	url = https://18xx-maker.com
 	arch = any
 	license = MIT
 	makedepends = gendesk
-	makedepends = npm
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
 	makedepends = pnpm
 	depends = electron33
-	provides = 18xx-maker=1.0.0.beta.110
+	provides = 18xx-maker=1.0.0.beta.112
 	conflicts = 18xx-maker
 	source = 18xx-maker.git::git+https://github.com/18xx-maker/18xx-maker
 	source = 18xx-maker.sh
