@@ -1,0 +1,16 @@
+pkgbase = iotop-rs
+	pkgdesc = A lightweight Rust-based terminal I/O monitor (alternative to classic iotop)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jhenrique04/iotop
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = rust
+	makedepends = cargo
+	provides = iotop
+	conflicts = iotop
+	source = iotop-rs-0.1.0.tar.gz::https://github.com/jhenrique04/iotop/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = iotop-rs
