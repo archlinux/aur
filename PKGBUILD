@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ueli-bin
 _pkgname=Ueli
-pkgver=9.23.0
+pkgver=9.24.0
 _electronversion=34
 pkgrel=1
 pkgdesc="Cross-Platform Keystroke Launcher(Prebuilt version.Use system-wide electron)"
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 sha256sums=('8da6c1a79d367a41aadf313019833f4bb3f2ff55f0da5b522fd058183d2f9106'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('0e51696fc5ea2060d5b6958a5406c91e5aed3258223156ffe8c17231bada2ad1')
-sha256sums_x86_64=('d70b309d6968187e631e52fcacf01fe5146ad553d1ed0eaf7561b1f7e325bfb5')
+sha256sums_aarch64=('746a6899c9e8c528adb9249387a6929971ae09be4278618ced8a5445fe496632')
+sha256sums_x86_64=('3ccd014d710dddd663c92bdf6672ca562e8dccea22880d09b6b56c23c872f038')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -35,7 +35,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
