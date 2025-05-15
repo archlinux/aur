@@ -1,14 +1,14 @@
 # Maintainer: Phantomwise <phantomwise67@protonmail.com>
 pkgname=sausage-git
 pkgver=0.0.4.r0.ge1843d8
-pkgrel=2
+pkgrel=3
 pkgdesc="A terminal word-forming game written in Bash"
 arch=('any')
 url="https://gitlab.com/christosangel/sausage"
 license=('MPL-2.0')
 backup=('etc/sausage/dictionary.txt' 'etc/sausage/sausage.config')
-depends=('bash' 'coreutils')
-makedepends=('git' 'sed')
+depends=('bash' 'coreutils' 'ncurses')
+makedepends=('git')
 provides=("sausage")
 conflicts=("sausage")
 install=sausage-git.install
