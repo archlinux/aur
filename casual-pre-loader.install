@@ -1,0 +1,11 @@
+#!/bin/sh
+
+_pkgname=casual-pre-loader
+
+post_install() {
+	printf '\t%s has been successfully installed. mods will be stored in %s\n' "${_pkgname:?}" "\${XDG_DATA_HOME}/${_pkgname:?}" >&2
+}
+
+post_remove() {
+	printf '\t%s has been successfully uninstalled. mods will remain in %s/addons and must be manually removed\n' "${_pkgname:?}" "\${XDG_DATA_HOME}/${_pkgname:?}" >&2
+}
