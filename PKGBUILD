@@ -9,7 +9,7 @@ url="https://github.com/vpinball/vpinball"
 license=('GPL-3.0-or-later' 'LicenseRef-MAME')
 #depends=('python' 'bzip2' 'glibc' 'xz' 'libxcb' 'systemd-libs' 'zlib' 'alsa-lib' 'libdrm' 'gcc-libs' 'hidapi' 'sdl2-compat' 'sdl2_image' 'sdl2_ttf' 'libbass' 'freeimage-vpinball-git' 'libpinmame-git' 'libaltsound-git' 'libdmdutil-git' 'libdof-git' 'ffmpeg')
 #depends=('python' 'bzip2' 'glibc' 'xz' 'libxcb' 'systemd-libs' 'zlib' 'alsa-lib' 'bgfx-git' 'libdrm' 'gcc-libs' 'hidapi' 'sdl3-git' 'sdl3_mixer-git' 'sdl3_image-git' 'sdl3_ttf-git' 'libbass' 'freeimage-vpinball-git' 'libpinmame-git' 'libaltsound-git' 'libdmdutil-git' 'libdof-git' 'ffmpeg')
-depends=('python' 'glibc' 'bgfx-git' 'gcc-libs' 'hidapi' 'sdl3-git' 'sdl3_mixer-git' 'sdl3_image-git' 'libserum-concentrate-git' 'sdl3_ttf-git' 'libpupdmd-git' 'freeimage-vpinball-git' 'libpinmame-git' 'libaltsound-git' 'libdmdutil-git' 'libdof-git' 'ffmpeg' 'python-lxml' 'python-pillow')
+depends=('python' 'glibc' 'vpinball-bgfx.cmake' 'gcc-libs' 'hidapi' 'sdl3-git' 'sdl3_mixer-git' 'sdl3_image-git' 'libserum-concentrate-git' 'sdl3_ttf-git' 'libpupdmd-git' 'freeimage-vpinball-git' 'libpinmame-git' 'libaltsound-git' 'libdmdutil-git' 'libdof-git' 'ffmpeg' 'python-lxml' 'python-pillow')
 #makedepends=('unzip' 'freeimage' 'cmake' 'git' 'nasm' 'curl' 'systemd' 'libx11' 'mesa' 'libxext' 'zlib-ng' 'wayland' 'libxkbcommon')
 makedepends=('unzip' 'cmake' 'git' 'curl')
 provides=('vpinball')
@@ -19,7 +19,7 @@ source=("${pkgname}::git+https://github.com/vpinball/vpinball.git"
 sha256sums=('SKIP'
             '4f094e7177ecde9afdafa29805635084aae5967560d33b46c8f95ef732898b93'
             'ca5d4a89d1a137eba199ebd91463d3df7fe90fd47ff41c73d6f456d879ab5011')
-
+options=('debug' '!strip')
 pkgver() {
     cd "$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
