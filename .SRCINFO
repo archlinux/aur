@@ -1,7 +1,7 @@
 pkgbase = forgetools-bin
 	pkgdesc = A comprehensive desktop application built with Electron that provides a suite of essential development tools for software engineers.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tengfone/forgetools
 	arch = x86_64
 	license = MIT
