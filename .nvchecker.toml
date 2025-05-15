@@ -1,4 +1,8 @@
 [cursor-electron]
 source = "regex"
 url = "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest"
-regex = "Cursor-(.*)-"
+regex = "Cursor-(.*)-x86_64.AppImage"
+
+# source = "jq"
+# url = "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest"
+# filter = ".version"
