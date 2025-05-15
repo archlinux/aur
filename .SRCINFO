@@ -1,0 +1,23 @@
+pkgbase = specter-desktop-appimage
+	pkgdesc = A desktop GUI for Bitcoin Core optimised to work with hardware wallets
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://github.com/cryptoadvance/specter-desktop
+	arch = x86_64
+	license = MIT
+	makedepends = p7zip
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = fuse
+	depends = gtk3
+	noextract = specter_desktop-2.0.5.AppImage
+	options = !strip
+	options = !debug
+	source = https://github.com/cryptoadvance/specter-desktop/releases/download/v2.0.5/specter_desktop-v2.0.5-x86_64-linux-gnu.tar.gz
+	source = specter.png
+	source = https://raw.githubusercontent.com/cryptoadvance/specter-desktop/refs/heads/master/LICENSE
+	sha256sums = 8a187c4710085186e2618ef181e6d9d91e8d2175975055ef3724c187e977e991
+	sha256sums = ad1bd497b7fb631cbc161bd559596e0f47df926caa4698190197c127b756900f
+	sha256sums = a230039985e2c4a8b522399e82b3ff6d74b1d0ff9629ec4c56aad7a5a68f0af5
+
+pkgname = specter-desktop-appimage
