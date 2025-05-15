@@ -9,7 +9,7 @@
 
 _pkgname=geany-plugins
 pkgname=$_pkgname-git
-pkgver=2.0.0.r137.g7ec34de3
+pkgver=2.0.0.r150.ga8aaca94
 pkgrel=1
 pkgdesc='Various plugins for Geany (git version)'
 arch=(x86_64)
@@ -35,12 +35,17 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-  autoreconf -fi
+  # adapted commands from 'autogen.sh' to add include path for gettext m4 macros
+  # as workaround for change of 'nls.m4' location in gettext >= 0.35, leading to
+  # "error: possibly undefined macro: AM_NLS"
+  mkdir -p build/cache
+  intltoolize -c -f
+  autoreconf -vfi -I /usr/share/gettext/m4
 }
 
 build() {
   cd $_pkgname
-  export CFLAGS="-Wno-deprecated-declarations"
+  export CFLAGS+=" -Wno-deprecated-declarations -Wno-incompatible-pointer-types -w"
   ./configure --prefix=/usr --libexecdir=/usr/lib
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make

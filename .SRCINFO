@@ -1,6 +1,6 @@
 pkgbase = geany-plugins-git
 	pkgdesc = Various plugins for Geany (git version)
-	pkgver = 2.0.0.r137.g7ec34de3
+	pkgver = 2.0.0.r150.ga8aaca94
 	pkgrel = 1
 	url = https://plugins.geany.org/
 	arch = x86_64
