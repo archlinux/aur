@@ -1,0 +1,14 @@
+pkgbase = nodejs-appium-relaxed-caps-plugin
+	pkgdesc = An Appium 2.0 plugin that loosens requirements for vendor prefixes on caps
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://www.npmjs.com/package/@appium/relaxed-caps-plugin
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = npm
+	depends = nodejs
+	noextract = nodejs-appium-relaxed-caps-plugin-1.0.6.tgz
+	source = nodejs-appium-relaxed-caps-plugin-1.0.6.tgz::https://registry.npmjs.org/@appium/relaxed-caps-plugin/-/relaxed-caps-plugin-1.0.6.tgz
+	sha256sums = 77e4a4c341e161ae3750a107ed800e41410407cbf4f0b15073268ea7e975e200
+
+pkgname = nodejs-appium-relaxed-caps-plugin
