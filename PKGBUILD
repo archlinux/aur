@@ -1,8 +1,9 @@
 # Maintainer: That One Seong <ThatOneSeong@protonmail.com>
 
 _name=Nero-umu
+_QTver=Qt6
 pkgname=nero-umu
-pkgver=0.96
+pkgver=0.97
 pkgrel=1
 pkgdesc='A fast and efficient umu manager, just as the Romans designed.'
 arch=('x86_64')
@@ -17,7 +18,7 @@ optdepends=(
             'winetricks: Fallback for Proton runners without embedded protonfixes'
 )
 source=("git+https://github.com/SeongGino/Nero-umu#tag=v${pkgver}")
-md5sums=('d27d784eaddca0f5dcee9515112a21f7')
+md5sums=('a06f6fdca1bc19d5e8a3d86dafb0b2e0')
 
 prepare() {
   cd "$srcdir/$_name"
@@ -25,10 +26,8 @@ prepare() {
 }
 
 build() {
-  mkdir "$srcdir/$_name/build"
-  cd "$srcdir/$_name/build"
-  cmake .. -DNERO_VERSION=$pkgver
-  make
+  cmake -B "$srcdir/$_name/build" -DCMAKE_BUILD_TYPE=Release -DNERO_VERSION=$pkgver -DNERO_QT_VERSION=$_QTver -S "$srcdir/$_name"
+  cmake --build "$srcdir/$_name/build" --config Release
 }
 
 package() {
