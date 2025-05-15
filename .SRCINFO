@@ -1,6 +1,6 @@
 pkgbase = discord-account-manager-git
 	pkgdesc = A powerful and user-friendly Discord account manager built with Electron.js.(Use system-wide electron)
-	pkgver = 1.4.0.r0.ga0f6863
+	pkgver = 1.5.5.r1.g7f6094b
 	pkgrel = 1
 	url = https://github.com/Bherl1/DiscordAccMgr
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = discord-account-manager-git
 	makedepends = git
 	makedepends = curl
 	depends = electron29
-	provides = discord-account-manager=1.4.0
+	provides = discord-account-manager=1.5.5
 	conflicts = discord-account-manager
 	source = discord-account-manager.git::git+https://github.com/Bherl1/DiscordAccMgr
 	source = discord-account-manager.sh
