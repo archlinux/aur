@@ -6,8 +6,8 @@ pkgdesc="A modern, fast clipboard manager"
 arch=('x86_64')
 url="https://github.com/reim-developer/zclipboard "
 license=('GPL-3.0')
-depends=('qt6-base' 'clang')
-makedepends=('cmake' 'make')
+depends=('qt6-base')
+makedepends=('cmake' 'make' 'clang')
 source=("https://github.com/reim-developer/zclipboard/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 release_flags="-DCMAKE_BUILD_TYPE=Release"
