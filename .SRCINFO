@@ -1,6 +1,6 @@
 pkgbase = openfireapp-git
 	pkgdesc = Configuration utility for the OpenFIRE lightgun system.
-	pkgver = r330.97eeee0
+	pkgver = r333.116cd48
 	pkgrel = 1
 	url = https://github.com/TeamOpenFIRE/OpenFIRE-App
 	install = openfireapp-git.install

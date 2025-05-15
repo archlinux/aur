@@ -3,7 +3,7 @@
 _name=OpenFIRE-App
 _QTver=Qt6
 pkgname=openfireapp-git
-pkgver=r330.97eeee0
+pkgver=r333.116cd48
 pkgrel=1
 pkgdesc='Configuration utility for the OpenFIRE lightgun system.'
 arch=('x86_64' 'aarch64')
@@ -33,10 +33,8 @@ prepare() {
 }
 
 build() {
-  mkdir "$srcdir/$_name/build"
-  cd "$srcdir/$_name/build"
-  cmake .. -DOFAPP_GITHASH=$(git rev-parse --short HEAD) -DOFAPP_QT_VERSION=$_QTver -DCMAKE_BUILD_TYPE=Release
-  make
+  cmake -B "$srcdir/$_name/build" -DCMAKE_BUILD_TYPE=Release -DOFAPP_GITHASH=$(git rev-parse --short HEAD) -DOFAPP_QT_VERSION=$_QTver -S "$srcdir/$_name"
+  cmake --build "$srcdir/$_name/build" --config Release
 }
 
 package() {
