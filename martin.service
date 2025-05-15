@@ -1,0 +1,10 @@
+[Unit]
+Description = A blazing fast map tile server which can generate and serve vector tiles on the fly from large PostGIS databases, PMTile, and MBTile files
+
+[Service]
+ExecStart = /usr/bin/martin --config /etc/martin/config.yaml
+User = martin-tileserver
+Group = martin-tileserver
+
+[Install]
+WantedBy = multi-user.target
