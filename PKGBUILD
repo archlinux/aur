@@ -11,7 +11,7 @@ depends=('freetype2' 'fontconfig' 'libxi' 'libxcursor' 'libxkbcommon' 'libxkbcom
 makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 'gdb' 'libxcb' 'git' 'scdoc')
 checkdepends=('ttf-dejavu') # for monospace fontconfig test
 provides=('alacritty')
-conflicts=("${_pkgname}" "${pkgname}-git" "alacritty-sixel-git")
+conflicts=("${_pkgname}" "${_pkgname}-git" "alacritty-sixel-git")
 source=("${_pkgname}-${pkgver}-graphics.tar.gz::${url}/archive/v${pkgver}-graphics.tar.gz")
 sha512sums=('628e22621d2bc3eff53d862c37ccd2a4147c62b424f56ba2fe5f872b98f7ba19dab53df65c53e1bc0c408a1e290c9719fea323c0e7fa1463b1cae9b50c6df187')
 
