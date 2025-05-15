@@ -9,7 +9,7 @@
 # Bruno Pagani <archange@archlinux.org>
 # Caleb Maclennan <caleb@alerque.com>
 _pkgname=electron38
-pkgname=electron38-nightly-bin
+pkgname=electron-nightly-bin
 _pkgver=38.0.0-nightly.20250515
 pkgver="${_pkgver/-}"
 pkgrel=1
