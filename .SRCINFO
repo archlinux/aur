@@ -1,6 +1,6 @@
 pkgbase = nushell-git
 	pkgdesc = A new type of shell
-	pkgver = 0.77.0.r6.g24ee381
+	pkgver = 0.104.0.r40.gbb37306
 	pkgrel = 1
 	url = https://www.nushell.sh
 	install = nushell.install
@@ -14,7 +14,7 @@ pkgbase = nushell-git
 	depends = libcrypto.so
 	depends = libssl.so
 	depends = zlib
-	provides = nushell=0.77.0.r6.g24ee381
+	provides = nushell=0.104.0.r40.gbb37306
 	conflicts = nushell
 	source = nushell::git+https://github.com/nushell/nushell.git
 	sha256sums = SKIP

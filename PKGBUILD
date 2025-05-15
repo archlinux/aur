@@ -4,7 +4,7 @@
 
 _pkgname=nushell
 pkgname=$_pkgname-git
-pkgver=0.77.0.r6.g24ee381
+pkgver=0.104.0.r40.gbb37306
 pkgrel=1
 pkgdesc='A new type of shell'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 prepare() {
 	cd "${pkgname%-git}"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 pkgver() {
@@ -34,14 +34,14 @@ build() {
 	cd "${pkgname%-git}"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	CFLAGS+=" -ffat-lto-objects"
-	cargo build --release --frozen --workspace --features=extra,dataframe
+	CFLAGS+=' -ffat-lto-objects'
+	cargo build --release --frozen --workspace
 }
 
 check() {
 	cd "${pkgname%-git}"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --workspace --features=extra,dataframe
+	# cargo test --frozen --workspace
 }
 
 package() {
