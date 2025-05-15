@@ -6,7 +6,7 @@
 _pkgname="xone"
 pkgname="xone-dkms"
 pkgver=0.3
-pkgrel=5
+pkgrel=6
 pkgdesc='Modern Linux driver for Xbox One and Xbox Series X|S controllers'
 url='https://github.com/medusalix/xone'
 license=('GPL-2.0-or-later')
@@ -22,19 +22,15 @@ optdepends=(
   'xone-dongle-firmware: for wireless controllers'
 )
 
-_source_main() {
-  _pkgsrc="medusalix.xone"
-  source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
-  sha256sums=('SKIP')
-}
-
-_source_patch() {
-  source+=("0001-PR53-fix-for-linux-6.12.patch"::"https://github.com/medusalix/xone/pull/53.diff")
-  sha256sums+=('2f700ff6b187efc2cdd5dd47c373cabf5085c7551b6f0466bcc6b0dc68c65e11')
-}
-
-_source_main
-_source_patch
+_pkgsrc="medusalix.xone"
+source=(
+  "$_pkgsrc"::"git+$url.git#commit=$_commit"
+  '0001-pr53-fix-for-linux-6.12.patch'
+)
+sha256sums=(
+  '25a9eedf07088160b325794ee996dc6ccf1d5b9066e577920313097777182ab3'
+  '6b3a637879e9ae63d6b812088891f466308dd342338fc72b73159006c0818c0d'
+)
 
 prepare() {
   cd "$_pkgsrc"
