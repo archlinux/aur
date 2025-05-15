@@ -2,7 +2,7 @@
 
 pkgname=maomaowm-git
 pkgver=r166.20bd984
-pkgrel=1
+pkgrel=2
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/maomaowm"
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=(
   libdrm
   pixman
   libxkbcommon
-  'wlroots-git'
+  'wlroots-0.19-git'
 )
 
 makedepends=(
