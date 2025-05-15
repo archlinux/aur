@@ -1,0 +1,14 @@
+pkgbase = nodejs-appium-images-plugin
+	pkgdesc = Plugin for working with images and image elements in Appium
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://www.npmjs.com/package/@appium/images-plugin
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = npm
+	depends = nodejs
+	noextract = nodejs-appium-images-plugin-3.1.2.tgz
+	source = nodejs-appium-images-plugin-3.1.2.tgz::https://registry.npmjs.org/@appium/images-plugin/-/images-plugin-3.1.2.tgz
+	sha256sums = 8f8e9359ee6eb4686f4e8863d4113d92bdc3ac7817d7c9bcf9437b86b6c20d86
+
+pkgname = nodejs-appium-images-plugin
