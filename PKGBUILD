@@ -1,8 +1,8 @@
 # deasdavid9@gmail.com
 pkgname=attosfetch
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
-pkgdesc="A pretty minimal, and small in size, fetching tool written in bash."
+pkgdesc="A minimal, simple and configurable fetching tool written in bash; previous: attofetch."
 arch=('any')
 url="https://github.com/davyidx/attosfetch"
 license=('Unlicense')

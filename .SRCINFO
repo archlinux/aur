@@ -1,6 +1,6 @@
 pkgbase = attosfetch
-	pkgdesc = A pretty minimal, and small in size, fetching tool written in bash.
-	pkgver = 1.0
+	pkgdesc = A minimal, simple and configurable fetching tool written in bash; previous: attofetch.
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/davyidx/attosfetch
 	arch = any
