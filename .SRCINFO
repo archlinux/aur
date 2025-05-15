@@ -1,12 +1,12 @@
 pkgbase = celeste-mod-cli
 	pkgdesc = tui mod manager for Celeste
-	pkgver = 0.2.6
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://codeberg.org/kaizoplant/celeste-mod-cli
 	arch = x86_64
 	license = MIT
 	makedepends = zig>=0.14.0
-	source = celeste-mod-cli-0.2.6.tar.gz::https://codeberg.org/kaizoplant/celeste-mod-cli/archive/v0.2.6.tar.gz
-	sha256sums = f09649c91cb1382af1b94469f32213b1403b4f482e9f0029c249557c7d2acfb8
+	source = celeste-mod-cli-0.3.0.tar.gz::https://codeberg.org/kaizoplant/celeste-mod-cli/archive/v0.3.0.tar.gz
+	sha256sums = b301de0aa52ec474ef502d27c736fb63cdc60c321fde5e3c040be7fe6622af9b
 
 pkgname = celeste-mod-cli
