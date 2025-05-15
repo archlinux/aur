@@ -1,7 +1,7 @@
 # Maintainer: Ivan Potiienko <contact@xxanqw.pp.ua>
 pkgname=waypin
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A clipboard viewer for Wayland/X11 with GTK3, written in Rust"
 arch=('x86_64')
 url="https://aur.archlinux.org/packages/waypin"
@@ -19,5 +19,5 @@ build() {
 
 package() {
   cd "$srcdir/.."
-  install -Dm755 target/release/waypin "$pkgdir/usr/bin/waypin"
+  install -Dm755 "$srcdir/target/release/waypin" "$pkgdir/usr/bin/waypin"
 }
