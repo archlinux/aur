@@ -3,7 +3,7 @@ pkgname=p3x-redis-ui-bin
 _pkgname=P3X-Redis-UI
 pkgver=2025.4.129
 _electronversion=34
-pkgrel=1
+pkgrel=2
 pkgdesc="A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -31,14 +31,14 @@ sha256sums_aarch64=('e6d4ff7ce80c998e46c31476198b527dc20b872c16641869d8967e83ac8
 sha256sums_armv7h=('1e89a7240f9992605664ba4496cd287f579c53fbecfe9880e98b27f559b75361')
 sha256sums_x86_64=('15d51612d7206aeb1e4faf3fe3f556dac5b4547a5ab57af54e7fadecee707be2')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

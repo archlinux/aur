@@ -1,7 +1,7 @@
 pkgbase = p3x-redis-ui-bin
 	pkgdesc = A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app.(Prebuilt version.Use system-wide electron)
 	pkgver = 2025.4.129
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.corifeus.com/redis-ui
 	arch = aarch64
 	arch = armv7h
