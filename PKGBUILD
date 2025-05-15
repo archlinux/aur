@@ -55,5 +55,9 @@ package() {
 	ln -svf /usr/bin/rg usr/share/windsurf/resources/app/node_modules/@vscode/ripgrep/bin/rg
 	# Icon (1024^2 is unusable at KDE)
 	install -Dm644 "usr/share/${pkgname}/resources/app/out/media/code-icon.svg" "usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+	_url_handler_f="usr/share/applications/windsurf-url-handler.desktop";
+	grep -q '^Hidden=true' "$_url_handler_f" || \
+	  grep -q '^Hidden=false' "$_url_handler_f" && sed -i 's/^Hidden=false/Hidden=true/' "$_url_handler_f" || \
+	  echo 'Hidden=true' >> "$_url_handler_f"
 	mv usr "${pkgdir}"
 }
