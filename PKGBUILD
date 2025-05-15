@@ -3,11 +3,11 @@
 pkgname=git-stack
 pkgdesc='Stacked branch management for Git'
 pkgver=0.10.18
-pkgrel=1
+pkgrel=2
 url=https://github.com/gitext-rs/git-stack
 arch=(x86_64)
 license=(Apache-2.0 MIT)
-depends=(git libgit2)
+depends=(git gcc-libs glibc)
 makedepends=(cargo)
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
