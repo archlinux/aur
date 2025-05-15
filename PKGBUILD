@@ -2,7 +2,7 @@
  
 pkgname="monado-git"
 _dirname="monado"
-pkgver=24.0.0.r375.g4e22c990f
+pkgver=25.0.0.r23.g2a6932d46
 pkgrel=1
 pkgdesc='The open source OpenXR runtime.'
 arch=('i686' 'x86_64')
@@ -43,7 +43,9 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_PREFIX=/usr/ \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -GNinja -B"$srcdir"/"$_dirname"-build
+    -GNinja -B"$srcdir"/"$_dirname"-build \
+    -DXRT_HAVE_SYSTEM_CJSON:BOOL='OFF' \
+
   ninja -C "$srcdir"/"$_dirname"-build
 }
 
