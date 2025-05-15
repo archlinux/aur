@@ -1,7 +1,7 @@
 pkgbase = subtrack-bin
 	pkgdesc = Subscription tracking and reminder application.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jin-taiyu/SubTrack
 	arch = x86_64
 	license = LicenseRef-unknown

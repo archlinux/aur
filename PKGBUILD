@@ -3,7 +3,7 @@ pkgname=subtrack-bin
 _pkgname=SubTrack
 pkgver=1.0.0
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Subscription tracking and reminder application.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/jin-taiyu/SubTrack"
@@ -24,14 +24,16 @@ source=(
 sha256sums=('6209ee0988e3d6c54a9d12ac104c3cd7b16b3fa7b77481ae899ab72d068bb851'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
