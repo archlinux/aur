@@ -1,27 +1,40 @@
-# Maintainer: Ted To <wintrymix@theo.to>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Ted To <wintrymix@theo.to>
+
 pkgname="brlaser"
 pkgver=6.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Brother laser printer driver"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Owl-Maintain/brlaser"
-license=('GPL2')
-depends=('cups')
+license=('GPL-2.0-or-later')
+depends=('cups' 'ghostscript')
 makedepends=('cmake')
-source=("https://github.com/Owl-Maintain/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('f82364376df149710cf63eb49a13fa900c6bdd39543eed156c6b396fd4156e612b2de36a8c9e71e691c4c22de3cc83c0ac818477514be5a48edfaf9d5beee57c')
 
 build() {
-	cd "${pkgname}-${pkgver}"
-	cmake .
+	local cmake_options=(
+		-B build
+		-S "$pkgname-$pkgver"
+		-Wno-dev
+		-DCMAKE_BUILD_TYPE=None
+		-DCMAKE_INSTALL_PREFIX=/usr
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5
+	)
+	cmake "${cmake_options[@]}"
+	cmake --build build
 }
 
 check() {
-	cd "${pkgname}-${pkgver}"
-	make -k check
+	local ctest_flags=(
+		--test-dir build
+		--output-on-failure
+		--parallel $(nproc)
+	)
+	ctest "${ctest_flags[@]}"
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
-	make DESTDIR="$pkgdir/" install
+	DESTDIR="$pkgdir" cmake --install build
 }
