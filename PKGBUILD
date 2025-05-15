@@ -2,15 +2,12 @@
 # Maintainer: Jonathan Hilger <joni dot hilger at yahoo dot de>
 pkgname=vpinball
 pkgver=r8019.e14a6ab
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source pinball table editor and simulator (BGFX standalone version)"
 arch=('x86_64')
 url="https://github.com/vpinball/vpinball"
 license=('GPL-3.0-or-later' 'LicenseRef-MAME')
-#depends=('python' 'bzip2' 'glibc' 'xz' 'libxcb' 'systemd-libs' 'zlib' 'alsa-lib' 'libdrm' 'gcc-libs' 'hidapi' 'sdl2-compat' 'sdl2_image' 'sdl2_ttf' 'libbass' 'freeimage-vpinball-git' 'libpinmame-git' 'libaltsound-git' 'libdmdutil-git' 'libdof-git' 'ffmpeg')
-#depends=('python' 'bzip2' 'glibc' 'xz' 'libxcb' 'systemd-libs' 'zlib' 'alsa-lib' 'bgfx-git' 'libdrm' 'gcc-libs' 'hidapi' 'sdl3-git' 'sdl3_mixer-git' 'sdl3_image-git' 'sdl3_ttf-git' 'libbass' 'freeimage-vpinball-git' 'libpinmame-git' 'libaltsound-git' 'libdmdutil-git' 'libdof-git' 'ffmpeg')
 depends=('python' 'glibc' 'vpinball-bgfx.cmake' 'gcc-libs' 'hidapi' 'sdl3-git' 'sdl3_mixer-git' 'sdl3_image-git' 'libserum-concentrate-git' 'sdl3_ttf-git' 'libpupdmd-git' 'freeimage-vpinball-git' 'libpinmame-git' 'libaltsound-git' 'libdmdutil-git' 'libdof-git' 'ffmpeg' 'python-lxml' 'python-pillow')
-#makedepends=('unzip' 'freeimage' 'cmake' 'git' 'nasm' 'curl' 'systemd' 'libx11' 'mesa' 'libxext' 'zlib-ng' 'wayland' 'libxkbcommon')
 makedepends=('unzip' 'cmake' 'git' 'curl')
 provides=('vpinball')
 source=("${pkgname}::git+https://github.com/vpinball/vpinball.git"
@@ -27,7 +24,6 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  #platforms/linux-x64/external.sh
   cp make/CMakeLists_bgfx-linux-x64.txt CMakeLists.txt
   cmake -DCMAKE_BUILD_TYPE=Release -DPOST_BUILD_COPY_EXT_LIBS=FALSE -B build
   cmake --build build
