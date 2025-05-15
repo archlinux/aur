@@ -22,7 +22,7 @@ optdepends=(
     'pulseaudio'
 )
 source=("https://files.frame0.app/releases/linux/x64/frame0_${pkgver}_amd64.deb")
-sha256sums=('3d5c7078f336e037332afe0ea548d6034df191b99502a18de4018ab130606d45') 
+sha256sums=('3f1f2009dbaca16f3bf7a44359e46cb3dd2accd95b01cf9ed5abf81184e98087') 
 
 package() {
     cd "${srcdir}"
