@@ -1,15 +1,15 @@
-# Maintainer: Matthew Sexton <mssxtn@gmail.com>
+# Maintainer: Matthew Sexton <matthew@asylumtech.com>
 
 pkgname=gocloc
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="A little fast cloc(Count Lines Of Code)"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://github.com/hhatto/gocloc"
 license=(MIT)
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hhatto/gocloc/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c8f95201bc6042767de7059cfd6a2a37799b3bf909ec61029baffe0f6ccc509d')
+sha256sums=('9375f6699a7bffad42da661b4ba7988af23dd01191da4a4b21eca8f9bb676d9a')
 
 
 

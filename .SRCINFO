@@ -1,7 +1,7 @@
 pkgbase = gocloc
 	pkgdesc = A little fast cloc(Count Lines Of Code)
-	pkgver = 0.5.2
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://github.com/hhatto/gocloc
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = gocloc
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = gocloc-0.5.2.tar.gz::https://github.com/hhatto/gocloc/archive/refs/tags/v0.5.2.tar.gz
-	sha256sums = c8f95201bc6042767de7059cfd6a2a37799b3bf909ec61029baffe0f6ccc509d
+	source = gocloc-0.7.0.tar.gz::https://github.com/hhatto/gocloc/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 9375f6699a7bffad42da661b4ba7988af23dd01191da4a4b21eca8f9bb676d9a
 
 pkgname = gocloc
