@@ -1,26 +1,3 @@
-<<<<<<< HEAD
-# Maintainer: Faaris <faaris dot ansari at proton dot me>
-_pkgname=electron-nightly
-pkgname=${_pkgname}-bin
-pkgver=35.0.0.nightly.20241223
-pkgrel=1
-pkgdesc="Electron Nightly build for Linux - Binary version"
-arch=('x86_64')
-url="https://github.com/electron/nightlies"
-license=('MIT')
-depends=('glibc' 'gtk3' 'nss' 'libxss' 'libnotify')
-
-_ver_main="${pkgver%%.nightly.*}"
-_ver_date="${pkgver##*.}"
-_file_name="electron-v${_ver_main}-nightly.${_ver_date}-linux-x64.zip"
-source=("$url/releases/download/v${_ver_main}-nightly.${_ver_date}/${_file_name}")
-sha256sums=('de58d27489ec14cc7c926a3e3b3a30220f6bdbbb80d66d713cc2367694184a25')
-
-package() {
-    install -dm755 "$pkgdir/usr/lib/$_pkgname" "$pkgdir/usr/bin"
-    cp -r "$srcdir"/* "$pkgdir/usr/lib/$_pkgname/"
-    ln -sf "/usr/lib/$_pkgname/electron" "$pkgdir/usr/bin/$_pkgname"
-=======
 # Maintainer: ilovemikael <itsmeguys2247@gmail.com>
 # Maintainer: Faaris <faaris dot ansari at proton dot me>
 
@@ -89,5 +66,4 @@ package() {
     ln -nfs "/usr/lib/${_pkgname}/${_projectname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${srcdir}/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
     rm -rf "${pkgdir}/usr/bin/${_pkgname}/LICENSE"*
->>>>>>> 7def927 (updated to latest nightly, important changes posted in comments =3)
 }

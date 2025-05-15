@@ -1,19 +1,4 @@
 pkgbase = electron-nightly-bin
-<<<<<<< HEAD
-	pkgdesc = Electron Nightly build for Linux - Binary version
-	pkgver = 35.0.0.nightly.20241223
-	pkgrel = 1
-	url = https://github.com/electron/nightlies
-	arch = x86_64
-	license = MIT
-	depends = glibc
-	depends = gtk3
-	depends = nss
-	depends = libxss
-	depends = libnotify
-	source = https://github.com/electron/nightlies/releases/download/v35.0.0-nightly.20241223/electron-v35.0.0-nightly.20241223-linux-x64.zip
-	sha256sums = de58d27489ec14cc7c926a3e3b3a30220f6bdbbb80d66d713cc2367694184a25
-=======
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
 	pkgver = 38.0.0nightly.20250514
 	pkgrel = 1
@@ -44,6 +29,5 @@ pkgbase = electron-nightly-bin
 	source_x86_64 = electron
 	sha256sums_x86_64 = 1f1de7f0daed689b05e09eea4a059cd5446e8acc2e2dfaea3218c9f150852937
 	sha256sums_x86_64 = f074713d0322b652b78ed2491dce2676d05d10a284187c5deba4a047b8283e4c
->>>>>>> 7def927 (updated to latest nightly, important changes posted in comments =3)
 
 pkgname = electron-nightly-bin
