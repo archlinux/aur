@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=erma
-_pkgver=1.24.0
+_pkgver=1.24.1
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.24.1
 pkgrel=1
 pkgdesc='epigenomic road map adventures'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f7c1fc9e3a7a8b14381a23b51a02f36e7ca6c1d06baed8ea61f67a1eb99379f9')
+sha256sums=('8d440c176c3dcc6521bce9e93d1af9f2092830d378e980bb1e348f1d81126be8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
