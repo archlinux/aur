@@ -7,7 +7,7 @@
 _pkgname="peazip"
 pkgname="$_pkgname"
 pkgver=10.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
@@ -96,7 +96,7 @@ prepare() {
   # compiler/linker options
   for i in ${_packets[@]}; do
     xmlstarlet edit --inplace --delete '//Other' "$i"
-    sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value='\''-O3 -Sa -CX -XX -k"--sort-common --as-needed -z relro -z now -z ibt -z shstk"'\''/></Other>\n\1&' \
+    sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value="-O3 -Sa -CX -XX -k--sort-common -k--as-needed -k-z -krelro -k-z -know -k-z -kibt -k-z -kshstk"/></Other>\n\1&' \
       -i "$i"
   done
 }

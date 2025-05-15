@@ -1,7 +1,7 @@
 pkgbase = peazip
 	pkgdesc = Cross-platform file and archive manager (Qt6)
 	pkgver = 10.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/peazip/PeaZip
 	arch = i686
 	arch = x86_64
