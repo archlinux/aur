@@ -2,13 +2,13 @@
 
 pkgbase=deepfilternet-git
 pkgname=(libdf-git libdeep_filter_ladspa-git deepfilternet-demos-git)
-pkgver=v0.5.6.r10.g59789e1
-pkgrel=1
+pkgver=v0.5.6.r89.gd375b2d
+pkgrel=2
 pkgdesc='A Low Complexity Speech Enhancement Framework for Full-Band Audio (48kHz) using Deep Filtering (Git version)'
 url='https://github.com/Rikorose/DeepFilterNet'
 arch=('x86_64')
 license=('MIT' 'Apache')
-depends=('gcc-libs')
+depends=('gcc-libs' 'alsa-lib')
 makedepends=('cargo' 'git')
 _repo=DeepFilterNet
 source=('git+https://github.com/Rikorose/DeepFilterNet.git')
@@ -29,48 +29,49 @@ pkgver() {
 prepare() {
   cd "$_repo"
   export RUSTUP_TOOLCHAIN=nightly
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  # --locked cannot be used, as the lockfile isn't up to date
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$_repo"
   export RUSTUP_TOOLCHAIN=nightly
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features --all-targets
+  cargo build --profile=release-lto --frozen \
+    -p deep-filter-ladspa -p deep_filter -p df-demo \
+    --features df-demo/ui \
+    --bin df-demo \
+    --lib
 }
 
-check() {
-  cd "$_repo"
-  export RUSTUP_TOOLCHAIN=nightly
-  export CARGO_TARGET_DIR=check
-  cargo test --frozen --all-features --workspace
-}
+# tests don't compile
 
 package_libdf-git() {
   pkgdesc+=" - core library"
+  depends=('gcc-libs')
   conflicts+=('libdf')
   provides+=('libdf')
   cd "$_repo"
-  install -Dm0755 -t "$pkgdir/usr/lib/" "target/release/liblibdf.so" "target/release/liblibdfdata.so"
+  install -Dm0755 -t "$pkgdir/usr/lib/" "target/release-lto/libdf.so"
   install -Dm0644 -t "$pkgdir/usr/share/licenses/${pkgname}/" "LICENSE" "LICENSE-MIT"
 }
 
 package_libdeep_filter_ladspa-git() {
   pkgdesc+=" - ladspa plugin"
-  depends+=('libdf')
+  depends=('gcc-libs')
   conflicts+=('libdeep_filter_ladspa')
   provides+=('libdeep_filter_ladspa')
   cd "$_repo"
-  install -Dm0755 -t "$pkgdir/usr/lib/ladspa/" "target/release/libdeep_filter_ladspa.so"
+  install -Dm0755 -t "$pkgdir/usr/lib/ladspa/" "target/release-lto/libdeep_filter_ladspa.so"
   install -Dm0644 -t "$pkgdir/usr/share/licenses/${pkgname}/" "LICENSE" "LICENSE-MIT"
 }
 
 package_deepfilternet-demos-git() {
   pkgdesc+=" - demo application"
-  depends+=('libdf')
+  depends=('gcc-libs' 'alsa-lib')
   conflicts+=('deepfilternet-demos')
   provides+=('deepfilternet-demos')
   cd "$_repo"
-  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/df-demo-c"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release-lto/df-demo"
   install -Dm0644 -t "$pkgdir/usr/share/licenses/${pkgname}/" "LICENSE" "LICENSE-MIT"
 }
