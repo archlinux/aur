@@ -2,10 +2,9 @@ diff --git a/src/Makefile b/src/Makefile
 index 1a3c9bd..b2ddfb1 100644
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -22,13 +22,13 @@ OSSEC_USER_MAIL?=ossecm
+@@ -22,11 +22,11 @@ OSSEC_USER_MAIL?=ossecm
  OSSEC_USER_REM?=ossecr
  
- INSTALL_CMD?=install -m $(1) -o $(2) -g $(3)
 -INSTALL_LOCALTIME?=yes
 -INSTALL_RESOLVCONF?=yes
 +INSTALL_LOCALTIME=no
