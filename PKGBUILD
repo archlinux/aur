@@ -1,13 +1,13 @@
 pkgname=eden
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://eden-emulator.github.io/
 license=('GPL-3.0')
 provides=('eden')
 depends=('qt6-base' 'qt6-webengine' 'clang' 'qt6-multimedia' 'qt6-wayland' 'qt6-tools' 'ffmpeg' 'sdl2-compat' 'gamemode' 'hicolor-icon-theme' 'brotli' 'libusb' 'enet' 'opus' 'boost')
-makedepends=('curl' 'git' 'sdl2' 'gcc' 'cmake' 'clang' 'llvm' 'doxygen' 'python-pip' 'glslang' 'ninja' 'zip' 'unzip' 'boost' 'catch2' 'mbedtls' 'ninja' 'glslang' 'libzip' 'lz4' 'fmt' 'zip' 'unzip' 'nlohmann-json' 'openssl' 'dynarmic' 'opus' 'zlib' 'zstd')
+makedepends=('curl' 'git' 'sdl2' 'gcc' 'cmake' 'clang' 'llvm' 'doxygen' 'python-pip' 'glslang' 'ninja' 'zip' 'unzip' 'boost' 'catch2' 'mbedtls' 'ninja' 'glslang' 'libzip' 'lz4' 'fmt' 'zip' 'unzip' 'nlohmann-json' 'openssl' 'opus' 'zlib' 'zstd')
 conflicts=('eden-git' 'eden-bin')
 options=('!debug')
 source=("git+https://git.eden-emu.dev/eden-emu/eden#tag=$pkgver-pre-alpha"
@@ -46,9 +46,8 @@ source=("git+https://git.eden-emu.dev/eden-emu/eden#tag=$pkgver-pre-alpha"
 		"git+https://git.eden-emu.dev/eden-emu/robin-map.git"
 		"git+https://git.eden-emu.dev/eden-emu/xbyak.git"
 		"zycore::git+https://git.eden-emu.dev/eden-emu/zycore-c.git"
-		"git+https://git.eden-emu.dev/eden-emu/zydis.git"
-		"dynarmic_patch.patch"
-		"spirv_patch.patch")
+		"git+https://github.com/KhronosGroup/SPIRV-Headers"
+		"git+https://git.eden-emu.dev/eden-emu/zydis.git")
 sha256sums=('66e5282b7b60624008d44ca17dd7a06cb0fbfa82375e6bf521fb2dea971f2807'
             'SKIP'
             'SKIP'
@@ -86,8 +85,7 @@ sha256sums=('66e5282b7b60624008d44ca17dd7a06cb0fbfa82375e6bf521fb2dea971f2807'
             'SKIP'
             'SKIP'
             'SKIP'
-            '6818ea774477932afda31ff464dc3864d3c6109047a6e3842196fa5e4cdce895'
-            'a0cc50a8c71694f116c95e2d0b9efb21ca1a282958f259cca423c33b7b764127')
+            'SKIP')
 prepare() {
 	cd $srcdir/eden
 	git submodule init
@@ -110,10 +108,10 @@ prepare() {
   git config submodule.tz.url "$srcdir/$_submodule"
   git -c protocol.file.allow=always submodule update --init
   
-cd $srcdir/eden/externals/sirit
-git submodule init
-#  git config submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
-git -c protocol.file.allow=always submodule update --init
+  cd $srcdir/eden/externals/sirit
+  git submodule init
+  git config submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
+  git -c protocol.file.allow=always submodule update --init
 
   cd $srcdir/eden/externals/dynarmic
   git submodule init
@@ -122,12 +120,6 @@ git -c protocol.file.allow=always submodule update --init
 	  git config submodule.${_submodule}.url "$srcdir/$_submodule"
 	done
   git -c protocol.file.allow=always submodule update --init
-
-#Patch CMakeLists in eden/externals to not use system dynarmic to avoid glad-related error  
-patch $srcdir/$pkgname/externals/CMakeLists.txt $srcdir/dynarmic_patch.patch
-
-#Patch CMakeLists in sirit to force using spirv-headers from externals to avoid compatibility issues
-patch $srcdir/$pkgname/externals/sirit/CMakeLists.txt $srcdir/spirv_patch.patch
 }
 build() {
 	cd $srcdir/eden
