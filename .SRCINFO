@@ -1,6 +1,6 @@
 pkgbase = r-biseq
 	pkgdesc = Processing and analyzing bisulfite sequencing data
-	pkgver = 1.48.0
+	pkgver = 1.48.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BiSeq
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-biseq
 	depends = r-rtracklayer
 	depends = r-s4vectors
 	depends = r-summarizedexperiment
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiSeq_1.48.0.tar.gz
-	sha256sums = 5509927db97bbb8ed237fcdd576c698b7d2e547b9c6c40880bec0a4214f08f8f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiSeq_1.48.1.tar.gz
+	sha256sums = 83fb7f38b7690d837bb1153c1cec0b893b10db33ef9637cece2cc34a96b2a213
 
 pkgname = r-biseq
