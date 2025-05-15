@@ -6,7 +6,7 @@
 
 pkgname=blockattack
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source Tetris Attack clone"
 arch=('i686' 'x86_64')
 url="https://blockattack.net"
@@ -25,7 +25,8 @@ prepare() {
 build() {
   cd build
   cmake ../$pkgname-game-$pkgver \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
 }
 
