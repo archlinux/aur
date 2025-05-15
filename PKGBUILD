@@ -4,7 +4,7 @@
 #
 pkgname=python-langchain-openai
 _origpkgname=langchain_openai
-pkgver=0.3.16
+pkgver=0.3.17
 pkgrel=1
 pkgdesc="An integration package connecting OpenAI and LangChain"
 arch=("x86_64")
@@ -12,20 +12,20 @@ url='https://pypi.org/project/langchain-openai/'
 license=("MIT")
 depends=()
 makedepends=(
-	"python-build"
-	"python-installer"
-	"python-wheel"
-	"python-setuptools"
-	"python-hatchling"
-	"python-pdm-backend"
+  "python-build"
+  "python-installer"
+  "python-wheel"
+  "python-setuptools"
+  "python-hatchling"
+  "python-pdm-backend"
 )
-source=("https://files.pythonhosted.org/packages/53/fb/536562278d932c80e6a7143f46f14cc3006c0828d77c4cb6a69be112519c/langchain_openai-0.3.16.tar.gz")
-sha256sums=("4e423e39d072f1432adc9430f2905fe635cc019f01ad1bdffa5ed8d0dda32149")
+source=("https://files.pythonhosted.org/packages/81/85/4c5f34d177a442a48273688c52b8e2d285e6fa77329ef3de62ca8cdaecfb/langchain_openai-0.3.17.tar.gz")
+sha256sums=("10bcdfac3edb3dea4a8aabb12f01566e5ff8756634cc52aa169c62e4c4b73801")
 package() {
-	cd "${_origpkgname}-${pkgver}" || exit
-	python -m build --wheel --no-isolation
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${_origpkgname}-${pkgver}" || exit
+  python -m build --wheel --no-isolation
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
