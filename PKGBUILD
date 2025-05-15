@@ -9,6 +9,7 @@ url="https://github.com/walles/moar"
 license=(BSD-2-Clause-Views)
 depends=(glibc)
 makedepends=(go)
+conflicts=(moarvm) #Both packages install a file to /usr/bin/moar
 source=("$pkgname-$pkgver.tar.gz"::"$url/archive/v$pkgver.tar.gz")
 sha256sums=('2c03100e24f88163d808d52b7a5763c0fe731b29c46fd44a103a089c5429eb72')
 
