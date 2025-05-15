@@ -8,7 +8,7 @@
 pkgname=xephem
 _pkgname=XEphem
 pkgver=4.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Serious Interactive Astronomical Software Ephemeris"
 arch=('i686' 'x86_64')
 url="https://github.com/XEphem/XEphem"
@@ -25,6 +25,26 @@ prepare() {
   if [ "$pkgver" = '4.2.0' ]; then #this is already fixed in git - just broken in current 4.2.0 release
     sed -i '4i\#define _XOPEN_SOURCE' sunmenu.c
   fi
+  sed -i '4i#define _GNU_SOURCE' imregmenu.c
+  sed -i '5i#include <unistd.h>' imregmenu.c
+  sed -i '20i#define _GNU_SOURCE' indimenu.c
+  sed -i '21i#include <unistd.h>' indimenu.c
+  sed -i '6i#define _GNU_SOURCE' mainmenu.c
+  sed -i '7i#include <unistd.h>' mainmenu.c
+  sed -i '4i#define _GNU_SOURCE' skyfits.c
+  sed -i '5i#include <unistd.h>' skyfits.c
+  sed -i '5i#define _GNU_SOURCE' splash.c
+  sed -i '6i#include <unistd.h>' splash.c
+  sed -i '3i#define _GNU_SOURCE' webdbmenu.c
+  sed -i '4i#include <unistd.h>' webdbmenu.c
+  sed -i '5i#define _GNU_SOURCE' xephem.c
+  sed -i '6i#include <unistd.h>' xephem.c
+  
+  sed -i 's/^CFLAGS =/CFLAGS = -std=c17/' Makefile
+  cd ../../libip
+  sed -i 's/^CFLAGS=/CFLAGS= -std=c17 /' Makefile
+  cd ../libjpegd
+  sed -i 's/^CFLAGS=/CFLAGS= -std=c17 /' Makefile
 }
 
 build() {
