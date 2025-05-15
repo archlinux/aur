@@ -1,21 +1,18 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=minimon-applet-for-cosmic
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A System Monitor applet for COSMIC"
 arch=('x86_64' 'aarch64')
-url="https://github.com/Hyperchaotic/minimon-applet"
+url="https://github.com/cosmic-utils/minimon-applet"
 license=('GPL-3.0-or-later')
-depends=(
-  'cosmic-applets'
-  'fontconfig'
-)
+depends=('cosmic-applets')
 makedepends=(
   'cargo'
   'just'
 )
 source=("minimon-applet-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('603a5e5c08c52689ddb019787a3bb36bed298c9f2dd47d229ba70c4b0ba6c8e9')
+sha256sums=('7de453c9be049fd37391b564cb9540280446bd3c09d0b7d195fabd81142be95f')
 
 prepare() {
   cd "minimon-applet-$pkgver"
