@@ -1,0 +1,18 @@
+pkgbase = ontake-copybara-git
+	pkgdesc = A Wayland clipboard automation tool
+	pkgver = r1.g53cef14
+	pkgrel = 1
+	url = https://github.com/make-42/copybara
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.18
+	makedepends = git
+	depends = wl-clipboard
+	provides = ontake-copybara
+	conflicts = ontake-copybara
+	source = git+https://github.com/make-42/copybara
+	md5sums = SKIP
+
+pkgname = ontake-copybara-git
