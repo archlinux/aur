@@ -3,7 +3,7 @@ pkgname=coinstac-desktop-app-bin
 _pkgname=COINSTAC
 pkgver=6.9.2
 _electronversion=18
-pkgrel=1
+pkgrel=2
 pkgdesc="Collaborative Informatics and Neuroimaging Suite Toolkit for Anonymous Computation.(Prebuilt version.Use system-wide electron)"
 arch=(
     #'aarch64'
@@ -29,14 +29,16 @@ sha256sums=('fcf8a012e25e06508e76c87a9607116d8cf2a195c8e12f960ff01e64b493f882'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_x86_64=('2ac81257b53005fd001f4f91d3712e1aa3e1198f9af698df234ad6b1d74a9c0e')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
