@@ -1,6 +1,6 @@
 pkgbase = edex-ui-git
 	pkgdesc = A rewrite of project edex-ui using Tauri.
-	pkgver = r539.c5e7afa
+	pkgver = r613.008a438
 	pkgrel = 1
 	url = https://github.com/zluo01/edex-ui
 	arch = any
@@ -10,12 +10,11 @@ pkgbase = edex-ui-git
 	makedepends = git
 	makedepends = curl
 	makedepends = rust
-	makedepends = gcc
 	makedepends = gendesk
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = edex-ui=r539.c5e7afa
+	provides = edex-ui=r613.008a438
 	conflicts = edex-ui
 	source = edex-ui.git::git+https://github.com/zluo01/edex-ui.git
 	sha256sums = SKIP

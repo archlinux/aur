@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=edex
 pkgname="${_appname}-ui-git"
-_pkgname="eDex-UI"
-pkgver=r539.c5e7afa
+_pkgname='eDex-UI'
+pkgver=r613.008a438
 _nodeversion=22
 pkgrel=1
 pkgdesc="A rewrite of project edex-ui using Tauri."
@@ -22,7 +22,6 @@ makedepends=(
     'git'
     'curl'
     'rust'
-    'gcc'
     'gendesk'
 )
 source=(
@@ -54,18 +53,17 @@ prepare() {
         echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> .npmrc
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
         export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
-        sed "s/github.com/gitdl.cn\/https:\/\/github.com/" -i src-tauri/Cargo.toml
     fi
     sed -i -e "
         s/date\": \"2.1.0/date\": \"2.0.24/g
         s/keyboard\": \"1.3.0/keyboard\": \"1.2.8/g
     " package.json
-    NODE_ENV=development    npm install
+    NODE_ENV=development    npm install --legacy-peer-deps
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
     sed -i -e "s/\"targets\": \"all\"/\"targets\": \"deb\"/g" src-tauri/tauri.conf.json
-    NODE_ENV=production     npm run build    
+    NODE_ENV=production     npm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_appname}_"*/data/usr/bin/"${_appname}" \
