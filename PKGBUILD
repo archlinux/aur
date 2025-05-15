@@ -4,7 +4,7 @@
 
 _yyyy=2024
 pkgname=easytax-ag-${_yyyy}
-pkgver=1.0
+pkgver=1.2
 pkgrel=1
 pkgdesc="Aargau tax declaration software."
 arch=(any)
@@ -17,7 +17,7 @@ source=(
   "$pkgname.desktop"
 )
 sha256sums=(
-  '97026c06dd0b99c7cb24cccf7b88c909cebafcd763c01f7f3f8ada00b2e736a7'
+  '36d50f70ef93a3846fd054f1605c79f6e333140efbe41a07254a339a9e2cd5e0'
   '253d315b20371cd9add777dc990f96545c60d5d07a3f34cd33720d5148e82486'
   '585c8b0067a6dd0f00ce1cc98156c4915c40095f3a042050348796859a8306d4'
 )
