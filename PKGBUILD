@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hollama-bin
 _pkgname=Hollama
-pkgver=0.32.2
+pkgver=0.33.0
 _electronversion=31
 pkgrel=1
 pkgdesc="A minimal web-UI for talking to Ollama servers.(Prebuilt version.Use system-wide electron)"
@@ -29,7 +29,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/fmaclen/hollama/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('519b606d9d473cb1b1403a20e9b107f7307c7c949457fccd5f7b8274cca6d1cf'
+sha256sums=('f51f568b1817c112be9ca99585e3f7b5b68cfb50ef17eead4d43bc5de39de920'
             '9e4e274319c0c5716601c69a701adce095b2248d7d314c2b4b1973f0ad4c4a20'
             '03ecf7aebc7db58685a433f3a0a126e1ac5329fb8a72f3af981957363a6362e6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
@@ -41,7 +41,12 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
