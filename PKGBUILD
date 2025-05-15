@@ -1,6 +1,6 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 pkgname=ty
-pkgver=0.0.1_alpha.2
+pkgver=0.0.1_alpha.3
 pkgrel=1
 pkgdesc="An extremely fast Python type checker and language server, written in Rust."
 arch=("x86_64")
@@ -18,7 +18,7 @@ makedepends=(
   "python-maturin"
 )
 source=("git::git+https://github.com/astral-sh/ty#tag=${pkgver//_/-}")
-sha256sums=('11fe2438ce0ce9d709c41c5f9fa1d289767bfe73fb70872134c7b11e92003583')
+sha256sums=('c9affb982f26406d331fc2dfe0ac13bc7ada155f464c3b3c2a3850240e3f6693')
 
 prepare() {
   cd "${srcdir}/git"
