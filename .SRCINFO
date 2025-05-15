@@ -1,0 +1,14 @@
+pkgbase = nodejs-appium-xcuitest-driver
+	pkgdesc = Appium driver for iOS using XCUITest for backend
+	pkgver = 9.2.4
+	pkgrel = 1
+	url = https://www.npmjs.com/package/appium-xcuitest-driver
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = npm
+	depends = nodejs
+	noextract = nodejs-appium-xcuitest-driver-9.2.4.tgz
+	source = nodejs-appium-xcuitest-driver-9.2.4.tgz::https://registry.npmjs.org/appium-xcuitest-driver/-/appium-xcuitest-driver-9.2.4.tgz
+	sha256sums = e85f5c3348d0fcf2e36956ae18daf76fd2d2f218c386cdb95202e1b54641bc5d
+
+pkgname = nodejs-appium-xcuitest-driver
