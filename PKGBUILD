@@ -1,7 +1,7 @@
 # Maintainer: Phantomwise <phantomwise67@protonmail.com>
 pkgname=sausage-git
 pkgver=0.0.4.r0.ge1843d8
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal word-forming game written in Bash"
 arch=('any')
 url="https://gitlab.com/christosangel/sausage"
@@ -46,8 +46,4 @@ package() {
     # Install screenshots
     install -d "$pkgdir/usr/share/sausage/screenshots"
     install -Dm644 screenshots/* "$pkgdir/usr/share/sausage/screenshots/" 2>/dev/null || true
-
-    # Set permissions for the post-install script
-    # chmod +x "$pkgdir/sausage-git.install"
-
 }
