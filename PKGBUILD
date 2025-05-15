@@ -1,10 +1,10 @@
 # Maintainer: Diablo (https://github.com/progzone122) (https://t.me/DiabloSat)
 pkgname=archarchive
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility to quickly rollback an arch linux system using ALA (a.k.a Arch Linux Archive)"
 arch=('x86_64')
-url="https://github.com/diablosat/archarchive"
+url="https://github.com/progzone122/archarchive"
 options=(!lto)
 license=('GPL-3.0-or-later')
 depends=()
@@ -13,7 +13,7 @@ optdepends=(
   'doas: privilege elevation'
 )
 makedepends=()
-source=("https://github.com/diablosat/archarchive/releases/download/$pkgver/archarchive")
+source=("https://github.com/progzone122/archarchive/releases/download/$pkgver/archarchive")
 sha256sums=('SKIP')
 build() {
   :
