@@ -1,0 +1,20 @@
+pkgbase = attosfetch
+	pkgdesc = A pretty minimal, and small in size, fetching tool written in bash.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/davyidx/attosfetch
+	arch = any
+	license = Unlicense
+	depends = bash
+	source = attosfetch
+	source = attosfetch.sh
+	source = attosfetch.conf
+	source = ascii.txt
+	source = skull.txt
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = attosfetch
