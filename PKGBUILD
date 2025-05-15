@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=hermes
-_pkgver=1.12.0
+_pkgver=1.12.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -57,9 +57,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('12183011edc099dffe8260ff32e6a0f1'
+md5sums=('e538aea5f1cc9e7b9c02792d5fc53ffd'
          'b913685944ab7f820abfa5d3fddc95ae')
-b2sums=('d34e4b0a0697de435344a66f24b0a95dc7e5b964b24873cb50c15b25ef887e5fdabca87a0477a19fff5f247be67f92d42460f8d3ff0d6efd737cc21097665f1e'
+b2sums=('a4a521690c853e5507ec45aca7085fe402ff9a3ad52d6cdfadfbb9fe8d9e5cbf8451f869bdf68456d9323acd841812b3eb02173304818c14178b3e293b5d11a2'
         'b6de64020a5beea8add0fcf55e1389ca8404fcb0ee8bbb7260966ca2a6062c8e94c79f4d0964234fb6fe379b26fa15b426d51e59fd724560b0f954b2072e7106')
 
 prepare() {
