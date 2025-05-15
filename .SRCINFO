@@ -1,6 +1,6 @@
 pkgbase = r-remp
 	pkgdesc = Repetitive Element Methylation Prediction
-	pkgver = 1.32.0
+	pkgver = 1.32.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/REMP
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = r-remp
 	optdepends = r-knitr
 	optdepends = r-minfidataepic
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/REMP_1.32.0.tar.gz
-	sha256sums = 1280bc044adbf773fd3064dafeb707a7977d2a444c3f09c9732e915663a95053
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/REMP_1.32.1.tar.gz
+	sha256sums = 522560c8a1ba959e0d701c8561039aa9827b9550787a2798ae116091a653a0a3
 
 pkgname = r-remp
