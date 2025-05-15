@@ -1,6 +1,8 @@
 # Maintainer:  oech3
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
+_hash="8ea935e79a50a02da912a034bbeda84a6d3d355d"
+
 _Name="Cursor"
 _name="${_Name,,}"
 _electron=electron34
@@ -17,8 +19,8 @@ provides=("${_name}"{,-bin})
 conflicts=("${_name}"{,-bin})
 _pkgsrc="${_name}-${pkgver}"
 source=("${pkgname}."{sh,mjs})
-source_aarch64=("${_pkgsrc}-aarch64.AppImage::https://downloads.cursor.com/production/8ea935e79a50a02da912a034bbeda84a6d3d355d/linux/arm64/${_Name}-${pkgver}-aarch64.AppImage")
-source_x86_64=("${_pkgsrc}-x86_64.AppImage::https://downloads.cursor.com/production/8ea935e79a50a02da912a034bbeda84a6d3d355d/linux/x64/${_Name}-${pkgver}-x86_64.AppImage")
+source_aarch64=("${_pkgsrc}-aarch64.AppImage::https://downloads.cursor.com/production/${_hash}/linux/arm64/${_Name}-${pkgver}-aarch64.AppImage")
+source_x86_64=("${_pkgsrc}-x86_64.AppImage::https://downloads.cursor.com/production/${_hash}/linux/x64/${_Name}-${pkgver}-x86_64.AppImage")
 sha512sums=('7cbf05f026f67172d48d08fc240e4253e91009ebd0e60e960c0af9828bd14f28287191b73b1a2ae3f47b47151164eb59e62efa2e129221a0e84bf7bd7a9ed724'
             'a38e9fdf2967e2a044091ad7d54c91a6e00d9f16454a10740e5e608c36a06706c05bc86dde3210341757d85e621117cddb3cfff6475cca52015b00fa67543059')
 sha512sums_aarch64=('e336c5b9ec9909b98a660f98bb76ba992345e3691d1983e06caee9cba60ac0ecb8414eac3b989e23699f9b3c0cee7e343054dcb50dcf5a7977f3998a8f39cc2c')
