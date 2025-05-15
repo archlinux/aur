@@ -1,16 +1,16 @@
 pkgbase = qmamehook
 	pkgdesc = A stripped-down reimplementation of MAMEHOOKER for light guns.
-	pkgver = 1.8.2
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://github.com/SeongGino/QMamehook
 	arch = x86_64
 	arch = aarch64
 	license = LGPL-2.0-only
 	makedepends = cmake
-	depends = qt5-base
-	depends = qt5-serialport
+	depends = qt6-base
+	depends = qt6-serialport
 	depends = icu
-	source = https://github.com/SeongGino/QMamehook/archive/refs/tags/v1.8.2.tar.gz
-	md5sums = 5658f88bc396ed1c6a7f8010226ed138
+	source = https://github.com/SeongGino/QMamehook/archive/refs/tags/v1.9.2.tar.gz
+	md5sums = 2271bd79d6a82459ac87f21c8ca393d4
 
 pkgname = qmamehook
