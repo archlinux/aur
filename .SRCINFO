@@ -1,7 +1,7 @@
 pkgbase = youku-bin
 	pkgdesc = Linux version of the Youku client APP, implemented on UOS using Electron technology.(Prebuilt version.Use system-wide electron)Linux版优酷客户端APP,基于Electron技术实现在uos的APP客户端.
 	pkgver = 1.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://gitlab.alibaba-inc.com/youku-node/uos-youku-app/blob/master/README.md
 	arch = x86_64
 	license = LicenseRef-custom
