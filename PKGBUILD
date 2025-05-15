@@ -2,11 +2,11 @@
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=251.25410.59
+_buildver=251.25410.129
 _veryear=2025
 _verrelease=1
-_verextra=
-_verextraextra=
+_verextra=1
+_verextraextra=1
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
@@ -15,7 +15,7 @@ options=(!strip)
 url="http://www.jetbrains.com/idea/nextversion"
 license=('Apache2')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
-_archive="ideaIC-${_buildver}.tar.gz"
+_archive="ideaIC-${_veryear}.${_verrelease}.${_verextra}.${_verextraextra}.tar.gz"
 source=("https://download.jetbrains.com/idea/${_archive}"
         "intellij-idea-ce-eap.desktop")
 sha256sums=($(curl -s "https://download.jetbrains.com/idea/${_archive}.sha256" | cut -f1 -d" ")
