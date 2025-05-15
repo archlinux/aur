@@ -8,6 +8,10 @@ _bold="${_all_off}$(tput bold)"
 _blue="${_bold}$(tput setaf 4)"
 _yellow="${_bold}$(tput setaf 3)"
 
+pre_install() {
+	cp nyanpasu-service /usr/bin/nyanpasu-service
+}
+
 post_upgrade() {
     # Now let us reload Clash Verge service automatically.
     if systemctl is-active --quiet clash-verge-service.service; then
@@ -19,5 +23,5 @@ post_upgrade() {
 
 pre_remove() {
     # Remove service file silently, as official Debian package does
-    /usr/bin/uninstall-service
+    /usr/bin/nyanpasu-service
 }

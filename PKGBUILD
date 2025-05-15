@@ -1,9 +1,9 @@
-# Maintainer: Slinet <aur@slinet.me>
+# Maintainer: c114514 <aur@c114514.me>
 
 pkgname=clash-verge-rev-alpha-bin
 _pkgname=clash-verge-rev
 pkgver=2.2.4
-pkgrel=26
+pkgrel=27
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri | Alpha Version"
 arch=('x86_64' 'arm64')
 url="https://github.com/clash-verge-rev/clash-verge-rev"
