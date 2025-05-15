@@ -1,6 +1,6 @@
 pkgbase = go-size-analyzer
 	pkgdesc = A tool for analyzing the dependencies in compiled Golang binaries
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://gsa.zxilly.dev
 	arch = aarch64
@@ -8,7 +8,7 @@ pkgbase = go-size-analyzer
 	license = AGPL-3.0-only
 	makedepends = go
 	depends = glibc
-	source = go-size-analyzer-1.9.1.tar.gz::https://github.com/Zxilly/go-size-analyzer/archive/refs/tags/v1.9.1.tar.gz
-	b2sums = 7759cea529104a0411679802e9e5ab0683bb28192c786af9096ae57a8f0a42b38da4cdbc657ef4965b67bf34da20daa5843e2d94d47ef5326e3a65706c1d098c
+	source = go-size-analyzer-1.9.2.tar.gz::https://github.com/Zxilly/go-size-analyzer/archive/refs/tags/v1.9.2.tar.gz
+	b2sums = 304077de7b1ec1b0273d5caed5b8ae4edf2abb3faaf46822ea90a9165b3a31b0792b17fb572c73b68646d2378f25f595a3d78025358cb130f65753e1a39f7089
 
 pkgname = go-size-analyzer
