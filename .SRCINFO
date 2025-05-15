@@ -1,15 +1,15 @@
 pkgbase = sausage-git
 	pkgdesc = A terminal word-forming game written in Bash
 	pkgver = 0.0.4.r0.ge1843d8
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gitlab.com/christosangel/sausage
 	install = sausage-git.install
 	arch = any
 	license = MPL-2.0
 	makedepends = git
-	makedepends = sed
 	depends = bash
 	depends = coreutils
+	depends = ncurses
 	provides = sausage
 	conflicts = sausage
 	backup = etc/sausage/dictionary.txt
