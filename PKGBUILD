@@ -1,4 +1,5 @@
-# Maintainer:  Fabian Maurer<dark.shadow4@web.de>
+# Maintainer:  Shane Blackthorne <arch@blackthorne.dev>
+# Contributor: Fabian Maurer<dark.shadow4@web.de>
 # Contributor: Martin Dünkelmann<nc-duenkekl3@netcologne.de>
 # Contributor: Shaoyu Tseng<dev@notyourcomputer.net>
 # Contributor: Daniel Egeberg <daniel.egeberg@gmail.com
@@ -10,14 +11,14 @@
 
 _pkgname="anki"
 pkgname="anki-git"
-pkgver=r11711.5cc44b3f6
-pkgrel=2
+pkgver=r11728.d3d6bd8ce
+pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://github.com/ankitects/anki"
 license=('AGPL-3.0-or-later')
 arch=('any')
 provides=('anki')
-conflicts=('anki' 'anki20' 'anki-official-binary-bundle')
+conflicts=('anki' 'anki20' 'anki-official-binary-bundle' 'anki-bin')
 depends=(
 	# anki and aqt
 	'python'
@@ -31,7 +32,7 @@ depends=(
 	'python-protobuf'
 	'python-orjson'
 	'python-distro'
-	'python-pip-system-certs'
+	#'python-pip-system-certs'
 
 	# aqt
 	'python-send2trash'
@@ -45,14 +46,14 @@ depends=(
 	'python-pyqt6'
 	'python-pyqt6-webengine'
 )
-makedepends=('git' 'rsync' 'ninja' 'clang' 'cargo' 'libxcrypt-compat' 'python-pip' 'npm')
+makedepends=('git' 'rsync' 'ninja' 'clang' 'cargo' 'libxcrypt-compat' 'python-pip' 'npm' 'lld')
 optdepends=(
 	'lame: record sound'
 	'mpv: play sound. prefered over mplayer'
 	'mplayer: play sound'
 )
-source=("git+$url.git")
-sha512sums=('SKIP')
+source=("git+$url.git" "strip-python-pip-system-certs.patch")
+sha512sums=('SKIP' 'SKIP')
 #options(!lto)
 
 pkgver() {
@@ -61,8 +62,8 @@ pkgver() {
 }
 
 prepare() {
-	cd $_pkgname
-
+	cd $_pkgname 
+	    patch -p1 < "$srcdir/strip-python-pip-system-certs.patch"
 	# Put translations in place.
 	#ln -sf "$srcdir"/ankitects-anki-core-i18n-*/ rslib/ftl/repo
 	#ln -sf "$srcdir"/ankitects-anki-desktop-ftl-*/ qt/ftl/repo

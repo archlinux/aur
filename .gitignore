@@ -2,3 +2,4 @@
 !PKGBUILD
 !LICENSE
 !.SRCINFO
+!strip-python-pip-system-certs.patch
