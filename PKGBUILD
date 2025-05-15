@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=clusterExperiment
-_pkgver=2.28.0
+_pkgver=2.28.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,8 +44,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7f410a34a437211196f23763f6fd04a2')
-b2sums=('2dc3451baabbd2cf1554380e68385618673866e8b1297f37872c4bc13de5391969bb241539497553089cf4efd97a5c397e5acaa25c543c306c42d342d76a5d85')
+md5sums=('0f980c8ce4f86438204e28309531c152')
+b2sums=('90617ef525f2add72c34a50c711061c78d284ee11bd874df9c2d86f5ac2cf325b005e31fd69da066b74b087bbe11b49b7caef517a3be7e34104656ca563a6e67')
 
 build() {
   mkdir build
