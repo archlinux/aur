@@ -122,8 +122,11 @@ git -c protocol.file.allow=always submodule update --init
 	  git config submodule.${_submodule}.url "$srcdir/$_submodule"
 	done
   git -c protocol.file.allow=always submodule update --init
-  
+
+#Patch CMakeLists in eden/externals to not use system dynarmic to avoid glad-related error  
 patch $srcdir/$pkgname/externals/CMakeLists.txt $srcdir/dynarmic_patch.patch
+
+#Patch CMakeLists in sirit to force using spirv-headers from externals to avoid compatibility issues
 patch $srcdir/$pkgname/externals/sirit/CMakeLists.txt $srcdir/spirv_patch.patch
 }
 build() {
