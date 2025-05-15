@@ -1,0 +1,27 @@
+pkgbase = python-foundrytools
+	pkgdesc = A library to work with fonts in Python (exctracted from ftcli)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/ftCLI/FoundryTools
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = afdko
+	depends = dehinter
+	depends = python
+	depends = python-cffsubr
+	depends = python-brotli
+	depends = python-defcon
+	depends = python-fonttools
+	depends = python-ttfautohint-py
+	depends = python-ufo-extractor
+	depends = python-ufo2ft
+	depends = python-skia-pathops
+	depends = python-zopfli
+	source = https://github.com/ftCLI/FoundryTools/archive/v0.1.4/FoundryTools-0.1.4.tar.gz
+	sha256sums = 0c4c811339c24d9a4aad3196148e4232ef30f3dfa5d573bf621b75ce15a66b08
+
+pkgname = python-foundrytools

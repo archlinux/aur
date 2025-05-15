@@ -1,0 +1,5 @@
+[python-foundrytools]
+source = "github"
+github = "ftCLI/FoundryTools"
+prefix = "v"
+use_max_tag = true
