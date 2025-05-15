@@ -3,7 +3,7 @@
 #
 pkgname=go4
 _Pkgname=Go4
-pkgver=6.3.0
+pkgver=6.4.0
 pkgrel=1
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('x86_64')
@@ -13,11 +13,14 @@ conflicts=('mbseventapi')
 url="https://www.gsi.de/en/work/research/experiment_electronics/data_processing/data_analysis/the_go4_home_page.htm"
 license=('GPL')
 source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz")
-sha256sums=('93cf8fe4ddcb9e2e494ebe8c8cf1df2ddf25cbc1bc64f3cc7dc09348c26e3841')
+sha256sums=('9a3c9ef0b2bc1317b2e3f858e6e4bab2d0b748fac98d80828ee8098b8b3d4463')
 
 prepare() {
 
   unset GO4SYS
+
+  # Fix error: conflicting types
+  sed -i '93s/()/(s_ve10_1 *)/' ${srcdir}/go4-${pkgver}/MbsAPI/f_evt.h
 
   #
   # Most files created at the end of CMakeLists.txt end up in weird locations.
@@ -47,7 +50,7 @@ build() {
 # took from /etc/makepkg.conf but -Werror=format-security removed
 
 CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions \
-        -Wp,-D_FORTIFY_SOURCE=2 -Wformat \
+        -Wformat \
         -fstack-clash-protection -fcf-protection"
 CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
 
@@ -62,6 +65,7 @@ CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
          -Ddabc=ON \
          -Dhdf5=ON \
          -Droot7=ON \
+         -Dwebgui=ON \
          -Dqt6web=ON \
          ../go4-${pkgver}
 
