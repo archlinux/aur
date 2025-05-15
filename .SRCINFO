@@ -1,0 +1,12 @@
+pkgbase = nvidia-fs-dkms
+	pkgdesc = GPUDirect Storage kernel driver to read/write data from supported storage using cufile APIs
+	pkgver = 2.25.7
+	pkgrel = 1
+	url = https://docs.nvidia.com/gpudirect-storage
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	source = https://github.com/NVIDIA/gds-nvidia-fs/archive/refs/tags/v2.25.7.tar.gz
+	md5sums = 8eb745acf1a57e04b3e5deb35a91686f
+
+pkgname = nvidia-fs-dkms
