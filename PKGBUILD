@@ -1,14 +1,17 @@
 # Contributor: Mr.Smith1974 < ... >
 # Maintainer: Jonathan Hilger <joni dot hilger at yahoo dot de>
 pkgname=vpinball
-pkgver=r7998.32a8e64
-pkgrel=3
+pkgver=r8019.e14a6ab
+pkgrel=1
 pkgdesc="An open source pinball table editor and simulator (BGFX standalone version)"
 arch=('x86_64')
 url="https://github.com/vpinball/vpinball"
-license=('GPLv3.0+' 'MAME')
-depends=('python' 'bzip2' 'glibc' 'xz' 'libxcb' 'systemd-libs' 'zlib' 'alsa-lib' 'libdrm' 'gcc-libs')
-makedepends=('unzip' 'alsa-lib' 'freeimage' 'cmake' 'git' 'nasm' 'curl' 'systemd' 'libx11' 'mesa' 'libxext' 'zlib-ng' 'wayland' 'libxkbcommon')
+license=('GPL-3.0-or-later' 'LicenseRef-MAME')
+#depends=('python' 'bzip2' 'glibc' 'xz' 'libxcb' 'systemd-libs' 'zlib' 'alsa-lib' 'libdrm' 'gcc-libs' 'hidapi' 'sdl2-compat' 'sdl2_image' 'sdl2_ttf' 'libbass' 'freeimage-vpinball-git' 'libpinmame-git' 'libaltsound-git' 'libdmdutil-git' 'libdof-git' 'ffmpeg')
+#depends=('python' 'bzip2' 'glibc' 'xz' 'libxcb' 'systemd-libs' 'zlib' 'alsa-lib' 'bgfx-git' 'libdrm' 'gcc-libs' 'hidapi' 'sdl3-git' 'sdl3_mixer-git' 'sdl3_image-git' 'sdl3_ttf-git' 'libbass' 'freeimage-vpinball-git' 'libpinmame-git' 'libaltsound-git' 'libdmdutil-git' 'libdof-git' 'ffmpeg')
+depends=('python' 'glibc' 'bgfx-git' 'gcc-libs' 'hidapi' 'sdl3-git' 'sdl3_mixer-git' 'sdl3_image-git' 'libserum-concentrate-git' 'sdl3_ttf-git' 'libpupdmd-git' 'freeimage-vpinball-git' 'libpinmame-git' 'libaltsound-git' 'libdmdutil-git' 'libdof-git' 'ffmpeg' 'python-lxml' 'python-pillow')
+#makedepends=('unzip' 'freeimage' 'cmake' 'git' 'nasm' 'curl' 'systemd' 'libx11' 'mesa' 'libxext' 'zlib-ng' 'wayland' 'libxkbcommon')
+makedepends=('unzip' 'cmake' 'git' 'curl')
 provides=('vpinball')
 source=("${pkgname}::git+https://github.com/vpinball/vpinball.git"
 	"vpinball.desktop"
@@ -24,22 +27,23 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  platforms/linux-x64/external.sh
+  #platforms/linux-x64/external.sh
   cp make/CMakeLists_bgfx-linux-x64.txt CMakeLists.txt
-  cmake -DCMAKE_BUILD_TYPE=Release -B build
+  cmake -DCMAKE_BUILD_TYPE=Release -DPOST_BUILD_COPY_EXT_LIBS=FALSE -B build
   cmake --build build
 }  # build
 
 package() {
   cd "${srcdir}/${pkgname}"
-  mkdir -p "${pkgdir}/usr/bin"
-  mkdir -p "${pkgdir}/usr/share/applications"
-  mkdir -p "${pkgdir}/usr/share/pixmaps"
   mkdir -p "${pkgdir}/opt/vpinball"
+  mkdir -p "${pkgdir}/usr/share/applications"
+  mkdir -p "${pkgdir}/usr/share/doc/vpinball"
+  mkdir -p "${pkgdir}/usr/share/pixmaps"
   #
-  cp -r ${srcdir}/${pkgname}/build/* ${pkgdir}/opt/vpinball/
+  cp -r build/tables build/flexdmd build/assets build/scripts build/plugins ${pkgdir}/opt/vpinball/
+  cp -r build/docs "${pkgdir}/usr/share/doc/vpinball/"
   #
-  ln -s "/opt/vpinball/VPinballX_BGFX" 				"${pkgdir}/usr/bin/VPinballX_BGFX"
+  install -Dm 755 "${srcdir}/${pkgname}/build/VPinballX_BGFX"	"${pkgdir}/opt/vpinball/VPinballX_BGFX"
   install -Dm 644 "${srcdir}/vpinball.desktop"			"${pkgdir}/usr/share/applications/vpinball.desktop"
   install -Dm 644 "${srcdir}/visualpinball_screen1.jpg"		"${pkgdir}/usr/share/pixmaps/visualpinball_screen1.jpg"
   install -Dm 644 "${srcdir}/vpinball/LICENSE"			"${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
