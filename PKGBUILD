@@ -16,13 +16,13 @@ makedepends=(sed)
 provides=(cursor{,-bin})
 conflicts=(cursor{,-bin})
 _source=8ea935e79a50a02da912a034bbeda84a6d3d355d
-source=("src.iso::https://downloads.cursor.com/production/${_source}/linux/x64/Cursor-${pkgver}-${arch}.AppImage"
+source=("${pkgver}.iso::https://downloads.cursor.com/production/${_source}/linux/x64/Cursor-${pkgver}-${arch}.AppImage"
 		"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
 sha256sums=('8a4fb64ea991867cd733eaa8090f8a2d0916fdca994aa7194b63f6cae50f188f'
             '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
 #options=(!strip)
 prepare() {
-	chmod +x src.iso;./src.iso --appimage-extract > /dev/null
+	chmod +x ${pkgver}.iso;./${pkgver}.iso --appimage-extract > /dev/null
 	# Verify version of electron
 	echo Replacing $(rg -m 1 '"electron":\s*"[0-9]+' squashfs-root/usr/share/cursor/resources/app/package.json) with $(cat /usr/lib/electron${_elnum}/version)
 	echo 'Fix if "major" version is wrong.'
