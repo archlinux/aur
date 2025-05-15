@@ -15,7 +15,6 @@ source_x86_64=("$pkgname.zip::https://git.mylloon.fr/Anri/dsr/releases/download/
                "https://git.mylloon.fr/Anri/dsr/raw/branch/main/image/icon.png")
 sha256sums_x86_64=("SKIP"
                    "SKIP")
-options=(!debug)
 
 package() {
   # Install full app to /opt

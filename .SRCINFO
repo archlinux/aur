@@ -7,7 +7,6 @@ pkgbase = dsr
 	license = AGPL3
 	provides = dsr
 	conflicts = dsr
-	options = !debug
 	source_x86_64 = dsr.zip::https://git.mylloon.fr/Anri/dsr/releases/download/1.12.3/dsr-linux-x64-1.12.3.zip
 	source_x86_64 = https://git.mylloon.fr/Anri/dsr/raw/branch/main/image/icon.png
 	sha256sums_x86_64 = SKIP
