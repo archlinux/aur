@@ -1,6 +1,6 @@
 pkgbase = r-lim
 	pkgdesc = Linear Inverse Model examples and solution methods.
-	pkgver = 1.4.7.1
+	pkgver = 1.4.7.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=LIM
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-lim
 	depends = r
 	depends = r-diagram
 	depends = r-limsolve
-	source = https://cran.r-project.org/src/contrib/LIM_1.4.7.1.tar.gz
-	sha256sums = 0085efcf7851eefa03f371b67625b0a80cb7acd50f8de48f6d4e06c0ea90fff9
+	source = https://cran.r-project.org/src/contrib/LIM_1.4.7.2.tar.gz
+	sha256sums = 461df14b090b1f4f74f91e1f8120057bf47bc586cb41fa3653f66a96c014337a
 
 pkgname = r-lim
