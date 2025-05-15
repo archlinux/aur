@@ -1,12 +1,12 @@
 # Maintainer: Katie Varkony (tristanandlucky@gmail.com)
 
 pkgname=nbtworkbench-git
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A modern NBT (Minecraft's Named Binary Tags) Editor written in Rust."
 url='https://github.com/RealRTTV/nbtworkbench'
 license=('MPL-2.0')
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'rustup')
 depends=()
 arch=('x86_64')
 source=("git+$url.git")
@@ -22,13 +22,13 @@ build() {
     cd nbtworkbench
     export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
-    cargo +nightly build --frozen --release --all-features
+    cargo build --frozen --release --all-features
 }
 
 check() {
     cd nbtworkbench
     export RUSTUP_TOOLCHAIN=nightly
-    cargo +nightly test --frozen --all-features
+    cargo test --frozen --all-features
 }
 
 package() {
