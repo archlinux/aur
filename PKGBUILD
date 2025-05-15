@@ -33,5 +33,5 @@ package() {
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1
     sed -e 's/prompt-toolkit/prompt-toolkit1/g' -i \
-        "${pkgdir}/usr/lib/python3.9/site-packages/http_prompt-${pkgver}-py3.9.egg-info/requires.txt"
+        "${pkgdir}/usr/lib/python3.13/site-packages/http_prompt-${pkgver}-py3.13.egg-info/requires.txt"
 }
