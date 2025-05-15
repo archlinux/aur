@@ -65,8 +65,8 @@ package(){
   chmod -R u=rwX,go=rX "${pkgdir}/usr/lib/${_name}"
 
   cd "${pkgdir}/usr"
-	ln -vsf "/usr/bin/rg"       "lib/${_name}/node_modules/@vscode/ripgrep/bin/rg"
-	ln -vsf "/usr/bin/xdg-open" "lib/${_name}/node_modules/open/xdg-open"
+  ln -vsf "/usr/bin/rg"       "lib/${_name}/node_modules/@vscode/ripgrep/bin/rg"
+  ln -vsf "/usr/bin/xdg-open" "lib/${_name}/node_modules/open/xdg-open"
 
   install -vdm755 "${pkgdir}/usr/share/licenses/${_name}"
   cd "share/licenses/${_name}"
