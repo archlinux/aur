@@ -7,7 +7,7 @@
 
 pkgname=sendmail
 pkgver=8.18.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A general purpose internetwork email routing MTA"
 url="http://www.sendmail.org"
 arch=('x86_64' 'aarch64')
@@ -70,10 +70,11 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
     install -dm755 "${pkgdir}"/usr/{bin,share/{doc/sendmail,man/man{1,5,8}}}
-    make install DESTDIR="${pkgdir}"
-    make -C mail.local force-install DESTDIR="${pkgdir}"
-    make -C rmail force-install DESTDIR="${pkgdir}"
+    ./Build DESTDIR="${pkgdir}" install
+    cd mail.local; ./Build DESTDIR="${pkgdir}" force-install
+    cd ../rmail; ./Build DESTDIR="${pkgdir}" force-install
 
+    cd ..
     cp -rp cf "${pkgdir}"/usr/share/sendmail-cf
     rm ${pkgdir}/etc/mail/statistics
     rmdir "${pkgdir}"/{var/spool/clientmqueue,var/spool,var}
