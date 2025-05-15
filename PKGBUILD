@@ -3,7 +3,7 @@ pkgname=lofi-bin
 _pkgname=Lofi
 pkgver=2.0.2
 _electronversion=24
-pkgrel=1
+pkgrel=2
 pkgdesc="🎵🔉 A mini Spotify player with WebGL visualizations.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="http://lofi.rocks/"
@@ -27,19 +27,21 @@ sha256sums=('f35aba90b241f7918d3b0c96e1ee0cb0600c969aaae7fdd3befca4c9e328d2e7'
             'f54bf7dccf4ab138eba3104a876c68e6a6a78b032cc819010d40407cbdd057d6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "
+    sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Utility/AudioVideo/g
-    " -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    " "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
