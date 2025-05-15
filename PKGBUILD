@@ -13,5 +13,5 @@ source=("$url/releases/download/$pkgver/$_pkgname-linux-cli.zip")
 b2sums=('a9bcda1882f6d6427610c0100e556b742633324eefad31535903ec237abdda0daaec2968ad97214eaaf38896fc3b379194cf064b1735860009c4e6e78257419f')
 
 package() {
-  install -Dm755 "$_pkgname-cli" "$pkgdir/usr/bin/$_pkgname-cli"
+	install -Dm755 "$_pkgname-cli" "$pkgdir/usr/bin/$_pkgname-cli"
 }
