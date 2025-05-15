@@ -51,6 +51,7 @@ prepare() {
     done
     sed -i "s|include(cargs)|find_package(Cargs CONFIG REQUIRED)|" c-api-examples/CMakeLists.txt
     sed -i "s|    ./|    lib/pkgconfig|" CMakeLists.txt
+    echo 'find_package(pybind11 REQUIRED)' > cmake/pybind11.cmake
 }
 
 build() {
