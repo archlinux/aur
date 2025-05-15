@@ -1,0 +1,22 @@
+pkgbase = appium
+	pkgdesc = Cross-platform automation framework for all kinds of apps
+	pkgver = 2.18.0
+	pkgrel = 1
+	url = https://appium.io
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = npm
+	depends = nodejs
+	optdepends = nodejs-appium-chromium-driver: Appium 2.x driver for Chromium-based browsers that work with Chromedriver
+	optdepends = nodejs-appium-espresso-driver: Espresso integration for Appium
+	optdepends = nodejs-appium-geckodriver: Appium driver for Gecko-based browsers and web views
+	optdepends = nodejs-appium-mac2-driver: XCTest-based Appium driver for macOS apps automation
+	optdepends = nodejs-appium-safari-driver: Appium driver for Safari browser
+	optdepends = nodejs-appium-uiautomator2-driver: UiAutomator2 integration for Appium
+	optdepends = nodejs-appium-windows-driver: Appium bridge to WinAppDriver
+	optdepends = nodejs-appium-xcuitest-driver: Appium driver for iOS using XCUITest for backend
+	noextract = appium-2.18.0.tgz
+	source = appium-2.18.0.tgz::https://registry.npmjs.org/appium/-/appium-2.18.0.tgz
+	sha256sums = a71d89265478e46082d313314296e5285d3cf35a47ac5f189303f2341e882540
+
+pkgname = appium
