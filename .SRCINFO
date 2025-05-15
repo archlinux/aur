@@ -1,6 +1,6 @@
 pkgbase = cairo-dock-plug-ins-wayland-git
 	pkgdesc = Plugins for Cairo-Dock with wayland support
-	pkgver = 3.5.99.beta1.20240430.9901f7d9d
+	pkgver = 3.5.99.rc2.20250501.d41b3c27f
 	pkgrel = 1
 	url = https://github.com/Cairo-Dock/cairo-dock-plug-ins
 	arch = x86_64

@@ -6,7 +6,7 @@
 # Contributor: ssfdust@gmail.com <ssfdust@gmail.com>
 
 pkgname=cairo-dock-plug-ins-wayland-git
-pkgver=3.5.99.beta1.20240430.9901f7d9d
+pkgver=3.5.99.rc2.20250501.d41b3c27f
 pkgrel=1
 pkgdesc='Plugins for Cairo-Dock with wayland support'
 arch=('x86_64')
