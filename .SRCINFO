@@ -1,7 +1,7 @@
 pkgbase = chatnio-bin
 	pkgdesc = 🚀 Next Generation AI One-Stop Internationalization Solution.(Prebuilt version)
 	pkgver = 3.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://coai.dev
 	arch = x86_64
 	license = Apache-2.0

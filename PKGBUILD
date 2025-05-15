@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chatnio-bin
-_pkgname="Chat Nio"
+_pkgname='Chat Nio'
 pkgver=3.10
-pkgrel=2
+pkgrel=3
 pkgdesc="🚀 Next Generation AI One-Stop Internationalization Solution.(Prebuilt version)"
 arch=('x86_64')
 url="https://coai.dev"
@@ -20,10 +20,10 @@ source=(
 sha256sums=('4338657fce74a5bfcac3252a38058638c7327c084c627c81ae4203c8638f4d0d')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/Name=${pkgname%-bin}/Name=${_pkgname}/g
         s/Categories=Development/Categories=Utility;/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
