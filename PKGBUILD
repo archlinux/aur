@@ -4,7 +4,7 @@ pkgname="${_appname}++-bin"
 _pkgname='Icalingua++'
 pkgver=2.12.28
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="A branch of deleted Icalingua, with limited support.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -30,17 +30,17 @@ sha256sums_aarch64=('c701bc7aab13594b1b8103cc131f2bb871137a8410b5af5fd9bc755276d
 sha256sums_armv7h=('c4ff777a264f2b6bb1931e6d731fe11012ccbb16cc5cc3f4fd331926ab4e49d2')
 sha256sums_x86_64=('a551fa96ef9ce866e09ca17d18224d5a9b731ae774bc46d351dc3d6ecddbf602')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
         s/\"\/opt\/${_pkgname}\/${_appname}\"/${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    " "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
