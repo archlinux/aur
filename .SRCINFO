@@ -1,0 +1,23 @@
+pkgbase = vpinball-bgfx.cmake
+	pkgdesc = Fork of bgfx with patches for vpinball (DO NOT INSTALL IF YOU DO NOT NEED IT)
+	pkgver = r8879.384e514
+	pkgrel = 1
+	url = https://github.com/bkaradzic/bgfx.cmake
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	depends = libx11
+	depends = mesa
+	provides = bgfx
+	provides = vpinball-bgfx.cmake
+	conflicts = bgfx
+	conflicts = bgfx-git
+	source = https://github.com/bkaradzic/bgfx.cmake/releases/download/v1.129.8866-492/bgfx.cmake.v1.129.8866-492.tar.gz
+	source = git+https://github.com/vbousquet/bgfx.git
+	sha256sums = 3fd915643b1405f824c3aef4a747731189a0eada51bcecf438f3572a703537c9
+	sha256sums = SKIP
+
+pkgname = vpinball-bgfx.cmake
