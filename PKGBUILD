@@ -3,7 +3,7 @@
 
 pkgname=dpp
 _pkgname=DPP
-pkgver=10.0.35
+pkgver=10.1.2
 pkgrel=1
 pkgdesc="Lightweight and Scalable C++ Discord API Bot Library"
 arch=('x86_64')
@@ -16,7 +16,7 @@ install="${pkgname}.install"
 changelog="${pkgname}.changelog"
 source=("${_url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
 	"${_url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('46efde92ec6aba7f3e2b7ad17af2ffa4a18fc0bf3b3566a03f7131784ff7fdc8'
+sha256sums=('587ef044775e6bdd560ec17afc302c1048ebb3454455116d7241431fbb16a823'
             'SKIP')
 validpgpkeys=('EDCEFB1FDAFFAC7952EED46F9927644B850BDD23')
 
