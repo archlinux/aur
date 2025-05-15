@@ -2,7 +2,7 @@
 # Previous Maintainer: Thomas Pointhuber <thomas.pointhuber@gmx.at>
 pkgname=limboole
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple tool for checking satisfiability respectively tautology on arbitrary structural formulas."
 arch=('x86_64')
 url="http://fmv.jku.at/limboole/"
@@ -37,7 +37,8 @@ build() {
   # build limboole
   cd "../$pkgname$pkgver"
   mkdir -p log
-  ./configure.sh --picosat --depqbf
+  # ./configure.sh --picosat --depqbf
+  ./configure.sh --picosat
   make
 }
 
