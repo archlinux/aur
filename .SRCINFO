@@ -1,6 +1,6 @@
 pkgbase = browser-manager-git
 	pkgdesc = Multi-browser instance management tool.(Use system-wide electron)
-	pkgver = 1.0.0.r0.g1033c09
+	pkgver = 1.0.0.r1.g5a22d14
 	pkgrel = 1
 	url = https://github.com/chenyk2016/Browser-Manager
 	arch = any
