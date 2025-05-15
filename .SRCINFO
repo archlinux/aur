@@ -1,6 +1,6 @@
 pkgbase = wwplot
 	pkgdesc = Plotting Tool for Experimental Physics Classes
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/wwmm/wwplot
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = wwplot
 	depends = qt6-declarative
 	depends = qt6-tools
 	options = !emptydirs
-	source = wwplot-1.0.0::https://github.com/wwmm/wwplot/archive/v1.0.0.tar.gz
-	sha256sums = e2c04731dcd2c4c9ba37510504aef777adba0744ff7b3b8ddcf963dcc9bb6de8
+	source = wwplot-1.0.1::https://github.com/wwmm/wwplot/archive/v1.0.1.tar.gz
+	sha256sums = 913d264798bd5b807bcb5e385d0a1a91b78e26a476bcd089164045ca4f2cba2e
 
 pkgname = wwplot
