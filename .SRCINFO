@@ -1,7 +1,7 @@
 pkgbase = mmseqs2-search-bin
 	pkgdesc = MMseqs2 app to run on your workstation or servers.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.7.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://search.mmseqs.com/
 	arch = aarch64
 	arch = x86_64

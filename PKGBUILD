@@ -4,7 +4,7 @@ _appname=mmseqs-app
 _pkgname=MMseqs2-Search
 pkgver=1.7.0
 _electronversion=12
-pkgrel=4
+pkgrel=5
 pkgdesc="MMseqs2 app to run on your workstation or servers.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -31,16 +31,21 @@ sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('afe09835f2763f8c3fdb08d0f33de8d0ac262c7ea41038203d093f7c0682eb0e')
 sha256sums_x86_64=('8741f3c9bb4ba43586c8e3abd8ff4438cb2a750fe0abb7c5d5afa23c80f98f03')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/MMseqs2 App/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    sed -i -e "
+        s/AppRun --no-sandbox/${pkgname%-bin}/g
+        s/${_appname}/${pkgname%-bin}/g
+    " "${srcdir}/squashfs-root/${_appname}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
