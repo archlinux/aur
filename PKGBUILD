@@ -3,7 +3,7 @@
 pkgname=oama-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.20.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64 aarch64)
 url="https://github.com/pdobsan/${_pkgname}"
@@ -39,7 +39,7 @@ package() {
   cd $release-$CARCH
   install -Dm755 ${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
 
-  install -Dm644 LiCENSE ${pkgdir}/usr/share/${_pkgname}/LICENSE
+  install -Dm644 LICENSE ${pkgdir}/usr/share/${_pkgname}/LICENSE
   install -Dm644 README.md ${pkgdir}/usr/share/${_pkgname}
   install -Dm644 Build-info.txt ${pkgdir}/usr/share/${_pkgname}
   install -Dm644 cabal.project.freeze ${pkgdir}/usr/share/${_pkgname}
