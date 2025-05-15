@@ -21,7 +21,7 @@ depends=("geoip"
          "libprocps"
          "openssl")
 makedepends=(
-        "czmq"
+        "czmq-git"
         "file"
         "findutils"
         "libevent"
