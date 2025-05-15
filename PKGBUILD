@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SGSeq
-_pkgver=1.42.0
+_pkgver=1.42.1
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.42.1
 pkgrel=1
 pkgdesc='Splice event prediction and quantification from RNA-seq data'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6f0c104ae6244b4f8b7cff79b7248af14b2623fd22eb429b5cfdd0c13585993a')
+sha256sums=('098b85fa9e7589e716608cd043e1366f1eca1b7ee20ee89ddfefd47625df06d2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
