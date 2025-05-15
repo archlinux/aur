@@ -1,7 +1,7 @@
 # Maintainer: Furkan Bekçi (salvoton) <furo@tuta.io>
 pkgname=parus
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A package search TUI for Paru using Skim"
 arch=("any")
 url="https://github.com/salvoton/parus"
