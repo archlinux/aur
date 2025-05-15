@@ -2,7 +2,7 @@
 
 pkgname=harbor-cli
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Harbor CLI'
 arch=('x86_64')
 url='https://goharbor.io'
@@ -33,7 +33,7 @@ build() {
 
   # build harbor
   # Ensure Go flags are set and build the binary
-  go build \
+  go build -v \
     -trimpath \
     -buildmode=pie \
     -mod=readonly \
