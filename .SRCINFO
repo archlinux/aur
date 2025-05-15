@@ -1,7 +1,7 @@
 pkgbase = codenest-bin
 	pkgdesc = A local project management tool that helps organize projects scattered across different locations on your disk.(Prebuilt version.Use system-wide electron)一款本地项目管理工具，可整理分散在磁盘各处的项目
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MidnightCrowing/CodeNest
 	arch = x86_64
 	license = MIT

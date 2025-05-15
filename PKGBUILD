@@ -3,7 +3,7 @@ pkgname=codenest-bin
 _pkgname=CodeNest
 pkgver=0.0.3
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="A local project management tool that helps organize projects scattered across different locations on your disk.(Prebuilt version.Use system-wide electron)一款本地项目管理工具，可整理分散在磁盘各处的项目"
 arch=('x86_64')
 url="https://github.com/MidnightCrowing/CodeNest"
@@ -26,17 +26,19 @@ sha256sums=('5f667152d1da51a8917c5346b44ae6718d68d42bc8d0a51ba3024cec028acaa7'
             '8cf7267cd882457956da741fe96d80d8392d6dbb707c0739447550632ec010ea'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
-    find "${srcdir}/squashfs-root/resources" -type f -name "macos*" -exec rm -rf {} +
+    find "${srcdir}/squashfs-root/resources" -type f \( -name "*macos*" -o -name "windows.js" \) -exec rm -rf {} +
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
 }
 package() {
