@@ -10,6 +10,7 @@ pkgbase = moar-bin
 	arch = armv7h
 	arch = aarch64
 	license = BSD-2-Clause-Views
+	conflicts = moarvm
 	noextract = moar-bin-1.31.5.tar.gz
 	source = moar-bin-1.31.5.tar.gz::https://github.com/walles/moar/archive/v1.31.5.tar.gz
 	sha256sums = 2c03100e24f88163d808d52b7a5763c0fe731b29c46fd44a103a089c5429eb72
