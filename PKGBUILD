@@ -2,16 +2,16 @@
 # Contributor: Eric Hugoson
 _pkgname=requirements-detector
 pkgname=python-requirements-detector
-pkgver=1.2.2
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A simple Python tool which attempts to find and list the requirements of a Python project"
 arch=('any')
 url="https://github.com/landscapeio/requirements-detector"
 license=('MIT')
-depends=('python-astroid')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry')
+depends=('python-astroid' 'python-packaging' 'python-semver' 'python-toml')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
 source=(https://github.com/landscapeio/requirements-detector/archive/${pkgver}.tar.gz)
-sha512sums=('dcef6b49a50bd48af9eb6c69d4cda00c5b11a748b03d58833aef7f0646e6fe7223315c9a0cd9d87058376dc21563b0d48dc3ef66a3095d113f74434371af540b')
+sha512sums=('5c237312bf2d15b6d38bc031e40940dd7c24dcbe46229b16e5164643ae19434084905605bb2d73dc1465338124b3ccf7c778ad6b2a5543a03a4131b6a3d64e51')
 
 build() {
   cd "${_pkgname}-${pkgver}"
