@@ -6,7 +6,7 @@
 
 pkgname=sc
 pkgver=7.16
-pkgrel=9
+pkgrel=10
 pkgdesc="Ncurses-based spreadsheet program"
 arch=('x86_64')
 url="https://ibiblio.org/pub/linux/apps/financial/spreadsheet/!INDEX.html"
@@ -17,7 +17,7 @@ source=(https://ibiblio.org/pub/linux/apps/financial/spreadsheet/$pkgname-$pkgve
         sc-7.16-compilation.patch)
 sha256sums=('1997a00b6d82d189b65f6fd2a856a34992abc99e50d9ec463bbf1afb750d1765'
             '37116b9619790564650c4090b4a6264c08aa59fa1e24c63ca073011cd70507cb'
-            '1bea20b0a90a1ea8597a37fcdfe72ea3e416824323606f8f7065dacecf1453e8')
+            '2b36b7c7078dfa6a15025a01089d154ec407ddf8200846c350805503ed1657a1')
 
 build() {
   cd $pkgname-$pkgver
