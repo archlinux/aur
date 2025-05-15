@@ -5,7 +5,7 @@
 
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=5.7.2.r0.g02c01e2
+pkgver=5.14.2.r10.g5d8ac95
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
@@ -59,7 +59,7 @@ _source_main() {
 }
 
 _source_telegram_desktop() {
-  source+=(
+  local _sources_add=(
     #'apple.swift-corelibs-libdispatch'::'git+https://github.com/apple/swift-corelibs-libdispatch.git'
     'cyan4973.xxhash'::'git+https://github.com/Cyan4973/xxHash.git'
     'desktop-app.cmake_helpers'::'git+https://github.com/desktop-app/cmake_helpers.git'
@@ -94,41 +94,12 @@ _source_telegram_desktop() {
     'telegramdesktop.libtgvoip'::'git+https://github.com/telegramdesktop/libtgvoip.git'
     'telegrammessenger.tgcalls'::'git+https://github.com/TelegramMessenger/tgcalls.git'
   )
-  sha256sums+=(
-    #'SKIP'
-    #'SKIP'
-    #'SKIP'
-    #'SKIP'
-    #'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-  )
+
+  local _p
+  for _p in ${_sources_add[@]}; do
+    source+=("$_p")
+    sha256sums+=('SKIP')
+  done
 
   _prepare_telegram_desktop() (
     cd "$srcdir/$_pkgsrc"
@@ -171,33 +142,17 @@ _source_telegram_desktop() {
   )
 }
 
-_source_telegramdesktop_libtgvoip() {
-  source+=(
-    'desktop-app.cmake_helpers'::'git+https://github.com/desktop-app/cmake_helpers.git'
-  )
-  sha256sums+=(
-    'SKIP'
-  )
-
-  _prepare_telegramdesktop_libtgvoip() (
-    cd "$srcdir/$_pkgsrc"
-    cd "Telegram/ThirdParty/libtgvoip"
-    local _submodules=(
-      'desktop-app.cmake_helpers'::'cmake'
-    )
-    _submodule_update
-  )
-}
-
 _source_desktop_app_cmake_helpers() {
-  source+=(
+  local _sources_add=(
     'mnauw.cppgir'::'git+https://gitlab.com/mnauw/cppgir.git'
     'yugr.implib.so'::'git+https://github.com/yugr/Implib.so.git'
   )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-  )
+
+  local _p
+  for _p in ${_sources_add[@]}; do
+    source+=("$_p")
+    sha256sums+=('SKIP')
+  done
 
   _prepare_desktop_app_cmake_helpers() (
     cd "$srcdir/$_pkgsrc"
@@ -211,17 +166,20 @@ _source_desktop_app_cmake_helpers() {
 }
 
 _source_mnauw_cppgir() {
-  source+=(
+  local _sources_add=(
     'martinmoene.expected-lite'::'git+https://github.com/martinmoene/expected-lite.git'
   )
-  sha256sums+=(
-    'SKIP'
-  )
+
+  local _p
+  for _p in ${_sources_add[@]}; do
+    source+=("$_p")
+    sha256sums+=('SKIP')
+  done
 
   _prepare_mnauw_cppgir() (
     cd "$srcdir/$_pkgsrc"
-    cd "cmake"
-    cd "external/glib/cppgir"
+    cd 'cmake'
+    cd 'external/glib/cppgir'
     local _submodules=(
       'martinmoene.expected-lite'::'expected-lite'
     )
@@ -241,25 +199,21 @@ _source_tg_owt() {
   )
 
   _pkgsrc_tgowt="telegram-tg_owt"
-  source+=(
-    "$_pkgsrc_tgowt"::"git+https://github.com/desktop-app/tg_owt.git"
-  )
-  sha256sums+=(
-    'SKIP'
-  )
+  source+=("$_pkgsrc_tgowt"::"git+https://github.com/desktop-app/tg_owt.git")
+  sha256sums+=('SKIP')
 
-  source+=(
+  local _sources_add=(
     'abseil.abseil-cpp'::'git+https://github.com/abseil/abseil-cpp.git'
     'chromiumsrc.libyuv'::'git+https://gitlab.com/chromiumsrc/libyuv.git'
     'cisco.libsrtp'::'git+https://github.com/cisco/libsrtp.git'
     'google.crc32c'::'git+https://github.com/google/crc32c.git'
   )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-  )
+
+  local _p
+  for _p in ${_sources_add[@]}; do
+    source+=("$_p")
+    sha256sums+=('SKIP')
+  done
 
   _prepare_tg_owt() (
     cd "$srcdir/$_pkgsrc_tgowt"
@@ -273,13 +227,20 @@ _source_tg_owt() {
   )
 }
 
+_source_tdlib() {
+  makedepends+=('gperf')
+
+  _pkgsrc_tdlib="telegram-tdlib"
+  source+=("$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git")
+  sha256sums+=('SKIP')
+}
+
 _source_main
 _source_telegram_desktop
-_source_telegramdesktop_libtgvoip
-
 _source_desktop_app_cmake_helpers
 _source_mnauw_cppgir
 
+_source_tdlib
 _source_tg_owt
 
 prepare() {
@@ -292,13 +253,11 @@ prepare() {
     done
   }
 
-  _prepare_tg_owt
-
-  _prepare_telegram_desktop
-  _prepare_telegramdesktop_libtgvoip
-
-  _prepare_desktop_app_cmake_helpers
-  _prepare_mnauw_cppgir
+  _run_if_exists _prepare_tg_owt
+  _run_if_exists _prepare_tdlib
+  _run_if_exists _prepare_telegram_desktop
+  _run_if_exists _prepare_desktop_app_cmake_helpers
+  _run_if_exists _prepare_mnauw_cppgir
 }
 
 pkgver() {
@@ -307,7 +266,8 @@ pkgver() {
     | sed -E 's/^[^0-9]+//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-_build_tg_owt() (
+_build_crc32() (
+  echo "Building crc32..."
   local _cmake_crc32=(
     -B "build_crc32"
     -S "$srcdir/google.crc32c"
@@ -322,17 +282,20 @@ _build_tg_owt() (
 
   cmake "${_cmake_crc32[@]}"
   cmake --build "build_crc32"
-  DESTDIR="$srcdir/deps_crc32" cmake --install "build_crc32"
+  DESTDIR="$srcdir/deps" cmake --install "build_crc32"
+)
 
+_build_tg_owt() (
+  echo "Building tg_owt..."
   local _cmake_tg_owt=(
     -B "build_tg_owt"
     -S "$_pkgsrc_tgowt"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
     -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-    -DBUILD_SHARED_LIBS=OFF
     -DTG_OWT_PACKAGED_BUILD=ON
-    -DCMAKE_PREFIX_PATH="$srcdir/deps_crc32/usr"
+    -DBUILD_SHARED_LIBS=OFF
     -Wno-dev
   )
 
@@ -340,20 +303,43 @@ _build_tg_owt() (
   cmake --build "build_tg_owt"
 )
 
+_build_tde2e() (
+  echo "Building tde2e..."
+  local _cmake_tde2e=(
+    -B "build_tde2e"
+    -S "$_pkgsrc_tdlib"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+    -DTD_E2E_ONLY=ON
+    -DBUILD_SHARED_LIBS=OFF
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_tde2e[@]}"
+  cmake --build "build_tde2e"
+  DESTDIR="$srcdir/deps" cmake --install "build_tde2e"
+
+  find build_tde2e -type f
+)
+
 _build_telegram() (
+  echo "Building telegram..."
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
     -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON
     -DTDESKTOP_API_TEST=ON
     -DTDESKTOP_API_ID=611335
     -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
     -DDESKTOP_APP_USE_PACKAGED_FONTS=OFF
     -Dtg_owt_DIR="$srcdir/build_tg_owt"
-    -DCMAKE_PREFIX_PATH="$srcdir/deps_crc32/usr"
     -Wno-dev
   )
 
@@ -362,13 +348,20 @@ _build_telegram() (
 )
 
 build() {
-  export LDFLAGS+=" -Wl,--copy-dt-needed-entries"
   [ -n "${_ffmpeg_version}" ] && export PKG_CONFIG_PATH="/usr/lib/ffmpeg${_ffmpeg_version:-}/pkgconfig"
 
+  _build_crc32
   _build_tg_owt
+  _build_tde2e
   _build_telegram
 }
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+}
+
+_run_if_exists() {
+  if declare -F "$1" > /dev/null; then
+    eval "$1"
+  fi
 }

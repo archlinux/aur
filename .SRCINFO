@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-git
 	pkgdesc = Official Telegram Desktop client
-	pkgver = 5.7.2.r0.g02c01e2
+	pkgver = 5.14.2.r10.g5d8ac95
 	pkgrel = 1
 	url = https://github.com/telegramdesktop/tdesktop
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = telegram-desktop-git
 	makedepends = glib2-devel
 	makedepends = gobject-introspection
 	makedepends = ninja
+	makedepends = gperf
 	makedepends = yasm
 	depends = ada
 	depends = ffmpeg
@@ -40,7 +41,7 @@ pkgbase = telegram-desktop-git
 	depends = libxtst
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
-	provides = telegram-desktop=5.7.2
+	provides = telegram-desktop=5.14.2
 	conflicts = telegram-desktop
 	source = telegram-desktop::git+https://github.com/telegramdesktop/tdesktop.git
 	source = cyan4973.xxhash::git+https://github.com/Cyan4973/xxHash.git
@@ -71,10 +72,10 @@ pkgbase = telegram-desktop-git
 	source = tartanllama.expected::git+https://github.com/TartanLlama/expected.git
 	source = telegramdesktop.libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
 	source = telegrammessenger.tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git
-	source = desktop-app.cmake_helpers::git+https://github.com/desktop-app/cmake_helpers.git
 	source = mnauw.cppgir::git+https://gitlab.com/mnauw/cppgir.git
 	source = yugr.implib.so::git+https://github.com/yugr/Implib.so.git
 	source = martinmoene.expected-lite::git+https://github.com/martinmoene/expected-lite.git
+	source = telegram-tdlib::git+https://github.com/tdlib/td.git
 	source = telegram-tg_owt::git+https://github.com/desktop-app/tg_owt.git
 	source = abseil.abseil-cpp::git+https://github.com/abseil/abseil-cpp.git
 	source = chromiumsrc.libyuv::git+https://gitlab.com/chromiumsrc/libyuv.git
