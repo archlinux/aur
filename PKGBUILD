@@ -8,63 +8,40 @@
 pkgname=xephem
 _pkgname=XEphem
 pkgver=4.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The Serious Interactive Astronomical Software Ephemeris"
 arch=('i686' 'x86_64')
 url="https://github.com/XEphem/XEphem"
-license=('custom:MIT')
+license=('MIT')
 depends=('libxmu' 'openmotif' 'perl' 'openssl')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+  cmake.patch::https://patch-diff.githubusercontent.com/raw/XEphem/XEphem/pull/60.patch
+  strptime.patch::https://github.com/XEphem/XEphem/commit/30e14f685ede015fcd8985cd83ee6510f93f0073.patch
   "xephem.desktop" "xephem.png")
 sha256sums=('4d67b923e342e56b2a4a49f574e576fc183f1747edb693bab3709e83c8ad9c1b'
+            '6a5e029249caf72bb9e6d15fabfe6d0e8d0651a752b07ea3e983b6faf1ad4e5e'
+            '71b966304970aedc73b60b0891368898f5b7cc89dfc7eb27e4a9f768581e39dc'
             'aa4e19b043cea5f13dcb9314b794c7152510a20289bf20a077a586ca913c65be'
             'fbca29143ecf5d89923ba6b68279cbc396886b229689dcd3b70999675bdb6c20')
 
 prepare() {
-  cd ${_pkgname}-${pkgver}/GUI/$pkgname
-  if [ "$pkgver" = '4.2.0' ]; then #this is already fixed in git - just broken in current 4.2.0 release
-    sed -i '4i\#define _XOPEN_SOURCE' sunmenu.c
-  fi
-  sed -i '4i#define _GNU_SOURCE' imregmenu.c
-  sed -i '5i#include <unistd.h>' imregmenu.c
-  sed -i '20i#define _GNU_SOURCE' indimenu.c
-  sed -i '21i#include <unistd.h>' indimenu.c
-  sed -i '6i#define _GNU_SOURCE' mainmenu.c
-  sed -i '7i#include <unistd.h>' mainmenu.c
-  sed -i '4i#define _GNU_SOURCE' skyfits.c
-  sed -i '5i#include <unistd.h>' skyfits.c
-  sed -i '5i#define _GNU_SOURCE' splash.c
-  sed -i '6i#include <unistd.h>' splash.c
-  sed -i '3i#define _GNU_SOURCE' webdbmenu.c
-  sed -i '4i#include <unistd.h>' webdbmenu.c
-  sed -i '5i#define _GNU_SOURCE' xephem.c
-  sed -i '6i#include <unistd.h>' xephem.c
-  
-  sed -i 's/^CFLAGS =/CFLAGS = -std=c17/' Makefile
-  cd ../../libip
-  sed -i 's/^CFLAGS=/CFLAGS= -std=c17 /' Makefile
-  cd ../libjpegd
-  sed -i 's/^CFLAGS=/CFLAGS= -std=c17 /' Makefile
+  cd "${_pkgname}-${pkgver}"
+  patch -Np1 -i ../cmake.patch || true
+  patch -Np1 -i ../strptime.patch
 }
 
 build() {
-  cd ${_pkgname}-${pkgver}/GUI/$pkgname
-  make MOTIF=/usr/lib/
+  cd "${_pkgname}-${pkgver}"
+  mkdir -p build
+  cmake -B build -S . \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}/GUI/$pkgname
-
-  #binary
-  install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
-
-  #shared resources
-  local share_dir="$pkgdir"/usr/share/$pkgname
-  install -d "$share_dir"
-  cp -R auxil catalogs fifos fits gallery help lo "$share_dir"/
-
-  #man page
-  install -Dm644 $pkgname.1 "$pkgdir"/usr/share/man/man1/$pkgname.1
+  cd "${_pkgname}-${pkgver}"
+  DESTDIR="$pkgdir" cmake --install build
 
   #X11 app defaults
   install -d "$pkgdir"/usr/share/X11/app-defaults
