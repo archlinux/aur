@@ -5,13 +5,13 @@
 # Contributor: ssfdust <ssfdust@gmail.com>
 
 pkgname=cairo-dock-core-wayland-git
-pkgver=3.5.99.beta1.20240504.13fb1516
+pkgver=3.5.99.rc2.20250308.a77d61b7
 pkgrel=1
 pkgdesc='Light eye-candy fully themable animated dock with wayland support'
 arch=('i686' 'x86_64')
 url='https://github.com/Cairo-Dock/cairo-dock-core'
 license=('GPL')
-depends=('curl' 'dbus-glib' 'glu' 'gtk3' 'librsvg' 'wayland' 'gtk-layer-shell')
+depends=('curl' 'dbus-glib' 'glu' 'gtk3' 'librsvg' 'libxml2' 'wayland' 'gtk-layer-shell')
 makedepends=('cmake' 'git' 'extra-cmake-modules')
 optdepends=(
   'wayfire-plugins-scale-ipc: Additional functionality on wayfire'
