@@ -23,7 +23,6 @@ install="$pkgname.install"
 depends=("${_electron}" 'libxss')
 makedepends=('asar' 'curl')
 optdepends=('libpulse: Pulseaudio support'
-            'libappindicator-gtk3: Systray indicator support'
             'xdg-utils: Open files'
             'python-pyelftools: Required for Krisp patcher'
             'python-capstone: Required for Krisp patcher')

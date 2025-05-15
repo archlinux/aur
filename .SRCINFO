@@ -12,7 +12,6 @@ pkgbase = discord_arch_electron
 	depends = electron
 	depends = libxss
 	optdepends = libpulse: Pulseaudio support
-	optdepends = libappindicator-gtk3: Systray indicator support
 	optdepends = xdg-utils: Open files
 	optdepends = python-pyelftools: Required for Krisp patcher
 	optdepends = python-capstone: Required for Krisp patcher
