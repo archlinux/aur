@@ -13,5 +13,8 @@ StateDirectory=uptime-kuma
 EnvironmentFile=/etc/uptime-kuma.env
 Restart=on-failure
 
+AmbientCapabilities=CAP_NET_RAW
+CapabilityBoundingSet=CAP_NET_RAW
+
 [Install]
 WantedBy=multi-user.target

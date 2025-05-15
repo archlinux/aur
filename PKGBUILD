@@ -11,7 +11,7 @@ pkgver() {
     printf %s "${v//-/+}"
 }
 
-pkgrel=4
+pkgrel=5
 pkgdesc='A fancy self-hosted monitoring tool'
 
 arch=('any')
@@ -30,7 +30,7 @@ source=(
 )
 
 b2sums=('SKIP'
-        '19d542c0a7b4faf2124ea3e88420a325b5729371a41803ce0c6ba959f80237d6a79cad0963f09fe18da3b8a48ef9f04535557a49fda2a8d99ad21ba3e27fd549'
+        'c5b1e9cecdc868d1ecdc118a7a2914da776dc9c6da32d71945599849a009953fc740e1fe56e946029df9a36d56e42f87190975a4d9cbeb9be8dfc4624629274f'
         'd5e40af358ace62bb063dd965f09dacd65272eb5f0d411576703c0834488b705ad9e5d7437708953f3abdab20cb8cfff097b9c81b1a3927142d875cae7b020c2')
 
 build() {
