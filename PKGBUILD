@@ -5,33 +5,34 @@
 pkgname=hyprnav
 _origpkgname=hyprnav
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern and customizable workspace navigation effect for Hyprland."
 arch=("x86_64")
 url='https://pypi.org/project/hyprnav/'
 license=("MIT")
 depends=(
-	"confz"
-	"python-hyprpy"
-	"python-pyqt6"
-	"python-rich"
-	"alsa-utils"
-	"python-nava"
+  "confz"
+  "python-hyprpy"
+  "python-pyqt6"
+  "python-rich"
+  "alsa-utils"
+  "python-nava"
+  "ttf-hack-nerd"
 )
 makedepends=(
-	"python-build"
-	"python-installer"
-	"python-wheel"
-	"python-setuptools"
-	"python-hatchling"
+  "python-build"
+  "python-installer"
+  "python-wheel"
+  "python-setuptools"
+  "python-hatchling"
 )
 source=("https://files.pythonhosted.org/packages/ed/1d/a46ca0c10674ff87e96c79716bf3809e8bc8d1206f1b2a9a4d6821256d25/hyprnav-0.1.6.tar.gz")
 sha256sums=("c80e8b9586c6f1b6d0e15cbb3563cba10208ee99c45eacc471ea3c145cf74be7")
 package() {
-	cd "${_origpkgname}-${pkgver}" || exit
-	python -m build --wheel --no-isolation
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${_origpkgname}-${pkgver}" || exit
+  python -m build --wheel --no-isolation
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:

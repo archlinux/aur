@@ -1,7 +1,7 @@
 pkgbase = hyprnav
 	pkgdesc = A modern and customizable workspace navigation effect for Hyprland.
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/hyprnav/
 	arch = x86_64
 	license = MIT
@@ -16,6 +16,7 @@ pkgbase = hyprnav
 	depends = python-rich
 	depends = alsa-utils
 	depends = python-nava
+	depends = ttf-hack-nerd
 	source = https://files.pythonhosted.org/packages/ed/1d/a46ca0c10674ff87e96c79716bf3809e8bc8d1206f1b2a9a4d6821256d25/hyprnav-0.1.6.tar.gz
 	sha256sums = c80e8b9586c6f1b6d0e15cbb3563cba10208ee99c45eacc471ea3c145cf74be7
 
