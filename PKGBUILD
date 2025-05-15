@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-server
 pkgver=0.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
@@ -13,6 +13,7 @@ depends=(
 	"glib2"
 	"glibc"
 	"libbsd"
+	"libdrm"
 	"libgl"
 	"libnotify"
 	"libpipewire"
@@ -22,6 +23,7 @@ depends=(
 	"openssl"
 	"systemd-libs"
 	"vulkan-icd-loader"
+	"wayland"
 	"x264"
 )
 makedepends=(
@@ -60,6 +62,7 @@ build() {
 	-DWIVRN_USE_NVENC=ON \
 	-DWIVRN_USE_VULKAN_ENCODE=ON \
 	-DOVR_COMPAT_SEARCH_PATH=/opt/opencomposite:/opt/xrizer \
+	-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON \
 	-Wno-dev
 
 	cmake --build build-server
