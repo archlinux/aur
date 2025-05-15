@@ -1,7 +1,7 @@
 # Maintainer: dashy-jngl <you@example.com>
 pkgname=stardom-card
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI tool to scrape and display Stardom event cards"
 arch=('x86_64')
 url="https://github.com/dashy-jngl/stardom-card"
@@ -13,7 +13,12 @@ sha512sums=('SKIP')  # replace with real sum if you like
 
 build() {
   cd "$srcdir/stardom-card-${pkgver}"
-  pip install --prefix="$pkgdir/usr" --no-deps --ignore-installed .
+  python -m pip install \
+    --root="$pkgdir" \
+    --prefix=/usr \
+    --no-deps \
+    --no-build-isolation \
+    .
 }
 
 package() {
