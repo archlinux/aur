@@ -3,8 +3,8 @@
 pkgname=rubick
 pkgver=4.3.2
 _electronversion=26
-_nodeversion=16
-pkgrel=1
+_nodeversion=18
+pkgrel=2
 pkgdesc="🔧Electron based open source toolbox, free integration of rich plug-ins.(Use system-wide electron) 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
 url="https://rubick.vip/"
@@ -24,13 +24,13 @@ makedepends=(
 	'graphicsmagick'
 	'xz'
 	'curl'
-	'gcc'
+	'git'
 )
 source=(
-	"${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+	"${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
 	"${pkgname}.sh"
 )
-sha256sums=('38659b19f35479bcd9d9bc35f49fad6246aa448ed61c6bdac0b49b3e55a594a4'
+sha256sums=('8b949640a99072a3ae91d4c4d730416662c6d089ddd2e79dcd3badb05860129b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -39,17 +39,21 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-	sed -e "
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
 	_ensure_local_nvm
-	gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	electronDist="/usr/lib/electron${_electronversion}"
+	gendesk -q -f -n \
+		--pkgname="${pkgname}" \
+		--pkgdesc="${pkgdesc}" \
+		--categories="Utility" \
+		--name="${pkgname}" \
+		--exec="${pkgname} %U"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
 	HOME="${srcdir}/.electron-gyp"
@@ -68,6 +72,7 @@ prepare() {
 			echo 'linkWorkspacePackages true'
 			echo 'fetchRetries 3'
 			echo 'fetchRetryTimeout 10000'
+			echo 'networkConcurrency 10'
 		} >> .yarnrc
 		find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
 	fi
@@ -80,6 +85,7 @@ prepare() {
 	NODE_ENV=development 	yarn install --cache-folder "${srcdir}/.yarn_cache"
 }
 build() {
+	local electronDist="/usr/lib/electron${_electronversion}"
 	cd "${srcdir}/${pkgname}-${pkgver}/feature"
 	NODE_ENV=production 	yarn run build
 	cd "${srcdir}/${pkgname}-${pkgver}"
