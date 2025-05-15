@@ -1,8 +1,8 @@
 # Maintainer: jazztickets <amF6enRpY2tldHNAZ21haWwuY29tCg==>
 pkgname=irrlamb-git
-pkgver=v1.0.6.r0.gb465db8
+pkgver=v1.0.7.r0.gd99c154
 pkgrel=1
-pkgdesc="A 3D game that probably involves a lot of physics and frustrating gameplay."
+pkgdesc="A 3D game that probably involves a lot of physics and frustrating gameplay"
 arch=('i686' 'x86_64')
 url="https://irrlamb.gitlab.io"
 license=('GPL3')
