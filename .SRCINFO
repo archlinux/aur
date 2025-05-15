@@ -1,8 +1,8 @@
 pkgbase = grx-bin
 	pkgdesc = Fastest Web Gerber Renderer.(Prebuilt version.Use system-wide electron)
 	pkgver = 3.3.4
-	pkgrel = 1
-	url = https://grx.creery.org/
+	pkgrel = 2
+	url = https://grx.electronicloud.app/
 	arch = x86_64
 	license = MIT
 	depends = electron32

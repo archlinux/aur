@@ -3,10 +3,10 @@ pkgname=grx-bin
 _appname=GRX
 pkgver=3.3.4
 _electronversion=32
-pkgrel=1
+pkgrel=2
 pkgdesc="Fastest Web Gerber Renderer.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
-url="https://grx.creery.org/"
+url="https://grx.electronicloud.app/"
 _ghurl="https://github.com/hpcreery/GRX"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
@@ -23,15 +23,15 @@ sha256sums=('de4c00fbfce06fba64a8615964e2ec93a5abe375e6668ee0ed68f126bfcff96b'
             '6af73551667116d187b1a4e5dac0933f99a4c1151bd1a44c12249cd540a69444'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\/opt\/${_appname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/opt\/${_appname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
