@@ -30,6 +30,7 @@ pkgbase = eden
 	makedepends = unzip
 	makedepends = nlohmann-json
 	makedepends = openssl
+	makedepends = dynarmic
 	makedepends = opus
 	makedepends = zlib
 	makedepends = zstd
