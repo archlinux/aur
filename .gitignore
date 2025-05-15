@@ -2,3 +2,4 @@ src
 pkg
 *x86_64.pkg.tar.xz
 sendmail*.tar.gz
+sendmail*.tar.gz.sig

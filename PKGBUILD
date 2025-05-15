@@ -7,11 +7,11 @@
 
 pkgname=sendmail
 pkgver=8.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A general purpose internetwork email routing MTA"
 url="http://www.sendmail.org"
 arch=('x86_64' 'aarch64')
-license=('custom:sendmail')
+license=('Sendmail-8.23')
 _pkgversplit=( ${pkgver//./ } )
 provides=("sendmail=${_pkgversplit[0]}.${_pkgversplit[1]}" 'smtp-server' 'smtp-forwarder')
 conflicts=('msmtp-mta' 'postfix' 'exim' 'opensmtpd')
@@ -19,10 +19,11 @@ backup=('etc/conf.d/sendmail'
         'etc/mail/aliases'
         'etc/mail/sendmail.cf'
         'etc/sasl2/Sendmail.conf')
-source=("https://ftp.sendmail.org/${pkgname}.${pkgver}.tar.gz"
+source=("https://ftp.sendmail.org/${pkgname}.${pkgver}.tar.gz"{,.sig}
         'site.config.m4'
         'sendmail-8.17.2-sasl2-in-etc.patch'
         'sendmail-8.18.1-gcc-15-fix.patch'
+        'Patch02-Allow-setting-local-CFLAGS-devtools-M4-UNIX-defines.patch'
         'sendmail.conf'
         'sasl2.conf'
         'sendmail.sysusers'
@@ -30,10 +31,15 @@ source=("https://ftp.sendmail.org/${pkgname}.${pkgver}.tar.gz"
         'sendmail.service'
         'sm-client.service')
 depends=('db' 'cyrus-sasl')
+# Signing keys sourced from upstream. Current version is signed with the 2024 keys.
+# https://www.proofpoint.com/us/products/email-protection/open-source-email-solution
+validpgpkeys=('8AB063D7A4C5939DA9C01E38C4065A87C71F6844')
 sha256sums=('cbf1f309c38e4806f7cf3ead24260f17d1fe8fb63256d13edb3cdd1a098f0770'
-            'c71683c251630352c7328dc4e842a6622734310795616333667d1c4d5de38106'
+            'SKIP'
+            '83e393ca3bf8d4466870baf49a30ca393eca367edb1a9c2a7f77ec013ecccbf0'
             '5a92a8a07d6ecb437e41e136960f0b25a91195476c7a550c0098937e8644dfc3'
             '9f03b6d82e2477f8c80101740a15f82d5015c33db2bf2e3c53faed0c529262df'
+            'c408ace05d7dc7089378a64b787d81cf075756dcb6063169f7e0942a91c48d5a'
             '39730f2be66bb1f1e6bc7fff61911db632ecf4b891d348df525abe2020274580'
             '9b4d2d141191f6c9a18538f7acf65243cceb26359f88b64c92c1c4e8407398f0'
             '95531a87d42e30742ca71f7d7197403eb9d703a407a50c9fda1f909ed21e1010'
@@ -43,21 +49,26 @@ sha256sums=('cbf1f309c38e4806f7cf3ead24260f17d1fe8fb63256d13edb3cdd1a098f0770'
 
 prepare() {
     # patches picked from Fedora
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    patch -p1 < "${srcdir}"/sendmail-8.17.2-sasl2-in-etc.patch
-    patch -p1 < "${srcdir}"/sendmail-8.18.1-gcc-15-fix.patch
+    cd "${pkgname}-${pkgver}"
+    patch -p1 -i ../sendmail-8.17.2-sasl2-in-etc.patch
+    patch -p1 -i ../sendmail-8.18.1-gcc-15-fix.patch
+
+    # Patch from libmilter package
+    # Prevent circular reference to CFLAGS when local CFLAGS are set via 'confOPTIMIZE' in site.config.m4
+    patch -p1 -i ../Patch02-Allow-setting-local-CFLAGS-devtools-M4-UNIX-defines.patch
+
     sed -i -e 's/CFGRP=bin/CFGRP=root/g' cf/cf/Makefile
     install -m644 -t devtools/Site "${srcdir}"/site.config.m4
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
     ./Build
     GROFF_NO_SGR=1 make -C doc/op op.txt op.ps
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
     install -dm755 "${pkgdir}"/usr/{bin,share/{doc/sendmail,man/man{1,5,8}}}
     make install DESTDIR="${pkgdir}"
     make -C mail.local force-install DESTDIR="${pkgdir}"

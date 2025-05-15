@@ -1,3 +1,7 @@
+dnl Enable local CFLAGS and LDFLAGS
+define(`confLDOPTS',`${LDFLAGS}')
+define(`confOPTIMIZE',`${CFLAGS}')
+
 define(`confSTDIO_TYPE', `portable')
 define(`confGBINGRP', `25')
 define(`confMSPQOWN', `150')
@@ -16,3 +20,10 @@ define(`confMANROOT', `/usr/share/man/man')
 APPENDDEF(`confENVDEF', `-DNETINET6 -DHAS_GETHOSTBYNAME2 -DHASFLOCK -D_FFR_MILTER_CHECK_REJECTIONS_TOO')
 APPENDDEF(`conf_sendmail_ENVDEF', `-DSTARTTLS -DSASL=2 -DDANE -DTLS_EC=2 -D_FFR_TLS_USE_CERTIFICATE_CHAIN_FILE')
 APPENDDEF(`conf_sendmail_LIBS', `-lssl -lcrypto -lresolv -lsasl2')
+
+dnl Allow stripping by giving write permission
+define(`confGBINMODE',`2755')
+define(`confLIBMODE',`644')
+define(`confMBINMODE',`750')
+define(`confSBINMODE',`4755')
+define(`confUBINMODE',`755')
