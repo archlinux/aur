@@ -1,9 +1,18 @@
 -------------------------------------------------------
  Changelog    : nginx_passwd
- Tags         : 2.4.0 ➙ 2.6.0
-              : 2024-04-02 ➙ 2025-05-14
+ Tags         : 2.5.1 ➙ 2.7.2
+              : 2024-10-13 ➙ 2025-05-15
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-05-15   : 2.7.2
+                typo
+                update Docs/Changelogs Docs/${my_name}.pdf
+
+ 2025-05-15   : 2.7.1
+                Add missing PKGBUILD dependencies so pytest does not fail
+                  Fixes issue #5 thanks to @SoLoR1
+ 2025-05-14     update Docs/Changelogs Docs/${my_name}.pdf
 
  2025-05-14   : 2.6.0
                 * PEP-8, PEP-257, PEP-484 and PEP 561
@@ -22,23 +31,3 @@
  2024-10-13   : 2.5.1
                 Minor readme update
  2024-04-04     update Docs/Changelog.rst Docs/nginx_passwd.pdf
-
- 2024-04-04   : 2.5.0
-                update Docs/Changelog.rst Docs/nginx_passwd.pdf
-                Fix bug deleting last entry in password file.
-                      Thanks to solsticedhive for finding and providing patch.
-                      Fixes https://github.com/gene-git/nginx_passwd/issues/3
-                Bug : if no user given then it is set to "None".
-                      Thanks to @olsticedhiver
-                      Fixes https://github.com/gene-git/nginx_passwd/issues/4
- 2024-04-02     update Docs/Changelog.rst Docs/nginx_passwd.pdf
-                tweak readme
-
- 2024-04-02   : 2.4.0
-                update Docs/Changelog.rst Docs/nginx_passwd.pdf
-                update Docs/Changelog.rst
-                Fix passlib bcrrypt warning when can happen if python-bcyrpt is used.
-                    The python bcrypt module is optional for passlib.
-                    Fixes https://github.com/gene-git/nginx_passwd/issues/2 brought by
-                    @solsticedhiver
- 2024-02-04     update Docs/Changelog.rst
