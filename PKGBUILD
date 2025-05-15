@@ -2,7 +2,7 @@
 pkgname=opal-player-bin
 _pkgname=Opal
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plays relaxing music in the background.(Prebuilt version)"
 arch=('x86_64')
 url="https://codedead.com/"
@@ -27,17 +27,19 @@ source=(
 sha256sums=('48f0100b91cf56b243756a0b3c930396c0a65d1ba15fc8aec397530ed21fe12b'
             'a86afff929bb2d4bb886e0619f6743a02d9e9470c8f1643f0e9db2eb7defbf2d')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bi}/g
         s/@runname@/${_pkgname}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "
+    sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin} %U/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
         s/Utility/AudioVideo/g
-    " -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    " "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

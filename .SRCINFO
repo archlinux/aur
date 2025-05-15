@@ -1,7 +1,7 @@
 pkgbase = opal-player-bin
 	pkgdesc = Plays relaxing music in the background.(Prebuilt version)
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codedead.com/
 	arch = x86_64
 	license = GPL-3.0-only
