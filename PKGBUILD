@@ -5,14 +5,14 @@
 # Contributor: Shawn Nock <shawn@monadnock.ca>
 
 pkgname='littlefs-fuse'
-pkgver=2.7.11
-pkgrel=2
+pkgver=2.7.12
+pkgrel=1
 pkgdesc='A FUSE wrapper that puts the littlefs in user-space'
 url='https://github.com/littlefs-project/littlefs-fuse'
 arch=('aarch64' 'x86_64')
 license=('BSD-3-Clause')  # SPDX-License-Identifier: BSD-3-Clause
 depends=('fuse2' 'glibc')
-source=("littefs-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
+source=("littefs-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -37,10 +37,10 @@ package() {
 }
 
 sha256sums=(
-  '5f7e22b1379fb47c1c161726c3dfdd9b2ca43785c98b9d76c31f730bda99032c'
+  '79d6ce7d20a22d5a02dfd5259ae759089b5db346e7e2e73e06dac4e9c020ab7c'
 )
 b2sums=(
-  '962215106941705441437be0013d119719e0883bc37eb40a37268ffc75347fe7a39ede277a49e3628dcdd90b5d22374a9ada959a708f2bd18c6ef1e4f4fae246'
+  'd31fe86b82e6243eace14329bf18c5e71ad11840b45d6b9cc289f0155a9d276d1a83baac7d699c787a5684bb36107a96c1c3267151d2158ad5ca75e0e852da96'
 )
 
 # eof
