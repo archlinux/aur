@@ -21,11 +21,11 @@ source=(
 sha256sums=('133fb2475cabba51d3a43cba72fdf26704ffbcfaa2228f1086ac9d97246a4051')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/Categories=/Categories=AudioVideo/g
         s/Name=${_zhsname}/Name=${pkgname%-bin}/g
         6i\Name[zh_CN]=${_zhsname}
-    " -i "${srcdir}/usr/share/applications/${_zhsname}.desktop"
+    " "${srcdir}/usr/share/applications/${_zhsname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
