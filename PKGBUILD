@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pikatorrent-bin
 _pkgname=PikaTorrent
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="BitTorrent client ⚡. For mobile, desktop & server.(Prebuilt version)"
 arch=(
@@ -34,14 +34,19 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x64.zip")
 sha256sums=('8310a77ea2a7bbb3fdfeba4b073d59cc54b8e40d553ec4553d0bd668cc4b931a'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('f09e959715f56796105f4dabb05587045d240ddb45eefe49dc4f58316b0d79e4')
-sha256sums_x86_64=('e9469e9a1bc45e0bbb7f527c6c6da7b71c91042af755e3b7a94ec2b08a6c254d')
+sha256sums_aarch64=('9c15d91700bee29a68981c2f4f97e2309708b34fbfce580bf7cc99835e4a56d7')
+sha256sums_x86_64=('25e22a4461341dc866d593cf2cc96b034dbe37c144213ae8978c36b36742e40d')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin}"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Network" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
