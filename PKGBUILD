@@ -2,7 +2,7 @@
 
 pkgname=zebrad
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Zcash full-node"
 url='https://github.com/ZcashFoundation/zebra'
 source=("zebra-${pkgver//_/-}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
@@ -16,6 +16,7 @@ build() {
   cd "zebra-$pkgver" || exit
 
   # Build Zebra.
+  export CXXFLAGS="$CXXFLAGS -include cstdint"
   cargo build --locked --release --features sentry --package zebrad --bin zebrad --target-dir target
 }
 
