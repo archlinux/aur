@@ -1,7 +1,7 @@
 pkgbase = yarle-evernote-to-md-bin
-	pkgdesc = Yarle - The ultimate converter of Evernote notes to Markdown.(Prebuilt version.Use system-wide electron)
+	pkgdesc = The ultimate converter of Evernote notes to Markdown.(Prebuilt version.Use system-wide electron)
 	pkgver = 6.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/akosbalasko/yarle
 	arch = x86_64
 	license = MIT
