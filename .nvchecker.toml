@@ -1,0 +1,4 @@
+[miracle-wm]
+source = "git"
+git = "https://github.com/miracle-wm-org/miracle-wm.git"
+prefix = "v"
