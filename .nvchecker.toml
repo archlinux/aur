@@ -1,0 +1,6 @@
+[git-stack]
+source = "github"
+github = "gitext-rs/git-stack"
+use_max_tag = true
+from_pattern = 'v?([\d.]+)'
+to_pattern = '\1'
