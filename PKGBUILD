@@ -67,8 +67,8 @@ prepare() {
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    #NODE_ENV=development    npm install --legacy-peer-deps
-	#NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
+    NODE_ENV=development    npm install --legacy-peer-deps
+	NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
