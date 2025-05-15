@@ -1,4 +1,5 @@
 pkgbase = electron-nightly-bin
+<<<<<<< HEAD
 	pkgdesc = Electron Nightly build for Linux - Binary version
 	pkgver = 35.0.0.nightly.20241223
 	pkgrel = 1
@@ -12,5 +13,37 @@ pkgbase = electron-nightly-bin
 	depends = libnotify
 	source = https://github.com/electron/nightlies/releases/download/v35.0.0-nightly.20241223/electron-v35.0.0-nightly.20241223-linux-x64.zip
 	sha256sums = de58d27489ec14cc7c926a3e3b3a30220f6bdbbb80d66d713cc2367694184a25
+=======
+	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
+	pkgver = 38.0.0nightly.20250514
+	pkgrel = 1
+	url = https://electronjs.org
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	license = LicenseRef-custom
+	depends = alsa-lib
+	depends = gtk3
+	depends = nss
+	optdepends = kde-cli-tools: file deletion support (kioclient5)
+	optdepends = pipewire: WebRTC desktop sharing under Wayland
+	optdepends = qt6-base: enable Qt6 with --enable-features=AllowQt
+	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
+	optdepends = trash-cli: file deletion support (trash-put)
+	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
+	provides = electron
+	provides = electron38=38.0.0nightly.20250514
+	conflicts = electron38
+	noextract = electron-38.0.0nightly.20250514-x86_64.zip
+	source_aarch64 = electron-38.0.0nightly.20250514-aarch64.zip::https://github.com/electron/nightlies/releases/download/v38.0.0-nightly.20250514/electron-v38.0.0-nightly.20250514-linux-arm64.zip
+	sha256sums_aarch64 = a169c8d2ceb0201bc42bcd59a9f3903dd49c3dc850a46cd2d0aeb14fea352904
+	source_armv7h = electron-38.0.0nightly.20250514-armv7h.zip::https://github.com/electron/nightlies/releases/download/v38.0.0-nightly.20250514/electron-v38.0.0-nightly.20250514-linux-armv7l.zip
+	sha256sums_armv7h = 2c4d8b6418d6e265a90eb6a16bea334e107dec1790f545628c700c6741de17bd
+	source_x86_64 = electron-38.0.0nightly.20250514-x86_64.zip::https://github.com/electron/nightlies/releases/download/v38.0.0-nightly.20250514/electron-v38.0.0-nightly.20250514-linux-x64.zip
+	source_x86_64 = electron
+	sha256sums_x86_64 = 1f1de7f0daed689b05e09eea4a059cd5446e8acc2e2dfaea3218c9f150852937
+	sha256sums_x86_64 = f074713d0322b652b78ed2491dce2676d05d10a284187c5deba4a047b8283e4c
+>>>>>>> 7def927 (updated to latest nightly, important changes posted in comments =3)
 
 pkgname = electron-nightly-bin
