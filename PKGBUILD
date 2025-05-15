@@ -3,7 +3,7 @@ pkgname=simple-web-server-bin
 _pkgname=Simple-Web-Server
 pkgver=1.2.15
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="Create a local web server in just a few clicks with an easy to use interface. A continuation of Web Server for Chrome, built with Electron.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -28,13 +28,13 @@ sha256sums=('57e19cef8140644e1f4ac091f5bb90dc20e65f26232a756233cba336c2dbd85b'
 sha256sums_aarch64=('8e153f6e0b980e7e17ab004bd3693a68977363338ca5c8d0b023e09330c60707')
 sha256sums_x86_64=('1b9bedc5cfc59edf8bb546dbcae3c92daf1f13c5225c3bb0a884fe7366df3836')
 prepare() {
-    sed -e "
+    sed -e -i "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname//-/ }/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/\"\/opt\/${_pkgname//-/ }\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
