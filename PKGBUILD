@@ -2,8 +2,8 @@
 
 pkgname=zebrad
 pkgver=2.3.0
-pkgrel=2
-pkgdesc="A Zcash full-node"
+pkgrel=3
+pkgdesc="A Zcash full node"
 url='https://github.com/ZcashFoundation/zebra'
 source=("zebra-${pkgver//_/-}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
 arch=('aarch64' 'x86_64')

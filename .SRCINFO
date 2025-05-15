@@ -1,7 +1,7 @@
 pkgbase = zebrad
-	pkgdesc = A Zcash full-node
+	pkgdesc = A Zcash full node
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ZcashFoundation/zebra
 	arch = aarch64
 	arch = x86_64
