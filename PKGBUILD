@@ -1,12 +1,10 @@
-# Maintainer: mehalter <micah at mehalter.com>
-# Maintainer: wenLiangcan <boxeed at gmail dot com>
-# Maintainer: vinipsmaker <vini.ipsmaker@gmail.com>
+# Maintainer: Tobias Kunze <r@rixx.de>
 
 pkgbase=http-prompt
 pkgname=http-prompt
 _module='http-prompt'
 pkgver='2.1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive HTTP command-line client"
 url="https://github.com/eliangcs/http-prompt"
 depends=('python'
