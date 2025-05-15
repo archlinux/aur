@@ -15,7 +15,7 @@ ReadWritePaths=/var/lib/glance
 ReadOnlyPaths=/etc/glance.yml
 PrivateTmp=true
 ProtectSystem=strict
-ProtectHome=true
+ProtectHome=read-only
 NoNewPrivileges=true
 PrivateDevices=true
 
