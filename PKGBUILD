@@ -2,9 +2,9 @@
 # Maintainer: Steffen Ridderbusch <steffen@robots.ox.ac.uk>
 # Contributor: Alastair Cooper <alastair@alastair87.me>
 pkgname='lunatask'
-pkgver=2.0.20
+pkgver=2.0.22
 pkgrel=0
-pkgdesc='lunatask.app (unofficial and *not* supported by Lunatask developers)'
+pkgdesc='all-in-one encrypted to-do list, habit tracker, journaling, life-tracking and notes app (unofficial and *not* supported by upstream developers)'
 arch=('x86_64')
 depends=('libindicator-gtk3' 'libappindicator-gtk3' 'libnotify' 'libxss' 'libxtst' )
 url='https://lunatask.app'
@@ -12,7 +12,7 @@ license=('proprietary')
 
 _file=Lunatask-${pkgver}.AppImage
 source=(https://github.com/lunatask/lunatask/releases/download/v${pkgver}/${_file})
-sha512sums=('0c6ae52d3f6465ce41e90b92508c3d769bb168259db78fc4f6b7f5be56ab3d081262f09b9ebab8405dd2fdd57ddf72584e1e5790f3db7e95e14a3ac68ff72a93')
+sha512sums=('8fc5e109281647d7357bbbfbb2e7683cebb03aa17a17b3f8666bfa7821c22b76abb87d5f238523f4efac5e291c943d7910038005960330e854b5436c927933e6')
 
 options+=('!strip')
 
