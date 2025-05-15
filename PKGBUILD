@@ -23,6 +23,7 @@ depends=(
   libsoup3
   libgee
   libxml2
+  libxml2-legacy
   sqlite
   webkitgtk-6.0
   xdg-desktop-portal-impl

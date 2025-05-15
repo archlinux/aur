@@ -24,6 +24,7 @@ pkgbase = cassette
 	depends = libsoup3
 	depends = libgee
 	depends = libxml2
+	depends = libxml2-legacy
 	depends = sqlite
 	depends = webkitgtk-6.0
 	depends = xdg-desktop-portal-impl
