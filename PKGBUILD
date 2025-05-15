@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=tari-universe-appimage
-pkgver=1.0.5
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Tari desktop wallet"
 provides=('tari_universe')
@@ -16,7 +16,7 @@ _filename=tari_universe_${pkgver}_amd64.AppImage
 source=(
   https://github.com/tari-project/universe/releases/download/v${pkgver}/${_filename}
 )
-sha256sums=('c8450c43d33199ac7f2bcfcf448d1e8a552aa498f57028360e80faf95d1ffcf3')
+sha256sums=('a9e64ed8c5c3c71273fef118e0e4a44111c617e53e65d5d4eb255346f76ed3f4')
 
 prepare() {
   cd "${srcdir}"
@@ -24,6 +24,7 @@ prepare() {
   chmod +x ${_filename}
   ./${_filename} --appimage-extract
   sed -i -e "s|Exec=.\+|Exec=env APPIMAGELAUNCHER_DISABLE=1 DESKTOPINTEGRATION=0 /usr/bin/tari_universe.AppImage %U|" squashfs-root/${_desktop_name}
+  sed -i -e "s|Name=.\+|Name=Tari Universe|" squashfs-root/${_desktop_name}
 }
 
 package() {
