@@ -1,6 +1,6 @@
 pkgbase = titan-rcs-git
-	pkgdesc = A desktop application for streamlining your workflow in Revision Control Systems (RCS) like Subversion (SVN).(Use system-wide electron)
-	pkgver = 2.0.0.r1.ge388630
+	pkgdesc = Streamlin your workflow in Revision Control Systems (RCS) like Subversion (SVN).(Use system-wide electron)
+	pkgver = 2.0.4.r0.gdf53c7e
 	pkgrel = 1
 	url = https://github.com/ArrushC/Titan
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = titan-rcs-git
 	makedepends = git
 	makedepends = curl
 	depends = electron33
-	provides = titan-rcs=2.0.0
+	provides = titan-rcs=2.0.4
 	conflicts = titan-rcs
 	source = titan-rcs.git::git+https://github.com/ArrushC/Titan.git
 	source = titan-rcs.sh
