@@ -1,11 +1,11 @@
 pkgbase = ttf-neospleen
 	pkgdesc = A modern monospaced font inspired by Spleen
-	pkgver = 1.0.57
+	pkgver = 1.0.62
 	pkgrel = 1
 	url = https://github.com/mbwilding/NeoSpleen
 	arch = any
 	license = BSD-2-Clause
-	source = https://github.com/mbwilding/NeoSpleen/releases/download/1.0.57/NeoSpleen-TTF.zip
-	b2sums = c7f98123c07be0965a0193f507152671008462c4ec7cadb95ac8ef0ad95625130823ecf658a55bd33b6dee233775b9e12eecd2a51823e80b73b2c4318603456f
+	source = https://github.com/mbwilding/NeoSpleen/releases/download/1.0.62/NeoSpleen-TTF.zip
+	b2sums = ab90df9a7824ecdfe0f457ac772a1f41ebeb13cdc0dda33d0e58f233d0c79b3ab295a0b86739a69ab15cda78fb59c1477aeff2a2be16302674b354e79b2296a8
 
 pkgname = ttf-neospleen
