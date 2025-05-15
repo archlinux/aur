@@ -15,4 +15,4 @@ if [[ " $@ " == *" --wayland "* ]]; then
 fi
 
 # Launch
-exec electron34 /usr/lib/equibop/app.asar $EQUIBOP_USER_FLAGS "$@"
+exec electron35 /usr/lib/equibop/app.asar $EQUIBOP_USER_FLAGS "$@"
