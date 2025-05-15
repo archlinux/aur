@@ -1,0 +1,17 @@
+pkgbase = qutescoop-bin
+	pkgdesc = Status indicator for the online flight simulation community VATSIM
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = https://github.com/qutescoop/qutescoop
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = patchelf
+	depends = qt5-base
+	depends = libglvnd
+	depends = glibc
+	depends = gcc-libs
+	depends = glu
+	source = qutescoop-bin-2.10.0.tgz::https://github.com/qutescoop/qutescoop/releases/download/v2.10.0/QuteScoop-v2.10.0-linux.tgz
+	sha256sums = dc8c07455cc5c7eb7639f578c7823eaa4f2e7b5fe7d3992c393bdde13a23aef4
+
+pkgname = qutescoop-bin
