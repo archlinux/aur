@@ -27,9 +27,9 @@ package() {
     cd "$srcdir"
 
     if [[ "$CARCH" == "x86_64" ]]; then
-        tar -xvzf "$srcdir/$(basename "${source[0]}")"
+        tar -xvzf "${pkgver}-x86_64.tar.gz"
     elif [[ "$CARCH" == "aarch64" ]]; then
-        tar -xvzf "$srcdir/$(basename "${source[1]}")"
+        tar -xvzf "${pkgver}-aarch64.tar.gz"
     fi
 
     install -Dm755 "toutui" "$pkgdir/usr/bin/toutui"
