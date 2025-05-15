@@ -3,13 +3,15 @@
 _pkgname=qdrant
 pkgname=${_pkgname}-bin
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Vector Database for the next generation of AI applications - Binary"
 arch=('x86_64' 'aarch64')
 url="https://qdrant.tech/"
 license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=()
+provides=('qdrant')
+conflicts=('qdrant')
 source=(
   "https://github.com/qdrant/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${CARCH}-unknown-linux-gnu.tar.gz"
 )
