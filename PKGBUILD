@@ -4,7 +4,8 @@
 pkgname=i4tools-bin
 _pkgname=i4tools
 pkgver=3.07.001
-pkgrel=1
+pkgrel=2
+epoch=1
 pkgdesc='爱思助手是一款集“高效管理 iOS 设备数据”，“智能刷机”和“免费下载海量应用游戏、铃声壁纸”等为一体的 iOS 设备管理工具。'
 arch=('x86_64')
 url="https://www.i4.cn/pro_pc.html"
@@ -23,7 +24,11 @@ depends=(
     'openssl'
     'sqlite'
     'util-linux-libs'
-    'zlib')
+    'zlib'
+    'usbmuxd'
+    'libusbmuxd'
+    'libimobiledevice'
+    'libimobiledevice-glue')
 source=(
     "${_pkgname}_v${pkgver}.rpm::https://d-updater.i4.cn/i4linux/deb/${_pkgname}_v${pkgver}.rpm"
     "https://www.i4.cn/copyright.html"
@@ -47,5 +52,5 @@ package() {
     cp -r "${srcdir}/opt/apps/cn.i4Tools" "${pkgdir}/opt/"
     cd "${srcdir}/opt/apps/cn.i4Tools/resources"
     cp logo.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
-    cp logo.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg       
+    cp logo.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg
 }
