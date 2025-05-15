@@ -3,7 +3,7 @@ pkgname=csbooks-bin
 _pkgname=csBooks
 pkgver=8.5.0
 _electronversion=13
-pkgrel=1
+pkgrel=2
 pkgdesc="A smart book management and reading software,also a PDF reader, EPUB reader, MOBI reader and DJVU file reader.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://caesiumstudio.com/csbooks/"
@@ -23,14 +23,14 @@ sha256sums=('499b041b365a876ed3d204d2da5dfe795ca43981299689ac53d3f3edce28a435'
             'a54c7d4ad986843b71f0b31fc110e5c5b62634518198731207e503e8642f5d4b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
