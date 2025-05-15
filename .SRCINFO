@@ -1,7 +1,7 @@
 pkgbase = bili-liveluckdraw-bin
 	pkgdesc = A Bilibili live streaming lottery tool that conducts lotteries by obtaining keywords from danmaku, built using Electron + React + Vite.(Prebuilt version.Use system-wide electron)一个B站直播抽奖工具，通过获取弹幕关键词进行抽奖
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/grtsinry43/Bili-LiveLuckDraw
 	arch = x86_64
 	license = MIT
