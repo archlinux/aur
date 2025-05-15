@@ -3,7 +3,7 @@
 pkgname=rubick-bin
 pkgver=4.3.2
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins.(Prebuilt version.Use system-wide electron) 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
 url="https://rubickcenter.github.io/rubick/"
@@ -23,15 +23,15 @@ sha256sums=('b7cb415b67035ab47b160e4ce40762af67916d7645d80ad226109980f12a8a44'
             '98ec3482acc93db8661b6a794744e5eaca088cf75312d15f196abb5db7e52b77'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-	sed -e "
+	sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
 	bsdtar -xf "${srcdir}/data."*
-	sed -i "s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+	sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package(){
 	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
