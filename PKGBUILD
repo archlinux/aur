@@ -4,7 +4,7 @@
 pkgname=i4tools-bin
 _pkgname=i4tools
 pkgver=3.07.001
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='爱思助手是一款集“高效管理 iOS 设备数据”，“智能刷机”和“免费下载海量应用游戏、铃声壁纸”等为一体的 iOS 设备管理工具。'
 arch=('x86_64')
@@ -41,14 +41,17 @@ package() {
     install -m755 -d "${pkgdir}/usr/share/pixmaps"
     install -m755 -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -m755 -d "${pkgdir}/usr/bin" 
+    install -Dm755 "${srcdir}/opt/apps/cn.i4Tools/"run.sh "${pkgdir}/usr/bin/"${_pkgname}
+    install -Dm644 "${srcdir}/opt/apps/cn.i4Tools/"cn.i4Tools.desktop "$pkgdir/usr/share/applications/"$_pkgname.desktop
     install -Dm644 ${srcdir}/copyright.html "$pkgdir/usr/share/licenses/$pkgname/copyright.html"
-    cd ${srcdir}/opt/apps/cn.i4Tools
-    sed '10s/.*/Exec=i4tools %u/g' -i cn.i4Tools.desktop
-    sed '11s/.*/Icon=i4tools/g' -i cn.i4Tools.desktop
-    install -Dm644 cn.i4Tools.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
-    sed '7s/.*/    cd \/opt\/cn.i4Tools/g' -i run.sh
-    sed -i '8i\	export LD_LIBRARY_PATH=\/opt\/cn.i4Tools\/lib:$LD_LIBRARY_PATH' run.sh
-    install -Dm755 run.sh "${pkgdir}/usr/bin/${_pkgname}"
+    sed -i 's|/opt/apps/cn.i4Tools/run.sh|i4tools %u|g' \
+        "$pkgdir/usr/share/applications/"$_pkgname.desktop
+    sed -i 's|/opt/apps/cn.i4Tools/resources/logo.png|i4tools|g' \
+        "$pkgdir/usr/share/applications/"$_pkgname.desktop
+    sed -i 's|utils|Utility;|g' \
+        "$pkgdir/usr/share/applications/"$_pkgname.desktop
+    sed '7s/.*/    cd \/opt\/cn.i4Tools/g' -i "${pkgdir}/usr/bin/"${_pkgname}
+    sed -i '8i\	export LD_LIBRARY_PATH=\/opt\/cn.i4Tools\/lib:$LD_LIBRARY_PATH' "${pkgdir}/usr/bin/"${_pkgname}
     cp -r "${srcdir}/opt/apps/cn.i4Tools" "${pkgdir}/opt/"
     cd "${srcdir}/opt/apps/cn.i4Tools/resources"
     cp logo.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
