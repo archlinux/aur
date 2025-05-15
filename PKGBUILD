@@ -1,7 +1,7 @@
 # Maintainer: Matt Cuneo <m@cuneo.au>
 pkgname=authentik-outpost
-pkgver=2025.4.0
-pkgrel=2
+pkgver=2025.4.1
+pkgrel=1
 pkgdesc="Open-source Identity Provider focused on flexibility and versatility."
 arch=('x86_64')
 url="https://goauthentik.io/"
@@ -43,6 +43,6 @@ package() {
     install -Dm644 authentik-outpost.env "$pkgdir/etc/authentik-outpost-$outpost.env"
   done
 }
-sha256sums=('42428ac7f15c4e024f6a2efe39973cc7083ebe88914b544bb2f296805d02ab32'
+sha256sums=('e156bcab127a574a0d7f2f33b77fbd096bd4b1bbbcfe15db2610b0e3ed083cee'
             '19e2025eca5b450b2e1dd15a174fa9438f7ac41c200720b4959b93adf0d2362b'
             '6be54203da7d45e96aaacb5b3abdf3b4fc896138e807f6e65c60090fd17127b2')
