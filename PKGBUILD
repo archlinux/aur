@@ -69,7 +69,6 @@ check() {
     --deselect google/genai/tests/files/test_download.py
     --deselect google/genai/tests/files/test_upload.py
     --deselect google/genai/tests/models/test_generate_content_from_apikey.py
-    #--deselect google/genai/tests/models/test_generate_content_thought.py
     --deselect google/genai/tests/public_samples/test_gemini_text_only.py
     --deselect google/genai/tests/tunings/test_end_to_end.py
   )
