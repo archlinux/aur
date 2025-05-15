@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ExperimentSubset
-_pkgver=1.18.0
+_pkgver=1.18.1
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='Manages subsets of data with Bioconductor Experiment objects'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8cab476f74e22022e7f6e6b464f8310758e5c9007957734e8b5d049ad1ec4f83')
+sha256sums=('7551a306d892610fce280ce820ca9d43d89d606a702265f970a34813cf93ad42')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
