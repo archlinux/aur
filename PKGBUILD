@@ -1,7 +1,7 @@
 # Maintainer: John Oberhauser <j.aur@obez.io>
 pkgname=okpanel-git
 pkgver=0.1.0
-pkgrel=10
+pkgrel=11
 pkgdesc="A custom AGS panel for hyprland"
 license=('GPL3')
 arch=('any')
@@ -14,6 +14,7 @@ depends=(
     'cava'
     'cliphist'
     'dart-sass'
+    'go-yq'
     'grim'
     'gvfs'
     'jq'
