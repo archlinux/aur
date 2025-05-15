@@ -1,4 +1,4 @@
-[parabolic]
+[parabolic-qt]
 source = "github"
 github = "NickvisionApps/Parabolic"
 use_max_tag = true
