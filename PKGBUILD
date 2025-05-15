@@ -6,7 +6,7 @@
 _servicename=source_validator
 pkgname=obs-service-"${_servicename}"
 pkgname=obs-service-source_validator
-pkgver=0.39
+pkgver=0.41
 pkgrel=1
 pkgdesc='An OBS source service: running all the osc source-validator checks'
 arch=('any')
@@ -26,7 +26,7 @@ depends=(
   zstd
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('b689bca17677ba9de01a618f9d3b7e9f01e3eabe04969ca9f482a6005322670f')
+sha256sums=('de6b68f336b51d47c2e2a94e7c8d01f93b0126f2c1dc3998531e29b5f3bed23c')
 
 package() {
   cd "$pkgname-$pkgver"
