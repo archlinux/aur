@@ -1,0 +1,87 @@
+From efa8f6cb3bdeced21268e07c728f52fb7a2e7e3b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Wed, 16 Apr 2025 13:24:04 +0200
+Subject: [PATCH] Set application ID to match with .desktop
+
+Using the same application ID ensures that Wayland compositors could match
+the window with the application and show the appropriate icon for them.
+---
+ meson.build              | 1 +
+ previewer/ev-previewer.c | 5 ++---
+ shell/ev-application.c   | 3 +--
+ shell/main.c             | 1 +
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index b9ade2b89..33d8e66b5 100644
+--- a/meson.build
++++ b/meson.build
+@@ -80,6 +80,7 @@ config_h.set10('_GNU_SOURCE', true)
+ 
+ # package
+ config_h.set_quoted('PACKAGE_ICON_NAME', app_id)
++config_h.set_quoted('APPLICATION_ID', ev_namespace)
+ config_h.set_quoted('PACKAGE_VERSION', ev_version)
+ config_h.set_quoted('VERSION', ev_version)
+ 
+diff --git a/previewer/ev-previewer.c b/previewer/ev-previewer.c
+index 7117ace3d..605a2b083 100644
+--- a/previewer/ev-previewer.c
++++ b/previewer/ev-previewer.c
+@@ -290,8 +290,6 @@ main (gint argc, gchar **argv)
+ 	textdomain (GETTEXT_PACKAGE);
+ #endif
+ 
+-        g_set_prgname ("evince-previewer");
+-
+ 	context = g_option_context_new (_("GNOME Document Previewer"));
+ 	g_option_context_set_translation_domain (context, GETTEXT_PACKAGE);
+ 	g_option_context_add_main_entries (context, goption_options, GETTEXT_PACKAGE);
+@@ -313,9 +311,10 @@ main (gint argc, gchar **argv)
+ 	ev_stock_icons_init ();
+ 
+ 	g_set_application_name (_("GNOME Document Previewer"));
++	g_set_prgname (APPLICATION_ID "-previewer");
+ 	gtk_window_set_default_icon_name (PACKAGE_ICON_NAME);
+ 
+-        application = gtk_application_new (NULL, G_APPLICATION_NON_UNIQUE);
++        application = gtk_application_new (APPLICATION_ID "-previewer", G_APPLICATION_NON_UNIQUE);
+         g_signal_connect (application, "startup", G_CALLBACK (startup_cb), NULL);
+         g_signal_connect (application, "activate", G_CALLBACK (activate_cb), NULL);
+ 
+diff --git a/shell/ev-application.c b/shell/ev-application.c
+index ac60e47f2..001d21438 100644
+--- a/shell/ev-application.c
++++ b/shell/ev-application.c
+@@ -65,7 +65,6 @@ struct _EvApplicationClass {
+ 
+ G_DEFINE_TYPE (EvApplication, ev_application, GTK_TYPE_APPLICATION)
+ 
+-#define APPLICATION_NAME             "org.gnome.Evince"
+ #ifdef ENABLE_DBUS
+ #define APPLICATION_DBUS_OBJECT_PATH "/org/gnome/evince/Evince"
+ #define APPLICATION_DBUS_INTERFACE   "org.gnome.evince.Application"
+@@ -104,7 +103,7 @@ ev_application_new (void)
+   const GApplicationFlags flags = G_APPLICATION_NON_UNIQUE;
+ 
+   return g_object_new (EV_TYPE_APPLICATION,
+-                       "application-id", APPLICATION_NAME,
++                       "application-id", APPLICATION_ID,
+                        "flags", flags,
+                        NULL);
+ }
+diff --git a/shell/main.c b/shell/main.c
+index 3a3bdf956..c4aed0181 100644
+--- a/shell/main.c
++++ b/shell/main.c
+@@ -377,6 +377,7 @@ main (int argc, char *argv[])
+ 
+ 	/* Manually set name and icon */
+ 	g_set_application_name (_("Document Viewer"));
++	g_set_prgname (APPLICATION_ID);
+ 	gtk_window_set_default_icon_name (PACKAGE_ICON_NAME);
+ 
+         application = ev_application_new ();
+-- 
+GitLab
+
