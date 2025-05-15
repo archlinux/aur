@@ -1,16 +1,16 @@
 pkgbase = opencode-bin
 	pkgdesc = terminal based agent that can build anything
-	pkgver = 0.0.48
+	pkgver = 0.0.49
 	pkgrel = 1
 	url = https://github.com/sst/opencode
 	license = MIT
 	conflicts = opencode
 	provides = opencode
 	arch = aarch64
-	source_aarch64 = https://github.com/sst/opencode/releases/download/v0.0.48/opencode-linux-arm64.tar.gz
-	sha256sums_aarch64 = a6fa6cba2a9e3b2255ea5bf708fbf60f1854a45dd6226eadd56e88abf398345d
+	source_aarch64 = https://github.com/sst/opencode/releases/download/v0.0.49/opencode-linux-arm64.tar.gz
+	sha256sums_aarch64 = dbbc9d14da64d944fe9f34725a76ab3cfaacd2185ee02d898a677fbca8028850
 	arch = x86_64
-	source_x86_64 = https://github.com/sst/opencode/releases/download/v0.0.48/opencode-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 88ef4c812a8880932fd096e2394935df88f4fa2cfb68339233385b36ec5f7b16
+	source_x86_64 = https://github.com/sst/opencode/releases/download/v0.0.49/opencode-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 67ca5316f27e06fe3079987c1f8c68a071c291247e6429b2ffe90e5d5760b445
 	
 pkgname = opencode-bin
