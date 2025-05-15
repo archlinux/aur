@@ -8,7 +8,8 @@ pkgdesc="A software oscilloscope and signal analysis toolset."
 arch=('x86_64' 'aarch64')
 url="https://github.com/analogdevicesinc/scopy"
 license=('GPL-3.0-only')
-conflicts=('scopy-git')
+provides=('scopy')
+conflicts=('scopy')
 depends=('zlib' 'hicolor-icon-theme' 'glibc')
 
 if [ ${CARCH} = "aarch64" ]; then
