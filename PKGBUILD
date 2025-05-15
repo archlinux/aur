@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=limSolve
-_pkgver=1.5.7.1
+_pkgver=1.5.7.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Solving Linear Inverse Models"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6e05187f84421d535439364d4a6715af')
-b2sums=('4e2d8b0813296af9a3879a69771475cebe4fd30883fd91be919964ed60dc89c05d1c326d769818d288108b9700735f1c9de13cb4d8336466c3999506895b14ee')
+md5sums=('2bedc7f9b024f44a431e103a00beddb3')
+b2sums=('f9680bea91bf30b6b1e9459f8c85c203ecff8ecf6c2eea54a57ce1e97545f1b34bc8f2d2f2150cc8de652eac6074dafe4b4285a54c24edd9305fd3753a81b242')
 
 build() {
   mkdir build
