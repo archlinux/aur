@@ -1,0 +1,8 @@
+# vim:ft=systemd
+[Unit]
+Description=Reverse Proxy Service
+After=network.target
+[Service]
+ExecStart=/usr/bin/rpxy -c /etc/rpxy/config.toml
+[Install]
+WantedBy=multi-user.target

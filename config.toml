@@ -1,0 +1,15 @@
+listen_port = 80
+# listen_port_tls = 443
+# listen_ipv6 = true
+
+# default_app = "localhost"
+
+[apps]
+
+[apps.localhost]
+server_name = "localhost"
+reverse_proxy = [
+    { upstream = [{ location = "localhost:3000", tls = false }] },
+]
+
+[experimental]
