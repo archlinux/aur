@@ -1,7 +1,7 @@
 pkgbase = drjava
 	pkgdesc = DrJava is a lightweight development environment for writing Java programs. It is designed primarily for students, providing an intuitive interface and the ability to interactively evaluate Java code.
 	pkgver = 2019
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.cs.rice.edu/~javaplt/drjava/
 	arch = any
 	license = BSD
@@ -12,7 +12,7 @@ pkgbase = drjava
 	source = drjava.desktop
 	source = LICENSE
 	sha512sums = 1f5f0c0bc99641554380b41921024ff7f8efc164e6ff23575a68496c734e5a7c1e736b328cdbba7203799cef1d23ff928959bb2ccb2c6f3888c396fbede31a22
-	sha512sums = 62da600c13503e3badb771f3b0eeb165aef358e06fc07572532f6741fddaabb50eaedc1f8932c26107210a117d4f11da4ab4967e9ad73e316f4f3d2027539431
+	sha512sums = 0ff77f1af5fb7a760300fb98465dbd36aa1067daf22ac8bd94185c0a990c749ec0991f6cbd53038b9f87a10496df6581e8a34114a3e599499cdabfd4b72add56
 	sha512sums = 5c54fcbe58dca4884af6dafe76cf791180a4591d8f50839f99d93a156b488581d0e260fc2dfba17f7e9fcc28b87bae1cad891c4b822274eb006ffb067b5a1106
 	sha512sums = a30d75e4df224919d948eb1ce463c133babac43670f174205b61047cd9005edc1c0daeecb76647bb113a9d22b4186aca6854f30504951507b0ec216ab5c9f544
 
