@@ -1,8 +1,12 @@
 # Maintainer: BryanLiang <liangrui.ch at gmail dot com>
 
+# shellcheck disable=SC2034,SC2154,SC2164
+
+: "${CADDY_STATICALLY_LINKED:=""}"
+
 pkgname=caddy-custom
 pkgver=2.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Caddy web server with plugins'
 url='https://github.com/caddyserver/caddy'
 arch=('x86_64' 'aarch64')
@@ -22,6 +26,11 @@ sha256sums=('SKIP'
             'c3119c98b285c4bf10c0581fba09b87df3999e0e5a335d94f074eae454a99e70'
             '0cb259107accced91a0d50d66eaf754c2d90fd7916cd895987b9290d0a01324b'
             'b7b29543628f55a1209021a35b5769fa5424d867301a467721010e8d0324344e')
+
+if [[ "${CADDY_STATICALLY_LINKED}" == "yes" ]]
+then
+    depends=()
+fi
 
 prepare() {
     PLUGIN_LIST_PATH="${PLUGIN_LIST_PATH:-${srcdir}/plugin-list}"
@@ -70,11 +79,16 @@ prepare() {
 build() {
     cd "${srcdir}/caddy/cmd/caddy"
 
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export GOPATH="${srcdir}"
+    if [[ "${CADDY_STATICALLY_LINKED}" == "yes" ]]
+    then
+        export CGO_ENABLED=0
+    else
+        export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+        export CGO_LDFLAGS="${LDFLAGS}"
+        export CGO_CFLAGS="${CFLAGS}"
+        export CGO_CPPFLAGS="${CPPFLAGS}"
+        export GOPATH="${srcdir}"
+    fi
 
     go build -o ./caddy -ldflags "-s -w -X github.com/caddyserver/caddy/v2.CustomVersion=v${pkgver}"
 
