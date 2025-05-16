@@ -2,8 +2,8 @@
 
 _pkgname=kudo
 pkgname=kubectl-$_pkgname-bin
-pkgver=0.19.0
-pkgrel=0
+pkgver=0.19.0 # renovate: datasource=github-releases depName=kudobuilder/kudo
+pkgrel=1
 pkgdesc="Kubernetes Universal Declarative Operator (KUDO)"
 url="https://github.com/kudobuilder/$_pkgname"
 license=('APACHE')
@@ -17,4 +17,3 @@ package() {
 }
 
 #vim: syntax=sh
-
