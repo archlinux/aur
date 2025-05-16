@@ -1,7 +1,7 @@
 # Maintainer: marzeq <marzeqmarzeq at gmail dot com>
 
 pkgname=mconf
-pkgver=1.2505.1
+pkgver=1.2505.2
 pkgrel=1
 epoch=1
 pkgdesc="Parser for the mconf configuration language"

@@ -1,6 +1,6 @@
 pkgbase = mconf
 	pkgdesc = Parser for the mconf configuration language
-	pkgver = 1.2505.1
+	pkgver = 1.2505.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/marzeq/mconf
@@ -11,7 +11,7 @@ pkgbase = mconf
 	makedepends = git
 	provides = mconf
 	conflicts = mconf-bin
-	source = git+https://github.com/marzeq/mconf.git#tag=v1.2505.1
+	source = git+https://github.com/marzeq/mconf.git#tag=v1.2505.2
 	md5sums = SKIP
 
 pkgname = mconf
