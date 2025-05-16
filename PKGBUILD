@@ -1,30 +1,27 @@
-# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
-# Contributor: Nathan Owe <ndowens.aur at gmail dot com>
+# Maintainer: L. Puntillo <puntillol@hotmail.com>
 
 pkgname=drjava
-pkgver=20190813
-_realver=beta-${pkgver}-220051
+pkgver=2019
 pkgrel=1
-pkgdesc="A lightweight development environment for writing Java programs"
+pkgdesc="DrJava is a lightweight development environment for writing Java programs. It is designed primarily for students, providing an intuitive interface and the ability to interactively evaluate Java code."
 arch=('any')
-url="http://www.drjava.org/"
+url="https://www.cs.rice.edu/~javaplt/drjava/"
 license=('BSD')
 depends=('bash' 'java-environment')
-source=(https://sourceforge.net/projects/drjava/files/1.%20DrJava%20Stable%20Releases/drjava-${_realver}/drjava-${_realver}.jar
-        'drjava.sh' 'drjava.desktop' 'LICENSE')
-sha1sums=('8490e4a9ddaee547abd0f8bc35574d98ad9dcaec'
-          '1a1ce3f158a582af1db06b8b011825bc853573c9'
-          '14a19a5bda1abdaff3764e66ce0880326714877f'
-          'eb6086dad252c561cbc1faa59cb2b78cfa586844')
+source=('https://downloads.sourceforge.net/project/drjava/1.%20DrJava%20Stable%20Releases/drjava-beta-20190813-220051/drjava-beta-20190813-220051.jar'
+        'drjava.sh'
+        'drjava.desktop'
+        'LICENSE')
+sha512sums=('1f5f0c0bc99641554380b41921024ff7f8efc164e6ff23575a68496c734e5a7c1e736b328cdbba7203799cef1d23ff928959bb2ccb2c6f3888c396fbede31a22'
+            '62da600c13503e3badb771f3b0eeb165aef358e06fc07572532f6741fddaabb50eaedc1f8932c26107210a117d4f11da4ab4967e9ad73e316f4f3d2027539431'
+            '5c54fcbe58dca4884af6dafe76cf791180a4591d8f50839f99d93a156b488581d0e260fc2dfba17f7e9fcc28b87bae1cad891c4b822274eb006ffb067b5a1106'
+            'a30d75e4df224919d948eb1ce463c133babac43670f174205b61047cd9005edc1c0daeecb76647bb113a9d22b4186aca6854f30504951507b0ec216ab5c9f544')
 
-package()
-{
-    cd ${srcdir}/
+package() {
+	cd ${srcdir}
 
-    install -d ${pkgdir}/usr/share/{java/${pkgname},licenses/${pkgname}}
-    install -Dm644 drjava-${_realver}.jar ${pkgdir}/usr/share/java/${pkgname}/drjava.jar
-    install -Dm755 drjava.sh ${pkgdir}/usr/bin/drjava
-    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-    install -Dm644 edu/rice/cs/drjava/ui/icons/drjava64.png ${pkgdir}/usr/share/pixmaps/drjava.png
-    install -Dm644 drjava.desktop ${pkgdir}/usr/share/applications/drjava.desktop
+	install -Dm644 drjava-beta-20190813-220051.jar ${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar
+	install -Dm755 drjava.sh ${pkgdir}/usr/bin/${pkgname}
+	install -Dm644 LICENSE ${pkgdir}/usr/share/license/${pkgname}/LICENSE
+	install -Dm644 drjava.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
