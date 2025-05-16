@@ -13,7 +13,7 @@ depends=(
 source=(
     'ChatGQT.tar.gz'
 )
-sha256sums=('8c5773db324c5a8bdef1a40dade7ce24e7583fe596760ad8518f6ccef808f1fb')
+sha256sums=('fb3eba7377a574d6ea2c704f58629f26075a354b3b59dbd02bc4c7a62036ce8c')
 
 package() {
     chmod +x "${srcdir}/usr/bin/chatgqt"
