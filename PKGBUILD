@@ -1,8 +1,8 @@
 # Maintainer: Chris Watson <cawatson1993@gmail.com>
 
 pkgname=windsurf
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="The new purpose-built IDE to harness magic"
 arch=('x86_64')
 url="https://windsurf.com/"
