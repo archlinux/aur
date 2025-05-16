@@ -18,7 +18,7 @@ arch=('x86_64' 'aarch64')
 url="https://linux.weixin.qq.com"
 license=('custom')
 options=(!strip !debug)
-depends=('zlib' 'hicolor-icon-theme' 'fuse2' 'xcb-util-renderutil' 'xcb-util-image' 'xci-util-wm')
+depends=('zlib' 'hicolor-icon-theme' 'fuse2' 'xcb-util-renderutil' 'xcb-util-image' 'xcb-util-wm')
 provides=('wechat')
 
 source=("LICENSE" "wechat")
