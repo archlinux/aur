@@ -1,6 +1,6 @@
 pkgbase = varia
 	pkgdesc = Download manager based on aria2
-	pkgver = 2025.4.22
+	pkgver = 2025.5.14
 	pkgrel = 1
 	url = https://github.com/giantpinkrobots/varia
 	arch = any
@@ -17,10 +17,12 @@ pkgbase = varia
 	depends = libadwaita
 	depends = pango
 	depends = python
+	depends = python-dbus-next
 	depends = python-gobject
+	depends = python-pystray
 	depends = python-requests
 	depends = yt-dlp
-	source = varia-2025.4.22.tar.gz::https://github.com/giantpinkrobots/varia/archive/refs/tags/v2025.4.22.tar.gz
-	sha256sums = 48bcb773a368f03b5f30edce5aa1cce2311e0a1be0ac1c5704d0d5b7bedfed7e
+	source = varia-2025.5.14.tar.gz::https://github.com/giantpinkrobots/varia/archive/refs/tags/v2025.5.14.tar.gz
+	sha256sums = c50a77aec556a48d7e97e40340cc1fdb2201f673f9f71615fec457451ac2dc54
 
 pkgname = varia
