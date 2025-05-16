@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=FreeShow
+Description=Free software with a user-friendly interface that offers powerful features for creating and editing slideshows
+Exec=freeshow %U
+Icon=/usr/share/icons/hicolor/256x256/apps/freeshow.png
+Terminal=false
+Type=Application
+Categories=Utility;Music;Video;
+StartupWMClass=freeshow
