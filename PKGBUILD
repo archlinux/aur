@@ -2,7 +2,7 @@
 
 pkgname=rofi-dmenu
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Symlink for using Rofi as a drop-in replacement to dmenu"
 arch=('any')
 provides=(dmenu)

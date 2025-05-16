@@ -1,7 +1,7 @@
 pkgbase = rofi-dmenu
 	pkgdesc = Symlink for using Rofi as a drop-in replacement to dmenu
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	depends = rofi
 	provides = dmenu
