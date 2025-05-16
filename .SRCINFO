@@ -1,7 +1,7 @@
 pkgbase = dds10-thumbnailer-kde-git
 	pkgdesc = dds10-thumbnailer-kde is a plugin for KDE 6 that creates thumbnail for Direct Draw Surface (DDS) images
 	pkgver = r10.23b2801
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meyraud705/dds10-thumbnailer-kde
 	arch = x86_64
 	license = GPLv2
@@ -11,7 +11,9 @@ pkgbase = dds10-thumbnailer-kde-git
 	depends = kio
 	provides = dds10-thumbnailer-kde
 	conflicts = dds10-thumbnailer-kde
+	source = ABGR8888.patch
 	source = dds10-thumbnailer-kde::git+https://github.com/meyraud705/dds10-thumbnailer-kde.git
+	sha256sums = c7f83df9fea4d10e54709b226780eb7965f27e8849e6f7a09b141bad0e6b861d
 	sha256sums = SKIP
 
 pkgname = dds10-thumbnailer-kde-git
