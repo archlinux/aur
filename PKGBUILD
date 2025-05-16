@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=e-search-bin
 _pkgname=eSearch
-pkgver=14.6.4
+pkgver=14.7.0
 _electronversion=35
 pkgrel=1
 pkgdesc="Screenshot,OCR search,translate,search for picture paste the picture on the screen,screen recorder.(Prebuilt version.Use system-wide electron)截屏,离线OCR,搜索翻译,以图搜图,贴图,录屏,滚动截屏."
@@ -33,8 +33,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('13eb47c940f3f75d706267257ddd92d11e4fe354a941d76db5f3abe21a426f81')
-sha256sums_x86_64=('9289ab9b43a181a444c8411611efeb41f68a73f2e77825ddecd442fa8696d2cb')
+sha256sums_aarch64=('19b8a3c627d90080350f6c6d21387bc968fd4a9b0304826b2b1f21452eb852d7')
+sha256sums_x86_64=('9e85cc3a80e70c77cd2f07dc92e281c635d9713767d90b4107e5062de5111727')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
