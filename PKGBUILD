@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 pkgver=48.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
@@ -76,16 +76,20 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#tag=${pkgver/[a-z]/.&}"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6"
   "git+https://github.com/ptomato/jasmine-gjs.git#commit=856465dddbd92e82e574891e1ebc79e17d7b708a"
+  3252.patch
 )
 b2sums=('9f43af880a8f80bc405c704061b2ff8734ce3e806c75ee658359078d8a48d6a1522e26ddd060e0c57ca41e8f53bd82c47d6457cbda7df571a46ee43100426da7'
         'e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053'
-        'ecbbb9ce5895cc1caed2ddef39c70b4768d78ea0a929ea932d4149f923f92650973cdaefc2aacc9063f2ccf4ec965b57a9698a286f9a6561e39ce2e579ae4522')
+        'ecbbb9ce5895cc1caed2ddef39c70b4768d78ea0a929ea932d4149f923f92650973cdaefc2aacc9063f2ccf4ec965b57a9698a286f9a6561e39ce2e579ae4522'
+        '58d2f75fd34a5d50d1a279f61ea47feb4f62077e51322a5452d4d56010ca288eece6afe5fbd0368c80a110b3c863cd8e8f8bb1535488d29085b93b58482d066c')
 
 prepare() {
   # Inject gvc
   ln -s libgnome-volume-control gvc
 
   cd gnome-shell
+  
+  git apply -3 ../3252.patch
 }
 
 build() {

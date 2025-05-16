@@ -1,0 +1,173 @@
+From d5329045423fa60e543a3b83227dbe3ef6dd51c1 Mon Sep 17 00:00:00 2001
+From: Daniel van Vugt <daniel.van.vugt@canonical.com>
+Date: Thu, 17 Apr 2025 17:38:21 +0800
+Subject: [PATCH 1/4] st/theme-node: Remove unused field
+
+---
+ src/st/st-theme-node-private.h | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/st/st-theme-node-private.h b/src/st/st-theme-node-private.h
+index d95284e201a..0fb3646a3e7 100644
+--- a/src/st/st-theme-node-private.h
++++ b/src/st/st-theme-node-private.h
+@@ -104,8 +104,6 @@ struct _StThemeNode {
+   int box_shadow_min_width;
+   int box_shadow_min_height;
+ 
+-  guint stylesheets_changed_id;
+-
+   CoglTexture *border_slices_texture;
+   CoglPipeline *border_slices_pipeline;
+   CoglTexture *background_texture;
+-- 
+GitLab
+
+
+From 07a5513fcb2580c5ea9808c553637155aa3b2217 Mon Sep 17 00:00:00 2001
+From: Daniel van Vugt <daniel.van.vugt@canonical.com>
+Date: Thu, 28 Mar 2024 14:45:26 +0800
+Subject: [PATCH 2/4] st/theme-node: Forget properties cache before unref'ing
+ the theme
+
+Which the properties point into.
+---
+ src/st/st-theme-node.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/st/st-theme-node.c b/src/st/st-theme-node.c
+index 4e0111d4f94..8fbb71a1074 100644
+--- a/src/st/st-theme-node.c
++++ b/src/st/st-theme-node.c
+@@ -102,6 +102,7 @@ st_theme_node_dispose (GObject *gobject)
+ 
+   st_theme_node_paint_state_free (&node->cached_state);
+ 
++  maybe_free_properties (node);
+   g_clear_object (&node->theme);
+ 
+   G_OBJECT_CLASS (st_theme_node_parent_class)->dispose (gobject);
+@@ -117,8 +118,6 @@ st_theme_node_finalize (GObject *object)
+   g_strfreev (node->pseudo_classes);
+   g_free (node->inline_style);
+ 
+-  maybe_free_properties (node);
+-
+   g_clear_pointer (&node->font_desc, pango_font_description_free);
+ 
+   g_clear_pointer (&node->box_shadow, st_shadow_unref);
+-- 
+GitLab
+
+
+From f4aab0a2ddea3b7a9d49c48f3ef42b80bde5b6d4 Mon Sep 17 00:00:00 2001
+From: Daniel van Vugt <daniel.van.vugt@canonical.com>
+Date: Thu, 17 Apr 2025 17:19:16 +0800
+Subject: [PATCH 3/4] st/theme-node: Make maybe_free_properties a protected
+ function
+
+For reuse elsewhere in ST.
+---
+ src/st/st-theme-node-private.h | 1 +
+ src/st/st-theme-node.c         | 6 +++---
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/st/st-theme-node-private.h b/src/st/st-theme-node-private.h
+index 0fb3646a3e7..958289311c3 100644
+--- a/src/st/st-theme-node-private.h
++++ b/src/st/st-theme-node-private.h
+@@ -119,5 +119,6 @@ void _st_theme_node_ensure_background (StThemeNode *node);
+ void _st_theme_node_ensure_geometry (StThemeNode *node);
+ void _st_theme_node_apply_margins (StThemeNode *node,
+                                    ClutterActor *actor);
++void _st_theme_node_maybe_free_properties (StThemeNode *node);
+ 
+ G_END_DECLS
+diff --git a/src/st/st-theme-node.c b/src/st/st-theme-node.c
+index 8fbb71a1074..3273c0e418b 100644
+--- a/src/st/st-theme-node.c
++++ b/src/st/st-theme-node.c
+@@ -59,8 +59,8 @@ st_theme_node_class_init (StThemeNodeClass *klass)
+   object_class->finalize = st_theme_node_finalize;
+ }
+ 
+-static void
+-maybe_free_properties (StThemeNode *node)
++void
++_st_theme_node_maybe_free_properties (StThemeNode *node)
+ {
+   if (node->properties)
+     {
+@@ -102,7 +102,7 @@ st_theme_node_dispose (GObject *gobject)
+ 
+   st_theme_node_paint_state_free (&node->cached_state);
+ 
+-  maybe_free_properties (node);
++  _st_theme_node_maybe_free_properties (node);
+   g_clear_object (&node->theme);
+ 
+   G_OBJECT_CLASS (st_theme_node_parent_class)->dispose (gobject);
+-- 
+GitLab
+
+
+From 73989bf793bae8d973f071f75502e6878e9d75f4 Mon Sep 17 00:00:00 2001
+From: Daniel van Vugt <daniel.van.vugt@canonical.com>
+Date: Thu, 17 Apr 2025 17:32:22 +0800
+Subject: [PATCH 4/4] st/theme-context: Forget properties cache on node removal
+
+Which means when the stylesheets change.
+
+To avoid `node->properties` pointing to freed memory after each
+`st_theme_unload_stylesheet`, flush the cache that is `node->properties`.
+They will be reloaded as soon as they are required again.
+
+Why not just fix Croco? Croco does not use proper reference counting
+everywhere it should, and retrofitting it would be difficult due to the
+recursive nature of `CRDeclaration`.
+
+Closes: https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/7339
+... but mostly reported in
+https://github.com/micheleg/dash-to-dock/issues/2179 and its duplicates.
+---
+ src/st/st-theme-context.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/src/st/st-theme-context.c b/src/st/st-theme-context.c
+index eb24212e128..9509bf4ae6e 100644
+--- a/src/st/st-theme-context.c
++++ b/src/st/st-theme-context.c
+@@ -169,6 +169,13 @@ st_theme_context_class_init (StThemeContextClass *klass)
+                   G_TYPE_NONE, 0);
+ }
+ 
++static void
++forget_node (StThemeNode *node)
++{
++  _st_theme_node_maybe_free_properties (node);
++  g_object_unref (node);
++}
++
+ static void
+ st_theme_context_init (StThemeContext *context)
+ {
+@@ -189,7 +196,8 @@ st_theme_context_init (StThemeContext *context)
+ 
+   context->nodes = g_hash_table_new_full ((GHashFunc) st_theme_node_hash,
+                                           (GEqualFunc) st_theme_node_equal,
+-                                          g_object_unref, NULL);
++                                          (GDestroyNotify) forget_node,
++                                          NULL);
+   context->scale_factor = 1;
+ 
+   update_accent_colors (context);
+@@ -599,4 +607,4 @@ st_theme_context_get_resolution (StThemeContext *context)
+   g_return_val_if_fail (ST_IS_THEME_CONTEXT (context), -1);
+ 
+   return clutter_backend_get_resolution (context->clutter_backend);
+-}
+\ No newline at end of file
++}
+-- 
+GitLab
+
