@@ -46,6 +46,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname%-git}.git"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -54,8 +55,12 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -f -q -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname%-git}.git"
+    gendesk -f -q -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="AudioVideo" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -74,11 +79,19 @@ prepare() {
     fi
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install
+    NODE_ENV=development    npm install --legacy-peer-deps
+    NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
     local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    {\\
+        name: \"@electron-forge/plugin-local-electron\",\\
+        config: {\\
+            electronPath: \"${electronDist}\"\\
+        }\\
+    }," forge.config.ts
     NODE_ENV=production     npm run package
 }
 package() {
@@ -86,5 +99,5 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/out/${_pkgname%Desktop}-linux-"*/resources/{app,res} "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/res/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
