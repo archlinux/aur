@@ -9,7 +9,7 @@ license=('GPL-3')
 depends=()
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pc-magas/mkdotenv/releases/download/v$pkgver/mkdotenv-$pkgver.tar.gz")
-sha256sums=('163ccb78a74532919cee18e4ad6c25670f79096c2dc88dc85f9560d61a17b7a4')
+sha256sums=('4f347c60f0e66b44f0283a7299a5a242b80554236e133cd9fb38ef2a86db8db1')
 
 
 build() {
