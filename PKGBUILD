@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=terraform-provider-alicloud-bin
-pkgver=1.248.0
+pkgver=1.249.0
 pkgrel=1
 pkgdesc="Terraform AliCloud provider.(Prebuilt version)"
 arch=(
@@ -19,10 +19,10 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/downl
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_arm.zip")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_386.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.zip")
-sha256sums_aarch64=('5a1cb6807c2094a9dde045d76906f56ec53f672f6fb61d2723cb9eaabaeb39d6')
-sha256sums_armv7h=('4189688a46340c6ff0c474e9a8b76669210746227924489b024517be3874c8b5')
-sha256sums_i686=('c9ba9a74f320d2b424fc6e7918836aa1061894c41aa21542ab0f9bfecf64885a')
-sha256sums_x86_64=('1561521f0cff5f3f5a12150611cb0dfd16f96e5b925b58100d0b2ff00f81faa6')
+sha256sums_aarch64=('1e5a6f8eee95ecfc5ffeb7b28144a6dbba70fe80cbedb72e609f01412eba1e93')
+sha256sums_armv7h=('34c26b91caf61c6c09b6c7aca22e2ed530b373b867ffa855a347e7e3215cefe6')
+sha256sums_i686=('0f6bf1ce70c8ce8174e76189954cef2eaad50b736038ee665e50052e53b075c9')
+sha256sums_x86_64=('291e5e913afaa9056885a5261fd3bdc245d37f09c7bcf6fa7b750fa5bbb7c345')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}_v${pkgver}" "${pkgdir}/usr/bin/${pkgname%-bin}"
 }
