@@ -1,17 +1,19 @@
+# Maintainer oech3
 # Contributor: Darkest Medium <darkestmedium at gmail dot com>
 
 pkgname=void-git
 _pkgname=void
-pkgver=1.99.3.r2381.g77d174ed
+pkgver=1.99.3.r2516.ga8bc42b5
 pkgrel=1
 pkgdesc="The open-source Cursor alternative"
 url="https://voideditor.com/"
 arch=('x86_64')
 license=("MIT")
 provides=('void')
+conflicts=('void')
 options=(!debug)
 _elnum=34
-depends=( electron${_elnum} ripgrep # replacements
+depends=( electron${_elnum} ripgrep xdg-utils # replacements
   libx11
   libxkbfile
   libsecret
@@ -22,18 +24,18 @@ depends=( electron${_elnum} ripgrep # replacements
   alsa-lib
 )
 optdepends=(
-  'electron: /usr/share/void/void-latestron'
   'glib2: Move to trash functionality'
   'gvfs: Move to trash functionality'
   'libdbusmenu-glib: KDE global menu'
   'lsof: Terminal splitting'
-  'xdg-utils: Opening web links'
   'org.freedesktop.secrets: Settings sync'
 )
 makedepends=(
+  git
   npm
   nodejs-lts-iron # see .nvmrc
   pkgconf
+  python
 )
 source=("git+https://github.com/voideditor/void.git"
 "https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
@@ -47,25 +49,35 @@ pkgver() {
 }
 
 build() {
+  # Do not tain user dir by cache
+  export XDG_CACHE_HOME="${srcdir}/xdgcache" HOME="${srcdir}/home"
   cd "${_pkgname}"
   # Clean npm cache and remove existing node_modules
   npm cache clean --force
   rm -rf node_modules
-  # Use version of system electron
-  npm install electron@$(cat /usr/lib/electron${_elnum}/version) --save-dev
+  _elver=$(cat /usr/lib/electron${_elnum}/version)
+  echo Replacing $(rg -m 1 '"electron":\s*"[0-9]+' package.json) with ${_elver}
+  echo 'Fix if major version is wrong.'
+  npm pkg set devDependencies.electron=$(cat /usr/lib/electron${_elnum}/version)
+  echo Replaced to $(rg -m 1 '"electron":\s*"[0-9]+' package.json)
   # Install dependencies with legacy peer deps flag to handle dependency conflicts
   npm install --legacy-peer-deps
   # Build react because it fails for some reason
   npm run buildreact
+  # Rebuilding modules for incorrect electron will fail
+  # npm install -D electron-rebuild
+  # npx electron-rebuild -f
   # Bundle it
   npm run gulp vscode-linux-x64
 }
 
 package() {
   _pkg=VSCode-linux-x64
+  _app=/usr/share/void/resources/app
   # Licenses
-  install -Dm644 "${_pkg}/resources/app/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm644 "${_pkg}/resources/app/ThirdPartyNotices.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/ThirdPartyNotices.txt"
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -svf "${_app}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  ln -svf "${_app}/ThirdPartyNotices.txt" "${pkgdir}/usr/share/licenses/${pkgname}/"
   # appdata and desktop files
   install -Dm644 "${_pkg}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
   mkdir -p "${pkgdir}/usr/share/"{applications,mime/packages}
@@ -80,15 +92,16 @@ package() {
   install -Dm644 "${_pkg}/resources/completions/bash/${_pkgname}" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
   install -Dm644 "${_pkg}/resources/completions/zsh/_${_pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
   # launcher
-  _app=/usr/share/void/resources/app
   sed -e "s|code-flags|void-flags|" \
    -e "s|/usr/lib/code/out/cli.js|${_app}/out/cli.js|" \
    -e "s|/usr/lib/code/code.mjs|--app=${_app}|" code.sh > run.sh
   sed "s/name=electron/name=electron${_elnum}/" run.sh > run-safe.sh
   install -Dm755 run-safe.sh "${pkgdir}/usr/bin/void"
   install -Dm755 run.sh "${pkgdir}/usr/share/void/void-latestron"
-  # resources
+  # Installs edirot on /usr/share for compability with void-bin
+  install -d "${pkgdir}/usr/share/void"
   cp -r --reflink=auto "${_pkg}/resources" "${pkgdir}/usr/share/void/resources"
-  # ripgrep
-  ln -svf /usr/bin/rg "${pkgdir}"/usr/share/void/resources/app/node_modules/@vscode/ripgrep/bin/rg
+  # system-wide tools
+  ln -svf /usr/bin/rg "${pkgdir}${_app}"/node_modules/@vscode/ripgrep/bin/rg
+  ln -svf /usr/bin/xdg-open "${pkgdir}${_app}"/node_modules/open/xdg-open
 }
