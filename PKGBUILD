@@ -1,8 +1,8 @@
 # Maintainer: XiaYeSuiFeng <xiayesuifeng@firerain.me>
 
 pkgname=telepresence2
-pkgver=2.21.3
-pkgrel=1
+pkgver=2.21.3 # renovate: datasource=github-releases depName=telepresenceio/telepresence
+pkgrel=2
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster"
 arch=('x86_64')
 license=('Apache')
