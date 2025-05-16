@@ -22,7 +22,10 @@ depends=(
 	'qt5-base'
 	'qt5-svg'
 	'qt5-multimedia'
+<<<<<<< HEAD
 	'qt5-gamepad'
+=======
+>>>>>>> 97f7f6b079d8cdf1c758ddbbd4ef122e8e565905
 	'double-conversion'
 	'freetype2'
 	'glib2'
