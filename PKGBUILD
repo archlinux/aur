@@ -16,6 +16,7 @@ source=(disable_update_check.patch
         no_jdk_download.patch)
 sha256sums=('35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
             '4bb2676426b25b9ef874a334335b50af67224e592456318505fa4612ce02e35b')
+install='processing.install'
 
 pkgver() {
   cd "$srcdir/$pkgname"
