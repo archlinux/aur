@@ -10,9 +10,7 @@ license=('LicenseRef-MAME')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'cmake')
 provides=('libpinmame-git' 'libpinmame')
-#source=("${pkgname}::git+https://github.com/vbousquet/pinmame.git")
-#source=("${pkgname}::git+https://github.com/vpinball/pinmame.git")
-source=("${pkgname}::git+https://github.com/vpinball/pinmame.git#commit=687a9aaf6cd82713b043d7fbb68778d82eff652a")
+source=("${pkgname}::git+https://github.com/vpinball/pinmame.git")
 sha256sums=('SKIP')
 
 pkgver() {

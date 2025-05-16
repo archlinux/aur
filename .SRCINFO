@@ -11,7 +11,7 @@ pkgbase = libpinmame-git
 	depends = glibc
 	provides = libpinmame-git
 	provides = libpinmame
-	source = libpinmame-git::git+https://github.com/vpinball/pinmame.git#commit=687a9aaf6cd82713b043d7fbb68778d82eff652a
+	source = libpinmame-git::git+https://github.com/vpinball/pinmame.git
 	sha256sums = SKIP
 
 pkgname = libpinmame-git
