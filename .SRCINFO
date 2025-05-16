@@ -1,6 +1,6 @@
 pkgbase = dns_tools
 	pkgdesc = DNS Tools for managing DNSSEC aka easy dnssec
-	pkgver = 3.7.0
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://github.com/gene-git/dns_tools
 	arch = any
@@ -11,9 +11,12 @@ pkgbase = dns_tools
 	makedepends = python-wheel
 	makedepends = python-hatch
 	makedepends = rsync
+	makedepends = python-pytest
+	makedepends = python-pytest-asyncio
 	depends = python>=3.13
 	depends = ldns
-	source = git+https://github.com/gene-git/dns_tools#tag=3.7.0
+	depends = lockmgr
+	source = git+https://github.com/gene-git/dns_tools#tag=4.0.3
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 

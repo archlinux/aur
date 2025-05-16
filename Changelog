@@ -1,0 +1,34 @@
+-------------------------------------------------------
+ Changelog    : dns_tools
+ Tags         : 3.6.0 ➙ 4.0.3
+              : 2025-03-11 ➙ 2025-05-16
+              : 6 tags. See Docs for full changelog
+-------------------------------------------------------
+
+ 2025-05-16   : 4.0.3
+                Arch PKGBUILD add missed dependency on lockmgr
+                update Docs/Changelog Docs/${my_name}.pdf
+
+ 2025-05-16   : 4.0.2
+                Typo in Arch PKGBUILD
+                update Docs/Changelog Docs/${my_name}.pdf
+
+ 2025-05-16   : 4.0.0
+                Code now complies with: PEP-8, PEP-257, PEP-484 and PEP-561
+                Refactor & clean ups (pretty big changes). Split into multiple modules.
+                Add test suite using pytest
+                  Our testing is clean but, given the large code changes, please
+                  let us know if you find any issues.
+                Command line long args can now use either hyphen or underscores
+                    e.g. dns-tool treats *--zsk-roll-1* and *--zsk_roll_1* exactly the same.
+                ;
+ 2025-03-11     update Docs/Changelog.rst Docs/dns_tools.pdf
+
+ 2025-03-11   : 3.7.0
+                Fix push to production options checker - bug introduced by changes to
+                config/opts classes
+                update Docs/Changelog.rst Docs/dns_tools.pdf
+
+ 2025-03-11   : 3.6.0
+                Remove dumb debugging breakpoints left in by mistake - so sorry
+ 2025-03-07     update Docs/Changelog.rst Docs/dns_tools.pdf
