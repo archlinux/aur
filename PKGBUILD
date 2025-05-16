@@ -2,7 +2,7 @@
 
 pkgname=ymir-emu
 _pkgname=ymir
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Sega Saturn Emulator"
 arch=("x86_64")
