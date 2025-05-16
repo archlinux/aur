@@ -5,7 +5,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgbase=mingw-w64-harfbuzz
 pkgname=('mingw-w64-harfbuzz' 'mingw-w64-harfbuzz-icu')
-pkgver=11.0.1
+pkgver=11.2.1
 pkgrel=1
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=('glib2-devel'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("git+https://github.com/harfbuzz/harfbuzz?signed#tag=$pkgver")
-b2sums=('d88b46b108ad59d5ce3612ae923a988780f20027baad71f41385f1381d76add098327ea073a35031b6c37e1b6272828f8846bafd738e77bc652c62a4cdb3e144')
+b2sums=('0fe4c46f4456f3bb64af37620c5d1723bc0b4704ae0c7f3e83f89c73fb1ce0dfd2457bfae374826a2e5e1436269a933b297d7c95fba05d94a401171a57f5da65')
 validpgpkeys=(
   053D20F17CCCA9651B2C6FCB9AB24930C0B997A2 # Khaled Hosny <khaled@aliftype.com> (@khaledhosny)
   9F377DDB6D3153A48EB3EB1E63CC496475267693 # Caleb Maclennan <caleb@alerque.com> (@alerque)
