@@ -3,7 +3,7 @@ _Pkgname=Folo
 _disname=Folo
 major_version=0
 minor_version=4
-patch_version=5
+patch_version=6
 # phase='beta.0'
 
 pkgname="${_pkgname}"-appimage
@@ -20,7 +20,7 @@ depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('follow')
 
 source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-amd64.AppImage::https://github.com/RSSNext/Folo/releases/download/v${major_version}.${minor_version}.${patch_version}/${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-x64.AppImage")
-sha256sums_x86_64=("dd95c097a04efb113aa28bc5e81f30399368b71146f475c3d3cc485620694aba")
+sha256sums_x86_64=("bd6a89c4e559b602fd38149a1f5babd5a396f09da45280d0849532e46673d0e6")
 
 _appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-amd64.AppImage"
 noextract=("${_appimage}")

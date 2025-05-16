@@ -1,6 +1,6 @@
 pkgbase = folo-appimage
 	pkgdesc = 🧡 Next generation information browser
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/RSSNext/Folo
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = folo-appimage
 	provides = follow
 	conflicts = follow-appimage
 	replaces = follow-appimage
-	noextract = Folo-0.4.5-linux-amd64.AppImage
+	noextract = Folo-0.4.6-linux-amd64.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = Folo-0.4.5-linux-amd64.AppImage::https://github.com/RSSNext/Folo/releases/download/v0.4.5/Folo-0.4.5-linux-x64.AppImage
-	sha256sums_x86_64 = dd95c097a04efb113aa28bc5e81f30399368b71146f475c3d3cc485620694aba
+	source_x86_64 = Folo-0.4.6-linux-amd64.AppImage::https://github.com/RSSNext/Folo/releases/download/v0.4.6/Folo-0.4.6-linux-x64.AppImage
+	sha256sums_x86_64 = bd6a89c4e559b602fd38149a1f5babd5a396f09da45280d0849532e46673d0e6
 
 pkgname = folo-appimage
