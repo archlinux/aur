@@ -2,7 +2,7 @@
 
 pkgname=chatgqt
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple ChatGPT Webview Client based on QT"
 arch=('any')
 license=('GPLv3')
