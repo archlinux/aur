@@ -16,4 +16,4 @@ if [ ! -d "$WINEPREFIX" ]; then
 fi
 
 # run the emulator
-WINEDEBUG=-all wine /opt/mupen64-rr-lua/mupen64-119-8-avx2.exe "$@"
+WINEDEBUG=-all wine /opt/mupen64-rr-lua/mupen64-120-sse2.exe "$@"
