@@ -3,7 +3,7 @@
 _pkgname=rofi-randr
 pkgname=$_pkgname
 pkgver=1.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Script to work configure xorg via rofi"
 license=('GPL2')
 arch=('any')

@@ -1,7 +1,7 @@
 pkgbase = rofi-randr
 	pkgdesc = Script to work configure xorg via rofi
 	pkgver = 1.0.0
-	pkgrel = 0
+	pkgrel = 1
 	arch = any
 	license = GPL2
 	depends = xorg-xrandr
