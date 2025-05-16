@@ -1,13 +1,13 @@
 pkgbase = sendme
 	pkgdesc = A tool to send files and directories, based on iroh
-	pkgver = 0.25.0
+	pkgver = 0.26.0
 	pkgrel = 0
 	url = https://github.com/n0-computer/sendme
 	arch = any
 	license = MIT
 	license = Apache
 	makedepends = cargo
-	source = sendme-0.25.0.tar.gz::https://static.crates.io/crates/sendme/sendme-0.25.0.crate
-	b2sums = de06f5d6a8ee182ca9e6009e0a1b0d3bb12752220756d4b915dae91df9cab26862f8753b2e66e31fa22acd36c793f0ee5cdb3a973fda53e6719ccc61132ec1be
+	source = sendme-0.26.0.tar.gz::https://static.crates.io/crates/sendme/sendme-0.26.0.crate
+	b2sums = fb3a1d11201fd63ab393fadcb1ee1462878c82b80b3692e5f5c8a980c824a958ce7f939aa20f5c8b9d2dae6285960ad314f7f11c929ae203fdf62d1d4c88af3e
 
 pkgname = sendme

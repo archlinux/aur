@@ -1,6 +1,6 @@
 # Maintainer: Navi Hex <navihx@foxmail.com>
 pkgname=sendme
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=0
 pkgdesc="A tool to send files and directories, based on iroh"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/n0-computer/sendme"
 license=('MIT' 'Apache')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('de06f5d6a8ee182ca9e6009e0a1b0d3bb12752220756d4b915dae91df9cab26862f8753b2e66e31fa22acd36c793f0ee5cdb3a973fda53e6719ccc61132ec1be')
+b2sums=('fb3a1d11201fd63ab393fadcb1ee1462878c82b80b3692e5f5c8a980c824a958ce7f939aa20f5c8b9d2dae6285960ad314f7f11c929ae203fdf62d1d4c88af3e')
 
 prepare() {
     cd $pkgname-$pkgver
