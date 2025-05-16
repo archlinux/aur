@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=twitch-dl-git
-pkgver=2.3.1.r1.g38636e2
+pkgver=3.1.0.r0.g79ef07e
 pkgrel=1
 pkgdesc="Twitch video downloader that use multiple concurrent connections"
 arch=(any)
