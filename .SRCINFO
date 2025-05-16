@@ -1,13 +1,14 @@
 pkgbase = python-gflanguages
 	pkgdesc = API for evaluating language support in the Google Fonts collection
 	pkgver = 0.7.4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/googlefonts/gflanguages
 	arch = any
 	license = Apache-2.0
-	checkdepends = python-pytest
 	checkdepends = python-filelock
+	checkdepends = python-pytest
+	checkdepends = python-regex
 	checkdepends = python-uharfbuzz
 	checkdepends = python-youseedee
 	makedepends = python-build
