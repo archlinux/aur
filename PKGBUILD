@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=agent-tars-git
 _pkgname='Agent TARS'
-pkgver=1.0.0.alpha.6.r2.g648e270
+pkgver=r316.1a1b2f1
 _electronversion=34
-_nodeversion=20
+_nodeversion=22
 pkgrel=1
 pkgdesc="An open-source multimodal AI agent, offering seamless integration with a wide range of real-world tools.(Use system-wide electron)"
 arch=('any')
@@ -33,7 +33,7 @@ sha256sums=('SKIP'
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
-    git describe --long --tags --abbrev=7 | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g;s/${_pkgname// /.}.//g" ||
+    #git describe --long --tags --abbrev=7 | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g;s/${_pkgname// /.}.//g" ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
@@ -43,6 +43,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname%-git}.git"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -51,8 +52,12 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname%-git}.git"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -76,14 +81,23 @@ prepare() {
     fi
     sed -i "s/FSPanel/FsPanel/g" "apps/${pkgname%-git}/src/renderer/src/components/CanvasPanel/EventPlayer/renderPlatformPanel.tsx"
     NODE_ENV=development    pnpm install
+    cd "${srcdir}/${pkgname%-git}.git/apps/${pkgname%-git}"
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=development    pnpm add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git/apps/${pkgname%-git}"
-    sed -i -e "
-        s/electron-forge make/electron-forge package/g
-        s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
-    " package.json
-    NODE_ENV=production     pnpm run build
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    {\\
+        name: \"@electron-forge/plugin-local-electron\",\\
+        config: {\\
+            electronPath: \"${electronDist}\"\\
+        }\\
+    }," forge.config.ts
+    NODE_ENV=production     pnpm run build:reporter
+    NODE_ENV=production     pnpm -c electron-vite build
+    NODE_ENV=production     pnpm -c electron-forge package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
@@ -91,7 +105,7 @@ package() {
         -t "${pkgdir}/usr/lib/${pkgname%-git}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/apps/${pkgname%-git}/out/${_pkgname}-linux-"*/resources/app.asar.unpacked \
         "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/apps/${pkgname%-git}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

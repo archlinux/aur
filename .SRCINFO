@@ -1,6 +1,6 @@
 pkgbase = agent-tars-git
 	pkgdesc = An open-source multimodal AI agent, offering seamless integration with a wide range of real-world tools.(Use system-wide electron)
-	pkgver = 1.0.0.alpha.6.r2.g648e270
+	pkgver = r316.1a1b2f1
 	pkgrel = 1
 	url = https://agent-tars.com/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = agent-tars-git
 	makedepends = curl
 	makedepends = python-setuptools
 	depends = electron34
-	provides = agent-tars=1.0.0.alpha.6
+	provides = agent-tars=r316.1a1b2f1
 	conflicts = agent-tars
 	source = agent-tars.git::git+https://github.com/bytedance/UI-TARS-desktop
 	source = agent-tars.sh
