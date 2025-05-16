@@ -2,7 +2,7 @@
 # Contributor: ChatGPT (OpenAI) <https://openai.com> — assisted with Git configuration, and packaging guidance.
 
 pkgname='kdev-templatetools'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="KDevelop app and file utilities for building and installing your own templates."
 arch=('any')
@@ -24,8 +24,8 @@ package() {
   cd "$srcdir" || return 1
 
   # Install scripts
-  install -Dm755 "$srcdir/kdev-templatetools/KDevAppTemplateInstall"            "$pkgdir/usr/bin/KDevAppTemplateInstall"
-  install -Dm755 "$srcdir/kdev-templatetools/KDevFileTemplateInstall"           "$pkgdir/usr/bin/KDevFileTemplateInstall"
+  install -Dm755 "$srcdir/kdev-templatetools/src/KDevAppTemplateInstall"            "$pkgdir/usr/bin/KDevAppTemplateInstall"
+  install -Dm755 "$srcdir/kdev-templatetools/src/KDevFileTemplateInstall"           "$pkgdir/usr/bin/KDevFileTemplateInstall"
 
   # Install .desktop file
   install -Dm644 "$srcdir/kdev-templatetools/kdevelop-template.desktop"         "$pkgdir/usr/share/kio/servicemenus/kdevelop-template.desktop"
