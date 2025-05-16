@@ -1,0 +1,20 @@
+pkgbase = onelab
+	pkgdesc = Open Numerical Engineering LABoratory
+	pkgver = r1.3
+	pkgrel = 1
+	url = https://onelab.info
+	arch = x86_64
+	license = GPLv2
+	depends = python
+	optdepends = gcc: c/c++ tutorials
+	optdepends = gcc-fortran: fortran tutorials
+	optdepends = julia: julia tutorials
+	provides = getdp
+	provides = gmsh
+	provides = libconveks.so
+	conflicts = getdp
+	conflicts = gmsh
+	source = https://onelab.info/files/onelab-Linux64.zip
+	sha256sums = 474add1bbe31c5420df659d222c641cd3642d7f991070ffac045fdc9a0dd4d4e
+
+pkgname = onelab
