@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=ArchiveWeb.page
+Exec=env DESKTOPINTEGRATION=false /usr/bin/ArchiveWeb.page --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=@webrecorderarchivewebpage
+StartupWMClass=archivewebpage
+X-AppImage-Version={pkgversion}
+Comment=An Electron based application for interactive, high-fidelity web archiving.
+Categories=Archiving;Utility;
+StartupNotify=true
+Version={pkgversion}

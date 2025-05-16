@@ -1,0 +1,4 @@
+["archiveweb.page-appimage"]
+source = "git"
+git = "https://github.com/webrecorder/archiveweb.page.git"
+prefix = "v"

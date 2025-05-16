@@ -1,0 +1,18 @@
+pkgbase = archiveweb.page-appimage
+	pkgdesc = An Electron based application for interactive, high-fidelity web archiving
+	pkgver = 0.15.1
+	pkgrel = 1
+	url = https://github.com/webrecorder/archiveweb.page/
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = fuse2
+	depends = hicolor-icon-theme
+	depends = zlib
+	options = !strip
+	options = !debug
+	source = https://github.com/webrecorder/archiveweb.page//releases/download/v0.15.1/ArchiveWeb.page-0.15.1.AppImage
+	source = ArchiveWeb.page.desktop
+	sha256sums = 8e51580f0473d7524212280c77d22684ec5a1739d5512f6867a9f0fe68b629b5
+	sha256sums = 62b378eaad8f542f85c8c0a90b6ab6f9bec8f48d0924eb0cafb1521403573cb1
+
+pkgname = archiveweb.page-appimage
