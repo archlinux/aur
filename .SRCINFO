@@ -1,7 +1,7 @@
 pkgbase = dep-bin
 	pkgdesc = Go dependency management tool
 	pkgver = 0.5.4
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/golang/dep
 	arch = any
 	license = BSD
@@ -13,4 +13,3 @@ pkgbase = dep-bin
 	sha256sums = 40a78c13753f482208d3f4bea51244ca60a914341050c588dad1f00b1acc116c
 
 pkgname = dep-bin
-
