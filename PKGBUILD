@@ -2,7 +2,7 @@
 # Maintainer: cordx56 <cordx56@cordx.cx>
 
 pkgname=rustowl-bin
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Visualize Ownership and Lifetimes in Rust'
 url='https://github.com/cordx56/rustowl'
@@ -12,7 +12,7 @@ depends=()
 conflicts=('rustowl-git')
 arch=('any')
 source=("https://github.com/cordx56/rustowl/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e65e5e75ee242dc47110ea78f3e7e83f0f4019999cc57d13183844d518139875')
+sha256sums=('21e90e62a2e0a0340a0fa5058f66a94379f91955f345dc3b85ef8a1031a67f5b')
 
 prepare() {
     cd rustowl-${pkgver}
