@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/boosterl/powerline-pws"
 license=('GPLv3')
 depends=('python')
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer' 'python-setuptools')
 source=("${pkgname}::git+https://github.com/boosterl/${gitname}.git#tag=${pkgver}")
 sha256sums=('SKIP')
 

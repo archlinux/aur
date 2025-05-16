@@ -7,6 +7,7 @@ pkgbase = python-powerline-pws
 	license = GPLv3
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	depends = python
 	source = python-powerline-pws::git+https://github.com/boosterl/powerline-pws.git#tag=1.1.1
 	sha256sums = SKIP
