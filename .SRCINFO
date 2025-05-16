@@ -1,7 +1,7 @@
 pkgbase = nodejs-jsonschema2md
 	pkgdesc = Convert Complex JSON Schemas into Markdown Documentation
 	pkgver = 8.0.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/adobe/jsonschema2md
 	arch = x86_64
 	license = APACHE

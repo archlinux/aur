@@ -1,8 +1,8 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
 pkgname=nodejs-jsonschema2md
-pkgver=8.0.2
-pkgrel=0
+pkgver=8.0.2 # renovate: datasource=github-releases depName=adobe/jsonschema2md
+pkgrel=1
 pkgdesc="Convert Complex JSON Schemas into Markdown Documentation"
 url="https://github.com/adobe/jsonschema2md"
 license=('APACHE')
