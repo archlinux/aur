@@ -4,7 +4,7 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=uim
-pkgver=1.9.5
+pkgver=1.9.6
 pkgrel=1
 pkgdesc="Multilingual input method library"
 url="https://github.com/uim/uim"
@@ -41,7 +41,7 @@ optdepends=(
 )
 
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('31592f289a3c089a7d7181d7c3ffca4faa029ac0a188301bee8d4fd95010cfa5')
+sha256sums=('5436f5507b64c772da64e8ad7e598cb8b32dc9e5617e01d54e4a71eaf5566a3d')
 
 _archive="$pkgname-$pkgver"
 

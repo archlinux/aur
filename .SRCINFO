@@ -1,6 +1,6 @@
 pkgbase = uim
 	pkgdesc = Multilingual input method library
-	pkgver = 1.9.5
+	pkgver = 1.9.6
 	pkgrel = 1
 	url = https://github.com/uim/uim
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = uim
 	optdepends = qt5-declarative: immodule and helper applications
 	optdepends = qt5-x11extras: immodule and helper applications
 	optdepends = skk-jisyo: input method
-	source = https://github.com/uim/uim/releases/download/1.9.5/uim-1.9.5.tar.gz
-	sha256sums = 31592f289a3c089a7d7181d7c3ffca4faa029ac0a188301bee8d4fd95010cfa5
+	source = https://github.com/uim/uim/releases/download/1.9.6/uim-1.9.6.tar.gz
+	sha256sums = 5436f5507b64c772da64e8ad7e598cb8b32dc9e5617e01d54e4a71eaf5566a3d
 
 pkgname = uim
