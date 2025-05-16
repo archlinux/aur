@@ -2,7 +2,7 @@
 # Contributor: fuero <fuerob@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=kwok
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Kubernetes WithOut Kubelet - set up a cluster of thousands of (fake) nodes in seconds'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ depends=('glibc')
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('cb43f7574205448a7c89b53201c40db6055f1ceebf011051248f092c893fa1cb')
+sha256sums=('bf7c686c3ada070104f32fd3263686368cc981206770e81d39d8a27ae04368c0')
 
 build() {
   cd "${pkgname}-${pkgver}"
