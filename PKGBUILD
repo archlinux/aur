@@ -1,8 +1,7 @@
 # Maintainer: marzeq <marzeqmarzeq at gmail dot com>
 
 pkgname=mconf
-pkgver=25.5_1
-local gittag="${pkgver//_/-}"
+pkgver=25.5.1
 pkgrel=1
 pkgdesc="Parser for the mconf configuration language"
 arch=("x86_64" "aarch64")
