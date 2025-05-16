@@ -1,8 +1,8 @@
 # Contributor: Mr.Smith1974 < ... >
 # Maintainer: Jonathan Hilger <joni dot hilger at yahoo dot de>
 pkgname=vpinball
-pkgver=r8019.e14a6ab
-pkgrel=2
+pkgver=r8022.2996669
+pkgrel=1
 pkgdesc="An open source pinball table editor and simulator (BGFX standalone version)"
 arch=('x86_64')
 url="https://github.com/vpinball/vpinball"
@@ -16,7 +16,7 @@ source=("${pkgname}::git+https://github.com/vpinball/vpinball.git"
 sha256sums=('SKIP'
             '4f094e7177ecde9afdafa29805635084aae5967560d33b46c8f95ef732898b93'
             'ca5d4a89d1a137eba199ebd91463d3df7fe90fd47ff41c73d6f456d879ab5011')
-options=('debug' '!strip')
+options=('!lto')
 pkgver() {
     cd "$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"

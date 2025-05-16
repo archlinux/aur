@@ -1,6 +1,6 @@
 pkgbase = vpinball
 	pkgdesc = An open source pinball table editor and simulator (BGFX standalone version)
-	pkgver = r8019.e14a6ab
+	pkgver = r8022.2996669
 	pkgrel = 1
 	url = https://github.com/vpinball/vpinball
 	arch = x86_64
@@ -30,8 +30,7 @@ pkgbase = vpinball
 	depends = python-lxml
 	depends = python-pillow
 	provides = vpinball
-	options = debug
-	options = !strip
+	options = !lto
 	source = vpinball::git+https://github.com/vpinball/vpinball.git
 	source = vpinball.desktop
 	source = visualpinball_screen1.jpg
