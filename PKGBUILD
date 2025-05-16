@@ -1,7 +1,9 @@
-# Maintainer: Florian Pritz <bluewind@xinu.at>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Mike Sampson <mike at sambodata dot com>
 # Contributor: Tomasz Cielecki <tomasz@ostebaronen.dk>
 # Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+
 pkgname=sipcalc
 pkgver=1.1.6
 pkgrel=6
