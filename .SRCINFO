@@ -1,7 +1,7 @@
 pkgbase = wubi-dict-editor
 	pkgdesc = Five-stroke code assistant for Rime based on electron development.(Use syetem-wide electron)五笔码表助手 for Rime,基于 electron 开发.
 	pkgver = 1.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KyleBing/wubi-dict-editor
 	arch = x86_64
 	license = GPL-3.0-only
@@ -12,7 +12,6 @@ pkgbase = wubi-dict-editor
 	makedepends = libicns
 	makedepends = curl
 	makedepends = git
-	depends = ibus-rime
 	depends = electron24
 	depends = nodejs
 	conflicts = wubi-dict-editor

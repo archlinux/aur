@@ -4,14 +4,14 @@ _zhname='五笔码表助手'
 pkgver=1.30
 _electronversion=24
 _nodeversion=18
-pkgrel=1
+pkgrel=2
 pkgdesc="Five-stroke code assistant for Rime based on electron development.(Use syetem-wide electron)五笔码表助手 for Rime,基于 electron 开发."
 arch=('x86_64')
 url="https://github.com/KyleBing/wubi-dict-editor"
 license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
-    'ibus-rime'
+    #'ibus-rime'
     "electron${_electronversion}"
     'nodejs'
 )
@@ -40,6 +40,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -48,9 +49,14 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --genericname="${_zhname} for Rime" --exec="${pkgname} %U"
-    sed -i "3i\Name[zh_CN]=${_zhname}" "${srcdir}/${pkgname}.desktop"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    gendesk -q -f -n \
+        --pkgname="${pkgname}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${pkgname}" \
+        --genericname="${_zhname} for Rime" \
+        --exec="${pkgname} %U"
+    sed -i "3i\Name[zh_CN]=${_zhname}" "${pkgname}.desktop"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -77,9 +83,20 @@ prepare() {
     cp assets/img/appIcon/appIcon_16x16x32.png assets/img/appIcon/appicon.png
     sed -i "s/appIcon\/appicon\ico/img\/appIcon\/appicon\.png/g" main.js
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=development    yarn add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i '/"makers": \[/i\
+    "plugins": [\
+        {\
+            "name": "@electron-forge/plugin-local-electron",\
+            "config": {\
+                "electronPath": "/usr/lib/electron24"\
+            }\
+        }\
+    ],' package.json
     NODE_ENV=production     yarn run package
 }
 package() {
@@ -91,6 +108,6 @@ package() {
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/img/appIcon/appIcon_${_icons}x32.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/app/${pkgname}.png"
     done
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
