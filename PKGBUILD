@@ -10,7 +10,7 @@ pkgver=3.19.2.400
 _pkgver_arm=3.19.1.401 # 两个版本有时候不一样
 _x86_md5=fb7464ffb18b94a06868265bed984007
 _arm_md5=206c30da5545dba38a29ccbc752dec94
-pkgrel=4
+pkgrel=5
 pkgdesc="Sandboxed wemeet, supports screensharing on Wayland / 沙盒化腾讯会议, 支持 Wayland 屏幕共享"
 arch=('x86_64' 'aarch64')
 license=('LicenseRef-proprietary')
@@ -44,9 +44,9 @@ depends=(
     "xdg-desktop-portal-impl"
 )
 makedepends=('patchelf' 'cmake' 'git')
-sha512sums=('9ff99c46adb12f2384310d3ccc51af75c99a21ebf057d95a18cb76937b38b775eb5837217e4e3fa5af61882508e02464f7f5ee12c07baea9f76dbe06fa10f028'
+sha512sums=('2bf3e79ac9867b3ad99de027e36cd2b278db4246163f125222cd4f864d6a1734d81f70f34aa2d5cfee49e6eedbbe1afb269ce591e8963eb083366da041815e86'
             'f98e9ae5842c05a19ad4f883c8f9d88ef3b64e04b034e7fd8b23ddca81510f0bd38688ad7c63ddf8badaa727a7b599ceede87419e9694c06d7a4b06138b94c15'
-            '1f4acb504af7a6c3fdad53ea36c0bbabd3f12cbd20a674539368294f46a3b06722fb355d8b070abe4f07b5dcc8924b869a3418c1e2e314caf9f51b6550b591b1'
+            '6c429d219f87f4a8fd43dd39413a9f52f6dc7fa4dcad97bba6955450fac2ae5120dbe748793618779207ee081bc8d153b28a894a9a8605b7367353e553705521'
             'd7f5298ce768094eaf2931805897144576c208b33ce7b758703ea7e0cdb1e8a5a5ab0dac2b792fb73702343e4a54280017348cf72d889e226eedfe4dc05004c0'
             'SKIP')
 sha512sums_x86_64=('175a92d412ee3359f93ad84e9344d4317f04e396e40586cfa1f3a7798adbe69e3f2991a5af5163cd99fbb3ad1b3e6e7c5b016d17d022f86b7c3f54a1274b8238')
