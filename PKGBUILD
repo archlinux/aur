@@ -2,8 +2,8 @@
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=processing-examples
-pkgver=4.4.1
-_build=1301
+pkgver=4.4.4
+_build=1304
 pkgrel=1
 arch=('any')
 pkgdesc="Examples for Processing"
@@ -11,7 +11,7 @@ url='https://www.processing.org/'
 license=(GPL LGPL)
 makedepends=(gradle)
 source=("https://github.com/processing/processing4/archive/processing-$_build-$pkgver.tar.gz")
-	sha256sums=('e35f9db78ad81b41a21a63ddac6b7b7d7174d957561203d2d57738117e9c21f8')
+sha256sums=('650546c3523e9c937db1743aebe37e145223c7a7a4864fd31041a280303c45e2')
 
 prepare() {
   # Symbolic link for not having to repeat the revision number
