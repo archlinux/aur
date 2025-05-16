@@ -1,0 +1,11 @@
+pkgbase = bmk
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/realchonk/bmk
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	source = bmk-0.1.tar.gz::https://github.com/realchonk/bmk/archive/refs/tags/0.1.tar.gz
+	sha256sums = 91286d0caf8a8e304603e126783b3cf59ace130f74380423ffca082bdd5f7578
+
+pkgname = bmk
