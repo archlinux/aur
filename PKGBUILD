@@ -3,7 +3,7 @@
 _binname="gsa"
 _pkgname="go-size-analyzer"
 pkgname="${_pkgname}-bin"
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="A tool for analyzing the dependencies in compiled Golang binaries"
 arch=('aarch64' 'x86_64')
@@ -13,10 +13,10 @@ license=('AGPL-3.0-only')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_linux_arm64.tar.gz")
-source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64.tar.gz")
-b2sums_aarch64=('64ed7fae687c39937faad58197f66d26f47e1d4ae009092e877fa23fd87a6219112aa587d11eabb7d2ab337544cf4d1d3085be6dd07f7ab0d7d8e5e04c50b653')
-b2sums_x86_64=('83ac3618232e492bed4b1ae38ad1c8ae34b801f0c0b46aeef0ea0db024728b10e28aa9b5be0cb0bd101044cf8294243c19e322cc05c44da4a0b426f3436b1f05')
+source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
+source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
+sha256sums_aarch64=('e4babb08626399a78e91fef4efb10bb897b99b5d96d442a66e7fe9c837b1727c')
+sha256sums_x86_64=('d35fa0704b66a19ba298d73824e722f8332a428dd1ac1e79956c7738585bea15')
 
 package() {
   cd "${srcdir}"
