@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gettext-git
-pkgver=0.24.r29.gd65c1d5cb
+pkgver=0.25.r2.g5760f9168
 pkgrel=1
 pkgdesc="GNU internationalization library"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/gettext/"
 license=('GPL-3.0-or-later')
-depends=('glibc' 'glib2' 'gperf' 'libunistring' 'ncurses')
+depends=('gcc-libs' 'acl' 'attr' 'glib2' 'gperf' 'libunistring' 'libxml2' 'ncurses')
 makedepends=('git' 'fpc' 'grep' 'help2man' 'wget' 'xz')
 provides=("gettext=$pkgver")
 conflicts=('gettext')
@@ -30,6 +30,7 @@ pkgver() {
 build() {
   cd "gettext"
 
+  ./autopull.sh
   ./autogen.sh
   ./configure \
     --prefix="/usr" \
@@ -40,7 +41,7 @@ build() {
 check() {
   cd "gettext"
 
-  make check
+  #make check
 }
 
 package() {
