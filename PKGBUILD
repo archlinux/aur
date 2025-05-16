@@ -3,7 +3,7 @@
 # Contributor: Schala
 
 pkgname=mingw-w64-wxmsw
-pkgver=3.2.7
+pkgver=3.2.8
 pkgrel=1
 pkgdesc="Win32 implementation of wxWidgets API for GUI (mingw-w64)"
 arch=(any)
@@ -20,7 +20,7 @@ options=(staticlibs !strip !buildflags)
 conflicts=(mingw-w64-wxmsw2.9 mingw-w64-wxmsw-static)
 provides=(mingw-w64-wxmsw2.9 mingw-w64-wxmsw-static)
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2")
-b2sums=('ae318b3bea4652e45a58ea5cd3d7053d27760c2f0761d2f71097659aefaa00efa3a40fcfa3ba01edb66b18710de652cee63a51c216ef7fab12abdd505333a6b3')
+b2sums=('54855e401831b6e9510fe3ee6c8909e492151a6ed5c2801a3322adce971379e7aad8f00ad8c6e41f4adf31d3f2c3cb812eeb0cdaef42f87aee11fca005b36a11')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
