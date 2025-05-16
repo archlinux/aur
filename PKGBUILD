@@ -12,6 +12,7 @@ arch=('x86_64')
 url="http://www.open3d.org"
 license=('MIT')
 depends=(
+    gcc13
     libc++abi
     libc++
     curl
@@ -61,22 +62,25 @@ makedepends=(
     python-setuptools
 )
 source=(
-    "${pkgbase}::git+https://github.com/isl-org/Open3D.git#commit=dbb3c7d58b7af5819540dacd8ea4e0a11ab605dc"
+    "${pkgbase}::git+https://github.com/isl-org/Open3D.git#commit=4356c172767a65209d2fe6dd76ff571f10293249"
     "no_werror.patch"
-    "fmt-v11.patch::https://github.com/daizhirui/Open3D/commit/3773d816260c5912581397a0dadf08da4c943d68.patch"
-    "archlinux.patch::https://github.com/daizhirui/Open3D/commit/9745817370d1d504d45344959a000189bb9213cb.patch"
+    "archlinux.patch"
+    "librealsense.cmake.patch"
+    "civetweb.cmake.patch"
 )
 sha256sums=(
     'SKIP'
     'e58dacd86497e4d8a61fe00e4e41a4b8748e1dcca8d3172918d1bc5a1e7390cc'
-    '7477f6ac021bf11804b19f4005bcbc1032789346e75efee3eca1c979024ae476'
-    'd652b06bd4bc10f4eed18a69cd42cc07d10a58728ff6adddb45fb2a7c488dd9e')
+    'b29065f9930ce58f09066bd8943be322c07454bfec7084c030ff8b7dd6185ac4'
+    '601ecb81fe6b1b6b459bc9340e9c060e2fc991a004318d18803dffa23ffb078a'
+    '18a4dc14fc7d027b864575a856422c2a1b520cbbba47fb7e22300054e796d09b')
 
 function prepare() {
     cd "${srcdir}/${pkgbase}"
     patch -Np1 -i "${srcdir}/no_werror.patch"
-    patch -Np1 -i "${srcdir}/fmt-v11.patch"
     patch -Np1 -i "${srcdir}/archlinux.patch"
+    patch -Np1 -i "${srcdir}/librealsense.cmake.patch"
+    patch -Np1 -i "${srcdir}/civetweb.cmake.patch"
     # find . -name "CMakeLists.txt" -exec sed -i 's/-Werror//g' {} \;
     # grep --files-with-matches -r "_FORTIFY_SOURCE" | xargs -I {} sed -i 's/_FORTIFY_SOURCE=[0-9]/""/g' {}
     mkdir -p build
@@ -92,13 +96,14 @@ function build() {
     export CFLAGS=""
     export CXXFLAGS=""
     cmake .. \
+          -DCMAKE_C_COMPILER=/usr/bin/gcc-13 \
+          -DCMAKE_CXX_COMPILER=/usr/bin/g++-13 \
           -G "Unix Makefiles" \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DBUILD_SHARED_LIBS=ON \
           -DCMAKE_VERBOSE_MAKEFILE=ON \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_MODULE_PATH=/usr/lib/cmake/OpenVDB \
-          -DCMAKE_FIND_ROOT_PATH=/opt/intel/oneapi/tbb/latest/lib/cmake/tbb \
           -DUSE_SYSTEM_ASSIMP=ON \
           -DUSE_SYSTEM_CURL=ON \
           -DUSE_SYSTEM_BLAS=OFF \
@@ -106,9 +111,7 @@ function build() {
           -DUSE_SYSTEM_EIGEN3=ON \
           -DUSE_SYSTEM_EMBREE=ON \
           -DUSE_SYSTEM_TBB=ON \
-          -DOPEN3D_USE_ONEAPI_PACKAGES=ON \
-          -DoneDPL_DIR=/opt/intel/oneapi/dpl/latest/lib/cmake/oneDPL \
-          -DMKL_DIR=/opt/intel/oneapi/mkl/latest/lib/cmake/mkl \
+          -DOPEN3D_USE_ONEAPI_PACKAGES=OFF \
           -DUSE_SYSTEM_FMT=ON \
           -DUSE_SYSTEM_GLEW=ON \
           -DUSE_SYSTEM_GLFW=ON \
@@ -131,6 +134,7 @@ function build() {
 
 function package_open3d() {
     depends=(
+        gcc13
         libc++abi
         libc++
         curl
@@ -182,6 +186,7 @@ function package_open3d() {
 
 function package_python-open3d() {
     depends=(
+        gcc13
         libc++abi
         libc++
         curl
@@ -240,6 +245,7 @@ function package_python-open3d() {
 
 function package_python-py3d() {
     depends=(
+        gcc13
         libc++abi
         libc++
         curl
