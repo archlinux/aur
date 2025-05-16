@@ -1,0 +1,17 @@
+## Changelog
+
+    911010c Update golang version to 1.23.8 (#4116)
+
+As always, feedbacks are more than welcome, feel free to open issues/discussions.
+You can reach out to the team using:
+
+    Slack
+    Github Discussions
+    Github Issues
+    Mailing List
+
+## Docker Images
+
+    grafana/pyroscope
+
+  docker pull docker.io/grafana/pyroscope:1.13.2
