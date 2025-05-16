@@ -1,0 +1,15 @@
+pkgbase = decomp-toolkit
+	pkgdesc = A GameCube & Wii decompilation toolkit
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/encounter/decomp-toolkit
+	arch = aarch64
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = decomp-toolkit-1.5.1.tar.gz::https://github.com/encounter/decomp-toolkit/archive/refs/tags/v1.5.1.tar.gz
+	b2sums = 8034f1981d98664bb9e25e5c91d9191ab45af09493e40ad868e2b38412b682738f9bae83dbb73415190d47e6be7c013108f450579699a2528378efd16761f41d
+
+pkgname = decomp-toolkit

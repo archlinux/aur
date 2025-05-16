@@ -1,0 +1,4 @@
+[decomp-toolkit]
+source = "git"
+git = "https://github.com/encounter/decomp-toolkit.git"
+prefix = "v"
