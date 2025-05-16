@@ -2,7 +2,7 @@
 # Contributor: ChatGPT (OpenAI) <https://openai.com> — assisted with Git configuration, and packaging guidance.
 
 pkgname='kdev-templatetools'
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="KDevelop app and file utilities for building and installing your own templates."
 arch=('any')
@@ -22,17 +22,17 @@ sha256sums=('SKIP')  # Don't need this when using Git as source
 
 package() {
   cd "$srcdir" || return 1
-  pwd
+  # /home/tom/.cache/yay/kdev-templatetools/src
 
   # Install scripts
-  install -Dm755 "src/KDevAppTemplateInstall"       "$pkgdir/usr/bin/KDevAppTemplateInstall"
-  install -Dm755 "src/KDevFileTemplateInstall"      "$pkgdir/usr/bin/KDevFileTemplateInstall"
+  install -Dm755 "kdev-templatetools/src/KDevAppTemplateInstall"       "$pkgdir/usr/bin/KDevAppTemplateInstall"
+  install -Dm755 "kdev-templatetools/src/KDevFileTemplateInstall"      "$pkgdir/usr/bin/KDevFileTemplateInstall"
 
   # Install .desktop file
-  install -Dm644 "kdevelop-template.desktop"        "$pkgdir/usr/share/kio/servicemenus/kdevelop-template.desktop"
+  install -Dm644 "kdev-templatetools/kdevelop-template.desktop"        "$pkgdir/usr/share/kio/servicemenus/kdevelop-template.desktop"
 
   # License
-  install -Dm644 "LICENSE"                          "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "kdev-templatetools/LICENSE"                          "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Rebuild KDE service cache
   if command -v kbuildsycoca5 &> /dev/null; then kbuildsycoca5; fi
