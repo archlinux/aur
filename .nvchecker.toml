@@ -1,0 +1,4 @@
+[usacloud]
+source = "git"
+git = "https://github.com/sacloud/usacloud.git"
+prefix = "v"
