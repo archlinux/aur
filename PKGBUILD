@@ -10,8 +10,10 @@ license=('Apache')
 depends=('docker' 'kubectl')
 provides=('sealos')
 conflicts=('sealos')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/labring/sealos/releases/download/v${pkgver}/sealos_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('92a7234f73d510b6faad975fa09139bb2ea9f52e255e9bc196e2e028ca60224b')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/labring/sealos/releases/download/v${pkgver}/sealos_${pkgver}_linux_amd64.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/labring/sealos/releases/download/v${pkgver}/sealos_${pkgver}_linux_arm64.tar.gz")
+sha256sums_x86_64=('92a7234f73d510b6faad975fa09139bb2ea9f52e255e9bc196e2e028ca60224b')
+sha256sums_aarch64=('d6fbaa0692e5a98a6695358f1994fed999e41adfca3784a97886a8fca306bf05')
 
 package() {
   cd "${srcdir}"
