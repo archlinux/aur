@@ -1,7 +1,7 @@
 pkgbase = nvidia-340xx-lts
 	pkgdesc = NVIDIA drivers for linux-lts, 340xx legacy branch
 	pkgver = 340.108
-	pkgrel = 9
+	pkgrel = 10
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom:nvidia
@@ -29,6 +29,7 @@ pkgbase = nvidia-340xx-lts
 	source = 0015-kernel-6.6.patch
 	source = 0016-kernel-6.8.patch
 	source = 0017-gcc-14.patch
+	source = 0018-gcc-15.patch
 	sha256sums = 995d44fef587ff5284497a47a95d71adbee0c13020d615e940ac928f180f5b77
 	sha256sums = 5b4cb7620abc1729a13c78a2fb33ccaeb7d92f42936d929885324c81f2b7c985
 	sha256sums = c8bda5fb238fbebc5bf6ae4b7646e48b30a96b9060ced20d93c53c14ac3161f6
@@ -48,6 +49,7 @@ pkgbase = nvidia-340xx-lts
 	sha256sums = e6269d4ffd22ddfb3dd436e02d4b6b3cac8c7779795ab4f30917673152e862fd
 	sha256sums = 06ab027cd786de4c5afd8b9ee2c7a2a21d5a029de513d77e13f7d0b018073a20
 	sha256sums = c2fee0f46ae5650328e70a0cf076f685d4a9005a178cb0150d3537e10567bf81
+	sha256sums = 9e67b8e96caeae132a3dfc94d0c8f4e8e5c89fdb5122bd3d8b6f4745185a78d5
 
 pkgname = nvidia-340xx-lts
 	pkgdesc = NVIDIA drivers for linux-lts, 340xx legacy branch.

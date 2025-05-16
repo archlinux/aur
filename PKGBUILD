@@ -6,7 +6,7 @@
 pkgbase=nvidia-340xx-lts
 pkgname=(nvidia-340xx-lts nvidia-340xx-lts-dkms)
 pkgver=340.108
-pkgrel=9
+pkgrel=10
 pkgdesc="NVIDIA drivers for linux-lts, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -35,6 +35,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Li
   0015-kernel-6.6.patch
   0016-kernel-6.8.patch
   0017-gcc-14.patch
+  0018-gcc-15.patch
 )
 sha256sums=('995d44fef587ff5284497a47a95d71adbee0c13020d615e940ac928f180f5b77'
             '5b4cb7620abc1729a13c78a2fb33ccaeb7d92f42936d929885324c81f2b7c985'
@@ -54,7 +55,8 @@ sha256sums=('995d44fef587ff5284497a47a95d71adbee0c13020d615e940ac928f180f5b77'
             'b2687197a42b02f4886f43284a8c45fc6610f5e0ed515a5c132f8803165ebebf'
             'e6269d4ffd22ddfb3dd436e02d4b6b3cac8c7779795ab4f30917673152e862fd'
             '06ab027cd786de4c5afd8b9ee2c7a2a21d5a029de513d77e13f7d0b018073a20'
-            'c2fee0f46ae5650328e70a0cf076f685d4a9005a178cb0150d3537e10567bf81')
+            'c2fee0f46ae5650328e70a0cf076f685d4a9005a178cb0150d3537e10567bf81'
+            '9e67b8e96caeae132a3dfc94d0c8f4e8e5c89fdb5122bd3d8b6f4745185a78d5')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 # default is 'linux' substitute custom name here
