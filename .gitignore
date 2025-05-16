@@ -1,0 +1,5 @@
+/rudder-sources-*.tar.bz2
+/pkg
+/src
+/rudder-packages-*
+/rudder-agent-*.pkg.tar*

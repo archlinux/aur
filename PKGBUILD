@@ -2,7 +2,7 @@
 
 pkgname=rudder-agent
 pkgver=8.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Configuration management and audit tool - agent for Rudder managed systems'
 arch=('x86_64' 'aarch64')
 url='https://www.rudder.io'
@@ -20,6 +20,7 @@ sha256sums=('SKIP'
 
 prepare() {
   mv rudder-sources-${pkgver}.tar.bz2 ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/rudder-sources.tar.bz2
+  cp ${srcdir}/../9901_cfengine_manjaro-os.patch ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/patches/cfengine/
   sed -i -E -e "s/^RUDDER_VERSION_TO_PACKAGE =.*$/RUDDER_VERSION_TO_PACKAGE = ${pkgver}/i" \
 	  -e 's/^([[:space:]]*)chown root fusion(.*)$/\1# chown root fusion\2/' ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/Makefile.in
 }
@@ -37,7 +38,6 @@ package() {
   chmod 700 "${pkgdir}/var/rudder/tmp/"
   cp -aR "${pkgdir}/lib" "${pkgdir}/usr/"
   rm -rf "${pkgdir}/lib"
-  mkdir -p "${pkgdir}/usr/share/man/man8"
   rm -rf "${pkgdir}/opt/rudder/share/man"
   find "${pkgdir}/opt/rudder/lib/perl5/" -name "*.so" -exec strip --strip-unneeded {} +
   for _executable in $(find "${pkgdir}/opt/rudder/bin/" "${pkgdir}/opt/rudder/lib/" -type f -executable) ; do
@@ -47,4 +47,6 @@ package() {
   		patchelf --set-rpath "$_new_rpath" ${_executable}
   	fi
   done
+  install -d -m 0755 -o root -g root "${pkgdir}/opt/rudder/share/doc/server-patches"
+  install -m 0644 -o root -g root ${srcdir}/../9900_rudder-server_postinstall_cfengine_paths.patch "${pkgdir}/opt/rudder/share/doc/server-patches/"
 }
