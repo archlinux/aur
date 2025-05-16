@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
 
-_upstreamver='0.3.23'
+_upstreamver='0.3.25'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='memory-graph'
@@ -14,11 +14,11 @@ pkgdesc="Generate intuitive graphs of your Python data"
 arch=('any')
 url='https://github.com/bterwijn/memory_graph'
 license=('BSD-2-Clause')
-depends=('bash' 'python' 'python-graphviz' 'python-numpy' 'python-pandas')
+depends=('python' 'python-graphviz' 'python-numpy' 'python-pandas')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('8c184f2c6afebf9ba8bf9f728a701946bae7c7ae7a4cb4af588c5cc8c6479db0')
+sha256sums=('9cf6d6840ebde0f98cb235a99dd0100b16b726d850b7d034170e4d1749cddd88')
 
 
 build() {
