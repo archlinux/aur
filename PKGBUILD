@@ -7,7 +7,7 @@ pkgdesc="An open source pinball table editor and simulator (BGFX standalone vers
 arch=('x86_64')
 url="https://github.com/vpinball/vpinball"
 license=('GPL-3.0-or-later' 'LicenseRef-MAME')
-depends=('python' 'glibc' 'vpinball-bgfx.cmake' 'gcc-libs' 'hidapi' 'sdl3-git' 'sdl3_mixer-git' 'sdl3_image-git' 'libserum-concentrate-git' 'sdl3_ttf-git' 'libpupdmd-git' 'freeimage-vpinball-git' 'libpinmame-git' 'libaltsound-git' 'libdmdutil-git' 'libdof-git' 'ffmpeg' 'python-lxml' 'python-pillow')
+depends=('python' 'glibc' 'vpinball-bgfx.cmake' 'gcc-libs' 'hidapi' 'sdl3-git' 'sdl3_mixer-git' 'sdl3_image-git' 'libserum-concentrate-git' 'sdl3_ttf-git' 'libpupdmd-git' 'freeimage-vpinball-git' 'libpinmame-git' 'libaltsound-git' 'libdmdutil-git' 'libdof-git' 'ffmpeg' 'python-lxml' 'python-pillow' 'unordered_dense-git' 'libinih' 'plog')
 makedepends=('unzip' 'cmake' 'git' 'curl')
 provides=('vpinball')
 source=("${pkgname}::git+https://github.com/vpinball/vpinball.git"
@@ -25,6 +25,8 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   cp make/CMakeLists_bgfx-linux-x64.txt CMakeLists.txt
+  #sed -i 's%${CMAKE_SOURCE_DIR}/third-party/runtime-libs/linux-x64%/usr/lib%g' CMakeLists.txt
+  #sed -i 's%${CMAKE_SOURCE_DIR}/third-party/include%/usr/include\n/usr/include/ankerl%g' CMakeLists.txt
   cmake -DCMAKE_BUILD_TYPE=Release -DPOST_BUILD_COPY_EXT_LIBS=FALSE -B build
   cmake --build build
 }  # build
