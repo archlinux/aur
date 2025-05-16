@@ -1,6 +1,6 @@
 pkgbase = onvif-gui
 	pkgdesc = A client side implementation of the ONVIF specification - GUI app
-	pkgver = 2.4.5
+	pkgver = 3.0.10
 	pkgrel = 1
 	url = https://github.com/sr99622/libonvif
 	arch = any
@@ -19,10 +19,9 @@ pkgbase = onvif-gui
 	depends = python-opencv
 	depends = python-pyqt6
 	depends = qt6-base
-	conflicts = python-yolox
-	source = git+https://github.com/sr99622/libonvif.git#commit=f9a9cc1b81c1405a3ae8928989832fb35d901bd1
+	source = git+https://github.com/sr99622/libonvif.git#commit=2f03007de328e5da5dfd771989fa0f406529ad24
 	source = onvif-gui.desktop
-	sha256sums = 196e536499b87520105587c6e41389cb279ac32b76b982438c0b53a43b449000
+	sha256sums = b54485dc8c3abc1dc9c94206dc364163a2a3c2b80a7fa371f129c78767001db1
 	sha256sums = dc6d193827628215ccf66c0617c6ce2150e2fc3a5ee66afc35fb9c0c7d571d88
 
 pkgname = onvif-gui

@@ -3,7 +3,7 @@
 # All my PKGBUILDs are managed at https://github.com/tmn505/AUR
 
 pkgname=onvif-gui
-pkgver=2.4.5
+pkgver=3.0.10
 pkgrel=1
 pkgdesc='A client side implementation of the ONVIF specification - GUI app'
 url='https://github.com/sr99622/libonvif'
@@ -23,21 +23,11 @@ makedepends=('git'
              'python-installer'
              'python-setuptools'
              'python-wheel')
-conflicts=('python-yolox')
-# _prjrel=2.4.5
-source=("git+${url}.git#commit=f9a9cc1b81c1405a3ae8928989832fb35d901bd1"
+# _prjrel=3.0.10
+source=("git+${url}.git#commit=2f03007de328e5da5dfd771989fa0f406529ad24"
         "${pkgname}.desktop")
-sha256sums=('196e536499b87520105587c6e41389cb279ac32b76b982438c0b53a43b449000'
+sha256sums=('b54485dc8c3abc1dc9c94206dc364163a2a3c2b80a7fa371f129c78767001db1'
             'dc6d193827628215ccf66c0617c6ce2150e2fc3a5ee66afc35fb9c0c7d571d88')
-
-prepare() {
-	cd ${srcdir}/libonvif/${pkgname}
-	# move gui to non-generic namespace
-	find . -type f -exec sed -e 's, gui, onvif_gui,g' -e 's,/gui/,/onvif_gui/,g' -e 's,"gui","onvif_gui",' -i {} +
-	sed -e 's, gui, onvif_gui,' -i MANIFEST.in
-	sed -e 's,=gui\.,=onvif_gui\.,' -i setup.py
-	mv gui onvif_gui
-}
 
 pkgver() {
 	cd ${srcdir}/libonvif/${pkgname}
