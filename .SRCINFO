@@ -1,11 +1,11 @@
 pkgbase = imperator-tiger-bin
 	pkgdesc = Checks game mod files for common mistakes and warns about them.
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/amtep/ck3-tiger
 	arch = x86_64
 	license = GPL3
-	source = https://github.com/amtep/ck3-tiger/releases/download/v1.7.1/imperator-tiger-linux-v1.7.1.tar.gz
-	sha256sums = 0e52bb2416656abe1ca268479cc7f10668e591eeff6d39d2befa8b41bfb56bdc
+	source = https://github.com/amtep/ck3-tiger/releases/download/v1.7.2/imperator-tiger-linux-v1.7.2.tar.gz
+	sha256sums = d4d496ef3f2a8a4d10ff35b91ed199670238a8edcab07c4aa85437e8f725b598
 
 pkgname = imperator-tiger-bin
