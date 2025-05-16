@@ -4,7 +4,7 @@
 _pkgname=kyverno
 pkgname=$_pkgname-git
 pkgver=r4554.fffd6aa9a
-pkgrel=0
+pkgrel=1
 pkgdesc="Kubernetes Native Policy Management - CLI"
 arch=('any')
 url="https://github.com/kyverno/$_pkgname"
