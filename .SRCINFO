@@ -1,6 +1,6 @@
 pkgbase = python-soco
 	pkgdesc = A Python library that allows you to control Sonos speakers programmatically
-	pkgver = 0.30.6
+	pkgver = 0.30.10
 	pkgrel = 1
 	url = https://github.com/SoCo/SoCo
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-soco
 	depends = python-aiohttp
 	depends = python-appdirs
 	depends = python-lxml
-	source = SoCo-0.30.6.tar.gz::https://github.com/SoCo/SoCo/archive/v0.30.6.tar.gz
+	source = SoCo-0.30.10.tar.gz::https://github.com/SoCo/SoCo/archive/v0.30.10.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-soco
