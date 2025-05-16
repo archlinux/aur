@@ -4,6 +4,7 @@ pkgname=aws-cli-bin
 # https://github.com/aws/aws-cli/raw/v2/CHANGELOG.rst
 pkgver=2.27.16
 pkgrel=1
+epoch=1
 pkgdesc='Unified command line interface for Amazon Web Services (Amazon provided v2 binary release)'
 arch=(x86_64 aarch64)
 url='https://github.com/aws/aws-cli/tree/v2'
