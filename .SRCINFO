@@ -11,6 +11,7 @@ pkgbase = openscad-git
 	makedepends = eigen
 	makedepends = imagemagick
 	makedepends = python
+	makedepends = glu
 	depends = boost-libs
 	depends = cgal
 	depends = libzip
