@@ -1,14 +1,14 @@
 pkgbase = mdtt
 	pkgdesc = A TUI for Markdown files with VIM-like keybindings
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/szktkfm/mdtt
 	arch = i686
 	arch = x86_64
-	arch = armv6h
 	arch = aarch64
 	license = MIT
 	makedepends = go
+	depends = glibc
 	options = strip
 	options = buildflags
 	source = https://github.com/szktkfm/mdtt/archive/refs/tags/v0.2.1/mdtt-0.2.1.tar.gz

@@ -1,11 +1,12 @@
-# Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
+# Maintainer: Kemel Zaidan <kemelzaidan at gmail com>
 pkgname=mdtt
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI for Markdown files with VIM-like keybindings"
-arch=('i686' 'x86_64' 'armv6h' 'aarch64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/szktkfm/mdtt"
 license=('MIT')
+depends=('glibc')
 makedepends=('go')
 options=("strip" "buildflags")
 source=("$url/archive/refs/tags/v$pkgver/$pkgname-$pkgver.tar.gz")
@@ -24,7 +25,7 @@ build() {
     export CGO_ENABLED=2
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     cd "$pkgname-$pkgver"
-	go build -o "build/$pkgname"
+	go build "./cmd/$pkgname"
 }
 
 check() {
@@ -34,6 +35,6 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 	install -Dm655 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
