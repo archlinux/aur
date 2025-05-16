@@ -1,0 +1,5 @@
+[usacloud-bin]
+source = "github"
+github = "sacloud/usacloud"
+use_latest_release = true
+prefix = "v"
