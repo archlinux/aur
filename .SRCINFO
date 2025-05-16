@@ -1,16 +1,16 @@
 pkgbase = octave-instrument-control
 	pkgdesc = Low level I/O functions for serial, i2c, parallel, tcp, gpib, vxi11 and usbtmc interfaces.
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/instrument-control/
 	install = octave-instrument-control.install
-	arch = any
+	arch = x86_64
 	groups = octave-forge
 	license = GPL-3.0-or-later
 	makedepends = rpcsvc-proto
 	depends = octave>=4.0.0
-	noextract = instrument-control-0.9.4.tar.gz
-	source = https://downloads.sourceforge.net/octave/instrument-control-0.9.4.tar.gz
-	sha256sums = 01fad0432d44b8ca4eeaa198cfeb21e045b97988ba7c4e8a691c6ba34a6c48df
+	noextract = instrument-control-0.9.5.tar.gz
+	source = https://downloads.sourceforge.net/octave/instrument-control-0.9.5.tar.gz
+	sha256sums = 426d5a17e75b870ac351287c56224709921cd03899d63235d7b4e74a49eacd7d
 
 pkgname = octave-instrument-control
