@@ -17,8 +17,7 @@ epoch=1
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog.md
-provides=('proton' "xiv-proton=${pkgver/_/.}")
-conflicts=('proton-ge-custom' 'proton-ge-custom-bin')
+provides=('proton-xiv' "xiv-proton=${pkgver/_/.}")
 
 ## dependencies
 depends=('python'
@@ -65,7 +64,7 @@ _srcdir=${_pkgver}-ntsync
 ## paths and files
 _protondir=usr/share/steam/compatibilitytools.d/${_pkgname}
 _licensedir=usr/share/licenses/${pkgname}
-_execfile=usr/bin/proton
+_execfile=usr/bin/proton-xiv
 _protoncfg=${_protondir}/user_settings.py
 
 ## user edited files to backup
