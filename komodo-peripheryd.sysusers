@@ -1,2 +1,2 @@
-u komodo - "Komodo Periphery Server" /srv/komodo /bin/bash
+u komodo - "Komodo Periphery Server" /srv/komodo-periphery /bin/bash
 m komodo docker
