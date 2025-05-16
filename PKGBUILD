@@ -95,7 +95,7 @@ package() {
    -e "s|/usr/lib/code/code.mjs|--app=${_app}|" \
    -e "s/name=electron/name=electron${_elnum}/" code.sh > run.sh
   install -Dm755 run.sh "${pkgdir}/usr/bin/void"
-  # Installs editor on /usr/share for compability with void-bin
+  # Install editor on /usr/share for compability with void-bin
   install -d "${pkgdir}/usr/share/void"
   cp -r --reflink=auto "${_pkg}/resources" "${pkgdir}/usr/share/void/resources"
   # system-wide tools
