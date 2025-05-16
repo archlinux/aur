@@ -1,0 +1,5 @@
+[oniux]
+source = "git"
+git = "https://gitlab.torproject.org/tpo/core/oniux.git"
+use_max_tag = true
+
