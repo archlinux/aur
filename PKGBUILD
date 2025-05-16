@@ -1,8 +1,9 @@
-# Maintainer: Jah Way <jahway603 at protonmail dot com>
+# Contributor: 9pfs <h at hackclub dot app>
+# Contributor: Jah Way <jahway603 at protonmail dot com>
 
 pkgname=owncast-bin
 _pkg=owncast
-pkgver=0.1.3
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Take control over your live stream video by running it yourself. Streaming + chat out of the box."
 url="https://github.com/owncast/owncast"
@@ -17,7 +18,7 @@ source=("$url/releases/download/v$pkgver/$_pkg-$pkgver-linux-64bit.zip"
         "owncast.service"
         "sysusers.conf"
         "tmpfiles.conf")
-sha512sums=('b308daadb992d438b276d4d9f07277f1e2c24b2d6950584ab7e6f16011b642541f2dadbc0969469eae5b8f184b764114f64786d8aa0fe2020c09d7e49110eb92'
+sha512sums=('de2a144c82debb3e2b5b062ccc24a2a7241d817e99dd996e54d5b1c4eba361b2d06409dc5d0658e877b2aaaff3ed15b144831e9e1130418ecd0ec044c7d1233c'
             'a441ac7cd374231ec2db7013046774e23132c80b438c2e929c6bf7fb7b7fe441052a29f16733ca47326135e51a1c2e7979f62e0912803363e97a7b1c0fecdb0d'
             'd0b33a529584f0d9a8c86039318aa3cc961eead6ce84c1066c97c0b263efec99f60d5a6f8662833db59a242a3ec4b8b1c3f6155ddd9cfdb16e599b355a8fa44b'
             'e243a7d6bd1d8f369d2f7044348acdb3f8547eff6794fe6ff9e3433489993a9895359e572f18f3780d3d28d443842c11c7cafa2afbb8ae4ef2e5b48869bf93c6'
