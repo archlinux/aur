@@ -2,7 +2,7 @@
 pkgname=bmk
 pkgver=0.1
 pkgrel=1
-pkgdescr="successor to make(1) with support for subdirectories"
+pkgdesc="successor to make(1) with support for subdirectories"
 arch=(x86_64 aarch64)
 url="https://github.com/realchonk/bmk"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
