@@ -1,0 +1,11 @@
+pkgbase = kdev-templatetools
+	pkgdesc = KDevelop app and file utilities for building and installing your own templates.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/TomB16/kdev-templatetools
+	arch = any
+	license = MIT
+	source = git+https://github.com/TomB16/kdev-templatetools.git#branch=main
+	sha256sums = SKIP
+
+pkgname = kdev-templatetools
