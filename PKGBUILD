@@ -1,33 +1,37 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box-git
 _pkgname=Pandora-Box
-pkgver=Prerelease.main.r0.gbb89568
-_nodeversion=20
+pkgver=1.0.3.r0.gc63e97a
+_electronversion=36
+_nodeversion=24
 pkgrel=1
-pkgdesc="A Simple Mihomo GUI.(Written in Go)"
-arch=('any')
+pkgdesc="A Simple Mihomo GUI.(Use system-wide electron)"
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/snakem982/Pandora-Box"
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
-    'webkit2gtk'
-    'gtk3'
-    'libsoup'
-    'mihomo'
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
     'npm'
     'nvm'
-    'git'
     'go'
-    'wails'
+    'git'
+    'wget'
+    'curl'
 )
 source=(
     "${pkgname%-git}.git::git+${url}"
+    "${pkgname%-git}.sh"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
@@ -41,14 +45,29 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-git}"
-    cd "${srcdir}/${pkgname%-git}.git/frontend"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Network" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -56,11 +75,11 @@ prepare() {
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
-    NODE_ENV=development    npm install
-    NODE_ENV=production     npm run build
-}
-build() {
-    cd "${srcdir}/${pkgname%-git}.git"
+    find src-electron -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=development    npm install --legacy-peer-deps
+    NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
+    cd "${srcdir}/${pkgname%-git}.git/src-go"
     export CGO_ENABLED=1
     export GO111MODULE=on
     export GOOS=linux
@@ -68,11 +87,36 @@ build() {
     export GOMODCACHE="${srcdir}/go/pkg/mod"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export GOPROXY=https://goproxy.cn,direct
+        _DLURL="github.moeyy.xyz/https://github.com"
+    else
+        _DLURL="github.com"
     fi
-    wails build -tags with_gvisor,webkit2_41 -skipbindings -m -s -trimpath -nosyncgomod -platform linux
+    go mod tidy
+    wget -O internal/em/geoip.metadb "https://${_DLURL}/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.metadb"
+    wget -O internal/em/GeoSite.dat "https://${_DLURL}/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+    wget -O internal/em/GeoLite2-ASN.mmdb "https://${_DLURL}/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git/src-go"
+    _VERSION="$(git describe --tags --abbrev=0)"
+    go build -tags=with_gvisor -trimpath \
+        -ldflags "-s -w -X github.com/snakem982/pandora-box/api.Version=${_VERSION}" \
+        -o px
+    cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    {\\
+        name: \"@electron-forge/plugin-local-electron\",\\
+        config: {\\
+            electronPath: \"${electronDist}\"\\
+        }\\
+    }," forge.config.ts
+    NODE_ENV=production    npm run package
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-git}.git/build/bin/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/build/appicon.png" "${srcdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/out/${_pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 "${srcdir}/${pkgname%-git}.git/out/${_pkgname}-linux-"*/resources/px -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/build/appicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
