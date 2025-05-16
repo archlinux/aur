@@ -1,5 +1,3 @@
-Start container
-Running post-install command: makepkg --printsrcinfo
 pkgbase = mkdotenv
 	pkgdesc = Lightweight and efficient tool for managing your .env files.
 	pkgver = 0.3.0
