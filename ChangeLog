@@ -1,17 +1,38 @@
-## Changelog
+## Fixes
+* Fix trace-profile correlation for newer versions of the Java SDKs (#4091)
 
-    911010c Update golang version to 1.23.8 (#4116)
+## Changelog
+* 67a499c2da6e8f6cb0444d805e920f10d2ba31b6 Redirect tag pushing error output (#4155)
+* 1ecb123473d84b7a35161381d24488b1a0201475 Refactor github actions (#4157)
+* 07b85afa62c46703e160486f7143a036180b97e9 Rename test workflow to ci (#4158)
+* 912968ba422d2aea898ff437d9b480c8ca5fafac Update helm release workflow (#4182)
+* 0a1507ed603e07f06c7439aacbab0ad284dbb894 chore(examples): maybe fix examples cron (#4175)
+* 483697cd98189e51e242f99a8c13635979f3bc17 chore(examples): run examples cron every 8h (#4176)
+* c223be2f8ab204524402324570e63a0d882917f3 chore(examples): update java examples (#4091)
+* aa0e531e4b7a11fbe8341d318c2c20b9304ea8bd chore: Bump Helm chart to v1.13.4
+* ea3ffea799ac0f82fa30551ab24dac299fc956c3 chore: CI bring back deploy on main (#4171)
+* 1f5c2aa4b167c78fd16dfe996022ca4831466de1 chore: Enable helm release workflow and tag v1.31.2 (#4177)
+* 3221d7ec468b9fe2099f8781d40a1e73c69917f6 chore: Github actions weekly, remove `actions: write` for git tag (#4159)
+* fb2aba486181134e96a8c2d94ab0ae6627fceebb chore: Revisit github action workflows (#4150)
+* fd3cc92fc87456b350d9a111c98192a454a15e05 chore: redirect stderr of  git commands with gh token to /dev/null for consistency (#4167)
+* b2ae9224053e02d76f9a80bfc683651baf862fcb doc: Update release notes for v1.13.2
+* 9ea1169ca222d42cee73a659be8fb85d100d4d3a reenable release workflow (#4161)
+* bf9c5faf11acf3742a1be1736d965fc00d49c1ab reenable some more  workflows (#4162)
 
 As always, feedbacks are more than welcome, feel free to open issues/discussions.
 You can reach out to the team using:
 
-    Slack
-    Github Discussions
-    Github Issues
-    Mailing List
+- [Slack](https://grafana.slack.com/archives/C047CCW6YM8)
+- [Github Discussions](https://github.com/grafana/pyroscope/discussions)
+- [Github Issues](https://github.com/grafana/pyroscope/issues)
+- [Mailing List](https://groups.google.com/g/pyroscope-team)
 
 ## Docker Images
 
-    grafana/pyroscope
+- [grafana/pyroscope](https://hub.docker.com/r/grafana/pyroscope/tags)
 
-  docker pull docker.io/grafana/pyroscope:1.13.2
+```bash
+  docker pull docker.io/grafana/pyroscope:1.13.4
+```
+
+
