@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.8.0.r41.g9a22185
+pkgver=0.8.0.r94.gffd3158
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -34,6 +34,7 @@ makedepends=(
 	'spirv-headers'
 	'stb'
 	'toml11>=4.2'
+	'util-linux-libs'
 	'vulkan-headers>=1:1.4.309'
 	'vulkan-memory-allocator>=3.1'
 	'xbyak>=7.07'
@@ -80,6 +81,8 @@ prepare() {
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
+	# remove hardcoded flag
+	sed -i '/-march=/d' CMakeLists.txt
 }
 
 build() {
@@ -108,6 +111,7 @@ package() {
 		'libswresample.so'
 		'libswscale.so'
 		'libusb-1.0.so'
+		'libuuid.so'
 		'libxxhash.so'
 		'libz.so'
 		# 'libZydis.so'

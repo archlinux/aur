@@ -1,6 +1,6 @@
 pkgbase = shadps4-git
 	pkgdesc = Sony PlayStation 4 emulator
-	pkgver = 0.8.0.r41.g9a22185
+	pkgver = 0.8.0.r94.gffd3158
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = aarch64
@@ -24,6 +24,7 @@ pkgbase = shadps4-git
 	makedepends = spirv-headers
 	makedepends = stb
 	makedepends = toml11>=4.2
+	makedepends = util-linux-libs
 	makedepends = vulkan-headers>=1:1.4.309
 	makedepends = vulkan-memory-allocator>=3.1
 	makedepends = xbyak>=7.07
@@ -38,7 +39,7 @@ pkgbase = shadps4-git
 	depends = sdl3>=3.1.8
 	optdepends = renderdoc: for graphics debugging
 	optdepends = vulkan-validation-layers: for vulkan debugging
-	provides = shadps4=0.8.0.r41.g9a22185
+	provides = shadps4=0.8.0.r94.gffd3158
 	conflicts = shadps4
 	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git
 	source = shadps4-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git
@@ -70,6 +71,7 @@ pkgname = shadps4-git
 	depends = libswresample.so
 	depends = libswscale.so
 	depends = libusb-1.0.so
+	depends = libuuid.so
 	depends = libxxhash.so
 	depends = libz.so
 	depends = qt6-base
