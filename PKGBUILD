@@ -2,7 +2,7 @@
 pkgname=libpinmame-git
 _pkgname=libpinmame
 pkgver=r6813.687a9aa
-pkgrel=1
+pkgrel=2
 pkgdesc="Pinball Multiple Arcade Machine Emulator"
 arch=('x86_64')
 url="https://github.com/vpinball/pinmame"
