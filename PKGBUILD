@@ -23,6 +23,7 @@ sha256sums=('c9affb982f26406d331fc2dfe0ac13bc7ada155f464c3b3c2a3850240e3f6693')
 prepare() {
   cd "${srcdir}/git"
   git submodule update --init --recursive
+  cp ruff/rust-toolchain.toml .
 }
 
 build() {
