@@ -7,7 +7,7 @@
 # or use: $ curl -sSf https://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages | grep -A1 "Package: google-chrome-beta" | awk '/Version/{print $2}' | cut -d '-' -f1
 
 pkgname=google-chrome-beta
-pkgver=137.0.7151.15
+pkgver=137.0.7151.27
 pkgrel=1
 pkgdesc="The popular web browser by Google (Beta Channel)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ _channel=beta
 source=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb"
 	'eula_text.html'
 	"google-chrome-$_channel.sh")
-sha512sums=('a338eb0b12922926bc76262692858ec9187016689d66ba9fbd4700dbe59c54dfc43e6a682737120eba75793b34c25d07b81ca4101c9b807525dc0dfd101d43a1'
+sha512sums=('9f76498228762216eb31ee200da327481c32488fe856d2e33491b1f720bd9b9a418adba6b02ec58095f19cc38e78715d5b37fe9cd0d72672eac231f9a4ef8446'
             'a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396'
             '17827849624a365b501da6b4e9648f324dfa1ee081dbb46f8e9519de355c4b2996075c3acb254921afd7553e4814877fa6e4355ab29bbed5825c9cffa3032f03')
 
