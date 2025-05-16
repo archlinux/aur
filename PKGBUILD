@@ -2,9 +2,9 @@
 
 pkgname=nekoray-mahdi-zarei-bin
 _pkgname=${pkgname//-mahdi-zarei-bin/}
-pkgver=4.3.4
+pkgver=4.3.5
 pkgrel=1
-_releasedate=2025-04-23
+_releasedate=2025-05-16
 pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: sing-box) - Mahdi-zarei fork"
 arch=('x86_64')
 url="https://github.com/Mahdi-zarei/${_pkgname}"
@@ -18,7 +18,7 @@ source=(
   "${_pkgname}.sh"
 )
 
-sha256sums=('243b55e9389c3465072e3db6afe272fbe2d8c21b3255cc5f7e3c813c1d2c3da6'
+sha256sums=('80ceb39a0ed954244069d8b7c18ffef2d1c785055c6f95521fbd07f6f91720a5'
             'fcc65aa60bd743aac9601edb0f2f6da1e9a84612dd8fd9e17cb16995746ef96a'
             '5a7cbb61608137924fb1ba3ecb057adb7973f5775f64758736b447041fa15377')
 
