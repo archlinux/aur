@@ -1,14 +1,14 @@
 pkgbase = scotty
 	pkgdesc = Transfer listens and loves between music services
-	pkgver = 0.4.1
-	pkgrel = 2
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = https://git.sr.ht/~phw/scotty
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://git.sr.ht/~phw/scotty#tag=v0.4.1
-	sha256sums = b5d9378012eb086ae2a118062d5884f42c7c6afa674802dfea29d35e75759f9c
+	source = git+https://git.sr.ht/~phw/scotty#tag=v0.5.2
+	sha256sums = efdec43a6e69136f8ac03db840c9ec109b64cc9cf7710ee3f1606d56be5dc3b7
 
 pkgname = scotty
