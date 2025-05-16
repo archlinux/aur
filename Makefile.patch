@@ -1,0 +1,41 @@
+--- Makefile.old	2025-05-16 16:31:13.476121281 -0500
++++ Makefile	2025-05-16 16:31:34.431442817 -0500
+@@ -10,8 +10,8 @@
+ 	CC := $(shell brew --prefix)/opt/llvm/bin/clang
+ 	CXX := $(shell brew --prefix)/opt/llvm/bin/clang++
+ else ifeq ($(shell uname),Linux)
+-	CC := clang-19
+-	CXX := clang++-19
++	CC := clang
++	CXX := clang++
+ else
+ 	CC := clang
+ 	CXX := clang++
+@@ -29,8 +29,7 @@
+ 
+ LIBDIRS := /usr/local/lib
+ 
+-LIBS := -lSDL3
+-STATIC_LIBS := -lfdk-aac
++LIBS := -lSDL3 -lfdk-aac
+ 
+ ifeq ($(shell uname),Darwin)
+ 	CPPFLAGS += -isystem $(shell brew --prefix)/include
+@@ -65,7 +64,7 @@
+ 	LDFLAGS += -mwindows -static -Wl,--stack,8388608 -fuse-ld=lld
+ endif
+ 
+-SRCS := $(shell find $(SRC_DIR) -name '*.c') 
++SRCS := $(shell find $(SRC_DIR) -name '*.c')
+ SRCSCPP := $(shell find $(SRC_DIR) -name '*.cpp')
+ SRCS := $(SRCS:$(SRC_DIR)/%=%)
+ SRCSCPP := $(SRCSCPP:$(SRC_DIR)/%=%)
+@@ -84,7 +83,7 @@
+ OBJS := $(SRCS:%.c=$(BUILD_DIR)/%.o)  $(SRCSCPP:%.cpp=$(BUILD_DIR)/%.o)
+ DEPS := $(OBJS:.o=.d)
+ 
+-$(BUILD_DIR)/$(TARGET_EXEC): $(OBJS) $(STATIC_LIBS)
++$(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
+ 	@echo linking $@...
+ 	@$(CXX) -o $@ $(CFLAGS) $(CPPFLAGS) $^ $(LDFLAGS)
+ 	@cp $@ $(TARGET_EXEC)

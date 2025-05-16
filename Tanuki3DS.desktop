@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Tanuki3DS
+Comment=Nintendo 3DS Emulator
+Exec=ctremu
+Icon=tanuki3ds
+Type=Application
+Terminal=false
+Categories=Game;Emulator;
