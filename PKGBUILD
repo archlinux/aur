@@ -2,7 +2,7 @@
 # Contributor: ChatGPT (OpenAI) <https://openai.com> — assisted with Git configuration, and packaging guidance.
 
 pkgname='kdev-templatetools'
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="KDevelop app and file utilities for building and installing your own templates."
 arch=('any')
@@ -22,6 +22,7 @@ sha256sums=('SKIP')  # Don't need this when using Git as source
 
 package() {
   cd "$srcdir" || return 1
+  pwd
 
   # Install scripts
   install -Dm755 "src/KDevAppTemplateInstall"       "$pkgdir/usr/bin/KDevAppTemplateInstall"
