@@ -3,8 +3,8 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 pkgname=vnote-bin
 _pkgname=VNote
-pkgver=3.19.1
-pkgrel=4
+pkgver=3.19.2
+pkgrel=1
 pkgdesc="A Qt-based, free and open source note-taking application, focusing on Markdown now.(Prebuilt version)"
 arch=('x86_64')
 url="https://app.vnote.fun/"
@@ -21,6 +21,10 @@ depends=(
     'libx11'
     'qt6-declarative'
     'libxcb'
+    'qt6-webengine'
+    'qt6-svg'
+    'qt6-5compat'
+    'qt6-webchannel'
 )
 makedepends=(
     'fuse2'
@@ -34,7 +38,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('57be22dc62af4839e07ca07a222a8a712147bab864672337ddc18ef295dd6cf0'
+sha256sums=('e0be108dc6597b1b98bbde565d8892889a36c9af5b92fd3b57b3cc2f1c8bdd5d'
             '7feea40a0bd1a6668b2acf9adccf1678fb1f0c00f02fd688699cc51e92ca95da')
 prepare() {
     sed -i -e "
@@ -46,8 +50,6 @@ prepare() {
         chmod +x "${srcdir}/${_pkgname}-${pkgver}-linux-x64.AppImage"
     fi
     "${srcdir}/${_pkgname}-${pkgver}-linux-x64.AppImage" --appimage-extract > /dev/null
-    #install -Dm644 "${srcdir}/squashfs-root/usr/local/lib/libVTextEdit.so" -t "${srcdir}/squashfs-root/usr/lib"
-    #rm -rf "${srcdir}/squashfs-root/usr/local"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
