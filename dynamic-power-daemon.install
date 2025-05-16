@@ -1,0 +1,21 @@
+post_install() {
+  echo ">> Reloading systemd daemon & enabling dynamic-power.service ..."
+  systemctl daemon-reload
+  systemctl enable --now dynamic-power.service
+}
+
+post_upgrade() {
+  echo ">> Reloading systemd daemon & restarting dynamic-power.service ..."
+  systemctl daemon-reload
+  systemctl try-restart dynamic-power.service
+}
+
+pre_remove() {
+  echo ">> Stopping & disabling dynamic-power.service ..."
+  systemctl disable --now dynamic-power.service
+}
+
+post_remove() {
+  echo ">> Reloading systemd daemon ..."
+  systemctl daemon-reload
+}

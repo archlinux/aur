@@ -1,12 +1,14 @@
 pkgbase = dynamic-power-daemon
-	pkgdesc = A dynamic power daemon for managing system performance based on load
-	pkgver = 1.1.1
+	pkgdesc = Auto-switches powerprofilesctl/asusctl profiles by CPU load & workload
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/evertvorster/dynamic-power-daemon
+	install = dynamic-power-daemon.install
 	arch = any
-	license = GPL-3.0-or-later
+	license = GPL3
 	depends = bc
-	source = https://github.com/evertvorster/dynamic-power-daemon/archive/refs/tags/v1.1.1.tar.gz
+	depends = systemd
+	source = https://github.com/evertvorster/dynamic-power-daemon/archive/refs/tags/v3.1.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = dynamic-power-daemon
