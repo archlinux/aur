@@ -1,7 +1,7 @@
 pkgbase = eden
 	pkgdesc = Nintendo Switch emulator forked from yuzu.
 	pkgver = 0.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://eden-emulator.github.io/
 	arch = x86_64
 	license = GPL-3.0
@@ -84,6 +84,8 @@ pkgbase = eden
 	source = git+https://git.eden-emu.dev/eden-emu/zydis.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers
 	source = git+https://github.com/eggert/tz.git
+	source = git+https://github.com/arsenm/sanitizers-cmake
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

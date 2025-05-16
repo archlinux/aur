@@ -1,6 +1,6 @@
 pkgname=eden
 pkgver=0.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://eden-emulator.github.io/
@@ -40,8 +40,10 @@ source=("git+https://git.eden-emu.dev/eden-emu/eden#tag=$pkgver-pre-alpha"
 		"zycore::git+https://git.eden-emu.dev/eden-emu/zycore-c.git"  # submodule of dynarmic
 		"git+https://git.eden-emu.dev/eden-emu/zydis.git"  # submodule of dynarmic
 		"git+https://github.com/KhronosGroup/SPIRV-Headers"  # submodule of sirit 
-		"git+https://github.com/eggert/tz.git")  # submdoule of tzdb_to_nx
+		"git+https://github.com/eggert/tz.git"  # submdoule of tzdb_to_nx
+		"git+https://github.com/arsenm/sanitizers-cmake")  # submodule of cubeb
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -94,6 +96,10 @@ prepare() {
     git config submodule.mcl.url ../../../mcl
     git config submodule.robin-map.url ../../../robin-map
     git config submodule.zycore.url ../../../zycore
+    git -c protocol.file.allow=always submodule update
+    
+    cd $srcdir/$pkgname/externals/cubeb
+    git config submodule.cmake/sanitizers-cmake.url ../../../sanitizers-cmake
     git -c protocol.file.allow=always submodule update
 }
 build() {
