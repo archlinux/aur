@@ -2,7 +2,7 @@
 
 pkgname=drjava
 pkgver=2019
-pkgrel=1
+pkgrel=2
 pkgdesc="DrJava is a lightweight development environment for writing Java programs. It is designed primarily for students, providing an intuitive interface and the ability to interactively evaluate Java code."
 arch=('any')
 url="https://www.cs.rice.edu/~javaplt/drjava/"
