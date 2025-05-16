@@ -1,0 +1,16 @@
+pkgbase = sealos
+	pkgdesc = A cloud operating system designed for managing cloud-native applications
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://github.com/labring/sealos
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	depends = docker
+	depends = kubectl
+	provides = sealos
+	conflicts = sealos
+	source = sealos-5.0.1.tar.gz::https://github.com/labring/sealos/releases/download/v5.0.1/sealos_5.0.1_linux_amd64.tar.gz
+	sha256sums = 92a7234f73d510b6faad975fa09139bb2ea9f52e255e9bc196e2e028ca60224b
+
+pkgname = sealos
