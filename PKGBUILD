@@ -2,8 +2,8 @@
 
 _name=neurokit2
 pkgname=python-${_name,,}
-pkgver=0.2.10
-pkgrel=2
+pkgver=0.2.11
+pkgrel=1
 pkgdesc="The Python Toolbox for Neurophysiological Signal Processing."
 arch=('any')
 url="https://github.com/scientisst/BioSPPy"
@@ -19,7 +19,7 @@ makedepends=('python-installer' 'python-wheel')
 
 _whl="${_name//-/_}-$pkgver-py2.py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py2.py3-none-any.whl")
-sha256sums=(43b859595100fb862c3bacc6b6b027fe4aef7aff3d35f7e23fb79fd116fbe936)
+sha256sums=(93e70203c5059faa88075d5d5b7c4cb76c42c27160f8b7d11f750e55db935ef8)
 
 noextract=("$_whl")
 package() {
