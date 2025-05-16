@@ -1,22 +1,19 @@
 pkgname=eden
 pkgver=0.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://eden-emulator.github.io/
 license=('GPL-3.0')
 provides=('eden')
 depends=('qt6-base' 'qt6-webengine' 'clang' 'qt6-multimedia' 'qt6-wayland' 'qt6-tools' 'ffmpeg' 'sdl2-compat' 'gamemode' 'hicolor-icon-theme' 'brotli' 'libusb' 'enet' 'opus' 'boost')
-makedepends=('curl' 'git' 'sdl2' 'vulkan-headers' 'gcc' 'cmake' 'clang' 'llvm' 'doxygen' 'python-pip' 'glslang' 'ninja' 'zip' 'unzip' 'boost' 'catch2' 'mbedtls' 'ninja' 'glslang' 'libzip' 'lz4' 'fmt' 'zip' 'unzip' 'nlohmann-json' 'openssl' 'opus' 'zlib' 'zstd')
+makedepends=('curl' 'git' 'sdl2' 'vulkan-headers' 'gcc' 'cmake' 'clang' 'llvm' 'doxygen' 'python-pip' 'glslang' 'zip' 'unzip' 'boost' 'catch2' 'mbedtls' 'glslang' 'libzip' 'lz4' 'fmt' 'zip' 'unzip' 'nlohmann-json' 'openssl' 'opus' 'zlib' 'zstd')
 conflicts=('eden-git' 'eden-bin')
 options=('!debug')
 source=("git+https://git.eden-emu.dev/eden-emu/eden#tag=$pkgver-pre-alpha"
-		"git+https://git.eden-emu.dev/eden-emu/enet.git"
 		"git+https://git.eden-emu.dev/eden-emu/cubeb.git"
 		"git+https://git.eden-emu.dev/eden-emu/dynarmic.git"
-		"git+https://git.eden-emu.dev/eden-emu/libusb.git"
 		"git+https://git.eden-emu.dev/eden-emu/discord-rpc.git"
-		"Vulkan-Headers::git+https://git.eden-emu.dev/eden-emu/Vulkan-Headers.git"
 		"sirit::git+https://git.eden-emu.dev/eden-emu/sirit.git"
 		"git+https://git.eden-emu.dev/eden-emu/mbedtls.git"
 		"git+https://git.eden-emu.dev/eden-emu/cpp-httplib.git"
@@ -25,15 +22,11 @@ source=("git+https://git.eden-emu.dev/eden-emu/eden#tag=$pkgver-pre-alpha"
 		"git+https://git.eden-emu.dev/eden-emu/opus.git"
 		"git+https://git.eden-emu.dev/eden-emu/vcpkg.git"
 		"git+https://git.eden-emu.dev/eden-emu/cpp-jwt.git"
-		"git+https://git.eden-emu.dev/eden-emu/libadrenotools.git"
 		"git+https://git.eden-emu.dev/eden-emu/tzdb_to_nx.git"
 		"git+https://git.eden-emu.dev/eden-emu/VulkanMemoryAllocator.git"
-		"git+https://git.eden-emu.dev/eden-emu/breakpad.git"
 		"git+https://git.eden-emu.dev/eden-emu/simpleini.git"
 		"git+https://git.eden-emu.dev/eden-emu/Vulkan-Utility-Libraries.git"
-		"git+https://git.eden-emu.dev/eden-emu/oboe.git"
 		"git+https://git.eden-emu.dev/eden-emu/headers.git"
-		"git+https://git.eden-emu.dev/eden-emu/oaknut.git"
 		"git+https://git.eden-emu.dev/eden-emu/xbyak.git"
 		"git+https://git.eden-emu.dev/eden-emu/mcl.git"  # submodule of dynarmic
 		"git+https://git.eden-emu.dev/eden-emu/robin-map.git"  # submodule of dynarmic
@@ -42,14 +35,10 @@ source=("git+https://git.eden-emu.dev/eden-emu/eden#tag=$pkgver-pre-alpha"
 		"git+https://github.com/KhronosGroup/SPIRV-Headers"  # submodule of sirit 
 		"git+https://github.com/eggert/tz.git"  # submdoule of tzdb_to_nx
 		"git+https://github.com/arsenm/sanitizers-cmake")  # submodule of cubeb
+		
+# Note: Submodules not needed to build were excluded: enet, libusb, Vulkan-Headers (used system), libadrenotools, breakpad, oboe, oaknut
+
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -76,7 +65,7 @@ sha256sums=('SKIP'
             'SKIP')
 prepare() {
 	cd $pkgname
-	for _submodule in ffmpeg opus SDL Vulkan-Headers vcpkg enet cubeb dynarmic libusb discord-rpc oboe Vulkan-Utility-Libraries oaknut simpleini breakpad VulkanMemoryAllocator tzdb_to_nx libadrenotools cpp-jwt cpp-httplib xbyak mbedtls sirit;
+	for _submodule in ffmpeg opus SDL xbyak vcpkg cubeb dynarmic simpleini cpp-jwt discord-rpc mbedtls cpp-httplib Vulkan-Utility-Libraries VulkanMemoryAllocator tzdb_to_nx sirit;
 		do
 		git config submodule.$_submodule.url ../$_submodule
 		done
@@ -110,6 +99,7 @@ build() {
 		-DCMAKE_CXX_COMPILER=clang++ \
     	-DCMAKE_C_COMPILER=clang \
     	-DUSE_DISCORD_PRESENCE=ON \
+    	-DYUZU_CHECK_SUBMODULES=OFF \
 		-DYUZU_ENABLE_LTO=ON \
 		-DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
 		-DYUZU_USE_BUNDLED_VCPKG=ON \
