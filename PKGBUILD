@@ -2,8 +2,8 @@
 
 _pkgname=kube-hunter
 pkgname=$_pkgname-bin
-pkgver=0.6.8
-pkgrel=0
+pkgver=0.6.8 # renovate: datasource=github-releases depName=aquasecurity/kube-hunter
+pkgrel=1
 pkgdesc="Hunt for security weaknesses in Kubernetes clusters"
 url="https://github.com/aquasecurity/$_pkgname"
 license=('APACHE')
