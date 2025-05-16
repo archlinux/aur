@@ -1,12 +1,13 @@
 pkgbase = wapiti
 	pkgdesc = Comprehensive web app vulnerability scanner written in Python
 	pkgver = 3.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wapiti-scanner.github.io
 	arch = any
 	license = GPL-2.0-only
 	makedepends = python-setuptools
 	makedepends = python-pip
+	makedepends = git
 	depends = python-cryptography
 	depends = python-soupsieve
 	depends = python-mako
@@ -22,10 +23,11 @@ pkgbase = wapiti
 	depends = mitmproxy
 	depends = python-arsenic
 	depends = python-prance
+	depends = python-httpx-ntlm
 	optdepends = python-requests-kerberos: Kerberos authentication
 	optdepends = python-requests-ntlm: NTLM authentication
 	options = zipman
-	source = wapiti-3.2.4.tar.gz::https://github.com/wapiti-scanner/wapiti/archive/refs/tags/3.2.4.tar.gz
-	sha256sums = ea6293cb98ffab72bfa47b422aa1753a04cd9bdb17380b57fd4d29ab532d1bb6
+	source = wapiti-3.2.4::git+https://github.com/wapiti-scanner/wapiti#tag=3.2.4
+	sha256sums = bb3b7d092fbc06dc2ca095ae04c6b91963288199bef1b0b487275b27bc91f77a
 
 pkgname = wapiti
