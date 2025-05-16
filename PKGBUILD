@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=meru-bin
 _pkgname=Meru
-pkgver=3.4.2
+pkgver=3.4.3
 _electronversion=36
 pkgrel=1
 pkgdesc="📮 Nifty Gmail desktop app.(previously Gmail Desktop).(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('96c1d04d710fd54233ab3a7a799ebb23926c683300f1e0cee2a54ff9a18ed791'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('f2f6cef24db47df47d170e5596d44a4fa2f5252e0a1d6a3876b6f0d24acf98ad')
-sha256sums_x86_64=('1c015c289290551b359b7f42d895aa28239a8ffcdbd355315a14b0e174b6fbab')
+sha256sums_aarch64=('3265b6b8f024407512141436748218577866f121b0d3867e0e62d6fbde006983')
+sha256sums_x86_64=('a81ab7384bb746f145d779974b274debd1417d6c27d47f9f36267cec3fcf87ba')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
