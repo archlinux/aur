@@ -15,6 +15,7 @@ options=(!debug !strip)
 makedepends+=(git)
 
 depends=(
+	"pipewire-v4l2"
 	"procps-ng"
 	"coreutils"
 	"awk"
