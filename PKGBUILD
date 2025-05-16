@@ -36,10 +36,12 @@ prepare() {
   mv -v zsh/{vendor-completions,site-functions}
 
   echo Replacing $(rg -m 1 '"electron":\s*"[0-9]+' "${_name}"/resources/app/package.json) with $(cat /usr/lib/${_electron}/version)
+  echo 'Fix if "major" version is wrong'
 }
 build(){
   _app=/usr/share/cursor/resources/app
   # code.mjs does nothing more than suppressing warns.
+  # ELECTRON_RUN_AS_NODE=1 should be supported by /usr/bin/${_electron}
   sed -e "s|code-flags|cursor-flags|" \
     -e "s|/usr/lib/code/out/cli.js|${_app}/out/cli.js|" \
     -e "s|/usr/lib/code/code.mjs|--app=${_app}|" \
