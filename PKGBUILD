@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname="pa-dlna"
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Forwards audio to DLNA devices via PulseAudio or PipeWire (via 'python-libpulse')"
 arch=(
   'any'
@@ -23,7 +23,7 @@ depends=(
   'libpulse' # For `parec` executable
   'python'
   'python-psutil'
-  'python-libpulse'
+  'python-libpulse>=0.7'
   'python-systemd'
 )
 

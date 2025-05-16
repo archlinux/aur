@@ -1,7 +1,7 @@
 pkgbase = pa-dlna
 	pkgdesc = Forwards audio to DLNA devices via PulseAudio or PipeWire (via 'python-libpulse')
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/xdegaye/pa-dlna
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = pa-dlna
 	depends = libpulse
 	depends = python
 	depends = python-psutil
-	depends = python-libpulse
+	depends = python-libpulse>=0.7
 	depends = python-systemd
 	optdepends = ffmpeg: multiple formats support
 	optdepends = flac: flac transcoding support
