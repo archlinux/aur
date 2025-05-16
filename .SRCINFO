@@ -1,0 +1,13 @@
+pkgbase = adivinha_numero
+	pkgdesc = Um jogo simples de adivinhar o número escrito em Rust.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/pedrodev2025/jogo-de-adivinhacao-rust.git
+	arch = any
+	license = 0BSD
+	makedepends = rust
+	makedepends = cargo
+	source = jogo-de-adivinhacao-rust-Lan-amento.tar.gz::https://github.com/pedrodev2025/jogo-de-adivinhacao-rust/archive/refs/tags/Lan%C3%A7amento.tar.gz
+	sha256sums = 8b588885c59143a27daec629912990b7e545631968eac2289dd339aada0260d2
+
+pkgname = adivinha_numero
