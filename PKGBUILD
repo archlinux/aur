@@ -1,8 +1,7 @@
 # Maintainer: Jonathan Hilger <joni dot hilger at yahoo dot de>
 pkgname=unordered_dense-git
-_pkgname=unordered_dense
 pkgver=r227.73f3cbb
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast & densely stored hashmap and hashset based on robin-hood backward shift deletion"
 arch=('x86_64')
 url="https://github.com/martinus/unordered_dense"

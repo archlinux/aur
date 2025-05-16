@@ -1,7 +1,7 @@
 pkgbase = unordered_dense-git
 	pkgdesc = A fast & densely stored hashmap and hashset based on robin-hood backward shift deletion
 	pkgver = r227.73f3cbb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/martinus/unordered_dense
 	arch = x86_64
 	license = MIT
