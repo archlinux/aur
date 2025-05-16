@@ -28,14 +28,14 @@ depends=(
   'python-tqdm'
   'python-typer'
   'python-wasabi'
-  'python-weasel')
-source=("https://github.com/explosion/spaCy/releases/download/release-v${pkgver}/spacy-${pkgver}-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
+  'python-weasel'
+)
+
 _cpy='cp312'
 _glibc='2_17'
 _url="https://files.pythonhosted.org/packages/${_cpy}/${_pkgname::1}/${_pkgname}"
 _filename="${_pkgname}-${pkgver}-${_cpy}-${_cpy}-manylinux_${_glibc}_${CARCH}.manylinux2014_${CARCH}.whl"
 source=("${_url}/${_filename}")
-
 md5sums=('6d54fb4a11753224c5de5927716ac376')
 
 package() {
