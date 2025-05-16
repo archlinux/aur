@@ -1,0 +1,14 @@
+pkgbase = synx
+	pkgdesc = A CLI-first universal syntax validator and linter dispatcher
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/A5873/synx
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = synx-0.2.1.tar.gz::https://github.com/A5873/synx/archive/v0.2.1.tar.gz
+	sha256sums = dab3607571aa0ccc84d7b704d9456ddd87871859ada69e63619ef1446881826c
+
+pkgname = synx
