@@ -2,7 +2,7 @@
 
 pkgname=yin-yang
 pkgver=4.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Light/dark theme switcher for Linux. Supports popular Desktops, text editors and more!"
 arch=('any')
 url="https://github.com/oskarsh/Yin-Yang"
