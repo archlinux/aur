@@ -8,12 +8,12 @@
 
 _pack=io
 pkgname=octave-$_pack
-pkgver=2.6.4
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Input/Output in external formats."
-arch=(any)
+arch=('x86_64')
 url="https://gnu-octave.github.io/packages/$_pack/"
-license=('custom')
+license=('GPL-3.0-or-later AND BSD-2-Clause')
 groups=('octave-forge')
 depends=('octave>=4.2.0')
 makedepends=()
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-sha256sums=('a74a400bbd19227f6c07c585892de879cd7ae52d820da1f69f1a3e3e89452f5a')
+sha256sums=('4aa48468b3697934bf8c854e27dbab8827605e9dd4fe37e56834265e6130ba6f')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
