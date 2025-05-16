@@ -1,6 +1,6 @@
 pkgbase = beeper-latest-bin
 	pkgdesc = metapackage - migrate to beeper-v4-bin
-	pkgver = 1
+	pkgver = 4.1
 	pkgrel = 1
 	arch = any
 
