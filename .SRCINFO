@@ -1,7 +1,7 @@
 pkgbase = amazon-workspaces-legacy-bin
 	pkgdesc = Amazon Workspace Client (Legacy version, only PCoIP)
 	pkgver = 4.7.0.4312
-	pkgrel = 1
+	pkgrel = 2
 	url = https://clients.amazonworkspaces.com/
 	arch = x86_64
 	license = non-free
@@ -9,7 +9,6 @@ pkgbase = amazon-workspaces-legacy-bin
 	makedepends = tar
 	depends = gtk3
 	depends = webkit2gtk
-	depends = icu63
 	depends = libsoup
 	depends = graphicsmagick
 	depends = hiredis0.14

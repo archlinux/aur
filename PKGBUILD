@@ -3,7 +3,7 @@
 
 pkgname=amazon-workspaces-legacy-bin
 pkgver=4.7.0.4312
-pkgrel=1
+pkgrel=2
 _aptdist=focal
 pkgdesc='Amazon Workspace Client (Legacy version, only PCoIP)'
 arch=('x86_64')
@@ -13,7 +13,6 @@ conflicts=('amazon-workspaces-bin')
 depends=(
     'gtk3'
     'webkit2gtk'
-    'icu63'
     'libsoup'
     'graphicsmagick'
     'hiredis0.14'
