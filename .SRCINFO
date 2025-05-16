@@ -1,6 +1,6 @@
 pkgbase = factorio-yafc-ce-git
 	pkgdesc = Yet Another Factorio Calculator (Community Edition): Powerful calculator/analyser that works with mods
-	pkgver = 0.8.1.11.gbf4f094
+	pkgver = 2.13.0.2.g7039c41
 	pkgrel = 1
 	url = https://github.com/have-fun-was-taken/yafc-ce
 	arch = x86_64
