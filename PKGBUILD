@@ -3,7 +3,7 @@ pkgname=pad-md
 pkgver=0.6
 _electronversion=24
 _nodeversion=20
-pkgrel=8
+pkgrel=9
 pkgdesc="A notepad app for desktop, developed in Electron, with TS/JS, HTML and CSS.(Use system-wide electron)"
 arch=('any')
 url="https://pad-md-landing-page.vercel.app/"
@@ -66,9 +66,21 @@ prepare() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install --legacy-peer-deps
+    NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i -e "
+		6i\  plugins: [
+		6i\    {
+		6i\      name: '@electron-forge/plugin-local-electron',
+		6i\      config: {
+		6i\        electronPath: \'${electronDist}\'
+		6i\      }
+		6i\    }
+		6i\  ],
+	" forge.config.js
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm run package
 }

@@ -1,7 +1,7 @@
 pkgbase = pad-md
 	pkgdesc = A notepad app for desktop, developed in Electron, with TS/JS, HTML and CSS.(Use system-wide electron)
 	pkgver = 0.6
-	pkgrel = 8
+	pkgrel = 9
 	url = https://pad-md-landing-page.vercel.app/
 	arch = any
 	license = AGPL-3.0-only
