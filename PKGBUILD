@@ -2,12 +2,12 @@
 
 pkgname=mconf
 pkgver=25.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Parser for the mconf configuration language"
 arch=("x86_64" "aarch64")
 url="https://github.com/marzeq/mconf"
 license=("WTFPL")
-depends=("go" "git")
+makedepends=("go" "git")
 source=("git+https://github.com/marzeq/mconf.git#tag=v$pkgver")
 md5sums=("SKIP")
 provides=("mconf")

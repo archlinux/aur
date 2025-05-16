@@ -1,13 +1,13 @@
 pkgbase = mconf
 	pkgdesc = Parser for the mconf configuration language
 	pkgver = 25.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/marzeq/mconf
 	arch = x86_64
 	arch = aarch64
 	license = WTFPL
-	depends = go
-	depends = git
+	makedepends = go
+	makedepends = git
 	provides = mconf
 	conflicts = mconf-bin
 	source = git+https://github.com/marzeq/mconf.git#tag=v25.5.1
