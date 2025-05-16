@@ -1,7 +1,7 @@
 pkgbase = easy-player
 	pkgdesc = Music Player-With Lyrics & Desktop Lyrics & Online Download Songs.(Use system-wide electron)简易的音乐播放器 - 附带歌词功能 & 桌面歌词 & 网络下载歌曲.
 	pkgver = 0.1.4
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/CmarThaa/music_player
 	arch = any
 	license = MIT
