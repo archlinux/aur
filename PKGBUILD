@@ -2,8 +2,8 @@
 
 _pkgname=tetra
 pkgname=$_pkgname-bin
-pkgver=0.8.3
-pkgrel=0
+pkgver=0.8.3 # renovate: datasource=github-releases depName=cilium/tetragon
+pkgrel=1
 pkgdesc="eBPF-based Security Observability and Runtime Enforcement - CLI"
 url="https://github.com/cilium/${_pkgname}gon"
 license=('APACHE')

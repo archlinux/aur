@@ -1,7 +1,7 @@
 pkgbase = tetra-bin
 	pkgdesc = eBPF-based Security Observability and Runtime Enforcement - CLI
 	pkgver = 0.8.3
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/cilium/tetragon
 	arch = x86_64
 	license = APACHE
