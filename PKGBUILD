@@ -1,8 +1,9 @@
-# Maintainer: oscarcl <oscar.cowderylack@gmail.com>
+# Maintainer: Mark <mark@hegreberg.io>
+# Contributor: oscarcl <oscar.cowderylack@gmail.com>
 # Contributor: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
 pkgver=1.39.13
-pkgrel=1
+pkgrel=2
 pkgdesc="OmniSharp server (STDIO) based on Roslyn workspaces"
 arch=('x86_64')
 url="https://github.com/OmniSharp/omnisharp-roslyn"
@@ -31,6 +32,16 @@ prepare() {
     # against an older .NET 6 that does not have OpenSSL 3 support
     sed -i '/RuntimeFrameworkVersion/d;' build.cake
     sed -i '/RuntimeFrameworkVersion/d;' src/OmniSharp.Stdio.Driver/OmniSharp.Stdio.Driver.csproj
+
+	# force a newer version of MSBUILD to patch a vulnerability
+	#sed -i 's|<MSBuildPackageVersion>17.3.2</MSBuildPackageVersion>|<MSBuildPackageVersion>17.8.294</MSBuildPackageVersion>|' Directory.Packages.props 
+
+	#ignore vulnerability warning as the patched version does not work on omnisharp
+	#sed -i 's|</NoWarn>|;NU1903</NoWarn>|' build/Settings.props
+	sed -i '\|</Project>|i\
+  <ItemGroup>\
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-h4j7-5rxr-p4wc"/>\
+  </ItemGroup>' build/Settings.props
 
     # use arch-packaged .NET version rather than forcing this version
     rm global.json
