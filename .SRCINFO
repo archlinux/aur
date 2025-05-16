@@ -10,7 +10,7 @@ pkgbase = mconf
 	depends = git
 	provides = mconf
 	conflicts = mconf-bin
-	source = git+https://github.com/marzeq/mconf.git#tag=v
+	source = git+https://github.com/marzeq/mconf.git#tag=v25.5.1
 	md5sums = SKIP
 
 pkgname = mconf

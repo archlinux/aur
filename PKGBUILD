@@ -8,7 +8,7 @@ arch=("x86_64" "aarch64")
 url="https://github.com/marzeq/mconf"
 license=("WTFPL")
 depends=("go" "git")
-source=("git+https://github.com/marzeq/mconf.git#tag=v$gittag")
+source=("git+https://github.com/marzeq/mconf.git#tag=v$pkgver")
 md5sums=("SKIP")
 provides=("mconf")
 conflicts=("mconf-bin")
