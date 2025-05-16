@@ -8,7 +8,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.7.0
-pkgrel=4
+pkgrel=5
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=('google-glog' 'gflags' 'openmp' 'openmpi' 'pybind11' 'python' 'python-y
          'python-networkx' 'python-filelock' 'vulkan-icd-loader')
 # https://github.com/ROCm/aotriton/blob/main/requirements-dev.txt
 _aotriton_deps=('python-iniconfig' 'python-packaging' 'python-pluggy' 'python-wheel' 'python-tqdm' 'python-textual')
-makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'gcc13'
+makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'gcc14'
              'nccl' 'cudnn' 'git' 'rocm-hip-sdk' 'hipblaslt' 'roctracer' 'miopen-hip' 'magma-cuda' 'magma-hip'
              'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc' 'onednn' "${_aotriton_deps[@]}")
 source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
@@ -67,7 +67,6 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         87773.patch
         glog-0.7.patch
         pytorch-rocm-jit.patch
-        pytorch-missing-iostream.patch
         fix_cmake_prefix_path.patch)
 b2sums=('d47a97cc608c6ebbbeb59cfe6ace71430c815fd6287cd6497d0594de71f46fddeab0de1d6b01b5989d9c327431d763440f1e31b9ef4da85ebc4b0b3c68b48ec4'
         'SKIP'
@@ -112,7 +111,6 @@ b2sums=('d47a97cc608c6ebbbeb59cfe6ace71430c815fd6287cd6497d0594de71f46fddeab0de1
         '0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18'
         '20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e'
         'e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe'
-        '77458fa568692020ae4e437b1ebae6ebbf59f040b3414ba03e32cc829f1befb9f39dde6e0c0525e30d42dd08d482d2f213dd8294a9877476c7d0d6aabb0f08d3'
         '12e2f94b25d8c473f064223b120c339245fce931c835b88aa66236899909745700e59dd787474588292798a0333e321150cc00d4eb2b5530b324ad2fb143a626')
 options=('!lto' '!debug')
 
@@ -217,8 +215,9 @@ _prepare() {
   export NCCL_VER_CODE=$(sed -n 's/^#define NCCL_VERSION_CODE\s*\(.*\).*/\1/p' /usr/include/nccl.h)
   # export BUILD_SPLIT_CUDA=ON  # modern preferred build, but splits libs and symbols, ABI break
   export USE_CUPTI_SO=ON  # make sure cupti.so is used as shared lib
-  export CC=/usr/bin/gcc-13
-  export CXX=/usr/bin/g++-13
+  export CC=/usr/bin/gcc-14
+  export CXX=/usr/bin/g++-14
+  export CXXFLAGS+=" -Wno-error=maybe-uninitialized"
   export CUDAHOSTCXX="${NVCC_CCBIN}"
   export CUDA_HOST_COMPILER="${CUDAHOSTCXX}"
   export CUDA_HOME=/opt/cuda
@@ -240,11 +239,10 @@ _prepare() {
   export PYTORCH_ROCM_ARCH="gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx942;gfx1102"
 
   # 1. Compile source code for supported GPU archs in parallel
-  # 2. Use gcc 13 toolchain as ROCm is not compatible with gcc 14.
-  # 3. Use --offload-comress to reduce the size of the generated binaries.
+  # 2. Use --offload-comress to reduce the size of the generated binaries.
   #    Otherwise we run into the 32 bit offset limit, see
   #    https://github.com/ROCm/rocBLAS/issues/1448#issuecomment-2372524901
-  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc) --gcc-install-dir=$(dirname $(gcc-13 -print-libgcc-file-name)) --offload-compress"
+  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc) --gcc-install-dir=$(dirname $(gcc-14 -print-libgcc-file-name)) --offload-compress"
   export HIPCC_LINK_FLAGS_APPEND="-parallel-jobs=$(nproc)"
 
   # Build aotriton from source instead of downloading a binary
