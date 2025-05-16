@@ -11,6 +11,7 @@ pkgbase = i3ipc-glib-git
 	makedepends = xcb-proto
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
+	makedepends = glib2-devel
 	depends = glib2
 	depends = json-glib
 	optdepends = i3ipc-lua: Lua language bindings
@@ -22,4 +23,3 @@ pkgbase = i3ipc-glib-git
 	sha512sums = SKIP
 
 pkgname = i3ipc-glib-git
-

@@ -14,7 +14,7 @@ optdepends=(
     'i3ipc-python: Python language bindings'
     'i3ipc-gjs: JavaScript language bindings'
 )
-makedepends=('git' 'libxcb' 'xcb-proto' 'gobject-introspection' 'gtk-doc')
+makedepends=('git' 'libxcb' 'xcb-proto' 'gobject-introspection' 'gtk-doc' 'glib2-devel')
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
