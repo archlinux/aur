@@ -3,6 +3,7 @@ Type=Application
 Name=AzaharPlus
 Comment=A fork of the Azahar 3DS emulator that restores some features
 Exec=azahar %f
+Icon=azahar
 Categories=Game;Emulator;
 MimeType=application/x-nintendo-3ds-rom;application/x-nintendo-3ds-executable;
 PrefersNonDefaultGPU=true
