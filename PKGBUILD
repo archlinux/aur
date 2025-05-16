@@ -2,14 +2,14 @@
 
 pkgname=fvwm3-git
 _pkgname=fvwm3
-pkgver=1.1.0.r120.g3e0d960d1
+pkgver=1.1.2.r11.gbf1950045
 pkgrel=1
 pkgdesc="A powerful ICCCM2 compliant multiple virtual desktop window manager for X11"
 arch=('i686' 'x86_64')
 url="http://www.fvwm.org"
 license=('GPL')
 depends=('fribidi' 'libxpm' 'librsvg' 'libxrandr' 'libevent' 'libxcursor')
-makedepends=('git' 'go' 'libxslt' 'asciidoctor' 'xtrans')
+makedepends=('git' 'go' 'libxslt' 'asciidoctor' 'xtrans' 'meson')
 optdepends=('perl-tk: for ClickToFocus support'
             'perl-x11-protocol: for ClickToFocus support'
             'python: for fvwm-menu-desktop')
@@ -31,20 +31,14 @@ pkgver(){
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  autoreconf -fiv
-  ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib \
-    --enable-perllib \
-    --enable-bidi \
-    --enable-nls --enable-iconv \
-    --enable-xft \
-    --enable-golang \
-    --enable-mandoc
-  make V=0
+   meson setup build --prefix /usr --libexecdir /usr/lib --sysconfdir /etc --wipe --strip \
+      -Dbidi=enabled -Dnls=enabled -Diconv=enabled -Dgolang=enabled -Dmandoc=true
+   meson compile -C build
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" meson install -C build
   install -d "${pkgdir}/usr/share/doc/${_pkgname}"
   install -D -m644 ../fvwm3.desktop "${pkgdir}/usr/share/xsessions/fvwm3.desktop"
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
