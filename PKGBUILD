@@ -2,7 +2,7 @@
 
 pkgname=mconf
 pkgver=25.5.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Parser for the mconf configuration language"
 arch=("x86_64" "aarch64")
 url="https://github.com/marzeq/mconf"
@@ -15,7 +15,7 @@ conflicts=("mconf-bin")
 
 build() {
   cd "$srcdir/$pkgname"
-  go build cmd/mconf.go -o mconf
+  go build -o mconf cmd/mconf.go
 }
 
 package() {
