@@ -7,7 +7,7 @@ url=https://eden-emulator.github.io/
 license=('GPL-3.0')
 provides=('eden')
 depends=('qt6-base' 'qt6-webengine' 'clang' 'qt6-multimedia' 'qt6-wayland' 'qt6-tools' 'ffmpeg' 'sdl2-compat' 'gamemode' 'hicolor-icon-theme' 'brotli' 'libusb' 'enet' 'opus' 'boost')
-makedepends=('curl' 'git' 'sdl2' 'gcc' 'cmake' 'clang' 'llvm' 'doxygen' 'python-pip' 'glslang' 'ninja' 'zip' 'unzip' 'boost' 'catch2' 'mbedtls' 'ninja' 'glslang' 'libzip' 'lz4' 'fmt' 'zip' 'unzip' 'nlohmann-json' 'openssl' 'opus' 'zlib' 'zstd')
+makedepends=('curl' 'git' 'sdl2' 'vulkan-headers' 'gcc' 'cmake' 'clang' 'llvm' 'doxygen' 'python-pip' 'glslang' 'ninja' 'zip' 'unzip' 'boost' 'catch2' 'mbedtls' 'ninja' 'glslang' 'libzip' 'lz4' 'fmt' 'zip' 'unzip' 'nlohmann-json' 'openssl' 'opus' 'zlib' 'zstd')
 conflicts=('eden-git' 'eden-bin')
 options=('!debug')
 source=("git+https://git.eden-emu.dev/eden-emu/eden#tag=$pkgver-pre-alpha"

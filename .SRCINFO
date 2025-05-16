@@ -8,6 +8,7 @@ pkgbase = eden
 	makedepends = curl
 	makedepends = git
 	makedepends = sdl2
+	makedepends = vulkan-headers
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = clang
