@@ -1,8 +1,9 @@
 pkgbase = processing-git
 	pkgdesc = Programming environment for creating images, animations and interactions
-	pkgver = 4.4.3.r0.gc83f44c9d
+	pkgver = 4.4.4.r4.g3de866177
 	pkgrel = 1
 	url = https://github.com/processing/processing4
+	install = processing.install
 	arch = x86_64
 	license = GPL
 	license = LGPL
