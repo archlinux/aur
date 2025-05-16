@@ -3,7 +3,7 @@
 
 pkgname=vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) Mesa driver with some additions (Git version)"
-pkgver=25.1.branchpoint.r205.g5ccf28c
+pkgver=25.1.branchpoint.r1309.gf27d062
 pkgrel=1
 arch=('x86_64' 'aarch64' 'armv7h')
 depends=('libdrm' 'libxcb' 'libxshmfence' 'libx11' 'spirv-tools' 'systemd-libs' 'vulkan-icd-loader'
@@ -45,7 +45,7 @@ pkgver() {
 
 build() {
   # Auto-download Rust crates for NAK/NIL (avoids adding extra code for crate handling)
-  _nvk_crate="--force-fallback-for=paste,syn"
+  _nvk_crate="--force-fallback-for=paste,rustc-hash,syn"
 
   # HACK: Remove crate library files before build
   # (This prevents build errors after a Rust update with dirty builds: https://github.com/mesonbuild/meson/issues/10706)
@@ -66,6 +66,7 @@ build() {
     -D gallium-extra-hud=false \
     -D gallium-va=disabled \
     -D gallium-vdpau=disabled \
+    -D gallium-xa=disabled \
     -D gbm=disabled \
     -D gles1=disabled \
     -D gles2=disabled \
