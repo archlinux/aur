@@ -1,0 +1,32 @@
+# Maintainer: Jonathan Hilger <joni dot hilger at yahoo dot de>
+pkgname=unordered_dense-git
+_pkgname=unordered_dense
+pkgver=r227.73f3cbb
+pkgrel=1
+pkgdesc="A fast & densely stored hashmap and hashset based on robin-hood backward shift deletion"
+arch=('x86_64')
+url="https://github.com/martinus/unordered_dense"
+license=('MIT')
+depends=('gcc-libs' 'glibc')
+makedepends=('git' 'cmake')
+provides=('unordered_dense-git' 'unordered_dense')
+source=("${pkgname}::git+https://github.com/martinus/unordered_dense.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}  # pkgver
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  cmake -B build \
+         -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
+}  # build
+
+package() {
+  cd "${srcdir}/${pkgname}/build"
+  DESTDIR="${pkgdir}" make install
+  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}  # package
