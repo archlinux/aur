@@ -4,9 +4,9 @@
 
 
 pkgname=processing
-pkgver=4.4.1
-_build=1301
-pkgrel=7
+pkgver=4.4.4
+_build=1304
+pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
@@ -18,9 +18,10 @@ options=(!strip)
 source=("https://github.com/processing/processing4/archive/processing-$_build-$pkgver.tar.gz"
 	'disable_update_check.patch'
 	'no_jdk_download.patch')
-sha256sums=('e35f9db78ad81b41a21a63ddac6b7b7d7174d957561203d2d57738117e9c21f8'
+sha256sums=('650546c3523e9c937db1743aebe37e145223c7a7a4864fd31041a280303c45e2'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
-            '3721e7d9e5aaab4d38ec94649614d47ed4c9b12cf2dfeba46e87696ce36e00ce')
+            '4bb2676426b25b9ef874a334335b50af67224e592456318505fa4612ce02e35b')
+install='processing.install'
 
 prepare() {
   # Check if OpenJDK 17 executable is actually installed

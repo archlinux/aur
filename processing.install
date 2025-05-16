@@ -1,0 +1,7 @@
+post_install() {
+  echo "Since version 4.4.3 processing-java has been replaced by processing cli. If this breaks anything, consider setting an alias."
+}
+
+post_upgrade() {
+  echo "Since version 4.4.3 processing-java has been replaced by processing cli. If this breaks anything, consider setting an alias."
+}

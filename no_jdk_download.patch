@@ -1,11 +1,13 @@
---- a/app/build.gradle.kts	2025-04-25 14:17:52.284598476 +0200
-+++ b/app/build.gradle.kts	2025-04-25 14:17:23.982869026 +0200
-@@ -425,10 +425,10 @@
+--- a/app/build.gradle.kts	2025-04-28 09:19:01.183117452 +0200
++++ b/app/build.gradle.kts	2025-04-28 09:17:50.418146904 +0200
+@@ -414,12 +414,12 @@
+ }
+ tasks.register("includeProcessingResources"){
      dependsOn(
-         "includeCore",
-         "includeJavaMode",
 -        "includeJdk",
 +        //"includeJdk",
+         "includeCore",
+         "includeJavaMode",
          "includeSharedAssets",
 -        "includeProcessingExamples",
 -        "includeProcessingWebsiteExamples",
@@ -14,17 +16,3 @@
          "includeJavaModeResources",
          "renameWindres"
      )
-@@ -511,10 +511,10 @@
-         dependsOn(
-             "includeCore",
-             "includeJavaMode",
--            "includeJdk",
-+            //"includeJdk",
-             "includeSharedAssets",
--            "includeProcessingExamples",
--            "includeProcessingWebsiteExamples",
-+            //"includeProcessingExamples",
-+            //"includeProcessingWebsiteExamples",
-             "includeJavaModeResources",
-             "renameWindres"
-         )
