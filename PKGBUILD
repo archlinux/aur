@@ -2,7 +2,7 @@
 
 pkgname=angryoxide
 pkgver=0.8.32
-pkgrel=1
+pkgrel=2
 pkgdesc='802.11 Attack Tool'
 arch=('x86_64')
 url='https://github.com/Ragnt/AngryOxide'
@@ -14,6 +14,8 @@ sha256sums=('5c848e7fd2499e25dbb11728ea3d313e8cc6f097cf4e13cc4b3cd2f18e962e43')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  # change submodule ssh to url
+  sed -i 's/git@github.com:/https:\/\/github.com\//g' .gitmodules
   git submodule update --init
   cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
