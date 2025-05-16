@@ -24,14 +24,14 @@ package() {
   cd "$srcdir" || return 1
 
   # Install scripts
-  install -Dm755 "$srcdir/kdev-templatetools/src/KDevAppTemplateInstall"            "$pkgdir/usr/bin/KDevAppTemplateInstall"
-  install -Dm755 "$srcdir/kdev-templatetools/src/KDevFileTemplateInstall"           "$pkgdir/usr/bin/KDevFileTemplateInstall"
+  install -Dm755 "src/KDevAppTemplateInstall"       "$pkgdir/usr/bin/KDevAppTemplateInstall"
+  install -Dm755 "src/KDevFileTemplateInstall"      "$pkgdir/usr/bin/KDevFileTemplateInstall"
 
   # Install .desktop file
-  install -Dm644 "$srcdir/kdev-templatetools/kdevelop-template.desktop"         "$pkgdir/usr/share/kio/servicemenus/kdevelop-template.desktop"
+  install -Dm644 "kdevelop-template.desktop"        "$pkgdir/usr/share/kio/servicemenus/kdevelop-template.desktop"
 
   # License
-  install -Dm644 "$srcdir/kdev-templatetools/LICENSE"                           "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE"                          "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Rebuild KDE service cache
   if command -v kbuildsycoca5 &> /dev/null; then kbuildsycoca5; fi
