@@ -32,6 +32,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir "build-${_arch}" && pushd "build-${_arch}"
     ${_arch}-cmake \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
       -DCMAKE_BUILD_TYPE=Release \
       -DGRAPHITE2_COMPARE_RENDERER=OFF \
       ..
