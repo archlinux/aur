@@ -1,7 +1,7 @@
 pkgbase = vcutil
 	pkgdesc = Misc. simple utilities to aid version control and host maintenance.
 	pkgver = 1.50
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/ossobv/vcutil
 	arch = any
 	source = vcutil.tar.gz::https://github.com/ossobv/vcutil/archive/refs/tags/v1.50.tar.gz
