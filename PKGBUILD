@@ -1,7 +1,7 @@
 # Maintainer: marzeq <marzeqmarzeq at gmail dot com>
 
 pkgname=mconf
-pkgver=25.1_2
+pkgver=25.5_1
 local gittag="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="Parser for the mconf configuration language"
