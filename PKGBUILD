@@ -2,8 +2,8 @@
 
 _binname=kubectl-node_shell
 pkgname=${_binname/_/-}
-pkgver=1.11.0
-pkgrel=2
+pkgver=1.11.0 # renovate: datasource=github-releases depName=kvaps/kubectl-node-shell
+pkgrel=3
 pkgdesc="Exec into node via kubectl"
 url="https://github.com/kvaps/$pkgname"
 license=('APACHE')
