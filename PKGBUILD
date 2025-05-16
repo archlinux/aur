@@ -15,25 +15,26 @@ provides=("$_pkg")
 conflicts=("$_pkg")
 depends=(
 	'boost-libs'
-    'cgal'
+	'cgal'
 	'libzip'
 	'opencsg'
 	'qscintilla-qt5'
 	'qt5-base'
-    'qt5-svg'
+	'qt5-svg'
 	'qt5-multimedia'
-    'double-conversion'
-    'freetype2'
-    'glib2'
-    'harfbuzz'
-    'fontconfig'
-    'opencsg'
-    'gmp'
-    'mpfr'
+	'qt5-gamepad'
+	'double-conversion'
+	'freetype2'
+	'glib2'
+	'harfbuzz'
+	'fontconfig'
+	'opencsg'
+	'gmp'
+	'mpfr'
 	'tbb'
 	'lib3mf'
 )
-makedepends=('git' 'boost' 'cmake' 'eigen' 'imagemagick' 'python')
+makedepends=('git' 'boost' 'cmake' 'eigen' 'imagemagick' 'python' 'glu')
 source=("$_pkg::git+$url")
 sha256sums=('SKIP')
 
