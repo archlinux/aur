@@ -7,7 +7,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=leo
-pkgver=6.8.4b1
+pkgver=6.8.4
 pkgrel=1
 pkgdesc="Outliner, Editor, and Personal Information Manager"
 arch=('any')
@@ -38,7 +38,7 @@ provides=('leo-editor')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/l/leo/leo-${pkgver/_/-}.tar.gz"
   'leo.desktop'
   'leo.xml')
-sha256sums=('73fa043e622f4895d40086a4d536f8920aace1befa4e8a78ca09a9ecde3ab884'
+sha256sums=('cc880263425cafd9e4d18abbd57e98065134e8e4f746ee6774606601410a2499'
             '4633876eb91eff206660359ee7da459211e8f87fd73ebbc680fd437c70b63467'
             '630852279324b0d9acf656c4684f16777d64f49b4062bd101c5cddbfc33c82cb')
 
