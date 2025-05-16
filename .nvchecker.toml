@@ -1,0 +1,4 @@
+[pixi-editor]
+source = "git"
+git = "https://github.com/foxnne/pixi.git"
+prefix = "v"
