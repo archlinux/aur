@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggpointdensity
-_pkgver=0.1.0
+_pkgver=0.2.0
 pkgname=r-${_pkgname,,}
-pkgver=0.1.0
-pkgrel=4
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='A Cross Between a 2D Density Plot and a Scatter Plot'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ optdepends=(
   r-viridis
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3ea646cf183c8bf7869b122a4ee972b53709056ff443ea71551b823524092a31')
+sha256sums=('611ecce4f8b7cfb8ccb31b2a7df2dbb8f1eb5cbb7b49db860785ebac8098f21e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
