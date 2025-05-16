@@ -1,0 +1,24 @@
+version: "3"
+
+tasks:
+  update:
+    vars:
+      PKGVER:
+        sh: grep "^pkgver" PKGBUILD | cut -d "=" -f 2
+    cmds:
+      - rm LICENSE-*
+      - rm biome-bin*
+      - wget https://raw.githubusercontent.com/biomejs/biome/cli/v{{.PKGVER}}/CHANGELOG.md -O biome-bin.changelog
+      # - wget https://raw.githubusercontent.com/biomejs/biome/cli/v{{.PKGVER}}/LICENSE-APACHE -O LICENSE-APACHE
+      # - wget https://raw.githubusercontent.com/biomejs/biome/cli/v{{.PKGVER}}/LICENSE-MIT -O LICENSE-MIT
+      # - xonsh sha256.xsh
+      - updpkgsums
+  test:
+    cmds:
+      - makepkg -Ccsi
+      - biome --version
+  prepare:
+    cmds:
+      - makepkg --printsrcinfo > .SRCINFO
+      - git add PKGBUILD .SRCINFO biome-bin.changelog
+      - echo "All changes are staged. Commit and push manually."
