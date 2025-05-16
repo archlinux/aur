@@ -3,7 +3,7 @@
 
 _pkgname='superproductivity'
 pkgname="${_pkgname}-bin"
-pkgver=13.0.9
+pkgver=13.0.10
 pkgrel=1
 pkgdesc="ToDo list and Time Tracking"
 arch=('x86_64')
