@@ -11,7 +11,6 @@ arch=('x86_64')
 license=("MIT")
 provides=('void')
 conflicts=('void')
-options=(!debug)
 _elnum=34
 depends=( electron${_elnum} ripgrep xdg-utils # replacements
   libx11
@@ -58,13 +57,12 @@ build() {
   _elver=$(cat /usr/lib/electron${_elnum}/version)
   echo Replacing $(rg -m 1 '"electron":\s*"[0-9]+' package.json) with ${_elver}
   echo 'Fix if major version is wrong.'
-  npm pkg set devDependencies.electron=$(cat /usr/lib/electron${_elnum}/version)
-  echo Replaced to $(rg -m 1 '"electron":\s*"[0-9]+' package.json)
+  npm pkg set devDependencies.electron=${_elver}
   # Install dependencies with legacy peer deps flag to handle dependency conflicts
   npm install --legacy-peer-deps
   # Build react because it fails for some reason
   npm run buildreact
-  # Rebuilding modules for incorrect electron will fail
+  # Rebuilding modules for bumped electron will fail
   # npm install -D electron-rebuild
   # npx electron-rebuild -f
   # Bundle it
@@ -94,11 +92,10 @@ package() {
   # launcher
   sed -e "s|code-flags|void-flags|" \
    -e "s|/usr/lib/code/out/cli.js|${_app}/out/cli.js|" \
-   -e "s|/usr/lib/code/code.mjs|--app=${_app}|" code.sh > run.sh
-  sed "s/name=electron/name=electron${_elnum}/" run.sh > run-safe.sh
-  install -Dm755 run-safe.sh "${pkgdir}/usr/bin/void"
-  install -Dm755 run.sh "${pkgdir}/usr/share/void/void-latestron"
-  # Installs edirot on /usr/share for compability with void-bin
+   -e "s|/usr/lib/code/code.mjs|--app=${_app}|" \
+   -e "s/name=electron/name=electron${_elnum}/" code.sh > run.sh
+  install -Dm755 run.sh "${pkgdir}/usr/bin/void"
+  # Installs editor on /usr/share for compability with void-bin
   install -d "${pkgdir}/usr/share/void"
   cp -r --reflink=auto "${_pkg}/resources" "${pkgdir}/usr/share/void/resources"
   # system-wide tools

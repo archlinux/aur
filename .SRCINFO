@@ -28,7 +28,6 @@ pkgbase = void-git
 	optdepends = org.freedesktop.secrets: Settings sync
 	provides = void
 	conflicts = void
-	options = !debug
 	source = git+https://github.com/voideditor/void.git
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh
 	sha256sums = SKIP
