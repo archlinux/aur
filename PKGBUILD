@@ -1,7 +1,7 @@
 # Maintainer: Daniel Head <archlinux at danhead dot me>
 
 pkgname=playback-appimage
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Playback software for Epilogue's GB Operator"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "$_appimage::https://epilogue.nyc3.digitaloceanspaces.com/releases/software/Playback/version/$pkgver/release/linux/$_filename"
 )
 sha512sums=(
-  9e668c5cafdb998d47a0c574a03aef9e03074bd18e2dad2efdc98b75e7fc471dcd8275ff86db4fe92f9b3b1c96e8c673545efe532acd640796e44f941092cefe
+  a00faa5d976044a7d48af3597db695d7cbbc20413f025a24a8deb1278d1cb3ae13642f468c46fd96fb98c13dd72f95b671a3f64e71b2037f4efbf6d36e8a8abc
 )
 
 prepare () {
