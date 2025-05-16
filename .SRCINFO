@@ -1,6 +1,6 @@
 pkgbase = dot-manager-git
 	pkgdesc = CLI Utility for easy dotfile management
-	pkgver = 0.2.2.r0.g76d20bd
+	pkgver = 0.3.0.r1.g077a03d
 	pkgrel = 1
 	url = https://github.com/WithoutAName25/DotManager
 	arch = x86_64

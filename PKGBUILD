@@ -1,6 +1,6 @@
 # Maintainer: WithoutAName <withoutaname@withoutaname.eu>
 pkgname=dot-manager-git
-pkgver=0.2.2.r0.g76d20bd
+pkgver=0.3.0.r1.g077a03d
 pkgrel=1
 pkgdesc="CLI Utility for easy dotfile management"
 arch=("x86_64")
@@ -32,13 +32,22 @@ build() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release --no-default-features
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
 
   install -Dm755 target/release/dot-manager "$pkgdir/usr/bin/dot-manager"
+
+  install -Dm644 target/generated/completions/dot-manager.bash "$pkgdir/usr/share/bash-completion/completions/dot-manager"
+  install -Dm644 target/generated/completions/dot-manager.fish "$pkgdir/usr/share/fish/vendor_completions.d/dot-manager.fish"
+  install -Dm644 target/generated/completions/_dot-manager "$pkgdir/usr/share/zsh/site-functions/_dot-manager"
+
+  for file in target/generated/manpage/dot-manager*.1; do
+    install -Dm644 "$file" "$pkgdir/usr/share/man/man1/$(basename "$file")"
+    gzip "$pkgdir/usr/share/man/man1/$(basename "$file")"
+  done
 
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
