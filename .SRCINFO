@@ -8,6 +8,6 @@ pkgbase = clrblk
 	makedepends = rust
 	makedepends = cargo
 	source = clrblk-v1.2.0.tar.gz::https://gitlab.com/ashe.sterling/clrblk/-/archive/v1.2.0/clrblk-v1.2.0.tar.gz
-	sha256sums = 510900de95c00fa2c84323b25e92bb5eececa874bf29d16846d57b32bf8012f4
+	sha256sums = 06b0ba0cc8d24351fb6772cbec1c452017f70c097596a42bc0a516cc0f5a813b
 
 pkgname = clrblk
