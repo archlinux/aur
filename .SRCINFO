@@ -1,7 +1,7 @@
 pkgbase = evince-no-gnome
 	pkgdesc = Document viewer, no gnome dependencies
 	pkgver = 48.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://apps.gnome.org/Evince
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -10,6 +10,7 @@ pkgbase = evince-no-gnome
 	makedepends = git
 	makedepends = glib2-devel
 	makedepends = meson
+	makedepends = texlive-bin
 	makedepends = yelp-tools
 	depends = at-spi2-core
 	depends = cairo

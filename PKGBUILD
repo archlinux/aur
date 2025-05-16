@@ -8,7 +8,7 @@
 pkgname=evince-no-gnome
 _pkgname=evince
 pkgver=48.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Document viewer, no gnome dependencies"
 url="https://apps.gnome.org/Evince"
 arch=(x86_64)
@@ -46,6 +46,7 @@ makedepends=(
   git
   glib2-devel
   meson
+  texlive-bin
   yelp-tools
 )
 optdepends=(
