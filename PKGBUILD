@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MetaboCoreUtils
-_pkgver=1.16.0
+_pkgver=1.16.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dfa93fb45e53936933011982daae2a5d')
-b2sums=('43518b8a0054166dd5196ee5a5ed46c00e24de4cb24a462321257fe7b242fe0139a2bc189332ebee963a00305e0bb93bb78f1176a51a950283e5c0172939b734')
+md5sums=('57a1cba82b0d69d9a9bd866a1dc590af')
+b2sums=('cc729d83e21c083569df545e624adff856d39e82a3aa25533902b3f85db0a5a78a81822fca7b22d5be466ae80217ce9ed67068f6509cbabf2884497cf7c935e3')
 
 build() {
   mkdir build
