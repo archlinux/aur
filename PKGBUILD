@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Winger <bmw@disroot.org>
 
 pkgname=portmod
-pkgver=2.8.1
+pkgver=2.9.1
 pkgrel=2
 pkgdesc="A cli tool to manage mods for OpenMW"
 replaces=('openmmm')
@@ -15,7 +15,7 @@ makedepends=("python" "python-setuptools" "python-setuptools-scm" "rust" "python
 checkdepends=("python-pytest")
 optdepends=("tr-patcher" "python-argcomplete" "python-deprecated")
 source=("https://gitlab.com/portmod/portmod/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('2dcfa37976fcaa523a0f43a8291e6dc18227dd85c6256189231f08462bfeaa1e1cc182293c409b021b09aead08c756c8317171d04d141e2d2443e779242661b4')
+sha512sums=('95c71736c5d5747ddc8b1a34fdfbf470eb112905ab14d9b994edeb8b60e7f77b993876a24f4cb8d111ff380f6e761d8c378fc10a7f45d1cb735d1976a222fc40')
 
 build() {
   # zstd-rs fails to compile with gcc if lto is enabled (makepkg sets -flto=auto by default)
