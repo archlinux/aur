@@ -5,12 +5,12 @@
 # Contributor: userwithuid < userwithuid at gmail dot com >
 
 _pkgname=rust
-_date=2025-02-20
-_rustc=1.85.0
+_date=2025-04-03
+_rustc=1.86.0
 
 pkgname=mingw-w64-rust
 _prefix=opt/rust
-pkgver=1.86.0
+pkgver=1.87.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -38,15 +38,15 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
 noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "cargo-${_rustc}-x86_64-unknown-linux-gnu.tar.xz")
-b2sums=('9f33a710a3e567d92f56091920643f5ef2ddf2ad52acb5d9ee78496a7b5dbc10da5a51c72cf2a6f66d543a531d3138a49767c98501ae4e885e03988d2ccfbb59'
+b2sums=('7ede723121ff8df3908674631ceaec75797d91ccd6f1df4afd7187878adbb8d99c9e8a3b11c6027703b2e8d06785299d93d8649f3eda7f356dd2a6734d99d05b'
         'SKIP'
-        '1c88b5c2c839f1d8a5d8fa4f269e21e0f7b45534663b0a7e5c53fb018d1cc6a9db6641dfbc75ac0cb451254d0f9d9bf22bd91ae6e6ca392baa2c0e0e9bed75ec'
+        '4e70780ad340ccb9d1333fc17e69c1940916e86af86d5de3287d20778abcd0e0790332b914d332be533dd62cf5217e3c27aea5112b504126a7b46940c4e7fcc2'
         'SKIP'
-        'e4882c13cf9fa26c481d62e40815388b56b5976a7796d5bf1a7d4fe481a2c11f55aab3cc1c1eb0a71a6e5d6a2551895814427891d60ae5e31445b79fdc2139e0'
+        'ba6ec6c25afb461162fdd069e724d9e10cf5a69e9d34f25823a192d3a8ff27a6c9c2c4574e4b9e85dd887571a8fe984c9e13803d9d31689757dd6dc943054ff9'
         'SKIP'
-        'd29e59c97e1ba6fc0a1b88fdd958fd1ab88338326a5f46b5f78993a1bd7ecb94d96d80e6a7ed540806de8901079d85b38a7b8cefe81112550646cb4b666050d6'
+        'b26feeeb4469dea045249baf7ece4dc8252c969c5de570fc5d2bbd0264a9ec6f0c3478121b707e68ed3a50ff01f2bc2708ce34f07e6065c53a283fcf7e95af3d'
         'SKIP'
-        '64d5f24e0df05529161b3c9d241c8576047692410ee28069004493ff56bbe056cf8a343b95e380fc8a05a418b475c0ecd54c17152265b08a6b6c503e8e154880')
+        '0df3608312824e958caa5e501ddd0b70fb0abee87bdcc2db3b752074c115f990b3c2daeb830c58b140dbb95c3bd753d279051af533f5ad99cd4370e947640bad')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/rust/cargo/config")
@@ -54,8 +54,8 @@ backup=("opt/rust/cargo/config")
 prepare() {
   cd "rustc-${pkgver}-src"
 
-  cp "${srcdir}"/mingw-config.toml config.toml
-  sed -i "s|\@PREFIX\@|/${_prefix}|" config.toml
+  cp "${srcdir}"/mingw-config.toml bootstrap.toml
+  sed -i "s|\@PREFIX\@|/${_prefix}|" bootstrap.toml
 
   cd "${srcdir}"
   mkdir -p "${srcdir}/rustc-${pkgver}-src/build/cache/${_date}"
