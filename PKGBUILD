@@ -5,12 +5,12 @@
 pkgname=python-discord
 pkgver=2.5.2
 _tarname=discord.py-$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord API wrapper written in Python"
 arch=(any)
 url="https://github.com/Rapptz/discord.py"
 license=(MIT)
-depends=('python-aiohttp>=3.7.4' 'python-aiohttp<4')
+depends=('python-aiohttp>=3.7.4' 'python-aiohttp<4' 'python-audioop')
 makedepends=(python-setuptools python-{build,installer,wheel})
 optdepends=(
 	'python-pynacl>=1.3.0: voice support'
