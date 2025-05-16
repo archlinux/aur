@@ -9,7 +9,7 @@ pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
 _sticker_creator="sticker-creator"
 _desktop_file='signalbeta.desktop'
-pkgver=7.54.0beta1
+pkgver=7.55.0beta2
 pkgrel=1
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
@@ -58,7 +58,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver//beta*}-beta.${pkgver##*beta}.tar.gz"
   "${_desktop_file}"
   )
-sha512sums=('671d5ec78fa7612c1344431f49939763523ec22d5f92455db7b249e26f63d434484a7de2d3dcb509b74013a7dc15f1efe1de8e618c59a4b221a53400079e5553'
+sha512sums=('9b7454d61b67161856bd9a390816e71315a7a48e12ee5365e2a582fe10e97290f0c580d85872f918915bfeaef9bb844e669f8adfae38e80f6bc4f5f24812dc04'
             '5ae001faedff440776f4a62235c294454a951f4cc412665a21cd958bdf4a0223c89f741f2786d93727c7acf49a8a98d75156c6e14ba1f01da261fba373ef675a')
 
 prepare() {
@@ -69,9 +69,6 @@ prepare() {
 
   # Allow higher Node versions
   sed 's#"node": "#&>=#' -i package.json
-
-  # Electron from 34.4.x/35.x onwards, creates strange artifacts on ArchLinux, lets downgrande to electron 34.3.x
-  sed -i 's/"electron": *"[^"]*"/"electron": "34.3.4"/g' package.json
 
   # Install dependencies for sticker-creator
   pnpm --prefix ./sticker-creator/ install
