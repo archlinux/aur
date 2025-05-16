@@ -1,12 +1,12 @@
 pkgbase = chart-testing
 	pkgdesc = CLI tool for linting and testing Helm charts
-	pkgver = 3.11.0
-	pkgrel = 0
+	pkgver = 3.12.0
+	pkgrel = 1
 	url = https://github.com/helm/chart-testing
 	arch = x86_64
 	arch = aarch64
 	arch = armv6h
-	license = Apache
+	license = Apache-2.0
 	makedepends = go
 	makedepends = goreleaser
 	depends = kubectl
@@ -15,7 +15,8 @@ pkgbase = chart-testing
 	depends = helm
 	depends = yamale
 	backup = etc/ct/lintconf.yaml
-	source = https://github.com/helm/chart-testing/archive/v3.11.0/chart-testing-3.11.0.tar.gz
-	sha256sums = ee19a09934b26e33bd1e59e056085e3a93d32b5e0075c977513883045b4aedc3
+	backup = etc/ct/chart_schema.yaml
+	source = https://github.com/helm/chart-testing/archive/v3.12.0/chart-testing-3.12.0.tar.gz
+	sha256sums = 129e380050ca79c6b89160475cb339da59067b6c36db85187ebbc50ea6b901d5
 
 pkgname = chart-testing

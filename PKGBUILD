@@ -3,17 +3,17 @@
 # Contributor: Thomas Hobson <thomas /at/ hexf.me>
 
 pkgname=chart-testing
-pkgver=3.11.0
-pkgrel=0
+pkgver=3.12.0 # renovate: datasource=github-releases depName=helm/chart-testing
+pkgrel=1
 pkgdesc='CLI tool for linting and testing Helm charts'
 arch=('x86_64' 'aarch64' 'armv6h')
 url='https://github.com/helm/chart-testing'
-license=('Apache')
+license=('Apache-2.0')
 depends=('kubectl' 'git' 'yamllint' 'helm' 'yamale')
 makedepends=('go' 'goreleaser')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ee19a09934b26e33bd1e59e056085e3a93d32b5e0075c977513883045b4aedc3')
-backup=('etc/ct/lintconf.yaml')
+sha256sums=('129e380050ca79c6b89160475cb339da59067b6c36db85187ebbc50ea6b901d5')
+backup=('etc/ct/lintconf.yaml' 'etc/ct/chart_schema.yaml')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -28,7 +28,7 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 dist/chart-testing_linux_amd64_v1/ct -t "$pkgdir/usr/bin"
+  install -Dm755 dist/*/ct -t "$pkgdir/usr/bin"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 etc/lintconf.yaml etc/chart_schema.yaml -t "$pkgdir/etc/ct"
   cp -a doc -t "$pkgdir/usr/share/doc/$pkgname"
