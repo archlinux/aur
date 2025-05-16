@@ -20,11 +20,12 @@ pkgver() {
 }
 
 package() {
-  pushd -q "$srcdir/$pkgname-Linux64"
+  pushd "$srcdir/$pkgname-Linux64" > /dev/null
   find "./" -type f -exec install -Dm755 "{}" "$pkgdir/opt/$pkgname/{}" \;
-  popd -q
+  popd > /dev/null
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   ln -s "/opt/$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  ln -s "/opt/$pkgname/CREDITS.txt" "$pkgdir/usr/share/licenses/$pkgname/CREDITS.txt"
   install -d "$pkgdir/usr/share/doc/$pkgname"
   ln -s "/opt/$pkgname/README.txt" "$pkgdir/usr/share/doc/$pkgname/README.txt"
   install -d "$pkgdir/usr/bin"
@@ -32,4 +33,6 @@ package() {
   ln -s "/opt/$pkgname/gmsh" "$pkgdir/usr/bin/gmsh"
   install -d "$pkgdir/usr/lib"
   ln -s "/opt/$pkgname/libconveks.so" "$pkgdir/usr/lib/libconveks.so"
+  desktop-file-install --dir="${pkgdir}/usr/share/applications" \
+    "../onelab.desktop"
 }

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ONELAB
+Comment=Open Numerical Engineering LABoratory
+Icon=gmsh
+Exec=gmsh
+Encoding=UTF-8
+Terminal=false
+Type=Application
+Categories=Education;Science;Math;
