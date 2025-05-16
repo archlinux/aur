@@ -1,7 +1,7 @@
 pkgbase = kube-bench-bin
 	pkgdesc = Checks whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark
 	pkgver = 0.10.6
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/aquasecurity/kube-bench
 	arch = x86_64
 	license = APACHE
