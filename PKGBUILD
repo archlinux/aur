@@ -1,15 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vnite-git
 _pkgname=Vnite
-pkgver=3.1.0.r0.gba9601f
+pkgver=3.4.0.r0.g1d6e2d8
 _electronversion=34
-_nodeversion=22
+_nodeversion=20
 pkgrel=1
-pkgdesc="Visual Novel Management Software.(Use system-wide electron)视觉小说 / Galgame 管理软件"
+pkgdesc="A versatile game management software designed to provide a unified interface for recording, managing, and synchronizing your gaming journey.(Use system-wide electron)"
 arch=('x86_64')
 url="https://vnite.ximu.dev/"
 _ghurl="https://github.com/ximu3/vnite"
-license=("LicenseRef-unknown")
+license=('GPL-3.0-only')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
@@ -21,9 +21,6 @@ makedepends=(
     'nvm'
     'gendesk'
     'curl'
-)
-optdepends=(
-    'git'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -44,6 +41,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname//-/.}"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -52,8 +50,12 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname//-/.}"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Game" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -71,13 +73,13 @@ prepare() {
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install
+    NODE_ENV=development    npm install --legacy-peer-deps
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
     local electronDist="/usr/lib/electron${_electronversion}"
     chmod +x "${srcdir}/${pkgname//-/.}/node_modules/electron-vite/bin/electron-vite.js"
-    NODE_ENV=production     npx electron-vite build
+    NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config=electron-builder.yml"
 }
 package() {
