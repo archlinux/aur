@@ -3,8 +3,8 @@
 # All my PKGBUILDs are managed at https://github.com/tmn505/AUR
 
 pkgbase=libavio
-pkgname=('libavio' 'python-avio')
-pkgver=3.2.5
+pkgname=('python-avio')
+pkgver=3.2.6
 pkgrel=1
 url='https://github.com/sr99622/libavio'
 license=('Apache-2.0')
@@ -23,44 +23,23 @@ makedepends=('cmake'
              'python-setuptools'
              'python-wheel'
              'sdl2')
-source=("git+${url}.git#commit=a6d4226abfd92f04a07e000aa4ce60173c74d1a3")
-sha256sums=('c0a7a8a40b8a608331f47662932f7d4ed5c6c2a7a706f27cdcd69135d607e608')
+source=("git+${url}.git#commit=6b1b89db63b5c3b516a38685fc36b264970c97fd")
+sha256sums=('bf3f87c9756ed121e7658435958739f1127558a81c3c430ed6d49c4c7448c923')
 
 prepare() {
-	cd ${srcdir}/${pkgname}
+	cd ${srcdir}/${pkgbase}
 	sed -e 's,add_subdirectory(pybind11),find_package(pybind11 REQUIRED),' -i CMakeLists.txt
 }
 
 pkgver() {
-	cd ${srcdir}/${pkgname}
+	cd ${srcdir}/${pkgbase}
 	sed -n -e '/libavio VERSION/p' CMakeLists.txt | sed -e 's/[^0-9,.]*//g'
 }
 
 build() {
 	cd ${srcdir}/${pkgbase}
 	export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
-	cmake -B build-so \
-		-D CMAKE_BUILD_TYPE=Release \
-		-D CMAKE_INSTALL_PREFIX=/usr \
-		-D WITHOUT_PYTHON=true \
-		-W no-dev
-	cmake --build build-so
 	python -m build --wheel --no-isolation
-}
-
-package_libavio() {
-	pkgdesc='Library for processing media streams designed for use in Onvif GUI'
-	depends=('libavcodec.so'
-	         'libavformat.so'
-	         'libavutil.so'
-	         'libswresample.so'
-	         'libswscale.so'
-	         'sdl2')
-
-	cd ${srcdir}/${pkgbase}
-	install -D -m 644 -t ${pkgdir}/usr/include include/avio.h
-	install -D -m 755 -t ${pkgdir}/usr/lib build-so/${pkgname}.so.*
-	cp -a build-so/${pkgname}.so ${pkgdir}/usr/lib/${pkgname}.so
 }
 
 package_python-avio() {
