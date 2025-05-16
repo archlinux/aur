@@ -46,7 +46,7 @@ build(){
     -e "s/name=electron/name=${_electron}/" code.sh > "${pkgname}.sh"
 }
 package(){
-  # Use upstream's layout instead of FHS
+  # Use upstream's layout instead of FHS https://github.com/getcursor/cursor/issues/3123
   install -Dvm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${_name}"
   install -d "${pkgdir}/usr/share/${_name}/resources"
   ln -sf "/usr/bin/${_name}" "${pkgdir}/usr/share/${_name}/${_name}"
