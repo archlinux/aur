@@ -1,7 +1,7 @@
-_electron='electron35'
+_electron='electron36'
 
 pkgname=webcord
-pkgver=4.10.5
+pkgver=4.11.0
 pkgrel=1
 pkgdesc='A Discord client implemented directly without Discord API'
 arch=('any')
@@ -22,7 +22,7 @@ source=(
 )
 
 sha256sums=(
-    'f0e44f88c2acd15880edc6cb2e706ecfd8e27c9257ba91886b0e85a47d6e2bb6'
+    '51e7431104cca7a496b21f7d672c441029116e5665563538c41fe5a28da979ca'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
     'd64b06be4c431fdd41379e24461cecb4f93dbfac89a09ec727c9399e752b6bb9'
     'c41c46200b0dacf7d2ae3983e66bb9aad8314fdfc821f3ed559245ca205c087c'
