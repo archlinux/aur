@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bili-shadowreplay-bin
 _pkgname='BiliBili ShadowReplay'
-pkgver=2.5.5
+pkgver=2.5.6
 pkgrel=1
 pkgdesc="A tool for caching bilibili live broadcasts and editing submissions in real time.(Prebuilt version)一个B站缓存直播并进行实时编辑投稿的工具"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Xinrea/bili-shadowreplay/v${pkgver}/LICENSE"
 )
-sha256sums=('1f7f38a5b0b9b0d768e101b4ac9b627ba9268df8b4dc344f2bfa669778b44778'
+sha256sums=('7041a3b3dac01b7a5ab7d4b704fec405dfb26194b00e5a277bda57b130fef057'
             '94554e2faa839f3486528d64507d3ee5c1c0a9657c92def6dc9d30d3b46b4dc6')
 prepare() {
     sed -i -e "
