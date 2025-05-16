@@ -1,7 +1,7 @@
 # Maintainer: WithoutAName <withoutaname@withoutaname.eu>
 pkgname=dot-manager-git
-pkgver=0.3.0.r1.g077a03d
-pkgrel=1
+pkgver=0.3.0.r2.g4115e17
+pkgrel=2
 pkgdesc="CLI Utility for easy dotfile management"
 arch=("x86_64")
 _repo=DotManager
