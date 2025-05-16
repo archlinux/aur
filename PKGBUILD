@@ -1,7 +1,7 @@
-# Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
+# Maintainer: Peter Jung <ptr1337@cachyos.org>
 
 pkgname=mold-git
-pkgver=2.33.0.r56.ged4cae93
+pkgver=2.39.1.r4.g18c813a2
 pkgrel=1
 pkgdesc='A Modern Linker'
 arch=('x86_64')
@@ -9,8 +9,9 @@ url='https://github.com/rui314/mold'
 license=('MIT')
 # xxhash is bundled
 depends=(
-  gcc-libs
   glibc
+  gcc-libs
+  libblake3
   mimalloc
   tbb
   zlib
@@ -57,5 +58,6 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="${pkgdir}" cmake --install build
+  install -Dm644 "${_reponame}"/LICENSE "${pkgdir}"/usr/share/licenses/mold/LICENSE
 }
