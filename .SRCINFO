@@ -1,7 +1,7 @@
 pkgbase = kubectl-konfig
 	pkgdesc = konfig helps to merge, split or import kubeconfig files
 	pkgver = 0.2.6
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/corneliusweig/konfig
 	arch = x86_64
 	license = APACHE

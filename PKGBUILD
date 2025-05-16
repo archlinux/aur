@@ -2,8 +2,8 @@
 
 _pkgname=konfig
 pkgname=kubectl-$_pkgname
-pkgver=0.2.6
-pkgrel=0
+pkgver=0.2.6 # renovate: datasource=github-releases depName=corneliusweig/konfig
+pkgrel=1
 pkgdesc="konfig helps to merge, split or import kubeconfig files"
 url="https://github.com/corneliusweig/$_pkgname"
 license=('APACHE')
@@ -16,4 +16,3 @@ package() {
 }
 
 #vim: syntax=sh
-
