@@ -1,6 +1,6 @@
 pkgname=eden
 pkgver=0.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://eden-emulator.github.io/
@@ -16,8 +16,8 @@ source=("git+https://git.eden-emu.dev/eden-emu/eden#tag=$pkgver-pre-alpha"
 		"git+https://git.eden-emu.dev/eden-emu/dynarmic.git"
 		"git+https://git.eden-emu.dev/eden-emu/libusb.git"
 		"git+https://git.eden-emu.dev/eden-emu/discord-rpc.git"
-		"git+https://git.eden-emu.dev/eden-emu/Vulkan-Headers.git"
-		"git+https://git.eden-emu.dev/eden-emu/sirit.git"
+		"Vulkan-Headers::git+https://git.eden-emu.dev/eden-emu/Vulkan-Headers.git"
+		"sirit::git+https://git.eden-emu.dev/eden-emu/sirit.git"
 		"git+https://git.eden-emu.dev/eden-emu/mbedtls.git"
 		"git+https://git.eden-emu.dev/eden-emu/cpp-httplib.git"
 		"ffmpeg::git+https://git.eden-emu.dev/eden-emu/FFmpeg.git"
@@ -32,30 +32,16 @@ source=("git+https://git.eden-emu.dev/eden-emu/eden#tag=$pkgver-pre-alpha"
 		"git+https://git.eden-emu.dev/eden-emu/simpleini.git"
 		"git+https://git.eden-emu.dev/eden-emu/Vulkan-Utility-Libraries.git"
 		"git+https://git.eden-emu.dev/eden-emu/oboe.git"
-		"boost-headers::git+https://git.eden-emu.dev/eden-emu/headers.git"
-		"git+https://github.com/google/googletest"
-		"git+https://github.com/arsenm/sanitizers-cmake"
-		"git+https://github.com/mozilla/cubeb-coreaudio-rs"
-		"git+https://github.com/mozilla/cubeb-pulse-rs"
-		"git+https://git.eden-emu.dev/eden-emu/fmt"
-		"git+https://git.eden-emu.dev/eden-emu/biscuit.git"
-		"catch::git+https://git.eden-emu.dev/eden-emu/Catch2.git"
-		"git+https://git.eden-emu.dev/eden-emu/fmt.git"
-		"git+https://git.eden-emu.dev/eden-emu/mcl.git"
+		"git+https://git.eden-emu.dev/eden-emu/headers.git"
 		"git+https://git.eden-emu.dev/eden-emu/oaknut.git"
-		"git+https://git.eden-emu.dev/eden-emu/robin-map.git"
 		"git+https://git.eden-emu.dev/eden-emu/xbyak.git"
-		"zycore::git+https://git.eden-emu.dev/eden-emu/zycore-c.git"
-		"git+https://github.com/KhronosGroup/SPIRV-Headers"
-		"git+https://git.eden-emu.dev/eden-emu/zydis.git")
-sha256sums=('66e5282b7b60624008d44ca17dd7a06cb0fbfa82375e6bf521fb2dea971f2807'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+		"git+https://git.eden-emu.dev/eden-emu/mcl.git"  # submodule of dynarmic
+		"git+https://git.eden-emu.dev/eden-emu/robin-map.git"  # submodule of dynarmic
+		"zycore::git+https://git.eden-emu.dev/eden-emu/zycore-c.git"  # submodule of dynarmic
+		"git+https://git.eden-emu.dev/eden-emu/zydis.git"  # submodule of dynarmic
+		"git+https://github.com/KhronosGroup/SPIRV-Headers"  # submodule of sirit 
+		"git+https://github.com/eggert/tz.git")  # submdoule of tzdb_to_nx
+sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -87,39 +73,28 @@ sha256sums=('66e5282b7b60624008d44ca17dd7a06cb0fbfa82375e6bf521fb2dea971f2807'
             'SKIP'
             'SKIP')
 prepare() {
-	cd $srcdir/eden
-	git submodule init
-  for _submodule in enet cubeb dynarmic libusb discord-rpc Vulkan-Headers sirit mbedtls xbyak opus SDL cpp-httplib ffmpeg vcpkg cpp-jwt libadrenotools tzdb_to_nx VulkanMemoryAllocator breakpad simpleini oaknut Vulkan-Utility-Librries oboe booost-headers;
-    do
-      git config submodule.$_submodule.url "${srcdir}/$_submodule"
-    done
-  git -c protocol.file.allow=always submodule update --init
-  
-  cd $srcdir/eden/externals/cubeb
-  git submodule init
-  for _submodule in googletest sanitizers-cmake cubeb-coreaudio-rs cubeb-pulse-rs;
-    do
-	  git config submodule.$_submodule.url "${srcdir}/$_submodule"
-	done
-  git -c protocol.file.allow=always submodule update --init
-  
-  cd $srcdir/eden/externals/nx_tzdb/tzdb_to_nx
-  git submodule init
-  git config submodule.tz.url "$srcdir/$_submodule"
-  git -c protocol.file.allow=always submodule update --init
-  
-  cd $srcdir/eden/externals/sirit
-  git submodule init
-  git config submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
-  git -c protocol.file.allow=always submodule update --init
+	cd $pkgname
+	for _submodule in ffmpeg opus SDL Vulkan-Headers vcpkg enet cubeb dynarmic libusb discord-rpc oboe Vulkan-Utility-Libraries oaknut simpleini breakpad VulkanMemoryAllocator tzdb_to_nx libadrenotools cpp-jwt cpp-httplib xbyak mbedtls sirit;
+		do
+		git config submodule.$_submodule.url ../$_submodule
+		done
+	git config submodule.externals/boost-headers.url ../headers
+	git -c protocol.file.allow=always submodule update
 
-  cd $srcdir/eden/externals/dynarmic
-  git submodule init
-  for _submodule in {biscuit fmt mcl oaknut robin-map xbyak zycore zydis};
-    do
-	  git config submodule.${_submodule}.url "$srcdir/$_submodule"
-	done
-  git -c protocol.file.allow=always submodule update --init
+	cd $srcdir/$pkgname/externals/sirit
+	git config submodule.externals/SPIRV-Headers.url ../../../SPIRV-Headers
+	git -c protocol.file.allow=always submodule update
+
+    cd $srcdir/$pkgname/externals/nx_tzdb/tzdb_to_nx
+    git config submodule.externals/tz/tz.url ../../../../tz
+    git -c protocol.file.allow=always submodule update
+    
+    cd $srcdir/$pkgname/externals/dynarmic
+    git config submodule.zydis.url ../../../zydis
+    git config submodule.mcl.url ../../../mcl
+    git config submodule.robin-map.url ../../../robin-map
+    git config submodule.zycore.url ../../../zycore
+    git -c protocol.file.allow=always submodule update
 }
 build() {
 	cd $srcdir/eden
@@ -128,7 +103,9 @@ build() {
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_CXX_COMPILER=clang++ \
     	-DCMAKE_C_COMPILER=clang \
+    	-DUSE_DISCORD_PRESENCE=ON \
 		-DYUZU_ENABLE_LTO=ON \
+		-DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
 		-DYUZU_USE_BUNDLED_VCPKG=ON \
 		-DYUZU_TESTS=OFF
 	cmake --build Build
