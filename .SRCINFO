@@ -1,6 +1,6 @@
 pkgbase = python-html2image-bin
 	pkgdesc = Generates images from headless browsers and html/css strings or files
-	pkgver = 2.0.6
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = https://github.com/vgalin/html2image
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-html2image-bin
 	depends = python-requests
 	provides = python-html2image
 	conflicts = python-html2image
-	source = https://files.pythonhosted.org/packages/py3/h/html2image/html2image-2.0.6-py3-none-any.whl
-	md5sums = cdd85ae5732c1b4c8a80dd4bc842ad49
+	source = https://files.pythonhosted.org/packages/py3/h/html2image/html2image-2.0.7-py3-none-any.whl
+	md5sums = e6506845b4b31b37c3e429fae8bdd611
 
 pkgname = python-html2image-bin

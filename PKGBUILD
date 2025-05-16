@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-html2image-bin
 _pkgname=html2image
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="Generates images from headless browsers and html/css strings or files"
 arch=('any')
@@ -15,7 +15,7 @@ _url="https://files.pythonhosted.org/packages/${_py}/${_pkgname::1}/${_pkgname}/
 _filename="${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
 depends=('python' 'python-websocket-client' 'python-requests')
 source=("${_url}${_filename}")
-md5sums=('cdd85ae5732c1b4c8a80dd4bc842ad49')
+md5sums=('e6506845b4b31b37c3e429fae8bdd611')
 
 package() {
   python -m installer --destdir="$pkgdir" "html2image-${pkgver}-py3-none-any.whl"
