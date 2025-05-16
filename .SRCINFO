@@ -1,7 +1,7 @@
 pkgbase = drop-oss-app-bin
 	pkgdesc = The client application for the open-source, self-hosted game distribution platform Drop
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 1
 	url = https://droposs.org/
 	arch = x86_64
 	license = LicenseRef-GPL-3.0
