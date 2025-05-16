@@ -21,7 +21,7 @@ depends=(
     'ffmpeg'
 )
 optdepends=(
-    'python-mcp: Model Context Protocol support'
+    'python-fastmcp: Model Context Protocol support'
 )
 makedepends=(python-build python-installer python-wheel python-hatchling)
 source=("https://pypi.io/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")

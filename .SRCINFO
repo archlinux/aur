@@ -19,7 +19,7 @@ pkgbase = yutto
 	depends = python-pydantic
 	depends = python-returns
 	depends = ffmpeg
-	optdepends = python-mcp: Model Context Protocol support
+	optdepends = python-fastmcp: Model Context Protocol support
 	source = https://pypi.io/packages/source/y/yutto/yutto-2.0.3.tar.gz
 	sha256sums = b3950b15136b1b850187274d325d0191526d114d1790c9d36d39bc99e2592351
 
