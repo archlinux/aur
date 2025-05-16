@@ -4,7 +4,7 @@ _pkgname="Photo Location Map"
 pkgver=1.11.0
 _electronversion=32
 _nodeversion=22
-pkgrel=2
+pkgrel=3
 pkgdesc="Display the locations where photos were taken on a map.(Use system-wide electron)"
 arch=('any')
 url="https://tomoyukiaota.github.io/photo-location-map/"
@@ -73,11 +73,12 @@ prepare() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install --legacy-peer-deps
+    NODE_ENV=development    npm add -D @babel/core
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     npm run build:prod
+    NODE_ENV=production     echo N | npm run build:prod
     NODE_ENV=production     npm exec -c "electron-builder build --linux dir -c.electronDist=${electronDist}"
 }
 package() {

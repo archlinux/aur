@@ -1,7 +1,7 @@
 pkgbase = photo-location-map
 	pkgdesc = Display the locations where photos were taken on a map.(Use system-wide electron)
 	pkgver = 1.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tomoyukiaota.github.io/photo-location-map/
 	arch = any
 	license = MIT
