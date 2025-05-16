@@ -10,7 +10,7 @@ url="https://github.com/Bubuclem/electron-gpt"
 license=('CC0-1.0')
 depends=(
     "electron${_electronversion}"
-    'python>=3.9'
+    'python'
     'python-setuptools'
     'nodejs'
 )
@@ -44,6 +44,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname%-git}.git"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -52,8 +53,12 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --name="${pkgname%-git}" --categories="Utility" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname%-git}.git"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --name="${pkgname%-git}" \
+        --categories="Utility" \
+        --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -73,10 +78,22 @@ prepare() {
     fi
     sed -i "s/\.ico/\.png/g" main.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install
+    NODE_ENV=development    npm install --legacy-peer-deps
+    NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i -e "
+		3i\  plugins: [
+		3i\    {
+		3i\      name: '@electron-forge/plugin-local-electron',
+		3i\      config: {
+		3i\        electronPath: \'${electronDist}\'
+		3i\      }
+		3i\    }
+		3i\  ],
+	" forge.config.js
     NODE_ENV=production     npm run package
 }
 package() {
@@ -85,5 +102,5 @@ package() {
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/out/chatgpt-linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/favicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }

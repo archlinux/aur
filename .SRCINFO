@@ -11,7 +11,7 @@ pkgbase = electron-gpt-git
 	makedepends = nvm
 	makedepends = curl
 	depends = electron33
-	depends = python>=3.9
+	depends = python
 	depends = python-setuptools
 	depends = nodejs
 	options = !strip
