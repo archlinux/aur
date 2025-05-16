@@ -3,7 +3,7 @@
 _pkgname=helmrelease-tools
 pkgname=$_pkgname
 pkgver=2.11.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Scripts to work with flux HelmReleases"
 license=('APACHE')
 arch=('x86_64')
