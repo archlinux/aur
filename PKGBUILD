@@ -3,8 +3,8 @@
 # All my PKGBUILDs are managed at https://github.com/tmn505/AUR
 
 pkgbase=libonvif
-pkgname=('libonvif' 'python-libonvif')
-pkgver=3.2.5
+pkgname=('python-libonvif')
+pkgver=3.2.6
 pkgrel=1
 url='https://github.com/sr99622/libonvif'
 license=('LGPL-2.1-or-later')
@@ -17,9 +17,9 @@ makedepends=('cmake'
              'python-installer'
              'python-setuptools'
              'python-wheel')
-# _prjrel=2.4.4
-source=("git+${url}.git#commit=e5c01df0849495b98c62acad3837fde72dda654c")
-sha256sums=('249110e4fd52059fd64274efac024f141ba67af3a661466fa4831ec4ad8bc98d')
+# _prjrel=3.10
+source=("git+${url}.git#commit=2f03007de328e5da5dfd771989fa0f406529ad24")
+sha256sums=('b54485dc8c3abc1dc9c94206dc364163a2a3c2b80a7fa371f129c78767001db1')
 
 prepare() {
 	cd ${srcdir}/${pkgbase}/libonvif
@@ -33,23 +33,7 @@ pkgver() {
 
 build() {
 	cd ${srcdir}/${pkgbase}/libonvif
-	cmake -B build-so \
-		-D CMAKE_BUILD_TYPE=Release \
-		-D CMAKE_INSTALL_PREFIX=/usr \
-		-D WITHOUT_PYTHON=true \
-		-W no-dev
-	cmake --build build-so
 	python -m build --wheel --no-isolation
-}
-
-package_libonvif() {
-	pkgdesc='A client side implementation of the ONVIF specification - library'
-	depends=('libxml2')
-
-	cd ${srcdir}/${pkgbase}/libonvif
-	install -D -m 644 -t ${pkgdir}/usr/include include/onvif.h
-	install -D -m 755 -t ${pkgdir}/usr/lib build-so/${pkgname}.so.*
-	cp -a build-so/${pkgname}.so ${pkgdir}/usr/lib
 }
 
 package_python-libonvif() {

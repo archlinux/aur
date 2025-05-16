@@ -1,5 +1,5 @@
 pkgbase = libonvif
-	pkgver = 3.2.5
+	pkgver = 3.2.6
 	pkgrel = 1
 	url = https://github.com/sr99622/libonvif
 	arch = i686
@@ -13,12 +13,8 @@ pkgbase = libonvif
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = git+https://github.com/sr99622/libonvif.git#commit=e5c01df0849495b98c62acad3837fde72dda654c
-	sha256sums = 249110e4fd52059fd64274efac024f141ba67af3a661466fa4831ec4ad8bc98d
-
-pkgname = libonvif
-	pkgdesc = A client side implementation of the ONVIF specification - library
-	depends = libxml2
+	source = git+https://github.com/sr99622/libonvif.git#commit=2f03007de328e5da5dfd771989fa0f406529ad24
+	sha256sums = b54485dc8c3abc1dc9c94206dc364163a2a3c2b80a7fa371f129c78767001db1
 
 pkgname = python-libonvif
 	pkgdesc = A client side implementation of the ONVIF specification - python library
