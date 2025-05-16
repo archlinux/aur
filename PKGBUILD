@@ -3,8 +3,8 @@
 
 pkgname=python-dynmen
 _name=${pkgname#python-}
-pkgver=0.1.5
-pkgrel=1
+pkgver=0.1.5 # renovate: datasource=pypi depName=dynmen
+pkgrel=2
 pkgdesc="Python wrappers for dynamic menus (dmenu, rofi, fzf, ...)"
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}"
@@ -18,7 +18,7 @@ build() {
   cd "$srcdir"/${_name}-${pkgver}
   python setup.py build
 }
- 
+
 package() {
   cd "$srcdir/${_name}-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
