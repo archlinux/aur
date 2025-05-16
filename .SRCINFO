@@ -1,6 +1,6 @@
 pkgbase = trivalent-bin
 	pkgdesc = A hardened chromium for desktop Linux inspired by Vanadium.
-	pkgver = 136.0.7103.92
+	pkgver = 136.0.7103.113
 	pkgrel = 1
 	url = https://github.com/secureblue/Trivalent
 	arch = x86_64
@@ -42,11 +42,11 @@ pkgbase = trivalent-bin
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
 	optdepends = qt6-base: QT UI support
-	source = https://repo.secureblue.dev/Packages/trivalent-136.0.7103.92-436644.x86_64.rpm
-	source = https://repo.secureblue.dev/Packages/trivalent-common-136.0.7103.92-436644.x86_64.rpm
-	source = https://repo.secureblue.dev/Packages/trivalent-qt6-ui-136.0.7103.92-436644.x86_64.rpm
-	sha256sums = d69d975ca4f24a888318edb58b0e14e3d1e240cdd2d951ab4c6c936427f438af
-	sha256sums = 0e23b9bb9ecc037db87c5909a229473a4ddac8864c1137006c05c33dea85d20b
-	sha256sums = afcf95faafc8ba93bfc46eddce119be7cb11e88a75396b936967a6a0e1d195ef
+	source = https://repo.secureblue.dev/Packages/trivalent-136.0.7103.113-436818.x86_64.rpm
+	source = https://repo.secureblue.dev/Packages/trivalent-common-136.0.7103.113-436818.x86_64.rpm
+	source = https://repo.secureblue.dev/Packages/trivalent-qt6-ui-136.0.7103.113-436818.x86_64.rpm
+	sha256sums = db67078ee181c0964d388ac6239e2f39b43f10450e28af74f1658759f8514d49
+	sha256sums = 236807a5a4d4cbae12f8b0f88db498d3e5e48732183f4f2728def65653b170c0
+	sha256sums = 11c3bc53854bf208370f2eef496daf75be800143c561a891355d4c4b3bea2b9b
 
 pkgname = trivalent-bin
