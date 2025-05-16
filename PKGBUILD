@@ -2,7 +2,7 @@
 # Contributor: ChatGPT (OpenAI) <https://openai.com> — assisted with Git configuration, and packaging guidance.
 
 pkgname='kdev-templatetools'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="KDevelop app and file utilities for building and installing your own templates."
 arch=('any')
