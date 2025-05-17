@@ -1,6 +1,6 @@
 pkgname=pliner
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.1.5
+pkgrel=1
 pkgdesc="Pliner — task manager with life-process philosophy"
 arch=('x86_64')
 url="https://github.com/nicourrrn/pliner"
