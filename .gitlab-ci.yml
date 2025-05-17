@@ -1,20 +1,14 @@
 build:
   stage: build
   image:
-    name: countstarlight/makepkg:latest
-    entrypoint: [""]
-  before_script:
-    - sudo pacman -Sy --noconfirm archlinux-keyring
-    - yay -Syu --noconfirm
+    name: docker:24.0.5
+  services:
+    - docker:24.0.5-dind
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
   script:
-    - |
-      depends=()
-      makedepends=()
-      checkdepends=()
-      . ./PKGBUILD
-      deps=( "${depends[@]}" "${makedepends[@]}" "${checkdepends[@]}" )
-      (pacman --deptest "${deps[@]}" || true) | xargs yay -Sy --noconfirm
-    - makepkg -f
+    - docker run -e EXPORT_PKG=true -v "$(pwd):/pkg" ghcr.io/zaggash/arch-makepkg:latest
   artifacts:
     untracked: false
     expire_in: 5 days
@@ -25,8 +19,7 @@ test:
   stage: test
   image: archlinux:latest
   script:
-    - pacman -Sy --noconfirm
-    - pacman -S --noconfirm archlinux-keyring
+    - pacman -Syu --noconfirm
     - pacman --noconfirm -U *.pkg.tar.zst
     - pass-git-helper -h
 
