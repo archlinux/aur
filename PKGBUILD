@@ -1,7 +1,7 @@
 # Maintainer: Berrit Birkner <aur at bbirkner.de>
 # Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
 pkgname=qpageview-git
-pkgver=1.0.0.r0.g3823f73
+pkgver=1.0.0.r4.g4066284
 pkgrel=1
 pkgdesc="A page based document viewer widget for Qt5/PyQt5."
 arch=('any')
@@ -16,11 +16,11 @@ makedepends=(
 )
 depends=(
   'python>=3.6'
-  'python-pyqt5'
-  'qt5-base'
+  'python-pyqt6'
+  'qt6-base'
+  'qt6-svg'
 )
 optdepends=(
-   'python-poppler-qt5: Display PDF documents'
    'python-pycups: Printing to a local CUPS server'
 )
 provides=("${pkgname%-git}=$pkgver-$pkgrel" "python-qpageview")
