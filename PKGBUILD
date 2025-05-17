@@ -1,9 +1,9 @@
 # Maintainer: Nick77 <qwiko20@tutamail.com>
 
-pkgname=jarvis-llm
+pkgname=jarvis
 pkgver=0.1
 pkgrel=1
-pkgdesc='jsrvis, a cli llm client'
+pkgdesc='jsrvis,  a cli llm client'
 arch=('any')
 url='https://github.com/Catalina-sys456/jarvis'
 license=('MIT')
