@@ -2,7 +2,7 @@
 _gitname=plasma-smart-video-wallpaper-reborn
 pkgname=plasma6-wallpapers-smart-video-wallpaper-reborn
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Smart KDE Plasma 6 Wallpaper plugin to play videos on your Desktop/Lock Screen"
 arch=('any')
 url="https://github.com/luisbocanegra/$_gitname"
@@ -22,4 +22,5 @@ build() {
 package() {
   cd "${srcdir}/${_gitname}-$pkgver"
   DESTDIR="$pkgdir" cmake --install build
+  chmod 755 "$pkgdir/usr/share/plasma/wallpapers/luisbocanegra.smart.video.wallpaper.reborn/contents/ui/tools/gdbus_get_signal.sh"
 }
