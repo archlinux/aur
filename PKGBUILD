@@ -1,7 +1,7 @@
 # Maintainer: Jørgen Stråbø <aur@jorgen-10.no>
 pkgname='freeshow-git'
 pkgver='1.4.3.r0.ga360800'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="A software with a friendly interface and powerful features for making slideshows"
 arch=('x86_64')
 provides=('freeshow')
@@ -48,7 +48,7 @@ package() {
 
   # Install the freeshow executable to /usr/bin
   install -dm755 "$pkgdir/usr/bin"
-  ln -sf "$pkgdir/opt/freeshow/freeshow" "$pkgdir/usr/bin/freeshow"
+  ln -sf "/opt/freeshow/freeshow" "$pkgdir/usr/bin/freeshow"
 
   # Install the license
   install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/freeshow/LICENSE"
