@@ -2,7 +2,7 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
 pkgname=ghdl-llvm-git
-pkgver=4.0.0dev.r8602.g97df73f72
+pkgver=6.0.0dev.r10078.g56a4d3e4a
 pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='VHDL simulator - LLVM back-end'
@@ -15,7 +15,7 @@ makedepends=('git' 'llvm' 'clang')
 depends=('gcc-ada')
 checkdepends=(
 	'python-pytest' 'python-pyvhdlmodel>=0.12'
-	'python-pytooling' 'python-pyattributes'
+	'python-pytooling'
 )
 optdepends=(
 	'python-pyghdl: python bindings and utilities'
