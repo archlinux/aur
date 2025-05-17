@@ -6,7 +6,7 @@
 
 pkgname=gamescope-nvidia
 _pkgname=gamescope
-pkgver=3.16.4
+pkgver=3.16.9
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
@@ -49,11 +49,10 @@ makedepends=(
   'wayland-protocols')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-commit=5ab0954026934e81fcccf6b4e10ea62dc6c86ae4
+commit=5d25b665d32da4c023ee24898a998dcfbe11a97c
 source=(
   "$_pkgname::git+https://github.com/ValveSoftware/gamescope.git#commit=$commit"
-  "0.9.9.8.tar.gz::https://github.com/g-truc/glm/archive/0.9.9.8.tar.gz"
-  "glm-0.9.9.8-2-wrap.zip::https://wrapdb.mesonbuild.com/v2/glm_0.9.9.8-2/get_patch"
+  "subprojects|glm::git+https://github.com/g-truc/glm.git#commit=0af55ccecd98d4e5a8d1fad7de25ba429d60e863"
   "subprojects|stb::git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9"
   "reverts-bd722f7.patch") # https://github.com/sharkautarch/gamescope/tree/nvidia-fix
 
@@ -77,11 +76,10 @@ prepare() {
   done; unset outmsg
 
   msg2 'Retrieving meson build dependencies...'
+  # glm
+  sed -i "s#^url =.*#url = file://$srcdir/subprojects|glm#" subprojects/glm.wrap
   # stb
   sed -i "s#^url =.*#url = file://$srcdir/subprojects|stb#" subprojects/stb.wrap
-  # glm
-  sed -i "s#^source_url =.*#source_url = file://$srcdir/0.9.9.8.tar.gz#" subprojects/glm.wrap
-  sed -i "s#^patch_url =.*#patch_url = file://$srcdir/glm-0.9.9.8-2-wrap.zip#" subprojects/glm.wrap
   meson subprojects download stb glm
 }
 
@@ -112,9 +110,8 @@ source+=('thirdparty|SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-He
          'subprojects|libliftoff::git+https://gitlab.freedesktop.org/emersion/libliftoff.git#commit=8b08dc1c14fd019cc90ddabe34ad16596b0691f4'
          'subprojects|wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=4bc5333a2cbba0b0b88559f281dbde04b849e6ef') # End
 
-sha512sums=('1d3ae89e145cb0644756f6baa0382d354fff8a1f6829650a08f834a53234f6a98346ef59269aacdaf36a77c5d0f91b27edc95ccd71e70b4b6e4a34206cdb7fc0'
-            '9484b0c12175414237c5b9486a2990099b1cb727e442f25ecda18b081aa661f7e92a44481f642989553cd3da7992a773441ee5688991bd539ce19fb66a5ce9e8'
-            'f1eff68bb3137bf4ebe01b789e0bb05a2c78afc9f22948a44c3d34d3034392bad51c8c0f174421e118b9590405ef9b545b22ddb28f44c9322d91af88e65a23e5'
+sha512sums=('5a5fbe29935cfaf99020d13e9fdeee831459988f08a8c9b0f344c27ab0ba903656d9c39af41e54f2a5ce40eb0a0f1d80bbdeefea8c79b48f1c9ca6d078a93e53'
+            '16c0f045f0d0e223278d9cf3267a297eb33c30c773e67c5e863fb435cb24ff76cc886152e42f20dd759cd001398c8fb0bdfa2d7b1515a9ee0ac96c1741fa6eaa'
             '53ff8f7a4ae987b84398bf6b35bccb5aec5337d4e57660f599776eb62f692aa40be671e2c456f24de16c07d27272431b807ca3fd4a97d297bb2a8f35c3df665f'
             '52a7c6670c2ceb2110b1a374db152abf8697e731665ceed9b651f94f95300579d6488c931a29c11d08bf2dc11af5859b0189757a6ebcc4ec494d10c65a088b27'
             '65490f89498b351e737eb79fe498dd428af84ad85e28f41fdf1f62d31dc90f29836be5f3eb754f58353dca63a9ffa858073a97fea0a69cf0e07185fb62b6adc0'
