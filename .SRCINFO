@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-enhanced-git
 	pkgdesc = A bittorrent client powered by C++, Qt6 and the good libtorrent library (Enhanced Edition)
-	pkgver = 5.0.3.10.r0.g8580a2fb3
+	pkgver = 5.1.0.10.r0.g07c27bd1f
 	pkgrel = 1
 	url = https://github.com/c0re100/qBittorrent-Enhanced-Edition
     arch = arm
