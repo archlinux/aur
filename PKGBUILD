@@ -2,7 +2,7 @@
 
 pkgname=sketch
 pkgver=0.3.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Small, simple system for producing line drawings of two- or three-dimensional solid objects and scenes"
 arch=('i686' 'x86_64')
 url="http://sketch4latex.sourceforge.net"
@@ -13,7 +13,11 @@ md5sums=('c51c6a0ed6c16a95e1a1afe1afd5d70e')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    make
+
+    # This is what is set in 'makefile', no easy way to extend it.
+    default_cc='gcc -O1 -g -Wall'
+
+    make CC="$default_cc -std=gnu89"
 }
 
 package() {
