@@ -1,9 +1,9 @@
 build:
   stage: build
   image:
-    name: docker:24.0.5
+    name: docker:28.1.1
   services:
-    - docker:24.0.5-dind
+    - docker:28.1.1-dind
   variables:
     DOCKER_HOST: tcp://docker:2375
     DOCKER_TLS_CERTDIR: ""
