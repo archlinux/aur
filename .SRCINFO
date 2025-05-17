@@ -1,7 +1,7 @@
 pkgbase = indicator-sensors
 	pkgdesc = Hardware sensor monitor AppIndicator (temperatures, fan speeds, voltages, ...)
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alexmurray/indicator-sensors
 	install = indicator-sensors.install
 	arch = x86_64

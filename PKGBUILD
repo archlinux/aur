@@ -2,7 +2,7 @@
 
 pkgname=indicator-sensors
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Hardware sensor monitor AppIndicator (temperatures, fan speeds, voltages, ...)'
 arch=(x86_64)
 url=https://github.com/alexmurray/indicator-sensors
@@ -27,7 +27,11 @@ sha256sums=('72bad13c56f56f27babcb354441fe9fed8ab10589d718889e7521c76a93007f8')
 
 build() {
   cd $pkgname-$pkgver
-  sh ./autogen.sh
+
+  # sh ./autogen.sh
+  mkdir -p m4
+  autoreconf -fi -I /usr/share/gettext/m4
+
   ./configure --disable-schemas-compile --prefix=/usr
   make
 }
