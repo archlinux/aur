@@ -7,7 +7,7 @@ _aqt=aqt
 _py=cp39
 
 pkgname=anki-bin
-pkgver=25.02.4
+pkgver=25.02.5
 pkgrel=1
 pkgdesc='Helps you remember facts (like words/phrases in a foreign language) efficiently.
 Installed with wheel.'
@@ -71,15 +71,15 @@ source_aarch64=(
 	"https://files.pythonhosted.org/packages/$_py/${_anki::1}/$_anki/$_anki_whl_aarch64"
 )
 noextract=("${source[@]##*/}")
-sha256sums=('8aaf7449842af2ff9fb0f5825044cf630bf9fa2b96d88b0df1b8cfa3f7d24cfc'
+sha256sums=('c66943d74ade173819c963c49575362feb999be078dac6a22677e2a3978a8a25'
             '9648e7e915f51f08e05c48ef5f39b4015922fe1cf3d7f2895535ef10ef4507ae'
             '8b9fec8fdf2897b4722f8cee169e9fb1e46cee90d3fb03ee12587e30c2f5dad7'
             '3829ce614aaea9eb1e57abf4c269647cc87ccc6d4755c3b2563ce44e30992ae2'
             '97ad2134ef1a7686789c7becd8bd05dd8693cf0d3127951ca6ba7b29a80b402a'
             '2845a528fb3a064b67404a03d72bfaba9b421cb220b25228b815946c6553ce38'
             'd814c62e38246b6e4ba73ee037647a29675925167518137f05a8f9e60c258b6e')
-sha256sums_x86_64=('d6e7d18c23b0b0cbeaf7ae6df69ed42a7f53526a26839b3369b947ab7c3532b2')
-sha256sums_aarch64=('24d3720dd1c37d1e233012cbc5bb977c0d79f1718ec8513b8cfddab9863b517a')
+sha256sums_x86_64=('65b919ae4ffd8e12818e08fc5c0a4e83b3cd726fff53a71aa825662a2321a046')
+sha256sums_aarch64=('6d1e7ea63dadb27efa46d64fbc8ba5a5f59171d15cf1a70efbfe26dede069eaf')
 
 
 package() {
