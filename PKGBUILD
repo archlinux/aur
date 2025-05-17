@@ -3,7 +3,7 @@
 pkgname=epsonscan2
 pkgver=6.7.80.0
 _pkgver="$pkgver-1"
-pkgrel=4
+pkgrel=1
 arch=('armv7h' 'i686' 'x86_64')
 pkgdesc="Epson scanner management utility"
 url="http://support.epson.net/linux/en/epsonscan2.php"
