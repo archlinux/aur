@@ -3,14 +3,14 @@ pkgname=leenfetch
 pkgver=0.2.1
 pkgrel=1
 pkgdesc="Fast, minimal, customizable system info tool in Rust (Neofetch alternative)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/drunkleen/leenfetch"
 license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
-2
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   cargo build --release --locked
