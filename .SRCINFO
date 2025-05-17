@@ -1,6 +1,6 @@
 pkgbase = electron-nightly-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt nightly binary
-	pkgver = 38.0.0nightly.20250515
+	pkgver = 38.0.0nightly.20250516
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -18,15 +18,15 @@ pkgbase = electron-nightly-bin
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
 	provides = electron
-	provides = electron=38.0.0nightly.20250515
+	provides = electron=38.0.0nightly.20250516
 	conflicts = electron
 	conflicts = electron38
-	noextract = electron-38.0.0-nightly.20250515-x86_64.zip
-	source_aarch64 = electron-38.0.0-nightly.20250515-aarch64.zip::https://github.com/electron/nightlies/releases/download/v38.0.0-nightly.20250515/electron-v38.0.0-nightly.20250515-linux-arm64.zip
+	noextract = electron-38.0.0-nightly.20250516-x86_64.zip
+	source_aarch64 = electron-38.0.0-nightly.20250516-aarch64.zip::https://github.com/electron/nightlies/releases/download/v38.0.0-nightly.20250516/electron-v38.0.0-nightly.20250516-linux-arm64.zip
 	sha256sums_aarch64 = b4f88dcac495f42065772049b74df89af810d2dc3a4035c6b842ede3e1bf0e26
-	source_armv7h = electron-38.0.0-nightly.20250515-armv7h.zip::https://github.com/electron/nightlies/releases/download/v38.0.0-nightly.20250515/electron-v38.0.0-nightly.20250515-linux-armv7l.zip
+	source_armv7h = electron-38.0.0-nightly.20250516-armv7h.zip::https://github.com/electron/nightlies/releases/download/v38.0.0-nightly.20250516/electron-v38.0.0-nightly.20250516-linux-armv7l.zip
 	sha256sums_armv7h = 809180cb36cb5b846e3eb3623efc20e15abc8ae63afc47981c762038a433b2c5
-	source_x86_64 = electron-38.0.0-nightly.20250515-x86_64.zip::https://github.com/electron/nightlies/releases/download/v38.0.0-nightly.20250515/electron-v38.0.0-nightly.20250515-linux-x64.zip
+	source_x86_64 = electron-38.0.0-nightly.20250516-x86_64.zip::https://github.com/electron/nightlies/releases/download/v38.0.0-nightly.20250516/electron-v38.0.0-nightly.20250516-linux-x64.zip
 	source_x86_64 = electron
 	sha256sums_x86_64 = 173f6bdae70088ac9b0b4c717fb0fb2bfb8a1c5d3ed0c5c00a0f23e3ced878ab
 	sha256sums_x86_64 = f074713d0322b652b78ed2491dce2676d05d10a284187c5deba4a047b8283e4c
