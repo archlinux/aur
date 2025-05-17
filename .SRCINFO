@@ -1,5 +1,5 @@
 pkgbase = raquette-baballe
-	pkgdesc = A homemade arkanoid
+	pkgdesc = A homemade arkanoid game in C++
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/LuxySs-Evr5/RaquetteBaballe
@@ -9,7 +9,9 @@ pkgbase = raquette-baballe
 	makedepends = make
 	makedepends = cmake
 	depends = allegro
+	options = !debug
+	options = strip
 	source = https://github.com/LuxySs-Evr5/RaquetteBaballe/releases/download/v1.0.0/raquette-baballe.tar.gz
-	sha256sums = b968e4b7cbbc8d2daabc3e5d8752c1aea9bcd54a83985f40473f5e2f5620f491
+	sha256sums = c0b2f9b921b2b4d9b56294b8864d9f40f68aaf19ebb8663a342f2d2d5012bee5
 
 pkgname = raquette-baballe
