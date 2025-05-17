@@ -1,8 +1,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 pkgname=nnd
-pkgver=0.20
-pkgrel=3
+pkgver=0.23
+pkgrel=1
 pkgdesc="A debugger for Linux"
 arch=('x86_64')
 url="https://github.com/al13n321/nnd"
@@ -36,3 +36,7 @@ check() {
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "${pkgname}/target/${target}/release/${pkgname}"
 }
+
+# Local Variables:
+# pkgbuild-update-sums-on-save: nil
+# End:

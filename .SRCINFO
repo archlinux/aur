@@ -1,14 +1,14 @@
 pkgbase = nnd
 	pkgdesc = A debugger for Linux
-	pkgver = 0.20
-	pkgrel = 3
+	pkgver = 0.23
+	pkgrel = 1
 	url = https://github.com/al13n321/nnd
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
 	makedepends = rust-musl
 	makedepends = musl
-	source = nnd::git+https://github.com/al13n321/nnd#tag=v0.20
+	source = nnd::git+https://github.com/al13n321/nnd#tag=v0.23
 	b2sums = SKIP
 
 pkgname = nnd
