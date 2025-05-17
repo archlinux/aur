@@ -1,6 +1,6 @@
 # Maintainer: petRUShka <petrushkin@yandex.ru>
 
-pkgname=dwm
+pkgname=dwm-systray
 pkgver=6.5
 pkgrel=1
 pkgdesc="DWM with patches: Dynamic window manager for X (systray+gaps custom build)"
