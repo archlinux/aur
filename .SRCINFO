@@ -1,4 +1,4 @@
-pkgbase = dwm
+pkgbase = dwm-systray
 	pkgdesc = DWM with patches: Dynamic window manager for X (systray+gaps custom build)
 	pkgver = 6.5
 	pkgrel = 1
@@ -23,4 +23,4 @@ pkgbase = dwm
 	sha256sums = 29e357bd74f180016898fffaf219637952c777d26f5f2f161d0fbaea741908a1
 	sha256sums = SKIP
 
-pkgname = dwm
+pkgname = dwm-systray
