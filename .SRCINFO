@@ -11,6 +11,6 @@ pkgbase = jarvis-llm
 	makedepends = python-hatchling
 	depends = python
 	source = jarvis-llm-0.1.tar.gz::https://github.com/Catalina-sys456/jarvis-llm/archive/refs/tags/v0.1.tar.gz
-	sha512sums = 1d45983cddbdb01fb5e3c6f23e518aadb7525faf0340d098f4b693effae5010c77f468de7fb0ce98518817d184cb0dacc8c50614b70d99381feb2ce37566cb3d
+	sha512sums = e19900ee0aefd39f21218a1e35e70d6c62b6b5b0823ed19ce18375d7a35b0a18b0f68dfef30131f5503871a4c5d891a0fc4eba121e09f9cdde853a387e3d6dcb
 
 pkgname = jarvis-llm
