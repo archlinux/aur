@@ -1,0 +1,11 @@
+pkgbase = networkmanager-to-iwd
+	pkgdesc = Convert NetworkManager Wi-Fi profiels to iwd-compatible profiles
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = bash
+	source = networkmanager-to-iwd.sh
+	sha256sums = f410ee574545ee1976be483ac1ba52f87ef912f77f8a614a1495cb2f76bda865
+
+pkgname = networkmanager-to-iwd
