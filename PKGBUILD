@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=iptables-git
-pkgver=1.8.11.r3.gb3f3e256
+pkgver=1.8.11.r14.g192c3a6b
 pkgrel=1
 pkgdesc="Userspace command line program used to configure the packet filtering ruleset"
 arch=('i686' 'x86_64')
 url="https://www.netfilter.org/projects/iptables/index.html"
 license=('GPL-2.0-or-later')
-depends=('glibc' 'libmnl' 'libnftnl' 'libpcap')
+depends=('glibc' 'libmnl' 'libnetfilter_conntrack' 'libnfnetlink' 'libnftnl' 'libpcap')
 makedepends=('git' 'linux-api-headers')
-provides=("arptables=$pkgver" "ebtables=$pkgver" "iptables=$pkgver" "iptables-nft=$pkgver")
+provides=("arptables=$pkgver" "ebtables=$pkgver" "iptables=$pkgver" "iptables-nft=$pkgver" 'libip4tc.so' 'libip6tc.so' 'libipq.so' 'libxtables.so')
 conflicts=('arptables' 'ebtables' 'iptables' 'iptables-nft')
 backup=('etc/ethertypes'
         etc/iptables/{ip,ip6}tables.rules)
@@ -66,9 +66,9 @@ build() {
     --sbindir="/usr/bin" \
     --libexecdir="/usr/lib/iptables" \
     --with-xtlibdir="/usr/lib/iptables" \
+    --enable-bpf-compiler \
     --enable-devel \
-    --enable-libipq \
-    --enable-bpf-compiler
+    --enable-libipq
   make
 }
 
