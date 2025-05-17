@@ -12,7 +12,7 @@ depends=()
 conflicts=('rustowl-git')
 arch=('any')
 source=("https://github.com/cordx56/rustowl/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('21e90e62a2e0a0340a0fa5058f66a94379f91955f345dc3b85ef8a1031a67f5b')
+sha256sums=('0db34faa9404c3878638388fa31b5025ef982efab52824100df1e924eb15efa0')
 
 prepare() {
     cd rustowl-${pkgver}
