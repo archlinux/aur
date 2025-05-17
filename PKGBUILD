@@ -15,6 +15,8 @@ options=(!debug !strip)
 makedepends+=(git)
 
 depends=(
+	"wayland-utils"
+	"way-secure"
 	"pipewire-v4l2"
 	"procps-ng"
 	"coreutils"
