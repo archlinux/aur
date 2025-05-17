@@ -1,0 +1,17 @@
+pkgbase = echo-ft
+	pkgdesc = Lightweight, peer-to-peer (P2P) file transfer system designed for reliability, speed, and simplicity
+	pkgver = b3
+	pkgrel = 1
+	url = https://github.com/IdanKoblik/Echo
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = echo-ft::https://github.com/IdanKoblik/Echo/releases/download/2025-b3/echo-linux-amd64-1.23
+	source = echo.1::https://raw.githubusercontent.com/IdanKoblik/Echo/main/echo.1
+	source = LICENSE::https://raw.githubusercontent.com/IdanKoblik/Echo/main/LICENSE
+	sha256sums = SKIP
+	sha256sums = c3096a9d218e9951512e05ed3567ead570f37b56c3aee3befd63c73b71846653
+	sha256sums = 9df5ca186644cd5df653d220862cc59854c2d09fb69109e5154025edcd5ab673
+
+pkgname = echo-ft
