@@ -1,13 +1,13 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=7.0.70
+pkgver=7.0.80
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
 license=('custom:"Copyright (c) 2006-2025 Deezer S.A."')
-depends=('electron33')
+depends=('electron36')
 provides=('deezer')
 makedepends=('p7zip' 'asar' 'prettier>=3.0.0' 'imagemagick')
 source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact-win32-x86-$pkgver"
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
     systray.patch
     systray-buttons-fix.patch
     quit.patch)
-sha256sums=('9f26d254dbfc8694668b58edfb1b0f50f331d1b9fc042d1ee4907bb1139db78a'
+sha256sums=('2a9a14883852bc033b7402ef7702a1f2fa922693cb767765312ccb3c21c399b8'
             'c16cf96707c6c047e5f2ec336ce3c639ecf2fc207ff9db365b17363d13380d2c'
             '384b6b1879d966a0f45773b355f411140e4e4e8dc2f53bbcbca360f28d874af5'
             '8eddebb9274e66051b55728e3b73263c0a2d288f70fc6c15917a604a08f7f705'
