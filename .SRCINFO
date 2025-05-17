@@ -7,7 +7,6 @@ pkgbase = windigo
 	license = MIT
 	makedepends = go
 	makedepends = git
-	depends = systemd
 	source = git+https://github.com/marzeq/windigo.git#tag=v0.1.0
 	sha256sums = SKIP
 
