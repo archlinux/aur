@@ -1,6 +1,6 @@
 pkgbase = libfprint-cs9711-git
 	pkgdesc = libfprint with proprietary FPC match on host device CS9711Fingprint driver
-	pkgver = 1.94.9
+	pkgver = 1.94.9+19.r1830.20230914.936dbc1
 	pkgrel = 1
 	url = https://fprint.freedesktop.org/
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = libfprint-cs9711-git
 	provides = libfprint-cs9711
 	conflicts = libfprint
 	replaces = libfprint-cs9711<=1.94.8
-	source = git+https://gitlab.freedesktop.org/libfprint/libfprint.git#tag=v1.94.9
+	source = git+https://gitlab.freedesktop.org/Tooniis/libfprint.git#branch=sigfm
 	source = 0000-data_autosuspend.hwdb.patch
 	source = 0000-libfprint_drivers_cs9711_cs9711.c.patch
 	source = 0000-libfprint_drivers_cs9711_cs9711.h.patch

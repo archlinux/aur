@@ -4,7 +4,7 @@
 # Contributor: ZhenDong Wu <wzd04062@sina.com>
 
 pkgname=libfprint-cs9711-git
-pkgver=1.94.9
+pkgver=1.94.9+19.r1830.20230914.936dbc1
 pkgrel=1
 pkgdesc="libfprint with proprietary FPC match on host device CS9711Fingprint driver"
 url="https://fprint.freedesktop.org/"
@@ -40,7 +40,7 @@ provides=(libfprint libfprint-2.so libfprint-cs9711)
 replaces=("libfprint-cs9711<=1.94.8")
 conflicts=(libfprint)
 groups=(fprint)
-source=("git+https://gitlab.freedesktop.org/libfprint/libfprint.git#tag=v$pkgver"
+source=("git+https://gitlab.freedesktop.org/Tooniis/libfprint.git#branch=sigfm"
         # Patches from https://github.com/ddlsmurf/libfprint-CS9711
         '0000-data_autosuspend.hwdb.patch'
         '0000-libfprint_drivers_cs9711_cs9711.c.patch'
@@ -55,6 +55,22 @@ b2sums=('SKIP'
         '793acc025f0de306c5ff2f85ca824dc38892b1a6e2f81be437674eb27574132ee65e92f0aab7726219f6014def27232d64cca17408ece3a0be449a8d674fc7c5'
         'b14abcf7f8ce1b385291b345079f65ac31f02807a9a2e966e9eac1b61500ac7f5d9d37589161a83e0fd6dd23634e4604d4f129d16fa52cbc96b2f7dc4755b32b'
 )
+
+pkgver() {
+  cd "libfprint"
+
+  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_ver}" ]; then
+    error "Version could not be determined."
+    return 1
+  else
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+  fi
+}
 
 prepare() {
   cd libfprint
