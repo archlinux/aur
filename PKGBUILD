@@ -6,9 +6,9 @@ pkgname=($_pkgname $_pkgname_cli)
 pkgver=1.4.3.r54.g50c74444
 pkgrel=1
 url=https://github.com/bit-team/backintime
-license=(GPL)
+license=(GPL-2.0-or-later)
 arch=(any)
-makedepends=(git python)
+makedepends=(asciidoctor git man-db python) # mkdocs mkdocs-material
 #checkdepends=(openssh python-dbus python-pyfakefs python-pylint rsync systemd)
 install=$_pkgname.install
 source=($_pkgname::git+$url.git)
@@ -16,6 +16,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   git -C $_pkgname describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  sed -i 's/^\(update_man_page common.*\)/#\1/' "$_pkgname/updateversion.sh"
+  sed -i 's/^\(update_man_page qt.*\)/#\1/' "$_pkgname/updateversion.sh"
 }
 
 build() {
