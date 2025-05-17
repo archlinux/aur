@@ -74,6 +74,7 @@ pkgver() {
 
 prepare() {
   cd libfprint
+  git reset --hard && git clean -fdd
   sed -i 's|import shutil|import shutil\n    import traceback|g' tests/virtual-image.py
   for patch in $srcdir/*.patch; do
     git apply $patch
