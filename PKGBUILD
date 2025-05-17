@@ -3,16 +3,16 @@
 
 pkgname='bzr-player'
 pkgver='2.0.78'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('x86_64')
 url="https://bzrplayer.blazer.nu"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('hicolor-icon-theme' 'qt6-base' 'qt-advanced-docking-system')
-makedepends=('cmake' 'dos2unix' 'gendesk' 'libarchive' 'libglvnd' 'ninja' 'patchutils' 'qt6-declarative' 'qt6-svg'
-  'sdl2-compat' 'vulkan-headers')
-source=("${pkgname}-${pkgver}.zip::https://github.com/aargirakis/BZRPlayer/archive/refs/tags/${pkgver}.zip")
-sha256sums=('1f7079a6b9930775e91d687ecd6c777c98a5322269927dd198e3bd341e38d261')
+makedepends=('cmake' 'dos2unix' 'gendesk' 'libglvnd' 'ninja' 'patchutils' 'qt6-declarative' 'qt6-svg' 'sdl2-compat'
+  'vulkan-headers')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aargirakis/BZRPlayer/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('4e272bbcdc369ffb37e353170535972da193af6c7f382e12260c18ac17268d9c')
 
 build() {
   # workaround for making plugin_furnace.so & plugin_protrekkr.so work:
