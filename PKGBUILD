@@ -3,9 +3,9 @@
 pkgname=jarvis-llm
 pkgver=0.1
 pkgrel=1
-pkgdesc='jsrvis, a cli llm client'
+pkgdesc='jsrvis,a cli llm client'
 arch=('any')
-url='https://github.com/Catalina-sys456/jarvis'
+url='https://github.com/Catalina-sys456/jarvis-llm'
 license=('MIT')
 depends=('python')
 makedepends=(python-build
