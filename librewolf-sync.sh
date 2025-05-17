@@ -23,18 +23,19 @@ EOF
 exit 0
 }
 
-while getopts dhp:r: options
+while getopts dhrp: options
 do
 case $options in
   d) echo "default profile directory is ~/.librewolf/$LINK"
      exit 0;;
   h) longhelp;;
   p) LINK="$OPTARG";;
-  r) mv "$VOLATILE" "~/.librewolf/$LINK-copy"
+  r) mv $VOLATILE ~/.librewolf/"$LINK"-copy
      mv ~/.librewolf/"$LINK"{,-trash}
      mv ~/.librewolf/"$STATIC"{,-trash}
      mv ~/.librewolf/"$LINK"{-copy,}
-     rm -rf ~/.librewolf/{"$LINK","$STATIC"}-trash;;
+     rm -rf ~/.librewolf/{"$LINK","$STATIC"}-trash
+     exit 0;;
   ?) usage
      exit 0;;
   esac
