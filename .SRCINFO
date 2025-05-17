@@ -1,6 +1,6 @@
 pkgbase = lib32-gst-plugins-rs
 	pkgdesc = Multimedia graph framework
-	pkgver = 0.13.5
+	pkgver = 0.13.6
 	pkgrel = 1
 	url = https://gstreamer.freedesktop.org
 	arch = x86_64
@@ -27,9 +27,9 @@ pkgbase = lib32-gst-plugins-rs
 	depends = lib32-glibc
 	depends = lib32-gstreamer>=1.23.90
 	options = !lto
-	source = git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git?signed#tag=0.13.5
+	source = gst-plugins-rs::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git?signed#tag=0.13.6
 	validpgpkeys = 7F4BC7CC3CA06F97336BBFEB0668CC1486C2D7B5
-	b2sums = 19cec72c581f2e2484c110cc429b0775e7036e33bf37033cf27e807c45e799699cf7bbbcdec82b93e6ed5ea17e456b1fbc32e8619f46f82e2067197037f7691e
+	b2sums = aa42d141a53bd9c6ed4f7e01fdeb2062101a3fcc2fbb0ca578c2ea31a756c514143733beea4215e4f223fe02c84266921a6da4e40947e12387cf15e34099cd9e
 
 pkgname = lib32-gst-plugin-togglerecord
 	pkgdesc = Multimedia graph framework - togglerecord plugin (32-bit)
@@ -180,7 +180,7 @@ pkgname = lib32-gst-plugin-aws
 	depends = lib32-glib2>=2.62
 	depends = lib32-glibc
 	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugin-hlssink3=0.13.5-1
+	depends = lib32-gst-plugin-hlssink3=0.13.6-1
 	depends = lib32-gst-plugins-bad
 	depends = lib32-gst-plugins-base-libs
 	depends = lib32-openssl>=1.1
@@ -199,8 +199,8 @@ pkgname = lib32-gst-plugin-rsclosedcaption
 	depends = lib32-glib2>=2.62
 	depends = lib32-glibc
 	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugin-aws=0.13.5-1
-	depends = lib32-gst-plugin-textwrap=0.13.5-1
+	depends = lib32-gst-plugin-aws=0.13.6-1
+	depends = lib32-gst-plugin-textwrap=0.13.6-1
 	depends = lib32-cairo
 	depends = lib32-gst-plugins-bad
 	depends = lib32-gst-plugins-base-libs
@@ -282,7 +282,7 @@ pkgname = lib32-gst-plugin-rswebrtc
 	depends = lib32-glib2>=2.62
 	depends = lib32-glibc
 	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugin-rsrtp=0.13.5-1
+	depends = lib32-gst-plugin-rsrtp=0.13.6-1
 	depends = lib32-gst-plugins-bad-libs
 	depends = lib32-gst-plugins-base
 	depends = lib32-gst-plugins-base-libs
