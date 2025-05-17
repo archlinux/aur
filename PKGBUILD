@@ -15,7 +15,8 @@ makedepends=('python-setuptools-scm'
              'python-sphinx-automodapi'
              'python-numpydoc'
              'python-numpy')
-checkdepends=('python-pytest'
+checkdepends=('python-pytest-xvfb'
+              'xorg-server-xvfb'
               'python-qtpy'
               'python-pyqt6')  # numpy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
@@ -47,7 +48,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count # no need -p xvfb
 }
 
 package_python-echo() {
