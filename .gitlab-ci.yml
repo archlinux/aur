@@ -15,6 +15,15 @@ build:
     paths:
       - '*.pkg.tar.zst'
 
+test:
+  stage: test
+  image: archlinux:latest
+  script:
+    - pacman -Syu --noconfirm
+    - pacman -S --noconfirm python
+    - pacman --noconfirm -U *.pkg.tar.zst
+    - jdtls --help | grep usage
+
 deploy:
   stage: deploy
   image: bitnami/git:latest
