@@ -6,7 +6,7 @@ pkgbase=libreoffice-dev-i18n
 _pkgnamefmt=LibreOffice
 _pkgver=25.2.3.2
 pkgver=25.2.3.2
-pkgrel=2
+pkgrel=3
 #_basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
 
 arch=('any')
@@ -208,6 +208,7 @@ for _lang in "${_languages[@]}"; do
 
   if (( $_helppack )); then
     source+=(${_url}/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_helppack_${_locale}.tar.gz) #{,.asc})
+    sha256sums+=('SKIP') # 'SKIP')
   fi
 
   eval "package_${_pkgname}() {
