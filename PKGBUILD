@@ -2,10 +2,10 @@
 # Contributor: Vyacheslav Artemiev <artemiev.vyacheslav a gmail d com>
 _pkgname=nagstamon
 pkgname=$_pkgname-git
-pkgver=3.17.20250126.r3116.21a84e5e
+pkgver=3.17.20250216.r3125.982b2e76
 pkgrel=1
 pkgdesc="Nagios status monitor for the desktop"
-depends=('python-pyqt6' 'qt6-multimedia' 'qt6-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus' 'python-dateutil' 'python-pysocks' 'python-arrow' 'python-packaging')
+depends=('python-pyqt6' 'qt6-multimedia' 'qt6-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus' 'python-dateutil' 'python-pysocks' 'python-arrow' 'python-packaging' 'python-tzlocal')
 optdepends=('python-requests-gssapi: Will be used instead of python-requests-kerberos for kerberos auth if present')
 arch=('any')
 url="https://nagstamon.ifw-dresden.de/"
