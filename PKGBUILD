@@ -19,8 +19,6 @@ build() {
 	cmake \
 	  -B "${srcdir}/${_gitname}/build" \
 	  -S "${srcdir}/${_gitname}" \
-	  -DCMAKE_BUILD_TYPE=Release \
-	  -DCMAKE_CXX_FLAGS_RELEASE=-DNDEBUG \
 	  -DCMAKE_INSTALL_PREFIX:PATH=/usr \
 	  -DCMAKE_INSTALL_LIBDIR=lib \
 	  -Wno-dev
