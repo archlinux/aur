@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=tari-universe-appimage
-pkgver=1.0.8
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Tari desktop wallet"
 provides=('tari_universe')
@@ -16,7 +16,7 @@ _filename=tari_universe_${pkgver}_amd64.AppImage
 source=(
   https://github.com/tari-project/universe/releases/download/v${pkgver}/${_filename}
 )
-sha256sums=('a9e64ed8c5c3c71273fef118e0e4a44111c617e53e65d5d4eb255346f76ed3f4')
+sha256sums=('56c0ea00a40c1fb8116935d52041bb5dad61bd7ef1ff9ae6e8afcd928e0c19f8')
 
 prepare() {
   cd "${srcdir}"
