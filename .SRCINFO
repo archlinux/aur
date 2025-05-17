@@ -8,6 +8,6 @@ pkgbase = momw-configurator
 	makedepends = go
 	depends = glibc
 	source = momw-configurator-1.19.tar.gz::https://gitlab.com/modding-openmw/momw-configurator/-/archive/1.19/momw-configurator-1.19.tar.gz
-	sha512sums = 7be1bd4316fe63cb3b23bde56c95225bca9920bbc6387cdd1c18b6335bc00b158a6d8869e765e1820f74702264f24ef3d3b6054a34245d9853c0e13d98a9532f
+	sha512sums = 2765be125895c1a5ec52cf4612f9c1093d8ce8f4bb870839d7f76aa1ddc61765a21e9a8741fcf394a2eac0d7769f5cf896ded039cf85dfcccad60121ce61dd5a
 
 pkgname = momw-configurator
