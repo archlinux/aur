@@ -9,7 +9,7 @@
 
 # shellcheck disable=2034
 pkgname=neovim-git
-pkgver=0.11.0.r720.ge36e68d35
+pkgver=0.12.0.r392.g8e8f4523c6
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -29,7 +29,7 @@ depends=(
   'tree-sitter-query'
   'tree-sitter-vimdoc'
   'tree-sitter-vim'
-  'tree-sitter>=0.22.2'
+  'tree-sitter>=0.25.0'
   'unibilium'
 )
 makedepends=('cmake' 'git' 'ninja' 'unzip')
@@ -44,7 +44,7 @@ optdepends=(
 provides=("neovim=${pkgver}" 'vim-plugin-runtime')
 conflicts=('neovim')
 source=(
-  "${pkgname}.tar.gz::file:///home/chinmay/pkgbuilds/nvim/repo.tar.gz"
+  "${pkgname}.tar.gz"
   nvimdoc{,.hook}
 )
 sha512sums=('SKIP'
@@ -70,6 +70,7 @@ build() {
     -DUSE_BUNDLED=OFF -DUSE_BUNDLED_UTF8PROC=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=mold" \
+    -DCMAKE_C_COMPILER_LAUNCHER=sccache \
     -DCMAKE_C_COMPILER="/usr/bin/clang"
 
   cmake --build .deps
@@ -80,6 +81,7 @@ build() {
     -G Ninja \
     -DCMAKE_C_FLAGS="-march=native -mtune=native" \
     -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=mold" \
+    -DCMAKE_C_COMPILER_LAUNCHER=sccache \
     -DCMAKE_C_COMPILER="/usr/bin/clang"
 
   cmake --build build

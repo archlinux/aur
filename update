@@ -1,0 +1,30 @@
+#!/usr/bin/env fish
+set -l pkgbuild_dir (pwd)
+# rm --force *.tar.zst
+# rm --force *.tar.gz
+for file in *.tar.zst *.tar.gz
+    rm --force $file
+end
+
+# update
+cd repo
+# git pull
+
+# clone the repo and remove previous build
+cd $pkgbuild_dir
+rm --recursive --force pkgrepo
+cp --recursive repo pkgrepo
+cd pkgrepo
+rm --recursive --force build .deps .git
+
+# tar the clean source dir
+cd $pkgbuild_dir
+ouch --quiet compress pkgrepo/* neovim-git.tar.gz
+
+# makepkg
+rm --recursive --force pkgrepo
+makepkg --syncdeps --install
+
+# remove source tarball (DO NOT remove the .tar.zst package, or the git repo)
+rm --force *.tar.gz
+rm --force --recursive pkg src
