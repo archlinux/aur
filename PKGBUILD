@@ -37,7 +37,6 @@ build() {
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   npm install
-  npm run build
   npm run build:dist
 }
 
