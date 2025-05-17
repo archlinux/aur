@@ -1,57 +1,60 @@
 pkgname=plasma-login-manager-git
 _pkgname=plasma-login-manager
-pkgver=r1700.c91df59
+pkgver=r1732.274ceb9
 pkgrel=1
 pkgdesc='Plasma Login provides a display manager for KDE Plasma, forked from SDDM and with an new frontend providing a greeter, wallpaper plugin integration and System Settings module (KCM).'
-url='https://invent.kde.org/davidedmundson/plasma-login-manager'
+url='https://invent.kde.org/plasma/plasma-login-manager'
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 depends=(
     kpackage
-layer-shell-qt
-qt6-declarative
-libplasma
-kdbusaddons
-kio
-kconfig
-kwindowsystem
-kirigami
-plasma-workspace
-kcoreaddons
-qt6-base
-kservice
-kauth
-kcmutils
-ki18n
+    layer-shell-qt
+    qt6-declarative
+    libplasma
+    kdbusaddons
+    kio
+    kconfig
+    kwindowsystem
+    kirigami
+    plasma-workspace
+    kcoreaddons
+    qt6-base
+    kservice
+    kauth
+    kcmutils
+    ki18n
 )
 makedepends=(extra-cmake-modules
-             cmake
-             git)
-source=(git+https://invent.kde.org/davidedmundson/plasma-login-manager
-plasmalogin
-plasmalogin-autologin
-plasmalogin-greeter)
+    cmake
+    git)
+source=(git+https://invent.kde.org/plasma/plasma-login-manager
+    plasmalogin
+    plasmalogin-autologin
+    plasmalogin-greeter)
 sha256sums=('SKIP'
-            'd7394292a65ae463926c2c3d2cb4e67bbfeb20995450c8e4c92fe5a28e7c4254'
-            '1a84cf752782b03b53f66188013bf7e4af4f5e6feb7266bfe58c3faaa20777b4'
-            '3406bce46be8450e28ddbccfbcd0e1f8fa585d57da8833ff7294cf3aee84bb46')
+    'd7394292a65ae463926c2c3d2cb4e67bbfeb20995450c8e4c92fe5a28e7c4254'
+    '1a84cf752782b03b53f66188013bf7e4af4f5e6feb7266bfe58c3faaa20777b4'
+    '3406bce46be8450e28ddbccfbcd0e1f8fa585d57da8833ff7294cf3aee84bb46')
 provides=(${_pkgname})
-conflicts=(${_pkgname})
+conflicts=(
+    ${_pkgname}
+    lightdm  # /usr/share/dbus-1/system.d/org.freedesktop.DisplayManager.conf
+)
 
 pkgver() {
-  cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    cd $_pkgname
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cmake -B build -S $_pkgname
-  cmake --build build
+    cmake -B build -S $_pkgname
+    cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
-  mkdir -p "$pkgdir"/etc/pam.d
-  install -m644 plasmalogin -t "$pkgdir"/etc/pam.d
-  install -m644 plasmalogin-autologin -t "$pkgdir"/etc/pam.d
-  install -m644 plasmalogin-greeter -t "$pkgdir"/etc/pam.d
+    DESTDIR="$pkgdir" cmake --install build
+    mkdir -p "$pkgdir"/etc/pam.d
+    install -m644 plasmalogin -t "$pkgdir"/etc/pam.d
+    install -m644 plasmalogin-autologin -t "$pkgdir"/etc/pam.d
+    install -m644 plasmalogin-greeter -t "$pkgdir"/etc/pam.d
 }
