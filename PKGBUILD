@@ -2,19 +2,19 @@
 
 pkgname=epsonscan2-non-free-plugin
 pkgver=1.0.0.6
-pkgrel=4
+pkgrel=5
 arch=('armv7h' 'i686' 'x86_64')
 pkgdesc="Plugins for Epson Scan 2"
 url="http://support.epson.net/linux/en/epsonscan2.php"
 license=('LicenseRef-EULA')
 depends=('epsonscan2')
 makedepends=('bbe')
-source_armv7h=("https://download3.ebz.epson.net/dsc/f/03/00/15/17/63/48960ec5ddbf40da95caaac2ed1ced296fdc2110/epsonscan2-bundle-6.7.63.0.armv7l.deb.tar.gz")
-source_i686=("https://download3.ebz.epson.net/dsc/f/03/00/15/17/67/ceae6a02aaa81cb61012899987fbb5ab891b6ab2/epsonscan2-bundle-6.7.63.0.i686.deb.tar.gz")
-source_x86_64=("https://download3.ebz.epson.net/dsc/f/03/00/15/17/68/050e5a55ed90f4efb4ca3bdd34e5797b149443ca/epsonscan2-bundle-6.7.63.0.x86_64.deb.tar.gz")
-b2sums_armv7h=('c9de6f511bf91a311f0bc92a8feb1aa436aee9850aeb1312ef337eb7c1fa9ee3df71b61911df8fc8c195383df38a52e9baa57f17eb31ed6cabe4337a80fc5e1e')
-b2sums_i686=('292a5f5022653c7a89e4439fde30cd2dcba498e58d7d06b30ceaedf898c016f0622f2eb1478c624b51036a10eac457a006aefe35b3e1e56e50b87058c22979a1')
-b2sums_x86_64=('822bca019da25ae23840ab2f9886f08dcc7bc0fed5e1b4516c942269005a513710bf2718b2a39d0aba8000b052b28b84a987b27d29438f7f7c608b6374c176d9')
+source_armv7h=("https://download3.ebz.epson.net/dsc/f/03/00/17/08/16/ec9aaa15e4cc6ae6bb906ce999595644426ad2c8/epsonscan2-bundle-6.7.80.0.armv7l.deb.tar.gz")
+source_i686=("https://download3.ebz.epson.net/dsc/f/03/00/17/08/13/322979d7491bf5a2fd0ef05aaba0226f6e2023f8/epsonscan2-bundle-6.7.80.0.i686.deb.tar.gz")
+source_x86_64=("https://download3.ebz.epson.net/dsc/f/03/00/17/08/12/9f3fec0ae80aa5c36f5170377ebcc38c93251e23/epsonscan2-bundle-6.7.80.0.x86_64.deb.tar.gz")
+b2sums_armv7h=('c95eb6396410eea82c7fbb29317172e5a0b38e6b45f207625a2fa97431d118f4b0ce468dc9b245437c49a2a387f7cb94716a19b6bcb1a7c5266b6010fa6d6b63')
+b2sums_i686=('7a41ab04ee13fb9a22465cd80a8af4ec3099366f6af2d3f1911fe491b67444c3520ceb165730c72bc751cdefc606c303a62809ff292597c0ed086a860c900e15')
+b2sums_x86_64=('cb27c9554d1c11fa67484a3b5012693e6469aec18221192134512cde305e377b52681e4f91bbf4d77573c8e87fa35743f24dcac994f8f688abafcf7b7947bd11')
 
 prepare() {
   cd epsonscan2-bundle*/plugins
@@ -26,7 +26,17 @@ prepare() {
   # This command updates to the path used in this package:
   # /usr/lib/epsonscan2/
   cd "$srcdir"/usr/lib/*/epsonscan2/non-free-exec
-  bbe -e "s|x86_64-linux-gnu/epsonscan2/|epsonscan2/\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00|" es2intif > es2intif.alt
+  case $CARCH in
+    armv7h)
+      bbe -e "s|arm-linux-gnueabihf/epsonscan2/|epsonscan2/\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00|" es2intif > es2intif.alt
+    ;;
+    i686)
+      bbe -e "s|i386-linux-gnu/epsonscan2/|epsonscan2/\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00|" es2intif > es2intif.alt
+    ;;
+    x86_64)
+      bbe -e "s|x86_64-linux-gnu/epsonscan2/|epsonscan2/\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00|" es2intif > es2intif.alt
+    ;;
+  esac
   mv es2intif.alt es2intif
   chmod +x es2intif
 }
