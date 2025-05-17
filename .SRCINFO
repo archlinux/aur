@@ -1,5 +1,5 @@
 pkgbase = jarvis-llm
-	pkgdesc = jsrvis,a cli llm client
+	pkgdesc = jsrvis, a cli llm client
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/Catalina-sys456/jarvis-llm
@@ -11,5 +11,6 @@ pkgbase = jarvis-llm
 	makedepends = python-hatchling
 	depends = python
 	source = jarvis-llm-0.1.tar.gz::https://github.com/Catalina-sys456/jarvis-llm/archive/refs/tags/v0.1.tar.gz
+	sha512sums = 1d45983cddbdb01fb5e3c6f23e518aadb7525faf0340d098f4b693effae5010c77f468de7fb0ce98518817d184cb0dacc8c50614b70d99381feb2ce37566cb3d
 
 pkgname = jarvis-llm
