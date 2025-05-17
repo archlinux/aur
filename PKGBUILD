@@ -1,45 +1,14 @@
-# Maintainer: thirdwinter thirdwinters@gmail.com
 pkgname=foamshot-bin
 pkgver=v0.2.5
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc="foamshot is wayland screenshot utility build by rust"
 arch=('x86_64')
 url="https://github.com/Thirdwinter/foamshot"
 license=('MIT')
-groups=()
 depends=('wl-clipboard')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/Thirdwinter/foamshot/releases/download/$pkgver/foamshot-linux-x86_64")
-noextract=()
+source=("https://github.com/Thirdwinter/foamshot/releases/download/$pkgver/foamshot_$pkgver")
 sha256sums=('SKIP')
-validpgpkeys=()
-
-# prepare() {
-# 	cd "$pkgname-$pkgver"
-# 	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-# }
-#
-# build() {
-# 	cd "$pkgname-$pkgver"
-# 	./configure --prefix=/usr
-# 	make
-# }
-#
-# check() {
-# 	cd "$pkgname-$pkgver"
-# 	make -k check
-# }
 
 package() {
-    install -Dm755 "$srcdir/foamshot-linux-x86_64" "$pkgdir/usr/bin/foamshot"
+    install -Dm755 "$srcdir/foamshot_$pkgver" "$pkgdir/usr/bin/foamshot"
 }
