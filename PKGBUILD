@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=mdfried
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A markdown viewer for the terminal that renders images and big headers"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 depends=('gcc-libs' 'freetype2' 'expat')
 makedepends=('cargo' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('8a2e64818422f9bc691e767c83652cba8b27ebc416ddc19ee750d2dc006f1aad00e47036d470ab7485a15962c6b840152bda38efdfe93b2607c752770dc7006c')
+sha512sums=('d9aa6da40c71fc3f11ea0521cd750c6971a418e871de26c6688fbf935af700719c601ba8ce95f1b706caa2b965360dd545142cee0fd36fc9afe10c658b35a2d1')
 options=('!lto')
 
 prepare() {
