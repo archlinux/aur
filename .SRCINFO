@@ -1,7 +1,7 @@
 pkgbase = kicad-diff-git
 	pkgdesc = Scripts for performing image diffs between pcbnew layout revisions Resources
-	pkgver = r386.be291c6
-	pkgrel = 2
+	pkgver = r398.eb0027a
+	pkgrel = 1
 	url = https://github.com/leoheck/KiCad-Diff
 	arch = x86_64
 	license = MIT

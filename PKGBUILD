@@ -1,8 +1,8 @@
 # Maintainer: Marcel Robitaille <mail@marcelrobitaille.me>
 
 pkgname=kicad-diff-git
-pkgver=r386.be291c6
-pkgrel=2
+pkgver=r398.eb0027a
+pkgrel=1
 pkgdesc=" Scripts for performing image diffs between pcbnew layout revisions Resources"
 url="https://github.com/leoheck/KiCad-Diff"
 license=("MIT")
