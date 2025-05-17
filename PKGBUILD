@@ -1,7 +1,7 @@
 # Maintainer: envolution
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
-pkgname=slade
+pkgname=slade-git
 pkgver=3.2.7+r3112+ga515292e7
 pkgrel=2
 pkgdesc='SLADE3 Doom editor'

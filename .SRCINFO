@@ -1,4 +1,4 @@
-pkgbase = slade
+pkgbase = slade-git
 	pkgdesc = SLADE3 Doom editor
 	pkgver = 3.2.7+r3112+ga515292e7
 	pkgrel = 2
@@ -58,4 +58,4 @@ pkgbase = slade
 	sha256sums = SKIP
 	sha256sums = b4f2e8ebac43c0fc351a3c94b6fad6862d8cc9cdb55f7a224747d1066a2e09f5
 
-pkgname = slade
+pkgname = slade-git
