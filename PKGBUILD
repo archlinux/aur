@@ -3,8 +3,7 @@
 
 _hash="8ea935e79a50a02da912a034bbeda84a6d3d355d" # https://github.com/getcursor/cursor/issues/3119
 
-_Name="Cursor"
-_name="${_Name,,}"
+_name=cursor
 _electron=electron34
 pkgname="${_name}-electron"
 pkgver=0.50.4
@@ -14,12 +13,11 @@ arch=('aarch64' 'x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor')
 depends=("${_electron}" 'ripgrep' 'xdg-utils' # system-wide replacements
-		'bash' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libxkbfile')
+		'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 provides=("${_name}"{,-bin})
 conflicts=("${_name}"{,-bin})
-_pkgsrc="${_name}-${pkgver}"
-source_aarch64=("${_pkgsrc}-aarch64.img::https://downloads.cursor.com/production/${_hash}/linux/arm64/${_Name}-${pkgver}-aarch64.AppImage")
-source_x86_64=("${_pkgsrc}-x86_64.img::https://downloads.cursor.com/production/${_hash}/linux/x64/${_Name}-${pkgver}-x86_64.AppImage")
+source_aarch64=("${pkgver}-aarch64.img::https://downloads.cursor.com/production/${_hash}/linux/arm64/Cursor-${pkgver}-aarch64.AppImage")
+source_x86_64=("${pkgver}-x86_64.img::https://downloads.cursor.com/production/${_hash}/linux/x64/Cursor-${pkgver}-x86_64.AppImage")
 sha512sums_aarch64=('e336c5b9ec9909b98a660f98bb76ba992345e3691d1983e06caee9cba60ac0ecb8414eac3b989e23699f9b3c0cee7e343054dcb50dcf5a7977f3998a8f39cc2c')
 sha512sums_x86_64=('4cd15e7ebc3e5f0aaf7236ab5c6c6bab5b6030b358541ca03062ac26bcbffe5377cceecd786b05c010b6aa66e41e5f2b33d4ed5019a3f81dcb2c4b4c75e21b79')
 #options=(!strip)
@@ -29,9 +27,9 @@ build() {
 	sed -e "s|exec /usr|ELECTRON_RUN_AS_NODE=1 exec /usr|" \
 		-e "s|flags=()|flags=(${_app}/out/cli.js --app=${_app})|" \
 		/usr/bin/${_electron} > run.sh # should be supported by ${_electron} officially.
-	chmod +x "${_pkgsrc}-${CARCH}.img"
+	chmod +x "${pkgver}-${CARCH}.img"
 	rm -rf squashfs-root
-	./"${_pkgsrc}-${CARCH}.img" --appimage-extract > /dev/null
+	./"${pkgver}-${CARCH}.img" --appimage-extract > /dev/null
  	cd squashfs-root/usr
 	mv -v share/zsh/{vendor-completions,site-functions}
 	# Licenses
