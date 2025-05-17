@@ -1,0 +1,17 @@
+pkgbase = molotov-deb
+	pkgdesc = Molotov TV client
+	pkgver = 7.1.0
+	pkgrel = 1
+	url = https://www.molotov.tv/
+	arch = x86_64
+	license = unknown
+	depends = at-spi2-core
+	depends = libcups
+	depends = gtk3
+	depends = pango
+	depends = alsa-lib
+	conflicts = molotov
+	source = https://desktop-app.molotov.tv/stable/linux/x64/Molotov-x64-7.1.0.deb
+	sha256sums = cccf457e2678f318dd0cf47082a99091b63b5517d29a35eef9932f25ee567944
+
+pkgname = molotov-deb
