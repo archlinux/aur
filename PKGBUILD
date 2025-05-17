@@ -3,7 +3,7 @@
 
 pkgname=slade
 pkgver=3.2.7+r3112+ga515292e7
-pkgrel=1
+pkgrel=2
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
