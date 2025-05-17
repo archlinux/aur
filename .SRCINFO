@@ -10,8 +10,8 @@ pkgbase = libaltsound-git
 	depends = gcc-libs
 	depends = glibc
 	depends = libbass
-	provides = libdmdutil
-	provides = libdmdutil-git
+	provides = libaltsound
+	provides = libaltsound-git
 	source = libaltsound-git::git+https://github.com/joni999/libaltsound.git#branch=cmake-no-post-build-copy
 	sha256sums = SKIP
 
