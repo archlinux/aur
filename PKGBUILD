@@ -3,9 +3,9 @@
 
 _pkgname="discimagecreator"
 pkgname="$_pkgname"
-pkgver=20250101
+pkgver=20250501
 pkgrel=1
-pkgdesc="A disk image creation tool supporting CD, GD, DVD, BD, GC/Wii, Xbox, floppy, MO, USB, etc"
+pkgdesc="A disk image creation tool supporting a large number of formats"
 url="https://github.com/saramibreak/DiscImageCreator"
 license=('Apache-2.0')
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
 _pkgsrc="DiscImageCreator-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/$pkgver.$_pkgext")
-sha256sums=('5cc3688557cd9a3d9f99d7bc770ee2750cf81c5eebd1e8493f9acea960465601')
+sha256sums=('21579a4b18c7d3272be9655d989094ef8db4b682906b6a9d387853c74a9a4821')
 
 build() {
   arch-meson build "$_pkgsrc"
