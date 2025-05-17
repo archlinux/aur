@@ -1,7 +1,7 @@
 pkgbase = archarchive
 	pkgdesc = A utility to quickly rollback an arch linux system using ALA (a.k.a Arch Linux Archive)
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/progzone122/archarchive
 	arch = x86_64
 	license = GPL-3.0-or-later

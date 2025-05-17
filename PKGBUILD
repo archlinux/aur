@@ -1,7 +1,7 @@
 # Maintainer: Diablo (https://github.com/progzone122) (https://t.me/DiabloSat)
 pkgname=archarchive
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A utility to quickly rollback an arch linux system using ALA (a.k.a Arch Linux Archive)"
 arch=('x86_64')
 url="https://github.com/progzone122/archarchive"
@@ -19,7 +19,5 @@ build() {
   :
 }
 package() {
-  mkdir -p "$pkgdir/usr/sbin"
-  install -Dm755 "$srcdir/archarchive" "$pkgdir/usr/sbin/archarchive"
-  chmod +x "$pkgdir/usr/sbin/archarchive"
+  install -Dm755 "$srcdir/archarchive" "$pkgdir/usr/bin/archarchive"
 }
