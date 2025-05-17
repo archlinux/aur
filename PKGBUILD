@@ -7,7 +7,7 @@ arch=(x86_64 i686 pentium4 armv7h aarch64 riscv64)
 url="https://github.com/jffops/jfetch"
 license=(MIT)
 depends=(glibc gcc-libs)
-makedepends=(gcc)
+makedepends=(make)
 source=("git+https://github.com/jffops/jfetch.git")
 sha256sums=("SKIP")
 
@@ -18,11 +18,12 @@ pkgver() {
 
 build() {
   cd "${srcdir}"/jfetch
-  gcc -o jellyfetch -Wall -Wextra jfetch.c
+  export CFLAGS="${CFLAGS} -Wno-format-security"
+  make
 }
 
 package() {
   cd "${srcdir}"/jfetch
-  install -Dm755 jellyfetch -t "$pkgdir/usr/bin"
+  install -Dm755 jfetch "$pkgdir/usr/bin/jellyfetch"
   install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
