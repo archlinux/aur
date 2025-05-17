@@ -6,7 +6,7 @@ pkgbase = ghdl-mcode-git
 	arch = x86_64
 	arch = i686
 	arch = pentium4
-	license = GPL2
+	license = GPL-2.0-or-later
 	checkdepends = python-pytest
 	checkdepends = python-pyvhdlmodel>=0.12
 	checkdepends = python-pytooling
