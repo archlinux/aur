@@ -1,5 +1,5 @@
-# Maintainer:  oech3
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  oech3, Oops
+# Contributor:  Vitalii Kuzhdin <vitaliikuzhdin at gmail dot com>
 
 _hash="8ea935e79a50a02da912a034bbeda84a6d3d355d" # https://github.com/getcursor/cursor/issues/3119
 
@@ -8,7 +8,7 @@ _name="${_Name,,}"
 _electron=electron34
 pkgname="${_name}-electron"
 pkgver=0.50.4
-pkgrel=3
+pkgrel=4
 pkgdesc="The AI Code Editor (system-wide electron)"
 arch=('aarch64' 'x86_64')
 url="https://www.cursor.com"
@@ -18,11 +18,8 @@ depends=("${_electron}" 'ripgrep' 'xdg-utils' # system-wide replacements
 provides=("${_name}"{,-bin})
 conflicts=("${_name}"{,-bin})
 _pkgsrc="${_name}-${pkgver}"
-_codever=1.100.2-1
-source=("https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/${_codever}/code.sh")
 source_aarch64=("${_pkgsrc}-aarch64.AppImage::https://downloads.cursor.com/production/${_hash}/linux/arm64/${_Name}-${pkgver}-aarch64.AppImage")
 source_x86_64=("${_pkgsrc}-x86_64.AppImage::https://downloads.cursor.com/production/${_hash}/linux/x64/${_Name}-${pkgver}-x86_64.AppImage")
-sha512sums=('937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37')
 sha512sums_aarch64=('e336c5b9ec9909b98a660f98bb76ba992345e3691d1983e06caee9cba60ac0ecb8414eac3b989e23699f9b3c0cee7e343054dcb50dcf5a7977f3998a8f39cc2c')
 sha512sums_x86_64=('4cd15e7ebc3e5f0aaf7236ab5c6c6bab5b6030b358541ca03062ac26bcbffe5377cceecd786b05c010b6aa66e41e5f2b33d4ed5019a3f81dcb2c4b4c75e21b79')
 #options=(!strip)
@@ -40,12 +37,10 @@ prepare() {
 }
 build(){
   _app=/usr/share/cursor/resources/app
-  # code.mjs does nothing more than suppressing warns.
-  # ELECTRON_RUN_AS_NODE=1 should be supported by /usr/bin/${_electron}
-  sed -e "s|code-flags|cursor-flags|" \
-    -e "s|/usr/lib/code/out/cli.js|${_app}/out/cli.js|" \
-    -e "s|/usr/lib/code/code.mjs|--app=${_app}|" \
-    -e "s/name=electron/name=${_electron}/" code.sh > "${pkgname}.sh"
+  # code.mjs just suppress warns.
+  sed -e "s|exec /usr|ELECTRON_RUN_AS_NODE=1 exec /usr|" \
+      -e "s|flags=()|flags=(${_app}/out/cli.js --app=${_app})|" \
+      /usr/bin/${_electron} > "${pkgname}.sh" # should be supported by ${_electron} officially.
 }
 package(){
   # Use upstream's layout instead of FHS https://github.com/getcursor/cursor/issues/3123
