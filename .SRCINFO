@@ -1,6 +1,6 @@
 pkgbase = rsl-git
 	pkgdesc = Radar Software Library
-	pkgver = 1.50.r16
+	pkgver = 1.50.r24
 	pkgrel = 1
 	url = http://pileus.org/aweather/rsl
 	arch = aarch64

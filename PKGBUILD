@@ -2,7 +2,7 @@
 
 pkgname='rsl-git'
 provides=('rsl')
-pkgver=1.50.r16
+pkgver=1.50.r24
 pkgrel=1
 pkgdesc="Radar Software Library"
 arch=('aarch64' 'x86_64')
