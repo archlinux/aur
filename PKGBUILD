@@ -2,25 +2,25 @@
 
 pkgname='codetantra-sea'
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Platform for online teaching.'
 arch=('x86_64')
 url='https://www.codetantra.com'
-depends=('alsa-lib' 'firejail' 'nss' 'at-spi2-atk' 'cups' 'gtk3')
+depends=('alsa-lib' 'nss' 'at-spi2-atk' 'cups' 'gtk3')
 optdepends=()
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/ct-code/sea/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb"
         "sea.sh")
 sha256sums=('4c9f7d3fcffc8bad121e44c5480cd8eed028115e1b2992ffa08565fefce0a6bc'
-            '2aeb4451e650a3cd3b69d4154c14795acd1ad9e2683e476e3452e721e25a0979')
+            '1b1da4bc2ba74572ca909bf48fd635e0113ca410a678210c0b2ce59b61267810')
 
 package() {
       #extract
       tar -xvf 'data.tar.xz' -C "${pkgdir}"
 
       #add firejail to desktop file.
-      sed -i 's/^Exec=.*/Exec=firejail --nosound --profile=chromium \/opt\/codetantra-sea\/codetantra-sea --ignore-certificate-errors/'  "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+      sed -i 's/^Exec=.*/Exec=\/opt\/codetantra-sea\/codetantra-sea --ignore-certificate-errors/'  "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
       #remove the other exec line
       sed -i '/exec/d' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
