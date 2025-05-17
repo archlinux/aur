@@ -11,12 +11,12 @@
  # change the default location of libraries and the name
  # of the library to be linked (usually fftw3)
  # (include multiple values by separating them with spaces)
--#fftw-include_dirs=build/include
--#fftw-lib-dirs=build/lib
--#fftw-libraries=fftw3
-+fftw-include_dirs=/usr/include
-+fftw-lib-dirs=/usr/lib
-+fftw-libraries=fftw3
+-#fftw_include_dirs=build/include
+-#fftw_lib_dirs=build/lib
+-#fftw_libraries=fftw3
++fftw_include_dirs=/usr/include
++fftw_lib_dirs=/usr/lib
++fftw_libraries=fftw3
  
  # Region Library
  # Uncomment to use a local installation
