@@ -1,5 +1,5 @@
 pkgbase = swayimg-git
-	pkgdesc = Image viewer for Sway/Wayland
+	pkgdesc = Image viewer for Wayland
 	pkgver = 4.0
 	pkgrel = 1
 	url = https://github.com/artemsen/swayimg
