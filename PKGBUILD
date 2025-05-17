@@ -43,7 +43,6 @@ check() {
   cd "$srcdir/$pkgname"
   # NOTE: cannot run `make test` as -buildmode=pie is not supported with -race
   make integration-test-deps
-  # FIX: TestYamllsDiagnosticsIntegrationWithSchema failing with yamlls v1.17.0
   go test ./... -tags=integration
 }
 
