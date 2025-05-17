@@ -11,7 +11,7 @@ arch=('x86_64')
 license=("MIT")
 provides=('void')
 conflicts=('void')
-_elnum=34
+_elnum=34 #35+ will fail
 depends=( electron${_elnum} ripgrep xdg-utils # replacements
   libx11
   libxkbfile
@@ -36,10 +36,8 @@ makedepends=(
   pkgconf
   python
 )
-source=("git+https://github.com/voideditor/void.git"
-"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
-sha256sums=('SKIP'
-'5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
+source=("git+https://github.com/voideditor/void.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -54,19 +52,18 @@ build() {
   # Clean npm cache and remove existing node_modules
   npm cache clean --force
   rm -rf node_modules
+  # Set version of electron
   _elver=$(cat /usr/lib/electron${_elnum}/version)
   echo Replacing $(rg -m 1 '"electron":\s*"[0-9]+' package.json) with ${_elver}
   echo 'Fix if major version is wrong.'
   npm pkg set devDependencies.electron=${_elver}
-  # Install dependencies with legacy peer deps flag to handle dependency conflicts
-  npm install --legacy-peer-deps
-  # Build react because it fails for some reason
-  npm run buildreact
+  # Build
+  npm install --legacy-peer-deps # to handle dependency conflicts
+  npm run buildreact # needed by unknown reason
   # Rebuilding modules for bumped electron will fail
   # npm install -D electron-rebuild
   # npx electron-rebuild -f
-  # Bundle it
-  npm run gulp vscode-linux-x64
+  npm run gulp vscode-linux-x64 # Bundle
 }
 
 package() {
@@ -90,10 +87,9 @@ package() {
   install -Dm644 "${_pkg}/resources/completions/bash/${_pkgname}" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
   install -Dm644 "${_pkg}/resources/completions/zsh/_${_pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
   # launcher
-  sed -e "s|code-flags|void-flags|" \
-   -e "s|/usr/lib/code/out/cli.js|${_app}/out/cli.js|" \
-   -e "s|/usr/lib/code/code.mjs|--app=${_app}|" \
-   -e "s/name=electron/name=electron${_elnum}/" code.sh > run.sh
+  sed -e "s|exec /usr|ELECTRON_RUN_AS_NODE=1 exec /usr|" \
+      -e "s|flags=()|flags=(${_app}/out/cli.js --app=${_app})|" \
+      /usr/bin/electron${_elnum} > run.sh # should be supported by electron$_elnum
   install -Dm755 run.sh "${pkgdir}/usr/bin/void"
   # Install editor on /usr/share for compability with void-bin
   install -d "${pkgdir}/usr/share/void"

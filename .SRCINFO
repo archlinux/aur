@@ -29,8 +29,6 @@ pkgbase = void-git
 	provides = void
 	conflicts = void
 	source = git+https://github.com/voideditor/void.git
-	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh
 	sha256sums = SKIP
-	sha256sums = 5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1
 
 pkgname = void-git
