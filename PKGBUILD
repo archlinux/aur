@@ -2,9 +2,9 @@
 
 _pkgname="discimagecreator"
 pkgname="$_pkgname-git"
-pkgver=20250101.r0.g5126ba5
-pkgrel=1
-pkgdesc="A disk image creation tool supporting CD, GD, DVD, BD, GC/Wii, Xbox, floppy, MO, USB, etc"
+pkgver=20250501.r0.g82858ee
+pkgrel=2
+pkgdesc="A disk image creation tool supporting a large number of formats"
 url="https://github.com/saramibreak/DiscImageCreator"
 license=('Apache-2.0')
 arch=('x86_64')
