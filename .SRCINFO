@@ -1,7 +1,7 @@
 pkgbase = dwm-systray
 	pkgdesc = DWM with patches: Dynamic window manager for X (systray+gaps custom build)
 	pkgver = 6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/petRUShka/dwm-config
 	install = dwm.install
 	arch = x86_64
@@ -15,6 +15,9 @@ pkgbase = dwm-systray
 	depends = alacritty
 	optdepends = slock: default locker for Super+Shift+L
 	optdepends = i3lock: alternative locker (edit lockcmd in config.h)
+	provides = dwm=6.5
+	conflicts = dwm
+	replaces = dwm
 	options = zipman
 	source = dwm-6.5.tar.gz::https://dl.suckless.org/dwm/dwm-6.5.tar.gz
 	source = https://dwm.suckless.org/patches/systray/dwm-systray-20230922-9f88553.diff
