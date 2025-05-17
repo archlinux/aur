@@ -3,8 +3,8 @@
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=blis
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software Framework"
 arch=('i686' 'x86_64')
 url="https://github.com/flame/blis"
@@ -15,7 +15,7 @@ provides=('blas' 'cblas')
 conflicts=('blas' 'cblas')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/flame/blis/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('9c12972aa1e50f64ca61684eba6828f2f3dd509384b1e41a1e8a9aedea4b16a6')
+sha256sums=('847c035809b8994c077ade737a4813601db96c4cf0d903d08ba6a9b8ee0fe03e')
 
 
 build() {
@@ -25,7 +25,8 @@ build() {
   ./configure \
     --prefix="/usr" \
     --enable-cblas \
-    --enable-threading=openmp auto
+    --enable-threading=openmp \
+    generic
   make
 }
 

@@ -1,7 +1,7 @@
 pkgbase = blis
 	pkgdesc = BLAS-like Library Instantiation Software Framework
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://github.com/flame/blis
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = blis
 	conflicts = blas
 	conflicts = cblas
 	options = staticlibs
-	source = blis-1.0-src.tar.gz::https://github.com/flame/blis/archive/refs/tags/1.0.tar.gz
-	sha256sums = 9c12972aa1e50f64ca61684eba6828f2f3dd509384b1e41a1e8a9aedea4b16a6
+	source = blis-1.1-src.tar.gz::https://github.com/flame/blis/archive/refs/tags/1.1.tar.gz
+	sha256sums = 847c035809b8994c077ade737a4813601db96c4cf0d903d08ba6a9b8ee0fe03e
 
 pkgname = blis
