@@ -8,16 +8,18 @@ pkgrel=1
 pkgdesc="Position-velocity diagram extractor"
 arch=('any')
 url="https://pvextractor.readthedocs.io"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
-             'python-wheel'
              'python-build'
              'python-installer'
              'python-sphinx-astropy'
              'python-astropy'
-             'python-scipy')
+             'python-scipy')  # wheel required by new setuptools
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
+              'python-pytest-xvfb'
+              'xorg-server-xvfb'
+#             'python-pytest-xdist'
               'python-matplotlib'
               'python-spectral-cube'
               'python-pyqt6')
@@ -49,7 +51,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-pvextractor() {
