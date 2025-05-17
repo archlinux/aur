@@ -7,14 +7,14 @@
 # Contributor: Alex Merry <dev@randomguy3.me.uk>
 
 pkgname=python-stdnum
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc='Handle, parse and validate more than 200 different standard numbers (EAN, IBAN, ISBN, etc.)'
 arch=('any')
 url='https://github.com/arthurdejong/python-stdnum'
 license=('LGPL-2.1-or-later')  # SPDX-License-Identifier: LGPL-2.1-or-later
 depends=(
-  'python'
+  'python>=3.8'
   'python-lxml'
   'python-requests'
   'python-setuptools'
@@ -31,7 +31,7 @@ optdepends=(
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
 )
-sha256sums=('7d29974a1703a684f24bce173acd81baf5bdf5c2cba4010ac736c621867fb6e9')
+sha256sums=('e29383b26e3efccb8de4d8ddac98e1890fe043e3dfcf28e6571a32446357653d')
 
 build() {
   cd "$pkgname-$pkgver"
