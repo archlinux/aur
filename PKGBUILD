@@ -1,16 +1,17 @@
-# Maintainer: lpt <aur AT lucapetrucci DOT net>
-pkgname="qdiskinfo"
-_pkgname="QDiskInfo"
-pkgver="0.3"
-pkgrel="1"
+# Maintainer: moetayuko <loli at yuko dot moe>
+# Contributor: lpt <aur AT lucapetrucci DOT net>
+pkgname="qdiskinfo-git"
+_pkgname="qdiskinfo"
+pkgver=0.3.r110.g3416cc7
+pkgrel=1
 pkgdesc="CrystalDiskInfo alternative for Linux"
 url="https://github.com/edisionnano/QDiskInfo"
 license=("GPL-3.0-only")
 source=(
-	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+	"$_pkgname::git+$url.git"
 )
 sha256sums=(
-	"f9829a488ff08395e14f953d41a85dac9c91714fdd34bc9a76a46fe761511209"
+	"SKIP"
 )
 arch=("x86_64")
 depends=(
@@ -22,19 +23,22 @@ depends=(
 )
 makedepends=(
 	"cmake"
-	"imagemagick"
 )
 
-prepare () {
-	cd "$_pkgname-$pkgver"
-	convert -background none -size 48x48 dist/QDiskInfo.svg "$srcdir/QDiskInfo-48x48.png"
+conflicts=("$_pkgname")
+provides=("$_pkgname")
+
+pkgver() {
+	cd "$_pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build () {
-	cd "$_pkgname-$pkgver"
+	cd "$_pkgname"
 	cmake \
-		-DCMAKE_BUILD_TYPE=MinSizeRel \
+		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DENABLE_TRANSLATIONS=ON \
 		-DQT_VERSION_MAJOR=6 \
 		-G"Unix Makefiles" \
 		-Bbuilddir \
@@ -43,7 +47,7 @@ build () {
 }
 
 package () {
-	cd "$_pkgname-$pkgver"
+	cd "$_pkgname"
 	DESTDIR="$pkgdir" cmake --build builddir --target install
-	install -Dm0644 "$srcdir/QDiskInfo-48x48.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/QDiskInfo.png"
+	install -Dm0644 "dist/QDiskInfo.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/QDiskInfo.png"
 }
