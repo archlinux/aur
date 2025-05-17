@@ -1,0 +1,9 @@
+*
+
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/mjolnir
+!/mjolnir.service
+!/mjolnir.sysusers
+!/mjolnir.tmpfiles
