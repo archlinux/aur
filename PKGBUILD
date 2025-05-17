@@ -9,7 +9,7 @@
 
 # Maintainer: Gliim LLC <team@golf-lang.com>
 pkgname=golf
-pkgver=5.3.11
+pkgver=600.3.13
 pkgrel=0
 epoch=
 pkgdesc="Programming language and application server for building and running web services and web applications. High performance and memory-safe."
