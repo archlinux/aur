@@ -23,18 +23,19 @@ EOF
 exit 0
 }
 
-while getopts dhp:r: options
+while getopts dhrp: options
 do
 case $options in
   d) echo "default profile directory is ~/.mozilla/firefox/$LINK"
      exit 0;;
   h) longhelp;;
   p) LINK="$OPTARG";;
-  r) mv "$VOLATILE" "~/.mozilla/firefox/$LINK-copy"
+  r) mv $VOLATILE ~/.mozilla/firefox/"$LINK"-copy
      mv ~/.mozilla/firefox/"$LINK"{,-trash}
      mv ~/.mozilla/firefox/"$STATIC"{,-trash}
      mv ~/.mozilla/firefox/"$LINK"{-copy,}
-     rm -rf ~/.mozilla/firefox/{"$LINK","$STATIC"}-trash;;
+     rm -rf ~/.mozilla/firefox/{"$LINK","$STATIC"}-trash
+     exit 0;;
   ?) usage
      exit 0;;
   esac

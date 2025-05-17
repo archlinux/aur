@@ -8,7 +8,7 @@ arch=('any')
 url='http://wiki.archlinux.org/index.php/Speed-up_Firefox_using_tmpfs'
 license=('GPL')
 source=("${pkgname}".sh "${pkgname}.service" "${pkgname}-cron.service" "${pkgname}-cron.timer")
-sha256sums=('f7d50c514437c17df99cdfe53c26e939163d9a6cfe055c51f8c2f20f57c46b07'
+sha256sums=('9f502ac6b52e7d30bd409463ab411828255d935e82733ef1d43da574c84f3089'
             'f3ca08a806a8938244a7dbe2f8db690963d6a381643884216b1a960c396ec6b9'
             '7769dced29810910ba91fa41461513d05085b5bbf1a9d78740e5300072190333'
             '51eabc82394e344756b86105a7b738d5a026bca490c17d87ef7d72339995db7c')
