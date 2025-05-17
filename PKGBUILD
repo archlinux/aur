@@ -3,19 +3,20 @@
 
 pkgname=python-glue-vispy-viewers
 _pyname=glue_vispy_viewers
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="3-d data viewers for glue based on VisPy"
 arch=('any')
 url="http://docs.glueviz.org/en/stable/gui_guide/3d_viewers.html"
 license=('BSD-2-Clause')
 makedepends=('python-setuptools-scm')
-checkdepends=('python-pytest'
+checkdepends=('python-pytest-xvfb'
+              'xorg-server-xvfb'
               'python-glue-core'
               'python-opengl'
               'python-vispy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('296a02901790f69a66f3a06749887235b8ce9028590f894e5ccb7d05372cf116')
+sha256sums=('72f1a5645920a79164c47ffad6ea61e3edd7415e389d2b5c6025ad52601a2545')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -26,7 +27,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count # no need -p xvfb
 }
 
 package() {
