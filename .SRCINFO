@@ -1,0 +1,14 @@
+pkgbase = ycwd-git
+	pkgdesc = Helps replace xcwd on Wayland compositors
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/blinry/ycwd
+	arch = x86_64
+	arch = arm
+	license = GPL
+	makedepends = cargo
+	provides = ycwd
+	source = ycwd::git+https://github.com/blinry/ycwd
+	sha256sums = SKIP
+
+pkgname = ycwd-git
