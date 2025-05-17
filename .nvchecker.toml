@@ -1,0 +1,7 @@
+[chromium-browser]
+source = "apt"
+mirror = "https://github.com/RobRich999/Chromium_Clang"
+pkg = "chromium-browser-unstable"
+suite = "unstable"
+repo = "main"
+strip_release = true
