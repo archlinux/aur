@@ -21,7 +21,7 @@ pkgver() {
 package() {
 	cd "$srcdir/$_pkgname"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "metadata.json" "$pkgdir/usr/share/kwin/scripts/$_scriptname/metadata.json"
-    mkdir -m 755 "$pkgdir/usr/share/kwin/scripts/tilegaps/contents"
-    find "contents" -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/kwin/scripts/$_scriptname/{}" \;
+	install -Dm644 "metadata.json" "$pkgdir/usr/share/kwin/scripts/$_scriptname/metadata.json"
+	mkdir -m 755 "$pkgdir/usr/share/kwin/scripts/tilegaps/contents"
+	find "contents" -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/kwin/scripts/$_scriptname/{}" \;
 }
