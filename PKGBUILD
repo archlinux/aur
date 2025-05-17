@@ -3,11 +3,11 @@
 
 pkgname=plecs-standalone
 _pkgname="plecs"
-pkgver=v4.9.4
+pkgver=v4.9.5
 _pkgver=$(echo "${pkgver#v}" | sed 's/\./-/g')
-pkgrel=3
+pkgrel=1
 pkgdesc="A circuit simulation tool written by Plexim (license needed / 30-days free trial)"
-url='http://www.plexim.com/de/products/plecs_standalone'
+url='https://www.plexim.com/de/products/plecs/plecs_standalone'
 arch=('x86_64')
 license=('custom')
 provides=('plecs-standalone')
@@ -18,8 +18,8 @@ source=("plecs.desktop"
 options=(!strip)
 md5sums=('7e0990a952785f929402da88efbd6cde'
          '8ed62f1ce2de47c761c9244531dc154e'
-	 '760ba8ecadc6dd64bf7ba6931ef09bc6'
-         '6ea72b6b32773fa1e7b8f17e7370edec')
+         '760ba8ecadc6dd64bf7ba6931ef09bc6'
+         '9d4accf74e1f7360eed95bf76e0f1162')
 
 package() {
 	# Install icon an desktop file
