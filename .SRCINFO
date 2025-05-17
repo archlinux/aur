@@ -1,6 +1,6 @@
 pkgbase = ghex-git
 	pkgdesc = a hex editor for the GNOME desktop
-	pkgver = 48.alpha.r39.gf9f050b7
+	pkgver = 48.alpha.r41.g5869c584
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/ghex
 	arch = x86_64
