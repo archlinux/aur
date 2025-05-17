@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full-git
-pkgver=0.40.0.r2.g97cb16d683
+pkgver=0.40.0.r115.gf9ec3d2c25
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://mpv.io/'
 depends=(
     # official repositories:
     'alsa-lib'
-    'ffmpeg'
+    'ffmpeg-git'
     'gcc-libs'
     'glibc'
     'hicolor-icon-theme'
@@ -53,9 +53,7 @@ depends=(
     'vulkan-icd-loader'
     'wayland'
     'zimg'
-    'zlib'
-    # AUR:
-    'ffmpeg-git')
+    'zlib')
 makedepends=(
     'ffnvcodec-headers'
     'git'
