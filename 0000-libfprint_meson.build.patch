@@ -1,0 +1,13 @@
+diff --git a/libfprint/meson.build b/libfprint/meson.build
+index 0ca1767..4709bfb 100644
+--- a/libfprint/meson.build
++++ b/libfprint/meson.build
+@@ -153,6 +153,8 @@ driver_sources = {
+         [ 'drivers/realtek/realtek.c' ],
+     'focaltech_moc' :
+         [ 'drivers/focaltech_moc/focaltech_moc.c' ],
++    'cs9711' :
++        [ 'drivers/cs9711/cs9711.c' ],
+ }
+ 
+ helper_sources = {

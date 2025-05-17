@@ -1,0 +1,15 @@
+diff --git a/meson.build b/meson.build
+index baafa19..ea3d920 100644
+--- a/meson.build
++++ b/meson.build
+@@ -144,6 +144,7 @@ default_drivers = [
+     'fpcmoc',
+     'realtek',
+     'focaltech_moc',
++    'cs9711',
+ ]
+ 
+ spi_drivers = [
+-- 
+2.49.0
+

@@ -1,0 +1,17 @@
+diff --git a/data/autosuspend.hwdb b/data/autosuspend.hwdb
+index 9115fb0..09441b6 100644
+--- a/data/autosuspend.hwdb
++++ b/data/autosuspend.hwdb
+@@ -71,6 +71,12 @@ usb:v08FFp5501*
+  ID_AUTOSUSPEND=1
+  ID_PERSIST=0
+ 
++# Supported by libfprint driver cs9711
++usb:v2541p0236*
++usb:v2541p9711*
++ ID_AUTOSUSPEND=1
++ ID_PERSIST=0
++
+ # Supported by libfprint driver egis0570
+ usb:v1C7Ap0570*
+ usb:v1C7Ap0571*
