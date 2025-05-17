@@ -1,8 +1,7 @@
 # Maintainer: uberben <ben at benbergman dot ca>
 
 pkgname="orca-slicer-nightly-bin"
-pkgver=2.3.1
-_pkgver=2.3.1
+pkgver=2025.05.16.171331Z
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (nightly builds)"
 arch=('x86_64')
@@ -11,12 +10,35 @@ license=('AGPL3')
 depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'webkit2gtk-4.1' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'gst-plugins-base' 'gst-libav')
 provides=("orca-slicer")
 conflicts=("orca-slicer")
-source=("${url}/releases/download/nightly-builds/OrcaSlicer_Linux_AppImage_Ubuntu2404_V${_pkgver}-dev.AppImage")
+
+src() {
+    curl -L \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  https://api.github.com/repos/SoftFever/OrcaSlicer/releases/tags/nightly-builds \
+  | jq --raw-output ".assets | map({ name: .name, date: .created_at, url: .browser_download_url }) | map(select(.name | test(\"AppImage\")))[0].url"
+}
+
+source=($(src))
 sha512sums=('SKIP')
 
+appimage=${source[0]##*/}
+
+pkgver() {
+	tag_object_sha_line=$(curl -L \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  https://api.github.com/repos/SoftFever/OrcaSlicer/git/refs/tags/nightly-builds | grep "/git/tags")
+	tag_date_line=$(curl -L \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  ${tag_object_sha_line:12:-1} | grep "date")
+	echo ${tag_date_line:13:-1} | sed 's/[-T]/./g; s/://g'
+}
+
 prepare() {
-	chmod +x OrcaSlicer_Linux_AppImage_Ubuntu2404_V${_pkgver}-dev.AppImage
-	./OrcaSlicer_Linux_AppImage_Ubuntu2404_V${_pkgver}-dev.AppImage --appimage-extract
+	chmod +x ${appimage}
+	./${appimage} --appimage-extract
 
 	sed -i 's|Exec=AppRun|Exec=/opt/orca-slicer-nightly/bin/orca-slicer|g' \
 		"squashfs-root/OrcaSlicer.desktop"
