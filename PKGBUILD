@@ -3,7 +3,7 @@
 pkgname=jarvis-llm
 pkgver=0.1
 pkgrel=1
-pkgdesc='jsrvis, a  cli llm client'
+pkgdesc='jsrvis, a cli llm client'
 arch=('any')
 url='https://github.com/Catalina-sys456/jarvis-llm'
 license=('MIT')
@@ -14,7 +14,7 @@ makedepends=(python-build
 	     python-hatchling)
 source=(        
   $pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('1d45983cddbdb01fb5e3c6f23e518aadb7525faf0340d098f4b693effae5010c77f468de7fb0ce98518817d184cb0dacc8c50614b70d99381feb2ce37566cb3d')
+sha512sums=('e19900ee0aefd39f21218a1e35e70d6c62b6b5b0823ed19ce18375d7a35b0a18b0f68dfef30131f5503871a4c5d891a0fc4eba121e09f9cdde853a387e3d6dcb')
 
 build(){
     cd $pkgname-$pkgver
