@@ -1,0 +1,15 @@
+pkgbase = way-secure
+	pkgdesc = Create wayland security contexts
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://git.sr.ht/~whynothugo/way-secure
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	options = lto
+	source = way-secure::git+https://git.sr.ht/~whynothugo/way-secure#tag=v0.2.0
+	sha256sums = 844d67b582f4d9e22d5bd0d11c80bbe25c21a58030bc6dfd3c2b65768754ce39
+
+pkgname = way-secure
