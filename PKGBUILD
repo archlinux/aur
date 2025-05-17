@@ -25,7 +25,7 @@ build(){
 package(){
     cd $_pkgname-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE $pkgdir/usr/share/licenses/${_pkgname%-*}/LICENSE
+    install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
     install -Dm644 config.yaml ~/config/jarvis/config.yaml
 }
 
