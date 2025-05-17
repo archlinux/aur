@@ -1,5 +1,5 @@
 pkgname=windigo
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Lightweight Go-based daemon for Linux that controls fan speeds based on sensor input"
 arch=("x86_64")
@@ -12,13 +12,12 @@ sha256sums=("SKIP")
 build() {
   cd "$srcdir/$pkgname"
   go build -o windigo .
-  ln -sf windigo windigod
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 windigo "$pkgdir/usr/local/bin/windigo"
-  install -Dm755 windigod "$pkgdir/usr/local/bin/windigod"
+  install -Dm755 windigo "$pkgdir/usr/bin/windigo"
+  ln -s windigo "$pkgdir/usr/bin/windigod"
   install -Dm644 windigod.service "$pkgdir/etc/systemd/system/windigod.service"
   install -Dm644 config.example.conf "$pkgdir/etc/windigo/config.example.conf"
 }
