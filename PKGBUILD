@@ -1,7 +1,7 @@
 # Maintainer: Jørgen Stråbø <aur@jorgen-10.no>
 pkgname='freeshow-git'
 pkgver='1.4.3.r0.ga360800'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="A software with a friendly interface and powerful features for making slideshows"
 arch=('x86_64')
 provides=('freeshow')
@@ -11,8 +11,8 @@ options=('!debug' '!strip')
 license=('GPL-3.0-or-later')
 depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'mesa' 'nspr' 'nss' 'pango')
 makedepends=('npm' 'fakeroot' 'git' 'python')
-source=("$pkgname::git+https://github.com/ChurchApps/FreeShow.git" "freeshow.desktop")
-sha256sums=('SKIP' '5f141e1d28ec7b2ddfed43855a7d3cceca6b710887fbecc0fbfea1e56f9f05f5' )
+source=("$pkgname::git+https://github.com/ChurchApps/FreeShow.git" "freeshow.desktop" "freeshow")
+sha256sums=('SKIP' '5f141e1d28ec7b2ddfed43855a7d3cceca6b710887fbecc0fbfea1e56f9f05f5' '254019aa21f63a16d25ea2ea87644d6395eaeabe9fc3604b604326483db35f56' )
 
 pkgver() {
   cd "$pkgname"
@@ -47,8 +47,7 @@ package() {
   rm -rf "$srcdir/$pkgname/node_modules"
 
   # Install the freeshow executable to /usr/bin
-  install -dm755 "$pkgdir/usr/bin"
-  ln -sf "/opt/freeshow/freeshow" "$pkgdir/usr/bin/freeshow"
+  install -Dm755 "../freeshow" "$pkgdir/usr/bin/freeshow"
 
   # Install the license
   install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/freeshow/LICENSE"
