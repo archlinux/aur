@@ -2,12 +2,15 @@
 
 pkgname=dwm-systray
 pkgver=6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="DWM with patches: Dynamic window manager for X (systray+gaps custom build)"
 url="https://github.com/petRUShka/dwm-config"
 license=('MIT')
 arch=('x86_64' 'i686')
 options=(zipman)
+provides=("dwm=${pkgver}")
+conflicts=('dwm')
+replaces=('dwm')
 
 # ---- runtime deps ---------------------------------------------------
 depends=(
