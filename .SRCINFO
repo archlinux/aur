@@ -1,0 +1,25 @@
+pkgbase = decomp-toolkit-bin
+	pkgdesc = A GameCube & Wii decompilation toolkit
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/encounter/decomp-toolkit
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	provides = decomp-toolkit
+	conflicts = decomp-toolkit
+	source = decomp-toolkit-1.5.1-README.md::https://github.com/encounter/decomp-toolkit/raw/refs/tags/v1.5.1/README.md
+	source = decomp-toolkit-1.5.1-LICENSE-MIT::https://github.com/encounter/decomp-toolkit/raw/refs/tags/v1.5.1/LICENSE-MIT
+	source = decomp-toolkit-1.5.1-LICENSE-APACHE-2.0::https://github.com/encounter/decomp-toolkit/raw/refs/tags/v1.5.1/LICENSE-APACHE
+	sha256sums = c645db74482a42a77b2d761599414d7d9df1bd5abd78e162aff7b71a210692d2
+	sha256sums = 544ffe9befaefa6b59ab1fdde58789069ba7c1b65432bdea273a16b2117909b7
+	sha256sums = fd363f1eb5135402a2e66f4a6173e6eff06daabe79d150acd7c669d33b985b4e
+	source_aarch64 = decomp-toolkit-1.5.1-aarch64::https://github.com/encounter/decomp-toolkit/releases/download/v1.5.1/dtk-linux-aarch64
+	sha256sums_aarch64 = 7827362119244566e41d83c08eb56dcd463447211d28e94146883d92f98e68de
+	source_i686 = decomp-toolkit-1.5.1-i686::https://github.com/encounter/decomp-toolkit/releases/download/v1.5.1/dtk-linux-i686
+	sha256sums_i686 = ca20aa090c4043a6aa1a26851e968bb476f4f14e911c098f4b4b071e07e9e676
+	source_x86_64 = decomp-toolkit-1.5.1-x86_64::https://github.com/encounter/decomp-toolkit/releases/download/v1.5.1/dtk-linux-x86_64
+	sha256sums_x86_64 = 0b186089012d3352cadf341b0ccb82bb17da023ea58db1e0109a302fde7b7730
+
+pkgname = decomp-toolkit-bin

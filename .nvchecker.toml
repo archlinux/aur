@@ -1,0 +1,5 @@
+[decomp-toolkit-bin]
+source = "github"
+github = "encounter/decomp-toolkit"
+use_latest_release = true
+prefix = "v"
