@@ -1,7 +1,7 @@
 # Maintainer: Marco Julian Solanki <aur@solanki.mozmail.com>
 
 pkgname='adaptivecpp'
-pkgver=24.10.0
+pkgver=25.02.0
 pkgrel=1
 pkgdesc='A modern, community-driven platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors.'
 arch=('x86_64')
@@ -18,6 +18,7 @@ depends=(
     'hip-runtime-amd'
     'level-zero-loader'
     'llvm-libs'
+    'numactl'
     'nvidia-utils'
     'ocl-icd'
     'python'
@@ -42,7 +43,6 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_SKIP_INSTALL_RPATH=YES \
-        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DACPP_COMPILER_FEATURE_PROFILE=full \
         -DWITH_CUDA_BACKEND=ON \
         -DWITH_ROCM_BACKEND=ON \
