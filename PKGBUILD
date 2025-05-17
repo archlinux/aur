@@ -4,7 +4,7 @@
 _mayaver=2026
 
 pkgname=maya-arnold
-pkgver=5.5.1.1
+pkgver=5.5.2
 pkgrel=1
 pkgdesc='Autodesk Maya Arnold Renderer Plugin'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('maya-usd: Universal scene description support'
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from Autodesk.com')
 source=("manual://MtoA-${pkgver}-linux-${_mayaver}.run")
-b2sums=('4a1c60bd2d7477f79d4f90e2357cc3ff81f3c8b3627fb765fb25e5efc1d2898508e6e0da66adb9025d1a6fbeb4019cf51459d7fe708a6716a9e6df33eceaed43')
+b2sums=('ea3bc9ece9da15707fb4968383bf5724c7ff43e119849397f48aa69b080ebf860a72ff38201d06dcebec49d79077169aa21719adfde34d83a9b2092434ec1569')
 
 options=(!strip)
 
