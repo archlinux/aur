@@ -15,5 +15,5 @@ elif [[ "$@" = "--actions share-files" ]]; then
 elif [[ "$@" = "--actions quit" ]]; then
 	exec portable --actions quit
 else
-	exec portable "$@"
+	exec portable -- "$@"
 fi
