@@ -1,4 +1,4 @@
-pkgbase = jarvis
+pkgbase = jarvis-llm
 	pkgdesc = jsrvis, a cli llm client
 	pkgver = 0.1
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = jarvis
 	depends = python
 	source = jarvis-0.1.tar.gz::https://github.com/Catalina-sys456/jarvis/archive/refs/tags/v0.1.tar.gz
 
-pkgname = jarvis
+pkgname = jarvis-llm
