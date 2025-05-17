@@ -4,7 +4,7 @@
 # Contributor: SmackleFunky <smacklefunky@optusnet.com.au>
 
 pkgname=ltris
-pkgver=1.2.7
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A tetris clone where you have a bowl with blocks falling down"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('sdl_mixer')
 backup=('var/games/ltris.hscr')
 install=$pkgname.install
 source=(https://downloads.sourceforge.net/lgames/$pkgname-$pkgver.tar.gz)
-sha256sums=('1291c6a642d06b9ee153ac0a2e7855a2c983e839c618f1a294df04d829525cb0')
+sha256sums=('ff28c55a18c61f28a86ba7f30f13222dfed0f7fbeb492acd95c97de9c659cec9')
 
 prepare() {
   cd $pkgname-$pkgver
