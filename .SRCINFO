@@ -1,13 +1,13 @@
 pkgbase = caddy-naiveproxy-bin
 	pkgdesc = Caddy web server
-	pkgver = 2.7.6
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://github.com/caddyserver/caddy
 	arch = x86_64
 	license = Apache-2.0
 	provides = caddy
 	conflicts = caddy
-	source = https://github.com/klzgrad/forwardproxy/releases/download/v2.7.6-naive2/caddy-forwardproxy-naive.tar.xz
+	source = https://github.com/klzgrad/forwardproxy/releases/download/v2.10.0-naive/caddy-forwardproxy-naive.tar.xz
 	source = Caddyfile
 	source = caddy.service
 	source = caddy.sysusers
