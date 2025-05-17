@@ -1,0 +1,4 @@
+post_install() {
+  systemd-sysusers
+  systemd-tmpfiles --create
+}
