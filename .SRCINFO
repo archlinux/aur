@@ -1,0 +1,10 @@
+pkgbase = kwin-tile-gaps-git
+	pkgdesc = KWin script to add space around windows touching a screen edge or other window
+	pkgver = r267.a14a500
+	pkgrel = 1
+	url = https://github.com/ccatterina/tile-gaps
+	arch = any
+	source = tile-gaps::git+https://github.com/ccatterina/tile-gaps.git#branch=plasma-6-port
+	md5sums = SKIP
+
+pkgname = kwin-tile-gaps-git
