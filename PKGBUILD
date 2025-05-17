@@ -2,31 +2,25 @@
 
 _upname=FoundryTools-CLI
 pkgname=ftcli
-pkgver=1.1.22
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='Foundry Tools command line font editor'
 arch=(any)
 url="https://github.com/ftCLI/$_upname"
 license=(MIT)
-_pydeps=(cffsubr
-         click
-         brotli
-         fonttools
+_pydeps=(click
          loguru
          pathvalidate
-         rich
-         skia-pathops
-         zopfli)
+         foundrytools
+         rich)
 depends=(afdko
-         dehinter
-         font-line
          python
          "${_pydeps[@]/#/python-}")
 makedepends=(python-{build,installer,wheel}
-             python-setuptools)
+             python-hatchling)
 _archive="$_upname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('4be205f3de573e66291af9aaba15f2b52c0c777edbd7fa6cdc64fb6d629bec1c')
+sha256sums=('d4bfb5dc2ea155fe796baa140eb0c3a071eafb46abf0f9d5b40c998d50f92130')
 
 build() {
 	cd "$_archive"
