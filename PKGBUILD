@@ -42,7 +42,6 @@ build() {
   cd gTile
   export npm_config_cache="$srcdir/npm_cache"
   npm install
-  npm run build
   npm run build:dist
 }
 
