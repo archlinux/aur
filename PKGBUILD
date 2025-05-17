@@ -1,6 +1,6 @@
 # Maintainer: thirdwinter thirdwinters@gmail.com
 pkgname=foamshot-bin
-pkgver=v0.2.4
+pkgver=v0.2.5
 pkgrel=1
 epoch=
 pkgdesc="foamshot is wayland screenshot utility build by rust"
