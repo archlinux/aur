@@ -1,0 +1,15 @@
+pkgbase = pixivfe
+	pkgdesc = An open source alternative frontend for Pixiv
+	pkgver = v3.0
+	pkgrel = 1
+	url = https://codeberg.org/PixivFE/PixivFE
+	arch = any
+	license = AGPL3
+	makedepends = go
+	makedepends = git
+	provides = pixivfe
+	conflicts = pixivfe
+	source = pixivfe::git+https://codeberg.org/pixivfe/pixivfe.git#tag=a1c1d8912bb6d0eb67a683a6dc57b3ead496bf27
+	sha256sums = d853af4d720c5abc107878bcdfd55f5517bca370591b81e6eaa3adf2b485929f
+
+pkgname = pixivfe
