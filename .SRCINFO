@@ -1,10 +1,10 @@
 pkgbase = digital-rain-git
 	pkgdesc = Recreate the Digital Rain effect from the Matrix in a standard terminal
 	pkgver = r8.d3963c4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/DavidWKnight/Digital-Rain
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	provides = digital-rain
 	conflicts = digital-rain
