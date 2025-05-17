@@ -3,7 +3,7 @@
 
 _name=tty-solitaire
 pkgname="${_name}-git"
-pkgver=1.3.1.r9.gef83b74
+pkgver=1.4.1.r2.g8401c4d
 pkgrel=1
 epoch=1
 pkgdesc='An ncurses-based Klondike solitaire clone'
