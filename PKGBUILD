@@ -3,7 +3,7 @@
 pkgname=qpageview-git
 pkgver=1.0.0.r4.g4066284
 pkgrel=1
-pkgdesc="A page based document viewer widget for Qt5/PyQt5."
+pkgdesc="A page based document viewer widget for Qt6/PyQt6."
 arch=('any')
 url="https://github.com/frescobaldi/qpageview"
 license=('GPL-3.0-or-later')
