@@ -1,8 +1,8 @@
 # Contributor: Mr.Smith1974 < ... >
 # Maintainer: Jonathan Hilger <joni dot hilger at yahoo dot de>
 pkgname=vpinball
-pkgver=r8022.2996669
-pkgrel=2
+pkgver=r8029.6e386e1
+pkgrel=1
 pkgdesc="An open source pinball table editor and simulator (BGFX standalone version)"
 arch=('x86_64')
 url="https://github.com/vpinball/vpinball"
@@ -25,14 +25,13 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   cp make/CMakeLists_bgfx-linux-x64.txt CMakeLists.txt
-  #sed -i 's%${CMAKE_SOURCE_DIR}/third-party/runtime-libs/linux-x64%/usr/lib%g' CMakeLists.txt
-  #sed -i 's%${CMAKE_SOURCE_DIR}/third-party/include%/usr/include\n/usr/include/ankerl%g' CMakeLists.txt
   cmake -DCMAKE_BUILD_TYPE=Release -DPOST_BUILD_COPY_EXT_LIBS=FALSE -B build
   cmake --build build
 }  # build
 
 package() {
   cd "${srcdir}/${pkgname}"
+  mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/opt/vpinball"
   mkdir -p "${pkgdir}/usr/share/applications"
   mkdir -p "${pkgdir}/usr/share/doc/vpinball"
@@ -41,6 +40,7 @@ package() {
   cp -r build/tables build/flexdmd build/assets build/scripts build/plugins ${pkgdir}/opt/vpinball/
   cp -r build/docs "${pkgdir}/usr/share/doc/vpinball/"
   #
+  ln -s "/opt/vpinball/VPinballX_BGFX" "${pkgdir}/usr/bin/VPinballX_BGFX"
   install -Dm 755 "${srcdir}/${pkgname}/build/VPinballX_BGFX"	"${pkgdir}/opt/vpinball/VPinballX_BGFX"
   install -Dm 644 "${srcdir}/vpinball.desktop"			"${pkgdir}/usr/share/applications/vpinball.desktop"
   install -Dm 644 "${srcdir}/visualpinball_screen1.jpg"		"${pkgdir}/usr/share/pixmaps/visualpinball_screen1.jpg"
