@@ -2,7 +2,7 @@
 
 pkgname=changedetection.io
 pkgver=0.49.17
-pkgrel=1
+pkgrel=2
 pkgdesc='change monitoring of web pages'
 arch=(any)
 url='https://github.com/dgtlmoon/changedetection.io'
@@ -12,7 +12,7 @@ depends=(# ordered per https://github.com/dgtlmoon/changedetection.io/blob/maste
          python-pyee
          python-flask-compress
          python-eventlet
-         # python-validators # waiting for package update - needs at least 0.21
+         python-validators
          python-timeago
          python-inscriptis
          python-feedgen
@@ -48,6 +48,7 @@ depends=(# ordered per https://github.com/dgtlmoon/changedetection.io/blob/maste
          python-extruct
          python-babel
          python-price-parser
+         python-pluggy
          python-pysocks)
 optdepends=('python-playwright: for fetching pages with javascript')
 source=(https://github.com/dgtlmoon/changedetection.io/archive/refs/tags/$pkgver.tar.gz
@@ -66,7 +67,7 @@ package() {
   sed -i 's/[>~=]=.*//; /pyppeteer/d' requirements.txt
   python setup.py install --root="$pkgdir" --optimize=1
   # command per https://wiki.archlinux.org/title/Python_package_guidelines (now removed from page?)
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --target="$pkgdir/usr/lib/changedetection.io" --ignore-installed --no-deps validators panzi-json-logic
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --target="$pkgdir/usr/lib/changedetection.io" --ignore-installed --no-deps panzi-json-logic
   python -O -m compileall -s ${pkgdir} "${pkgdir}/usr/lib/changedetection.io"
   install -Dm644 "${srcdir}/sysusers" "${pkgdir}/usr/lib/sysusers.d/changedetection.io.conf"
   install -Dm644 "${srcdir}/tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/changedetection.io.conf"
