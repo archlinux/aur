@@ -1,16 +1,16 @@
 pkgbase = siki
 	pkgdesc = An Electrom-based application for browsing and posting to message boards
-	pkgver = 0.34.1
-	pkgrel = 2
+	pkgver = 0.34.2
+	pkgrel = 1
 	url = https://sikiapp.net
 	arch = x86_64
 	license = MIT
 	depends = electron34
-	noextract = siki-0.34.1-amd64.deb
+	noextract = siki-0.34.2-amd64.deb
 	options = !debug
-	source = siki-0.34.1-amd64.deb::https://sikiapp.net/archives/0.34.1/Siki-0.34.1-amd64.deb
+	source = siki-0.34.2-amd64.deb::https://sikiapp.net/archives/0.34.2/Siki-0.34.2-amd64.deb
 	source = siki.sh
-	sha512sums = 016db654fbc1590a7b43f520aec3fb49cdf213c59cbe92d033fef4f84429222d5750e175a1d37df7c6d5fc448aec6d6ed813787dabc93de1126a2b3b5fc34fc7
+	sha512sums = 5a643873ec3832b3b8786aee9e1c0072ae6b9dd47cb1c07b44db6cf85459588f56c9c4e02906a81f0ca456b5940cb2fac86dd395ee0a313292b2b3371a1cae94
 	sha512sums = d7548b3f81e5fbac18470c96a998fc73657c7d6a659d56b82a68291407c07ebe448dfc318f507b8ad6da831bc73d47336248484da7f05642875e994c7e42803e
 
 pkgname = siki
