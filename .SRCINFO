@@ -1,0 +1,19 @@
+pkgbase = shroomie-git
+	pkgdesc = A friendly AUR package manager with a simple GUI
+	pkgver = r22.f7545c4
+	pkgrel = 1
+	url = https://github.com/snow-arc/shroomie
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-pip
+	depends = python-pyqt6
+	depends = python-pexpect
+	depends = git
+	depends = base-devel
+	source = git+https://github.com/snow-arc/shroomie.git
+	sha256sums = SKIP
+
+pkgname = shroomie-git
