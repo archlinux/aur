@@ -7,7 +7,7 @@ pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='VHDL simulator - LLVM back-end'
 url='https://github.com/ghdl/ghdl'
-license=('GPL2')
+license=('GPL-2.0-or-later')
 
 provides=("ghdl=$pkgver" "ghdl-git=$pkgver")
 conflicts=('ghdl' 'ghdl-gcc-git' 'ghdl-mcode-git')
