@@ -1,0 +1,12 @@
+pkgbase = filefetch
+	pkgdesc = A folder info fetcher written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/gummyniki/filefetch
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = filefetch-0.1.0.tar.gz::https://github.com/gummyniki/filefetch/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = filefetch
