@@ -1,13 +1,11 @@
 pkgbase = templi_cli
-	pkgdesc = Templi is a simple tool designed to expedite the template file generation process
-	pkgver = 4.1.0
+	pkgdesc = Templi is a tool that simplifies boilerplate creation and usage
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://github.com/RickaPrincy/Templi
 	arch = x86_64
 	license = MIT
-	depends = rcli
-	depends = libtempli
-	source = templi_cli_archlinux@4.1.0.tar.gz::https://github.com/RickaPrincy/Templi/releases/download/v4.1.0/templi_cli_archlinux@4.1.0.tar.gz
-	sha256sums = ae518f2336899dd134358d8e41c3fc6290920f75e90e365bb41492f837ff6180
+	source = templi-cli-linux-x86_64@4.1.1.tar.gz::https://github.com/RickaPrincy/Templi/releases/download/v4.1.1/templi-cli-linux-x86_64@4.1.1.tar.gz
+	sha256sums = a22e50fd3a1f69050a5ad21d10fdad05c498ebd6b7479207c51eaf176057fae6
 
 pkgname = templi_cli
