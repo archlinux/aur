@@ -1,6 +1,6 @@
 # Maintainer: drzee <info@drzee.net>
 pkgname=amazon-q-bin
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Amazon Q CLI for Linux. See: https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line.html for details"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc>=2.34')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=(https://desktop-release.q.us-east-1.amazonaws.com/${pkgver}/q-${CARCH}-linux.zip)
-md5sums=('9c1ac931194b547cf15ad0261f18fad6')
+md5sums=('b91718d1821ab3c8e54409a4cd5c53da')
 noextract=()
 # We set options here to superseed the default makepkg.conf options. We dont whant debug build or strip debug info from the package. Its not relevant for a binary repackage of the upstream package.
 options=(!debug !strip)
