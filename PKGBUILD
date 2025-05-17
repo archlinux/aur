@@ -1,17 +1,13 @@
 # Maintainer: Dylan Delgado <dylan1496 at live dot com>
 
 pkgname=ipython-git
-pkgver=8.1.1.r17.g47ccec77b
+pkgver=9.2.0.r1.g5a3bf345e
 pkgrel=1
 pkgdesc="An enhanced Interactive Python shell - git version"
 arch=('any')
 url="https://ipython.org"
 license=('BSD')
-depends=('python' 'python-traitlets' 'python-pexpect' 'sqlite'
-         'python-pickleshare' 'python-prompt_toolkit'
-         'python-jedi' 'python-pygments' 'python-backcall'
-	 'python-stack-data' 'python-executing' 'python-asttokens'
-	 'python-pure-eval')
+depends=('python' 'python-decorator' 'python-jedi' 'python-matplotlib' 'python-pexpect' 'python-prompt_toolkit' 'python-pygments' 'python-stack-data' 'python-traitlets')
 makedepends=('python-setuptools')
 optdepends=("python-nose: for IPython's test suite")
 conflicts=('ipython')
