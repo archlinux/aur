@@ -1,8 +1,8 @@
 # Maintainer: ApplicationMaker <Application-Maker.Uinwad@erine.email>
 pkgname=pacman-mirrors-helper-git
-pkgver=r267.28cabd8
+pkgver=r268.7f1db7e
 pkgrel=1
-pkgdesc="A convenient tool, designed to simplify repository management and mirror selection."
+pkgdesc="A lightweight CLI tool to manage repository mirrors and configuration."
 arch=(any)
 url="https://codeberg.org/Application-Maker/pacman-mirrors-helper"
 license=(GPL-3.0-or-later)

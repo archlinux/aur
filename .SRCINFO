@@ -1,6 +1,6 @@
 pkgbase = pacman-mirrors-helper-git
-	pkgdesc = A convenient tool, designed to simplify repository management and mirror selection.
-	pkgver = r267.28cabd8
+	pkgdesc = A lightweight CLI tool to manage repository mirrors and configuration.
+	pkgver = r268.7f1db7e
 	pkgrel = 1
 	url = https://codeberg.org/Application-Maker/pacman-mirrors-helper
 	arch = any
