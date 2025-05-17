@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 pkgbase=bbswitch-ati-git
 pkgname=(bbswitch-ati-git bbswitch-ati-dkms-git)
-pkgver=0.8.5.gddbd243
+pkgver=0.8.7.g2389117
 pkgrel=1
 pkgdesc='kernel module allowing to switch also AMD integrated and Nvidia dedicated graphics card on Optimus laptops (Git version)'
 arch=('i686' 'x86_64')
@@ -9,18 +9,26 @@ license=('GPL')
 url='http://github.com/Bumblebee-Project/bbswitch'
 provides=('bbswitch')
 conflicts=('bbswitch' 'bbswitch-dkms' 'bbswitch-dkms-git' 'bbswitch-git')
-makedepends=('linux-headers' 'git')
-source=("${pkgbase}::git+https://github.com/Bumblebee-Project/bbswitch.git#branch=develop")
-sha256sums=('SKIP')
+makedepends=('linux-headers' 'git' 'patch')
+source=("${pkgbase}::git+https://github.com/Bumblebee-Project/bbswitch.git#branch=develop"
+    "linux5.18.patch::https://patch-diff.githubusercontent.com/raw/Bumblebee-Project/bbswitch/pull/219.patch"
+)
+sha256sums=('SKIP'
+    'f2b4f6f3599938779c4362460ad56431994046377669f6aa8ad0df75195f481a')
 
+prepare() {
+    cd "${srcdir}/${pkgbase}"
+    patch -Np1 <../linux5.18.patch
+
+}
 pkgver() {
-  cd "${srcdir}/${pkgbase}"
-  git describe --always | sed 's|-|.|g' | sed 's/v//g'
+    cd "${srcdir}/${pkgbase}"
+    git describe --always | sed 's|-|.|g' | sed 's/v//g'
 }
 
 build() {
     kernel_ver=$(cut -f1 -d'-' /usr/src/linux/version)
-    cpu=$( grep name /proc/cpuinfo  | uniq | cut -f2 -d: | cut -f2 -d' ')
+    cpu=$(grep name /proc/cpuinfo | uniq | cut -f2 -d: | cut -f2 -d' ')
     cd "${srcdir}/${pkgbase}"
     if [ "$cpu" = "AMD" ]; then
         sed -i 's/PCI_VENDOR_ID_INTEL/PCI_VENDOR_ID_ATI/g' "${srcdir}/${pkgbase}"/bbswitch.c
@@ -34,7 +42,7 @@ package_bbswitch-ati-git() {
     install -Dt "${pkgdir}${_extradir}" -m644 *.ko
     find "${pkgdir}" -name '*.ko' -exec xz {} +
 }
- 
+
 package_bbswitch-ati-dkms-git() {
     depends=('dkms')
     cd ${srcdir}/${pkgbase}
