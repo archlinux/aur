@@ -4,7 +4,7 @@
 
 pkgname=2048.c
 _pkgname=2048
-pkgver=1.0.0.r0.g3eb237f
+pkgver=1.0.3.r3.g663bb70
 pkgrel=1
 epoch=1
 pkgdesc="A terminal 2048 written in c"
