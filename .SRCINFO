@@ -1,7 +1,7 @@
 pkgbase = sockpp
 	pkgdesc = Simple, modern, C++ socket library.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fpagliughi/sockpp
 	arch = arm
 	arch = armv6h
@@ -17,7 +17,7 @@ pkgbase = sockpp
 	depends = glibc
 	provides = sockpp-git
 	conflicts = sockpp-git
-	source = sockpp-1.0.0-1::https://github.com/fpagliughi/sockpp/archive/refs/tags/v1.0.0.tar.gz
+	source = sockpp-1.0.0-2::https://github.com/fpagliughi/sockpp/archive/refs/tags/v1.0.0.tar.gz
 	source = disable-latex-docs.patch
 	source = docs-install-path.patch
 	sha256sums = 818477fae6eb29b9daacef71a3d0c494de9e48f6fd267a7fc5a4c332db211bc5
