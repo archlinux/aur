@@ -2,7 +2,7 @@
 # Maintainer: AnarchistHoneybun <thatonebipanda@gmail.com>
 pkgname=pokemon-colorscripts-fork-git
 _pkgname=pokemon-colorscripts-fork
-pkgver=r114.365bd95
+pkgver=r117.742672d
 pkgrel=1
 pkgdesc="CLI utility that prints unicode sprites of pokemon to the terminal"
 arch=('any')
