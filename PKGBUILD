@@ -1,6 +1,6 @@
 # Maintainer: Vasiliy Stelmachenok <ventureo@yandex.ru>
 pkgname=freesmlauncher
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Minecraft launcher with offline accounts support"
 arch=(x86_64)
@@ -31,7 +31,7 @@ optdepends=(
   'flite: minecraft voice narration'
 )
 source=("git+https://github.com/FreesmTeam/FreesmLauncher#tag=sequoia-$pkgver")
-sha256sums=('e012a504c45b0e215c0f1c46456eefde44e7b6e3b4fef1a36c7ffe87c90fb703')
+sha256sums=('395de9de4563a0313f294dcd37ac3492eacf32fd84d86b3e792b5a65ead69791')
 
 prepare() {
   cd "FreesmLauncher"
