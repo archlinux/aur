@@ -1,7 +1,7 @@
 pkgbase = libmp3splt
 	pkgdesc = Split mp3, ogg, and flac files without decoding - Library
 	pkgver = 0.9.3.1519+r5+g4b48268
-	pkgrel = 3
+	pkgrel = 4
 	url = https://mp3splt.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -20,12 +20,14 @@ pkgbase = libmp3splt
 	source = mp3splt_oformat_parser_snprintf_overflow.patch::https://github.com/mp3splt/mp3splt/pull/368.patch?full_index=1
 	source = mp3splt_flac_slience_trimming.patch::https://github.com/mp3splt/mp3splt/pull/369.patch?full_index=1
 	source = mp3splt_informations_spelling.patch
+	source = mp3splt_ogg_plugin_prototype.patch
 	b2sums = 39a816d6fecb3ae15dc4a36dc2a93c8b9f695800f4366465581e3cc8e77a4b1052a7fed0e02421d549e7100bb5014b16f3ce965c2c9e37d2abb7fc2079d590fd
 	b2sums = ffceb5f0171eb6e11b02fb1fdf4a54ec38ac242a2ad19f552fc8fe81f0d276123480e59a9e687b2da6f036d48b8b7e88a149579f94a1b9c2edca7302e46315c9
 	b2sums = 8739e4ad962af3ddd9c10736199f3ca43640e647098881872f3d490a89a030cd6da574269be0146a0e632813f84670d8a590bdeb2f99fef175d8f21a1582f9da
 	b2sums = 2049015a20a27318c8122e507447540f966a8d0699b873513fc0e561041f80510912b03ee3fab20de556a90d8a88e57efcf6ee0c8b915f55f960197fb406cb11
 	b2sums = 406ecb1c5cdbc507cd74dab8b0e42dafd5938a6f73b48133ab26edbf69768a2cdde1b1453178940f65165b49e93a36b0517597d2ea7c7b48d1d6ec1ce4155a3c
 	b2sums = 4cc4d17eff23e64e6c7721ae70032d0718c5b8f3460195557432938c81528a3b930f0d61b931ab31a14d4cd2c00392fa81fdac65bf391f8b21430aeb4de303de
+	b2sums = e7c3c271bee4ebb53fffaa5a6985683b9f946004650b32c01c9c8687331426d8fda26b71d8df0d1f7495f9860a57b57d45939ab22cebd673afbda8d703194545
 
 pkgname = libmp3splt
 	depends = flac>=1.2.1

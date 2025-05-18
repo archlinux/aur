@@ -1,0 +1,12 @@
+diff -rauN mp3splt-4b48268258c478993bd43703c0cdb0962b79f85f/libmp3splt/plugins/ogg_new_stream_handler.h mp3splt_ogg_plugin_prototype-patch/libmp3splt/plugins/ogg_new_stream_handler.h
+--- mp3splt-4b48268258c478993bd43703c0cdb0962b79f85f/libmp3splt/plugins/ogg_new_stream_handler.h	2020-11-10 00:16:48.000000000 +0100
++++ mp3splt_ogg_plugin_prototype-patch/libmp3splt/plugins/ogg_new_stream_handler.h	2025-05-18 11:07:37.817483306 +0200
+@@ -61,7 +61,7 @@
+ 
+ void splt_ogg_initialise_for_new_stream(splt_ogg_new_stream_handler *nsh, 
+     ogg_page *page, ogg_int64_t *cutpoint, ogg_int64_t previous_granulepos);
+-int splt_ogg_new_stream_needs_header_packet();
++int splt_ogg_new_stream_needs_header_packet(splt_ogg_new_stream_handler *nsh);
+ void splt_ogg_new_stream_handle_header_packet(splt_ogg_new_stream_handler *nsh, ogg_packet *packet, int *error);
+ 
+ #define MP3SPLT_OGG_NEW_STREAM_HANDLER_H
