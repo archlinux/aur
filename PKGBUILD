@@ -3,7 +3,7 @@
 pkgname=wechat-devtools-git
 _pkgname=wechat-devtools
 pkgver=1.06.2503290
-pkgrel=2
+pkgrel=3
 epoch=0
 pkgdesc="WeChat Devtools For Linux."
 license=("MIT")
@@ -21,7 +21,7 @@ source=(
     "${_pkgname}-cli.sh"
 )
 md5sums=(
-    '9bbfd428cbbb42e84bbc01be1f4ac4c4'
+    '28ed356bb79ab6762834b7e7c9465aa5'
     '08b27001217b9732289cd0e33f8f8d58'
     '9f585ae635005d2b6fa0570eb69cc12f'
     '6f3f6858627577e698c95d46e74e7e63'
