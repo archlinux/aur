@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec node /usr/lib/node_modules/php-debug/out/phpDebug.js
