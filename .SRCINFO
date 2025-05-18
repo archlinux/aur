@@ -1,18 +1,13 @@
 pkgbase = fingerprintx
 	pkgdesc = Standalone utility for service discovery on open ports!
 	pkgver = 1.1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/praetorian-inc/fingerprintx
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = boost
 	makedepends = go
-	makedepends = cmake
-	makedepends = pkgconfig
-	depends = gcc-libs
 	depends = glibc
-	options = !lto
-	source = fingerprintx-1.1.15::https://github.com/praetorian-inc/fingerprintx/archive/refs/tags/v1.1.15.zip
-	sha256sums = 947d46adb4657632fddd1b02f330e0d8aadbf429ddc0d632b8797908b1828805
+	source = fingerprintx-1.1.15.tar.gz::https://github.com/praetorian-inc/fingerprintx/archive/v1.1.15.tar.gz
+	sha256sums = 5dc1e112b57e38ca60d87f3ecc8c9c0956a1cfebcb9a57272d1f2d8a13e78748
 
 pkgname = fingerprintx
