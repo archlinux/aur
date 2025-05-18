@@ -1,0 +1,19 @@
+pkgbase = rime-wanxiang-dict-cn
+	pkgdesc = 万象中文词库
+	pkgver = 6.8.1+r20250517
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/amzxyz/RIME-LMDG
+	arch = any
+	license = CC-BY-4.0
+	makedepends = librime
+	makedepends = rime-prelude
+	makedepends = rime-essay
+	makedepends = sed
+	makedepends = rsync
+	source = cn_dicts.20250517.zip::https://github.com/amzxyz/RIME-LMDG/releases/download/dict-nightly/cn_dicts.zip
+	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v6.8.1.tar.gz
+	sha256sums = b2464193c188d08fab6464ba8aeb9e60f69453d73013a3127342265872a945ed
+	sha256sums = b18c5398a81da36d296602bb9c40b4e36bb1fa665adbc4529071d65beba21008
+
+pkgname = rime-wanxiang-dict-cn
