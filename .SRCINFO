@@ -1,7 +1,7 @@
 pkgbase = ekpar2
 	pkgdesc = A tool to create par2 recovery sets for one or more source files, verify and repair these source files.
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ekpar2.sourceforge.net
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname='ekpar2'
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to create par2 recovery sets for one or more source files, verify and repair these source files."
 arch=('i686' 'x86_64')
 url="https://ekpar2.sourceforge.net"
@@ -30,6 +30,7 @@ prepare() {
   cmake -B "${pkgname}-build" -S "${pkgname}-${pkgver}" \
     -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
     -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
+    -DCMAKE_POLICY_VERSION_MINIMUM:STRING=3.5 \
     -Wno-dev
 }
 
