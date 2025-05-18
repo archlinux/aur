@@ -35,8 +35,6 @@ pkgver() {
 prepare() {
   # C++20 disallows the use of the Point<T> syntax in the constructor
   sed -i 's/explicit Point<T>(/explicit Point(/' $pkgname/src/clipper2/Clipper2Lib/include/clipper2/clipper.core.h
-  # Remove upper cmake version check
-  sed -i 's| OR ${CMAKE_VERSION} VERSION_GREATER_EQUAL "4.0"| |' $pkgname/CMakeLists.txt
   # abuse FLATPAK IF statement to build against some system libs
   sed -i 's/if(FLATPAK)/if(true)/' $pkgname/deps/CMakeLists.txt
   # cherry pick an OCCT commit to make it build with system freetype
