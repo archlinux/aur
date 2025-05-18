@@ -1,6 +1,6 @@
 # Maintainer: Karl Essinger <xkaess22@gmail.com>
 pkgname=supportboi-git
-pkgver=4.0.0.54.ge177ba1
+pkgver=4.0.0.55.git042feaf
 pkgrel=1
 pkgdesc="A support ticket Discord bot with automated interviews and rendered HTML transcripts. Dev build."
 arch=("x86_64")
@@ -34,7 +34,7 @@ _srcdir="SupportBoi"
 
 pkgver() {
   cd "$_srcdir"
-  git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/./g' || echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/./g;s/g/git/' || echo "r$(git rev-list --count HEAD).git$(git rev-parse --short HEAD)"
 }
 
 prepare() {
