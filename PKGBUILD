@@ -1,27 +1,29 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgbase=vkd3d-git
-pkgname=('vkd3d-git'
-         'lib32-vkd3d-git'
-         )
-pkgver=1.2.799.ga4ca091
+pkgname=(
+  'vkd3d-git'
+  'lib32-vkd3d-git'
+)
+pkgver=1.15.365.g379b297d
 pkgrel=1
 arch=('x86_64')
 url='https://source.winehq.org/git/vkd3d.git'
 license=('LGPL')
-makedepends=('spirv-headers'
-             'vulkan-headers'
-             'xcb-proto'
-             'wine'
-             'spirv-tools'
-             'lib32-spirv-tools'
-             'vulkan-icd-loader'
-             'lib32-vulkan-icd-loader'
-             'libxcb'
-             'lib32-libxcb'
-             'ncurses'
-             'lib32-ncurses'
-            )
+makedepends=(
+  'spirv-headers'
+  'vulkan-headers'
+  'xcb-proto'
+  'wine'
+  'spirv-tools'
+  'lib32-spirv-tools'
+  'vulkan-icd-loader'
+  'lib32-vulkan-icd-loader'
+  'libxcb'
+  'lib32-libxcb'
+  'ncurses'
+  'lib32-ncurses'
+)
 conflicts=('vkd3d')
 provides=('vkd3d')
 source=('git+https://source.winehq.org/git/vkd3d.git')
@@ -40,6 +42,7 @@ prepare() {
 }
 
 build() {
+  CPPFLAGS+=' -DVKD3D_SHADER_UNSUPPORTED_GLSL'
 
   cd "${srcdir}/vkd3d"
   ./autogen.sh
@@ -68,6 +71,7 @@ build() {
   make
 }
 
+#disable due SPIRV fails
 _check() {
   make -C build64 check
   make -C build32 check
@@ -75,30 +79,34 @@ _check() {
 
 package_vkd3d-git() {
   pkgdesc='D3D12 to Vulkan translation library. (GIT version)'
-  depends=('spirv-tools'
-           'libvulkan.so'
-           'libxcb'
-           'ncurses'
-           )
-  provides=('vkd3d'
-            "vkd3d=${pkgver}"
-             )
+  depends=(
+    'spirv-tools'
+    'libvulkan.so'
+    'libxcb'
+    'ncurses'
+  )
+  provides=(
+    'vkd3d'
+    "vkd3d=${pkgver}"
+  )
   conflicts=('vkd3d')
   make -C build64 DESTDIR="${pkgdir}" install
 }
 
 package_lib32-vkd3d-git() {
   pkgdesc='D3D12 to Vulkan translation library. (GIT version) (32-bits)'
-  depends=("vkd3d=${pkgver}"
-           'lib32-spirv-tools'
-           'libvulkan.so'
-           'lib32-libxcb'
-           'lib32-ncurses'
-           )
+  depends=(
+    "vkd3d=${pkgver}"
+    'lib32-spirv-tools'
+    'libvulkan.so'
+    'lib32-libxcb'
+    'lib32-ncurses'
+  )
   provides=('lib32-vkd3d')
   conflicts=('lib32-vkd3d')
   make -C build32 DESTDIR="${pkgdir}" install
 
   rm -fr "${pkgdir}/usr/include"
   mv "${pkgdir}/usr/bin/vkd3d-compiler" "${pkgdir}/usr/bin/vkd3d-compiler-32"
+  mv "${pkgdir}/usr/bin/vkd3d-dxbc" "${pkgdir}/usr/bin/vkd3d-dxbc-32"
 }
