@@ -4,24 +4,21 @@
 
 _gemname=ncursesw
 pkgname=ruby-ncursesw
-pkgver=1.4.12
+pkgver=1.4.13
 pkgrel=1
 pkgdesc='wraps functions, macros, global variables and constants of the ncurses library.'
 arch=(i686 x86_64)
 url='http://github.com/sup-heliotrope/ncursesw-ruby'
-license=(GPL-2.0-or-later)
-depends=(ruby)
+license=(LGPL-2.1-only)
+depends=(ruby ncurses glibc)
 options=(!emptydirs)
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/sup-heliotrope/ncursesw-ruby/archive/refs/tags/v${pkgver}.tar.gz"
-  https://github.com/sup-heliotrope/ncursesw-ruby/pull/40.patch
 )
-sha1sums=('25f1973574d1e6225fe4665bf0c608d5a0e8bfa9'
-          'ab26e177982f3f503ab6a19b65fe2ce6874a426d')
+sha1sums=('10ec76fac97d7494d57dc0a1fd3f1e280f3546e6')
 
 prepare() {
   cd "${_gemname}-ruby-${pkgver}"
-  patch -Np1 -i ../40.patch
   ruby extconf.rb
 }
 build() {
