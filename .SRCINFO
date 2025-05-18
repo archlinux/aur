@@ -1,7 +1,7 @@
 pkgbase = gz-rendering9
 	pkgdesc = C++ library designed to provide an abstraction for different rendering engines.
 	pkgver = 9.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gazebosim/gz-rendering
 	arch = any
 	license = Apache-2.0
@@ -15,11 +15,13 @@ pkgbase = gz-rendering9
 	depends = gz-math=8
 	depends = gz-plugin=3
 	depends = gz-utils=3
-	depends = ogre-next<3.0.0
+	depends = ogre-next
 	optdepends = optix: Nvidia OptiX rendering engine plugin
 	optdepends = ogre-1.9: Ogre 1.x rendering enging plugin
 	provides = gz-rendering=9
 	source = https://github.com/gazebosim/gz-rendering/archive/gz-rendering9_9.1.0.tar.gz
+	source = https://github.com/gazebosim/gz-rendering/pull/1128.patch
 	sha256sums = 3f86a88384e062725d3388476fcd35cc01cdb24ad9c15248ebefeff3699bdffd
+	sha256sums = 2c9939d6d5eeb4b669267d09266e45a7dc0d387bf3e1b01510acc5090a6be92d
 
 pkgname = gz-rendering9
