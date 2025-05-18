@@ -18,10 +18,8 @@ chrootpkg:
 	mkdir -p $$HOME/.gradle
 	mkdir -p _build
 	mkarchroot _build/root base-devel systemd || exit 0
-	arch-nspawn -c /var/cache/pacman/pkg _build/root \
-		pacman -Syu --noconfirm --color=never
-	arch-nspawn -c /var/cache/pacman/pkg _build/$$(whoami) \
-		pacman -Syu --noconfirm --color=never
+	LC_ALL=C arch-nspawn -c /var/cache/pacman/pkg _build/root \
+		pacman -Syu --noconfirm
 	makechrootpkg \
 		-d $$HOME/.cache/go-build:/build/.cache/go-build \
 		-d $$HOME/.gradle:/build/.gradle \
