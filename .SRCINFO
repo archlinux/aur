@@ -1,7 +1,7 @@
 pkgbase = vpinball
-	pkgdesc = An open source pinball table editor and simulator (BGFX standalone version)
+	pkgdesc = An open source pinball table editor and simulator - BGFX standalone version built with dependencies as defined by the developers
 	pkgver = r8030.2652993
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vpinball/vpinball
 	arch = x86_64
 	license = GPL-3.0-or-later
