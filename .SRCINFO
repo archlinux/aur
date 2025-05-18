@@ -1,0 +1,21 @@
+pkgbase = nifskope-bin
+	pkgdesc = Fork of NifSkope 2.0.dev9 with many fixes and improvements.
+	pkgver = 2.0.dev11
+	pkgrel = 4
+	url = https://www.niftools.org
+	arch = x86_64
+	license = BSD
+	makedepends = 7zip
+	depends = qt6-imageformats
+	optdepends = qt6-tools
+	provides = nifskope
+	source = https://github.com/fo76utils/nifskope/releases/download/v2.0.dev11-20250505/NifSkope_2_0_2025-05-05-linuxqt6_x64.7z
+	source = https://github.com/fo76utils/nifskope/blob/develop/res/nifskope.png?raw=true
+	source = NifSkope.desktop
+	source = vnd.gamebryo-nif.xml
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 4272b3c3d9ba9ecffcf8144ea376053fbb2e7546c09727ebd95061443a3781e1
+	sha256sums = SKIP
+
+pkgname = nifskope-bin

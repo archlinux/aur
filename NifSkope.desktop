@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=NifSkope
+Exec=/usr/lib/nifskope/NifSkope %U
+Terminal=false
+Type=Application
+Icon=NifSkope
+StartupWMClass=NifSkope
+Categories=Graphics;3DGraphics;
+Comment=Edit the NetImmerse format (NIF) file
+MimeType=application/vnd.gamebryo-nif;application/vnd.gamebryo-kf;application/vnd.gamebryo-kfm;
