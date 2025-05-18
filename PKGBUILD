@@ -2,12 +2,12 @@
 
 pkgname=ungoogled-chromium-widevine-hook
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Install latest WidewineCDM for chromium'
 arch=('x86_64')
 url='https://ungoogled-software.github.io/ungoogled-chromium-wiki/faq#how-do-i-install-widevine-cdm'
 license=('BSD')
-depends=('ungoogled-chromium' 'tar')
+depends=('chromium' 'tar')
 options=('!debug')
 source=('90-ungoogled-chromium-widevine.hook'
 		'ungoogled-chromium-widevine')
