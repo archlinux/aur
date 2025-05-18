@@ -6,7 +6,7 @@
 # Thanks: Thomas Dziedzic < gostrc at gmail >
 
 pkgname=gtkwave-gtk3-tcl
-pkgver=3.3.121
+pkgver=3.3.123
 pkgrel=1
 pkgdesc='A wave viewer which reads LXT, LXT2, VZT, GHW and VCD/EVCD files (GTK+ 3 version, with Tcl/Tk support)'
 arch=('x86_64')
@@ -20,12 +20,11 @@ conflicts=(gtkwave)
 provides=(gtkwave)
 install='gtkwave.install'
 source=("https://downloads.sourceforge.net/project/gtkwave/gtkwave-gtk3-$pkgver/gtkwave-gtk3-$pkgver.tar.gz")
-sha256sums=('54aa45788d6d52afb659c3aef335aafde0ef2c8990a7770f8eaa64e57f227346')
+sha256sums=('c2209d6c38e2bfe9747538bc3820d3525e88bd66c4ce092d04d2417e666bd797')
 
 build() {
   cd gtkwave-gtk3-$pkgver
 
-  CFLAGS="${CFLAGS} -Wno-error=incompatible-pointer-types"
   ./configure \
     --prefix=/usr \
     --enable-tcl \
