@@ -1,7 +1,7 @@
 pkgbase = zalo-unofficial-git
 	pkgdesc = Unofficial Zalo client for Linux, port from MacOS version
 	pkgver = 24.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/realdtn2/zalo-linux-unofficial-2024
 	arch = x86_64
 	license = custom
