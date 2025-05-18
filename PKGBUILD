@@ -27,13 +27,13 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}/${_appname}"
+    cd "${srcdir}/${_appname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     meson setup -Dprefix=/usr build
     meson compile -C build
 }
 
 package() {
-    cd "${srcdir}/${_appname}"
+    cd "${srcdir}/${_appname}-${pkgver}"
     meson install -C build --destdir "$pkgdir"
 }
