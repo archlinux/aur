@@ -1,6 +1,6 @@
 pkgbase = blis-git
 	pkgdesc = BLAS-like Library Instantiation Software Framework
-	pkgver = 1.0.r19.g5cbec6503
+	pkgver = 1.1.r54.g5097c599b
 	pkgrel = 1
 	url = https://github.com/flame/blis
 	arch = i686
@@ -9,12 +9,9 @@ pkgbase = blis-git
 	makedepends = git
 	makedepends = python
 	depends = gcc-libs
-	provides = blis=1.0.r19.g5cbec6503
-	provides = blas
-	provides = cblas
+	provides = blis=1.1.r54.g5097c599b
+	provides = libblis.so
 	conflicts = blis
-	conflicts = blas
-	conflicts = cblas
 	options = staticlibs
 	source = git+https://github.com/flame/blis.git
 	sha256sums = SKIP

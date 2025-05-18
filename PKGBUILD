@@ -3,7 +3,7 @@
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=blis-git
-pkgver=1.0.r19.g5cbec6503
+pkgver=1.1.r54.g5097c599b
 pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software Framework"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ url="https://github.com/flame/blis"
 license=('BSD-3-Clause')
 depends=('gcc-libs')
 makedepends=('git' 'python')
-provides=("blis=$pkgver" 'blas' 'cblas')
-conflicts=('blis' 'blas' 'cblas')
+provides=("blis=$pkgver" 'libblis.so')
+conflicts=('blis')
 options=('staticlibs')
 source=("git+https://github.com/flame/blis.git")
 sha256sums=('SKIP')
@@ -34,7 +34,8 @@ build() {
   ./configure \
     --prefix="/usr" \
     --enable-cblas \
-    --enable-threading=openmp auto
+    --enable-threading=openmp \
+    generic
   make
 }
 
