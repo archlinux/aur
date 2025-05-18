@@ -1,5 +1,5 @@
 pkgbase = opentelemetry-python-contrib
-	pkgver = 0.54b0
+	pkgver = 0.54b1
 	pkgrel = 1
 	arch = any
 	license = Apache-2.0
@@ -7,8 +7,8 @@ pkgbase = opentelemetry-python-contrib
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = opentelemetry-python-contrib-0.54b0.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.54b0.tar.gz
-	b2sums = a31e5e3c551a767d9c1c06517d836b44262caaca76a793d62450cdedb63eebcdb1fa3ccb75ceafa777ec50f3e4dbaec93e07b1df3e368f20b55ac2400bc1bddb
+	source = opentelemetry-python-contrib-0.54b1.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.54b1.tar.gz
+	b2sums = b577e69a4046f30d875c731aa03feb412690ab50cfeec1978d3c15c4661ed967e8b72f71e6db822e6fca35443b4e1ac61c0e50d31596b1f6c4703e158ea0ede2
 
 pkgname = python-opentelemetry-exporter-prometheus-remote-write
 	pkgdesc = Prometheus Remote Write Metrics Exporter for OpenTelemetry
