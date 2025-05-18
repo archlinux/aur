@@ -2,8 +2,8 @@ pkgdesc="Intel® RealSense™ Cross Platform"
 url="https://www.intelrealsense.com/"
 
 pkgname=librealsense2
-pkgver='2.54.2'
-pkgrel=2
+pkgver='2.56.3'
+pkgrel=1
 arch=('x86_64')
 license=("Apache-2.0")
 
@@ -18,14 +18,14 @@ depends=(
     gtk3
     libusb
 )
-
+options=("!debug")
 _dir="librealsense-${pkgver}"
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/IntelRealSense/librealsense/archive/v${pkgver}.tar.gz"
     "g++13.patch"
     "realsense-viewer.desktop"
 )
-sha256sums=('e3a767337ff40ae41000049a490ab84bd70b00cbfef65e8cdbadf17fd2e1e5a8'
+sha256sums=('a18112df0dc0bf442b58fb754f719be1992ddbba154564db5321729ba340c8a9'
             'c316ff9d5ecdcf22a363c5f8f0628ccd18d9243b31b6a8d7d4e023eaf29467de'
             '59281f91e7d471a7dde1cf7207eddd8624e05218cc4301ee52e4c453a0c8ab21')
 conflicts=('librealsense')
@@ -35,12 +35,6 @@ prepare() {
     # there is no group called plugdev in archlinux
     sed -i 's|, GROUP:="plugdev"||g' "config/99-realsense-libusb.rules"
     sed -i 's|, GROUP="plugdev"||g' "config/99-realsense-libusb.rules"
-    # patch for g++>=13
-    # check if g++>=13 is installed
-    gnu13_installed=$(g++ --version | head -n1 | awk '/g++/ && ($3+0)>=13')
-    if [ -n "${gnu13_installed}" ]; then
-        patch -p1 -i ${srcdir}/g++13.patch
-    fi
 }
 
 build() {
@@ -62,7 +56,8 @@ build() {
         -DBUILD_WITH_STATIC_CRT=off \
         -DBUILD_WITH_OPENMP=on \
         -DBUILD_EXAMPLES=true \
-        -DBUILD_WITH_TM2=true
+        -DBUILD_WITH_TM2=true \
+        -DCHECK_FOR_UPDATES=OFF
     make -j$(nproc)
 }
 
