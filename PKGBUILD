@@ -15,16 +15,16 @@ _app_website='https://apps.gnome.org/Keypunch'
 arch=('aarch64' 'x86_64')
 license=('GPL-3.0-or-later')
 source=("https://github.com/bragefuglseth/keypunch/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('63edd187becde410750779d053252897bc1ce31d03fd8dd682b6aac85f55e0e22ca9cbf1fb75518036f36cadd64fe73a7b7001a7ec99703b5840cae14423fad7')
+sha512sums=('63edd187becde410750779d053252897bc1ce31d03fd8dd682b6aac85f55e0e22ca9cbf1fb75518036f36cadd64fe73a7b7001a7ec99703b5840cae14423fad7')
 provides=('keypunch')
 conflicts=('keypunch')
 depends=('gtk4' 'libadwaita')
 makedepends=('blueprint-compiler' 'gettext' 'git' 'meson' 'ninja' 'pkgconf' 'rust')
 
-pkgver() {
-	cd "${srcdir}/${_appname}"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+#pkgver() {
+#   cd "${srcdir}/${_appname}-${pkgver}"
+#   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+#}
 
 build() {
     cd "${srcdir}/${_appname}-${pkgver}"
