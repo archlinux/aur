@@ -40,4 +40,3 @@ pkgname = void-git
 	depends = libxss
 	depends = shared-mime-info
 	depends = alsa-lib
-	depends = electron
