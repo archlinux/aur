@@ -1,0 +1,20 @@
+--- eden/src/core/debugger/debugger.cpp	2025-05-18 11:05:56.012178711 -0500
++++ eden/src/core/debugger/debugger.cpp	2025-05-18 10:53:19.535598038 -0500
+@@ -6,7 +6,7 @@
+ #include <thread>
+ 
+ #include <boost/asio.hpp>
+-#include <boost/process/async_pipe.hpp>
++#include <boost/process/v1/async_pipe.hpp>
+ 
+ #include "common/logging/log.h"
+ #include "common/polyfill_thread.h"
+@@ -326,7 +326,7 @@
+ 
+     struct ConnectionState {
+         boost::asio::ip::tcp::socket client_socket;
+-        boost::process::async_pipe signal_pipe;
++        boost::process::v1::async_pipe signal_pipe;
+ 
+         SignalInfo info;
+         Kernel::KScopedAutoObject<Kernel::KThread> active_thread;
