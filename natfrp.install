@@ -22,13 +22,15 @@ post_install() {
         systemctl restart $service
     fi
 }
-pre_upgrade() {
+post_upgrade() {
     post_install
 }
 
 pre_remove() {
-    if systemctl -q is-active $service; then
+    if systemctl -q is-enableed $service; then
         systemctl disable --now $service
+    elif systemctl -q is-active $service; then
+        systemctl stop $service
     fi
 }
 post_remove() {
