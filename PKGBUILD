@@ -3,8 +3,8 @@
 
 pkgname=void-git
 _pkgname=void
-pkgver=1.99.3.r2519.g906502f6
-pkgrel=2
+pkgver=1.99.3.r2511.g5cab7e61
+pkgrel=3
 pkgdesc="The Cursor alternative"
 url="https://voideditor.com/"
 arch=('x86_64')
@@ -13,7 +13,6 @@ provides=('void')
 conflicts=('void')
 _elnum=34 #35+ will fail
 depends=( electron${_elnum} ripgrep xdg-utils # replacements
-  libx11
   libxkbfile
   libsecret
   gnupg
@@ -32,12 +31,14 @@ optdepends=(
 makedepends=(
   git
   npm
-  nodejs-lts-iron # see .nvmrc
+  nodejs-lts-iron
   pkgconf
   python
 )
-source=("git+https://github.com/voideditor/void.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/voideditor/void.git#commit=5cab7e61e5ebf95fc24eec6b4213f035f85eb857")
+# https://github.com/voideditor/void/commit/5cab7e61e5ebf95fc24eec6b4213f035f85eb857
+
+sha256sums=('df6e3859b83af81775098f50cdb2f99706a39f65cc2cc3913c918de91fba1085')
 
 pkgver() {
   cd "${_pkgname}"
@@ -67,6 +68,7 @@ build() {
   echo $(sha256sum "${_cachedir}/${_zip}" | cut -d " " -f 1) *${_zip} > build/checksums/electron.txt
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
   # Build
+  npm install
   npm run buildreact # needed by unknown reason
   npm run gulp vscode-linux-x64 #-min # minify cause OOM
 }
