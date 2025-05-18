@@ -9,14 +9,17 @@ arch=("x86_64")
 url="https://gitlab.com/znixian/OpenOVR"
 license=("GPL-3.0-or-later")
 depends=(
+  "glibc"
+  "gcc-libs"
   "vulkan-icd-loader"
+  "libgl"
+  "libx11"
 )
 makedepends=(
   "git"
   "cmake"
   "make"
   "vulkan-headers"
-  "libglvnd"
   "python"
 )
 provides=("opencomposite")
