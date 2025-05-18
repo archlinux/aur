@@ -2,8 +2,8 @@
 pkgname=doot-git
 pkgver=0.0.0
 pkgrel=1
-pkgdesc="A fast and simple dotfiles manager that just gets the job done (git version)"
-arch=('x86_64')
+pkgdesc="A fast, simple and intuitive dotfiles manager that just gets the job done (git version)"
+arch=('x86_64' 'aarch64')
 url="https://github.com/pol-rivero/doot"
 license=('MIT')
 provides=('doot')
