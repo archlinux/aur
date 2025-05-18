@@ -2,7 +2,7 @@
 # Maintainer: Jonathan Hilger <joni dot hilger at yahoo dot de>
 pkgname=vpinball-git
 pkgver=r8029.6e386e1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source pinball table editor and simulator (BGFX standalone version)"
 arch=('x86_64')
 url="https://github.com/vpinball/vpinball"
@@ -44,5 +44,5 @@ package() {
   install -Dm 755 "${srcdir}/${pkgname}/build/VPinballX_BGFX"	"${pkgdir}/opt/vpinball/VPinballX_BGFX"
   install -Dm 644 "${srcdir}/vpinball.desktop"			"${pkgdir}/usr/share/applications/vpinball.desktop"
   install -Dm 644 "${srcdir}/visualpinball_screen1.jpg"		"${pkgdir}/usr/share/pixmaps/visualpinball_screen1.jpg"
-  install -Dm 644 "${srcdir}/vpinball/LICENSE"			"${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 "${srcdir}/${pkgname}/LICENSE"		"${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }  # package
