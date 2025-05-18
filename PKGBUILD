@@ -3,7 +3,7 @@
 
 pkgname=kamule
 pkgver=0.91
-pkgrel=3
+pkgrel=4
 pkgdesc="A KDE frontend for aMule"
 arch=('x86_64')
 url='https://www.linux-apps.com/p/1128293'
@@ -28,6 +28,7 @@ makedepends=(
   'qt5-tools'
   'python'
 )
+provides=('amulegui')
 #source=("https://dl.opendesktop.org/api/files/downloadfile/id/1466632134/s/2e53ec56530c00b50e3619c46b962da2/t/1523631790/u/76637/150270-${pkgname}-${pkgver}.tar.bz2")
 source=("${pkgname}-${pkgver}.tar.bz2::https://github.com/nihui/kamule/archive/refs/heads/master.zip")
 # sha256sums=('5e0f3abbc0ff1543abcbb9cfade7bb5658b2c6865c12e9b33a3bd1612592971d')
@@ -39,6 +40,8 @@ prepare() {
 }
 
 build() {
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
   cmake -S "${pkgname}-master" -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \

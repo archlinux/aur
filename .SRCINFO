@@ -1,7 +1,7 @@
 pkgbase = kamule
 	pkgdesc = A KDE frontend for aMule
 	pkgver = 0.91
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.linux-apps.com/p/1128293
 	arch = x86_64
 	license = GPL
@@ -21,6 +21,7 @@ pkgbase = kamule
 	depends = qt5-base
 	depends = amule-daemon
 	depends = hicolor-icon-theme
+	provides = amulegui
 	options = debug
 	source = kamule-0.91.tar.bz2::https://github.com/nihui/kamule/archive/refs/heads/master.zip
 	sha256sums = 69b63b15636e8696d2494bae2d820f38fee0598f77235601e80fcdbfa675d816
