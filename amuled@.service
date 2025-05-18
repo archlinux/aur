@@ -6,4 +6,4 @@ After=network.target
 ExecStart=/usr/bin/amuled
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
