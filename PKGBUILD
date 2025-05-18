@@ -2,7 +2,7 @@
 
 pkgname=gz-transport13
 pkgver=13.4.1
-pkgrel=2
+pkgrel=3
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Transport library for component communication based on publication/subscription and service calls."
@@ -25,10 +25,20 @@ makedepends=(
   'util-linux-libs'  # uuid
   )
 provides=("${_pkgbase}=${_pkgmaj}")
-source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('2aac8fcfd525091648f405738e95d5d8b55b87767e6cb74afde6390a5fe924c5')
+source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
+        "https://github.com/gazebosim/${_pkgbase}/pull/587.patch"
+        "https://github.com/gazebosim/${_pkgbase}/pull/619.patch")
+sha256sums=('2aac8fcfd525091648f405738e95d5d8b55b87767e6cb74afde6390a5fe924c5'
+            'da9d17e320d4fc53ffbb8f1973852dd9dbbde56b34fdcb5285e96b51fec3474b'
+            '4909b335880fb152b82f00613c48e0c248319c16cbe821c659606b15b9e43787')
 
 _build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
+
+prepare() {
+  cd "${_pkgbase}-${pkgname}_${pkgver}"
+  patch -p1 < ${srcdir}/587.patch
+  patch -p1 < ${srcdir}/619.patch
+}
 
 build() {
   mkdir -p "$srcdir/$_build_dir" && cd $_
