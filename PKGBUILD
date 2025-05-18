@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ISOcodes
-_pkgver=2024.02.12
+_pkgver=2025.05.18
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Selected ISO Codes"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('65379246fbe90371859da3d4df8b8ad0')
-b2sums=('a5d47633891cebfd34ea922667d1e94f8fdaa54654a50a9febc87e01d41146d43c7f7bf9f1fe94b918f87c4be9f005cdac6dc4d2bc2ee9bbd166e7729d430e87')
+md5sums=('0065ef91837c8da6aaec96d363becf6b')
+b2sums=('4efb547286fece74b89587221d27a364ec2e5ec45df8a2c2781a1889f60eff7dd6917dbd5c6329ef154c55dec9120c0b28562396feb83b0a592f153b363622cc')
 
 build() {
   mkdir build
