@@ -1,79 +1,70 @@
 # Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
-# Contributor : Dobroslaw Kijowski <dobo90_at_gmail.com>
+# Contributor: Dobroslaw Kijowski <dobo90_at_gmail.com>
 # Contributor: Paul N. Maxwell <msg.maxwel@gmail.com>
 
 pkgbase='transgui'
 pkgname=("${pkgbase}-qt" "${pkgbase}-gtk")
-pkgver='5.18.0'
-pkgrel='3'
+pkgver='5.18.7.f'
+pkgrel='1'
 pkgdesc='Transmission BitTorrent client'
 arch=('x86_64' 'aarch64')
-url="https://github.com/transmission-remote-gui/${pkgbase}"
+_url="https://github.com/lighterowl"
+url="${_url}/${pkgbase}"
 license=("GPL")
-makedepends=('lazarus' 'qt6pas' 'gtk2')
-source=("${url}/archive/v${pkgver}.tar.gz"
-        "${pkgbase}.desktop"
-        "https://s3.e2e4.ru/k0ste/pkgbuild/${pkgver}_5_year_patch.patch")
-sha256sums=('d1cbb16eb35d41e76f4a171a3887053899e8dc6a1124afc21615b5038ea60d78'
-            '6ee61ee4b01445ef67cc76abaee051c17043b57a743a977a2528a4c78a9a638b'
-            '1f7ca6679390043c950e3ff68acdb0c340e400dcd4fa2272028c526acc7a8130')
+makedepends=('git' 'lazarus' 'qt6pas' 'gtk2')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "${pkgbase}.desktop")
+sha256sums=('d0cb8b93da6e05496b91f110541d471d19d77f0f002cefbec5e273c79c5e3176'
+            '6ee61ee4b01445ef67cc76abaee051c17043b57a743a977a2528a4c78a9a638b')
 
 prepare() {
   cd "${pkgbase}-${pkgver}"
-# The patch over master branch for 5 years. No new releases since 2019
-  patch -p1 -i "../${pkgver}_5_year_patch.patch"
-  mkdir "../build-qt" "../build-gtk"
+  mkdir -v "../build-qt6" "../build-gtk2"
+  git clone --progress --branch="${pkgbase}" "${_url}/synapse.git" "synapse/source/lib"
+
+  # https://github.com/transmission-remote-gui/transgui/issues/1486
+  sed -i -e 's|h <> INVALID_HANDLE_VALUE|h >= 0|' "main.pas"
+}
+
+_build() {
+  cd "${pkgbase}-${pkgver}"
+
+  lazbuild "${pkgbase}.lpi" \
+  --lazarusdir="/usr/lib/lazarus" \
+  --build-mode="Release" \
+  --primary-config-path="../build-${1}" \
+  --widgetset="${1}"
+
+  install -dm0755 "${pkgdir}/usr/share/${pkgbase}/lang"
+  install -dm0755 "${pkgdir}/usr/share/doc/${pkgbase}"
+  install -Dm0755 "units/${pkgbase}" -t "${pkgdir}/usr/bin"
+  install -Dm0644 "lang/${pkgbase}".* "${pkgdir}/usr/share/${pkgbase}/lang"
+  install -Dm0644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgbase}"
+  install -Dm0644 "LICENSE" -t "${pkgdir}/usr/share/doc/${pkgbase}"
+  install -Dm0644 "${pkgbase}.png" -t "${pkgdir}/usr/share/pixmaps"
+  install -Dm0644 "../${pkgbase}.desktop" -t "${pkgdir}/usr/share/applications"
+
+  rm "${pkgdir}/usr/share/${pkgbase}/lang/${pkgbase}.template"
 }
 
 package_transgui-qt() {
   depends=('qt6pas')
   conflicts=('transgui-gtk2-git' 'transgui-qt4-git' 'transmission-remote-gui-qt4'
              'transmission-remote-gui-gtk2' 'transmission-remote-gui-bin' 'transgui-gtk')
-
-  cd "${pkgbase}-${pkgver}"
-  make clean
-
-  lazbuild "${pkgbase}.lpi" \
-  --lazarusdir="/usr/lib/lazarus" \
-  --widgetset="qt6" \
-  --primary-config-path="../build-qt"
-
-  install -Dm0755 "units/${pkgbase}" -t "${pkgdir}/usr/bin"
-  install -dm0755 "${pkgdir}/usr/share/${pkgbase}/lang"
-  install -Dm0644 "lang/${pkgbase}".* "${pkgdir}/usr/share/${pkgbase}/lang"
-  install -dm0755 "${pkgdir}/usr/share/doc/${pkgbase}"
-  install -Dm0644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgbase}"
-  install -Dm0644 "history.txt" -t "${pkgdir}/usr/share/doc/${pkgbase}"
-  install -Dm0644 "LICENSE" -t "${pkgdir}/usr/share/doc/${pkgbase}"
-  install -Dm0644 "${pkgbase}.png" -t "${pkgdir}/usr/share/pixmaps"
-  install -Dm0644 "../${pkgbase}.desktop" -t "${pkgdir}/usr/share/applications"
-
-  rm "${pkgdir}/usr/share/${pkgbase}/lang/transgui.template"
+  _build "qt6"
 }
 
 package_transgui-gtk() {
   depends=('gtk2')
   conflicts=('transgui-gtk2-git' 'transgui-qt4-git' 'transmission-remote-gui-qt4'
              'transmission-remote-gui-gtk2' 'transmission-remote-gui-bin' 'transgui-qt')
+  _build "gtk2"
+}
 
-  cd "${pkgbase}-${pkgver}"
-  make clean
+check() {
+  cd "${pkgbase}-${pkgver}/test"
 
-  lazbuild "${pkgbase}.lpi" \
-  --lazarusdir="/usr/lib/lazarus" \
-  --widgetset="gtk2" \
-  --primary-config-path="../build-gtk"
-
-  install -Dm0755 "units/${pkgbase}" -t "${pkgdir}/usr/bin"
-  install -dm0755 "${pkgdir}/usr/share/${pkgbase}/lang"
-  install -Dm0644 "lang/${pkgbase}".* "${pkgdir}/usr/share/${pkgbase}/lang"
-  install -dm0755 "${pkgdir}/usr/share/doc/${pkgbase}"
-  install -Dm0644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgbase}"
-  install -Dm0644 "history.txt" -t "${pkgdir}/usr/share/doc/${pkgbase}"
-  install -Dm0644 "LICENSE" -t "${pkgdir}/usr/share/doc/${pkgbase}"
-  install -Dm0644 "${pkgbase}.png" -t "${pkgdir}/usr/share/pixmaps"
-  install -Dm0644 "../${pkgbase}.desktop" -t "${pkgdir}/usr/share/applications"
-
-  rm "${pkgdir}/usr/share/${pkgbase}/lang/transgui.template"
+  lazbuild "transguitest.lpi" --lazarusdir="/usr/lib/lazarus"
+  ./units/transguitest -a
 }
