@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="tchMaterial-parser",
-    version="3.0",
+    version="3.1",
     packages=find_packages(include=['src']),  # 声明 src 为包
     package_data={
         'src': [

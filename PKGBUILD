@@ -1,6 +1,6 @@
 pkgname=tchmaterial-parser
-pkgver=3.0
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 maintainer=('iamzhz' 'wuziqian211')
 pkgdesc="国家中小学智慧教育平台 电子课本下载工具，帮助您从智慧教育平台中获取电子课本的 PDF 文件网址并进行下载，让您更方便地获取课本内容。 "
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
         "setup.py"
 )
 sha256sums=(
-        'a3940c03f5a80732c49b42f0b2a764b0fb098bcc490936540f03781ddbab5f63'
+        '7eece302e5d1757c04196d9defef0aa0ee0d63322c56351e20fef1b69d82b056'
         'SKIP'
         'SKIP'
 )
