@@ -6,8 +6,8 @@ pkgdesc="A Jelly Hoshiumi themed neofetch parody written in C just for lulz."
 arch=(x86_64 i686 pentium4 armv7h aarch64 riscv64)
 url="https://github.com/jffops/jfetch"
 license=(MIT)
-depends=(glibc gcc-libs)
-makedepends=(make)
+depends=(glibc)
+makedepends=(make git)
 source=("git+https://github.com/jffops/jfetch.git")
 sha256sums=("SKIP")
 
