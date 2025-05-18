@@ -1,6 +1,6 @@
 pkgbase = nodenv-node-build-git
 	pkgdesc = Install NodeJS versions
-	pkgver = 5.3.32.r0.g96f9efa0
+	pkgver = 5.4.0.r0.gb845fc0d
 	pkgrel = 1
 	url = https://github.com/nodenv/node-build
 	arch = any
