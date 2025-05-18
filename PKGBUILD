@@ -4,7 +4,7 @@
 pkgname=void-git
 _pkgname=void
 pkgver=1.99.3.r2511.g5cab7e61
-pkgrel=3
+pkgrel=1
 pkgdesc="The Cursor alternative"
 url="https://voideditor.com/"
 arch=('x86_64')
@@ -35,10 +35,8 @@ makedepends=(
   pkgconf
   python
 )
-source=("git+https://github.com/voideditor/void.git#commit=5cab7e61e5ebf95fc24eec6b4213f035f85eb857")
-# https://github.com/voideditor/void/commit/5cab7e61e5ebf95fc24eec6b4213f035f85eb857
-
-sha256sums=('df6e3859b83af81775098f50cdb2f99706a39f65cc2cc3913c918de91fba1085')
+source=("git+https://github.com/voideditor/void.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"

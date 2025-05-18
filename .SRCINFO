@@ -1,7 +1,7 @@
 pkgbase = void-git
 	pkgdesc = The Cursor alternative
 	pkgver = 1.99.3.r2511.g5cab7e61
-	pkgrel = 3
+	pkgrel = 1
 	url = https://voideditor.com/
 	arch = x86_64
 	license = MIT
@@ -27,7 +27,7 @@ pkgbase = void-git
 	optdepends = org.freedesktop.secrets: Settings sync
 	provides = void
 	conflicts = void
-	source = git+https://github.com/voideditor/void.git#commit=5cab7e61e5ebf95fc24eec6b4213f035f85eb857
-	sha256sums = df6e3859b83af81775098f50cdb2f99706a39f65cc2cc3913c918de91fba1085
+	source = git+https://github.com/voideditor/void.git
+	sha256sums = SKIP
 
 pkgname = void-git
