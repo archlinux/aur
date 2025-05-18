@@ -1,7 +1,7 @@
 pkgbase = wtfis
 	pkgdesc = Passive hostname, domain and IP lookup tool for non-robots
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/wtfis/
 	arch = x86_64
 	license = None
@@ -10,6 +10,11 @@ pkgbase = wtfis
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-hatchling
+	depends = python-pydantic
+	depends = python-dotenv
+	depends = python-requests
+	depends = python-rich
+	depends = python-shodan
 	source = https://files.pythonhosted.org/packages/16/55/748b21d2d2e765e319cff417447006fc5d714b56317918da0d70ed8d7ee5/wtfis-0.11.0.tar.gz
 	sha256sums = 3a687d99d91c9bba15e45707acef68c3ebc9ffd571fb311c2d83423a62ee0e6f
 

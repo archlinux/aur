@@ -25,7 +25,7 @@ makedepends=(
     "python-hatchling"
 )
 source=("https://files.pythonhosted.org/packages/16/55/748b21d2d2e765e319cff417447006fc5d714b56317918da0d70ed8d7ee5/wtfis-0.11.0.tar.gz")
-sha256sums=("3a687d99d91c9bba15e45707acef68c3ebc9ffd571fb311c2d83423a62ee0e6f")
+sha256sums=('3a687d99d91c9bba15e45707acef68c3ebc9ffd571fb311c2d83423a62ee0e6f')
 package() {
     cd "${_origpkgname}-${pkgver}" || exit
     python -m build --wheel --no-isolation
