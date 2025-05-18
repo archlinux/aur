@@ -2,7 +2,7 @@
 pkgname=brisk
 pkgver=2.2.3
 pkgrel=1
-pkgdesc="Ultra-fast, modern download manager"
+pkgdesc="Ultra-fast, modern download manager (Official Release)"
 arch=('x86_64')
 url="https://github.com/BrisklyDev/brisk"
 license=('GPL3') 
