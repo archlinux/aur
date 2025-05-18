@@ -3,7 +3,7 @@
 _pkgauthor=szktkfm
 _pkgname=mdtt
 pkgname=${_pkgname}-bin
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Markdown Table Editor TUI'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -16,9 +16,9 @@ provides=("${_pkgname}")
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar.gz")
 source_i686=("${_pkgname}-${pkgver}-${arch[1]}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_i386.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[2]}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
-sha256sums_x86_64=('d624a5b52fe905e41d80dc15850534c3d87947940e4e615e1738d2a8ba82fe5c')
-sha256sums_i686=('f6af5f3ce4b4c40d689df314f97bf9a4821ee9fb10c369b5cad84077ee1c3c16')
-sha256sums_aarch64=('c695e17e16d4b5d1db17b66779d229cb9d588a7b413f6deb42a63ebf65c7c2a2')
+sha256sums_x86_64=('6e82dd06ebbcf6ed7e322ece4fb48385bb3b696b80d9df9e08b87395efda1a75')
+sha256sums_i686=('bf91c5054bed614704e3bac647a17ad1e9dfd5f41875255163cb70a4508aeb52')
+sha256sums_aarch64=('7b0ed86a1646e0c2e52df89be65949353a6fc84d75175ce678f078032269aaeb')
 
 package() {
   cd "${srcdir}/" || exit
