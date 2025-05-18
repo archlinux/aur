@@ -4,7 +4,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-ffmpeg-minimal
 pkgver=7.1.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
@@ -21,11 +21,6 @@ depends=("android-${_android_arch}-aom"
          "android-${_android_arch}-libvpx"
          "android-${_android_arch}-opus"
          "android-${_android_arch}-svt-av1")
-
-if [ "${_android_arch}" != riscv64 ]; then
-    depends+=("android-${_android_arch}-rav1e")
-fi
-
 makedepends=('android-configure'
              'nasm')
 provides=(${pkgname%-minimal})
@@ -76,7 +71,7 @@ build() {
     extra_options=
 
     # Platform specific patches
-    case "$_android_arch" in
+    case "${_android_arch}" in
         riscv64)
              extra_options="${extra_options} --disable-asm"
             ;;
@@ -86,10 +81,6 @@ build() {
         *)
             ;;
     esac
-
-    if [ "${_android_arch}" != riscv64 ]; then
-        extra_options="${extra_options} --enable-encoder=librav1e --enable-librav1e"
-    fi
 
     ./configure \
         --prefix=${ANDROID_PREFIX} \
@@ -125,10 +116,8 @@ build() {
         --disable-avfilter \
         --disable-encoders \
         --enable-encoder=aac \
-        --enable-encoder=libaom_av1 \
         --enable-encoder=libmp3lame \
         --enable-encoder=libopus \
-        --enable-encoder=libsvtav1 \
         --enable-encoder=libvorbis \
         --enable-encoder=libvpx_vp8 \
         --enable-encoder=libvpx_vp9 \
