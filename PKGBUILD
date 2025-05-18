@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 pkgname=qbittorrent-enhanced
 pkgver=5.1.0.10
-pkgrel=2
+pkgrel=1
 pkgdesc="A bittorrent client powered by C++, Qt and libtorrent (Enhanced Edition)"
 arch=('x86_64')
 url="https://github.com/c0re100/qBittorrent-Enhanced-Edition"
