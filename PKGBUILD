@@ -3,7 +3,7 @@
 pkgname=big-launcher-git
 pkgver=f8935c0
 pkgrel=1
-makedepends=('cmake')
+makedepends=('cmake' 'libarchive')
 depends=('sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'spdlog' 'fmt' 'libwebp' 'harfbuzz' 'libinih' 'libxml2')
 provides=('big-launcher')
 conflicts=('big-launcher')
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-  unzip -uq assets.zip
+  bsdtar -xf assets.zip
   install -Dm 755 "$srcdir/big-launcher/build/big-launcher" "$pkgdir/usr/bin/big-launcher"
   install -Dm 655 "assets/background.svg" "${pkgdir}/usr/share/big-launcher/assets/background.svg"
   install -d ${pkgdir}/usr/share/big-launcher/assets/{fonts,icons,sounds}
