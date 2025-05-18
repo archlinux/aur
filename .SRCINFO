@@ -1,0 +1,21 @@
+pkgbase = zalo-unofficial-git
+	pkgdesc = Unofficial Zalo client for Linux, port from MacOS version
+	pkgver = 24.9.1
+	pkgrel = 1
+	url = https://github.com/realdtn2/zalo-linux-unofficial-2024
+	arch = x86_64
+	license = custom
+	depends = python
+	depends = python-pillow
+	depends = python-pystray
+	depends = electron22-bin
+	options = !strip
+	options = !purge
+	source = zalo::git+https://github.com/realdtn2/zalo-linux-unofficial-2024.git#tag=24.9.1
+	source = zalo.desktop
+	source = zalo_py
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = zalo-unofficial-git
