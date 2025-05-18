@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=dolphin-megasync-git
-pkgver=5.4.0.1.gefa47b4d8
+pkgver=5.11.1.0.g94fa31202
 pkgrel=1
 pkgdesc="Upload your files to your Mega account from Dolphin file manager. (GIT Version)"
 arch=('x86_64')
@@ -30,7 +30,7 @@ options=('!lto')
 
 pkgver() {
   cd MEGAsync
-  echo "$(git describe --long --tags | sed 's/^\(.*_\)\|\(_.*\)$//g' |  tr - . | tr -d v)"
+  echo "$(git describe --long --tags | sed -E 's/_[^-]+//; s/-[0-9]+//g; s/^([^_]+)-g([0-9a-f]+)$/\1-g\2/' | tr - . | tr -d v)"
 }
 
 build() {

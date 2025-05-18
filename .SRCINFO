@@ -1,6 +1,6 @@
 pkgbase = dolphin-megasync-git
 	pkgdesc = Upload your files to your Mega account from Dolphin file manager. (GIT Version)
-	pkgver = 5.4.0.1.gefa47b4d8
+	pkgver = 5.11.1.0.g94fa31202
 	pkgrel = 1
 	url = https://mega.co.nz/sync
 	arch = x86_64
