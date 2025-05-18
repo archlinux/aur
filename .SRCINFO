@@ -11,8 +11,8 @@ pkgbase = jellyfetch-git
 	arch = riscv64
 	license = MIT
 	makedepends = make
+	makedepends = git
 	depends = glibc
-	depends = gcc-libs
 	source = git+https://github.com/jffops/jfetch.git
 	sha256sums = SKIP
 
