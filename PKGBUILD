@@ -3,10 +3,10 @@
 # Maintainer: oech3
 _pkgname='chatterino2-nightly'
 pkgname="${_pkgname}-bin"
-_id=20250512T010548
+_id=20250518T010712
 _ver=2.5.3
 pkgver=${_ver}.${_id}
-pkgrel=2
+pkgrel=1
 pkgdesc='A chat client for Twitch.tv. (Nightly build)'
 arch=('x86_64')
 url="https://github.com/chatterino/chatterino2"
@@ -19,7 +19,7 @@ provides=(chatterino)
 conflicts=(chatterino)
 options=(!strip) #done
 source=("https://github.com/Chatterino/pkg/releases/download/nightly-${_id}/chatterino-arch-linux-${arch}.tar.zst")
-sha256sums=('c52808aaba264267c9bf068911c3f2357ade3d29687f794d23bf6b1960412882')
+sha256sums=('84f521d37ddce1c697c8588b7a64c49680844ff0e314300e346d07fd6d4476a1')
 package() {
     install -Dm755 usr/bin/chatterino "${pkgdir}"/usr/bin/chatterino
     install -Dm644 usr/share/applications/com.chatterino.chatterino.desktop "${pkgdir}"/usr/share/applications/com.chatterino.chatterino.desktop
