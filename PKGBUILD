@@ -11,13 +11,11 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
-source=("http://phivdr.dyndns.org/vdr/vdr-dummydevice/vdr-dummydevice-$pkgver.tgz"
+source=("https://phivdr.dyndns.org/vdr/$pkgname/$pkgname-$pkgver.tgz"
         "$pkgname-00-devicename.patch")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 sha256sums=('5c0049824415bd463d3abc728a3136ee064b60a37b5d3a1986cf282b0d757085'
             'b23737ce41bbe7ee0fab5b77bdd8bbc34a372410ad8bcea0ee256987a99e256d')
-
-DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 prepare() {
   cd "${srcdir}/${_plugname}-${pkgver}"
