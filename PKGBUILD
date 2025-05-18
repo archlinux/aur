@@ -61,7 +61,7 @@ build() {
   _hash=$(echo -n "https://github.com/electron/electron/releases/download/v${_elorig}" | sha256sum | cut -d ' ' -f 1)
   _cachedir="${XDG_CACHE_HOME}/electron/${_hash}"
   _zip="electron-v${_elorig}-linux-x64.zip"
-  mkdir -p "${XDG_CACHE_HOME}/electron/${_hash}"
+  mkdir -p "${_cachedir}"
   bsdtar --format zip -cf "${_cachedir}/${_zip}" /dev/null
   echo $(sha256sum "${_cachedir}/${_zip}" | cut -d " " -f 1) *${_zip} > build/checksums/electron.txt
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
