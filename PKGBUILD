@@ -1,7 +1,7 @@
 # Maintainer: Arun G <lunar.arun@gmail.com>
 
 pkgname=stylepak-git
-pkgver=16.124fbdc
+pkgver=18.0c4b0c1
 pkgrel=1
 arch=('any')
 url="https://github.com/refi64/stylepak"
