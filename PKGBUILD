@@ -2,7 +2,7 @@
 _pkgname=copilot.vim
 pkgname=vim-copilot-git
 pkgver=1.49.0.r0.gd1e8429
-pkgrel=1
+pkgrel=2
 pkgdesc="(Neo)Vim plugin for GitHub Copilot automated code completion. Requires a subscription."
 arch=(any)
 url="https://github.com/github/$_pkgname"
@@ -23,11 +23,7 @@ pkgver() {
 package() {
   cd "$_pkgname"
 
-  find autoload doc lua plugin syntax -type f -exec install -Dm644 '{}' \
+  find autoload copilot-language-server doc lua plugin syntax -type f -exec install -Dm644 '{}' \
     "$pkgdir/usr/share/vim/vimfiles/{}" \;
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-
-  cd copilot-language-server
-  find dist -type f -exec install -Dm644 '{}' \
-    "$pkgdir/usr/share/vim/vimfiles/{}" \;
 }
