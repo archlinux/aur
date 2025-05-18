@@ -7,11 +7,11 @@
 
 ## options
 : ${_install_path:=opt}
-: ${_commit=656ce4e894bfcc7b2117621679824ee084252ddf}
+: ${_commit=98d6bd05e3572c86b433bc392ab19cad3720dfaa}
 
-_pkgname=qtscrcpy
+_pkgname="qtscrcpy"
 pkgname="$_pkgname"
-pkgver=3.1.3
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 url="https://github.com/barry-ran/QtScrcpy"
@@ -26,6 +26,7 @@ makedepends=(
   'patchelf'
   'cmake'
   'git'
+  'ninja'
   'qt6-tools'
 )
 
@@ -59,6 +60,7 @@ build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
+    -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_SKIP_RPATH=ON
