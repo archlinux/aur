@@ -2,7 +2,7 @@
 
 pkgname=gz-sim9
 pkgver=9.1.0
-pkgrel=2
+pkgrel=3
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Open source robotics simulator"
@@ -36,8 +36,15 @@ makedepends=(
   'python'
   )
 provides=("${_pkgbase}=${_pkgmaj}")
-source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('0df6611ce61ea75aa7fbbe65e38313faadf60ab341df234babc3fe2cfe9f1adb')
+source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
+        "https://github.com/gazebosim/${_pkgbase}/pull/2869.patch")
+sha256sums=('0df6611ce61ea75aa7fbbe65e38313faadf60ab341df234babc3fe2cfe9f1adb'
+            'e836f1adabe8f44a4e6a238b06364afe06e1a5c28c9cb137c1c88538f65ede85')
+
+prepare() {
+  cd "${_pkgbase}-${pkgname}_${pkgver}"
+  patch -p1 < ${srcdir}/2869.patch
+}
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
