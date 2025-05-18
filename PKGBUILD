@@ -6,7 +6,7 @@
 
 pkgname=navit
 pkgver=0.5.6
-pkgrel=8
+pkgrel=9
 pkgdesc="Modular turn-by-turn car navigation system"
 arch=('x86_64')
 url="https://www.navit-project.org/"
@@ -26,7 +26,8 @@ build() {
   cd $pkgname-$pkgver
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_C_FLAGS="$CFLAGS -ffat-lto-objects -Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-int-conversion" \
-    -DSAMPLE_MAP=FALSE -DDISABLE_QT=TRUE
+    -DSAMPLE_MAP=FALSE -DDISABLE_QT=TRUE \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
 }
 

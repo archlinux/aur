@@ -1,7 +1,7 @@
 pkgbase = navit
 	pkgdesc = Modular turn-by-turn car navigation system
 	pkgver = 0.5.6
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.navit-project.org/
 	install = navit.install
 	arch = x86_64
