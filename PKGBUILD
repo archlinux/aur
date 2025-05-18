@@ -27,7 +27,7 @@ prepare() {
   cd "$pkgname"
   # update gettext infrastructure
   cp -Rv /usr/share/gettext/po .
-  aclocal --aclocal-path=/usr/share/gettext/m4/ && automake --add-missing && autoconf
+  autoreconf --install --force
   git apply ../abook-gcc15.patch
 }
 
