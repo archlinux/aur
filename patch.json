@@ -335,12 +335,10 @@
 			"terminalExecuteCommandEvent",
 			"notebookReplDocument",
 			"notebookVariableProvider",
-			"terminalShellEnv",
-			"terminalShellType"
+			"terminalShellEnv"
 		],
 		"ms-python.vscode-python-envs": [
-			"terminalShellEnv",
-			"terminalShellType"
+			"terminalShellEnv"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging"
@@ -470,6 +468,7 @@
 			"chatProvider",
 			"mappedEditsProvider",
 			"aiRelatedInformation",
+			"aiSettingsSearch",
 			"codeActionAI",
 			"findTextInFiles",
 			"findTextInFiles2",
@@ -488,7 +487,6 @@
 			"authLearnMore",
 			"testObserver",
 			"aiTextSearchProvider",
-			"chatReadonlyPromptReference",
 			"documentFiltersExclusive",
 			"chatParticipantPrivate",
 			"contribDebugCreateConfiguration",
@@ -498,7 +496,8 @@
 			"languageModelSystem",
 			"languageModelCapabilities",
 			"languageModelDataPart",
-			"chatStatusItem"
+			"chatStatusItem",
+			"taskProblemMatcherStatus"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -518,7 +517,10 @@
 		"ms-python.gather": [
 			"notebookCellExecutionState"
 		],
-		"ms-python.vscode-pylance": [],
+		"ms-python.vscode-pylance": [
+			"mcpConfigurationProvider",
+			"terminalShellEnv"
+		],
 		"ms-python.debugpy": [
 			"contribViewsWelcome",
 			"debugVisualization",
@@ -542,6 +544,9 @@
 			"notebookCellExecution",
 			"notebookVariableProvider",
 			"notebookReplDocument"
+		],
+		"donjayamanne.kusto": [
+			"notebookVariableProvider"
 		],
 		"ms-toolsai.tensorboard": [
 			"portsAttributes"
@@ -802,6 +807,7 @@
 			"ms-vsliveshare.vsliveshare",
 			"ms-azuretools.vscode-azure-github-copilot",
 			"ms-azuretools.vscode-azureresourcegroups",
+			"ms-azuretools.vscode-dev-azurecloudshell",
 			"ms-edu.vscode-learning",
 			"ms-toolsai.vscode-ai",
 			"ms-toolsai.vscode-ai-remote"
@@ -812,12 +818,14 @@
 			"ms-vsliveshare.vsliveshare",
 			"ms-azuretools.vscode-azure-github-copilot",
 			"ms-azuretools.vscode-azureresourcegroups",
+			"ms-azuretools.vscode-dev-azurecloudshell",
 			"ms-edu.vscode-learning",
 			"ms-toolsai.vscode-ai",
 			"ms-toolsai.vscode-ai-remote"
 		],
 		"__GitHub.copilot-chat": [
-			"ms-azuretools.vscode-azure-github-copilot"
+			"ms-azuretools.vscode-azure-github-copilot",
+			"github.vscode-pull-request-github"
 		]
 	},
 	"auth": {
