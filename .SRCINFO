@@ -6,7 +6,7 @@ pkgbase = flat-remix-gtk
 	arch = any
 	license = GPL 3.0
 	options = !strip
-	source = ("flat-remix-gtk-${pkgver}.tar.gz::https://github.com/daniruiz/flat-remix-gtk/archive/${pkgver}.tar.gz")
+	source = https://github.com/daniruiz/flat-remix-gtk/archive/20240730.tar.gz"
 	sha256sums = SKIP
 
 pkgname = flat-remix-gtk
