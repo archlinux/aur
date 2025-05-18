@@ -1,7 +1,7 @@
 # Maintainer: asalde_le1 <asalde.le1@gmail.com>
 
 pkgname=mts-link
-pkgver=1.2.8
+pkgver=1.2.12
 pkgrel=1
 pkgdesc='MTS Link desktop application based on Electron and React'
 arch=(x86_64)
@@ -27,7 +27,7 @@ source=(
   https://apps.webinar.ru/desktop/${pkgname}-${pkgver}.tar.gz
   mts-link.desktop
 )
-sha256sums=('6fd1928c1465a80563bb1b3b1e0c75567c4da35ae7cef12ad0a2f67e2b402e54'
+sha256sums=('a79d1b3af4c13ef1e0a2e8b1b56ba9ec04b35057a4d1b254e6caa2a11913ad8f'
             '39ed5a6cd08c729bfd10140bb5a9c8e3e469553915c97b6de8f6078c4ea59cb0')
 
 package() {
