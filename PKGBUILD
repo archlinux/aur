@@ -1,6 +1,6 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=dvdisaster-unofficial
-_pkgver=0.79.10-pl3
+_pkgver=0.79.10-pl5
 pkgver=${_pkgver//-/.}
 pkgrel=1
 
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gtk2')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('0a81a5f32be46a1c291fe02ba1e28e409796c744618248cf2ef19446e40ba244')
+sha256sums=('e7101b62758f659c50f43d33f44ed08ba24dfecb60e5e31fb541a592bc39d670')
 
 build() {
 	cd "${pkgname%-unofficial}-${_pkgver}"
