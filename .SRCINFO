@@ -1,11 +1,13 @@
 pkgbase = daed-avx2-bin
 	pkgdesc = A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core) (with AVX2 CPU optimizations)
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://daeuniverse.github.io/daed
 	install = daed-avx2-bin.install
 	arch = x86_64
 	license = AGPL-3.0-or-later AND MIT
+	depends = v2ray-geoip
+	depends = v2ray-domain-list-community
 	provides = daed
 	provides = dae
 	conflicts = daed
