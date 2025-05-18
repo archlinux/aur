@@ -3,22 +3,16 @@
 
 _name='krop'
 pkgname="${_name}-git"
-pkgver=r114.e96d42b
-pkgrel=4
+pkgver=r143.2d8f7dd
+pkgrel=1
 pkgdesc='Simple graphical tool to crop the pages of PDF files'
 arch=('any')
 url='https://github.com/arminstraub/krop'
 license=('GPL-3.0-or-later')
 depends=(
   'python'
-  'python-pikepdf'
-  'python-poppler-qt5' # AUR
-  'python-pyqt5'
-)
-optdepends=(
-  'python-mupdf: alternate backend to pikepdf, initial support only'
-  'python-pypdf: alternate backend to pikepdf' # AUR
-  'python-pypdf2: alternate backend to pikepdf' # AUR
+  'python-pymupdf'
+  'python-pyqt6'
 )
 makedepends=(
   'git'
