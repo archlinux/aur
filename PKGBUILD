@@ -1,7 +1,7 @@
 # Maintainer: Zesko
 _pkgname="limine-entry-tool"
 pkgname="limine-dracut-support"
-pkgver=1.16.3
+pkgver=1.16.4
 pkgrel=1
 pkgdesc="Install kernel for the Limine bootloader."
 arch=("any")
@@ -25,7 +25,7 @@ optdepends=(
 makedepends=('git' 'maven')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-dracut-support-git' 'limine-entry-tool')
-sha256sums=('e97985b00982f6e59f41aa4a2c179098cf5bec0698553f97744da194ba14febf')
+sha256sums=('94bd24e94cfae4fb89a7f872c3fe8ac9dc0c2cc70afdf89f562d45444ad8d87b')
 
 check_java_version() {
     local java_version
