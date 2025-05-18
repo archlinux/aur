@@ -335,12 +335,10 @@
 			"terminalExecuteCommandEvent",
 			"notebookReplDocument",
 			"notebookVariableProvider",
-			"terminalShellEnv",
-			"terminalShellType"
+			"terminalShellEnv"
 		],
 		"ms-python.vscode-python-envs": [
-			"terminalShellEnv",
-			"terminalShellType"
+			"terminalShellEnv"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging"
@@ -473,6 +471,7 @@
 			"embeddings",
 			"mappedEditsProvider",
 			"aiRelatedInformation",
+			"aiSettingsSearch",
 			"chatEditing",
 			"codeActionAI",
 			"findTextInFiles",
@@ -490,7 +489,6 @@
 			"chatReferenceDiagnostic",
 			"extensionsAny",
 			"authLearnMore",
-			"chatReadonlyPromptReference",
 			"testObserver",
 			"aiTextSearchProvider",
 			"documentFiltersExclusive",
@@ -502,7 +500,8 @@
 			"languageModelSystem",
 			"languageModelCapabilities",
 			"languageModelDataPart",
-			"chatStatusItem"
+			"chatStatusItem",
+			"taskProblemMatcherStatus"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -526,6 +525,7 @@
 			"notebookCellExecutionState"
 		],
 		"ms-python.vscode-pylance": [
+			"mcpConfigurationProvider",
 			"terminalShellEnv"
 		],
 		"ms-python.debugpy": [
@@ -834,7 +834,8 @@
 			"ms-toolsai.vscode-ai-remote"
 		],
 		"__GitHub.copilot-chat": [
-			"ms-azuretools.vscode-azure-github-copilot"
+			"ms-azuretools.vscode-azure-github-copilot",
+			"github.vscode-pull-request-github"
 		]
 	},
 	"auth": {
