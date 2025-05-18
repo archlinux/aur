@@ -1,11 +1,13 @@
 pkgbase = dae-avx2-bin
 	pkgdesc = A Linux lightweight and high-performance transparent proxy solution based on eBPF (with AVX2 CPU optimizations)
 	pkgver = 1.0.0rc3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/daeuniverse/dae
 	install = dae-avx2-bin.install
 	arch = x86_64
 	license = AGPL-3.0-or-later
+	depends = v2ray-geoip
+	depends = v2ray-domain-list-community
 	provides = dae
 	conflicts = dae
 	replaces = dae-bin-x64-v3
