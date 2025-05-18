@@ -1,0 +1,17 @@
+diff --git a/configure b/configure
+index befdb25..d352a37 100755
+--- a/configure
++++ b/configure
+@@ -646,7 +646,11 @@ ac_includes_default="\
+ #endif
+ #ifdef HAVE_UNISTD_H
+ # include <unistd.h>
+-#endif"
++#endif
++#ifdef HAVE_WCHAR_H
++# include <wchar.h>
++#endif
++"
+ 
+ ac_header_c_list=
+ gt_needs=

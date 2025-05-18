@@ -13,9 +13,10 @@ arch=(x86_64 aarch64)
 license=(GPL-3.0-only)
 makedepends=(git)
 depends=(glibc ncurses readline)
-source=("$pkgname::git+https://git.code.sf.net/p/abook/git#commit=${_commit}")
+source=("$pkgname::git+https://git.code.sf.net/p/abook/git#commit=${_commit}" abook-gcc15.patch)
 # validpgpkeys=(3552E46F58F5FEC69A2CD85A5B4E2D0DD7F62B21) # Raphaël Droz
-b2sums=('6f2e844d5f506928155b031417ea34636e45efe71ecb6efbc51c56406ecbf939acaae050ff8e0da644a0dc19a71b515f7023e34972d25df92407d854bbadcf8a')
+b2sums=('6f2e844d5f506928155b031417ea34636e45efe71ecb6efbc51c56406ecbf939acaae050ff8e0da644a0dc19a71b515f7023e34972d25df92407d854bbadcf8a'
+        '9558830644a9c0685a479f819b4e9752fdb88fab44b3292da12b699e5a29d7f6b58d384661f776dd185782b224f3f517625d2f23518b841dc2b1f78ef1fa643c')
 
 pkgver() {
   cd "$pkgname"
@@ -26,7 +27,8 @@ prepare() {
   cd "$pkgname"
   # update gettext infrastructure
   cp -Rv /usr/share/gettext/po .
-  aclocal && automake --add-missing && autoconf
+  aclocal --aclocal-path=/usr/share/gettext/m4/ && automake --add-missing && autoconf
+  git apply ../abook-gcc15.patch
 }
 
 build() {
