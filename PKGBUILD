@@ -5,26 +5,30 @@
 pkgname=wtfis
 _origpkgname=wtfis
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Passive hostname, domain and IP lookup tool for non-robots"
 arch=("x86_64")
 url='https://pypi.org/project/wtfis/'
 license=("None")
-depends=()
+depends=(
+    "python-pydantic"
+    "python-dotenv"
+    "python-requests"
+    "python-rich"
+    "python-shodan"
+)
 makedepends=(
-	"python-build"
-	"python-installer"
-	"python-wheel"
-	"python-setuptools"
-	"python-hatchling"
+    "python-build"
+    "python-installer"
+    "python-wheel"
+    "python-setuptools"
+    "python-hatchling"
 )
 source=("https://files.pythonhosted.org/packages/16/55/748b21d2d2e765e319cff417447006fc5d714b56317918da0d70ed8d7ee5/wtfis-0.11.0.tar.gz")
 sha256sums=("3a687d99d91c9bba15e45707acef68c3ebc9ffd571fb311c2d83423a62ee0e6f")
 package() {
-	cd "${_origpkgname}-${pkgver}" || exit
-	python -m build --wheel --no-isolation
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${_origpkgname}-${pkgver}" || exit
+    python -m build --wheel --no-isolation
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
