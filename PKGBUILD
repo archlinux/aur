@@ -4,15 +4,14 @@
 
 pkgname=blis
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="BLAS-like Library Instantiation Software Framework"
 arch=('i686' 'x86_64')
 url="https://github.com/flame/blis"
 license=('BSD-3-Clause')
 depends=('gcc-libs')
 makedepends=('python')
-provides=('blas' 'cblas')
-conflicts=('blas' 'cblas')
+provides=('libblis.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/flame/blis/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('847c035809b8994c077ade737a4813601db96c4cf0d903d08ba6a9b8ee0fe03e')
