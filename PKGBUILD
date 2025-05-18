@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-math8
-pkgver=8.1.1
-pkgrel=2
+pkgver=8.2.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="General purpose math library for robot applications."
@@ -25,7 +25,7 @@ makedepends=(
 provides=("${_pkgbase}=${_pkgmaj}")
 conflicts=("${_pkgbase}")   # Ruby bindings are unversioned and conflicts (ruby/gz/math.so)
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('0455b24069c61172b625c55348f3a722652058262422019176d0ff43551f7093')
+sha256sums=('6a6e9af99378b4ab81392bd8ad58be1c611f917c669c981b39cf20fc03d412f4')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
