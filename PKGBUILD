@@ -1,14 +1,14 @@
 # Maintainer: AzureHound <183492338+AzureHound@users.noreply.github.com>
 pkgname=jelly
-pkgver=1.0.0
+pkgver=2.0.1
 pkgrel=1
-pkgdesc="Explore & stream Jellyfin from the terminal! 🚀"
+pkgdesc="Explore & stream Jellyfin from terminal! 🪼"
 arch=('x86_64' 'armv7h') # Specify supported architectures
 url="https://github.com/AzureHound/jelly"
 license=('0BSD')
-depends=('bash' 'curl' 'jq' 'fzf' 'mpv') # Runtime dependencies
+depends=('bash' 'curl' 'jq' 'fzf' 'mpv' 'yajl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AzureHound/jelly/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('28249a763b045619b1daac79000db5dfdde1205cb60000a590e7c26a4baf75b7')
+sha256sums=('4658d75553d29f7437a8fccf8287d38b1d8ed1afc0b7dfa4dda70a877ff6c0d5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
