@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Cubesql
+Comment=cubeSQL is a relational database management system built on top of the sqlite database engine.
+Exec=cubesql-admin
+Icon=cubesql
+Terminal=false
+StartupNotify=false
+Categories=Application;
