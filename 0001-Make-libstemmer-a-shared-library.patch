@@ -1,18 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Fri, 1 Apr 2022 19:55:54 +0000
+Subject: [PATCH] Make libstemmer a shared library
+
+---
  GNUmakefile           | 15 +++++++--------
  libstemmer/symbol.map |  6 ++++++
  2 files changed, 13 insertions(+), 8 deletions(-)
+ create mode 100644 libstemmer/symbol.map
 
-diff --git c/GNUmakefile i/GNUmakefile
-index 98eb1fa..86e4855 100644
---- c/GNUmakefile
-+++ i/GNUmakefile
-@@ -170,20 +170,19 @@ C_OTHER_OBJECTS = $(C_OTHER_SOURCES:.c=.o)
+diff --git a/GNUmakefile b/GNUmakefile
+index e1403be3c85b..e014388a2e92 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -190,20 +190,19 @@ C_OTHER_OBJECTS = $(C_OTHER_SOURCES:.c=.o)
  JAVA_CLASSES = $(JAVA_SOURCES:.java=.class)
  JAVA_RUNTIME_CLASSES=$(JAVARUNTIME_SOURCES:.java=.class)
  
--CFLAGS=-O2 -W -Wall -Wmissing-prototypes -Wmissing-declarations
+-CFLAGS=-g -O2 -W -Wall -Wmissing-prototypes -Wmissing-declarations -Wshadow $(WERROR)
 -CPPFLAGS=
-+CFLAGS+=-fPIC -W -Wall -Wmissing-prototypes -Wmissing-declarations
++CFLAGS+=-fPIC -W -Wall -Wmissing-prototypes -Wmissing-declarations -Wshadow $(WERROR)
  
  INCLUDES=-Iinclude
  
@@ -30,7 +37,7 @@ index 98eb1fa..86e4855 100644
                libstemmer/modules.h \
                libstemmer/modules_utf8.h \
  	      $(C_LIB_SOURCES) $(C_LIB_HEADERS) $(C_LIB_OBJECTS) \
-@@ -222,19 +221,19 @@ libstemmer/modules_utf8.h libstemmer/mkinc_utf8.mak: libstemmer/mkmodules.pl lib
+@@ -254,19 +253,19 @@ libstemmer/modules_utf8.h libstemmer/mkinc_utf8.mak: libstemmer/mkmodules.pl lib
  
  libstemmer/libstemmer.o: libstemmer/modules.h $(C_LIB_HEADERS)
  
@@ -54,11 +61,11 @@ index 98eb1fa..86e4855 100644
  	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
  
  csharp_stemwords$(EXEEXT): $(CSHARP_STEMWORDS_SOURCES) $(CSHARP_RUNTIME_SOURCES) $(CSHARP_SOURCES)
-diff --git c/libstemmer/symbol.map i/libstemmer/symbol.map
+diff --git a/libstemmer/symbol.map b/libstemmer/symbol.map
 new file mode 100644
-index 0000000..7a3d423
+index 000000000000..7a3d42356362
 --- /dev/null
-+++ i/libstemmer/symbol.map
++++ b/libstemmer/symbol.map
 @@ -0,0 +1,6 @@
 +SB_STEMMER_0 {
 +    global:

@@ -2,7 +2,7 @@
 
 _name="libstemmer"
 pkgname="lib32-${_name}"
-pkgver=2.2.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Stemming library supporting several languages (32-bit)"
 arch=('x86_64')
@@ -13,13 +13,13 @@ depends=('lib32-glibc' "${_name}>=${pkgver}")
 makedepends=('lib32-gcc-libs')
 _pkgsrc="snowball-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
-        'dynamiclib.diff')
-sha256sums=('425cdb5fba13a01db59a1713780f0662e984204f402d3dae1525bda9e6d30f1a'
-            'c031da5a11bafa079df6c33b38b8795b65cf2c91cc6b452dcf2b10612288a3e6')
+        '0001-Make-libstemmer-a-shared-library.patch')
+sha256sums=('80ac10ce40dc4fcfbfed8d085c457b5613da0e86a73611a3d5527d044a142d60'
+            '8d9440992704d9fbe359eaceef53436d55011bed234e84bc6453c38a62b8f036')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  patch -Np1 -i "${srcdir}/dynamiclib.diff"
+  patch -Np1 -i "${srcdir}/0001-Make-libstemmer-a-shared-library.patch"
 }
 
 build() {

@@ -4,4 +4,3 @@
 !.gitignore
 !.nvchecker.toml
 !*.patch
-!*.diff
