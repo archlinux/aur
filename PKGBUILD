@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="clai"
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Command line artificial intelligence - Multi-vendor generation in your terminal"
 arch=('aarch64' 'i686' 'x86_64')
@@ -12,21 +12,30 @@ makedepends=('go')
 optdepends=('glow: for formatted markdown output when querying text responses')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c51259cdfe2ebcc0aee5f0f0bbc26e92ead4a96b9854f0fd9e3467d06e266438')
+sha256sums=('1f3916900cce977bfa7839efa741906e1661bce56b521d56f749ff2209d176da')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
+  go mod download -x
+  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
+  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+
   mkdir -p "build"
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${pkgname}" .
+
+  cd "${srcdir}/${_pkgsrc}"
+  go build -v -o "build/${pkgname}" .
 }
 
 check() {
@@ -37,7 +46,7 @@ check() {
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -vDm644 "README.md"   "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "EXAMPLES.md" "${pkgdir}/usr/share/doc/${pkgname}/EXAMPLES.md"
+  install -vDm644 "README.md"   "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
