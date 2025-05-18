@@ -1,7 +1,7 @@
 pkgbase = gz-gui9
 	pkgdesc = Graphical interfaces for robotics applications
 	pkgver = 9.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gazebosim/gz-gui
 	arch = any
 	license = Apache-2.0
@@ -27,6 +27,8 @@ pkgbase = gz-gui9
 	depends = tinyxml2
 	provides = gz-gui=9
 	source = https://github.com/gazebosim/gz-gui/archive/gz-gui9_9.0.1.tar.gz
+	source = https://github.com/gazebosim/gz-gui/pull/677.patch
 	sha256sums = 5ed385dba7f7258b7032f188601dea80fa5bc74de460d7a78122f3cf6e0339b1
+	sha256sums = 11c497a3cd89b888489f5f8d66b3b052feea86525d8874d8950cdc1c41b0ab0f
 
 pkgname = gz-gui9
