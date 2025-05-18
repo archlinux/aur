@@ -1,0 +1,11 @@
+pkgbase = oblivion
+	pkgdesc = Oblivion Desktop - Unofficial Warp Client for Windows/Mac/Linux
+	pkgver = 2.91.3
+	pkgrel = 1
+	url = https://github.com/bepass-org/oblivion-desktop
+	arch = x87_64
+	depends = bash
+	depends = electron34
+	source = oblivion-2.91.3.tar.gz::https://github.com/bepass-org/oblivion-desktop/releases/download/v2.91.3/oblivion-desktop-linux-x65.tar.xz
+
+pkgname = oblivion

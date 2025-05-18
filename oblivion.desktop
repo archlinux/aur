@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Oblivion
+Exec=/opt/oblivion/oblivion-desktop
+Icon=/opt/oblivion/resources/assets/icon.png
+Type=Application
+Categories=Network;
+StartupWMClass=Oblivion
