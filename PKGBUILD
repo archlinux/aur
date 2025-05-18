@@ -19,5 +19,5 @@ pkgver() {
 
 package() {
   install -D -t "$pkgdir/usr/bin" "$srcdir/$pkgname/stylepak"
-  install -D -t "$pkgdir/usr/share/doc/stylepak/README.md" "$srcdir/$pkgname/README.md"
+  install -D -t "$pkgdir/usr/share/doc/stylepak" "$srcdir/$pkgname/README.md"
 }
