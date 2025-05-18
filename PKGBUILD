@@ -2,7 +2,7 @@
 _pkgname=jd-gui-duo
 pkgname=jd-gui-duo-bin
 pkgver=2.0.90
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary release of jd-gui-duo, a 2-in-1 JAVA decompiler based on JD-CORE v0 and v1"
 arch=('any')
 url="https://github.com/nbauma109/$_pkgname"
@@ -11,7 +11,7 @@ depends=('java-runtime>=21')
 provides=("jd-gui-duo")
 conflicts=("jd-gui-duo")
 source=(
-	"$pkgname-$pkgver.zip::https://github.com/nbauma109/$_pkgname/releases/download/$pkgver/$_pkgname-linux.zip"
+	"$pkgname-$pkgver.zip::https://github.com/nbauma109/$_pkgname/releases/download/$pkgver/$_pkgname-linux-$pkgver.zip"
 	"jd-gui-duo"
 	"jd-gui-duo.desktop"
 	"jd_icon_128.png"
