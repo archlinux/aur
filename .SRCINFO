@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-km
 	pkgdesc = Khmer language pack for Firefox Nightly
-	pkgver = 140.0a1.20250517.213057
+	pkgver = 140.0a1.20250518.091432
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-km
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-km-140.0a1.20250517.213057.xpi
-	source = firefox-nightly-i18n-km-140.0a1.20250517.213057.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-140.0a1.km.langpack.xpi
-	sha256sums = c195f323d529c00773287cfd0435ee0357b4743d57acb8f5d271c039ed8bdd86
+	noextract = firefox-nightly-i18n-km-140.0a1.20250518.091432.xpi
+	source = firefox-nightly-i18n-km-140.0a1.20250518.091432.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-140.0a1.km.langpack.xpi
+	sha256sums = ef46fec73199b5aa5821e5760e3ddb552620b3b31c91515d263574b4fd01d7ef
 
 pkgname = firefox-nightly-i18n-km
