@@ -1,0 +1,36 @@
+-------------------------------------------------------
+ Changelog    : iwinfo
+ Tags         : 3.4.1 ➙ 4.0.0
+              : 2024-07-12 ➙ 2025-05-18
+              : 6 tags. See Docs for full changelog
+-------------------------------------------------------
+
+ 2025-05-18   : 4.0.0
+                Code now complies with: PEP-8, PEP-257, PEP-484 and PEP-561
+                Code Refactor & clean ups.
+                Wireless "host" database file name.
+                  Preferred name is now known-hosts.toml, which aligns better with its
+                  purpose and format.
+                  The previous names will continue to work just fine as well.
+                  The known host file will first be looked for in the directory
+                  *./etc/iwinfo/* and then */etc/iwinfo/*.
+ 2025-02-25     update Docs/Changelog.rst Docs/iwinfo.pdf
+
+ 2025-02-25   : 3.5.1
+                Fix typo in PKGBUILD from 3.5.0
+                update Docs/Changelog.rst Docs/iwinfo.pdf
+
+ 2025-02-25   : 3.5.0
+                More checking of missing programs. Found by aur report from @simona
+                Add iwd as dependency to provide /usr/bin/iwctl
+ 2024-12-31     update Docs/Changelog.rst Docs/mkpkg.pdf for 3.4.2
+
+ 2024-12-31   : 3.4.2
+                Git tags are now signed.
+                Update SPDX tags
+                Add git signing key to Arch Package
+ 2024-07-12     update Docs/Changelog.rst Docs/iwinfo.pdf
+
+ 2024-07-12   : 3.4.1
+                Update README
+ 2024-07-10     update Docs/Changelog.rst Docs/iwinfo.pdf
