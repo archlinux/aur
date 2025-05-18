@@ -15,7 +15,7 @@ depends=(
 )
 
 makedepends=('git')
-source=("brisklydev.github.io/brisk/releases/aur/Brisk-v${pkgver}-linux-aur-x86_64.tar.xz")
+source=("https://brisklydev.github.io/brisk/releases/aur/Brisk-v${pkgver}-linux-aur-x86_64.tar.xz")
 md5sums=('SKIP')
 
 package() {
