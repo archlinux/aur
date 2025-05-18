@@ -4,7 +4,7 @@
 pkgname=void-git
 _pkgname=void
 pkgver=1.99.3.r2519.g906502f6
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cursor alternative"
 url="https://voideditor.com/"
 arch=('x86_64')
@@ -55,12 +55,13 @@ build() {
   # Set version of electron
   _elver=$(cat /usr/lib/electron${_elnum}/version)
   _elorig=$(npm pkg get devDependencies.electron|sed 's/"//g')
-  echo Replacing ${_elverorig} with ${_elver}
+  sed -i "s/^target=.*/target=\"${_elver}\"/" .npmrc # for native modules
+  echo Replacing ${_elorig} with $(rg -N 'target' .npmrc)
   npm pkg set devDependencies.electron=${_elver}
   # Stop downloading 870MB+ bins
-  _hash=$(echo -n "https://github.com/electron/electron/releases/download/v${_elorig}" | sha256sum | cut -d ' ' -f 1)
+  _hash=$(echo -n "https://github.com/electron/electron/releases/download/v${_elver}" | sha256sum | cut -d ' ' -f 1)
   _cachedir="${XDG_CACHE_HOME}/electron/${_hash}"
-  _zip="electron-v${_elorig}-linux-x64.zip"
+  _zip="electron-v${_elver}-linux-x64.zip"
   mkdir -p "${_cachedir}"
   bsdtar --format zip -cf "${_cachedir}/${_zip}" /dev/null
   echo $(sha256sum "${_cachedir}/${_zip}" | cut -d " " -f 1) *${_zip} > build/checksums/electron.txt
