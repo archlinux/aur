@@ -3,7 +3,7 @@
 
 pkgname=icann-rdap
 pkgver=0.0.22
-pkgrel=1
+pkgrel=2
 pkgdesc='ICANN implementation of the Registry Data Access Protocol (RDAP)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/icann/icann-rdap'
@@ -11,7 +11,7 @@ license=('Apache-2.0 OR MIT')  # SPDX-License-Identifier: Apache-2.0 OR MIT
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 provides=('rdap')
-conflicts=('openrdap-client' "${provides[@]}")
+conflicts=('rdap')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('42360a82605bf92891b4de0a133d43baabb041446b16063094c4abc94c531c30')
 
