@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-msgs11
-pkgver=11.0.2
-pkgrel=3
+pkgver=11.1.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Messages for Gazebo robot simulation."
@@ -24,15 +24,8 @@ makedepends=(
   'gz-cmake=4'
   )
 provides=("${_pkgbase}=${_pkgmaj}")
-source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
-        "protobuf30.patch::https://github.com/gazebosim/gz-msgs/pull/499.patch")
-sha256sums=('db893c7ae6587de510d3111ca2fd2fcb9e4af5bba248529232c38cfd8b1f1ef4'
-            'b6467b4f7a2ead6c96c451865511ec3b8338033a128c84a09e20b0139050c779')
-
-prepare() {
-  cd "${_pkgbase}-${pkgname}_${pkgver}"
-  patch -p1 < ${srcdir}/protobuf30.patch
-}
+source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
+sha256sums=('1eaa47500aa8a6fa65bcf76cf8d03c78d298e6da730ee2371b119dff732b639d')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
