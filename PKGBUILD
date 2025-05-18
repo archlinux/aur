@@ -6,20 +6,20 @@
 
 _pkgname=frida
 pkgname=python-$_pkgname
-pkgver=17.0.0
+pkgver=17.0.1
 pkgrel=1
 pkgdesc="Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 3 version from PyPi"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.frida.re"
 license=('custom:wxWindows Library License, Version 3.1')
 depends=('python' 'nodejs' 'npm')
-optdepends=('python-typing_extensions: for Python <3.8'
+optdepends=('python-typing_extensions: for Python <3.11'
             'rustup: for injecting Rust code into targets')
 makedepends=(python-build python-installer python-wheel python-setuptools git)
 # Sourced from https://pypi.org/project/frida/#files
 source=("https://files.pythonhosted.org/packages/source/f/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "COPYING")
-sha256sums=('7b555833c6668f2145741084081d085e2718f5e10a215e6b51ab8a76c48fc741'
+sha256sums=('9941d8b3a8adc83499c47dc6b3cca4eae90d48de994c7f9814947e631abd9025'
             '5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2')
 conflicts=("python2-${_pkgname}")
 
