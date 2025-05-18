@@ -2,7 +2,7 @@
 
 pkgname=gz-gui8
 pkgver=8.4.0
-pkgrel=2
+pkgrel=3
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Graphical interfaces for robotics applications"
@@ -34,8 +34,15 @@ makedepends=(
   'vulkan-headers'
   )
 provides=("${_pkgbase}=${_pkgmaj}")
-source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('b8055f2431f87629a75a7105c97bc6f23f905519ec22262da7605b0d1cc1ae60')
+source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
+        "https://github.com/gazebosim/${_pkgbase}/pull/677.patch")
+sha256sums=('b8055f2431f87629a75a7105c97bc6f23f905519ec22262da7605b0d1cc1ae60'
+            '11c497a3cd89b888489f5f8d66b3b052feea86525d8874d8950cdc1c41b0ab0f')
+
+prepare() {
+  cd "${_pkgbase}-${pkgname}_${pkgver}"
+  patch -p1 < ${srcdir}/677.patch
+}
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \

@@ -1,7 +1,7 @@
 pkgbase = gz-gui8
 	pkgdesc = Graphical interfaces for robotics applications
 	pkgver = 8.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gazebosim/gz-gui
 	arch = any
 	license = Apache-2.0
@@ -27,6 +27,8 @@ pkgbase = gz-gui8
 	depends = tinyxml2
 	provides = gz-gui=8
 	source = https://github.com/gazebosim/gz-gui/archive/gz-gui8_8.4.0.tar.gz
+	source = https://github.com/gazebosim/gz-gui/pull/677.patch
 	sha256sums = b8055f2431f87629a75a7105c97bc6f23f905519ec22262da7605b0d1cc1ae60
+	sha256sums = 11c497a3cd89b888489f5f8d66b3b052feea86525d8874d8950cdc1c41b0ab0f
 
 pkgname = gz-gui8
