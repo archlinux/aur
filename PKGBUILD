@@ -36,5 +36,6 @@ package() {
 	touch "/$pkgdir/usr/share/project-plus-netplay/games/Place Brawl ISO here"
 	cp -R "Launcher" "$pkgdir/usr/share/project-plus-netplay"
  	install -D "sd.raw" "$pkgdir/usr/share/project-plus-netplay/sd.raw"
-	chown -R "$USER" "$pkgdir/usr/share/project-plus-netplay"
+	chown -R "777" "$pkgdir/usr/share/project-plus-netplay/games"
+ 	chown "777" "$pkgdir/usr/share/project-plus-netplay/sd.raw"
 }
