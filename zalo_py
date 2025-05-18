@@ -8,8 +8,8 @@ app_path = "/opt/zalo"
 electron22_path = "/usr/bin/electron22"
 
 # Paths to your Zalo application and icon
-app_floder = os.path.join(app_path, "Zalo", "app")
-icon_path = os.path.join(app_path, "assets", "Zalo.png")
+app_floder = os.path.join(app_path, "app")
+icon_path = os.path.join(app_path, "icon.png")
 
 # Start the Zalo application
 process = subprocess.Popen([electron22_path, app_floder])

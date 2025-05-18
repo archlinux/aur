@@ -2,6 +2,6 @@
 Comment=
 Name=Zalo
 Exec=/usr/bin/zalo
-Icon=/opt/zalo/assets/Zalo.png
+Icon=/opt/zalo/icon.png
 Terminal=false
 Type=Application
