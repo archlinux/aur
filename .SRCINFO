@@ -1,6 +1,6 @@
 pkgbase = advantagescope-git
 	pkgdesc = robot diagnostics, log review/analysis, and data visualization application tool
-	pkgver = r1232.73e92df
+	pkgver = 4.1.6.r23.gbc9dd3a
 	pkgrel = 1
 	url = https://github.com/Mechanical-Advantage/AdvantageScope.git
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = advantagescope-git
 	makedepends = curl
 	makedepends = git
 	makedepends = npm
-	makedepends = emsdk
 	makedepends = tar
 	depends = nspr
 	depends = libxdamage
@@ -39,6 +38,8 @@ pkgbase = advantagescope-git
 	depends = hicolor-icon-theme
 	conflicts = advantagescope
 	source = git+https://github.com/Mechanical-Advantage/AdvantageScope.git
+	source = emsdk-4.1.6.r23.gbc9dd3a.tar.gz::https://github.com/emscripten-core/emsdk/archive/refs/tags/3.1.71.tar.gz
 	sha256sums = SKIP
+	sha256sums = ea1bbd1974a3323710fc6e585aad20b056fed634df11db2ee3556bfd18e96afd
 
 pkgname = advantagescope-git
