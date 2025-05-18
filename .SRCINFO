@@ -15,6 +15,6 @@ pkgbase = doot
 	provides = doot
 	conflicts = doot
 	source = doot-0.4.5.tar.gz::https://github.com/pol-rivero/doot/archive/refs/tags/0.4.5.tar.gz
-	sha256sums = 580e9edc9bd2b98c21095be20dfae5f228921e6503a82144a169a4662e7bd9b8
+	sha256sums = a01f7b98c46445edce245bedcc57481c34b00625ab3554d03a644193b8bc4adb
 
 pkgname = doot
