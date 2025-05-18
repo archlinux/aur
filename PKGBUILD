@@ -5,7 +5,7 @@
 
 _pkgname=arnis
 pkgname=arnis-bin
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='Generate any location from the real world in Minecraft (binary version)'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("${_pkgname}-linux-v${pkgver}::${url}/releases/download/v${pkgver}/${_pk
         "${_pkgname}-512x-v${pkgver}.png::${url}/raw/v${pkgver}/icons/icon.png"
         "${_pkgname}-128x-v${pkgver}.png::${url}/raw/v${pkgver}/icons/128x128.png"
         "${_pkgname}.desktop")
-sha256sums=('fb6863e9676592815843414e071cf4dc5f8e6f8816ce33ed47ee6b78c4d21343'
+sha256sums=('b51f5db17137899638ec7c99e993a9a107e01c6530363e21c63d681ff27c2007'
             'f7eeefefa7064ac9a05589fdf492f9baaae8337e2a0d48b7145db2fd1e314c31'
             '7bf44562b882ed7f6ca52ee7f67b80dd5eaef1301c0c1275ec2f7e571ce985b5'
             '860c74a299aac6f7645f62e127f21ae5df43fc8fb946cfa5bb96f90c54f0cdb3'
