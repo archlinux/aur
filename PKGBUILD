@@ -15,7 +15,7 @@ depends=(
 )
 
 makedepends=('git')
-source=("https://github.com/BrisklyDev/brisk/releases/download/v${pkgver}/Brisk-v${pkgver}-linux-x86_64.tar.xz")
+source=("brisklydev.github.io/brisk/releases/aur/Brisk-v${pkgver}-linux-aur-x86_64.tar.xz")
 md5sums=('SKIP')
 
 package() {
@@ -34,6 +34,5 @@ package() {
 
   install -Dm644 "$srcdir/brisk.desktop" "$pkgdir/usr/share/applications/brisk.desktop"
 
-  # Adjust icon path based on where it actually is in $srcdir
   install -Dm644 "$srcdir/data/flutter_assets/assets/icons/logo-128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/brisk.png"
 }
