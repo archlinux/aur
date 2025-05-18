@@ -1,13 +1,13 @@
 pkgbase = windigo
 	pkgdesc = Lightweight Go-based daemon for Linux that controls fan speeds based on sensor input
-	pkgver = 0.1.2
-	pkgrel = 1
+	pkgver = 0.1.3
+	pkgrel = 2
 	url = https://github.com/marzeq/windigo
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = git+https://github.com/marzeq/windigo.git#tag=v0.1.2
+	source = git+https://github.com/marzeq/windigo.git#tag=v0.1.3
 	sha256sums = SKIP
 
 pkgname = windigo

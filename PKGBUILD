@@ -1,8 +1,8 @@
 # Maintainer: marzeq < marzeqmarzeq (at) gmail (dot) com >
 
 pkgname=windigo
-pkgver=0.1.2
-pkgrel=1
+pkgver=0.1.3
+pkgrel=2
 pkgdesc="Lightweight Go-based daemon for Linux that controls fan speeds based on sensor input"
 arch=("x86_64")
 url="https://github.com/marzeq/windigo"
@@ -22,4 +22,5 @@ package() {
   ln -s windigo "$pkgdir/usr/bin/windigod"
   install -Dm644 windigod.service "$pkgdir/etc/systemd/system/windigod.service"
   install -Dm644 config.example.conf "$pkgdir/etc/windigo/config.example.conf"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
