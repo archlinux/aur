@@ -11,7 +11,7 @@ arch=('x86_64')
 license=("MIT")
 provides=('void')
 conflicts=('void')
-_elnum=35 #36+ will fail
+_elnum=36
 depends=( electron${_elnum} ripgrep xdg-utils # replacements
   libxkbfile
   libsecret
