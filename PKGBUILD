@@ -3,7 +3,7 @@
 _pkgname="sui"
 pkgname="${_pkgname}-bin"
 pkgver=1.48.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model"
 arch=('x86_64' 'aarch64')
 url="https://github.com/MystenLabs/sui"
