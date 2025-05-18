@@ -67,11 +67,7 @@ build() {
   echo $(sha256sum "${_cachedir}/${_zip}" | cut -d " " -f 1) *${_zip} > build/checksums/electron.txt
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
   # Build
-  npm install --legacy-peer-deps # to handle dependency conflicts
   npm run buildreact # needed by unknown reason
-  # Rebuilding modules for bumped electron will fail
-  # npm install -D electron-rebuild
-  # npx electron-rebuild -f
   npm run gulp vscode-linux-x64 #-min # minify cause OOM
 }
 
