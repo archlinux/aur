@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-plugin3
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Cross-platform C++ library for dynamically loading plugins."
@@ -20,7 +20,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('6342037d9370c352a55fd6201bc9c91f690c422097ac8dc39b52c84254c4f5c7')
+sha256sums=('d024780079572599ab467a7dbd33e2d861315403bf7d3d50b89a2610913ff04c')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
