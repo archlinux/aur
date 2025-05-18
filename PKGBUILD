@@ -1,7 +1,7 @@
 # Maintainer: Herbert Knapp Name <herbert.knapp edu.uni-graz.at>
 pkgname=exact-audio-copy
 pkgver=1.8
-pkgrel=2
+pkgrel=3
 pkgdesc='A precise CD audio grabber for creating perfect quality rips using CD and DVD drives'
 arch=('any')
 url='https://www.exactaudiocopy.de/en/'
@@ -38,7 +38,8 @@ package() {
     echo 'mkdir -p ~/.exact-audio-copy'
     echo '[[ -d ~/.exact-audio-copy/eac ]] || cp -r /opt/exact-audio-copy ~/.exact-audio-copy/eac'
     echo 'cd ~/.exact-audio-copy/eac'
-    echo 'WINEDLLOVERRIDES="mscoree=" WINEDEBUG=-all WINEPREFIX=~/.exact-audio-copy wine EAC.exe'
+    echo 'if [[ ! -f ~/.exact-audio-copy/dotnet48_installed ]]; then date > ~/.exact-audio-copy/dotnet48_installed && WINEDLLOVERRIDES="mscoree=" WINEDEBUG=-all WINEPREFIX=~/.exact-audio-copy winetricks -q dotnet48 & fi'
+    echo 'WINEDLLOVERRIDES="mscoree=" WINEDEBUG=-all WINEPREFIX=~/.exact-audio-copy wine EAC.exe; wait'
   } > "${_launcher}"
   chmod +x "${_launcher}"
   ln -s "/usr/bin/eac" "$pkgdir/usr/bin/exact-audio-copy"
