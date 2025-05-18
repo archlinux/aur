@@ -2,7 +2,7 @@
 
 pkgname=gz-rendering8
 pkgver=8.2.2
-pkgrel=2
+pkgrel=3
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="C++ library designed to provide an abstraction for different rendering engines."
@@ -29,10 +29,17 @@ optdepends=(
   'ogre-1.9: Ogre 1.x rendering enging plugin'
   )
 provides=("${_pkgbase}=${_pkgmaj}")
-source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('e223a71b5755230cb529c6810e066c4cc694432444ecc648db92bd28838d3367')
+source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
+        "https://github.com/gazebosim/${_pkgbase}/pull/1128.patch")
+sha256sums=('e223a71b5755230cb529c6810e066c4cc694432444ecc648db92bd28838d3367'
+            '2c9939d6d5eeb4b669267d09266e45a7dc0d387bf3e1b01510acc5090a6be92d')
 
 _build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
+
+prepare() {
+  cd "${_pkgbase}-${pkgname}_${pkgver}"
+  patch -p1 < ${srcdir}/1128.patch
+}
 
 build() {
   mkdir -p "$srcdir/$_build_dir" && cd $_

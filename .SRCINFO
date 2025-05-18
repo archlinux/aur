@@ -1,7 +1,7 @@
 pkgbase = gz-rendering8
 	pkgdesc = C++ library designed to provide an abstraction for different rendering engines.
 	pkgver = 8.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gazebosim/gz-rendering
 	arch = any
 	license = Apache-2.0
@@ -20,6 +20,8 @@ pkgbase = gz-rendering8
 	optdepends = ogre-1.9: Ogre 1.x rendering enging plugin
 	provides = gz-rendering=8
 	source = https://github.com/gazebosim/gz-rendering/archive/gz-rendering8_8.2.2.tar.gz
+	source = https://github.com/gazebosim/gz-rendering/pull/1128.patch
 	sha256sums = e223a71b5755230cb529c6810e066c4cc694432444ecc648db92bd28838d3367
+	sha256sums = 2c9939d6d5eeb4b669267d09266e45a7dc0d387bf3e1b01510acc5090a6be92d
 
 pkgname = gz-rendering8
