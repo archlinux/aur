@@ -3,7 +3,7 @@
 _pkgname=libjxl
 pkgname=$_pkgname-metrics
 pkgver=0.11.1
-pkgrel=5
+pkgrel=6
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics'
 arch=(x86_64)
 url=https://jpeg.org/jpegxl/
@@ -51,9 +51,9 @@ optdepends=(
 options=(!lto) # Disabling pacman's LTO, as ThinLTO is enforced
 source=(
   git+https://github.com/libjxl/$_pkgname.git#tag=v$pkgver
-  git+https://skia.googlesource.com/skcms.git#commit=b2e692629c1fb19342517d7fb61f1cf83d075492
+  git+https://skia.googlesource.com/skcms.git#commit=42030a771244ba67f86b1c1c76a6493f873c5f91
   git+https://github.com/webmproject/sjpeg.git#commit=e5ab13008bb214deb66d5f3e17ca2f8dbff150bf
-  git+https://github.com/libjpeg-turbo/libjpeg-turbo.git#tag=3.1.0
+  git+https://github.com/libjpeg-turbo/libjpeg-turbo.git#tag=2.1.5.1
 )
 sha256sums=(
   SKIP
@@ -82,7 +82,8 @@ build() {
     -DJPEGXL_ENABLE_EXAMPLES=OFF \
     -DJPEGXL_ENABLE_PLUGINS=OFF \
     -DJPEGXL_FORCE_SYSTEM_BROTLI=ON \
-    -DJPEGXL_FORCE_SYSTEM_HWY=ON
+    -DJPEGXL_FORCE_SYSTEM_HWY=ON \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make -C build
 }
 

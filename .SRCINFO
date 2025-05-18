@@ -1,7 +1,7 @@
 pkgbase = libjxl-metrics
 	pkgdesc = JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics
 	pkgver = 0.11.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
 	license = BSD-3-Clause
@@ -33,9 +33,9 @@ pkgbase = libjxl-metrics
 	conflicts = jpegli
 	options = !lto
 	source = git+https://github.com/libjxl/libjxl.git#tag=v0.11.1
-	source = git+https://skia.googlesource.com/skcms.git#commit=b2e692629c1fb19342517d7fb61f1cf83d075492
+	source = git+https://skia.googlesource.com/skcms.git#commit=42030a771244ba67f86b1c1c76a6493f873c5f91
 	source = git+https://github.com/webmproject/sjpeg.git#commit=e5ab13008bb214deb66d5f3e17ca2f8dbff150bf
-	source = git+https://github.com/libjpeg-turbo/libjpeg-turbo.git#tag=3.1.0
+	source = git+https://github.com/libjpeg-turbo/libjpeg-turbo.git#tag=2.1.5.1
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
