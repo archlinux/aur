@@ -4,8 +4,8 @@
 pkgname=void-git
 _pkgname=void
 pkgver=1.99.3.r2519.g906502f6
-pkgrel=1
-pkgdesc="The Cursor alternative"
+pkgrel=2
+pkgdesc="The Cursor alternative AI code editor (electron36)"
 url="https://voideditor.com/"
 arch=('x86_64')
 license=("MIT")
@@ -82,12 +82,10 @@ package() {
   ln -svf "${_app}/ThirdPartyNotices.txt" "${pkgdir}/usr/share/licenses/${pkgname}/"
   # appdata and desktop files
   install -Dm644 "${_pkg}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
-  mkdir -p "${pkgdir}/usr/share/"{applications,mime/packages}
   #todo cleanup
-  sed -e s/@@NAME@@/void/ -e s/@@EXEC@@/void/g -e s/@@ICON@@/void/g -e s/@@NAME_SHORT@@/Void/g -e s/@@NAME_LONG@@/Void/g \
-  	void/resources/linux/code.desktop > "${pkgdir}/usr/share/applications/void.desktop"
-  sed -e s/@@NAME_LONG@@/Void/ -e s/@@EXEC@@/void/ -e s/@@ICON@@/void/ -e s/@@URLPROTOCOL@@/vscode/ \
-    void/resources/linux/code-url-handler.desktop > "${pkgdir}/usr/share/applications/void-url-handler.desktop"
+  install -Dm644 void/scripts/appimage/void.desktop "${pkgdir}/usr/share/applications/void.desktop"
+  install -Dm644 void/scripts/appimage/void-url-handler.desktop "${pkgdir}/usr/share/applications/void-url-handler.desktop"
+  mkdir -p "${pkgdir}/usr/share/mime/packages"
   sed -e s/@@NAME@@/void/ -e s/@@NAME_LONG@@/Void/g \
   	void/resources/linux/code-workspace.xml > "${pkgdir}/usr/share/mime/packages/void-workspace.xml"
   # shell completions
