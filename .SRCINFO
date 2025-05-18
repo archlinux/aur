@@ -1,0 +1,24 @@
+pkgbase = grabit
+	pkgdesc = Screenshot and file uploader for Zipline and other services
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.creations.works/creations/grabit
+	arch = any
+	license = BSD
+	depends = bash
+	depends = curl
+	depends = jq
+	depends = xdg-utils
+	depends = python
+	depends = tk
+	optdepends = grim: Wayland screenshot support
+	optdepends = slurp: Wayland region selection
+	optdepends = wl-clipboard: Wayland clipboard
+	optdepends = flameshot: X11 screenshot support
+	optdepends = xclip: X11 clipboard
+	optdepends = python-pillow: image preview
+	optdepends = python-screeninfo: screen placement
+	source = git+https://git.creations.works/creations/grabit.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = grabit
