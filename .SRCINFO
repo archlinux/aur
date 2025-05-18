@@ -1,6 +1,6 @@
 pkgbase = void-git
-	pkgdesc = The open-source Cursor alternative
-	pkgver = 1.99.3.r2516.ga8bc42b5
+	pkgdesc = The Cursor alternative
+	pkgver = 1.99.3.r2519.g906502f6
 	pkgrel = 1
 	url = https://voideditor.com/
 	arch = x86_64

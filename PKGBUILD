@@ -3,9 +3,9 @@
 
 pkgname=void-git
 _pkgname=void
-pkgver=1.99.3.r2516.ga8bc42b5
+pkgver=1.99.3.r2519.g906502f6
 pkgrel=1
-pkgdesc="The open-source Cursor alternative"
+pkgdesc="The Cursor alternative"
 url="https://voideditor.com/"
 arch=('x86_64')
 license=("MIT")
@@ -63,7 +63,7 @@ build() {
   # Rebuilding modules for bumped electron will fail
   # npm install -D electron-rebuild
   # npx electron-rebuild -f
-  npm run gulp vscode-linux-x64 # Bundle
+  npm run gulp vscode-linux-x64 #-min # minify cause OOM
 }
 
 package() {
