@@ -1,28 +1,31 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate
-pkgver=1.0.0rc2
+pkgver=1.0.0
 pkgrel=3
 epoch=1
 pkgdesc="A special compilation of curl that makes it impersonate Firefox, Crome and other browsers. Includes libcurl."
 url="https://github.com/lexiforest/curl-impersonate"
 license=('MIT')
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-makedepends=(tar gcc14 cmake go ninja unzip zlib autoconf automake libtool patch)
-depends=(nss libc++)
+makedepends=(tar cmake go ninja unzip zlib autoconf automake libtool patch)
+makedepends_x86_64=(gcc14)
+depends=(nss libc++ zstd libidn2 rtmpdump)
 provides=(curl-impersonate-chrome curl-impersonate-firefox libcurl-impersonate libcurl-impersonate-chrome libcurl-impersonate-firefox)
 conflicts=(curl-impersonate-bin curl-impersonate-chrome curl-impersonate-firefox libcurl-impersonate-bin)
 replaces=(curl-impersonate-chrome curl-impersonate-firefox)
 
 source=(
-  "curl-impersonate.tar.gz::https://github.com/lexiforest/curl-impersonate/archive/refs/tags/v${pkgver}.tar.gz"
+  "curl-impersonate-${pkgver}.tar.gz::https://github.com/lexiforest/curl-impersonate/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-md5sums=('b13bc66f4081641686a80847ce05a320')
+md5sums=('c59864c8526b70233417658e1ded1e77')
 
-build () {
-  export CXXFLAGS+=" -Wno-error=stringop-overflow"
-  export CC=gcc-14 CXX=g++-14
+prepare () {
+  if [[ $CARCH != "aarch64" ]]; then
+    export CXXFLAGS+=" -Wno-error=stringop-overflow"
+    export CC=gcc-14 CXX=g++-14
+  fi
   cd curl-impersonate-${pkgver}
   autoconf
   mkdir -p build
@@ -39,7 +42,10 @@ package () {
 
   # Cleanup libcurl
   find -L "${pkgdir}/usr/lib" -type f ! -iname "lib*.so*" -print0 | xargs -0r -I@ -- rm -vf "@"
-  ln -s /usr/lib/${pkgname%-bin}.so.4.8.0 "$pkgdir"/usr/lib/${pkgname%-bin}-chrome.so
-  ln -s /usr/lib/${pkgname%-bin}.so.4.8.0 "$pkgdir"/usr/lib/${pkgname%-bin}-chrome.so.4
+  ln -s /usr/lib/libcurl-impersonate.so.4.8.0 "$pkgdir"/usr/lib/${pkgname%-bin}-chrome.so
+  ln -s /usr/lib/libcurl-impersonate.so.4.8.0 "$pkgdir"/usr/lib/${pkgname%-bin}-chrome.so.4
   chown -R root:root "${pkgdir}/usr/lib/"
+
+  cd ../
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
