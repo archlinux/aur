@@ -1,6 +1,6 @@
 pkgbase = vinecopulib
 	pkgdesc = C++ vine copula library
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/vinecopulib/vinecopulib
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = vinecopulib
 	makedepends = r
 	depends = gcc-libs
 	provides = libvinecopulib.so
-	source = vinecopulib-0.7.2.tar.gz::https://github.com/vinecopulib/vinecopulib/archive/v0.7.2.tar.gz
-	sha512sums = 69b41678dabc1ed395785c8020f77480c45724a26033a65159726236c9e829a8aaae7a915a3fa64263ff6f020dccc382b7ed9507618f1fb006f0f38db591dc14
+	source = vinecopulib-0.7.3.tar.gz::https://github.com/vinecopulib/vinecopulib/archive/v0.7.3.tar.gz
+	sha512sums = fb506b950774ace72ef806af12171515606bf6e8b5c9f9c181bc083fc3de31ff963f656b987b57e2bd7d086bd90b49c1301fc75039e997acf18aa3a4fece8b7c
 
 pkgname = vinecopulib
