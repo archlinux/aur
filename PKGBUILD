@@ -2,18 +2,18 @@
 # Contributor: Daniel McLarty <info@savagedevs.com>
 pkgname='rose-pine-gtk-theme-full'
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK theme with the Rose Pine colour palette. Includes Icons."
 arch=(any)
 url="https://github.com/rose-pine/gtk"
 license=('MIT')
 conflicts=("rose-pine-gtk-theme")
 options=(!strip)
-source=("https://github.com/rose-pine/gtk/releases/download/v$pkgver/gtk3.tar.gz" 
-"https://github.com/rose-pine/gtk/releases/download/v$pkgver/gtk4.tar.gz" 
-"https://github.com/rose-pine/gtk/releases/download/v$pkgver/rose-pine-icons.tar.gz" 
-"https://github.com/rose-pine/gtk/releases/download/v$pkgver/rose-pine-dawn-icons.tar.gz" 
-"https://github.com/rose-pine/gtk/releases/download/v$pkgver/rose-pine-moon-icons.tar.gz" 
+source=("gtk3-${pkgver}.tar.gz::https://github.com/rose-pine/gtk/releases/download/v$pkgver/gtk3.tar.gz"
+"gtk4-${pkgver}.tar.gz::https://github.com/rose-pine/gtk/releases/download/v$pkgver/gtk4.tar.gz"
+"rose-pine-icons-${pkgver}.tar.gz::https://github.com/rose-pine/gtk/releases/download/v$pkgver/rose-pine-icons.tar.gz"
+"rose-pine-dawn-icons-${pkgver}.tar.gz::https://github.com/rose-pine/gtk/releases/download/v$pkgver/rose-pine-dawn-icons.tar.gz"
+"rose-pine-moon-icons-${pkgver}.tar.gz::https://github.com/rose-pine/gtk/releases/download/v$pkgver/rose-pine-moon-icons.tar.gz"
 "https://raw.githubusercontent.com/rose-pine/rose-pine-theme/e9388ed927c91d0f47726c410c3bb7964199dc48/license")
 sha256sums=('3e790f6898b39f43b23fb4794217c5cc31b64060de951db6d37c4243452d0d93'
             'a7bf5e314d6f70f76eba2190b922774e7c2cc301b098c43e086c31c361198a90'
@@ -30,7 +30,7 @@ _build() {
 
 _build_icons() {
     local _icon_name="$1"
-    tar -xzf "$_icon_name.tar.gz" -C "icons/"
+    tar -xzf "$_icon_name-${pkgver}.tar.gz" -C "icons/"
 }
 
 build() {
