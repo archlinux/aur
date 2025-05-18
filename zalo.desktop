@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=
+Name=Zalo
+Exec=/usr/bin/zalo
+Icon=/opt/zalo/icon.png
+Terminal=false
+Type=Application
