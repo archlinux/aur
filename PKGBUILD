@@ -8,6 +8,7 @@ arch=('any')
 url='https://github.com/Catalina-sys456/jarvis-llm'
 license=('MIT')
 depends=('python'
+	 'python-yaml'
 	 'python-ollama'
 	 'python-google-genai')
 makedepends=('python-build'
@@ -29,4 +30,3 @@ package(){
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
     install -Dm644 config.yaml ~/config/jarvis/config.yaml
 }
-
