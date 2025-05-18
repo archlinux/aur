@@ -2,17 +2,18 @@
 # Maintainer: Jonathan Hilger <joni dot hilger at yahoo dot de>
 pkgname=vpinball-git
 pkgver=r8029.6e386e1
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source pinball table editor and simulator (BGFX standalone version)"
 arch=('x86_64')
 url="https://github.com/vpinball/vpinball"
 license=('GPL-3.0-or-later' 'LicenseRef-MAME')
 depends=('python' 'glibc' 'vpinball-bgfx.cmake' 'gcc-libs' 'hidapi' 'sdl3-git' 'sdl3_mixer-git' 'sdl3_image-git' 'libserum-concentrate-git' 'sdl3_ttf-git' 'libpupdmd-git' 'freeimage-vpinball-git' 'libpinmame-git' 'libaltsound-git' 'libdmdutil-git' 'libdof-git' 'ffmpeg' 'python-lxml' 'python-pillow' 'unordered_dense-git' 'libinih' 'plog')
 makedepends=('unzip' 'cmake' 'git' 'curl')
-provides=('vpinball')
+provides=('vpinball' 'vpinball-git')
 source=("${pkgname}::git+https://github.com/vpinball/vpinball.git"
 	"vpinball.desktop"
 	"visualpinball_screen1.jpg")
+conflicts=('vpinball')
 sha256sums=('SKIP'
             '4f094e7177ecde9afdafa29805635084aae5967560d33b46c8f95ef732898b93'
             'ca5d4a89d1a137eba199ebd91463d3df7fe90fd47ff41c73d6f456d879ab5011')
