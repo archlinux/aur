@@ -1,14 +1,14 @@
 # Maintainer: Kimiblock Moe
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=an-anime-game-launcher-bwrap
-pkgver=3.14.0
+pkgver=3.14.1
 pkgrel=1
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 arch=('x86_64')
 url="https://github.com/an-anime-team/an-anime-game-launcher"
 license=('GPL-3.0-only')
 depends=('gtk4' 'libadwaita' 'glibc' 'hicolor-icon-theme' 'gcc-libs' 'glib2'
-	 'pango' 'xz' 'bzip2' 'cairo' 'p7zip' 'portable')
+	 'pango' 'xz' 'bzip2' 'cairo' 'p7zip' 'portable' 'protobuf')
 makedepends=('cargo' 'git')
 optdepends=(
 	 'mangohud: FPS Overlay'

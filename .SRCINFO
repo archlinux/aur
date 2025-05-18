@@ -1,6 +1,6 @@
 pkgbase = an-anime-game-launcher-bwrap
 	pkgdesc = A Launcher for a specific anime game with auto-patching, discord rpc and time tracking
-	pkgver = 3.14.0
+	pkgver = 3.14.1
 	pkgrel = 1
 	url = https://github.com/an-anime-team/an-anime-game-launcher
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = an-anime-game-launcher-bwrap
 	depends = cairo
 	depends = p7zip
 	depends = portable
+	depends = protobuf
 	optdepends = mangohud: FPS Overlay
 	optdepends = gamescope: Micro-Compositor
 	optdepends = gamemode: CPU Scaling Control
