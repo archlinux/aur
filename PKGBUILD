@@ -1,7 +1,8 @@
-# Maintainer: Excitable Snowball <excitablesnowball@gmail.com>
+# Maintainer: Xiao Pan <xyz@flylightning.xyz>
+# Contributor: Excitable Snowball <excitablesnowball@gmail.com>
 
 pkgname=zoom-firejail
-pkgver=0.1.7
+pkgver=0.9.74
 pkgrel=1
 pkgdesc=".desktop file for running Zoom in Firejail"
 arch=('x86_64')
