@@ -3,7 +3,7 @@
 pkgname=input-actions
 pkgver=0.6.0
 pkgrel=1
-pkgdesc="Custom touchpad gestures for Plasma 6"
+pkgdesc="Mouse and touchpad gestures for Plasma 6 Wayland"
 arch=('x86_64')
 url="https://github.com/taj-ny/InputActions"
 license=('GPL-3.0-or-later')
