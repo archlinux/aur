@@ -1,0 +1,17 @@
+pkgbase = brisk
+	pkgdesc = Ultra-fast, modern download manager
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://github.com/BrisklyDev/brisk
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = ayatana-ido
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libayatana-indicator
+	depends = libkeybinder3
+	source = https://github.com/BrisklyDev/brisk/releases/download/v2.2.3/Brisk-v2.2.3-linux-x86_64.tar.xz
+	md5sums = SKIP
+
+pkgname = brisk
