@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-bin
-pkgver=1.0.0rc2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Special compilation of curl that makes it impersonate Firefox and Chrome"
 url="https://github.com/lexiforest/curl-impersonate"
@@ -12,18 +12,18 @@ provides=(curl-impersonate-chrome curl-impersonate-firefox)
 conflicts=(curl-impersonate-chrome curl-impersonate-firefox)
 
 source_x86_64=(
-  "curl-impersonate_x86_64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v${pkgver}/curl-impersonate-v${pkgver}.x86_64-linux-gnu.tar.gz"
+  "curl-impersonate-${pkgver}_x86_64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v${pkgver}/curl-impersonate-v${pkgver}.x86_64-linux-gnu.tar.gz"
 )
 source_aarch64=( 
-  "curl-impersonate_aarch64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v${pkgver}/curl-impersonate-v${pkgver}.aarch64-linux-gnu.tar.gz"
+  "curl-impersonate-${pkgver}_aarch64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v${pkgver}/curl-impersonate-v${pkgver}.aarch64-linux-gnu.tar.gz"
 )
 source_armv7h=( 
-  "curl-impersonate_aarch64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v${pkgver}/curl-impersonate-v${pkgver}.arm-linux-gnueabihf.tar.gz"
+  "curl-impersonate-${pkgver}_aarch64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v${pkgver}/curl-impersonate-v${pkgver}.arm-linux-gnueabihf.tar.gz"
 )
 
-md5sums_x86_64=('e929c8dbb5fe5e2e2c8604cead16b03b')
-md5sums_aarch64=('c5a718f6ced82438d97fe89a0260ed9a')
-md5sums_armv7h=('c5a718f6ced82438d97fe89a0260ed9a')
+md5sums_x86_64=('a652448fce70e1633e412ccb483815d2')
+md5sums_aarch64=('1181895f527840a8f26289ed8e9b5cf6')
+md5sums_armv7h=('1181895f527840a8f26289ed8e9b5cf6')
 
 package () {
   mkdir -p "${pkgdir}/usr/bin/"
