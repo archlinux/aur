@@ -3,7 +3,7 @@
 
 pkgname=void-git
 _pkgname=void
-pkgver=1.99.3.r2511.g5cab7e61
+pkgver=1.99.3.r2519.g906502f6
 pkgrel=1
 pkgdesc="The Cursor alternative"
 url="https://voideditor.com/"
@@ -11,7 +11,7 @@ arch=('x86_64')
 license=("MIT")
 provides=('void')
 conflicts=('void')
-_elnum=34 #35+ will fail
+_elnum=35 #36+ will fail
 depends=( electron${_elnum} ripgrep xdg-utils # replacements
   libxkbfile
   libsecret
@@ -31,7 +31,7 @@ optdepends=(
 makedepends=(
   git
   npm
-  nodejs-lts-iron
+  nodejs-lts-jod
   pkgconf
   python
 )
@@ -48,6 +48,8 @@ build() {
   # Do not tain user dir by cache
   export XDG_CACHE_HOME="${srcdir}/xdgcache" HOME="${srcdir}/home"
   cd "${_pkgname}"
+  # for electron35+ app.dock is only for macOS
+  sed -i '/app\.dock\.setMenu/i\// @ts-ignore' src/vs/platform/menubar/electron-main/menubar.ts
   # Clean npm cache and remove existing node_modules
   npm cache clean --force
   rm -rf node_modules
