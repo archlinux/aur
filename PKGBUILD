@@ -2,7 +2,7 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 _pkgname=eden
 pkgname=$_pkgname-git
-pkgver=r27297.049cc54f4
+pkgver=r27300.a776f5bc3
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -32,11 +32,13 @@ source=("git+https://git.eden-emu.dev/eden-emu/eden"
 		"git+https://git.eden-emu.dev/eden-emu/robin-map.git"  # submodule of dynarmic
 		"zycore::git+https://git.eden-emu.dev/eden-emu/zycore-c.git"  # submodule of dynarmic
 		"git+https://git.eden-emu.dev/eden-emu/zydis.git"  # submodule of dynarmic
+		"git+https://github.com/Lizzie841/unordered_dense.git"  # submodule of dynarmic
 		"git+https://github.com/KhronosGroup/SPIRV-Headers"  # submodule of sirit 
 		"git+https://github.com/eggert/tz.git"  # submdoule of tzdb_to_nx
 		"boost-188.patch")
 		
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -81,10 +83,10 @@ prepare() {
     git -c protocol.file.allow=always submodule update
     
     cd $srcdir/$_pkgname/externals/dynarmic
-    git config submodule.zydis.url ../../../zydis
-    git config submodule.mcl.url ../../../mcl
-    git config submodule.robin-map.url ../../../robin-map
-    git config submodule.zycore.url ../../../zycore
+    for _submodule in zydis mcl robin-map zycore unordered_dense;
+		do
+		git config submodule.$_submodule.url ../../../$_submodule
+		done
     git -c protocol.file.allow=always submodule update
 }
 build() {
