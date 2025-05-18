@@ -1,6 +1,6 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=sonyheadphonesclient-bluetooth-bin
-pkgver=1.3.14
+pkgver=1.3.15
 pkgrel=1
 epoch=
 pkgdesc="A fork of Plutoberth's SonyHeadphonesClient by mos9527, now updated with support for Sony's newer Bluetooth/TWS devices"
