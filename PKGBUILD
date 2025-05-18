@@ -1,6 +1,6 @@
 # Maintainer: Karl Essinger <xkaess22@gmail.com>
 pkgname=supportboi-git
-pkgver=4.0.0.61.gitf3f2758
+pkgver=4.0.0.62.git25fb816
 pkgrel=1
 pkgdesc="A support ticket Discord bot with automated interviews and rendered HTML transcripts. Dev build."
 arch=("x86_64")
