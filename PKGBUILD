@@ -10,7 +10,7 @@ source=(
 	"go-build::https://github.com/go-nv/goenv/archive/master.tar.gz"
 )
 md5sums=('c6fb7e7187914544cb9b80eb3eb5c1f4'
-         'dbe276a5fb75b204c0a6bc623b857413')
+         '73c656106fa3c6979061b0f9ad0b10ea')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
