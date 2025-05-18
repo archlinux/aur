@@ -54,9 +54,16 @@ build() {
   rm -rf node_modules
   # Set version of electron
   _elver=$(cat /usr/lib/electron${_elnum}/version)
-  echo Replacing $(rg -m 1 '"electron":\s*"[0-9]+' package.json) with ${_elver}
-  echo 'Fix if major version is wrong.'
+  _elorig=$(npm pkg get devDependencies.electron|sed 's/"//g')
+  echo Replacing ${_elverorig} with ${_elver}
   npm pkg set devDependencies.electron=${_elver}
+  # Stop downloading 870MB+ bins
+  _hash=$(echo -n "https://github.com/electron/electron/releases/download/v${_elorig}" | sha256sum | cut -d ' ' -f 1)
+  _cachedir="${XDG_CACHE_HOME}/electron/${_hash}"
+  _zip="electron-v${_elorig}-linux-x64.zip"
+  mkdir -p "${XDG_CACHE_HOME}/electron/${_hash}"
+  bsdtar --format zip -cf "${_cachedir}/${_zip}" /dev/null
+  echo $(sha256sum "${_cachedir}/${_zip}" | cut -d " " -f 1) *${_zip} > build/checksums/electron.txt
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
   # Build
   npm install --legacy-peer-deps # to handle dependency conflicts
