@@ -2,7 +2,7 @@
 
 pkgname=python-evalidate
 # https://github.com/yaroslaff/evalidate/releases
-pkgver=2.0.3
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='Safe and fast evaluation of untrusted user-supplied python expressions'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(python)
 makedepends=(git python-build python-installer python-hatchling python-wheel)
 checkdepends=(python-pytest)
 source=("git+$url#tag=v$pkgver")
-sha256sums=('c72b662d3b462383fcd161836ba6fa9c4a23b1041c57e8b365fd352a3db40cd6')
+sha256sums=('046b7259659b405e76d843ef1f9dda9909c7e3a0196b1c9339d3f46830bbc447')
 
 build() {
   cd evalidate
