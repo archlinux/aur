@@ -1,6 +1,5 @@
-#  Maintainer: Orphan <orphan@example.org>
+# Maintainer: Hyacinthe Cartiaux <hyacinthe dot cartiaux at free dot fr>
 # Contributor: hcra <hcra at u53r dot space>
-# Contributor: Hyacinthe Cartiaux <hyacinthe dot cartiaux at free dot fr>
 # Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname=netcalc
@@ -16,19 +15,19 @@ conflicts=(ipcalc)
 depends=(glibc)
 
 build() {
-        cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
 
-        ./autogen.sh
-        ./configure --prefix=/usr
-        make
+    ./autogen.sh
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-        cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
 
-        make DESTDIR="$pkgdir" install-strip
+    make DESTDIR="$pkgdir" install-strip
 
-	install -vdm0755 "$pkgdir/usr/share/licenses/$pkgname"
-	mv -vf "$pkgdir/usr/share/doc/$pkgname/LICENSE" \
-	  "$pkgdir/usr/share/licenses/$pkgname/"
+    install -vdm0755 "$pkgdir/usr/share/licenses/$pkgname"
+    mv -vf "$pkgdir/usr/share/doc/$pkgname/LICENSE" \
+      "$pkgdir/usr/share/licenses/$pkgname/"
 }
