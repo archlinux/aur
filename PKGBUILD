@@ -2,7 +2,7 @@
 
 pkgbase=rime-wanxiang
 pkgname=(rime-wanxiang-base)
-pkgver=6.7.9
+pkgver=6.8.1
 pkgrel=1
 pkgdesc="万象拼音：带声调的拼音词库，万象拼音系列方案基础版，可扩展全拼、双拼、中英混输、语言模型"
 arch=(any)
@@ -10,7 +10,7 @@ license=('CC-BY-4.0')
 
 url="https://github.com/amzxyz/rime_wanxiang"
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f376e8346bd0fc626c226e66feee304881d1b40051c3c0561dbee44a49c55d73')
+sha256sums=('b18c5398a81da36d296602bb9c40b4e36bb1fa665adbc4529071d65beba21008')
 
 makedepends=("librime" "rime-prelude" "rime-essay" "sed")
 
@@ -18,7 +18,7 @@ prepare() {
     cd "${srcdir}/rime_wanxiang-${pkgver}"
 
     # 清理文件
-    rm squirrel.yaml weasel.yaml *.trime.yaml *.md custom_phrase.txt LICENSE
+    rm squirrel.yaml weasel.yaml ./*.trime.yaml ./*.md custom_phrase.txt LICENSE
     rm -r .github custom
 
     mv default.yaml wanxiang_suggestion.yaml
@@ -43,7 +43,7 @@ build() {
 
 package_rime-wanxiang-base() {
     pkgdesc="万象拼音基础版基础文件"
-    depends=(lua librime "rime-wanxiang-data>=${pkgver}")
+    depends=(lua librime rime-wanxiang-gram-zh-hans "rime-wanxiang-dict-cn>=${pkgver}")
 
     cd "${srcdir}/rime_wanxiang-${pkgver}"
 
@@ -80,7 +80,7 @@ _schemas=('pinyin  全拼'
 _conflicts=()
 for _line in "${_schemas[@]}"; do
     _schema=${_line%% *}
-    _conflicts+=(${pkgbase}-${_schema,,})
+    _conflicts+=("${pkgbase}-${_schema,,}")
 done
 
 for _line in "${_schemas[@]}"; do
@@ -96,8 +96,8 @@ for _line in "${_schemas[@]}"; do
     _name=${_line##* }
     eval "package_$_pkgname() {
         depends=('rime-wanxiang-base')
-        pkgdesc='万象拼音基础版（"${_name}"方案）'
-        conflicts=("${_pkgconflicts[@]}")
+        pkgdesc='万象拼音基础版（${_name}方案）'
+        conflicts=(${_pkgconflicts[*]})
         install='post.install'
 
         _package $_line
