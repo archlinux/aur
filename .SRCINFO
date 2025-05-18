@@ -1,6 +1,6 @@
 pkgbase = tosu
 	pkgdesc = Eponymous software for reading osu! memory
-	pkgver = 4.6.0
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = https://github.com/tosuapp/tosu
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = tosu
 	provides = tosu
 	conflicts = tosu
 	options = !strip
-	source = https://github.com/tosuapp/tosu/releases/download/v4.6.0/tosu-linux-v4.6.0.zip
+	source = https://github.com/tosuapp/tosu/releases/download/v4.7.0/tosu-linux-v4.7.0.zip
 	source = tosu-bin.sh
-	sha256sums = 8a4eff2a99a1672911c7795e0c7c6eb2e59584f0bb4929a913ec68b9d556d5e2
+	sha256sums = 7f6139cf3247e9d1cc0d6e633512c400ef8a7e7605855e1281df3dd5ab2184a9
 	sha256sums = 16e77f6a192094be77ce1ecc9322e7296b57532851672d15f07bc82132cdfc21
 
 pkgname = tosu
