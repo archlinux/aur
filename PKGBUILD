@@ -2,13 +2,13 @@
 
 pkgname=('python-phonopy')
 pkgver=2.38.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Phonopy is an open source package for phonon calculations at harmonic and quasi-harmonic levels"
 arch=('any')
 url="https://github.com/phonopy/phonopy"
 license=('BSD')
 depends=("python-numpy" "python-pyaml" "python-matplotlib" "spglib" "python-h5py")
-optdepends=("python-seekpath")
+optdepends=("python-seekpath" "python-symfc")
 makedepends=(python
              nanobind
              python-build
