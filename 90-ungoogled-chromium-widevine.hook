@@ -1,0 +1,11 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = ungoogled-chromium
+Target = ungoogled-chromium-bin
+
+[Action]
+Description = Downloading latest Chrome WidevineCDM...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/ungoogled-chromium-widevine

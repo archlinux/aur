@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -euo pipefail
+
+_chrome_ver=$(chromium --version | cut -d ' ' -f 2)
+_target_dir=/usr/lib/chromium/WidevineCdm
+
+# Make temp directory
+mkdir -p /tmp/chromium_widevine
+pushd /tmp/chromium_widevine
+
+# Download deb, which has corresponding Widevine version
+wget -qc https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${_chrome_ver}-1_amd64.deb
+
+# Unpack deb
+if [ -d "./unpack_deb" ] ; then
+  rm -r unpack_deb
+fi
+mkdir unpack_deb
+ar x google-chrome-stable_${_chrome_ver}-1_amd64.deb
+tar -xf data.tar.xz -C unpack_deb
+
+# Move files to correct location
+if [ -d $_target_dir ] ; then
+  rm -r $_target_dir
+fi
+mv unpack_deb/opt/google/chrome/WidevineCdm $_target_dir
+chown -R root:root $_target_dir
+
+# cleanup
+popd
+rm -r /tmp/chromium_widevine
