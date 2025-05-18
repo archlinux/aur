@@ -1,0 +1,15 @@
+pkgbase = mindfuck-compiler
+	pkgdesc = A compiler for the MindFuck programming language!
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://autizm.us
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = nasm
+	depends = binutils
+	source = https://github.com/Polokalap/mindfuck-compiler/archive/refs/heads/main.zip
+	sha256sums = 8bc4b26b9347317fd1df80734b38fce0636d4a5f13dba8a115aeb51a08065ed3
+
+pkgname = mindfuck-compiler
