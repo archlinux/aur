@@ -2,13 +2,13 @@ pkgbase = pokemon-colorscripts-fork-git
 	pkgdesc = CLI utility that prints unicode sprites of pokemon to the terminal
 	pkgver = r117.742672d
 	pkgrel = 1
-	url = https://github.com/AnarchistHoneybun/pokemon-colorscripts-fork.git
+	url = https://github.com/AnarchistHoneybun/pokemon-colorscripts-fork
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = coreutils
 	depends = python
-	source = pokemon-colorscripts-fork::git+https://github.com/AnarchistHoneybun/pokemon-colorscripts-fork.git
+	source = pokemon-colorscripts-fork::git+https://github.com/AnarchistHoneybun/pokemon-colorscripts-fork
 	md5sums = SKIP
 
 pkgname = pokemon-colorscripts-fork-git
