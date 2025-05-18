@@ -83,9 +83,6 @@ build() {
 	echo "--- Building systemd ..."
 	./builds/systemd.sh "$_destdir"
 
-	echo "--- Building ops_agent_diagnostics ..."
-	./builds/ops_agent_diagnostics.sh "$_destdir"
-
 	echo "--- Building agent_wrapper ..."
 	./builds/agent_wrapper.sh "$_destdir"
 
