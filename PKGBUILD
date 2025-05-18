@@ -28,8 +28,10 @@ source=(
   "${pkgname}::git+${url}.git#branch=openxr"
   "git+https://github.com/KhronosGroup/OpenXR-SDK.git"
   "git+https://github.com/g-truc/glm.git"
+  "git+https://github.com/libunwind/libunwind.git"
 )
 sha1sums=(
+  "SKIP"
   "SKIP"
   "SKIP"
   "SKIP"
@@ -46,6 +48,7 @@ prepare() {
   git submodule init
   git config submodule.libs/openxr-sdk.url "${srcdir}/OpenXR-SDK"
   git config submodule.libs/glm.url "${srcdir}/glm"
+  git config submodule.libs/libunwind.url "${srcdir}/libunwind"
   git -c protocol.file.allow=always submodule update
 }
 
@@ -54,6 +57,7 @@ build() {
   cmake \
     -B build \
     -S . \
+    -DOC_BACKTRACE=ON \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo
   cmake --build build
 }

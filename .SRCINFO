@@ -21,6 +21,8 @@ pkgbase = opencomposite-git
 	source = opencomposite-git::git+https://gitlab.com/znixian/OpenOVR.git#branch=openxr
 	source = git+https://github.com/KhronosGroup/OpenXR-SDK.git
 	source = git+https://github.com/g-truc/glm.git
+	source = git+https://github.com/libunwind/libunwind.git
+	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
