@@ -5,14 +5,13 @@ pkgname=void-git
 _pkgname=void
 pkgver=1.99.3.r2519.g906502f6
 pkgrel=2
-pkgdesc="The Cursor alternative AI code editor (electron36)"
+pkgdesc="The Cursor alternative AI code editor (electron36+)"
 url="https://voideditor.com/"
 arch=('x86_64')
 license=("MIT")
 provides=('void')
 conflicts=('void')
-_elnum=36
-depends=( electron${_elnum} ripgrep xdg-utils # replacements
+depends=( ripgrep xdg-utils # replacements
   libxkbfile
   libsecret
   gnupg
@@ -28,13 +27,8 @@ optdepends=(
   'lsof: Terminal splitting'
   'org.freedesktop.secrets: Settings sync'
 )
-makedepends=(
-  git
-  npm
-  nodejs-lts-jod
-  pkgconf
-  python
-)
+makedepends=( electron nodejs-lts-jod
+  git npm pkgconf python )
 source=("git+https://github.com/voideditor/void.git")
 sha256sums=('SKIP')
 
@@ -54,7 +48,7 @@ build() {
   npm cache clean --force
   rm -rf node_modules
   # Set version of electron
-  _elver=$(cat /usr/lib/electron${_elnum}/version)
+  _elver=$(cat /usr/lib/electron/version)
   _elorig=$(npm pkg get devDependencies.electron|sed 's/"//g')
   sed -i "s/^target=.*/target=\"${_elver}\"/" .npmrc # for native modules
   echo Replacing ${_elorig} with $(rg -N 'target' .npmrc)
@@ -74,6 +68,9 @@ build() {
 }
 
 package() {
+  _elver=$(cat /usr/lib/electron/version) # for --repackage
+  _elnum=${_elver%%.*}
+  depends+=(electron${_elnum})
   _pkg=VSCode-linux-x64
   _app=/usr/share/void/resources/app
   # Licenses
