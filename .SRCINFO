@@ -8,6 +8,7 @@ pkgbase = lane-adb
 	makedepends = git
 	depends = android-tools
 	depends = gnirehtet-bin
+	depends = scrcpy
 	source = lane-adb::git+https://github.com/musdev13/lane-adb.git
 	md5sums = SKIP
 
