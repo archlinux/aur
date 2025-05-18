@@ -1,3 +1,5 @@
+# Maintainer: gfrank227 [at] gmail [dot] com
+# Contributor: rcf <ryan.farley@gmx.com>
 pkgname=eden
 pkgver=0.0.2
 pkgrel=7
