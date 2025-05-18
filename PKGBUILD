@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.7.beta2.r0.g7888c42db95
+pkgver=10.7.beta4.r0.gd617df423d7
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -125,6 +125,9 @@ makedepends=(bliss
              cython
              git
              mcqd
+             meson-python
+             python-build
+             python-installer
              python-jinja
              python-pkgconfig
              python-setuptools
@@ -134,18 +137,9 @@ makedepends=(bliss
 conflicts=(sagemath)
 provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
-        latte-count.patch
-        sagemath-10.6-ecl-gcc-15-cython.patch)
+        latte-count.patch)
 sha256sums=('SKIP'
-            'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09'
-            '49632afef18ae78df3ca94af70ea68076e57a565a09c68339a7b0f30b1ce8935')
-_pkgs=(standard
-       bliss
-       coxeter3
-       mcqd
-       meataxe
-       sirocco
-       tdlib)
+            'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09')
 
 pkgver() {
   cd sage
@@ -157,37 +151,19 @@ prepare(){
 
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
-# remove cython function wrapper incompatible with ecl's gcc 15 fix
-# based on https://github.com/sagemath/sage/pull/40038/commits/6d7fe919fa405cadb973b187d245855dbec1b0bc
-  patch -p1 -i ../sagemath-10.6-ecl-gcc-15-cython.patch
-
-  ./bootstrap
 }
 
 build() {
-  export SAGE_NUM_THREADS=$(($(nproc)/2))
-  export PYTHONPATH="$PWD"/sage/src
-
-  for _pkg in ${_pkgs[@]}; do
-    cd "$srcdir"/sage/pkgs/sagemath-$_pkg
-    python setup.py build
-  done
+  cd sage
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  for _pkg in ${_pkgs[@]}; do
-    cd "$srcdir"/sage/pkgs/sagemath-$_pkg
-    python setup.py install --root="$pkgdir" --optimize=1
-  done
-
-# fix symlinks to assets
-  _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
-  for _i in $(ls "$srcdir"/sage/src/sage/ext_data/notebook-ipython); do
-    rm "$pkgdir"/usr/share/jupyter/kernels/sagemath/$_i
-    ln -s $_pythonpath/sage/ext_data/notebook-ipython/$_i "$pkgdir"/usr/share/jupyter/kernels/sagemath/
-  done
+  cd sage
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
 # adjust threejs version
+  _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
   rm "$pkgdir"$_pythonpath/sage/ext_data/threejs/threejs-version.txt
   ln -s /usr/share/threejs-sage/version "$pkgdir"$_pythonpath/sage/ext_data/threejs/threejs-version.txt
 }
