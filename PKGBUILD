@@ -14,6 +14,7 @@ depends=(
   libdrm
   pixman
   libxkbcommon
+  pcre2
   'wlroots-0.19-git'
 )
 
