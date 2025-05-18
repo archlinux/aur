@@ -5,7 +5,7 @@
 
 pkgname=crudini
 pkgver=0.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for manipulating ini files"
 arch=(any)
 url="https://github.com/pixelb/crudini"
@@ -16,6 +16,7 @@ depends=(
 )
 makedepends=(
   python-build
+  python-iniparse
   python-installer
   python-setuptools
   python-setuptools-scm
