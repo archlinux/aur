@@ -5,8 +5,8 @@ After=network.target
 [Service]
 User=mealie
 Group=mealie
-ExecStart=/usr/bin/python /usr/lib/_PYTHONDIR/site-packages/mealie/main.py
-Environment=STATIC_FILES=/usr/lib/mealie/dist
+ExecStart=/opt/mealie/venv/bin/python /opt/mealie/venv/lib/python3.12/site-packages/mealie/main.py
+Environment=STATIC_FILES=/opt/mealie/dist
 Environment=PRODUCTION=true
 Environment=DATA_DIR=/var/lib/mealie
 EnvironmentFile=/etc/mealie.conf

@@ -1,7 +1,7 @@
 #!/bin/sh
 
-STATIC_FILES="${STATIC_FILES:-/usr/lib/mealie/dist}"                      \
+STATIC_FILES="${STATIC_FILES:-/opt/mealie/dist}"                          \
 PRODUCTION="${PRODUCTION:-true}"                                          \
 DATA_DIR="${DATA_DIR:-$HOME/.mealie}"                                     \
                                                                           \
-python /usr/lib/_PYTHONDIR/site-packages/mealie/main.py
+/opt/mealie/venv/bin/python /opt/mealie/venv/lib/python3.12/site-packages/mealie/main.py
