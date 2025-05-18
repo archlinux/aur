@@ -1,7 +1,7 @@
 # Maintainer: shulhan <ms@kilabit.info>
 
 pkgname=google-cloud-ops-agent-git
-pkgver=2.50.0.r4.g3c3db61cd
+pkgver=2.56.1.r4.g3239f98dc
 pkgrel=1
 
 pkgdesc="Ops Agents that are part of the Google Cloud Operations product suite (specifically Cloud Logging and Cloud Monitoring)"
@@ -37,6 +37,7 @@ source=(
 	"opentelemetry-operations-collector::git+https://github.com/GoogleCloudPlatform/opentelemetry-operations-collector.git"
 	"opentelemetry-java-contrib::git+https://github.com/open-telemetry/opentelemetry-java-contrib.git"
 	"0001-build-sh.patch"
+	"0002-builds_otel.sh.patch"
 )
 sha256sums=(
 	'SKIP'
@@ -44,6 +45,7 @@ sha256sums=(
 	'SKIP'
 	'SKIP'
 	'ba66d01b8058644597d9b406d3b8ce7ed40aed77c7358f2b97ff0e262a4cbb98'
+	'0e663cc6bbfdb5af962001b4645c3c154f715874fb910adfb3b3293564383f14'
 )
 
 pkgver() {
@@ -73,6 +75,7 @@ build() {
 	echo "--- Applying patches ..."
 	cd "${pkgname}"
 	git apply "${srcdir}/0001-build-sh.patch"
+	git apply "${srcdir}/0002-builds_otel.sh.patch"
 
 	echo "--- Building otel ..."
 	CGO_ENABLED=1 ./builds/otel.sh "$_destdir"

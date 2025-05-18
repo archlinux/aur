@@ -1,0 +1,22 @@
+diff --git a/builds/otel.sh b/builds/otel.sh
+index bcb48744f..53eb8cd3d 100755
+--- a/builds/otel.sh
++++ b/builds/otel.sh
+@@ -48,8 +48,8 @@ if [ "$SKIP_OTEL_JAVA" != "true" ]; then
+ fi
+ 
+ cd submodules/opentelemetry-operations-collector/otelopscol
+-ARCH=$(/usr/local/go/bin/go env GOARCH)
+-GO_BIN=/usr/local/go/bin/go \
++ARCH=$(/usr/bin/go env GOARCH)
++GO_BIN=/usr/bin/go \
+ BUILDARCH=$ARCH \
+ TARGETARCH=$ARCH \
+ COLLECTOR_LD_FLAGS="$LDFLAGS" \
+diff --git a/submodules/opentelemetry-operations-collector b/submodules/opentelemetry-operations-collector
+index 01c0ad26a..4024ba501 160000
+--- a/submodules/opentelemetry-operations-collector
++++ b/submodules/opentelemetry-operations-collector
+@@ -1 +1 @@
+-Subproject commit 01c0ad26ae5cc512632d1a6f8908dcd69aa5f840
++Subproject commit 4024ba501448a4b312932fb213fc562f4388d1f0
