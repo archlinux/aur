@@ -1,3 +1,5 @@
+# Maintainer: marzeq < marzeqmarzeq (at) gmail (dot) com >
+
 pkgname=windigo
 pkgver=0.1.2
 pkgrel=1
