@@ -1,7 +1,7 @@
 # Maintainer: Jo De Boeck <deboeck.jo@gmail.com>
 
 pkgname=big-launcher-git
-pkgver=f8935c0
+pkgver=1ca5420
 pkgrel=1
 makedepends=('cmake' 'libarchive')
 depends=('sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'spdlog' 'fmt' 'libwebp' 'harfbuzz' 'libinih' 'libxml2')
@@ -20,6 +20,8 @@ pkgver() {
 }
 
 build() {
+  sed -i 's:@ICONS_DIR@:/usr/share/big-launcher/&:' "$srcdir/big-launcher/config/layout.xml.in"
+  sed -i 's:assets/background.svg:/usr/share/big-launcher/&:' "$srcdir/big-launcher/config/config.ini.in"
   mkdir -p "$srcdir/big-launcher/build"
   cd "$srcdir/big-launcher/build"
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
@@ -35,4 +37,5 @@ package() {
   install -D assets/fonts/* "${pkgdir}/usr/share/big-launcher/assets/fonts"
   install -Dm 655 assets/icons/* "${pkgdir}/usr/share/big-launcher/assets/icons"
   install -Dm 655 assets/sounds/* "${pkgdir}/usr/share/big-launcher/assets/sounds"
+  install -m 655 ${srcdir}/big-launcher/build/{config.ini,layout.xml} "$pkgdir/usr/share/big-launcher"
 }
