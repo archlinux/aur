@@ -2,7 +2,7 @@
 
 pkgname=maliit-framework
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Core libraries of Maliit and server'
 arch=(x86_64)
 url='https://maliit.github.io/'
@@ -24,6 +24,11 @@ makedepends=(cmake
 optdepends=('qt5-wayland: wayland-shell integration')
 source=(git+https://github.com/maliit/framework#tag=$pkgver)
 sha256sums=('08f2a12d36fd1e0c4f838ae276f2dee8a31339f3ffa5d9a844bda8f82dc593e5')
+
+prepare() {
+  cd framework
+  git cherry-pick -n c787e02f7354f5310b0706b2e8eaee6f3617d9af # Fix stack smashing
+}
 
 build() {
   cmake -B build -S framework \

@@ -1,7 +1,7 @@
 pkgbase = maliit-framework
 	pkgdesc = Core libraries of Maliit and server
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://maliit.github.io/
 	arch = x86_64
 	license = LGPL-2.1-only
