@@ -1,7 +1,7 @@
 pkgbase = libcurl-impersonate-bin
 	pkgdesc = Series of patches that make curl requests look like Chrome
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lexiforest/curl-impersonate
 	arch = aarch64
 	arch = armv7h

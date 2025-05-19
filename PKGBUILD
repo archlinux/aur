@@ -2,7 +2,7 @@
 
 pkgname=libcurl-impersonate-bin
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Series of patches that make curl requests look like Chrome"
 arch=(aarch64 armv7h i686 x86_64)
 url=https://github.com/lexiforest/curl-impersonate
@@ -29,5 +29,6 @@ package () {
   install -vDm 755 ${pkgname%-bin}.so.4.8.0 -t "$pkgdir"/usr/lib/
   ln -s /usr/lib/${pkgname%-bin}.so.4.8.0 "$pkgdir"/usr/lib/${pkgname%-bin}-chrome.so
   ln -s /usr/lib/${pkgname%-bin}.so.4.8.0 "$pkgdir"/usr/lib/${pkgname%-bin}-chrome.so.4
+  ln -s /usr/lib/${pkgname%-bin}.so.4.8.0 "$pkgdir"/usr/lib/${pkgname%-bin}.so
   install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
