@@ -1,7 +1,7 @@
 pkgbase = parmetis-git
 	pkgdesc = Parallel Graph Partitioning and Fill-reducing Matrix Ordering (git version)
 	pkgver = r45.8ee6a37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KarypisLab/ParMETIS
 	arch = x86_64
 	license = custom
