@@ -1,7 +1,7 @@
 pkgbase = chatd
 	pkgdesc = Chat with your documents using local AI.(Use system-wide electron)
 	pkgver = 1.1.2
-	pkgrel = 3
+	pkgrel = 5
 	url = https://chatd.ai/
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = chatd
 	makedepends = npm
 	makedepends = nvm
 	makedepends = curl
+	makedepends = git
 	depends = electron24
 	depends = ollama
 	depends = python>3
@@ -17,9 +18,9 @@ pkgbase = chatd
 	conflicts = chatd
 	options = !emptydirs
 	options = !strip
-	source = chatd-1.1.2.tar.gz::https://github.com/BruceMacD/chatd/archive/refs/tags/v1.1.2.tar.gz
+	source = chatd-1.1.2::git+https://github.com/BruceMacD/chatd#tag=v1.1.2
 	source = chatd.sh
-	sha256sums = 78112d7cd5e8fd69fea531ba4deaa3d8f3b4a4edda8835c25f38d7213708bbc4
+	sha256sums = 040e0d908e9c0455c7508509d8d7e40246f809d4c79bbd0a77422ff5b8d7d10a
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = chatd
