@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rgsm-bin
 _pkgname=Game-save-manager
-pkgver=1.4.0
+_appname=RGSM
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A simple game save manager.(Prebuilt version)一个简单的游戏存档管理器"
 arch=('x86_64')
@@ -13,17 +14,12 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
     'gdk-pixbuf2'
-    'webkit2gtk'
-    'libsoup'
+    'webkit2gtk-4.1'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('b621448a4d2e45b88aec89c0eec4c22ebaa8abe042a9fbb9a9b5a6ff5a1ed580')
+source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-1.${CARCH}.rpm")
+sha256sums=('8d23902fec7417087f0beec54058335205caf263d7c849241cdba4df8c4ef89a')
 prepare() {
-    bsdtar -xf "${srcdir}/data."*
-    sed -e "
-        3i\Comment=${pkgdesc}/g
-        s/Development/Game/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/Categories=/Categories=Game;/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
@@ -32,5 +28,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps"
     done
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
