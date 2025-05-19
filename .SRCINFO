@@ -1,0 +1,12 @@
+pkgbase = openbsd-keyring
+	pkgdesc = OpenBSD signify keys.
+	pkgver = 78
+	pkgrel = 1
+	url = https://openbsd.org
+	arch = any
+	license = custom:Unlicenseable
+	optdepends = signify: port of OpenBSD's signify
+	source = https://ftp.openbsd.org/pub/OpenBSD/signify/sigbundle-78.tgz
+	sha256sums = 0e5a12007c95c96f31ef2590ccce722fe4f2a755682e1426eaadae0aa195fb7e
+
+pkgname = openbsd-keyring
