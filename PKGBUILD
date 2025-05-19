@@ -3,7 +3,7 @@
 
 _pkgname=realmd
 pkgname=$_pkgname-git
-pkgver=0.16.3.r87.g51bcd3a
+pkgver=0.16.3.r92.g5239bab
 pkgrel=1
 pkgdesc="DBus service for joining hosts to Active Directory and FreeIPA realms (Git)"
 arch=(i686 x86_64)
@@ -12,7 +12,8 @@ license=(GPL3)
 depends=(adcli dbus krb5 openldap packagekit polkit)
 optdepends=('sssd: Active Directory, FreeIPA, LDAP client'
             'samba: traditional Active Directory client')
-makedepends=(docbook-xsl git intltool python xmlto glib2-devel)
+makedepends=(git glib2-devel)
+#makedepends=(docbook-xsl intltool python xmlto)
 source=("git+https://gitlab.freedesktop.org/realmd/realmd.git"
 	computer-ou.patch
 	duplicate-test-path.patch
@@ -50,7 +51,8 @@ build() {
     --sbindir=/usr/bin      \
     --sysconfdir=/etc       \
     --localstatedir=/var    \
-    --with-distro=defaults  ;
+    --with-distro=defaults  \
+    --disable-doc
   make
 }
 
