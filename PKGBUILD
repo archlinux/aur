@@ -3,7 +3,7 @@
 name=ixxat-socketcan
 pkgname="${name}-dkms"
 pkgver=2.0.520
-pkgrel=1
+pkgrel=2
 pkgdesc="SocketCAN driver for IXXAT USB-to-CAN v2"
 arch=("i686" "x86_64")
 url="https://www.hms-networks.com/support/general-downloads"
@@ -13,7 +13,7 @@ depends=("dkms")
 source=("https://hmsnetworks.blob.core.windows.net/nlw/docs/default-source/products/ixxat/monitored/pc-interface-cards/socketcan-linux.gz?sfvrsn=3eb48d7_89&download=true"
         "dkms.conf")
 sha256sums=("dd34dfb4e1c988693c2b6799c467ba7689758c9757fa8e8e4890fa7715b818b6"
-            "662da2dedf3b43977b42d1f9fdaded2ac254920b91bb7aa73b0b9ff716cde8d8")
+            "1a7f4502869171cc1dc617e670f018309af1a7bd0a352108002c75a55bb3016c")
 
 prepare() {
   cd "$srcdir"
