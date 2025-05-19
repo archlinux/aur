@@ -12,7 +12,7 @@ _pkgname="libreoffice"
 pkgname="${_pkgname}${_pkgtype:-}"
 pkgdesc="A free and powerful office suite - development branch"
 pkgver=25.2.3.2
-pkgrel=1
+pkgrel=2
 url="https://www.libreoffice.org/"
 license=('MPL-2.0' 'LGPL-3.0-or-later')
 arch=('x86_64')
@@ -47,7 +47,7 @@ package() {
     'glib2'
     'hicolor-icon-theme'
     'libxcrypt-compat'
-    'libxml2'
+    'libxml2-legacy'
     'libxslt'
   )
 
