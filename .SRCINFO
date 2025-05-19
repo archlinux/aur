@@ -41,7 +41,7 @@ pkgname = cursor-electron35
 	depends = gcc-libs
 	depends = hicolor-icon-theme
 	depends = libxkbfile
-	depends = electron35
+	depends = _electron35
 
 pkgname = cursor-electron-latest
 	pkgdesc = The AI Code Editor (latest stable electron)

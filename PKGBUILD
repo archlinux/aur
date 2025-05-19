@@ -55,7 +55,7 @@ package_cursor-electron(){
 
 package_cursor-electron35(){
 	_electron=electron35
-	depends+=(electron35)
+	depends+=(_electron35)
 	pkgdesc="${_desc} ($_electron)"
 	cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
 	sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
