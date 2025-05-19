@@ -1,7 +1,7 @@
 # Maintainer: Shusui Moyatani <syusui.s at gmail dot com>
 
 pkgname=azcomicv
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="A simple comic viewer for Linux"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('libx11' 'libxext' 'libxcursor' 'hicolor-icon-theme' 'freetype2' 'fontconfig' 'zlib' 'libpng' 'libtiff' 'libjpeg-turbo' 'libheif')
 makedepends=('ninja')
 source=("https://gitlab.com/azelpg/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
-sha256sums=('c55c370ffcf4a3595e04ac0edb5aa3ae444911dea9bc4f2f54a8728fbb02eb11')
+sha256sums=('76d87855c65edfce2cb27f500ab8051b1c79e39a5e1f0d327eb78cf87c48575b')
 
 build() {
 	cd "${srcdir}/${pkgname}-v${pkgver}"

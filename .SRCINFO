@@ -1,6 +1,6 @@
 pkgbase = azcomicv
 	pkgdesc = A simple comic viewer for Linux
-	pkgver = 2.0.5
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = http://azsky2.html.xdomain.jp/soft/azcomicv.html
 	arch = i686
@@ -17,7 +17,8 @@ pkgbase = azcomicv
 	depends = libpng
 	depends = libtiff
 	depends = libjpeg-turbo
-	source = https://gitlab.com/azelpg/azcomicv/-/archive/v2.0.5/azcomicv-v2.0.5.tar.bz2
-	sha256sums = eda30c77e9660f4d50be945c697ae869d1b0d25a7929a6e8a962fa55478b5410
+	depends = libheif
+	source = https://gitlab.com/azelpg/azcomicv/-/archive/v2.0.7/azcomicv-v2.0.7.tar.bz2
+	sha256sums = 76d87855c65edfce2cb27f500ab8051b1c79e39a5e1f0d327eb78cf87c48575b
 
 pkgname = azcomicv
