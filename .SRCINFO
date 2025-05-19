@@ -1,6 +1,6 @@
 pkgbase = swgp-go-git
 	pkgdesc = Simple WireGuard proxy with minimal overhead for WireGuard traffic
-	pkgver = 1.6.0.r0.g0d39260
+	pkgver = 1.7.0.r39.gd5b7900
 	pkgrel = 1
 	url = https://github.com/database64128/swgp-go
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = swgp-go-git
 	provides = swgp-go
 	conflicts = swgp-go
 	backup = etc/swgp-go/config.json
-	source = swgp-go::git+https://github.com/database64128/swgp-go.git?signed
-	validpgpkeys = 4DCED15E346E2923B931D6F71CA27546BEDB8B01
+	source = swgp-go::git+https://github.com/database64128/swgp-go.git
 	b2sums = SKIP
 
 pkgname = swgp-go-git

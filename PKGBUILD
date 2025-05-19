@@ -2,7 +2,7 @@
 
 _pkgname=swgp-go
 pkgname=$_pkgname-git
-pkgver=1.6.0.r0.g0d39260
+pkgver=1.7.0.r39.gd5b7900
 pkgrel=1
 pkgdesc="Simple WireGuard proxy with minimal overhead for WireGuard traffic"
 arch=('x86_64' 'aarch64')
@@ -12,11 +12,8 @@ makedepends=('git' 'go')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 backup=("etc/$_pkgname/config.json")
-source=("$_pkgname::git+$url.git?signed")
+source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
-validpgpkeys=(
-    '4DCED15E346E2923B931D6F71CA27546BEDB8B01' # Ian Chen (database64128) <free122448@hotmail.com>
-)
 
 pkgver() {
     cd $_pkgname
