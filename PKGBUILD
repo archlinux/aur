@@ -5,7 +5,7 @@
 _pkgname=code
 pkgname=code-git
 pkgdesc='The Open Source build of Visual Studio Code editor'
-pkgver=1.101.0.r133507.gc706215141f
+pkgver=1.101.0.r133508.gb73fc489f5d
 pkgrel=1
 arch=('x86_64')
 _vscode_arch=x64 # https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/PKGBUILD
@@ -36,6 +36,9 @@ pkgver() {
 
 prepare() {
   cd vscode
+  # vsce-sign for extensions
+  pnpm add @vscode/vsce-sign @vscode/vsce-sign-linux-$_vscode_arch
+  
   # electron version
   _electronverorig=$(npm pkg get devDependencies.electron|sed 's/"//g')
   _electronver=$(cat /usr/lib/electron/version)
@@ -45,7 +48,7 @@ prepare() {
   sed -i "s/^target=.*/target=\"${_electronver/}\"/" .npmrc 
   echo Replacing ${_electronverorig} with $(rg -N 'target' .npmrc)
 
-  # Launcher with $_electron
+  # Launcher
   _electron=electron${_electronver%%.*}
   sed -e "s|name=electron|name=$_electron |" -e '/PKGBUILD/d' -i ../code.sh
   sed "1s|.*|#!/usr/lib/$_electron/electron|" -i ../code.mjs
