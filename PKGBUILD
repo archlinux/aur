@@ -9,11 +9,18 @@ url='http://www.amule.org'
 arch=('x86_64' 'armv7h')
 license=('GPL')
 depends=(
-  'wxwidgets-common-light'
-  'crypto++'
-  'libupnp'
-  'libpng'
+  'gcc-libs' # libgcc_s.so libstdc++.so
+  'glibc' # ld-linux-x86-64.so libc.so libm.so
+  'wxwidgets-common-light' 'libwx_baseu-3.2.so' 'libwx_baseu_net-3.2.so'
+  'crypto++' # libcryptopp.so
+  'libupnp' 'libixml.so' 'libupnp.so'
+  'libpng' 'libpng16.so'
   'boost-libs'
+  'binutils' 'libsframe.so'
+  'readline' 'libreadline.so'
+  'perl'
+  'zstd' 'libzstd.so'
+  'zlib' 'libz.so'
 )
 makedepends=('boost')
 conflicts=('amule')
