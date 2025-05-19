@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="GitHub Issue/Pull Request/Release viewer.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/ytakahashi/miru"
-license=("MIT")
+license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
