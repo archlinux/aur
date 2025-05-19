@@ -2,8 +2,8 @@
 pkgname=snsdeck
 pkgver=0.0.3
 _electronversion=26
-_nodeversion=18
-pkgrel=9
+_nodeversion=20
+pkgrel=10
 pkgdesc="SNS Viewer like TweetDeck.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/meganii/snsdeck"
@@ -17,12 +17,13 @@ makedepends=(
     'npm'
     'nvm'
     'curl'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('63a4f1ec42834fa5f4add2cc645b6638fcf3152dfd406241907e7d6adbb360b7'
+sha256sums=('7dbd5004b2fc8a2759d71be17cbc098c1b9f25c7defe593bf20644bf3c5b1295'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -31,6 +32,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -39,15 +41,20 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    gendesk -f -n -q \
+        --pkgname="${pkgname}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${pkgname}" \
+        --exec="${pkgname} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -59,14 +66,23 @@ prepare() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+    NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    {\\
+        name: \"@electron-forge/plugin-local-electron\",\\
+        config: {\\
+            electronPath: \"${electronDist}\"\\
+        }\\
+    }," forge.config.js
     NODE_ENV=production     npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/out/${pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
