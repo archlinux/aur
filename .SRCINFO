@@ -1,13 +1,16 @@
 pkgbase = sponge
 	pkgdesc = A powerful and easy-to-use Go development framework that enables you to effortlessly build high-performance, highly available backend service systems through a 'low-code' approach.
 	pkgver = 1.13.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/go-dev-frame/sponge
 	arch = any
 	license = MIT
-	makedepends = go
-	makedepends = protobuf
 	depends = glibc
+	depends = go
+	depends = protobuf
+	depends = protoc-gen-go
+	depends = protoc-gen-go-grpc
+	depends = swag
 	source = https://github.com/go-dev-frame/sponge/archive/v1.13.2/sponge_1.13.2_linux.zip
 	sha1sums = f5e105d003d22b4b089f7d48af33b8f4fd276e5e
 
