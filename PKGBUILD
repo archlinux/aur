@@ -1,8 +1,8 @@
-#Maintainer:	Giteeajake <giteeajake@qq.com>
+#Maintainer:	mumi jim <echo "=02bj5yav9Gb0V3bA1Waq9VatVXb" | rev | base64 -d>
 
 pkgname=isd-appimage
 pkgver=v0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A better way to work with systemd units.'
 url='https://github.com/isd-project/isd'
 arch=('x86_64')
