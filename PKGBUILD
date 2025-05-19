@@ -1,15 +1,132 @@
-# Maintainer: Daniele Basso <d dot bass05 at proton dot me>
+# Contributor: Daniele Basso <d dot bass05 at proton dot me>
+
 pkgname=code-electron-latest
-pkgver=0.0.0
+pkgdesc='VSCode on the latest stable electron'
+pkgver=1.100.2
 pkgrel=1
-pkgdesc="A bash wrapper forcing vscode using system electron"
-arch=("any")
-url=""
-license=('GPL')
-depends=(code electron)
-source=("code-electron")
-sha256sums=('56ed69efdf48f178f98b4fe6052a5953e9905790cd36322792ea7252fe43aece')
+arch=('x86_64')
+_vscode_arch=x64 # https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/PKGBUILD
+_electron_arch=x64
+url='https://github.com/microsoft/vscode'
+license=('MIT')
+depends=( ripgrep xdg-utils
+libsecret libxkbfile )
+optdepends=('x11-ssh-askpass: SSH authentication')
+makedepends=( electron nodejs-lts-jod # needs corresponding nodejs
+git npm pnpm python desktop-file-utils libarchive)
+conflicts=(code vscode)
+provides=(code vscode)
+# Do not sync $pkgrel
+source=(vscode::"git+https://github.com/microsoft/vscode.git#tag=${pkgver}"
+"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/${pkgver}-1/"{code.sh,code.mjs,clipath.patch,product_json.diff})
+sha512sums=('2694841afae736d7424d9f6ed4a9eebcccd1b6e167682c454da639b37a3442e62d405b009d28e138cc56de03b0711fedf6d28f5a2b0fdd105962421d9d563b6f'
+            '937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37'
+            '793f9ff6306e3992ac89802d98110cba288ea1181a901467333293b7d76182ef9792c2a39ff49d9347a18a174b1f42bc58862091dff583f4146c2704eea28033'
+            'e570b30cd470190aa56596913478d5fb8ba265a0f8c9d1408ea2118612cc69a360cc55e4523c3dc9c65f73e3dea53fc6620c97f6592fb9f86c3aca51ad3d9744'
+            'b1aa0d7c5b3e3e8ba1172822d75ea38e90efc431b270e0b4ca9e45bf9c0be0f60922c8618969ef071b5b6dbd9ac9f030294f1bf49bcc28c187b46d113dca63a7')
+
+prepare() {
+  cd vscode
+  
+  # vsce-sign for extensions
+  pnpm add @vscode/vsce-sign @vscode/vsce-sign-linux-$_vscode_arch
+
+  # electron version
+  _electronverorig=$(npm pkg get devDependencies.electron|sed 's/"//g')
+  _electronver=$(cat /usr/lib/electron/version)
+  npm pkg set devDependencies.electron=${_electronver}
+
+  # Native modules
+  sed -i "s/^target=.*/target=\"${_electronver/}\"/" .npmrc 
+  echo Replacing ${_electronverorig} with $(rg -N 'target' .npmrc)
+
+  # for electron36+. app.dock is only for macOS
+  sed -i '/app\.dock\.setMenu/i\// @ts-ignore' src/vs/platform/menubar/electron-main/menubar.ts
+
+  # Launcher
+  _electron=electron${_electronver%%.*}
+  sed -e "s|name=electron|name=$_electron |" -e '/PKGBUILD/d' -i ../code.sh
+  sed "1s|.*|#!/usr/lib/$_electron/electron|" -i ../code.mjs
+
+  patch -p0 -i ../product_json.diff # https://github.com/Microsoft/vscode/issues/31168 for details.
+
+  # Set the commit and build date
+  sed -e "s/@COMMIT@/$(git rev-parse HEAD)/" -e "s/@DATE@/$(date -u -Is | sed 's/\+00:00/Z/')/" -i product.json
+
+  # Appdata and desktop file
+  sed -i 's|/usr/share/@@NAME@@/@@NAME@@|@@NAME@@|g
+          s|@@NAME_SHORT@@|Code|g
+          s|@@NAME_LONG@@|Code - OSS|g
+          s|@@NAME@@|code-oss|g
+          s|@@ICON@@|com.visualstudio.code.oss|g
+          s|@@EXEC@@|code-oss|g
+          s|@@LICENSE@@|MIT|g
+          s|@@URLPROTOCOL@@|vscode|g' \
+          resources/linux/code{.appdata.xml,.desktop,-url-handler.desktop}
+
+  desktop-file-edit --set-key StartupWMClass --set-value code-oss resources/linux/code.desktop
+
+  cp resources/linux/{code,code-oss}-url-handler.desktop
+  desktop-file-edit --set-key MimeType --set-value x-scheme-handler/code-oss resources/linux/code-oss-url-handler.desktop
+
+  # shell completions
+  cp resources/completions/bash/code resources/completions/bash/code-oss
+  cp resources/completions/zsh/_code resources/completions/zsh/_code-oss
+  # Patch completions with correct names
+  sed -i 's|@@APPNAME@@|code|g' resources/completions/{bash/code,zsh/_code}
+  sed -i 's|@@APPNAME@@|code-oss|g' resources/completions/{bash/code-oss,zsh/_code-oss}
+
+  patch -p1 -i "$srcdir/clipath.patch"
+
+  # Put a zip to skip downloading electron.
+  _hash=$(echo -n "https://github.com/electron/electron/releases/download/v${_electronver}" | sha256sum | cut -d ' ' -f 1)
+  export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home # Don't tain user dir
+  local _cache_dir="$XDG_CACHE_HOME/electron/$_hash"
+  mkdir -p "$_cache_dir"
+  local _zip="electron-v${_electronver}-linux-${_electron_arch}.zip"
+  bsdtar --format zip -cf "${_cache_dir}/${_zip}" /dev/null 2> /dev/null
+  echo "$(sha256sum "$_cache_dir/$_zip" | cut -d " " -f 1) *$_zip" > build/checksums/electron.txt
+}
+
+build() {
+  cd vscode
+  export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+  export XDG_CACHE_HOME="$srcdir"
+  npm install --cpu=$_vscode_arch
+  # Remove -min if minify cause OOM
+  npm run gulp --openssl-legacy-provider vscode-linux-${_vscode_arch}-min
+}
 
 package() {
-	install -Dm755 code-electron "${pkgdir}/usr/bin/code-electron"
+  _electronver=$(cat /usr/lib/electron/version) # redef for makepkg --repackage
+  depends+=(electron${_electronver%%.*})
+  # Resource files
+  install -dm755 "$pkgdir"/usr/lib/code # compat with hook pkgs
+  cp -r --reflink=auto --no-preserve=ownership --preserve=mode VSCode-linux-${_vscode_arch}/resources/app/* "$pkgdir"/usr/lib/code/
+  chmod -R u=rwX,go=rX "$pkgdir" # todo: cleanup
+  # system-wide tools
+  ln -svf /usr/bin/rg "$pkgdir"/usr/lib/code/node_modules/@vscode/ripgrep/bin/rg
+  ln -svf /usr/bin/xdg-open "$pkgdir"/usr/lib/code/node_modules/open/xdg-open
+
+  # Launcher
+  install -Dm755 code.sh "$pkgdir"/usr/bin/code
+  install -Dm755 code.mjs "$pkgdir"/usr/lib/code/code.mjs
+  ln -sf /usr/bin/code "$pkgdir"/usr/bin/code-oss
+
+  # Appdata and desktop file
+  install -Dm644 vscode/resources/linux/code.appdata.xml "$pkgdir"/usr/share/metainfo/code-oss.appdata.xml
+  install -Dm644 vscode/resources/linux/code.desktop "$pkgdir"/usr/share/applications/code-oss.desktop
+  install -Dm644 vscode/resources/linux/code-url-handler.desktop "$pkgdir"/usr/share/applications/code-url-handler.desktop
+  install -Dm644 vscode/resources/linux/code-oss-url-handler.desktop "$pkgdir"/usr/share/applications/code-oss-url-handler.desktop
+  install -Dm644 VSCode-linux-${_vscode_arch}/resources/app/resources/linux/code.png "$pkgdir"/usr/share/pixmaps/com.visualstudio.code.oss.png
+
+  # Shell completions
+  install -Dm644 vscode/resources/completions/bash/code "$pkgdir"/usr/share/bash-completion/completions/code
+  install -Dm644 vscode/resources/completions/bash/code-oss "$pkgdir"/usr/share/bash-completion/completions/code-oss
+  install -Dm644 vscode/resources/completions/zsh/_code "$pkgdir"/usr/share/zsh/site-functions/_code
+  install -Dm644 vscode/resources/completions/zsh/_code-oss "$pkgdir"/usr/share/zsh/site-functions/_code-oss
+
+  # License, use $pkgname for namcap
+  install -Dm644 VSCode-linux-${_vscode_arch}/resources/app/LICENSE.txt "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 VSCode-linux-${_vscode_arch}/resources/app/ThirdPartyNotices.txt "$pkgdir"/usr/share/licenses/${pkgname}/ThirdPartyNotices.txt
 }
