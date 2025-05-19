@@ -1,6 +1,6 @@
 # Maintainer: poscat
 
-_gittag="v0.0-3992-g1903b809"
+_gittag="v0.0-3997-gd6924079"
 _tardir="verible-${_gittag/v/}"
 
 pkgname=verible
@@ -17,7 +17,7 @@ conflicts=('verible-git' 'verible-bin')
 source=(
   "verible-${pkgver}.tar.gz::https://github.com/chipsalliance/verible/archive/refs/tags/${_gittag}.tar.gz"
 )
-sha256sums=('fba11885c500341065677c0b11eb72d31cad5bdf3c9bd68d0fbc80560c05ddab')
+sha256sums=('677d842de405a7e89b8e3a9db2c740626eb64918a83f8185cb83b46c6a9a7868')
 
 build() {
   cd "${srcdir:?}/${_tardir}" || (
