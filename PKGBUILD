@@ -1,7 +1,7 @@
 # Maintainer: Graham Smith <gps1539 at gmail dot com>
 
 pkgname=stock_quote
-pkgver=2.0.16
+pkgver=2.0.17
 pkgrel=1
 pkgdesc="python script to get stock quotes and calculate gains and losses"
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/gps1539/stock_quote'
 depends=('python' 'python-numpy' 'python-colorama' 'python-pandas' 'python-plotly')
 makedepends=()
 source=("https://raw.githubusercontent.com/gps1539/stock_quote/master/stock_quote/stock_quote")
-md5sums=('e2f41ea40a49b1175283ce619d996352')
+md5sums=('303f4773d3f1e4ad52e1b6ea57fb469c')
 
 package()
 {
