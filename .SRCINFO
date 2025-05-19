@@ -1,13 +1,13 @@
 pkgbase = hitech-arch-animation
 	pkgdesc = Hi-Tech Arch Linux Plymouth Theme
-	pkgver = r5.f23db66
-	pkgrel = 1
+	pkgver = 2.0
+	pkgrel = 2
 	url = https://github.com/xDeFc0nx/HiTech-arch-animation
 	arch = any
-	license = GPL-3.0-or-later
+	license = MIT
 	makedepends = git
 	depends = plymouth
-	source = hitech-arch-animation::git+https://github.com/xDeFc0nx/HiTech-arch-animation.git#commit=f23db665d74599510e827131956bfb04bcc6d742
-	sha256sums = a24b14fc0b659cbb80c0ae5b5516f05ca0625d156a319ad2c533bd404be12e82
+	source = git+https://github.com/xDeFc0nx/HiTech-arch-animation.git#commit=HEAD
+	sha256sums = SKIP
 
 pkgname = hitech-arch-animation
