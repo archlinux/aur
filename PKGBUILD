@@ -12,7 +12,7 @@ pkgname='pyconcurrent'
 pkgdesc='Python module to simplify asyncio/multiprocessing'
 _gitname='pyconcurrent'
 
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 url="https://github.com/gene-git/pyconcurrent"
 
@@ -22,10 +22,9 @@ license=(MIT)
 # To build docs uncommont sphinx/texlive
 depends=('python>3.13' 'python-dateutil')
 makedepends=('git' 'python-build' 'python-wheel' 'python-hatch' 'rsync' 
-             'python-pytest' 'python-pytest-asyncio'
              #'python-sphinx' 'python-myst-parser' 'texlive-latexextra' 'python-sphinx-autoapi' 
             )
-
+checkdepends=('python-pytest' 'python-pytest-asyncio')
 # Used by package : mkpkg
 _mkpkg_depends=('python>minor')
 

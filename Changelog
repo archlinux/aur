@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 2.0.2 ➙ 2.2.2
-              : 2025-04-27 ➙ 2025-05-03
+ Tags         : 2.1.0 ➙ 2.2.3
+              : 2025-04-30 ➙ 2025-05-19
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-05-19   : 2.2.3
+                Arch PKGBUILD: move pytest dependency from makedepends to checkdepends.
+ 2025-05-03     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
 
  2025-05-03   : 2.2.2
                 Remove old test directory
@@ -21,7 +25,3 @@
  2025-04-30   : 2.1.0
                 Bug fix returning stdout string from subprocess
  2025-04-27     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-04-27   : 2.0.2
-                API ref rst format
-                Fix typo in api reference
