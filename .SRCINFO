@@ -25,6 +25,15 @@ pkgbase = cursor-electron
 	source_x86_64 = 0.50.5-x86_64.img::https://downloads.cursor.com/production/96e5b01ca25f8fbd4c4c10bc69b15f6228c80771/linux/x64/Cursor-0.50.5-x86_64.AppImage
 	sha512sums_x86_64 = bbfcdc6759a04e87ba24031566a4676f477821ad120f5a4ccb2348e4d0395d4660e27f90ad392f853abf7b7a4801c9807b4d5e099a245a237785a945173ed878
 
+pkgname = cursor-electron
+	pkgdesc = The AI Code Editor (system-wide electron)
+	depends = ripgrep
+	depends = xdg-utils
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = libxkbfile
+	depends = electron34
+
 pkgname = cursor-electron35
 	pkgdesc = The AI Code Editor ()
 	depends = ripgrep

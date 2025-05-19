@@ -3,7 +3,7 @@
 
 _name=cursor
 pkgbase="${_name}-electron"
-pkgname=("$pkgbase"{35,-latest})
+pkgname=("$pkgbase"{,35,-latest})
 pkgver=0.50.5
 pkgrel=3
 _desc="The AI Code Editor "
