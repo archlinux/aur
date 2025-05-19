@@ -1,6 +1,6 @@
 pkgname=ferronweb
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ferron web server"
 arch=('x86_64' 'i686' 'armv7' 'aarch64' 'riscv64')
 url="https://www.ferronweb.org"
@@ -67,7 +67,6 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/etc"
     install -dm755 "$pkgdir/usr/lib/systemd/system"
-    cp -r wwwroot/* "$pkgdir/var/www/ferron/"
     install -Dm755 ferron "$pkgdir/usr/bin/ferron"
     for binary in ferron-*; do
         if [[ -f "$binary" && "$binary" != *.zip ]]; then
