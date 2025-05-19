@@ -39,3 +39,19 @@ pkgname = libadapta-git
 	provides = libadapta
 	provides = libAdapta-1.so
 	conflicts = libadapta
+
+pkgname = libadapta-docs-git
+	pkgdesc = libAdapta is libAdwaita with theme support and a few extra. (documentation)
+	depends = 
+	provides = libadapta-docs
+	conflicts = libadapta-docs
+
+pkgname = libadapta-demos-git
+	pkgdesc = libAdapta is libAdwaita with theme support and a few extra. (demo applications)
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	provides = libadapta-demos
+	conflicts = libadapta-demos

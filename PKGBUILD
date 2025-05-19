@@ -2,7 +2,7 @@
 
 _pkgname="libadapta"
 pkgbase=libadapta-git
-pkgname=(libadapta-git)
+pkgname=(libadapta-git libadapta-docs-git libadapta-demos-git)
 pkgver=r4088.5f2193a
 pkgrel=2
 pkgdesc="libAdapta is libAdwaita with theme support and a few extra."
@@ -87,7 +87,7 @@ package_libadapta-git() {
   _pick docs usr/share/doc
 }
 
-package_libadatpa-demos-git() {
+package_libadapta-demos-git() {
   pkgdesc+=" (demo applications)"
   depends=(
     glib2
