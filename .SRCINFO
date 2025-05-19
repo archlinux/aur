@@ -1,0 +1,18 @@
+pkgbase = tsidp-git
+	pkgdesc = Tailscale OIDC Identity Provider (git version)
+	pkgver = r9080.d89aa2908
+	pkgrel = 1
+	url = https://github.com/tailscale/tailscale
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	depends = tailscale
+	provides = tsidp
+	conflicts = tsidp
+	options = !lto
+	source = git+https://github.com/tailscale/tailscale.git
+	source = tsidp.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = tsidp-git

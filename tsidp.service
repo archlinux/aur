@@ -1,0 +1,14 @@
+[Unit]
+Description=Tailscale OIDC Identity Provider
+Wants=network-online.target
+After=network-online.target
+Requires=tailscaled.service
+
+[Service]
+ExecStartPre=/bin/bash -c 'while ! tailscale status &>/dev/null; do echo "Waiting for tailscale to be ready..."; sleep 1; done'
+ExecStart=/usr/bin/tsidp --use-local-tailscaled=true --dir=/var/lib/tailscale/tsidp --port=443
+Environment=TAILSCALE_USE_WIP_CODE=1
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
