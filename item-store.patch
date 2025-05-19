@@ -1,0 +1,18 @@
+--- src/guile-ncurses-3.1/src/ncurses/menu_type.c	2019-11-05 14:47:29.000000000 -0500
++++ src-patched/guile-ncurses-3.1/src/ncurses/menu_type.c	2025-05-19 03:54:28.144159181 -0400
+@@ -318,10 +318,11 @@
+       // garbage collection.  This doubly-linked list deteched here.
+       for (i = 0; i < len; i++)
+         {
+-          pitem_store[i]->left = NULL;
+-          pitem_store[i]->right = NULL;
+-          pitem_store[i]->up = NULL;
+-          pitem_store[i]->down = NULL;
++          //pitem_store[i]->left = NULL;
++          //pitem_store[i]->right = NULL;
++          //pitem_store[i]->up = NULL;
++          //pitem_store[i]->down = NULL;
++      	  set_current_item(menu, pitem_store[i]);
+         }
+ 
+       // Decrease the refcount on these items, and maybe free them.

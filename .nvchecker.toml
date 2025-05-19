@@ -1,0 +1,4 @@
+[guile-ncurses]
+source='regex'
+url='http://ftpmirror.gnu.org/guile-ncurses/'
+regex='guile-ncurses-([0-9.]+).tar.gz'
