@@ -10,7 +10,11 @@ post_install() {
 
 post_upgrade() {
     # xdg-mime instructions added in 0.1.4
-    if [ $(vercmp $2 0.1.3) -le 0 ]; then
+    # zoomphonesms and zoomcontactcentercall new mime types added in 0.9.74-2
+    # but I forgot to edit post_upgrade() in 0.9.74-2, so I edited
+    # post_upgrade() in 0.9.74-3 to make sure people upgraded to 0.9.74-2 but
+    # did not receive new mime types notice will receive one
+    if [ $(vercmp $2 0.9.74-2) -le 0 ]; then
         post_install
     fi
 }

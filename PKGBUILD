@@ -3,7 +3,7 @@
 
 pkgname=zoom-firejail
 pkgver=0.9.74
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop entry for running Zoom in Firejail"
 arch=('x86_64')
 license=('MIT')
