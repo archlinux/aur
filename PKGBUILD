@@ -1,26 +1,25 @@
 # Contributor: perlawk
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=csnobol4
-_pkgname=snobol4
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc='A port of Macro SNOBOL4, supports the full SNOBOL4 language plus BLOCKS and SPITBOL and other extensions.'
 url='https://www.regressive.org/snobol4/csnobol4/curr/'
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('tcl' 'tk')
-source=("https://ftp.regressive.org/snobol4/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('6e41e3228eca7c52e5cf35425e9ae408')
-sha1sums=('1e0cb8030bab9c097f7905edb5c4a77779a3a3f2')
-sha256sums=('41e301e9dd180d70117d64f3694f9dd54f9ed909a36a32587c8bed85ab68ac15')
+source=("https://ftp.regressive.org/snobol4/${pkgname:1}-${pkgver}.tar.gz")
+md5sums=('c43c7216ac21341991b0ba2f4b34c761')
+sha1sums=('20f972c7ec28b92627014877935dbd58fb8af54e')
+sha256sums=('bfd53071d69283776f5b2764f7865d354b89d372569854a18878e59f57388ed2')
 
 build() {
-	cd "$srcdir/${_pkgname}-$pkgver"
+	cd "$srcdir/${pkgname:1}-$pkgver"
 	./configure --prefix=/usr --lp64 --with-tcl=/usr/lib/tclConfig.sh
 	make
 }
 
 package() {
-	cd "$srcdir/${_pkgname}-$pkgver"
+	cd "$srcdir/${pkgname:1}-$pkgver"
 	make DESTDIR="$pkgdir" install
 }
