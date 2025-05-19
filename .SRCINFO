@@ -1,7 +1,7 @@
 pkgbase = pngcheck
 	pkgdesc = Verifies the integrity of PNG, JNG and MNG files
 	pkgver = 4.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pnggroup/pngcheck
 	arch = x86_64
 	license = GPL-2.0-only OR X11
