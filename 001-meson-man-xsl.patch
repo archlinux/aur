@@ -1,0 +1,11 @@
+--- a/man/meson.build
++++ b/man/meson.build
+@@ -8,7 +8,7 @@
+   fs = import('fs')
+
+   docbook_xsl_search = [
+-    '/usr/share/xml/docbook/stylesheet/nwalsh'
++    '/usr/share/xml/docbook/xsl-stylesheets'
+   ]
+   docbook_xsl_found = false
+   foreach docbook_xsl: docbook_xsl_search
