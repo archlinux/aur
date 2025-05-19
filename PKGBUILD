@@ -17,11 +17,10 @@ makedepends=('desktop-file-utils')
 provides=("${_name}"{,-bin})
 conflicts=("${_name}"{,-bin})
 _hash="96e5b01ca25f8fbd4c4c10bc69b15f6228c80771"
-source=("https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/1.100.2-1/code.sh" electron-store.txt)
+source=("https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/1.100.2-1/code.sh")
 source_aarch64=("${pkgver}-aarch64.img::https://downloads.cursor.com/production/${_hash}/linux/arm64/Cursor-${pkgver}-aarch64.AppImage")
 source_x86_64=("${pkgver}-x86_64.img::https://downloads.cursor.com/production/${_hash}/linux/x64/Cursor-${pkgver}-x86_64.AppImage")
-sha512sums=('937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37'
-            '51064cf2aac63b2e58d44cc3a1d181036c994602d31c494698e642ee81b45dddeaded9cffe7a23e97159f1c49a1945233b78e12a56c6ab3ea2679d60188ab261')
+sha512sums=('937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37')
 sha512sums_aarch64=('22084dfcdb3dfa367d7289cb1561df40ea8a12e858630c83f2ccf306a5edde0e1365beeda25a853005e5de9da66ffd39be38764bca849b15045eea2c7094bf35')
 sha512sums_x86_64=('bbfcdc6759a04e87ba24031566a4676f477821ad120f5a4ccb2348e4d0395d4660e27f90ad392f853abf7b7a4801c9807b4d5e099a245a237785a945173ed878')
 options=(!strip)
@@ -39,14 +38,14 @@ prepare() { # Create cp -r friendly layout with FHS
 	# Replace bundled runtimes
 	mv share/cursor/resources/app lib/cursor
 	rm -r share/cursor
-	rg -N -o -r '$1' '"electron": *"[^\d]*(\d+)' lib/cursor/package.json |tee "${srcdir}/electron-store.txt"
+	#rg -N -o -r '$1' '"electron": *"[^\d]*(\d+)' lib/cursor/package.json |tee "${srcdir}/electron-store.txt"
 	cd lib/cursor/node_modules
 	ln -svf /usr/bin/rg       @vscode/ripgrep/bin/rg
 	ln -svf /usr/bin/xdg-open open/xdg-open
 }
 package_cursor-electron(){
-	_electron=electron$(cat electron-store.txt)
-	depends+=(electron$(cat electron-store.txt)) # for --printsrcinfo
+	_electron=electron$(rg --no-messages -N -o -r '$1' '"electron": *"[^\d]*(\d+)' squashfs-root/usr/lib/cursor/package.json) # --repackage
+	depends+=(electron$(rg --no-messages -N -o -r '$1' '"electron": *"[^\d]*(\d+)' squashfs-root/usr/share/cursor/resources/app/package.json )) # --printsrcinfo
 	pkgdesc="${_desc} (system-wide electron)"
 	cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
 	sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
