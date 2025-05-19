@@ -1,7 +1,7 @@
 pkgbase = wps-office-365
 	pkgdesc = WPS Office, is an office productivity suite.
 	pkgver = 12.8.2.20327
-	pkgrel = 1
+	pkgrel = 2
 	url = https://365.wps.cn/
 	arch = x86_64
 	arch = aarch64
