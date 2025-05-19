@@ -33,8 +33,6 @@ makedepends=(
   'python-flit-core'
   'python-installer'
   'python-setuptools'
-  'python-sphinx'
-  'python-sphinx_rtd_theme'
   'python-wheel'
 )
 
@@ -46,9 +44,13 @@ optdepends=(
   'pipewire-pulse: To be used by a local pipewire implementation'
   'pulseaudio-dlna: Service file for pa-dlna in systemd format'
 )
+
+checkdepends=(python-pytest)
+
 source=(
   "git+${url}.git#tag=${pkgver}"
 )
+
 sha256sums=('996f22943e03cb93fda2a1ef3ccc6731f09f0430c3e1f4ffe41e3fe3d849acc6')
 
 build() {
