@@ -7,7 +7,7 @@ _release_tag_version=6.1.0
 
 pkgver=${_hayase_version}
 pkgrel=1
-pkgdesc="Anime streaming application (Hayase ${_hayase_version}, pre-compiled from release v${_release_tag_version})"
+pkgdesc="Bittorrent streaming software for cats. Stream anime torrents, real-time with no waiting for downloads. (Hayase ${_hayase_version}, pre-compiled from release v${_release_tag_version})"
 arch=('x86_64')
 url="https://github.com/ThaUnknown/miru"
 license=('GPL3')

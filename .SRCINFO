@@ -1,5 +1,5 @@
 pkgbase = miru-hayase-bin
-	pkgdesc = Anime streaming application (Hayase 6.3.2, pre-compiled from release v6.1.0)
+	pkgdesc = Bittorrent streaming software for cats. Stream anime torrents, real-time with no waiting for downloads. (Hayase 6.3.2, pre-compiled from release v6.1.0)
 	pkgver = 6.3.2
 	pkgrel = 1
 	url = https://github.com/ThaUnknown/miru
