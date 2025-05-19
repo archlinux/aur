@@ -1,10 +1,11 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
 # Contributor: Erin Sheldon
 _base=ngmix
 pkgname=python-${_base}
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Gaussian mixtures and image processing"
 arch=(any)
@@ -17,7 +18,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest python-galsim python-fitsio python-flaky python-metadetect) # python-scikit-learn
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   setup.py.patch)
-sha512sums=('185d51a58195da77e8ab645025dee4da80a31dcf10315ca4cfa8f43218cab505f89f7367837b73ba2ea5ad0954bd2a4a45837e9feb73ab3be98bab48bb58a2c1'
+sha512sums=('6d3bc6872d856c8ec17dc8558c5ca452559446a89846efc4f1425f8709dc90f5a6cc484c32d60604a174b5bfcb99836215d94983464ae66ab8b259e7dda5edef'
   'a0464809ec508f67ffb79dec29088ce2b9d7269c739d66d9a47f7251ae31657d33a2fa5ffa80c37bd50b1c04b72418ef16e104b2dd4e165448f357a193b876a0')
 
 prepare() {
