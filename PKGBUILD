@@ -23,8 +23,7 @@ provides=(scopy)
 conflicts=(scopy)
 source=("git+https://github.com/analogdevicesinc/scopy.git"
 		)
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd scopy

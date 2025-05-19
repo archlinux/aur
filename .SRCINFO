@@ -22,6 +22,5 @@ pkgbase = scopy-git
 	conflicts = scopy
 	source = git+https://github.com/analogdevicesinc/scopy.git
 	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = scopy-git
