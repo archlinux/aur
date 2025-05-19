@@ -1,0 +1,12 @@
+--- a/pyproject.toml	2023-11-12 09:10:02.000000000 +0100
++++ b/pyproject.toml	2025-05-19 23:20:01.663769502 +0200
+@@ -6,7 +6,8 @@
+ readme = "README.md"
+ packages = [{include = "mnemosyne"},
+             {include = "openSM2sync"}]
+-include = ["mnemosyne/pyqt_ui/ui_*", "makefile", "pixmaps/*",
++include = [{path = "mnemosyne/pyqt_ui/ui_*", format = ["sdist", "wheel"]},
++    "makefile", {path = "pixmaps/*", format = ["sdist", "wheel"]},
+     "mnemosyne/pyqt_ui/makefile"]
+ exclude = ["mnemosyne/android", "mnemosyne/android_python", 
+     "mnemosyne/embedded_in_C", "mnemosyne/UDP_server"]
