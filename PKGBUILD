@@ -7,14 +7,13 @@
 
 pkgname=insync
 pkgver=3.9.6.60027
-pkgrel=1
+pkgrel=2
 _dist=noble
 pkgdesc="An unofficial Dropbox, Google Drive, and OneDrive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
 options=(!strip)
-depends=('adobe-source-code-pro-fonts'
-         'alsa-lib'
+depends=('alsa-lib'
          'fontconfig'
          'glibc'
          'hicolor-icon-theme'
