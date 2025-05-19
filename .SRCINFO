@@ -1,7 +1,7 @@
 pkgbase = scopy-git
 	pkgdesc = A software oscilloscope and signal analysis toolset
 	pkgver = 2.0.0.r75.g2b1c2c9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/analogdevicesinc/scopy
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -18,6 +18,8 @@ pkgbase = scopy-git
 	depends = gnuradio-m2k-git
 	depends = gnuradio-scopy-git
 	depends = libsigrokdecode
+	depends = libm2k-git
+	depends = qwt-multiaxes-git
 	provides = scopy
 	conflicts = scopy
 	source = git+https://github.com/analogdevicesinc/scopy.git
