@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=transformerlab-bin
 _pkgname=Transformer-Lab
-pkgver=0.16.1
+pkgver=0.16.4
 _electronversion=26
 pkgrel=1
 pkgdesc="Open Source Application for Advanced LLM Engineering: interact, train, fine-tune, and evaluate large language models on your own computer.(Prebuilt version.Use system-wide electron)"
@@ -32,8 +32,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('f8781a868b9e74ab3a12e197f048f47bc27f5aa581769130a333915207de94e2')
-sha256sums_x86_64=('f19a0e24c781df309d5d2536f517d2d7a687ee960dddbc7a87b6ae53f355ff03')
+sha256sums_aarch64=('c60f507836f6eb5d00581ee05be0fa37ff8d308220c404468137f5d53e8da6fa')
+sha256sums_x86_64=('52068494c416a94e003978bf8e74fc37540450ebb37cc3954970e10a4ee2ac24')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
