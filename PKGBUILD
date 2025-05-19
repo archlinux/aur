@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=peersky-browser
 _pkgname='Peersky Browser'
-pkgver=1.0.0_beta.2
+pkgver=1.0.0_beta.4
 _electronversion=29
-_nodeversion=20
+_nodeversion=22
 pkgrel=1
 pkgdesc="A minimal local-first p2p web browser: access, communicate, and publish offline.(Use system-wide electron)"
 arch=("any")
@@ -21,14 +21,14 @@ makedepends=(
     'gendesk'
     'gcc'
     'curl'
-    'cmake'
+    'git'
 )
 options=('!strip')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
+    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver//_/-}"
     "${pkgname}.sh"
 )
-sha256sums=('fa5cb91ce9b45b606c7139a37d01400c3b887dc1381069e268e8de9379fcc8fc'
+sha256sums=('f5801229a0dd29c8dfae4744c7678405de8073b2ba3e6575ac212fd4b35cad3b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -37,6 +37,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -45,17 +46,22 @@ prepare() {
         s/@options@/ELECTRON_DISABLE_SECURITY_WARNINGS=true/g
     " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}-${pkgver//_/-}"
+    gendesk -f -n -q \
+        --pkgname="${pkgname}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Network" \
+        --name="${_pkgname}" \
+        -exec="${pkgname} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
-    if [[ "$(curl -s cip.cc)" == *"中国"* ]]; then
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
@@ -68,14 +74,14 @@ prepare() {
     NODE_ENV=development    npm install --legacy-peer-deps
 }
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver//_/-}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver//_/-}/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver//_/-}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver//_/-}/public/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/public/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
