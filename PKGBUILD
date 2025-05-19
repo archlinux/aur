@@ -4,7 +4,7 @@
 
 pkgname='slcurl-snapshot'
 _pkgname="${pkgname%-snapshot}"
-_pkgver=0.2.2-13
+_pkgver=0.2.2-14
 _prever="pre$_pkgver"
 pkgver="${_pkgver//-/.}"
 pkgrel=2
@@ -17,7 +17,7 @@ provides=('slcurl')
 conflicts=("${provides[@]}")
 options=('!makeflags')
 source=("${url}$_pkgname-$_prever.tar.gz")
-md5sums=('b343f67adb443fd883ef67936faea661')               # Taken from $url
+md5sums=('05a88abdad29e80e7ddcd7ab3c209494')               # Taken from $url
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 changelog="$pkgname.changelog"
 
@@ -38,7 +38,7 @@ package() {
 }
 
 b2sums=(
-  '5521596bd6f60e2a26e54c1cddaad33046cc90e35b643b08e66bd0e5207866696e3c6e5bafabef127a9736889ae9ce05d8ff18ab1e72c14a64d0e9ecb2546bcf'
+  'f0bbc1a7a49d93c74b70cfd37fec4fef00e73f69f39005e1db2ed646623bdb751bb693168d8600701a1f7aa0d98cfa2ced0f72f8f081b3c450f0a2540d204db1'
 )
 
 # eof
