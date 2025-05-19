@@ -10,23 +10,23 @@
 
 _pack=image-acquisition
 pkgname=octave-${_pack}
-pkgver=0.2.6
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Functions to capture images from connected devices using Video4Linux (v4l)."
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=(GPL-3.0-or-later)
 groups=('octave-forge')
-depends=('octave>=3.8.0')
+depends=('octave>=5.1.0')
 makedepends=('v4l-utils>=0.8.8' 'fltk>=1.1.0')
 optdepends=()
 backup=()
 options=()
 install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
-source=("https://downloads.sourceforge.net/octave/${_archive}")
+source=("https://github.com/Andy1978/${pkgname}/releases/download/${_pack}-${pkgver}/${_archive}")
 noextract=("$_archive")
-sha512sums=('9cca06ae7aa874bb042f6897856302ac967b18ba06f2c68f3cec940f0a588765c880297723992d87ce991195f9594b31ff1e1bc8717f3d28abe462f2d0b5a75f')
+sha512sums=('2a3105b4ccb2124ce86648e5234cf47a856182bf218837ca31840d8ad61b16d0d4f3278c86169879e6a3cd301c9a745c1dd08d0d03d2fd44f1823cd9f140bf99')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"

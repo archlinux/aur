@@ -1,0 +1,5 @@
+[octave-image-acquisition]
+source = "github"
+github = "Andy1978/octave-image-acquisition"
+use_latest_release = "true"
+prefix = "image-acquisition-"

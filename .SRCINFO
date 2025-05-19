@@ -1,17 +1,17 @@
 pkgbase = octave-image-acquisition
 	pkgdesc = Functions to capture images from connected devices using Video4Linux (v4l).
-	pkgver = 0.2.6
+	pkgver = 0.3.3
 	pkgrel = 1
-	url = https://octave.sourceforge.io/image-acquisition
+	url = https://gnu-octave.github.io/packages/image-acquisition
 	install = octave-image-acquisition.install
 	arch = any
 	groups = octave-forge
 	license = GPL-3.0-or-later
 	makedepends = v4l-utils>=0.8.8
 	makedepends = fltk>=1.1.0
-	depends = octave>=3.8.0
-	noextract = image-acquisition-0.2.6.tar.gz
-	source = https://downloads.sourceforge.net/octave/image-acquisition-0.2.6.tar.gz
-	sha512sums = 9cca06ae7aa874bb042f6897856302ac967b18ba06f2c68f3cec940f0a588765c880297723992d87ce991195f9594b31ff1e1bc8717f3d28abe462f2d0b5a75f
+	depends = octave>=5.1.0
+	noextract = image-acquisition-0.3.3.tar.gz
+	source = https://github.com/Andy1978/octave-image-acquisition/releases/download/image-acquisition-0.3.3/image-acquisition-0.3.3.tar.gz
+	sha512sums = 2a3105b4ccb2124ce86648e5234cf47a856182bf218837ca31840d8ad61b16d0d4f3278c86169879e6a3cd301c9a745c1dd08d0d03d2fd44f1823cd9f140bf99
 
 pkgname = octave-image-acquisition
