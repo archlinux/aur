@@ -17,6 +17,8 @@ pkgbase = mewline-git
 	depends = tesseract-data-eng
 	depends = tesseract-data-rus
 	depends = cliphist
+	provides = mewline
+	conflicts = mewline
 	source = git+https://github.com/meowrch/mewline.git
 	sha256sums = SKIP
 
