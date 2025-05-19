@@ -110,7 +110,7 @@ package() {
 
   # Launcher
   install -Dm755 code.sh "$pkgdir"/usr/bin/code
-  install -Dm755 code.mjs "$pkgdir"/usr/lib/code/code.js
+  install -Dm755 code.mjs "$pkgdir"/usr/lib/code/code.mjs
   ln -sf code "$pkgdir"/usr/bin/code-oss
 
   # Appdata and desktop file
