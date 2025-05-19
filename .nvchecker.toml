@@ -1,0 +1,4 @@
+[ocaml-gsl]
+source = "github"
+github = "mmottl/gsl-ocaml"
+use_latest_release = true

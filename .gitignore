@@ -1,1 +1,6 @@
-/home/aksr/arch/pkg/.gitignore
+/.vscode/
+/src/
+/pkg/
+*.log
+*.pkg.*
+*.tar.*
