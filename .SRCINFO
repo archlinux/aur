@@ -1,7 +1,7 @@
 pkgbase = isd-appimage
 	pkgdesc = A better way to work with systemd units.
 	pkgver = v0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/isd-project/isd
 	arch = x86_64
 	license = GPL-3.0-or-later
