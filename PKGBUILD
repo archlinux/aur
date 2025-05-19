@@ -4,8 +4,8 @@
 
 pkgbase=gpgme
 pkgname=(gpgme qgpgme-qt6 python-gpgme)
-pkgver=1.24.2
-pkgrel=1
+pkgver=1.24.3
+pkgrel=2
 pkgdesc='A C wrapper library for GnuPG'
 arch=('x86_64')
 url='https://www.gnupg.org/related_software/gpgme/'
@@ -28,12 +28,17 @@ makedepends=(
 )
 validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA'  # Werner Koch (dist signing 2020)
               'AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD') # Niibe Yutaka (GnuPG Release Key)
-source=("https://www.gnupg.org/ftp/gcrypt/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"{,.sig})
-sha256sums=('e11b1a0e361777e9e55f48a03d89096e2abf08c63d84b7017cfe1dce06639581'
-            'SKIP')
+source=("https://www.gnupg.org/ftp/gcrypt/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"{,.sig}
+        '0025_debian_default_is_openpgp.diff')
+sha256sums=('bfc17f5bd1b178c8649fdd918956d277080f33df006a2dc40acdecdce68c50dd'
+            'SKIP'
+            'f8bdaba4732347067ce291ca2acd6096e7a02c162a760be3515e0c4cdac60d6f')
 
 prepare() {
   cd ${pkgbase}-${pkgver}/
+
+  # Adapt testsuite to changed gnupg defaults in Debian
+  patch -Np1 < ../0025_debian_default_is_openpgp.diff
 
   sed -i 's/-unknown//' autogen.sh
   autoreconf -fi
