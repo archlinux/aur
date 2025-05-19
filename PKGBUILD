@@ -5,15 +5,15 @@
 # Maintainer: AI5C <ai5c@ai5c.com>
 pkgname=orpie
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Curses-based RPN calculator"
 arch=('i686' 'x86_64')
 url="https://github.com/pelzlpj/orpie"
-license=('GPL3')
+license=('GPL-3.0-only')
 groups=()
 depends=('ncurses' 'gsl')
-makedepends=('ocaml' 'ocaml-gsl' 'camlp5' 'dune' 'ocaml-curses' 'ocaml-num')
+makedepends=('ocaml' 'ocaml-gsl' 'camlp5' 'camlp-streams' 'dune' 'ocaml-curses' 'ocaml-findlib' 'ocaml-num')
 checkdepends=()
 optdepends=()
 provides=()
@@ -32,11 +32,12 @@ sha256sums=('1ae5a99fbbf492869664e4bd81e6bf5cf65bdaf5027908c1e9313843bb5d5749'
 prepare() {
   cd "$srcdir/${pkgname}-release-${pkgver}"
   patch -uNp1 -i ../install-prefix.patch || return 1
+  sed -i -e 's/libraries/\0 camlp-streams/' src/orpie/dune
 }
 
 build() {
   cd "$srcdir/${pkgname}-release-${pkgver}"
-  make
+  dune build -p orpie
 }
 
 package() {
