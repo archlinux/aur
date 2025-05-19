@@ -14,7 +14,7 @@ conflicts=("${_pkgname}-bin" "${_pkgname}")
 depends=("libxkbfile")
 options=("!strip")
 source=(
-    "${url}/releases/download/continuous/WeChat_Dev_Tools_v${pkgver}-continuous_${arch}_linux.tar.gz"
+    "WeChat_Dev_Tools_v${pkgver}-continuous-${pkgrel}.tar.gz::${url}/releases/download/continuous/WeChat_Dev_Tools_v${pkgver}-continuous_${arch}_linux.tar.gz"
     "${_pkgname}.desktop"
     "${_pkgname}.png"
     "${_pkgname}.sh"
