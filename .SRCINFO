@@ -1,0 +1,17 @@
+pkgbase = plakar-git
+	pkgdesc = Backup for lazy^W smart engineers.
+	pkgver = 1.0.0.beta.6.r1063.g8e87cb17
+	pkgrel = 1
+	url = https://github.com/PlakarKorp/plakar
+	arch = x86_64
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	license = ISC
+	makedepends = go
+	provides = plakar
+	conflicts = plakar
+	source = plakar::git+https://github.com/PlakarKorp/plakar#branch=main
+	sha256sums = SKIP
+
+pkgname = plakar-git
