@@ -1,0 +1,14 @@
+pkgbase = ms-edit-bin
+	pkgdesc = A simple editor for simple needs (Microsoft Edit)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/microsoft/edit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ms-edit
+	conflicts = ms-edit
+	source = ms-edit-1.0.0.xz::https://github.com/microsoft/edit/releases/download/v1.0.0/edit-1.0.0-x86_64-linux-gnu.xz
+	sha256sums = bdab6db16b167b38ef318e7972a10072d562c4ca2dba26ea7ea33cf1a106a6fa
+
+pkgname = ms-edit-bin
