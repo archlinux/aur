@@ -1,7 +1,7 @@
 pkgname=python-ocp-tessellate
 _name=ocp_tessellate
 pkgdesc="Tessellate OCP objectsto use with threejs"
-pkgver=3.0.10
+pkgver=3.0.11
 pkgrel=1
 arch=('any')
 url="https://github.com/bernhard-42/ocp-tessellate"
@@ -10,7 +10,7 @@ depends=('python-webcolors' 'python-numpy' 'python-cachetools' 'python-imagesize
 makedepends=('python-build' 'python-installer' 'python-wheel')
 #checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/o/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('f3b00d8e90f9bfd27f70f85760199e54d625f1c28805944ecd1a386ebc08ab41')
+sha256sums=('eefbefa7e768befd510146eac5ea92fa30738ad59187fc44c97a14d2a2da880e')
 
 build() {
     cd $_name-$pkgver
