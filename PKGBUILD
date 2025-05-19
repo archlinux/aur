@@ -10,7 +10,7 @@ url="https://git.staropensource.de/JeremyStarTM/aur-microsoft-edit-git"
 license=("GPL-3.0-or-later")
 sha512sums=("SKIP")
 source=("git+https://github.com/microsoft/edit.git")
-makedepends=("cargo")
+makedepends=("rustup")
 conflicts=("microsoft-edit")
 
 # Configure rustup toolchain
