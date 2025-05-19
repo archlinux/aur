@@ -1,27 +1,30 @@
 --- a/setup-desktop-entry.sh
 +++ b/setup-desktop-entry.sh
-@@ -1,11 +1,8 @@
+@@ -1,36 +1,33 @@
  #!/usr/bin/env sh
  
--# This script generates a desktop entry in the current directory.
+ # This script generates a desktop entry in the current directory.
 -# Stop if shell has root privilege.
 -[ `id -u` -eq 0 ] && exit 1
 -
 -# Change to script's directory. Resolve symlinks and hyphens. Stop on fail.
 -cd -P -- "`dirname "$0"`" || exit 1
-+# This script starts Flashpoint with the correct parameters for users who can't run desktop entries.
+-
+-# Stop if launcher binary not found.
+-[ -f Launcher/flashpoint-launcher ] || exit 1
 +# Stop if shell has root privilege, accounting for fakeroot.
 +[ $(id -u) -eq 0 ] && [ "${FAKEROOT:-0}" -ne 1 ] && exit 1
  
- # Stop if launcher binary not found.
- [ -f Launcher/flashpoint-launcher ] || exit 1
-@@ -14,23 +11,23 @@
+ # Set configurable desktop entry location.
  # Default: ~/.local/share/applications/flashpoint-archive.desktop
  [ "$DIR" ] || DIR="$HOME/.local/share/applications/flashpoint-archive.desktop"
  
 +# Set configurable Flashpoint root directory.
 +# Default: absolute path to script's directory
 +[ "$FP_DIR" ] || FP_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
++
++# Stop if launcher binary not found.
++[ -f "$FP_DIR/Launcher/flashpoint-launcher" ] || exit 1
 +
  # Generate desktop entry. Add some variables if libraries are installed.
  printf "[Desktop Entry]

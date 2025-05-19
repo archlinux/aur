@@ -1,6 +1,6 @@
 --- a/start-flashpoint.sh
 +++ b/start-flashpoint.sh
-@@ -2,19 +2,25 @@
+@@ -2,19 +2,26 @@
  
  # This script starts Flashpoint with the correct parameters for users who can't run desktop entries.
  # Stop if shell has root privilege.
@@ -22,12 +22,13 @@
  # Set the Wine prefix, so it doesn't potentially mess with the default one.
 -export WINEPREFIX="$PWD/FPSoftware/Wine"
 +export WINEPREFIX="$FP_DIR/FPSoftware/Wine"
- 
++
 +# Check for correct ownership
 +if [[ "$(stat -c %U "$FP_DIR/Data/flashpoint.sqlite")" != "$USER" ]]; then
 +	echo -e "WARNING: Flashpoint directory is not owned by current user! Expect issues.
 +Run \"sudo USER=\$USER chown -R \$USER $FP_DIR\" to correct this."
 +fi
+ 
  # Run launcher. Optimize for low RAM usage without affecting stability or security.
 -cd Launcher
 -./flashpoint-launcher --js-flags=--lite_mode --ozone-platform-hint=auto --process-per-tab &
