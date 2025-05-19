@@ -2,5 +2,4 @@ src/
 pkg/
 scopy/
 iio-emu/
-*.tar.gz
-*.zstd
+*.pkg.tar*
