@@ -1,55 +1,60 @@
 # Maintainer:  oech3, Oops
 # Contributor:  Vitalii Kuzhdin <vitaliikuzhdin at gmail dot com>
 
-_hash="8ea935e79a50a02da912a034bbeda84a6d3d355d" # https://github.com/getcursor/cursor/issues/3119
+_hash="96e5b01ca25f8fbd4c4c10bc69b15f6228c80771" # https://github.com/getcursor/cursor/issues/3119
 
 _name=cursor
 _electron=electron34
-pkgname="${_name}-electron"
-pkgver=0.50.4
-pkgrel=4
-pkgdesc="The AI Code Editor (system-wide electron)"
+pkgbase="${_name}-electron"
+pkgname=("$pkgbase"{,-latest})
+pkgver=0.50.5
+pkgrel=1
+_desc="The AI Code Editor on "
 arch=('aarch64' 'x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor')
-depends=("${_electron}" 'ripgrep' 'xdg-utils' # system-wide replacements
+depends=('ripgrep' 'xdg-utils' # system-wide runtimes
 		'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
+makedepends=('desktop-file-utils')
 provides=("${_name}"{,-bin})
 conflicts=("${_name}"{,-bin})
+source=("https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/1.100.2-1/code.sh")
 source_aarch64=("${pkgver}-aarch64.img::https://downloads.cursor.com/production/${_hash}/linux/arm64/Cursor-${pkgver}-aarch64.AppImage")
 source_x86_64=("${pkgver}-x86_64.img::https://downloads.cursor.com/production/${_hash}/linux/x64/Cursor-${pkgver}-x86_64.AppImage")
-sha512sums_aarch64=('e336c5b9ec9909b98a660f98bb76ba992345e3691d1983e06caee9cba60ac0ecb8414eac3b989e23699f9b3c0cee7e343054dcb50dcf5a7977f3998a8f39cc2c')
-sha512sums_x86_64=('4cd15e7ebc3e5f0aaf7236ab5c6c6bab5b6030b358541ca03062ac26bcbffe5377cceecd786b05c010b6aa66e41e5f2b33d4ed5019a3f81dcb2c4b4c75e21b79')
-#options=(!strip)
-build() {
-	# Launcher, code.mjs suppress warns.
-	_app=/usr/share/cursor/resources/app
-	sed -e "s|exec /usr|ELECTRON_RUN_AS_NODE=1 exec /usr|" \
-		-e "s|flags=()|flags=(${_app}/out/cli.js --app=${_app})|" \
-		/usr/bin/${_electron} > run.sh # should be supported by ${_electron} officially.
-	chmod +x "${pkgver}-${CARCH}.img"
-	rm -rf squashfs-root
-	./"${pkgver}-${CARCH}.img" --appimage-extract > /dev/null
+sha512sums=('937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37')
+sha512sums_aarch64=('22084dfcdb3dfa367d7289cb1561df40ea8a12e858630c83f2ccf306a5edde0e1365beeda25a853005e5de9da66ffd39be38764bca849b15045eea2c7094bf35')
+sha512sums_x86_64=('bbfcdc6759a04e87ba24031566a4676f477821ad120f5a4ccb2348e4d0395d4660e27f90ad392f853abf7b7a4801c9807b4d5e099a245a237785a945173ed878')
+options=(!strip)
+prepare() { # Create cp -r friendly layout with FHS
+	sed -e "s|code-flags|cursor-flags|" -e "s|lib/code|lib/cursor|" -e "s|/usr/lib/code/code.mjs|--app=/usr/lib/cursor|" code.sh > run.sh
+	rm -rf squashfs-root # clean cache
+	chmod +x "${pkgver}-${CARCH}.img"; ./"${pkgver}-${CARCH}.img" --appimage-extract > /dev/null
  	cd squashfs-root/usr
+ 	# Fin desktop entries
+	desktop-file-edit --set-key Icon --set-value cursor share/applications/cursor.desktop
+	desktop-file-edit --set-key Exec --set-value cursor share/applications/cursor.desktop
+	desktop-file-edit --set-key Exec --set-value 'cursor --open-url' share/applications/cursor-url-handler.desktop
+	# Shell completions
 	mv -v share/zsh/{vendor-completions,site-functions}
-	# Licenses
-	mkdir -p share/licenses
-	mv -v share/cursor/resources/app/LICENSE.txt share/licenses/LICENSE
-	mv -v share/cursor/resources/app/ThirdPartyNotices.txt share/licenses/
 	# Replace bundled runtimes
 	echo Replacing $(rg -m 1 '"electron":\s*"[0-9]+' share/cursor/resources/app/package.json) with $(cat /usr/lib/${_electron}/version)
-	ln -sf /usr/bin/cursor share/cursor # Also for desktop entry
-	cd share/cursor/resources/app/node_modules
+	mv share/cursor/resources/app lib/cursor
+	rm -r share/cursor
+	cd lib/cursor/node_modules
 	ln -svf /usr/bin/rg       @vscode/ripgrep/bin/rg
 	ln -svf /usr/bin/xdg-open open/xdg-open
 }
-package(){
-	# Launcher
-	install -Dm755 "${srcdir}/run.sh" "${pkgdir}/usr/bin/cursor"
-	# Skip unused icons and use small one  https://github.com/getcursor/cursor/issues/3120
-	install -Dm644 squashfs-root/co.anysphere.cursor.png "${pkgdir}/usr/share/pixmaps/co.anysphere.cursor.png" # Should be SVG
-	cd squashfs-root/usr/share
-	cp -r --reflink=auto appdata applications bash-completion licenses mime zsh "${pkgdir}/usr/share/"
-	install -d "${pkgdir}/usr/share/cursor/resources"
-	cp -r --reflink=auto "${_name}/resources/app" "${pkgdir}/usr/share/${_name}/resources/"
+package_cursor-electron(){
+	depends+=($_electron)
+	pkgdesc="${_desc}$_electron"
+	cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
+	sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
+	install -Dm755 run.sh "${pkgdir}/usr/bin/cursor"
+}
+
+package_cursor-electron-latest(){
+	depends+=(electron)
+	pkgdesc="${_desc}latest stable electron"
+	cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
+	install -Dm755 run.sh "${pkgdir}/usr/bin/cursor"
 }
