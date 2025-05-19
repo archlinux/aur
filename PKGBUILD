@@ -4,7 +4,7 @@ _pkgname="libadapta"
 pkgbase=libadapta
 pkgname=(libadapta libadapta-docs libadapta-demos)
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="libAdapta is libAdwaita with theme support and a few extra."
 url="https://github.com/xapp-project/libadapta"
 arch=(x86_64 i686 pentium4 aarch64 armv7h)
@@ -15,7 +15,7 @@ depends=(
   glib2
   glibc
   graphene
-  gtk4-git
+  gtk4
   pango
 )
 makedepends=(
