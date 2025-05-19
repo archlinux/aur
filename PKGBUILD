@@ -1,5 +1,6 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: Ronald van Haren <ronald.archlinux.org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=qwt-multiaxes-git
 pkgver=r158.3b71f45
