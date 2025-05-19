@@ -3,8 +3,8 @@ pkgname=hype
 _pkgname=Hype
 pkgver=1.0.17
 _electronversion=25
-_nodeversion=18
-pkgrel=8
+_nodeversion=20
+pkgrel=9
 pkgdesc="Find Hype-moments from Twitch.tv.(Use system-wide electron)"
 arch=('any')
 url="https://hype.lol/"
@@ -36,6 +36,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -43,9 +44,13 @@ prepare() {
         s/@cfgdirname@/${pkgname}/g
         s/@options@//g
     " "${srcdir}/${pkgname}.sh"
-    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="AudioVideo" \
+        --name="${_pkgname}" \
+        --exec="${pkgname} %U"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -65,9 +70,20 @@ prepare() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install --leagcy-peer-deps
+    NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i '/"makers": \[/i\
+	"plugins": [\
+		{\
+			"name": "@electron-forge/plugin-local-electron",\
+			"config": {\
+				"electronPath": "/usr/lib/electron24"\
+			}\
+		}\
+	],' package.json
     NODE_ENV=production     npx cross-env INLINE_RUNTIME_CHUNK=false react-scripts build
     NODE_ENV=production     npx electron-forge package
     ln -sf "/usr/bin/ffmpeg" "${srcdir}/${pkgname}-${pkgver}/out/${_pkgname}-linux-"*/resources/app.asar.unpacked/node_modules/ffmpeg-static/ffmpeg
@@ -81,6 +97,6 @@ package() {
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/icons/png/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

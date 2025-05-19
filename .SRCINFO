@@ -1,7 +1,7 @@
 pkgbase = hype
 	pkgdesc = Find Hype-moments from Twitch.tv.(Use system-wide electron)
 	pkgver = 1.0.17
-	pkgrel = 8
+	pkgrel = 9
 	url = https://hype.lol/
 	arch = any
 	license = MIT
