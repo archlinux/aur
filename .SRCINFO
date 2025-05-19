@@ -8,6 +8,6 @@ pkgbase = python-dj-database-url
 	makedepends = python-setuptools
 	depends = python-django
 	source = dj-database-url-3.0.0.tar.gz::https://github.com/jazzband/dj-database-url/archive/v3.0.0.tar.gz
-	sha512sums = c52fea667989c1b2c30d6f7e492a6260be331393673ff2a67d8ae9d2fb109e0625d896097b074daa23a57b4123ed5bb4cf40c3fe206ccde3e844a7f39a9eca5b
+	sha512sums = 8e1dba3bbe7761a2295b5b752554c003fc9ca52b7c6606e47033b3f6b92c73bcfcd47dd64c33e063fef0a5b2c664baa1f387934a988f1a321a20b2f8dca34701
 
 pkgname = python-dj-database-url
