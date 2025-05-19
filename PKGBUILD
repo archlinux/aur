@@ -4,7 +4,7 @@ pkgname="ai-${_pkgname}"
 pkgver=1.2.0
 _electronversion=26
 _nodeversion=20
-pkgrel=10
+pkgrel=11
 pkgdesc="A markdown editor powered by AI (Ollama).(Use system-wide electron)"
 arch=('any')
 url="https://github.com/Intellicode/writer"
@@ -43,7 +43,12 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${pkgname}" \
+        --exec="${pkgname} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -64,15 +69,24 @@ prepare() {
     sed -i "s/components\/Header/components\/header/g" src/modules/main/Main.tsx
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install --leagcy-peer-deps
+    NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    {\\
+        name: \"@electron-forge/plugin-local-electron\",\\
+        config: {\\
+            electronPath: \"${electronDist}\"\\
+        }\\
+    }," forge.config.*
     NODE_ENV=production     npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/out/${_pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 32x32 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/logo.iconset/icon_${_icons}.png" \
