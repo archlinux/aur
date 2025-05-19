@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : py-cidr
- Tags         : 3.0.0 ➙ 3.2.1
-              : 2025-05-03 ➙ 2025-05-04
+ Tags         : 3.0.1 ➙ 3.2.2
+              : 2025-05-03 ➙ 2025-05-19
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-05-19   : 3.2.2
+                Add pytest to checkdepnds in arch PKBUILD
+                  Thanks to @Reylak pm AUR.
+ 2025-05-04     update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
 
  2025-05-04   : 3.2.1
                 More documentation tweaks
@@ -20,16 +25,3 @@
  2025-05-03   : 3.0.1
                 Add tests to repo
                 update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
-
- 2025-05-03   : 3.0.0
-                PEP-8, PEP-257 and PEP-484 style changes
-                PEP 561 type hints (improves module use for type checkers e.g. *mypy*)
-                CidrMap now uses separate CidrCache for "private cache data" instead of just
-                the "data" part.
-                  CidrCache class no longer needs its own "private data" functionality.
-                Add some tests (via pytest)
-                Reorganize CidrMap and simplify/improve way we do private_cache supporing
-                  multiprocess/multithreading usecase. This is now all done in CidrMap.
-                Change cache file storage to pickle format as its more flexible than json
-                  Provide simple app to show contents of cache:
-                  py-cidr-cache-print <cache_directory>

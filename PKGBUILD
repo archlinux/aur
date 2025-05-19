@@ -12,7 +12,7 @@ pkgname='py-cidr'
 pkgdesc='python module providing network / CIDR tools'
 _gitname='py-cidr'
 
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 url="https://github.com/gene-git/py-cidr"
 
@@ -24,7 +24,7 @@ depends=('python>=3.13' 'lockmgr')
 makedepends=('git' 'python-build' 'python-wheel' 'python-installer' 'python-hatch' 'rsync'
              #'python-sphinx' 'python-myst-parser' 'texlive-latexextra' 'python-sphinx-autoapi'
             )
-
+checkdepends=('python-pytest' 'python-pytest-asyncio')
 # Used by package : mkpkg
 _mkpkg_depends=('python>minor')
 
