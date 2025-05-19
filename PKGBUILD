@@ -47,7 +47,7 @@ prepare() { # Create cp -r friendly layout with FHS
 package_cursor-electron(){
 	_electron=electron$(cat electron-store.txt)
 	depends+=(electron$(cat electron-store.txt)) # for --printsrcinfo
-	pkgdesc="${_desc}$_electron"
+	pkgdesc="${_desc}suitable system-wide electron"
 	cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
 	sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
 	install -Dm755 run-safe.sh "${pkgdir}/usr/bin/cursor"
