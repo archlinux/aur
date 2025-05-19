@@ -1,6 +1,6 @@
 pkgbase = doot
 	pkgdesc = A fast, simple and intuitive dotfiles manager that just gets the job done
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/pol-rivero/doot
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = doot
 	optdepends = diffutils: To display changes before overwriting a file
 	provides = doot
 	conflicts = doot
-	source = doot-0.4.5.tar.gz::https://github.com/pol-rivero/doot/archive/refs/tags/0.4.5.tar.gz
-	sha256sums = a01f7b98c46445edce245bedcc57481c34b00625ab3554d03a644193b8bc4adb
+	source = doot-0.4.6.tar.gz::https://github.com/pol-rivero/doot/archive/refs/tags/0.4.6.tar.gz
+	sha256sums = b6e0c2a3e6811f80257c649f3d528d8849933325dd1d7abab2494c14a9da2e6b
 
 pkgname = doot
