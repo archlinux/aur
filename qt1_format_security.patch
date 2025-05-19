@@ -1,0 +1,82 @@
+diff -aur a/src/kernel/qpainter_x11.cpp b/src/kernel/qpainter_x11.cpp
+--- a/src/kernel/qpainter_x11.cpp
++++ b/src/kernel/qpainter_x11.cpp
+@@ -299,7 +299,7 @@
+ 	      << g->count << '\t';
+ 	}
+ 	s << '\0';
+-	debug( str );
++	debug("%s", str);
+ 	buf.close();
+     }
+ #endif
+diff -aur a/src/moc/moc.y b/src/moc/moc.y
+--- a/src/moc/moc.y
++++ b/src/moc/moc.y
+@@ -1303,8 +1303,8 @@
+ 	    fn = &fileName[i];
+ 	fprintf( out, hdr1, (const char*)className, (const char*)fn );
+ 	fprintf( out, hdr2, (const char*)dstr );
+-	fprintf( out, hdr3 );
+-	fprintf( out, hdr4 );
++	fprintf(out, "%s", hdr3);
++	fprintf(out, "%s", hdr4);
+ 	fprintf( out, "#if !defined(Q_MOC_OUTPUT_REVISION)\n" );
+ 	fprintf( out, "#define Q_MOC_OUTPUT_REVISION %d\n", formatRevision );
+ 	fprintf( out, "#elif Q_MOC_OUTPUT_REVISION != %d\n", formatRevision );
+diff -aur a/src/tools/qgcache.cpp b/src/tools/qgcache.cpp
+--- a/src/tools/qgcache.cpp
++++ b/src/tools/qgcache.cpp
+@@ -472,7 +472,7 @@
+ #if defined(DEBUG)
+     QString line;
+     line.fill( '*', 80 );
+-    debug( line );
++    debug("%s", line);
+     debug( "CACHE STATISTICS:" );
+     debug( "cache contains %d item%s, with a total cost of %d",
+ 	   count(), count() != 1 ? "s" : "", tCost );
+@@ -493,7 +493,7 @@
+ 	   lruList->dumps != 1 ? "have" : "has", lruList->dumpCosts );
+     debug( "Statistics from internal dictionary class:" );
+     dict->statistics();
+-    debug( line );
++    debug("%s", line);
+ #endif
+ }
+ 
+diff -aur a/src/tools/qgdict.cpp b/src/tools/qgdict.cpp
+--- a/src/tools/qgdict.cpp
++++ b/src/tools/qgdict.cpp
+@@ -481,11 +481,11 @@
+     QString line;
+     line.fill( '-', 60 );
+     double real, ideal;
+-    debug( line );
++    debug("%s", line);
+     debug( "DICTIONARY STATISTICS:" );
+     if ( count() == 0 ) {
+ 	debug( "Empty!" );
+-	debug( line );
++	debug("%s", line);
+ 	return;
+     }
+     real = 0.0;
+@@ -506,7 +506,7 @@
+ 	while ( b-- )
+ 	    *pbuf++ = '*';
+ 	*pbuf = '\0';
+-	debug( buf );
++	debug("%s", buf);
+ 	i++;
+     }
+     debug( "Array size = %d", size() );
+@@ -514,7 +514,7 @@
+     debug( "Real dist  = %g", real );
+     debug( "Rand dist  = %g", ideal );
+     debug( "Real/Rand  = %g", real/ideal );
+-    debug( line );
++    debug("%s", line);
+ #endif // DEBUG
+ }
+ 

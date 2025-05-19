@@ -1,0 +1,24 @@
+pkgbase = lib32-qt1
+	pkgdesc = A cross-platform application and UI framework (32-bit)
+	pkgver = 1.45+kde+r18
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	license = QPL-1.0
+	makedepends = byacc
+	makedepends = cmake>=3.2
+	makedepends = lib32-glu
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-libgl
+	depends = lib32-libx11
+	depends = lib32-libxext
+	depends = lib32-libxmu
+	depends = qt1>=1.45+kde+r18
+	provides = libqt1.so
+	source = qt1-25d30943816da9c28cded9ac7ce23b94c2ff2a5c.tar.gz::https://invent.kde.org/historical/qt1/-/archive/25d30943816da9c28cded9ac7ce23b94c2ff2a5c/qt1-25d30943816da9c28cded9ac7ce23b94c2ff2a5c.tar.gz
+	source = qt1_format_security.patch
+	b2sums = 1b877df2fac9a0ce2657771cda709c1da7a773cb793552b7222f9d56430b413d06a994fa13c622f8794460760de14bda65f0412c0ca8c630bd47671fc271c4d8
+	b2sums = 90df6c023f65d760aa1637889445c2319fd3f7f1b221837faec7008179432b89f4ec700daf1bac6198114e3cf3f7f459edf5c84c1eb18c287ce9c23447839357
+
+pkgname = lib32-qt1
