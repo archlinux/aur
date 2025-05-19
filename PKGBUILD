@@ -2,7 +2,7 @@
 
 pkgname=fortran-fpm-bin
 _name=fpm
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 epoch=
 pkgdesc='A Fortran package manager and build system'
@@ -28,8 +28,8 @@ source=(
   "https://raw.githubusercontent.com/fortran-lang/fpm/main/LICENSE"
 )
 sha256sums=(
-  '689e7fa27b6b12cc91e743a5d9db112d61f77358970a05419b744e350157c966'
-  'b7e33601c0130d1a674fcc772ed9b7804460d1896469a5b219ba4062efcd9fb9'
+  576fc54fb829263b32d0e288535a2a3edc9d0478dffec84ba70445446f6d6abf
+  b7e33601c0130d1a674fcc772ed9b7804460d1896469a5b219ba4062efcd9fb9
 )
 
 package() {
