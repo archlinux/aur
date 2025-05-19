@@ -1,0 +1,7 @@
+osuboot
+src
+pkg
+*.sign
+*.xz
+*.gz
+*.zst
