@@ -2,9 +2,10 @@
 _pkgname=zalo
 pkgname=zalo-macos
 replaces=(zalo-unofficial-git)
-provides=(zalo)
+provides=(zalo-unofficial-git)
+conflicts=(zalo-unofficial-git)
 pkgver=25.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Zalo client for Linux, port from MacOS version"
 arch=('x86_64')
 url="https://zalo.me"
