@@ -1,56 +1,35 @@
-# Maintainer: Grey Christoforo <first name at last name dot net>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Grey Christoforo <first name at last name dot net>
 
 pkgname=gnuradio-scopy-git
-pkgver=r9.ee184f7
+pkgver=r11.a69ccb2
 pkgrel=1
-epoch=0
-pkgdesc='Scopy IIO blocks for GNU Radio'
-arch=('x86_64')
-url='https://github.com/analogdevicesinc/gr-scopy'
-license=('LGPL')
-depends=(
-gnuradio38
-gnuradio38-companion
-)
-makedepends=(
-cmake
-git
-ninja
-)
+pkgdesc="Scopy IIO blocks for GNU Radio"
+arch=(x86_64)
+url="https://github.com/analogdevicesinc/gr-scopy"
+license=(GPL-3.0-or-later)
+depends=(gnuradio gnuradio-companion)
+makedepends=(cmake git ninja swig boost)
 provides=(gnuradio-scopy)
 conflicts=(gnuradio-scopy)
-source=("git+https://github.com/analogdevicesinc/gr-scopy.git")
-md5sums=('SKIP')
+source=("gnuradio-scopy::git+https://github.com/analogdevicesinc/gr-scopy.git#branch=3.10")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd gr-scopy
+  cd gnuradio-scopy
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd gr-scopy
-}
-
 build() {
-  cd gr-scopy
+  cmake -B build -S "gnuradio-scopy" -Wno-dev \
+    -G Ninja \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
 
-  cmake -W no-dev -G Ninja -B build_dir -S . \
-    -D CMAKE_BUILD_TYPE='None' \
-    -D CMAKE_INSTALL_PREFIX='/usr'
-
-  cmake --build build_dir
-}
-
-check() {
-  cd gr-scopy
-  cd build_dir
-  true
+  cmake --build build
 }
 
 package() {
-  cd gr-scopy
-  DESTDIR="${pkgdir}" cmake --install build_dir
-
-  install -Dt "${pkgdir}${_destdir}/share/licenses/${pkgname}" -m644 LICENSE
+  DESTDIR="${pkgdir}" cmake --install build
 }
 

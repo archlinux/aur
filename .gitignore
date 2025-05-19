@@ -1,5 +1,4 @@
-*.zstd
-*.tar.gz
+*.pkg.tar*
 src/
 pkg/
 gr-scopy/
