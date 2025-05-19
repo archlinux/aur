@@ -1,7 +1,7 @@
 pkgbase = hitech-arch-animation
-	pkgdesc = Hi-Tech Arch Linux Plymouth Theme
-	pkgver = 2.0
-	pkgrel = 2
+	pkgdesc = Hi-Tech Arch Linux Plymouth Theme with 148 frames animation
+	pkgver = 2
+	pkgrel = 1
 	url = https://github.com/xDeFc0nx/HiTech-arch-animation
 	arch = any
 	license = MIT
