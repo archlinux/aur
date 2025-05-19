@@ -2,7 +2,7 @@
 _pkgname=python-keyring-minimal
 pkgname="$_pkgname-git"
 pkgver=r12.5c266c5
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimal libsecret keyring in python that works with keepassxc."
 arch=(any)
 url="https://github.com/hrehfeld/python-keyring-minimal"
@@ -29,8 +29,6 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${_pkgname}"
 	git checkout master
-	sed -r -i "s/^version=([.0-9]*)$/version=\1+$pkgver/" setup.cfg
-  _actual_version=$(grep -Po '(?<=^version=)(.*)$' setup.cfg)
 }
 
 build() {
