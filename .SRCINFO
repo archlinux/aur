@@ -1,7 +1,7 @@
 pkgbase = horen
 	pkgdesc = A music player by Electron.(Use system-wide electron)
 	pkgver = 0.9.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/horenjs/horen
 	arch = any
 	license = MIT

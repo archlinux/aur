@@ -4,7 +4,7 @@ pkgver=0.9.5
 _subver=perfect-lyric
 _electronversion=28
 _nodeversion=20
-pkgrel=4
+pkgrel=5
 pkgdesc="A music player by Electron.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/horenjs/horen"
@@ -35,6 +35,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -42,9 +43,13 @@ prepare() {
         s/@cfgdirname@/${pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
-    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${pkgname}" --exec="${pkgname} %U"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    gendesk -q -f -n \
+        --pkgname="${pkgname}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="AudioVideo" \
+        --name="${pkgname}" \
+        --exec="${pkgname} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -71,9 +76,20 @@ prepare() {
     sed -i "s/process.env.APPDATA/\'\/home\/${USER}\'/g" app/main/src/constant.ts
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install
+    NODE_ENV=development    pnpm add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i '/makers: \[/i\
+	plugins: [\
+		{\
+			name: "@electron-forge/plugin-local-electron",\
+			config: {\
+				electronPath: "'"${electronDist}"'"\
+			}\
+		}\
+	],' forge.config.*
     NODE_ENV=production     pnpm run package
 }
 package() {
@@ -81,6 +97,6 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/out/${pkgname}-linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/preview/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/out/${pkgname}-linux-"*/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
