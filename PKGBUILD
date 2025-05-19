@@ -1,5 +1,5 @@
 pkgname=plymouth-theme-spinning-cat
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Spinning Cat Plymouth Theme by mango7006"
 arch=('any')
@@ -14,8 +14,7 @@ package() {
   install -d "$pkgdir/usr/share/plymouth/themes/plymouth-theme-spinning-cat"
   cp -r "$srcdir/plymouth-theme-spinning-cat/"* "$pkgdir/usr/share/plymouth/themes/plymouth-theme-spinning-cat/"
   echo -e "\n\n\nIMPORTANT"
-  echo "MAKE SURE THAT YOU HAVE ENABLED PLYMOUTH IN YOUR INITRD"
+  echo "MAKE SURE THAT YOU HAVE ENABLED PLYMOUTH IN YOUR INITCPIO AND BOOTLOADER"
   echo "AFTER INSTALL run 'plymouth-set-default-theme -R plymouth-theme-spinning-cat'"
-  echo "THEN REGENERATE YOUR INITRD WITH 'mkinitcpio -P' or whatever else you have installed"
-  echo -e "THANK YOU FOR USING MY THEME\n\n\n"
+  echo -e "Thank you for using my theme :)\n\n\n"
 }
