@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=7.2.r119449.g1b643e3f65
+pkgver=7.2.r119591.gbd2dcfaed4
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -136,6 +136,7 @@ build() {
     cd ffmpeg
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
+    export CFLAGS+=' -Wno-error=incompatible-pointer-types'
     ./configure \
         --prefix='/usr' \
         --disable-debug \
