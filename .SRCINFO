@@ -1,6 +1,6 @@
 pkgbase = scenario-rs-gui-bin
 	pkgdesc = A powerful automation tool for executing remote commands and transferring files via SSH.(Prebuilt version)
-	pkgver = 0.5.3
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/st4s1k/scenario-rs
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = scenario-rs-gui-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = scenario-rs-gui=0.5.3
+	provides = scenario-rs-gui=0.6.0
 	conflicts = scenario-rs-gui
-	source = scenario-rs-gui-0.5.3.rpm::https://github.com/st4s1k/scenario-rs/releases/download/v0.5.3/scenario-rs-gui-0.5.3-1.x86_64.rpm
-	sha256sums = 012b6b7875f9ede895c36c18bfd54014e49550629edf6d20e8af61ab41beac45
+	source = scenario-rs-gui-0.6.0.rpm::https://github.com/st4s1k/scenario-rs/releases/download/v0.6.0/scenario-rs-gui-0.6.0-1.x86_64.rpm
+	sha256sums = 83cdcede62b7627e18ebd0715f7bd81742da9c2ae1d4b71ea18852c3289c7541
 
 pkgname = scenario-rs-gui-bin
