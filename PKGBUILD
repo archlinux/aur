@@ -2,7 +2,7 @@
 
 _target=aarch64-none-elf
 pkgname=$_target-gdb
-pkgver=16.2
+pkgver=16.3
 pkgrel=1
 pkgdesc='The GNU Debugger for the ARM64 Baremetal target'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=('expat' 'gdb-common' 'guile' 'libelf' 'ncurses' 'mpfr' 'python' 'source
 options=(!emptydirs)
 source=(https://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz{,.sig})
 validpgpkeys=('F40ADB902B24264AA42E50BF92EDB04BFF325CF3') # Joel Brobecker
-sha256sums=('4002cb7f23f45c37c790536a13a720942ce4be0402d929c9085e92f10d480119'
+sha256sums=('bcfcd095528a987917acf9fff3f1672181694926cc18d609c99d0042c00224c5'
             'SKIP')
 
 prepare() {
