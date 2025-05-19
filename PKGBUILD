@@ -3,12 +3,13 @@
 
 pkgname=hp15c
 pkgver=5.0.01
-pkgrel=1
+pkgrel=2
 pkgdesc="A simulator for the HP-15C programmable scientific RPN calculator"
 url="https://hp-15c-simulator.de"
 arch=('any')
 license=('GPL3')
 depends=('tcl' 'tk')
+makedepends=('unzip')
 source=(
     "$pkgname-$pkgver.zip::https://hp-15c-simulator.de/versions/${pkgver}/HP-15C_${pkgver}_Source.zip"
     "hp15c_runner.sh"
