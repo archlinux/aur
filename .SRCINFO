@@ -1,14 +1,14 @@
 pkgbase = nodejs-mocha
 	pkgdesc = Simple, flexible, fun JavaScript test framework for Node.js & The Browser
-	pkgver = 11.3.0
+	pkgver = 11.4.0
 	pkgrel = 1
 	url = https://mochajs.org
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = mocha-11.3.0.tgz
-	source = https://registry.npmjs.org/mocha/-/mocha-11.3.0.tgz
-	sha256sums = 393c0db0895f526e18c26b8faf40ef51142f3e4533293ab8e4a4454e6d7919a0
+	noextract = mocha-11.4.0.tgz
+	source = https://registry.npmjs.org/mocha/-/mocha-11.4.0.tgz
+	sha256sums = ac3141915cead8a000fdcb732b02a88e76ef4d778c0a10244fa26941b8d68199
 
 pkgname = nodejs-mocha
