@@ -4,6 +4,7 @@ pkgbase = procmail
 	pkgrel = 5
 	url = https://github.com/BuGlessRB/procmail
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0-or-later
 	source = procmail-3.24.tar.gz::https://github.com/BuGlessRB/procmail/archive/refs/tags/v3.24.tar.gz
 	source = procmail-3.24-gcc-14-fix.patch
