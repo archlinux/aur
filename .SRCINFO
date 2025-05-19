@@ -1,6 +1,6 @@
 pkgbase = cubic-ddns-go-git
 	pkgdesc = DDNS service supporting dynamic updates of A, AAAA, and HTTPS records
-	pkgver = 1.1.1.r0.g13b541b
+	pkgver = 1.1.2.r29.g00819da
 	pkgrel = 1
 	url = https://github.com/database64128/ddns-go
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = cubic-ddns-go-git
 	provides = ddns-go
 	conflicts = ddns-go
 	backup = etc/ddns-go/config.json
-	source = ddns-go::git+https://github.com/database64128/ddns-go.git?signed
-	validpgpkeys = 4DCED15E346E2923B931D6F71CA27546BEDB8B01
+	source = ddns-go::git+https://github.com/database64128/ddns-go.git
 	b2sums = SKIP
 
 pkgname = cubic-ddns-go-git

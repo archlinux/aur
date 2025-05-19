@@ -2,7 +2,7 @@
 
 _pkgname=ddns-go
 pkgname=cubic-$_pkgname-git
-pkgver=1.1.1.r0.g13b541b
+pkgver=1.1.2.r29.g00819da
 pkgrel=1
 pkgdesc="DDNS service supporting dynamic updates of A, AAAA, and HTTPS records"
 arch=('x86_64' 'aarch64')
@@ -12,11 +12,8 @@ makedepends=('git' 'go')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 backup=("etc/$_pkgname/config.json")
-source=("$_pkgname::git+$url.git?signed")
+source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
-validpgpkeys=(
-    '4DCED15E346E2923B931D6F71CA27546BEDB8B01' # Ian Chen (database64128) <free122448@hotmail.com>
-)
 
 pkgver() {
     cd $_pkgname
