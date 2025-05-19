@@ -1,13 +1,4 @@
-# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
-# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
-# Contributor: Philip Goto <philip.goto@gmail.com>
-# Contributor: Davide Depau <davide@depau.eu>
-# Contributor: Rafael Fontenelle <rafaelff@gnome.org>
-# Contributor: Marco Melorio <marco.melorio@protonmail.com>
-# Contributor: Bakasura <bakasura@protonmail.ch>
-# Contributor: mazharhussain <realmazharhussain@gmail.com>
-# Contributor: Herman Rimm <herman_rimm@pm.me>
-# Contributor: huyz
+# Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
 
 _pkgname="libadapta"
 pkgbase=libadapta-git
@@ -79,7 +70,7 @@ _pick() {
 }
 
 package_libadapta-git() {
-  depends+=(libgtk-4.20)
+  depends+=(libgtk-4.so)
   provides=(libadapta)
   conflicts=(libadapta)
   provides+=(libAdapta-1.so)
