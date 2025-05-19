@@ -3,7 +3,7 @@
 
 _name=cursor
 pkgbase="${_name}-electron"
-pkgname=("$pkgbase"{,35,-latest})
+pkgname=("$pkgbase"{,-latest})
 pkgver=0.50.5
 pkgrel=3
 _desc="The AI Code Editor "
@@ -48,15 +48,6 @@ package_cursor-electron(){
 	_electron=electron$(cat electron-store.txt)
 	depends+=(electron$(cat electron-store.txt)) # for --printsrcinfo
 	pkgdesc="${_desc} (system-wide electron)"
-	cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
-	sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
-	install -Dm755 run-safe.sh "${pkgdir}/usr/bin/cursor"
-}
-
-package_cursor-electron35(){
-	_electron=electron35
-	depends+=(_electron35)
-	pkgdesc="${_desc} ($_electron)"
 	cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
 	sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
 	install -Dm755 run-safe.sh "${pkgdir}/usr/bin/cursor"

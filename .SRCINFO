@@ -34,15 +34,6 @@ pkgname = cursor-electron
 	depends = libxkbfile
 	depends = electron34
 
-pkgname = cursor-electron35
-	pkgdesc = The AI Code Editor ()
-	depends = ripgrep
-	depends = xdg-utils
-	depends = gcc-libs
-	depends = hicolor-icon-theme
-	depends = libxkbfile
-	depends = _electron35
-
 pkgname = cursor-electron-latest
 	pkgdesc = The AI Code Editor (latest stable electron)
 	depends = ripgrep
