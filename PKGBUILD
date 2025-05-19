@@ -61,7 +61,12 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${_pkgname}-desktop" --comment="${pkgdesc}" --categories="Office" --name="${_appname}" --exec="${pkgname%-git} --no-sandbox %U"
+    gendesk -q -f -n \
+        --pkgname="${_pkgname}-desktop" \
+        --comment="${pkgdesc}" \
+        --categories="Office" \
+        --name="${_appname}" \
+        --exec="${pkgname%-git} --no-sandbox %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -88,9 +93,18 @@ prepare() {
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install --no-lockfile
+    NODE_ENV=development    pnpm add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    {\\
+        name: \"@electron-forge/plugin-local-electron\",\\
+        config: {\\
+            electronPath: \"${electronDist}\"\\
+        }\\
+    }," forge.config.*
     NODE_ENV=production     pnpm run build:plugin
     NODE_ENV=production     pnpm -c electron-forge package
 }
