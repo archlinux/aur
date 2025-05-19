@@ -136,7 +136,9 @@ build() {
     cd ffmpeg
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
+    # fix build with v4l2-utils 1.30 with gcc 14
     export CFLAGS+=' -Wno-error=incompatible-pointer-types'
+    
     ./configure \
         --prefix='/usr' \
         --disable-debug \
