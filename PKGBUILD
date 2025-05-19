@@ -2,19 +2,18 @@
 # Maintainer: Chris Werner Rau <aur@cwrau.io>
 
 pkgname=nova
-_pkgver=3.11
-pkgver=${_pkgver}.0
-pkgrel=0
+pkgver=3.11.1 # renovate: datasource=github-releases depName=FairwindsOps/nova
+pkgrel=1
 pkgdesc='A cli tool to find outdated Helm charts running in your Kubernetes cluster'
 arch=(x86_64)
 url="https://github.com/FairwindsOps/$pkgname"
 license=(Apache)
 makedepends=(go)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz")
-md5sums=('f72f142640e7f12cb16fbe46208d3ac3')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+md5sums=('f49991e269c2041f2e644532f628201e')
 
 build() {
-  cd nova-$_pkgver
+  cd nova-$pkgver
 
   go build \
     -trimpath \
@@ -27,10 +26,10 @@ build() {
 
 package() {
   # conflicts with python-novaclient otherwise
-  install -Dm 755 $srcdir/nova-$_pkgver/$pkgname $pkgdir/usr/bin/$pkgname-helm
+  install -Dm 755 $srcdir/nova-$pkgver/$pkgname $pkgdir/usr/bin/$pkgname-helm
   $pkgdir/usr/bin/$pkgname-helm completion zsh >$srcdir/zsh_$pkgname
   $pkgdir/usr/bin/$pkgname-helm completion bash >$srcdir/bash_$pkgname
   install -D -m 0644 $srcdir/zsh_$pkgname $pkgdir/usr/share/zsh/site-functions/_$pkgname
   install -D -m 0644 $srcdir/bash_$pkgname $pkgdir/usr/share/bash-completion/completions/$pkgname
-  install -Dm 755 $srcdir/nova-$_pkgver/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm 755 $srcdir/nova-$pkgver/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
