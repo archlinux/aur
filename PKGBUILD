@@ -2,7 +2,7 @@
 pkgname=animestream-git
 pkgver=1.0.0.alpha_6.r1.gadb140e
 _electronversion=27
-_nodeversion=18
+_nodeversion=20
 pkgrel=1
 pkgdesc="A simple project designed for streaming and downloading your favorite anime!Use system-wide electron."
 arch=('any')
@@ -48,7 +48,12 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${pkgname%-git}" \
+        --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -67,11 +72,20 @@ prepare() {
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/logo_new\.ico/logo_new.png/g" forge.config.js
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
-    NODE_ENV=development    npm add -D "@types/fluent-ffmpeg"
+    NODE_ENV=development    npm add -D "@types/fluent-ffmpeg" "@electron-forge/plugin-local-electron"
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    {\\
+        name: \"@electron-forge/plugin-local-electron\",\\
+        config: {\\
+            electronPath: \"${electronDist}\"\\
+        }\\
+    }," forge.config.*
     NODE_ENV=production     npm run package
 }
 package() {
