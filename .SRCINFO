@@ -7,6 +7,7 @@ pkgbase = windsurf
 	license = custom
 	makedepends = tar
 	makedepends = sed
+	makedepends = desktop-file-utils
 	depends = electron34
 	depends = ripgrep
 	depends = fd

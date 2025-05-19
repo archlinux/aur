@@ -27,7 +27,7 @@ optdepends=('glib2: Move to trash functionality'
             'vulkan-driver'
             'electron: /usr/share/windsurf/windsurf-latestron')
 options=('!strip') # ~0.49MB
-makedepends=('tar' 'sed') # tar is faster than bsdtar.
+makedepends=(tar sed desktop-file-utils) # tar is faster than bsdtar.
 source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb"
 		"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
 sha256sums=('8aa8e7e3518f25e361b0665e31e2dcb9b08f4e0241abb010ba4ff8716d7085a4'
@@ -55,9 +55,8 @@ package() {
 	ln -svf /usr/bin/rg usr/share/windsurf/resources/app/node_modules/@vscode/ripgrep/bin/rg
 	# Icon (1024^2 is unusable at KDE)
 	install -Dm644 "usr/share/${pkgname}/resources/app/out/media/code-icon.svg" "usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
-	_url_handler_f="usr/share/applications/windsurf-url-handler.desktop";
-	grep -q '^Hidden=true' "$_url_handler_f" || \
-	  grep -q '^Hidden=false' "$_url_handler_f" && sed -i 's/^Hidden=false/Hidden=true/' "$_url_handler_f" || \
-	  echo 'Hidden=true' >> "$_url_handler_f"
-	mv usr "${pkgdir}"
+	# Hide entry of URL handler
+	desktop-file-edit --set-key Hidden --set-value true usr/share/applications/windsurf-url-handler.desktop
+	
+ 	mv usr "${pkgdir}"
 }
