@@ -1,7 +1,7 @@
 pkgbase = ixxat-socketcan-dkms
 	pkgdesc = DKMS SocketCAN driver for IXXAT USB-to-CAN v2
 	pkgver = 2.0.520
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hms-networks.com/support/general-downloads
 	install = ixxat-socketcan.install
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = ixxat-socketcan-dkms
 	license = GPL2
 	optdepends = can-utils: Linux-CAN / SocketCAN user space applications
 	source = https://hmsnetworks.blob.core.windows.net/nlw/docs/default-source/products/ixxat/monitored/pc-interface-cards/socketcan-linux.gz?sfvrsn=3eb48d7_89&download=true
+	source = dkms.conf
 	sha256sums = dd34dfb4e1c988693c2b6799c467ba7689758c9757fa8e8e4890fa7715b818b6
+	sha256sums = 1a7f4502869171cc1dc617e670f018309af1a7bd0a352108002c75a55bb3016c
 
 pkgname = ixxat-socketcan-dkms
