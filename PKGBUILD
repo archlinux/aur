@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=discord-history-tracker-bin
 _pkgname=DiscordHistoryTracker
-pkgver=46.0
+pkgver=47.0
 pkgrel=1
 pkgdesc="Desktop app & browser script that saves Discord chat history into a file, and an offline viewer that displays the file.(Prebuilt version)"
 arch=('x86_64')
@@ -22,11 +22,16 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/chylex/Discord-History-Tracker/v${pkgver}/app/Resources/Icons/256.png"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/chylex/Discord-History-Tracker/v${pkgver}/LICENSE.md"
 )
-sha256sums=('7117f3d0f3c1a1edcb24dbcf599082f29605c8b840aae977e53daf1e8e72c0b6'
+sha256sums=('c963a406020567a3c13ff2eb0d912fda5c955003399fdc7ae82007eb80e9d9e1'
             '44042026cb69b982e6161587f394ec7d17a02d240adfb11f996f15c0b1e2503a'
             'd8c316ff6707f6cae3b874ed41b4c69c71d4aa52526abe4433927a0d06346115')
 prepare() {
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin}"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="AudioVideo" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin}"
 }
 package() {
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
