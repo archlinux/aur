@@ -1,7 +1,7 @@
 pkgbase = hexopress
 	pkgdesc = A client software designed specifically for editing blog articles and managing blog content that supports Hexo!(Use system-wide electron)
 	pkgver = 1.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://blog.charlestang.org/HexoPress/
 	arch = any
 	license = MIT
