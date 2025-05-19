@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-zener
-pkgver=6.14.3.zener1
+pkgver=6.14.5.zener1
 pkgrel=1
 pkgdesc='Linux kernel based on zen'
 url='https://github.com/zerodegress/linux-zener'
@@ -48,13 +48,13 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('91c6c322c32568f09922a02ed35f46372ca8526714c6555b3115b9e9c156652a'
+sha256sums=('28207ec52bbeaa3507010aeff944f442f7d9f22b286b79caf45ec6df1b24f409'
             'SKIP'
-            'd6fecb48f47599585d1c4a336da334c8977dadc39c470d89b5228cf631894b5a'
+            '38f8221e8b620831e5530e55609e293bd6129609275745c7e2f79e3e0ad2215c'
             '6d637cf649ca236534ded857669a4f9c3ad9b1123209c1ea4860f66a99e93f7b')
-b2sums=('ea23ad9a9ce34ce652f0c159215c1f6612b312f13eb802f77c2962af7397e21a3b8459c389b546c780886fba91e3932b1b17a2d1e103111379fdc97511067de6'
+b2sums=('872d0b8817c7e02b5e826238c3f548488d26c1d50bd334420ac2f4feb0cf5e1f11cac7f666982b2ccdc3c816aec428e4d57139080bb0510247e9631796bdab0a'
         'SKIP'
-        '031a13ec536dec4fd09c88614435be1b8061ba6e52efcede1444d5d3d7a52e660ac6842d007a78ace86746720e66783d97fae1d6894b89a5db96f1b86d9d9838'
+        '671a9243201b666c40ef77b3d128bac58684dcb23580e19f04e34396d2ddaad87956c6e742308ff7d32ed335129ee0fa77a866bb8087c62ebf6a37de7bb7d6cd'
         '7efd74cd40c8e8601bd109adfbac969f613d87810aa9f4e558a2b0fad53e1c6317d130288ea1c0ae48cf97de467fd120b52b5a52026e7b169a35d887b50a68bb')
 
 export KBUILD_BUILD_HOST=archlinux
