@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="vtm"
-pkgver=0.9.99.70
+pkgver=0.9.99.71
 pkgrel=1
 pkgdesc="Terminal multiplexer with window manager and session sharing"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake>=3.24')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}_system_deps.patch")
-b2sums=('f5dfe4d478978a407f089111bef87558280b30dcca2a9578717b4ba96d945fadce1f13f2eca50d0676c3de8dc515dff6e35a46b2f0439b57b52aae99ae01d8e1'
+b2sums=('cd23acf1e3b579737905c754be6b13dd1693ecf917bf6d220e9290c9666b19744f41e39fb4aadc6d62ff1b54b4f7ddcdcb2d57d0d62513305f2647289b1db706'
         '54b668965735b1bf36a3254e1557d7fe265dbd235dc16d921d23a341c9371806e2df00655be754f9b3edec06bb9843cc07b9cfecebf27b8063850d53a33bc6b9')
 
 prepare() {
@@ -23,12 +23,12 @@ prepare() {
 
 build() {
   local cmake_options=(
-    -G 'Unix Makefiles' \
-    -B "${_pkgsrc}/build" \
-    -S "${_pkgsrc}" \
-    -DCMAKE_BUILD_TYPE:STRING='None' \
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-    -Wno-dev
+    -G 'Unix Makefiles'
+    -B "${_pkgsrc}/build"
+    -S "${_pkgsrc}"
+    -W no-dev
+    -D CMAKE_BUILD_TYPE:STRING='None'
+    -D CMAKE_INSTALL_PREFIX:PATH='/usr'
   )
 
   cd "${srcdir}"
