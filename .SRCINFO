@@ -1,0 +1,12 @@
+pkgbase = plymouth-theme-spinning-cat
+	pkgdesc = Spinning Cat Plymouth Theme by mango7006
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/mango7006/cattheme
+	arch = any
+	license = unlicense
+	depends = plymouth
+	source = https://github.com/mango7006/cattheme.git
+	md5sums = SKIP
+
+pkgname = plymouth-theme-spinning-cat
