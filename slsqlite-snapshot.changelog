@@ -5,3 +5,5 @@ Changes since v0.6.0
    from Rafael Laboissière)
 3. Removed top-level Makefile (Rafael Laboissière)
 4. Used SLstrlen_Type instead of unsigned int for slang-3 migration
+5. src/Makefile.in: Added a patch from Rafael Laboissière to resolve
+   an issue with building using `make --shuffle=reverse`

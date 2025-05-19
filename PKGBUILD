@@ -4,7 +4,7 @@
 
 pkgname='slsqlite-snapshot'
 _pkgname="${pkgname%-snapshot}"
-_pkgver=0.6.4
+_pkgver=0.6.5
 #_prever="pre$_pkgver"
 pkgver="${_pkgver//-/.}"
 pkgrel=1
@@ -17,7 +17,7 @@ provides=("$_pkgname")
 conflicts=("${provides[@]}")
 options=('!makeflags')
 source=("${url}$_pkgname-$pkgver.tar.gz")
-md5sums=('0ebe85958674257943c1929de585ee45')               # Taken from $url
+md5sums=('3a5ce0418028757716935b192f189b57')               # Taken from $url
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 changelog="$pkgname.changelog"
 
@@ -36,7 +36,7 @@ package() {
 }
 
 b2sums=(
-  '9ba2122495930a52cfbbc21e928f101086b9ea00a266488e01805d0bd5af766e2fab6bf447d41bfb2b0222432359428a9061e9b4e505b8c5e826f3d836079e7a'
+  '19d11f8cf3648527a9ab979993cb1b97494ed9ea8acb3fcb407cb4f5656b5df80373edad80846751bc970eebe015193adbf3eed14878870b928828dbfc4e88f5'
 )
 
 # eof
