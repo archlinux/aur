@@ -3,10 +3,10 @@ pkgbase = ixxat-socketcan-dkms
 	pkgver = 2.0.520
 	pkgrel = 2
 	url = https://www.hms-networks.com/support/general-downloads
-	install = ixxat-socketcan.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	depends = dkms
 	optdepends = can-utils: Linux-CAN / SocketCAN user space applications
 	source = https://hmsnetworks.blob.core.windows.net/nlw/docs/default-source/products/ixxat/monitored/pc-interface-cards/socketcan-linux.gz?sfvrsn=3eb48d7_89&download=true
 	source = dkms.conf
