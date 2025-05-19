@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=ogre-next2
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Scene-oriented, flexible 3D engine written in C++'
 arch=('x86_64')
 url='http://www.ogre3d.org'
@@ -15,13 +15,16 @@ provides=("ogre-next=${pkgver}")
 conflicts=("ogre-next")
 install=ogre-next2.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OGRECave/ogre-next/archive/v${pkgver}.tar.gz"
-        "mesa-gl3.patch::https://github.com/OGRECave/ogre-next/pull/469.patch")
+        "mesa-gl3.patch::https://github.com/OGRECave/ogre-next/pull/469.patch"
+        "stlallocator-explicit.patch")
 sha512sums=('52ed2d2a3375c0d35f0dc695b986514484ad1d47966c5c18351d3b09913123b2487b9729738c6b8b1219c1a992a8c8509a2303e097a6eb26497e152a14d48830'
-            'f0d772bebdac21a4b513f399a5cc1eb64401f00b669f3f872db2f8255e58a5ebf7390e0a850516aff48e6786215a48275df275b7a8c6a4c8928a37a4f0df4b5c')
+            'f0d772bebdac21a4b513f399a5cc1eb64401f00b669f3f872db2f8255e58a5ebf7390e0a850516aff48e6786215a48275df275b7a8c6a4c8928a37a4f0df4b5c'
+            '60574232dff359b232b97ab1095c26d271f6841921202c441e751505c9b7a7dd157b4852ff30018de54af828361e1f0bfcd39967baa7d99e2623b13ab619d94e')
 
 prepare() {
   cd ogre-next-${pkgver}
   patch -p1 < ${srcdir}/mesa-gl3.patch
+  patch -p1 < ${srcdir}/stlallocator-explicit.patch
 }
 
 build() {
