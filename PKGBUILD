@@ -6,7 +6,7 @@ pkgbase=gpgme
 pkgname=(gpgme qgpgme-qt6 python-gpgme)
 pkgver=1.24.3
 pkgrel=2
-pkgdesc='A C wrapper library for GnuPG'
+pkgdesc='C wrapper library for GnuPG'
 arch=('x86_64')
 url='https://www.gnupg.org/related_software/gpgme/'
 license=(
@@ -15,6 +15,7 @@ license=(
   LGPL-2.1-or-later
 )
 makedepends=(
+  'git'
   'gnupg'
   'libassuan'
   'libgpg-error'
@@ -28,14 +29,13 @@ makedepends=(
 )
 validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA'  # Werner Koch (dist signing 2020)
               'AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD') # Niibe Yutaka (GnuPG Release Key)
-source=("https://www.gnupg.org/ftp/gcrypt/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"{,.sig}
+source=("git+https://dev.gnupg.org/source/gpgme.git#tag=${pkgbase}-${pkgver}?signed"
         '0025_debian_default_is_openpgp.diff')
-sha256sums=('bfc17f5bd1b178c8649fdd918956d277080f33df006a2dc40acdecdce68c50dd'
-            'SKIP'
+sha256sums=('630d7301a614bf22916cecdb78bbb34ea1dd724071a9ea9aee67aab06ba3dea1'
             'f8bdaba4732347067ce291ca2acd6096e7a02c162a760be3515e0c4cdac60d6f')
 
 prepare() {
-  cd ${pkgbase}-${pkgver}/
+  cd ${pkgbase}
 
   # Adapt testsuite to changed gnupg defaults in Debian
   patch -Np1 < ../0025_debian_default_is_openpgp.diff
@@ -45,7 +45,7 @@ prepare() {
 }
 
 build() {
-  cd ${pkgbase}-${pkgver}
+  cd ${pkgbase}
 
   ./configure \
     --prefix=/usr \
@@ -61,12 +61,12 @@ build() {
     # use a PEP517 workflow to get a reproducible Python package
     # NOTE: top_builddir is required so that the build takes place against local gpgme, not system gpgme
     cd lang/python/
-    top_builddir="$srcdir/$pkgbase-$pkgver" python -m build --wheel --no-isolation
+    top_builddir="$srcdir/$pkgbase" python -m build --wheel --no-isolation
   )
 }
 
 check() {
-  cd ${pkgbase}-${pkgver}
+  cd ${pkgbase}
 
   # this test fails with gnupg (FS#66572)
   sed -i 's#"t-keylist-secret",##' tests/json/t-json.c
@@ -88,7 +88,7 @@ package_gpgme() {
             'libgpgmepp.so')
   license+=(MIT)
 
-  cd ${pkgbase}-${pkgver}
+  cd ${pkgbase}
 
   make DESTDIR="${pkgdir}" install
 
@@ -109,7 +109,7 @@ package_qgpgme-qt6() {
     'qt6-base'
   )
 
-  cd ${pkgbase}-${pkgver}/lang/qt
+  cd ${pkgbase}/lang/qt
 
   make DESTDIR="${pkgdir}" install
 }
@@ -122,6 +122,6 @@ package_python-gpgme() {
     'python'
   )
 
-  cd ${pkgbase}-${pkgver}/lang/python
+  cd ${pkgbase}/lang/python
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
