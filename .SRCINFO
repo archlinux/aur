@@ -1,10 +1,11 @@
 pkgbase = agg
 	pkgdesc = AGG Anti-Grain Geometry Library
 	pkgver = 2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ahaerr/agg-2.6
 	arch = x86_64
 	license = BSD-3-Clause
+	makedepends = libx11
 	source = https://github.com/ghaerr/agg-2.6/archive/c4f36b4432142f22c0bf82c6fbdb41567a236be2.tar.gz
 	sha256sums = b56b0328b1467961c1cdc133310fa0588a4b6e3b594f68301756e3601ae530d0
 
