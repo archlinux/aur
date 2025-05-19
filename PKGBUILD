@@ -96,14 +96,13 @@ build() {
         -o px
     cd "${srcdir}/${pkgname}-${pkgver}"
     local electronDist="/usr/lib/electron${_electronversion}"
-	sed -i -e "
-		70i\    {
-		70i\      name: '@electron-forge/plugin-local-electron',
-		70i\      config: {
-		70i\        electronPath: \'${electronDist}\'
-		70i\      }
-		70i\    },
-	" forge.config.ts
+	sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    {\\
+        name: \"@electron-forge/plugin-local-electron\",\\
+        config: {\\
+            electronPath: \"${electronDist}\"\\
+        }\\
+    }," forge.config.ts
     NODE_ENV=production    npm run package
 }
 package() {
