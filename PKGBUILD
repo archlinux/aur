@@ -7,33 +7,33 @@
 
 pkgname="keypunch-git"
 _appname="keypunch"
-pkgver=6.3
-pkgrel=2
+pkgver=6.2.r8.g77f9956
+pkgrel=1
+epoch=1
 pkgdesc='Practice your typing skills'
 url='https://github.com/bragefuglseth/keypunch'
-_app_website='https://apps.gnome.org/Keypunch'
 arch=('aarch64' 'x86_64')
 license=('GPL-3.0-or-later')
-source=("git+$url.git")
-sha512sums=('SKIP')
 provides=('keypunch')
 conflicts=('keypunch')
 depends=('gtk4' 'libadwaita')
-makedepends=('blueprint-compiler' 'cargo' 'git' 'meson' 'ninja' 'pkgconf')
+makedepends=('blueprint-compiler' 'cargo' 'git' 'meson' 'ninja')
+source=("git+${url}.git")
+sha512sums=('SKIP')
 
-#pkgver() {
-#   cd "${srcdir}/${_appname}-${pkgver}"
-#   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-#}
+pkgver() {
+    cd "${_appname}/"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-    cd "${srcdir}/${_appname}-${pkgver}"
+    cd "${_appname}/"
     export RUSTUP_TOOLCHAIN=stable
     arch-meson . build
     meson compile -C build
 }
 
 package() {
-    cd "${srcdir}/${_appname}-${pkgver}"
+    cd "${_appname}/"
     meson install -C build --destdir "$pkgdir"
 }
