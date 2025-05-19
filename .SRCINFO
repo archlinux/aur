@@ -1,14 +1,14 @@
 pkgbase = ghex-git
 	pkgdesc = a hex editor for the GNOME desktop
-	pkgver = 48.alpha.r41.g5869c584
+	pkgver = 48.alpha.r42.g6287252e
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/ghex
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-or-later
 	makedepends = itstool
-	makedepends = gobject-introspection
 	makedepends = git
+	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = ninja
 	depends = gtk4
