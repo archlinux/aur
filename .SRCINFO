@@ -1,0 +1,20 @@
+pkgbase = python-mersenne-twister-predictor-git
+	pkgdesc = Predicts outputs of Mersenne Twister (MT19937), a pseudorandom number generator
+	pkgver = r28.772b58f
+	pkgrel = 1
+	url = https://github.com/kmyk/mersenne-twister-predictor
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	provides = python-mersenne-twister-predictor
+	conflicts = python-mersenne-twister-predictor
+	source = mersenne-twister-predictor::git+https://github.com/kmyk/mersenne-twister-predictor.git
+	source = https://mit-license.org/license.txt
+	sha512sums = SKIP
+	sha512sums = c4fd34ef41d44454ebcfe0e3f4bcf3a9c54d04c384d3aab9d866c9cd957c44f65e2ed29d8ad15ec6729b102c9dd6dab4af368bd1c68e4f4fc7ad59becd4078ad
+
+pkgname = python-mersenne-twister-predictor-git
