@@ -1,13 +1,13 @@
 pkgbase = r-mapproj
 	pkgdesc = Map Projections
-	pkgver = 1.2.11
-	pkgrel = 4
+	pkgver = 1.2.12
+	pkgrel = 1
 	url = https://cran.r-project.org/package=mapproj
 	arch = x86_64
 	license = custom:LPL
 	depends = r-maps
-	source = https://cran.r-project.org/src/contrib/mapproj_1.2.11.tar.gz
-	md5sums = df2ac0dd6e0cb2331f089c36041580f7
-	b2sums = bedcf9f5071a5052eb0184b63fdf55956c3e6601eb6fea3698a0af3f013914ae1def4f69a82d88880065f50a138029fdd968226897d3f2d86bdc844df94a6b23
+	source = https://cran.r-project.org/src/contrib/mapproj_1.2.12.tar.gz
+	md5sums = 65f7a0098621af68e6fcd954d382a2f6
+	b2sums = d99c9432b88737beee35d44205cd02c8ad28254ab9aee0227deb32e950bcc4cb68db8a78d3d1845310b8dcb403f6a26577bc724ca930f693c8efa32658a69dd2
 
 pkgname = r-mapproj
