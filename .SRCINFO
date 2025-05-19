@@ -1,5 +1,5 @@
 pkgbase = zoom-firejail
-	pkgdesc = .desktop file for running Zoom in Firejail
+	pkgdesc = Desktop entry for running Zoom in Firejail
 	pkgver = 0.9.74
 	pkgrel = 1
 	install = zoom-firejail.install
