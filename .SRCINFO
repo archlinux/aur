@@ -1,6 +1,6 @@
 pkgbase = python-lightmotif
 	pkgdesc = PyO3 bindings and Python interface to lightmotif, a library for platform-accelerated biological motif scanning using position weight matrices.
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/althonos/lightmotif
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = python-lightmotif
 	makedepends = python-installer
 	makedepends = cargo
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/l/lightmotif/lightmotif-0.9.1.tar.gz
-	sha256sums = 81b5e1010b175f9f958bc5d5d0c0bdfe08fb532af68f68118f9b895b908a317d
+	source = https://files.pythonhosted.org/packages/source/l/lightmotif/lightmotif-0.10.0.tar.gz
+	sha256sums = c4bd28f381fa64dfc84de0abfa690f5df2d9f7c50fd8f5d7bdf40ab702eaefc2
 
 pkgname = python-lightmotif
