@@ -1,11 +1,11 @@
 # Maintainer: Philipp Claßen <philipp.classen@posteo.de>
 pkgname=apache-gremlin-console
 pkgver=3.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Gremlin console from Apache TinkerPop "
 arch=('any')
 url="https://tinkerpop.apache.org"
-license=('Apache')
+license=('Apache-2.0')
 
 depends=('bash' 'java-environment')
 makedepends=()

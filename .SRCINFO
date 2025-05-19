@@ -1,10 +1,10 @@
 pkgbase = apache-gremlin-console
 	pkgdesc = Gremlin console from Apache TinkerPop
 	pkgver = 3.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tinkerpop.apache.org
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	depends = bash
 	depends = java-environment
 	source = https://www.apache.org/dist/tinkerpop/3.7.3/apache-tinkerpop-gremlin-console-3.7.3-bin.zip
