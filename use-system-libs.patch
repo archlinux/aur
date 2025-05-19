@@ -1,5 +1,5 @@
 diff --git c/scripts/build.py w/scripts/build.py
-index 0eeb16a..3b791be 100644
+index e21085c..5661c1f 100644
 --- c/scripts/build.py
 +++ w/scripts/build.py
 @@ -1,12 +1,4 @@
@@ -15,8 +15,8 @@ index 0eeb16a..3b791be 100644
  
  from cffi import FFI
  
-@@ -14,125 +6,8 @@ from cffi import FFI
- __version__ = "0.9.5"
+@@ -14,128 +6,8 @@ from cffi import FFI
+ __version__ = "1.0.0"
  
  
 -def detect_arch():
@@ -71,7 +71,7 @@ index 0eeb16a..3b791be 100644
 -        f".{arch['so_arch']}-{sysname}.tar.gz"
 -    )
 -
--    print(f"Downloading libcurl-impersonate-chrome from {url}...")
+-    print(f"Downloading libcurl-impersonate from {url}...")
 -    urlretrieve(url, file)
 -
 -    print("Unpacking downloaded files...")
@@ -95,12 +95,15 @@ index 0eeb16a..3b791be 100644
 -        # note that the order of libraries matters
 -        # https://stackoverflow.com/a/36581865
 -        return [
--            f"{arch['libdir']}/libcurl-impersonate-chrome.a",
+-            f"{arch['libdir']}/libcurl-impersonate.a",
 -            f"{arch['libdir']}/libssl.a",
 -            f"{arch['libdir']}/libcrypto.a",
 -            f"{arch['libdir']}/libz.a",
 -            f"{arch['libdir']}/libzstd.a",
 -            f"{arch['libdir']}/libnghttp2.a",
+-            f"{arch['libdir']}/libngtcp2.a",
+-            f"{arch['libdir']}/libngtcp2_crypto_boringssl.a",
+-            f"{arch['libdir']}/libnghttp3.a",
 -            f"{arch['libdir']}/libbrotlidec.a",
 -            f"{arch['libdir']}/libbrotlienc.a",
 -            f"{arch['libdir']}/libbrotlicommon.a",
@@ -129,7 +132,7 @@ index 0eeb16a..3b791be 100644
 -    elif arch["system"] == "Darwin" or (
 -        arch["system"] == "Linux" and arch.get("link_type") == "dynamic"
 -    ):
--        return ["curl-impersonate-chrome"]
+-        return ["curl-impersonate"]
 -    else:
 -        return []
 -
@@ -141,11 +144,10 @@ index 0eeb16a..3b791be 100644
  
  
  ffibuilder.set_source(
-@@ -140,10 +15,9 @@ ffibuilder.set_source(
-     """
+@@ -144,9 +16,9 @@ ffibuilder.set_source(
          #include "shim.h"
      """,
--    # FIXME from `curl-impersonate`
+     # FIXME from `curl-impersonate`
 -    libraries=get_curl_libraries(),
 -    extra_objects=get_curl_archives(),
 -    library_dirs=[arch["libdir"]],
@@ -155,7 +157,7 @@ index 0eeb16a..3b791be 100644
      source_extension=".c",
      include_dirs=[
          str(root_dir / "include"),
-@@ -152,10 +26,8 @@ ffibuilder.set_source(
+@@ -155,10 +27,8 @@ ffibuilder.set_source(
      sources=[
          str(root_dir / "ffi/shim.c"),
      ],
@@ -168,7 +170,7 @@ index 0eeb16a..3b791be 100644
  )
  
  with open(root_dir / "ffi/cdef.c") as f:
-@@ -164,4 +36,4 @@ with open(root_dir / "ffi/cdef.c") as f:
+@@ -167,4 +37,4 @@ with open(root_dir / "ffi/cdef.c") as f:
  
  
  if __name__ == "__main__":
