@@ -1,0 +1,7 @@
+edit
+src
+pkg
+*.sign
+*.xz
+*.gz
+*.zst
