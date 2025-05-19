@@ -3,7 +3,7 @@
 pkgbase=wps-office-365
 pkgname=('wps-office-365' 'wps-office-365-xiezuo' 'wps-office-365-fonts')
 pkgver=12.8.2.20327
-pkgrel=1
+pkgrel=2
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://365.wps.cn/"
@@ -24,6 +24,10 @@ source_loong64=("https://wps-linux-365.wpscdn.cn/wps/download/ep/Linux365/${pkgv
 sha256sums_x86_64=('37eda7ea2ed10a82a3010e8f76cfdda5fba99ca47adb84548868f6710405a479')
 sha256sums_aarch64=('8c1c5818848b0d2ff01601ca5dbc6d5ad689ebd07307d35a31d532793043e7f3')
 sha256sums_loong64=('f92600fc4fb909f19d4ef4ecb81b09e93b9c8744b8e31ece87ca0aca13ecbed1')
+
+DLAGENTS=(
+  'https::/usr/bin/curl --referer https://365.wps.cn -qgb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
+)
 
 prepare() {
   xz -df data.tar.xz
