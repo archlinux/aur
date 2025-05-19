@@ -29,7 +29,6 @@ source=("git+https://git.eden-emu.dev/eden-emu/eden"
 		"git+https://git.eden-emu.dev/eden-emu/headers.git"
 		"git+https://git.eden-emu.dev/eden-emu/xbyak.git"
 		"git+https://git.eden-emu.dev/eden-emu/mcl.git"  # submodule of dynarmic
-		"git+https://git.eden-emu.dev/eden-emu/robin-map.git"  # submodule of dynarmic
 		"zycore::git+https://git.eden-emu.dev/eden-emu/zycore-c.git"  # submodule of dynarmic
 		"git+https://git.eden-emu.dev/eden-emu/zydis.git"  # submodule of dynarmic
 		"git+https://github.com/Lizzie841/unordered_dense.git"  # submodule of dynarmic
@@ -38,7 +37,6 @@ source=("git+https://git.eden-emu.dev/eden-emu/eden"
 		"boost-188.patch")
 		
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -83,7 +81,7 @@ prepare() {
     git -c protocol.file.allow=always submodule update
     
     cd $srcdir/$_pkgname/externals/dynarmic
-    for _submodule in zydis mcl robin-map zycore unordered_dense;
+    for _submodule in zydis mcl zycore unordered_dense;
 		do
 		git config submodule.$_submodule.url ../../../$_submodule
 		done
