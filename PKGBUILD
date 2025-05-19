@@ -12,10 +12,6 @@ depends=('glibc' 'go' 'protobuf' 'protoc-gen-go' 'protoc-gen-go-grpc' 'swag')
 source=("$url/archive/v$pkgver/${pkgname}_${pkgver}_linux.zip")
 sha1sums=('f5e105d003d22b4b089f7d48af33b8f4fd276e5e')
 
-prepare() {
-    mkdir -vp $pkgname-$pkgver/build
-}
-
 build() {
     mkdir -vp $pkgname-$pkgver/build
     cd "$pkgname-$pkgver"
