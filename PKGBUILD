@@ -24,8 +24,8 @@ source=(
     "joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    'SKIP'
-    'SKIP'
+    '9223cc816f8175ddaf8839f9357d2bd1c4831692504927c98d8e1eefa7df796e'
+    'ff2232a2e518de7987af2a6d25524d75c2f7d1b343993b5134a341ae8f815dd5'
     '0a12596230ab98632fd1324e35014ceb471172d60c9b4b2e95dff3da20a47931'
 )
 
