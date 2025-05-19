@@ -2,7 +2,7 @@
 _appname=tomato
 pkgname="${_appname}-radio-automation-bin"
 _pkgname="Tomato Radio Automation"
-pkgver=0.12.17
+pkgver=0.12.19
 _electronversion=36
 pkgrel=1
 pkgdesc="Tomato Radio Automation desktop client. Dead simple radio ads.(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-client-v${pkgver}-linux_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-client-v${pkgver}-linux_amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('4891177070b58ffe5ae469f7537df55ef9cdba221d8dda3e55d90dfffdc4a20d')
-sha256sums_x86_64=('3a028caf14b8368435a401e42cf714e3484e03d68ee4eafbf546f21329c84ed1')
+sha256sums_aarch64=('d8732eb59e311e0ffb7d27d9ac62a052b82375724f253d66dd9a7c2f07dd341e')
+sha256sums_x86_64=('553be3660d6ddd86c00fbe2994210440363b6a8ac904a1951dc1292a014dff46')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
