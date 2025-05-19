@@ -1,4 +1,4 @@
-# Maintainer: defc0n <your_actual_email@example.com>  # Replace with your actual email
+# Maintainer: defc0n <nehartale8@gmail.com>  # Replace with your actual email
 pkgname=hitech-arch-animation
 _commit=HEAD 
 
