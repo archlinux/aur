@@ -1,6 +1,6 @@
 pkgbase = less-player-bin
 	pkgdesc = Less is More~ All for One, One for All !Prebuilt version.(Use system-wide electron.Less Player) 基于Electron + Vue3开发、插件化的播放器
-	pkgver = 0.1.33
+	pkgver = 0.1.34
 	pkgrel = 1
 	url = https://github.com/GeekLee2012/Less-Player-Desktop
 	arch = aarch64
@@ -8,13 +8,13 @@ pkgbase = less-player-bin
 	license = Apache-2.0
 	makedepends = fuse2
 	depends = electron22
-	provides = less-player=0.1.33
+	provides = less-player=0.1.34
 	conflicts = less-player
 	source = less-player.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = less-player-0.1.33-aarch64.AppImage::https://github.com/GeekLee2012/Less-Player-Desktop/releases/download/v0.1.33/Less.Player.v0.1.33.linux-arm64.AppImage
-	sha256sums_aarch64 = 2d75f07ab173576108a0d48cd941e146ca5894b46bba8697fdc6a263b1b3aa8b
-	source_x86_64 = less-player-0.1.33-x86_64.AppImage::https://github.com/GeekLee2012/Less-Player-Desktop/releases/download/v0.1.33/Less.Player.v0.1.33.linux-x86_64.AppImage
-	sha256sums_x86_64 = ed38e75e515ca9bd778ee01d8aeba93fb4d37471e096278770d3c9669b8ab780
+	source_aarch64 = less-player-0.1.34-aarch64.AppImage::https://github.com/GeekLee2012/Less-Player-Desktop/releases/download/v0.1.34/Less.Player.v0.1.34.linux-arm64.AppImage
+	sha256sums_aarch64 = c816da225468ad8426eb554b2e8e99826fd2508d664294bae6cfdd136100f44c
+	source_x86_64 = less-player-0.1.34-x86_64.AppImage::https://github.com/GeekLee2012/Less-Player-Desktop/releases/download/v0.1.34/Less.Player.v0.1.34.linux-x86_64.AppImage
+	sha256sums_x86_64 = a91092e34623f5e9d67b60220ade5b5fbf2846185dbb78bc494848956ae31dab
 
 pkgname = less-player-bin
