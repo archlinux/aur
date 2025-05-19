@@ -10,7 +10,7 @@ pkgname='nginx_passwd'
 pkgdesc='Basic Auth Password File Manager for nginx'
 _gitname='nginx_passwd'
 
-pkgver=2.7.2
+pkgver=2.7.3
 pkgrel=1
 url="https://github.com/gene-git/nginx_passwd"
 
@@ -21,9 +21,9 @@ depends=('python>=3.13' 'python-passlib' 'python-bcrypt' 'python-argon2_cffi')
 
 # To build docs uncommont sphinx/texlive
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync'
-             'python-pytest' 'python-pytest-asyncio'
               #'python-sphinx' 'texlive-latexextra' 
             )
+checkdepends=('python-pytest' 'python-pytest-asyncio')
 _mkpkg_depends=('python>minor')
 
 #

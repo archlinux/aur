@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : nginx_passwd
- Tags         : 2.5.1 ➙ 2.7.2
-              : 2024-10-13 ➙ 2025-05-15
+ Tags         : 2.5.2 ➙ 2.7.3
+              : 2024-12-31 ➙ 2025-05-19
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-05-19   : 2.7.3
+                Arch PKGBUILD: move pytest dependency to checkdepends from makedepends
+ 2025-05-15     update Docs/Changelogs Docs/${my_name}.pdf
 
  2025-05-15   : 2.7.2
                 typo
@@ -27,7 +31,3 @@
                 Add git signing key to Arch Package
                 Bump python vers
  2024-10-13     update Docs/Changelog.rst Docs/nginx_passwd.pdf
-
- 2024-10-13   : 2.5.1
-                Minor readme update
- 2024-04-04     update Docs/Changelog.rst Docs/nginx_passwd.pdf
