@@ -1,24 +1,40 @@
-# Hi-Tech-arch-animation PKGBUILD
-
+# Maintainer: defc0n <your_actual_email@example.com>  # Replace with your actual email
 pkgname=hitech-arch-animation
-pkgver=r5.f23db66
-pkgrel=1
+_commit=HEAD 
+
+pkgver=2.0
+pkgrel=2  
 pkgdesc="Hi-Tech Arch Linux Plymouth Theme"
 arch=('any')
 url="https://github.com/xDeFc0nx/HiTech-arch-animation"
-license=('GPL-3.0-or-later')
+license=('MIT')
 depends=('plymouth')
-makedepends=('git')
-source=("$pkgname::git+${url}.git#commit=f23db665d74599510e827131956bfb04bcc6d742")
-sha256sums=('a24b14fc0b659cbb80c0ae5b5516f05ca0625d156a319ad2c533bd404be12e82')
+
+ makedepends=('git')
+
+source=("git+${url}.git#commit=${_commit}")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+   cd "$srcdir/$(basename "${source[0]/.git/}")"
+   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+ }
 
 package() {
-	cd "$pkgname"
-	install -Dm644 -t "$pkgdir/usr/share/plymouth/themes/$pkgname/" \
-		arch.plymouth animated-boot.script *.png
+  local repo_dir_name
+  repo_dir_name=$(basename "${source[0]/.git/}") 
+  cd "$srcdir/$repo_dir_name"
+
+  install -dm755 "$pkgdir/usr/share/plymouth/themes/$pkgname"
+
+  install -m644 "./animated-boot.script" "$pkgdir/usr/share/plymouth/themes/$pkgname/"
+  install -m644 "./$pkgname.plymouth" "$pkgdir/usr/share/plymouth/themes/$pkgname/"
+
+  for img in ./progress-*.png; do
+    if [ -f "$img" ]; then
+        install -m644 "$img" "$pkgdir/usr/share/plymouth/themes/$pkgname/"
+    fi
+  done
+
+  install -Dm644 "./LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
