@@ -1,7 +1,7 @@
 # Maintainer: marzeq < marzeqmarzeq (at) gmail (dot) com >
 
 pkgname=windigo
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Lightweight Go-based daemon for Linux that controls fan speeds based on sensor input"
 arch=("x86_64")
