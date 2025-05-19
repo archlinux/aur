@@ -5,18 +5,17 @@
 _pkgname=code
 pkgname=code-git
 pkgdesc='The Open Source build of Visual Studio Code editor'
-pkgver=1.101.0.r133506.g664424927b9
+pkgver=1.101.0.r133507.gc706215141f
 pkgrel=1
 arch=('x86_64')
 _vscode_arch=x64 # https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/PKGBUILD
 _electron_arch=x64
 url='https://github.com/microsoft/vscode'
 license=('MIT')
-_electron=electron35
-depends=( ${_electron} ripgrep xdg-utils # system runtimes
+depends=( ripgrep xdg-utils # system runtimes
 libsecret libxkbfile )
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=( nodejs-lts-jod
+makedepends=( electron nodejs-lts-jod
 git npm pnpm python desktop-file-utils libarchive)
 conflicts=(code vscode)
 provides=(code vscode)
@@ -39,15 +38,15 @@ prepare() {
   cd vscode
   # electron version
   _electronverorig=$(npm pkg get devDependencies.electron|sed 's/"//g')
-  _electronver=$(cat /usr/lib/${_electron}/version)
+  _electronver=$(cat /usr/lib/electron/version)
   npm pkg set devDependencies.electron=${_electronver}
 
   # Native modules
   sed -i "s/^target=.*/target=\"${_electronver/}\"/" .npmrc 
   echo Replacing ${_electronverorig} with $(rg -N 'target' .npmrc)
-  echo Same major version is recommended
 
   # Launcher with $_electron
+  _electron=electron${_electronver%%.*}
   sed -e "s|name=electron|name=$_electron |" -e '/PKGBUILD/d' -i ../code.sh
   sed "1s|.*|#!/usr/lib/$_electron/electron|" -i ../code.mjs
 
@@ -83,7 +82,7 @@ prepare() {
 
   # Put a zip to skip downloading electron.
   _hash=$(echo -n "https://github.com/electron/electron/releases/download/v${_electronver}" | sha256sum | cut -d ' ' -f 1)
-  export XDG_CACHE_HOME="$srcdir" # Don't tain user dir
+  export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home # Don't tain user dir
   local _cache_dir="$XDG_CACHE_HOME/electron/$_hash"
   mkdir -p "$_cache_dir"
   local _zip="electron-v${_electronver}-linux-${_electron_arch}.zip"
@@ -94,12 +93,15 @@ prepare() {
 build() {
   cd vscode
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-  export XDG_CACHE_HOME="$srcdir"
+  export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home
   npm install --cpu=$_vscode_arch
-  npm run gulp --openssl-legacy-provider vscode-linux-${_vscode_arch} #-min minify cause OOM
+  # remove -min if minify cause OOM
+  npm run gulp --openssl-legacy-provider vscode-linux-${_vscode_arch} #-min
 }
 
 package() {
+  _electronver=$(cat /usr/lib/electron/version) # redef for makepkg --repackage
+  depends+=(electron${_electronver%%.*})
   # Resource files
   install -dm755 "$pkgdir"/usr/lib/code # compabinity for pacman hooks
   cp -r --reflink=auto --no-preserve=ownership --preserve=mode VSCode-linux-${_vscode_arch}/resources/app/* "$pkgdir"/usr/lib/code/
@@ -111,7 +113,7 @@ package() {
   # Launcher
   install -Dm755 code.sh "$pkgdir"/usr/bin/code
   install -Dm755 code.mjs "$pkgdir"/usr/lib/code/code.mjs
-  ln -sf code "$pkgdir"/usr/bin/code-oss
+  ln -sf /usr/bin/code "$pkgdir"/usr/bin/code-oss
 
   # Appdata and desktop file
   install -Dm644 vscode/resources/linux/code.appdata.xml "$pkgdir"/usr/share/metainfo/code-oss.appdata.xml
