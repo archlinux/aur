@@ -1,6 +1,6 @@
 # Maintainer: dashy-jngl <you@example.com>
 pkgname=stardom-card
-pkgver=0.1.1
+pkgver=0.1.0
 pkgrel=8
 pkgdesc="CLI tool to scrape and display Stardom event cards"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=(python-requests python-beautifulsoup4 python-wcwidth python-deep-translator)
 makedepends=('python-pip' 'python-flit-core')
 source=(https://github.com/dashy-jngl/stardom-card/archive/v${pkgver}.tar.gz)
-sha512sums=('SKIP')
+sha512sums=('66612ef552030cbda498816698b34201db357a182a8838e9fbcb8289425a09fee796a5476c2b23cdac859efa9b87735acf2f511ea7b70cb723aef23e38d8516e')
 
 build() {
   cd "$srcdir/stardom-card-${pkgver}"
