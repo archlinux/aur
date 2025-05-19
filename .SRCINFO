@@ -1,7 +1,7 @@
 pkgbase = sharing-gui
 	pkgdesc = Easily share files to multiple devices on the LAN/Public Network.(Use system-wide electron)
 	pkgver = 1.4.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://sharing-gui.yuanx.me/
 	arch = any
 	license = MIT

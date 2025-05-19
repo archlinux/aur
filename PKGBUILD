@@ -4,8 +4,8 @@ _pkgname=sharing-GUI
 _appname='Sharing GUI'
 pkgver=1.4.0
 _electronversion=21
-_nodeversion=18
-pkgrel=8
+_nodeversion=20
+pkgrel=9
 pkgdesc="Easily share files to multiple devices on the LAN/Public Network.(Use system-wide electron)"
 arch=('any')
 url="https://sharing-gui.yuanx.me/"
@@ -68,10 +68,22 @@ prepare() {
         } >> .yarnrc
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=development    yarn add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i '/makers: \[/i\
+	plugins: [\
+		{\
+			name: "@electron-forge/plugin-local-electron",\
+			config: {\
+				electronPath: "'"${electronDist}"'"\
+			}\
+		}\
+	],' forge.config.*
     NODE_ENV=production     yarn vite build
     NODE_ENV=production     yarn electron-forge package
 }
