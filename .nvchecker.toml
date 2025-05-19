@@ -1,0 +1,5 @@
+[octave-arduino]
+source = "github"
+github = "gnu-octave/octave-arduino"
+use_latest_release = "true"
+prefix = "release-"
