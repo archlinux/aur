@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=swarm-desktop
-_pkgname="Swarm Desktop"
+_pkgname='Swarm Desktop'
 pkgver=0.49.0
 _electronversion=18
 _nodeversion=18
