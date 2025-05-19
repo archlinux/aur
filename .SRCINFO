@@ -1,6 +1,6 @@
 pkgbase = navithingy-bin
 	pkgdesc = A Navidrome client built with Tauri and Svelte.(Prebuilt version)
-	pkgver = 0.8.1
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/vMohammad24/NaviThingy
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = navithingy-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = navithingy=0.8.1
+	provides = navithingy=0.8.3
 	conflicts = navithingy
-	source = navithingy-0.8.1.rpm::https://github.com/vMohammad24/NaviThingy/releases/download/NaviThingy0.8.1/NaviThingy-0.8.1-1.x86_64.rpm
-	source = LICENSE-0.8.1::https://raw.githubusercontent.com/vMohammad24/NaviThingy/NaviThingy0.8.1/LICENSE
-	sha256sums = 3a6db0591fd614b1c719d9ad5315c35281f5c6a711aa2fc17e9c4d123aa28014
+	source = navithingy-0.8.3.rpm::https://github.com/vMohammad24/NaviThingy/releases/download/NaviThingy0.8.3/NaviThingy-0.8.3-1.x86_64.rpm
+	source = LICENSE-0.8.3::https://raw.githubusercontent.com/vMohammad24/NaviThingy/NaviThingy0.8.3/LICENSE
+	sha256sums = 7b6f0e24ef7232e3abbc3830c9956c39bed5164a1ff5ecf182e40bfbf1a019eb
 	sha256sums = 44754fe43cb73bdafbd0fa5371c92cacae5682bcd10ed5f85e1085b8901e7ab9
 
 pkgname = navithingy-bin
