@@ -2,7 +2,7 @@ post_install() {
     echo
     echo "To configure your desktop environment to open Zoom links in Firejail, run:"
     echo
-    for scheme in zoommtg zoomus tel callto zoomphonecall; do
+    for scheme in zoommtg zoomus tel callto zoomphonecall zoomphonesms zoomcontactcentercall; do
         echo "xdg-mime default ZoomFirejail.desktop x-scheme-handler/$scheme"
     done
     echo
