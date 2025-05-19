@@ -1,9 +1,9 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgbase=gcc-snapshot
-pkgname=({gcc,gcc-libs,gcc-cobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,lto-dump,libgccjit}-snapshot)
-pkgver=16.0.0.snapshot20250511
-_pkgver=16-20250511
+pkgname=({gcc,gcc-libs,gcc-gcobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,lto-dump,libgccjit}-snapshot)
+pkgver=16.0.0.snapshot20250518
+_pkgver=16-20250518
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -106,6 +106,7 @@ build() {
 
   ${srcdir}/gcc/configure \
     --enable-languages=c,c++,cobol,d,fortran,go,lto,m2,objc,obj-c++ \
+    --enable-offload-targets=amdgcn-amdhsa,nvptx-none \
     --enable-bootstrap \
     "${_confflags[@]:?_confflags unset}"
 
@@ -296,9 +297,9 @@ package_gcc-objc-snapshot() {
 package_gcc-cobol-snapshot() {
   pkgdesc='Cobol front-end for GCC (snapshot)'
   depends=("gcc-snapshot=${pkgver}-${pkgrel}")
-  provides=(${pkgname}-multilib gcc-cobol-multilib gcc-cobol)
-  replaces=(${pkgname}-multilab gcc-cobol-multilib gcc-cobol)
-  conflicts=(gcc-cobol-multilib gcc-cobol)
+  provides=(${pkgname}-multilib gcc-gcobol-multilib gcc-cobol)
+  replaces=(${pkgname}-multilab gcc-gcobol-multilib gcc-cobol)
+  conflicts=(gcc-cobol-multilib gcc-gcobol)
   options=(!emptydirs lto strip staticlibs)
 
   cd gcc-build
