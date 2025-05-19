@@ -22,6 +22,10 @@ pkgbase = newelle-git
 	depends = python-pylatexenc
 	depends = python-requests
 	depends = python-speechrecognition
+	depends = vte4
+	optdepends = python-ollama: Ollama support
+	optdepends = ollama: Ollama auto serve
+	optdepends = python-google-generativeai: Google Gemini support
 	source = git+https://github.com/qwersyk/Newelle
 	sha256sums = SKIP
 

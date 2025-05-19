@@ -7,8 +7,13 @@ pkgdesc="Your Ultimate Virtual Assistant"
 url="https://github.com/qwersyk/Newelle"
 license=('GPL-3.0-or-later')
 arch=('any')
-depends=('gtksourceview5' 'libadwaita' 'portaudio' 'python-expandvars' 'python-gobject' 'python-gpt4all' 'python-gtts' 'python-matplotlib' 'python-numpy' 'python-pillow' 'python-pyaudio' 'python-pygame' 'python-pylatexenc' 'python-requests' 'python-speechrecognition')
+depends=('gtksourceview5' 'libadwaita' 'portaudio' 'python-expandvars' 'python-gobject' 'python-gpt4all' 'python-gtts' 'python-matplotlib' 'python-numpy' 'python-pillow' 'python-pyaudio' 'python-pygame' 'python-pylatexenc' 'python-requests' 'python-speechrecognition' 'vte4')
 makedepends=('git' 'meson')
+optdepends=(
+	"python-ollama: Ollama support"
+	"ollama: Ollama auto serve"
+	"python-google-generativeai: Google Gemini support"
+)
 source=("git+$url")
 sha256sums=('SKIP')
 
