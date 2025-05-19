@@ -7,7 +7,7 @@ url="https://github.com/mango7006/plymouth-theme-spinning-cat"
 license=('unlicense')
 depends=('plymouth')
 
-source=("https://github.com/mango7006/plymouth-theme-spinning-cat.git")
+source=("git+https://github.com/mango7006/plymouth-theme-spinning-cat.git")
 md5sums=('SKIP')
 
 package() {
