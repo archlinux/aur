@@ -1,6 +1,6 @@
 pkgbase = devkitty-git
 	pkgdesc = Swiss army knife for developers.(Use system-wide electron)
-	pkgver = 2.12.2.r0.g59c5a9b
+	pkgver = 2.12.4.r1.ge927dca
 	pkgrel = 1
 	url = https://devkitty.app/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = devkitty-git
 	makedepends = gendesk
 	makedepends = curl
 	depends = electron33
-	provides = devkitty=2.12.2
+	provides = devkitty=2.12.4
 	conflicts = devkitty
 	source = devkitty.git::git+https://github.com/egor-xyz/devkitty.git
 	source = devkitty.sh
