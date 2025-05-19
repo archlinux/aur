@@ -2,6 +2,7 @@
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: ZhenDong Wu <wzd04062@sina.com>
+# Contributor: someone5678 <someone5678 dot dev at google dot com>
 
 pkgname=libfprint-cs9711-git
 pkgver=1.94.9+19.r1830.20230914.936dbc1
