@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box
 _pkgname=Pandora-Box
-pkgver=1.0.3
+pkgver=1.0.5
 _electronversion=36
 _nodeversion=24
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('8a9f39b32e9b8a8946c76ba58fd35ab0c940937bbd625369b23f1cc65159d57a'
+sha256sums=('c976768edfd9eaabb4c68fb41d186b0eac1c5e1f9f91e86d579ca03bd63b6179'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
