@@ -4,7 +4,7 @@ _pkgname="libadapta"
 pkgbase=libadapta
 pkgname=(libadapta libadapta-docs libadapta-demos)
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="libAdapta is libAdwaita with theme support and a few extra."
 url="https://github.com/xapp-project/libadapta"
 arch=(x86_64 i686 pentium4 aarch64 armv7h)
@@ -20,8 +20,11 @@ depends=(
 )
 makedepends=(
   gi-docgen
+  ninja
   git
   glib2-devel
+  libadwaita
+  libgtk-4.so
   gobject-introspection
   meson
   sassc
@@ -38,7 +41,7 @@ build() {
     -D gtk_doc=true
   )
 
-  arch-meson libadapta build "${meson_options[@]}"
+  arch-meson libadapta-1.5.0 build "${meson_options[@]}"
   meson compile -C build
 }
 
@@ -71,6 +74,8 @@ package_libadapta() {
   provides+=(libAdapta-1.so)
 
   meson install -C build --destdir "$pkgdir"
+
+
 
   cd "$pkgdir"
 
