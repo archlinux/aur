@@ -1,7 +1,7 @@
 # Maintainer: Flammkuchen <aur at bbirkner dot de>
 _pkgname=Object-Pad
 pkgname=perl-object-pad
-pkgver=0.813
+pkgver=0.820
 pkgrel=1
 pkgdesc="a simple syntax for lexical field-based objects"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('perl-file-sharedir' 'perl-xs-parse-keyword' 'perl-xs-parse-sublike')
 makedepends=('perl-module-build')
 url='https://metacpan.org/pod/Object::Pad'
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('3a40263a5b12cf73675dd1d5981a1e9fdc8048baaefd0ee47c100dfe55e91a3a9ff6d26937b59567a9e72d3bb8d7e02507bb474cf5d9b8afe7f9bce1cef7b12b')
+sha512sums=('bd5819577591a008b4866b3cc0d4e86342d44112e8b8012cf65008c3f0f17897d7ccc31baa1855f7ae162f98330b45ef520f6e610a33d8cb76e86318ca1ca3b0')
 _distdir="${_pkgname}-${pkgver}"
 
 build() {
