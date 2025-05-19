@@ -6,7 +6,7 @@ _ARCHS=('ecp5' 'ice40' 'himbaechel' 'nexus' 'generic')
 
 _pkgname="nextpnr"
 pkgname="$_pkgname-git"
-pkgver=0.8.r2.g7a3a43e
+pkgver=0.8.r20.g5206162
 pkgrel=1
 pkgdesc='Portable FPGA place and route tool'
 url='https://github.com/YosysHQ/nextpnr'
@@ -140,7 +140,7 @@ for _arch in ${_ARCHS[@]}; do
       ;;
     himbaechel)
       makedepends+=(
-        'prjapicula' # AUR
+        'prjapicula-git' # AUR
         # 'python-crc' # AUR
       )
       _CONFIG+=('-DHIMBAECHEL_UARCH=gowin')
