@@ -1,10 +1,11 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Flaviu Tamas <me@flaviutamas.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=polkit-qt4
 pkgver=0.112.0+git20180107
-pkgrel=2
+pkgrel=3
 pkgdesc='A library that allows developers to access PolicyKit API with a nice Qt-style API'
 arch=(x86_64 i686)
 url='https://www.kde.org/'
@@ -18,6 +19,7 @@ sha256sums=('SKIP')
 build() {
   mkdir -p "$pkgname/build"
   cd "$pkgname/build"
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
