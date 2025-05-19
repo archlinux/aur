@@ -3,12 +3,12 @@
 
 pkgname=gnuradio-scopy-git
 pkgver=r11.a69ccb2
-pkgrel=1
+pkgrel=2
 pkgdesc="Scopy IIO blocks for GNU Radio"
 arch=(x86_64)
 url="https://github.com/analogdevicesinc/gr-scopy"
 license=(GPL-3.0-or-later)
-depends=(gnuradio gnuradio-companion)
+depends=(gnuradio gnuradio-companion glibc gcc-libs libvolk)
 makedepends=(cmake git ninja swig boost)
 provides=(gnuradio-scopy)
 conflicts=(gnuradio-scopy)

@@ -1,7 +1,7 @@
 pkgbase = gnuradio-scopy-git
 	pkgdesc = Scopy IIO blocks for GNU Radio
 	pkgver = r11.a69ccb2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/analogdevicesinc/gr-scopy
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -12,6 +12,9 @@ pkgbase = gnuradio-scopy-git
 	makedepends = boost
 	depends = gnuradio
 	depends = gnuradio-companion
+	depends = glibc
+	depends = gcc-libs
+	depends = libvolk
 	provides = gnuradio-scopy
 	conflicts = gnuradio-scopy
 	source = gnuradio-scopy::git+https://github.com/analogdevicesinc/gr-scopy.git#branch=3.10
