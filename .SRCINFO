@@ -1,0 +1,21 @@
+pkgbase = miru-hayase-bin
+	pkgdesc = Anime streaming application (Hayase 6.3.2, pre-compiled from release v6.1.0)
+	pkgver = 6.3.2
+	pkgrel = 1
+	url = https://github.com/ThaUnknown/miru
+	install = miru-hayase-bin.install
+	arch = x86_64
+	license = GPL3
+	depends = xdg-utils
+	depends = ffmpeg
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/ThaUnknown/miru/releases/download/v6.1.0/linux-hayase-6.3.2-linux.deb
+	sha256sums_x86_64 = 6035f9fcbf5cb251468ef305ca74b47e5ac3099f79979a14e567a3a2d06ac6e0
+
+pkgname = miru-hayase-bin

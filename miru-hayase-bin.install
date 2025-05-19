@@ -1,0 +1,23 @@
+_installed_app_dir_name="Miru"
+_executable_name="miru"
+
+post_install() {
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor || true
+    mkdir -p "/usr/bin"
+    ln -sf "/opt/${_installed_app_dir_name}/${_executable_name}" "/usr/bin/${_executable_name}"
+    if [ -f "/opt/${_installed_app_dir_name}/chrome-sandbox" ]; then
+        chmod 4755 "/opt/${_installed_app_dir_name}/chrome-sandbox" || true
+    fi
+    update-mime-database /usr/share/mime >/dev/null 2>&1 || true
+    update-desktop-database -q /usr/share/applications || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor || true
+    rm -f "/usr/bin/${_executable_name}"
+    update-desktop-database -q /usr/share/applications || true
+}
