@@ -1,8 +1,8 @@
 # Contributor: Mr.Smith1974 < ... >
 # Maintainer: Jonathan Hilger <joni dot hilger at yahoo dot de>
 pkgname=vpinball
-pkgver=r8030.2652993
-pkgrel=2
+pkgver=r8031.0567acd
+pkgrel=1
 pkgdesc="An open source pinball table editor and simulator - BGFX standalone version built with dependencies as defined by the developers"
 arch=('x86_64')
 url="https://github.com/vpinball/vpinball"
@@ -13,10 +13,12 @@ provides=('vpinball')
 conflicts=('vpinball-git')
 source=("${pkgname}::git+https://github.com/vpinball/vpinball.git"
 	"vpinball.desktop"
-	"visualpinball_screen1.jpg")
+	"visualpinball_screen1.jpg"
+	"vpinball-launcher.sh")
 sha256sums=('SKIP'
-            '4f094e7177ecde9afdafa29805635084aae5967560d33b46c8f95ef732898b93'
-            'ca5d4a89d1a137eba199ebd91463d3df7fe90fd47ff41c73d6f456d879ab5011')
+            '1fd5a1252bf2932416ec4d2b68f6a4060c87e996a3dfccaacf59b1b3326b5590'
+            'ca5d4a89d1a137eba199ebd91463d3df7fe90fd47ff41c73d6f456d879ab5011'
+            '3741acd5c8b82673fd287bb8a14ad4784a7312bcbc6351c7fbb737d0500ec299')
 # Will not build with lto!!
 options=('!lto')
 
@@ -46,8 +48,18 @@ package() {
   cp -r build/docs "${pkgdir}/usr/share/doc/vpinball/"
   chmod 775 "${pkgdir}/opt/vpinball/tables"
   #
-  ln -s "/opt/vpinball/VPinballX_BGFX" "${pkgdir}/usr/bin/VPinballX_BGFX"
+  ln -s "/opt/vpinball/VPinballX_BGFX" 				"${pkgdir}/usr/bin/VPinballX_BGFX"
+  install -Dm 644 "${srcdir}/vpinball-launcher.sh"		"${pkgdir}/opt/vpinball/vpinball-launcher.sh"
+  install -Dm 644 "${pkgdir}/opt/vpinball/assets/vpinball.png"  "${pkgdir}/usr/share/icons/hicolor/128x128/apps/vpinball.png"
   install -Dm 644 "${srcdir}/vpinball.desktop"			"${pkgdir}/usr/share/applications/vpinball.desktop"
   install -Dm 644 "${srcdir}/visualpinball_screen1.jpg"		"${pkgdir}/usr/share/pixmaps/visualpinball_screen1.jpg"
-  install -Dm 644 "${srcdir}/vpinball/LICENSE"			"${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 "${srcdir}/vpinball/LICENSE"			"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }  # package
+
+post_install() {
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+}
+
+post_remove() {
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+}

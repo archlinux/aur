@@ -1,12 +1,11 @@
 [Desktop Entry]
 Type=Application
-Version=1.0
 Name=vpinball
 Keywords=game;
-Icon=visualpinball_screen1
-Exec=VPinballX_BGFX -DisableTrueFullscreen
-Terminal=false
-StartupNotify=false
+Icon=vpinball
+Exec=/opt/vpinball/vpinball-launcher.sh
+Terminal=true
+StartupNotify=true
 Categories=Game;
 Comment=An open source pinball table editor and simulator
 
