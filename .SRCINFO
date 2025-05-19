@@ -1,7 +1,7 @@
 pkgbase = saberfy
 	pkgdesc = Application for match and import your Spotify favorite songs to BeatSaber.(Use system-wide electron)
 	pkgver = 2.1.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/LoliE1ON/Saberfy
 	arch = any
 	license = MIT

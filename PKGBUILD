@@ -4,7 +4,7 @@ _pkgname=Saberfy
 pkgver=2.1.0
 _electronversion=16
 _nodeversion=16
-pkgrel=9
+pkgrel=10
 pkgdesc="Application for match and import your Spotify favorite songs to BeatSaber.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/LoliE1ON/Saberfy"
@@ -34,6 +34,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -42,8 +43,12 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    gendesk -f -n -q \
+        --pkgname="${pkgname}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -63,9 +68,18 @@ prepare() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install --leagacy-peer-deps
+    NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron --leagacy-peer-deps
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i '/"plugins": \[/a\
+	[\
+		"@electron-forge/plugin-local-electron",\
+		{\
+			"electronPath": "'"${electronDist}"'"\
+		}\
+	],' package.json
     NODE_ENV=production     npm run package
     sed "s/reg\.exe/reg/g" "${srcdir}/${pkgname}-${pkgver}/out/${_pkgname}-linux-"*/resources/app/.webpack/main/index.js
 }
@@ -73,6 +87,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/out/${_pkgname}-linux-"*/swiftshader/* -t "${pkgdir}/usr/lib/${pkgname}/swiftshader"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/out/${_pkgname}-linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
