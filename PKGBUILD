@@ -1,4 +1,4 @@
-# Maintainer: Dmitry <dimflix.official@email.com>
+# Maintainer: Dmitry <dimflix.official@gmail.com>
 pkgname=mewline-git
 pkgver=r1.0.0
 pkgrel=1
