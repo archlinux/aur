@@ -11,6 +11,7 @@ url=https://git.mylloon.fr/Anri/dsr
 license=('AGPL3')
 provides=("$pkgname")
 conflicts=("$pkgname")
+optdepends=('ffmpeg: needed for some encoders')
 source_x86_64=("$pkgname.zip::https://git.mylloon.fr/Anri/dsr/releases/download/$pkgver/dsr-linux-x64-$pkgver.zip"
                "https://git.mylloon.fr/Anri/dsr/raw/branch/main/image/icon.png")
 sha256sums_x86_64=("SKIP"
