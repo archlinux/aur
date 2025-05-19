@@ -4,7 +4,7 @@ _pkgname="libadapta"
 pkgbase=libadapta-git
 pkgname=(libadapta-git)
 pkgver=r4088.5f2193a
-pkgrel=1
+pkgrel=2
 pkgdesc="libAdapta is libAdwaita with theme support and a few extra."
 url="https://github.com/xapp-project/libadapta"
 arch=(x86_64 i686 pentium4 aarch64 armv7h)
@@ -96,7 +96,7 @@ package_libadatpa-demos-git() {
     hicolor-icon-theme
     libadwaita
   )
-  provides=(libadapa-demos)
+  provides=(libadapta-demos)
   conflicts=(libadapta-demos)
   mv demo/* "$pkgdir"
 }
@@ -104,7 +104,7 @@ package_libadatpa-demos-git() {
 package_libadapta-docs-git() {
   pkgdesc+=" (documentation)"
   depends=()
-  provides=(libadwaita-docs)
-  conflicts=(libadwaita-docs)
+  provides=(libadapta-docs)
+  conflicts=(libadapta-docs)
   mv docs/* "$pkgdir"
 }

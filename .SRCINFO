@@ -1,7 +1,7 @@
 pkgbase = libadapta-git
 	pkgdesc = libAdapta is libAdwaita with theme support and a few extra.
 	pkgver = r4088.5f2193a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xapp-project/libadapta
 	arch = x86_64
 	arch = i686
