@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=embertune-bin
 _pkgname=EmberTune
-pkgver=0.9.0
+pkgver=0.9.1
 _electronversion=35
 pkgrel=1
 pkgdesc="A desktop music player with a focus on design and functionality, aims to be a solid alternative to your streaming services without any ads.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/DylanAkp/EmberTune/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('542c15f1e23f58ee417ad70c89e4ee885efa7a5b9b6d2289a3c87b76681cb74f'
+sha256sums=('0c8fb7daac2e4e26942fac8dde052b2978c1a42fdfaadd67256d91b2793c6faa'
             '2596c629e297252208c9a49402be4cf61fda1cfef7a6d9eb2fd298da425f757a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
@@ -32,7 +32,9 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
