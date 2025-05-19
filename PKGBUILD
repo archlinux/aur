@@ -8,7 +8,7 @@
 pkgname="keypunch-git"
 _appname="keypunch"
 pkgver=6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Practice your typing skills'
 url='https://github.com/bragefuglseth/keypunch'
 _app_website='https://apps.gnome.org/Keypunch'
@@ -19,7 +19,7 @@ sha512sums=('63edd187becde410750779d053252897bc1ce31d03fd8dd682b6aac85f55e0e22ca
 provides=('keypunch')
 conflicts=('keypunch')
 depends=('gtk4' 'libadwaita')
-makedepends=('blueprint-compiler' 'gettext' 'git' 'meson' 'ninja' 'pkgconf' 'rust')
+makedepends=('blueprint-compiler' 'cargo' 'git' 'meson' 'ninja' 'pkgconf')
 
 #pkgver() {
 #   cd "${srcdir}/${_appname}-${pkgver}"
@@ -29,7 +29,7 @@ makedepends=('blueprint-compiler' 'gettext' 'git' 'meson' 'ninja' 'pkgconf' 'rus
 build() {
     cd "${srcdir}/${_appname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
-    meson setup -Dprefix=/usr build
+    arch-meson . build
     meson compile -C build
 }
 
