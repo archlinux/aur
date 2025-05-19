@@ -1,6 +1,6 @@
 pkgbase = ianny-bin
 	pkgdesc = Desktop utility that helps preventing repetitive strain injuries by periodically informing the user to take breaks.
-	pkgver = 2.0.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/zefr0x/ianny
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ianny-bin
 	depends = gcc-libs
 	provides = ianny
 	conflicts = ianny
-	source = ianny-bin-2.0.0.tar.gz::https://github.com/zefr0x/ianny/releases/download/v2.0.0/ianny-v2.0.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = ad232ca6fb8bc21c955ea472225cfd3905558b02584474fb866d03777242055f
+	source = ianny-bin-2.1.1.tar.gz::https://github.com/zefr0x/ianny/releases/download/v2.1.1/ianny-v2.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 2c8cc1dfdfcdc8e642dced18e9980e2ea878129e932c57b3b42a3e4e814e0c73
 
 pkgname = ianny-bin
