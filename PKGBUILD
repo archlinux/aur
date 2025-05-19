@@ -6,8 +6,8 @@
 
 pkgbase=nvidia-utils
 pkgname=('nvidia-utils' 'opencl-nvidia' 'nvidia-dkms' 'nvidia-open-dkms')
-pkgver=570.144
-pkgrel=3
+pkgver=570.153.02
+pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -24,7 +24,6 @@ source=('nvidia-drm-outputclass.conf'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
         "https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/${_pkg_open}.tar.xz"
         0001-Enable-atomic-kernel-modesetting-by-default.patch
-        0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch
         0003-Add-IBT-support.patch)
 
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
@@ -33,10 +32,9 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             'a0183adce78e40853edf7e6b73867e7a8ea5dabac8e8164e42781f64d5232fbe869f850ab0697c3718ebced5cde760d0e807c05da50a982071dfe1157c31d6b8'
             '55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee'
             'c7fea39d11565f05a507d3aded4e9ea506ef9dbebf313e0fc8d6ebc526af3f9d6dec78af9d6c4456c056310f98911c638706bccdd9926d07f492615569430455'
-            'f0d6a8377cbcb38a4a0491a654d3ed86082ac5609129a247daaa455bd7cffbad0be579db2ba9448a9f0ebc7cf36459d640f03ecbe1f25e8e47f3990f78989c97'
-            '761561fbc7433815fae79644c2996b8894edbc8158fd53ab81a143e869b0ae832a965bd7dcfe5f54db0f1b8e06ae1a02a921b7657d4fbd76a4fb252f39cef427'
+            '6da277640a4727a420379b43b44c6222869e2fd10794627e73a0a1fe7db6213c0cbab7901799cc9ee2431df54e0c4857eaf1b293fd1750a3bc68c2bf3852413f'
+            'b0cb2e748746906a973df597c91bac087c033bcb06b62e1778f7df5d2499ae90392759a2e7e28187d28211f11b7ca7200f2a903db9fa64854ea93768c362e0a7'
             '0bb89b9037f0baa9aae1ff8e70c9c93896f03fd0cc380eea4b0dc094a6991c3ad6738c9fbbaa42d8b5a544f77dc91c0e6401b1501c5970c576d5efbc0de8dd34'
-            '6814990f8046759d35f724ac9114d7fa284710fd1ad8cca7e1a861ea54a72fe4f67b5614f157a911f5ecfa0c964fa989edc61c85b1cfef6428e0cd7cdeea856e'
             '42f621179d4fd9bf608f0d84b9019f5a5fdf5d92d68d22ce9b9a9add1cad1c90dcb3764db68e0b9bc7e902bb6b955c59563ea6d4f39f2e39a340387e4d5deb82')
 
 
@@ -60,12 +58,9 @@ prepare() {
     # https://gitlab.archlinux.org/archlinux/packaging/packages/nvidia-utils/-/issues/14
     # https://github.com/rpmfusion/nvidia-kmod/blob/master/make_modeset_default.patch
     patch -Np1 -i "${srcdir}/0001-Enable-atomic-kernel-modesetting-by-default.patch" -d "${srcdir}/${_pkg}/kernel"
-    # GCC 15
-    patch -Np1 -i "${srcdir}/0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch" -d "${srcdir}/${_pkg}/kernel"
 
     # Kernel-open
     patch -Np1 -i "${srcdir}/0001-Enable-atomic-kernel-modesetting-by-default.patch" -d "${srcdir}/${_pkg_open}/kernel-open"
-    patch -Np1 -i "${srcdir}/0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch" -d "${srcdir}/${_pkg_open}/kernel-open"
     patch -Np1 -i "${srcdir}/0003-Add-IBT-support.patch" -d "${srcdir}/${_pkg_open}/"
 
 
