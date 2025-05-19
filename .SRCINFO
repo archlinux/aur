@@ -1,0 +1,18 @@
+pkgbase = qwt-multiaxes-git
+	pkgdesc = Qt Widgets for Technical Applications
+	pkgver = r158.3b71f45
+	pkgrel = 1
+	url = https://github.com/cseci/qwt
+	arch = x86_64
+	license = LicenseRef-Qwt_License
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-svg
+	depends = glibc
+	depends = gcc-libs
+	optdepends = qt5-tools: For Designer plugin
+	source = git+https://github.com/cseci/qwt.git
+	sha512sums = SKIP
+
+pkgname = qwt-multiaxes-git
