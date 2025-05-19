@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="The new purpose-built IDE to harness magic"
 arch=('x86_64')
 url="https://windsurf.com/"
-license=('custom') # should be fixed
+license=('LicenseRef-Windsurf Editor')
 _elnum=34
 depends=( electron$_elnum ripgrep fd #replacements
     'alsa-lib'
