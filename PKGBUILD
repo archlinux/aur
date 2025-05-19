@@ -2,14 +2,14 @@
 
 _pkgname=tetra
 pkgname=$_pkgname-bin
-pkgver=0.8.3 # renovate: datasource=github-releases depName=cilium/tetragon
+pkgver=1.4.0 # renovate: datasource=github-releases depName=cilium/tetragon
 pkgrel=1
 pkgdesc="eBPF-based Security Observability and Runtime Enforcement - CLI"
 url="https://github.com/cilium/${_pkgname}gon"
 license=('APACHE')
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-amd64.tar.gz")
 arch=('x86_64')
-sha512sums=('7921283afc15070df96cecccf5171f218f47ac3241267bc2d564976ebe60b5cbfd997432bcbad7049af547d98f782267672872169e4c90e6f85a87d961e92ce6')
+sha512sums=('ba5e1fbd2bfe78544683eef80f4734dde85f5df86da966078603c546ecadb81c9f54deef8c82bd4f463ff310451bdbc1d7c91006f2c81b7306655aa7c2ae2067')
 conflicts=("$_pkgname" "${_pkgname}-git")
 
 package() {
