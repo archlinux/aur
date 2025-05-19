@@ -12,16 +12,16 @@ source=("https://files.pythonhosted.org/packages/source/o/ocpsvg/ocpsvg-$pkgver.
 sha256sums=('5cd8dbec8bf590d373a82aaebeab241838185aab04ee2859f33b9d7956bbfba6')
 
 build() {
-  cd ocpsvg-$pkgver
-  python -m build --wheel --no-isolation
+    cd ocpsvg-$pkgver
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ocpsvg-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
+    cd ocpsvg-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 check() {
-  cd ocpsvg-$pkgver
-  pytest
+    cd ocpsvg-$pkgver
+    pytest
 }
