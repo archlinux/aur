@@ -1,42 +1,50 @@
 --- a/setup-desktop-entry.sh
 +++ b/setup-desktop-entry.sh
-@@ -1,29 +1,25 @@
--#!/usr/bin/env sh
-+#!/usr/bin/env bash
+@@ -1,11 +1,8 @@
+ #!/usr/bin/env sh
  
- # This script generates a desktop entry in the current directory.
+-# This script generates a desktop entry in the current directory.
 -# Stop if shell has root privilege.
 -[ `id -u` -eq 0 ] && exit 1
- 
- # Change to script's directory. Resolve symlinks and hyphens. Stop on fail.
+-
+-# Change to script's directory. Resolve symlinks and hyphens. Stop on fail.
 -cd -P -- "`dirname "$0"`" || exit 1
-+cd -P -- "$(dirname "$0")" || exit 1
++# This script starts Flashpoint with the correct parameters for users who can't run desktop entries.
++# Stop if shell has root privilege, accounting for fakeroot.
++[ $(id -u) -eq 0 ] && [ "${FAKEROOT:-0}" -ne 1 ] && exit 1
  
  # Stop if launcher binary not found.
  [ -f Launcher/flashpoint-launcher ] || exit 1
+@@ -14,23 +11,23 @@
+ # Default: ~/.local/share/applications/flashpoint-archive.desktop
+ [ "$DIR" ] || DIR="$HOME/.local/share/applications/flashpoint-archive.desktop"
  
--# Generate desktop entry. Add some variables if libraries are installed.
-+flashpoint_directory="/opt/Flashpoint/"
++# Set configurable Flashpoint root directory.
++# Default: absolute path to script's directory
++[ "$FP_DIR" ] || FP_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
 +
-+# Generate desktop entry.
+ # Generate desktop entry. Add some variables if libraries are installed.
  printf "[Desktop Entry]
  Type=Application
- Version=14.0.20250222
  Name=Flashpoint Archive
- GenericName=Flashpoint
  Comment=An archive for games and animations from the web.
--Icon=$PWD/Launcher/icon.svgz
--Exec=/usr/bin/env -S " > Flashpoint.desktop
--# TODO: Find a better way to check this.
--# (Not just checking all files individually, psycho.)
--[ -f Libraries/libgtk-3.so.0 ] && printf "GDK_PIXBUF_MODULE_FILE=\"$PWD/Libraries/loaders.cache\" GSETTINGS_SCHEMA_DIR=\"$PWD/Libraries\" LD_LIBRARY_PATH=\"$PWD/Libraries\" LIBGL_DRIVERS_PATH=\"$PWD/Libraries\" PATH=\"$PWD/Libraries:$PATH\" " >> Flashpoint.desktop
+-Icon=$PWD/Launcher/icon.svg
++Icon=$FP_DIR/Launcher/icon.svg
+ StartupWMClass=flashpoint-launcher
+ Exec=/usr/bin/env -S " > "$DIR"
+ # TODO: Find a better way to check this.
+ # (Not just checking all files individually, psycho.)
+-[ -f Libraries/libgtk-3.so.0 ] && printf "GDK_PIXBUF_MODULE_FILE=\"$PWD/Libraries/loaders.cache\" GSETTINGS_SCHEMA_DIR=\"$PWD/Libraries\" LD_LIBRARY_PATH=\"$PWD/Libraries\" LIBGL_DRIVERS_PATH=\"$PWD/Libraries\" PATH=\"$PWD/Libraries" >> "$DIR" && if [ ! -d FPSoftware/Wine/bin ]; then printf ":$PATH" >> "$DIR"; fi && printf "\" " >> "$DIR"
 -printf "WINEPREFIX=\"$PWD/FPSoftware/Wine\" ./flashpoint-launcher --js-flags=--lite_mode --ozone-platform-hint=auto --process-per-tab
 -Path=$PWD/Launcher
-+Icon=$flashpoint_directory/Launcher/icon.svgz
-+Exec=/usr/bin/env -S WINEPREFIX=\"$flashpoint_directory/FPSoftware/Wine\" ./flashpoint-launcher --js-flags=--lite_mode --ozone-platform-hint=auto --process-per-tab
-+Path=$flashpoint_directory/Launcher
++[ -f "$FP_DIR/Libraries/libgtk-3.so.0" ] && printf "GDK_PIXBUF_MODULE_FILE=\"$FP_DIR/Libraries/loaders.cache\" GSETTINGS_SCHEMA_DIR=\"$FP_DIR/Libraries\" LD_LIBRARY_PATH=\"$FP_DIR/Libraries\" LIBGL_DRIVERS_PATH=\"$FP_DIR/Libraries\" PATH=\"$FP_DIR/Libraries" >> "$DIR" && if [ ! -d "$FP_DIR/FPSoftware/Wine/bin" ]; then printf ":$PATH" >> "$DIR"; fi && printf "\" " >> "$DIR"
++printf "WINEPREFIX=\"$FP_DIR/FPSoftware/Wine\" ./flashpoint-launcher --js-flags=--lite_mode --ozone-platform-hint=auto --process-per-tab
++Path=$FP_DIR/Launcher
  Terminal=false
- Categories=Archiving;Game
--SingleMainWindow=true" >> Flashpoint.desktop
+ Categories=Archiving;Game;
+ SingleMainWindow=true" >> "$DIR"
+-
+-# Make link in current directory to desktop entry.
+-# This is for backwards compatibility, and will be removed in a future release.
+-ln "$DIR" Flashpoint.desktop
 \ No newline at end of file
-+SingleMainWindow=true" > Flashpoint.desktop

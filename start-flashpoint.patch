@@ -1,8 +1,6 @@
 --- a/start-flashpoint.sh
 +++ b/start-flashpoint.sh
-@@ -1,20 +1,20 @@
--#!/usr/bin/env sh
-+#!/usr/bin/env bash
+@@ -2,19 +2,25 @@
  
  # This script starts Flashpoint with the correct parameters for users who can't run desktop entries.
  # Stop if shell has root privilege.
@@ -11,25 +9,28 @@
  
 -# Change to script's directory. Resolve symlinks & hyphens. Stop on fail.
 -cd -P -- "`dirname "$0"`" || exit 1
--
--# Add some variables if libraries are installed.
--# TODO: Find a better way to check this.
--# (Not just checking all files individually, psycho.)
--[ -f Libraries/libgtk-3.so.0 ] && export GDK_PIXBUF_MODULE_FILE="$PWD/Libraries/loader.cache" GSETTINGS_SCHEMA_DIR="$PWD/Libraries" LD_LIBRARY_PATH="$PWD/Libraries" LIBGL_DRIVERS_PATH="$PWD/Libraries" PATH="$PWD/Libraries:$PATH"
-+# Change to script's directory.
-+flashpoint_directory="/opt/Flashpoint/"
-+cd "$flashpoint_directory"
++# Set configurable Flashpoint root directory.
++# Default: absolute path to script's directory
++[ "$FP_DIR" ] || FP_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
+ 
+ # Add some variables if libraries are installed.
+ # TODO: Find a better way to check this.
+ # (Not just checking all files individually, psycho.)
+-[ -f Libraries/libgtk-3.so.0 ] && export GDK_PIXBUF_MODULE_FILE="$PWD/Libraries/loader.cache" GSETTINGS_SCHEMA_DIR="$PWD/Libraries" LD_LIBRARY_PATH="$PWD/Libraries" LIBGL_DRIVERS_PATH="$PWD/Libraries" && if [ -d FPSoftware/Wine/bin ]; then export PATH="$PWD/Libraries"; else export PATH="$PWD/Libraries:$PATH"; fi
++[ -f "$FP_DIR/Libraries/libgtk-3.so.0" ] && export GDK_PIXBUF_MODULE_FILE="$FP_DIR/Libraries/loader.cache" GSETTINGS_SCHEMA_DIR="$FP_DIR/Libraries" LD_LIBRARY_PATH="$FP_DIR/Libraries" LIBGL_DRIVERS_PATH="$FP_DIR/Libraries" && if [ -d "$FP_DIR/FPSoftware/Wine/bin" ]; then export PATH="$FP_DIR/Libraries"; else export PATH="$FP_DIR/Libraries:$PATH"; fi
  
  # Set the Wine prefix, so it doesn't potentially mess with the default one.
 -export WINEPREFIX="$PWD/FPSoftware/Wine"
-+export WINEPREFIX="$flashpoint_directory/FPSoftware/Wine"
++export WINEPREFIX="$FP_DIR/FPSoftware/Wine"
  
++# Check for correct ownership
++if [[ "$(stat -c %U "$FP_DIR/Data/flashpoint.sqlite")" != "$USER" ]]; then
++	echo -e "WARNING: Flashpoint directory is not owned by current user! Expect issues.
++Run \"sudo USER=\$USER chown -R \$USER $FP_DIR\" to correct this."
++fi
  # Run launcher. Optimize for low RAM usage without affecting stability or security.
- cd Launcher
+-cd Launcher
 -./flashpoint-launcher --js-flags=--lite_mode --ozone-platform-hint=auto --process-per-tab &
 \ No newline at end of file
-+if [[ "$(stat -c %U \/opt\/Flashpoint)" != "$USER" ]]; then
-+        echo -e "WARNING: Flashpoint directory is not owned by current user! Expect issues. 
-+Run \"sudo USER=\$USER chown -R \$USER $flashpoint_directory\" to correct this."
-+fi
++cd "$FP_DIR/Launcher"
 +./flashpoint-launcher --js-flags=--lite_mode --ozone-platform-hint=auto --process-per-tab &
