@@ -2,11 +2,11 @@
 
 _pkgname=renovate
 pkgname="${_pkgname}-git"
-pkgver=39.11.7.r1.g202b549
+pkgver=40.17.0.r0.g4e12e52
 pkgrel=1
 pkgdesc="Automated dependency updates (git-latest)"
 arch=('any')
-depends=('nodejs>=20.15.1')
+depends=('nodejs>=22.13.0')
 makedepends=('git' 'nvm')
 provides=("${_pkgname}")
 url="https://github.com/renovatebot/renovate"
