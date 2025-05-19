@@ -1,0 +1,15 @@
+pkgbase = devt-git
+	pkgdesc = A simple dev tool CLI to encode/decode/hash/generate strings
+	pkgver = r7.bf16d0c
+	pkgrel = 1
+	url = https://github.com/Rokkit-exe/devt-git
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	provides = devt
+	conflicts = devt
+	source = git+ssh://git@github.com/Rokkit-exe/devt.git
+	sha256sums = SKIP
+
+pkgname = devt-git
