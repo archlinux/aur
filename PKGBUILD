@@ -1,7 +1,7 @@
 # Maintainer: banana-bred <j.forer@posteo.net>
 
 pkgname=fortran-fpm
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 epoch=
 pkgdesc="A Fortran package manager and build system"
@@ -10,7 +10,8 @@ url="https://fpm.fortran-lang.org/"
 license=('MIT')
 groups=()
 depends=("git")
-makedepends=("gcc-fortran")
+# makedepends=("gcc-fortran")
+makedepends=("gcc12-fortran")
 checkdepends=()
 optdepends=()
 provides=()
@@ -24,8 +25,8 @@ source=("https://github.com/fortran-lang/fpm/releases/download/v$pkgver/${pkgnam
         "https://github.com/fortran-lang/fpm/releases/download/v$pkgver/"${pkgname##*-}-$pkgver.F90)
 noextract=()
 sha256sums=(
-  f6c998c9afd39eb42c7e80a306cfbed5faa77eaa42eb4f75b93864c338db1795
-  988a3317ee2448ee7207d0a29410f08a79c86bddac3314b2a175801a9cf58d27
+  b519b614c693dc26f553f0eb902fc707adab9d1759f17ff098412c14d6b290fe
+  61567ac810d8ea8f8fc91fdb13700d34b91bf36e193b35d744fc6352d21146ad
 )
 
 prepare() {
@@ -38,7 +39,7 @@ prepare() {
 build() {
   cd "$srcdir/${pkgname##*-}-$pkgver"
 
-  gfortran -J _bootstrap/  _bootstrap/fpm.F90 -o _bootstrap/fpm
+  gfortran-12 -J _bootstrap/  _bootstrap/fpm.F90 -o _bootstrap/fpm
 }
 
 check() {
