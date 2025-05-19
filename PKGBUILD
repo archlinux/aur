@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=wpimath
-pkgver=2025.3.1
+pkgver=2025.3.2
 pkgrel=1
 pkgdesc="WPILib's mathematics and controls library"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cmake')
 license=('BSD' 'MIT')
 options=('!strip' 'staticlibs')
 source=("git+https://github.com/wpilibsuite/allwpilib#tag=v$pkgver")
-md5sums=('5e08a2f461a71466a1ffda81e9d4189d')
+md5sums=('fe401223cd4208f73bcfee35bcd14f10')
 
 build() {
   cmake -B build -S "allwpilib" \
