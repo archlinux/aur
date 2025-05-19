@@ -2,7 +2,7 @@
 set -euxo pipefail
 
 # Read pkg name
-PKG=$(awk -F '=' '/pkgname=/{ print $2 }' PKGBUILD)
+PKG=$(awk -F '=' '/_pkgname=/{ print $2 }' PKGBUILD)
 
 # Get latest version
 VER=$(
