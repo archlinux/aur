@@ -38,13 +38,13 @@ prepare() { # Create cp -r friendly layout with FHS
 	# Replace bundled runtimes
 	mv share/cursor/resources/app lib/cursor
 	rm -r share/cursor
-	#rg -N -o -r '$1' '"electron": *"[^\d]*(\d+)' lib/cursor/package.json |tee "${srcdir}/electron-store.txt"
 	cd lib/cursor/node_modules
 	ln -svf /usr/bin/rg       @vscode/ripgrep/bin/rg
 	ln -svf /usr/bin/xdg-open open/xdg-open
 }
 package_cursor-electron(){
 	_electron=electron$(rg --no-messages -N -o -r '$1' '"electron": *"[^\d]*(\d+)' squashfs-root/usr/lib/cursor/package.json)
+	echo Using $_electron
 	depends+=($_electron) # breaks --printsrcinfo
 	pkgdesc="${_desc} (system-wide electron)"
 	cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
