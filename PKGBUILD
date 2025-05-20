@@ -17,7 +17,7 @@ optdepends=('libappindicator-gtk3: for tray icon')
 arch=('x86_64')
 makedepends=('npm' 'git' 'rsync' 'python-setuptools' 'libxcrypt-compat')
 url="https://joplinapp.org/"
-license=('MIT')
+license=("AGPL-3.0-or-later")
 source=(
     "joplin-desktop.sh"
     "joplin-desktop.desktop"
