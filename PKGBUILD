@@ -3,7 +3,7 @@
 pkgname=langkit
 pkgdesc='Compiler for syntactic and semantic language analysis libraries.'
 pkgver=25.0w
-pkgrel=1
+pkgrel=2
 epoch=1
 
 url=https://github.com/AdaCore/langkit
@@ -33,10 +33,16 @@ makedepends=(gprbuild
              python-railroad-diagrams)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgname-$pkgver-20240411-1627B-src.tar.gz
-        0001-Replace-calls-to-inspect.getargspec-with-getfullargs.patch)
+        0001-Replace-calls-to-inspect.getargspec-with-getfullargs.patch
+        rid_pipes_import.patch
+        rid_pipes_import_2.patch
+        rid_pipes_import_3.patch)
         
 sha256sums=(175a54d50c427198e5e2f2644907f952d17e99fe17846a22c594b1ec81ce46e3
-            dddf397b5a2de8b0bb45fb4d8cf49d6440911e92594cda8c1af1e045c348c547)
+            dddf397b5a2de8b0bb45fb4d8cf49d6440911e92594cda8c1af1e045c348c547
+            45fa992c40577a9f523ec9427faf9f6021cd391fdb42dcf701e096355923cb04
+            3b24fde60aa485c1bf90645f0285c323070df3864ab7a29191379f0ae87d3ea4
+            513fe19703c01f16e62ef0dd1574f1845decaeb9f868b58583be6b0bf8606430)
 
 
 build()
@@ -47,6 +53,10 @@ build()
     ADA_FLAGS="${ADA_FLAGS//-Wformat}"
     ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
 
+    patch -Np0 -i $srcdir/rid_pipes_import.patch
+    patch -Np0 -i $srcdir/rid_pipes_import_2.patch
+    patch -Np0 -i $srcdir/rid_pipes_import_3.patch
+
     # Build the Langkit_Support library, used by all Langkit-generated libraries.
     #
     python manage.py build-langkit-support            \
@@ -55,7 +65,7 @@ build()
         --gargs="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
 
     python setup.py build
-    make -C doc html
+    #make -C doc html
 }
 
 

@@ -1,0 +1,20 @@
+--- langkit/compiled_types.py	2024-05-07 11:09:42.188770500 +1000
++++ langkit/compiled_types.py-new	2025-05-19 21:56:39.591492363 +1000
+@@ -5,7 +5,7 @@
+ from dataclasses import dataclass
+ import difflib
+ from itertools import count, takewhile
+-import pipes
++import shlex
+ from typing import (
+     Any, Callable, ClassVar, Dict, Iterator, List, Optional as Opt, Sequence,
+     Set, TYPE_CHECKING, Tuple, Union, ValuesView
+@@ -51,7 +51,7 @@
+     :param list[str] args: Elements of the special comment.
+     :rtype: str
+     """
+-    return ('--# {}'.format(' '.join(pipes.quote(a) for a in args))
++    return ('--# {}'.format(' '.join(shlex.quote(a) for a in args))
+             if get_context().emitter.generate_gdb_hook else '')
+ 
+ 
