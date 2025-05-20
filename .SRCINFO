@@ -1,0 +1,13 @@
+pkgbase = restup-bin
+	pkgdesc = A small ReST server for providing data and issuing commands, primarily for integrating with the Restful integrations in Home Assistant
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Lindenk/restup
+	arch = x86_64
+	license = MIT
+	provides = restup
+	conflicts = restup
+	source = https://github.com/Lindenk/restup/releases/download/v0.1.0/restup-0.1.0-x86_64.tar.gz
+	sha256sums = bcf4f74207c574a1b3f0aadb5408449aefd685ce97bc4fc17c07bb88b82aeb2d
+
+pkgname = restup-bin
