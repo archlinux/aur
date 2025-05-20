@@ -1,35 +1,54 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Andrew Sun <adsun701@gmail.com>
 
-_pkgname=libdbusmenu-qt
-pkgname=libdbusmenu-qt4
+_basename="libdbusmenu-qt"
+pkgname="${_basename}4"
 pkgver=0.9.3+16.04.20160218
-pkgrel=1
-pkgdesc="A library that provides a Qt4 implementation of the DBusMenu spec"
-arch=(x86_64)
-url="https://launchpad.net/libdbusmenu-qt"
-license=(GPL)
-conflicts=(libdbusmenu-qt)
-provides=(libdbusmenu-qt)
-replaces=(libdbusmenu-qt)
-depends=(qt4)
-makedepends=(cmake doxygen qjson qt4)
-source=("http://archive.ubuntu.com/ubuntu/pool/main/libd/${_pkgname}/${_pkgname}_${pkgver}.orig.tar.gz")
+pkgrel=2
+pkgdesc="A library that provides a Qt implementation of the DBusMenu spec"
+arch=('aarch64' 'i686' 'x86_64')
+url="https://github.com/desktop-app/${_basename}"
+license=('LGPL-2.1-or-later')
+depends=('gcc-libs' 'glibc' 'qt4')
+makedepends=('cmake>=2.8.11') # 'qjson>=0.5'
+provides=("${pkgname}.so")
+_pkgsrc="${_basename}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::https://archive.ubuntu.com/ubuntu/pool/main/${_basename::4}/${_basename}/${_basename}_${pkgver}.orig.tar.gz")
 sha256sums=('a8e6358a31c44ccdf1bfc46c95a77a6bfc7fc1f536aadb913ed4f4405c570cf6')
 
 prepare() {
-  mkdir -p ${srcdir}/build
+  cd "${srcdir}/${_pkgsrc}"
+  # is this needed?
+  sed -e 's/set(QT_SUFFIX "qt")/set(QT_SUFFIX "qt4")/g' \
+      -e '/add_subdirectory(tests)/d' \
+      -e '/add_subdirectory(tools)/d' \
+      -i 'CMakeLists.txt'
 }
 
 build() {
-  cd ${srcdir}/build
-  cmake ../${_pkgname}-${pkgver} \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DUSE_QT4=On
-  make
+  local cmake_options=(
+    -G 'Unix Makefiles'
+    -B "${_pkgsrc}/build"
+    -S "${_pkgsrc}"
+    -W no-dev
+    -D CMAKE_BUILD_TYPE:STRING='None'
+    -D CMAKE_INSTALL_PREFIX:PATH='/usr'
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5
+    -D WITH_DOC:BOOL=OFF
+    -D USE_QT4:BOOL=ON
+  )
+
+  cd "${srcdir}"
+  cmake "${cmake_options[@]}"
+  cmake --build "${_pkgsrc}/build"
 }
 
 package() {
-  cd ${srcdir}/build
-  make DESTDIR="${pkgdir}" install
+  cd "${srcdir}"
+  DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
+
+  cd "${_pkgsrc}"
+  install -vDm644 "NEWS"    "${pkgdir}/usr/share/doc/${pkgbase}/NEWS"
+  install -vDm644 "README"  "${pkgdir}/usr/share/doc/${pkgbase}/README"
+  install -vDm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgbase}/COPYING"
 }

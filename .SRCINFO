@@ -1,20 +1,18 @@
 pkgbase = libdbusmenu-qt4
-	pkgdesc = A library that provides a Qt4 implementation of the DBusMenu spec
+	pkgdesc = A library that provides a Qt implementation of the DBusMenu spec
 	pkgver = 0.9.3+16.04.20160218
-	pkgrel = 1
-	url = https://launchpad.net/libdbusmenu-qt
+	pkgrel = 2
+	url = https://github.com/desktop-app/libdbusmenu-qt
+	arch = aarch64
+	arch = i686
 	arch = x86_64
-	license = GPL
-	makedepends = cmake
-	makedepends = doxygen
-	makedepends = qjson
-	makedepends = qt4
+	license = LGPL-2.1-or-later
+	makedepends = cmake>=2.8.11
+	depends = gcc-libs
+	depends = glibc
 	depends = qt4
-	provides = libdbusmenu-qt
-	conflicts = libdbusmenu-qt
-	replaces = libdbusmenu-qt
-	source = http://archive.ubuntu.com/ubuntu/pool/main/libd/libdbusmenu-qt/libdbusmenu-qt_0.9.3+16.04.20160218.orig.tar.gz
+	provides = libdbusmenu-qt4.so
+	source = libdbusmenu-qt-0.9.3+16.04.20160218.tar.gz::https://archive.ubuntu.com/ubuntu/pool/main/libd/libdbusmenu-qt/libdbusmenu-qt_0.9.3+16.04.20160218.orig.tar.gz
 	sha256sums = a8e6358a31c44ccdf1bfc46c95a77a6bfc7fc1f536aadb913ed4f4405c570cf6
 
 pkgname = libdbusmenu-qt4
-
