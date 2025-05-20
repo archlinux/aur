@@ -2,7 +2,7 @@
 
 pkgname=blender-lts-bin
 pkgdesc='LTS blender version'
-pkgver='4.2.9'
+pkgver='4.2.10'
 #Official Mirror(Direct Link)
 _mirror="https://mirrors.dotsrc.org"
 
@@ -20,12 +20,12 @@ _mirror="https://mirrors.dotsrc.org"
 
 _pkgfile=${pkgname%-lts-bin}-$pkgver-linux-x64.tar.xz
 source=("${_mirror}/blender/release/Blender${pkgver%.*}/$_pkgfile" 'blender.sh')
-pkgrel=3
+pkgrel=1
 license=('GPL')
 arch=('x86_64')
 url='https://www.blender.org'
 
-b2sums=('c009c1f992ceaac8a5671d8d34cc4775d27771e9c9af79ca1a98cf4cdce6f0fcaa0225755c7fc80e4cdc3e9abce64707ba19b9bbbf28ebb7a200549efe446e9d'
+b2sums=('b96a0990d93217ef3fabcfccdbb9a7ff1c3d2d98ec3b9089af79d9caa3dc0f548037af20a555aa1bd7445a2857fb884dba47cd9257c43e807e8e3498e81b37e7'
 '4a8c6ca5fbcb23b91fa3c3f091994336869b2c5b0e7fa443e4edaa68863c15f8544ef1117b9c65b414db8a5a76ce0cd06db26648e26cf06ee01c7a1c78114060')
 
 _setvars() {
