@@ -14,9 +14,9 @@ _debug=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.8.w0.s4adf613
+pkgver=10.8.w30.s47f7759
 pkgrel=1
-eval pkgrel=1
+eval pkgrel=2
 
 ################################################################################################################################
 ################################################################################################################################
@@ -38,7 +38,7 @@ _disabled_staging=(winedevice-Default_Drivers dsound-EAX ntdll-Junction_Points m
                    # dsound-EAX causes crashing in osu! with compat. mode enabled
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="05-16-2025-7f833db1-4adf6139"
+_patchbase_tag="05-20-2025-6cd63073-47f77594"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -49,8 +49,8 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=7f833db11ffea4f3f4fa07be31d30559aff9c5fb
-_desired_staging_commit=4adf613941e5b9513e6aa90cd72b15a1350a0f05
+_desired_wine_commit=6cd63073860e213d2ec2a355ce26108071d989d0
+_desired_staging_commit=47f77594abf8e0ad04e20f0cdaebbb725bb8fa22
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -580,7 +580,7 @@ prepare() { _set_vars;
   printf "\nApplying other patches\n\n" >> "${_where}"/patchlog.txt
 
   patchlist=("${srcdir}"/makedep-fix.patch)
-  if [ "${_use_lto}" = "true" ]; then patchlist+=("${srcdir}"/lto-fixup.patch); fi
+  if [ "${_use_lto}" = "true" ] && ! { find "${_patchdir}"/ -name "*LTO-fixup.patch" -print0 -quit | grep . >/dev/null ; }; then patchlist+=("${srcdir}"/lto-fixup.patch); fi
 
   pattern=("(" "(" "-regex" ".*\.patch")
 
