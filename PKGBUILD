@@ -2,17 +2,17 @@
 
 _name=fal-client
 pkgname=python-${_name}
-pkgver=0.5.9
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Python client for fal.ai.'
 arch=('any')
 url='https://github.com/fal-ai/fal/tree/main/projects/fal_client'
 license=('Apache-2.0')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('238a5300293d8d8da1204f4455dc78b1539f2ff20122f870e7280ccc29f28922')
+sha256sums=('34fef7c3d2e544f4a13786fed48b1c506ba62c44daad5661c5658af79390ab98')
 depends=('python>=3.8' 'python-httpx' 'python-httpx-sse')
-makedepends=('python-setuptools' 'python-wheel' 'python-setuptools-scm' 'python-toml')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pillow')
+makedepends=('python-setuptools' 'python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-pillow')
 
 build() {
   cd "${srcdir}"/${_name//-/_}-${pkgver}
