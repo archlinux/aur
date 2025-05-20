@@ -1,6 +1,6 @@
 pkgbase = login-ng
 	pkgdesc = A greeter with addition functionalities
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/neroreflex/login-ng
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = login-ng
 	depends = qt6-base
 	backup = etc/pam.d/login_ng
 	backup = etc/pam.d/login_ng-autologin
-	source = login-ng-0.4.2.tar.gz::https://github.com/NeroReflex/login-ng/archive/refs/tags/0.4.2.tar.gz
-	sha256sums = fa512eb2de2659a45776b37b5617480ef8cc091f8425bf3396edd2eec8a22891
-	b2sums = 1be7f6a03c4b7238c5b2f39c8e55a7bfb354aab36647721e7da18b664aa073d3c1e458b8902be1c7c8f834034ab6387989c36de60767602cf4541d694a39fcf3
+	source = login-ng-0.4.3.tar.gz::https://github.com/NeroReflex/login-ng/archive/refs/tags/0.4.3.tar.gz
+	sha256sums = ebc648141a53a95250ffdeb42354adb38588bec2892f7e4700c33c21041387b5
+	b2sums = 56c60023f7b9a9090bd3f5d1520ab44e7336175d4fd11651c26805c23765efbf1893d04251c7254226d074e80c68bf5e26ad070f4daa916de73b1a9a99a3f3d6
 
 pkgname = login-ng
