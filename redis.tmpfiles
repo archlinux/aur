@@ -1,0 +1,2 @@
+d /var/lib/redis 0700 redis redis
+d /var/log/redis 0700 redis redis
