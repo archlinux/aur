@@ -1,0 +1,68 @@
+diff --git a/.gitmodules b/.gitmodules
+index 2fe666316..bad0ab299 100644
+--- a/.gitmodules
++++ b/.gitmodules
+@@ -14,3 +14,6 @@
+ [submodule "third_party/miniaudio"]
+ 	path = third_party/miniaudio
+ 	url = https://github.com/dr-soft/miniaudio.git
++[submodule "third_party/rapidjson"]
++	path = third_party/rapidjson
++	url = https://github.com/Tencent/rapidjson
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b113aac29..0b071c8be 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -22,6 +22,9 @@ project(USC VERSION 0.6.0)
+ if(WIN32 AND ${CMAKE_VERSION} VERSION_GREATER "3.12")
+     cmake_policy(SET CMP0079 NEW)
+ endif()
++if (${CMAKE_VERSION} VERSION_GREATER "4.0")
++    set(CMAKE_POLICY_VERSION_MINIMUM 3.12)
++endif()
+ # Project configurations
+ set(CMAKE_CONFIGURATION_TYPES Debug Release)
+ set(CMAKE_DEBUG_POSTFIX _Debug)
+@@ -68,6 +71,20 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+     set(LibArchive_INCLUDE_DIR "${LIBARCHIVE_PREFIX}/include")
+ endif()
+ 
++# Set path for discord-rpc dependency so that it doesn't download old version
++if (${CMAKE_VERSION} VERSION_GREATER "4.0")
++    file(
++        MAKE_DIRECTORY
++        ${PROJECT_SOURCE_DIR}/third_party/discord-rpc/thirdparty/
++    )
++    file(
++        CREATE_LINK
++        ${PROJECT_SOURCE_DIR}/third_party/rapidjson
++        ${PROJECT_SOURCE_DIR}/third_party/discord-rpc/thirdparty/rapidjson
++        SYMBOLIC
++    )
++endif()
++
+ # Set folder where to find FindXXX.cmake and
+ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules/")
+ 
+@@ -147,6 +164,7 @@ if(MSVC)
+     set_target_properties(nanovg PROPERTIES FOLDER "Third Party")
+     set_target_properties(sqlite3 PROPERTIES FOLDER "Third Party")
+     set_target_properties(discord-rpc PROPERTIES FOLDER "Third Party")
++    set_target_properties(rapidjson PROPERTIES FOLDER "Third Party")
+     set_target_properties(minimp3 PROPERTIES FOLDER "Third Party")
+     set_target_properties(soundtouch PROPERTIES FOLDER "Third Party")
+     set_target_properties(lua PROPERTIES FOLDER "Third Party")
+diff --git a/third_party/cpr b/third_party/cpr
+index 4377b03f4..7fa467321 160000
+--- a/third_party/cpr
++++ b/third_party/cpr
+@@ -1 +1 @@
+-Subproject commit 4377b03f4af1c58328a48d36ab1ce327a2c15b78
++Subproject commit 7fa467321f41c883ab83cc12d7f51c58653a0522
+diff --git a/third_party/rapidjson b/third_party/rapidjson
+new file mode 160000
+index 000000000..24b5e7a8b
+--- /dev/null
++++ b/third_party/rapidjson
+@@ -0,0 +1 @@
++Subproject commit 24b5e7a8b27f42fa16b96fc70aade9106cf7102f
