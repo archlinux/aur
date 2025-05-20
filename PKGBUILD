@@ -12,6 +12,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::https://gitlab.com/ashe.sterling/clrblk/-
 sha256sums=('200f4c7b82a8841fa71f9d82c3fdc82dc897bca9b12d9811a1e9c3caca1fa0d9')
 
 build() {
+  export RUSTUP_TOOLCHAIN=nightly
   cd "$srcdir/${pkgname}-v${pkgver}"
   cargo build --release
 }
