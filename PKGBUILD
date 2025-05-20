@@ -4,7 +4,7 @@
 
 _name=marimo
 pkgname=marimo
-pkgver=0.13.9
+pkgver=0.13.10
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -50,7 +50,7 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('973a5e96df75a37880bc5b311f069ee2493c75383fac6ed1b7ba6f508eb093cd')
+sha256sums=('b809d51773740885cf93b3cc65860b197b052fc7696b08fda1201231f30c904a')
 
 build() {
     cd $_name-$pkgver || exit
