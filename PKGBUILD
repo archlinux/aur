@@ -3,7 +3,7 @@ pkgname=webs-tray-git
 _pkgname=WebsTray
 pkgver=1.0.5.r2.gd63592a
 _electronversion=31
-_nodeversion=20
+_nodeversion=22
 pkgrel=1
 pkgdesc="📌Inspired by WebStay. WebsTray allows you to pin any web apps to system tray.(Use system-wide electron)"
 arch=(
@@ -43,6 +43,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname%-git}.git"
     sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-git}/
@@ -51,12 +52,15 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname%-git}.git"
+    gendesk -f -n -q \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    sed -i "/registry=/d" .npmrc
     {
         echo -e '\n'
         #echo 'build_from_source=true'
@@ -83,16 +87,25 @@ prepare() {
     esac
     NODE_ENV=development    npm add -D "${_rollup}"
     NODE_ENV=development    npm install
+    NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
-    NODE_ENV=production     npm run package
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    {\\
+        name: \"@electron-forge/plugin-local-electron\",\\
+        config: {\\
+            electronPath: \"${electronDist}\"\\
+        }\\
+    }," forge.config.*
+    npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/out/${_pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/out/${_pkgname}-linux-"*/resources/public "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/public/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
