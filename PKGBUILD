@@ -2,9 +2,9 @@
 
 _pkgbase=chordpro
 pkgname=${_pkgbase}-gui
-pkgver=6.070
-pkgrel=7
-_pkgdowmload=App-Music-ChordPro-${pkgver}.${pkgrel}
+pkgver=6.070.7
+pkgrel=2
+_pkgdowmload=App-Music-ChordPro-${pkgver}
 _wxver=3.005
 pkgdesc="A lyrics and chords formatting program (CLI and GUI)"
 arch=('any')
@@ -30,6 +30,7 @@ sha256sums=(
 build() {
     cd "${srcdir}/${_pkgdowmload}"
     export PERL_MM_USE_DEFAULT=1
+    export WX_CONFIG=/usr/lib/wx/config/gtk3-unicode-3.2  # temporary fix
     eval "$(perl -I "${srcdir}" -Mlocal::lib="${srcdir}")"
     cpanm --notest --local-lib="${srcdir}" --verbose --installdeps .
     cpanm --notest --local-lib="${srcdir}" --verbose ${_ghurl}/releases/download/R${pkgver}/Wx-${_wxver}.tar.gz
