@@ -1,0 +1,19 @@
+[papersplease]
+source = "jq"
+url = "https://www.gogdb.org/data/products/1207659209/product.json"
+filter = ".builds | map(select(.branch==null and .listed and .version and .public)) | .[-1].version"
+
+# The upstream changelog might have been a better primary source:
+#
+# [papersplease]
+# source = "htmlparser"
+# url = "https://3909.zendesk.com/hc/en-us/articles/360053256073-Version-Changelist"
+# user_agent = "Mozilla"
+# xpath = "//div[@class='article-body']/h2[./span/text()='(Windows+Mac+Linux)']"
+# from_pattern = "\\s.*"
+# to_pattern = ""
+#
+# However, that site has bot protections in place so the page 403s
+# most of the time when invoked by nvchecker.
+# Curiously, using curl (with any `User-Agent` header) would work
+# reliably, while the HTTP library that nvchecker uses would not.

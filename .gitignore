@@ -1,1 +1,6 @@
-papers-please_*.tar.gz
+/.vscode/
+/src/
+/pkg/
+*.log
+*.pkg.*
+papers-please_*.tar*
