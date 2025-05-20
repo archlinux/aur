@@ -3,7 +3,7 @@
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
 pkgver=0.6.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -93,14 +93,14 @@ depends=(python
         python-youtube-transcript-api
         tencentcloud-sdk-python
         )
-makedepends=('npm' 'nvm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-hatch')
+makedepends=('git' 'npm' 'nvm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-hatch')
 optdepends=('ollama' 'tika-server')
 conflicts=('open-webui-git' 'open-webui')
-source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("git+${url}#commit=e6afa69f59295d2930ff57285d0933e207d8e4c3"
         "build-only-backend.patch"
         "open-webui.service"
         "open-webui.conf")
-b2sums=('67871aa0bba60aea0c12b0f25478c6e165ce7f4cc9e045e9f8310d52a83fdf4ef4bfe2613b4b4c948e644a1fef93d30e684a00fe9c0d5075e0dcdbf6ed5f40a1'
+b2sums=('SKIP'
         '36ee27927719cd6cf761a62cd89404129326595f9cde35555f5fe5e2a616bac55346eba2a2882dd883f0d6b1a77e6da64c22521f7a7a18ca0d0b2eeac4781814'
         'f5dd97d4809160f3cc183a8c86ad5ead33163ba009fde2bb92935f766b6688f86bedecff9f1c805393d7e77736dd481d3da1d22cef6941a22bb0ef3856aee484'
         '9e9935cec52386c2397d53a02adf0befd82d9f6e7b95997abe75c156f7d2c0e29e67c9fe550da7e42c54faf97800de7501226b4ee6305530c5ced286dfed86a3')
@@ -124,13 +124,13 @@ prepare() {
     nvm install lts/iron
 
     # Backend part
-    cd "${_pkgname}-${pkgver}"
+    cd "${_pkgname}"
     patch -i ../build-only-backend.patch
 }
 
 build() {
     _ensure_local_nvm
-    cd "${_pkgname}-${pkgver}"
+    cd "${_pkgname}"
 
     # Backend part
     python -m build --wheel --no-isolation
@@ -148,7 +148,7 @@ package() {
     install -Dm644 "./$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
 
     # Install license
-    install -Dm 644 "$srcdir/${_pkgname}-${pkgver}"/LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -Dm 644 "$srcdir/${_pkgname}"/LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 
     # Install the default config file to /usr/share/$_pkgname/open-webui.conf
     install -d "$pkgdir/usr/share/$_pkgname"
@@ -162,7 +162,7 @@ package() {
     install -d "$pkgdir/var/opt/$_pkgname/data"
 
     # copy over files
-    cp -R "$srcdir/${_pkgname}-${pkgver}/build/." "$pkgdir/opt/$_pkgname"
+    cp -R "$srcdir/${_pkgname}/build/." "$pkgdir/opt/$_pkgname"
 
     # Fix permissions
     echo "Setting permissions for $pkgdiropt/$_pkgname"
@@ -175,7 +175,7 @@ package() {
     find "$pkgdir/var/opt/$_pkgname" -type d -exec chmod 755 {} \;
     find "$pkgdir/var/opt/$_pkgname" -type f -exec chmod 664 {} \;
 
-    cd "${_pkgname}-${pkgver}"
+    cd "${_pkgname}"
     python -m installer --destdir="$pkgdir" dist/*.whl
     rm -r "$pkgdir/usr/lib/python3.13/site-packages/data"
 }
