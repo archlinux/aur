@@ -1,5 +1,5 @@
 diff --git c/scripts/build.py w/scripts/build.py
-index e21085c..5661c1f 100644
+index e21085c..74a964d 100644
 --- c/scripts/build.py
 +++ w/scripts/build.py
 @@ -1,12 +1,4 @@
@@ -151,7 +151,7 @@ index e21085c..5661c1f 100644
 -    libraries=get_curl_libraries(),
 -    extra_objects=get_curl_archives(),
 -    library_dirs=[arch["libdir"]],
-+    libraries=["curl-impersonate-chrome"],
++    libraries=["curl-impersonate"],
 +    extra_objects=[],
 +    library_dirs=["/usr/lib"],
      source_extension=".c",

@@ -1,7 +1,7 @@
 pkgbase = python-curl-cffi
 	pkgdesc = Python FFI binding for curl-impersonate
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lexiforest/curl_cffi
 	arch = x86_64
 	license = MIT
@@ -23,6 +23,6 @@ pkgbase = python-curl-cffi
 	source = python-curl-cffi-0.11.1.tar.gz::https://github.com/lexiforest/curl_cffi/releases/download/v0.11.1/curl_cffi-0.11.1.tar.gz
 	source = use-system-libs.patch
 	sha256sums = e6d7aefd659a614bebaafd8a895d160b65429ce49a7460c99014424a04ac30f3
-	sha256sums = 08368062bc286a111044f6199883d2048a26511ef3c85b4848bdb002d03c7835
+	sha256sums = fa5e5a7fd0afa676775e8977e7dd7f29b8dfc9276eb271de127abf3f8f7289dd
 
 pkgname = python-curl-cffi

@@ -2,7 +2,7 @@
 _pipname=curl_cffi
 pkgname=python-${_pipname//_/-}
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python FFI binding for curl-impersonate'
 arch=(x86_64)
 url='https://github.com/lexiforest/curl_cffi'
@@ -32,7 +32,7 @@ source=(
 )
 sha256sums=(
 	'e6d7aefd659a614bebaafd8a895d160b65429ce49a7460c99014424a04ac30f3'
-	'08368062bc286a111044f6199883d2048a26511ef3c85b4848bdb002d03c7835'
+	'fa5e5a7fd0afa676775e8977e7dd7f29b8dfc9276eb271de127abf3f8f7289dd'
 )
 
 prepare() {
@@ -56,6 +56,6 @@ package() {
 	# Symlink license file
 	local site_packages=$(python -c 'import site;print(site.getsitepackages()[0])')
 	install -d "$pkgdir/usr/share/licenses/$pkgname"
-	ln -s "$site_packages/$_pipname-$pkgver.dist-info/LICENSE" \
+	ln -s "$site_packages/$_pipname-$pkgver.dist-info/licenses/LICENSE" \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
