@@ -1,5 +1,5 @@
 pkgbase = nodejs-electron-meta
-	pkgdesc = nodejs correpsponding with electron for makedepends
+	pkgdesc = nodejs correpsponding with electron
 	pkgver = 36
 	pkgrel = 1
 	url = https://nodejs.org/
@@ -17,3 +17,6 @@ pkgname = nodejs-electron35
 pkgname = nodejs-electron36
 	pkgdesc = nodejs correpsponding with electron36
 	depends = nodejs-lts-jod
+
+pkgname = nodejs-electron
+	depends = nodejs-electron36
