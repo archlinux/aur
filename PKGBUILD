@@ -3,12 +3,12 @@ pkgname=flexplayer-git
 _pkgname=FlexPlayer
 pkgver=1.0.1.r0.g3699fcf
 _electronversion=30
-_nodeversion=20
+_nodeversion=22
 pkgrel=1
-pkgdesc="Plays multiple video files in a grid,built in electron."
+pkgdesc="Plays multiple video files in a grid,built in electron.(Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/ricmsd/flexplayer"
-license=("MIT")
+license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
@@ -87,16 +87,16 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname//-/.}/electron"
     local electronDist="/usr/lib/electron${_electronversion}"
-    sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    sed -i "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
     {\\
         name: \"@electron-forge/plugin-local-electron\",\\
         config: {\\
             electronPath: \"${electronDist}\"\\
         }\\
-    }," forge.config.js
+    }," forge.config.*
     # 添加图标
-    sed -i '/asar: true,/a\    extraResources: [\n      {\n        from: "resources",\n        to: "resources"\n      }\n    ],' forge.config.js
-    NODE_ENV=production     npm run forge:package
+    sed -i '/asar: true,/a\    extraResources: [\n      {\n        from: "resources",\n        to: "resources"\n      }\n    ],' forge.config.*
+    npm run forge:package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"

@@ -1,5 +1,5 @@
 pkgbase = flexplayer-git
-	pkgdesc = Plays multiple video files in a grid,built in electron.
+	pkgdesc = Plays multiple video files in a grid,built in electron.(Use system-wide electron)
 	pkgver = 1.0.1.r0.g3699fcf
 	pkgrel = 1
 	url = https://github.com/ricmsd/flexplayer
