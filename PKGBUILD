@@ -9,7 +9,7 @@ license=('MIT')
 depends=('openssl' 'zlib')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Rooterts/sshf/archive/v$pkgver.tar.gz")
-sha256sums=('PON_AQUI_EL_HASH_REAL')  # Usa `makepkg -g` para generarlo
+sha256sums=('73089cdd48eba2953f64abcba44691c5ef20166aabe32af7337475d85b43c887')
 
 build() {
   cd "$pkgname-$pkgver"
