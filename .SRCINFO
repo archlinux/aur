@@ -41,12 +41,12 @@ pkgbase = proton-xiv-bin
 	optdepends = winetricks: protonfixes backend - highly recommended
 	optdepends = wine: support for 32bit prefixes
 	optdepends = xboxdrv: gamepad driver service
-	provides = proton
-	provides = xiv-proton=XIV.Proton10_1
+	provides = proton-xiv
+	provides = xiv-proton=XIV.Proton10_2
 	options = !strip
 	options = emptydirs
 	backup = usr/share/steam/compatibilitytools.d/proton-xiv/user_settings.py
-	source = XIV-Proton10-1_1-ntsync.tar.xz::https://github.com/rankynbass/proton-xiv//releases/download/XIV-Proton10-1/XIV-Proton10-1-ntsync.tar.xz
+	source = XIV-Proton10-2_1-ntsync.tar.xz::https://github.com/rankynbass/proton-xiv//releases/download/XIV-Proton10-2/XIV-Proton10-2-ntsync.tar.xz
 	source = user_settings.py
 	source = launcher.sh
 	source = pam_limits.conf
