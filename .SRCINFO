@@ -1,7 +1,7 @@
 pkgbase = parus
-	pkgdesc = A package search TUI for Paru using Skim
+	pkgdesc = A package search TUI for Paru, powered by Skim
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/salvoton/parus
 	arch = any
 	license = GPL
