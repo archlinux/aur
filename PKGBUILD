@@ -1,11 +1,12 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Pranav <pranav.sharma.ama@gmail.com>
 # Contributor: Neptune <neptune650@proton.me>
 # Contributor: Bjoern Franke <bjo+aur<at>schafweide.org>
 # Contributor: Ivan Semkin (ivan at semkin dot ru)
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir
-pkgver=2.20.1
+pkgver=2.20.2
 pkgrel=1
 pkgdesc="Canonical's display server"
 url="https://github.com/canonical/mir"
@@ -13,44 +14,48 @@ arch=(x86_64 i686)
 license=('GPL-2.0-or-later OR GPL-3.0-or-later')
 depends=(boost-libs libglvnd lttng-ust libepoxy libxml++2.6 libinput yaml-cpp
          libxkbcommon  freetype2  hicolor-icon-theme libxcursor
-
          egl-wayland wayland
-
-         glib2 glibc gcc-libs util-linux-libs libxcb libxkbcommon-x11 libdrm mesa libx11 gtest glibmm sh
-
-         # capnproto google-glog gflags liburcu nettle libevdev protobuf  python-gobject
-         )
-makedepends=(glm doxygen graphviz cmake boost umockdev wlcs glmark2
-
+         glib2 glibc gcc-libs util-linux-libs libxcb libxkbcommon-x11 libdrm mesa libx11 gtest glibmm
+         # explicit depends
+         bash systemd-libs
+)
+makedepends=(glm doxygen graphviz cmake ninja boost umockdev wlcs glmark2
              python-pillow python-dbus
              #gcovr lcov valgrind
              python-dbusmock
              glib2-devel
-             )
+)
 optdepends=('qterminal: required for miral demos'
             'ttf-ubuntu-font-family: required for miral demos'
             'qt5-wayland: required for miral demos'
             'xcursor-dmz: opt requirement for miral demos')
-options=(!lto)
+options=()
 source=("https://github.com/canonical/mir/releases/download/v${pkgver}/mir-${pkgver}.tar.xz")
-sha256sums=('ba57313abc6e4ef6819907d6968a79e033cd25aa8844de0074411808e72caba7')
+sha256sums=('c8994ba14d986d484daaec6c0ccb5f4ca7eb52746167899991a0983772c0fda8')
 
-# glm not found but is listed here
+# glm doesnt ship with a glm.pc, but mir build falls back on cmake's find_package for non-debian systems
 
 build() {
-  #export CFLAGS+=" -Wno-error=array-bounds"
-  #export CXXFLAGS+=" -Wno-error=array-bounds"
+  export CFLAGS+=" -ffat-lto-objects -O2"
+  export CXXFLAGS+=" -ffat-lto-objects -O2"
 
   local _flags=(
+    -B build
+    -S "${pkgname}-${pkgver}"
+    -GNinja
+    -Wno-dev
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_LIBDIR=lib
+    # mir options
+    -DMIR_FATAL_COMPILE_WARNINGS=OFF
+    -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/$pkgname/
+    -DMIR_BUILD_INTERPROCESS_TESTS=OFF
+    -DMIR_RUN_WLCS_TESTS=OFF
     -DMIR_USE_PRECOMPILED_HEADERS=OFF
-    -Dglm_DIR:PATH=/usr/lib/cmake/glm
   )
 
-  cmake -B build -S "mir-${pkgver}" -Wno-dev \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    "${_flags[@]}"
-
+  cmake "${_flags[@]}"
   cmake --build build
 }
 
