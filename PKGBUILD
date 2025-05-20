@@ -3,7 +3,7 @@ pkgname=yubico-authenticator
 _app_id=com.yubico.yubioath
 pkgdesc="Yubico Authenticator for Desktop"
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 _flutter_ver=3.29.2  ## Check .github/workflows/env for version
 arch=('x86_64' 'aarch64')
 url="https://github.com/Yubico/yubioath-flutter"
@@ -18,6 +18,7 @@ depends=(
   'python-pillow'
   'python-zxing-cpp'
   'yubikey-manager'
+  'zenity'
 )
 makedepends=(
   'chrpath'
