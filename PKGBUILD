@@ -10,7 +10,7 @@ conflicts=('google-tsunami-security-scanner')
 url="https://github.com/google/tsunami-security-scanner"
 license=('Apache')
 makedepends=("git")
-depends=('nmap>=7.80' 'ncrack>=0.7' 'java-runtime<=21')
+depends=('nmap>=7.80' 'ncrack>=0.7' 'java-runtime=21')
 source=("git+${url}.git")
 
 sha256sums=('SKIP')

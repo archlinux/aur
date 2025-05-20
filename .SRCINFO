@@ -8,7 +8,7 @@ pkgbase = google-tsunami-security-scanner-git
 	makedepends = git
 	depends = nmap>=7.80
 	depends = ncrack>=0.7
-	depends = java-runtime<=21
+	depends = java-runtime=21
 	conflicts = google-tsunami-security-scanner
 	source = git+https://github.com/google/tsunami-security-scanner.git
 	sha256sums = SKIP
