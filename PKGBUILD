@@ -5,10 +5,7 @@ pkgver=1.8.3
 _electronversion=36
 pkgrel=1
 pkgdesc="Integrated HTML, markdown, and SVG viewer, code editor, and debugger built with Electron.(Prebuilt version.Use system-wide electron)"
-arch=(
-    'aarch64'
-    'x86_64'
-)
+arch=('x86_64')
 url="https://www.brandonfowler.me/burrow/"
 _ghurl="https://github.com/BrandonXLF/burrow"
 license=('LGPL-3.0-or-later')
@@ -16,7 +13,6 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    'nodejs'
 )
 options=(
     '!emptydirs'
