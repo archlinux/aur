@@ -2,10 +2,10 @@
 
 pkgname=musicbee
 _pkgver_major=3
-_pkgver_minor=5
-_pkgver_build=8698
+_pkgver_minor=6
+_pkgver_build=9202
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_build}
-pkgrel=4
+pkgrel=1
 pkgdesc="Advanced, feature-rich freeware audio player (uses Wine)"
 arch=(x86_64)
 url=https://getmusicbee.com
@@ -17,11 +17,11 @@ depends=(wine
 		bash)
 makedepends=(p7zip)
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from here: https://www.getmusicbee.com/downloads/')
-source=("manual://MusicBeePortable_3_5.zip"
+source=("https://files1.majorgeeks.com/9d020897ce24d4f3dfcdea873decfcdb8e93479b/multimedia/MusicBeePortable_3_6.zip"
 		"${pkgname}.desktop"
 		"${pkgname}.sh"
 		"https://www.un4seen.com/files/z/2/bass_aac24.zip") #M4A/AAC Support
-sha256sums=('a1da2ff921922fe4323f062a0032b6182b5dd000d6b5df34998614377aa3977a'
+sha256sums=('aff35dc919b4a620847ca0c5269d1d75e93bf96bcabcbbdc0d058ce3e1d82c5d'
             '42e9670e70a37837a026df7d1f3aa89b5247a09927a15204f8dcc95a551b5fab'
             '28b4fcee5f7e88dfa8a8b3846a085167d475bd7c7da4680a8009da792addffd5'
             '782ec4f3758fc715d29ceab332103266df4000dd413a477901dccb8c9bac2090')
@@ -30,7 +30,7 @@ package() {
 	install -d -m755 ${pkgdir}/usr/share/$pkgname
 
 	cd ${srcdir}
-	7z x MusicBeePortable_3_5.exe -o$pkgname -y
+	7z x MusicBeePortable_${_pkgver_major}_${_pkgver_minor}.exe -o$pkgname -y
 
 	rm -r $pkgname/*PLUGINSDIR
 
