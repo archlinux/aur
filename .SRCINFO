@@ -1,0 +1,18 @@
+pkgbase = qjson-qt5
+	pkgdesc = A Qt-based library that maps JSON data to QVariant objects
+	pkgver = 0.9.0+r32+gd273123
+	pkgrel = 1
+	url = https://qjson.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1-only
+	license = GPL-2.0-with-bison-exception
+	makedepends = cmake>=2.8.8
+	depends = gcc-libs
+	depends = glibc
+	depends = qt5-base
+	provides = libqjson-qt5.so
+	source = qjson-d2731237ba0a4176be2483fed79bbd8c451671e4.tar.gz::https://github.com/flavio/qjson/archive/d2731237ba0a4176be2483fed79bbd8c451671e4.tar.gz
+	b2sums = abf90a40508955f38293679b9b5ee3a083533489833f96e4ff64b3359f153be19eff329f8d564be20bf5294fc9d7fb02b510265b8be32209f85f391deab65bb9
+
+pkgname = qjson-qt5

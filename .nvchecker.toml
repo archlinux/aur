@@ -1,0 +1,4 @@
+[qjson-qt5]
+source = "git"
+git = "https://github.com/flavio/qjson.git"
+prefix = "v"
