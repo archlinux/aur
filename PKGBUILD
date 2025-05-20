@@ -33,7 +33,6 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
 build() {
   arch-meson "${pkgname%-git}" build \
     -Dnemo=true \
