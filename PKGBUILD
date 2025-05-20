@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=witsy
 _pkgname=Witsy
-pkgver=2.6.2
+pkgver=2.6.3
 _electronversion=32
 _nodeversion=22
 pkgrel=1
@@ -71,7 +71,7 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     local electronDist="/usr/lib/electron${_electronversion}"
-    sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    sed -i "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
     {\\
         name: \"@electron-forge/plugin-local-electron\",\\
         config: {\\
