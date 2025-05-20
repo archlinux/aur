@@ -12,7 +12,7 @@ license=('MIT')
 depends=( ripgrep xdg-utils # electron* is added at build process
 libsecret libxkbfile )
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=( nodejs-lts-jod # needs corresponding nodejs
+makedepends=( nodejs-electron
 git npm pnpm python desktop-file-utils)
 conflicts=(code vscode)
 provides=(code vscode)
