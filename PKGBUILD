@@ -16,8 +16,6 @@ depends=( electron$_elnum ripgrep fd xdg-utils #replacements
     'libsecret'
     'libxkbfile'
     'libxss'
-    'libxtst'
-    'shared-mime-info'
 )
 optdepends=('glib2: Move to trash functionality'
             'org.freedesktop.secrets: Sync settings'
