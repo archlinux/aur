@@ -2,7 +2,7 @@
 pkgname=mewline
 conflicts=('mewline-git')
 provides=('mewline-git')
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="😺 Elegant and extensible status bar for the meowrch distribution (stable)"
 arch=('any')
@@ -20,11 +20,11 @@ depends=(
   'cliphist'
 )
 makedepends=('python-uv' 'python-virtualenv')
-source=("$url/releases/download/v$pkgver/mewline-v$pkgver.tar.gz")
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 
 package() {
-  cd "$srcdir/mewline-v$pkgver"
+  cd "$srcdir/mewline-$pkgver"
 
   # Install virtual environment
   install -d -m755 "$pkgdir/opt/$pkgname"
