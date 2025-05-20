@@ -3,7 +3,7 @@
 pkgname=libadalang
 pkgdesc="A high performance semantic engine for the Ada programming language."
 pkgver=25.0w
-pkgrel=1
+pkgrel=2
 epoch=2
 
 url=https://github.com/AdaCore/libadalang
@@ -32,13 +32,15 @@ build()
   ADA_FLAGS="${ADA_FLAGS//-Wformat}"
   ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
 
+#  patch -Np0 -i $srcdir/rid_pipes_import.patch
+
   python manage.py generate
   python manage.py build                          \
     --library-types=static,static-pic,relocatable \
     --build-mode=prod                             \
     --gargs="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
 
-  make -C dev_manual html
+#  make -C dev_manual html
 
   cd build/python
   python setup.py build
