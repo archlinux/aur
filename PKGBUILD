@@ -2,7 +2,7 @@
 
 pkgname=python-luna-soc
 _gitpkgname=luna-soc
-pkgver=0.2.4
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Amaranth HDL libary for building USB-capable SoC designs'
 arch=('any')
@@ -10,14 +10,18 @@ url='https://github.com/greatscottgadgets/luna-soc'
 license=('BSD-3-Clause')
 depends=(
   'python'
-  'python-amaranth<0.5'  # https://github.com/greatscottgadgets/luna-soc/issues/21
-  'python-luna-usb'
+  'python-amaranth>=0.5'
+
+  # Work around undeclared transitive dependency of python-amaranth
+  # See also: https://aur.archlinux.org/packages/python-amaranth#comment-1016100
+  'python-jschon'
+
+  'python-luna-usb>=0.2'
   'python-pyserial'
 )
 makedepends=(
   'python-build'
   'python-installer'
-  'python-minerva-amaranth0.4'
   'python-pyproject-patcher'
   'python-recommonmark'
   'python-setuptools'
@@ -26,15 +30,16 @@ makedepends=(
   'python-sphinxcontrib-apidoc'
   'python-wheel'
 )
+checkdepends=('python-apollo')
 optdepends=(
-  'python-minerva-amaranth0.4: to implement SoC designs using a Minerva RISC-V CPU'
+  'python-minerva: to implement SoC designs using a Minerva RISC-V CPU'
 )
 
 source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/luna-soc/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=('7769f7d4ffb38e6977de2d0b45c2d22b29867b5cc0d5f482a9922154c370f4e8a576cfebdb2d9b1066714672045e8352982008e25cfaefeb1d9470994227ff31')
+sha512sums=('aaaa528e436dc03c8fcb8e4e9e226d02d50f1c333bc3bd64b43873a7a852c75a8b40c6da7175271f86063c1b1456e3ed5658b297206ed2a0899bacd143d9442c')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
@@ -61,6 +66,27 @@ build() {
     make -C docs singlehtml
 }
 
+check() {
+  cd "${_gitpkgname}-${pkgver}"
+  local LUNA_USB_IDS
+
+  # Do not use real hardware if connected at check time
+  export LUNA_USB_IDS='0xffff:0xffff'
+
+  echo >&2 'Smoke testing the built-in CLI'
+  python >actual.txt 2>&1 << 'EOF' || true
+from apollo_fpga import ApolloDebugger
+import luna_soc
+luna_soc.top_level_cli(ApolloDebugger)
+EOF
+  if ! grep -qF 'apollo_fpga.DebuggerNotFound' actual.txt; then
+    printf >&2 '%s\n' 'Unexpected test output:' '==='
+    cat >&2 actual.txt
+    printf >&2 '\n%s\n' '==='
+    exit 1
+  fi
+}
+
 package() {
   cd "${_gitpkgname}-${pkgver}"
 
@@ -73,10 +99,10 @@ package() {
   cp -R --preserve=mode -t "${pkgdir}/usr/share/doc/${pkgname}" \
     docs/build/singlehtml/{index.html,_images,_static}
 
-  echo >&2 'Packaging applets and examples'
+  echo >&2 'Packaging examples'
   mkdir -p "${pkgdir}/usr/share/${pkgname}"
   cp -R --preserve=mode -t "${pkgdir}/usr/share/${pkgname}" \
-    applets examples
+    examples
 
   echo >&2 'Packaging the license'
   install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
