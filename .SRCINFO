@@ -1,0 +1,18 @@
+pkgbase = chordpro-cli
+	pkgdesc = A lyrics and chords formatting program (CLI)
+	pkgver = 6.070
+	pkgrel = 7
+	url = https://chordpro.org/
+	arch = any
+	license = Artistic-2.0
+	makedepends = perl-local-lib
+	makedepends = cpanminus
+	depends = perl
+	provides = chordpro
+	conflicts = chordpro
+	source = https://github.com/ChordPro/chordpro/releases/download/R6.070/App-Music-ChordPro-6.070.7.tar.gz
+	source = chordpro.sh
+	sha256sums = 47f3f202e6afc0f524d0e29ca4776b5eb6b7f3660aeb4b18e499cda7a0f40312
+	sha256sums = 259db24404125459b563f049f746c6844cf8eab46728d0c9935cc36765cb722d
+
+pkgname = chordpro-cli
