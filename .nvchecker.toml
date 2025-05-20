@@ -1,0 +1,4 @@
+[anki-bin]
+source = "github"
+github = "ankitects/anki"
+use_latest_release = "true"
