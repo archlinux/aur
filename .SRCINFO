@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-vinecopulib
 	pkgdesc = C++ vine copula library (mingw-w64)
-	pkgver = 0.7.1
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/vinecopulib/vinecopulib
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mingw-w64-vinecopulib
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/vinecopulib/vinecopulib/archive/refs/tags/v0.7.1.tar.gz
-	sha256sums = ef514eaa4691186bb90c9e0490187342ffd89c2bb9d180ae8e36989c1dec8f20
+	source = https://github.com/vinecopulib/vinecopulib/archive/refs/tags/v0.7.3.tar.gz
+	sha256sums = 2130d5e381e62d13c409a6e44454f171b57bcc2eca049ebe8184a1acf599c7a0
 
 pkgname = mingw-w64-vinecopulib
