@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=rutabaga-ffi
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="VGI cross-platform abstraction for GPU and display virtualization."
 arch=("x86_64")
 url="https://crosvm.dev/book/appendix/rutabaga_gfx.html"
@@ -27,5 +27,9 @@ package() {
   cd $srcdir/crosvm/rutabaga_gfx/ffi
   meson install -C build --destdir "$pkgdir"
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  #force symlinks to avoid warnings
+  cd $pkgdir/usr/lib 
+  ln -sf librutabaga_gfx_ffi.so.0.1.6 librutabaga_gfx_ffi.so.0
+  ln -sf librutabaga_gfx_ffi.so.0 librutabaga_gfx_ffi.so
 }
 # vim:set ts=2 sw=2 et:

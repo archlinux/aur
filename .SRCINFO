@@ -1,7 +1,7 @@
 pkgbase = rutabaga-ffi
 	pkgdesc = VGI cross-platform abstraction for GPU and display virtualization.
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://crosvm.dev/book/appendix/rutabaga_gfx.html
 	arch = x86_64
 	license = LicenseRef-chromiumos
