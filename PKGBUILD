@@ -2,7 +2,7 @@
 # Contributor Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=qtchess
-pkgver=2025.03.12
+pkgver=2025.05.19
 pkgrel=1
 pkgdesc='Online chess game client written in Qt'
 url='https://textbrowser.github.io/qtchess/'
@@ -11,7 +11,7 @@ license=('custom:3-clause BSD')
 depends=('qt5-base' 'libgl')
 makedepends=('qt5-tools')
 source=(qtchess-${pkgver}.tar.gz::"https://github.com/textbrowser/qtchess/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5bbfc44b2e0ddb7d0b89a5c3ea77595473eccba8fa6ff13ca80028cdbf06cf54')
+sha256sums=('329417fa3f6a5bbede7c542214c1af2703175da762c6efed4c04a27e549521b3')
 
 prepare() {
   cd "$srcdir/qtchess-${pkgver}"
