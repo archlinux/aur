@@ -8,6 +8,7 @@ pkgbase = mindomo-bin
 	depends = fuse2
 	provides = mindomo
 	conflicts = mindomo
+	options = !strip
 	source_x86_64 = https://mindomo.com/download/11.0/Mindomo_v.11.0.3_x64.AppImage
 	sha256sums_x86_64 = a032a76d96d43946be5ed1c763e1246d49e08d31ba77fc0d77095c6902e5981b
 
