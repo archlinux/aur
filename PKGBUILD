@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folo
 _pkgname=Folo
-pkgver=0.4.6
+pkgver=0.4.7
 _electronversion=35
 _nodeversion=22
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('24a1764586ed2db1f040413de5107b417fbd9a9199a3ae06f57c119f157cf501'
+sha256sums=('cd57a31153471ca468c8c0a6dee12786071c470868bf70df314d27b7dade5fc2'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -92,7 +92,7 @@ build() {
         config: {\\
             electronPath: \"${electronDist}\"\\
         }\\
-    }," forge.config.cts
+    }," forge.config.*
     NODE_ENV=production     pnpm run build:electron
 }
 package() {
