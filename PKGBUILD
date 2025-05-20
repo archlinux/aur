@@ -4,14 +4,16 @@
 _basename="libdbusmenu-qt"
 pkgname="${_basename}4"
 pkgver=0.9.3+16.04.20160218
-pkgrel=2
+pkgrel=3
 pkgdesc="A library that provides a Qt implementation of the DBusMenu spec"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/desktop-app/${_basename}"
 license=('LGPL-2.1-or-later')
 depends=('gcc-libs' 'glibc' 'qt4')
 makedepends=('cmake>=2.8.11') # 'qjson>=0.5'
-provides=("${pkgname}.so")
+provides=("${_basename}" "${_basename}.so") # "${pkgname}.so"
+conflicts=("${_basename}")
+replaces=("${_basename}")
 _pkgsrc="${_basename}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://archive.ubuntu.com/ubuntu/pool/main/${_basename::4}/${_basename}/${_basename}_${pkgver}.orig.tar.gz")
 sha256sums=('a8e6358a31c44ccdf1bfc46c95a77a6bfc7fc1f536aadb913ed4f4405c570cf6')
@@ -19,8 +21,8 @@ sha256sums=('a8e6358a31c44ccdf1bfc46c95a77a6bfc7fc1f536aadb913ed4f4405c570cf6')
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   # is this needed?
-  sed -e 's/set(QT_SUFFIX "qt")/set(QT_SUFFIX "qt4")/g' \
-      -e '/add_subdirectory(tests)/d' \
+  # -e 's/set(QT_SUFFIX "qt")/set(QT_SUFFIX "qt4")/g' \
+  sed -e '/add_subdirectory(tests)/d' \
       -e '/add_subdirectory(tools)/d' \
       -i 'CMakeLists.txt'
 }
