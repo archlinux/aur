@@ -1,0 +1,4 @@
+[mimirtool-bin]
+source = "github"
+github = "grafana/mimir"
+use_latest_release = true
