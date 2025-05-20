@@ -1,7 +1,7 @@
 pkgbase = perrito-ws
 	pkgdesc = 🐶 The fastest way to get a WebSocket server up and running
 	pkgver = 1.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/KAIKAKU-AI/perrito-ws
 	arch = any
 	license = GPL-3.0-only
