@@ -1,0 +1,3 @@
+[perl-object-pad]
+source = "cpan"
+cpan = "Object-Pad"
