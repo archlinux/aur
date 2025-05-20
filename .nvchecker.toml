@@ -1,0 +1,3 @@
+[perl-file-loadlines]
+source = "cpan"
+cpan = "File-LoadLines"
