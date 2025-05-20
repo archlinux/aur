@@ -4,7 +4,7 @@ _pkgname=FlexPlayer
 pkgver=1.0.0
 _electronversion=26
 _nodeversion=20
-pkgrel=9
+pkgrel=10
 pkgdesc="Plays multiple video files in a grid,built in electron.(Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/ricmsd/flexplayer"
@@ -85,10 +85,10 @@ build() {
         config: {\\
             electronPath: \"${electronDist}\"\\
         }\\
-    }," forge.config.js
+    }," forge.config.*
     # 添加图标
-    sed -i '/asar: true,/a\    extraResources: [\n      {\n        from: "resources",\n        to: "resources"\n      }\n    ],' forge.config.js
-    NODE_ENV=production     npm run forge:package
+    sed -i '/asar: true,/a\    extraResources: [\n      {\n        from: "resources",\n        to: "resources"\n      }\n    ],' forge.config.*
+    npm run forge:package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
