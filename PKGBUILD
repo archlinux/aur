@@ -88,10 +88,20 @@ prepare() {
         s|`C:\\\\Users\\\\FelixRieseberg\\\\AppData\\\\Local\\\\Temp`|os.tmpdir();|g
     ' forge.config.js
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=development    yarn add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
     local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i '/makers: \[/i\
+	plugins: [\
+		{\
+			name: "@electron-forge/plugin-local-electron",\
+			config: {\
+				electronPath: "'"${electronDist}"'",\
+			},\
+		},\
+	],' forge.config.*
     NODE_ENV=production     yarn run package
 }
 package() {
