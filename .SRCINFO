@@ -1,0 +1,23 @@
+pkgbase = python-scikit-multilearn
+	pkgdesc = A Python module for multi-label learning built on top of scikit-learn
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://scikit.ml/
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-scikit-learn
+	depends = python-liac-arff
+	depends = python-requests
+	depends = python-networkx
+	optdepends = python-igraph: for igraph library based clusterers (GPL licensed)
+	optdepends = python-keras: for Keras based classifiers
+	optdepends = python-javabridge: for MEKA bridge support
+	optdepends = python-weka-wrapper3: for MEKA bridge support
+	source = python-scikit-multilearn-0.2.0.tar.gz::https://github.com/scikit-multilearn/scikit-multilearn/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = 6ac89d25206c72a175369caaaceebb47ec992e588fb3552139832123ae4801de
+
+pkgname = python-scikit-multilearn
