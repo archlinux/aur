@@ -1,6 +1,6 @@
 pkgbase = sshf
 	pkgdesc = SSH Host Manager TUI (Rust)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Rooterts/sshf
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sshf
 	makedepends = cargo
 	depends = openssl
 	depends = zlib
-	source = sshf-1.0.0.tar.gz::https://github.com/Rooterts/sshf/archive/v1.0.0.tar.gz
-	sha256sums = PON_AQUI_EL_HASH_REAL
+	source = sshf-1.0.1.tar.gz::https://github.com/Rooterts/sshf/archive/v1.0.1.tar.gz
+	sha256sums = edecdca03d85d0c91c63ed6719adc58cdb8d2e46b6ed044cd7ecd41500eae4ec
 
 pkgname = sshf
