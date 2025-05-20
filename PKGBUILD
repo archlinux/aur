@@ -1,14 +1,14 @@
 # Maintainer: oech3
-# Maintainer?: tiziodcaio
+# Maintainer: tiziodcaio
 # Contributor: netcrusher < tobias AT miglix DOT eu >
 # Contributor: Caleb Maclennan <caleb AT alerque DOT com>
 # Contributor: Gordian Edenhofer <gordian.edenhofer AT gmail DOT com>
 # Contributor: mnabid
 
 pkgname=zoom-system-qt
-pkgver=6.4.6.1370
-pkgrel=3
-pkgdesc="Zoom Workspace client with system libraries"
+pkgver=6.4.10.2027
+pkgrel=1
+pkgdesc="Zoom Workspace client (system runtimes)"
 arch=('x86_64')
 license=('LicenseRef-zoom')
 url="https://zoom.us/"
@@ -16,11 +16,11 @@ depends=(ocl-icd ffmpeg mpg123
 	quazip-qt5 qt5-{base,graphicaleffects,quickcontrols,quickcontrols2,svg,declarative}
 )
 makedepends=(patchelf binutils)
-optdepends=('qt5-wayland: Wayland support'
+optdepends=('qt5-wayland'
 	'qt5-webengine: SSO login'
 	'xdg-desktop-portal-impl: Screen sharing,etc... for Wayland'
 	{chromium,sqlite,vulkan-drivers}': Webview'
-	'qt5-'{3d,x11extras,multimedia,imageformats,remoteobjects}': Unknown. Bundled in original.'
+	'qt5-'{3d,x11extras,multimedia,imageformats,remoteobjects}': Unused?'
 	)
 options=(!strip emptydirs)
 provides=(zoom)
