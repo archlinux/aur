@@ -2,14 +2,14 @@
 
 pkgname=libcurl-impersonate-bin
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Series of patches that make curl requests look like Chrome"
 arch=(aarch64 armv7h i686 x86_64)
 url=https://github.com/lexiforest/curl-impersonate
 depends=(glibc)
 license=(MIT)
-provides=(${pkgname%-bin}-chrome)
-conflicts=(${pkgname%-bin}-chrome)
+provides=(${pkgname%-bin}-chrome ${pkgname%-bin})
+conflicts=(curl-impersonate)
 options=(!debug)
 
 source=(https://raw.githubusercontent.com/lexiforest/curl-impersonate/master/LICENSE)
