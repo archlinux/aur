@@ -2,7 +2,7 @@
 
 pkgname=curl-impersonate
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="A special compilation of curl that makes it impersonate Firefox, Crome and other browsers. Includes libcurl."
 url="https://github.com/lexiforest/curl-impersonate"
@@ -40,9 +40,10 @@ package () {
   cd curl-impersonate-${pkgver}/build
   make install
 
-  # Cleanup libcurl
+  # Link libcurl
   ln -s /usr/lib/libcurl-impersonate.so.4.8.0 "$pkgdir"/usr/lib/libcurl-impersonate-chrome.so
   ln -s /usr/lib/libcurl-impersonate.so.4.8.0 "$pkgdir"/usr/lib/libcurl-impersonate-chrome.so.4
+  ln -s /usr/lib/libcurl-impersonate.so.4.8.0 "$pkgdir"/usr/lib/libcurl-impersonate.so
 
   cd ../
   install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
