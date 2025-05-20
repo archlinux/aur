@@ -4,6 +4,7 @@ Module: urllib.parse
     open_webui/main.py
     open_webui/retrieval/loaders/youtube.py
     open_webui/retrieval/vector/dbs/qdrant.py
+    open_webui/retrieval/vector/dbs/qdrant_multitenancy.py
     open_webui/retrieval/web/firecrawl.py
     open_webui/retrieval/web/main.py
     open_webui/retrieval/web/searchapi.py
@@ -132,7 +133,8 @@ Module: requests
   Imported in:
     open_webui/config.py
     open_webui/main.py
-    open_webui/retrieval/loaders/external.py
+    open_webui/retrieval/loaders/external_document.py
+    open_webui/retrieval/loaders/external_web.py
     open_webui/retrieval/loaders/main.py
     open_webui/retrieval/loaders/mistral.py
     open_webui/retrieval/loaders/tavily.py
@@ -371,7 +373,6 @@ Module: open_webui.config
   Imported in:
     open_webui/main.py
     open_webui/retrieval/utils.py
-    open_webui/retrieval/vector/connector.py
     open_webui/retrieval/vector/dbs/chroma.py
     open_webui/retrieval/vector/dbs/elasticsearch.py
     open_webui/retrieval/vector/dbs/milvus.py
@@ -379,6 +380,8 @@ Module: open_webui.config
     open_webui/retrieval/vector/dbs/pgvector.py
     open_webui/retrieval/vector/dbs/pinecone.py
     open_webui/retrieval/vector/dbs/qdrant.py
+    open_webui/retrieval/vector/dbs/qdrant_multitenancy.py
+    open_webui/retrieval/vector/factory.py
     open_webui/retrieval/web/utils.py
     open_webui/routers/audio.py
     open_webui/routers/auths.py
@@ -425,7 +428,8 @@ Module: open_webui.env
     open_webui/models/models.py
     open_webui/models/tags.py
     open_webui/models/tools.py
-    open_webui/retrieval/loaders/external.py
+    open_webui/retrieval/loaders/external_document.py
+    open_webui/retrieval/loaders/external_web.py
     open_webui/retrieval/loaders/main.py
     open_webui/retrieval/loaders/mistral.py
     open_webui/retrieval/loaders/tavily.py
@@ -438,6 +442,7 @@ Module: open_webui.env
     open_webui/retrieval/vector/dbs/pgvector.py
     open_webui/retrieval/vector/dbs/pinecone.py
     open_webui/retrieval/vector/dbs/qdrant.py
+    open_webui/retrieval/vector/dbs/qdrant_multitenancy.py
     open_webui/retrieval/web/bing.py
     open_webui/retrieval/web/bocha.py
     open_webui/retrieval/web/brave.py
@@ -794,7 +799,6 @@ Module: open_webui.utils.response
     open_webui/utils/chat.py
 Module: open_webui.utils.filter
   Imported in:
-    open_webui/routers/tasks.py
     open_webui/utils/chat.py
     open_webui/utils/middleware.py
 Module: collections.abc
@@ -810,6 +814,7 @@ Module: concurrent.futures
   Imported in:
     open_webui/retrieval/utils.py
     open_webui/retrieval/vector/dbs/pinecone.py
+    open_webui/routers/audio.py
     open_webui/utils/middleware.py
 Module: open_webui.routers.tasks
   Imported in:
@@ -836,6 +841,10 @@ Module: jwt
 Module: pytz
   Imported in:
     open_webui/utils/auth.py
+Module: opentelemetry
+  Imported in:
+    open_webui/utils/auth.py
+    open_webui/utils/telemetry/setup.py
 Module: fastapi.security
   Imported in:
     open_webui/utils/auth.py
@@ -893,9 +902,6 @@ Module: open_webui.utils.telemetry.constants
 Module: opentelemetry.semconv.trace
   Imported in:
     open_webui/utils/telemetry/constants.py
-Module: opentelemetry
-  Imported in:
-    open_webui/utils/telemetry/setup.py
 Module: opentelemetry.exporter.otlp.proto.grpc.trace_exporter
   Imported in:
     open_webui/utils/telemetry/setup.py
@@ -1129,7 +1135,7 @@ Module: open_webui.storage.provider
 Module: open_webui.models.memories
   Imported in:
     open_webui/routers/memories.py
-Module: open_webui.retrieval.vector.connector
+Module: open_webui.retrieval.vector.factory
   Imported in:
     open_webui/retrieval/utils.py
     open_webui/routers/knowledge.py
@@ -1159,7 +1165,8 @@ Module: langchain.text_splitter
     open_webui/routers/retrieval.py
 Module: langchain_core.documents
   Imported in:
-    open_webui/retrieval/loaders/external.py
+    open_webui/retrieval/loaders/external_document.py
+    open_webui/retrieval/loaders/external_web.py
     open_webui/retrieval/loaders/main.py
     open_webui/retrieval/loaders/mistral.py
     open_webui/retrieval/loaders/tavily.py
@@ -1325,33 +1332,41 @@ Module: open_webui.retrieval.vector.main
     open_webui/retrieval/vector/dbs/pgvector.py
     open_webui/retrieval/vector/dbs/pinecone.py
     open_webui/retrieval/vector/dbs/qdrant.py
+    open_webui/retrieval/vector/dbs/qdrant_multitenancy.py
+    open_webui/retrieval/vector/factory.py
 Module: langchain_core.callbacks
   Imported in:
     open_webui/retrieval/utils.py
 Module: langchain_core.retrievers
   Imported in:
     open_webui/retrieval/utils.py
+Module: open_webui.retrieval.vector.type
+  Imported in:
+    open_webui/retrieval/vector/factory.py
 Module: open_webui.retrieval.vector.dbs.milvus
   Imported in:
-    open_webui/retrieval/vector/connector.py
-Module: open_webui.retrieval.vector.dbs.qdrant
-  Imported in:
-    open_webui/retrieval/vector/connector.py
-Module: open_webui.retrieval.vector.dbs.opensearch
-  Imported in:
-    open_webui/retrieval/vector/connector.py
-Module: open_webui.retrieval.vector.dbs.pgvector
-  Imported in:
-    open_webui/retrieval/vector/connector.py
-Module: open_webui.retrieval.vector.dbs.elasticsearch
-  Imported in:
-    open_webui/retrieval/vector/connector.py
+    open_webui/retrieval/vector/factory.py
 Module: open_webui.retrieval.vector.dbs.pinecone
   Imported in:
-    open_webui/retrieval/vector/connector.py
+    open_webui/retrieval/vector/factory.py
+Module: open_webui.retrieval.vector.dbs.opensearch
+  Imported in:
+    open_webui/retrieval/vector/factory.py
+Module: open_webui.retrieval.vector.dbs.pgvector
+  Imported in:
+    open_webui/retrieval/vector/factory.py
+Module: open_webui.retrieval.vector.dbs.elasticsearch
+  Imported in:
+    open_webui/retrieval/vector/factory.py
 Module: open_webui.retrieval.vector.dbs.chroma
   Imported in:
-    open_webui/retrieval/vector/connector.py
+    open_webui/retrieval/vector/factory.py
+Module: open_webui.retrieval.vector.dbs.qdrant_multitenancy
+  Imported in:
+    open_webui/retrieval/vector/factory.py
+Module: open_webui.retrieval.vector.dbs.qdrant
+  Imported in:
+    open_webui/retrieval/vector/factory.py
 Module: chromadb.utils.batch_utils
   Imported in:
     open_webui/retrieval/vector/dbs/chroma.py
@@ -1382,15 +1397,24 @@ Module: pinecone
 Module: pinecone.grpc
   Imported in:
     open_webui/retrieval/vector/dbs/pinecone.py
+Module: grpc
+  Imported in:
+    open_webui/retrieval/vector/dbs/qdrant_multitenancy.py
 Module: qdrant_client
   Imported in:
     open_webui/retrieval/vector/dbs/qdrant.py
+    open_webui/retrieval/vector/dbs/qdrant_multitenancy.py
+Module: qdrant_client.http.exceptions
+  Imported in:
+    open_webui/retrieval/vector/dbs/qdrant_multitenancy.py
 Module: qdrant_client.http.models
   Imported in:
     open_webui/retrieval/vector/dbs/qdrant.py
+    open_webui/retrieval/vector/dbs/qdrant_multitenancy.py
 Module: qdrant_client.models
   Imported in:
     open_webui/retrieval/vector/dbs/qdrant.py
+    open_webui/retrieval/vector/dbs/qdrant_multitenancy.py
 Module: elasticsearch
   Imported in:
     open_webui/retrieval/vector/dbs/elasticsearch.py
@@ -1407,12 +1431,16 @@ Module: langchain_community.document_loaders
   Imported in:
     open_webui/retrieval/loaders/main.py
     open_webui/retrieval/web/utils.py
+Module: open_webui.retrieval.loaders.external_document
+  Imported in:
+    open_webui/retrieval/loaders/main.py
 Module: open_webui.retrieval.loaders.mistral
   Imported in:
     open_webui/retrieval/loaders/main.py
 Module: langchain_core.document_loaders
   Imported in:
-    open_webui/retrieval/loaders/external.py
+    open_webui/retrieval/loaders/external_document.py
+    open_webui/retrieval/loaders/external_web.py
     open_webui/retrieval/loaders/tavily.py
 Module: numpy
   Imported in:
@@ -1439,7 +1467,7 @@ Module: langchain_community.document_loaders.base
 Module: open_webui.retrieval.loaders.tavily
   Imported in:
     open_webui/retrieval/web/utils.py
-Module: open_webui.retrieval.loaders.external
+Module: open_webui.retrieval.loaders.external_web
   Imported in:
     open_webui/retrieval/web/utils.py
 Module: playwright.sync_api

@@ -2,7 +2,7 @@
 
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
-pkgver=0.6.9
+pkgver=0.6.10
 pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
@@ -36,6 +36,7 @@ depends=(python
         python-fpdf2
         python-ftfy
         python-google-cloud-storage
+        python-grpcio
         python-huggingface-hub
         python-importlib-metadata
         python-pyjwt
@@ -99,7 +100,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.
         "build-only-backend.patch"
         "open-webui.service"
         "open-webui.conf")
-b2sums=('1535d662a21426ce994bcfe3b1dc3b8df17da250dbf6d81396758d24cda374189d4983163d262372c3deafb2860a9c5a5e9e01478d992cf22ea1b553b3aaf624'
+b2sums=('67871aa0bba60aea0c12b0f25478c6e165ce7f4cc9e045e9f8310d52a83fdf4ef4bfe2613b4b4c948e644a1fef93d30e684a00fe9c0d5075e0dcdbf6ed5f40a1'
         '36ee27927719cd6cf761a62cd89404129326595f9cde35555f5fe5e2a616bac55346eba2a2882dd883f0d6b1a77e6da64c22521f7a7a18ca0d0b2eeac4781814'
         'f5dd97d4809160f3cc183a8c86ad5ead33163ba009fde2bb92935f766b6688f86bedecff9f1c805393d7e77736dd481d3da1d22cef6941a22bb0ef3856aee484'
         '9e9935cec52386c2397d53a02adf0befd82d9f6e7b95997abe75c156f7d2c0e29e67c9fe550da7e42c54faf97800de7501226b4ee6305530c5ced286dfed86a3')
