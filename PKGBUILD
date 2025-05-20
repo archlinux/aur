@@ -4,7 +4,7 @@ fi
 
 _pkgname="pcsx2"
 pkgname="$_pkgname-appimage"
-pkgver=2.3.351
+pkgver=2.3.358
 pkgrel=1
 pkgdesc="PlayStation 2 emulator (AppImage version)"
 url="https://github.com/PCSX2/pcsx2"
