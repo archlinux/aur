@@ -1,8 +1,8 @@
-pkgbase = sitelen-pona-keyboard-layout
+pkgbase = sitelen-pona-us-keyboard-layout
 	pkgdesc = Sitelen Pona keyboard layout for IBus Table
 	pkgver = 1.0
 	pkgrel = 1
-	install = sitelen-pona-keyboard-layout.install
+	install = sitelen-pona-us-keyboard-layout.install
 	arch = any
 	license = GPLv3
 	depends = ibus
@@ -10,4 +10,4 @@ pkgbase = sitelen-pona-keyboard-layout
 	source = sitelen_pona_ibus.txt
 	sha256sums = SKIP
 
-pkgname = sitelen-pona-keyboard-layout
+pkgname = sitelen-pona-us-keyboard-layout
