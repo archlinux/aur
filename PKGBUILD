@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-spacy-bin
 _pkgname=spacy
-pkgver=3.8.4
+pkgver=3.8.6
 pkgrel=1
 epoch=1
 pkgdesc="Industrial-strength Natural Language Processing (NLP) in Python"
@@ -36,10 +36,10 @@ _glibc='2_17'
 _url="https://files.pythonhosted.org/packages/${_cpy}/${_pkgname::1}/${_pkgname}"
 _filename="${_pkgname}-${pkgver}-${_cpy}-${_cpy}-manylinux_${_glibc}_${CARCH}.manylinux2014_${CARCH}.whl"
 source=("${_url}/${_filename}")
-md5sums=('6d54fb4a11753224c5de5927716ac376')
+md5sums=('b3adc39de60c4ff56e0173bcfaea762f')
 
 package() {
   python -m installer --destdir="$pkgdir" $_filename
-  install -Dm644 spacy-${pkgver}.dist-info/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 spacy-${pkgver}.dist-info/licenses/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:
