@@ -17,12 +17,12 @@ depends=( electron$_elnum ripgrep fd xdg-utils #replacements
     'libxkbfile'
     'libxss'
     'libxtst'
-    'lsof'
     'shared-mime-info'
 )
 optdepends=('glib2: Move to trash functionality'
             'org.freedesktop.secrets: Sync settings'
             'libdbusmenu-glib: KDE global menu'
+	    'lsof: Terminal splitting'
             'vulkan-driver'
             'electron: /usr/share/windsurf/windsurf-latestron')
 options=('!strip') # ~0.49MB
