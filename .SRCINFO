@@ -1,0 +1,16 @@
+pkgbase = corange-git
+	pkgdesc = Pure C Game Engine
+	pkgver = 0.8.0
+	pkgrel = 1.0
+	url = https://github.com/orangeduck/Corange
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = make
+	makedepends = sdl2
+	makedepends = sdl2_net
+	makedepends = sdl2_mixer
+	source = git+https://github.com/orangeduck/Corange.git
+	b2sums = SKIP
+
+pkgname = corange-git
