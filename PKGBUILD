@@ -2,7 +2,7 @@
 _pkgname=helix-gpt
 pkgname=$_pkgname-git
 pkgver=0.34+7+g494daf6
-pkgrel=1
+pkgrel=2
 pkgdesc="Code assistant language server for Helix with support among many LLMs"
 arch=('x86_64')
 url="https://github.com/leona/$_pkgname"

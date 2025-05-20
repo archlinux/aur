@@ -1,13 +1,15 @@
 pkgbase = helix-gpt-git
 	pkgdesc = Code assistant language server for Helix with support among many LLMs
 	pkgver = 0.34+7+g494daf6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leona/helix-gpt
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = bun
+	optdepends = helix: editor that can use helix-gpt as a language server
 	options = !debug
+	options = !strip
 	source = git+https://github.com/leona/helix-gpt.git
 	sha256sums = SKIP
 
