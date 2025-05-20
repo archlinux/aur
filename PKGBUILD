@@ -2,7 +2,7 @@
 
 pkgname=python-blacksheep
 _name=${pkgname#python-}
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 epoch=
 pkgdesc="Fast web framework for Python asyncio"
@@ -50,7 +50,7 @@ optdepends=()
 options=()
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('cb8fe09eba853bca74657bca705052fcd3aa7f48f5e61397389e667f5739e816')
+sha256sums=('94270e447f9afb5afcf2c4da7a0aa462b62161f1da6892c8a6beb9c98ca3cbd1')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
