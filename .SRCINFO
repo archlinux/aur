@@ -1,0 +1,11 @@
+pkgbase = framework-fix-usb
+	pkgdesc = A script for fixing the usb ports on framework laptops
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/CommanderRedYT/framework-fix-usb
+	arch = any
+	license = MIT
+	source = framework-fix-usb-1.0.0-1.tar.gz::https://github.com/CommanderRedYT/framework-fix-usb/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = e8f7a44e5715bdd114f00e41a24ce91cd084d83918840b6b975b0d60d2f1c760
+
+pkgname = framework-fix-usb
