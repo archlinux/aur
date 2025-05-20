@@ -1,18 +1,18 @@
 # Contributor: Daniele Basso <d dot bass05 at proton dot me>
 
 pkgname=code-electron-latest
-pkgdesc='VSCode on the latest stable electron'
+pkgdesc='Code - OSS (latest stable electron)'
 pkgver=1.100.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 _vscode_arch=x64 # https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/PKGBUILD
 _electron_arch=x64
 url='https://github.com/microsoft/vscode'
 license=('MIT')
-depends=( ripgrep xdg-utils
+depends=( ripgrep xdg-utils # electron* is added at build process
 libsecret libxkbfile )
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=( electron nodejs-lts-jod # needs corresponding nodejs
+makedepends=( nodejs-lts-jod # needs corresponding nodejs
 git npm pnpm python desktop-file-utils libarchive)
 conflicts=(code vscode)
 provides=(code vscode)
@@ -80,7 +80,7 @@ prepare() {
 
   # Put a zip to skip downloading electron.
   _hash=$(echo -n "https://github.com/electron/electron/releases/download/v${_electronver}" | sha256sum | cut -d ' ' -f 1)
-  export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home # Don't tain user dir
+  export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home # Don't taint user dir
   local _cache_dir="$XDG_CACHE_HOME/electron/$_hash"
   mkdir -p "$_cache_dir"
   local _zip="electron-v${_electronver}-linux-${_electron_arch}.zip"
@@ -91,15 +91,15 @@ prepare() {
 build() {
   cd vscode
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-  export XDG_CACHE_HOME="$srcdir"
+  export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home
   npm install --cpu=$_vscode_arch
   # Remove -min if minify cause OOM
-  npm run gulp --openssl-legacy-provider vscode-linux-${_vscode_arch}-min
+  npm run gulp --openssl-legacy-provider vscode-linux-${_vscode_arch} #-min
 }
 
 package() {
   _electronver=$(cat /usr/lib/electron/version) # redef for makepkg --repackage
-  depends+=(electron${_electronver%%.*})
+  depends+=(electron${_electronver%%.*}) # breaks --printsrcinfo, but not serious for the case
   # Resource files
   install -dm755 "$pkgdir"/usr/lib/code # compat with hook pkgs
   cp -r --reflink=auto --no-preserve=ownership --preserve=mode VSCode-linux-${_vscode_arch}/resources/app/* "$pkgdir"/usr/lib/code/
