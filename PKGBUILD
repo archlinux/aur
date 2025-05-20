@@ -2,7 +2,7 @@
 
 pkgname=fleet-orbit
 pkgver=1.42.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Eases the deployment of osquery connected with a Fleet server.'
 arch=(x86_64)
 url='https://github.com/fleetdm/fleet/tree/main/orbit'
@@ -19,7 +19,7 @@ source=(
   'fleet-orbit.service'
 )
 sha512sums=(
-  '08e875cad3617e62ac0fd9e17f46a5ab8244bdb8aca269ece78eb9d8629b2cb1aa2d1054369dcfecf986e85f800ad4450e83da98049d65e9e2580d1ec4c5c9db'
+  'ff784c1768be6a25ac8e9d6e10c9d36a6cec35d3c55fac48f881f53c43e96bfc73bd8906a2768787dbfa3744c28de0f67b356b944211ebf347955882ae49a171'
   'd94ab30cc3543e2cb0abcc520ad2b4a297a22f29798dde7e188caf91e8669d99b60dbde7c513afec908cfd47c74a11537267046f0c8c0ccbcaacb8d1b75dd21d'
   'c4d4fdf980a891f5e56ca82173c57b60d0e157ef4af769fc5d9ecd7b9c70124402d694f35d48101e6633d0134ade9ab33cff3c129e2f603a6b7df1ee560eab5a'
   '781ba7743f8f176aeeef702cce67478af70981596029677e1e50f1a57b479c66832436e39d66b5e7f879477733b661326d306064050968acfb246adddfddf30a'
@@ -34,7 +34,7 @@ build() {
 
   isodate="$(TZ=UTC date +'%Y-%m-%dT%H:%M:%SZ')"
   importpath='github.com/fleetdm/fleet/v4/orbit/pkg/build'
-  commitsha='6e10736ee48739746f909c3d45065935f1bf0a03'
+  commitsha='6051c28b55532af8bfeaf619b8b34e84baff4659'
 
   ldflags="-s -w"
   ldflags="${ldflags} -X ${importpath}.Version=v${pkgver}"
