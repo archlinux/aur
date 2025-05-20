@@ -6,7 +6,7 @@ pkgdesc="Backup for lazy^W smart engineers."
 pkgver=1.0.0.beta.6.r1063.g8e87cb17
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
-url="https://github.com/PlakarKorp/plakar"
+url="https://plakar.io/"
 license=('ISC')
 provides=('plakar')
 conflicts=('plakar')
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 source=(
-  "$_pkgname::git+${url}#branch=main"
+  "$_pkgname::git+https://github.com/PlakarKorp/plakar#branch=main"
 )
 
 sha256sums=(
