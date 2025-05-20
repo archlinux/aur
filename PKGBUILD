@@ -1,7 +1,7 @@
 # Maintainer: Denis Benato <benato.denis96@gmail.org>
 
 pkgname=login-ng
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='A greeter with addition functionalities'
 url='https://github.com/neroreflex/login-ng'
@@ -23,10 +23,10 @@ source=(
     "login-ng-${pkgver}.tar.gz::https://github.com/NeroReflex/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
 )
 b2sums=(
-    'dcb94a00e51f12d45fc0ebcf5e72fe7c7cc490b5792e32c4c28fb326eadedcf17f2e0bab5e207e0414fbcb6fe0aaa0cd0a45d91e95603de036b4288b3b089505' # login-ng-${pkgver}.tar.gz
+    '1be7f6a03c4b7238c5b2f39c8e55a7bfb354aab36647721e7da18b664aa073d3c1e458b8902be1c7c8f834034ab6387989c36de60767602cf4541d694a39fcf3' # login-ng-${pkgver}.tar.gz
 )
 sha256sums=(
-    '79d685c25f827608a0efbe34c402f2aff01c8c81895577c41799c0ae5c6a8380' # login-ng-${pkgver}.tar.gz
+    'fa512eb2de2659a45776b37b5617480ef8cc091f8425bf3396edd2eec8a22891' # login-ng-${pkgver}.tar.gz
 )
 backup=(
     etc/pam.d/login_ng
