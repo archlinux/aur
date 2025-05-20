@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=yubihsm2-sdk
-pkgver=2023.11
+pkgver=2024.09
 pkgrel=1
 pkgdesc="YubiHSM2 SDK"
 url="https://developers.yubico.com/YubiHSM2/Releases/"
@@ -12,30 +12,30 @@ license=(Apache "custom:https://www.yubico.com/support/terms-conditions/yubico-l
 depends=(bind curl libusb)
 
 source=(
-	"https://developers.yubico.com/YubiHSM2/Releases/yubihsm2-sdk-2023-11-fedora38-amd64.tar.gz"
+	"https://developers.yubico.com/YubiHSM2/Releases/yubihsm2-sdk-2024-09-fedora40-amd64.tar.gz"
 	"70-yubihsm2.rules"
 	"yubihsm-connector.service"
 	"yubihsm-connector.yaml"
 )
-sha256sums=('c78d75473c0d5c3b292d9ed532afb2972fe4ef327345b746859507b1ee557c5b'
-            'ecd8ad2475463759ae8aa261542856f7f00428a7759252c4b435f5e6775d5cd0'
-            '3f2e731277d0fbdda8fe7fbff1e04eaf8d2ea40e5ea2b8db7d882f4a5af463b2'
-            '6f5415db4913d31c0bc6dc398f89e93308251a6f86d07354dc16f062b8e726e0')
+sha256sums=('aa0bf9dbca4e3b392a57b085ff2141246e4f7a30953d85a4f043e61fe8d4dd86'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
   cd $srcdir
 
   mkdir -p yubihsm-connector
-  bsdtar -xf yubihsm2-sdk/yubihsm-connector-3.0.4-1.fc38.x86_64.rpm -C yubihsm-connector
+  bsdtar -xf yubihsm2-sdk/yubihsm-connector-3.0.5-1.fc40.x86_64.rpm -C yubihsm-connector
 
   mkdir -p yubihsm-devel
-  bsdtar -xf yubihsm2-sdk/yubihsm-devel-2.4.2-1.fc38.x86_64.rpm -C yubihsm-devel
+  bsdtar -xf yubihsm2-sdk/yubihsm-devel-2.6.0-1.fc40.x86_64.rpm -C yubihsm-devel
 
   mkdir -p yubihsm-setup
-  bsdtar -xf yubihsm2-sdk/yubihsm-setup-2.3.1-1.fc38.x86_64.rpm -C yubihsm-setup
+  bsdtar -xf yubihsm2-sdk/yubihsm-setup-2.3.2-1.fc40.x86_64.rpm -C yubihsm-setup
 
   mkdir -p yubihsm-shell
-  bsdtar -xf yubihsm2-sdk/yubihsm-shell-2.4.2-1.fc38.x86_64.rpm -C yubihsm-shell
+  bsdtar -xf yubihsm2-sdk/yubihsm-shell-2.6.0-1.fc40.x86_64.rpm -C yubihsm-shell
 
 }
 
@@ -59,7 +59,7 @@ package() {
   install -Dt "$pkgdir/usr/bin" yubihsm-setup/usr/bin/yubihsm-setup
 
   # yubihsm-shell
-  shell_version=2.4.2
+  shell_version=2.6.0
   install -Dt "$pkgdir/usr/bin" yubihsm-shell/usr/bin/yubihsm-shell
   install -Dt "$pkgdir/usr/bin" yubihsm-shell/usr/bin/yubihsm-wrap
   cp -d yubihsm-shell/usr/lib64/libyubihsm_http.so.2 "$pkgdir/usr/lib"
