@@ -8,6 +8,7 @@ pkgbase = redis-bin
 	license = RSALv2
 	license = SSPLv1
 	license = AGPLv3
+	makedepends = libarchive
 	depends = glibc
 	depends = jemalloc
 	depends = openssl

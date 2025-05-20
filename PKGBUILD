@@ -11,6 +11,7 @@ license=('RSALv2' 'SSPLv1' 'AGPLv3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('glibc' 'jemalloc' 'openssl' 'systemd-libs')
+makedepends=('libarchive')
 backup=(
     'etc/redis/redis.conf'
     'etc/redis/sentinel.conf'
