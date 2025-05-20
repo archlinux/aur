@@ -1,6 +1,6 @@
 pkgbase = darkly
 	pkgdesc = Fork of Lightly (A modern style for Qt applications)
-	pkgver = 0.5.19
+	pkgver = 0.5.20
 	pkgrel = 1
 	url = https://github.com/Bali10050/darkly
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = darkly
 	depends = kwindowsystem5
 	options = !emptydirs
 	options = !debug
-	source = darkly.git::git+https://github.com/Bali10050/darkly.git#tag=v0.5.19
-	sha256sums = 955350a1e75626cede96f3fca43ce945735c56f675d3f1bea1f12af788da19b3
+	source = darkly.git::git+https://github.com/Bali10050/darkly.git#tag=v0.5.20
+	sha256sums = e6fd2745f17e6710298de0c3a34119838765d97bd82503a764f8426bb0b8a4b1
 
 pkgname = darkly
