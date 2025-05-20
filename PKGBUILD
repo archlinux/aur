@@ -1,11 +1,12 @@
 # Maintainer: yifwon <wyf9661 [at] gmail.com>
 pkgname=('wps-office-bin')
 pkgver=12.1.0.17900
-pkgrel=4
+pkgrel=5
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64')
 url="https://linux.wps.cn"
-_srcurl="https://wps-linux-365.wpscdn.cn"
+# considering https://github.com/microcai/gentoo-zh/blob/996092a2363f05082ccc4297896a3e82a5bb7680/app-office/wps-office/wps-office-12.1.0.17900.ebuild#L12C58-L12C79
+_srcurl="https://dogfood.gnupg.uk/wps302"
 license=('LicenseRef-WPS-EULA')
 makedepends=(
   'tar')
@@ -24,7 +25,7 @@ conflicts=(${pkgname%-bin})
 provides=(${pkgname%-bin})
 options=(!strip !zipman !debug)
 
-source_x86_64=("${pkgname%-bin}_${pkgver}_amd64.deb::${_srcurl}/wps/download/ep/Linux2023/${pkgver##*.}/${pkgname%-bin}_${pkgver}_amd64.deb")
+source_x86_64=("${pkgname%-bin}_${pkgver}_amd64.deb::${_srcurl}/${pkgver}/amd64")
 sha1sums_x86_64=('a245fe88c25d0992fb6d2b1e37ba99dc15fe2a5f')
 
 package(){
