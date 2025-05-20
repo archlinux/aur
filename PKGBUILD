@@ -2,9 +2,9 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 _crate="hickory-dns"
-_cratever="0.25.1"
+_cratever="0.25.2"
 pkgname="hickory-dns"
-pkgver=0.25.1
+pkgver=0.25.2
 pkgrel=1
 pkgdesc='Hickory DNS is a safe and secure DNS server with DNSSEC support. Eventually t...'
 url='https://hickory-dns.org/'
@@ -14,14 +14,14 @@ depends=('gcc-libs')
 makedepends=('cargo' 'cargo-auditable')
 replaces=('trust-dns')
 
-source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/hickory-dns/0.25.1/download"
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/hickory-dns/0.25.2/download"
         'hickory-dns.service'
         'fix-include-str-outside-package.patch'
         'fix-dev-dependency-not-published.patch')
-sha512sums=('422ef7b7f9f0c0e5cb7764e22f79afd60055bcca64c0ded29cce6dfa51ba708ced3850ea52717fca1ca08eb43304e6f63b142680b1ab6fef309bef2cc225a3ac'
+sha512sums=('96afeee082ef977e1fe597a5ca1b01adabda23dae6623317ccded715e379fe9b83bc11120164277b4d815840b0a4b6c29ec313f31502d85bcc2df603b486c903'
             'fc985e788258f918f7239d207418b1c68a110cff3722682b812b34548727e077f71745c07f28df28999523c80a54480a688fdf2cbf7c1ffa068cce24c3f49baf'
             '778a33455c0dfdf15a74d9f4aafa60322edbaf43d61814732ba2649ac19fedc18fd329d040af8d26465853e8e11aa4390db0bc00390e5fb8f59c142e72c629eb'
-            '5e69ec1b2641a9611283f6a618a039500d8a53684152c4dd54c47a55713397bb80f89480de938f5588ea282b68e0620f8a4fe0260a8f6c2da45d252c71a4c040')
+            '3b54fe437c3fad50879f0c6d340a054b5c376dadeee00fa3bb938f6a0cd822efd0fba43d4092d51da5bb22f3e67344b1d31340941b78d289f90697c1de46a2af')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')

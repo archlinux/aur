@@ -8,7 +8,7 @@ index 851769d..7cb6be5 100644
  
 +[dev-dependencies.test-support]
 +git = "https://github.com/hickory-dns/hickory-dns"
-+tag = "v0.25.1"
++tag = "v0.25.2"
 +
  [dev-dependencies.toml]
  version = "0.8.14"
@@ -28,8 +28,8 @@ index 851769d..7cb6be5 100644
  
  [[package]]
 +name = "test-support"
-+version = "0.25.1"
-+source = "git+https://github.com/hickory-dns/hickory-dns?tag=v0.25.1#9cf275f750968c1612d63d585398734ae4a1b50b"
++version = "0.25.2"
++source = "git+https://github.com/hickory-dns/hickory-dns?tag=v0.25.2#527c9f470a418cf6b92da902ea0aaa5749963d59"
 +dependencies = [
 + "tracing",
 + "tracing-subscriber",
