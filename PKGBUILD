@@ -2,8 +2,10 @@
 
 pkgname=('python-torchvision-rocm-bin')
 pkgdesc="Datasets, transforms, and models specific to computer vision (binary release)"
-pkgver=0.18.0
-pkgrel=3
+pkgver=0.22.0
+pkgrel=1
+_rocmver=6.3
+_pyver=313
 url="https://pytorch.org/vision"
 license=('BSD')
 arch=('x86_64')
@@ -20,8 +22,8 @@ depends=(
 makedepends=('python-setuptools' 'python-wheel')
 conflicts=(python-torchvision)
 provides=("python-torchvision=${pkgver}" "python-torchvision-rocm=${pkgver}")
-source=("https://download.pytorch.org/whl/rocm6.0/torchvision-${pkgver}%2Brocm6.0-cp312-cp312-linux_x86_64.whl")
-sha256sums=('8180284a250e63c8214cea7eb19e22a79f44c5fcb5f3ba815620ac923e8aab2f')
+source=("https://download.pytorch.org/whl/rocm${_rocmver}/torchvision-${pkgver}%2Brocm${_rocmver}-cp${_pyver}-cp${_pyver}-linux_x86_64.whl")
+sha256sums=('a8a4bf1cd38ceccb1324b36c6fd748c68806b5f00b8c4c01b924031f24508355')
 
 
 package() {
@@ -29,5 +31,5 @@ package() {
     cd "${srcdir}"
 
     # Install the wheel file
-    python -m pip install --no-deps --root="${pkgdir}" torchvision-${pkgver}%2Brocm6.0-cp312-cp312-linux_x86_64.whl --break-system-packages --no-warn-script-location --ignore-installed
+    python -m pip install --no-deps --root="${pkgdir}" "torchvision-${pkgver}%2Brocm${_rocmver}-cp${_pyver}-cp${_pyver}-linux_x86_64.whl" --break-system-packages --no-warn-script-location --ignore-installed
 }

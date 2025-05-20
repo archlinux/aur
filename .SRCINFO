@@ -1,7 +1,7 @@
 pkgbase = python-torchvision-rocm-bin
 	pkgdesc = Datasets, transforms, and models specific to computer vision (binary release)
-	pkgver = 0.18.0
-	pkgrel = 3
+	pkgver = 0.22.0
+	pkgrel = 1
 	url = https://pytorch.org/vision
 	arch = x86_64
 	license = BSD
@@ -14,10 +14,10 @@ pkgbase = python-torchvision-rocm-bin
 	depends = python-scipy
 	depends = python-sympy
 	depends = python-pytorch-rocm
-	provides = python-torchvision=0.18.0
-	provides = python-torchvision-rocm=0.18.0
+	provides = python-torchvision=0.22.0
+	provides = python-torchvision-rocm=0.22.0
 	conflicts = python-torchvision
-	source = https://download.pytorch.org/whl/rocm6.0/torchvision-0.18.0%2Brocm6.0-cp312-cp312-linux_x86_64.whl
-	sha256sums = 8180284a250e63c8214cea7eb19e22a79f44c5fcb5f3ba815620ac923e8aab2f
+	source = https://download.pytorch.org/whl/rocm6.3/torchvision-0.22.0%2Brocm6.3-cp313-cp313-linux_x86_64.whl
+	sha256sums = a8a4bf1cd38ceccb1324b36c6fd748c68806b5f00b8c4c01b924031f24508355
 
 pkgname = python-torchvision-rocm-bin
