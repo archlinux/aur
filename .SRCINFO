@@ -1,0 +1,19 @@
+pkgbase = nodejs-electron-meta
+	pkgdesc = nodejs correpsponding with electron for makedepends
+	pkgver = 36
+	pkgrel = 1
+	url = https://nodejs.org/
+	arch = any
+	license = MIT
+
+pkgname = nodejs-electron34
+	pkgdesc = nodejs correpsponding with electron34
+	depends = nodejs-lts-iron
+
+pkgname = nodejs-electron35
+	pkgdesc = nodejs correpsponding with electron35
+	depends = nodejs-lts-jod
+
+pkgname = nodejs-electron36
+	pkgdesc = nodejs correpsponding with electron36
+	depends = nodejs-lts-jod
