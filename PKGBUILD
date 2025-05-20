@@ -10,7 +10,7 @@ source=("${pkgname}::git+https://github.com/carmelopellegrino/xfce4-i3-window-ti
 md5sums=('SKIP')
 license=('GPLv3')
 depends=('xfce4-panel' 'i3ipc-glib-git')
-makedepends=('git' 'autoconf' 'automake' 'xfce4-dev-tools')
+makedepends=('git' 'autoconf' 'automake' 'xfce4-dev-tools' 'gettext')
 provides=('xfce4-i3-window-title-plugin')
 
 build() {
