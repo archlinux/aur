@@ -1,11 +1,11 @@
 pkgbase = libreoffice-extension-ooolilypond
 	pkgdesc = With OOoLilyPond (OLy) you can use musical notation within OpenOffice.org. Use it for writing a book on music theory or for writing down exercises for music instruments or voice which need to be commented with text.
 	pkgver = 1.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OOoLilyPond
 	arch = any
 	groups = libreoffice-extensions
-	license = GPL2
+	license = GPL-3.0-only
 	depends = libreoffice
 	depends = lilypond
 	noextract = OOoLilyPond-1.1.10.oxt

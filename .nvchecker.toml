@@ -1,0 +1,5 @@
+[libreoffice-extension-ooolilypond]
+source = "github"
+github = "OOoLilyPond/OOoLilyPond"
+prefix = "v"
+use_latest_release = "true"
