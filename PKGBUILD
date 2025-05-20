@@ -2,7 +2,7 @@
 # Maintainer: VnPower <vnpower@loang.net>
 
 pkgname=pixivfe
-pkgver=v3.0
+pkgver=v3.0.1
 pkgrel=1
 pkgdesc='An open source alternative frontend for Pixiv'
 arch=('any')
@@ -11,9 +11,9 @@ license=('AGPL-3.0-only')
 makedepends=('go' 'git')
 provides=('pixivfe')
 conflicts=('pixivfe')
-_tag="a1c1d8912bb6d0eb67a683a6dc57b3ead496bf27"
+_tag="63c5027f28648ea3c9d9bc92f78b168c7a84ab3e"
 source=("$pkgname::git+https://codeberg.org/${pkgname}/${pkgname}.git#tag=${_tag}")
-sha256sums=('d853af4d720c5abc107878bcdfd55f5517bca370591b81e6eaa3adf2b485929f')
+sha256sums=('aee76bc63809f24b1aae8846e1d51e4ba477c5979208e637e9ef5bb35beb5302')
 
 pkgver() {
     cd "$pkgname"
