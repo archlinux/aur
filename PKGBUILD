@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-auth
 pkgver=4.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
 arch=('x86_64' 'aarch64')
 url="https://ente.io/auth"
@@ -21,6 +21,7 @@ makedepends=(
   'jdk17-openjdk'
   'ninja'
   'unzip'
+  'zenity'
 )
 source=("git+https://github.com/ente-io/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/ente-io/sentry-dart.git'

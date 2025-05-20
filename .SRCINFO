@@ -1,7 +1,7 @@
 pkgbase = ente-auth
 	pkgdesc = Open source 2FA authenticator, with end-to-end encrypted backups
 	pkgver = 4.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ente.io/auth
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = ente-auth
 	makedepends = jdk17-openjdk
 	makedepends = ninja
 	makedepends = unzip
+	makedepends = zenity
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = libsecret
