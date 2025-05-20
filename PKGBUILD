@@ -1,6 +1,6 @@
 # Maintainer: Rufus Deponian <rufus at deponian dot com>
 pkgname=logalize
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Fast and extensible log colorizer. Alternative to ccze."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go>=1.22')
 backup=('etc/logalize/logalize.yaml')
 source=("git+https://github.com/deponian/logalize.git#tag=v${pkgver}")
-sha256sums=('565f6f484a318aa36c0c614d746183b0702348b7a73471ebf707d0ab11a95379')
+sha256sums=('5d5bc6c5ff5e5abcf27b75b350c79cc4afbcc0f88cfd73aed4deb350788b4543')
 
 build() {
   cd "${pkgname}"
