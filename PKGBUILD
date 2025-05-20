@@ -1,7 +1,7 @@
 # Maintainer: charlottecross1998 <charlottecross2018@gmail.com>
 # Maintainer: 
 
-pkgname="prideflag"
+pkgname="prideflag-git"
 pkgver=0.1
 pkgrel=1
 pkgdesc="Prideflags in your terminal!"

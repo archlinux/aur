@@ -1,4 +1,4 @@
-pkgbase = prideflag
+pkgbase = prideflag-git
 	pkgdesc = Prideflags in your terminal!
 	pkgver = 0.1
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = prideflag
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = prideflag
+pkgname = prideflag-git
