@@ -1,5 +1,5 @@
 diff --git a/apps/studio/electron-builder-config.js b/apps/studio/electron-builder-config.js
-index 998bce3cc..da85570c6 100644
+index 361c7755b..da85570c6 100644
 --- a/apps/studio/electron-builder-config.js
 +++ b/apps/studio/electron-builder-config.js
 @@ -33,6 +33,8 @@ module.exports = {
@@ -37,7 +37,7 @@ index 998bce3cc..da85570c6 100644
        'pacman'
      ],
      desktop: {
-@@ -154,45 +143,9 @@ module.exports = {
+@@ -154,61 +143,9 @@ module.exports = {
      },
      publish: ['github']
    },
@@ -48,6 +48,25 @@ index 998bce3cc..da85570c6 100644
 -    fpm: fpmOptions,
 -    // when we upgrade Electron we need to check these
 -    depends: ["libgtk-3-0", "libnotify4", "libnss3", "libxss1", "libxtst6", "xdg-utils", "libatspi2.0-0", "libuuid1", "libsecret-1-0", "gnupg"]
+-  },
+-  flatpak: {
+-    runtime: "org.freedesktop.Platform",
+-    runtimeVersion: "23.08",
+-    sdk: "org.freedesktop.Sdk",
+-    base: "org.electronjs.Electron2.BaseApp",
+-    baseVersion: "23.08",
+-    finishArgs: [
+-      "--share=network",
+-      "--socket=x11",
+-      "--socket=wayland",
+-      "--device=dri",
+-      "--socket=pulseaudio",
+-      "--filesystem=home",
+-      "--talk-name=org.freedesktop.Notifications"
++  pacman: {
++    fpm: [
++      '--pacman-compression=none'
+     ]
 -  },
 -  rpm: {
 -    publish: [ 'github' ],
@@ -81,9 +100,5 @@ index 998bce3cc..da85570c6 100644
 -    applicationId: "beekeeperstudio",
 -    publisher: certSubject.replaceAll('"', "&quot;"),
 -    publisherDisplayName: "Beekeeper Studio"
-+  pacman: {
-+    fpm: [
-+      '--pacman-compression=none'
-+    ]
    }
  }
