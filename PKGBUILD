@@ -3,14 +3,14 @@
 
 _pkgname=amaranth
 pkgname="python-$_pkgname"
-pkgver=0.5.4
-pkgrel=2
+pkgver=0.5.6
+pkgrel=1
 pkgdesc="A modern hardware definition language and toolchain based on Python (formerly nMigen)"
 arch=(any)
 url="https://github.com/amaranth-lang/amaranth"
 license=('BSD')
-depends=('python' 'python-jinja' 'python-pyvcd')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm' 'python-jschon' 'python-packaging' 'python-pdm-backend')
+depends=('python' 'python-jinja' 'python-pyvcd' 'python-jschon')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm' 'python-packaging' 'python-pdm-backend')
 optdepends=('python-paramiko: for remote builds')
 # FIXME: symbiyosys
 checkdepends=('python-pytest' 'yosys>0.40' 'symbiyosys-git' 'yices')
@@ -21,7 +21,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
 	)
 sha512sums=(
-   '4958d1fbe2ff985105b3e5e0bf24ade1c7b3fe705624ffad019b91e27782fc0a76d3c2d5a323bf5d9eae6e1c2177c50575ff9d6a71b3199dfde0f012d256049b'
+   '84fe631b12160c0f42bf39d926d9e9f87240969578036ae3b68b4523bda65f4182e130b75f9aeaec658ca4ef87059a30ac6abcbc5e7ba80d7d8a1ae04bdd8b38'
 	)
 
 prepare()
