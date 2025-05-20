@@ -1,6 +1,6 @@
 pkgbase = python-pairinteraction
 	pkgdesc = A Rydberg Interaction Calculator
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 2
 	url = https://github.com/pairinteraction/pairinteraction
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = python-pairinteraction
 	options = staticlibs
 	options = !strip
 	options = libtool
-	source = https://github.com/pairinteraction/pairinteraction/archive/2faf2d01f95311ef29b67f46ae8eb918d2ba7643.zip
-	sha256sums = 7d95c6587e2b3f2673163badfbaa50fac104388c46f4b4208c78e15a5417bb39
+	source = https://github.com/pairinteraction/pairinteraction/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = b32336763c2ddc6940cc339bedbe0f17350fbf7c25bc748614a6c7011cf50c23
 
 pkgname = python-pairinteraction

@@ -3,8 +3,8 @@
 pkgname='python-pairinteraction'
 _name='pairinteraction'
 _py="py3"
-pkgver=2.0.0
-commit="2faf2d01f95311ef29b67f46ae8eb918d2ba7643"
+pkgver=2.0.1
+#commit="2faf2d01f95311ef29b67f46ae8eb918d2ba7643"
 pkgrel=2
 pkgdesc="A Rydberg Interaction Calculator"
 url="https://github.com/pairinteraction/pairinteraction"
@@ -14,15 +14,15 @@ license=('GPL-3.0-only' 'LGPL-3.0-only')
 arch=('x86_64')
 options=('!buildflags' 'staticlibs' '!strip' 'libtool')
 # every once in a while an actual release is build and we can grab that
-# source=("https://github.com/pairinteraction/pairinteraction/archive/refs/tags/v$pkgver.tar.gz")
-# for now we just use the zip of whatever commit I updated this last
-source=("https://github.com/pairinteraction/pairinteraction/archive/$commit.zip")
+source=("https://github.com/pairinteraction/pairinteraction/archive/refs/tags/v$pkgver.tar.gz")
+# otherwise we just use the zip of whatever commit I updated this last
+# source=("https://github.com/pairinteraction/pairinteraction/archive/$commit.zip")
 
-sha256sums=("7d95c6587e2b3f2673163badfbaa50fac104388c46f4b4208c78e15a5417bb39")
+sha256sums=("b32336763c2ddc6940cc339bedbe0f17350fbf7c25bc748614a6c7011cf50c23")
 
 build() {
-#  cd $srcdir/pairinteraction-$pkgver
-  cd $srcdir/pairinteraction-$commit
+  cd $srcdir/pairinteraction-$pkgver
+#  cd $srcdir/pairinteraction-$commit
   mkdir build
   cd build
   cmake ..
@@ -30,8 +30,8 @@ build() {
 }
 
 package() {
-#  cd "$srcdir/pairinteraction-$pkgver/build"
-  cd "$srcdir/pairinteraction-$commit"
+  cd "$srcdir/pairinteraction-$pkgver"
+#  cd "$srcdir/pairinteraction-$commit"
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
 }
 
