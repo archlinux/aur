@@ -3,6 +3,7 @@ pkgbase = xdroid-bin
 	pkgver = 13.2.380
 	pkgrel = 1
 	url = https://www.linzhuotech.com/Product/download
+	install = xdroid-bin.install
 	arch = x86_64
 	license = LicenseRef-custom
 	makedepends = libarchive
@@ -16,6 +17,8 @@ pkgbase = xdroid-bin
 	noextract = xdroid-bin-13.2.380.zip
 	options = !strip
 	source = xdroid-bin-13.2.380.tar.gz::https://zhuolin-my.sharepoint.cn/personal/shiyang_zhuolin_partner_onmschina_cn/Documents/卓懿/xDroidInstall-x86_64-v13.2.380-20250306.zip?ga=1
+	source = xdroid-bin.install
 	sha256sums = cd06938f10c9227969c4af52ee23cb6b7a6b81c0a9ec44fec7446616b34d4ae9
+	sha256sums = 7d6168f0402ad58d35a7900ebc4e3008b6c0cb96261e2f216731e28188cd1d5d
 
 pkgname = xdroid-bin

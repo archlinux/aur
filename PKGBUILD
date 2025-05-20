@@ -29,13 +29,17 @@ conflicts=()
 replaces=()
 backup=()
 options=('!strip')
-install=
+install=${pkgname}.install
 changelog=
 _date=20250306
 # https://zhuolin-my.sharepoint.cn/personal/shiyang_zhuolin_partner_onmschina_cn/Documents/%e5%8d%93%e6%87%bf/xDroidInstall-x86_64-v13.2.380-20250306.tar.xz?ga=1
-source=("${pkgname}-${pkgver}.tar.gz::https://zhuolin-my.sharepoint.cn/personal/shiyang_zhuolin_partner_onmschina_cn/Documents/卓懿/xDroidInstall-${arch}-v${pkgver}-${_date}.zip?ga=1")
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://zhuolin-my.sharepoint.cn/personal/shiyang_zhuolin_partner_onmschina_cn/Documents/卓懿/xDroidInstall-${arch}-v${pkgver}-${_date}.zip?ga=1"
+    "${pkgname}.install"
+)
 noextract=(${pkgname}-${pkgver}.zip)
-sha256sums=('cd06938f10c9227969c4af52ee23cb6b7a6b81c0a9ec44fec7446616b34d4ae9')
+sha256sums=('cd06938f10c9227969c4af52ee23cb6b7a6b81c0a9ec44fec7446616b34d4ae9'
+    '7d6168f0402ad58d35a7900ebc4e3008b6c0cb96261e2f216731e28188cd1d5d')
 #validpgpkeys=()
 
 package() {

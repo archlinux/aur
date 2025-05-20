@@ -1,0 +1,13 @@
+pre_remove() {
+    # 停止服务并禁用自启
+    systemctl stop xdroid-manager.service >/dev/null 2>&1 || :
+    systemctl disable xdroid-manager.service >/dev/null 2>&1 || :
+}
+
+post_remove() {
+    # 强制删除服务文件
+    rm -f /usr/lib/systemd/system/xdroid-manager.service
+
+    # 重载systemd配置
+    systemctl daemon-reload >/dev/null 2>&1 || :
+}
