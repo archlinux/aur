@@ -3,7 +3,7 @@
 # Maintainer: oech3
 _pkgname='chatterino2-nightly'
 pkgname="${_pkgname}-bin"
-_id=20250518T010712
+_id=20250519T010544
 _ver=2.5.3
 pkgver=${_ver}.${_id}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=('streamlink: For piping streams to video players'
 provides=(chatterino)
 conflicts=(chatterino)
 options=(!strip) #done
-source=("https://github.com/Chatterino/pkg/releases/download/nightly-${_id}/chatterino-arch-linux-${arch}.tar.zst")
-sha256sums=('84f521d37ddce1c697c8588b7a64c49680844ff0e314300e346d07fd6d4476a1')
+source=("${pkgname}-${pkgver}.tar.zst::https://github.com/Chatterino/pkg/releases/download/nightly-${_id}/chatterino-arch-linux-${arch}.tar.zst")
+sha256sums=('74ff42d642c30bcc69866c3abbf589fb0f4c651799a5bd156bac4fa28fba25e5')
 package() {
     install -Dm755 usr/bin/chatterino "${pkgdir}"/usr/bin/chatterino
     install -Dm644 usr/share/applications/com.chatterino.chatterino.desktop "${pkgdir}"/usr/share/applications/com.chatterino.chatterino.desktop
