@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=alspotron-bin
 _pkgname=Alspotron
-pkgver=0.24.2
+pkgver=0.25.0
 _electronversion=35
 pkgrel=1
 pkgdesc="Shows the egg lyrics of the track, playing on Spotify / YouTube Music.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('04c191940f7eaec177732d42af25fae2c6ad53066c4dd8aec4a7f01081e0beb5'
+sha256sums=('61e4a6a2396e13cd399c1e014e937e137746e21cec522b840c02d1ccdb2001ec'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
