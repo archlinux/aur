@@ -1,9 +1,10 @@
 # Maintainer: joelvaz0x01 <joelvaz dot whitehat at gmail dot com>
 
 _pkgbase=chordpro
+_pkgbasever=6.070
 pkgname=${_pkgbase}-gui
-pkgver=6.070.7
-pkgrel=2
+pkgver=${_pkgbasever}.7
+pkgrel=3
 _pkgdowmload=App-Music-ChordPro-${pkgver}
 _wxver=3.005
 pkgdesc="A lyrics and chords formatting program (CLI and GUI)"
@@ -17,7 +18,7 @@ provides=(chordpro)
 conflicts=(chordpro)
 install=chordpro.install
 source=(
-    "${_ghurl}/releases/download/R${pkgver}/${_pkgdowmload}.tar.gz"
+    "${_ghurl}/releases/download/R${_pkgbasever}/${_pkgdowmload}.tar.gz"
     "chordpro.install"
     "chordpro.sh"
 )
@@ -33,7 +34,7 @@ build() {
     export WX_CONFIG=/usr/lib/wx/config/gtk3-unicode-3.2  # temporary fix
     eval "$(perl -I "${srcdir}" -Mlocal::lib="${srcdir}")"
     cpanm --notest --local-lib="${srcdir}" --verbose --installdeps .
-    cpanm --notest --local-lib="${srcdir}" --verbose ${_ghurl}/releases/download/R${pkgver}/Wx-${_wxver}.tar.gz
+    cpanm --notest --local-lib="${srcdir}" --verbose ${_ghurl}/releases/download/R${_pkgbasever}/Wx-${_wxver}.tar.gz
     perl Makefile.PL
     make install
 }

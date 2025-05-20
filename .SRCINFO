@@ -1,7 +1,7 @@
 pkgbase = chordpro-gui
 	pkgdesc = A lyrics and chords formatting program (CLI and GUI)
 	pkgver = 6.070.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://chordpro.org/
 	install = chordpro.install
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = chordpro-gui
 	depends = webkit2gtk-4.1
 	provides = chordpro
 	conflicts = chordpro
-	source = https://github.com/ChordPro/chordpro/releases/download/R6.070.7/App-Music-ChordPro-6.070.7.tar.gz
+	source = https://github.com/ChordPro/chordpro/releases/download/R6.070/App-Music-ChordPro-6.070.7.tar.gz
 	source = chordpro.install
 	source = chordpro.sh
 	sha256sums = 47f3f202e6afc0f524d0e29ca4776b5eb6b7f3660aeb4b18e499cda7a0f40312
