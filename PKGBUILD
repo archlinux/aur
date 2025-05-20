@@ -1,16 +1,16 @@
 # Maintainer: Julian Houba <craftingdragon007 at outlook dot com>
 pkgname='caqtdm'
-pkgver=4.5.0rc2
-pkgrel=2
+pkgver=4.5.0
+pkgrel=1
 pkgdesc="caQtDM is a popular Epics framework for developing panels"
 arch=('any')
 url="http://caqtdm.github.io/"
 license=('GPL')
 depends=('qt6-base' 'qt6-tools' 'qwt-qt6' 'epics-base' 'zeromq' 'python' 'bash' 'glibc' 'gcc-libs')
 makedepends=('patch' 'make' 'gcc' 'git')
-source=("git+https://github.com/caqtdm/caqtdm.git#tag=v4.5.0-rc2" 
+source=("git+https://github.com/caqtdm/caqtdm.git#tag=V4.5.0"
         "fix_qwt_static_cast_gcc.patch")
-sha512sums=('SKIP' 'f279be12d4c2d9a948990f5a01274ca414f76b79b5b181743029a60334a4db4a2d120772c23dfbacb811aa48ce587a3ceceafb5e54d9cf3274694bf733dd767c')
+sha512sums=('SKIP' '10e281ea0f6670ff908421622589b217187e998abd260a3a2a2f43d8d8f577ce072379aa21f35506208c27d2a3c8fd69295ae05a8f90dbdae597a58fdf8568ad')
 
 prepare() {
     # Write environment variables to env_config.sh

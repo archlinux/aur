@@ -11,22 +11,6 @@ diff '--color=auto' --unified --recursive --text src.orig/caqtdm/caQtDM_QtContro
              QT += uiplugin
        }else {
 
-diff '--color=auto' --unified --recursive --text src.orig/caqtdm/caQtDM_Lib/src/mutexKnobData.cpp src.next/caQtDM_Lib/src/mutexKnobData.cpp
---- src.orig/caqtdm/caQtDM_Lib/src/mutexKnobData.cpp   2025-04-08 12:22:12.156903473 +0200
-+++ src.next/caqtdm/caQtDM_Lib/src/mutexKnobData.cpp  2025-04-08 12:49:10.322539979 +0200
-@@ -869,10 +869,11 @@
- QString getBufferAsHexStr(char* buf, int buffsize) {
-     QString result;
-     for(int i = 0; i < buffsize; ++i)
--        result += "0x" + QString("%1:").arg(buf[i], 2, 16, QChar('0')).toUpper();
-+        result += "0x" + QString("%1:").arg(static_cast<unsigned char>(buf[i]), 2, 16, QChar('0')).toUpper();
-     result.chop(1);
-     return result;
- }
-+
- void MutexKnobData::UpdateWidget(int index, QWidget* w, char *units, char *fec, char *dataString, knobData knb)
- {
-     QString unitsString;
 diff '--color=auto' --unified --recursive --text src.orig/aQtDM_Lib/caQtDM_Plugins/epics3/epicsSubs.c src.next/caqtdm/caQtDM_Lib/caQtDM_Plugins/epics3/epicsSubs.c
 --- src.orig/caqtdm/caQtDM_Lib/caQtDM_Plugins/epics3/epicsSubs.c     2025-02-03 16:39:59.432507563 +0100
 +++ src.next/caqtdm/caQtDM_Lib/caQtDM_Plugins/epics3/epicsSubs.c 2025-05-06 15:14:51.833945563 +0200
