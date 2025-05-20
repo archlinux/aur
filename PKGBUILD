@@ -2,7 +2,7 @@
 
 pkgname=python-luna-usb-git
 _gitpkgname=luna
-pkgver=0.1.1.post4+git.d24193e1
+pkgver=0.2.0.post7+git.6c7c93d6
 pkgrel=1
 pkgdesc='Amaranth HDL framework for monitoring, hacking, and developing USB devices'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/greatscottgadgets/luna'
 license=('BSD-3-Clause')
 depends=(
   'python'
-  'python-amaranth<0.5'
+  'python-amaranth>=0.5'
   'python-apollo'
   'python-pyserial'
   'python-pyusb'
@@ -83,13 +83,7 @@ build() {
 
 check() {
   cd "${_gitpkgname}"
-  local _site_packages
-  _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
-  python -m installer --destdir=tmp_install dist/*.whl
-
-  echo >&2 'Running unit tests'
-  PYTHONPATH="${PWD}/tmp_install/${_site_packages}" \
-    python -m unittest discover -v
+  python -m unittest discover -v
 }
 
 package() {
