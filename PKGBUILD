@@ -13,7 +13,7 @@ depends=( ripgrep xdg-utils # electron* is added at build process
 libsecret libxkbfile )
 optdepends=('x11-ssh-askpass: SSH authentication')
 makedepends=( nodejs-lts-jod # needs corresponding nodejs
-git npm pnpm python desktop-file-utils libarchive)
+git npm pnpm python desktop-file-utils)
 conflicts=(code vscode)
 provides=(code vscode)
 # Do not sync $pkgrel
@@ -77,14 +77,14 @@ prepare() {
   sed -i 's|@@APPNAME@@|code-oss|g' resources/completions/{bash/code-oss,zsh/_code-oss}
 
   patch -p1 -i "$srcdir/clipath.patch"
-
   # Put a zip to skip downloading electron.
   _hash=$(echo -n "https://github.com/electron/electron/releases/download/v${_electronver}" | sha256sum | cut -d ' ' -f 1)
   export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home # Don't taint user dir
   local _cache_dir="$XDG_CACHE_HOME/electron/$_hash"
-  mkdir -p "$_cache_dir"
+  #mkdir -p "$_cache_dir"
   local _zip="electron-v${_electronver}-linux-${_electron_arch}.zip"
-  bsdtar --format zip -cf "${_cache_dir}/${_zip}" /dev/null 2> /dev/null
+  install -Dvm644 src/vs/base/test/node/zip/fixtures/extract.zip "${_cache_dir}/${_zip}"
+  #bsdtar --format zip -cf "${_cache_dir}/${_zip}" /dev/null 2> /dev/null
   echo "$(sha256sum "$_cache_dir/$_zip" | cut -d " " -f 1) *$_zip" > build/checksums/electron.txt
 }
 
