@@ -1,7 +1,7 @@
 pkgbase = miracle-wm
 	pkgdesc = Wayland compositor based on mir
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/miracle-wm-org/miracle-wm
 	arch = i686
 	arch = x86_64

@@ -1,9 +1,10 @@
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Maintainer: Pranav Sharma <pranav.sharma.ama@gmail.com>
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=miracle-wm
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland compositor based on mir"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/miracle-wm-org/miracle-wm"
