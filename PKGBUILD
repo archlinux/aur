@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fastdownloader-bin
 _pkgname=FastDownloader
-pkgver=0.6.1
+pkgver=0.6.2
 _electronversion=31
 pkgrel=1
 pkgdesc="A fast video/audio downloader in electron.js.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e5867ac5059d1f62891fa34236de9e142116615821d489179bc0fe6920394258'
+sha256sums=('6a40bc5d12affd165cc375ff1fd5d20cddc3d454164b8272e7ca7a66999ae1ae'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
