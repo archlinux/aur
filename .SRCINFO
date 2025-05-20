@@ -1,0 +1,19 @@
+pkgbase = edit
+	pkgdesc = A simple editor for simple needs (Microsoft Edit)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/microsoft/edit
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo-nightly
+	depends = gcc-libs
+	source = edit::git+https://github.com/microsoft/edit.git#tag=v1.0.0
+	b2sums = a965f610cf46ef9282512920e5c016810cf939f7083200f301802453815d2ca13099cbd169e82ea2c8c39012cad709872f24ffe7f0e3c3b18a71ded3a2461213
+
+pkgname = edit
