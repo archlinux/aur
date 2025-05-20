@@ -3,10 +3,10 @@
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn-beta
 _pkgver=2025.6
-_channel=beta
-_rel=2
-pkgver=${_pkgver}.${_channel}${_rel}  # beta
-#pkgver=${_pkgver}.${_channel}  # stable
+_channel=stable
+_rel=1
+#pkgver=${_pkgver}.${_channel}${_rel}  # beta
+pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
@@ -34,15 +34,15 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 source=(
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
-#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
+#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git"
   "git+https://github.com/mullvad/wireguard-go.git"
   'no-rpm.diff'
   'no-publish.diff'
   "${pkgname%-beta}.sh"
 )
-sha256sums=('7fbaee80a3a5ebbe822e6f1036c52458701ad8e66939721ae86ffed87fe2b06c'
+sha256sums=('f6597965886681b842c6522706ff69547c4cd27752afa62bc75fadea13c9e23c'
             'SKIP'
             'SKIP'
             '5773f4ea5b7e0db8340e0614d1b027237cb827a5db135ee633d491c271a7e499'
