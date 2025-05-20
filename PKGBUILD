@@ -17,13 +17,11 @@ conflicts=('astah_community' 'astah-uml')
 license=('custom')
 depends=('jre21-openjdk')
 source=("https://cdn.change-vision.com/files/astah-professional_${pkgver}.${_pkgrel}-0_all.deb"
-	"https://astah.net/wp-content/uploads/2020/11/AstahLicenseAgreement-16th.pdf"
 	"LICENSE"
 	"PRIVACY")
 md5sums=('73fd8f692f3977d5721e9afc43a3f572'
-         '979e8679714321d906983391b2b851b2'
-         '6b77c443f8468a61dc027a042599abee'
-         'fc2db9678cbfbec17049f050743e7960')
+         '4667d0dfa5bde4924e3cea64fb310e94'
+         'd041a1336f18d00a99baa330b0e25fb9')
 install="astah-professional.install"
 
 
