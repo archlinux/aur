@@ -1,4 +1,5 @@
 # Maintainer: Maik93 <michael.mugnai@gmail.com>
+# Maintainer: taotieren <admin@taotieren.com>
 # Contributor: Ethan Zonca <e@ethanzonca.com>
 
 pkgname=python-cantools
@@ -7,8 +8,8 @@ provides=('python-cantools')
 conflicts=('python-cantools')
 pkgdesc="Python CAN bus tools in Python 3"
 url="https://github.com/eerimoq/cantools"
-pkgver=40.2.1
-pkgrel=2
+pkgver=40.2.2
+pkgrel=1
 arch=('any')
 license=('MIT')
 makedepends=(
@@ -36,7 +37,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('db377436979894c5cf43900f95a24d11')
+md5sums=('d4916ed676662ce093c7787660e0fce6')
 
 build() {
 	cd "$srcdir/$_gitname-$pkgver"
