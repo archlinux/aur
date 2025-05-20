@@ -69,9 +69,7 @@ _pick() {
 
 package_libadapta() {
   depends+=(libgtk-4.so)
-  provides=(libadapta)
-  conflicts=(libadapta)
-  provides+=(libAdapta-1.so)
+  provides=(libAdapta-1.so)
 
   meson install -C build --destdir "$pkgdir"
 
@@ -96,15 +94,11 @@ package_libadapta-demos() {
     hicolor-icon-theme
     libadwaita
   )
-  provides=(libadapta-demos)
-  conflicts=(libadapta-demos)
   mv demo/* "$pkgdir"
 }
 
 package_libadapta-docs() {
   pkgdesc+=" (documentation)"
   depends=()
-  provides=(libadapta-docs)
-  conflicts=(libadapta-docs)
   mv docs/* "$pkgdir"
 }
