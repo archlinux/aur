@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-downloader-bin
 _pkgname=Ghost-Downloader
-pkgver=3.5.10
+pkgver=3.5.11
 pkgrel=1
-pkgdesc="A multi-threading async downloader with QThread based on PyQt/PySide (Prebuilt version) 多线程下载器 协程下载器."
+pkgdesc="A multi-threading async downloader with QThread based on PyQt/PySide (Prebuilt version)多线程下载器,协程下载器"
 arch=(
     'aarch64'
     'x86_64'
@@ -30,21 +30,26 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/XiaoYouChR/Ghost-Downloader-3/v${pkgver}/resources/logo.png"
     "${pkgname%-bin}.sh"
 )
-noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.zip")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-Linux-arm64.zip")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-Linux-x86_64.zip")
+noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.tar.xz")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-Linux-arm64.tar.xz")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-Linux-x86_64.tar.xz")
 sha256sums=('f98dd87dd1e00000397e3121276be851bf3dd435c844d68c709bdceab2e7ccaa'
             'f003b130010311751a619cae8188af15f003369d71c59f7b34bbc26c98e615d5')
-sha256sums_aarch64=('cada0c78f49b63fa5005d5b965c01707a463b85868cff68a60303e10e49d2bf8')
-sha256sums_x86_64=('f7f8681e4b5a3041147ac468010b9156c0876bba929a8f757d86fa3dcffcc840')
+sha256sums_aarch64=('1b83608869e59b90fc3844256a5593f3a404e421967b4d9c8bc98a4d918bffc1')
+sha256sums_x86_64=('372db04aa17be849043c75d6b08906624927c79477a4651dbae45836ccfeed55')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}-3.bin/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin}"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Network" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin}"
     install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
-    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
+    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.tar.xz" -C "${srcdir}/usr/lib/${pkgname%-bin}"
     chmod 755 "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}-3.bin"
 }
 package() {
