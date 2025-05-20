@@ -1,0 +1,4 @@
+[vale-ls]
+source = "regex"
+regex = 'v(\d+\.\d+\.\d+)'
+url = "https://github.com/errata-ai/vale-ls/tags"
