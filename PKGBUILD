@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="A private music player that can play local and cloud music, and supports lyric display.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/miboqiang130/miuzcPC"
-license=("MIT")
+license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
