@@ -75,11 +75,20 @@ prepare() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+    NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
-    NODE_ENV=production     npm run build
-    NODE_ENV=production     npm run package
+    local electronDist="/usr/lib/electron${_electronversion}"
+    npm run build
+    sed -i "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    {\\
+        name: \"@electron-forge/plugin-local-electron\",\\
+        config: {\\
+            electronPath: \'${electronDist}\',\\
+        },\\
+    }," forge.config.*
+    npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
