@@ -1,6 +1,6 @@
 pkgbase = opera-developer
 	pkgdesc = A fast and secure web browser and Internet suite - developer stream
-	pkgver = 120.0.5516.0
+	pkgver = 120.0.5530.0
 	pkgrel = 1
 	url = https://www.opera.com/computer
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = opera-developer
 	depends = upower
 	optdepends = opera-developer-ffmpeg-codecs-bin: additional support for proprietary codecs
 	provides = opera
-	source = https://get.geo.opera.com/pub/opera-developer/120.0.5516.0/linux/opera-developer_120.0.5516.0_amd64.deb
+	source = https://get.geo.opera.com/pub/opera-developer/120.0.5530.0/linux/opera-developer_120.0.5530.0_amd64.deb
 	source = opera
 	source = default
-	sha256sums = b4423818bc21dec603294178c19574785a8e5b79bd93c1de5e1e9c87772eb677
+	sha256sums = 8e6298eae7f9a9db788c30401ee78f0680955aef66865b7a38645899a176d50a
 	sha256sums = 508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5
 	sha256sums = 99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231
 
