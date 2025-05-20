@@ -1,0 +1,16 @@
+pkgbase = findr
+	pkgdesc = Fast recursive file and directory name search tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Evr5/findr
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	options = !debug
+	options = strip
+	source = https://github.com/Evr5/findr/releases/download/v1.0.0/findr.tar.gz
+	sha256sums = 35f6f9283602c4049450c475acc2b08dfd782f8e03a3ef714c9f08890188d6b7
+
+pkgname = findr
