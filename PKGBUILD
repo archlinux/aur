@@ -2,12 +2,12 @@
 pkgname=meshtasticd-bin
 _pkgname=meshtasticd
 pkgver=2.6.4.16
-pkgrel=2
+pkgrel=3
 pkgdesc='Meshtastic daemon for Linux systems.'
 url='https://download.opensuse.org/repositories/network:/Meshtastic:/beta/Debian_Testing'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 license=('custom')
-depends=('libgpiod' 'ulfius')
+depends=('i2c-tools' 'libgpiod' 'ulfius' 'yaml-cpp')
 conflicts=("$_pkgname" "$_pkgname-git")
 provides=("$_pkgname")
 source_x86_64=("$url/amd64/meshtasticd_$pkgver~obsb89355f~beta_amd64.deb")
