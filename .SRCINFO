@@ -1,6 +1,6 @@
 pkgbase = profile-sync-daemon-brave
 	pkgdesc = Brave browser support for profile-sync-daemon
-	pkgver = 2022.08.18
+	pkgver = 2025.05.20
 	pkgrel = 1
 	arch = any
 	license = none
@@ -8,7 +8,9 @@ pkgbase = profile-sync-daemon-brave
 	optdepends = brave: the target browser
 	source = brave
 	source = brave-nightly
-	md5sums = 0bc18728f49eea8c56565f4029395224
-	md5sums = 3aafa55956e2bbbc08cb1e6ab3d6d87e
+	source = brave-beta
+	sha256sums = e974421b81e2e11276071b3364a749e0e01593c8a0689ae24ae5ab0b4ffc25d1
+	sha256sums = 26c9712a9a028e7a24bd975059b9d02e536bc8ea241c7a6f3fa9417c950d5681
+	sha256sums = 8316cc9342afd8f905692d0c69c180cf92a44cb5013050922e6463cd97717821
 
 pkgname = profile-sync-daemon-brave
