@@ -3,7 +3,7 @@
 
 _pkgname=marisa
 pkgname=mingw-w64-${_pkgname}
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Static and space-efficient trie data structure library (mingw-w64)"
 arch=(any)
@@ -15,8 +15,8 @@ source=(
     "marisa-trie-$pkgver.tar.gz::https://github.com/s-yata/marisa-trie/archive/v$pkgver.tar.gz"
     '001-tools-makefile.patch')
 sha1sums=(
-    '16d3b28051c2446af7d6ec9a5c6f0b61ab6ba3f6'
-    'SKIP')
+    'f496d47a9e85011e3392cd6f8a895186521ea62e'
+    '49e00378415c3a386e39cc23b6a21585572d081a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
