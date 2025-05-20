@@ -5,7 +5,7 @@ pkgname=openms-bin
 provides=('openms')
 conflicts=('openms')
 _pkgname=OpenMS
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="C++ library and tools for LC/MS data management and analyses"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("https://github.com/OpenMS/OpenMS/releases/download/release%2F${pkgver}/
         "OpenMS.sh"
 	"https://raw.githubusercontent.com/OpenMS/OpenMS/develop/LICENSE"
         "exclude.txt")
-sha256sums=('b0ca166eda31c98983470a8cb9bda0ae749660a1589a6677a90c918afe24275f'
+sha256sums=('453049131e94efbb3afa359990935203144caa17c0533eef40eb00b0bbc58472'
             '4f93d5c22a8267e4fbde6883ecc34a00abfc2ee5eafb46f6d81256ad8a33cdac'
             '9b33c6c91d931802e88af89ade4beb6c8d05484d57d1ad804888511b7a8b00a0'
             '2cf69cb56959f101614129d2a87dc078daca904e1701ed674d399afed1ff306d'
