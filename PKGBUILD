@@ -2,17 +2,19 @@
 
 pkgname=arch-update-git
 _pkgname="${pkgname%-git}"
-pkgver=3.5.0.r438.6749a94
+pkgver=3.12.5.r525.361b055
 pkgrel=1
 pkgdesc="An update notifier & applier that assists you with important pre / post update tasks (git version)"
 url="https://github.com/Antiz96/arch-update"
 arch=('any')
 license=('GPL-3.0-or-later')
-depends=('bash' 'pacman-contrib' 'archlinux-contrib' 'curl' 'fakeroot' 'htmlq' 'diffutils' 'hicolor-icon-theme' 'python' 'python-pyqt6' 'qt6-svg' 'glib2')
+depends=('bash' 'pacman-contrib' 'archlinux-contrib' 'curl' 'fakeroot' 'htmlq'
+         'diffutils' 'hicolor-icon-theme' 'python' 'python-pyqt6' 'qt6-svg' 'glib2')
 makedepends=('git' 'scdoc')
 checkdepends=('bats')
-optdepends=('yay: AUR Packages support'
-            'paru: AUR Packages support'
+optdepends=('paru: AUR Packages support'
+            'yay: AUR Packages support'
+            'pikaur: AUR Packages support'
             'flatpak: Flatpak Packages support'
             'libnotify: Desktop notifications support on new available updates'
             'vim: Default merge program for pacdiff'
