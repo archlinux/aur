@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://windsurf.com/"
 license=('LicenseRef-Windsurf Editor')
 _elnum=34
-depends=( electron$_elnum ripgrep fd #replacements
+depends=( electron$_elnum ripgrep fd xdg-utils #replacements
     'alsa-lib'
     'dbus'
     'gnupg'
@@ -19,7 +19,6 @@ depends=( electron$_elnum ripgrep fd #replacements
     'libxtst'
     'lsof'
     'shared-mime-info'
-    'xdg-utils'
 )
 optdepends=('glib2: Move to trash functionality'
             'org.freedesktop.secrets: Sync settings'
@@ -53,6 +52,7 @@ package() {
 	# Replacements
 	ln -svf /usr/bin/fd usr/share/windsurf/resources/app/extensions/windsurf/bin/fd
 	ln -svf /usr/bin/rg usr/share/windsurf/resources/app/node_modules/@vscode/ripgrep/bin/rg
+	ln -svf /usr/bin/xdg-open usr/share/windsurf/resources/app/node_modules/open/xdg-open
 	# Icon (1024^2 is unusable at KDE)
 	install -Dm644 "usr/share/${pkgname}/resources/app/out/media/code-icon.svg" "usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 	# Hide entry of URL handler
