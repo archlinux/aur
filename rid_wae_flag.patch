@@ -1,0 +1,11 @@
+--- gnat/lal_refactor_common.gpr	2024-04-04 19:30:10.684918600 +1100
++++ gnat/lal_refactor_common.gpr-new	2025-05-19 23:39:20.893205412 +1000
+@@ -16,7 +16,7 @@
+               ("-fPIC",
+                "-gnatX",
+                "-gnatyg",
+-               "-gnatwae",
++--               "-gnatwae",
+                "-gnatw.u",
+                "-g",
+                "-O0",
