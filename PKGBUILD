@@ -11,7 +11,7 @@ arch=('x86_64')
 license=("MIT")
 provides=('void')
 conflicts=('void')
-depends=( ripgrep xdg-utils # replacements
+depends=( ripgrep xdg-utils # electron* is added at build process
   libxkbfile
   libsecret
   gnupg
@@ -27,7 +27,7 @@ optdepends=(
   'lsof: Terminal splitting'
   'org.freedesktop.secrets: Settings sync'
 )
-makedepends=( electron nodejs-lts-jod
+makedepends=( nodejs-electron
   git npm pkgconf python )
 source=("git+https://github.com/voideditor/void.git")
 sha256sums=('SKIP')
@@ -70,7 +70,7 @@ build() {
 package() {
   _elver=$(cat /usr/lib/electron/version) # for --repackage
   _elnum=${_elver%%.*}
-  depends+=(electron${_elnum})
+  depends+=(electron${_elnum}) # breaks --printsrcinfo, but not serious
   _pkg=VSCode-linux-x64
   _app=/usr/share/void/resources/app
   # Licenses
