@@ -1,0 +1,14 @@
+pkgbase = configparser-git
+	pkgdesc = Simple, lightweight C++ configuration/ini file parser for Linux.
+	pkgver = 0.1.0
+	pkgrel = 1.0
+	url = https://github.com/dzilles/configparser
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	source = git+https://github.com/dzilles/configparser.git
+	b2sums = SKIP
+
+pkgname = configparser-git
