@@ -1,6 +1,6 @@
 pkgbase = python-livekit-protocol
 	pkgdesc = Python protocol stubs for LiveKit.
-	pkgver = 0.9.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/livekit/python-sdks/tree/main/livekit-protocol
 	arch = any
@@ -9,10 +9,9 @@ pkgbase = python-livekit-protocol
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.7
+	depends = python
 	depends = python-protobuf
-	depends = python-types-protobuf
-	source = https://files.pythonhosted.org/packages/source/l/livekit-protocol/livekit_protocol-0.9.2.tar.gz
-	sha256sums = d1f7a6f993de920f275559b63533578142c4c87c76b27f09151008b661c16760
+	source = https://files.pythonhosted.org/packages/source/l/livekit-protocol/livekit_protocol-1.0.3.tar.gz
+	sha256sums = 61d5c902237903e235589e0d34c90b0bf4b5f870e8ffde2a8a81cc942d967894
 
 pkgname = python-livekit-protocol
