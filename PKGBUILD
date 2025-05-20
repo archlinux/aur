@@ -10,7 +10,7 @@ pkgname="${_pkgname}-bin"
 _subver='7.6'
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
 arch=(
     'aarch64'
@@ -40,6 +40,10 @@ optdepends=(
     'trash-cli: file deletion support (trash-put)'
     "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)"
 )
+noextract=(
+    "${_pkgname}-chromedriver-${pkgver}-${CARCH}.zip"
+    "${_pkgname}-${pkgver}-${CARCH}.zip"
+)
 source_aarch64=(
     "${_pkgname}-chromedriver-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-arm64.zip"
     "${_pkgname}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-arm64.zip"
@@ -58,12 +62,17 @@ sha256sums_armv7h=('8141b977a6cf8d8a8748ae53abbee606c4474c6ea45b29deef53842e67f0
                    '0b4fa9ff90f10bfc9db7ac20b122d8d52d1ff8d6da7c39a4f8ed0d1c4951dda1')
 sha256sums_x86_64=('ee5225ab33396219cf8b72bc883a5a0791d9c9564f797163e84345ac561a5241'
                    '6a3ae7de546fa91b1925f2ee79475e7fb82856e596ab212e3f8ccf9719bc60ef')
+prepare() {
+    install -Dm755 -d "${srcdir}/${_pkgname}"
+    bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
+    bsdtar -xf "${srcdir}/${_pkgname}-chromedriver-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
+    rm -rf "${srcdir}/${_pkgname}/"{gen,chromedriver.debug}
+    chmod u+s "${srcdir}/${_pkgname}/chrome-sandbox"
+}
 package() {
-    install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
-    find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "${pkgdir}/usr/lib/${_pkgname}/." {} +
-    cp -r --no-preserve=ownership --preserve=mode "${srcdir}/"{locales,resources} "${pkgdir}/usr/lib/${_pkgname}"
-    chmod u+s "${pkgdir}/usr/lib/${_pkgname}/chrome-sandbox"
-    install -dm755 "${pkgdir}/usr/bin"
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
+    cp -r --no-preserve=ownership --preserve=mode "${srcdir}/${_pkgname}" "${pkgdir}/usr/lib"
     ln -nfs "/usr/lib/${_pkgname}/${_projectname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "${srcdir}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    rm -rf "${pkgdir}/usr/bin/${_pkgname}/LICENSE"*
+    install -Dm644 "${srcdir}/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

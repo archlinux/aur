@@ -1,7 +1,7 @@
 pkgbase = electron31-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
 	pkgver = 31.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electronjs.org
 	arch = aarch64
 	arch = armv7h
@@ -19,6 +19,8 @@ pkgbase = electron31-bin
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
 	provides = electron31=31.7.6
 	conflicts = electron31
+	noextract = electron31-chromedriver-31.7.6-x86_64.zip
+	noextract = electron31-31.7.6-x86_64.zip
 	source_aarch64 = electron31-chromedriver-31.7.6-aarch64.zip::https://github.com/electron/electron/releases/download/v31.7.6/chromedriver-v31.7.6-linux-arm64.zip
 	source_aarch64 = electron31-31.7.6-aarch64.zip::https://github.com/electron/electron/releases/download/v31.7.6/electron-v31.7.6-linux-arm64.zip
 	sha256sums_aarch64 = b3ef48d6caa1287ba9688c5c64cd3df4292dee6b1dfa117e789cc02cc53629fb
