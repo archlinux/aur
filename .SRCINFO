@@ -1,7 +1,7 @@
 pkgbase = rmg
 	pkgdesc = Rosalie's Mupen GUI
 	pkgver = 0.7.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Rosalie241/rmg
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = rmg
 	makedepends = git
 	makedepends = nasm
 	makedepends = cmake
+	makedepends = vulkan-headers
 	depends = hidapi
 	depends = libsamplerate
 	depends = speexdsp
