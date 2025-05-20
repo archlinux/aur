@@ -5,7 +5,7 @@
 
 _pkgname=freesurfer
 pkgname=${_pkgname}-bin
-pkgver=7.4.1
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="An open source software suite for processing and analyzing (human) brain MRI images. (Precompiled binary version)"
 arch=("i686" "x86_64")
@@ -51,10 +51,10 @@ conflicts=("$_pkgname")
 provides=("$_pkgname")
 install=${_pkgname}.install
 options=(!strip)
-source=("https://surfer.nmr.mgh.harvard.edu/pub/dist/${_pkgname}/${pkgver}/${_pkgname}-linux-centos8_x86_64-${pkgver}.tar.gz"
-    	"freesurfer.sh")
-b2sums=('666aa962a5e1db98358747d72342e3ed64efe870605583246d00be4430958e078ec18114320e1867ecc2665244fdd3df36ed14c46d0ca5e691a7f553aafe5719'
-	    '43752fe3e8a6ce74ae0638abbfc4c2f5ede96a46220c5114af14b4ffc0ac391359c2440dfd41e6e63518d1e16e3b9e202370182303e5f12ed932c6415bf1fe60')
+source=("https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/8.0.0/freesurfer-Rocky8-${pkgver}-1.x86_64.rpm"
+        "freesurfer.sh")
+b2sums=('e5842a209da482af7590a98d4d0e68fbbf4979f21ca82298e23d1e827efa928741d2b0ff1408434926b29d69b5b50a960d45a9a3f18232b96ee510bf0da3217d'
+        '43752fe3e8a6ce74ae0638abbfc4c2f5ede96a46220c5114af14b4ffc0ac391359c2440dfd41e6e63518d1e16e3b9e202370182303e5f12ed932c6415bf1fe60')
 
 package() {
 	# Create dirs
@@ -64,7 +64,8 @@ package() {
 		"${pkgdir}/etc/profile.d"
 
 	# Copy over relevant files...
-	cp -r --reflink=auto "${srcdir}/${_pkgname}" "${pkgdir}/opt/"
+	cp -r --reflink=auto "${srcdir}/usr/local/freesurfer/8.0.0-1/" \
+        "${pkgdir}/opt/${_pkgname}"
 	install -Dm 644 \
         "${pkgdir}/opt/${_pkgname}/docs/license.freesurfer_SLA.txt" \
         "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
