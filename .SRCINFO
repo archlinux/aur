@@ -1,9 +1,10 @@
 pkgbase = microsoft-edit-git
 	pkgdesc = Modern version of the MS-DOS Editor with a modern UI and keybindings similar to VS Code
 	pkgver = 1.0.0.r1.ge8d40f6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.staropensource.de/JeremyStarTM/aur-microsoft-edit-git
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	conflicts = microsoft-edit

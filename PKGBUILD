@@ -4,7 +4,7 @@
 _prjname=edit
 pkgname=microsoft-${_prjname}-git
 pkgver=1.0.0.r1.ge8d40f6
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern version of the MS-DOS Editor with a modern UI and keybindings similar to VS Code"
 arch=("x86_64" "aarch64")
 url="https://git.staropensource.de/JeremyStarTM/aur-${pkgname}"
