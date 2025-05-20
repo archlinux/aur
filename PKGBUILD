@@ -5,7 +5,7 @@
  
 pkgname=thunderbird-bin
 _pkgname=thunderbird
-pkgver=138.0.1
+pkgver=138.0.2
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -26,27 +26,27 @@ source=(
   'vendor.js'
 )
 source_x86_64=(
-  thunderbird-$pkgver-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/138.0.1/linux-x86_64/en-US/thunderbird-$pkgver.tar.xz 
-  thunderbird-$pkgver-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/138.0.1/linux-x86_64/en-US/thunderbird-$pkgver.tar.xz.asc
+  thunderbird-$pkgver-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/candidates/138.0.2-candidates/build1/linux-x86_64/en-US/thunderbird-$pkgver.tar.xz 
+  thunderbird-$pkgver-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/candidates/138.0.2-candidates/build1/linux-x86_64/en-US/thunderbird-$pkgver.tar.xz.asc
 )
 source_pentium4=(
-  thunderbird-$pkgver-pentium4.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/138.0.1/linux-i686/en-US/thunderbird-$pkgver.tar.xz
-  thunderbird-$pkgver-pentium4.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/138.0.1/linux-i686/en-US/thunderbird-$pkgver.tar.xz.asc
+  thunderbird-$pkgver-pentium4.tar.xz::https://archive.mozilla.org/pub/thunderbird/candidates/138.0.2-candidates/build1/linux-i686/en-US/thunderbird-$pkgver.tar.xz
+  thunderbird-$pkgver-pentium4.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/candidates/138.0.2-candidates/build1/linux-i686/en-US/thunderbird-$pkgver.tar.xz.asc
 )
 source_i686=(
-  thunderbird-$pkgver-i686.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/138.0.1/linux-i686/en-US/thunderbird-$pkgver.tar.xz
-  thunderbird-$pkgver-i686.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/138.0.1/linux-i686/en-US/thunderbird-$pkgver.tar.xz.asc
+  thunderbird-$pkgver-i686.tar.xz::https://archive.mozilla.org/pub/thunderbird/candidates/138.0.2-candidates/build1/linux-i686/en-US/thunderbird-$pkgver.tar.xz
+  thunderbird-$pkgver-i686.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/candidates/138.0.2-candidates/build1/linux-i686/en-US/thunderbird-$pkgver.tar.xz.asc
 )
 
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
 
 sha512sums=('6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('276caa0404e8f3562e7c602430c978daa05d6dcd50b78b841814aca2e8da4834aef1f6920adb6eb8043606b91aeea02e9786a7545716b81ca75cb2eb882be92b'
+sha512sums_x86_64=('b1682f50da7a6be90599b27d771f6ce87b2f9858c5347d19379bd7b7af9d79815c1989fec60d66a97994d51461f761cd6f356bac522785b9431ba428f6435c34'
                    'SKIP')
-sha512sums_pentium4=('6aab5cb4f296ac9491f7ae5c45245095a4d10433dfa31255cbd662a4c3da49d3a2c34d543b6d465253e99be5d8749ffb2d76c23c6c42f6739d4f1626908c1df8'
+sha512sums_pentium4=('09a7d65ab867863e08940a0dc12b0ba21158b2e94f65a2db07e8d662796e95899382bfd01b3fc3e49d0dbab770156207b3f67cd64ca8dd1bd82ce2bde69ed538'
                      'SKIP')
-sha512sums_i686=('6aab5cb4f296ac9491f7ae5c45245095a4d10433dfa31255cbd662a4c3da49d3a2c34d543b6d465253e99be5d8749ffb2d76c23c6c42f6739d4f1626908c1df8'
+sha512sums_i686=('09a7d65ab867863e08940a0dc12b0ba21158b2e94f65a2db07e8d662796e95899382bfd01b3fc3e49d0dbab770156207b3f67cd64ca8dd1bd82ce2bde69ed538'
                  'SKIP')
 
 
