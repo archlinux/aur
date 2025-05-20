@@ -1,7 +1,7 @@
 pkgbase = r-bff
 	pkgdesc = Bayes Factor Functions
-	pkgver = 4.3.0
-	pkgrel = 3
+	pkgver = 4.4.1
+	pkgrel = 1
 	url = https://github.com/rshudde/bff
 	arch = any
 	license = GPL2

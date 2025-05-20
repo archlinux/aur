@@ -1,8 +1,8 @@
 _pkgname=bff
-_pkgver=4.3.0
+_pkgver=4.4.1
 pkgname=r-${_pkgname,,}
-pkgver=4.3.0
-pkgrel=3
+pkgver=4.4.1
+pkgrel=1
 pkgdesc='Bayes Factor Functions'
 arch=('any')
 url="https://github.com/rshudde/${_pkgname}"
