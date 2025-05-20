@@ -1,12 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=local-llama-git
 _pkgname='Local Llama'
-pkgver=1.0.2.r0.g8ef4209
+pkgver=1.0.2.r2.g3e8f37a
 _electronversion=31
-_nodeversion=18
+_nodeversion=22
 pkgrel=1
 pkgdesc="Local Llama also known as L³ is designed to be easy to use, with a user-friendly interface and advanced settings.(Use system-wide electron)"
-arch=('any')
+arch=(
+    'aarch64'
+    'armv7h'
+    'x86_64'
+)
 url="https://folio.tib0.com/"
 _ghurl="https://github.com/tib0/local-llama"
 license=('CC-BY-NC-ND-4.0')
@@ -16,6 +20,7 @@ depends=(
     "electron${_electronversion}"
     'vulkan-icd-loader'
     'nodejs'
+    'ollama'
 )
 makedepends=(
     'gendesk'
@@ -46,6 +51,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname%-git}.git"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -54,8 +60,12 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname%-git}.git"
+    gendesk -f -n -q \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -74,16 +84,39 @@ prepare() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+    NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
-    NODE_ENV=production     npm run package
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    {\\
+        name: \"@electron-forge/plugin-local-electron\",\\
+        config: {\\
+            electronPath: \"${electronDist}\"\\
+        }\\
+    }," forge.config.*
+    npm run package
+    case "${CARCH}" in
+        aarch64)
+            find "${srcdir}/${pkgname%-git}.git/out/esm/${_pkgname}-linux-"*/resources/app \
+                -type d \( -name "*x64*" -o -name "*armv7l*" -o -name "*mac-*" -o -name "*win-*" \) -exec rm -rf {} +
+            ;;
+        armv7h)
+            find "${srcdir}/${pkgname%-git}.git/out/esm/${_pkgname}-linux-"*/resources/app \
+                -type d \( -name "*x64*" -o -name "*arm64*" -o -name "*mac-*" -o -name "*win-*" \) -exec rm -rf {} +
+            ;;
+        x86_64)
+            find "${srcdir}/${pkgname%-git}.git/out/esm/${_pkgname}-linux-"*/resources/app \
+                -type d \( -name "*arm*" -o -name "*mac-*" -o -name "*win-*" \) -exec rm -rf {} +
+            ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/out/esm/${_pkgname}-linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/static/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENCE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
