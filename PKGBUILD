@@ -17,7 +17,7 @@ sha256sums=('fa120643aeb48061eb32a7c993dabff88aa4e9d0b32f8ab0f3289b3fb2cf5744')
 prepare() {
     cd rustowl-${pkgver}
     export RUSTC_BOOTSTRAP=1
-    export RUSTUP_TOOLCHAIN=1.86.0
+    export RUSTUP_TOOLCHAIN=stable
     rustup component add rust-src rustc-dev llvm-tools
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     cargo install --locked cargo-zigbuild
@@ -27,7 +27,7 @@ build() {
     cd rustowl-${pkgver}
     export CARGO_TARGET_DIR=target
     export RUSTC_BOOTSTRAP=1
-    export RUSTUP_TOOLCHAIN=1.86.0
+    export RUSTUP_TOOLCHAIN=stable
     export RUSTOWL_RUNTIME_DIRS=/opt/rustowl
     cargo zigbuild --frozen --release --all-features --target $(rustc --print=host-tuple).2.17
 }
@@ -35,7 +35,7 @@ build() {
 check() {
     cd rustowl-${pkgver}
     export RUSTC_BOOTSTRAP=1
-    export RUSTUP_TOOLCHAIN=1.86.0
+    export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
