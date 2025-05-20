@@ -9,7 +9,6 @@ pkgbase = lost-dutchman-mine-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
 	makedepends = cmake
 	makedepends = curl
 	depends = electron29
