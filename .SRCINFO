@@ -1,6 +1,6 @@
 pkgbase = chef-client
 	pkgdesc = The Chef Client installation package includes everything you need to start converging your machines.
-	pkgver = 18.7.6
+	pkgver = 18.7.10
 	pkgrel = 1
 	url = https://omnitruck.chef.io/stable/chef/metadata?m=x86_64&v=18&p=debian&pv=12
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = chef-client
 	conflicts = chef-solo
 	conflicts = chef-dk
 	conflicts = cinc
-	source = https://packages.chef.io/files/stable/chef/18.7.6/debian/11/chef_18.7.6-1_amd64.deb
-	sha256sums = b134a467109becb6922123eae00513954eda64f32fc076abf10a8ce5a29da74b
+	source = https://packages.chef.io/files/stable/chef/18.7.10/debian/11/chef_18.7.10-1_amd64.deb
+	sha256sums = 827e5dcd3fbc2f727a5d53513c1133f22c1ac6af8ac7712bb9976d79cc87eb58
 
 pkgname = chef-client
 	depends = libxcrypt-compat
