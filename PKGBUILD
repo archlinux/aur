@@ -30,8 +30,7 @@ source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/
 sha256sums=('8aa8e7e3518f25e361b0665e31e2dcb9b08f4e0241abb010ba4ff8716d7085a4'
             '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
 package() {
-	tar -xf "data.tar.xz" --exclude 'usr/share/windsurf/[^r]*' --exclude 'usr/share/windsurf/*.pak' \
-		--exclude 'usr/share/pixmaps'
+	tar -xf "data.tar.xz" --exclude 'usr/share/windsurf/[^r]*' --exclude 'usr/share/windsurf/*.pak'
  	# Check version of electron
  	echo Replacing $(rg -m 1 '"electron":\s*"[0-9]+' usr/share/windsurf/resources/app/package.json) with $(cat /usr/lib/electron${_elnum}/version)
  	echo 'Fix if "major" version is wrong.'
@@ -51,7 +50,7 @@ package() {
 	ln -svf /usr/bin/fd usr/share/windsurf/resources/app/extensions/windsurf/bin/fd
 	ln -svf /usr/bin/rg usr/share/windsurf/resources/app/node_modules/@vscode/ripgrep/bin/rg
 	ln -svf /usr/bin/xdg-open usr/share/windsurf/resources/app/node_modules/open/xdg-open
-	# Icon (1024^2 is unusable at KDE)
+	# SVG Icon
 	install -Dm644 "usr/share/${pkgname}/resources/app/out/media/code-icon.svg" "usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 	# Hide entry of URL handler
 	desktop-file-edit --set-key Hidden --set-value true usr/share/applications/windsurf-url-handler.desktop
