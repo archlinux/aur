@@ -14,8 +14,10 @@ pkgbase = yaste-git
 	provides = yaste=1.1.0
 	conflicts = yaste
 	source = yaste.git::git+https://github.com/LuanRoger/yaste.git
+	source = yaste.png
 	source = yaste.sh
 	sha256sums = SKIP
+	sha256sums = d0e5ed4abe5778ca5e347eaf369fa6a7fc498566c00e7b33ad0453a80146b895
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = yaste-git
