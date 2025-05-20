@@ -1,7 +1,7 @@
 pkgbase = alacenc
 	pkgdesc = Encode audio into the Apple Lossless Audio Codec (ALAC) format
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flacon/alacenc
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,6 @@ pkgbase = alacenc
 	depends = glibc
 	depends = gcc-libs
 	source = git+https://github.com/flacon/alacenc.git#tag=v0.4.1
-	sha256sums = SKIP
+	sha256sums = 8ed8c66884b305b466e8454a7c809330e827340529ddc1e0631a0e172a1f8d0f
 
 pkgname = alacenc
