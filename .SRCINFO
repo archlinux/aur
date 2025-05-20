@@ -1,0 +1,16 @@
+pkgbase = oniux-git
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://gitlab.torproject.org/tpo/core/oniux
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cargo
+	provides = oniux
+	conflicts = oniux
+	options = !lto
+	source = git+https://gitlab.torproject.org/tpo/core/oniux.git
+	sha512sums = SKIP
+
+pkgname = oniux-git
