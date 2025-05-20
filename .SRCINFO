@@ -1,11 +1,15 @@
 pkgbase = image-garden
 	pkgdesc = Tool for creating test virtual machines
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/zygoon/image-garden
 	arch = any
 	license = Apache-2.0
 	makedepends = shellcheck
+	depends = cdrtools
+	depends = edk2-ovmf
+	depends = qemu-system-x86
+	depends = qemu-system-aarch64
 	source = image-garden-0.3.tar.bz2::https://gitlab.com/zygoon/image-garden/-/archive/v0.3/image-garden-v0.3.tar.bz2
 	source = 0001-Arch-override-default-OVMF-blobs-location.patch
 	sha256sums = 6ce3a94bbb9897979d5761f2d8e20fc8dff1798d10e703e7676968b7c2fa8e6c

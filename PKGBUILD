@@ -1,13 +1,13 @@
 # Maintainer: Maciej Borzecki <maciek.borzecki@gmail.com
 pkgname=image-garden
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for creating test virtual machines"
 arch=(any)
 url="https://gitlab.com/zygoon/image-garden"
 license=('Apache-2.0')
 groups=()
-depends=()
+depends=('cdrtools' 'edk2-ovmf' 'qemu-system-x86' 'qemu-system-aarch64')
 makedepends=('shellcheck')
 provides=()
 conflicts=()
