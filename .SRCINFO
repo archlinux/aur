@@ -1,0 +1,18 @@
+pkgbase = lane-wd
+	pkgdesc = Lane Launcher that use WayDroid
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/musdev13/lanewd
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = waydroid
+	depends = android-tools
+	depends = waydroid-image
+	depends = xdg-utils
+	depends = wget
+	conflicts = lane-adb
+	source = lane-wd::git+https://github.com/musdev13/lane-wd.git
+	md5sums = SKIP
+
+pkgname = lane-wd
