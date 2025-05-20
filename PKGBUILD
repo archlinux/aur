@@ -4,34 +4,31 @@
 pkgname=trn
 _filever=4.0-test77
 pkgver=4.0test77
-pkgrel=7
+pkgrel=8
 pkgdesc="Text-based threaded Usenet newsreader"
 arch=('i686' 'x86_64')
 url="http://trn.sourceforge.net/"
-license=('LicenseRef-proprietary')
-depends=('ncurses' 'libnsl')
+license=('LicenseRef-trn')
+depends=('ncurses' 'libnsl' 'libnet')
 makedepends=('patch' 'expect' 'bison')
 optdepends=('aspell: spellcheck support'
   'sendmail: (or any outgoing mailer) outgoing email support')
 source=("http://downloads.sourceforge.net/trn/${pkgname}-${_filever}.tar.gz" 
-        "${pkgname}-${_filever}-aur.patch"
-        "configbot")
-install=${pkgname}.install
-sha512sums=('9b76ba004fb47dfd162afcfec51630431e8ad7099e5151d4a21b55c8fa670227d6e0756029e57312872c8f4ea986112af50508144caf59adb065212a661f408a'
-            '731ec965dd25cf50ce291c7f1002f6d1f40e8e31b678fc6b616ebbaa1fcaf9b9ff69dc567610350e1977692b6bcb3e721bf8adab9cf1d86895b663cc5141208c'
-            '2509ee69a54ca05fb15d2936d0f6da6332a6bc4fcf97bd572b6d4eab545b892586a4798db85cde689aa7015a89ce21c3e5b1a16bb73ea2ca7d95bb5f26b0902c')
+        "${pkgname}-${_filever}-aur.patch")
+sha256sums=('9ab0430244903ad86ed74fcc2fdc39dc043d23968888e071313050a967b8a6ff'
+            '137770df753c476b0028b47ff83c7bad3ad68196b105a6d49ab609514ebf97b8')
 
 prepare() {
   cd "$srcdir/${pkgname}-${_filever}"
 
-  # fixes in include order to allow builds, and a fix to allow aspell
-  # to be used as the speller:
+  # This patch is against Beej's trn update[1]. It doesn't change any
+  # logic; it modernizes the code so it builds.
+  #
+  # [1] https://github.com/beejjorgensen/trn-4.0-test77
   patch -Np1 < ${srcdir}/${pkgname}-${_filever}-aur.patch
 
-  # the Configure script is very very interactive, so we
-  # let expect handle it.  This expect script runs the
-  # Configure script:
-  expect -f $srcdir/configbot
+  # The patch includes an expect script to autoconfigure
+  TRN_CONFIG_BUFTEST_NOSLEEP=1 expect -f configbot.archlinux
 }
 
 build() {
