@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2503a.r344.g23a5ea3504'
+pkgver='2503a.r566.g1dc4dc6b6d'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -24,7 +24,7 @@ depends=(
 	'libusb-1.0.so' 'libx11' 'libxi' 'libxrandr' 'lz4' 'lzo' 'mbedtls2' 'pugixml'
 	'sdl2' 'sfml' 'speexdsp' 'xxhash' 'xz' 'zstd'
 	# Additional dependencies to replace vendored deps
-	'cubeb' 'minizip-ng'
+	'cubeb' 'libiconv' 'minizip-ng' 'zlib-ng'
 )
 makedepends=(
 	'alsa-lib' 'cmake' 'git' 'libevdev' 'libminiupnpc.so' 'libpulse'
@@ -41,13 +41,11 @@ source=(
 	"$pkgbase-tinygltf::git+https://github.com/syoyo/tinygltf.git"
 	"$pkgbase-vh::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"$pkgbase-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
-	"$pkgbase-zlibng::git+https://github.com/zlib-ng/zlib-ng.git"
 	'minizip-ng.diff'
 	'cmake-discord-rpc.diff'
 	'cmake-mgba.diff'
 )
 b2sums=('SKIP'
-        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -76,7 +74,6 @@ prepare() {
 		[tinygltf]='tinygltf/tinygltf'
 		[vh]='Vulkan-Headers'
 		[vma]='VulkanMemoryAllocator'
-		[zlibng]='zlib-ng/zlib-ng'
 	)
 
 	for _submod in "${!_submodules[@]}"; do
