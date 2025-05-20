@@ -8,12 +8,12 @@ url="https://github.com/Rooterts/sshf"
 license=('MIT')
 depends=('openssl' 'zlib')
 makedepends=('rust' 'cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Rooterts/sshf/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('73089cdd48eba2953f64abcba44691c5ef20166aabe32af7337475d85b43c887')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Rooterts/sshf/archive/v$pkgver.tar.gz")
+sha256sums=('PON_AQUI_EL_HASH_REAL')  # Usa `makepkg -g` para generarlo
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked
+  cargo build --release --offline
 }
 
 package() {
