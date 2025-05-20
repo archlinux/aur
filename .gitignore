@@ -1,7 +1,6 @@
 /.vscode/
 /src/
 /pkg/
-github-pr-33.patch
 *.log
 *.pkg.*
 *.tar.*

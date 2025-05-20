@@ -2,7 +2,7 @@
 
 pkgname=python-cynthion
 _gitpkgname=cynthion
-pkgver=0.1.8
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Python package and utilities for the Great Scott Gadgets Cynthion USB Test Instrument'
 arch=('any')
@@ -11,10 +11,10 @@ license=('BSD-3-Clause')
 depends=(
   "cynthion-firmware=${pkgver}"
   'python'
-  'python-amaranth<0.5'  # https://github.com/greatscottgadgets/cynthion/issues/39
+  'python-amaranth>=0.5'
   'python-apollo'
-  'python-luna-usb'
-  'python-luna-soc'
+  'python-luna-usb>=0.2'
+  'python-luna-soc>=0.3'
   'python-pyfwup'
   'python-pygreat'
   'python-pyusb'
@@ -39,9 +39,13 @@ optdepends=(
 
 source=(
   "${_gitpkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+  'archlinux-managed-udev-rules.patch'
 )
 
-sha512sums=('bc597109d172ad50d15d2c7f91f6a9362767b2b3a9d89efc7511f46114220a06ee4d0c95ea477655e035a445df7d675495c06e5fa20937dee95cf20b5600654c')
+sha512sums=(
+  '752a1bb976f778281b8dfee2b1ee2412ab25a9392d5977ca87d73ea3fbf3edf10dcd5c6c2e80b466cac695d2b19e1fc2eb7a381477a619a8a546f2ec8f3a8b4b'
+  '45d3b73f3651485177b43ffb2d413a7a008f01550dcff7973e6581afb337b6b37beda50ee8499a632754e791734186ec647eb48bea8a3efb2899844bac40fd0b'
+)
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
@@ -54,6 +58,9 @@ with patch_in_place('cynthion/python/pyproject.toml') as toml:
     toml.set_project_version_from_env('pkgver')
     toml.tools.setuptools_git_versioning.remove()
 EOF
+
+  echo >&2 'Patching the setup subcommand so it knows about pacman-managed files'
+  patch -p1 < ../archlinux-managed-udev-rules.patch
 }
 
 build() {

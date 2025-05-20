@@ -1,6 +1,6 @@
 pkgbase = python-cynthion
 	pkgdesc = Python package and utilities for the Great Scott Gadgets Cynthion USB Test Instrument
-	pkgver = 0.1.8
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/greatscottgadgets/cynthion
 	arch = any
@@ -14,12 +14,12 @@ pkgbase = python-cynthion
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-sphinx-inline-tabs
 	makedepends = python-wheel
-	depends = cynthion-firmware=0.1.8
+	depends = cynthion-firmware=0.2.0
 	depends = python
-	depends = python-amaranth<0.5
+	depends = python-amaranth>=0.5
 	depends = python-apollo
-	depends = python-luna-usb
-	depends = python-luna-soc
+	depends = python-luna-usb>=0.2
+	depends = python-luna-soc>=0.3
 	depends = python-pyfwup
 	depends = python-pygreat
 	depends = python-pyusb
@@ -27,7 +27,9 @@ pkgbase = python-cynthion
 	depends = python-tqdm
 	depends = python-usb-protocol
 	optdepends = python-facedancer: to run the included examples
-	source = cynthion-0.1.8.tar.gz::https://github.com/greatscottgadgets/cynthion/archive/0.1.8.tar.gz
-	sha512sums = bc597109d172ad50d15d2c7f91f6a9362767b2b3a9d89efc7511f46114220a06ee4d0c95ea477655e035a445df7d675495c06e5fa20937dee95cf20b5600654c
+	source = cynthion-0.2.0.tar.gz::https://github.com/greatscottgadgets/cynthion/archive/0.2.0.tar.gz
+	source = archlinux-managed-udev-rules.patch
+	sha512sums = 752a1bb976f778281b8dfee2b1ee2412ab25a9392d5977ca87d73ea3fbf3edf10dcd5c6c2e80b466cac695d2b19e1fc2eb7a381477a619a8a546f2ec8f3a8b4b
+	sha512sums = 45d3b73f3651485177b43ffb2d413a7a008f01550dcff7973e6581afb337b6b37beda50ee8499a632754e791734186ec647eb48bea8a3efb2899844bac40fd0b
 
 pkgname = python-cynthion
