@@ -15,7 +15,7 @@ provides=('scalar-desktop')
 source=(
         "scalar_v${pkgver}.deb::http://download.scalar.com/versions/${pkgver}/linux/deb"
 )
-sha256sums=('b02da7d116469b25d9e55df14252cbbb6b42bce00b7f2212cd55f0e5375d2b16')
+sha256sums=('f0ebd42d2eeaa35acbc841d79da72c8d0ce44bf2773845f086f2037e83fb1e1f')
 
 package() {
   echo "Extracting the data.tar.xz..."
