@@ -1,6 +1,6 @@
 pkgbase = cursor-electron
 	pkgver = 0.50.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.cursor.com
 	arch = aarch64
 	arch = x86_64
@@ -24,16 +24,15 @@ pkgbase = cursor-electron
 	sha512sums_x86_64 = bbfcdc6759a04e87ba24031566a4676f477821ad120f5a4ccb2348e4d0395d4660e27f90ad392f853abf7b7a4801c9807b4d5e099a245a237785a945173ed878
 
 pkgname = cursor-electron
-	pkgdesc = The AI Code Editor (system-wide electron)
+	pkgdesc = AI Code Editor (system-wide electron)
 	depends = ripgrep
 	depends = xdg-utils
 	depends = gcc-libs
 	depends = hicolor-icon-theme
 	depends = libxkbfile
-	depends = electron
 
 pkgname = cursor-electron-latest
-	pkgdesc = The AI Code Editor (latest stable electron)
+	pkgdesc = AI Code Editor (latest stable electron)
 	depends = ripgrep
 	depends = xdg-utils
 	depends = gcc-libs

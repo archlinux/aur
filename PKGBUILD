@@ -5,8 +5,8 @@ _name=cursor
 pkgbase="${_name}-electron"
 pkgname=("$pkgbase"{,-latest})
 pkgver=0.50.5
-pkgrel=3
-_desc="The AI Code Editor "
+pkgrel=4
+_desc="AI Code Editor "
 arch=('aarch64' 'x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor')
@@ -44,8 +44,8 @@ prepare() { # Create cp -r friendly layout with FHS
 	ln -svf /usr/bin/xdg-open open/xdg-open
 }
 package_cursor-electron(){
-	_electron=electron$(rg --no-messages -N -o -r '$1' '"electron": *"[^\d]*(\d+)' squashfs-root/usr/lib/cursor/package.json) # --repackage
-	depends+=(electron$(rg --no-messages -N -o -r '$1' '"electron": *"[^\d]*(\d+)' squashfs-root/usr/share/cursor/resources/app/package.json )) # --printsrcinfo
+	_electron=electron$(rg --no-messages -N -o -r '$1' '"electron": *"[^\d]*(\d+)' squashfs-root/usr/lib/cursor/package.json)
+	depends+=($_electron) # breaks --printsrcinfo
 	pkgdesc="${_desc} (system-wide electron)"
 	cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
 	sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
@@ -55,6 +55,6 @@ package_cursor-electron(){
 package_cursor-electron-latest(){
 	depends+=(electron)
 	pkgdesc="${_desc} (latest stable electron)"
-	cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
+	mv squashfs-root/usr "${pkgdir}/usr" # breaks --repackage
 	install -Dm755 run.sh "${pkgdir}/usr/bin/cursor"
 }
