@@ -1,17 +1,15 @@
-# Maintainer: Dmitry <dimflix.official@email.com>
+# Maintainer: Dmitry <dimflix.official@gmail.com>
 pkgname=pawlette-git
+conflicts=('pawlette')
+provides=('pawlette')
 pkgver=r1.0.0
 pkgrel=1
 pkgdesc="😺 Utility for changing themes in the meowrch"
 arch=('any')
 url="https://github.com/meowrch/pawlette"
 license=('GPL-3.0')
-depends=(
-  'python'
-  'python-virtualenv'
-  'git'
-)
-makedepends=('python-uv')
+depends=('python')
+makedepends=('python-uv' 'python-virtualenv' 'git')
 source=("git+https://github.com/meowrch/pawlette.git")
 sha256sums=('SKIP')
 
@@ -26,7 +24,7 @@ package() {
   # Install virtual environment
   install -d -m755 "$pkgdir/opt/$pkgname"
   python -m venv "$pkgdir/opt/$pkgname/.venv"
-  uv sync
+  uv sync --no-dev --frozen --compile-bytecode
 
   # Install application files
   cp -r . "$pkgdir/opt/$pkgname/"
@@ -37,6 +35,4 @@ package() {
 cd /opt/pawlette-git
 exec .venv/bin/python run.py "\$@"
 EOF
-
-  chmod 755 "$pkgdir/usr/bin/pawlette"
 }

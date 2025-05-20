@@ -6,9 +6,11 @@ pkgbase = pawlette-git
 	arch = any
 	license = GPL-3.0
 	makedepends = python-uv
+	makedepends = python-virtualenv
+	makedepends = git
 	depends = python
-	depends = python-virtualenv
-	depends = git
+	provides = pawlette
+	conflicts = pawlette
 	source = git+https://github.com/meowrch/pawlette.git
 	sha256sums = SKIP
 
