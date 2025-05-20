@@ -26,7 +26,7 @@ options=(!strip emptydirs)
 provides=(zoom)
 conflicts=(zoom)
 source=("zoom-origin-${pkgver}.pkg.tar.xz::${url}client/${pkgver}/zoom_x86_64.pkg.tar.xz")
-b2sums=('758a44e3e2e57bfcc5d1bee16c8fc081806f7a3785caab7c8662d157450c3150d0ec8fc11aa8e0178ba2d272370147fe4176f53b09ceadb5f3e1d3bac81e5b01')
+b2sums=('35b10151940c1497a44e6dcbca3a650baab4a7e7cec6e385cd4bd9b82941622e995202b39843d7b08e13d37a55706de5dd0e1147515f52d83f65b090092e79c9')
 
 build() {	
 	ln -sf /usr/share/pixmaps/Zoom.png usr/share/pixmaps/*-zoom.png
