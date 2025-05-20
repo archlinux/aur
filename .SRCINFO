@@ -11,6 +11,7 @@ pkgbase = xfce4-i3-window-title-plugin-git
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = xfce4-dev-tools
+	makedepends = gettext
 	depends = xfce4-panel
 	depends = i3ipc-glib-git
 	provides = xfce4-i3-window-title-plugin
@@ -18,4 +19,3 @@ pkgbase = xfce4-i3-window-title-plugin-git
 	md5sums = SKIP
 
 pkgname = xfce4-i3-window-title-plugin-git
-
