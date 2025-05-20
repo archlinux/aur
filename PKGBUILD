@@ -1,6 +1,6 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 pkgname=pyrefly
-pkgver=0.15.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="A fast type checker and IDE for Python"
 arch=("x86_64")
@@ -13,7 +13,7 @@ makedepends=(
   "lld"
 )
 source=("git::git+https://github.com/facebook/pyrefly#tag=${pkgver}")
-sha256sums=('d4bccf84d7dad57ffdbb69f67324e87b16710253022f63d96112e848a4ec350e')
+sha256sums=('4fd98846b9fac7d013d2b10e6456ea28176729eb2609102acc757b68987dabc8')
 
 prepare() {
   cd "${srcdir}/git/pyrefly"
