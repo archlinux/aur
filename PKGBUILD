@@ -2,13 +2,13 @@
 
 pkgname='corepacker'
 pkgver=0.0.0
-pkgrel=8
+pkgrel=9
 pkgdesc='Remove npm, yarn and pnpm using corepack'
 source=(corepack.conf)
 arch=('any')
 url='https://github.com/nodejs/corepack/'
 license=('CC0 1.0')
-provides=("npm" "yarn" "pnpm" "node-gyp" "nodejs-nopt")
+provides=("npm" "yarn" "pnpm")
 conflicts=("npm" "yarn" "pnpm")
 depends=("nodejs")
 

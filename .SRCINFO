@@ -1,7 +1,7 @@
 pkgbase = corepacker
 	pkgdesc = Remove npm, yarn and pnpm using corepack
 	pkgver = 0.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/nodejs/corepack/
 	arch = any
 	license = CC0 1.0
@@ -9,8 +9,6 @@ pkgbase = corepacker
 	provides = npm
 	provides = yarn
 	provides = pnpm
-	provides = node-gyp
-	provides = nodejs-nopt
 	conflicts = npm
 	conflicts = yarn
 	conflicts = pnpm
