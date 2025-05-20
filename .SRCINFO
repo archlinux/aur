@@ -1,6 +1,6 @@
 pkgbase = mullvad-vpn-cli
 	pkgdesc = The Mullvad VPN CLI client
-	pkgver = 2025.5
+	pkgver = 2025.6
 	pkgrel = 1
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
@@ -15,14 +15,14 @@ pkgbase = mullvad-vpn-cli
 	depends = libnftnl
 	provides = mullvad-vpn
 	conflicts = mullvad-vpn
-	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2025.5?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2025.6?signed
 	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git
 	source = git+https://github.com/mullvad/wireguard-go.git
 	validpgpkeys = 225E40C8F1C8DEB7977ABF59F293063FECE2E8ED
 	validpgpkeys = 8339C7D2942EB854E3F27CE5AEE9DECFD582E984
 	validpgpkeys = 1D0026CBD1F1858DF8DB54DFCB87E2B919A6454C
 	validpgpkeys = 049F58CC80D9C78452151EE6EF0CCD68D0E5B9B1
-	sha256sums = 3e34ea184098cac5b5ebbd116c254a69b0f943dd1f62640cfcd48e0c81869cd7
+	sha256sums = f6597965886681b842c6522706ff69547c4cd27752afa62bc75fadea13c9e23c
 	sha256sums = SKIP
 	sha256sums = SKIP
 
