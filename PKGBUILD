@@ -2,7 +2,7 @@
 
 pkgname=curl-impersonate-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Special compilation of curl that makes it impersonate Firefox and Chrome"
 url="https://github.com/lexiforest/curl-impersonate"
 license=('MIT')
@@ -27,7 +27,7 @@ md5sums_armv7h=('1181895f527840a8f26289ed8e9b5cf6')
 
 package () {
   mkdir -p "${pkgdir}/usr/bin/"
-  for executable in $(find . -maxdepth 1 -type f -name "curl_*" ! -name "*.*")
+  for executable in $(find . -maxdepth 1 -type f -executable)
   do
     install -Dm755 $executable "${pkgdir}/usr/bin/"
   done
