@@ -1,44 +1,50 @@
-# Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 # Contributer: Térence Clastres <t dot clastres at gmail dot com>
 pkgname=gnome-shell-extension-gsconnect-git
-pkgver=57.r5.g883a8f62
+pkgver=62.r5.gb97d58f
 pkgrel=1
 pkgdesc="KDE Connect implementation with GNOME Shell integration"
 arch=('any')
 url="https://github.com/GSConnect/gnome-shell-extension-gsconnect"
-license=('GPL')
+license=('GPL-2.0-or-later OR MPL-2.0')
 depends=('gnome-shell')
-optdepends=('evolution-data-server: Contacts integration (Evolution)'
-            'libgdata: Contacts integration (GNOME Online Accounts)'
-            'python-nautilus: Nautilus integration'
-            'nemo-python: Nemo integration'
-            'gsound: Themed sound effects')
-makedepends=('git' 'meson' 'eslint')
+makedepends=(
+  'git'
+  'meson'
+)
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
+optdepends=(
+  'evolution-data-server: access contacts in GNOME Online Accounts, Evolution or the local address book.'
+  'gsound: sound effects'
+  'nautilus-python: share files from Nautilus'
+  'nemo-python: share files from Nemo'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install="${pkgname%-git}.install"
-source=("${pkgname%-git}::git+${url}")
+source=('git+https://github.com/GSConnect/gnome-shell-extension-gsconnect.git')
 md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/rc.\.//'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
 build() {
-  cd "${pkgname%-git}"
-  arch-meson --buildtype=plain build
-  ninja -C build
+  arch-meson "${pkgname%-git}" build \
+    -Dnemo=true \
+    -Dinstalled_tests=false
+  meson compile -C build
 }
 
 check() {
-  cd "${pkgname%-git}"
-  arch-meson check
+  meson test -C build --no-rebuild --suite gsconnect:data --print-errorlogs
 }
 
 package() {
-  cd "${pkgname%-git}"
-  DESTDIR="${pkgdir}" ninja -C build install
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
-# vim:set ts=4 sw=4 et:
