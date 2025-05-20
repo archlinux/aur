@@ -1,0 +1,20 @@
+pkgbase = clip-editor-bin
+	pkgdesc = Edit, manage, and organize your video clips.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/sn0w12/clip-editor
+	arch = x86_64
+	license = MIT
+	depends = electron36
+	depends = ffmpeg
+	depends = steam
+	depends = nodejs
+	provides = clip-editor=0.1.5
+	conflicts = clip-editor
+	options = !emptydirs
+	source = clip-editor-0.1.5.rpm::https://github.com/sn0w12/clip-editor/releases/download/v0.1.5/clip-editor-0.1.5-1.x86_64.rpm
+	source = clip-editor.sh
+	sha256sums = 1269d19d1b8d29468e41e3bf6839737011c421310ccff5607df86da97a9cc929
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = clip-editor-bin
