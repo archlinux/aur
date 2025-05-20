@@ -77,16 +77,15 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname//-/.}"
     local electronDist="/usr/lib/electron${_electronversion}"
-	sed -i -e "
-        100i\  plugins: [
-		100i\    {
-		100i\      name: '@electron-forge/plugin-local-electron',
-		100i\      config: {
-		100i\        electronPath: \'${electronDist}\'
-		100i\      }
-		100i\    }
-        100i\  ],
-	" forge.config.js
+	sed -i '/makers: \[/i\
+	plugins: [\
+		{\
+			name: "@electron-forge/plugin-local-electron",\
+			config: {\
+				electronPath: "'"${electronDist}"'",\
+			},\
+		},\
+	],' forge.config.*
     NODE_ENV=production     yarn run package
 }
 package() {
