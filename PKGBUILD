@@ -4,7 +4,7 @@
 # - https://aur.archlinux.org/packages/element-desktop-nightly-bin
 
 pkgname=scalar-desktop-bin
-pkgver=0.1.177
+pkgver=0.1.191
 pkgrel=1
 pkgdesc="Scalar on Desktop"
 arch=('x86_64')
