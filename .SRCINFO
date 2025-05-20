@@ -1,6 +1,6 @@
 pkgbase = pinac-workspace-git
 	pkgdesc = A modern-looking privacy-first AI chat for desktops.(Use system-wide electron)
-	pkgver = 2.0.9_Final.r87.g94c8873
+	pkgver = 2.1.0.r0.g291fbc4
 	pkgrel = 1
 	url = https://pinacworkspace.pages.dev/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = pinac-workspace-git
 	makedepends = curl
 	makedepends = git
 	makedepends = python
-	depends = electron30
-	provides = pinac-workspace=2.0.9_Final
+	depends = electron35
+	provides = pinac-workspace=2.1.0
 	conflicts = pinac-workspace
 	source = pinac-workspace.git::git+https://github.com/pinacai/PINAC_Workspace.git
 	source = pinac-workspace.sh

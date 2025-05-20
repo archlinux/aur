@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pinac-workspace-git
 _pkgname="PINAC Workspace"
-pkgver=2.0.9_Final.r87.g94c8873
-_electronversion=30
-_nodeversion=20
+pkgver=2.1.0.r0.g291fbc4
+_electronversion=35
+_nodeversion=22
 pkgrel=1
 pkgdesc='A modern-looking privacy-first AI chat for desktops.(Use system-wide electron)'
 arch=('any')
@@ -51,7 +51,12 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -f -n -q \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -70,22 +75,30 @@ prepare() {
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    sed -i "s/\/\${version}//g" electron-builder.json5
+    sed -i -e "
+        s/\/\${version}//g
+        s/app.exe/app/g
+    " electron-builder.json5
     NODE_ENV=development    npm install --leagcy-peer-deps
+    sed -i "s/ThemeManager/themeManager/g" src/features/sidebar/components/ThemeToggle.tsx
+    sed -i "s/components\/GreetingText/components\/greetingText/g" src/pages/Home.tsx
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git/backend"
     python -m venv venv
-    ./venv/bin/python build_app.py
+    source venv/bin/activate
+    pip install -r requirements.txt
     cd "${srcdir}/${pkgname%-git}.git"
     NODE_ENV=production     npx tsc
     NODE_ENV=production     npx vite build
+    find dist-electron -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config=electron-builder.json5"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/release/linux-"*/resources/{app.asar.unpacked,backend} "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/public/icon/Round App Logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
