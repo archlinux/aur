@@ -3,7 +3,7 @@
 
 pkgname=xdroid-bin
 pkgver=13.2.380
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="卓懿,让安卓应用融入Linux平台应用生态体系，卓懿 x86_64 版（个人免费下载使用，不得用于商业用途）。"
 arch=('x86_64')
