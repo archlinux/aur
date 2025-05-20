@@ -1,7 +1,7 @@
 pkgbase = electron27-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
 	pkgver = 27.3.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://electronjs.org
 	arch = aarch64
 	arch = armv7h
@@ -18,6 +18,8 @@ pkgbase = electron27-bin
 	optdepends = xdg-utils: open URLs with desktop`s default
 	provides = electron27=27.3.11
 	conflicts = electron27
+	noextract = electron27-chromedriver-27.3.11-x86_64.zip
+	noextract = electron27-27.3.11-x86_64.zip
 	source_aarch64 = electron27-chromedriver-27.3.11-aarch64.zip::https://github.com/electron/electron/releases/download/v27.3.11/chromedriver-v27.3.11-linux-arm64.zip
 	source_aarch64 = electron27-27.3.11-aarch64.zip::https://github.com/electron/electron/releases/download/v27.3.11/electron-v27.3.11-linux-arm64.zip
 	sha256sums_aarch64 = ebfaee21a1f0040408b27e060666f414844a1a9bd4d6eab75fd1a4448933fc48
