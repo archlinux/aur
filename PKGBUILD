@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mesa
-pkgver=25.0.2
+pkgver=25.1.0
 pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
@@ -17,21 +17,20 @@ validpgpkeys=(
   E3E8F480C52ADD73B278EE78E1ECBE07D7D70895 # Juan Antonio Suárez Romero (Igalia, S.L.) <jasuarez@igalia.com>
 )
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig})
-sha256sums=('adf904d083b308df95898600ffed435f4b5c600d95fb6ec6d4c45638627fdc97'
+sha256sums=('b1c45888969ee5df997e2542654f735ab1b772924b442f3016d2293414c99c14'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "${srcdir}"/mesa-${pkgver}
-  # https://gitlab.freedesktop.org/mesa/mesa/-/issues/12776
-  curl -L https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/33822.patch | patch -p1
+  curl -L https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/34785.patch | patch -p1
 }
 
 build() {
   cd "${srcdir}"/mesa-${pkgver}
   for _arch in ${_architectures}; do
-    ${_arch}-meson build-${_arch} -Dgallium-drivers=softpipe,llvmpipe,zink -Dvulkan-drivers=swrast -Db_lto=false -Degl=disabled -Dshared-glapi=enabled -Dgles1=enabled -Dgles2=enabled -Dvulkan-icd-dir=bin --includedir=include/mesa
+    ${_arch}-meson build-${_arch} -Db_lto=false -Dgallium-drivers=softpipe,llvmpipe,zink -Dvulkan-drivers=swrast -Degl=enabled -Dgles1=enabled -Dgles2=enabled -Dvulkan-icd-dir=bin --includedir=include/mesa
     ninja -C build-${_arch} ${MAKEFLAGS}
   done
 }
