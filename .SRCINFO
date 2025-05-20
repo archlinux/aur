@@ -1,6 +1,6 @@
 pkgbase = nodejs-gitmoji-cli
 	pkgdesc = A gitmoji interactive client for using gitmojis on commit messages
-	pkgver = 9.6.0
+	pkgver = 9.7.0
 	pkgrel = 1
 	url = https://gitmoji.carloscuesta.me/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = nodejs-gitmoji-cli
 	optdepends = ttf-symbola: emojis
 	optdepends = ttf-joypixels: emojis
 	optdepends = ttf-twemoji-color: emojis
-	noextract = gitmoji-cli-9.6.0.tgz
-	source = https://registry.npmjs.org/gitmoji-cli/-/gitmoji-cli-9.6.0.tgz
-	sha256sums = 210e637d9b5d8313542682515e160f05a2b38ec75b60daa051faa3fdf2a7b23d
+	noextract = gitmoji-cli-9.7.0.tgz
+	source = https://registry.npmjs.org/gitmoji-cli/-/gitmoji-cli-9.7.0.tgz
+	sha256sums = feafd3520f57f5eed9c1df0a603cbd4c69869daab5fd2011bd7e3711541f482b
 
 pkgname = nodejs-gitmoji-cli

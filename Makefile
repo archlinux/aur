@@ -1,12 +1,10 @@
 all:
 	updpkgsums
 	makepkg --printsrcinfo > .SRCINFO
-	rm -f *.zip
-	rm -f *.zst
+	make clean
 
 clean:
-	rm -f *.tgz
-	rm -f *.zst
+	rm -f *.tar *.zip *.zst
 
 test:
 	make clean
