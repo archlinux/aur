@@ -2,23 +2,27 @@
 
 pkgname=python-luna-soc-git
 _gitpkgname=luna-soc
-pkgver=0.1.0.post0+git.3132c898
-pkgrel=3
+pkgver=0.3.1.post1+git.e7e742fc
+pkgrel=1
 pkgdesc='Amaranth HDL libary for building USB-capable SoC designs'
 arch=('any')
 url='https://github.com/greatscottgadgets/luna-soc'
 license=('BSD-3-Clause')
 depends=(
   'python'
-  'python-amaranth<0.5'  # https://github.com/greatscottgadgets/luna-soc/issues/21
-  'python-luna-usb'
+  'python-amaranth>=0.5'
+
+  # Work around undeclared transitive dependency of python-amaranth
+  # See also: https://aur.archlinux.org/packages/python-amaranth#comment-1016100
+  'python-jschon'
+
+  'python-luna-usb>=0.2'
   'python-pyserial'
 )
 makedepends=(
   'git'
   'python-build'
   'python-installer'
-  'python-minerva-git'
   'python-pyproject-patcher'
   'python-recommonmark'
   'python-setuptools'
@@ -28,8 +32,9 @@ makedepends=(
   'python-sphinxcontrib-apidoc'
   'python-wheel'
 )
+checkdepends=('python-apollo')
 optdepends=(
-  'python-minerva-git: to implement SoC designs using a Minerva RISC-V CPU'
+  'python-minerva: to implement SoC designs using a Minerva RISC-V CPU'
 )
 provides=("python-luna-soc=${pkgver%.post*}")
 conflicts=('python-luna-soc')
@@ -68,7 +73,28 @@ build() {
   _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
   python -m installer --destdir=tmp_install dist/*.whl
   PYTHONPATH="${PWD}/tmp_install/${_site_packages}" \
-    make -C docs man singlehtml
+    make -C docs singlehtml
+}
+
+check() {
+  cd "${_gitpkgname}"
+  local LUNA_USB_IDS
+
+  # Do not use real hardware if connected at check time
+  export LUNA_USB_IDS='0xffff:0xffff'
+
+  echo >&2 'Smoke testing the built-in CLI'
+  python >actual.txt 2>&1 << 'EOF' || true
+from apollo_fpga import ApolloDebugger
+import luna_soc
+luna_soc.top_level_cli(ApolloDebugger)
+EOF
+  if ! grep -qF 'apollo_fpga.DebuggerNotFound' actual.txt; then
+    printf >&2 '%s\n' 'Unexpected test output:' '==='
+    cat >&2 actual.txt
+    printf >&2 '\n%s\n' '==='
+    exit 1
+  fi
 }
 
 package() {
@@ -82,13 +108,11 @@ package() {
     README.md
   cp -R --preserve=mode -t "${pkgdir}/usr/share/doc/${pkgname}" \
     docs/build/singlehtml/{index.html,_images,_static}
-  install -D -m 644 -t "${pkgdir}/usr/share/man/man1" \
-    docs/build/man/*.1
 
-  echo >&2 'Packaging applets and examples'
+  echo >&2 'Packaging examples'
   mkdir -p "${pkgdir}/usr/share/${pkgname}"
   cp -R --preserve=mode -t "${pkgdir}/usr/share/${pkgname}" \
-    applets examples
+    examples
 
   echo >&2 'Packaging the license'
   install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
