@@ -9,7 +9,7 @@ ExecStartPre=xrandr --listactivemonitors
 ExecStart=/usr/bin/hyperhdr
 WorkingDirectory=/usr/share/hyperhdr
 TimeoutStopSec=5
-KillMode=mixed
+KillMode=control-group
 Restart=always
 RestartSec=10
 
