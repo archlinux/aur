@@ -2,7 +2,7 @@
 
 _pkgname=tsunami-security-scanner
 pkgname=google-tsunami-security-scanner-git
-pkgver=r181.c3827bc
+pkgver=r275.b92e9dc
 pkgrel=1
 pkgdesc="A general purpose network security scanner with an extensible plugin system for detecting high severity vulnerabilities with high confidence"
 arch=(any)
@@ -26,7 +26,7 @@ build() {
 }
 package() {
     appdir="${pkgdir}/opt/${_pkgname}"
-    jar=$(find ${srcdir} -name 'tsunami-main-*-cli.jar')
+    jar=$(find ${srcdir} -name 'tsunami-main-*-all.jar')
     jar_filename=$(basename -- "${jar}")
 
     mkdir -p "${appdir}"
