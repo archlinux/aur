@@ -4,7 +4,7 @@
 #
 pkgname=python-pushover-complete
 _origpkgname=pushover_complete
-pkgver=1.2.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A Python package for interacting with *all* aspects of the Pushover API."
 arch=("x86_64")
@@ -12,19 +12,19 @@ url='https://pypi.org/project/pushover-complete/'
 license=("None")
 depends=()
 makedepends=(
-	"python-build"
-	"python-installer"
-	"python-wheel"
-	"python-setuptools"
-	"python-hatchling"
+  "python-build"
+  "python-installer"
+  "python-wheel"
+  "python-setuptools"
+  "python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/e6/09/78c00d2f1c50f6cd99181db83461dbaa617a840d48854f6a240a9bcc8f4f/pushover_complete-1.2.0.tar.gz")
-sha256sums=("bf4f898128493047555c9d71643e1408a673815fae3ae3acb4f9f79d6b470c9c")
+source=("https://files.pythonhosted.org/packages/db/ae/2ed5c277e22316d8a31e2f67c6c9fd5021189ed3754e144aad53d874d687/pushover_complete-2.0.0.tar.gz")
+sha256sums=("24fc7d84d73426840e7678fee80d36f40df0114cb30352ba4f99ab3842ed21a7")
 package() {
-	cd "${_origpkgname}-${pkgver}" || exit
-	python -m build --wheel --no-isolation
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 LICENSE.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rst"
+  cd "${_origpkgname}-${pkgver}" || exit
+  python -m build --wheel --no-isolation
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rst"
 }
 
 # vim:set ts=2 sw=2 et:
