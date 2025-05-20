@@ -27,28 +27,35 @@ sha256sums=(
   "SKIP"
 )
 
-prepare() {
-  cd "$srcdir/$_pkgname"
+_ensure_common_env() {
   export GOPATH="$srcdir/gopath"
-  go mod vendor -modcacherw
-}
-
-check() {
-  cd "$srcdir/$_pkgname"
-  go test ./...
-}
-
-build() {
-  export GOPATH="$srcdir"/gopath
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_ENABLED=1
+}
 
+prepare() {
+  _ensure_common_env
   cd "$srcdir/$_pkgname"
 
-  mkdir -p ./bin
+  go mod vendor \
+    -modcacherw
+}
+
+check() {
+  _ensure_common_env
+  cd "$srcdir/$_pkgname"
+
+  go test \
+    -mod=vendor \
+    ./...
+}
+
+build() {
+  _ensure_common_env
+  cd "$srcdir/$_pkgname"
 
   go build \
     -trimpath \
@@ -62,7 +69,7 @@ build() {
 }
 
 package() {
-  install -D -m0755 $srcdir/$_pkgname/plakar $pkgdir/usr/bin/plakar
-  install -D -m0644 $srcdir/$_pkgname/plakar.1 $pkgdir/usr/share/man/man1/plakar.1
-  install -D -m0644 $srcdir/$_pkgname/LICENSE $pkgdir/usr/share/licenses/plakar/LICENSE
+  install -D -m0755 "$srcdir/$_pkgname/plakar" "$pkgdir/usr/bin/plakar"
+  install -D -m0644 "$srcdir/$_pkgname/plakar.1" "$pkgdir/usr/share/man/man1/plakar.1"
+  install -D -m0644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/plakar/LICENSE"
 }
