@@ -4,8 +4,8 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn
-pkgver=2025.5
-pkgrel=2
+pkgver=2025.6
+pkgrel=1
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
         'no-rpm.diff'
         'no-publish.diff'
         "$pkgname.sh")
-sha256sums=('3e34ea184098cac5b5ebbd116c254a69b0f943dd1f62640cfcd48e0c81869cd7'
+sha256sums=('f6597965886681b842c6522706ff69547c4cd27752afa62bc75fadea13c9e23c'
             'SKIP'
             'SKIP'
             '5773f4ea5b7e0db8340e0614d1b027237cb827a5db135ee633d491c271a7e499'
@@ -87,9 +87,6 @@ prepare() {
   nvm install "${_nodeversion}"
   npm ci --no-audit --no-fund
   popd
-
-  # Fix syntax error in Apparmor profile
-  git cherry-pick -n 2b20472a37831b8e43118bc8c5f0c3dc3de08a37
 }
 
 build() {
