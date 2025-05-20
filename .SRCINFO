@@ -1,6 +1,6 @@
 pkgbase = polycule-git
 	pkgdesc = A geeky and efficient [matrix] client for power users.
-	pkgver = 0.2.5.r8.ga272465
+	pkgver = 0.2.5.r33.g572a297
 	pkgrel = 1
 	url = https://gitlab.com/polycule_client/polycule
 	arch = x86_64
@@ -20,11 +20,9 @@ pkgbase = polycule-git
 	depends = mimalloc
 	depends = libnotify
 	depends = dbus
-	provides = polycule=0.2.5.r8.ga272465
+	provides = polycule=0.2.5.r33.g572a297
 	conflicts = polycule
 	source = git+https://gitlab.com/polycule_client/polycule.git
-	source = flutter_zxing.patch
 	sha256sums = SKIP
-	sha256sums = d4f2dc061fd72127b56c07842ee316c2c39ef81206137702873b4924e3856dae
 
 pkgname = polycule-git

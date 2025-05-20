@@ -3,7 +3,7 @@
 pkgname=polycule-git
 _name=polycule
 _appid=business.braid.polycule
-pkgver=0.2.5.r8.ga272465
+pkgver=0.2.5.r33.g572a297
 pkgrel=1
 pkgdesc="A geeky and efficient [matrix] client for power users."
 # Flutter officially supports amd64 and AArch64
@@ -43,11 +43,9 @@ conflicts=("$_name")
 # declare the source from git
 source=(
   "git+https://gitlab.com/polycule_client/${_name}.git"
-  "flutter_zxing.patch"
 )
 # this is a git build, we do not want to pin to a version
-sha256sums=('SKIP'
-            'd4f2dc061fd72127b56c07842ee316c2c39ef81206137702873b4924e3856dae')
+sha256sums=('SKIP')
 
 # ensure we have the proper Dart architecture name for the current CARCH
 case "${CARCH}" in
@@ -84,8 +82,6 @@ prepare() {
 
   # download dart dependencies without lockfile update or retry with
   flutter --suppress-analytics pub get --enforce-lockfile || flutter --suppress-analytics pub get
-
-  patch -p1 -i "${srcdir}/flutter_zxing.patch" -d "${srcdir}"
 }
 
 build() {
