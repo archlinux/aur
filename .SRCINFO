@@ -1,6 +1,6 @@
 pkgbase = data-logging-service
 	pkgdesc = The Data Logging Service (DLS) is a data logging system for EtherLab, that is capable of collecting, compressing and storing high-frequency realtime data. The goal is, to allow the user unlimited and performant access to the stored data.
-	pkgver = 1.6.7
+	pkgver = 1.6.8
 	pkgrel = 1
 	url = https://gitlab.com/etherlab.org/dls
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = data-logging-service
 	depends = pdcom
 	provides = data-logging-service
 	conflicts = data-logging-service
-	source = dls-1.6.7.tar.gz::https://gitlab.com/etherlab.org/dls/-/archive/1.6.7/dls-1.6.7.tar.gz
-	sha256sums = f11958c69c7d23458e1a69b148f35886cab1b315803ac9d36bf706bd3aa6f856
+	source = dls-1.6.8.tar.gz::https://gitlab.com/etherlab.org/dls/-/archive/1.6.8/dls-1.6.8.tar.gz
+	sha256sums = 8c9aeada5b3cf167f8f7cdaaae6dff171a6e473ef3e2994146de89dc807bbf3b
 
 pkgname = data-logging-service
