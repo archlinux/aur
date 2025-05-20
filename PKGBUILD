@@ -5,21 +5,21 @@ _appdataprefix="/var/opt"
 
 pkgname=open-webui
 pkgver=0.6.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
 license=('MIT')
 depends=('python312')
-makedepends=('npm' 'nvm')
+makedepends=('npm' 'nvm' 'git')
 optdepends=('ollama' 'tika-server')
 conflicts=('open-webui-git')
-source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("git+${url}#commit=e6afa69f59295d2930ff57285d0933e207d8e4c3"
     "open-webui.service"
     "open-webui.conf")
 
 install="${pkgname}.install"
-b2sums=('67871aa0bba60aea0c12b0f25478c6e165ce7f4cc9e045e9f8310d52a83fdf4ef4bfe2613b4b4c948e644a1fef93d30e684a00fe9c0d5075e0dcdbf6ed5f40a1'
+b2sums=('SKIP'
         '1438948b9e31ccbcfe7eab5965de71b0fb23bc205579c6668cd91f805a17d5a0b2379afeac3148fb0701125e210eebb81f4bdd5496bc9b0d080766ecf71d32bf'
         '1538695adbe92507ef8c319f4aba22bd9c8843ecaebfaf8860485316564708809c92becc0d0634467b068e8d6b17992c2f210f1bdb344d72b0e01db243ac24ca')
 options=(!strip !debug)
@@ -42,7 +42,7 @@ prepare() {
 
 build() {
     _ensure_local_nvm
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}"
     export NODE_OPTIONS="--max_old_space_size=4096"
     npm install
     npm run format
@@ -52,7 +52,7 @@ build() {
 
 check() {
     _ensure_local_nvm
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}"
     export NODE_OPTIONS="--max_old_space_size=4096"
     npm run test:frontend
 }
@@ -62,7 +62,7 @@ package() {
     install -Dm644 "./$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 
     # Install license
-    install -Dm 644 "$srcdir/${pkgname}-${pkgver}"/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm 644 "$srcdir/${pkgname}"/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
     # Install the default config file to /usr/share/$pkgname/open-webui.conf
     install -d "$pkgdir/usr/share/$pkgname"
@@ -76,7 +76,7 @@ package() {
     install -d "$pkgdir/${_appdataprefix}/$pkgname/data"
 
     # copy over files
-    cp -R "$srcdir/${pkgname}-${pkgver}/." "$pkgdir/${_appprefix}/$pkgname"
+    cp -R "$srcdir/${pkgname}/." "$pkgdir/${_appprefix}/$pkgname"
 
     # clean up stuff we don't need
     rm -rf "$pkgdir/${_appprefix}/$pkgname/node_modules"

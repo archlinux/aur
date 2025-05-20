@@ -1,23 +1,24 @@
 pkgbase = open-webui
 	pkgdesc = Web UI and OpenAI API for various LLM runners, including Ollama
 	pkgver = 0.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-webui/open-webui
 	install = open-webui.install
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = nvm
+	makedepends = git
 	depends = python312
 	optdepends = ollama
 	optdepends = tika-server
 	conflicts = open-webui-git
 	options = !strip
 	options = !debug
-	source = open-webui-0.6.10.tar.gz::https://github.com/open-webui/open-webui/archive/refs/tags/v0.6.10.tar.gz
+	source = git+https://github.com/open-webui/open-webui#commit=e6afa69f59295d2930ff57285d0933e207d8e4c3
 	source = open-webui.service
 	source = open-webui.conf
-	b2sums = 67871aa0bba60aea0c12b0f25478c6e165ce7f4cc9e045e9f8310d52a83fdf4ef4bfe2613b4b4c948e644a1fef93d30e684a00fe9c0d5075e0dcdbf6ed5f40a1
+	b2sums = SKIP
 	b2sums = 1438948b9e31ccbcfe7eab5965de71b0fb23bc205579c6668cd91f805a17d5a0b2379afeac3148fb0701125e210eebb81f4bdd5496bc9b0d080766ecf71d32bf
 	b2sums = 1538695adbe92507ef8c319f4aba22bd9c8843ecaebfaf8860485316564708809c92becc0d0634467b068e8d6b17992c2f210f1bdb344d72b0e01db243ac24ca
 
