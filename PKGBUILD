@@ -56,7 +56,12 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -82,10 +87,19 @@ prepare() {
     sed -i "s/\/app\/images/.\/src\/app\/images/g" src/main.ts
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=development    yarn add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
-    NODE_ENV=production     yarn run package
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    {\\
+        name: \"@electron-forge/plugin-local-electron\",\\
+        config: {\\
+            electronPath: \'${electronDist}\',\\
+        }\\
+    }," forge.config.*
+    yarn run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
