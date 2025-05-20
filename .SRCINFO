@@ -1,6 +1,6 @@
 pkgbase = python-pymilvus
 	pkgdesc = Python Sdk for Milvus
-	pkgver = 2.5.8
+	pkgver = 2.5.9
 	pkgrel = 1
 	url = https://github.com/milvus-io/pymilvus
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-pymilvus
 	depends = python-dotenv
 	depends = python-setuptools
 	depends = python-ujson
-	source = pymilvus-2.5.8.tar.gz::https://files.pythonhosted.org/packages/source/p/pymilvus/pymilvus-2.5.8.tar.gz
-	b2sums = fcdc54b0f00de277afe06beee4403ca29b281e350d80b460eba7f2628e8d611b8d7e461ec6979dc7c915db32327444e426f285b445b95639e1fd2563be4bbe83
+	source = pymilvus-2.5.9.tar.gz::https://files.pythonhosted.org/packages/source/p/pymilvus/pymilvus-2.5.9.tar.gz
+	b2sums = 19e8d40d5326196df698edce7af76496f7037a570ccba89eb9913195e3a48c3fa14cdc96b64bb5d0c37ab6117b2a5aae22c5816cf6e0cb0719c9bea27b4b8118
 
 pkgname = python-pymilvus
