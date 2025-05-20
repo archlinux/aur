@@ -1,4 +1,4 @@
-pkgname=ibus-table-sitelen-pona
+pkgname=sitelen-pona-keyboard-layout
 pkgver=1.0
 pkgrel=1
 pkgdesc="Sitelen Pona keyboard layout for IBus Table"
