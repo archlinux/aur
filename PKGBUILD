@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=terraform-provider-alibabacloudstack-bin
-pkgver=3.18.4
+pkgver=3.18.5
 pkgrel=1
 pkgdesc="Terraform Provider For AlibabacloudStack Cloud.(Prebuilt version)"
 arch=(
@@ -18,10 +18,10 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_arm.zip")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_386.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.zip")
-sha256sums_aarch64=('d0ad8fd9bfcd943017027b08b989e68407675397ce0af0930b61f38fd41ede10')
-sha256sums_armv7h=('f5545906ce20401df02481942a9a42f3e34a685088b854ff2d602dc2b4c1fde5')
-sha256sums_i686=('d79cd73eb36371262f5134ee1a7c26b148fce39165c5de4dca9e5f579748ee11')
-sha256sums_x86_64=('9da5a629a643e204857581908e1866f88a6458bd9bb6c05ffce36fad1367dc0a')
+sha256sums_aarch64=('fda0a4400f9bdecc8b9aaed903876cc65c86966860f13b5b0d8c9e971b847913')
+sha256sums_armv7h=('dc5af3042fca78ff20cec2b70ea0e27cc9372edace157350c82823d460691b98')
+sha256sums_i686=('256ac1dcaacd5b6fd7f6a500399a32b757e7f0e51e6df4573f3fb1a3517561a1')
+sha256sums_x86_64=('1bc8a053d5a3832cd71ab3b883d4537438dbd064211204e3e141326c44487a59')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}_v${pkgver}" "${pkgdir}/usr/bin/${pkgname%-bin}"
 }
