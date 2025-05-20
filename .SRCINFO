@@ -1,13 +1,13 @@
 pkgbase = r-kknn
 	pkgdesc = Weighted k-Nearest Neighbors
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=kknn
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-igraph
-	source = https://cran.r-project.org/src/contrib/kknn_1.4.0.tar.gz
-	sha256sums = 953da321a81faf34a38526a4bd8f468dc3e1856b2f2a20306c560cdb3f58ad79
+	source = https://cran.r-project.org/src/contrib/kknn_1.4.1.tar.gz
+	sha256sums = 5232ddc268c0f9d691b613c8767a9ce079dade75ee22051a3b928024ada46f34
 
 pkgname = r-kknn
