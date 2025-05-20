@@ -2,8 +2,8 @@
 
 pkgbase=ch343ser-git
 pkgname=(ch343ser-dkms-git libch343ser-git)
-pkgver=r44.6255aaa
-pkgrel=14
+pkgver=r50.654dc8b
+pkgrel=3
 pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc."
 arch=('any')
 url="https://github.com/WCHSoftGroup/ch343ser_linux"
@@ -12,9 +12,11 @@ depends=(dkms
     glibc)
 makedepends=('git')
 source=("${pkgbase}::git+${url}.git"
-    "ch343ser-dkms-git.install")
+    "ch343ser-dkms-git.install"
+    "https://github.com/WCHSoftGroup/ch343ser_linux/pull/49.patch")
 sha256sums=('SKIP'
-    '6cd61719a10c54747b9794a684e68eedd8c6b38424b1710940c13434b2ec7d55')
+    '6cd61719a10c54747b9794a684e68eedd8c6b38424b1710940c13434b2ec7d55'
+    '480351ba161ec9e7c9bebc460a95fca73c59f3deb7149456b69953dc5ec5d69f')
 options=(!strip !debug)
 
 pkgver() {
@@ -28,6 +30,8 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgbase}" clean -dfx
+    cd "${srcdir}/${pkgbase}"
+    git apply -p1 <${srcdir}/49.patch
 }
 
 package_ch343ser-dkms-git() {
