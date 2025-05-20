@@ -1,7 +1,7 @@
 pkgbase = aione
 	pkgdesc = An all-in-one AI desktop app that provides access to ChatGPT, Gemini and Claude.(Use system-wide electron)
 	pkgver = 1.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sumexxx.github.io/AIOne/
 	arch = any
 	license = MIT

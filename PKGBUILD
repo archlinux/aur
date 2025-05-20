@@ -4,7 +4,7 @@ _pkgname=AIOne
 pkgver=1.4.1
 _electronversion=33
 _nodeversion=22
-pkgrel=2
+pkgrel=3
 pkgdesc="An all-in-one AI desktop app that provides access to ChatGPT, Gemini and Claude.(Use system-wide electron)"
 arch=('any')
 url="https://sumexxx.github.io/AIOne/"
@@ -73,14 +73,13 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     local electronDist="/usr/lib/electron${_electronversion}"
-    sed -i -e "
-		59i\    {
-		59i\      name: '@electron-forge/plugin-local-electron',
-		59i\      config: {
-		59i\        electronPath: \'${electronDist}\'
-		59i\      }
-		59i\    },
-	" forge.config.ts
+    sed -i "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    {\\
+        name: \"@electron-forge/plugin-local-electron\",\\
+        config: {\\
+            electronPath: \'${electronDist}\',\\
+        },\\
+    }," forge.config.*
     NODE_ENV=production     npm run package
 }
 package() {
