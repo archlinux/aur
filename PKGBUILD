@@ -9,7 +9,7 @@ package() {
 pkgname="nak-bin"
 pkgver="0.14.1"
 pkgrel="1"
-pkgdesc="a command line tool for doing all things nostr"
+pkgdesc="a command line tool for doing all things Nostr"
 arch=("x86_64")
 url="https://github.com/fiatjaf/nak"
 license=("Unlicense")

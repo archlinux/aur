@@ -1,5 +1,5 @@
 pkgbase = nak-bin
-	pkgdesc = a command line tool for doing all things nostr
+	pkgdesc = a command line tool for doing all things Nostr
 	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/fiatjaf/nak
