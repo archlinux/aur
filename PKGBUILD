@@ -1,5 +1,5 @@
 pkgname=chromium-clang-avx-bin
-pkgver=137.0.7129.0
+pkgver=138.0.7189.0
 pkgrel=1
 pkgdesc="Chromium browser compiled with the Clang/LLVM compiler."
 arch=('x86_64')
@@ -24,10 +24,11 @@ optdepends=(
 options=('!emptydirs' '!strip')
 install=chromium-clang.install
 _channel=unstable
-_tag=1447845
-source=("https://github.com/RobRich999/Chromium_Clang/releases/download/v${pkgver}-r${_tag}-linux64-deb-avx/chromium-browser-${_channel}_${pkgver}-1_amd64.deb"
+_tag=1462098
+_avx=avx
+source=("https://github.com/RobRich999/Chromium_Clang/releases/download/v${pkgver}-r${_tag}-linux64-deb-${_avx}/chromium-browser-${_channel}_${pkgver}-1_amd64.deb"
 	"chromium-browser-$_channel.sh")
-sha512sums=('5a73034bdfff13ba1090b71ba255e7c01b8703120c12a0de6e4742b250383eb6b32c3a7e9bb926d89fe4a8fcb0f0850d41173b39c755be516974088a2d5eaeca'
+sha512sums=('6a955a10c1e0e1d716c24f75f1dac6cfdcf2f243fb6d99f573fd87d41fb451ce60a247fd49ab9497e710574477d40848ebec13ecf2366341526a44514008264f'
             '478d382d96aca0c7d139282e8f4e9ab855e004f8cd9b15243c226b28282eb825e0bba5eb18cb17aea06e5637ece75d40d63fa9fee291f8b1528518975c0de095')
 
 package() {

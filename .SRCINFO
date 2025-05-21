@@ -1,6 +1,6 @@
 pkgbase = chromium-clang-avx-bin
 	pkgdesc = Chromium browser compiled with the Clang/LLVM compiler.
-	pkgver = 137.0.7129.0
+	pkgver = 138.0.7189.0
 	pkgrel = 1
 	url = https://github.com/RobRich999/Chromium_Clang
 	install = chromium-clang.install
@@ -20,9 +20,9 @@ pkgbase = chromium-clang-avx-bin
 	optdepends = kwallet: for storing passwords in KWallet
 	options = !emptydirs
 	options = !strip
-	source = https://github.com/RobRich999/Chromium_Clang/releases/download/v137.0.7129.0-r1447845-linux64-deb-avx/chromium-browser-unstable_137.0.7129.0-1_amd64.deb
+	source = https://github.com/RobRich999/Chromium_Clang/releases/download/v138.0.7189.0-r1462098-linux64-deb-avx/chromium-browser-unstable_138.0.7189.0-1_amd64.deb
 	source = chromium-browser-unstable.sh
-	sha512sums = 5a73034bdfff13ba1090b71ba255e7c01b8703120c12a0de6e4742b250383eb6b32c3a7e9bb926d89fe4a8fcb0f0850d41173b39c755be516974088a2d5eaeca
+	sha512sums = 6a955a10c1e0e1d716c24f75f1dac6cfdcf2f243fb6d99f573fd87d41fb451ce60a247fd49ab9497e710574477d40848ebec13ecf2366341526a44514008264f
 	sha512sums = 478d382d96aca0c7d139282e8f4e9ab855e004f8cd9b15243c226b28282eb825e0bba5eb18cb17aea06e5637ece75d40d63fa9fee291f8b1528518975c0de095
 
 pkgname = chromium-clang-avx-bin
