@@ -4,36 +4,38 @@
 
 _pkgname=dbeaver
 pkgname=dbeaver-ce-bin
-pkgver=25.0.2
+pkgver=25.0.5
 pkgrel=1
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://dbeaver.io/"
 license=("Apache-2.0")
 depends=('java-runtime>=17' 'gtk3' 'gtk-update-icon-cache' 'libsecret')
 conflicts=('dbeaver')
 provides=('dbeaver')
-source=("${_pkgname}-${pkgver}.linux.gtk.${arch}-nojdk.tar.gz"::"https://github.com/dbeaver/dbeaver/releases/download/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.${arch}-nojdk.tar.gz"
+source=("${_pkgname}-${pkgver}.linux.gtk.${CARCH}-nojdk.tar.gz"::"https://github.com/dbeaver/dbeaver/releases/download/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.${CARCH}-nojdk.tar.gz"
         "io.dbeaver.DBeaver.desktop"
         "${pkgname}.sh"
         "${pkgname}.install")
-sha256sums=('5264f2e05971cffcc887770bc518bb1213437f43a373b7eecc26d128813ff824'
+sha256sums=('f0992f23a39918fd4eb764c43f69f8863decf40b3b868953fad8557f406f38c4'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
             '603f7aa912685b69ca558ca7586585b7a314ca1b743be574db7bcd7a31c2ea2d')
 install="${pkgname}.install"
 
 prepare() {
-  cd "dbeaver/plugins/com.sun.jna_5.15.0.v20240915-2000/com/sun/jna"
+  cd "dbeaver/plugins/com.sun.jna_5.16.0.v20241222-1200/com/sun/jna"
   for _dir in aix-ppc aix-ppc64 darwin-aarch64 darwin-x86-64 \
     dragonflybsd-x86-64 freebsd-aarch64 freebsd-x86 freebsd-x86-64 \
-    linux-aarch64 linux-arm linux-armel linux-loongarch64 linux-mips64el \
+    linux-aarch64 linux-x86-64 linux-arm linux-armel linux-loongarch64 linux-mips64el \
     linux-ppc linux-ppc64le linux-riscv64 linux-s390x linux-x86 \
     openbsd-x86 openbsd-x86-64 \
     sunos-sparc sunos-sparcv9 sunos-x86 sunos-x86-64 \
     win32 win32-aarch64 win32-x86 win32-x86-64
   do
-    rm -r "${_dir}"
+    if [[ "linux-${CARCH//_/-}" != "${_dir}" ]]; then
+      rm -r "${_dir}"
+    fi
   done
 }
 
