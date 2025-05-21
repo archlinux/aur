@@ -1,10 +1,9 @@
 pkgbase = veikk-tablet-bin
 	pkgdesc = Veikk tablet driver retrieved from official veikk website
 	pkgver = 3.5.8_3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.veikk.com
 	arch = x86_64
-	license = LGPL-2.1-or-later
 	source = https://veikk.com/image/catalog/Software/vktablet-3.5.8-3.x86_64.zip
 	md5sums = 682e42a8df5d60feca7dd00623627b0b
 
