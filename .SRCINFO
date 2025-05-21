@@ -1,29 +1,17 @@
 pkgbase = otf-operator-mono
-	pkgdesc = Operator: the non-typewriter typewriter face
-	pkgver = 1.200
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://www.typography.com/fonts/operator/overview/
 	arch = any
 	license = custom:HCo
-	source = local://OperatorMono-Bold.otf
-	source = local://OperatorMono-BoldItalic.otf
-	source = local://OperatorMono-Book.otf
-	source = local://OperatorMono-BookItalic.otf
-	source = local://OperatorMono-Light.otf
-	source = local://OperatorMono-LightItalic.otf
-	source = local://OperatorMono-Medium.otf
-	source = local://OperatorMono-MediumItalic.otf
-	source = local://OperatorMono-XLight.otf
-	source = local://OperatorMono-XLightItalic.otf
-	sha256sums = 4f9ddd7a257ee78d7f482544f85923ebc9b64bbd9c2146e02bc7f1a9f6603a06
-	sha256sums = 1803bdfdef39a3e9ae515797ef384ba0ecbc8cfd3757b94f622ceae1edb4badc
-	sha256sums = a5e8f4ef2788ac9962510fd3749e5cb3cb08d3815cc6958033d4cb79e7decc2a
-	sha256sums = f5fce9bf538c53d60e984d1d7de8e7ef1dc0f1cb9ba6bc79604493512b09af9d
-	sha256sums = eab5b7922f5615ab4482a81e877b306f9bd88c3a2d80a3ced5f89dbdb012b93b
-	sha256sums = 1b035d3c70b69f50d8f0041a3638c928e5f55f10063cf2383f3f74dbbc103604
-	sha256sums = b9a63f79d44cd64059a52aeada26ba115709c5c20ede41a858a40ade7b6e745f
-	sha256sums = 52927ae517e283ac1a8405411057079b02e64580710ccad601fb014461c62c86
-	sha256sums = 79393090324ee46ce0df417824ee20d66bbd80fba568faa7ba1b0de4c5524bb4
-	sha256sums = 5c24de6db2fd2b86fba270e3129d539091906bec4704e84927a0220042afe81b
+	source = otf-operator-fonts.zip::https://github.com/beichensky/Font/archive/refs/heads/master.zip
+	sha1sums = f8abc06f021d48af59d57f6bd9c17b3d7c7f6e35
 
 pkgname = otf-operator-mono
+	pkgdesc = Operator: the non-typewriter typewriter face
+
+pkgname = otf-operator-lig-mono
+	pkgdesc = Operator: the non-typewriter typewriter face, With ligatures added
+
+pkgname = otf-operator-ssm-mono
+	pkgdesc = Operator: the non-typewriter typewriter face, ScreenSmart version
