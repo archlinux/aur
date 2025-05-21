@@ -43,11 +43,13 @@ build() {
 		< vscodium-prod-patcher.hook.in \
 		> vscodium-prod-patcher.hook
 	cd "$pkgname"
-	python -m build --wheel --no-isolation
+	just build
 }
 
 package() {
-	python -m installer --destdir="$pkgdir" "$pkgname/dist"/*.whl
+	for wheel in "$pkgname/dist"/*.whl; do
+		python -m installer --destdir="$pkgdir" "$wheel"
+	done
 	install -Dm 644 vscodium-prod-patcher.hook \
 		"$pkgdir/usr/share/libalpm/hooks/97-vscodium-prod-patcher-self.hook"
 }
