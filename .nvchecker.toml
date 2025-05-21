@@ -1,0 +1,6 @@
+[em-keyboard]
+source = "github"
+github = "hugovk/em-keyboard"
+use_max_tag = true
+from_pattern = 'v([\d.]+)'
+to_pattern = '\1'
