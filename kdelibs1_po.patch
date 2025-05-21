@@ -1,0 +1,314 @@
+diff -aur po.old/br.po po/br.po
+--- po.old/br.po	2025-05-21 00:57:41.086887085 +0200
++++ po/br.po	2025-05-21 01:01:27.025544136 +0200
+@@ -10,8 +10,8 @@
+ "Last-Translator: Jañ-Mai Drapier <jan-mai.drapier@mail.dotcom.fr>\n"
+ "Language-Team: Brezhoneg <Suav.Icb@wanadoo.fr>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=iso8859-1\n"
+-"Content-Transfer-Encoding: 8bit\n"
++"Content-Type: text/plain; charset=ISO-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kab/AssertDialog.cpp:29
+ msgid "(unknown file)"
+diff -aur po.old/el.po po/el.po
+--- po.old/el.po	2025-05-21 00:57:41.091302131 +0200
++++ po/el.po	2025-05-21 01:01:27.026112568 +0200
+@@ -6,8 +6,8 @@
+ "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
+ "Language-Team: LANGUAGE <LL@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=iso-8859-7\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ # , fuzzy
+ #: kab/AssertDialog.cpp:29
+diff -aur po.old/en_UK.po po/en_UK.po
+--- po.old/en_UK.po	2025-05-21 00:57:41.091720520 +0200
++++ po/en_UK.po	2025-05-21 01:01:27.026535736 +0200
+@@ -11,8 +11,8 @@
+ "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+ "Language-Team: LANGUAGE <LL@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=ISO-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kab/AssertDialog.cpp:29
+ msgid "(unknown file)"
+diff -aur po.old/et.po po/et.po
+--- po.old/et.po	2025-05-21 00:57:41.093684153 +0200
++++ po/et.po	2025-05-21 01:01:27.026925230 +0200
+@@ -11,7 +11,7 @@
+ "Language-Team: Estonian <linux-ee@eenet.ee>\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=iso-8859-1\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kab/AssertDialog.cpp:29
+ msgid "(unknown file)"
+diff -aur po.old/fi.po po/fi.po
+--- po.old/fi.po	2025-05-21 00:57:41.094306867 +0200
++++ po/fi.po	2025-05-21 01:01:27.027346124 +0200
+@@ -7,7 +7,7 @@
+ "Language-Team: LANGUAGE <LL@li.org>\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=iso-8859-1\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kab/AssertDialog.cpp:29
+ msgid "(unknown file)"
+diff -aur po.old/fr.po po/fr.po
+--- po.old/fr.po	2025-05-21 00:57:41.094972212 +0200
++++ po/fr.po	2025-05-21 01:01:27.027826139 +0200
+@@ -7,8 +7,8 @@
+ "<Francois-Xavier.Duranceau@loria.fr>\n"
+ "Language-Team: Français <fr@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ "Next-Translator: Alain Gibaud <Alain.Gibaud@univ-valenciennes.fr>\n"
+ "Translator: Serge \"sergio\" Tellène <tells@mygale.org>\n"
+ 
+diff -aur po.old/he.po po/he.po
+--- po.old/he.po	2025-05-21 00:57:41.095539201 +0200
++++ po/he.po	2025-05-21 01:01:27.028377669 +0200
+@@ -12,7 +12,7 @@
+ "Language-Team: hebrew <he@li.org>\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=iso-8859-8\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kab/AssertDialog.cpp:29
+ msgid "(unknown file)"
+diff -aur po.old/is.po po/is.po
+--- po.old/is.po	2025-05-21 00:57:41.097686741 +0200
++++ po/is.po	2025-05-21 01:01:27.028971178 +0200
+@@ -5,6 +5,9 @@
+ msgstr ""
+ "POT-Creation-Date: 1999-04-24 01:02+0200\n"
+ "PO-Revision-Date: 1999-04-26 22:01-0500\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ "Last-Translator: Logi Ragnarsson <logir@imf.au.dk>\n"
+ "Language-Team: is\n"
+ 
+diff -aur po.old/it.po po/it.po
+--- po.old/it.po	2025-05-21 00:57:41.098532626 +0200
++++ po/it.po	2025-05-21 01:01:27.029627886 +0200
+@@ -7,8 +7,8 @@
+ "Last-Translator: Andrea Rizzi <rizzi@kde.org>\n"
+ "Language-Team: Italiano <it@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ "X-Generator: KTranslator v 0.4.0\n"
+ 
+ #
+diff -aur po.old/ja.po po/ja.po
+--- po.old/ja.po	2025-05-21 00:57:41.098918935 +0200
++++ po/ja.po	2025-05-21 01:01:27.030103663 +0200
+@@ -20,8 +20,8 @@
+ "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+ "Language-Team: LANGUAGE <LL@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=EUC-JP\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kab/AssertDialog.cpp:29
+ msgid "(unknown file)"
+diff -aur po.old/nl.po po/nl.po
+--- po.old/nl.po	2025-05-21 00:57:41.100820872 +0200
++++ po/nl.po	2025-05-21 01:01:27.030554383 +0200
+@@ -1,7 +1,7 @@
+ msgid ""
+ msgstr ""
+ "POT-Creation-Date: 1999-04-24 01:02+0200\n"
+-"Content-Type: text/plain; charset=\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
+ "Date: 1997-10-01 16:40:07+0200\n"
+ "From: root <flidr@CyberGate.zcu.cz>\n"
+ "Xgettext-Options: -s -C -ktranslate\n"
+diff -aur po.old/pt_BR.po po/pt_BR.po
+--- po.old/pt_BR.po	2025-05-21 00:57:41.103659124 +0200
++++ po/pt_BR.po	2025-05-21 01:01:27.031012977 +0200
+@@ -3,6 +3,9 @@
+ "Project-Id-Version: kde\n"
+ "POT-Creation-Date: 1999-04-24 01:02+0200\n"
+ "PO-Revision-Date: 1998-06-23 09:00-0300\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ "Last-Translator:Elvis Pfützenreuter <epx@netville.com.br>\n"
+ 
+ #: kab/AssertDialog.cpp:29
+diff -aur po.old/pt.po po/pt.po
+--- po.old/pt.po	2025-05-21 00:57:41.102846892 +0200
++++ po/pt.po	2025-05-21 01:01:27.031517529 +0200
+@@ -5,9 +5,9 @@
+ "PO-Revision-Date: 1998-01-22 00:00+0100\n"
+ "Last-Translator: Pedro Morais <pmmm@camoes.rnl.ist.utl.pt>\n"
+ "Language-Team: pt\n"
+-"MIME-Version:\n"
+-"Content-Type:\n"
+-"Content-Transfer-Encoding:\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kab/AssertDialog.cpp:29
+ msgid "(unknown file)"
+diff -aur po.old/ro.po po/ro.po
+--- po.old/ro.po	2025-05-21 00:57:41.104297177 +0200
++++ po/ro.po	2025-05-21 01:01:27.032052608 +0200
+@@ -3,6 +3,9 @@
+ "Project-Id-Version: kdelibs\n"
+ "POT-Creation-Date: 1999-04-24 01:02+0200\n"
+ "Last-Translator: Paul Ionescu <omy@main.romsoft.ro>\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=iso-8859-2\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kab/AssertDialog.cpp:29
+ #, fuzzy
+diff -aur po.old/th.po po/th.po
+--- po.old/th.po	2025-05-21 00:57:41.107426929 +0200
++++ po/th.po	2025-05-21 01:01:27.032623083 +0200
+@@ -11,8 +11,8 @@
+ "Last-Translator: Kaiwal Software <kan@kaiwal.com>\n"
+ "Language-Team: LANGUAGE <LL@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=iso-8859-11\n"
+-"Content-Transfer-Encoding: 8bit\n"
++"Content-Type: text/plain; charset=TIS-620\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kab/AssertDialog.cpp:29
+ msgid "(unknown file)"
+diff -aur po.old/tr.po po/tr.po
+--- po.old/tr.po	2025-05-21 00:57:41.107748907 +0200
++++ po/tr.po	2025-05-21 01:01:27.033166157 +0200
+@@ -11,8 +11,8 @@
+ "Last-Translator: Kerem ERZURUMLU & Zerrin ÜNAL <kerem@linux.org.tri & @>\n"
+ "Language-Team: Hacettepe Linux Users Group <hacettepe@linux.org.tr>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ISO 8859-9\n"
++"Content-Type: text/plain; charset=ISO-8859-9\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kab/AssertDialog.cpp:29
+ #, fuzzy
+diff -aur po.old/zh_CN.po po/zh_CN.po
+--- po.old/zh_CN.po	2025-05-21 00:57:41.108072427 +0200
++++ po/zh_CN.po	2025-05-21 01:02:17.125426267 +0200
+@@ -5,6 +5,9 @@
+ "PO-Revision-Date: 1999-04-01 19:30+0800\n"
+ "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
+ "Language-Team: zh_CN ( gb2312 )\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=gb18030\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ "Translator: Wang Jian <larkw@263.net>\n"
+ 
+ #: kab/AssertDialog.cpp:29
+@@ -2093,9 +2096,9 @@
+ "Please note that kab now supports some new\n"
+ "fields in its addresses. These new fields\n"
+ "are:\n"
+-"° the state field,\n"
+-"° the country field and\n"
+-"° the postal code field.\n"
++"¡ã the state field,\n"
++"¡ã the country field and\n"
++"¡ã the postal code field.\n"
+ "You will probably need to edit some of your\n"
+ "entries to make use of it."
+ msgstr ""
+Only in po.old/: 'zh_TW copy.po'
+diff -aur po.old/zh_TW.po po/zh_TW.po
+--- po.old/zh_TW.po	2025-05-21 00:57:41.108727572 +0200
++++ po/zh_TW.po	2025-05-21 01:01:27.034160742 +0200
+@@ -10,8 +10,8 @@
+ "PO-Revision-Date: 1998-04-19 13:46+0800\n"
+ "Last-Translator: Chou Yeh-Jyi <ycchou@ccca.nctu.edu.tw>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=Big5\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kab/AssertDialog.cpp:29
+ #, fuzzy
+@@ -610,7 +610,7 @@
+ "Do you want to overwrite it ?"
+ msgstr ""
+ "¦s¦b¤@¥÷¬Û¦PÀÉ¦Wªº¤å¥ó\n"
+-"­nÂÐ»\\¹L¥h¶Ü ?"
++"­nÂÐ»\¹L¥h¶Ü ?"
+ 
+ #: kdeui/keditcl1.cpp:1716
+ msgid "You do not have write permission to this file.\n"
+@@ -905,7 +905,7 @@
+ 
+ #: kdeui/ktoolbar.cpp:288 kdeui/ktoolbar.cpp:340
+ msgid "KToolBarButton: pixmap is empty, perhaps some missing file"
+-msgstr "KToolBarButton: ªÅªº¹Ï¥Ü, ¤]³\\¯Ê¤Ö¬Y¨ÇÀÉ®×"
++msgstr "KToolBarButton: ªÅªº¹Ï¥Ü, ¤]³\¯Ê¤Ö¬Y¨ÇÀÉ®×"
+ 
+ #: kdeui/ktoolbar.cpp:859
+ msgid "Left"
+@@ -1209,7 +1209,7 @@
+ 
+ #: kfile/kfileinfo.cpp:230
+ msgid "Oct"
+-msgstr "¤Q¤ë"
++msgstr "¢Ì¤ë"
+ 
+ # , fuzzy
+ #: kfile/kfileinfo.cpp:231
+@@ -1218,7 +1218,7 @@
+ 
+ #: kfile/kfileinfo.cpp:232
+ msgid "Dec"
+-msgstr "¤Q¤G¤ë"
++msgstr "¢Ì¤G¤ë"
+ 
+ # , fuzzy
+ #: kab/editentry.cc:64 kfile/kpreview.cpp:187
+@@ -2100,9 +2100,9 @@
+ "Please note that kab now supports some new\n"
+ "fields in its addresses. These new fields\n"
+ "are:\n"
+-"° the state field,\n"
+-"° the country field and\n"
+-"° the postal code field.\n"
++"¢X the state field,\n"
++"¢X the country field and\n"
++"¢X the postal code field.\n"
+ "You will probably need to edit some of your\n"
+ "entries to make use of it."
+ msgstr ""
+@@ -2507,7 +2507,7 @@
+ #~ msgid "The file %s does already exist. Do you really want to overwrite it ?"
+ #~ msgstr ""
+ #~ "¦s¦b¤@¥÷¬Û¦PÀÉ¦Wªº¤å¥ó\n"
+-#~ "­nÂÐ»\\¹L¥h¶Ü ?"
++#~ "­nÂÐ»\¹L¥h¶Ü ?"
+ 
+ #, fuzzy
+ #~ msgid "Stalled"
