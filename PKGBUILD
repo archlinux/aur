@@ -1,6 +1,6 @@
 # Maintainer: Reim-developer <contact.kaxtr@gmail.com>
 pkgname=zclipboard
-pkgver=1.0.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A modern, fast clipboard manager"
 arch=('x86_64')
