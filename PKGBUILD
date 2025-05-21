@@ -1,18 +1,17 @@
 pkgname=basedpyright
-pkgver=1.29.1
+pkgver=1.29.2
 pkgrel=1
 pkgdesc="pyright fork with various improvements and pylance features"
 arch=("any")
 url=https://docs.basedpyright.com/
 license=("MIT")
 depends=("nodejs")
-makedepends=(
-    npm
-    # generateAllDocstubs
-    python
-    tk)
+makedepends=(npm
+             # generateAllDocstubs
+             python
+             tk)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DetachHead/basedpyright/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5754c269364cc81ef5b871fc86a314615b23305248034475650138440b364648')
+sha256sums=('238cb245e5b30b2c73c61b5d82238ce412b1c688649cf7463f9a7b18f96aa0fc')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -26,11 +25,6 @@ build() {
     cd "$pkgname-$pkgver/packages/pyright"
     npm run build
 }
-
-#check() {
-#    cd "$pkgname-$pkgver/packages/pyright-internal"
-#    npm test
-#}
 
 package() {
     cd "$pkgname-$pkgver"
