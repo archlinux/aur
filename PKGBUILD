@@ -2,7 +2,7 @@
 
 pkgname=korsakov
 pkgver=1.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Cyrillic multi-paradigm general-purpose programming language'
 url='https://gitverse.ru/rus.yaz/korsakov'
 arch=('x86_64')
