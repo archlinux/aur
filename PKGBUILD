@@ -7,7 +7,7 @@ pkgname=(
   maturin-git
   python-maturin-git
 )
-pkgver=1.8.3.r37.g773026c2
+pkgver=1.8.6.r6.gf19b5e0d
 pkgrel=1
 pkgdesc="Build and publish crates with pyo3, rust-cpython and cffi bindings"
 url="https://github.com/PyO3/maturin"
@@ -25,11 +25,11 @@ makedepends=(
   python-wheel
   rust
 )
-## checkdepends=(
-##  python-cffi
-##  python-pycparser
-##  python-virtualenv
-## )
+checkdepends=(
+ python-cffi
+ python-pycparser
+ python-virtualenv
+)
 # Disable LTO until ring can be built with it:
 # https://github.com/briansmith/ring/issues/1444
 options=(!lto)
@@ -54,18 +54,18 @@ build() {
     python -m build --wheel --no-isolation
 }
 
-## check() {
-##   cd $_pkgbase
-##   mkdir -p test-crates/venvs
-##   local cargo_skip_args=(
-##     # Requires wasm32-wasip1 target
-##     --skip=integration_wasm_hello_world
-##     # Fails with the following error, not sure why:
-##     # AttributeError: module 'uniffi_pure_proc_macro' has no attribute 'add'
-##     --skip=integration_uniffi_pure_proc_macro
-##   )
-##   cargo test --frozen --all-features -- "${cargo_skip_args[@]}"
-## }
+check() {
+  cd $_pkgbase
+  mkdir -p test-crates/venvs
+  local cargo_skip_args=(
+    # Requires wasm32-wasip1 target
+    --skip=integration_wasm_hello_world
+    # Fails with the following error, not sure why:
+    # AttributeError: module 'uniffi_pure_proc_macro' has no attribute 'add'
+    --skip=integration_uniffi_pure_proc_macro
+  )
+  cargo test --frozen -- "${cargo_skip_args[@]}"
+}
 
 package_maturin-git() {
   depends=(
