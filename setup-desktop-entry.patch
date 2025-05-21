@@ -24,7 +24,7 @@
 +[ "$FP_DIR" ] || FP_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
 +
 +# Stop if launcher binary not found.
-+[ -f "$FP_DIR/Launcher/flashpoint-launcher" ] || exit 1
++[ -f "$(realpath "$(dirname "${BASH_SOURCE[0]}")")/Launcher/flashpoint-launcher" ] || exit 1
 +
  # Generate desktop entry. Add some variables if libraries are installed.
  printf "[Desktop Entry]
