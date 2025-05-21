@@ -1,6 +1,6 @@
 pkgbase = lexy
 	pkgdesc = A CLI tool to fetch tutorials from Learn X in Y Minutes
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/antoniorodr/lexy
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = lexy
 	depends = python-click
 	depends = python-requests
 	depends = python-typer
-	source = lexy-0.3.1.tar.gz::https://github.com/antoniorodr/lexy/archive/v0.3.1.tar.gz
-	sha256sums = 1844df9727322728ff398a3339cdf34171c1a07899d36f4fb40adba938a74618
+	source = lexy-0.3.2.tar.gz::https://github.com/antoniorodr/lexy/archive/v0.3.2.tar.gz
+	sha256sums = 45d7145bcf79c5dfd1f19e3d45ff5b6c16674bbf5384d1645d5e2f12493622a3
 
 pkgname = lexy
