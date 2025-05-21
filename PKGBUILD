@@ -2,15 +2,15 @@
 
 _name=amazon-transcribe-streaming-sdk
 pkgname=python-${_name//-streaming-sdk/}
-pkgver=0.6.2
+pkgver=0.6.4
 pkgrel=1
 pkgdesc='Async Python SDK for Amazon Transcribe Streaming.'
 arch=('any')
 url='https://github.com/awslabs/amazon-transcribe-streaming-sdk'
 license=('Apache-2.0')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('983ac6256067a89285bab5b84194dc11e9860ae5ec5c766a0ee3e3a90a422eca')
-depends=('python>=3.8' 'python-awscrt')
+sha256sums=('a83cf74ec58f49d85b35069d682de28873684f4461adef8108f72f2eb3b624a3')
+depends=('python' 'python-awscrt')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-cov')
 
@@ -22,7 +22,6 @@ build() {
 check() {
   local pytest_options=(
     -vv
-    --override-ini="addopts="
     # Need AWS API
     --deselect tests/integration/test_client.py
     --deselect tests/integration/test_handlers.py
