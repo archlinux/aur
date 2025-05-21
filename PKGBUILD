@@ -2,8 +2,8 @@
 # Contributor: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
-pkgver=107.r7931
-pkgrel=8
+pkgver=107.r7947
+pkgrel=1
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracut-ng/dracut'
@@ -88,11 +88,9 @@ source=(
   dracut-{install,remove}.script
   90-dracut-install.hook
   60-dracut-remove.hook
-  1322.patch::${url}/commit/bcf0093.patch # fix: improve hostonly sloppy mode
-  1194.patch::${url}/commit/d567b94.patch # feat(initqueue): factor out initqueue into its own module
 )
 
-sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -106,13 +104,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-
-  # apply all patches
-  for p in ../*.patch ; do
-    patch -Np1 < $p
-    P=$(echo $p | sed 's/^\.\.\///g' | sed 's/\.patch$//g')
-    S=$(cat ../$p | grep 'Subject:' | sed 's/^Subject:\ \[PATCH\]\ //g')
-  done
 
   # remove dracut modules not meant for arch x86_64
   for f in cms cio_ignore ppcmac zipl \
