@@ -16,7 +16,6 @@ sha256sums=('c220a0229d8f9a77c6bf959037c13138336f20234505e41562c4fec6342e0c28')
 
 prepare() {
 	cd "$pkgname"
-	git submodule update --init
 	cmake -B build \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DUSE_QT6='ON' \
