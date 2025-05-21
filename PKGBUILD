@@ -47,14 +47,16 @@ source=("https://github.com/supermerill/SuperSlicer/archive/$_pkgtag.tar.gz"
         "0001-findwxwidgets.patch"
         "0002-addlib-expat.patch"
         "0003-openexr3.patch"
-        "0004-cgal6.patch")
+        "0004-cgal6.patch"
+        "0005-boost-process-includes.patch")
 sha512sums=('941d33a0d8ee4a1ab71e7de6ecbc6c9817ee81a992282ddf027dc34002b8953444a44964d82726c3485a0c847bdfbcc63ada056e6fc223ecc031ef935e5f16f0'
             '04cb7cb69d887e1fa5ced5c0219b0ee6cab81f09d1bc1226ebd26563e2ce60b85fb6e5aef11a36dffd3e00779849906fc5c19ad2cdd22d45360226912b6af31b'
             'ecbe9bdec72a372dfdc25b32dee382a9937c544567fa2da42a30467ddff2594495bf244a773401f655930301a2debc94636a362383239fa08808d0e51bc687a4'
             '1b8561d0f148ce2c38b7211eb78facc6e0cc2b89481e7c7700353534c7946a7b885e517852597b3252c6c21de527736f406f27ab01833d0f275c64103a8111f7'
             '93a943eb9be52085a811d7cc8379dc5a3942befdc3d19eecf6310f8dfcfdef72bfa15dfcb85ac1f4f9d7731c973b9815a532ae444e3fe275f8f624825fe8e98b'
             'd87f74ceee99c288b7df57c8d6927649d7af08077c89263bafa48babce74435c1d48a5e5d2904d8307cb15c99df20ac196f78fcd0c5f31b737de1897ccb15a14'
-            '8b04e2679257d8ebec1170c2d912d2b193349de47f95b28a4eede49f4a8c35a247b46b6fc543dc3efd800203dcc707d2cc68a13dc7b8816a46b95024ff3f09a5')
+            '8b04e2679257d8ebec1170c2d912d2b193349de47f95b28a4eede49f4a8c35a247b46b6fc543dc3efd800203dcc707d2cc68a13dc7b8816a46b95024ff3f09a5'
+            'f0cfaacc3b4b241626064ac6538ccbe123a7bc0b3ce9b713da821cccfa7c448dfbf37b29d579cd04bfcf6d1a1261e45cae235eaf5252e88edaf99ec0267ffd4d')
 
 _apply_patches() {
 	for patch in "${@}"
@@ -84,7 +86,8 @@ prepare() {
 		"$srcdir/0001-findwxwidgets.patch" \
 		"$srcdir/0002-addlib-expat.patch" \
 		"$srcdir/0003-openexr3.patch" \
-		"$srcdir/0004-cgal6.patch"
+		"$srcdir/0004-cgal6.patch" \
+		"$srcdir/0005-boost-process-includes.patch"
 }
 
 build() {

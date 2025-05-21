@@ -1,0 +1,124 @@
+diff --git a/src/libslic3r/GCode/PostProcessor.cpp b/src/libslic3r/GCode/PostProcessor.cpp
+index 8e0304ae95..33a6c3b283 100644
+--- a/src/libslic3r/GCode/PostProcessor.cpp
++++ b/src/libslic3r/GCode/PostProcessor.cpp
+@@ -28,7 +28,9 @@
+ #else
+ // POSIX
+ #include <sstream>
+-#include <boost/process.hpp>
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/pipe.hpp>
+ #include <unistd.h>     //readlink
+ #endif
+ 
+@@ -175,7 +177,7 @@ static int run_script(const std::string &script, const std::string &gcode, std::
+ 
+ #else
+ 
+-namespace process = boost::process;
++namespace process = boost::process::v1;
+ 
+ static int run_script(const std::string &script, const std::string &gcode, std::string &std_err)
+ {
+diff --git a/src/slic3r/GUI/FreeCADDialog.cpp b/src/slic3r/GUI/FreeCADDialog.cpp
+index 9b7213b557..dfe803a2a7 100644
+--- a/src/slic3r/GUI/FreeCADDialog.cpp
++++ b/src/slic3r/GUI/FreeCADDialog.cpp
+@@ -44,7 +44,12 @@
+ // and so boost/process has a line 'typedef int int'instead of 'typedef int pid_t' that makes it crash
+ // note: don't put it in a header, as it can create problems. Here it's safe enough to be used, as it's just applied for the process.hpp file and this source code.
+ #define pid_t pid_t
+-#include <boost/process.hpp>
++#include <boost/process/v1/async.hpp>
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/pipe.hpp>
++
++namespace process = boost::process::v1;
+ 
+ #include <cstdlib>   // getenv()
+ 
+@@ -63,11 +68,11 @@ namespace GUI {
+     //now that we have process.hpp, we can define the ExecVar
+     class ExecVar {
+     public:
+-        boost::process::opstream pyin;
++        process::opstream pyin;
+         boost::asio::io_context ios;
+         std::future<std::string> data_out;
+         std::future<std::string> data_err;
+-        std::unique_ptr<boost::process::child> process;
++        std::unique_ptr<process::child> process;
+ };
+ 
+     //TODO: auto tab
+@@ -843,8 +848,8 @@ bool FreeCADDialog::init_start_python() {
+         get_string_from_web_async("https://api.github.com/repos/supermerill/FreePySCAD/commits/master", this, &FreeCADDialog::test_update_script_file);
+     }
+ 
+-    exec_var->process.reset(new boost::process::child(pythonpath.string() + " -u -i", boost::process::std_in < exec_var->pyin,
+-        boost::process::std_out > exec_var->data_out, boost::process::std_err > exec_var->data_err, exec_var->ios));
++    exec_var->process.reset(new process::child(pythonpath.string() + " -u -i", process::std_in < exec_var->pyin,
++        process::std_out > exec_var->data_out, process::std_err > exec_var->data_err, exec_var->ios));
+     exec_var->pyin << "import sys" << std::endl;
+     // add freecad lib path if not already done
+     exec_var->pyin << "sys.path.append('" << (freecadpath / "lib").string() << "')" << std::endl;
+@@ -887,8 +892,8 @@ void FreeCADDialog::create_geometry(wxCommandEvent& event_args) {
+     }
+ 
+     //create synchronous pipe streams
+-    //boost::process::ipstream pyout;
+-    //boost::process::ipstream pyerr;
++    //process::ipstream pyout;
++    //process::ipstream pyerr;
+ 
+     if (!init_start_python()) return;
+ 
+diff --git a/src/slic3r/GUI/RemovableDriveManager.cpp b/src/slic3r/GUI/RemovableDriveManager.cpp
+index dfbd7c9faa..85dc84de4e 100644
+--- a/src/slic3r/GUI/RemovableDriveManager.cpp
++++ b/src/slic3r/GUI/RemovableDriveManager.cpp
+@@ -35,7 +35,11 @@
+ #include <pwd.h>
+ #include <boost/filesystem.hpp>
+ #include <boost/system/error_code.hpp>
+-#include <boost/process.hpp>
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/pipe.hpp>
++#include <boost/process/v1/search_path.hpp>
++namespace process = boost::process::v1;
+ #endif
+ 
+ namespace Slic3r {
+@@ -859,15 +863,15 @@ void RemovableDriveManager::eject_drive()
+ 		// but neither triggers "succesful safe removal messege"
+ 		
+ 		BOOST_LOG_TRIVIAL(info) << "Ejecting started";
+-		boost::process::ipstream istd_err;
+-    	boost::process::child child(
++		process::ipstream istd_err;
++    	process::child child(
+ #if __APPLE__		
+-			boost::process::search_path("diskutil"), "eject", correct_path.c_str(), (boost::process::std_out & boost::process::std_err) > istd_err);
++			process::search_path("diskutil"), "eject", correct_path.c_str(), (process::std_out & process::std_err) > istd_err);
+ 		//Another option how to eject at mac. Currently not working.
+ 		//used insted of system() command;
+ 		//this->eject_device(correct_path);
+ #else
+-    		boost::process::search_path("umount"), correct_path.c_str(), (boost::process::std_out & boost::process::std_err) > istd_err);
++    		process::search_path("umount"), correct_path.c_str(), (process::std_out & process::std_err) > istd_err);
+ #endif
+ 		std::string line;
+ 		while (child.running() && std::getline(istd_err, line)) {
+@@ -881,7 +885,7 @@ void RemovableDriveManager::eject_drive()
+             // The wait call can fail, as it did in https://github.com/prusa3d/PrusaSlicer/issues/5507
+             // It can happen even in cases where the eject is sucessful, but better report it as failed.
+             // We did not find a way to reliably retrieve the exit code of the process.
+-			BOOST_LOG_TRIVIAL(error) << "boost::process::child::wait() failed during Ejection. State of Ejection is unknown. Error code: " << ec.value();
++			BOOST_LOG_TRIVIAL(error) << "process::child::wait() failed during Ejection. State of Ejection is unknown. Error code: " << ec.value();
+ 		} else {
+ 			int err = child.exit_code();
+ 	    	if (err) {
