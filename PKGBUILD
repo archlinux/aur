@@ -1,36 +1,29 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _basename="qt"
-pkgver=2.3.2
+_commit_rel="737c792a14570be12ec24514552fde949cc4dd5a" # 2.3.2
+_commit="6f380baa9866bce8ccc34e166dfeca3ff3cd978e" # r63
+pkgver=2.3.2+kde+r63
 pkgbase="${_basename}${pkgver%%.*}"
 pkgname=("${pkgbase}"{,-docs})
 pkgrel=1
 pkgdesc="A cross-platform application and UI framework"
 arch=('i686' 'x86_64')
 url="https://www.qt.io"
+_url="https://invent.kde.org/sandsmark/${pkgbase}"
 license=('QPL-1.0 OR GPL-2.0-only')
 makedepends=('byacc' 'cmake>=3.2' 'fontconfig' 'glu' 'glut' 'libgl' 'libice'
              'libjpeg' 'libmng' 'libpng' 'libsm' 'libx11' 'libxext' 'libxft'
              'libxmu')
-_pkgsrc="${_basename}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::https://download.qt.io/archive/${_basename}/${pkgver%%.*}/${_basename}-x11-${pkgver}.tar.gz"
-        "${pkgbase}_heliocastro.p1.patch::https://github.com/heliocastro/qt2/commit/080df684e1a5d9a76f1355b542e6b49a2c9cec3c.patch?full_index=1"
-        "${pkgbase}_heliocastro.p2.patch::https://github.com/heliocastro/qt2/compare/Original_Qt2...c47756733f1ad6f30065a3ff8d2c1ef02602b789.patch?full_index=1"
-        "${pkgbase}_sandsmark.patch::https://github.com/sandsmark/qt2/compare/3a0c5d71d20ea5b3d001a6d4c2cf2e1f1646f14b...367a986220ea1c4d01268f0c0e74cd1e7c888298.patch?full_index=1")
-sha256sums=('0d7511c3a055f6ed89e6606bafa52510b9da33e96db1d2086642c49aea46b9fa'
-            'dbb22b2ab128a48bf0ba55902c61fae3fa7f04c6ff3ba6222d6e6b513ada8945'
-            '627740f0294596df6063f857700c7462c9f14c551c05784839031ba5e3ff9fe5'
-            '36633cb6092f0524ee83aac5f6651dd7c0bff7b166352e0270d57042d4d09817')
+_pkgsrc="${pkgbase}-${_commit}"
+source=("${_pkgsrc}.tar.gz::${_url}/-/archive/${_commit}/${_pkgsrc}.tar.gz"
+        "${pkgbase}_manpages.patch")
+b2sums=('1d68e61f41a2b059e5319374875503421ba5ed0165f046808b38827bbae466527146b431c0900a7a14e2deccaebf08dbd0b78ff37de711b6ad9435a0661119c2'
+        'abb02f33ce23787b758d4d8e23eba8f4d240c15dec99e502977786102c17272c608bf8d0e5b94fbe07ce733b8ab226ac065d440d34ec3941cc6411b2cba2e702')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  find . -type d -exec chmod 755 {} +
-  find . -type f -exec chmod 644 {} +
-
-  patch -Np1 -i "${srcdir}/${pkgbase}_heliocastro.p1.patch" || true
-  patch -Np1 -i "${srcdir}/${pkgbase}_heliocastro.p2.patch" || true
-  patch -Np1 -i "${srcdir}/${pkgbase}_sandsmark.patch" || true
-
+  patch -Np1 -i "${srcdir}/${pkgbase}_manpages.patch"
   sed -i '/set(CMAKE_VERBOSE_MAKEFILE ON)/d' 'CMakeLists.txt'
 }
 
@@ -62,8 +55,8 @@ package_qt2() {
   install -vDm644 "README.QT"   "${pkgdir}/usr/share/doc/${pkgbase}/README"
   install -vDm644 ./LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgbase}"
 
-  cd "${pkgdir}/usr/share/doc/${pkgbase}"
-  rm -rf "html"
+  cd "${pkgdir}/usr/share"
+  rm -rf "doc/${pkgbase}/html" "man"
 }
 
 package_qt2-docs() {
@@ -73,7 +66,7 @@ package_qt2-docs() {
   cd "${srcdir}"
   DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build/doc"
 
-  # cd "${_pkgsrc}/doc"
-  # find "man" -type f -name '*.[1-9]qt' -exec \
-  #   sh -c 'install -vDm644 "$1" "$2/usr/share/qt2-${1%qt}"' _ {} "${pkgdir}" \;
+  cd "${pkgdir}/usr/share/man"
+  # for f in man1/*.1;   do mv -- "$f" "${f%.1}-qt2.1"; done
+  for f in man3/*.3qt; do mv -- "$f" "man3/qt2-$(basename "${f%.3qt}").3"; done
 }
