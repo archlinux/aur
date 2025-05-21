@@ -1,0 +1,14 @@
+pkgbase = twitch-tui-git
+	pkgdesc = Twitch chat in the terminal
+	pkgver = 2.6.19.r0.c1c79f0
+	pkgrel = 1
+	url = https://github.com/Xithrius/twitch-tui
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = twt
+	source = git+https://github.com/Xithrius/twitch-tui.git
+	sha256sums = SKIP
+
+pkgname = twitch-tui-git
