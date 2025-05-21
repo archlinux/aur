@@ -1,0 +1,18 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,3 +32,14 @@
+ 
+ # linking math library
+ target_link_libraries(${PROJECT_NAME} PRIVATE m)
++
++# Install rules
++include(GNUInstallDirs) # Provides standard directory variables
++
++install(TARGETS ${PROJECT_NAME}
++    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}  # Installs to <prefix>/bin
++)
++
++install(FILES LICENSE.md
++    DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/${PROJECT_NAME} # Installs to <prefix>/share/licenses/objcurses
++)
+

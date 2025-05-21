@@ -1,0 +1,17 @@
+pkgbase = objcurses
+	pkgdesc = Minimalistic 3D object viewer for the terminal using ncurses
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/admtrv/objcurses
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cmake
+	depends = ncurses
+	depends = gcc-libs
+	source = objcurses-1.3.0.tar.gz::https://github.com/admtrv/objcurses/archive/v1.3.0.tar.gz
+	source = cmake-install.patch
+	sha256sums = e5458e5ddb7366f36290dd7a270e45a06c93c3197035662e090f10567fa5c484
+	sha256sums = 69a17811a0cf709df33bb047fa3e27fed8801cc6d83b811793449cf81822b312
+
+pkgname = objcurses
