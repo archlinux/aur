@@ -1,7 +1,7 @@
 # Maintainer: marzeq <marzeqmarzeq at gmail dot com>
 
 pkgname=mconf-bin
-pkgver=1.2505.4
+pkgver=1.2505.5
 pkgrel=1
 epoch=1
 pkgdesc="Parser for the mconf configuration language"
@@ -15,8 +15,8 @@ conflicts=("mconf")
 source_x86_64=("https://github.com/marzeq/mconf/releases/download/v$pkgver/mconf-linux-amd64")
 source_aarch64=("https://github.com/marzeq/mconf/releases/download/v$pkgver/mconf-linux-arm64")
 
-sha256sums_x86_64=('047a4215af0af383a6dd3b792400460f22d52638a2be554806cf7c40aff0512c')
-sha256sums_aarch64=('771101e2a7a283651dbd47b55ed3a89f1bc8b5854e144de5790451595a00dd5d')
+sha256sums_x86_64=('b98e798f522edcc6557540f9efa11eca5bd4598717d4af09ea7354e70eb65df1')
+sha256sums_aarch64=('de553877173235d64916e0bcd99db0062bcd74f0adb83fbd969db2c99fcb1ff8')
 
 package() {
   cd "$srcdir"
