@@ -1,6 +1,6 @@
 pkgbase = rhythmbox-plugin-rhythmboxfullscreen-git
 	pkgdesc = A full screen window for Rhythmbox.
-	pkgver = r65.a508b49
+	pkgver = r73.5deb5d0
 	pkgrel = 1
 	url = https://github.com/benjaoming/rhythmbox-fullscreen
 	install = rhythmbox-plugin-rhythmboxfullscreen.install

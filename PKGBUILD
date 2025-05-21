@@ -1,7 +1,7 @@
 # Maintainer: Omar Pakker <omar.pakker@oracle.com>
 
 pkgname=rhythmbox-plugin-rhythmboxfullscreen-git
-pkgver=r65.a508b49
+pkgver=r73.5deb5d0
 pkgrel=1
 pkgdesc="A full screen window for Rhythmbox."
 arch=('any')
