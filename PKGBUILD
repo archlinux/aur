@@ -14,13 +14,11 @@ depends=('qt6-svg' 'postgresql-libs' 'libxml2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v${pkgver//_/-}.tar.gz"
         'mimetype.xml'
         'pgmodeler.install'
-        'patch_no_check_update.diff'
-        'pgmodeler.appdata.xml')
+        'patch_no_check_update.diff')
 sha256sums=('66d1cc441a5247edb3fe9b5f09fbc480023955da037cd09a5c8811d3caa7f270'
             '91c6ab0df840823a4de21a953592134fb7b4367565eebff8523dc08ea6c7cd36'
             'fed8d615a3b732a83e1bd9c9562c81f3bfcb0ce5a4abba96191bca0d602bdd33'
-            '648d6351e1e1d1ad559e1ddfc98aff158e91c040b65c8c4ea74232c2077e19d7'
-            '047466a4841cb312d2660ed53875fb34437017bec87c134f9048b542e381e30a')
+            '648d6351e1e1d1ad559e1ddfc98aff158e91c040b65c8c4ea74232c2077e19d7')
 
 options=('emptydirs')
 
@@ -51,7 +49,7 @@ package() {
     install -Dm644 "assets/conf/pgmodeler_logo.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/pgmodeler.png"
     install -Dm644 "assets/conf/pgmodeler_dbm.png" "$pkgdir/usr/share/icons/hicolor/64x64/mimetypes/pgmodeler-dbm.png"
     install -Dm644 "assets/conf/pgmodeler_sch.png" "$pkgdir/usr/share/icons/hicolor/64x64/mimetypes/pgmodeler_sch.png"
-    install -Dm644 "$srcdir/pgmodeler.appdata.xml" "$pkgdir/usr/share/metainfo/pgmodeler.appdata.xml"
+    install -Dm644 "pgmodeler.appdata.xml" "$pkgdir/usr/share/metainfo/pgmodeler.appdata.xml"
     install -Dm644 "$srcdir/mimetype.xml" "$pkgdir/usr/share/mime/packages/pgmodeler.xml"
 
     # Needs to be there, but belongs rather to doc
