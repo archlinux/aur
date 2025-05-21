@@ -1,0 +1,16 @@
+pkgbase = python-uncompresspy
+	pkgdesc = Pure Python package for uncompressing LZW files (.Z)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/kYwzor/uncompresspy
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/u/uncompresspy/uncompresspy-0.4.0.tar.gz
+	md5sums = d06f8c664b0ea4432cfd4783ea7de4b9
+
+pkgname = python-uncompresspy
+	depends = python>=3.10
+	optdepends = python-uncompresspy-doc: Documentation for uncompresspy
