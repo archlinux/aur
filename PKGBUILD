@@ -1,7 +1,7 @@
 # Maintainer: _ <_@_._>
 
 pkgname=riichi-city-bin
-pkgver=2.1.9
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Competitive urban-style Japanese mahjong platform"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("riichi-city.desktop"
         "riichi-city-bin.install")
 sha256sums=('4f8204227f3f7548a277df299b634dc5e7e5dba4de5742c04abb5abaf49dc720'
             '796cbe29af70f4b5067cbd224b66f717d910c6102addae526afc880baebf9a61'
-            '874a2a3cd3e710342cc9360e1e4e01e08222fe91f2611526458cc5e4a204cf50'
+            '81389cdf0bf3e5261d49d54eab416b45bea3fa2fb82b040dbbab1837b496aef7'
             'd1efb5dec4c56b1fd2d89b966e0096a2817767c3884a499ae33f116ab5f78fd5'
             '67d96ee52403a766834e5ef33a862342bece9632fcd8eb4f1ab021094ca4b8d4')
 
