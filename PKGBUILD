@@ -2,7 +2,7 @@
 
 pkgname=oniux
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Kernel-level Tor isolation for any Linux app'
 url='https://gitlab.torproject.org/tpo/core/oniux/'
 license=('MIT' 'Apache-2.0')
@@ -32,6 +32,13 @@ prepare() {
 
 build() {
     cd ${pkgname}-v${pkgver}
+
+    # Use debug
+    export CARGO_PROFILE_RELEASE_DEBUG=2 CARGO_PROFILE_RELEASE_STRIP=false
+
+    # Use lto
+    export CARGO_PROFILE_RELEASE_LTO=thin
+
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features

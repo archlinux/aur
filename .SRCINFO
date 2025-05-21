@@ -1,7 +1,7 @@
 pkgbase = oniux
 	pkgdesc = Kernel-level Tor isolation for any Linux app
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.torproject.org/tpo/core/oniux/
 	arch = x86_64
 	license = MIT
