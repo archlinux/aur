@@ -1,6 +1,6 @@
 pkgbase = sherlock-launcher-git
 	pkgdesc = Application launcher for Wayland.
-	pkgver = 0.1.11.r15.g160ee55
+	pkgver = 0.1.11.r16.g1faf68a
 	pkgrel = 1
 	url = https://github.com/skxxtz/sherlock
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = sherlock-launcher-git
 	depends = dbus
 	depends = openssl
 	depends = sqlite
-	provides = sherlock-launcher-git=0.1.11
-	conflicts = sherlock-launcher-git
-	conflicts = sherlock-launcher-git-bin
-	source = sherlock-launcher-git::git+https://github.com/skxxtz/sherlock.git
+	provides = sherlock-launcher=0.1.11
+	conflicts = sherlock-launcher
+	conflicts = sherlock-launcher-bin
+	source = sherlock-launcher::git+https://github.com/skxxtz/sherlock.git
 	sha256sums = SKIP
 
 pkgname = sherlock-launcher-git
