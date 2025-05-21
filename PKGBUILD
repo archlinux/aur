@@ -11,7 +11,7 @@ _enginever=18818009497c581ede5d8a3b8b833b81d00cebb7
 _materialfontsver=3012db47f3130e62f7cc0beabff968a33cbec8d8
 _gradlewver=fd5c1f2c013565a3bea56ada6df9d2b8e96d56aa
 _flutterarch=$(echo "$CARCH" | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
-pkgrel=3
+pkgrel=4
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 _pkgdesc="Flutter SDK component"
 arch=("x86_64" "aarch64")
@@ -131,7 +131,10 @@ build() {
 		--snapshot="bin/cache/flutter_tools.snapshot" --snapshot-kind="app-jit" \
 		--packages="packages/flutter_tools/.dart_tool/package_config.json" \
 		--no-enable-mirrors "packages/flutter_tools/bin/flutter_tools.dart" --version
- cd ../..
+  cd ../..
+
+  echo "${_enginever}" > "${srcdir}/${_group}/bin/cache/engine.stamp"
+  touch "${srcdir}/${_group}/bin/cache/engine.realm"
 
   sed -Ei 's|'"$PUB_CACHE"'|/usr/lib/flutter/pub-cache|g' "${srcdir}/${_group}/packages/flutter_tools/.dart_tool/package_config.json"
   find "$PUB_CACHE" -name '*.aot' -delete
@@ -281,11 +284,12 @@ _package-tool() {
   # otherwise flutter analyze will crash
   touch "${pkgdir}/usr/lib/${_group}/dev/.hack-flutter-analyze"
 
-  cp -ra "${srcdir}/${_group}/bin/cache/flutter_tools.snapshot" "${pkgdir}/usr/lib/${_group}/bin/cache/flutter_tools.snapshot"
-  cp -ra "${srcdir}/${_group}/bin/cache/flutter.version.json" "${pkgdir}/usr/lib/${_group}/bin/cache"
-  cp -ra "${srcdir}/${_group}/version" "${pkgdir}/usr/lib/${_group}"
-
-  cp -ra "${srcdir}/${_group}/packages/flutter_tools/.dart_tool/package_config.json" "${pkgdir}/usr/lib/${_group}/packages/flutter_tools/.dart_tool"
+  install -Dm644 "${srcdir}/${_group}/bin/cache/engine.stamp" "${pkgdir}/usr/lib/${_group}/bin/cache"
+  install -Dm644 "${srcdir}/${_group}/bin/cache/engine.realm" "${pkgdir}/usr/lib/${_group}/bin/cache"
+  install -Dm644 "${srcdir}/${_group}/bin/cache/flutter_tools.snapshot" "${pkgdir}/usr/lib/${_group}/bin/cache"
+  install -Dm644 "${srcdir}/${_group}/bin/cache/flutter.version.json" "${pkgdir}/usr/lib/${_group}/bin/cache"
+  install -Dm644 "${srcdir}/${_group}/version" "${pkgdir}/usr/lib/${_group}"
+  install -Dm644 "${srcdir}/${_group}/packages/flutter_tools/.dart_tool/package_config.json" "${pkgdir}/usr/lib/${_group}/packages/flutter_tools/.dart_tool"
 
   install -dm755 "${pkgdir}/usr/bin"
   install -Dm755 "${srcdir}/${_group}.sh" "${pkgdir}/usr/lib/${_group}/bin/flutter"
