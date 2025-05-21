@@ -5,9 +5,9 @@
 pkgbase=flutter
 _group=flutter
 groups=("$_group")
-pkgver=3.29.3
-_dartver=(3.7.0 3.8.0)
-_enginever=cf56914b326edb0ccb123ffdc60f00060bd513fa
+pkgver=3.32.0
+_dartver=(3.8.0 3.9.0)
+_enginever=18818009497c581ede5d8a3b8b833b81d00cebb7
 _materialfontsver=3012db47f3130e62f7cc0beabff968a33cbec8d8
 _gradlewver=fd5c1f2c013565a3bea56ada6df9d2b8e96d56aa
 _flutterarch=$(echo "$CARCH" | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
@@ -40,11 +40,11 @@ source=(
   "opt-in-analytics.patch"
 )
 
-sha256sums=('a86aaa9d4537d292612661e0b559102204d66b410e63474bdc97770e7fc51329'
-            '6b413ea742f88ed1ef9ef2df2bbb93376a3f3508aa82bb9cc68fb1516234017f'
+sha256sums=('bfd98517d7ab66655f02f1f1aaa7ad0321b7fd3675c0197dde9e48c21ed3f065'
+            '1a04bc4aaf6ed3e8810d0a441b7365bc5fd0b8d0d40da1632d22635a0c327824'
             'e41d25d8cba8b0bb51ee0b20cb6b730bfb2c491d67c669ab8e3550d60b37fb5c'
             'b4c104129eb57e7e3edca2e23376b8b034de2d466189bdc1c3e2a304506889a3'
-            '82b7444c97a2a706f2a935224c58b0a5e9d60fc0b523cb07d6664f64dae31ba3'
+            '188ed17e40baa273563aa53a71fb28911aa39d8e37c66f73e37a50e2915861ce'
             '544d08716332a9f9358b21010d468b84a9edff0da7bbb1baf0cf4d6322821ea5'
             '6ade3168ced2090b7811b4efbe9b6cd021704baaa8cf2be7ece3500d44d404c6'
             '3080f2b7f6de05aa5aece9a98702718c9e5feb99c935f8295fbdbcab80e269ba'
@@ -233,7 +233,6 @@ _package-target-android() {
   mkdir -m777 "${pkgdir}/usr/lib/${_group}/packages/flutter_tools/gradle/.kotlin"
 
   install -Dm644 "${srcdir}/${_group}/bin/internal/engine.version" "${pkgdir}/usr/lib/${_group}/bin/internal"
-  install -Dm644 "${srcdir}/${_group}/bin/internal/engine.realm" "${pkgdir}/usr/lib/${_group}/bin/internal"
 
 }
 

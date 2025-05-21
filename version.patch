@@ -41,17 +41,13 @@
      return _FlutterVersionGit._(
        clock: clock,
        flutterRoot: flutterRoot,
-@@ -217,11 +213,7 @@
+@@ -208,7 +208,7 @@
+ 
    // TODO(fujino): calculate this relative to frameworkCommitDate for
    // _FlutterVersionFromFile so we don't need a git call.
-   String get frameworkAge {
--    return _frameworkAge ??= _runGit(
--      FlutterVersion.gitLog(<String>['-n', '1', '--pretty=format:%ar']).join(' '),
--      globals.processUtils,
--      flutterRoot,
--    );
-+    return _frameworkAge ??= 'unknown (arch linux aur package)';
-   }
+-  late final String frameworkAge = _getTimeSinceCommit();
++  late final String frameworkAge = 'unknown (arch linux aur package)';
+   late final String engineAge = _getTimeSinceCommit(revision: engineRevision);
  
    void ensureVersionFile();
 @@ -563,10 +547,6 @@
