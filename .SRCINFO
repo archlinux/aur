@@ -1,7 +1,7 @@
 pkgbase = librediscord-git
 	pkgdesc = Free and open source voice client for Discord
 	pkgver = 0.1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gitlab.com/zipdox/librediscord
 	arch = x86_64
 	license = GPL-3.0-or-later
