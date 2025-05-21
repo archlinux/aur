@@ -1,0 +1,4 @@
+[nodtool]
+source = "git"
+git = "https://github.com/encounter/nod.git"
+prefix = "v"

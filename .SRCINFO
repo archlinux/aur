@@ -1,0 +1,16 @@
+pkgbase = nodtool
+	pkgdesc = CLI tool for reading GameCube and Wii disc images
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://github.com/encounter/nod
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = nod-1.4.4.tar.gz::https://github.com/encounter/nod/archive/refs/tags/v1.4.4.tar.gz
+	b2sums = 42a2ff1722e7e9f9ad5ba22b09443a583ab4d29f8f0d78e62e2ee5b253bf03b388f17019fe2c383df3612a13cec83660743a912fc757cf141cfe7f8dbf03a9b0
+
+pkgname = nodtool
