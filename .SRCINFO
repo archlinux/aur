@@ -1,7 +1,7 @@
 pkgbase = git-stack
 	pkgdesc = Stacked branch management for Git
-	pkgver = 0.10.18
-	pkgrel = 2
+	pkgver = 0.10.19
+	pkgrel = 1
 	url = https://github.com/gitext-rs/git-stack
 	arch = x86_64
 	license = Apache-2.0
@@ -11,7 +11,7 @@ pkgbase = git-stack
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = git-stack-0.10.18.tar.gz::https://github.com/gitext-rs/git-stack/archive/refs/tags/v0.10.18.tar.gz
-	sha256sums = 46786c7509ba27a36225835aa8689445b6249d6491cf104f5a0168f8edd7ab89
+	source = git-stack-0.10.19.tar.gz::https://github.com/gitext-rs/git-stack/archive/refs/tags/v0.10.19.tar.gz
+	sha256sums = 5823ac8de5340a3f53936054dd8397676fce0a9978daec3221d7e8724594c559
 
 pkgname = git-stack
