@@ -20,7 +20,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/hydra-$pkgver"
 
   install -Dm755 "build/hydra-linux" "$pkgdir/usr/bin/hydra"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
