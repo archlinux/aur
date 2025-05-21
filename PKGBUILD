@@ -1,16 +1,16 @@
-# Maintainer: oech3
-
+pkgbase=coreutils-uutils-symlink
+pkgname=(${pkgbase} coreutils-uutils-arch)
 pkgname=coreutils-uutils-symlink
 pkgver=0.0.29
-pkgrel=8
-pkgdesc="(use at own risk) symlinks to replace coreutils with uutils"
+pkgrel=9
 arch=('any')
-depends=(uutils-coreutils nix-busybox)
-conflicts=(coreutils b3sum sha3sum coreutils-uutils coreutils-arch)
-provides=(coreutils b3sum coreutils-arch)
-
-package() {
-	mkdir -p "$pkgdir"/usr/bin "$pkgdir"/usr/share/man/man1
+depends=(uutils-coreutils)
+package_coreutils-uutils-symlink() {
+	pkgdesc="(use at own risk) symlinks to replace coreutils with uutils"
+	depends+=(nix-busybox)
+	conflicts=(coreutils b3sum sha3sum coreutils-uutils)
+	provides=(coreutils b3sum)
+	mkdir -p "$pkgdir"/usr/{bin,share/man/man1}
 	for f in $(uu-coreutils --list)
 	do
 		ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/bin/"$f"
@@ -19,5 +19,14 @@ package() {
 	echo '#!/usr/bin/uu-coreutils false' |tee "$pkgdir"/usr/bin/{ch,run}con
 	chmod 755 "$pkgdir"/usr/bin/{ch,run}con
 	ln -sf /usr/lib/nix/busybox "$pkgdir"/usr/bin/stty
-	rm "$pkgdir"/usr/{bin,share/man/man1}/{kill,more,uptime,hostname}*
+	rm "$pkgdir"/usr/{bin,share/man/man1}/{arch,kill,more,uptime,hostname}*
+}
+
+package_coreutils-uutils-arch() {
+	pkgdesc="symlink to /usr/bin/arch for few apps"
+	conflicts=(coreutils-arch)
+	provides=(coreutils-arch)
+	mkdir -p "$pkgdir"/usr/{bin,share/man/man1}
+	ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/bin/arch
+	ln -sf /usr/share/man/man1/uu-arch.1.gz "$pkgdir"/usr/share/man/man1/arch.1.gz
 }
