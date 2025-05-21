@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('GPL-3.0-or-later')
 depends=('fasm')
 source=(https://gitverse.ru/api/repos/rus.yaz/${pkgname}/archive/v${pkgver}-beta.tar.gz)
-sha256sums=('4e89d45fef0ac84c16c58c90847b4e2a8fc03fef58edf88f2d35e2b1b3902f4d')
+sha256sums=('f1cd472ce21111fdffc4d4f0006dbae9d0680d1584702fd750d04dc11fb7571b')
 
 build() {
   cd ${pkgname}
