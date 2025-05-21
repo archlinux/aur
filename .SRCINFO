@@ -1,6 +1,6 @@
 pkgbase = handtex
 	pkgdesc = Handwritten LaTeX symbol classifier for the desktop
-	pkgver = 1.0.0
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/VoxelCubes/Hand-TeX
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = handtex
 	depends = python-psutil
 	depends = python-networkx
 	provides = handtex
-	source = https://github.com/VoxelCubes/Hand-TeX/archive/refs/tags/1.0.0.tar.gz
-	sha256sums = 51b43c18b62103c3128acb55796ba066b0fe99e333513cb5eaa619c9901f2be2
+	source = https://github.com/VoxelCubes/Hand-TeX/archive/refs/tags/1.0.4.tar.gz
+	sha256sums = 9d1c8b959093e84c8b57837ada83588fa1ee44b3707542d045e5fa5f92f3a26d
 
 pkgname = handtex
 	depends = python>=3.10.0
