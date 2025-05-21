@@ -1,0 +1,4 @@
+[portainer-lts-bin]
+source="github"
+github="portainer/portainer"
+use_latest_release=true

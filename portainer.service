@@ -1,0 +1,15 @@
+[Unit]
+Description=Portainer
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=3
+Environment=BIND=:9000
+Environment=BIND_HTTPS=:9443
+Environment=TUNNEL_PORT=8000
+Environment=CUSTOM_ARGS=''
+ExecStart=/usr/bin/portainer $CUSTOM_ARGS --bind $BIND --bind-https $BIND_HTTPS --tunnel-port $TUNNEL_PORT --data /var/lib/portainer --assets /usr/share/portainer
+
+[Install]
+WantedBy=multi-user.target
