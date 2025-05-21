@@ -5,7 +5,7 @@
 _pkgname=code
 pkgname=code-git
 pkgdesc='The Open Source build of Visual Studio Code editor'
-pkgver=1.101.0.r133508.gb73fc489f5d
+pkgver=1.101.0.r133628.g9880502f0ee
 pkgrel=1
 arch=('x86_64')
 _vscode_arch=x64 # https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/PKGBUILD
@@ -15,7 +15,7 @@ license=('MIT')
 depends=( ripgrep xdg-utils # electron* is added at build process
 libsecret libxkbfile )
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=( nodejs-lts-jod
+makedepends=( electron nodejs-electron
 git npm pnpm python desktop-file-utils libarchive)
 conflicts=(code vscode)
 provides=(code vscode)
@@ -101,7 +101,7 @@ build() {
 
 package() {
   _elnum=$(cut -d. -f1 /usr/lib/electron/version) # hide version from --printsrcinfo
-  depends+=(electron${_elnum})
+  depends+=(electron${_elnum}) # replace electron dependency
   # Resource files
   install -dm755 "$pkgdir"/usr/lib/code # compabinity for pacman hooks
   cp -r --reflink=auto --no-preserve=ownership --preserve=mode VSCode-linux-${_vscode_arch}/resources/app/* "$pkgdir"/usr/lib/code/
