@@ -5,7 +5,7 @@
 # Contributor: Wes Brewer <brewerw@gmail.com>
 
 pkgname=extract-xiso
-pkgver=202501282328
+pkgver=202505152050
 _pkgver=build-$pkgver
 pkgrel=1
 pkgdesc="Xbox ISO Creation/Extraction utility"
@@ -14,13 +14,13 @@ license=("BSD-4-Clause")
 arch=('x86_64')
 makedepends=('cmake')
 source=("$url/archive/$_pkgver.tar.gz")
-sha256sums=('0d680e6ababd17410b355a41f7d689402cd5439522f7d144f2ecb7d051756418')
+sha256sums=('cf697353d2d3231df8d04fcdda53f90737f22be51dee8f033345e0e5972b3c33')
 
 prepare() {
   cd $pkgname-$_pkgver
   mkdir -p build
   cd build
-  cmake .. -DCMAKE_BUILD_TYPE=Release
+  cmake .. -DCMAKE_BUILD_TYPE=Release -D CMAKE_POLICY_VERSION_MINIMUM=3.5
 }
 
 build() {
