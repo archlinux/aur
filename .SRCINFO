@@ -1,12 +1,12 @@
 pkgbase = korsakov
 	pkgdesc = Cyrillic multi-paradigm general-purpose programming language
-	pkgver = 1.15.1
+	pkgver = 1.15.2
 	pkgrel = 1
 	url = https://gitverse.ru/rus.yaz/korsakov
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = fasm
-	source = https://gitverse.ru/api/repos/rus.yaz/korsakov/archive/v1.15.1-beta.tar.gz
+	source = https://gitverse.ru/api/repos/rus.yaz/korsakov/archive/v1.15.2-beta.tar.gz
 	sha256sums = 4e89d45fef0ac84c16c58c90847b4e2a8fc03fef58edf88f2d35e2b1b3902f4d
 
 pkgname = korsakov

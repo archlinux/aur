@@ -1,7 +1,7 @@
 # Maintainer: David Sultaniiazov <x1z53@корсаков.рус>
 
 pkgname=korsakov
-pkgver=1.15.1
+pkgver=1.15.2
 pkgrel=1
 pkgdesc='Cyrillic multi-paradigm general-purpose programming language'
 url='https://gitverse.ru/rus.yaz/korsakov'
@@ -23,5 +23,5 @@ build() {
 package() {
   cd ${pkgname}
 
-  cp korsakov "${pkgdir}/usr/bin"
+  install -Dm 755 korsakov -t "${pkgdir}/usr/bin"
 }
