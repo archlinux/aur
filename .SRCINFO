@@ -1,0 +1,20 @@
+pkgbase = python-jiwer
+	pkgdesc = Evaluate your speech-to-text system with similarity measures such as word error rate (WER).
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/jitsi/jiwer
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-benchmark
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-click
+	depends = python-rapidfuzz
+	source = https://files.pythonhosted.org/packages/source/j/jiwer/jiwer-3.1.0.tar.gz
+	sha256sums = dc492d09e570f1baba98c76aba09baf8e09c06e6808a4ba412dd4bde67fb79ac
+
+pkgname = python-jiwer
