@@ -1,6 +1,6 @@
 pkgbase = sparrow-wallet
 	pkgdesc = Desktop Bitcoin Wallet focused on security and privacy. Free and open source
-	pkgver = 2.1.3
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://sparrowwallet.com/
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = sparrow-wallet
 	depends = libxrender
 	depends = freetype2
 	depends = libxcrypt-compat
-	source = https://github.com/sparrowwallet/sparrow/releases/download/2.1.3/sparrow-2.1.3-x86_64.tar.gz
-	source = https://github.com/sparrowwallet/sparrow/releases/download/2.1.3/sparrow-2.1.3-manifest.txt
-	source = https://github.com/sparrowwallet/sparrow/releases/download/2.1.3/sparrow-2.1.3-manifest.txt.asc
+	source = https://github.com/sparrowwallet/sparrow/releases/download/2.2.1/sparrowwallet-2.2.1-x86_64.tar.gz
+	source = https://github.com/sparrowwallet/sparrow/releases/download/2.2.1/sparrow-2.2.1-manifest.txt
+	source = https://github.com/sparrowwallet/sparrow/releases/download/2.2.1/sparrow-2.2.1-manifest.txt.asc
 	validpgpkeys = D4D0D3202FC06849A257B38DE94618334C674B40
-	sha256sums = 15babdf8698a2f8d109f194ab5b5582e265155b92763e605ffdae5dff72e2e70
-	sha256sums = 63b03fabc56a4c7a096cb90b31463189809bbe10847d3412fb86796fdc82cbe9
+	sha256sums = 9ba147733eb631b11015f2de0f25b4ce2aa807861560e38bfc8079020ba75eb4
+	sha256sums = adb2d364092a7ac992d69839c1b9db4db9d3b859e95ae0c80f4682030c0ceb9c
 	sha256sums = SKIP
 
 pkgname = sparrow-wallet
