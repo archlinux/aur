@@ -1,15 +1,15 @@
-# Maintainer: Leo <i@setuid0.dev>
+# Maintainer: Leo <i@hardrain980.com>
 
 pkgname=roadrunner
 epoch=1
 pkgver=2025.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance PHP application server, process manager written in Go and powered with plugins"
 arch=(x86_64)
 url="https://roadrunner.dev/"
 license=(MIT)
 makedepends=("go>=1.24")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/spiral/$pkgname/archive/v$pkgver.tar.gz")
+source=("roadrunner-$pkgver.tar.gz::https://github.com/roadrunner-server/roadrunner/archive/v$pkgver.tar.gz")
 sha256sums=('f0469f753b5f968254a696e52f7a0fc7e41d806d71fd53e2eda3d2c25697da20')
 options=("!buildflags")
 
@@ -24,8 +24,8 @@ build() {
 	CGO_ENABLED=0 go build \
 		-trimpath \
 		-ldflags "-s \
-		-X github.com/roadrunner-server/roadrunner/v2024/internal/meta.version=$pkgver \
-		-X github.com/roadrunner-server/roadrunner/v2024/internal/meta.buildTime=$(date +%FT%T%z)" \
+		-X github.com/roadrunner-server/roadrunner/v2025/internal/meta.version=$pkgver \
+		-X github.com/roadrunner-server/roadrunner/v2025/internal/meta.buildTime=$(date +%FT%T%z)" \
 		-o ./roadrunner \
 		./cmd/rr
 }
