@@ -1,6 +1,6 @@
 pkgbase = python-pinecone
 	pkgdesc = Python Pinecone client and SDK
-	pkgver = 6.0.2
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://github.com/pinecone-io/pinecone-python-client
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-pinecone
 	depends = python-googleapis-common-protos
 	depends = python-tqdm
 	depends = python-pandas
-	source = python-pinecone-6.0.2.tar.gz::https://github.com/pinecone-io/pinecone-python-client/archive/refs/tags/v6.0.2.tar.gz
-	b2sums = 5b164b856182e52f13c7bfa06ccc5d5bc78b0726779e5fee352fd8c938f63060a8bc2c29acee0c8178b83edcf09862e9af95d51e9d5e08e41acef649b96a6f60
+	source = python-pinecone-7.0.0.tar.gz::https://github.com/pinecone-io/pinecone-python-client/archive/refs/tags/v7.0.0.tar.gz
+	b2sums = 34a5ecfdd4f5ad6867f395cd278e9dc06a4dab8c3e5225ddd5b10861b8bbebab98732b0d85d325f4048d4478adcf2b57a560eb178a13e3908a7ac3674d887a34
 
 pkgname = python-pinecone

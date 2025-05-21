@@ -1,0 +1,4 @@
+[python-pinecone]
+source = "git"
+git = "https://github.com/pinecone-io/pinecone-python-client.git"
+prefix = "v"
