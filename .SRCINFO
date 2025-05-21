@@ -1,7 +1,7 @@
 pkgbase = soundfont-gmgsx
-	pkgdesc = A public domain soundfont by Kenneth Rundt which has similar sound as gm.dls
+	pkgdesc = Soundfont by Kenneth Rundt which has similar sound as gm.dls
 	pkgver = 2.9.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.synthfont.com
 	arch = any
 	license = LicenseRef-SynthFont
