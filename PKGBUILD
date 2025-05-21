@@ -1,7 +1,7 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
-pkgver=1.2.12
-_webkitver=c244f567ab804c2558067d00733013c01725d824 #https://github.com/oven-sh/bun/blob/main/cmake/tools/SetupWebKit.cmake#L5
+pkgver=1.2.13
+_webkitver=017930ebf915121f8f593bef61cbbca82d78132d #https://github.com/oven-sh/bun/blob/main/cmake/tools/SetupWebKit.cmake#L5
 pkgrel=1
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a smaller and faster binary depending on your CPU."
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=(
 conflicts=(bun-bin bun-git)
 source=(bun::git+$url.git#tag=bun-v$pkgver
         brotliFlag.patch)
-b2sums=('00f3d87faa6a1f383efa11a70a35b0cf50f586b8a3b742b2b3b5e21ef015ce2990c5176abc5986a62462bc45ed62bdd9c43883a35fe91e39893bcee88efd89ec'
+b2sums=('25a4843c8a4e4811d530dad6bd8785af7226331c3b130fd9d1f5e9901761bf8362d0c52a74c8d0e177a0ddc37694d4f14c75170984f76d46493c605958f2243e'
         'ba86bf7d8ff3c6b0aa1b26a2eaf7d0ca480ff42fde59b75f3290de3f197a07ec8fd926c96287436e29d5dedb9632ffe9e1f8d44ebfa7f9df804874bc889afc2d')
 options=(ccache lto)
 
@@ -37,9 +37,12 @@ prepare() {
   patch -Np1 -i ../brotliFlag.patch
 }
 
+export MOLD_JOBS=1
+
 build() {
   # export PATH="$/usr/lib/llvm18/bin/:$PATH"
   export CMAKE_POLICY_VERSION_MINIMUM=3.30
+
   mkdir -p ./build
 
   build_webkit
@@ -72,9 +75,8 @@ build_webkit(){
 
   export CFLAGS="${DEFAULT_CFLAGS} $CFLAGS $LTO_FLAG "
   export CXXFLAGS="${DEFAULT_CFLAGS} $CXXFLAGS $LTO_FLAG -fno-c++-static-destructors "
-  export LDFLAGS="-fuse-ld=lld $LDFLAGS "
 
-  CC="clang" CXX="clang++" cmake \
+  CMAKE_LINKER_TYPE="mold" CC="clang" CXX="clang++" cmake \
       -S . \
       -B ./WebKitBuild/Release \
       -Wno-dev \
@@ -89,8 +91,9 @@ build_webkit(){
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
       -DALLOW_LINE_AND_COLUMN_NUMBER_IN_BUILTINS=ON \
       -DENABLE_REMOTE_INSPECTOR=ON \
-      -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" \
+      -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=mold" \
       -GNinja
+
             # -DCMAKE_AR="/usr/lib/llvm18/bin/llvm-ar" \
             # -DCMAKE_RANLIB="/usr/lib/llvm18/bin/llvm-ranlib" \
 
