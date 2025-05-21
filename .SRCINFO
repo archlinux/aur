@@ -1,6 +1,6 @@
 pkgbase = kagi-assistant-desktop-git
 	pkgdesc = A desktop application for Kagi Assistant
-	pkgver = 0.1.0.r3.gb0a11a1
+	pkgver = 0.4.7.r27.g7935d76
 	pkgrel = 1
 	url = https://github.com/0xgingi/kagi-assistant-desktop
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = kagi-assistant-desktop-git
 	depends = xdg-utils
 	provides = kagi-assistant-desktop
 	conflicts = kagi-assistant-desktop
+	options = !lto
 	source = git+https://github.com/0xgingi/kagi-assistant-desktop.git
 	sha256sums = SKIP
 

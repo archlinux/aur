@@ -1,7 +1,7 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=kagi-assistant-desktop-git
 _pkgname=kagi-assistant-desktop
-pkgver=0.1.0.r3.gb0a11a1
+pkgver=0.4.7.r27.g7935d76
 pkgrel=1
 pkgdesc="A desktop application for Kagi Assistant"
 arch=('x86_64')
@@ -13,10 +13,12 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+${url}.git")
 sha256sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  local version=$(grep -m1 'version = ' src-tauri/Cargo.toml | cut -d '"' -f2)
+  printf "%s.r%s.g%s" "$version" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
