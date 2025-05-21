@@ -5,7 +5,7 @@ _channel=stable
 _rel=1
 #pkgver=${_pkgver}.${_channel}${_rel}  # beta
 pkgver=${_pkgver}.${_channel}  # stable
-pkgrel=4
+pkgrel=5
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
@@ -31,8 +31,7 @@ source_aarch64=(
 #  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_arm64.deb"{,.asc}  # beta
   "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_arm64.deb"{,.asc}  # stable
   )
-sha256sums=('a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4'
-            'a7b99f7acbb7f99c6ab8ecf5bb674310294c29a561d9bd7c531508841942cab3')
+sha256sums=('a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
 sha256sums_x86_64=('a632639dbd343c8f496ca82dcf4f1ea80a045f50779e935a6f6fa3f566ba3dea'
                    'SKIP')
 sha256sums_aarch64=('f02c949f6c943ea7b074bde910de8b3a15f2d6e2d8e29d68dcea36fd1e49294e'
