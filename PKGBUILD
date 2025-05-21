@@ -14,20 +14,19 @@ source=($pkgname::git+https://github.com/nba-emu/NanoBoyAdvance.git#tag=v${pkgve
 sha256sums=('c220a0229d8f9a77c6bf959037c13138336f20234505e41562c4fec6342e0c28')
 
 
-prepare() {
-	cd "$pkgname"
-	cmake -B build \
-        -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DUSE_QT6='ON' \
-        -Wno-dev
-}
-
 build() {
-	cd "$pkgname"
-	cmake --build build
+  local cmake_options=(
+    -B build
+    -S $pkgname
+    -W no-dev
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D USE_QT6='ON'
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-	cd "$pkgname"
-	install -Dm755 build/bin/qt/NanoBoyAdvance "${pkgdir}/usr/bin/nba"
+  install -Dm755 build/bin/qt/NanoBoyAdvance "${pkgdir}/usr/bin/nba"
 }
