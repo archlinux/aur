@@ -1,6 +1,6 @@
 # Maintainer: Raffaele Mancuso <raffaelemancuso532 at gmail dot com>
 pkgname=pdf4qt-git
-pkgver=1.5.0.0.r6.g5375155
+pkgver=1.5.1.0.r7.gb87493f
 pkgrel=1
 pkgdesc="Open source PDF editor"
 arch=('x86_64')
@@ -25,6 +25,7 @@ makedepends=('git'
   'cmake'
   'qt6-declarative'
   'qt6-multimedia'
+  'qt6-tools'
 )
 optdepends=(
   'flite: Text-To-Speech using flite synthesizer',
