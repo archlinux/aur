@@ -2,13 +2,13 @@
 
 pkgbase=at32-work-bench-bin
 pkgname=at32-work-bench
-pkgver=1.1.08
-pkgrel=4
+pkgver=1.1.09
+pkgrel=1
 # epoch=1
 pkgdesc="AT32 MCU 图形化配置软件，生成初始化 C 代码(目前仅支持 AT32F421 系列)"
 arch=('x86_64')
 url="https://www.arterytek.com/cn/support/index.jsp?index=5"
-license=('LicenseRef-Commercial')
+license=('LicenseRef-scancode-commercial-license')
 provides=(${pkgname})
 conflicts=()
 replaces=()
@@ -35,7 +35,7 @@ options=('!strip' '!debug' '!lto')
 install=
 _pkg_file_name=AT32_Work_Bench_Linux-${arch}_V${pkgver}
 source=("${_pkg_file_name}.zip::https://www.arterytek.com/download/TOOL/${_pkg_file_name}.zip")
-sha256sums=('b2c470fee82de342e611d60f0dae432cbacd264dec8ba5844ab4087609e9b9e6')
+sha256sums=('601defba87167428046c194007c5b61915d4686132d61eea45dd70018e615ccd')
 noextract=()
 
 package() {
