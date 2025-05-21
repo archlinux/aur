@@ -1,6 +1,6 @@
 # Maintainer: Suprit S Jahagirdar <supritsj05@gmail.com>
 pkgname=fortitude-bin
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="A Blazingly Fast Fortran linter, inspired by (and built upon) Ruff."
 arch=('x86_64' 'aarch64' 'i686')
@@ -17,9 +17,9 @@ source_aarch64=("https://github.com/PlasmaFAIR/fortitude/releases/download/v$pkg
 source_i686=("https://github.com/PlasmaFAIR/fortitude/releases/download/v$pkgver/fortitude-i686-unknown-linux-gnu.tar.gz")
 
 sha256sums=('SKIP')
-sha256sums_x86_64=('a542c0184669946f2dc117477c6074b4db2da48d2f2b5861c89ccfc6db3f6fca')
-sha256sums_aarch64=('9af7ef68878cd9e861df0deaf65e563f7ec5930f80eac80adfb7038f2bdbe380')
-sha256sums_i686=('578e369adc24a8c6e8b9d391ba55a5e5bb0818107cb46cd11d58e7a86b840361')
+sha256sums_x86_64=('2ff47cfc0dfb35ec5fff56d79a48dd946fbb9cb60dbf8ffcd2cb9221271799e1')
+sha256sums_aarch64=('7ca0b0998aaa3f494495ce18dd9e0d66aa0cc30cdf5fdb0983f6dcd51cbd53dc')
+sha256sums_i686=('5572e7f34379fae41535e728534d294c80820a37e2c9dc4f368d95f0c5f6edc8')
 
 package(){
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
