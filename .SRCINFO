@@ -12,7 +12,7 @@ pkgbase = joplin
 	makedepends = python-setuptools
 	makedepends = libxcrypt-compat
 	depends = electron36
-	depends = nodejs<=23
+	depends = nodejs<23
 	depends = nodejs>20
 	depends = libvips
 	optdepends = libappindicator-gtk3: for tray icon
