@@ -1,13 +1,13 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=sonyheadphonesclient-bluetooth-bin
 pkgver=1.3.16
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A fork of Plutoberth's SonyHeadphonesClient by mos9527, now updated with support for Sony's newer Bluetooth/TWS devices"
 arch=("x86_64")
 url="https://github.com/mos9527/SonyHeadphonesClient"
 license=('MIT')
-depends=("glfw" "unzip" "gcc-libs" "libglvnd" "glibc" "dbus" "bluez-libs" "glew" "glew-2.1" "dbus")
+depends=("glfw" "unzip" "gcc-libs" "libglvnd" "glibc" "dbus" "bluez-libs" "glew-2.1" "dbus")
 makedepends=()
 checkdepends=()
 optdepends=()
