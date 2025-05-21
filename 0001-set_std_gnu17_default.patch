@@ -1,0 +1,25 @@
+From 67639fd226dae7335dd386a1246997d5229a9189 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torleif=20Sk=C3=A5r?= <torleif.skaar AT gmail DOT com>
+Date: Wed, 21 May 2025 02:33:37 +0200
+Subject: [PATCH] configure: Set '-std=gnu17' as default due to issues with
+ default C23
+
+For more explanation, see:
+https://github.com/RTimothyEdwards/magic/issues/401
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index ae0a0fc1..0f758e5e 100755
+--- a/configure
++++ b/configure
+@@ -9,4 +9,4 @@
+ # script itself.  It also sets up CFLAGS without the default optimizer
+ # flag (-O2).
+ 
+-( CFLAGS="-g"; export CFLAGS; cd scripts ; ./configure "$@" )
++( CFLAGS="-g -std=gnu17"; export CFLAGS; cd scripts ; ./configure "$@" )
+-- 
+2.49.0
+

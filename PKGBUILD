@@ -2,8 +2,8 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.3.526
-pkgrel=2
+pkgver=8.3.527
+pkgrel=1
 pkgdesc="A VLSI layout system"
 _git_url="https://github.com/RTimothyEdwards/magic"
 url="http://opencircuitdesign.com/magic/"
@@ -33,11 +33,24 @@ optdepends=(
 )
 
 _archive="${pkgname}-${pkgver}"
-source=("${_archive}::git+${_git_url}#tag=${pkgver}")
-b2sums=('9afeea5369e29d18facbf464e23ec31bfef8f85798e02fe20f7dc852e028cc21ca2e7ce71eb3bfeaf04ba1445ef4b8b8f34fcd8d004c4919619f73a5b74d2c6f')
+source=(
+   "${_archive}::git+${_git_url}#tag=${pkgver}"
+   "0001-set_std_gnu17_default.patch"
+)
+
+b2sums=('4c21ad8428f05e8d66f4d03d8abe4c059e31a00f72807fe95fcc4b361ee237193b499d5fa4dc41d5991bb6d27b8818e2e71b9ab2a774d17fb47eb21a0564c6ed'
+        '37eaa5bbaab691216ffc06485e6d5d934c74f63e74a876da5bedb0f9fd98f404abfbaa902b9fa979e276e38ba660b4049fbe3d6ff43b591e1d1d3fb2d128eb51')
+
 
 options=(!ccache)
 
+prepare() {
+   cd "${_archive}"
+
+   # See upstream issue: https://github.com/RTimothyEdwards/magic/issues/401
+   # for more details about why we need to use C17 + GNU extensions
+   patch -Np1 < "../0001-set_std_gnu17_default.patch"
+}
 
 build() {
    cd "${_archive}"

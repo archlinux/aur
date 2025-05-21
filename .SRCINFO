@@ -1,7 +1,7 @@
 pkgbase = magic
 	pkgdesc = A VLSI layout system
-	pkgver = 8.3.526
-	pkgrel = 2
+	pkgver = 8.3.527
+	pkgrel = 1
 	url = http://opencircuitdesign.com/magic/
 	arch = i686
 	arch = x86_64
@@ -22,7 +22,9 @@ pkgbase = magic
 	optdepends = cairo: 2D accelerated graphics, alternative to OGL
 	optdepends = blt: to create a tree diagram of the cell hierarchy in a design
 	options = !ccache
-	source = magic-8.3.526::git+https://github.com/RTimothyEdwards/magic#tag=8.3.526
-	b2sums = 9afeea5369e29d18facbf464e23ec31bfef8f85798e02fe20f7dc852e028cc21ca2e7ce71eb3bfeaf04ba1445ef4b8b8f34fcd8d004c4919619f73a5b74d2c6f
+	source = magic-8.3.527::git+https://github.com/RTimothyEdwards/magic#tag=8.3.527
+	source = 0001-set_std_gnu17_default.patch
+	b2sums = 4c21ad8428f05e8d66f4d03d8abe4c059e31a00f72807fe95fcc4b361ee237193b499d5fa4dc41d5991bb6d27b8818e2e71b9ab2a774d17fb47eb21a0564c6ed
+	b2sums = 37eaa5bbaab691216ffc06485e6d5d934c74f63e74a876da5bedb0f9fd98f404abfbaa902b9fa979e276e38ba660b4049fbe3d6ff43b591e1d1d3fb2d128eb51
 
 pkgname = magic
