@@ -1,0 +1,21 @@
+pkgbase = oba-live-tool-git
+	pkgdesc = Live delivery tool,support Douyin,Buyin,Douyin group buying,Xiaohongshu Qianfan,WeChat Channels platform,can automatically pop up windows,automatically speak,AI help reply(Use system-wide electron)
+	pkgver = 1.5.3.r5.g1e2d52b
+	pkgrel = 1
+	url = https://github.com/qiutongxue/oba-live-tool
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = pnpm
+	depends = electron35
+	provides = oba-live-tool=1.5.3
+	conflicts = oba-live-tool
+	source = oba-live-tool.git::git+https://github.com/qiutongxue/oba-live-tool
+	source = oba-live-tool.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = oba-live-tool-git
