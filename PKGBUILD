@@ -1,6 +1,6 @@
 # Maintainer: Maiko Tan <maiko.tan.coding@gmail.com>
 pkgname=bytelizer-git
-pkgver=r20.23779b0
+pkgver=r25.b092f21
 pkgrel=1
 pkgdesc="Bytelizer is a binary packaging/unpack library written in modern c, focusing on performance and lightweight."
 arch=(any)

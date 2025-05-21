@@ -1,6 +1,6 @@
 pkgbase = bytelizer-git
 	pkgdesc = Bytelizer is a binary packaging/unpack library written in modern c, focusing on performance and lightweight.
-	pkgver = r20.23779b0
+	pkgver = r25.b092f21
 	pkgrel = 1
 	url = https://github.com/TheSnowfield/bytelizer
 	arch = any
