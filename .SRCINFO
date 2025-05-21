@@ -1,0 +1,20 @@
+pkgbase = warewoolf-bin
+	pkgdesc = A novel-writing system/rich text editor designed to be usable without a mouse.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/brsloan/warewoolf
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libdrm
+	depends = libxcb
+	depends = trash-cli
+	source = https://github.com/brsloan/warewoolf/releases/download/v2.0.0/warewoolf_2.0.0_amd64.deb
+	sha256sums = b44b86e0881cb4d32a103e925baaece4abd455d07e3d1e21b79bcbda0e80c16c
+
+pkgname = warewoolf-bin
