@@ -10,9 +10,9 @@ _desc="AI Code Editor "
 arch=('aarch64' 'x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor')
+_electron=electron34 # for --printsrcinfo. strict deps is added at package()
 depends=('ripgrep' 'xdg-utils' # system-wide runtimes
 		'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
-# electron* deps is saved at electron-store.txt, updpkgsums is needed
 makedepends=('desktop-file-utils')
 provides=("${_name}"{,-bin})
 conflicts=("${_name}"{,-bin})
@@ -45,8 +45,8 @@ prepare() { # Create cp -r friendly layout with FHS
 package_cursor-electron(){
 	_electron=electron$(rg --no-messages -N -o -r '$1' '"electron": *"[^\d]*(\d+)' squashfs-root/usr/lib/cursor/package.json)
 	echo Using $_electron
-	depends+=($_electron) # breaks --printsrcinfo
-	pkgdesc="${_desc} (system-wide electron)"
+	depends+=($_electron)
+	pkgdesc="${_desc} on system-wide electron)"
 	cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
 	sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
 	install -Dm755 run-safe.sh "${pkgdir}/usr/bin/cursor"
@@ -54,7 +54,7 @@ package_cursor-electron(){
 
 package_cursor-electron-latest(){
 	depends+=(electron)
-	pkgdesc="${_desc} (latest stable electron)"
+	pkgdesc="${_desc} on latest stable electron)"
 	mv squashfs-root/usr "${pkgdir}/usr" # breaks --repackage
 	install -Dm755 run.sh "${pkgdir}/usr/bin/cursor"
 }
