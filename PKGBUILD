@@ -1,7 +1,7 @@
 # Maintainer: Richard Hillmann <richie at project0 dot de>
 pkgname=awsvpnclient
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AWS VPN Client"
 arch=('x86_64')
 license=('custom')
@@ -11,7 +11,7 @@ source=(
   'awsvpnclient.desktop.patch'
 )
 sha512sums=('b6b78ff2298e752669c504c994b81e2b63077db08a5ba97841b4cd8c9141b5590102f3eefe0d7d5cc3fb2d7902a86447e0b5c69df8a943d78ea1f5cc968c6867'
-            'fad396768a5e2068920aa37c8783243124222c8159284d6756187b5963aa8d57366d4609f9f3107973af7000d4db3d35037eeef987bbbdf589b636d45164ee74')
+            'a9c46dbaf6588f0de9f3687e07bb30f6a0671c43673c86123e43192e7fc2279ca53c61e473ca22014a712980b9110d1ba19bf2d7ded8b20d74bdd5d70f118434')
 depends=('xdg-utils' 'lsof')
 makedepends=('zstd')
 options=('!strip' 'staticlibs')
