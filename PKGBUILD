@@ -1,7 +1,7 @@
 # Contributor: Daniele Basso <d dot bass05 at proton dot me>
 
 pkgname=code-electron-latest
-pkgdesc='Code - OSS (latest stable electron)'
+pkgdesc='Code - OSS on latest stable electron'
 pkgver=1.100.2
 pkgrel=2
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=( ripgrep xdg-utils # electron* is added at build process
 libsecret libxkbfile )
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=( nodejs-electron
+makedepends=( libarchive electron nodejs-electron
 git npm pnpm python desktop-file-utils)
 conflicts=(code vscode)
 provides=(code vscode)
@@ -32,15 +32,12 @@ prepare() {
   pnpm add @vscode/vsce-sign @vscode/vsce-sign-linux-$_vscode_arch
 
   # electron version
-  _electronverorig=$(npm pkg get devDependencies.electron|sed 's/"//g')
   _electronver=$(cat /usr/lib/electron/version)
   npm pkg set devDependencies.electron=${_electronver}
+  sed -i "s/^target=.*/target=\"${_electronver/}\"/" .npmrc   # native modules
+  echo Replaced version of electron with $(rg -N 'target' .npmrc)
 
-  # Native modules
-  sed -i "s/^target=.*/target=\"${_electronver/}\"/" .npmrc 
-  echo Replacing ${_electronverorig} with $(rg -N 'target' .npmrc)
-
-  # for electron36+. app.dock is only for macOS
+  # Drop this at next release. app.dock is only for macOS
   sed -i '/app\.dock\.setMenu/i\// @ts-ignore' src/vs/platform/menubar/electron-main/menubar.ts
 
   # Launcher
@@ -81,10 +78,9 @@ prepare() {
   _hash=$(echo -n "https://github.com/electron/electron/releases/download/v${_electronver}" | sha256sum | cut -d ' ' -f 1)
   export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home # Don't taint user dir
   local _cache_dir="$XDG_CACHE_HOME/electron/$_hash"
-  #mkdir -p "$_cache_dir"
+  mkdir -p "$_cache_dir"
   local _zip="electron-v${_electronver}-linux-${_electron_arch}.zip"
-  install -Dvm644 src/vs/base/test/node/zip/fixtures/extract.zip "${_cache_dir}/${_zip}"
-  #bsdtar --format zip -cf "${_cache_dir}/${_zip}" /dev/null 2> /dev/null
+  bsdtar --format zip -cf "${_cache_dir}/${_zip}" /dev/null 2> /dev/null
   echo "$(sha256sum "$_cache_dir/$_zip" | cut -d " " -f 1) *$_zip" > build/checksums/electron.txt
 }
 
@@ -92,14 +88,14 @@ build() {
   cd vscode
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
   export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home
-  npm install --cpu=$_vscode_arch
+  npm install
   # Remove -min if minify cause OOM
   npm run gulp --openssl-legacy-provider vscode-linux-${_vscode_arch} #-min
 }
 
 package() {
-  _electronver=$(cat /usr/lib/electron/version) # redef for makepkg --repackage
-  depends+=(electron${_electronver%%.*}) # breaks --printsrcinfo, but not serious for the case
+  _elnum=$(cut -d. -f1 /usr/lib/electron/version) # hide ver from --printsrcinfo
+  depends+=(electron${_elnum}) # replace electron dependency
   # Resource files
   install -dm755 "$pkgdir"/usr/lib/code # compat with hook pkgs
   cp -r --reflink=auto --no-preserve=ownership --preserve=mode VSCode-linux-${_vscode_arch}/resources/app/* "$pkgdir"/usr/lib/code/
