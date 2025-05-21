@@ -1,6 +1,6 @@
 pkgbase = restmate-bin
 	pkgdesc = Restmate is a modern lightweight cross-platform Rest API Client, designed to simplify and expedite the testing process for developers.
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/aunjaffery/restmate
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = restmate-bin
 	depends = glibc
 	depends = webkit2gtk-4.1
 	options = !emptydirs
-	source = https://github.com/aunjaffery/restmate/releases/download/v0.1.11/restmate-v0.1.11.linux-amd64.deb
+	source = https://github.com/aunjaffery/restmate/releases/download/v0.1.12/restmate-v0.1.12.linux-amd64.deb
 	source = https://raw.githubusercontent.com/aunjaffery/restmate/refs/heads/master/LICENSE
-	sha512sums = dc1b7cb1fd267bebf0b2054c54455af6bc9dccbdddc69891fc5ca472d04175d6ec228022563a54b4f66330034edaab38f590898408ecfe1e849f78cc9bc5d0a5
+	sha512sums = f9219060245391a8b3e2f62e88b8e5a40962cc176b1753456c0f0262348d747808ce3ba50788d9c29f6e61a08260923fbadbab588f0de0aa11110da3531b03c9
 	sha512sums = c8cd98cc277737d353888d62a3e5979227d4b6e7fc6b24bb6e14126ee6b86112278bbf7cb62abb823d22cf3d793d3acbd0ae006aa4c2196738d1000d00ffd69f
 
 pkgname = restmate-bin
