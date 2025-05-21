@@ -1,0 +1,14 @@
+pkgbase = hydra-js
+	pkgdesc = "Modding framework for compiled / obfuscated JavasScript
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/LilBroCodes/hydra
+	arch = x86_64
+	license = custom:CC-BY-NC-SA
+	makedepends = npm
+	depends = nodejs
+	options = !strip
+	source = https://github.com/LilBroCodes/hydra/archive/refs/tags/1.2.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = hydra-js
