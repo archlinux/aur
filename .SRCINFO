@@ -1,6 +1,6 @@
 pkgbase = grapheneos-devel
 	pkgdesc = metapackage of all the dependencies for building GrapheneOS
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://grapheneos.org/Build
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = grapheneos-devel
 	depends = fontconfig
 	depends = ttf-dejavu
 	depends = openssl
-	depends = nodejs-lts-iron
+	depends = nodejs-lts-jod
 	depends = e2fsprogs
 	depends = yarn
 	depends = gperf
