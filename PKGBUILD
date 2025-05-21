@@ -7,7 +7,7 @@ pkgname=("${pkgbase}"
          "obs-plugin-${pkgbase}")
 epoch=2
 pkgver=B7
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
 arch=('x86_64')
@@ -39,9 +39,9 @@ build() {
 
 package_looking-glass() {
 	pkgdesc="A client application for accessing the LookingGlass IVSHMEM device of a VM"
-	depends=('binutils' 'fontconfig' 'gcc-libs' 'glibc' 'gmp' 'libegl' 'libgl'
-	         'libpipewire' 'libpulse' 'libsamplerate' 'libx11' 'libxcursor'
-	         'libxfixes' 'libxi' 'libxinerama' 'libxkbcommon' 'libxpresent'
+	depends=('binutils' 'fontconfig' 'gcc-libs' 'glibc' 'gmp' 'hicolor-icon-theme'
+	         'libegl' 'libgl' 'libpipewire' 'libpulse' 'libsamplerate' 'libx11'
+	         'libxcursor' 'libxfixes' 'libxi' 'libxinerama' 'libxkbcommon' 'libxpresent'
 	         'libxss' 'nettle' 'wayland' 'zlib' 'zstd')
 
 	cd "${srcdir}/${_lgdir}/client/build"
