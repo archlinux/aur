@@ -1,6 +1,6 @@
 pkgbase = pdf4qt-git
 	pkgdesc = Open source PDF editor
-	pkgver = 1.5.0.0.r6.g5375155
+	pkgver = 1.5.1.0.r7.gb87493f
 	pkgrel = 1
 	url = https://jakubmelka.github.io/
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = pdf4qt-git
 	makedepends = cmake
 	makedepends = qt6-declarative
 	makedepends = qt6-multimedia
+	makedepends = qt6-tools
 	depends = openssl
 	depends = libjpeg-turbo
 	depends = qt6-speech
