@@ -1,7 +1,7 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgbase=gcc-snapshot
-pkgname=({gcc,gcc-libs,gcc-gcobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,lto-dump,libgccjit}-snapshot)
+pkgname=({gcc,gcc-libs,gcc-gcobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
 pkgver=16.0.0.snapshot20250518
 _pkgver=16-20250518
 _majorver=${_pkgver//-*}
@@ -33,7 +33,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('fc39b4d54bc441bfa82da31e65e370c5f9c0dc45f4f1e2d3455a9dcfcb457319'
+sha256sums=('2e50491fa1bd3543c2c02a57eba0296fadc00063622ea94e7c8383edf7420b0f'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
@@ -58,6 +58,7 @@ prepare() {
 
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
   sed -i '/lp64=/s/lib64/lib/' gcc/config/aarch64/t-aarch64-linux
+
   patch -Np1 -i ${srcdir}/0002-libgccjit-Remove-obsolete-texinfo-statements.patch
 
   mkdir -p ${srcdir}/gcc-build ${srcdir}/libgccjit-build
@@ -65,9 +66,6 @@ prepare() {
 
 build() {
   local _confflags=(
-    --host=${CHOST}
-    --build=${CHOST}
-    --with-arch=native
     --prefix=/usr
     --libdir=/usr/lib
     --libexecdir=/usr/lib
@@ -105,7 +103,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   ${srcdir}/gcc/configure \
-    --enable-languages=c,c++,cobol,d,fortran,go,lto,m2,objc,obj-c++ \
+    --enable-languages=c,c++,cobol,d,fortran,go,lto,m2,rust,objc,obj-c++ \
     --enable-offload-targets=amdgcn-amdhsa,nvptx-none \
     --enable-bootstrap \
     "${_confflags[@]:?_confflags unset}"
@@ -226,9 +224,9 @@ package_gcc-snapshot() {
   make -C ${CHOST}/libsanitizer/lsan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
   make -C gcc DESTDIR=${pkgdir} install-man install-info
 
-  rm ${pkgdir}/usr/share/man/man1/{gcobol,gccgo,gfortran,lto-dump,gdc,gm2}*
-  rm ${pkgdir}/usr/share/man/man3/gcobol*
-  rm ${pkgdir}/usr/share/info/{gccgo,gfortran,gdc,m2}*
+  rm -f ${pkgdir}/usr/share/man/man1/{gcobol,gccgo,gfortran,lto-dump,gdc,gm2}*
+  rm -f ${pkgdir}/usr/share/man/man3/gcobol*
+  rm -f ${pkgdir}/usr/share/info/{gccgo,gfortran,gdc,m2}*
 
   make -C libcpp DESTDIR=${pkgdir} install
   make -C gcc DESTDIR=${pkgdir} install-po
@@ -237,7 +235,9 @@ package_gcc-snapshot() {
 
   for binary in {c++,g++,gcc,gcc-ar,gcc-nm,gcc-ranlib}
   do
-    ln -s /usr/bin/${binary} ${pkgdir}/usr/bin/aarch64-unknown-linux-gnu-${binary}
+    if [ ! -f ${pkgdir}/usr/bin/${CHOST}-${binary} ]; then
+      ln -s /usr/bin/${binary} ${pkgdir}/usr/bin/${CHOST}-${binary}
+    fi
   done
 
   install -Dm755 ${srcdir}/c89 ${pkgdir}/usr/bin/c89
@@ -294,12 +294,12 @@ package_gcc-objc-snapshot() {
     ${pkgdir}/usr/share/licenses/${pkgname}/
 }
 
-package_gcc-cobol-snapshot() {
+package_gcc-gcobol-snapshot() {
   pkgdesc='Cobol front-end for GCC (snapshot)'
   depends=("gcc-snapshot=${pkgver}-${pkgrel}")
-  provides=(${pkgname}-multilib gcc-gcobol-multilib gcc-cobol)
-  replaces=(${pkgname}-multilab gcc-gcobol-multilib gcc-cobol)
-  conflicts=(gcc-cobol-multilib gcc-gcobol)
+  provides=(${pkgname}-multilib gcc-gcobol-multilib gcc-gcobol)
+  replaces=(${pkgname}-multilab gcc-gcobol-multilib gcc-gcobol)
+  conflicts=(gcc-gcobol-multilib gcc-gcobol)
   options=(!emptydirs lto strip staticlibs)
 
   cd gcc-build
