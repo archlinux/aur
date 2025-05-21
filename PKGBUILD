@@ -12,10 +12,10 @@ _vscode_arch=x64 # https://gitlab.archlinux.org/archlinux/packaging/packages/cod
 _electron_arch=x64
 url='https://github.com/microsoft/vscode'
 license=('MIT')
-depends=( ripgrep xdg-utils # system runtimes
+depends=( ripgrep xdg-utils # electron* is added at build process
 libsecret libxkbfile )
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=( electron nodejs-lts-jod
+makedepends=( nodejs-lts-jod
 git npm pnpm python desktop-file-utils libarchive)
 conflicts=(code vscode)
 provides=(code vscode)
@@ -40,13 +40,10 @@ prepare() {
   pnpm add @vscode/vsce-sign @vscode/vsce-sign-linux-$_vscode_arch
   
   # electron version
-  _electronverorig=$(npm pkg get devDependencies.electron|sed 's/"//g')
   _electronver=$(cat /usr/lib/electron/version)
-  npm pkg set devDependencies.electron=${_electronver}
-
-  # Native modules
-  sed -i "s/^target=.*/target=\"${_electronver/}\"/" .npmrc 
-  echo Replacing ${_electronverorig} with $(rg -N 'target' .npmrc)
+  npm pkg set devDependencies.electron=${_electronver} # needed ?
+  sed -i "s/^target=.*/target=\"${_electronver/}\"/" .npmrc # native modules
+  echo Replaced version of electron with $(rg -N 'target' .npmrc)
 
   # Launcher
   _electron=electron${_electronver%%.*}
@@ -85,7 +82,7 @@ prepare() {
 
   # Put a zip to skip downloading electron.
   _hash=$(echo -n "https://github.com/electron/electron/releases/download/v${_electronver}" | sha256sum | cut -d ' ' -f 1)
-  export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home # Don't tain user dir
+  export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home # Don't taint user dir
   local _cache_dir="$XDG_CACHE_HOME/electron/$_hash"
   mkdir -p "$_cache_dir"
   local _zip="electron-v${_electronver}-linux-${_electron_arch}.zip"
@@ -97,14 +94,14 @@ build() {
   cd vscode
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
   export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home
-  npm install --cpu=$_vscode_arch
+  npm install
   # remove -min if minify cause OOM
   npm run gulp --openssl-legacy-provider vscode-linux-${_vscode_arch} #-min
 }
 
 package() {
-  _electronver=$(cat /usr/lib/electron/version) # redef for makepkg --repackage
-  depends+=(electron${_electronver%%.*})
+  _elnum=$(cut -d. -f1 /usr/lib/electron/version) # hide version from --printsrcinfo
+  depends+=(electron${_elnum})
   # Resource files
   install -dm755 "$pkgdir"/usr/lib/code # compabinity for pacman hooks
   cp -r --reflink=auto --no-preserve=ownership --preserve=mode VSCode-linux-${_vscode_arch}/resources/app/* "$pkgdir"/usr/lib/code/
