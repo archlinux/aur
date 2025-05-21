@@ -1,0 +1,5 @@
+[nodtool-bin]
+source = "github"
+github = "encounter/nod"
+use_latest_release = true
+prefix = "v"

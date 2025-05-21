@@ -1,0 +1,22 @@
+pkgbase = gotz-bin
+	pkgdesc = A simple CLI timezone info tool
+	pkgver = 0.1.15
+	pkgrel = 1
+	url = https://github.com/merschformann/gotz
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = gotz
+	conflicts = gotz
+	source_aarch64 = gotz-0.1.15-aarch64.tar.gz::https://github.com/merschformann/gotz/releases/download/v0.1.15/gotz_0.1.15_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8cd548bb713ea926f710945aad2953ed4ce41965bbd4da4237cefd2f2152f3cb
+	source_armv7h = gotz-0.1.15-armv6h.tar.gz::https://github.com/merschformann/gotz/releases/download/v0.1.15/gotz_0.1.15_linux_armv6.tar.gz
+	sha256sums_armv7h = 314ac595f0b2042add0540cb1a2d0058cd9f1d252c8b351b2f8a726007f9d092
+	source_i686 = gotz-0.1.15-i686.tar.gz::https://github.com/merschformann/gotz/releases/download/v0.1.15/gotz_0.1.15_linux_386.tar.gz
+	sha256sums_i686 = bcb2bbbbd0df13102f791e19f3318c1a0e50963299b86190d751b11b31e99f2a
+	source_x86_64 = gotz-0.1.15-x86_64.tar.gz::https://github.com/merschformann/gotz/releases/download/v0.1.15/gotz_0.1.15_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2a2766c2e96407ddd2be8bc1e6da5d234251b80c2df77b034d58d1862996372f
+
+pkgname = gotz-bin
