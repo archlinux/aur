@@ -12,7 +12,7 @@ pkgver=3.3.12
 groups=('joplin')
 pkgrel=1
 _electronVersion=36
-depends=("electron${_electronVersion}" "nodejs<=23" "nodejs>20" "libvips")
+depends=("electron${_electronVersion}" "nodejs>20" "libvips")
 optdepends=('libappindicator-gtk3: for tray icon')
 arch=('x86_64')
 makedepends=('npm' 'git' 'rsync' 'python-setuptools' 'libxcrypt-compat')
