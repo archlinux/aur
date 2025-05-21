@@ -1,7 +1,6 @@
 pkgname=hamster-time-tracker
 
 post_install() {
-  echo errorororororo 1>&2
   xdg-icon-resource forceupdate
 }
 

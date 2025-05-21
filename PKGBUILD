@@ -5,7 +5,6 @@ pkgdesc="Time tracking application that helps you to keep track on how much time
 arch=('any')
 url="https://github.com/projecthamster/hamster"
 license=('GPL')
-#depends=('python2-dbus' 'python2-gconf' 'python2-notify' 'python2-wnck' 'python2-xdg' 'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
 depends=('gtk3' 'python-dbus' 'python-cairo' 'python-gobject' 'python-pyxdg')
 makedepends=('intltool' 'itstool')
 provides=('hamster-time-tracker')
