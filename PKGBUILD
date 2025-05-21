@@ -10,7 +10,7 @@
 
 pkgname=pcl
 pkgver=1.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=('x86_64')
 url='https://www.pointclouds.org'
@@ -36,10 +36,11 @@ build() {
         -DBUILD_apps_in_hand_scanner=ON \
         -DBUILD_apps_modeler=ON \
         -DBUILD_apps_point_cloud_editor=ON \
+        -DBUILD_global_tests=ON \
         -DBUILD_outofcore=OFF \
         -DBUILD_simulation=ON \
         -DBUILD_surface_on_nurbs=ON -DUSE_UMFPACK=ON \
-        -DBUILD_global_tests=ON \
+        -DBoost_USE_DEBUG_RUNTIME=OFF \
         -DWITH_QT='QT5' \
         -Wno-dev
   cmake --build build
