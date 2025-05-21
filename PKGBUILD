@@ -1,8 +1,8 @@
 # Maintainer: LilBroCodes <lilbrocodes@gmail.com>
 pkgname=hydra-js
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
-pkgdesc='"Modding framework for compiled / obfuscated JavasScript'
+pkgdesc='"Modding" framework for compiled / obfuscated JavasScript'
 arch=('x86_64')
 url="https://github.com/LilBroCodes/hydra"
 license=('custom:CC-BY-NC-SA')
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 options=(!strip)
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/hydra-$pkgver"
 
   npm install
   npm run bundle:linux
