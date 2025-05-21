@@ -5,6 +5,7 @@
 # Contributor: someone5678 <someone5678 dot dev at google dot com>
 
 pkgname=libfprint-cs9711-git
+_pkgname=libfprint
 pkgver=1.94.9+19.r1830.20230914.936dbc1
 pkgrel=1
 pkgdesc="libfprint with proprietary FPC match on host device CS9711Fingprint driver"
@@ -17,7 +18,7 @@ depends=(
   glibc
   libgudev
   libgusb
-  nss
+  openssl
   pixman
 )
 makedepends=(
@@ -58,7 +59,7 @@ b2sums=('SKIP'
 )
 
 pkgver() {
-  cd "libfprint"
+  cd "${_pkgname}"
 
   _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
@@ -74,7 +75,7 @@ pkgver() {
 }
 
 prepare() {
-  cd libfprint
+  cd "${_pkgname}"
   git reset --hard && git clean -fdd
   sed -i 's|import shutil|import shutil\n    import traceback|g' tests/virtual-image.py
   for patch in $srcdir/*.patch; do
@@ -84,10 +85,13 @@ prepare() {
 
 build() {
   local meson_options=(
+    # Add virtual drivers for integration tests (e.g. in fprintd)
+    # -D drivers=all
+
     -D installed-tests=false
   )
 
-  arch-meson libfprint build "${meson_options[@]}"
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
   meson compile -C build
 }
 
