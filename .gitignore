@@ -1,5 +1,8 @@
 pkg/
 src/
+*.md
+LICENSE*
 *.tar.gz
 *.zip
 *.tar
+*.zst
