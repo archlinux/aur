@@ -1,0 +1,26 @@
+pkgbase = serial-monitor-rust
+	pkgdesc = Serial Monitor and Plotter written in Rust
+	pkgver = 0.3.5.1
+	pkgrel = 1
+	url = https://github.com/hacknus/serial-monitor-rust
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = openssl
+	makedepends = clang
+	makedepends = pkg-config
+	makedepends = udev
+	makedepends = git
+	depends = gtk3
+	depends = libxcb
+	depends = openssl
+	depends = gcc-libs
+	depends = udev
+	depends = libusb
+	source = serial-monitor-rust-0.3.5.1.tar.gz::https://github.com/hacknus/serial-monitor-rust/archive/v0.3.5.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = serial-monitor-rust
