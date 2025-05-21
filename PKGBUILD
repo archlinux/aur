@@ -11,7 +11,7 @@ pkgver=12.20250206
 _pkgver="${pkgver%.*}"
 _subver="${pkgver#*.}"
 [[ "$pkgver" = "$_subver" ]] && _subver="version-$pkgver"
-pkgrel=4
+pkgrel=5
 pkgdesc="The open source CFD toolbox (www.openfoam.org)"
 _distpkgbase=OpenFOAM
 _gitname=$_distpkgbase-$_pkgver
@@ -30,15 +30,16 @@ depends=(
 )
 makedepends=('bash')
 provides=('openfoam')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OpenFOAM/$_gitname/archive/refs/tags/$_subver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OpenFOAM/$_gitname/archive/refs/tags/$_subver.tar.gz"
+  paraview.arch)
 install="${pkgbase}.install"
-md5sums=('3907dd4f5e2c5cb793ecf5666f89b917')
+md5sums=('3907dd4f5e2c5cb793ecf5666f89b917'
+         'e93ff7ff9b92b01216c41164c09caa48')
 
 prepare() {
   if [ ! -d $srcdir/$_distpkgbase-$_pkgver ]; then
     mv $srcdir/$_gitname-$_subver $srcdir/$_distpkgbase-$_pkgver
     # Extract the current version and major of paraview and of scotch for use in the system preferences
-    #_pversion=`pacman -Q paraview | sed -e 's/.* //; s/-.*//g'`
     _pversion=$(pacman -Q $(pacman -Qqo $(which paraview)) | sed -e 's/.* //; s/-.*//g')
     _pmajor=$(echo $_pversion | cut -d '.' -f1)
     _sversion=$(pacman -Q scotch | sed -e 's/.* //; s/-.*//g')
@@ -61,11 +62,9 @@ prepare() {
     sed -i 's/export ZOLTAN_TYPE=.*/export ZOLTAN_TYPE=system/' ${srcdir}/${_distpkgbase}-${_pkgver}/etc/bashrc
     cp ${srcdir}/${_distpkgbase}-${_pkgver}/etc/bashrc ${srcdir}/${_distpkgbase}-${_pkgver}/etc/bashrc.prepared
     sed -i 's|^# export FOAM_INST_DIR=.*|export FOAM_INST_DIR=/opt/\$WM_PROJECT|' ${srcdir}/${_distpkgbase}-${_pkgver}/etc/bashrc.prepared
-    #
-    # The following (2) lines are to fix https://bugs.openfoam.org/view.php?id=4126
-    sed -i 's|libpqCore-pv|libpqCore|' ${srcdir}/${_distpkgbase}-${_pkgver}/etc/config.sh/paraview
-    sed -i 's|xargs dirname|xargs dirname \| xargs realpath|' ${srcdir}/${_distpkgbase}-${_pkgver}/etc/config.sh/paraview
   fi
+  # Drop in Arch paraview environment script
+  cp ${srcdir}/paraview.arch  ${srcdir}/${_distpkgbase}-${_pkgver}/etc/config.sh/paraview
 }
 
 build() {
@@ -79,11 +78,14 @@ build() {
 
   # Build and clean up OpenFOAM
   bash -c """
+  # see if we have extra processes defined in /etc/makepkg.conf MAKEFLAGS (taken from slack build)
+  jval="$(echo $MAKEFLAGS |grep -o "\-j *[0-9]*" | grep -o "[0-9]*")" || true
+
   export PATH="/opt/paraview/bin:\$PATH"
   source ${foamDotFile}
-  ./Allwmake
-  wclean all
+
   wmakeLnIncludeAll
+  ./Allwmake -s -q -j ${jval:=1}
   """
 }
 
@@ -96,6 +98,10 @@ package() {
   # Copy package to pkgdir
   cp -r "${srcdir}/${_distpkgbase}-${_pkgver}" "${pkgdir}/opt/${_distpkgbase}"
 
+  # Clean up build files (https://openfoamwiki.net/index.php/Installation/Delete_intermediate_files#OpenFOAM_v1706_and_newer)
+  _baseclean="${pkgdir}/opt/${_distpkgbase}/${_distpkgbase}-${_pkgver}"
+  rm -rf  ${_baseclean}/platforms/*/applications ${_baseclean}/platforms/*/src
+
   # Add source file
   echo "export FOAM_INST_DIR=/opt/${_distpkgbase}" >${pkgdir}/etc/profile.d/openfoam-${_pkgver}.sh
   echo "export PATH=/opt/paraview/bin:\$PATH" >>${pkgdir}/etc/profile.d/openfoam-${_pkgver}.sh
@@ -107,10 +113,10 @@ package() {
 
   # Permission fixes - for system-wide install and use
   chmod -R go+r "${pkgdir}/opt"
-  chmod -R 755 "${pkgdir}/opt/${_distpkgbase}/${_distpkgbase}-${_pkgver}/bin"
-  chmod -R 755 "${pkgdir}/opt/${_distpkgbase}/${_distpkgbase}-${_pkgver}/etc"
+  chmod -R 775 "${pkgdir}/opt/${_distpkgbase}/${_distpkgbase}-${_pkgver}/bin"
+  chmod -R 775 "${pkgdir}/opt/${_distpkgbase}/${_distpkgbase}-${_pkgver}/etc"
   rm "${pkgdir}/opt/${_distpkgbase}/${_distpkgbase}-${_pkgver}/etc/bashrc"
-  install -Dm 755 "${srcdir}/${_distpkgbase}-${_pkgver}/etc/bashrc.prepared" "${pkgdir}/opt/${_distpkgbase}/${_distpkgbase}-${_pkgver}/etc/bashrc"
+  install -Dm 775 "${srcdir}/${_distpkgbase}-${_pkgver}/etc/bashrc.prepared" "${pkgdir}/opt/${_distpkgbase}/${_distpkgbase}-${_pkgver}/etc/bashrc"
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,0 +1,11 @@
+# Arch (system) ParaView ENV setup
+export ParaView_DIR=/opt/paraview
+export ParaView_LIB_DIR=/opt/paraview/lib
+export ParaView_VERSION=$(unset LD_LIBRARY_PATH && \
+			  /usr/bin/pvserver --version 2> /dev/null | \
+			  awk '{print $NF}')
+export ParaView_MAJOR=${ParaView_VERSION%.*}
+export ParaView_INCLUDE_DIR=$ParaView_DIR/include/paraview
+export PV_PLUGIN_PATH=$FOAM_LIBBIN/paraview
+# Add to the library path
+export LD_LIBRARY_PATH=$ParaView_LIB_DIR:$PV_PLUGIN_PATH:$LD_LIBRARY_PATH

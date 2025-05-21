@@ -1,7 +1,7 @@
 pkgbase = openfoam
 	pkgdesc = The open source CFD toolbox (www.openfoam.org)
 	pkgver = 12.20250206
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.openfoam.org
 	install = openfoam.install
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = openfoam
 	depends = zoltan
 	provides = openfoam
 	source = openfoam-org-12.20250206.tar.gz::https://github.com/OpenFOAM/OpenFOAM-12/archive/refs/tags/20250206.tar.gz
+	source = paraview.arch
 	md5sums = 3907dd4f5e2c5cb793ecf5666f89b917
+	md5sums = e93ff7ff9b92b01216c41164c09caa48
 
 pkgname = openfoam-org
