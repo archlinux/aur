@@ -1,9 +1,10 @@
 # Submitter: Siavash Askari Nasr <ciavash@protonmail.com>
+# Maintainer: mpsijm
 
 _app_name=grist-desktop
 pkgname="${_app_name}-bin"
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Grist, packaged with Electron. Grist is a modern relational spreadsheet. It combines the flexibility of a spreadsheet with the robustness of a database."
 arch=('x86_64')
 url='https://github.com/gristlabs/grist-desktop'
@@ -30,15 +31,16 @@ sha512sums=('77d1bad50f825660c54526d5a138ba484fd8c497a055c59b099519095377855e090
 
 prepare() {
     chmod +x "${pkgname}-${pkgver}.AppImage"
-    ./"${pkgname}-${pkgver}.AppImage" --appimage-extract
+    "./${pkgname}-${pkgver}.AppImage" --appimage-extract
 
-    # Correct path for .desktop file
-    sed -i "s|Exec=AppRun|Exec=/opt/${pkgname}/${_app_name}|g" "squashfs-root/${_app_name}.desktop"
+    # Correct Exec path for .desktop file and remove '--no-sandbox' argument
+    sed -i "s|Exec=AppRun --no-sandbox|Exec=/opt/${pkgname}/${_app_name}|g" "squashfs-root/${_app_name}.desktop"
 
-    # Remove X-AppImage-Version
+    # Remove X-AppImage-Version from .desktop file
     sed -i '/AppImage/d' "squashfs-root/${_app_name}.desktop"
 
-    sed -i -r 's/Name=.+/Name=Grist Electron/' "squashfs-root/${_app_name}.desktop"
+    # Correct Name for .desktop file
+    sed -i -r 's/Name=.+/Name=Grist Desktop/' "squashfs-root/${_app_name}.desktop"
 }
 
 package() {
