@@ -11,7 +11,8 @@ url="https://git.staropensource.de/JeremyStarTM/aur-${pkgname}"
 license=("GPL-3.0-or-later")
 sha512sums=("SKIP")
 source=("git+https://github.com/microsoft/${_prjname}.git")
-makedepends=("cargo")
+makedepends=("cargo"
+             "git")
 conflicts=("microsoft-edit")
 
 # Configure rustup toolchain
