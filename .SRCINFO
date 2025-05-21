@@ -1,6 +1,6 @@
 pkgbase = python-pyht
 	pkgdesc = PlayHT Python SDK - AI Text-to-Speech Streaming & Voice Cloning API.
-	pkgver = 0.1.13
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/playht/pyht
 	arch = any
@@ -9,18 +9,19 @@ pkgbase = python-pyht
 	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-mock
 	makedepends = python-poetry-core
+	makedepends = python-poetry-dynamic-versioning
 	makedepends = python-grpcio-tools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.8
+	depends = python
 	depends = python-grpcio
 	depends = python-filelock
 	depends = python-protobuf
 	depends = python-requests
 	depends = python-aiohttp
 	depends = python-websockets
-	source = https://github.com/playht/pyht/archive/refs/tags/v0.1.13.tar.gz
-	sha256sums = 953eb090bd2c6be71f65fa24948f0d4320f041aba5e7193da4eac45d2a6419c7
+	source = https://github.com/playht/pyht/archive/refs/tags/v0.1.14.tar.gz
+	sha256sums = 8232c0803bf420a37cd7191c17676131b0ca8ba70a5ffca94458e96399efe4f4
 
 pkgname = python-pyht
