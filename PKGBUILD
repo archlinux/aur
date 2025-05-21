@@ -3,16 +3,16 @@
 pkgbase=flutter-artifacts-google-bin
 _group=flutter
 groups=("$_group")
-pkgver=3.29.3
+pkgver=3.32.0
 # in order to update these version hashes, consult the PKGBUILD and update-artifact-versions.sh
 # script of https://aur.archlinux.org/pkgbase/flutter
-_enginever=cf56914b326edb0ccb123ffdc60f00060bd513fa
+_enginever=18818009497c581ede5d8a3b8b833b81d00cebb7
 _materialfontsver=3012db47f3130e62f7cc0beabff968a33cbec8d8
 _gradlewver=fd5c1f2c013565a3bea56ada6df9d2b8e96d56aa
 _flutterarch=$(echo "$CARCH" | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
-_dartver="3.7.2"
-_dartmin="3.7.0"
-_dartmax="3.8.0"
+_dartver="3.8.0"
+_dartmin="3.8.0"
+_dartmax="3.9.0"
 # this host is blocked in China, according to Flutter docs, the FLUTTER_STORAGE_BASE_URL environment variable
 # should be used to provide an alternative mirror
 _storagebase="${FLUTTER_STORAGE_BASE_URL:-"https://storage.googleapis.com"}"
@@ -157,38 +157,38 @@ noextract=(
 
 sha256sums=('e56fa8e9bb4589fde964be3de451f3e5b251e4a1eafb1dc98d94add034dd5a86'
             '31e9428baf1a2b2f485f1110c5899f852649b33d46a2e9b07f9d17752d50190a'
-            '220a2da46fef6bde1ed1959173d3c59190714f9257b9693ee4c9399f5d32d72c'
-            'b8a5e9fe92fc6aafbe93037096d8c7ddc375ffe37bf27019290cbdeca482f85c'
-            '5c342f10ab3fb98a4e7242273450c976eb8e9916407a91c674e886559d46aa0a'
-            'e58a9052a92d254ced989f01288826b354c7938649ec69f57cecb89f320b9d77'
-            '62c980432552e67bc834ecf0204ce3961374257ee5f51adf2ce6a2f9239c6d3a'
-            '75c37977501b5992ac132b63d481f3ce8ef543ca0ac8c0637c636230cc011aab'
-            '286c8252b7b6af5051d509e420466b76bb8b039eb329ce0338c20a095f2d30a9'
-            '35c2a4a65ad6bb60397bedd7776ac309de7896b3b425c92a20397183069f9487'
-            'fe3d3428bc6e98297461e2579655ecedc4c6b5e5bfce051a396a1bb9130e1224'
-            '111cb7cd125f4207a7a79cab076c8b95c6c1242323802a039634574a6b5470c7'
-            'e5f701b6ee7187bde8df850d80a97ce761cea72bb68b093628dcd51c281f3bce'
-            '4769a6e5fd2a927e738a49c14fe5d5d0fc1aad1682b70a3d953743ea69362a28'
-            'eeec7106dfee6e0560fb5e5dfe8fd43a75801baf72c77e29b06edfe12de5bc9c'
-            '8c4d87dd10f59871545a2f93da82f1684f23f8f83c3bd31b2dcdc2d7adfa5ec4')
-sha256sums_x86_64=('b6f142ed08e5f77db694e4113b9dd5878bd54c913bac54a949705fbc7c5ed19b'
-                   '104c3fcd8d9e09e1d76282a9d253c24046b7590e3801ce844c717c6be6563be7'
-                   '4e0509f53050babaf53394e662f994b807b67ec08a453aead88f4c749f833785'
-                   '959c44aefd43c391c35834403ae18691de86e493ef80f1d20c07586b4d859fb2'
-                   '4a51211d486bf1d4ccf329176ab940ddf6411226385153b0b895b9e0cee6bbc8'
-                   '4a39d6b3f6a19130aaabc5dacd6c6bdca4fa604ad3d5dd7ea6e1c24ff01ebc63'
-                   'fea2bf94ce27392b6bfae8427f285ccdb2994a13b2ae548497c42d09e7069529'
-                   'b059255dce52c094e542d6873470f9b327bef71591acb9a78362ec348e508479'
-                   '11267ac49475e0915f43c3d824175bf07035577ece0e9247b74acb17c09a9d50'
-                   '5435d432c4da01ba530e3fb5c6743e52103dba95a0a461be9f85e00562db8613'
-                   '82d1961fe12118ba64e4d906a2b85c21048d5f84d583b17bfbb6e5639b3836b3'
-                   '7106efb1b9f5dee8569f1e2d64f1099d505ab9bbff961627d5eb61ca18601ddb')
-sha256sums_aarch64=('98ddd4282f0208f2874134d27663afb93a24adadf0febe6761d29601b7b343ed'
-                    '9a425dc2ee4a6a168c53e943b6a86015571a600642e01663619e1174c0a09873'
-                    '79384b0e20aa9dec188c73429d933408e4bd0abe43f578c2fa6b5a524d2570e0'
-                    '629430b95a9124763f0ed475f2726e70ebc2f7f8707903012ede014c26c75961'
-                    'ff53acb192915ed3b957accba20e63bfe1f89da97789e77c92574c506948483f'
-                    '9f9d4f622ac7d19b8ce73d7aadef971b1ae7b53a6f1545157eb3f82a206f6d9e')
+            '2dd11c0ef9749fed142d48ce1a015632a7e5e8fa7d7242ce75a222e1fdf901aa'
+            'f1d922aaa8a3d6b91f73f60bcb2799dfc052a35e29755263bf2272134b994ab1'
+            '4553f477273c94b35b3ca17fa3513c3fbb7a4718196570ec90ced435caa59189'
+            '4b56869f5c45265d0a35959a8567423ae1a4f37dbfdf40bbd521bf3d3895cfdf'
+            'cc9fe5711c108f76ca98840bdb3dcb965976821b072c5fdb086b0c87a7e819b0'
+            'aed16b73570b1f9fef36a1390cd73c642c18c4a1ec7c36b7e48cd765de047d5e'
+            'c9703c3000780412fbaff02f62a9b67e48232b9a38dab701ccff94d34cb23057'
+            '56c7aff192171ffb1644893df46eff284126c07e785f79dd0e116f6e0406fcda'
+            '47648e68869823d40856908c2bc5c1a81eca7599ba03e26f6eb3b26756350e4f'
+            '815a231ec0071e94dd6172ff4501e6cb604fb29c424618f7e60afc3924efefb7'
+            '16bd5f27ff7c8684cd3cdf25f8976aa225771b21a2629ff98e6614996ea41c36'
+            'b8a528a37b9d9897186836fb7e48e54db11ab749f2f876eedeb2d5ece1898a8a'
+            '0e771784b5092b6046775e395b4a38aac86f488a7884f979a875afbb66a777d3'
+            'ea6e9f7098d30f24446b870844d31e46977dd1a3b51e7f8a17d869a5647dfbf6')
+sha256sums_x86_64=('e0b2ccff141d1c9099bc057601203e448ffcce9d42fa26feeee5d220c8709e4b'
+                   '37281eb0993262b8661a4205802f53276fa8d0adda46fa1d3de4b78474cbf7a0'
+                   '318aef8504f3b16e0a61c124f4ac838c5bfbaf612c24f4eacdd04e80da0ec46a'
+                   '6482825ce1d23fb239a6365d460c18af704560ff6a81630e28cffb61c16a7d04'
+                   'a6ef30d981bf5a11c3a98a47eabeea0e4ae7766eee50338e929ce8c90760f3c2'
+                   'afd96e8f4447a7dea980a760ef6d2bf93715a8ea85ec071bcdd0d921855151cf'
+                   'da910b9b889a2a537efa7b8dcb16f5d656f605211da209ecad4995acb9c2ab21'
+                   'ea0e3ecd8151f784a73aaa4ff9b0cad14dd194dc944795a1add6198218483c7f'
+                   '0f80ac5b2d0c0ee09da08b1b954c2517d8047f53ee120c4a7915d50c6b04effa'
+                   '4edfcc69229fd6548b0b409d8e49a423cbd0df51d78d063416610261f09a6099'
+                   'c2d14c15263feeb98c085bff7579b1037c3e7a24bf4c111e5dd314341f89b497'
+                   'f5cae8bb2dabb254ebb2b95b2f61b499d40e7caff1570eafc6d9ff5b1a4960f0')
+sha256sums_aarch64=('68d6a82b38879a501b7081dc04f994273799bde5afbf05a1b563db9260d70e35'
+                    '11614df2c551a4dd83c3af95782dfb2c14ece996baffdc1a322b4fca9f99e994'
+                    '6dbe32736a7d2f3fa070a2bd699c6df1de4cfcee783326c9586a8c2949065786'
+                    'f295f5848a17b70b38963ac83303d230c694e684be814699ed3a0c3841ff993e'
+                    '3183ed31f440a0b8ccebf51b0e5ccabed79c7f94d8ecf02477f1f24542db59f2'
+                    '5aa6d67f22c2254acccf29771718fcd40483fa36960bbe8a8c42bd7abf6ff2b4')
 
 prepare() {
   unzip -o -q "${srcdir}/dart-sdk-${_flutterarch}-${_enginever}.zip" -d dart
