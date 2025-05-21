@@ -1,6 +1,6 @@
 pkgbase = pcsx2-appimage
 	pkgdesc = PlayStation 2 emulator (AppImage version)
-	pkgver = 2.3.358
+	pkgver = 2.3.362
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pcsx2-appimage
 	conflicts = pcsx2
 	options = !strip
 	options = !debug
-	source = https://github.com/PCSX2/pcsx2/releases/download/v2.3.358/pcsx2-v2.3.358-linux-appimage-x64-Qt.AppImage
+	source = https://github.com/PCSX2/pcsx2/releases/download/v2.3.362/pcsx2-v2.3.362-linux-appimage-x64-Qt.AppImage
 	sha256sums = SKIP
 
 pkgname = pcsx2-appimage
