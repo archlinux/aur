@@ -1,13 +1,14 @@
 # Maintainer: fossdd <fossdd@pwned.life>
 # Contributor: Rodney van den Velden <rodney@dfagaming.nl>
-
+#
 # Update procedure: if the checksum changed, bump $pkgver to $(date +%Y%m%d)
+#
 # If you want to be listed as a co-maintainer, write a comment
-
+#
 # https://github.com/ppy/osu is only for lazer, use the osu-lazer AUR package instead
 
 pkgname='osu'
-pkgver='20250420'
+pkgver='20250521'
 pkgrel=1
 pkgdesc='A free-to-win rhythm game'
 _terms_commit='b8a98fb740ed8251958f16d719138e96afa6e299'
