@@ -5,8 +5,8 @@
 # shellcheck disable=SC2034,SC2154,SC2148
 
 pkgname=go-configure-sw-hub
-_pkgver_major=6.47
-_pkgver_minor=003
+_pkgver_major=6.48
+_pkgver_minor=001
 pkgver=$_pkgver_major.$_pkgver_minor
 
 pkgrel=1
@@ -21,6 +21,8 @@ depends=(
     expat
     fontconfig
     freetype2
+    gcc-libs
+    glib2
     graphviz
     krb5
     libcups
@@ -49,13 +51,14 @@ depends=(
     xcb-util-keysyms
     xcb-util-renderutil
     xcb-util-wm
+    zlib
 )
 conflicts=('greenpak-designer-dev' 'greenpak-designer')
 replaces=('greenpak-designer-dev' 'greenpak-designer')
 options=('!strip' '!debug')
 
 source=("https://renesasweb-greenpak.s3.us-west-2.amazonaws.com/v${_pkgver_major}/go-configure-sw-hub-v${pkgver}-debian-12-amd64.deb")
-b2sums=('76052e8b0e377f13563da35028afc018a2e0479463aaab35f62a436866b738c839f1b854413e37e15172a1a22e304539d75237ec76f23760e023be660eb08428')
+b2sums=('3815c20105abb796c78daf99b5dbb9e15fecfcef490248db60f2193857782f53cc5ba09f1faaa1f081d6797e2773835855402392041aff52b70d3c26ba54215b')
 
 package() {
     # Extract the package data
