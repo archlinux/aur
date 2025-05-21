@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=balenaEtcher
+Exec=balena-etcher %U
+Icon=balena-etcher
+Categories=Utility;
+X-AppImage-Name=balena-etcher
+X-AppImage-Version=2.1.3
+X-AppImage-Arch=x86_64

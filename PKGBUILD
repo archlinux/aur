@@ -1,17 +1,43 @@
-# Maintainer: Hasan Pasha <bashahsn22@gmail.com>
+# Maintainer: TDD788 <thedarkdeath788@gmail.com>
 
 pkgname=balena-etcher-bin
-pkgver=1.18.11
+pkgver=2.1.3
 pkgrel=1
-pkgdesc="Flash OS images to SD cards & USB drives, safely and easily. (DEB version)"
+pkgdesc="Flash OS images to SD cards & USB drives, safely and easily"
 arch=('x86_64')
-url="https://github.com/balena-io/etcher"
-license=("Apache-2.0")
-source=("https://github.com/balena-io/etcher/releases/download/v${pkgver}/balena-etcher_${pkgver}_amd64.deb")
-sha256sums=('890838ead6683d67e68427c9d40a22aa3ff71431a58dce5de8b7a5c8a18c172e')
+url="https://etcher.io/"
+license=('Apache')
+depends=('fuse2')
+options=(!strip)
+source=(
+  "balenaEtcher-$pkgver-x64.AppImage::https://github.com/balena-io/etcher/releases/download/v$pkgver/balenaEtcher-$pkgver-x64.AppImage"
+  "balenaEtcher.desktop"
+)
+sha256sums=(
+  'd17976ac200b0379b1668b24a51ebf69124855d7dbf28f1333c446459b94147f'
+  'efb53d8628196184891b8eb5a0f4c9f055e515659fa4cd9b7a7b793558262cd3'
+)
+
+prepare() {
+  chmod +x "balenaEtcher-$pkgver-x64.AppImage"
+  "./balenaEtcher-$pkgver-x64.AppImage" --appimage-extract
+}
 
 package() {
-	tar -xf data.tar.bz2 -C "${pkgdir}"
-	mkdir -p "${pkgdir}/usr/local/bin"
-	ln -s "/opt/balenaEtcher/balena-etcher" "${pkgdir}/usr/local/bin/balena-etcher" 
+  install -dm755 "$pkgdir/opt/$pkgname"
+  cp -r squashfs-root/usr/{lib/balena-etcher/*,share} "$pkgdir/opt/$pkgname"
+
+  # Symlink to make executable accessible system-wide
+  install -dm755 "$pkgdir/usr/bin"
+  ln -sf "/opt/$pkgname/balena-etcher" "$pkgdir/usr/bin/balena-etcher"
+
+  # Install .desktop entry
+  install -Dm644 "$srcdir/balenaEtcher.desktop" "$pkgdir/usr/share/applications/balenaEtcher.desktop"
+
+  # Optional: install icon if available in extracted AppImage
+  if [[ -f "$srcdir/squashfs-root/usr/share/icons/hicolor/512x512/apps/balena-etcher.png" ]]; then
+    install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/512x512/apps/balena-etcher.png" \
+      "$pkgdir/usr/share/icons/hicolor/512x512/apps/balena-etcher.png"
+  fi
 }
+
