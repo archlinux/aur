@@ -1,0 +1,12 @@
+diff --color -ura package.orig/setup.py package.new/setup.py
+--- package.orig/setup.py	2025-05-19 12:19:39.000000000 -0400
++++ package.new/setup.py	2025-05-21 19:29:58.344021265 -0400
+@@ -25,7 +25,7 @@
+     keywords='git',
+     # Non-python directories are only included in `packages` for the sake of bdist_wheel;
+     # they have apparently no effect on sdists (only MANIFEST.in matters).
+-    packages=['git_machete', 'git_machete/client', 'completion', 'docs/man'],
++    packages=['git_machete', 'git_machete/client'],
+     entry_points={
+         'console_scripts': [
+             'git-machete = git_machete.bin:main'

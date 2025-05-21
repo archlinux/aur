@@ -1,7 +1,7 @@
 # Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
 
 pkgname='git-machete'
-pkgver=3.34.1
+pkgver=3.35.1
 pkgrel=1
 pkgdesc="Git repository organizer & rebase/merge workflow automation tool"
 arch=('any')
@@ -13,13 +13,14 @@ optdepends=('bash: bash completion'
             'fish: fish completion'
             'zsh: zsh completion')
 checkdepends=('python-pytest' 'python-pytest-mock' 'python-pytest-xdist')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/VirtusLab/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('1e8284ca60ead89edccabe5a7844df73ea048e248fa59b55db56563973b0273c')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/VirtusLab/$pkgname/archive/v$pkgver.tar.gz"
+        "setup_packages.patch")
+sha256sums=('60e4e9abb36738d0a3267f2ed4c6dd2e510247678b403f2bc3c288bc831fcec3'
+            '85d234fb2bdc8cef581056cadbc45003cd2ad36e5feb7330a71f64e7c9ac8dda')
 
 prepare() {
   cd "$srcdir/$pkgname-${pkgver}"
-  # Only install git_machete as a Python package
-  sed -i "s/packages=.*,$/packages=['git_machete'],/" setup.py
+  patch -Np1 -i ../setup_packages.patch
 }
 
 build() {
