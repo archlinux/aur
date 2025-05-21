@@ -1,0 +1,4 @@
+[cwdemangle]
+source = "git"
+git = "https://github.com/encounter/cwdemangle.git"
+prefix = "v"
