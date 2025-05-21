@@ -2,7 +2,7 @@
 
 pkgname=paho-mqtt-c
 pkgver=1.3.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Eclipse Paho C Client Library for the MQTT Protocol"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.eclipse.org/paho/"
@@ -16,6 +16,7 @@ build() {
   cd "${pkgname//-/.}-${pkgver}"
   cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr \
     -DPAHO_WITH_SSL=TRUE -DPAHO_BUILD_SAMPLES=TRUE \
+    -DCMAKE_C_STANDARD=11 \
     -S . -B build
   cmake --build build
 }
