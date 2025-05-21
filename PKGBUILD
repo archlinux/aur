@@ -1,7 +1,7 @@
 # Maintainer: fossdd <fossdd@pwned.life>
 pkgname=lyrebird-proxy
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="pluggable transport proxy for Tor, implementing obfs4"
 url="https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird"
 license=('BSD-3-Clause')
@@ -9,8 +9,8 @@ arch=('x86_64' 'aarch64' 'armv7h')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.bz2::https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird/-/archive/lyrebird-$pkgver/lyrebird-lyrebird-$pkgver.tar.bz2")
-sha256sums=('63dd7c538227b4f66bd1192dd2131b1bc30d1904f5f8d5c43b0d675a381e8133')
-b2sums=('d534074f6db7ad190b12010ddc44889c15ae2c3dc594e30dea41ae1f092ca83481ecb51611d763b63a8b3d8d97f887fdc4e216b41dab3b219d7c2df2f7b5d84f')
+sha256sums=('9b88ae705d9e87c0d0fbec1da58192457c60f56386465abc16d6aa05e6f400a1')
+b2sums=('63c2635212cc0e579c07976543502c9360a7759b0c6c35c40d69c071ea492f61d3050d9e5896284d4c9c3b4510766de4fb78a985f74cd0422d3f2e2ceb287752')
 
 build() {
   cd "$srcdir/lyrebird-lyrebird-$pkgver"
