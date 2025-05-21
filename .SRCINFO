@@ -1,0 +1,25 @@
+pkgbase = cwdemangle-bin
+	pkgdesc = CodeWarrior C++ symbol demangler
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/encounter/cwdemangle
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	provides = cwdemangle
+	conflicts = cwdemangle
+	source = cwdemangle-1.0.0-README.md::https://github.com/encounter/cwdemangle/raw/refs/tags/v1.0.0/README.md
+	source = cwdemangle-1.0.0-LICENSE-MIT::https://github.com/encounter/cwdemangle/raw/refs/tags/v1.0.0/LICENSE-MIT
+	source = cwdemangle-1.0.0-LICENSE-APACHE-2.0::https://github.com/encounter/cwdemangle/raw/refs/tags/v1.0.0/LICENSE-APACHE
+	sha256sums = 056a1c96d253f348af5e87ac92bcf5d6868dbe5da8536d32ae42a44da847e781
+	sha256sums = 544ffe9befaefa6b59ab1fdde58789069ba7c1b65432bdea273a16b2117909b7
+	sha256sums = fd363f1eb5135402a2e66f4a6173e6eff06daabe79d150acd7c669d33b985b4e
+	source_aarch64 = cwdemangle-1.0.0-aarch64::https://github.com/encounter/cwdemangle/releases/download/v1.0.0/cwdemangle-linux-aarch64
+	sha256sums_aarch64 = f208bb1f3d7999f85cdedb90e0905070bfb566b493fe75506cec6f4cf6041c40
+	source_x86_64 = cwdemangle-1.0.0-x86_64::https://github.com/encounter/cwdemangle/releases/download/v1.0.0/cwdemangle-linux-x86_64
+	sha256sums_x86_64 = f3967cfa4150cf6822172014a4e7961f3fd35cb4b7f7b0e2e5fa43115e902ae1
+
+pkgname = cwdemangle-bin

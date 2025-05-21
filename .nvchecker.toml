@@ -1,0 +1,5 @@
+[cwdemangle-bin]
+source = "github"
+github = "encounter/cwdemangle"
+use_latest_release = true
+prefix = "v"
