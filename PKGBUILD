@@ -1,6 +1,5 @@
 pkgbase=coreutils-uutils-symlink
 pkgname=(${pkgbase} coreutils-uutils-arch)
-pkgname=coreutils-uutils-symlink
 pkgver=0.0.29
 pkgrel=9
 arch=('any')
