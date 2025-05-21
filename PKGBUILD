@@ -5,13 +5,13 @@ pkgname=void-git
 _pkgname=void
 pkgver=1.99.3.r2519.g906502f6
 pkgrel=2
-pkgdesc="The Cursor alternative AI code editor (electron36+)"
+pkgdesc="The Cursor alternative AI code editor"
 url="https://voideditor.com/"
 arch=('x86_64')
 license=("MIT")
 provides=('void')
 conflicts=('void')
-depends=( ripgrep xdg-utils # electron* is added at build process
+depends=( ripgrep xdg-utils # electron* is added at packaging
   libxkbfile
   libsecret
   gnupg
@@ -27,8 +27,8 @@ optdepends=(
   'lsof: Terminal splitting'
   'org.freedesktop.secrets: Settings sync'
 )
-makedepends=( nodejs-electron
-  git npm pkgconf python )
+makedepends=( electron nodejs-electron
+  git npm pkgconf python libarchive )
 source=("git+https://github.com/voideditor/void.git")
 sha256sums=('SKIP')
 
@@ -39,26 +39,24 @@ pkgver() {
 }
 
 build() {
-  # Do not tain user dir by cache
-  export XDG_CACHE_HOME="${srcdir}/xdgcache" HOME="${srcdir}/home"
+  export XDG_CACHE_HOME="${srcdir}/xdgcache" HOME="${srcdir}/home" # Do not taint user dir
   cd "${_pkgname}"
-  # for electron35+ app.dock is only for macOS
+  # Drop this at next release. app.dock is only for macOS
   sed -i '/app\.dock\.setMenu/i\// @ts-ignore' src/vs/platform/menubar/electron-main/menubar.ts
   # Clean npm cache and remove existing node_modules
   npm cache clean --force
   rm -rf node_modules
   # Set version of electron
   _elver=$(cat /usr/lib/electron/version)
-  _elorig=$(npm pkg get devDependencies.electron|sed 's/"//g')
-  sed -i "s/^target=.*/target=\"${_elver}\"/" .npmrc # for native modules
-  echo Replacing ${_elorig} with $(rg -N 'target' .npmrc)
+  sed -i "s/^target=.*/target=\"${_elver}\"/" .npmrc # native modules
+  echo Replaced version of electron with $(rg -N 'target' .npmrc)
   npm pkg set devDependencies.electron=${_elver}
   # Stop downloading 870MB+ bins
   _hash=$(echo -n "https://github.com/electron/electron/releases/download/v${_elver}" | sha256sum | cut -d ' ' -f 1)
   _cachedir="${XDG_CACHE_HOME}/electron/${_hash}"
   _zip="electron-v${_elver}-linux-x64.zip"
   mkdir -p "${_cachedir}"
-  bsdtar --format zip -cf "${_cachedir}/${_zip}" /dev/null
+  bsdtar --format zip -cf "${_cachedir}/${_zip}" /dev/null > /dev/null
   echo $(sha256sum "${_cachedir}/${_zip}" | cut -d " " -f 1) *${_zip} > build/checksums/electron.txt
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
   # Build
@@ -68,9 +66,8 @@ build() {
 }
 
 package() {
-  _elver=$(cat /usr/lib/electron/version) # for --repackage
-  _elnum=${_elver%%.*}
-  depends+=(electron${_elnum}) # breaks --printsrcinfo, but not serious
+  _elnum=$(cut -d. -f1 /usr/lib/electron/version) # hide ver from --printsrcinfo
+  depends+=(electron${_elnum}) # replace electron dependency
   _pkg=VSCode-linux-x64
   _app=/usr/share/void/resources/app
   # Licenses
