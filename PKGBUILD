@@ -1,7 +1,7 @@
 # Maintainer: Vasile Vilvoiu <vasi.vilvoiu@gmail.com>
 pkgname=libecbor
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="CBOR library for desktop and embedded applications"
 arch=('x86_64')
 url="https://github.com/rimio/libecbor"
@@ -15,6 +15,11 @@ options=(staticlibs)
 source=("https://github.com/rimio/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
 md5sums=("66e2a95200c581489326b2128f64ae17")
+
+prepare() {
+    cd $pkgname-$pkgver
+    patch -Np1 -i ../../cmake_3_10.patch
+}
 
 build() {
 	cd "$pkgname-$pkgver"
