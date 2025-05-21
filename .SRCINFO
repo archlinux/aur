@@ -1,6 +1,6 @@
 pkgbase = cato-client-bin
 	pkgdesc = VPN client from Cato Networks to connect to the Cato Cloud.
-	pkgver = 5.2.1.1
+	pkgver = 5.4.0.1006
 	pkgrel = 1
 	url = https://clientdownload.catonetworks.com/
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = cato-client-bin
 	depends = glibc
 	depends = gcc-libs
 	depends = zlib
-	source = cato-client-install-5.2.1.1.deb::https://clients.catonetworks.com/linux/5.2.1.1/cato-client-install.deb
+	source = cato-client-install-5.4.0.1006.deb::https://clients.catonetworks.com/linux/5.4.0.1006/cato-client-install.deb
 	source = cato-client-bin.sysusers
 	source = cato-client-bin.tmpfiles
-	sha256sums = d2151c85ac5a88a26d87607240c15f8ec08b8bfe2497e4ab352437dd8eabdd60
+	sha256sums = dd1ca20e07d62f8bc0fe95323a2826b8af9257543de98eb91d51113de69d5966
 	sha256sums = 3c51ce0ebde44edf062e2c9db69c95949ee2031f4e85156f2f401d6e8767f704
 	sha256sums = d381f7126126f45ca36e43bd33772bfa0aa6d9cbc9a720e2485fc6061cdd9435
 
