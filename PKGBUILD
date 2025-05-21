@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=recipes
-_pkgver=1.3.0
+_pkgver=1.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -72,8 +72,8 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8e123dd18f9f27b51c3f4af13bcdb6e9')
-b2sums=('0e46f706e427d00b19e6148bdef30e7ff9e2a7df4597723a8dc31a8c2e5b9cbd8339f8bfee99365ff6f0e03ac2d62163762d24335db6f9345abd602d6b2e91a7')
+md5sums=('d35db42364aabb4cdeb02b958fae4b87')
+b2sums=('946cafc171b350dd44851aca621e91486a2d3283e8c02d5883f8224e3ab2d4f3faf96e1934d1ac4f647daef78ec1751c0b084c78f791c4cfebc34533f2feae90')
 
 build() {
   mkdir build
