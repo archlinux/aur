@@ -9,10 +9,10 @@ license=('AGPL3')
 depends=('acl>=2.2.23' 'fuse3>=3.2.3' 'openssl>=3.0.0' 'qrencode' 'zstd>=1.5.2')
 options=('!strip' '!emptydirs')
 
-pkgver=3.2.6_1
-pkgrel=3
-source_x86_64=("http://download.proxmox.com/debian/pbs/dists/bookworm/pbs-no-subscription/binary-amd64/proxmox-backup-client_3.2.6-1_amd64.deb")
-sha512sums_x86_64=('fcfa12aa9283ff263c80916458530c4ada16d41dd62a72505bf7ef2e4249f6d4da9e039ed7e9d756f240bf95270d8618a67266a0a16f3fca14c379e5b5e06515')
+pkgver=3.4.1_1
+pkgrel=1
+source_x86_64=("http://download.proxmox.com/debian/pbs/dists/bookworm/pbs-no-subscription/binary-amd64/proxmox-backup-client_3.4.1-1_amd64.deb")
+sha512sums_x86_64=('f575a399443c0cddd452fbe9b256857621d6bdf51758133a476cb20f907b18087f5b6d7e5f13907789c52dd2c51e3b55866ed52dcbc6ed3672957f3fd4bf9347')
 
 conflicts=('proxmox-backup-client')
 
