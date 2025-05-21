@@ -1,0 +1,20 @@
+pkgbase = transgui-sdk
+	pkgdesc = Tools for building the transgui AUR package
+	pkgver = 1.3
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = fpc=3.2.2
+	depends = qt5pas
+	options = !makeflags
+	options = libtool
+	options = staticlibs
+	options = !strip
+	options = !debug
+	source = https://gitlab.com/freepascal.org/fpc/source/-/archive/56baf314b5ebf4e5a44fe3e214914fa2e1b34adb/source-56baf314b5ebf4e5a44fe3e214914fa2e1b34adb.tar.bz2
+	source = https://gitlab.com/dkk089/lazarus/-/archive/cadda6230398688d6106fe37fb0673a9a2bf0cf3/lazarus-cadda6230398688d6106fe37fb0673a9a2bf0cf3.tar.bz2
+	sha256sums = 1991fcdcdb8b19db78f351083bfb3ddc800808c2ed73de286ffb2b9909915bf9
+	sha256sums = 98540a41c3cfd68af574c5f46f53995706afec5493529c43aed90c5b78694c47
+
+pkgname = transgui-sdk
