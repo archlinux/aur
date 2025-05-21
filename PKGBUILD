@@ -2,7 +2,7 @@
 # Maintainer: kujtimiihoxha <kujtimii.h@gmail.com>
 
 pkgname='opencode-ai-bin'
-pkgver=0.0.46
+pkgver=0.0.47
 pkgrel=1
 pkgdesc='terminal based agent that can build anything'
 url='https://github.com/opencode-ai/opencode'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('opencode')
 conflicts=('opencode')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/opencode-ai/opencode/releases/download/v0.0.46/opencode-linux-arm64.tar.gz")
-sha256sums_aarch64=('aaaa492e62d6f43b02d9834cc51b0afbfc2fb727b1f2691568acca904db1b2ee')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/opencode-ai/opencode/releases/download/v0.0.47/opencode-linux-arm64.tar.gz")
+sha256sums_aarch64=('2b1db252b164810f54ca3c5c74d4b241517c7288a6abb9d2bea8cba78a7a213c')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/opencode-ai/opencode/releases/download/v0.0.46/opencode-linux-x86_64.tar.gz")
-sha256sums_x86_64=('2ac24536982103f3266dc8179ca0732a19c14fddc7c72a2c8a5fac008e8c1a16')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/opencode-ai/opencode/releases/download/v0.0.47/opencode-linux-x86_64.tar.gz")
+sha256sums_x86_64=('8832b0eb6cba742d1f3e5b0e00ad97f1cd97b4608b7de5b03a6c4a95bb4ec165')
 
 package() {
   install -Dm755 ./opencode "${pkgdir}/usr/bin/opencode"
