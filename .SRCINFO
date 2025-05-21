@@ -1,5 +1,5 @@
 pkgbase = nodtool-bin
-	pkgdesc = Rust crate for reading GameCube and Wii disc images
+	pkgdesc = CLI tool for reading GameCube and Wii disc images
 	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/encounter/nod
