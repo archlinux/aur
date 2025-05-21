@@ -1,0 +1,22 @@
+pkgbase = chatterbox-git
+	pkgdesc = Chat with others on the same WiFi!(Use system-wide electron)
+	pkgver = Latest.r3.gaee149b
+	pkgrel = 1
+	url = https://github.com/ashtonrbox/Chatterbox
+	arch = any
+	license = LicenseRef-custom
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	makedepends = libicns
+	depends = electron35
+	provides = chatterbox=Latest
+	conflicts = chatterbox
+	source = chatterbox.git::git+https://github.com/ashtonrbox/Chatterbox.git
+	source = chatterbox.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = chatterbox-git
