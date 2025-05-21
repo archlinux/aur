@@ -1,7 +1,7 @@
 # Maintainer Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=openvox-agent-bin
 _pkgname=openvox-agent
-pkgver=8.17.0
+pkgver=8.18.1
 pkgrel=1
 pkgdesc="Agent of the OpenVox Automation Framework"
 arch=('x86_64')
@@ -23,4 +23,4 @@ package() {
     cp -a  ${srcdir}/data/etc ${pkgdir}/
     install -Dm 644 "${srcdir}/data/lib/systemd/system/puppet.service" "${pkgdir}/usr/lib/systemd/system/puppet.service"
 }
-md5sums_x86_64=('ccddf05bc75eb3231e6c0d1b857564bf')
+md5sums_x86_64=('9d39def7d7407375d2d3f1b00098ceb1')
