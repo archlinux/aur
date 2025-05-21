@@ -6,15 +6,23 @@
 pkgbase=infnoise
 pkgname=(infnoise libinfnoise infnoise-tools)
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Infinite Noise TRNG"
 arch=('x86_64')
 url="https://github.com/leetronics/infnoise"
 license=('custom:CC0 1.0 Universal')
 depends=('libftdi')
 makedepends=('git' 'sed')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/leetronics/infnoise/archive/$pkgver.tar.gz")
-b2sums=('f0d72df3dfd53f1f13f4a5c3f96cb911f4dad6268e3c6faf7772294019ab9f959edcbe2d30be387afdc41087e83a201df5aa8c6d0558c8d75dbd8a8f08c530a1')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/leetronics/infnoise/archive/$pkgver.tar.gz"
+	"fix-udev-systemd-missing-dev-infnoise.patch")
+b2sums=('f0d72df3dfd53f1f13f4a5c3f96cb911f4dad6268e3c6faf7772294019ab9f959edcbe2d30be387afdc41087e83a201df5aa8c6d0558c8d75dbd8a8f08c530a1'
+        '903e01d3b18c2a8942dd906dbc00f473c219ab20322b59316a090364332a59cb58f70a7142ca009275509f1722d06f9d414018f4798c064620b7ad99b5fd1ad6')
+
+prepare() {
+  cd "$srcdir/$pkgbase-$pkgver"
+  #https://github.com/leetronics/infnoise/pull/39/files
+  patch -p1 < "$srcdir/fix-udev-systemd-missing-dev-infnoise.patch"
+}
 
 build() {
   cd $pkgbase-$pkgver/software

@@ -1,0 +1,22 @@
+From 481d0061d1257a071eedb221ab9b3881f273b13a Mon Sep 17 00:00:00 2001
+From: James Cuzella <james.cuzella@lyraphase.com>
+Date: Sat, 17 May 2025 14:19:11 -0600
+Subject: [PATCH] udev: Fix systemd tag for /dev/infnoise, mtp-probe,
+ ModemManager: ignore
+
+- Fixes #106
+- Fixes #90
+- Fixes #93
+---
+ software/init_scripts/75-infnoise.rules | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/software/init_scripts/75-infnoise.rules b/software/init_scripts/75-infnoise.rules
+index bf82039..02380a3 100644
+--- a/software/init_scripts/75-infnoise.rules
++++ b/software/init_scripts/75-infnoise.rules
+@@ -1,2 +1,2 @@
+-SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", SYMLINK+="infnoise", GROUP="dialout", MODE="0664"
+-ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015" ,TAG+="systemd", ENV{SYSTEMD_WANTS}="infnoise.service"
++SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{MTP_NO_PROBE}="1", TAG+="systemd", SYMLINK+="infnoise", GROUP="dialout", MODE="0664"
++ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{MTP_NO_PROBE}="1", TAG+="systemd", ENV{SYSTEMD_WANTS}="infnoise.service"
