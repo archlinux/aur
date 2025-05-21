@@ -40,3 +40,12 @@ pkgname = cursor-electron-latest
 	depends = hicolor-icon-theme
 	depends = libxkbfile
 	depends = electron
+
+pkgname = cursor-electron35
+	pkgdesc = AI Code Editor on electron35
+	depends = ripgrep
+	depends = xdg-utils
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = libxkbfile
+	depends = electron35
