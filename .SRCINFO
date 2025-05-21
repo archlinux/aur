@@ -1,6 +1,6 @@
 pkgbase = zsa-keymapp-bin
 	pkgdesc = A live visual reference for your ZSA keyboard
-	pkgver = 1.3.6
+	pkgver = 1.3.7
 	pkgrel = 1
 	url = https://zsa.io/flash
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = zsa-keymapp-bin
 	depends = libusb
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	source = zsa-keymapp-bin-1.3.6.tar.gz::https://oryx.nyc3.cdn.digitaloceanspaces.com/keymapp/keymapp-latest.tar.gz
+	source = zsa-keymapp-bin-1.3.7.tar.gz::https://oryx.nyc3.cdn.digitaloceanspaces.com/keymapp/keymapp-latest.tar.gz
 	source = keymapp.desktop
-	sha256sums = 2d63b869e3661a067e4f8d696fa1f00b7b67c1a886be20c8abadd032cae59047
+	sha256sums = a87bc7083cd6461ba10e0da4b94f249a29100d712542d54498f01e947cf868fa
 	sha256sums = 798667e23dfc74f6a4c65f7ecb9838dec4987a2c4224fe9bb38e85cb2d2ad861
 
 pkgname = zsa-keymapp-bin
