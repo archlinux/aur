@@ -1,7 +1,7 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 
 pkgname=framework-system-git
-pkgver=v0.4.1.r0.gd515b02
+pkgver=0.4.2.r11.ga879e74
 pkgrel=1
 arch=('x86_64')
 pkgdesc='Tool to interact with the framework system (git development version)'
@@ -26,7 +26,7 @@ b2sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
