@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=node-cleaner
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A tool for cleaning and managing node_modules directories"
 arch=('x86_64')
