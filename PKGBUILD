@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tree-sitter-yaml
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="YAML grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-yaml"
@@ -13,7 +13,7 @@ makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-yaml.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-yaml/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8182760587f14d5131161dee3605613ccebe86062909f0879edf63b4bdd99d44')
+sha256sums=('0626a1d89d713a46acd0581b745d3dcfe0b3714279eb6cf858fe78ff850a5a2b')
 
 
 build() {
