@@ -31,6 +31,7 @@ interval = 10
 parse_os = True
 verbose = 0
 
+
 def osinfo():
     global OS_ID
     global OS_PRETTYNAME
@@ -47,7 +48,8 @@ def osinfo():
                 if split[0] == "ID" and OS_ID == "generic":
                     stripped = split[1].strip("\n ")
                     if stripped in ALLOWED_IDS:
-                        if verbose > 1: print(f"- OS ID: {stripped}")
+                        if verbose > 1:
+                            print(f"- OS ID: {stripped}")
                         OS_ID = stripped
                 if split[0] == "PRETTY_NAME" and OS_PRETTYNAME == "GNU/Linux":
                     stripped = split[1].strip("\" \n")
@@ -59,7 +61,6 @@ def osinfo():
 
 
 ### ARGS ###
-
 
 
 def parse_args():
@@ -83,7 +84,7 @@ def parse_args():
                         type=str, default=OS_PRETTYNAME, required=False)
     parser.add_argument("-p", "--icon", help="distro icon (same as the ID in /etc/os-release)",
                         type=str, default=OS_ID, required=False, choices=ALLOWED_IDS)
-    parser.add_argument("-v", "--verbose", help="detailed output",
+    parser.add_argument("-v", "--verbose", help="detailed output, use twice for even more detailed output",
                         action="count", required=False)
     args = parser.parse_args()
     interval = args.interval or interval
@@ -118,14 +119,24 @@ SoftwareInfo = namedtuple(
 
 
 def getinfo() -> SoftwareInfo:
-    sp = subprocess.run([checktool], input="n\n",  # absolutely-proprietary always asks whether to save to file, so this simulates rejecting to avoid hangs
-                        capture_output=True, text=True)
-    pkgcount_match = re.search(
-        PKGCOUNT_TEMPLATE, sp.stdout, re.MULTILINE)
-    index_match = re.search(FREEDOM_INDEX_TEMPLATE,
-                            sp.stdout, re.MULTILINE)
+    try:
+        sp = subprocess.run([checktool], input="n\n",  # absolutely-proprietary always asks whether to save to file, so this simulates rejecting to avoid hangs
+                            capture_output=True, text=True)
+        pkgcount_match = re.search(
+            PKGCOUNT_TEMPLATE, sp.stdout, re.MULTILINE)
+        index_match = re.search(FREEDOM_INDEX_TEMPLATE,
+                                sp.stdout, re.MULTILINE)
 
-    return SoftwareInfo(int(pkgcount_match.group(1)), int(pkgcount_match.group(2)), float(index_match.group(1)))
+        if not pkgcount_match or not index_match:
+            print("error: couldn't match template and output")
+            exit(1)
+
+        return SoftwareInfo(int(pkgcount_match.group(1)), int(pkgcount_match.group(2)), float(index_match.group(1)))
+    except KeyboardInterrupt:
+        pass
+    except Exception as e:
+        print(f"error: failed to get package info: {e}")
+        exit(1)
 
 
 if __name__ == "__main__":
@@ -133,7 +144,8 @@ if __name__ == "__main__":
     if parse_os:
         osinfo()
     print("* Connecting to Discord...")
-    if verbose > 0: print(f"- Client ID: {rpc_clientid}")
+    if verbose > 0:
+        print(f"- Client ID: {rpc_clientid}")
     RPC = pypresence.Presence(rpc_clientid)
     try:
         RPC.connect()
@@ -145,14 +157,18 @@ if __name__ == "__main__":
         exit(1)
     print("* Connected!")
     while True:
-        if verbose > 0: print("- Updating...")
+        if verbose > 0:
+            print("- Updating...")
         info: SoftwareInfo = getinfo()
-        if verbose > 0: print(f"- Packages nonfree: {info.pkg_nonfree}; Packages total: {info.pkg_total}; Freedom Index: {info.freedom_index}")
+        if verbose > 0:
+            print(
+                f"- Packages nonfree: {info.pkg_nonfree}; Packages total: {info.pkg_total}; Freedom Index: {info.freedom_index}")
         response = RPC.update(
             state=f"{info.pkg_nonfree}/{info.pkg_total} ({(100.0 - info.freedom_index):.2f}%) nonfree packages",
             large_image=OS_ID,
             large_text=OS_PRETTYNAME,
             details=OS_PRETTYNAME,
         )
-        if verbose > 1: print(f"- RPC request: {response}")
+        if verbose > 1:
+            print(f"- RPC request: {response}")
         sleep(interval)

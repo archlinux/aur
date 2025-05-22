@@ -1,0 +1,62 @@
+.TH FSFRPC 1
+.SH NAME
+fsfrpc \- dynamically update discord rich presence with proprietary package status
+.SH SYNOPSIS
+.B fsfrpc
+[\fB\-h\fR]
+[\fB\-i\fR \fIINTERVAL\fR]
+[\fB\-c\fR \fICLIENT\fR]
+[\fB\-o\fR]
+[\fB\-n\fR \fINAME\fR]
+[\fB\-p\fR \fI{debian,linuxmint,arch,opensuse,ubuntu,fedora,generic}\fR]
+[\fB\-v\fR]
+.SH DESCRIPTION
+.B fsfrpc
+dynamically updates your discord rich presence with data on proprietary packages from absolutely\-proprietary
+.SH OPTIONS
+.TP
+.BR \-h ", " \-\-help
+show a help message and exit
+.TP
+.BR \-i ", " \-\-interval =\fIINTERVAL\fR
+interval at which the info is updated in seconds (default is 10)
+.TP
+.BR \-c ", " \-\-client =\fICLIENT\fR
+discord application client id
+.TP
+.BR \-o ", " \-\-no\-parse\-os
+do not parse os information (use generic branding).
+by default, id is "generic" and pretty name is "GNU/Linux"
+.TP
+.BR \-n ", " \-\-name \fINAME\fR
+pretty name of the distro
+.TP
+.BR \-p ", " \-\-icon \fI{debian,linuxmint,arch,opensuse,ubuntu,fedora,generic}\fR
+distro icon (same as the ID in \fB/etc/os\-release\fR)
+.TP
+.BR \-v ", " \-\-verbose
+detailed output. if specified twice or more, increases verbosity.
+.SH EXAMPLES
+To start the script with pulling info about your distro and the default client:
+.PP
+.nf
+.RS
+fsfrpc
+.RE
+.fi
+.PP
+To start with a custom ID:
+.PP
+.nf
+.RS
+fsfrpc \-c 1234567898764532123
+.RE
+.fi
+.PP
+To start with a custom name and logo:
+.PP
+.nf
+.RS
+fsfrpc \-o \-p linuxmint \-n "Linux Mint 22.1"
+.RE
+.fi
