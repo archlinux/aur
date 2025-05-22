@@ -2,7 +2,7 @@
 
 pkgname=fortran-fpm
 pkgver=0.12.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A Fortran package manager and build system"
 arch=('any')
@@ -46,8 +46,8 @@ check() {
   cd "$srcdir/${pkgname##*-}-$pkgver"
 
   # -- compile tests with gfortran 12 until bug is resolved
-  _bootstrap/fpm --compiler "$(command -v gfortran-12)" test
-  # _bootstrap/fpm test
+  export FPM_FC="$(command -v gfortran-12)"
+  _bootstrap/fpm test
 }
 
 package() {
