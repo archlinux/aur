@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : py-cidr
- Tags         : 3.2.0 ➙ 3.4.0
-              : 2025-05-04 ➙ 2025-05-20
+ Tags         : 3.2.1 ➙ 3.5.0
+              : 2025-05-04 ➙ 2025-05-21
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-05-21   : 3.5.0
+                Use builtin types where possible. e.g. typing.List -> list
+ 2025-05-20     update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
 
  2025-05-20   : 3.4.0
                 Remove unused files
@@ -21,8 +25,3 @@
 
  2025-05-04   : 3.2.1
                 More documentation tweaks
-
- 2025-05-04   : 3.2.0
-                Improve API reference documentation.
-                install: rename cache print to /usr/bin/py-cidr-cache-print
-                update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
