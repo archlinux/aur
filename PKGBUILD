@@ -4,9 +4,9 @@
 
 pkgbase=qt5-doc
 pkgname=(qt5-doc qt5-examples)
-_basever=5.15.16
+_basever=5.15.17
 pkgver=$_basever
-pkgrel=3
+pkgrel=1
 arch=('any')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -15,10 +15,8 @@ makedepends=('qt5-tools' 'python' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr' 
 groups=('qt5')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/single/$_pkgfqn.tar.xz"
-         qt5-webengine-python3.patch
          no-qmake.patch)
-sha256sums=('efa99827027782974356aceff8a52bd3d2a8a93a54dd0db4cca41b5e35f1041c'
-            '398c996cb5b606695ac93645143df39e23fa67e768b09e0da6dbd37342a43f32'
+sha256sums=('5c34b2e8054d23cbd6c98715af8766a61c7f346ac687aa2d80edd73f8073d2d2'
             'db90fa31381fa0814c9c8c803c9e2f9b36bdd6f52da753399e500c0692352498')
 
 prepare() {
@@ -28,7 +26,6 @@ prepare() {
   ln -s /usr/bin/{rcc,uic,moc,qmake} qtbase/bin/
 
   patch -d qtbase -p1 < "$srcdir"/no-qmake.patch # Use system qmake
-  patch -d qtwebengine -p1 < "$srcdir"/qt5-webengine-python3.patch # Fix build with Python 3
 # Fix build with python 3.13
   sed -e '/import pipes/d' -i qtwebengine/src/3rdparty/chromium/build/android/gyp/util/build_utils.py
 }
