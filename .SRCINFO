@@ -1,7 +1,7 @@
 pkgbase = marble-maps-extra-git
 	pkgdesc = Additional maps for marble. Includes:
 	pkgver = r34.20250522.9690e45
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://gitlab.com/dreieckli/marble-maps-extra
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = marble-maps-extra-git
 	makedepends = git
 	depends = marble-common
 	optdepends = marble-maps-thunderforest: Additional maps served by thunderforest.com.
+	optdepends = marble-maps-tracestrack: Additional maps served by tracestrack.com.
 	optdepends = marble-maps-sachsen: Additional maps for the German federal state "Sachsen".
 	optdepends = marble-maps-googlemaps: Google Maps.
 	optdepends = marble-maps-googlesat: Google satellite.
