@@ -1,7 +1,7 @@
 pkgbase = qt5-3d
 	pkgdesc = C++ and QML APIs for easy inclusion of 3D graphics
-	pkgver = 5.15.16
-	pkgrel = 3
+	pkgver = 5.15.17
+	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt5
@@ -13,7 +13,7 @@ pkgbase = qt5-3d
 	makedepends = vulkan-headers
 	depends = qt5-declarative
 	depends = assimp
-	source = kde-qt3d::git+https://invent.kde.org/qt/qt/qt3d#commit=1eecf07a4d5dadd1b5aaf785fc2a5ed03565599d
-	sha256sums = ee8afe6a5a828c926cc4b91fd66bc0a02095affdf3854b826684aed5b42e472e
+	source = kde-qt3d::git+https://invent.kde.org/qt/qt/qt3d#commit=73c1dda553f338c5a3b9ebbfd0e7de114f0c93dc
+	sha256sums = 73ed1001fda2391f19b15324b7175fe5ae38ea27d5167fa25606aaeb654a04fc
 
 pkgname = qt5-3d

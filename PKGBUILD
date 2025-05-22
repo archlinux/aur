@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-3d
-_basever=5.15.16
-pkgver=5.15.16
-pkgrel=3
-_commit=1eecf07a4d5dadd1b5aaf785fc2a5ed03565599d
+_basever=5.15.17
+pkgver=5.15.17
+pkgrel=1
+_commit=73c1dda553f338c5a3b9ebbfd0e7de114f0c93dc
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -15,7 +15,7 @@ makedepends=('git' 'vulkan-headers')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('ee8afe6a5a828c926cc4b91fd66bc0a02095affdf3854b826684aed5b42e472e')
+sha256sums=('73ed1001fda2391f19b15324b7175fe5ae38ea27d5167fa25606aaeb654a04fc')
 
 pkgver() {
   cd kde-$_pkgfqn
