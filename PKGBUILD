@@ -15,6 +15,7 @@ url='https://github.com/Blaadick/BlaadPapers'
 license=('MIT')
 depends=('qt6-base' 'hyprpaper')
 makedepends=('cmake')
+options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
