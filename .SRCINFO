@@ -1,0 +1,17 @@
+pkgbase = madypass
+    pkgdesc = Gestore di password sicure con GUI PyQt5 e cifratura Fernet
+    pkgver = 1.0
+    pkgrel = 1
+    url = https://github.com/madyel/generate-password
+    arch = any
+    license = GPL3
+    depends = python-pyqt5
+    depends = python-cryptography
+    source = madypass.py
+    source = icon.png
+    source = madypass.desktop
+    md5sums = SKIP
+    md5sums = SKIP
+    md5sums = SKIP
+
+pkgname = madypass
