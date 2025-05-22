@@ -1,6 +1,6 @@
 pkgbase = hyper8
 	pkgdesc = A static site generator for video publishing
-	pkgver = 0.20.0
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://simonrepp.com/hyper8
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = hyper8
 	depends = ffmpeg
 	depends = rsync
 	options = !lto
-	source = hyper8-0.20.0.tar.gz::https://codeberg.org/simonrepp/hyper8/archive/0.20.0.tar.gz
-	sha256sums = 7312c87e1cda6d099d8e70d650c472e46337c773ac31ea4a94f565272e8ff8e2
+	source = hyper8-0.20.1.tar.gz::https://codeberg.org/simonrepp/hyper8/archive/0.20.1.tar.gz
+	sha256sums = 4c3bc2147232b59483c64d6a1e82ef46ebec6662023cab8d15a61bdba9c83c38
 
 pkgname = hyper8
