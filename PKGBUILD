@@ -23,7 +23,7 @@ b2sums=('b78b91c840065a2c58ae93a85dd315b37ee121db73b2835ba4730e0b8d29adaf393fdd3
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  patch -Np1 -i "${srcdir}/kgoldrunner1_versioned.patch"
+  patch -Np1 -i "${srcdir}/${pkgname}_versioned.patch"
 }
 
 build() {
