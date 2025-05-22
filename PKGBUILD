@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("restup")
 conflicts=("restup")
 source=("https://github.com/Lindenk/restup/releases/download/v$pkgver/restup-$pkgver-x86_64.tar.gz")
-sha256sums=("fb0e070ff645b73d89e21e9238f100d8ee74cd8d31fd38cea20228e49993f6bc")
+sha256sums=("292c5e36ecfa3bdb443a922c2dac8c790fb8f6b3df834ed9d0962fffd9241e1d")
 
 package() {
     install -Dm755 restup -t "$pkgdir/usr/bin"
