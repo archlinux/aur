@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : dns_tools
- Tags         : 4.0.0 ➙ 4.0.5
-              : 2025-05-16 ➙ 2025-05-19
+ Tags         : 4.0.2 ➙ 4.2.0
+              : 2025-05-16 ➙ 2025-05-21
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-05-21   : 4.2.0
+                Use builtin types where possible. e.g. typing.List -> list
+ 2025-05-19     update Docs/Changelog Docs/${my_name}.pdf
 
  2025-05-19   : 4.0.5
                 test fixup
@@ -20,14 +24,3 @@
  2025-05-16   : 4.0.2
                 Typo in Arch PKGBUILD
                 update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-05-16   : 4.0.0
-                Code now complies with: PEP-8, PEP-257, PEP-484 and PEP-561
-                Refactor & clean ups (pretty big changes). Split into multiple modules.
-                Add test suite using pytest
-                  Our testing is clean but, given the large code changes, please
-                  let us know if you find any issues.
-                Command line long args can now use either hyphen or underscores
-                    e.g. dns-tool treats *--zsk-roll-1* and *--zsk_roll_1* exactly the same.
-                ;
- 2025-03-11     update Docs/Changelog.rst Docs/dns_tools.pdf
