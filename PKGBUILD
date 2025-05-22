@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 build() {
 	cd "$srcdir/xsc"
-	g++ -O2 -o xsc xsc.cpp
+	g++ -o xsc xsc.cpp -O2
 }
 
 package() {
