@@ -4,8 +4,8 @@
 #              (https://tango-controls.org) <info@tango-controls.org>
 
 pkgname=tango-idl
-pkgver=6.0.2
-pkgrel=2
+pkgver=6.0.4
+pkgrel=1
 groups=("tango-controls")
 pkgdesc="This is the Tango CORBA IDL file."
 arch=("any")
@@ -14,7 +14,7 @@ license=("GPL-3.0-or-later")
 makedepends=("cmake>=3.7")
 conflicts=("tango-idl-git")
 source=("https://gitlab.com/tango-controls/tango-idl/-/archive/${pkgver}/tango-idl-${pkgver}.tar.gz")
-sha256sums=("490ca710957b69fa412e04534ec06f8f1925dbe681df520469637ba12e15737a")
+sha256sums=('0e6df8ebbfb21ee218d71d55d7e3ac6128ad07d55e8e1f60a611a8088f05b12d')
 
 
 build() {
