@@ -1,6 +1,6 @@
 pkgbase = jackett-bin
 	pkgdesc = Use many torrent trackers with software that supports torznab/potato feeds.
-	pkgver = 0.22.1933
+	pkgver = 0.22.1938
 	pkgrel = 1
 	url = https://github.com/Jackett/Jackett
 	arch = x86_64
@@ -23,11 +23,11 @@ pkgbase = jackett-bin
 	sha256sums = 4cb8d61d3a7a85595af0d347e14729056cecdcbd96640a10ba7c0c02da4a3741
 	sha256sums = f865c06ffd21a12d37bf05953d9b483819c0f4e43d243a56db33986113fc40e4
 	sha256sums = 64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1
-	source_x86_64 = Jackett.Binaries.LinuxAMDx64-0.22.1933.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.22.1933/Jackett.Binaries.LinuxAMDx64.tar.gz
-	sha256sums_x86_64 = 1aed532d94d235c326ba666d9d9ebc0e13d99f4f87e0fe92aaa4672515e1e2f0
-	source_aarch64 = Jackett.Binaries.LinuxARM64-0.22.1933.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.22.1933/Jackett.Binaries.LinuxARM64.tar.gz
-	sha256sums_aarch64 = 2c1b4531829cbf23a042d2c3eeb613013cddcd7f9013235da409272aa5a02323
-	source_armv7h = Jackett.Binaries.LinuxARM32-0.22.1933.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.22.1933/Jackett.Binaries.LinuxARM32.tar.gz
-	sha256sums_armv7h = 408cd7671d6f7ca0fc4c63691b7a65c086cc9df850f4b105f883e907a14e6538
+	source_x86_64 = Jackett.Binaries.LinuxAMDx64-0.22.1938.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.22.1938/Jackett.Binaries.LinuxAMDx64.tar.gz
+	sha256sums_x86_64 = 0bf40d68d2f0c1a9c023d0540468cdaffcd7cebdac5cc03a478506dd79a005ea
+	source_aarch64 = Jackett.Binaries.LinuxARM64-0.22.1938.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.22.1938/Jackett.Binaries.LinuxARM64.tar.gz
+	sha256sums_aarch64 = e00ea1104b1b49ff479088e2b7762e21e2dd3e012c2478e7a895b88970e4b046
+	source_armv7h = Jackett.Binaries.LinuxARM32-0.22.1938.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.22.1938/Jackett.Binaries.LinuxARM32.tar.gz
+	sha256sums_armv7h = 27841a41c6db912f9fe116b778315a85ab7f216b62578c5099b6f0bd453f7235
 
 pkgname = jackett-bin
