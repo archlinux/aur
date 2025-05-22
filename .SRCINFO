@@ -1,5 +1,5 @@
 pkgbase = python-logfire
-	pkgver = 3.13.1
+	pkgver = 3.16.0
 	pkgrel = 1
 	url = https://github.com/pydantic/logfire
 	arch = x86_64
@@ -41,7 +41,6 @@ pkgbase = python-logfire
 	checkdepends = python-opentelemetry-instrumentation-mysql
 	checkdepends = python-opentelemetry-instrumentation-sqlite3
 	checkdepends = python-opentelemetry-instrumentation-aws-lambda
-	checkdepends = python-eval-type-backport
 	checkdepends = python-requests-mock
 	checkdepends = python-inline-snapshot
 	checkdepends = python-structlog
@@ -74,9 +73,9 @@ pkgbase = python-logfire
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.8
-	source = https://github.com/pydantic/logfire/archive/refs/tags/v3.13.1.tar.gz
-	sha256sums = 7fd5c5400ca12c58ffd95124228909d0fb474fbf08b7c27abb8aa8aeb7c99d6c
+	depends = python
+	source = https://github.com/pydantic/logfire/archive/refs/tags/v3.16.0.tar.gz
+	sha256sums = 42ed5077322e03c4e0ad43a17dcbb78d155fc6341c91c7a21a466202af4901d3
 	source_x86_64 = https://download.docker.com/linux/static/stable/x86_64/docker-28.0.4.tgz
 	source_x86_64 = https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-28.0.4.tgz
 	sha256sums_x86_64 = 6b130fa5fb13516620d5ece0b63f63a495cede428bb2f9e24449022e9d72e0cb
@@ -93,7 +92,7 @@ pkgname = python-logfire-api
 pkgname = python-logfire
 	pkgdesc = The best Python observability tool!
 	url = https://github.com/pydantic/logfire
-	depends = python>=3.8
+	depends = python
 	depends = python-opentelemetry-sdk
 	depends = python-opentelemetry-exporter-otlp-proto-http
 	depends = python-opentelemetry-instrumentation
