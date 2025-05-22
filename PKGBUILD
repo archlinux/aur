@@ -34,7 +34,7 @@ source=(displaylink-driver-${pkgver}.zip::https://www.synaptics.com/sites/defaul
         displaylink-sleep.sh)
 sha256sums=('ca2230e940ce2d5d4bba3c61015b1f8c803985efbef16d36dbe10afce653c172'
             '2d9ef22e7aa9202e7490d033be461a3d2b2fc3b599ca1ab83ede8c53fc2206c6'
-            2f81fea43332a62b2cf1dd47e56ea01caf1e886bcd16c3f82b18bfe148fb21a9'
+            '2f81fea43332a62b2cf1dd47e56ea01caf1e886bcd16c3f82b18bfe148fb21a9'
             '5f89c3153bd090b17394449ef6a7d7c854e865773dfef7e7a35259129d3445d9'
             '530c488fa9b2833ff64611ff2b533f63212a85f8ebed446d5a4d51cf9a52c7ea'
             'bf14a9fd6d7b2b6047647d1f6fdc6ee85bcfb0ac2e62af5d90e10e293fb4a741'
