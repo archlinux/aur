@@ -11,7 +11,7 @@ license=('Apache-2.0')
 makedepends=('git')
 provides=($_pkgname)
 depends=('bash' 'clang')
-DLAGENTS=("http::/usr/bin/git clone --branch main --single-branch %u")
+DLAGENTS=("http::/usr/bin/git clone --branch android-latest-release --single-branch %u")
 source=(
 	'git+https://android.googlesource.com/platform/system/tools/aidl'
 	'LICENSE'
