@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Misano <me@mirsobhan.ir>
 pkgname=persian-hm-ftx-fonts
 pkgver=3.8
 pkgrel=1
