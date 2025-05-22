@@ -1,24 +1,25 @@
 pkgbase = logseq-desktop-electron-bin
 	pkgdesc = Privacy-first, open-source platform for knowledge sharing and management.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.10.9
+	pkgver = 0.10.11
 	pkgrel = 1
 	url = https://logseq.com/
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = gendesk
-	depends = electron27
+	depends = electron36
 	depends = nodejs
-	provides = logseq-desktop=0.10.9
+	depends = perl
+	provides = logseq-desktop=0.10.11
 	conflicts = logseq-desktop
 	conflicts = logseq-desktop-electron
 	options = !emptydirs
 	options = !strip
 	source = logseq-desktop-electron.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = logseq-desktop-electron-0.10.9-aarch64.zip::https://github.com/logseq/logseq/releases/download/0.10.9/Logseq-linux-arm64-0.10.9.zip
-	sha256sums_aarch64 = fe9821d510a193f504a21d05d13ed473c643ccba9d6a9683a2f8f973721ca4b7
-	source_x86_64 = logseq-desktop-electron-0.10.9-x86_64.zip::https://github.com/logseq/logseq/releases/download/0.10.9/Logseq-linux-x64-0.10.9.zip
-	sha256sums_x86_64 = 409de3e78851dc8f95b66b9cc7a737eb2e7c311a29c00040ca7e7c42eadbae82
+	source_aarch64 = logseq-desktop-electron-0.10.11-aarch64.zip::https://github.com/logseq/logseq/releases/download/0.10.11/Logseq-linux-arm64-0.10.11.zip
+	sha256sums_aarch64 = bdf0c48ac97e2a92b14925e0d0ac684bd0df05eec6ba34d7dd5f87914794021f
+	source_x86_64 = logseq-desktop-electron-0.10.11-x86_64.zip::https://github.com/logseq/logseq/releases/download/0.10.11/Logseq-linux-x64-0.10.11.zip
+	sha256sums_x86_64 = 6920a08e87a7be9217cdfcf47a5233176c85a34052e5b2b18ebd8b58019330de
 
 pkgname = logseq-desktop-electron-bin
