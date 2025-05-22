@@ -2,7 +2,7 @@
 
 pkgname=nodejs-npm-upgrade
 _pkgname=npm-upgrade
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc='CLI utility to update outdated NPM dependencies with changelogs inspection'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs>=10.20.0')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 noextract=("$_pkgname-$pkgver.tgz")
-sha256sums=('99288e0b227523db71f083b5686e74bc0885a05d69acba3dceebe2effeaa1b47')
+sha256sums=('c9b48069d6d31ed581e51e360a5eefde3739329f703c945ea220c47b73e73bac')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" "$srcdir/$_pkgname-$pkgver.tgz"
