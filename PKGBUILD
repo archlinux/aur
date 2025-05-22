@@ -3,7 +3,7 @@
 _name=mcp
 pkgname=python-${_name}
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python implementation of the Model Context Protocol (MCP).'
 arch=('x86_64' 'aarch64')
 url='https://github.com/modelcontextprotocol/python-sdk'
@@ -14,7 +14,7 @@ source_aarch64=("https://github.com/astral-sh/uv/releases/latest/download/uv-aar
 sha256sums=('905d8d208baf7e3e71d70c82803b89112e321581bcd2530f9de0fe4103d28749')
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
-depends=('python' 'python-anyio' 'python-httpx' 'python-httpx-sse' 'python-pydantic' 'python-starlette' 'python-multipart' 'python-sse-starlette' 'python-pydantic-settings' 'uvicorn')
+depends=('python' 'python-anyio' 'python-httpx' 'python-httpx-sse' 'python-pydantic' 'python-starlette' 'python-python-multipart' 'python-sse-starlette' 'python-pydantic-settings' 'uvicorn')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-trio' 'python-pytest-flakefinder' 'python-pytest-xdist' 'python-pytest-examples' 'python-rich' 'python-typer' 'python-dotenv' 'python-websockets')
 optdepends=('python-rich: rich' 'python-typer: cli' 'python-dotenv: cli' 'python-websockets: ws')
