@@ -7,7 +7,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.1.0
+pkgver=3.1.1
 _electronversion=31
 _nodeversion=23
 pkgrel=1
@@ -37,7 +37,7 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('904d9a68209a39b38d546617344a48a9978d5ab8a713f9bbfca46372f4afb9c5'
+sha256sums=('36c37f3f16e4fd5224f88f12734e918e2b98a5c1b7c2c0d23d0df61b7e824262'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
@@ -47,6 +47,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -55,7 +56,6 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -74,7 +74,7 @@ prepare() {
         echo apps/{desktop,web} packages/{crypto,editor,logger,streamable-fs,theme,ui,sodium,clipper} servers/theme | xargs -n 1 cp .npmrc
     fi
     sed -i "s/npm \${/NODE_ENV=development npm \${/g" scripts/bootstrap.mjs
-    #find apps -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
+    find apps -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     NODE_ENV=development    npm install --ignore-scripts --prefer-offline --no-audit
     NODE_ENV=development    npm run bootstrap -- --scope=web
     NODE_ENV=development    npm run bootstrap -- --scope=desktop
