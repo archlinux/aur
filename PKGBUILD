@@ -1,57 +1,41 @@
 # Maintainer:
 # Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 
-# options
-if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ]; then
-  : ${_autoupdate:=false}
-else
-  : ${_autoupdate:=true}
-fi
-
-: ${_install_path:=opt}
-
-# basic info
 _pkgname="logseq-desktop"
 pkgname="$_pkgname-bin"
-pkgver=0.10.9
-pkgrel=2
+pkgver=0.10.11
+pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL-3.0-or-later')
 arch=('x86_64' 'aarch64')
 
-# main package
-_main_package() {
-  provides=("$_pkgname=$pkgver")
-  conflicts=("$_pkgname")
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 
-  options=('!debug' '!strip')
-  install="$_pkgname.install"
+options=('!debug' '!strip')
 
-  _pkgsrc="Logseq-linux-x64"
-  [[ "$CARCH" == "aarch64" ]] && _pkgsrc="Logseq-linux-arm64"
+_pkgsrc="Logseq-linux-x64"
+[[ "$CARCH" == "aarch64" ]] && _pkgsrc="Logseq-linux-arm64"
 
-  _pkgext="zip"
-  source+=("$url/releases/download/$_pkgver/$_pkgsrc-$_pkgver.$_pkgext")
-  sha256sums+=('SKIP')
+_pkgext="zip"
+source_x86_64=("$url/releases/download/$pkgver/Logseq-linux-x64-$pkgver.$_pkgext")
+source_aarch64=("$url/releases/download/$pkgver/Logseq-linux-arm64-$pkgver.$_pkgext")
 
-  # appimage - missing icon
-  if [[ "${_pkgext::1}" == "A" ]]; then
-    source+=("$_pkgname.png"::"$url/raw/master/resources/icons/logseq.png")
-    sha256sums+=('2c04bad999ef75b874bd185b84c4df560486685f5a36c2801224ef9b67642006')
-  fi
-}
+sha256sums_x86_64=('6920a08e87a7be9217cdfcf47a5233176c85a34052e5b2b18ebd8b58019330de')
+sha256sums_aarch64=('bdf0c48ac97e2a92b14925e0d0ac684bd0df05eec6ba34d7dd5f87914794021f')
 
-# common functions
-pkgver() {
-  echo "${_pkgver:?}"
-}
+# appimage - missing icon
+if [[ "${_pkgext::1}" == "A" ]]; then
+  source+=("$_pkgname.png"::"$url/raw/master/resources/icons/logseq.png")
+  sha256sums+=('2c04bad999ef75b874bd185b84c4df560486685f5a36c2801224ef9b67642006')
+fi
 
 prepare() {
   # appimage - extract
   if [[ "${_pkgext::1}" == "A" ]]; then
-    chmod +x "$_pkgsrc-$_pkgver.$_pkgext"
-    "./$_pkgsrc-$_pkgver.$_pkgext" --appimage-extract
+    chmod +x "$_pkgsrc-$pkgver.$_pkgext"
+    "./$_pkgsrc-$pkgver.$_pkgext" --appimage-extract
     ln -sf "squashfs-root" "$_pkgsrc"
   fi
 }
@@ -70,7 +54,11 @@ package() {
     install -Dm644 "$_pkgsrc/resources/app/icon.png" "$pkgdir/usr/share/pixmaps/logseq.png"
   fi
 
-  # desktop file
+  # main files
+  mkdir -pm755 "$pkgdir/$_install_path/$_pkgname"
+  cp -a "$_pkgsrc"/* "$pkgdir/$_install_path/$_pkgname/"
+
+  # launcher
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Type=Application
@@ -87,48 +75,31 @@ END
 
   # script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/logseq" << END
-#!/usr/bin/env sh
-set -e
-APPDIR="/$_install_path/logseq-desktop"
+#!/usr/bin/env bash
 
-_ELECTRON="\${APPDIR}/Logseq"
-_FLAGS_FILE="\${XDG_CONFIG_HOME:-\$HOME/.config}/logseq-flags.conf"
-if [ -r "\$_FLAGS_FILE" ]; then
-  _USER_FLAGS="\$(cat "\$_FLAGS_FILE")"
+name=logseq
+flags_file="\${XDG_CONFIG_HOME:-\$HOME/.config}/\${name}-flags.conf"
+
+lines=()
+if [[ -f "\${flags_file}" ]]; then
+    mapfile -t lines < "\${flags_file}"
 fi
 
-if [[ \$EUID -ne 0 ]] || [[ \$ELECTRON_RUN_AS_NODE ]]; then
-    exec \${_ELECTRON} \$_USER_FLAGS "\$@"
-else
-    exec \${_ELECTRON} --no-sandbox \$_USER_FLAGS "\$@"
-fi
+flags=()
+for line in "\${lines[@]}"; do
+  if [[ ! "\${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "\${line}" ]]; then
+    flags+=("\${line}")
+  fi
+done
+
+: \${ELECTRON_IS_DEV:=0}
+export ELECTRON_IS_DEV
+: \${ELECTRON_FORCE_IS_PACKAGED:=true}
+export ELECTRON_FORCE_IS_PACKAGED
+
+exec "/$_install_path/logseq-desktop/Logseq" "\${flags[@]}" "\$@"
 END
 
-  # package files
-  install -dm755 "$pkgdir/$_install_path/$_pkgname"
-  cp --reflink=auto -r "$_pkgsrc"/* "$pkgdir/$_install_path/$_pkgname/"
-
-  # fix permissions
+  # permissions
   chmod -R u=rwX,go=rX "$pkgdir"
 }
-
-# update version
-_update_version() {
-  : ${_pkgver:=$pkgver}
-
-  if [[ "${_autoupdate::1}" != "t" ]]; then
-    return
-  fi
-
-  _response=$(curl -SsfL "https://api.github.com/repos/logseq/logseq/releases/latest")
-  _pkgver_new=$(printf '%s' "$_response" | grep -oP '"tag_name": "\K(.*?)(?=")')
-
-  # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
-    _pkgver="${_pkgver_new:?}"
-  fi
-}
-
-# execute
-_update_version
-_main_package
