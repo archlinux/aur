@@ -11,7 +11,7 @@ license=('AGPLv3')
 depends=('postgresql')
 
 source=("${url}/releases/download/${pkgver}/postgresql-17-vchord_${pkgver}_${arch}-linux-gnu.zip")
-sha256sums=('SKIP')
+sha256sums=('f44f132577db5cf926a1c1efdee947750a4d6718f77e9ba057e24446d643b7ed')
 
 
 
