@@ -4,8 +4,8 @@
 
 pkgname='fuc-bin'
 pkgver=3.1.0
-pkgrel=1
-pkgdesc='Fast Unix Commands: Modern, performance focused unix commands (pre-compiled)'
+pkgrel=2
+pkgdesc='Fast Unix Commands: Performance focused alternatives to cp(1) and rm(1) (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/SUPERCILEX/fuc'
 license=('Apache-2.0')  # SPDX-License-Identifier: Apache-2.0
