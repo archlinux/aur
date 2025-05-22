@@ -10,7 +10,7 @@ arch=('any')
 license=('Apache-2.0')
 makedepends=('git' 'go')
 provides=($_pkgname)
-DLAGENTS=("http::/usr/bin/git clone --branch main --single-branch %u")
+DLAGENTS=("http::/usr/bin/git clone --branch android-latest-release --single-branch %u")
 source=(
 	'git+https://android.googlesource.com/platform/build/blueprint'
 	'git+https://android.googlesource.com/platform/build/soong'
