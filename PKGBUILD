@@ -24,5 +24,5 @@ prepare() {
 
 package() {
   _extension_id="$(sed -n 's/.*"id": "\(.*\)".*/\1/p' "${srcdir}"/clearurls-${pkgver}/manifest.json)"
-  install -Dm644 'clearurls.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/${_id}.xpi"
+  install -Dm644 'clearurls.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}.xpi"
 }
