@@ -2,8 +2,8 @@
 # Contributor: Ciro Scognamiglio <ciro.scognamiglio88 at gmail dot com>
 
 pkgname='bzr-player'
-pkgver='2.0.78'
-pkgrel='2'
+pkgver='2.0.79'
+pkgrel='1'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('x86_64')
 url="https://bzrplayer.blazer.nu"
@@ -12,7 +12,7 @@ depends=('hicolor-icon-theme' 'qt6-base' 'qt-advanced-docking-system')
 makedepends=('cmake' 'dos2unix' 'gendesk' 'libglvnd' 'ninja' 'patchutils' 'qt6-declarative' 'qt6-svg' 'sdl2-compat'
   'vulkan-headers')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aargirakis/BZRPlayer/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4e272bbcdc369ffb37e353170535972da193af6c7f382e12260c18ac17268d9c')
+sha256sums=('33d96587a373f42a1232d21fc74089993b632184d8e0519ee4a0202986cbf0e5')
 
 build() {
   # workaround for making plugin_furnace.so & plugin_protrekkr.so work:
@@ -31,7 +31,7 @@ package() {
   cd "$srcdir"
 
   for size in 16 32 48 64 128 256 512; do
-    install -Dm644 "$pkgdir/usr/share/$pkgname/data/resources/icon.png" \
+    install -Dm644 "$pkgdir/usr/share/$pkgname/resources/icon.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
   done
 
