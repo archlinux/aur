@@ -1,7 +1,7 @@
 pkgbase = simonwllm
 	pkgdesc = A CLI utility and Python library for interacting with Large Language Models, both via remote APIs and models that can be installed and run on your own machine.
 	pkgver = 0.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simonw/llm
 	arch = x86_64
 	license = Apache-2.0
@@ -20,7 +20,7 @@ pkgbase = simonwllm
 	depends = python-ulid
 	depends = python-puremagic
 	provides = llm
-	source = simonwllm-0.25.tar.gz::https://github.com/simonw/llm/archive/refs/tags/0.25.tar.gz
+	source = llm-0.25.tar.gz::https://github.com/simonw/llm/archive/refs/tags/0.25.tar.gz
 	sha256sums = SKIP
 
 pkgname = simonwllm
