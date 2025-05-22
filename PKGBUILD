@@ -3,17 +3,17 @@
 _pkgname=marble-maps-extra
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=r32.20230919.abf1758
+pkgver=r34.20250522.9690e45
 pkgrel=1
 pkgdesc="Additional maps for marble. Includes: "
 url="https://gitlab.com/dreieckli/marble-maps-extra"
 arch=('any')
 license=(
-  'custom: CC-BY-NC-SA-3.0' # The .dgml files and the `logo.jpg`
-  'custom: CC-BY-SA-3.0'    # The OpenTopoMap renderings
-  'custom: ODbl_1.0'        # The OpenStreetMap data
-  # 'custom: OSM'             # The OpenStreetMap data
-  'custom: SRTM'            # The SRTM data included in some maps (most likely public domain, see https://gis.stackexchange.com/a/444078/90521)
+  'CC-BY-NC-SA-3.0' # The .dgml files and the `logo.jpg`
+  'CC-BY-SA-3.0'    # The OpenTopoMap renderings
+  'CC-BY-SA-2.0'    # The OpenStreetMap renderings
+  'ODbL-1.0'        # The OpenStreetMap data
+  'LicenseRef-SRTM' # The SRTM data included in some maps (most likely public domain, see https://gis.stackexchange.com/a/444078/90521)
 )
 groups=()
 depends=(
@@ -38,6 +38,7 @@ provides=(
   'marble-maps-hillshading'
   'marble-maps-openstreetmap-hillshading'
   'marble-maps-openstreetmap'
+  'marble-maps-openstreetmap-fr'
   'marble-maps-opentopomap'
   'marble-maps-oepnvkarte'
 )
@@ -67,7 +68,9 @@ package() {
   install -dvm755 "${pkgdir}/usr/share/marble/data/maps"
   cp -rv maps/* "${pkgdir}/usr/share/marble/data/maps"/
 
-  install -v -D -m644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -v -D -m644 "COPYING.md" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.md"
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "README.md"
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "COPYING.md"
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "license_texts"/*
+
   ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.md" "${pkgdir}/usr/share/doc/${_pkgname}/COPYING.md"
 }

@@ -1,14 +1,15 @@
 pkgbase = marble-maps-extra-git
 	pkgdesc = Additional maps for marble. Includes:
-	pkgver = r32.20230919.abf1758
+	pkgver = r34.20250522.9690e45
 	pkgrel = 1
 	epoch = 0
 	url = https://gitlab.com/dreieckli/marble-maps-extra
 	arch = any
-	license = custom: CC-BY-NC-SA-3.0
-	license = custom: CC-BY-SA-3.0
-	license = custom: ODbl_1.0
-	license = custom: SRTM
+	license = CC-BY-NC-SA-3.0
+	license = CC-BY-SA-3.0
+	license = CC-BY-SA-2.0
+	license = ODbL-1.0
+	license = LicenseRef-SRTM
 	makedepends = bash
 	makedepends = git
 	depends = marble-common
@@ -19,11 +20,12 @@ pkgbase = marble-maps-extra-git
 	optdepends = marble-maps-virtualearthos: Bing maps.
 	optdepends = marble-maps-virtualearth: Bing satellite.
 	optdepends = marble-restricted-maps: For additional maps with restricted licensing.
-	provides = marble-maps-extra=r32.20230919.abf1758
+	provides = marble-maps-extra=r34.20250522.9690e45
 	provides = marble-maps-hillshading-karry
 	provides = marble-maps-hillshading
 	provides = marble-maps-openstreetmap-hillshading
 	provides = marble-maps-openstreetmap
+	provides = marble-maps-openstreetmap-fr
 	provides = marble-maps-opentopomap
 	provides = marble-maps-oepnvkarte
 	conflicts = marble-maps-extra
