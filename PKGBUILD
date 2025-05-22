@@ -145,8 +145,8 @@ else
 fi
 
 pkgbase="linux-$_pkgsuffix"
-_major=6.13
-_minor=12
+_major=6.14
+_minor=8
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -177,7 +177,7 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=570.144
+_nv_ver=570.153.02
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
@@ -206,7 +206,7 @@ fi
 # ZFS support
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=76fbaaa192f499a42c3c821f7346710c2d321af3")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=92f430b00f42964b63aee373fbf6598a20f6c0cc")
 fi
 
 # NVIDIA pre-build module support
@@ -218,14 +218,12 @@ fi
 if [ "$_build_nvidia_open" = "yes" ]; then
     source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
              "${_patchsource}/misc/nvidia/0001-Enable-atomic-kernel-modesetting-by-default.patch"
-             "${_patchsource}/misc/nvidia/0002-Add-IBT-support.patch"
-             "${_patchsource}/misc/nvidia/0003-Kbuild-Convert-EXTRA_CFLAGS-to-ccflags-y.patch"
-             "${_patchsource}/misc/nvidia/0008-kbuild-Add-workaround-for-GCC-15-Compilation.patch")
+             "${_patchsource}/misc/nvidia/0002-Add-IBT-support.patch")
 fi
 
 ## List of CachyOS schedulers
 case "$_cpusched" in
-    cachyos|bore|rt-bore) # CachyOS Scheduler (BORE)
+    cachyos|bore|rt-bore|hardened) # CachyOS Scheduler (BORE)
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;&
     bmq) ## Project C Scheduler
         source+=("${_patchsource}/sched/0001-prjc-cachy.patch");;
@@ -468,8 +466,6 @@ prepare() {
     if [ "$_build_nvidia_open" = "yes" ]; then
         patch -Np1 -i "${srcdir}/0001-Enable-atomic-kernel-modesetting-by-default.patch" -d "${srcdir}/${_nv_open_pkg}/kernel-open"
         patch -Np1 -i "${srcdir}/0002-Add-IBT-support.patch" -d "${srcdir}/${_nv_open_pkg}/"
-        patch -Np1 -i "${srcdir}/0003-Kbuild-Convert-EXTRA_CFLAGS-to-ccflags-y.patch" -d"${srcdir}/${_nv_open_pkg}"
-        patch -Np1 -i "${srcdir}/0008-kbuild-Add-workaround-for-GCC-15-Compilation.patch" -d "${srcdir}/${_nv_open_pkg}/"
     fi
 }
 
@@ -587,6 +583,10 @@ _package-headers() {
     echo "Installing KConfig files..."
     find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
+    echo "Installing unstripped VDSO..."
+    make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
+      link=  # Suppress build-id symlinks
+
     echo "Removing unneeded architectures..."
     local arch
     for arch in "$builddir"/arch/*/; do
@@ -700,9 +700,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('c48911f0bdabdb2534fdfb2c85c74702bdfce1befbb4085c8e931544b746c5f1b1ee48b156df3544ed1e2ee53064c7fe2dd2199879450eb0aa046a59ac51c4a0'
-        '3fe04dada0a49bcb83313a7c8d33ed0319c8864a7c2ecb0e44192f99913505673c7b41e3c00834608c51c2e023e0dd0bc17649d80ab242a7f286d62670d3c0f6'
+b2sums=('7a9336a015011fd502f31f17fff4ee6826724b4401650092fabaa93a68df14bc0dbd6e43c03f85cdac622ea28c4cd57d6ab1bcb808ce0b9ddf0ec03179f1b3e2'
+        '210fd48123a61ab999c0dafa4fd072f1823aca9d497adb2db2f86922ce929d279d6869f7d021af020c23c0c6069422d230a192615856ef290f2d2d9caf456e14'
         '390c7b80608e9017f752b18660cc18ad1ec69f0aab41a2edfcfc26621dcccf5c7051c9d233d9bdf1df63d5f1589549ee0ba3a30e43148509d27dafa9102c19ab'
-        'db921e5ddb46aa972b1b84fedbd74d76e4bc5e0ffb42598bad613bc1f9598058ed3794e1e2e5edc57de46bda13a4f63e7abc8a337999fc184a7db5b03faf10f8'
-        '3ae7a58a83c5f36d02a7b5822628fea9a5513ec41e66966678fe17ef9a96af9356b21da4cf5e492188af19747b142e532fe79582062132901e3b8cc80bc5cdd3'
-        'f02dc8303e5788b10ae8d11f79ab330cc386f94f803076381445382b0f10c3d4786b483351cbb88c0bd256444e306761d4137ea8a1aacb09ee7284da035a97ca')
+        '0f25d9aa6ba98947bc9aa3918b57c769c4310ec97453ac63cfe2381a512e09b1752d40703ff5b6fd4e8ca85ef94ecb3420e1fbd38af0e571843a2c3f9836344e'
+        'd684dd248a32c12befddfed7355a4b008ceb5ed1b37d992d91654eb1924e513495bfd681dc8e518e145184e021e3aabae8b8a9d2e4444cc12454c08edc5b770e'
+        '14243b7ae2e5ac57c9a53ed122e4fe10797797820cef3caf8128d38f2830f9883b8e1494e57eddeef2983faa98e3d2e5bef255ec0aae90ea301a4de19e467fec')
