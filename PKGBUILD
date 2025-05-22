@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-virtualkeyboard
-_basever=5.15.16
-pkgver=5.15.16
-pkgrel=3
-_commit=365f79ee89c6a57f205fe6c89817c51ff52ea059
+_basever=5.15.17
+pkgver=5.15.17
+pkgrel=1
+_commit=0d229d587e578fb4a5144594b926d5d3138c407e
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3')
@@ -15,7 +15,7 @@ makedepends=('git')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('3f385f27819dde3130511c1e7dff650ade187f2c559d8519045cdf142cf2f058')
+sha256sums=('c7c355c8a30f781c907c7e69d44ea0600e3fe41ba8e655943f86a7b44c6f4a40')
 
 pkgver() {
   cd kde-$_pkgfqn
