@@ -1,0 +1,13 @@
+diff --git a/TTS/utils/io.py b/TTS/utils/io.py
+index 3107ba66..43acc519 100644
+--- a/TTS/utils/io.py
++++ b/TTS/utils/io.py
+@@ -51,7 +51,7 @@ def load_fsspec(
+             return torch.load(f, map_location=map_location, **kwargs)
+     else:
+         with fsspec.open(path, "rb") as f:
+-            return torch.load(f, map_location=map_location, **kwargs)
++            return torch.load(f, map_location=map_location, weights_only=False, **kwargs)
+ 
+ 
+ def load_checkpoint(

@@ -5,7 +5,7 @@
 _pkgname="python-tts"
 pkgname="${_pkgname}-git"
 pkgver=0.22.0.r9.gdbf1a08a
-pkgrel=5
+pkgrel=6
 pkgdesc="Coqui deep learning toolkit for Text-to-Speech, battle-tested in research and production"
 url="https://github.com/coqui-ai/TTS"
 license=("MPL2")
@@ -57,9 +57,11 @@ options=("!strip")
 source=(
     "$_pkgname::git+https://github.com/coqui-ai/TTS/"
     headless.patch
+	torch2.6.patch
 )
 b2sums=('SKIP'
-        '1dfef5cde2f801f3b6db4b15a8f636767f32b5a0ef8bb5fe74f81fb739c5b47397226fd35dbc661ab6d57928ea9cc9fac67feeca86b473b79575696f53db4bb0')
+        '1dfef5cde2f801f3b6db4b15a8f636767f32b5a0ef8bb5fe74f81fb739c5b47397226fd35dbc661ab6d57928ea9cc9fac67feeca86b473b79575696f53db4bb0'
+        '002e8a8a2ac6eabab5eb203d0dfbf81719bcac6afa2a844a3a7d0ebce7707540dddafdb22242ec0a614cc0f03d3b2fcd40a946ffbf1b98a1afb738f5da57b0aa')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}" || exit 2
@@ -82,6 +84,7 @@ prepare(){
         -re "s|numpy==[0-9]+\.[0-9]+\.[0-9]+|numpy|g"
     # apply patch for using the lib on headless server:
     git apply "${srcdir}/headless.patch"
+    git apply "${srcdir}/torch2.6.patch"
 }
 
 build(){
