@@ -1,8 +1,8 @@
-# Maintainer: dvb <archlinux at b0rken dot de>
+# Maintainer: dvb < echo =oQZk5ibltmcwIGQ4VnbpxGajJXY | rev | base64 -d >
 # Contributor: Emanuele 'Lele aka eldios' Calo' <lele@sshadm.in>
 
 pkgname=trufflehog
-pkgver=3.88.32
+pkgver=3.88.33
 pkgrel=1
 pkgdesc="Tool for finding secrets like private keys and credentials."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go')
 provides=('trufflehog')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('3ce43b73d7f8bebe6ad089201bf37f09670ea282a7119ed14b8df5ca906213a4c1bbd09c31734fe01c9da599ab45e06f359e1814eb467c018b655c6573a82ebd')
+sha512sums=('67444e21c6ac16d332869e0d8dc46b8669f58bc41dcc9e9d6d27cefc17da17148d1f3466036ccb0bcfdd0741c56633f351be018f709192ba5715f263616d8b7b')
 
 build() {
   cd "$pkgname-$pkgver"
