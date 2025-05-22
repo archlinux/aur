@@ -1,6 +1,6 @@
 pkgbase = python-prompt-toolkit
 	pkgdesc = Library for building powerful interactive command lines in Python.
-	pkgver = 3.0.50
+	pkgver = 3.0.51
 	pkgrel = 1
 	url = https://python-prompt-toolkit.readthedocs.io
 	arch = any
@@ -10,13 +10,13 @@ pkgbase = python-prompt-toolkit
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.8
+	depends = python
 	depends = python-wcwidth
 	depends = python-pyperclip
 	depends = python-pygments
 	depends = python-asyncssh
 	optdepends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/source/p/prompt-toolkit/prompt_toolkit-3.0.50.tar.gz
-	sha256sums = 544748f3860a2623ca5cd6d2795e7a14f3d0e1c3c9728359013f79877fc89bab
+	source = https://files.pythonhosted.org/packages/source/p/prompt-toolkit/prompt_toolkit-3.0.51.tar.gz
+	sha256sums = 931a162e3b27fc90c86f1b48bb1fb2c528c2761475e57c9c06de13311c7b54ed
 
 pkgname = python-prompt-toolkit

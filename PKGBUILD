@@ -2,18 +2,18 @@
 
 _name="prompt-toolkit"
 pkgname="python-${_name}"
-pkgver=3.0.50
+pkgver=3.0.51
 pkgrel=1
 pkgdesc="Library for building powerful interactive command lines in Python."
 arch=('any')
 url="https://python-prompt-toolkit.readthedocs.io"
 license=('BSD-3-Clause')
-depends=('python>=3.8' 'python-wcwidth' 'python-pyperclip' 'python-pygments' 'python-asyncssh')
+depends=('python' 'python-wcwidth' 'python-pyperclip' 'python-pygments' 'python-asyncssh')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 optdepends=('python-typing_extensions')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('544748f3860a2623ca5cd6d2795e7a14f3d0e1c3c9728359013f79877fc89bab')
+sha256sums=('931a162e3b27fc90c86f1b48bb1fb2c528c2761475e57c9c06de13311c7b54ed')
 
 build() {
   cd "${srcdir}"/${_name//-/_}-${pkgver}
@@ -26,9 +26,7 @@ check() {
     --override-ini="addopts="
   )
   cd "${srcdir}"/${_name//-/_}-${pkgver}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest "${pytest_options[@]}" tests
+  python -m pytest "${pytest_options[@]}" tests
 }
 
 package() {
