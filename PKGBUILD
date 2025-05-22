@@ -3,8 +3,8 @@
 _pkgname=marble-maps-thunderforest
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=r13.20220207.cfdc60d
-pkgrel=3
+pkgver=r14.20250522.627ff63
+pkgrel=1
 pkgdesc="Maps served by thunderforest for KDE marble. API key required and asked for during build."
 url="https://gitlab.com/dreieckli/marble-maps-thunderforest"
 arch=('any')
