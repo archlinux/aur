@@ -15,9 +15,7 @@ options=(!debug !strip)
 makedepends+=(git)
 
 depends=(
-	"s6"
 	"wayland-utils"
-	"way-secure"
 	"pipewire-v4l2"
 	"procps-ng"
 	"coreutils"
@@ -49,6 +47,8 @@ depends=(
 optdepends=(
 	'at-spi2-core: accessibility'
 	'orca: screen reader'
+	's6: Wayland secure context'
+	'way-secure: Wayland secure context'
 )
 
 makedepends+=(
