@@ -31,7 +31,6 @@ sha256sums=(
 build() {
     cd "${srcdir}/${_pkgdowmload}"
     export PERL_MM_USE_DEFAULT=1
-    export WX_CONFIG=/usr/lib/wx/config/gtk3-unicode-3.2  # temporary fix
     eval "$(perl -I "${srcdir}" -Mlocal::lib="${srcdir}")"
     cpanm --notest --local-lib="${srcdir}" --verbose --installdeps .
     cpanm --notest --local-lib="${srcdir}" --verbose ${_ghurl}/releases/download/R${_pkgbasever}/Wx-${_wxver}.tar.gz
