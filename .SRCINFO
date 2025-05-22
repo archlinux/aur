@@ -1,0 +1,23 @@
+pkgbase = coderadio-git
+	pkgdesc = A minimalist radio player for code Radio by FreeCodeCamp.(Use system-wide electron)
+	pkgver = 1.1.3.r0.g9f91aa5
+	pkgrel = 1
+	url = https://github.com/Guibibi/CodeRadio-Desktop
+	arch = any
+	license = CC0-1.0
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron36
+	provides = coderadio=1.1.3
+	conflicts = coderadio
+	source = coderadio.git::git+https://github.com/Guibibi/CodeRadio-Desktop.git
+	source = coderadio.png
+	source = coderadio.sh
+	sha256sums = SKIP
+	sha256sums = 57f713a96ef1c839f1244dfd207ba28be0c83f47df298ec7e7d2d672d631a8ad
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = coderadio-git
