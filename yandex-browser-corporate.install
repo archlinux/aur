@@ -1,147 +1,165 @@
+# Remove partners data
+remove_partner_storage() {
+  local partner_storage_dir="/var/lib/yandex/browser"
+  if [ -d "${partner_storage_dir}" ]; then
+    rm -rf "${partner_storage_dir}"
+  fi
+}
+
+# Universal partner data processing
+process_partner_data() {
+  local source="$1"
+  local destination="$2"
+  local pattern="$3"
+
+  if [ -d "$source" ]; then
+    if find "$source" -maxdepth 1 -type f -name "$pattern" | grep -q .; then
+      mkdir -p "$destination"
+      find "$source" -maxdepth 1 -type f -name "$pattern" -exec cp -f {} "$destination/" \;
+    fi
+  fi
+  if [ -f "$source" ]; then
+    mkdir -p "$(dirname "$destination")"
+    cp -f "$source" "$destination"
+  fi
+}
+
+# Manage partner data
+store_partner_data() {
+  local base_source="/opt/yandex/browser"
+  local base_destination="/var/lib/yandex/browser"
+
+  # Check for partner settings is present
+  if [ -f "${base_source}/partner_config" ]; then
+    # Clear old data
+    remove_partner_storage
+    # Directories and files for processing
+    declare -A partner_items=(
+      ["partner_config"]=""
+      ["distrib_info"]=""
+      ["master_preferences"]=""
+      ["Extensions"]="*.*"
+      ["resources"]="clids*.xml tablo* *.png *.svg"
+      ["resources/wallpapers"]="*"
+    )
+
+    for key in "${!partner_items[@]}"; do
+      local patterns=${partner_items[$key]}
+      for pattern in $patterns; do
+        process_partner_data "$base_source/$key" "$base_destination/$key" "$pattern"
+      done
+    done
+  fi
+}
+
+# Manage nss and udev symlinks
+manage_symlinks() {
+  local action="$1"
+  local files=("libnspr4.so.0d" "libplds4.so.0d" "libplc4.so.0d"
+    "libssl3.so.1d" "libnss3.so.1d" "libsmime3.so.1d"
+    "libnssutil3.so.1d")
+  local libdir="/usr/lib"
+
+  for f in "${files[@]}"; do
+    local target="${libdir}/$(echo $f | sed -e 's/\.[01]d$//')"
+    local link="/opt/yandex/browser/$f"
+
+    if [ "$action" == "create" ]; then
+      if [ -f "$target" ]; then
+        ln -snf "$target" "$link"
+      else
+        echo "Error: $target not found." >&2
+      fi
+    elif [ "$action" == "remove" ]; then
+      rm -f "$link"
+    fi
+  done
+}
+
+# Setup chrome-management-service
+setup_chrome_management_service() {
+  local defaults_file="/etc/default/yandex-browser"
+  local service_path="/opt/yandex/browser/chrome-management-service"
+  local policies_dir="/etc/opt/yandex/browser/policies/enrollment"
+  local signing_key_file="${policies_dir}/DeviceTrustSigningKey"
+
+  if ! grep -q "install_device_trust_key_management_command=true" "$defaults_file" 2>/dev/null; then
+    return
+  fi
+
+  if ! getent group chromemgmt >/dev/null; then
+    groupadd chromemgmt
+  fi
+
+  chgrp chromemgmt "$service_path"
+  chmod 2755 "$service_path"
+
+  mkdir -p "$policies_dir"
+
+  if [ ! -f "$signing_key_file" ]; then
+    touch "$signing_key_file"
+  fi
+  chgrp chromemgmt "$signing_key_file"
+  chmod 664 "$signing_key_file"
+}
+
+remove_legacy_files() {
+  local files=(
+    "/opt/yandex/browser/partner_config_static"
+    "/opt/yandex/browser/libffmpeg.so"
+    "/opt/yandex/browser/libudev.so.0"
+  )
+  for file in "${files[@]}"; do
+    if [ -f "${file}" ]; then
+      rm -f "${file}"
+      echo "Removed ${file}"
+    fi
+  done
+}
+
 post_install() {
+  #Cleanup
+  remove_legacy_files
+  # Setup partner data (if present)
+  store_partner_data
+  # Setup chrome-management-service (if activated)
+  setup_chrome_management_service
+  # Create nss symlinks
+  manage_symlinks create
+  # Install icons
+  local icons=(16 24 32 48 64 128 256 512)
+  for size in "${icons[@]}"; do
+    xdg-icon-resource install --size "$size" "/opt/yandex/browser/product_logo_${size}.png" "yandex-browser"
+  done
 
-set -e
+  update-desktop-database -q
+  #Install external ffmpeg library for more compatability
+  /opt/yandex/browser/update_codecs /opt/yandex/browser || true
 
-DEFAULTS_FILE="/etc/default/yandex-browser"
-# Add icons to the system icons
-XDG_ICON_RESOURCE="`command -v xdg-icon-resource 2> /dev/null || true`"
-if [ ! -x "$XDG_ICON_RESOURCE" ]; then
-  echo "Error: Could not find xdg-icon-resource" >&2
-  exit 1
-fi
-for icon in product_logo_256.png product_logo_24.png product_logo_32.png product_logo_128.png product_logo_512.png product_logo_64.png product_logo_16.png product_logo_48.png ; do
-  size="$(echo ${icon} | sed 's/[^0-9]//g')"
-  "$XDG_ICON_RESOURCE" install --size "${size}" "/opt/yandex/browser/${icon}" \
-    "yandex-browser"
-done
-# Update cache of .desktop file MIME types. Non-fatal since it's just a cache.
-update-desktop-database > /dev/null 2>&1 || true
-
-altlinux_fetch_ffmpeg() {
-  local current_dir=$PWD
-  local temp_dir=$(mktemp -d --tmpdir)
-  cd $temp_dir
-  # TODO(palar): use more versatile method then download with direct link
-  wget https://mirror.yandex.ru/altlinux/p10/branch/x86_64/RPMS.classic/ffmpeg-plugin-browser-100-alt3.x86_64.rpm
-
-  rpm2cpio *.rpm | cpio -i --make-directories --no-absolute-filenames *libffmpeg.so
-  find . -name *.so -exec mv {} /opt/yandex/browser/ \;
-  cd $current_dir
-  rm -fr $temp_dir
 }
 
-getOsName() {
-    if [ -f "/etc/os-release" ]
-    then
-        cat "/etc/os-release" | grep "^ID=" | sed "s/ID=//1"
-    fi
+post_remove() {
+  # Remove partners data storage
+  remove_partner_storage
+  # Remove nss symlinks
+  manage_symlinks remove
+  # Remove icons
+  local icons=(16 24 32 48 64 128 256 512)
+  for size in "${icons[@]}"; do
+    xdg-icon-resource uninstall --size "$size" "yandex-browser"
+  done
+  update-desktop-database -q
+  # remove legacy files
+  remove_legacy_files
 }
 
-codecInstallationRequired() {
-    current_lunux_distro=$( getOsName ) ;
-
-    if [ "$current_lunux_distro" = "ubuntu" ]; then
-        echo "no"
-    else
-        echo "yes"
-    fi
+pre_install() {
+  :
 }
 
-codecs_required=$( codecInstallationRequired )
-if [ "$codecs_required" = "yes" ]; then
-    # Do not break installation anyway
-    /opt/yandex/browser/update_codecs /opt/yandex/browser || true
-fi
-
-# This function uses sed to insert the contents of one file into another file,
-# after the first line matching a given regular expression. If there is no
-# matching line, then the file is unchanged.
-insert_after_first_match() {
-  # $1: file to update
-  # $2: regular expression
-  # $3: file to insert
-  sed -i -e "1,/$2/ {
-    /$2/ r $3
-    }" "$1"
-}
-
-# If /usr/share/gnome-control-center/default-apps/gnome-default-applications.xml
-# exists, it may need to be updated to add ourselves to the default applications
-# list. If we find the file and it does not seem to contain our patch already
-# (the patch is safe to leave even after uninstall), update it.
-GNOME_DFL_APPS=/usr/share/gnome-control-center/default-apps/gnome-default-applications.xml
-if [ -f "$GNOME_DFL_APPS" ]; then
-# Conditionally insert the contents of the file "default-app-block" after the
-# first "<web-browsers>" line we find in gnome-default-applications.xml
-  fgrep -q "Yandex Browser" "$GNOME_DFL_APPS" || insert_after_first_match \
-    "$GNOME_DFL_APPS" \
-    "^[ 	]*<web-browsers>[ 	]*$" \
-    "/opt/yandex/browser/default-app-block"
-fi
-
-# This function performs the setup for the chrome management service process.
-# It creates a new chromemgmt group, creates the signing key file, and updates
-# permissions for both the signing key file and the binary.
-chrome_management_service_setup() {
-  if [ ! -f "$DEFAULTS_FILE" ]; then
-    return
-  fi
-
-  if ! grep -q "install_device_trust_key_management_command=true" \
-    "$DEFAULTS_FILE"; then
-    return
-  fi
-
-  getent group chromemgmt > /dev/null || groupadd chromemgmt
-
-  chgrp chromemgmt "/opt/yandex/browser/chrome-management-service"
-  chmod 2755 "/opt/yandex/browser/chrome-management-service"
-
-  mkdir -p "/etc/opt/yandex/browser/policies/enrollment"
-  SIGNING_KEY_FILE="/etc/opt/yandex/browser/policies/enrollment/DeviceTrustSigningKey"
-  if [ ! -e "$SIGNING_KEY_FILE" ]; then
-    touch "$SIGNING_KEY_FILE"
-  fi
-
-  chgrp chromemgmt "$SIGNING_KEY_FILE"
-  chmod 664 "$SIGNING_KEY_FILE"
-}
-
-chrome_management_service_setup
-
+pre_remove() {
+  :
 }
 post_upgrade() {
-    post_install
-}
-pre_remove(){
-
-set -e
-
-# Remove icons from the system icons
-XDG_ICON_RESOURCE="`command -v xdg-icon-resource 2> /dev/null || true`"
-if [ ! -x "$XDG_ICON_RESOURCE" ]; then
-  echo "Error: Could not find xdg-icon-resource" >&2
-  exit 1
-fi
-for icon in product_logo_256.png product_logo_24.png product_logo_32.png product_logo_128.png product_logo_512.png product_logo_64.png product_logo_16.png product_logo_48.png ; do
-  size="$(echo ${icon} | sed 's/[^0-9]//g')"
-  "$XDG_ICON_RESOURCE" uninstall --size "${size}" "yandex-browser"
-done
-
-# Update cache of .desktop file MIME types. Non-fatal since it's just a cache.
-update-desktop-database > /dev/null 2>&1 || true
-}
-post_remove(){
-
-set -e
-
-remove_package_not_native_files() {
-  # /opt/yandex/browser/libffmpeg.so
-  local libffmpeg="/opt/yandex/browser/libffmpeg.so"
-  if [ -f "${libffmpeg}" ]; then
-    rm "${libffmpeg}"
-    echo "removed ${libffmpeg}"
-  fi
-}
-remove_package_not_native_files
+  post_install
 }
