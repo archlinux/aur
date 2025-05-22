@@ -2,7 +2,7 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
-pkgver=1.3.8
+pkgver=1.3.9
 _electron=electron35
 pkgrel=1
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
@@ -29,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('c4d982c0d81ce0b7199e3c94679cf6ed6f562e7e022b3ea89765aa3424ae7c5f'
+sha256sums=('86326bad990f1fd9c03a8810d192d02f0aff3b2e39ddfd1d697f1086b34edd38'
     '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
 
 prepare() {
@@ -45,11 +45,6 @@ prepare() {
         jq ".build.electronDist = \"$electronDist\"" |
         jq ".build.electronVersion = \"$electronVersion\"" |
         sponge package.json
-
-    # fix for electron35+, electron36 gives the following error:
-    # /src/renderer/src/pages/home/Inputbar/Inputbar.tsx(563,20): \
-    # error TS2339: Property 'path' does not exist on type 'File'.
-    jq '.resolutions."node-abi"="^4.8.0"' package.json | sponge package.json
 
     #  no auto update
     sed -i package.json -e "s|electron-builder --dir|& --p never|g"
