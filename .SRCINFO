@@ -1,7 +1,7 @@
 pkgbase = mpv-reload-git
 	pkgdesc = A userscript for MPV that provides automatic reloading of videos based on buffering progress and allows manual reload with Ctrl+r.
-	pkgver = r16.1a6a938
-	pkgrel = 3
+	pkgver = r17.60e6fb1
+	pkgrel = 1
 	url = https://github.com/4e6/mpv-reload
 	arch = any
 	license = MIT

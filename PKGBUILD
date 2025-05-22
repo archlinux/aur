@@ -1,7 +1,7 @@
 # Maintainer: Ash <xash at riseup d0t net>
 pkgname="mpv-reload-git"
-pkgver=r16.1a6a938
-pkgrel=3
+pkgver=r17.60e6fb1
+pkgrel=1
 pkgdesc="A userscript for MPV that provides automatic reloading of videos based on buffering progress and allows manual reload with Ctrl+r."
 arch=('any')
 url="https://github.com/4e6/mpv-reload"
@@ -26,7 +26,7 @@ package() {
   cd "${srcdir}/mpv-reload"
   
   # Install reload.lua script
-  install -Dm 644 "reload.lua" "$pkgdir/etc/mpv/scripts/reload.lua"
+  install -Dm 644 "main.lua" "$pkgdir/etc/mpv/scripts/reload.lua"
   
   # Install the default config file (from the README.md)
   install -Dm 644 "$srcdir/reload.conf" "$pkgdir/etc/mpv/script-opts/reload.conf"
