@@ -1,0 +1,33 @@
+# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+
+pkgname=git-branch-stash
+pkgdesc='Git add-on to manage snapshots of branch status'
+pkgver=0.11.1
+pkgrel=1
+url=https://github.com/gitext-rs/git-branch-stash
+arch=(x86_64)
+license=(Apache-2.0 MIT)
+depends=(git gcc-libs glibc)
+makedepends=(cargo)
+options=(!lto)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('72ecc4b73ce310047b79e4fc7d3bbf615be6d6cdc9ed9c22b7204b7dfd1b4be4')
+
+prepare () {
+	cd "$pkgname-$pkgver"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build () {
+	cd "$pkgname-$pkgver"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix '$srcdir=src'"
+	cargo build --frozen --release
+}
+
+package () {
+	cd "$pkgname-$pkgver"
+	install -Dm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
+}

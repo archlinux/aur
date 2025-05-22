@@ -1,0 +1,6 @@
+[git-branch-stash]
+source = "github"
+github = "gitext-rs/git-branch-stash"
+use_max_tag = true
+from_pattern = 'v?([\d.]+)'
+to_pattern = '\1'
