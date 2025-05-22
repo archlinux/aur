@@ -7,6 +7,7 @@ pkgbase = animeko-appimage-beta
 	license = AGPL-3.0-or-later
 	depends = vlc
 	depends = gvfs
+	provides = animeko
 	noextract = ani-4.11.0-beta01-linux-x86_64.appimage
 	options = !strip
 	source_x86_64 = ani-4.11.0-beta01-linux-x86_64.appimage::https://github.com/open-ani/animeko/releases/download/v4.11.0-beta01/ani-4.11.0-beta01-linux-x86_64.appimage

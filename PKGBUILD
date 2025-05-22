@@ -12,6 +12,7 @@ arch=('x86_64')
 url="https://myani.org"
 license=('AGPL-3.0-or-later')
 depends=('vlc' 'gvfs')
+provides=('animeko')
 options=(!strip)
 source_x86_64=("${_appimage}::https://github.com/open-ani/animeko/releases/download/v4.11.0-beta01/ani-4.11.0-beta01-linux-x86_64.appimage")
 noextract=("${_appimage}")
