@@ -5,11 +5,11 @@
 pkgname='perl-graph'
 _dist='Graph'
 pkgver='0.9735'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='graph data structures and algorithms'
 url='https://metacpan.org/release/Graph'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 options=('!emptydirs')
 depends=(
   'perl'

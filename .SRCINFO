@@ -1,11 +1,10 @@
 pkgbase = perl-graph
 	pkgdesc = graph data structures and algorithms
 	pkgver = 0.9735
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Graph
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	depends = perl
 	depends = perl-heap
 	depends = perl-set-object
