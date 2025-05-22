@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-bnx2x-2.5g
-pkgver=6.14.7.arch1
+pkgver=6.14.7.arch2
 pkgrel=1
 pkgdesc='Linux'
 url='https://github.com/archlinux/linux'
@@ -44,15 +44,15 @@ validpgpkeys=(
 sha256sums=('8112202bc26d086957a94d2109a6dcd4478c5ba18d0f0a5e1c5dfeea01f54972'
             'SKIP'
             'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'
-            'e435b8e8f8b1427fbeb54305da3adc286e5d52437b1e0694863e98998ff127f1'
+            '15279324c21cf41119574a36d80b05bbe6d4e7116d52d2940f2261443ead4cce'
             'SKIP'
-            '878b2ee916ba6c1b3a1f1f9d9d368d9a2391bb58f71b7e52371cbb436ed2eac4')
+            'ae7298c307ab82ba7e2e5046a5a8b1b6507363e694d9a1823597966a31e9ed57')
 b2sums=('1b0dc72ec9ff449d7245a0a457a8c1eea3ba63b42c5c179d9262cdbc2f04451c12359fadf74c7464b67115e9206730787b56a3dd539297e7e5c1ad2ae7e13632'
         'SKIP'
         '94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a'
-        'c8cb508cfee3f9e257a2462b723e1251738c04bbe38a3cba659da19278079299bac9169c93617747cf2c4966d19a795254b9b5a2c4d697a274703ed4325ba1c7'
+        'e1ea4e88c3ff056d93f25f0909c39e18273d9b487e3462d908f2340ff9212acd73672f491c41e7795a0941f49b97cf388325069d3d30b06015082a60aac6b81c'
         'SKIP'
-        '66f7f19fdbdc8d60e99ff3c9a242b61ccd697dd886a16e9fd43d7ea4b61b2afd6d4cbf7749b239b96181d8606bbd7b99b50179dc01b0cc346b7e7018e409b073')
+        'd9fce63715a2de2416515fbbc9a230e8e175cdf9bb186896a20d74e38e55aa02910d839612353be9d4fcfea8c57c53fede416e79378125bea2d9405a9050a462')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
