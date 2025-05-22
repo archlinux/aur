@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box-git
 _pkgname=Pandora-Box
-pkgver=1.0.3.r0.gc63e97a
+pkgver=1.0.7.r0.gd627396
 _electronversion=36
 _nodeversion=24
 pkgrel=1
@@ -60,7 +60,6 @@ prepare() {
         --categories="Network" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
@@ -103,6 +102,7 @@ build() {
         -ldflags "-s -w -X github.com/snakem982/pandora-box/api.Version=${_VERSION}" \
         -o px
     cd "${srcdir}/${pkgname%-git}.git"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     local electronDist="/usr/lib/electron${_electronversion}"
     sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
     {\\
