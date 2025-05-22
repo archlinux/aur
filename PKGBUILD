@@ -25,6 +25,11 @@ prepare() {
 
   # FuncOps.h.inc: No such file or directory
   curl -L https://github.com/llvm/llvm-project/pull/97885.patch | patch -p2
+
+  #include <cstdint> for gcc 15
+  curl -L https://github.com/llvm/llvm-project/pull/110932.patch | patch -p2 -f || :
+  curl -L https://github.com/llvm/llvm-project/commit/101109f.patch | patch -p2
+  curl -L https://github.com/llvm/llvm-project/commit/a6bb8a7.patch | patch -p2
 }
 
 build() {
