@@ -1,0 +1,17 @@
+pkgbase = dolt-workbench-appimage
+	pkgdesc = Dolt Workbench provides a full database tool for working with MySQL and Postgres or their git-style versioned alternatives Dolt and Doltgres.
+	pkgver = 0.3.20
+	pkgrel = 1
+	url = https://dolthub.com
+	arch = x86_64
+	license = Apache-2.0
+	depends = zlib
+	depends = fuse2
+	noextract = dolt-workbench-appimage-0.3.20.AppImage
+	options = !strip
+	source_x86_64 = dolt-workbench-appimage-0.3.20.AppImage::https://github.com/dolthub/dolt-workbench/releases/download/v0.3.20/Dolt-Workbench-linux-x86_64.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/dolthub/dolt-workbench/refs/tags/v0.3.20/LICENSE
+	sha256sums_x86_64 = 4e06e0db0adf130c99bddc928f4ff094de32e0fcfff786e87823e4d0e4b7e240
+	sha256sums_x86_64 = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+
+pkgname = dolt-workbench-appimage
