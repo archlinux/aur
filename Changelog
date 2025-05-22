@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : dmarc_report
- Tags         : 5.1.1 ➙ 6.0.0
-              : 2025-03-13 ➙ 2025-05-05
+ Tags         : 5.1.2 ➙ 6.1.0
+              : 2025-03-14 ➙ 2025-05-21
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-05-21   : 6.1.0
+                Use builtin types where possible. e.g. typing.List -> list
+ 2025-05-05     update Changelog
 
  2025-05-05   : 6.0.0
                 Tidy ups: PEP-8, PEP-257, PEP-484 PEP-561
@@ -23,6 +27,3 @@
  2025-03-14   : 5.1.2
                 Just update PKGBUILD version
  2025-03-13     update Changelog.rst
-
- 2025-03-13   : 5.1.1
-                update Changelog.rst
