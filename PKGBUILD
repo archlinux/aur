@@ -4,11 +4,11 @@
 
 pkgname='perl-tcl-tk'
 pkgver='1.51'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Extension module for Perl giving access to Tk via the Tcl extension"
 _dist='Tcl-Tk'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=('perl-tcl>=1.11' 'perl>=5.006' 'tk')
 makedepends=('xorg-server-xvfb')
 checkdepends=('ttf-font')

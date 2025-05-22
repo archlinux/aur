@@ -1,11 +1,10 @@
 pkgbase = perl-tcl-tk
 	pkgdesc = Extension module for Perl giving access to Tk via the Tcl extension
 	pkgver = 1.51
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Tcl-Tk
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = ttf-font
 	makedepends = xorg-server-xvfb
 	depends = perl-tcl>=1.11
