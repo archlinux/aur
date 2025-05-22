@@ -1,6 +1,6 @@
 # Maintainer: LilBroCodes <lilbrocodes@gmail.com>
 pkgname=hydra-js
-pkgver=1.2.3
+pkgver=1.2.6
 pkgrel=1
 pkgdesc='"Modding" framework for compiled / obfuscated JavasScript'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom:CC-BY-NC-SA')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://github.com/LilBroCodes/hydra/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('456fc77cd150b5218ac83d296a193c5ef9828e19b3e74b9a437231a4f6e7cc65')
 options=(!strip)
 
 build() {
