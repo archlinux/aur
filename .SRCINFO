@@ -1,14 +1,18 @@
 pkgbase = python-daemonocle
 	pkgdesc = Python library for creating Unix daemons
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/jnrbsn/daemonocle
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-click
 	depends = python-psutil
 	source = https://github.com/jnrbsn/daemonocle/archive/v1.2.3.tar.gz
+	source = fix-get_terminal_size.patch
 	sha512sums = aa3da48dd779a52e20e26166b99b1c3e56661b9dcfbbd65f0318bdd969210f4ff460e493821e38a04ce9d126cc93677d2537f58cdc60647afb4e66bcfc48bec1
+	sha512sums = b6b7adc5016ead2c5b2e1d946c8751735c217ead5723da457dd2253e19a88e1500d005c88e650d15da8e867b8ce0bf955e46814d85ac55b6630f92f8b9020d51
 
 pkgname = python-daemonocle
