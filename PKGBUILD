@@ -6,7 +6,7 @@
 
 pkgname='firefox-clearurls'
 pkgver=1.27.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Remove tracking elements from URL's."
 arch=('any')
 url="https://addons.mozilla.org/en-US/firefox/addon/clearurls/"
