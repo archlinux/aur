@@ -11,7 +11,7 @@ pkgver=12.20250206
 _pkgver="${pkgver%.*}"
 _subver="${pkgver#*.}"
 [[ "$pkgver" = "$_subver" ]] && _subver="version-$pkgver"
-pkgrel=6
+pkgrel=7
 pkgdesc="The open source CFD toolbox (www.openfoam.org)"
 _distpkgbase=OpenFOAM
 _gitname=$_distpkgbase-$_pkgver
@@ -19,16 +19,28 @@ arch=('x86_64')
 url="http://www.openfoam.org"
 license=("GPL-3.0-or-later")
 depends=(
-  'bzip2'
-  'paraview'
-  'parmetis'
-  'scotch'
-  'boost'
-  'flex'
-  'cgal'
-  'zoltan'
+  bzip2
+  paraview
+  parmetis
+  scotch
+  boost
+  cgal
+  zoltan
+  openmpi
+  gnuplot
+  libxt
+  libxml2
+  freetype2
+  double-conversion
+  glew
+  utf8cpp
+  gl2ps
+  python
+  hdf5
+  zlib
 )
-provides=('openfoam')
+makedepends=(qt5-svg qt5-x11extras qt5-tools qt5-xmlpatterns flex)
+provides=(openfoam)
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/OpenFOAM/$_gitname/archive/refs/tags/$_subver.tar.gz"
   paraview.arch
