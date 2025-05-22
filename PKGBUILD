@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=7.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -419,6 +419,12 @@ fi
 
 prepare() {
   cd ffmpeg
+
+  ### ffmpeg-obs changes
+
+  ## Fix building with v4l2 1.30
+  sed -i 's/posix_ioctl/ffmpeg_posix_ioctl/g' configure
+  sed -i 's/if HAVE_POSIX_IOCTL/if HAVE_FFMPEG_POSIX_IOCTL/g' libavdevice/v4l2.c
 
   ### ffmpeg-full changes
 
