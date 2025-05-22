@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box-bin
 _pkgname=Pandora-Box
-pkgver=1.0.5
+pkgver=1.0.7
 _electronversion=36
 pkgrel=1
 pkgdesc="A Simple Mihomo GUI.(Prebuilt version.Use system-wide electron)"
@@ -23,8 +23,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/linux-arm64-rpm.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/linux-amd64-rpm.zip")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('771e174597348b3c0e26a8075699cc88eb808db28ea5f82d273f68adfa978258')
-sha256sums_x86_64=('9ba7cbcd79618c3d0fdfc23fc4ca886ec2b168bd0ad77c3daf1b24f6151852f9')
+sha256sums_aarch64=('75b75492b0f995c12c61661a99806a244910a1557ef3bdeb0a5a3229c0e696b6')
+sha256sums_x86_64=('522406f171e00c3ab3031a905113243730a63fcf68b23e5c7c278b6f8f9b92b5')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
