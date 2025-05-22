@@ -1,32 +1,283 @@
+Module: pinecone.db_control.models
+  Imported in:
+    pinecone/db_control/request_factory.py
+    pinecone/db_control/resources/asyncio/backup.py
+    pinecone/db_control/resources/asyncio/collection.py
+    pinecone/db_control/resources/asyncio/index.py
+    pinecone/db_control/resources/asyncio/restore_job.py
+    pinecone/db_control/resources/sync/backup.py
+    pinecone/db_control/resources/sync/collection.py
+    pinecone/db_control/resources/sync/index.py
+    pinecone/db_control/resources/sync/restore_job.py
+    pinecone/legacy_pinecone_interface.py
+    pinecone/models/__init__.py
+    pinecone/pinecone.py
+    pinecone/pinecone_asyncio.py
+    pinecone/pinecone_interface_asyncio.py
+Module: pinecone.db_control.enums
+  Imported in:
+    pinecone/db_control/request_factory.py
+    pinecone/db_control/resources/asyncio/index.py
+    pinecone/db_control/resources/sync/index.py
+    pinecone/db_control/types/create_index_for_model_embed.py
+    pinecone/inference/models/index_embed.py
+    pinecone/legacy_pinecone_interface.py
+    pinecone/pinecone.py
+    pinecone/pinecone_asyncio.py
+    pinecone/pinecone_interface_asyncio.py
+Module: pinecone.db_control.types
+  Imported in:
+    pinecone/db_control/resources/asyncio/index.py
+    pinecone/db_control/resources/sync/index.py
+    pinecone/legacy_pinecone_interface.py
+    pinecone/pinecone.py
+    pinecone/pinecone_asyncio.py
+    pinecone/pinecone_interface_asyncio.py
+Module: pinecone.config
+  Imported in:
+    pinecone/db_control/db_control.py
+    pinecone/db_control/db_control_asyncio.py
+    pinecone/db_control/index_host_store.py
+    pinecone/db_control/resources/sync/backup.py
+    pinecone/db_control/resources/sync/collection.py
+    pinecone/db_control/resources/sync/index.py
+    pinecone/db_control/resources/sync/restore_job.py
+    pinecone/db_data/index.py
+    pinecone/db_data/index_asyncio.py
+    pinecone/grpc/pinecone.py
+    pinecone/inference/inference.py
+    pinecone/inference/resources/sync/model.py
+    pinecone/pinecone.py
+    pinecone/pinecone_asyncio.py
+    pinecone/pinecone_interface_asyncio.py
+    pinecone/utils/plugin_aware.py
+Module: pinecone.utils
+  Imported in:
+    pinecone/db_control/db_control.py
+    pinecone/db_control/db_control_asyncio.py
+    pinecone/db_control/index_host_store.py
+    pinecone/db_control/request_factory.py
+    pinecone/db_control/resources/asyncio/backup.py
+    pinecone/db_control/resources/asyncio/collection.py
+    pinecone/db_control/resources/asyncio/index.py
+    pinecone/db_control/resources/asyncio/restore_job.py
+    pinecone/db_control/resources/sync/backup.py
+    pinecone/db_control/resources/sync/collection.py
+    pinecone/db_control/resources/sync/index.py
+    pinecone/db_control/resources/sync/restore_job.py
+    pinecone/db_data/resources/asyncio/bulk_import_asyncio.py
+    pinecone/db_data/resources/sync/bulk_import.py
+    pinecone/db_data/resources/sync/bulk_import_request_factory.py
+    pinecone/inference/inference.py
+    pinecone/inference/inference_asyncio.py
+    pinecone/inference/inference_request_builder.py
+    pinecone/inference/resources/asyncio/model.py
+    pinecone/inference/resources/sync/model.py
+    pinecone/langchain_import_warnings.py
+    pinecone/pinecone.py
+    pinecone/pinecone_asyncio.py
+Module: pinecone.db_data
+  Imported in:
+    pinecone/pinecone.py
+    pinecone/pinecone_asyncio.py
+Module: pinecone.core.openapi.db_control.api.manage_indexes_api
+  Imported in:
+    pinecone/core/openapi/db_control/apis/__init__.py
+    pinecone/db_control/db_control.py
+    pinecone/db_control/db_control_asyncio.py
+    pinecone/db_control/index_host_store.py
+    pinecone/db_control/resources/asyncio/backup.py
+    pinecone/db_control/resources/asyncio/restore_job.py
+    pinecone/db_control/resources/sync/backup.py
+    pinecone/db_control/resources/sync/collection.py
+    pinecone/db_control/resources/sync/index.py
+    pinecone/db_control/resources/sync/restore_job.py
+    pinecone/pinecone.py
+    pinecone/pinecone_asyncio.py
+    pinecone/pinecone_interface_asyncio.py
+Module: pinecone.db_control.index_host_store
+  Imported in:
+    pinecone/db_control/resources/sync/index.py
+    pinecone/pinecone.py
+    pinecone/pinecone_asyncio.py
+Module: pinecone.inference
+  Imported in:
+    pinecone/data/features/inference/__init__.py
+    pinecone/db_control/types/create_index_for_model_embed.py
+    pinecone/db_data/__init__.py
+    pinecone/db_data/dataclasses/search_rerank.py
+    pinecone/db_data/types/search_rerank_typed_dict.py
+    pinecone/pinecone.py
+    pinecone/pinecone_asyncio.py
+Module: pinecone.db_control
+  Imported in:
+    pinecone/control/__init__.py
+    pinecone/pinecone.py
 Module: pinecone_plugins.inference
   Imported in:
     pinecone/deprecated_plugins.py
 Module: pinecone_plugins.records
   Imported in:
     pinecone/deprecated_plugins.py
-Module: urllib3
+Module: pinecone.openapi_support
   Imported in:
-    pinecone/openapi_support/rest_urllib3.py
-    pinecone/utils/user_agent.py
+    pinecone/core/openapi/db_control/api/manage_indexes_api.py
+    pinecone/core/openapi/db_control/model/backup_list.py
+    pinecone/core/openapi/db_control/model/backup_model.py
+    pinecone/core/openapi/db_control/model/byoc_spec.py
+    pinecone/core/openapi/db_control/model/collection_list.py
+    pinecone/core/openapi/db_control/model/collection_model.py
+    pinecone/core/openapi/db_control/model/configure_index_request.py
+    pinecone/core/openapi/db_control/model/configure_index_request_embed.py
+    pinecone/core/openapi/db_control/model/configure_index_request_spec.py
+    pinecone/core/openapi/db_control/model/configure_index_request_spec_pod.py
+    pinecone/core/openapi/db_control/model/create_backup_request.py
+    pinecone/core/openapi/db_control/model/create_collection_request.py
+    pinecone/core/openapi/db_control/model/create_index_for_model_request.py
+    pinecone/core/openapi/db_control/model/create_index_for_model_request_embed.py
+    pinecone/core/openapi/db_control/model/create_index_from_backup_request.py
+    pinecone/core/openapi/db_control/model/create_index_from_backup_response.py
+    pinecone/core/openapi/db_control/model/create_index_request.py
+    pinecone/core/openapi/db_control/model/deletion_protection.py
+    pinecone/core/openapi/db_control/model/error_response.py
+    pinecone/core/openapi/db_control/model/error_response_error.py
+    pinecone/core/openapi/db_control/model/index_list.py
+    pinecone/core/openapi/db_control/model/index_model.py
+    pinecone/core/openapi/db_control/model/index_model_spec.py
+    pinecone/core/openapi/db_control/model/index_model_status.py
+    pinecone/core/openapi/db_control/model/index_spec.py
+    pinecone/core/openapi/db_control/model/index_tags.py
+    pinecone/core/openapi/db_control/model/model_index_embed.py
+    pinecone/core/openapi/db_control/model/pagination_response.py
+    pinecone/core/openapi/db_control/model/pod_spec.py
+    pinecone/core/openapi/db_control/model/pod_spec_metadata_config.py
+    pinecone/core/openapi/db_control/model/restore_job_list.py
+    pinecone/core/openapi/db_control/model/restore_job_model.py
+    pinecone/core/openapi/db_control/model/serverless_spec.py
+    pinecone/core/openapi/db_data/api/bulk_operations_api.py
+    pinecone/core/openapi/db_data/api/namespace_operations_api.py
+    pinecone/core/openapi/db_data/api/vector_operations_api.py
+    pinecone/core/openapi/db_data/model/delete_request.py
+    pinecone/core/openapi/db_data/model/describe_index_stats_request.py
+    pinecone/core/openapi/db_data/model/fetch_response.py
+    pinecone/core/openapi/db_data/model/hit.py
+    pinecone/core/openapi/db_data/model/import_error_mode.py
+    pinecone/core/openapi/db_data/model/import_model.py
+    pinecone/core/openapi/db_data/model/index_description.py
+    pinecone/core/openapi/db_data/model/list_imports_response.py
+    pinecone/core/openapi/db_data/model/list_item.py
+    pinecone/core/openapi/db_data/model/list_namespaces_response.py
+    pinecone/core/openapi/db_data/model/list_response.py
+    pinecone/core/openapi/db_data/model/namespace_description.py
+    pinecone/core/openapi/db_data/model/namespace_summary.py
+    pinecone/core/openapi/db_data/model/pagination.py
+    pinecone/core/openapi/db_data/model/protobuf_any.py
+    pinecone/core/openapi/db_data/model/protobuf_null_value.py
+    pinecone/core/openapi/db_data/model/query_request.py
+    pinecone/core/openapi/db_data/model/query_response.py
+    pinecone/core/openapi/db_data/model/query_vector.py
+    pinecone/core/openapi/db_data/model/rpc_status.py
+    pinecone/core/openapi/db_data/model/scored_vector.py
+    pinecone/core/openapi/db_data/model/search_records_request.py
+    pinecone/core/openapi/db_data/model/search_records_request_query.py
+    pinecone/core/openapi/db_data/model/search_records_request_rerank.py
+    pinecone/core/openapi/db_data/model/search_records_response.py
+    pinecone/core/openapi/db_data/model/search_records_response_result.py
+    pinecone/core/openapi/db_data/model/search_records_vector.py
+    pinecone/core/openapi/db_data/model/search_usage.py
+    pinecone/core/openapi/db_data/model/search_vector.py
+    pinecone/core/openapi/db_data/model/single_query_results.py
+    pinecone/core/openapi/db_data/model/sparse_values.py
+    pinecone/core/openapi/db_data/model/start_import_request.py
+    pinecone/core/openapi/db_data/model/start_import_response.py
+    pinecone/core/openapi/db_data/model/update_request.py
+    pinecone/core/openapi/db_data/model/upsert_record.py
+    pinecone/core/openapi/db_data/model/upsert_request.py
+    pinecone/core/openapi/db_data/model/upsert_response.py
+    pinecone/core/openapi/db_data/model/usage.py
+    pinecone/core/openapi/db_data/model/vector.py
+    pinecone/core/openapi/db_data/model/vector_values.py
+    pinecone/core/openapi/inference/api/inference_api.py
+    pinecone/core/openapi/inference/model/dense_embedding.py
+    pinecone/core/openapi/inference/model/document.py
+    pinecone/core/openapi/inference/model/embed_request.py
+    pinecone/core/openapi/inference/model/embed_request_inputs.py
+    pinecone/core/openapi/inference/model/embedding.py
+    pinecone/core/openapi/inference/model/embeddings_list.py
+    pinecone/core/openapi/inference/model/embeddings_list_usage.py
+    pinecone/core/openapi/inference/model/error_response.py
+    pinecone/core/openapi/inference/model/error_response_error.py
+    pinecone/core/openapi/inference/model/model_info.py
+    pinecone/core/openapi/inference/model/model_info_list.py
+    pinecone/core/openapi/inference/model/model_info_metric.py
+    pinecone/core/openapi/inference/model/model_info_supported_metrics.py
+    pinecone/core/openapi/inference/model/model_info_supported_parameter.py
+    pinecone/core/openapi/inference/model/ranked_document.py
+    pinecone/core/openapi/inference/model/rerank_request.py
+    pinecone/core/openapi/inference/model/rerank_result.py
+    pinecone/core/openapi/inference/model/rerank_result_usage.py
+    pinecone/core/openapi/inference/model/sparse_embedding.py
+    pinecone/db_control/db_control_asyncio.py
+    pinecone/db_data/index.py
+    pinecone/db_data/index_asyncio.py
+    pinecone/db_data/request_factory.py
+    pinecone/inference/inference.py
+Module: pinecone.core.openapi.inference.apis
+  Imported in:
+    pinecone/inference/inference.py
+Module: pinecone.core.openapi.inference
+  Imported in:
+    pinecone/inference/inference.py
+Module: pinecone.core.openapi.inference.models
+  Imported in:
+    pinecone/inference/inference_request_builder.py
+    pinecone/inference/models/embedding_list.py
+    pinecone/inference/models/rerank_result.py
+    pinecone/inference/repl_overrides.py
+Module: pinecone.core.openapi.inference.api.inference_api
+  Imported in:
+    pinecone/core/openapi/inference/apis/__init__.py
+    pinecone/inference/inference_asyncio.py
+    pinecone/inference/resources/asyncio/model.py
+    pinecone/inference/resources/sync/model.py
+Module: pinecone.utils.repr_overrides
+  Imported in:
+    pinecone/db_control/models/backup_model.py
+    pinecone/db_control/models/index_model.py
+    pinecone/db_control/models/restore_job_model.py
+    pinecone/db_control/repr_overrides.py
+    pinecone/inference/models/model_info.py
+    pinecone/inference/models/model_info_list.py
+    pinecone/scripts/repl.py
+Module: pinecone.core.openapi.inference.model.model_info
+  Imported in:
+    pinecone/core/openapi/inference/api/inference_api.py
+    pinecone/core/openapi/inference/model/model_info_list.py
+    pinecone/core/openapi/inference/models/__init__.py
+    pinecone/inference/models/model_info.py
+Module: pinecone.core.openapi.inference.model.model_info_supported_parameter
+  Imported in:
+    pinecone/core/openapi/inference/model/model_info.py
+    pinecone/core/openapi/inference/models/__init__.py
+    pinecone/inference/models/model_info.py
+Module: pinecone.core.openapi.inference.model.model_info_list
+  Imported in:
+    pinecone/core/openapi/inference/api/inference_api.py
+    pinecone/core/openapi/inference/models/__init__.py
+    pinecone/inference/models/model_info_list.py
+Module: pinecone.inference.inference_request_builder
+  Imported in:
+    pinecone/inference/models/index_embed.py
 Module: tqdm.auto
   Imported in:
     pinecone/utils/tqdm.py
 Module: urllib3.exceptions
   Imported in:
     pinecone/utils/error_handling.py
-Module: pinecone.config
-  Imported in:
-    pinecone/control/index_host_store.py
-    pinecone/control/pinecone.py
-    pinecone/control/pinecone_asyncio.py
-    pinecone/control/pinecone_interface_asyncio.py
-    pinecone/data/index.py
-    pinecone/data/index_asyncio.py
-    pinecone/utils/plugin_aware.py
-Module: pinecone.openapi_support.configuration
+Module: pinecone.config.openapi_configuration
   Imported in:
     pinecone/config/config.py
-    pinecone/config/openapi.py
+    pinecone/config/openapi_config_factory.py
     pinecone/core/openapi/db_control/__init__.py
     pinecone/core/openapi/db_data/__init__.py
     pinecone/core/openapi/inference/__init__.py
@@ -34,24 +285,24 @@ Module: pinecone.openapi_support.configuration
 Module: pinecone_plugin_interface
   Imported in:
     pinecone/utils/plugin_aware.py
-Module: pinecone.core.openapi.db_control
-  Imported in:
-    pinecone/control/pinecone.py
-    pinecone/control/pinecone_asyncio.py
-    pinecone/utils/docslinks.py
 Module: pinecone.openapi_support.exceptions
   Imported in:
-    pinecone/control/index_host_store.py
     pinecone/core/openapi/db_control/__init__.py
+    pinecone/core/openapi/db_control/model/backup_list.py
+    pinecone/core/openapi/db_control/model/backup_model.py
+    pinecone/core/openapi/db_control/model/byoc_spec.py
     pinecone/core/openapi/db_control/model/collection_list.py
     pinecone/core/openapi/db_control/model/collection_model.py
     pinecone/core/openapi/db_control/model/configure_index_request.py
     pinecone/core/openapi/db_control/model/configure_index_request_embed.py
     pinecone/core/openapi/db_control/model/configure_index_request_spec.py
     pinecone/core/openapi/db_control/model/configure_index_request_spec_pod.py
+    pinecone/core/openapi/db_control/model/create_backup_request.py
     pinecone/core/openapi/db_control/model/create_collection_request.py
     pinecone/core/openapi/db_control/model/create_index_for_model_request.py
     pinecone/core/openapi/db_control/model/create_index_for_model_request_embed.py
+    pinecone/core/openapi/db_control/model/create_index_from_backup_request.py
+    pinecone/core/openapi/db_control/model/create_index_from_backup_response.py
     pinecone/core/openapi/db_control/model/create_index_request.py
     pinecone/core/openapi/db_control/model/deletion_protection.py
     pinecone/core/openapi/db_control/model/error_response.py
@@ -63,8 +314,11 @@ Module: pinecone.openapi_support.exceptions
     pinecone/core/openapi/db_control/model/index_spec.py
     pinecone/core/openapi/db_control/model/index_tags.py
     pinecone/core/openapi/db_control/model/model_index_embed.py
+    pinecone/core/openapi/db_control/model/pagination_response.py
     pinecone/core/openapi/db_control/model/pod_spec.py
     pinecone/core/openapi/db_control/model/pod_spec_metadata_config.py
+    pinecone/core/openapi/db_control/model/restore_job_list.py
+    pinecone/core/openapi/db_control/model/restore_job_model.py
     pinecone/core/openapi/db_control/model/serverless_spec.py
     pinecone/core/openapi/db_data/__init__.py
     pinecone/core/openapi/db_data/model/delete_request.py
@@ -76,7 +330,9 @@ Module: pinecone.openapi_support.exceptions
     pinecone/core/openapi/db_data/model/index_description.py
     pinecone/core/openapi/db_data/model/list_imports_response.py
     pinecone/core/openapi/db_data/model/list_item.py
+    pinecone/core/openapi/db_data/model/list_namespaces_response.py
     pinecone/core/openapi/db_data/model/list_response.py
+    pinecone/core/openapi/db_data/model/namespace_description.py
     pinecone/core/openapi/db_data/model/namespace_summary.py
     pinecone/core/openapi/db_data/model/pagination.py
     pinecone/core/openapi/db_data/model/protobuf_any.py
@@ -115,241 +371,199 @@ Module: pinecone.openapi_support.exceptions
     pinecone/core/openapi/inference/model/embeddings_list_usage.py
     pinecone/core/openapi/inference/model/error_response.py
     pinecone/core/openapi/inference/model/error_response_error.py
+    pinecone/core/openapi/inference/model/model_info.py
+    pinecone/core/openapi/inference/model/model_info_list.py
+    pinecone/core/openapi/inference/model/model_info_metric.py
+    pinecone/core/openapi/inference/model/model_info_supported_metrics.py
+    pinecone/core/openapi/inference/model/model_info_supported_parameter.py
     pinecone/core/openapi/inference/model/ranked_document.py
     pinecone/core/openapi/inference/model/rerank_request.py
     pinecone/core/openapi/inference/model/rerank_result.py
     pinecone/core/openapi/inference/model/rerank_result_usage.py
     pinecone/core/openapi/inference/model/sparse_embedding.py
-    pinecone/core/openapi/inference/model/vector_type.py
-    pinecone/exceptions/__init__.py
-    pinecone/exceptions/exceptions.py
-Module: pinecone.models
+    pinecone/db_control/index_host_store.py
+Module: pinecone.core.openapi.db_control.model.collection_model
   Imported in:
-    pinecone/control/pinecone.py
-    pinecone/control/pinecone_asyncio.py
-    pinecone/control/pinecone_interface.py
-    pinecone/control/pinecone_interface_asyncio.py
-    pinecone/control/request_factory.py
-Module: pinecone.enums
-  Imported in:
-    pinecone/control/pinecone.py
-    pinecone/control/pinecone_asyncio.py
-    pinecone/control/pinecone_interface.py
-    pinecone/control/pinecone_interface_asyncio.py
-    pinecone/control/request_factory.py
-Module: pinecone.core.openapi.db_control.api.manage_indexes_api
-  Imported in:
-    pinecone/control/index_host_store.py
-    pinecone/control/pinecone.py
-    pinecone/control/pinecone_asyncio.py
-    pinecone/control/pinecone_interface_asyncio.py
-    pinecone/core/openapi/db_control/apis/__init__.py
-Module: pinecone.utils
-  Imported in:
-    pinecone/control/index_host_store.py
-    pinecone/control/langchain_import_warnings.py
-    pinecone/control/pinecone.py
-    pinecone/control/pinecone_asyncio.py
-    pinecone/control/repr_overrides.py
-    pinecone/control/request_factory.py
-    pinecone/data/features/bulk_import/bulk_import.py
-    pinecone/data/features/bulk_import/bulk_import_asyncio.py
-    pinecone/data/features/bulk_import/bulk_import_request_factory.py
-    pinecone/data/features/inference/inference.py
-    pinecone/data/features/inference/inference_request_builder.py
-Module: pinecone.openapi_support
-  Imported in:
-    pinecone/control/pinecone_asyncio.py
     pinecone/core/openapi/db_control/api/manage_indexes_api.py
     pinecone/core/openapi/db_control/model/collection_list.py
-    pinecone/core/openapi/db_control/model/collection_model.py
-    pinecone/core/openapi/db_control/model/configure_index_request.py
-    pinecone/core/openapi/db_control/model/configure_index_request_embed.py
-    pinecone/core/openapi/db_control/model/configure_index_request_spec.py
-    pinecone/core/openapi/db_control/model/configure_index_request_spec_pod.py
-    pinecone/core/openapi/db_control/model/create_collection_request.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/repr_overrides.py
+Module: pinecone.core.openapi.db_control.model.create_collection_request
+  Imported in:
+    pinecone/core/openapi/db_control/api/manage_indexes_api.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/request_factory.py
+Module: pinecone.core.openapi.db_control.model.create_index_for_model_request
+  Imported in:
+    pinecone/core/openapi/db_control/api/manage_indexes_api.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/request_factory.py
+Module: pinecone.core.openapi.db_control.model.create_index_for_model_request_embed
+  Imported in:
     pinecone/core/openapi/db_control/model/create_index_for_model_request.py
-    pinecone/core/openapi/db_control/model/create_index_for_model_request_embed.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/request_factory.py
+Module: pinecone.core.openapi.db_control.model.create_index_request
+  Imported in:
+    pinecone/core/openapi/db_control/api/manage_indexes_api.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/request_factory.py
+Module: pinecone.core.openapi.db_control.model.configure_index_request
+  Imported in:
+    pinecone/core/openapi/db_control/api/manage_indexes_api.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/request_factory.py
+Module: pinecone.core.openapi.db_control.model.configure_index_request_spec
+  Imported in:
+    pinecone/core/openapi/db_control/model/configure_index_request.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/request_factory.py
+Module: pinecone.core.openapi.db_control.model.configure_index_request_spec_pod
+  Imported in:
+    pinecone/core/openapi/db_control/model/configure_index_request_spec.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/request_factory.py
+Module: pinecone.core.openapi.db_control.model.deletion_protection
+  Imported in:
+    pinecone/core/openapi/db_control/model/configure_index_request.py
+    pinecone/core/openapi/db_control/model/create_index_for_model_request.py
+    pinecone/core/openapi/db_control/model/create_index_from_backup_request.py
     pinecone/core/openapi/db_control/model/create_index_request.py
-    pinecone/core/openapi/db_control/model/deletion_protection.py
-    pinecone/core/openapi/db_control/model/error_response.py
-    pinecone/core/openapi/db_control/model/error_response_error.py
-    pinecone/core/openapi/db_control/model/index_list.py
     pinecone/core/openapi/db_control/model/index_model.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/request_factory.py
+Module: pinecone.core.openapi.db_control.model.index_spec
+  Imported in:
+    pinecone/core/openapi/db_control/model/create_index_request.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/request_factory.py
+Module: pinecone.core.openapi.db_control.model.index_tags
+  Imported in:
+    pinecone/core/openapi/db_control/model/backup_model.py
+    pinecone/core/openapi/db_control/model/configure_index_request.py
+    pinecone/core/openapi/db_control/model/create_index_for_model_request.py
+    pinecone/core/openapi/db_control/model/create_index_from_backup_request.py
+    pinecone/core/openapi/db_control/model/create_index_request.py
+    pinecone/core/openapi/db_control/model/index_model.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/request_factory.py
+Module: pinecone.core.openapi.db_control.model.serverless_spec
+  Imported in:
     pinecone/core/openapi/db_control/model/index_model_spec.py
-    pinecone/core/openapi/db_control/model/index_model_status.py
     pinecone/core/openapi/db_control/model/index_spec.py
-    pinecone/core/openapi/db_control/model/index_tags.py
-    pinecone/core/openapi/db_control/model/model_index_embed.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/request_factory.py
+Module: pinecone.core.openapi.db_control.model.byoc_spec
+  Imported in:
+    pinecone/core/openapi/db_control/model/index_model_spec.py
+    pinecone/core/openapi/db_control/model/index_spec.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/request_factory.py
+Module: pinecone.core.openapi.db_control.model.pod_spec
+  Imported in:
+    pinecone/core/openapi/db_control/model/index_model_spec.py
+    pinecone/core/openapi/db_control/model/index_spec.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/request_factory.py
+Module: pinecone.core.openapi.db_control.model.pod_spec_metadata_config
+  Imported in:
     pinecone/core/openapi/db_control/model/pod_spec.py
-    pinecone/core/openapi/db_control/model/pod_spec_metadata_config.py
-    pinecone/core/openapi/db_control/model/serverless_spec.py
-    pinecone/core/openapi/db_data/api/bulk_operations_api.py
-    pinecone/core/openapi/db_data/api/vector_operations_api.py
-    pinecone/core/openapi/db_data/model/delete_request.py
-    pinecone/core/openapi/db_data/model/describe_index_stats_request.py
-    pinecone/core/openapi/db_data/model/fetch_response.py
-    pinecone/core/openapi/db_data/model/hit.py
-    pinecone/core/openapi/db_data/model/import_error_mode.py
-    pinecone/core/openapi/db_data/model/import_model.py
-    pinecone/core/openapi/db_data/model/index_description.py
-    pinecone/core/openapi/db_data/model/list_imports_response.py
-    pinecone/core/openapi/db_data/model/list_item.py
-    pinecone/core/openapi/db_data/model/list_response.py
-    pinecone/core/openapi/db_data/model/namespace_summary.py
-    pinecone/core/openapi/db_data/model/pagination.py
-    pinecone/core/openapi/db_data/model/protobuf_any.py
-    pinecone/core/openapi/db_data/model/protobuf_null_value.py
-    pinecone/core/openapi/db_data/model/query_request.py
-    pinecone/core/openapi/db_data/model/query_response.py
-    pinecone/core/openapi/db_data/model/query_vector.py
-    pinecone/core/openapi/db_data/model/rpc_status.py
-    pinecone/core/openapi/db_data/model/scored_vector.py
-    pinecone/core/openapi/db_data/model/search_records_request.py
-    pinecone/core/openapi/db_data/model/search_records_request_query.py
-    pinecone/core/openapi/db_data/model/search_records_request_rerank.py
-    pinecone/core/openapi/db_data/model/search_records_response.py
-    pinecone/core/openapi/db_data/model/search_records_response_result.py
-    pinecone/core/openapi/db_data/model/search_records_vector.py
-    pinecone/core/openapi/db_data/model/search_usage.py
-    pinecone/core/openapi/db_data/model/search_vector.py
-    pinecone/core/openapi/db_data/model/single_query_results.py
-    pinecone/core/openapi/db_data/model/sparse_values.py
-    pinecone/core/openapi/db_data/model/start_import_request.py
-    pinecone/core/openapi/db_data/model/start_import_response.py
-    pinecone/core/openapi/db_data/model/update_request.py
-    pinecone/core/openapi/db_data/model/upsert_record.py
-    pinecone/core/openapi/db_data/model/upsert_request.py
-    pinecone/core/openapi/db_data/model/upsert_response.py
-    pinecone/core/openapi/db_data/model/usage.py
-    pinecone/core/openapi/db_data/model/vector.py
-    pinecone/core/openapi/db_data/model/vector_values.py
-    pinecone/core/openapi/inference/api/inference_api.py
-    pinecone/core/openapi/inference/model/dense_embedding.py
-    pinecone/core/openapi/inference/model/document.py
-    pinecone/core/openapi/inference/model/embed_request.py
-    pinecone/core/openapi/inference/model/embed_request_inputs.py
-    pinecone/core/openapi/inference/model/embedding.py
-    pinecone/core/openapi/inference/model/embeddings_list.py
-    pinecone/core/openapi/inference/model/embeddings_list_usage.py
-    pinecone/core/openapi/inference/model/error_response.py
-    pinecone/core/openapi/inference/model/error_response_error.py
-    pinecone/core/openapi/inference/model/ranked_document.py
-    pinecone/core/openapi/inference/model/rerank_request.py
-    pinecone/core/openapi/inference/model/rerank_result.py
-    pinecone/core/openapi/inference/model/rerank_result_usage.py
-    pinecone/core/openapi/inference/model/sparse_embedding.py
-    pinecone/core/openapi/inference/model/vector_type.py
-    pinecone/data/features/inference/inference.py
-    pinecone/data/index.py
-    pinecone/data/index_asyncio.py
-    pinecone/data/request_factory.py
-Module: pinecone.data
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/request_factory.py
+Module: pinecone.core.openapi.db_control.model.create_index_from_backup_request
   Imported in:
-    pinecone/control/pinecone.py
-    pinecone/control/pinecone_asyncio.py
-Module: pinecone.models.index_model
+    pinecone/core/openapi/db_control/api/manage_indexes_api.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/request_factory.py
+Module: pinecone.core.openapi.db_control
   Imported in:
-    pinecone/control/repr_overrides.py
-Module: pinecone.core.openapi.db_control.models
-  Imported in:
-    pinecone/control/repr_overrides.py
-    pinecone/control/request_factory.py
-    pinecone/models/collection_list.py
-    pinecone/models/index_list.py
-    pinecone/models/index_model.py
+    pinecone/db_control/db_control.py
+    pinecone/db_control/db_control_asyncio.py
+    pinecone/db_control/resources/asyncio/index.py
+    pinecone/db_control/resources/sync/index.py
 Module: pinecone.openapi_support.api_client
   Imported in:
-    pinecone/control/pinecone.py
     pinecone/core/openapi/db_control/__init__.py
     pinecone/core/openapi/db_data/__init__.py
     pinecone/core/openapi/inference/__init__.py
-Module: collections.abc
+    pinecone/db_control/db_control.py
+Module: pinecone.core.openapi.db_control.model.restore_job_list
   Imported in:
-    pinecone/data/sparse_values_factory.py
-    pinecone/data/vector_factory.py
-    pinecone/grpc/sparse_values_factory.py
-    pinecone/grpc/vector_factory_grpc.py
-Module: pinecone.core.openapi.db_data.models
+    pinecone/core/openapi/db_control/api/manage_indexes_api.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/models/restore_job_list.py
+Module: pinecone.core.openapi.db_control.model.backup_model
   Imported in:
-    pinecone/data/features/bulk_import/bulk_import.py
-    pinecone/data/features/bulk_import/bulk_import_asyncio.py
-    pinecone/data/features/bulk_import/bulk_import_request_factory.py
-    pinecone/data/index.py
-    pinecone/data/index_asyncio.py
-    pinecone/data/index_asyncio_interface.py
-    pinecone/data/interfaces.py
-    pinecone/data/query_results_aggregator.py
-    pinecone/data/request_factory.py
-    pinecone/data/sparse_values_factory.py
-    pinecone/data/vector_factory.py
-    pinecone/grpc/index_grpc.py
-    pinecone/grpc/sparse_values_factory.py
-    pinecone/grpc/utils.py
-    pinecone/grpc/vector_factory_grpc.py
-Module: multiprocessing.pool
+    pinecone/core/openapi/db_control/api/manage_indexes_api.py
+    pinecone/core/openapi/db_control/model/backup_list.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/models/backup_model.py
+Module: pinecone.core.openapi.db_control.model.index_list
   Imported in:
-    pinecone/data/index.py
-    pinecone/data/interfaces.py
-    pinecone/openapi_support/api_client.py
-Module: pinecone.utils.tqdm
+    pinecone/core/openapi/db_control/api/manage_indexes_api.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/models/index_list.py
+Module: pinecone.core.openapi.db_control.model.backup_list
   Imported in:
-    pinecone/data/index.py
-    pinecone/data/index_asyncio.py
-    pinecone/grpc/index_grpc.py
-Module: pinecone.core.openapi.db_data.api.vector_operations_api
+    pinecone/core/openapi/db_control/api/manage_indexes_api.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/models/backup_list.py
+Module: pinecone.core.openapi.db_control.model.collection_list
   Imported in:
-    pinecone/core/openapi/db_data/apis/__init__.py
-    pinecone/data/index.py
-    pinecone/data/index_asyncio.py
-Module: pinecone.core.openapi.db_data
+    pinecone/core/openapi/db_control/api/manage_indexes_api.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/models/collection_list.py
+Module: pinecone.core.openapi.db_control.model.index_model
   Imported in:
-    pinecone/data/index.py
-    pinecone/data/index_asyncio.py
-Module: concurrent.futures
+    pinecone/core/openapi/db_control/api/manage_indexes_api.py
+    pinecone/core/openapi/db_control/model/index_list.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/models/index_model.py
+Module: pinecone.core.openapi.db_control.model.restore_job_model
   Imported in:
-    pinecone/data/index.py
-    pinecone/grpc/base.py
-    pinecone/grpc/future.py
-    pinecone/grpc/index_grpc.py
-    pinecone/openapi_support/api_client.py
-Module: pandas
+    pinecone/core/openapi/db_control/api/manage_indexes_api.py
+    pinecone/core/openapi/db_control/model/restore_job_list.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/models/restore_job_model.py
+Module: pinecone.db_control.request_factory
   Imported in:
-    pinecone/data/index.py
-    pinecone/grpc/index_grpc.py
-Module: pinecone.core.openapi.db_data.api.bulk_operations_api
+    pinecone/db_control/resources/asyncio/collection.py
+    pinecone/db_control/resources/asyncio/index.py
+    pinecone/db_control/resources/sync/collection.py
+    pinecone/db_control/resources/sync/index.py
+Module: pinecone.core.openapi.db_control.model.create_backup_request
   Imported in:
-    pinecone/core/openapi/db_data/apis/__init__.py
-    pinecone/data/features/bulk_import/bulk_import.py
-    pinecone/data/features/bulk_import/bulk_import_asyncio.py
-Module: pinecone.core.openapi.inference.apis
+    pinecone/core/openapi/db_control/api/manage_indexes_api.py
+    pinecone/core/openapi/db_control/models/__init__.py
+    pinecone/db_control/resources/asyncio/backup.py
+    pinecone/db_control/resources/sync/backup.py
+Module: pinecone.db_data.resources.asyncio.bulk_import_asyncio
   Imported in:
-    pinecone/data/features/inference/inference.py
-Module: pinecone.core.openapi.inference
+    pinecone/data/features/bulk_imports/__init__.py
+Module: pinecone.db_data.resources.sync.bulk_import
   Imported in:
-    pinecone/data/features/inference/inference.py
-Module: pinecone.core.openapi.inference.models
+    pinecone/data/features/bulk_imports/__init__.py
+Module: pinecone.db_data.resources.sync.bulk_import_request_factory
   Imported in:
-    pinecone/data/features/inference/inference_request_builder.py
-    pinecone/data/features/inference/models/embedding_list.py
-    pinecone/data/features/inference/models/rerank_result.py
-    pinecone/data/features/inference/repl_overrides.py
-Module: pinecone.core.openapi.inference.api.inference_api
-  Imported in:
-    pinecone/core/openapi/inference/apis/__init__.py
-    pinecone/data/features/inference/inference_asyncio.py
+    pinecone/data/features/bulk_imports/__init__.py
 Module: pinecone.openapi_support.model_utils
   Imported in:
     pinecone/core/openapi/db_control/api/manage_indexes_api.py
+    pinecone/core/openapi/db_control/model/backup_list.py
+    pinecone/core/openapi/db_control/model/backup_model.py
+    pinecone/core/openapi/db_control/model/byoc_spec.py
     pinecone/core/openapi/db_control/model/collection_list.py
     pinecone/core/openapi/db_control/model/collection_model.py
     pinecone/core/openapi/db_control/model/configure_index_request.py
     pinecone/core/openapi/db_control/model/configure_index_request_embed.py
     pinecone/core/openapi/db_control/model/configure_index_request_spec.py
     pinecone/core/openapi/db_control/model/configure_index_request_spec_pod.py
+    pinecone/core/openapi/db_control/model/create_backup_request.py
     pinecone/core/openapi/db_control/model/create_collection_request.py
     pinecone/core/openapi/db_control/model/create_index_for_model_request.py
     pinecone/core/openapi/db_control/model/create_index_for_model_request_embed.py
+    pinecone/core/openapi/db_control/model/create_index_from_backup_request.py
+    pinecone/core/openapi/db_control/model/create_index_from_backup_response.py
     pinecone/core/openapi/db_control/model/create_index_request.py
     pinecone/core/openapi/db_control/model/deletion_protection.py
     pinecone/core/openapi/db_control/model/error_response.py
@@ -361,10 +575,14 @@ Module: pinecone.openapi_support.model_utils
     pinecone/core/openapi/db_control/model/index_spec.py
     pinecone/core/openapi/db_control/model/index_tags.py
     pinecone/core/openapi/db_control/model/model_index_embed.py
+    pinecone/core/openapi/db_control/model/pagination_response.py
     pinecone/core/openapi/db_control/model/pod_spec.py
     pinecone/core/openapi/db_control/model/pod_spec_metadata_config.py
+    pinecone/core/openapi/db_control/model/restore_job_list.py
+    pinecone/core/openapi/db_control/model/restore_job_model.py
     pinecone/core/openapi/db_control/model/serverless_spec.py
     pinecone/core/openapi/db_data/api/bulk_operations_api.py
+    pinecone/core/openapi/db_data/api/namespace_operations_api.py
     pinecone/core/openapi/db_data/api/vector_operations_api.py
     pinecone/core/openapi/db_data/model/delete_request.py
     pinecone/core/openapi/db_data/model/describe_index_stats_request.py
@@ -375,7 +593,9 @@ Module: pinecone.openapi_support.model_utils
     pinecone/core/openapi/db_data/model/index_description.py
     pinecone/core/openapi/db_data/model/list_imports_response.py
     pinecone/core/openapi/db_data/model/list_item.py
+    pinecone/core/openapi/db_data/model/list_namespaces_response.py
     pinecone/core/openapi/db_data/model/list_response.py
+    pinecone/core/openapi/db_data/model/namespace_description.py
     pinecone/core/openapi/db_data/model/namespace_summary.py
     pinecone/core/openapi/db_data/model/pagination.py
     pinecone/core/openapi/db_data/model/protobuf_any.py
@@ -414,12 +634,16 @@ Module: pinecone.openapi_support.model_utils
     pinecone/core/openapi/inference/model/embeddings_list_usage.py
     pinecone/core/openapi/inference/model/error_response.py
     pinecone/core/openapi/inference/model/error_response_error.py
+    pinecone/core/openapi/inference/model/model_info.py
+    pinecone/core/openapi/inference/model/model_info_list.py
+    pinecone/core/openapi/inference/model/model_info_metric.py
+    pinecone/core/openapi/inference/model/model_info_supported_metrics.py
+    pinecone/core/openapi/inference/model/model_info_supported_parameter.py
     pinecone/core/openapi/inference/model/ranked_document.py
     pinecone/core/openapi/inference/model/rerank_request.py
     pinecone/core/openapi/inference/model/rerank_result.py
     pinecone/core/openapi/inference/model/rerank_result_usage.py
     pinecone/core/openapi/inference/model/sparse_embedding.py
-    pinecone/core/openapi/inference/model/vector_type.py
 Module: pinecone.core.openapi.inference.model.embedding
   Imported in:
     pinecone/core/openapi/inference/model/embeddings_list.py
@@ -431,6 +655,14 @@ Module: pinecone.core.openapi.inference.model.embeddings_list_usage
 Module: pinecone.core.openapi.inference.model.error_response_error
   Imported in:
     pinecone/core/openapi/inference/model/error_response.py
+    pinecone/core/openapi/inference/models/__init__.py
+Module: pinecone.core.openapi.inference.model.model_info_metric
+  Imported in:
+    pinecone/core/openapi/inference/model/model_info_supported_metrics.py
+    pinecone/core/openapi/inference/models/__init__.py
+Module: pinecone.core.openapi.inference.model.model_info_supported_metrics
+  Imported in:
+    pinecone/core/openapi/inference/model/model_info.py
     pinecone/core/openapi/inference/models/__init__.py
 Module: pinecone.core.openapi.inference.model.ranked_document
   Imported in:
@@ -444,12 +676,6 @@ Module: pinecone.core.openapi.inference.model.document
   Imported in:
     pinecone/core/openapi/inference/model/ranked_document.py
     pinecone/core/openapi/inference/model/rerank_request.py
-    pinecone/core/openapi/inference/models/__init__.py
-Module: pinecone.core.openapi.inference.model.vector_type
-  Imported in:
-    pinecone/core/openapi/inference/model/dense_embedding.py
-    pinecone/core/openapi/inference/model/embedding.py
-    pinecone/core/openapi/inference/model/sparse_embedding.py
     pinecone/core/openapi/inference/models/__init__.py
 Module: pinecone.core.openapi.inference.model.embed_request_inputs
   Imported in:
@@ -467,18 +693,21 @@ Module: pinecone.openapi_support.endpoint_utils
   Imported in:
     pinecone/core/openapi/db_control/api/manage_indexes_api.py
     pinecone/core/openapi/db_data/api/bulk_operations_api.py
+    pinecone/core/openapi/db_data/api/namespace_operations_api.py
     pinecone/core/openapi/db_data/api/vector_operations_api.py
     pinecone/core/openapi/inference/api/inference_api.py
 Module: pinecone.openapi_support.endpoint
   Imported in:
     pinecone/core/openapi/db_control/api/manage_indexes_api.py
     pinecone/core/openapi/db_data/api/bulk_operations_api.py
+    pinecone/core/openapi/db_data/api/namespace_operations_api.py
     pinecone/core/openapi/db_data/api/vector_operations_api.py
     pinecone/core/openapi/inference/api/inference_api.py
 Module: pinecone.openapi_support.asyncio_endpoint
   Imported in:
     pinecone/core/openapi/db_control/api/manage_indexes_api.py
     pinecone/core/openapi/db_data/api/bulk_operations_api.py
+    pinecone/core/openapi/db_data/api/namespace_operations_api.py
     pinecone/core/openapi/db_data/api/vector_operations_api.py
     pinecone/core/openapi/inference/api/inference_api.py
 Module: pinecone.core.openapi.inference.model.embed_request
@@ -505,55 +734,10 @@ Module: pinecone.core.openapi.db_control.model.error_response_error
   Imported in:
     pinecone/core/openapi/db_control/model/error_response.py
     pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.create_index_for_model_request_embed
+Module: pinecone.core.openapi.db_control.model.pagination_response
   Imported in:
-    pinecone/core/openapi/db_control/model/create_index_for_model_request.py
-    pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.deletion_protection
-  Imported in:
-    pinecone/core/openapi/db_control/model/configure_index_request.py
-    pinecone/core/openapi/db_control/model/create_index_for_model_request.py
-    pinecone/core/openapi/db_control/model/create_index_request.py
-    pinecone/core/openapi/db_control/model/index_model.py
-    pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.index_tags
-  Imported in:
-    pinecone/core/openapi/db_control/model/configure_index_request.py
-    pinecone/core/openapi/db_control/model/create_index_for_model_request.py
-    pinecone/core/openapi/db_control/model/create_index_request.py
-    pinecone/core/openapi/db_control/model/index_model.py
-    pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.pod_spec
-  Imported in:
-    pinecone/core/openapi/db_control/model/index_model_spec.py
-    pinecone/core/openapi/db_control/model/index_spec.py
-    pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.serverless_spec
-  Imported in:
-    pinecone/core/openapi/db_control/model/index_model_spec.py
-    pinecone/core/openapi/db_control/model/index_spec.py
-    pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.index_spec
-  Imported in:
-    pinecone/core/openapi/db_control/model/create_index_request.py
-    pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.configure_index_request_spec_pod
-  Imported in:
-    pinecone/core/openapi/db_control/model/configure_index_request_spec.py
-    pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.index_model
-  Imported in:
-    pinecone/core/openapi/db_control/api/manage_indexes_api.py
-    pinecone/core/openapi/db_control/model/index_list.py
-    pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.pod_spec_metadata_config
-  Imported in:
-    pinecone/core/openapi/db_control/model/pod_spec.py
-    pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.collection_model
-  Imported in:
-    pinecone/core/openapi/db_control/api/manage_indexes_api.py
-    pinecone/core/openapi/db_control/model/collection_list.py
+    pinecone/core/openapi/db_control/model/backup_list.py
+    pinecone/core/openapi/db_control/model/restore_job_list.py
     pinecone/core/openapi/db_control/models/__init__.py
 Module: pinecone.core.openapi.db_control.model.index_model_spec
   Imported in:
@@ -571,35 +755,11 @@ Module: pinecone.core.openapi.db_control.model.configure_index_request_embed
   Imported in:
     pinecone/core/openapi/db_control/model/configure_index_request.py
     pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.configure_index_request_spec
-  Imported in:
-    pinecone/core/openapi/db_control/model/configure_index_request.py
-    pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.collection_list
-  Imported in:
-    pinecone/core/openapi/db_control/api/manage_indexes_api.py
-    pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.configure_index_request
-  Imported in:
-    pinecone/core/openapi/db_control/api/manage_indexes_api.py
-    pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.create_collection_request
-  Imported in:
-    pinecone/core/openapi/db_control/api/manage_indexes_api.py
-    pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.create_index_for_model_request
-  Imported in:
-    pinecone/core/openapi/db_control/api/manage_indexes_api.py
-    pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.create_index_request
+Module: pinecone.core.openapi.db_control.model.create_index_from_backup_response
   Imported in:
     pinecone/core/openapi/db_control/api/manage_indexes_api.py
     pinecone/core/openapi/db_control/models/__init__.py
 Module: pinecone.core.openapi.db_control.model.error_response
-  Imported in:
-    pinecone/core/openapi/db_control/api/manage_indexes_api.py
-    pinecone/core/openapi/db_control/models/__init__.py
-Module: pinecone.core.openapi.db_control.model.index_list
   Imported in:
     pinecone/core/openapi/db_control/api/manage_indexes_api.py
     pinecone/core/openapi/db_control/models/__init__.py
@@ -639,6 +799,17 @@ Module: pinecone.core.openapi.db_data.model.usage
     pinecone/core/openapi/db_data/model/list_response.py
     pinecone/core/openapi/db_data/model/query_response.py
     pinecone/core/openapi/db_data/models/__init__.py
+Module: pinecone.core.openapi.db_data.model.namespace_description
+  Imported in:
+    pinecone/core/openapi/db_data/api/namespace_operations_api.py
+    pinecone/core/openapi/db_data/model/list_namespaces_response.py
+    pinecone/core/openapi/db_data/models/__init__.py
+Module: pinecone.core.openapi.db_data.model.pagination
+  Imported in:
+    pinecone/core/openapi/db_data/model/list_imports_response.py
+    pinecone/core/openapi/db_data/model/list_namespaces_response.py
+    pinecone/core/openapi/db_data/model/list_response.py
+    pinecone/core/openapi/db_data/models/__init__.py
 Module: pinecone.core.openapi.db_data.model.search_records_response_result
   Imported in:
     pinecone/core/openapi/db_data/model/search_records_response.py
@@ -651,11 +822,6 @@ Module: pinecone.core.openapi.db_data.model.import_model
   Imported in:
     pinecone/core/openapi/db_data/api/bulk_operations_api.py
     pinecone/core/openapi/db_data/model/list_imports_response.py
-    pinecone/core/openapi/db_data/models/__init__.py
-Module: pinecone.core.openapi.db_data.model.pagination
-  Imported in:
-    pinecone/core/openapi/db_data/model/list_imports_response.py
-    pinecone/core/openapi/db_data/model/list_response.py
     pinecone/core/openapi/db_data/models/__init__.py
 Module: pinecone.core.openapi.db_data.model.search_records_vector
   Imported in:
@@ -690,6 +856,19 @@ Module: pinecone.core.openapi.db_data.model.search_records_request_rerank
   Imported in:
     pinecone/core/openapi/db_data/model/search_records_request.py
     pinecone/core/openapi/db_data/models/__init__.py
+Module: pinecone.core.openapi.db_data.api.bulk_operations_api
+  Imported in:
+    pinecone/core/openapi/db_data/apis/__init__.py
+    pinecone/db_data/resources/asyncio/bulk_import_asyncio.py
+    pinecone/db_data/resources/sync/bulk_import.py
+Module: pinecone.core.openapi.db_data.api.namespace_operations_api
+  Imported in:
+    pinecone/core/openapi/db_data/apis/__init__.py
+Module: pinecone.core.openapi.db_data.api.vector_operations_api
+  Imported in:
+    pinecone/core/openapi/db_data/apis/__init__.py
+    pinecone/db_data/index.py
+    pinecone/db_data/index_asyncio.py
 Module: pinecone.core.openapi.db_data.model.list_imports_response
   Imported in:
     pinecone/core/openapi/db_data/api/bulk_operations_api.py
@@ -697,6 +876,7 @@ Module: pinecone.core.openapi.db_data.model.list_imports_response
 Module: pinecone.core.openapi.db_data.model.rpc_status
   Imported in:
     pinecone/core/openapi/db_data/api/bulk_operations_api.py
+    pinecone/core/openapi/db_data/api/namespace_operations_api.py
     pinecone/core/openapi/db_data/api/vector_operations_api.py
     pinecone/core/openapi/db_data/models/__init__.py
 Module: pinecone.core.openapi.db_data.model.start_import_request
@@ -706,6 +886,10 @@ Module: pinecone.core.openapi.db_data.model.start_import_request
 Module: pinecone.core.openapi.db_data.model.start_import_response
   Imported in:
     pinecone/core/openapi/db_data/api/bulk_operations_api.py
+    pinecone/core/openapi/db_data/models/__init__.py
+Module: pinecone.core.openapi.db_data.model.list_namespaces_response
+  Imported in:
+    pinecone/core/openapi/db_data/api/namespace_operations_api.py
     pinecone/core/openapi/db_data/models/__init__.py
 Module: pinecone.core.openapi.db_data.model.delete_request
   Imported in:
@@ -791,22 +975,68 @@ Module: pinecone.core.grpc.protos.db_data_2025_01_pb2
     pinecone/grpc/index_grpc.py
     pinecone/grpc/sparse_values_factory.py
     pinecone/grpc/vector_factory_grpc.py
-Module: pinecone.exceptions.exceptions
+Module: collections.abc
   Imported in:
-    pinecone/config/config.py
+    pinecone/db_data/sparse_values_factory.py
+    pinecone/db_data/vector_factory.py
+    pinecone/grpc/sparse_values_factory.py
+    pinecone/grpc/vector_factory_grpc.py
+Module: pinecone.core.openapi.db_data.models
+  Imported in:
+    pinecone/db_data/index.py
+    pinecone/db_data/index_asyncio.py
+    pinecone/db_data/index_asyncio_interface.py
+    pinecone/db_data/interfaces.py
+    pinecone/db_data/models/__init__.py
+    pinecone/db_data/query_results_aggregator.py
+    pinecone/db_data/request_factory.py
+    pinecone/db_data/resources/asyncio/bulk_import_asyncio.py
+    pinecone/db_data/resources/sync/bulk_import.py
+    pinecone/db_data/resources/sync/bulk_import_request_factory.py
+    pinecone/db_data/sparse_values_factory.py
+    pinecone/db_data/vector_factory.py
+    pinecone/grpc/index_grpc.py
+    pinecone/grpc/sparse_values_factory.py
+    pinecone/grpc/utils.py
+    pinecone/grpc/vector_factory_grpc.py
+Module: multiprocessing.pool
+  Imported in:
+    pinecone/db_data/index.py
+    pinecone/db_data/interfaces.py
+    pinecone/openapi_support/api_client.py
+Module: pinecone.utils.tqdm
+  Imported in:
+    pinecone/db_data/index.py
+    pinecone/db_data/index_asyncio.py
+    pinecone/grpc/index_grpc.py
+Module: pinecone.core.openapi.db_data
+  Imported in:
+    pinecone/db_data/index.py
+    pinecone/db_data/index_asyncio.py
+Module: concurrent.futures
+  Imported in:
+    pinecone/db_data/index.py
+    pinecone/grpc/base.py
     pinecone/grpc/future.py
-    pinecone/grpc/grpc_runner.py
-Module: pinecone.config.openapi
+    pinecone/grpc/index_grpc.py
+    pinecone/openapi_support/api_client.py
+Module: pandas
   Imported in:
-    pinecone/config/config.py
+    pinecone/db_data/index.py
+    pinecone/grpc/index_grpc.py
 Module: certifi
   Imported in:
-    pinecone/config/openapi.py
+    pinecone/config/openapi_config_factory.py
     pinecone/grpc/channel_factory.py
     pinecone/openapi_support/rest_aiohttp.py
-Module: urllib3.connection
+Module: pinecone.exceptions
   Imported in:
-    pinecone/config/openapi.py
+    pinecone/config/config.py
+    pinecone/config/openapi_configuration.py
+    pinecone/openapi_support/exceptions.py
+Module: pinecone.config.openapi_config_factory
+  Imported in:
+    pinecone/config/config.py
 Module: dateutil.parser
   Imported in:
     pinecone/openapi_support/__init__.py
@@ -815,10 +1045,20 @@ Module: urllib.parse
   Imported in:
     pinecone/openapi_support/api_client_utils.py
     pinecone/openapi_support/rest_urllib3.py
+Module: urllib3
+  Imported in:
+    pinecone/openapi_support/rest_urllib3.py
+Module: urllib3.util.retry
+  Imported in:
+    pinecone/openapi_support/retry_urllib3.py
 Module: urllib3.fields
   Imported in:
     pinecone/openapi_support/api_client_utils.py
     pinecone/openapi_support/asyncio_api_client.py
+Module: aiohttp_retry
+  Imported in:
+    pinecone/openapi_support/rest_aiohttp.py
+    pinecone/openapi_support/retry_aiohttp.py
 Module: aiohttp
   Imported in:
     pinecone/openapi_support/rest_aiohttp.py
@@ -826,7 +1066,7 @@ Module: google.protobuf.message
   Imported in:
     pinecone/grpc/grpc_runner.py
     pinecone/grpc/utils.py
-Module: pinecone.data.dataclasses
+Module: pinecone.db_data.dataclasses
   Imported in:
     pinecone/grpc/__init__.py
     pinecone/grpc/utils.py
@@ -838,18 +1078,10 @@ Module: grpc._channel
   Imported in:
     pinecone/grpc/base.py
     pinecone/grpc/grpc_runner.py
-Module: pinecone
-  Imported in:
-    pinecone/grpc/base.py
-    pinecone/grpc/channel_factory.py
-    pinecone/grpc/grpc_runner.py
-    pinecone/grpc/index_grpc.py
-    pinecone/grpc/sparse_values_factory.py
-    pinecone/grpc/vector_factory_grpc.py
-Module: pinecone.models.list_response
+Module: pinecone.db_control.models.list_response
   Imported in:
     pinecone/grpc/index_grpc.py
-Module: pinecone.data.query_results_aggregator
+Module: pinecone.db_data.query_results_aggregator
   Imported in:
     pinecone/grpc/index_grpc.py
 Module: pinecone.core.grpc.protos.db_data_2025_01_pb2_grpc
@@ -858,6 +1090,10 @@ Module: pinecone.core.grpc.protos.db_data_2025_01_pb2_grpc
 Module: pinecone.utils.constants
   Imported in:
     pinecone/grpc/channel_factory.py
+    pinecone/grpc/grpc_runner.py
+Module: pinecone.exceptions.exceptions
+  Imported in:
+    pinecone/grpc/future.py
     pinecone/grpc/grpc_runner.py
 Module: pinecone.utils.user_agent
   Imported in:
