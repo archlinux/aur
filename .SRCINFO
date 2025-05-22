@@ -1,0 +1,20 @@
+pkgbase = kgoldrunner1
+	pkgdesc = A game of action and puzzle solving
+	pkgver = 1.0+r8+g1f4800f
+	pkgrel = 1
+	url = https://apps.kde.org/kgoldrunner/
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	license = GPL-2.0-or-later
+	makedepends = cmake>=3
+	depends = gcc-libs
+	depends = glibc
+	depends = kdelibs1
+	depends = qt1
+	source = kde1-kgoldrunner-1f4800f3159e72275d4654dbebbc12f096d5eab8.tar.gz::https://invent.kde.org/sandsmark/kde1-kgoldrunner/-/archive/1f4800f3159e72275d4654dbebbc12f096d5eab8/kde1-kgoldrunner-1f4800f3159e72275d4654dbebbc12f096d5eab8.tar.gz
+	source = kgoldrunner1_versioned.patch
+	b2sums = b78b91c840065a2c58ae93a85dd315b37ee121db73b2835ba4730e0b8d29adaf393fdd3bd93c928271d7b32afdc954d9db4c5318ba08281a6cf5bceaccc00186
+	b2sums = 449e55461345b2cce8ab5cb0ae545839124301027e4ccade9854b33eea3e1d35eb67c99f4464e472d9bee689622a6a881f25cf1cb7cf9530e4385af25661a1ab
+
+pkgname = kgoldrunner1

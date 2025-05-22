@@ -1,0 +1,161 @@
+diff -aur a/kgoldrunner/CMakeLists.txt b/kgoldrunner/CMakeLists.txt
+--- a/kgoldrunner/CMakeLists.txt
++++ b/kgoldrunner/CMakeLists.txt
+@@ -4,7 +4,7 @@
+     kgrobj.h
+ )
+ 
+-add_executable(kgoldrunner
++add_executable(kgoldrunner1
+     main.cpp
+ 
+     kgoldrunnerwidget.cpp
+@@ -13,17 +13,17 @@
+ 
+     ${MOC_FILES}
+ )
+-target_link_libraries(kgoldrunner
++target_link_libraries(kgoldrunner1
+     ${KDE1_KDECORE}
+     ${KDE1_KDEUI}
+     Qt::Qt1
+     X11::X11
+ )
+ 
+-install(TARGETS kgoldrunner RUNTIME DESTINATION ${KDE1_BINDIR})
++install(TARGETS kgoldrunner1 RUNTIME DESTINATION ${KDE1_BINDIR})
+ 
+-install_icon(kgoldrunner.xpm)
+-install(FILES kgoldrunner.kdelnk DESTINATION ${KDE1_APPSDIR}/Games/)
++install(FILES kgoldrunner.xpm DESTINATION ${KDE1_ICONDIR} RENAME kgoldrunner1.xpm)
++install(FILES kgoldrunner.kdelnk DESTINATION ${KDE1_APPSDIR}/Games/ RENAME kgoldrunner1.kdelnk)
+ 
+ install(FILES
+     docs/en/editbar.png
+@@ -45,7 +45,7 @@
+     docs/en/tute008.png
+     docs/en/typical.htm
+ 
+-    DESTINATION ${KDE1_HTMLDIR}/en/kgoldrunner
++    DESTINATION ${KDE1_HTMLDIR}/en/kgoldrunner1
+ )
+ 
+ add_subdirectory(system)
+diff -aur a/kgoldrunner/kgoldrunner.cpp b/kgoldrunner/kgoldrunner.cpp
+--- a/kgoldrunner/kgoldrunner.cpp
++++ b/kgoldrunner/kgoldrunner.cpp
+@@ -423,8 +423,8 @@
+     // that, in the KDE1/QT1 version of KGoldrunner, the manual is obtained
+     // from a KDE Help class built into the KDE Application.
+ 
+-    systemDataDir = KApplication::kde_datadir() + "/kgoldrun/";
+-    userDataDir   = KApplication::localkdedir() + "/share/apps/kgoldrun/";
++    systemDataDir = KApplication::kde_datadir() + "/kgoldrunner1/";
++    userDataDir   = KApplication::localkdedir() + "/share/apps/kgoldrunner1/";
+ 
+     // Create the user's "kgoldrun" and "levels" directories, if not present.
+     QDir d (userDataDir.myStr());
+@@ -467,37 +467,37 @@
+     KStandardDirs * dirs = new KStandardDirs();
+ 
+     // Find the KGoldrunner Users' Guide, English version (en).
+-    systemHTMLDir = dirs->findResourceDir ("html", "en/kgoldrun/");
++    systemHTMLDir = dirs->findResourceDir ("html", "en/kgoldrunnner1/");
+     if (systemHTMLDir.length() <= 0) {
+ 	QMessageBox::information (this, "KGoldrunner - Get Directories",
+-	"Cannot find documentation sub-directory \"en/kgoldrun/\"\n"
++	"Cannot find documentation sub-directory \"en/kgoldrunner1/\"\n"
+ 	"in area \"" + dirs->kde_default ("html") +
+ 	"\" of the KDE directories ($KDEDIRS).\n"
+ 	"Please contact your System Administrator.");
+ 	result = FALSE;
+     }
+     else
+-	systemHTMLDir.append ("en/kgoldrun/");
++	systemHTMLDir.append ("en/kgoldrunner1/");
+ 
+     // Find the system collections in a directory of the required KDE type.
+-    systemDataDir = dirs->findResourceDir ("data", "kgoldrun/system/");
++    systemDataDir = dirs->findResourceDir ("data", "kgoldrunner1/system/");
+     if (systemDataDir.length() <= 0) {
+ 	QMessageBox::information (this, "KGoldrunner - Get Directories",
+-	"Cannot find System Levels sub-directory \"kgoldrun/system/\"\n"
++	"Cannot find System Levels sub-directory \"kgoldrunner1/system/\"\n"
+ 	"in area \"" + dirs->kde_default ("data") +
+ 	"\" of the KDE directories ($KDEDIRS).\n"
+ 	"Please contact your System Administrator.");
+ 	result = FALSE;
+     }
+     else
+-	systemDataDir.append ("kgoldrun/system/");
++	systemDataDir.append ("kgoldrunner1/system/");
+ 
+     // Locate and optionally create directories for user collections and levels.
+     bool create = TRUE;
+-    userDataDir   = dirs->saveLocation ("data", "kgoldrun/user/", create);
++    userDataDir   = dirs->saveLocation ("data", "kgoldrunner1/user/", create);
+     if (userDataDir.length() <= 0) {
+ 	QMessageBox::information (this, "KGoldrunner - Get Directories",
+-	"Cannot find or create User Levels sub-directory \"kgoldrun/user/\"\n"
++	"Cannot find or create User Levels sub-directory \"kgoldrunner1/user/\"\n"
+ 	"in area \"" + dirs->kde_default ("data") +
+ 	"\" of the KDE user area ($KDEHOME).\n"
+ 	"Please contact your System Administrator.");
+@@ -508,7 +508,7 @@
+ 	if (! create) {
+ 	    QMessageBox::information (this, "KGoldrunner - Get Directories",
+ 	    "Cannot find or create \"levels/\" directory in sub-directory\n"
+-	    "\"kgoldrun/user/\" in the KDE user area ($KDEHOME).\n"
++	    "\"kgoldrunner1/user/\" in the KDE user area ($KDEHOME).\n"
+ 	    "Please contact your System Administrator.");
+ 	    result = FALSE;
+ 	}
+diff -aur a/kgoldrunner/kgoldrunner.kdelnk b/kgoldrunner/kgoldrunner.kdelnk
+--- a/kgoldrunner/kgoldrunner.kdelnk
++++ b/kgoldrunner/kgoldrunner.kdelnk
+@@ -1,10 +1,10 @@
+ # KDE Config File 
+ [KDE Desktop Entry]
+-Name=KGoldrunner
+-Exec=kgoldrunner
+-Icon=kgoldrunner.xpm
++Name=KGoldrunner1
++Exec=kgoldrunner1
++Icon=kgoldrunner1.xpm
+ Type=Application
+-DocPath=kgoldrunner/index.html
++DocPath=kgoldrunner1/index.html
+ Comment=
+ Terminal=0
+-MiniIcon=kgoldrunner.xpm
++MiniIcon=kgoldrunner1.xpm
+diff -aur a/kgoldrunner/main.cpp b/kgoldrunner/main.cpp
+--- a/kgoldrunner/main.cpp
++++ b/kgoldrunner/main.cpp
+@@ -21,7 +21,7 @@
+ int main (int argc, char *argv[])
+ {
+ #ifdef QT1
+-    KApplication app (argc, argv, "kgoldrunner");
++    KApplication app (argc, argv, "kgoldrunner1");
+ #else
+     QApplication app (argc, argv);
+ #endif
+diff -aur a/kgoldrunner/system/CMakeLists.txt b/kgoldrunner/system/CMakeLists.txt
+--- a/kgoldrunner/system/CMakeLists.txt
++++ b/kgoldrunner/system/CMakeLists.txt
+@@ -5,12 +5,12 @@
+     hi_plwv.dat
+     hi_wad.dat
+ 
+-    DESTINATION ${KDE1_DATADIR}/kgoldrun
++    DESTINATION ${KDE1_DATADIR}/kgoldrunner1
+ )
+ 
+ install(DIRECTORY
+     levels
+ 
+-    DESTINATION ${KDE1_DATADIR}/kgoldrun
++    DESTINATION ${KDE1_DATADIR}/kgoldrunner1
+ )
+ 
