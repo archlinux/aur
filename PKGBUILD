@@ -1,6 +1,6 @@
 # Maintainer: patryk-s <patryk.sidzina@gmail.com>
 pkgname=package-assistant
-pkgver=0.10.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Provides a consistent CLI interface for all supported package managers, across multiple OSes, so you don't have to remember the specific syntax on a given system."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/patryk-s/package-assistant/archive/$pkgver.tar.gz")
-sha256sums=('3f891135ccf4b4e755fc8e316832883fab14e4412cca709b2018d87b864aa2d1')
+sha256sums=('973ca9fefaa38a4ae102080434b253d6ab64be0e9e7818edfba9d29b06a774cf')
 
 build() {
   cd "$pkgname-$pkgver"
