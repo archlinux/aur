@@ -1,7 +1,7 @@
 # Maintainer: Kemel Zaidan <kemelzaidan at gmail com>
 pkgname=mdtt
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="A TUI for Markdown files with VIM-like keybindings"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/szktkfm/mdtt"
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go')
 options=("strip" "buildflags")
 source=("$url/archive/refs/tags/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('e26cb06aa2cbbde6af0eed0a9c1aac45b45c51b907fba7a3020e0354cd404152')
+sha256sums=('b0192828d0682eb270d1b482d1fee7641ef1f7804395ccf538751173715d9852')
 
 prepare(){
     cd "$pkgname-$pkgver"
