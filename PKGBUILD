@@ -1,8 +1,8 @@
-# Maintainer: xan <xxdr@duck.com>
+# Maintainer: pparaxan <xxdr@duck.com>
 pkgname="xfetch-bin"
-pkgver=4.0.0
+pkgver=5.0.0
 pkgrel=1
-pkgdesc="Lightweight Linux fetch written in Rust."
+pkgdesc="not associated with xmen; that one fetching tool made in zig."
 arch=('x86_64')
 url="https://codeberg.org/pparaxan/xFetch"
 license=('MIT')
@@ -12,8 +12,8 @@ source=(
 	"https://codeberg.org/pparaxan/xFetch/raw/branch/master/LICENSE"
 )
 sha256sums=(
-	'50ceb70d7657565565be41364132bbf652a2e0895cd5893d3950dae9ea1a7b92'
-	'SKIP'
+	'b21ca1d388d5d385b6b73a07d063f2136fcad97b05b4f57dbf266956284db675'
+	'831e0b2afed192484f6f7bfa09833299c945057b681b639fb0b3f2fd07c86460'
 )
 
 package() {

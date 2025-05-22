@@ -1,13 +1,13 @@
 pkgbase = xfetch-bin
-	pkgdesc = Lightweight Linux fetch written in Rust.
-	pkgver = 4.0.0
+	pkgdesc = not associated with xmen; that one fetching tool made in zig.
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://codeberg.org/pparaxan/xFetch
 	arch = x86_64
 	license = MIT
-	source = https://codeberg.org/pparaxan/xFetch/releases/download/v4.0.0/xFetch-4.0.0.tar.xz
+	source = https://codeberg.org/pparaxan/xFetch/releases/download/v5.0.0/xFetch-5.0.0.tar.xz
 	source = https://codeberg.org/pparaxan/xFetch/raw/branch/master/LICENSE
-	sha256sums = 50ceb70d7657565565be41364132bbf652a2e0895cd5893d3950dae9ea1a7b92
-	sha256sums = SKIP
+	sha256sums = b21ca1d388d5d385b6b73a07d063f2136fcad97b05b4f57dbf266956284db675
+	sha256sums = 831e0b2afed192484f6f7bfa09833299c945057b681b639fb0b3f2fd07c86460
 
 pkgname = xfetch-bin
