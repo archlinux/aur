@@ -1,17 +1,17 @@
 pkgbase = javy-bin
 	pkgdesc = A JavaScript to Webassembly toolchain
-	pkgver = 5.0.3
+	pkgver = 5.0.4
 	pkgrel = 1
 	url = https://github.com/bytecodealliance/javy
 	arch = x86_64
-	license = APACHE
+	license = Apache-2.0
 	provides = javy
 	conflicts = javy
-	source = https://github.com/bytecodealliance/javy/raw/v5.0.3/LICENSE.md
-	source = https://github.com/bytecodealliance/javy/releases/download/v5.0.3/javy-x86_64-linux-v5.0.3.gz.sha256
+	source = https://github.com/bytecodealliance/javy/raw/v5.0.4/LICENSE.md
+	source = https://github.com/bytecodealliance/javy/releases/download/v5.0.4/javy-x86_64-linux-v5.0.4.gz.sha256
 	sha256sums = 3b26cd02b9d9bf324bce59edd88c02cb93fa9a908528b805264db8cde53295e6
-	sha256sums = e72d564727c454d9634fe964be6709b1acb450eb953a3a5b2099f9a8f022291f
-	source_x86_64 = https://github.com/bytecodealliance/javy/releases/download/v5.0.3/javy-x86_64-linux-v5.0.3.gz
-	sha256sums_x86_64 = 07915fc6897b1c48e4447a972f12e96132c0d350301ecc5c6aecd0b584969157
+	sha256sums = ae6ad2f3ba596f6cf4c29d8d5dd66c37205cf25151aba3ae56d4da0bc8023f04
+	source_x86_64 = https://github.com/bytecodealliance/javy/releases/download/v5.0.4/javy-x86_64-linux-v5.0.4.gz
+	sha256sums_x86_64 = e5f329841f42a7ffce9bc1e4226a5e063f40b6cfa1413a8ca762d29df3c08713
 
 pkgname = javy-bin
