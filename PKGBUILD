@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=25.2.0_devel.204472.949d2e507d9
+pkgver=25.2.0_devel.205806.64ce37b2d98
 pkgrel=1
 arch=('x86_64')
 makedepends=(python-mako python-packaging lib32-libxml2 lib32-libx11 xorgproto lib32-gcc-libs lib32-libelf git lib32-libglvnd
@@ -26,7 +26,7 @@ depends=(mesa-minimal-git lib32-gcc-libs lib32-libdrm lib32-wayland lib32-libxxf
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=(lib32-mesa lib32-vulkan-radeon lib32-libva-mesa-driver lib32-mesa-vulkan lib32-vulkan-virtio lib32-vulkan-mesa-layers lib32-mesa-vdpau lib32-opengl-driver lib32-vulkan-driver)
 conflicts=(lib32-mesa lib32-vulkan-intel lib32-vulkan-radeon lib32-libva-mesa-driver lib32-mesa-vulkan lib32-vulkan-mesa-layers lib32-mesa-vdpau 
-                lib32-vulkan-nouveau lib32-mesa-libgl lib32-vulkan-virtio lib32-opencl-clover-mesa lib32-opencl-rusticl-mesa lib32-vulkan-dzn lib32-vulkan-gfxstream
+                lib32-vulkan-nouveau lib32-mesa-libgl lib32-vulkan-virtio lib32-opencl-mesa lib32-vulkan-dzn lib32-vulkan-gfxstream
 )
 url="https://www.mesa3d.org"
 license=('MIT AND BSD-3-Clause AND SGI-B-2.0')
@@ -93,7 +93,7 @@ build () {
 package() {
     DESTDIR="$pkgdir" ninja $NINJAFLAGS -C _build install
 
-    # remove files provided by mesa-git
+    # remove files provided by mesa-minimal-git
     rm -rf "$pkgdir"/etc
     rm -rf "$pkgdir"/usr/include
     rm -rf "$pkgdir"/usr/share/glvnd/
