@@ -1,0 +1,24 @@
+pkgbase = autho-iptv-bin
+	pkgdesc = A Smart and Seamless IPTV Player Application.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.6.2_beta
+	pkgrel = 1
+	url = https://glitport.github.io/AuthoIPTV/
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = LicenseRef-freeware
+	depends = electron34
+	provides = autho-iptv=0.6.2_beta
+	conflicts = autho-iptv
+	source = LICENSE-0.6.2_beta::https://raw.githubusercontent.com/glitport/AuthoIPTV/v0.6.2-beta/LICENSE
+	source = autho-iptv.sh
+	sha256sums = 2e72b3f0811dda8d464a833468aeaa20706230c01462c961a3581db929d2fe60
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = autho-iptv-0.6.2_beta-aarch64.deb::https://github.com/glitport/AuthoIPTV/releases/download/v0.6.2-beta/AuthoIPTV-0.6.2-beta-linux-arm64.deb
+	sha256sums_aarch64 = b6502d1042b4ee389175f2e454a8266cb20006489a78ca865f09e79c0e148d6a
+	source_armv7h = autho-iptv-0.6.2_beta-armv7h.deb::https://github.com/glitport/AuthoIPTV/releases/download/v0.6.2-beta/AuthoIPTV-0.6.2-beta-linux-armv7l.deb
+	sha256sums_armv7h = 81f060cfd9640e467f2bd011867f48bd6e44fccf5bc8607f0fbfc91c7afc5c91
+	source_x86_64 = autho-iptv-0.6.2_beta-x86_64.deb::https://github.com/glitport/AuthoIPTV/releases/download/v0.6.2-beta/AuthoIPTV-0.6.2-beta-linux-amd64.deb
+	sha256sums_x86_64 = 530771d4117dba1d9a5d14623eef1eb8c756b61bccc629bdae1de2f5040673a8
+
+pkgname = autho-iptv-bin
