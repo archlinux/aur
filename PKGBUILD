@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=trezor-suite-bin
 _pkgname=Trezor-Suite
-pkgver=25.4.2
+pkgver=25.5.2
 _electronversion=35
 pkgrel=1
 pkgdesc="Desktop app for Trezor hardware wallets.(Prebuilt version.Use system-wide electron)"
@@ -16,6 +16,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
+    'nodejs'
 )
 makedepends=(
     'asar'
@@ -29,8 +30,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('0bb9e6855d6aa4f013a87ed9ceb2ef47b6eddc44858cc85ed3faf5d53677f67a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('277cd6662a2eac2f9dec1386d4e466472d9885ed89308e40fb31a3eeac93d10d')
-sha256sums_x86_64=('2406a24f12249c0abf7c003478b4be4cc3db9d463193f9887e8b267d707db216')
+sha256sums_aarch64=('c319b66cd4c3cebf23cf243da4175b70247b07f695b0e0e18fa81ee90dcf73ed')
+sha256sums_x86_64=('88db0b9d2ebd1b74e000fd49150cfe130a114d4036911d4d9d732b21c69781e2')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -49,6 +50,14 @@ prepare() {
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
     find "${srcdir}/squashfs-root/resources/app.asar.unpacked" \( -name "darwin-*" -o -name "win32-*" -o -name "android-*" \) -type d -exec rm -rf {} +
+    case "${CARCH}" in
+        aarch64)
+            rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/usb/prebuilds/"{linux-arm,linux-ia32,linux-x64}
+            ;;
+        x86_64)
+            rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/usb/prebuilds/"{linux-arm,linux-arm64,linux-ia32}
+            ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
