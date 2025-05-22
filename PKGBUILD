@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-location
-_basever=5.15.16
-pkgver=5.15.16+kde+r7
-pkgrel=4
-_commit=6e89db9fcf76fa35c9275123c814e260610d355e
+_basever=5.15.17
+pkgver=5.15.17+kde+r7
+pkgrel=1
+_commit=c6e6c63e8566fc75551cb901c3b5939b39e7a25c
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -16,7 +16,7 @@ groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         git+https://invent.kde.org/qt/qt/qtlocation-mapboxgl.git)
-sha256sums=('0c66317d141f21d5ee47591a79c88892da9b7fb58f254d2638e6988f1c6850da'
+sha256sums=('8c27e7ec72bdf94f2dc2b93a55760076e418e89097ad56d6ddfb89657edc370a'
             'SKIP')
 
 pkgver() {
