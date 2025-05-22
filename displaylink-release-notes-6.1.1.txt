@@ -3,12 +3,12 @@
 
         DisplayLink Ubuntu Software Release Note
 
-Version: v6.1.0
-Build: posix/65-13-gfb0806c33a3 (17)
+Version: v6.1.1
+Build: posix/66-1529-gdc29bfc0a71 (17)
 
-Date: 23rd September 2024
+Date: 7th April 2025
 
-Extensible Virtual Display Interface version included: v1.14.7-3 (59a3a86)
+Extensible Virtual Display Interface version included: v1.14.9-2 (248b223)
 =============================================================================
 =============================================================================
 
@@ -16,7 +16,7 @@ Extensible Virtual Display Interface version included: v1.14.7-3 (59a3a86)
 A. Introduction
 ===============
 
-This is DisplayLink Driver Software v6.1.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
+This is DisplayLink Driver Software v6.1.1 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
 
 The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native Ubuntu drivers provide support for DisplayLink audio and ethernet interfaces.
 
@@ -45,8 +45,15 @@ I.  Future development
 C.  Bugs fixed in this release
 ==============================
 
-C.10 Changes in 6.1 release
+C.11 Changes in 6.1.1 release
+-----------------------------
+- DL-7xxx series: Improved splash screen functionality. (WS-8450, WS-7209, VIFR-5303, VIFR-4658)
+- DL-7xxx series: HDMI cannot output correct resolution. (VIFR-5301)
+- DL-7xxx series: Support for 2.5G LAN connection. (WS-6934)
+- DL-6xxx series: Avoid blanking extended display while host PC is under heavy load. (VIFR-5507)
 
+C.10 Changes in 6.1 release
+-----------------------------
 - DL−7xxx series: LG 34WK95UP monitor was not working properly on DisplayPort. (VIFR-5046)
 - DL−7xxx series: Improved interoperability with DisplayPort monitors at 4K 144 Hz. (VIFR-4803)
 - DL−7xxx series: Failed to get EDID from some HDMI monitors. (VIFR-4762)
@@ -143,11 +150,11 @@ C.1  Changes in 5.4.0 release
 D. Supported O/S variants
 =========================
 
-This release has been prepared to be compatible with Ubuntu 23.04, 22.04 and 20.04.
+This release has been prepared to be compatible with Ubuntu 25.04, 24.04, 22.04 and 20.04.
 Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
 
 The Software contains binaries which work on i686, amd64, armv7 and aarch64 architectures.
-Supported Linux Kernel version range is from 4.15 to 6.8.
+Supported Linux Kernel version range is from 4.15 to 6.14.
 Minimum supported Xorg version is 1.16, minimum supported Mutter (Wayland) version is 3.32.
 
 E. Release components
@@ -202,6 +209,8 @@ monitor order as a mitigation.
 - When displayLink-driver debian package is installed first time with GUI application like Synaptic and Secure Boot is
 enabled then installation will fail.
 How to use DisplayLink Ubuntu driver with UEFI Secure Boot (https://support.displaylink.com/knowledgebase/articles/1181617-how-to-use-displaylink-ubuntu-driver-with-uefi-sec)
+
+- DL-7xxx Series: Some displays when connected over HDMI may appear only in 640x480 mode (VIFR-5406)
 
 I. Future development
 ======================
