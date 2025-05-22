@@ -2,7 +2,7 @@
 pkgname=podman-desktop-git
 _pkgname="Podman Desktop"
 _flatpakname="io.podman_desktop.${_pkgname// /}"
-pkgver=r7326.9ece43b
+pkgver=r7443.b7a7a4c
 _electronversion=36
 _nodeversion=24
 pkgrel=1
