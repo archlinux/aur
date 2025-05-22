@@ -2,7 +2,7 @@
 
 _name='ccm'
 pkgname=python-${_name}
-pkgver=3.1.6.dev4
+pkgver=3.1.6.dev6
 pkgrel=1
 pkgdesc="Cassandra Cluster Manager."
 url="https://github.com/apache/cassandra-ccm"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-pbr' 'python-build' 'python-installer' 
 checkdepends=('python-mock' 'python-pytest' 'python-requests')
 optdepends=('python-paramiko: Remote execution')
 source=("${url}/archive/refs/tags/cassandra-test.tar.gz")
-sha256sums=('e97667ad7b0561e71961f5ce6ee6b6f732d6cf583fe7f6e1fe5920f6a2df78d8')
+sha256sums=('cfe3dda08a279b185c8f1587358643d0fa429213ca8639ee64b08ce7608be7ab')
 
 build() {
   cd "${srcdir}"/cassandra-ccm-cassandra-test
