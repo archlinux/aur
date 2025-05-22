@@ -2,7 +2,7 @@
 
 pkgname=python-tree-sitter-yaml
 _gitpkgname=tree-sitter-yaml
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='YAML Grammar for tree-sitter'
 arch=('x86_64')
@@ -26,9 +26,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-yaml/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  'cc3981ae9e41984107dc45e04cd870950bb49ba84f1ac57e968fb6a8ea4e37c34f4ae70a5caacf4b86e14a04ae86d6545aee44840df6b01492bebf07892c3f57'
-)
+sha512sums=('dca046e3485896a4b536ffaca2673562dd67bcc405f0b795a9edbc7fa7ca5e7ed852a4e76ad598584638f70f1f727c5642bd4b12ef876fdf50677089b205e908')
 
 build() {
   cd "${_gitpkgname}-${pkgver}"
