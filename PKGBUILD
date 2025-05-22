@@ -1,7 +1,7 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 pkgname=ty
 pkgver=0.0.1_alpha.6
-pkgrel=2
+pkgrel=3
 pkgdesc="An extremely fast Python type checker and language server, written in Rust."
 arch=("x86_64")
 url="https://github.com/astral-sh/ty"
@@ -31,6 +31,10 @@ build() {
 }
 
 package() {
-  python -m installer --destdir="$pkgdir" "$srcdir/git/ruff/target/wheels"/*.whl
+  python -m installer --destdir="${pkgdir}" "${srcdir}/git/ruff/target/wheels"/*.whl
+
   install -D -m 0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "$srcdir/git/LICENSE"
+
+  install -d -m 0755 "${pkgdir}/usr/share/doc/${pkgname}"
+  cp -r "${srcdir}/git/docs/"* "${pkgdir}/usr/share/doc/${pkgname}/"
 }
