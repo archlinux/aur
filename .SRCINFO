@@ -1,6 +1,6 @@
 pkgbase = keystore-explorer-git
 	pkgdesc = KeyStore Explorer is a free GUI replacement for the Java command-line utilities keytool and jarsigner.
-	pkgver = v5.5.3+2+g61975f7e
+	pkgver = 5.6.0.r0.g0b511df5
 	pkgrel = 1
 	url = https://keystore-explorer.org/
 	arch = any

@@ -2,12 +2,12 @@
 # If you think this package is shit, contact me with patch
 
 pkgname=keystore-explorer-git
-pkgver=v5.5.3+2+g61975f7e
+pkgver=5.6.0.r0.g0b511df5
 pkgrel=1
 pkgdesc="KeyStore Explorer is a free GUI replacement for the Java command-line utilities keytool and jarsigner."
 _pkgname=keystore-explorer
 _short_pkgname=kse
-_short_pkgver=5.5.3
+_short_pkgver=5.6.0
 arch=('any')
 url="https://keystore-explorer.org/"
 license=('GPLv3')
@@ -25,7 +25,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
-  git describe --tags | sed 's/-/+/g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
