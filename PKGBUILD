@@ -2,7 +2,7 @@
 # Maintainer: Bennett Petzold <dansecob.aur gmail com>
 
 pkgname=qsv
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 pkgdesc='quicksilver data-wrangling toolkit (fork of xsv) for tabular data such as CSV'
 arch=(x86_64)
@@ -21,7 +21,7 @@ makedepends=(cargo
 _archive="$pkgname-$pkgver"
 options=(!lto)
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('74c681e04742a93e436bcf5236a3d14c6e1fdb2aa5ed4cf87480fbed6d003369')
+sha256sums=('3df998802030fd9a3e2cab12f2369ae75077ee74a7076c773298efbc30a4f61a')
 
 prepare() {
 	cd "$_archive"
