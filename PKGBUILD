@@ -6,7 +6,7 @@
 
 pkgname='firefox-clearurls'
 pkgver=1.27.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Remove tracking elements from URL's."
 arch=('any')
 url="https://addons.mozilla.org/en-US/firefox/addon/clearurls/"
@@ -23,6 +23,6 @@ prepare() {
 }
 
 package() {
-  _extension_id="$(sed -n 's/.*"id": "\(.*\)".*/\1/p' clearurls-${pkgver}/manifest.json)"
+  _extension_id="$(sed -n 's/.*"id": "\(.*\)".*/\1/p' "${srcdir}"/clearurls-${pkgver}/manifest.json)"
   install -Dm644 'clearurls.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/${_id}.xpi"
 }
