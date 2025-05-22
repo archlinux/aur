@@ -6,11 +6,8 @@ pkgdesc="Electron for Content Security (ECS) is a fork of Electron created by ca
 arch=('x86_64')
 url="https://github.com/castlabs/electron-releases"
 license=('MIT')
-provides=("electron36=${pkgver}")
-conflicts=(
-    "${pkgname%-bin}"
-    'electron36'
-)
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=(
     'alsa-lib'
     'gtk3'
@@ -24,8 +21,9 @@ optdepends=(
     'trash-cli: file deletion support (trash-put)'
     "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)"
 )
+options=('!strip')
 noextract=("${pkgname%-bin}-${pkgver}.zip")
-source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_projectname}-v${pkgver}-linux-x64.zip")
+source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/electron-v${pkgver}-linux-x64.zip")
 sha256sums=('2417c5a8993c6d8434a6cd9eb063f7ec3c7bae82ce02fe09a0ef1d45a734fe64')
 prepare() {
     install -Dm755 -d "${srcdir}/${pkgname%-bin}"
@@ -35,6 +33,6 @@ prepare() {
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
     cp -r --no-preserve=ownership --preserve=mode "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/lib"
-    ln -nfs "/usr/lib/${pkgname%-bin}/electron" "${pkgdir}/usr/bin/electron"
+    ln -nfs "/usr/lib/${pkgname%-bin}/electron" "${pkgdir}/usr/bin/electron36-castlab"
     install -Dm644 "${srcdir}/${pkgname%-bin}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
