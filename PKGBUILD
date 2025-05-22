@@ -1,7 +1,7 @@
 # Maintainer: Daniel Hillenbrand <codeworkx at bbqlinux dot org>
 
 _gitname=VectorChord
-pkgname=VectorChord-bin
+pkgname=vectorchord-bin
 pkgver=0.3.0
 pkgrel=1
 pkgdesc="VectorChord Scalable, fast, and disk-friendly vector search in Postgres, the successor of pgvecto.rs. "
