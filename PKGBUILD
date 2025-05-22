@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="nak"
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="A command line tool for doing all things nostr"
 arch=('aarch64' 'armv7h' 'riscv64' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('a1ae6b510155c1ff04e23fd5c01f98201e05892de59e46c314c35158cea1304fc05ff59665f2f888864ad9be52d49eb34bcdeb9415232e40b923a47fe5a3c5dd')
+b2sums=('049e16e882af58c5b9dbff4e355acbc8fb0709c9f48e73eb3ee279c3a00ef320138b9550b4b399ef05baff39e527a7c6f26fdaa93abdf1666f53a82b94277358')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
