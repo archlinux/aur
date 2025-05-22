@@ -10,8 +10,8 @@ _desc="AI Code Editor "
 arch=('aarch64' 'x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor')
-_electron=electron34 # for --printsrcinfo. strict deps is added at package()
-depends=('ripgrep' 'xdg-utils' # system-wide runtimes
+_electron=electronAUTODETECT # for --printsrcinfo 
+depends=('ripgrep' 'xdg-utils' # electron* is added at package()
 		'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 makedepends=('desktop-file-utils')
 provides=("${_name}"{,-bin})
@@ -61,7 +61,7 @@ package_cursor-electron(){
 }
 
 package_cursor-electron35(){
-	depends+=(electron35 )
+	depends+=(electron35)
 	pkgdesc="${_desc} on electron35"
 	mv squashfs-root/usr "${pkgdir}/usr" # breaks --repackage
 	sed "s|name=electron|name=electron35|" run.sh > run-safe.sh
