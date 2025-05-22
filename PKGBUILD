@@ -11,9 +11,9 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=mesa-minimal-git
-pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
+pkgname=(mesa-minimal-git opencl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=25.2.0_devel.204471.ddbf2ec8839
+pkgver=25.2.0_devel.205806.64ce37b2d98
 pkgrel=2
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -24,7 +24,7 @@ makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto lib
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layers libva-mesa-driver vulkan-swrast vulkan-virtio mesa-vdpau vulkan-driver opengl-driver)
 conflicts=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layers libva-mesa-driver vulkan-swrast mesa-vdpau vulkan-virtio
-                vulkan-nouveau mesa-libgl  opencl-clover-mesa vulkan-gfxstream vulkan-dzn
+                vulkan-nouveau mesa-libgl vulkan-gfxstream vulkan-dzn
 )
 # mixing components from different mesa versions is a bad idea, conflict with everything unique provided by extra/mesa
 
@@ -39,6 +39,8 @@ options=(!emptydirs !lto !debug)
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
 # this package uses the environment variable NINJAFLAGS to allow the user to change this behaviour
+# example for 12 core / 24 threads processor    'opencl-clover-mesa'
+# export NINJAFLAGS="-j 18 -l 18"
 # The responsibility to validate the value of NINJAFLAGS lies with the user.
 # If unsure, use NINJAFLAGS=""
 
@@ -95,7 +97,7 @@ package_mesa-minimal-git() {
                         glibc libx11 libxfixes gcc-libs
                         xcb-util-keysyms spirv-tools
     )
-    conflicts+=("opencl-rusticl-mesa<$pkgver-$pkgrel")
+    conflicts+=("opencl-mesa<$pkgver-$pkgrel")
 
     DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C _build install
 
@@ -116,15 +118,15 @@ package_mesa-minimal-git() {
 }
 
 # I dislike splitting packages, but rusticl has several dependencies that are not needed by other mesa components
-package_opencl-rusticl-mesa-minimal-git() {
+package_opencl-mesa-minimal-git() {
     pkgdesc="OpenCL support in rust for mesa drivers (git version)"
-    conflicts=(opencl-clover-mesa opencl-rusticl-mesa)
-    provides=(opencl-rusticl-mesa opencl-driver)
+    conflicts=(opencl-mesa opencl-rusticl-mesa-minimal-git)
+    provides=(opencl-mesa opencl-driver)
     depends=(libdrm spirv-llvm-translator-minimal-git libclc-minimal-git spirv-tools
                     mesa-minimal-git=$pkgver-$pkgrel llvm-libs-minimal-git clang-libs-minimal-git
                     expat libelf zstd lm_sensors zlib gcc-libs glibc clang-opencl-headers-minimal-git
     )
     
     cp --preserve --recursive "$srcdir"/rusticl/* "$pkgdir"/
-        install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" mesa/docs/license.rst
+        install -m644 -Dt "$pkgdir"/usr/share/licenses/$pkgname mesa/docs/license.rst
 }
