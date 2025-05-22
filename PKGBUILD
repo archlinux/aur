@@ -1,7 +1,7 @@
 # Maintainer: Vitaly Lipatov <lav@etersoft.ru>
 
 pkgname=eepm
-pkgver=3.64.28
+pkgver=3.64.29
 pkgrel=1
 pkgdesc="A package manager with universal interface for any platform"
 arch=('any')
@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=(coreutils findutils diffutils file gawk grep gzip less sed bash ncurses)
 makedepends=('make')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Etersoft/eepm/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('cfb47e22bb923055269e32bba0f2a4d5454512e9ba575b163445385e9a491c55')
+sha256sums=('1877dc946baa36c41b3328f47aa11a9c208e04e3cd8266c48fe595c57085bee9')
 
 package() {
     cd "$pkgname-$pkgver"
