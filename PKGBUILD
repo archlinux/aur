@@ -7,7 +7,7 @@ _commit="eec7a2b34bf3aa14f775be132a9ff9c7767c5f62" # r116
 pkgver="1.1.2+r116+g${_commit::7}"
 _api="${pkgver%%.*}"
 pkgname="${_basename}${_api}"
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE Core Libraries"
 arch=('i686' 'x86_64')
 url="https://kde.org"
@@ -23,11 +23,15 @@ _pkgsrc="${_url##*/}-${_commit}"
 source=("${_pkgsrc}.tar.gz::${_url}/-/archive/${_commit}/${_pkgsrc}.tar.gz"
         "${pkgname}_po.patch")
 b2sums=('14e1af4888723affce7e4351a6939f9a5e8fb64dcf4a164485689496709a6b948ea53582b650f5c8ad5f56418cf53362e984ca3acc60655ef767fd40c5046f9f'
-        '63447d6bfffe3cfa3bde37de3b2b61f8cc934ca428faee0414b930afdd59690934f3272e73170e3445492ef937c2df31767b1a2671b2d2910d7920c862122b1f')
+        '80a5256ebf2897f091a7908fa158096eac9cc967c02a7e4736f1d88ad5fd66eb63ecfc75558dcd970259119c3e507578667c2e21395108e6ef0f3d344c56cd68')
 
 prepare() {
-  cd "${srcdir}/${_pkgsrc}/po"
+  cd "${srcdir}/${_pkgsrc}"
   patch -Np1 -i "${srcdir}/${pkgname}_po.patch"
+  # shellcheck disable=SC2016
+  sed -e 's/cgi-bin/${CMAKE_INSTALL_BINDIR}/g' \
+      -e '/add_subdirectory(kdetest)/d' \
+      -i 'CMakeLists.txt'
 }
 
 build() {

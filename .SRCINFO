@@ -1,7 +1,7 @@
 pkgbase = kdelibs1
 	pkgdesc = KDE Core Libraries
 	pkgver = 1.1.2+r116+geec7a2b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org
 	arch = i686
 	arch = x86_64
@@ -29,6 +29,6 @@ pkgbase = kdelibs1
 	source = kde1-kdelibs-eec7a2b34bf3aa14f775be132a9ff9c7767c5f62.tar.gz::https://invent.kde.org/historical/kde1-kdelibs/-/archive/eec7a2b34bf3aa14f775be132a9ff9c7767c5f62/kde1-kdelibs-eec7a2b34bf3aa14f775be132a9ff9c7767c5f62.tar.gz
 	source = kdelibs1_po.patch
 	b2sums = 14e1af4888723affce7e4351a6939f9a5e8fb64dcf4a164485689496709a6b948ea53582b650f5c8ad5f56418cf53362e984ca3acc60655ef767fd40c5046f9f
-	b2sums = 63447d6bfffe3cfa3bde37de3b2b61f8cc934ca428faee0414b930afdd59690934f3272e73170e3445492ef937c2df31767b1a2671b2d2910d7920c862122b1f
+	b2sums = 80a5256ebf2897f091a7908fa158096eac9cc967c02a7e4736f1d88ad5fd66eb63ecfc75558dcd970259119c3e507578667c2e21395108e6ef0f3d344c56cd68
 
 pkgname = kdelibs1
