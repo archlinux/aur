@@ -1,7 +1,7 @@
 pkgbase = chordpro-gui
 	pkgdesc = A lyrics and chords formatting program (CLI and GUI)
 	pkgver = 6.070.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://chordpro.org/
 	install = chordpro.install
 	arch = any
