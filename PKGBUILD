@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-sensors
-_basever=5.15.16
-pkgver=5.15.16
-pkgrel=3
-_commit=55398471a3b46db2727b462776c137bced1dfdd6
+_basever=5.15.17
+pkgver=5.15.17
+pkgrel=1
+_commit=79ed5db98f36b8ca70b077edef46fc793debb3ab
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -17,7 +17,7 @@ optdepends=('qt5-declarative: QML bindings'
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('1fe36fd85fdd769b282f57c258666cf5ae71a903d67d124f986c580826798441')
+sha256sums=('3db71225f5cadc1c145e7d581514512f10ad93543e9cc94da1d46c5a97c7958d')
 
 pkgver() {
   cd kde-$_pkgfqn
