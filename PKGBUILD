@@ -3,7 +3,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=aegisub-git
-pkgver=3.4.2.r61.08c084e16
+pkgver=3.4.2.r98.17ea2947a
 pkgrel=1
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support'
 arch=(x86_64)
@@ -55,6 +55,7 @@ pkgver() {
 build() {
   export CXXFLAGS+=" -fpermissive"
   arch-meson Aegisub build \
+    -Dluajit:default_library=static \
     -Db_lto=false \
     -Dopenal=disabled \
     -Dportaudio=disabled
