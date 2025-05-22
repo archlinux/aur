@@ -12,7 +12,7 @@ source=(
 	"https://codeberg.org/pparaxan/xFetch/raw/branch/master/LICENSE"
 )
 sha256sums=(
-	'b21ca1d388d5d385b6b73a07d063f2136fcad97b05b4f57dbf266956284db675'
+	'7c4461c934d947c62421d31553b62e5508f0fc4fda4a9915a0033cb10446992c'
 	'831e0b2afed192484f6f7bfa09833299c945057b681b639fb0b3f2fd07c86460'
 )
 
