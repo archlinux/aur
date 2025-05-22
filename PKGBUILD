@@ -1,7 +1,7 @@
 # Maintainer: lesebas <sebdeligny@gmail.com>
 pkgname=cnijfilter-ts7450series
 pkgver=6.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Canon IJ Printer Driver for Linux for Pixma 7450 series and other based on 6.10 version"
 arch=('i686' 'x86_64')
 url="https://www.canon.com.au/home-printers"
@@ -10,13 +10,14 @@ depends=('cups' 'libxml2' 'ghostscript')
 makedepends=('automake' 'autoconf')
 provides=('tocanonij' 'tocnpwg' 'cnijlgmon3')
 conflicts=('cnijfilter' 'cnijfilter-mg3600' 'cnijfilter2')
-source=("https://gdlp01.c-wss.com/gds/1/0100010921/01/cnijfilter2-source-$pkgver-1.tar.gz" 'keytext.c.patch')
-md5sums=('207715a8b1fd0f727670a87ac46ce46d' '4384f5e566f0c88055f51727419d6945')
+source=("https://gdlp01.c-wss.com/gds/1/0100010921/01/cnijfilter2-source-$pkgver-1.tar.gz" 'keytext.c.patch' 'libcnnet2.patch')
+md5sums=('207715a8b1fd0f727670a87ac46ce46d' '4384f5e566f0c88055f51727419d6945' '45312570d89e21b12358a2d7bea3a4a0')
 
 [[ "$CARCH" == "x86_64" ]] && _arch="64" || _arch="32"
 
 prepare() {
 	patch -Np1 -i ../keytext.c.patch
+	patch -Np1 -i ../libcnnet2.patch
 	cd "cnijfilter2-source-$pkgver-1"
 	sed -e '/GET_PROTOCOL/ s:^int:extern &:g' -i 'lgmon3/src/cnijlgmon3.c'
 }

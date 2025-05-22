@@ -1,0 +1,32 @@
+diff -ura package.orig/cnijfilter2-source-6.10-1/lgmon3/src/common/libcnnet2.h package.new/cnijfilter2-source-6.10-1/lgmon3/src/common/libcnnet2.h
+--- package.orig/cnijfilter2-source-6.10-1/lgmon3/src/common/libcnnet2.h	2020-06-18 04:22:58.000000000 +0200
++++ package.new/cnijfilter2-source-6.10-1/lgmon3/src/common/libcnnet2.h	2025-05-22 09:21:30.455716341 +0200
+@@ -27,6 +27,7 @@
+ #define	__INC_CNNET2_HEADER__
+ 
+ #include "libcnnet2_type.h"
++#include <stdbool.h>
+ 
+ typedef void (*search_callback)(void *arg, const tagSearchPrinterInfo *printerInfo);
+ 
+diff -ura package.orig/cnijfilter2-source-6.10-1/lgmon3/src/common/libcnnet2_type.h package.new/cnijfilter2-source-6.10-1/lgmon3/src/common/libcnnet2_type.h
+--- package.orig/cnijfilter2-source-6.10-1/lgmon3/src/common/libcnnet2_type.h	2020-06-18 04:22:58.000000000 +0200
++++ package.new/cnijfilter2-source-6.10-1/lgmon3/src/common/libcnnet2_type.h	2025-05-22 09:22:08.352608047 +0200
+@@ -48,7 +48,7 @@
+ } CNNET2_SETTING_FLAGS;
+ 
+ #ifndef __cplusplus
+-typedef char bool;
++typedef char;
+ #endif
+ 
+ typedef struct {
+@@ -61,8 +61,6 @@
+   int currentConnectMode_;//canWiredLANWirelessCurrentConnectMode :INTEGER wiredLAN(3)/ssdot11CablelessSetup(4)/wirelessdot11Infra(5)/wirelessdot11APmode(6)/wirelessdot11WifiDirect(7)/wirelessdot11WifiDirectService(8)
+   char deviceId_[1024];
+   char bonjourName_[256];
+-  bool isUnicast_;
+-  bool isSameSegment_;
+ } tagSearchPrinterInfo;
+ 
+ #define CNNET2_DEFAULT_GET_PRINTER_INFO_TIMEOUT_MILLIS 2000
