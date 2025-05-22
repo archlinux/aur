@@ -1,6 +1,6 @@
 pkgbase = asset-ripper-bin
 	pkgdesc = GUI Application to work with engine assets, asset bundles, and serialized files
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/AssetRipper/AssetRipper
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = asset-ripper-bin
 	depends = qt-sudo
 	depends = webkit2gtk-4.1
 	options = !debug
-	source = https://raw.githubusercontent.com/AssetRipper/AssetRipper/refs/tags/1.2.2/LICENSE.md
-	source = https://raw.githubusercontent.com/AssetRipper/AssetRipper/refs/tags/1.2.2/Media/Images/LogoReimagined/LogoReimaginedTransparent.png
+	source = https://raw.githubusercontent.com/AssetRipper/AssetRipper/refs/tags/1.2.3/LICENSE.md
+	source = https://raw.githubusercontent.com/AssetRipper/AssetRipper/refs/tags/1.2.3/Media/Images/LogoReimagined/LogoReimaginedTransparent.png
 	sha256sums = 8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b
 	sha256sums = 223a74636902eeed55ad13a44e7292ff9f532df24c706dd8d566b33d00246757
-	source_x86_64 = asset-ripper-x86_64.tar.gz::https://github.com/AssetRipper/AssetRipper/releases/download/1.2.2/AssetRipper_linux_x64.zip
-	sha256sums_x86_64 = b7a36a998124c74760800a741ebbce7fa4a5ac6b0434ecea9f345d7998546b10
-	source_aarch64 = asset-ripper-aarch64.tar.gz::https://github.com/AssetRipper/AssetRipper/releases/download/1.2.2/AssetRipper_linux_arm64.zip
-	sha256sums_aarch64 = 9cc1bc6360eeddc6e4ce5bc74c5208e6d940b98c8eb6910495f855b5ab41774e
+	source_x86_64 = asset-ripper-x86_64.tar.gz::https://github.com/AssetRipper/AssetRipper/releases/download/1.2.3/AssetRipper_linux_x64.zip
+	sha256sums_x86_64 = bc2a26a2690f6f1f4de56dbf89f0a2f2b820b18dd403627d92aec092253e72bb
+	source_aarch64 = asset-ripper-aarch64.tar.gz::https://github.com/AssetRipper/AssetRipper/releases/download/1.2.3/AssetRipper_linux_arm64.zip
+	sha256sums_aarch64 = 1acfaf2224948fd6e8783c556b6e9124e997254dfbaf8931e6ee785618e308a7
 
 pkgname = asset-ripper-bin
