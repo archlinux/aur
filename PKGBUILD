@@ -6,8 +6,8 @@ pkgrel=1
 arch=("any")
 url="https://github.com/obynio/certbot-plugin-gandi.git"
 license=("MIT")
-depends=("certbot" "python-zope-interface")
-makedepends=("git" "python-build" "python-installer" "python-wheel")
+depends=("certbot" "python-requests")
+makedepends=("git" "python-build" "python-installer" "python-wheel" "python-hatchling")
 provides=("certbot-dns-gandi")
 backup=(
   "etc/letsencrypt/gandi.ini"
