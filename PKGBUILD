@@ -1,6 +1,6 @@
 # Maintainer: Daniil T <contact.2imt@mail.ru>
 pkgname="polycat"
-pkgver="1.3.0"
+pkgver="2.0.0"
 pkgrel=1
 epoch=
 pkgdesc="Runcat module for Polybar"
@@ -9,7 +9,7 @@ url="https://github.com/2IMT/polycat.git"
 license=("MIT")
 groups=()
 depends=("glibc" "gcc-libs")
-makedepends=("cmake" "clang" "git")
+makedepends=("make" "gcc")
 checkdepends=()
 optdepends=()
 provides=()
@@ -19,31 +19,17 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+$url#tag=v$pkgver"
-        "git+https://github.com/nlohmann/json.git#tag=v3.11.2"
-        "git+https://github.com/p-ranav/argparse.git#tag=v2.9")
+source=("https://github.com/2IMT/polycat/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('SKIP'
-        'SKIP'
-        'SKIP')
+md5sums=('767a20f1938535b91517ae12fd030eba')
 validpgpkeys=()
 
 build() {
-    cd  $pkgname
-    git submodule init
-    git config submodule.dep/nlohmann-json.url "$srcdir/json"
-    git config submodule.dep/argparse.url "$srcdir/argparse"
-    git -c protocol.file.allow=always submodule update
-    cmake -DCMAKE_BUILD_TYPE=RELEASE .
-    cmake --build .
+    cd  $pkgname-$pkgver
+    make POLYCAT_RELEASE=1 PREFIX=/usr
 }
 
 package() {
-    cd $pkgname
-
-    install -Dm755 "$pkgname" "$pkgdir/usr/bin/polycat"
-
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    install -Dm644 "res/$pkgname.ttf" "$pkgdir/usr/share/fonts/TTF/$pkgname.ttf"
+    cd $pkgname-$pkgver
+    make install DEST_DIR=$pkgdir PREFIX=/usr
 }
