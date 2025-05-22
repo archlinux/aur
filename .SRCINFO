@@ -1,0 +1,31 @@
+pkgbase = radicle-desktop
+	pkgdesc = Radicle desktop app
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://www.radworks.garden/
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = openssl
+	makedepends = appmenu-gtk-module
+	makedepends = libappindicator-gtk3
+	makedepends = librsvg
+	makedepends = rustup
+	makedepends = npm
+	makedepends = nodejs
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	options = !lto
+	source = radicle-desktop::git+https://seed.radicle.xyz/z4D5UCArafTzTQpDZNQRuqswh3ury.git#commit=33dd37714b7dbf56a11339a4c6f56f11d8b85351
+	sha256sums = SKIP
+
+pkgname = radicle-desktop
