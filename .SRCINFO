@@ -1,6 +1,6 @@
 pkgbase = scope-tui
 	pkgdesc = A simple oscilloscope/vectorscope/spectroscope for your terminal
-	pkgver = 0.3.0
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/alemidev/scope-tui
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = scope-tui
 	makedepends = cargo
 	makedepends = libpulse
 	depends = gcc-libs
-	source = scope-tui-0.3.0.tar.gz::https://github.com/alemidev/scope-tui/archive/v0.3.0.tar.gz
-	sha512sums = a14dc9f18a972d6829be3767eabb8d5daa45a161a7cf952f181dac32c1273b20b4c3f245c01193c17e4e0f6916677d8b1d731ef0718844a21452cc5d5bba8179
+	source = scope-tui-0.3.3.tar.gz::https://github.com/alemidev/scope-tui/archive/v0.3.3.tar.gz
+	sha512sums = 562af85158b465191e6b455bcca301ff3da7c29a811a1e3ed40c1afa520d694578e1715de9e1d546f8da6f82912eb0d0c74520c72d8de3453f6cc3b59f5b1c3d
 
 pkgname = scope-tui
