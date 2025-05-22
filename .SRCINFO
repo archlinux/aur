@@ -1,6 +1,6 @@
 pkgbase = eden-git
 	pkgdesc = Nintendo Switch emulator forked from yuzu.
-	pkgver = r27300.a776f5bc3
+	pkgver = r27315.15fb1f78b
 	pkgrel = 1
 	url = https://eden-emulator.github.io/
 	arch = x86_64
@@ -75,7 +75,6 @@ pkgbase = eden-git
 	source = git+https://github.com/Lizzie841/unordered_dense.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers
 	source = git+https://github.com/eggert/tz.git
-	source = boost-188.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -97,6 +96,5 @@ pkgbase = eden-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 704a7db84034300f2c4af92a16dc3f167b8f34eb4a8db285e120f679d17028e8
 
 pkgname = eden-git

@@ -2,7 +2,7 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 _pkgname=eden
 pkgname=$_pkgname-git
-pkgver=r27300.a776f5bc3
+pkgver=r27315.15fb1f78b
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -33,8 +33,7 @@ source=("git+https://git.eden-emu.dev/eden-emu/eden"
 		"git+https://git.eden-emu.dev/eden-emu/zydis.git"  # submodule of dynarmic
 		"git+https://github.com/Lizzie841/unordered_dense.git"  # submodule of dynarmic
 		"git+https://github.com/KhronosGroup/SPIRV-Headers"  # submodule of sirit 
-		"git+https://github.com/eggert/tz.git"  # submdoule of tzdb_to_nx
-		"boost-188.patch")
+		"git+https://github.com/eggert/tz.git")  # submdoule of tzdb_to_nx
 		
 sha256sums=('SKIP'
             'SKIP'
@@ -56,15 +55,13 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '704a7db84034300f2c4af92a16dc3f167b8f34eb4a8db285e120f679d17028e8')
+            'SKIP')
 pkgver() {
     cd "$srcdir/$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 prepare() {
 	cd $_pkgname
-	patch -Np1 -i ../boost-188.patch
 	for _submodule in opus SDL cubeb dynarmic discord-rpc simpleini VulkanMemoryAllocator tzdb_to_nx cpp-jwt cpp-httplib xbyak mbedtls sirit;
 		do
 		git config submodule.$_submodule.url ../$_submodule
