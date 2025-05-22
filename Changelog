@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : iwinfo
- Tags         : 3.4.1 ➙ 4.0.0
-              : 2024-07-12 ➙ 2025-05-18
+ Tags         : 3.4.2 ➙ 4.1.0
+              : 2024-12-31 ➙ 2025-05-21
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-05-21   : 4.1.0
+                Use builtin types where possible. e.g. typing.List -> list
+ 2025-05-18     update Docs/Changelog Docs/${my_name}.pdf
 
  2025-05-18   : 4.0.0
                 Code now complies with: PEP-8, PEP-257, PEP-484 and PEP-561
@@ -30,7 +34,3 @@
                 Update SPDX tags
                 Add git signing key to Arch Package
  2024-07-12     update Docs/Changelog.rst Docs/iwinfo.pdf
-
- 2024-07-12   : 3.4.1
-                Update README
- 2024-07-10     update Docs/Changelog.rst Docs/iwinfo.pdf
