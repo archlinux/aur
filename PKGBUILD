@@ -1,7 +1,7 @@
 # Maintainer: Balakrishnan Balasubramanian <aur@balki.me>
 
 pkgname=nnss
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Network Namespace setup using SSH SOCKS proxy'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MPL')
 depends=('tun2socks')
 url="https://gitea.balki.me/balki/$pkgname"
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('db3c866274224204259c4e48522fee5ac7678d34b02a0285f1073661027402ac')
+sha256sums=('77762256ac669c7fd484424520fc4d6eac453e5a0068b633923e8fa9d5c16279')
 
 package() {
 	cd "$pkgname"
