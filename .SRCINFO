@@ -7,10 +7,13 @@ pkgbase = wob-git
 	arch = x86_64
 	license = ISC
 	makedepends = git
-	makedepends = meson
-	makedepends = wayland-protocols
-	makedepends = scdoc
+	makedepends = glibc
 	makedepends = libinih
+	makedepends = libseccomp
+	makedepends = wayland
+	depends = glibc
+	depends = libinih
+	depends = libseccomp
 	depends = wayland
 	provides = wob=0.16
 	conflicts = wob

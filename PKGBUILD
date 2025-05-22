@@ -10,8 +10,19 @@ url='https://github.com/francma/wob'
 license=('ISC')
 source=("git+$url")
 sha512sums=('SKIP')
-depends=('wayland')
-makedepends=('git' 'meson' 'wayland-protocols' 'scdoc' 'libinih')
+depends=(
+  glibc
+  libinih
+  libseccomp
+  wayland
+)
+makedepends=(
+  git
+  glibc
+  libinih
+  libseccomp
+  wayland
+)
 conflicts=('wob')
 provides=("wob=${pkgver%%+*}")
 
