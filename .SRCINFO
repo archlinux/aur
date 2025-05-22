@@ -1,15 +1,20 @@
 pkgbase = parmetis
-	pkgdesc = A parallel graph partitioning library
-	pkgver = 4.0.3.p9
+	pkgdesc = A parallel graph partitioning library (debian patches)
+	pkgver = 4.0.3+p7
 	pkgrel = 1
+	epoch = 1
 	url = http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	makedepends = cmake
 	depends = openmpi
 	depends = metis
-	source = https://bitbucket.org/petsc/pkg-parmetis/get/v4.0.3-p9.tar.gz
-	sha256sums = 612717e85992c984f09b0f5670be421bbb90a4c04145ab5b9a3358b92765d891
+	depends = gklib
+	depends = glibc
+	source = http://deb.debian.org/debian/pool/non-free/p/parmetis/parmetis_4.0.3.orig.tar.gz
+	source = http://deb.debian.org/debian/pool/non-free/p/parmetis/parmetis_4.0.3-7.debian.tar.xz
+	sha256sums = f2d9a231b7cf97f1fee6e8c9663113ebf6c240d407d3c118c55b3633d6be6e5f
+	sha256sums = 0f2130dd5c6a7b2df5214b795eb51df2cc71c43e1194a117150297cec85b93b6
 
 pkgname = parmetis
