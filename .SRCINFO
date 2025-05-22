@@ -1,8 +1,9 @@
 pkgbase = delphes-madgraph-git
 	pkgdesc = A framework for fast simulation of a generic collider experiment (compiled by make instead of CMake for MadGraph. Can be coexisted with delphes)
 	pkgver = 3.5.1pre12.r13.g98f15ad
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cp3.irmp.ucl.ac.be/projects/delphes
+	install = delphes-madgraph-note.install
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0
@@ -14,6 +15,8 @@ pkgbase = delphes-madgraph-git
 	provides = delphes-madgraph
 	conflicts = delphes-madgraph
 	source = delphes-madgraph-git::git+https://github.com/delphes/delphes.git
+	source = delphes-madgraph-note.install
 	sha256sums = SKIP
+	sha256sums = a1e48cc00f0a816b761ed5d7454ccef86ab89fb47f4e7f91a3716b80177015a0
 
 pkgname = delphes-madgraph-git
