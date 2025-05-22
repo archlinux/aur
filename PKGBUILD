@@ -1,5 +1,3 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
-
 pkgname=mingw-w64-libdatrie
 pkgver=0.2.13
 pkgrel=1
@@ -10,7 +8,7 @@ license=('LGPL')
 makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt' 'mingw-w64-libiconv')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://linux.thai.net/pub/thailinux/software/libthai/libdatrie-${pkgver}.tar.xz")
+source=("https://github.com/tlwg/libdatrie/releases/download/v${pkgver}/libdatrie-${pkgver}.tar.xz")
 sha256sums=('12231bb2be2581a7f0fb9904092d24b0ed2a271a16835071ed97bed65267f4be')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
