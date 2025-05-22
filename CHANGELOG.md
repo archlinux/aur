@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Feature to enable new journal entries continuous print as they are appended to the journal
 
+### Changed
+- UX Better error dialog message on not authorized for actions: clean, freese and thaw
+
 ## [1.24.2] - 2025-05-10
 
 ### Fixed
