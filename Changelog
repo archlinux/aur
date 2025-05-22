@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 2.1.0 ➙ 2.2.3
-              : 2025-04-30 ➙ 2025-05-19
+ Tags         : 2.2.0 ➙ 2.3.0
+              : 2025-05-01 ➙ 2025-05-21
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-05-21   : 2.3.0
+                Use builtin types where possible. e.g. typing.List -> list
+ 2025-05-19     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
 
  2025-05-19   : 2.2.3
                 Arch PKGBUILD: move pytest dependency from makedepends to checkdepends.
@@ -21,7 +25,3 @@
                 PEP 561 type hints (module users using mypy etc get type hints)
                 Update status to Production/Stable
  2025-04-30     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-04-30   : 2.1.0
-                Bug fix returning stdout string from subprocess
- 2025-04-27     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
