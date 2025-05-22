@@ -4,35 +4,33 @@
 
 _basepkgname=libxkbfile
 pkgname=lib32-${_basepkgname}
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="X11 keyboard file manipulation library"
 arch=('x86_64')
-license=('custom')
-url="http://xorg.freedesktop.org/"
-depends=('lib32-libx11')
-makedepends=('xorg-util-macros')
-source=(${url}/releases/individual/lib/${_basepkgname}-${pkgver}.tar.xz{,.sig})
-sha512sums=('0639fad7b64b36a85f8d24cdd40085e0ec18d7a671793b8b5c26449e9cc5a84c37117e7757fb1238ac353044935dd00013e42166de5af9dec428e873a47e598d'
+license=('LicenseRef-libxkbfile')
+url="https://gitlab.freedesktop.org/xorg/lib/libxkbfile"
+depends=('lib32-glibc' 'lib32-libx11' 'xorgproto')
+makedepends=('lib32-gcc-libs' 'meson' 'xorg-util-macros')
+source=(https://xorg.freedesktop.org/releases/individual/lib/${_basepkgname}-${pkgver}.tar.xz{,.sig})
+sha512sums=('d80ac41f6fa3a1ffad77ea1f8f9d9542f0bd210d74b263802bc6e6c1594fe325b27f42b5454aeeb36352518963b1ed1fdbbad95d7db3690b2e36d54742b7c236'
             'SKIP')
-#validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') #Alan Coopersmith <alan.coopersmith@oracle.com>
-validpgpkeys=('3BB639E56F861FA2E86505690FDD682D974CA72A') # Matt Turner <mattst88@gmail.com>
+validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') #Alan Coopersmith <alan.coopersmith@oracle.com>
+#validpgpkeys=('3BB639E56F861FA2E86505690FDD682D974CA72A') # Matt Turner <mattst88@gmail.com>
 
 build() {
-	export CC="gcc -m32"
-	export CXX="g++ -m32"
-	export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-	
-	cd "${srcdir}/${_basepkgname}-${pkgver}"
-	./configure --prefix=/usr --sysconfdir=/etc --libdir=/usr/lib32 --disable-static 
-	make
+	arch-meson "${_basepkgname}-${pkgver}" build --cross-file lib32
+	meson configure build
+	ninja -C build
+}
+
+check() {
+	meson test -C build
 }
 
 package() {
-	cd "${srcdir}/${_basepkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
+	meson install -C build --destdir="${pkgdir}"
 	rm -rf "${pkgdir}/usr/include"
-	
-	install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
+		"${_basepkgname}-${pkgver}/COPYING"
 }
