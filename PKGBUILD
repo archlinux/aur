@@ -46,6 +46,6 @@ package() {
 
 	install -Dm755 /dev/stdin "$pkgdir/opt/Anytype/anytype" <<-EOF
 	#! /bin/sh
-	exec electron34 /opt/Anytype/resources/app.asar "\$@"
+	exec electron /opt/Anytype/resources/app.asar "\$@"
 	EOF
 }
