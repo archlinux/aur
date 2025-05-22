@@ -1,0 +1,14 @@
+pkgbase = blaadpapers
+	pkgdesc = Super wallpaper manager
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/Blaadick/BlaadPapers
+	arch = any
+	license = MIT
+	makedepends = cmake
+	depends = qt6-base
+	depends = hyprpaper
+	source = blaadpapers-0.0.6.tar.gz::https://github.com/Blaadick/BlaadPapers/archive/refs/tags/v0.0.6.tar.gz
+	sha256sums = SKIP
+
+pkgname = blaadpapers
