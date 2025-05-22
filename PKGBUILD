@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=WriteXLS
-_pkgver=6.7.0
+_pkgver=6.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8278decde94e06032875bd6b72b2727c')
-b2sums=('e0158d95c37c48a8c5e78ba98d72ca012cff0afb43967ebdd880a172f8f1998ccf353acca86b82325247771bdf809fae7731ec62e548c969f6c9d6e07e128310')
+md5sums=('c6b7c215983a8b63f28a10b2541c33e3')
+b2sums=('7dfae3f9f0914460eeb704da9b5e0b7c160063194d182fe01ab768a3e2b7a7104075714566a508c964bc7363c3bad1542e91f79a62ef8a08fe8856224c63edf0')
 
 prepare() {
   # remove some vendored perl modules, use system provided versions instead
