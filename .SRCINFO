@@ -1,0 +1,27 @@
+pkgbase = midirun
+	pkgdesc = Daemon and program to simulate key strokes from midi inputs
+	pkgver = 0.2.0.beta
+	pkgrel = 1
+	url = https://github.com/JackMechem/midirun
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = pkgconf
+	depends = gtkmm-4.0
+	depends = rtmidi
+	depends = systemd
+	depends = tomlplusplus
+	depends = bash
+	options = !debug
+	source = git+https://github.com/JackMechem/midirun.git
+	source = 99-midirun-uinput.rules
+	source = 99-midirun-uinput.hook
+	source = udevadm-control-trigger
+	md5sums = SKIP
+	md5sums = b7060d9d0d0d5fad0c75f4c2ba56b736
+	md5sums = 15832357c3ce0f45997ddcd329052954
+	md5sums = 51d20ccd440519405ed7a25a5bcf444e
+
+pkgname = midirun

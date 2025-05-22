@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Path
+Target = usr/lib/udev/rules.d/99-midirun-uinput.rules
+
+[Action]
+Description = Reload udev rules for midirun
+When = PostTransaction
+Exec = /usr/bin/udevadm-control-trigger
+
