@@ -1,0 +1,16 @@
+pkgbase = ssh-manager
+    pkgdesc = Simple terminal password manager for SSH/RDP with GPG encryption
+    pkgver = 1.0
+    pkgrel = 1
+    url = https://github.com/madyel/sshManager
+    arch = any
+    license = GPL3
+    depends = python
+    depends = gnupg
+    depends = sshpass
+    optdepends = fzf: for interactive selection
+    optdepends = rofi: graphical selection
+    source = ssh-manager
+    md5sums = SKIP
+
+pkgname = ssh-manager
