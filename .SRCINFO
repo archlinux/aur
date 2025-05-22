@@ -1,6 +1,6 @@
 pkgbase = postallow
 	pkgdesc = Generate an allowlist for Postfix's Postscreen, based on large senders' SPF records
-	pkgver = 3.10.0
+	pkgver = 3.10.1
 	pkgrel = 1
 	url = https://github.com/lquidfire/postallow
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = postallow
 	optdepends = knot-resolver: strongly recommended for DNS lookups (or any other caching DNS resolver)
 	optdepends = postfix: for writing the allowlist and/or blocklist to the Postfix directory
 	backup = etc/postallow.conf
-	source = postallow::git+https://github.com/lquidfire/postallow.git#tag=3.10.0
+	source = postallow-3.10.1.tar.gz::https://codeberg.org/peregrinus13/postallow/archive/3.10.1.tar.gz
 	validpgpkeys = E7AAC21597965C6259108D6F471F22BDE25DD664
-	b2sums = 3c90a56628d9582c309ce6d9d3b0c2783de664a6d7b8e6666f09283717960e9308f812241bd107264ad6ff86a6f7b29d7ab872d5dc9f3d6cec1fd257ae122137
+	b2sums = 9c08f966e47eda162f16531c2ff5bf24b23d85224400e5e35def5547a00f1df3c5efa84c1714febd2fca2856b4bc318091e28e4b8cdbe46eeb043dc52e64b603
 
 pkgname = postallow
