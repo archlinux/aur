@@ -47,7 +47,7 @@ depends=(
 optdepends=(
 	'at-spi2-core: accessibility'
 	'orca: screen reader'
-	's6: Wayland secure context'
+	'socat: Wayland secure context'
 	'way-secure: Wayland secure context'
 )
 
