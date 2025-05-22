@@ -52,7 +52,7 @@ check() {
 
   # Test is disabled, as it appears to not be intented to be run on user environment
   # Relevant comment: https://aur.archlinux.org/packages/web-ext#comment-1021975
-  nosetest || warning "Test failed"
+  nosetests || warning "Test failed"
 }
 
 package() {
