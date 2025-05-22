@@ -1,5 +1,5 @@
 pkgname=fmilib
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="open-source implementation of the FMI open standard"
 arch=('x86_64')
@@ -9,7 +9,7 @@ makedepends=('cmake3-bin')
 depends=('glibc')
 options=(!lto)
 source=("https://github.com/modelon-community/fmi-library/archive/${pkgver}.tar.gz")
-sha256sums=('4b6d2514c79f7e5875b12022a6455dfc999fb5905d973ab875c949362e0c9225')
+sha256sums=('1acffcd157c2901c5bbccfc848425de0c661eacea24475aff842ef3ba7fb05a6')
 
 prepare() {
   cd "$srcdir"/fmi-library-${pkgver}
@@ -17,7 +17,7 @@ prepare() {
 
 build() {
   cd "$srcdir"/fmi-library-${pkgver}
-  PATH=/opt/cmake3/bin:$PATH cmake -DCMAKE_INSTALL_PREFIX=/usr -DFMILIB_BUILD_TESTS=OFF -B build .
+  PATH=/opt/cmake3/bin:$PATH cmake -DCMAKE_INSTALL_PREFIX=/usr -DFMILIB_BUILD_STATIC_LIB=OFF -DFMILIB_BUILD_TESTS=OFF -B build .
   make -C build
 }
 
