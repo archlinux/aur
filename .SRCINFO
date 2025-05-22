@@ -1,7 +1,7 @@
 pkgbase = xfetch-bin
 	pkgdesc = not associated with xmen; that one fetching tool made in zig.
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/pparaxan/xFetch
 	arch = x86_64
 	license = MIT

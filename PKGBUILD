@@ -1,7 +1,7 @@
 # Maintainer: pparaxan <xxdr@duck.com>
 pkgname="xfetch-bin"
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="not associated with xmen; that one fetching tool made in zig."
 arch=('x86_64')
 url="https://codeberg.org/pparaxan/xFetch"
