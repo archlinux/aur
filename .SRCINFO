@@ -1,6 +1,6 @@
 pkgbase = python-ccm
 	pkgdesc = Cassandra Cluster Manager.
-	pkgver = 3.1.6.dev6
+	pkgver = 3.1.6.dev7
 	pkgrel = 1
 	url = https://github.com/apache/cassandra-ccm
 	arch = any

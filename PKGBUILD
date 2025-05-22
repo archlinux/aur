@@ -2,7 +2,7 @@
 
 _name='ccm'
 pkgname=python-${_name}
-pkgver=3.1.6.dev6
+pkgver=3.1.6.dev7
 pkgrel=1
 pkgdesc="Cassandra Cluster Manager."
 url="https://github.com/apache/cassandra-ccm"
