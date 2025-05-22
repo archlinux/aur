@@ -1,0 +1,4 @@
+["wlroots0.19"]
+source = "git"
+git = "https://gitlab.freedesktop.org/wlroots/wlroots.git"
+include_regex = "0.19.*"
