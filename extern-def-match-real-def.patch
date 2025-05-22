@@ -1,0 +1,13 @@
+--- pilot-link/src/parsedate.y
++++ pilot-link/src/parsedate.y
+@@ -94,8 +94,8 @@
+ static time_t	yyRelSeconds;
+ 
+ 
+-extern struct tm	*localtime();
+-static void		date_error();
++extern struct tm	*localtime(const time_t*);
++static void		date_error(char*);
+ %}
+ 
+ %union {
