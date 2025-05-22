@@ -2,8 +2,8 @@
 # Based on PKGBUILD of mesa-git
 
 pkgname=mesa-fp8-git
-pkgdesc="Mainline mesa with fp8 hacks"
-pkgver=0.0.1
+pkgdesc="Semi-reguraly updated mainline mesa with fp8 hacks"
+pkgver=0.0.2
 pkgrel=1
 arch=('x86_64')
 makedepends=(
@@ -82,7 +82,7 @@ url="https://www.mesa3d.org"
 license=('custom')
 # https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/29275
 source=(
-    'mesa::git+https://github.com/Lawstorant/mesa-fp8.git'
+    'mesa::git+https://gitlab.freedesktop.org/DadSchoorse/mesa.git#branch=radv-float8-hack3'
     'LICENSE'
 )
 sha256sums=('SKIP'
@@ -248,13 +248,11 @@ build () {
         -D b_ndebug=true
         -D b_lto=false
         -D egl=enabled
-        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,softpipe,llvmpipe,i915,iris,crocus,zink,d3d12
+        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,softpipe,llvmpipe,i915,iris,crocus,zink
         -D gallium-extra-hud=true
-        -D gallium-nine=true
         -D gallium-rusticl=${_rusticl}
         -D gallium-va=enabled
         -D gallium-vdpau=enabled
-        -D gallium-xa=enabled
         -D gbm=enabled
         -D gles1=disabled
         -D gles2=enabled
@@ -265,9 +263,7 @@ build () {
         -D llvm=enabled
         -D lmsensors=enabled
         -D microsoft-clc=disabled
-        -D osmesa=true
         -D platforms=x11,wayland
-        -D shared-glapi=enabled
         -D valgrind=disabled
         -D video-codecs=all
         -D vulkan-drivers=amd,intel,intel_hasvk,swrast,virtio,nouveau
@@ -276,7 +272,7 @@ build () {
         -D zstd=enabled
         -D buildtype=plain
         --wrap-mode=nofallback
-        --force-fallback-for=syn,paste
+        --force-fallback-for=syn,paste,rustc-hash
         -D prefix=/usr
         -D sysconfdir=/etc
         -D legacy-x11=dri2

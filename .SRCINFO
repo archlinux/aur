@@ -1,6 +1,6 @@
 pkgbase = mesa-fp8-git
-	pkgdesc = Mainline mesa with fp8 hacks
-	pkgver = 0.0.1
+	pkgdesc = Semi-reguraly updated mainline mesa with fp8 hacks
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -85,7 +85,7 @@ pkgbase = mesa-fp8-git
 	conflicts = opencl-rusticl-mesa
 	options = !lto
 	options = !debug
-	source = mesa::git+https://github.com/Lawstorant/mesa-fp8.git
+	source = mesa::git+https://gitlab.freedesktop.org/DadSchoorse/mesa.git#branch=radv-float8-hack3
 	source = LICENSE
 	source = proc-macro2-1.0.70.tar.gz::https://crates.io/api/v1/crates/proc-macro2/1.0.70/download
 	source = unicode-ident-1.0.12.tar.gz::https://crates.io/api/v1/crates/unicode-ident/1.0.12/download
