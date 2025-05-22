@@ -4,7 +4,7 @@
 _srcname=fancontrol-gui-0.8
 pkgname=fancontrol-gui
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI for fancontrol and the fancontrol systemd service"
 arch=('i686' 'x86_64')
 url="https://github.com/Maldela/Fancontrol-GUI"
@@ -31,6 +31,7 @@ build() {
         -DBUILD_KCM=off \
         -DBUILD_HELPER=on \
         -DBUILD_PLASMOID=off \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DINSTALL_SHARED=on
   make
 }
