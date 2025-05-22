@@ -1,6 +1,6 @@
 pkgbase = python-groq
 	pkgdesc = The official Python library for the groq API.
-	pkgver = 0.22.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/groq/groq-python
 	arch = any
@@ -14,19 +14,20 @@ pkgbase = python-groq
 	checkdepends = python-nest-asyncio
 	checkdepends = npm
 	makedepends = python-hatchling
+	makedepends = python-hatch-fancy-pypi-readme
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.8
+	depends = python
 	depends = python-httpx
 	depends = python-pydantic
 	depends = python-typing_extensions
 	depends = python-anyio
 	depends = python-distro
 	depends = python-sniffio
-	source = https://github.com/groq/groq-python/archive/refs/tags/v0.22.0.tar.gz
-	source = https://storage.googleapis.com/stainless-sdk-openapi-specs/groqcloud%2Fgroqcloud-8d531e091886f4bb814247a78a6323f6f12351881269a4e8cf68223b9245c64f.yml
-	sha256sums = 4bc8c7270a6c72bb6d93c08e72eb5c2cecf9a543109c3752d6b5bfee9ebf8b22
-	sha256sums = 8d531e091886f4bb814247a78a6323f6f12351881269a4e8cf68223b9245c64f
+	source = https://github.com/groq/groq-python/archive/refs/tags/v0.25.0.tar.gz
+	source = https://storage.googleapis.com/stainless-sdk-openapi-specs/groqcloud%2Fgroqcloud-ee34f94100e35d728e92c54940b84a46f420f476a4b82a33a21728ebf1e9032f.yml
+	sha256sums = 7c33b9dcc59f5825176fa66d25ba4f69dd3014c36990a1dfc03630c886445172
+	sha256sums = ee34f94100e35d728e92c54940b84a46f420f476a4b82a33a21728ebf1e9032f
 
 pkgname = python-groq
