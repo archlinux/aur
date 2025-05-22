@@ -26,6 +26,7 @@ prepare() {
 
 build() {
     cd build
+    export CXXFLAGS="${CXXFLAGS} -include cstdint"
     cmake \
         -DCMAKE_BUILD_TYPE=RELEASE \
         -DMARIADB_LINK_DYNAMIC=ON \
