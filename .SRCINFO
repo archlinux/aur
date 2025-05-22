@@ -1,0 +1,20 @@
+pkgbase = odoo-manager-bin
+	pkgdesc = Professional Odoo instance management tool for Docker environments.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://odoo.webgraphix.online/
+	arch = x86_64
+	license = LicenseRef-PROPRIETARY
+	depends = electron35
+	depends = docker
+	provides = odoo-manager=1.1.0
+	conflicts = odoo-manager
+	options = !emptydirs
+	source = odoo-manager-1.1.0.pacman::https://github.com/danielmederos2424/odoo-manager/releases/download/v1.1.0/odoo-manager-linux.pacman
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/danielmederos2424/odoo-manager/v1.1.0/LICENSE
+	source = odoo-manager.sh
+	sha256sums = a25428db5a58d2172512698b6fa5dd65681f3e9dd9c443694e447eff0431493e
+	sha256sums = e77afd5054b99ecd770f3a0e1c059f9ed6381fca0630392ba5e66bbe1ac50d4d
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = odoo-manager-bin
