@@ -11,7 +11,7 @@ pkgdesc="KDE Base Applications"
 arch=('i686' 'x86_64')
 url="https://kde.org"
 _url="https://invent.kde.org/historical/kde${_api}-${_basename}"
-license=('GPL-2.0-or-later')
+license=('GPL-2.0-only')
 depends=('gcc-libs' 'glibc' 'glu' "kdelibs${_api}" 'libgl' 'libpulse' 'libx11'
          'libxau' 'libxcrypt' 'libxdmcp' 'libxext' 'libxpm' 'libxss' 'ncurses'
          'openssl' 'pam' 'perl' "qt${_api}" 'sh' 'systemd-libs' 'xorg-xhost')
