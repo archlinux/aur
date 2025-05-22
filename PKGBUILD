@@ -45,7 +45,7 @@ prepare() { # Create cp -r friendly layout with FHS
 
 package_cursor-electron-latest(){
 	depends+=(electron)
-	pkgdesc="${_desc} on latest stable electron)"
+	pkgdesc="${_desc} on latest stable electron"
 	cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
 	install -Dm755 run.sh "${pkgdir}/usr/bin/cursor"
 }
@@ -54,7 +54,7 @@ package_cursor-electron(){
 	_electron=electron$(rg --no-messages -N -o -r '$1' '"electron": *"[^\d]*(\d+)' squashfs-root/usr/lib/cursor/package.json)
 	echo $_electron
 	depends+=($_electron)
-	pkgdesc="${_desc} on system-wide electron)"
+	pkgdesc="${_desc} on system-wide electron"
 	cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
 	sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
 	install -Dm755 run-safe.sh "${pkgdir}/usr/bin/cursor"
