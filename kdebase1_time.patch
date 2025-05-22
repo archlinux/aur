@@ -1,0 +1,30 @@
+--- a/kvt/utmp.c
++++ b/kvt/utmp.c
+@@ -107,6 +107,9 @@
+ #include <string.h>
+ #include <stdio.h>
+ #include <memory.h>
++#include <stdlib.h>
++#include <stdint.h>
++#include <time.h>
+ 
+ #if !defined(HAVE_SETEUID)
+ #define seteuid(_eu) setresuid(-1, _eu, -1)
+@@ -365,7 +365,7 @@
+   strcpy(u.ut_line,ttyname); /* This works at the moment. I don't think that 
+                                 ttyname is NULL terminated, so something 
+                                 more elaborate may need to be done. */
+-  time(&u.ut_time);
++  u.ut_time = (uint32_t)time(NULL);
+   strncpy(u.ut_user,pwent->pw_name,sizeof(u.ut_user));
+   u.ut_type = USER_PROCESS;
+   u.ut_pid = getpid(); 
+@@ -413,7 +413,7 @@
+     {
+       if(u->ut_pid == pid) 
+ 	{
+-	  time(&u->ut_time);
++	  u->ut_time = (uint32_t)time(NULL);
+ #ifdef SVR4
+  	  memset(&u->ut_user, 0, sizeof(u->ut_user));
+ #else
