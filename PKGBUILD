@@ -2,8 +2,8 @@
 # Maintainer: Guoxin "7Ji" Pu <pugokushin@gmail.com>
 pkgbase=wps-office-365
 pkgname=('wps-office-365' 'wps-office-365-xiezuo' 'wps-office-365-fonts')
-pkgver=12.8.2.20327
-pkgrel=2
+pkgver=12.8.2.21176
+pkgrel=1
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://365.wps.cn/"
@@ -18,26 +18,22 @@ optdepends=(
   'wps-office-365-fonts: FZ TTF fonts provided by wps office 365'
   'cups: for printing support')
 options=(!strip !zipman !debug)
-source_x86_64=("https://wps-linux-365.wpscdn.cn/wps/download/ep/Linux365/${pkgver: -5}/wps-office_${pkgver}.AK.preload.sw_amd64.deb")
-source_aarch64=("https://wps-linux-365.wpscdn.cn/wps/download/ep/Linux365/${pkgver: -5}/wps-office_${pkgver}.AK.preload.sw_arm64.deb")
-source_loong64=("https://wps-linux-365.wpscdn.cn/wps/download/ep/Linux365/${pkgver: -5}/wps-office_${pkgver}.AK.preload.sw_loongarch64.deb")
-sha256sums_x86_64=('37eda7ea2ed10a82a3010e8f76cfdda5fba99ca47adb84548868f6710405a479')
-sha256sums_aarch64=('8c1c5818848b0d2ff01601ca5dbc6d5ad689ebd07307d35a31d532793043e7f3')
-sha256sums_loong64=('f92600fc4fb909f19d4ef4ecb81b09e93b9c8744b8e31ece87ca0aca13ecbed1')
-
-DLAGENTS=(
-  'https::/usr/bin/curl --referer https://365.wps.cn -qgb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
-)
+source_x86_64=("https://pubwps-wps365-obs.wpscdn.cn/download/Linux/${pkgver: -5}/wps-office_${pkgver}.AK.preload.sw_amd64.deb")
+source_aarch64=("https://pubwps-wps365-obs.wpscdn.cn/download/Linux/${pkgver: -5}/wps-office_${pkgver}.AK.preload.sw_arm64.deb")
+source_loong64=("https://pubwps-wps365-obs.wpscdn.cn/download/Linux/${pkgver: -5}/wps-office_${pkgver}.AK.preload.sw_loongarch64.deb")
+sha256sums_x86_64=('91cc59e72496629049edaf1b35fa7d868e2f58f65a573d9f70dfb91f04281b2c')
+sha256sums_aarch64=('a5c8fbc50406b59d07b2a5075fbbab04c430cbe9e66ec55605a52458eb3a52ce')
+sha256sums_loong64=('2fd7d542714fbf295febc66958c2cc09b5d386f14cbec0ec6a5546f82f704ed2')
 
 prepare() {
   xz -df data.tar.xz
 }
 
-_install(){
+_install() {
   tar --no-same-owner -C "${pkgdir}" -xf data.tar "$@"
 }
 
-package_wps-office-365(){
+package_wps-office-365() {
   conflicts=('wps-office')
   provides=('wps-office')
 
@@ -45,7 +41,7 @@ package_wps-office-365(){
     --exclude ./usr/share/desktop-directories \
     ./opt/kingsoft/wps-office/office6 ./usr
 
-  # to save typing pkgdir 
+  # to save typing pkgdir
   cd "${pkgdir}"
 
   # remove file
@@ -94,11 +90,11 @@ python -c 'import sys, urllib.parse; print(urllib.parse.unquote(sys.argv[1]))'/"
   install -dm777 opt/kingsoft/.auth/
 }
 
-package_wps-office-365-xiezuo(){
+package_wps-office-365-xiezuo() {
   _install --wildcards ./opt/xiezuo ./usr/*xiezuo*
 }
 
-package_wps-office-365-fonts(){
+package_wps-office-365-fonts() {
   conflicts=('wps-office-fonts')
   provides=('wps-office-fonts')
   _install ./etc/fonts ./usr/share/fonts
