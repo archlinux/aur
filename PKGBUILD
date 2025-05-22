@@ -1,7 +1,7 @@
-#!/usr/bin/bash
+#!/bin/bash
 # Maintainer: jstmax! / ceez2exzt -> maxwasmailed@proton.me
 pkgname=xsc
-pkgver=02
+pkgver=03
 pkgrel=1
 pkgdesc="XSC: the easiest way to calculate stuff in the terminal"
 arch=('any')
