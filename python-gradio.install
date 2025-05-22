@@ -1,0 +1,11 @@
+post_install() {
+	python -c "import gradio"
+}
+
+post_upgrade() {
+    python -c "import gradio"
+}
+
+post_remove() {
+    rm -rf $(python -c "import sysconfig; print(sysconfig.get_path('purelib'))")/gradio
+}

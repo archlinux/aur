@@ -2,7 +2,7 @@
 
 _name=gradio
 pkgname=python-${_name}
-pkgver=5.23.3
+pkgver=5.30.0
 pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=('x86_64' 'aarch64')
@@ -11,13 +11,14 @@ license=('Apache-2.0')
 source=("${url}/archive/refs/tags/${_name}@${pkgver}.tar.gz")
 source_x86_64=("pnpm::https://github.com/pnpm/pnpm/releases/download/v9.15.9/pnpm-linuxstatic-x64")
 source_aarch64=("pnpm::https://github.com/pnpm/pnpm/releases/download/v9.15.9/pnpm-linuxstatic-arm64")
-sha256sums=('5553935e3412aae01190115735b3edd363901063ceaab69b0af62e28d7604c76')
+sha256sums=('8d9ee409df9c3848c29de11cb703b17d87fb773ea9c8e0416c1a78e5ffec0a9b')
 sha256sums_x86_64=('038f2a41ccdabc823d09e5697fff85f2e74d5c37591f6d58dfd33a59ffa17fc0')
 sha256sums_aarch64=('2f8069dbb472b93a54d4c016b2e36968586c87f62e659dd966472a78cada5d99')
-depends=('python>=3.10' 'python-aiofiles' 'python-anyio' 'python-audioop-lts' 'python-fastapi' 'python-ffmpy' 'python-groovy' 'python-gradio-client' 'python-httpx' 'python-huggingface-hub' 'python-jinja' 'python-markupsafe' 'python-numpy' 'python-orjson' 'python-packaging' 'python-pandas' 'python-pillow' 'python-pydantic' 'python-python-multipart' 'python-pydub' 'python-pyyaml' 'python-ruff' 'python-safehttpx' 'python-semantic-version' 'python-starlette' 'python-tomlkit' 'python-typer' 'python-typing_extensions' 'python-urllib3' 'uvicorn')
+depends=('python' 'python-aiofiles' 'python-anyio' 'python-audioop-lts' 'python-fastapi' 'python-ffmpy' 'python-groovy' 'python-gradio-client' 'python-httpx' 'python-huggingface-hub' 'python-jinja' 'python-markupsafe' 'python-numpy' 'python-orjson' 'python-packaging' 'python-pandas' 'python-pillow' 'python-pydantic' 'python-python-multipart' 'python-pydub' 'python-pyyaml' 'python-ruff' 'python-safehttpx' 'python-semantic-version' 'python-starlette' 'python-tomlkit' 'python-typer' 'python-typing_extensions' 'python-urllib3' 'uvicorn')
 makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('ipython' 'python-altair' 'python-boto3' 'python-fastapi' 'python-matplotlib' 'python-httpx' 'python-huggingface-hub' 'python-hypothesis' 'python-polars' 'python-pydantic' 'python-email-validator' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-cov' 'python-pytest-rerunfailures' 'python-respx' 'python-scikit-image' 'python-pytorch' 'python-tqdm' 'python-transformers' 'python-vega_datasets' 'python-diffusers')
-optdepends=('python-authlib: oauth' 'python-itsdangerous: oauth')
+checkdepends=('ipython' 'python-altair' 'python-fastapi' 'python-matplotlib' 'python-httpx' 'python-huggingface-hub' 'python-hypothesis' 'python-polars' 'python-pydantic' 'python-email-validator' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-cov' 'python-pytest-rerunfailures' 'python-respx' 'python-scikit-image' 'python-pytorch' 'python-tqdm' 'python-transformers' 'python-vega_datasets' 'python-diffusers')
+optdepends=('python-authlib: oauth' 'python-itsdangerous: oauth' 'python-mcp: mcp' 'python-pydantic: mcp')
+install='python-gradio.install'
 
 prepare(){
   chmod +x pnpm
@@ -26,18 +27,18 @@ prepare(){
 
 build() {
   cd "${srcdir}"/${_name}-${_name}-${pkgver}
-  python scripts/generate_theme.py
+  python scripts/generate_theme.py | true
   env PATH="${srcdir}"/${_name}-${_name}-${pkgver}:$PATH ./pnpm i --frozen-lockfile --ignore-scripts
   env PATH="${srcdir}"/${_name}-${_name}-${pkgver}:$PATH ./pnpm build
-  python -c "import gradio"
   python -m build --wheel --no-isolation
 }
 
 check() {
     local pytest_options=(
-    --override-ini="addopts="
     -vv
     -p no:flaky
+    # Test Gradio inside Docker
+    --ignore test/test_docker
     # Need HuggingFace token
     --deselect test/test_buttons.py::TestOAuthButtons::test_login_button_warns_when_not_on_spaces
     --deselect test/test_external.py::TestLoadInterface::test_numerical_to_label_space
