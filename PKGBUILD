@@ -18,10 +18,10 @@ depends=(
 )
 makedepends=(
   git
-  glibc
-  libinih
-  libseccomp
-  wayland
+  cmocka
+  meson
+  scdoc
+  wayland-protocols
 )
 conflicts=('wob')
 provides=("wob=${pkgver%%+*}")
