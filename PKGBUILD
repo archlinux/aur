@@ -14,7 +14,7 @@ pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
 pkgver=25.2.0_devel.205806.64ce37b2d98
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
                             wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git
@@ -84,7 +84,8 @@ build() {
        -D microsoft-clc=disabled \
        -D video-codecs=all \
        -D gallium-rusticl=true \
-       -D rust_std=2021 \
+       -D gallium-rusticl-enable-drivers=radeonsi \
+       -D rust_std=2021
 
     meson configure --no-pager _build
     ninja $NINJAFLAGS -C _build
