@@ -1,0 +1,22 @@
+pkgbase = electron-ffmpeg-gui-git
+	pkgdesc = FFmpeg GUI for converting video codecs.(Use system-wide electron)
+	pkgver = 0.2.2.r2.g5cd6ab8
+	pkgrel = 1
+	url = https://github.com/hunt-kingyo/electron-ffmpeg-gui
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron35
+	depends = ffmpeg
+	provides = electron-ffmpeg-gui=0.2.2
+	conflicts = electron-ffmpeg-gui
+	source = electron-ffmpeg-gui.git::git+https://github.com/hunt-kingyo/electron-ffmpeg-gui
+	source = electron-ffmpeg-gui.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = electron-ffmpeg-gui-git
