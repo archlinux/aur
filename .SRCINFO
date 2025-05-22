@@ -1,11 +1,11 @@
 pkgbase = ttf-uiua386
 	pkgdesc = Uiua font with language glyphs, inspired by APL386
-	pkgver = 0.16.0
+	pkgver = 0.16.2
 	pkgrel = 0
 	url = https://www.uiua.org/
 	arch = any
 	license = MIT
-	source = https://github.com/uiua-lang/uiua/raw/0.16.0/src/algorithm/Uiua386.ttf
+	source = https://github.com/uiua-lang/uiua/raw/0.16.2/src/algorithm/Uiua386.ttf
 	sha256sums = 002735e28e2264ebb83087d9f342726cfa2d8dc1cae56d8139444bca4f44157d
 
 pkgname = ttf-uiua386
