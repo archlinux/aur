@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 _appname=hover
 pkgname="${_appname}fly-bin"
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Lightweight service virtualization/API simulation tool for developers and testers.(Prebuilt version)"
 arch=(
@@ -18,9 +18,9 @@ conflicts=("${pkgname%-bin}")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_bundle_linux_arm64.zip")
 source_i686=("${pkgname}-${pkgver}-i686.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_bundle_linux_386.zip")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_bundle_linux_amd64.zip")
-sha256sums_aarch64=('a054bf84b4d8eae837063f75a9eec47b952a8948c6a3fd43db38919b635ee10b')
-sha256sums_i686=('ff447b46498e2cf017301291fd6d95e5be6f4ffbe9e3ac9f91333e4a5ef84fdc')
-sha256sums_x86_64=('835d196c30ec23638fa79acf1296fdebc93a999a44cba3ef430f31fc57826dff')
+sha256sums_aarch64=('65026d4d64e1dfc0b9da400609d4ff049b958d5596d565c5154048a50dffe68b')
+sha256sums_i686=('70e272e01419ba2f2ab5c3a67951ac72b5a6623f03144b5647e4a30f27d8755b')
+sha256sums_x86_64=('339b1e92d47759c9cb9b6ab41244b9a7322a70e5ef3c3ba6e287f7c68baad459')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm755 "${srcdir}/${_appname}ctl" -t "${pkgdir}/usr/bin"
