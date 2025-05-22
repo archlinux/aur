@@ -1,6 +1,6 @@
 # Maintainer: Augusto Elesbão <aelesbao@gmail.com>
 pkgname=sui-testnet-bin
-pkgver=1.48.1
+pkgver=1.49.1
 pkgrel=1
 pkgdesc="Sui, a next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model powered by the Move programming language"
 arch=("x86_64" "aarch64")
@@ -12,8 +12,8 @@ provides=("sui")
 source_x86_64=("$url/releases/download/testnet-v$pkgver/sui-testnet-v$pkgver-ubuntu-x86_64.tgz")
 source_aarch64=("$url/releases/download/testnet-v$pkgver/sui-testnet-v$pkgver-ubuntu-aarch64.tgz")
 
-sha256sums_x86_64=('bdbe3f8a12e31e13182d1b60ef55b331e90e83f8e0e2122690cceb7a3c1411c7')
-sha256sums_aarch64=('6b204c08c6ba0752a252b39889b9c88a91e3fbbc9e5222d3f2a9efc56111fd0d')
+sha256sums_x86_64=('85186d4850420fbdc31708de0325dd72de9af1dbd9aea1db296728b125440400')
+sha256sums_aarch64=('36887eb904922b9e04b2e0be12365cdb332dfd533393815b71cd64341255d203')
 
 package() {
     binaries=(
