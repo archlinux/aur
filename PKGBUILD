@@ -5,7 +5,7 @@
 _pkgname="python-tts"
 pkgname="${_pkgname}-git"
 pkgver=0.22.0.r9.gdbf1a08a
-pkgrel=4
+pkgrel=5
 pkgdesc="Coqui deep learning toolkit for Text-to-Speech, battle-tested in research and production"
 url="https://github.com/coqui-ai/TTS"
 license=("MPL2")
@@ -86,6 +86,7 @@ prepare(){
 
 build(){
     cd "${srcdir}/${_pkgname}" || exit 2
+	rm -f dist/*.whl
     python -m build --wheel --no-isolation
 }
 
