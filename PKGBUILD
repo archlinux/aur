@@ -2,17 +2,17 @@
 
 _name=gradio-client
 pkgname=python-${_name}
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.10.1
+pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=(any)
 url='https://github.com/gradio-app/gradio/tree/main/client/python'
 license=('Apache-2.0')
 source=("https://github.com/gradio-app/gradio/archive/refs/tags/${_name//-/_}@${pkgver}.tar.gz")
-sha256sums=('bc7eb1430765f325503f0dfff00219a9df719256293955d18b0387b5c5be54d6')
-depends=('python>=3.10' 'python-fsspec' 'python-httpx' 'python-huggingface-hub' 'python-packaging' 'python-typing_extensions' 'python-websockets')
+sha256sums=('91a283b0441e4e64455fc6f153fc988f8a4e5cf47b569d66fd57d2ba0b32776b')
+depends=('python' 'python-fsspec' 'python-httpx' 'python-huggingface-hub' 'python-packaging' 'python-typing_extensions' 'python-websockets')
 makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest-asyncio' 'python-pytest' 'python-pydub')
+checkdepends=('python-pytest-asyncio' 'python-pytest' 'python-pytest-xdist' 'python-pydub')
 
 build() {
   cd "${srcdir}"/${_name//-client/}-${_name//-/_}-${pkgver}/${_name//gradio-/}/${pkgname//-gradio-client/}
