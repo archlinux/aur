@@ -3,7 +3,7 @@
 pkgname=void-bin
 pkgdesc="The open-source Cursor alternative."
 pkgver=1.99.30034
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 options=('!strip')
 url="https://github.com/voideditor/void"
@@ -18,25 +18,31 @@ sha256sums=('aed80c55736d5de9b4473e8e7c7e8fb9d3b2999b45fac5ebfc302c40a13b9d83'
             '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
 
 build() {
-	tar -xf data.tar.xz --exclude='usr/share/void/[^r]*' --exclude='usr/share/void/*.pak'
- 	_correctron=$(grep -E '"electron": "[0-9]{2}' usr/share/void/resources/app/package.json|awk '{print $2}'|cut -c2-3)
-	if [[ $_elnum != $_correctron ]]; then
-		echo "Incorrectron! Change electron${_elnum} to electron${_correctron}"
-		exit 1
-	fi
-	_app=/usr/share/void/resources/app
-	sed -e "s#code-flags#void-flags#" \
-		-e "s#/usr/lib/code/out/cli.js#${_app}/out/cli.js#" \
-		-e "s#/usr/lib/code/code.mjs#--app=${_app}#" code.sh > run.sh
-	sed "s#name=electron#name=electron${_elnum}#" run.sh > run-safe.sh
+        tar -xf data.tar.xz --exclude='usr/share/void/[^r]*' --exclude='usr/share/void/*.pak'
+        _electron=electron$(rg -o -r '$1' '"electron": *"[^0-9]*([0-9]+)' usr/share/void/resources/app/package.json)
+        _app=/usr/share/void/resources/app
+        sed -e "s#code-flags#void-flags#" \
+                -e "s#/usr/lib/code/out/cli.js#${_app}/out/cli.js#" \
+                -e "s#/usr/lib/code/code.mjs#--app=${_app}#" code.sh > run.sh
+        sed "s#name=electron#name=${_electron}#" run.sh > run-safe.sh
+        # System-wide tools
+        ln -sf /usr/bin/void usr/share/void/void
+        cd usr/share/void/resources/app
+        ln -svf /usr/bin/rg node_modules/@vscode/ripgrep/bin/rg
+        ln -svf /usr/bin/xdg-open node_modules/open/xdg-open
 }
 
-package() {
-	mv usr "${pkgdir}"/usr
-	install -Dm755 run-safe.sh "${pkgdir}/usr/bin/void"
-	ln -s /usr/bin/void "${pkgdir}/usr/share/void/void"
-	install -Dm755 run.sh "${pkgdir}/usr/share/void/void-latestron"
+package_void-bin() {
+        pkgdesc="Cursor alternative AI code editor"
+        cp -r --reflink=auto usr "${pkgdir}"/usr
+        install -Dm755 run-safe.sh "${pkgdir}/usr/bin/void"
+        echo $_electron
+        depends+=(${_electron})
+}
 
-	# use ripgrep to replace bundled rg
-	ln -sf /usr/bin/rg "$pkgdir"/usr/share/void/resources/app/node_modules/@vscode/ripgrep/bin/rg
+package_void-electron-latest-bin() {
+        pkgdesc="Void editor on latest stable electron"
+        mv usr "${pkgdir}"/usr # breaks --repackage
+        install -Dm755 run.sh "${pkgdir}/usr/bin/void"
+        depends+=(electron)
 }
