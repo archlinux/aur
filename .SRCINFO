@@ -1,0 +1,21 @@
+pkgbase = quick-jot-git
+	pkgdesc = A minimalist sticky note desktop app built with Electron and JavaScript.(Use system-wide electron)
+	pkgver = 1.0.r0.g47ff562
+	pkgrel = 1
+	url = https://github.com/DylanBT928/quick-jot
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron36
+	provides = quick-jot=1.0
+	conflicts = quick-jot
+	source = quick-jot.git::git+https://github.com/DylanBT928/quick-jot
+	source = quick-jot.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = quick-jot-git
