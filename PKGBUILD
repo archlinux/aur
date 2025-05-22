@@ -2,7 +2,7 @@
 # Maintainer: Martin Franc <me@martinfranc.eu>
 
 pkgname=wob-git
-pkgver=0.15.1+16.ge5b0a2804a
+pkgver=0.16+1.g6d4fd4bfbd
 pkgrel=1
 pkgdesc='A lightweight overlay volume/backlight/progress/anything bar for Wayland'
 arch=('i686' 'x86_64')
