@@ -2,12 +2,12 @@
 
 _name=libinstpatch
 pkgname=lib32-libinstpatch
-pkgver=1.1.6
-pkgrel=3
+pkgver=1.1.7
+pkgrel=1
 pkgdesc="Instrument file software library"
 arch=(x86_64)
 url="https://github.com/swami/libinstpatch"
-license=(LGPL2.1)
+license=(LGPL-2.1-only)
 depends=(
   lib32-gcc-libs
   lib32-glibc
@@ -22,16 +22,14 @@ makedepends=(
 )
 provides=(libinstpatch-1.0.so)
 source=($url/archive/v$pkgver/$_name-v$pkgver.tar.gz)
-sha512sums=('0e22165fc3c045bbc3ab2e1c090728232ed9142797ddbd067b682b9bcfee93850deb76c23b78f49a776e3d099be25fa029673ce8e4a909b2f48860dcdc55803c')
-b2sums=('c5881e6559a7fbcb40e1c43c7dbbfc1df9ac9445e83c70044855c192c3b04945ae125c0e06253ba76d3922a1f8fc6965810700ed57018864b319076ee9528d55')
+b2sums=('7e78b0f868cd805a3633eeecbbd0b70b1d7f344372a96b0c08b1beabf5596a2d768db30499e802ab53ce22fa05e457c26b2d24d5f29285040807dc0d54a0d10e')
 
 build() {
   local cmake_options=(
     -B build
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_INSTALL_PREFIX=/usr
-    -D LIB_INSTALL_DIR=/usr/lib32
-    -D LIB_SUFFIX=32
+    -D CMAKE_INSTALL_LIBDIR=/usr/lib32
     -S $_name-$pkgver
     -Wno-dev
   )
