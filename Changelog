@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : pynotify
- Tags         : 1.2.8 ➙ 1.5.1
-              : 2024-10-19 ➙ 2025-05-04
+ Tags         : 1.2.9 ➙ 1.6.0
+              : 2024-12-22 ➙ 2025-05-21
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-05-21   : 1.6.0
+                Use builtin types where possible. e.g. typing.List -> list
+ 2025-05-04     update Docs/Changelog Docs/pynotify.pdf
 
  2025-05-04   : 1.5.1
                 Improve API Reference docs
@@ -25,7 +29,3 @@
  2024-12-22   : 1.2.9
                 Add API Reference to documentation
  2024-10-19     update Docs/Changelog.rst Docs/pynotify.pdf
-
- 2024-10-19   : 1.2.8
-                remove unused requirements file
- 2024-09-07     update Docs/Changelog.rst Docs/pynotify.pdf
