@@ -20,9 +20,9 @@ pkgbase = slimevr-beta-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/SlimeVR/SlimeVR-Server/releases/download/v0.15.0-rc.4/SlimeVR-amd64.deb
+	source_x86_64 = https://github.com/SlimeVR/SlimeVR-Server/releases/download/v0.15.0/SlimeVR-amd64.deb
 	source_x86_64 = 99-slimedongle.rules
-	sha512sums_x86_64 = bb8471fed4291bc1ca0b3ac7f093fc9684624e7027131a90ec775823b2a21251a8fd8ef7f1d1967b019ec29575c5c57d1efa60c452a15397fa41c55145783cc5
+	sha512sums_x86_64 = 1cec83561e746f5ba1a3f4b15bcf3957994f81a85fb84685778259de8f8683484e5c441fea12947e5fd807ad16020fb24c525b89cd35353c3865c42db5a77a8b
 	sha512sums_x86_64 = 2e8d5967177bac379e9b02112f0eafe35346f08403913c81fad68c7583876c8475f5811b0c8bd7351dd9580f065aa25bb59427f4182c81c929cbc6d3c24d17ef
 
 pkgname = slimevr-beta-bin
