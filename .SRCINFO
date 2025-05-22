@@ -1,6 +1,6 @@
 pkgbase = iv-cli-bin
 	pkgdesc = A command-line image viewer using terminal graphics (Sixel, iTerm, Kitty)
-	pkgver = 0.7.4
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/kenshaw/iv
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = iv-cli-bin
 	provides = iv
 	conflicts = iv
 	conflicts = openimageio
-	source = README-0.7.4.md::https://raw.githubusercontent.com/kenshaw/iv/v0.7.4/README.md
+	source = README-0.8.0.md::https://raw.githubusercontent.com/kenshaw/iv/v0.8.0/README.md
 	sha256sums = 027a81f3244c2b7722e24ec7bc4e97e40dd6e5b9bf9f892e26952109d15043b0
-	source_x86_64 = https://github.com/kenshaw/iv/releases/download/v0.7.4/iv-0.7.4-linux-amd64.tar.bz2
-	sha256sums_x86_64 = aafa65b134f2ffeba08f24abfc5f5fb613b7e50107329243333ec713a310bb3d
+	source_x86_64 = https://github.com/kenshaw/iv/releases/download/v0.8.0/iv-0.8.0-linux-amd64.tar.bz2
+	sha256sums_x86_64 = 6f55a900b3a75268089cbf28380184b0b08e2427865a80b1f582a31b21c96655
 
 pkgname = iv-cli-bin
