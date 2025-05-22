@@ -5,8 +5,8 @@ _pkgname_uppercase=Dolt-Workbench
 
 pkgname="${_pkgname}"-appimage
 pkgver=0.3.20
-pkgrel=1
-pkgdesc="Dolt Workbench provides a full database tool for working with MySQL and Postgres or their git-style versioned alternatives Dolt and Doltgres."
+pkgrel=2
+pkgdesc="A full database tool for working with MySQL and Postgres or their git-style versioned alternatives Dolt and Doltgres."
 arch=('x86_64')
 url="https://dolthub.com"
 license=('Apache-2.0')
