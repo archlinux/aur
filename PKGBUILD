@@ -20,8 +20,8 @@ encso=$(readlink -es /lib/libnvidia-encode.so)
 fbcso=$(readlink -es /lib/libnvidia-fbc.so)
 
 pkgver() {
-	encver=$(echo "$encso" | grep -oP '[0-9]..*[0-9]$')
-	fbcver=$(echo "$fbcso" | grep -oP '[0-9]..*[0-9]$')
+	encver=$(echo "$encso" | grep -oP '[0-9]..*[0-9]$' || exit 0)
+	fbcver=$(echo "$fbcso" | grep -oP '[0-9]..*[0-9]$' || exit 0)
 	if [ "$encver" == "$fbcver" ]; then
 		if [[ -z $_force_nvutils_ver ]]; then
 			if [[ -z $encver ]]; then
@@ -31,6 +31,8 @@ pkgver() {
 			fi
 			echo "$encver"
 		else
+			export encso="/lib/libnvidia-encode.so.${pkgver}"
+			export fbcso="/lib/libnvidia-fbc.so.${pkgver}"
 			echo "$_force_nvutils_ver"
 		fi
 	else
