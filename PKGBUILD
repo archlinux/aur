@@ -2,6 +2,7 @@
 # Maintainer: jstmax! / ceez2exzt -> maxwasmailed@proton.me
 pkgname=xsc
 pkgver=3
+pkgrel=3
 pkgdesc="XSC: the easiest way to calculate stuff in the terminal"
 arch=('any')
 url="https://github.com/jstmaxlol/xsc"
