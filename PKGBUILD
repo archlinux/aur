@@ -1,13 +1,14 @@
 # Contributor: Daniele Basso <d dot bass05 at proton dot me>
 
 pkgname=code-electron-latest
-pkgdesc='Code - OSS on latest stable electron'
+pkgdesc='VSCode on latest stable electron'
 pkgver=1.100.2
 pkgrel=2
 arch=('x86_64')
 _vscode_arch=x64 # https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/PKGBUILD
 _electron_arch=x64
-url='https://github.com/microsoft/vscode'
+_url=https://github.com/microsoft/vscode
+url="${_url}/pull/245423"
 license=('MIT')
 depends=( ripgrep xdg-utils # electron* is added at build process
 libsecret libxkbfile )
@@ -17,7 +18,7 @@ git npm pnpm python desktop-file-utils libarchive )
 conflicts=(code vscode)
 provides=(code vscode)
 # Do not sync $pkgrel
-source=(vscode::"git+https://github.com/microsoft/vscode.git#tag=${pkgver}"
+source=(vscode::"git+${_url}.git#tag=${pkgver}"
 "https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/${pkgver}-1/"{code.sh,code.mjs,clipath.patch,product_json.diff})
 sha512sums=('2694841afae736d7424d9f6ed4a9eebcccd1b6e167682c454da639b37a3442e62d405b009d28e138cc56de03b0711fedf6d28f5a2b0fdd105962421d9d563b6f'
             '937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37'
@@ -95,9 +96,9 @@ build() {
 
 package() {
   _elnum=$(cut -d. -f1 /usr/lib/electron/version) # hide ver from --printsrcinfo
-  depends+=(electron${_elnum}) # replace electron dependency
+  depends+=(electron${_elnum})
   # Resource files
-  install -dm755 "$pkgdir"/usr/lib/code # compat with hook pkgs
+  install -dm755 "$pkgdir"/usr/lib/code
   cp -r --reflink=auto --no-preserve=ownership --preserve=mode VSCode-linux-${_vscode_arch}/resources/app/* "$pkgdir"/usr/lib/code/
   chmod -R u=rwX,go=rX "$pkgdir" # todo: cleanup
   # system-wide tools
