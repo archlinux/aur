@@ -3,14 +3,14 @@
 # Contributor: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 
 pkgname=ckb-next-git
-pkgver=0.6.0.r0.gfaca39b1
+pkgver=0.6.2.r16.gb1075bc1
 pkgrel=1
 epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, git master branch"
-arch=('i686' 'x86_64')
+arch=('i686' 'pentium4' 'x86_64')
 url="https://github.com/ckb-next/ckb-next"
 license=('GPL2')
-depends=('qt5-base' 'hicolor-icon-theme' 'quazip-qt5' 'qt5-tools' 'libxcb' 'xcb-util-wm' 'qt5-x11extras' 'libdbusmenu-qt5' 'python3' 'python-pyqt5')
+depends=('qt6-base' 'hicolor-icon-theme' 'quazip-qt6' 'qt6-tools' 'qt6-wayland' 'libxcb' 'xcb-util-wm' 'python3' 'python-pyqt6')
 makedepends=('git' 'cmake')
 optdepends=('libpulse')
 conflicts=('ckb-git' 'ckb-git-latest' 'ckb-next')

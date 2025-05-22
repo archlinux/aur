@@ -1,25 +1,25 @@
 pkgbase = ckb-next-git
 	pkgdesc = Corsair Keyboard and Mouse Input Driver, git master branch
-	pkgver = 0.6.0.r0.gfaca39b1
+	pkgver = 0.6.2.r16.gb1075bc1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ckb-next/ckb-next
 	install = ckb-next-git.install
 	arch = i686
+	arch = pentium4
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
-	depends = qt5-base
+	depends = qt6-base
 	depends = hicolor-icon-theme
-	depends = quazip-qt5
-	depends = qt5-tools
+	depends = quazip-qt6
+	depends = qt6-tools
+	depends = qt6-wayland
 	depends = libxcb
 	depends = xcb-util-wm
-	depends = qt5-x11extras
-	depends = libdbusmenu-qt5
 	depends = python3
-	depends = python-pyqt5
+	depends = python-pyqt6
 	optdepends = libpulse
 	provides = ckb-next
 	conflicts = ckb-git
@@ -31,4 +31,3 @@ pkgbase = ckb-next-git
 	sha256sums = SKIP
 
 pkgname = ckb-next-git
-
