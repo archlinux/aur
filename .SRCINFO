@@ -1,7 +1,7 @@
 pkgbase = qt5-webchannel
 	pkgdesc = Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients
-	pkgver = 5.15.16+kde+r3
-	pkgrel = 3
+	pkgver = 5.15.17+kde+r3
+	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt5
@@ -11,7 +11,7 @@ pkgbase = qt5-webchannel
 	license = custom
 	makedepends = git
 	depends = qt5-declarative
-	source = kde-qtwebchannel::git+https://invent.kde.org/qt/qt/qtwebchannel#commit=b375bde968f7b9c273adfb8a89f9a6fb888f9af6
-	sha256sums = a7efeb49927144b2ba6a5184006a39c0579baf6c17e8e0f9c20474f5424b590a
+	source = kde-qtwebchannel::git+https://invent.kde.org/qt/qt/qtwebchannel#commit=85ba097de9759efe5563156e43de1ad8473d5d54
+	sha256sums = 379bc3b92eadb9f50be239e79d200d3c07447d46a9d4d6da1c75dcc18ecf2727
 
 pkgname = qt5-webchannel
