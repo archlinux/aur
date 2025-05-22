@@ -1,15 +1,19 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Anatol Pomozov <anatol dot pomozov at gmail>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 
-pkgname=openmpi
+pkgname=openmpi4
+_pkgname=openmpi
 pkgver=4.1.6
-pkgrel=3
+pkgrel=4
 pkgdesc='High performance message passing library (MPI)'
 arch=(x86_64)
 url='https://www.open-mpi.org'
 license=('custom:OpenMPI')
+provides=('openmpi')
+conflicts=('openmpi')
 depends=(
   gcc-libs
   glibc
@@ -44,15 +48,24 @@ provides=(
   libopen-pal.so
   libopen-rte.so
 )
-source=(
-  https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/$pkgname-$pkgver.tar.bz2)
-sha256sums=('f740994485516deb63b5311af122c265179f5328a0d857a567b85db00b11e415')
-b2sums=('4f119e1ed9b8787f0f860295ab1721fe2fd5300b8e182230a9eba3a864680b02bbd30618cc6d798a693a121626fc0ad5f447144d9ba91becb734f1a530d7a23a')
+source=("https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/$_pkgname-$pkgver.tar.bz2"
+        'mca-mtl_ofi.diff'
+        'test-datatype.diff')
+sha256sums=('f740994485516deb63b5311af122c265179f5328a0d857a567b85db00b11e415'
+            'b144d5db717dbc5af2fdc4e149b9db6fd4b905c1706c9da9ded7a133af65fae3'
+            'b34e94413142508b2767102e40cbd44b5d71e73ce549db9429d1986e639c7ed5')
+
+prepare() {
+  cd $_pkgname-$pkgver
+  patch -p 1 -i ../mca-mtl_ofi.diff
+  patch -p 1 -i ../test-datatype.diff
+}
 
 build() {
   local configure_options=(
     --prefix=/usr
     --enable-builtin-atomics
+    --enable-man-pages
     --enable-memchecker
     --enable-mpi-cxx
     --enable-mpi-fortran=all
@@ -65,7 +78,7 @@ build() {
     --with-pmix=external
     --with-valgrind
   )
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
 
   # set environment variables for reproducible build
   # see https://github.com/open-mpi/ompi/blob/main/docs/release-notes/general.rst
@@ -77,18 +90,18 @@ build() {
   ac_cv_func_sem_open=no ./configure "${configure_options[@]}"
   # prevent excessive overlinking due to libtool
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make V=1
+  make
 }
 
 check() {
-  make check -C $pkgname-$pkgver
+  make check -C $_pkgname-$pkgver
 }
 
 package() {
   depends+=(libpmix.so)
 
-  make DESTDIR="$pkgdir" install -C $pkgname-$pkgver
-  install -Dm 644 $pkgname-$pkgver/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  make DESTDIR="$pkgdir" install -C $_pkgname-$pkgver
+  install -Dm 644 $_pkgname-$pkgver/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim: ts=2 sw=2 et:
