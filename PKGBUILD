@@ -6,7 +6,7 @@ pkgdesc="GUI to convert SACD ISO to DSD using iso2dsd, sacd_extract and 2064-byt
 arch=('x86_64')
 url="http://dsd.sonore.us/iso2dsd"
 license=('GPL2' 'Custom: SimpleDesignLLC')
-depends=('java-runtime' 'gcc' 'libxml2-compat')
+depends=('java-runtime' 'gcc' 'libxml2-legacy')
 
 target_iso2dsd="iso2dsd_gui.jar.zip::http://dsd.sonore.us/iso2dsd_gui.jar.zip"
 target_sacd="sacd_extract-0.3.9.3-117-linux.zip::https://github.com/EuFlo/sacd-ripper/releases/download/0.3.9.3/sacd_extract-0.3.9.3-117-linux.zip"
