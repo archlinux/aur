@@ -10,7 +10,7 @@ license=('LGPL')
 makedepends=('mingw-w64-configure' 'libdatrie' 'autoconf-archive')
 depends=('mingw-w64-crt' 'mingw-w64-libdatrie')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://linux.thai.net/pub/thailinux/software/libthai/libthai-${pkgver}.tar.xz"
+source=("https://github.com/tlwg/libthai/releases/download/v${pkgver}/libthai-${pkgver}.tar.xz"
         'relocatable.patch')
 sha256sums=('fc80cc7dcb50e11302b417cebd24f2d30a8b987292e77e003267b9100d0f4bcd'
             'f258c748e37a11ce20d307a9a27cf68de9543d79b7e60ebd31c7cf4398b5f6d9')
