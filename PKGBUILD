@@ -10,6 +10,7 @@ arch=('any')
 license=('Apache-2.0')
 makedepends=('git' 'go')
 provides=($_pkgname bpmodify)
+DLAGENTS=("http::/usr/bin/git clone --branch android-latest-release --single-branch %u")
 source=('git+https://android.googlesource.com/platform/build/blueprint')
 sha256sums=("SKIP")
 
