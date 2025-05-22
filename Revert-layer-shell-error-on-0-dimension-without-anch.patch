@@ -1,0 +1,31 @@
+From: =?utf-8?q?Guido_G=C3=BCnther?= <agx@sigxcpu.org>
+Date: Fri, 1 Jan 2021 13:58:55 +0100
+Subject: Revert "layer-shell: error on 0 dimension without anchors"
+
+This reverts commit 8dec751a6d84335fb04288b8efab6dd5c90288d3.
+
+Revert this until phosh has a fixed release.
+---
+ types/wlr_layer_shell_v1.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/types/wlr_layer_shell_v1.c b/types/wlr_layer_shell_v1.c
+index a59f110..8070f82 100644
+--- a/types/wlr_layer_shell_v1.c
++++ b/types/wlr_layer_shell_v1.c
+@@ -336,6 +336,7 @@ static void layer_surface_role_client_commit(struct wlr_surface *wlr_surface) {
+ 		return;
+ 	}
+
++#if 0
+ 	const uint32_t horiz = ZWLR_LAYER_SURFACE_V1_ANCHOR_LEFT |
+ 		ZWLR_LAYER_SURFACE_V1_ANCHOR_RIGHT;
+ 	if (surface->pending.desired_width == 0 &&
+@@ -355,6 +356,7 @@ static void layer_surface_role_client_commit(struct wlr_surface *wlr_surface) {
+ 			"height 0 requested without setting top and bottom anchors");
+ 		return;
+ 	}
++#endif
+ }
+
+ static void layer_surface_role_commit(struct wlr_surface *wlr_surface) {
