@@ -7,6 +7,7 @@ pkgbase = portable-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = libarchive
+	depends = s6
 	depends = wayland-utils
 	depends = way-secure
 	depends = pipewire-v4l2

@@ -15,6 +15,7 @@ options=(!debug !strip)
 makedepends+=(git)
 
 depends=(
+	"s6"
 	"wayland-utils"
 	"way-secure"
 	"pipewire-v4l2"
