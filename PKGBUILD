@@ -3,7 +3,7 @@
 # Maintainer: adam
 
 pkgname='opencode-bin'
-pkgver=0.0.51
+pkgver=0.0.52
 pkgrel=1
 pkgdesc='terminal based agent that can build anything'
 url='https://github.com/sst/opencode'
@@ -12,11 +12,11 @@ license=('MIT')
 provides=('opencode')
 conflicts=('opencode')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/sst/opencode/releases/download/v0.0.51/opencode-linux-arm64.tar.gz")
-sha256sums_aarch64=('069fc94ea1b1fa8fa791455fb7e0f10daff4ff21a2d50d9b2ec6c8a0c03f8cc3')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/sst/opencode/releases/download/v0.0.52/opencode-linux-arm64.tar.gz")
+sha256sums_aarch64=('23f60c55677d669433ff94ac4282166634983c31988e5e2432cca2e3c09731b8')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/sst/opencode/releases/download/v0.0.51/opencode-linux-x86_64.tar.gz")
-sha256sums_x86_64=('7c034923e7aa6c01f4252e1c7c711d9dff2f1f84c3e500c394a172c94d32d0e4')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/sst/opencode/releases/download/v0.0.52/opencode-linux-x86_64.tar.gz")
+sha256sums_x86_64=('7f99e305db6b28dc6fa8def7c7537ca7f59ccdcc75b58406c1544ee230720b2b')
 
 package() {
   install -Dm755 ./opencode "${pkgdir}/usr/bin/opencode"
