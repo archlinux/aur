@@ -7,7 +7,7 @@ import subprocess
 
 path_passwd = "~/.ssh-manager/"
 tmp = "~/.ssh-manager/fifo"
-file_json = "~/.ssh-manager/data.json"
+file_json = "data.json"
 
 init_json = {
     "Manager": []

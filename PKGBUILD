@@ -1,6 +1,6 @@
 pkgname=ssh-manager
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple terminal password manager for SSH/RDP with GPG encryption"
 arch=('any')
 url="https://github.com/madyel/sshManager"
