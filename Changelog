@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : nginx_passwd
- Tags         : 2.5.2 ➙ 2.7.3
-              : 2024-12-31 ➙ 2025-05-19
+ Tags         : 2.6.0 ➙ 2.8.0
+              : 2025-05-14 ➙ 2025-05-21
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-05-21   : 2.8.0
+                Use builtin types where possible. e.g. typing.List -> list
+ 2025-05-19     update Docs/Changelogs Docs/${my_name}.pdf
 
  2025-05-19   : 2.7.3
                 Arch PKGBUILD: move pytest dependency to checkdepends from makedepends
@@ -24,10 +28,3 @@
                 * Add pytests
                 * add python-bcrypt dependency to Arch PKBUILD
  2024-12-31     update Docs/Changelog.rst Docs/nginx_passwd.pdf
-
- 2024-12-31   : 2.5.2
-                Git tags are now signed.
-                Update SPDX tags
-                Add git signing key to Arch Package
-                Bump python vers
- 2024-10-13     update Docs/Changelog.rst Docs/nginx_passwd.pdf
