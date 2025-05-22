@@ -1,7 +1,7 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 pkgname='firefox-privacy-badger-bin'
-pkgver=2025.3.3
+pkgver=2025.5.14
 pkgrel=1
 pkgdesc='Automatically learns to block invisible trackers.'
 arch=('any')
@@ -9,10 +9,10 @@ url='https://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/'
 license=('GPL-3.0')
 depends=('firefox')
 conflicts=('firefox-extension-privacybadger')
-_source_file_id=4447530
+_source_file_id=4493398
 source=('privacy_badger.xpi'::"https://addons.mozilla.org/firefox/downloads/file/${_source_file_id}/privacy_badger17-${pkgver}.xpi")
 noextract=('privacy_badger.xpi')
-sha256sums=('7acf878b3cd4a3b5ca7c98cbe3e31630bc6a048156db03bf2021795cce68ba97')
+sha256sums=('c3b6c0bf249b6b2661dc29f414d3abe1c0d637b4e059a49f42a01cc73f319aea')
 
 prepare() {
   cd "$srcdir"
