@@ -1,0 +1,16 @@
+pkgbase = anarch-bin
+	pkgdesc = Arch Linux config manager (binary only)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mirs0bhan/Anarch
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	provides = anarch
+	conflicts = anarch
+	source_x86_64 = https://github.com/mirs0bhan/Anarch/releases/download/v0.1.0/anarch-x86_64
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/mirs0bhan/Anarch/releases/download/v0.1.0/anarch-aarch64
+	sha256sums_aarch64 = SKIP
+
+pkgname = anarch-bin
