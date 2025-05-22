@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+# Maintainer: jstmax! / ceez2exzt -> maxwasmailed@proton.me
+pkgname=xsc-git
+pkgver=02
+pkgrel=1
+pkgdesc="XSC: the easiest way to calculate stuff in the terminal"
+arch=('any')
+url="https://github.com/jstmaxlol/xsc"
+license=('Unlicense')
+depends=('figlet' 'lolcat')
+makedepends=('git' 'gcc')
+source=("git+https://github.com/jstmaxlol/xsc.git")
+md5sums=('SKIP')
+
+build() {
+	cd "$srcdir/xsc"
+	g++ -O2 -o xsc xsc.cpp
+}
+
+package() {
+	install -Dm755 "$srcdir/xsc/xsc" "$pkgdir/usr/bin/xsc"
+}
