@@ -1,8 +1,9 @@
 pkgbase=coreutils-uutils-symlink
 pkgname=(${pkgbase} coreutils-uutils-arch)
-pkgver=0.0.29
+pkgver=$(uu-true --version |cut -d' ' -f2)
 pkgrel=9
 arch=('any')
+url='https://uutils.github.io/'
 depends=(uutils-coreutils)
 package_coreutils-uutils-symlink() {
 	pkgdesc="(use at own risk) symlinks to replace coreutils with uutils"

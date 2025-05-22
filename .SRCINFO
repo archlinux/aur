@@ -1,6 +1,7 @@
 pkgbase = coreutils-uutils-symlink
 	pkgver = 0.0.29
 	pkgrel = 9
+	url = https://uutils.github.io/
 	arch = any
 	depends = uutils-coreutils
 
