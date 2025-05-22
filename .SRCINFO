@@ -1,7 +1,7 @@
 pkgbase = dolt-workbench-appimage
-	pkgdesc = A full database tool for working with MySQL and Postgres or their git-style versioned alternatives Dolt and Doltgres.
+	pkgdesc = A full database tool for working with MySQL and Postgres or their git-style versioned alternatives Dolt and Doltgres
 	pkgver = 0.3.20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dolthub.com
 	arch = x86_64
 	license = Apache-2.0
