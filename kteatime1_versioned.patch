@@ -1,0 +1,42 @@
+diff -aur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -48,6 +48,6 @@
+ 
+ install(TARGETS kteatime1 RUNTIME DESTINATION ${KDE1_BINDIR})
+ 
+-install_icon(kteatime.xpm)
+-install(FILES kteatime.kdelnk DESTINATION ${KDE1_APPSDIR}/Utilities/)
++install(FILES kteatime.xpm DESTINATION ${KDE1_ICONDIR} RENAME kteatime1.xpm)
++install(FILES kteatime.kdelnk DESTINATION ${KDE1_APPSDIR}/Utilities/ RENAME kgoldrunner1.kdelnk)
+ 
+diff -aur a/kteatime.kdelnk b/kteatime.kdelnk
+--- a/kteatime.kdelnk
++++ b/kteatime.kdelnk
+@@ -1,10 +1,10 @@
+ # KDE Config File 
+ [KDE Desktop Entry]
+-Name=The Tea Cooker
+-Name[de]=Der Tee-Kocher
++Name=The Tea Cooker1
++Name[de]=Der Tee-Kocher1
+ Exec=kteatime1
+-Icon=kteatime.xpm
++Icon=kteatime1.xpm
+ Type=Application
+ Comment=
+ Terminal=0
+-MiniIcon=kteatime.xpm
++MiniIcon=kteatime1.xpm
+diff -aur a/main.cpp b/main.cpp
+--- a/main.cpp
++++ b/main.cpp
+@@ -16,7 +16,7 @@
+ 
+ int main(int argc, char *argv[])
+ {
+-  KApplication app(argc, argv, "kteatime");
++  KApplication app(argc, argv, "kteatime1");
+ 
+   TopLevel *toplevel=0;
+ 

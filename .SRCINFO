@@ -1,0 +1,22 @@
+pkgbase = kteatime1
+	pkgdesc = A handy timer for steeping tea
+	pkgver = 1.0+r2+gf467233
+	pkgrel = 1
+	url = https://apps.kde.org/kteatime/
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	groups = kde1-applications
+	groups = kde1-utilities
+	license = GPL-2.0-or-later
+	makedepends = cmake>=3
+	depends = gcc-libs
+	depends = glibc
+	depends = kdelibs1
+	depends = qt1
+	source = kde1-kteatime-f4672332cb1a80c81cb7177af8a13781d5aad938.tar.gz::https://invent.kde.org/sandsmark/kde1-kteatime/-/archive/f4672332cb1a80c81cb7177af8a13781d5aad938/kde1-kteatime-f4672332cb1a80c81cb7177af8a13781d5aad938.tar.gz
+	source = kteatime1_versioned.patch
+	b2sums = 145134a9a14c96a20072f65e3b9656e280f82849b76e83947ae50f72f05fe0979c8901e336747db8c312a123bb0a07ed16a10ac0d1abef13c2d05deb627a4aff
+	b2sums = 71020f1c2fbf0812f6606cdb7666ea7732a17ed2082beb58af95785b0f663587fbd9e2b080192f76b9a582c4ac0bc89f5202c3794ccb923f825aa9c0faa16c6f
+
+pkgname = kteatime1
