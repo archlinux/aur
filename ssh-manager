@@ -5,17 +5,9 @@ import signal
 import sys
 import subprocess
 
-DEBUG = False
-
-if DEBUG:
-    path_passwd = "password/"
-    tmp = "temp/fifo"
-else:
-    path_passwd = "~/password/"
-    tmp = "~/password/fifo"
-
-
-file_json = "data.json"
+path_passwd = "~/.ssh-manager/"
+tmp = "~/.ssh-manager/fifo"
+file_json = "~/.ssh-manager/data.json"
 
 init_json = {
     "Manager": []
