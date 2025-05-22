@@ -5,8 +5,8 @@
 pkgname='python-whenever-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.8.0.r0.g7246019
-pkgrel=2
+pkgver=0.8.2.r0.ge7e0178
+pkgrel=1
 pkgdesc='Modern datetime library for Python (development version)'
 arch=('aarch64' 'x86_64')
 url="https://github.com/ariebovenberg/$_srcname"
@@ -22,6 +22,7 @@ depends=(
   'gcc-libs'
   'glibc'
   'python'
+  'python-pydantic-core'
 )
 source=("git+$url.git")
 provides=("$_pkgname")
