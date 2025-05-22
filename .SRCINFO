@@ -1,0 +1,21 @@
+pkgbase = panda-app-git
+	pkgdesc = A native wallpaper, music, and document manager.(Use system-wide electron)
+	pkgver = 1.0.0.r8.g334e31b
+	pkgrel = 1
+	url = https://github.com/GHchenjingqi/panda
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron35
+	provides = panda-app=1.0.0
+	conflicts = panda-app
+	source = panda-app.git::git+https://github.com/GHchenjingqi/panda
+	source = panda-app.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = panda-app-git
