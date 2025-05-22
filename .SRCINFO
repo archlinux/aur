@@ -1,4 +1,4 @@
-pkgbase = xsc-git
+pkgbase = xsc
 	pkgdesc = XSC: the easiest way to calculate stuff in the terminal
 	pkgver = 02
 	pkgrel = 1
@@ -9,7 +9,7 @@ pkgbase = xsc-git
 	makedepends = gcc
 	depends = figlet
 	depends = lolcat
-	source = git+https://github.com/jstmaxlol/xsc.git
+	source = git+https://github.com/jstmaxlol/xsc
 	md5sums = SKIP
 
-pkgname = xsc-git
+pkgname = xsc

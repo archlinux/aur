@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 # Maintainer: jstmax! / ceez2exzt -> maxwasmailed@proton.me
-pkgname=xsc-git
+pkgname=xsc
 pkgver=02
 pkgrel=1
 pkgdesc="XSC: the easiest way to calculate stuff in the terminal"
@@ -9,7 +9,7 @@ url="https://github.com/jstmaxlol/xsc"
 license=('Unlicense')
 depends=('figlet' 'lolcat')
 makedepends=('git' 'gcc')
-source=("git+https://github.com/jstmaxlol/xsc.git")
+source=("git+https://github.com/jstmaxlol/xsc")
 md5sums=('SKIP')
 
 build() {
