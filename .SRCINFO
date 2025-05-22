@@ -1,7 +1,7 @@
 pkgbase = musicbee
 	pkgdesc = Advanced, feature-rich freeware audio player (uses Wine)
 	pkgver = 3.6.9202
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getmusicbee.com
 	arch = x86_64
 	license = custom
@@ -11,7 +11,7 @@ pkgbase = musicbee
 	depends = lib32-libpulse
 	depends = wine-mono
 	depends = bash
-	source = https://files1.majorgeeks.com/9d020897ce24d4f3dfcdea873decfcdb8e93479b/multimedia/MusicBeePortable_3_6.zip
+	source = manual://MusicBeePortable_3_6.zip
 	source = musicbee.desktop
 	source = musicbee.sh
 	source = https://www.un4seen.com/files/z/2/bass_aac24.zip

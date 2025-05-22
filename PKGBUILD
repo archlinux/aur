@@ -5,7 +5,7 @@ _pkgver_major=3
 _pkgver_minor=6
 _pkgver_build=9202
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_build}
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced, feature-rich freeware audio player (uses Wine)"
 arch=(x86_64)
 url=https://getmusicbee.com
@@ -16,8 +16,8 @@ depends=(wine
 		wine-mono
 		bash)
 makedepends=(p7zip)
-DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from here: https://www.getmusicbee.com/downloads/')
-source=("https://files1.majorgeeks.com/9d020897ce24d4f3dfcdea873decfcdb8e93479b/multimedia/MusicBeePortable_3_6.zip"
+DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from here: https://www.getmusicbee.com/downloads/ or https://www.majorgeeks.com/files/details/musicbee_portable.html')
+source=("manual://MusicBeePortable_${_pkgver_major}_${_pkgver_minor}.zip"
 		"${pkgname}.desktop"
 		"${pkgname}.sh"
 		"https://www.un4seen.com/files/z/2/bass_aac24.zip") #M4A/AAC Support
