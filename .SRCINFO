@@ -6,7 +6,7 @@ pkgbase = kdelibs1
 	arch = i686
 	arch = x86_64
 	groups = kde1
-	license = LGPL-2.0-only
+	license = GPL-2.0-only AND LGPL-2.0-only
 	makedepends = cmake>=3
 	depends = gcc-libs
 	depends = glibc

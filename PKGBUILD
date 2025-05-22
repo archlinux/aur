@@ -12,7 +12,7 @@ pkgdesc="KDE Core Libraries"
 arch=('i686' 'x86_64')
 url="https://kde.org"
 _url="https://invent.kde.org/historical/kde${_api}-${_basename}"
-license=('LGPL-2.0-only')
+license=('GPL-2.0-only AND LGPL-2.0-only')
 depends=('gcc-libs' 'glibc' 'libjpeg' 'libpng' 'libtiff' 'libx11' 'libxext' "qt${_api}")
 makedepends=('cmake>=3')
 provides=('libjscript.so' 'libkab.so' 'libkdecore.so' 'libkdeui.so'
