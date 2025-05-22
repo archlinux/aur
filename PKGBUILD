@@ -1,23 +1,17 @@
 # Maintainer: Blaadick <null>
 
-pkgver=$(curl -s https://api.github.com/repos/Blaadick/BlaadPapers/releases/latest | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
-pkgrel=1
-
-if [ -z "$pkgver" ]; then
-    echo -e "\e[31m==> ERROR:\e[0m failed to access the git repository"
-    exit
-fi
-
-pkgname=blaadpapers
+pkgname='blaadpapers'
 pkgdesc='Super wallpaper manager'
+pkgver='0.0.6'
+pkgrel=1
 arch=('any')
 url='https://github.com/Blaadick/BlaadPapers'
 license=('MIT')
 depends=('qt6-base' 'hyprpaper')
-makedepends=('cmake')
+makedepends=('cmake' 'ninja')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('419e10e5d74c39d6617683020d0cd21e93222f6866b4a23342fd5f2f0cccbb61')
 
 build() {
     cd "BlaadPapers-$pkgver"

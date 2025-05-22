@@ -6,10 +6,11 @@ pkgbase = blaadpapers
 	arch = any
 	license = MIT
 	makedepends = cmake
+	makedepends = ninja
 	depends = qt6-base
 	depends = hyprpaper
 	options = !debug
 	source = blaadpapers-0.0.6.tar.gz::https://github.com/Blaadick/BlaadPapers/archive/refs/tags/v0.0.6.tar.gz
-	sha256sums = SKIP
+	sha256sums = 419e10e5d74c39d6617683020d0cd21e93222f6866b4a23342fd5f2f0cccbb61
 
 pkgname = blaadpapers
