@@ -1,6 +1,6 @@
 # Maintainer: Daniil T <contact.2imt@mail.ru>
 pkgname="polycat"
-pkgver="1.2.1"
+pkgver="1.3.0"
 pkgrel=1
 epoch=
 pkgdesc="Runcat module for Polybar"
