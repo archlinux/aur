@@ -1,0 +1,6 @@
+post_install() {
+    echo "Note: to use this Delphes installation with MadGraph, you need to set the delphes path in the MadGraph configuration file:"
+    echo "  delphes_path = /opt/Delphes/"
+    echo "You should add or replace the above line in the MadGraph configuration file. It is usually located at:"
+    echo "  /opt/madgraph/input/mg5_configuration.txt (if you installed MadGraph in /opt/madgraph)"
+}
