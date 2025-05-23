@@ -2,12 +2,12 @@
 
 pkgname=taverner-git
 _name="${pkgname%-git}"
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 
 pkgdesc="cli launcher menu for games (or anything), the UNIX way."
 arch=('any')
-url="https://github.com/vagos/taverner"
+url="https://github.com/Earnestly/taverner"
 license=('GPL')
 
 depends=()
@@ -21,6 +21,6 @@ source=("git+$url")
 sha256sums=('SKIP')
 
 package() {
-	cd "$_name"
+	cd "$_name" || return 1
 	make DESTDIR="$pkgdir/" install
 }
