@@ -1,0 +1,18 @@
+pkgbase = t3-chat-electron-git
+	pkgdesc = A Desktop Application for using T3 AI Chat
+	pkgver = 1.0.0.r6.6c23952
+	pkgrel = 1
+	url = https://github.com/0xGingi/T3_Chat_Electron
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = bun
+	depends = electron
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libappindicator-gtk3: for tray icon support
+	source = git+https://github.com/0xGingi/T3_Chat_Electron.git
+	sha256sums = SKIP
+
+pkgname = t3-chat-electron-git
