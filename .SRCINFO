@@ -1,6 +1,6 @@
 pkgbase = blaadpapers
 	pkgdesc = Super wallpaper manager
-	pkgver = 0.0.7
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/Blaadick/BlaadPapers
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = blaadpapers
 	depends = qt6-base
 	depends = hyprpaper
 	options = !debug
-	source = blaadpapers-0.0.7.tar.gz::https://github.com/Blaadick/BlaadPapers/archive/refs/tags/v0.0.7.tar.gz
-	sha256sums = 66bc58f2c0e5ddca8edb9e713ac4ea1f6e543ac40bfce1ac56b982cd2d32c412
+	source = blaadpapers-0.0.6.tar.gz::https://github.com/Blaadick/BlaadPapers/archive/refs/tags/v0.0.6.tar.gz
+	sha256sums = c21863374c6906199def272ba2efeac22e4e0bb78166b2e232a5139422be4cbc
 
 pkgname = blaadpapers

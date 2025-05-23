@@ -2,7 +2,7 @@
 
 pkgname='blaadpapers'
 pkgdesc='Super wallpaper manager'
-pkgver=0.0.7
+pkgver=0.0.6
 pkgrel=1
 arch=('any')
 url='https://github.com/Blaadick/BlaadPapers'
@@ -11,7 +11,7 @@ depends=('qt6-base' 'hyprpaper')
 makedepends=('cmake' 'ninja' 'librsvg')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('66bc58f2c0e5ddca8edb9e713ac4ea1f6e543ac40bfce1ac56b982cd2d32c412')
+sha256sums=('c21863374c6906199def272ba2efeac22e4e0bb78166b2e232a5139422be4cbc')
 
 build() {
     cd "BlaadPapers-$pkgver"
