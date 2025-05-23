@@ -2,7 +2,7 @@
 # Maintainer: jonahz <jonah.zuercher@adfinis.com>
 
 pkgname='adfinis-rclone-mgr-bin'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Configure and manage rclone mounts for Google Drive'
 url='https://github.com/adfinis/adfinis-rclone-mgr/'
@@ -11,11 +11,11 @@ license=('GPL3')
 provides=('adfinis-rclone-mgr')
 conflicts=('adfinis-rclone-mgr')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/adfinis/adfinis-rclone-mgr/releases/download/v1.0.0/adfinis-rclone-mgr-v1.0.0-linux-amd64.tar.gz")
-sha256sums_x86_64=('fa2ce0cfa14ac69b6333c8f29b7d5b0bfe6c880256a01ebd87f5b7f76d2b2c9c')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/adfinis/adfinis-rclone-mgr/releases/download/v1.0.1/adfinis-rclone-mgr-v1.0.1-linux-amd64.tar.gz")
+sha256sums_x86_64=('53c0a83c3c31a8e3de7036024c4ea75bdd2361123bfe317b5fabffaebf75f385')
 
 package() {
-  cd ./adfinis-rclone-mgr-v1.0.0-linux-amd64
+  cd ./adfinis-rclone-mgr-v1.0.1-linux-amd64
   # bin
   install -Dm755 "./adfinis-rclone-mgr" "${pkgdir}/usr/bin/adfinis-rclone-mgr"
   # license
