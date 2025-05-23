@@ -1,6 +1,6 @@
 pkgbase = dare-devil
 	pkgdesc = It's a hellish game and going to be wickedly fun and challenging.Full of thrilling twists and turns...
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Akash420-oss/Dare-Devil
 	arch = x86_64
@@ -9,14 +9,17 @@ pkgbase = dare-devil
 	checkdepends = gcc
 	checkdepends = iptables
 	checkdepends = glibc
+	checkdepends = zenity
 	makedepends = git
 	makedepends = gcc
 	makedepends = iptables
 	makedepends = glibc
+	makedepends = zenity
 	depends = git
 	depends = gcc
 	depends = iptables
 	depends = glibc
+	depends = zenity
 	source = dare-devil::git+https://github.com/Akash420-oss/Dare-Devil.git
 	md5sums = SKIP
 
