@@ -5,7 +5,7 @@
 
 pkgname=elmerfem
 pkgver=9.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
 url="http://www.elmerfem.org"
@@ -18,27 +18,31 @@ source=("https://github.com/ElmerCSC/$pkgname/archive/release-$pkgver.tar.gz"
         "ElmerIce.patch"
         "DCRComplexSolve.patch"
         "qwt_6.2.patch"
-        "fix_mkl_gomp.patch")
+        "fix_mkl_gomp.patch"
+        "fix_gettimeofday.patch")
 sha256sums=('08c5bf261e87ff37456c1aa0372db3c83efabe4473ea3ea0b8ec66f5944d1aa0'
             'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca'
             '90287c988ac4f5beedf5221e81f624799ec3253c63a30695e1873044ac5a6515'
             'fe117a9d803b7a12525d144fae936e1d3d7a3444c5b5a5697f95f772486a2db0'
             'b6ed988029169a5af745187d6ffb3e73cb81f5287944aab273e4a1fdf50af91f'
-            '61529ac78f2e8d1bd0515e4181a670cc2dc290783b6751c7cd73681d8baa4743')
+            '61529ac78f2e8d1bd0515e4181a670cc2dc290783b6751c7cd73681d8baa4743'
+            '3006a50187839fe3e461690908e0c649e2a209e6bc1c31c382257e1eaeb31b86')
 options=(!emptydirs !makeflags)
 
 prepare() {
   cd "$srcdir/$pkgname-release-$pkgver"
-  mkdir ../build
+  mkdir -p ../build
   patch -p0 < "$srcdir/ElmerIce.patch"
   patch -p0 < "$srcdir/DCRComplexSolve.patch"
   patch -p1 < "$srcdir/qwt_6.2.patch"
   patch -p0 < "$srcdir/fix_mkl_gomp.patch"
+  patch -p0 < "$srcdir/fix_gettimeofday.patch"
   sed -i '/#include <QPainter>/a #include <QPainterPath>' ElmerGUI/Application/twod/renderarea.cpp
   sed -i 's#mmg/mmg3d/libmmgtypesf.h#mmg/common/libmmgtypesf.h#g' elmerice/Solvers/CalvingRemeshMMG.F90
 }
 
 build() {
+  export CFLAGS="$CFLAGS -std=c17 -Wno-int-conversion"
   cd "$srcdir/build"
   cmake ../$pkgname-release-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -59,7 +63,8 @@ build() {
     -DWITH_MKL=OFF \
     -DWITH_PYTHONQT=OFF \
     -DWITH_QWT=ON \
-    -DOpenGL_GL_PREFERENCE=GLVND
+    -DOpenGL_GL_PREFERENCE=GLVND \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make all
 }
 
