@@ -1,27 +1,27 @@
+# Contributor: 173br <173brian at gmail dot com>
 # Maintainer: Tilmann Meyer <tilmann.meyer@gmx.net>
 
-_target=aarch64-linux-gnu
+pkgname=aarch64-linux-gnu-meson
+pkgver=1
+pkgrel=26
+arch=('any')
+pkgdesc="Meson wrapper for arm64 (aarch64)"
+depends=('meson' 'aarch64-linux-gnu-gcc' 'aarch64-linux-gnu-pkg-config')
+license=("GPL")
+url=""
+source=("toolchain_generator.py"
+        "aarch64-linux-gnu-meson")
+sha256sums=('7124caeeeec6d25a6c677c24b3b7622931065b831509dc5a9a023e9083bd415d'
+            '84f137d44de0dc62acce59095944fe1802e0d647b3848239059fc111cc9117af')
 
-pkgname=$_target-meson
-pkgver=1.0.1
-pkgrel=2
-pkgdesc='A meson wrapper for the ARM64 target'
-arch=(x86_64)
-url='http://fedoraproject.org/wiki/MinGW'
-license=(GPL)
-depends=(meson $_target-gcc $_target-pkg-config $_target-environment qemu-arch-extra)
-makedepends=()
-options=()
-source=(
-  'meson.sh'
-  'toolchain.meson'
-)
-sha256sums=(
-  '39847155adb2118daec62992a456d2a042dcc00d1a7c27402aff7eb1da97f500'
-  '5ebb68b9069548b4998c88d312376271245387d0844357b4c3aa826a933210e1'
-)
+build() {
+  python toolchain_generator.py --output-file toolchain-aarch64-linux-gnu.meson 
+}
 
 package() {
-  install -m 755 -D meson.sh "$pkgdir"/usr/bin/aarch64-linux-gnu-meson
-  install -m 755 -D toolchain.meson "$pkgdir"/usr/share/aarch64/toolchain.meson
+  install -d "${pkgdir}"/usr/bin
+  install -d "${pkgdir}"/usr/share/aarch64
+  install -m 755 "${srcdir}/toolchain_generator.py" "$pkgdir/usr/bin/meson-cross-file-generator"
+  install -m 755 "${srcdir}/aarch64-linux-gnu-meson" "$pkgdir/usr/bin/aarch64-linux-gnu-meson"
+  install -m 644 toolchain-aarch64-linux-gnu.meson "${pkgdir}"/usr/share/aarch64/
 }

@@ -1,0 +1,26 @@
+#!/bin/sh
+
+if [ -z ${CROSS_FILE} ]
+then
+    CROSS_FILE=/usr/share/aarch64/toolchain-aarch64-linux-gnu.meson
+fi
+
+exec meson setup \
+  --prefix         /usr/aarch64-linux-gnu \
+  --libdir         /usr/aarch64-linux-gnu/lib \
+  --libexecdir     /usr/aarch64-linux-gnu/lib \
+  --bindir         /usr/aarch64-linux-gnu/bin \
+  --sbindir        /usr/aarch64-linux-gnu/bin \
+  --includedir     /usr/aarch64-linux-gnu/include \
+  --datadir        /usr/aarch64-linux-gnu/share \
+  --mandir         /usr/aarch64-linux-gnu/share/man \
+  --infodir        /usr/aarch64-linux-gnu/share/info \
+  --localedir      /usr/aarch64-linux-gnu/share/locale \
+  --sysconfdir     /usr/aarch64-linux-gnu/etc \
+  --localstatedir  /var \
+  --sharedstatedir /var/lib \
+  --buildtype      release \
+  --wrap-mode      nofallback \
+  --cross-file ${CROSS_FILE} \
+  --default-library shared \
+  "$@"
