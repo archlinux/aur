@@ -1,0 +1,4 @@
+[package-query]
+source='github'
+github='archlinuxfr/package-query'
+use_max_tag=true
