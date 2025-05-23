@@ -1,0 +1,24 @@
+pkgbase = python-clox
+	pkgdesc = A Geeky Clock for Terminal Enthusiasts
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/sepandhaghighi/clox
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pydocstyle
+	makedepends = bandit
+	makedepends = vulture
+	depends = python
+	depends = python-pytz
+	depends = python-art
+	depends = python-pytz
+	depends = python-jdatetime
+	depends = python-jalali-core
+	source = https://files.pythonhosted.org/packages/source/c/clox/clox-1.1.tar.gz
+	sha256sums = afbdba307f7c3f57d30c81c368514d15bee971f09d29434342b4764b365f0984
+
+pkgname = python-clox
