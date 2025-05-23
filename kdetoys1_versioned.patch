@@ -1,0 +1,269 @@
+diff -aur a/kmoon/CMakeLists.txt b/kmoon/CMakeLists.txt
+--- a/kmoon/CMakeLists.txt	2020-09-27 15:14:56.000000000 +0200
++++ b/kmoon/CMakeLists.txt	2025-05-24 01:12:24.175345646 +0200
+@@ -10,14 +10,14 @@
+ 
+ qt1_wrap_moc(MOC_FILES ${KMOON_MOC})
+ 
+-add_executable(kmoon ${KMOON_SRCS} ${MOC_FILES})
+-target_link_libraries(kmoon
++add_executable(kmoon1 ${KMOON_SRCS} ${MOC_FILES})
++target_link_libraries(kmoon1
+     ${KDE1_KDECORE}
+     ${KDE1_KDEUI}
+     Qt::Qt1
+     ${X11_LIBRARIES}
+ )
+ 
+-install(TARGETS kmoon RUNTIME DESTINATION ${KDE1_BINDIR})
+-install(FILES kmoon.kdelnk DESTINATION ${KDE1_APPSDIR}/Utilities)
+-install_icon(kmoon.xpm)
++install(TARGETS kmoon1 RUNTIME DESTINATION ${KDE1_BINDIR})
++install(FILES kmoon.kdelnk DESTINATION ${KDE1_APPSDIR}/Utilities RENAME kmoon1.kdelnk)
++install(FILES kmoon.xpm DESTINATION ${KDE1_ICONDIR} RENAME kmoon1.xpm)
+diff -aur a/kmoon/kmoon.cpp b/kmoon/kmoon.cpp
+--- a/kmoon/kmoon.cpp	2020-09-27 15:14:56.000000000 +0200
++++ b/kmoon/kmoon.cpp	2025-05-24 01:12:24.175614747 +0200
+@@ -97,7 +97,7 @@
+ 
+     for (int i = 1; i <= 29; i++) {
+ 	QString name;
+-	name.sprintf("%s/kmoon/pics/moon%d.gif",
++	name.sprintf("%s/kmoon1/pics/moon%d.gif",
+ 		     KApplication::kde_datadir().data(),
+ 		     i);
+ 	QImage *p = new QImage(name);
+diff -aur a/kmoon/kmoon.kdelnk b/kmoon/kmoon.kdelnk
+--- a/kmoon/kmoon.kdelnk	2020-09-27 15:14:56.000000000 +0200
++++ b/kmoon/kmoon.kdelnk	2025-05-24 01:14:25.249152458 +0200
+@@ -7,10 +7,10 @@
+ Comment[de]=zeigt die Mondphasen im Kontrollfeld an
+ Comment[es]=Indicador de Fase Lunar
+ Comment[fi]=Kuunvaiheennäyttäjä
+-Comment[fr]=kmoon : Indicateur de phase lunaire
++Comment[fr]=kmoon1 : Indicateur de phase lunaire
+ Comment[hr]=Indikator mjena Mjeseca
+ Comment[hu]=Hold fázis megjelenítõ
+-Comment[is]=kmoon:  Sýna kvartil tunglsins
++Comment[is]=kmoon1:  Sýna kvartil tunglsins
+ Comment[it]=Indicatore di Fasi Lunari
+ Comment[ja]=·î¤Î¤ß¤Á¤«¤±É½¼¨
+ Comment[no]=Månefaseindikator
+@@ -42,6 +42,6 @@
+ Name[ro]=Fazele Lunii
+ Name[ru]=æÁÚÙ ÌÕÎÙ
+ Name[sv]=Månfaser
+-Exec=kmoon
+-Icon=kmoon.xpm
++Exec=kmoon1
++Icon=kmoon1.xpm
+ Type=Application
+diff -aur a/kmoon/pics/CMakeLists.txt b/kmoon/pics/CMakeLists.txt
+--- a/kmoon/pics/CMakeLists.txt	2020-09-27 15:14:56.000000000 +0200
++++ b/kmoon/pics/CMakeLists.txt	2025-05-24 01:12:24.175862336 +0200
+@@ -1,29 +1,29 @@
+-install_icon(moon1.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon2.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon3.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon4.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon5.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon6.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon7.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon8.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon9.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon10.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon11.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon12.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon13.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon14.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon15.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon16.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon17.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon18.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon19.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon20.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon21.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon22.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon23.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon24.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon25.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon26.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon27.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon28.gif "${KDE1_DATADIR}/kmoon/pics")
+-install_icon(moon29.gif "${KDE1_DATADIR}/kmoon/pics")
++install_icon(moon1.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon2.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon3.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon4.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon5.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon6.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon7.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon8.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon9.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon10.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon11.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon12.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon13.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon14.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon15.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon16.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon17.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon18.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon19.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon20.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon21.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon22.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon23.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon24.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon25.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon26.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon27.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon28.gif "${KDE1_DATADIR}/kmoon1/pics")
++install_icon(moon29.gif "${KDE1_DATADIR}/kmoon1/pics")
+diff -aur a/kworldwatch/CMakeLists.txt b/kworldwatch/CMakeLists.txt
+--- a/kworldwatch/CMakeLists.txt	2020-09-27 15:14:56.000000000 +0200
++++ b/kworldwatch/CMakeLists.txt	2025-05-24 01:12:24.176075285 +0200
+@@ -10,14 +10,14 @@
+ 
+ qt1_wrap_moc(MOC_FILES ${KWORLDWATCH_MOC})
+ 
+-add_executable(kworldwatch ${KWORLDWATCH_SRCS} ${MOC_FILES})
+-target_link_libraries(kworldwatch
++add_executable(kworldwatch1 ${KWORLDWATCH_SRCS} ${MOC_FILES})
++target_link_libraries(kworldwatch1
+     ${KDE1_KDECORE}
+     ${KDE1_KDEUI}
+     Qt::Qt1
+     ${X11_LIBRARIES}
+ )
+ 
+-install(TARGETS kworldwatch RUNTIME DESTINATION ${KDE1_BINDIR})
+-install(FILES KWorldWatch.kdelnk DESTINATION ${KDE1_APPSDIR}/Utilities)
+-install_icon(kworldwatch.xpm)
++install(TARGETS kworldwatch1 RUNTIME DESTINATION ${KDE1_BINDIR})
++install(FILES KWorldWatch.kdelnk DESTINATION ${KDE1_APPSDIR}/Utilities RENAME KWorldWatch1.kdelnk)
++install(FILES kworldwatch.xpm DESTINATION ${KDE1_ICONDIR} RENAME kworldwatch.xpm)
+diff -aur a/kworldwatch/KWorldWatch.kdelnk b/kworldwatch/KWorldWatch.kdelnk
+--- a/kworldwatch/KWorldWatch.kdelnk	2020-09-27 15:14:56.000000000 +0200
++++ b/kworldwatch/KWorldWatch.kdelnk	2025-05-24 01:14:25.247822457 +0200
+@@ -26,10 +26,10 @@
+ Comment[de]=KDE Weltzeituhr
+ Comment[es]=Visor Mundial de KDE
+ Comment[fi]=Näyttää kansainvälisen ajan
+-Comment[fr]=kworldwatch : Une horloge avec un planisphère
++Comment[fr]=kworldwatch1 : Une horloge avec un planisphère
+ Comment[hr]=Sat sa zemljovidom svijeta
+ Comment[hu]=Óra, világtérképpel
+-Comment[is]=kworldwatch:  Heimskort og klukka
++Comment[is]=kworldwatch1:  Heimskort og klukka
+ Comment[it]=Un orologio con la mappa del mondo
+ Comment[ja]=À¤³¦ÃÏ¿Þ¤òÉ½¼¨¤¹¤ë»þ·×
+ Comment[no]=En klokke med verdenskart
+@@ -41,6 +41,6 @@
+ Comment[sk]=Hodinky s mapou sveta
+ Comment[sl]=Ura z zemljevidom sveta
+ Comment[sv]=En klocka med världskarta
+-Exec=kworldwatch
+-Icon=kworldwatch.xpm
++Exec=kworldwatch1
++Icon=kworldwatch1.xpm
+ Type=Application
+diff -aur a/kworldwatch/main.cpp b/kworldwatch/main.cpp
+--- a/kworldwatch/main.cpp	2020-09-27 15:14:56.000000000 +0200
++++ b/kworldwatch/main.cpp	2025-05-24 01:12:24.176245420 +0200
+@@ -9,7 +9,7 @@
+ 
+ int main( int argc, char **argv )
+ {
+-  KApplication app(argc, argv, "kworldwatch");
++  KApplication app(argc, argv, "kworldwatch1");
+   TopLevel *toplevel;
+ 
+   if (kapp->isRestored())
+diff -aur a/kworldwatch/pics/CMakeLists.txt b/kworldwatch/pics/CMakeLists.txt
+--- a/kworldwatch/pics/CMakeLists.txt	2020-09-27 15:14:56.000000000 +0200
++++ b/kworldwatch/pics/CMakeLists.txt	2025-05-24 01:12:24.176425402 +0200
+@@ -1,7 +1,7 @@
+-install_icon(flag-blue.xpm "${KDE1_DATADIR}/kworldwatch/pics")
+-install_icon(flag-green.xpm "${KDE1_DATADIR}/kworldwatch/pics")
+-install_icon(flag-yellow.xpm "${KDE1_DATADIR}/kworldwatch/pics")
+-install_icon(flag-red.xpm "${KDE1_DATADIR}/kworldwatch/pics")
+-install_icon(world.gif "${KDE1_DATADIR}/kworldwatch/pics")
+-install_icon(world2.gif "${KDE1_DATADIR}/kworldwatch/pics")
+-install_icon(world_dark.gif "${KDE1_DATADIR}/kworldwatch/pics")
++install_icon(flag-blue.xpm "${KDE1_DATADIR}/kworldwatch1/pics")
++install_icon(flag-green.xpm "${KDE1_DATADIR}/kworldwatch1/pics")
++install_icon(flag-yellow.xpm "${KDE1_DATADIR}/kworldwatch1/pics")
++install_icon(flag-red.xpm "${KDE1_DATADIR}/kworldwatch1/pics")
++install_icon(world.gif "${KDE1_DATADIR}/kworldwatch1/pics")
++install_icon(world2.gif "${KDE1_DATADIR}/kworldwatch1/pics")
++install_icon(world_dark.gif "${KDE1_DATADIR}/kworldwatch1/pics")
+diff -aur a/mouse/CMakeLists.txt b/mouse/CMakeLists.txt
+--- a/mouse/CMakeLists.txt	2020-09-27 15:14:56.000000000 +0200
++++ b/mouse/CMakeLists.txt	2025-05-24 01:12:24.178275376 +0200
+@@ -8,19 +8,19 @@
+ 
+ qt1_wrap_moc(MOC_FILES ${KODO_MOC})
+ 
+-add_executable(kodo ${KODO_SRCS} ${MOC_FILES})
+-target_link_libraries(kodo
++add_executable(kodo1 ${KODO_SRCS} ${MOC_FILES})
++target_link_libraries(kodo1
+     ${KDE1_KDECORE}
+     ${KDE1_KDEUI}
+     Qt::Qt1
+     ${X11_LIBRARIES}
+ )
+ 
+-install(TARGETS kodo RUNTIME DESTINATION ${KDE1_BINDIR})
+-install(FILES kodo.kdelnk DESTINATION ${KDE1_APPSDIR}/Utilities)
+-install_icon(kodo.xpm)
+-install_icon(57-2.gif "${KDE1_DATADIR}/kodo")
++install(TARGETS kodo1 RUNTIME DESTINATION ${KDE1_BINDIR})
++install(FILES kodo.kdelnk DESTINATION ${KDE1_APPSDIR}/Utilities RENAME kodo1.kdelnk)
++install(FILES kodo.xpm DESTINATION ${KDE1_ICONDIR} RENAME kodo1.xpm)
++install_icon(57-2.gif "${KDE1_DATADIR}/kodo1")
+ 
+ install(FILES
+     index.html logotp3.gif guide.gif
+-    DESTINATION ${KDE1_HTMLDIR}/en/kodo )
++    DESTINATION ${KDE1_HTMLDIR}/en/kodo1 )
+diff -aur a/mouse/kodo.cpp b/mouse/kodo.cpp
+--- a/mouse/kodo.cpp	2020-09-27 15:14:56.000000000 +0200
++++ b/mouse/kodo.cpp	2025-05-24 01:12:24.178575137 +0200
+@@ -162,7 +162,7 @@
+ 
+     QString libDir;
+     libDir.setStr(KApplication::kde_datadir().copy());
+-    libDir.append("/kodo/");
++    libDir.append("/kodo1/");
+ 
+     
+     totalLabel=new KImageNumber(libDir+"57-2.gif",this,"Total");    
+diff -aur a/mouse/kodo.kdelnk b/mouse/kodo.kdelnk
+--- a/mouse/kodo.kdelnk	2020-09-27 15:14:56.000000000 +0200
++++ b/mouse/kodo.kdelnk	2025-05-24 01:14:25.248626967 +0200
+@@ -1,18 +1,18 @@
+ # KDE Config File  
+ [KDE Desktop Entry]
+ Type=Application
+-Exec=kodo
+-Icon=kodo.xpm
+-DocPath=kodo/index.html
++Exec=kodo1
++Icon=kodo1.xpm
++DocPath=kodo1/index.html
+ Comment=Measure your Desktop Mileage!
+ Comment[ca]=Mesura el kilometratge de l'escriptori!
+ Comment[da]=Mål farten på din arbejdsplads!
+ Comment[de]=Messen Sie Ihr Tempo auf der Arbeitsfläche!
+ Comment[es]=Mida la longitud de su escritorio!
+ Comment[fi]=Mittaa hiiren kulkema matka
+-Comment[fr]=kodo : Mesurez le kilométrage sur votre bureau !
++Comment[fr]=kodo1 : Mesurez le kilométrage sur votre bureau !
+ Comment[hu]=Megmutatja mennyi utat tesz meg az egérkurzor
+-Comment[is]=kodo:  Mældu hversu mikið þú hreyfir músina!
++Comment[is]=kodo1:  Mældu hversu mikið þú hreyfir músina!
+ Comment[ja]=¥Ç¥¹¥¯¥È¥Ã¥×¾å¤Î°ÜÆ°ÎÌ¤ò·×Â¬
+ Comment[no]=Mål ditt skrivebords kjørelengde!
+ Comment[pl]=Pokazuje ile kilometrów zrobi³e¶ ju¿ myszk±

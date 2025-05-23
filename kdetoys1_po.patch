@@ -1,0 +1,421 @@
+diff -aur a/po/br/kmoon.po b/po/br/kmoon.po
+--- a/po/br/kmoon.po	2025-05-21 01:25:44.771028562 +0200
++++ b/po/br/kmoon.po	2025-05-21 01:45:42.022774634 +0200
+@@ -12,8 +12,8 @@
+ "Last-Translator: Jañ-Mai Drapier <jdrapier@club-internet.fr>\n"
+ "Language-Team: Brezhoneg <Suav.Icb@wanadoo.fr>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=iso8859-1\n"
+-"Content-Transfer-Encoding: 8 bit\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kmoon.cpp:111
+ msgid "About Moon Phase Indicator"
+diff -aur a/po/br/kworldwatch.po b/po/br/kworldwatch.po
+--- a/po/br/kworldwatch.po	2025-05-21 01:25:44.771595011 +0200
++++ b/po/br/kworldwatch.po	2025-05-21 01:45:42.023014026 +0200
+@@ -11,8 +11,8 @@
+ "Last-Translator: Jañ-Mai Drapier <jdrapier@club-internet.fr>\n"
+ "Language-Team: Brezhoneg <Suav.Icb@wanadoo.fr>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=iso8859-1\n"
+-"Content-Transfer-Encoding: 8 bit\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: main.cpp:20
+ msgid "KDE World Wide Watch"
+diff -aur a/po/cs/kmoon.po b/po/cs/kmoon.po
+--- a/po/cs/kmoon.po	2025-05-21 01:25:44.776432745 +0200
++++ b/po/cs/kmoon.po	2025-05-21 01:45:42.023225214 +0200
+@@ -10,8 +10,8 @@
+ "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
+ "Language-Team: czech <flidr@kky.zcu.cz>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=iso8859-2\n"
+-"Content-Transfer-Encoding: 8bit\n"
++"Content-Type: text/plain; charset=iso-8859-2\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kmoon.cpp:111
+ msgid "About Moon Phase Indicator"
+diff -aur a/po/cs/kworldwatch.po b/po/cs/kworldwatch.po
+--- a/po/cs/kworldwatch.po	2025-05-21 01:25:44.777917946 +0200
++++ b/po/cs/kworldwatch.po	2025-05-21 01:45:42.023419360 +0200
+@@ -10,8 +10,8 @@
+ "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
+ "Language-Team: Czech <cs@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=iso8859-2\n"
+-"Content-Transfer-Encoding: 8bit\n"
++"Content-Type: text/plain; charset=iso-8859-2\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: main.cpp:20
+ msgid "KDE World Wide Watch"
+diff -aur a/po/da/kmoon.po b/po/da/kmoon.po
+--- a/po/da/kmoon.po	2025-05-21 01:25:44.781598883 +0200
++++ b/po/da/kmoon.po	2025-05-21 01:45:42.023608947 +0200
+@@ -11,7 +11,7 @@
+ "Language-Team: da <da@li.org>\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=ISO_8859-1\n"
+-"Content-Transfer-Encoding: 8bit\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kmoon.cpp:111
+ msgid "About Moon Phase Indicator"
+diff -aur a/po/da/kworldwatch.po b/po/da/kworldwatch.po
+--- a/po/da/kworldwatch.po	2025-05-21 01:25:44.782783920 +0200
++++ b/po/da/kworldwatch.po	2025-05-21 01:45:42.023802743 +0200
+@@ -11,7 +11,7 @@
+ "Language-Team: da <da@li.org>\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=ISO_8859-1\n"
+-"Content-Transfer-Encoding: 8bit\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: main.cpp:20
+ msgid "KDE World Wide Watch"
+diff -aur a/po/de/kmoon.po b/po/de/kmoon.po
+--- a/po/de/kmoon.po	2025-05-21 01:25:44.786210989 +0200
++++ b/po/de/kmoon.po	2025-05-21 01:45:42.023996528 +0200
+@@ -4,6 +4,9 @@
+ "POT-Creation-Date: 1998-11-16 02:53+0100\n"
+ "PO-Revision-Date: 1998-03-14 17:01+0100\n"
+ "Last-Translator: Stephan Kulow <coolo@kde.org>\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kmoon.cpp:111
+ msgid "About Moon Phase Indicator"
+diff -aur a/po/de/kworldwatch.po b/po/de/kworldwatch.po
+--- a/po/de/kworldwatch.po	2025-05-21 01:25:44.786822783 +0200
++++ b/po/de/kworldwatch.po	2025-05-21 01:45:42.024345346 +0200
+@@ -8,8 +8,8 @@
+ "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
+ "Language-Team: de <LL@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=ISO 8859-1\n"
+-"Content-Transfer-Encoding: 8bit\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: main.cpp:20
+ msgid "KDE World Wide Watch"
+diff -aur a/po/es/kmoon.po b/po/es/kmoon.po
+--- a/po/es/kmoon.po	2025-05-21 01:25:44.790623697 +0200
++++ b/po/es/kmoon.po	2025-05-21 01:45:42.024555272 +0200
+@@ -4,6 +4,9 @@
+ "PO-Revision-Date: 1998-12-07 17:22+0200\n"
+ "Last-Translator: Alonso Lara <jlaram@nexo.es>\n"
+ "First-Translator: Alonso Lara <jlaram@nexo.es>\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kmoon.cpp:111
+ msgid "About Moon Phase Indicator"
+diff -aur a/po/es/kworldwatch.po b/po/es/kworldwatch.po
+--- a/po/es/kworldwatch.po	2025-05-21 01:25:44.792799835 +0200
++++ b/po/es/kworldwatch.po	2025-05-21 01:45:42.024750249 +0200
+@@ -4,6 +4,9 @@
+ "PO-Revision-Date: 1998-12-07 17:26+0200\n"
+ "Last-Translator: Alonso Lara <jlaram@nexo.es>\n"
+ "First-Translator: Alonso Lara <jlaram@nexo.es>\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: main.cpp:20
+ msgid "KDE World Wide Watch"
+diff -aur a/po/fr/kmoon.po b/po/fr/kmoon.po
+--- a/po/fr/kmoon.po	2025-05-21 01:25:44.815162634 +0200
++++ b/po/fr/kmoon.po	2025-05-21 01:45:42.024941129 +0200
+@@ -10,8 +10,8 @@
+ "Last-Translator: Montel laurent <montell@club-internet.fr>\n"
+ "Language-Team: LANGUAGE <LL@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kmoon.cpp:111
+ msgid "About Moon Phase Indicator"
+diff -aur a/po/fr/kworldwatch.po b/po/fr/kworldwatch.po
+--- a/po/fr/kworldwatch.po	2025-05-21 01:25:44.818055294 +0200
++++ b/po/fr/kworldwatch.po	2025-05-21 01:45:42.025132229 +0200
+@@ -10,8 +10,8 @@
+ "Last-Translator: Francois-Xavier Duranceau <Francois-Xavier.Duranceau@loria.fr>\n"
+ "Language-Team: Français <fr@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: main.cpp:20
+ msgid "KDE World Wide Watch"
+diff -aur a/po/hr/kmoon.po b/po/hr/kmoon.po
+--- a/po/hr/kmoon.po	2025-05-21 01:25:44.821526305 +0200
++++ b/po/hr/kmoon.po	2025-05-21 01:45:42.025480125 +0200
+@@ -10,8 +10,8 @@
+ "Last-Translator: Vladimir Vuksan <vuksan@veus.hr>\n"
+ "Language-Team: Croatian\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: iso-8859-2\n"
++"Content-Type: text/plain; charset=iso-8859-2\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kmoon.cpp:111
+ msgid "About Moon Phase Indicator"
+diff -aur a/po/hr/kworldwatch.po b/po/hr/kworldwatch.po
+--- a/po/hr/kworldwatch.po	2025-05-21 01:25:44.822208503 +0200
++++ b/po/hr/kworldwatch.po	2025-05-21 01:45:42.025666637 +0200
+@@ -10,7 +10,7 @@
+ "Language-Team: Croatian <hr@li.org>\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=iso-8859-2\n"
+-"Content-Transfer-Encoding: 8bit\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: main.cpp:20
+ msgid "KDE World Wide Watch"
+diff -aur a/po/is/kmoon.po b/po/is/kmoon.po
+--- a/po/is/kmoon.po	2025-05-21 01:25:44.828300081 +0200
++++ b/po/is/kmoon.po	2025-05-21 01:45:42.025867385 +0200
+@@ -7,6 +7,9 @@
+ "POT-Creation-Date: 1998-11-16 02:53+0100\n"
+ "Last-Translator: Bjarni R. Einarsson <bre@mmedia.is>\n"
+ "Language-Team: is\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kmoon.cpp:111
+ msgid "About Moon Phase Indicator"
+diff -aur a/po/is/kworldwatch.po b/po/is/kworldwatch.po
+--- a/po/is/kworldwatch.po	2025-05-21 01:25:44.829153492 +0200
++++ b/po/is/kworldwatch.po	2025-05-21 01:45:42.026062984 +0200
+@@ -7,6 +7,9 @@
+ "POT-Creation-Date: 1998-11-16 02:53+0100\n"
+ "Last-Translator: Bjarni R. Einarsson <bre@mmedia.is>\n"
+ "Language-Team: is\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: main.cpp:20
+ msgid "KDE World Wide Watch"
+diff -aur a/po/ja/kworldwatch.po b/po/ja/kworldwatch.po
+--- a/po/ja/kworldwatch.po	2025-05-21 01:25:44.836276185 +0200
++++ b/po/ja/kworldwatch.po	2025-05-21 01:45:42.026281166 +0200
+@@ -11,8 +11,8 @@
+ "Last-Translator: Taiki Komoda <tklab@ma6.seikyou.ne.jp>\n"
+ "Language-Team: Japanese <kde-jp@albert.nikkeibp.co.jp>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=8-bit\n"
+-"Content-Transfer-Encoding: euc-jp\n"
++"Content-Type: text/plain; charset=euc-jp\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: main.cpp:20
+ msgid "KDE World Wide Watch"
+diff -aur a/po/no/kmoon.po b/po/no/kmoon.po
+--- a/po/no/kmoon.po	2025-05-21 01:25:44.843875469 +0200
++++ b/po/no/kmoon.po	2025-05-21 01:45:42.026497253 +0200
+@@ -10,8 +10,8 @@
+ "Last-Translator: Svein Olav Aasen <svein.aasen@caa.no>\n"
+ "Language-Team: no <LL@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kmoon.cpp:111
+ msgid "About Moon Phase Indicator"
+diff -aur a/po/no/kworldwatch.po b/po/no/kworldwatch.po
+--- a/po/no/kworldwatch.po	2025-05-21 01:25:44.844916624 +0200
++++ b/po/no/kworldwatch.po	2025-05-21 01:45:42.026721786 +0200
+@@ -10,8 +10,8 @@
+ "Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
+ "Language-Team: no <LL@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=8 bit\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: main.cpp:20
+ msgid "KDE World Wide Watch"
+diff -aur a/po/pt/kmoon.po b/po/pt/kmoon.po
+--- a/po/pt/kmoon.po	2025-05-21 01:25:44.853797687 +0200
++++ b/po/pt/kmoon.po	2025-05-21 01:45:42.026941671 +0200
+@@ -5,9 +5,9 @@
+ "PO-Revision-Date: 1998-03-25 20:00+0000\n"
+ "Last-Translator: Pedro Morais <morais@kde.org>\n"
+ "Language-Team: pt\n"
+-"MIME-Version:\n"
+-"Content-Type:\n"
+-"Content-Transfer-Encoding:\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kmoon.cpp:111
+ msgid "About Moon Phase Indicator"
+diff -aur a/po/pt/kworldwatch.po b/po/pt/kworldwatch.po
+--- a/po/pt/kworldwatch.po	2025-05-21 01:25:44.854487489 +0200
++++ b/po/pt/kworldwatch.po	2025-05-21 01:45:42.027128764 +0200
+@@ -5,9 +5,9 @@
+ "PO-Revision-Date: 1998-11-12 00:00+0000\n"
+ "Last-Translator: Pedro Morais <morais@kde.org>\n"
+ "Language-Team: pt\n"
+-"MIME-Version:\n"
+-"Content-Type:\n"
+-"Content-Transfer-Encoding:\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+  
+ #: main.cpp:20
+ msgid "KDE World Wide Watch"
+diff -aur a/po/pt_BR/kmoon.po b/po/pt_BR/kmoon.po
+--- a/po/pt_BR/kmoon.po	2025-05-21 01:25:44.858433707 +0200
++++ b/po/pt_BR/kmoon.po	2025-05-21 01:45:42.027359028 +0200
+@@ -10,8 +10,8 @@
+ "Last-Translator: Elvis Pfutzenreuter <epx@netville.com.br>\n"
+ "Language-Team:  <LL@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kmoon.cpp:111
+ msgid "About Moon Phase Indicator"
+diff -aur a/po/pt_BR/kworldwatch.po b/po/pt_BR/kworldwatch.po
+--- a/po/pt_BR/kworldwatch.po	2025-05-21 01:25:44.862433754 +0200
++++ b/po/pt_BR/kworldwatch.po	2025-05-21 01:45:42.027572621 +0200
+@@ -10,8 +10,8 @@
+ "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+ "Language-Team: LANGUAGE <LL@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: main.cpp:20
+ msgid "KDE World Wide Watch"
+diff -aur a/po/ro/kworldwatch.po b/po/ro/kworldwatch.po
+--- a/po/ro/kworldwatch.po	2025-05-21 01:25:44.870433847 +0200
++++ b/po/ro/kworldwatch.po	2025-05-21 01:45:42.027771145 +0200
+@@ -12,8 +12,8 @@
+ "Last-Translator: Paul Ionescu <ipaul@romsys.ro>\n"
+ "Language-Team: Romanian <ro@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=iso-8859-2\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ "X-Generator: KTranslator v 0.4.0"
+ 
+ #: main.cpp:20
+diff -aur a/po/sk/kmoon.po b/po/sk/kmoon.po
+--- a/po/sk/kmoon.po	2025-05-21 01:25:44.880220419 +0200
++++ b/po/sk/kmoon.po	2025-05-21 01:45:42.027960412 +0200
+@@ -10,8 +10,8 @@
+ "Last-Translator: Peter Ivanyi <ivanyi@internet.sk>Language-Team: Slovak "
+ "<bednar@isternet.sk>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kmoon.cpp:111
+ msgid "About Moon Phase Indicator"
+diff -aur a/po/sk/kworldwatch.po b/po/sk/kworldwatch.po
+--- a/po/sk/kworldwatch.po	2025-05-21 01:25:44.880999980 +0200
++++ b/po/sk/kworldwatch.po	2025-05-21 01:45:42.028155540 +0200
+@@ -11,7 +11,7 @@
+ "Language-Team: Slovak <sk@li.org>\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=iso-8859-2\n"
+-"Content-Transfer-Encoding: 8bit\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: main.cpp:20
+ msgid "KDE World Wide Watch"
+diff -aur a/po/sl/kmoon.po b/po/sl/kmoon.po
+--- a/po/sl/kmoon.po	2025-05-21 01:25:44.883705978 +0200
++++ b/po/sl/kmoon.po	2025-05-21 01:45:42.028367219 +0200
+@@ -12,7 +12,7 @@
+ "Language-Team: Slovenian <ftp://ftp.lugos.si/pub/lugos/localization/kde-sl>\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=iso-8859-2\n"
+-"Content-Transfer-Encoding: 8bit\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kmoon.cpp:111
+ msgid "About Moon Phase Indicator"
+diff -aur a/po/sl/kworldwatch.po b/po/sl/kworldwatch.po
+--- a/po/sl/kworldwatch.po	2025-05-21 01:25:44.884436897 +0200
++++ b/po/sl/kworldwatch.po	2025-05-21 01:45:42.028543611 +0200
+@@ -12,7 +12,7 @@
+ "Language-Team: Slovenian <ftp://ftp.lugos.si/pub/lugos/localization/kde-sl>\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=iso-8859-2\n"
+-"Content-Transfer-Encoding: 8bit\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: main.cpp:20
+ msgid "KDE World Wide Watch"
+diff -aur a/po/sv/kmoon.po b/po/sv/kmoon.po
+--- a/po/sv/kmoon.po	2025-05-21 01:25:44.889042921 +0200
++++ b/po/sv/kmoon.po	2025-05-21 01:45:42.028739110 +0200
+@@ -10,8 +10,8 @@
+ "Last-Translator: Karl Backström <backstrom@kde.org>\n"
+ "Language-Team: Sv <LL@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kmoon.cpp:111
+ msgid "About Moon Phase Indicator"
+diff -aur a/po/sv/kworldwatch.po b/po/sv/kworldwatch.po
+--- a/po/sv/kworldwatch.po	2025-05-21 01:25:44.889871255 +0200
++++ b/po/sv/kworldwatch.po	2025-05-21 01:45:42.028937294 +0200
+@@ -10,8 +10,8 @@
+ "Last-Translator: Karl Backström <backstrom@kde.org>\n"
+ "Language-Team: Sv <LL@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: main.cpp:20
+ msgid "KDE World Wide Watch"
+diff -aur a/po/zh_CN.GB2312/kmoon.po b/po/zh_CN.GB2312/kmoon.po
+--- a/po/zh_CN.GB2312/kmoon.po	2025-05-21 01:25:44.895697071 +0200
++++ b/po/zh_CN.GB2312/kmoon.po	2025-05-21 01:46:13.376105875 +0200
+@@ -10,8 +10,8 @@
+ "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
+ "Language-Team: zh_CN (gb2312)\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=gb2312\n"
++"Content-Transfer-Encoding: 8-bit\n"
+ 
+ #: kmoon.cpp:111
+ msgid "About Moon Phase Indicator"
