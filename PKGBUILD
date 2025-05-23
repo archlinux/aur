@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=orca-slicer-git
-pkgver=2.3.1.r25067.c6b8664
+pkgver=2.3.1.r25068.00277ac
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('AGPL-3.0-only')
 depends=('bash' 'cairo' 'dbus' 'expat' 'fontconfig' 'freetype2' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 
          'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libglvnd' 'libjpeg-turbo' 
          'libspnav' 'libx11' 'pango' 'python' 'wayland' 'webkit2gtk-4.1' 'zlib')
-makedepends=('cmake' 'extra-cmake-modules' 'gcc14' 'gcc14-libs' 'git' 'glew' 'libigl' 'm4' 'ninja' 'pkgconf' 'wayland-protocols')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'glew' 'libigl' 'm4' 'ninja' 'pkgconf' 'wayland-protocols')
 optdepends=('mesa: Enables Zink fallback workaround for NVIDIA on Wayland'
             'mesa-utils: for detecting renderer'
             'nvidia-utils: for querying driver version')
@@ -43,10 +43,7 @@ prepare() {
 
 build() {
   cd $pkgname
-  export CXXFLAGS="${CXXFLAGS} -flto"
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
-  export CC=/usr/bin/gcc-14
-  export CXX=/usr/bin/g++-14
   
   cmake \
     -G Ninja \
