@@ -10,6 +10,7 @@ _desc="AI Code Editor "
 arch=('aarch64' 'x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor')
+_electron=electron34 # for --printsrcinfo
 depends=('ripgrep' 'xdg-utils' # electron* is added at package()
 		'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 makedepends=('desktop-file-utils')
