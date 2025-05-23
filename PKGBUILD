@@ -5,14 +5,14 @@
 # Contributor: Christoph Reiter <reiter.christoph@gmail.com>
 
 pkgname=quodlibet-git
-pkgver=r11752.7fbd8ce82
+pkgver=r11884.0fa3220d0
 pkgrel=1
 pkgdesc="Music player and music library manager"
 arch=(any)
 url="https://quodlibet.readthedocs.io"
 license=(GPL-2.0-or-later)
 depends=(dbus-python gtk3 libsoup3 python-cairo python-feedparser python-gobject python-mutagen)
-makedepends=(python-build python-installer python-setuptools python-wheel gettext git python-sphinx_rtd_theme)
+makedepends=(python-setuptools gettext git python-sphinx_rtd_theme)
 optdepends=('gst-libav: Extra media codecs for the GStreamer backend'
             'gst-plugins-bad: Extra media codecs for the GStreamer backend; Audio Pitch / Speed, Crossfeed, Submit Acoustic Fingerprints plugins'
             'gst-plugins-base: Default audio backend'
@@ -43,15 +43,17 @@ prepare() {
   cd ${pkgname}
   # Fix zsh completions dir
   sed -e 's|vendor-completions|site-functions|' -i gdist/zsh_completions.py
+  # cleanup before build
+  git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
   cd ${pkgname}
-  python -m build --wheel --no-isolation
+  python setup.py build
 }
 
 package() {
   cd ${pkgname}
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python setup.py install --root="$pkgdir" --optimize=1
   install -vDm 644 {README,NEWS}.rst -t "${pkgdir}"/usr/share/doc/${pkgname}
 }
