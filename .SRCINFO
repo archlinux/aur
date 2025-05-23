@@ -1,6 +1,6 @@
 pkgbase = gallery-dl
 	pkgdesc = Command-line program to download image-galleries and collections from several image hosting sites
-	pkgver = 1.29.6
+	pkgver = 1.29.7
 	pkgrel = 1
 	url = https://github.com/mikf/gallery-dl
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = gallery-dl
 	optdepends = python-toml: TOML configuration file support for Python<3.11
 	optdepends = python-secretstorage: GNOME keyring passwords for --cookies-from-browser
 	optdepends = python-psycopg: PostgreSQL support
-	source = git+https://github.com/mikf/gallery-dl.git#tag=v1.29.6?signed
+	source = git+https://github.com/mikf/gallery-dl.git#tag=v1.29.7?signed
 	validpgpkeys = 3E09F5908333DD83DBDCE7375680CA389D365A88
-	sha512sums = dd910576a4999a3099070bc2bd1b634f29a3fd2ac9c8d07d51b1d6cd8111cd2fab8be9b4e395fc843e31f1a836c2182b05875f1b780281d3eddde0a07026a963
+	sha512sums = be64ef0e1c9cef20bf9d980247572a33473026740e31f60475192c8997f525d705dcc0cc162e9ed3cb253b9a4c4733782cdb5731f56c5453d3f2e5ce2ae9c5f0
 
 pkgname = gallery-dl
