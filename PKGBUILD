@@ -1,13 +1,13 @@
 # Maintainer: Jack Mechem <mechemjack@gmail.com>
 pkgname=midirun
 pkgver=0.2.1.beta
-pkgrel=4
+pkgrel=5
 pkgdesc="Daemon and program to simulate key strokes from midi inputs"
 arch=('x86_64')
 url="https://github.com/JackMechem/midirun"
 license=('MIT')
 options=('!debug')
-depends=('gtkmm-4.0' 'rtmidi' 'systemd' 'tomlplusplus' 'bash')
+depends=('rtmidi' 'systemd' 'tomlplusplus')
 makedepends=('meson' 'ninja' 'git' 'pkgconf')
 source=(
     "git+https://github.com/JackMechem/midirun.git#tag=v0.2.1-beta"
