@@ -1,0 +1,11 @@
+--- a/build.zig.zon
++++ b/build.zig.zon
+@@ -10,7 +10,7 @@
+         },
+         .zip = .{
+             .url = "git+https://github.com/marler8997/zipcmdline#3dfca786a489d117e4b72ea10ffb4bbd9fc2dd72",
+-            .hash = "12201a08d7eff7619c8eb8284691a3ff959861b4bdd87216f180ed136672fb4ea26f",
++            .hash = "zipcmdline-0.0.0-AAAAAKBaAAAaCNfv92GcjrgoRpGj_5WYYbS92HIW8YDt",
+         },
+     },
+     .paths = .{

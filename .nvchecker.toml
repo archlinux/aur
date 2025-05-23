@@ -1,0 +1,4 @@
+[anyzig]
+source = "git"
+git = "https://github.com/marler8997/anyzig.git"
+prefix = "v"
