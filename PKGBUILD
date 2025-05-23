@@ -1,7 +1,7 @@
 # Maintainer: Jack Mechem <mechemjack@gmail.com>
 pkgname=midirun
 pkgver=0.2.1.beta
-pkgrel=2
+pkgrel=3
 pkgdesc="Daemon and program to simulate key strokes from midi inputs"
 arch=('x86_64')
 url="https://github.com/JackMechem/midirun"
@@ -10,15 +10,18 @@ options=('!debug')
 depends=('gtkmm-4.0' 'rtmidi' 'systemd' 'tomlplusplus' 'bash')
 makedepends=('meson' 'ninja' 'git' 'pkgconf')
 source=(
-  "git+https://github.com/JackMechem/midirun.git"
-  "99-midirun-uinput.rules"
-  "99-midirun-uinput.hook"
-  "udevadm-control-trigger"
+    "git+https://github.com/JackMechem/midirun.git#tag=v0.2.1-beta"
+    "99-midirun-uinput.rules"
+    "99-midirun-uinput.hook"
+    "udevadm-control-trigger"
+    "midirun.install"
 )
+install=midirun.install
 md5sums=('SKIP'
-         'ac0a9f1727380523b655448f1c34f5f2'
-         '15832357c3ce0f45997ddcd329052954'
-         '51d20ccd440519405ed7a25a5bcf444e')
+     'ac0a9f1727380523b655448f1c34f5f2'
+     '15832357c3ce0f45997ddcd329052954'
+     '51d20ccd440519405ed7a25a5bcf444e'
+     '6447bf182d41f620a95d3c4ece3d01f7')
 build() {
     cd "$srcdir/$pkgname"
     meson setup build --prefix=/usr --buildtype=release
