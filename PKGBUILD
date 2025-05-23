@@ -19,7 +19,7 @@ source+=(
   'beszel-agent.tmpfiles'
   'beszel-agent.conf.example'
 )
-sha256sums=('8fb68253d5ec6aeaf6750d3fedd77b031ad181af79cc490edb0977da8adf8280'
+sha256sums=('a6c4b7aa094a1399d4dbaebb001ff4dff0c9448b0a51bab9ce1822eabdc170d5'
             '03f82109a98648c49417c3e0dd3990ae56e6010b33c7fc9c8e0263c80f090f69'
             '823448a308c7329431ae713ab98a5c8cea2a00528177f3d31aa3f5eb6c4a751e'
             '4b3c437ac2d8d61622ad23cd69977c23f3e7b9c74613c5dcabd96a37e7cc5b3a')
