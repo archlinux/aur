@@ -3,14 +3,14 @@
 
 _prjname=edit
 pkgname=microsoft-${_prjname}-git
-pkgver=1.0.0.r1.ge8d40f6
-pkgrel=2
+pkgver=1.0.0.r32.g1cbb4cb
+pkgrel=3
 pkgdesc="Modern version of the MS-DOS Editor with a modern UI and keybindings similar to VS Code"
 arch=("x86_64" "aarch64")
-url="https://git.staropensource.de/JeremyStarTM/aur-${pkgname}"
-license=("GPL-3.0-or-later")
+url="https://github.com/microsoft/${_prjname}"
+license=("MIT")
 sha512sums=("SKIP")
-source=("git+https://github.com/microsoft/${_prjname}.git")
+source=("git+${url}.git")
 makedepends=("cargo"
              "git")
 conflicts=("microsoft-edit")
