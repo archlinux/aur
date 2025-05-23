@@ -59,7 +59,7 @@ build() {
 
 check() {
     cd asf
-    dotnet test ArchiSteamFarm.Tests $DOTNET_FLAGS
+    dotnet test ArchiSteamFarm.Tests --filter TestCategory!=Manual $DOTNET_FLAGS
 }
 
 package_asf-plugin-steamtokendumper() {
