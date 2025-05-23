@@ -4,7 +4,7 @@
 # Contributor: Gionn <me[at]gionn[dot]net>
 
 pkgname=upnp-router-control
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="A GTK application to access the parameters of the router exposed via UPnP-IGD."
 url="https://gitlab.gnome.org/DnaX/upnp-router-control"
@@ -14,7 +14,7 @@ depends=('gtk3' 'gupnp')
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('e6b12a25bb736f0aceff0c8a5f2722184b36e3ae39159101da435d51972d2210')
+sha256sums=('2950135af7e39ec10079d28be46f36163138e71fb9db5e211d4181a44c982798')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
