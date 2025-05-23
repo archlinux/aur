@@ -1,7 +1,7 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=snagboot
-pkgver=2.0
+pkgver=2.3
 pkgrel=1
 pkgdesc='Generic recovery and reflashing tool for embedded platforms'
 arch=(any)
@@ -26,7 +26,7 @@ makedepends=('python-build'
 install=$pkgname.install
 source=("$url/archive/v$pkgver.tar.gz"
         $pkgname.sysusers)
-b2sums=('b9351ada40812b2ed3b16ba0bc256e1d32977bd9ca16aa23a7a5bc6f4f1f65c48d9587c74257a07796d38a9049ffcfdb2ae9b3448cf0eedb7c269af2c91e2d8b'
+b2sums=('57a678fef73e75736952ebdd84c86f4bed55c618aeedf30bdf832dff057019509904a41984e130445e7724789e3c2aa1535000dd15f0d5793f0e2c0b0e0d5945'
         'f48705e2a98ec318e26a4a1f01bafabbd8ab74622c7209be9cbae34bb0ccc999d6581b0fa5c827ab7a8bd41d6f32d32c4a2ed642342279308362953018843138')
 
 build() {
