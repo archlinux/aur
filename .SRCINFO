@@ -12,6 +12,6 @@ pkgbase = bp-test123
 	depends = hyprpaper
 	options = !debug
 	source = blaadpapers=-0.0.1.tar.gz::https://github.com/Blaadick/BlaadPapers/archive/refs/tags/v0.0.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = 84e87805f8c10a2dd2af3118b3aa86a2f2c0f2bed6d88eaf71ea44d4009b05e0
 
 pkgname = bp-test123
