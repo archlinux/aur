@@ -1,6 +1,6 @@
 pkgbase = mkdocstrings-python-legacy
 	pkgdesc = A legacy Python handler for mkdocstrings
-	pkgver = 0.2.4
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://mkdocstrings.github.io/python-legacy
 	arch = any
@@ -12,12 +12,12 @@ pkgbase = mkdocstrings-python-legacy
 	makedepends = python-pdm-backend
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/m/mkdocstrings_python_legacy/mkdocstrings_python_legacy-0.2.4.tar.gz
-	sha256sums = 36d160ac7af5a3cec764eeb66522f42a116088a41289e04372592b91e14abbbc
+	source = https://files.pythonhosted.org/packages/source/m/mkdocstrings_python_legacy/mkdocstrings_python_legacy-0.2.7.tar.gz
+	sha256sums = 1aa8a277a332fb0d49be3786de3fa18af7d8792e8d611f6ba8d550dc3a1ff8a1
 
 pkgname = mkdocstrings-python-legacy
-	depends = python>=3.8
-	depends = mkdocstrings>=0.19
+	depends = python>=3.9
+	depends = mkdocstrings>=0.28.3
 	depends = mkdocs-autorefs>=1.1
 	depends = python-pytkdocs>=0.14
 	conflicts = python-mkdocstrings-python
