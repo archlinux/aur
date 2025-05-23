@@ -1,7 +1,7 @@
 pkgbase = mercury-mapper
 	pkgdesc = A chart editor for Mercury. "Forked" from BAKKA-Avalonia, re-written for stability and ease of use. (Patched for better use of config folders.)
 	pkgver = 4.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Yasu3D/MercuryMapper
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = mercury-mapper
 	makedepends = dotnet-sdk
 	depends = libgl
 	depends = dotnet-runtime
+	depends = libbass
 	provides = mercury-mapper
 	conflicts = mercury-mapper-bin
 	source = mercury-mapper-4.0.8.tar.gz::https://github.com/Yasu3D/MercuryMapper/archive/refs/tags/v4.0.8.tar.gz
