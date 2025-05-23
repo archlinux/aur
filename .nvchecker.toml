@@ -1,0 +1,5 @@
+[python-earthpy]
+source = "github"
+github = "earthlab/earthpy"
+use_latest_release = "true"
+prefix = "v"
