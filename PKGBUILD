@@ -12,14 +12,14 @@
 
 _qt_module=qtmultimedia
 pkgname=mingw-w64-qt5-multimedia
-pkgver=5.15.16
+pkgver=5.15.17
 pkgrel=1
 arch=('any')
 pkgdesc='Classes for audio, video, radio and camera functionality (mingw-w64)'
 depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-declarative')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=b7c7ff4ab8c0f43a03de51a76867aae691411410
+_commit=d342547886448dacf38d2933cd40322c7435ee86
 _basever=${pkgver%%+*}
 pkgver+=+kde+r2
 makedepends+=('git')
@@ -31,7 +31,7 @@ source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         '0001-Recorder-includes-to-prevent-conflict-with-vsnprintf.patch'
         '0002-Fix-build-with-ANGLE.patch'
         '0003-Workaround-multiple-definition-errors-with-amstrmid-.patch')
-sha256sums=('5bafd568b24914a7665c5b317b48da980b91f126035a02b99528fed0733f5ff9'
+sha256sums=('2db3af11044bd1dad5682afc8126b667c754cd75370271175730714b8ee57925'
             '36bbaf9842fb930b4f17ae7ad2349b5dc9216492caeb7292f54d8fd7c0d66399'
             'b733514a287d915d74ddbbb901b2fae1a0c169becbadaf9bb63738392e383064'
             '5ba3a72643af5e16b9f51ac9e5317d2f7e41dcb177f2201ac38ef0d0cd9a66e5')
