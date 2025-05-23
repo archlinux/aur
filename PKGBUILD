@@ -1,7 +1,7 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 # Contributor: Piggy NL <piggynl@outlook.com>
 pkgname=lalrpop
-pkgver=0.22.1
+pkgver=0.22.2
 pkgrel=1
 pkgdesc="LR(1) parser generator for Rust"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(Apache MIT)
 depends=(gcc-libs)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('e252b412dd095046b7ae5d4ed78e7247b0706f3ea259f64f8f55bee8aa6e8794')
+sha256sums=('6112834d60ebe1f32faa651b3b111d783e5a5f2a4d3b1cc53893527f69774c9b')
 
 prepare() {
   cd $pkgname-$pkgver
