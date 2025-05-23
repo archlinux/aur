@@ -1,0 +1,14 @@
+pkgbase = metabeta-git
+	pkgdesc = A simple CLI program to convert between Greek and Beta Code.
+	pkgver = 1.0.r0.gdb3039b
+	pkgrel = 1
+	url = https://gitlab.com/cmmescher/metabeta.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = metabeta
+	conflicts = metabeta
+	source = git+https://gitlab.com/cmmescher/metabeta.git
+	md5sums = SKIP
+
+pkgname = metabeta-git
