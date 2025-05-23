@@ -1,7 +1,7 @@
 pkgbase = midirun-config
 	pkgdesc = TOML configuration genorator for Midirun
 	pkgver = 0.1.2.beta
-	pkgrel = 5
+	pkgrel = 1
 	url = https://github.com/JackMechem/midirun-config
 	install = midirun-config.install
 	arch = x86_64
