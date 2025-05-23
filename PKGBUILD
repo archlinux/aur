@@ -1,7 +1,7 @@
 # Maintainer: Vitaliy VVS Star <vitaliy <dot> star <at> Gmail-DOT-Com>
 
 pkgname=gitlab-ci-local
-pkgver=4.58.0
+pkgver=4.60.0
 pkgrel=1
 pkgdesc="Run gitlab pipelines locally as shell executor or docker executor"
 arch=(any)
@@ -11,10 +11,13 @@ depends=(
   nodejs
   rsync
 )
-makedepends=(npm)
+makedepends=(
+  npm
+  python
+)
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('ad42eac5b9c372675771c718e1dbccf98069cee47cd9c1f89c3f670496d1b7e1')
+sha256sums=('15daec3b5fd57353c3d6e2a334d13f8fe2624d2da118928e0bc96a1060d7ba32')
 
 package() {
   npm install --global \
