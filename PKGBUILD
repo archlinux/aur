@@ -2,7 +2,7 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=kpatch
-pkgver=0.9.9
+pkgver=0.9.10
 pkgrel=1
 pkgdesc='Live kernel patching'
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ url=https://github.com/dynup/kpatch
 license=(GPL2)
 depends=(bash libelf)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha512sums=('2e1fd4ee11cbbe0f0838023e13547a58f352ea7a35e257b651fdcccd04de3ddfc418ae0c658a3fd8c26e43c549ae17df935f28acc0c32f0865831796795a4ca9')
+sha512sums=('d27f0e92d93539cc6ae6137419a99d124e5e2dba8bfbf67d15b0bf89230d2e92584c974ccae6932ce7a02460d73da9d46806e9104ee019ea3c6d3cfe8658be83')
 
 prepare() {
   cd $pkgname-$pkgver
