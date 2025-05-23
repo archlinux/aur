@@ -1,6 +1,6 @@
 pkgbase = python-matadi
 	pkgdesc = Material Definition with Automatic Differentiation
-	pkgver = 0.2.3
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/adtzlr/matadi
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-matadi
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = casadi
-	source = matadi-0.2.3.tar.gz::https://github.com/adtzlr/matadi/archive/v0.2.3.tar.gz
-	sha512sums = 115fc5515959ab511a2f0fe4be0031039a8d9bc7a3aa9a31e593884c96c37519998a229a116052a2fd3d7c3b7ca9e349f48537f8ea49933395f39be862bb157d
+	source = matadi-0.3.1.tar.gz::https://github.com/adtzlr/matadi/archive/v0.3.1.tar.gz
+	sha512sums = 6eb842c936176ecbe824fdc0471b43a77406564d755cd507dfa77e7c242effdac4ca3abf85f5e28870813251f3c4b08ed53d8fa47fd4bfdbaf9f72c1f3940899
 
 pkgname = python-matadi
