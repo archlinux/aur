@@ -1,8 +1,8 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 # Maintainer: Jonas Geiler <aur@jonasgeiler.com>
 pkgname=yaak-beta-bin
-_betaver=16
-pkgver=2025.2.0
+_betaver=2
+pkgver=2025.3.0
 pkgrel=0.${_betaver}
 pkgdesc='Offline and Git friendly API client for HTTP, GraphQL, WebSockets, SSE, and gRPC (Pre-compiled version)'
 arch=(x86_64)
@@ -37,7 +37,7 @@ source_x86_64=(
 	"${pkgname}-${pkgver}-beta.${_betaver}.deb::https://github.com/mountain-loop/yaak/releases/download/v${pkgver}-beta.${_betaver}/yaak_${pkgver}-beta.${_betaver}_amd64.deb"
 	"${pkgname}-${pkgver}.LICENSE::https://raw.githubusercontent.com/mountain-loop/yaak/refs/tags/v${pkgver}-beta.${_betaver}/LICENSE"
 )
-b2sums_x86_64=('540196185e246579a1c6f94cf7bb7db1d4f6beefca5b71c7b064dc8cf694674a247192f4bc57e2c9c69f9f6534f0f0a49ee7dabfc3a0d7c9a9362fcde710ffc9'
+b2sums_x86_64=('45d90c071c6c31f69e34a711307d70d1bb5ae0d094f0cc1579e693ff5c758d905fdc82a177077d6d7cec4ca1d365fe985415f023f19d2ae2bf4e0b88de425a45'
                '011fb406bfe4a8944efbae1f9cfa420fe421f1de3ae628802548676a1fe1318850a5f98c60cd29899efe3946dec329b6607f04917e966808f62f9e4ecaaea13b')
 
 prepare() {
