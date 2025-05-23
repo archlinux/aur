@@ -9,7 +9,7 @@
 
 _pkgname=geany-plugins
 pkgname=$_pkgname-git
-pkgver=2.0.0.r150.ga8aaca94
+pkgver=2.0.0.r154.gd57a11e4
 pkgrel=1
 pkgdesc='Various plugins for Geany (git version)'
 arch=(x86_64)
@@ -21,8 +21,10 @@ depends=(cairo ctpl discount enchant geany-git gdk-pixbuf2 glib2 glibc gpgme
 makedepends=(git intltool python)
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("$_pkgname::git+https://github.com/geany/geany-plugins.git")
-sha256sums=('SKIP')
+source=("$_pkgname::git+https://github.com/geany/geany-plugins.git"
+        'https://github.com/geany/geany-plugins/pull/1434.patch')
+sha256sums=('SKIP'
+            'ecbdf14a8ee752cda4415dc92a8b3ed0756ef804b4ae05292bcab475af4ca2b9')
 
 pkgver() {
   cd $_pkgname
@@ -35,12 +37,8 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-  # adapted commands from 'autogen.sh' to add include path for gettext m4 macros
-  # as workaround for change of 'nls.m4' location in gettext >= 0.35, leading to
-  # "error: possibly undefined macro: AM_NLS"
-  mkdir -p build/cache
-  intltoolize -c -f
-  autoreconf -vfi -I /usr/share/gettext/m4
+  patch -p1 -N -r - -i "$srcdir"/1434.patch
+  ./autogen.sh
 }
 
 build() {
