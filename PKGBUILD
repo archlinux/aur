@@ -2,12 +2,13 @@
 
 pkgname=beszel-agent-bin
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Beszel monitoring agent"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'mips64' 'riscv64')
 url="https://github.com/henrygd/beszel"
 license=('MIT')
 depends=()
+optdepends=('rocm-smi-lib: AMD GPU usage, temperature, and power draw via rocm-smi')
 makedepends=('curl' 'tar')
 provides=('beszel-agent')
 conflicts=('beszel-agent')

@@ -6,6 +6,7 @@ After=network-online.target
 [Service]
 # User-tweakable settings live in /etc/beszel-agent.conf
 EnvironmentFile=-/etc/beszel-agent.conf
+ExecSearchPath=/opt/rocm/bin:/usr/local/sbin:/usr/local/bin:/usr/bin
 
 ExecStart=/opt/beszel-agent/beszel-agent
 User=beszel

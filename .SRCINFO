@@ -1,7 +1,7 @@
 pkgbase = beszel-agent-bin
 	pkgdesc = Beszel monitoring agent
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/henrygd/beszel
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = beszel-agent-bin
 	license = MIT
 	makedepends = curl
 	makedepends = tar
+	optdepends = rocm-smi-lib: AMD GPU usage, temperature, and power draw via rocm-smi
 	provides = beszel-agent
 	conflicts = beszel-agent
 	backup = etc/beszel-agent.conf
