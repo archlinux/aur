@@ -1,0 +1,20 @@
+pkgbase = countryfetch-git
+	pkgdesc = A neofetch-like tool for fetching information about your country (git version)
+	pkgver = 0.1.9.r15.g4b7ceaf
+	pkgrel = 1
+	url = https://github.com/nik-rev/countryfetch
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = openssl
+	provides = countryfetch=0.1.9.r15.g4b7ceaf
+	conflicts = countryfetch
+	source = git+https://github.com/nik-rev/countryfetch.git
+	md5sums = SKIP
+
+pkgname = countryfetch-git

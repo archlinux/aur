@@ -1,0 +1,14 @@
+# Source and package directories
+src/
+pkg/
+
+# Bare Git repository
+countryfetch/
+
+# Archive files
+*.zip
+*.tar.gz
+*.tar.xz
+
+# Package files
+*.pkg.tar.zst
