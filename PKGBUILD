@@ -9,23 +9,23 @@
 
 _qt_module=qtconnectivity
 pkgname=mingw-w64-qt5-connectivity-static
-pkgver=5.15.16
+pkgver=5.15.17
 pkgrel=1
 arch=('any')
 pkgdesc="Provides access to Bluetooth hardware (mingw-w64)"
 depends=('mingw-w64-qt5-base-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-qt5-declarative-static')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=c8a0f0b1f6dd4c63dbc015f63dc6856895e46ba3
+_commit=15961348aa26b73248432a0a274b332c36cd0054
 _basever=${pkgver%%+*}
-pkgver+=+kde+r1
+pkgver+=+kde+r2
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('61240bbb955090b91e0d8094c9aec96b91aa0635fc8f7aae7ef473c76d776ab6')
+sha256sums=('cb9dbca7aaaa873cad2611c7afa5e95a8edb81f3a9622acbabbad8e0145a8149')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
