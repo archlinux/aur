@@ -19,7 +19,7 @@ source=(
 install=midirun-config.install
 md5sums=('a84bb079b8dfe7b8576fba2f232775ae'
          'e762209dded072f5a3a756b12efce890'
-         '42861b0e3e0610fbee5f1c2ed30a93a9'
+         '722e3f658a371145d7e076979c8b7fc8'
          '51d20ccd440519405ed7a25a5bcf444e'
          '6447bf182d41f620a95d3c4ece3d01f7')
 build() {

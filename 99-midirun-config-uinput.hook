@@ -8,5 +8,5 @@ Target = usr/lib/udev/rules.d/99-midirun-config-uinput.rules
 [Action]
 Description = Reload udev rules for midirun
 When = PostTransaction
-Exec = /usr/bin/udevadm-control-trigger
+Exec = /usr/bin/midirun-config-udevadm-control-trigger
 
