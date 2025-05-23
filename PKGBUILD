@@ -5,11 +5,11 @@ _exeName="AssetRipper.GUI.Free"
 
 pkgname=asset-ripper-bin
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI Application to work with engine assets, asset bundles, and serialized files"
 arch=(x86_64 aarch64)
 url="https://github.com/AssetRipper/AssetRipper"
-depends=('gcc-libs' 'dbus' 'glibc' 'qt-sudo' 'webkit2gtk-4.1')
+depends=('gcc-libs' 'dbus' 'glibc' 'webkit2gtk-4.1')
 
 source=("https://raw.githubusercontent.com/AssetRipper/AssetRipper/refs/tags/$pkgver/LICENSE.md"
 	"https://raw.githubusercontent.com/AssetRipper/AssetRipper/refs/tags/$pkgver/Media/Images/LogoReimagined/LogoReimaginedTransparent.png")
@@ -32,6 +32,9 @@ package() {
 	for _file in ${_install_file[@]}; do
 		install -Dm755 "$_file" "$pkgdir/opt/$_pkgname/$_file"
 	done
+	
+	touch "AssetRipper.log"
+	install -Dm666 "AssetRipper.log" "$pkgdir/opt/$_pkgname/AssetRipper.log"
 
 	install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 	install -D LogoReimaginedTransparent.png "$pkgdir/usr/share/icons/$_pkgname.png"
@@ -41,7 +44,7 @@ package() {
 	install -Dm0644 /dev/stdin $pkgdir/usr/share/applications/$_pkgname.desktop <<EOF
 [Desktop Entry]
 Name=Asset Ripper
-Exec=qt-sudo $_pkgname
+Exec=$_pkgname
 Icon=$_pkgname
 Terminal=false
 Type=Application
