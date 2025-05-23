@@ -1,6 +1,6 @@
 pkgbase = mopac
 	pkgdesc = Molecular Orbital PACkage
-	pkgver = 23.1.2
+	pkgver = 23.2
 	pkgrel = 1
 	url = https://github.com/openmopac/mopac
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = mopac
 	provides = mopac
 	conflicts = mopac7
 	replaces = mopac7
-	source = mopac-23.1.2.tar.gz::https://github.com/openmopac/mopac/archive/v23.1.2.tar.gz
-	sha256sums = 60436bbf62045f06f17b4604bf241c8c6359a70a89c41d00913833bf32ea0121
+	source = mopac-23.2.tar.gz::https://github.com/openmopac/mopac/archive/v23.2.tar.gz
+	sha256sums = e88d1519f2841080a70c3a0e5d6ad053f606720d35354fcd56f4b330b0303353
 
 pkgname = mopac

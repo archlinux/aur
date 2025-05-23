@@ -2,7 +2,7 @@
 # Contributor: Wu Junyu <wu DOT junyu DOT aur AT outlook DOT com>
 
 pkgname=mopac
-pkgver=23.1.2
+pkgver=23.2
 pkgrel=1
 pkgdesc='Molecular Orbital PACkage'
 arch=(x86_64)
@@ -15,17 +15,27 @@ provides=(mopac)
 replaces=(mopac7)
 conflicts=(mopac7)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('60436bbf62045f06f17b4604bf241c8c6359a70a89c41d00913833bf32ea0121')
+sha256sums=('e88d1519f2841080a70c3a0e5d6ad053f606720d35354fcd56f4b330b0303353')
 
 build(){
     cd "$pkgname-$pkgver"
-    cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/"
-    cmake --build build $MAKEFLAGS
+    # if FFLAGS is not set, enable -O2 optimization
+    if ! [[ -v FFLAGS ]]; then
+      FFLAGS=-O2
+    fi
+    local options=(
+      -DCMAKE_BUILD_TYPE=None
+      -DCMAKE_INSTALL_PREFIX=/usr
+      -DCMAKE_SKIP_RPATH=ON
+      -DF2003_INTRINSICS=ON
+    )
+    cmake -S. -Bbuild "${options[@]}"
+    cmake --build build
 }
 
 check(){
     cd "$pkgname-$pkgver"
-    ctest --test-dir build $MAKEFLAGS
+    ctest --test-dir build --output-on-failure
 }
 
 package(){

@@ -1,0 +1,5 @@
+[mopac]
+source = "github"
+github = "openmopac/mopac"
+use_latest_release = true
+prefix = "v"
