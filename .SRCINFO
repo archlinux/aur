@@ -1,0 +1,22 @@
+pkgbase = python-ipytest
+	pkgdesc = Unit tests in IPython notebooks
+	pkgver = 0.14.2
+	pkgrel = 1
+	url = https://github.com/chmp/ipytest
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-coverage
+	checkdepends = ipython
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://github.com/chmp/ipytest/archive/refs/tags/v0.14.2.tar.gz
+	md5sums = c6dddc545581058330361bdad3c6fb85
+
+pkgname = python-ipytest
+	depends = python>=3.8
+	depends = python-packaging
+	depends = python-pytest>=5.4
+	depends = ipython
+	optdepends = python-ipytest-doc: Documentation for ipytest
