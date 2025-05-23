@@ -5,12 +5,12 @@ pkgver=20241115
 pkgrel=1
 pkgdesc='即时设计本地字体助手'
 url='https://js.design/'
-arch=('x86_64')
+arch=('aarch64')
 provides=("${pkgname%-bin}")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::https://img.js.design/assets/download/jsDesignAgent.tar.gz"
-               'install.patch')
-b2sums_x86_64=('9916b9f1c7fd91ebae4d11c02a6ff89fe225108949cd492ad7cbecf67e3ab83cf8ae192551408b2e5e96876943d5945542a0136eb9c1147938ab45e7de2542b6'
-               '606e3e218a1a3718e29d2180067414225683d8f0af0a91a9cb3c1d96b71132d56d74f44681ea0b0a4d4a576e56560ddb3fabeca1d9c572b71668d40f1c5e0de7')
+source=('install.patch')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::https://img.js.design/assets/download/jsDesignAgent.tar.gz")
+b2sums=('606e3e218a1a3718e29d2180067414225683d8f0af0a91a9cb3c1d96b71132d56d74f44681ea0b0a4d4a576e56560ddb3fabeca1d9c572b71668d40f1c5e0de7')
+b2sums_aarch64=('9916b9f1c7fd91ebae4d11c02a6ff89fe225108949cd492ad7cbecf67e3ab83cf8ae192551408b2e5e96876943d5945542a0136eb9c1147938ab45e7de2542b6')
 depends=('fontconfig')
 
 prepare() {

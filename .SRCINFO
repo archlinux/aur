@@ -3,12 +3,12 @@ pkgbase = js-design-agent-bin
 	pkgver = 20241115
 	pkgrel = 1
 	url = https://js.design/
-	arch = x86_64
+	arch = aarch64
 	depends = fontconfig
 	provides = js-design-agent
-	source_x86_64 = js-design-agent-20241115-x86_64.tar.gz::https://img.js.design/assets/download/jsDesignAgent.tar.gz
-	source_x86_64 = install.patch
-	b2sums_x86_64 = 9916b9f1c7fd91ebae4d11c02a6ff89fe225108949cd492ad7cbecf67e3ab83cf8ae192551408b2e5e96876943d5945542a0136eb9c1147938ab45e7de2542b6
-	b2sums_x86_64 = 306d002fdc01e9793e26d258e6bd12054ede0fb8f0f3e8b9bf2fe53361aba1b6a4463af6fb02735ab6c0ad38b664dc8896f502f6ccb069c065f6bb8c15f22fb5
+	source = install.patch
+	b2sums = 606e3e218a1a3718e29d2180067414225683d8f0af0a91a9cb3c1d96b71132d56d74f44681ea0b0a4d4a576e56560ddb3fabeca1d9c572b71668d40f1c5e0de7
+	source_aarch64 = js-design-agent-20241115-aarch64.tar.gz::https://img.js.design/assets/download/jsDesignAgent.tar.gz
+	b2sums_aarch64 = 9916b9f1c7fd91ebae4d11c02a6ff89fe225108949cd492ad7cbecf67e3ab83cf8ae192551408b2e5e96876943d5945542a0136eb9c1147938ab45e7de2542b6
 
 pkgname = js-design-agent-bin
