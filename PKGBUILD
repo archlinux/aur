@@ -1,6 +1,6 @@
 # Maintainer: sh0rez <me@sh0rez.de>
 pkgname=otel-weaver
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="OpenTelemetry Weaver"
 arch=('aarch64' 'x86_64')
@@ -10,7 +10,7 @@ provides=('weaver')
 conflicts=('weaver')
 source=("https://github.com/open-telemetry/weaver/archive/refs/tags/v$pkgver.tar.gz")
 makedepends=(cargo)
-sha256sums=('a4989ca0325dbd28001b7881df8dacec993b3b7c3360a717a17e792962e6d09e')
+sha256sums=('42fea75164ced80c77138d50bed25e13fb3bc240cff173ea94e355c4eebd681b')
 
 prepare() {
     cd weaver-$pkgver
