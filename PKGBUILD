@@ -3,7 +3,7 @@
 
 pkgname=aarch64-linux-gnu-meson
 pkgver=1
-pkgrel=26
+pkgrel=3
 arch=('any')
 pkgdesc="Meson wrapper for arm64 (aarch64)"
 depends=('meson' 'aarch64-linux-gnu-gcc' 'aarch64-linux-gnu-pkg-config')
