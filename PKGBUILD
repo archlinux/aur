@@ -1,6 +1,6 @@
 # Maintainer: Jack Mechem <mechemjack@gmail.com>
 pkgname=midirun
-pkgver=0.2.0.beta
+pkgver=0.2.1.beta
 pkgrel=1
 pkgdesc="Daemon and program to simulate key strokes from midi inputs"
 arch=('x86_64')
