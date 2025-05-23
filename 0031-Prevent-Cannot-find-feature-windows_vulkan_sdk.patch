@@ -1,4 +1,4 @@
-From df85cf885c2d96a5e39f528330a78c4eec91e77e Mon Sep 17 00:00:00 2001
+From 133c59fcfbd0d9372113ae246355c8bb2ca365e4 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 24 Jun 2019 13:51:02 +0200
 Subject: [PATCH 31/32] Prevent 'Cannot find feature windows_vulkan_sdk'
@@ -33,5 +33,5 @@ index 8475e4111a7..c0eb8faa17d 100644
      LD_USES = $$resolve_depends(LD_USES, QMAKE_DEPENDS_, _LD)
      for (nu, LD_USES) {
 -- 
-2.47.0
+2.49.0
 
