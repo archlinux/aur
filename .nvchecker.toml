@@ -1,0 +1,4 @@
+[guile-cairo]
+source='regex'
+url='https://download.savannah.gnu.org/releases/guile-cairo/'
+regex='guile-cairo-([0-9.]*).tar.gz'
