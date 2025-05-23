@@ -33,8 +33,7 @@ source=("git+https://git.eden-emu.dev/eden-emu/eden#tag=$pkgver-pre-alpha"
 		"git+https://git.eden-emu.dev/eden-emu/zydis.git"  # submodule of dynarmic
 		"git+https://github.com/KhronosGroup/SPIRV-Headers"  # submodule of sirit 
 		"git+https://github.com/eggert/tz.git"  # submdoule of tzdb_to_nx
-		"git+https://github.com/arsenm/sanitizers-cmake" # submodule of cubeb
-		"boost-188.patch")
+		"git+https://github.com/arsenm/sanitizers-cmake") # submodule of cubeb
 		
 # Note: Submodules not needed to build were excluded: enet, libusb, Vulkan-Headers (used system), libadrenotools, breakpad, oboe, oaknut
 
@@ -59,11 +58,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '704a7db84034300f2c4af92a16dc3f167b8f34eb4a8db285e120f679d17028e8')
+            'SKIP')
+#            '704a7db84034300f2c4af92a16dc3f167b8f34eb4a8db285e120f679d17028e8')
 prepare() {
 	cd $pkgname
-	patch -Np1 -i ../boost-188.patch
+	git cherry-pick -n 15fb1f78b34ac84006069b2eeea9a9b6d612be07		# add fix for boost 1.88 until next release
 	for _submodule in opus SDL xbyak cubeb dynarmic simpleini cpp-jwt discord-rpc mbedtls cpp-httplib VulkanMemoryAllocator tzdb_to_nx sirit;
 		do
 		git config submodule.$_submodule.url ../$_submodule

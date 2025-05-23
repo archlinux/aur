@@ -73,7 +73,6 @@ pkgbase = eden
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers
 	source = git+https://github.com/eggert/tz.git
 	source = git+https://github.com/arsenm/sanitizers-cmake
-	source = boost-188.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -96,6 +95,5 @@ pkgbase = eden
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 704a7db84034300f2c4af92a16dc3f167b8f34eb4a8db285e120f679d17028e8
 
 pkgname = eden
