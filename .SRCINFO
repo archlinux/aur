@@ -1,7 +1,7 @@
 pkgbase = sfcgal
 	pkgdesc = Wrapper around the CGAL library that intents to implement 2D and 3D operations on OGC standards models
 	pkgver = 2.1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gitlab.com/Oslandia/SFCGAL
 	arch = i686
 	arch = x86_64
