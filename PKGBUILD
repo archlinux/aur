@@ -4,7 +4,7 @@
 _prjname=edit
 pkgname=microsoft-${_prjname}-git
 pkgver=1.0.0.r32.g1cbb4cb
-pkgrel=3
+pkgrel=4
 pkgdesc="Modern version of the MS-DOS Editor with a modern UI and keybindings similar to VS Code"
 arch=("x86_64" "aarch64")
 url="https://github.com/microsoft/${_prjname}"
@@ -13,7 +13,10 @@ sha512sums=("SKIP")
 source=("git+${url}.git")
 makedepends=("cargo"
              "git")
-conflicts=("microsoft-edit")
+conflicts=("ms-edit"
+           "ms-edit-bin"
+           "ms-edit-git"
+           "microsoft-edit")
 
 # Configure rustup toolchain
 : "${RUSTUP_TOOLCHAIN:="nightly"}"
