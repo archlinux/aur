@@ -2,18 +2,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-devel-size'
-pkgver='0.84'
+pkgver='0.85'
 pkgrel='1'
 pkgdesc="Perl extension for finding the memory usage of Perl variables"
 arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl>=5.005')
 makedepends=()
 url='https://metacpan.org/release/Devel-Size'
 source=("http://search.cpan.org/CPAN/authors/id/N/NW/NWCLARK/Devel-Size-$pkgver.tar.gz")
-md5sums=('4978c07f54a730b16a705e074d7685e3')
-sha512sums=('91dea46352114da3dd2e4f4440b8bb9372c52607f5975370cafb89f5fe9b6c3979a087b5303546f2e59f7abbe67fe6979caf0ac6379c9efd97c3c1a8cf5da160')
+md5sums=('1a7023c3c595a50443f9201a3081a0eb')
+sha512sums=('61507e45850c4fc7f8aea2689801324d1402e1e6aa9ea63495371c1c051e7fea393740ce7420dc6a439d45196a32662a71957685d1b60f0208808543fc6d8b88')
 _distdir="Devel-Size-$pkgver"
 
 build() {
