@@ -1,6 +1,6 @@
 pkgbase = midirun
 	pkgdesc = Daemon and program to simulate key strokes from midi inputs
-	pkgver = 0.2.0.beta
+	pkgver = 0.2.1.beta
 	pkgrel = 1
 	url = https://github.com/JackMechem/midirun
 	arch = x86_64
