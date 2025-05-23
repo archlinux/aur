@@ -22,6 +22,7 @@ pkgbase = code-git
 	provides = vscode
 	conflicts = code
 	conflicts = vscode
+	options = !strip
 	source = vscode::git+https://github.com/microsoft/vscode.git
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.mjs
