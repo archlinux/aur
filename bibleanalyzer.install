@@ -1,0 +1,21 @@
+post_install() {
+    echo ""
+    echo "If BibleAnalyzer fails to launch under Wayland,"
+    echo "try setting this environment variable:"
+    echo "WEBKIT_DISABLE_DMABUF_RENDERER=1"
+    echo ""
+    echo "To test that as a launch command:"
+    echo "WEBKIT_DISABLE_DMABUF_RENDERER=1 python3 -u /opt/bibleanalyzer/ba-run.py"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "If BibleAnalyzer fails to launch under Wayland,"
+    echo "try setting this environment variable:"
+    echo "WEBKIT_DISABLE_DMABUF_RENDERER=1"
+    echo ""
+    echo "To test that as a launch command:"
+    echo "WEBKIT_DISABLE_DMABUF_RENDERER=1 python3 -u /opt/bibleanalyzer/ba-run.py"
+    echo ""
+}

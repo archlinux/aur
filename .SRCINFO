@@ -1,8 +1,9 @@
 pkgbase = bibleanalyzer
 	pkgdesc = Bible Analyzer - A FREE Bible Study Solution
-	pkgver = 5.6.1
-	pkgrel = 2
+	pkgver = 5.6.5
+	pkgrel = 1
 	url = http://www.bibleanalyzer.com
+	install = bibleanalyzer.install
 	arch = any
 	license = Custon:bibleanalyzer
 	depends = python
@@ -13,7 +14,7 @@ pkgbase = bibleanalyzer
 	depends = python-pillow
 	depends = python-espeak
 	depends = webkit2gtk-4.1
-	source = https://www.bibleanalyzer.com/bibleanalyzer_5.6.1_all.deb
-	sha256sums = e260714821d34a5a262f20ffcaa79acc8f89e7347a99b97124f603c10aaa635d
+	source = https://www.bibleanalyzer.com/bibleanalyzer_5.6.5_all.deb
+	sha256sums = b29be6abf0b0e24bfb48cbfd50b7b9e98fbdc5445ee0419c5f09f7f7da8f7502
 
 pkgname = bibleanalyzer
