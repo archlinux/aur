@@ -1,7 +1,7 @@
 # Maintainer: Jack Mechem <mechemjack@gmail.com>
 pkgname=midirun-config
 pkgver=0.1.1.beta
-pkgrel=4
+pkgrel=5
 pkgdesc="TOML configuration genorator for Midirun"
 arch=('x86_64')
 url="https://github.com/JackMechem/midirun-config"
