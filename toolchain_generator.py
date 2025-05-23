@@ -8,7 +8,7 @@ class CrossFileGenerator:
     def __init__(self, output_file):
         self.arch = "aarch64-linux-gnu"
         self.output_file = output_file
-        self.cflags = "D_FORTIFY_SOURCE=3 -D_GLIBCXX_ASSERTIONS -O2 -pipe -fexceptions --param=ssp-buffer-size=4 -Wformat -Werror=format-security"
+        self.cflags = "-D_FORTIFY_SOURCE=3 -D_GLIBCXX_ASSERTIONS -O2 -pipe -fexceptions --param=ssp-buffer-size=4 -Wformat -Werror=format-security"
         self.cxxflags = "-D_FORTIFY_SOURCE=3 -D_GLIBCXX_ASSERTIONS -O2 -pipe -fexceptions --param=ssp-buffer-size=4 -Wformat -Werror=format-security"
         self.ldflags = "-Wl,-O1,--sort-common,--as-needed -fstack-protector"
 

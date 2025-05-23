@@ -3,7 +3,7 @@
 
 pkgname=aarch64-linux-gnu-meson
 pkgver=1
-pkgrel=6
+pkgrel=7
 arch=('any')
 pkgdesc="Meson wrapper for arm64 (aarch64)"
 depends=('meson' 'aarch64-linux-gnu-gcc' 'aarch64-linux-gnu-pkg-config')
@@ -11,7 +11,7 @@ license=("GPL")
 url=""
 source=("toolchain_generator.py"
         "aarch64-linux-gnu-meson")
-sha256sums=('59c2ec2d5568d3389146110261e972a61904c481052000d15bca4ab25ef7a984'
+sha256sums=('ca0a6f41c1839aeec1c6b010025e49a5b43924ded7e86f93dfea45eb82197665'
             '84f137d44de0dc62acce59095944fe1802e0d647b3848239059fc111cc9117af')
 
 build() {
