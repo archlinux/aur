@@ -10,7 +10,9 @@ depends=()
 makedepends=('python>=3.11' 'python-pipenv' 'git')
 optdepends=('xclip: clipboard support on X11'
             'wl-clipboard: clipboard support on Wayland'
-            'aspell: spellchecking')
+            'aspell: spellchecking'
+            'yt-dlp: youtube support'
+            'mpv: youtube in native player')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
