@@ -2,7 +2,7 @@
 
 _pkgname="piglit"
 pkgname="${_pkgname}-git"
-pkgver=r11905.7aa7bc1b0
+pkgver=r12040.1767af745
 pkgrel=1
 pkgdesc="OpenGL implementation testing suite. Provides a simple means to perform regression tests."
 arch=('i686' 'x86_64')
