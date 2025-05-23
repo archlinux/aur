@@ -2,12 +2,12 @@
 
 pkgname=mercury-mapper
 pkgver="4.0.8"
-pkgrel=3
+pkgrel=4
 pkgdesc="A chart editor for Mercury. \"Forked\" from BAKKA-Avalonia, re-written for stability and ease of use. (Patched for better use of config folders.)"
 arch=('x86_64')
 url="https://github.com/Yasu3D/MercuryMapper"
 license=('MIT')
-depends=(libgl dotnet-runtime libbass)
+depends=(libgl dotnet-runtime libbass libbassflac libbassopus)
 makedepends=(dotnet-runtime dotnet-sdk)
 provides=(mercury-mapper)
 conflicts=(mercury-mapper-bin)
