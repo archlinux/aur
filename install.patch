@@ -1,0 +1,49 @@
+diff --git a/install.sh b/install.sh
+index 67ba471..396d1b0 100644
+--- a/install.sh
++++ b/install.sh
+@@ -1,9 +1,9 @@
+ #!/usr/bin/env bash
+ 
+ appName=jsDesignAgent
+-appPath=/usr/local/bin/${appName}
++appPath=/usr/bin
+ serviceName=${appName}.service
+-servicePath=/lib/systemd/system/${serviceName}
++servicePath=${serviceName}
+ 
+ # 用户未安装fontconfig，就提醒安装
+ echoErrMsg() {
+@@ -32,10 +32,10 @@ EOF
+ exit 1
+ }
+ 
+-type fc-list >/dev/null 2>&1 || echoErrMsg
++# type fc-list >/dev/null 2>&1 || echoErrMsg
+ 
+-mkdir ${appPath}
+-cp ${appName} ${appPath}
++# mkdir ${appPath}
++# cp ${appName} ${appPath}
+ 
+ cat>"${servicePath}"<<EOF
+ [Unit]
+@@ -43,7 +43,7 @@ Description=jsDesignAgent for Access local fonts
+ After=network.target
+ StartLimitIntervalSec=0
+ [Service]
+-User=${USER}
++User=js-design-agent
+ Type=simple
+ Restart=always
+ RestartSec=1
+@@ -54,7 +54,7 @@ WantedBy=multi-user.target
+ EOF
+ 
+ # 启动程序
+-systemctl start ${serviceName}
++# systemctl start ${serviceName}
+ 
+ # 开机自启
+-systemctl enable ${serviceName}
++# systemctl enable ${serviceName}
