@@ -11,7 +11,7 @@
 
 _qt_module=qtwebglplugin
 pkgname=mingw-w64-qt5-webglplugin-static
-pkgver=5.15.16
+pkgver=5.15.17
 pkgrel=1
 arch=('any')
 pkgdesc="QPA plugin for running an application via a browser using streamed WebGL commands (mingw-w64)"
