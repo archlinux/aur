@@ -10,7 +10,7 @@
 
 _qt_module=qtserialbus
 pkgname=mingw-w64-qt5-serialbus
-pkgver=5.15.16
+pkgver=5.15.17
 pkgrel=1
 arch=('any')
 pkgdesc="Qt module for general purpose serial bus access (mingw-w64)"
