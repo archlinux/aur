@@ -1,8 +1,8 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=angie-mod-modsecurity
-pkgver=1.0.3
-pkgrel=9
+pkgver=1.0.4
+pkgrel=1
 pkgdesc='ModSecurity v3 Nginx Connector (module for angie)'
 arch=('x86_64')
 depends=('angie' 'libmodsecurity')
@@ -18,7 +18,7 @@ source=(
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8'  # Maxim Dounin <mdounin@mdounin.ru>
               '190EFACCA1E9FA466A8ECD9CE6DFB08CE8B11277' # Felipe Zimmerle
               'F126692E9BA86B3958E73ED2F2FC4E45883BCBA4') # Martin Vierula
-sha256sums=('ae811c7208ac029cb7a99d6f63e03d3971797607517187f47620df39c1f78add'
+sha256sums=('6bdc7570911be884c1e43aaf85046137f9fde0cfa0dd4a55b853c81c45a13313'
             'SKIP'
             'cea771735e2d658040018566c2af55429f0a190d7faf7795983d71c4e7acf2fc'
             'd9e164c508218202eba13d37cf661baacb8600706e618ce93ccc91c74c51449e')
