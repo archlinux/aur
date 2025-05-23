@@ -1,6 +1,6 @@
 diff -aur a/kmoon/CMakeLists.txt b/kmoon/CMakeLists.txt
 --- a/kmoon/CMakeLists.txt	2020-09-27 15:14:56.000000000 +0200
-+++ b/kmoon/CMakeLists.txt	2025-05-24 01:12:24.175345646 +0200
++++ b/kmoon/CMakeLists.txt	2025-05-24 01:26:19.312109790 +0200
 @@ -10,14 +10,14 @@
  
  qt1_wrap_moc(MOC_FILES ${KMOON_MOC})
@@ -23,7 +23,7 @@ diff -aur a/kmoon/CMakeLists.txt b/kmoon/CMakeLists.txt
 +install(FILES kmoon.xpm DESTINATION ${KDE1_ICONDIR} RENAME kmoon1.xpm)
 diff -aur a/kmoon/kmoon.cpp b/kmoon/kmoon.cpp
 --- a/kmoon/kmoon.cpp	2020-09-27 15:14:56.000000000 +0200
-+++ b/kmoon/kmoon.cpp	2025-05-24 01:12:24.175614747 +0200
++++ b/kmoon/kmoon.cpp	2025-05-24 01:26:19.312379380 +0200
 @@ -97,7 +97,7 @@
  
      for (int i = 1; i <= 29; i++) {
@@ -35,7 +35,7 @@ diff -aur a/kmoon/kmoon.cpp b/kmoon/kmoon.cpp
  	QImage *p = new QImage(name);
 diff -aur a/kmoon/kmoon.kdelnk b/kmoon/kmoon.kdelnk
 --- a/kmoon/kmoon.kdelnk	2020-09-27 15:14:56.000000000 +0200
-+++ b/kmoon/kmoon.kdelnk	2025-05-24 01:14:25.249152458 +0200
++++ b/kmoon/kmoon.kdelnk	2025-05-24 01:26:19.312582340 +0200
 @@ -7,10 +7,10 @@
  Comment[de]=zeigt die Mondphasen im Kontrollfeld an
  Comment[es]=Indicador de Fase Lunar
@@ -60,7 +60,7 @@ diff -aur a/kmoon/kmoon.kdelnk b/kmoon/kmoon.kdelnk
  Type=Application
 diff -aur a/kmoon/pics/CMakeLists.txt b/kmoon/pics/CMakeLists.txt
 --- a/kmoon/pics/CMakeLists.txt	2020-09-27 15:14:56.000000000 +0200
-+++ b/kmoon/pics/CMakeLists.txt	2025-05-24 01:12:24.175862336 +0200
++++ b/kmoon/pics/CMakeLists.txt	2025-05-24 01:26:19.312791447 +0200
 @@ -1,29 +1,29 @@
 -install_icon(moon1.gif "${KDE1_DATADIR}/kmoon/pics")
 -install_icon(moon2.gif "${KDE1_DATADIR}/kmoon/pics")
@@ -122,7 +122,7 @@ diff -aur a/kmoon/pics/CMakeLists.txt b/kmoon/pics/CMakeLists.txt
 +install_icon(moon29.gif "${KDE1_DATADIR}/kmoon1/pics")
 diff -aur a/kworldwatch/CMakeLists.txt b/kworldwatch/CMakeLists.txt
 --- a/kworldwatch/CMakeLists.txt	2020-09-27 15:14:56.000000000 +0200
-+++ b/kworldwatch/CMakeLists.txt	2025-05-24 01:12:24.176075285 +0200
++++ b/kworldwatch/CMakeLists.txt	2025-05-24 01:26:43.056495200 +0200
 @@ -10,14 +10,14 @@
  
  qt1_wrap_moc(MOC_FILES ${KWORLDWATCH_MOC})
@@ -142,10 +142,10 @@ diff -aur a/kworldwatch/CMakeLists.txt b/kworldwatch/CMakeLists.txt
 -install_icon(kworldwatch.xpm)
 +install(TARGETS kworldwatch1 RUNTIME DESTINATION ${KDE1_BINDIR})
 +install(FILES KWorldWatch.kdelnk DESTINATION ${KDE1_APPSDIR}/Utilities RENAME KWorldWatch1.kdelnk)
-+install(FILES kworldwatch.xpm DESTINATION ${KDE1_ICONDIR} RENAME kworldwatch.xpm)
++install(FILES kworldwatch.xpm DESTINATION ${KDE1_ICONDIR} RENAME kworldwatch1.xpm)
 diff -aur a/kworldwatch/KWorldWatch.kdelnk b/kworldwatch/KWorldWatch.kdelnk
 --- a/kworldwatch/KWorldWatch.kdelnk	2020-09-27 15:14:56.000000000 +0200
-+++ b/kworldwatch/KWorldWatch.kdelnk	2025-05-24 01:14:25.247822457 +0200
++++ b/kworldwatch/KWorldWatch.kdelnk	2025-05-24 01:26:19.313213991 +0200
 @@ -26,10 +26,10 @@
  Comment[de]=KDE Weltzeituhr
  Comment[es]=Visor Mundial de KDE
@@ -170,7 +170,7 @@ diff -aur a/kworldwatch/KWorldWatch.kdelnk b/kworldwatch/KWorldWatch.kdelnk
  Type=Application
 diff -aur a/kworldwatch/main.cpp b/kworldwatch/main.cpp
 --- a/kworldwatch/main.cpp	2020-09-27 15:14:56.000000000 +0200
-+++ b/kworldwatch/main.cpp	2025-05-24 01:12:24.176245420 +0200
++++ b/kworldwatch/main.cpp	2025-05-24 01:26:19.313395929 +0200
 @@ -9,7 +9,7 @@
  
  int main( int argc, char **argv )
@@ -182,7 +182,7 @@ diff -aur a/kworldwatch/main.cpp b/kworldwatch/main.cpp
    if (kapp->isRestored())
 diff -aur a/kworldwatch/pics/CMakeLists.txt b/kworldwatch/pics/CMakeLists.txt
 --- a/kworldwatch/pics/CMakeLists.txt	2020-09-27 15:14:56.000000000 +0200
-+++ b/kworldwatch/pics/CMakeLists.txt	2025-05-24 01:12:24.176425402 +0200
++++ b/kworldwatch/pics/CMakeLists.txt	2025-05-24 01:26:19.313599868 +0200
 @@ -1,7 +1,7 @@
 -install_icon(flag-blue.xpm "${KDE1_DATADIR}/kworldwatch/pics")
 -install_icon(flag-green.xpm "${KDE1_DATADIR}/kworldwatch/pics")
@@ -200,7 +200,7 @@ diff -aur a/kworldwatch/pics/CMakeLists.txt b/kworldwatch/pics/CMakeLists.txt
 +install_icon(world_dark.gif "${KDE1_DATADIR}/kworldwatch1/pics")
 diff -aur a/mouse/CMakeLists.txt b/mouse/CMakeLists.txt
 --- a/mouse/CMakeLists.txt	2020-09-27 15:14:56.000000000 +0200
-+++ b/mouse/CMakeLists.txt	2025-05-24 01:12:24.178275376 +0200
++++ b/mouse/CMakeLists.txt	2025-05-24 01:26:19.313791444 +0200
 @@ -8,19 +8,19 @@
  
  qt1_wrap_moc(MOC_FILES ${KODO_MOC})
@@ -230,7 +230,7 @@ diff -aur a/mouse/CMakeLists.txt b/mouse/CMakeLists.txt
 +    DESTINATION ${KDE1_HTMLDIR}/en/kodo1 )
 diff -aur a/mouse/kodo.cpp b/mouse/kodo.cpp
 --- a/mouse/kodo.cpp	2020-09-27 15:14:56.000000000 +0200
-+++ b/mouse/kodo.cpp	2025-05-24 01:12:24.178575137 +0200
++++ b/mouse/kodo.cpp	2025-05-24 01:26:19.314067110 +0200
 @@ -162,7 +162,7 @@
  
      QString libDir;
@@ -242,7 +242,7 @@ diff -aur a/mouse/kodo.cpp b/mouse/kodo.cpp
      totalLabel=new KImageNumber(libDir+"57-2.gif",this,"Total");    
 diff -aur a/mouse/kodo.kdelnk b/mouse/kodo.kdelnk
 --- a/mouse/kodo.kdelnk	2020-09-27 15:14:56.000000000 +0200
-+++ b/mouse/kodo.kdelnk	2025-05-24 01:14:25.248626967 +0200
++++ b/mouse/kodo.kdelnk	2025-05-24 01:26:19.314355976 +0200
 @@ -1,18 +1,18 @@
  # KDE Config File  
  [KDE Desktop Entry]

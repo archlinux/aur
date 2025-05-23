@@ -6,7 +6,7 @@ _commit="66a0fb39185d9733d294156881ba631de53e432d" # r11
 pkgver="1.1.2+r11+g${_commit::7}"
 _api="${pkgver%%.*}"
 pkgname="${_basename}${_api}"
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE Toys and Amusements"
 arch=('i686' 'x86_64')
 url="https://kde.org"
@@ -21,7 +21,7 @@ source=("${_pkgsrc}.tar.gz::${_url}/-/archive/${_commit}/${_pkgsrc}.tar.gz"
         "${pkgname}_versioned.patch")
 b2sums=('ab345f953032567eb9538ad886560cc1763f821ad1a64038af6f5e8d9f88e8349cd9524a0175005320ae14d820d5adf593094e0aedc8fcda68f21fae377a442a'
         'af3d17f657cea3775d29f6a14e1e832db67b160129c30962105aded4ce2161527d46a63cf931a571308334c5733eb7317520a3c3d7888e66c12f4ecc9b0dc19d'
-        'e7150ec3ed885e69d3f0c2de8d745606a6a237c9b3009fff19e0a3714592db3a80e77e3bbfba67207b4d3d87888ab7ea7d5fca41ccf8f63d038ff6f203eca891')
+        'e3b38ee0ce16c153c94a98e37067bc80e6f727b26382d1d184cb2ffb0a9d36f48909e7256c84361553b7ad0f5a526e9dfe62dfaeac2705b7f66b7edda1b240a4')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
