@@ -10,9 +10,11 @@ depends=('meson' 'aarch64-linux-gnu-gcc' 'aarch64-linux-gnu-pkg-config')
 license=("GPL")
 url=""
 source=("toolchain_generator.py"
-        "aarch64-linux-gnu-meson")
+        "aarch64-linux-gnu-meson"
+        "meson.sh")
 sha256sums=('7124caeeeec6d25a6c677c24b3b7622931065b831509dc5a9a023e9083bd415d'
-            '84f137d44de0dc62acce59095944fe1802e0d647b3848239059fc111cc9117af')
+            '84f137d44de0dc62acce59095944fe1802e0d647b3848239059fc111cc9117af'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 build() {
   python toolchain_generator.py --output-file toolchain-aarch64-linux-gnu.meson 
