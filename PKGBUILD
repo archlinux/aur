@@ -3,7 +3,7 @@
 _rockname=tl
 pkgbase=teal
 pkgname=(teal "lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
-pkgver=0.24.5
+pkgver=0.24.6
 pkgrel=1
 pkgdesc='The compiler for Teal, a typed dialect of Lua'
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=(lua
              luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('be8416a09e8bb4d9dd6a9c2e4022393c1008852d1c64046eacb0b6d5aa46ce29')
+sha256sums=('7f4f91f3667653dd5c1a2a273a0066fcf0ad8bbec1506b1a1619abf471408f7a')
 
 _package() {
 	cd "$_archive"
