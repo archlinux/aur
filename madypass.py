@@ -257,13 +257,13 @@ class PasswordGeneratorApp(QWidget):
 def main():
     app = QApplication([])
     dark_style = '''
-        QWidget { background-color: #2b2b2b; color: darkgreen; font-family: Consolas; }
-        QLabel { font-size: 14px; color: darkgreen; }
+        QWidget { background-color: #2b2b2b; color: white; font-family: Consolas; }
+        QLabel { font-size: 14px; color: white; }
         QLineEdit, QSpinBox, QTableWidget, QTableWidgetItem {
-            background-color: #3c3f41; color: darkgreen; border: 1px solid #555;
+            background-color: #3c3f41; color: white; border: 1px solid #555;
         }
         QPushButton {
-            background-color: #44475a; color: darkgreen;
+            background-color: #44475a; color: white;
             border: 1px solid #6272a4; padding: 5px; font-weight: bold;
         }
         QPushButton:hover { background-color: #6272a4; }
