@@ -1,6 +1,6 @@
 pkgbase = abaddon-git
 	pkgdesc = An alternative Discord client made with C++/gtkmm
-	pkgver = 0.1.11.r103.g9724023
+	pkgver = 0.2.1.r98.g4c79ae6
 	pkgrel = 1
 	url = https://github.com/uowuo/abaddon
 	arch = x86_64

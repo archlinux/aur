@@ -2,7 +2,7 @@
 # Maintainer: javsanpar <javsanpar@riseup.net>
 pkgname=abaddon-git
 _pkgname=abaddon
-pkgver=0.1.11.r103.g9724023
+pkgver=0.2.1.r98.g4c79ae6
 pkgrel=1
 pkgdesc='An alternative Discord client made with C++/gtkmm'
 url='https://github.com/uowuo/abaddon'
@@ -24,17 +24,12 @@ prepare () {
 }
 
 build () {
-  cmake -B build -S "$_pkgname"
+  cmake -B build -D CMAKE_INSTALL_PREFIX=/usr -S "$_pkgname"
   make -C build
 }
 
 package() {
-  install -Dm755 build/abaddon "$pkgdir"/usr/bin/abaddon
-
-  install -Dm644 "$_pkgname"/res/css/* -t "$pkgdir"/usr/share/abaddon/css
-  install -Dm644 "$_pkgname"/res/res/sound/* -t "$pkgdir"/usr/share/abaddon/res/sound
-  rm -r "$_pkgname"/res/res/sound/
-  install -Dm644 "$_pkgname"/res/res/* -t "$pkgdir"/usr/share/abaddon/res
+  DESTDIR="$pkgdir" make -C build install
 
   install -Dm755 abaddon.desktop \
     "$pkgdir"/usr/share/applications/abaddon.desktop
