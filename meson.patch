@@ -1,0 +1,32 @@
+diff --git a/sfwbar-1.0_beta16/meson.build b/./meson.build
+index 47d1b16..5fb5e3b 100644
+--- a/sfwbar-1.0_beta16/meson.build
++++ b/./meson.build
+@@ -30,19 +30,21 @@ configure_file(input: 'meson.h.meson', output: 'meson.h',
+ 
+ wayland_scanner = find_program('wayland-scanner')
+ wayland_protodir = wayp.get_variable(pkgconfig: 'pkgdatadir')
+-wayland_protos = ['wlr-foreign-toplevel-management-unstable-v1',
+-                  'xdg-output-unstable-v1',
+-                  'wlr-layer-shell-unstable-v1',
+-                  'cosmic-workspace-unstable-v1',
++wayland_protos = [
++  [wayland_protodir, 'stable/xdg-shell/xdg-shell'],
++  ['protocols/wlr-foreign-toplevel-management-unstable-v1'],
++  ['protocols/xdg-output-unstable-v1'],
++  ['protocols/wlr-layer-shell-unstable-v1'],
++  ['protocols/cosmic-workspace-unstable-v1']
+ ]
+ wayland_targets=[]
+ 
+ foreach proto : wayland_protos
+   wayland_targets += custom_target(
+-      input: 'protocols' / proto + '.xml', output:  proto + '.h',
++      input: join_paths(proto) + '.xml', output:  '@BASENAME@.h',
+       command: [ wayland_scanner, 'client-header', '@INPUT@', '@OUTPUT@' ])
+   wayland_targets += custom_target(
+-      input: 'protocols' / proto + '.xml', output:  proto + '.c',
++      input: join_paths(proto) + '.xml', output:  '@BASENAME@.c',
+       command: [ wayland_scanner, 'public-code', '@INPUT@', '@OUTPUT@' ])
+ endforeach
+ 
