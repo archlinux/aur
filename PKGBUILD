@@ -17,7 +17,7 @@ source=(
     "midirun-config.install"
 )
 install=midirun-config.install
-md5sums=('a84bb079b8dfe7b8576fba2f232775ae'
+md5sums=('09c4cf60880e11bd0a17f67e4cbddb86'
          'e762209dded072f5a3a756b12efce890'
          '722e3f658a371145d7e076979c8b7fc8'
          '51d20ccd440519405ed7a25a5bcf444e'
