@@ -1,7 +1,7 @@
 # Maintainer: Jack Mechem <mechemjack@gmail.com>
 pkgname=midirun
 pkgver=0.2.1.beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon and program to simulate key strokes from midi inputs"
 arch=('x86_64')
 url="https://github.com/JackMechem/midirun"
@@ -16,16 +16,14 @@ source=(
   "udevadm-control-trigger"
 )
 md5sums=('SKIP'
-         'b7060d9d0d0d5fad0c75f4c2ba56b736'
+         'ac0a9f1727380523b655448f1c34f5f2'
          '15832357c3ce0f45997ddcd329052954'
          '51d20ccd440519405ed7a25a5bcf444e')
-
 build() {
     cd "$srcdir/$pkgname"
     meson setup build --prefix=/usr --buildtype=release
     meson compile -C build
 }
-
 package() {
     cd "$srcdir/$pkgname"
     DESTDIR="$pkgdir" meson install -C build
