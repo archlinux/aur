@@ -9,7 +9,7 @@
 
 _qt_module=qtcharts
 pkgname=mingw-w64-qt5-charts
-pkgver=5.15.16
+pkgver=5.15.17
 pkgrel=1
 arch=('any')
 pkgdesc="Provides a set of easy to use chart components (mingw-w64)"
@@ -17,7 +17,7 @@ depends=('mingw-w64-qt5-base' 'mingw-w64-pkg-config')
 optdepends=('mingw-w64-qt5-declarative: QML bindings')
 makedepends=('mingw-w64-gcc' 'mingw-w64-qt5-declarative')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=4e4fc559c61d1fc2542add48d2b3c490214e9936
+_commit=aaf04515611203a32cef866cce9bfeaa4cef20b6
 _basever=${pkgver%%+*}
 pkgver+=+kde+r0
 makedepends+=('git')
@@ -26,7 +26,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('dd28b06b2c6dfbb1e7141e3d008cdb00d099e05e8edfafd5f982d739e733b420')
+sha256sums=('d8415d48fdaf1c4b982966d827e639896e389d5445c322d22a0520184f6255f1')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
