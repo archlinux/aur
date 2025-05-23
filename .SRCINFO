@@ -1,0 +1,21 @@
+pkgbase = clippy-bin
+	pkgdesc = Run a variety of large language models (LLMs) locally on your computer while sticking with a user interface of the 1990s.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://felixrieseberg.github.io/clippy/
+	arch = x86_64
+	license = MIT
+	depends = electron35
+	depends = ollama
+	depends = nodejs
+	optdepends = vulkan-icd-loader: enable Vulkan support
+	optdepends = cuda: enable CUDA support
+	provides = clippy=0.4.3
+	conflicts = clippy
+	options = !emptydirs
+	source = clippy-0.4.3.rpm::https://github.com/felixrieseberg/clippy/releases/download/v0.4.3/Clippy-0.4.3-1.x86_64.rpm
+	source = clippy.sh
+	sha256sums = 56d9b65bba43b91d5b8f3ed347b6a3ed5919dec41c11f297c0fdd81b9b92edf5
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = clippy-bin
