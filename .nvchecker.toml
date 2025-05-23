@@ -1,0 +1,5 @@
+[gau2grid]
+source = "github"
+github = "dgasmith/gau2grid"
+use_latest_release = true
+prefix = "v"
