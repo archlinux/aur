@@ -1,0 +1,20 @@
+pkgbase = defi-wallet-bin
+	pkgdesc = A wallet for $DFI, wrapped BTC, ETH, USDT. Liquidity mine, use the DEX, create masternodes, and more.(Prebuilt version.Use system-wide electron)
+	pkgver = 4.2.5
+	pkgrel = 1
+	url = https://defichain.com/
+	arch = x86_64
+	license = MIT
+	makedepends = fuse2
+	depends = electron27
+	depends = 7zip
+	provides = defi-wallet=4.2.5
+	conflicts = defi-wallet
+	source = defi-wallet-4.2.5.AppImage::https://github.com/DeFiCh/defichain-app/releases/download/v4.2.5/DeFi-Wallet-4.2.5.AppImage
+	source = LICENSE-4.2.5::https://raw.githubusercontent.com/DeFiCh/defichain-app/v4.2.5/LICENSE
+	source = defi-wallet.sh
+	sha256sums = 9b7433d047362aa368d1cf6c63e3b78c80d2bcee31188156c4b78594cea85c23
+	sha256sums = adf996079d0f408011396eed4542cbfefdc11d7e4f5ec9bd13a2de81e7a8c81f
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = defi-wallet-bin
