@@ -5,7 +5,7 @@
 
 _pkgbasename=pyspark
 pkgname=python-${_pkgbasename}
-pkgver=3.5.5
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Apache Spark Python API"
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
 source=(
 	"https://pypi.org/packages/source/${_pkgbasename:0:1}/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.gz"
 )
-sha256sums=('6effc9ce98edf231f4d683fd14f7270629bf8458c628d6a2620ded4bb34f3cb9')
+sha256sums=('38db1b4f6095a080d7605e578d775528990e66dc326311d93e94a71cfc24e5a5')
 
 build() {
 	cd "${srcdir}/${_pkgbasename}-${pkgver}"
