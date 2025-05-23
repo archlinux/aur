@@ -1,2 +1,2 @@
 #!/bin/sh
-exec env HOME="${ANYZIG_HOME}" anyzig @VERSION@ "$@"
+exec env ${ANYZIG_HOME:+HOME="$ANYZIG_HOME"} anyzig @VERSION@ "$@"

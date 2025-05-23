@@ -1,81 +1,76 @@
 pkgbase = anyzig-zig
 	pkgdesc = A wrapper script for anyzig to provide zig
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marler8997/anyzig
 	arch = any
 	license = custom:None
 	depends = anyzig
 	depends = sh
 	source = anyzig-zig.sh
-	sha256sums = fc3125d6468838f3c2a3b2e81eaff1d673c0c7ac1f2f32be5a4f5f6219f3ba47
+	sha256sums = 277996c96eb1dfee4ee63e8d54b008c2e843918b07a8d1f9ab77fb78539631d3
 
 pkgname = anyzig-zig
 	pkgdesc = A wrapper script for anyzig to provide zig (latest stable release)
 	provides = zig=0.14.0
 	conflicts = zig
 
-pkgname = anyzig-zig0.13
-	pkgdesc = A wrapper script for anyzig to provide zig (0.13.0)
-	provides = zig0.13=0.13.0
-	conflicts = zig0.13
-
-pkgname = anyzig-zig0.12
-	pkgdesc = A wrapper script for anyzig to provide zig (0.12.1)
-	provides = zig0.12=0.12.1
-	conflicts = zig0.12
-
-pkgname = anyzig-zig0.11
-	pkgdesc = A wrapper script for anyzig to provide zig (0.11.0)
-	provides = zig0.11=0.11.0
-	conflicts = zig0.11
-
-pkgname = anyzig-zig0.10
-	pkgdesc = A wrapper script for anyzig to provide zig (0.10.1)
-	provides = zig0.10=0.10.1
-	conflicts = zig0.10
-
-pkgname = anyzig-zig0.9
-	pkgdesc = A wrapper script for anyzig to provide zig (0.9.1)
-	provides = zig0.9=0.9.1
-	conflicts = zig0.9
-
-pkgname = anyzig-zig0.8
-	pkgdesc = A wrapper script for anyzig to provide zig (0.8.1)
-	provides = zig0.8=0.8.1
-	conflicts = zig0.8
-
-pkgname = anyzig-zig0.7
-	pkgdesc = A wrapper script for anyzig to provide zig (0.7.1)
-	provides = zig0.7=0.7.1
-	conflicts = zig0.7
-
-pkgname = anyzig-zig0.6
-	pkgdesc = A wrapper script for anyzig to provide zig (0.6.0)
-	provides = zig0.6=0.6.0
-	conflicts = zig0.6
-
-pkgname = anyzig-zig0.5
-	pkgdesc = A wrapper script for anyzig to provide zig (0.5.0)
-	provides = zig0.5=0.5.0
-	conflicts = zig0.5
-
-pkgname = anyzig-zig0.4
-	pkgdesc = A wrapper script for anyzig to provide zig (0.4.0)
-	provides = zig0.4=0.4.0
-	conflicts = zig0.4
+pkgname = anyzig-zig0.2
+	pkgdesc = A wrapper script for anyzig to provide zig (0.2.0)
+	provides = zig0.2=0.2.0
+	conflicts = zig0.2
 
 pkgname = anyzig-zig0.3
 	pkgdesc = A wrapper script for anyzig to provide zig (0.3.0)
 	provides = zig0.3=0.3.0
 	conflicts = zig0.3
 
-pkgname = anyzig-zig0.2
-	pkgdesc = A wrapper script for anyzig to provide zig (0.2.0)
-	provides = zig0.2=0.2.0
-	conflicts = zig0.2
+pkgname = anyzig-zig0.4
+	pkgdesc = A wrapper script for anyzig to provide zig (0.4.0)
+	provides = zig0.4=0.4.0
+	conflicts = zig0.4
 
-pkgname = anyzig-zig0.1
-	pkgdesc = A wrapper script for anyzig to provide zig (0.1.1)
-	provides = zig0.1=0.1.1
-	conflicts = zig0.1
+pkgname = anyzig-zig0.5
+	pkgdesc = A wrapper script for anyzig to provide zig (0.5.0)
+	provides = zig0.5=0.5.0
+	conflicts = zig0.5
+
+pkgname = anyzig-zig0.6
+	pkgdesc = A wrapper script for anyzig to provide zig (0.6.0)
+	provides = zig0.6=0.6.0
+	conflicts = zig0.6
+
+pkgname = anyzig-zig0.7
+	pkgdesc = A wrapper script for anyzig to provide zig (0.7.1)
+	provides = zig0.7=0.7.1
+	conflicts = zig0.7
+
+pkgname = anyzig-zig0.8
+	pkgdesc = A wrapper script for anyzig to provide zig (0.8.1)
+	provides = zig0.8=0.8.1
+	conflicts = zig0.8
+
+pkgname = anyzig-zig0.9
+	pkgdesc = A wrapper script for anyzig to provide zig (0.9.0)
+	provides = zig0.9=0.9.0
+	conflicts = zig0.9
+
+pkgname = anyzig-zig0.10
+	pkgdesc = A wrapper script for anyzig to provide zig (0.10.1)
+	provides = zig0.10=0.10.1
+	conflicts = zig0.10
+
+pkgname = anyzig-zig0.11
+	pkgdesc = A wrapper script for anyzig to provide zig (0.11.0)
+	provides = zig0.11=0.11.0
+	conflicts = zig0.11
+
+pkgname = anyzig-zig0.12
+	pkgdesc = A wrapper script for anyzig to provide zig (0.12.1)
+	provides = zig0.12=0.12.1
+	conflicts = zig0.12
+
+pkgname = anyzig-zig0.13
+	pkgdesc = A wrapper script for anyzig to provide zig (0.13.0)
+	provides = zig0.13=0.13.0
+	conflicts = zig0.13
