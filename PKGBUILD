@@ -1,8 +1,8 @@
 # Maintainer: NekoLOvO <nekolyin@qq.com>
 
 pkgname=chatgqt
-pkgver=1.0
-pkgrel=3
+pkgver=1.1
+pkgrel=1
 pkgdesc="A simple ChatGPT Webview Client based on QT"
 arch=('any')
 license=('GPLv3')
@@ -13,7 +13,7 @@ depends=(
 source=(
     'ChatGQT.tar.gz'
 )
-sha256sums=('97630b681378e3a77eced8ec54a8a645779a3de020873c6f98047325027dd852')
+sha256sums=('20fd87fad833b44c770b36df29f8f25cb6f70ba74cfd81b15f4e228fa4fdb46c')
 
 package() {
     chmod +x "${srcdir}/usr/bin/chatgqt"
