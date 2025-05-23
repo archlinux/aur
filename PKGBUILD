@@ -2,8 +2,8 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=vivaldi-snapshot-ffmpeg-codecs
-pkgver=136.0.7103.60
-_vivaldi_major_version=7.4
+pkgver=136.0.7103.125
+_vivaldi_major_version=7.5
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for vivaldi-snapshot"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('fd3c47ab05cc578553ed6f2138db36b4627126042ea9beb975cc1d1d65cca41265b13ad48df0b7d538ca2c4157a76c73f11311e85033399e1b0c49e8571137a1')
+sha512sums=('0d1d4d49f8f1c910842ff500e26f5c16590eb630973cf94e08f213fc838b52713f146cbe022700e65322be08a2798e499d4ec3ceda18b45c04c4d3ae6061d88e')
 
 #prepare() {
   #cd "$srcdir/chromium-$pkgver"
