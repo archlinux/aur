@@ -1231,7 +1231,7 @@ Fixes:
 - When a free and a busy event are merged, the resulting slot will now be displayed as free only if all the merged slots are free.
 
 
-=== Morgen 3.6.13
+=== Morgen 3.6.14
 New Features:
 - Learning hub is a new way of exploring all the things you can do with Morgen. Head to Preferences > Learning hub to see what features you have not yet tried.
 
