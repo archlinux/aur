@@ -1,0 +1,16 @@
+pkgbase = python-jalali-core
+	pkgdesc = A Gregorian to Jalali and inverse date convertor
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/slashmili/jalali-core
+	arch = any
+	license = LGPL-2.1
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/j/jalali_core/jalali_core-1.0.0.tar.gz
+	sha256sums = f4287c70c630323dcf0a3ab26df905ba4d451e230ac1f65b3bb2f77797894a2b
+
+pkgname = python-jalali-core
