@@ -1,0 +1,1 @@
+KERNEL=="event*", SUBSYSTEM=="input", MODE="660", GROUP="input", TAG+="uaccess"
