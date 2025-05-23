@@ -1,6 +1,6 @@
 pkgbase = lmstudio-beta
 	pkgdesc = Discover, download, and run local LLMs
-	pkgver = 0.3.16.4
+	pkgver = 0.3.16.5
 	pkgrel = 1
 	url = https://lmstudio.ai/beta-releases
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = lmstudio-beta
 	depends = clblast
 	provides = lmstudio
 	conflicts = lmstudio
-	noextract = lmstudio-beta-0.3.16.4.AppImage
+	noextract = lmstudio-beta-0.3.16.5.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = lmstudio-beta-0.3.16.4.AppImage::https://installers.lmstudio.ai/linux/x64/0.3.16-4/LM-Studio-0.3.16-4-x64.AppImage
-	sha256sums_x86_64 = b4f3e3f698ed13d282e7b59695294d9e63ddd277e0e6aa5564c92277c864c078
+	source_x86_64 = lmstudio-beta-0.3.16.5.AppImage::https://installers.lmstudio.ai/linux/x64/0.3.16-5/LM-Studio-0.3.16-5-x64.AppImage
+	sha256sums_x86_64 = d307efa2282d290465a10b12d9ad72fadcfbbff888cc900180ca46ed31662ba8
 
 pkgname = lmstudio-beta
