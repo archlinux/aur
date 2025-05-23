@@ -3,10 +3,11 @@
 
 pkgname=aarch64-linux-gnu-meson
 pkgver=1
-pkgrel=7
+pkgrel=8
 arch=('any')
 pkgdesc="Meson wrapper for arm64 (aarch64)"
 depends=('meson' 'aarch64-linux-gnu-gcc' 'aarch64-linux-gnu-pkg-config')
+conflicts=('android-aarch64-meson')
 license=("GPL")
 url=""
 source=("toolchain_generator.py"
