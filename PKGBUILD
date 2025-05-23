@@ -2,7 +2,7 @@
 # Thanks to kate-latex-plugin.git which was my starting point for this PKGBUILD
 pkgname="kate-indexview-plugin"
 _pkgname="KatePlugin-IndexView"
-pkgver="0.9.2"
+pkgver="0.9.3"
 pkgrel="1"
 pkgdesc="A fork from Kate's SymbolViewer plugin with a couple of modifications"
 arch=("i686" "x86_64")
@@ -11,7 +11,7 @@ license=("LGPL-2.0-or-later")
 depends=("kate>=24.02.0")
 makedepends=("cmake" "extra-cmake-modules")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loh-tar/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=('d323095ef93d087602ac58581d245a9e')
+md5sums=('654c409d519906cd67487fbec88fabf0')
 
 build()
 {
@@ -30,6 +30,6 @@ build()
 package()
 {
   cd "$srcdir/build"
-  # make DESTDIR="$pkgdir" install
-  install -Dm755  index-view/kateindexviewplugin.so "$pkgdir/usr/lib/qt6/plugins/kf6/ktexteditor/index-view/kateindexviewplugin.so"
+  make DESTDIR="$pkgdir" install
+#   install -Dm755  index-view/kateindexviewplugin.so "$pkgdir/usr/lib/qt6/plugins/kf6/ktexteditor/kateindexviewplugin.so"
 }
