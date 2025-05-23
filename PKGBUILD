@@ -11,14 +11,14 @@
 
 _qt_module=qttranslations
 pkgname=mingw-w64-qt5-translations
-pkgver=5.15.16
+pkgver=5.15.17
 pkgrel=1
 arch=('any')
 pkgdesc="A cross-platform application and UI framework (translations, mingw-w64)"
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-qt5-tools')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=56f5bf5a27db344e62d74bd5d2d54060e4b81fa2
+_commit=fd567a42c1b566f22f339db758d29925fd2a8c60
 _basever=${pkgver%%+*}
 pkgver+=+kde+r0
 makedepends+=('git')
@@ -27,7 +27,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('6402d6bc7ac18ffbdadf83edceb1fd11a7d4d391f7a6dff5d15c3158f95e37ab')
+sha256sums=('ae0d002597f170f1972d4f8559a4a9cf0ae579751c8c8d422a1256afcb712d9b')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
