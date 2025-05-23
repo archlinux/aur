@@ -5,12 +5,11 @@ _name=cursor
 pkgbase="${_name}-electron"
 pkgname=("$pkgbase"{,-latest,35})
 pkgver=0.50.5
-pkgrel=4
+pkgrel=5
 _desc="AI Code Editor "
 arch=('aarch64' 'x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor')
-_electron=electronAUTODETECT # for --printsrcinfo 
 depends=('ripgrep' 'xdg-utils' # electron* is added at package()
 		'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 makedepends=('desktop-file-utils')
@@ -23,7 +22,7 @@ source_x86_64=("${pkgver}-x86_64.img::https://downloads.cursor.com/production/${
 sha512sums=('937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37')
 sha512sums_aarch64=('22084dfcdb3dfa367d7289cb1561df40ea8a12e858630c83f2ccf306a5edde0e1365beeda25a853005e5de9da66ffd39be38764bca849b15045eea2c7094bf35')
 sha512sums_x86_64=('bbfcdc6759a04e87ba24031566a4676f477821ad120f5a4ccb2348e4d0395d4660e27f90ad392f853abf7b7a4801c9807b4d5e099a245a237785a945173ed878')
-options=(!strip)
+options=(!strip) # for ext?
 prepare() { # Create cp -r friendly layout with FHS
 	sed -e "s|code-flags|cursor-flags|" -e "s|lib/code|lib/cursor|" -e "s|/usr/lib/code/code.mjs|--app=/usr/lib/cursor|" code.sh > run.sh
 	rm -rf squashfs-root # clean cache
