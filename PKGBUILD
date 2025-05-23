@@ -2,7 +2,7 @@
 # Contributor: KafCoppelia <k740677208@gmail.com>
 
 pkgname=catppuccin-fcitx5-git
-pkgver=r19.383c27a
+pkgver=r20.393845c
 pkgrel=1
 pkgdesc="Soothing pastel theme for Fcitx5"
 arch=('any')
@@ -24,6 +24,8 @@ pkgver() {
 package() {
     cd ${srcdir}/${pkgname}
     install -d ${pkgdir}/usr/share/fcitx5/themes/
+    ./enable-rounded.sh
+    cp ./*-rounded.sh ${pkgdir}/usr/share/fcitx5/
     cp -r ./src/* ${pkgdir}/usr/share/fcitx5/themes/
     install -Dm 644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
