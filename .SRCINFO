@@ -1,7 +1,7 @@
 pkgbase = poddr-bin
 	pkgdesc = Poddr is an open-source podcast player for Windows, Mac and Linux
 	pkgver = 2.1.0
-	pkgrel = 5
+	pkgrel = 1
 	url = https://github.com/Sn8z/Poddr
 	arch = x86_64
 	license = GPL3

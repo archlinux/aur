@@ -1,7 +1,7 @@
 # Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 pkgname=poddr-bin
 pkgver=2.1.0
-pkgrel=5
+pkgrel=1
 pkgdesc="Poddr is an open-source podcast player for Windows, Mac and Linux"
 arch=("x86_64")
 url="https://github.com/Sn8z/Poddr"
