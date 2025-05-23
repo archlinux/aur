@@ -11,6 +11,7 @@ arch=('x86_64')
 license=("MIT")
 provides=('void')
 conflicts=('void')
+oprions=(!strip) # for sign of ext?
 depends=( ripgrep xdg-utils # electron* is added at packaging
   libxkbfile
   libsecret
@@ -67,7 +68,7 @@ build() {
 
 package() {
   _elnum=$(cut -d. -f1 /usr/lib/electron/version) # hide ver from --printsrcinfo
-  depends+=(electron${_elnum}) # replace electron dependency
+  depends+=(electron${_elnum})
   _pkg=VSCode-linux-x64
   _app=/usr/share/void/resources/app
   # Licenses
