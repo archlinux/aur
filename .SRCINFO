@@ -1,6 +1,6 @@
 pkgbase = midirun-config
 	pkgdesc = TOML configuration genorator for Midirun
-	pkgver = 0.1.1.beta
+	pkgver = 0.1.2.beta
 	pkgrel = 5
 	url = https://github.com/JackMechem/midirun-config
 	install = midirun-config.install
@@ -17,12 +17,12 @@ pkgbase = midirun-config
 	depends = bash
 	depends = libevdev
 	options = !debug
-	source = git+https://github.com/JackMechem/midirun-config.git#tag=v0.1.1-beta
+	source = git+https://github.com/JackMechem/midirun-config.git#tag=v0.1.2-beta
 	source = 99-midirun-config-uinput.rules
 	source = 99-midirun-config-uinput.hook
 	source = midirun-config-udevadm-control-trigger
 	source = midirun-config.install
-	md5sums = 09c4cf60880e11bd0a17f67e4cbddb86
+	md5sums = 8708bb6c197774851cd51a9a7751d87f
 	md5sums = e762209dded072f5a3a756b12efce890
 	md5sums = 722e3f658a371145d7e076979c8b7fc8
 	md5sums = 51d20ccd440519405ed7a25a5bcf444e

@@ -1,6 +1,6 @@
 # Maintainer: Jack Mechem <mechemjack@gmail.com>
 pkgname=midirun-config
-pkgver=0.1.1.beta
+pkgver=0.1.2.beta
 pkgrel=5
 pkgdesc="TOML configuration genorator for Midirun"
 arch=('x86_64')
@@ -10,14 +10,14 @@ options=('!debug')
 depends=('gtkmm-4.0' 'rtmidi' 'systemd' 'tomlplusplus' 'bash' 'libevdev')
 makedepends=('meson' 'ninja' 'git' 'pkgconf')
 source=(
-    "git+https://github.com/JackMechem/midirun-config.git#tag=v0.1.1-beta"
+    "git+https://github.com/JackMechem/midirun-config.git#tag=v0.1.2-beta"
     "99-midirun-config-uinput.rules"
     "99-midirun-config-uinput.hook"
     "midirun-config-udevadm-control-trigger"
     "midirun-config.install"
 )
 install=midirun-config.install
-md5sums=('09c4cf60880e11bd0a17f67e4cbddb86'
+md5sums=('8708bb6c197774851cd51a9a7751d87f'
          'e762209dded072f5a3a756b12efce890'
          '722e3f658a371145d7e076979c8b7fc8'
          '51d20ccd440519405ed7a25a5bcf444e'
