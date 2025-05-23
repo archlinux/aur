@@ -3,7 +3,7 @@
 
 pkgname=vice-sdl2
 _pkgname=vice
-pkgver=3.7.1
+pkgver=3.9
 pkgrel=1
 pkgdesc='The Versatile Commodore 8-bit Emulator, SDL2 version'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=(
   ${_pkgname}.png
 )
 sha256sums=(
-  7e3811e6024db0698bfbc321bb324572446b8853d01b4073f09865957b0cab98
+  40202b63455e26b87ecc63eb5a52322c6fa3f57cab12acf0c227cf9f4daec370
   e0a600d72c2352826282a0f7fcf380b24272fba10a9ed31c8fd45a21d597f3ad
   0d51f822b70d24bbc9d813d552138660cf705aaaecc12115bc1416364e1473b3
 )
