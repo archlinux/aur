@@ -1,6 +1,6 @@
 pkgbase = o3de-nightly-bin
 	pkgdesc = Open 3D Engine - An open-source, real-time 3D development engine (Nightly build)
-	pkgver = 2409.1_20241201
+	pkgver = 2505.0_20250521
 	pkgrel = 1
 	url = https://o3de.org/
 	install = o3de.install
