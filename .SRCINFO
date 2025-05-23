@@ -1,0 +1,16 @@
+pkgbase = android-aarch64-meson
+	pkgdesc = Meson wrapper for arm64 (aarch64)
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = meson
+	depends = aarch64-linux-gnu-gcc
+	depends = android-pkg-config
+	conflicts = aarch64-linux-gnu-meson
+	source = toolchain_generator.py
+	source = android-aarch64-meson
+	sha256sums = 91fbae127a8dfc1be2054944fba5d6e942bedba9eecfd116e5525261cb7fe1ec
+	sha256sums = bdcd08416190863e6f21f35b629c7f5e766e510085695e714487b7d31a5df143
+
+pkgname = android-aarch64-meson
