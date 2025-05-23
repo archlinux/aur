@@ -1,0 +1,12 @@
+pkgbase = shit
+	pkgdesc = Simple file server in Go
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/notwithering/shit
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = shit-1.0.tar.gz::https://github.com/notwithering/shit/archive/refs/tags/v1.0.tar.gz
+	sha256sums = e7ef7856c622703e156d2e7609ffeaa21443566b087fa43684e510e486e3e608
+
+pkgname = shit
