@@ -1,6 +1,6 @@
 pkgbase = cherry-studio-electron-bin
 	pkgdesc = 🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.3.10
+	pkgver = 1.3.11
 	pkgrel = 1
 	url = https://cherry-ai.com/
 	arch = aarch64
@@ -10,15 +10,15 @@ pkgbase = cherry-studio-electron-bin
 	makedepends = fuse2
 	depends = electron35
 	optdepends = ollama: Use your local LLM
-	provides = cherry-studio=1.3.10
+	provides = cherry-studio=1.3.11
 	conflicts = cherry-studio
-	source = LICENSE-1.3.10::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.3.10/LICENSE
+	source = LICENSE-1.3.11::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.3.11/LICENSE
 	source = cherry-studio-electron.sh
 	sha256sums = ca8950fcf72aef9d46e0bccc0b456c5e2e14bd37d2bbd04bb99632e09eda36b3
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = cherry-studio-electron-1.3.10-aarch64.AppImage::https://github.com/CherryHQ/cherry-studio/releases/download/v1.3.10/Cherry-Studio-1.3.10-arm64.AppImage
-	sha256sums_aarch64 = 8cfbe4c02ded961c2fe1914334009aab339c5262d5701a1b4145717fa0cf50e4
-	source_x86_64 = cherry-studio-electron-1.3.10-x86_64.AppImage::https://github.com/CherryHQ/cherry-studio/releases/download/v1.3.10/Cherry-Studio-1.3.10-x86_64.AppImage
-	sha256sums_x86_64 = db35bc97bef4cc83438e1c80c36dea1dbf79e53501db1d2247d6c45f3de02fee
+	source_aarch64 = cherry-studio-electron-1.3.11-aarch64.AppImage::https://github.com/CherryHQ/cherry-studio/releases/download/v1.3.11/Cherry-Studio-1.3.11-arm64.AppImage
+	sha256sums_aarch64 = ea906bfff762d75a1fd1b26f8c82b96043eb8d30d0ac659d5f605c5938c7e64f
+	source_x86_64 = cherry-studio-electron-1.3.11-x86_64.AppImage::https://github.com/CherryHQ/cherry-studio/releases/download/v1.3.11/Cherry-Studio-1.3.11-x86_64.AppImage
+	sha256sums_x86_64 = 77bc944f0e32a2d88da1475a7ad3b8cc4f0497edce86b19be9096f989e183ba8
 
 pkgname = cherry-studio-electron-bin
