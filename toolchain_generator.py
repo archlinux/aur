@@ -2,28 +2,16 @@
 
 import argparse
 import configparser
-import os
 
 
 class CrossFileGenerator:
     def __init__(self, output_file):
         self.arch = "aarch64-linux-gnu"
         self.output_file = output_file
-        self.cflags = (
-            os.environ["CFLAGS"]
-            if "CFLAGS" in os.environ
-            else "-D_FORTIFY_SOURCE=3 -D_GLIBCXX_ASSERTIONS -O2 -pipe -fexceptions --param=ssp-buffer-size=4 -Wformat -Werror=format-security -fcf-protection"
-        )
-        self.cxxflags = (
-            os.environ["CXXFLAGS"]
-            if "CXXFLAGS" in os.environ
-            else "-D_FORTIFY_SOURCE=3 -D_GLIBCXX_ASSERTIONS -O2 -pipe -fexceptions --param=ssp-buffer-size=4 -Wformat -Werror=format-security -fcf-protection"
-        )
-        self.ldflags = (
-            os.environ["LDFLAGS"]
-            if "LDFLAGS" in os.environ
-            else "-Wl,-O1,--sort-common,--as-needed -fstack-protector"
-        )
+        self.cflags = "D_FORTIFY_SOURCE=3 -D_GLIBCXX_ASSERTIONS -O2 -pipe -fexceptions --param=ssp-buffer-size=4 -Wformat -Werror=format-security -fcf-protection"
+        self.cxxflags = "-D_FORTIFY_SOURCE=3 -D_GLIBCXX_ASSERTIONS -O2 -pipe -fexceptions --param=ssp-buffer-size=4 -Wformat -Werror=format-security -fcf-protection"
+        self.ldflags = "-Wl,-O1,--sort-common,--as-needed -fstack-protector"
+
         self.cpu_family = "aarch64"
         self.processor = "aarch64"
 
@@ -78,7 +66,7 @@ class CrossFileGenerator:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Generate a meson cross file using CFLAGS/CXXFLAGS/LDFLAGS from env vars",
+        description="Generate a generic Meson cross file for arm64.",
         add_help=False,
     )
     required = parser.add_argument_group("required arguments")

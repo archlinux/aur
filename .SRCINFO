@@ -1,7 +1,7 @@
 pkgbase = aarch64-linux-gnu-meson
 	pkgdesc = Meson wrapper for arm64 (aarch64)
 	pkgver = 1
-	pkgrel = 4
+	pkgrel = 5
 	arch = any
 	license = GPL
 	depends = meson
@@ -9,7 +9,7 @@ pkgbase = aarch64-linux-gnu-meson
 	depends = aarch64-linux-gnu-pkg-config
 	source = toolchain_generator.py
 	source = aarch64-linux-gnu-meson
-	sha256sums = 7124caeeeec6d25a6c677c24b3b7622931065b831509dc5a9a023e9083bd415d
+	sha256sums = 9cf40a861279be7876d8cac23f43ee8a3a3386a4f8d279f690f6b3e5ccfefbce
 	sha256sums = 84f137d44de0dc62acce59095944fe1802e0d647b3848239059fc111cc9117af
 
 pkgname = aarch64-linux-gnu-meson
