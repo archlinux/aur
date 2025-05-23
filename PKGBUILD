@@ -7,9 +7,7 @@ pkgdesc="Beszel monitoring agent"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'mips64' 'riscv64')
 url="https://github.com/henrygd/beszel"
 license=('MIT')
-depends=()
 optdepends=('rocm-smi-lib: AMD GPU usage, temperature, and power draw via rocm-smi')
-makedepends=()
 provides=('beszel-agent')
 conflicts=('beszel-agent')
 backup=('etc/beszel-agent.conf')
@@ -30,12 +28,12 @@ sha256sums_armv6h=('1c96352f80194cddc054d29f51b49c0773e57834d4387407bb5490f5d5b2
 sha256sums_mips64=('70ff49599a815d1f64abbfdcbce8244f4cce17f7c758e83a8e488b29e0f2c4f5')
 sha256sums_riscv64=('23eedaeab747819733e345572967c8497129a4249fb31a3827613d26e63209b6')
 
-source_x86_64=("beszel-agent_linux_amd64.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_amd64.tar.gz")
-source_aarch64=("beszel-agent_linux_arm64.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_arm64.tar.gz")
-source_armv7h=("beszel-agent_linux_arm.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_arm.tar.gz")
+source_x86_64=("${url}/releases/download/v${pkgver}/beszel-agent_linux_amd64.tar.gz")
+source_aarch64=("${url}/releases/download/v${pkgver}/beszel-agent_linux_arm64.tar.gz")
+source_armv7h=("${url}/releases/download/v${pkgver}/beszel-agent_linux_arm.tar.gz")
 source_armv6h=("${source_armv7h[@]}")
-source_mips64=("beszel-agent_linux_mips64.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_mips64.tar.gz")
-source_riscv64=("beszel-agent_linux_riscv64.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_riscv64.tar.gz")
+source_mips64=("${url}/releases/download/v${pkgver}/beszel-agent_linux_mips64.tar.gz")
+source_riscv64=("${url}/releases/download/v${pkgver}/beszel-agent_linux_riscv64.tar.gz")
 
 
 package() {
