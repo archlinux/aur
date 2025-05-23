@@ -1230,3 +1230,20 @@ Fixes:
 - We fixed an issue that was making it hard to delete tasks or events immediately after creating or editing them on Google, Outlook, and Fastmail.
 - When a free and a busy event are merged, the resulting slot will now be displayed as free only if all the merged slots are free.
 
+
+=== Morgen 3.6.13
+New Features:
+- Learning hub is a new way of exploring all the things you can do with Morgen. Head to Preferences > Learning hub to see what features you have not yet tried.
+
+Improvements:
+- We have improved the app's responsiveness for those users who have many tasks loaded in the sidebar. This is particularly noticeable when the All tasks tab is open, as aggregating tasks from multiple sources was previously causing the app to slow down.
+- Notion: any task with a status "Complete" will no longer be imported into Morgen.
+- ClickUp: Removing tasks from archived lists can be done by opening up the configuration page and saving your configuration.
+- Google Tasks: due dates are now displayed in the Morgen calendar automatically. Additionally, you can move the Google Tasks due date directly from Morgen.
+- The native system spellchecker is now enabled across the app. Right-click to see and apply correction suggestions.
+- The Menu Bar on macOS now shows the remaining time for ongoing meetings or tasks, as well as all events scheduled for tomorrow.
+- The scroll bars are now thicker, which makes it easier to use them.
+ 
+Fixes:
+- Event merging between tasks and events created by Calendar Propagation has been restored. Also, due date slots can be merged with the corresponding scheduled task.
+- The time zone button is no longer removed from the toolbar when the app window is not large enough. Instead, the Command Bar button will be hidden if there is not enough space to accommodate both (you can still access Command Bar with CTRL+K or Command+K on macOS).
