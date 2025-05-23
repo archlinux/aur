@@ -1,6 +1,6 @@
 # Maintainer: Costin Botescu <costin.botescu@gmail.com>
 pkgname=edor
-pkgver=1.72
+pkgver=1.73
 pkgrel=0
 pkgdesc="CUI text editor"
 arch=('any')
@@ -9,7 +9,7 @@ license=('0BSD')
 depends=('ncurses')
 makedepends=('ncurses' 'bc')
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/colin-i/edor/archive/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
-sha256sums=('95666536cc5f0b84255246c6fbd960473e8e51707c5bde091987d9528cb6e8e6')
+sha256sums=('c307c1aff9b5ad4bd4613c936a897bacdf494980dc15b314a059f677c312482d')
 
 prepare() {
 	_patches="`cat ../list`"
