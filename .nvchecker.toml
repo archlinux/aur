@@ -1,0 +1,5 @@
+[dftd4]
+source = "github"
+github = "dftd4/dftd4"
+use_latest_release = true
+prefix = "v"
