@@ -1,0 +1,35 @@
+[Unit]
+Description=Beszel Agent
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+# User-tweakable settings live in /etc/beszel-agent.conf
+EnvironmentFile=-/etc/beszel-agent.conf
+
+ExecStart=/opt/beszel-agent/beszel-agent
+User=beszel
+Group=beszel
+
+# Restart logic
+Restart=on-failure
+RestartSec=5
+
+# Write-able state dir owned by the service user
+StateDirectory=beszel-agent
+
+# --- Hardening ---
+KeyringMode=private
+LockPersonality=yes
+NoNewPrivileges=yes
+ProtectClock=yes
+ProtectHome=read-only
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectSystem=strict
+RemoveIPC=yes
+RestrictSUIDSGID=yes
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

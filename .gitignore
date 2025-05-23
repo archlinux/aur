@@ -1,0 +1,9 @@
+*
+
+!.gitignore
+!beszel-agent.conf.example
+!beszel-agent.service
+!beszel-agent.sysusers
+!beszel-agent.tmpfiles
+!PKGBUILD
+!.SRCINFO
