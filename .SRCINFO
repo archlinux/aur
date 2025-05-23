@@ -1,19 +1,19 @@
 pkgbase = chatall-bin
 	pkgdesc = Concurrently chat with ChatGPT, Bing Chat, Bard, Alpaca, Vicuna, Claude, ChatGLM, MOSS, 讯飞星火, 文心一言 and more, discover the best answers.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.84.109
+	pkgver = 1.85.110
 	pkgrel = 1
 	url = http://chatall.ai/
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
 	depends = electron33
-	provides = chatall=1.84.109
+	provides = chatall=1.85.110
 	conflicts = chatall
 	source = chatall.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = chatall-1.84.109-aarch64.deb::https://github.com/sunner/ChatALL/releases/download/v1.84.109/ChatALL-1.84.109-linux-arm64.deb
-	sha256sums_aarch64 = ba023f7035d1d1b3613977bbdb56349576ac19e2012251390e549fafe6e47270
-	source_x86_64 = chatall-1.84.109-x86_64.deb::https://github.com/sunner/ChatALL/releases/download/v1.84.109/ChatALL-1.84.109-linux-amd64.deb
-	sha256sums_x86_64 = 54b8ce6008c3c2f7d123ec86c31fe0dd1d20d0391b7a3f15a5bc33be29ad1fd8
+	source_aarch64 = chatall-1.85.110-aarch64.deb::https://github.com/sunner/ChatALL/releases/download/v1.85.110/ChatALL-1.85.110-linux-arm64.deb
+	sha256sums_aarch64 = 37b04fcda668331b4521a3c3ba870da57e36b19630e318dff7fda04efebe54d5
+	source_x86_64 = chatall-1.85.110-x86_64.deb::https://github.com/sunner/ChatALL/releases/download/v1.85.110/ChatALL-1.85.110-linux-amd64.deb
+	sha256sums_x86_64 = 8b8410451dc636e55723eb5da99e939031fd23b4ebb19aeb74e0bd2c82cd6a29
 
 pkgname = chatall-bin
