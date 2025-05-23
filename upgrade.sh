@@ -7,7 +7,7 @@ set -e
 VERSION=$(wget --quiet -O - https://api.github.com/repos/Browsers-software/browsers/releases/latest | jq -r .tag_name)
 echo "Latest version: $VERSION"
 SHA=$(wget --quiet -O - https://github.com/Browsers-software/browsers/releases/download/$VERSION/browsers_linux.tar.xz.sha256)
-grep "pkgver=$VERSION" && echo "Already up-to-date!" && exit
+grep "pkgver=$VERSION" PKGBUILD && echo "Already up-to-date!" && exit
 
 sed -i "s/pkgver=.*$/pkgver=$VERSION/" PKGBUILD
 sed -i "s/pkgrel=.*$/pkgrel=1/" PKGBUILD
