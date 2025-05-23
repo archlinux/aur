@@ -2,7 +2,7 @@
 # Contributor: Luís Ferreira <contact@lsferreira.net>
 _pkgname=vulkan-headers
 pkgname=$_pkgname-git
-pkgver=1.4.313.0.r13.g9c77de5
+pkgver=1.4.315.r0.g75ad707
 pkgrel=1
 pkgdesc="Vulkan header files and API registry"
 arch=('any')
@@ -18,7 +18,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags --abbrev=7 --match='vulkan-sdk-*' | sed 's/^vulkan-sdk-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 --match='v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
