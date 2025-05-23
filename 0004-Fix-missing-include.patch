@@ -1,0 +1,25 @@
+From 81056d7ebcf045822915d59249b28243f4157ecf Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Fri, 23 May 2025 18:01:59 +0200
+Subject: [PATCH 4/4] Fix missing include
+
+---
+ src/qml/compiler/qv4compiler.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/qml/compiler/qv4compiler.cpp b/src/qml/compiler/qv4compiler.cpp
+index 18e19cf01c..e71c86e9c6 100644
+--- a/src/qml/compiler/qv4compiler.cpp
++++ b/src/qml/compiler/qv4compiler.cpp
+@@ -48,6 +48,8 @@
+ #include <private/qqmlirbuilder_p.h>
+ #include <QCryptographicHash>
+ 
++#include <cstdint>
++
+ // Efficient implementation that takes advantage of powers of two.
+ static inline size_t roundUpToMultipleOf(size_t divisor, size_t x)
+ {
+-- 
+2.49.0
+

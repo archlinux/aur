@@ -1,7 +1,7 @@
-From 46d61cb751b38d2ac56ba26f19a76d1c6898f87b Mon Sep 17 00:00:00 2001
+From 874f045cfae23b6433936ac91f5a2ea706f8c05f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 20 Nov 2020 18:32:31 +0100
-Subject: [PATCH 3/3] Disable d3d12 requiring fxc.exe
+Subject: [PATCH 3/4] Disable d3d12 requiring fxc.exe
 
 * fxc.exe is not provided by WINE or mingw-w64 and hence not available
   in our build environment
@@ -29,5 +29,5 @@ index 39c0c0815c..9cc521a191 100644
  qtConfig(openvg): SUBDIRS += openvg
  
 -- 
-2.47.0
+2.49.0
 
