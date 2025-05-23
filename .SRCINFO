@@ -1,0 +1,37 @@
+pkgbase = plogue-plugins
+	pkgdesc = Plogue audio plugins, beta Linux port (unofficial support, DO NOT report bugs upstream!)
+	pkgver = 1.980_beta1~6
+	pkgrel = 1
+	epoch = 1
+	url = https://plogue.com
+	install = plogue-plugins.install
+	arch = x86_64
+	license = custom
+	options = !strip
+	source_x86_64 = https://chipsounds.s3.us-east-1.amazonaws.com/LINUX_chipsounds_v1.980_beta1~6_amd64.zip
+	source_x86_64 = https://chipspeech.s3.us-east-1.amazonaws.com/LINUX_chipspeech_v1.980_beta1~6_amd64.zip
+	source_x86_64 = https://sforzando.s3.us-east-1.amazonaws.com/LINUX_sforzando_v1.980_beta1~6_amd64.zip
+	sha512sums_x86_64 = 50ca51819fa47b00139e89ad7c60fd28d2d107a10991190921e17a4849731d45cb361e4b3dd9d00cc3895cea9f5b6f08f17f81c6633b4e6aa478da9fdec3e11e
+	sha512sums_x86_64 = a6d1d5981b3df44a06f78817be18e4e7b333440005b801bcfa52723c276f82a7273a503b051234e19d645fc727dcb256a77c6666a53c85b5f0e935233d2b5dd1
+	sha512sums_x86_64 = ac9090e625cb0b784512c80563d86b823f73d35f804d3b68449bf011d01550d338c7f0cd7fc0c6af10f34f889c22fd987c9ec4944a98e525dbe3c078d3e2e2f2
+
+pkgname = plogue-aria
+	depends = gtk3
+	depends = glib2
+	depends = pango
+	depends = cairo
+	depends = curl
+	depends = zenity
+	optdepends = libsndfile: Adds support for more audio formats
+
+pkgname = plogue-chipspeech
+	depends = plogue-aria
+
+pkgname = plogue-chipsounds
+	depends = plogue-aria
+
+pkgname = plogue-sforzando
+	depends = plogue-aria
+
+pkgname = plogue-tablewarp2
+	depends = plogue-aria
