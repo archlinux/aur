@@ -3,7 +3,7 @@
 _reposite=codeberg.org
 _repouser=gwh
 _repoproj=x50ng
-_pkgtagname=2.3.5
+_pkgtagname=2.4.1
 _repourl=https://${_reposite}/${_repouser}/${_repoproj}
 _repoarchive=${_pkgtagname}.tar.gz
 _repourlarchive=${_repourl}/archive/${_repoarchive}
@@ -11,17 +11,17 @@ _repourlarchive=${_repourl}/archive/${_repoarchive}
 
 pkgname=${_repoproj}
 pkgver=${_pkgtagname}
-pkgrel=2
+pkgrel=1
 pkgdesc='HP 50g hardware level emulator'
 arch=('any')
 url=${_repourl}
 license=('GPL2')
-depends=('gtk4' 'lua')
+depends=('gtk4' 'lua' 'ncurses')
 makedepends=('scdoc')
 options=('!lto' '!debug')
 install="${pkgname}.install"
 source=("${_repourlarchive}")
-sha256sums=('c46d6a856227c99940d6fc4d0846cc0a482f630d2a6d9c1d48a5aa010ea91141')
+sha256sums=('88c10c55457e006014f84f2bd87e676930ef8099314f4d2296a77868e9c3e64a')
 
 build() {
 	cd "${_repoproj}"
