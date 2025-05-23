@@ -1,7 +1,7 @@
 pkgbase = code-electron-latest
 	pkgdesc = VSCode on latest stable electron
 	pkgver = 1.100.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/microsoft/vscode/pull/245423
 	arch = x86_64
 	license = MIT
@@ -22,6 +22,7 @@ pkgbase = code-electron-latest
 	provides = vscode
 	conflicts = code
 	conflicts = vscode
+	options = !strip
 	source = vscode::git+https://github.com/microsoft/vscode.git#tag=1.100.2
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/1.100.2-1/code.sh
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/1.100.2-1/code.mjs

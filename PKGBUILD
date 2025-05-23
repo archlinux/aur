@@ -3,7 +3,7 @@
 pkgname=code-electron-latest
 pkgdesc='VSCode on latest stable electron'
 pkgver=1.100.2
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 _vscode_arch=x64 # https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/PKGBUILD
 _electron_arch=x64
@@ -17,6 +17,7 @@ makedepends=( electron nodejs-electron
 git npm pnpm python desktop-file-utils libarchive )
 conflicts=(code vscode)
 provides=(code vscode)
+options=(!strip) # sign of ext
 # Do not sync $pkgrel
 source=(vscode::"git+${_url}.git#tag=${pkgver}"
 "https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/${pkgver}-1/"{code.sh,code.mjs,clipath.patch,product_json.diff})
@@ -28,14 +29,14 @@ sha512sums=('2694841afae736d7424d9f6ed4a9eebcccd1b6e167682c454da639b37a3442e62d4
 
 prepare() {
   cd vscode
-  
+
   # vsce-sign for extensions
   pnpm add @vscode/vsce-sign @vscode/vsce-sign-linux-$_vscode_arch
 
   # electron version
   _electronver=$(cat /usr/lib/electron/version)
-  npm pkg set devDependencies.electron=${_electronver}
-  sed -i "s/^target=.*/target=\"${_electronver/}\"/" .npmrc   # native modules
+  npm pkg set devDependencies.electron=${_electronver} # unneeded
+  sed -i "s/^target=.*/target=\"${_electronver/}\"/" .npmrc # native modules
   echo Replaced version of electron with $(rg -N 'target' .npmrc)
 
   # Drop this at next release. app.dock is only for macOS
