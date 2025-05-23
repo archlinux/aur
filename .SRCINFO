@@ -1,6 +1,6 @@
 pkgbase = shit-git
 	pkgdesc = Simple file server in Go (latest git)
-	pkgver = r1.abcdef0
+	pkgver = r65.0428776
 	pkgrel = 1
 	url = https://github.com/notwithering/shit
 	arch = x86_64
