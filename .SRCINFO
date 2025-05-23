@@ -1,13 +1,13 @@
 pkgbase = brush
 	pkgdesc = Bash/POSIX-compatible shell implemented in Rust
-	pkgver = 0.2.17
+	pkgver = 0.2.18
 	pkgrel = 1
 	url = https://github.com/reubeno/brush
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = brush-0.2.17.tar.gz::https://github.com/reubeno/brush/archive/brush-shell-v0.2.17.tar.gz
-	sha256sums = 403528e7d7bd8c094874f932dbfddc57b46a372b81b5009c5108b4e893f590f0
+	source = brush-0.2.18.tar.gz::https://github.com/reubeno/brush/archive/brush-shell-v0.2.18.tar.gz
+	sha256sums = 4fd119fcbede5ff89ac8d4c55deac21a7a31278ff6649576b2fb40c04398918e
 
 pkgname = brush

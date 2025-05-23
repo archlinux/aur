@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=brush
-pkgver=0.2.17
+pkgver=0.2.18
 pkgrel=1
 pkgdesc="Bash/POSIX-compatible shell implemented in Rust"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-shell-v$pkgver.tar.gz")
-sha256sums=('403528e7d7bd8c094874f932dbfddc57b46a372b81b5009c5108b4e893f590f0')
+sha256sums=('4fd119fcbede5ff89ac8d4c55deac21a7a31278ff6649576b2fb40c04398918e')
 
 prepare() {
   mv "$pkgname-$pkgname-shell-v$pkgver" "$pkgname-$pkgver"
