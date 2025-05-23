@@ -1,7 +1,7 @@
 # Maintainer: Jack Mechem <mechemjack@gmail.com>
 pkgname=midirun-config
 pkgver=0.1.1.beta
-pkgrel=3
+pkgrel=4
 pkgdesc="TOML configuration genorator for Midirun"
 arch=('x86_64')
 url="https://github.com/JackMechem/midirun-config"
@@ -35,5 +35,5 @@ package() {
     install -Dm644 "$srcdir/99-midirun-config-uinput.rules" "$pkgdir/usr/lib/udev/rules.d/99-midirun-config-uinput.rules"
     install -Dm644 "$srcdir/99-midirun-config-uinput.hook" "$pkgdir/usr/share/libalpm/hooks/99-midirun-config-uinput.hook"
     install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm755 "$srcdir/midirun-config-udevadm-control-trigger" "$pkgdir/usr/bin/udevadm-control-trigger"
+    install -Dm755 "$srcdir/midirun-config-udevadm-control-trigger" "$pkgdir/usr/bin/midirun-config-udevadm-control-trigger"
 }
