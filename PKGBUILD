@@ -5,7 +5,7 @@
 
 pkgname=python-spacy
 _pkg="${pkgname#python-}"
-pkgver=3.8.6
+pkgver=3.8.7
 pkgrel=1
 pkgdesc='Free open-source library for Natural Language Processing in Python'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,6 @@ depends=(
 	'python-preshed'
     'python-pydantic'
 	'python-requests'
-	'python-smart_open'
     'python-spacy-loggers'
 	'python-srsly'
 	'python-thinc'
@@ -30,18 +29,18 @@ depends=(
 	'python-wasabi'
     'python-weasel')
 makedepends=(
-	'cython0'
+	'cython'
 	'python-build'
 	'python-installer'
 	'python-setuptools'
 	'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('7fecd323a6d085b6b1e0134261a6d311822106cdf325a8e251ae735b065cc46c')
+sha256sums=('700fd174c6c552276be142c48e70bb53cae24c4dd86003c4432af9cb93e4c908')
 
 prepare() {
-	cd "$_pkg-$pkgver"
-	sed -i '/PACKAGES =/c\PACKAGES = find_packages(exclude=["spacy.tests*"])' setup.py
-	rm -rf "$_pkg.egg-info"
+    cd "$_pkg-$pkgver"
+    sed -i '/PACKAGES =/c\PACKAGES = find_packages(exclude=["spacy.tests*"])' setup.py
+    rm -rf "$_pkg.egg-info"
 }
 
 build() {
@@ -55,5 +54,5 @@ package() {
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
 	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/$_pkg-$pkgver.dist-info/licenses/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
