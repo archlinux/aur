@@ -5,7 +5,7 @@
 
 _pkgname='github-desktop-plus'
 pkgname="${_pkgname}-bin"
-pkgver=0.4.17
+pkgver=0.4.19
 pkgrel=1
 pkgdesc="Work-in-progress fork of GitHub Desktop with extra features and improvements."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -32,9 +32,9 @@ source_aarch64=(${_common_download_url}-arm64.deb)
 source_armv7h=(${_common_download_url}-armhf.deb)
 
 sha256sums=('ef93d32f46b31818ffea85959f5ac67353df2c4da351b273108765b80c7f080d')
-sha256sums_x86_64=('5bf62b6827a14c27e8b174b997ff633f80191bd86e69c60df190ccc07d208cb0')
-sha256sums_aarch64=('111df5f7a77a7b5dad914331c6148b7ae4f737cc4b36f7bfd2d97c4768d01b81')
-sha256sums_armv7h=('7c54250e267873fc89d0915a6cce4be9db74b9f63f2e777a40ceb2da620c251f')
+sha256sums_x86_64=('2fc347667faafa8b4977746694c92958ae259e2216247f8efe09498457120dee')
+sha256sums_aarch64=('c7a662a81cb9db8827ffd5b1957f6c131767e4ff46819a35acf568a8bc4f31e2')
+sha256sums_armv7h=('ea03dbbd6576a3ef3ed10dc24b04ed7e47704bb688944c52f723e057037e220f')
 package() {
     tar xf data.tar.xz -C "${pkgdir}"
     install -d "${pkgdir}/opt/${_pkgname}"
