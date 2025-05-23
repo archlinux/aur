@@ -4,7 +4,7 @@
 
 _pkgname=code
 pkgname=code-git
-pkgdesc='The Open Source build of Visual Studio Code editor'
+pkgdesc='OSS version of Visual Studio Code editor'
 pkgver=1.101.0.r133628.g9880502f0ee
 pkgrel=1
 arch=('x86_64')
@@ -12,17 +12,17 @@ _vscode_arch=x64 # https://gitlab.archlinux.org/archlinux/packaging/packages/cod
 _electron_arch=x64
 url='https://github.com/microsoft/vscode'
 license=('MIT')
+# todo: extract correct electron* deps at build() abd add.
 depends=( ripgrep xdg-utils # electron* is added at build process
 libsecret libxkbfile )
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=( electron nodejs-electron
+makedepends=( electron nodejs-electron # should be nvm
 git npm pnpm python desktop-file-utils libarchive)
 conflicts=(code vscode)
 provides=(code vscode)
 source=(vscode::"git+https://github.com/microsoft/vscode.git"
 'https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/'{code.sh,code.mjs,clipath.patch,product_json.diff})
 sha512sums=('SKIP'{,,,,}) # should we have cksums ?
-
 
 pkgver() {
     cd "${srcdir}/vscode"
@@ -95,13 +95,12 @@ build() {
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
   export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home
   npm install
-  # remove -min if minify cause OOM
-  npm run gulp --openssl-legacy-provider vscode-linux-${_vscode_arch} #-min
+  npm run gulp --openssl-legacy-provider vscode-linux-${_vscode_arch} #-min minify cause OOM
 }
 
 package() {
   _elnum=$(cut -d. -f1 /usr/lib/electron/version) # hide version from --printsrcinfo
-  depends+=(electron${_elnum}) # replace electron dependency
+  depends+=(electron${_elnum})
   # Resource files
   install -dm755 "$pkgdir"/usr/lib/code # compabinity for pacman hooks
   cp -r --reflink=auto --no-preserve=ownership --preserve=mode VSCode-linux-${_vscode_arch}/resources/app/* "$pkgdir"/usr/lib/code/
