@@ -2,7 +2,7 @@
 
 _plug=bore
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r33.252518c
+pkgver=r45.cf48ee8
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -23,18 +23,18 @@ pkgver() {
 prepare() {
     cd "${_plug}"
     
-    arch-meson --buildtype=release -Dlibtype=vapoursynth builddir
+    arch-meson --buildtype=release -Dlibtype=vapoursynth build
 }
 
 build() {
     cd "${_plug}"
-    ninja -C builddir
+    meson compile -C build
 }
 
 package(){
   cd "${_plug}"
   
-  DESTDIR="${pkgdir}" ninja -C builddir install
+  meson install -C build --destdir "${pkgdir}"
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
