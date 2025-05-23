@@ -4,7 +4,7 @@ pkgbase = zen-browser-private-window-launcher
 	pkgrel = 1
 	url = https://github.com/eugenenoble2005/zen-browser-private-window-launcher
 	arch = any
-	depends = zen-browser-bin
+	depends = zen-browser
 	source = git+https://github.com/eugenenoble2005/zen-browser-private-window-launcher
 	sha256sums = SKIP
 
