@@ -7,10 +7,10 @@
 # Contributor: Jeroen Rijken <jeroen dot rijken at gmail dot com>
 pkgname=archi
 _pkgver_major=5
-_pkgver_minor=5
+_pkgver_minor=6
 _pkgver_patch=0
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_patch}
-pkgrel=1
+pkgrel=0
 pkgdesc="Free, open source, cross-platform tool and editor to create ArchiMate models."
 arch=('x86_64')
 url="http://www.archimatetool.com/"
@@ -22,7 +22,7 @@ provides=('archi')
 source=("https://www.archimatetool.com/downloads/archi/${pkgver}/Archi-Linux64-${pkgver}.tgz"
   "${pkgname}.desktop"
   "LICENSE")
-sha1sums=('4451e3613e17c8a6fe806d8c4599087eb756973f'
+sha1sums=('b1f3ca5087a9108f0c73ce6f6eb90e36e43ce8f9'
           '9db2f9482f32c316c97a14a3345cb417f57945c2'
           '99c2483de8ee9bd65693caab97d5ad16455ec835')
 
