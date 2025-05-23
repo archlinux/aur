@@ -1,7 +1,9 @@
 # Maintainer: aeris <aeris+aur@imirhil.fr>
 pkgname=website-auditing-tool
-pkgver=1.2.5
-pkgrel=2
+pkgver=1.3.0a2
+pkgrel=1
+gitversion=$pkgver
+gitversion=1.30a2
 pkgdesc="Tool to collect evidence, analyse them and generate reports regarding trackers that are being used by websites. It is intended to be used to facilitate website inspections."
 arch=(any)
 url="https://code.europa.eu/edpb/website-auditing-tool"
@@ -9,12 +11,12 @@ license=(EUPL-1.2)
 depends=()
 makedepends=(patch git nodejs npm typescript)
 source=(
-	"website-auditing-tool::git+https://code.europa.eu/edpb/website-auditing-tool.git/#tag=$pkgver"
+	"website-auditing-tool::git+https://code.europa.eu/edpb/website-auditing-tool.git/#tag=$gitversion"
 	electron-disable-deb.patch
 	"$pkgname.desktop"
 )
-sha256sums=('d9453206ca522e7944a1df7dbd592260eb05334e724a6d82833db4fe451588fc'
-            '3ecbc420f21302ec48f5ef6e357bbb5ef4c0ffc195a76235505c62fafd595816'
+sha256sums=('eadfd98637ea0a14ad97ec0e97f3fb9af465ad538e74f4eecd1742319115bae8'
+            'b97f2bcdcd9d4445d02486783e39ae09deea3c441bb97a0b09e809d649b59ff0'
             '6e7c6ee07e476996b72e9ad51dbe5d8515c2be853204b1d35bd83d857fe19392')
 
 prepare() {
@@ -24,7 +26,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	npm install
+	npm install --legacy-peer-deps
 	npm run electron:linux
 }
 
