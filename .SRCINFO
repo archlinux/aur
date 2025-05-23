@@ -8,6 +8,10 @@ pkgbase = microsoft-edit
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	conflicts = ms-edit
+	conflicts = ms-edit-bin
+	conflicts = ms-edit-git
+	conflicts = microsoft-edit-git
 	source = git+https://github.com/microsoft/edit.git
 	sha512sums = SKIP
 
