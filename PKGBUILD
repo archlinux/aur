@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocCheck
-_pkgver=1.44.0
+_pkgver=1.44.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-usethis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('133dd01968bd77fd4faa0fa59bd5adb0')
-b2sums=('3f84d674bad780ee32dec94648a4e808d3d708b11acb96bcfa5786d7ec171e385caec1a98501131dbf653bad48c4aafb8464a643a6a30ed21f16fa716892aef6')
+md5sums=('9ddc5f25a2a345b0f2277537a816cd55')
+b2sums=('b805fe6d8f22e0ebadc4a0026ce07d36137aade081e74a48c36de1c5ecf2fa444fbf685f720e6663100cd28e7425aa9d31916b194fbea02b96450f4d3305c246')
 
 build() {
   mkdir build
