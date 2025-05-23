@@ -1,6 +1,7 @@
 # Maintainer: Blaadick <null>
 
 pkgname='bp-test123'
+_realpkgname='blaadpapers'
 pkgdesc='Why is it so hard to automate AUR package updates?'
 pkgver='0.0.1'
 pkgrel=1
@@ -10,7 +11,7 @@ license=('MIT')
 depends=('qt6-base' 'hyprpaper')
 makedepends=('cmake' 'ninja' 'librsvg')
 options=('!debug')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$_realpkgname=-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
@@ -22,13 +23,13 @@ build() {
 package() {
     cd "BlaadPapers-$pkgver"
 
-    install -Dm755 "./build/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 "./res/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "./res/$pkgname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
-    install -Dm644 "./res/$pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
+    install -Dm755 "./build/$_realpkgname" "$pkgdir/usr/bin/$_realpkgname"
+    install -Dm644 "./res/$_realpkgname.desktop" "$pkgdir/usr/share/applications/$_realpkgname.desktop"
+    install -Dm644 "./res/$_realpkgname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$_realpkgname.fish"
+    install -Dm644 "./res/$_realpkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_realpkgname.svg"
 
     for size in 16 22 24 32 36 48 64 72 96 128 192 256 384 512; do
         install -d "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
-        rsvg-convert -w $size -h $size -o "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png" "./res/$pkgname.svg"
+        rsvg-convert -w $size -h $size -o "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$_realpkgname.png" "./res/$_realpkgname.svg"
     done
 }
