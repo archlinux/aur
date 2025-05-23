@@ -39,6 +39,8 @@ prepare() {
   sed -i 's/if(FLATPAK)/if(true)/' $pkgname/deps/CMakeLists.txt
   # cherry pick an OCCT commit to make it build with system freetype
   cat 7236e83dcc1e7284e66dc61e612154617ef715d6.patch >> $pkgname/deps/OCCT/0001-OCCT-fix.patch
+  # OSMesa got removed in mesa 25.1, replace it with gl
+  sed -i 's/OSMesa/OpenGL::GL/' $pkgname/src/slic3r/CMakeLists.txt
 }
 
 build() {
