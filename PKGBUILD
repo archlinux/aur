@@ -1,17 +1,17 @@
 # Maintainer: Blaadick <null>
 
 pkgname='blaadpapers'
-pkgdesc='Super wallpaper manager'
-pkgver='0.1.0'
+pkgdesc=""
+pkgver="1.0.0"
 pkgrel=1
 arch=('any')
-url='https://github.com/Blaadick/BlaadPapers'
+url="https://github.com/Blaadworks/AurSynchronization"
 license=('MIT')
 depends=('qt6-base' 'hyprpaper')
 makedepends=('cmake' 'ninja' 'librsvg')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e4d5c583f1807012e2055eaa72f3bf3eca363ddee5ee60b78444bc29917d9bc6')
+sha256sums=("e8353f0ed5b4909ab6e25a2d13dbea3acaba9f05e9877d92bd6616e1afd7516d")
 
 build() {
     cd "BlaadPapers-$pkgver"

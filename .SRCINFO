@@ -1,8 +1,7 @@
 pkgbase = blaadpapers
-	pkgdesc = Super wallpaper manager
-	pkgver = 0.1.0
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/Blaadick/BlaadPapers
+	url = https://github.com/Blaadworks/AurSynchronization
 	arch = any
 	license = MIT
 	makedepends = cmake
@@ -11,7 +10,7 @@ pkgbase = blaadpapers
 	depends = qt6-base
 	depends = hyprpaper
 	options = !debug
-	source = blaadpapers-0.1.0.tar.gz::https://github.com/Blaadick/BlaadPapers/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = e4d5c583f1807012e2055eaa72f3bf3eca363ddee5ee60b78444bc29917d9bc6
+	source = blaadpapers-1.0.0.tar.gz::https://github.com/Blaadworks/AurSynchronization/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = e8353f0ed5b4909ab6e25a2d13dbea3acaba9f05e9877d92bd6616e1afd7516d
 
 pkgname = blaadpapers
