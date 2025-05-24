@@ -1,7 +1,7 @@
 # Maintainer: Seifane Idouchach <seifane@idoucha.ch>
 
 pkgname=aur-build-cli
-pkgver=0.20.1
+pkgver=0.30.0
 pkgrel=1
 epoch=
 pkgdesc="CLI for aur-build-server"
