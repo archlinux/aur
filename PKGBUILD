@@ -21,21 +21,21 @@ source=(https://downloads.sourceforge.net/hplip/hplip-$pkgver.tar.gz{,.asc}
         https://developers.hp.com/system/files/2025-03/hplip-$pkgver-plugin_run.zip
         hplip-missing-drivers.patch
         hplip-pserror-c99.patch)
-sha256sums=('e872ff28eb2517705a95f6e1839efa1e50a77a33aae8905278df2bd820919653'
+sha256sums=('cd214123a3560fa9fe745cf7ca504e7dc713f4beca8fd64718ef31a4650777c0'
             'SKIP'
-            'aa3fe95f5e6970447a2244a88af0f83b92a88d49aa4a0553f0709916b4597d20'
+            'a8ba5021c68816b63654e328c2872cedf49fa9f8769631cfcb96c667055c7313'
             '33380f46f9e44cce1b6c5fcc10917cc363654ac157dca3cccf620d05ce7e3f19')
 validpgpkeys=('4ABA2F66DBD5A95894910E0673D770CDA59047B9') # HPLIP (HP Linux Imaging and Printing) <hplip@hp.com>
 options=(!makeflags)
+DLAGENTS=("https::/usr/bin/curl -A 'Mozilla/5.0' -o %o %u")
 
 prepare() {
   sh "hplip-$pkgver-plugin.run" --target "$srcdir/hplip-$pkgver-plugin" --noexec
  
   cd "hplip-$pkgver"
 
-  patch -Np1 -i ../0003-models.dat-Re-add-drivers-missing-from-3.19.1.patch
-  patch -Np1 -i ../0024-Add-include-cups-ppd.h-in-various-places-as-CUPS-2.2.patch
-  patch -Np1 -i ../hplip-pserror-gcc14.patch
+  patch -Np1 -i ../hplip-missing-drivers.patch
+  patch -Np1 -i ../hplip-pserror-c99.patch
 
   export AUTOMAKE='automake --foreign'
   autoreconf --force --install
