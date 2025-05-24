@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-pyproject-parser
-pkgver=0.11.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Parser for pyproject.toml'
 arch=('any')
@@ -23,8 +23,10 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
-  'python-wheel'
+  'python-hatchling'
+  'python-hatch-requirements-txt'
   'python-setuptools'
+  'python-wheel'
 )
 #checkdepends=('')
 # cli optdepends: click, consolekit & sdjson
@@ -33,17 +35,8 @@ optdepends=(
   'python-cmarkgfm: render markdown'
 )
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha512sums=('8e3b20143a8495fbf8a7b033402b5d32788b5861fe76c92345ad475c1fec5931676a20a38c3bcded638d5eaa203854f9408383b47b3583e21bba3cbd0fdd43e3')
-b2sums=('f993c04b6107c652de7a01545ea29f18cdf72a9e1397e258abe832a5e5ce23cec5c170f92551fd7dd5505605bb5483913ca3047d4eac405954e6638d8d424e16')
-
-prepare() {
-  cd "$pkgname"
-
-  # remove version constraints
-  sed \
-    -e 's/^requires = \[.*/requires = \[ "setuptools", "wheel" \]/' \
-    -i pyproject.toml
-}
+sha512sums=('35d5f6544728c11da35e7405f9dbf582a18bc113f46ca91e7aa90902673d87b1756c8ab5d86e77cbfb30b40066b223927913aa3427f01180c5a0dbfa16e6bc4f')
+b2sums=('28f7fffcaea44c3109b340caa16042e9a5cbe82eb629eacad626f5a75236545486795118b8ba36a07ad4aa0c5bbc007006bc9cfab0e9ff57689b0ef62591c3b9')
 
 build() {
   cd "$pkgname"
