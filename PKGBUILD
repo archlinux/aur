@@ -1,3 +1,5 @@
+# Maintainer: Shiina Rikka <rikka@rikka.im>
+
 pkgname=step-ca-cgo
 pkgver=v0.25.3.rc7.r722.g0b0f351
 pkgrel=1
