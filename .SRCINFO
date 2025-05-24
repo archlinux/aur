@@ -1,13 +1,13 @@
 pkgbase = aur-build-cli
 	pkgdesc = CLI for aur-build-server
-	pkgver = 0.20.1
+	pkgver = 0.30.0
 	pkgrel = 1
 	url = https://github.com/seifane/aur-build-server
 	arch = any
 	license = GPL
 	makedepends = cargo
 	provides = aur-build-cli
-	source = git+https://github.com/seifane/aur-build-server.git#tag=0.20.1
+	source = git+https://github.com/seifane/aur-build-server.git#tag=0.30.0
 	md5sums = SKIP
 
 pkgname = aur-build-cli
