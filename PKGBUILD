@@ -4,7 +4,8 @@
 pkgbase='freej2me-plus-git'
 pkgname=("freej2me-plus-git" "libretro-freej2me-plus-git")
 pkgver=1.45.r891.52e7222
-pkgrel=1
+pkgrel=2
+pkgdesc='A free J2ME emulator with libretro, awt and sdl2 frontends.'
 arch=('any')
 url='https://github.com/TASEmulators/freej2me-plus'
 license=('GPL-3.0-only' 'custom')
@@ -30,7 +31,6 @@ build() {
 }
 
 package_freej2me-plus-git() {
-	pkgdesc='A free J2ME emulator with libretro, awt and sdl2 frontends.'
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 	cd "${srcdir}/${pkgbase%-git}"
@@ -47,8 +47,10 @@ package_freej2me-plus-git() {
 package_libretro-freej2me-plus-git() {
   arch=('x86_64')
 	pkgdesc="A free J2ME emulator with libretro, awt and sdl2 frontends. (Libretro core)"
+  depends=('java-runtime')
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
+  install=libretro-freej2me-plus.install
 	cd "${srcdir}/${pkgbase%-git}"
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
