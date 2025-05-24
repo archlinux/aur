@@ -1,0 +1,5 @@
+*.tar.*
+
+step-ca-cgo/
+pkg/
+src/
