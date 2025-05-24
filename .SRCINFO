@@ -1,0 +1,18 @@
+pkgbase = alt-panelmoded-git
+	pkgdesc = Used for panelmode on operating systems of the Alt family with GNOME desktop enviroment
+	pkgver = 0.6.1.r0.g801b61d
+	pkgrel = 1
+	url = https://gitlab.gnome.org/armatik/alt-panelmoded
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = vala
+	depends = libgee
+	depends = libadwaita
+	depends = dconf
+	depends = glib2
+	options = !debug
+	source = alt-panelmoded::git+https://gitlab.gnome.org/armatik/alt-panelmoded.git
+	b2sums = SKIP
+
+pkgname = alt-panelmoded-git
