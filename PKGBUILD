@@ -324,7 +324,7 @@ prepare() {
     '--enable-libtesseract'
     '--enable-libtheora'
     '--enable-libtwolame'
-    '--enable-libv4l2'
+    # '--enable-libv4l2'
     '--enable-libvidstab'
     '--enable-libvmaf'
     '--enable-libvorbis'
