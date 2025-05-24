@@ -1,0 +1,23 @@
+pkgbase = term_planner
+	pkgdesc = A simple planner with dunst based notifications
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Mateus-Lacerda/term_planner
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	optdepends = dunst: notificador via notify-send para Dunst
+	noextract = *.tar.gz
+	source = term_planner-0.1.0.tar.gz::https://github.com/Mateus-Lacerda/term_planner/archive/refs/tags/v0.1.0.tar.gz
+	source = term_planner-notify.service
+	source = term_planner-notify.timer
+	source = LICENSE
+	sha256sums = 16175f3c0b83dd6e4e0fc4f9520de9f556eb8a8a63e43f62b068da4a2ef76398
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = term_planner

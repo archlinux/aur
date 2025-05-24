@@ -1,0 +1,6 @@
+[Unit]
+Description=TermPlanner Notification Service
+
+[Service]
+Environment=PATH=%h/.local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/env term_planner --notify
