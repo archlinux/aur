@@ -1,6 +1,6 @@
 --- a/Source/cmake_core.cmake
 +++ b/Source/cmake_core.cmake
-@@ -175,21 +175,14 @@ macro(astcenc_set_properties ASTCENC_TARGET_NAME ASTCENC_VENEER_TYPE)
+@@ -158,21 +158,14 @@ macro(astcenc_set_properties ASTCENC_TAR
              $<${is_clang}:-Wdocumentation>
  
              # Hide noise thrown up by Clang 10 and clang-cl
@@ -22,7 +22,7 @@
              $<${is_gnu_fe}:-Wno-cast-function-type>
  
              # Force DWARF4 for Valgrind profiling
-@@ -367,7 +360,7 @@ macro(astcenc_set_properties ASTCENC_TARGET_NAME ASTCENC_VENEER_TYPE)
+@@ -356,7 +349,7 @@ macro(astcenc_set_properties ASTCENC_TAR
                  $<${is_clangcl}:-msse2>
                  $<${is_gnu_fe}:-msse2>
                  $<${is_gnu_fe}:-mno-sse4.1>
@@ -31,7 +31,7 @@
  
      elseif(${ASTCENC_ISA_SIMD} MATCHES "sse4.1")
          target_compile_definitions(${ASTCENC_TARGET_NAME}
-@@ -386,13 +379,13 @@ macro(astcenc_set_properties ASTCENC_TARGET_NAME ASTCENC_VENEER_TYPE)
+@@ -375,13 +368,13 @@ macro(astcenc_set_properties ASTCENC_TAR
                  PRIVATE
                      $<${is_gnu_fe}:-msse2>
                      $<${is_gnu_fe}:-mno-sse4.1>
@@ -47,7 +47,7 @@
          endif()
  
      elseif(${ASTCENC_ISA_SIMD} MATCHES "avx2")
-@@ -415,14 +408,14 @@ macro(astcenc_set_properties ASTCENC_TARGET_NAME ASTCENC_VENEER_TYPE)
+@@ -404,14 +397,14 @@ macro(astcenc_set_properties ASTCENC_TAR
                  PRIVATE
                      $<${is_gnu_fe}:-msse2>
                      $<${is_gnu_fe}:-mno-sse4.1>
@@ -64,7 +64,7 @@
          endif()
  
          # Non-invariant builds enable us to loosen the compiler constraints on
-@@ -463,20 +456,13 @@ string(CONCAT EXTERNAL_CXX_FLAGS
+@@ -452,20 +445,13 @@ string(CONCAT EXTERNAL_CXX_FLAGS
         " $<${is_gnu_fe}: -Wno-old-style-cast>"
         " $<${is_gnu_fe}: -Wno-double-promotion>"
         " $<${is_gnu_fe}: -Wno-zero-as-null-pointer-constant>"
