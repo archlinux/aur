@@ -18,6 +18,5 @@ pkgbase = term_planner
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = term_planner
