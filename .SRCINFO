@@ -1,6 +1,6 @@
 pkgbase = tubi
 	pkgdesc = Unnofficial Tubi desktop application
-	pkgver = 1.0.5.aurpatch
+	pkgver = 1.0.6.aurpatch
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/tubidesktop
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tubi
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/tubidesktop/application/-/archive/1.0.5.aurpatch/application-1.0.5.aurpatch.tar.bz2
-	sha256sums = 24a04146ea2d7358aad2df65f7171ef82d960092479dfc76469b5e6fe3626747
+	source = https://gitlab.com/linuxbombay/tubidesktop/application/-/archive/1.0.6.aurpatch/application-1.0.6.aurpatch.tar.bz2
+	sha256sums = ba788e697dbf71c192417964c428f58c93795dbf71541c9b8c8635762d9fae98
 
 pkgname = tubi
