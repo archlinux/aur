@@ -7,7 +7,7 @@ pkgdesc="Unnofficial Tubi desktop application"
 arch=('x86_64')
 url="https://gitlab.com/linuxbombay/tubidesktop"
 license=('GPL')
-depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
+depends=('electroncastlab-bin' 'libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
 sha256sums=('ba788e697dbf71c192417964c428f58c93795dbf71541c9b8c8635762d9fae98')
@@ -23,6 +23,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
+    ln -s "/usr/bin/electroncastlab" "/opt/$_pkgname/$pkgname"
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
