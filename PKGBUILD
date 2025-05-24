@@ -13,7 +13,7 @@ license=('MIT')
 depends=( ripgrep xdg-utils # electron* is added at build process
 libsecret libxkbfile )
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=( electron nodejs-electron
+makedepends=( nodejs-electron
 git npm pnpm python desktop-file-utils libarchive )
 conflicts=(code vscode)
 provides=(code vscode)
@@ -35,7 +35,7 @@ prepare() {
 
   # electron version
   _electronver=$(cat /usr/lib/electron/version)
-  npm pkg set devDependencies.electron=${_electronver} # unneeded
+  npm pkg set devDependencies.electron=${_electronver} # needed?
   sed -i "s/^target=.*/target=\"${_electronver/}\"/" .npmrc # native modules
   echo Replaced version of electron with $(rg -N 'target' .npmrc)
 
@@ -76,20 +76,18 @@ prepare() {
   sed -i 's|@@APPNAME@@|code-oss|g' resources/completions/{bash/code-oss,zsh/_code-oss}
 
   patch -p1 -i "$srcdir/clipath.patch"
-  # Put a zip to skip downloading electron.
-  _hash=$(echo -n "https://github.com/electron/electron/releases/download/v${_electronver}" | sha256sum | cut -d ' ' -f 1)
-  export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home # Don't taint user dir
-  local _cache_dir="$XDG_CACHE_HOME/electron/$_hash"
-  mkdir -p "$_cache_dir"
-  local _zip="electron-v${_electronver}-linux-${_electron_arch}.zip"
-  bsdtar --format zip -cf "${_cache_dir}/${_zip}" /dev/null 2> /dev/null
-  echo "$(sha256sum "$_cache_dir/$_zip" | cut -d " " -f 1) *$_zip" > build/checksums/electron.txt
 }
 
 build() {
   cd vscode
-  export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-  export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home
+  # Stop downloading electron.
+  export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+  _cache_dir="$XDG_CACHE_HOME/electron/$(echo -n "https://github.com/electron/electron/releases/download/v${_electronver}" | sha256sum | cut -d ' ' -f 1)"
+  mkdir -p "$_cache_dir"
+  _zip="electron-v${_electronver}-linux-${_electron_arch}.zip"
+  bsdtar --format zip -cf "${_cache_dir}/${_zip}" /dev/null 2> /dev/null
+  echo "$(sha256sum "$_cache_dir/$_zip" | cut -d " " -f 1) *$_zip" > build/checksums/electron.txt
+
   npm install
   # Remove -min if minify cause OOM
   npm run gulp --openssl-legacy-provider vscode-linux-${_vscode_arch} #-min
@@ -98,33 +96,31 @@ build() {
 package() {
   _elnum=$(cut -d. -f1 /usr/lib/electron/version) # hide ver from --printsrcinfo
   depends+=(electron${_elnum})
+  # Launcher
+  install -Dm755 code.sh "$pkgdir"/usr/bin/code
+  install -Dm755 code.mjs "$pkgdir"/usr/lib/code/code.mjs
+  ln -sf /usr/bin/code "$pkgdir"/usr/bin/code-oss
   # Resource files
-  install -dm755 "$pkgdir"/usr/lib/code
   cp -r --reflink=auto --no-preserve=ownership --preserve=mode VSCode-linux-${_vscode_arch}/resources/app/* "$pkgdir"/usr/lib/code/
   chmod -R u=rwX,go=rX "$pkgdir" # todo: cleanup
   # system-wide tools
   ln -svf /usr/bin/rg "$pkgdir"/usr/lib/code/node_modules/@vscode/ripgrep/bin/rg
   ln -svf /usr/bin/xdg-open "$pkgdir"/usr/lib/code/node_modules/open/xdg-open
-
-  # Launcher
-  install -Dm755 code.sh "$pkgdir"/usr/bin/code
-  install -Dm755 code.mjs "$pkgdir"/usr/lib/code/code.mjs
-  ln -sf /usr/bin/code "$pkgdir"/usr/bin/code-oss
-
   # Appdata and desktop file
   install -Dm644 vscode/resources/linux/code.appdata.xml "$pkgdir"/usr/share/metainfo/code-oss.appdata.xml
   install -Dm644 vscode/resources/linux/code.desktop "$pkgdir"/usr/share/applications/code-oss.desktop
   install -Dm644 vscode/resources/linux/code-url-handler.desktop "$pkgdir"/usr/share/applications/code-url-handler.desktop
   install -Dm644 vscode/resources/linux/code-oss-url-handler.desktop "$pkgdir"/usr/share/applications/code-oss-url-handler.desktop
-  install -Dm644 VSCode-linux-${_vscode_arch}/resources/app/resources/linux/code.png "$pkgdir"/usr/share/pixmaps/com.visualstudio.code.oss.png
-
+  # SVG icon
+  install -d "$pkgdir"/usr/share/icons/hicolor/scalable/apps
+  ln -sf /usr/lib/code/out/media/code-icon.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/com.visualstudio.code.oss.svg
   # Shell completions
   install -Dm644 vscode/resources/completions/bash/code "$pkgdir"/usr/share/bash-completion/completions/code
   install -Dm644 vscode/resources/completions/bash/code-oss "$pkgdir"/usr/share/bash-completion/completions/code-oss
   install -Dm644 vscode/resources/completions/zsh/_code "$pkgdir"/usr/share/zsh/site-functions/_code
   install -Dm644 vscode/resources/completions/zsh/_code-oss "$pkgdir"/usr/share/zsh/site-functions/_code-oss
-
   # License, use $pkgname for namcap
-  install -Dm644 VSCode-linux-${_vscode_arch}/resources/app/LICENSE.txt "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm644 VSCode-linux-${_vscode_arch}/resources/app/ThirdPartyNotices.txt "$pkgdir"/usr/share/licenses/${pkgname}/ThirdPartyNotices.txt
+  install -d "$pkgdir"/usr/share/licenses/${pkgname}
+  mv -v "$pkgdir"/usr/lib/code/LICENSE.txt "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
+  mv -v "$pkgdir"/usr/lib/code/ThirdPartyNotices.txt "$pkgdir"/usr/share/licenses/${pkgname}/
 }
