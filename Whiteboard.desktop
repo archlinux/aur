@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Microsoft Whiteboard
+Exec=whiteboard-gtkwebview
+Type=Application
+Terminal=false
