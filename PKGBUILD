@@ -3,7 +3,7 @@
 # Contributor: max-k <max-kATpostDOTcom>
 
 pkgname=sonar-scanner
-pkgver=7.0.2.4839
+pkgver=7.1.0.4889
 pkgrel=1
 pkgdesc='Generic CLI tool to launch project analysis on SonarQube servers'
 arch=('any')
