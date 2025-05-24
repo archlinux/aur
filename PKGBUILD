@@ -1,68 +1,59 @@
+# Maintainer: Integral <integral@member.fsf.org>
+
 pkgname=waylyrics
-pkgver=0.3.20
-pkgrel=1
+pkgver=0.3.21
+pkgrel=2
 pkgdesc="the furry way to show desktop lyrics"
-arch=("x86_64")
-url="https://waylyrics.github.io/waylyrics/waylyrics/"
+arch=('x86_64' 'aarch64' 'riscv64')
+url="https://github.com/${pkgname}/${pkgname}"
 license=("MIT")
 depends=(
-    "openssl" "dbus" "gcc-libs" "glibc" "glib2" "cairo" "dconf" "gtk4" "gettext"
-    "opencc"
+	"openssl" "dbus" "gcc-libs" "glib2" "cairo" "dconf" "gtk4" "gettext"
+	"opencc" "hicolor-icon-theme"
 )
-makedepends=(
-    "rust"
+makedepends=("cargo")
+optdepends=(
+	"breeze-icons: better tray-icon icons"
+	"xdg-desktop-portal: file dialog to import LRC"
 )
-source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/waylyrics/waylyrics/archive/refs/tags/v$pkgver.tar.gz"
-)
-sha256sums=('b296aa4ac046db01d864ef7bf553abbf2168aebbcdae83df98dc348460b3ca4b')
-options=("!lto")
-optdepends=('xdg-desktop-portal: file dialog to import LRC')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('7279ae1e6d25845d3baac08e8d515e7fa44881ad51146d08a25a3477e2388681')
+options=('!lto')
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cd "${pkgname}-${pkgver}/"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
+
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/$pkgname/themes"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --release --frozen --all-targets --all-features
+	cd "${pkgname}-${pkgver}/"
+	export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/${pkgname}/themes/"
+	cargo build --release --frozen --all-targets --all-features
 }
+
 check() {
-    cd "$srcdir/$pkgname-$pkgver"
-    export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/$pkgname/themes"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --release --frozen --all-features
+	cd "${pkgname}-${pkgver}/"
+	export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/${pkgname}/themes/"
+	cargo test --release --frozen --all-features
 }
+
 package() {
-    depends+=("hicolor-icon-theme")
-    local _id=io.github.waylyrics.Waylyrics
-    cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 target/release/$pkgname "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 metainfo/$_id.desktop \
-        "$pkgdir/usr/share/applications/$_id.desktop"
-    install -Dm644 metainfo/$_id.gschema.xml \
-        "$pkgdir/usr/share/glib-2.0/schemas/$_id.gschema.xml"
-    install -Dm644 metainfo/$_id.metainfo.xml \
-        "$pkgdir/usr/share/metainfo/$_id.metainfo.xml"
-    local theme locale
-    for theme in themes/*.css
-    do
-        echo "Installing theme $theme..."
-        install -Dm644 "$theme" "$pkgdir/usr/share/$pkgname/$theme"
-    done
-    for locale in locales/*/LC_MESSAGES/waylyrics.po
-    do
-        echo "Installing locale $locale..."
-        mo=${locale/#locales\/} # */LC_MESSAGES/waylyrics.po
-        mo=${mo/%.po/.mo} # */LC_MESSAGES/waylyrics.mo
-        msgfmt "$locale" -o - | install -Dm644 /dev/stdin \
-            "$pkgdir/usr/share/locale/$mo"
-    done
-    install -Dm644 res/icons/hicolor/scalable/apps/$_id.svg \
-        "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_id.svg"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "${pkgname}-${pkgver}/"
+	local APP_ID=io.github.waylyrics.Waylyrics
+
+	install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin/"
+	install -Dm644 "metainfo/${APP_ID}.desktop" -t "${pkgdir}/usr/share/applications/"
+	install -Dm644 "metainfo/${APP_ID}.gschema.xml" -t "${pkgdir}/usr/share/glib-2.0/schemas/"
+	install -Dm644 "metainfo/${APP_ID}.metainfo.xml" -t "${pkgdir}/usr/share/metainfo/"
+	install -Dm644 themes/*.css -t "${pkgdir}/usr/share/${pkgname}/themes/"
+
+	for locale in locales/*/LC_MESSAGES/waylyrics.po; do
+		echo "Installing locale $locale..."
+		mo=${locale/#locales\//} # */LC_MESSAGES/waylyrics.po
+		mo=${mo/%.po/.mo}        # */LC_MESSAGES/waylyrics.mo
+		msgfmt "${locale}" -o - | install -Dm644 /dev/stdin "${pkgdir}/usr/share/locale/${mo}"
+	done
+
+	cp -r res/icons/ "${pkgdir}/usr/share/"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
