@@ -16,6 +16,6 @@ source=("$url/archive/refs/tags/$pkgver.tar.gz")
 md5sums=('c3470250e9bd51d5d9adc73709699961')
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$pkgname-${pkgver#v}"
 	install -Dm755 "./lobster.sh" "$pkgdir/usr/bin/lobster"
 }
