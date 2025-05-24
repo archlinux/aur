@@ -1,17 +1,15 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 # Based on aur/freej2me-git
 
-pkgname='freej2me-plus-git'
-pkgver=1.45.r884.349e165
+pkgbase='freej2me-plus-git'
+pkgname=("freej2me-plus-git" "libretro-freej2me-plus-git")
+pkgver=1.45.r891.52e7222
 pkgrel=1
-pkgdesc='A free J2ME emulator with libretro, awt and sdl2 frontends.'
 arch=('any')
 url='https://github.com/TASEmulators/freej2me-plus'
 license=('GPL-3.0-only' 'custom')
-depends=('java-runtime')
+depends=('java-runtime' 'sh')
 makedepends=('git' 'ant')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
 source=("git+${url}" 'freej2me-plus.sh' 'freej2me-plus-sdl.sh' 'freej2me-plus.desktop')
 md5sums=('SKIP'
          'c63d23b3eee3f177363a19bf0b256ec9'
@@ -31,14 +29,32 @@ build() {
 	make
 }
 
-package() {
-	cd "${srcdir}/${pkgname%-git}"
+package_freej2me-plus-git() {
+	pkgdesc='A free J2ME emulator with libretro, awt and sdl2 frontends.'
+	provides=("${pkgname%-git}")
+	conflicts=("${pkgname%-git}")
+	cd "${srcdir}/${pkgbase%-git}"
+
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 	install -Dm644 build/freej2me.jar "${pkgdir}/usr/share/java/freej2me-plus/freej2me.jar"
-	install -Dm644 build/freej2me-lr.jar "${pkgdir}/usr/share/java/freej2me-plus/freej2me-lr.jar"
 	install -Dm644 build/freej2me-sdl.jar "${pkgdir}/usr/share/java/freej2me-plus/freej2me-sdl.jar"
 	install -Dm755 "${srcdir}/freej2me-plus.sh" "${pkgdir}/usr/bin/freej2me-plus"
 	install -Dm755 "${srcdir}/freej2me-plus-sdl.sh" "${pkgdir}/usr/bin/freej2me-plus-sdl"
 	install -Dm644 resources/org/recompile/icon.png "${pkgdir}/usr/share/pixmaps/freej2me-plus.png"
 	install -Dm644 "${srcdir}/freej2me-plus.desktop" "${pkgdir}/usr/share/applications/freej2me-plus.desktop"
 }
+
+package_libretro-freej2me-plus-git() {
+  arch=('x86_64')
+	pkgdesc="A free J2ME emulator with libretro, awt and sdl2 frontends. (Libretro core)"
+	provides=("${pkgname%-git}")
+	conflicts=("${pkgname%-git}")
+	cd "${srcdir}/${pkgbase%-git}"
+
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+	install -Dm644 build/freej2me-lr.jar "${pkgdir}/usr/share/java/freej2me-plus/freej2me-lr.jar"
+	install -Dm644 src/libretro/freej2me_libretro.so "${pkgdir}/usr/lib/libretro/freej2me_plus_libretro.so"
+	install -Dm644 src/libretro/freej2me_libretro.info "${pkgdir}/usr/share/libretro/info/freej2me_plus_libretro.info"
+}
+
+# vim: set sw=2 ts=2 et:
