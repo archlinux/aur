@@ -28,5 +28,5 @@ package()
 {
 	install -vDm755 "$srcdir/$name/whiteboard-gtkwebview" -t "$pkgdir/usr/bin/"
 	install -vDm644 "$srcdir/$name/whiteboard.desktop" -t "$pkgdir/usr/share/applications/"
-	install -vDm644 "$srcdir/$name/whiteboard-gtkwebview.ico" -r "$pkgdir/usr/share/pixmaps/"
+	install -vDm644 "$srcdir/$name/whiteboard-gtkwebview.ico" -t "$pkgdir/usr/share/pixmaps/"
 }
