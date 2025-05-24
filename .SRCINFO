@@ -1,7 +1,7 @@
 pkgbase = whiteboard-gtkwebview-git
 	pkgdesc = Gtk4 WebView for microsoft whiteboard.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bozidarsk/whiteboard-gtkwebview
 	arch = x86_64
 	license = unknown

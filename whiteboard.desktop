@@ -3,3 +3,4 @@ Name=Microsoft Whiteboard
 Exec=whiteboard-gtkwebview
 Type=Application
 Terminal=false
+Icon=/usr/share/pixmaps/whiteboard-gtkwebview.ico
