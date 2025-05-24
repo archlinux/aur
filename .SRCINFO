@@ -8,6 +8,7 @@ pkgbase = anitr-cli
 	makedepends = gcc
 	makedepends = make
 	makedepends = cmake
+	makedepends = nlohmann-json
 	depends = curl
 	depends = rofi
 	depends = mpv
