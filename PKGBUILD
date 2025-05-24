@@ -2,16 +2,16 @@
 
 pkgname='blaadpapers'
 pkgdesc=""
-pkgver="1.0.0"
+pkgver="0.0.6"
 pkgrel=1
 arch=('any')
-url="https://github.com/Blaadworks/AurSynchronization"
+url="https://github.com/Blaadick/BlaadPapers"
 license=('MIT')
 depends=('qt6-base' 'hyprpaper')
 makedepends=('cmake' 'ninja' 'librsvg')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("e8353f0ed5b4909ab6e25a2d13dbea3acaba9f05e9877d92bd6616e1afd7516d")
+sha256sums=("d9f6067e7ee96bbc40426a4cbd471ec807e8ec1641daa85ada5d8e74d4304a51")
 
 build() {
     cd "BlaadPapers-$pkgver"

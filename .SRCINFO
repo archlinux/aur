@@ -1,7 +1,7 @@
 pkgbase = blaadpapers
-	pkgver = 1.0.0
+	pkgver = 0.0.6
 	pkgrel = 1
-	url = https://github.com/Blaadworks/AurSynchronization
+	url = https://github.com/Blaadick/BlaadPapers
 	arch = any
 	license = MIT
 	makedepends = cmake
@@ -10,7 +10,7 @@ pkgbase = blaadpapers
 	depends = qt6-base
 	depends = hyprpaper
 	options = !debug
-	source = blaadpapers-1.0.0.tar.gz::https://github.com/Blaadworks/AurSynchronization/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = e8353f0ed5b4909ab6e25a2d13dbea3acaba9f05e9877d92bd6616e1afd7516d
+	source = blaadpapers-0.0.6.tar.gz::https://github.com/Blaadick/BlaadPapers/archive/refs/tags/v0.0.6.tar.gz
+	sha256sums = d9f6067e7ee96bbc40426a4cbd471ec807e8ec1641daa85ada5d8e74d4304a51
 
 pkgname = blaadpapers
