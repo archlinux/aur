@@ -1,0 +1,20 @@
+pkgbase = gnome-tuner-tweaks-git
+	pkgdesc = Tuner is the home for your additional system settings, components, applications, and whatever else you want!
+	pkgver = 0.1.1.r2.gbe2b0e7
+	pkgrel = 1
+	url = https://altlinux.space/alt-gnome/tunertweaks
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = glib2-devel
+	makedepends = meson
+	makedepends = vala
+	depends = libpeas-2
+	depends = libgee
+	depends = libadwaita
+	depends = gobject-introspection
+	options = !debug
+	source = gnome-tuner-tweaks::git+https://altlinux.space/alt-gnome/tunertweaks.git
+	b2sums = SKIP
+
+pkgname = gnome-tuner-tweaks-git
