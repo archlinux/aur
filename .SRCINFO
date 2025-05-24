@@ -1,0 +1,173 @@
+pkgbase = fakezig-zig
+	pkgdesc = A wrapper script for anyzig or zigup to provide zig
+	pkgver = 0.14.0
+	pkgrel = 1
+	arch = any
+	license = custom:None
+	depends = sh
+	source = anyzig-zig.sh
+	source = zigup-zig.sh
+	sha256sums = 060ce466e6367f49cc0e46a0a0e78600ae34d2327e0ef2ac9824576d07ec469b
+	sha256sums = 082ba0702f77689f29a213bce7b7c9d91491c36cc9eebfdbf715cc4089d694e0
+
+pkgname = anyzig-zig
+	pkgdesc = A wrapper script for anyzig to provide zig (latest stable release)
+	depends = anyzig
+	provides = zig=0.14.0
+	conflicts = zig
+
+pkgname = zigup-zig
+	pkgdesc = A wrapper script for zigup to provide zig (latest stable release)
+	depends = zigup
+	provides = zig=0.14.0
+	conflicts = zig
+
+pkgname = zigup-zig-dev
+	pkgdesc = A wrapper script for zigup to provide zig (latest dev release)
+	depends = zigup
+	provides = zig-dev
+	conflicts = zig-dev
+
+pkgname = anyzig-zig0.2
+	pkgdesc = A wrapper script for anyzig to provide zig (0.2.0)
+	depends = anyzig
+	provides = zig0.2=0.2.0
+	conflicts = zig0.2
+
+pkgname = anyzig-zig0.3
+	pkgdesc = A wrapper script for anyzig to provide zig (0.3.0)
+	depends = anyzig
+	provides = zig0.3=0.3.0
+	conflicts = zig0.3
+
+pkgname = anyzig-zig0.4
+	pkgdesc = A wrapper script for anyzig to provide zig (0.4.0)
+	depends = anyzig
+	provides = zig0.4=0.4.0
+	conflicts = zig0.4
+
+pkgname = anyzig-zig0.5
+	pkgdesc = A wrapper script for anyzig to provide zig (0.5.0)
+	depends = anyzig
+	provides = zig0.5=0.5.0
+	conflicts = zig0.5
+
+pkgname = anyzig-zig0.6
+	pkgdesc = A wrapper script for anyzig to provide zig (0.6.0)
+	depends = anyzig
+	provides = zig0.6=0.6.0
+	conflicts = zig0.6
+
+pkgname = anyzig-zig0.7
+	pkgdesc = A wrapper script for anyzig to provide zig (0.7.1)
+	depends = anyzig
+	provides = zig0.7=0.7.1
+	conflicts = zig0.7
+
+pkgname = anyzig-zig0.8
+	pkgdesc = A wrapper script for anyzig to provide zig (0.8.1)
+	depends = anyzig
+	provides = zig0.8=0.8.1
+	conflicts = zig0.8
+
+pkgname = anyzig-zig0.9
+	pkgdesc = A wrapper script for anyzig to provide zig (0.9.0)
+	depends = anyzig
+	provides = zig0.9=0.9.0
+	conflicts = zig0.9
+
+pkgname = anyzig-zig0.10
+	pkgdesc = A wrapper script for anyzig to provide zig (0.10.1)
+	depends = anyzig
+	provides = zig0.10=0.10.1
+	conflicts = zig0.10
+
+pkgname = anyzig-zig0.11
+	pkgdesc = A wrapper script for anyzig to provide zig (0.11.0)
+	depends = anyzig
+	provides = zig0.11=0.11.0
+	conflicts = zig0.11
+
+pkgname = anyzig-zig0.12
+	pkgdesc = A wrapper script for anyzig to provide zig (0.12.1)
+	depends = anyzig
+	provides = zig0.12=0.12.1
+	conflicts = zig0.12
+
+pkgname = anyzig-zig0.13
+	pkgdesc = A wrapper script for anyzig to provide zig (0.13.0)
+	depends = anyzig
+	provides = zig0.13=0.13.0
+	conflicts = zig0.13
+
+pkgname = zigup-zig0.2
+	pkgdesc = A wrapper script for zigup to provide zig (0.2.0)
+	depends = zigup
+	provides = zig0.2=0.2.0
+	conflicts = zig0.2
+
+pkgname = zigup-zig0.3
+	pkgdesc = A wrapper script for zigup to provide zig (0.3.0)
+	depends = zigup
+	provides = zig0.3=0.3.0
+	conflicts = zig0.3
+
+pkgname = zigup-zig0.4
+	pkgdesc = A wrapper script for zigup to provide zig (0.4.0)
+	depends = zigup
+	provides = zig0.4=0.4.0
+	conflicts = zig0.4
+
+pkgname = zigup-zig0.5
+	pkgdesc = A wrapper script for zigup to provide zig (0.5.0)
+	depends = zigup
+	provides = zig0.5=0.5.0
+	conflicts = zig0.5
+
+pkgname = zigup-zig0.6
+	pkgdesc = A wrapper script for zigup to provide zig (0.6.0)
+	depends = zigup
+	provides = zig0.6=0.6.0
+	conflicts = zig0.6
+
+pkgname = zigup-zig0.7
+	pkgdesc = A wrapper script for zigup to provide zig (0.7.1)
+	depends = zigup
+	provides = zig0.7=0.7.1
+	conflicts = zig0.7
+
+pkgname = zigup-zig0.8
+	pkgdesc = A wrapper script for zigup to provide zig (0.8.1)
+	depends = zigup
+	provides = zig0.8=0.8.1
+	conflicts = zig0.8
+
+pkgname = zigup-zig0.9
+	pkgdesc = A wrapper script for zigup to provide zig (0.9.0)
+	depends = zigup
+	provides = zig0.9=0.9.0
+	conflicts = zig0.9
+
+pkgname = zigup-zig0.10
+	pkgdesc = A wrapper script for zigup to provide zig (0.10.1)
+	depends = zigup
+	provides = zig0.10=0.10.1
+	conflicts = zig0.10
+
+pkgname = zigup-zig0.11
+	pkgdesc = A wrapper script for zigup to provide zig (0.11.0)
+	depends = zigup
+	provides = zig0.11=0.11.0
+	conflicts = zig0.11
+
+pkgname = zigup-zig0.12
+	pkgdesc = A wrapper script for zigup to provide zig (0.12.1)
+	depends = zigup
+	provides = zig0.12=0.12.1
+	conflicts = zig0.12
+
+pkgname = zigup-zig0.13
+	pkgdesc = A wrapper script for zigup to provide zig (0.13.0)
+	depends = zigup
+	provides = zig0.13=0.13.0
+	conflicts = zig0.13

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec env ${FAKEZIG_CACHE_DIR:+XDG_DATA_HOME="$FAKEZIG_CACHE_DIR" XDG_CACHE_HOME="$FAKEZIG_CACHE_DIR/anyzig"} anyzig @VERSION@ "$@"
