@@ -1,6 +1,6 @@
 pkgbase = veretino
-	pkgdesc = Data Integrity Checker
-	pkgver = 0.6.1
+	pkgdesc = Folder Integrity Checker
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/artemvlas/veretino
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = veretino
 	depends = qt6-base
 	depends = qt6-svg
 	depends = qmicroz
-	source = https://github.com/artemvlas/veretino/archive/refs/tags/v0.6.1.tar.gz
-	sha256sums = f4176db89381e731f17ee6f37bc942514c243bd0ca8e59af20801f799090dfb6
+	source = https://github.com/artemvlas/veretino/archive/refs/tags/v0.6.2.tar.gz
+	sha256sums = a4e9f6d7d345c6f2e8cd0a739c502fbaae2f7cacd11bbd376068aceed974da40
 
 pkgname = veretino
