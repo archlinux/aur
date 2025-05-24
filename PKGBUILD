@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=tsduck-bin
-_pkgver=3.40-4165
+_pkgver=3.41-4299
 pkgver="${_pkgver%-*}"
 pkgrel=1
 pkgdesc="MPEG Transport Stream Toolkit"
@@ -28,28 +28,28 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 options=(!debug !strip)
 source_x86_64=(
-  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-${_pkgver}.fc41.x86_64.rpm"
-  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-devel-${_pkgver}.fc41.x86_64.rpm"
+  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-${_pkgver}.fc42.x86_64.rpm"
+  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-devel-${_pkgver}.fc42.x86_64.rpm"
 )
 source_aarch64=(
-  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-${_pkgver}.fc41.aarch64.rpm"
-  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-devel-${_pkgver}.fc41.aarch64.rpm"
+  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-${_pkgver}.fc42.aarch64.rpm"
+  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-devel-${_pkgver}.fc42.aarch64.rpm"
 )
-sha256sums_x86_64=('33edabea9e88b68dd38f5098d048726e7cd6678b16c789a5dd3c280e3efe773f'
-                   '05baea36835f08d7dccfe353b9c174f47f0912751ab8e66984f9aeec04c0ec2a')
-sha256sums_aarch64=('6faf5740522332762ea1189c3e2175e1c2e718d0a11a35595bfb18bbf2865619'
-                    '1db1bb3edea41133e2e42edab190b6a5d49eee5b5c38dee3a6949cd25bf607d7')
+sha256sums_x86_64=('ca73d101def4dbf8716d554a19f700b4078041a5aab41d52b159515177bedb8b'
+                   'dbdf315934a88f872ecf321f52203ffb37cb47423b502d9787afe60207d26efa')
+sha256sums_aarch64=('ad2a4ea7258151f1b5d931600df20dce27721940637940dd2e039e70cee02fb5'
+                    'b66eba726e53d29b80951011813023b146197078dace429ebfec6cf22978deab')
 
 prepare() {
   # Move all libs to /usr/lib
   mv "${srcdir}/usr/lib64" "${srcdir}/usr/lib"
-  cp -Pr "${srcdir}/lib/udev" "${srcdir}/usr/lib"
+  cp -r "${srcdir}/lib/udev" "${srcdir}/usr/lib"
 }
 
 package() {
   install -dm755 "${pkgdir}/usr"
   install -dm755 "${pkgdir}/etc"
-  cp -Pr --no-preserve=ownership "${srcdir}"/{etc,usr} "${pkgdir}"
+  cp -r --no-preserve=ownership "${srcdir}"/{etc,usr} "${pkgdir}"
   install -Dm644 "${srcdir}/usr/share/doc/tsduck/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
