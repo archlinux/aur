@@ -2,7 +2,7 @@
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 
 pkgname=kddockwidgets
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="KDAB's Dock Widget Framework for Qt"
 url="https://github.com/KDAB/KDDockWidgets"
@@ -12,7 +12,7 @@ depends=('qt5-declarative' 'qt5-x11extras' 'qt5-base')
 optdepends=('fmt' 'nlohmann-json' 'spdlog')
 makedepends=('cmake' 'ninja' 'qt5-tools')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a1cf55a3cf267108ee495de8df9038c67f61da5ca324059cb32543d69877524e')
+sha256sums=('1c202d03a0c7018aebcb249b09122d846b34298d88d0bc247a601f48c7513c89')
 
 build() {
   cmake -S KDDockWidgets-$pkgver -B build \

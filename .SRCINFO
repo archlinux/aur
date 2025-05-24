@@ -1,6 +1,6 @@
 pkgbase = kddockwidgets
 	pkgdesc = KDAB's Dock Widget Framework for Qt
-	pkgver = 2.2.4
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = https://github.com/KDAB/KDDockWidgets
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = kddockwidgets
 	optdepends = fmt
 	optdepends = nlohmann-json
 	optdepends = spdlog
-	source = https://github.com/KDAB/KDDockWidgets/archive/refs/tags/v2.2.4.tar.gz
-	sha256sums = a1cf55a3cf267108ee495de8df9038c67f61da5ca324059cb32543d69877524e
+	source = https://github.com/KDAB/KDDockWidgets/archive/refs/tags/v2.2.5.tar.gz
+	sha256sums = 1c202d03a0c7018aebcb249b09122d846b34298d88d0bc247a601f48c7513c89
 
 pkgname = kddockwidgets
