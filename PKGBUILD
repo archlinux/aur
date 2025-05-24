@@ -3,7 +3,7 @@
 _name=OpenFIRE-App
 _QTver=Qt6
 pkgname=openfireapp-git
-pkgver=r333.116cd48
+pkgver=r374.7531ac8
 pkgrel=1
 pkgdesc='Configuration utility for the OpenFIRE lightgun system.'
 arch=('x86_64' 'aarch64')
@@ -11,24 +11,24 @@ url='https://github.com/TeamOpenFIRE/OpenFIRE-App'
 license=('GPL-3.0-only')
 depends=('qt6-base' 'qt6-serialport' 'qt6-svg' 'icu')
 optdepends=(
-            'qt5-base: Building with Qt5'
-            'qt5-serialport: Building with Qt5'
-            'qt5-svg: Building with Qt5'
+            'qt5-base: For building with Qt5'
+            'qt5-serialport: For building with Qt5'
+            'qt5-svg: For building with Qt5'
 )
 makedepends=('cmake')
 provides=('openfireapp')
 conflicts=('openfireapp')
 install=$pkgname.install
-source=("$_name::git+https://github.com/TeamOpenFIRE/OpenFIRE-App.git")
+source=("git+https://github.com/TeamOpenFIRE/OpenFIRE-App.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$_name"
+  cd "$srcdir/$_name"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$_name"
+  cd "$srcdir/$_name"
   git submodule update --init
 }
 
