@@ -33,8 +33,14 @@ prepare() {
 package() {
   install -Dm755 "${srcdir}/freecad-${pkgver}.AppImage" "${pkgdir}/opt/appimages/freecad.AppImage"
   install -Dm755 "${srcdir}/freecad.sh" "${pkgdir}/usr/bin/freecad"
+
   install -Dm644 "${srcdir}/squashfs-root/org.freecad.FreeCAD.desktop" "${pkgdir}/usr/share/applications/freecad.desktop"
-  cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+
+  for res in 16x16 32x32 48x48 64x64 scalable; do
+    install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/$res/apps" "${srcdir}/squashfs-root/usr/share/icons/hicolor/$res/apps/org.freecad.FreeCAD."*
+  done
+  install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes" "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/mimetypes/application-x-extension-fcstd.svg"
+
   install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/64x64/apps/org.freecad.FreeCAD.png" "${pkgdir}/usr/share/pixmaps/freecad.png"
   install -Dm644 "${srcdir}/squashfs-root/usr/share/mime/packages/org.freecad.FreeCAD.xml" "${pkgdir}/usr/share/mime/packages/org.freecadweb.FreeCAD.xml"
 }
