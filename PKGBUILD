@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/linkfrg/ignis"
 license=('LGPL-2.1-or-later')
 makedepends=('gobject-introspection' 'meson')
-depends=('python' 'glib2' 'glib2-devel' 'glibc' 'gtk4' 'gtk4-layer-shell' 'libpulse' 'python-cairo' 'python-gobject' 'python-typer' 'python-loguru')
+depends=('python' 'glib2' 'glib2-devel' 'glibc' 'gtk4' 'gtk4-layer-shell' 'libpulse' 'python-cairo' 'python-gobject' 'python-typer' 'python-loguru' 'python-rich')
 optdepends=('gst-plugin-pipewire: required for Recorder Service'
             'gst-plugins-good: required for Recorder Service'
             'gst-plugins-ugly: required for Recorder Service'
