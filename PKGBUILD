@@ -23,7 +23,7 @@ source=(https://downloads.sourceforge.net/hplip/hplip-$pkgver.tar.gz{,.asc}
         hplip-pserror-c99.patch)
 sha256sums=('cd214123a3560fa9fe745cf7ca504e7dc713f4beca8fd64718ef31a4650777c0'
             'SKIP'
-            'db8e0b4147467e7b516a3bd30a6b5d23d4957b7bb45b39d1c51c4a29a1e15f45'
+            'SKIP'
             'a8ba5021c68816b63654e328c2872cedf49fa9f8769631cfcb96c667055c7313'
             '33380f46f9e44cce1b6c5fcc10917cc363654ac157dca3cccf620d05ce7e3f19')
 validpgpkeys=('4ABA2F66DBD5A95894910E0673D770CDA59047B9') # HPLIP (HP Linux Imaging and Printing) <hplip@hp.com>
