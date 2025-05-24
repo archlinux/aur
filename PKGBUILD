@@ -2,7 +2,7 @@
 
 pkgname='blaadpapers'
 pkgdesc='Super wallpaper manager'
-pkgver=0.0.6
+pkgver='0.0.6'
 pkgrel=1
 arch=('any')
 url='https://github.com/Blaadick/BlaadPapers'
