@@ -1,0 +1,89 @@
+From e3f707e67f0a185ae2ad1b6b6339400ce47f17cb Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Fri, 9 May 2025 14:59:49 -0600
+Subject: [PATCH 06/10] Linux: Use folio_wait_locked()
+
+The Linux 6.15 commit:
+    mm: Remove wait_on_page_locked() (d96e2802a802)
+removed the compatibility wrapper wait_on_page_locked().  The
+replacement is folio_wait_locked()
+
+Since the code is now dealing with folios, replace the put_page()
+with a folio_put() for the folio that was waited for.
+
+Change-Id: Ic829c40e03ea4df6b3098f2009bf460bae2cd02e
+---
+ src/afs/LINUX/osi_pagecopy.c |  5 +++++
+ src/afs/LINUX/osi_vnodeops.c | 11 ++++++++++-
+ src/cf/linux-kernel-func.m4  |  6 ++++++
+ 3 files changed, 21 insertions(+), 1 deletion(-)
+
+diff --git a/src/afs/LINUX/osi_pagecopy.c b/src/afs/LINUX/osi_pagecopy.c
+index 061d8c640..bc1fa55ff 100644
+--- a/src/afs/LINUX/osi_pagecopy.c
++++ b/src/afs/LINUX/osi_pagecopy.c
+@@ -228,8 +228,13 @@ static int afs_pagecopy_thread(void *unused) {
+ 	for (;;) {
+ 	    sleeppage = afs_pagecopy_checkworkload();
+ 	    if (sleeppage) {
++#if defined(HAVE_LINUX_FOLIO_WAIT_LOCKED)
++		folio_wait_locked(page_folio(sleeppage));
++		folio_put(page_folio(sleeppage));
++#else
+ 		wait_on_page_locked(sleeppage);
+ 		put_page(sleeppage);
++#endif
+ 	    } else {
+ 		break;
+ 	    }
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index b530a04e9..7e26a69cb 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -2441,7 +2441,11 @@ afs_linux_read_cache(struct file *cachefp, struct page *page,
+ 	 * even when an error is returned. */
+ 	code = mapping_read_page(cachemapping, cachepage);
+ 	if (!code && !task) {
++#if defined(HAVE_LINUX_FOLIO_WAIT_LOCKED)
++	    folio_wait_locked(page_folio(cachepage));
++#else
+ 	    wait_on_page_locked(cachepage);
++#endif
+ 	}
+     } else {
+         unlock_page(cachepage);
+@@ -2467,8 +2471,13 @@ afs_linux_read_cache(struct file *cachefp, struct page *page,
+         unlock_page(page);
+     }
+ 
+-    if (cachepage)
++    if (cachepage != NULL) {
++#if defined(HAVE_LINUX_FOLIO_WAIT)
++	folio_put(page_folio(cachepage));
++#else
+ 	put_page(cachepage);
++#endif
++}
+ 
+     return code;
+ }
+diff --git a/src/cf/linux-kernel-func.m4 b/src/cf/linux-kernel-func.m4
+index eebd49888..2770ba546 100644
+--- a/src/cf/linux-kernel-func.m4
++++ b/src/cf/linux-kernel-func.m4
+@@ -336,6 +336,12 @@ AC_CHECK_LINUX_FUNC([filemap_get_folio],
+                       static struct folio *folio;]],
+                     [[folio = __filemap_get_folio(NULL, 0, 0, 0);]])
+ 
++dnl check to see if write_on_page_locked exists
++AC_CHECK_LINUX_FUNC([folio_wait_locked],
++		    [[#include <linux/pagemap.h>
++		      #include <linux/fs.h>]],
++		    [[folio_wait_locked(NULL);]])
++
+ dnl Consequences - things which get set as a result of the
+ dnl                above tests
+ AS_IF([test "x$ac_cv_linux_func_d_alloc_anon" = "xno"],
+-- 
+2.49.0
+

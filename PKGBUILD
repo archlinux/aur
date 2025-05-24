@@ -7,7 +7,7 @@
 pkgname=openafs-modules-dkms
 _srcname=openafs
 pkgver=1.8.13.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -19,17 +19,46 @@ options=(!emptydirs)
 source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
         dkms.conf
         0001-LINUX-Refactor-afs_linux_dentry_revalidate.patch
-        0002-Linux-6.14-Handle-dops.d_revalidate-with-parent.patch)
+        0002-Linux-6.14-Handle-dops.d_revalidate-with-parent.patch
+        0003-Linux-Add-required-MODULE_DESCRIPTION.patch
+        0004-linux-inode_ops-mkdir-returns-struct-dentry.patch
+        0005-Linux-Use-__filemap_get_folio.patch
+        0006-Linux-Use-folio_wait_locked.patch
+        0007-cf-Introduce-AC_CHECK_LINUX_SYMBOL.patch
+        0008-cf-check-for-dentry-flag-macros-enums.patch
+        0009-lwp-Replace-the-typedefed-bool-datatype-with-int.patch
+        0010-ubik-Use-typedef-for-ubik_call-function-parameter.patch)
 sha256sums=('59ab4f60cb925c5779c93e233621186c1226d4770239fb2b544942d49cebd976'
-            '5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0'
-            '9f9dede8453ba114c4d36c03a45ed20cda2db9a69f17d47382608db21ad02643'
-            'c970848f8a4854dec7aab396e5728d83d96c03f7d0e0bb09536c3903e316ee95')
+            '306408d644e8781f13e09021449cb1ccbba60f69d1d24eca5f8138e9b3e47d8e'
+            '52ac0b7e66c0be87fa3f2e892676c7b7dc57e85407e40aa1d80d07eef5cd0a7c'
+            '1a85e263852b2b0583ca7035511c54ef727436b68a48f5213a2f6bd3a2eb2285'
+            '5115b6caa0be85cd7100890f5a3efdf9e89e2a0ce73c1edf28f976c612ca8638'
+            '3a9a8b83e92902626af45b8653c50b0ae2daa02b43ca42a2f7bca7f36499ba76'
+            'ccfd4454cf989a31d487d48e08af56115a8bd94bf866717f76f54df2eaf82e54'
+            'eb020e002b9fa2339e4b1ee0742e1a99f0c64cb416895c0286483be7d215ff4c'
+            '8754e9e27f7f9f6e4461643b3a5272ef692ffe295dfed46f18e78dc04a108791'
+            '61969a584f20be54157642fc72e1f25f5e9e4f46b3fe5fd788f350fc453b972f'
+            'b3da2f8ffe39757d83c90081165b689dc4b9550bcff9956767d155dd568fb5a9'
+            '73108199475812ccdf0eb514584d5dcc75317b2130b090b269167531cc36a2f8')
 
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
 
+  # Patches for Linux 6.14
   patch -p1 < "${srcdir}"/0001-LINUX-Refactor-afs_linux_dentry_revalidate.patch
   patch -p1 < "${srcdir}"/0002-Linux-6.14-Handle-dops.d_revalidate-with-parent.patch
+
+  # Patches for Linux 6.15
+  patch -p1 < "${srcdir}"/0003-Linux-Add-required-MODULE_DESCRIPTION.patch
+  patch -p1 < "${srcdir}"/0004-linux-inode_ops-mkdir-returns-struct-dentry.patch
+  patch -p1 < "${srcdir}"/0005-Linux-Use-__filemap_get_folio.patch
+  patch -p1 < "${srcdir}"/0006-Linux-Use-folio_wait_locked.patch
+  patch -p1 < "${srcdir}"/0007-cf-Introduce-AC_CHECK_LINUX_SYMBOL.patch
+  patch -p1 < "${srcdir}"/0008-cf-check-for-dentry-flag-macros-enums.patch
+
+  # Patches for GCC 15
+  patch -p1 < "${srcdir}"/0009-lwp-Replace-the-typedefed-bool-datatype-with-int.patch
+  patch -p1 < "${srcdir}"/0010-ubik-Use-typedef-for-ubik_call-function-parameter.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q

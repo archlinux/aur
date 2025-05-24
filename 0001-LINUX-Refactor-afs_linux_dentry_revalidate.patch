@@ -1,7 +1,7 @@
-From 3506b7d9cb6b7f869c2f12796388ba3966b6ad42 Mon Sep 17 00:00:00 2001
+From 96cab6a21e665076f96199a70a0a9c110a6fbce8 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 14 Feb 2025 15:18:52 -0700
-Subject: [PATCH 1/2] LINUX: Refactor afs_linux_dentry_revalidate()
+Subject: [PATCH 01/10] LINUX: Refactor afs_linux_dentry_revalidate()
 
 The signature for Linux's dentry_operations.d_revalidate method has
 undergone several changes, leading to increased use of #if directives in
@@ -25,6 +25,11 @@ Reviewed-by: Andrew Deason <adeason@sinenomine.net>
 (cherry picked from commit 4702930f8dd87a6cad1d59ef8c127003fded1f31)
 
 Change-Id: Iae781913ec933e79ca47cdf043e729e50c1b2a6d
+Reviewed-on: https://gerrit.openafs.org/16276
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 02603ec7bb2b6dadd9fc6f30f1d180732673f3d9)
 ---
  src/afs/LINUX/osi_vnodeops.c | 92 ++++++++++++++++++------------------
  1 file changed, 47 insertions(+), 45 deletions(-)
