@@ -3,18 +3,19 @@ Description=NaiveProxy Service
 After=network-online.target
 
 [Service]
-
 Type=simple
 User=naiveproxy
 Restart=on-failure
 RestartSec=5s
-ExecStart=/usr/bin/naiveproxy ${TMPL_CONFIG_FILE_PATH}
-
-# sandboxing
+ExecStart=/usr/bin/naiveproxy /etc/naiveproxy/config.json
+# Proc filesystem
 ProcSubset=pid
 ProtectProc=invisible
+# Capabilities
 CapabilityBoundingSet=
+# Security
 NoNewPrivileges=true
+# Sandboxing
 ProtectSystem=strict
 PrivateTmp=true
 PrivateDevices=true
@@ -36,6 +37,7 @@ RestrictSUIDSGID=true
 RemoveIPC=true
 PrivateMounts=true
 ProtectClock=true
+# System Call Filtering
 SystemCallArchitectures=native
 SystemCallFilter=~@cpu-emulation @debug @keyring @ipc @mount @obsolete @privileged @setuid
 SystemCallFilter=pipe
