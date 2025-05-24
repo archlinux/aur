@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable
-pkgver=4.1
+pkgver=5.0
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -14,6 +14,8 @@ options=(!debug !strip)
 makedepends+=(git)
 
 depends=(
+	"wayland-utils"
+	"pipewire-v4l2"
 	"procps-ng"
 	"coreutils"
 	"awk"
@@ -30,7 +32,6 @@ depends=(
 	"nspr"
 	"zlib"
 	"glib2"
-	"wayland"
 	"dbus"
 	"bash"
 	"lsb-release"
@@ -44,6 +45,7 @@ depends=(
 optdepends=(
 	'at-spi2-core: accessibility'
 	'orca: screen reader'
+        'way-secure: Wayland secure context'
 )
 
 makedepends+=(
@@ -54,7 +56,7 @@ checkdepends=()
 
 source=(portable-source::git+https://github.com/Kraftland/portable.git#tag=${pkgver})
 
-md5sums=('b6126a1483c6fef14ba1b39491872edc')
+md5sums=('881b247f06d997ab08c212c0ae51e8fd')
 
 
 function package() {
