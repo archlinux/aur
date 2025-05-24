@@ -2,7 +2,7 @@
 
 pkgbase=lightway-core
 pkgname=('lightway-core' 'lightway-core-doc')
-pkgver=1.17.11
+pkgver=1.17.12
 pkgrel=1
 _ruby_ver=3.1.7
 _ceedling_ver=0.31.1
@@ -10,12 +10,12 @@ pkgdesc='A VPN protocol by ExpressVPN'
 arch=('x86_64')
 url='https://www.expressvpn.com/lightway/'
 license=('GPL-2.0-or-later')
-makedepends=('cmake' 'doxygen' 'git' 'graphviz')
+makedepends=('cmake' 'doxygen' 'gcc14' 'git' 'graphviz')
 source=("https://github.com/expressvpn/lightway-core/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz"
         'git+https://github.com/wolfSSL/wolfssl.git'
         "https://cache.ruby-lang.org/pub/ruby/${_ruby_ver%.*}/ruby-${_ruby_ver}.tar.xz"
         '010-lightway-core-disable-werror-on-wolfssl.patch')
-sha256sums=('af7e0f859f98c5e21b7a282a93c027421fb9f8ba5d57e57c6a96b83bc1f9518a'
+sha256sums=('b41275ec5981cde38b01cd5685dccc8b9f76a20a169a54bc3a9493ca75363c9b'
             'SKIP'
             '658acc455b6bda87ac6cc1380e86552b9c1af87055e7a127589c5bf7ed80b035'
             'fd82affc9e605a7963e5b4908d8decc877980ac007f9ba5aabeccf9019cf5727')
@@ -38,6 +38,8 @@ build() {
     export GEM_PATH="$_ruby_root"
     export PATH="${_ruby_root}/bin${PATH:+":${PATH}"}"
     cd "ruby-${_ruby_ver}"
+    # 'gem install' core dumps when built with gcc 15
+    CC='gcc-14' \
     ./configure --prefix="$_ruby_root" --enable-shared
     make install
     gem install --no-user-install --install-dir "$_ruby_root" ceedling -v "$_ceedling_ver"
