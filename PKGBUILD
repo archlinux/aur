@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=7.2.r119591.gbd2dcfaed4
+pkgver=7.2.r119684.g670089304a
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -40,7 +40,7 @@ depends=(
   libjxl
   libmodplug
   libopenmpt
-  libplacebo-git
+  libplacebo
   libpulse
   libraw1394
   librsvg
@@ -136,7 +136,7 @@ build() {
     cd ffmpeg
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
-    # fix build with v4l2-utils 1.30 with gcc 14
+    # fix build with v4l2-utils 1.30 with gcc 14 and later
     export CFLAGS+=' -Wno-error=incompatible-pointer-types'
     
     ./configure \
