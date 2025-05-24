@@ -1,6 +1,6 @@
 pkgbase = vcvrack-cella
 	pkgdesc = Cella VCV Rack modules
-	pkgver = 2.8.1
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/victorkashirin/CellaVCV
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = vcvrack-cella
 	makedepends = zstd
 	depends = gcc-libs
 	depends = vcvrack
-	source = git+https://github.com/victorkashirin/CellaVCV#tag=v2.8.1
-	sha256sums = 9452adc84b1c3ac9c4879fc49163edfc0b666145ba2b0e332ed920eb24d6be34
+	source = git+https://github.com/victorkashirin/CellaVCV#tag=v2.9.0
+	sha256sums = 48aa1197f621d250ecaf104c8bebab46513a4315c263e07a340fc9f5565fb8ee
 
 pkgname = vcvrack-cella
