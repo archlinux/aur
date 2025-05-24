@@ -18,19 +18,18 @@ provides=('hplip')
 backup=('etc/hp/hplip.conf' 'var/lib/hp/hplip.state')
 optdepends=('cups: for printing support')
 source=(https://downloads.sourceforge.net/hplip/hplip-$pkgver.tar.gz{,.asc}
-        https://developers.hp.com/system/files/2025-03/hplip-$pkgver-plugin_run.zip
         hplip-missing-drivers.patch
         hplip-pserror-c99.patch)
 sha256sums=('e872ff28eb2517705a95f6e1839efa1e50a77a33aae8905278df2bd820919653'
             'SKIP'
-            'SKIP'
-            'a8ba5021c68816b63654e328c2872cedf49fa9f8769631cfcb96c667055c7313'
-            '33380f46f9e44cce1b6c5fcc10917cc363654ac157dca3cccf620d05ce7e3f19')
+            '46fcf6398ee16d41f4976c4c4e1e1e483b30fe64bcabd8864077d3f2602c2ece'
+            '02d5fd1a23f13f9879977c34d1c83364402995ef81c8ed04bca2dea5cb6e58cd')
 validpgpkeys=('4ABA2F66DBD5A95894910E0673D770CDA59047B9') # HPLIP (HP Linux Imaging and Printing) <hplip@hp.com>
 options=(!makeflags)
-DLAGENTS=("https::/usr/bin/curl -A 'Mozilla/5.0' -oL %o %u")
 
 prepare() {
+  curl -A "Mozilla/5.0 (Linux x86_64) Gecko/20100101" -O "https://developers.hp.com/system/files/2025-03/hplip-$pkgver-plugin_run.zip"
+  unzip "hplip-$pkgver-plugin_run.zip"
   sh "hplip-$pkgver-plugin.run" --target "$srcdir/hplip-$pkgver-plugin" --noexec
  
   cd "hplip-$pkgver"

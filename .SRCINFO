@@ -23,14 +23,12 @@ pkgbase = hplip-minimal
 	options = !makeflags
 	source = https://downloads.sourceforge.net/hplip/hplip-3.25.2.tar.gz
 	source = https://downloads.sourceforge.net/hplip/hplip-3.25.2.tar.gz.asc
-	source = https://developers.hp.com/system/files/2025-03/hplip-3.25.2-plugin_run.zip
 	source = hplip-missing-drivers.patch
 	source = hplip-pserror-c99.patch
 	validpgpkeys = 4ABA2F66DBD5A95894910E0673D770CDA59047B9
 	sha256sums = e872ff28eb2517705a95f6e1839efa1e50a77a33aae8905278df2bd820919653
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = a8ba5021c68816b63654e328c2872cedf49fa9f8769631cfcb96c667055c7313
-	sha256sums = 33380f46f9e44cce1b6c5fcc10917cc363654ac157dca3cccf620d05ce7e3f19
+	sha256sums = 46fcf6398ee16d41f4976c4c4e1e1e483b30fe64bcabd8864077d3f2602c2ece
+	sha256sums = 02d5fd1a23f13f9879977c34d1c83364402995ef81c8ed04bca2dea5cb6e58cd
 
 pkgname = hplip-minimal
