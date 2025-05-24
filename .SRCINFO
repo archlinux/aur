@@ -1,7 +1,7 @@
 pkgbase = openafs
 	pkgdesc = Open source implementation of the AFS distributed file system
 	pkgver = 1.8.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openafs.org
 	install = openafs.install
 	arch = i686
@@ -22,9 +22,13 @@ pkgbase = openafs
 	source = http://openafs.org/dl/openafs/1.8.13.2/openafs-1.8.13.2-doc.tar.bz2
 	source = tmpfiles.d-openafs.conf
 	source = 0001-Adjust-RedHat-config-and-service-files.patch
+	source = 0002-lwp-Replace-the-typedefed-bool-datatype-with-int.patch
+	source = 0003-ubik-Use-typedef-for-ubik_call-function-parameter.patch
 	sha256sums = 59ab4f60cb925c5779c93e233621186c1226d4770239fb2b544942d49cebd976
 	sha256sums = b3c0d5b5bae8dd421899ca100d1a6ae25865b8016212c7457e0fc9f791b153e4
 	sha256sums = 18d7b0173bbffbdc212f4e58c5b3ce369adf868452aabc3485f2a6a2ddb35d68
-	sha256sums = c15539241045e96252d6af4901311f3c494eae42c64edaaa1dcd1c70ef118624
+	sha256sums = 050598bb766c01501ad271d70e5d0d1ef195ae29ab108d634cd15ebe50179a20
+	sha256sums = 312fcdd13b77bea54d52af19bc6ab31287a7261a45e1a58b6b06aebf5b5fcee1
+	sha256sums = e30ecdd5dd1eb68c3f703979b019ead3f4fa55e2b98c842169522073407fe26b
 
 pkgname = openafs

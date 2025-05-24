@@ -6,7 +6,7 @@
 
 pkgname=openafs
 pkgver=1.8.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source implementation of the AFS distributed file system"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -24,11 +24,15 @@ install=openafs.install
 source=(http://openafs.org/dl/openafs/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
         http://openafs.org/dl/openafs/${pkgver}/${pkgname}-${pkgver}-doc.tar.bz2
         tmpfiles.d-openafs.conf
-        0001-Adjust-RedHat-config-and-service-files.patch)
+        0001-Adjust-RedHat-config-and-service-files.patch
+        0002-lwp-Replace-the-typedefed-bool-datatype-with-int.patch
+        0003-ubik-Use-typedef-for-ubik_call-function-parameter.patch)
 sha256sums=('59ab4f60cb925c5779c93e233621186c1226d4770239fb2b544942d49cebd976'
             'b3c0d5b5bae8dd421899ca100d1a6ae25865b8016212c7457e0fc9f791b153e4'
             '18d7b0173bbffbdc212f4e58c5b3ce369adf868452aabc3485f2a6a2ddb35d68'
-            'c15539241045e96252d6af4901311f3c494eae42c64edaaa1dcd1c70ef118624')
+            '050598bb766c01501ad271d70e5d0d1ef195ae29ab108d634cd15ebe50179a20'
+            '312fcdd13b77bea54d52af19bc6ab31287a7261a45e1a58b6b06aebf5b5fcee1'
+            'e30ecdd5dd1eb68c3f703979b019ead3f4fa55e2b98c842169522073407fe26b')
 
 # If you need the kauth tools set this to 1. But be aware that these tools
 # are considered insecure since 2003! This also affects the PAM libs.
@@ -39,6 +43,10 @@ prepare() {
 
   # Adjust RedHat config and service files to our needs
   patch -p1 < "${srcdir}"/0001-Adjust-RedHat-config-and-service-files.patch
+
+  # Patches for GCC 15
+  patch -p1 < "${srcdir}"/0002-lwp-Replace-the-typedefed-bool-datatype-with-int.patch
+  patch -p1 < "${srcdir}"/0003-ubik-Use-typedef-for-ubik_call-function-parameter.patch
 
   # Only needed when changes to configure were made
   #./regen.sh -q
