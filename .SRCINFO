@@ -1,0 +1,17 @@
+pkgbase = matlab-gurobi
+	pkgdesc = State-of-the-art solver for mathematical programming (MATLAB bindings)
+	pkgver = 12.0.2
+	pkgrel = 1
+	url = https://www.gurobi.com/products/gurobi-optimizer
+	arch = x86_64
+	license = custom:Gurobi EULA
+	depends = gurobi>=12.0.2
+	optdepends = matlab
+	source = gurobi_setup.m
+	md5sums = fde2cef01f075e2d28188576a2639b34
+	b2sums = 5e704dc5b6ede40064772fea3fadcfb4728e8d402829162045364aae21f25aa59bea4e3ddb666050ef3351daae73f5b3f7f9c5d06c08fb8f2fc68d521a07570d
+	source_x86_64 = gurobi-12.0.2-x86_64.tar.gz::https://packages.gurobi.com/12.0/gurobi12.0.2_linux64.tar.gz
+	md5sums_x86_64 = a29179c21aa02c511df847a28e4561a2
+	b2sums_x86_64 = 437fef3e89dff4fc64d6b9ef181fdf4cee432eeaba1b062b83dc1a076ce2a9de62d43dd0d375f334142ebee2a91cd640a1249412f011fc8a4f9c2d3f639de44d
+
+pkgname = matlab-gurobi

@@ -1,0 +1,3 @@
+[matlab-gurobi]
+source = "pypi" # it should be in sync
+pypi = "gurobipy"
