@@ -1,6 +1,6 @@
 pkgbase = aur-build-worker
 	pkgdesc = Worker for aur-build-server
-	pkgver = 0.20.1
+	pkgver = 0.30.0
 	pkgrel = 1
 	url = https://github.com/seifane/aur-build-server
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = aur-build-worker
 	depends = openssl-1.1
 	provides = aur-build-worker
 	options = !lto
-	source = git+https://github.com/seifane/aur-build-server.git#tag=0.20.1
+	source = git+https://github.com/seifane/aur-build-server.git#tag=0.30.0
 	md5sums = SKIP
 
 pkgname = aur-build-worker
