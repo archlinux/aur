@@ -5,7 +5,7 @@
 set -u
 pkgname='libstdc++5'
 pkgver='3.3.6'
-pkgrel='10'
+pkgrel='11'
 pkgdesc='Legacy GNU Standard C++ library version 3'
 arch=('x86_64')
 url='http://gcc.gnu.org'
@@ -67,7 +67,7 @@ prepare() {
 build(){
   set -u
 
-  export CFLAGS="-march=${CARCH/_/-} -O2"
+  export CFLAGS="-march=${CARCH/_/-} -O1"
   export CPPFLAGS="${CFLAGS}"
   export CXXFLAGS="${CFLAGS}"
   export SHELL='/usr/bin/bash' # doesn't work with fish
@@ -84,7 +84,7 @@ build(){
       --libdir='/usr/lib'
       --prefix='/usr'
     )
-    export CC='gcc -Wno-implicit-int -Wno-implicit-function-declaration -Wno-incompatible-pointer-types -Wno-int-conversion' # https://gcc.gnu.org/gcc-14/porting_to.html
+    export CC='gcc -std=gnu99 -Wno-implicit-int -Wno-implicit-function-declaration -Wno-incompatible-pointer-types -Wno-int-conversion' # https://gcc.gnu.org/gcc-14/porting_to.html
     ../gcc-${pkgver}/configure "${_copts[@]}"
   fi
   # We build the full multilib libstdc++5 here, no idea how to restrict

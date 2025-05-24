@@ -1,7 +1,7 @@
 pkgbase = libstdc++5
 	pkgdesc = GNU Standard C++ library version 3
 	pkgver = 3.3.6
-	pkgrel = 10
+	pkgrel = 11
 	url = https://gcc.gnu.org
 	arch = x86_64
 	license = GPL
