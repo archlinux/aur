@@ -1,12 +1,12 @@
 # Maintainer: Christopher <archlinux-maintainer@christopherz.com>
 
 pkgname="dec-git"
-pkgver=0.2.0.0
+pkgver=0.2.2.0
 pkgrel=1
 pkgdesc="A declarative package manager for Arch Linux"
 arch=("x86_64")
-url="https://gitlab.com/rehposuite/dec"
-license=("GPL")
+url="https://github.com/Rehpotsirhc-z/dec.git"
+license=("GPL-3.0-or-later")
 depends=("paru")
 makedepends=("stack")
 provides=("dec")
@@ -18,18 +18,16 @@ pkgver() {
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-build(){
+build() {
   cd "dec"
-
   stack setup
-  stack build
+  stack build --copy-bins --local-bin-path=dist
 }
 
 package() {
   cd "dec"
 
-  find ./ -path '*/dist/*' -type f -name proid -perm /u+x \
-        -execdir install -Dm755 -t "$pkgdir/usr/bin/" {} \;
+  install -Dm755 "dist/dec" -t "$pkgdir/usr/bin/"
 
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSES/GPL-3.0-or-later.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
