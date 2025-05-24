@@ -1,7 +1,8 @@
 pkgbase = zigup-bin
 	pkgdesc = Download and manage zig compilers
-	pkgver = v2025_04_20
+	pkgver = 2025_04_20
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/marler8997/zigup
 	install = zigup.install
 	arch = x86_64
