@@ -1,6 +1,6 @@
 pkgbase = aspectc++-bin
 	pkgdesc = A set of C++ language extensions to facilitate aspect-oriented programming with C/C++
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = http://aspectc.org/
 	arch = i686
@@ -8,10 +8,9 @@ pkgbase = aspectc++-bin
 	license = GPL
 	depends = libxml2
 	depends = gcc-libs
-	source_i686 = https://www.aspectc.org/releases/2.3/ac-bin-linux-x86-2.3.tar.gz
-	sha512sums_i686 = 5f7a7c8880f25dd02f915c0dcff5a2ed55d48da0aba3320cc403bfeef413e17a87d6ab4f964a8ea9cb127417d27b137dcd2a2f184e775585ef19d17bfe510a66
-	source_x86_64 = https://www.aspectc.org/releases/2.3/ac-bin-linux-x86-64bit-2.3.tar.gz
-	sha512sums_x86_64 = 8c3a7f5bbd658f3ebfd5f7cebc2c04afd15cf34fc65c724b9653af7bf432cdbacfb638bde70ac233c7b9dda33f5c1de3f56601899216f6041b1be84aa1d4f437
+	source_i686 = https://www.aspectc.org/releases/2.4/ac-bin-linux-x86-2.4.tar.gz
+	sha512sums_i686 = 792d3482d26f9fb4ab35bf137ab812d830d2c776541626b4b700c1eebb1b5faa94a55ef53d3e1981463d45f86a414469e5c8f707764791c89f7fcf3f88cd6066
+	source_x86_64 = https://www.aspectc.org/releases/2.4/ac-bin-linux-x86-64bit-2.4.tar.gz
+	sha512sums_x86_64 = 654346d9fc7dc493f5d6aeab7244d2c7c3a58402c7fbccd591eab89ee447bef86567c445064bdcf9ef0508293b68470db17c859fde25d81f815383f4a6810f38
 
 pkgname = aspectc++-bin
-
