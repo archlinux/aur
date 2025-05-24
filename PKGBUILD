@@ -3,7 +3,7 @@ PACKAGER="Laurent Brock <incognito0135@protonmail.com>"
 _pkgname=edge-tts
 _pkgname_us="${_pkgname/-/_}" # Package name might have underscore in DL link
 pkgname=python-${_pkgname}
-pkgver=7.0.1
+pkgver=7.0.2
 pkgrel=1
 pkgdesc="Use Microsoft Edge's online text-to-speech service from within your Python code or using the provided edge-tts or edge-playback command"
 arch=(any)
@@ -21,7 +21,7 @@ optdepends=(
 )
 
 source=(https://github.com/rany2/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz)
-sha256sums=('49483727d011625662369d5898ff3d981069a2a0ebd2b72fc89173159c680a1c')
+sha256sums=('b6f1d9a7f0d4b74d44a213674c574ac85dc9129f88c34904312274676cf446ac')
 
 check() {
   cd ${_pkgname}-${pkgver}
