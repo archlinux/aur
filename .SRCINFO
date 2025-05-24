@@ -7,6 +7,9 @@ pkgbase = acme.sh-git
 	license = GPL3
 	makedepends = git
 	depends = bash
+	optdepends = socat: for standalone mode
+	optdepends = oath-toolkit: Used to compute the OTP for some DNS providers
+	optdepends = yh: for multideploy deploy plugin
 	provides = acme.sh
 	conflicts = acme.sh
 	source = acme.sh::git+https://github.com/acmesh-official/acme.sh.git#branch=master
