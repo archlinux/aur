@@ -1,7 +1,7 @@
 # shellcheck disable=SC2148
 # shellcheck disable=SC2034
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: juanvel400 <juanvel400@proton.me>
 pkgname=n191
 pkgver=1.0.0
 pkgrel=1
