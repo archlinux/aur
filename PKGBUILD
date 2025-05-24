@@ -25,12 +25,12 @@ sha256sums=(
 )
 
 build() {
-  cd "$srcdir/term_planner"
+  cd "$srcdir/term_planner-${pkgver}"
   cargo build --release --locked
 }
 
 package() {
-  cd "$srcdir/term_planner"
+  cd "$srcdir/term_planner-${pkgver}"
 
   install -Dm755 "target/release/term_planner" \
                 "$pkgdir/usr/bin/term_planner"
