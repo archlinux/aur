@@ -1,48 +1,49 @@
-# Maintainer: mnovick1988 <anonymous - contact through aur.>
-# Cloned from: xf86-video-vmware-git pkgbuild
-#
-# Note: Just a quick-fix to get this back on the AUR for those of us that need it.
-#
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xf86-video-vmware-git
-_realpkgname=xf86-video-vmware
-pkgver=13.0.2.r40.gd5550b7
+pkgver=13.4.0.r6.g92cc453
 pkgrel=1
-pkgdesc="X.org vmware video driver. Git version"
+pkgdesc="VMware guest video driver for the Xorg X server"
 arch=('i686' 'x86_64')
-url="http://xorg.freedesktop.org/"
-provides=("${_realpkgname}")
-depends=('libdrm>=2.4.41' 'systemd' 'mesa')
-optdepends=('vmwgfx-git: git version kernel module')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION>=21.0'  )
-conflicts=('xorg-server<1.16.0' 'xf86-video-vmware' 'X-ABI-VIDEODRV_VERSION<22.0' 'X-ABI-VIDEODRV_VERSION>=24.0')
-license=('custom')
-install=xf86-video-vmware-git.install
+url="https://gitlab.freedesktop.org/xorg/driver/xf86-video-vmware"
+license=('LicenseRef-xf86-video-vmware')
+groups=('xorg-drivers')
+depends=('glibc' 'libdrm' 'libxext' 'libx11' 'mesa' 'systemd-libs')
+makedepends=('git' 'xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=25.2')
+provides=("xf86-video-vmware=$pkgver")
+conflicts=('xf86-video-vmware' 'xorg-server<21.1.1' 'X-ABI-VIDEODRV_VERSION<25' 'X-ABI-VIDEODRV_VERSION>=26')
+source=("git+https://gitlab.freedesktop.org/xorg/driver/xf86-video-vmware.git")
+sha256sums=('SKIP')
 
-source=('xf86-video-vmware::git://anongit.freedesktop.org/xorg/driver/xf86-video-vmware#branch=master')
-md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/xf86-video-vmware"
-  ( set -o pipefail
-  git describe --long | sed 's/^xf86-video-vmware-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  )
+  cd "xf86-video-vmware"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^xf86-video-vmware-[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^xf86-video-vmware-//'
 }
 
 build() {
-  cd "${srcdir}/xf86-video-vmware"
+  cd "xf86-video-vmware"
 
-  ./autogen.sh --prefix=/usr \
+  ./autogen.sh
+  NOCONFIGURE=1 ./configure \
+    --prefix="/usr" \
     --enable-vmwarectrl-client
-	make
+  make
+}
+
+check() {
+  cd "xf86-video-vmware"
+
+  #make check
 }
 
 package() {
-  cd "${srcdir}/xf86-video-vmware"
-  
-  make DESTDIR="${pkgdir}" install
+  cd "xf86-video-vmware"
 
-  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/xf86-video-vmware"
 }
-
