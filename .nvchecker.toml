@@ -1,0 +1,4 @@
+[zen-adblocker]
+source = "git"
+git = "https://github.com/ZenPrivacy/zen-desktop.git"
+prefix = "v"
