@@ -1,0 +1,25 @@
+From be356ce3c0a1ea9efe334c296b32b53488b959b2 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sat, 24 May 2025 22:55:33 +0200
+Subject: [PATCH 3/4] Disable wsa invalid event static assert
+
+---
+ src/backend/storage/ipc/latch.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/backend/storage/ipc/latch.c b/src/backend/storage/ipc/latch.c
+index 2b4ded38893..9e19f70d25e 100644
+--- a/src/backend/storage/ipc/latch.c
++++ b/src/backend/storage/ipc/latch.c
+@@ -855,7 +855,7 @@ CreateWaitEventSet(ResourceOwner resowner, int nevents)
+ 	 * pending signals are serviced.
+ 	 */
+ 	set->handles[0] = pgwin32_signal_event;
+-	StaticAssertStmt(WSA_INVALID_EVENT == NULL, "");
++	/*StaticAssertStmt(WSA_INVALID_EVENT == NULL, "");*/
+ #endif
+ 
+ 	return set;
+-- 
+2.49.0
+

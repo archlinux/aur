@@ -2,7 +2,7 @@
 # Contributor: ant32 <antreimer@gmail.com>
 
 pkgname=mingw-w64-postgresql
-pkgver=16.3
+pkgver=17.5
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS (mingw-w64)'
 arch=('any')
@@ -16,17 +16,23 @@ conflicts=('mingw-w64-postgresql-libs')
 replaces=('mingw-w64-postgresql-libs')
 source=("http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2"
         '0001-Use-.dll.a-as-extension-for-import-libraries.patch'
-        '0002-Use-pthread-library-from-MinGW.patch')
-sha256sums=('331963d5d3dc4caf4216a049fa40b66d6bcb8c730615859411b9518764e60585'
-            '44b1cceb0f5ef792acc00e9415dc2f7f777747199078ce4c8704d3420de52cf5'
-            '72e627524dd4994d85db43ea02d71b2c9983037306a85822f744e76b40f40f2f')
+        '0002-Use-pthread-library-from-MinGW.patch'
+        '0003-Disable-wsa-invalid-event-static-assert.patch'
+        '0004-Use-mingw-setjmp-on-ucrt.patch')
+sha256sums=('fcb7ab38e23b264d1902cb25e6adafb4525a6ebcbd015434aeef9eda80f528d8'
+            '8eac518a21bbee6cbb8ea2e1a7ebe8f4596b5145ccac68044a964462b2c7be73'
+            '6df4579b315cca673a7701b75318814cd9abe451019002829cc6021d947d9504'
+            'cb9cd63f8b137d35c7f6c9d7a4c202d2fa3c2c01ceaec148936e21e812e3976f'
+            '48408df2e4326a5360809a363194d4b8ad28047bd0cf7a3c321dfc5c3f8b2710')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd postgresql-$pkgver
-  patch -p1 -i ${srcdir}/0001-Use-.dll.a-as-extension-for-import-libraries.patch
-  patch -p1 -i ${srcdir}/0002-Use-pthread-library-from-MinGW.patch
+  patch -p1 -i "${srcdir}"/0001-Use-.dll.a-as-extension-for-import-libraries.patch
+  patch -p1 -i "${srcdir}"/0002-Use-pthread-library-from-MinGW.patch
+  patch -p1 -i "${srcdir}"/0003-Disable-wsa-invalid-event-static-assert.patch
+  patch -p1 -i "${srcdir}"/0004-Use-mingw-setjmp-on-ucrt.patch
 }
 
 build() {

@@ -1,7 +1,7 @@
-From 00a71f606a758f281a982d4fa96eb6fcf85a1007 Mon Sep 17 00:00:00 2001
+From 55b3bce54ee00cb19d3538bd969bc5bc3b6815bb Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 7 Mar 2021 18:22:06 +0100
-Subject: [PATCH 1/2] Use .dll.a as extension for import libraries
+Subject: [PATCH 1/4] Use .dll.a as extension for import libraries
 
 ---
  src/Makefile.shlib   |  2 +-
@@ -9,7 +9,7 @@ Subject: [PATCH 1/2] Use .dll.a as extension for import libraries
  2 files changed, 13 insertions(+), 13 deletions(-)
 
 diff --git a/src/Makefile.shlib b/src/Makefile.shlib
-index 35abce58d2..4f6731c291 100644
+index fa81f6ffdd6..0ab26b84a31 100644
 --- a/src/Makefile.shlib
 +++ b/src/Makefile.shlib
 @@ -85,7 +85,7 @@ else
@@ -22,10 +22,10 @@ index 35abce58d2..4f6731c291 100644
  ifndef soname
  # additional flags for backend modules
 diff --git a/src/backend/Makefile b/src/backend/Makefile
-index 3c42003175..36cc12865b 100644
+index 84302cc6dab..4b3d4b21fc6 100644
 --- a/src/backend/Makefile
 +++ b/src/backend/Makefile
-@@ -74,11 +74,11 @@ endif
+@@ -72,11 +72,11 @@ endif
  ifeq ($(PORTNAME), cygwin)
  
  postgres: $(OBJS)
@@ -40,7 +40,7 @@ index 3c42003175..36cc12865b 100644
  	touch $@
  
  endif # cygwin
-@@ -87,11 +87,11 @@ ifeq ($(PORTNAME), win32)
+@@ -85,11 +85,11 @@ ifeq ($(PORTNAME), win32)
  LIBS += -lsecur32
  
  postgres: $(OBJS) $(WIN32RES)
@@ -55,7 +55,7 @@ index 3c42003175..36cc12865b 100644
  	touch $@
  
  endif # win32
-@@ -191,12 +191,12 @@ distprep:
+@@ -173,12 +173,12 @@ generated-parser-sources:
  install: all installdirs install-bin
  ifeq ($(PORTNAME), cygwin)
  ifeq ($(MAKE_DLL), true)
@@ -70,7 +70,7 @@ index 3c42003175..36cc12865b 100644
  endif
  endif
  	$(MAKE) -C catalog install-data
-@@ -250,12 +250,12 @@ ifeq ($(MAKE_EXPORTS), true)
+@@ -232,12 +232,12 @@ ifeq ($(MAKE_EXPORTS), true)
  endif
  ifeq ($(PORTNAME), cygwin)
  ifeq ($(MAKE_DLL), true)
@@ -85,7 +85,7 @@ index 3c42003175..36cc12865b 100644
  endif
  endif
  	$(MAKE) -C catalog uninstall-data
-@@ -274,10 +274,10 @@ endif
+@@ -256,10 +256,10 @@ endif
  clean:
  	rm -f $(LOCALOBJS) postgres$(X) $(POSTGRES_IMP)
  ifeq ($(PORTNAME), cygwin)
@@ -99,5 +99,5 @@ index 3c42003175..36cc12865b 100644
  
  distclean: clean
 -- 
-2.42.0
+2.49.0
 

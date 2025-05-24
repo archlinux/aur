@@ -1,0 +1,35 @@
+From 7c16cbd4fb320e35e31e84364704a9888dd283cf Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sat, 24 May 2025 22:56:44 +0200
+Subject: [PATCH 4/4] Use mingw setjmp on ucrt
+
+---
+ src/include/c.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/include/c.h b/src/include/c.h
+index bc26c6aa7f1..a655fe0d033 100644
+--- a/src/include/c.h
++++ b/src/include/c.h
+@@ -1355,15 +1355,15 @@ extern int	fdatasync(int fildes);
+  * so on that toolchain we cheat and use gcc's builtins.
+  */
+ #ifdef WIN32
+-#ifdef __MINGW64__
++#if defined(__MINGW64__) && !defined(_UCRT)
+ typedef intptr_t sigjmp_buf[5];
+ #define sigsetjmp(x,y) __builtin_setjmp(x)
+ #define siglongjmp __builtin_longjmp
+-#else							/* !__MINGW64__ */
++#else							/* !defined(__MINGW64__) || defined(_UCRT) */
+ #define sigjmp_buf jmp_buf
+ #define sigsetjmp(x,y) setjmp(x)
+ #define siglongjmp longjmp
+-#endif							/* __MINGW64__ */
++#endif							/* defined(__MINGW64__) && !defined(_UCRT) */
+ #endif							/* WIN32 */
+ 
+ /* /port compatibility functions */
+-- 
+2.49.0
+

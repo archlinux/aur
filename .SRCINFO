@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-postgresql
 	pkgdesc = Sophisticated object-relational DBMS (mingw-w64)
-	pkgver = 16.3
+	pkgver = 17.5
 	pkgrel = 1
 	url = https://www.postgresql.org
 	arch = any
@@ -18,11 +18,15 @@ pkgbase = mingw-w64-postgresql
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://ftp.postgresql.org/pub/source/v16.3/postgresql-16.3.tar.bz2
+	source = http://ftp.postgresql.org/pub/source/v17.5/postgresql-17.5.tar.bz2
 	source = 0001-Use-.dll.a-as-extension-for-import-libraries.patch
 	source = 0002-Use-pthread-library-from-MinGW.patch
-	sha256sums = 331963d5d3dc4caf4216a049fa40b66d6bcb8c730615859411b9518764e60585
-	sha256sums = 44b1cceb0f5ef792acc00e9415dc2f7f777747199078ce4c8704d3420de52cf5
-	sha256sums = 72e627524dd4994d85db43ea02d71b2c9983037306a85822f744e76b40f40f2f
+	source = 0003-Disable-wsa-invalid-event-static-assert.patch
+	source = 0004-Use-mingw-setjmp-on-ucrt.patch
+	sha256sums = fcb7ab38e23b264d1902cb25e6adafb4525a6ebcbd015434aeef9eda80f528d8
+	sha256sums = 8eac518a21bbee6cbb8ea2e1a7ebe8f4596b5145ccac68044a964462b2c7be73
+	sha256sums = 6df4579b315cca673a7701b75318814cd9abe451019002829cc6021d947d9504
+	sha256sums = cb9cd63f8b137d35c7f6c9d7a4c202d2fa3c2c01ceaec148936e21e812e3976f
+	sha256sums = 48408df2e4326a5360809a363194d4b8ad28047bd0cf7a3c321dfc5c3f8b2710
 
 pkgname = mingw-w64-postgresql
