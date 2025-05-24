@@ -1,5 +1,5 @@
 pkgbase = python-gurobipy
-	pkgdesc = State-of-the-art solver for mathematical programming (python bindings)
+	pkgdesc = State-of-the-art solver for mathematical programming (Python bindings)
 	pkgver = 12.0.2
 	pkgrel = 1
 	url = https://www.gurobi.com/products/gurobi-optimizer
