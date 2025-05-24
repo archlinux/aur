@@ -1,6 +1,6 @@
 pkgname=gpt4all-chat
 pkgver=3.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
 url="https://gpt4all.io"
@@ -115,6 +115,9 @@ prepare() {
         gpt4all-backend/deps/llama.cpp-mainline/ggml/src/kompute/src/Manager.cpp
     sed -i "s/vk::DispatchLoaderDynamic/vk::detail::DispatchLoaderDynamic/" \
         gpt4all-backend/deps/llama.cpp-mainline/ggml/src/kompute/src/include/kompute/Manager.hpp
+    # https://github.com/KomputeProject/kompute/issues/410
+    sed -i "/strtol()/ d;/ftell()/ d" \
+        gpt4all-backend/deps/llama.cpp-mainline/ggml/src/kompute/external/bin/xxd.c
 }
 build() {
     CFLAGS+=" -DNDEBUG"
