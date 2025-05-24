@@ -1,7 +1,7 @@
 # Maintainer: Laura Demkowicz-Duffy <dev[at]demkowiczduffy.co.uk>
 pkgname=zigup-bin
 _pkgname=zigup
-pkgver=2025_04_20
+pkgver=2025_05_24
 pkgrel=1
 epoch=1
 pkgdesc="Download and manage zig compilers"
@@ -15,10 +15,10 @@ source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 source_x86_64=("$url/releases/download/v$pkgver/zigup-x86_64-linux.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/zigup-aarch64-linux.tar.gz")
 source_armv7h=("$url/releases/download/v$pkgver/zigup-arm-linux.tar.gz")
-sha256sums=('3fabc75f05c7a80a9a19f7d79f3529c208db6303ffd1b3b0328e070fc6703654')
-sha256sums_x86_64=('edfb37ea013ae7269c6d994fe3462fa19d15d9c357c0287e2b1f95a212c533f9')
-sha256sums_aarch64=('a4fb26b456645ed6acbbba55313fe49abee9a4b02aff769e9219e5755cb93361')
-sha256sums_armv7h=('11f2a8008669fc54ccd7c5c0d4a98331529f21be12c02a495db66e6edb46b7d1')
+sha256sums=('d88e6d9c9629c88aba78c3bae2fb89ae4bea11f2818911f6d5559e7e79bcae69')
+sha256sums_x86_64=('1cd459fb8d83e3967eb6b97c30d1929427f3401167cdd5c5bac54aa56acbe4f4')
+sha256sums_aarch64=('a4c6f259b957dd0e31dc0adf217f6301f42ebef2c23481c9fac4c14dad77a5ca')
+sha256sums_armv7h=('fe6e30b421453c147866d9286288de42cf308c88e186f3eff187523a982a908c')
 
 package() {
     install -Dm 0755 $_pkgname $pkgdir/usr/bin/$_pkgname
