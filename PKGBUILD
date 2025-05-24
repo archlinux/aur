@@ -5,7 +5,7 @@
 pkgbase=mcpelauncher-linux
 pkgname=('mcpelauncher-linux' 'lib32-mcpelauncher-linux')
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
@@ -126,8 +126,8 @@ prepare() {
 
 build() {
 	CXXFLAGS="$(echo $CXXFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3//g') -DNDEBUG -flto=thin"
-	CFLAGS+="$CFLAGS -flto=thin"
-	LDFLAGS+="$LDFLAGS -fuse-ld=lld"
+	CFLAGS+=" -flto=thin"
+	LDFLAGS+=" -fuse-ld=lld"
 	_args=(
 	-S mcpelauncher-manifest
 	-G Ninja
