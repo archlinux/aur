@@ -3,7 +3,7 @@
 pkgname=plakar-git
 _pkgname=plakar
 pkgdesc="Backup for lazy^W smart engineers."
-pkgver=1.0.0.beta.6.r1063.g8e87cb17
+pkgver=1.0.0.beta.6.r1068.g59a7fb5b
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://plakar.io/"
@@ -65,11 +65,13 @@ build() {
       -linkmode=external \
       -buildid=''
       -extldflags \"${LDFLAGS}\"" \
-    ./
+    -v .
 }
 
 package() {
   install -D -m0755 "$srcdir/$_pkgname/plakar" "$pkgdir/usr/bin/plakar"
-  install -D -m0644 "$srcdir/$_pkgname/plakar.1" "$pkgdir/usr/share/man/man1/plakar.1"
+  for command in $(find "$srcdir/$_pkgname" -name "*.1" -type f); do
+    install -D -m0644 "$command" "$pkgdir/usr/share/man/man1/$(basename $command)"
+  done
   install -D -m0644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/plakar/LICENSE"
 }
