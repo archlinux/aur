@@ -1,0 +1,421 @@
+commit f0c71b18bac328bc090d7d4a5882237c62207163
+Author: Vasile Vilvoiu <vasi@vilvoiu.ro>
+Date:   Sat May 24 18:29:17 2025 +0300
+
+    Follow tutorial to migrate to SFML3 API.
+    
+    https://www.sfml-dev.org/tutorials/3.0/getting-started/migrate
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2d16186..697ec8b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,7 +17,7 @@ option (TESTING "Build test targets" OFF)
+ # Dependencies
+ set (THREADS_PREFER_PTHREAD_FLAG ON)
+ find_package (Threads REQUIRED)
+-find_package (SFML 2.5 COMPONENTS window graphics REQUIRED)
++find_package (SFML 3 COMPONENTS Window Graphics REQUIRED)
+ find_library (FFTW3 fftw3)
+ 
+ if (TESTING)
+@@ -74,7 +74,7 @@ add_library (${PROJECT_NAME}_static STATIC ${SPECGRAM_SOURCES})
+ 
+ # Executable target
+ add_executable (${PROJECT_NAME} ${SRC_DIR}/specgram.cpp)
+-target_link_libraries (${PROJECT_NAME} ${PROJECT_NAME}_static Threads::Threads sfml-window sfml-graphics ${FFTW3})
++target_link_libraries (${PROJECT_NAME} ${PROJECT_NAME}_static Threads::Threads SFML::Window SFML::Graphics ${FFTW3})
+ 
+ # HTML manpage target
+ add_custom_target(manpage
+diff --git a/src/live.cpp b/src/live.cpp
+index fd93d87..92328c2 100644
+--- a/src/live.cpp
++++ b/src/live.cpp
+@@ -6,6 +6,7 @@
+  */
+ #include "live.hpp"
+ 
++#include <SFML/System/Angle.hpp>
+ #include <cassert>
+ #include <cstring>
+ 
+@@ -18,7 +19,7 @@ LiveOutput::LiveOutput(const Configuration& conf)
+     auto height = conf.IsHorizontal() ? renderer_.GetWidth() : renderer_.GetHeight();
+ 
+     /* create non-resizable window */
+-    this->window_.create(sf::VideoMode(width, height),
++    this->window_.create(sf::VideoMode({(uint32_t)width, (uint32_t)height}),
+                          conf.GetTitle(),
+                          sf::Style::Close);
+     this->window_.setFramerateLimit(0);
+@@ -59,12 +60,13 @@ LiveOutput::AddWindow(const RealWindow& win_values)
+ bool
+ LiveOutput::HandleEvents()
+ {
+-    sf::Event event;
+-    while (this->window_.pollEvent(event)) {
+-        if ((event.type == sf::Event::Closed)
+-            || (event.type == sf::Event::KeyPressed
+-                && event.key.code == sf::Keyboard::Escape)) {
++    while (const auto event = this->window_.pollEvent()) {
++        if (event->is<sf::Event::Closed>()) {
+             this->window_.close();
++        } else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
++            if (keyPressed->scancode == sf::Keyboard::Scancode::Escape) {
++                this->window_.close();
++            }
+         }
+     }
+     return this->window_.isOpen();
+@@ -77,8 +79,8 @@ LiveOutput::Render()
+     sf::Texture canvas_texture = this->renderer_.GetCanvas();
+     sf::Sprite canvas_sprite(canvas_texture);
+     if (this->is_horizontal_) {
+-        canvas_sprite.setRotation(-90.0f);
+-        canvas_sprite.setPosition(0.0f, canvas_texture.getSize().x);
++        canvas_sprite.setRotation(sf::degrees(-90.0f));
++        canvas_sprite.setPosition({ 0.0f, (float)canvas_texture.getSize().x });
+     }
+ 
+     this->window_.draw(canvas_sprite);
+diff --git a/src/renderer.cpp b/src/renderer.cpp
+index 1eb54b6..88e208d 100644
+--- a/src/renderer.cpp
++++ b/src/renderer.cpp
+@@ -6,8 +6,8 @@
+  */
+ #include "renderer.hpp"
+ #include "share-tech-mono.hpp"
+-#include "fft.hpp"
+ 
++#include <SFML/Graphics/PrimitiveType.hpp>
+ #include <iomanip>
+ #include <sstream>
+ #include <cassert>
+@@ -62,7 +62,7 @@ Renderer::Renderer(const Configuration& conf, std::size_t fft_count)
+     }
+ 
+     /* load font */
+-    if (!this->font_.loadFromMemory(ShareTechMono_Regular_ttf, ShareTechMono_Regular_ttf_len)) {
++    if (!this->font_.openFromMemory(ShareTechMono_Regular_ttf, ShareTechMono_Regular_ttf_len)) {
+         throw std::runtime_error("unable to load font");
+     }
+ 
+@@ -105,54 +105,50 @@ Renderer::Renderer(const Configuration& conf, std::size_t fft_count)
+ 
+     if (this->configuration_.HasAxes()) {
+         for (auto &t : this->frequency_ticks_) {
+-            sf::Text text;
++            sf::Text text(this->font_);
+             text.setCharacterSize(this->configuration_.GetAxisFontSize());
+-            text.setFont(this->font_);
+             text.setString(std::get<1>(t));
+-            if (text.getLocalBounds().width > max_freq_ticks_width) {
+-                max_freq_ticks_width = text.getLocalBounds().width;
++            if (text.getLocalBounds().size.x > max_freq_ticks_width) {
++                max_freq_ticks_width = text.getLocalBounds().size.x;
+             }
+-            if (text.getLocalBounds().height > max_freq_ticks_height) {
+-                max_freq_ticks_height = text.getLocalBounds().height;
++            if (text.getLocalBounds().size.y > max_freq_ticks_height) {
++                max_freq_ticks_height = text.getLocalBounds().size.y;
+             }
+         }
+ 
+         for (auto &t : time_ticks) {
+-            sf::Text text;
++            sf::Text text(this->font_);
+             text.setCharacterSize(this->configuration_.GetAxisFontSize());
+-            text.setFont(this->font_);
+             text.setString(std::get<1>(t));
+-            if (text.getLocalBounds().width > max_time_ticks_width) {
+-                max_time_ticks_width = text.getLocalBounds().width;
++            if (text.getLocalBounds().size.x > max_time_ticks_width) {
++                max_time_ticks_width = text.getLocalBounds().size.x;
+             }
+-            if (text.getLocalBounds().height > max_time_ticks_height) {
+-                max_time_ticks_height = text.getLocalBounds().height;
++            if (text.getLocalBounds().size.y > max_time_ticks_height) {
++                max_time_ticks_height = text.getLocalBounds().size.y;
+             }
+         }
+ 
+         for (auto &t : legend_ticks) {
+-            sf::Text text;
++            sf::Text text(this->font_);
+             text.setCharacterSize(this->configuration_.GetAxisFontSize());
+-            text.setFont(this->font_);
+             text.setString(std::get<1>(t));
+-            if (text.getLocalBounds().width > max_legend_ticks_width) {
+-                max_legend_ticks_width = text.getLocalBounds().width;
++            if (text.getLocalBounds().size.x > max_legend_ticks_width) {
++                max_legend_ticks_width = text.getLocalBounds().size.x;
+             }
+-            if (text.getLocalBounds().height > max_legend_ticks_height) {
+-                max_legend_ticks_height = text.getLocalBounds().height;
++            if (text.getLocalBounds().size.y > max_legend_ticks_height) {
++                max_legend_ticks_height = text.getLocalBounds().size.y;
+             }
+         }
+ 
+         for (auto &t : this->live_ticks_) {
+-            sf::Text text;
++            sf::Text text(this->font_);
+             text.setCharacterSize(this->configuration_.GetAxisFontSize());
+-            text.setFont(this->font_);
+             text.setString(std::get<1>(t));
+-            if (text.getLocalBounds().width > max_live_ticks_width) {
+-                max_live_ticks_width = text.getLocalBounds().width;
++            if (text.getLocalBounds().size.x > max_live_ticks_width) {
++                max_live_ticks_width = text.getLocalBounds().size.x;
+             }
+-            if (text.getLocalBounds().height > max_live_ticks_height) {
+-                max_live_ticks_height = text.getLocalBounds().height;
++            if (text.getLocalBounds().size.y > max_live_ticks_height) {
++                max_live_ticks_height = text.getLocalBounds().size.y;
+             }
+         }
+     }
+@@ -162,9 +158,9 @@ Renderer::Renderer(const Configuration& conf, std::size_t fft_count)
+     double legend_axis_spacing = (this->configuration_.IsHorizontal() ? max_legend_ticks_width : max_legend_ticks_height);
+     double live_axis_spacing = (this->configuration_.IsHorizontal() ? max_live_ticks_height : max_live_ticks_width);
+ 
+-    double horizontal_extra_spacing = std::max({ time_axis_spacing, live_axis_spacing });
++    double horizontal_extra_spacing = std::max<double>(time_axis_spacing, live_axis_spacing);
+     horizontal_extra_spacing =
+-        std::max<double>({ 0.0f, horizontal_extra_spacing - this->configuration_.GetMarginSize() + this->configuration_.GetMinimumMarginSize() });
++        std::max<double>(0.0f, horizontal_extra_spacing - this->configuration_.GetMarginSize() + this->configuration_.GetMinimumMarginSize());
+ 
+     /* compute various sizes */
+     this->width_ = conf.GetWidth();
+@@ -174,37 +170,39 @@ Renderer::Renderer(const Configuration& conf, std::size_t fft_count)
+     /* compute transforms */
+     if (this->configuration_.HasLegend()) {
+         if (this->configuration_.HasAxes()) {
+-            this->legend_transform_.translate(conf.GetMarginSize() + horizontal_extra_spacing,
+-                                              conf.GetMarginSize() + legend_axis_spacing);
++            this->legend_transform_.translate({ (float)conf.GetMarginSize() + (float)horizontal_extra_spacing,
++                                                (float)conf.GetMarginSize() + (float)legend_axis_spacing });
+             this->height_ += conf.GetMarginSize() + legend_axis_spacing;
+         }
+         this->height_ += conf.GetLegendHeight();
+     }
+ 
+-    this->live_transform_.translate(0.0f, this->height_);
++    this->live_transform_.translate({ 0.0f, (float)this->height_ });
+     if (conf.HasLiveWindow()) {
+         if (this->configuration_.HasAxes()) {
+-            this->live_transform_.translate(conf.GetMarginSize() + horizontal_extra_spacing,
+-                                            conf.GetMarginSize());
++            this->live_transform_.translate({ (float)conf.GetMarginSize() + (float)horizontal_extra_spacing,
++                                              (float)conf.GetMarginSize() });
+             this->height_ += conf.GetLiveMarginSize();
+         }
+         this->height_ += conf.GetLiveFFTHeight();
+     }
+ 
+-    this->spectrogram_transform_.translate(0.0f, this->height_);
++    this->spectrogram_transform_.translate({ 0.0f, (float)this->height_ });
+     if (conf.HasAxes()) {
+-        this->spectrogram_transform_.translate(conf.GetMarginSize() + horizontal_extra_spacing,
+-                                               conf.GetMarginSize() + freq_axis_spacing);
++        this->spectrogram_transform_.translate({ (float)conf.GetMarginSize() + (float)horizontal_extra_spacing,
++                                                 (float)conf.GetMarginSize() + (float)freq_axis_spacing });
+         this->height_ += conf.GetMarginSize() * 2 + freq_axis_spacing;
+     }
+     this->height_ += this->fft_count_;
+ 
+     /* allocate canvas render texture */
+-    this->canvas_.create(this->width_, this->height_);
++    auto success = this->canvas_.resize({ (uint32_t)this->width_, (uint32_t)this->height_ });
++    assert(success && "failed to create RenderTexture for canvas");
+     this->canvas_.clear(this->configuration_.GetBackgroundColor());
+ 
+     /* allocate FFT area texture */
+-    this->spectrogram_texture_.create(conf.GetWidth(), fft_count);
++    success = this->spectrogram_texture_.resize({ (uint32_t)conf.GetWidth(), (uint32_t)fft_count });
++    assert(success && "failed to create RenderTexture for spectrogram");
+ 
+     /*
+      * render UI
+@@ -225,7 +223,7 @@ Renderer::Renderer(const Configuration& conf, std::size_t fft_count)
+                          this->configuration_.GetWidth(), this->frequency_ticks_);
+ 
+         /* time axis */
+-        this->RenderAxis(this->canvas_, this->spectrogram_transform_ * sf::Transform().rotate(90.0f),
++        this->RenderAxis(this->canvas_, this->spectrogram_transform_ * sf::Transform().rotate(sf::degrees(90.0f)),
+                          false, this->configuration_.IsHorizontal() ? Orientation::kNormal : Orientation::k90CCW,
+                          fft_count, time_ticks);
+     }
+@@ -242,9 +240,10 @@ Renderer::Renderer(const Configuration& conf, std::size_t fft_count)
+         /* legend gradient */
+         auto memory = color_map_->Gradient(this->configuration_.GetWidth());
+         sf::Texture tex;
+-        tex.create(this->configuration_.GetWidth(), 1);
++        success = tex.resize({ (uint32_t)this->configuration_.GetWidth(), 1 });
++        assert(success && "failed to create Texture for legend gradient");
+         tex.update(reinterpret_cast<const uint8_t *>(memory.data()));
+-        this->canvas_.draw(sf::Sprite(tex), this->legend_transform_ * sf::Transform().scale(1.0f, this->configuration_.GetLegendHeight()));
++        this->canvas_.draw(sf::Sprite(tex), this->legend_transform_ * sf::Transform().scale({ 1.0f, (float)this->configuration_.GetLegendHeight() }));
+ 
+         if (this->configuration_.HasAxes()) {
+             this->RenderAxis(this->canvas_, this->legend_transform_,
+@@ -256,12 +255,12 @@ Renderer::Renderer(const Configuration& conf, std::size_t fft_count)
+     if (this->configuration_.HasLiveWindow() && this->configuration_.HasAxes()) {
+         /* value axis */
+         this->RenderAxis(this->canvas_,
+-                         this->live_transform_ * sf::Transform().translate(0.0f, this->configuration_.GetLiveFFTHeight()).rotate(-90.0f),
++                         this->live_transform_ * sf::Transform().translate({ 0.0f, (float)this->configuration_.GetLiveFFTHeight() }).rotate(sf::degrees(-90.0f)),
+                          true, this->configuration_.IsHorizontal() ? Orientation::k180 : Orientation::k90CW,
+                          this->configuration_.GetLiveFFTHeight(), this->live_ticks_);
+ 
+         /* frequency axis */
+-        this->RenderAxis(this->canvas_, this->live_transform_ * sf::Transform().translate(0.0f, this->configuration_.GetLiveFFTHeight()),
++        this->RenderAxis(this->canvas_, this->live_transform_ * sf::Transform().translate({ 0.0f, (float)this->configuration_.GetLiveFFTHeight() }),
+                          false, this->configuration_.IsHorizontal() ? Orientation::k90CW : Orientation::kNormal,
+                          this->configuration_.GetWidth(), freq_no_text_ticks);
+     }
+@@ -373,11 +372,10 @@ Renderer::GetNiceTicks(double v_min, double v_max, const std::string& v_unit, un
+     /* computes text width */
+     auto compute_text_size = [this, rotated](const std::string& str) -> double
+     {
+-        sf::Text text;
++        sf::Text text(this->font_);
+         text.setCharacterSize(this->configuration_.GetAxisFontSize());
+-        text.setFont(this->font_);
+         text.setString(str);
+-        return (rotated ? text.getLocalBounds().height : text.getLocalBounds().width);
++        return (rotated ? text.getLocalBounds().size.y : text.getLocalBounds().size.x);
+     };
+ 
+     /* find the first nice value */
+@@ -464,45 +462,44 @@ Renderer::RenderAxis(sf::RenderTexture& texture,
+         double x = (length - 1) * std::get<0>(tick);
+         sf::RectangleShape tick_shape(sf::Vector2f(1.0, (lhs ? -5.0f : 5.0f)));
+         tick_shape.setFillColor(this->configuration_.GetForegroundColor());
+-        texture.draw(tick_shape, t * sf::Transform().translate(x, 0.0f));
++        texture.draw(tick_shape, t * sf::Transform().translate({ (float)x, 0.0f }));
+ 
+         /* draw text */
+-        sf::Text text;
++        sf::Text text(this->font_);
+         text.setFillColor(this->configuration_.GetForegroundColor());
+         text.setCharacterSize(this->configuration_.GetAxisFontSize());
+-        text.setFont(this->font_);
+         text.setString(std::get<1>(tick));
+ 
+         sf::Vector2f pos;
+         switch (orientation) {
+             case Orientation::k90CCW:
+-                pos = sf::Vector2f(sf::Vector2f(length * std::get<0>(tick) - text.getLocalBounds().height,
+-                                                (lhs ? -10.0f : text.getLocalBounds().width + 10.0f)));
+-                text.setRotation(-90.0f);
++                pos = sf::Vector2f(sf::Vector2f(length * std::get<0>(tick) - text.getLocalBounds().size.y,
++                                                (lhs ? -10.0f : text.getLocalBounds().size.x + 10.0f)));
++                text.setRotation(sf::degrees(-90.0f));
+                 break;
+ 
+             case Orientation::k90CW:
+-                pos = sf::Vector2f(sf::Vector2f(length * std::get<0>(tick) + text.getLocalBounds().height,
+-                                                (lhs ? -text.getLocalBounds().width - 10.0f : 10.0f)));
+-                text.setRotation(90.0f);
++                pos = sf::Vector2f(sf::Vector2f(length * std::get<0>(tick) + text.getLocalBounds().size.y,
++                                                (lhs ? -text.getLocalBounds().size.x - 10.0f : 10.0f)));
++                text.setRotation(sf::degrees(90.0f));
+                 break;
+ 
+             case Orientation::kNormal:
+-                pos = sf::Vector2f(sf::Vector2f(length * std::get<0>(tick) - text.getLocalBounds().width / 2,
+-                                                (lhs ? -2.0f * text.getLocalBounds().height - 3.0f : 3.0f)));
++                pos = sf::Vector2f(sf::Vector2f(length * std::get<0>(tick) - text.getLocalBounds().size.x / 2,
++                                                (lhs ? -2.0f * text.getLocalBounds().size.y - 3.0f : 3.0f)));
+                 break;
+ 
+             case Orientation::k180:
+-                pos = sf::Vector2f(sf::Vector2f(length * std::get<0>(tick) + text.getLocalBounds().width / 2,
+-                                                (lhs ? -3.0f : 2.0f * text.getLocalBounds().height + 3.0f)));
+-                text.setRotation(180.0f);
++                pos = sf::Vector2f(sf::Vector2f(length * std::get<0>(tick) + text.getLocalBounds().size.x / 2,
++                                                (lhs ? -3.0f : 2.0f * text.getLocalBounds().size.y + 3.0f)));
++                text.setRotation(sf::degrees(180.0f));
+                 break;
+ 
+             default:
+                 throw std::runtime_error("unknown orientation");
+         }
+ 
+-        text.setPosition(std::round(pos.x), std::round(pos.y)); /* avoid interpolation on text, looks yuck */
++        text.setPosition({ std::round(pos.x), std::round(pos.y) }); /* avoid interpolation on text, looks yuck */
+         texture.draw(text, t);
+     }
+ }
+@@ -568,7 +565,7 @@ Renderer::RenderLiveFFT(const RealWindow& window)
+         hline.setFillColor(this->configuration_.GetLiveGuidelinesColor());
+ 
+         sf::Transform tran;
+-        tran.translate(0.0f, (1.0 - std::get<0>(*std::next(this->live_ticks_.begin(), i))) * (this->configuration_.GetLiveFFTHeight() - 1.0f));
++        tran.translate({ 0.0f, static_cast<float>(1.0 - std::get<0>(*std::next(this->live_ticks_.begin(), i))) * (this->configuration_.GetLiveFFTHeight() - 1.0f) });
+         this->canvas_.draw(hline, this->live_transform_ * tran);
+     }
+ 
+@@ -578,7 +575,7 @@ Renderer::RenderLiveFFT(const RealWindow& window)
+         vline.setFillColor(this->configuration_.GetLiveGuidelinesColor());
+ 
+         sf::Transform tran;
+-        tran.translate(std::get<0>(*std::next(this->frequency_ticks_.begin(), i)) * (this->configuration_.GetWidth() - 1.0f), 0.0f);
++        tran.translate({ static_cast<float>(std::get<0>(*std::next(this->frequency_ticks_.begin(), i)) * (this->configuration_.GetWidth() - 1.0f)), 0.0f });
+         this->canvas_.draw(vline, this->live_transform_ * tran);
+     }
+ 
+@@ -586,13 +583,13 @@ Renderer::RenderLiveFFT(const RealWindow& window)
+     std::vector<sf::Vertex> vertices;
+     vertices.resize(window.size());
+     for (std::size_t i = 0; i < window.size(); i++) {
+-        double x = i;
+-        double y = (1.0f - window[i]) * this->configuration_.GetLiveFFTHeight();
+-        vertices[i] = sf::Vertex(sf::Vector2f(x, y),
++        float x = i;
++        float y = (1.0f - window[i]) * this->configuration_.GetLiveFFTHeight();
++        vertices[i] = sf::Vertex({ x, y },
+                                  sf::Color(colors[i * 4 + 0], colors[i * 4 + 1], colors[i * 4 + 2]));
+     }
+     this->canvas_.draw(reinterpret_cast<sf::Vertex *>(vertices.data()), vertices.size(),
+-                       sf::LineStrip, this->live_transform_);
++                       sf::PrimitiveType::LineStrip, this->live_transform_);
+ 
+     return colors;
+ }
+diff --git a/src/specgram.cpp b/src/specgram.cpp
+index 3e10989..10b334f 100644
+--- a/src/specgram.cpp
++++ b/src/specgram.cpp
+@@ -108,7 +108,8 @@ dump_to_stdout(const sf::Image& image)
+     /* save */
+     temp_file_name = "/dev/shm/" + generate_random_string(TEMP_FILENAME_LENGTH) + ".png";
+     INFO("Temporary file: " << temp_file_name);
+-    image.saveToFile(temp_file_name);
++    auto success = image.saveToFile(temp_file_name);
++    assert(success && "failed to save image to file");
+ 
+     /* from now on we have a leakable resource (the file); if using STDIN for input, we're here from a SIGINT,
+      * and we expect a SIGPIPE soon; install a handler that will clean up */
+@@ -354,7 +355,7 @@ main(int argc, char** argv)
+ 
+             /* create rotated image */
+             sf::Image rimage;
+-            rimage.create(h, w, reinterpret_cast<const uint8_t *>(optr));
++            rimage.resize({ (uint32_t)h, (uint32_t)w }, reinterpret_cast<const uint8_t *>(optr));
+             delete[] optr;
+ 
+             image = rimage;
+@@ -363,7 +364,8 @@ main(int argc, char** argv)
+         /* dump to file or stdout */
+         if (conf.GetOutputFilename().has_value()) {
+             INFO("Output: " << *conf.GetOutputFilename());
+-            image.saveToFile(*conf.GetOutputFilename());
++            auto success = image.saveToFile(*conf.GetOutputFilename());
++            assert(success && "failed to save output");
+         } else if (conf.MustDumpToStdout()) {
+             INFO("Output: STDOUT");
+             dump_to_stdout(image);
