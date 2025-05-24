@@ -2,8 +2,8 @@
 
 pkgname=openarc-git
 _pkgname=openarc
-pkgver=1.2.0.r17.g3ff4b07
-pkgrel=3
+pkgver=1.2.1.r5.gff912ac
+pkgrel=2
 pkgdesc="Open source implementation of the ARC email authentication system"
 arch=(x86_64)
 url="https://github.com/flowerysong/OpenARC"
@@ -42,6 +42,7 @@ prepare() {
 build() {
   cd "$srcdir/OpenARC"
   ./configure \
+     CC="gcc -std=gnu17" \
      --prefix=/usr \
      --sbindir=/usr/bin \
      --sysconfdir="/etc/$_pkgname" \
