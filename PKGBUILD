@@ -1,4 +1,5 @@
-# Maintainer: BryanLiang <liangrui.ch at gmail dot com>
+# Maintainer: hellopoisonx<x1665341912@gmail.com>
+# Contributor: BryanLiang <liangrui.ch at gmail dot com>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=subconverter-bin
