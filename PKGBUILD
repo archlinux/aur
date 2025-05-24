@@ -3,7 +3,7 @@
 # Contributor: Renaud Littolff <rlittolff@gmail.com>
 
 pkgname=proton-pass
-pkgver=1.31.1
+pkgver=1.31.4
 pkgrel=1
 pkgdesc="Open-source and secure identity manager"
 arch=('x86_64')
@@ -35,7 +35,7 @@ depends=('alsa-lib'
          'systemd-libs')
 makedepends=('gendesk' 'npm' 'rustup' 'yarn')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ProtonMail/WebClients/archive/refs/tags/${pkgname}@${pkgver}.tar.gz")
-sha256sums=('f1eceef6914c83fb46499e4cfc3e955d08e802d0c9de815824ab094922ee02a8')
+sha256sums=('8c74cb1c8f582e6683e94ca133eee713f82d9c9a785bebec0070e5fc74fc00b1')
 
 prepare() {
     cd "WebClients-${pkgname}-${pkgver}/applications/pass-desktop"
