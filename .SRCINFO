@@ -1,8 +1,8 @@
-pkgbase = klipper-git
-	pkgdesc = 3D printer firmware with motion planning on the host
-	pkgver = r4940.e2d7c5981
+pkgbase = ender3-v3-se-klipper-with-display-git
+	pkgdesc = 3D printer firmware with motion planning on the host. Fork for Ender 3 V3 SE + screen support.
+	pkgver = r5834.94a5d37f
 	pkgrel = 1
-	url = https://www.klipper3d.org/
+	url = https://github.com/jpcurti/ender3-v3-se-klipper-with-display
 	install = klipper.install
 	arch = x86_64
 	arch = i686
@@ -31,7 +31,7 @@ pkgbase = klipper-git
 	conflicts = klipper
 	backup = etc/klipper/klipper.cfg
 	backup = usr/lib/klipper/.config
-	source = klipper::git+https://github.com/Klipper3d/klipper
+	source = klipper::git+https://github.com/jpcurti/ender3-v3-se-klipper-with-display
 	source = klipper.service
 	source = sysusers.conf
 	source = tmpfiles.conf
@@ -43,4 +43,4 @@ pkgbase = klipper-git
 	optdepends_x86_64 = arm-none-eabi-gcc: for ARM MCU firmware compilation
 	optdepends_x86_64 = arm-none-eabi-binutils: for ARM MCU firmware compilation
 
-pkgname = klipper-git
+pkgname = ender3-v3-se-klipper-with-display-git

@@ -2,13 +2,13 @@
 # Contributor: qubidt <qubidt at gmail dot com>
 # Contributor: loredan13
 # Contributor: lf <packages at lfcode dot ca>
-pkgname=klipper-git
+pkgname=ender3-v3-se-klipper-with-display-git
 _pkgname=klipper
-pkgver=r4940.e2d7c5981
+pkgver=r5834.94a5d37f
 pkgrel=1
-pkgdesc="3D printer firmware with motion planning on the host"
+pkgdesc="3D printer firmware with motion planning on the host. Fork for Ender 3 V3 SE + screen support."
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://www.klipper3d.org/"
+url="https://github.com/jpcurti/ender3-v3-se-klipper-with-display"
 license=('GPL3')
 groups=()
 depends=(
@@ -43,7 +43,7 @@ backup=("etc/${_pkgname}/klipper.cfg"
         "usr/lib/klipper/.config")
 options=()
 install='klipper.install'
-source=("${_pkgname}::git+https://github.com/Klipper3d/klipper"
+source=("${_pkgname}::git+https://github.com/jpcurti/ender3-v3-se-klipper-with-display"
         'klipper.service'
         'sysusers.conf'
         'tmpfiles.conf')
