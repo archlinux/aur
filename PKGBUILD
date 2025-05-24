@@ -28,7 +28,7 @@ sha256sums=('f99e5eda0704ece359fb2bd9f2254e4a167257cee4da947481e8268a9cb87c50'
             '33380f46f9e44cce1b6c5fcc10917cc363654ac157dca3cccf620d05ce7e3f19')
 validpgpkeys=('4ABA2F66DBD5A95894910E0673D770CDA59047B9') # HPLIP (HP Linux Imaging and Printing) <hplip@hp.com>
 options=(!makeflags)
-DLAGENTS=("https::/usr/bin/curl -A 'Mozilla/5.0' -o %o %u")
+DLAGENTS=("https::/usr/bin/curl -A 'Mozilla/5.0' -oL %o %u")
 
 prepare() {
   sh "hplip-$pkgver-plugin.run" --target "$srcdir/hplip-$pkgver-plugin" --noexec
