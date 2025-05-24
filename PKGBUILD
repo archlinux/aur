@@ -35,9 +35,9 @@ package() {
   install -Dm755 "target/release/term_planner" \
                 "$pkgdir/usr/bin/term_planner"
 
-  install -Dm644 term_planner-notify.service \
+  install -Dm644 systemd/term_planner-notify.service \
                 "$pkgdir/usr/lib/systemd/user/term_planner-notify.service"
-  install -Dm644 term_planner-notify.timer \
+  install -Dm644 systemd/term_planner-notify.timer \
                 "$pkgdir/usr/lib/systemd/user/term_planner-notify.timer"
 }
 
