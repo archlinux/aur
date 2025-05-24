@@ -1,0 +1,4 @@
+[epub_to_audiobook]
+source = "git"
+git = "https://github.com/p0n1/epub_to_audiobook.git"
+prefix = "v"
