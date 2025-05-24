@@ -1,7 +1,7 @@
 # Maintainer: Sylvain POULAIN <sylvain.poulain at giscan dot com>
 pkgname=python-pysfcgal
 _pkgname=pysfcgal
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A Python package for segmenting geospatial data with the Segment Anything Model (SAM)"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'sfcgal')
 makedepends=('git' 'python-setuptools')
 source=("$_pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz")
-sha256sums=('fad4832d0264b1d20dc5425366d6dbc6321efac88298ff7bd0ea7a796738488f')
+sha256sums=('1c28e105bdb809a7a8c9b6d30b06f145e0239a715f1973bc9513c50508edb03f')
 
 build() {
   cd "$srcdir/$_pkgname-v$pkgver"
