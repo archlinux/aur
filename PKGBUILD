@@ -76,7 +76,7 @@ build(){
   #export CXX="g++ -m32"
   # These must be export for all the configure inside make
   # Can't add any warning removal flags that xgcc doesn't support
-  export CFLAGS='-march=i686 -m32 -O2 -pipe'
+  export CFLAGS='-march=i686 -m32 -O1 -pipe'
   export CPPFLAGS="${CFLAGS}"
   export CXXFLAGS="${CFLAGS}"
   export SHELL='/usr/bin/bash' # doesn't work with fish
@@ -97,7 +97,7 @@ build(){
       --libdir='/usr/lib32'
       --prefix='/usr'
     )
-    export CC='gcc -Wno-implicit-int -Wno-implicit-function-declaration -Wno-incompatible-pointer-types -Wno-int-conversion' # https://gcc.gnu.org/gcc-14/porting_to.html
+    export CC='gcc -std=gnu17 -Wno-implicit-int -Wno-implicit-function-declaration -Wno-incompatible-pointer-types -Wno-int-conversion' # https://gcc.gnu.org/gcc-14/porting_to.html
     ../gcc-${pkgver}/configure "${_copts[@]}"
   fi
   # We build the full multilib libstdc++5 here, no idea how to restrict
