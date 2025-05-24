@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="anyzig"
-pkgver=2025_04_24
+pkgver=2025_05_24
 _zig=0.14.0
 pkgrel=1
 pkgdesc="One zig to rule them all"
@@ -20,7 +20,7 @@ _zig_deps=(
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}_zig_zon_hash.patch")
         #"${_zig_deps[@]}")
-b2sums=('d4b986ad8ddfd09c92c7e19a3b8414077139ade08c7981e0af02c4b14ac3d1a3ab8aa984b898c2e2c0b4f6b516472b2f8865475b23b8004199e1e1ace2f6ecdb'
+b2sums=('7db7d760daa92d062c0f0ff7b136ca4955ca0274bb44657cc65260d6868d247a5df2e4ddcb2969a63f7acbc6345c540bc440056121c064de887eeeeb17fd37ac'
         '5f333e648096431f12490e8cd750c260ff1f246e40ce701499751c5cd5ab8723f8ec68b1fcb469d7564948e09f105450669e33d878e1ba079d7a39485a481afd')
            
 prepare() {
