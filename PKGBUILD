@@ -5,17 +5,17 @@
 # Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname='hplip-minimal'
-pkgver=3.24.4
-pkgrel=7
+pkgver=3.25.2
+pkgrel=1
 pkgdesc='Only printer drivers from HPLIP with proprietary binary plugin'
 arch=('x86_64')
 url='https://developers.hp.com/hp-linux-imaging-and-printing/'
 license=('GPL-2.0-only' 'MIT' 'BSD-3-Clause' 'GPL-3.0-only' 'LicenseRef-HPLIP')
-depends=(libjpeg-turbo libcups)
+depends=(libcups)
 makedepends=(python libusb cups)
 conflicts=('hplip' 'hplip-lite' 'hplip-plugin')
 provides=('hplip')
-backup=('etc/hp/hplip.conf')
+backup=('etc/hp/hplip.conf' 'var/lib/hp/hplip.state')
 optdepends=('cups: for printing support')
 source=(https://downloads.sourceforge.net/hplip/hplip-$pkgver.tar.gz{,.asc}
         https://developers.hp.com/system/files/2025-03/hplip-$pkgver-plugin_run.zip
