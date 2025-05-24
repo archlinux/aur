@@ -4,7 +4,7 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full-git
-pkgver=7.2.r119077.g948a78365b
+pkgver=7.2.r119682.g363a7a34f6
 pkgrel=1
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
 _svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
@@ -27,7 +27,9 @@ depends=(
     'freetype2'
     'frei0r-plugins'
     'fribidi'
+    'gcc-libs'
     'glib2'
+    'glibc'
     'glslang'
     'gmp'
     'gnutls'
@@ -84,6 +86,7 @@ depends=(
     'lv2'
     'ocl-icd'
     'openal'
+    'openapv'
     'opencore-amr'
     'opencv2'
     'openh264'
@@ -133,19 +136,30 @@ depends=(
     'xevd'
     'xeve'
 )
-makedepends=('git'
-             'patchutils'
-             'clang'
-             'nasm'
-             'opencl-headers'
-             'vulkan-headers'
-             # aur:
-             'amf-headers-git'
-             'decklink-sdk'
+makedepends=(
+    'git'
+    'patchutils'
+    'clang'
+    'nasm'
+    'opencl-headers'
+    'vulkan-headers'
+    # aur:
+    'amf-headers-git'
+    'decklink-sdk'
 )
-provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-          'libavutil.so' 'libpostproc.so' 'libswscale.so' 'libswresample.so'
-          'ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'ffmpeg-full-git')
+provides=(
+    'ffmpeg'
+    'ffmpeg-full'
+    'ffmpeg-full-git'
+    'ffmpeg-git'
+    'libavcodec.so'
+    'libavdevice.so'
+    'libavfilter.so'
+    'libavformat.so'
+    'libavutil.so'
+    'libswscale.so'
+    'libswresample.so'
+)
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '010-ffmpeg-add-svt-hevc.patch'
@@ -155,9 +169,9 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '050-ffmpeg-fix-segfault-with-avisynthplus.patch'
         'LICENSE')
 sha256sums=('SKIP'
-            'e33f381ab802b4dd0a8d86d466abafb87fbcbaeb3ddf3a0738392041189eba43'
+            'e29d7356dc871810d210414216ca487a682e209cadc55713f2469b8294a70469'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            'd296198c465eedb47743c84ba1da43515aa4212f997f5e827c800a1e9d4234b4'
+            'bfd7322aa61109052c8d63a31dc856109064afe42ec48a00b00a2c5d66edb63e'
             '391ce03d5e205210c5f136ee7fe7fd84bb420ff423462ed2123b63a19052debd'
             '26419f819d1f3e4d0534995b73d05a8195bc7c892b74c37c3880085af027515b'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
@@ -244,6 +258,7 @@ build() {
         --enable-liblensfun \
         --enable-libmodplug \
         --enable-libmp3lame \
+        --enable-liboapv \
         --enable-libopencore-amrnb \
         --enable-libopencore-amrwb \
         --enable-libopencv \
