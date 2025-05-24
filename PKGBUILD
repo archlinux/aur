@@ -6,7 +6,7 @@
 
 _origname=sendmail # libmilter is bundled with the sendmail source
 _pkgname=libmilter
-pkgname=libmilter
+pkgname=libmilter-sharedlib
 pkgbase="${pkgname}"
 pkgver=8.18.1
 pkgrel=9
