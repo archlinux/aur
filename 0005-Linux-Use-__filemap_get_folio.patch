@@ -1,0 +1,126 @@
+From cda2adaef14b7699af1cddc1ec50d32e3fbb0615 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Mon, 12 May 2025 14:47:14 -0600
+Subject: [PATCH 05/10] Linux: Use __filemap_get_folio()
+
+Linux commit:
+    mm: Remove grab_cache_page_write_begin() (e33ce6bd4ea2)
+removed grab_cache_page_write_begin() which had been a wrapper for
+__filemap_get_folio().  The functions __filemap_get_folio() and
+filemap_get_folio() were introduced in the Linux 5.16 commit:
+    mm/filemap: Add filemap_get_folio (3f0c6a07fee6)
+
+Add a new configure test for __filemap_get_folio().
+
+If the functio afs_linux_write_begin() takes a folio
+(HAVE_LINUX_WRITE_BEGIN_END_FOLIO), replace the call to
+grab_cache_page_write_begin() with __filemap_get_folio() and use
+folio_unlock()/folio_put() to release the folio.
+
+Note: The function grab_cache_page_write_begin() was introduced in
+Linux 2.6.29 where it renamed __grab_cache_page() and added additional
+parameters, Linux commit:
+    fs: symlink write_begin allocation context fix (54566b2c1594)
+
+To handle kernels older than 2.6.29, OpenAFS has had it's own version of
+grab_cache_page_write_begin() that simply front-ended
+__grab_cache_page().
+
+Add an additional preprocessor check to not build with the openafs
+version of grab_cache_page_write_begin if __filemap_get_folio is
+available.
+
+Change-Id: I913e8d2ddef80265521402c4b67fa8e55f09daa1
+---
+ src/afs/LINUX/osi_compat.h   |  3 ++-
+ src/afs/LINUX/osi_vnodeops.c | 26 ++++++++++++++++++++------
+ src/cf/linux-kernel-func.m4  |  8 ++++++++
+ 3 files changed, 30 insertions(+), 7 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_compat.h b/src/afs/LINUX/osi_compat.h
+index e8b8f100e..e8cc9b357 100644
+--- a/src/afs/LINUX/osi_compat.h
++++ b/src/afs/LINUX/osi_compat.h
+@@ -161,7 +161,8 @@ hlist_unhashed(const struct hlist_node *h) {
+ 
+ #if defined(STRUCT_ADDRESS_SPACE_OPERATIONS_HAS_WRITE_BEGIN) && \
+     !defined(HAVE_LINUX_GRAB_CACHE_PAGE_WRITE_BEGIN_WITHFLAGS) && \
+-    !defined(HAVE_LINUX_GRAB_CACHE_PAGE_WRITE_BEGIN_NOFLAGS)
++    !defined(HAVE_LINUX_GRAB_CACHE_PAGE_WRITE_BEGIN_NOFLAGS) && \
++    !defined(HAVE_LINUX_FILEMAP_GET_FOLIO)
+ static inline struct page *
+ grab_cache_page_write_begin(struct address_space *mapping, pgoff_t index,
+ 			    unsigned int flags) {
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index 495e67006..b530a04e9 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -3667,26 +3667,40 @@ afs_linux_write_begin(struct file *file, struct address_space *mapping,
+     unsigned int from = pos & (PAGE_SIZE - 1);
+     int code;
+ 
+-# if defined(HAVE_LINUX_GRAB_CACHE_PAGE_WRITE_BEGIN_NOFLAGS)
+-    page = grab_cache_page_write_begin(mapping, index);
++# if defined(HAVE_LINUX_FILEMAP_GET_FOLIO) && defined(HAVE_LINUX_WRITE_BEGIN_END_FOLIO)
++    *foliop = __filemap_get_folio(mapping, index, FGP_WRITEBEGIN, mapping_gfp_mask(mapping));
++    if (IS_ERR(*foliop)) {
++	return -ENOMEM;
++    }
++    page = &(*foliop)->page;
++    code = afs_linux_prepare_write(file, page, from, from + len);
++    if (code != 0) {
++	folio_unlock(*foliop);
++	folio_put(*foliop);
++    }
++
+ # else
++#  if defined(HAVE_LINUX_GRAB_CACHE_PAGE_WRITE_BEGIN_NOFLAGS)
++    page = grab_cache_page_write_begin(mapping, index);
++#  else
+     page = grab_cache_page_write_begin(mapping, index, flags);
+-# endif
++#  endif
+     if (!page) {
+ 	return -ENOMEM;
+     }
+ 
+-# if defined(HAVE_LINUX_WRITE_BEGIN_END_FOLIO)
++#  if defined(HAVE_LINUX_WRITE_BEGIN_END_FOLIO)
+     *foliop = page_folio(page);
+-# else
++#  else
+     *pagep = page;
+-# endif
++#  endif
+ 
+     code = afs_linux_prepare_write(file, page, from, from + len);
+     if (code) {
+ 	unlock_page(page);
+ 	put_page(page);
+     }
++# endif /* HAVE_LINUX_FILEMAP_GET_FOLIO */
+ 
+     return code;
+ }
+diff --git a/src/cf/linux-kernel-func.m4 b/src/cf/linux-kernel-func.m4
+index 598114671..eebd49888 100644
+--- a/src/cf/linux-kernel-func.m4
++++ b/src/cf/linux-kernel-func.m4
+@@ -328,6 +328,14 @@ AC_CHECK_LINUX_FUNC([write_begin_end_folio],
+ 		    [[aops->write_begin(file, mapping, 0, 0, &foliop, fsdata);
+ 		      aops->write_end(file, mapping, 0, 0, 0, foliop, fsdata);]])
+ 
++dnl Linux 6.15 removed grab_cache_page_write_begin which was replaced by
++dnl __filemap_get_folio that was introduced in Linux 5.16 
++AC_CHECK_LINUX_FUNC([filemap_get_folio],
++                    [[#include <linux/pagemap.h>
++                      #include <linux/fs.h>
++                      static struct folio *folio;]],
++                    [[folio = __filemap_get_folio(NULL, 0, 0, 0);]])
++
+ dnl Consequences - things which get set as a result of the
+ dnl                above tests
+ AS_IF([test "x$ac_cv_linux_func_d_alloc_anon" = "xno"],
+-- 
+2.49.0
+

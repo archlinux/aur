@@ -1,0 +1,90 @@
+From f99a7759fb2dcc10fd9567cb4be6b387e70deda5 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 8 May 2025 19:53:43 -0600
+Subject: [PATCH 04/10] linux: inode_ops mkdir returns struct dentry *
+
+Linux commit:
+'Change inode_operations.mkdir to return struct dentry *' (88d5baf69082)
+changed the signature for the return value for mkdir member of the
+inope_operations structure.
+
+The new return value for mkdir needs to be as follows:
+
+    NULL if the directory was created and no other dentry was used
+    ERR_PTR() if an error occured
+    non-NULL pointer to a different dentry was used.
+
+OpenAFS, does not use a different dentry, so returning NULL or ERR_PTR
+is sufficient.
+
+Introduce a new autoconf check to determine if the inode_ops.mkdir needs
+to return a pointer to a dentry.
+
+Update afs_linux_mkdir to use ERR_PTR() on the return value.
+
+Change-Id: I3ee3ca4ae515dcfad4075903dfcb3a37cef816f6
+---
+ src/afs/LINUX/osi_vnodeops.c | 12 ++++++++++--
+ src/cf/linux-kernel-sig.m4   | 16 ++++++++++++++++
+ 2 files changed, 26 insertions(+), 2 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index c0d1109f0..495e67006 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -2079,8 +2079,11 @@ out:
+     crfree(credp);
+     return afs_convert_code(code);
+ }
+-
+-#if defined(IOP_TAKES_MNT_IDMAP)
++#if defined(IOP_TAKES_MKDIR_RETURN_ADENTRY)
++static struct dentry *
++afs_linux_mkdir(struct mnt_idmap *idmap, struct inode *dip,
++		struct dentry *dp, umode_t mode)
++#elif defined(IOP_TAKES_MNT_IDMAP)
+ static int
+ afs_linux_mkdir(struct mnt_idmap *idmap, struct inode *dip,
+ 		struct dentry *dp, umode_t mode)
+@@ -2131,7 +2134,12 @@ out:
+     AFS_GUNLOCK();
+ 
+     crfree(credp);
++
++#if defined(HAVE_LINUX_INODE_OPERATIONS_MKDIR_RETURN_ADENTRY)
++    return ERR_PTR(afs_convert_code(code));
++#else
+     return afs_convert_code(code);
++#endif
+ }
+ 
+ static int
+diff --git a/src/cf/linux-kernel-sig.m4 b/src/cf/linux-kernel-sig.m4
+index 5301f3503..b0e7f316f 100644
+--- a/src/cf/linux-kernel-sig.m4
++++ b/src/cf/linux-kernel-sig.m4
+@@ -41,4 +41,20 @@ dnl define.
+ AS_IF([test AS_VAR_GET([ac_cv_linux_operation_inode_operations_create_mnt_idmap]) = yes],
+       [AC_DEFINE([IOP_TAKES_MNT_IDMAP], 1,
+                  [define if inodeops require struct mnt_idmap])])
++
++
++dnl Linux 6.15 changed the return value for inode_operations to a struct dentry *
++AC_CHECK_LINUX_OPERATION([inode_operations], [mkdir], [return_adentry],
++                         [#include <linux/fs.h>],
++                         [struct dentry *],
++                         [struct mnt_idmap *idmap,
++                         struct inode *inode, struct dentry *dentry,
++                         umode_t umode])
++dnl if HAVE_LINUX_INODE_OPERATIONS_MKDIR_RETURN_ADENTRY, create a more generic
++dnl define.
++AS_IF([test AS_VAR_GET([ac_cv_linux_operation_inode_operations_mkdir_return_adentry]) = yes],
++      [AC_DEFINE([IOP_TAKES_MKDIR_RETURN_ADENTRY], 1,
++                 [define if inodeops mkdir returns a dentry pointer])])
++
++
+ ])
+\ No newline at end of file
+-- 
+2.49.0
+

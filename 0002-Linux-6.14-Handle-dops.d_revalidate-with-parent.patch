@@ -1,7 +1,7 @@
-From 6c6a84d91910ebc87804d0685b8a7e9e571f7961 Mon Sep 17 00:00:00 2001
+From 739b25e7d09a913a8d3398b6c8145811f683f72a Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 7 Feb 2025 11:10:27 -0700
-Subject: [PATCH 2/2] Linux-6.14: Handle dops.d_revalidate with parent
+Subject: [PATCH 02/10] Linux-6.14: Handle dops.d_revalidate with parent
 
 The Linux 6.14 commit:
   '5be1fa8abd7b0 Pass parent directory inode and expected name to
@@ -28,6 +28,11 @@ Tested-by: Andrew Deason <adeason@sinenomine.net>
 (cherry picked from commit 0306f3fdac736e15620f5802bdce510d25bb2450)
 
 Change-Id: I640c338de22201da88327a7bc0d6bdb2bccd23bc
+Reviewed-on: https://gerrit.openafs.org/16277
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 5f85032cdb7f0148dc6165773acb6d6ffe4b6914)
 ---
  src/afs/LINUX/osi_vnodeops.c    | 28 ++++++++++++++++++++--------
  src/cf/linux-kernel-assorted.m4 |  1 +
