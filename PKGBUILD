@@ -9,8 +9,8 @@
 # Contributor: Alex Belanger <i.caught.air@gmail.com>
 
 pkgname=ace
-_pkgver=8_0_2
-pkgver=8.0.2
+_pkgver=8_0_3
+pkgver=8.0.3
 pkgrel=1
 pkgdesc="Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems."
 arch=('x86_64')
@@ -29,7 +29,7 @@ provides=('libACE.so' 'libACEXML.so' 'libACEXML_Parser.so'
 )
 
 source=("https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-$_pkgver/ACE-src-$pkgver.tar.gz")
-sha256sums=('479ff9880f044aadea99b1f40fe2ce47ec2dcc0ac19391fcd48dff873ff87549')
+sha256sums=('7a41ee657c8f23235b91cf165e81bf1d4552aa53d454fdec56227d805f61f5cc')
 
 prepare() {
     export ACE_ROOT="$srcdir/ACE_wrappers"
@@ -95,7 +95,6 @@ check() {
     sed -i '/Bug_2740_Regression_Test/d' "$ACE_ROOT/tests/run_test.lst"
     sed -i '/Bug_3943_Regression_Test/d' "$ACE_ROOT/tests/run_test.lst"
     sed -i '/MT_Reference_Counted_Event_Handler_Test/d' "$ACE_ROOT/tests/run_test.lst"
-    sed -i '/INET_Addr_Test_IPV6/d' "$ACE_ROOT/tests/run_test.lst"
 
     "$ACE_ROOT/bin/auto_run_tests.pl" -Config FIXED_BUGS_ONLY -Config NO_MCAST 2>&1 | tee tests.log
 
