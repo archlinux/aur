@@ -1,7 +1,7 @@
 pkgbase = acme.sh-git
 	pkgdesc = A pure Unix shell script implementing ACME client protocol
-	pkgver = 3.0.7.r0.g377a37e4
-	pkgrel = 1
+	pkgver = 3.1.1.r25.g42bbd1b4
+	pkgrel = 2
 	url = https://github.com/acmesh-official/acme.sh
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = acme.sh-git
 	depends = bash
 	optdepends = socat: for standalone mode
 	optdepends = oath-toolkit: Used to compute the OTP for some DNS providers
-	optdepends = yh: for multideploy deploy plugin
+	optdepends = yq: for multideploy deploy plugin
 	provides = acme.sh
 	conflicts = acme.sh
 	source = acme.sh::git+https://github.com/acmesh-official/acme.sh.git#branch=master

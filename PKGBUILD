@@ -6,7 +6,7 @@ _branch=master
 _pkgname=acme.sh
 pkgname=${_pkgname}-git
 pkgver=3.1.1.r25.g42bbd1b4
-pkgrel=1
+pkgrel=2
 pkgdesc='A pure Unix shell script implementing ACME client protocol'
 arch=('any')
 url='https://github.com/acmesh-official/acme.sh'
@@ -15,7 +15,7 @@ depends=('bash')
 makedepends=('git')
 optdepends=('socat: for standalone mode'
             'oath-toolkit: Used to compute the OTP for some DNS providers'
-            'yh: for multideploy deploy plugin')
+            'yq: for multideploy deploy plugin')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("${_pkgname}::git+https://github.com/acmesh-official/acme.sh.git#branch=${_branch}")
