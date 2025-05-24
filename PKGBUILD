@@ -3,15 +3,15 @@
 
 pkgname=void-git
 _pkgname=void
-pkgver=1.99.3.r2519.g906502f6
-pkgrel=2
+pkgver=1.99.3.r2532.g4358b9e3
+pkgrel=1
 pkgdesc="The Cursor alternative AI code editor"
 url="https://voideditor.com/"
 arch=('x86_64')
 license=("MIT")
 provides=('void')
 conflicts=('void')
-oprions=(!strip) # for sign of ext?
+oprions=(!strip) # for sign of ext
 depends=( ripgrep xdg-utils # electron* is added at packaging
   libxkbfile
   libsecret
@@ -52,12 +52,11 @@ build() {
   sed -i "s/^target=.*/target=\"${_elver}\"/" .npmrc # native modules
   echo Replaced version of electron with $(rg -N 'target' .npmrc)
   npm pkg set devDependencies.electron=${_elver}
-  # Stop downloading 870MB+ bins
-  _hash=$(echo -n "https://github.com/electron/electron/releases/download/v${_elver}" | sha256sum | cut -d ' ' -f 1)
-  _cachedir="${XDG_CACHE_HOME}/electron/${_hash}"
+  # Stop downloading electron
+  _cachedir="${XDG_CACHE_HOME}"/electron/$(echo -n "https://github.com/electron/electron/releases/download/v${_elver}" | sha256sum | cut -d ' ' -f 1)
   _zip="electron-v${_elver}-linux-x64.zip"
   mkdir -p "${_cachedir}"
-  bsdtar --format zip -cf "${_cachedir}/${_zip}" /dev/null > /dev/null
+  bsdtar --format zip -cf "${_cachedir}/${_zip}" /dev/null 2> /dev/null
   echo $(sha256sum "${_cachedir}/${_zip}" | cut -d " " -f 1) *${_zip} > build/checksums/electron.txt
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
   # Build
@@ -71,10 +70,6 @@ package() {
   depends+=(electron${_elnum})
   _pkg=VSCode-linux-x64
   _app=/usr/share/void/resources/app
-  # Licenses
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -svf "${_app}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  ln -svf "${_app}/ThirdPartyNotices.txt" "${pkgdir}/usr/share/licenses/${pkgname}/"
   # appdata and desktop files
   install -Dm644 "${_pkg}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
   #todo cleanup
@@ -97,4 +92,8 @@ package() {
   # system-wide tools
   ln -svf /usr/bin/rg "${pkgdir}${_app}"/node_modules/@vscode/ripgrep/bin/rg
   ln -svf /usr/bin/xdg-open "${pkgdir}${_app}"/node_modules/open/xdg-open
+  # Licenses
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  mv -v "${pkgdir}${_app}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  mv -v "${pkgdir}${_app}/ThirdPartyNotices.txt" "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
