@@ -15,7 +15,7 @@ pkgbase = openfireapp
 	optdepends = qt5-base: For building with Qt5
 	optdepends = qt5-serialport: For building with Qt5
 	optdepends = qt5-svg: For building with Qt5
-	source = OpenFIRE-App::git+https://github.com/TeamOpenFIRE/OpenFIRE-App.git#tag=v3.0
+	source = git+https://github.com/TeamOpenFIRE/OpenFIRE-App.git#tag=v3.0
 	md5sums = 8b380ea5f1338d86e67b51e4cc2a6df2
 
 pkgname = openfireapp

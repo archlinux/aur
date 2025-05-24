@@ -17,11 +17,11 @@ optdepends=(
             'qt5-svg: For building with Qt5'
 )
 install=$pkgname.install
-source=("$_name::git+https://github.com/TeamOpenFIRE/OpenFIRE-App.git#tag=v${pkgver}")
+source=("git+https://github.com/TeamOpenFIRE/OpenFIRE-App.git#tag=v${pkgver}")
 md5sums=('8b380ea5f1338d86e67b51e4cc2a6df2')
 
 prepare() {
-  cd "$_name"
+  cd "$srcdir/$_name"
   git submodule update --init
 }
 
