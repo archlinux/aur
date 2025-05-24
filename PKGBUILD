@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-posthog
 _name=posthog-python
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Integrate PostHog into any python application."
 arch=('any')
@@ -23,20 +23,23 @@ makedepends=(
 checkdepends=(
   'python-anthropic'
   'python-freezegun'
+  'python-google-genai'
   'python-openai'
   'python-parameterized'
+  'python-pydantic'
   'python-pytest-asyncio'
   'python-pytest-timeout'
 )
 optdepends=(
   'python-anthropic: Anthropic support for LLM Observability'
   'python-django: Django Sentry Integration'
+  'python-google-genai: Google Gemini SDK support'
   'python-langchain: LLM observability callback handler'
   'python-openai: OpenAI SDK support'
   'python-sentry_sdk: Django Sentry Integration'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9addde6f7ec9a3779845cafa05bd4829ec98915b5459f5d2efd05b678833c92d')
+sha256sums=('bb95876cc12b4430336b748b4e87cb2909eecaba7b3bdc736500e80b5f54d94d')
 
 prepare() {
   cd "$_name-$pkgver"
