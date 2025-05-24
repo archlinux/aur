@@ -2,14 +2,14 @@
 # Contributor: Sabit Maulana <sbtmul@gmail.com>
 # Maintainer: aliu <double-a, r-o-n to the 0-1-3-0 at ur gmail.com>
 pkgname=larksuite-bin
-pkgver=7.32.11
+pkgver=7.36.11
 #_pkgrel=24
-_pkghash=afc02e52
+_pkghash=932c7f7e
 _pkgtyp=stable
 pkgrel=1
 pkgdesc="Linux client of Lark Suite"
 arch=('x86_64')
-url="https://www.larksuite.com/download"
+url="https://www.larksuite.com"
 license=('unknown')
 depends=('ca-certificates' 'gtk3' 'libpulse' 'libmfx' 'alsa-lib' 'xdg-utils' 'appmenu-gtk-module')
 optdepends=('appmenu-gtk-module: Appmenu support')
@@ -18,7 +18,7 @@ provides=('bytedance-lark' 'lark')
 options=('!emptydirs')
 install=${pkgname}.install
 source=("https://sf16-va.larksuitecdn.com/obj/lark-artifact-storage/${_pkghash}/Lark-linux_x64-${pkgver}.deb")
-sha256sums=('85f2ca6cacd9cce62a3461282f0e203172368df36fb453d4ee100e0de03d4b15')
+sha256sums=('4d13f48cb205225a4b0050893ad623bd2cf091837b86b8af66d3c0665679317e')
 
 package() {
   # Extract package data

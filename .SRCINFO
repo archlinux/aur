@@ -1,8 +1,8 @@
 pkgbase = larksuite-bin
 	pkgdesc = Linux client of Lark Suite
-	pkgver = 7.32.11
+	pkgver = 7.36.11
 	pkgrel = 1
-	url = https://www.larksuite.com/download
+	url = https://www.larksuite.com
 	install = larksuite-bin.install
 	arch = x86_64
 	license = unknown
@@ -18,7 +18,7 @@ pkgbase = larksuite-bin
 	provides = lark
 	replaces = bytedance-lark-dev-bin
 	options = !emptydirs
-	source = https://sf16-va.larksuitecdn.com/obj/lark-artifact-storage/afc02e52/Lark-linux_x64-7.32.11.deb
-	sha256sums = 85f2ca6cacd9cce62a3461282f0e203172368df36fb453d4ee100e0de03d4b15
+	source = https://sf16-va.larksuitecdn.com/obj/lark-artifact-storage/932c7f7e/Lark-linux_x64-7.36.11.deb
+	sha256sums = 4d13f48cb205225a4b0050893ad623bd2cf091837b86b8af66d3c0665679317e
 
 pkgname = larksuite-bin
