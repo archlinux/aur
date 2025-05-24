@@ -2,7 +2,7 @@
 
 pkgname=aocl-crypto-aocc
 pkgaltname=aocl-crypto
-pkgver=5.0
+pkgver=5.1
 pkgrel=1
 pkgdesc="AOCL-Cryptography is a library consisting of cryptographic optimized functions for Zen."
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('cmake' 'ninja' 'aocc' 'lsb-release')
 
 
 source=("${pkgaltname}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b15e609943f9977e13f2d5839195bb7411c843839a09f0ad47f78f57e8821c23')
+sha256sums=('a2f768b7d37516c5c29cca0034aba90b91d02e477c762f2fa0fe4b1c30613973')
 
 build() {
     cd ${srcdir}/${pkgaltname}-${pkgver}
