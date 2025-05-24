@@ -17,7 +17,7 @@ conflicts=('hplip' 'hplip-lite' 'hplip-plugin')
 provides=('hplip')
 backup=('etc/hp/hplip.conf' 'var/lib/hp/hplip.state')
 optdepends=('cups: for printing support')
-source=(https://downloads.sourceforge.net/hplip/hplip-$pkgver.tar.gz{,.asc}
+source=(https://downloads.sourceforge.net/project/hplip/hplip/$pkgver/hplip-$pkgver.tar.gz{,.asc}
         https://developers.hp.com/system/files/2025-03/hplip-$pkgver-plugin_run.zip
         hplip-missing-drivers.patch
         hplip-pserror-c99.patch)
