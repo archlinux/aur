@@ -9,6 +9,7 @@ pkgbase = zclipboard
 	makedepends = make
 	makedepends = clang
 	depends = qt6-base
+	depends = libnotify
 	source = https://github.com/reim-developer/zclipboard/archive/v1.5.0.tar.gz
 	sha256sums = SKIP
 
