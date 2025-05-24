@@ -6,14 +6,15 @@
 
 _origname=sendmail # libmilter is bundled with the sendmail source
 _pkgname=libmilter
-pkgname=libmilter-sharedlib
+pkgname=libmilter
 pkgbase="${pkgname}"
 pkgver=8.18.1
-pkgrel=8
+pkgrel=9
 pkgdesc='Implementation of the sendmail Mail Filter API'
 url='https://www.proofpoint.com/us/sendmail-open-source'
 arch=('x86_64')
 license=('Sendmail')
+provides=('libmilter')
 source=(
   "https://ftp.sendmail.org/$_origname.$pkgver.tar.gz"{,.sig}
   'site.config.m4'
@@ -24,12 +25,6 @@ source=(
 # Signing keys sourced from upstream. Current version is signed with the 2024 keys.
 # https://www.proofpoint.com/us/products/email-protection/open-source-email-solution
 validpgpkeys=('8AB063D7A4C5939DA9C01E38C4065A87C71F6844')
-sha512sums=('9ce713b44439d4de6faa9e3cdfa2226b44b4fbeb352a5f81584c062570e9472da244158287e489aabe258d28fe54ca4964565c7b0adc7e1763d212be42f98061'
-            'SKIP'
-            '39bcdd6c1286b7bbdf5899a7516fd97aca35ef9634db46666c833455e2bd8864d24527fd341c7ca97c4af066975686a73a90b60a2ae4af59a5f01247ac5c0c17'
-            '438dfb94d4b884a08abbb20849a8b309b251b9d48c098575e67603d9d4d23d8ac799287cedd975b8aae61c550b987a9bf8dd7c9343ed289185b7e2ca72cbc82a'
-            '1ec11f97049a7bb19aed75e6a1ab94153732a5699584d221d4e5048da5eedce948cf8885c67ef3d5edb2f14cd68981b46b7e6e7b699745a68c9a95bb3d790da4'
-            '03fa4d3cfaef380899eef918304b583b8d1fdd22c46efe21cd9dd06bdca53f2f4de8ee31a107f0ca6eb4169193b8731c4b08ca8c159236f4af5a50b744750129')
 b2sums=('3afa36073fd611c7fdb43ef0ab9f02d5fb8ae388e9471bdc7275c6c9dcee0a654f46ddef505b70e978cb1b818b0da375250678e501676d8bace534d59ee40d90'
         'SKIP'
         '59943663206080a6f8ecd3ab9ce4f1eec1b50090e90a2857ef7ac2b1e87a8b2e67249e303af1c8896c4186b394294efc0e32920123571a14947238271fc04635'
