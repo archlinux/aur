@@ -1,7 +1,7 @@
 # Maintainer: Blaadick <null>
 
 pkgname="blaadpapers"
-pkgdesc="Super wallpaper manager"
+pkgdesc=""
 pkgver="0.0.6"
 pkgrel=1
 arch=("any")
