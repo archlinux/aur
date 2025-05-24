@@ -1,0 +1,17 @@
+pkgbase = terminal-yt-git
+	pkgdesc = A small newsboat-inspired terminal YouTube subscription manager written in Rust
+	pkgver = 2.0.5.r1.g0000000
+	pkgrel = 1
+	url = https://github.com/jooooscha/terminal-yt
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = mpv
+	provides = terminal-yt
+	conflicts = terminal-yt
+	source = terminal-yt-git::git+https://github.com/jooooscha/terminal-yt.git
+	sha256sums = SKIP
+
+pkgname = terminal-yt-git
