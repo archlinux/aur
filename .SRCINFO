@@ -12,7 +12,6 @@ pkgbase = hplip-minimal
 	makedepends = python
 	makedepends = libusb
 	makedepends = cups
-	depends = libjpeg-turbo
 	depends = libcups
 	optdepends = cups: for printing support
 	provides = hplip
