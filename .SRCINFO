@@ -1,14 +1,15 @@
 pkgbase = dec-git
 	pkgdesc = A declarative package manager for Arch Linux
 	pkgver = 0.2.2.0
-	pkgrel = 1
-	url = https://github.com/Rehpotsirhc-z/dec.git
+	pkgrel = 2
+	url = https://github.com/Rehpotsirhc-z/dec
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = stack
 	depends = paru
 	provides = dec
-	source = git+https://github.com/Rehpotsirhc-z/dec.git.git
+	conflicts = dec-bin
+	source = git+https://github.com/Rehpotsirhc-z/dec.git
 	sha256sums = SKIP
 
 pkgname = dec-git

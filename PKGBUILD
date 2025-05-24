@@ -2,14 +2,15 @@
 
 pkgname="dec-git"
 pkgver=0.2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A declarative package manager for Arch Linux"
 arch=("x86_64")
-url="https://github.com/Rehpotsirhc-z/dec.git"
+url="https://github.com/Rehpotsirhc-z/dec"
 license=("GPL-3.0-or-later")
 depends=("paru")
 makedepends=("stack")
 provides=("dec")
+conflicts=("dec-bin")
 source=("git+${url}.git")
 sha256sums=("SKIP")
 
