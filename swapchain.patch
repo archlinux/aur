@@ -1,19 +1,17 @@
-From 109a5a23f9ca4f5ab86d737ff25dd764c7f79da6 Mon Sep 17 00:00:00 2001
-From: Etaash Mathamsetty
- <45927311+Etaash-mathamsetty@users.noreply.github.com>
-Date: Sun, 11 May 2025 15:58:43 -0400
-Subject: [PATCH 1/2] vulkan/wsi/wayland: Move drm syncobj to swapchain
+From 33463722f60dce64750946830530e533c4af63cb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tomasz=20Paku=C5=82a?= <forest10pl@gmail.com>
+Date: Sat, 24 May 2025 22:23:59 +0200
+Subject: [PATCH] Fix swapchain for Doom Eternal
 
-Cc: mesa-stable
 ---
- src/vulkan/wsi/wsi_common_wayland.c | 34 +++++++++++++++--------------
- 1 file changed, 18 insertions(+), 16 deletions(-)
+ src/vulkan/wsi/wsi_common_wayland.c | 83 +++++++++++++++--------------
+ 1 file changed, 44 insertions(+), 39 deletions(-)
 
 diff --git a/src/vulkan/wsi/wsi_common_wayland.c b/src/vulkan/wsi/wsi_common_wayland.c
-index 938a9cd7c181b..f277834f52d48 100644
+index 7c1efda1f27..a60d06ec433 100644
 --- a/src/vulkan/wsi/wsi_common_wayland.c
 +++ b/src/vulkan/wsi/wsi_common_wayland.c
-@@ -193,8 +193,6 @@ struct wsi_wl_surface {
+@@ -193,13 +193,9 @@ struct wsi_wl_surface {
     struct zwp_linux_dmabuf_feedback_v1 *wl_dmabuf_feedback;
     struct dmabuf_feedback dmabuf_feedback, pending_dmabuf_feedback;
  
@@ -22,7 +20,12 @@ index 938a9cd7c181b..f277834f52d48 100644
     struct vk_instance *instance;
  
     struct {
-@@ -213,6 +211,7 @@ struct wsi_wl_swapchain {
+-      struct wp_color_management_surface_v1 *color_surface;
+-      int color_surface_refcount;
+       VkColorSpaceKHR colorspace;
+       VkHdrMetadataEXT hdr_metadata;
+       bool has_hdr_metadata;
+@@ -213,6 +209,7 @@ struct wsi_wl_swapchain {
     struct wp_tearing_control_v1 *tearing_control;
     struct wp_fifo_v1 *fifo;
     struct wp_commit_timer_v1 *commit_timer;
@@ -30,112 +33,7 @@ index 938a9cd7c181b..f277834f52d48 100644
  
     struct wl_callback *frame;
  
-@@ -2022,9 +2021,6 @@ wsi_wl_surface_destroy(VkIcdSurfaceBase *icd_surface, VkInstance _instance,
-    struct wsi_wl_surface *wsi_wl_surface =
-       wl_container_of((VkIcdSurfaceWayland *)icd_surface, wsi_wl_surface, base);
- 
--   if (wsi_wl_surface->wl_syncobj_surface)
--      wp_linux_drm_syncobj_surface_v1_destroy(wsi_wl_surface->wl_syncobj_surface);
--
-    if (wsi_wl_surface->wl_dmabuf_feedback) {
-       zwp_linux_dmabuf_feedback_v1_destroy(wsi_wl_surface->wl_dmabuf_feedback);
-       dmabuf_feedback_fini(&wsi_wl_surface->dmabuf_feedback);
-@@ -2311,15 +2307,6 @@ static VkResult wsi_wl_surface_init(struct wsi_wl_surface *wsi_wl_surface,
-                                  wsi_wl_surface->display->queue);
-    }
- 
--   if (wsi_wl_use_explicit_sync(wsi_wl_surface->display, wsi_device)) {
--      wsi_wl_surface->wl_syncobj_surface =
--         wp_linux_drm_syncobj_manager_v1_get_surface(wsi_wl_surface->display->wl_syncobj,
--                                                     wsi_wl_surface->surface);
--
--      if (!wsi_wl_surface->wl_syncobj_surface)
--         goto fail;
--   }
--
-    wsi_wl_surface_analytics_init(wsi_wl_surface, pAllocator);
- 
-    return VK_SUCCESS;
-@@ -3001,11 +2988,11 @@ wsi_wl_swapchain_queue_present(struct wsi_swapchain *wsi_chain,
-       /* Incremented by signal in base queue_present. */
-       uint64_t acquire_point = image->base.explicit_sync[WSI_ES_ACQUIRE].timeline;
-       uint64_t release_point = image->base.explicit_sync[WSI_ES_RELEASE].timeline;
--      wp_linux_drm_syncobj_surface_v1_set_acquire_point(wsi_wl_surface->wl_syncobj_surface,
-+      wp_linux_drm_syncobj_surface_v1_set_acquire_point(chain->wl_syncobj_surface,
-                                                         image->wl_syncobj_timeline[WSI_ES_ACQUIRE],
-                                                         (uint32_t)(acquire_point >> 32),
-                                                         (uint32_t)(acquire_point & 0xffffffff));
--      wp_linux_drm_syncobj_surface_v1_set_release_point(wsi_wl_surface->wl_syncobj_surface,
-+      wp_linux_drm_syncobj_surface_v1_set_release_point(chain->wl_syncobj_surface,
-                                                         image->wl_syncobj_timeline[WSI_ES_RELEASE],
-                                                         (uint32_t)(release_point >> 32),
-                                                         (uint32_t)(release_point & 0xffffffff));
-@@ -3348,6 +3335,8 @@ wsi_wl_swapchain_chain_free(struct wsi_wl_swapchain *chain,
-       wl_callback_destroy(chain->frame);
-    if (chain->tearing_control)
-       wp_tearing_control_v1_destroy(chain->tearing_control);
-+   if (chain->wl_syncobj_surface)
-+      wp_linux_drm_syncobj_surface_v1_destroy(chain->wl_syncobj_surface);
-    if (needs_color_surface(wsi_wl_surface->display, chain->color.colorspace) &&
-        wsi_wl_surface->color.color_surface) {
-       wsi_wl_surface_remove_color_refcount(wsi_wl_surface);
-@@ -3468,6 +3457,10 @@ wsi_wl_surface_create_swapchain(VkIcdSurfaceBase *icd_surface,
-          wp_commit_timer_v1_destroy(old_chain->commit_timer);
-          old_chain->commit_timer = NULL;
-       }
-+      if (old_chain->wl_syncobj_surface) {
-+         wp_linux_drm_syncobj_surface_v1_destroy(old_chain->wl_syncobj_surface);
-+         old_chain->wl_syncobj_surface = NULL;
-+      }
-    }
- 
-    /* Take ownership of the wsi_wl_surface */
-@@ -3516,6 +3509,15 @@ wsi_wl_surface_create_swapchain(VkIcdSurfaceBase *icd_surface,
-                                                           WP_TEARING_CONTROL_V1_PRESENTATION_HINT_ASYNC);
-    }
- 
-+   if (wsi_wl_use_explicit_sync(wsi_wl_surface->display, wsi_device)) {
-+      chain->wl_syncobj_surface =
-+         wp_linux_drm_syncobj_manager_v1_get_surface(wsi_wl_surface->display->wl_syncobj,
-+                                                     wsi_wl_surface->surface);
-+
-+      if (!chain->wl_syncobj_surface)
-+         goto fail;
-+   }
-+
-    chain->color.colorspace = pCreateInfo->imageColorSpace;
- 
-    enum wsi_wl_buffer_type buffer_type;
--- 
-GitLab
-
-
-From 6b8159e9e201f3f18e563709cc5f08ef0d90b0be Mon Sep 17 00:00:00 2001
-From: Etaash Mathamsetty
- <45927311+Etaash-mathamsetty@users.noreply.github.com>
-Date: Wed, 14 May 2025 17:07:27 -0400
-Subject: [PATCH 2/2] vulkan/wsi/wayland: Move color management surface to
- swapchain.
-
-Cc: mesa-stable
----
- src/vulkan/wsi/wsi_common_wayland.c | 48 +++++++++++++++--------------
- 1 file changed, 25 insertions(+), 23 deletions(-)
-
-diff --git a/src/vulkan/wsi/wsi_common_wayland.c b/src/vulkan/wsi/wsi_common_wayland.c
-index f277834f52d48..a60d06ec433c0 100644
---- a/src/vulkan/wsi/wsi_common_wayland.c
-+++ b/src/vulkan/wsi/wsi_common_wayland.c
-@@ -196,8 +196,6 @@ struct wsi_wl_surface {
-    struct vk_instance *instance;
- 
-    struct {
--      struct wp_color_management_surface_v1 *color_surface;
--      int color_surface_refcount;
-       VkColorSpaceKHR colorspace;
-       VkHdrMetadataEXT hdr_metadata;
-       bool has_hdr_metadata;
-@@ -254,6 +252,8 @@ struct wsi_wl_swapchain {
+@@ -255,6 +252,8 @@ struct wsi_wl_swapchain {
     } present_ids;
  
     struct {
@@ -144,7 +42,7 @@ index f277834f52d48..a60d06ec433c0 100644
        VkColorSpaceKHR colorspace;
        VkHdrMetadataEXT hdr_metadata;
        bool has_hdr_metadata;
-@@ -1152,22 +1152,23 @@ needs_color_surface(struct wsi_wl_display *display, VkColorSpaceKHR colorspace)
+@@ -1153,22 +1152,23 @@ needs_color_surface(struct wsi_wl_display *display, VkColorSpaceKHR colorspace)
  }
  
  static void
@@ -177,19 +75,19 @@ index f277834f52d48..a60d06ec433c0 100644
     }
  }
  
-@@ -1235,14 +1236,14 @@ wsi_wl_swapchain_update_colorspace(struct wsi_wl_swapchain *chain)
+@@ -1236,13 +1236,14 @@ wsi_wl_swapchain_update_colorspace(struct wsi_wl_swapchain *chain)
        }
     }
  
 -   bool new_color_surface = !surface->color.color_surface;
 +   bool new_color_surface = !chain->color.color_surface;
     bool needs_color_surface_new = needs_color_surface(display, chain->color.colorspace);
--   bool needs_color_surface_old = surface->color.color_surface &&
--      needs_color_surface(display, surface->color.colorspace);
+-   bool needs_color_surface_old = needs_color_surface(display, surface->color.colorspace);
+-   if ((new_color_surface || !needs_color_surface_old) && needs_color_surface_new) {
+-      wsi_wl_surface_add_color_refcount(surface);
 +   bool needs_color_surface_old = chain->color.color_surface &&
 +      needs_color_surface(display, chain->color.colorspace);
-    if (!needs_color_surface_old && needs_color_surface_new) {
--      wsi_wl_surface_add_color_refcount(surface);
++   if (!needs_color_surface_old && needs_color_surface_new) {
 +      wsi_wl_swapchain_add_color_refcount(chain);
     } else if (needs_color_surface_old && !needs_color_surface_new) {
 -      wsi_wl_surface_remove_color_refcount(surface);
@@ -206,7 +104,16 @@ index f277834f52d48..a60d06ec433c0 100644
                                                          image_desc,
                                                          WP_COLOR_MANAGER_V1_RENDER_INTENT_PERCEPTUAL);
     wp_image_description_v1_destroy(image_desc);
-@@ -2027,9 +2028,6 @@ wsi_wl_surface_destroy(VkIcdSurfaceBase *icd_surface, VkInstance _instance,
+@@ -2021,18 +2022,12 @@ wsi_wl_surface_destroy(VkIcdSurfaceBase *icd_surface, VkInstance _instance,
+    struct wsi_wl_surface *wsi_wl_surface =
+       wl_container_of((VkIcdSurfaceWayland *)icd_surface, wsi_wl_surface, base);
+ 
+-   if (wsi_wl_surface->wl_syncobj_surface)
+-      wp_linux_drm_syncobj_surface_v1_destroy(wsi_wl_surface->wl_syncobj_surface);
+-
+    if (wsi_wl_surface->wl_dmabuf_feedback) {
+       zwp_linux_dmabuf_feedback_v1_destroy(wsi_wl_surface->wl_dmabuf_feedback);
+       dmabuf_feedback_fini(&wsi_wl_surface->dmabuf_feedback);
        dmabuf_feedback_fini(&wsi_wl_surface->pending_dmabuf_feedback);
     }
  
@@ -216,22 +123,58 @@ index f277834f52d48..a60d06ec433c0 100644
     if (wsi_wl_surface->surface)
        wl_proxy_wrapper_destroy(wsi_wl_surface->surface);
  
-@@ -3337,9 +3335,8 @@ wsi_wl_swapchain_chain_free(struct wsi_wl_swapchain *chain,
+@@ -2310,15 +2305,6 @@ static VkResult wsi_wl_surface_init(struct wsi_wl_surface *wsi_wl_surface,
+                                  wsi_wl_surface->display->queue);
+    }
+ 
+-   if (wsi_wl_use_explicit_sync(wsi_wl_surface->display, wsi_device)) {
+-      wsi_wl_surface->wl_syncobj_surface =
+-         wp_linux_drm_syncobj_manager_v1_get_surface(wsi_wl_surface->display->wl_syncobj,
+-                                                     wsi_wl_surface->surface);
+-
+-      if (!wsi_wl_surface->wl_syncobj_surface)
+-         goto fail;
+-   }
+-
+    wsi_wl_surface_analytics_init(wsi_wl_surface, pAllocator);
+ 
+    return VK_SUCCESS;
+@@ -3000,11 +2986,11 @@ wsi_wl_swapchain_queue_present(struct wsi_swapchain *wsi_chain,
+       /* Incremented by signal in base queue_present. */
+       uint64_t acquire_point = image->base.explicit_sync[WSI_ES_ACQUIRE].timeline;
+       uint64_t release_point = image->base.explicit_sync[WSI_ES_RELEASE].timeline;
+-      wp_linux_drm_syncobj_surface_v1_set_acquire_point(wsi_wl_surface->wl_syncobj_surface,
++      wp_linux_drm_syncobj_surface_v1_set_acquire_point(chain->wl_syncobj_surface,
+                                                         image->wl_syncobj_timeline[WSI_ES_ACQUIRE],
+                                                         (uint32_t)(acquire_point >> 32),
+                                                         (uint32_t)(acquire_point & 0xffffffff));
+-      wp_linux_drm_syncobj_surface_v1_set_release_point(wsi_wl_surface->wl_syncobj_surface,
++      wp_linux_drm_syncobj_surface_v1_set_release_point(chain->wl_syncobj_surface,
+                                                         image->wl_syncobj_timeline[WSI_ES_RELEASE],
+                                                         (uint32_t)(release_point >> 32),
+                                                         (uint32_t)(release_point & 0xffffffff));
+@@ -3347,9 +3333,10 @@ wsi_wl_swapchain_chain_free(struct wsi_wl_swapchain *chain,
+       wl_callback_destroy(chain->frame);
+    if (chain->tearing_control)
        wp_tearing_control_v1_destroy(chain->tearing_control);
-    if (chain->wl_syncobj_surface)
-       wp_linux_drm_syncobj_surface_v1_destroy(chain->wl_syncobj_surface);
 -   if (needs_color_surface(wsi_wl_surface->display, chain->color.colorspace) &&
 -       wsi_wl_surface->color.color_surface) {
 -      wsi_wl_surface_remove_color_refcount(wsi_wl_surface);
++   if (chain->wl_syncobj_surface)
++      wp_linux_drm_syncobj_surface_v1_destroy(chain->wl_syncobj_surface);
 +   if (chain->color.color_surface) {
 +      wp_color_management_surface_v1_destroy(chain->color.color_surface);
     }
  
     /* Only unregister if we are the non-retired swapchain, or
-@@ -3461,6 +3458,11 @@ wsi_wl_surface_create_swapchain(VkIcdSurfaceBase *icd_surface,
-          wp_linux_drm_syncobj_surface_v1_destroy(old_chain->wl_syncobj_surface);
-          old_chain->wl_syncobj_surface = NULL;
+@@ -3467,6 +3454,15 @@ wsi_wl_surface_create_swapchain(VkIcdSurfaceBase *icd_surface,
+          wp_commit_timer_v1_destroy(old_chain->commit_timer);
+          old_chain->commit_timer = NULL;
        }
++      if (old_chain->wl_syncobj_surface) {
++         wp_linux_drm_syncobj_surface_v1_destroy(old_chain->wl_syncobj_surface);
++         old_chain->wl_syncobj_surface = NULL;
++      }
 +      if (old_chain->color.color_surface) {
 +         wp_color_management_surface_v1_destroy(old_chain->color.color_surface);
 +         old_chain->color.color_surface_refcount = 0;
@@ -240,6 +183,22 @@ index f277834f52d48..a60d06ec433c0 100644
     }
  
     /* Take ownership of the wsi_wl_surface */
+@@ -3515,6 +3511,15 @@ wsi_wl_surface_create_swapchain(VkIcdSurfaceBase *icd_surface,
+                                                           WP_TEARING_CONTROL_V1_PRESENTATION_HINT_ASYNC);
+    }
+ 
++   if (wsi_wl_use_explicit_sync(wsi_wl_surface->display, wsi_device)) {
++      chain->wl_syncobj_surface =
++         wp_linux_drm_syncobj_manager_v1_get_surface(wsi_wl_surface->display->wl_syncobj,
++                                                     wsi_wl_surface->surface);
++
++      if (!chain->wl_syncobj_surface)
++         goto fail;
++   }
++
+    chain->color.colorspace = pCreateInfo->imageColorSpace;
+ 
+    enum wsi_wl_buffer_type buffer_type;
 -- 
-GitLab
+2.49.0
 
