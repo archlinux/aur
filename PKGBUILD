@@ -11,7 +11,7 @@ depends=('qt6-base' 'hyprpaper')
 makedepends=('cmake' 'ninja' 'librsvg')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c21863374c6906199def272ba2efeac22e4e0bb78166b2e232a5139422be4cbc')
+sha256sums=('d9f6067e7ee96bbc40426a4cbd471ec807e8ec1641daa85ada5d8e74d4304a51')
 
 build() {
     cd "BlaadPapers-$pkgver"

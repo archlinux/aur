@@ -12,6 +12,6 @@ pkgbase = blaadpapers
 	depends = hyprpaper
 	options = !debug
 	source = blaadpapers-0.0.6.tar.gz::https://github.com/Blaadick/BlaadPapers/archive/refs/tags/v0.0.6.tar.gz
-	sha256sums = c21863374c6906199def272ba2efeac22e4e0bb78166b2e232a5139422be4cbc
+	sha256sums = d9f6067e7ee96bbc40426a4cbd471ec807e8ec1641daa85ada5d8e74d4304a51
 
 pkgname = blaadpapers
