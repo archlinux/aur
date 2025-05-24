@@ -21,7 +21,7 @@ source=(https://downloads.sourceforge.net/project/hplip/hplip/$pkgver/hplip-$pkg
         https://developers.hp.com/system/files/2025-03/hplip-$pkgver-plugin_run.zip
         hplip-missing-drivers.patch
         hplip-pserror-c99.patch)
-sha256sums=('cd214123a3560fa9fe745cf7ca504e7dc713f4beca8fd64718ef31a4650777c0'
+sha256sums=('f99e5eda0704ece359fb2bd9f2254e4a167257cee4da947481e8268a9cb87c50'
             'SKIP'
             'SKIP'
             'a8ba5021c68816b63654e328c2872cedf49fa9f8769631cfcb96c667055c7313'
