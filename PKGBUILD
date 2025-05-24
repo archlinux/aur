@@ -1,12 +1,12 @@
 # Maintainer: Ilya Zlobintsev <ilya.zl@protonmail.com>
 pkgname=lact-git
-pkgver=r444.a8c2c60
+pkgver=r756.7dc258b
 pkgrel=1
 license=("MIT")
 pkgdesc="AMDGPU Controller application (git version)"
 url="https://github.com/ilya-zlobintsev/LACT"
-makedepends=("rust" "git" "make" "clang" "blueprint-compiler")
-depends=("gtk4" "hwdata")
+makedepends=("rust" "git" "make" "clang")
+depends=("gtk4" "hwdata" "vulkan-tools")
 conflicts=("lact" "lact-libadwaita")
 arch=("x86_64" "aarch64")
 backup=('etc/lact/config.yaml')
@@ -24,6 +24,7 @@ prepare() {
   cd "LACT"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_NET_GIT_FETCH_WITH_CLI="true"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -32,6 +33,7 @@ build() {
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export CARGO_NET_GIT_FETCH_WITH_CLI="true"
   cargo build -p lact --frozen --release
 }
 
