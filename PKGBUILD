@@ -2,7 +2,7 @@
 
 pkgname="blaadpapers"
 pkgdesc=""
-pkgver="0.0.6"
+pkgver="0.0.7"
 pkgrel=1
 arch=("any")
 url="https://github.com/Blaadick/BlaadPapers"
@@ -11,7 +11,7 @@ depends=("qt6-base" "hyprpaper")
 makedepends=("cmake" "ninja" "librsvg")
 options=("!debug")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("d9f6067e7ee96bbc40426a4cbd471ec807e8ec1641daa85ada5d8e74d4304a51")
+sha256sums=("fe6df0ca2933fa1bd78c9854ac6979fa2a5050933362a37fcf18bdaca231bf26")
 
 build() {
     cd "BlaadPapers-$pkgver"
