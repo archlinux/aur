@@ -4,7 +4,7 @@ _rockname=tl
 pkgbase=teal
 pkgname=(teal "lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.24.6
-pkgrel=1
+pkgrel=2
 pkgdesc='The compiler for Teal, a typed dialect of Lua'
 arch=(any)
 url=https://github.com/teal-language/$_rockname
@@ -35,7 +35,12 @@ package_teal() {
 	optdepends+=('cyan: The Teal build system and project manager')
 	provides+=($_rockname)
 	_package 5.4 bin
-	depends=(lua lua-tl)
+	depends=(lua "lua-tl=$pkgver")
+	pushd "$pkgdir"
+	local _comp='./usr/bin/tl completion'
+	install -Dm0644 <($_comp bash) ./usr/share/bash-completion/completions/tl
+	install -Dm0644 <($_comp fish) ./usr/share/fish/vendor_completions.d/tl.fish
+	install -Dm0644 <($_comp zsh)  ./usr/share/zsh/site-functions/_tl
 }
 
 package_lua-tl() {
