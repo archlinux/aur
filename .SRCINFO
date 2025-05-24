@@ -13,6 +13,7 @@ pkgbase = monado-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = vulkan-headers
+	makedepends = python
 	depends = openxr
 	depends = vulkan-icd-loader
 	depends = libgl

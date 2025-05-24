@@ -10,7 +10,7 @@ url='https://monado.dev'
 depends=('openxr' 'vulkan-icd-loader' 'libgl' 'wayland' 'xr-hardware' 'libcap' 'libbsd' 'libdrm' 'openvr')
 conflicts=('monado')
 #'doxygen' #When building docs
-makedepends=('eigen' 'ninja' 'shaderc' 'cmake' 'git' 'vulkan-headers')
+makedepends=('eigen' 'ninja' 'shaderc' 'cmake' 'git' 'vulkan-headers' 'python')
 optdepends=('libuvc: optical tracking support (must be present at build time)'
             'opencv: optical tracking support (must be present at build time)'
             'onnxruntime: optical hand tracking support (must be present at build time)'
