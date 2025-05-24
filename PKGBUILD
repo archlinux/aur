@@ -1,29 +1,37 @@
 # Maintainer: That One Seong <ThatOneSeong@protonmail.com>
 
 _name=OpenFIRE-App
+_QTver=Qt5
 pkgname=openfireapp
-pkgver=2.2
-_rc=''
+pkgver=3.0
 pkgrel=1
 pkgdesc='Configuration utility for the OpenFIRE lightgun system.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/TeamOpenFIRE/OpenFIRE-App'
 license=('GPL-3.0-only')
-depends=('qt5-base' 'qt5-serialport' 'qt5-svg' 'icu')
+depends=('qt6-base' 'qt6-serialport' 'qt6-svg' 'icu')
 makedepends=('cmake')
+optdepends=(
+            'qt5-base: For building with Qt5'
+            'qt5-serialport: For building with Qt5'
+            'qt5-svg: For building with Qt5'
+)
 install=$pkgname.install
-source=("https://github.com/TeamOpenFIRE/OpenFIRE-App/archive/refs/tags/v${pkgver}${_rc}.tar.gz")
-md5sums=('a98940df20aee352443b8616d5501a81')
+source=("$_name::git+https://github.com/TeamOpenFIRE/OpenFIRE-App.git#tag=v${pkgver}")
+md5sums=('8b380ea5f1338d86e67b51e4cc2a6df2')
+
+prepare() {
+  cd "$_name"
+  git submodule update --init
+}
 
 build() {
-  mkdir "$srcdir/$_name-$pkgver${_rc}/build"
-  cd "$srcdir/$_name-$pkgver${_rc}/build"
-  cmake ..
-  make
+  cmake -B "$srcdir/$_name/build" -DCMAKE_BUILD_TYPE=Release -DOFAPP_GITHASH=$(git rev-parse --short HEAD) -DOFAPP_QT_VERSION=$_QTver -S "$srcdir/$_name"
+  cmake --build "$srcdir/$_name/build" --config Release
 }
 
 package() {
-  install -Dm755 "$srcdir/$_name-$pkgver${_rc}/build/OpenFIREapp" "$pkgdir/usr/bin/OpenFIREapp"
-  install -Dm755 "$srcdir/$_name-$pkgver${_rc}/ico/openfire.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.TeamOpenFIRE.OpenFIREapp.svg"
-  install -Dm755 "$srcdir/$_name-$pkgver${_rc}/org.TeamOpenFIRE.OpenFIREapp.desktop" "$pkgdir/usr/share/applications/org.TeamOpenFIRE.OpenFIREapp.desktop"
+  install -Dm755 "$srcdir/$_name/build/OpenFIREapp" "$pkgdir/usr/bin/OpenFIREapp"
+  install -Dm755 "$srcdir/$_name/img/ico/openfire.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.TeamOpenFIRE.OpenFIREapp.svg"
+  install -Dm755 "$srcdir/$_name/org.TeamOpenFIRE.OpenFIREapp.desktop" "$pkgdir/usr/share/applications/org.TeamOpenFIRE.OpenFIREapp.desktop"
 }
