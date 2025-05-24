@@ -1,23 +1,26 @@
-# Maintainer: John Jenkins <twodopeshaggy@gmail.com>
-# Contributor: Gadget3000 <gadget3000 at msn dot com>
-# Contributor: Krzysztof Malinowski <boromil@gmail.com>
-
+# Maintainer: chocolateimage <chocolateimage@protonmail.com>
 pkgname=alarm-clock
-pkgver=1.4.9
+pkgver=1.3.1
 pkgrel=1
-pkgdesc="Alarm clock to schedule your tasks"
-depends=('gtk2' 'gstreamer' 'libunique' 'libnotify')
-makedepends=('intltool')
-arch=('i686' 'x86_64')
-license=('GPL2')
-source=("https://github.com/shaggytwodope/alarm-clock/archive/v$pkgver.tar.gz")
-options=('!libtool')
-url="https://github.com/shaggytwodope/alarm-clock"
-md5sums=('3df5765d2663d97e97a6fefcc585d867')
+pkgdesc="A simple alarm clock with Outlook reminder integration"
+url="https://github.com/chocolateimage/alarm-clock"
+license=('GPL-3.0-only')
+arch=("x86_64")
+depends=(
+	'python'
+	'python-pyqt6'
+	'python-requests'
+)
+optdepends=(
+	'python-selenium: Outlook integration support'
+	'selenium-manager: Outlook integration support - Auto installation of ChromeDriver'
+)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/chocolateimage/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('b8c3450330366a67ab1af4c09f4a3ea4467f87805fd49304d3710eeeab5bdbc6')
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr
-  make
-  make DESTDIR=$pkgdir install
+	cd "$pkgname-$pkgver"
+
+	install -dm755 "$pkgdir/usr/bin/"
+	cp "alarm-clock.py" "$pkgdir/usr/bin/alarm-clock"
 }
