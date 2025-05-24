@@ -1,18 +1,22 @@
 # Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=gmlghd
-pkgver=1.3
+pkgver=1.4
+_ctkcommit=01bc54e
+_foocgicommit=9575997
 pkgrel=1
 pkgdesc='The gemlog http daemon'
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64)
 url='https://git.sr.ht/~shtrophic/gmlghd'
 license=('AGPL-3.0-or-later')
-makedepends=('git' 'meson')
+makedepends=(git meson)
 depends=(
-    'confuse'
-    'libbsd'
-    'libevent'
-    'libretls'
+    glibc
+    confuse
+    libbsd
+    libmd
+    libevent
+    libretls
 )
 optdepends=(
     'nginx: fastcgi reverse proxy'
@@ -22,6 +26,8 @@ backup=('etc/gmlghd.conf')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	"$pkgname-$pkgver.tar.gz.asc::$url/archive/$pkgver.tar.gz.asc"
+	"ctk::git+https://git.sr.ht/~shtrophic/ctk#tag=$_ctkcommit"
+	"foocgi::git+https://git.sr.ht/~shtrophic/foocgi#tag=$_foocgicommit"
 	"sysusers-$pkgname.conf"
 	"tmpfiles-$pkgname.conf"
 	"mime.types"
@@ -29,8 +35,10 @@ source=(
 	"$pkgname.service"
 )
 validpgpkeys=(10F1CC925057D456798EBF9C1B3EB6FE2D338B4A)
-sha256sums=('0a3337ffc88ed2fa25cc5aff2625fe4983065f519c73e4e0b59ee5a12e5d849a'
+sha256sums=('a1d5d95343abc42686ce9e67cda4ea7a1cc0d7b3542a298836f0b22ad5d1cd35'
             'SKIP'
+            '66fcfa7737b612382cb03985adbaab915b301fa4fe4bd5e42f77f2fe8befc501'
+            '8343f9e563ccfc33f3cc1e60e48580b56315d056e4f4592a7fb8efb4da169300'
             'a73c3d9a9798c307b70be4e764cb7023dd7a0ab4a21c906e72663a7cb45ebaf2'
             '99fe77ece238d533bba8e849c4b830d534e8ccc193cf9e291af257f60180823d'
             '27040f1df57b570b3117bd30ceb5685fbfa5aba61108f37cf86f0304d4f29f09'
@@ -38,29 +46,27 @@ sha256sums=('0a3337ffc88ed2fa25cc5aff2625fe4983065f519c73e4e0b59ee5a12e5d849a'
             '7a26e5d17796e4adec3f6dc4c22f03b68aab08be403c9d316b3fbac1264cad9f')
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
-	meson subprojects download
+	for subproject in ctk foocgi; do
+	    rmdir "$pkgname-$pkgver/subprojects/$subproject"
+	    ln -rs $subproject "$pkgname-$pkgver/subprojects"
+	done
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-
-	meson setup builddir --buildtype release --prefix=/usr --wrap-mode=nodownload
+	arch-meson "$pkgname-$pkgver" builddir
 	meson compile -C builddir
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	meson install -C builddir --destdir "$pkgdir" --skip-subprojects foocgi,ctk
 
-	meson install -C builddir --destdir "$pkgdir" --skip-subprojects foocgi
+	install -Dm 644 "sysusers-$pkgname.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+	install -Dm 644 "tmpfiles-$pkgname.conf" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+	install -Dm 644 "$pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
 
-	install -Dm 644 "$srcdir/sysusers-$pkgname.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-	install -Dm 644 "$srcdir/tmpfiles-$pkgname.conf" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-	install -Dm 644 "$srcdir/$pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
+	install -Dm 640 "$pkgname.example.conf" "$pkgdir/etc/$pkgname.conf"
+	install -Dm 644 "mime.types" -t "$pkgdir/usr/share/$pkgname"
 
-	install -Dm 640 "$srcdir/$pkgname.example.conf" "$pkgdir/etc/$pkgname.conf"
-	install -Dm 644 "$srcdir/mime.types" -t "$pkgdir/usr/share/$pkgname"
-
-	install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
-	install -Dm 644 gmlghd.example.conf -t "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm 644 "$pkgname-$pkgver/COPYING" -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm 644 "$pkgname-$pkgver/gmlghd.example.conf" -t "$pkgdir/usr/share/doc/$pkgname"
 }
