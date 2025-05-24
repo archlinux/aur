@@ -1,7 +1,7 @@
 pkgbase = gnome-tuner-git
 	pkgdesc = Tuner is the home for your additional system settings, components, applications, and whatever else you want!
 	pkgver = 0.1.4.r15.gc0c5398
-	pkgrel = 1
+	pkgrel = 2
 	url = https://altlinux.space/alt-gnome/tuner
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -13,6 +13,7 @@ pkgbase = gnome-tuner-git
 	depends = libgee
 	depends = libadwaita
 	depends = gobject-introspection
+	depends = alt-panelmoded-git
 	optdepends = gnome-tuner-tweaks-git
 	optdepends = gnome-tuner-panel-git
 	options = !debug

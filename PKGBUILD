@@ -2,7 +2,7 @@
 
 pkgname=gnome-tuner-git
 pkgver=0.1.4.r15.gc0c5398
-pkgrel=1
+pkgrel=2
 pkgdesc="Tuner is the home for your additional system settings, components, applications, and whatever else you want!"
 arch=(x86_64)
 url="https://altlinux.space/alt-gnome/tuner"
@@ -12,6 +12,7 @@ depends=(
   libgee
   libadwaita
   gobject-introspection
+  alt-panelmoded-git
 )
 makedepends=(
   blueprint-compiler
