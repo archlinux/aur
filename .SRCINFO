@@ -1,6 +1,6 @@
 pkgbase = autoinstallpackages
 	pkgdesc = Modern post-installation script for Arch Linux with GUI interface
-	pkgver = 4.0
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://github.com/Firebleudark/Autoinstallpackages
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = autoinstallpackages
 	optdepends = gamemode: Gaming performance optimization
 	provides = autoinstallpackages
 	conflicts = autoinstallpackages-git
-	source = autoinstallpackages-4.0.tar.gz::https://github.com/Firebleudark/Autoinstallpackages/archive/v4.0.tar.gz
-	sha256sums = 38785951794796800e8f747c8b111613aeef9e26e54c54d22bb2794fea89c374
+	source = autoinstallpackages-4.1.tar.gz::https://github.com/Firebleudark/Autoinstallpackages/archive/v4.1.tar.gz
+	sha256sums = 9078d5e97c8ed48b4dba0afa54b7eba4c1127141a2e66d3da103390a8fbcf7b1
 
 pkgname = autoinstallpackages

@@ -1,6 +1,6 @@
 # Maintainer: Firebleudark <firebleudark@pm.me>
 pkgname=autoinstallpackages
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="Modern post-installation script for Arch Linux with GUI interface"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 provides=('autoinstallpackages')
 conflicts=('autoinstallpackages-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Firebleudark/Autoinstallpackages/archive/v${pkgver}.tar.gz")
-sha256sums=('38785951794796800e8f747c8b111613aeef9e26e54c54d22bb2794fea89c374')
+sha256sums=('9078d5e97c8ed48b4dba0afa54b7eba4c1127141a2e66d3da103390a8fbcf7b1')
 
 package() {
     cd "${srcdir}/Autoinstallpackages-${pkgver}"
@@ -57,7 +57,7 @@ EOF
     cat > "${pkgdir}/usr/share/applications/${pkgname}.desktop" << 'EOF'
 [Desktop Entry]
 Name=AutoInstallPackages
-Comment=Modern post-installation script for Arch Linux with GUI
+Comment=Modern post-installation script for Arch Linux with functional GUI
 Exec=autoinstallpackages --gui
 Icon=system-software-install
 Terminal=false
