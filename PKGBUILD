@@ -9,7 +9,7 @@
 
 _pkgname=geany-plugins
 pkgname=$_pkgname-git
-pkgver=2.0.0.r154.gd57a11e4
+pkgver=2.0.0.r156.g57ad48e7
 pkgrel=1
 pkgdesc='Various plugins for Geany (git version)'
 arch=(x86_64)
@@ -24,7 +24,7 @@ conflicts=($_pkgname)
 source=("$_pkgname::git+https://github.com/geany/geany-plugins.git"
         'https://github.com/geany/geany-plugins/pull/1434.patch')
 sha256sums=('SKIP'
-            'ecbdf14a8ee752cda4415dc92a8b3ed0756ef804b4ae05292bcab475af4ca2b9')
+            '131b9ed5daf8496b2552730864ff49ea763c3a7ac399dad1b3f0caa15a2c3a63')
 
 pkgver() {
   cd $_pkgname
@@ -37,13 +37,14 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-  patch -p1 -N -r - -i "$srcdir"/1434.patch
-  ./autogen.sh
+  patch -p1 -N -r - -i "$srcdir"/1434.patch || \
+    echo "WARNING: Ignoring error. Patch already applied?"
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd $_pkgname
-  export CFLAGS+=" -Wno-deprecated-declarations -Wno-incompatible-pointer-types -w"
+  export CFLAGS+=" -Wno-deprecated-declarations"
   ./configure --prefix=/usr --libexecdir=/usr/lib
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
@@ -53,7 +54,7 @@ package() {
   depends+=(libcairo.so libenchant-2.so libgdk-3.so libgdk_pixbuf-2.0.so
             libgio-2.0.so libgit2.so libglib-2.0.so libgmodule-2.0.so
             libgobject-2.0.so libgpgme.so libgtk-3.so libpango-1.0.so
-            libsoup-2.4.so libvte-2.91.so libwebkit2gtk-4.1.so libxml2.so)
+            libvte-2.91.so libwebkit2gtk-4.1.so libxml2.so)
   cd $_pkgname
   make DESTDIR="$pkgdir" install
 }

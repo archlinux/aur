@@ -1,6 +1,6 @@
 pkgbase = geany-plugins-git
 	pkgdesc = Various plugins for Geany (git version)
-	pkgver = 2.0.0.r154.gd57a11e4
+	pkgver = 2.0.0.r156.g57ad48e7
 	pkgrel = 1
 	url = https://plugins.geany.org/
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = geany-plugins-git
 	source = geany-plugins::git+https://github.com/geany/geany-plugins.git
 	source = https://github.com/geany/geany-plugins/pull/1434.patch
 	sha256sums = SKIP
-	sha256sums = ecbdf14a8ee752cda4415dc92a8b3ed0756ef804b4ae05292bcab475af4ca2b9
+	sha256sums = 131b9ed5daf8496b2552730864ff49ea763c3a7ac399dad1b3f0caa15a2c3a63
 
 pkgname = geany-plugins-git
 	depends = cairo
@@ -67,7 +67,6 @@ pkgname = geany-plugins-git
 	depends = libgpgme.so
 	depends = libgtk-3.so
 	depends = libpango-1.0.so
-	depends = libsoup-2.4.so
 	depends = libvte-2.91.so
 	depends = libwebkit2gtk-4.1.so
 	depends = libxml2.so
