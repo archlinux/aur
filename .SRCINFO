@@ -1,6 +1,6 @@
 pkgbase = fakezig-zig
 	pkgdesc = A wrapper script for anyzig or zigup to provide zig
-	pkgver = 0.14.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	arch = any
 	license = custom:None
@@ -13,18 +13,18 @@ pkgbase = fakezig-zig
 pkgname = anyzig-zig
 	pkgdesc = A wrapper script for anyzig to provide zig (latest stable release)
 	depends = anyzig
-	provides = zig=0.14.0
+	provides = zig=0.14.1
 	conflicts = zig
 
 pkgname = zigup-zig
 	pkgdesc = A wrapper script for zigup to provide zig (latest stable release)
 	depends = zigup
-	provides = zig=0.14.0
+	provides = zig=0.14.1
 	conflicts = zig
 
-pkgname = zigup-zig-dev
-	pkgdesc = A wrapper script for zigup to provide zig (latest dev release)
-	depends = zigup
+pkgname = anyzig-zig-dev
+	pkgdesc = A wrapper script for anyzig to provide zig (latest dev release)
+	depends = anyzig
 	provides = zig-dev
 	conflicts = zig-dev
 
@@ -99,6 +99,12 @@ pkgname = anyzig-zig0.13
 	depends = anyzig
 	provides = zig0.13=0.13.0
 	conflicts = zig0.13
+
+pkgname = zigup-zig-dev
+	pkgdesc = A wrapper script for zigup to provide zig (latest dev release)
+	depends = zigup
+	provides = zig-dev
+	conflicts = zig-dev
 
 pkgname = zigup-zig0.2
 	pkgdesc = A wrapper script for zigup to provide zig (0.2.0)

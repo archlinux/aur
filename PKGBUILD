@@ -6,13 +6,14 @@ _pkgvers=(0.2.0 0.3.0 0.4.0 0.5.0 0.6.0 0.7.1 0.8.1 0.9.0 0.10.1 0.11.0 0.12.1
           0.13.0) # 0.1.1
 
 pkgbase="fakezig-${_provides}"
-pkgname=("${_depends[@]/%/-zig}" "zigup-${_provides}-dev")
+pkgname=("${_depends[@]/%/-zig}")
 for _dep in "${_depends[@]}"; do
+  pkgname+=("${_dep}-${_provides}-dev")
   for _ver in "${_pkgvers[@]}"; do
     pkgname+=("${_dep}-${_provides}${_ver%.*}")
   done
 done
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="A wrapper script for anyzig or zigup to provide ${_provides}"
 arch=('any')
@@ -33,6 +34,16 @@ package_${_dep}-${_provides}() {
 
   install -vDm755 '${_dep}-${_provides}.sh' \"\${pkgdir}/usr/bin/${_provides}\"
   sed -i 's/@VERSION@/${pkgver}/g' \"\${pkgdir}/usr/bin/${_provides}\"
+}
+
+package_${_dep}-${_provides}-dev() {
+  pkgdesc='A wrapper script for ${_dep} to provide ${_provides} (latest dev release)'
+  depends=('${_dep}')
+  provides=('${_provides}-dev')
+  conflicts=('${_provides}-dev')
+
+  install -vDm755 '${_dep}-${_provides}.sh' \"\${pkgdir}/usr/bin/${_provides}-dev\"
+  sed -i 's/@VERSION@/master/g' \"\${pkgdir}/usr/bin/${_provides}-dev\"
 }"
 
   for _ver in "${_pkgvers[@]}"; do
@@ -50,13 +61,3 @@ package_${_dep}-${_provides}${_ver%.*}() {
 }"
   done
 done
-
-package_zigup-zig-dev() {
-  pkgdesc="A wrapper script for zigup to provide ${_provides} (latest dev release)"
-  depends=('zigup')
-  provides=("${_provides}-dev")
-  conflicts=("${_provides}-dev")
-
-  install -vDm755 "zigup-${_provides}.sh" "${pkgdir}/usr/bin/${_provides}-dev"
-  sed -i 's/@VERSION@/master/g' "${pkgdir}/usr/bin/${_provides}-dev"
-}
