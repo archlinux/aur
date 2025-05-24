@@ -58,7 +58,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   wails build \
     -ldflags "-X 'github.com/ZenPrivacy/zen-desktop/internal/cfg.Version=${pkgver}' \
-    -X 'github.com/ZenPrivacy/zen-desktop/internal/selfupdate.NoSelfUpdate=true'" \
+      -X 'github.com/ZenPrivacy/zen-desktop/internal/selfupdate.NoSelfUpdate=true'" \
     -m -skipbindings \
     -tags prod,webkit2_41 \
     -o "$pkgname"
