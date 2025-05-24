@@ -2,7 +2,7 @@
 
 _pkgname="anyzig"
 pkgname="${_pkgname}-bin"
-pkgver=2025_04_24
+pkgver=2025_05_24
 pkgrel=1
 pkgdesc="One zig to rule them all"
 arch=('aarch64' 'armv7h' 'i686' 'powerpc64le' 'riscv64' 'x86_64')
@@ -20,12 +20,12 @@ source_powerpc64le=("${_pkgsrc}-powerpc64le.tar.gz::${url}/releases/download/v${
 source_riscv64=("${_pkgsrc}-riscv64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-riscv64-linux.tar.gz")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-linux.tar.gz")
 sha256sums=('dddd8cac6a0825e4671ce3cd1af16ebee155d6b699d2ae5faa1e5c8a10673273')
-sha256sums_aarch64=('f496a6679a42f8011b11fd120a794cb4f0cb4d2eadf07e0b6c675e9c25086b6c')
-sha256sums_armv7h=('d9ba21890ff1d7a8aba4ea6ae7df988d4c659e42dbc3d64eedb236c29a8a13e2')
-sha256sums_i686=('6e9f075d8a6d6aac07718f2a818204d05e42b4b3be8068b51bf212d8c89e588e')
-sha256sums_powerpc64le=('b65c900b6e2c1608b6ee247fbaaa7cf337fa58cd1484eaf98dca2ba74492f910')
-sha256sums_riscv64=('ad5c46ef584ddd0ab7f4280ad42c2d44a8eec1c9b2d45b6403eeb2fa955ff8f9')
-sha256sums_x86_64=('e74040109c668d680fc417c741a8d164c7af546d7c50e15ec228499dfc28672d')
+sha256sums_aarch64=('790b433c74fa347d015d54b02de473340b587104cd4b88ca20cf428b1140470f')
+sha256sums_armv7h=('712141d1286efc523d480b10b1bfcf77f81362854d97c99036d3435e247a9b76')
+sha256sums_i686=('baa361edac11d47a607ad0348ede60b2a331b35889c31e0da13b8a31c032c18d')
+sha256sums_powerpc64le=('66ea8f67f293014c2611ef4c2ca9112d346e777b3535a5ab985d00428242e65d')
+sha256sums_riscv64=('75b36f1b56669a804da388abd65f788c2cd6406100f5ebb2c8b9cd0071875b38')
+sha256sums_x86_64=('3891dce0aac09acc0ce32d9fc702ebaaeaa3398ca4b3f9e3ec9ffabf14460b42')
 
 package() {
   cd "${srcdir}"
