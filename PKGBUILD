@@ -14,7 +14,7 @@ for _dep in "${_depends[@]}"; do
   done
 done
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A wrapper script for anyzig or zigup to provide ${_provides}"
 arch=('any')
 # url=""
@@ -28,7 +28,7 @@ for _dep in "${_depends[@]}"; do
   eval "
 package_${_dep}-${_provides}() {
   pkgdesc='A wrapper script for ${_dep} to provide ${_provides} (latest stable release)'
-  depends=('${_dep}')
+  depends+=('${_dep}')
   provides=('${_provides}=${pkgver}')
   conflicts=('${_provides}')
 
@@ -38,7 +38,7 @@ package_${_dep}-${_provides}() {
 
 package_${_dep}-${_provides}-dev() {
   pkgdesc='A wrapper script for ${_dep} to provide ${_provides} (latest dev release)'
-  depends=('${_dep}')
+  depends+=('${_dep}')
   provides=('${_provides}-dev')
   conflicts=('${_provides}-dev')
 
@@ -52,7 +52,7 @@ package_${_dep}-${_provides}-dev() {
     eval "
 package_${_dep}-${_provides}${_ver%.*}() {
   pkgdesc='A wrapper script for ${_dep} to provide ${_provides} (${_ver})'
-  depends=('${_dep}')
+  depends+=('${_dep}')
   provides=('${_provides_ver}=${_ver}')
   conflicts=('${_provides_ver}')
 
