@@ -1,7 +1,7 @@
 # Maintainer: Can Celasun <can[at]dcc[dot]im>
 pkgname=netsniff-ng-git
 _gitname=netsniff-ng
-pkgver=v0.6.9.6.gef302b8e
+pkgver=v0.6.9.8.gbdd5a28e
 pkgrel=1
 pkgdesc='High performance Linux network sniffer for packet inspection (git version).'
 arch=('x86_64')
