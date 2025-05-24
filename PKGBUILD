@@ -4,7 +4,7 @@ _gituser=p0n1
 pkgname=epub_to_audiobook
 pkgdesc="command-line tool to convert EPUB ebooks into audiobooks"
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 #epoch=1
 arch=("any")
 url="https://github.com/$_gituser/$pkgname"
@@ -21,9 +21,10 @@ depends=(
 	python
 )
 optdepends=(
-	python-openai
-	python-edge-tts
-	python-gradio
+	'python-openai: generate audio using OpenAI TTS'
+	'python-edge-tts: generate audio using Microsoft edge TTS'
+	'piper-tts: generate audio uding piper TSS'
+	'python-gradio: web gui'
 )
 conflicts=("$pkgname-git")
 provides=("$pkgname")
