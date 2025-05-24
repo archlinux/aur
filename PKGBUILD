@@ -4,16 +4,16 @@ _orig_fullver=$_orig_ver$_orig_patch
 
 pkgname=bandwidth
 pkgver=$_orig_ver${_orig_patch:+.$_orig_patch}
-pkgrel=1
+pkgrel=2
 pkgdesc="Benchmark memory bandwidth"
 arch=('i686' 'x86_64')
-url="http://zsmith.co/bandwidth.php"
+url="http://zs3.me/bandwidth"
 license=('GPL')
 depends=('freetype2')
 makedepends=('nasm')
 options=(!makeflags !debug)
 sha256sums=('fece39a6dfb10c65033d6d79b2356e9ee714e936862b075ebdabd7277ce914a6')
-source=("https://zsmith.co/archives/${pkgname}-${_orig_fullver}.tar.bz2")
+source=("https://zs3.me/archives/${pkgname}-${_orig_fullver}.tar.bz2")
 
 prepare() {
   cd "${srcdir}/${pkgname}-${_orig_fullver}"

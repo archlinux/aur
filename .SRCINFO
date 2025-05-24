@@ -1,8 +1,8 @@
 pkgbase = bandwidth
 	pkgdesc = Benchmark memory bandwidth
 	pkgver = 1.14.10
-	pkgrel = 1
-	url = http://zsmith.co/bandwidth.php
+	pkgrel = 2
+	url = http://zs3.me/bandwidth
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = bandwidth
 	depends = freetype2
 	options = !makeflags
 	options = !debug
-	source = https://zsmith.co/archives/bandwidth-1.14.10.tar.bz2
+	source = https://zs3.me/archives/bandwidth-1.14.10.tar.bz2
 	sha256sums = fece39a6dfb10c65033d6d79b2356e9ee714e936862b075ebdabd7277ce914a6
 
 pkgname = bandwidth
