@@ -17,11 +17,11 @@ conflicts=('hplip' 'hplip-lite' 'hplip-plugin')
 provides=('hplip')
 backup=('etc/hp/hplip.conf' 'var/lib/hp/hplip.state')
 optdepends=('cups: for printing support')
-source=(https://downloads.sourceforge.net/project/hplip/hplip/$pkgver/hplip-$pkgver.tar.gz{,.asc}
+source=(https://downloads.sourceforge.net/hplip/hplip-$pkgver.tar.gz{,.asc}
         https://developers.hp.com/system/files/2025-03/hplip-$pkgver-plugin_run.zip
         hplip-missing-drivers.patch
         hplip-pserror-c99.patch)
-sha256sums=('f99e5eda0704ece359fb2bd9f2254e4a167257cee4da947481e8268a9cb87c50'
+sha256sums=('e872ff28eb2517705a95f6e1839efa1e50a77a33aae8905278df2bd820919653'
             'SKIP'
             'SKIP'
             'a8ba5021c68816b63654e328c2872cedf49fa9f8769631cfcb96c667055c7313'
