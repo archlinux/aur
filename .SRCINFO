@@ -1,0 +1,23 @@
+pkgbase = aqemu-qt6-git
+	pkgdesc = QEMU GUI written in Qt
+	pkgver = r402.76920e5
+	pkgrel = 1
+	url = https://github.com/AQEMU/aqemu
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	makedepends = meson
+	makedepends = qt6-declarative
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = libvncserver
+	provides = aqemu
+	conflicts = aqemu
+	source = aqemu-qt6::git+https://github.com/AQEMU/aqemu.git
+	sha256sums = SKIP
+
+pkgname = aqemu-qt6-git
+	depends = qt6-base
+	depends = libvncserver
+	depends = qemu
