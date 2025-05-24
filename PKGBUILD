@@ -1,16 +1,16 @@
 # Maintainer: hotfloppy <hotfloppy . 6866 at gmail dot com>
 
 pkgname=breaktimer-appimage
-pkgver=1.2.0
+pkgver=1.3.2
 pkgrel=1
-pkgdesc="Save yourself from RSI and eye-strain."
+pkgdesc="Manage periodic breaks. Avoid eye-strain and RSI."
 arch=('x86_64')
 url="https://breaktimer.app/"
 license=('GPLv3')
 provides=('breaktimer')
 conflicts=('breaktimer-bin')
 source=("https://github.com/tom-james-watson/breaktimer-app/releases/download/v$pkgver/BreakTimer.AppImage")
-sha256sums=('6e9739109ff919df74f0eafe03bc2387350aded69401c6f113af5f994198157b')
+sha256sums=('3bd0b0842ff5a3de874477656454ba4a284c1f749031a53b326e53bfb14cec8e')
 options=(!strip)
 _filename=BreakTimer.AppImage
 

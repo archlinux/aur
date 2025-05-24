@@ -1,6 +1,6 @@
 pkgbase = breaktimer-appimage
-	pkgdesc = Save yourself from RSI and eye-strain.
-	pkgver = 1.2.0
+	pkgdesc = Manage periodic breaks. Avoid eye-strain and RSI.
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://breaktimer.app/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = breaktimer-appimage
 	provides = breaktimer
 	conflicts = breaktimer-bin
 	options = !strip
-	source = https://github.com/tom-james-watson/breaktimer-app/releases/download/v1.2.0/BreakTimer.AppImage
-	sha256sums = 6e9739109ff919df74f0eafe03bc2387350aded69401c6f113af5f994198157b
+	source = https://github.com/tom-james-watson/breaktimer-app/releases/download/v1.3.2/BreakTimer.AppImage
+	sha256sums = 3bd0b0842ff5a3de874477656454ba4a284c1f749031a53b326e53bfb14cec8e
 
 pkgname = breaktimer-appimage
