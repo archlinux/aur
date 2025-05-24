@@ -17,6 +17,7 @@ pkgbase = scenefx-0.19-git
 	depends = wlroots-0.19-git
 	provides = libscenefx-0.2.so
 	conflicts = scenefx
+	conflicts = scenefx-git
 	options = debug
 	source = scenefx-0.19::git+https://github.com/wlrfx/scenefx.git
 	sha512sums = SKIP

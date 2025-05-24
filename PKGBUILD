@@ -26,7 +26,7 @@ makedepends=(
 )
 optdepends=()
 provides=("libscenefx-$_base_version.so")
-conflicts=("scenefx")
+conflicts=("scenefx" "scenefx-git")
 options=("debug")
 source=("${pkgname%-*}::git+${url}.git")
 sha512sums=("SKIP")
