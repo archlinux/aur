@@ -1,0 +1,20 @@
+pkgbase = niriswitcher
+	pkgdesc = An application switcher for niri
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/isaksamsten/niriswitcher
+	arch = any
+	license = MIT
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-gobject
+	depends = niri
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = libadwaita
+	source = niriswitcher-0.5.2.tar.gz::https://github.com/isaksamsten/niriswitcher/archive/0.5.2/niriswitcher-0.5.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = niriswitcher
