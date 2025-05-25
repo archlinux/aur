@@ -1,0 +1,14 @@
+pkgbase = stickee
+	pkgdesc = A simple sticky notes application for Arch Linux
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/ktauchathuranga/stickee
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gtk4
+	source = stickee-0.0.0.tar.gz::https://github.com/ktauchathuranga/stickee/archive/v0.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = stickee
