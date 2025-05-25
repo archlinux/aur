@@ -1,8 +1,8 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=dokku
-pkgver=0.35.18
-pkgrel=2
+pkgver=0.35.19
+pkgrel=1
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('x86_64')
 url='https://github.com/dokku/dokku'
@@ -39,12 +39,10 @@ depends=(
 )
 source=("${url}/archive/v${pkgver}.zip"
         "${pkgname}.install"
-        "scheduler-docker-local.patch"
-        "nginx-vhosts-internal-functions.patch")
-sha256sums=('f9d89aab790707a33ed692d858f69636443bb8d2e2da24bc90546728e745930e'
+        "scheduler-docker-local.patch")
+sha256sums=('1a1cba251a2bbdd41793716a28d408417593eb95a53c102d16a4602ed24216ae'
             '8830ca7b44118da8e2f35aca271429cfa93e7f21126df6696a0d0d608d979f2b'
-            'fd979a3d612396316603f7677cdcdb7d25c7fecf99c97a8d1458262684913fdd'
-            '0037fab79aa84663add5bc86687ec41e013cf864719f14814eadf42c4d62898c')
+            'fd979a3d612396316603f7677cdcdb7d25c7fecf99c97a8d1458262684913fdd')
 install="${pkgname}.install"
 
 build() {
@@ -59,9 +57,6 @@ build() {
 
   # Fix privilege issue with crontab -u
   patch -p1 -i "${srcdir}/scheduler-docker-local.patch"
-
-  # Fix missing systemctl command issue with nginx vhosts
-  patch -p1 -i "${srcdir}/nginx-vhosts-internal-functions.patch"
 
   # Add .core and build go plugins
   for plugin in plugins/*; do
