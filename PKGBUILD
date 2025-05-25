@@ -13,6 +13,8 @@ prepare() {
     mkdir fonts
     mkdir iso-mount
 
+    sudo modprobe udf
+
     sudo mount fonts.iso iso-mount
     cp iso-mount/sources/install.wim ./fonts.wim
     sudo umount iso-mount
