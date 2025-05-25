@@ -1,20 +1,27 @@
+# Maintainer:  shtrophic <aur at shtrophic dot net>
+
 pkgname=deadbeef-plugin-statusnotifier
 pkgver=1.6
-pkgrel=1
-pkgdesc="StatusNotifier plugin for the DeaDBeeF music player replaces default tray icon on DE that supports StatusNotifierIitem protocol."
+pkgrel=2
+pkgdesc="plugin for DeaDBeeF that replaces its default tray icon with one that supports the StatusNotifierIitem protocol"
 url="https://github.com/vovochka404/deadbeef-statusnotifier-plugin"
-arch=('i686' 'x86_64')
-license=('GPL3')
-source=("https://github.com/vovochka404/deadbeef-statusnotifier-plugin/archive/v${pkgver}.tar.gz")
-depends=('deadbeef' 'gtk3' 'gtk2' 'libdbusmenu-glib')
-makedepends=('cmake')
-sha512sums=('82e584b4614371a17ef89be94d87804bc3c55ae806a001bc489ca8041deff0aba29e0525b533f7fd3ccfc188adcaac62dd51418e7d0d2377222873baedddc9e5')
+arch=(i686 x86_64)
+license=(GPL-3.0-or-later)
+source=("$url/archive/v$pkgver.tar.gz")
+depends=(deadbeef gtk3 libdbusmenu-glib)
+makedepends=(cmake ninja)
+b2sums=('2789b6dae5b6028a8185e615c9da7cb17888ee836c0786e9a602c85261fe5c08be56192e366b784291aab9b9300bd150494e585b6c56bb6ef54bdac33a82e57d')
 
 build() {
-  cmake "${srcdir}/deadbeef-statusnotifier-plugin-${pkgver}" -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DUSE_GTK=OFF
-	make
+	cmake -B build -GNinja -Wno-dev \
+	    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+	    -DCMAKE_INSTALL_PREFIX='/usr' \
+	    -DCMAKE_BUILD_TYPE='None' \
+	    -DUSE_GTK=OFF \
+	    -S "deadbeef-statusnotifier-plugin-$pkgver"
+	cmake --build build
 }
 
 package() {
-	cd "${srcdir}" && make install
+	DESTDIR="$pkgdir" cmake --install build
 }
