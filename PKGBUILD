@@ -80,32 +80,29 @@ prepare() {
   sed -i 's|@@APPNAME@@|code-oss|g' resources/completions/{bash/code-oss,zsh/_code-oss}
 
   patch -p1 -i "$srcdir/clipath.patch"
-
-  # Put a zip to skip downloading electron.
-  _hash=$(echo -n "https://github.com/electron/electron/releases/download/v${_electronver}" | sha256sum | cut -d ' ' -f 1)
-  export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home # Don't taint user dir
-  local _cache_dir="$XDG_CACHE_HOME/electron/$_hash"
-  mkdir -p "$_cache_dir"
-  local _zip="electron-v${_electronver}-linux-${_electron_arch}.zip"
-  bsdtar --format zip -cf "${_cache_dir}/${_zip}" /dev/null 2> /dev/null
-  echo "$(sha256sum "$_cache_dir/$_zip" | cut -d " " -f 1) *$_zip" > build/checksums/electron.txt
 }
 
 build() {
   cd vscode
+  # Put a zip to skip downloading electron
+  export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home # Don't taint user dir
+  local _cache_dir="$XDG_CACHE_HOME"/electron/$(echo -n "https://github.com/electron/electron/releases/download/v${_electronver}" | sha256sum | cut -d ' ' -f 1)
+  mkdir -p "$_cache_dir"
+  local _zip="electron-v${_electronver}-linux-${_electron_arch}.zip"
+  bsdtar --format zip -cf "${_cache_dir}/${_zip}" /dev/null 2> /dev/null
+  echo "$(sha256sum "$_cache_dir/$_zip" | cut -d " " -f 1) *$_zip" > build/checksums/electron.txt
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-  export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home
+
   npm install
-  npm run gulp --openssl-legacy-provider vscode-linux-${_vscode_arch} #-min minify cause OOM
+  npm run gulp vscode-linux-${_vscode_arch} #-min minify cause OOM
 }
 
 package() {
   _elnum=$(cut -d. -f1 /usr/lib/electron/version) # hide version from --printsrcinfo
   depends+=(electron${_elnum})
   # Resource files
-  install -dm755 "$pkgdir"/usr/lib/code # compabinity for pacman hooks
-  cp -r --reflink=auto --no-preserve=ownership --preserve=mode VSCode-linux-${_vscode_arch}/resources/app/* "$pkgdir"/usr/lib/code/
-  chmod -R u=rwX,go=rX "$pkgdir" # todo: cleanup
+  install -dm755 "$pkgdir"/usr/lib/code
+  cp -r --reflink=auto --no-preserve=ownership VSCode-linux-${_vscode_arch}/resources/app/* "$pkgdir"/usr/lib/code/
   # system-wide tools
   ln -svf /usr/bin/rg "$pkgdir"/usr/lib/code/node_modules/@vscode/ripgrep/bin/rg
   ln -svf /usr/bin/xdg-open "$pkgdir"/usr/lib/code/node_modules/open/xdg-open
