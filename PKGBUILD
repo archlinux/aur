@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=joymap
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='A linux userspace device driver that allows joystick events to be remapped.'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=(
 	"${pkgname}-system.service"
 	"${pkgname}-sysuser.conf"
 	"90-${pkgname}-uinput.rules")
-sha256sums=('5edb47df14f3b3637b79c78d25ef7fd443da41c7d95af7819bd58dd1e4be0e94'
+sha256sums=('b03752350e4c1c97b4c578c06b2bae715b153cfe22de006f4555278bf4a23838'
             '427aae12107225ed8e47a2c9ec77539723cce98f340316a08d9d68b0514b78ec'
             'fa6c5cf0a5104fffc5181db5a198554d86ddacc1230c481530ac197e798415e2'
             '1bbbbe0f795adcb11f7284d17b0e67dc6c3d8577f4509f83e64936d99e504fc7'
