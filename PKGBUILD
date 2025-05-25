@@ -49,7 +49,6 @@ build() {
     -Dgallium-vdpau=enabled \
     -Dgallium-xa=disabled \
     -Dgallium-nine=true \
-    -Dgallium-opencl=icd \
     -Dosmesa=true \
     -Dshared-glapi=enabled \
     -Dvalgrind=disabled \
