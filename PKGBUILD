@@ -1,7 +1,7 @@
 # Maintainer: busyo <pkgbuilds at qq694253220@gmail.com>
 
 pkgname=mhy-warp-bin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="米游抽卡记录查询软件"
 arch=('x86_64')
