@@ -36,7 +36,7 @@ build() {
     --optimization=3 \
     -Dgallium-drivers=radeonsi,r600,swrast \
     -Dvulkan-drivers=amd_terascale,amd,intel \
-    -Dplatforms=auto \
+    -Dplatforms=x11,wayland \
     -Ddri3=enabled \
     -Degl=enabled \
     -Dgbm=enabled \
@@ -47,7 +47,7 @@ build() {
     -Dshared-llvm=enabled \
     -Dgallium-va=enabled \
     -Dgallium-vdpau=enabled \
-    -Dgallium-xa=enabled \
+    -Dgallium-xa=disabled \
     -Dgallium-nine=true \
     -Dosmesa=true \
     -Dshared-glapi=enabled \
