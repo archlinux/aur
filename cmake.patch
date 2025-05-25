@@ -1,0 +1,8 @@
+--- CMakeLists.txt	2025-05-12 10:00:36.659961562 +0530
++++ CMakeLists.txt	2025-05-12 10:00:50.954252731 +0530
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 3.4.3)
++cmake_minimum_required (VERSION 3.5.0)
+ project (snort CXX C)
+ 
+ set (VERSION_MAJOR 3)

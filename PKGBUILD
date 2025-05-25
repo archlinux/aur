@@ -10,13 +10,13 @@
 pkgname=snort
 _pkgname=snort3
 _openappid=33380
-pkgver=3.7.2.0 # renovate: datasource=github-tags depName=snort3/snort3
+pkgver=3.7.4.0 # renovate: datasource=github-releases depName=snort3/snort3
 pkgrel=1
 pkgdesc='A lightweight network IDS /IPS with OpenAppID support.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
 url='https://www.snort.org'
 license=('GPL')
-depends=('gperftools' 'hwloc' 'hyperscan' 'libdaq' 'libdnet' 'libmnl' 'libpcap' 'libunwind' 'luajit' 'lz4' 'openssl' 'pcre' 'pulledpork' 'xz' 'zlib')
+depends=('gperftools' 'hwloc' 'hyperscan' 'libdaq' 'libdnet' 'libmnl' 'libpcap' 'libunwind' 'luajit' 'lz4' 'openssl' 'pcre2' 'pulledpork' 'xz' 'zlib')
 makedepends=('cmake' 'pkgconf')
 backup=('etc/snort/snort.lua'
   'etc/snort/snort_defaults.lua'
@@ -31,6 +31,8 @@ install='snort.install'
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/snort3/snort3/archive/refs/tags/${pkgver}.tar.gz"
   "snort-openappid-${_openappid}.tar.gz::https://snort.org/downloads/openappid/${_openappid}"
   'tcmjem.patch'
+  'cmake.patch'
+  'cstdint.patch'
   'local.lua'
   'snort.logrotate'
   'snort.sysusers'
@@ -40,6 +42,8 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/snort3/snort3/archive/
 prepare() {
   cd "${_pkgname}-${pkgver}"
   patch -p0 <"${srcdir}"/tcmjem.patch
+  patch -p0 <"${srcdir}"/cmake.patch
+  patch -p0 <"${srcdir}"/cstdint.patch
   # Workaround https://github.com/intel/hyperscan/issues/388
   sed -i '/HAVE_HS_COMPILE_LIT/d' config.cmake.h.in cmake/sanity_checks.cmake
 }
@@ -86,11 +90,13 @@ package() {
 
 }
 
-sha256sums=('5dc9beb0e115b6c33ce3cc8bd4a38decfb82c199761233e9ee21401a047e0f27'
-            '3046c5af1dd81a104f13d8e895226ef64bca7fa358238fb5f29c659081eaee2a'
-            '7fbf5c1b1ca10fba73350e563cafeb8ea4db7eb5d69ef62c067df602f27678f2'
-            'b61d6492f86c7d79c1a76d1394d099403981aac7f371b1fe22ddd8a4bb15c87c'
-            'a8a7684a676da5cd55c2b5ab012dac3d14c5a6c62f6e37c4913ba1dbe506088e'
-            'ae3245c5de527fb487c459f2f4a9c78803ae6341e9c81b9a404277679cdee051'
-            'bc4a02d184601faba5cd0f6cb454097a3b04a0c8fe56f5f8b36d24513484faa2'
-            'cb1108ab0a6ad38981a6f308b0ae2b276b68d08bfa0e38c036eae277b38b28d8')
+sha256sums=('6f6eae6c22d8e51ed013c5cb3286085745e946dc2f64ebd731a77617537a048e'
+  '3046c5af1dd81a104f13d8e895226ef64bca7fa358238fb5f29c659081eaee2a'
+  'b7797a2479798c7c055173bb606fb537fb53f5c867f967d47477211193ffe86d'
+  '3f87841d4e04715878adc716eff75e542792e462ffda81538ebf195a69744606'
+  '1b21659bbf12389c8d322d939b6c849406c0845d98d771b6e295715a0042ceec'
+  'b61d6492f86c7d79c1a76d1394d099403981aac7f371b1fe22ddd8a4bb15c87c'
+  'a8a7684a676da5cd55c2b5ab012dac3d14c5a6c62f6e37c4913ba1dbe506088e'
+  'ae3245c5de527fb487c459f2f4a9c78803ae6341e9c81b9a404277679cdee051'
+  'bc4a02d184601faba5cd0f6cb454097a3b04a0c8fe56f5f8b36d24513484faa2'
+  'cb1108ab0a6ad38981a6f308b0ae2b276b68d08bfa0e38c036eae277b38b28d8')

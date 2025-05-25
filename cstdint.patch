@@ -1,30 +1,50 @@
---- src/js_norm/js_identifier_ctx.h	2023-05-07 00:46:24.000000000 +0530
-+++ src/js_norm/js_identifier_ctx.h	2023-05-07 20:19:04.069501050 +0530
-@@ -25,6 +25,7 @@
+--- tools/snort2lua/rule_states/rule_gid_sid.cc	2025-05-12 15:35:24.592932076 +0530
++++ tools/snort2lua/rule_states/rule_gid_sid.cc	2025-05-12 15:35:33.086379474 +0530
+@@ -27,6 +27,7 @@
+ 
+ #include <sstream>
  #include <unordered_map>
- #include <unordered_set>
- #include <vector>
 +#include <cstdint>
  
- namespace jsn
+ #include "conversion_state.h"
+ #include "helpers/converter.h"
+--- tools/snort2lua/config_states/config_ignore_ports.cc	2025-05-12 15:39:03.708168936 +0530
++++ tools/snort2lua/config_states/config_ignore_ports.cc	2025-05-12 15:39:25.288405747 +0530
+@@ -21,6 +21,7 @@
+ #include <vector>
+ #include <string>
+ #include <stdexcept>
++#include <cstdint>
+ 
+ #include "conversion_state.h"
+ #include "helpers/converter.h"
+--- tools/snort2lua/preprocessor_states/pps_dcerpc_server.cc	2025-05-12 15:44:08.460012526 +0530
++++ tools/snort2lua/preprocessor_states/pps_dcerpc_server.cc	2025-05-12 15:44:35.316575040 +0530
+@@ -25,6 +25,7 @@
+ 
+ #include <algorithm>
+ #include <cstring>
++#include <cstdint>
+ 
+ namespace preprocessors
  {
---- src/packet_io/sfdaq_config.h	2023-05-24 09:05:32.765835939 +0530
-+++ src/packet_io/sfdaq_config.h	2023-05-24 09:06:10.796162609 +0530
-@@ -23,6 +23,7 @@
+--- tools/snort2lua/preprocessor_states/pps_frag3_engine.cc	2025-05-12 15:46:36.191364223 +0530
++++ tools/snort2lua/preprocessor_states/pps_frag3_engine.cc	2025-05-12 15:46:48.702563532 +0530
+@@ -19,6 +19,7 @@
  
- #include <string>
+ #include <sstream>
  #include <vector>
 +#include <cstdint>
  
- using DaqVar = std::pair<std::string, std::string>;
- using DaqVarList = std::vector<DaqVar>;
---- src/service_inspectors/wizard/magic.h	2023-05-24 09:16:41.121404348 +0530
-+++ src/service_inspectors/wizard/magic.h	2023-05-24 09:17:13.008321620 +0530
-@@ -23,6 +23,7 @@
- #include <cassert>
- #include <string>
+ #include "conversion_state.h"
+ #include "helpers/converter.h"
+--- tools/snort2lua/preprocessor_states/pps_stream5_tcp.cc	2025-05-12 15:48:30.484380007 +0530
++++ tools/snort2lua/preprocessor_states/pps_stream5_tcp.cc	2025-05-12 15:48:45.468492366 +0530
+@@ -20,6 +20,7 @@
+ #include <sstream>
  #include <vector>
+ #include <string>
 +#include <cstdint>
  
- class MagicBook;
- 
+ #include "conversion_state.h"
+ #include "helpers/s2l_util.h"
