@@ -2,7 +2,7 @@
 _pkgname=torzu
 _branch=main
 pkgname=torzu-git
-pkgver=r27239.945de31fb
+pkgver=r27242.fd908334a
 pkgrel=1
 pkgdesc="Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind."
 arch=(x86_64)
@@ -10,7 +10,7 @@ url=https://notabug.org/litucks/torzu
 license=(GPL-3.0-or-later)
 provides=('torzu')
 depends=('alsa-lib' 'brotli' 'fmt' 'catch2' 'enet' 'llvm-libs' 'freetype2' 'gcc-libs' 'glibc' 'glu' 'hicolor-icon-theme' 'gamemode' 'libass' 'libpulse' 'libtool' 'libvdpau' 'lz4' 'sdl2' 'zlib')
-makedepends=('sdl2' 'curl' 'autoconf' 'cmake' 'gcc' 'git' 'glslang' 'alsa-lib' 'glu' 'hidapi' 'libpulse' 'systemd-libs' 'xcb-util-wm' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'libxcb' 'libxext' 'libxkbcommon-x11' 'nasm' 'qt5-base' 'qt5-webengine' 'qt5-multimedia' 'mbedtls2' 'fmt' 'nlohmann-json' 'zstd' 'openssl' 'libunistring' 'aom' 'automake' 'base-devel' 'libass' 'freetype2' 'haskell-gnutls' 'lame' 'sdl2' 'libva' 'libvorbis' 'libxcb' 'meson' 'ninja' 'pkgconf' 'texinfo' 'wget' 'vasm' 'x264' 'x265' 'numactl' 'libvpx' 'libfdk-aac' 'libopusenc' 'ffmpeg' 'svt-av1' 'dav1d' 'boost' 'clang' 'vulkan-headers' 'ffmpeg4.4' 'zip' 'unzip' 'tar' 'boost-libs')
+makedepends=('sdl2' 'curl' 'autoconf' 'cmake' 'gcc' 'git' 'glslang' 'alsa-lib' 'glu' 'hidapi' 'libpulse' 'systemd-libs' 'xcb-util-wm' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'libxcb' 'libxext' 'libxkbcommon-x11' 'nasm' 'qt5-base' 'qt5-tools' 'qt5-webengine' 'qt5-multimedia' 'mbedtls2' 'fmt' 'nlohmann-json' 'zstd' 'openssl' 'libunistring' 'aom' 'automake' 'base-devel' 'libass' 'freetype2' 'haskell-gnutls' 'lame' 'sdl2' 'libva' 'libvorbis' 'libxcb' 'meson' 'ninja' 'pkgconf' 'texinfo' 'wget' 'vasm' 'x264' 'x265' 'numactl' 'libvpx' 'libfdk-aac' 'libopusenc' 'ffmpeg' 'svt-av1' 'dav1d' 'boost' 'clang' 'vulkan-headers' 'ffmpeg4.4' 'zip' 'unzip' 'tar' 'boost-libs')
 conflicts=('torzu')
 options=(!debug lto strip)
 source=(
@@ -22,13 +22,14 @@ source=(
   git+https://github.com/xiph/opus.git
   git+https://github.com/libsdl-org/SDL.git
   git+https://github.com/yhirose/cpp-httplib.git
-  ffmpeg::git+https://github.com/FFmpeg/FFmpeg.git
-  git+https://github.com/microsoft/vcpkg.git
+#  ffmpeg::git+https://github.com/FFmpeg/FFmpeg.git
+#  git+https://github.com/microsoft/vcpkg.git
   git+https://github.com/bylaws/libadrenotools.git
   git+https://github.com/lat9nq/tzdb_to_nx.git
   git+https://github.com/brofield/simpleini.git
   git+https://github.com/merryhime/oaknut.git
   git+https://github.com/KhronosGroup/SPIRV-Tools.git
+  git+https://github.com/KhronosGroup/SPIRV-Headers.git
   git+https://github.com/fmtlib/fmt.git
   git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git
   git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
@@ -37,10 +38,8 @@ source=(
   # Submodule Submodules
   git+https://github.com/eggert/tz.git #submodule_of_tzdb_to_nx
   git+https://github.com/bylaws/liblinkernsbypass.git #submodule_of_libadrenogtools
-  git+https://github.com/google/googletest.git #submodule_of_cubeb
+#  git+https://github.com/google/googletest.git #submodule_of_cubeb
   git+https://github.com/arsenm/sanitizers-cmake.git #submodule_of_cubeb
-  dynarmic_patch.patch
-  spirv_patch.patch
   )
 b2sums=('SKIP'
         'SKIP'
@@ -48,6 +47,8 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
+#        'SKIP'
+#        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -63,48 +64,33 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        '8b8f86b0ca5f8db93082430da0f2bbb8bfaea8c35f5b85b81a9c81e51cb68c92b95e1a3d887f0a54caea705cd695055d0967c4b709d519d86923b5e759cba031'
-        '2c840679ff5cfb7295edf43299fe1daff4fb4179d5d72de07402f26bcd46da87e2e92242882229ac2448de917c2159ecbc313049fba61081cf13c178354c8dd0')
+        'SKIP')
 pkgver() {
     cd "$srcdir/$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
-  for submodule in {enet,cubeb,libusb,xbyak,opus,SDL,cpp-httplib,ffmpeg,vcpkg,libadrenotools,tzdb_to_nx,simpleini,cpp-jwt,oaknut,SPIRV-Tools,fmt,Vulkan-Utility-Libraries,VulkanMemoryAllocator,Vulkan-Headers};
+  cd "$_pkgname"
+  for _submodule in enet cubeb libusb xbyak opus SDL cpp-httplib tzdb_to_nx libadrenotools simpleini cpp-jwt oaknut fmt;
   do
-    git config --file=.gitmodules submodule.$submodule.url "${srcdir}"/$submodule
+    git config submodule.$_submodule.url ../$_submodule
   done
-  git -c protocol.file.allow=always submodule update --init
-
-  pushd externals/cubeb
-  for submodule in {sanitiers-cmake,googletest};
-  do
-  git config --file=.gitmodules submodule.$submodule.url "${srcdir}"/$submodule
-  done
-  git -c protocol.file.allow=always submodule update --init
-  popd
-
-  pushd externals/libadrenotools
-  git config submodule.lib/linkersbypass.url "${srcdir}"/linkernsbypass
+  git config submodule.externals/SDL.url ../SDL
+  git config submodule.externals/VulkanMemoryAllocator.url ../VulkanMemoryAllocator
+  git config submodule.externals/SPIRV-Headers.url ../SPIRV-Headers
+  git config submodule.externals/SPIRV-Tools.url ../SPIRV-Tools
+  git config submodule.externals/Vulkan-Utility-Libraries.url ../Vulkan-Utility-Libraries
+  git config submodule.externals/Vulkan-Headers.url ../Vulkan-Headers
   git -c protocol.file.allow=always submodule update
-  popd
-
-  pushd externals/nx_tzdb/tzdb_to_nx
-  git config submodule.externals/tz/tz.url "${srcdir}"/tz
+  
+  cd $srcdir/$_pkgname/externals/cubeb
+  git config submodule.cmake/sanitizers-cmake.url ../../../sanitizers-cmake
   git -c protocol.file.allow=always submodule update
-  popd
   
-  # Force the build to use dynarmic from externals to avoid compatibility problems.
-  patch $srcdir/torzu/CMakeLists.txt $srcdir/dynarmic_patch.patch
-  
-  # Force build to use spirv-headers from externals to aovoid compatibility problems.
-  patch $srcdir/torzu/externals/CMakeLists.txt $srcdir/spirv_patch.patch
-
+  cd $srcdir/$_pkgname/externals/nx_tzdb/tzdb_to_nx
+  git config submodule.externals/tz/tz.url ../../../../tz
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -114,6 +100,8 @@ build() {
   
   cmake -B build -G Ninja \
     -DYUZU_USE_BUNDLED_VCPKG=OFF \
+    -DYUZU_CHECK_SUBMODULES=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_CXX_FLAGS="-march=x86-64-v2" \
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
@@ -129,10 +117,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DYUZU_ROOM=OFF \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-    -DFFmpeg_COMPONENTS="swscale;avutil;avfilter;avcodec" \
-    -DFFmpeg_PREFIX=$srcdir/externals/ffmpeg/ffmpeg \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-    -GNinja \
     -Wno-dev
   ninja -C build
 } 
