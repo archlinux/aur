@@ -1,8 +1,7 @@
-# Maintainer: FerrousInk <ferrousink-aur@proton.me>
-
+# Maintainer: Alois~ <aloisianer@proton.me>
 pkgname=ttf-windows-fonts
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="All of the fonts needed for proper Microsoft services with automated installation"
 arch=('any')
 source=(fonts.iso::http://software-static.download.prss.microsoft.com/pr/download/19042.631.201119-0144.20h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x86FRE_en-us.iso)
