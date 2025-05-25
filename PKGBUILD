@@ -1,14 +1,14 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=docker-container-healthchecker
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Runs healthchecks against local docker containers'
 arch=('x86_64')
 url='https://github.com/dokku/docker-container-healthchecker'
 license=('BSD')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('27a88a0842839e8b3ea0679eff4b0c65270e87d12c4201275d64337b040ac287')
+sha256sums=('0e143dfe5e3973641f73af897870eca6b78dac7f5a743bbc0557dcdf26d68dae')
 makedepends=('go')
 
 build() {
