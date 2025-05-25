@@ -8,28 +8,36 @@ pkgname=('mysql81' 'libmysqlclient81' 'mysql-clients81')
 pkgbase=mysql81
 _pkgbase=mysql
 pkgver=8.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast SQL database server, community edition, v8.1"
 arch=('x86_64')
 makedepends=('openssl' 'zlib' 'cmake' 'systemd-tools' 'systemd-libs' 'libaio'
              'jemalloc' 'rpcsvc-proto' 'libtirpc' 'icu' 'libedit' 'libevent'
              'libfido2' 're2' 'rapidjson')
-license=('GPL')
+license=('GPL-2.0-only')
 url="https://www.mysql.com/products/community/"
-source=("https://cdn.mysql.com/Downloads/MySQL-8.0/${_pkgbase}-boost-${pkgver}.tar.gz"
+source=("https://cdn.mysql.com/Downloads/MySQL-8.1/${_pkgbase}-boost-${pkgver}.tar.gz"
         "my-default.cnf"
         "mysql-ld.so.conf"
         "mysql.sysconfig"
         "mysqld_service.patch"
         "systemd-tmpfiles.patch"
-        "systemd-sysusers.conf")
+        "systemd-sysusers.conf"
+        "gcc-13.patch")
 sha256sums=('cb19648bc8719b9f6979924bfea806b278bd26b8d67740e5742c6f363f142188'
             '6bc24ae510f6b6bbad6b3edda2d0028b29292937b482274a4c2fae335f4de328'
             'e1c23fa0971a13d998f2790379b68c475438d05b6d6f2691b99051dbf497567f'
             '203dcd22fea668477ac7123dbd9909fae72d3d07f8855417a669a9c94db072ae'
             '8fbedfc2c5fe271ed13217feeceeac00202d2cb135e4283eeee2f9a13d6251af'
             '270074dc0a01e0f959590ad95e5bbaaac3f821bb44eba32d039a6aee506b9c6a'
-            '200a992eb41c95efa99845d017439ddd4018a3e51f57ffca8cb802b0d25123f1')
+            '200a992eb41c95efa99845d017439ddd4018a3e51f57ffca8cb802b0d25123f1'
+            '9369cab3cb7cb45950e87c0df29f199b4c49c63fee9c66fad2ff56454a6a6f52')
+
+prepare() {
+  cd "${_pkgbase}-${pkgver}"
+  # Apply fixed for GCC 13
+  patch -p1 -i "../gcc-13.patch"
+}
 
 build() {
   rm -rf build

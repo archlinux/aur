@@ -1,0 +1,78 @@
+diff -Naur mysql-8.1.0.orig/plugin/x/tests/driver/connector/warning.h mysql-8.1.0/plugin/x/tests/driver/connector/warning.h
+--- mysql-8.1.0.orig/plugin/x/tests/driver/connector/warning.h	2023-06-21 09:52:10.000000000 +0200
++++ mysql-8.1.0/plugin/x/tests/driver/connector/warning.h	2025-05-25 21:53:54.014684817 +0200
+@@ -25,6 +25,7 @@
+ #ifndef PLUGIN_X_TESTS_DRIVER_CONNECTOR_WARNING_H_
+ #define PLUGIN_X_TESTS_DRIVER_CONNECTOR_WARNING_H_
+ 
++#include <cstdint>
+ #include <memory>
+ #include <ostream>
+ #include <string>
+diff -Naur mysql-8.1.0.orig/router/src/harness/src/keyring/keyring_file.cc mysql-8.1.0/router/src/harness/src/keyring/keyring_file.cc
+--- mysql-8.1.0.orig/router/src/harness/src/keyring/keyring_file.cc	2023-06-21 09:52:10.000000000 +0200
++++ mysql-8.1.0/router/src/harness/src/keyring/keyring_file.cc	2025-05-25 22:00:36.993578290 +0200
+@@ -25,6 +25,7 @@
+ #include "keyring/keyring_file.h"
+ 
+ #include <array>
++#include <cstdint>
+ #include <fstream>
+ #include <memory>
+ #include <stdexcept>
+diff -Naur mysql-8.1.0.orig/router/src/harness/src/stdx/io/file_handle.cc mysql-8.1.0/router/src/harness/src/stdx/io/file_handle.cc
+--- mysql-8.1.0.orig/router/src/harness/src/stdx/io/file_handle.cc	2023-06-21 09:52:10.000000000 +0200
++++ mysql-8.1.0/router/src/harness/src/stdx/io/file_handle.cc	2025-05-25 21:56:49.961114245 +0200
+@@ -22,6 +22,8 @@
+   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+ 
++#include <cstdint>
++
+ #include "mysql/harness/stdx/io/file_handle.h"
+ 
+ #include <fcntl.h>     // O_RDONLY and _O_RDONLY
+diff -Naur mysql-8.1.0.orig/router/src/http/src/http_auth.h mysql-8.1.0/router/src/http/src/http_auth.h
+--- mysql-8.1.0.orig/router/src/http/src/http_auth.h	2023-06-21 09:52:10.000000000 +0200
++++ mysql-8.1.0/router/src/http/src/http_auth.h	2025-05-25 23:11:30.958068996 +0200
+@@ -25,6 +25,7 @@
+ #ifndef MYSQLROUTER_HTTP_AUTH_INCLUDED
+ #define MYSQLROUTER_HTTP_AUTH_INCLUDED
+ 
++#include <cstdint>
+ #include <string>
+ #include <system_error>
+ 
+diff -Naur mysql-8.1.0.orig/router/src/http/src/http_time.cc mysql-8.1.0/router/src/http/src/http_time.cc
+--- mysql-8.1.0.orig/router/src/http/src/http_time.cc	2023-06-21 09:52:10.000000000 +0200
++++ mysql-8.1.0/router/src/http/src/http_time.cc	2025-05-25 21:58:40.455350528 +0200
+@@ -23,6 +23,7 @@
+ */
+ 
+ #include <array>
++#include <cstdint>
+ #include <cstdio>   // sscanf
+ #include <cstring>  // memset
+ #include <ctime>    // mktime, gmtime_r, gmtime_s
+diff -Naur mysql-8.1.0.orig/router/src/router/include/mysqlrouter/cluster_metadata.h mysql-8.1.0/router/src/router/include/mysqlrouter/cluster_metadata.h
+--- mysql-8.1.0.orig/router/src/router/include/mysqlrouter/cluster_metadata.h	2023-06-21 09:52:10.000000000 +0200
++++ mysql-8.1.0/router/src/router/include/mysqlrouter/cluster_metadata.h	2025-05-25 23:08:44.328108097 +0200
+@@ -27,6 +27,7 @@
+ 
+ #include "mysqlrouter/router_export.h"
+ 
++#include <cstdint>
+ #include <optional>
+ #include <stdexcept>
+ #include <string>
+diff -Naur mysql-8.1.0.orig/router/src/router/src/cluster_metadata.h mysql-8.1.0/router/src/router/src/cluster_metadata.h
+--- mysql-8.1.0.orig/router/src/router/src/cluster_metadata.h	2023-06-21 09:52:10.000000000 +0200
++++ mysql-8.1.0/router/src/router/src/cluster_metadata.h	2025-05-25 23:07:46.591119498 +0200
+@@ -27,6 +27,7 @@
+ 
+ #include "mysqlrouter/router_export.h"
+ 
++#include <cstdint>
+ #include <stdexcept>
+ 
+ #include "config_generator.h"
