@@ -1,5 +1,5 @@
 [codai]
-source="github-graphql"
+source="github"
 github="meysamhadeli/codai"
 use_max_tag=true
 prefix="v"
