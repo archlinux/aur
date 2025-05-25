@@ -5,10 +5,15 @@
 
 pkgname=cronet
 pkgver=136.0.7103.113
-pkgrel=1
+pkgrel=2
 _manual_clone=0
-_system_abseil=1
-_system_clang=1
+# The following error occures on Abseil 20250512.0:
+# Protoc has returned non-zero status: -4
+_system_abseil=0
+# Fixes the following error and similar ones on Rust 1.87:
+# ld.lld: error: undefined symbol: __rustc::__rust_dealloc
+# See https://issuetracker.google.com/issues/407024458.
+_system_clang=0
 _system_stdlib=libstdc++
 pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
