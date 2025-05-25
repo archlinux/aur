@@ -1,0 +1,36 @@
+pkgbase = vulkan-terakan-git
+	pkgdesc = Vulkan driver for AMD Terascale 2 GPUs (Radeon HD 5000/6000 series)
+	pkgver = 0.1.0.r20250525
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/Triang3l/mesa
+	arch = x86_64
+	license = MIT AND BSD-3-Clause AND SGI-B-2.0
+	makedepends = meson
+	makedepends = ninja
+	makedepends = python-mako
+	makedepends = cmake
+	makedepends = git
+	makedepends = llvm
+	makedepends = clang
+	depends = libdrm
+	depends = libx11
+	depends = libxext
+	depends = libxdamage
+	depends = libxfixes
+	depends = libxshmfence
+	depends = libxxf86vm
+	depends = libxrandr
+	depends = libglvnd
+	depends = libelf
+	depends = expat
+	depends = wayland
+	depends = wayland-protocols
+	depends = zstd
+	depends = vulkan-icd-loader
+	provides = vulkan-driver
+	conflicts = vulkan-terakan
+	options = !lto
+	source = mesa::git+https://gitlab.freedesktop.org/Triang3l/mesa.git#branch=Terakan
+	sha512sums = SKIP
+
+pkgname = vulkan-terakan-git
