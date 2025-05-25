@@ -1,6 +1,6 @@
 # Maintainer: DrunkLeen <snape@drunkleen.com>
 pkgname=leenfetch
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Fast, minimal, customizable system info tool in Rust (Neofetch alternative)"
 arch=('x86_64' 'aarch64')
