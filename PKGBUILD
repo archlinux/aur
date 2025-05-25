@@ -5,6 +5,7 @@
 pkgname=iptvnator-bin
 pkgver=1.0.0
 pkgrel=5
+epoch=1
 pkgdesc="Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more."
 arch=('x86_64')
 url="https://github.com/4gray/iptvnator"
@@ -12,8 +13,12 @@ license=('MIT')
 depends=(
   'cairo'
   'gcc-libs'
+  'gdk-pixbuf2'
+  'glib2'
   'glibc'
   'gtk3'
+  'hicolor-icon-theme'
+  'libsoup3'
   'webkit2gtk-4.1'
   'openssl'
   'pango'
@@ -28,7 +33,7 @@ conflicts=('iptvnator')
 options=(!strip)
 source=("${url}/releases/download/app-v${pkgver}-${pkgrel}/iptvnator-${pkgver}-${pkgrel}-1.${CARCH}.rpm"
         "https://raw.githubusercontent.com/4gray/iptvnator/refs/heads/electron/LICENSE.md")
-sha256sums=('0f0d4c93f6c740348a5e23c60105f4d8fcd64c1cfa199175e9eb4fe77db789c9'
+sha256sums=('877d7834b9878f42c2e94823015a2e836f313b4eddc7cafff208991aea2bb884'
             '475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74')
 
 package() {
