@@ -7,7 +7,7 @@
 # Contributor: Ewout van Mansom <ewout@vanmansom.name>
 
 pkgname='ubuntu-wallpapers'
-pkgver=24.10.3
+pkgver=25.04.2
 pkgrel=1
 pkgdesc='The default Wallpapers for Ubuntu'
 arch=('any')
@@ -21,10 +21,13 @@ makedepends=('python-distutils-extra' 'python-setuptools')
 source=(
   "${_pool_url}/${pkgname::1}/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz"
 )
-sha512sums=('aef3f0b963a10a1de8a3f1ae48c38be56b05c703aed1c8dba8bf14842c278e20f6027c1e7b166ac757050f6108d0b8e4b32276f1793062d4c85815283d20462a')
+sha512sums=('4ebb839bb451cccd875593f7b10ef5c0bb16e89266c55e9f1800f1294a923c5ec31af2debb0423a197f1f24029ab78cbce318d263265614ca0fc78607074d530')
+
+prepare() {
+  sed -e 's|version = version,|version = "'"${pkgver}"'",|' -i ubuntu-wallpapers-25.04.2/setup.py
+}
 
 package() {
-  cd "${pkgname}_${pkgver}.orig"
+  cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
-  install -Dvm644 'debian/copyright' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
