@@ -1,0 +1,15 @@
+pkgbase = nodejs-typescript-result
+	pkgdesc = This is just a simple result type so that we can have type checked error handling pretty please.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Gnuxie/typescript-result
+	arch = any
+	license = CC0-1.0
+	license = CC-BY-SA-4.0
+	license = Apache-2.0
+	makedepends = npm
+	noextract = typescript-result-.tgz
+	source = typescript-result-1.0.0.tgz::https://registry.npmjs.org/@gnuxie/typescript-result/-/typescript-result-1.0.0.tgz
+	sha256sums = 40de09e8dbf16c776eba35b5192c372df327ba847f1686dc57b107c274375b82
+
+pkgname = nodejs-typescript-result
