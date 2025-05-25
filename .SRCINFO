@@ -1,12 +1,14 @@
 pkgbase = repomix
 	pkgdesc = Repomix (formerly Repopack) is a powerful tool that packs your entire repository into a single, AI-friendly file.
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = MIT
 	makedepends = npm
+	provides = repomix
+	conflicts = repomix-git
 	noextract = repomix-0.3.6.tgz
 	source = https://registry.npmjs.org/repomix/-/repomix-0.3.6.tgz
-	sha256sums = 59572010f92af2cf03abb553e6e58754bf5f64cbf45c9ee2f304581dff0de3f9
+	sha256sums = a631989af4463a4a274b9df9a1732fa9a62ac005f7e3018f538f26d0892ae3d6
 
 pkgname = repomix
