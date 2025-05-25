@@ -7,41 +7,74 @@
 # https://github.com/mymedia2/tdesktop
 
 # Updated using:
-# https://raw.githubusercontent.com/archlinux/svntogit-community/packages/telegram-desktop/trunk/PKGBUILD
+# https://gitlab.archlinux.org/archlinux/packaging/packages/telegram-desktop/-/raw/main/PKGBUILD?ref_type=heads&inline=false
 # Thanks to the Arch maintainers :)
 
-# You can pass parameters to nake / ninja via MAKEFLAGS.
+# You can pass parameters to make / ninja via MAKEFLAGS.
 # You can use TMPDIR in $srcdir by exporting TMPDIR_FIX with some value.
 
 pkgname=telegram-desktop-dev
-pkgver=5.13.1
+pkgver=5.14.3
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
-arch=(x86_64)
+arch=('x86_64')
 url="https://desktop.telegram.org/"
-license=('GPL3')
+license=('GPL-3.0-or-later WITH OpenSSL-exception')
 # Although not in order, keeping them in the same order of the standard package
 # for my mental sanity.
 # libtg_owt-git for now until the official repo is updated.
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
-         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash' 'ada'
-         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'libxdamage' 'abseil-cpp' 'libdispatch'
-         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'kcoreaddons' 'openh264')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
-             'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
-             'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'python-packaging'
-             'glib2-devel')
-optdepends=('webkit2gtk: embedded browser features'
-            'xdg-desktop-portal: desktop integration')
+depends=(
+  'abseil-cpp'
+  'ada'
+  'ffmpeg'
+  'glib2'
+  'hicolor-icon-theme'
+  'hunspell'
+  'kcoreaddons'
+  'libdispatch'
+  'libxcomposite'
+  'libxdamage'
+  'libxrandr'
+  'libxtst'
+  'lz4'
+  'minizip'
+  'openal'
+  'openh264'
+  'openssl'
+  'pipewire'
+  'protobuf'
+  'qt6-imageformats'
+  'qt6-svg'
+  'qt6-wayland'
+  'rnnoise'
+  'xxhash'
+)
+makedepends=(
+  'boost'
+  'cmake'
+  'git'
+  'glib2-devel'
+  'gobject-introspection'
+  'gperf'
+  'libtg_owt'
+  'microsoft-gsl'
+  'ninja'
+  'python'
+  'range-v3'
+  'tl-expected'
+)
+optdepends=(
+  'geoclue: geoinformation support'
+  'geocode-glib-2: geocoding support'
+  'geocode-glib: geocoding support'
+  'webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1'
+  'webkit2gtk: embedded browser features provided by webkit2gtk'
+  'webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (Wayland only)'
+  'xdg-desktop-portal: desktop integration'
+)
 provides=(telegram-desktop)
 conflicts=(telegram-desktop)
-# Specify the commit to fetch. Normally the version tag.
-_commit="tag=v$pkgver"
-# All the sources are Git repositories and might be adjusted when a build issue arise.
-# These files might require modifications to be up-to-date.
-# In such situation, extra patches will be added.
-# An easy way to clone the repo since the last update is:
-# git clone --recurse-submodules --shallow-submodules --shallow-since=vOLDVER --branch=vNEWVER https://github.com/telegramdesktop/tdesktop WORKDIR
+_td_commit=51743dfd01dff6179e2d8f7095729caa4e2222e9
 source=(
     # Old approach, with many Git repos
     #"tdesktop::git+https://github.com/telegramdesktop/tdesktop#$_commit"
@@ -49,59 +82,64 @@ source=(
     # Use the nearby Python script for generating the list
     # ...
     # New approach: source tarball, same as the stable Arch package
-    "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
+  "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
+  "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
 )
-sha512sums=('6d15ad0641e0e47e4d48869885c63e6d1ddbfb5461c121cf33ac77d231a6fc77a6eb5333ad7b76d3aa2e1111d9a5f58846fae83cd36886838d6791dbfaa65929')
+sha512sums=('1c8d6f3f858789c716bdaef8ef00896aac07ef8e6792489b80bf162b40db80dc2cf1831335269c4bc12e11c1b6326cbf8ffd40fc9d847c13196f540e15a1978d'
+            'd622b8f3580ee49415546d025c4ba45f5b2de50b315fc379dc57c0427c5f815c7cc3820cca937c12182ee461641bb61f87ebc99b6c74a1a666cea9a08f0f41a0')
 
 prepare() {
-    # Magic submodule configuration, thanks to the Python script
-    # ...
+  # Normal preparation here
+  cd "$srcdir/tdesktop-$pkgver-full"
 
-    # Normal preparation here
-    cd "$srcdir/tdesktop-$pkgver-full"
+  # Cheating! Linking fixed patches to their usual place
+  #for fixed in $srcdir/*_fixed*
+  #do
+  #    ln -s $fixed ${fixed/_fixed/}
+  #done
+  # Patch here, if needed!
+  # patch -Np1 -i "$srcdir/my_beautiful.patch"
 
-    # Magic is over!
-    # We need the extra flag for this vulnerability:
-    # https://github.blog/2022-10-18-git-security-vulnerabilities-announced/#cve-2022-39253
-    # With the -c flag we enable the file cloning only for this command, as per guidelines:
-    # https://wiki.archlinux.org/title/VCS_package_guidelines#Git_submodules
-    #git -c protocol.file.allow=always submodule update --recursive
-
-    # Cheating! Linking fixed patches to their usual place
-    #for fixed in $srcdir/*_fixed*
-    #do
-    #    ln -s $fixed ${fixed/_fixed/}
-    #done
-    # Patch here, if needed!
-    # patch -Np1 -i "$srcdir/my_beautiful.patch"
-
-    # Official package patches
+  # Official package patches
 }
 
 build() {
-    CXXFLAGS+=' -ffat-lto-objects'
+  CXXFLAGS+=' -ffat-lto-objects'
 
-    # Ensure that we won't have issues with tmpfs.
-    # Available via TMPDIR_FIX
-    if [ -n "$TMPDIR_FIX" ]
-    then
-        export TMPDIR="$srcdir/build_tmp"
-        mkdir -p $TMPDIR
-        echo "Using \$TMPDIR = $TMPDIR ..."
-    fi
+  # Ensure that we won't have issues with tmpfs.
+  # Available via TMPDIR_FIX
+  if [ -n "$TMPDIR_FIX" ]
+  then
+      export TMPDIR="$srcdir/build_tmp"
+      mkdir -p $TMPDIR
+      echo "Using \$TMPDIR = $TMPDIR ..."
+  fi
 
-    # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
-    # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
-    # Thanks @primeos!
-    cmake -B build -S tdesktop-$pkgver-full -G Ninja \
-        -DCMAKE_VERBOSE_MAKEFILE=ON \
-        -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DTDESKTOP_API_ID=611335 \
-        -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
-    cmake --build build -- $MAKEFLAGS
+  # Build tdlib from source
+  echo "--> Build tdlib"
+  cmake -S td -B td/build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX="$PWD/td/install" \
+    -Wno-dev \
+    -DTD_E2E_ONLY=ON
+  cmake --build td/build -- $MAKEFLAGS
+  cmake --install td/build
+
+  # Turns out we're allowed to use the official API key that telegram uses for
+  # their snap builds:
+  # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
+  # Thanks @primeos!
+  echo "--> Build Telegram Desktop"
+  cmake -B build -S tdesktop-$pkgver-full -G Ninja \
+    -DCMAKE_VERBOSE_MAKEFILE=ON \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -Dtde2e_DIR="$PWD/td/install/lib/cmake/tde2e" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DTDESKTOP_API_ID=611335 \
+    -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
+  cmake --build build -- $MAKEFLAGS
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
