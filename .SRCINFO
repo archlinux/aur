@@ -1,0 +1,13 @@
+pkgbase = nodejs-pg
+	pkgdesc = PostgreSQL client for node.js
+	pkgver = 8.16.0
+	pkgrel = 1
+	url = https://github.com/brianc/node-postgres
+	arch = any
+	license = MIT
+	makedepends = npm
+	noextract = pg-.tgz
+	source = pg-8.16.0.tgz::https://registry.npmjs.org/pg/-/pg-8.16.0.tgz
+	sha256sums = 9c82b708ad2002d73a7b4d0797625f655c6270b877b024ff1c4f65fbe9451ed4
+
+pkgname = nodejs-pg
