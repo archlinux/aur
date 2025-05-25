@@ -5,14 +5,14 @@ _pkgbase=xmm7360-pci-spat
 pkgbase=xmm7360-pci-spat-dkms-git
 pkgname=('xmm7360-pci-spat-dkms-git' 'xmm7360-pci-spat-utils-git')
 epoch=1
-pkgver=0
-pkgrel=4
+pkgver=0.r261.g27c1b26
+pkgrel=1
 pkgdesc='Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem'
 arch=('x86_64')
 url="https://github.com/SimPilotAdamT/xmm7360-pci-SPAT"
 license=('BSD' 'GPL')
 makedepends=('python')
-conflicts=('xmm7360-pci-dkms-git' 'xmm7360-pci-utils-git' 'xmm7360-pci-spat-dkms' 'xmm7360-pci-spat-utils')
+conflicts=('xmm7360-pci-dkms-git' 'xmm7360-pci-utils-git')
 source=("git+$url"
         "dkms.conf"
         "xmm7360.service"
