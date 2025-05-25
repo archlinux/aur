@@ -1,8 +1,8 @@
 # Maintainer: bemxio <bemxiov at protonmail dot com>
 
 _pkgname="countryfetch"
-
 pkgname="${_pkgname}-git"
+
 pkgdesc="A neofetch-like tool for fetching information about your country (git version)"
 
 pkgver=0.1.9.r15.g4b7ceaf
@@ -11,7 +11,7 @@ pkgrel=1
 arch=(aarch64 i686 x86_64)
 
 url="https://github.com/nik-rev/${_pkgname}"
-license=("Apache-2.0" "MIT")
+license=(Apache-2.0 MIT)
 
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
@@ -20,7 +20,7 @@ depends=(gcc-libs openssl)
 makedepends=(cargo git)
 
 source=("git+${url}.git")
-md5sums=("SKIP")
+md5sums=(SKIP)
 
 pkgver() {
 	# move to the source directory
