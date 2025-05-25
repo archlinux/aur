@@ -1,0 +1,13 @@
+diff --git a/scripts/flash-sdcard.sh b/scripts/flash-sdcard.sh
+index 088864091..8d122e2dc 100755
+--- a/scripts/flash-sdcard.sh
++++ b/scripts/flash-sdcard.sh
+@@ -3,7 +3,7 @@
+ #  unattended firmware updates on boards with "SD Card" bootloaders
+ 
+ # Non-standard installations may need to change this location
+-KLIPPY_ENV="${HOME}/klippy-env/bin/python"
++KLIPPY_ENV=python
+ SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
+ KLIPPER_BIN="${SRCDIR}/out/klipper.bin"
+ KLIPPER_BIN_DEFAULT=$KLIPPER_BIN

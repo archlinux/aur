@@ -44,11 +44,13 @@ backup=("etc/${_pkgname}/klipper.cfg"
 options=()
 install='klipper.install'
 source=("${_pkgname}::git+https://github.com/jpcurti/ender3-v3-se-klipper-with-display"
+        'use-system-wide-python-in-flash-sdcard.sh.patch'
         'klipper.service'
         'sysusers.conf'
         'tmpfiles.conf')
 noextract=()
 md5sums=('SKIP'
+         '6804cf8a81091a5c43d8985e4791582f'
          '4ccfb9669d304b99146b92a4912ae1fd'
          'cf3715af9f53cc1660e412abe3697342'
          'd707e8986ed6cf189461f03bdaf365aa')
@@ -56,6 +58,11 @@ md5sums=('SKIP'
 pkgver() {
 	cd "$srcdir/$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+       cd "$srcdir/$_pkgname"
+       patch -p1 < "$srcdir/use-system-wide-python-in-flash-sdcard.sh.patch"
 }
 
 build() {
