@@ -1,7 +1,7 @@
 pkgbase = leenfetch
 	pkgdesc = Fast, minimal, customizable system info tool in Rust (Neofetch alternative)
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drunkleen/leenfetch
 	arch = x86_64
 	arch = aarch64
