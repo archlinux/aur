@@ -9,7 +9,7 @@
 
 _pkgname="logseq-desktop"
 pkgname="$_pkgname"
-pkgver=0.10.10
+pkgver=0.10.11
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
@@ -50,7 +50,7 @@ makedepends=(
 _pkgsrc="logseq-${pkgver}"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/${pkgver}.$_pkgext")
-sha256sums=('6b07f18808ef3768e32626a14372b0c1b66bb8a7655d8eea68aecda1137a74df')
+sha256sums=('2245594dca34463e1dc5301d807f13d0281bfbe0012b9b486817128f83261dba')
 
 _nvm_env() {
   # avoid cluttering user home, while allowing data to be cached
