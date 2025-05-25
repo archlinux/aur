@@ -16,7 +16,7 @@ pkgname=(
   java17-openjfx-doc
   java17-openjfx-src
 )
-pkgver=17.0.15.u1
+pkgver=17.0.16.u1
 pkgrel=1
 pkgdesc="Java OpenJFX 17 client application platform (open-source implementation of JavaFX)"
 arch=(x86_64)
@@ -58,7 +58,7 @@ source=(
   java-openjfx-env_compiler.patch
   webcore_mapfile-vers.patch
 )
-b2sums=('64040ab17edb248d1246fe6d2bbb29f8a3a6eb2658c57038a546c7bdf2654294863045243bf36a0a8c4fbd9f23f300c9e6e164cda9a58f5c622763315a123f88'
+b2sums=('0e03e5f01b762e0546b057d78a6e8daf0ef69ee8403ec8a93301d7eede7b1823f1de1332d84572dc4b45fc414c9377c9e686139677d5cc93f1a6a50429f880f3'
         'a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498'
         'a56a5cfebb44cdbe3ada9c6da88fda6427a5bd1bf9fcc491df289c4f5c0e96ac3614c619aaf9428340f11e9dabf0a85fc7db4f49754c2700587cc66fc15372fd'
         '13216615c01b8d48d17889ffa22668c38568870d83ab30c542eb5b5620db305f02efb1acb99d9b5e89eb0a73a134bb336cb301f4de4e8855cae50efb099e384e'
@@ -67,7 +67,7 @@ b2sums=('64040ab17edb248d1246fe6d2bbb29f8a3a6eb2658c57038a546c7bdf26542948630452
         '9381ff71b79aefabcae901848f2f1bc9baa70c9d2b2676a1c5f5fb4250a6b456d840039fb4d7d10e620e913c049f8fa0f469c1c44621d8f54b255146485003db')
 
 prepare() {
-  # cd jfx-${pkgver//.u/-}
+  # Patch files properly
   cd jfx17u-${pkgver//.u/-}
 
   ln -sf ../gradle.properties .
@@ -91,6 +91,9 @@ prepare() {
   OLD_CFLAGS="$CFLAGS"
   OLD_LDFLAGS="$LDFLAGS"
   export CFLAGS="" LDFLAGS=""
+
+  # Use correct Java version
+  export PATH="/usr/lib/jvm/java-17-openjdk/bin:$PATH"
 
   # Download most of the dependencies via metadata verification
   ./gradlew --no-daemon --write-verification-metadata sha256 help
@@ -121,8 +124,22 @@ build() {
     export NUMBER_OF_PROCESSORS="$JOBS"
   fi
 
+  # Set correct Java version
+  export PATH="/usr/lib/jvm/java-17-openjdk/bin:$PATH"
+
+  # Use desired compiler (upstream CI use gcc-13)
   export CC=gcc-13 CXX=g++-13
+
+  # Install required Ruby gems in a non-disruptive way
+  export GEM_HOME="$srcdir/rubygems"
+  export PATH="$PATH:$GEM_HOME/bin"
+  gem install getoptlong
+
+  # Do the thing
   ./gradlew --no-daemon --offline zips
+
+  # Clean up
+  gem uninstall getoptlong
 }
 
 package_java17-openjfx() {
