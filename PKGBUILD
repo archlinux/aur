@@ -2,7 +2,7 @@
 # ex-maintainer: Arthur Deierlein <arthur.deierlein@adfinis.com>
 _pkgname="rich-argparse"
 pkgname="python-$_pkgname"
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Rich help formatters for argparse and optparse"
 url="https://github.com/hamdanal/$_pkgname"
@@ -12,7 +12,7 @@ depends=("python>=3.0" "python-rich")
 makedepends=("python-build" "python-installer" "python-hatchling")
 _pkgtag="$_pkgname-$pkgver"
 source=("$_pkgtag.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2c64f518b5c1f68052c4b865471ec206814bc014b4b5e28bd5dd62bd1455852a')
+sha256sums=('dd95042fb3d6be20dbab39b3ee88dee51cc8d8bf522e8c24ce790f9b236167a8')
 
 build() {
   cd "$_pkgtag"
@@ -21,8 +21,8 @@ build() {
 
 package() {
   cd "$_pkgtag"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
   python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
                                                     }
 
 # vim:set ts=2 sw=2 et:
