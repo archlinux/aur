@@ -1,0 +1,15 @@
+pkgbase = nodejs-config
+	pkgdesc = Node.js Application Configuration
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/node-config/node-config
+	arch = any
+	license = LicenseRef-node-config
+	makedepends = npm
+	noextract = config-.tgz
+	source = config-4.0.0.tgz::https://registry.npmjs.org/config/-/config-4.0.0.tgz
+	source = LICENSE
+	sha256sums = adb708015dab06360ab4d49a6e1b28e91900971b6b057342107dbbbde6a30904
+	sha256sums = c54d6c716be6b3e8751edd8b3fc8b4cfaaa97d08b071ec68667b61113a7627cc
+
+pkgname = nodejs-config
