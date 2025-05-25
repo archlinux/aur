@@ -7,7 +7,7 @@
 _pkgname=zenpower3
 pkgname=zenpower3-dkms
 pkgver=0.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Linux kernel driver for reading sensors for AMD Zen family CPUs'
 arch=('x86_64' 'i686')
 url='https://github.com/AliEmreSenel/zenpower3'
@@ -17,9 +17,9 @@ depends=('dkms')
 provides=('zenpower3')
 conflicts=('zenpower3')
 install=$_pkgname.install
-source=("$_pkgname::git+$url.git#commit=cbb35320c4d1605a54c64e0dcd0293b13bc4dbcc"
+source=("$_pkgname::git+$url.git#commit=c9247d54a619b939562477fdd17452506526d502"
         "$_pkgname.conf")
-sha256sums=('4ddda4470e76144ac38f0a89ff8eeaa485639fb9d11e355af57e61c20ca930b5'
+sha256sums=('88994ff89d1fa3a764f158a967dff8f2df4044ae3d77c61756762b0a637a52ff'
             '7bff3a5ea2c8b8abf56ce1d79b9724b1aea89e2564d244e09691070113d60f6a')
 
 prepare() {
