@@ -10,7 +10,7 @@
 _pkgname=geany-plugins
 pkgname=$_pkgname-git
 pkgver=2.0.0.r156.g57ad48e7
-pkgrel=1
+pkgrel=2
 pkgdesc='Various plugins for Geany (git version)'
 arch=(x86_64)
 url='https://plugins.geany.org/'
@@ -24,7 +24,7 @@ conflicts=($_pkgname)
 source=("$_pkgname::git+https://github.com/geany/geany-plugins.git"
         'https://github.com/geany/geany-plugins/pull/1434.patch')
 sha256sums=('SKIP'
-            '131b9ed5daf8496b2552730864ff49ea763c3a7ac399dad1b3f0caa15a2c3a63')
+            '52172e212433ec07b61477239d8bb624fbc81d20a7af590cfa135fd6dd8806e8')
 
 pkgver() {
   cd $_pkgname
