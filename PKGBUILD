@@ -90,7 +90,7 @@ build() {
 
   npm install
   # Remove -min if minify cause OOM
-  npm run gulp --openssl-legacy-provider vscode-linux-${_vscode_arch} #-min
+  npm run gulp vscode-linux-${_vscode_arch} #-min
 }
 
 package() {
