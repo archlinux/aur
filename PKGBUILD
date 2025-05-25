@@ -36,7 +36,7 @@ build() {
     --optimization=3 \
     -Dgallium-drivers=radeonsi,r600,swrast \
     -Dvulkan-drivers=amd_terascale,amd,intel \
-    -Dplatforms=x11,wayland,drm,surfaceless \
+    -Dplatforms=auto \
     -Ddri3=enabled \
     -Degl=enabled \
     -Dgbm=enabled \
