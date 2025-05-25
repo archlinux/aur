@@ -1,17 +1,17 @@
 # Maintainer: Hoream <hoream@qq.com>
 _pkgname="totalmapper"
 pkgname="${_pkgname}-git"
-pkgver=1.4.3.r3.gd3a5c8b
-pkgrel=1
+pkgver=1.4.8.r3.g59dafb8
+pkgrel=2
 pkgdesc="A simple utility for remapping keys using the Linux event handling system."
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://github.com/ellbur/totalmapper"
 license=('GPL3')
 depends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-bin")
 makedepends=('cargo' 'git' 'glibc' 'gcc-libs')
-source=("${_pkgname}::git+https://github.com/ellbur/${_pkgname}")
+source=("${_pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
