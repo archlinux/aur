@@ -29,7 +29,7 @@ options=(!makeflags)
 
 prepare() {
   curl -A "Mozilla/5.0 (Linux x86_64) Gecko/20100101" -O "https://developers.hp.com/system/files/2025-03/hplip-$pkgver-plugin_run.zip"
-  unzip "hplip-$pkgver-plugin_run.zip"
+  bsdtar -xvf "hplip-$pkgver-plugin_run.zip"
   sh "hplip-$pkgver-plugin.run" --target "$srcdir/hplip-$pkgver-plugin" --noexec
  
   cd "hplip-$pkgver"
