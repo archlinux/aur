@@ -1,0 +1,17 @@
+pkgbase = grabbie-git
+	pkgdesc = Grabbie is a tool to download files and resources from various sources (latest, from git).
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/tosterlolz/grabbie
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = grabbie
+	conflicts = grabbie
+	source = grabbie-git::git+https://github.com/tosterlolz/grabbie.git
+	sha256sums = SKIP
+
+pkgname = grabbie-git
