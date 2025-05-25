@@ -2,7 +2,7 @@
 
 _pkgname="nob.h"
 pkgname="$_pkgname-git"
-pkgver=r121.112911e
+pkgver=r127.45fa6ef
 pkgrel=1
 pkgdesc="Header only library for writing build recipes in C"
 arch=('any')
