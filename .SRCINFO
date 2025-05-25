@@ -1,8 +1,8 @@
 pkgbase = uno-calculator-bin
 	pkgdesc = Windows Calculator ported to Linux by Uno Platform (extracted from Snap package)
 	pkgver = 1.2.9_uno.339
-	pkgrel = 2
-	url = https://platform.uno/uno-calculator/
+	pkgrel = 3
+	url = https://platform.uno/uno-calculator
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = curl
