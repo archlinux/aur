@@ -1,0 +1,15 @@
+post_install(){
+	sudo systemctl enable --now mybatop-start.service
+	sudo systemctl enable --now mybatop-stop.service
+	sudo systemctl enable --now mybatop-status.service
+	sudo systemctl enable --now mybatop-lowpower.service
+}
+
+pre_remove(){
+	rm -rf /opt/mybatop/*
+	rm -rf /usr/bin/mybatop
+}
+post_remove(){
+	sudo systemctl stop mybatop-*
+	sudo systemctl disable mybatop-*
+}
