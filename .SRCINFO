@@ -1,6 +1,6 @@
 pkgbase = html2markdown
 	pkgdesc = Convert HTML to Markdown. Even works with entire websites and can be extended through rules.
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://html-to-markdown.com
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = html2markdown
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = html-to-markdown::git+https://github.com/JohannesKaufmann/html-to-markdown.git#tag=v2.3.2
-	b2sums = 0278df0b6d04a28fe8a261f8676041babbf67f89c37b11ead1927bb1c4352559a41142829d92c95e2f2c86139caef472361748b46b3ce58d2a1019e9db41ee6b
+	source = html-to-markdown::git+https://github.com/JohannesKaufmann/html-to-markdown.git#tag=v2.3.3
+	b2sums = ad5c14c74a4b6234bdb4c29839ed098e65279623ae8de39d27be6f00ed52c06e28e145648dd88cd0c5a980d4b9c259bad8fe7fe42de22b12f731962554f324be
 
 pkgname = html2markdown

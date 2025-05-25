@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="html2markdown"
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Convert HTML to Markdown. Even works with entire websites and can be extended through rules."
 arch=('aarch64' 'i686' 'x86_64')
@@ -10,12 +10,18 @@ _url="https://github.com/JohannesKaufmann/html-to-markdown"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
-_pkgsrc="html-to-markdown"
+_pkgsrc="${_url##*/}"
 source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
-b2sums=('0278df0b6d04a28fe8a261f8676041babbf67f89c37b11ead1927bb1c4352559a41142829d92c95e2f2c86139caef472361748b46b3ce58d2a1019e9db41ee6b')
+b2sums=('ad5c14c74a4b6234bdb4c29839ed098e65279623ae8de39d27be6f00ed52c06e28e145648dd88cd0c5a980d4b9c259bad8fe7fe42de22b12f731962554f324be')
 
 prepare() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
   export GOMODCACHE="${srcdir}/go-mod-cache"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "${srcdir}/${_pkgsrc}"
   go mod download -x
@@ -26,14 +32,6 @@ prepare() {
 }
 
 build() {
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOCACHE="${srcdir}/go-cache"
-  export GOMODCACHE="${srcdir}/go-mod-cache"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
   cd "${srcdir}/${_pkgsrc}"
   go build -v -o "build/${pkgname}" -ldflags "\
     -X main.version=${pkgver}-${pkgrel} \
