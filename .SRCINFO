@@ -1,0 +1,13 @@
+pkgbase = nodejs-matrix-protection-suite-for-matrix-bot-sdk
+	pkgdesc = library for interacting with matrix policy lists for moderation
+	pkgver = 3.1.4
+	pkgrel = 1
+	url = https://github.com/Gnuxie/matrix-protection-suite/
+	arch = any
+	license = AFL-3.0
+	makedepends = npm
+	noextract = matrix-protection-suite-for-matrix-bot-sdk-.tgz
+	source = matrix-protection-suite-for-matrix-bot-sdk-3.1.4.tgz::https://registry.npmjs.org/@gnuxie/matrix-protection-suite-for-matrix-bot-sdk/-/matrix-protection-suite-for-matrix-bot-sdk-3.1.4.tgz
+	sha256sums = 434b3eef1215991858e9749d03c85867055a75243e0d3fb9dbd2deaf7c751bd6
+
+pkgname = nodejs-matrix-protection-suite-for-matrix-bot-sdk
