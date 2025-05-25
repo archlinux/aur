@@ -16,7 +16,7 @@ makedepends=(
   'meson' 'ninja' 'python-mako' 'libxrandr' 'wayland-protocols'
   'libx11' 'libxext' 'spirv-llvm-translator' 'xorgproto' 'llvm' 'libomxil-bellagio'
   'git' 'python-ply' 'glslang' 'libclc' 'spirv-tools' 'vulkan-headers')
-provides=('mesa' 'vulkan-driver' 'vulkan-intel' 'vulkan-radeon')
+provides=('mesa' 'vulkan-driver')
 conflicts=('mesa')
 source=("mesa::git+https://gitlab.freedesktop.org/Triang3l/mesa.git#branch=Terakan")
 sha256sums=('SKIP')
@@ -35,7 +35,7 @@ build() {
     --libdir=lib \
     --buildtype=release \
     -Dgallium-drivers=radeonsi,r600,swrast \
-    -Dvulkan-drivers=amd_terascale,amd,intel \
+    -Dvulkan-drivers=amd_terascale \
     -Dplatforms=x11,wayland \
     -Ddri3=enabled \
     -Degl=enabled \
