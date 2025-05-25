@@ -4,7 +4,7 @@ _brotli_ver=1.0.9
 _openssl_ver=1.1.1l
 pkgbase=edk2-git
 pkgname=(edk2-armvirt-git edk2-shell-git edk2-ovmf-git)
-pkgver=r29698.6062002bd5
+pkgver=r34308.347877c1ee
 pkgrel=1
 pkgdesc="Modern, feature-rich firmware development environment for the UEFI specifications"
 arch=(any)
@@ -45,22 +45,7 @@ sha512sums=('SKIP'
             '7c9f8e7ce7451e7aa852998ffcd3ca95c08083c313dc8dcf0877969ef23d9da6f69c60bb1e652387a223da6e690524fa094bfbaed14d8bdae2853e68530b2f82'
             '891d3ea36d966114ff1f79c3619675a46b30b68def16ab426f2dee00bd0768f82ca0ee26acd7adedd379f25613e309ec9dfaed4e8a5d3f3e4fa7e8d845f55b18'
             '47b0e60f2af4ced0f5a693f245ce23d3240e87058f6ae7ff2407486c0b6e80754b55d21a35a0ab1b698a65b9060b7c1f1d4dce2f134d0a741235f23e2e64f5d2')
-b2sums=('SKIP'
-        '9e8739015db63a013c05587e3d164d67c3f65f1f6c5fc75e4592bcd038c036cde88a7bc95fbc1f1b4ed876f6124ca4dabcd4f5dbb45d1b84299f2efe1a59431a'
-        'SKIP'
-        '8b9939d5224396ef33b43e019250ba4bc8949903583615e8dc02c85340fc0a1e2d1632161e00b0ee7355d77f05529ac772f482e05d2089afd71a0bf71e803904'
-        'eb549f711aa31b0a46f3e9b74076e52e0e1734045c227f410016c6de46a3b7b2959287d49b5ef853236c57fa3b3143b1da31fd9ef6fd592ba22ba9af15941a76'
-        'fa75566a2ac591fc0c296812f907bfe3fd67f2ee90d3762f0fcae6427df0dfd6260238f5af4fc6b74a76eccfc264db2259db70f8c533871e8b58f37b91a90657'
-        'f6aaccf4b5a070b05e8eb58d5df60c8798d9b9de2f9febf1417a1ae178431be9a69890a7107d3ca100a439551b4949b937ba400ac36bb9eebaf7e1fdb61dc9d3'
-        '891719a70d14f29f6ec9e9cfe83cbf48abb5aedfaf5a3a02efaf9cf1dcca0c14f42f8e4486425df12c72001d7811b0f6030520bad2d83b4885f13d110ab2ae0f'
-        '899ecf699815216984905a7abdd3385890c6309f3ef7813778bedf63c15d42ab12c59532d45033a11838f990744417100eb13048b53cee5cdf46440af61b475d'
-        'e61378139f2da0d4185e67436d87a023600a075b4258234e818fe7f591bdb5d363713d29d250263df6074f5d37deed269c067983ee6bd322f2f7d0ee710bc452'
-        '8c211a1bbef20ff361c53735b91cc05660f9d94e7d8a937d903c061a1ec9c96ec2c37f0ef5e954cd4aac7f7962489f5a7a0507e44c781a7671211a9530dccb5b'
-        '7f48bb1747c732c597a749c851a6cac46de844c1727f3d5edca35249df845a0f578780e8bcda7d86ad2c4a62a9a2a0bc7e1cfab9b7b93d7b5415bb5817d73346'
-        'ddacbab89d0fd7831149594487559bb6bac1464b2b5620641043306fabfc37800db8c6d87a833c70ec35c699ea2f35cf09d34028ec7982a94686e8cd97b73300'
-        '99bf35c4042fd5105a3b3b7f71b0aeb18db7811da4ed4481ffec485258619c30d33b08633f9a1c762d383e3bf0191053be9b88b9a4c142350186c6df1261d1f7'
-        'd45b224c36eda139ca6ad9e4c6c04282724b264dd36a0b3ba904d71476b83e02963c8cadf1f1e1233955071d133dc0defa746740fa08b26398c489fbf6ba89a0'
-        'f842ea1d3959027f36c52d5e26e06915f43bfe3869719eacf2810e87bdfd57baaa30da6e31db703d0e2d9936cad02ba153371c1b16dffeef2e09e5595a337bcc')
+
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491') # Matt Caswell <matt@openssl.org>
 _arch_list=(AARCH64 IA32 X64)
 _build_type=RELEASE
@@ -72,7 +57,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$pkgbase"
+  cd "${pkgbase%-git}"
   patch -Np1 -i ../missing-inf.patch
   # patch to be able to use brotli 1.0.9
   patch -Np1 -i "../${pkgbase}-202102-brotli-1.0.9.patch"
@@ -97,7 +82,7 @@ prepare() {
 
 # TODO: check TPM_ENABLE/TPM2_ENABLE
 build() {
-  cd "$pkgbase"
+  cd "${pkgbase%-git}"
   export GCC5_IA32_PREFIX="x86_64-linux-gnu-"
   export GCC5_X64_PREFIX="x86_64-linux-gnu-"
   export GCC5_AARCH64_PREFIX="aarch64-linux-gnu-"
@@ -239,7 +224,7 @@ package_edk2-armvirt-git() {
   url="https://github.com/tianocore/tianocore.github.io/wiki/ArmVirtPkg"
   local _arch=AARCH64
 
-  cd "$pkgbase"
+  cd "${pkgbase%-git}"
   install -vDm 644 "Build/ArmVirtQemu-${_arch}/${_build_type}_${_build_plugin}/FV/"*.fd \
     -t "${pkgdir}/usr/share/${pkgname}/${_arch,,}/"
   # add libvirt compatibility (which hardcodes the following paths)
@@ -259,7 +244,7 @@ package_edk2-shell-git() {
   pkgdesc="EDK2 UEFI Shell"
   provides=(uefi-shell)
 
-  cd "$pkgbase"
+  cd "${pkgbase%-git}"
   local _arch
   # minimal UEFI shell, as defined in ShellPkg/Application/Shell/ShellPkg.inf
   local _min='7C04A583-9E3E-4f1c-AD65-E05268D0B4D1'
@@ -292,7 +277,7 @@ package_edk2-ovmf-git() {
   replaces=(ovmf)
   install="${pkgname}.install"
 
-  cd "$pkgbase"
+  cd "${pkgbase%-git}"
   local _arch
   # installing the various firmwares
   for _arch in ${_arch_list[@]}; do
@@ -334,4 +319,3 @@ package_edk2-ovmf-git() {
   install -vDm 644 {OvmfPkg/README,ReadMe.rst,Maintainers.txt} \
     -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
-
