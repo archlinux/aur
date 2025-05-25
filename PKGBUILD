@@ -13,14 +13,7 @@ provides=('void')
 conflicts=('void')
 oprions=(!strip) # for sign of ext
 depends=( ripgrep xdg-utils # electron* is added at packaging
-  libxkbfile
-  libsecret
-  gnupg
-  libnotify
-  libxss
-  shared-mime-info
-  alsa-lib
-)
+ alsa-lib gnupg libnotify libsecret libxkbfile libxss shared-mime-info)
 optdepends=(
   'glib2: Move to trash functionality'
   'gvfs: Move to trash functionality'
@@ -39,14 +32,15 @@ pkgver() {
     $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
+prepare(){
+  cd "${_pkgname}"
+  # Drop this patch for electron35+ at code 1.101, app.dock is for macOS
+  sed -i '/app\.dock\.setMenu/i\// @ts-ignore' src/vs/platform/menubar/electron-main/menubar.ts
+}
+
 build() {
   export XDG_CACHE_HOME="${srcdir}/xdgcache" HOME="${srcdir}/home" # Do not taint user dir
   cd "${_pkgname}"
-  # Drop this at next release. app.dock is only for macOS
-  sed -i '/app\.dock\.setMenu/i\// @ts-ignore' src/vs/platform/menubar/electron-main/menubar.ts
-  # Clean npm cache and remove existing node_modules
-  npm cache clean --force
-  rm -rf node_modules
   # Set version of electron
   _elver=$(cat /usr/lib/electron/version)
   sed -i "s/^target=.*/target=\"${_elver}\"/" .npmrc # native modules
