@@ -4,7 +4,7 @@ _rockname=tl
 pkgbase=teal
 pkgname=(teal "lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.24.6
-pkgrel=3
+pkgrel=4
 pkgdesc='The compiler for Teal, a typed dialect of Lua'
 arch=(any)
 url=https://github.com/teal-language/$_rockname
@@ -26,13 +26,15 @@ _package() {
 	depends=("${pkgname%-*}" "${_luadeps[@]/#/${pkgname%-*}-}")
 	luarocks --lua-version $1 --tree "$pkgdir/usr/" \
 		make --deps-mode none --no-manifest -- "$_rockname-dev-1.rockspec"
-	install -Dm0644 <(./tl completion bash) "$pkgdir/usr/share/bash-completion/completions/tl"
-	install -Dm0644 <(./tl completion fish) "$pkgdir/usr/share/fish/vendor_completions.d/tl.fish"
-	install -Dm0644 <(./tl completion zsh)  "$pkgdir/usr/share/zsh/site-functions/_tl"
-	find "$pkgdir/usr/bin" -type f -execdir sed -i -e "s#$pkgdir##g" {} \;
-	[[ -v 2 ]] &&
-		rm -rf "$pkgdir/usr/"{lib,share} ||
+	if [[ -v 2 ]]; then
+		install -Dm0644 <(./tl completion bash) "$pkgdir/usr/share/bash-completion/completions/tl"
+		install -Dm0644 <(./tl completion fish) "$pkgdir/usr/share/fish/vendor_completions.d/tl.fish"
+		install -Dm0644 <(./tl completion zsh)  "$pkgdir/usr/share/zsh/site-functions/_tl"
+		find "$pkgdir/usr/bin" -type f -execdir sed -i -e "s#$pkgdir##g" {} \;
+		rm -rf "$pkgdir/usr/"{lib,share}/lua*
+	else
 		rm -rf "$pkgdir/usr/bin"
+	fi
 }
 
 package_teal() {
