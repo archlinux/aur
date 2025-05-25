@@ -1,6 +1,6 @@
 [Unit]
-Description=ntripcaster daemon
-Documentation=https://igs.bkg.bund.de/ntrip/bkgcaster/
+Description=BKG Professional NTRIP caster daemon
+Documentation=https://igs.bkg.bund.de/root_ftp/NTRIP/software/caster/ntripcaster_manual.html
 After=network.target
 Wants=network.target
 

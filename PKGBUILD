@@ -2,7 +2,7 @@
 
 pkgname=ntripcaster
 pkgver=2.0.47
-pkgrel=2
+pkgrel=3
 pkgdesc="BKG Professional caster disseminates real-time GNSS data streams via NTRIP"
 arch=('x86_64' 'aarch64')
 url="https://igs.bkg.bund.de/ntrip/bkgcaster"
