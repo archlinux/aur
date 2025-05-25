@@ -2,13 +2,13 @@
 # Contributor: FabioLolix
 
 pkgname=gst-plugins-rs-git
-pkgver=r3748.3aa1fa81
+pkgver=r4028.6b54566a
 pkgrel=1
 pkgdesc="GStreamer plugins written in Rust"
 arch=("x86_64")
 url="https://gstreamer.freedesktop.org/"
 license=('LGPL' 'MIT' 'Apache' 'MPL')
-depends=('dav1d' 'gstreamer' 'gtk4' 'libsodium' 'libwebp')
+depends=('dav1d' 'gstreamer' 'gtk4' 'libsodium' 'libwebp' 'vvdec')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 makedepends=('cargo-c' 'clang' 'git' 'meson' 'nasm' 'rust')
