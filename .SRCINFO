@@ -1,0 +1,21 @@
+pkgbase = slgsl-snapshot
+	pkgdesc = An S-Lang module for the GNU Scientific Library (development snapshot)
+	pkgver = 0.10.0.7
+	pkgrel = 1
+	url = https://jedsoft.org/snapshots/
+	changelog = slgsl-snapshot.changelog
+	arch = aarch64
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = glibc
+	depends = gsl
+	depends = slang
+	provides = slgsl
+	conflicts = slgsl
+	options = !makeflags
+	source = https://jedsoft.org/snapshots/slgsl-pre0.10.0-7.tar.gz
+	validpgpkeys = AE962A02D29BFE4A4BB2805FDE401E0D5873000A
+	md5sums = 952ce587e0d62642ce365f230ef2c23a
+	b2sums = 6d19ad00dbda0d44413bd0aa78c79aae69b6b10a23a9c90d81de8e07a29abe886c975bfccfd687f8a5a382c2711d92e146332f5667d5f5694627ab54279314a4
+
+pkgname = slgsl-snapshot

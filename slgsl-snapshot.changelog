@@ -1,0 +1,16 @@
+
+Changes since 0.9.0
+1. Updated to support GSL v2.  However, v2 broke backward API
+   compatibility with respect to the elliptic integral functions.
+   As such, this module now requires version 2.
+2. Added wrappers for the GSL integration routines; Updated configure scripts
+3. A return statement was missing from an error handler causing the
+   linalg_SV_decomp to fail when supplied with an invalid matrix.
+4. The symbolic constants GSL_INTEG_GAUSS* for the gaussian quadrature
+   routines were added.
+5. Updated aclocal.m4; added support for CPPFLAGS (based upon patch
+   from Rafael Laboissière)
+6. Added support for a number of GSL complex valued functions (Jakob
+   Stierhof)
+7. src/Makefile.in: Added a patch from Rafael Laboissière to resolve
+    an issue with building using `make --shuffle=reverse`
