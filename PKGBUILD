@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/the-draupnir-project/Draupnir"
 license=('AFL-3.0' 'Apache-2.0' 'CC-BY-SA-4.0' 'CC0-1.0')
 makedepends=('git' 'go' 'gcc' 'yarn' 'python' 'nodejs-lts-jod')
-depends=("python" "gcc" "nodejs-lts-jod" "node-gyp" "nodejs-matrix-bot-sdk")
+depends=("python" "gcc" "nodejs-lts-jod" "node-gyp" "nodejs-matrix-bot-sdk" "nodejs-js-yaml" "nodejs-config" "nodejs-matrix-protection-suite" "nodejs-matrix-protection-suite-for-matrix-bot-sdk")
 conflicts=("${_pkgname}")
 source=(
 	"${_pkgname}::git+https://github.com/the-draupnir-project/Draupnir.git#tag=v$(echo ${pkgver} | sed 's|_|-|g')"
@@ -37,11 +37,11 @@ function build() {
 
 function package() {
 	cd "${srcdir}/${_pkgname}"
-	install -d "${pkgdir}/usr/lib/${_pkgname}"
+	install -d "${pkgdir}/usr/lib/"
 	cp -a "${srcdir}/${_pkgname}/lib" "${pkgdir}/usr/lib/${_pkgname}"
 	install -Dm600 "${srcdir}/${_pkgname}/config/default.yaml" "${pkgdir}/etc/draupnir/config.yaml"
 	echo '''#!/usr/bin/bash
-	node /usr/lib/draupnir/lib/index.js --draupnir-config /etc/draupnir/config.yaml''' >start.sh
+	node /usr/lib/draupnir/index.js --draupnir-config /etc/draupnir/config.yaml''' >start.sh
 	install -Dm755 start.sh "${pkgdir}/usr/bin/draupnir"
 }
 
