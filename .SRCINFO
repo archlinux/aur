@@ -1,6 +1,6 @@
 pkgbase = ggml-sycl-f32-git
 	pkgdesc = Tensor library for machine learning (with Intel SYCL GPU optimizations and F32)
-	pkgver = r1952.13bcf9c
+	pkgver = r2100.6757e32
 	pkgrel = 1
 	url = https://github.com/ggml-org/ggml
 	arch = armv7h

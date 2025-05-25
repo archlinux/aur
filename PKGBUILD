@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=ggml-sycl-f32-git
-pkgver=r1952.13bcf9c
+pkgver=r2100.6757e32
 pkgrel=1
 pkgdesc="Tensor library for machine learning (with Intel SYCL GPU optimizations and F32)"
 arch=('armv7h' 'aarch64' 'x86_64')
