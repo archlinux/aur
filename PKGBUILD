@@ -1,5 +1,5 @@
 pkgname=gephgui-wry-bin
-pkgver=5.0.8
+pkgver=5.0.9
 pkgrel=1
 pkgdesc="Geph desktop GUI"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
   "gephgui-wry-bin-$pkgver.deb::$download_url/v$pkgver/gephgui-wry_${pkgver}_amd64.deb"
   "geph.png::https://raw.githubusercontent.com/geph-official/gephgui-pkg/refs/heads/master/flatpak/icons/256x256/apps/io.geph.GephGui.png"
 )
-md5sums=('ec4a04d95e0e9db0f81e10ff057d60c1'
+md5sums=('60f597f5a8ab6a85ebc1e15d4b6def42'
          '4655e64a5d56c316383e1ffa79ddc772')
 
 package() {
