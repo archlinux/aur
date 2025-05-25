@@ -1,0 +1,28 @@
+# Arch Linux package files
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+# AUR specific
+pkg/
+src/
+acli
+
+# Editor and OS specific files
+.DS_Store
+.idea/
+*.swp
+*~
+
+# Build output
+*.o
+*.ko
+*.obj
+*.elf
