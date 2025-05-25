@@ -1,7 +1,7 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=zig-bin
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc='a general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software'
 arch=('x86_64' 'pentium4' 'aarch64' 'armv7h' 'riscv64')
@@ -9,11 +9,11 @@ url='https://ziglang.org/'
 license=('MIT')
 provides=("zig=$pkgver")
 conflicts=('zig')
-source_x86_64=("https://ziglang.org/download/$pkgver/zig-linux-x86_64-$pkgver.tar.xz")
-source_pentium4=("https://ziglang.org/download/$pkgver/zig-linux-x86-$pkgver.tar.xz")
-source_aarch64=("https://ziglang.org/download/$pkgver/zig-linux-aarch64-$pkgver.tar.xz")
-source_armv7h=("https://ziglang.org/download/$pkgver/zig-linux-armv7a-$pkgver.tar.xz")
-source_riscv64=("https://ziglang.org/download/$pkgver/zig-linux-riscv64-$pkgver.tar.xz")
+source_x86_64=("https://ziglang.org/download/$pkgver/zig-x86_64-linux-$pkgver.tar.xz")
+source_pentium4=("https://ziglang.org/download/$pkgver/zig-x86-linux-$pkgver.tar.xz")
+source_aarch64=("https://ziglang.org/download/$pkgver/zig-aarch64-linux-$pkgver.tar.xz")
+source_armv7h=("https://ziglang.org/download/$pkgver/zig-armv7a-linux-$pkgver.tar.xz")
+source_riscv64=("https://ziglang.org/download/$pkgver/zig-riscv64-linux-$pkgver.tar.xz")
 
 package() {
 	local zigarch
@@ -41,8 +41,8 @@ package() {
 	install -D -t "$pkgdir/usr/share/licenses/zig/" LICENSE
 }
 
-sha256sums_x86_64=('473ec26806133cf4d1918caf1a410f8403a13d979726a9045b421b685031a982')
-sha256sums_pentium4=('55d1ba21de5109686ffa675b9cc1dd66930093c202995a637ce3e397816e4c08')
-sha256sums_aarch64=('ab64e3ea277f6fc5f3d723dcd95d9ce1ab282c8ed0f431b4de880d30df891e4f')
-sha256sums_armv7h=('a67dbfa9bdf769228ec994f2098698c619f930883ca5ef638f50eee2d7788d10')
-sha256sums_riscv64=('a2b14d3de326d3fd095548ef38bf5a67b15dadd62fbcc90836d63cc4355f8ef7')
+sha256sums_x86_64=('24aeeec8af16c381934a6cd7d95c807a8cb2cf7df9fa40d359aa884195c4716c')
+sha256sums_pentium4=('4bce6347fa112247443cb0952c19e560d1f90b910506cf895fd07a7b8d1c4a76')
+sha256sums_aarch64=('f7a654acc967864f7a050ddacfaa778c7504a0eca8d2b678839c21eea47c992b')
+sha256sums_armv7h=('1b34d9ecfaeb3b360e86c0bc233e1a8a2bbed2d40f2d4f20c12bde2128714324')
+sha256sums_riscv64=('005f214f74dbafb7b4d8bd305f4e9d25048f711d9ec6fa7b3d4fca177e11b882')
