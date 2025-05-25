@@ -3,7 +3,7 @@
 # Contributor: Riccardo Sacchetto <rsacchetto@nexxontech.it>
 pkgname=trash-d
 pkgver=20
-pkgrel=1
+pkgrel=2
 pkgdesc="A near drop-in replacement for rm that uses the trash bin. Written in D"
 arch=('x86_64')
 url="https://github.com/rushsteve1/trash-d"
@@ -18,7 +18,7 @@ build() {
 	cd "$srcdir/$pkgname-$pkgver"
 
 	# Build using dub
-	dub build
+	dub build --build=release
 	
 	# Build the manpage using scdoc
 	scdoc < MANUAL.scd > ./build/trash.man
