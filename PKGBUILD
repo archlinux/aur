@@ -1,7 +1,7 @@
 # Maintainer: Faugus <felix.ribeiro@live.com>
 
 pkgname=faugus-launcher
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="A simple and lightweight app for running Windows games using UMU-Launcher"
 arch=('any')
@@ -34,6 +34,11 @@ package() {
     install -Dm644 assets/faugus-ubisoft-connect.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/faugus-ubisoft-connect.png"
     install -Dm644 assets/faugus-banner.png "$pkgdir/usr/share/faugus-launcher/faugus-banner.png"
     install -Dm644 assets/faugus-notification.ogg "$pkgdir/usr/share/faugus-launcher/faugus-notification.ogg"
+    install -Dm644 assets/faugus-exit-symbolic.svg "$pkgdir/usr/share/icons/hicolor/scalable/actions/faugus-exit-symbolic.svg"
+    install -Dm644 assets/faugus-kill-symbolic.svg "$pkgdir/usr/share/icons/hicolor/scalable/actions/faugus-kill-symbolic.svg"
+    install -Dm644 assets/faugus-play-symbolic.svg "$pkgdir/usr/share/icons/hicolor/scalable/actions/faugus-play-symbolic.svg"
+    install -Dm644 assets/faugus-settings-symbolic.svg "$pkgdir/usr/share/icons/hicolor/scalable/actions/faugus-settings-symbolic.svg"
+    install -Dm644 assets/faugus-stop-symbolic.svg "$pkgdir/usr/share/icons/hicolor/scalable/actions/faugus-stop-symbolic.svg"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 
     find languages -type f -name "*.mo" | while read -r mo_file; do
