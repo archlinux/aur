@@ -2,7 +2,7 @@
 # Description: Terminal üzerinden Türkçe anime izleme aracı
 
 pkgname=anitr-cli
-pkgver=1.2.5
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Terminal üzerinden Türkçe anime izleme aracı"
 arch=('x86_64')
@@ -25,4 +25,6 @@ build() {
 package() {
   cd "$srcdir/anitr-cli-$pkgver/build"
   install -Dm755 anitr-cli "$pkgdir/usr/bin/anitr-cli"
+  install -Dm755 animecix-cli "$pkgdir/usr/bin/animecix-cli"
+  install -Dm755 openanime-cli "$pkgdir/usr/bin/openanime-cli"
 }
