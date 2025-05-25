@@ -1,14 +1,15 @@
 pkgbase = jstrings
 	pkgdesc = A tool for finding JIS-based Japanese characters in binary data
 	pkgver = 1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/drojaazu/jstrings
+	arch = aarch64
+	arch = i686
 	arch = x86_64
-	arch = i386
 	license = MIT
 	makedepends = cmake
 	depends = libiconv
-	source = https://github.com/drojaazu/jstrings/archive/refs/tags/1.6.tar.gz
-	md5sums = SKIP
+	source = jstrings-1.6.tar.gz::https://github.com/drojaazu/jstrings/archive/refs/tags/1.6.tar.gz
+	md5sums = ec9af20bb90f8227e6722c049b072d25
 
 pkgname = jstrings

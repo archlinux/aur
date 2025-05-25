@@ -4,22 +4,22 @@ pkgname="jstrings"
 pkgdesc="A tool for finding JIS-based Japanese characters in binary data"
 
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 
-arch=(x86_64 i386)
+arch=(aarch64 i686 x86_64)
 
-url="https://github.com/drojaazu/jstrings"
-license=("MIT")
+url="https://github.com/drojaazu/${pkgname}"
+license=(MIT)
 
 depends=(libiconv)
 makedepends=(cmake)
 
-source=("https://github.com/drojaazu/jstrings/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=("SKIP")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+md5sums=(ec9af20bb90f8227e6722c049b072d25)
 
 prepare() {
 	# move into the source directory
-	cd "jstrings-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 
 	# create a build directory
 	mkdir -p build && cd build
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
 	# move into the build directory
-	cd "jstrings-${pkgver}/build"
+	cd "${pkgname}-${pkgver}/build"
 
 	# build the project
 	make
@@ -38,9 +38,9 @@ build() {
 
 package() {
 	# move into the source directory
-	cd "jstrings-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 
 	# copy the main executable and the license
-	install -Dm755 build/jstrings "${pkgdir}/usr/bin/jstrings"
+	install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
