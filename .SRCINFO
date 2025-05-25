@@ -1,6 +1,6 @@
 pkgbase = recordbox
 	pkgdesc = A music player and library browser designed primarily to be as simple as possible, and tailored specifically to browsing and playing albums, rather than tracks or playlists.
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://codeberg.org/edestcroix/Recordbox
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = recordbox
 	optdepends = gst-libav: Extra media codecs
 	optdepends = gst-plugins-bad: Extra media codecs
 	optdepends = gst-plugins-ugly: Extra media codecs
-	source = recordbox-0.10.1::https://codeberg.org/edestcroix/Recordbox/archive/v0.10.1.tar.gz
-	sha256sums = 51196fcf05803e66ede418d5ef8f0204c63b3a9aa9835686436644059481f0df
+	source = recordbox-0.10.2::https://codeberg.org/edestcroix/Recordbox/archive/v0.10.2.tar.gz
+	sha256sums = 168098365e71f9830c3aa34f4319f04eca78211d17cbf728de6cca6df3251d26
 
 pkgname = recordbox
