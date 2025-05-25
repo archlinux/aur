@@ -41,7 +41,7 @@ build() {
     -Ddri3=enabled \
     -Degl=enabled \
     -Dgallium-extra-hud=true \
-    -Dgallium-nine=true \
+    -Dgallium-nine=disabled \
     -Dgallium-va=enabled \
     -Dgallium-vdpau=enabled \
     -Dgallium-xa=disabled \
