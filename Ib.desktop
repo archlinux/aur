@@ -1,9 +1,9 @@
 [Desktop Entry]
 Version=1.1
-Name=Ib (Windowed)
+Name=Ib
 Comment=Freeware horror adventure game by kouri
 Type=Application
-Exec=Ib --window
+Exec=Ib
 Categories=Game;AdventureGame;
 Terminal=false
 Icon=Ib

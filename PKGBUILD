@@ -2,7 +2,7 @@
 
 pkgname=ib-en
 pkgver=1.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Freeware horror adventure game by kouri (English translation)'
 url='https://vgperson.com/games/ib.htm'
 arch=('any')
@@ -11,12 +11,10 @@ depends=('easyrpg-player')
 makedepends=('icoutils')
 source=('https://vgperson.com/games/Ib107.zip'
         'Ib'
-        'Ib-window.desktop'
-        'Ib-fullscreen.desktop')
+        'Ib.desktop')
 sha512sums=('c2700b87b4e0d25218acbbf922ab705731f9bccfe50deb9b441eeaa9a6d00d78d945a607af09eca463007d497f9f76b75e5ec06f2e76f318d58cb1321652e393'
-            '1864653f6d3e11af411a9766ce30dcaf243a0c1f6f4ee8c8c6920279df505801762c6c48e7c7621fb74c1f2015a2f7c500ccf8167d960eb8e44444f2bf1bd8e8'
-            '949579741c8f9d1a7a929dadd741c3aa13dea532ff0d30f59088d09a5164a598d023f425e745d452bb0d82022ac6900049edc75153d1a5dbe8252c87711f79f7'
-            '58ad7b026a0a28550492c8581fc60b539f8566c2ba9f233bba23823895ffed1a8279b2257fe13ff9c84ccebc001ac099321cfd612f86cae46c5c39f6d2d1cb6b')
+            '90b4e627bedd1fa0ac19caaf45ea495e31af311c6c247e3c600020e4a450d8b1a391c037237a479a60b39d3bf3890be48704cbe3895a1c5025d561e0883a1349'
+            'efe0748fdd87345bee2686ccf6166a8110431149d304b6f36288a263a38b136ed456f28967ca26104d73d71c8039e2ca2981ef966a192c33ee0a078fcba39816')
 
 package() {
 	wrestool --extract --output=icon.ico --type=group_icon StartFullscreen.exe
@@ -30,6 +28,6 @@ package() {
 	mv Data "$pkgdir/usr/lib/Ib"
 
 	install -Dm644 'Ib Manual.txt' -t "$pkgdir/usr/share/doc/Ib"
-	install -Dm644 Ib-*.desktop -t "$pkgdir/usr/share/applications"
+	install -Dm644 Ib.desktop -t "$pkgdir/usr/share/applications"
 	install -Dm755 Ib -t "$pkgdir/usr/bin"
 }
