@@ -2,20 +2,21 @@
 
 _name="raidrive"
 pkgname="${_name}cli"
-pkgver=2024.9.27.6
-pkgrel=2
+pkgver=2025.5.7
+pkgrel=1
 pkgdesc="Use cloud storage services as if they were USB drives on your computer"
-arch=('x86_64' 'aarch64')
+arch=('aarch64' 'x86_64')
 url="https://www.raidrive.com"
 license=('custom:Freemium')
 depends=('gcc-libs' 'glibc' 'zlib') # 'fuse3'
 options=('!debug' '!strip')
 _pkgsrc="${_name}-${pkgver}"
-noextract=("${_pkgsrc}-"{x86_64,aarch64}".deb")
-source_x86_64=("${_pkgsrc}-x86_64.deb::https://app.raidrive.com/deb/pool/main/${_name::1}/${_name}/${_pkgsrc//-/_}-linux_amd64.deb")
 source_aarch64=("${_pkgsrc}-aarch64.deb::https://app.raidrive.com/deb/pool/main/${_name::1}/${_name}/${_pkgsrc//-/_}-linux_arm64.deb")
-sha256sums_x86_64=('a0aa845fa4ab77c5066d989d402b03ffa32ecfcad2dec42bb102f8deb1af5e37')
-sha256sums_aarch64=('76c65b2bf421641c9f273b5fe7d742818e0769c4767a97e86b7e834b47faea8e')
+source_x86_64=("${_pkgsrc}-x86_64.deb::https://app.raidrive.com/deb/pool/main/${_name::1}/${_name}/${_pkgsrc//-/_}-linux_amd64.deb")
+noextract=("${source_aarch64[@]%%::*}"
+           "${source_x86_64[@]%%::*}")
+sha256sums_aarch64=('85db165b5a0d2e584674e107a9e2dd634dcdf7bca7404a92d9401fe5f63d3e7e')
+sha256sums_x86_64=('bde064e452ac86c38c2f60a506e109cee2a4fa42f157a82d35b8e6016ac49272')
 
 prepare() {
   cd "${srcdir}"
@@ -23,20 +24,15 @@ prepare() {
   bsdtar -xf "${_pkgsrc}-${CARCH}.deb" data.tar.*
   bsdtar -xzf data.tar.* --strip-components 1 -C "${srcdir}/${_pkgsrc}-${CARCH}"
   rm -f data.tar.*
-}
 
-build() {
-  cd "${srcdir}/${_pkgsrc}-${CARCH}"
-  find . -type f -readable -exec sed -i 's|usr/sbin|usr/bin|g' {} +
-
-  rm -rf "etc"
-  
-  cd "usr"
-  mv -f "sbin"/* "bin"
-  rm -rf "sbin"  
+  find "${_pkgsrc}-${CARCH}" -type f -readable -exec \
+    sed -i 's|usr/sbin|usr/bin|g' {} +
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}-${CARCH}"
-  cp -vrL --no-preserve=ownership * "${pkgdir}"
+  cd "${srcdir}/${_pkgsrc}-${CARCH}/usr"
+  find "bin" "sbin" -type f -exec \
+    install -vDm755 "{}" "${pkgdir}/usr/bin/{}" \;
+  find "lib" -type f -name '*.service' -exec \
+    install -vDm644 "{}" "${pkgdir}/usr/{}" \;
 }
