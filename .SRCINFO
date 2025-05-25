@@ -1,0 +1,13 @@
+pkgbase = nodejs-matrix-bot-sdk
+	pkgdesc = TypeScript/JavaScript SDK for Matrix bots
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/turt2live/matrix-bot-sdk
+	arch = any
+	license = MIT
+	makedepends = npm
+	noextract = matrix-bot-sdk-.tgz
+	source = matrix-bot-sdk-0.7.1.tgz::https://registry.npmjs.org/matrix-bot-sdk/-/matrix-bot-sdk-0.7.1.tgz
+	sha256sums = c386b8f558535043dabad9da34979bf6788fa565ac5ee99d87a93bc3ba47220b
+
+pkgname = nodejs-matrix-bot-sdk
