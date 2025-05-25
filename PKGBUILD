@@ -17,6 +17,7 @@ source=(
 function package() {
 	npm i -g --prefix "${pkgdir}/usr" "${srcdir}/${_pkgname}-${pkgver}.tgz"
 	find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+	ln -srf "${pkgdir}/usr/lib/node_modules/@gnuxie/${_pkgname}" "${pkgdir}/usr/lib/node_modules/${_pkgname}"
 }
 
 
