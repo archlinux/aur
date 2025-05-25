@@ -1,7 +1,7 @@
 pkgbase = cubicsdr
 	pkgdesc = Cross-Platform Software-Defined Radio Application
 	pkgver = 0.2.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://cubicsdr.com
 	arch = x86_64
 	arch = aarch64

@@ -11,7 +11,7 @@
 pkgname=cubicsdr
 _pkgname=CubicSDR
 pkgver=0.2.7
-pkgrel=5
+pkgrel=6
 pkgdesc="Cross-Platform Software-Defined Radio Application"
 arch=(x86_64 aarch64 armv7h i686)
 url="https://cubicsdr.com"
@@ -53,6 +53,7 @@ build() {
     -DUSE_HAMLIB=ON \
     -DENABLE_DIGITAL_LAB=ON \
     -DUSE_AUDIO_ALSA=ON \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -Wno-dev
 
   cmake --build build
