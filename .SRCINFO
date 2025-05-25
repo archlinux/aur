@@ -9,7 +9,10 @@ pkgbase = synapse-http-antispam
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = git
+	makedepends = python-hatchling
 	depends = python
+	depends = python-twisted
+	depends = matrix-synapse
 	source = git+https://github.com/maunium/synapse-http-antispam.git#tag=v0.4.0
 	sha256sums = b33c97686f6af0441a89397793b2055d4dac77f98efcdd35fa79b01ae1a30bd3
 

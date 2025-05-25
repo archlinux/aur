@@ -8,7 +8,7 @@ arch=(any)
 pkgver=0.4.0
 pkgrel=1
 makedepends=(python-build python-installer python-wheel git python-hatchling)
-depends=(python)
+depends=(python python-twisted matrix-synapse)
 source=(
 	"git+https://github.com/maunium/synapse-http-antispam.git#tag=v${pkgver}"
 )
