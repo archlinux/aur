@@ -1,12 +1,12 @@
 pkgbase = slgsl-snapshot
 	pkgdesc = An S-Lang module for the GNU Scientific Library (development snapshot)
 	pkgver = 0.10.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jedsoft.org/snapshots/
 	changelog = slgsl-snapshot.changelog
 	arch = aarch64
 	arch = x86_64
-	license = GPL-2.0-or-later
+	license = MIT
 	depends = glibc
 	depends = gsl
 	depends = slang
