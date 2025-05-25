@@ -4,18 +4,18 @@ pkgname="craftworld-toolkit"
 pkgdesc="Tools for working with the LittleBigPlanet series"
 
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 
 arch=(x86_64 aarch64)
 
 url="https://github.com/ennuo/toolkit"
-#license=("MIT")
+#license=(MIT)
 
-depends=("java-runtime>=17")
-makedepends=("java-environment>=17" maven gendesk)
+depends=('java-runtime>=17')
+makedepends=('java-environment>=17' maven gendesk)
 
-source=("https://github.com/ennuo/toolkit/archive/refs/tags/v${pkgver}.tar.gz" "craftworld-toolkit")
-md5sums=("4d4aaa0a684229a4c4e183443aaf320a" "15f05a3a7a19863a7642e05ae5339cf8")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ennuo/toolkit/archive/refs/tags/v${pkgver}.tar.gz" craftworld-toolkit)
+md5sums=(4d4aaa0a684229a4c4e183443aaf320a a94b935d56e687c1f57adfe095d7a98a)
 
 prepare() {
 	# generate a .desktop file
@@ -40,12 +40,12 @@ package() {
 	cd "toolkit-${pkgver}"
 
 	# copy the main .jar file
-	install -Dm644 "toolkit/target/toolkit-${pkgver%.*}.jar" "${pkgdir}/usr/share/java/craftworld-toolkit/toolkit.jar"
+	install -Dm644 "toolkit/target/toolkit-${pkgver%.*}.jar" "${pkgdir}/usr/share/java/${pkgname}/toolkit.jar"
 
 	# copy the extracted icon and the generated .desktop file
-	install -Dm644 toolkit/src/main/resources/icon.png "${pkgdir}/usr/share/pixmaps/craftworld-toolkit.png"
-	install -Dm644 "../Craftworld Toolkit.desktop" "${pkgdir}/usr/share/applications/craftworld-toolkit.desktop"
+	install -Dm644 toolkit/src/main/resources/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -Dm644 '../Craftworld Toolkit.desktop' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
 	# install the script
-	install -Dm755 ../craftworld-toolkit "${pkgdir}/usr/bin/craftworld-toolkit"
+	install -Dm755 "../${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
