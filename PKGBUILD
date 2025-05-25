@@ -1,28 +1,22 @@
-# Maintainer: Davide Ferrero <bad dot deid at gmail dot com>
-# Contributor: Yufan You <ouuansteve at gmail>
-# Contributor: Mario Finelli <mario at finel dot li>
-# Contributor: Mark Pustjens <pustjens at dds dot nl>
+# Maintainer: Kimiblock Moe
 
-_npmname=express
 pkgname=nodejs-express
-pkgver=4.18.1
-pkgrel=1
-pkgdesc="Fast, unopinionated, minimalist web framework for node."
-arch=('any')
+_pkgname=${pkgname#nodejs-}
+pkgdesc="Fast, unopinionated, minimalist web framework for node"
 url="https://github.com/expressjs/express"
-license=('MIT')
-depends=('nodejs')
+license=(MIT)
 makedepends=('npm')
-source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
-noextract=($_npmname-$pkgver.tgz)
-sha256sums=('8fc3ea14bf5b8670d828ed0b00ccbb00a57f7a8bacef507b4676be8bd8cfaa61')
-
-package() {
-    cd "$srcdir"
-    local _npmdir="$pkgdir/usr/lib/node_modules/"
-    mkdir -p "$_npmdir"
-    cd "$_npmdir"
-    npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
-    install -Dm644 "$_npmdir/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    chown -R root:root "${pkgdir}"
+noextract=("${_pkgname}-${pkgver}.tgz")
+sha256sums=('dd6bdb4d4e54d520c78443d5c35aa4ae552be1837e8650d2ec1641df99393e1b')
+arch=(any)
+pkgver=5.1.0
+pkgrel=1
+source=(
+	"${_pkgname}-${pkgver}.tgz"::"https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz"
+)
+function package() {
+	npm i -g --prefix "${pkgdir}/usr" "${srcdir}/${_pkgname}-${pkgver}.tgz"
+	find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 }
+
+
