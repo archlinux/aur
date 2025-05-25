@@ -1,12 +1,12 @@
 # Maintainer: Dark-Kernel <sumitpatel24389@gmail.com>
 pkgname=tuisic-git
-pkgver=1.0.0.r44.6087f0d
+pkgver=1.1.0.r44.6087f0d
 pkgrel=1
-pkgdesc="A terminal based online music streaming player"
+pkgdesc="The very first of its kind terminal based online music streaming player"
 arch=('x86_64')
 url="https://github.com/Dark-Kernel/tuisic"
 license=('MIT')
-depends=('mpv' 'curl' 'fmt' 'yt-dlp' 'fftw')
+depends=('mpv' 'curl' 'fmt' 'yt-dlp' 'fftw' 'sdbus-cpp')
 makedepends=('cmake' 'git' 'gcc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "1.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "1.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
