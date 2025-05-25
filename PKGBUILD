@@ -7,7 +7,7 @@
 pkgname=('mysql84' 'libmysqlclient84' 'mysql-clients84')
 pkgbase=mysql84
 _pkgbase=mysql
-pkgver=8.4.4
+pkgver=8.4.5
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition, v8.4"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("https://cdn.mysql.com/Downloads/MySQL-8.4/${_pkgbase}-${pkgver}.tar.gz"
         "mysqld_service.patch"
         "systemd-tmpfiles.patch"
         "systemd-sysusers.conf")
-sha256sums=('fb290ef748894434085249c31bca52ac71853124446ab218bb3bc502bf0082a5'
+sha256sums=('53639592a720a719fdfadf2c921b947eac86c06e333202e47667852a5781bd1a'
             'SKIP'
             '6bc24ae510f6b6bbad6b3edda2d0028b29292937b482274a4c2fae335f4de328'
             'e1c23fa0971a13d998f2790379b68c475438d05b6d6f2691b99051dbf497567f'
@@ -168,7 +168,7 @@ package_mysql84(){
   rm "${pkgdir}/usr/lib/libmysqlclient.a"
   rm "${pkgdir}/usr/lib/libmysqlclient.so"
   rm "${pkgdir}/usr/lib/libmysqlclient.so.24"
-  rm "${pkgdir}/usr/lib/libmysqlclient.so.24.0.4"
+  rm "${pkgdir}/usr/lib/libmysqlclient.so.24.0.5"
   rm "${pkgdir}/usr/lib/libmysqlservices.a"
   rm "${pkgdir}/usr/lib/pkgconfig/mysqlclient.pc"
   rmdir "${pkgdir}/usr/lib/pkgconfig"
