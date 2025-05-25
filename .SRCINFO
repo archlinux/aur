@@ -1,0 +1,16 @@
+pkgbase = grub-shusher-git
+	pkgdesc = Utilities to patch grub for silent boot
+	pkgver = r29.853de57
+	pkgrel = 1
+	url = https://github.com/ccontavalli/grub-shusher
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = meson
+	depends = glibc
+	provides = grub-shusher
+	conflicts = grub-shusher
+	source = grub-shusher::git+https://github.com/ccontavalli/grub-shusher.git
+	sha256sums = SKIP
+
+pkgname = grub-shusher-git
