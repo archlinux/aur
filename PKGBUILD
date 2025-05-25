@@ -7,7 +7,7 @@
 pkgname=('mysql80' 'libmysqlclient80' 'mysql-clients80')
 pkgbase=mysql80
 _pkgbase=mysql
-pkgver=8.0.41
+pkgver=8.0.42
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition, v8.0"
 arch=('x86_64')
@@ -22,16 +22,24 @@ source=("https://cdn.mysql.com/Downloads/MySQL-8.0/${_pkgbase}-boost-${pkgver}.t
         "mysql.sysconfig"
         "mysqld_service.patch"
         "systemd-tmpfiles.patch"
-        "systemd-sysusers.conf")
-sha256sums=('719589993b1a6769edb82b59f28e0dab8d47df94fa53ac4e9340b7c5eaba937c'
+        "systemd-sysusers.conf"
+        "gcc-13.patch")
+sha256sums=('c2aa67c618edfa1bc379107fe819ca8e94cba5d85f156d1053b8fedc88cc5f8f'
             'SKIP'
             '6bc24ae510f6b6bbad6b3edda2d0028b29292937b482274a4c2fae335f4de328'
             'e1c23fa0971a13d998f2790379b68c475438d05b6d6f2691b99051dbf497567f'
             '203dcd22fea668477ac7123dbd9909fae72d3d07f8855417a669a9c94db072ae'
             '8fbedfc2c5fe271ed13217feeceeac00202d2cb135e4283eeee2f9a13d6251af'
             '270074dc0a01e0f959590ad95e5bbaaac3f821bb44eba32d039a6aee506b9c6a'
-            '200a992eb41c95efa99845d017439ddd4018a3e51f57ffca8cb802b0d25123f1')
+            '200a992eb41c95efa99845d017439ddd4018a3e51f57ffca8cb802b0d25123f1'
+            '454987e7b9c202e61bacbeaf8e036baf2f296832c4ee2ddf5f4df43304517584')
 validpgpkeys=('BCA43417C3B485DD128EC6D4B7B3B788A8D3785C') # MySQL Release Engineering
+
+prepare() {
+  cd "${_pkgbase}-${pkgver}"
+  # Apply fixed for GCC 13
+  patch -p1 -i "../gcc-13.patch"
+}
 
 build() {
   rm -rf build
@@ -171,7 +179,7 @@ package_mysql80(){
   rm "${pkgdir}/usr/lib/libmysqlclient.a"
   rm "${pkgdir}/usr/lib/libmysqlclient.so"
   rm "${pkgdir}/usr/lib/libmysqlclient.so.21"
-  rm "${pkgdir}/usr/lib/libmysqlclient.so.21.2.41"
+  rm "${pkgdir}/usr/lib/libmysqlclient.so.21.2.42"
   rm "${pkgdir}/usr/lib/libmysqlservices.a"
   rm "${pkgdir}/usr/lib/pkgconfig/mysqlclient.pc"
   rmdir "${pkgdir}/usr/lib/pkgconfig"
