@@ -2,7 +2,7 @@
 pkgname=m2m
 pkgver=1.0
 pkgrel=1
-pkgdesc="A is a minimal command line based youtube to audio/any-media-type converter"
+pkgdesc="A minimal command line based youtube to audio/any-media-type converter"
 arch=(any)
 url="https://github.com/Saffron-sh/m2m"
 license=("MIT")
