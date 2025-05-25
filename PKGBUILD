@@ -1,6 +1,6 @@
 # Maintainer: Arnaud Gissinger (contact: mathix.dev)
 _pkgname="swayfx-i3-style-fullscreen"
-pkgname="$_pkgname-2-git"
+pkgname="$_pkgname-git"
 pkgver=r7079.9fee0ce0
 pkgrel=1
 license=("MIT")
