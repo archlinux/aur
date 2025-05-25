@@ -2,7 +2,7 @@
 
 pkgname=mhy-warp-bin
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="米游抽卡记录查询软件"
 arch=('x86_64')
 url="https://github.com/busyoGG/MHYWarp"
@@ -10,17 +10,17 @@ license=('MIT')
 provides=('mhy-warp')
 conflicts=('mhy-warp')
 
-_appimage="mhy-warp.AppImage"
+_appimage="MHYWarp-${pkgver}.AppImage"
 
 depends=('zlib' 'fuse2')  # AppImage 可能需要 fuse2，不是 fuse3
-source=("${_appimage}::${url}/releases/download/${pkgver}/MHYWarp-${pkgver}.AppImage"
+source=("${_appimage}::${url}/releases/download/${pkgver}/${_appimage}"
         "mhy-warp.desktop"
         "icon.png"
         "LICENSE"
         )
 
 sha256sums=(
-  'c051323b4eb0dd368e05ffaff5b0fb84ed8e87cc1500dc22c53f52bb9a1db3b0'
+  '7341f8a13a23b16e9960b186b66d65f954be3ae78cfc59623a44a0542d0fb688'
   '144b04954b03aa475d6f770c05fc0f56ec239e27b10b386765f8a2211c40984c'
   'cc4ed7c1e32113dacafb016d60041359c41b87268d0736312915257a6021e59a'
   '9d23d1b4c7debed98693f4747b64b5cf374b0cba656d0ab831c946e3bd5aee80'
@@ -41,7 +41,7 @@ build() {
 
 package() {
   # AppImage 安装
-  install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/mhy-warp/${_appimage}"
+  install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/mhy-warp/mhy-warp.AppImage"
 
   # icon
   install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/mhy-warp.png"
@@ -51,7 +51,7 @@ package() {
 
   # Symlink executable
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/mhy-warp/${_appimage}" "${pkgdir}/usr/bin/mhy-warp"
+  ln -s "/opt/mhy-warp/mhy-warp.AppImage" "${pkgdir}/usr/bin/mhy-warp"
 
   # License
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
