@@ -1,0 +1,13 @@
+pkgbase = nodejs-jsdom
+	pkgdesc = A JavaScript implementation of various web standards, for use with Node.js
+	pkgver = 26.1.0
+	pkgrel = 1
+	url = https://github.com/jsdom/jsdom
+	arch = any
+	license = MIT
+	makedepends = npm
+	noextract = jsdom-.tgz
+	source = jsdom-26.1.0.tgz::https://registry.npmjs.org/jsdom/-/jsdom-26.1.0.tgz
+	sha256sums = 5619b4779f68dec3ae076a97ccc5b8e4aeceaef7d4821ebcfcc1eb124b192000
+
+pkgname = nodejs-jsdom
