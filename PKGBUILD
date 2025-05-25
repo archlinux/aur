@@ -1,19 +1,31 @@
 # Maintainer: Allen Choong <allen.choong at gmail dot com>
 pkgname=prayer-clock
-pkgver=4.0.0
+pkgver=5.0.0.2.g4841cb0
 pkgrel=1
 pkgdesc="Catholic prayers reminder, contains Angelus and 3 O'clock Prayer"
 url='https://github.com/allencch/prayer-clock'
 arch=('i686' 'x86_64')
 license=('BSD')
-depends=('gtk3' 'gtkmm3')
-source=("https://github.com/allencch/prayer-clock/raw/master/build/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f838c6d98b6eaadac226399a0ced9c7569378d43a28a0217a7ada58092aeab15')
+depends=('qt6-base')
+makedepends=('git' 'cmake' 'qt6-tools')
+source=("${pkgname}::git+https://github.com/allencch/prayer-clock.git")
+sha256sums=('SKIP')
 
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "%s" "$(git describe --tags | sed 's/^v//;s/-/./g')"
+}
+
+build() {
+    cd "$srcdir/$pkgname"
+    cmake -B build -S . -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build build
+}
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}/"
-	./configure --prefix=/usr
-	make
-	make prefix="${pkgdir}/usr" install
+    cd "${srcdir}/${pkgname}"
+    cmake --install build --prefix "$pkgdir/usr"
+    install -Dm644 "res/prayer-clock.desktop" "$pkgdir/usr/share/applications/prayer-clock.desktop"
+    install -Dm644 "res/prayer-clock.png" "$pkgdir/usr/share/pixmaps/prayer-clock.png"
+    install -Dm644 "res/prayers.xml" "$pkgdir/usr/share/prayer-clock/prayers.xml"
 }
