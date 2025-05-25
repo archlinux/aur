@@ -1,7 +1,7 @@
 # Maintainer: Guoyi <kuoi@bioarchlinux.org>
 
 _pkgname=sparsevctrs
-_pkgver=0.3.3
+_pkgver=0.3.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('325a2f12796bff6d08a6503cdffb00f0')
-b2sums=('71e5ae89c8af45aedc45bc39ad87f128c7d00840d86ba21020144e22dab34c9d830e54445b4a9b55c413f1a2c7ed521411c9878e81cf3cde13f921405b9ba165')
+md5sums=('63bf2af3a041154cf490790193283de2')
+b2sums=('5816550b02b85bb818332f4f410d1304b7eb94721c73523226736b1d524b9a0646e68ad229fc39a69323839a5ac3cdc0f8917716f8f5209d6dc3b395534f36e4')
 
 build() {
   mkdir build
