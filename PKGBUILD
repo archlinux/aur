@@ -7,7 +7,7 @@ _pkgname="${pkgname%-snapshot}"
 _pkgver=0.10.0-7
 _prever="pre$_pkgver"
 pkgver="${_pkgver//-/.}"
-pkgrel=2
+pkgrel=3
 pkgdesc='An S-Lang module for the GNU Scientific Library (development snapshot)'
 arch=('aarch64' 'x86_64')
 url='https://jedsoft.org/snapshots/'
@@ -32,9 +32,15 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
+  # Redundant (and in the “wrong” place)
+  rm -vrf "$pkgdir/usr/share/doc/slang-gsl/"
+
   # Install extra documentation
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
     changes.txt INSTALL.txt README doc/text/slgsl.txt
+
+  # — and examples
+  cp -vfax examples "$pkgdir/usr/share/doc/$pkgname/"
 
   # License
   install -vDm0644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
