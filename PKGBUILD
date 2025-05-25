@@ -2,19 +2,19 @@
 
 _pkgname=draupnir
 pkgname="${_pkgname}"
-pkgver=2.2.0
+pkgver=2.3.0_beta.2
 pkgrel=1
 pkgdesc="A Matrix moderation bot"
 arch=('x86_64')
 url="https://github.com/the-draupnir-project/Draupnir"
 license=('AFL-3.0' 'Apache-2.0' 'CC-BY-SA-4.0' 'CC0-1.0')
 makedepends=('git' 'go' 'gcc' 'yarn' 'python' 'nodejs-lts-jod')
-depends=("python" "gcc" "nodejs-lts-jod" "node-gyp")
+depends=("python" "gcc" "nodejs-lts-jod" "node-gyp" "nodejs-matrix-bot-sdk")
 conflicts=("${_pkgname}")
 source=(
-	"${_pkgname}::git+https://github.com/the-draupnir-project/Draupnir.git#tag=v${pkgver}"
+	"${_pkgname}::git+https://github.com/the-draupnir-project/Draupnir.git#tag=v$(echo ${pkgver} | sed 's|_|-|g')"
 )
-sha256sums=('ec3f4cfa3a767c5c25994f50e5e69baf26ae0305519e5efa22da33f64487d283')
+sha256sums=('1aeb814f40ed950e77c71d63687edc6559bd4091299203795a1d963eb361f0eb')
 
 function prepare() {
 	cd "${_pkgname}"

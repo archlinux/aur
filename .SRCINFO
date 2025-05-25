@@ -1,6 +1,6 @@
 pkgbase = draupnir
 	pkgdesc = A Matrix moderation bot
-	pkgver = 2.2.0
+	pkgver = 2.3.0_beta.2
 	pkgrel = 1
 	url = https://github.com/the-draupnir-project/Draupnir
 	arch = x86_64
@@ -18,8 +18,9 @@ pkgbase = draupnir
 	depends = gcc
 	depends = nodejs-lts-jod
 	depends = node-gyp
+	depends = nodejs-matrix-bot-sdk
 	conflicts = draupnir
-	source = draupnir::git+https://github.com/the-draupnir-project/Draupnir.git#tag=v2.2.0
-	sha256sums = ec3f4cfa3a767c5c25994f50e5e69baf26ae0305519e5efa22da33f64487d283
+	source = draupnir::git+https://github.com/the-draupnir-project/Draupnir.git#tag=v2.3.0-beta.2
+	sha256sums = 1aeb814f40ed950e77c71d63687edc6559bd4091299203795a1d963eb361f0eb
 
 pkgname = draupnir
