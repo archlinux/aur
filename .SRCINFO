@@ -1,0 +1,16 @@
+pkgbase = avalonia86
+	pkgdesc = A cross-platform configuration manager for the 86Box emulator
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = https://github.com/notBald/Avalonia86
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk
+	makedepends = gendesk
+	depends = dotnet-runtime
+	depends = 86box
+	source = avalonia86-1.3.4.tar.gz::https://github.com/notBald/Avalonia86/archive/refs/tags/v1.3.4.tar.gz
+	md5sums = 84c949a33a3fba867af68c6268bfdf69
+
+pkgname = avalonia86
