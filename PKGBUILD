@@ -1,10 +1,12 @@
 # Maintainer:
 # Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 
+: ${_install_path:=opt}
+
 _pkgname="logseq-desktop"
 pkgname="$_pkgname-bin"
 pkgver=0.10.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL-3.0-or-later')
