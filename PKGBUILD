@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=(
   'meson' 'ninja' 'python-mako' 'libxrandr' 'wayland-protocols'
-  'libx11' 'libxext' 'xorgproto' 'llvm' 'libomxil-bellagio'
+  'libx11' 'libxext' 'spirv-llvm-translator ' 'xorgproto' 'llvm' 'libomxil-bellagio'
   'git' 'glslang' 'libclc' 'spirv-tools' 'vulkan-headers'
 )
 provides=('mesa' 'vulkan-driver' 'vulkan-intel' 'vulkan-radeon')
@@ -30,10 +30,11 @@ pkgver() {
 build() {
   cd mesa
   rm -rf build
+
   meson setup build \
     --prefix=/usr \
+    --libdir=lib \
     --buildtype=release \
-    --optimization=3 \
     -Dgallium-drivers=radeonsi,r600,swrast \
     -Dvulkan-drivers=amd_terascale,amd,intel \
     -Dplatforms=x11,wayland \
@@ -49,6 +50,7 @@ build() {
     -Dgallium-vdpau=enabled \
     -Dgallium-xa=disabled \
     -Dgallium-nine=true \
+    -Dgallium-opencl=spirv \
     -Dosmesa=true \
     -Dshared-glapi=enabled \
     -Dvalgrind=disabled \
@@ -56,10 +58,12 @@ build() {
     -Dzstd=enabled \
     -Dxlib-lease=enabled \
     -Dglvnd=true \
-    -Dshader-cache=enabled
+    -Dshader-cache=enabled \
+    -Dlibunwind=enabled
 
   ninja -C build
 }
+
 
 package() {
   cd mesa
