@@ -1,10 +1,11 @@
-# Maintainer: Karim Vergnes <me@thesola.io>
+# Maintainer: Yamada Hayao <shun819.mail@gmail.com,>
+# Contributer: Karim Vergnes <me@thesola.io>
 
-pkgname=intel-ipu6-dkms-git
-_pkgname=ipu6-drivers
-pkgver=r187.aecec2aae
+pkgname=intel-ipu7-dkms-git
+_pkgname=ipu7-drivers
+pkgver=r35.bb69641
 pkgrel=1
-pkgdesc="Intel IPU6 camera drivers (DKMS)"
+pkgdesc="Intel IPU7 camera drivers (DKMS)"
 arch=('any')
 url="https://github.com/intel/${_pkgname}"
 license=('unknown')
