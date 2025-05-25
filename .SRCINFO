@@ -1,7 +1,7 @@
 pkgbase = pgvector
 	pkgdesc = A vector similarity search extension for PostgreSQL
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pgvector/pgvector
 	arch = x86_64
 	arch = i686
