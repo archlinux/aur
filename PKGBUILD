@@ -4,7 +4,7 @@
 # Contributor: Jeff Mickey <jeff@archlinux.org>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=shepherd
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Service manager that looks after the herd."
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   "https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz"
   shepherd.install
 )
-sha256sums=('13306a6b56dfe252464e84a23c23a7234338cc752c565e1b865f7cbf8a03f0cf'
+sha256sums=('3c475069a02b49018491e5a5bbab5b7a424d76c7a06bdbf47afd005dc86805f8'
             'd7a0b895b8d59ace7abd761a7be17ab1c8db358e98ff301d800a5a4fa558dff7')
 
 prepare() {

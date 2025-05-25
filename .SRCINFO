@@ -1,6 +1,6 @@
 pkgbase = shepherd
 	pkgdesc = Service manager that looks after the herd.
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://www.gnu.org/software/shepherd/
 	install = shepherd.install
@@ -15,9 +15,9 @@ pkgbase = shepherd
 	depends = guile-fibers
 	depends = zstd
 	depends = gzip
-	source = https://ftp.gnu.org/gnu/shepherd/shepherd-1.0.4.tar.gz
+	source = https://ftp.gnu.org/gnu/shepherd/shepherd-1.0.5.tar.gz
 	source = shepherd.install
-	sha256sums = 13306a6b56dfe252464e84a23c23a7234338cc752c565e1b865f7cbf8a03f0cf
+	sha256sums = 3c475069a02b49018491e5a5bbab5b7a424d76c7a06bdbf47afd005dc86805f8
 	sha256sums = d7a0b895b8d59ace7abd761a7be17ab1c8db358e98ff301d800a5a4fa558dff7
 
 pkgname = shepherd
