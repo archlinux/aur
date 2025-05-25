@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=trenchbroom-bin
-pkgver=2025.2
+pkgver=2025.3
 pkgrel=1
 pkgdesc="Level editor supporting Daikatana, D-DayNormandy, Digital Paintball 2, Half-life, Heretic 2, Hexen 2, Kingpin, Neverball, Quake, Quake 2, Quake 3, Quetoo, and Wrath."
 arch=("x86_64")
@@ -15,7 +15,7 @@ provides=("trenchbroom")
 options=(!strip)
 
 source=("https://github.com/TrenchBroom/TrenchBroom/releases/download/v${pkgver}/TrenchBroom-Linux-x86_64-v${pkgver}-Release.zip")
-sha256sums=('5cabe0cd45d92a81a7dba15ffeda8e9ddb79918dc547112cc532b5a7f8c8bf13')
+sha256sums=('082e9a4e40c52b0b5961f0ea692f174250bb7804712c4f9ebbb8d31b995ee919')
 
 prepare() {
   # Make sure the AppImage is executable and extract its contents
