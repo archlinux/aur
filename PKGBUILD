@@ -3,7 +3,7 @@
 _name="raidrive"
 pkgname="${_name}cli"
 pkgver=2025.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Use cloud storage services as if they were USB drives on your computer"
 arch=('aarch64' 'x86_64')
 url="https://www.raidrive.com"
@@ -31,7 +31,7 @@ prepare() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}-${CARCH}/usr"
-  find "bin" "sbin" -type f -exec \
+  find "bin" "sbin" -type f -execdir \
     install -vDm755 "{}" "${pkgdir}/usr/bin/{}" \;
   find "lib" -type f -name '*.service' -exec \
     install -vDm644 "{}" "${pkgdir}/usr/{}" \;

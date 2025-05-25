@@ -1,7 +1,7 @@
 pkgbase = raidrivecli
 	pkgdesc = Use cloud storage services as if they were USB drives on your computer
 	pkgver = 2025.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.raidrive.com
 	arch = aarch64
 	arch = x86_64
