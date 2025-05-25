@@ -43,7 +43,7 @@ package() {
   cp -R ./$_pkgname/dist/linux-unpacked/. "${pkgdir}/usr/lib/heroic/"
 
   # executable
-  ln -s ${pkgdir}/usr/lib/heroic/heroic "${pkgdir}/usr/bin/heroic"
+  ln -s /usr/lib/heroic/heroic "${pkgdir}/usr/bin/heroic"
 
   # icon
   install -Dm644 ./$_pkgname/flatpak/com.heroicgameslauncher.hgl.png -t "${pkgdir}/usr/share/pixmaps"
