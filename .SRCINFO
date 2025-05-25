@@ -1,0 +1,13 @@
+pkgbase = nodejs-html-to-text
+	pkgdesc = Node.js Application Configuration
+	pkgver = 9.0.5
+	pkgrel = 1
+	url = https://github.com/html-to-text/node-html-to-text
+	arch = any
+	license = MIT
+	makedepends = npm
+	noextract = html-to-text-.tgz
+	source = html-to-text-9.0.5.tgz::https://registry.npmjs.org/html-to-text/-/html-to-text-9.0.5.tgz
+	sha256sums = 3c295e9f4a56b6cc95155505deb37954bd9d299e7810aa03661ae69e68ce1a2d
+
+pkgname = nodejs-html-to-text
