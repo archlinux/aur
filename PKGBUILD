@@ -1,7 +1,7 @@
 # Maintainer:  Lukas K. <lu@0x83.eu>
 
 pkgname=usbkvm
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="USBKVM app"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ source=(
   "https://github.com/carrotIndustries/usbkvm/releases/download/v${pkgver}/usbkvm-v${pkgver}.tar.gz"
 )
 sha256sums=(
-  'b3f29d4f14a571f1b7a0ea41cb64a2b04d3ea0472bfcf5c22d70fe6e9643552f'
+  '9f1b778bc68f7c066516eb38a92970adbedcf51a5f511bba7b49e5a5b2099b06'
 )
 
 build() {
