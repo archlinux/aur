@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MHY Warp
+Comment=米游抽卡记录查询软件
+Exec=mhy-warp
+Terminal=false
+Type=Application
+Icon=mhy-warp
+StartupWMClass=mhywarp
+Categories=Game

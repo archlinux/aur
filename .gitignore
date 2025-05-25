@@ -1,0 +1,6 @@
+*.AppImage
+pkg
+src
+*.pkg.tar.zst
+*.old
+node_modules
