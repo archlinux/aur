@@ -1,16 +1,16 @@
 # Maintainer: quexeky <aur@quexeky.dev>
 
 pkgname=drop-oss-app
-pkgver=0.2.0.beta
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Arch native client for Drop"
-arch=(x86_64)
+arch=(any)
 url="https://wiki.droposs.org/"
 license=('AGPL-3.0-only')
-depends=('glib2' 'glibc' 'gcc-libs' 'openssl-1.1' 'openssl')
-source=("https://github.com/Drop-OSS/drop-app/archive/refs/tags/v0.2.0-beta.tar.gz")
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'openssl-1.1' 'openssl')
+source=("https://codeload.github.com/Drop-OSS/drop-app/tar.gz/refs/tags/dev-v0.2.1-beta")
 makedepends=('yarn' 'cargo' 'openssl-1.1' 'openssl')
-sha256sums=('646742ad2f32b650a5d7acadc644e6d5dd6abafc8c4688c30a08d44057e6ba29')
+sha256sums=('e167cd86dd995c9079a1e6bf613b37e2745ba4c2dab32843d1836e3e6acc417e')
 
 
 _desktop="
@@ -18,7 +18,7 @@ _desktop="
 Type=Application\n
 Version=1.0\n
 Name=drop-oss-app\n
-Comment=Arch native client for drop\n
+Comment=Drop client for Linux\n
 Path=/usr/bin/\n
 Exec=drop-app\n
 Icon=drop-oss-app\n
@@ -27,21 +27,21 @@ Terminal=false\n
 
 prepare() {
 	echo $_desktop > drop-oss-app.desktop
-	cd drop-app-0.2.0-beta/
+	cd drop-app-dev-v0.2.1-beta/
 	yarn
 }
 
 build() {
 	export RUSTUP_TOOLCHAIN=nightly
 	CFLAGS+=' -ffat-lto-objects'
-	cd drop-app-0.2.0-beta
+	cd drop-app-dev-v0.2.1-beta
 	yarn tauri build --no-bundle
 }
 
 package() {
 	echo -e "$_desktop" > drop-oss-app.desktop
 	install -Dm0755 -t "$pkgdir/usr/share/applications" "drop-oss-app.desktop" 
-	cd drop-app-0.2.0-beta
+	cd drop-app-dev-v0.2.1-beta
 	cp src-tauri/icons/icon.png ./drop-oss-app.png
         install -Dm0755 -t "$pkgdir/usr/share/pixmaps" "./drop-oss-app.png"
 	install -Dm0755 -t "$pkgdir/usr/bin" "src-tauri/target/release/drop-app"
