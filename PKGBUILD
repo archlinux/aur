@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="reader-server"
-pkgver=3.2.13
+pkgver=3.2.14
 pkgrel=1
 pkgdesc="Book Reader Server | 阅读3服务器版"
 arch=('any')
@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('38dd9b385099a4a57bdf7f63f1d93375b1148e5160ec230b394ced014848e695'
+sha256sums=('78fcc3cae13703b39c1e20f112a849f49aacdaf4f339da77e25ae391bfee8f23'
             '9c1993de3d0d23b7dcfdd7983f976010ce7ae1dcb4c779afd00563c7ab3cb248'
             '411a0c79d2180c4aa901da3766412a1485b0867d1a129f65cd5c4f07f0a0bd25'
             'e7d9a30b52e4e342f27e3cd3e98731729025ebefcd70e1e1a42c9863420bcbd3'
