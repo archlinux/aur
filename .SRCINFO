@@ -1,0 +1,22 @@
+pkgbase = statime-git
+	pkgdesc = Statime is a work in progress Rust implementation of PTP version 2.1 (IEEE 1588-2019). It currently implements support for acting as a master and an ordinary or a boundary clock.
+	pkgver = 0.2.0+199+gacb88a8
+	pkgrel = 1
+	url = https://github.com/pendulum-project/statime/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	license = ASL 2.0
+	makedepends = cargo
+	provides = statime
+	conflicts = statime
+	source = statime::git+https://github.com/pendulum-project/statime
+	source = statime-metrics-exporter.service
+	source = statime.sysusers
+	b2sums = SKIP
+	b2sums = e3846d921a8c9c13699f6bbc1b6f3e564c9ab3cdc9994020dee15e732f046ab026cc30e6a7c301560280148d217597a181a3b089933eed3fe5626b7bfca4d1d0
+	b2sums = 03cb77ee1cda565e7d59944fe4db208235935e2e517afbbcf1568bd0b0e616ec1899d1cc309c215447bbe3361f9cc42bbcbb373e3b8067135a9c1c90fa1c1bf2
+
+pkgname = statime-git

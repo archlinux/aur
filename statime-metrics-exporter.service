@@ -1,0 +1,18 @@
+[Unit]
+Description=Statime metrics exporter
+Documentation=https://github.com/pendulum-project/statime
+After=statime.service
+Requires=statime.service
+Conflicts=
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/statime-metrics-exporter
+Environment="RUST_LOG=info"
+RuntimeDirectory=statime-observe
+User=statime
+Group=statime
+
+[Install]
+WantedBy=multi-user.target
