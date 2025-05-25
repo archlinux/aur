@@ -3,7 +3,7 @@
 pkgname="inferno-aoip"
 pkgver=0.4.0
 _tag=1f548b2f8dbe1bba4358e5cb056b22862d6c3040
-pkgrel=1
+pkgrel=2
 pkgdesc='Inferno - unofficial implementation of the Dante protocol'
 url='https://gitlab.com/lumifaza/inferno'
 license=('GPL' 'AGPL')
@@ -21,7 +21,7 @@ source=(
 )
 b2sums=(
     'e3ba165c11580ff8d15c974fe9ea66ef882ce56a37586996f1e02b5096888ba4c24fa65d01b3875dc3c61a83c64f42de3815835107bfe672d605e3728ad5b124'
-    'd640a3aa396b3ff3becd2ba7564ac7654b0ef0b678b4e628fde9c690a847a9a6dc62f2f42995c8c18730caa7c5471b0cdd6f8e78791df06753ffc80c6ebf5f12'
+    '0bcaef1062d4f645c7e8a1120593cac40974fb6c7687ea2b2023368344e4b43cd3606555aa6b31ca3e7aa5e80460457e16af6a09fb22ce30c6fdc64c0f7504ff'
     'e2c9212395c6f7abfc0cb77288baf41fa89d200e5228a64008300f7cca382a714c70d37de8d26d973d0a91c41a1f215ae96f3f31bd956c0e9ec6fb1de232ec72'
 )
 
