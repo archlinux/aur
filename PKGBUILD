@@ -2,7 +2,7 @@
 pkgname=autoinstallpackages
 pkgver=4.1
 pkgrel=1
-pkgdesc="Modern post-installation script for Arch Linux with GUI interface"
+pkgdesc="Modern post-installation script for Arch Linux with futuristic GUI interface"
 arch=('any')
 url="https://github.com/Firebleudark/Autoinstallpackages"
 license=('GPL3')
@@ -17,11 +17,11 @@ optdepends=(
 )
 provides=('autoinstallpackages')
 conflicts=('autoinstallpackages-git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Firebleudark/Autoinstallpackages/archive/v${pkgver}.tar.gz")
-sha256sums=('9078d5e97c8ed48b4dba0afa54b7eba4c1127141a2e66d3da103390a8fbcf7b1')
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/Firebleudark/Autoinstallpackages/archive/v${pkgver}-${pkgrel}.tar.gz")
+sha256sums=('bd1c9614fc06cb603eb91a1ab26991bbc20a22786b2446066a8e2b60c5f7e01b')
 
 package() {
-    cd "${srcdir}/Autoinstallpackages-${pkgver}"
+    cd "${srcdir}/Autoinstallpackages-${pkgver}-${pkgrel}"
     
     # Create directories
     install -dm755 "${pkgdir}/usr/bin"
@@ -57,12 +57,13 @@ EOF
     cat > "${pkgdir}/usr/share/applications/${pkgname}.desktop" << 'EOF'
 [Desktop Entry]
 Name=AutoInstallPackages
-Comment=Modern post-installation script for Arch Linux with functional GUI
+Comment=Modern post-installation script for Arch Linux with futuristic GUI
 Exec=autoinstallpackages --gui
 Icon=system-software-install
 Terminal=false
 Type=Application
 Categories=System;Settings;PackageManager;
-Keywords=install;packages;arch;linux;post-installation;gui;
+Keywords=install;packages;arch;linux;post-installation;gui;futuristic;
+StartupNotify=true
 EOF
 }
