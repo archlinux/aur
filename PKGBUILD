@@ -1,18 +1,26 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=touche
-pkgver=2.0.14
+pkgver=2.0.15
 pkgrel=1
 _nodeversion=18
 pkgdesc="The desktop application to configure Touchégg "
 arch=('x86_64')
 url="https://github.com/JoseExposito/touche"
 license=('GPL-3.0-or-later')
-depends=('gjs' 'libadwaita' 'touchegg')
-makedepends=('gobject-introspection' 'meson' 'nvm')
+depends=(
+  'gjs'
+  'libadwaita'
+  'touchegg'
+)
+makedepends=(
+  'gobject-introspection'
+  'meson'
+  'nvm'
+)
 checkdepends=('appstream-glib')
 provides=('libtouche.so=0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1342ac70d60c21e4dbacd63f6fcd45cbe8206bb92f4bfb8185f71136fe22d63e')
+sha256sums=('e9e5eaed3e92bdd341acaeb0c4296f52464e6bb57dc34265c1a689c92e8439de')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
