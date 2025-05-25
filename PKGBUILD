@@ -1,10 +1,10 @@
-# Maintainer: FerrousInk <ferrousink-aur@proton.me>
+# Maintainer: Alois~ <aloisianer@proton.me>
 pkgname=power-buttons
-pkgver=2.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=3
 pkgdesc="Adds poweroff, reboot and suspend buttons to the applications folder"
 arch=('any')
-url="https://halal.hackrland.dev"
+url="https://alois.hackrland.dev"
 license=('MIT')
 depends=('systemd')
 

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Suspend
-Exec=suspend
-Icon=system-suspend
+Exec=systemctl suspend
+Icon=power-profile-power-saver-symbolic
 Type=Application
 StartupNotify=false
 Keywords=Suspend;Sleep;

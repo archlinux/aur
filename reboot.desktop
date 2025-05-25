@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Restart
-Exec=reboot
+Name=Reboot
+Exec=systemctl reboot
 Icon=system-reboot
 Type=Application
 StartupNotify=false
