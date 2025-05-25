@@ -2,4 +2,4 @@
 
 save_path="${XDG_DATA_HOME:-$HOME/.local/share}/OFF"
 mkdir -p "$save_path"
-easyrpg-player --project-path /usr/lib/OFF --save-path "$save_path" $@
+exec easyrpg-player --project-path /usr/lib/OFF --save-path "$save_path" $@
