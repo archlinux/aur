@@ -1,5 +1,5 @@
 # Maintainer: DEX
-pkgname=mesa-terakan-git
+pkgname=vulkan-terakan-git
 pkgver=24.1.0.r0.gTerakan
 pkgrel=1
 pkgdesc="Triangl3's Mesa fork with amd_terascale Vulkan support (Terakan branch)"
