@@ -1,6 +1,6 @@
 pkgbase = k6-studio-bin
 	pkgdesc = Desktop application to help generate k6 test scripts (binary release)
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/grafana/k6-studio
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = k6-studio-bin
 	optdepends = pipewire-pulse: for sound server support via PipeWire (modern alternative to pulseaudio)
 	optdepends = libgnome-keyring: for storing secrets in GNOME Keyring (suggested by original package)
 	optdepends = lsb-release: for providing Linux Standard Base distribution information (suggested by original package)
-	source = https://github.com/grafana/k6-studio/releases/download/v1.2.0/k6-studio_1.2.0_amd64.deb
-	sha256sums = d155e18e9afaf34ffdd535410fe01cc48b2f88446c51a647085c3ccfd1bf8ce1
+	source = https://github.com/grafana/k6-studio/releases/download/v1.3.0/k6-studio_1.3.0_amd64.deb
+	sha256sums = 9e2ba2b464d2572ee1d35f161428114d4bc47ebc6d16d84a524327a55e5a6b8b
 
 pkgname = k6-studio-bin
