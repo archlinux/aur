@@ -1,0 +1,19 @@
+pkgbase = wretch-bin
+	pkgdesc = A simple Fetch CLI program Built with Rust
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/TheSillyBoi/wretch
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = wretch
+	conflicts = wretch
+	source = LICENSE-1.1.2::https://raw.githubusercontent.com/TheSillyBoi/wretch/v1.1.2/LICENSE
+	source = README-1.1.2.md::https://raw.githubusercontent.com/TheSillyBoi/wretch/v1.1.2/README.md
+	sha256sums = f12c6f6b5b0accd597242e5c91fb886d89442197119da9b96a6a96bc7de06243
+	sha256sums = 5345462cedb10b66c9e9a1e1e6c769305ab08d70d21e16c0eb9117a5db779d0d
+	source_x86_64 = wretch-1.1.2::https://github.com/TheSillyBoi/wretch/releases/download/v1.1.2/wretch-release-1.1.2-linux
+	sha256sums_x86_64 = 61667bcaa7ab1b98982ddf5ea880b26aa144b81a745320e956dbe04cba0c1d48
+
+pkgname = wretch-bin
