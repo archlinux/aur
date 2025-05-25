@@ -3,7 +3,7 @@
 # Contributor: Javier Tia <javier dot tia at gmail dot com>
 
 pkgname=z.lua
-pkgver=1.8.23
+pkgver=1.8.24
 pkgrel=1
 pkgdesc='A command line tool which helps you navigate faster by learning your habits'
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('lua')
 provides=('z.lua')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('36d8237d2a6f9b482cd9affeaeae8f0b6ff21a08e8f9a747a1b5722d290e6fa8')
+sha256sums=('ed749f4cdc9ca4315a74dca0918b1e12d5961b9c16754907ef492c4ae0bfccd3')
 
 package() {
   cd "${pkgname}-${pkgver}"
