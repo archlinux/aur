@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=ggml-cublas-git
-pkgver=r1952.13bcf9c
+pkgver=r2100.6757e32
 pkgrel=1
 pkgdesc="Tensor library for machine learning (with NVIDIA CUDA optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
