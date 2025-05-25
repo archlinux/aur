@@ -1,7 +1,7 @@
 pkgbase = power-buttons
-	pkgdesc = Adds poweroff, reboot and suspend buttons to the applications folder
+	pkgdesc = Adds poweroff and reboot buttons to the applications folder
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://alois.hackrland.dev
 	arch = any
 	license = MIT
