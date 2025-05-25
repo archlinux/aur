@@ -1,6 +1,6 @@
 pkgbase = qp-bin
-	pkgdesc = qp - Query Packages. A CLI utility for querying installed packages, written in Go. Replaces yaylog.
-	pkgver = 5.56.0
+	pkgdesc = qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems.
+	pkgver = 5.57.0
 	pkgrel = 1
 	url = https://github.com/Zweih/qp
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = qp-bin
 	replaces = yaylog
 	replaces = yaylog-bin
 	replaces = yaylog-git
-	source_x86_64 = https://github.com/Zweih/qp/releases/download/v5.56.0/qp-v5.56.0-x86_64.tar.gz
-	sha256sums_x86_64 = f9bea488653b78a6b651b398e6480255d535cb59909d2f3bbd105df95fe0de8e
-	source_aarch64 = https://github.com/Zweih/qp/releases/download/v5.56.0/qp-v5.56.0-aarch64.tar.gz
-	sha256sums_aarch64 = 4cc3b25d5275200647f209042830c452a79ad4b32e30f0e52255738d76d52ebb
-	source_armv7h = https://github.com/Zweih/qp/releases/download/v5.56.0/qp-v5.56.0-armv7h.tar.gz
-	sha256sums_armv7h = bfc624acc56f65e43405ced2ab82d7d11ae094dbfc1488911033911b1e1069d3
+	source_x86_64 = https://github.com/Zweih/qp/releases/download/v5.57.0/qp-v5.57.0-x86_64.tar.gz
+	sha256sums_x86_64 = cdcd2717512801c37d20b717276f7b852bd336920a8aa080766f677dd6527af5
+	source_aarch64 = https://github.com/Zweih/qp/releases/download/v5.57.0/qp-v5.57.0-aarch64.tar.gz
+	sha256sums_aarch64 = 843e16976082c1d1ab859a79f6c26257205d64f7a825214afd248ab0e5a67ece
+	source_armv7h = https://github.com/Zweih/qp/releases/download/v5.57.0/qp-v5.57.0-armv7h.tar.gz
+	sha256sums_armv7h = 782c784cccdf6da4415ad2da0cd1c587ba7d7e09980e1e1ecd347d3b75ff627a
 
 pkgname = qp-bin
