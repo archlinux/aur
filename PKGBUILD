@@ -7,12 +7,12 @@ arch=(aarch64 armv7h x86_64)
 url='https://warpstreamlabs.github.io/bento/'
 _url='https://github.com/warpstreamlabs/bento'
 _branch='main'
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=0
 license=('MIT')
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('554ef3be2d39de952ef18c0d8299f02a2a6a17ad3950a6f1293e4eb80e43d299')
+sha256sums=('0b8eb6e4695a3f716e392e93d21f91e98c439ea2c257596e22e42c620f690011')
 provides=($pkgname)
 conflicts=($pkgname)
 
