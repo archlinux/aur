@@ -1,6 +1,6 @@
 pkgbase = floc-git
 	pkgdesc = Flo Compiler
-	pkgver = r155.d2c0a9c
+	pkgver = r163.21ee3cd
 	pkgrel = 1
 	url = https://github.com/romch007/floc
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = floc-git
 	makedepends = llvm
 	depends = llvm-libs
 	depends = gcc-libs
-	optdepends = clang: linking support
 	provides = floc
 	source = git+https://github.com/romch007/floc.git
 	sha256sums = SKIP

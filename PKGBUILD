@@ -1,6 +1,6 @@
 # Maintainer: Romain Chardiny <romain.chardiny@gmail.com>
 pkgname=floc-git
-pkgver=r155.d2c0a9c
+pkgver=r163.21ee3cd
 pkgrel=1
 pkgdesc="Flo Compiler"
 arch=("any")
