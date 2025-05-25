@@ -1,6 +1,7 @@
+# Maintainer: Alois~ <aloisianer@proton.me>
 pkgname=twingate
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Zero trust remote access client for resource and networks, based on twingate-bin"
 arch=('x86_64' 'aarch64')
 options=('!debug')

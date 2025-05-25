@@ -1,7 +1,7 @@
 pkgbase = twingate
 	pkgdesc = Zero trust remote access client for resource and networks
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://twingate.com
 	arch = x86_64
 	arch = aarch64
