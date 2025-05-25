@@ -20,6 +20,12 @@ echo "Updating from $CURRENT_VERSION to $VERSION"
 # Update version in PKGBUILD
 sed -i -e "s/pkgver=.*/pkgver=$VERSION/" PKGBUILD
 
+# Reset pkgrel to 1 if version changed
+if [ "$VERSION" != "$CURRENT_VERSION" ]; then
+    sed -i -e "s/pkgrel=.*/pkgrel=1/" PKGBUILD
+    echo "Reset pkgrel to 1"
+fi
+
 # Update checksums
 updpkgsums
 
