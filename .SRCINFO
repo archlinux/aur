@@ -1,0 +1,25 @@
+pkgbase = draupnir
+	pkgdesc = A Matrix moderation bot
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/the-draupnir-project/Draupnir
+	arch = x86_64
+	license = AFL-3.0
+	license = Apache-2.0
+	license = CC-BY-SA-4.0
+	license = CC0-1.0
+	makedepends = git
+	makedepends = go
+	makedepends = gcc
+	makedepends = yarn
+	makedepends = python
+	makedepends = nodejs-lts-jod
+	depends = python
+	depends = gcc
+	depends = nodejs-lts-jod
+	depends = node-gyp
+	conflicts = draupnir
+	source = draupnir::git+https://github.com/the-draupnir-project/Draupnir.git#tag=v2.2.0
+	sha256sums = ec3f4cfa3a767c5c25994f50e5e69baf26ae0305519e5efa22da33f64487d283
+
+pkgname = draupnir
