@@ -1,19 +1,22 @@
 pkgbase = gr-lida-git
 	pkgdesc = Frontend for DosBox, ScummVM and VDMSound
-	pkgver = 468.30c338b
+	pkgver = 513.e8b9a39
 	pkgrel = 1
 	url = http://www.gr-lida.org/
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = git
-	depends = qt5-base
-	depends = poppler-qt5
 	depends = phonon-qt5
+	depends = poppler-qt5
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-script
 	optdepends = dosbox: Enable support for dosbox emulator
 	optdepends = scummvm: Enable support for scummvm emulator
+	provides = gr-lida
+	conflicts = gr-lida
 	source = gr-lida::git+https://github.com/Monthy/gr-lida.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gr-lida-git
-
