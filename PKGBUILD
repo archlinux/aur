@@ -7,7 +7,6 @@ arch=("any")
 url="https://github.com/romch007/floc"
 license=('MIT')
 depends=("llvm-libs" "gcc-libs")
-optdepends=('clang: linking support')
 provides=('floc')
 makedepends=('git' 'rust' 'llvm')
 source=('git+https://github.com/romch007/floc.git')
