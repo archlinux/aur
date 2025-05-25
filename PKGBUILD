@@ -1,9 +1,8 @@
 # Maintainer: Paulo Fino <somepaulo@duck.com>
-# Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=morewaita-icon-theme-git
 _reponame=MoreWaita
-pkgver=48.1.r0.g3a40e0d # Keep the g before the 7-character short commit ID
+pkgver=48.2.r0.g50cfa41 # Keep the g before the 7-character short commit ID
 pkgrel=1
 pkgdesc="An expanded Adwaita-styled companion icon theme with extra icons for popular apps to complement Gnome Shell's original icons. AUR package maintained by upstream developer."
 arch=(any)
