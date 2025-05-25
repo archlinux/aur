@@ -6,13 +6,13 @@ pkgbase=xmm7360-pci-spat-dkms-git
 pkgname=('xmm7360-pci-spat-dkms-git' 'xmm7360-pci-spat-utils-git')
 epoch=1
 pkgver=0
-pkgrel=3
+pkgrel=4
 pkgdesc='Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem'
 arch=('x86_64')
 url="https://github.com/SimPilotAdamT/xmm7360-pci-SPAT"
 license=('BSD' 'GPL')
 makedepends=('python')
-conflicts=('xmm7360-pci-dkms-git' 'xmm7360-pci-utils-git')
+conflicts=('xmm7360-pci-dkms-git' 'xmm7360-pci-utils-git' 'xmm7360-pci-spat-dkms' 'xmm7360-pci-spat-utils')
 source=("git+$url"
         "dkms.conf"
         "xmm7360.service"
@@ -42,17 +42,17 @@ build() {
 }
 
 package_xmm7360-pci-spat-dkms-git() {
-  replaces=('xmm7360-pci-spat-dkms')
-  provides=('xmm7360-pci-spat-dkms')
-  pkgdesc+=" – module sources"
+  #replaces=('xmm7360-pci-dkms')
+  provides=('xmm7360-pci-dkms' 'xmm7360-pci-spat-dkms')
+  pkgdesc+=" – Kernel Module"
   depends=('dkms')
   cd ${__pkgbase}
   install -Dm644 "${srcdir}"/dkms.conf xmm7360.c Makefile -t "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
 }
 
 package_xmm7360-pci-spat-utils-git() {
-  replaces=('xmm7360-pci-spat-utils')
-  replaces=('xmm7360-pci-spat-utils')
+  #replaces=('xmm7360-pci-utils')
+  provides=('xmm7360-pci-utils' 'xmm7360-pci-spat-utils')
   install=xmm7360.install
   pkgdesc+=" – utilities only"
   depends=('xmm7360-pci-spat-dkms' 'dbus-python' 'python-pyroute2' 'python-configargparse')
