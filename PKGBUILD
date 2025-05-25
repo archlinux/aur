@@ -1,6 +1,6 @@
 pkgname=python-ezdxf
-_commit=063bb398c5c4ed036611c8699668bd0b9a0e3a86
-pkgver=1.3.5
+_commit=8240df5793daf2fd7db95d118a78e17ec92043ec
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Python interface to DXF"
 arch=('x86_64')
@@ -25,7 +25,7 @@ python-pytest
 python-pillow
 )
 source=("git+https://github.com/mozman/ezdxf.git#commit=${_commit}")
-sha256sums=('SKIP')
+sha256sums=('0c13114b34418fc5b50a182d9b8ec7cc1c7249c62e6e119989bb9a9077d77a55')
 
 pkgver() {
   cd ezdxf
