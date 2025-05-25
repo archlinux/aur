@@ -1,0 +1,13 @@
+pkgbase = nodejs-sentry-node
+	pkgdesc = Official Sentry SDKs for JavaScript
+	pkgver = 9.22.0
+	pkgrel = 1
+	url = https://github.com/getsentry/sentry-javascript
+	arch = any
+	license = MIT
+	makedepends = npm
+	noextract = node-.tgz
+	source = node-9.22.0.tgz::https://registry.npmjs.org/@sentry/node/-/node-9.22.0.tgz
+	sha256sums = ff92910fffd16ff0ef3a49ddd7cf9b5dff7d8e17c0f14b5aaa1f631305b68edf
+
+pkgname = nodejs-sentry-node
