@@ -1,13 +1,13 @@
 pkgbase = polylib
 	pkgdesc = A library of polyhedral functions
-	pkgver = 5.22.5
-	pkgrel = 6
+	pkgver = 5.22.8
+	pkgrel = 1
 	url = http://icps.u-strasbg.fr/polylib/
 	arch = x86_64
 	license = GPL-3.0-or-later
-	source = http://icps.u-strasbg.fr/polylib/polylib_src/polylib-5.22.5.tar.gz
+	source = http://icps.u-strasbg.fr/polylib/polylib_src/polylib-5.22.8.tar.gz
 	source = fix-tests.patch
-	sha256sums = 84622ff9dfa5d06f0c266960ed078bd3577a30fde6d7f8bed1041b9838cb731f
+	sha256sums = 98b7578d13c374b7c88bd41ed753bbdeeb49f7bb71a75f0e8366797ae3dc800d
 	sha256sums = 8c51bb4e15ae4c4685dd53dbb0e0bf8ff89c7a98b79bd85ed3a1f03f821b1215
 
 pkgname = polylib
@@ -16,4 +16,4 @@ pkgname = polylib
 pkgname = polylib-gmp
 	depends = glibc
 	depends = gmp
-	depends = polylib>=5.22.5
+	depends = polylib>=5.22.8

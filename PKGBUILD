@@ -2,15 +2,15 @@
 # Category: science
 pkgname=('polylib' 'polylib-gmp')
 pkgbase='polylib'
-pkgver='5.22.5'
-pkgrel=6
+pkgver='5.22.8'
+pkgrel=1
 pkgdesc='A library of polyhedral functions'
 arch=('x86_64')
 url='http://icps.u-strasbg.fr/polylib/'
 license=('GPL-3.0-or-later')
 source=("http://icps.u-strasbg.fr/polylib/polylib_src/$pkgname-$pkgver.tar.gz"
         'fix-tests.patch')
-sha256sums=('84622ff9dfa5d06f0c266960ed078bd3577a30fde6d7f8bed1041b9838cb731f'
+sha256sums=('98b7578d13c374b7c88bd41ed753bbdeeb49f7bb71a75f0e8366797ae3dc800d'
             '8c51bb4e15ae4c4685dd53dbb0e0bf8ff89c7a98b79bd85ed3a1f03f821b1215')
 
 prepare() {
