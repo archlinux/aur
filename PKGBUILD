@@ -2,7 +2,7 @@
 pkgname=kitsas-appimage
 _basename=kitsas
 _reponame=kitupiikki
-pkgver=5.8
+pkgver=5.9
 _repover="${pkgver//_/-}"
 _appimagefile="Kitsas-${_repover}-x86_64.AppImage"
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
 	"https://github.com/artoh/${_reponame}/raw/v${_repover}/${_basename}.png"
 )
 noextract=()
-sha256sums=('a1451d9226ed629221db30197dd66c34e3987d18b696ab7a24fe7625139c539a'
+sha256sums=('1fd7268986d7f35cd03e5aa121a7d1ae04d53d9b782829aa3a35620f6549966a'
             'f015743e6b0f79b2f14d6af2a747a3839256288e006175c35ba6a449b4b1687c'
             'ec145dcce45fc98b9e50e0eb4b3ace45dbb5f62c8d678a300076d951ba80336e')
 
