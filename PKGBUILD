@@ -1,8 +1,8 @@
 # Maintainer: Repentinus <aur at repentinus dot eu>
 # SPDX-License-Identifier: CC0-1.0
 
-pkgname='nginx-mainline-mod-http-xslt-filter'
-pkgver=1.25.3
+pkgname=nginx-mainline-mod-http-xslt-filter
+pkgver=1.27.5
 pkgrel=1
 pkgdesc='Transform nginx XML responses using XSLT stylesheets'
 arch=('x86_64')
@@ -12,20 +12,28 @@ depends=('nginx-mainline' 'libxml2' 'libxslt')
 makedepends=("nginx-mainline-src=$pkgver")
 
 prepare() {
-	cp -r /usr/src/nginx/ ./
+	mkdir -p build
+	cd build
+	ln -sf /usr/src/nginx/auto
+	ln -sf /usr/src/nginx/src
 }
 
 build() {
-	cd 'nginx'
-	_options=$(nginx -V |&
-	           sed -nE 's/^configure arguments: ([^\n]*)$/\1/p' |
-	           sed -nE 's/([^'"'"' \t\n]+('"'"'([^'"'"'\]|\\'"'"'?)*'"'"'|"([^"\\]|\\"?)*")?) ?/\1\n/gp')
-	xargs ./configure --with-http_xslt_module=dynamic <<< ${_options}
+	cd build
+	nginx -V 2>&1 |
+		grep -o -- '--prefix=.*$' |
+		xargs printf '%s\0' |
+		sed -z \
+			-e'/^--with-.*=dynamic$/d' \
+			-e'/^--with-ld-opt=/{s/-Wl,/\0-E,/;s/-Wl,/-lpcre \0/}' |
+		xargs -t0 /usr/src/nginx/configure \
+			--with-http_xslt_module=dynamic
+
 	make modules
 }
 
 package() {
-	cd 'nginx/objs'
+	cd build/objs
 	install -Dm644 -t "$pkgdir/usr/lib/nginx/modules/$f" *.so
 	install -dm755 "$pkgdir/usr/share/licenses/"
 	ln -s '/usr/share/licenses/nginx/' "$pkgdir/usr/share/licenses/$pkgname"
