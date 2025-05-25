@@ -1,6 +1,6 @@
 pkgbase = ceccomp
 	pkgdesc = A C-based seccomp analysis tool
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/dbgbgtf1/Ceccomp
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = ceccomp
 	makedepends = git
 	depends = libseccomp
 	depends = glibc
-	source = ceccomp::git+https://github.com/dbgbgtf1/Ceccomp.git#tag=v2.1?signed
+	source = ceccomp::git+https://github.com/dbgbgtf1/Ceccomp.git#tag=v2.2?signed
 	validpgpkeys = 0816A179BB09248F30468BD6542A0969B5CEDCDB
 	validpgpkeys = A7ACCC386C15E3C554D34B3EAB08F98092A456BB
-	b2sums = f47b7e8208f8a25e26c6282abec89e04d35d149a8ed75c0cb1e2b084804ce6b3a5e2c4d1a91aaf2abf75a2bec494535defa4670e3a96ac7369fa844b10cbbb34
+	b2sums = 85466b6b196d5807de1d661c791164aef9e668c66fe39484bc439dea35b4cb9509ab884a4ffc3da90766e26a6da96095035d239decaae45cc117889c80f1979c
 
 pkgname = ceccomp
