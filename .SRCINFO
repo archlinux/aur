@@ -1,16 +1,14 @@
-pkgbase = ipu6-camera-bin
-	pkgdesc = Intel IPU6 camera binaries
-	pkgver = r70.c4f9e52
+pkgbase = intel-ipu7-camera-bin
+	pkgdesc = Intel IPU7 camera binaries
+	pkgver = r25.7ad0a26
 	pkgrel = 1
-	url = https://github.com/intel/ipu6-camera-bins
+	url = https://github.com/intel/ipu7-camera-bins
 	arch = x86_64
 	license = unknown
 	makedepends = git
-	depends = intel-ipu6-dkms-git
+	depends = intel-ipu7-dkms-git
 	depends = glibc
-	provides = intel-ipu6ep-camera-bin
-	replaces = intel-ipu6ep-camera-bin
-	source = git+https://github.com/intel/ipu6-camera-bins.git
+	source = git+https://github.com/intel/ipu7-camera-bins.git
 	sha256sums = SKIP
 
-pkgname = intel-ipu6-camera-bin
+pkgname = intel-ipu7-camera-bin

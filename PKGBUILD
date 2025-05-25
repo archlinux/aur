@@ -1,17 +1,14 @@
 # Maintainer: Karim Vergnes <me@thesola.io>
 
-pkgbase=ipu6-camera-bin
-pkgname="intel-ipu6-camera-bin"
-provides=(intel-ipu6ep-camera-bin)
-replaces=(intel-ipu6ep-camera-bin)
-_pkgname=ipu6-camera-bins
-pkgver=r70.c4f9e52
+pkgname="intel-ipu7-camera-bin"
+_pkgname=ipu7-camera-bins
+pkgver=r25.7ad0a26
 pkgrel=1
-pkgdesc="Intel IPU6 camera binaries"
+pkgdesc="Intel IPU7 camera binaries"
 arch=('x86_64')
 url="https://github.com/intel/$_pkgname"
 license=('unknown')
-depends=('intel-ipu6-dkms-git' 'glibc')
+depends=('intel-ipu7-dkms-git' 'glibc')
 makedepends=('git')
 source=("git+${url}.git")
 sha256sums=('SKIP')
