@@ -2,17 +2,20 @@
 _pkgname=yumenikki
 pkgname=${_pkgname}-jp
 pkgver=0.10
-pkgrel=2
-pkgdesc="Surrealistic adventure game about exploring the dreams of a hikikomori character named Madotsuki (Japanese)."
+pkgrel=4
+pkgdesc="Surrealistic adventure game about exploring the dreams (Japanese)"
 url='http://www3.nns.ne.jp/pri/tk-mto/'
 arch=('any')
 license=('custom')
-depends=('easyrpg-player') #fluidsynth,soundfont-gmgsx?
-makedepends=('unarchiver' 'rpg2003-rtp')
+depends=('easyrpg-player' 'rpg2003-rtp') #fluidsynth,soundfont-gmgsx?
+makedepends=('unarchiver')
 source=("http://ftp.vector.co.jp/43/88/3084/${_pkgname}${pkgver}.lzh"
-        ${pkgname}.{desktop,png,sh} )
+${pkgname}.{desktop,png,sh} )
+# Cannot DL patch: "https://www3.nns.ne.jp/~tk-mto/yumesyuusei.lzh"
 md5sums=('f3a16c395078dcec4950200732bc5194'
-         'SKIP'{,,})
+         'b383c1a5cc04c8a637597eb8a45f5534'
+         '50288d205493517d498ddfcc40df2b09'
+         'e6d724ce5a36ab364f0eed09a03f3ffe')
 options=(!strip)
 prepare() {
   unar -e cp932 "${_pkgname}${pkgver}.lzh" #unsupoorted by bsdtar yet
