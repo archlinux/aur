@@ -1,7 +1,7 @@
 
 # Maintainer: Aryan Ghasemi <aryangh1379@gmail.com>
 pkgname=bunster
-pkgver=0.7.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Compile shell scripts to static binaries."
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD-3-Clause')
 makedepends=('go')
 conflicts=('bunster-bin')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5543a988e747abe3984ce8491656f2806de3c25fa527c12fdf82cc40b6b654cd')
+sha256sums=('65ae0de089da9ae7166ff608a9eedbdb42eab5abfbfab347fed58cb5466fa7e2')
 
 build() {
     cd "$srcdir"
