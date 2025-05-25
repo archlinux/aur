@@ -9,6 +9,7 @@ pkgbase = ascii-draw
 	makedepends = meson
 	depends = gtk4
 	depends = libadwaita
+	depends = python-cairo
 	depends = python-emoji
 	depends = python-gobject
 	depends = python-pyfiglet
