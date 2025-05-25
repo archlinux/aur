@@ -5,6 +5,7 @@ _pkgname=${pkgname#nodejs-}
 pkgdesc="The fastest and simplest library for SQLite3 in Node.js."
 url="https://github.com/WiseLibs/better-sqlite3"
 license=(MIT)
+depends=()
 makedepends=('npm')
 noextract=("${_pkgname}-${pkgver}.tgz")
 sha256sums=('71e2d66a44dafc35649ff82742cf4908557fc31841108d19703b74b7065c0293')
