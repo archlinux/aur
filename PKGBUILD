@@ -15,8 +15,7 @@ depends=(
 makedepends=(
   'meson' 'ninja' 'python-mako' 'libxrandr' 'wayland-protocols'
   'libx11' 'libxext' 'spirv-llvm-translator' 'xorgproto' 'llvm' 'libomxil-bellagio'
-  'git' 'glslang' 'libclc' 'spirv-tools' 'vulkan-headers'
-)
+  'git' 'glslang' 'libclc' 'spirv-tools' 'vulkan-headers')
 provides=('mesa' 'vulkan-driver' 'vulkan-intel' 'vulkan-radeon')
 conflicts=('mesa')
 source=("mesa::git+https://gitlab.freedesktop.org/Triang3l/mesa.git#branch=Terakan")
