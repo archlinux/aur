@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=ggml-hipblas-git
-pkgver=r1952.13bcf9c
+pkgver=r2100.6757e32
 pkgrel=1
 pkgdesc="Tensor library for machine learning (with AMD ROCm optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
