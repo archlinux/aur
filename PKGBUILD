@@ -1,15 +1,16 @@
-# Maintainer: Antonio Voza <vozaanthony at gmail dot com>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: Antonio Voza <vozaanthony at gmail dot com>
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 _pkgname=WhiteSur-gtk-theme
-_pkgver=2024-11-18
-pkgname=whitesur-gtk-theme
+_pkgver=2025-04-03
+pkgname="whitesur-gtk-theme"
 pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc='A macOS BigSur-like theme for your GTK apps.'
 arch=('any')
-url='https://github.com/vinceliuice/WhiteSur-gtk-theme'
+url="https://github.com/vinceliuice/$_pkgname"
 license=('MIT')
 makedepends=('sassc' 'which')
 optdepends=(
@@ -19,11 +20,10 @@ optdepends=(
   'whitesur-cursor-theme: matching cursor theme'
 )
 conflicts=("${pkgname}-git")
-install="${pkgname}.install"
 source=(
-  "${pkgname}-${_pkgver}.tar.gz::${url}/archive/${_pkgver}.tar.gz"
+  "${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
 )
-sha512sums=('07554d64c7cc4261f8b05ef710c2863385a035baadabebcb4acf89920e953afe40c2fa9a7faa078e6888a4de6e0d179e873608d15b82ee1ac13541d22e85d8b3')
+b2sums=('1d38b9b46a21d0f42d6ed3592ea1e57ddfbe65ac152df75b3a93b9367da1214c5430d65f04451b25a286fef540c1b23d5f81e2a273e343a7620de291d4c22a81')
 
 package() {
   cd "${_pkgname}-${_pkgver}"

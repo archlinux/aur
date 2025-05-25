@@ -1,9 +1,0 @@
-post_install() {
-  echo ""
-  echo "XFCE: remember to run 'xfce4-panel -r' to fix the panel opacity every time you switch themes."
-  echo ""
-}
-
-post_upgrade() {
-  post_install
-}
