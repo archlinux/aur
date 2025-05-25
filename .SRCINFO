@@ -1,0 +1,15 @@
+pkgbase = nodejs-interface-manager
+	pkgdesc = This library provides a command-oriented presentation interface for Matrix bots
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/the-draupnir-project/interface-manager
+	arch = any
+	license = CC0-1.0
+	license = CC-BY-SA-4.0
+	license = Apache-2.0
+	makedepends = npm
+	noextract = interface-manager-.tgz
+	source = interface-manager-4.1.0.tgz::https://registry.npmjs.org/@the-draupnir-project/interface-manager/-/interface-manager-4.1.0.tgz
+	sha256sums = b4f0288deb8d52776f6c727e407a97e0294a829265d910b7accbe28897adafe2
+
+pkgname = nodejs-interface-manager
