@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=ggml-git
-pkgver=r1952.13bcf9c
+pkgver=r2100.6757e32
 pkgrel=1
 pkgdesc="Tensor library for machine learning"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -19,8 +19,7 @@ source=("${pkgname%%-git}::git+${url}")
 pkgver() {
   cd "${srcdir}/${pkgname%%-git}"
 
-  printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {

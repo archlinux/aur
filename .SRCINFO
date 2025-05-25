@@ -1,6 +1,6 @@
 pkgbase = ggml-git
 	pkgdesc = Tensor library for machine learning
-	pkgver = r1952.13bcf9c
+	pkgver = r2100.6757e32
 	pkgrel = 1
 	url = https://github.com/ggml-org/ggml
 	arch = armv7h
