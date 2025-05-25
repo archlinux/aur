@@ -35,13 +35,13 @@ build() {
     --buildtype=release \
     --optimization=3 \
     -Db_lto=false \
-    -Dgallium-drivers=r600 \
+    -Dgallium-drivers=r600,swrast \
     -Dvulkan-drivers=amd_terascale \
     -Dplatforms=x11,wayland \
     -Ddri3=enabled \
     -Degl=enabled \
     -Dgallium-extra-hud=true \
-    -Dgallium-nine=false \
+    -Dgallium-nine=true \
     -Dgallium-va=enabled \
     -Dgallium-vdpau=enabled \
     -Dgallium-xa=disabled \
