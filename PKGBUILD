@@ -5,8 +5,8 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=5.13.1
-pkgrel=2
+pkgver=5.14.3
+pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL-3.0-or-later')
@@ -46,6 +46,7 @@ makedepends=(
   git
   glib2-devel
   gobject-introspection
+  gperf # for tde2e
   libtg_owt
   microsoft-gsl
   mm-common
@@ -68,24 +69,43 @@ conflicts=("forkgram-bin")
 options=('!debug' '!emptydirs')
 
 _pkgsrc="frk-v$pkgver-full"
+_pkgsrc_tdlib="telegram-tdlib"
 _pkgext="tar.gz"
-source=("$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/v$pkgver/$_pkgsrc.$_pkgext")
-sha256sums=('609e786de65a925abe9aa491757d98ccd9ed3e0c98c0b9985f95fe14605bcf16')
-
-prepare() {
-  # for Qt 6.9
-  sed -E -e 's&QGenericUnixServices&QDesktopUnixServices&' \
-    -e 's&qgenericunixservices_p&qdesktopunixservices_p&' \
-    -i "$_pkgsrc/Telegram/lib_base/base/platform/linux/base_linux_xdp_utilities.cpp"
-}
+source=(
+  "$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/v$pkgver/$_pkgsrc.$_pkgext"
+  "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
+)
+sha256sums=(
+  '9c800258b48e1f7038017a7f50c02f0f64feae6caadcfe22db40e7cc70c39cda'
+  'SKIP'
+)
 
 build() {
+  echo "Building tde2e..."
+  local _cmake_tde2e=(
+    -B "build_tde2e"
+    -S "$_pkgsrc_tdlib"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DTD_E2E_ONLY=ON
+    -DBUILD_SHARED_LIBS=OFF
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_tde2e[@]}"
+  cmake --build "build_tde2e"
+  DESTDIR="$srcdir/deps" cmake --install "build_tde2e"
+
+  echo "Building forkgram..."
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
     -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON
     -DTDESKTOP_API_TEST=ON
     -DTDESKTOP_API_ID=611335
