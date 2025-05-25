@@ -1,0 +1,15 @@
+pkgbase = matugen-git
+	pkgdesc = A material you color generation tool with templates
+	pkgver = 2.4.1.r20.g4619cca
+	pkgrel = 1
+	url = https://github.com/InioX/matugen
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = cargo
+	makedepends = git
+	provides = matugen=2.4.1.r20
+	conflicts = matugen
+	source = matugen::git+https://github.com/InioX/matugen.git
+	sha256sums = SKIP
+
+pkgname = matugen-git
