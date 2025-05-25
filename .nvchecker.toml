@@ -1,0 +1,5 @@
+[visualdl]
+source = "github"
+github = "PaddlePaddle/visualdl"
+use_latest_release = "true"
+prefix = "v"
