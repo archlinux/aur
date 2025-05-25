@@ -1,0 +1,13 @@
+pkgbase = nodejs-typebox
+	pkgdesc = Code Generation for TypeBox Types
+	pkgver = 0.34.33
+	pkgrel = 1
+	url = https://github.com/sinclairzx81/typebox
+	arch = any
+	license = MIT
+	makedepends = npm
+	noextract = typebox-.tgz
+	source = typebox-0.34.33.tgz::https://registry.npmjs.org/@sinclair/typebox/-/typebox-0.34.33.tgz
+	sha256sums = b00381ed82f26dc8698387fcc15a571273876c00ec570511d3308185136d1326
+
+pkgname = nodejs-typebox
