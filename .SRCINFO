@@ -1,7 +1,7 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
 	pkgver = 3.0.21
-	pkgrel = 16
+	pkgrel = 17
 	url = https://www.videolan.org/vlc/
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = vlc-luajit
 	license = LGPL-2.1-or-later
 	makedepends = a52dec
 	makedepends = aalib
-	makedepends = abseil-cpp>=20250127.1
+	makedepends = abseil-cpp>=20250512.0
 	makedepends = alsa-lib
 	makedepends = aom>=3
 	makedepends = aribb24
@@ -90,7 +90,7 @@ pkgbase = vlc-luajit
 	makedepends = opus
 	makedepends = pcsclite
 	makedepends = projectm
-	makedepends = protobuf>=30.2
+	makedepends = protobuf>=31.0
 	makedepends = qt5-base
 	makedepends = qt5-svg
 	makedepends = qt5-x11extras
@@ -126,7 +126,7 @@ pkgbase = vlc-luajit
 
 pkgname = vlc-luajit
 	depends = a52dec
-	depends = abseil-cpp>=20250127.1
+	depends = abseil-cpp>=20250512.0
 	depends = aribb24
 	depends = bash
 	depends = cairo
