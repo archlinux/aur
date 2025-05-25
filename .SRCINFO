@@ -1,13 +1,17 @@
 pkgbase = archlinuxarm-keyring
 	pkgdesc = Arch Linux ARM PGP keyring
-	pkgver = 20140119
+	pkgver = 20240419
 	pkgrel = 1
 	url = http://archlinuxarm.org
 	install = archlinuxarm-keyring.install
 	arch = any
 	license = GPL
-	source = http://archlinuxarm.org/builder/src/archlinuxarm-keyring-20140119.tar.gz
-	md5sums = 187140dd1078a4466f79f82f85a43f29
+	depends = pacman
+	source = archlinuxarm.gpg
+	source = archlinuxarm-trusted
+	source = archlinuxarm-revoked
+	sha256sums = 6ce771e853f04a38a5b533cb33e61f877b9b06b58b6db051eb8a15d737a2332f
+	sha256sums = f2a7250f2a2b77542f82f4219b2bae7895f27b3dcfdf350b497e2be306af776d
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = archlinuxarm-keyring
-

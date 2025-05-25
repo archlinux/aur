@@ -1,24 +1,17 @@
-# Maintainer: Yamada Hayao <hayao@fascode.net>
-# Maintainer: Kevin Mihelich <kevin@archlinuxarm.org>
-
 pkgname=archlinuxarm-keyring
-pkgver=20140119
+pkgver=20240419
 pkgrel=1
 pkgdesc='Arch Linux ARM PGP keyring'
 arch=('any')
 url='http://archlinuxarm.org'
 license=('GPL')
 install="${pkgname}.install"
-source=(
-        "http://archlinuxarm.org/builder/src/${pkgname}-${pkgver}.tar.gz"
-        #"http://archlinuxarm.org/builder/src/${pkgname}-${pkgver}.tar.gz.sig"
-)
-md5sums=(
-        '187140dd1078a4466f79f82f85a43f29'
-        #'SKIP'
-)
+depends=('pacman')
+source=('archlinuxarm'{.gpg,-trusted,-revoked})
+sha256sums=('6ce771e853f04a38a5b533cb33e61f877b9b06b58b6db051eb8a15d737a2332f'
+            'f2a7250f2a2b77542f82f4219b2bae7895f27b3dcfdf350b497e2be306af776d'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make PREFIX=/usr DESTDIR=${pkgdir} install
+	install -D -m0644 -t "${pkgdir}"/usr/share/pacman/keyrings/ 'archlinuxarm'{.gpg,-trusted,-revoked}
 }
