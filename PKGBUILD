@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=(
   'meson' 'ninja' 'python-mako' 'libxrandr' 'wayland-protocols'
-  'libx11' 'libxext' 'spirv-llvm-translator ' 'xorgproto' 'llvm' 'libomxil-bellagio'
+  'libx11' 'libxext' 'spirv-llvm-translator' 'xorgproto' 'llvm' 'libomxil-bellagio'
   'git' 'glslang' 'libclc' 'spirv-tools' 'vulkan-headers'
 )
 provides=('mesa' 'vulkan-driver' 'vulkan-intel' 'vulkan-radeon')
