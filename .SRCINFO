@@ -1,0 +1,16 @@
+pkgbase = ffmpeg_split-git
+	pkgdesc = Split a media file by embedded chapter information, using ffmpeg.
+	pkgver = 1.0.r23.20240424.1e80bbf
+	pkgrel = 1
+	url = https://github.com/harryjackson/ffmpeg_split
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	depends = ffmpeg
+	depends = python>=3
+	provides = ffmpeg_split=1.0.r23.20240424.1e80bbf
+	conflicts = ffmpeg_split
+	source = ffmpeg_split::git+https://github.com/harryjackson/ffmpeg_split.git
+	sha256sums = SKIP
+
+pkgname = ffmpeg_split-git
