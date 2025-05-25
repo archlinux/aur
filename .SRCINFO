@@ -1,6 +1,6 @@
 pkgbase = python-glasbey
 	pkgdesc = Algorithmically generate categorical color palettes
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/lmcinnes/glasbey
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-glasbey
 	depends = python-colorspacious
 	depends = python-matplotlib
 	depends = python-scikit-learn
-	source = glasbey-release-0.2.1.tar.gz::https://github.com/lmcinnes/glasbey/archive/release-0.2.1.tar.gz
-	sha512sums = fbbee24659f9cd5b5a85735c81db202dfd29fa6e82f2831459baa7f2e7d284e3a31b21cf8a2eaa508dcba4bbc744513e4b14ccc2daa139c6f819af5434014d9e
+	source = glasbey-release-0.3.0.tar.gz::https://github.com/lmcinnes/glasbey/archive/release-0.3.0.tar.gz
+	sha512sums = 419751dd8e12b7d16e5d73c4a33e57abece56c771bbb780aadcdf695c79a4841f0fd74900dd69b4d95917ffde3ecdeb8a5bfe9389e47d82e0149840a18ddaa89
 
 pkgname = python-glasbey
