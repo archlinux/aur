@@ -1,8 +1,8 @@
 # Maintainer: username227 <gfrank227 [at] gmail [dot] com> 
 _pkgname=torzu
 pkgname=torzu
-pkgver=2024.08.10
-_pkgver=2024-08-10
+pkgver=2025.04.16
+_pkgver=2025-04-16
 pkgrel=1
 pkgdesc="Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind."
 arch=(x86_64)
@@ -10,11 +10,10 @@ url=https://notabug.org/litucks/torzu
 license=(GPL-3.0-or-later)
 provides=('torzu')
 depends=('alsa-lib' 'brotli' 'catch2' 'enet' 'llvm-libs' 'freetype2' 'gcc-libs' 'glibc' 'glu' 'hicolor-icon-theme' 'gamemode' 'libass' 'libpulse' 'libtool' 'libvdpau' 'lz4' 'qt5-base' 'qt5-multimedia' 'qt5-webengine' 'sdl2' 'zlib')
-makedepends=('curl' 'autoconf' 'cmake' 'gcc13' 'git' 'glslang' 'alsa-lib' 'glu' 'hidapi' 'libpulse' 'systemd-libs' 'xcb-util-wm' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'libxcb' 'libxext' 'libxkbcommon-x11' 'nasm' 'qt5-base' 'qt5-webengine' 'qt5-multimedia' 'mbedtls2' 'fmt' 'nlohmann-json' 'zstd' 'openssl' 'libunistring' 'aom' 'automake' 'base-devel' 'libass' 'freetype2' 'haskell-gnutls' 'lame' 'sdl2' 'libva' 'libvorbis' 'libxcb' 'meson' 'ninja' 'pkgconf' 'texinfo' 'wget' 'vasm' 'x264' 'x265' 'numactl' 'libvpx' 'libfdk-aac' 'libopusenc' 'ffmpeg' 'svt-av1' 'dav1d' 'boost' 'clang' 'vulkan-headers' 'ffmpeg4.4' 'zip' 'unzip' 'tar' 'boost-libs' 'spirv-headers')
+makedepends=('curl' 'autoconf' 'cmake' 'gcc' 'git' 'glslang' 'alsa-lib' 'glu' 'hidapi' 'libpulse' 'systemd-libs' 'xcb-util-wm' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'libxcb' 'libxext' 'libxkbcommon-x11' 'nasm' 'qt5-base' 'qt5-webengine' 'qt5-multimedia' 'mbedtls2' 'fmt' 'nlohmann-json' 'zstd' 'openssl' 'libunistring' 'aom' 'automake' 'base-devel' 'libass' 'freetype2' 'haskell-gnutls' 'lame' 'sdl2' 'libva' 'libvorbis' 'libxcb' 'meson' 'ninja' 'pkgconf' 'texinfo' 'wget' 'vasm' 'x264' 'x265' 'numactl' 'libvpx' 'libfdk-aac' 'libopusenc' 'ffmpeg' 'svt-av1' 'dav1d' 'boost' 'clang' 'vulkan-headers' 'ffmpeg4.4' 'zip' 'unzip' 'tar' 'boost-libs' 'spirv-headers')
 conflicts=('torzu-git')
 options=(!debug lto strip)
-source=(
-  git+https://notabug.org/litucks/torzu#tag=$_pkgver
+source=(git+https://notabug.org/litucks/torzu#tag=$_pkgver
   git+https://github.com/lsalzman/enet.git
   cubeb::git+http://github.com/mozilla/cubeb.git
   git+https://github.com/libusb/libusb.git
@@ -22,27 +21,22 @@ source=(
   git+https://github.com/xiph/opus.git
   git+https://github.com/libsdl-org/SDL.git
   git+https://github.com/yhirose/cpp-httplib.git
-  ffmpeg::git+https://github.com/FFmpeg/FFmpeg.git
-  git+https://github.com/microsoft/vcpkg.git
   git+https://github.com/bylaws/libadrenotools.git
   git+https://github.com/lat9nq/tzdb_to_nx.git
   git+https://github.com/brofield/simpleini.git
   git+https://github.com/merryhime/oaknut.git
-  git+https://github.com/KhronosGroup/SPIRV-Headers.git
   git+https://github.com/KhronosGroup/SPIRV-Tools.git
+  git+https://github.com/KhronosGroup/SPIRV-Headers.git
   git+https://github.com/fmtlib/fmt.git
   git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git
   git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
   git+https://github.com/KhronosGroup/Vulkan-Headers.git
+  git+https://github.com/arun11299/cpp-jwt.git
   # Submodule Submodules
   git+https://github.com/eggert/tz.git #submodule_of_tzdb_to_nx
   git+https://github.com/bylaws/liblinkernsbypass.git #submodule_of_libadrenogtools
-  git+https://github.com/google/googletest.git #submodule_of_cubeb
-  git+https://github.com/arsenm/sanitizers-cmake.git #submodule_of_cubeb
-  )
-b2sums=('SKIP'
-        'SKIP'
-        'SKIP'
+  git+https://github.com/arsenm/sanitizers-cmake.git) #submodule_of_cubeb
+b2sums=('24f261fe93e7c1cd118f01862eceffca9f607fe92b53c210356600b70340638826ec03fdd4a6aa6c226053926aa571955c3e57da3eaf99d2de3de09c9952b4fc'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -64,33 +58,27 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP')
-
 prepare() {
-  cd "$srcdir/$_pkgname"
-  git submodule update --init --recursive --depth 1
-  for submodule in {enet,cubeb,libusb,xbyak,opus,SDL,cpp-httplib,ffmpeg,vcpkg,libadrenotools,tzdb_to_nx,simpleini,oaknut,SPIRV-Headers,SPIRV-Tools,fmt,Vulkan-Utility-Libraries,VulkanMemoryAllocator,Vulkan-Headers};
+  cd "$_pkgname"
+  for _submodule in enet cubeb libusb xbyak opus SDL cpp-httplib tzdb_to_nx libadrenotools simpleini cpp-jwt oaknut fmt;
   do
-    git config --file=.gitmodules submodule.$submodule.url "${srcdir}"/$submodule
+    git config submodule.$_submodule.url ../$_submodule
   done
-  git -c protocol.file.allow=always submodule update --init
-
-  pushd externals/cubeb
-  for submodule in {sanitiers-cmake,googletest};
-  do
-  git config --file=.gitmodules submodule.$submodule.url "${srcdir}"/$submodule
-  done
-  git -c protocol.file.allow=always submodule update --init
-  popd
-
-  pushd externals/libadrenotools
-  git config submodule.lib/linkersbypass.url "${srcdir}"/linkernsbypass
+  git config submodule.externals/SDL.url ../SDL
+  git config submodule.externals/VulkanMemoryAllocator.url ../VulkanMemoryAllocator
+  git config submodule.externals/SPIRV-Headers.url ../SPIRV-Headers
+  git config submodule.externals/SPIRV-Tools.url ../SPIRV-Tools
+  git config submodule.externals/Vulkan-Utility-Libraries.url ../Vulkan-Utility-Libraries
+  git config submodule.externals/Vulkan-Headers.url ../Vulkan-Headers
   git -c protocol.file.allow=always submodule update
-  popd
-
-  pushd externals/nx_tzdb/tzdb_to_nx
-  git config submodule.externals/tz/tz.url "${srcdir}"/tz
+  
+  cd $srcdir/$_pkgname/externals/cubeb
+  git config submodule.cmake/sanitizers-cmake.url ../../../sanitizers-cmake
   git -c protocol.file.allow=always submodule update
-  popd
+  
+  cd $srcdir/$_pkgname/externals/nx_tzdb/tzdb_to_nx
+  git config submodule.externals/tz/tz.url ../../../../tz
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -99,25 +87,23 @@ build() {
   CXXFLAGS+=" -I/usr/include/libusb-1.0"
   
   cmake -B build -G Ninja \
-    -DTORZU_USE_BUNDLED_VCPKG=ON \
+    -DYUZU_USE_BUNDLED_VCPKG=OFF \
+    -DYUZU_CHECK_SUBMODULES=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_CXX_FLAGS="-march=x86-64-v2" \
-    -DCMAKE_CXX_COMPILER=/usr/bin/g++-13 \
-    -DCMAKE_C_COMPILER=/usr/bin/gcc-13 \
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
     -DENABLE_QT_TRANSLATION=OFF \
-    -DUSE_DISCORD_PRESENCE=ON \
+    -DYUZU_USE_EXTERNAL_SDL2=OFF \
+    -DYUZU_USE_FASTER_LD=OFF \
     -DYUZU_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=OFF \
-    -DTORZU_ENABLE_COMPATIBILITY_REPORTING=${ENABLE_COMPATIBILITY_REPORTING:-"OFF"} \
-    -DTORZU_USE_BUNDLED_FFMPEG=ON \
-    -DTORZU_ENABLE_LTO=ON \
-    -DTORZU_CRASH_DUMPS=OFF \
+    -DYUZU_ENABLE_COMPATIBILITY_REPORTING=${ENABLE_COMPATIBILITY_REPORTING:-"OFF"} \
+    -DYUZU_USE_BUNDLED_FFMPEG=OFF \
+    -DYUZU_ENABLE_LTO=ON \
+    -DYUZU_CRASH_DUMPS=OFF \
     -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DTORZU_ROOM=OFF \
+    -DYUZU_ROOM=OFF \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-    -DFFmpeg_COMPONENTS="swscale;avutil;avfilter;avcodec" \
-    -DFFmpeg_PREFIX=$srcdir/externals/ffmpeg/ffmpeg \
-    -GNinja \
     -Wno-dev
   ninja -C build
 } 
