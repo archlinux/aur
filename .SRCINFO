@@ -1,6 +1,6 @@
 pkgbase = heroic-games-launcher-electron-git
 	pkgdesc = Native GOG, Epic Games and Amazon games launcher for Linux, with the system electron (unsupported).
-	pkgver = 2.17.0.r7.g4e9e57ed
+	pkgver = 2.17.0.r7.g4e9e57edb
 	pkgrel = 1
 	url = https://heroicgameslauncher.com/
 	arch = x86_64

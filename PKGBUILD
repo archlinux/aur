@@ -2,7 +2,7 @@
 
 pkgname=heroic-games-launcher-electron-git
 _pkgname=HeroicGamesLauncher
-pkgver=2.17.0.r7.g4e9e57ed
+pkgver=2.17.0.r7.g4e9e57edb
 pkgrel=1
 pkgdesc="Native GOG, Epic Games and Amazon games launcher for Linux, with the system electron (unsupported)."
 arch=(x86_64)
@@ -43,7 +43,7 @@ package() {
   cp -R ./$_pkgname/dist/linux-unpacked/. "${pkgdir}/usr/lib/heroic/"
 
   # executable
-  ln -s /usr/lib/heroic/heroic "${pkgdir}/usr/bin/heroic"
+  ln -sf "/usr/lib/heroic/heroic" "${pkgdir}/usr/bin/heroic"
 
   # icon
   install -Dm644 ./$_pkgname/flatpak/com.heroicgameslauncher.hgl.png -t "${pkgdir}/usr/share/pixmaps"
