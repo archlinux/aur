@@ -24,7 +24,7 @@ index 3c295111a..b579d0c61 100644
 +    {
 +        EvalContextVariablePutSpecial(ctx, SPECIAL_SCOPE_SYS, lval,
 +                                      "Manjaro", CF_DATA_TYPE_STRING,
-+                                      "source=agent,derived-from=arch");
++                                      "source=agent,derived-from=manjaro");
 +    }
      else if (EvalContextClassGet(ctx, NULL, "arch") != NULL)
      {
