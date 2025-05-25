@@ -3,8 +3,8 @@
 
 pkgname=nbdkit-git
 _pkgname=nbdkit
-pkgver=r4136.8e5b4e18
-pkgrel=1
+pkgver=r4338.87172574
+pkgrel=2
 pkgdesc="NBD server toolkit"
 arch=('x86_64')
 url="https://gitlab.com/nbdkit/nbdkit/"
@@ -34,7 +34,6 @@ checkdepends=('qemu')
 makedepends=(git)
 source=(
   "${pkgname}::git+https://gitlab.com/nbdkit/nbdkit.git"
-  broken-file.patch
 )
 conflicts=($_pkgname)
 provides=($pkgname)
@@ -46,9 +45,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-
-  # https://gitlab.com/nbdkit/nbdkit/-/issues/27
-  patch -p1 < "${srcdir}/broken-file.patch"
 
 }
 
@@ -76,5 +72,4 @@ check() {
   cd "${srcdir}/${pkgname}"
   make check
 }
-md5sums=('SKIP'
-         'fa25c97231e4630200ca3fbf55d60ed6')
+md5sums=('SKIP')

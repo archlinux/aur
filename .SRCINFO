@@ -1,7 +1,7 @@
 pkgbase = nbdkit-git
 	pkgdesc = NBD server toolkit
-	pkgver = r4136.8e5b4e18
-	pkgrel = 1
+	pkgver = r4338.87172574
+	pkgrel = 2
 	url = https://gitlab.com/nbdkit/nbdkit/
 	arch = x86_64
 	license = custom: BSD
@@ -25,8 +25,6 @@ pkgbase = nbdkit-git
 	provides = nbdkit-git
 	conflicts = nbdkit
 	source = nbdkit-git::git+https://gitlab.com/nbdkit/nbdkit.git
-	source = broken-file.patch
 	md5sums = SKIP
-	md5sums = fa25c97231e4630200ca3fbf55d60ed6
 
 pkgname = nbdkit-git
