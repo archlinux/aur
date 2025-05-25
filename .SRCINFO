@@ -1,0 +1,13 @@
+pkgbase = nodejs-body-parser
+	pkgdesc = Node.js body parsing middleware
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/expressjs/body-parser
+	arch = any
+	license = MIT
+	makedepends = npm
+	noextract = body-parser-.tgz
+	source = body-parser-2.2.0.tgz::https://registry.npmjs.org/body-parser/-/body-parser-2.2.0.tgz
+	sha256sums = b63cac7cddcd5aa4f06a117b3fcbc5e35a879bea06702dbbb26f7d98195cfaf6
+
+pkgname = nodejs-body-parser
