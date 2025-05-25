@@ -19,6 +19,8 @@ makedepends=(
     "python-tomli-w"
     "python-schema"
     "python-multidict"
+    "python-requests"
+    "python-click"
 
     "python-pulp-glue"
 )
@@ -30,12 +32,13 @@ depends=(
 
     "python-packaging"
     "python-yaml"
+    "python-requests"
+    "python-click"
 
     "python-pulp-glue"
 )
 optdepends=(
     "python-pygments"
-    "python-click"
 )
 provides=(
     "pulp-cli"
