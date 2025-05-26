@@ -16,7 +16,7 @@ Comment=Program for the Use and Computation of Kinship Data (simple version)
 Path=/opt/elan-simple/
 
 # The executable of the application, possibly with arguments.
-Exec=/opt/elan-simple/bin/Simple-ELAN
+Exec=/opt/elan-simple/bin/Simple-ELAN_VERSIONSTRINGHERE
 
 # The name of the icon that will be used to display this entry
 Icon=elan-simple
