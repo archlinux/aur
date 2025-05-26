@@ -17,6 +17,7 @@ source=(
 	"public-mipi-sys-t::git+https://github.com/MIPI-Alliance/public-mipi-sys-t#branch=main"
 	"libfdt::git+https://github.com/devicetree-org/pylibfdt.git#branch=main"
 	"libspdm::git+https://github.com/DMTF/libspdm.git#branch=main"
+	"mbedtls::git+https://github.com/ARMmbed/mbedtls.git#branch=development"
   "https://www.openssl.org/source/openssl-${_openssl_ver}.tar.gz"{,.asc}
   "brotli-${_brotli_ver}.tar.gz::https://github.com/google/brotli/archive/v${_brotli_ver}.tar.gz"
   "50-edk2-ovmf-git-i386-secure.json"
@@ -31,6 +32,7 @@ source=(
   "82-edk2-ovmf-git-ia32-on-x86_64-csm.json"
 )
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -74,9 +76,15 @@ prepare() {
   rm -rfv SecurityPkg/DeviceSecurity/SpdmLib/libspdm
   ln -sfv "${srcdir}/libspdm" SecurityPkg/DeviceSecurity/SpdmLib/libspdm
 
+  # symlink mbedtls
+  rm -rfv CryptoPkg/Library/MbedTlsLib/mbedtls
+  ln -sfv "${srcdir}/mbedtls" CryptoPkg/Library/MbedTlsLib/mbedtls
+
   # symlink openssl
   rm -rfv CryptoPkg/Library/OpensslLib/openssl
   ln -sfv "${srcdir}/openssl-$_openssl_ver" CryptoPkg/Library/OpensslLib/openssl
+	# TODO hack - https://github.com/tianocore/edk2/issues/11119
+  ln -sfv ssl_err_legacy.c CryptoPkg/Library/OpensslLib/openssl/ssl/ssl_err.c
 
   # symlink brotli
   rm -rfv BaseTools/Source/C/BrotliCompress/brotli MdeModulePkg/Library/BrotliCustomDecompressLib/brotli
