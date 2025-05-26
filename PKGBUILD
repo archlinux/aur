@@ -10,7 +10,7 @@ pkgdesc="Cross-Platform Cipboard Syncing Solution (Desktop)"
 arch=("x86_64" "aarch64")
 url="https://github.com/Jeric-X/${_reponame}"
 license=("MIT")
-depends=("aspnet-runtime-${_dotnet_ver}" "fontconfig" "libxinerama" "libxt" "libxtst")
+depends=("aspnet-runtime-${_dotnet_ver}" "fontconfig" "libxinerama" "libxt" "libxtst" "wl-clipboard" "xclip")
 makedepends=("dotnet-sdk-${_dotnet_ver}" "librsvg")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${_pkgname}.desktop")
@@ -23,8 +23,7 @@ esac
 
 prepare() {
     cd "${_reponame}-${pkgver}"
-    cp -f "src/${_reponame}.Desktop/Changes.md" Changes.md
-    cp -f build/linux/icons/icon.svg            icon.svg
+    cp -f build/linux/icons/icon.svg icon.svg
     rm -rf builddir &>/dev/null
 }
 
