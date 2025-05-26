@@ -2,7 +2,7 @@
 pkgname=musicat-git
 _pkgname=Musicat
 pkgver=0.12.0.r22.g4a693b0
-_nodeversion=18
+_nodeversion=20
 pkgrel=1
 pkgdesc="A sleek desktop music player and tagger for offline music 🪕 With experimental features like map view, GPT analysis, artist toolkit."
 arch=(
@@ -55,12 +55,12 @@ prepare() {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
         } >> .npmrc
-        export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-        export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+        export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"
+        export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
         sed "s/github.com/github.moeyy.xyz\/https:\/\/github.com/" -i src-tauri/Cargo.toml
     fi
-    sed "/cli-win32-x64-msvc/d" -i package.json
+    sed -i "/cli-win32-x64-msvc/d" package.json
     NODE_ENV=development    npm install --legacy-peer-deps
 }
 build() {
