@@ -6,7 +6,7 @@
 _gitname="hidapi"
 _pkgname="hidapi-testgui"
 pkgname="${_pkgname}-git"
-pkgver=0.14.0+51.r676.20250507.3425db0
+pkgver=0.15.0+2.r679.20250523.9904cbe
 _pkgmajorver="$(awk -F. '{print $1}' <<<"${pkgver}")"
 pkgrel=1
 epoch=0
