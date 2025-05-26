@@ -2,7 +2,7 @@
 pkgname=musicat-bin
 _pkgname=Musicat
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A sleek desktop music player and tagger for offline music 🪕 With experimental features like map view, GPT analysis, artist toolkit.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/basharovV/musicat"
@@ -10,18 +10,18 @@ license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'gtk3'
     'alsa-lib'
+    'gtk3'
     'webkit2gtk-4.1'
 )
 source=("${pkgname}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
 sha256sums=('972416e7ade8a98afe7b011edb548082411b05daf46127d5728bb04b4b5d26e2')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
         s/Development/AudioVideo/g
-    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
