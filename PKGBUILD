@@ -1,11 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jlivertool-bin
-pkgver=2.3.0
+pkgver=2.4.0
 _electronversion=35
 pkgrel=1
 pkgdesc="Bilibili 弹幕机.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
-url="https://github.com/Xinrea/JLiverTool"
+url="http://jlivertool.xinrea.cn/"
+_ghurl="https://github.com/Xinrea/JLiverTool"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -14,12 +15,12 @@ depends=(
     'java-runtime'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
+    "${pkgname%-bin}-${pkgver}.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/Xinrea/JLiverTool/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ab94624e496825634c8be470daf25840a26ec250f08d5e7d12c39d0430198a9a'
-            '5d86e387ac33cf32eee9c968d38483a30567690b843c3768b35fe4bc55b455a8'
+sha256sums=('cad5928810869516172334b020f99feb250b53557f6b51b7bbb0d1cfbcdbc9a7'
+            '70ab3290cbc33e7a72b59ac9ad08548c688d885e7b6326b3edc7a17f8ca54d39'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -30,6 +31,9 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    rm -rf \
+        "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/bufferutil/prebuilds/"{darwin-*,win32-*} \
+        "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/fontlist/libs/"{darwin,win32}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
