@@ -1,10 +1,10 @@
---- a/gns3-gui-3.0.4/requirements.txt	2025-02-25 11:24:32.000000000 +0100
-+++ b/gns3-gui-3.0.4/requirements.txt	2025-02-26 19:37:19.654254140 +0100
+--- a/gns3-gui-3.0.5/requirements.txt	2025-05-14 19:11:45.000000000 +0200
++++ b/gns3-gui-3.0.5/requirements.txt	2025-05-26 21:31:31.497672111 +0200
 @@ -1,6 +1,5 @@
 -jsonschema>=4.23,<4.24
--sentry-sdk>=2.22,<2.23  # optional dependency
+-sentry-sdk>=2.26.1,<2.27  # optional dependency
 +jsonschema>=4.23
-+sentry-sdk>=2.22
++sentry-sdk>=2.26.1
  psutil>=7.0.0
  distro>=1.9.0
 -truststore>=0.10.1; python_version >= '3.10'
