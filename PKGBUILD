@@ -1,7 +1,7 @@
 # Maintainer: Patrick Fischer <aur@pathin.me>
 
 pkgname=windsurf-bin
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Windsurf (formerly Codeium) is the world's most advanced AI coding assistant for developers and enterprises. Windsurf Editor — the first AI-native IDE that keeps developers in flow."
 arch=('x86_64')
