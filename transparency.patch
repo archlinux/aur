@@ -1,4 +1,4 @@
-From 0bdc26020ceafc74a308ff128dc0bfa34dd78a59 Mon Sep 17 00:00:00 2001
+From 5472a950c5fdc1ccd34ee8952a846ded0c8ae178 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 1/4] Restore transparency
@@ -237,7 +237,7 @@ index 36eb7ce7..a41d2de2 100644
 2.49.0
 
 
-From a3eb7ecc26726c115a53c3efa2bfd86f260ba4e5 Mon Sep 17 00:00:00 2001
+From ebd78f3ca83caa148fe19b5e32cc2d8477a0abe2 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 2/4] window: Make the drawing robust across all themes
@@ -299,7 +299,7 @@ index a41d2de2..11d93419 100644
 2.49.0
 
 
-From d35e89b0a3c7bbf9e646a5b6dca72af8c0a46038 Mon Sep 17 00:00:00 2001
+From 0a681b06e24a5b2ffa84ceea614add94dadf8bb4 Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 3/4] screen, window: Extra padding around transparent
@@ -434,7 +434,7 @@ index 11d93419..61857bfe 100644
 2.49.0
 
 
-From 0316c2c3391d2d153f5dba1c3a9ad9e79e70dfe9 Mon Sep 17 00:00:00 2001
+From 4f43a3ad6fa4e431a65bbf05c53afde9753ff8b0 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 4/4] Restore translations for setting a title and transparency
@@ -2321,10 +2321,10 @@ index b25a2cb4..3855b2f3 100644
  #: ../src/profile-preferences.glade.h:70
  msgid "_Update login records when command is launched"
 diff --git a/po/pt.po b/po/pt.po
-index 743971be..97b825e6 100644
+index bcaf695b..b19e9a90 100644
 --- a/po/pt.po
 +++ b/po/pt.po
-@@ -2950,11 +2950,11 @@ msgstr "Falha ao processar argumentos: %s\n"
+@@ -2943,11 +2943,11 @@ msgstr "Falha ao processar argumentos: %s\n"
  #~ msgid "Default size:"
  #~ msgstr "Tamanho predefinido:"
  
@@ -2340,7 +2340,7 @@ index 743971be..97b825e6 100644
  
  #~ msgid "Title and Command"
  #~ msgstr "Título e comando"
-@@ -2962,8 +2962,8 @@ msgstr "Falha ao processar argumentos: %s\n"
+@@ -2955,8 +2955,8 @@ msgstr "Falha ao processar argumentos: %s\n"
  #~ msgid "_Unlimited"
  #~ msgstr "_Ilimitado"
  
@@ -2351,7 +2351,7 @@ index 743971be..97b825e6 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "Configuração Regional Atual"
-@@ -3718,8 +3718,8 @@ msgstr "Falha ao processar argumentos: %s\n"
+@@ -3711,8 +3711,8 @@ msgstr "Falha ao processar argumentos: %s\n"
  #~ msgid "Background image _scrolls"
  #~ msgstr "Imagem de fundo _rola"
  

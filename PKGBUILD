@@ -10,7 +10,7 @@
 
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
-pkgver=3.56.0
+pkgver=3.56.2
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator with background transparency"
 url="https://wiki.gnome.org/Apps/Terminal"
@@ -61,8 +61,8 @@ source=(
   transparency.patch
 )
 b2sums=(
-  'e30de09debea88c2cd06f476d1811d8274195b8dc42d9f8eab24c44da8312086d2748bada71c948eb027351becfdf142657960a2474ee5c38101a3aef8e96034'
-  '11f5ce8fcd4e37fd4c9f322ec68a8dd6b24786d5e6ce5e12720fcd1b93d8e4308ebc2489709164e4fea7d72cc3decbf7d99a61e7425a6e9a5afdea0bea8579dd'
+  '275d2a666fc64c4d9b12dc9e7a17abec50220ebcbbf4839f65c13fd04afa55167dc47faad1734510cf3af4196542e43a6b119226e081f063b24c71a13c171c2b'
+  '45e40360ea5f3bf4e856dafcaf7a5d018258cd3358f013c105c0505080c4686ab821324b34daf99670628762f8fe5ff0e7fe9c038d2e6436a25b9f2260a8eb82'
 )
 
 prepare() {
