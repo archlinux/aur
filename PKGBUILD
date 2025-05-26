@@ -2,7 +2,7 @@
 # Contributor: sQVe <oskargrunning@gmail.com>
 
 pkgname=ncpamixer
-pkgver=1.3.9
+pkgver=1.3.10
 pkgrel=1
 pkgdesc='ncurses PulseAudio Mixer'
 url='https://github.com/fulhax/ncpamixer'
@@ -13,7 +13,7 @@ makedepends=('git' 'cmake')
 provides=('ncpamixer')
 conflicts=('ncpamixer-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fulhax/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('5f5f532c2ba525814799aefb0408f26f30c31c00de71f8f6056c2d7f6e580439')
+sha256sums=('2d7f25851b45d6b45d5ca0fee37a172b25b620a06dddc322f0fb64a746d6f0b5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
