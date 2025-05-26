@@ -1,0 +1,13 @@
+pkgbase = gshortcuts
+	pkgdesc = Command-line tool to manage your GNOME custom shortcuts.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://gshortcuts.jpinillos.dev
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glib2
+	source = gshortcuts-0.0.2.tar.gz::https://github.com/jpinilloslr/gshortcuts/archive/refs/tags/v0.0.2.tar.gz
+	sha256sums = 30a28419bfd6752a04e36021184866e83f9bbcd8eda87448fcfdd5ac3b9d8544
+
+pkgname = gshortcuts
