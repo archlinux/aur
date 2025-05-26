@@ -1,6 +1,6 @@
 pkgbase = python-pytest-docker
 	pkgdesc = Pytest plugin for Docker and Docker compose tests.
-	pkgver = 3.2.1
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://github.com/avast/pytest-docker
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-pytest-docker
 	depends = python
 	depends = python-pytest
 	depends = python-attrs
-	source = python-pytest-docker-3.2.1.tar.gz::https://github.com/avast/pytest-docker/archive/refs/tags/v3.2.1.tar.gz
-	b2sums = 841e0b9027b8692d51794f6dcc39a401524dc1d53fd165ee5539aec0dbe4abaaf8a8740f68af9878392a24581b39a8ac94120178c0f9698da037e3c70bd7fe3b
+	source = python-pytest-docker-3.2.2.tar.gz::https://github.com/avast/pytest-docker/archive/refs/tags/v3.2.2.tar.gz
+	b2sums = cea73dd6bd6fcdcffc8f38999a798b670585f7b654f4ad8723e908e11c3e6ce7f83950d037da93460ea38f805bd946782e49cb94c2f8ad73b9916d43e87c215c
 
 pkgname = python-pytest-docker
