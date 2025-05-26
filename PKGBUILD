@@ -4,7 +4,7 @@
 
 pkgname='headsetcontrol'
 _pkgname='HeadsetControl'
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=5
 pkgdesc='Sidetone and Battery status for Logitech G930, G533, G633, G933 SteelSeries Arctis 7/PRO 2019 and Corsair VOID (Pro) in Linux and MacOSX '
 arch=('x86_64')
@@ -14,21 +14,16 @@ license=('GPL-3.0-only')
 depends=('hidapi')
 makedepends=('cmake')
 source=(
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-  "${pkgname}-${pkgver}.tar.gz.sig::${url}/releases/download/${pkgver}/${pkgver}.tar.gz.asc"
+  "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/headsetcontrol-${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz.sig::${url}/releases/download/${pkgver}/headsetcontrol-${pkgver}.asc"
 )
-sha256sums=(
-  '63bfd147c82277bfcf2314ad2b01ca4e4bf06e1d5516e01ee39232661f4d5144'
-  'SKIP'
-)
+sha256sums=('caba01afa69477f0a4fce1f8608a0c5e85e7032c350c1239bb4e1ecdfb171359'
+            'SKIP')
 validpgpkeys=(
   '77BEB7E232CF1E5154777D4DD5866C58940197BF' # Denis Arnst <git@sapd.eu>
 )
 
 build() {
-  # Stop the compiler from treating warnings as error
-  sed -i 's/set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror")//g' "${_pkgname}-${pkgver}/CMakeLists.txt"
-
   cmake -B 'build' -S "${_pkgname}-${pkgver}" \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX=/usr \
