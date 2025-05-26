@@ -19,7 +19,7 @@ source=(
     'dkms.conf'
 )
 sha512sums=('d195d78607f0f82c162b392ce8202ceff1cffaeec4de55bf8c6f7fe530b2ddc99cd04b601543b0873770b3f6a8199b18a688df777d4e32bc73a07dac78296024'
-            '04d93f2297be0ffbd9ad8611ee619406af26f8fc987686e7150a68d4e8d9d94d104b76583a3190699587fd568c995e31c96332afa77b880a972eb24861ba5dea')
+            '1a89004b40ee4f23c1d6fab7fe14ff5786362248cb16cedb21f144acda05b1c46afa5b38de065fad8fe712fdf65625063a3e312651a2a371cd00c9625d19f2c0')
 
 package() {
     install -Dm644 dkms.conf "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
