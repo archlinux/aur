@@ -1,7 +1,7 @@
 pkgbase=coreutils-uutils-symlink
 pkgname=(${pkgbase} coreutils-uutils-arch)
-pkgver=$(uu-true --version |cut -d' ' -f2)
-pkgrel=9
+pkgver=0.1.0
+pkgrel=1
 arch=('any')
 url='https://uutils.github.io/'
 depends=(uutils-coreutils)
@@ -23,7 +23,7 @@ package_coreutils-uutils-symlink() {
 }
 
 package_coreutils-uutils-arch() {
-	pkgdesc="symlink to /usr/bin/arch for few apps"
+	pkgdesc="arch symlink for apps unfortunately depending for it"
 	conflicts=(coreutils-arch)
 	provides=(coreutils-arch)
 	mkdir -p "$pkgdir"/usr/{bin,share/man/man1}

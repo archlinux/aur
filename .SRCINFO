@@ -1,6 +1,6 @@
 pkgbase = coreutils-uutils-symlink
-	pkgver = 0.0.29
-	pkgrel = 9
+	pkgver = 0.1.0
+	pkgrel = 1
 	url = https://uutils.github.io/
 	arch = any
 	depends = uutils-coreutils
@@ -17,6 +17,6 @@ pkgname = coreutils-uutils-symlink
 	conflicts = coreutils-uutils
 
 pkgname = coreutils-uutils-arch
-	pkgdesc = symlink to /usr/bin/arch for few apps
+	pkgdesc = arch symlink for apps unfortunately depending for it
 	provides = coreutils-arch
 	conflicts = coreutils-arch
