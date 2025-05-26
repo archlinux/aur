@@ -10,17 +10,19 @@ license=('LicenseRef-unknown')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    'gtk3'
+    'webkit2gtk-4.1'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
 )
 sha256sums=('96370a48af9f78a34cfc15f602d489b383d178b4485ddb9e39f90a457f8ddcb9')
 prepare() {
-    sed -e "
+    bsdtar -xf "${srcdir}/data."*
+    sed -i -e "
         s/Comment=A Tauri App/Comment=${pkgdesc}/g
         s/Categories=/Categories=AudioVideo;/g
-    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"

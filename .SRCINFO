@@ -5,7 +5,8 @@ pkgbase = dtv-bin
 	url = https://github.com/c-zeong/DTV
 	arch = x86_64
 	license = LicenseRef-unknown
-	depends = electron
+	depends = gtk3
+	depends = webkit2gtk-4.1
 	provides = dtv=2.0.0
 	conflicts = dtv
 	source = dtv-2.0.0.deb::https://github.com/c-zeong/DTV/releases/download/v2.0.0/DTV_2.0.0_amd64.deb
