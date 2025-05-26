@@ -1,6 +1,6 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname=toit
-_pkgver="v2.0.0-alpha.181"
+_pkgver="v2.0.0-alpha.182"
 _pkgver_no_dash="${_pkgver//-/}"
 pkgver="${_pkgver_no_dash#v}"
 pkgrel=1
@@ -19,7 +19,7 @@ makedepends=(
 	'vim'
 )
 source=("$pkgname-$_pkgver.tar.gz"::"https://github.com/toitlang/toit/releases/download/$_pkgver/$pkgname-$_pkgver-with-submodules.tar.gz")
-sha256sums=('7577e1bd9e7b1e7c9ef80af76a4808f41b8eef711dc8145ea0aa0b1971fdf062')
+sha256sums=('846c21320bbc26815a4695f322859e8510ce685551ebbeb966786011c110c3b1')
 
 build() {
 	cd "$pkgname-$_pkgver"
