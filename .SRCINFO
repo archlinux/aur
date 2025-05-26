@@ -1,6 +1,6 @@
 pkgbase = bitwuzla
 	pkgdesc = SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://bitwuzla.github.io
 	arch = x86_64
@@ -26,18 +26,25 @@ pkgbase = bitwuzla
 	depends = glibc
 	depends = gmp>=6.1
 	depends = kissat
+	optdepends = aiger: Utilities for And-Inverter Graphs (AIGs)
 	optdepends = python>=3.7: Python bindings
 	provides = libbitwuzlabv.so
 	provides = libbitwuzlabb.so
 	provides = libbitwuzlals.so
 	provides = libbitwuzla.so
 	options = !lto
-	source = bitwuzla-0.7.0.tar.gz::https://github.com/bitwuzla/bitwuzla/archive/refs/tags/0.7.0.tar.gz
+	source = bitwuzla-0.8.0.tar.gz::https://github.com/bitwuzla/bitwuzla/archive/refs/tags/0.8.0.tar.gz
 	source = 0001-Use-installed-libraries.patch
 	source = 0002-Skip-Test-based-on-timeout.patch
-	b2sums = fea8fb59d0dc3e45705e3aef7aa1cac1ebf0c0558e0994ada2806ac9589b3460783ff7b85e0b922d150f594e3d26ebf6cd9858f9b9df24f3850b19908252c188
-	b2sums = 58a27c2a748b60651ac3ccc93ef09a1093571615c16987f1fe578e34a9325d24a41ffac8f76ef044f8afc89b12924848de0b79d7d403ccf9e298b7ab349f7bb7
-	b2sums = 7728ab77cb234b4427e7cf493817a24bf97440304efb4fc4300125ec470a0bf15430b4416d3c5fdea51dc91441640d05995ed4a08d4c628f97f4d4dc08538d7e
+	source = 0003-Refactor-FP_FP-unit-test-to-not-require-FPEXP.patch::https://github.com/bitwuzla/bitwuzla/commit/d090786042aaceef6d39cf55c22daf5fb74457f5.patch
+	source = 0004-Enable-unit-test-specific-code-for-urem-when-unit-testing.patch::https://github.com/bitwuzla/bitwuzla/commit/bdc83e1f06ce2851c86cce16a604c3c47b254d2d.patch
+	source = 0005-Refactor-N_TESTS-handling-in-test_bv-unit-test.patch::https://github.com/bitwuzla/bitwuzla/commit/a623930e3c12c3932301bd68c54590a15e6bfa69.patch
+	b2sums = 924742ca0dbcc9c877599b9175c2e48612b88b116976fa1460ca848b598d3bf9f62245d1f9d4ac6b59fdcc80a91a6490ba5d5466e3523510f95a13dd4053a792
+	b2sums = 09f384aaa2ebbec1e70a5122bae2f2019b71a41f691312048dc59dd7c253c2eb07e669ab71decc492fdf58b933b55b0036da7bb54eb1afe0774ee28aca63f199
+	b2sums = af3f5fd996fd2d478c99f4e9fdd9ff72a3e00351e168b09d0611429d0267b55f5dfa46b98e414039edbab35461c3dc377a3f590b4b90db16ebcf0872a4ee8bda
+	b2sums = d8fe8f9dba8648809131c30abf22e767d303804983947548e58c844f9273ee42c29f81cd106e1a1e5049edd724131e1e7ddc95d69097a4c5176a73753430df83
+	b2sums = f688a6ec835396f80711f89ceb1045defcb5a3abd3b6174fb34087046c2d2e215d67f44c4784798f0e830e8a2c3ea6cee088f5b0b9f66c1ea18a61c3c2d77414
+	b2sums = a100b00f882816591c80ef2d497b5181bb4f128a297748ed913849d60988e61d2687fd2a9ce3aa2d0a979af2ca3435047cc8cdfa50978ce4112d85c4e5214578
 
 pkgname = bitwuzla
 

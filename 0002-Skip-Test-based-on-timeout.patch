@@ -1,12 +1,12 @@
-diff --unified --recursive --text bitwuzla-0.4.0.orig/test/regress/meson.build bitwuzla-0.4.0/test/regress/meson.build
---- bitwuzla-0.4.0.orig/test/regress/meson.build	2024-03-06 17:54:03.000000000 +0000
-+++ bitwuzla-0.4.0/test/regress/meson.build	2024-03-30 12:48:22.907704008 +0000
-@@ -1393,7 +1393,7 @@
-   ['solver/process_term1.smt2'],
-   ['solver/process_term2.smt2'],
+diff --unified --recursive --text bitwuzla-0.8.0/test/regress/meson.build bitwuzla-0.8.0.orig/test/regress/meson.build
+--- bitwuzla-0.8.0.orig/test/regress/meson.build	2025-05-23 10:52:46.802831756 +0200
++++ bitwuzla-0.8.0/test/regress/meson.build	2025-05-23 10:53:00.171394591 +0200
+@@ -1452,7 +1452,7 @@
+   ['solver/process_term3.smt2'],
+   ['solver/process_term4.smt2'],
    ['solver/time_limit_per1.smt2'],
 -  ['solver/time_limit_per2.smt2'],
 +#  ['solver/time_limit_per2.smt2'],
-   ['solver/quant/duplicatelemma1.smt2'],
    ['solver/quant/issue96.smt2'],
    ['solver/quant/issue97.smt2'],
+   ['solver/quant/quant_regr1.smt2'],
