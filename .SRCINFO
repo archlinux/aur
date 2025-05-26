@@ -1,7 +1,7 @@
 pkgbase = supersplashbros2-bin
 	pkgdesc = Be the last player standing above the water!(Prebuilt version.Use system-wide electron)
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NM-Games/super-splash-bros-2
 	arch = aarch64
 	arch = x86_64
