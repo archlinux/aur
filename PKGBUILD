@@ -2,11 +2,12 @@
 pkgname=anklang-bin
 pkgver=0.3.0
 _electronversion=31
-pkgrel=3
+pkgrel=4
 pkgdesc="A digital audio synthesis application for live creation and composition of music and other audio material.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
-url="https://github.com/tim-janik/anklang"
-license=("MPL-2.0")
+url="https://anklang.testbit.eu/"
+_ghurl="https://github.com/tim-janik/anklang"
+license=('MPL-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -17,24 +18,24 @@ depends=(
     'opus'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('e96dcf5f29c3bd286e2d0f9262821c42cc17d61916a832ea36f94ebfa557b861'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/\/lib\/${pkgname%-bin}-0-3\/bin\/${pkgname%-bin}/${pkgname%-bin}/g
         s/${pkgname%-bin}\/electron/${pkgname%-bin}/g
-    " -i "${srcdir}/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/share/applications/${pkgname%-bin}.desktop"
     sed -i "s/__dirname \+ \'\/..\/..\/..\/lib\/AnklangSynthEngine\'/\'.\/lib\/AnklangSynthEngine\'/g" \
         "${srcdir}/lib/${pkgname%-bin}-0-3/electron/resources/app/main.js"
 }

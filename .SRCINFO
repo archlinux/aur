@@ -1,8 +1,8 @@
 pkgbase = anklang-bin
 	pkgdesc = A digital audio synthesis application for live creation and composition of music and other audio material.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.3.0
-	pkgrel = 3
-	url = https://github.com/tim-janik/anklang
+	pkgrel = 4
+	url = https://anklang.testbit.eu/
 	arch = x86_64
 	license = MPL-2.0
 	depends = electron31
