@@ -9,7 +9,6 @@ pkgbase = dartsmate-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
 	makedepends = curl
 	depends = electron33
 	provides = dartsmate=0.2.1
