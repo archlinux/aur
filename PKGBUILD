@@ -1,7 +1,7 @@
 # Maintainer: Duje Mihanović <duje.mihanovic@skole.hr>
 pkgname=heimdall-grimler
 _pkgname=Heimdall
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Actively maintained fork of Samsung phone firmware flashing tool"
 arch=("x86_64" "i686")
@@ -19,7 +19,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://git.sr.ht/~grimler/$_pkgname/archive/v$pkgver.tar.gz"
 	'heimdall-frontend.desktop'
 )
-sha512sums=('48566f8064c9b187e4ba179840d824439ed27aaf9a66572223b02ac228054bd78561ad263333aa4ee6c53375939f64ec53c67a7286d3f75cb271e7a0017886a9'
+sha512sums=('75c3614b1c7dcbcd5537a308ddd3e2adb97024c7d9572ad2a9187ff50f516209995cf9ab65efa9dd282b925687af70a61298cf0e07b5dca333b589e37b2a14e3'
             'b9830d3f8d08132ecb2083b1cde875b500358a24dbae0b9217401d542beb5e121534949686a8fb58c8d6294b86cf81b806ca7c94327026017275cc4fbe8cf2a1')
 
 build() {
