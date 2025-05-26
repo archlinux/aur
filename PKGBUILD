@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rendertune-bin
 _pkgname=RenderTune
-pkgver=2.0.7
+pkgver=2.0.9
 _electronversion=33
 pkgrel=1
 pkgdesc="A free electron app that uses ffmpeg to combine audio.+image file(s) into video files.(Prebuilt version.Use system-wide electron)"
@@ -29,11 +29,11 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.bz2::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.tar.bz2")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.bz2::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-armv7l.tar.bz2")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.bz2::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x64.tar.bz2")
-sha256sums=('a4348cc85713d60937c1fda0c0c9affa177c97f2bf7151db7850b20d58095b1c'
+sha256sums=('035b9f4f36ade6d10e367762532feeb5f92e9cda22931dd9dc8913c586027b75'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('3bce9fe802379bb1a9dcd3d8e869c28e6b51ccf35e806510e67be3da48e33da3')
-sha256sums_armv7h=('218651a1687db1e8018cce3650d372a7a0fff0d0dc2333dbb2bc1a492d7025d1')
-sha256sums_x86_64=('8d86a4224ed9a8e59c83ce70de2f317c0cb4ebddf3768b1b2909486357370b93')
+sha256sums_aarch64=('ae50c2252459711a696bfedb65ab000b13a16fe72ad585b873db7c076156c36d')
+sha256sums_armv7h=('b0371d7aec54ac6e5b5e0dd9d08f672b1dc4639cae27fa884a2cf2af36d0ef5e')
+sha256sums_x86_64=('86af41e04d56e7fdc977d60492c2146e4bf4043fb9bd0e9320e0bc4d91049f94')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
