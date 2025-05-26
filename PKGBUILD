@@ -1,40 +1,35 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
-_dotnet_ver=6.0
+_dotnet_ver=8.0
 _reponame=SyncClipboard
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-desktop"
-pkgver=0.8.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Cross-Platform Cipboard Syncing Solution (Desktop)"
 arch=("x86_64" "aarch64")
 url="https://github.com/Jeric-X/${_reponame}"
 license=("MIT")
 depends=("aspnet-runtime-${_dotnet_ver}" "fontconfig" "libxinerama" "libxt" "libxtst")
-makedepends=("dotnet-sdk-${_dotnet_ver}" "git" "librsvg")
-source=("${_pkgname}::git+${url}.git"
-        "${_pkgname}-${pkgver}.txt::${url}.Desktop/raw/refs/tags/v${pkgver}/version.txt"
+makedepends=("dotnet-sdk-${_dotnet_ver}" "librsvg")
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${_pkgname}.desktop")
-sha256sums=('SKIP'
-            '87ef10f17dfd2103f7466e03f7a39767745d900587eb7807c4e0a52c3358b199'
-            'c738a39534a5a9f005213f5347bfcea3558920f651e89d293a07415970e6eea5')
+sha256sums=('9f93e8ecc07c24c385d744f0dae9325101bdddd597d465e04fbeaba7b88392c3'
+            '77a340cd087cbfd79fdbbb1d53a33288884c21cd0945b6ea4abfd0c6a298fc75')
 case $CARCH in
     x86_64)  _dotnet_cpu=x64;;
     aarch64) _dotnet_cpu=arm64;;
 esac
 
 prepare() {
-    local _commit=$(tail -1 "${_pkgname}-${pkgver}.txt")
-
-    cd "${_pkgname}"
-    git checkout "${_commit}"
+    cd "${_reponame}-${pkgver}"
     cp -f "src/${_reponame}.Desktop/Changes.md" Changes.md
     cp -f build/linux/icons/icon.svg            icon.svg
     rm -rf builddir &>/dev/null
 }
 
 build() {
-    cd "${_pkgname}"
+    cd "${_reponame}-${pkgver}"
 
     for res in 16 32 48 64 128 256 512; do
         rsvg-convert -w "${res}" -h "${res}" -o "${res}x${res}.png" icon.svg
@@ -47,7 +42,8 @@ build() {
         --self-contained false \
         --output builddir \
         --runtime "linux-${_dotnet_cpu}" \
-        -p:DebugSymbols=false
+        -p:DebugSymbols=false \
+        -p:DebugType=none
 }
 
 package() {
@@ -55,7 +51,7 @@ package() {
 
     install -Dm644 "${_pkgname}.desktop"   "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-    cd "${_pkgname}"
+    cd "${_reponame}-${pkgver}"
     install -Dm644 icon.svg                "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/${_pkgname}.svg"
     install -Dm644 LICENSE                 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 *.md docs/*.md       -t "${pkgdir}/usr/share/doc/${pkgname}"
