@@ -1,0 +1,11 @@
+pkgbase = ttf-noto-sans-mongolian
+	pkgdesc = Noto Sans Mogolian fonts.
+	pkgver = 3.002
+	pkgrel = 1
+	url = https://github.com/notofonts/mongolian
+	arch = any
+	license = OFL-1.1
+	source = ttf-noto-sans-mongolian-3.002.zip::https://github.com/notofonts/mongolian/releases/download/NotoSansMongolian-v3.002/NotoSansMongolian-v3.002.zip
+	sha256sums = a5d3085d4040ecd92d44bf5c4f8faaeae7ba3147cf82e09aa2ef5ad46475de6c
+
+pkgname = ttf-noto-sans-mongolian
