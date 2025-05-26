@@ -2,9 +2,9 @@
 
 pkgname=python-alpaca-py
 _pkgname=alpaca_py
-pkgver=0.35.0
+pkgver=0.40.1
 pkgrel=1
-_subfolder=1b/d1/c75ea45936dc1418b8f7d55612fcb647f69bfa44e14912a9819ef407e155
+_subfolder=6f/6e/6d4e85d1d9f7bd1695587adfb87ef17ba1068972b235bae4bfb6eba6a22b
 pkgdesc="The Official Python SDK for Alpaca APIs"
 url="https://github.com/alpacahq/alpaca-py"
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry' 'python-poetry-dynamic-versioning' 'cython')
@@ -12,7 +12,7 @@ depends=('python-msgpack' 'python-pandas' 'python-pydantic' 'python-requests' 'p
 license=('Apache-2.0')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/${_subfolder}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('ab7f440da7b293ed6305d5100b38767b0d068bbb85473d286cdc2ddde22a295f')
+sha256sums=('188adcbb7c140d6f9eebe04011a0df68e1540374e2940098f032b8f21ff34bf3')
 
 build() {
     cd "$srcdir"/${_pkgname}-${pkgver}
