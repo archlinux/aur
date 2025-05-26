@@ -4,17 +4,14 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=136.0.7103.113
-pkgrel=2
+pkgver=137.0.7151.40
+pkgrel=1
 _manual_clone=0
 # The following error occures on Abseil 20250512.0:
 # Protoc has returned non-zero status: -4
 _system_abseil=0
-# Fixes the following error and similar ones on Rust 1.87:
-# ld.lld: error: undefined symbol: __rustc::__rust_dealloc
-# See https://issuetracker.google.com/issues/407024458.
-_system_clang=0
-_system_stdlib=libstdc++
+_system_clang=1
+_system_stdlib=libc++
 pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
 url="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/components/cronet"
@@ -23,6 +20,7 @@ depends=('nss' 'libffi')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'rust' 'rust-bindgen' 'git')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver-lite.tar.xz
+        disable-clang-fextend-variable-liveness.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         disable-clang-warning-suppression-flag.patch
@@ -33,7 +31,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-numeric_limits.patch
         fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch)
-sha256sums=('2eec4669d1aa6c72f7df0e5f3b106751996eed2b0e1edd7ac0dc59a74ca010d8'
+sha256sums=('359326ad87abf163ed6c021da4feba06106e09a361b71b1a40343b9bf1c16f7f'
+            '2d98a7a6a553fb5c17c4bfe36f011410f377afa12a6a818ba36543dc9a258f4a'
             'cc8a71a312e9314743c289b7b8fddcc80350a31445d335f726bb2e68edf916d1'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             'd6f3914c6adadaf061e7e2b1430c96d32b0cad05244b5cfaf58cf5344006a169'
@@ -187,6 +186,7 @@ prepare() {
     tools/generate_shim_headers/generate_shim_headers.py
 
   # Upstream fixes
+  patch -Np1 -i ../disable-clang-fextend-variable-liveness.patch
 
   if (( _system_clang )); then
     # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
@@ -196,12 +196,12 @@ prepare() {
   # Increase _FORTIFY_SOURCE level to match Arch's default flags
   patch -Np1 -i ../increase-fortify-level.patch
 
+  # Disable usage of --warning-suppression-mappings flag which needs clang 20
+  patch -Np1 -i ../disable-clang-warning-suppression-flag.patch
+
   # Fixes the build crashing with the following error:
   # ../../components/cronet/native/engine.cc:155:8: error: use of undeclared identifier 'isnan'
   patch -p0 -i ../fix-undeclared-isnan.patch
-
-  # Disable usage of --warning-suppression-mappings flag which needs clang 20
-  patch -Np1 -i ../disable-clang-warning-suppression-flag.patch
 
   # Disables logging as it's unconfigurable, which is undesired in a library
   patch -p0 -i ../disable-logging.patch
