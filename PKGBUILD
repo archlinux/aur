@@ -31,19 +31,21 @@ sha256sums_aarch64=('6f8848e10b8b0159b7e6f5b46bcebab388248ce8a7747f86221f8c8d1ba
 sha256sums_armv7h=('52a4ecfadb26ca5388b4c012453c31058f9955a3b5177a5d67dee458c08bf8ac')
 sha256sums_x86_64=('b41601c18ed6360933e273487c87403ca9135f72cea264c22848fe7ed341bb0f')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed -e "
+    sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/public.build.automation/AudioVideo/g
-    " -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    " "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
