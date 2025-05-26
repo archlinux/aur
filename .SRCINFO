@@ -1,0 +1,13 @@
+pkgbase = sysfail
+	pkgdesc = Linux System Failure Simulator - Realistic kernel panic and emergency shell prank tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Lon60/sysfail
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = sysfail-1.0.0.tar.gz::https://github.com/Lon60/sysfail/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = ab38ec3259fa2314e09884c2ad83313b22a09a4c99800c2d1fe97d17200754de
+
+pkgname = sysfail
