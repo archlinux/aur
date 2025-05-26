@@ -10,7 +10,7 @@ pkgname=zig-dev-bin
 # "newer" greater than the new version scheme
 epoch=1
 # NOTE: Sanitize version '-' -> '_', '+' -> `.g`
-pkgver=0.15.0_dev.34.g8e0a4ca4b
+pkgver=0.15.0_dev.643.gdc6ffc28b
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=('x86_64' 'aarch64')
@@ -113,7 +113,7 @@ prepare() {
     pushd "${srcdir}" > /dev/null;
     local newurl="$(buildhelper print-url)";
     local newurl_sig="$newurl.minisig";
-    local newfile="zig-linux-${CARCH}-${newver}.tar.xz";
+    local newfile="zig-${CARCH}-${newver}.tar.xz";
     local newfile_sig="$newfile.minisig";
     # NOTE: The Arch Build System unfortunately doesn't handle dynamically added sources.
     # source+=("${newfile}:${newurl}" "${newfile_sig}:${newurl_sig}")
@@ -154,7 +154,7 @@ check() {
     # Right now there is no way to disable the cache (see Zig issue #12317)
     # Instead we shove everything in a local directory and delete it
     cache_dir="${srcdir}/zig-cache"
-    cd "${srcdir}/zig-linux-${CARCH}-$(original_pkgver)"
+    cd "${srcdir}/zig-${CARCH}-$(original_pkgver)"
     echo "Running Zig Hello World"
     ./zig run --cache-dir "$cache_dir" --global-cache-dir "$cache_dir" "$hello_file"
     ./zig test --cache-dir "$cache_dir" --global-cache-dir "$cache_dir" "$hello_file"
