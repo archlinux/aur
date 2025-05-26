@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gameclock-bin
 _pkgname=GameClock
-pkgver=2.5.4
+pkgver=2.6.0
 _electronversion=29
 pkgrel=1
 pkgdesc="Track your Game time with your friends!(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f12f40c02c0f99df18d07037da405ff872e94d50867b4f865cb2395fee09b12e'
+sha256sums=('69bb4021816cb25d2ec9bd7c575af63eef74eda52c50d43fb1e4349793b3cc98'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
