@@ -4,7 +4,7 @@
 
 pkgname=zoxide
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A smarter cd command for your terminal'
 arch=('x86_64')
 url='https://github.com/ajeetdsouza/zoxide'
@@ -34,20 +34,21 @@ package() {
   cd "$pkgname"
 
   # binary
-  install -vDm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
+  install -vDm755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 
   # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 
   # man pages
-  install -vDm644 -t "$pkgdir/usr/share/man/man1" man/man1/*.1
+  install -vDm644 -t "$pkgdir/usr/share/man/man1/" man/man1/*.1
 
   # documentation
-  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 
   # shell auto-completions
   cd contrib/completions
-  install -vDm644 -t "$pkgdir/usr/share/zsh/site-functions" _zoxide
-  install -vDm644 -t "$pkgdir/usr/share/fish/vendor_completions.d" zoxide.fish
+  install -vDm644 -t "$pkgdir/usr/share/zsh/site-functions/" _zoxide
+  install -vDm644 -t "$pkgdir/usr/share/fish/vendor_completions.d/" zoxide.fish
+  install -vDm644 -t "$pkgdir/usr/share/nushell/vendor/autoload/" zoxide.nu
   install -vDm644 zoxide.bash "$pkgdir/usr/share/bash-completion/completions/zoxide"
 }
