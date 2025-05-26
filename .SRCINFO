@@ -1,6 +1,6 @@
 pkgbase = jdpermissionstoreedit
 	pkgdesc = Edit the Flatpak Permission Store
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://codeberg.org/JakobDev/jdPermissionStoreEdit
 	arch = x86_64
@@ -11,7 +11,8 @@ pkgbase = jdpermissionstoreedit
 	depends = qt6-base
 	depends = flatpak
 	depends = xdg-desktop-portal
-	source = jdpermissionstoreedit-1.1.tar.gz::https://codeberg.org/JakobDev/jdPermissionStoreEdit/archive/1.1.tar.gz
-	sha256sums = 1b9bc6e75e9d8ae9e27a9481e0ffe53d9f37fe4438c0dccfb51dcac33b554383
+	depends = hicolor-icon-theme
+	source = jdpermissionstoreedit-1.2.tar.gz::https://codeberg.org/JakobDev/jdPermissionStoreEdit/archive/1.2.tar.gz
+	sha256sums = fb29daa96d7f3cb57e658ae9715e793aba3b19f972b182dbf76281c385889399
 
 pkgname = jdpermissionstoreedit
