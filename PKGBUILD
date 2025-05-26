@@ -11,7 +11,7 @@ pkgdesc="Drivers for Dell Printers and scanners Model #'s: s1130n 1130 1133 1135
 url="http://www.dell.com/support/home/us/en/19/drivers/driversdetails?driverId=C10W1"
 license=('custom:dell')
 pkgver=1.03
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 # this is the newest version found after a quick search
 source=("$pkgname-$pkgver.tar.gz::https://downloads.dell.com/FOLDER01511597M/1/B1265dnf_Linux_v${pkgver}_Driver.tar.gz"
@@ -79,7 +79,7 @@ package_dell-unified-driver-printer()
 package_dell-unified-driver-scanner()
 {
     conflicts=('samsung-unified-driver-scanner')
-    depends=('dell-unified-driver-common' 'libxml2' 'libusb-compat' 'sane')
+    depends=('dell-unified-driver-common' 'libxml.so=2' 'libusb-compat' 'sane')
     install=dell-unified-driver-scanner.install
 
     _locales=(ru fr)
