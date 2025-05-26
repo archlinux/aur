@@ -1,7 +1,7 @@
 # Maintainer: Adam Wahab <awahab@adhoc.tools>
 _name=uwu_colors
-pkgname=${_name,,}-git
-pkgver=r29.b0b7ba5
+pkgname=${_name/_/-}-git
+pkgver=r32.12cc595
 pkgrel=1
 pkgdesc="a dead simple language server to colorize hex color strings via textDocument/documentColor"
 arch=(aarch64 x86_64)
