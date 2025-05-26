@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Utility;
+Comment=Cross-platform Text Expander
+Exec=espanso launcher
+Icon=espanso
+Name=Espanso
+Terminal=false
+Type=Application
+Version=1.0
