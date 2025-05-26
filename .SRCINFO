@@ -1,7 +1,7 @@
 pkgbase = aviutl-package-manager-bin
 	pkgdesc = A software that assists in the installation of AviUtl itself and its plugins and scripts.(Prebuilt version.Use system-wide electron)
 	pkgver = 3.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://team-apm.github.io/apm/
 	arch = x86_64
 	license = MIT

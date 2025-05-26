@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aviutl-package-manager-bin
 _pkgname=apm
-_appname="AviUtl Package Manager"
+_appname='AviUtl Package Manager'
 pkgver=3.9.1
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="A software that assists in the installation of AviUtl itself and its plugins and scripts.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://team-apm.github.io/apm/"
@@ -22,17 +22,17 @@ source=(
 sha256sums=('4e4c8ffb93f60a66f39fc1b33db2960e932809fda13ba10bdd156da9094ebf18'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_appname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
         s/${_pkgname} %U/${pkgname%-bin} %U/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
