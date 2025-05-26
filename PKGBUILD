@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hechler <patrjprof-git.aur@ph.anderemails.de>
 pkgname=patrjprof-git
-pkgver=1.3.0r199
+pkgver=1.4.0r259
 pkgrel=1
 pkgdesc="A Free Java profiler written in Java"
 arch=('any')
@@ -9,10 +9,9 @@ license=('AGPL-3.0-or-later')
 groups=()
 depends=('java-runtime-headless>=8')
 makedepends=('git' 'java-environment>=8')
-optdepends=('java-runtime-headless>=16: support for socket files for server/client communication'
-           'java-runtime>=8: graphical user interface'
-           'java-runtime>=16: socket files + graphical user interface'
-           'java-runtime=23: the new class-file API (also needed during build time)'
+optdepends=('java-runtime>=8: graphical user interface'
+            'java-runtime-headless>=16: support for socket files for server/client communication'
+            'java-runtime-headless>=23: profile constructors with the new class-file API'
            )
 provides=("patrjprof=${pkgver}")
 conflicts=('patrjprof')
@@ -21,12 +20,12 @@ backup=()
 options=()
 install=
 changelog=
-_pjb_version=2.6.0
+_pjb_version=3.0.0
 source=('git+https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler.git#branch=latest-snapshot'
         "https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/build/patr-java-build/$_pjb_version/patr-java-build-$_pjb_version.jar")
 noextract=(patr-java-build-$_pjb_version.jar)
 sha512sums=('SKIP'
-            'bf21e0d19d12def0a3f6a4ced9b5f11951cdd0af76869009ff0d42b1a817d126b27d53cf6d69880006cd2429f3f3dc9e1ec3f3811a1df669d80b5ba830e5a882')
+            '37b081700ddaacac634320e304b55d64e59267aa1162e411e25cf105678b2603d7092bbe9ce95b9f2332fb2eea625108e3a362a9b122bdc450b6c2e9329564e5')
 
 pkgver() {
   cd "patr-java-profiler"
