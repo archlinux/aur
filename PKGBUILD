@@ -2,13 +2,14 @@
 
 pkgname=linux-keep-modules
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Preserve the Linux kernel modules during and after an upgrade"
 url="https://github.com/jamescherti/archlinux-linux-keep-modules"
 arch=('any')
 license=('MIT')
 depends=(bash rsync coreutils)
 install="$pkgname.install"
+conflicts=('kernel-modules-hook')
 source=(LICENSE
         cleanup-linux-modules.service
         linux-modules-backup.hook
