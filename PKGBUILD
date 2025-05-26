@@ -18,7 +18,7 @@ source=(
 )
 noextract=('*.tar.gz')
 sha256sums=(
-  '16175f3c0b83dd6e4e0fc4f9520de9f556eb8a8a63e43f62b068da4a2ef76398'
+  '5711f60bc8a15a1d113f97c5788ac0c013ef1a99262ad5e7c5228a3cc340b75b'
   'SKIP'
   'SKIP'
   'SKIP'
