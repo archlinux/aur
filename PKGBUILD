@@ -2,9 +2,9 @@
 # Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=libmodule
 pkgver=5.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="C linux library to build simple and modular projects"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/FedeDP/libmodule"
 license=('MIT')
 depends=('glibc')

@@ -1,9 +1,10 @@
 pkgbase = libmodule
 	pkgdesc = C linux library to build simple and modular projects
 	pkgver = 5.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FedeDP/libmodule
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = cmake
 	depends = glibc
