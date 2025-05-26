@@ -3,10 +3,10 @@
 
 _pkgbase=winbox
 pkgname=${_pkgbase}3
-pkgver=3.41
-pkgrel=3
-pkgdesc="Mikrotik RouterOS GUI Configurator (3.x with wine)"
-url="https://mikrotik.com/download"
+pkgver=3.42
+pkgrel=1
+pkgdesc='Mikrotik RouterOS GUI Configurator (3.x with wine)'
+url='https://mikrotik.com/download'
 arch=('x86_64')
 license=('custom')
 depends=('wine')
@@ -17,7 +17,7 @@ source=("${_pkgbase}-${pkgver}.exe::https://download.mikrotik.com/routeros/winbo
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}")
-sha256sums=('8bc3ecf1f35952600ecb1a380c38c88e9d63c081a32204fd094d588230070bf6'
+sha256sums=('47e83dfd0f9680d2e9623fee92c0acc4db40ea4272edeb53164304620305a24f'
             'ac5efd37f7fcdd11680b96e9716d098576c490fc0134b1ff366d07caef5adbad'
             '603eaed8dfb5b6146712c5cee801e6d77f1f45d6bd5c4b545f9f84193834d380'
             'ed63820aafb59d9b8eab860030d96e468e667849b9bde79fdd7bbf871cb71d3a')
