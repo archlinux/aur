@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 6.14.7-arch1 Kernel Configuration
+# Linux/x86 6.14.8-arch1 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 15.1.1 20250425"
 CONFIG_CC_IS_GCC=y
@@ -257,7 +257,6 @@ CONFIG_UTS_NS=y
 CONFIG_TIME_NS=y
 CONFIG_IPC_NS=y
 CONFIG_USER_NS=y
-CONFIG_USER_NS_UNPRIVILEGED=y
 CONFIG_PID_NS=y
 CONFIG_NET_NS=y
 CONFIG_CHECKPOINT_RESTORE=y
