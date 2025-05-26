@@ -1,0 +1,23 @@
+pkgbase = python-pptx2md
+	pkgdesc = A tool to convert Powerpoint pptx file into markdown.
+	pkgver = 2.0.6
+	pkgrel = 1
+	url = https://github.com/ssine/pptx2md/
+	arch = any
+	license = Apache License 2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-numpy
+	depends = python-pptx
+	depends = python-scipy
+	depends = python-rapidfuzz
+	depends = python-pillow
+	depends = python-pydantic
+	depends = python-tqdm
+	source = https://files.pythonhosted.org/packages/68/84/023bbef348a8af7efb4e6ce8ca0d70e04af9d2e97b976d7c8fdbb2bf1889/pptx2md-2.0.6.tar.gz
+	sha256sums = 2adc052d9fb5e031b0760887eea931e7c78c208b7b2440b10468a3c2874b4e44
+
+pkgname = python-pptx2md
