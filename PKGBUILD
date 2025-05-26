@@ -2,9 +2,9 @@
 
 pkgname=coreutils-uutils
 _gnuver=9.7
-_uuver=0.0.30
+_uuver=0.1.0
 pkgver=${_uuver}
-pkgrel=4
+pkgrel=1
 pkgdesc='(warning: use at own risk) Cross-platform Rust rewrite of the GNU coreutils being used as actual system coreutils'
 arch=('x86_64')
 license=('GPL3' 'MIT')
@@ -15,21 +15,18 @@ conflicts=('coreutils' 'b3sum' 'sha3sum')
 provides=('coreutils' 'b3sum' 'sha3sum')
 makedepends=('rust' 'cargo' 'python-sphinx')
 source=("https://ftp.gnu.org/gnu/coreutils/coreutils-$_gnuver.tar.xz"
-        "uutils-coreutils-$_uuver.tar.gz::$url/archive/$_uuver.tar.gz")
+        "uutils-coreutils-$_uuver.tar.gz::$url/archive/$_uuver.tar.gz"
+         disable_selinux.patch)
 sha256sums=('e8bb26ad0293f9b5a1fc43fb42ba970e312c66ce92c1b0b16713d7500db251bf'
-            '732c0ac646be7cc59a51cdfdb2d0ff1a4d2501c28f900a2d447c77729fdfca22')
+            '55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8'
+            '302614165d99f04600627222ddad0444a0144fcad6a1ff59ad43fb0b3162060e')
 
 prepare() {
-  cd coreutils-$_gnuver
-  # apply patch from the source array (should be a pacman feature)
-  local filename
-  for filename in "${source[@]}"; do
-    if [[ "$filename" =~ \.patch$ ]]; then
-      echo "Applying patch ${filename##*/}"
-      patch -p1 -N -i "$srcdir/${filename##*/}"
-    fi
-  done
-  :
+  cd coreutils-$_uuver
+  # the following is derived from the latest uutils-coreutils changes from Tobias Powalowski:
+    # disable selinux in Makefile, upstream seems broken in parameter parsing
+    # SELINUX_ENABLE=0 should not enable SELINUX but fails
+  patch -Np1 -i ../../disable_selinux.patch
 }
 
 build() {
@@ -80,3 +77,5 @@ package() {
   rm $pkgdir/usr/share/bash-completion/completions/*
   rm $pkgdir/usr/share/man/man1/{groups.1,hostname.1,install.1,kill.1,more.1,uptime.1}
 }
+
+# vim: ts=2 sw=2 et:
