@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer : Tyler Holinka <arch at tholinka dot dev>
 
-# dell-unified-driver seems to be based on samsung-unified-driver, but with some dell-only differences (specifically in the rastertospl that causes issues when printer if using the samsung-unified-driver one filter)
+# dell-unified-driver seems to be based on samsung-unified-driver, but with some dell-only differences (specifically in the rastertospl filter that causes issues when printing if using the filter provided by samsung-unified-driver)
 pkgbase=dell-unified-driver
 pkgname=( 'dell-unified-driver-common'
           'dell-unified-driver-printer'
