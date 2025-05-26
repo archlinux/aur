@@ -47,6 +47,7 @@ pkgbase = sabnzbd
 	optdepends = p7zip: for .7z support
 	optdepends = dbus-python: for system power management
 	optdepends = python-orjson: ~2x faster than ujson, requires rust
+	optdepends = par2cmdline-turbo: a faster par2cmdline fork
 	backup = var/lib/sabnzbd/sabnzbd.ini
 	source = https://github.com/sabnzbd/sabnzbd/releases/download/4.5.1/SABnzbd-4.5.1-src.tar.gz
 	source = sabnzbd.service

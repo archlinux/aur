@@ -52,6 +52,7 @@ optdepends=(
   'p7zip: for .7z support'
   'dbus-python: for system power management'
   'python-orjson: ~2x faster than ujson, requires rust'
+  'par2cmdline-turbo: a faster par2cmdline fork'
 )
 
 backup=('var/lib/sabnzbd/sabnzbd.ini')
