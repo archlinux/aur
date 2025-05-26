@@ -15,6 +15,9 @@ pkgbase = edk2-git
 	makedepends = seabios
 	options = !makeflags
 	source = edk2::git+https://github.com/tianocore/edk2#branch=master
+	source = public-mipi-sys-t::git+https://github.com/MIPI-Alliance/public-mipi-sys-t#branch=main
+	source = libfdt::git+https://github.com/devicetree-org/pylibfdt.git#branch=main
+	source = libspdm::git+https://github.com/DMTF/libspdm.git#branch=main
 	source = https://www.openssl.org/source/openssl-3.5.0.tar.gz
 	source = https://www.openssl.org/source/openssl-3.5.0.tar.gz.asc
 	source = brotli-1.1.0.tar.gz::https://github.com/google/brotli/archive/v1.1.0.tar.gz
@@ -29,6 +32,9 @@ pkgbase = edk2-git
 	source = 81-edk2-ovmf-git-ia32-on-x86_64.json
 	source = 82-edk2-ovmf-git-ia32-on-x86_64-csm.json
 	validpgpkeys = BA5473A2B0587B07FB27CF2D216094DFD0CB81EF
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 39cc80e2843a2ee30f3f5de25cd9d0f759ad8de71b0b39f5a679afaaa74f4eb58d285ae50e29e4a27b139b49343ac91d1f05478f96fb0c6b150f16d7b634676f
 	sha512sums = SKIP

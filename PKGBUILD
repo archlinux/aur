@@ -14,6 +14,9 @@ makedepends=(aarch64-linux-gnu-gcc acpica git iasl util-linux-libs nasm python s
 options=(!makeflags)
 source=(
   "edk2::git+https://github.com/tianocore/edk2#branch=master"
+	"public-mipi-sys-t::git+https://github.com/MIPI-Alliance/public-mipi-sys-t#branch=main"
+	"libfdt::git+https://github.com/devicetree-org/pylibfdt.git#branch=main"
+	"libspdm::git+https://github.com/DMTF/libspdm.git#branch=main"
   "https://www.openssl.org/source/openssl-${_openssl_ver}.tar.gz"{,.asc}
   "brotli-${_brotli_ver}.tar.gz::https://github.com/google/brotli/archive/v${_brotli_ver}.tar.gz"
   "50-edk2-ovmf-git-i386-secure.json"
@@ -28,6 +31,9 @@ source=(
   "82-edk2-ovmf-git-ia32-on-x86_64-csm.json"
 )
 sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '39cc80e2843a2ee30f3f5de25cd9d0f759ad8de71b0b39f5a679afaaa74f4eb58d285ae50e29e4a27b139b49343ac91d1f05478f96fb0c6b150f16d7b634676f'
             'SKIP'
             '6eb280d10d8e1b43d22d00fa535435923c22ce8448709419d676ff47d4a644102ea04f488fc65a179c6c09fee12380992e9335bad8dfebd5d1f20908d10849d9'
@@ -54,12 +60,25 @@ pkgver() {
 
 prepare() {
   cd "${pkgbase%-git}"
+  # Link submodules - https://github.com/tianocore/edk2/blob/master/.gitmodules
 
-  # symlinking openssl into place
+  # symlink public-mipi-sys-t
+  rm -rfv MdePkg/Library/MipiSysTLib/mipisyst
+  ln -sfv "${srcdir}/public-mipi-sys-t" MdePkg/Library/MipiSysTLib/mipisyst
+
+  # symlink libfdt
+  rm -rfv MdePkg/Library/BaseFdtLib/libfdt
+  ln -sfv "${srcdir}/libfdt" MdePkg/Library/BaseFdtLib/libfdt
+
+  # symlink libspdm
+  rm -rfv SecurityPkg/DeviceSecurity/SpdmLib/libspdm
+  ln -sfv "${srcdir}/libspdm" SecurityPkg/DeviceSecurity/SpdmLib/libspdm
+
+  # symlink openssl
   rm -rfv CryptoPkg/Library/OpensslLib/openssl
   ln -sfv "${srcdir}/openssl-$_openssl_ver" CryptoPkg/Library/OpensslLib/openssl
 
-  # symlinking brotli into place
+  # symlink brotli
   rm -rfv BaseTools/Source/C/BrotliCompress/brotli MdeModulePkg/Library/BrotliCustomDecompressLib/brotli
   ln -sfv "${srcdir}/brotli-${_brotli_ver}" BaseTools/Source/C/BrotliCompress/brotli
   ln -sfv "${srcdir}/brotli-${_brotli_ver}" MdeModulePkg/Library/BrotliCustomDecompressLib/brotli
