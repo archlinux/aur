@@ -32,6 +32,7 @@ pkgbase = wlroots-0.19-git
 	depends = libdisplay-info
 	optdepends = xorg-xwayland: enable X11 support
 	provides = libwlroots-0.19.so
+	conflicts = wlroots-0.19-mao-git
 	options = debug
 	source = wlroots-0.19-git::git+https://gitlab.freedesktop.org/wlroots/wlroots
 	b2sums = SKIP
