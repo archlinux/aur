@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xraygui-bin
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A small and nimble GUI for XRay.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/AKotov-dev/XRayGUI"
@@ -10,7 +10,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'gtk2'
-    'p7zip'
+    '7zip'
     'wget'
     'zenity'
     'systemd'
@@ -25,10 +25,10 @@ source=(
 sha256sums=('588cc44ffdf4ce0d9a3f6bd7a86dda02cf84e7c99fcc1540d4066f9db35fbcac'
             '2603edafb8afdc7a9984f667bee03cc7c9d71f17f43ed2bb072e5bcf9726b6e4')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" -t "${pkgdir}/usr/bin/${pkgname%-bin}"
