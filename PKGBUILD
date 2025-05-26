@@ -3,7 +3,7 @@
 #
 pkgname='terabox-bin'
 _pkgname="$(echo $pkgname |cut -d - -f 1 | tr 'tb' 'TB')"
-pkgver='1.9.1'
+pkgver='1.40.0'
 pkgrel='1'
 pkgdesc='Baidu netdisc international version'
 arch=('x86_64')
@@ -13,6 +13,10 @@ url='https://www.terabox.com/chinese/'
 depends=(
     'gtkmm3'
     'gtkmm'
+    'nspr'
+    'nodejs'
+    'alsa-lib'
+    'nss'
 )
 
 optdepends=(
@@ -22,7 +26,7 @@ optdepends=(
 # DEB package
 source=("https://data.nephobox.com/issue/terabox/Linux/${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 
-sha256sums=('b60924622427cac0c9cfeb2e0822c451ecbf90123f3c8a7271a106f9d301ec25')
+sha256sums=('50d950622f2b17bdbd04e836e590b9650092456204719eb3341e8a337bef8b44')
 
 options=(!strip)
 
