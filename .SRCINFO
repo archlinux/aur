@@ -1,15 +1,15 @@
 pkgbase = ebnf-convert
 	pkgdesc = a tool for converting various forms of BNF and EBNF grammars to W3C-style EBNF
-	pkgver = 0.70
-	pkgrel = 2
+	pkgver = 0.71
+	pkgrel = 1
 	url = https://github.com/GuntherRademacher/ebnf-convert
 	arch = any
 	license = Apache-2.0
 	makedepends = gradle
-	makedepends = java-environment<22
+	makedepends = java-environment
 	depends = bash
-	depends = java-runtime<22
-	source = https://github.com/GuntherRademacher/ebnf-convert/archive/v0.70/ebnf-convert-0.70.tar.gz
-	sha256sums = 740a1ac7bbe367afc3f1414d9329a57b33e8630974502863058fcfb92ed1c6cd
+	depends = java-runtime
+	source = https://github.com/GuntherRademacher/ebnf-convert/archive/v0.71/ebnf-convert-0.71.tar.gz
+	sha256sums = bf447b4e18f7574231d1fb6ba9f1bbf601109b141c24387df8b14fea9a22341b
 
 pkgname = ebnf-convert

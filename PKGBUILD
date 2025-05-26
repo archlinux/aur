@@ -1,19 +1,19 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ebnf-convert
-pkgver=0.70
-pkgrel=2
+pkgver=0.71
+pkgrel=1
 pkgdesc='a tool for converting various forms of BNF and EBNF grammars to W3C-style EBNF'
 arch=(any)
 url="https://github.com/GuntherRademacher/$pkgname"
 license=(Apache-2.0)
 depends=(bash
-         'java-runtime<22')
+         java-runtime)
 makedepends=(gradle
-             'java-environment<22')
+             java-environment)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('740a1ac7bbe367afc3f1414d9329a57b33e8630974502863058fcfb92ed1c6cd')
+sha256sums=('bf447b4e18f7574231d1fb6ba9f1bbf601109b141c24387df8b14fea9a22341b')
 
 build() {
 	cd "$_archive"
