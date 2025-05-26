@@ -1,7 +1,7 @@
 # Maintainer: Melvin Redondo-Tanis <melvin@redondotanis.com>
 
 pkgname=intel-npu-driver-bin
-pkgver=1.16.0.20250328_14132024782
+pkgver=1.17.0.20250508_14912879441
 pkgrel=1
 _main_ver=$(echo $pkgver | cut -d'.' -f1-3)
 pkgdesc="Intel(R) NPU (Neural Processing Unit) Driver"
@@ -16,13 +16,13 @@ source=(
   "intel-driver-compiler-npu_${pkgver//_/-}.deb::https://github.com/intel/linux-npu-driver/releases/download/v${_main_ver}/intel-driver-compiler-npu_${pkgver//_/-}_ubuntu24.04_amd64.deb"
   "intel-fw-npu_${pkgver//_/-}.deb::https://github.com/intel/linux-npu-driver/releases/download/v${_main_ver}/intel-fw-npu_${pkgver//_/-}_ubuntu24.04_amd64.deb"
   "intel-level-zero-npu_${pkgver//_/-}.deb::https://github.com/intel/linux-npu-driver/releases/download/v${_main_ver}/intel-level-zero-npu_${pkgver//_/-}_ubuntu24.04_amd64.deb"
-  "LICENSE.linux-npu-driver::https://raw.githubusercontent.com/intel/linux-npu-driver/main/LICENSE.md"
+  "LICENSE.md::https://raw.githubusercontent.com/intel/linux-npu-driver/main/LICENSE.md"
 )
 noextract=("${source[@]%%::*}")
 sha256sums=(
-  'd121a06aa9138c02f765f99b346030a01a49e35048f8e699719595fddd1bfc6d'
-  'aafa4afcac868c4299e49b59abaca32aa96c997fa8a61487f0662304e4319eb4'
-  'ee7a006bada1d16664c311a53abb4a22df054b9081a429cd3063cc31bbdcb1ce'
+  '24309e17063e94729330ae9c02c5f2ea8ca5c27cdb067303e4e26ad1f4656a13'
+  'cebbac7bdb56eb72529b8060bb1601afdcd4e90f2e5c29018b5ceaff98b7c63c'
+  '07ee5332d0523661f5b3cec69593197fecc95439c8a9a401905e05cb7690097b'
   '451963b6682694730dbe4889fff2ef1c20def68992e2594880c15a28e6c87be5'
 )
 
@@ -45,7 +45,7 @@ package() {
   bsdtar -xf intel-driver-compiler-npu/data.tar.gz -C "${pkgdir}/"
   bsdtar -xf intel-level-zero-npu/data.tar.gz -C "${pkgdir}/"
 
-  install -D -m644 LICENSE.linux-npu-driver "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.linux-npu-driver"
+  install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 
   mkdir -p "${pkgdir}/usr/lib/udev/rules.d"
   echo 'SUBSYSTEM=="accel", KERNEL=="accel*", GROUP="render", MODE="0660", TAG+="uaccess"' > "${pkgdir}/usr/lib/udev/rules.d/99-intel-npu.rules"
