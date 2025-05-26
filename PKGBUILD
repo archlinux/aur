@@ -12,8 +12,8 @@
 readonly _pkgname="soci"
 
 pkgname="soci-git"
-pkgver="v4.0.1_928_gd3cbaa73"
-pkgrel=1
+pkgver="v4.0.1_944_gd3ce6b58"
+pkgrel="1"
 pkgdesc="C++ database access library."
 arch=("x86_64")
 url="https://github.com/SOCI/${_pkgname}"
