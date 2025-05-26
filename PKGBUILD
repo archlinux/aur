@@ -16,6 +16,7 @@ depends=(
   'wayland-protocols'
   'gtk4-layer-shell'
   'bluez-tools'
+  'wl-clipboard'
 )
 
 makedepends=('git')
