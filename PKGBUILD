@@ -1,7 +1,7 @@
 # Maintainer: ibrokemypie <ibrokemypie@bastardi.net>
 pkgname=python-i3-quickterm
 _name=${pkgname#python-}
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A small drop-down terminal for i3wm and sway"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-i3ipc')
 makedepends=('python-setuptools')
 optdepends=('i3-wm' 'sway' 'dmenu' 'rofi')
 source=("$_name-$pkgver.tar.gz::https://github.com/lbonn/$_name/archive/v${pkgver}.tar.gz")
-sha256sums=('fcf327c35dfbf2b80c594ab1d68970be47b638249fd669d0ca2fb39fcad3620a')
+sha256sums=('f1b92a817a928958eaccf165b7ab609e3959f6807334571661e1fe0f858ad079')
 
 build() {
 	cd "$_name-$pkgver"

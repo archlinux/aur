@@ -1,6 +1,6 @@
 pkgbase = python-i3-quickterm
 	pkgdesc = A small drop-down terminal for i3wm and sway
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://pypi.org/project/i3-quickterm/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-i3-quickterm
 	optdepends = sway
 	optdepends = dmenu
 	optdepends = rofi
-	source = i3-quickterm-1.1.tar.gz::https://github.com/lbonn/i3-quickterm/archive/v1.1.tar.gz
-	sha256sums = fcf327c35dfbf2b80c594ab1d68970be47b638249fd669d0ca2fb39fcad3620a
+	source = i3-quickterm-1.2.tar.gz::https://github.com/lbonn/i3-quickterm/archive/v1.2.tar.gz
+	sha256sums = f1b92a817a928958eaccf165b7ab609e3959f6807334571661e1fe0f858ad079
 
 pkgname = python-i3-quickterm
