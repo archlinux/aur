@@ -6,7 +6,7 @@ _zhsname='有道云笔记'
 pkgver=8.1.21
 _electronversion=18
 _reldate='%2F2025%2F04%2F30%2F'
-pkgrel=1
+pkgrel=2
 pkgdesc="Netease Youdao Ynote for Linux.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://note.youdao.com/"
@@ -15,6 +15,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
+    'perl'
 )
 makedepends=(
     'asar'
@@ -59,7 +60,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_zhsname}/resources/"{app.asar.unpacked,build} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_zhsname}/resources/build" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644  "${srcdir}/opt/${_zhsname}/dll/scholar/client.so" -t "${pkgdir}/usr/lib/${pkgname%-bin}/dll/scholar"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)

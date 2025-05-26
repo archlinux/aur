@@ -1,12 +1,13 @@
 pkgbase = ynote-desktop-bin
 	pkgdesc = Netease Youdao Ynote for Linux.(Prebuilt version.Use system-wide electron)
 	pkgver = 8.1.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://note.youdao.com/
 	arch = x86_64
 	license = LicenseRef-custom
 	makedepends = asar
 	depends = electron18
+	depends = perl
 	provides = ynote-desktop=8.1.21
 	conflicts = ynote-desktop
 	options = !strip
