@@ -1,7 +1,7 @@
 pkgbase = final2x-bin
 	pkgdesc = 2^x Image Super-Resolution.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://final2x.tohru.top/
 	arch = x86_64
 	license = BSD-3-Clause
