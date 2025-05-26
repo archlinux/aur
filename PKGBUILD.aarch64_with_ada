@@ -2,8 +2,8 @@
 
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-libs,gcc-ada,gcc-gcobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
-pkgver=16.0.0.snapshot20250518
-_pkgver=16-20250518
+pkgver=16.0.0.snapshot20250525
+_pkgver=16-20250525
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -15,7 +15,7 @@ pkgdesc='The GNU Compiler Collection (snapshot)'
 arch=(aarch64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
 url='https://gcc.gnu.org'
-makedepends=(binutils doxygen gcc-ada git python rust zstd)
+makedepends=(binutils doxygen gcc-ada gcc-d git python rust zstd)
 checkdepends=(dejagnu expect inetutils python-pytest tcl)
 options=(!emptydirs !lto)
 _libdir=usr/lib/gcc/${CHOST}/${_realver}
@@ -209,7 +209,7 @@ package_gcc-snapshot() {
   install -d ${pkgdir}/usr/share/gdb/auto-load/usr/lib
   mv ${pkgdir}/usr/lib/libstdc++.so.6.*-gdb.py ${pkgdir}/usr/share/gdb/auto-load/usr/lib/
 
-  rm ${pkgdir}/usr/lib/libstdc++.so*
+  rm -f ${pkgdir}/usr/lib/libstdc++.so*
 
   make DESTDIR=${pkgdir} install-fixincludes
   make -C gcc DESTDIR=${pkgdir} install-mkheaders
@@ -227,9 +227,9 @@ package_gcc-snapshot() {
   make -C ${CHOST}/libsanitizer/lsan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
   make -C gcc DESTDIR=${pkgdir} install-man install-info
 
-  rm ${pkgdir}/usr/share/man/man1/{gcobol,gccgo,gfortran,lto-dump,gdc,gm2}*
-  rm ${pkgdir}/usr/share/man/man3/gcobol*
-  rm ${pkgdir}/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc,m2}*
+  rm -f ${pkgdir}/usr/share/man/man1/{gcobol,gccgo,gfortran,lto-dump,gdc,gm2}*
+  rm -f ${pkgdir}/usr/share/man/man3/gcobol*
+  rm -f ${pkgdir}/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc,m2}*
 
   make -C libcpp DESTDIR=${pkgdir} install
   make -C gcc DESTDIR=${pkgdir} install-po

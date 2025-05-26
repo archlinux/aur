@@ -2,8 +2,8 @@
 
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-gcobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
-pkgver=16.0.0.snapshot20250518
-_pkgver=16-20250518
+pkgver=16.0.0.snapshot20250525
+_pkgver=16-20250525
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -34,7 +34,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('2e50491fa1bd3543c2c02a57eba0296fadc00063622ea94e7c8383edf7420b0f'
+sha256sums=('bca61e1bbb5844b86aa5297236c16eb23a938b132330fa8eaf3c78eeb035549e'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
@@ -214,7 +214,7 @@ package_gcc-snapshot() {
   install -d ${pkgdir}/usr/share/gdb/auto-load/usr/lib
   mv ${pkgdir}/usr/lib/libstdc++.so.6.*-gdb.py ${pkgdir}/usr/share/gdb/auto-load/usr/lib/
 
-  rm ${pkgdir}/usr/lib{,32}/libstdc++.so*
+  rm -f ${pkgdir}/usr/lib{,32}/libstdc++.so*
 
   make DESTDIR=${pkgdir} install-fixincludes
   make -C gcc DESTDIR=${pkgdir} install-mkheaders
@@ -236,9 +236,9 @@ package_gcc-snapshot() {
   make -C ${CHOST}/32/libsanitizer/asan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
   make -C gcc DESTDIR=${pkgdir} install-man install-info
 
-  rm ${pkgdir}/usr/share/man/man1/{gcobol,gccgo,gfortran,lto-dump,gdc,gm2}*
-  rm ${pkgdir}/usr/share/man/man3/gcobol*
-  rm ${pkgdir}/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc,m2}*
+  rm -f ${pkgdir}/usr/share/man/man1/{gcobol,gccgo,gfortran,lto-dump,gdc,gm2}*
+  rm -f ${pkgdir}/usr/share/man/man3/gcobol*
+  rm -f ${pkgdir}/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc,m2}*
 
   make -C libcpp DESTDIR=${pkgdir} install
   make -C gcc DESTDIR=${pkgdir} install-po

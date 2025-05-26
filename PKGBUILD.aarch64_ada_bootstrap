@@ -71,7 +71,7 @@ prepare() {
   patch -Np0 -i ${srcdir}/gcc-ada-repro.patch
   patch -Np1 -i ${srcdir}/0002-libgccjit-Remove-obsolete-texinfo-statements.patch
 
-  mkdir ${srcdir}/gcc-build
+  mkdir -p ${srcdir}/gcc-build
 }
 
 build() {
@@ -253,13 +253,11 @@ package_gcc-snapshot() {
 
 package_gcc-ada-snapshot() {
   pkgdesc='Ada front-end for GCC (snapshot)'
-
-
   depends=("gcc-snapshot=${pkgver}-${pkgrel}")
   provides=(${pkgname}-multilib gcc-ada-multilib gcc-ada)
   replaces=(${pkgname}-multilib gcc-ada-multilib gcc-ada)
   conflicts=(gcc-ada-multilib gcc-ada)
-  options=(!emptydirs strip staticlibs)
+  options=(!emptydirs lto strip staticlibs)
 
   cd gcc-build/gcc
 
