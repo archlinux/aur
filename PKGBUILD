@@ -1,6 +1,6 @@
 pkgname=muteled
 _pkgname=MuteLED
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc='A simple script aiming to fix the broken mute LED light on some HP laptop models'
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('acpid' 'pamixer' 'alsa-tools')
 makedepends=('git')
 source=("git+https://github.com/username227/${_pkgname}#tag=$pkgver")
-sha256sums=('331dcc2a3a42e8781a93c3147fd9b81c11b6802e242476b23d67006a5babab97')
+sha256sums=('ca906a647fe60137b321a2df000da1c6964cc54045653b41e77f77d3262ff0f7')
 install=acpidinfo.install
 
 package() {
