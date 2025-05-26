@@ -1,18 +1,18 @@
 # Maintainer: Blaadick <null>
 
-_reponame="AurSynchronization"
+_reponame="BlaadPapers"
 pkgname="blaadpapers"
-pkgdesc="Allows you to easily automate package updates on AUR"
-pkgver="1.0.0"
+pkgdesc="Super wallpaper manager"
+pkgver="0.0.7"
 pkgrel=1
 arch=("any")
-url="https://github.com/Blaadworks/AurSynchronization"
+url="https://github.com/Blaadick/BlaadPapers"
 license=("MIT")
 depends=("qt6-base" "hyprpaper")
 makedepends=("cmake" "ninja" "librsvg")
 options=("!debug")
-source=("blaadpapers-1.0.0.tar.gz::https://github.com/Blaadworks/AurSynchronization/archive/refs/tags/v1.0.0.tar.gz")
-sha256sums=("3bdfd6121883ac77f6dd0a3df388d6ed0e5da74b45dedc66c050c5ee0436f79a")
+source=("blaadpapers-0.0.7.tar.gz::https://github.com/Blaadick/BlaadPapers/archive/refs/tags/v0.0.7.tar.gz")
+sha256sums=("fe6df0ca2933fa1bd78c9854ac6979fa2a5050933362a37fcf18bdaca231bf26")
 
 build() {
     cd "BlaadPapers-$pkgver"
