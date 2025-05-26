@@ -1,7 +1,7 @@
 pkgbase = libast
 	pkgdesc = The Library of Assorted Spiffy Things.
 	pkgver = 0.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/mej/libast
 	arch = i686
 	arch = x86_64

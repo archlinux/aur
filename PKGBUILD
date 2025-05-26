@@ -2,7 +2,7 @@
 
 pkgname=libast
 pkgver=0.7
-pkgrel=4
+pkgrel=5
 pkgdesc="The Library of Assorted Spiffy Things."
 arch=('i686' 'x86_64')
 url="https://github.com/mej/libast"
@@ -22,7 +22,9 @@ build() {
 
 	# args pass through to configure
 	./autogen.sh --prefix=/usr --with-x
-	make
+	
+	# fix for C23 compile failures
+	make CFLAGS="$(CFLAGS) -std=gnu17"
 }
 
 package() {
