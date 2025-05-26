@@ -2,8 +2,8 @@
 # Co-Maintainer: FLOZz <aru at flogisoft dot com>
 pkgname=rst2gemtext
 pkgver=0.4.0
-pkgrel=1
-pkgdesc='Converts reStructuredText to Gemtext (Gemini markup format)'
+pkgrel=2
+pkgdesc="Converts reStructuredText to Gemtext (Gemini markup format)"
 arch=('any')
 url="https://github.com/flozz/rst2gemtext"
 license=('GPL-3.0-only')
@@ -14,13 +14,16 @@ depends=(
     'python-setuptools'
     'python-importlib-metadata'
 )
+makedepends=(
+    'git'
+)
 options=(
     'zipman'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
 )
-sha256sums=('69b789c27796dfd0b187b9aa3a889e7c16e713e4366939f81f1498ae356888e3')
+sha256sums=('a01b32c74ad4fbdc389277582ca9995f851a1044f4edcdf0c6bd0432a1b78bd4')
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
