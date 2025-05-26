@@ -4,7 +4,7 @@ pkgname="${_pkgname}-eth-bin"
 _appname=Frame
 pkgver=0.6.11
 _electronversion=23
-pkgrel=1
+pkgrel=2
 pkgdesc="System-wide Web3.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -34,14 +34,16 @@ sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('e2495a82aeb4c20bf7fdaee54c9c7c8608d5eb888a2a3069147e03c5bfc6a874')
 sha256sums_x86_64=('b7ad23b00e288d717cd39394aea20e764f1e3fd3e5c00fe0d17c440426a199be')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${_pkgname}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
