@@ -17,7 +17,7 @@ source=("https://downloads.slack-edge.com/desktop-releases/linux/x64/${pkgver}/$
         "${pkgname}.patch")
 noextract=("${pkgname}-${pkgver}-amd64.deb")
 b2sums=('1d5a0d2229eba94eb1a9effba41e20347143188e31ed5acee8a1f6d5e283956618ca983f9db4c07898aad22e74363c158eaa8b4d4da5b2894a4113b54deab19c'
-        'b5786265fcaf85be4134a444d5c2376f3b3753b667ac8b5237d74cbc643433148ec0a4f8ddfe65276d6029cc6941b464938e6c37f904c2369cbe14ca3f1819dd')
+        '103447636acd7ac2789d7d89008483a2077d862a51a64427a66c51e64dc9eac588de187f13df2778ccb7b24110a36c259b33c0074ff69c9bab3f89283a1efaf1')
 
 package() {
     bsdtar -O -xf "slack-desktop-${pkgver}"*.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
