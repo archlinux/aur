@@ -22,7 +22,8 @@ build() {
     cd "$srcdir/${pkgname}"
     cmake . \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     make
 }
 
