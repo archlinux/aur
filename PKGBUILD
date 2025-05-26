@@ -1,7 +1,7 @@
 # Maintainer: Haotian Li <lilinzta@gmail.com>
 pkgname=venera-bin
 pkgdesc="A comic app"
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/venera-app/venera"
@@ -13,6 +13,6 @@ sha256sums=('SKIP')
 
 package() {
     tar -I zstd -xf data.tar.zst -C "${pkgdir}/"
-    install -d "${pkgdir}/usr/local/bin"
+    install -dm755 "${pkgdir}/usr/local/bin"
     ln -sf /usr/local/lib/venera/venera "${pkgdir}/usr/local/bin/"
 }
