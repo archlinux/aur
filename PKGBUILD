@@ -2,7 +2,7 @@
 
 pkgname="neothesia"
 _pkgname="Neothesia"
-pkgver="0.2.1"
+pkgver="0.3.1"
 pkgrel=1
 pkgdesc="Flashy Synthesia Like Software For Linux, Windows and MacOS"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=("GPL")
 makedepends=("rust" "clang")
 depends=("ffmpeg")
 source=("https://github.com/PolyMeilex/Neothesia/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2c2d361552bdb3bcd0c2ec8ffab18ae1e8e6d8e15ca72779552ea37a2b1f939c')
+sha256sums=('994ff7de5e91d41a267d478b52ebdc05d12e81a8a5dba49bd5e1addda9ea65ee')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
