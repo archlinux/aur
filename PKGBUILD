@@ -30,7 +30,6 @@ package() {
     bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
 
     #  rm -r ${pkgdir}/usr/share/doc
-    install -Dm644 $srcdir/AstahLicenseAgreement-16th.pdf ${pkgdir}/usr/share/licenses/${_pkgname}/AstahLicenseAgreement-16th.pdf || return 1
     install -Dm644 $srcdir/LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE || return 1
     install -Dm644 $srcdir/PRIVACY ${pkgdir}/usr/share/licenses/${_pkgname}/PRIVACY || return 1
 }
