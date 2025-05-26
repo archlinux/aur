@@ -1,0 +1,14 @@
+pkgbase = bt-synckeys
+	pkgdesc = Automated Windows to Linux Bluetooth Key syncing script for dual-booting people
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/mos9527/bt-synckeys/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = chntpw
+	source = bt-synckeys::git+https://github.com/mos9527/bt-synckeys/#commit=a7ca2f1cd2b62d497ff688e48fdeb013438b9c69
+	sha256sums = SKIP
+
+pkgname = bt-synckeys
