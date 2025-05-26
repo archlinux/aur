@@ -2,7 +2,7 @@
 _appname=dnschanger
 pkgname="${_appname}-desktop-bin"
 _pkgname=DNS-Changer
-pkgver=2.3.3
+pkgver=2.3.4
 _electronversion=33
 pkgrel=1
 pkgdesc="Gather the best DNS servers in a secure application.(Prebuilt version.Use system-wide electron)"
@@ -23,22 +23,22 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/DnsChanger/dnsChanger-desktop/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('18b53720bb510a49f2372cc96d8225e2780bff5a9084ef343c11a627645d8ed8'
+sha256sums=('5fde90159cc1444187e2de42aef02b4ed4e1df713919dd6b184e0bc8845e7d3b'
             'd8cd7d03b1c407ad97d6059dd8d6821ce42ab3bd8e9d39caab2fe4e730c8f737'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_appname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
         s/\/opt\/${_pkgname//-/ }\/${_appname}/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
         s/Utilities/Utility;Network/g
-    " -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    " "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

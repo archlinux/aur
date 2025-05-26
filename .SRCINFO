@@ -1,18 +1,18 @@
 pkgbase = dnschanger-desktop-bin
 	pkgdesc = Gather the best DNS servers in a secure application.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.3.3
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = https://dnschanger.github.io/
 	arch = x86_64
 	license = MIT
 	depends = electron33
-	provides = dnschanger-desktop=2.3.3
+	provides = dnschanger-desktop=2.3.4
 	conflicts = dnschanger-desktop
 	conflicts = dnschanger
-	source = dnschanger-desktop-2.3.3.rpm::https://github.com/DnsChanger/dnsChanger-desktop/releases/download/v2.3.3/DNS-Changer-linux-x86_64-2.3.3.rpm
-	source = LICENSE-2.3.3::https://raw.githubusercontent.com/DnsChanger/dnsChanger-desktop/v2.3.3/LICENSE
+	source = dnschanger-desktop-2.3.4.rpm::https://github.com/DnsChanger/dnsChanger-desktop/releases/download/v2.3.4/DNS-Changer-linux-x86_64-2.3.4.rpm
+	source = LICENSE-2.3.4::https://raw.githubusercontent.com/DnsChanger/dnsChanger-desktop/v2.3.4/LICENSE
 	source = dnschanger-desktop.sh
-	sha256sums = 18b53720bb510a49f2372cc96d8225e2780bff5a9084ef343c11a627645d8ed8
+	sha256sums = 5fde90159cc1444187e2de42aef02b4ed4e1df713919dd6b184e0bc8845e7d3b
 	sha256sums = d8cd7d03b1c407ad97d6059dd8d6821ce42ab3bd8e9d39caab2fe4e730c8f737
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
