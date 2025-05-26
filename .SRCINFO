@@ -1,0 +1,14 @@
+pkgbase = clown-git
+	pkgdesc = Simple build automation tool using TOML (Clownfile) written in Rust (git HEAD)
+	pkgver = never.gonna.give.you.up
+	pkgrel = 1
+	url = https://github.com/tosterlolz/clown
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = gcc
+	depends = cargo
+	source = git+https://github.com/tosterlolz/clown.git
+	sha256sums = SKIP
+
+pkgname = clown-git
