@@ -1,3 +1,7 @@
 [swift-format]
 source = "git"
 git = "https://github.com/apple/swift-format.git"
+prefix = "swift-"
+use_max_tag = true
+include_regex = "swift-\\d+\\.\\d+\\.\\d+-RELEASE"
+
