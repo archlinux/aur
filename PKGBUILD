@@ -1,10 +1,10 @@
 # Maintainer: cap153 <1536989047@qq.com>
 
 pkgname=easytier-bin
-pkgver=2.2.4
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="由Rust和Tokio驱动，一个简单、安全、去中心化的内网穿透VPN组网方案"
-conflicts=("easytier" "easytier-git")
+conflicts=("easytier" "easytier-git" "easytier-web" "easytier-core" "easytier-cli" "easytier-web-git" "easytier-core-git" "easytier-cli-git")
 arch=("x86_64" "aarch64")
 url="https://github.com/EasyTier/EasyTier"
 license=('Apache License 2.0')
@@ -32,5 +32,6 @@ package() {
   install -Dm755 easytier-core "$pkgdir/usr/bin/easytier-core"
   install -Dm755 easytier-cli "$pkgdir/usr/bin/easytier-cli"
   install -Dm755 easytier-web "$pkgdir/usr/bin/easytier-web"
+  install -Dm755 easytier-web-embed "$pkgdir/usr/bin/easytier-web-embed"
 }
 # makepkg --printsrcinfo > .SRCINFO
