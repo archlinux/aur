@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="pdtm"
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="ProjectDiscovery's Open Source Tool Manager"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 _pkgsrc="${url##*/}"
 source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}")
-b2sums=('ba30247555f000825c7961026f7534576822649be75674b71032f2e8042f2e153417e547f1f77ac6bc577f8d6c53c57cf6169c8b6e093edf4fb2bd564842d00f')
+b2sums=('e5b0ac35ff0333aa101afe2ad26a99eed4d667a73bcfea9557c87c42b71576284a9381e332563f7e8c00fd5d392cdcd1b80d94d2391a16020c151bdcd4ea8e1d')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
