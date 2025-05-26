@@ -2,7 +2,7 @@
 # Contributor: Jan Claussen <jan dot claussen10 at web dot de>
 pkgname=webos-dev-manager-bin
 pkgver=1.99.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Device/DevMode Manager for webOS TV.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -16,12 +16,22 @@ depends=(
     'gtk3'
     'webkit2gtk-4.1'
 )
+source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
+sha256sums=('5111c45e21dd8590d5b44093045778946195d3036c83416db69498a12be0e912')
 sha256sums_aarch64=('ebeb5c8786a58ea960b7da1d88f280c80fc94d30f243c315837790c5538d567d')
 sha256sums_x86_64=('2e505d077176e4ab8103867615e204ded93bcc429201e15aa5dc9cbfc80c925d')
+prepare() {
+    sed -i -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
+        s/@options@/WEBKIT_DISABLE_DMABUF_RENDERER=1/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+}
 package() {
-    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(32x32 128x128 256x256@2)
     for _icons in "${_icon_sizes[@]}";do
