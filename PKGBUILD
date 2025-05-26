@@ -1,34 +1,31 @@
-# Maintainer: Federico Di Pierro <nierro92@gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=libmodule
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="C linux library to build simple and modular projects"
-arch=(any)
-url="https://github.com/FedeDP/${pkgname}"
-license=(MIT)
-depends=()
-makedepends=(git cmake)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=("35506360272cb13c0a09f17db6f716cf1c3e9fe40ac1bd574e4dc67916f7ca0a")
-
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    mkdir -p build
-}
+arch=('x86_64')
+url="https://github.com/FedeDP/libmodule"
+license=('MIT')
+depends=('glibc')
+makedepends=('cmake')
+provides=('libmodule.so=5')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('35506360272cb13c0a09f17db6f716cf1c3e9fe40ac1bd574e4dc67916f7ca0a')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"/build
-    cmake \
-        -G "Unix Makefiles" \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_BUILD_TYPE="Release" \
-        ../
-    make
+  cmake -B build -S "$pkgname-$pkgver" \
+    -G "Unix Makefiles" \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_POLICY_VERSION_MINIMUM='3.5' \
+    -Wno-dev
+  cmake --build build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"/build
-    make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
+
+  cd "$pkgname-$pkgver"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
