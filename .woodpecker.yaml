@@ -31,7 +31,7 @@ steps:
       # Run update check
       - chmod +x update.sh
       - BEFORE_COMMIT=$(git rev-parse HEAD)
-      - sudo -u builduser ./update.sh || true
+      - sudo -u builduser ./update.sh
       - AFTER_COMMIT=$(git rev-parse HEAD)
       # Process results based on event type
       - |
