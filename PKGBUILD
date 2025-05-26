@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=handbook-git
 _pkgname=Handbook
-pkgver=0.17.0.r0.ge44bf2e
+pkgver=0.18.0.r0.g3cda993
 _electronversion=36
 _nodeversion=24
 pkgrel=1
