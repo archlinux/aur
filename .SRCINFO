@@ -1,6 +1,6 @@
 pkgbase = dput-ng-git
 	pkgdesc = Like dput but better
-	pkgver = 1.40.r6.gf5f72a1
+	pkgver = 1.43.r0.g90c5965
 	pkgrel = 1
 	url = https://salsa.debian.org/debian/dput-ng
 	arch = any

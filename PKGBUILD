@@ -3,25 +3,38 @@
 
 _gitname=dput-ng
 pkgname="${_gitname}-git"
-pkgver=1.40.r6.gf5f72a1
+pkgver=1.43.r0.g90c5965
 pkgrel=1
 pkgdesc='Like dput but better'
 url='https://salsa.debian.org/debian/dput-ng'
-makedepends=('git' 'python-setuptools' 'python-sphinx')
-depends=('distro-info' 'python' 'python-debian' 'python-jsonschema' 'python-paramiko' 'python-pyxdg')
+makedepends=(
+    'git'
+    'python-setuptools'
+    'python-sphinx'
+)
+depends=(
+    'distro-info'
+    'python'
+    'python-debian'
+    'python-jsonschema'
+    'python-paramiko'
+    'python-pyxdg'
+)
 license=('GPL-2.0-or-later')
 arch=('any')
 provides=('dput')
 conflicts=('dput')
-source=("git+https://salsa.debian.org/debian/${_gitname}.git"
-	"0001-xdg-import.patch")
+source=(
+    "git+https://salsa.debian.org/debian/${_gitname}.git"
+    "0001-xdg-import.patch"
+)
 b2sums=('SKIP'
 	'b65e2c06fee5d2c25cacfbcf901c26176cd205664113e408f6d1e20859c37253cd43bb21d9387b1a429b8376be0764415692c63658bf26ba13fd5ad0f05f4c65')
 
 pkgver()
 {
     cd "${srcdir}/${_gitname}"
-    git describe --long --abbrev=7 --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --abbrev=7 --tags | sed -e 's/\([^-]*-g\)/r\1/;s/-/./g' -e 's/^debian\///'
 }
 
 prepare()
