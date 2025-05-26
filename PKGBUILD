@@ -21,7 +21,7 @@ optdepends=('glib2: Move to trash functionality'
             'libdbusmenu-glib: KDE global menu'
             'lsof: Terminal splitting'
             'vulkan-driver')
-options=('!strip') # for sing  of ext ?
+options=('!strip') # for sing of ext ?
 makedepends=(tar sed desktop-file-utils) # tar is faster than bsdtar.
 source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb"
 		"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
@@ -33,15 +33,10 @@ build() {
 	mv usr/share/{appdata,metainfo}
 	mv usr/share/zsh/{vendor-completions,site-functions}
 	# Launcher
-	_electron=electron$(rg -o -r '$1' '"electron": *"[^0-9]*([0-9]+)' usr/share/windsurf/resources/app/package.json)
-	echo $_electron
-
 	_app=/usr/share/windsurf/resources/app
 	sed -e "s|code-flags|windsurf-flags|" code.sh \
 		-e "s|/usr/lib/code/out/cli.js|${_app}/out/cli.js|" \
 		-e "s|/usr/lib/code/code.mjs|--app=${_app}|" > run.sh
-	sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
-
 	ln -sf /usr/bin/windsurf usr/share/windsurf/windsurf
 	# Replacements
 	ln -svf /usr/bin/fd usr/share/windsurf/resources/app/extensions/windsurf/bin/fd
@@ -56,6 +51,9 @@ build() {
 package_windsurf(){
 	pkgdesc="The new purpose-built IDE to harness magic"
 	cp -r --reflink=auto usr "${pkgdir}/usr"
+	_electron=electron$(rg -o -r '$1' '"electron": *"[^0-9]*([0-9]+)' usr/share/windsurf/resources/app/package.json)
+	echo $_electron
+	sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
 	install -Dm755 run-safe.sh "${pkgdir}/usr/bin/windsurf"
 	depends+=(${_electron}) # hidden from --printsrcinfo
 }
