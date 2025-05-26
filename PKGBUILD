@@ -1,116 +1,60 @@
-# Maintainer: Samet Güzeldemirci <samet@guzeldemirci.com> 
-# Github: https://github.com/samex/windsurf-ai-arch-linux
+# Maintainer: Patrick Fischer <aur@pathin.me>
 
 pkgname=windsurf-bin
-_pkgname=windsurf
-pkgver=1.4.4
+pkgver=1.9.1
 pkgrel=1
-pkgdesc="Tomorrow's Editor, Today. Built to keep you in flow state with instant, invaluable AI developer assistance."
+pkgdesc="Windsurf (formerly Codeium) is the world's most advanced AI coding assistant for developers and enterprises. Windsurf Editor — the first AI-native IDE that keeps developers in flow."
 arch=('x86_64')
-url="https://codeium.com/"
-license=('MIT')
-depends=(
+url="https://windsurf.com/"
+license=('LicenseRef-Windsurf Editor')
+_elnum=34
+depends=( electron$_elnum ripgrep fd xdg-utils #replacements
     'alsa-lib'
-    'bash'
-    'cairo'
     'dbus'
-    'expat'
-    'fontconfig'
-    'gcc-libs'
-    'glibc>=2.28-4'
     'gnupg'
-    'gtk3'
-    'libdrm'
     'libnotify'
     'libsecret'
-    'libx11'
-    'libxcb'
-    'libxcomposite'
-    'libxdamage'
-    'libxext'
-    'libxfixes'
-    'libxkbcommon'
     'libxkbfile'
-    'libxrandr'
     'libxss'
-    'libxtst'
-    'lsof'
-    'mesa'
-    'nspr'
-    'nss'
-    'shared-mime-info'
-    'xdg-utils'
 )
-optdepends=('glib2: Needed for move to trash functionality'
-            'org.freedesktop.secrets: Needed for settings sync'
-            'libdbusmenu-glib: Needed for KDE global menu'
-            'icu69: Needed for live share'
-            'vulkan-icd-loader: Vulkan support')
-
-provides=('windsurf')
 conflicts=('windsurf')
-options=('!strip')
-
-#Official Repo URL Prefixes
-_windsurf_deb_repo_url_prefix="https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf"
-
-#Github Repo 1 URL Prefixes
-_git_repo1="https://raw.githubusercontent.com/samex/windsurf-ai-arch-linux/refs/heads/main"
-
-#URLs
-_deb_url1="${_windsurf_deb_repo_url_prefix}/Windsurf-linux-x64-${pkgver}.deb"
-
-#Checksums
-_deb_sha256="8f991c9173ec36f559dda3f4c824d8e11894b5c06701f6d09e233dcac64f6a4d" 
-
-source=(
-    $_deb_url1
-    "${_pkgname}.png::${_git_repo1}/${_pkgname}.png"
-    "${_pkgname}-bin.sh::${_git_repo1}/windsurf-bin.sh"
-)
-
-sha256sums=(
-    '8f991c9173ec36f559dda3f4c824d8e11894b5c06701f6d09e233dcac64f6a4d'
-    '5c54ecf084dbaee5d85036205c2bb2df0d9b2bf77a503d722ee9833e4a236d7a'
-    '31a4e5539c27c4aa8de6341e22fb7dbb3c22e01e213aaf345b4729664f579426'
-)
-
-prepare() {
-    mkdir -p "${srcdir}/deb_file/data"
-    bsdtar -xf "${srcdir}/Windsurf-linux-x64-${pkgver}.deb" -C "${srcdir}/deb_file"
-    tar -xf "${srcdir}/deb_file/data.tar.zst" -C "${srcdir}/deb_file/data"
-}
-
-package() {    
-    # Install main binaries
-    install -d "${pkgdir}/usr/share/${_pkgname}"
-    ls "${srcdir}/${_pkgname}-latest/"
-    cp -r "${srcdir}/${_pkgname}-latest/"* "${pkgdir}/usr/share/${_pkgname}/"
-
-    # Install binary launcher script
-    install -d "${pkgdir}/usr/bin"
-    install -m755 "${srcdir}/${_pkgname}-bin.sh" "${pkgdir}/usr/bin/${_pkgname}"
-
-    # Install desktop entry files for application and URL handling
-    install -d "${pkgdir}/usr/share/applications"
-    install -m644 "${srcdir}/deb_file/data/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/"
-    install -m644 "${srcdir}/deb_file/data/usr/share/applications/${_pkgname}-url-handler.desktop" "${pkgdir}/usr/share/applications/"
-
-    # Install application metadata (AppStream metainfo)
-    install -d "${pkgdir}/usr/share/metainfo"
-    install -m644 "${srcdir}/deb_file/data/usr/share/appdata/${_pkgname}.appdata.xml" "${pkgdir}/usr/share/metainfo/com.codeium.${_pkgname}.metainfo.xml"
-
-    # Install MIME type definitions
-    install -d "${pkgdir}/usr/share/mime/packages"
-    install -m644 "${srcdir}/deb_file/data/usr/share/mime/packages/${_pkgname}-workspace.xml" "${pkgdir}/usr/share/mime/packages/"
-
-    # Install application icon (128x128 resolution)
-    install -d "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
-    install -m644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
-
-    # Install shell completion scripts
-    install -d "${pkgdir}/usr/share/bash-completion/completions"
-    install -d "${pkgdir}/usr/share/zsh/site-functions"
-    install -Dm 644 "${srcdir}/deb_file/data/usr/share/bash-completion/completions/${_pkgname}" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}" #bash
-    install -Dm 644 "${srcdir}/deb_file/data/usr/share/zsh/vendor-completions/_${_pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}" #zsh
+optdepends=('glib2: Move to trash functionality'
+            'org.freedesktop.secrets: Sync settings'
+            'libdbusmenu-glib: KDE global menu'
+	    'lsof: Terminal splitting'
+            'vulkan-driver'
+            'electron: /usr/share/windsurf/windsurf-latestron')
+options=('!strip') # ~0.49MB
+makedepends=(tar sed desktop-file-utils) # tar is faster than bsdtar.
+source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb"
+		"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
+sha256sums=('4770e9147420dbac6e83f90bd77711e01745baa3c98f2606b3e030b960d6e04d'
+            '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
+package() {
+	tar -xf "data.tar.xz" --exclude 'usr/share/windsurf/[^r]*' --exclude 'usr/share/windsurf/*.pak'
+ 	# Check version of electron
+ 	echo Replacing $(rg -m 1 '"electron":\s*"[0-9]+' usr/share/windsurf/resources/app/package.json) with $(cat /usr/lib/electron${_elnum}/version)
+ 	echo 'Fix if "major" version is wrong.'
+	# Fix path
+	mv usr/share/{appdata,metainfo} # metainfo (needed?)
+ 	mv usr/share/zsh/{vendor-completions,site-functions}
+	# Launcheres
+	_app=/usr/share/windsurf/resources/app
+	sed -e "s|code-flags|windsurf-flags|" code.sh \
+		-e "s|/usr/lib/code/out/cli.js|${_app}/out/cli.js|" \
+		-e "s|/usr/lib/code/code.mjs|--app=${_app}|" > run.sh
+	sed "s|name=electron|name=electron${_elnum}|" run.sh > run-safe.sh
+	install -Dm755 run.sh usr/share/windsurf/windsurf-latestron
+	install -Dm755 run-safe.sh usr/bin/windsurf
+	ln -sf /usr/bin/windsurf usr/share/windsurf/windsurf
+	# Replacements
+	ln -svf /usr/bin/fd usr/share/windsurf/resources/app/extensions/windsurf/bin/fd
+	ln -svf /usr/bin/rg usr/share/windsurf/resources/app/node_modules/@vscode/ripgrep/bin/rg
+	ln -svf /usr/bin/xdg-open usr/share/windsurf/resources/app/node_modules/open/xdg-open
+	# SVG Icon
+	install -Dm644 "usr/share/windsurf/resources/app/out/media/code-icon.svg" "usr/share/icons/hicolor/scalable/apps/windsurf.svg"
+	# Hide entry of URL handler
+	desktop-file-edit --set-key Hidden --set-value true usr/share/applications/windsurf-url-handler.desktop
+	
+ 	mv usr "${pkgdir}"
 }
