@@ -1,0 +1,18 @@
+pkgbase = laptop-standby
+	pkgdesc = Rust-based daemon for managing laptop power states
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Historya/laptop-standby
+	arch = x86_64
+	license = MIT
+	checkdepends = cargo
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = dbus
+	depends = systemd
+	options = !lto
+	source = git+https://github.com/Historya/laptop-standby.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = laptop-standby
