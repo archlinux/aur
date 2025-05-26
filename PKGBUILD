@@ -33,7 +33,7 @@ check() {
 package() {
   cd "$pkgname"
   
-  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/local/bin/$pkgname"
   install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
   install -Dm644 "config.toml" "$pkgdir/etc/$pkgname/config.toml"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
