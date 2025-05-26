@@ -1,6 +1,6 @@
 pkgbase = clown-git
 	pkgdesc = Simple build automation tool using TOML (Clownfile) written in Rust (git HEAD)
-	pkgver = never.gonna.give.you.up
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/tosterlolz/clown
 	arch = x86_64
