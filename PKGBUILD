@@ -5,7 +5,7 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Julian Schacher <jspp@posteo.net>
 
-_electron="electron36"  # As of 2025-02-10, electron33 and 34 actually work. electron32 is the one officially supported by element-desktop.
+_electron="electron36"  # As of 2025-05-26, electron36 actually works.
 _nodeversion=23         # As of 2025-05-26, the minimum version of `nodejs` is 22.
 _pkgname="schildichat-desktop"
 pkgname="${_pkgname}-git"
