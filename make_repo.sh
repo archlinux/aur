@@ -10,4 +10,4 @@ SOURCEVAL="\$pkgname-\$pkgver.tar.gz::https://github.com/pc-magas/mkdotenv/relea
 LANG=C sed "s|source=(.*)|source=(\"${SOURCEVAL}\")|" ${SCRIPT_DIR}/PKGBUILD > ${TMPFILE}  && mv "$TMPFILE" ${SCRIPT_DIR}/PKGBUILD
 
 docker run --rm -v ${SCRIPT_DIR}:/home/builder pcmagas/arch-pkg-builder build_n_run mkdotenv -h
-docker run --rm -i -v ${SCRIPT_DIR}:/home/builder pcmagas/arch-pkg-builder run_fixperm makepkg --printsrcinfo > ${SCRIPT_DIR}/.SRCINFO
+docker run --rm -i -v ${SCRIPT_DIR}:/home/builder pcmagas/arch-pkg-builder run_fixperm makepkg --printsrcinfo | sed '/^Start container$/d;/^Running post-install command: makepkg --printsrcinfo$/d' > ${SCRIPT_DIR}/.SRCINFO
