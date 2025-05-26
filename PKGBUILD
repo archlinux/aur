@@ -1,7 +1,7 @@
 # Maintainer: Tournesol <bonjour@tournesol.me>
 _pkgname=mpls
 pkgname=$_pkgname-git
-pkgver=v0.15.0.r1.g5f30092
+pkgver=v0.15.1.r0.g41da288
 pkgrel=1
 pkgdesc="A markdown language server with live preview in browser"
 arch=('x86_64' 'aarch64')
