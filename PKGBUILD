@@ -95,7 +95,7 @@ _download_game() {
   _gamename="${1#*://}" # Strip away possibly leading '://'.
   _targetdir="$2"
 
-  /usr/bin/lgogdownloader --threads 2 --verbosity 2 --directory "${_targetdir}" --no-color --save-serials --save-logo --save-icon --save-game-details-json --save-product-json --include all --include-hidden-products --lowspeed-timeout 60 --lowspeed-rate 128 --progress-interval 2000 --platform windows --game "^${_gamename}$" --no-fast-status-check --download
+  /usr/bin/lgogdownloader --threads 2 --verbosity 2 --directory "${_targetdir}" --no-color --save-serials --save-logo --save-icon --save-game-details-json --save-product-json --include all --include-hidden-products --exclude patches --lowspeed-timeout 60 --lowspeed-rate 128 --progress-interval 2000 --platform windows --game "^${_gamename}$" --no-fast-status-check --download
 }
 
 _get_archivename() {
