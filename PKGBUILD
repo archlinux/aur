@@ -2,7 +2,7 @@
 pkgname=ls-lint-git
 # renovate: pkgName=https://github.com/loeffel-io/ls-lint depName=ls-lint-git
 _commit=720efd603531c9cf6c43020fd0441619aba55dc4
-pkgver=2.3.0.r25.720efd6
+pkgver=2.3.0.r49.acd0d41
 pkgrel=1
 pkgdesc='directory and filename linter'
 arch=('x86_64')
