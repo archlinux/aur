@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="anyzig"
-pkgver=2025_05_24
+pkgver=2025_05_25
 _zig=0.14.0
 pkgrel=1
 pkgdesc="One zig to rule them all"
@@ -20,7 +20,7 @@ _zig_deps=(
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}_zig_zon_hash.patch")
         #"${_zig_deps[@]}")
-b2sums=('7db7d760daa92d062c0f0ff7b136ca4955ca0274bb44657cc65260d6868d247a5df2e4ddcb2969a63f7acbc6345c540bc440056121c064de887eeeeb17fd37ac'
+b2sums=('e49d371310730e5c7572965e8e3b49db08c86dfcde6a34368136259bf2e658d9aea8d1d98dd46bf0c18ade6e3dd6cac4bc682446a1a4957971d335a13005b5a3'
         '5f333e648096431f12490e8cd750c260ff1f246e40ce701499751c5cd5ab8723f8ec68b1fcb469d7564948e09f105450669e33d878e1ba079d7a39485a481afd')
            
 prepare() {
@@ -73,11 +73,11 @@ build() {
 package() {
   cd "${srcdir}/${_pkgsrc}"
   cp -va build/* "${pkgdir}"
+  find "${pkgdir}" -type f ! -name 'zig' -delete
 
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   # install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   cd "${pkgdir}/usr/bin"
-  rm -f zls
   mv zig "${pkgname}"
 }
