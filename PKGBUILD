@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer : Tyler Holinka <TylerHolinka+arch at gmail dot com>
+# Maintainer : Tyler Holinka <arch at tholinka dot dev>
 
 # dell-unified-driver seems to be based on samsung-unified-driver, but with some dell-only differences (specifically in the rastertospl that causes issues when printer if using the samsung-unified-driver one filter)
 pkgbase=dell-unified-driver
