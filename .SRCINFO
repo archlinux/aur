@@ -1,6 +1,6 @@
 pkgbase = hid-lg-g710-plus-dkms-git
 	pkgdesc = Linux DKMS kernel module allowing use of extra keys and LEDs on the Logitech G710+
-	pkgver = r35.ba8c9f6
+	pkgver = r36.61bec0d
 	pkgrel = 6
 	url = https://github.com/jonpas/logitech-g710-linux-driver
 	arch = x86_64
