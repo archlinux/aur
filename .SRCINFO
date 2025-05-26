@@ -1,6 +1,6 @@
 pkgbase = bitwuzla-git
 	pkgdesc = SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations
-	pkgver = 0.7.0.r3.gc23b57f
+	pkgver = 0.8.0.r7.g1cc3415
 	pkgrel = 1
 	url = https://bitwuzla.github.io
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = bitwuzla-git
 	depends = gcc-libs
 	depends = glibc
 	depends = gmp>=6.1
+	optdepends = aiger: Utilities for And-Inverter Graphs (AIGs)
 	optdepends = python>=3.7: Python bindings
 	provides = bitwuzla
 	provides = bitwuzla-docs

@@ -2,7 +2,7 @@
 
 _pkgname=('bitwuzla')
 pkgname=("${_pkgname}-git")
-pkgver=0.7.0.r3.gc23b57f
+pkgver=0.8.0.r7.g1cc3415
 pkgrel=1
 pkgdesc='SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations'
 arch=('x86_64')
@@ -35,6 +35,7 @@ checkdepends=(
     'python-pytest'
 )
 optdepends=(
+    'aiger: Utilities for And-Inverter Graphs (AIGs)'
     'python>=3.7: Python bindings'
 )
 provides=(
@@ -60,7 +61,9 @@ build() {
 	--docs \
 	--kissat \
 	--cryptominisat \
-	--fpexp
+	--fpexp \
+    	--aiger \
+	release
 
     cd build
     meson compile
