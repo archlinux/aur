@@ -2,14 +2,14 @@
 # Contributor: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
 
 pkgname=swww-git
-pkgver=0.9.5.r183.g3e2e2ba
+pkgver=0.10.0.r3.g107576a
 pkgrel=1
 pkgdesc='Efficient animated wallpaper daemon for Wayland, controlled at runtime'
 #arch=(x86_64)
 arch=(x86_64 aarch64)
 url=https://github.com/LGFae/swww
 license=(GPL-3.0-or-later)
-makedepends=(cargo git scdoc)
+makedepends=(cargo git scdoc wayland wayland-protocols)
 depends=(libxkbcommon lz4)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
