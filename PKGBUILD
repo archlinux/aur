@@ -1,7 +1,7 @@
 # Maintainer: Daniel Wilhelm <concat(shield, wed) @ outlook.com>
 
 pkgname=wwphone
-pkgver=4.1.5
+pkgver=4.1.8
 pkgrel=1
 pkgdesc="A proprietary CTI and SIP client from wwcom"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom:"Copyright (c) 2025 by wwcom ag"')
 url="https://www.wwcom.ch/"
 
 source=("https://wwcom.ch/downloads/wwphone_${pkgver//./_}.deb")
-sha256sums=('99bfae229deac0d8cc68162664d70650b9fe5d9ea700b26e42da43f8898c2fac')
+sha256sums=('41fdd5b89b89a03bbc03c594d674bdcd78975b9a2e911391cf4a6c981c128d50')
 
 depends=(
   "alsa-lib"
@@ -29,7 +29,7 @@ optdepends=(
 package() {
   cd "${srcdir}"
 
-  tar -xf data.tar.xz
+  tar -x --zstd -f data.tar.zst
 
   install -d "${pkgdir}"/opt/wwphone/certs
   install -m 0644 opt/wwphone/certs/* "${pkgdir}"/opt/wwphone/certs
