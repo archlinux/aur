@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pipelab-bin
 _pkgname=Pipelab
-pkgver=1.23.0
+pkgver=1.24.1
 _electronversion=32
 pkgrel=1
 pkgdesc="A visual tool to create task automation workflows.(Prebuilt version.Use system-wide electron)"
@@ -13,36 +13,47 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
+    'python'
+    'python-typing_extensions'
+    'python-packaging'
+    'python-setuptools'
+    'nodejs'
 )
 makedepends=(
     'gendesk'
 )
 options=(
     '!emptydirs'
+    '!strip'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x64-${pkgver}.zip"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/CynToolkit/pipelab/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a8cabc0dc85e6378cffe00a5a14a115e0dae4f4093a631b93d026a1f2d23a972'
-            '92ddb84a1531980e4142c76f4936b1ff8ea132777df206d4bf6da123c094f8f4'
+sha256sums=('65262ec33865cf7ba1eb20314ece95ae9f7404434cab9c6192ff1b5679684599'
+            '955ca747d354873573904dc82bbc70f3e7a913d590b425c88986cf252892b2f0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
+        s/@runname@/app/g
         s/@cfgdirname@/@${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin} %U"
 }
 package() {
-   install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-   install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-   cp -Pr --no-preserve=ownership "${srcdir}/${_pkgname}-linux-x64/resources/assets"  "${pkgdir}/usr/lib/${pkgname%-bin}"
-   install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
-   install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/assets/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-   install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${_pkgname}-linux-x64/resources/"{app,assets}  "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+    install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/assets/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
