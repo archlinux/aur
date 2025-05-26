@@ -3,7 +3,7 @@
 pkgname=sunsetr-bin
 _realname=sunsetr # The actual binary name
 pkgver=0.3.0
-pkgrel=1          # Start with 1. Increment if you make PKGBUILD changes for the same pkgver later.
+pkgrel=2          # Start with 1. Increment if you make PKGBUILD changes for the same pkgver later.
 pkgdesc="Automatic color temperature controller for hyprsunset (pre-compiled binary)"
 arch=('x86_64')
 url="https://github.com/psi4j/sunsetr"
@@ -19,7 +19,7 @@ _extracted_dir_name="${_realname}-v${pkgver}" # This will be "sunsetr-v0.2.0"
 _local_tarball_name="${_realname}-${pkgver}-x86_64-linux.tar.gz" # e.g., sunsetr-0.2.0-x86_64-linux.tar.gz
 
 source=("${_local_tarball_name}::${url}/releases/download/v${pkgver}/${_github_asset_filename}")
-sha256sums=('e642493cde34f637cba478222cbf25fc1c36de6677463770566cf063f2275fe4')
+sha256sums=('fcf20dd906763a4110016819c794d024c07c3b7719082b18c936f08830870d0e')
 
 package() {
     # The files are inside: ${srcdir}/${_extracted_dir_name}/
