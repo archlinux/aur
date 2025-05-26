@@ -3,9 +3,9 @@ pkgname=avogadro2-bin
 _pkgname=Avogadro2
 _appname="org.openchemistry.${_pkgname}"
 pkgver=1.100.0
-pkgrel=2
-pkgdesc="An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas."
-arch=("x86_64")
+pkgrel=3
+pkgdesc="An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas.(Prebuilt version)"
+arch=('x86_64')
 url="https://two.avogadro.cc/"
 _ghurl="https://github.com/OpenChemistry/avogadroapp"
 license=('BSD-3-Clause')
@@ -34,11 +34,13 @@ sha256sums=('da4a25c8017f477df63b96326af2862e894eeadc153ce1a46a2f62fee1d64f8f'
             '3e6a55dc0da9bb56a7f232b1766da524c9d9c1dad61dfeea8424f1df7fb6f2f4'
             '0d625edc1abc14e5971788272ff95412cc4851274633c34b94144541609b92ac')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/Icon=${_appname}/Icon=${pkgname%-bin}/g" "${srcdir}/squashfs-root/usr/share/applications/${_appname}.desktop"
     sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/squashfs-root/usr/share/metainfo/${_appname}.metainfo.xml"
