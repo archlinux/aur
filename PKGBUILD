@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=crankshaft
 pkgname="${_pkgname}-client-bin"
-pkgver=1.9.1
+pkgver=1.10.0
 _electronversion=12
 pkgrel=1
 pkgdesc="A fast, feature-rich krunker client written in typescript.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-portable-linux-x86_64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('57a01d243392799e189fada736ec0710d380059885718a287d9bca6748324c46'
+sha256sums=('afbff6368b18688a695d20612db7aa5e1c8756df9caa0e6f5c7e3d92848d255c'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
