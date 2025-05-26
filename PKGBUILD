@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hechler <patrjprof.aur@ph.anderemails.de>
 pkgname=patrjprof
-pkgver=1.3.0r196
+pkgver=1.4.0r259
 _pkgver="$(echo "${pkgver}" | sed -E 's/r[0-9]+$//')"
 pkgrel=1
 pkgdesc="A Free Java profiler written in Java"
@@ -10,10 +10,9 @@ license=('AGPL-3.0-or-later')
 groups=()
 depends=('java-runtime-headless>=8')
 makedepends=()
-optdepends=('java-runtime-headless>=16: support for socket files for server/client communication'
-           'java-runtime>=8: graphical user interface'
-           'java-runtime>=16: socket files + graphical user interface'
-           'java-runtime=23: the new class-file API'
+optdepends=('java-runtime>=8: graphical user interface'
+            'java-runtime-headless>=16: support for socket files for server/client communication'
+            'java-runtime-headless>=23: profile constructors with the new class-file API'
            )
 provides=()
 conflicts=()
@@ -32,11 +31,11 @@ source=("patr-java-profiler-start-${_pkgver}.sh::https://nexuspat.hechler.de/rep
         )
 noextract=("${source[@]%%::*}")
 sha512sums=('cdef6de2254f01d4398b2fcd8f9c43ca5aa1cac5d44d66595f0c0d7cdcab5082dea7fd323548df46dde468b5f307cc44a267927ed103324b2e0f41df99ab0bc4'
-            '2bb59a1cb743f9488876535df86d76ba6fe4ea8f054e437fae2599ff4f5421aa893f6adeb0d57c5eabc0e89a7609bd5738dc3b8faf5297f0738147a05b3e8571'
-            '3b743c0b4dba7f130a43c6f5c476cb4f6e0d564e34fd36d7efa286c7eef054f62283788e8b8983ed69ad8c67229c14db162cc26122c760b4b10ca578b5e0de59'
-            '482cfbb6c0d7a23e2a674417df04317084c43f9904635c9db7d83001eddc258288648a7f8f4b86ec5aaaf9dd9e6da1514c68bdb65a277907aa28434bc432aae0'
-            'c2d9588c9fab56ed46e3cf620596c24d2a601e3be96e17a143dfe9d3d5834b6256361d4db5236bcd18291f42b1cb72ecaa7327f28e9dd43970670ac4c0c65a6d'
-            '695885abfdc879aad9c0c91e6b69a9d87b82a024042739695d901c6e93cc9acd9cf1df7c743626358b1ece5b01ab3f47aa49dead7232d4711648e38925c9c64e'
+            '400bf27648f615ea4c10be69d9e0e9dc1c10cfcb3197e94d55ab07a986324ac0aaa65fd1b74ee7301ca256b2e948149b1c2019c373d2d62381d05cff2c0be655'
+            '6b2951e8540a4cf4f5f2e7c04dc0e3366e0bd046e88f43ed0e9319d7c5de85c348ff78930d5ef29bfdf633da5a4f498ff6c2a4afeac5b01b034c147ba1dc1f21'
+            'ad244e98290c6e447abd5903d7fbbbe5c93eccde28229bf5116b3706697764ad2d314712b9bba1a2046a0b48742096c8e5bdad00ac702d2a1330e34a40d9c194'
+            '07e9214d2a08d4fd9f2f3c9b91bd9b4646cda5c51790d3139aae45ce81e349b713aa74eae6d8b5dc6aa089dda5b6ee777e4e293e177629a45591baea57346937'
+            '2c2dbdba6e4073ea9ced262c47fc31087ee3bfde978d94e870f335fd61fb6b60dd1a00942acd862971b05ef80dcbd8615d7d75651314a5765eb67cf25a558306'
             )
 
 build() {
