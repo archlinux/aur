@@ -2,8 +2,8 @@
 pkgname=ttkmusicplayer-bin
 _pkgname=TTKMusicPlayer
 pkgver=4.1.3.0
-pkgrel=1
-pkgdesc="TTKMusicPlayer that imitation Kugou music, the music player uses of qmmp core library based on Qt.(Prebuilt version)支持网易云音乐、酷我音乐、酷狗音乐"
+pkgrel=2
+pkgdesc="TTKMusicPlayer imitates Kugou UI, the music player uses of qmmp core library based on Qt.(Prebuilt version)支持网易云音乐、酷我音乐、酷狗音乐"
 arch=('x86_64')
 url="https://github.com/Greedysky/TTKMusicPlayer"
 license=(
@@ -23,6 +23,7 @@ depends=(
     'qt6-virtualkeyboard'
     'qt6-declarative'
     'qt6-multimedia'
+    'libpng12'
 )
 makedepends=(
     'p7zip'
@@ -38,17 +39,17 @@ sha256sums=('fa0e5b16094e28988b2e8e75da9cf6c3da9b02b178308b23a641c7119e662b80'
             '26293cbcc216f141d1ec7346c225d13a14f689b4b1ab81e37da73f279082214d'
             '47c425909880e36e68f338a022b066e2a4f2f51ab4ab575532e54eca2520f779')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
         s/@pkgver@/${pkgver}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
     7z x -aoa "${srcdir}/${pkgname%-bin}-${pkgver}.7z" -o"${srcdir}/usr/lib/${pkgname%-bin}"
     rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/Downloads"
-    find "${srcdir}/usr/lib/${pkgname%-bin}" -type f -exec chmod 644 {} \;
-    find "${srcdir}/usr/lib/${pkgname%-bin}" -type d -exec chmod 755 {} \;
-    find "${srcdir}/usr/lib/${pkgname%-bin}" -type f -name "TTK*" -exec chmod 755 {} \;
+    find "${srcdir}/usr/lib/${pkgname%-bin}" -type f -exec chmod 644 {} +
+    find "${srcdir}/usr/lib/${pkgname%-bin}" -type d -exec chmod 755 {} +
+    find "${srcdir}/usr/lib/${pkgname%-bin}" -type f -name "TTK*" -exec chmod 755 {} +
     chmod 755 "${srcdir}/usr/lib/${pkgname%-bin}/${pkgver}/QtWebEngineProcess"
     sed -i "s/${_pkgname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/usr/lib/${pkgname%-bin}/deploy/share/appdata/${pkgname%-bin}.appdata.xml"
 }
