@@ -1,4 +1,4 @@
-# Maintainer: El Bachir <bachiralfa@gmail.com>
+# Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
 
 pkgname=sxwm-git
 _pkgname=sxwm
