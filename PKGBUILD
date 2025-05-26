@@ -1,7 +1,8 @@
 pkgname=llama-swap
-_fragment=tag=v121
 
-pkgver=121
+_fragment=tag=v122
+
+pkgver=122
 pkgrel=1
 pkgdesc='Model swapping for llama.cpp (or any local OpenAPI compatible server)'
 
@@ -12,48 +13,50 @@ license=('MIT')
 makedepends=(git go)
 
 source=(
-    "git+$url.git#$_fragment"
-    llama-swap.service
+	"git+$url.git#$_fragment"
+	llama-swap.service
 )
-sha256sums=('18d0395a593de1d64eb947af7e11681b5857890dc2341dbdffe8e3dc01802b07'
-            '74bcd4bd61c21f48450ee24f47a449ecf25f5f46d10b55571c6716e57a0dee80')
+sha256sums=('4d5e9ca4fea5139c71bb06194c5c6b16a97371980859bfe8e0b76a7da11c2bc3'
+            '0fe45b16f9a1378db90aad386205b0ff1446055bd27866c7ce757d6b3ae76fe0')
 
 pkgver() {
-    git -C $pkgname describe --first-parent --tags | sed 's/^v//; s/-/+/g'
+	git -C $pkgname describe --first-parent --tags | sed 's/^v//; s/-/+/g'
 }
 
-
 prepare() {
-	cd $pkgname
-	go mod vendor
+	go -C $pkgname mod vendor
 }
 
 build() {
-    cd $pkgname
+	cd $pkgname
 
-    export CGO_CPPFLAGS="$CPPFLAGS"
-    export CGO_CFLAGS="$CFLAGS"
-    export CGO_CXXFLAGS="$CXXFLAGS"
-    export CGO_LDFLAGS="$LDFLAGS"
+	export CGO_CPPFLAGS="$CPPFLAGS"
+	export CGO_CFLAGS="$CFLAGS"
+	export CGO_CXXFLAGS="$CXXFLAGS"
+	export CGO_LDFLAGS="$LDFLAGS"
 
-    local GOBUILDOPTS=(
-        -v
-        -trimpath
-        -mod=readonly
-        -modcacherw
-        -buildmode=pie
-        -ldflags="-linkmode=external -X main.version=$pkgver -X main.commit=$(git rev-parse --short HEAD) -X main.date=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-    )
+	local GOBUILDOPTS=(
+		-v
+		-trimpath
+		-mod=readonly
+		-modcacherw
+		-buildmode=pie
+		-ldflags="
+        	-linkmode=external
+        	-X main.version=$pkgver
+        	-X main.commit=$(git rev-parse --short HEAD)
+        	-X main.date=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+        "
+	)
 
-    go build "${GOBUILDOPTS[@]}"
+	go build "${GOBUILDOPTS[@]}"
 }
 
 package() {
-    cd $pkgname
+	cd $pkgname
 
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
-    install -Dm755 -t "$pkgdir/usr/bin"                     $pkgname
-    install -Dm644 -t "$pkgdir/etc/llama-swap"              config.example.yaml
-    install -Dm644 -t "$pkgdir/usr/lib/systemd/system"      ../llama-swap.service
-    
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
+	install -Dm644 -t "$pkgdir/etc/llama-swap" config.example.yaml
+	install -Dm644 -t "$pkgdir/usr/lib/systemd/system" ../llama-swap.service
+	install -Dm755 -t "$pkgdir/usr/bin" llama-swap
 }
