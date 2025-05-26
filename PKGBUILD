@@ -47,4 +47,10 @@ package() {
 	install -Dm644 \
 		"usr/share/doc/angie/copyright" \
 		"usr/share/licenses/angie-bin/LICENSE"
+
+	local log_dir="$pkgdir/var/log/angie"
+
+	mkdir -p $log_dir
+	chmod 755 $log_dir
+	chown root:root $log_dir
 }
