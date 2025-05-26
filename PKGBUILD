@@ -2,7 +2,7 @@
 # Contributor: Zachary Siedlecki <zacharysiedlecki01@gmail.com>
 pkgname=superfile-bin
 _pkgname=spf
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Pretty fancy and modern file manager in terminal file manager.Written in Go.(Prebuilt version)"
 arch=(
@@ -24,9 +24,9 @@ optdepends=(
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/MHNightCat/superfile/v${pkgver}/LICENSE")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-v${pkgver}-arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86-64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-v${pkgver}-amd64.tar.gz")
-sha256sums=('8c20ae0ba48051c642aea028cf0ea6331e49e99a10e57b98bd3e4d8ec0795f1b')
-sha256sums_aarch64=('3c54fa493534803941100bdad13022e8b7ff445bcc15b0ea6130942d6d0a721d')
-sha256sums_x86_64=('2f57946249dfeb61701f7b3421f3d7aac0046f57a6fb391ad911503a795a89b6')
+sha256sums=('7a15f9d5de4a40523b0e12aea072c18eee67ca22f5398be77f008f572a31d73d')
+sha256sums_aarch64=('be2055275e8c1811d7d176c27c087a7aaa05415a9e36f7b9451e7005b4d5b0bb')
+sha256sums_x86_64=('25a24053bc2fd7eab7c223e0daafa9f9360162aeda77bd26e45c2fff1d8411b5')
 package() {
     install -Dm755 "${srcdir}/dist/${pkgname%-bin}-linux-v${pkgver}-"*/"${_pkgname}" -t "${pkgdir}/usr/bin"
     ln -sf "/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
