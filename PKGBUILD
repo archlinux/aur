@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=taratormusic-bin
 _pkgname=TaratorMusic
-pkgver=1.5.1
+pkgver=1.5.4
 _electronversion=31
 pkgrel=1
 pkgdesc="A music player application with playlist support and Discord integration.(Prebuilt version.Use system-wide electron)"
@@ -13,6 +13,7 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'nodejs'
+    'ffmpeg'
 )
 makedepends=(
     'fuse2'
@@ -24,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('43689613920abc13778bfe87e6fac91b9a82c9f0404c62631d3aba9940d3d818'
+sha256sums=('7ec13c8a1358a509e7654ee06ef24e0196e2df7e42162def8d37c99a4b2aab0d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -43,11 +44,14 @@ prepare() {
         s/Audio/AudioVideo/g
     " "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources/" -type d -exec chmod 755 {} +
+    ln -sf "/usr/bin/ffmpeg" "${srcdir}/squashfs-root/resources/app/node_modules/@ffmpeg-installer/linux-x64/ffmpeg"
+    rm -rf "${srcdir}/squashfs-root/resources/app/node_modules/ffprobe-static/bin/"{darwin,linux/ia32}
+    ln -sf "/usr/bin/ffprobe" "${srcdir}/squashfs-root/resources/app/node_modules/ffprobe-static/bin/linux/x64/ffprobe"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/"{app,lib}  "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
