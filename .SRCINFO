@@ -27,7 +27,7 @@ pkgname = dell-unified-driver-printer
 pkgname = dell-unified-driver-scanner
 	install = dell-unified-driver-scanner.install
 	depends = dell-unified-driver-common
-	depends = libxml.so=2
+	depends = libxml2.so=2
 	depends = libusb-compat
 	depends = sane
 	conflicts = samsung-unified-driver-scanner

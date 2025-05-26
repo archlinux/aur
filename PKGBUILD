@@ -79,7 +79,7 @@ package_dell-unified-driver-printer()
 package_dell-unified-driver-scanner()
 {
     conflicts=('samsung-unified-driver-scanner')
-    depends=('dell-unified-driver-common' 'libxml.so=2' 'libusb-compat' 'sane')
+    depends=('dell-unified-driver-common' 'libxml2.so=2' 'libusb-compat' 'sane')
     install=dell-unified-driver-scanner.install
 
     _locales=(ru fr)
