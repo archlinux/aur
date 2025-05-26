@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folo
 _pkgname=Folo
-pkgver=0.4.7
+pkgver=0.4.9
 _electronversion=35
 _nodeversion=22
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('cd57a31153471ca468c8c0a6dee12786071c470868bf70df314d27b7dade5fc2'
+sha256sums=('19cdad52aa59f25736b93db3a90a7656e0f981d0a04bcbac4fdba0b60c65f0fe'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -50,7 +50,6 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
@@ -79,6 +78,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/apps/desktop"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     local electronDist="/usr/lib/electron${_electronversion}"
     cp .env.example .env
     NODE_ENV=production     pnpm update:main-hash
