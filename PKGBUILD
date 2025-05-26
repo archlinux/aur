@@ -1,10 +1,10 @@
 # Maintainer: Radiolin <anton.osi@outlook.com>
 
-pkgbase=gnome-software-appstream-git 
-pkgname=(gnome-software-git gnome-software-packagekit-plugin-git)
+pkgbase=gnome-software-appstream-git
+pkgname=(gnome-software-appstream-git gnome-software-packagekit-plugin-appstream-git)
 pkgver=48.0+r177+g149166546
 pkgrel=1
-pkgdesc='GNOME Software Tools'
+pkgdesc='GNOME Software Tools (AppStream Git variant)'
 arch=(x86_64 aarch64)
 url='https://wiki.gnome.org/Apps/Software/'
 license=(GPL2)
@@ -35,8 +35,8 @@ b2sums=(SKIP)
 options=(!debug)
 
 pkgver() {
- 	cd gnome-software
- 	git describe --long --tags | sed 's/^GNOME_SOFTWARE_//;s/_/./g;s/[^-]*-g/r&/;s/-/+/g'
+	cd gnome-software
+	git describe --long --tags | sed 's/^GNOME_SOFTWARE_//;s/_/./g;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 build() {
@@ -44,12 +44,14 @@ build() {
 	CFLAGS+=" -ffat-lto-objects"
 
 	arch-meson gnome-software build \
-		-D hardcoded_foss_webapps=false -D hardcoded_proprietary_webapps=false -D webapps=false
+		-D hardcoded_foss_webapps=false \
+		-D hardcoded_proprietary_webapps=false \
+		-D webapps=false
 	meson compile -C build
 }
 
 check() {
-	# build container troubles
+	export LANG=en_US.UTF-8
 	meson test -C build --print-errorlogs || :
 }
 
@@ -63,12 +65,8 @@ _pick() {
 	done
 }
 
-check() {
-	export LANG=en_US.UTF-8
-	meson test -C build --print-errorlogs || :
-}
-
-package_gnome-software-git() {
+package_gnome-software-appstream-git() {
+	pkgdesc="GNOME Software (AppStream Git variant)"
 	groups=(gnome)
 	depends=(
 		appstream
@@ -94,14 +92,15 @@ package_gnome-software-git() {
 	_pick packagekit-plugin "$pkglibdir"/plugins-*/libgs_plugin_packagekit*.so
 }
 
-package_gnome-software-packagekit-plugin-git() {
-	pkgdesc="PackageKit support plugin for GNOME Software"
+package_gnome-software-packagekit-plugin-appstream-git() {
+	pkgdesc="PackageKit support plugin for GNOME Software (AppStream Git variant)"
 	depends=(
 		archlinux-appstream-data
-		gnome-software-git
+		gnome-software-appstream-git
 		packagekit
 	)
 	provides=(gnome-software-packagekit-plugin)
 	conflicts=(gnome-software-packagekit-plugin)
 	mv packagekit-plugin/* "$pkgdir"
 }
+

@@ -1,5 +1,5 @@
 pkgbase = gnome-software-appstream-git
-	pkgdesc = GNOME Software Tools
+	pkgdesc = GNOME Software Tools (AppStream Git variant)
 	pkgver = 48.0+r177+g149166546
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Software/
@@ -32,7 +32,8 @@ pkgbase = gnome-software-appstream-git
 	source = git+https://gitlab.gnome.org/GNOME/gnome-software.git
 	b2sums = SKIP
 
-pkgname = gnome-software-git
+pkgname = gnome-software-appstream-git
+	pkgdesc = GNOME Software (AppStream Git variant)
 	groups = gnome
 	depends = appstream
 	depends = gnome-online-accounts
@@ -48,10 +49,10 @@ pkgname = gnome-software-git
 	provides = gnome-software
 	conflicts = gnome-software
 
-pkgname = gnome-software-packagekit-plugin-git
-	pkgdesc = PackageKit support plugin for GNOME Software
+pkgname = gnome-software-packagekit-plugin-appstream-git
+	pkgdesc = PackageKit support plugin for GNOME Software (AppStream Git variant)
 	depends = archlinux-appstream-data
-	depends = gnome-software-git
+	depends = gnome-software-appstream-git
 	depends = packagekit
 	provides = gnome-software-packagekit-plugin
 	conflicts = gnome-software-packagekit-plugin
