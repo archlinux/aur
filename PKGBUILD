@@ -1,10 +1,9 @@
-# Maintainer: ZwrvKrll <zwrvkrll@gmail.com>
+# Maintainer: ZwrvKrll <zverevk429@gmail.com>
 pkgname=qbineditor
 pkgver=1.0
 pkgrel=1
 pkgdesc="Binary file editor written in Qt. Provides HEX, ASCII and BIN views with integrated search."
 arch=('x86_64')
-url="https://github.com/ZwrvKrll/QBinEditor"
 license=('GPL')
 depends=('qt5-base' 'qt5-x11extras')
 makedepends=('qt5-base' 'qt5-tools' 'gcc' 'make')
