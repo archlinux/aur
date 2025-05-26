@@ -10,7 +10,7 @@ pkgname=('xapp-thumbnailers-common'
          'xapp-ora-thumbnailer')
 pkgbase=xapp-thumbnailers
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Thumbnailers for GTK Desktop Environments"
 arch=('any')
 url="https://github.com/linuxmint/xapp-thumbnailers"
@@ -30,10 +30,10 @@ package_xapp-thumbnailers-common() {
     'gdk-pixbuf2'
     'python-gobject'
     'python-pillow'
-    'python-xapp'
-    )
+    'xapp'
+  )
 
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 
   rm -rf "$pkgdir"/usr/{bin,share}
 }
@@ -43,7 +43,7 @@ package_xapp-mp3-thumbnailer() {
   depends=(
     'python-eyed3'
     'xapp-thumbnailers-common'
-    )
+  )
 
   cd "$pkgbase-$pkgver"
   install -Dm755 "files/usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
@@ -66,7 +66,7 @@ package_xapp-raw-thumbnailer() {
   depends=(
     'dcraw'
     'xapp-thumbnailers-common'
-    )
+  )
 
   cd "$pkgbase-$pkgver"
   install -Dm755 "files/usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
@@ -79,7 +79,7 @@ package_xapp-vorbiscomment-thumbnailer() {
   depends=(
     'python-mutagen'
     'xapp-thumbnailers-common'
-    )
+  )
 
   cd "$pkgbase-$pkgver"
   install -Dm755 "files/usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
@@ -93,7 +93,7 @@ package_xapp-appimage-thumbnailer() {
     'python-pyelftools'
     'squashfs-tools'
     'xapp-thumbnailers-common'
-    )
+  )
 
   cd "$pkgbase-$pkgver"
   install -Dm755 "files/usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
@@ -116,7 +116,7 @@ package_xapp-jxl-thumbnailer() {
   depends=(
     'libjxl'
     'xapp-thumbnailers-common'
-    )
+  )
 
   cd "$pkgbase-$pkgver"
   install -Dm755 "files/usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
