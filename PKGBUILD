@@ -1,7 +1,7 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=pomodorot-bin
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple pomodoro timer application (binary release)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mlm-games/pomodorot"
