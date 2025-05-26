@@ -8,7 +8,7 @@ url="https://github.com/mos9527/bt-synckeys/"
 license=('MIT')
 depends=('python' 'chntpw')
 makedepends=('git')
-source=("${pkgname}::git+${url}")
+source=("${pkgname}::git+${url}#commit=a7ca2f1cd2b62d497ff688e48fdeb013438b9c69")
 sha256sums=('SKIP')
 
 package() {
