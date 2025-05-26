@@ -12,7 +12,7 @@ arch=('x86_64')
 url="https://www.portfolio-performance.info"
 license=('EPL-1.0')
 options=('!strip')
-depends=('java-runtime')
+depends=('java-runtime' 'gtk3')
 validpgpkeys=('E46E6F8FF02E4C83569084589239277F560C95AC')
 
 source=(
