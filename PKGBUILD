@@ -3,7 +3,7 @@ pkgname=p3x-onenote-bin
 _pkgname=P3X-OneNote
 pkgver=2025.4.124
 _electronversion=34
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Electron Onenote - A Linux compatible version of OneNote.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -25,20 +25,20 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/patrikx3/onenote/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1847e0e0698142ed4347c1441a9fa81c8fbddd44b1d8bbcd5e3647f991759d7f'
+sha256sums=('c0a1408f52d9c8e7bd7752e51b6d973e734e95de3ccc12a655595af099c2b174'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('11f68fd05f520a3e021bbbaab7935591900d2c4ff52e7e95b2b0667b1c9c2d92')
 sha256sums_armv7h=('0b99ed8b12cd0e2da5e635f3575717d7b7f49f432f0811f3af8a36e65637b572')
 sha256sums_x86_64=('077d21ccf918e8b552ddf858da90bd60d4e22edd5b6851d3e4145323397489b2')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
