@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=284.250513.1
+pkgver=287.250523.0
 pkgrel=1
 _emsdk_ver=3.1.59  ## Check ci/containers/linux-build.dockerfile for version
 pkgdesc="The desktop client for Tutanota, the secure e-mail service."
@@ -27,7 +27,7 @@ source=("git+https://github.com/tutao/tutanota.git#tag=$pkgname-release-$pkgver"
         'git+https://github.com/open-quantum-safe/liboqs.git'
         'git+https://github.com/emscripten-core/emsdk.git'
         "$pkgname.desktop")
-sha256sums=('c725c3941195e3510b3a120cd9efce2bf3dde4b253c31520334e018ced35fc2f'
+sha256sums=('fb4c01c3fb34109518e9b2e1252c4c80ddf18cdffb2898e4d301443a24afff44'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -87,8 +87,6 @@ package() {
     install -Dm644 resources/desktop-icons/icon/${i}.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
-  install -Dm644 resources/images/logo-solo-red.svg \
-    "pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 
   install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 }
