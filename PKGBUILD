@@ -5,7 +5,7 @@
 # Contributor: John Karahalis <john.karahalis@gmail.com>
 
 pkgname=libmtp-git
-pkgver=1.1.21.r93.ge69958f
+pkgver=1.1.22.r76.gdb70734
 pkgrel=1
 pkgdesc="Library implementation of the Media Transfer Protocol"
 arch=('i686' 'x86_64')
@@ -16,12 +16,12 @@ makedepends=('git' 'doxygen')
 provides=("libmtp=$pkgver")
 conflicts=('libmtp')
 options=('staticlibs')
-source=("git+https://git.code.sf.net/p/libmtp/code")
+source=("git+https://github.com/libmtp/libmtp.git")
 sha256sums=('SKIP')
 
 
 pkgver() {
-  cd "code"
+  cd "libmtp"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
@@ -30,7 +30,7 @@ pkgver() {
 }
 
 build() {
-  cd "code"
+  cd "libmtp"
 
   yes n | NOCONFIGURE=1 ./autogen.sh
   CFLAGS="$CFLAGS -ffat-lto-objects" \
@@ -40,13 +40,13 @@ build() {
 }
 
 check() {
-  cd "code"
+  cd "libmtp"
 
   #make check
 }
 
 package() {
-  cd "code"
+  cd "libmtp"
 
   make DESTDIR="$pkgdir" install
 
