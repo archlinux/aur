@@ -1,0 +1,17 @@
+post_install(){
+cat <<INFO
+
+Headscale-ui was successfully installed. Now you need add configuration to your reverse proxy. Example for nginx:
+
+    location /ui {
+        alias /usr/share/webapps/headscale-ui;
+        index index.html;
+    }
+
+And for using headscale-ui you need create api key in your headscale:
+
+# headscale apikeys create --expiration 90d
+
+INFO
+}
+
