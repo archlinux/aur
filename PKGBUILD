@@ -16,7 +16,6 @@ source=(
   "edk2::git+https://github.com/tianocore/edk2#branch=master"
   "https://www.openssl.org/source/openssl-${_openssl_ver}.tar.gz"{,.asc}
   "brotli-${_brotli_ver}.tar.gz::https://github.com/google/brotli/archive/v${_brotli_ver}.tar.gz"
-  "${pkgbase}-202102-brotli-1.0.9.patch"
   "50-edk2-ovmf-git-i386-secure.json"
   "50-edk2-ovmf-git-x86_64-secure.json"
   "60-edk2-ovmf-git-i386.json"
@@ -27,13 +26,11 @@ source=(
   "80-edk2-ovmf-git-ia32-on-x86_64-secure.json"
   "81-edk2-ovmf-git-ia32-on-x86_64.json"
   "82-edk2-ovmf-git-ia32-on-x86_64-csm.json"
-  "missing-inf.patch"
 )
 sha512sums=('SKIP'
             'd9611f393e37577cca05004531388d3e0ebbf714894cab9f95f4903909cd4f45c214faab664c0cbc3ad3cca309d500b9e6d0ecbf9a0a0588d1677dc6b047f9e0'
             'SKIP'
             'b8e2df955e8796ac1f022eb4ebad29532cb7e3aa6a4b6aee91dbd2c7d637eee84d9a144d3e878895bb5e62800875c2c01c8f737a1261020c54feacf9f676b5f5'
-            'fe0fd592d4b436a35a49a74ad5dd989311b297b9abacb13ed8d4da0986169c91ffbc34cef0f2d52bf40c833d252f6e65311ab0e4e4ca6798390febfb9a787a4a'
             '603cae145a87bae371bd069d05128beebddb7048e78b93650b19c44b86b2d27cabbcf3bc4c0b2384b862f32383ce7a914a10fc0ad564632bcadd6e4f9389fede'
             '3e10bdc9ad13aadbd4111230fb8f37d5f16306aeb7bce2af5ec31c1e2b5adea26d5875cd0d7070ea82eca7546ecbacc8c195ed68425428bf6d2533b58e307b2d'
             '56d0bffd6dd7be79709f66bcfba2112e8ef6208de9b5018e90251e3ba68b37f9d911f0bd5a03987b49bb19bd0d62f7fa9ac3ca9f234e80ada3c4dbdd619705b9'
@@ -43,10 +40,10 @@ sha512sums=('SKIP'
             '77e23f0c116ae5a087553edb2754df172b2c4fe5bc346356abe0e1f2acfb41a346d06d87b0569102ca4ac9356e189198c0c74476cb35f1b62773a956cb6a1e04'
             '8e5eb4e24fad4644a66eb52c95a90a82f01df0af6e57208ad61cb0859dd4425e623e75d93846e8fc3235370a88d93a1d27a512dc4e559bedfe3249404797838b'
             '7c9f8e7ce7451e7aa852998ffcd3ca95c08083c313dc8dcf0877969ef23d9da6f69c60bb1e652387a223da6e690524fa094bfbaed14d8bdae2853e68530b2f82'
-            '891d3ea36d966114ff1f79c3619675a46b30b68def16ab426f2dee00bd0768f82ca0ee26acd7adedd379f25613e309ec9dfaed4e8a5d3f3e4fa7e8d845f55b18'
-            '47b0e60f2af4ced0f5a693f245ce23d3240e87058f6ae7ff2407486c0b6e80754b55d21a35a0ab1b698a65b9060b7c1f1d4dce2f134d0a741235f23e2e64f5d2')
+            '891d3ea36d966114ff1f79c3619675a46b30b68def16ab426f2dee00bd0768f82ca0ee26acd7adedd379f25613e309ec9dfaed4e8a5d3f3e4fa7e8d845f55b18')
 
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491') # Matt Caswell <matt@openssl.org>
+#validpgpkeys=('BA5473A2B0587B07FB27CF2D216094DFD0CB81EF') # OpenSSL <openssl@openssl.org>
 _arch_list=(AARCH64 IA32 X64)
 _build_type=RELEASE
 _build_plugin=GCC5
@@ -58,10 +55,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgbase%-git}"
-  patch -Np1 -i ../missing-inf.patch
-  # patch to be able to use brotli 1.0.9
-  patch -Np1 -i "../${pkgbase}-202102-brotli-1.0.9.patch"
-  # NOTE: patching brotli itself is not necessary (extra/brotli cherry-picks a patch for the pkgconfig integration)
 
   # symlinking openssl into place
   rm -rfv CryptoPkg/Library/OpensslLib/openssl
