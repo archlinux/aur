@@ -1,0 +1,14 @@
+[Unit]
+Description=GitLab KAS - the GitLab Kubernetes Agent (non-cluster-part)
+Requires=gitlab.target
+
+[Service]
+User=git
+Group=git
+Environment=OWN_PRIVATE_API_URL="grpc://localhost:8155"
+ExecStart=/usr/bin/kas --configuration-file /etc/gitlab-kas/config.yaml
+Restart=on-failure
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
