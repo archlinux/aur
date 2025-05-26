@@ -7,7 +7,7 @@ pkgname=(
   "riven-remake-data-gog-bin"
   "riven-remake-launcher"
 )
-pkgver="1.3.0+gog75237"
+pkgver="1.7.0+gog81557"
 pkgrel=1
 epoch=0
 arch=(
