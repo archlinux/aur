@@ -1,13 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jlivertool
 _pkgname=JLiverTool
-pkgver=2.3.0
+pkgver=2.4.0
 _electronversion=35
 _nodeversion=23
 pkgrel=1
 pkgdesc="Simple Bilibili Danmaku Tool.(Use system-wide electron)Bilibili 弹幕机."
-arch=('x86_64')
-url="https://github.com/Xinrea/JLiverTool"
+arch=('any')
+url="http://jlivertool.xinrea.cn/"
+_ghurl="https://github.com/Xinrea/JLiverTool"
 license=('MIT')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -23,10 +24,10 @@ makedepends=(
     'git'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
+    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('b87e2284b9109acafc210b4909943b34773a444b0eb06303ae725284f4afe58c'
+sha256sums=('c094fd40a9ede920f5e3cc14c4345ec8281e5746532062b4ed0a3ca3cd28c794'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -35,6 +36,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -42,9 +44,13 @@ prepare() {
         s/@cfgdirname@/${pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
-    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname} %U"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -69,12 +75,15 @@ build() {
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npx webpack
     NODE_ENV=production     npm exec -c "electron-builder build --linux dir -c.electronDist=${electronDist}"
+    rm -rf \
+        "${srcdir}/${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked/node_modules/bufferutil/prebuilds/{darwin-*,win32-*} \
+        "${srcdir}/${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked/node_modules/fontlist/libs/{darwin,win32}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/assets/icons/512x512.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
