@@ -1,6 +1,6 @@
 pkgbase = r-gh
 	pkgdesc = 'GitHub' 'API'
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gh
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-gh
 	optdepends = r-spelling
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/gh_1.4.1.tar.gz
-	sha256sums = 76bd3f2a31eeaf76a633362899a20b0f7e8fb6159d4777baf3da2a47854292af
+	source = https://cran.r-project.org/src/contrib/gh_1.5.0.tar.gz
+	sha256sums = 295a063084960fc790156d75e1db8b653d6123441079b2c94f1a8937e0329b8e
 
 pkgname = r-gh
