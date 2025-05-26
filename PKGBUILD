@@ -1,7 +1,7 @@
 # Maintainer:Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=outils
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="A port of some non-standard OpenBSD tools to Linux"
 arch=('x86_64')
@@ -24,7 +24,7 @@ provides=('apply'
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leahneukirchen/outils/archive/refs/tags/v${pkgver}.tar.gz"
         'LICENSE')
-b2sums=('043bcdcdd3bab12b2b8b9476163ecf5302b95e9eaca5b858d55b411f15c0075051d61ac470a17958132142644c0612f3903da0766714ec0586039f0583a728d5'
+b2sums=('402f786084195a2286256c8d8afe308f1c687f9bf05782bbf970e0076a3b152a21b256f2123add013741ae3081ef89c44a1b4cb58712c266746f183e0b62d689'
         '3f242af7ea42dc13ba0a124da5861249b95195351fd181c86420c5e2580b8760f24574fe53062f7594071812958d1081e21fd3a7a78832a7a73eb441bead1231')
 
 prepare(){
