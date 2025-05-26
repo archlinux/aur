@@ -1,0 +1,23 @@
+# Colored makepkg-like functions
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+    note "Custom flags should be put directly in: ~/.config/code-insiders-flags.conf"
+}
+
+post_upgrade() {
+    note "Custom flags can now be put directly in: ~/.config/code-insiders-flags.conf"
+    note "This is to support separate flags for insiders and stable versions."
+    note "~/.config/code-flags.conf is still supported for both versions."
+}
