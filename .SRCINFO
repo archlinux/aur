@@ -1,6 +1,6 @@
 pkgbase = neuralrack-git
 	pkgdesc = Neural model and impulse response file loader
-	pkgver = r192.819072e
+	pkgver = r196.15821e5
 	pkgrel = 1
 	url = https://github.com/brummer10/NeuralRack
 	arch = aarch64
@@ -8,6 +8,7 @@ pkgbase = neuralrack-git
 	groups = clap-plugins
 	groups = lv2-plugins
 	groups = pro-audio
+	groups = vst-plugins
 	license = BSD-3-Clause
 	checkdepends = lv2lint
 	makedepends = cairo
@@ -25,6 +26,7 @@ pkgbase = neuralrack-git
 	provides = Neuralrack.lv2
 	provides = Neuralrack_ui.so
 	provides = Neuralrack.so
+	provides = NeuralRackvst.so
 	source = git+https://github.com/brummer10/NeuralRack.git
 	sha256sums = SKIP
 
