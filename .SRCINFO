@@ -1,0 +1,24 @@
+pkgbase = pomodorot-bin
+	pkgdesc = A simple pomodoro timer application (binary release)
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/mlm-games/pomodorot
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	depends = glibc
+	depends = libx11
+	depends = libxcursor
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxi
+	depends = alsa-lib
+	depends = pulseaudio
+	provides = pomodorot
+	conflicts = pomodorot
+	source_x86_64 = pomodorot-0.10.2-x64::https://github.com/mlm-games/pomodorot/releases/download/0.10.2/pomodorot.x86_64
+	sha256sums_x86_64 = 8e18c0b2727b9cd7bc9d8147ffa642ddf449d90fecd9fc111bf0a5624cb645d6
+	source_aarch64 = pomodorot-0.10.2-arm64::https://github.com/mlm-games/pomodorot/releases/download/0.10.2/pomodorot.arm64
+	sha256sums_aarch64 = 8d53f94bdd5847cb5b58f3585b2e36e3681aad0a95317422d3fd5d1c5f955396
+
+pkgname = pomodorot-bin
