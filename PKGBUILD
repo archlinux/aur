@@ -463,6 +463,10 @@ prepare() {
     patch -Np1 -i "${srcdir}/031-ffmpeg-add-svt-vp9.patch"
     patch -Np1 -i <(filterdiff -i b/libavcodec/libsvt_vp9.c "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch")
   fi
+
+  if [[ $FFMPEG_OBS_CUDA == ON'' ]]; then
+    sed -i 's/nvccflags -std=c++11/nvccflags -std=c++14/g' configure
+  fi
 }
 
 build() {
