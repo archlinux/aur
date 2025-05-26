@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simpleshell-git
 _pkgname=SimpleShell
-pkgver=1.3.2.r2.g00f3a5c
+pkgver=1.3.3.r6.ge0f6f7e
 _electronversion=35
 _nodeversion=22
 pkgrel=1
@@ -15,7 +15,7 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'bun'
+    'yarn'
     'nvm'
     'git'
     'curl'
@@ -55,7 +55,6 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
@@ -77,6 +76,13 @@ prepare() {
         } >> .yarnrc
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
+    sed -i "s/logo.ico/${_pkgname}.png/g" src/main.js
+    cp src/core/configManager.js src/core/ConfigManager.js
+    rm -rf src/core/configManager.js
+    sed -i "3i\const configDir = process.env.XDG_CONFIG_HOME || path.join(require('os').homedir(), '.config');" src/core/ConfigManager.js
+    sed -i "3i\const configDir = process.env.XDG_CONFIG_HOME || path.join(require('os').homedir(), '.config');" src/core/utils/logger.js
+    sed -i 's/return path.join(path.dirname(app.getPath("exe")), "config.json");/return path.join(configDir, 'simpleshell', 'config.json');/g' src/core/ConfigManager.js
+    sed -i "s/return path.join(path.dirname(process.execPath), 'log');/return path.join(configDir, 'simpleshell', 'log');/g" src/core/utils/logger.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     #NODE_ENV=development    pnpm add -D "@vercel/webpack-asset-relocator-loader@latest"
@@ -85,23 +91,22 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     local electronDist="/usr/lib/electron${_electronversion}"
-    sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    sed -i "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
     {\\
         name: \"@electron-forge/plugin-local-electron\",\\
         config: {\\
-            electronPath: \"${electronDist}\"\\
-        }\\
-    }," forge.config.js
+            electronPath: \'${electronDist}\',\\
+        },\\
+    }," forge.config.*
     NODE_ENV=development    yarn run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    touch "${pkgdir}/usr/lib/${pkgname%-git}/"{config.json,connections.json}
-    chmod 666 "${pkgdir}/usr/lib/${pkgname%-git}/"{config.json,connections.json}
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app.asar.unpacked -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/src/renderer/src/assets/${_pkgname}-icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/out/${pkgname%-git}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/out/${pkgname%-git}-linux-"*/resources/app.asar.unpacked -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/src/assets/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/README.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
