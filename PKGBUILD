@@ -248,19 +248,19 @@ package_riven-remake-data-gog-bin() {
 
   install -Dvm644 "${srcdir}/${_gogname}/icon.png" "${pkgdir}/usr/share/pixmaps/riven-remake.png"
 
-  install -Dvm644 -t "${pkgdir}/usr/share/doc/riven-remake" "${srcdir}/${_gogname}"/{logo.jpg,game-details.json,product.json} "${srcdir}/unpack/game"/{version.txt,Manifest*.txt,goggame*.info}
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/riven-remake" "${srcdir}/${_gogname}"/{logo_riven.jpg,game-details.json,product_riven.json} "${srcdir}/unpack/game"/{version.txt,Manifest*.txt,goggame*.info}
 
   ### If extra material has been purchased, it got downloaded. Check if it is there, and if so, install it and add it to the 'provides' array.
   if _check_artofriven; then
     provides+=("the-art-of-riven-remake")
     conflicts+=("the-art-of-riven-remake")
-    install -Dvm644 -t "${pkgdir}/usr/share/doc/riven-remake/the_art_of_riven" "${srcdir}/${_gogname}/dlc/the_art_of_riven"/{logo.jpg,product.json}
+    install -Dvm644 -t "${pkgdir}/usr/share/doc/riven-remake/the_art_of_riven" "${srcdir}/${_gogname}/dlc/the_art_of_riven"/{logo_the_art_of_riven.jpg,product_the_art_of_riven.json}
     install -Dvm644 -t "${pkgdir}/usr/share/doc/riven-remake/the_art_of_riven" "${srcdir}/unpack"/the_art_of_riven*/*
   fi
   if _check_rivencompanion; then
     provides+=("riven-remake-companion")
     conflicts+=("riven-remake-companion")
-    install -Dvm644 -t "${pkgdir}/usr/share/doc/riven-remake/the_riven_companion" "${srcdir}/${_gogname}/dlc/the_riven_companion"/{logo.jpg,product.json}
+    install -Dvm644 -t "${pkgdir}/usr/share/doc/riven-remake/the_riven_companion" "${srcdir}/${_gogname}/dlc/the_riven_companion"/{logo_the_riven_companion.jpg,product_the_riven_companion.json}
     install -Dvm644 -t "${pkgdir}/usr/share/doc/riven-remake/the_riven_companion" "${srcdir}/unpack"/the_riven_companion*/*
   fi
 
