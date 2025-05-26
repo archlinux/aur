@@ -1,7 +1,7 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 
 pkgname='toit-vessels-bin'
-_pkgver="v2.0.0-alpha.181"
+_pkgver="v2.0.0-alpha.182"
 _repo="https://github.com/toitlang/toit.git"
 _pkgver_no_dash="${_pkgver//-/}"
 pkgver="${_pkgver_no_dash#v}"
@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://toitlang.org"
 license=('LGPL')
 source=("vessels-$pkgver.tar.gz::https://github.com/toitlang/toit/releases/download/$_pkgver/vessels.tar.gz")
-sha256sums=('cf3f71d636992a7d2b5d6b001a37379f13c8de30f2a93352b8c760a9d994b0d9')
+sha256sums=('b0512d75355e9f8f05c1fdc3029994ecdf94232838ddbee1204e54bcc4fd8e6d')
 options=(!strip)
 
 build() {
