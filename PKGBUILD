@@ -3,7 +3,7 @@
 
 pkgname=nginx-mainline-mod-http-xslt-filter
 pkgver=1.27.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Transform nginx XML responses using XSLT stylesheets'
 arch=('x86_64')
 url='https://nginx.org/en/docs/http/ngx_http_xslt_module.html'
@@ -24,8 +24,7 @@ build() {
 		grep -o -- '--prefix=.*$' |
 		xargs printf '%s\0' |
 		sed -z \
-			-e'/^--with-.*=dynamic$/d' \
-			-e'/^--with-ld-opt=/{s/-Wl,/\0-E,/;s/-Wl,/-lpcre \0/}' |
+			-e'/^--with-.*=dynamic$/d' | \
 		xargs -t0 /usr/src/nginx/configure \
 			--with-http_xslt_module=dynamic
 
