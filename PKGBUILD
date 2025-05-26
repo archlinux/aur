@@ -11,7 +11,7 @@ pkgname=zig-dev-bin
 epoch=1
 # NOTE: Sanitize version '-' -> '_', '+' -> `.g`
 pkgver=0.15.0_dev.643.gdc6ffc28b
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=('x86_64' 'aarch64')
 url="https://ziglang.org/"
@@ -154,7 +154,7 @@ check() {
     # Right now there is no way to disable the cache (see Zig issue #12317)
     # Instead we shove everything in a local directory and delete it
     cache_dir="${srcdir}/zig-cache"
-    cd "${srcdir}/zig-${CARCH}-$(original_pkgver)"
+    cd "${srcdir}/zig-${CARCH}-linux-$(original_pkgver)"
     echo "Running Zig Hello World"
     ./zig run --cache-dir "$cache_dir" --global-cache-dir "$cache_dir" "$hello_file"
     ./zig test --cache-dir "$cache_dir" --global-cache-dir "$cache_dir" "$hello_file"
@@ -185,7 +185,7 @@ check() {
 }
 
 package() {
-  cd "${srcdir}/zig-linux-${CARCH}-$(original_pkgver)"
+  cd "${srcdir}/zig-${CARCH}-linux-$(original_pkgver)"
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/lib/zig"
   cp -R lib "${pkgdir}/usr/lib/zig/lib"
