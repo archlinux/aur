@@ -1,0 +1,17 @@
+pkgbase = zoekt-git
+	pkgdesc = Zoekt is a text search engine intended for use with source code.
+	pkgver = 91259775
+	pkgrel = 1
+	url = https://github.com/sourcegraph/zoekt
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	provides = zoekt
+	source = zoekt::git+https://github.com/sourcegraph/zoekt
+	sha256sums = SKIP
+
+pkgname = zoekt-git
