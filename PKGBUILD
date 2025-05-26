@@ -6,7 +6,7 @@
 pkgname=tango-cpp
 _pkgname=cppTango
 pkgver="10.0.2"
-pkgrel=5
+pkgrel=6
 groups=("tango-controls")
 pkgdesc="TANGO distributed control system - shared library"
 arch=("x86_64" "armv7h")
@@ -31,7 +31,7 @@ build() {
     _MMX=-DTANGO_JPEG_MMX=OFF
   fi
   cd "${_pkgname}-with-submodules-${pkgver}"
-  cmake -B build ${_MMX} -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr -DTANGO_USE_TELEMETRY=ON
+  cmake -B build ${_MMX} -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr -DTANGO_USE_TELEMETRY=ON -DTANGO_TELEMETRY_EXPORTER_OPTION_NEW=ON
   make -C build
 }
 
