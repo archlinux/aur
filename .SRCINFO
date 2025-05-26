@@ -1,6 +1,6 @@
 pkgbase = libmirisdr4-git
 	pkgdesc = Support of Mirics MSi001 + MSi2500 SDR devices (yet another flavour of libmirisdr)
-	pkgver = r33.fd0452e
+	pkgver = r33.fd0452e.1
 	pkgrel = 1
 	url = https://github.com/f4exb/libmirisdr-4
 	arch = i686
