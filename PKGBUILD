@@ -1,10 +1,10 @@
 # Maintainer: Mark King <mark.king@markzz.com>
 
-_brotli_ver=1.0.9
-_openssl_ver=1.1.1l
+_brotli_ver=1.1.0
+_openssl_ver=3.5.0
 pkgbase=edk2-git
 pkgname=(edk2-armvirt-git edk2-shell-git edk2-ovmf-git)
-pkgver=r34308.347877c1ee
+pkgver=r34315.93aeaa0812
 pkgrel=1
 pkgdesc="Modern, feature-rich firmware development environment for the UEFI specifications"
 arch=(any)
@@ -28,9 +28,9 @@ source=(
   "82-edk2-ovmf-git-ia32-on-x86_64-csm.json"
 )
 sha512sums=('SKIP'
-            'd9611f393e37577cca05004531388d3e0ebbf714894cab9f95f4903909cd4f45c214faab664c0cbc3ad3cca309d500b9e6d0ecbf9a0a0588d1677dc6b047f9e0'
+            '39cc80e2843a2ee30f3f5de25cd9d0f759ad8de71b0b39f5a679afaaa74f4eb58d285ae50e29e4a27b139b49343ac91d1f05478f96fb0c6b150f16d7b634676f'
             'SKIP'
-            'b8e2df955e8796ac1f022eb4ebad29532cb7e3aa6a4b6aee91dbd2c7d637eee84d9a144d3e878895bb5e62800875c2c01c8f737a1261020c54feacf9f676b5f5'
+            '6eb280d10d8e1b43d22d00fa535435923c22ce8448709419d676ff47d4a644102ea04f488fc65a179c6c09fee12380992e9335bad8dfebd5d1f20908d10849d9'
             '603cae145a87bae371bd069d05128beebddb7048e78b93650b19c44b86b2d27cabbcf3bc4c0b2384b862f32383ce7a914a10fc0ad564632bcadd6e4f9389fede'
             '3e10bdc9ad13aadbd4111230fb8f37d5f16306aeb7bce2af5ec31c1e2b5adea26d5875cd0d7070ea82eca7546ecbacc8c195ed68425428bf6d2533b58e307b2d'
             '56d0bffd6dd7be79709f66bcfba2112e8ef6208de9b5018e90251e3ba68b37f9d911f0bd5a03987b49bb19bd0d62f7fa9ac3ca9f234e80ada3c4dbdd619705b9'
@@ -42,8 +42,7 @@ sha512sums=('SKIP'
             '7c9f8e7ce7451e7aa852998ffcd3ca95c08083c313dc8dcf0877969ef23d9da6f69c60bb1e652387a223da6e690524fa094bfbaed14d8bdae2853e68530b2f82'
             '891d3ea36d966114ff1f79c3619675a46b30b68def16ab426f2dee00bd0768f82ca0ee26acd7adedd379f25613e309ec9dfaed4e8a5d3f3e4fa7e8d845f55b18')
 
-validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491') # Matt Caswell <matt@openssl.org>
-#validpgpkeys=('BA5473A2B0587B07FB27CF2D216094DFD0CB81EF') # OpenSSL <openssl@openssl.org>
+validpgpkeys=('BA5473A2B0587B07FB27CF2D216094DFD0CB81EF') # OpenSSL <openssl@openssl.org>
 _arch_list=(AARCH64 IA32 X64)
 _build_type=RELEASE
 _build_plugin=GCC5
