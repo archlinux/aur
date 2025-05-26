@@ -1,20 +1,17 @@
 # Maintainer:
 
-## options
-: ${_ffmpeg_version=}
-
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=5.14.2.r10.g5d8ac95
+pkgver=5.14.3.r3.g88ce676
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 
-depends+=(
+depends=(
   ada
-  ffmpeg${_ffmpeg_version:-}
+  ffmpeg
   hunspell
   jemalloc
   kcoreaddons
@@ -34,7 +31,7 @@ depends+=(
   xcb-util-keysyms
   xxhash
 )
-makedepends+=(
+makedepends=(
   boost
   cmake
   extra-cmake-modules
@@ -43,8 +40,10 @@ makedepends+=(
   glib2-devel
   gobject-introspection
   ninja
+  range-v3
+  tl-expected
 )
-optdepends+=(
+optdepends=(
   'webkit2gtk: embedded browser features'
   'xdg-desktop-portal: desktop integration'
 )
@@ -60,131 +59,101 @@ _source_main() {
 
 _source_telegram_desktop() {
   local _sources_add=(
-    #'apple.swift-corelibs-libdispatch'::'git+https://github.com/apple/swift-corelibs-libdispatch.git'
-    'cyan4973.xxhash'::'git+https://github.com/Cyan4973/xxHash.git'
-    'desktop-app.cmake_helpers'::'git+https://github.com/desktop-app/cmake_helpers.git'
-    'desktop-app.codegen'::'git+https://github.com/desktop-app/codegen.git'
-    'desktop-app.lib_base'::'git+https://github.com/desktop-app/lib_base.git'
-    'desktop-app.lib_crl'::'git+https://github.com/desktop-app/lib_crl.git'
-    'desktop-app.lib_lottie'::'git+https://github.com/desktop-app/lib_lottie.git'
-    'desktop-app.lib_qr'::'git+https://github.com/desktop-app/lib_qr.git'
-    'desktop-app.lib_rpl'::'git+https://github.com/desktop-app/lib_rpl.git'
-    'desktop-app.lib_spellcheck'::'git+https://github.com/desktop-app/lib_spellcheck.git'
-    'desktop-app.lib_storage'::'git+https://github.com/desktop-app/lib_storage.git'
-    'desktop-app.lib_tl'::'git+https://github.com/desktop-app/lib_tl.git'
-    'desktop-app.lib_ui'::'git+https://github.com/desktop-app/lib_ui.git'
-    'desktop-app.lib_webrtc'::'git+https://github.com/desktop-app/lib_webrtc.git'
-    'desktop-app.lib_webview'::'git+https://github.com/desktop-app/lib_webview.git'
-    'desktop-app.libprisma'::'git+https://github.com/desktop-app/libprisma.git'
-    'desktop-app.rlottie'::'git+https://github.com/desktop-app/rlottie.git'
-    'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'
-    'fcitx.fcitx5-qt'::'git+https://github.com/fcitx/fcitx5-qt.git'
-    'flatpak.xdg-desktop-portal'::'git+https://github.com/flatpak/xdg-desktop-portal.git'
-    'google.cld3'::'git+https://github.com/google/cld3.git'
-    'hamonikr.nimf'::'git+https://github.com/hamonikr/nimf.git'
-    'hime-ime.hime'::'git+https://github.com/hime-ime/hime.git'
-    #'hunspell'::'git+https://github.com/hunspell/hunspell.git'
-    #'jemalloc'::'git+https://github.com/jemalloc/jemalloc.git'
-    #'kde.kcoreaddons'::'git+https://github.com/KDE/kcoreaddons.git'
-    #'kde.kimageformats'::'git+https://github.com/KDE/kimageformats.git'
-    'lz4'::'git+https://github.com/lz4/lz4.git'
-    'microsoft.gsl'::'git+https://github.com/Microsoft/GSL.git'
-    'nayuki.qr-code-generator'::'git+https://github.com/nayuki/QR-Code-generator.git'
-    'tartanllama.expected'::'git+https://github.com/TartanLlama/expected.git'
-    'telegramdesktop.libtgvoip'::'git+https://github.com/telegramdesktop/libtgvoip.git'
-    'telegrammessenger.tgcalls'::'git+https://github.com/TelegramMessenger/tgcalls.git'
+    #'apple.swift-corelibs-libdispatch'::'git+https://github.com/apple/swift-corelibs-libdispatch.git'::'Telegram/ThirdParty/dispatch'
+    'cyan4973.xxhash'::'git+https://github.com/Cyan4973/xxHash.git'::'Telegram/ThirdParty/xxHash'
+    'desktop-app.cmake_helpers'::'git+https://github.com/desktop-app/cmake_helpers.git'::'cmake'
+    'desktop-app.codegen'::'git+https://github.com/desktop-app/codegen.git'::'Telegram/codegen'
+    'desktop-app.lib_base'::'git+https://github.com/desktop-app/lib_base.git'::'Telegram/lib_base'
+    'desktop-app.lib_crl'::'git+https://github.com/desktop-app/lib_crl.git'::'Telegram/lib_crl'
+    'desktop-app.lib_lottie'::'git+https://github.com/desktop-app/lib_lottie.git'::'Telegram/lib_lottie'
+    'desktop-app.lib_qr'::'git+https://github.com/desktop-app/lib_qr.git'::'Telegram/lib_qr'
+    'desktop-app.lib_rpl'::'git+https://github.com/desktop-app/lib_rpl.git'::'Telegram/lib_rpl'
+    'desktop-app.lib_spellcheck'::'git+https://github.com/desktop-app/lib_spellcheck.git'::'Telegram/lib_spellcheck'
+    'desktop-app.lib_storage'::'git+https://github.com/desktop-app/lib_storage.git'::'Telegram/lib_storage'
+    'desktop-app.lib_tl'::'git+https://github.com/desktop-app/lib_tl.git'::'Telegram/lib_tl'
+    'desktop-app.lib_ui'::'git+https://github.com/desktop-app/lib_ui.git'::'Telegram/lib_ui'
+    'desktop-app.lib_webrtc'::'git+https://github.com/desktop-app/lib_webrtc.git'::'Telegram/lib_webrtc'
+    'desktop-app.lib_webview'::'git+https://github.com/desktop-app/lib_webview.git'::'Telegram/lib_webview'
+    'desktop-app.libprisma'::'git+https://github.com/desktop-app/libprisma.git'::'Telegram/ThirdParty/libprisma'
+    'desktop-app.rlottie'::'git+https://github.com/desktop-app/rlottie.git'::'Telegram/ThirdParty/rlottie'
+    #'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'::'Telegram/ThirdParty/range-v3'
+    'fcitx.fcitx5-qt'::'git+https://github.com/fcitx/fcitx5-qt.git'::'Telegram/ThirdParty/fcitx5-qt'
+    'flatpak.xdg-desktop-portal'::'git+https://github.com/flatpak/xdg-desktop-portal.git'::'Telegram/ThirdParty/xdg-desktop-portal'
+    'google.cld3'::'git+https://github.com/google/cld3.git'::'Telegram/ThirdParty/cld3'
+    'hamonikr.nimf'::'git+https://github.com/hamonikr/nimf.git'::'Telegram/ThirdParty/nimf'
+    'hime-ime.hime'::'git+https://github.com/hime-ime/hime.git'::'Telegram/ThirdParty/hime'
+    #'hunspell'::'git+https://github.com/hunspell/hunspell.git'::'Telegram/ThirdParty/hunspell'
+    #'jemalloc'::'git+https://github.com/jemalloc/jemalloc.git'::'Telegram/ThirdParty/jemalloc'
+    #'kde.kcoreaddons'::'git+https://github.com/KDE/kcoreaddons.git'::'Telegram/ThirdParty/kcoreaddons'
+    #'kde.kimageformats'::'git+https://github.com/KDE/kimageformats.git'::'Telegram/ThirdParty/kimageformats'
+    #'lz4'::'git+https://github.com/lz4/lz4.git'::'Telegram/ThirdParty/lz4'
+    'microsoft.gsl'::'git+https://github.com/Microsoft/GSL.git'::'Telegram/ThirdParty/GSL'
+    'nayuki.qr-code-generator'::'git+https://github.com/nayuki/QR-Code-generator.git'::'Telegram/ThirdParty/QR'
+    'tartanllama.expected'::'git+https://github.com/TartanLlama/expected.git'::'Telegram/ThirdParty/expected'
+    'telegramdesktop.libtgvoip'::'git+https://github.com/telegramdesktop/libtgvoip.git'::'Telegram/ThirdParty/libtgvoip'
+    'telegrammessenger.tgcalls'::'git+https://github.com/TelegramMessenger/tgcalls.git'::'Telegram/ThirdParty/tgcalls'
   )
 
-  local _p
+  local _p _idx _src _sm_prep _sm_func
   for _p in ${_sources_add[@]}; do
-    source+=("$_p")
+    _idx="${_p%%::*}"
+    _sm_prep+=("${_idx}::${_p##*::}")
+    _src="${_p%::*}"
+    source+=("$_src")
     sha256sums+=('SKIP')
   done
 
-  _prepare_telegram_desktop() (
-    cd "$srcdir/$_pkgsrc"
-    local _submodules=(
-      #'apple.swift-corelibs-libdispatch'::'Telegram/ThirdParty/dispatch'
-      'cyan4973.xxhash'::'Telegram/ThirdParty/xxHash'
-      'desktop-app.cmake_helpers'::'cmake'
-      'desktop-app.codegen'::'Telegram/codegen'
-      'desktop-app.lib_base'::'Telegram/lib_base'
-      'desktop-app.lib_crl'::'Telegram/lib_crl'
-      'desktop-app.lib_lottie'::'Telegram/lib_lottie'
-      'desktop-app.lib_qr'::'Telegram/lib_qr'
-      'desktop-app.lib_rpl'::'Telegram/lib_rpl'
-      'desktop-app.lib_spellcheck'::'Telegram/lib_spellcheck'
-      'desktop-app.lib_storage'::'Telegram/lib_storage'
-      'desktop-app.lib_tl'::'Telegram/lib_tl'
-      'desktop-app.lib_ui'::'Telegram/lib_ui'
-      'desktop-app.lib_webrtc'::'Telegram/lib_webrtc'
-      'desktop-app.lib_webview'::'Telegram/lib_webview'
-      'desktop-app.libprisma'::'Telegram/ThirdParty/libprisma'
-      'desktop-app.rlottie'::'Telegram/ThirdParty/rlottie'
-      'ericniebler.range-v3'::'Telegram/ThirdParty/range-v3'
-      'fcitx.fcitx5-qt'::'Telegram/ThirdParty/fcitx5-qt'
-      'flatpak.xdg-desktop-portal'::'Telegram/ThirdParty/xdg-desktop-portal'
-      'google.cld3'::'Telegram/ThirdParty/cld3'
-      'hamonikr.nimf'::'Telegram/ThirdParty/nimf'
-      'hime-ime.hime'::'Telegram/ThirdParty/hime'
-      #'hunspell'::'Telegram/ThirdParty/hunspell'
-      #'jemalloc'::'Telegram/ThirdParty/jemalloc'
-      #'kde.kcoreaddons'::'Telegram/ThirdParty/kcoreaddons'
-      #'kde.kimageformats'::'Telegram/ThirdParty/kimageformats'
-      'lz4'::'Telegram/ThirdParty/lz4'
-      'microsoft.gsl'::'Telegram/ThirdParty/GSL'
-      'nayuki.qr-code-generator'::'Telegram/ThirdParty/QR'
-      'tartanllama.expected'::'Telegram/ThirdParty/expected'
-      'telegramdesktop.libtgvoip'::'Telegram/ThirdParty/libtgvoip'
-      'telegrammessenger.tgcalls'::'Telegram/ThirdParty/tgcalls'
-    )
+  eval "_prepare_telegram_desktop() (
+    cd \"\$srcdir/\$_pkgsrc\"
+    local _submodules=(${_sm_prep[@]})
     _submodule_update
-  )
+  )"
 }
 
 _source_desktop_app_cmake_helpers() {
   local _sources_add=(
-    'mnauw.cppgir'::'git+https://gitlab.com/mnauw/cppgir.git'
-    'yugr.implib.so'::'git+https://github.com/yugr/Implib.so.git'
+    'mnauw.cppgir'::'git+https://gitlab.com/mnauw/cppgir.git'::'external/glib/cppgir'
+    'yugr.implib.so'::'git+https://github.com/yugr/Implib.so.git'::'external/Implib.so'
   )
 
-  local _p
+  local _p _idx _src _sm_prep _sm_func
   for _p in ${_sources_add[@]}; do
-    source+=("$_p")
+    _idx="${_p%%::*}"
+    _sm_prep+=("${_idx}::${_p##*::}")
+    _src="${_p%::*}"
+    source+=("$_src")
     sha256sums+=('SKIP')
   done
 
-  _prepare_desktop_app_cmake_helpers() (
-    cd "$srcdir/$_pkgsrc"
-    cd "cmake"
-    local _submodules=(
-      'mnauw.cppgir'::'external/glib/cppgir'
-      'yugr.implib.so'::'external/Implib.so'
-    )
+  eval "_prepare_desktop_app_cmake_helpers() (
+    cd \"\$srcdir/\$_pkgsrc\"
+    cd 'cmake'
+    local _submodules=(${_sm_prep[@]})
     _submodule_update
-  )
+  )"
 }
 
 _source_mnauw_cppgir() {
   local _sources_add=(
-    'martinmoene.expected-lite'::'git+https://github.com/martinmoene/expected-lite.git'
+    'martinmoene.expected-lite'::'git+https://github.com/martinmoene/expected-lite.git'::'expected-lite'
   )
 
-  local _p
+  local _p _idx _src _sm_prep _sm_func
   for _p in ${_sources_add[@]}; do
-    source+=("$_p")
+    _idx="${_p%%::*}"
+    _sm_prep+=("${_idx}::${_p##*::}")
+    _src="${_p%::*}"
+    source+=("$_src")
     sha256sums+=('SKIP')
   done
 
-  _prepare_mnauw_cppgir() (
-    cd "$srcdir/$_pkgsrc"
+  eval "_prepare_mnauw_cppgir() (
+    cd \"\$srcdir/\$_pkgsrc\"
     cd 'cmake'
     cd 'external/glib/cppgir'
-    local _submodules=(
-      'martinmoene.expected-lite'::'expected-lite'
-    )
+    local _submodules=(${_sm_prep[@]})
     _submodule_update
-  )
+  )"
 }
 
 _source_tg_owt() {
@@ -203,28 +172,26 @@ _source_tg_owt() {
   sha256sums+=('SKIP')
 
   local _sources_add=(
-    'abseil.abseil-cpp'::'git+https://github.com/abseil/abseil-cpp.git'
-    'chromiumsrc.libyuv'::'git+https://gitlab.com/chromiumsrc/libyuv.git'
-    'cisco.libsrtp'::'git+https://github.com/cisco/libsrtp.git'
-    'google.crc32c'::'git+https://github.com/google/crc32c.git'
+    'abseil.abseil-cpp'::'git+https://github.com/abseil/abseil-cpp.git'::'src/third_party/abseil-cpp'
+    'chromiumsrc.libyuv'::'git+https://gitlab.com/chromiumsrc/libyuv.git'::'src/third_party/libyuv'
+    'cisco.libsrtp'::'git+https://github.com/cisco/libsrtp.git'::'src/third_party/libsrtp'
+    'google.crc32c'::'git+https://github.com/google/crc32c.git'::'src/third_party/crc32c/src'
   )
 
-  local _p
+  local _p _idx _src _sm_prep _sm_func
   for _p in ${_sources_add[@]}; do
-    source+=("$_p")
+    _idx="${_p%%::*}"
+    _sm_prep+=("${_idx}::${_p##*::}")
+    _src="${_p%::*}"
+    source+=("$_src")
     sha256sums+=('SKIP')
   done
 
-  _prepare_tg_owt() (
-    cd "$srcdir/$_pkgsrc_tgowt"
-    local _submodules=(
-      'abseil.abseil-cpp'::'src/third_party/abseil-cpp'
-      'chromiumsrc.libyuv'::'src/third_party/libyuv'
-      'cisco.libsrtp'::'src/third_party/libsrtp'
-      'google.crc32c'::'src/third_party/crc32c/src'
-    )
+  eval "_prepare_tg_owt() (
+    cd \"\$srcdir/\$_pkgsrc_tgowt\"
+    local _submodules=(${_sm_prep[@]})
     _submodule_update
-  )
+  )"
 }
 
 _source_tdlib() {
@@ -236,12 +203,11 @@ _source_tdlib() {
 }
 
 _source_main
+_source_tg_owt
+_source_tdlib
 _source_telegram_desktop
 _source_desktop_app_cmake_helpers
 _source_mnauw_cppgir
-
-_source_tdlib
-_source_tg_owt
 
 prepare() {
   _submodule_update() {
@@ -293,7 +259,6 @@ _build_tg_owt() (
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
-    -DCMAKE_POSITION_INDEPENDENT_CODE=ON
     -DTG_OWT_PACKAGED_BUILD=ON
     -DBUILD_SHARED_LIBS=OFF
     -Wno-dev
@@ -311,7 +276,6 @@ _build_tde2e() (
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX=/usr
-    -DCMAKE_POSITION_INDEPENDENT_CODE=ON
     -DTD_E2E_ONLY=ON
     -DBUILD_SHARED_LIBS=OFF
     -DBUILD_TESTING=OFF
@@ -321,8 +285,6 @@ _build_tde2e() (
   cmake "${_cmake_tde2e[@]}"
   cmake --build "build_tde2e"
   DESTDIR="$srcdir/deps" cmake --install "build_tde2e"
-
-  find build_tde2e -type f
 )
 
 _build_telegram() (
@@ -348,8 +310,6 @@ _build_telegram() (
 )
 
 build() {
-  [ -n "${_ffmpeg_version}" ] && export PKG_CONFIG_PATH="/usr/lib/ffmpeg${_ffmpeg_version:-}/pkgconfig"
-
   _build_crc32
   _build_tg_owt
   _build_tde2e
