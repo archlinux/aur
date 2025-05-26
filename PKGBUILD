@@ -5,7 +5,7 @@
 _pkgname=touchegg
 pkgname=${_pkgname}-nosystemd-git
 pkgver=2.0.18.r670.20250524.fc30d31
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux multi-touch gesture recognizer (without systemd dependency; latest git checkout).'
 arch=(
   'i686'
@@ -79,6 +79,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_SYSTEMD=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -Wno-dev
   cmake --build build
 }

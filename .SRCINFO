@@ -1,7 +1,7 @@
 pkgbase = touchegg-nosystemd-git
 	pkgdesc = Linux multi-touch gesture recognizer (without systemd dependency; latest git checkout).
 	pkgver = 2.0.18.r670.20250524.fc30d31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JoseExposito/touchegg
 	arch = i686
 	arch = x86_64
