@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggspavis
-_pkgver=1.14.1
+_pkgver=1.14.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3edd111223b25417647e3feffc39a8ba')
-b2sums=('e7629b4910213b4d2ad308d9bf9a62dfc43735de30e417967f0d2b7fb4d5902c9d1a6746d558290f5fd6fe937be939e5bf932794784d89a447d9cd6fd1c29c9e')
+md5sums=('cd1e49d7815d56e39c1b6f433a6ec01c')
+b2sums=('a513fb09ed9bf75b3eb8be03cb68153afffe76744bc617b8996682d15ec127c07af6340e00faa19c00c0612c42d4218b96fd53314b06c5223df7cc236a156700')
 
 build() {
   mkdir build
