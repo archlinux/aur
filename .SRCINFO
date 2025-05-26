@@ -1,0 +1,13 @@
+pkgbase = python-marshalparser
+	pkgdesc = Parser for byte-cache .pyc files
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://pypi.org/project/marshalparser
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/m/marshalparser/marshalparser-0.4.0.tar.gz
+	sha256sums = d1b15012106cf1fb025e98c7df2d5d394c26e9c39bb713da4e98265b0f285b47
+
+pkgname = python-marshalparser
