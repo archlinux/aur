@@ -1,7 +1,7 @@
 pkgbase = zyfun-bin
 	pkgdesc = Cross-platform desktop video resource player, free high value.(Prebuilt version.Use system-wide electron)跨平台桌面端视频资源播放器,免费高颜值
 	pkgver = 3.3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Hiram-Wong/ZyPlayer
 	arch = aarch
 	arch = x86_64

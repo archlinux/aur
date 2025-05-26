@@ -2,11 +2,11 @@
 pkgname=zyfun-bin
 pkgver=3.3.10
 _electronversion=34
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform desktop video resource player, free high value.(Prebuilt version.Use system-wide electron)跨平台桌面端视频资源播放器,免费高颜值"
 arch=(
-    "aarch"
-    "x86_64"
+    'aarch'
+    'x86_64'
 )
 url="https://github.com/Hiram-Wong/ZyPlayer"
 license=("MIT")
@@ -30,17 +30,17 @@ sha256sums=('05a41f7b9dc819453e9c8c3ea4e144fe7e3d09d0f78bdf800e92810312f99094'
 sha256sums_aarch=('961febfa564422dd278a3c5a4226d39f73a1c0ef4b2798d85b203f8b79813fb3')
 sha256sums_x86_64=('831a3ea9513acb66cac747b51047989e222e635c5abfe46ee19ea88fc25ad47e')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "
-        s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}/${pkgname%-bin}/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
+        s/\/opt\/${pkgname%-bin}\///g
         s/Audio;Video/AudioVideo/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
