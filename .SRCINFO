@@ -1,21 +1,21 @@
 pkgbase = bitshares-astro-ui-bin
 	pkgdesc = A Bitshares UI built using Astro, React and Electron!.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.4.21
+	pkgver = 0.4.22
 	pkgrel = 1
 	url = https://github.com/BTS-CM/astro-ui
 	arch = x86_64
 	license = MIT
 	makedepends = asar
-	depends = electron35
+	depends = electron36
 	depends = libvips
-	provides = bitshares-astro-ui=0.4.21
+	provides = bitshares-astro-ui=0.4.22
 	conflicts = bitshares-astro-ui
 	options = !emptydirs
-	source = bitshares-astro-ui-0.4.21.deb::https://github.com/BTS-CM/astro-ui/releases/download/v0.4.21/BTSAstroUI.deb
-	source = LICENSE-0.4.21::https://raw.githubusercontent.com/BTS-CM/astro-ui/v0.4.21/LICENSE
+	source = bitshares-astro-ui-0.4.22.deb::https://github.com/BTS-CM/astro-ui/releases/download/v0.4.22/BTSAstroUI.deb
+	source = LICENSE-0.4.22::https://raw.githubusercontent.com/BTS-CM/astro-ui/v0.4.22/LICENSE
 	source = bitshares-astro-ui.sh
-	sha256sums = 52005c2e04386e6805d6d22346897361b01996c58e1055711d8279e1fd23f6bc
-	sha256sums = 8436084a3b95dce1c186bc57a5ab4832a03df731cfb652befe8764a5018eea35
+	sha256sums = db281b94d68734d64c2dcd78ba9322b084a2c2f8db8b125514297140acf7911e
+	sha256sums = 8d393d1c4d553c67d8997b58477b772133680a72eae577ea886e8bea1b4c812e
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = bitshares-astro-ui-bin

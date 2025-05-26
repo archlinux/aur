@@ -3,8 +3,8 @@ _appname=bitshares_astro_ui
 pkgname="${_appname//_/-}-bin"
 _pkgname=BTSAstroUI
 _orginame='Bitshares Astro UI'
-pkgver=0.4.21
-_electronversion=35
+pkgver=0.4.22
+_electronversion=36
 pkgrel=1
 pkgdesc="A Bitshares UI built using Astro, React and Electron!.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -27,8 +27,8 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/BTS-CM/astro-ui/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('52005c2e04386e6805d6d22346897361b01996c58e1055711d8279e1fd23f6bc'
-            '8436084a3b95dce1c186bc57a5ab4832a03df731cfb652befe8764a5018eea35'
+sha256sums=('db281b94d68734d64c2dcd78ba9322b084a2c2f8db8b125514297140acf7911e'
+            '8d393d1c4d553c67d8997b58477b772133680a72eae577ea886e8bea1b4c812e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
