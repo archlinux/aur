@@ -4,8 +4,8 @@
 pkgname=winbox
 pkgver=4.0beta21
 pkgrel=1
-pkgdesc="Mikrotik RouterOS GUI Configurator"
-url="https://mikrotik.com/download"
+pkgdesc='Mikrotik RouterOS GUI Configurator'
+url='https://mikrotik.com/download'
 arch=('x86_64')
 license=('custom')
 depends=('fontconfig'
