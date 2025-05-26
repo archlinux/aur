@@ -3,7 +3,7 @@
 
 _name="tesseract"
 pkgname="lib32-${_name}"
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 pkgdesc="An OCR program (32-bit)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=("lib${_name}.so")
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz"
         "${_name}_only_target_libraries.patch")
-sha256sums=('f2fb34ca035b6d087a42875a35a7a5c4155fa9979c6132365b1e5a28ebc3fc11'
+sha256sums=('a7a3f2a7420cb6a6a94d80c24163e183cf1d2f1bed2df3bbc397c81808a57237'
             'cebf0b3f6768ad483ad224f3b7d12ebfcb9a6002828d8133e85d14d4129bfd2c')
 
 prepare() {
