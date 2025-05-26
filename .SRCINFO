@@ -1,7 +1,7 @@
 pkgbase = nats-js-client-bin
 	pkgdesc = Gui for nats.js client.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/S-404/nats-client-gui
 	arch = x86_64
 	license = LicenseRef-unknown
