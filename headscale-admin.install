@@ -1,0 +1,17 @@
+post_install(){
+cat <<INFO
+
+Headscale-admin was successfully installed. Now you need add configuration to your reverse proxy. Example for nginx:
+
+    location /admin {
+        alias /usr/share/webapps/headscale-admin;
+        index index.html;
+    }
+
+And for using headscale-admin you need create api key in your headscale:
+
+# headscale apikeys create --expiration 90d
+
+INFO
+}
+

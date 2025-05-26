@@ -1,0 +1,15 @@
+pkgbase = headscale-admin
+	pkgdesc = headscale-admin is meant to be a simple, modern, and useful web interface for juanfont/headscale - An open source, self-hosted implementation of the Tailscale control server.
+	pkgver = 0.25.6
+	pkgrel = 1
+	url = https://github.com/GoodiesHQ/headscale-admin
+	install = headscale-admin.install
+	arch = any
+	license = MIT
+	makedepends = nodejs
+	makedepends = npm
+	optdepends = nginx: reverse-proxy
+	source = headscale-admin-0.25.6.tar.gz::https://github.com/GoodiesHQ/headscale-admin/archive/refs/tags/v0.25.6.tar.gz
+	sha512sums = 6b21eacb120571017d8459cd3d05f126d0e89c60389ac175a61826ff7acfe7e25709f0fa89b5811b509b7d82834369ed1a6828ddf45dd282c1368fc7bd84d94c
+
+pkgname = headscale-admin
