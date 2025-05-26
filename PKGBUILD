@@ -15,13 +15,13 @@ source=("blaadpapers-0.0.7.tar.gz::https://github.com/Blaadick/BlaadPapers/archi
 sha256sums=("fe6df0ca2933fa1bd78c9854ac6979fa2a5050933362a37fcf18bdaca231bf26")
 
 build() {
-    cd "BlaadPapers-$pkgver"
+    cd "$_reponame-$pkgver"
     cmake -B build -G Ninja -Wno-dev
     cmake --build build
 }
 
 package() {
-    cd "BlaadPapers-$pkgver"
+    cd "$_reponame-$pkgver"
 
     install -Dm755 "./build/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "./res/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
