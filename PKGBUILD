@@ -1,5 +1,6 @@
+# Maintainer: tosterlolz <me@toster.lol>
 pkgname=clown-git
-pkgver=never.gonna.give.you.up
+pkgver=latest
 pkgrel=1
 pkgdesc="Simple build automation tool using TOML (Clownfile) written in Rust (git HEAD)"
 arch=('x86_64')
