@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo')
 optdepends=('dunst: notificador via notify-send para Dunst')
 
 source=(
-  "term_planner-0.1.3.tar.gz"
+  "term_planner-${pkgver}.tar.gz::https://github.com/Mateus-Lacerda/term_planner/archive/refs/tags/v${pkgver}.tar.gz"
   "term_planner-notify.service"
   "term_planner-notify.timer"
   "LICENSE"
