@@ -57,7 +57,7 @@ build() {
     cd "$srcdir/$pkgname"
 	git checkout 0.19.0
     # export PKG_CONFIG_PATH="/usr/lib/wlroots0.17/pkgconfig/"
-    meson setup --buildtype=release --prefix /usr "$srcdir/build"
+    meson setup --buildtype=debug --prefix /usr "$srcdir/build"
     ninja -C "$srcdir/build"
 }
 
