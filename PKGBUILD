@@ -1,7 +1,7 @@
 # Maintainer: Mateus Honorato
 
 pkgname=uefitool-bin
-pkgver=A69
+pkgver=A71
 pkgrel=1
 pkgdesc='UEFI firmware image viewer and editor'
 arch=('x86_64')
@@ -22,9 +22,9 @@ source=(
   "uefitool_512x512.png"
 )
 sha256sums=(
-  '3967a9c2cbbb5920afe8fb3fc4c95ae35107cfe1d48be073d2df4fccce836eea'
-  'a1f43b0a687e7b0d8d9eac2ed83a51260c6a5d007effe47ebb6a491f7cf9902a'
-  'a0fb4a76fe9118e054d7f07a54c72908b4c324a54251714f12807f16ded04fc9'
+  '55cf07b59fb5bf7d219851d4e4418bf75988d959491f9bea7254cb0e983e19ea'
+  '19d7031edb5abc2777a04a6fd0ebb09d4ec446ae88b0f074683590e8ebd14ca5'
+  'a163db8e3898a4d02f09f0b89a4ff931180bf201941d1e556e76a3aae92daa57'
   'bb0d0c10ff1a860ded6c2f2c09d3aa3fe8f7ef77ecd88b42a4cf893f8d8cfc5b'
   '9b6bce56fcccea4104642c6c8d393e6043671a8fd45b1c7bf8495407b4ad206a'
   'ed001d549f96e142fd609e9a89d3482702d9d37abfa3f6a39cfa0fd2a9b36335'
