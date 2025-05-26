@@ -1,13 +1,13 @@
 pkgbase = squawk-cli
 	pkgdesc = Linter for PostgreSQL, focused on migrations
-	pkgver = 2.7.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://squawkhq.com/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
 	options = !lto
-	source = https://github.com/sbdchd/squawk/archive/refs/tags/v2.7.0.tar.gz
-	sha256sums = e318f21c05bd317da5f87cff5204dc9ffd86099187debaf28928f2eb2b0decdf
+	source = https://github.com/sbdchd/squawk/archive/refs/tags/v2.9.0.tar.gz
+	sha256sums = 49ae86bb44af731ff0fc886370ef9e87fd2e7efa763ab9561e57f7e77a39cb0e
 
 pkgname = squawk-cli
