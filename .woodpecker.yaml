@@ -1,0 +1,31 @@
+# Woodpecker CI definition
+# - build binary from latest git commit
+# - test binary run
+# https://codeberg.org/tuxxx/nzb-monkey-go-git
+
+when:
+  - event: cron
+    cron: daily-build
+  - event: manual
+  - event: pull_request
+
+steps:
+  - name: build-and-test
+    image: archlinux:latest
+    commands:
+      # Install all required tools
+      - pacman -Syu --noconfirm --needed git base-devel jq pacman-contrib curl sudo xdg-utils
+      # Allow broken git ownerships
+      - git config --global --add safe.directory "$(pwd)"
+      # Create build user
+      - useradd -m -G wheel builduser
+      - "echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
+      - chown -R builduser:builduser .
+      # Configure git for builduser
+      - sudo -u builduser git config --global user.name "Woodpecker CI"
+      - sudo -u builduser git config --global user.email "ci@codeberg.org"
+      # Build and test package
+      - echo "Building and testing package"
+      - sudo -u builduser mkdir -p /home/builduser/.config
+      - sudo -u builduser makepkg -si --noconfirm
+      - sudo -u builduser nzb-monkey-go --register
