@@ -2,12 +2,12 @@
 pkgname=dpsprep-git
 _pkgbasename="${pkgname%-git}"
 pkgver=2.2.14
-pkgrel=1
+pkgrel=2
 pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
 license=('GPL-3.0-only')
-provides=("$_pkgbasename=$pkgver")
+provides=("$_pkgbasename=$pkgver", "$pkgname=$pkgver") # The latter is for compatibility; it is to be removed at some point
 conflicts=("$_pkgbasename")
 checkdepends=(python ruff mypy python-types-pillow python-types-fpdf2 python-pytest python-pytest-image-diff)
 makedepends=(git python-build python-installer python-wheel python-poetry)
@@ -23,8 +23,8 @@ _fullsrcdir() {
 }
 
 pkgver() {
-  cd "$(_fullsrcdir)"
-  git describe --tags | cut --characters 2-
+    cd "$(_fullsrcdir)"
+    git describe --tags | cut --characters 2-
 }
 
 check() {
