@@ -1,0 +1,17 @@
+pkgbase = python-gradio-log
+	pkgdesc = A Log component for Gradio which can easily show some log file in the interface.
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/louis-she/gradio-log
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-gradio>=4.0
+	depends = python-gradio<6.0
+	source = python-gradio-log-0.0.8.tar.gz::https://files.pythonhosted.org/packages/source/g/gradio_log/gradio_log-0.0.8.tar.gz
+	sha512sums = 8e253f29be2da88eeeb1fc048a571baf672e6c9d66a612d8f67f516a079ef10d27188c500b45ff8fa785a369545450e0e14045c4b6ed56b314d7ea30c70de28e
+
+pkgname = python-gradio-log
