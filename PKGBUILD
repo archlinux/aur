@@ -137,9 +137,11 @@ makedepends=(bliss
 conflicts=(sagemath)
 provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
-        latte-count.patch)
+        latte-count.patch
+        cython-3.1.patch)
 sha256sums=('SKIP'
-            'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09')
+            'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09'
+            'fc35f7f2ff9da7b80b7374479bc879e0f524ede253973075adeff60bdd44e895')
 
 pkgver() {
   cd sage
@@ -151,6 +153,8 @@ prepare(){
 
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
+# support cython 3.1
+  patch -p1 -i ../cython-3.1.patch
 }
 
 build() {
