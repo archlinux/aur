@@ -27,6 +27,9 @@ checkdepends=('python-pytest-mock'
               'python-regions')   # cdshealpix, matplotlib, networkx already in makedepends
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/cds-astro/mocpy/archive/refs/tags/v${pkgver}.tar.gz")
+#       "cutout-CDS_P_2MASS_K.fits::http://alasky.u-strasbg.fr/hips-image-services/hips2fits?hips=CDS%2FP%2F2MASS%2FK&width=1200&height=700&fov=30&projection=TAN&coordsys=galactic&rotation_angle=0.0&object=gal%20center&format=fits"
+#       "http://skies.esac.esa.int/Spitzer/IRAC1_bright_ISM/Moc.fits"
+#       'doc-use-local-fits.patch')
 md5sums=('ddb9439c4d2f9f5f7ec912078158aaea')
 
 get_pyver() {
@@ -37,6 +40,8 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     sed -i "s:parent$:parent.parent:" python/mocpy/tests/test_sfmoc.py
+#   cp ${srcdir}/*.fits docs/examples
+#   patch -Np1 -i "${srcdir}/doc-use-local-fits.patch"
 }
 
 build() {

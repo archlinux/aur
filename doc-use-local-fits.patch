@@ -1,0 +1,26 @@
+--- a/docs/examples/filter_image_pixels.py	2025-05-26 19:26:56.000000000 +0800
++++ b/docs/examples/filter_image_pixels.py	2025-05-27 14:03:08.062545039 +0800
+@@ -6,13 +6,17 @@
+ from astropy.wcs import WCS as WCS
+ from mocpy import MOC
+ 
+-# load 2MASS cutout covering the galactic plane
+-hdu = fits.open(
+-    "http://alasky.u-strasbg.fr/hips-image-services/hips2fits?hips=CDS%2FP%2F2MASS%2FK&width=1200&height=700&fov=30&projection=TAN&coordsys=galactic&rotation_angle=0.0&object=gal%20center&format=fits",
+-)
++# load 2MASS cutout covering the galactic plane. Use local fits if no network while doc building.
++try:
++    hdu = fits.open(
++        "http://alasky.u-strasbg.fr/hips-image-services/hips2fits?hips=CDS%2FP%2F2MASS%2FK&width=1200&height=700&fov=30&projection=TAN&coordsys=galactic&rotation_angle=0.0&object=gal%20center&format=fits",
++    )
++except Exception:
++    hdu = fits.open('cutout-CDS_P_2MASS_K.fits')
+ 
+-# load Spitzer MOC
+-moc = MOC.from_fits("http://skies.esac.esa.int/Spitzer/IRAC1_bright_ISM/Moc.fits")
++# load Spitzer MOC. Use local fits if no network while doc building.
++try: moc = MOC.from_fits("http://skies.esac.esa.int/Spitzer/IRAC1_bright_ISM/Moc.fits")
++except Exception: moc = MOC.from_fits('Moc.fits')
+ 
+ # create WCS from 2MASS image header
+ twomass_wcs = WCS(header=hdu[0].header)
