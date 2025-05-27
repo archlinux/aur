@@ -1,0 +1,21 @@
+pkgbase = pdfkit-git
+	pkgdesc = Manage and modify PDF files quickly, securely, and mostly offline.(Use system-wide electron)
+	pkgver = 1.0.0.r0.gc199fe5
+	pkgrel = 1
+	url = https://github.com/gianlu15/PDFkit
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron35
+	provides = pdfkit=1.0.0
+	conflicts = pdfkit
+	source = pdfkit.git::git+https://github.com/gianlu15/PDFkit.git
+	source = pdfkit.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = pdfkit-git
