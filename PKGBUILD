@@ -1,7 +1,7 @@
 # Maintainer: Aaron Davidov <aaron.skib.aur@gmail.com>
 pkgname=skib
-pkgver=1.01
-pkgrel=2
+pkgver=1.002
+pkgrel=3
 pkgdesc="A simple light aur helper."
 arch=('x86_64')
 url="https://github.com/SP4RKGT/skib"
@@ -18,5 +18,5 @@ build() {
 
 package() {
 	cd "$pkgname"
-	sudo install -Dm755 main.sh.x 
+	sudo install -Dm755 main.sh.x /usr/bin/skib 
 }
