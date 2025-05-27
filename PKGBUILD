@@ -1,7 +1,7 @@
 # Maintainer: Filippo Falezza <filippo dot falezza at outlook dot it>
 
 pkgname='geant4-full'
-pkgver=11.3.1
+pkgver=11.3.2
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
@@ -50,7 +50,7 @@ source=(
   'geant4-full.install'
 )
 sha256sums=(
-  'c93ca996f6f35aa43f948ffcaba9603468df01deeb62f61c33ba769227c319fe'
+  '892aedd7425262a50ac3d3c7117d81c0c0da4b408c6880dbaf5478b9301e488c'
   '5fde7b80dcfa960407b1ecb2b2a2aa817250948cc32490d8ece48a5e5b4035c1'
 )
 install="geant4-full.install"
