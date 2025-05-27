@@ -1,23 +1,30 @@
-# Maintainer: JP-Ellis <josh@jpellis.me>
+# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
+# Contributor: JP-Ellis <josh@jpellis.me>
+
 pkgname=erigon-git
 _pkgname=${pkgname%-git}
-pkgver=2022.09.02+11
+pkgver=3.0.4+681
 pkgrel=1
 pkgdesc="Ethereum execution layer implementation in Go"
 arch=('x86_64')
-url="https://github.com/ledgerwatch/erigon"
+url="https://github.com/erigontech/erigon"
 license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-install="erigon-git.install"
-source=("git+https://github.com/ledgerwatch/erigon.git#branch=devel"
-        "ethereum-tests::git+https://github.com/ethereum/tests"
-        "erigon-git.install")
-sha256sums=('SKIP'
-            'SKIP'
-            'f9950a2111c57bac7be081768c2e58594df9d438b35cdc35ec0a54de81b82ff7')
+options=('!strip')  # Optional: keep debugging symbols
+source=("git+https://github.com/erigontech/erigon.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgname}"
+  local tag count hash
+  tag=$(git tag --sort=-v:refname | grep -E '^v?[0-9]+(\.[0-9]+)*$' | head -n1)
+  count=$(git rev-list --count "${tag}"..HEAD)
+  hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.%s" "${tag#v}" "$count" "$hash"
+}
 
 pkgver() {
   cd "${_pkgname}"
@@ -30,27 +37,25 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   git submodule init
-  git config submodule."tests".url "${srcdir}/ethereum-tests"
+  git submodule update --depth 1
 }
 
 build() {
   cd "${_pkgname}"
-
-  export CGO_LDFLAGS="$LDFLAGS"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOTMPDIR="${srcdir}/.gotmp"
+  mkdir -p "$GOTMPDIR"
   make all
 }
 
 package() {
-    cd ${_pkgname}
-
-    for binary in build/bin/*; do
-      filename=${binary##*/}
-      if [[ "${filename}" = "erigon" ]]; then
-        install -Dm755 "${binary}" "${pkgdir}/usr/bin/${filename}"
-      else
-        install -Dm755 "${binary}" "${pkgdir}/usr/bin/erigon-${filename}"
-      fi
-    done
+  cd "${_pkgname}/build/bin"
+  for bin in *; do
+    if [[ "$bin" == "erigon" ]]; then
+      install -Dm755 "$bin" "${pkgdir}/usr/bin/$bin"
+    else
+      install -Dm755 "$bin" "${pkgdir}/usr/bin/erigon-$bin"
+    fi
+  done
 }
 
-# vim:set ts=2 sw=2 et:
