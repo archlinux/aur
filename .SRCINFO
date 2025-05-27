@@ -14,6 +14,7 @@ pkgbase = nvidia-565xx
 	source = 0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch
 	source = remove-unused-field.patch
 	source = 120-nvidia-settings-change-desktop-paths.patch
+	source = nvidia-470xx-fix-linux-6.13.patch
 	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/565.77/NVIDIA-Linux-x86_64-565.77.run
 	sha512sums = 7ce9c263fbed2dfe81f83bc5c4f388f15f8473a7a45ce87a835d57398222d3499c6533aaa96c10e98c5b0ff236b8d2dcae953b814e5b96451985d858abc8f1aa
 	sha512sums = 4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499
@@ -23,6 +24,7 @@ pkgbase = nvidia-565xx
 	sha512sums = 6814990f8046759d35f724ac9114d7fa284710fd1ad8cca7e1a861ea54a72fe4f67b5614f157a911f5ecfa0c964fa989edc61c85b1cfef6428e0cd7cdeea856e
 	sha512sums = 91d454c3ac50978386fb1029b96973aa2078d30bbc2f0ec705e2740b18c6989cd130b34d23473ea2a30527fefda7f5f98c35729f9102f2bb2e8574692d75282b
 	sha512sums = 9ed1df30ba84e0d53192f2340850213662861f4fa3ae09f7a1018fc5c5bcfcb2765d54d5e9fb244e0e2cf34794e64ad89b81a6e279349247349d40915435e90e
+	sha512sums = 4992c7457d2fea3321d2ea9016e0da1cac5fb420b3f47f9ef04159afb57457ac3933ea8c7ab2bac4df4f83bead19be8655615bb8f6f07f00edbe5c63c77e00b6
 	sha512sums = 62a85223b1cbc00b65113235642a4a39eb8e78e085845e4c7d12abf916ea2c1d86030849040bba118ba6af56a1d0da073d4a96791674fc18d7154e55a3587b63
 
 pkgname = nvidia-565xx-utils
