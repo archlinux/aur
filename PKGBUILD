@@ -2,9 +2,9 @@
 # Poached from Arch Strike: ArchStrike <team@archstrike.org>
 
 pkgname=rifiuti2
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
-pkgdesc="A rewrite of rifiuti, a great tool from Foundstone folks for analyzing Windows Recycle Bin INFO2 file."
+pkgdesc="Tool foranalyzing Windows Recycle Bin INFO2 file."
 url="https://github.com/abelcheung/rifiuti2"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('custom:BSD')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'ninja')
 conflicts=('rifiuti')
 options=('!emptydirs')
 source=("https://github.com/abelcheung/rifiuti2/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha512sums=('1c08442a7f112110c66adc8c6b5e81776a35bf105d4089a5c3f6c0007b55138ef2d5a492b7cb8498b75afc7d9ada649fc58a86bfe1e631abc8306378d6fdcf25')
+sha512sums=('c378523e5929eba794b004ee306c22a2b99625bfdfae1b1603cd82bd427aeb1063fc9a0d16535af8d0df9abdbbd7dd26a232e7d25300fe2e24cc8160cb20b3f3')
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
