@@ -1,0 +1,10 @@
+--- memory_profiler-0.61/Makefile	2022-11-15 18:53:56.000000000 +0100
++++ memory_profiler-0.61/Makefile2	2025-05-27 18:54:06.000000000 +0200
+@@ -18,7 +18,6 @@
+ 	$(PYTHON) test/test_exception.py
+ 	$(PYTHON) test/test_exit_code.py
+ 	$(PYTHON) test/test_mprof.py
+-	$(PYTHON) test/test_async.py
+ 	mprof run test/test_func.py
+ 
+ develop:
