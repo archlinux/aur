@@ -1,0 +1,16 @@
+pkgbase = python-art-git
+	pkgdesc = ASCII art library for Python
+	pkgver = r2176.3917a898faeb7490d3043a1158b13a5d9b51e273
+	pkgrel = 1
+	url = https://github.com/sepandhaghighi/art/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = git+https://github.com/sepandhaghighi/art/
+	b2sums = SKIP
+
+pkgname = python-art-git
