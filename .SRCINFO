@@ -1,0 +1,13 @@
+pkgbase = bazi-cli
+	pkgdesc = 一个中国传统命理（八字）命盘分析的命令行程序
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Paul-sinbud2004/bazi-cli
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	source = bazi-cli::git+https://github.com/Paul-sinbud2004/Bazi-cli.git
+	sha256sums = SKIP
+
+pkgname = bazi-cli
