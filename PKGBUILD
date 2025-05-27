@@ -1,7 +1,7 @@
 
 pkgname=python-art
 _name=${pkgname#python-}
-pkgver=6.1
+pkgver=6.5
 pkgrel=1
 pkgdesc="ASCII art library for Python"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(
     'python-wheel'
 )
 source=("${_name}-${pkgver}.tar.gz::https://github.com/sepandhaghighi/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('f7f27cdad10640a87b0e4fcbf8f652b0f792e81d944e1f31fcc7119e706952522e1f61c928f4de451cd8b418f01456ba17917ed604e7ed63ff845d9fb43b2cd5')
+b2sums=('93559a0449160f5fc04948690a025a6edf9ad064f7e674bc93f5da776dc4970ce9a089718b724a38e03cc96588614431dc2dd873376f52d243f853325ba82d67')
 
 build() {
     cd "${_name}-${pkgver}"
