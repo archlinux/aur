@@ -1,6 +1,6 @@
 pkgbase = pyfa-appimage
 	pkgdesc = EVE Online Fitting Assistant
-	pkgver = 2.62.3
+	pkgver = 2.63.0
 	pkgrel = 1
 	url = https://github.com/pyfa-org/Pyfa
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = pyfa-appimage
 	depends = webkit2gtk
 	conflicts = pyfa
 	options = !strip
-	source = Pyfa-2.62.3.AppImage::https://github.com/pyfa-org/Pyfa/releases/download/v2.62.3/pyfa-v2.62.3-linux.AppImage
+	source = Pyfa-2.63.0.AppImage::https://github.com/pyfa-org/Pyfa/releases/download/v2.63.0/pyfa-v2.63.0-linux.AppImage
 	source = pyfa.desktop
-	sha256sums = 734ce5589d7e096a94236480973cb6ebc80c7fd2680dd2175cc82699dcafad9d
+	sha256sums = f40735e61c38dba39440099f3258d11857e38f0bb7880d7aef7057c4afa25e05
 	sha256sums = 9a82fbdff39e873015a08ef6288cbc55695407952d366a5994c63acc536b13ba
 
 pkgname = pyfa-appimage
