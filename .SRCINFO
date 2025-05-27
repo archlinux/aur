@@ -7,8 +7,9 @@ pkgbase = yappus
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	makedepends = oniguruma
 	depends = gcc-libs
-  depends = oniguruma
+	depends = oniguruma
 	source = git+https://github.com/MostlyKIGuess/Yappus-Term.git
 	sha256sums = SKIP
 

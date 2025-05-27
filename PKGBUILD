@@ -7,12 +7,14 @@ arch=('x86_64')
 url="https://github.com/MostlyKIGuess/Yappus-Term"
 license=('MIT')
 depends=('gcc-libs' 'oniguruma')
-makedepends=('rust' 'cargo')
+makedepends=('rust' 'cargo' 'oniguruma')
 source=("git+https://github.com/MostlyKIGuess/Yappus-Term.git")
 sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/Yappus-Term"
+  export ONIG_SYSTEM_LIBONIG=1
+  export RUSTFLAGS="${RUSTFLAGS} -Clink-arg=-lonig"
   cargo build --release
 }
 
