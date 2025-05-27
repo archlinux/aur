@@ -1,4 +1,5 @@
 pkgbase = qbineditor
+    pkgname = qbineditor
     pkgdesc = Binary file editor written in Qt. Provides HEX, ASCII and BIN views with integrated search.
     pkgver = 1.0
     pkgrel = 1
