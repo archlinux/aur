@@ -3,7 +3,7 @@
 
 pkgname=erigon-git
 _pkgname=${pkgname%-git}
-pkgver=3.0.4+681
+pkgver=3.0.4.r682.110004e1f1
 pkgrel=1
 pkgdesc="Ethereum execution layer implementation in Go"
 arch=('x86_64')
@@ -20,18 +20,12 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${_pkgname}"
   local tag count hash
-  tag=$(git tag --sort=-v:refname | grep -E '^v?[0-9]+(\.[0-9]+)*$' | head -n1)
+
+  tag=$(git tag | grep -E '^v[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}$' | sort -V | tail -n1)
   count=$(git rev-list --count "${tag}"..HEAD)
   hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.%s" "${tag#v}" "$count" "$hash"
-}
 
-pkgver() {
-  cd "${_pkgname}"
-  # For some reason, the standard way of getting the latest tag doesn't work
-  tag=$(git describe --tags $(git rev-list --tags --max-count=1))
-  commits=$(git rev-list --count "$tag"..)
-  echo "${tag#v}+${commits}" | sed 's/-/./g'
+  printf "%s.r%s.%s" "${tag#v}" "$count" "$hash"
 }
 
 prepare() {
