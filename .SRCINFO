@@ -1,13 +1,21 @@
 pkgbase = passphrase
-	pkgdesc = Small, simple passphrase generator, written in Zig
-	pkgver = 1.6
+	pkgdesc = Small, simple passphrase generator
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://git.sr.ht/~alva/passphrase
-	arch = any
+	arch = x86_64
 	license = MIT
-	makedepends = zig>=0.10.1
-	makedepends = git
-	source = git+https://git.sr.ht/~alva/passphrase#tag=1.6
-	sha256sums = SKIP
+	makedepends = zig>=0.13
+	makedepends = zig<0.14
+	noextract = zig-clap-0.9.1.tar.gz
+	noextract = zig-zg-0a9c8f1418ecd54ffaabf4b5256e2d77502700ba.tar.gz
+	source = passphrase-2.1.tar.gz::https://git.sr.ht/~alva/passphrase/archive/2.1.tar.gz
+	source = zig-clap-0.9.1.tar.gz::https://github.com/Hejsil/zig-clap/archive/refs/tags/0.9.1.tar.gz
+	source = zig-zg-0a9c8f1418ecd54ffaabf4b5256e2d77502700ba.tar.gz::https://codeberg.org/dude_the_builder/zg/archive/0a9c8f1418ecd54ffaabf4b5256e2d77502700ba.tar.gz
+	source = passphrase_zig-clap091.patch
+	b2sums = a01e346b040be6c62d945adfa95283dd8f69c5ef5f9d593488b1de0b1f01c159e424de261b3460547ce655d433a42cdfc00f04850931a4b9c39bcab5620f693d
+	b2sums = 685208b8cb08070304c44c8a1a294d53e7eb4045585a65d5ea3297c1d50157ec8cec06c1b21e3476e3cea0518945bc77b1cf4fe349f11ddcf9aa80dbfbd87788
+	b2sums = 36c8e689c78e95aa5025d09c7baf9f83248fade597bd602d623f0ea9739e5db470fcbd35e0517b7119bae8dfbb023310264c6f280ec5633930f62577656e10f0
+	b2sums = 68f7ff32ff81113c8376f5aa4326125c8052154a9fa6a95c7bfb065695e58f9beb2a5badb7a9d3377115a67804b473d460b72ac540cd6f29484705f338c64547
 
 pkgname = passphrase

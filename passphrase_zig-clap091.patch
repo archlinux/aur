@@ -1,0 +1,11 @@
+--- a/build.zig.zon
++++ b/build.zig.zon
+@@ -5,7 +5,7 @@
+     .dependencies = .{
+         .clap = .{
+             .url = "https://github.com/Hejsil/zig-clap/archive/560c8dd.tar.gz",
+-            .hash = "12200abadc141099ff2ba5098f7eca9bf84d548dd92ec5827ef323d813d59b049780",
++            .hash = "122062d301a203d003547b414237229b09a7980095061697349f8bef41be9c30266b",
+             .lazy = true,
+         },
+         .zg = .{

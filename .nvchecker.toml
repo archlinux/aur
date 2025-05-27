@@ -1,0 +1,4 @@
+[passphrase]
+source = "git"
+git = "https://git.sr.ht/~alva/passphrase"
+prefix = "v"
