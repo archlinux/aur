@@ -13,11 +13,11 @@ arch=('x86_64')
 license=('LicenseRef-zoom')
 url="https://zoom.us/"
 makedepends=(patchelf binutils)
-optdepends=('qt5-wayland'
+optdepends=('qt5-wayland: zoomus.conf xwayland=false'
 	'qt5-webengine: SSO login'
 	'xdg-desktop-portal-impl: Screen sharing,etc... for Wayland'
 	'qt5-'{3d,x11extras,multimedia,imageformats,remoteobjects}': Unused?'
-	${pkgbase}-cef': Webview')
+	${pkgbase}-cef': zoomus.conf disableCef=false')
 options=(!strip emptydirs)
 provides=(zoom)
 conflicts=(zoom)

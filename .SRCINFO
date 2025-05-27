@@ -6,7 +6,7 @@ pkgbase = zoom-system-qt
 	license = LicenseRef-zoom
 	makedepends = patchelf
 	makedepends = binutils
-	optdepends = qt5-wayland
+	optdepends = qt5-wayland: zoomus.conf xwayland=false
 	optdepends = qt5-webengine: SSO login
 	optdepends = xdg-desktop-portal-impl: Screen sharing,etc... for Wayland
 	optdepends = qt5-3d: Unused?
@@ -14,7 +14,7 @@ pkgbase = zoom-system-qt
 	optdepends = qt5-multimedia: Unused?
 	optdepends = qt5-imageformats: Unused?
 	optdepends = qt5-remoteobjects: Unused?
-	optdepends = zoom-system-qt-cef: Webview
+	optdepends = zoom-system-qt-cef: zoomus.conf disableCef=false
 	provides = zoom
 	conflicts = zoom
 	options = !strip
