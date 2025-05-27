@@ -5,7 +5,7 @@
 
 pkgname=idris2
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Functional Programming Language with Dependent Types"
 url="https://idris-lang.github.io/"
 license=('BSD-3-Clause')
@@ -49,7 +49,7 @@ check() {
     export CFLAGS="-Wno-error=unused-variable ${CFLAGS}"
 
     PATH="$srcdir/$_srcname/build/exec:$PATH" \
-        make test INTERACTIVE=""
+        LC_ALL=C make test INTERACTIVE=""
 }
 
 package() {
@@ -84,5 +84,5 @@ package() {
     # Put a symlink to executable in the expected place
     # (see: man 7 file-hierarchy)
     mkdir "$pkgdir/usr/bin"
-    ln -s "$pkgdir/usr/lib/bin/idris2" "$pkgdir/usr/bin/idris2"
+    ln -s "/usr/lib/bin/idris2" "$pkgdir/usr/bin/idris2"
 }

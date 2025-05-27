@@ -1,7 +1,7 @@
 pkgbase = idris2
 	pkgdesc = Functional Programming Language with Dependent Types
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://idris-lang.github.io/
 	arch = x86_64
 	license = BSD-3-Clause
