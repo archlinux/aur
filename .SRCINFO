@@ -9,7 +9,6 @@ pkgbase = cup-docker
 	makedepends = cargo
 	makedepends = bun
 	makedepends = typescript
-	makedepends = cross
 	options = !lto
 	source = cup-3.4.0.tar.gz::https://github.com/sergi0g/cup/archive/refs/tags/v3.4.0.tar.gz
 	sha256sums = b4dbb0377beabeb061d124a4b5594abdecc7f9f9ecca178cca16397770d488b3
