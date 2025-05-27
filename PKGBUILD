@@ -1,13 +1,13 @@
 # Maintainer: Not_Noob <magnitudetransparentcouncil@duck.com>
 pkgname=octarine-bin
 pkgdesc="Octarine is an opinionated tool for taking notes, tasks and organising your thoughts."
-pkgver=0.26.0
+pkgver=0.26.1
 pkgrel=1
 arch=("x86_64")
 url="https://octarine.app"
 source=("https://pub-3d35bc018fc54f11bde129e3e73e8002.r2.dev/${pkgver}/linux/Octarine-bin-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=("gtk3" "libappindicator-gtk3" "webkit2gtk-4.1" "xdotool")
-md5sums=("29494f5ba66228ac0ab6c1d055b60b97")
+md5sums=("SKIP")
 options=(!debug)
 
 prepare() {
