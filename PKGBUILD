@@ -1,7 +1,7 @@
 # Maintainer: DreamMaoMao <maoopzopaasnmakslpo@gmail.com>
 
 pkgname=maomaowm-git
-pkgver=r166.20bd984
+pkgver=r166.9469b69f
 pkgrel=2
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/maomaowm"
