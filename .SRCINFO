@@ -1,6 +1,6 @@
 pkgbase = bassboom-1-git
 	pkgdesc = Cross-platform music player written in C#
-	pkgver = v0.1.12.r0.1dc618a
+	pkgver = v0.1.13.r29.cec2bdb
 	pkgrel = 1
 	url = https://aptivi.github.io
 	arch = x86_64
