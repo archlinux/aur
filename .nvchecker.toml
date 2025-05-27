@@ -1,5 +1,5 @@
 [stabilitymatrix-git]
-source="github-graphql"
+source="github"
 github="LykosAI/StabilityMatrix"
 use_latest_release=true
 use_commit_number=true
