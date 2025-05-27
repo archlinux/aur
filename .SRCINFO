@@ -1,0 +1,23 @@
+pkgbase = klive-ide-bin
+	pkgdesc = Versatile emulator and developer environment for all Sinclair machines.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.32.3
+	pkgrel = 1
+	url = https://github.com/Dotneteer/kliveide
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	makedepends = fuse2
+	depends = electron35
+	provides = klive-ide=0.32.3
+	conflicts = klive-ide
+	source = LICENSE-0.32.3::https://raw.githubusercontent.com/Dotneteer/kliveide/v0.32.3/LICENSE
+	source = klive-ide.sh
+	sha256sums = ad04d247c1ea46d2a869ae87c1fc1dc36c6b2feb60d0b9f6c155a4dfe7ca7f34
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = klive-ide-0.32.3-aarch64.AppImage::https://github.com/Dotneteer/kliveide/releases/download/v0.32.3/KliveIdeSetup-0.32.3-arm64.AppImage
+	sha256sums_aarch64 = e64c13a91f8b2314360f26c1488e439909aba7b8402f3d6edf351e30c07314e3
+	source_x86_64 = klive-ide-0.32.3-x86_64.AppImage::https://github.com/Dotneteer/kliveide/releases/download/v0.32.3/KliveIdeSetup-0.32.3-x86_64.AppImage
+	sha256sums_x86_64 = 521434da1f3156256bf84370498e46b1f000f7ed6a407affdcc2364ee864ad42
+
+pkgname = klive-ide-bin
