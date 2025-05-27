@@ -4,7 +4,7 @@
 _slug=dbRackSequencer
 _name=dbRackSequencer
 pkgname=vcvrack-dbrack-sequencer
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc='dbRack sequencer VCV Rack modules'
 arch=(aarch64 x86_64)
@@ -14,7 +14,7 @@ groups=(pro-audio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(git simde zstd)
 source=("git+https://github.com/docb/$_name#tag=v$pkgver")
-sha256sums=('aa3d08f1cb251ef78f7e9d6e7f6da8f8fc7e5cfd39ddb05ef4f87a16bf5d4c4b')
+sha256sums=('1519e3a74e7611429b05bf16f2d3b46ca179d6968bcaaf58e911554dcd129928')
 
 prepare() {
   cd $_name

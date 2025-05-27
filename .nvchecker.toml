@@ -3,3 +3,4 @@ source = "github"
 github = "docb/dbRackSequencer"
 use_max_tag = true
 prefix = "v"
+include_regex = '^v[\.\d]+$'
