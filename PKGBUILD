@@ -19,6 +19,7 @@ depends=(
     'upower'
     'gvfs'
     'ttf-jetbrains-mono-nerd'
+    'gtksourceview3'
     # aur:
     'aylurs-gtk-shell-git'
 )

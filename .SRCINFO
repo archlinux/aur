@@ -18,6 +18,7 @@ pkgbase = ags-hyprpanel-git
 	depends = upower
 	depends = gvfs
 	depends = ttf-jetbrains-mono-nerd
+	depends = gtksourceview3
 	depends = aylurs-gtk-shell-git
 	optdepends = python: GPU usage tracking (NVidia only)
 	optdepends = python-gpustat: GPU usage tracking (NVidia only)
