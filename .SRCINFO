@@ -1,6 +1,6 @@
 pkgbase = yappus
 	pkgdesc = A terminal interface for your AI terminal assistant.
-	pkgver = 0.2.0
+	pkgver = 1.1.1
 	pkgrel = 2
 	url = https://github.com/MostlyKIGuess/Yappus-Term
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = yappus
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
+  depends = oniguruma
 	source = git+https://github.com/MostlyKIGuess/Yappus-Term.git
 	sha256sums = SKIP
 
