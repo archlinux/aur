@@ -1,13 +1,13 @@
 # Maintainer: kaypirus <kaypirus@protonmail.com>
 pkgname=dgdemux-cli-bin
-pkgver=1.0.0.58
+pkgver=1.0.0.78
 pkgrel=1
 pkgdesc="Standalone demuxer for BluRay/UHD disks - CLI only"
 arch=('x86_64')
 url="https://www.rationalqm.us/dgdemux/dgdemux.html"
 license=('custom')
-source=("${pkgname}-${pkgver}.tar.gz::https://www.rationalqm.us/dgdemux/binaries/dgdemux_linux_${pkgver}.tar.gz")
-sha256sums=('e16b4b4fee9275427116d45fa6f995500934e829ecb040daeeb23b0a6dac3260')
+source=("${pkgname}-${pkgver}.zip::https://www.rationalqm.us/dgdemux/binaries/dgdemux_linux_${pkgver}.zip")
+sha256sums=('05e1f44226d112d20b0ab4b76283e7eb52e3c7c43f94288a42415f50c2c84da4')
 
 prepare() {
 	cd "${srcdir}"
@@ -19,9 +19,18 @@ prepare() {
 package() {
 	cd "${srcdir}"
 
-	# Install the executable
+	# Install the dgdemux
 	install -Dm755 dgdemux "${pkgdir}/usr/bin/dgdemux-cli"
 
-	# Install the license
+        # Install the dovi_tool
+        install -Dm755 dovi_tool "${pkgdir}/usr/bin/dovi_tool"
+
+        # Install the dgmvccombine
+        install -Dm755 dgmvccombine "${pkgdir}/usr/bin/dgmvccombine"
+
+        # Install help
+        install -Dm755 DGDemux.txt "${pkgdir}/usr/bin/DGDemux.txt"
+
+	# Install license
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
