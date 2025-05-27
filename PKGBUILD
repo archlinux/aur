@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jlivertool
 _pkgname=JLiverTool
-pkgver=2.4.0
+pkgver=2.4.1
 _electronversion=35
 _nodeversion=23
 pkgrel=1
@@ -14,7 +14,6 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'java-runtime'
 )
 makedepends=(
     'npm'
@@ -27,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('c094fd40a9ede920f5e3cc14c4345ec8281e5746532062b4ed0a3ca3cd28c794'
+sha256sums=('c23933350f4f2b9edab5f2300ab8e9ae8ec8bab2a0a59fba36d460e6674eb4c3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
