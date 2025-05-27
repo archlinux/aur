@@ -4,17 +4,17 @@
 
 _name=weblink
 pkgname=$_name
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Web browser gateway'
 arch=(any)
 url='https://github.com/soylent/weblink'
 license=()
-depends=('ruby' 'ruby-em-websocket' 'ruby-webrick')
+depends=('ruby' 'ruby-em-websocket' 'ruby-base64')
 provides=(ruby-$_name)
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('7c2ee7b1135f086689ddcf7b8a6d311d6b7ca69c212918ffd8086d1f8724bdc1')
+sha256sums=('7e33ec90fa9ce1784479804690e885c65c220ee6c3f7e894dee99e56723f39e7')
 
 prepare() {
   cd "${_name}-${pkgver}"
