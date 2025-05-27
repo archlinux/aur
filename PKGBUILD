@@ -4,7 +4,7 @@
 
 pkgname=dms
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="UPnP DLNA Digital Media Server"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/anacrolix/dms/"
@@ -17,7 +17,7 @@ sha256sums=('dfcec174db95d8115be61d318896ab11fddd4ab1d93fd9d2b2c75012af95f793')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  # I make that it will be used common place for modcache
+  # I comment export local GOPATH. It will be used common GOPATH for modcache.
   # Use "go clean -modcache" for cleaning 
   # export GOPATH="$SRCDEST/go-modules"
 
