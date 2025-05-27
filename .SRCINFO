@@ -1,7 +1,7 @@
 pkgbase = cpp-jwt
 	pkgdesc = JSON Web Token library for C++
-	pkgver = 1.4
-	pkgrel = 3
+	pkgver = 1.5
+	pkgrel = 1
 	url = https://github.com/arun11299/cpp-jwt
 	arch = any
 	license = MIT
@@ -9,9 +9,9 @@ pkgbase = cpp-jwt
 	makedepends = cmake
 	depends = nlohmann-json
 	depends = openssl
-	provides = cpp-jwt=1.4
+	provides = cpp-jwt=1.5
 	conflicts = cpp-jwt-git
-	source = https://github.com/arun11299/cpp-jwt/archive/refs/tags/v1.4.tar.gz
-	b2sums = 5ded054cca527b803507d49edac82946cea2e9458ca783c5e693bba18313db1aba5c021eb79447bd4d2a077cb3483b9cf11e3119b9920eb4a9b35c43ea8a188e
+	source = https://github.com/arun11299/cpp-jwt/archive/refs/tags/v1.5.tar.gz
+	b2sums = 6df13d10b1f20c9422bf2da5e87f031e6c4ede655c550c5f6682f0010e3a4008777cffd29e57d76537d6bc2da88d85ae1b1bc719bd2e25ee23afbb28622b4152
 
 pkgname = cpp-jwt
