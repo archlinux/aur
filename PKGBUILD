@@ -1,6 +1,6 @@
 # Maintainer: Aptivi <ceo at aptivi dot anonaddy dot com>
 pkgname=bassboom-2
-pkgver=1.0.2.0+0.2.8.0
+pkgver=1.0.2.0+0.2.9.0
 pkgrel=1
 pkgdesc="Cross-platform music player written in C#"
 arch=('x86_64' 'aarch64')
@@ -14,21 +14,19 @@ optdepends=('jack2: Jack support for BassBoom'
 			'sdl2: SDL support for BassBoom'
 			'libpulse: PulseAudio support for BassBoom')
 options=('!strip')
-source=("${pkgname}::git+https://github.com/Aptivi/BassBoom#tag=v0.2.8")
+source=("${pkgname}::git+https://github.com/Aptivi/BassBoom#tag=v0.2.9")
 sha256sums=('SKIP')
 
 prepare() {
 	cd "${pkgname}"
-	HOME=`pwd`/nuget DOTNET_CLI_TELEMETRY_OPTOUT=1 dotnet restore BassBoom.sln
-	mkdir -p deps
-	cp nuget/.nuget/packages/*/*/*.nupkg deps/
-	rm -rf nuget
-	cp vnd/OfflineNuGet.config ./NuGet.config
+	make init-offline
+	make clean
+	git submodule update --init --remote
 }
 
 build() {
 	cd "${pkgname}"
-	HOME="$srcdir/homedir" DOTNET_CLI_TELEMETRY_OPTOUT=1 make all-offline
+	make all-offline
 }
 
 package() {
