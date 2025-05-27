@@ -1,13 +1,15 @@
-# Maintainer: Davide Poderini <davide at poder dot in>
+# Maintainer: Daniel Fichtinger <daniel at ficd dot ca>
+# Maintainer: Dimitri Sabadie <hadronized at strongly-typed-thoughts dot net>
+# Contributor: Davide Poderini <davide at poder dot in>
 
 pkgname=kak-tree-sitter
-pkgver=0.6.0
+pkgver=2.0.0
 _ctlname=ktsctl
-_ctlver=0.4.0
+_ctlver=2.0.0
 pkgrel=1
-pkgdesc='Server between Kakoune and tree-sitter'
+pkgdesc='tree-sitter meets Kakoune '
 arch=('x86_64')
-url="https://git.sr.ht/~hadronized/${pkgname}"
+url="https://git.sr.ht/~hadronized/kak-tree-sitter"
 license=('BSD-3-Clause')
 depends=('kakoune')
 makedepends=('cargo')
@@ -16,12 +18,12 @@ install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate    
     $_ctlname-$_ctlver.tar.gz::https://static.crates.io/crates/$_ctlname/$_ctlname-$_ctlver.crate
     )
-sha256sums=('db395a6f5d7a9b2489e7382dd47b23d83f037db124f9cf518c70dfc47633ce62'
-    '24e69aa064bc4ee810f285d7b1892a4a74895a4f457e71080fe4266a6bee9611'
-    )
+sha256sums=('823e3f89709e4478eee362c385c036253a1e913156dcdde6934690eabaa3b14e'
+            'ac5af7e26e0b590ba26ffda128faf9a811917425832063773ffbc2b5e1bc9be9'
+            )
 
 prepare() {
-    export RUSTUP_TOOLCHAIN=stable
+    export RUSTUP_TOOLCHAIN=1.86.0
     
     cd "$srcdir/$pkgname-$pkgver"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -31,7 +33,7 @@ prepare() {
 }
 
 build() {
-    export RUSTUP_TOOLCHAIN=stable
+    export RUSTUP_TOOLCHAIN=1.86.0
     export CARGO_TARGET_DIR=target
     
     printf "\n%s\n" "Building kak-tree-sitter" 
@@ -45,4 +47,6 @@ build() {
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/$pkgname-$pkgver/target/release/$pkgname"
     install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/$_ctlname-$_ctlver/target/release/$_ctlname"
+    install -D "$srcdir/$pkgname-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.kak-tree-sitter"
+    install -D "$srcdir/$_ctlname-$_ctlver/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.ktsctl"
 }
