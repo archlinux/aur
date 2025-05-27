@@ -4,7 +4,7 @@
 pkgname=erigon-git
 _pkgname=${pkgname%-git}
 pkgver=3.0.4.r682.110004e
-pkgrel=2
+pkgrel=3
 pkgdesc="Ethereum execution layer implementation in Go"
 arch=('x86_64')
 url="https://github.com/erigontech/erigon"
@@ -30,9 +30,15 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
-  git submodule init
-  git submodule update --depth 1
+  git fetch --tags
+
+  local tag
+  tag=$(git tag | grep -E '^v[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}$' | sort -V | tail -n1)
+  git checkout "$tag"
+
+  git submodule update --init --depth 1
 }
+
 
 build() {
   cd "${_pkgname}"
