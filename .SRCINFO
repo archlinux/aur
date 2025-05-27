@@ -1,7 +1,7 @@
 pkgbase = open-webui
 	pkgdesc = Web UI and OpenAI API for various LLM runners, including Ollama
-	pkgver = 0.6.10
-	pkgrel = 2
+	pkgver = 0.6.11
+	pkgrel = 1
 	url = https://github.com/open-webui/open-webui
 	install = open-webui.install
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = open-webui
 	conflicts = open-webui-git
 	options = !strip
 	options = !debug
-	source = git+https://github.com/open-webui/open-webui#commit=e6afa69f59295d2930ff57285d0933e207d8e4c3
+	source = git+https://github.com/open-webui/open-webui#commit=9faa4c6a4cd8dd643cddb93dccb65c6609488a29
 	source = open-webui.service
 	source = open-webui.conf
 	b2sums = SKIP
