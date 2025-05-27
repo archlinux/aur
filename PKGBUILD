@@ -11,6 +11,7 @@ arch=('x86_64')
 url='https://www.radworks.garden/'
 license=('GPL-3.0-only')
 depends=(
+  'radicle-node-bin'
   # See https://v2.tauri.app/distribute/aur/#building-from-source
   'cairo'
   'desktop-file-utils'

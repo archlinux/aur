@@ -13,6 +13,7 @@ pkgbase = radicle-desktop
 	makedepends = rustup
 	makedepends = npm
 	makedepends = nodejs
+	depends = radicle-node-bin
 	depends = cairo
 	depends = desktop-file-utils
 	depends = gdk-pixbuf2
