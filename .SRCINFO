@@ -1,0 +1,14 @@
+pkgbase = skib
+	pkgdesc = A simple light aur helper.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/SP4RKGT/skib
+	arch = x86_64
+	license = unknown
+	makedepends = shc
+	depends = bash
+	depends = git
+	source = skib:git://github.com/SP4RKGT/skib.git
+	sha256sums = SKIP
+
+pkgname = skib
