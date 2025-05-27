@@ -1,14 +1,14 @@
 # Maintainer: Aaron Davidov <aaron.skib.aur@gmail.com>
 pkgname=skib
-pkgver=1.0
-pkgrel=1
+pkgver=1.01
+pkgrel=2
 pkgdesc="A simple light aur helper."
 arch=('x86_64')
 url="https://github.com/SP4RKGT/skib"
 license=('unknown')
 depends=('bash' 'git')
 makedepends=('shc')
-source=('skib:git://github.com/SP4RKGT/skib.git')
+source=('git+https://github.com/SP4RKGT/skib.git')
 sha256sums=('SKIP')
 
 build() {
