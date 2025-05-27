@@ -1,5 +1,8 @@
 #!/bin/sh
 
-cd /opt/epub_to_audiobook
+DIR=`realpath ~/.local/share/epub_to_audiobook`
 
-exec python main_ui.py $@
+mkdir -p "$DIR"
+cd "$DIR"
+
+exec python /opt/epub_to_audiobook/main_ui.py $@

@@ -4,7 +4,7 @@ _gituser=p0n1
 pkgname=epub_to_audiobook
 pkgdesc="command-line tool to convert EPUB ebooks into audiobooks"
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 #epoch=1
 arch=("any")
 url="https://github.com/$_gituser/$pkgname"
@@ -25,6 +25,8 @@ optdepends=(
 	'python-edge-tts: generate audio using Microsoft edge TTS'
 	'piper-tts: generate audio uding piper TSS'
 	'python-gradio: web gui'
+	'python-gradio_log: web gui'
+	'python-sentencex: web gui'
 )
 conflicts=("$pkgname-git")
 provides=("$pkgname")
@@ -36,7 +38,7 @@ source=(
 )
 sha512sums=('3205139d393b258676c7a3833e9a1f37c45e78368d5234482981e90451d99a6a41cccf779d82a3991bcff361450de634509ad1a603e9616d719c96862be8dc19'
             'fb715e3fdc5c18d8c72d9493b345f1b1562528fb745767b9dcaf01bcebb1e5d4edde93b4da30c0078db3b57e859b40b67309763736545f9c0b0307fe778b8cba'
-            '855d5b20cbaf1dc4e42ad46670df40eb372f4dc61d36e8c2d86c41b103819cbb8ad652cd7115e08fb1b4b29fd899a3cf13985d3fc4fd7893537eb016938004d4'
+            'e65affd982fc1de2d6603b8680dc09e91e7b63f10955db8c2ab22abb88cd205dee3fbf4e7542ad55ced1627fa7ff40d8a4b0bb0146432bf81e8b393ed3496013'
 )
 
 package() {

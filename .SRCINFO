@@ -1,7 +1,7 @@
 pkgbase = epub_to_audiobook
 	pkgdesc = command-line tool to convert EPUB ebooks into audiobooks
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/p0n1/epub_to_audiobook
 	arch = any
 	license = MIT
@@ -17,6 +17,8 @@ pkgbase = epub_to_audiobook
 	optdepends = python-edge-tts: generate audio using Microsoft edge TTS
 	optdepends = piper-tts: generate audio uding piper TSS
 	optdepends = python-gradio: web gui
+	optdepends = python-gradio_log: web gui
+	optdepends = python-sentencex: web gui
 	provides = epub_to_audiobook
 	conflicts = epub_to_audiobook-git
 	source = epub_to_audiobook-0.8.0.tar.gz::https://github.com/p0n1/epub_to_audiobook/archive/refs/tags/v0.8.0.tar.gz
