@@ -1,7 +1,7 @@
 # Maintainer: Aptivi <ceo at aptivi dot anonaddy dot com>
 pkgname=bassboom-1
 pkgver=1.0.1.0+0.1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform music player written in C#"
 arch=('x86_64' 'aarch64')
 url="https://aptivi.github.io"
@@ -19,16 +19,14 @@ sha256sums=('SKIP')
 
 prepare() {
 	cd "${pkgname}"
-	HOME=`pwd`/nuget DOTNET_CLI_TELEMETRY_OPTOUT=1 dotnet restore BassBoom.sln
-	mkdir -p deps
-	cp nuget/.nuget/packages/*/*/*.nupkg deps/
-	rm -rf nuget
-	cp vnd/OfflineNuGet.config ./NuGet.config
+	make init-offline
+	make clean
+	git submodule update --init --remote
 }
 
 build() {
 	cd "${pkgname}"
-	HOME="$srcdir/homedir" DOTNET_CLI_TELEMETRY_OPTOUT=1 make all-offline
+	make all-offline
 }
 
 package() {
