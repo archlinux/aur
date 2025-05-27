@@ -1,8 +1,0 @@
-
-1.5.0
- o Add option to copy From: to Reply-To: (Graham Leggett)
- o remove contrib/pymime
- o remove contrib/foot_filter
- o granular access rejection message
- o fix duplicated bounce recording
- o Remove support for all deprecated syntax in templates

@@ -6,7 +6,7 @@
 # Contributor: Uffe Jakobsen <uffe at uffe dot org>
 
 pkgname='mlmmj'
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 depends=('bash' 'glibc' 'smtp-server')
@@ -24,7 +24,7 @@ source=(
   'sysuser.conf'
   'tmpfile.conf'
 )
-changelog="$pkgname.changelog"
+#changelog="$pkgname.changelog"
 install="$pkgname.install"
 
 build() {
@@ -56,11 +56,11 @@ package() {
 }
 
 sha256sums=(
-  'ea2fca5a9d7bfe1a6712b72b0185376e7e1f5817d83dcf11ad9491b3c75f075e'
+  '898f56ee9b8363f75b15681fcc6feb7879e449f50c334ea9e432d3a73d07cb98'
   'SKIP' 'SKIP'  # Skip to my lou
 )
 b2sums=(
-  '99a4ba66e2f6039456d010d437e05d093d87cded05c65cecc897e00e591c70dedae0fe9b90d092d84c8db3cd90e821cc33102bbfa7c7a39537fe4c015430a2d1'
+  '905782fbbbc82993124cd0ebd6f99b5683c743e6053ddfcf6bdab7f601a7a2737a2dad2c7ad2b36a7a31201a8a4bd4066a57b7feceac739b5bec9b8840a13a49'
   'SKIP' 'SKIP'  # Skip to my lou
 )
 
