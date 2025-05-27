@@ -3,7 +3,7 @@
 
 pkgname=klevernotes
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A convergent markdown note taking application"
 
 url="https://invent.kde.org/office/klevernotes"
@@ -11,7 +11,6 @@ arch=('x86_64')
 license=('GPL-3.0-or-later')
 options=('!lto' '!debug')
 
-groups=('kde-applications-git' 'kde-utilities-git')
 depends=('kio' 'qt6-webengine')
 makedepends=('extra-cmake-modules')
 
