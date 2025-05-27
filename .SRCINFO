@@ -11,6 +11,6 @@ pkgbase = qbineditor
     makedepends = qt5-tools
     makedepends = gcc
     makedepends = make
-    source = https://github.com/ZwrvKrll/qbineditor.git
+    source = git+https://github.com/ZwrvKrll/qbineditor.git
 
 pkgname = qbineditor
