@@ -1,0 +1,17 @@
+pkgbase = python-sentencex
+	pkgdesc = A Log component for Gradio which can easily show some log file in the interface.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/wikimedia/sentencex
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-gradio>=4.0
+	depends = python-gradio<6.0
+	source = python-sentencex-0.6.1.tar.gz::https://files.pythonhosted.org/packages/source/s/sentencex/sentencex-0.6.1.tar.gz
+	sha512sums = 9f740c39b8e3f63b628e6fd0ef32a735297f88884eb8fcfc9de454ed853cde7c853fdb6f4c1897610bd45d181fc9e65a461d22da3ee617481d11c342388eb69b
+
+pkgname = python-sentencex
