@@ -1,0 +1,15 @@
+pkgbase = hammer-git
+	pkgdesc = Hammer (ham) is a tool to manage big projects consisting of multiple loosely coupled git repos
+	pkgver = 0.0.r299.51d5e1b
+	pkgrel = 1
+	url = https://github.com/kernkonzept/ham
+	arch = any
+	license = BSD-2-Clause
+	makedepends = git
+	depends = perl-xml-parser
+	depends = perl-uri
+	depends = perl-git-repository
+	source = git+https://github.com/kernkonzept/ham
+	sha256sums = SKIP
+
+pkgname = hammer-git
