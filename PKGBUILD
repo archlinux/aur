@@ -4,8 +4,9 @@ pkgname=coreutils-uutils
 _gnuver=9.7
 _uuver=0.1.0
 pkgver=${_uuver}
-pkgrel=1
-pkgdesc='(warning: use at own risk) Cross-platform Rust rewrite of the GNU coreutils being used as actual system coreutils'
+pkgrel=2
+pkgdesc='(warning: use at own risk) Cross-platform Rust rewrite of the GNU
+coreutils installed as system core utilities'
 arch=('x86_64')
 license=('GPL3' 'MIT')
 url='https://github.com/uutils/coreutils'
@@ -26,7 +27,7 @@ prepare() {
   # the following is derived from the latest uutils-coreutils changes from Tobias Powalowski:
     # disable selinux in Makefile, upstream seems broken in parameter parsing
     # SELINUX_ENABLE=0 should not enable SELINUX but fails
-  patch -Np1 -i ../../disable_selinux.patch
+  patch -Np1 -i $srcdir/disable_selinux.patch
 }
 
 build() {
