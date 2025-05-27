@@ -1,0 +1,15 @@
+pkgbase = ssh-tunnel-egui
+	pkgdesc = 一个基于egui的SSH SOCKS5图形界面程序，使用sshpass和ssh连接远程代理服务器
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/ssh-tunnel-egui
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = openssh
+	depends = sshpass
+	source = ssh-tunnel-egui::git+https://github.com/Paul-sinbud2004/ssh_tunnel_egui.git
+	sha256sums = SKIP
+
+pkgname = ssh-tunnel-egui
