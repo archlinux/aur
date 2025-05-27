@@ -1,4 +1,4 @@
-pkgbase = ffdiaporama
+pkgbase = ffdiaporama2
 	pkgdesc = Movie creator from photos and video clips
 	pkgver = 3.0
 	pkgrel = 1
