@@ -10,12 +10,12 @@ url="https://astroscrappy.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm>=6.2'
              'cython'
-             'python-wheel'
              'python-build'
              'python-installer'
+             'gcc14'
              'python-extension-helpers>=1'
              'python-numpy'
-             'python-sphinx-astropy')
+             'python-sphinx-astropy')  # wheel required by new setuptools
 checkdepends=('python-pytest-doctestplus'
               'python-astropy'
               'python-scipy')
@@ -36,7 +36,7 @@ prepare() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation --skip-dependency-check
+    CC=gcc-14 CXX=g++-14 python -m build --wheel --no-isolation --skip-dependency-check
 
     msg "Building Docs"
     PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
