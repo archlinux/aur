@@ -10,13 +10,13 @@ makedepends=(qt5-base qt5-tools gcc make)
 source=(https://github.com/ZwrvKrll/qbineditor.git)
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   qmake
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   install -Dm755 QBinEditor "$pkgdir/usr/bin/QBinEditor"
   install -Dm644 files/QBinEditor.desktop "$pkgdir/usr/share/applications/QBinEditor.desktop"
   install -Dm644 files/QBinEditor.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/QBinEditor.png"
