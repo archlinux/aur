@@ -1,4 +1,4 @@
-pkgbase = nvidia-565xx-dkms
+pkgbase = nvidia-565xx
 	pkgdesc = NVIDIA drivers for Linux, 565 branch - this version seems to allow more vram usage than later versions on my mobile 4090
 	pkgver = 565.77
 	pkgrel = 1

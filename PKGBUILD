@@ -5,7 +5,7 @@
 # Contributor: James Rayner <iphitus@gmail.com>
 # Contributor: Vasiliy Stelmachenok <ventureo@yandex.ru>
 
-pkgbase=nvidia-565xx-dkms
+pkgbase=nvidia-565xx
 pkgname=('nvidia-565xx-utils' 'opencl-nvidia-565xx' 'nvidia-565xx-dkms' 'nvidia-settings-565xx')
 pkgver=565.77
 pkgrel=1
