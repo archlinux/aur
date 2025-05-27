@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-careful
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Execute Rust code carefully, with extra checking along the way"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('a4870aeb406114c5944e2d1d89d0d61cee4a2f8db0a25848bd10966e09a5124ed64ff10be41ff7ac645610fd82ae3212d83ee63e41b91396723cd7ef17435d3e')
+sha512sums=('4ac1ef904bc6f8dade47e402bd9ef9b1477bc40358dd7e347c5dad70178eece9b6e5bba01d5f2e610f1bab2b37b4522ae6d5ea19c1b1575c5a1c59e52d92f2a6')
 
 prepare() {
   cd "$pkgname-$pkgver"
