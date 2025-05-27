@@ -1,14 +1,13 @@
 pkgbase = node-cleaner
 	pkgdesc = A tool for cleaning and managing node_modules directories
-	pkgver = 0.2.15
+	pkgver = 0.2.16
 	pkgrel = 1
 	url = https://github.com/Breinss/rust-node-modules-cleaner
 	arch = any
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	makedepends = git
-	source = https://github.com/Breinss/rust-node-modules-cleaner/archive/v0.2.15.tar.gz
-	sha256sums = SKIP
+	source = node-cleaner-0.2.16.tar.gz::https://github.com/Breinss/rust-node-modules-cleaner/archive/v0.2.16.tar.gz
+	sha256sums = 230c5ae195b25023a7f84448e2eeb8a1eb83a90e8ea6d6008aca63bc97dec442
 
 pkgname = node-cleaner
