@@ -1,0 +1,3 @@
+[biblioteq]
+source = "git"
+git = "https://github.com/textbrowser/biblioteq.git"
