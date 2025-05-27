@@ -2,7 +2,7 @@
 
 pkgname=audirvana-studio
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Audirvana Studio audio player"
 arch=('x86_64')
 url="https://audirvana.com/"
