@@ -12,6 +12,5 @@ pkgbase = qbineditor
     makedepends = gcc
     makedepends = make
     source = https://github.com/ZwrvKrll/qbineditor.git
-    md5sums = SKIP
 
 pkgname = qbineditor
