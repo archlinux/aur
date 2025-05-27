@@ -1,0 +1,13 @@
+pkgbase = arroyo
+	pkgdesc = cloud-native stream processing
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/ArroyoSystems/arroyo/releases
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0
+	source_aarch64 = https://github.com/ArroyoSystems/arroyo/releases/download/v0.14.0/arroyo-linux-aarch64.tar.gz
+	source_x86_64 = https://github.com/ArroyoSystems/arroyo/releases/download/v0.14.0/arroyo-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f74c5a60ac2d39fa3c21acfee22b6a8a32b3a40a29389b9bdddd4ba700b3bba4
+
+pkgname = arroyo
