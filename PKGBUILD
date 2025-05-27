@@ -4,11 +4,14 @@
 pkgname=censo
 _pkgname=CENSO
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Commandline ENergetic SOrting of Conformer Rotamer Ensembles "
 arch=('any')
 url="https://xtb-docs.readthedocs.io/en/latest/CENSO_docs/censo.html"
 license=('LGPL-3.0-only' 'GPL-3.0-only')
+makedepends=(
+  'python-setuptools-scm'
+)
 depends=(
   'bash'
   'python'
