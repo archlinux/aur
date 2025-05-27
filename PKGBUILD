@@ -20,6 +20,7 @@ depends=(
     'gvfs'
     'ttf-jetbrains-mono-nerd'
     'gtksourceview3'
+    'libsoup3'
     # aur:
     'aylurs-gtk-shell-git'
 )
