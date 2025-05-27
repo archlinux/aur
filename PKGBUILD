@@ -1,12 +1,13 @@
 # Maintainer: nesk_aur
 pkgname=organicmaps
-pkgver=2025.04.21_4
+pkgver=2025.05.20_5
+tag="${pkgver%%_*}-${pkgver##*_}-android"
 pkgrel=1
 pkgdesc="Organic Maps: Offline Hike, Bike, Trails and Navigation"
 arch=(x86_64)
 makedepends=("cmake<=3.31.6" git jq gcc ninja)
-depends=(mesa libglvnd freetype2 sqlite icu qt6-svg qt6-base
-  qt6-positioning gcc-libs harfbuzz zlib glibc libpng)
+depends=(mesa libglvnd freetype2 sqlite icu qt6-svg qt6-base zlib libpng glibc
+  qt6-positioning gcc-libs harfbuzz libxrandr libxi libxcursor)
 optdepends=("ccache: faster re-compilation" "qt6-wayland: for Wayland users")
 license=("Apache")
 url="https://organicmaps.app"
@@ -20,15 +21,20 @@ prepare() {
     printf "need at least 6 GiB of free space\n"
     exit 1
   fi
+  src_url=$source_url
   if [ -n $SOURCE_URL_REWRITER ]; then
     src_url=$($SOURCE_URL_REWRITER $source_url)
-  else
-    src_url=$source_url
+    case $src_url in
+      file://*)
+        git -C ${src_url#file://} fetch --depth=1 origin "$tag"
+        ;;
+      *)
+        ;;
+    esac
   fi
   if [ ! -d $pkgname ]; then
-    git clone --depth=1 --filter=blob:limit=128k --single-branch \
-      -b ${pkgver%%_*}-${pkgver##*_}-android \
-      --recurse-submodules --shallow-submodules $src_url
+    git clone --depth=1 --single-branch -b "$tag" --filter=blob:limit=128k \
+      --shallow-submodules --recurse-submodules $src_url $pkgname
   fi
   cd $pkgname
   rm -f 3party/boost/b2
