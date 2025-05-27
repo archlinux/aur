@@ -1,14 +1,12 @@
 pkgbase = klevernotes
 	pkgdesc = A convergent markdown note taking application
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/office/klevernotes
 	arch = x86_64
 	groups = kde-applications-git
 	groups = kde-utilities-git
-	license = GPL
-	license = LGPL
-	license = BSD
+	license = GPL-3.0-or-later
 	makedepends = extra-cmake-modules
 	depends = kio
 	depends = qt6-webengine

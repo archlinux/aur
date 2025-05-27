@@ -3,12 +3,12 @@
 
 pkgname=klevernotes
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A convergent markdown note taking application"
 
 url="https://invent.kde.org/office/klevernotes"
 arch=('x86_64')
-license=('GPL' 'LGPL' 'BSD')
+license=('GPL-3.0-or-later')
 options=('!lto' '!debug')
 
 groups=('kde-applications-git' 'kde-utilities-git')
@@ -18,18 +18,14 @@ makedepends=('extra-cmake-modules')
 source=("https://invent.kde.org/office/klevernotes/-/archive/v${pkgver}/klevernotes-v${pkgver}.tar.gz")
 sha512sums=('SKIP')
 
-prepare() {
-    install -d build/
-}
 
 build() {
-    cd build/
-    cmake -B build/ -S ../${pkgname}-v${pkgver} -DBUILD_TESTING=OFF
+    cmake -B build/ -S ${pkgname}-v${pkgver} -DBUILD_TESTING=OFF
     cmake --build build/
 }
 
 package() {
-    cd build/
+    # Application
     DESTDIR="${pkgdir}/" cmake --install build/
 
     # Licenses
