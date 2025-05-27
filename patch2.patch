@@ -1,0 +1,157 @@
+From 5e64346e9280d69c41c5e330db471ee8f995b286 Mon Sep 17 00:00:00 2001
+From: Dave Jones <dsj@meta.com>
+Date: Wed, 10 Jul 2024 13:12:17 -0700
+Subject: [PATCH] Remove unneeded includes
+
+Summary: SSIA
+
+Reviewed By: yurinnick
+
+Differential Revision: D59600392
+
+fbshipit-source-id: ca56140bb09aa953246901fcf7346e34befa2499
+---
+ listener.c            | 4 ----
+ main.c                | 2 --
+ ncrx/libncrx.c        | 5 -----
+ ncrx/nctx.c           | 3 ---
+ output.c              | 3 ---
+ threads.c             | 2 --
+ util/netconsblaster.c | 3 ---
+ worker.c              | 1 -
+ 8 files changed, 23 deletions(-)
+
+diff --git a/listener.c b/listener.c
+index f6cae7f..4101b69 100644
+--- a/listener.c
++++ b/listener.c
+@@ -7,12 +7,8 @@
+ 
+ #include <stdlib.h>
+ #include <stdint.h>
+-#include <inttypes.h>
+-#include <unistd.h>
+ #include <errno.h>
+-#include <signal.h>
+ #include <string.h>
+-#include <sys/types.h>
+ #include <sys/socket.h>
+ 
+ #include "include/common.h"
+diff --git a/main.c b/main.c
+index c44c1ce..a506241 100644
+--- a/main.c
++++ b/main.c
+@@ -7,14 +7,12 @@
+ 
+ #include <stdlib.h>
+ #include <signal.h>
+-#include <dlfcn.h>
+ #include <arpa/inet.h>
+ #include <getopt.h>
+ 
+ #include "include/common.h"
+ #include "include/output.h"
+ #include "include/threads.h"
+-#include "include/listener.h"
+ 
+ static void parse_arguments(int argc, char **argv, struct netconsd_params *p)
+ {
+diff --git a/ncrx/libncrx.c b/ncrx/libncrx.c
+index d50a0d4..40d3db4 100644
+--- a/ncrx/libncrx.c
++++ b/ncrx/libncrx.c
+@@ -12,13 +12,8 @@
+ #include <stdlib.h>
+ #include <stdint.h>
+ #include <string.h>
+-#include <time.h>
+ #include <errno.h>
+ #include <assert.h>
+-#include <sys/types.h>
+-#include <sys/socket.h>
+-#include <netinet/in.h>
+-#include <netinet/udp.h>
+ 
+ #include "ncrx.h"
+ 
+diff --git a/ncrx/nctx.c b/ncrx/nctx.c
+index 3878cd4..f1af17b 100644
+--- a/ncrx/nctx.c
++++ b/ncrx/nctx.c
+@@ -11,12 +11,9 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+-#include <sys/types.h>
+-#include <sys/stat.h>
+ #include <fcntl.h>
+ #include <time.h>
+ #include <poll.h>
+-#include <ctype.h>
+ #include <errno.h>
+ #include <arpa/inet.h>
+ #include <sys/socket.h>
+diff --git a/output.c b/output.c
+index e0769b7..64d67d9 100644
+--- a/output.c
++++ b/output.c
+@@ -5,13 +5,10 @@
+  * LICENSE file in the root directory of this source tree.
+  */
+ 
+-#include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <limits.h>
+-#include <pthread.h>
+ #include <dlfcn.h>
+-#include <sys/socket.h>
+ #include <netinet/in.h>
+ 
+ #include <ncrx.h>
+diff --git a/threads.c b/threads.c
+index 9c58d4a..01b352c 100644
+--- a/threads.c
++++ b/threads.c
+@@ -10,8 +10,6 @@
+ #include <inttypes.h>
+ #include <signal.h>
+ #include <pthread.h>
+-#include <unistd.h>
+-#include <sys/socket.h>
+ 
+ #include "include/common.h"
+ #include "include/msgbuf-struct.h"
+diff --git a/util/netconsblaster.c b/util/netconsblaster.c
+index 1680071..faa2a33 100644
+--- a/util/netconsblaster.c
++++ b/util/netconsblaster.c
+@@ -8,15 +8,12 @@
+  */
+ 
+ #include <stdlib.h>
+-#include <limits.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <signal.h>
+ #include <pthread.h>
+ #include <unistd.h>
+ #include <getopt.h>
+-#include <sys/wait.h>
+-#include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/syscall.h>
+ #include <arpa/inet.h>
+diff --git a/worker.c b/worker.c
+index 1506cf6..894887a 100644
+--- a/worker.c
++++ b/worker.c
+@@ -11,7 +11,6 @@
+ #include <pthread.h>
+ #include <string.h>
+ #include <limits.h>
+-#include <sys/socket.h>
+ #include <netinet/in.h>
+ 
+ #include <ncrx.h>

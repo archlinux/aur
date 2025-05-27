@@ -1,0 +1,55 @@
+From 2755519ea9d5c2edc91c5b3246ea401bd6697874 Mon Sep 17 00:00:00 2001
+From: generatedunixname89002005287564
+ <generatedunixname89002005287564@meta.com>
+Date: Tue, 15 Oct 2024 11:00:02 -0700
+Subject: [PATCH] kernel
+
+Reviewed By: kernelslacker
+
+Differential Revision: D64391035
+
+fbshipit-source-id: be6e2c3c8fca518388e8b0fb71c10428eac73549
+---
+ ncrx/netcons-gen.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/ncrx/netcons-gen.py b/ncrx/netcons-gen.py
+index 2006639..547927f 100755
+--- a/ncrx/netcons-gen.py
++++ b/ncrx/netcons-gen.py
+@@ -67,7 +67,7 @@ class Mode(Enum):
+ 
+ def make_dictionary_string(msg):
+     """Format X=Y\0X=Y, no trailing \0"""
+-    return "\0".join("{}={}".format(k, v) for k, v in msg.items())
++    return "\0".join(f"{k}={v}" for k, v in msg.items())
+ 
+ 
+ def make_ext_header(seq, facility, level, cont):
+@@ -90,7 +90,7 @@ def make_ext_body(text, dict_str):
+ 
+     Escaping of unprintables is currently unimplemented.
+     """
+-    return "{}\n{}".format(_body_escape(text), _body_escape(dict_str))
++    return f"{_body_escape(text)}\n{_body_escape(dict_str)}"
+ 
+ 
+ def make_netcons_msg(
+@@ -109,7 +109,7 @@ def make_netcons_msg(
+     header = make_ext_header(seq=seq, facility=facility, level=level, cont=cont)
+     body = make_ext_body(text=text, dict_str=dict_str)
+ 
+-    return "{}{}".format(header, body)
++    return f"{header}{body}"
+ 
+ 
+ def parse_args():
+@@ -159,7 +159,7 @@ def main() -> None:
+             cont = random.choice([True, False])
+ 
+         print(
+-            "seq: {} -> {}, mode: {}, cont: {}".format(seq, new_seq, chosen_mode, cont),
++            f"seq: {seq} -> {new_seq}, mode: {chosen_mode}, cont: {cont}",
+             file=sys.stderr,
+         )
+         seq = new_seq

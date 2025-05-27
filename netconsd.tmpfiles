@@ -1,0 +1,1 @@
+d /var/log/netconsd 0755 netconsd netconsd -

@@ -1,0 +1,897 @@
+From 68c5808203d5c381df769857165bffcca5d8245d Mon Sep 17 00:00:00 2001
+From: Dave Jones <dsj@meta.com>
+Date: Fri, 17 May 2024 16:32:37 -0700
+Subject: [PATCH] Remove rust uses from netconsd
+
+Summary:
+This was an experiment that failed to get any traction.
+It doesn't serve any purpose to leave unmaintained code here other than to distract from the actually maintained code.
+
+Reviewed By: yurinnick
+
+Differential Revision: D57508675
+
+fbshipit-source-id: 90504a900c3cb240ff0de32d007fe830fff10f9d
+---
+ README.md                        |   9 --
+ build.rs                         |  19 ---
+ rust/blaster/Cargo.toml          |  18 ---
+ rust/blaster/src/lib.rs          | 203 ------------------------------
+ rust/blaster/src/main.rs         |  72 -----------
+ rust/example_module/.gitignore   |   2 -
+ rust/example_module/Cargo.toml   |  12 --
+ rust/example_module/src/lib.rs   |  53 --------
+ rust/module/.gitignore           |   2 -
+ rust/module/Cargo.toml           |   9 --
+ rust/module/src/lib.rs           | 134 --------------------
+ rust/self_test_module/.gitignore |   2 -
+ rust/self_test_module/Cargo.toml |  14 ---
+ rust/self_test_module/src/lib.rs | 208 -------------------------------
+ 14 files changed, 757 deletions(-)
+ delete mode 100644 build.rs
+ delete mode 100644 rust/blaster/Cargo.toml
+ delete mode 100644 rust/blaster/src/lib.rs
+ delete mode 100644 rust/blaster/src/main.rs
+ delete mode 100644 rust/example_module/.gitignore
+ delete mode 100644 rust/example_module/Cargo.toml
+ delete mode 100644 rust/example_module/src/lib.rs
+ delete mode 100644 rust/module/.gitignore
+ delete mode 100644 rust/module/Cargo.toml
+ delete mode 100644 rust/module/src/lib.rs
+ delete mode 100644 rust/self_test_module/.gitignore
+ delete mode 100644 rust/self_test_module/Cargo.toml
+ delete mode 100644 rust/self_test_module/src/lib.rs
+
+diff --git a/README.md b/README.md
+index c5f3ddd..a2ec1db 100644
+--- a/README.md
++++ b/README.md
+@@ -36,12 +36,6 @@ The Makefile includes a few other handy targets:
+ If you want to build the daemon with clang, just append `CC="clang"` to your
+ make invocation. All the above targets should build with both clang and gcc.
+ 
+-### Rust
+-
+-An executable can also be built using `cargo build`. The Rust main function has
+-not been production-tested and it's intended to be used as an experiment, or to
+-facilitate an incremental conversion of C code to Rust.
+-
+ ## Running netconsd
+ 
+ ### Setting up the server
+@@ -176,9 +170,6 @@ build with `-static-libstdc++` and/or `-static-libgcc` to make this work.
+ 
+ See the code and Makefile in `modules/` for some examples of the above.
+ 
+-Check out `rust/` if you are looking for an example of a netconsd module
+-written in Rust.
+-
+ ## Contributing
+ 
+ See the CONTRIBUTING file for how to help out.
+diff --git a/build.rs b/build.rs
+deleted file mode 100644
+index 9f1d58b..0000000
+--- a/build.rs
++++ /dev/null
+@@ -1,19 +0,0 @@
+-/*
+- * Copyright (c) Meta Platforms, Inc. and affiliates.
+- *
+- * This source code is licensed under the BSD-style license found in the
+- * LICENSE file in the root directory of this source tree.
+- */
+-
+-use std::process::Command;
+-
+-fn main() {
+-    Command::new("make")
+-        .arg("clean")
+-        .arg("rlib")
+-        .status()
+-        .expect("make build failed");
+-
+-    println!("cargo:rustc-link-search=native=./");
+-    println!("cargo:rustc-link-lib=static=netconsd");
+-}
+diff --git a/rust/blaster/Cargo.toml b/rust/blaster/Cargo.toml
+deleted file mode 100644
+index 2cad0b8..0000000
+--- a/rust/blaster/Cargo.toml
++++ /dev/null
+@@ -1,18 +0,0 @@
+-[package]
+-name = "netconsblaster"
+-version = "0.1.0"
+-edition = "2021"
+-
+-[[bin]]
+-name = "netconsblaster"
+-path = "src/main.rs"
+-
+-[lib]
+-name = "libblaster"
+-path = "src/lib.rs"
+-
+-[dependencies]
+-libc = "0.2.40"
+-byteorder = "1.4.3"
+-clap = {version = "3.2.22", features = ["derive"] }
+-rand = "0.8.5"
+diff --git a/rust/blaster/src/lib.rs b/rust/blaster/src/lib.rs
+deleted file mode 100644
+index c075b11..0000000
+--- a/rust/blaster/src/lib.rs
++++ /dev/null
+@@ -1,203 +0,0 @@
+-/*
+- * Utility functions to send fake netconsole messages, can be used to test
+- * netconsd and its modules.
+- *
+- * Copyright (c) Meta Platforms, Inc. and affiliates.
+- *
+- * This source code is licensed under the BSD-style license found in the
+- * LICENSE file in the root directory of this source tree.
+- */
+-use std::io::Cursor;
+-use std::mem::size_of;
+-use std::thread::sleep;
+-use std::time::Duration;
+-
+-use byteorder::BigEndian;
+-use byteorder::ReadBytesExt;
+-use libc::c_int;
+-use libc::c_void;
+-use libc::in6_addr;
+-use libc::sendto;
+-use libc::sockaddr;
+-use libc::sockaddr_in6;
+-use libc::socket;
+-use libc::AF_INET6;
+-use libc::IPPROTO_RAW;
+-use libc::IPPROTO_UDP;
+-use libc::SOCK_RAW;
+-
+-#[derive(Debug)]
+-pub struct WorkerConfig {
+-    pub id: u8,
+-    pub packets_count: u64,
+-    pub dst_port: u16,
+-    pub sleep_duration: Option<Duration>,
+-    pub extended_msg: bool,
+-    pub sender_addr_rnd_bytes: usize,
+-}
+-
+-#[repr(C, packed)]
+-#[derive(Default)]
+-struct UdpHdr {
+-    src_port: u16,
+-    dst_port: u16,
+-    len: u16,
+-    check: u16,
+-}
+-
+-#[repr(C, packed)]
+-#[derive(Default)]
+-struct Ip6Hdr {
+-    ctl: u32,
+-    plen: u16,
+-    next: u8,
+-    hlim: u8,
+-    src: [u8; 16],
+-    dst: [u8; 16],
+-}
+-
+-#[repr(C, packed)]
+-struct NetconsPacket {
+-    l3: Ip6Hdr,
+-    l4: UdpHdr,
+-    payload: [u8; 64],
+-}
+-
+-impl NetconsPacket {
+-    fn new(dst_ip: [u8; 16], dst_port: u16) -> NetconsPacket {
+-        let len: u16 = 64 /* payload fixed length */ + 8 /* size of UdpHdr */;
+-        NetconsPacket {
+-            l3: Ip6Hdr {
+-                ctl: 6 << 4,
+-                plen: len.to_be(),
+-                next: IPPROTO_UDP as u8,
+-                hlim: 64,
+-                src: [0u8; 16],
+-                dst: dst_ip,
+-            },
+-            l4: UdpHdr {
+-                src_port: 6666u16.to_be(),
+-                dst_port: dst_port.to_be(),
+-                len: len.to_be(),
+-                check: 0,
+-            },
+-            payload: [0u8; 64],
+-        }
+-    }
+-
+-    fn update_checksum(&mut self) {
+-        self.l4.check = compute_checksum(self);
+-    }
+-
+-    fn set_payload(&mut self, msg: &str) {
+-        self.payload[0..msg.len()].copy_from_slice(msg.as_bytes());
+-        for i in msg.len()..64 {
+-            self.payload[i] = 0;
+-        }
+-    }
+-}
+-
+-fn get_raw_socket() -> c_int {
+-    unsafe { socket(AF_INET6, SOCK_RAW, IPPROTO_RAW) }
+-}
+-
+-fn sum_bytes_for_checksum(sum: &mut u32, b: &[u8]) {
+-    let mut i = 0;
+-    while i < b.len() {
+-        let mut v: u32 = b[i].into();
+-        i += 1;
+-        *sum += v << 8;
+-        v = b[i].into();
+-        *sum += v;
+-        i += 1;
+-    }
+-    if *sum > 0xffff {
+-        *sum -= 0xffff;
+-    }
+-}
+-
+-fn sum_u16_for_checksum(sum: &mut u32, b: u16) {
+-    *sum += b as u32;
+-    if *sum > 0xffff {
+-        *sum -= 0xffff;
+-    }
+-}
+-
+-fn compute_checksum(packet: &NetconsPacket) -> u16 {
+-    let mut sum = 0u32;
+-    sum_bytes_for_checksum(&mut sum, &packet.l3.src);
+-    sum_bytes_for_checksum(&mut sum, &packet.l3.dst);
+-
+-    sum_u16_for_checksum(&mut sum, (packet.payload.len() + 8) as u16);
+-    sum_u16_for_checksum(&mut sum, IPPROTO_UDP as u16);
+-
+-    sum_u16_for_checksum(&mut sum, packet.l4.src_port.to_be());
+-    sum_u16_for_checksum(&mut sum, packet.l4.dst_port.to_be());
+-    sum_u16_for_checksum(&mut sum, packet.l4.len.to_be());
+-
+-    let mut payload_buf = Cursor::new(packet.payload);
+-    while let Ok(value) = payload_buf.read_u16::<BigEndian>() {
+-        sum_u16_for_checksum(&mut sum, value);
+-    }
+-
+-    if sum == 0 {
+-        sum = 65535;
+-    }
+-
+-    !(sum as u16).to_be()
+-}
+-
+-fn send_packet(fd: c_int, packet: &NetconsPacket, sockaddr: &sockaddr_in6) {
+-    unsafe {
+-        let pkt_ptr = (packet as *const NetconsPacket) as *const c_void;
+-        let pkt_size = size_of::<NetconsPacket>();
+-
+-        // libc::sendto requires a sockaddr pointer, but here we must use a sockaddr_in6,
+-        // this might be a bad implementation of rust libc.
+-        let sockaddr_ptr = &*((sockaddr as *const sockaddr_in6) as *const sockaddr);
+-        let sockaddr_size: u32 = size_of::<sockaddr_in6>()
+-            .try_into()
+-            .expect("Could not convert size of sockaddr_in6 to u32.");
+-
+-        let _ = sendto(fd, pkt_ptr, pkt_size, 0, sockaddr_ptr, sockaddr_size);
+-    };
+-}
+-
+-fn make_sockaddr_in6(dst_ip: [u8; 16]) -> sockaddr_in6 {
+-    sockaddr_in6 {
+-        sin6_family: AF_INET6 as u16,
+-        sin6_port: 0,
+-        sin6_flowinfo: 0,
+-        sin6_addr: in6_addr { s6_addr: dst_ip },
+-        sin6_scope_id: 0,
+-    }
+-}
+-
+-pub fn blast_worker(config: WorkerConfig) {
+-    let fd = get_raw_socket();
+-
+-    let mut dst_ip = [0u8; 16];
+-    dst_ip[15] = 1;
+-    let addr = make_sockaddr_in6(dst_ip);
+-
+-    let mut packet = NetconsPacket::new(dst_ip, config.dst_port);
+-    packet.l3.src[15] = config.id;
+-
+-    for i in 0u64..config.packets_count {
+-        let msg = if config.extended_msg {
+-            format!("{},{},{},-;hello packet {} {}\n", 4, i, i, config.id, i)
+-        } else {
+-            format!("[{}] hello packet {} {}\n", i, config.id, i)
+-        };
+-        packet.set_payload(&msg);
+-        for j in 0..config.sender_addr_rnd_bytes {
+-            packet.l3.src[j] = rand::random();
+-        }
+-        packet.update_checksum();
+-
+-        send_packet(fd, &packet, &addr);
+-        if let Some(t) = config.sleep_duration {
+-            sleep(t);
+-        }
+-    }
+-}
+diff --git a/rust/blaster/src/main.rs b/rust/blaster/src/main.rs
+deleted file mode 100644
+index f42954f..0000000
+--- a/rust/blaster/src/main.rs
++++ /dev/null
+@@ -1,72 +0,0 @@
+-/*
+- * Simple utility that sends netconsole messages to localhost.
+- *
+- * Copyright (c) Meta Platforms, Inc. and affiliates.
+- *
+- * This source code is licensed under the BSD-style license found in the
+- * LICENSE file in the root directory of this source tree.
+- */
+-use std::thread;
+-use std::time::Duration;
+-use std::time::Instant;
+-
+-use clap::Parser;
+-use libblaster::blast_worker;
+-use libblaster::WorkerConfig;
+-
+-#[derive(Parser)]
+-struct CliArgs {
+-    #[clap(short, long, default_value_t = 1)]
+-    threads: u16,
+-
+-    #[clap(short, long, default_value_t = std::u64::MAX)]
+-    packets: u64,
+-
+-    #[clap(short = 'u', long, default_value_t = 6666u16)]
+-    port: u16,
+-
+-    #[clap(short, long)]
+-    sleep_time_nano: Option<u64>,
+-
+-    #[clap(short = 'r', long, default_value_t = 0)]
+-    sender_ip_rnd_bytes: usize,
+-}
+-
+-fn format_duration(duration: &Duration) -> String {
+-    let mins = duration.as_secs() / 60;
+-    let secs = duration.as_secs() % 60;
+-    let ms = duration.as_millis() % 1000;
+-    format!("{:02}:{:02}.{:03}", mins, secs, ms)
+-}
+-
+-fn main() {
+-    let args = CliArgs::parse();
+-
+-    let mut workers: Vec<thread::JoinHandle<()>> = Vec::new();
+-    let sleep_duration = args.sleep_time_nano.map(Duration::from_nanos);
+-    let start_time = Instant::now();
+-    for i in 0..args.threads {
+-        let config = WorkerConfig {
+-            id: i as u8,
+-            packets_count: args.packets,
+-            dst_port: args.port,
+-            sleep_duration,
+-            extended_msg: true,
+-            sender_addr_rnd_bytes: args.sender_ip_rnd_bytes,
+-        };
+-        workers.push(thread::spawn(move || {
+-            blast_worker(config);
+-        }))
+-    }
+-
+-    for w in workers {
+-        let _ = w.join();
+-    }
+-    let packets_sent = args.packets * args.threads as u64;
+-    println!(
+-        "Sent {} packets with {} threads in {}",
+-        packets_sent,
+-        args.threads,
+-        format_duration(&start_time.elapsed())
+-    );
+-}
+diff --git a/rust/example_module/.gitignore b/rust/example_module/.gitignore
+deleted file mode 100644
+index 2c96eb1..0000000
+--- a/rust/example_module/.gitignore
++++ /dev/null
+@@ -1,2 +0,0 @@
+-target/
+-Cargo.lock
+diff --git a/rust/example_module/Cargo.toml b/rust/example_module/Cargo.toml
+deleted file mode 100644
+index 6242177..0000000
+--- a/rust/example_module/Cargo.toml
++++ /dev/null
+@@ -1,12 +0,0 @@
+-[package]
+-name = "example_module"
+-version = "0.1.0"
+-edition = "2021"
+-
+-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+-
+-[dependencies]
+-netconsd_module = {path = "../module"}
+-
+-[lib]
+-crate-type = ["dylib"]
+diff --git a/rust/example_module/src/lib.rs b/rust/example_module/src/lib.rs
+deleted file mode 100644
+index 8875573..0000000
+--- a/rust/example_module/src/lib.rs
++++ /dev/null
+@@ -1,53 +0,0 @@
+-/*
+- * A minimal example of a Rust netconsd module.
+- *
+- * Copyright (c) Meta Platforms, Inc. and affiliates.
+- *
+- * This source code is licensed under the BSD-style license found in the
+- * LICENSE file in the root directory of this source tree.
+- */
+-
+-use netconsd_module::c_int;
+-use netconsd_module::format_in6_addr_ptr;
+-use netconsd_module::in6_addr;
+-use netconsd_module::MsgBuf;
+-use netconsd_module::NcrxMsg;
+-
+-fn fmt_ptr<T: std::fmt::Display>(ptr: *const T) -> String {
+-    match unsafe { ptr.as_ref() } {
+-        None => "NULL".to_owned(),
+-        Some(x) => format!("{}", x),
+-    }
+-}
+-
+-#[no_mangle]
+-pub extern "C" fn netconsd_output_init(nr_workers: c_int) -> c_int {
+-    println!(
+-        "Rust example module init! netconsd will use {} workers",
+-        nr_workers
+-    );
+-    0
+-}
+-
+-#[no_mangle]
+-pub extern "C" fn netconsd_output_handler(
+-    t: c_int,
+-    in6_addr: *const in6_addr,
+-    buf: *const MsgBuf,
+-    msg: *const NcrxMsg,
+-) -> i32 {
+-    println!(
+-        "Received message from {} on thread {}",
+-        format_in6_addr_ptr(in6_addr),
+-        t
+-    );
+-
+-    println!("Buf: {}", fmt_ptr(buf));
+-    println!("Msg: {}", fmt_ptr(msg));
+-    0
+-}
+-
+-#[no_mangle]
+-pub extern "C" fn netconsd_output_exit() {
+-    println!("Rust example module bye bye");
+-}
+diff --git a/rust/module/.gitignore b/rust/module/.gitignore
+deleted file mode 100644
+index 2c96eb1..0000000
+--- a/rust/module/.gitignore
++++ /dev/null
+@@ -1,2 +0,0 @@
+-target/
+-Cargo.lock
+diff --git a/rust/module/Cargo.toml b/rust/module/Cargo.toml
+deleted file mode 100644
+index 31ec488..0000000
+--- a/rust/module/Cargo.toml
++++ /dev/null
+@@ -1,9 +0,0 @@
+-[package]
+-name = "netconsd_module"
+-version = "0.1.0"
+-edition = "2021"
+-
+-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+-
+-[dependencies]
+-libc = "0.2.40"
+diff --git a/rust/module/src/lib.rs b/rust/module/src/lib.rs
+deleted file mode 100644
+index 44d248e..0000000
+--- a/rust/module/src/lib.rs
++++ /dev/null
+@@ -1,134 +0,0 @@
+-/*
+- * These structs have been generated with bindgen (except for the bitfields getters),
+- * and are passed to netconsd_output_handler function defined in a netconsd module.
+- *
+- * Copyright (c) Meta Platforms, Inc. and affiliates.
+- *
+- * This source code is licensed under the BSD-style license found in the
+- * LICENSE file in the root directory of this source tree.
+- */
+-
+-use std::ffi::CStr;
+-use std::fmt;
+-use std::os::raw::c_char;
+-pub use std::os::raw::c_int;
+-use std::os::raw::c_void;
+-
+-pub use libc::in6_addr;
+-use libc::iovec;
+-pub use libc::sockaddr_in6;
+-
+-#[repr(C)]
+-pub struct MsgBuf {
+-    pub next: *const MsgBuf,
+-    pub iovec: iovec,
+-    pub src: sockaddr_in6,
+-    pub hole: [u8; 4],
+-    pub rcv_time: u64,
+-    pub rcv_flags: c_int,
+-    pub rcv_bytes: c_int,
+-}
+-
+-impl fmt::Debug for MsgBuf {
+-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+-        f.debug_struct("MsgBuf")
+-            .field("src", &std::net::Ipv6Addr::from(self.src.sin6_addr.s6_addr))
+-            .field("rcv_time", &self.rcv_time)
+-            .field("rcv_flags", &self.rcv_flags)
+-            .field("rcv_bytes", &self.rcv_bytes)
+-            .finish()
+-    }
+-}
+-
+-#[derive(Debug)]
+-#[repr(C)]
+-pub struct NcrxList {
+-    pub next: *mut NcrxList,
+-    pub prev: *mut NcrxList,
+-}
+-
+-#[derive(Debug)]
+-#[repr(C)]
+-pub struct NcrxMsg {
+-    pub seq: u64,
+-    pub ts_usec: u64,
+-    pub text: *const c_char,
+-    pub dict: *const c_char,
+-    pub text_len: c_int,
+-    pub dict_len: c_int,
+-    pub facility: u8,
+-    pub level: u8,
+-    pub flags: u8,
+-    pub node: NcrxList,
+-    pub rx_at_mono: u64,
+-    pub rx_at_real: u64,
+-    pub ncfrag_off: c_int,
+-    pub ncfrag_len: c_int,
+-    pub ncfrag_left: c_int,
+-    pub _bitfield_align_2: [u8; 0],
+-    pub _bitfield_2: [u8; 1usize],
+-}
+-
+-impl NcrxMsg {
+-    pub fn get_cont_start(&self) -> bool {
+-        self.flags & 0b1 > 0
+-    }
+-    pub fn get_cont(&self) -> bool {
+-        self.flags & 0b10 > 0
+-    }
+-
+-    pub fn get_oos(&self) -> bool {
+-        self.flags & 0b100 > 0
+-    }
+-    pub fn get_seq_reset(&self) -> bool {
+-        self.flags & 0b1000 > 0
+-    }
+-}
+-
+-pub fn format_in6_addr_ptr(ptr: *const in6_addr) -> String {
+-    match unsafe { ptr.as_ref() } {
+-        None => "NULL".to_owned(),
+-        Some(x) => format!("{:x?}", x.s6_addr),
+-    }
+-}
+-
+-impl fmt::Display for NcrxMsg {
+-    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+-        let cont_start = if self.get_cont_start() {
+-            "[CONT_START]"
+-        } else {
+-            ""
+-        };
+-        let cont = if self.get_cont() { "[CONT]" } else { "" };
+-        let oos = if self.get_oos() { "[OOS]" } else { "" };
+-        let seq_reset = if self.get_seq_reset() {
+-            "[SEQ_RESET]"
+-        } else {
+-            ""
+-        };
+-        let text = str_from_c_void(self.text as *const c_void);
+-        write!(
+-            formatter,
+-            "S{} T{} F{}/L{}{}{}{}{}: {}",
+-            self.seq,
+-            self.ts_usec,
+-            self.facility,
+-            self.level,
+-            cont_start,
+-            cont,
+-            oos,
+-            seq_reset,
+-            text
+-        )
+-    }
+-}
+-
+-fn str_from_c_void(ptr: *const c_void) -> &'static str {
+-    unsafe { CStr::from_ptr(ptr as *const c_char).to_str().unwrap() }
+-}
+-
+-impl fmt::Display for MsgBuf {
+-    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+-        write!(formatter, "{}", str_from_c_void(self.iovec.iov_base))
+-    }
+-}
+diff --git a/rust/self_test_module/.gitignore b/rust/self_test_module/.gitignore
+deleted file mode 100644
+index 4fffb2f..0000000
+--- a/rust/self_test_module/.gitignore
++++ /dev/null
+@@ -1,2 +0,0 @@
+-/target
+-/Cargo.lock
+diff --git a/rust/self_test_module/Cargo.toml b/rust/self_test_module/Cargo.toml
+deleted file mode 100644
+index 13d5414..0000000
+--- a/rust/self_test_module/Cargo.toml
++++ /dev/null
+@@ -1,14 +0,0 @@
+-[package]
+-name = "self_test_module"
+-version = "0.1.0"
+-edition = "2021"
+-
+-[dependencies]
+-once_cell = "1.15.0"
+-libc = "0.2.40"
+-netconsd_module = {path = "../module"}
+-netconsblaster = {path = "../blaster"}
+-nix = {version = "0.25.0", features = ["signal", "process"]}
+-
+-[lib]
+-crate-type = ["dylib"]
+diff --git a/rust/self_test_module/src/lib.rs b/rust/self_test_module/src/lib.rs
+deleted file mode 100644
+index 026b7fd..0000000
+--- a/rust/self_test_module/src/lib.rs
++++ /dev/null
+@@ -1,208 +0,0 @@
+-/*
+- * A netconsd module that sends messages to loopback and verifies that it
+- * receives all the messages.
+- * E.g. ./netconsd -w 2 -l 2 -u 6666 self_test_module.so
+- *
+- * Copyright (c) Meta Platforms, Inc. and affiliates.
+- *
+- * This source code is licensed under the BSD-style license found in the
+- * LICENSE file in the root directory of this source tree.
+- */
+-use std::ffi::CStr;
+-use std::os::raw::c_char;
+-use std::os::raw::c_int;
+-use std::sync::atomic::AtomicBool;
+-use std::sync::atomic::AtomicUsize;
+-use std::sync::atomic::Ordering;
+-use std::sync::Mutex;
+-use std::sync::MutexGuard;
+-use std::thread;
+-use std::time::Duration;
+-
+-use libblaster::blast_worker;
+-use libblaster::WorkerConfig;
+-use libc::in6_addr;
+-use netconsd_module::MsgBuf;
+-use netconsd_module::NcrxMsg;
+-use nix::sys::signal;
+-use nix::unistd::Pid;
+-use once_cell::sync::Lazy;
+-
+-const MESSAGES_TO_SEND_PER_THREAD: usize = 100;
+-const SENDER_THREADS_COUNT: usize = 10;
+-const TOT_MESSAGES_TO_SEND: usize = SENDER_THREADS_COUNT * MESSAGES_TO_SEND_PER_THREAD;
+-static TERMINATED: AtomicBool = AtomicBool::new(false);
+-static INVOCATIONS_COUNT: AtomicUsize = AtomicUsize::new(0);
+-const TIMEOUT_DURATION: Duration = Duration::from_secs(5);
+-const BLASTER_SLEEP_DURATION: Duration = Duration::from_nanos(10);
+-const SENDR_ADDR_RND_BYTES: usize = 0;
+-
+-#[derive(Clone, Debug)]
+-struct ReceivedMessage {
+-    src: [u8; 16],
+-    msg: String,
+-}
+-
+-static RECEIVED_MESSAGES: Lazy<Mutex<Vec<ReceivedMessage>>> = Lazy::new(|| Mutex::new(Vec::new()));
+-
+-fn result_str(result: bool) -> &'static str {
+-    if result { "-> OK" } else { "-> FAILURE" }
+-}
+-
+-fn get_received_messages() -> MutexGuard<'static, Vec<ReceivedMessage>> {
+-    RECEIVED_MESSAGES
+-        .lock()
+-        .expect("Could not lock RECEIVED_MESSAGES")
+-}
+-
+-fn verify_invocations_count() -> bool {
+-    let invocations_count = INVOCATIONS_COUNT.load(Ordering::SeqCst);
+-    let passed = invocations_count == TOT_MESSAGES_TO_SEND;
+-    print!("{} invocations ", invocations_count);
+-    if !passed {
+-        print!("but should have been {}", TOT_MESSAGES_TO_SEND);
+-    }
+-    println!("{}", result_str(passed));
+-    passed
+-}
+-
+-fn verify_received_messages_texts() -> bool {
+-    let mut passed = true;
+-    for message in get_received_messages().iter() {
+-        if !message.msg.starts_with("hello packet") {
+-            println!("unexpected message: {}", message.msg);
+-            passed = false;
+-        }
+-    }
+-    println!("messages texts {}", result_str(passed));
+-    passed
+-}
+-
+-fn verify_received_messages_count() -> bool {
+-    let messages_count = get_received_messages().len();
+-    print!("received {} ncrx messages ", messages_count);
+-
+-    let passed = messages_count == TOT_MESSAGES_TO_SEND;
+-    if !passed {
+-        print!("but should have been {} ", TOT_MESSAGES_TO_SEND);
+-    }
+-    println!("{}", result_str(passed));
+-    passed
+-}
+-
+-fn check_src_address(addr: &[u8; 16]) -> Option<usize> {
+-    if addr[0..15].iter().any(|x| *x != 0) {
+-        return None;
+-    }
+-    Some(addr[15].into())
+-}
+-
+-fn verify_received_messages_addresses() -> bool {
+-    let mut passed = true;
+-    let mut seen_ids = vec![0; SENDER_THREADS_COUNT];
+-
+-    for msg in get_received_messages().iter() {
+-        match check_src_address(&msg.src) {
+-            Some(id) => seen_ids[id] += 1,
+-            None => {
+-                println!("Bad src address: {:x?}", msg.src);
+-                passed = false;
+-            }
+-        }
+-    }
+-    for (i, seen_id) in seen_ids.into_iter().enumerate() {
+-        if seen_id != MESSAGES_TO_SEND_PER_THREAD {
+-            println!(
+-                "got {} messages from thread {}, should have been {}",
+-                seen_id, i, MESSAGES_TO_SEND_PER_THREAD
+-            );
+-            passed = false;
+-        }
+-    }
+-    println!("src addresses {}", result_str(passed));
+-    passed
+-}
+-
+-fn end_self_test() {
+-    if !TERMINATED.fetch_or(true, Ordering::SeqCst) {
+-        signal::kill(Pid::this(), signal::SIGTERM).expect("Could not send SIGTERM");
+-    }
+-}
+-
+-fn process_received_message(addr_ptr: *const in6_addr, msg_ptr: *const NcrxMsg) {
+-    if let Some(addr) = unsafe { addr_ptr.as_ref() } {
+-        if let Some(msg) = unsafe { msg_ptr.as_ref() } {
+-            let text = match unsafe { CStr::from_ptr(msg.text as *const c_char) }.to_str() {
+-                Ok(x) => x,
+-                Err(_) => {
+-                    println!("Could not convert NcrxMsg msg to string");
+-                    ""
+-                }
+-            };
+-            let received_message = ReceivedMessage {
+-                src: addr.s6_addr.clone(),
+-                msg: text.to_owned(),
+-            };
+-            get_received_messages().push(received_message);
+-        }
+-    }
+-}
+-
+-fn spawn_blast_workers() {
+-    for i in 0..SENDER_THREADS_COUNT {
+-        thread::spawn(move || {
+-            let config = WorkerConfig {
+-                id: i as u8,
+-                packets_count: MESSAGES_TO_SEND_PER_THREAD as u64,
+-                dst_port: 6666,
+-                sleep_duration: Some(BLASTER_SLEEP_DURATION),
+-                extended_msg: true,
+-                sender_addr_rnd_bytes: SENDR_ADDR_RND_BYTES,
+-            };
+-            thread::sleep(Duration::from_millis(100));
+-            blast_worker(config);
+-        });
+-    }
+-}
+-
+-fn start_test_timeout() {
+-    thread::spawn(|| {
+-        thread::sleep(TIMEOUT_DURATION);
+-        end_self_test();
+-    });
+-}
+-
+-#[no_mangle]
+-pub extern "C" fn netconsd_output_init(nr_workers: c_int) -> c_int {
+-    println!("Selftest module init! {} workers", nr_workers);
+-    spawn_blast_workers();
+-    start_test_timeout();
+-    0
+-}
+-
+-#[no_mangle]
+-pub extern "C" fn netconsd_output_handler(
+-    _t: c_int,
+-    in6_addr: *const in6_addr,
+-    _buf: *const MsgBuf,
+-    msg: *const NcrxMsg,
+-) -> i32 {
+-    process_received_message(in6_addr, msg);
+-    if INVOCATIONS_COUNT.fetch_add(1, Ordering::SeqCst) >= TOT_MESSAGES_TO_SEND - 1 {
+-        end_self_test();
+-    }
+-    0
+-}
+-
+-#[no_mangle]
+-pub extern "C" fn netconsd_output_exit() {
+-    println!("\nSELF TEST RESULT");
+-    let mut passed = verify_invocations_count();
+-    passed &= verify_received_messages_count();
+-    passed &= verify_received_messages_texts();
+-    passed &= verify_received_messages_addresses();
+-    println!();
+-    if !passed {
+-        std::process::exit(1);
+-    }
+-}
