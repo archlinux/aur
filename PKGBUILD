@@ -2,8 +2,8 @@
 
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
-pkgver=0.6.10
-pkgrel=2
+pkgver=0.6.11
+pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -78,6 +78,7 @@ depends=(python
         python-soundfile
         python-sqlalchemy
         python-starlette
+        python-starlette-compress
         python-tiktoken
         python-pytorch
         python-transformers
@@ -96,7 +97,7 @@ depends=(python
 makedepends=('git' 'npm' 'nvm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-hatch')
 optdepends=('ollama' 'tika-server')
 conflicts=('open-webui-git' 'open-webui')
-source=("git+${url}#commit=e6afa69f59295d2930ff57285d0933e207d8e4c3"
+source=("git+${url}#commit=9faa4c6a4cd8dd643cddb93dccb65c6609488a29"
         "build-only-backend.patch"
         "open-webui.service"
         "open-webui.conf")

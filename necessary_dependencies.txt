@@ -47,6 +47,7 @@ Module: pydantic
     open_webui/routers/evaluations.py
     open_webui/routers/files.py
     open_webui/routers/folders.py
+    open_webui/routers/functions.py
     open_webui/routers/images.py
     open_webui/routers/knowledge.py
     open_webui/routers/memories.py
@@ -116,9 +117,11 @@ Module: aiocache
 Module: aiohttp
   Imported in:
     open_webui/main.py
+    open_webui/retrieval/loaders/mistral.py
     open_webui/retrieval/web/utils.py
     open_webui/routers/audio.py
     open_webui/routers/auths.py
+    open_webui/routers/functions.py
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
     open_webui/routers/pipelines.py
@@ -226,6 +229,9 @@ Module: fastapi.responses
     open_webui/routers/openai.py
     open_webui/routers/tasks.py
 Module: fastapi.staticfiles
+  Imported in:
+    open_webui/main.py
+Module: starlette_compress
   Imported in:
     open_webui/main.py
 Module: starlette.exceptions
@@ -744,6 +750,7 @@ Module: open_webui.models.auths
 Module: open_webui.models.groups
   Imported in:
     open_webui/models/users.py
+    open_webui/routers/auths.py
     open_webui/routers/groups.py
     open_webui/routers/users.py
     open_webui/utils/access_control.py
@@ -820,6 +827,9 @@ Module: open_webui.routers.tasks
   Imported in:
     open_webui/utils/middleware.py
 Module: open_webui.routers.images
+  Imported in:
+    open_webui/utils/middleware.py
+Module: open_webui.routers.memories
   Imported in:
     open_webui/utils/middleware.py
 Module: open_webui.retrieval.utils
@@ -1394,9 +1404,6 @@ Module: pymilvus
 Module: pinecone
   Imported in:
     open_webui/retrieval/vector/dbs/pinecone.py
-Module: pinecone.grpc
-  Imported in:
-    open_webui/retrieval/vector/dbs/pinecone.py
 Module: grpc
   Imported in:
     open_webui/retrieval/vector/dbs/qdrant_multitenancy.py
@@ -1451,6 +1458,10 @@ Module: colbert.infra
 Module: colbert.modeling.checkpoint
   Imported in:
     open_webui/retrieval/models/colbert.py
+Module: open_webui.retrieval.models.base_reranker
+  Imported in:
+    open_webui/retrieval/models/colbert.py
+    open_webui/retrieval/models/external.py
 Module: validators
   Imported in:
     open_webui/retrieval/web/main.py
