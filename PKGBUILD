@@ -22,10 +22,8 @@ sha256sums=(
 )
 
 package() {
+  mkdir -p $pkgdir/usr/lib/udev/hwdb.d
+
   cd "$srcdir/$_reponame"
   ls | grep ".hwdb" | xargs -I {} install -m644 ./{} $pkgdir/usr/lib/udev/hwdb.d/{}
-}
-
-post_install() {
-  systemd-hwdb update
 }

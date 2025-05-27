@@ -6,6 +6,9 @@ pkgbase = simracing-hwdb-git
 	arch = any
 	license = GPL2
 	makedepends = git
+	makedepends = findutils
 	depends = systemd
+	source = git+https://github.com/JacKeTUs/simracing-hwdb
+	sha256sums = SKIP
 
 pkgname = simracing-hwdb-git
