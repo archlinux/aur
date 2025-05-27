@@ -1,6 +1,33 @@
 # Changelog
 
-## [0.11.2]
+## [0.12.0] - 2025-05-06
+
+### Changes
+- Don't attempt to start external processes in a minimized state
+
+  Most 3rd party apps are meant to be viewed while playing. Should also fix 3rd party apps that don't render properly
+  when starting minimized ([#161]).
+
+### Bug Fixes
+- Add support for downloading stealth updates ([#163])
+
+  The default launcher has the ability to apply updates that aren't marked as a new version. These updates may also not 
+  be pushed to Steam and Epic which would prevent users of these stores from receiving the update.
+
+## [0.11.3] - 2025-04-08
+
+### Enhancements
+- Make argument parsing more generic which will allow for more Linux compatibility tools to be supported ([#151])
+- Use GitHub Actions to generate [artifact attestations] that establish build provenance for release artifacts.
+  This adds another way to ensure the launcher is built from source without any modifications.
+
+  `gh attestation verify min-ed-launcher_v[VERSION]_win-x64.zip -R rfvgyhn/min-ed-launcher`
+
+### Bug Fixes
+- Fix exception being thrown when specifying shutdown processes ([#156])
+- Fix invalid Epic login details due to format change ([#157])
+
+## [0.11.2] - 2025-01-14
 
 ### New Features
 - Add ability to keep applications open after launcher exits. Can be useful to review your recent activity in apps like 
@@ -19,7 +46,7 @@
 - Read additional processes' STDOUT/ERR asynchronously. This should allow [EDOMH] to launch without locking up.
 - Do a better job of scrubbing stored frontier passwords in log file
 
-## [0.11.1]
+## [0.11.1] - 2024-07-10
 
 ### Enhancements
 - Add `waitForQuit` arg to `/autoquit` (i.e. `/autoquit waitForQuit`). This will let users opt in to the old behavior
@@ -345,7 +372,9 @@ legendary launch --dry-run 9c203b6ed35846e8a4a9ff1e314f6593 2> >(grep "Launch pa
 
 Initial release
 
-[unreleased]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.2...HEAD
+[unreleased]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.12.0...HEAD
+[0.12.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.3...v0.12.0
+[0.11.3]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.2...v0.11.3
 [0.11.2]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.1...v0.11.2
 [0.11.1]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.0...v0.11.1
 [0.11.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.10.1...v0.11.0
@@ -391,3 +420,9 @@ Initial release
 [log file]: README.md#troubleshooting
 [EDDiscovery]: https://github.com/EDDiscovery/EDDiscovery
 [EDOMH]: https://github.com/jixxed/ed-odyssey-materials-helper
+[artifact attestations]: https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds
+[#151]: https://github.com/rfvgyhn/min-ed-launcher/issues/151
+[#156]: https://github.com/rfvgyhn/min-ed-launcher/issues/156
+[#157]: https://github.com/rfvgyhn/min-ed-launcher/issues/157
+[#161]: https://github.com/rfvgyhn/min-ed-launcher/issues/161
+[#163]: https://github.com/rfvgyhn/min-ed-launcher/issues/163
