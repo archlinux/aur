@@ -1,7 +1,16 @@
 diff --git a/Makefile b/Makefile
-index 04da2ac..a03fe7c 100644
+index 04da2ac..86cf330 100644
 --- a/Makefile
 +++ b/Makefile
+@@ -27,7 +27,7 @@ ifeq ($(HOST_OS),linux)
+ 	LOCAL_USB_SRC :=  src/usb_linux.c
+ 	LOCAL_UTIL_SRC := src/utils_unix.c
+ 	LOCAL_OTHER_SRC := src/fdevent.c src/fdevent_unix.c src/auto_complete.c
+-	LOCAL_LFLAGS := -lrt -lpthread -lcrypto
++	LOCAL_LFLAGS := -lrt -lpthread ./lib/libcrypto_lin.a
+ 	LOCAL_CFLAGS := -DOS_LINUX -DHAVE_FORKEXEC -DHAVE_SYMLINKS -DSDB_HOST=1 -DSDB_HOST_ON_TARGET=1 -D_FILE_OFFSET_BITS=64
+ endif
+ 
 @@ -80,7 +80,7 @@ SDB_SRC_CPPFILES := \
  	src/encryption.cpp \
  	src/SPCManager.cpp
@@ -11,3 +20,41 @@ index 04da2ac..a03fe7c 100644
  SDB_CFLAGS += -D_XOPEN_SOURCE -D_GNU_SOURCE
  SDB_CFLAGS += -DSUPPORT_ENCRYPT
  SDB_CFLAGS += -Iinclude -Isrc
+diff --git a/src/sockets.c b/src/sockets.c
+index 33cb4fa..329e88a 100755
+--- a/src/sockets.c
++++ b/src/sockets.c
+@@ -1126,7 +1126,7 @@ static int handle_host_request(char *service, SDB_SOCKET* socket)
+          sti->socket = socket;
+          sti->host = host;
+ 
+-         if(sdb_thread_create( &connect_thr, connect_service, sti)){
++         if(sdb_thread_create( &connect_thr, (sdb_thread_func_t)connect_service, sti)){
+         	 LOG_ERROR("failed to create connect thread\n");
+          }
+          return -2;
+diff --git a/src/strutils.c b/src/strutils.c
+index d9f4234..b2c3dc8 100755
+--- a/src/strutils.c
++++ b/src/strutils.c
+@@ -3,6 +3,7 @@
+ #include <string.h>
+ #include "strutils.h"
+ #include "utils.h"
++#include <ctype.h>
+ #ifndef PATH_MAX
+ #define PATH_MAX 4096
+ #endif
+diff --git a/src/utils.h b/src/utils.h
+index 1c72e55..9eafc7e 100755
+--- a/src/utils.h
++++ b/src/utils.h
+@@ -108,7 +108,7 @@ SDB_MUTEX(D_lock)
+ SDB_MUTEX(prg_info_lock)
+ SDB_MUTEX(prg_print_lock)
+ 
+-int launch_server();
++int launch_server(int only_detect_tizen_device);
+ void start_logging(void);
+ char* ansi_to_utf8(const char *str);
+ int sdb_open(const char* path, int options);
