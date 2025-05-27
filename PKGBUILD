@@ -1,7 +1,7 @@
 # Maintainer: Faugus <felix.ribeiro@live.com>
 
 pkgname=faugus-launcher-git
-pkgver=r458.16208b0
+pkgver=r488.e9a7c34
 pkgrel=1
 pkgdesc="A simple and lightweight app for running Windows games using UMU-Launcher"
 arch=('any')
@@ -22,11 +22,11 @@ pkgver() {
 
 package() {
     cd "faugus-launcher"
-    install -Dm755 faugus-launcher.py "$pkgdir/usr/bin/faugus-launcher"
-    install -Dm755 faugus-run.py "$pkgdir/usr/bin/faugus-run"
-    install -Dm755 faugus-proton-manager.py "$pkgdir/usr/bin/faugus-proton-manager"
-    install -Dm755 faugus-components.py "$pkgdir/usr/bin/faugus-components"
-    install -Dm755 faugus-gamepad.py "$pkgdir/usr/bin/faugus-gamepad"
+    install -Dm755 faugus_launcher.py "$pkgdir/usr/bin/faugus-launcher"
+    install -Dm755 faugus_run.py "$pkgdir/usr/bin/faugus-run"
+    install -Dm755 faugus_proton_manager.py "$pkgdir/usr/bin/faugus-proton-manager"
+    install -Dm755 faugus_components.py "$pkgdir/usr/bin/faugus-components"
+    install -Dm755 faugus_gamepad.py "$pkgdir/usr/bin/faugus-gamepad"
     install -Dm755 faugus-session "$pkgdir/usr/bin/faugus-session"
     install -Dm644 faugus-launcher.desktop "$pkgdir/usr/share/applications/faugus-launcher.desktop"
     install -Dm644 faugus-shortcut.desktop "$pkgdir/usr/share/applications/faugus-shortcut.desktop"
