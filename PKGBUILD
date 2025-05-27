@@ -2,19 +2,17 @@
 
 _base=inputs
 pkgname=python-inputs-git
-pkgver=0.5.r2.ga46681d
-pkgrel=4
+pkgver=0.5.r3.g5e33e03
+pkgrel=1
 pkgdesc="Cross-platform Python support for keyboards, mice and gamepads - git version"
 arch=('any')
 url="https://github.com/zeth/inputs"
-license=(BSD)
+license=('BSD-3-Clause')
 provides=('python-inputs')
 conflicts=('python-inputs')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-wheel' 'git')
-source=("git+${url}.git"
-        3203c9e25f1e14c4316d85d59c536b4e407f569f.patch)
-sha256sums=('SKIP'
-            '92c69faff3038a42eb0fc4dfefe2657dea1e5cf0cea05c14d02ba04decdcc139')
+source=("git+${url}.git")
+b2sums=('SKIP')
 
 pkgver() {
   cd "${_base}"
@@ -23,7 +21,6 @@ pkgver() {
 
 prepare() {
     cd "${_base}"
-    patch -p1 -i "$srcdir"/3203c9e25f1e14c4316d85d59c536b4e407f569f.patch
     git -C "${srcdir}/${_base}" clean -dfx
 }
 
