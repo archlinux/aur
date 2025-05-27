@@ -1,0 +1,15 @@
+diff --git a/tool/preprocess/doc/Doxyfile b/tool/preprocess/doc/Doxyfile
+index e5af2e32..76a2a166 100644
+--- a/tool/preprocess/doc/Doxyfile
++++ b/tool/preprocess/doc/Doxyfile
+@@ -127,8 +127,8 @@ RTF_EXTENSIONS_FILE    =
+ #---------------------------------------------------------------------------
+ # configuration options related to the man page output
+ #---------------------------------------------------------------------------
+-#GENERATE_MAN           = YES
+-MAN_OUTPUT             = 
++GENERATE_MAN           = YES
++MAN_OUTPUT             = man
+ MAN_EXTENSION          = .1
+ MAN_LINKS              = YES
+ #---------------------------------------------------------------------------
