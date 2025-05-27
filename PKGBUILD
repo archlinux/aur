@@ -4,14 +4,11 @@ pkgname=(fitgirl-ddl-git fitgirl-ddl-gui-git)
 pkgdesc="fitgirl-repacks.site extractor"
 _pkgname=fitgirl-ddl
 pkgver=r22.g113740c
-pkgrel=1
+pkgrel=2
 url="https://github.com/mokurin000/fitgirl-ddl"
 arch=('x86_64' 'aarch64')
 license=('MIT')
-depends=(
-    # base
-    'dbus' 'gcc-libs' 'glibc'
-)
+depends=('gcc-libs' 'glibc')
 makedepends=('rust' 'git' 'jq')
 
 source=("git+${url}.git")
@@ -34,13 +31,22 @@ pkgver() {
     echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
-build() {
+build_fitgirl-ddl-git() {
     cd "${_pkgname}"
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
-    cargo build --frozen --release
+    cargo build --frozen --release --bin ${_pkgname}
+}
+
+build_fitgirl-ddl-gui-git() {
+    cd "${_pkgname}"
+
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+
+    cargo build --frozen --release --bin ${_pkgname}_gui
 }
 
 package_fitgirl-ddl-git() {
@@ -58,7 +64,7 @@ package_fitgirl-ddl-gui-git() {
     pkgdesc+=" (GUI version)"
     conflicts=('fitgirl-ddl-gui')
     provides=('fitgirl-ddl-gui')
-    depends+=('glib2' 'cairo' 'dconf' 'gtk4')
+    depends+=('glib2' 'cairo' 'dconf' 'gtk4' 'dbus')
 
     cd "${_pkgname}"
 
