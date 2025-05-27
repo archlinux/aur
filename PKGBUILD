@@ -3,7 +3,7 @@
 
 _pkgname=vgmtrans
 pkgname=${_pkgname}-git
-pkgver=r1294.0744d39
+pkgver=r1384.d5429c6
 pkgrel=1
 pkgdesc="Converter for sequenced videogame music"
 arch=("x86_64")
@@ -56,6 +56,6 @@ package() {
 	install -Dm644 "../lib/bass/libbassmidi.so" "${pkgdir}/usr/lib/${_pkgname}/libbassmidi.so"
 
 	# Install the licenses
-	install -Dm644 "../LICENSE/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "../LICENSE/LICENSE_oki_adpcm_state" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_oki_adpcm_state"
+	install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "../licenses/LICENSE_oki_adpcm_state" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_oki_adpcm_state"
 }
