@@ -131,7 +131,9 @@ pkgbase = sagemath-git
 	conflicts = sagemath
 	source = git+https://github.com/sagemath/sage#branch=develop
 	source = latte-count.patch
+	source = cython-3.1.patch
 	sha256sums = SKIP
 	sha256sums = f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09
+	sha256sums = fc35f7f2ff9da7b80b7374479bc879e0f524ede253973075adeff60bdd44e895
 
 pkgname = sagemath-git
