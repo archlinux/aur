@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=delta-vision-bin
 _pkgname=DeltaVision
-pkgver=1.0.32
+pkgver=1.0.33
 _electronversion=28
 pkgrel=1
 pkgdesc="Local file utility for diffing, searching, and highlighting.(Prebuilt version.Use system-wide electron)"
@@ -22,8 +22,8 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Journey-West/DeltaVision/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8b6276477154a5c1b1fb8c3b363b948c3b290f53e743647a1e3c29e2c393124c'
-            '0eed8e6864d16cb0aa5c56bfa83683ee162bc97a6abea9cc538ccf85b31e332e'
+sha256sums=('098f04fbb541f07041edecfb63386b6dddad945e28211745f88836e90f093b85'
+            '777ba683a1626ff4ba880684a205cbcb6cfe2e01e4ccf24308ad9ce812ee753c'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
