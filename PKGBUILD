@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-git
-pkgver=5.61.0.r0.g52d59c3
+pkgver=5.62.2.r0.ga6a07e0
 pkgrel=1
 pkgdesc="qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems."
 arch=("any")
@@ -33,7 +33,7 @@ build() {
 
   sed -i -e "s/@VERSION@/${pkgver}/g" -e "s/@DATE@/${_monthYearDate}/g" "${_binaryname}.1"
 
-  go build -trimpath -ldflags="-s -w \
+  go build -trimpath -tags noextradeps -ldflags="-s -w \
   -X qp/internal/about.Version=${pkgver} \
   -X qp/internal/about.Commit=${_commit} \
   -X qp/internal/about.Date=${_fulldate}" \
