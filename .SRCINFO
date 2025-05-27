@@ -1,12 +1,12 @@
 pkgbase = migrate
 	pkgdesc = Database migration handling
-	pkgver = 4.18.1
+	pkgver = 4.18.3
 	pkgrel = 1
 	url = https://github.com/golang-migrate/migrate
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = migrate-4.18.1.tar.gz::https://github.com/golang-migrate/migrate/archive/v4.18.1.tar.gz
-	sha256sums = 06cb38c81f0152670c730e906a27f49b353958fe90dcdf9f90f318785c19977f
+	source = migrate-4.18.3.tar.gz::https://github.com/golang-migrate/migrate/archive/v4.18.3.tar.gz
+	sha256sums = 473342da619ce55bdb15e5ebcbcb6c798286b5dbd3f84f2884696b5cbe5d3d87
 
 pkgname = migrate
