@@ -1,16 +1,16 @@
 # Maintainer: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
 
 pkgname=popular-packages
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Lists popular packages not (yet) installed"
-url="https://objects-us-east-1.dream.io/pub-dist/Software/${pkgname}/${pkgname}.jpg"
+url="https://pub-dist.s3.us-east-005.dream.io/Software/${pkgname}/${pkgname}.jpg"
 arch=("any")
 license=("GPL3")
 depends=("wget" "jq" "package-query")
 #optdepends=("pacman-cage: Better performance")
 options=(!emptydirs)
-source=(https://objects-us-east-1.dream.io/pub-dist/Software/${pkgname}/${pkgname})
+source=(https://pub-dist.s3.us-east-005.dream.io/Software/${pkgname}/${pkgname})
 
 package() {
 	cd "${srcdir}"
@@ -18,4 +18,4 @@ package() {
 	install -D -m755 ${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
 
-sha256sums=('dbd2165d3a5cb2c7b4ad7a78cabdce97c980ff092dd7877710d31cc948b796e2')
+sha256sums=('4df195ee81471bbe2459b42c12e3a7428772cac71080995b4e4da0817a3c8c94')
