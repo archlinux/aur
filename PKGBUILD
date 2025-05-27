@@ -1,6 +1,6 @@
 # Maintainer: ZwrvKrll <zverevk429@gmail.com>
 pkgname=qbineditor
-pkgver=1.0-1
+pkgver=1.0
 pkgrel=1
 pkgdesc="Binary file editor written in Qt. Provides HEX, ASCII and BIN views with integrated search."
 arch=('x86_64')

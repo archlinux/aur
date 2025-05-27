@@ -1,8 +1,8 @@
 pkgbase = qbineditor
-    pkgname = qbineditor
     pkgdesc = Binary file editor written in Qt. Provides HEX, ASCII and BIN views with integrated search.
     pkgver = 1.0
     pkgrel = 1
+    url = https://github.com/ZwrvKrll/qbineditor
     arch = x86_64
     license = GPL
     depends = qt5-base
@@ -13,3 +13,5 @@ pkgbase = qbineditor
     makedepends = make
     source = https://github.com/ZwrvKrll/qbineditor.git
     md5sums = SKIP
+
+pkgname = qbineditor
