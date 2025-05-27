@@ -1,0 +1,19 @@
+pkgbase = python-starlette-compress
+	pkgdesc = Compression middleware for Starlette - supporting ZStd, Brotli and GZip.
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/Zaczero/starlette-compress
+	arch = any
+	license = 0BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python-brotli
+	depends = python-brotlicffi
+	depends = python-starlette
+	depends = python-zstandard
+	source = starlette-compress-1.6.0.tar.gz::https://files.pythonhosted.org/packages/source/s/starlette-compress/starlette_compress-1.6.0.tar.gz
+	b2sums = 72494bfd85eca9c2fdfd340326ac84359722622531d9c90844a12e6fdfb0aedc9c1a785ab5ea8434ed47a851867575d7324cbc8a6baced42e4d53ffb804989e6
+
+pkgname = python-starlette-compress

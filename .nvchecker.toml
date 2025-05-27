@@ -1,0 +1,3 @@
+[python-starlette-compress]
+source = "pypi"
+pypi = "starlette-compress"
