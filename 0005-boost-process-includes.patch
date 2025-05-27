@@ -22,6 +22,18 @@ index 8e0304ae95..33a6c3b283 100644
  
  static int run_script(const std::string &script, const std::string &gcode, std::string &std_err)
  {
+diff --git a/src/libslic3r/utils.cpp b/src/libslic3r/utils.cpp
+index 96b0b754a6..cef2ac896d 100644
+--- a/src/libslic3r/utils.cpp
++++ b/src/libslic3r/utils.cpp
+@@ -89,7 +89,6 @@
+ #else
+ 	// POSIX
+ #include <sstream>
+-#include <boost/process.hpp>
+ #include <unistd.h>     //readlink
+ #endif
+ 
 diff --git a/src/slic3r/GUI/FreeCADDialog.cpp b/src/slic3r/GUI/FreeCADDialog.cpp
 index 9b7213b557..dfe803a2a7 100644
 --- a/src/slic3r/GUI/FreeCADDialog.cpp
