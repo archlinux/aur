@@ -1,0 +1,14 @@
+pkgbase = kotlin-lsp-bin
+	pkgdesc = Smart code completion, diagnostics and more for Kotlin using the Language Server Protocol
+	pkgver = 0.252.17811
+	pkgrel = 1
+	url = https://github.com/Kotlin/kotlin-lsp
+	arch = any
+	license = Apache
+	depends = java-runtime=17
+	provides = kotlin-lsp
+	conflicts = kotlin-lsp-git
+	source = kotlin-lsp-bin-v0.252.17811.zip::https://download-cdn.jetbrains.com/kotlin-lsp/0.252.17811/kotlin-0.252.17811.zip
+	sha256sums = 0f38b00afb6d81f63d252dc729a0bc33a009befd11adea99001a52797d67318c
+
+pkgname = kotlin-lsp-bin
