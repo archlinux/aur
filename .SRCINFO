@@ -1,6 +1,6 @@
 pkgbase = patrjprof-git
 	pkgdesc = A Free Java profiler written in Java
-	pkgver = 1.4.0r259
+	pkgver = 1.5.0_snapshot.r274
 	pkgrel = 1
 	url = https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler
 	arch = any
@@ -11,12 +11,12 @@ pkgbase = patrjprof-git
 	optdepends = java-runtime>=8: graphical user interface
 	optdepends = java-runtime-headless>=16: support for socket files for server/client communication
 	optdepends = java-runtime-headless>=23: profile constructors with the new class-file API
-	provides = patrjprof=1.4.0r259
+	provides = patrjprof=1.5.0_snapshot.r274
 	conflicts = patrjprof
-	noextract = patr-java-build-3.0.0.jar
+	noextract = patr-java-build-3.0.1.jar
 	source = git+https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler.git#branch=latest-snapshot
-	source = https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/build/patr-java-build/3.0.0/patr-java-build-3.0.0.jar
+	source = https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/build/patr-java-build/3.0.1/patr-java-build-3.0.1.jar
 	sha512sums = SKIP
-	sha512sums = 37b081700ddaacac634320e304b55d64e59267aa1162e411e25cf105678b2603d7092bbe9ce95b9f2332fb2eea625108e3a362a9b122bdc450b6c2e9329564e5
+	sha512sums = fedeb176f37da4708d2704c3fed0b3fdd266e0fe4a2c6d1aaa5414829a7bac8553f2603edc0cafb31b62e4725402b282c2884a1e7611eaa85ee204dda274f08b
 
 pkgname = patrjprof-git

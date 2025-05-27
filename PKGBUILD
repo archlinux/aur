@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hechler <patrjprof-git.aur@ph.anderemails.de>
 pkgname=patrjprof-git
-pkgver=1.4.0r259
+pkgver=1.5.0_snapshot.r274
 pkgrel=1
 pkgdesc="A Free Java profiler written in Java"
 arch=('any')
@@ -20,12 +20,12 @@ backup=()
 options=()
 install=
 changelog=
-_pjb_version=3.0.0
+_pjb_version=3.0.1
 source=('git+https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler.git#branch=latest-snapshot'
         "https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/build/patr-java-build/$_pjb_version/patr-java-build-$_pjb_version.jar")
 noextract=(patr-java-build-$_pjb_version.jar)
 sha512sums=('SKIP'
-            '37b081700ddaacac634320e304b55d64e59267aa1162e411e25cf105678b2603d7092bbe9ce95b9f2332fb2eea625108e3a362a9b122bdc450b6c2e9329564e5')
+            'fedeb176f37da4708d2704c3fed0b3fdd266e0fe4a2c6d1aaa5414829a7bac8553f2603edc0cafb31b62e4725402b282c2884a1e7611eaa85ee204dda274f08b')
 
 pkgver() {
   cd "patr-java-profiler"
