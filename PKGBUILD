@@ -3,7 +3,7 @@
 
 pkgname=erigon-git
 _pkgname=${pkgname%-git}
-pkgver=3.0.4.r682.110004e1f1
+pkgver=3.0.4.r682.110004e
 pkgrel=1
 pkgdesc="Ethereum execution layer implementation in Go"
 arch=('x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 
   tag=$(git tag | grep -E '^v[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}$' | sort -V | tail -n1)
   count=$(git rev-list --count "${tag}"..HEAD)
-  hash=$(git rev-parse --short HEAD)
+  hash=$(git rev-parse --short=7 HEAD)
 
   printf "%s.r%s.%s" "${tag#v}" "$count" "$hash"
 }
