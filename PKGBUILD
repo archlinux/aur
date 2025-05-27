@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tinytotp-bin
 _pkgname=TinyTotp
-pkgver=4.2.0
-pkgrel=2
+pkgver=4.6.1
+pkgrel=1
 pkgdesc="A Totp Client.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/kryptonbutterfly/TinyTotp"
@@ -16,14 +16,14 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.deb"
 )
-sha256sums=('8eddeab00392bb8d613be65adedd6fd093524a3955168b35ff2d95bbb2f6bce0')
+sha256sums=('3c4e1ce2168f8cc49ae638964bad779f57686c6588d5a385a17d9c0b53eea80e')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/usr\/share\/${_pkgname}\/${_pkgname}.jar/\/usr\/lib\/${pkgname%-bin}\/${_pkgname}.jar/g
         s/\/usr\/share\/${_pkgname}\/icon.svg/${pkgname%-bin}/g
         5i\Categories=Utility;
-    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm644 "${srcdir}/usr/share/${_pkgname}/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
