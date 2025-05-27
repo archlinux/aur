@@ -1,39 +1,32 @@
-# Maintainer: Your Name <your.email@example.com>
-
 pkgname=node-cleaner
 pkgver=0.1.6
 pkgrel=1
-pkgdesc="A tool for cleaning and managing node_modules directories"
-arch=('x86_64')
-url="https://github.com/Breinss/rust-node-modules-cleaner"
+pkgdesc='A tool for cleaning and managing node_modules directories'
+arch=('any')
+url='no'
 license=('MIT')
-depends=()
-makedepends=('rust' 'cargo')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Breinss/rust-node-modules-cleaner/archive/refs/heads/main.tar.gz")
 sha256sums=('SKIP')
+makedepends=('rust' 'cargo' 'git')
+source=('node-cleaner-git::git+https://github.com/Breinss/rust-node-modules-cleaner')
 
-prepare() {
-  cd "rust-node-modules-cleaner-main"
-  cargo fetch --locked
+pkgver() {
+ cd "$pkgname"
+ echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)" | tr '-' '.'
 }
 
 build() {
-  cd "rust-node-modules-cleaner-main"
-  cargo build --release --locked
+   cd "$pkgname"
+   cargo build --release --locked --all-features --target-dir=target
 }
 
 check() {
-  cd "rust-node-modules-cleaner-main"
-  cargo test --release --locked
+  cd "$pkgname"
+  cargo test --release --locked --target-dir=target
 }
 
 package() {
-  cd "rust-node-modules-cleaner-main"
-  install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-
-  # Optional: install documentation
-  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-  
-  # If you have a license file, uncomment and adjust the following:
-   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "$pkgname"
+  install -Dm 755 target/release/node-cleaner -t "${pkgdir}/usr/bin"
+  # install -Dm 755 LICENSE "${pkgdir}/usr/share/licenses/node-cleaner"
 }
+
