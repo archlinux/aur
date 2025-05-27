@@ -1,8 +1,8 @@
 # Maintainer: Posi<posi1981@gmail.com>
 pkgname=betterbird-ru-bin
 _pkgname=betterbird
-pkgver=128.10.1esr
-_build=bb27-build2
+pkgver=128.11.0esr
+_build=bb28
 pkgrel=1
 pkgdesc="RUSSIAN // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
@@ -43,7 +43,7 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('c95dcc03cfdaf56edfcc1ecfd9c55474c669682f20418c4c1a7acbb07238a58e'
+sha256sums=('cefc19cc317a0e5f801e149f6818d466c9ab1c2ea88e9d40a4f5b80aae17deb0'
             'dde5f71088162b89c7ea56508c06441e6e1e717206f781c00657cb71d96d44cd'
             'b11745416d2b2f8bac1ccd3dcb99411c7239b067adf9eb973903c448f8747d09')
 
