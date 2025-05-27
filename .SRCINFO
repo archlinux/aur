@@ -1,6 +1,6 @@
 pkgbase = poi-git
 	pkgdesc = A scalable browser and tool set for Kantai Collection(KanColle).(Use system-wide electron)
-	pkgver = 11.0.0.beta.6.r36.g7c0b02b
+	pkgver = 11.0.0.beta.7.r2.gd81f54d
 	pkgrel = 1
 	url = https://poi.moe/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = poi-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
-	depends = electron35
-	provides = poi=11.0.0.beta.6
+	depends = electron36
+	provides = poi=11.0.0.beta.7
 	conflicts = poi
 	source = poi.git::git+https://github.com/poooi/poi.git
 	source = poi.sh
