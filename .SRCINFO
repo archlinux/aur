@@ -18,5 +18,5 @@ pkgbase = ffdiaporama2
 	source = git+https://github.com/nojorada/ffDiaporama.git
 	md5sums = 
 
-pkgname = ffdiaporama
+pkgname = ffdiaporama2
 
