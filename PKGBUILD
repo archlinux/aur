@@ -5,23 +5,18 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer AT gmail DOT com>
 # Contributor: mnabid
 
-pkgname=zoom-system-qt
+pkgbase=zoom-system-qt
+pkgname=(${pkgbase}{,-cef} )
 pkgver=6.4.10.2027
-pkgrel=1
-pkgdesc="Zoom Workspace client (system runtimes)"
+pkgrel=2
 arch=('x86_64')
 license=('LicenseRef-zoom')
 url="https://zoom.us/"
-depends=(ocl-icd ffmpeg mpg123
-	quazip-qt5 qt5-{base,graphicaleffects,quickcontrols,quickcontrols2,svg,declarative}
-)
 makedepends=(patchelf binutils)
 optdepends=('qt5-wayland'
 	'qt5-webengine: SSO login'
 	'xdg-desktop-portal-impl: Screen sharing,etc... for Wayland'
-	{chromium,sqlite,vulkan-drivers}': Webview'
-	'qt5-'{3d,x11extras,multimedia,imageformats,remoteobjects}': Unused?'
-	)
+	'qt5-'{3d,x11extras,multimedia,imageformats,remoteobjects}': Unused?')
 options=(!strip emptydirs)
 provides=(zoom)
 conflicts=(zoom)
@@ -43,12 +38,26 @@ build() {
 
 	cd cef #Updating CEF(https://cef-builds.spotifycdn.com/index.html) seems impossible. ABI?
 	mv locales/en-US.pak .;rm -r locales/*;mv en-US.pak locales # for ZoomWebviewHost
-	ln -sf /usr/lib/libavformat.so libffmpeg.so* # is vivaldi-ffmpeg-codecs better?
+	ln -sf /opt/vivaldi/libffmpeg.so.7.4 libffmpeg.so*
 	rm -r libsqlite3.so*
 	for f in chrome-sandbox *.{pak,dat,json} lib{EGL,GLESv2,vulkan,vk_swiftshader}.so*
 		do ln -sf {/usr/lib/chromium/,}$f
 	done
 }
-package() {
-	mv opt usr "$pkgdir"
+
+package_zoom-system-qt() {
+  depends=(ocl-icd ffmpeg mpg123
+  quazip-qt5 qt5-{base,graphicaleffects,quickcontrols,quickcontrols2,svg,declarative})
+  pkgdesc="Zoom Workspace client on system runtime"
+  mv opt usr "$pkgdir" # breaks --repackage
+  mv "$pkgdir"/opt/zoom/{ZoomWebviewHost,cef} .
+  
+}
+
+package_zoom-system-qt-cef(){
+  pkgdesc="Webview for zoom-system-qt"
+  depends=(${pkgbase} chromium sqlite vivaldi-ffmpeg-codecs )
+  optdepends=(vulkan-driver)
+  install -d "$pkgdir"/opt/zoom
+  mv ZoomWebviewHost cef "$pkgdir"/opt/zoom
 }
