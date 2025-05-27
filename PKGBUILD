@@ -1,7 +1,7 @@
 # Maintainer: Aaron Davidov <aaron.skib.aur@gmail.com>
 pkgname=skib
-pkgver=1.002
-pkgrel=3
+pkgver=1.100
+pkgrel=4
 pkgdesc="A simple light aur helper."
 arch=('x86_64')
 url="https://github.com/SP4RKGT/skib"

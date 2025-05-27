@@ -1,7 +1,7 @@
 pkgbase = skib
 	pkgdesc = A simple light aur helper.
-	pkgver = 1.002
-	pkgrel = 3
+	pkgver = 1.100
+	pkgrel = 4
 	url = https://github.com/SP4RKGT/skib
 	arch = x86_64
 	license = unknown
