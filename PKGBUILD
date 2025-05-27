@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netpad-bin
 _pkgname=NetPad
-pkgver=0.8.0
+pkgver=0.9.0
 _electronversion=23
-pkgrel=2
+pkgrel=1
 pkgdesc="A cross-platform C# editor and playground.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/tareqimbasher/NetPad"
@@ -26,8 +26,8 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tareqimbasher/NetPad/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c4c82bcc9c064965af24c48f0bed2c782dbeaba9d9d3f4bf7774492245b545b2'
-            '43485534798b716310ae2a0edeebb00e97ff0e42e5fde13ff2994e2bc82348f6'
+sha256sums=('f7413089567eee12d48913f99f26b433765aba5f249a61c0b071114b4df23f74'
+            'bf644b3a7e5dc5d7c4ce8b9db8c8df97d41efa3c1bff8e4c7dfe78e668561341'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
