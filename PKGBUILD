@@ -12,6 +12,7 @@ depends=(
 )
 makedepends=(
   git
+  findutils
 )
 source=(
   git+https://github.com/JacKeTUs/$_reponame
@@ -22,7 +23,7 @@ sha256sums=(
 
 package() {
   cd "$srcdir/$_reponame"
-  install -m644 ./*.hwdb $pkgdir/usr/lib/udev/hwdb.d/
+  ls | grep ".hwdb" | xargs -I {} install -m644 ./{} $pkgdir/usr/lib/udev/hwdb.d/{}
 }
 
 post_install() {
