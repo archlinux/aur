@@ -1,0 +1,30 @@
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -75,8 +75,8 @@
+ PROGS       := \
+ 	base32 \
+ 	base64 \
+-	basenc \
+ 	basename \
++	basenc \
+ 	cat \
+ 	cksum \
+ 	comm \
+@@ -108,8 +108,8 @@
+ 	more \
+ 	mv \
+ 	nl \
+-	numfmt \
+ 	nproc \
++	numfmt \
+ 	od \
+ 	paste \
+ 	pr \
+@@ -127,6 +127,7 @@
+ 	sleep \
+ 	sort \
+ 	split \
++	stty \
+ 	sum \
+ 	sync \
+ 	tac \
