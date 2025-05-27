@@ -15,7 +15,7 @@
 # https://salsa.debian.org/gnome-team/mutter/-/tree/ubuntu/latest/debian/patches/ubuntu
 
 pkgname=mutter-x11-scaling
-pkgver=48.2
+pkgver=48.3
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -99,7 +99,7 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=466fc22016cf0981424e7121557611942191992f"
   "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/421143c8da7643be33b34345b9cdea53f7f4e2df/x11-Add-support-for-fractional-scaling-using-Randr.patch"
 )
-b2sums=('c391e383ebc19db1a2e1361eb23a52757eb1e2d18ca5349cf2ea658619cf220b4f6154c71e993c4a8f8f7bfe56e0c323da6812ab7ae7b564867f8bb97de37218'
+b2sums=('d8b1d4ff788075c26f25dd40b9f46de640e523ea3acefb2d9d178033d1780ff63d882e730d47001224e27683d01d8453330d54a8282d3699ab65cad2e76372eb'
         'c25796ff54fee353c5fc7a0815c25255b399490148d2bad1f37932d2da66d80561d6e262a5f256c89d142419a504c23eff69f7ef4e65e349f2dea3e0ac0bac1a'
         '0674df6a5bd93ecea92499ecb5711d0cdede86a2652d42260acd4bfa075604c8114227f8773b50789cc13fbc689a05c3edd005718e7b9a05238f7810f57101ab')
 
