@@ -1,5 +1,4 @@
-# exclude everything except directory .gitignore, PKGBUILD and .SRCINFO
-/*
-!/.gitignore
-!/PKGBUILD
-!/.SRCINFO
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
