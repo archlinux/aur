@@ -1,0 +1,3 @@
+[hepmc]
+source = "git"
+git = "https://gitlab.cern.ch/hepmc/HepMC3.git"
