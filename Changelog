@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : dns_tools
- Tags         : 4.0.2 ➙ 4.2.0
-              : 2025-05-16 ➙ 2025-05-21
+ Tags         : 4.0.3 ➙ 4.3.0
+              : 2025-05-16 ➙ 2025-05-27
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-05-27   : 4.3.0
+                Fix option parser for dns-prod-push --int-ext
+ 2025-05-21     update Docs/Changelog Docs/${my_name}.pdf
 
  2025-05-21   : 4.2.0
                 Use builtin types where possible. e.g. typing.List -> list
@@ -19,8 +23,4 @@
 
  2025-05-16   : 4.0.3
                 Arch PKGBUILD add missed dependency on lockmgr
-                update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-05-16   : 4.0.2
-                Typo in Arch PKGBUILD
                 update Docs/Changelog Docs/${my_name}.pdf
