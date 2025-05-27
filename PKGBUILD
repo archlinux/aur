@@ -1,6 +1,6 @@
 # Maintainer: Tomasz Pakula <forest10pl@gmail.com>
 pkgname=simracing-essentials
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="A collection of sim racing-focused utilities and drivers"
 arch=('any')
@@ -16,6 +16,7 @@ depends=(
   hid-tmff2-dkms
   jstest-gtk-git
   boxflat
+  simracing-hwdb-git
 )
 
 package() {
