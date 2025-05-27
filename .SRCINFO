@@ -5,6 +5,7 @@ pkgbase = cherry-studio-bin
 	url = https://github.com/cherryHQ/cherry-studio
 	arch = x86_64
 	license = custom
+	depends = fuse2
 	conflicts = cherry-studio
 	options = !strip
 	options = !debug

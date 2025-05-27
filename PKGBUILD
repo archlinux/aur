@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/cherryHQ/cherry-studio"
 license=('custom')
 options=('!strip' '!debug')
-depends=()
+depends=('fuse2')
 source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Cherry-Studio-${pkgver}-${arch}.AppImage"
   "${_pkgname}.desktop"
   "${_pkgname}.png")
