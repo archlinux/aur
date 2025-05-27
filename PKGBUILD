@@ -21,7 +21,8 @@ sha256sums=(
 )
 
 package() {
-  install -m644 $srcdir/*.hwdb /usr/lib/udev/hwdb.d/
+  cd "$srcdir/$_reponame"
+  install -m644 ./*.hwdb $pkgdir/usr/lib/udev/hwdb.d/
 }
 
 post_install() {
