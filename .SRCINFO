@@ -1,0 +1,22 @@
+pkgbase = linuxthemestore-git
+	pkgdesc = A Linux desktop app to install linux themes
+	pkgver = 0.1
+	pkgrel = 0.1
+	url = https://github.com/debasish-patra-1987/linuxthemestore
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = libadwaita
+	makedepends = gtk4
+	makedepends = meson
+	makedepends = ninja
+	makedepends = glib2
+	depends = libadwaita
+	depends = gtk4
+	provides = linuxthemestore
+	conflicts = linuxthemestore-bin
+	source = linuxthemestore-git::git+https://github.com/debasish-patra-1987/linuxthemestore
+	sha1sums = SKIP
+
+pkgname = linuxthemestore-git
