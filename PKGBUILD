@@ -20,7 +20,7 @@ makedepends=( electron nodejs-electron # should be nvm
 git npm pnpm python desktop-file-utils libarchive)
 conflicts=(code vscode)
 provides=(code vscode)
-options=(!strip) # strip breaks sign of ext
+options=(!strip) # for sign of ext
 source=(vscode::"git+https://github.com/microsoft/vscode.git"
 'https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/'{code.sh,code.mjs,clipath.patch,product_json.diff})
 sha512sums=('SKIP'{,,,,}) # should we have cksums ?
@@ -103,29 +103,27 @@ package() {
   # Resource files
   install -dm755 "$pkgdir"/usr/lib/code
   cp -r --reflink=auto --no-preserve=ownership VSCode-linux-${_vscode_arch}/resources/app/* "$pkgdir"/usr/lib/code/
-  # system-wide tools
+  # system tools
   ln -svf /usr/bin/rg "$pkgdir"/usr/lib/code/node_modules/@vscode/ripgrep/bin/rg
   ln -svf /usr/bin/xdg-open "$pkgdir"/usr/lib/code/node_modules/open/xdg-open
-
   # Launcher
   install -Dm755 code.sh "$pkgdir"/usr/bin/code
   install -Dm755 code.mjs "$pkgdir"/usr/lib/code/code.mjs
   ln -sf /usr/bin/code "$pkgdir"/usr/bin/code-oss
-
   # Appdata and desktop file
   install -Dm644 vscode/resources/linux/code.appdata.xml "$pkgdir"/usr/share/metainfo/code-oss.appdata.xml
   install -Dm644 vscode/resources/linux/code.desktop "$pkgdir"/usr/share/applications/code-oss.desktop
   install -Dm644 vscode/resources/linux/code-url-handler.desktop "$pkgdir"/usr/share/applications/code-url-handler.desktop
   install -Dm644 vscode/resources/linux/code-oss-url-handler.desktop "$pkgdir"/usr/share/applications/code-oss-url-handler.desktop
-  install -Dm644 VSCode-linux-${_vscode_arch}/resources/app/resources/linux/code.png "$pkgdir"/usr/share/pixmaps/com.visualstudio.code.oss.png
-
+  # SVG icon
+  install -d "$pkgdir"/usr/share/icons/hicolor/scalable/apps
+  ln -sf /usr/lib/code/out/media/code-icon.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/com.visualstudio.code.oss.svg
   # Shell completions
   install -Dm644 vscode/resources/completions/bash/code "$pkgdir"/usr/share/bash-completion/completions/code
   install -Dm644 vscode/resources/completions/bash/code-oss "$pkgdir"/usr/share/bash-completion/completions/code-oss
   install -Dm644 vscode/resources/completions/zsh/_code "$pkgdir"/usr/share/zsh/site-functions/_code
   install -Dm644 vscode/resources/completions/zsh/_code-oss "$pkgdir"/usr/share/zsh/site-functions/_code-oss
-
-  # License, use $pkgname for namcap
+  # License
   install -Dm644 VSCode-linux-${_vscode_arch}/resources/app/LICENSE.txt "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
   install -Dm644 VSCode-linux-${_vscode_arch}/resources/app/ThirdPartyNotices.txt "$pkgdir"/usr/share/licenses/${pkgname}/ThirdPartyNotices.txt
 }
