@@ -1,0 +1,19 @@
+pkgbase = fensterchef
+	pkgdesc = Tiling window manager for X11
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/fensterchef/fensterchef
+	arch = any
+	license = MIT
+	makedepends = coreutils
+	makedepends = pkgconf
+	depends = libx11
+	depends = libxrandr>=1.2
+	depends = libxcursor
+	depends = libxft
+	depends = fontconfig
+	provides = fensterchef
+	source = git+https://github.com/fensterchef/fensterchef
+	sha1sums = SKIP
+
+pkgname = fensterchef
