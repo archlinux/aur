@@ -8,6 +8,6 @@ pkgbase = node-cleaner
 	makedepends = rust
 	makedepends = cargo
 	source = node-cleaner-0.2.12.tar.gz::https://github.com/Breinss/rust-node-modules-cleaner/archive/v0.2.12.tar.gz
-	sha256sums = SKIP
+	sha256sums = 2337af48636096b6a14c8dc1fa8e619ca7971af6d0e457205a200262d00333cc
 
 pkgname = node-cleaner
