@@ -2,9 +2,9 @@
 pkgname=wordpress-studio-git
 _appname=Studio
 _pkgname="WordPress ${_appname}"
-pkgver=1.3.3.r8.g9fd8753
-_electronversion=33
-_nodeversion=20
+pkgver=1.5.2.r4.g4fac446
+_electronversion=35
+_nodeversion=22
 pkgrel=1
 pkgdesc="A free desktop app that helps developers streamline their local WordPress development workflow.(Use system-wide electron)"
 arch=('any')
@@ -15,6 +15,7 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
+    'php'
 )
 makedepends=(
     'npm'
@@ -22,7 +23,6 @@ makedepends=(
     'nvm'
     'gendesk'
     'curl'
-    'php'
 )
 options=(
     '!strip'
@@ -62,7 +62,6 @@ prepare() {
         --categories="Development" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
@@ -85,20 +84,21 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
-    sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
     {\\
         name: \"@electron-forge/plugin-local-electron\",\\
         config: {\\
-            electronPath: \"${electronDist}\"\\
-        }\\
+            electronPath: \'${electronDist}\',\\
+        },\\
     }," forge.config.*
     NODE_ENV=production     npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/out/${_appname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/out/${_appname}-linux-"*/resources/{assets,wp-files} "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/out/${_appname}-linux-"*/resources/{assets,bin,cli,wp-files} "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/studio-app-icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
