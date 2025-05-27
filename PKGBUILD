@@ -4,13 +4,13 @@ pkgname=ancient-packages
 pkgver=0.3.0
 pkgrel=1
 pkgdesc="Lists installed packages no longer available (anywhere)"
-url="https://objects-us-east-1.dream.io/pub-dist/Software/${pkgname}/${pkgname}.jpg"
+url="https://pub-dist.s3.us-east-005.dream.io/Software/${pkgname}/${pkgname}.jpg"
 arch=("any")
 license=("GPL3")
 depends=("package-query")
 #optdepends=("pacman-cage: Better performance")
 options=(!emptydirs)
-source=(https://objects-us-east-1.dream.io/pub-dist/Software/${pkgname}/${pkgname})
+source=(https://pub-dist.s3.us-east-005.dream.io/Software/${pkgname}/${pkgname})
 
 package() {
 	cd "${srcdir}"
