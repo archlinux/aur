@@ -1,0 +1,33 @@
+pkgbase = fitgirl-ddl-git
+	pkgdesc = fitgirl-repacks.site extractor
+	pkgver = r22.g113740c
+	pkgrel = 1
+	url = https://github.com/mokurin000/fitgirl-ddl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	makedepends = jq
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = git+https://github.com/mokurin000/fitgirl-ddl.git
+	sha256sums = SKIP
+
+pkgname = fitgirl-ddl-git
+	provides = fitgirl-ddl
+	conflicts = fitgirl-ddl
+
+pkgname = fitgirl-ddl-gui-git
+	pkgdesc = fitgirl-repacks.site extractor (GUI version)
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	depends = glib2
+	depends = cairo
+	depends = dconf
+	depends = gtk4
+	provides = fitgirl-ddl-gui
+	conflicts = fitgirl-ddl-gui
