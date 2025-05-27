@@ -3,10 +3,10 @@
 # Maintainer: xiaoxi404 <1577912515#qq.com>
 _pkgbase=simple-live-app
 pkgname=simple-live-app-bin
-_build_id=10803
-_version=1.8.3
+_build_id=10806
+_version=1.8.6
 pkgver=${_version}.${_build_id}
-pkgrel=2
+pkgrel=1
 
 pkgdesc='简简单单的看直播'
 arch=('x86_64')
@@ -16,8 +16,9 @@ license=('GPL3')
 provides=("$_pkgbase")
 # conflicts=("$pkgname-git" "$pkgname-beta")
 
+
 source_x86_64=("$pkgname-$pkgver.deb::https://github.com/xiaoyaocz/dart_simple_live/releases/download/v${_version}/simple_live_app-${_version}+${_build_id}-linux.deb")
-sha256sums_x86_64=('e4adb252adaf2114745d2603c0683b5fcbb0c233c5a41fe69edffe94e0a779d1')
+sha256sums_x86_64=('e0f1a3c40081ceec5ace32976b8e0394ad78ec0273f8febfa794d66066d7c385')
 depends=('libmpv.so' 'xdg-user-dirs')
 makedepends=('patchelf')
 options=(!debug)
