@@ -1,7 +1,7 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=lightdm-kde-greeter
-pkgver=6.0.2
+pkgver=6.0.3
 pkgrel=1
 pkgdesc='LightDM Greeter for KDE'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=(lightdm kdeclarative qt6-5compat kiconthemes kcmutils kpackage kconfig kconfigwidgets networkmanager-qt kcoreaddons ki18n kauth kservice libplasma)
 makedepends=(git cmake extra-cmake-modules qt6-tools gtk2-compat)
 source=("git+https://invent.kde.org/plasma/lightdm-kde-greeter.git#tag=v${pkgver}")
-sha512sums=('b1153b2d19bc224605a33b079c0a3ea45db90eb40fee7bbe2c80104ecd538f3b15ec60f2b59dfe7c2755d10fac32e0a4eb1d6146ccb67a0c2fb23256ad06dddf')
+sha512sums=('67da04e8d73360c79bccbbce05f2cc1110b780ecabb007ac55abbb3a3d4ed8092ed68716ce36e8782abd628d5cbe031b51554e1cdab9200e466b35e3041e758a')
 backup=('etc/lightdm/lightdm-kde-greeter.conf')
 
 prepare() {
