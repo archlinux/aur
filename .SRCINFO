@@ -1,6 +1,6 @@
 pkgbase = ripsecrets
 	pkgdesc = A command-line tool to prevent committing secret keys into your source code
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/sirwart/ripsecrets
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ripsecrets
 	makedepends = rust
 	depends = gcc-libs
 	options = !lto
-	source = ripsecrets::git+https://github.com/sirwart/ripsecrets.git#commit=f81b55ac929cdbdb6739469099ba9aebd5af5a6a
+	source = ripsecrets::git+https://github.com/sirwart/ripsecrets.git#commit=7d94620933e79b8acaa0cd9e60e9864b07673d86
 	md5sums = SKIP
 
 pkgname = ripsecrets

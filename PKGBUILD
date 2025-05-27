@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=ripsecrets
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc='A command-line tool to prevent committing secret keys into your source code'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 options=('!lto')
-_commit='f81b55ac929cdbdb6739469099ba9aebd5af5a6a'
+_commit='7d94620933e79b8acaa0cd9e60e9864b07673d86'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
