@@ -1,4 +1,5 @@
 # Maintainer: Tomasz Pakula <forest10pl@gmail.com>
+_reponame=simracing-hwdb
 pkgname=simracing-hwdb-git
 pkgver=1.0
 pkgrel=1
@@ -11,6 +12,12 @@ depends=(
 )
 makedepends=(
   git
+)
+source=(
+  git+https://github.com/JacKeTUs/$_reponame
+)
+sha256sums=(
+  'SKIP'
 )
 
 package() {
