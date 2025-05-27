@@ -1,27 +1,27 @@
 pkgbase = essentia-git
-	pkgdesc = Open-source library and tools for audio and music analysis, description and synthesis. (With Python 3 bindings)
-	pkgver = r1687.52585c53
+	pkgdesc = C++ library for audio and music analysis, with Python bindings (built against ffmpeg3.4)
+	pkgver = r3700.fcfac131
 	pkgrel = 1
-	url = http://essentia.upf.edu/documentation/
+	url = https://essentia.upf.edu/
 	arch = x86_64
-	license = AGPL
+	license = AGPL3
 	makedepends = git
-	makedepends = python
-	makedepends = glibc
+	makedepends = python-setuptools
 	depends = fftw
-	depends = ffmpeg
+	depends = eigen
 	depends = libsamplerate
-	depends = taglib
 	depends = libyaml
+	depends = taglib
+	depends = chromaprint
 	depends = python
 	depends = python-numpy
 	depends = python-yaml
+	depends = python-six
+	depends = libsndfile
+	depends = ffmpeg3.4
 	provides = essentia
 	conflicts = essentia
-	conflicts = essentia-acousticbrainz
-	conflicts = lib32-essentia-acousticbrainz
-	source = git+https://github.com/MTG/essentia.git#branch=master
+	source = git+https://github.com/MTG/essentia.git
 	md5sums = SKIP
 
 pkgname = essentia-git
-

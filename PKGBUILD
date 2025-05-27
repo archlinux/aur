@@ -1,46 +1,54 @@
-# Maintainer: Eugene Cherny <iam@oscii.ru>
+# Contributor: Eugene Cherny <iam@oscii.ru>
+# Maintainer:  zac
 pkgname=essentia-git
-pkgrel=1 
-pkgver=r1687.52585c53
-pkgdesc='Open-source library and tools for audio and music analysis,
-description and synthesis. (With Python 3 bindings)'
+pkgver=r3700.fcfac131
+pkgrel=1
+pkgdesc="C++ library for audio and music analysis, with Python bindings (built against ffmpeg3.4)"
 arch=('x86_64')
-url="http://essentia.upf.edu/documentation/"
-license=('AGPL')
-makedepends=('git' 'python' 'glibc')
-depends=('fftw' 'ffmpeg' 'libsamplerate' 'taglib' 'libyaml'
-         'python' 'python-numpy' 'python-yaml')
+url="https://essentia.upf.edu/"
+license=('AGPL3')
+depends=(
+  'fftw' 'eigen' 'libsamplerate' 'libyaml' 'taglib' 'chromaprint'
+  'python' 'python-numpy' 'python-yaml' 'python-six' 'libsndfile'
+  'ffmpeg3.4'
+)
+makedepends=('git' 'python-setuptools')
 provides=('essentia')
 conflicts=('essentia' 'essentia-acousticbrainz'
            'lib32-essentia-acousticbrainz')
-source=('git+https://github.com/MTG/essentia.git#branch=master')
+source=("git+https://github.com/MTG/essentia.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/essentia"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/essentia"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/essentia"
+  git submodule update --init --recursive
 }
 
 build() {
-	cd "$srcdir/essentia"
-    ./waf configure      \
-        --mode=release   \
-        --build-static   \
-        --with-cpptests  \
-        --with-examples  \
-        --with-python    \
-        --python=$(which python)  \
-        --prefix="$pkgdir/usr"
-    ./waf
+  cd "$srcdir/essentia"
+
+  # Use ffmpeg3.4 headers and libraries
+  export CFLAGS="-I/usr/include/ffmpeg3.4"
+  export CXXFLAGS="-I/usr/include/ffmpeg3.4"
+  export LDFLAGS="-L/usr/lib/ffmpeg3.4"
+  export PKG_CONFIG_PATH="/usr/lib/ffmpeg3.4/pkgconfig"
+
+  python waf configure \
+    --prefix=/usr \
+    --with-python \
+    --with-examples \
+    --with-vamp \
+    --with-cpptests
+
+  python waf
 }
 
-#check() {
-#    cd "$srcdir/$pkgname"
-#    ./waf run_tests
-#    ./waf run_python_tests
-#}
-
 package() {
-	cd "$srcdir/essentia"
-	./waf install
+  cd "$srcdir/essentia"
+  python waf install --destdir="$pkgdir"
 }
