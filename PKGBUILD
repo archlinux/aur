@@ -1,13 +1,13 @@
 pkgname=pacleaner
-pkgver=2.2
-pkgrel=1
-scriptver=0.2.2
+pkgver=2.3
+pkgrel=2
+scriptver=0.2.3
 pkgdesc="Script to clean up pacman cache in a more flexible way than with paccache or pacman itself. Fully configurable and flexible"
 arch=(i686 x86_64)
 depends=('python' 'python-hurry-filesize')
 url="https://github.com/lesebas/pacleaner"
 source=("https://github.com/lesebas/pacleaner/archive/"${scriptver}".tar.gz")
-md5sums=('67b47b257d51c3b7acba58bad544f442')
+md5sums=('2a7fc8ca61a0a1913add395f39bc7a73')
 license=('GPL')
 
 package(){
