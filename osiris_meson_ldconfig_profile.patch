@@ -1,0 +1,8 @@
+--- a/meson.build
++++ b/meson.build
+@@ -1288,5 +1288,3 @@
+                 filebase : 'osiris',
+                 subdirs : 'osiris',
+                 description : 'Osiris is a C++ GUI Toolkit forked from Qt 2.3.2')
+-
+-meson.add_install_script('_install_generate_ldconfig_profile.sh')

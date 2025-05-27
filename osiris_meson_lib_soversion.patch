@@ -1,0 +1,11 @@
+--- a/meson.build
++++ b/meson.build
+@@ -574,7 +574,7 @@
+ osiris_sources += moc_generated_files
+ 
+ osiris_lib_version = meson.project_version()
+-osiris_lib_postfix = osiris_lib_version
++osiris_lib_postfix = osiris_lib_version.split('.')[0]
+ 
+ default_osirislib = []
+ 

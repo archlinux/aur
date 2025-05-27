@@ -1,0 +1,29 @@
+--- a/meson.build
++++ b/meson.build
+@@ -7,8 +7,6 @@
+ 
+ osiris_install_prefix = get_option('prefix')
+ 
+-osiris_cpp_flags = [ '-Werror=format-security' ]
+-
+ project_defines = [
+     '-DQT_NO_IMAGEIO_MNG',
+     '-DQT_NO_SM_SUPPORT',
+@@ -568,7 +566,7 @@
+ if get_option('single-thread').enabled()
+     osirislib = shared_library('osiris',
+                                osiris_sources,
+-                               cpp_args : project_defines + osiris_cpp_flags,
++                               cpp_args : project_defines,
+                                include_directories : osiris_include_directories,
+                                dependencies : osiris_deps,
+                                install : true,
+@@ -584,7 +582,7 @@
+     defines += '-DQT_THREAD_SUPPORT'
+     osirislib_mt = shared_library('osiris-mt',
+                                   osiris_sources,
+-                                  cpp_args : defines + osiris_cpp_flags,
++                                  cpp_args : defines,
+                                   include_directories : osiris_include_directories,
+                                   dependencies : osiris_deps,
+                                   install : true,

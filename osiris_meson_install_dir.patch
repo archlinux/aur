@@ -1,0 +1,65 @@
+--- a/meson.build
++++ b/meson.build
+@@ -38,12 +38,12 @@
+     project_defines += '-DQT_NO_XKB'
+ endif
+ 
+-install_dir = get_option('prefix') / 'bin'
+-lib_install_dir = get_option('prefix') / 'lib'
+-include_install_dir = get_option('prefix') / 'include/osiris'
++install_dir = get_option('bindir')
++lib_install_dir = get_option('libdir')
++include_install_dir = get_option('includedir') / 'osiris'
+ 
+-osiris_assets_install_dir = get_option('prefix') / 'share/osiris'
+-designer_assets_install_dir = get_option('prefix') / 'share/designer'
++osiris_assets_install_dir = get_option('prefix') / 'share' / 'osiris'
++designer_assets_install_dir = get_option('prefix') / 'share' / 'osiris' / 'designer'
+ 
+ dialog_header_path = 'src/dialogs'
+ kernel_header_path = 'src/kernel'
+@@ -123,7 +123,7 @@
+ m_dep = cc.find_library('m', required : true)
+ z_dep = cc.find_library('z', required : true)
+ 
+-moc_exe = executable('moc',
++moc_exe = executable('moc-osiris',
+             moc_sources,
+             dependencies : [z_dep],
+             include_directories : moc_include_directories,
+@@ -1030,7 +1030,7 @@
+     osiris_include_directories,
+ ]
+ 
+-uic_exe = executable('uic',
++uic_exe = executable('uic-osiris',
+             uic_sources,
+             dependencies : [z_dep],
+             include_directories : uic_include_directories,
+@@ -1220,7 +1220,7 @@
+     '-DDESIGNER=1',
+ ]
+ 
+-executable('designer',
++executable('designer-osiris',
+             designer_sources,
+             dependencies : [z_dep],
+             include_directories : designer_include_directories,
+@@ -1279,7 +1279,7 @@
+                 strip_directory : false,
+ )
+ 
+-designer_docs_install_dir = designer_assets_install_dir / 'doc/html/'
++designer_docs_install_dir = get_option('datadir') / 'doc' / 'osiris' / 'designer' / 'html'
+ 
+ install_subdir('doc/html/designer',
+                 install_dir : designer_docs_install_dir,
+@@ -1287,7 +1287,7 @@
+                 strip_directory : true,
+ )
+ 
+-osiris_docs_install_dir = osiris_assets_install_dir / 'doc/html/'
++osiris_docs_install_dir = get_option('datadir') / 'doc' / 'osiris' / 'html'
+ 
+ install_subdir('doc/html/osiris',
+                 install_dir : osiris_docs_install_dir,

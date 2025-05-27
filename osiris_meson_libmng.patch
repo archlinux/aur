@@ -1,0 +1,18 @@
+--- a/meson.build
++++ b/meson.build
+@@ -524,6 +524,7 @@
+ glx_dep = dependency('glx', required : true)
+ png_dep = dependency('libpng', required : true)
+ jpeg_dep = dependency('libjpeg', required : true)
++mng_dep =  dependency('libmng', required : true)
+ sm_dep = dependency('sm', required : true)
+ ice_sound_dep =  dependency('ice', required : true)
+ freetype2_dep =  dependency('freetype2', required : true)
+@@ -541,6 +542,7 @@
+     glx_dep,
+     png_dep,
+     jpeg_dep,
++    mng_dep,
+     sm_dep,
+     ice_sound_dep,
+     freetype2_dep

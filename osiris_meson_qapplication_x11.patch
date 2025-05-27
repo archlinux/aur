@@ -1,0 +1,10 @@
+--- a/meson.build
++++ b/meson.build
+@@ -256,6 +256,7 @@
+     [dialog_source_path, 'qcolordialog'],
+     [dialog_source_path, 'qfiledialog'],
+     [iconview_source_path, 'qiconview'],
++    [kernel_source_path, 'qapplication_x11'],
+     [kernel_source_path, 'qmovie'],
+     [kernel_source_path, 'qthread_unix'],
+     [opengl_source_path, 'qgl_x11'],

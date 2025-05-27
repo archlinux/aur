@@ -1,0 +1,4 @@
+[osiris]
+source = "git"
+git = "https://centre.libranext.com/libranext/osiris.git"
+prefix = "v"

@@ -1,0 +1,68 @@
+--- a/meson.build
++++ b/meson.build
+@@ -514,37 +514,51 @@
+ ]
+ 
+ x11_dep = dependency('X11', 'x11', required : true)
+-xft_dep = dependency('xft', required : true)
++xft_dep = dependency('xft', required : get_option('xft').enabled())
+ fontconfig_dep = dependency('fontconfig', required : true)
+ xext_dep = dependency('xext', required : true)
+-glu_dep = dependency('glu', required : true)
+-gl_dep = dependency('gl', required : true)
+-xmu_dep = dependency('xmu', required : true)
+-glx_dep = dependency('glx', required : true)
++glu_dep = dependency('glu', required : get_option('opengl').enabled())
++gl_dep = dependency('gl', required : get_option('opengl').enabled())
++xmu_dep = dependency('xmu', required : get_option('opengl').enabled())
++glx_dep = dependency('glx', required : get_option('opengl').enabled())
+ png_dep = dependency('libpng', required : true)
+-jpeg_dep = dependency('libjpeg', required : true)
+-sm_dep = dependency('sm', required : true)
++jpeg_dep = dependency('libjpeg', required : get_option('jpeg').enabled())
++mng_dep = dependency('libmng', required : get_option('mng').enabled())
++sm_dep = dependency('sm', required : get_option('sm').enabled())
+ ice_sound_dep =  dependency('ice', required : true)
+ freetype2_dep =  dependency('freetype2', required : true)
+ 
+ osiris_deps = [
+     x11_dep,
+-    gl_dep,
+-    xft_dep,
+     fontconfig_dep,
+     xext_dep,
+     m_dep,
+     z_dep,
+-    glu_dep,
+-    xmu_dep,
+-    glx_dep,
+     png_dep,
+-    jpeg_dep,
+-    sm_dep,
+     ice_sound_dep,
+     freetype2_dep
+ ]
+ 
++if get_option('xft').enabled()
++  osiris_deps += xft_dep
++endif
++
++if get_option('opengl').enabled()
++  osiris_deps += [gl_dep, glu_dep, xmu_dep, glx_dep]
++endif
++
++if get_option('jpeg').enabled()
++  osiris_deps += jpeg_dep
++endif
++
++if get_option('mng').enabled()
++  osiris_deps += mng_dep
++endif
++
++if get_option('sm').enabled()
++  osiris_deps += sm_dep
++endif
++
+ osiris_sources = tools_sources
+ 
+ osiris_sources += kernel_sources
