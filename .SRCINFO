@@ -1,13 +1,13 @@
 pkgbase = tint
 	pkgdesc = Recolor images using your favorite theme palettes
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ashish0kumar/tint
 	arch = x86_64
 	license = MIT
 	makedepends = go>=1.22
 	depends = glibc
-	source = tint-0.1.1.tar.gz::https://github.com/ashish0kumar/tint/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 722c213e4262d9cd2827f07433772bd35af866d4c204f52eee35fb074ce59d96
+	source = tint-0.1.2.tar.gz::https://github.com/ashish0kumar/tint/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 4f07de395de97ef601f7ff390c4080a5d29827df5c0e5146d7e028da87b27a0c
 
 pkgname = tint
