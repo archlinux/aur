@@ -3,7 +3,7 @@
 # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=superset-venv
 
 pkgname="aider-chat-venv"
-pkgver=0.82.0
+pkgver=0.83.0
 pkgrel=1
 pkgdesc="AI pair programming in your terminal"
 url="https://github.com/Aider-AI/aider"
@@ -11,7 +11,7 @@ license=("Apache-2.0")
 arch=("any")
 provides=("aider-chat" "aider-chat")
 conflicts=("aider-chat" "aider-chat")
-depends=("python")
+depends=("python312")
 makedepends=("jq")
 source=("aider.bin")
 b2sums=('d09f4ea9909488f5538bcd7c85c286d3a7c7386ed65b01d063c883e4a8cf96edd7525d2ec66045d63a0505c1929b9c699a2e514c19cd48ad086657abf6512aa9')
