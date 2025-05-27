@@ -5,9 +5,9 @@ pkgrel=1
 pkgdesc="Binary file editor written in Qt. Provides HEX, ASCII and BIN views with integrated search."
 arch=('x86_64')
 license=('GPL')
-depends=('qt5-base' 'qt5-x11extras')
-makedepends=('qt5-base' 'qt5-tools' 'gcc' 'make')
-source=("https://github.com/ZwrvKrll/qbineditor.git")
+depends=(qt5-base qt5-x11extras)
+makedepends=(qt5-base qt5-tools gcc make)
+source=("git+https://github.com/ZwrvKrll/qbineditor.git")
 md5sums=('SKIP')
 
 build() {
