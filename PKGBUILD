@@ -4,7 +4,7 @@
 
 _name=fb2converter
 pkgname=fb2converter-bin
-pkgver=1.77.2
+pkgver=1.77.3
 pkgrel=1
 pkgdesc="Unified converter of FB2 files into epub2, kepub, mobi and azw3 formats."
 
@@ -13,7 +13,7 @@ license=("GPL-3.0-only")
 url="https://github.com/rupor-github/$_name"
 
 source=("$url/releases/download/v$pkgver/fb2c-linux-amd64.zip")
-sha512sums=('9f1d433a302b74eb233d69b9c5c3d1f947315944d9488c13c64ddd1ec4bdac9c1b298f67697d68425ae62b45944ab7eacb30259a474b8b105d9cbe7650f697a7')
+sha512sums=('fe237f88f48158dac35801f81c2df4624e1aeb98edb315d4dec6e38241124549f7521111e5f122b2312b6803bd5b6c36943b959ade1e7acbaa6bb7bff4258db1')
 
 provides=("fb2c" "kindlegen")
 conflicts=("kindlegen")
