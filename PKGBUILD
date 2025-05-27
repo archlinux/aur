@@ -5,7 +5,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.3.317.r1.g6164ae9f60
+pkgver=2.3.372.r1.gf18262ee96
 pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 arch=(x86_64)
@@ -49,6 +49,7 @@ makedepends=(
     ninja
     qt6-tools
     qt6-wayland
+    vulkan-headers
 )
 optdepends=(
     'alsa-utils: Sound player for RetroAchievements'
