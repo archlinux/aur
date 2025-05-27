@@ -2,8 +2,8 @@
 pkgname=thorium-reader-git
 _pkgname='Thorium Reader'
 _appname="EDRLab.${_pkgname// /}"
-pkgver=3.1.1.r73.gd368f3b
-_electronversion=35
+pkgver=3.1.1.r85.g1c615f9
+_electronversion=36
 _nodeversion=24
 pkgrel=1
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit.(Use system-wide electron)"
