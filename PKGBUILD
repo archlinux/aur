@@ -3,7 +3,7 @@
 pkgbase=python-mocpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.17.1
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="MOC parsing and manipulation in Python"
 arch=('i686' 'x86_64')
@@ -24,14 +24,19 @@ makedepends=('python-maturin'
              'pandoc')
 checkdepends=('python-pytest-mock'
 #             'python-pytest-xdist'
-              'python-matplotlib'
               'python-regions')   # cdshealpix, matplotlib, networkx already in makedepends
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/cds-astro/mocpy/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('a750c9aaf3f0afcc000390d594c3f036')
+md5sums=('ddb9439c4d2f9f5f7ec912078158aaea')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+}
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    sed -i "s:parent$:parent.parent:" python/mocpy/tests/test_sfmoc.py
 }
 
 build() {
@@ -57,11 +62,11 @@ package_python-mocpy() {
              'python-cdshealpix>=0.6.4'
              'python-matplotlib'
              'python-networkx>=2.5')
-#   optdepends=('python-mocpy-doc: Documentation for MOCPy')
+    optdepends=('python-mocpy-doc: Documentation for MOCPy')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
