@@ -1,6 +1,8 @@
+# Maintainer: Brian Wo <brianwo at protonmail dot com>
+
 _name='zsh-notify'
 pkgname="${_name}-git"
-pkgver=r87.ae6e958
+pkgver=r94.9c1dac8
 pkgrel=1
 pkgdesc="Desktop notifications for long-running commands in zsh."
 url="https://github.com/marzocchi/zsh-notify"

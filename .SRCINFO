@@ -1,6 +1,6 @@
 pkgbase = zsh-notify-git
 	pkgdesc = Desktop notifications for long-running commands in zsh.
-	pkgver = r87.ae6e958
+	pkgver = r94.9c1dac8
 	pkgrel = 1
 	url = https://github.com/marzocchi/zsh-notify
 	arch = any
