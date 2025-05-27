@@ -1,10 +1,10 @@
 # Maintainer: sinbud2004 <sinbud2004@gmail.com>
-pkgname=ssh-tunnel-egui
+pkgname=ssh_tunnel_egui
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="一个基于egui的SSH SOCKS5图形界面程序，使用sshpass和ssh连接远程代理服务器"
 arch=('x86_64')
-url="https://aur.archlinux.org/packages/ssh-tunnel-egui"
+url="https://aur.archlinux.org/packages/ssh_tunnel_egui"
 license=('MIT')
 depends=('openssh' 'sshpass')
 makedepends=('rust' 'cargo')
