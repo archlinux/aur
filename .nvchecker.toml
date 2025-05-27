@@ -1,0 +1,4 @@
+[cup-docker]
+source = "git"
+git = "https://github.com/sergi0g/cup.git"
+prefix = "v"
