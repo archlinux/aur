@@ -1,7 +1,7 @@
 pkgbase = python-sentencex
-	pkgdesc = A Log component for Gradio which can easily show some log file in the interface.
+	pkgdesc = A sentence segmentation library with wide language support optimized for speed and utility
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wikimedia/sentencex
 	arch = any
 	license = MIT

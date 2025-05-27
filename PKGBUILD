@@ -3,8 +3,8 @@
 _name=sentencex
 pkgname="python-$_name"
 pkgver=0.6.1
-pkgrel=1
-pkgdesc="A Log component for Gradio which can easily show some log file in the interface."
+pkgrel=2
+pkgdesc="A sentence segmentation library with wide language support optimized for speed and utility"
 arch=('any')
 url='https://github.com/wikimedia/sentencex'
 license=('MIT')
