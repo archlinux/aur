@@ -4,7 +4,7 @@
 pkgname=erigon-git
 _pkgname=${pkgname%-git}
 pkgver=3.0.4.r682.110004e
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethereum execution layer implementation in Go"
 arch=('x86_64')
 url="https://github.com/erigontech/erigon"
