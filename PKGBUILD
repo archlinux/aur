@@ -10,14 +10,14 @@
 
 _pack=vrml
 pkgname=octave-${_pack}
-pkgver=1.0.13
+pkgver=1.0.14
 pkgrel=3
 pkgdesc="3D graphics using VRML"
 arch=(any)
 url="https://gnu-octave.github.io/packages/${_pack}"
 license=('custom')
 groups=('octave-forge')
-depends=('octave>=2.9.7' 'octave-linear-algebra' 'octave-miscellaneous' 'octave-struct' 'octave-statistics' 'freewrl')
+depends=('octave>=2.9.7' 'octave-linear-algebra' 'octave-miscellaneous' 'octave-struct' 'octave-statistics' 'castle-model-viewer')
 makedepends=()
 optdepends=()
 backup=()
@@ -26,7 +26,7 @@ install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
 source=("https://downloads.sourceforge.net/octave/${_archive}")
 noextract=("${_archive}")
-sha512sums=('794acadedea7244897e227cc2ca8be6de2c78b3ea9d328757989240d01aa9e544570ec3746de447bb697fba4ece3f5f5d90fd72cb331ee904a8451bb2094ddf4')
+sha512sums=('5d9c67661afdf1a7bcb71563318492aa719d1951c9c305efda56430c513361cd3f8f6ad0dc8846a595b88ec73e98809e050382f3df9b5a4f6e0548cd35fd35c8')
 
 _octave_run() {
   octave --no-history --no-init-file --no-window-system -q -f --eval "$*"

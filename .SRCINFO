@@ -1,6 +1,6 @@
 pkgbase = octave-vrml
 	pkgdesc = 3D graphics using VRML
-	pkgver = 1.0.13
+	pkgver = 1.0.14
 	pkgrel = 3
 	url = https://gnu-octave.github.io/packages/vrml
 	install = octave-vrml.install
@@ -12,9 +12,9 @@ pkgbase = octave-vrml
 	depends = octave-miscellaneous
 	depends = octave-struct
 	depends = octave-statistics
-	depends = freewrl
-	noextract = vrml-1.0.13.tar.gz
-	source = https://downloads.sourceforge.net/octave/vrml-1.0.13.tar.gz
-	sha512sums = 794acadedea7244897e227cc2ca8be6de2c78b3ea9d328757989240d01aa9e544570ec3746de447bb697fba4ece3f5f5d90fd72cb331ee904a8451bb2094ddf4
+	depends = castle-model-viewer
+	noextract = vrml-1.0.14.tar.gz
+	source = https://downloads.sourceforge.net/octave/vrml-1.0.14.tar.gz
+	sha512sums = 5d9c67661afdf1a7bcb71563318492aa719d1951c9c305efda56430c513361cd3f8f6ad0dc8846a595b88ec73e98809e050382f3df9b5a4f6e0548cd35fd35c8
 
 pkgname = octave-vrml
