@@ -8,7 +8,7 @@
 pkgbase=zoom-system-qt
 pkgname=(${pkgbase}{,-cef} )
 pkgver=6.4.10.2027
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 license=('LicenseRef-zoom')
 url="https://zoom.us/"
@@ -16,7 +16,8 @@ makedepends=(patchelf binutils)
 optdepends=('qt5-wayland'
 	'qt5-webengine: SSO login'
 	'xdg-desktop-portal-impl: Screen sharing,etc... for Wayland'
-	'qt5-'{3d,x11extras,multimedia,imageformats,remoteobjects}': Unused?')
+	'qt5-'{3d,x11extras,multimedia,imageformats,remoteobjects}': Unused?'
+	${pkgbase}-cef': Webview')
 options=(!strip emptydirs)
 provides=(zoom)
 conflicts=(zoom)

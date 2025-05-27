@@ -1,6 +1,6 @@
 pkgbase = zoom-system-qt
 	pkgver = 6.4.10.2027
-	pkgrel = 2
+	pkgrel = 3
 	url = https://zoom.us/
 	arch = x86_64
 	license = LicenseRef-zoom
@@ -14,6 +14,7 @@ pkgbase = zoom-system-qt
 	optdepends = qt5-multimedia: Unused?
 	optdepends = qt5-imageformats: Unused?
 	optdepends = qt5-remoteobjects: Unused?
+	optdepends = zoom-system-qt-cef: Webview
 	provides = zoom
 	conflicts = zoom
 	options = !strip
