@@ -9,7 +9,7 @@
 
 _basename=deskflow
 pkgname=${_basename}-git
-pkgver=1.21.2.227.ge4e332c
+pkgver=1.21.2.272.ga4f1a38
 pkgrel=1
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers"
 arch=('i686' 'x86_64' 'aarch64')
@@ -36,6 +36,7 @@ depends=(
   libxtst
   openssl
   qt6-base
+  qt6-svg
   tomlplusplus
 )
 makedepends=(
