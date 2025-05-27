@@ -4,7 +4,7 @@
 pkgname=erigon-git
 _pkgname=${pkgname%-git}
 pkgver=3.0.4.r0.406d855
-pkgrel=1
+pkgrel=4
 pkgdesc="Ethereum execution layer implementation in Go"
 arch=('x86_64')
 url="https://github.com/erigontech/erigon"
@@ -39,7 +39,6 @@ prepare() {
   git submodule update --init --depth 1
 }
 
-
 build() {
   cd "${_pkgname}"
   export CGO_LDFLAGS="${LDFLAGS}"
@@ -58,4 +57,3 @@ package() {
     fi
   done
 }
-
