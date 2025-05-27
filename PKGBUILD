@@ -5,7 +5,7 @@
 
 pkgname=sway-rc
 _pkgname=${pkgname%-rc}
-_pkgver=1.11-rc3
+_pkgver=1.11-rc4
 pkgver=${_pkgver/-/}
 pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (pre-release version)'
@@ -56,7 +56,7 @@ source=("https://github.com/swaywm/sway/releases/download/$_pkgver/sway-$_pkgver
         "50-systemd-user.conf"
         "sway-portals.conf")
 install=sway.install
-sha512sums=('55d1c8d307b45a3a795351a3daf3d3ad0bbeba5b37094521ed307ba5d8a87dc8572a12e2a34f9e2f1cba680acb12ec793102a9c092f2ff7b99c71786ac0ef062'
+sha512sums=('973e25608f2ba52cec8db852866eb2b0740a0fe38754b47464e0c5de9336f7a192e88f7a048c475f635d17c167281131b7e377864ea5ef213e36e50f1e028689'
             'SKIP'
             'd5f9aadbb4bbef067c31d4c8c14dad220eb6f3e559e9157e20e1e3d47faf2f77b9a15e52519c3ffc53dc8a5202cb28757b81a4b3b0cc5dd50a4ddc49e03fe06e'
             'b9e708c775825c8124d8e154e523c90b8a32715050ba06f6dbcdd08d109eed484d128ccc8dcd6a49dc9cd51a0c9035779c2706b4d7a139115e85c4f54226b775')
