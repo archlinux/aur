@@ -1,0 +1,15 @@
+pkgbase = alt-hasherc-git
+	pkgdesc = A tool for building packages for ALT operating systems in containers
+	pkgver = 0.1.0.r0.gc2d316b
+	pkgrel = 1
+	url = https://altlinux.space/alt-gnome/hasherc
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	depends = podman
+	depends = python
+	options = !debug
+	source = alt-hasherc::git+https://altlinux.space/alt-gnome/hasherc.git
+	b2sums = SKIP
+
+pkgname = alt-hasherc-git
