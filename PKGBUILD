@@ -6,7 +6,7 @@
 # Contributor: AG_Caesar <caesar[at]drachenhain[dot]net>
 # Contributor: Jan Oliver Oelerich <janoliver[at]oelerich[dot]org>
 pkgname=ovito
-pkgver=3.12.3
+pkgver=3.12.4
 pkgrel=1
 pkgdesc="Open Visualization Tool"
 url="https://www.${pkgname}.org"
@@ -20,7 +20,7 @@ source=(${pkgname}-${pkgver}::git+https://gitlab.com/stuko/${pkgname}.git#tag=v$
   github.com-src-3rdparty-zstd::git+https://github.com/facebook/zstd.git
   ${url}/wp-content/uploads/logo_rgb-768x737.png
   ${pkgname}.desktop)
-sha512sums=('19bd7a9617ff1b8543f830191d93113e738bd8039feae4ed2c8d5237078de3b9c0b88b23d2584f87edf06f5f4f30f28dc853df9ec46aaae6e580a06d778e96ee'
+sha512sums=('7a2facd527446ad0c6198ff57e4b0377e669ee514d57171c1a082e57692221852e6cf216a2f67a51cf702f52f78bc1089777078cd92f78bb4a4a347882e9c2af'
             'SKIP'
             'SKIP'
             '1afe91e9634a6574ba58535cb9b636b63daa02d9157f50d9c5c959c9da151e9635ca73d0616fd8ccac2e7742f2289a6eba05e62b206baee4f738c53526ec4bb8'
