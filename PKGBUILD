@@ -1,6 +1,6 @@
 # Maintainer: Audun-Marius Gangstø <audun@gangsto.org>
 pkgname=esa-snap-bin
-pkgver=11.0.0
+pkgver=12.0.0
 pkgrel=0
 pkgdesc="ESA SNAP Toolbox for Sentinel Satellite data"
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="http://step.esa.int/main/"
 license=('GPL3')
 options=("!strip")
 provides=("esa-snap")
-depends=("java-runtime=11")
+depends=("java-runtime=21")
 # Official download page: http://step.esa.int/main/download/snap-download/
 source=("https://download.esa.int/step/snap/${pkgver:0:4}/installers/${pkgname/-bin/}_all_linux-${pkgver}.sh"
     "snap-conf-optimiser.desktop"
@@ -17,13 +17,13 @@ source=("https://download.esa.int/step/snap/${pkgver:0:4}/installers/${pkgname/-
     "esa-snap-desktop.png"
         )
 noextract=("${pkgname/-bin/}_all_linux-${pkgver//./_}.sh")
-md5sums=("bb7c9afb9921a890e5fbf577c52ed6b1"
+md5sums=("cdf94b36dde5b8ab1f2f647935489a65"
          "29553527b1347b404ee9f132f0928025"
          "173a97ca7af76079bacbbee667fd5013"
          "171e808a3ba22fb6a522aa318a8703db"
          "5adb217028dbe9d6e1aea75412b81a7d"
 )
-sha256sums=("46f069430acff51dbbb529f4d5ee4ca8a2b6cb46da0cab9a490b1843c523e61c"
+sha256sums=("cb7b891e96949d5c17c9535038badb394f591ff47e3adcdde04062b9114150e6"
             "1fb2161e9d0bc16093a193ff2008c89c0a788053ce448f3e248b9cd9998998e0"
             "e02744cd13df4aed9cd5e8f81ef59d35a44e00eb2a0ddce9587d71b3adcf9192"
             "97f680aec00cc74ec2f202aba1e0132c461d631d705203ab613371c9c4c28f2d"
@@ -34,7 +34,7 @@ sha256sums=("46f069430acff51dbbb529f4d5ee4ca8a2b6cb46da0cab9a490b1843c523e61c"
 package() {
     cd "$srcdir"
     installdir="/opt/esa-snap"
-    jvm_home="/usr/lib/jvm/java-11-openjdk"
+    jvm_home="/usr/lib/jvm/java-21-openjdk"
     install -d "${pkgdir}/opt/"
     install -d "${pkgdir}/usr/bin"
     install -d "${pkgdir}/usr/share/icons"
