@@ -2,7 +2,7 @@
 # Previous Maintainer: Martino Pilia <martino.pilia@gmail.com>
 # Contributor: Martino Pilia <martino.pilia@gmail.com>
 pkgname=vsce
-pkgver=3.3.2
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="Visual Studio Code extension manager"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
 )
 # source=("${pkgname}-v${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 source=("${pkgname}-v${pkgver}.tar.gz::https://registry.npmjs.org/@vscode/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('7951916bcc8532023decdb5eccd2c88944b3191acbe8fd6c63dc7c371a14f2eb')
+sha256sums=('50a4d47a38c7bf8b04332dc2c9c30e8772b44d8e430fb50fd3911706320e043a')
 
 package() {
 	npm install -g \
