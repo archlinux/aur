@@ -1,7 +1,7 @@
 # Maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
 pkgname=tundra
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="MyAnimeList scrobbler"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!debug !lto)
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/m4tx/$pkgname/archive/v$pkgver.tar.gz"
