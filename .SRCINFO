@@ -1,0 +1,13 @@
+pkgbase = radioss
+	pkgdesc = A modern, cross-platform internet radio player built with Tauri, React, and TypeScript
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/DasCanard/radioss
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk
+	depends = openssl
+	source_x86_64 = radioss-0.5.1.AppImage::https://github.com/DasCanard/radioss/releases/download/v0.5.1/radioss_0.5.1_amd64.AppImage
+	sha256sums_x86_64 = bf6b0629d71714aff66fb9103cadde7419b1e3fc7f41424b4f3c93810f496b2c
+
+pkgname = radioss
