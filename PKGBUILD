@@ -4,7 +4,7 @@
 pkgname=electrum-ltc-git
 _pkgname=electrum_ltc
 pkgver=4.3.2.git20221105.f9cbfac
-pkgrel=1
+pkgrel=2
 pkgdesc='Litecoin thin client'
 arch=(any)
 url=https://electrum-ltc.org/
@@ -32,7 +32,7 @@ depends=('hicolor-icon-theme'
 checkdepends=('python-tox')
 makedepends=('gettext'
              'git'
-             'protobuf>=3.20' 'protobuf<4'
+             'protobuf'
              'python-pycurl'
              'python-setuptools')
 optdepends=('desktop-file-utils: update desktop icon'

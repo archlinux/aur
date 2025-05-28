@@ -1,15 +1,14 @@
 pkgbase = electrum-ltc-git
 	pkgdesc = Litecoin thin client
 	pkgver = 4.3.2.git20221105.f9cbfac
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electrum-ltc.org/
 	arch = any
 	license = MIT
 	checkdepends = python-tox
 	makedepends = gettext
 	makedepends = git
-	makedepends = protobuf>=3.20
-	makedepends = protobuf<4
+	makedepends = protobuf
 	makedepends = python-pycurl
 	makedepends = python-setuptools
 	depends = hicolor-icon-theme
