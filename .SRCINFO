@@ -1,0 +1,16 @@
+pkgbase = evolve-core-bin
+	pkgdesc = Modern GTK Theme Manager for GNOME (binary release)
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/arcnations-united/evolve-core
+	arch = x86_64
+	license = Apache-2.0 license
+	depends = gtk4
+	depends = webkit2gtk
+	depends = libadwaita
+	source = https://github.com/arcnations-united/evolve-core/releases/download/v1.7/EvolveCore-v1.7.zip
+	source = evolve-core.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = evolve-core-bin

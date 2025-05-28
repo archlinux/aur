@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Evolve Core
+Comment=Modern GTK Theme Manager for GNOME
+Exec=/opt/evolve-core/evolvecore
+Icon=evolve-core
+Terminal=false
+Type=Application
+Categories=Utility;GTK;GNOME;
