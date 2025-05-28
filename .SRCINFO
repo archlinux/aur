@@ -1,16 +1,15 @@
 pkgbase = python-asdf_transform_schemas
 	pkgdesc = ASDF schemas for transforms
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/asdf-format/asdf-transform-schemas
 	arch = any
 	license = BSD-3-Clause
 	makedepends = python-setuptools-scm
-	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/a/asdf_transform_schemas/asdf_transform_schemas-0.5.0.tar.gz
-	md5sums = c6f1197bd8bc6eb857b4cc34f1288632
+	source = https://files.pythonhosted.org/packages/source/a/asdf_transform_schemas/asdf_transform_schemas-0.6.0.tar.gz
+	md5sums = b08a1b1dec5c23044edc93ee1ece1fbd
 
 pkgname = python-asdf_transform_schemas
 	depends = python>=3.9
