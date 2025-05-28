@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
-	pkgver = 136.0.7103.113
+	pkgver = 137.0.7151.55
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -19,11 +19,6 @@ pkgbase = ungoogled-chromium
 	makedepends = qt6-base
 	makedepends = java-runtime-headless
 	makedepends = git
-	makedepends = python-httplib2
-	makedepends = python-pyparsing
-	makedepends = python-six
-	makedepends = npm
-	makedepends = rsync
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
@@ -58,13 +53,13 @@ pkgbase = ungoogled-chromium
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
-	provides = chromium=136.0.7103.113
-	provides = chromedriver=136.0.7103.113
+	provides = chromium=137.0.7151.55
+	provides = chromedriver=137.0.7151.55
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = fetch-chromium-release
-	source = ungoogled-chromium-136.0.7103.113-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/136.0.7103.113-1.tar.gz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-137.0.7151.55-lite.tar.xz
+	source = ungoogled-chromium-137.0.7151.55-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/137.0.7151.55-1.tar.gz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = compiler-rt-adjust-paths.patch
 	source = increase-fortify-level.patch
@@ -74,11 +69,12 @@ pkgbase = ungoogled-chromium
 	source = 0001-ozone-wayland-implement-text_input_manager_v3.patch
 	source = 0001-ozone-wayland-implement-text_input_manager-fixes.patch
 	source = 0001-vaapi-flag-ozone-wayland.patch
-	source = add-more-CFI-suppressions-for-inline-PipeWire-functions.patch
 	source = chromium-136-drop-nodejs-ver-check.patch
 	source = disable-clang-warning-suppression-flag.patch
-	sha256sums = 720a1196410080056cd97a1f5ec34d68ba216a281d9b5157b7ea81ea018ec661
-	sha256sums = ab4c1b21292b860eaa750d3fb9ee73dae58a86d2dd59d4e41e06102e8c9f635a
+	source = disable-clang-fextend-variable-liveness.patch
+	source = pdfium-fix-build-with-system-libpng.patch
+	sha256sums = 7b8fa89febed9fae0297c8175bd35cc912d794fbf03d33a121a0bc9d3d13ef34
+	sha256sums = 68ec6108c64ee516ed925d0b0ea44c2dc3d5973da92eb91f2788f7075596ddd6
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = cc8a71a312e9314743c289b7b8fddcc80350a31445d335f726bb2e68edf916d1
 	sha256sums = d634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342
@@ -88,8 +84,9 @@ pkgbase = ungoogled-chromium
 	sha256sums = d9974ddb50777be428fd0fa1e01ffe4b587065ba6adefea33678e1b3e25d1285
 	sha256sums = a2da75d0c20529f2d635050e0662941c0820264ea9371eb900b9d90b5968fa6a
 	sha256sums = 9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec
-	sha256sums = d3dd9b4132c9748b824f3dcf730ec998c0087438db902bc358b3c391658bebf5
 	sha256sums = 32f0080282fc0b2795a342bf17fcb3db4028c5d02619c7e304222230ba99d5fe
 	sha256sums = d6f3914c6adadaf061e7e2b1430c96d32b0cad05244b5cfaf58cf5344006a169
+	sha256sums = 2d98a7a6a553fb5c17c4bfe36f011410f377afa12a6a818ba36543dc9a258f4a
+	sha256sums = de3222b13d3a49628a00fd74acae633912b830f78c2de452d3bdff3d0e42026d
 
 pkgname = ungoogled-chromium
