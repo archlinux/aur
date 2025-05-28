@@ -1,0 +1,16 @@
+pkgbase = bionic-batch-renamer
+	pkgdesc = A powerful batch file renaming utility built with the Qt technology stack.
+	pkgver = 1.0.11+1.298ce42
+	pkgrel = 1
+	url = https://github.com/Nomen-Luni/Bionic-Batch-Renamer
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = libkexiv2-qt5
+	provides = bionic-batch-renamer
+	conflicts = bionic-batch-renamer-git
+	source = bionic-batch-renamer::git+https://github.com/Nomen-Luni/Bionic-Batch-Renamer.git#commit=298ce42187c1e9c5f4c44ba2bcec778b4316ed24
+	sha256sums = SKIP
+
+pkgname = bionic-batch-renamer
