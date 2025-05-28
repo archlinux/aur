@@ -1,7 +1,7 @@
 # Maintainer: Zakros
 _pkgname=aretext
 pkgname=${_pkgname}-bin
-pkgver=1.3.0
+pkgver=1.5.0
 pkgrel=2
 pkgdesc="[BETA] Minimalist text editor that never slows you down."
 url="https://github.com/aretext/aretext"
