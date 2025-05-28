@@ -1,48 +1,63 @@
-pkgname=creality-print-bin
-pkgver=5.1.7.10514
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+
+_Name="CrealityPrint"
+_pkgname="creality-print"
+pkgname="${_pkgname}-bin"
+_pkgver="6.1.2.2457"
+pkgver="${_pkgver%.*}"
 pkgrel=1
-pkgdesc="Creality Print is a slicer dedicated to FDM printers."
+pkgdesc="3D slicer for Creality printers"
 arch=('x86_64')
-url="https://github.com/CrealityOfficial/CrealityPrint"
-license=('unknown')
-depends=('fuse2')
-provides=('creality-print')
-conflicts=('creality-print')
-options=(!strip) # necessary otherwise the AppImage file in the package is truncated
-
-_semver_version=$(echo ${pkgver} | cut -d'.' -f 1,2,3)
-_filename="Creality-Print-v${pkgver}-${arch[0]}.AppImage"
-_appimage_name="Creality-Print.AppImage"
-_install_path="/opt/appimages/${_appimage_name}"
-
-noextract=("${_filename}")
-sha512sums_x86_64=(
-  '35e9bdaa2b39de036f73b0135e8286ae0eef8e6fc4b147a59449587959def27396eb00afa328d40c5578d9f658169067028a92c563e27d0d4991572091b71e0a'
-  '5c0982b7475dae73cbc0ce5b96771b969ff7779daae452cf2e0d5d26fb43981c3e614485593f5306dfda9b3d3a6a2a8f319ef62b07d668479c60d82c8c1631b0'
-)
-source_x86_64=(
-  "${_filename}::https://github.com/CrealityOfficial/CrealityPrint/releases/download/v${_semver_version}/Creality_Print-v${pkgver}-${arch[0]}-Release.AppImage"
-  "default.desktop.patch"
-)
+url="https://www.creality.com"
+_url="https://github.com/CrealityOfficial/${_Name}"
+license=('AGPL-3.0-only')
+depends=('alsa-lib' 'cairo' 'dbus' 'expat' 'fontconfig' 'gcc-libs' 'gdk-pixbuf2'
+         'glib2' 'glibc' 'gst-plugins-bad-libs' 'gstreamer' 'gtk3' 'libgl'
+         'libsrtp' 'libx11' 'opus' 'pango' 'sh' 'speexdsp' 'webkit2gtk' 'xz' 'zlib')
+makedepends=('patchelf')
+optdepends=('python' 'wayland')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+_pkgsrc="${_pkgname}-${pkgver}"
+source=("${_pkgname}.sh"
+        "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
+        "${_pkgsrc}-LICENSE.txt::${_url}/raw/refs/tags/v${pkgver}/LICENSE.txt")
+source_x86_64=("${_pkgsrc}-x86_64.AppImage::${_url}/releases/download/v${pkgver}/${_Name}-V${_pkgver}-x86_64-Release.AppImage")
+sha256sums=('11c4dc922dfc686a051c2169549d8934ae1a0477fdf5c225860db08eb51a8fc1'
+            '4477dda5e6d2b3e53018b180469716c199d953675dd787b3afe48ed6995557e4'
+            '5537d2d539c94627446bf7eb30d30fda28d1de8aa9a41c25b83012db52ff6f8b')
+sha256sums_x86_64=('782be2f6c6ff4f2a28be428f5471ca1bdf0579a05303b7364d24eae4b6098ddc')
 
 prepare() {
   cd "${srcdir}"
+  chmod +x "${_pkgsrc}-${CARCH}.AppImage"
+  ./"${_pkgsrc}-${CARCH}.AppImage" --appimage-extract > /dev/null
+  rm -rf "${_pkgsrc}-${CARCH}"
+  mv -f "squashfs-root" "${_pkgsrc}-${CARCH}"
 
-  # Extract desktop file and application icon from AppImage
-  chmod +x "./${_filename}"
-  ./${_filename} --appimage-extract "default.*"
-  patch -Np0 < ./default.desktop.patch
+  cd "${_pkgsrc}-${CARCH}"
+  sed -i "s/AppRun/${_Name}/g" "${_Name}.desktop"
+
+  patchelf --remove-rpath "bin/${_Name}"
+
+  cd usr/lib
+  for lib in *; do
+    if [ -e "/usr/lib/$lib" ]; then
+      rm -f "$lib"
+    fi
+  done
 }
 
 package() {
   cd "${srcdir}"
+  install -vDm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_Name}"
+  install -vDm644 "${_pkgsrc}-README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "${_pkgsrc}-LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.txt"
 
-  # Install AppImage and symlink it
-  install -Dm755 "${_filename}" "${pkgdir}/${_install_path}"
-  install -dm755 "${pkgdir}/usr/bin/"
-  ln -s "${_install_path}" "${pkgdir}/usr/bin/${provides[0]}"
+  cd "${_pkgsrc}-${CARCH}"
+  install -vDm644 "${_Name}.desktop" "${pkgdir}/usr/share/applications/${_Name}.desktop"
+  install -vDm644 "${_Name}.png" "${pkgdir}/usr/share/pixmaps/${_Name}.png"
 
-  # Install desktop file and application icon
-  install -Dm644 "${srcdir}/squashfs-root/default.desktop" "${pkgdir}/usr/share/applications/${provides[0]}.desktop"
-  install -Dm644 "${srcdir}/squashfs-root/default.png" "${pkgdir}/usr/share/icons/${provides[0]}.png"
+  install -vdm755 "${pkgdir}/opt/${_pkgname}"
+  cp -r --no-preserve=ownership -t "${pkgdir}/opt/${_pkgname}" "bin" "resources" "usr/lib"
 }

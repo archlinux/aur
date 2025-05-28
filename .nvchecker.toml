@@ -1,0 +1,5 @@
+[creality-print-bin]
+source = "github"
+github = "CrealityOfficial/CrealityPrint"
+use_latest_release = true
+prefix = "v"
