@@ -1,0 +1,4 @@
+[gotenberg]
+source = "git"
+git = "https://github.com/gotenberg/gotenberg.git"
+prefix = "v"
