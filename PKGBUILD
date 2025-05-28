@@ -2,7 +2,7 @@
 # Contributor: Onur Kader <onurorkunkader1999@gmail.com>
 
 pkgname=scnlib
-pkgver=2.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="A formatted input library, think {fmt} but in the other direction. 'scanf' for modern C++"
 arch=("x86_64")
@@ -16,7 +16,7 @@ makedepends=(
 	#python-poxy
 )
 source=("git+https://github.com/eliaskosunen/scnlib.git#tag=v${pkgver}")
-md5sums=('SKIP')
+sha256sums=('6f0acc561a2759d6a8fab413964cfcc497ee1f2d2e2e32e3957e410cc13e86e2')
 
 build() {
 	cmake -B build -S "$pkgname" \
