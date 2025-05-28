@@ -4,7 +4,7 @@
 _name="victoriametrics"
 _name_camel="VictoriaMetrics"
 pkgname="${_name}-cluster"
-pkgver='1.116.0'
+pkgver='1.118.0'
 pkgrel='1'
 pkgdesc='Fast, cost-effective monitoring solution and time series database'
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ source=("${url}/archive/refs/tags/v${pkgver}-cluster.tar.gz"
 	"vmauth.yml"
 	"${_name}.sysusers"
 	"${_name}.tmpfiles")
-sha256sums=('8e11d7c5cf202f0d46943076b9c089027458de9f6f95729206666251fc1351a9'
+sha256sums=('cebf01d48df93f39387dc6b68c2336a85f86c358ce5cc96f9ec3cb4b741ac227'
             '459b40675c3b77b108a597e864d29b72c93870a0ef0d814d8a99f0c293addd54'
             'd08557b61879cc854287bab39a62a176c54c752a3bf2bf71d42b1c27a645a571'
             '5144d6cb0732ae7d12e92ec4e13c36f3373407b7f826c44aedff6da50dd8d17a'
@@ -79,7 +79,7 @@ check() {
   cd "${GOPATH}/src/${_uri}/${_name}"
   eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
   GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" \
-    DISABLE_FSYNC_FOR_TESTING=1 go test ./lib/... ./app/...
+    DISABLE_FSYNC_FOR_TESTING=1 GOEXPERIMENT=synctest go test ./lib/... ./app/...
 }
 
 package() {
