@@ -1,24 +1,25 @@
 # Maintainer: ask nickserv for milk on freenode
-# Contributor: Denilson <denilsonsa@gmail.com>
+# Maintainer: Denilson <denilsonsa@gmail.com>
+# Maintainer: oech3
 pkgname=soundfonts-aur-meta
-pkgver=0.1.0
+pkgver=20250528 # do not let $(date -u +"%Y%m%d")
 pkgrel=1
-pkgdesc="Installs all the soundfont packages in the AUR"
+pkgdesc="Meta package depending on all avaiable soundfonts"
 arch=('any')
-url=""
-license=('custom:unknown')
 depends=(
-  # From official repositories:
+  # From official repository:
   'freepats-general-midi' # GM
   'soundfont-fluid'
   # From AUR:
   'freepats-ydp-grand-piano' # Yamaha Disklavier Pro grand piano
   'soundfont-arachno' # GM+GS
+  # soundfont-ensembles # incorrect install path
   'soundfont-fatboy' # GM+GS
   'soundfont-generaluser' # GM+GS
-  'soundfont-gmgsx'
+  'soundfont-gmgsx' # GM?
   'soundfont-jeux' # organ
-  'soundfont-opl3-fm-128m' # SB16/YM262
+  'soundfont-opl3' # SB16/YM262
+  # 'soundfont-opl3-fm-128m' is duplicated and not source controled ?
   'soundfont-personalcopy' # large
   'soundfont-realfont' # GM
   'soundfont-sgm' # GM
@@ -29,9 +30,4 @@ depends=(
   'soundfont-unison' #GM
   'soundfont-zelda3sf2' # Legend of Zelda: Link to the Past
   'soundfont-zeldamcsf2' # Legend of Zelda: Minish Cap
-  # soundfont-ensembles is not included here because it installs in a different directory.
-  # soundfont-opl3 is not included because it is a duplicate.
 )
-package() {
-  true
-}
