@@ -32,7 +32,8 @@ optdepends=('gst-plugin-pipewire: required for Recorder Service'
             'upower: required for UPower Service'
             'gnome-bluetooth-3.0: required for Bluetooth Service')
 
-provides=('ignis')
+provides=('python-ignis' 'ignis' 'ignis-git')
+conflicts=('python-ignis' 'ignis' 'ignis-git')
 source=("git+${url}")
 sha256sums=('SKIP')
 
