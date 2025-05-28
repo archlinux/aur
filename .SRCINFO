@@ -1,0 +1,21 @@
+pkgbase = uutils-coreutils-stty
+	pkgdesc = Rust rewrite of stty (no man pages)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://uutils.github.io/
+	arch = x86_64
+	license = MIT
+	makedepends = clang
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = uutils-coreutils-stty-0.1.0.tar.gz::https://github.com/uutils/coreutils/archive/0.1.0.tar.gz
+	sha256sums = 55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8
+
+pkgname = uutils-coreutils-stty
+	conflicts = uutils-coreutils-git
+
+pkgname = coreutils-uutils-stty
+	conflicts = coreutils
+	conflicts = coreutils-uutils
