@@ -1,0 +1,13 @@
+[Unit]
+Description=r-nacos server
+After=network.target
+
+[Service]
+Type=simple
+User=rnacos
+Group=rnacos
+ExecStart=/usr/bin/rnacos -e /etc/rnacos/env.conf
+WorkingDirectory=/var/lib/rnacos
+
+[Install]
+WantedBy=multi-user.target

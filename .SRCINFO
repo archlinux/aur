@@ -1,0 +1,26 @@
+pkgbase = r-nacos-git
+	pkgdesc = Nacos server re-implemented in Rust.
+	pkgver = 0.6.16.r0.gcf4354f
+	pkgrel = 1
+	url = https://github.com/nacos-group/r-nacos
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = bzip2
+	depends = openssl
+	provides = r-nacos
+	conflicts = r-nacos
+	options = !lto
+	source = r-nacos-git::git+https://github.com/nacos-group/r-nacos.git
+	source = rnacos.service
+	source = rnacos-sysusers.conf
+	source = rnacos-tmpfiles.conf
+	b2sums = SKIP
+	b2sums = 5a8c65b559035e8753e8b7d427b59c85f98b18c39846d68aeef43cc3debb8e783a5cc981b30301f30d1d98da4d2ae2621da7614142a0eafc2ae4f995a0681fc9
+	b2sums = 5318e644b58d2a0aa3c28bb7c21768660ff17fe514f462e03b3386e2d165a75fe7a39163041d79e598d20da479cf6e47434efd98392d5fbb760918140089871f
+	b2sums = e695c8210da634eab840d28fa2302d3827cd392a789d4cb591875f0e453ba994d45494a7374470d0fb9a7b844574242cd098f774945d83abf13211ee78bdf5ff
+
+pkgname = r-nacos-git
