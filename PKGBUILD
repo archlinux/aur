@@ -1,5 +1,5 @@
 pkgname=jellyplayer-git
-pkgver=6e4e4da
+pkgver=d1b9b23
 pkgrel=1
 pkgdesc="Terminal-based Jellyfin player with MPV integration"
 arch=('any')
