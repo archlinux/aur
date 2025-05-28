@@ -1,4 +1,5 @@
-aniparser-*/
-*.pkg.tar.*
-src/
-pkg/
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.tar.gz
