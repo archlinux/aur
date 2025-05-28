@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lexicanter-bin
 _pkgname=Lexicanter
-pkgver=2.2.1
+pkgver=2.2.2
 _electronversion=36
-pkgrel=2
+pkgrel=1
 pkgdesc="A lexicon management tool for constructed languages.It was developed and will occasionally be updated by Ethan Ray (known online as Cthethan or Saturnine).(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -26,8 +26,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('09b6ea1910f3d7205eb20f5c6e7ea66929cd59fa98fee47004c3051730a7e383')
-sha256sums_x86_64=('3bd4ff04842568601cffd97faf837f0d9704fee5565677f0c3b8623c4f284dce')
+sha256sums_aarch64=('f15976cf06482e99b3083c80cd38544c6d69329463f0386f50bb8a160a485e88')
+sha256sums_x86_64=('0753a31ec29642a854a7da02817d46e5c6c23a8e00d3714e91910c75603ddd90')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
