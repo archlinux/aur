@@ -20,16 +20,16 @@ package() {
 	cd "${srcdir}"
 
 	# Install dgdemux
-	install -Dm755 dgdemux "${pkgdir}/usr/bin/dgdemux-cli"
+	install -Dm755 dgdemux "${pkgdir}/usr/local/bin/dgdemux-cli"
 
         # Install dovi_tool
-        install -Dm755 dovi_tool "${pkgdir}/usr/bin/dovi_tool"
+        install -Dm755 dovi_tool "${pkgdir}/usr/local/bin/dovi_tool"
 
         # Install dgmvccombine
-        install -Dm755 dgmvccombine "${pkgdir}/usr/bin/dgmvccombine"
+        install -Dm755 dgmvccombine "${pkgdir}/usr/local/bin/dgmvccombine"
 
         # Install help
-        install -Dm755 DGDemux.txt "${pkgdir}/usr/bin/DGDemux.txt"
+        install -Dm755 DGDemux.txt "${pkgdir}/usr/local/bin/DGDemux.txt"
 
 	# Install license
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
