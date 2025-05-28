@@ -5,18 +5,20 @@
 # - veger
 pkgname=capt-src
 pkgver=2.71
-pkgrel=5
+pkgrel=6
 pkgdesc="Canon CAPT Printer Driver for Linux. Compiled from source code."
 arch=('i686' 'x86_64')
 url='http://support-asia.canon-asia.com/'
 license=('custom')
 depends=('cups' 'glib2' 'libglade' 'gtk2' 'atk' 'libxml2' 'popt' 'ghostscript')
-depends_x86_64=('lib32-libxml2' 'lib32-popt' 'lib32-gcc-libs' 'lib32-libcups' 'lib32-glibc')
+depends_x86_64=('lib32-libxml2' 'lib32-libxml2-legacy' 'lib32-popt' 'lib32-gcc-libs' 'lib32-libcups' 'lib32-glibc')
 conflicts=('cndrvcups-lb' 'cndrvcups-lb' 'cndrvcups-common-lb')
 install=${pkgname}.install
 _tardir=linux-capt-drv-v271-uken
 source=("http://gdlp01.c-wss.com/gds/6/0100004596/05/${_tardir}.tar.gz"
         'ccpd.service')
+b2sums=('10d1b76865f2e3ea8f974191cc7967d3969ce144a03b971945eb292ec2a3e78bf40ce53b921b5cab9b1da14a218aac9b946d4526e5e4e860f5eb4ab172e4e2a2'
+        '6da164622ac9f889c96a2c6bdf99fde27959f6e2f9e6e89d9dbbbc4362b0ff2292e613bc737dc4bdb49792fd0c5f854b6684810188242fa1aae98b88865946ee')
 options=(!strip !zipman !buildflags)
 backup=('etc/ccpd.conf')
 
@@ -235,6 +237,3 @@ package() {
     install -Dm664 ${srcdir}/${_tardir}/Doc/guide-capt-2.7xUK.tar.gz ${pkgdir}/usr/share/doc/capt-src/guide-capt-2.7xUK.tar.gz
     install -Dm664 ${srcdir}/${_tardir}/Doc/README-capt-${pkgver}UK.txt ${pkgdir}/usr/share/doc/capt-src/README-capt-${pkgver}UK.txt
 }
-
-md5sums=('2421628aac9c6000d08c46a1204f08be'
-         '63dd8648eaa7a5ec8b603f3ac841e141')
