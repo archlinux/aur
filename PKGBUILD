@@ -2,12 +2,13 @@
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
-pkgname=gns3-gui
+_pkgname=gns3-gui
+pkgname="$_pkgname"-2
 pkgver=2.2.52
 pkgrel=1
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
-url='https://github.com/GNS3/gns3-gui'
+url="https://github.com/GNS3/$_pkgname"
 license=('GPL-3.0-only')
 groups=('gns3')
 depends=(
@@ -27,7 +28,9 @@ optdepends=(
     'gns3-server: GNS3 backend. Manages emulators such as Dynamips, VirtualBox or Qemu/KVM'
     'xterm: Default terminal emulator for CLI management of virtual instances'
     'wireshark-qt: Live packet capture')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/GNS3/$pkgname/archive/v$pkgver.tar.gz"
+conflicts=('gns3-gui')
+provides=('gns3-gui')
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'gns3.desktop'
         'fix_requirements_for_Arch.diff')
 sha256sums=('ff854f1403a99887c132daa210663c2b9b28ab5e8062500a8dc349e897b4c5c1'
@@ -35,18 +38,18 @@ sha256sums=('ff854f1403a99887c132daa210663c2b9b28ab5e8062500a8dc349e897b4c5c1'
             '4174c91317fce6795b7a665ec26944107d9d2a41ee04a23eb782d4fc97207117')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$_pkgname-$pkgver"
     # Arch usually has the latest versions. Patch requirements to allow them.
     patch --strip=2 -i "$srcdir"/fix_requirements_for_Arch.diff
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$_pkgname-$pkgver"
     python setup.py build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 "$srcdir"/gns3.desktop "$pkgdir"/usr/share/applications/gns3.desktop
   install -Dm644 resources/images/gns3_icon_256x256.png "$pkgdir"/usr/share/pixmaps/gns3.png

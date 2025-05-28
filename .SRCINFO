@@ -1,4 +1,4 @@
-pkgbase = gns3-gui
+pkgbase = gns3-gui-2
 	pkgdesc = GNS3 network simulator. Graphical user interface package.
 	pkgver = 2.2.52
 	pkgrel = 1
@@ -20,6 +20,8 @@ pkgbase = gns3-gui
 	optdepends = gns3-server: GNS3 backend. Manages emulators such as Dynamips, VirtualBox or Qemu/KVM
 	optdepends = xterm: Default terminal emulator for CLI management of virtual instances
 	optdepends = wireshark-qt: Live packet capture
+	provides = gns3-gui
+	conflicts = gns3-gui
 	source = gns3-gui-2.2.52.tar.gz::https://github.com/GNS3/gns3-gui/archive/v2.2.52.tar.gz
 	source = gns3.desktop
 	source = fix_requirements_for_Arch.diff
@@ -27,4 +29,4 @@ pkgbase = gns3-gui
 	sha256sums = 51e6db5b47e6af3d008d85e8c597755369fafb75ddb2af9e79a441f943f4c166
 	sha256sums = 4174c91317fce6795b7a665ec26944107d9d2a41ee04a23eb782d4fc97207117
 
-pkgname = gns3-gui
+pkgname = gns3-gui-2
