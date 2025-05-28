@@ -5,7 +5,7 @@
 
 _pkgname=butane
 pkgname=butane-bin
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Fedora CoreOS Config Transpiler"
 arch=('aarch64' 'x86_64')
@@ -17,12 +17,12 @@ provides=('butane')
 source_aarch64=(https://github.com/coreos/butane/releases/download/v$pkgver/butane-aarch64-unknown-linux-gnu{,.asc})
 source_x86_64=(https://github.com/coreos/butane/releases/download/v$pkgver/butane-x86_64-unknown-linux-gnu{,.asc})
 
-sha256sums_aarch64=('d353e6a58766c5b8ad43eb7882e7714f4ab80eeb69726437eec5a3c1d4e28525'
+sha256sums_aarch64=('d8cc6b80ca644d6986e507f30401b5504ea301df190e3ca2c41510e95d887b93'
                     'SKIP')
-sha256sums_x86_64=('5833ce9f9c2932d9b02bc05821ffb6927d1e896a524c8dd53a4c9d2d90c47e2c'
+sha256sums_x86_64=('73946ac4b15b9f6b53bc30a196201ebc251000b120ff71eb9ac5324548d9f51d'
                    'SKIP')
 
-validpgpkeys=('115DF9AEF857853EE8445D0A0727707EA15B79CC')
+validpgpkeys=('B0F4950458F69E1150C6C5EDC8AC4916105EF944')
 
 package() {
     mkdir -p ${pkgdir}/usr/bin
