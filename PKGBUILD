@@ -1,6 +1,6 @@
 # Maintainer: Romain Chardiny <romain.chardiny@gmail.com>
 pkgname=floc-git
-pkgver=r163.21ee3cd
+pkgver=r172.1910852
 pkgrel=1
 pkgdesc="Flo Compiler"
 arch=("any")
@@ -42,4 +42,6 @@ package() {
   find . -name floc.bash -type f -exec install -Dm644 {} "$pkgdir/usr/share/bash-completion/completions/floc" \;
   find . -name _floc -type f -exec install -Dm644 {} "$pkgdir/usr/share/zsh/site-functions/_floc" \;
   find . -name sd.fish -type f -exec install -Dm644 {} "$pkgdir/usr/share/fish/vendor_completions/floc.fish" \;
+  find . -name floc.1 -type f -exec install -Dm644 {} "$pkgdir/usr/share/man/man1/floc.1" \;
+  gzip "$pkgdir/usr/share/man/man1/floc.1"
 }
