@@ -1,4 +1,4 @@
-# Maintainer: JarzaClay <icdubs09+aur at gmail dot com>
+# Maintainer: Trayambak Rai <xtrayambak at disroot dot org>
 pkgname=equinox-git
 pkgver=0.1.6
 pkgrel=1
