@@ -1,6 +1,6 @@
 pkgbase = rime-wanxiang-dict-cn
 	pkgdesc = 万象中文词库
-	pkgver = 6.8.8+r20250528
+	pkgver = 6.8.9+r20250529
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/amzxyz/rime_wanxiang
@@ -11,9 +11,9 @@ pkgbase = rime-wanxiang-dict-cn
 	makedepends = rime-essay
 	makedepends = sed
 	makedepends = rsync
-	source = cn_dicts.20250528.zip::https://github.com/amzxyz/rime_wanxiang/releases/download/dict-nightly/cn_dicts.zip
-	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v6.8.8.tar.gz
-	sha256sums = 328a3b73cd27f605a2db8417ac9bc9ef2332664f1d19ad2c66ced81aa4b007e8
-	sha256sums = 4cb835230fdfff3607f03c28839eb239cff36e8c68d6e93760f4b8d26352c81c
+	source = cn_dicts.20250529.zip::https://github.com/amzxyz/rime_wanxiang/releases/download/dict-nightly/cn_dicts.zip
+	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v6.8.9.tar.gz
+	sha256sums = 7c76620dd45dcbf84f255dd6a7be7d0f3f32deb28d0dd84831dae5375e35ca2b
+	sha256sums = 895b9cc8fedeef19bbedf3f6156d095254b0d8feda5f5f8bb8f190c819b0214a
 
 pkgname = rime-wanxiang-dict-cn
