@@ -1,26 +1,23 @@
 pkgbase = wezterm-nightly-bin
-	pkgdesc = Bleeding edge builds of a GPU-accelerated cross-platform terminal emulator and multiplexer implemented in Rust
-	pkgver = 20200517.122836.92c201c6.105.g5d508350
-	pkgrel = 10
-	url = https://wezfurlong.org/wezterm
-	arch = i686
+	pkgdesc = A GPU-accelerated cross-platform terminal emulator and multiplexer (nightly build)
+	pkgver = nightly
+	pkgrel = 1
+	url = https://wezfurlong.org/wezterm/
 	arch = x86_64
 	license = MIT
-	makedepends = fuse
-	depends = dbus
 	depends = fontconfig
 	depends = hicolor-icon-theme
-	depends = libx11
+	depends = libxkbcommon
 	depends = libxkbcommon-x11
-	depends = wayland
+	depends = ttf-font
 	depends = xcb-util-image
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
+	optdepends = python-nautilus: for Nautilus integration
 	provides = wezterm
-	conflicts = wezterm-bin wezterm wezterm-git
-	options = !strip
-	source = wezterm::https://github.com/wez/wezterm/releases/download/nightly/WezTerm-nightly-Ubuntu18.04.AppImage
+	conflicts = wezterm
+	conflicts = wezterm-git
+	source = wezterm-nightly.Ubuntu24.04.tar.xz::https://github.com/wezterm/wezterm/releases/download/nightly/wezterm-nightly.Ubuntu24.04.tar.xz
 	sha256sums = SKIP
 
 pkgname = wezterm-nightly-bin
-

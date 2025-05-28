@@ -1,5 +1,11 @@
-LICENSE
-src
-pkg
-wezterm*
-squashfs-root
+# Makepkg generated files
+pkg/
+src/
+*.pkg.tar.*
+*.log
+
+# Downloaded source files
+*.tar.xz
+*.tar.gz
+*.tar.bz2
+*.zip
