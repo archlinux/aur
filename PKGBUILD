@@ -1,13 +1,13 @@
 pkgbase=coreutils-uutils-symlink
 pkgname=(${pkgbase} coreutils-uutils-arch)
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='https://uutils.github.io/'
 depends=(uutils-coreutils)
 package_coreutils-uutils-symlink() {
 	pkgdesc="(Dangerous) symlinks to swap coreutils with uutils"
-	depends+=(nix-busybox)
+	depends+=(uutils-coreutils-stty)
 	conflicts=(coreutils b3sum sha3sum coreutils-uutils)
 	provides=(coreutils b3sum)
 	install -d "$pkgdir"/usr/{bin,share/{man/man1,fish/vendor_completions.d}}
@@ -19,7 +19,7 @@ package_coreutils-uutils-symlink() {
 	done
 	echo '#!/usr/bin/uu-coreutils false' |tee "$pkgdir"/usr/bin/{ch,run}con
 	chmod 755 "$pkgdir"/usr/bin/{ch,run}con
-	ln -sf /usr/lib/nix/busybox "$pkgdir"/usr/bin/stty
+	ln -sf /usr/bin/uu-stty "$pkgdir"/usr/bin/stty
 	rm "$pkgdir"/usr/{bin,share/{man/man1,fish/vendor_completions.d}}/{kill,more,uptime,hostname}* "$pkgdir"/usr/bin/arch
 }
 
