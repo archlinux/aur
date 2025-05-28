@@ -1,13 +1,13 @@
 pkgbase = yaud
-	pkgdesc = YAUD: Yet Another User Defender , an app that defend users from dangerous commands.
+	pkgdesc = YAUD: Yet Another User Defender, an app that defends users from dangerous commands.
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/npc-gnu/yaud
+	url = https://github.com/npc-gnu/yaud-aur
 	arch = x86_64
-	license = GNU General Public Lisence v3
+	license = GPLv3
 	depends = bash
 	depends = coreutils
-	source = https://github.com/npc-gnu/yaud/raw/main/yaud_bin/yaud_bin.tar.gz
+	source = git+https://github.com/npc-gnu/yaud-aur.git
 	sha256sums = SKIP
 
 pkgname = yaud
