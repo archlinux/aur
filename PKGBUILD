@@ -15,7 +15,9 @@ depends=('alsa-lib' 'cairo' 'dbus' 'expat' 'fontconfig' 'gcc-libs' 'gdk-pixbuf2'
          'glib2' 'glibc' 'gst-plugins-bad-libs' 'gstreamer' 'gtk3' 'libgl'
          'libsrtp' 'libx11' 'opus' 'pango' 'sh' 'speexdsp' 'webkit2gtk' 'xz' 'zlib')
 makedepends=('patchelf')
-optdepends=('python' 'wayland')
+optdepends=('python'
+            'slicer-udev: 3D printer connection rules'
+            'wayland')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"

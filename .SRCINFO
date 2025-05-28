@@ -29,6 +29,7 @@ pkgbase = creality-print-bin
 	depends = xz
 	depends = zlib
 	optdepends = python
+	optdepends = slicer-udev: 3D printer connection rules
 	optdepends = wayland
 	provides = creality-print
 	conflicts = creality-print
