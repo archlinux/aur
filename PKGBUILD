@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-dev-tools
 pkgname=${_pkgname}-devel
-pkgver=4.19.4
+pkgver=4.21.0
 pkgrel=1
 pkgdesc="Xfce developer tools (Development release)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('docker: xfce-build helper script')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/xfce4-dev-tools/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('18cd68b2b077b8fa4443d7111c54657f67c6f131b226322a809b27f4327cb9ca')
+sha256sums=('36059f48bbb196645f6514ab5a356e55cdd9bc917edcaf6afd86adfc28d7a358')
 
 build() {
   cd "${_pkgname}-${pkgver}"
