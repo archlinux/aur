@@ -7,7 +7,7 @@ pkgbase = radioss
 	license = MIT
 	depends = webkit2gtk
 	depends = openssl
-	source_x86_64 = radioss-0.5.1.AppImage::https://github.com/DasCanard/radioss/releases/download/v0.5.1/radioss_0.5.1_amd64.AppImage
-	sha256sums_x86_64 = bf6b0629d71714aff66fb9103cadde7419b1e3fc7f41424b4f3c93810f496b2c
+	source_x86_64 = radioss-0.5.1.deb::https://github.com/DasCanard/radioss/releases/download/v0.5.1/radioss_0.5.1_amd64.deb
+	sha256sums_x86_64 = 66897acf2d0382a5b38b0cb19c204bfa04655966830829ec8b5ddd1916efc828
 
 pkgname = radioss

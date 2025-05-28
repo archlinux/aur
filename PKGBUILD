@@ -7,15 +7,24 @@ arch=('x86_64')
 url="https://github.com/DasCanard/radioss"
 license=('MIT')
 depends=('webkit2gtk' 'openssl')
-source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/DasCanard/radioss/releases/download/v0.5.1/radioss_0.5.1_amd64.AppImage")
-sha256sums_x86_64=('bf6b0629d71714aff66fb9103cadde7419b1e3fc7f41424b4f3c93810f496b2c')
+source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/DasCanard/radioss/releases/download/v0.5.1/radioss_0.5.1_amd64.deb")
+sha256sums_x86_64=('66897acf2d0382a5b38b0cb19c204bfa04655966830829ec8b5ddd1916efc828')
 
 package() {
-    # Install AppImage
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/usr/bin/radioss"
+    # Extract DEB package
+    cd "${srcdir}"
+    ar x "${pkgname}-${pkgver}.deb"
+    tar xf data.tar.*
     
-    # Create desktop entry
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/radioss.desktop" << EOD
+    # Install binary
+    install -Dm755 "usr/bin/radioss" "${pkgdir}/usr/bin/radioss"
+    
+    # Install desktop entry if it exists
+    if [ -f "usr/share/applications/radioss.desktop" ]; then
+        install -Dm644 "usr/share/applications/radioss.desktop" "${pkgdir}/usr/share/applications/radioss.desktop"
+    else
+        # Create desktop entry
+        install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/radioss.desktop" << EOD
 [Desktop Entry]
 Name=Radioss
 Comment=A modern internet radio player
@@ -25,6 +34,12 @@ Type=Application
 Categories=AudioVideo;Audio;Player;
 StartupNotify=true
 EOD
+    fi
+    
+    # Install icon if it exists
+    if [ -f "usr/share/icons/hicolor/256x256/apps/radioss.png" ]; then
+        install -Dm644 "usr/share/icons/hicolor/256x256/apps/radioss.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/radioss.png"
+    fi
     
     # Install license
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" << EOL
