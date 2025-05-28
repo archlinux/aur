@@ -1,9 +1,10 @@
-# Maintainer: <mumei AT airmail DOT cc>
+# Maintainer: Chris Charabaruk <chris [at] charabaruk [dot] net>
+# Contributor: <mumei AT airmail DOT cc>
 
 _pkgname=sqlclient
 pkgname=sqlclient
 pkgrel=1
-pkgver=1.8.1
+pkgver=1.9.0
 pkgdesc='Provides a simple interface to SQL databases for GNUstep applications'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/gnustep/libs-sqlclient'
@@ -12,7 +13,7 @@ groups=('gnustep-libs')
 depends=('gnustep-base' 'performance')
 makedepends=('gcc-objc' 'gnustep-make')
 source=(ftp://ftp.gnustep.org/pub/gnustep/libs/SQLClient-$pkgver.tar.gz)
-sha256sums=('c6cb9d0033b496b52b698f1f80007b6acd215441683cf1a1c22f67a96198074f')
+sha256sums=('4de755329874912eafd70d36dc2478c2fc9d6345da30ba2cdb710c35d041ba46')
 
 build() {
   cd "SQLClient-$pkgver"

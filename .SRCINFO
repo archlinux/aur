@@ -1,6 +1,6 @@
 pkgbase = sqlclient
 	pkgdesc = Provides a simple interface to SQL databases for GNUstep applications
-	pkgver = 1.8.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/gnustep/libs-sqlclient
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = sqlclient
 	makedepends = gnustep-make
 	depends = gnustep-base
 	depends = performance
-	source = ftp://ftp.gnustep.org/pub/gnustep/libs/SQLClient-1.8.1.tar.gz
-	sha256sums = c6cb9d0033b496b52b698f1f80007b6acd215441683cf1a1c22f67a96198074f
+	source = ftp://ftp.gnustep.org/pub/gnustep/libs/SQLClient-1.9.0.tar.gz
+	sha256sums = 4de755329874912eafd70d36dc2478c2fc9d6345da30ba2cdb710c35d041ba46
 
 pkgname = sqlclient
