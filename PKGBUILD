@@ -2,7 +2,7 @@
 # Contributor: Julian <juliannfairfax@protonmail.com>
 
 pkgname=pipeline-gtk
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Watch YouTube and PeerTube videos in one place"
 arch=("x86_64" "aarch64" "riscv64")
@@ -13,7 +13,7 @@ makedepends=("blueprint-compiler" "cargo" "meson")
 conflicts=("tubefeeder")
 replaces=("tubefeeder")
 source=("https://gitlab.com/schmiddi-on-mobile/pipeline/-/archive/$pkgver/pipeline-$pkgver.tar.gz")
-sha256sums=('44d2411f71a25e8d6f81e522c59643dd4ca744ff06dcf40113fda10428a33dfe')
+sha256sums=('b0d7b9134fa58952a72bb138d72dd558facba57e76ce4963d6a6a87d85377fe0')
 options=(!lto)
 
 prepare() {
