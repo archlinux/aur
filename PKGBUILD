@@ -42,6 +42,7 @@ prepare() {
   
   # bypass confirmation prompt for npx
   sed -i -E 's/"postinstall": "npx patch-package"/"postinstall": "npx --yes patch-package"/' redisinsight/package.json
+  sed -i -E 's/"postinstall": "npx patch-package"/"postinstall": "npx --yes patch-package"/' redisinsight/api/package.json
 
   _ensure_local_nvm
   nvm install 20.12.2
