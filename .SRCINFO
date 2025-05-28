@@ -1,6 +1,6 @@
 pkgbase = performance
 	pkgdesc = High-Performance library for Data Structures manipulation
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/gnustep/libs-performance
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = performance
 	license = GPL
 	makedepends = gcc-objc
 	makedepends = gnustep-make
-	source = https://github.com/gnustep/libs-performance/archive/performance-0_5_0.tar.gz
-	sha256sums = fb17a1fb812f3e176b087a56ff753f1148e4bdca0103ed0113f21a5cb1c9a669
+	depends = gnustep-base
+	source = https://github.com/gnustep/libs-performance/archive/performance-0_6_0.tar.gz
+	sha256sums = 5f66bfbbe87c2a71d420be41ca7a0fd146c37383754ac128dbb2e3c5fc936daf
 
 pkgname = performance
-
