@@ -1,0 +1,15 @@
+pkgbase = asdbctl
+	pkgdesc = a command line utility to change the brightness of one or more Apple Studio Display(s)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/juliuszint/asdbctl
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	options = !lto
+	options = !debug
+	source = git+https://github.com/juliuszint/asdbctl#tag=v1.0.0
+	b2sums = e96cd4c4614f6daec93a871a81f0dd4bf92783bf813c27981e56e011b1a0b1876c818926c52b847fc6723f714196749624ef6b6fab62978cbce516948728bfc8
+
+pkgname = asdbctl
