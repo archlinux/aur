@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=veyon-bin
-pkgver=4.9.5
+pkgver=4.9.6
 pkgrel=1
 pkgdesc="Cross-platform computer monitoring and classroom management.(Prebuilt version)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}.0-ubuntu.22.04_amd64.deb"
 )
-sha256sums=('29245c4350766a601e61cf4c07460a7081ac13313abc48a5b7f1e8f0f20ab801')
+sha256sums=('4d4031175b20cbe75b85f2088a6ed02f9d3a7f8b6ed4cb7c661b4a1299143cc4')
 
 prepare() {
     bsdtar -xf "${srcdir}/data."*
