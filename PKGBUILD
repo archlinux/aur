@@ -3,24 +3,21 @@
 pkgname=(fitgirl-ddl-git fitgirl-ddl-gui-git)
 pkgdesc="fitgirl-repacks.site extractor"
 _pkgname=fitgirl-ddl
-pkgver=r24.g4f5c2de
-pkgrel=2
+pkgver=r25.g42343f1
+pkgrel=1
 url="https://github.com/mokurin000/fitgirl-ddl"
 arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=(
-    'gcc-libs' 'glibc'
+    'gcc-libs' 'curl'
 )
 makedepends=(
-    'rust' 'git' 'jq'
-    'glib2' 'cairo' 'dconf' 'gtk4' 'dbus'
+    'rust' 'git' 'jq' 'qt6-base' 'clang'
 )
 
 source=("git+${url}.git")
 
 sha256sums=('SKIP')
-
-options=('!lto')
 
 prepare() {
     cd "${_pkgname}"
@@ -48,10 +45,10 @@ package_fitgirl-ddl-git() {
 
 
 package_fitgirl-ddl-gui-git() {
-    pkgdesc+=" (GUI version)"
     conflicts=('fitgirl-ddl-gui')
     provides=('fitgirl-ddl-gui')
-    depends+=('glib2' 'cairo' 'dconf' 'gtk4' 'dbus')    
+    pkgdesc+=" (GUI version)"
+    depends+=('qt6-base')
 
     cd "${_pkgname}"
 
@@ -65,5 +62,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
-    cargo build --frozen --release
+    export RUSTFLAGS="-C link-args=-flto"
+    cargo build --frozen --release --bin ${_pkgname}
+    cargo build --frozen --release --bin ${_pkgname}_gui --no-default-features -F qt
 }
