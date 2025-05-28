@@ -1,7 +1,7 @@
 pkgbase = wps-office-cn-bwrap
 	pkgdesc = Kingsoft Office (WPS Office) CN version - an office productivity suite
 	pkgver = 12.1.0.17900
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linux.wps.cn
 	arch = x86_64
 	license = LicenseRef-WPS-EULA
@@ -9,10 +9,12 @@ pkgbase = wps-office-cn-bwrap
 	options = !emptydirs
 	source = fix-wps-python-parse.patch::https://aur.archlinux.org/cgit/aur.git/plain/fix-wps-python-parse.patch?h=wps-office-cn
 	source = portable-config
-	sha1sums = SKIP
-	sha1sums = SKIP
-	source_x86_64 = wps-office_12.1.0.17900_amd64.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/17900/wps-office_12.1.0.17900_amd64.deb?t=1740043528&k=4f04aa7cbaef3446837910b86e9099cd
-	sha1sums_x86_64 = SKIP
+	source = wps-helper
+	sha1sums = f3713481edf04ffb08be8d24dce66554dd5a4f13
+	sha1sums = 27d72f36d5eb12702a10c5f4686e29f7a4398a27
+	sha1sums = 7dbdbb60a9d774bbbae1622165f436af549c1a69
+	source_x86_64 = wps-office_12.1.0.17900_amd64.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/17900/wps-office_12.1.0.17900_amd64.deb?t=1748403537&k=aa69213e290c8e50b926d471ea2b8daf
+	sha1sums_x86_64 = a245fe88c25d0992fb6d2b1e37ba99dc15fe2a5f
 
 pkgname = wps-office-cn-bwrap
 	depends = fontconfig
