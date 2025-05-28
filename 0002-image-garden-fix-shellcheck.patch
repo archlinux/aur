@@ -1,0 +1,29 @@
+From 2c9492b5709d0a8b7a06484cffab5c7b9b6e33b3 Mon Sep 17 00:00:00 2001
+Message-ID: <2c9492b5709d0a8b7a06484cffab5c7b9b6e33b3.1748418479.git.maciek.borzecki@gmail.com>
+From: Maciek Borzecki <maciek.borzecki@gmail.com>
+Date: Wed, 28 May 2025 09:47:49 +0200
+Subject: [PATCH] image-garden: fix shellcheck
+
+Fix shellcheck
+
+Signed-off-by: Maciek Borzecki <maciek.borzecki@gmail.com>
+---
+ image-garden | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/image-garden b/image-garden
+index 1d9f20b722d2f4252521cd2ab14455fad0388b9a..303d8fd916b643035ccc6465ea5f1fad80b7997d 100755
+--- a/image-garden
++++ b/image-garden
+@@ -64,7 +64,7 @@ make)
+ 		--warn-undefined-variables \
+ 		GARDEN_PROJECT_DIR="$GARDEN_PROJECT_DIR" \
+ 		-f "$GARDEN_INCLUDE"/image-garden.mk \
+-		-C "$(test -d $GARDEN_PROJECT_DIR/.image-garden && echo "$GARDEN_PROJECT_DIR"/.image-garden || echo .)" \
++		-C "$(test -d "$GARDEN_PROJECT_DIR"/.image-garden && echo "$GARDEN_PROJECT_DIR"/.image-garden || echo .)" \
+ 		"$@"
+ 	;;
+ 
+-- 
+2.49.0
+
