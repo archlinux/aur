@@ -1,15 +1,15 @@
 # Maintainer: Javier Orfo <javierorfo@protonmail.com>
 
 pkgname=rstatusbar
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Configurable statusbar for Xorg server using xsetroot. Made in Rust with toml file configuation."
 arch=('x86_64')
 url="https://github.com/javiorfo/rstatusbar"
 license=('MIT')
-depends=('curl' 'xorg-xsetroot')
+depends=('xorg-xsetroot')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/rstatusbar-$pkgver.tar.gz")
-sha512sums=('a67acd50d9feb9e69a8facef694d3dfd98f10897f46a0f2446b3c61ac916f3a846e26543dc05080f2d35918f67c9a7d0cca2dbf967cfa964f54031885786ee73')
+sha512sums=('a40aa995ab0198d1a33cff52e857b0f680182fb5a5e179564c088ceca4861d788fcbc6cd93f313eb5c75a11b412fc2dd86969836abb7841923ae734a22d99e73')
 conflicts=("${pkgname}")
 provides=("${pkgname}")
 
