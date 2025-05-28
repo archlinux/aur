@@ -1,6 +1,6 @@
 pkgbase = sparkle-electron-git
 	pkgdesc = Another Mihomo GUI.
-	pkgver = r737.e4a7e67
+	pkgver = 1.6.5.r1
 	pkgrel = 1
 	url = https://github.com/xishang0128/sparkle
 	install = sparkle.install

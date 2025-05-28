@@ -1,6 +1,6 @@
 pkgname=sparkle-electron-git
 _pkgname=${pkgname%-electron-git}
-pkgver=r737.e4a7e67
+pkgver=1.6.5.r1
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -46,6 +46,7 @@ package() {
     asar extract $srcdir/${_pkgname}/dist/linux-unpacked/resources/app.asar ${pkgdir}/opt/sparkle
     cp -r $srcdir/${_pkgname}/extra/sidecar ${pkgdir}/opt/sparkle/resources/
     cp -r $srcdir/${_pkgname}/extra/files ${pkgdir}/opt/sparkle/resources/
+    chmod +x ${pkgdir}/opt/sparkle/resources/files/sysproxy
     chmod +sx ${pkgdir}/opt/sparkle/resources/sidecar/mihomo
     chmod +sx ${pkgdir}/opt/sparkle/resources/sidecar/mihomo-alpha
     install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
