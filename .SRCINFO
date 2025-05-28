@@ -1,0 +1,36 @@
+pkgbase = equinox-git
+	pkgdesc = An open-source runtime for Roblox on Linux
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://equinoxhq.github.io
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = nim
+	makedepends = clang
+	makedepends = git
+	depends = curl
+	depends = libx11
+	depends = libglvnd
+	depends = graphene
+	depends = libxkbcommon
+	depends = libxcursor
+	depends = cairo
+	depends = libadwaita
+	depends = gdk-pixbuf2
+	depends = harfbuzz
+	depends = libxext
+	depends = glib2
+	depends = glibc
+	depends = pango
+	depends = vulkan-icd-loader
+	depends = gtk4
+	depends = wayland
+	depends = lxc
+	depends = libgbinder
+	depends = pcre2
+	depends = dnsmasq
+	source = equinox::git+https://github.com/equinoxhq/equinox.git#branch=master
+	sha256sums = SKIP
+
+pkgname = equinox-git
