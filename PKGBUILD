@@ -1,4 +1,4 @@
-# Maintainer: Michael Paul <13769683+mipxx@users.noreply.github.com>
+# Maintainer: Michael Paul <aur@michael-paul.org>
 # shellcheck disable=SC2034,SC2154,SC2164 shell=bash
 pkgname=asdbctl
 pkgver=1.0.0
