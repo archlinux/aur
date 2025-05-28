@@ -1,7 +1,7 @@
 pkgbase = bluespec-release
 	pkgdesc = Bluespec Compiler (BSC), stable release
 	pkgver = 2025.01.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/B-Lang-org/bsc
 	arch = x86_64
 	license = BSD
@@ -17,14 +17,17 @@ pkgbase = bluespec-release
 	depends = haskell-split
 	optdepends = tcl: bluesim and bluetcl
 	provides = bluespec-git
+	provides = bsc
 	noextract = yices-src-for-bsc-2025.01.1.tar.gz
 	source = https://github.com/B-Lang-org/bsc/archive/refs/tags/2025.01.1.tar.gz
 	source = https://github.com/B-Lang-org/bsc/releases/download/2025.01.1/yices-src-for-bsc-2025.01.1.tar.gz
 	source = fool-git-detection.patch
 	source = fix-ldflags.patch
+	source = fix-stp-v2025.01.1.patch
 	sha256sums = 6b08d6893e454d26ab12a8b68c5b7383d2060e10817c9fb4d3d19084a4f740f5
 	sha256sums = a7211d089be68303983cc644b70edaae8efab529ff63fd8670a4f20119888781
 	sha256sums = 03b6c8b7fa05f37d0e9211c36764be88d624de63439b99b938eebd08be84cacd
 	sha256sums = 8f551d0a67c1d3b092b1681a341c3d3a580f18a22af57421b487332450ca7d40
+	sha256sums = 6e7afd258754600356e5cff21396c173dc977700f0947f60aca8b844623fce3d
 
 pkgname = bluespec-release
