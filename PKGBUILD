@@ -4,7 +4,7 @@
 # Contributor: royrocks <royrocks13@gmail.com>
 
 pkgname=tuxpaint
-pkgver=0.9.34
+pkgver=0.9.35
 pkgrel=1
 pkgdesc='Drawing program designed for young children'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=('tuxpaint-stamps: more stamps'
             'fontforge: zh_tw doc generator script'
             'bash: for tp-magic-config, tuxpaint-import, zh_tw doc generator scripts')
 source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver.tar.gz")
-sha256sums=('b761df5ed386a9e04a6809ab3e0cbf2126f10b770527cb2b5f190ff5e370ed03')
+sha256sums=('c1c18af91be77e94fdaab2c928204c4c39ba39ac5da2f441aaf2ecab6d8bd0ad')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -41,6 +41,7 @@ build() {
 
 package() {
   make -C "$pkgname-$pkgver" \
+    SHELL=/bin/bash \
     PREFIX=/usr \
     GNOME_PREFIX=/usr \
     X11_ICON_PREFIX="$pkgdir/usr/share/pixmaps" \
