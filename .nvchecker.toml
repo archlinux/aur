@@ -1,0 +1,3 @@
+[python-gradio-log]
+source = "pypi"
+pypi="gradio_log"
