@@ -3,7 +3,7 @@
 
 pkgname='netconsd'
 pkgver='0.4.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The Netconsole Daemon'
 arch=('x86_64' 'aarch64')
 url="https://github.com/facebook/${pkgname}"
@@ -20,7 +20,7 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"patch4.patch::${url}/commit/2755519ea9d5c2edc91c5b3246ea401bd6697874.patch"
 	"patch5.patch::${url}/commit/1d80b66285765a54a4ed681c27608164756ff980.patch")
 sha256sums=('6faff1eb8cfa8d2d99302eb9fdb10f0aedb2daf20319cc704b2c80a4f220fc13'
-            '902f83b9481ea7dba5a0695762056f772dde5df61799ec8519e7c724af6b60a2'
+            'a24e2898b4dbcee182312057e74cfc37a97f46f5876e47c2162f292c29197a14'
             '606000a36fc864dc83ef077e43f327dae5dfe97e0ebe03d8902330f5b3094ccb'
             '8595a586457805424b7aea50b75fcd3667577dda23522a1ba5787138a1a3c773'
             'c329cead32ea6369e46c033c2769020073a173f67dddb0a49da0322e6e64e688'

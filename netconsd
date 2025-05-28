@@ -1,1 +1,1 @@
-NETCONSD_ARGS="-u='6666' /usr/lib/netconsd/logger.so"
+NETCONSD_ARGS="-u 6666 /usr/lib/netconsd/logger.so"
