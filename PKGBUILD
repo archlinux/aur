@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=copymanga-downloader
-pkgver=0.5.0
-pkgrel=5
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="拷贝漫画 copymanga 的多线程下载器，带图形界面，带收藏夹，支持下载下架的漫画，没有每分钟15次API请求的限制，已打包exe，下载速度飞快。 "
 arch=($CARCH)
 url="https://github.com/lanyeeee/copymanga-downloader"
@@ -19,6 +19,7 @@ depends=(
     gtk3
     hicolor-icon-theme
     libsoup3
+    openssl
     webkit2gtk-4.1
 )
 makedepends=(
@@ -30,17 +31,18 @@ makedepends=(
 backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('45d7f79671df726c08c460f9adcaf9db139aebf9fa35bd50bf78c9005a859bd3')
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('06fb637a2140a0c7a8a64e15d0db6b1da323bd87bb5afa68ad7347389d8e19be')
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}/src-tauri"
+    git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}/src-tauri"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}/"
+    cd "${srcdir}/${pkgname}/"
 
     export CARGO_HOME="${srcdir}/.cargo"
     {
@@ -59,13 +61,14 @@ build() {
 }
 
 # check() {
-#     cd "${srcdir}/${pkgname}-${pkgver}/"
+#     cd "${srcdir}/${pkgname}/"
 #     cargo test --release --all-features
 # }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}/"
+    cd "${srcdir}/${pkgname}/"
 
+    install -Dvm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
     install -Dvm755 src-tauri/target/release/${pkgname} -t ${pkgdir}/usr/bin
     install -Dvm644 src-tauri/icons/icon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
     install -Dvm644 /dev/stdin ${pkgdir}/usr/share/applications/${pkgname}.desktop <<EOF
