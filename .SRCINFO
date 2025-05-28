@@ -28,6 +28,7 @@ pkgbase = webots-bin
 	depends = libxslt
 	depends = gd
 	depends = freetype2
+	depends = sndio
 	optdepends = alsa-lib
 	optdepends = cairo
 	optdepends = dbus
