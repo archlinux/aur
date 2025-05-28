@@ -3,7 +3,7 @@ pkgname=numara-bin
 _pkgname=Numara
 pkgver=6.0.0
 _electronversion=36
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple notepad calculator built on Electron, powered by Math.js.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
 sha256sums=('b944c7642b6a0ccf0c24e98d199d8bf4c8d556ebc7d87ddb9af98cab67b378b5'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('cb65617e84f9a0ff7cc04eca83b5d2de3ca67b4725ec8ae11decac3ea3b8427a')
-sha256sums_x86_64=('3d45f55fcc6a823cb19d0148c5e0f6b6ea9165e06c5257dfb601d6c00401ce0e')
+sha256sums_aarch64=('8012becda85ddef3c68b38dfbcb066dddf68743d25c938374e6b693ebbce8dfe')
+sha256sums_x86_64=('cf50df861477f1c095b5bd88775cc6e369c7198ce3da28f334681c3a3be03eb0')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -35,7 +35,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

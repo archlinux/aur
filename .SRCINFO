@@ -1,7 +1,7 @@
 pkgbase = numara-bin
 	pkgdesc = Simple notepad calculator built on Electron, powered by Math.js.(Prebuilt version.Use system-wide electron)
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://numara.io/
 	arch = aarch64
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = numara-bin
 	sha256sums = b944c7642b6a0ccf0c24e98d199d8bf4c8d556ebc7d87ddb9af98cab67b378b5
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 	source_aarch64 = numara-6.0.0-aarch64.rpm::https://github.com/bornova/numara-calculator/releases/download/v6.0.0/Numara-6.0.0-aarch64.rpm
-	sha256sums_aarch64 = cb65617e84f9a0ff7cc04eca83b5d2de3ca67b4725ec8ae11decac3ea3b8427a
+	sha256sums_aarch64 = 8012becda85ddef3c68b38dfbcb066dddf68743d25c938374e6b693ebbce8dfe
 	source_x86_64 = numara-6.0.0-x86_64.rpm::https://github.com/bornova/numara-calculator/releases/download/v6.0.0/Numara-6.0.0-x86_64.rpm
-	sha256sums_x86_64 = 3d45f55fcc6a823cb19d0148c5e0f6b6ea9165e06c5257dfb601d6c00401ce0e
+	sha256sums_x86_64 = cf50df861477f1c095b5bd88775cc6e369c7198ce3da28f334681c3a3be03eb0
 
 pkgname = numara-bin
