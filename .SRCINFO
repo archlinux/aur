@@ -1,0 +1,21 @@
+pkgbase = fastnote-git
+	pkgdesc = A memo-like note app build with Electron. Global shortcut/Material Design 3.(Use system-wide electron)
+	pkgver = 1.0.1.r6.g55f7eeb
+	pkgrel = 1
+	url = https://github.com/creamIcec/FastNote
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron33
+	provides = fastnote=1.0.1
+	conflicts = fastnote
+	source = fastnote.git::git+https://github.com/creamIcec/FastNote.git
+	source = fastnote.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = fastnote-git
