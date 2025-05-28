@@ -1,0 +1,13 @@
+diff --git a/libvisual/lv_thread.c b/libvisual/lv_thread.c
+index 4c2664f7..fac9ad13 100644
+--- a/libvisual/lv_thread.c
++++ b/libvisual/lv_thread.c
+@@ -588,7 +588,7 @@ static VisThread *thread_create_win32 (VisThreadFunc func, void *data, int joina
+ 	
+ 	thread = visual_mem_new0 (VisThread, 1);
+ 
+-	thread->thread = CreateThread (NULL, 0, func, (PVOID) data, 0, &thread->threadId);
++	thread->thread = CreateThread (NULL, 0, (LPTHREAD_START_ROUTINE) func, (PVOID) data, 0, &thread->threadId);
+ 
+ 	if (thread == NULL) {
+ 		visual_log (VISUAL_LOG_CRITICAL, "Error while creating thread");
