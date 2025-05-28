@@ -3,17 +3,17 @@
 _pkgname=uv-dynamic-versioning
 pkgname=python-uv-dynamic-versioning
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='PDynamic versioning based on VCS tags for uv/hatch project'
 arch=(any)
 url='https://github.com/ninoseki/uv-dynamic-versioning'
 license=(MIT)
 depends=(
-  python-dunamai
-  python-hatchling
-  python-jinja
-  python-pydantic
   python-tomlkit
+  python-pydantic
+  python-jinja
+  python-hatchling
+  python-dunamai
 )
 
 makedepends=(
