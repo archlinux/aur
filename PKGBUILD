@@ -1,6 +1,6 @@
 # Maintainer: MuntasirSZN <muntasir.joypurhat@gmail.com>
 pkgname=getquotes
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A simple cli tool to get quotes in your terminal using WikiQuotes"
 arch=('x86_64' 'aarch64')
@@ -8,8 +8,8 @@ url="https://github.com/MuntasirSZN/getquotes"
 license=('MIT')
 source_x86_64=("https://github.com/MuntasirSZN/getquotes/releases/download/v${pkgver}/getquotes-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/MuntasirSZN/getquotes/releases/download/v${pkgver}/getquotes-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('8acad70dae72664ebbd72bc437ed8932bfe0545b1044319043ffd0aaf922d791')
-sha256sums_aarch64=('e758c4580d2f643061b41b11e821b9fd358b726324deecf08bf615d90a19523d')
+sha256sums_x86_64=('b2f605ae3999d6ab4bfe5117b518c6318e57e1b1ffe1f09450b11791f5ee8066')
+sha256sums_aarch64=('34412a3b5c511ba5037080371bc59e75f6e9c49557914ab434aee51d0b402fa7')
 conflicts=('getquotes-git')
 
 package() {
