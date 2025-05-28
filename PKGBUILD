@@ -1,6 +1,8 @@
-# Maintainer: <mumei AT airmail DOT cc>
+# Maintainer: Chris Charabaruk <chris [at] charabaruk [dot] net>
+# Contributor: <mumei AT airmail DOT cc>
+
 pkgname=gnustep-gui
-pkgver=0.30.0
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="The GNUstep GUI class library"
 arch=('x86_64')
@@ -30,7 +32,7 @@ conflicts=('gnustep-gui-svn')
 groups=('gnustep-core')
 options=('!makeflags')
 source=(https://github.com/gnustep/libs-gui/releases/download/gui-${pkgver//./_}/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('469dcaa54ed05b2520a704c30c0761a75b3ade8428e2e64645fb7b38a15c3cc3'
+sha256sums=('0c03a1b6313babd592ec58fcb825091f77eb27429a4ce4306ec3a7cfa7f9a1f6'
             'SKIP')
 validpgpkeys=('83AAE47CE829A4146EF83420CA868D4C99149679')
 
