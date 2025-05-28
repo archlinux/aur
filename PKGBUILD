@@ -4,7 +4,7 @@ pkgname=(fitgirl-ddl-git fitgirl-ddl-gui-git)
 pkgdesc="fitgirl-repacks.site extractor"
 _pkgname=fitgirl-ddl
 pkgver=r25.g42343f1
-pkgrel=1
+pkgrel=2
 url="https://github.com/mokurin000/fitgirl-ddl"
 arch=('x86_64' 'aarch64')
 license=('MIT')
@@ -18,6 +18,9 @@ makedepends=(
 source=("git+${url}.git")
 
 sha256sums=('SKIP')
+
+# fix building _gui variant
+options=(!lto)
 
 prepare() {
     cd "${_pkgname}"
