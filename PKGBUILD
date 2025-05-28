@@ -2,7 +2,7 @@
 
 pkgname=gmv-rs
 _name=${pkgname%-rs}
-pkgver=1.0
+pkgver=1.01
 pkgrel=1
 pkgdesc="This is a video surveillance implementation based on GB28181: compatible with 2016 and 2022 versions."
 arch=($CARCH)
@@ -32,7 +32,7 @@ backup=()
 options=(!lto !debug)
 install=
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f4be07a2f31e23a043f7da677017f2499d2ce2654e158476740cc7cdac4d7812')
+sha256sums=('e3acbcb1412b24af53b66541b46dcb472468eb1aa0a6b17ec8ffd343f8965f3e')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
