@@ -1,15 +1,17 @@
 pkgbase = papirus-folders
 	pkgdesc = Allows changing the color of folders in Papirus icon theme and its forks
-	pkgver = 1.13.1
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://github.com/PapirusDevelopmentTeam/papirus-folders
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = bash
 	depends = papirus-icon-theme
-	source = papirus-folders-1.13.1.tar.gz::https://github.com/PapirusDevelopmentTeam/papirus-folders/archive/v1.13.1.tar.gz
+	source = git+https://github.com/PapirusDevelopmentTeam/papirus-folders.git#tag=v1.14.0?signed
 	source = papirus-folders.hook
-	sha256sums = df38d1a86d4aaad575d1f93f1fc541d538409d985fa418d5eac46a77c18cb028
+	validpgpkeys = 1BA35B1B2207A266F6E0AD2AF0EC91A29D2E78EC
+	sha256sums = a1632b752e1b65814a7c316e6b6a94833b72fe88c912cfe58b5293a899102055
 	sha256sums = b6f52cab4c7a42e85b7e3cc0160bb9cf060aed20ab78ee2135a3f18dcaf6e92c
 
 pkgname = papirus-folders
