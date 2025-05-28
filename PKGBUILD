@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-vllm-bin
 _pkgname=vllm
-pkgver=0.8.5.post1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
@@ -63,11 +63,13 @@ optdepends=(
 makedepends=(
   python-installer
 )
-source=("https://github.com/vllm-project/vllm/releases/download/v${pkgver}/vllm-${pkgver}+cu121-cp38-abi3-manylinux1_x86_64.whl")
-noextract=("vllm-${pkgver}+cu121-cp38-abi3-manylinux1_x86_64.whl")
-sha256sums=('8d408a4ce1d778079f52e3d73fb69ef3974c355b0544f38d279109ab1ee86221')
+_cpy=38
+_cuda=126
+source=("https://github.com/vllm-project/vllm/releases/download/v${pkgver}/vllm-${pkgver}+cu${_cuda}-cp${_cpy}-abi3-manylinux1_x86_64.whl")
+noextract=("vllm-${pkgver}+cu${_cuda}-cp${_cpy}-abi3-manylinux1_x86_64.whl")
+sha256sums=('55fb185b3ef602661d17f9a1ff7759b2313afb6b3d26f5117927dc201dab0ffc')
 
 package() {
-  python -m installer --destdir="${pkgdir}" vllm-${pkgver}+cu121-cp38-abi3-manylinux1_x86_64.whl
+  python -m installer --destdir="${pkgdir}" vllm-${pkgver}+cu${_cuda}-cp${_cpy}-abi3-manylinux1_x86_64.whl
 }
 # vim:set ts=2 sw=2 et:
