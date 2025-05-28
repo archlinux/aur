@@ -2,16 +2,20 @@
 # Contributor: Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
 # Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
+# Too many users are getting confused by this...  If you really want to use
+# an external JRE instead of the bundled JetBrains JRE, set this to 1
+_external_jre=0
+
 # Uncomment if you want to disable compressing the package to save some time.
 #PKGEXT=.pkg.tar
 
 pkgbase=clion-eap
-pkgname=(clion-eap clion-eap-jre clion-eap-cmake clion-eap-gdb clion-eap-lldb)
+pkgname=(clion-eap clion-eap-cmake clion-eap-gdb clion-eap-lldb)
 _pkgname=clion
 _dlname=CLion
 pkgver=252.16512.18
 _dlver=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform IDE for C and C++ from JetBrains. Early Access Program."
 arch=('x86_64' 'aarch64')
 options=(!strip)
@@ -45,11 +49,9 @@ build() {
 package_clion-eap() {
     depends=('libdbusmenu-glib')
     optdepends=(
-        'clion-eap-jre: JetBrains custom Java Runtime (Recommended)'
         'clion-eap-cmake: JetBrains packaged CMake tools'
         'clion-eap-gdb: JetBrains packaged GNU debugger'
         'clion-eap-lldb: JetBrains packaged LLVM debugger'
-        'java-runtime: JRE - Required if clion-eap-jre is not installed'
         'cmake: Build system - Required if clion-eap-cmake is not installed'
         'gdb: native GNU debugger'
         'lldb: native LLVM debugger'
@@ -61,11 +63,19 @@ package_clion-eap() {
         'python2: Python 2 programming language support'
         'doxygen: Code documentation generation'
     )
+    conflicts=('clion-eap-jre')
+    if (( $_external_jre )); then
+        depends+=("java-runtime")
+        install=clion-eap.install
+        _exclude_jre=("--exclude=/opt/${pkgbase}/jbr")
+    else
+        _exclude_jre=()
+    fi
     backup=("opt/${pkgbase}/bin/clion64.vmoptions"
             "opt/${pkgbase}/bin/idea.properties")
 
     rsync -rtl "${srcdir}/opt" "${pkgdir}" \
-          --exclude=/opt/${pkgbase}/jbr \
+          "${_exclude_jre[@]}" \
           --exclude=/opt/${pkgbase}/bin/cmake \
           --exclude=/opt/${pkgbase}/bin/gdb \
           --exclude=/opt/${pkgbase}/bin/lldb
@@ -84,13 +94,6 @@ package_clion-eap() {
             "${pkgdir}/usr/share/licenses/${pkgbase}"
     ln -s "/opt/${pkgbase}/bin/${_pkgname}" \
             "${pkgdir}/usr/bin/${pkgbase}"
-}
-
-package_clion-eap-jre() {
-    pkgdesc="JetBrains custom Java Runtime for CLion EAP (Recommended)"
-    url="https://github.com/JetBrains/JetBrainsRuntime"
-    install -d -m755 "${pkgdir}/opt/${pkgbase}"
-    rsync -rtl "${srcdir}/opt/${pkgbase}/jbr" "${pkgdir}/opt/${pkgbase}"
 }
 
 package_clion-eap-cmake() {
