@@ -1,7 +1,7 @@
 # Maintainer: Maks Verver <maks@verver.ch>
 
 pkgname=unzip-p
-pkgver=6.0.1
+pkgver=6.0.2
 _tag=${pkgver}  # add -rc.N for release testing
 _name=${pkgname}-${_tag}
 pkgrel=1
@@ -13,7 +13,7 @@ depends=('bzip2' 'bash')
 conflicts=('unzip')
 provides=('unzip')
 source=(${_name}.tar.gz::https://github.com/maksverver/unzip-p/archive/refs/tags/${_tag}.tar.gz)
-sha256sums=('d74f0a189412651508627a01dce3fe429230083ed07a0d39a97a41fc8d3a0e85')
+sha256sums=('caf1c130b5b23e49b488e1716aeeb4c6d075a0f7878c2c91277ba30ddc3b3da0')
 
 build() {
     cd "${srcdir}/${_name}"
