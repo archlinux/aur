@@ -1,22 +1,23 @@
 pkgbase = coreutils-uutils-symlink
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://uutils.github.io/
 	arch = any
+	makedepends = grep
 	depends = uutils-coreutils
 
 pkgname = coreutils-uutils-symlink
-	pkgdesc = (Dangerous) symlinks to swap coreutils with uutils
+	pkgdesc = (dangerous) Swap coreutils with uutils
 	depends = uutils-coreutils
 	depends = uutils-coreutils-stty
 	provides = coreutils
 	provides = b3sum
 	conflicts = coreutils
+	conflicts = coreutils-uutils
 	conflicts = b3sum
 	conflicts = sha3sum
-	conflicts = coreutils-uutils
 
 pkgname = coreutils-uutils-arch
-	pkgdesc = arch symlink for apps unfortunately depending for it
+	pkgdesc = Symlink for apps accidently depending on arch
 	provides = coreutils-arch
 	conflicts = coreutils-arch
