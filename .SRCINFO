@@ -1,16 +1,20 @@
 pkgbase = dufs-git
 	pkgdesc = A file server that supports static serving, uploading, searching, accessing control, webdav...
-	pkgver = 0.39.0.r16.gd66c9de
+	pkgver = 0.43.0.r18.gf8b69f4
 	pkgrel = 1
 	url = https://github.com/sigoden/dufs
 	arch = x86_64
-	license = MIT
-	license = APACHE
-	makedepends = cargo
+	license = MIT OR Apache-2.0
 	makedepends = git
+	makedepends = cargo
+	depends = bzip2
 	depends = gcc-libs
+	depends = glibc
+	depends = xz
+	provides = dufs-git
+	conflicts = dufs-git
 	options = !lto
-	source = dufs::git+https://github.com/sigoden/dufs.git
+	source = git+https://github.com/sigoden/dufs.git
 	sha512sums = SKIP
 
 pkgname = dufs-git
