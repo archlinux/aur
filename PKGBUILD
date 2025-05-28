@@ -1,7 +1,7 @@
 # Maintainer: Talha Asghar <iamtalhaasghar@gmail.com>
 pkgname=browserselector
-pkgver=1.0.2
-pkgrel=1
+pkgver=1.0.3
+pkgrel=2
 pkgdesc="A script to select a browser based on user-defined rules"
 arch=('any')
 url="https://gitlab.com/iamtalhaasghar/browserselector"
