@@ -1,7 +1,7 @@
 # Maintainer: James David Clarke <james@jamesdavidclarke.com>
 
 pkgname=zig-nightly-bin
-pkgver=0.14.0_dev.3062.ff551374a
+pkgver=0.15.0_dev.646.gef35c3d5f
 pkgrel=2
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (nightly build)"
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,8 @@ makedepends=(jq)
 optdepends=('curl: for downloading the latest version'
             'wget: alternative for downloading the latest version')
 options=('!strip')
+
+# TODO: Add fallback server for binaries in case ziglang.org is down, Source Code: `https://github.com/ziglang/www.ziglang.org/tree/main/.github/workflows`
 
 _get_latest_version() {
     local index_url="https://ziglang.org/download/index.json"
