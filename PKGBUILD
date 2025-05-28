@@ -1,7 +1,7 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-bin
 pkgver=5.64.0
-pkgrel=1
+pkgrel=2
 pkgdesc="qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems."
 arch=("x86_64" "aarch64" "armv7h")
 url="https://github.com/Zweih/qp"
@@ -28,8 +28,8 @@ package() {
   install -Dm644 "${srcdir}/qp.1" "${pkgdir}/usr/share/man/man1/qp.1"
   install -Dm644 "${srcdir}/NEWS" "${pkgdir}/usr/share/doc/qp/NEWS"
 
-  install -Dm644 "$srcdir/update-qp-cache.hook" \
+  install -Dm644 "update-qp-cache.hook" \
     "$pkgdir/usr/share/libalpm/hooks/update-qp-cache.hook"
-  install -Dm755 "$srcdir/update-qp-cache" \
+  install -Dm755 "update-qp-cache" \
     "$pkgdir/usr/share/libalpm/scripts/update-qp-cache"
 }
