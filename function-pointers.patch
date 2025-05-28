@@ -1,0 +1,24 @@
+diff -ura gnustep-back-0.32.0_old/Source/x11/scale.c gnustep-back-0.32.0_new/Source/x11/scale.c
+--- gnustep-back-0.32.0_old/Source/x11/scale.c	2025-05-26 23:20:44.730804058 -0400
++++ gnustep-back-0.32.0_new/Source/x11/scale.c	2025-05-26 23:23:21.730780357 -0400
+@@ -356,7 +356,7 @@
+     return(0.0);
+ }
+ 
+-static double (*filterf)() = Mitchell_filter;
++static double (*filterf)(double t) = Mitchell_filter;
+ static double fwidth = Mitchell_support;
+ 
+ void
+diff -ura gnustep-back-0.32.0_old/Source/x11/xutil.c gnustep-back-0.32.0_new/Source/x11/xutil.c
+--- gnustep-back-0.32.0_old/Source/x11/xutil.c	2025-05-26 23:20:44.730804058 -0400
++++ gnustep-back-0.32.0_new/Source/x11/xutil.c	2025-05-26 23:43:18.480596948 -0400
+@@ -42,7 +42,7 @@
+ 
+ static int shmError;
+ 
+-static int (*oldErrorHandler)();
++static int (*oldErrorHandler)(Display *dpy, XErrorEvent *err);
+ 
+ static int
+ errorHandler(Display *dpy, XErrorEvent *err)
