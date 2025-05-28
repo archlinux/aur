@@ -18,9 +18,7 @@ package_coreutils-uutils-symlink() {
 		ln -sf /usr/share/man/man1/uu-"$f".1.gz "$pkgdir"/usr/share/man/man1/"$f".1.gz
 		ln -sf /usr/share/fish/vendor_completions.d/uu-${f}.fish "$pkgdir"/usr/share/fish/vendor_completions.d/${f}.fish
 		ln -sf /usr/share/zsh/site-functions/_uu-"$f" "$pkgdir"/usr/share/zsh/site-functions/_"$f"
-	done # todo: avoid broken symlink
-	echo '#!/usr/bin/uu-coreutils false' |tee "$pkgdir"/usr/bin/{ch,run}con
-	chmod 755 "$pkgdir"/usr/bin/{ch,run}con
+	done # todo: remove broken symlink
 	ln -sf /usr/bin/uu-stty "$pkgdir"/usr/bin/stty
 	rm "$pkgdir"/usr/bin/arch
 }
