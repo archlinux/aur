@@ -1,9 +1,10 @@
-# Maintainer: <mumei AT airmail DOT cc>
+# Maintainer: Chris Charabaruk <chris [at] charabaruk [dot] net>
+# Contributor: <mumei AT airmail DOT cc>
 
 _pkgname=Gorm
 pkgname=gorm
 pkgrel=1
-pkgver=1.3.1
+pkgver=1.5.0
 pkgdesc="GNUstep's easy-to-use interface designer"
 arch=('i686' 'x86_64')
 url="http://www.gnustep.org/experience/Gorm.html"
@@ -17,17 +18,17 @@ makedepends=(
 	'gcc-objc'
 	'gnustep-make'
 )
-source=(https://github.com/gnustep/apps-gorm/releases/download/$pkgname-${pkgver//./_}/$pkgname-$pkgver.tar.gz)
-sha256sums=('75ee9e3ee4b76820423e04deb3116bf01bcc26a28c4db85d3a67979673041c9e')
+source=(https://github.com/gnustep/apps-gorm/archive/refs/tags/$pkgname-${pkgver//./_}/$pkgname-$pkgver.tar.gz)
+sha256sums=('21bb0ba0f9a24ab5ef47e455198c4b2e0e8c9d17e7b0853bafbd89b80127bb2b')
 
 build() {
-  cd "gorm-$pkgver"
+  cd "apps-gorm-$pkgname-${pkgver//./_}"
   export GNUSTEP_MAKEFILES="$(gnustep-config --variable=GNUSTEP_MAKEFILES)"
   make
 }
 
 package() {
-  cd "gorm-$pkgver"
+  cd "apps-gorm-$pkgname-${pkgver//./_}"
   make DESTDIR="$pkgdir" install
   install -Dm644 "$pkgdir/usr/lib/GNUstep/Applications/$_pkgname.app/Resources/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
