@@ -1,7 +1,7 @@
 # Maintainer: archlinuxauruser <archlinuxauruser at messagebox dot email>
 # Contributor: aulonsal <seraur at aulonsal dot com>
 pkgname=f2-bin
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='Cross-platform command-line tool for batch renaming files and directories quickly and safely'
 arch=('x86_64' 'i686' 'aarch64')
@@ -15,9 +15,9 @@ source_i686=("${pkgname}-${pkgver}-i686.tar.gz::${url}/releases/download/v${pkgv
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_arm64.tar.gz")
 
 b2sums=('1375f8eb689085b7735551ce0f5f19167df905bdf8f105ac72479ae6214666f74a03ce24766bc08a9407c878ecd8078ca3e81013ecf4fd8c80a52dc308e29d78')
-b2sums_x86_64=('35211948cc659999e12d8e8fb077ab56b318a5f94d256011076be130a13f33e8b5d9c0ad2e50035b957696172af4b7f03bbd48db3a3d357c974b4c9456c62adc')
-b2sums_i686=('dc5833ce0e0d00ba344c286004d2f81c3a583f0e2915e22bfacb23cbb48f73af9774c9d9b062b40aad05af60bea55a01e62fb08d1d3d0e0288a0a95309180d31')
-b2sums_aarch64=('679ed67d4c695e2b88618c6904d788d2cbdf2fb266797f8a75c30ed183fa63daf120f40232c2d95a57cecbdb2d4135edc13a1f81c412a5b96db0ab41f4bb7006')
+b2sums_x86_64=('ebfcb1dd2ed7f6441f5fd8e5404657bac325108d164830b92ef5b4292169a21fd4cd40b75f2ca0997b3ba2fa30764a43d5c51a00f87cf303dcb4865dd2915192')
+b2sums_i686=('a487393e90899209da1aa1d402e85cca9f42de421f5515d64efd698b2e7c50c053f44baf18ec74e716008c42a1cdf1cd78f55ff8262fa876a6191222d987009d')
+b2sums_aarch64=('a1e7c8ae91ebd43fddc4743d090ee9aa924746a7646a0e843026fb517e9e3d70c4bb1a91c1d69240b6daa9bd1066f5358c68074a9b296aa0cdaf452b4dc014f3')
 
 package() {
 	install -Dm755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
