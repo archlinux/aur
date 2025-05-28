@@ -10,7 +10,7 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=4.0.1.r535.ge8bd45d76
+pkgver=4.0.2.r949.gc7391d102
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
@@ -26,7 +26,7 @@ depends=(
 optdepends=(
   'python: man page completion parser / web config tool'
   'pkgfile: command-not-found hook'
-  'nroff: --help for built-in commmands'
+  'groff: --help for built-in commmands'
   'mandoc: --help for built-in commmands (alternative)'
   'xsel: X11 clipboard integration'
   'xclip: X11 clipboard integration (alternative)'

@@ -1,6 +1,6 @@
 pkgbase = fish-git
 	pkgdesc = User friendly shell intended mostly for interactive use.
-	pkgver = 4.0.1.r535.ge8bd45d76
+	pkgver = 4.0.2.r949.gc7391d102
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/fish-shell/fish-shell
@@ -22,7 +22,7 @@ pkgbase = fish-git
 	depends = pcre2
 	optdepends = python: man page completion parser / web config tool
 	optdepends = pkgfile: command-not-found hook
-	optdepends = nroff: --help for built-in commmands
+	optdepends = groff: --help for built-in commmands
 	optdepends = mandoc: --help for built-in commmands (alternative)
 	optdepends = xsel: X11 clipboard integration
 	optdepends = xclip: X11 clipboard integration (alternative)
