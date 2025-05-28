@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-vllm
 _pkgname=vllm
-pkgver=0.8.5.post1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
@@ -64,7 +64,7 @@ optdepends=(
   'python-datasets: tools to benchmark scripts')
 
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
-sha256sums=('d515456881f4cd4c47a62404cb7157b003660052fb4d72e3ae901a6400869289')
+sha256sums=('a95b2075b8243fa1b939b09521b32b5e7773a50c65785010bcd78104d6942ce0')
 _jobs=$(($(nproc) / 2))
 prepare() {
   #not much luck setting CC env flags, so manually linking and pathing - this only exists for building
