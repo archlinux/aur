@@ -1,6 +1,6 @@
 pkgbase = python-ignis
 	pkgdesc = A widget framework for building desktop shells, written and configurable in Python
-	pkgver = 0.5
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/linkfrg/ignis
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = python-ignis
 	optdepends = dart-sass: SASS/SCSS compilation support
 	optdepends = upower: required for UPower Service
 	optdepends = gnome-bluetooth-3.0: required for Bluetooth Service
-	source = ignis-v0.5.tar.gz::https://github.com/linkfrg/ignis/releases/download/v0.5/ignis-v0.5.tar.gz
-	sha256sums = 2bf14808bf11e28a6084bfa6f600161723306c8c8d6b18c6532116b38ceba117
+	source = ignis-v0.5.1.tar.gz::https://github.com/linkfrg/ignis/releases/download/v0.5.1/ignis-v0.5.1.tar.gz
+	sha256sums = 3ea240440584f336a31874f79a1e76e3a9f18651ff2ecaac7dab54807c1fd371
 
 pkgname = python-ignis
