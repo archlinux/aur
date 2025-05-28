@@ -2,7 +2,7 @@
 
 _pkgname=thunar
 pkgname=${_pkgname}-devel
-pkgver=4.21.0
+pkgver=4.21.1
 pkgrel=1
 pkgdesc='File manager for Xfce (development version)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -22,7 +22,7 @@ optdepends=('gvfs: trash support, mounting with udisks, and remote filesystems'
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('3f9bd698ab9dc14e63102cdb9853c48d3fc5b1b9753bfec47b8643d2f472b99e')
+sha256sums=('b359dcb55b3edeb18cbd4bb13624e137bfff2b529284acd2fbfbbfe01ccadcdf')
 
 build() {
   local meson_options=(
