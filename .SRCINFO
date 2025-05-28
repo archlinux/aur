@@ -1,0 +1,13 @@
+pkgbase = r-dice
+	pkgdesc = This package provides utilities to calculate the probabilities of various dice-rolling events
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=dice
+	arch = any
+	license = GPL3
+	depends = r
+	depends = r-gtools
+	source = https://cran.r-project.org/src/contrib/dice_1.2.tar.gz
+	sha256sums = 7a50fe5fa44286062f8eec8a7c27c2143bef1a6795f3bfdad8bc366d313d2c3e
+
+pkgname = r-dice
