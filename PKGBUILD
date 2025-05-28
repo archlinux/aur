@@ -31,6 +31,8 @@ optdepends=('gst-plugin-pipewire: required for recorder service'
             'upower: required for UPower Service'
             'gnome-bluetooth-3.0: required for Bluetooth Service')
 
+provides=('python-ignis' 'ignis')
+conflicts=('ignis')
 source=("$_pkgname-v$pkgver.tar.gz::$url/releases/download/v${pkgver}/ignis-v${pkgver}.tar.gz")
 sha256sums=('3ea240440584f336a31874f79a1e76e3a9f18651ff2ecaac7dab54807c1fd371')
 

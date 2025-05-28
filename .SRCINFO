@@ -28,6 +28,9 @@ pkgbase = python-ignis
 	optdepends = dart-sass: SASS/SCSS compilation support
 	optdepends = upower: required for UPower Service
 	optdepends = gnome-bluetooth-3.0: required for Bluetooth Service
+	provides = python-ignis
+	provides = ignis
+	conflicts = ignis
 	source = ignis-v0.5.1.tar.gz::https://github.com/linkfrg/ignis/releases/download/v0.5.1/ignis-v0.5.1.tar.gz
 	sha256sums = 3ea240440584f336a31874f79a1e76e3a9f18651ff2ecaac7dab54807c1fd371
 
