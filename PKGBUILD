@@ -5,8 +5,8 @@
 # Contributor: N30N <archlinux@alunamation.com>
 
 pkgname=lightzone
-pkgver=5.0.0beta2
-pkgrel=2
+pkgver=5.0.0beta3
+pkgrel=1
 pkgdesc="Open-source professional-level digital darkroom software"
 url="https://github.com/ktgw0316/LightZone/"
 license=("BSD-3-Clause")
@@ -18,13 +18,11 @@ depends=(
     'glibc'
     'hicolor-icon-theme'
     'java-runtime>=17'
-    'javahelp2'
     'lcms2'
     'lensfun'
     'libjpeg-turbo'
     'libtiff'
     'libraw'
-    'libxml2'
 )
 makedepends=('java-environment>=17'
     'ant'
@@ -38,39 +36,30 @@ makedepends=('java-environment>=17'
 )
 
 _git_url=${url}
-_patch_name="lombok_jdk21.patch"
-_patch_name_2="jdk23.patch"
-source=("${_git_url}/archive/${pkgver}.zip"
-        "${_patch_name}"
-        "${_patch_name_2}")
-md5sums=('d3b9246311182e12fc6da5230dfcb173'
-         '60e33c6550b0f342e8e71eb1c90e093c'
-         '81d46e69c54bcc8f81394a756d329eb1')
+_git_rev=eb1eb292e9a70e297ad1b2ae13263371d19d9e1c
+source=("${_git_url}/archive/${_git_rev}.zip")
+sha256sums=('22d8c879ac5af6b771d7b665ec6d320f1fe4cfecb919a58b0c0e774f45d94b5f')
 
 prepare() {
-  cd "${srcdir}/LightZone-${pkgver}/"
-  patch -Np1 -i "${srcdir}/${_patch_name}"
-  patch -Np1 -i "${srcdir}/${_patch_name_2}"
+  cd "${srcdir}/LightZone-${_git_rev}/"
 }
 
 build() {
   # https://github.com/Aries85/LightZone/issues/218#issuecomment-357868376
   MAKEFLAGS="-j1"
 
-  cd "${srcdir}/LightZone-${pkgver}/"
+  cd "${srcdir}/LightZone-${_git_rev}/"
   JAVA_HOME=/usr/lib/jvm/default ant -f linux/build.xml jar
 }
 
 package() {
-  cd "${srcdir}/LightZone-${pkgver}/"
+  cd "${srcdir}/LightZone-${_git_rev}/"
 
   _libexecdir=/usr/lib
   install -dm 0755 "${pkgdir}/${_libexecdir}/${pkgname}"
   cp -pH linux/products/*.so "${pkgdir}/${_libexecdir}/${pkgname}"
   _javadir=/usr/share/java
   install -dm 0755 "${pkgdir}/${_javadir}/${pkgname}"
-  cp -pH lightcrafts/products/dcraw_lz "${pkgdir}/${_javadir}/${pkgname}"
-  cp -pH lightcrafts/products/LightZone-forkd "${pkgdir}/${_javadir}/${pkgname}"
   cp -pH linux/products/*.jar "${pkgdir}/${_javadir}/${pkgname}"
 
   # create icons and shortcuts
@@ -82,4 +71,8 @@ package() {
   _bindir=/usr/bin
   install -dm 0755 "${pkgdir}/${_bindir}"
   install -m 755 "linux/products/${pkgname}" "${pkgdir}/${_bindir}"
+  install -m 755 "lightcrafts/products/dcraw_lz" "${pkgdir}/${_bindir}"
+
+  _licensedir=/usr/share/licenses
+  install -Dm 644 COPYING "${pkgdir}/${_licensedir}/${pkgname}/BSD-3-Clause.txt"
 }
