@@ -18,7 +18,7 @@ steps:
         from_secret: codeberg_token
     commands:
       # Install all required tools
-      - pacman -Syu --noconfirm --needed git base-devel jq pacman-contrib namcap curl sudo gnupg
+      - pacman -Syu --noconfirm --needed git base-devel devtools nvchecker pacman-contrib namcap sudo gnupg
       # Allow broken git ownerships
       - git config --global --add safe.directory "$(pwd)"
       # Create build user
@@ -31,9 +31,9 @@ steps:
       # Run update check
       - chmod +x update.sh
       - BEFORE_COMMIT=$(git rev-parse HEAD)
-      - sudo -u builduser ./update.sh
+      - TERM=linux sudo -u builduser ./update.sh
       - AFTER_COMMIT=$(git rev-parse HEAD)
-      # Run PKGBUILD Linter (nemcap)
+      # Run PKGBUILD Linter (namcap)
       - |
         # Run namcap and save output
         echo "Running namcap check..."
