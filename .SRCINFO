@@ -1,7 +1,7 @@
 pkgbase = wiggly-stt
-	pkgdesc = Simple speech-to-text transcription for Linux with Wayland support
+	pkgdesc = Local speech-to-text transcription with whisper.cpp, voice recording, and clipboard integration
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hansp27/wiggly-stt
 	arch = any
 	license = MIT
@@ -13,6 +13,9 @@ pkgbase = wiggly-stt
 	depends = bash
 	optdepends = ydotool: for auto-paste functionality
 	optdepends = whisper.cpp: for local AI transcription (whisper-cli and whisper-server)
+	provides = speech-to-text
+	provides = voice-transcription
+	provides = stt
 	source = wiggly-stt-1.0.0.tar.gz::https://github.com/hansp27/wiggly-stt/archive/v1.0.0.tar.gz
 	sha256sums = 0e261ef359a6f9a0d114b87def1c05922149bf6b57d9d56d9012927092a073bb
 
