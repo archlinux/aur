@@ -7,19 +7,12 @@ arch=(x86_64)
 url='http://spek.cc/'
 license=(GPL3)
 depends=(ffmpeg wxwidgets-gtk3)
-source=("https://github.com/alexkay/spek/archive/v${pkgver}.tar.gz")
-sha256sums=('9053d2dec452dcde421daa0f5f59a9dee47927540f41d9c0c66800cb6dbf6996')
-
-prepare() {
-    cd "spek-${pkgver}"
-    GETTEXT_VERSION=$(gettext --version | sed -En '/gettext/ s/^.*runtime\) //p')
-    sed -i "s/AM_GNU_GETTEXT_VERSION(\[[0-9]\+\.[0-9]\+\])/AM_GNU_GETTEXT_VERSION([$GETTEXT_VERSION])/" configure.ac
-}
+source=("https://github.com/alexkay/spek/releases/download/v${pkgver}/spek-${pkgver}.tar.xz")
+sha256sums=('1bccf85a14a01af8f2f30476cbad004e8bf6031f500e562bbe5bbd1e5eb16c59')
 
 build() {
     cd "spek-${pkgver}"
-    export CXXFLAGS="$(pkg-config --cflags-only-I libavutil)"
-    ./autogen.sh --with-wx-config=/usr/bin/wx-config --prefix=/usr
+    ./configure --prefix=/usr --mandir=/usr/share/man
     make
 }
 

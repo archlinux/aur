@@ -7,7 +7,7 @@ pkgbase = spek
 	license = GPL3
 	depends = ffmpeg
 	depends = wxwidgets-gtk3
-	source = https://github.com/alexkay/spek/archive/v0.8.5.tar.gz
-	sha256sums = 9053d2dec452dcde421daa0f5f59a9dee47927540f41d9c0c66800cb6dbf6996
+	source = https://github.com/alexkay/spek/releases/download/v0.8.5/spek-0.8.5.tar.xz
+	sha256sums = 1bccf85a14a01af8f2f30476cbad004e8bf6031f500e562bbe5bbd1e5eb16c59
 
 pkgname = spek
