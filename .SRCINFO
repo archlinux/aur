@@ -1,0 +1,18 @@
+pkgbase = certbot-dns-multi
+	pkgdesc = Certbot DNS plugin supporting multiple providers, using github.com/go-acme/lego.
+	pkgver = 4.23.1
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	makedepends = python-setuptools-golang
+	makedepends = go
+	depends = certbot
+	depends = python-acme
+	source = git+https://github.com/alexzorin/certbot-dns-multi.git#tag=4.23.1
+	sha256sums = 6504c7a3b8042aebb4db284051c305204a1030ebe0e0a1dc75c951f655c8835f
+
+pkgname = certbot-dns-multi
