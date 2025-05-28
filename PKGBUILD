@@ -12,20 +12,20 @@ sha256sums=('05e1f44226d112d20b0ab4b76283e7eb52e3c7c43f94288a42415f50c2c84da4')
 prepare() {
 	cd "${srcdir}"
 
-	# Extract the license
+	# Extract license
 	grep -o 'Copyright.*$' DGDemux.txt > LICENSE
 }
 
 package() {
 	cd "${srcdir}"
 
-	# Install the dgdemux
+	# Install dgdemux
 	install -Dm755 dgdemux "${pkgdir}/usr/bin/dgdemux-cli"
 
-        # Install the dovi_tool
+        # Install dovi_tool
         install -Dm755 dovi_tool "${pkgdir}/usr/bin/dovi_tool"
 
-        # Install the dgmvccombine
+        # Install dgmvccombine
         install -Dm755 dgmvccombine "${pkgdir}/usr/bin/dgmvccombine"
 
         # Install help
