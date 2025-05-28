@@ -1,10 +1,11 @@
 pkgbase = python-sentencex
-	pkgdesc = A sentence segmentation library with wide language support optimized for speed and utility
+	pkgdesc = Sentence segmenter that supports ~300 languages
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wikimedia/sentencex
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
