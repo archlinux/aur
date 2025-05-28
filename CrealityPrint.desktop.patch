@@ -1,0 +1,12 @@
+--- squashfs-root/CrealityPrint.desktop
++++ squashfs-root/CrealityPrint.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Name=CrealityPrint
+-Exec=AppRun %F
+-Icon=CrealityPrint
++Exec=/usr/bin/creality-print %F
++Icon=creality-print
+ Type=Application
+ Categories=Utility;
+ MimeType=model/stl;application/vnd.ms-3mfdocument;application/prs.wavefront-obj;application/x-amf;
