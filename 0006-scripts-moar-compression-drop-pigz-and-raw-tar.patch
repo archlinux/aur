@@ -1,22 +1,25 @@
-From 3b1dd94cef03f2bbe42d8eedf2cc4d6a3813f2b0 Mon Sep 17 00:00:00 2001
+From 07b2dcf2ea7a546bc95939321835fc570ba714a3 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 02:12:21 +0100
 Subject: [PATCH 6/6] scripts: moar compression, drop pigz and raw tar
 
 ---
- scripts/package-airgap | 12 +++++++-----
- scripts/package-cli    |  7 ++++---
- 2 files changed, 11 insertions(+), 8 deletions(-)
+ scripts/package-airgap | 15 ++++++++++-----
+ scripts/package-cli    |  9 +++++----
+ 2 files changed, 15 insertions(+), 9 deletions(-)
 
 diff --git a/scripts/package-airgap b/scripts/package-airgap
-index 911357181a..2f237c91b5 100755
+index ce27ae680e..77af3a0700 100755
 --- a/scripts/package-airgap
 +++ b/scripts/package-airgap
-@@ -5,12 +5,14 @@ cd $(dirname $0)/..
+@@ -9,12 +9,17 @@ if [ "${OS}" != "linux" ]; then
+   exit
+ fi
  
- . ./scripts/version.sh
- 
-+if [[ -t 0 && -t 1 && -t 2 ]]; then xargs=(xargs -o); else xargs=(xargs); fi
++xargs=(xargs)
++if [[ -t 0 && -t 1 && -t 2 ]]; then
++  xargs+=(-o)
++fi
 +
  airgap_image_file='scripts/airgap/image-list.txt'
 -images=$(cat "${airgap_image_file}")
@@ -33,23 +36,26 @@ index 911357181a..2f237c91b5 100755
    cp "${airgap_image_file}" dist/artifacts/k3s-images.txt
  fi
 diff --git a/scripts/package-cli b/scripts/package-cli
-index c790f04aab..0452d4b4fd 100755
+index f38e10d074..2abcfccb0d 100755
 --- a/scripts/package-cli
 +++ b/scripts/package-cli
-@@ -54,9 +54,10 @@ mkdir -p ./etc
+@@ -54,11 +54,12 @@ mkdir -p ./etc
      set -x
  )
  
--tar cvf ./build/out/data.tar ./bin ./etc
--zstd --no-progress -T0 -16 -f --long=25 --rm ./build/out/data.tar -o ./build/out/data.tar.zst
--HASH=$(sha256sum ./build/out/data.tar.zst | awk '{print $1}')
-+data_tar_file="./build/out/data.tar"
+-tar cvf ./build/out/data-${OS}.tar ./bin ./etc
+-zstd --no-progress -T0 -16 -f --long=25 --rm ./build/out/data-${OS}.tar -o ./build/out/data-${OS}.tar.zst
+-HASH=$(sha256sum ./build/out/data-${OS}.tar.zst | awk '{print $1}')
++data_tar_file="./build/out/data-${OS}.tar"
 +tar cvf "${data_tar_file}" ./bin ./etc
 +zstd -T0 --ultra -22 --long=25 --verbose --force --rm "${data_tar_file}"
 +HASH=$(sha256sum "${data_tar_file}.zst" | awk '{print $1}')
  
- cp ./build/out/data.tar.zst ./build/data/${HASH}.tar.zst
+-cp ./build/out/data-${OS}.tar.zst ./build/data/${HASH}.tar.zst
++cp "${data_tar_file}.zst" ./build/data/${HASH}.tar.zst
  
+ BIN_SUFFIX="-${ARCH}"
+ if [ ${ARCH} = amd64 ]; then
 -- 
-2.43.1
+2.48.1.5.g9188e14f140
 
