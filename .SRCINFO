@@ -1,6 +1,6 @@
 pkgbase = opencoarrays-mpich-git
 	pkgdesc = A transport layer for coarray Fortran compilers, compiled with MPICH.
-	pkgver = 2.10.2.r17.gf08375f
+	pkgver = 2.10.2.r32.g3d0fa68
 	pkgrel = 2
 	url = https://github.com/sourceryinstitute/OpenCoarrays
 	arch = x86_64

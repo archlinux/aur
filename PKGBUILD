@@ -2,7 +2,7 @@
 
 pkgname='opencoarrays-mpich-git'
 _name="OpenCoarrays"
-pkgver=2.10.2.r17.gf08375f
+pkgver=2.10.2.r32.g3d0fa68
 pkgrel=2
 pkgdesc="A transport layer for coarray Fortran compilers, compiled with MPICH."
 arch=('x86_64')
@@ -32,24 +32,13 @@ pkgver() {
 
 }
 
-prepare() {
-
-  # -- add '--use-hwthread-cpus' to test_parameters
-  sed -i '/set(test_parameters -np ${num_caf_img} ${test_parameters})/i\
-  set(test_parameters ${test_parameters} --use-hwthread-cpus)' "${srcdir}/${pkgname%-*}/CMakeLists.txt"
-
-}
-
-
 build() {
 
   cd "${srcdir}/${pkgname%-*}"
 
-  export FC="$(command -v gfortran)"
-  export CC="$(command -v gcc)"
-
   cmake \
     -B build \
+    -DCMAKE_PREFIX_PATH=/opt/mpich \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -D openmpi=FALSE \
     -D N_CPU="$(nproc)" \
