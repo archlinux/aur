@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bookget
-pkgver=25.0501
+pkgver=25.0517
 pkgrel=1
 pkgdesc="bookget 数字图书馆下载工具，目前支持约 50+ 个数字图书馆。"
 arch=($CARCH)
@@ -16,14 +16,18 @@ makedepends=(
     git
     go
 )
-backup=(etc/bookget/config.ini)
+backup=(etc/bookget/config.yaml)
 options=('!strip' '!debug')
 #install=${pkgname}.install
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c0653efa23328d3357078d1da96a2a894d5ed91bd3f1cc01516bbcebd6558ac3')
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('2cd297373fd8149b4d2d8b23406a2a8210d77901385a9bafc4052a1cb10add07')
+
+prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -33,13 +37,13 @@ build() {
     export GOPROXY=https://goproxy.cn,direct
 
     mkdir -pv build/
-    go build -o build
+    go build -o build/${pkgname} ./cmd/
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
 
     install -Dm755 build/${pkgname} -t ${pkgdir}/usr/bin/
-    install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/config.ini" -t "${pkgdir}/etc/${pkgname}/"
+    install -Dm0644 "${srcdir}/${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm0644 "${srcdir}/${pkgname}/config.yaml" -t "${pkgdir}/etc/${pkgname}/"
 }
