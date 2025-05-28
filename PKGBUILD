@@ -1,9 +1,10 @@
-# Maintainer: <mumei AT airmail DOT cc>
+# Maintainer: Chris Charabaruk <chris [at] charabaruk [dot] net>
+# Contributor: <mumei AT airmail DOT cc>
 
 pkgname=addresses.app
 _pkgname=Addresses
-pkgrel=2
-pkgver=0.4.8
+pkgrel=1
+pkgver=0.5.0
 pkgdesc="A versatile Address Book application and framework."
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/gap/addresses/index.html"
@@ -11,10 +12,10 @@ license=('GPL')
 groups=('gnustep-apps')
 depends=('gnustep-base' 'gnustep-gui' 'gnustep-back')
 makedepends=('gcc-objc' 'gnustep-make')
-source=("http://savannah.nongnu.org/download/gap/Addresses-0.4.8.tar.gz"
-        "http://http.debian.net/debian/pool/main/a/addresses-for-gnustep/addresses-for-gnustep_0.4.8-3.debian.tar.xz")
-sha256sums=('329531bfd31db1845f3af385c1c2448f308b1bf28af5ee7d4f50f403dbb6ac0a'
-            '06d589a414605eff9801518ef2ab77414aac6b66fc5c8164185aee26cc367019')
+source=("http://savannah.nongnu.org/download/gap/Addresses-$pkgver.tar.gz"
+        "http://deb.debian.org/debian/pool/main/g/gnustep-addresses/gnustep-addresses_0.5.0-2.debian.tar.xz")
+sha256sums=('fb074e80c85f48aa57e1c01bcdcd1a5754bade84d61ccf7db7549ef20b1ba4e1'
+            '99678ebad0d9ada6b315c2691651c4ae2cd555f5c0459e6bb657101027e96e3a')
 
 prepare() {
   cd "$_pkgname-$pkgver"
