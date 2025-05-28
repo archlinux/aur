@@ -2,8 +2,8 @@
 
 pkgname=searxng-git
 _pkgname=searxng
-pkgver=r8494.5986629
-pkgrel=4
+pkgver=r8653.0f153cd
+pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://searxng.github.io/searxng/"
@@ -11,12 +11,12 @@ license=('AGPL-3.0-or-later')
 makedepends=('openssl' 'git')
 depends=('uwsgi'
          'uwsgi-plugin-python'
-         'redis')
+         'valkey')
 provides=('searxng')
 conflicts=('searx' 'searx-git')
 backup=('etc/searxng/settings.yml' 'etc/uwsgi/vassals/searxng.ini')
-_giturl="https://github.com/searxng/searxng"
-_gitbranch="master"
+_giturl="https://github.com/HLFH/searxng"
+_gitbranch="redis-to-valkey-migration"
 source=(git+$_giturl#branch=$_gitbranch
         'searxng.ini'
         'searxng.sysusers'
@@ -24,9 +24,9 @@ source=(git+$_giturl#branch=$_gitbranch
         'settings.yml')
 b2sums=('SKIP'
         '01513dcd99859884e443e3649dd952e169bec6abb165c8bbea71cb36967c8e6fc8f650b924a0961ae9da1419527739c910f886b66a6400a68aec1d24e18f0ea9'
-        'f5b75617441c74366c95cc926d4f94762677b287f6bd4132e536eb35d298b41ce39a8d04672a48ca76b76b649b8c3f3676cf27e3c935db927ed271c5deb7050e'
+        '3487c220d6c538dba60671aaaf0927746d8ede4d47f901e01542efdf74dc067ade3d3ee30b500f08d3ef00c2ceba460961e0f4329a4afc32b83e42d8761d5e41'
         '44696a2b6b297d74fe5345ad7f15d35d48ad2290dbf778947d24b91233bafe153649f7ad359c2dd360693904ba60e9e0f8473e521267fdd45dd3730ad163a9c6'
-        'dfa3292e007cdc1de6a508cb1b08110515af06fd2c5718b51bde852e9e547c759324b8f004bdb4378a44de6501eea0bdd0a8b9d1fd115d4375cb288a8524dfef')
+        '99bb7a7dfdab65a8844beb7dd4924601e2f9e85aacacc526a18881dc53e1fa270ff2653c5ada2ce0f92ecebac8917afa974116c09b3e61977b21d70b0f6a4d37')
 
 pkgver() {
   cd searxng
