@@ -19,6 +19,7 @@ jq
 make
 python-setuptools
 clang
+git
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RedisInsight/RedisInsight/archive/$pkgver.tar.gz")
 sha256sums=('5fca4a107922962fdf8976fe66fbc8d95fd8891bde6f38c76cc1aa4514e16647')
