@@ -1,6 +1,6 @@
 pkgbase = libastal-wireplumber-git
 	pkgdesc = A library for audio control using wireplumber
-	pkgver = r250.2927230
+	pkgver = r776.c1bd89a
 	pkgrel = 1
 	url = https://github.com/Aylur/astal
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = libastal-wireplumber-git
 	makedepends = meson
 	makedepends = git
 	makedepends = gobject-introspection
+	makedepends = glib2-devel
 	makedepends = vala
 	depends = glib2
 	depends = glibc

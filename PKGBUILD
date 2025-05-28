@@ -2,7 +2,7 @@
 
 pkgname=libastal-wireplumber-git
 _pkgname=wireplumber
-pkgver=r250.2927230
+pkgver=r776.c1bd89a
 pkgrel=1
 provides=(astal-wireplumber libastal-wireplumber libastal-wireplumber.so=0-64)
 pkgdesc="A library for audio control using wireplumber"
@@ -18,6 +18,7 @@ makedepends=(
   meson
   git
   gobject-introspection
+  glib2-devel
   vala
 )
 groups=("libastal")
