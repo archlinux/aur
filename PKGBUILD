@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=picacomic-downloader
-pkgver=0.5.0
-pkgrel=4
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="哔咔漫画 picacomic pica漫画 bika漫画 PicACG 多线程下载器，带图形界面，已打包exe，带收藏夹，下载速度飞快"
 arch=($CARCH)
 url="https://github.com/lanyeeee/picacomic-downloader"
@@ -19,27 +19,30 @@ depends=(
     gtk3
     hicolor-icon-theme
     libsoup3
+    openssl
     webkit2gtk-4.1
 )
 makedepends=(
     cargo
     cargo-tauri
+    git
     pnpm
 )
 backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('865f5c1866a5823d3bf5c3421393073fa0218c7eec12ba172ee61764f07f5f38')
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('4f22454b86ecce6cdffb4afef2499f31f5778fda1a6698b9a232321bb038623c')
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}/src-tauri"
+    git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}/src-tauri"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}/"
+    cd "${srcdir}/${pkgname}/"
 
     export CARGO_HOME="${srcdir}/.cargo"
     {
@@ -58,12 +61,12 @@ build() {
 }
 
 # check() {
-#     cd "${srcdir}/${pkgname}-${pkgver}/"
+#     cd "${srcdir}/${pkgname}/"
 #     cargo test --release --all-features
 # }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}/"
+    cd "${srcdir}/${pkgname}/"
 
     install -Dvm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
     install -Dvm755 src-tauri/target/release/${pkgname} -t ${pkgdir}/usr/bin
