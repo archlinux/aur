@@ -1,4 +1,5 @@
-# Maintainer: James Smith <jslonescout AT icloud DOT com>
+# Maintainer: Chris Charabaruk <chris [at] charabaruk [dot] net>
+# Contributor: James Smith <jslonescout AT icloud DOT com>
 # Contributor: Thomas Ascher <thomas.ascher@gmx.at>
 
 _pkgname=Terminal
