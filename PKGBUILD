@@ -2,7 +2,7 @@
 
 _pkgname=opkssh
 pkgname=opkssh-bin
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="opkssh (OpenPubkey SSH)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('opkssh')
 
 source=("${_pkgname}-${pkgver}-linux-x86_64::$url/releases/download/v$pkgver/${_pkgname}-linux-amd64")
 
-sha256sums=('61646ef0f977aaa374a31e3135d322b8b29c86d51695eb02642e9e0166ef15dd')
+sha256sums=('047ce46214e94c25820a3345927886c048a93254af329e50fa5e76cc43269556')
 
 package() {
     mkdir -p ${pkgdir}/usr/bin
