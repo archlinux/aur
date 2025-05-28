@@ -1,4 +1,4 @@
-# Maintainer: @qomarhsn
+# Maintainer: Qomarul Hasan <mail at qomarhsn.com>
 pkgname=evolve-core-bin
 pkgver=1.7
 pkgrel=1
