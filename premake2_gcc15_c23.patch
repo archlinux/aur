@@ -1,0 +1,10 @@
+--- a/Src/vs_helpers.h
++++ b/Src/vs_helpers.h
+@@ -18,6 +18,6 @@
+ 	int  numDependencies;
+ } PkgData;
+ 
+-int  vs_AssignPackageData();
++int  vs_AssignPackageData(int version);
+ void vs_SetTargetVersion(int version);
+ void vs_WriteProjectList(FILE* file);
