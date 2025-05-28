@@ -30,7 +30,7 @@ build() {
 package() {
     cd $pkgname
 
-    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname" 
+    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "rules.d/20-asd-backlight.rules" "$pkgdir/usr/lib/udev/rules.d/20-asd-backlight.rules"
     install -Dm644 "README.rst" "$pkgdir/usr/share/doc/${pkgname}/README.rst"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
