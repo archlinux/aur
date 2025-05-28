@@ -1,0 +1,12 @@
+pkgbase = crossgrub-grub-theme
+	pkgdesc = Grub theme based on the CrossCode title screen
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/krypciak/crossgrub
+	arch = any
+	depends = grub
+	noextract = crossgrub.tar.gz
+	source = crossgrub-grub-theme-1.0.0.tar.gz::https://github.com/krypciak/crossgrub/releases/download/1.0.0/crossgrub.tar.gz
+	sha256sums = e0e7678c132b8459378046e91d8bb34239abaa143620ba3a1de2847959b6620a
+
+pkgname = crossgrub-grub-theme
