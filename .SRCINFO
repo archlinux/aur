@@ -2,7 +2,7 @@ pkgbase = terminal.app
 	pkgdesc = A terminal emulator for GNUstep
 	pkgver = 0.9.9
 	pkgrel = 4
-	url = http://www.nongnu.org/gap/terminal/index.html
+	url = http://gap.nongnu.org/terminal/index.html
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -18,4 +18,3 @@ pkgbase = terminal.app
 	sha256sums = SKIP
 
 pkgname = terminal.app
-
