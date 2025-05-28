@@ -1,7 +1,7 @@
 # Maintainer:  Johannes Schlatow <johannes.schlatow@googlemail.com>
 
 pkgname=genode-toolchain-bin
-pkgver=23.05
+pkgver=25.05
 pkgrel=1
 pkgdesc="GCC-based toolchain for the genode framework"
 arch=('x86_64')
@@ -15,9 +15,9 @@ options=('!strip' 'staticlibs')
 
 _arch="x86_64"
 
-_filename="genode-toolchain-${pkgver}.tar.xz"
-source=("https://downloads.sourceforge.net/project/genode/genode-toolchain/${pkgver}/${_filename}")
-sha1sums=('5aa01b05c0f5f69c410b1dc5c334306a64d4fd91')
+_filename="genode-toolchain-${pkgver}-ubuntu-24.04.tar.xz"
+source=("https://github.com/genodelabs/genode/releases/download/${pkgver}/${_filename}")
+sha256sums=('6cab8e5f4490399a296a73b01695d5fb055a40f6ac04d61a3f7a7344003eb739')
 noextract=(${_filename})
 
 package() {
