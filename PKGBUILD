@@ -2,15 +2,19 @@
 # Contributor: Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
 # Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
+# Too many users are getting confused by this...  If you really want to use
+# an external JRE instead of the bundled JetBrains JRE, set this to 1
+_external_jre=0
+
 # Uncomment if you want to disable compressing the package to save some time.
 #PKGEXT=.pkg.tar
 
 pkgbase=clion
-pkgname=(clion clion-jre clion-cmake clion-gdb clion-lldb)
+pkgname=(clion clion-cmake clion-gdb clion-lldb)
 _pkgname=clion
 _dlname=CLion
 pkgver=2025.1.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Cross-platform IDE for C and C++ from JetBrains."
 arch=('x86_64' 'aarch64')
@@ -45,11 +49,9 @@ build() {
 package_clion() {
     depends=('libdbusmenu-glib')
     optdepends=(
-        'clion-jre: JetBrains custom Java Runtime (Recommended)'
         'clion-cmake: JetBrains packaged CMake tools'
         'clion-gdb: JetBrains packaged GNU debugger'
         'clion-lldb: JetBrains packaged LLVM debugger'
-        'java-runtime: JRE - Required if clion-jre is not installed'
         'cmake: Build system - Required if clion-cmake is not installed'
         'gdb: native GNU debugger'
         'lldb: native LLVM debugger'
@@ -61,11 +63,19 @@ package_clion() {
         'python2: Python 2 programming language support'
         'doxygen: Code documentation generation'
     )
+    conflicts=('clion-jre')
+    if (( $_external_jre )); then
+        depends+=("java-runtime")
+        install=clion.install
+        _exclude_jre=("--exclude=/opt/${pkgbase}/jbr")
+    else
+        _exclude_jre=()
+    fi
     backup=("opt/${pkgbase}/bin/clion64.vmoptions"
             "opt/${pkgbase}/bin/idea.properties")
 
     rsync -rtl "${srcdir}/opt" "${pkgdir}" \
-          --exclude=/opt/${pkgbase}/jbr \
+          "${_exclude_jre[@]}" \
           --exclude=/opt/${pkgbase}/bin/cmake \
           --exclude=/opt/${pkgbase}/bin/gdb \
           --exclude=/opt/${pkgbase}/bin/lldb
@@ -84,13 +94,6 @@ package_clion() {
             "${pkgdir}/usr/share/licenses/${pkgbase}"
     ln -s "/opt/${pkgbase}/bin/${_pkgname}" \
             "${pkgdir}/usr/bin/${pkgbase}"
-}
-
-package_clion-jre() {
-    pkgdesc="JetBrains custom Java Runtime for CLion (Recommended)"
-    url="https://github.com/JetBrains/JetBrainsRuntime"
-    install -d -m755 "${pkgdir}/opt/${pkgbase}"
-    rsync -rtl "${srcdir}/opt/${pkgbase}/jbr" "${pkgdir}/opt/${pkgbase}"
 }
 
 package_clion-cmake() {

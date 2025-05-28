@@ -1,7 +1,7 @@
 pkgbase = clion
 	pkgdesc = Cross-platform IDE for C and C++ from JetBrains.
 	pkgver = 2025.1.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.jetbrains.com/clion
 	arch = x86_64
@@ -19,12 +19,12 @@ pkgbase = clion
 	sha256sums_aarch64 = dcd7373dc9dd941703d18ae602dd384ce6d154a90745c37c3358bf1f6b41ed2e
 
 pkgname = clion
+	install = clion.install
 	depends = libdbusmenu-glib
-	optdepends = clion-jre: JetBrains custom Java Runtime (Recommended)
+	depends = java-runtime
 	optdepends = clion-cmake: JetBrains packaged CMake tools
 	optdepends = clion-gdb: JetBrains packaged GNU debugger
 	optdepends = clion-lldb: JetBrains packaged LLVM debugger
-	optdepends = java-runtime: JRE - Required if clion-jre is not installed
 	optdepends = cmake: Build system - Required if clion-cmake is not installed
 	optdepends = gdb: native GNU debugger
 	optdepends = lldb: native LLVM debugger
@@ -35,12 +35,9 @@ pkgname = clion
 	optdepends = python: Python 3 programming language support
 	optdepends = python2: Python 2 programming language support
 	optdepends = doxygen: Code documentation generation
+	conflicts = clion-jre
 	backup = opt/clion/bin/clion64.vmoptions
 	backup = opt/clion/bin/idea.properties
-
-pkgname = clion-jre
-	pkgdesc = JetBrains custom Java Runtime for CLion (Recommended)
-	url = https://github.com/JetBrains/JetBrainsRuntime
 
 pkgname = clion-cmake
 	pkgdesc = JetBrains packaged CMake tools for CLion
