@@ -105,7 +105,6 @@ pkgbase = ffmpeg-libfdk_aac
 	provides = libswresample.so
 	provides = libswscale.so
 	conflicts = ffmpeg
-	options = debug
 	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=a1328e68877e12ab5a6e5d92a84aefa566783ea5
 	source = 0001-Add-av_stream_get_first_dts-for-Chromium.patch
 	source = 0002-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
