@@ -1,0 +1,5 @@
+[lib32-libxml2-legacy]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/libxml2.git"
+include_regex = 'v2\.13\.\d+'
+prefix = "v"

@@ -1,0 +1,87 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Tue, 18 Feb 2025 20:21:01 +0100
+Subject: [PATCH] meson: Build fixes
+
+---
+ meson.build | 24 +++++++++++++++++++++---
+ 1 file changed, 21 insertions(+), 3 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index de29cf310752..80706b5b41ec 100644
+--- a/meson.build
++++ b/meson.build
+@@ -316,6 +316,7 @@ xml_check_functions = [
+     ['stat', 'sys/stat.h'],
+     ['mmap', 'sys/mman.h'],
+     ['munmap', 'sys/mman.h'],
++    ['getentropy', 'sys/random.h'],
+ ]
+ 
+ foreach function : xml_check_functions
+@@ -430,7 +431,7 @@ if not get_option('minimum')
+     endif
+ endif
+ 
+-want_thread_alloc = threads_dep.found()
++want_thread_alloc = want_thread_alloc and threads_dep.found()
+ 
+ ### xmllint shell history
+ xmllint_deps = []
+@@ -560,7 +561,11 @@ int main()
+     return 0;
+ }
+         '''
+-        res = cc.compiles(ipv6_src, name: 'support for IPV6')
++        res = cc.compiles(
++            ipv6_src,
++            name: 'support for IPV6',
++            args: config_h.has('HAVE_NETDB_H') ? ['-DHAVE_NETDB_H=1'] : [],
++        )
+         if res == true
+             config_h.set10('SUPPORT_IP6', true)
+         endif
+@@ -598,11 +603,12 @@ else
+ endif
+ 
+ # icu
+-icu_dep = dependency('icu-i18n', method: 'pkg-config', required: get_option('icu'))
++icu_dep = dependency('icu-i18n', required: get_option('icu'))
+ if icu_dep.found()
+     def_var = icu_dep.get_variable(pkgconfig: 'DEFS')
+     config_dir += include_directories(def_var)
+     xml_deps += icu_dep
++    xml_deps += dependency('icu-uc', required: true)
+ endif
+ 
+ subdir('include/libxml')
+@@ -673,10 +679,21 @@ foreach file : xml_opt_src
+     endif
+ endforeach
+ 
++xml_lib_link_args = []
++
++if want_legacy and not sys_windows
++    symfile = files('libxml2.syms')[0]
++    xml_lib_link_args += cc.get_supported_link_arguments([
++        '-Wl,--undefined-version',
++        '-Wl,--version-script=@0@'.format(symfile.full_path()),
++    ])
++endif
++
+ xml_lib = library(
+     'xml2',
+     files(xml_src),
+     c_args: libxml2_cflags,
++    link_args: xml_lib_link_args,
+     dependencies: xml_deps,
+     include_directories: config_dir,
+     install: true,
+@@ -763,6 +780,7 @@ pkgmod.generate(
+     description: 'libXML library version2.',
+     filebase: 'libxml-2.0',
+     name: 'libXML',
++    subdirs: meson.project_name(),
+     variables: 'modules=' + dl_dep.found().to_string('1', '0'),
+ )
+ 
