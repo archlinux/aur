@@ -1,10 +1,9 @@
 pkgbase = coreutils-uutils
-	pkgdesc = (warning: use at own risk) Cross-platform Rust rewrite of the GNU coreutils installed as system core utilities. This PKGBUID does NOT build chcon and runcon
+	pkgdesc = (warning: use at own risk) Cross-platform Rust rewrite of the GNU coreutils installed as system core utilities.
 	pkgver = 0.1.0
 	pkgrel = 3
 	url = https://github.com/uutils/coreutils
 	arch = x86_64
-	license = GPL3
 	license = MIT
 	makedepends = cargo
 	makedepends = clang
