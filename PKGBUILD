@@ -1,7 +1,7 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 pkgname=sudachi
 pkgver=1.0.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://sudachi.emuplace.app
@@ -23,7 +23,7 @@ source=(sudachi::https://github.com/emuplace/sudachi.emuplace.app/releases/downl
 	opus::git+https://github.com/xiph/opus#tag=v1.3.1
 	cpp-httplib::git+https://github.com/yhirose/cpp-httplib#commit=65ce51aed7f15e40e8fb6d2c0a8efb10bcb40126
 	ffmpeg::git+https://github.com/FFmpeg/FFmpeg#tag=n7.1
-	cpp-jwt::git+https://github.com/arun11299/cpp-jwt
+	cpp-jwt::git+https://github.com/arun11299/cpp-jwt#tag=v1.4
 	libadrenotools::git+https://github.com/bylaws/libadrenotools
 	VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator#tag=v3.2.1
 	breakpad::git+https://github.com/sudachi-emu/breakpad#commit=bf1260ddb8d405e95cd5c4507ddaca45d10dd842
@@ -55,7 +55,7 @@ b2sums=('deacfbf286580efea76745c973b497eaa83a27b8157cb3af978e8911ad94f2d428c98c1
         'f262820a87d3840f9560430b05e70c9621580301b3f156fd187d82b567e95a9476c75cf5fbe888271097f95f428f45a11cd84e1ec00dd4dd8c2744d1f324b922'
         '8b19e4063fdfb623aa83c715ce499da17bea6159287eb60e8e11faa2e574b90eb1c6bc9ab3331231e15c03bc503bde542701494802dc7d9c5afa34d98ec2f086'
         'c7ec6b1db61608195117b79f3f0c8f6323c3abeb39721359da0f10e7d739da8301e04ff5fa83c022f86fc760f66e00066f9a50d97b771f797ccc679f9d912c40'
-        'SKIP'
+        'dfc79dd58a96d4166cbeb4b93c80d235989e7ccea07fdc804993c57201082f2298646693e41ad5ce794d882483a9f4015d0ca00efbdefbdcbc11e16f803cc602'
         'SKIP'
         'aca4f69aed630852f3aec4bdd4b6fd35935cc896c682e1b1d660bce0da54b40617889fa4a9ae788d49472be5bd12f9bf609f7a7a74ce5139ce904b8c8bd39976'
         '8938523994f0fd698c95fc196ae85114b3e5d38c76f33bc593e76e433a45a3350c0d8cf7f1c95fe3d0d59c43d69017bdcbe7f668ca563b6155ee8cce87fbf0c9'
@@ -127,12 +127,6 @@ prepare() {
   
   # make some corrections for cmake 4.0
   sed -i '/"overrides": \[/a \        {\n            "name": "lz4",\n            "version": "1.10.0"\n        },' vcpkg.json
-  sed -i 's/cmake_minimum_required(VERSION 2.6...3.0.2)/cmake_minimum_required(VERSION 3.5)/' externals/xbyak/CMakeLists.txt
-  sed -i 's/cmake_minimum_required(VERSION 3.1)/cmake_minimum_required(VERSION 3.5)/' externals/dynarmic/externals/robin-map/CMakeLists.txt
-  sed -i 's/cmake_minimum_required(VERSION 2.6)/cmake_minimum_required(VERSION 3.5)/' externals/mbedtls/CMakeLists.txt
-  sed -i 's/cmake_minimum_required(VERSION 3.0)/cmake_minimum_required(VERSION 3.5)/' externals/sirit/externals/SPIRV-Headers/CMakeLists.txt
-  sed -i 's/cmake_minimum_required(VERSION 3.1)/cmake_minimum_required(VERSION 3.5)/' externals/opus/CMakeLists.txt
-  sed -i 's/cmake_minimum_required(VERSION 3.1)/cmake_minimum_required(VERSION 3.5)/' externals/opus/opus_functions.cmake
 }
 
 build() {
@@ -150,7 +144,8 @@ build() {
     -DSUDACHI_USE_FASTER_LD=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_FLAGS="-march=native -mtune=native -Wno-unused-variable" \
-    -DCMAKE_C_FLAGS="-march=native -mtune=native"
+    -DCMAKE_C_FLAGS="-march=native -mtune=native" \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   ninja -C build
 }
 
