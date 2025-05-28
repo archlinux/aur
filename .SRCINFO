@@ -1,12 +1,12 @@
 pkgbase = coreutils-uutils-symlink
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://uutils.github.io/
 	arch = any
 	depends = uutils-coreutils
 
 pkgname = coreutils-uutils-symlink
-	pkgdesc = (use at own risk) symlinks to replace coreutils with uutils
+	pkgdesc = (Dangerous) symlinks to swap coreutils with uutils
 	depends = uutils-coreutils
 	depends = nix-busybox
 	provides = coreutils
