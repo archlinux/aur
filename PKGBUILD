@@ -14,7 +14,7 @@ set -u
 pkgname='turboprint'
 _pkgver='2.57-1'
 pkgver="${_pkgver//-/.}"
-pkgrel='2'
+pkgrel='3'
 pkgdesc='High-quality printer driver system for Linux'
 arch=('i686' 'x86_64')
 url='http://www.turboprint.info/'
@@ -47,14 +47,14 @@ md5sums=('e3c504b2c1b7deb01d03fde710b117d7'
          '60a1754b2abd30e75e51acd9576cda43'
          '2640e1d95c3579d6cef590d18b4476df'
          '1206069a3d461d97be48c251007975b1')
-md5sums_i686=('2d854a25e5ad311e5eb85547bf532786')
-md5sums_x86_64=('32fa3b9380d02179c3daf09547cead2f')
+md5sums_i686=('ce10ba1927a0143057e8613cd63fe9e1')
+md5sums_x86_64=('2d7977b4e91d9d1f4dd27e7d888f496b')
 sha256sums=('c90e4f71a234dc0638d15305184daeed212ebf1f7efc2f5a2a09895ca09bea6d'
             'de0c92b665150ceaf33c3cfd94b0afb422609194db9416aff59add5123bb8a2f'
             'a6ba2b4bab8d2512e542427dd3473d1764a777ef0493031046dc7282dc05fdad'
             '6123cfea355a0e308e1f5bab357450399670dde45d6ed367c13da38c53a871fb')
-sha256sums_i686=('ce2b0b2bda916984264e22470acb37db7e02970e12d2aa25816d1f2db40305c4')
-sha256sums_x86_64=('d31e1b4cf1729c2c72aac3c1a21f4ac1c4ece51687db44be93d2ac10d8761993')
+sha256sums_i686=('7154b1bc66fd6a629eb5760f1a5b79dd2c64ee45d6ec6d70cb45d52d0fb5fe9a')
+sha256sums_x86_64=('f62b9caeb5d820fb249161cd9273e88f6740589deada1a4a37e432eb144d8302')
 
 prepare() {
   set -u
