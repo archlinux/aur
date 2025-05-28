@@ -2,7 +2,7 @@
 # Maintainer: Abhinav Gupta <mail@abhinavg.net>
 
 pkgname='git-spice-bin'
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='A tool for stacking Git branches.'
 url='https://abhinav.github.io/git-spice/'
@@ -11,14 +11,14 @@ license=('GPL-3.0-or-later')
 provides=('git-spice')
 conflicts=('git-spice' 'ghostscript')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhinav/git-spice/releases/download/v0.13.0/git-spice.Linux-aarch64.tar.gz")
-sha256sums_aarch64=('99f7cbe6e3775a5764c8d870c5e957c2d37472521c9de4ead143795cfcbaf34c')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhinav/git-spice/releases/download/v0.14.0/git-spice.Linux-aarch64.tar.gz")
+sha256sums_aarch64=('82a55a3144705b4ffd3d947ec21ce86de1ae4c5fb732aba548e8cf1098257b83')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/abhinav/git-spice/releases/download/v0.13.0/git-spice.Linux-armv7.tar.gz")
-sha256sums_armv7h=('220e7e080a8e61d65a582ba77308c35a94097e3a8958a83cddfff1925b076f4a')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/abhinav/git-spice/releases/download/v0.14.0/git-spice.Linux-armv7.tar.gz")
+sha256sums_armv7h=('279d4c10fc16b4bea247ef22a717cdf9b02cd4667b7b37d7cee06a4c84847290')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhinav/git-spice/releases/download/v0.13.0/git-spice.Linux-x86_64.tar.gz")
-sha256sums_x86_64=('7f5788bb9afda84fb8759895916c75f06f36751d0b2d5e4b178f16568cc46fbd')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhinav/git-spice/releases/download/v0.14.0/git-spice.Linux-x86_64.tar.gz")
+sha256sums_x86_64=('c3476407316eec39ca3605903208b9988e730ef5eceee224a13d9a1e936d0ce5')
 
 package() {
   install -Dm755 "./gs" "${pkgdir}/usr/bin/gs"
