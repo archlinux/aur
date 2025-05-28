@@ -10,14 +10,11 @@ arch=('x86_64')
 options=(!lto)
 # GCC 14 required until we find a way to build onig_sys with GCC 15
 makedepends=(gcc14 cargo libgit2 mimalloc oniguruma)
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/source.tar.gz"
-        'prune-deps.patch')
-sha256sums=('6aba9463163fc65b3080c7a5bfb0aa79ce6bdf71568f2b51f0cd963a75a50f6f'
-            'c5cf2eeaacc5f7216b681ab143ac35f4a0cca259b525892d5f20e545f84a90ac')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/source.tar.gz")
+sha256sums=('6aba9463163fc65b3080c7a5bfb0aa79ce6bdf71568f2b51f0cd963a75a50f6f')
 
 prepare() {
     cd "${pkgname}_cli-$pkgver"
-    patch -p1 -i ../prune-deps.patch
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }

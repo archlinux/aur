@@ -12,8 +12,6 @@ pkgbase = limbo
 	makedepends = oniguruma
 	options = !lto
 	source = limbo-0.0.20.tar.gz::https://github.com/tursodatabase/limbo/releases/download/v0.0.20/source.tar.gz
-	source = prune-deps.patch
 	sha256sums = 6aba9463163fc65b3080c7a5bfb0aa79ce6bdf71568f2b51f0cd963a75a50f6f
-	sha256sums = c5cf2eeaacc5f7216b681ab143ac35f4a0cca259b525892d5f20e545f84a90ac
 
 pkgname = limbo
