@@ -4,12 +4,12 @@ pkgname=(fitgirl-ddl-git fitgirl-ddl-gui-git)
 pkgdesc="fitgirl-repacks.site extractor"
 _pkgname=fitgirl-ddl
 pkgver=r25.g42343f1
-pkgrel=2
+pkgrel=3
 url="https://github.com/mokurin000/fitgirl-ddl"
 arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=(
-    'gcc-libs' 'curl'
+    'gcc-libs' 'curl' 'glibc'
 )
 makedepends=(
     'rust' 'git' 'qt6-base' 'clang'
@@ -43,7 +43,7 @@ package_fitgirl-ddl-git() {
     cd "${_pkgname}"
 
     install -vDm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
-    install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}-git"
 }
 
 
@@ -56,7 +56,7 @@ package_fitgirl-ddl-gui-git() {
     cd "${_pkgname}"
 
     install -vDm755 "target/release/${_pkgname}_gui" -t "${pkgdir}/usr/bin/"
-    install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}_gui"
+    install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}-gui-git"
 }
 
 build() {
