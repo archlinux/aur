@@ -2,7 +2,7 @@
 _target='compass-readonly-beta'
 _edition=' Readonly Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.46.2-beta.2'
+_pkgver='1.46.3-beta.3'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - beta version'
@@ -11,17 +11,19 @@ url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
 _electronpkg='electron32'
 depends=("$_electronpkg" 'krb5' 'libmongocrypt>=1.12.0' 'libsecret' 'lsb-release' 'nodejs>=18.19.1')
-makedepends=('git' 'npm>=10.2.4' 'python' 'unzip')
+makedepends=('git' 'npm>=11.4.1' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 backup=('etc/mongodb-compass.conf')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
+	'update-dependencies-beta.diff'
 	'update-dependencies.diff'
 	'hadron-build-ffmpeg.diff'
 	'fix-argv.diff'
 	'mongodb-compass.conf'
 )
-b2sums=('ef229b5310537e027c659283bf64ed5613505fce838a109c317973ff6b7a90c27bd507372a09c8344606d9ec4955e9ed9e66e9822073041aab7d38edfe0105d2'
+b2sums=('df8e765739011831aad0a725c6eceb7408353c41c5b70f8f22cdc411aff9ab6e2358f2815bcfa34fa865ef15beeeee66998ec787128e45bc31de741a340626e9'
+        'c862d8df4fd1bab14dbfd6b910561c9baf8448d813c9b91ed41d7ee599ff10f472618eb87bd3816a679241d6fa3c319d8e38714e57334366122b1390fbf8edfc'
         'f4b3d86ede6f787a7adf3762911f8e74bf0ff658c906092a764d8080248c1a32cc8d2e536d14a19d7ced3374b267bc6b82f1a6d639ba623db21a5f2ea35af5b0'
         '339cb2f14805ce8f186064d823b3b01630ea02b16052fb764a46a4df2c9b06f8d12b012e764d00aaa1906639e8019869816ddbb6c02fedac2cb06caeefab28ef'
         '69154b5491c8c3149195743bcbcb0ae7b18b8e83635f7afa29e9ef7b50a42343a2877760b41662c5943b8f7d390df85548cbcd253772fa92e33b9f231ab19436'
@@ -33,7 +35,11 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	# Set npm overrides for various dependencies
-	patch --forward -p1 < "$srcdir/update-dependencies.diff"
+	if [[ "$_target" =~ -beta$ ]]; then
+		patch --forward -p1 < "$srcdir/update-dependencies-beta.diff"
+	else
+		patch --forward -p1 < "$srcdir/update-dependencies.diff"
+	fi
 
 	# Set system Electron version for ABI compatibility
 	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'package.json'
