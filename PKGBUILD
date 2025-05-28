@@ -3,7 +3,7 @@ _target='compass'
 _edition=''
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r18534.g3eae8908e'
+pkgver='r18579.g870460f23'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - git version'
@@ -25,9 +25,9 @@ source=(
 	'mongodb-compass.conf'
 )
 b2sums=('SKIP'
-        'f4b3d86ede6f787a7adf3762911f8e74bf0ff658c906092a764d8080248c1a32cc8d2e536d14a19d7ced3374b267bc6b82f1a6d639ba623db21a5f2ea35af5b0'
+        'c862d8df4fd1bab14dbfd6b910561c9baf8448d813c9b91ed41d7ee599ff10f472618eb87bd3816a679241d6fa3c319d8e38714e57334366122b1390fbf8edfc'
         '339cb2f14805ce8f186064d823b3b01630ea02b16052fb764a46a4df2c9b06f8d12b012e764d00aaa1906639e8019869816ddbb6c02fedac2cb06caeefab28ef'
-        '69154b5491c8c3149195743bcbcb0ae7b18b8e83635f7afa29e9ef7b50a42343a2877760b41662c5943b8f7d390df85548cbcd253772fa92e33b9f231ab19436'
+        '8d473880f9b834890fc64f81579b4e05f7777cf18b8668ae45b448b9b788fbe8cb31841f12274bdb155152d3377c018cd7bf80850dd21e58ef207a3ae975c3fa'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
 _sourcedirectory="$pkgname"
