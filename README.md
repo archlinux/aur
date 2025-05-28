@@ -10,6 +10,7 @@ An AUR package for [Mergiraf](https://mergiraf.org/) using the pre-built binary 
 1. Update checksums in `PKGBUILD` by pasting in the result of `make sums`
 1. Update `.SRCINFO`with `make srcinfo`
 1. Test with `make test`
+1. `make clean` to remove build files
 1. `git add`, `commit` and `push` your changes
 
 ## Install package
