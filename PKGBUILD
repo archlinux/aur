@@ -2,7 +2,7 @@
 pkgname=organicmaps
 pkgver=2025.05.20_5
 tag="${pkgver%%_*}-${pkgver##*_}-android"
-pkgrel=1
+pkgrel=2
 pkgdesc="Organic Maps: Offline Hike, Bike, Trails and Navigation"
 arch=(x86_64)
 makedepends=("cmake<=3.31.6" git jq gcc ninja)
@@ -11,7 +11,7 @@ depends=(mesa libglvnd freetype2 sqlite icu qt6-svg qt6-base zlib libpng glibc
 optdepends=("ccache: faster re-compilation" "qt6-wayland: for Wayland users")
 license=("Apache")
 url="https://organicmaps.app"
-source_url="https://git.omaps.dev/organicmaps/organicmaps"
+source_url="https://git.omaps.dev/organicmaps/organicmaps.git"
 source=(organicmaps.desktop)
 sha256sums=('8205a6abb2c053380940d5c2e83cf10b5b889544e2d36c1c777778bf35772729')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
@@ -28,15 +28,30 @@ prepare() {
       file://*)
         git -C ${src_url#file://} fetch --depth=1 origin "$tag"
         ;;
-      *)
-        ;;
     esac
   fi
   if [ ! -d $pkgname ]; then
     git clone --depth=1 --single-branch -b "$tag" --filter=blob:limit=128k \
-      --shallow-submodules --recurse-submodules $src_url $pkgname
+      $src_url $pkgname
+  fi
+  if [ -n $SOURCE_URL_REWRITER ]; then
+    for submodule_path in $(git -C $pkgname submodule status|
+        awk '/icu/ || /harfbuzz/ || /expat/ {print $2}');
+    do
+      pin_commit=$(git -C $pkgname submodule status --cached $submodule_path|
+        awk '{sub("^-",""); print $1}')
+      remote=$(git -C $pkgname config --file=.gitmodules submodule.${submodule_path}.url)
+      local_remote=$($SOURCE_URL_REWRITER $remote)
+      case "$local_remote" in
+        file://*)
+          git -C ${local_remote#file://} fetch --depth=1 origin "$pin_commit"
+          git -C $pkgname submodule set-url $submodule_path "$local_remote"
+          ;;
+      esac
+    done
   fi
   cd $pkgname
+  git -c protocol.file.allow=always submodule update --init --recursive --depth=1
   rm -f 3party/boost/b2
   bash ./configure.sh
 }
