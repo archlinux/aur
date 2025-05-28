@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-git
-pkgver=5.63.2.r0.gf924e2b
+pkgver=5.64.0.r0.g6fbb0c8
 pkgrel=1
 pkgdesc="qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems."
 arch=("any")
@@ -12,7 +12,7 @@ conflicts=("qp" "qp-bin")
 replaces=("yaylog" "yaylog-bin" "yaylog-git")
 source=(
   "qp::git+https://github.com/Zweih/qp.git"
-  "news::git+https://github.com/Zweih/qp.git#branch=packaging"
+  "packaging::git+https://github.com/Zweih/qp.git#branch=packaging"
 )
 sha256sums=("SKIP" "SKIP")
 
@@ -44,5 +44,10 @@ package() {
   cd "$srcdir/qp"
   install -Dm755 "${_binaryname}" "${pkgdir}/usr/bin/${_binaryname}"
   install -Dm644 "${_binaryname}.1" "${pkgdir}/usr/share/man/man1/${_binaryname}.1"
-  install -Dm644 "${srcdir}/news/NEWS" "${pkgdir}/usr/share/doc/qp/NEWS"
+  install -Dm644 "${srcdir}/packaging/NEWS" "${pkgdir}/usr/share/doc/qp/NEWS"
+
+  install -Dm644 "${srcdir}/packaging/hooks/pacman/update-qp-cache.hook" \
+    "$pkgdir/usr/share/libalpm/hooks/update-qp-cache.hook"
+  install -Dm755 "${srcdir}/packaging/hooks/pacman/update-qp-cache" \
+    "$pkgdir/usr/share/libalpm/scripts/update-qp-cache"
 }
