@@ -1,7 +1,7 @@
 pkgname=sparkle-git
 _pkgname=${pkgname%-git}
-pkgver=1.6.2.r2.db8c6a0
-pkgrel=2
+pkgver=1.6.5.r1
+pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
 url="https://github.com/xishang0128/sparkle"
@@ -39,6 +39,7 @@ package() {
     bsdtar -xf sparkle-linux-$(jq '.version' $srcdir/${_pkgname}/package.json | tr -d 'v"')*.deb
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
     chmod +x ${pkgdir}/opt/sparkle/sparkle
+    chmod +x ${pkgdir}/opt/sparkle/resources/files/sysproxy
     chmod +sx ${pkgdir}/opt/sparkle/resources/sidecar/mihomo
     chmod +sx ${pkgdir}/opt/sparkle/resources/sidecar/mihomo-alpha
     install -Dm755 "${srcdir}/../${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
