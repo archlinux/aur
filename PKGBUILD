@@ -4,7 +4,7 @@
 pkgname=ffdiaporama
 _pkgdir="ffDiaporama"
 pkgver=2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='application for creating video sequences consisting of photos, movies, music'
 arch=(x86_64)
 url=http://ffdiaporama.tuxfamily.org
@@ -16,7 +16,8 @@ provides=(
 makedepends=(
   gcc
 )
-source=('http://download.tuxfamily.org/ffdiaporama/Packages/Stable/ffdiaporama_bin_2.1.2014.0209.tar.gz'
+#http://download.tuxfamily.org/ffdiaporama/Packages/Stable/ffdiaporama_bin_2.1.2014.0209.tar.gz
+source=('https://sourceforge.net/projects/ffdiaporama/files/ffdiaporama_bin_2.1.2014.0209.tar.gz'
         'patchfile.patch'
         'exiv2_0-28_fix.patch'
         )
