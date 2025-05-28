@@ -4,7 +4,7 @@
 
 pkgname='unixbench'
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='UnixBench is a simple benchmark whose purpose is to provide a  basic indicator of the performance of a Unix-like system.'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 license=('GPL')
@@ -40,5 +40,10 @@ package() {
    chmod 775 ${pkgdir}/usr/bin/ubench
    chmod 775 ${pkgdir}/usr/lib/unixbench/Run
    chmod ugoa+w ${pkgdir}/usr/lib/unixbench/{results,testdir,tmp}
+
+   install -Dm644 ../README.md ${pkgdir}/usr/doc/unixbench/README.md
+   install -Dm644 README ${pkgdir}/usr/doc/unixbench/README
+   install -Dm644 USAGE ${pkgdir}/usr/doc/unixbench/USAGE
+   install -Dm644 ..//LICENSE.txt ${pkgdir}/usr/share/licenses/unixbench/LICENSE.txt
 }
 
