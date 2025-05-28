@@ -1,0 +1,19 @@
+pkgbase = github-issue-alert-bin
+	pkgdesc = Polls GitHub for new issues in a GitHub repository and sends instant alerts when they're created.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/ashuvssut/github-issue-alert
+	arch = x86_64
+	license = MIT
+	depends = electron36
+	depends = nodejs
+	provides = github-issue-alert=1.0.5
+	conflicts = github-issue-alert
+	options = !emptydirs
+	options = !strip
+	source = github-issue-alert-1.0.5-x86_64.deb::https://github.com/ashuvssut/github-issue-alert/releases/download/v1.0.5/github-issue-alert_1.0.5_amd64.deb
+	source = github-issue-alert.sh
+	sha256sums = 7640bc74076fea3330ab62acdce8760140c7d9ea2fa668418e9d1bfae2d5be1c
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = github-issue-alert-bin
