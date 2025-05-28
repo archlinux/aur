@@ -1,6 +1,6 @@
 # Maintainer: aarto <aarto@aur.archlinux.org>
 pkgname=limbo
-pkgver=0.0.20
+pkgver=0.0.21
 pkgrel=1
 pkgdesc='Limbo is a work-in-progress, in-process OLTP database management system, compatible with SQLite.'
 url='https://github.com/tursodatabase/limbo'
@@ -11,7 +11,7 @@ options=(!lto)
 # GCC 14 required until we find a way to build onig_sys with GCC 15
 makedepends=(gcc14 cargo libgit2 mimalloc oniguruma)
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/source.tar.gz")
-sha256sums=('6aba9463163fc65b3080c7a5bfb0aa79ce6bdf71568f2b51f0cd963a75a50f6f')
+sha256sums=('5079c0c3300a716e7621d5002892a781946d19d53afceb03a372ebd1ed90898f')
 
 prepare() {
     cd "${pkgname}_cli-$pkgver"
