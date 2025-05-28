@@ -1,0 +1,5 @@
+[nzb-monkey-go-bin]
+source = "github"
+github = "Tensai75/nzb-monkey-go"
+use_latest_release = true
+prefix = "v"
