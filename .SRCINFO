@@ -5,6 +5,7 @@ pkgbase = simplearchiver
 	url = https://github.com/Stephen-Seo/SimpleArchiver
 	arch = x86_64
 	license = ISC
+	makedepends = git
 	makedepends = cmake
 	source = simplearchiver::git+https://github.com/Stephen-Seo/SimpleArchiver.git#tag=1.26
 	sha256sums = SKIP
