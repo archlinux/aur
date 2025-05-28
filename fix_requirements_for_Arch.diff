@@ -1,21 +1,21 @@
---- a/gns3-server-2.2.52/requirements.txt	2024-12-02 02:14:23.000000000 +0100
-+++ b/gns3-server-2.2.52/requirements.txt	2024-12-02 14:30:45.387248932 +0100
+--- a/gns3-server-2.2.54/requirements.txt	2025-04-21 12:15:22.000000000 +0200
++++ b/gns3-server-2.2.54/requirements.txt	2025-05-28 13:27:58.433664989 +0200
 @@ -1,13 +1,12 @@
 -jsonschema>=4.23,<4.24
--aiohttp>=3.10.10,<3.11
+-aiohttp>=3.10.11,<3.11  # version 3.10.11 is the last compatible version with Python 3.8
 -aiohttp-cors>=0.7.0,<0.8
 -aiofiles>=24.1.0,<25.0
--Jinja2>=3.1.4,<3.2
--sentry-sdk>=2.17,<2.18  # optional dependency
+-Jinja2>=3.1.6,<3.2
+-sentry-sdk>=2.26.1,<2.27  # optional dependency
 +jsonschema>=4.23
-+aiohttp>=3.10.5
++aiohttp>=3.10.11
 +aiohttp-cors>=0.7.0
 +aiofiles>=24.1.0
-+Jinja2>=3.1.4
-+sentry-sdk>=2.17
- psutil>=6.1.0
--async-timeout>=4.0.3,<4.1
-+async-timeout>=4.0.3
++Jinja2>=3.1.6
++sentry-sdk>=2.26.1
+ psutil>=7.0.0
+-async-timeout>=5.0.1,<5.1
++async-timeout>=5.0.1
  distro>=1.9.0
 -py-cpuinfo>=9.0.0,<10.0
 -platformdirs>=2.4.0,<3  # platformdirs >=3 conflicts when building Debian packages
