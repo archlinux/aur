@@ -2,12 +2,13 @@
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
-pkgname=gns3-server
+_pkgname=gns3-server
+pkgname="$_pkgname"-2
 pkgver=2.2.52
 pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64' 'aarch64')
-url='https://github.com/GNS3/gns3-server'
+url="https://github.com/GNS3/$_pkgname"
 license=('GPL-3.0-only')
 groups=('gns3')
 depends=(
@@ -34,28 +35,30 @@ optdepends=(
     'vpcs: Simple PC emulation for basic network operations'
     'ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces'
 )
-install="$pkgname".install
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "$pkgname@.service"
+conflicts=('gns3-server')
+provides=('gns3-server')
+install="$_pkgname".install
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "$_pkgname@.service"
         "fix_requirements_for_Arch.diff")
 sha256sums=('e4c1bfe7383033937fa1543f003ba659ce199d8757523b84acdd39becf8f9db0'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f'
             '0203f8ef7ef663fbcd7bcd6c5f6bef251a5be849989c2438a33cad4fc29754ff')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$_pkgname-$pkgver"
     # Arch usually has the latest versions. Patch requirements to allow them.
     patch --strip=2 -i "$srcdir"/fix_requirements_for_Arch.diff
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$_pkgname-$pkgver"
     python setup.py build
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$_pkgname-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "$srcdir/$pkgname@.service" "$pkgdir/usr/lib/systemd/system/$pkgname@.service"
+    install -Dm644 "$srcdir/$_pkgname@.service" "$pkgdir/usr/lib/systemd/system/$_pkgname@.service"
 }
