@@ -23,12 +23,6 @@ makedepends=(
   'python-uv'
   'git'
   'python-virtualenv'
-  'python-pkgconfig'
-  'python-devel'
-  'dbus'
-  'glib2'
-  'python-gobject'
-  'gcc'
 )
 source=("git+$url.git")
 sha256sums=('SKIP')
