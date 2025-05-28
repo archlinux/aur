@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-dashboard
-pkgver=4.11.2
+pkgver=4.12.0
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -26,7 +26,7 @@ backup=(
   'usr/share/wazuh-dashboard/data/wazuh/config/wazuh.yml'
   )
 
-sha512sums=('a076b5de7668199d0fe380370fcc309db45c1577364e20350ad53febd6e0374caab8a3ee6acadc298c46ca70b3dd1723845200c87e5fe05e51b822f35d9367c5')
+sha512sums=('9dbb093928f5e5553489c929c3f0cfe8fca56151834f433e18aa35008c5ad1afc3ab78d041c7184790170e8327d285c9169db0815f08c92eeff88de447e8e75a')
 
 install=$pkgname.install
 

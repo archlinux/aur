@@ -2,7 +2,7 @@ post_install()
 {
   echo "creating wazuh-indexer user and group"
   groupadd -f wazuh-dashboard
-  usuario="wazuh-dashboard" && id "$usuario" &>/dev/null || useradd -d /usr/share/wazuh-dashboard -g wazuh-dashboard -s /usr/bin/nologin  wazuh-dashboard
+  usuario="wazuh-dashboard" && id "$usuario" &>/dev/null || useradd --system -d /usr/share/wazuh-dashboard -g wazuh-dashboard -s /usr/bin/nologin  wazuh-dashboard
   chown -R wazuh-dashboard:wazuh-dashboard /usr/share/wazuh-dashboard
   chown -R wazuh-dashboard:wazuh-dashboard /etc/wazuh-dashboard
   echo "Done!"
