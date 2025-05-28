@@ -2,7 +2,7 @@
 
 _name="aescrypt"
 pkgname="${_name}-gui"
-pkgver=4.2.6
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="A file encryption software that uses the Advanced Encryption Standard (AES) - GUI"
 arch=('any')
@@ -15,17 +15,16 @@ optdepends=('kdialog: Qt-based password prompt'
 replaces=("${pkgname}-bin")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}-CHANGELOG.md::${_url}/raw/refs/tags/v${pkgver}/CHANGELOG.md"
-        "${_pkgsrc}.tar.gz::${url}/download/v${pkgver%%.*}/linux/${pkgname//-/_}-${pkgver}-Linux-x86_64.tar.gz")
-sha256sums=('3a47053976a13074eb52ecbf5e6db8f630e0d5fdea8c3da2545f2688b503720b'
-            'bfacc37901e6c3776033117529fed128333e24da767b19ca10cd1b97b4c67d36')
-# validpgpkeys=('C264DC0F1C13A4BB18CAAF1BE7BE982BCD50DDF4') # Terrapane Support <support@terrapane.com> (https://github.com/terrapane/aescrypt_linux/blob/master/README.md#signed-release-packages)
+        "${_pkgsrc}.tar.gz::${url}/download/v${pkgver%%.*}/linux/${pkgname//-/_}-${pkgver}-Linux-x86_64.tar.gz"
+        "${_pkgsrc}.tar.gz.sig::${url}/download/v${pkgver%%.*}/linux/${pkgname//-/_}-${pkgver}-Linux-x86_64.tar.gz.sig")
+sha256sums=('da3b2ab3f52f7485bb1cf0d13c503d8c6858f58ed874e52efc3110939ee844a9'
+            'c8856ec1148a3e8d21492de07b6f37fd6616525c6ff6d53659e9140e317195c0'
+            'SKIP')
+validpgpkeys=('C264DC0F1C13A4BB18CAAF1BE7BE982BCD50DDF4') # Terrapane Support <support@terrapane.com> (https://www.aescrypt.com/download/)
 
 prepare() {
   cd "${srcdir}/${pkgname//-/_}-${pkgver}-Linux-x86_64"
-  rm -rf "bin/${_name}" "share/man"
-  
-  # cd "share/applications"
-  # sed -i 's|^Icon=.*|Icon='"${_name}|" "${_name}.desktop"
+  rm -rf "bin/${_name}" "share/man" "share/licenses"
 }
 
 package() {
