@@ -2,7 +2,7 @@
 # Maintainer: coolapso <coolapso@coolapso.tech>
 
 pkgname='go-conventionalcommit-lint-bin'
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A simple, opinionated, yet usable linter for conventional commits, written in Go.'
 url='https://github.com/coolapso/go-conventionalcommit-lint'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('go-conventionalcommit-lint')
 conflicts=('go-conventionalcommit-lint')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/go-conventionalcommit-lint/releases/download/v0.1.1/go-conventionalcommit-lint_0.1.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('e35f1ada4e20613b6a671a956f8cea10af22dd30d20d4fd6c79834ac379f3fcc')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/go-conventionalcommit-lint/releases/download/v0.2.0/go-conventionalcommit-lint_0.2.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('70c3a76007b344e8c3738768e69b37a053c0051cd88be1d965204dc9ced653c9')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/coolapso/go-conventionalcommit-lint/releases/download/v0.1.1/go-conventionalcommit-lint_0.1.1_linux_386.tar.gz")
-sha256sums_i686=('95b5c72bbe22422e35fcdb34400d6f2a9d46dd9672eca407fa4154f2b1cf0eae')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/coolapso/go-conventionalcommit-lint/releases/download/v0.2.0/go-conventionalcommit-lint_0.2.0_linux_386.tar.gz")
+sha256sums_i686=('9ab2242c627d8ed09b36448064b1f34f36196efef7f34be44e3e7fd2f42f3663')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/go-conventionalcommit-lint/releases/download/v0.1.1/go-conventionalcommit-lint_0.1.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('485d63db1f747be86f1320a99b6b9b4f7b525ef2384517070e1ffd913d10652b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/go-conventionalcommit-lint/releases/download/v0.2.0/go-conventionalcommit-lint_0.2.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('6d1d75b96a25abd2b3bb899409315279032a9a13495cc10bab437e8ab377e7fd')
 
 package() {
   install -Dm755 "./convcommitlint" "${pkgdir}/usr/bin/convcommitlint"
