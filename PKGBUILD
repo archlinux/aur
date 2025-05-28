@@ -19,7 +19,13 @@ depends=(
   'tesseract-data-rus'
   'cliphist'
 )
-makedepends=('python-uv' 'git' 'python-virtualenv')
+makedepends=(
+  'python-uv'
+  'git'
+  'python-virtualenv'
+  'python-pkgconfig'
+  'python-devel'
+)
 source=("git+$url.git")
 sha256sums=('SKIP')
 
