@@ -2,17 +2,17 @@
 # Contributor: royrocks <royrocks13@gmail.com>
 
 pkgname=tuxpaint-config
-pkgver=0.0.25
+pkgver=0.0.26
 pkgrel=1
 pkgdesc='Tux Paint configuration tool'
-arch=('x86_64')
+arch=(x86_64)
 url='https://www.tuxpaint.org/'
-license=('GPL-2.0-only')
-depends=('fltk' 'fontconfig' 'gcc-libs' 'glibc' 'hicolor-icon-theme'
-         'libpaper' 'libunibreak' 'pango')
+license=(GPL-2.0-only)
+depends=(fltk fontconfig gcc-libs glibc hicolor-icon-theme
+         libpaper libunibreak pango)
 optdepends=('tuxpaint: ability to use tuxpaint provided fonts')
 source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver.tar.gz")
-sha256sums=('8d46ac80ff962b3a962bc2979926e7564065df0ce08bcc0bd8c671913b975c99')
+sha256sums=('f9ac5f2baf005e162841ceebc5ba0f77004fb05abe32354d5b26e3edc456e3b8')
 
 build() {
   make -C "$pkgname-$pkgver" CFLAGS="$CFLAGS $LDFLAGS" PREFIX=/usr
