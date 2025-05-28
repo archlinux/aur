@@ -1,7 +1,7 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=pomodorot-bin
 pkgver=0.10.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple pomodoro timer application (binary release)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mlm-games/pomodorot"
@@ -12,14 +12,17 @@ optdepends=('pipewire-pulse: for PipeWire audio support'
 provides=('pomodorot')
 conflicts=('pomodorot')
 options=('!strip')
+source=("https://raw.githubusercontent.com/mlm-games/pomodorot/main/icon.png")
 source_x86_64=("pomodorot-0.10.2-x64::https://github.com/mlm-games/pomodorot/releases/download/0.10.2/pomodorot.x86_64")
 source_aarch64=("pomodorot-0.10.2-arm64::https://github.com/mlm-games/pomodorot/releases/download/0.10.2/pomodorot.arm64")
+sha256sums=('SKIP')
 sha256sums_x86_64=('8e18c0b2727b9cd7bc9d8147ffa642ddf449d90fecd9fc111bf0a5624cb645d6')
 sha256sums_aarch64=('8d53f94bdd5847cb5b58f3585b2e36e3681aad0a95317422d3fd5d1c5f955396')
 
 package() {
     install -d "${pkgdir}/usr/bin/"
     install -d "${pkgdir}/usr/share/applications/"
+    install -d "${pkgdir}/usr/share/pixmaps/"
     install -d "${pkgdir}/opt/${pkgname}/"
 
     if [[ $CARCH == "x86_64" ]]; then
@@ -29,6 +32,8 @@ package() {
     fi
 
     ln -s "/opt/${pkgname}/pomodorot" "${pkgdir}/usr/bin/pomodorot"
+    
+    install -Dm644 "$srcdir/icon.png" "${pkgdir}/usr/share/pixmaps/pomodorot.png"
 
     cat > "${pkgdir}/usr/share/applications/pomodorot.desktop" << DESKTOP_EOF
 [Desktop Entry]
@@ -36,6 +41,7 @@ Name=Pomodorot
 Exec=pomodorot
 Terminal=false
 Type=Application
+Icon=pomodorot
 Comment=A simple pomodoro timer application
 Categories=Utility;Office;
 StartupNotify=true
