@@ -1,0 +1,19 @@
+pkgbase = nirius
+	pkgdesc = Utility commands for the niri compositor
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://git.sr.ht/~tsdh/nirius
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = niri
+	provides = nirius
+	conflicts = nirius
+	conflicts = nirius-git
+	source = nirius::git+https://git.sr.ht/~tsdh/nirius#tag=nirius-0.3.0
+	sha256sums = SKIP
+
+pkgname = nirius
