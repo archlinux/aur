@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp
-pkgver=5.63.2
+pkgver=5.64.0
 pkgrel=1
 pkgdesc="qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems."
 arch=("any")
@@ -10,7 +10,7 @@ makedepends=("go>=1.24.1")
 conflicts=("qp-bin" "qp-git")
 replaces=("yaylog" "yaylog-bin" "yaylog-git")
 source=("${url}/releases/download/v${pkgver}/qp-v${pkgver}.tar.gz")
-sha256sums=("7dde6353d075c242a750784e8fc51822b5c060b5a30650cf556783da6ac1990c")
+sha256sums=("de6744508fd9deb7d108b4712d202db083297d1955fcc89a29c86b5da77b603f")
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
@@ -28,4 +28,9 @@ package() {
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
   install -Dm644 "NEWS" "${pkgdir}/usr/share/doc/qp/NEWS"
+
+  install -Dm644 "$srcdir/update-qp-cache.hook" \
+    "$pkgdir/usr/share/libalpm/hooks/update-qp-cache.hook"
+  install -Dm755 "$srcdir/update-qp-cache" \
+    "$pkgdir/usr/share/libalpm/scripts/update-qp-cache"
 }
