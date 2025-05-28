@@ -1,14 +1,14 @@
 pkgbase = browserselector
 	pkgdesc = A script to select a browser based on user-defined rules
-	pkgver = 1.0.2
-	pkgrel = 1
+	pkgver = 1.0.3
+	pkgrel = 2
 	url = https://gitlab.com/iamtalhaasghar/browserselector
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-pyxdg
 	depends = python-pyqt6
-	source = browserselector-1.0.2.tar.gz::https://gitlab.com/iamtalhaasghar/browserselector/-/archive/1.0.2/browserselector-1.0.2.tar.gz
+	source = browserselector-1.0.3.tar.gz::https://gitlab.com/iamtalhaasghar/browserselector/-/archive/1.0.3/browserselector-1.0.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = browserselector
