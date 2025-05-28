@@ -11,7 +11,7 @@ depends=('mpv' 'curl')
 makedepends=('wget')
 source=("https://github.com/serene-brew/kaizen/releases/download/v2.0.0/Kaizen_v2.0.0_Linux_x86_64.tar.gz"
   "https://github.com/serene-brew/kaizen/raw/main/README.md")
-sha256sums=('633b4e8b7b023627bd58064a16937cdc210c76cc2de5c23e9a2c52f5738fafb6'
+sha256sums=('672271f3853de8a9115edaae6f6f03e0ff12688d14e0f0bec89515f24cc71bf1'
   'SKIP')
 
 package() {
