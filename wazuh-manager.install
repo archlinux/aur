@@ -2,7 +2,7 @@ post_install()
 {
   echo "creating wazuh user and group"
   groupadd -f wazuh
-  usuario="wazuh" && id "$usuario" &>/dev/null || useradd -g wazuh -d /var/ossec -s /usr/bin/nologin wazuh
+  usuario="wazuh" && id "$usuario" &>/dev/null || useradd --system -g wazuh -d /var/ossec -s /usr/bin/nologin wazuh
   chown -R wazuh:wazuh /var/ossec
   echo "generating cert files for wazuh-authd to run properly"
   ./var/ossec/bin/wazuh-authd -C 265 -B 2048 -K /var/ossec/etc/sslmanager.key -X /var/ossec/etc/sslmanager.cert -S "/C=US/ST=California/CN=wazuh/"
