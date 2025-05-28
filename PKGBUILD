@@ -34,7 +34,7 @@ source_x86_64=("wps-office_${pkgver}_amd64.deb::$(_get_source_url amd64)")
 source=('fix-wps-python-parse.patch::https://aur.archlinux.org/cgit/aur.git/plain/fix-wps-python-parse.patch?h=wps-office-cn' "portable-config" "wps-helper")
 sha1sums=('f3713481edf04ffb08be8d24dce66554dd5a4f13'
           '27d72f36d5eb12702a10c5f4686e29f7a4398a27'
-          '7dbdbb60a9d774bbbae1622165f436af549c1a69')
+          'cf90e963dc8d36479d486a1fd87cb554516e8773')
 sha1sums_x86_64=('a245fe88c25d0992fb6d2b1e37ba99dc15fe2a5f')
 
 prepare() {

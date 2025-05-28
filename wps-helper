@@ -7,4 +7,4 @@ if [[ -f "$2" ]]; then
 	export bwBindPar="$2"
 fi
 
-exec portable -- $@
+exec portable -- $3
