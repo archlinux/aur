@@ -12,7 +12,7 @@ depends=(
     'gcc-libs' 'curl'
 )
 makedepends=(
-    'rust' 'git' 'jq' 'qt6-base' 'clang'
+    'rust' 'git' 'qt6-base' 'clang'
 )
 
 source=("git+${url}.git")
