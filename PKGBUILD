@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bookget-git
-pkgver=25.0213
-pkgrel=1
+pkgver=25.0517.3.g123917c
+pkgrel=2
 pkgdesc="bookget 数字图书馆下载工具，目前支持约 50+ 个数字图书馆。"
 arch=($CARCH)
 url="https://github.com/deweizhu/bookget"
@@ -16,7 +16,7 @@ makedepends=(
     git
     go
 )
-backup=(etc/bookget/config.ini)
+backup=(etc/bookget/config.yaml)
 options=('!strip' '!debug')
 #install=${pkgname}.install
 source=("${pkgname%-git}::git+${url}.git")
@@ -45,7 +45,7 @@ build() {
     export GOPROXY=https://goproxy.cn,direct
 
     mkdir -pv build/
-    go build -o build
+    go build -o build/${pkgname%-git} ./cmd/
 }
 
 package() {
@@ -53,5 +53,5 @@ package() {
 
     install -Dm755 build/${pkgname%-git} -t ${pkgdir}/usr/bin/
     install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
-    install -Dm0644 "${srcdir}/${pkgname%-git}/config.ini" -t "${pkgdir}/etc/${pkgname%-git}/"
+    install -Dm0644 "${srcdir}/${pkgname%-git}/config.yaml" -t "${pkgdir}/etc/${pkgname%-git}/"
 }
