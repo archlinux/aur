@@ -1,12 +1,13 @@
-# Maintainer: CloverGit <clovergit@hotmail.com>
+# Maintainer: 173br <173brian at gmail dot com>
+# Contributor: CloverGit <clovergit@hotmail.com>
 # Contributor: drakkan <nicola.murino at gmail dot com>
 # Contributor: Chris Kitching <chriskitching@linux.com>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=mingw-w64-cairo-bootstrap
-pkgver=1.18.2
+pkgver=1.18.4
 pkgrel=1
 pkgdesc="2D graphics library with support for multiple output devices (mingw-w64 bootstrap)"
-_commit=200441e6855854eb4dbf338e44d67b00ababe07f # tags/1.18.2^0
+_commit=4541e0cd3a751b85e52e2a83d02ac6145a5efa85 # tags/1.18.4^0
 arch=(any)
 url="http://cairographics.org/"
 license=("LGPL" "MPL")
@@ -17,7 +18,7 @@ provides=(${pkgname%-bootstrap}=$pkgver)
 conflicts=(${pkgname%-bootstrap})
 source=("git+https://gitlab.freedesktop.org/cairo/cairo.git#commit=$_commit"
         "0026-create-argb-fonts.all.patch")
-sha256sums=('adb04ff99fbd481ffc1653cdc1c135e4185fc5c5bfb2d5a44ba924af00605b83'
+sha256sums=('8a879085c16cc9d95f7e51216a276d5eb659a080b26f2f6131962612b0c21075'
             '6db6c44fbdb4926d09afa978fe80430186c4b7b7d255059602b1f94c6a079975')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -44,6 +45,7 @@ build() {
       -D tests=disabled \
       -D symbol-lookup=disabled \
       -D gtk_doc=false \
+      -D lzo=disabled \
       --buildtype=release \
       --default-library=both ..
     ninja
