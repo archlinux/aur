@@ -1,0 +1,16 @@
+pkgbase = python-setuptools-golang
+	pkgdesc = A setuptools extension for building cpython extensions written in golang.
+	pkgver = 2.9.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-virtualenv
+	checkdepends = go
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	source = git+https://github.com/asottile-archive/setuptools-golang#tag=v2.9.0
+	sha256sums = 39f41b2874d38d9570e372baf0510ff388d7e087c97c418e2d2e94ca39c0193e
+
+pkgname = python-setuptools-golang
