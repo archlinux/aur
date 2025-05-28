@@ -2,7 +2,7 @@ post_install()
 {
   echo "creating wazuh-indexer user and group"
   groupadd -f wazuh-indexer
-  usuario="wazuh-indexer" && id "$usuario" &>/dev/null || useradd -d /usr/share/wazuh-indexer -g wazuh-indexer -s /usr/bin/nologin wazuh-indexer
+  usuario="wazuh-indexer" && id "$usuario" &>/dev/null || useradd --system -d /usr/share/wazuh-indexer -g wazuh-indexer -s /usr/bin/nologin wazuh-indexer
   chown -R wazuh-indexer:wazuh-indexer /usr/share/wazuh-indexer
   chown -R wazuh-indexer:wazuh-indexer /etc/wazuh-indexer
   chown -R wazuh-indexer:wazuh-indexer /var/log/wazuh-indexer
