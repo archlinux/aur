@@ -1,6 +1,5 @@
 
-pkgbase=uutils-coreutils-stty
-pkgname=(${pkgbase} coreutils-uutils-stty)
+pkgname=uutils-coreutils-stty
 pkgver=0.1.0
 pkgrel=1
 pkgdesc='Rust rewrite of stty (no man pages)'
@@ -30,13 +29,7 @@ build() {
   cargo build --release
 }
 
-package_uutils-coreutils-stty() {
+package() {
   conflicts=(uutils-coreutils-git)
   install -Dm755 coreutils-$pkgver/target/release/stty "$pkgdir"/usr/bin/uu-stty
-}
-
-package_coreutils-uutils-stty() {
-  conflicts=(coreutils{,-uutils})
-  install -d "$pkgdir"/usr/bin
-  ln -sf /usr/bin/uu-stty "$pkgdir"/usr/bin/stty
 }

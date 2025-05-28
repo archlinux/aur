@@ -15,7 +15,3 @@ pkgbase = uutils-coreutils-stty
 
 pkgname = uutils-coreutils-stty
 	conflicts = uutils-coreutils-git
-
-pkgname = coreutils-uutils-stty
-	conflicts = coreutils
-	conflicts = coreutils-uutils
