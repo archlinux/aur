@@ -1,7 +1,7 @@
 pkgbase = bluespec-release
 	pkgdesc = Bluespec Compiler (BSC), stable release
 	pkgver = 2025.01.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/B-Lang-org/bsc
 	arch = x86_64
 	license = BSD

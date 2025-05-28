@@ -4,7 +4,7 @@
 
 pkgname=bluespec-release
 pkgver=2025.01.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Bluespec Compiler (BSC), stable release'
 arch=('x86_64')
 url='https://github.com/B-Lang-org/bsc'
@@ -34,6 +34,8 @@ prepare() {
   tar -xvf "$srcdir/yices-src-for-bsc-$pkgver.tar.gz"
   patch -p1 < "$srcdir/fool-git-detection.patch"
   patch -p1 < "$srcdir/fix-ldflags.patch"
+
+  # Fix bug in STP, see "https://github.com/b-lang-org/bsc/pull/787.diff"
   patch -p1 < "$srcdir/fix-stp-v2025.01.1.patch"
 }
 
