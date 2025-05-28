@@ -3,8 +3,8 @@
 # Maintainer: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.61.0
-pkgrel=2
+pkgver=1.62.0
+pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
@@ -32,7 +32,7 @@ source=(
 )
 sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
             '590086824e60c5a7f6b8796f876b6a3ad0521ab252ed739206a46bc94543b762'
-            '0c24c89176b60441c08f08ac4f3aa40c9063c9d8ec0aac5f2e0fb0644f1b6938'
+            'cf6c0c21b6b63c1899116e07890586a4f111c58dc3638014fe1a533a75d141ff'
             'f43cc8aaf4738166acdf4e54817ad7e9c031c4dacf23eb8496f9edae33b3f1d0'
             '76f48bbc421d298113c73cee628c9d0fd8b14381590d871928f4f0bd87e812ce'
             'd9712e3b79a98d7b1d5fd64d709daa806be6944c3f0cebf22879cd0e3c08ce06'
@@ -49,9 +49,10 @@ prepare() {
   # 1.50.0: @theia/git removed from electron version
   # (presumably in favor of vscode.git{,-base}).
   # Work around spurious use of lodash/debounce instead of lodash.debounce.
+  # Removing @theia/ai-vercel-ai because it pulls in opentelemetry.
   # Add postinstall script.
   bash make-package-json.sh "${pkgver/.next./-next.}" | \
-  grep -vE "@theia/(git|notebook|plugin[-0-9_a-z]*|preview|test)\b" | \
+  grep -vE "@theia/(ai-vercel-ai|git|notebook|plugin[-0-9_a-z]*|preview|test)\b" | \
   jq '.dependencies.lodash = "^4.0.8" |
       .scripts.postinstall = "theia-patch"' >package.json
 }
