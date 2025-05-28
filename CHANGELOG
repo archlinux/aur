@@ -1,3 +1,24 @@
+v0.30-1
+Version 0.30 was released in December 2024. Sorry for the delay.
+The changelog entry from upstream follows:
+  0.30: (2024-12-24)
+    * Reject odd input depths that pixThresholdToBinary doesn't support.
+    * Fix build with Leptonica >=1.83
+    * Replace vs2008 solution with CMake
+    * Fix `Error heap-use-after-free`
+    * Fix typos in code
+    * Support python 3, drop support for python2
+    * Rename pdf.py to jbig2topdf.py
+    * Add `-D` switch to set dpi for images w/o dpi information
+    * Add support for standalone .jb2
+    * Suppress a chatty informational message unless requested
+    * Neat symbolic threshold 0.92
+    * Fix Endian issue on ARM #63
+    * Neat symbolic threshold 0.92
+    * Make the weight parameter adjustable
+    * Add global BW threshold on 8 bpp images
+    * Replace obsolete macro `AC_PROG_LIBTOOL'
+
 v0.29-5
 Updated to https://github.com/agl/jbig2enc/commit/ea050190466f5336c69c6a11baa1cb686677fcab
 Fix build with Leptonica >=1.83.
