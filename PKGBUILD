@@ -2,8 +2,9 @@
 
 pkgname="gbtolib"
 _name="GBTOLib"
+_cmakeMinPolicy="3.10"
 pkgver=3.0.3
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A high-performance library for evaluation of molecular integrals"
 arch=('any')
@@ -28,6 +29,7 @@ sha256sums=('5110ddf6f3c9993c56ecca99df1fbb071e6402a31e0f599f2db8ad73a72de0b1')
 build() {
 
   local _cmakeOptions=(
+    -D CMAKE_POLICY_VERSION_MINIMUM="$_cmakeMinPolicy"
     -D CMAKE_C_COMPILER="$(command -v gcc)"
     -D CMAKE_CXX_COMPILER="$(command -v gcc)"
     -D CMAKE_Fortran_COMPILER="$(command -v mpifort)"
@@ -44,6 +46,10 @@ build() {
 }
 
 check() {
+
+  # -- enfore larger cmake version minimum in tests
+  sed -i -r "s/cmake_minimum_required\(VERSION 3\.[0-9]+\)/cmake_minimum_required(VERSION $_cmakeMinPolicy)/" "${srcdir}/${_name}-${pkgver}"/tests/CMakeLists.txt
+  sed -i -r "s/cmake_minimum_required\(VERSION 3\.[0-9]+\)/cmake_minimum_required(VERSION $_cmakeMinPolicy)/" "${srcdir}/${_name}-${pkgver}"/tests/TestDriver.cmake
 
   cd "${srcdir}/${_name}-${pkgver}"/build
 
