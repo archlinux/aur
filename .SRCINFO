@@ -1,7 +1,7 @@
 pkgbase = unzip-p
 	pkgdesc = unzip with patches
 	pkgver = 6.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maksverver/unzip-p/
 	arch = x86_64
 	license = custom
@@ -10,6 +10,6 @@ pkgbase = unzip-p
 	provides = unzip
 	conflicts = unzip
 	source = unzip-p-6.0.2.tar.gz::https://github.com/maksverver/unzip-p/archive/refs/tags/6.0.2.tar.gz
-	sha256sums = caf1c130b5b23e49b488e1716aeeb4c6d075a0f7878c2c91277ba30ddc3b3da0
+	sha256sums = e9076b81179269c64c7393d4b05d88181b88c03c99d476982b57c9e96bb44868
 
 pkgname = unzip-p
