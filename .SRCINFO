@@ -1,0 +1,11 @@
+pkgbase = dgdemux
+	pkgdesc = Standalone demuxer for BluRay/UHD disks - CLI only
+	pkgver = 1.0.0.78
+	pkgrel = 1
+	url = https://www.rationalqm.us/dgdemux/dgdemux.html
+	arch = x86_64
+	license = custom
+	source = dgdemux-1.0.0.78.zip::https://www.rationalqm.us/dgdemux/binaries/dgdemux_linux_1.0.0.78.zip
+	sha256sums = 05e1f44226d112d20b0ab4b76283e7eb52e3c7c43f94288a42415f50c2c84da4
+
+pkgname = dgdemux
