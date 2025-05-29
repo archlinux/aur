@@ -1,15 +1,21 @@
 pkgbase = openswitcher-git
-	pkgdesc = BlackMagic Atem control software implementation
-	pkgver = 0.8.0
+	pkgdesc = Library implementing the ATEM video switcher protocol and a GTK3.0 application
+	pkgver = 0.12.0+37+ga9b2860
 	pkgrel = 1
 	url = https://git.sr.ht/~martijnbraam/pyatem
 	arch = any
 	license = GPL3
+	license = LGPL3
 	makedepends = git
 	makedepends = meson
+	makedepends = python-setuptools
 	depends = python
 	depends = python-pyusb
-	source = git+https://git.sr.ht/~martijnbraam/pyatem
-	md5sums = SKIP
+	depends = python-cairo
+	depends = libhandy
+	provides = openswitcher
+	conflicts = openswitcher
+	source = openswitcher::git+https://git.sr.ht/~martijnbraam/pyatem
+	b2sums = SKIP
 
 pkgname = openswitcher-git
