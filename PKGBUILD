@@ -5,15 +5,15 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=dgraph-bin
-pkgver=24.1.2
+pkgver=24.1.3
 pkgrel=1
 pkgdesc='Fast, transactional, distributed graph database'
 arch=('x86_64')
 url='https://github.com/hypermodeinc/dgraph'
-license=('APACHE' 'custom:DCL')
+license=('Apache-2.0' 'custom:DCL')
 provides=('dgraph' 'badgerdb')
 conflicts=('dgraph' 'dgraph-git' 'badgerdb')
-install=$pkgname.install
+install="$pkgname.install"
 source=("dgraph-$pkgver.tar.gz::$url/releases/download/v$pkgver/dgraph-linux-amd64.tar.gz"
         "dgraph-$pkgver.tar.gz.sha256::$url/releases/download/v$pkgver/dgraph-checksum-linux-amd64.sha256"
         "badger-$pkgver.tar.gz::$url/releases/download/v$pkgver/badger-linux-amd64.tar.gz"
@@ -22,14 +22,14 @@ source=("dgraph-$pkgver.tar.gz::$url/releases/download/v$pkgver/dgraph-linux-amd
         "$url/raw/v$pkgver/contrib/systemd/centos/dgraph-alpha.service"
         "$url/raw/v$pkgver/contrib/systemd/centos/dgraph-zero.service"
         "$url/raw/v$pkgver/contrib/systemd/centos/add_dgraph_account.sh")
-sha256sums=('eb5577c5367b145ff29825afabb178ca5057aead4e5c7f50347d9259383614ed'
-            '131f749b9cc6ab4765bed56506a2388a3dd224a0b6ecda7b8739f78d429afaea'
+sha256sums=('5cc51fe6689d77d91899322ae4e3f408cc47efc7906a7ead3ac6496ba0750909'
+            'eb7710538804799921c8df8fb6a44d0f0050e95ac2f6cc5db6dbda9306d41fef'
             '7e54184194ee5305045136e56e82146906273de89069eae64a4db7db5c38338e'
             '46121984bc033c8fcc436d08fda817e128d9b3836b6798f5f194bcbc61d09f01'
             '5f245e21547ee20c65bde76a0b1db995a7dbfdd30f99de861036672cdebfb395'
             'b0436225ea1b65e47cea0e4bc039bcf5c795330f352b6333a99e84f5bd000d23'
-            '1d17f53b5f83f434ce918c1f13a7b5829b0c2d20ccad13aa44486a00d7b6bc6a'
-            'cf80944157c7af97d0bcd18a6d4b5f6a4ba14941f47ff8b19977b7477ee2b865')
+            '1d717b444a2bd4a6a5bfe035c8e46bba8319793f9ca211c3d815fa24327dc37f'
+            '3ae6aa66dc54919f3183ef0abec35ed11122f2ea49fa30c328b376a3fac69afd')
 
 package() {
   cd "$srcdir"
