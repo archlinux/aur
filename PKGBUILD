@@ -11,7 +11,7 @@ conflicts=('yubico-authenticator')
 options=(!strip)
 optdepends=('gnome-screenshot: QR scanning feature on GNOME'
             'spectacle: QR scanning feature on KDE')
-pkgrel=1
+pkgrel=2
 source=(
     "${url}/releases/download/${pkgver}/yubico-authenticator-${pkgver}-linux.tar.gz"{,.sig}
 )
@@ -24,10 +24,17 @@ sha256sums=('5dbe2ae34ae77598c79bd5d844e9f60aca37af9bba9149c464c9a683e9b3f38d'
             'SKIP')
 
 # If the installation fails with 'One or more PGP signatures could not be verified',
-# then install the key with 'gpg --recv-keys 20EE325B86A81BCBD3E56798F04367096FBA95E8'
+# then install the key with 'curl https://keys.openpgp.org/vks/v1/by-fingerprint/20EE325B86A81BCBD3E56798F04367096FBA95E8 | gpg --import'
 prepare() {
-    sed -i 's|\(Exec="\)@EXEC_PATH|\1/opt/yubico-authenticator|' "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.yubioath.desktop
-    sed -i 's|\(Icon=\)@EXEC_PATH/linux_support/|\1/usr/share/pixmaps/|' "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.yubioath.desktop
+    DESKTOP_FILE="${srcdir}//yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.yubioath.desktop"
+    sed -i 's|\(Exec="\)@EXEC_PATH|\1/opt/yubico-authenticator|' "${DESKTOP_FILE}"
+    sed -i 's|\(Icon=\)@EXEC_PATH/linux_support/|\1/usr/share/pixmaps/|' "${DESKTOP_FILE}"
+    # add a new line to the desktop file at the end
+    if grep -q '^StartupWMClass=' "${DESKTOP_FILE}"; then
+        sed -i 's|^StartupWMClass=.*|StartupWMClass=authenticator|' "${DESKTOP_FILE}"
+    else
+        echo 'StartupWMClass=authenticator' >> "${DESKTOP_FILE}"
+    fi
 }
 
 package() {
