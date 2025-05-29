@@ -1,0 +1,22 @@
+pkgbase = python-markitdown-mcp
+	pkgdesc = Utility tool for converting various files to Markdown
+	pkgver = 0.0.1a4
+	pkgrel = 1
+	url = https://github.com/microsoft/markitdown
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-hatch
+	depends = python
+	depends = python-markitdown
+	depends = python-starlette
+	depends = uvicorn
+	source = python-markitdown-mcp-0.0.1a4.tar.gz::https://files.pythonhosted.org/packages/source/m/markitdown-mcp/markitdown_mcp-0.0.1a4.tar.gz
+	source = LICENSE
+	sha256sums = 309c94dc883311e6909d849382a6c7bc402dfb2692dab448c136c6864c6bf49e
+	sha256sums = c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383
+
+pkgname = python-markitdown-mcp

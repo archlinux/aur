@@ -1,0 +1,5 @@
+[python-markitdown-mcp]
+source = "htmlparser"
+url = "https://pypi.org/rss/project/markitdown-mcp/releases.xml"
+xpath = "//item/title"
+is_xml = true
