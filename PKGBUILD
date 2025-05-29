@@ -1,7 +1,8 @@
-# Maintainer: tytan652 <tytan652@tytanium.xyz>
+# Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
+# Contributor: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-advanced-scene-switcher
-pkgver=1.29.3
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=("x86_64" "aarch64")
