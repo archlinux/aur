@@ -1,0 +1,27 @@
+pkgbase = apprenticevr-bin
+	pkgdesc = A modern, cross-platform desktop application designed for managing and sideloading content onto Meta Quest devices
+	pkgver = 1.1.19
+	pkgrel = 1
+	url = https://github.com/jimzrt/apprenticevr
+	install = apprenticevr.install
+	arch = x86_64
+	arch = aarch64
+	license = 0BSD
+	depends = fuse2
+	optdepends = libappindicator-gtk3: for tray icon support
+	provides = apprenticevr
+	conflicts = apprenticevr
+	options = !debug
+	options = !strip
+	source = apprenticevr.desktop
+	source = apprenticevr.install
+	source = https://raw.githubusercontent.com/jimzrt/apprenticevr/main/build/icon.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	source_x86_64 = https://github.com/jimzrt/apprenticevr/releases/download/v1.1.19/apprenticevr-1.1.19-x86_64.AppImage
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/jimzrt/apprenticevr/releases/download/v1.1.19/apprenticevr-1.1.19-arm64.AppImage
+	sha256sums_aarch64 = SKIP
+
+pkgname = apprenticevr-bin
