@@ -2,8 +2,8 @@
 groups=('modified')
 
 pkgname=media-downloader
-pkgver=5.3.3
-pkgrel=2
+pkgver=5.4.0
+pkgrel=1
 pkgdesc="A Qt/C++ front end to yt-dlp, youtube-dl, gallery-dl, lux, you-get, svtplay-dl, aria2c, wget and safari books."
 arch=('x86_64')
 url="https://github.com/mhogomchungu/media-downloader"
@@ -20,7 +20,7 @@ optdepends=(
   'python-mutagen'
 )
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"{,.asc})
-sha256sums=('a67366ef3ea79349065eb713e3a6be953d68b3922dfe0bff7484951a8887f1cb'
+sha256sums=('4f77dcd5136a03fc7b71963d9d488e02b2fd866c726c6e8e2b891d459038cecc'
             'SKIP')
 validpgpkeys=('6855E493B5B2DF96E319BB6D16E2E1ACC6F51242') # Francis Banyikwa (A key for signing packages) <banyikwafb@gmail.com>
 
