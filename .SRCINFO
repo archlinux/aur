@@ -1,0 +1,21 @@
+pkgbase = fitgirl-ddl-qt6-git
+	pkgdesc = fitgirl-repacks.site extractor (Qt6 backend)
+	pkgver = r27.g6fac928
+	pkgrel = 1
+	url = https://github.com/mokurin000/fitgirl-ddl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = libcurl.so=4-64
+	depends = qt6-base
+	provides = fitgirl-ddl-qt6
+	conflicts = fitgirl-ddl-qt6
+	options = !lto
+	source = git+https://github.com/mokurin000/fitgirl-ddl.git
+	sha256sums = SKIP
+
+pkgname = fitgirl-ddl-qt6-git
