@@ -1,6 +1,6 @@
 pkgname=soon
-pkgver=0.1.5
-pkgrel=2
+pkgver=0.1.6
+pkgrel=1
 pkgdesc="🤖 Predict your next shell command based on history — like shell autocomplete, but MORE stupid"
 arch=('x86_64')
 url="https://github.com/HsiangNianian/soon"
