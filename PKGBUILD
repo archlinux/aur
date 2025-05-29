@@ -6,7 +6,7 @@ conflicts=('fitgirl-ddl-qt6')
 provides=('fitgirl-ddl-qt6')
 _pkgname=fitgirl-ddl
 _binname=fitgirl-ddl_gui
-pkgver=r27.g6fac928
+pkgver=r28.g44f72c3
 pkgrel=1
 url="https://github.com/mokurin000/${_pkgname}"
 arch=('x86_64' 'aarch64')
@@ -49,6 +49,6 @@ package() {
 
     cd "${_pkgname}"
 
-    install -vDm755 "target/release/${_binname}" -t "${pkgdir}/usr/bin/fitgirl-ddl-qt"
+    install -vDm755 "target/release/${_binname}" "${pkgdir}/usr/bin/fitgirl-ddl-qt"
     install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
