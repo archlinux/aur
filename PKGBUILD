@@ -13,7 +13,7 @@ groups=()
 depends=('steam' 'gamescope' 'gamescope-session-git')
 optdepends=(
 	'ttf-dejavu: for initial screen text'
-	'noto-sans-cjk: for initial screen text in cjk'
+	'noto-fonts-cjk: for initial screen text in cjk'
 	'steam-removable-media-git: removable media support'
 	'mangohud: performance overlay'
 	'ibus: input support'
