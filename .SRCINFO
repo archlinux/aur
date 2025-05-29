@@ -1,11 +1,11 @@
 pkgbase = hexxy-git
 	pkgdesc = A modern and beautiful alternative to xxd and hexdump.
-	pkgver = 17.bc0cb46
+	pkgver = 31.8833335
 	pkgrel = 1
 	url = https://github.com/sweetbbak/hexxy
 	arch = x86_64
 	arch = aarch64
-	license = custom:unknown
+	license = MIT
 	makedepends = git
 	makedepends = go
 	conflicts = hexxy

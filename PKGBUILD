@@ -2,12 +2,12 @@
 
 pkgname=hexxy-git
 _pkgname=hexxy
-pkgver=17.bc0cb46
+pkgver=31.8833335
 pkgrel=1
 pkgdesc='A modern and beautiful alternative to xxd and hexdump.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sweetbbak/hexxy'
-license=('custom:unknown')
+license=('MIT')
 depends=()
 makedepends=('git' 'go')
 conflicts=('hexxy')
@@ -30,7 +30,7 @@ build() {
     -mod=readonly \
     -modcacherw \
     -ldflags "-s -w" \
-    -o $_pkgname .
+    -o $_pkgname ./cmd/$_pkgname
 }
 
 package() {
