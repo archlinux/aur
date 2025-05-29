@@ -18,7 +18,7 @@ PKGEXT='.pkg.tar'
 _pkgname=chromium
 pkgname=chromium-no-extras
 
-pkgver=137.0.7151.40
+pkgver=137.0.7151.55
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -51,7 +51,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         increase-fortify-level.patch
         disable-clang-warning-suppression-flag.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('359326ad87abf163ed6c021da4feba06106e09a361b71b1a40343b9bf1c16f7f'
+sha256sums=('7b8fa89febed9fae0297c8175bd35cc912d794fbf03d33a121a0bc9d3d13ef34'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '2d98a7a6a553fb5c17c4bfe36f011410f377afa12a6a818ba36543dc9a258f4a'
             'de3222b13d3a49628a00fd74acae633912b830f78c2de452d3bdff3d0e42026d'
