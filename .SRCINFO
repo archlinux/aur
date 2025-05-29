@@ -1,0 +1,14 @@
+pkgbase = rustch
+	pkgdesc = A lightning-fast Rust-based system information tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/crabbydev/rustch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = rustch-1.0.0.tar.gz::https://github.com/crabbydev/rustch/archive/v1.0.0.tar.gz
+	sha256sums = 714de47f72a59b7756700f83e72c6b1c1257729707a6611817d4a1ff84f4a0f8
+
+pkgname = rustch
