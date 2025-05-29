@@ -57,6 +57,7 @@ Module: pydantic
     open_webui/routers/pipelines.py
     open_webui/routers/retrieval.py
     open_webui/routers/tasks.py
+    open_webui/routers/tools.py
     open_webui/routers/users.py
     open_webui/routers/utils.py
     open_webui/utils/code_interpreter.py
@@ -125,6 +126,7 @@ Module: aiohttp
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
     open_webui/routers/pipelines.py
+    open_webui/routers/tools.py
     open_webui/utils/code_interpreter.py
     open_webui/utils/oauth.py
     open_webui/utils/telemetry/instrumentors.py
@@ -136,6 +138,7 @@ Module: requests
   Imported in:
     open_webui/config.py
     open_webui/main.py
+    open_webui/retrieval/loaders/datalab_marker.py
     open_webui/retrieval/loaders/external_document.py
     open_webui/retrieval/loaders/external_web.py
     open_webui/retrieval/loaders/main.py
@@ -174,6 +177,7 @@ Module: fastapi
   Imported in:
     open_webui/functions.py
     open_webui/main.py
+    open_webui/retrieval/loaders/datalab_marker.py
     open_webui/routers/audio.py
     open_webui/routers/auths.py
     open_webui/routers/channels.py
@@ -1175,6 +1179,7 @@ Module: langchain.text_splitter
     open_webui/routers/retrieval.py
 Module: langchain_core.documents
   Imported in:
+    open_webui/retrieval/loaders/datalab_marker.py
     open_webui/retrieval/loaders/external_document.py
     open_webui/retrieval/loaders/external_web.py
     open_webui/retrieval/loaders/main.py
@@ -1442,6 +1447,9 @@ Module: open_webui.retrieval.loaders.external_document
   Imported in:
     open_webui/retrieval/loaders/main.py
 Module: open_webui.retrieval.loaders.mistral
+  Imported in:
+    open_webui/retrieval/loaders/main.py
+Module: open_webui.retrieval.loaders.datalab_marker
   Imported in:
     open_webui/retrieval/loaders/main.py
 Module: langchain_core.document_loaders

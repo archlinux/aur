@@ -61,7 +61,10 @@ pre_upgrade() {
 post_upgrade() {
     echo "Generating a new random WEBUI_SECRET_KEY..."
     secret_key="$(head -c 12 /dev/random | base64)"
-    sed -i "s/t0p-s3cr3t/${secret_key}/" "/usr/share/open-webui/open-webui.conf"
+    # Escape for safe use in sed replacement
+    escaped_secret_key=$(printf '%s\n' "$secret_key" | sed 's/[\/&]/\\&/g')
+
+    sed -i "s/t0p-s3cr3t/${escaped_secret_key}/" "/usr/share/open-webui/open-webui.conf"
 
     _message
 }
