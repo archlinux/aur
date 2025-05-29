@@ -3,7 +3,7 @@
 pkgname=libvitamtp
 _pkgname=vitamtp
 pkgver=2.5.9
-pkgrel=1
+pkgrel=2
 _soname=5
 pkgdesc="Library to interact with Vita's USB MTP protocol"
 arch=("i686" "x86_64")
@@ -20,6 +20,8 @@ build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   ./autogen.sh
+  # workaround so configure works with newer gettext
+  autoreconf -fvi -I /usr/share/gettext/m4
   ./configure --prefix=/usr
   make
 }
