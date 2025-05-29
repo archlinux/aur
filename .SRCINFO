@@ -1,6 +1,6 @@
 pkgbase = supportboi-git
 	pkgdesc = A support ticket Discord bot with automated interviews and rendered HTML transcripts. Dev build.
-	pkgver = 4.0.0.109.git5e6c528
+	pkgver = 4.0.0.110.gita4cc3af
 	pkgrel = 1
 	url = https://github.com/KarlOfDuty/SupportBoi
 	install = supportboi.install
