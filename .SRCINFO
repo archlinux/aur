@@ -1,0 +1,11 @@
+pkgbase = fcitx5-theme-deepin
+	pkgdesc = Deepin theme for fcitx5
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/fcitx5-theme-deepin
+	arch = any
+	license = CC-BY-SA-4.0
+	source = https://github.com/linuxdeepin/fcitx5-theme-deepin/archive/v1.0.0/fcitx5-theme-deepin-v1.0.0.tar.gz
+	sha512sums = 528c79534787ec5ad341f67724ead5610175ab37f1beac7a95d12c7e18606064892fc81e0cc3355fe70b319a29f6544e2818d1d4f7c923cf14f9b4e04d2474b7
+
+pkgname = fcitx5-theme-deepin
