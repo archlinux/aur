@@ -2,21 +2,21 @@
 
 pkgname=python-ibis
 _pkgname=ibis_framework
-pkgver=9.5.0
+pkgver=10.5.0
 pkgrel=1
 pkgdesc="A pandas-like deferred expression system, with first class SQL support"
 arch=('any')
 url="https://github.com/ibis-project/ibis"
 license=('Apache-2.0')
-depends=(python python-atpublic python-parsy python-pyarrow python-pyarrow-hotfix python-sqlglot python-toolz)
+depends=(python python-atpublic python-parsy python-pyarrow python-sqlglot python-toolz)
 checkdepends=(python-pytest python-pytest-timeout)
 optdepends=(
     python-duckdb
     python-fsspec
     python-pandas)
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-hatchling python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('1c8a29277e63ee0dfc289bc8f550164b5e3bdaec1b76b62436c37d331bb4ef84')
+sha256sums=('b266c905bff220821e580b14504644e688379af6880ec11882e7176d9d89f096')
 
 build(){
   cd "$_pkgname-$pkgver"
@@ -28,7 +28,7 @@ package(){
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-#check(){
-  #cd "$_pkgname-$pkgver"
-  #PYTHONPATH=. pytest ibis/tests
-#}
+check(){
+  cd "$_pkgname-$pkgver"
+  PYTHONPATH=. pytest ibis/tests
+}
