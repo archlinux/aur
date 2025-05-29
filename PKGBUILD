@@ -1,54 +1,47 @@
 # Maintainer: nosduco <nosduco at gmail dot com>
 pkgname=streamcontroller
-_pkgname=${pkgname%-git}
-_reponame=StreamController
-pkgver=r1620.2b5e328
+pkgver=1.5.0beta10
 pkgrel=1
+_pkgver=1.5.0-beta.10
+_reponame=StreamController-$_pkgver
+_pkgname=${pkgname}
 pkgdesc="An elegant Linux app for the Elgato Stream Deck with support for plugins"
 arch=('any')
 url="https://github.com/StreamController/StreamController"
 license=('GPL-3')
 depends=('python' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk' 'libportal' 'libportal-gtk4' 'libadwaita')
-makedepends=('git' 'python-pip')
-source=("git+https://github.com/StreamController/StreamController.git")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/$_reponame"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-build() {
-    cd "$srcdir/$_reponame"
-
-    # Install dependencies isolated
-    pip install --target="$srcdir/deps" --no-warn-script-location -r requirements.txt
-}
+makedepends=('python-pip')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/StreamController/StreamController/archive/refs/tags/$_pkgver.tar.gz")
+sha256sums=('737c358b45e37fec62f92c433e703496f99b4854c606ff7e09041524c88cee95')
+provides=('streamcontroller')
+conflicts=('streamcontroller-git')
 
 package() {
-    cd "$srcdir"
+  # Create virtualenv with dependencies
+  mkdir -p "$pkgdir/usr/local/lib/$_pkgname"
+  python -m venv "$pkgdir/usr/local/lib/$_pkgname"
+  source "$pkgdir/usr/local/lib/$_pkgname/bin/activate"
+  cd "$srcdir/$_reponame"
+  pip install -r requirements.txt
+  deactivate
 
-    # Copy/install repository files and dependencies
-    mkdir -p "$pkgdir/usr/lib/$pkgname"
-    install -d "$_reponame" "$pkgdir/usr/lib/$pkgname/"
-    cp -r "$_reponame"/* "$pkgdir/usr/lib/$pkgname/"
-    cp -r "deps"/* "$pkgdir/usr/lib/$pkgname"
+  # Install source files
+  mkdir -p "$pkgdir/usr/lib/$_pkgname"
+  cp -r "$srcdir/$_reponame"/* "$pkgdir/usr/lib/$_pkgname/"
 
-    # Install launch script to /usr/bin
-    mkdir -p "$pkgdir/usr/bin"
-    echo "#!/bin/bash" > "$pkgdir/usr/bin/$pkgname"
-    echo "cd /usr/lib/$pkgname" >> "$pkgdir/usr/bin/$pkgname"
-    echo "python3 main.py \$@" >> "$pkgdir/usr/bin/$pkgname"
-    chmod +x "$pkgdir/usr/bin/$pkgname"
+  # Install launch script to /usr/bin
+  mkdir -p "$pkgdir/usr/bin"
+  cat <<EOF > "$pkgdir/usr/bin/$_pkgname"
+#!/bin/bash
+cd /usr/lib/$_pkgname
+source /usr/local/lib/$_pkgname/bin/activate
+exec python main.py "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/$_pkgname"
 
-    # Install application entry
-    install -Dm644 "$startdir/streamcontroller.desktop" "$pkgdir/usr/share/applications/streamcontroller.desktop"
+  # Install application entry
+  install -Dm644 "$startdir/streamcontroller.desktop" "$pkgdir/usr/share/applications/streamcontroller.desktop"
 
-    # Install icon
-    install -Dm644 "$srcdir/$_reponame/flatpak/icon_256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/streamcontroller.png"
-}
-
-clean() {
-  cd "$srcdir"
-  rm -rf "$_reponame" "deps"
+  # Install icon
+  install -Dm644 "$srcdir/$_reponame/flatpak/icon_256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/streamcontroller.png"
 }
