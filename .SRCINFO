@@ -1,0 +1,14 @@
+pkgbase = danebot-git
+	pkgdesc = Certbot wrapper for DANE TLSA-safe certificate Let's Encrypt certificate rollover.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/tlsaware/danebot
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = certbot
+	depends = perl-net-dns-sec
+	source = danebot::git+https://github.com/tlsaware/danebot#commit=2da45ba
+	b2sums = SKIP
+
+pkgname = danebot-git
