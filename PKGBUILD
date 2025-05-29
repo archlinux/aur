@@ -1,17 +1,16 @@
 # Maintainer: kharovtobi <tugboat_khatov at outlook dot com>
 
-#_pkgname=karton
 _pkgname=karton-virt
 pkgname=$_pkgname-git
 pkgver=28.b318dca
-pkgrel=1
+pkgrel=2
 pkgdesc="A libvirt-based Virtual Machine Manager for KDE."
 arch=('x86_64')
 url="https://invent.kde.org/sitter/karton"
 license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-declarative' 'libvirt' 'kirigami' 'kdeclarative' 'kcoreaddons' 'kcmutils' 'qqc2-desktop-style' 'vulkan-headers' 'vulkan-tools')
 makedepends=('git' 'extra-cmake-modules')
-provides=('karton')
+provides=('karton-virt')
 source=("git+https://invent.kde.org/sitter/karton.git")
 sha256sums=('SKIP')
 
