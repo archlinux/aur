@@ -56,10 +56,6 @@ package_wps-office-365() {
     rm opt/kingsoft/wps-office/office6/libfreetype.so*
   fi
 
-  # fix python2 call
-  sed -i "s/python -c 'import sys, urllib; print urllib\.unquote(sys\.argv\[1\])'/\
-python -c 'import sys, urllib.parse; print(urllib.parse.unquote(sys.argv[1]))'/" usr/bin/wps
-
   # fix template path
   sed -i 's|URL=.*|URL=/opt/kingsoft/wps-office/office6/mui/zh_CN/templates/newfile.docx|' \
     usr/share/templates/wps-office-wps-template.desktop
