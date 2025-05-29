@@ -1,4 +1,6 @@
-# Maintainer: devome <evinedeng@hotmail.com>
+# Maintainer: envolution
+# Contributor: devome <evinedeng@hotmail.com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 _pkgname=eval-type-backport
 _pipname="${_pkgname//-/_}"
@@ -15,12 +17,13 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/s
 sha256sums=('f0576b4cf01ebb5bd358d02314d31846af5e07678387486e2c798af0e7d849c1')
 
 build() {
-    cd "${_pipname}-${pkgver}"
-    python -m build --wheel --no-isolation
+  cd "${_pipname}-${pkgver}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_pipname}-${pkgver}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
-    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${_pipname}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+# vim:set ts=2 sw=2 et:
