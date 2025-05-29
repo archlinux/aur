@@ -1,6 +1,6 @@
 pkgbase = chatterino2-7tv-native-git
 	pkgdesc = Chatterino2 fork with support for 7tv; Patched for native QT & Kvantum Themes: https://github.com/hekel/chatterino-stuffs
-	pkgver = 7.5.3beta1.r15.ge57eba7
+	pkgver = 7.5.3beta1.r101.g28721ab
 	pkgrel = 1
 	url = https://github.com/SevenTV/chatterino7
 	arch = x86_64
@@ -38,6 +38,7 @@ pkgbase = chatterino2-7tv-native-git
 	source = git+https://github.com/ThePhD/sol2
 	source = https://github.com/hekel/chatterino-stuffs/raw/refs/heads/master/native-qt/nativeQT-and-StyleSheet.patch
 	source = https://github.com/hekel/chatterino-stuffs/raw/refs/heads/master/native-qt/fix-svg-icons.patch
+	source = https://github.com/hekel/chatterino-stuffs/raw/refs/heads/master/native-qt/fix-bg-opacity.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -50,7 +51,8 @@ pkgbase = chatterino2-7tv-native-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = c9337eeaf8e2fda3360ce4e7a070d5d5814f5be608f4c1359fff0f4c5bad061c
+	sha256sums = f0a8f9e3a951182136d564a951d8fbaa8700f7a159459b4efe190b97b4d97ee3
 	sha256sums = f7694cfd67cdfdb7ef825052af4d0a09ea8043a747bbfe60692d0102b7cc42bb
+	sha256sums = a02903a54bf92e67afca73cef89850209490edf2203005952bed55d9f94cfb3a
 
 pkgname = chatterino2-7tv-native-git

@@ -1,7 +1,7 @@
 # Maintainer: hekel <hekel at vivaldi dot net>
 
 pkgname="chatterino2-7tv-native-git"
-pkgver=7.5.3beta1.r15.ge57eba7
+pkgver=7.5.3beta1.r101.g28721ab
 pkgrel=1
 pkgdesc='Chatterino2 fork with support for 7tv; Patched for native QT & Kvantum Themes: https://github.com/hekel/chatterino-stuffs'
 url="https://github.com/SevenTV/chatterino7"
@@ -50,6 +50,7 @@ source=(
   "git+https://github.com/ThePhD/sol2"
   "https://github.com/hekel/chatterino-stuffs/raw/refs/heads/master/native-qt/nativeQT-and-StyleSheet.patch"
   "https://github.com/hekel/chatterino-stuffs/raw/refs/heads/master/native-qt/fix-svg-icons.patch"
+  "https://github.com/hekel/chatterino-stuffs/raw/refs/heads/master/native-qt/fix-bg-opacity.patch"
 )
 sha256sums=(
   'SKIP'
@@ -64,8 +65,9 @@ sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
-  'c9337eeaf8e2fda3360ce4e7a070d5d5814f5be608f4c1359fff0f4c5bad061c'
+  'f0a8f9e3a951182136d564a951d8fbaa8700f7a159459b4efe190b97b4d97ee3'
   'f7694cfd67cdfdb7ef825052af4d0a09ea8043a747bbfe60692d0102b7cc42bb'
+  'a02903a54bf92e67afca73cef89850209490edf2203005952bed55d9f94cfb3a'
 )
 
 # We temporarily disable LTO since we get an ICE when compiling with gcc since this commit https://github.com/Chatterino/chatterino2/commit/ed20e71db4c957d3b2a8ce9350b847f4c805cb83
@@ -86,6 +88,7 @@ prepare () {
   msg2 "Applying patches to use Native QT Style"
   patch -p1 -i $srcdir/nativeQT-and-StyleSheet.patch || exit 1
   patch -p1 -i $srcdir/fix-svg-icons.patch || exit 1
+  patch -p1 -i $srcdir/fix-bg-opacity.patch || exit 1
 
   # Disable updating of unused submodules
   git config submodule.lib/googletest.update "none"
