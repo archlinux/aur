@@ -5,7 +5,7 @@
 pkgname=qgpgme-qt5
 _pkgbase=gpgme
 pkgver=1.24.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt5 bindings for GPGme"
 arch=('x86_64')
 url='https://www.gnupg.org/related_software/gpgme/'
@@ -51,8 +51,4 @@ package() {
   mv "${pkgdir}"/usr/lib/cmake/QGpgme "${pkgdir}"/usr/lib/cmake/QGpgmeQt5
   mv "${pkgdir}"/usr/lib/cmake/QGpgmeQt5/QGpgmeConfig.cmake "${pkgdir}"/usr/lib/cmake/QGpgmeQt5/QGpgmeQt5Config.cmake
   mv "${pkgdir}"/usr/lib/cmake/QGpgmeQt5/QGpgmeConfigVersion.cmake "${pkgdir}"/usr/lib/cmake/QGpgmeQt5/QGpgmeQt5ConfigVersion.cmake
-
-  # we should patch the .in.in craziness in the sources, but are too lazy to do so :-)
-  sed -i '/INTERFACE_INCLUDE_DIRECTORIES/s/\/usr\/include\/qgpgme/\/usr\/include\/qgpgme-qt5/' "${pkgdir}"/usr/lib/cmake/QGpgmeQt5/QGpgmeQt5Config.cmake
-  sed -i '/IMPORTED_LOCATION/s/\/usr\/lib\/libqgpgme.so/\/usr\/lib\/libqgpgme.so.15/' "${pkgdir}"/usr/lib/cmake/QGpgmeQt5/QGpgmeQt5Config.cmake
 }
