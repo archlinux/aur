@@ -1,15 +1,15 @@
 pkgname=crunchyroll
 _pkgname=Crunchyroll
-pkgver=1.0.8.aurpatch
+pkgver=1.0.9.aurpatch
 pkgrel=1
 pkgdesc="Unnofficial CrunchyRoll desktop application"
 arch=('x86_64')
 url="https://gitlab.com/linuxbombay/crunchyroll"
 license=('GPL')
-depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
+depends=('electron-castlab-bin' 'libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('3e1bf9aabd1494b65070b9568b56f2ede359620a34fd2c6b30e63ef75b5eb8de')
+sha256sums=('9a519ac57ced6d1c9836742b9240afa60adf544268df4cf510f0ecfa0dc2e4c2')
 
 
 package() {
@@ -24,6 +24,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
+    ln -s "usr/bin/electroncastlab" "$pkgdir/opt/$_pkgname"
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
