@@ -2,10 +2,12 @@
 
 pkgname=fitgirl-ddl-gtk4-git
 pkgdesc="fitgirl-repacks.site extractor (GTK4 backend)"
+conflicts=('fitgirl-ddl-gtk4')
+provides=('fitgirl-ddl-gtk4')
 _pkgname=fitgirl-ddl
 _binname=fitgirl-ddl_gui
 pkgver=r27.g6fac928
-pkgrel=1
+pkgrel=2
 url="https://github.com/mokurin000/${_pkgname}"
 arch=('x86_64' 'aarch64')
 license=('MIT')
@@ -44,8 +46,6 @@ build() {
 }
 
 package() {
-    conflicts=('fitgirl-ddl')
-    provides=('fitgirl-ddl')
 
     cd "${_pkgname}"
 
