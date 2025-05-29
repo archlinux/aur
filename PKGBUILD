@@ -1,7 +1,7 @@
 # Maintainer: Hans Peter Buhr <hanspeterbuhr@posteo.net>
 pkgname=wiggly-stt
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Local speech-to-text transcription with whisper.cpp, voice recording, and clipboard integration"
 arch=('any')
 url="https://github.com/hansp27/wiggly-stt"
@@ -12,7 +12,7 @@ optdepends=('ydotool: for auto-paste functionality'
 makedepends=('git')
 provides=('speech-to-text' 'voice-transcription' 'stt')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hansp27/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('0e261ef359a6f9a0d114b87def1c05922149bf6b57d9d56d9012927092a073bb')
+sha256sums=('c7a7094fbabf8e2857c8ca7ef4fc331ff3d7da9b670d1f27034923327aa92d49')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"

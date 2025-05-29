@@ -1,7 +1,7 @@
 pkgbase = wiggly-stt
 	pkgdesc = Local speech-to-text transcription with whisper.cpp, voice recording, and clipboard integration
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/hansp27/wiggly-stt
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = wiggly-stt
 	provides = speech-to-text
 	provides = voice-transcription
 	provides = stt
-	source = wiggly-stt-1.0.0.tar.gz::https://github.com/hansp27/wiggly-stt/archive/v1.0.0.tar.gz
-	sha256sums = 0e261ef359a6f9a0d114b87def1c05922149bf6b57d9d56d9012927092a073bb
+	source = wiggly-stt-1.1.0.tar.gz::https://github.com/hansp27/wiggly-stt/archive/v1.1.0.tar.gz
+	sha256sums = c7a7094fbabf8e2857c8ca7ef4fc331ff3d7da9b670d1f27034923327aa92d49
 
 pkgname = wiggly-stt
