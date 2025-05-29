@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='keylightd-bin'
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 pkgdesc='Daemon and CLI tool for managing Key Lights on your local network'
 url='https://github.com/jmylchreest/keylightd'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('keylightd')
 conflicts=('keylightd')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v0.0.16/keylightd_0.0.16_linux_arm64.tar.gz")
-sha256sums_aarch64=('4501d57a17d59a913d1ba0b1d3ea99ff6dab9b441a7a885ae99aeb5ff3a48492')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v0.0.17/keylightd_0.0.17_linux_arm64.tar.gz")
+sha256sums_aarch64=('d5eb7ce10fa1bd2aa92e09770541d24139246d60f4d7ca79c7ee7728f81f227d')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v0.0.16/keylightd_0.0.16_linux_amd64.tar.gz")
-sha256sums_x86_64=('6ced45eebe1900b5135186b225cdd460a2244582169639e40f7ac697ed374719')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v0.0.17/keylightd_0.0.17_linux_amd64.tar.gz")
+sha256sums_x86_64=('0a65e72738147d412b636585df407bbccbc2db43f0b5d131d4fcfd85d2723c5d')
 
 package() {
   # binaries
@@ -30,4 +30,10 @@ package() {
 
   # documentation
   install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/keylightd-bin/README.md"
+
+  # create keylightd user and group
+  install -Dm644 /dev/stdin "${pkgdir}/usr/lib/sysusers.d/keylightd.conf" <<EOF
+  u keylightd - "Key Light Daemon" /var/lib/keylightd
+  g keylightd -
+  EOF
 }
