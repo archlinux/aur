@@ -95,7 +95,7 @@ package_joplin() {
 
 package_joplin-desktop() {
     pkgdesc="A note taking and to-do application with synchronization capabilities - Desktop"
-    depends=("electron${_electronVersion}" "nodejs")
+    depends=("electron${_electronVersion}" "nodejs" "libvips")
     optdepends=('libappindicator-gtk3: for tray icon')
 
     _setup_env

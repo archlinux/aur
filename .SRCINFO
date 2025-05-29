@@ -32,4 +32,5 @@ pkgname = joplin-desktop
 	pkgdesc = A note taking and to-do application with synchronization capabilities - Desktop
 	depends = electron36
 	depends = nodejs
+	depends = libvips
 	optdepends = libappindicator-gtk3: for tray icon
