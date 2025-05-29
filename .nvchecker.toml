@@ -1,0 +1,4 @@
+[libvarnam]
+source = "git"
+git = "https://github.com/varnamproject/libvarnam.git"
+prefix = "v"
