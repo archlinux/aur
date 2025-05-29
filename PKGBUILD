@@ -2,7 +2,7 @@
 # Contributor: czyt<czytcn@gmail.com>
 
 pkgname=readest-bin
-pkgver=0.9.51
+pkgver=0.9.52
 pkgrel=1
 pkgdesc="A reader application for EPUB files (AppImage version)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ provides=('readest')
 conflicts=('readest')
 options=('!strip')
 source=("https://github.com/chrox/readest/releases/download/v${pkgver}/Readest_${pkgver}_amd64.AppImage")
-sha256sums=('103d61193cb3940486b507037a000e6df3f2fbbffe1def31c4958327c969f578')  
+sha256sums=('d780164a3a3dfcc45e4f32d52656262a2c75866ae3a2e6c315e7b7972b733f86')  
 
 prepare() {
     cd "${srcdir}"
