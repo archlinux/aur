@@ -3,11 +3,12 @@
 
 pkgname=python-mammoth
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert Word documents (.docx files) to HTML"
 arch=(any)
 url="https://github.com/mwilliamson/python-mammoth"
 license=(MIT)
+provides=(mammoth)
 depends=(
   python
   python-cobble
@@ -19,12 +20,12 @@ makedepends=(
   python-wheel
 )
 checkdepends=(
-  #  puthon-funk
-  #  python-pytest  too many of these don't exist yet
-  #  python-precisely
-  #  python-pyflakes
-  #  python-spur.local
-  #  python-tempman
+  python-funk
+  python-pytest
+  python-precisely
+  python-pyflakes
+  python-spur
+  python-tempman
 )
 depends=(python)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mwilliamson/python-mammoth/archive/refs/tags/${pkgver}.tar.gz")
@@ -37,13 +38,21 @@ prepare() {
 }
 build() {
   cd "$pkgname-$pkgver"
-
   python -m build --wheel --no-isolation
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  #  python -m pytest # missing modules to perform tests
+  # wrap the cli portion to avoid needing to install just for testing
+  mkdir -p "$srcdir/fake-bin"
+  cat > "$srcdir/fake-bin/mammoth" <<EOF
+#!/usr/bin/env python3
+from mammoth.cli import main
+main()
+EOF
+  chmod +x "$srcdir/fake-bin/mammoth"
+  export PATH="$srcdir/fake-bin:$PATH"
+  PYTHONPATH="$PWD" python -m pytest
 }
 
 package() {
