@@ -1,7 +1,7 @@
 pkgbase = libvarnam-git
 	pkgdesc = Transliteration and reverse transliteration for Indian languages - Git version
 	pkgver = r459.f32d681
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.varnamproject.com/
 	arch = x86_64
 	license = MPL
@@ -11,6 +11,6 @@ pkgbase = libvarnam-git
 	depends = ruby-ffi
 	provides = libvarnam
 	source = git+https://github.com/varnamproject/libvarnam.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = libvarnam-git

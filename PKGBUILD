@@ -3,14 +3,14 @@
 _pkgname=libvarnam
 pkgname=${_pkgname}-git
 pkgver=r459.f32d681
-pkgrel=1
+pkgrel=2
 pkgdesc="Transliteration and reverse transliteration for Indian languages - Git version"
 arch=('x86_64')
 url="https://www.varnamproject.com/"
 license=('MPL')
 makedepends=('cmake' 'git')
 source=("git+https://github.com/varnamproject/libvarnam.git")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 depends=('ruby' 'ruby-ffi')
 provides=('libvarnam')
 
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd ${_pkgname}
-  cmake -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
 }
 
