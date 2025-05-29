@@ -1,14 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=stalld-git
-pkgver=1.19.7.r0.gebc16ed
-pkgrel=2
+pkgver=1.19.8.r0.g6785dd2
+pkgrel=1
 pkgdesc="A daemon to prevent the starvation of operating system threads"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/rt-linux-tools/stalld"
 license=('GPL-2.0-or-later')
 depends=('glibc' 'libbpf')
 makedepends=('git' 'bpf' 'clang' 'llvm')
+optdepends=('bash: for throttlectl')
 provides=("stalld=$pkgver")
 conflicts=('stalld')
 backup=('etc/sysconfig/stalld')
