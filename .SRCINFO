@@ -1,8 +1,10 @@
 pkgbase = sudo-rs-symlink
-	pkgdesc = Symlinks to sudo from sudo-rs
+	pkgdesc = (Dangerous) Swap sudo with sudo-rs
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/trifectatechfoundation/sudo-rs
 	arch = any
+	license = Apache-2.0 AND MIT
 	depends = sudo-rs
 	provides = sudo
 	conflicts = sudo
