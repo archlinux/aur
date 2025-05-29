@@ -1,6 +1,6 @@
 # Maintainer: elbachir-one <bachiralfa@gmail.com>
 pkgname=tint
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Recolor images using your favorite theme palettes"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go>=1.22')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ashish0kumar/tint/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4f07de395de97ef601f7ff390c4080a5d29827df5c0e5146d7e028da87b27a0c')
+sha256sums=('9b912b1d3eb0d171a30521b7451a13da6f55ac6678d2116f7bcc961db7492267')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
