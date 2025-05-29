@@ -1,11 +1,11 @@
 pkgbase = otf-sn-pro
 	pkgdesc = SN Pro is based on Nunito, a brilliant rounded font.
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/supernotes/sn-pro
 	arch = any
 	license = OFL
-	source = SN-Pro-1.4.0.zip::https://github.com/supernotes/sn-pro/releases/download/1.4.0/SN-Pro.zip
-	sha256sums = d746f61b0a25d10b159e4a5ac577cf66522fbc7faf66defcce207e8379696a66
+	source = SN-Pro-1.5.0.zip::https://github.com/supernotes/sn-pro/releases/download/1.5.0/SN-Pro.zip
+	sha256sums = e8f7678e7b78a2ed9fd1efbbd7404e7722e6d1b93911550493f5381b1e7f0e31
 
 pkgname = otf-sn-pro
