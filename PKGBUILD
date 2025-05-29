@@ -37,6 +37,7 @@ package_coreutils-uutils-selinux(){
   depends=(uutils-coreutils-selinux)
   conflicts=(coreutils)
   provides=(coreutils)
+  # make install generates correct shell completions. But *sum symlinks are lacking.
   install -d "$pkgdir"/usr/bin
   # We also tests out binary at here
   _uu="coreutils-$pkgver"/target/release/coreutils
@@ -47,5 +48,5 @@ package_coreutils-uutils-selinux(){
     "$_uu" cp -s /usr/share/man/man1/uu-"$f".1.gz "$pkgdir"/usr/share/man/man1/"$f".1.gz 2>/dev/null || :
   done
   # Is this used? https://github.com/uutils/coreutils/issues/6591
-  "$_uu" install -Dm644 coreutils-$pkgver/target/release/deps/liblibstdbuf.so $pkgdir/usr/lib/coreutils/libstdbuf.so
+  "$_uu" install -Dm644 coreutils-$pkgver/target/release/deps/liblibstdbuf.so "$pkgdir/usr/lib/coreutils/libstdbuf.so"
 }
