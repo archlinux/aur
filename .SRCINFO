@@ -1,4 +1,4 @@
-pkgbase = wind-utils
+pkgbase = windutils
 	pkgdesc = A collection of useful TUIs for CLIs. Curently for iwd and system services.
 	pkgver = 1.0
 	pkgrel = 1

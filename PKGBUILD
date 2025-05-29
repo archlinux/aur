@@ -1,4 +1,4 @@
-pkgname=wind-utils
+pkgname=windutils
 pkgver=1.0
 pkgrel=1
 pkgdesc="A collection of useful TUIs for CLIs. Curently for iwd and system services."
