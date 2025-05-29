@@ -39,7 +39,6 @@ pkgver() {
 package() {
 	cd "$srcdir/${_gitdir}"
 	cp -rv "${srcdir}/${_gitdir}/usr" "${pkgdir}/usr"
-	cp -rv "${srcdir}/${_gitdir}/etc" "${pkgdir}/etc"
 
 	# font workaround for initial big picture mode startup
 	mkdir -p "${pkgdir}/usr/share/fonts/truetype/ttf-dejavu"
