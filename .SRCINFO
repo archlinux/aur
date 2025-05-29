@@ -1,0 +1,21 @@
+pkgbase = fitgirl-ddl-gtk4-git
+	pkgdesc = fitgirl-repacks.site extractor (GTK4 backend)
+	pkgver = r27.g6fac928
+	pkgrel = 1
+	url = https://github.com/mokurin000/fitgirl-ddl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = libcurl.so=4-64
+	depends = gtk4
+	depends = glib2
+	source = git+https://github.com/mokurin000/fitgirl-ddl.git
+	sha256sums = SKIP
+
+pkgname = fitgirl-ddl-gtk4-git
+	provides = fitgirl-ddl
+	conflicts = fitgirl-ddl
