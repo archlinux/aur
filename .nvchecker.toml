@@ -1,0 +1,4 @@
+[protoc-gen-validate]
+source = "git"
+git = "https://github.com/bufbuild/protoc-gen-validate.git"
+prefix = "v"
