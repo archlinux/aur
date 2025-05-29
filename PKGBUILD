@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-pure-git
-pkgver=10.8.r58.ga550040d94d
+pkgver=10.8.r247.ge0bb1dba3d6
 pkgrel=1
 source=(
   "git+https://gitlab.winehq.org/wine/wine.git"
@@ -33,7 +33,7 @@ sha256sums=(
   '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
   '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
   '6230b4fae37d0b80652a56d804e75fa3a52a5145931097af1918b80474f66d69'
-  'ff689d9a71190ab28c9de27bc6640172b136eb6bcc7fcaee3f49f012831f1370'
+  'a7e69169f2869a71e6eed3fe01116629ea889c26d6a7c80b48945d88d9a2a09c'
   '5f1065a4a404ee424fd80baf2c4f66f1ada83a088d56bc57e99260a2444ee006'
   '13c94740b1030818c41c8745928c8d4125386066e794a7ddcd0b2f48a09ccd60'
   'de34be62e63a4187582b21a3a77d4162a33e7d777095e8e7b8fbd13cb745516f'
@@ -45,6 +45,7 @@ sha256sums=(
   '27e451af4e7d512c6247cf5d1b7ec4b31f67768469e707e37ac741468fde1d7f'
   'e7cf0af8f12f8c49b5116beb4d1723cae5167bf0456f6233f98541b102f3d65c'
 )
+
 pkgdesc="Bleeding-edge Wine build (Staging, WoW64, NTSync, Wayland)"
 url="https://github.com/ventureoo/PKGBUILDs"
 arch=(x86_64)
