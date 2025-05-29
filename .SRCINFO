@@ -5,9 +5,10 @@ pkgbase = windutils
 	arch = any
 	license = MIT
 	depends = gum
+	depends = iwd
 	source = iwdtui.sh
 	source = syssertui.sh
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = wind-utils
+pkgname = windutils
