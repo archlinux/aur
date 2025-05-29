@@ -13,11 +13,11 @@
 : ${_ver_clang=}
 : ${RUSTUP_TOOLCHAIN:=stable}
 
-: ${_commit:=3b90ecaaf4ff840d338441ea246768de4544f76a}
+: ${_commit:=3446dfa7b84757f4600e22c9989c5bf5ba6d96ba}
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.26.2
+pkgver=11.27.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -85,7 +85,7 @@ if [[ "${_build_pgo::1}" == "t" ]]; then
     makedepends+=(
       weston
       xorg-xwayland
-      wlheadless-run # aur/xwayland-run-git
+      wlheadless-run # aur/xwayland-run
     )
   fi
 fi
@@ -310,12 +310,12 @@ build() (
     if [[ "${_build_pgo_reuse::1}" == "t" ]]; then
       if [[ -s "$_old_profdata" ]]; then
         echo "Restoring old profile data."
-        cp --reflink=auto -f "$_old_profdata" merged.profdata
+        cp -f "$_old_profdata" merged.profdata
       fi
 
       if [[ -s "$_old_jarlog" ]]; then
         echo "Restoring old jar log."
-        cp --reflink=auto -f "$_old_jarlog" jarlog
+        cp -f "$_old_jarlog" jarlog
       fi
     fi
 
@@ -367,7 +367,7 @@ ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 END
 
       # save profdata for reuse
-      cp --reflink=auto -f merged.profdata "$_old_profdata"
+      cp -f merged.profdata "$_old_profdata"
     else
       echo "Profile data not found."
     fi
@@ -379,7 +379,7 @@ ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
 
       # save jarlog for reuse
-      cp --reflink=auto -f jarlog "$_old_jarlog"
+      cp -f jarlog "$_old_jarlog"
     else
       echo "Jar log not found."
     fi
@@ -448,12 +448,12 @@ Version=2
 END
 
   # Replace duplicate binary
-  ln -srf "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
+  ln -sf "$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 
   # Use system certificates
   local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
   if [[ -e "$nssckbi" ]]; then
-    ln -srf "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
+    ln -sf "/usr/lib/libnssckbi.so" "$nssckbi"
   fi
 
   # desktop file
