@@ -1,5 +1,5 @@
 pkgbase = python-markitdown-mcp
-	pkgdesc = Utility tool for converting various files to Markdown
+	pkgdesc = MCP server for the Maritdown library
 	pkgver = 0.0.1a4
 	pkgrel = 1
 	url = https://github.com/microsoft/markitdown
