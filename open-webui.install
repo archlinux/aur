@@ -41,7 +41,11 @@ _install() {
 
         echo "Generating random WEBUI_SECRET_KEY..."
         secret_key="$(head -c 12 /dev/random | base64)"
-        sed -i "s/{{GENERATED_KEY}}/${secret_key}/" "/etc/${_appname}.conf"
+
+        # Escape for safe use in sed replacement
+        escaped_secret_key=$(printf '%s\n' "$secret_key" | sed 's/[\/&]/\\&/g')
+
+        sed -i "s/{{GENERATED_KEY}}/${escaped_secret_key}/" "/etc/${_appname}.conf"
     fi
 }
 
