@@ -1,17 +1,28 @@
 pkgbase = uutils-coreutils-selinux
-	pkgdesc = Rust rewrite of chcon and runcon (no man pages)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://uutils.github.io/
 	arch = x86_64
 	license = MIT
 	makedepends = clang
 	makedepends = rust
+	makedepends = python-sphinx
 	depends = gcc-libs
 	depends = glibc
+	depends = oniguruma
 	depends = libselinux
 	options = !lto
 	source = uutils-coreutils-selinux-0.1.0.tar.gz::https://github.com/uutils/coreutils/archive/0.1.0.tar.gz
 	sha256sums = 55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8
 
 pkgname = uutils-coreutils-selinux
+	pkgdesc = Rust rewrite of GNU coreutils (SELinux build)
+	conflicts = uutils-coreutils
+
+pkgname = coreutils-uutils-selinux
+	pkgdesc = (Really dangerous) Swap coreutils with uutils (SELinux build)
+	depends = gcc-libs
+	depends = glibc
+	depends = oniguruma
+	depends = libselinux
+	depends = uutils-coreutils-selinux
