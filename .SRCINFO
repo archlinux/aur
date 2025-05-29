@@ -1,6 +1,6 @@
 pkgbase = coreutils-uutils-symlink
 	pkgver = 0.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://uutils.github.io/
 	arch = any
 	license = MIT
