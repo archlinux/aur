@@ -1,0 +1,16 @@
+pkgbase = keylightd-bin
+	pkgdesc = Daemon and CLI tool for managing Key Lights on your local network
+	pkgver = 0.0.16
+	pkgrel = 1
+	url = https://github.com/jmylchreest/keylightd
+	license = MIT
+	conflicts = keylightd
+	provides = keylightd
+	arch = aarch64
+	source_aarch64 = https://github.com/jmylchreest/keylightd/releases/download/v0.0.16/keylightd_0.0.16_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4501d57a17d59a913d1ba0b1d3ea99ff6dab9b441a7a885ae99aeb5ff3a48492
+	arch = x86_64
+	source_x86_64 = https://github.com/jmylchreest/keylightd/releases/download/v0.0.16/keylightd_0.0.16_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6ced45eebe1900b5135186b225cdd460a2244582169639e40f7ac697ed374719
+	
+pkgname = keylightd-bin
