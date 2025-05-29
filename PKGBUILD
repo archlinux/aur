@@ -28,6 +28,6 @@ package() {
 	cd "$pkgdir"
 	install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
 	bsdtar -xvf "$srcdir/${pkgname}-${pkgver}/${_uuid}.shell-extension.zip" \
-	      	-C "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
+		-C "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 	rm "$srcdir/${pkgname}-${pkgver}/${_uuid}.shell-extension.zip"
 }
