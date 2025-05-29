@@ -9,26 +9,13 @@ pkgdesc="mocking framework influenced heavily by JMock"
 arch=(any)
 url="https://github.com/mwilliamson/funk"
 license=(BSD-2-Clause)
-depends=(
-)
-makedepends=(
-)
-checkdepends=(
-  #python-nose
-  #checks require additional packages not in aur
-)
-depends=(python)
+depends=(python python-precisely)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mwilliamson/funk/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('fc33c7731bfbf84a8dff735c88b00de8ac02210f28f70f0e123396d5a23aa737')
 
 build() {
   cd "$_pkgname-$pkgver"
   python -m build --wheel --no-isolation
-}
-
-check() {
-  cd "$_pkgname-$pkgver"
-  # python -m pytest # missing modules to perform tests
 }
 
 package() {
