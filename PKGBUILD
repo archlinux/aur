@@ -4,14 +4,14 @@
 _name=libvarnam-ibus
 pkgname="${_name}-git"
 pkgver=r40.79ee71e
-pkgrel=2
+pkgrel=3
 pkgdesc="IBus engine for libvarnam providing Indian language input method"
 arch=('x86_64')
 url="https://www.varnamproject.com/"
 license=('Custom')
 makedepends=('cmake' 'git')
 source=("git+https://github.com/varnamproject/libvarnam-ibus.git")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 depends=('libvarnam' 'ibus')
 provides=('libvarnam-ibus')
 
@@ -25,6 +25,8 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DCMAKE_C_STANDARD=17 \
     .
   make
 }
