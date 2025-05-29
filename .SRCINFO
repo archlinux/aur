@@ -1,7 +1,7 @@
 pkgbase = fitgirl-ddl-gtk4-git
 	pkgdesc = fitgirl-repacks.site extractor (GTK4 backend)
-	pkgver = r27.g6fac928
-	pkgrel = 2
+	pkgver = r28.g44f72c3
+	pkgrel = 1
 	url = https://github.com/mokurin000/fitgirl-ddl
 	arch = x86_64
 	arch = aarch64

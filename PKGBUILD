@@ -6,8 +6,8 @@ conflicts=('fitgirl-ddl-gtk4')
 provides=('fitgirl-ddl-gtk4')
 _pkgname=fitgirl-ddl
 _binname=fitgirl-ddl_gui
-pkgver=r27.g6fac928
-pkgrel=2
+pkgver=r28.g44f72c3
+pkgrel=1
 url="https://github.com/mokurin000/${_pkgname}"
 arch=('x86_64' 'aarch64')
 license=('MIT')
@@ -49,6 +49,6 @@ package() {
 
     cd "${_pkgname}"
 
-    install -vDm755 "target/release/${_binname}" -t "${pkgdir}/usr/bin/"
+    install -vDm755 "target/release/${_binname}" "${pkgdir}/usr/bin/${_pkgname}-gtk4"
     install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
