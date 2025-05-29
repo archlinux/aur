@@ -1,0 +1,24 @@
+pkgbase = goose-cli-bin
+	pkgdesc = AI Agent thing
+	pkgver = stable
+	pkgrel = 1
+	url = https://github.com/block/goose
+	arch = x86_64
+	arch = arm64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = tar
+	makedepends = curl
+	depends = glibc
+	depends = libxcb
+	depends = gcc-libs
+	optdepends = keepassxc: D-bus secret service provider
+	optdepends = gnome-keyring: GNOME secrets provider
+	optdepends = kwallet: KDE secrets provider
+	source = goose-x86_64-unknown-linux-gnu.tar.bz2::https://github.com/block/goose/releases/download/stable/goose-x86_64-unknown-linux-gnu.tar.bz2
+	sha256sums = bc51131961543c9a8b553e3ca72aba1997db84c43b28c0ee461702b403b47a08
+	source_arm64 = goose-aarch64-unknown-linux-gnu.tar.bz2::https://github.com/block/goose/releases/download/stable/goose-aarch64-unknown-linux-gnu.tar.bz2
+	sha256sums_arm64 = b4c88a3764ffc90daa6bbd16e7cfa7f0af1bce38afe2acd839a19d9bfe43eeff
+	sha256sums_aarch64 = b4c88a3764ffc90daa6bbd16e7cfa7f0af1bce38afe2acd839a19d9bfe43eeff
+
+pkgname = goose-cli-bin
