@@ -17,7 +17,7 @@ b2sums=('825768a6efe964edcaa5c59e378c4a502d4081cc148866ed3742cd3435198639683957f
 
 build() {
 	cd "${_pkgname}-v${pkgver}"
-	meson setup --buildtype=release --prefix=/usr builddir
+	meson setup --buildtype=release -Dc_std=gnu17 --prefix=/usr builddir
 	ninja -C builddir
 }
 
