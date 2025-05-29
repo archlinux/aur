@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Enable unit file Dialog save context mixed up
+- 1.27.1 Mask unit dialog behaviour
 
 ## [1.26.0] - 2025-05-28
 
