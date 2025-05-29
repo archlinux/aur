@@ -3,7 +3,7 @@
 
 pkgname=victoriametrics
 _name=VictoriaMetrics
-pkgver=1.117.1
+pkgver=1.118.0
 pkgrel=1
 pkgdesc='Fast, cost-effective and scalable time series database'
 arch=(x86_64)
@@ -15,7 +15,7 @@ backup=('etc/default/victoriametrics')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/VictoriaMetrics/VictoriaMetrics/archive/refs/tags/v$pkgver.tar.gz"
         'victoriametrics.service'
         'victoriametrics.default')
-b2sums=('67b9ed42cfae889f06e7231c93de456979b398aeb41e101e1d09f84370552de6195423ad332ce6d0e6cb8b3d0e9aae9771f1abc0f9aadd9037a5139dd48601f6'
+b2sums=('16112a6251becc5681f41b150e69711889facedefb44798c8c3403d0f20d7fecfea19a9d6ec3361316a9aeac6a0c6e370435cb6face45566dcead6895790374e'
         '82b1c2b55b3c9f3d4deee12753820247ba1f4ac28a94cf16dad31ce091306875d392f7a7a0a56029d88101d7e75f7fefec392ac50d2447276850476f773d147d'
         '4405dc19795d2cbfa515e4750a2cad77c13611293176ff5aeec597f9905494902bd4496c1e90f1efe2d484e383adb39d034167673b9fe7de8b307b8cedf17b7f')
 
@@ -29,7 +29,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X github.com/VictoriaMetrics/VictoriaMetrics/lib/buildinfo.Version=$pkgver" \
     -o bin/ \
     ${_vmapps[@]/#/.\/app\/}
 }
