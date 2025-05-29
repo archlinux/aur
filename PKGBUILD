@@ -1,12 +1,12 @@
 # Maintainer: ltdt-apex <knleungaa@connect.ust.hk>
 pkgname=lightview
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A minimal, borderless image viewer for Wayland"
 arch=('x86_64')
 url="https://github.com/ltdt-apex/lightview"
 license=('MIT')
-depends=('gtk4' 'gdk-pixbuf2')
+depends=('gtk4' 'gdk-pixbuf2' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
