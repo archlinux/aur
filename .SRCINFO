@@ -13,7 +13,6 @@ pkgbase = python-astroscrappy
 	makedepends = cython
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = gcc14
 	makedepends = python-extension-helpers>=1
 	makedepends = python-numpy
 	makedepends = python-sphinx-astropy

@@ -12,7 +12,6 @@ makedepends=('python-setuptools-scm>=6.2'
              'cython'
              'python-build'
              'python-installer'
-             'gcc14'
              'python-extension-helpers>=1'
              'python-numpy'
              'python-sphinx-astropy')  # wheel required by new setuptools
@@ -36,7 +35,7 @@ prepare() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    CC=gcc-14 CXX=g++-14 python -m build --wheel --no-isolation --skip-dependency-check
+    CFLAGS="${CFLAGS} -std=gnu17" python -m build --wheel --no-isolation --skip-dependency-check
 
     msg "Building Docs"
     PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
