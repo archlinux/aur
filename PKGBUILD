@@ -3,19 +3,19 @@
 
 pkgname=maptool
 _pkgname=MapTool
-pkgver=1.16.4
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('any')
 url='https://rptools.net/tools/maptool'
 license=('AGPL-3.0-or-later')
 depends=()
-_java_ver=23
-makedepends=('git' 'dpkg' "jdk${_java_ver}-openjdk" 'gradle' 'xdg-utils' 'rpm-tools')
+_java_ver=24
+makedepends=('git' 'dpkg' "jdk-openjdk" 'gradle' 'xdg-utils' 'rpm-tools')
 source=(
 	"git+https://github.com/RPTools/${pkgname}.git#tag=${pkgver}"
 	"${pkgname}.sh")
-sha256sums=('04eba423990c404f91c116572db1ea2d1b7d2798528fecd112e800876e9ab132'
+sha256sums=('f3bba89ea3c4fc36b966a4b805dce7c760f32d1bf3db0705c39882a491798059'
             '16720b6f986f79eed2a9517433a6c0880c2b80f0d7c8611fb1359c85d1b372bc')
 install="${pkgname}.install"
 
@@ -24,7 +24,8 @@ _java_home="/usr/lib/jvm/java-${_java_ver}-openjdk"
 
 prepare() {
 	cd "${pkgname}"
-	sed -i -r "s|jdkHome = jdkDownload.+$|jdkHome = '$_java_home'|" 'build.gradle'
+	sed -i -r "s|jdkHome = jdkDownload.+$|jdkHome.set('$_java_home')|" 'build.gradle'
+	sed -i 's/ForkJoinPool.commonPool().invokeAll(tasks);/try { ForkJoinPool.commonPool().invokeAll(tasks); } catch(InterruptedException ignore) {}/' 'src/main/java/net/rptools/maptool/util/NetUtil.java'
 }
 
 build() {
