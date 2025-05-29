@@ -56,7 +56,7 @@ source=(${source[@]}
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch)
 sha256sums=(${sha256sums[@]}
-            '75d107f0308792e2665a5266134fd6c435c5885fd54d1363b64946d4153eb7f9'
+            '2848ccca54ec4a118471b833d20cf3a32fff7775d5b0fc881f9e1660dcd6ca23'
             'ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8')
 
 if (( _manual_clone )); then

@@ -3,7 +3,7 @@
 # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
 
 diff --git a/crypto/nss_util.cc b/crypto/nss_util.cc
-index cd43cde2a5..78f4de573e 100644
+index cd43cde2a5..c06e800d8e 100644
 --- a/crypto/nss_util.cc
 +++ b/crypto/nss_util.cc
 @@ -30,6 +30,8 @@
@@ -20,7 +20,7 @@ index cd43cde2a5..78f4de573e 100644
  base::FilePath GetDefaultConfigDirectory() {
    base::FilePath dir;
 +#if defined(OS_LINUX)
-+  std::unique_ptr<base::Environment> env(base::Environment.Create());
++  std::unique_ptr<base::Environment> env(base::Environment::Create());
 +  dir = base::nix::GetXDGDataWriteLocation(env.get());
 +#else
    base::PathService::Get(base::DIR_HOME, &dir);
