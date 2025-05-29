@@ -1,0 +1,5 @@
+[candy-bin]
+source = "github"
+github = "lanthora/candy"
+use_latest_release = true
+prefix = "v"
