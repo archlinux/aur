@@ -22,3 +22,5 @@ pkgname = uutils-coreutils-selinux
 pkgname = coreutils-uutils-selinux
 	pkgdesc = (Really dangerous) Swap coreutils with uutils (SELinux build)
 	depends = uutils-coreutils-selinux
+	provides = coreutils
+	conflicts = coreutils

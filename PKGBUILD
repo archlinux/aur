@@ -35,6 +35,8 @@ package_uutils-coreutils-selinux() {
 package_coreutils-uutils-selinux(){
   pkgdesc='(Really dangerous) Swap coreutils with uutils (SELinux build)'
   depends=(uutils-coreutils-selinux)
+  conflicts=(coreutils)
+  provides=(coreutils)
   install -d "$pkgdir"/usr/bin
   # We also tests out binary at here
   _uu="coreutils-$pkgver"/target/release/coreutils
