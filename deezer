@@ -1,2 +1,2 @@
 #!/bin/sh
-exec electron36 /usr/share/deezer/app.asar "$@"
+exec electron36 /usr/share/deezer/app.asar --gtk-version=3 "$@"
