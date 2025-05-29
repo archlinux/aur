@@ -1,0 +1,19 @@
+pkgbase = nvidia-mft
+	pkgdesc = NVIDIA Mellanox firmware tools (MFT)
+	pkgver = 4.32.0
+	pkgrel = 1
+	url = https://network.nvidia.com/products/adapter-software/firmware-tools/
+	arch = x86_64
+	license = custom
+	depends = dkms
+	depends = usbutils
+	depends = python
+	optdepends = linux-firmware-mellanox
+	optdepends = rdma-core
+	optdepends = linux-headers
+	optdepends = linux-lts-headers
+	options = !strip
+	source = https://www.mellanox.com/downloads/MFT/mft-4.32.0-120-x86_64-rpm.tgz
+	sha256sums = 3036a8b560f8726d5171d753b5afa9bed5088cb3982134a47388f85eb3d69894
+
+pkgname = nvidia-mft
