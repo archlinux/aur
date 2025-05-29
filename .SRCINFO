@@ -1,7 +1,7 @@
 pkgbase = lyrics-in-terminal
 	pkgdesc = Shows lyrics of songs from your favourite music player in terminal
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jugran/lyrics-in-terminal
 	arch = any
 	license = MIT

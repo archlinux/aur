@@ -1,8 +1,9 @@
-# Maintainer: Alberto Redondo <albertomost at gmail dot com>
+# Maintainer: Emanuel Serpa <emanuelvserpa at gmail dot com>
+# Contributor: Alberto Redondo <albertomost at gmail dot com>
 
 pkgname=lyrics-in-terminal
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Shows lyrics of songs from your favourite music player in terminal'
 arch=('any')
 url='https://github.com/Jugran/lyrics-in-terminal'
