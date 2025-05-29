@@ -4,13 +4,13 @@
 
 pkgname=albert-git
 _pkgname=${pkgname%-git}
-pkgver=0.27.7.r2.g65e5093
-pkgrel=2
+pkgver=0.27.8.r37.g4e90e6e
+pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/${_pkgname}launcher"
 license=('LicenseRef-Albert')
-depends=('hicolor-icon-theme' 'qt6-5compat' 'qt6-declarative' 'qt6-scxml' 'qt6-shadertools' 'qt6-svg')
+depends=('hicolor-icon-theme' 'qt6-5compat' 'qt6-declarative' 'qt6-scxml' 'qt6-shadertools' 'qt6-svg' 'qtkeychain-qt6')
 makedepends=('cmake' 'git' 'libqalculate' 'pybind11' 'python' 'qt6-tools')
 optdepends=('ddgr: duckduckgo search plugin'
 	'libarchive: documentation plugin'

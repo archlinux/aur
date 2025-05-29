@@ -1,7 +1,7 @@
 pkgbase = albert-git
 	pkgdesc = A sophisticated standalone keyboard launcher
-	pkgver = 0.27.7.r2.g65e5093
-	pkgrel = 2
+	pkgver = 0.27.8.r37.g4e90e6e
+	pkgrel = 1
 	url = https://github.com/albertlauncher
 	arch = x86_64
 	license = LicenseRef-Albert
@@ -17,6 +17,7 @@ pkgbase = albert-git
 	depends = qt6-scxml
 	depends = qt6-shadertools
 	depends = qt6-svg
+	depends = qtkeychain-qt6
 	optdepends = ddgr: duckduckgo search plugin
 	optdepends = libarchive: documentation plugin
 	optdepends = libqalculate: calculator plugin
