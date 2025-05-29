@@ -28,8 +28,7 @@ sha256sums=('SKIP')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
     mkdir -p "${pkgdir}/usr/bin"
-    chmod +x "${pkgdir}/opt/Obsidian/obsidian"
-    ln -sf "${pkgdir}/opt/Obsidian/obsidian" "${pkgdir}/usr/bin/obsidian"
+    ln -sf "/opt/Obsidian/obsidian" "${pkgdir}/usr/bin/obsidian"
     install -Dm644 "${pkgdir}/opt/Obsidian/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
     install -Dm644 "${pkgdir}/opt/Obsidian/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
 }
