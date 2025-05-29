@@ -2,7 +2,7 @@
 
 pkgname=obsidian-bin
 pkgver=1.8.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful knowledge base that works on top of a local folder of plain text Markdown files. (Official binary package with bundled Electron)"
 arch=('x86_64')
 url="https://obsidian.md"
@@ -28,6 +28,7 @@ sha256sums=('SKIP')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
     mkdir -p "${pkgdir}/usr/bin"
+    chmod +x "${pkgdir}/opt/Obsidian/obsidian"
     ln -sf "${pkgdir}/opt/Obsidian/obsidian" "${pkgdir}/usr/bin/obsidian"
     install -Dm644 "${pkgdir}/opt/Obsidian/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
     install -Dm644 "${pkgdir}/opt/Obsidian/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
