@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=1.0.0.alpha.7.r0.gbb9eb90
+pkgver=1.0.0.alpha.7.r3.geb886de
 pkgrel=1
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,9 @@ depends=(
   'libpulse'
   'playerctl'
   'pop-sound-theme-git'
-  'systemd-libs'
+  'systemd'
+  'wireplumber'
+  'xdg-utils'
 )
 makedepends=(
   'cargo'
@@ -23,7 +25,7 @@ makedepends=(
   'mold'
 )
 optdepends=(
-  'pulseaudio-alsa: Media keys support'
+  'pipewire-alsa: Media keys support'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
