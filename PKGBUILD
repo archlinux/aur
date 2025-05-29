@@ -18,7 +18,7 @@ depends=(
     'util-linux-libs'
     'libsecret'
 )
-outdepends=('appindicator-gtk3')
+optdepends=('appindicator-gtk3')
 conflicts=('obsidian')
 provides=('obsidian')
 options=(!strip)
