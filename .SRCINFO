@@ -1,0 +1,26 @@
+pkgbase = high-tide-git
+	pkgdesc = Linux client for TIDAL streaming service
+	pkgver = r374.89d22a8
+	pkgrel = 1
+	url = https://github.com/Nokse22/high-tide
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = git
+	makedepends = meson
+	depends = dconf
+	depends = glib2
+	depends = gstreamer
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	depends = libsecret
+	depends = python
+	depends = python-gobject
+	depends = python-tidalapi
+	provides = high-tide=r374.89d22a8
+	conflicts = high-tide
+	source = high-tide-git::git+https://github.com/Nokse22/high-tide.git
+	b2sums = SKIP
+
+pkgname = high-tide-git
