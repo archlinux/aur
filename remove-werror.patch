@@ -1,0 +1,21 @@
+From c69fa669bc50e38495991df8aff124932973a285 Mon Sep 17 00:00:00 2001
+From: Manuel Alcaraz Zambrano <manuelalcarazzam@gmail.com>
+Date: Thu, 29 May 2025 13:32:41 +0200
+Subject: Remove -Werror
+
+
+diff --git a/Makefile b/Makefile
+index 0a6d2cc..b4c9d74 100755
+--- a/Makefile
++++ b/Makefile
+@@ -33,7 +33,6 @@ COMP = gcc
+ optional_cxxflags = \
+ 	-std=c++20 \
+ 	-ftabstop=2 \
+-	-Werror \
+ 	-Wfatal-errors \
+ 	-pedantic \
+ 	-pedantic-errors \
+-- 
+2.49.0
+

@@ -1,0 +1,16 @@
+pkgbase = bbppairings
+	pkgdesc = Swiss-system chess tournament pairing engine
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://github.com/BieremaBoyzProgramming/bbpPairings
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	source = git+https://github.com/BieremaBoyzProgramming/bbpPairings.git#tag=v5.0.1
+	source = remove-werror.patch
+	sha256sums = 7a89f417925815a98b19737b92847efa6e56a78fe226aa919cac9c43ce79b353
+	sha256sums = 6cf522a44137b780b297ce84fe3327417b9e1272484da02e3c05fc1fe55a50c8
+
+pkgname = bbppairings
