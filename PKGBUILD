@@ -1,6 +1,6 @@
 # Maintainer: Your Name <dennnn8888@gmail.com>
 pkgname=aniparser
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="AniParser Electron application"
 arch=('x86_64')
