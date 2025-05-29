@@ -1,6 +1,6 @@
 # Maintainer: ltdt-apex <knleungaa@connect.ust.hk>
 pkgname=lightview
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A minimal, borderless image viewer for Wayland"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk4' 'gdk-pixbuf2' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('62d7041e0d5727d3bd18132b4cfb5c1f3d923cfa201a943c4b11124c82c80476')
+sha256sums=('def0fcc0b628c5cc662d88b9ef82c3b24e92b2fc0c1d6d17f66ade3521c345e6')
 
 prepare() {
   cd "$pkgname-$pkgver"
