@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-asdbctl-slider-git
+	pkgdesc = GNOME brightness slider for asdbctl
+	pkgver = r14.0d94c6b
+	pkgrel = 1
+	url = https://github.com/flightmansam/gnome-asdbctl-slider
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = asdbctl
+	depends = gnome-shell
+	options = !debug
+	source = gnome-shell-extension-asdbctl-slider-git-r14.0d94c6b::git+https://github.com/flightmansam/gnome-asdbctl-slider
+	b2sums = SKIP
+
+pkgname = gnome-shell-extension-asdbctl-slider-git
