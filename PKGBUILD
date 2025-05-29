@@ -1,4 +1,4 @@
-# Maintainer: Your Name <address at domain dot tld>
+# Maintainer: pbjames <address at domain dot tld>
 pkgname=goose-cli-bin
 _pkgname=goose
 pkgver=stable
