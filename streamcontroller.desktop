@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=StreamController
+Comment=Control your Elgato Stream Decks
+Path=/
+Exec=streamcontroller
+Icon=streamcontroller
+Terminal=false
+Categories=Utility
