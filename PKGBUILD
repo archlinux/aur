@@ -9,7 +9,7 @@
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
-pkgver=11.26.2
+pkgver=11.27.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://floorp.app/"
@@ -44,8 +44,8 @@ sha256sums=(
   '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
   '853ba77377f296d3bf52f191131883702dd96d38084f78ea5ddb29821ac253d1'
 )
-sha256sums_x86_64=('bac583e129f418d0719e26fa9dae161661764eaa0ec40c11fcff6cc873be3670')
-sha256sums_aarch64=('dc96145e2ce079e4a5d5a3f7e7fb50744359ac59af8e6a6d5f1961f2e170d63b')
+sha256sums_x86_64=('7bceaf11bf76bde39fa60f5566ff7296fc23a6f83fc5d621ba32f973559369de')
+sha256sums_aarch64=('851cd74cd8f947073012a5b9de1e0fb0525f6d64452fb5fbb4b11b54ec926e05')
 
 package() {
   depends=(
@@ -55,10 +55,10 @@ package() {
 
   # app
   install -dm755 "$pkgdir/$_install_path/$_pkgname"
-  cp --reflink=auto -r "$_pkgname"/* "$pkgdir/$_install_path/$_pkgname/"
+  cp -a "$_pkgname"/* "$pkgdir/$_install_path/$_pkgname/"
 
   # symlink duplicate
-  ln -srf "$pkgdir/usr/bin/$_pkgname" "$pkgdir/$_install_path/$_pkgname/${_pkgname}-bin"
+  ln -sf "$_pkgname" "$pkgdir/$_install_path/$_pkgname/${_pkgname}-bin"
 
   # icons
   for i in 32 64 128 256 512; do
@@ -79,7 +79,7 @@ package() {
 
   # script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
-#!/bin/sh
+#!/usr/bin/env sh
 exec /$_install_path/$_pkgname/$_pkgname "\$@"
 END
 
@@ -92,4 +92,6 @@ END
   }
 }
 END
+
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
