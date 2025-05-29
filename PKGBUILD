@@ -5,26 +5,26 @@ _pname=${pkgbase#python-}
 _pyname=${_pname//./_}
 pkgname=("python-${_pname}")
 #"python-${_pyname}-doc")
-pkgver=2.3.9
+pkgver=2.3.10
 pkgrel=1
 pkgdesc="Image array manipulation functions"
 arch=('i686' 'x86_64')
 url="https://github.com/spacetelescope/stsci.image"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
-             'python-wheel'
              'python-build'
              'python-installer'
-             'python-numpy')
+             'python-numpy')  # wheel required by new setuptools
 #'python-stsci.sphinxext')
 checkdepends=('python-pytest'
+#             'python-pytest-xdist'
               'python-scipy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('d3c4e64c4e772a59f47adc2293609c9e')
+md5sums=('0811dedbf0f37ee9060bfd123efaaa97')
 
 get_pyinfo() {
-     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
-             python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+    [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
+        python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
 build() {
@@ -39,7 +39,8 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyinfo)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    for so in $(find build -name '*gnu*so'); do cp $so ${so#*$(get_pyinfo)/}; done
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-stsci.image() {
@@ -49,7 +50,7 @@ package_python-stsci.image() {
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    rm -r ${pkgdir}/$(get_pyinfo site)/stsci/{__init__.py,__pycache__/*}
+#   rm -r ${pkgdir}/$(get_pyinfo site)/stsci/{__init__.py,__pycache__/*}
 #   rm "${pkgdir}/usr/lib/python$(get_pyver .)/site-packages/stsci/__init__.py"
 #   rm "${pkgdir}/usr/lib/python$(get_pyver .)/site-packages/stsci/__pycache__"/*
 }
