@@ -1,0 +1,12 @@
+pkgbase = python-precisely
+	pkgdesc = write precise assertions so you only test the behaviour you’re really interested in
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/mwilliamson/python-precisely
+	arch = any
+	license = BSD-2-Clause
+	depends = python
+	source = python-precisely-0.1.9.tar.gz::https://github.com/mwilliamson/python-precisely/archive/refs/tags/0.1.9.tar.gz
+	sha256sums = 0a73036e4439ef617ab163d11c27cefa69db45082bcf60181e737d4ffe764b79
+
+pkgname = python-precisely
