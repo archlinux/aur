@@ -1,16 +1,15 @@
 pkgbase = webcamize
-	pkgdesc = Use (almost) any camera as a webcam
-	pkgver = 2.0.0
-	pkgrel = 1
-	url = https://github.com/cowtoolz/webcamize
+	pkgdesc = Use any camera as a webcam—DSLR, mirrorless, camcorder, point-and-shoot, and even some smartphones/tablets!
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = https://github.com/weebney/webcamize
 	arch = any
 	license = BSD-2-Clause
 	depends = ffmpeg
-	depends = libgphoto2
-	depends = kmod
-	depends = linux-headers
+	depends = gphoto2
 	depends = v4l2loopback-dkms
-	source = webcamize-2.0.0::git+https://github.com/cowtoolz/webcamize.git#tag=v2.0.0
+	depends = linux-headers
+	source = webcamize-1.2.0::git+https://github.com/weebney/webcamize.git#tag=v1.2.0
 	md5sums = SKIP
 
 pkgname = webcamize
