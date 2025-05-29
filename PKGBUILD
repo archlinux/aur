@@ -9,7 +9,7 @@ declare -r _pkgname="RediSearch"
 declare -r _tag="577ea16ebba66138d9bb4a85635dce3f1e43ab23"
 
 pkgname="redisearch"
-pkgver="2.10.17"
+pkgver="2.10.18"
 pkgrel="1"
 pkgdesc="A query and indexing engine for Redis, providing secondary indexing, full-text search, vector similarity search and aggregations."
 arch=("any")
