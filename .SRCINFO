@@ -1,6 +1,6 @@
 pkgbase = ollama-rocm-git
 	pkgdesc = Create, run and share large language models (LLMs) with ROCm
-	pkgver = 0.7.0.r9.g7edfdd2
+	pkgver = 0.9.0.rc0.r0.g5f57b0e
 	pkgrel = 1
 	url = https://github.com/ollama/ollama
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = ollama-rocm-git
 	depends = rocsparse
 	optdepends = rocm-smi-lib: monitor GPU usage with rocm-smi
 	optdepends = amdgpu_top: tool that shows AMD GPU utilization
-	provides = ollama-rocm=0.7.0
+	provides = ollama-rocm=0.9.0
 	conflicts = ollama
 	source = git+https://github.com/ollama/ollama#branch=main
 	source = ollama.service

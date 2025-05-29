@@ -1,7 +1,7 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=ollama-rocm-git
-pkgver=0.7.0.r9.g7edfdd2
+pkgver=0.9.0.rc0.r0.g5f57b0e
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
 arch=(x86_64)
@@ -41,9 +41,8 @@ build() {
   # this just produces an insanly huge ollama and takes very long, just pick your target, you can look them up here:
   #   https://rocm.docs.amd.com/en/docs-6.4.0/reference/gpu-arch-specs.html
   # this config is set to mainstream cards RX6000 - RX7000 (including workstation cards)
-  # there is no official RX9000 support yet (gfx1200,gfx1201), build they will build
-  cmake -B build \
-    -DAMDGPU_TARGETS="gfx1030;gfx1031,gfx1032;gfx1100;gfx1101,gfx1102"
+  # there is no official RX9000 support yet (gfx1200,gfx1201), but they will build
+  cmake -B build -DAMDGPU_TARGETS="gfx1030;gfx1100;gfx1101;gfx1102;gfx1200;gfx1201"
   cmake --build build --config Release
   go build .
 }
