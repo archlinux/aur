@@ -2,9 +2,9 @@
 
 pkgname=coreutils-uutils
 pkgver=0.1.0
-pkgrel=3
-pkgdesc='(warning: use at own risk) Cross-platform Rust rewrite of the GNU
-coreutils installed as system core utilities.'
+pkgrel=4
+pkgdesc='Cross-platform Rust rewrite of the GNU coreutils installed as system
+core utilities (WARNING: use at own risk).'
 arch=('x86_64')
 license=('MIT')
 url='https://github.com/uutils/coreutils'
@@ -52,17 +52,16 @@ package() {
       MANDIR=/share/man/man1 \
       PROG_PREFIX= \
       PROFILE=release \
-      MULTICALL=y
+      MULTICALL=y \
+      SKIP_UTILS="hostname kill more uptime"
   # add libstdbuf.so
   mkdir -p $pkgdir/usr/lib/coreutils
   cd $srcdir && cd ${pkgname%-uutils}-${pkgver}/target/release/deps
   mv liblibstdbuf.so $pkgdir/usr/lib/coreutils/libstdbuf.so
-  # clean conflicts (archlinux ships these in other apps)
-  cd $pkgdir/usr/bin
-  rm hostname kill more uptime
+  # clean conflicts (arch ships these in the bash-completion package)
   rm $pkgdir/usr/share/bash-completion/completions/*
-  rm $pkgdir/usr/share/man/man1/{hostname.1,kill.1,more.1,uptime.1}
   # symlink missing binaries
+  cd $pkgdir/usr/bin
   if [ -f "coreutils" ]; then
     local binaries=(
       "b2sum" "b3sum" "md5sum" "sha1sum" "sha224sum" "sha256sum" "sha3-224sum"
