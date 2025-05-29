@@ -1,6 +1,6 @@
 pkgbase = python-qpageview-git
 	pkgdesc = A page based document viewer widget for Qt6/PyQt6.
-	pkgver = 1.0.0.r4.g4066284
+	pkgver = 1.0.1.r0.g0ea1921
 	pkgrel = 1
 	url = https://github.com/frescobaldi/qpageview
 	arch = any
@@ -18,6 +18,7 @@ pkgbase = python-qpageview-git
 	provides = python-qpageview
 	conflicts = ly
 	conflicts = python-qpageview
+	replaces = qpageview-git
 	options = !emptydirs
 	source = python-qpageview-git::git+https://github.com/frescobaldi/qpageview.git
 	md5sums = SKIP
