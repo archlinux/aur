@@ -9,7 +9,7 @@ pkgbase = liana-bin
         depends = fontconfig>=2.12.6
         depends = freetype2>=2.8
         depends = systemd-libs
-        source = https://github.com/wizardsardine/liana/releases/download/v10.0/liana-10.0-1_amd64.deb
-        sha256sums = db54cc728eeec88ebf3ce1c3babd9c82bd9586fbfe274680bad0c8e0fa518b6e
+        source = https://github.com/wizardsardine/liana/releases/download/v11.0/liana-11.0-1_amd64.deb
+        sha256sums = cabe072cdc9a03a43a1c6b2f2c35e6db05da8a215ee0f8ab7a70e64195127c5b
 
 pkgname = liana-bin
