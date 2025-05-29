@@ -1,0 +1,34 @@
+pkgbase = snapx
+	pkgdesc = Screenshot tool that handles images, text, and video (fork of ShareX)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/BrycensRanch/SnapX
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = dotnet-sdk>=9.0
+	makedepends = clang
+	makedepends = zlib
+	makedepends = curl
+	source = snapx::git+https://github.com/BrycensRanch/SnapX.git
+	sha256sums = SKIP
+
+pkgname = snapx
+	depends = ffmpeg
+	depends = curl
+	depends = fontconfig
+	depends = freetype2
+	depends = openssl
+	depends = icu
+	depends = at
+	depends = sudo
+	depends = libxrandr
+	depends = libxcb
+	depends = dbus
+	depends = vlc
+	depends = xdg-utils
+
+pkgname = snapx-ui
+	pkgdesc = Screenshot tool that handles images, text, and video (fork of ShareX). SnapX Avalonia-based UI (works best on X11)
+	depends = snapx
