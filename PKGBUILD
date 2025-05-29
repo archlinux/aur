@@ -1,6 +1,6 @@
 # Maintainer: Berrit Birkner <aur at bbirkner.de>
 # Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
-pkgname=qpageview-git
+pkgname=python-qpageview-git
 pkgver=1.0.0.r4.g4066284
 pkgrel=1
 pkgdesc="A page based document viewer widget for Qt6/PyQt6."
@@ -23,8 +23,8 @@ depends=(
 optdepends=(
    'python-pycups: Printing to a local CUPS server'
 )
-provides=("${pkgname%-git}=$pkgver-$pkgrel" "python-qpageview")
-conflicts=("${pkgname%-git}" "ly" "python-qpageview")
+provides=("python-qpageview")
+conflicts=("ly" "python-qpageview")
 options=(!emptydirs)
 source=("$pkgname"::'git+https://github.com/frescobaldi/qpageview.git')
 md5sums=('SKIP')

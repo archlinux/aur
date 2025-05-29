@@ -1,4 +1,4 @@
-pkgbase = qpageview-git
+pkgbase = python-qpageview-git
 	pkgdesc = A page based document viewer widget for Qt6/PyQt6.
 	pkgver = 1.0.0.r4.g4066284
 	pkgrel = 1
@@ -15,13 +15,11 @@ pkgbase = qpageview-git
 	depends = qt6-base
 	depends = qt6-svg
 	optdepends = python-pycups: Printing to a local CUPS server
-	provides = qpageview=1.0.0.r4.g4066284-1
 	provides = python-qpageview
-	conflicts = qpageview
 	conflicts = ly
 	conflicts = python-qpageview
 	options = !emptydirs
-	source = qpageview-git::git+https://github.com/frescobaldi/qpageview.git
+	source = python-qpageview-git::git+https://github.com/frescobaldi/qpageview.git
 	md5sums = SKIP
 
-pkgname = qpageview-git
+pkgname = python-qpageview-git
