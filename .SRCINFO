@@ -1,16 +1,16 @@
 pkgbase = keylightd-bin
 	pkgdesc = Daemon and CLI tool for managing Key Lights on your local network
-	pkgver = 0.0.18
+	pkgver = 0.0.19
 	pkgrel = 1
 	url = https://github.com/jmylchreest/keylightd
 	license = MIT
 	conflicts = keylightd
 	provides = keylightd
 	arch = aarch64
-	source_aarch64 = https://github.com/jmylchreest/keylightd/releases/download/v0.0.18/keylightd_0.0.18_linux_arm64.tar.gz
-	sha256sums_aarch64 = 7f1a98884c3369b99a463bb4e2245d1653dab34605ad46903bb6e05d4518d19e
+	source_aarch64 = https://github.com/jmylchreest/keylightd/releases/download/v0.0.19/keylightd_0.0.19_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9a0b2a4a77e75cfca7a1b2f325b21fd8ac7d3e5f1a2d6ededbdfd9f3e23d9629
 	arch = x86_64
-	source_x86_64 = https://github.com/jmylchreest/keylightd/releases/download/v0.0.18/keylightd_0.0.18_linux_amd64.tar.gz
-	sha256sums_x86_64 = d82f3e4fd8c5257a7cba749e2159140e1d6ecfb7e3bb71b8892871349b7456cf
+	source_x86_64 = https://github.com/jmylchreest/keylightd/releases/download/v0.0.19/keylightd_0.0.19_linux_amd64.tar.gz
+	sha256sums_x86_64 = 36e152080fbbe0b897b916371021021f0ef48cf9c1461a2cb77a4eabbfb17355
 	
 pkgname = keylightd-bin
