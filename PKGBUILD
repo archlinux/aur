@@ -12,7 +12,6 @@ makedepends=(
     'dotnet-sdk>=9.0'
     'clang'
     'zlib'
-    'curl'
 )
 
 source=("$pkgbase::git+https://github.com/BrycensRanch/SnapX.git")
@@ -21,7 +20,6 @@ sha256sums=('SKIP')
 build() {
     cd "$pkgbase"
     export VERSION=$pkgver
-    export PKGTYPE=ARCH
     ./build.sh --configuration Release
 }
 
@@ -47,9 +45,10 @@ package_snapx() {
         'xdg-utils'
     )
 
-     cd "$pkgbase"
-     ./build.sh install --prefix /usr --dest-dir "${pkgdir}" --skip compile
-     rm -f "${pkgdir}/usr/bin/snapx-ui"
+    cd "$pkgbase"
+    ./build.sh install --prefix /usr --dest-dir "${pkgdir}" --skip compile
+    rm -rf "${pkgdir}/usr/bin/libSkiaSharp.so"
+    rm -rf "${pkgdir}/usr/bin/libHarfBuzzSharp.so"
 }
 
 package_snapx-ui() {
@@ -62,4 +61,6 @@ package_snapx-ui() {
     # Keep the files only for Avalonia UI
     rm -rf "${pkgdir}/usr/share"
     rm -f "${pkgdir}/usr/bin/snapx"
+    rm -rf "${pkgdir}/usr/bin/libe_sqlite3.so"
+
 }
