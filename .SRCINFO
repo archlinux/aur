@@ -1,7 +1,7 @@
 pkgbase = wmcoincoin
 	pkgdesc = rss/board (like linuxfr.org's one) browser
 	pkgver = 2.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hules.free.fr/wmcoincoin/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = wmcoincoin
 	makedepends = pkgconfig
 	depends = gtk2
 	depends = imlib2
+	depends = libxmu
 	source = http://hules.free.fr/wmcoincoin/download/wmcoincoin-2.6.3.tar.gz
 	md5sums = ce2c4e08df0d9caf0663cbbb631da5de
 
 pkgname = wmcoincoin
-
