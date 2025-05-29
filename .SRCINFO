@@ -1,0 +1,16 @@
+pkgbase = catv
+	pkgdesc = Clipboard utility supporting text and binary files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/lambroulabs/catv
+	arch = any
+	license = MIT
+	depends = bash
+	optdepends = wl-clipboard: for Wayland clipboard support
+	optdepends = xclip: for X11 clipboard support
+	optdepends = xsel: alternative X11 clipboard tool
+	optdepends = pbcopy: macOS clipboard support
+	source = catv
+	md5sums = SKIP
+
+pkgname = catv

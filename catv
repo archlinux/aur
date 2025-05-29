@@ -1,0 +1,99 @@
+#!/bin/bash
+
+# catv: copy file contents to clipboard with basic syntax
+
+usage() {
+  echo "General Usage: catv <filename>"
+  echo "Additional flags: catv [--force-binary|-f] [--b64|-b] [--force-text|-t] <filename>"
+  exit 1
+}
+
+FORCE_BINARY=false
+FORCE_TEXT=false
+USE_BASE64=false
+
+POSITIONAL=()
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --force-binary|-f)
+      FORCE_BINARY=true
+      shift
+      ;;
+    --b64|-b)
+      USE_BASE64=true
+      shift
+      ;;
+    --force-text|-t)
+      FORCE_TEXT=true
+      shift
+      ;;
+    -*|--*)
+      echo "Unknown option: $1"
+      usage
+      ;;
+    *)
+      POSITIONAL+=("$1")
+      shift
+      ;;
+  esac
+done
+
+set -- "${POSITIONAL[@]}"
+
+FILE="$1"
+[ -z "$FILE" ] && usage
+[ ! -f "$FILE" ] && echo "Error: File '$FILE' not found." && exit 1
+
+FILE_SIZE_BYTES=$(stat -c%s "$FILE")
+FILE_SIZE=$(du -h "$FILE" | cut -f1)
+MIME_TYPE=$(file --brief --mime-type "$FILE")
+IS_TEXT=$(file "$FILE" | grep -qE 'text' && echo yes || echo no)
+
+if $FORCE_TEXT; then
+  MODE="text"
+elif $FORCE_BINARY || [ "$IS_TEXT" = "no" ]; then
+  MODE="binary"
+else
+  MODE="text"
+fi
+
+if command -v wl-copy >/dev/null 2>&1; then
+  CLIP_CMD="wl-copy"
+  HAS_WLCOPY=true
+elif command -v xclip >/dev/null 2>&1; then
+  CLIP_CMD="xclip -selection clipboard"
+  HAS_WLCOPY=false
+elif command -v xsel >/dev/null 2>&1; then
+  CLIP_CMD="xsel --clipboard --input"
+  HAS_WLCOPY=false
+elif command -v pbcopy >/dev/null 2>&1; then
+  CLIP_CMD="pbcopy"
+  HAS_WLCOPY=false
+else
+  echo "Error: No clipboard tool found."
+  exit 1
+fi
+
+if $USE_BASE64; then
+  base64 "$FILE" | eval "$CLIP_CMD"
+  METHOD="base64 ${MODE}"
+elif [ "$MODE" = "text" ]; then
+  cat "$FILE" | eval "$CLIP_CMD"
+  METHOD="plain text"
+else
+  if [ "$HAS_WLCOPY" = true ]; then
+    wl-copy --type application/octet-stream < "$FILE"
+    METHOD="file object (binary)"
+  else
+    echo "Warning: Raw binary file copy may not work properly with $CLIP_CMD"
+    cat "$FILE" | eval "$CLIP_CMD"
+    METHOD="raw binary fallback"
+  fi
+fi
+
+echo "Copied '$FILE' to clipboard as $METHOD"
+if [ "$MODE" = "text" ] || $USE_BASE64; then 
+  CHAR_COUNT=$(wc -m < "$FILE")
+  echo "Characters: $CHAR_COUNT"
+fi
+echo "File size: $FILE_SIZE"
