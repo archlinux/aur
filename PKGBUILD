@@ -2,11 +2,11 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 
 pkgname="dbt-core"
-pkgver=1.9.2
+pkgver=1.9.5
 pkgrel=1
 pkgdesc="Tool for data analysts to build analytics the way engineers build applications"
 arch=("any")
-url="https://getdbt.com/"
+url="https://www.getdbt.com/"
 license=("Apache")
 makedepends=("python")
 depends=(
@@ -33,7 +33,7 @@ depends=(
          "python-typing_extensions"
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbt-labs/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('f217ff2916d0afcd0601d4b13b5b89972071d2d77c337450a0dd3e10dca46d817a4afb6b7e83eda5972439a3bcd1a790a8d518f74878c7b3b97594c6fefd9ba1')
+b2sums=('149cfdfd5b86d234c6cf4d324098505376eabf047db9c8796f140ec4a9b1db53dcc28f4f2f5021bd57958a1482f2ec6e17fb8ce19804ab008b67c75c018fd1fc')
 
 build(){
  cd "$pkgname-$pkgver"
