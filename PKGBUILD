@@ -18,7 +18,7 @@ depends=(
     'util-linux-libs'
     'libsecret'
 )
-optdepends=('appindicator-gtk3')
+optdepends=('libappindicator-gtk3: for tray support')
 conflicts=('obsidian')
 provides=('obsidian')
 options=(!strip)
