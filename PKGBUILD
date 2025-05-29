@@ -1,9 +1,10 @@
-# Maintainer: lis
+# Maintainer: Mike_Went
+# Contributor: lis
 # Contributor: mis
 # Contributor: oslik
 pkgname=solvespace
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A parametric 3d CAD program"
 arch=('i686' 'x86_64')
 url='http://solvespace.com/'
@@ -22,6 +23,7 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}/build"
     cmake .. \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib/${pkgname} \
         -DCMAKE_BUILD_TYPE=Release \
