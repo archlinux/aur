@@ -18,7 +18,7 @@ source=("https://github.com/B-Lang-org/bsc/archive/refs/tags/$pkgver.tar.gz"
 		"fix-ldflags.patch"
 		"fix-stp-v2025.01.1.patch")
 noextract=("yices-src-for-bsc-$pkgver.tar.gz")
-sha256sums=('6b08d6893e454d26ab12a8b68c5b7383d2060e10817c9fb4d3d19084a4f740f5'
+sha256sums=('e82e1e9ff2f045dd29e304866f116d4680704b751e33efb4b81558f867bec01a'
             'a7211d089be68303983cc644b70edaae8efab529ff63fd8670a4f20119888781'
             '03b6c8b7fa05f37d0e9211c36764be88d624de63439b99b938eebd08be84cacd'
             '8f551d0a67c1d3b092b1681a341c3d3a580f18a22af57421b487332450ca7d40'
