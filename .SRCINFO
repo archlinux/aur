@@ -1,6 +1,6 @@
 pkgbase = bamtools
 	pkgdesc = C++ API & command-line toolkit for working with BAM data
-	pkgver = 2.5.2
+	pkgver = 2.5.3
 	pkgrel = 1
 	url = https://github.com/pezmaster31/bamtools
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bamtools
 	makedepends = cmake
 	depends = gcc-libs
 	depends = zlib
-	source = bamtools-2.5.2.tar.gz::https://github.com/pezmaster31/bamtools/archive/v2.5.2.tar.gz
-	sha256sums = 4d8b84bd07b673d0ed41031348f10ca98dd6fa6a4460f9b9668d6f1d4084dfc8
+	source = bamtools-2.5.3.tar.gz::https://github.com/pezmaster31/bamtools/archive/v2.5.3.tar.gz
+	sha256sums = 7d4e59bac7c03bde488fe43e533692f78b5325a097328785ec31373ffac08344
 
 pkgname = bamtools
