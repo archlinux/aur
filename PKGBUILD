@@ -2,10 +2,10 @@
 
 pkgname="nirius"
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility commands for the niri compositor"
 arch=("i686" "x86_64")
-url="https://git.sr.ht/~tsdh/nirius"
+url="https://sr.ht/~tsdh/nirius"
 license=("GPLv3")
 depends=("niri")
 makedepends=("rust" "cargo" "git")
