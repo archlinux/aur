@@ -3,12 +3,13 @@
 
 pkgname=python-mammoth
 pkgver=1.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Convert Word documents (.docx files) to HTML"
 arch=(any)
 url="https://github.com/mwilliamson/python-mammoth"
 license=(MIT)
 provides=(mammoth)
+conflicts=(mammoth)
 depends=(
   python
   python-cobble
