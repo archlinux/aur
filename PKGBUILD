@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk4' 'gdk-pixbuf2' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('62d7041e0d5727d3bd18132b4cfb5c1f3d923cfa201a943c4b11124c82c80476')
 
 prepare() {
   cd "$pkgname-$pkgver"
