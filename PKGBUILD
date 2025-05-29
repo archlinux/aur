@@ -2,7 +2,7 @@
 
 _name=scanpydoc
 pkgname=python-$_name
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc='A series of Sphinx extensions to get easy to maintain, numpydoc style documentation.'
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(python-sphinx)
 makedepends=(python-hatchling python-hatch-vcs python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('d515c2451a33982f7c9978b226a1861921e6e98d1e8a53b34dbb4c64c0767621')
+sha256sums=('c4b736627d4ed1cb4c53e7b434d1001bfdb651aa355832dec3d8ba2f56393476')
 
 build() {
 	cd "$_name-$pkgver"
