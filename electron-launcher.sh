@@ -25,4 +25,4 @@ export ELECTRON_IS_DEV
 : ${ELECTRON_FORCE_IS_PACKAGED:=true}
 export ELECTRON_FORCE_IS_PACKAGED
 
-exec /usr/lib/${name}/electron "${flags[@]}" "$@"
+exec /usr/lib/${name}/electron --gtk-version=3 "${flags[@]}" "$@"
