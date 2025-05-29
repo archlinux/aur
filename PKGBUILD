@@ -4,8 +4,8 @@
 
 pkgname=qgpgme-qt5
 _pkgbase=gpgme
-pkgver=1.23.2
-pkgrel=7
+pkgver=1.24.3
+pkgrel=1
 pkgdesc="Qt5 bindings for GPGme"
 arch=('x86_64')
 url='https://www.gnupg.org/related_software/gpgme/'
@@ -21,7 +21,7 @@ makedepends=(
 validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA'  # Werner Koch (dist signing 2020)
               'AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD') # Niibe Yutaka (GnuPG Release Key)
 source=("https://www.gnupg.org/ftp/gcrypt/${_pkgbase}/${_pkgbase}-${pkgver}.tar.bz2"{,.sig})
-sha256sums=('9499e8b1f33cccb6815527a1bc16049d35a6198a6c5fae0185f2bd561bce5224'
+sha256sums=('bfc17f5bd1b178c8649fdd918956d277080f33df006a2dc40acdecdce68c50dd'
             'SKIP')
 
 prepare() {
@@ -47,8 +47,6 @@ package() {
   cd ${_pkgbase}-${pkgver}/lang/qt
 
   make DESTDIR="${pkgdir}" install
-  install -d "${pkgdir}"/usr/include/qgpgme-qt5
-  mv "${pkgdir}"/usr/include/{qgpgme,QGpgME} "${pkgdir}"/usr/include/qgpgme-qt5/.
 
   mv "${pkgdir}"/usr/lib/cmake/QGpgme "${pkgdir}"/usr/lib/cmake/QGpgmeQt5
   mv "${pkgdir}"/usr/lib/cmake/QGpgmeQt5/QGpgmeConfig.cmake "${pkgdir}"/usr/lib/cmake/QGpgmeQt5/QGpgmeQt5Config.cmake
