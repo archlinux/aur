@@ -21,8 +21,4 @@ pkgname = uutils-coreutils-selinux
 
 pkgname = coreutils-uutils-selinux
 	pkgdesc = (Really dangerous) Swap coreutils with uutils (SELinux build)
-	depends = gcc-libs
-	depends = glibc
-	depends = oniguruma
-	depends = libselinux
 	depends = uutils-coreutils-selinux
