@@ -327,6 +327,21 @@ index 765e83fbec2..f6425079414 100644
              sage: x._from_value(x.value) is x                                           # needs sage.graphs
              True
          """
+diff --git a/src/sage/misc/sageinspect.py b/src/sage/misc/sageinspect.py
+index a19dee3b509..028e0cf16cb 100644
+--- a/src/sage/misc/sageinspect.py
++++ b/src/sage/misc/sageinspect.py
+@@ -202,7 +202,9 @@ def isclassinstance(obj):
+             # Starting with Cython 3, Cython's builtin types have __module__ set
+             # to the shared module names like _cython_3_0_0.
+             not (isinstance(obj.__class__.__module__, str) and
+-                 obj.__class__.__module__.startswith('_cython_')))
++                 obj.__class__.__module__.startswith('_cython_')) and
++            # In Cython 3.1, they have 'member_descriptor' type
++            'cython_function_or_method' not in str(obj.__class__.__module__))
+ 
+ 
+ # Parse strings of form "File: sage/rings/rational.pyx (starting at line 1080)"
 diff --git a/src/sage/rings/polynomial/polynomial_element.pyx b/src/sage/rings/polynomial/polynomial_element.pyx
 index a1ac4d302b8..22b03137f9c 100644
 --- a/src/sage/rings/polynomial/polynomial_element.pyx

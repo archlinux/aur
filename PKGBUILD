@@ -141,7 +141,7 @@ source=(git+https://github.com/sagemath/sage#branch=develop
         cython-3.1.patch)
 sha256sums=('SKIP'
             'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09'
-            'fc35f7f2ff9da7b80b7374479bc879e0f524ede253973075adeff60bdd44e895')
+            '9767a263c6f5f0bbaabbd9aae60fbc592ccd5e9c8536edea5c2774b566d9845b')
 
 pkgver() {
   cd sage
