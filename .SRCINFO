@@ -1,6 +1,6 @@
 pkgbase = e-search
 	pkgdesc = 识屏 · 搜索
-	pkgver = 14.6.3
+	pkgver = 14.7.4
 	pkgrel = 1
 	url = https://github.com/xushengfeng/eSearch
 	install = e-search.install
@@ -17,7 +17,7 @@ pkgbase = e-search
 	conflicts = e-search-git
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/xushengfeng/eSearch/releases/download/14.6.3/eSearch_14.6.3.aur
-	sha512sums = 9773e1e0fd9e7c0ad7f2596c7572b88b98fa14a199e0d58fbcd71dedd4c173fe35008cefe43741572246fc1df3b84ea610d15dcfab8e9957d1ce0c5ec0986ab4
+	source = https://github.com/xushengfeng/eSearch/releases/download/14.7.4/eSearch_14.7.4.aur
+	sha512sums = 8ef661686b460ae4cc8077c326d7387c39006966fa1f0df2ee5d461c00ad835b3630d4261550df088b701690b6c75064dc51a29843d193658f5ed71ce1885c42
 
 pkgname = e-search
