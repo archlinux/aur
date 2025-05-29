@@ -1,6 +1,6 @@
 pkgname=aocl-blis
 pkgver=5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="BLAS-like Library Instantiation Software Framework, AOCL branding"
 arch=('x86_64')
 url="https://github.com/amd/blis"
@@ -10,16 +10,16 @@ provides=('blas' 'cblas')
 conflicts=('blas' 'cblas')
 _blasver=3
 makedepends=('python' 'cmake' 'ninja')
-_tag_str="AOCL-$pkgver-GA"
+_tag_str="$pkgver"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/amd/blis/archive/$_tag_str.tar.gz")
-sha256sums=('de75e940d57fdcf3ed868c15774412cdfb7e92bebf60fb9e418f86d7dde6e923')
+sha256sums=('4ab210cea8753f4be9646a3ad8e6b42c7d19380084a66312497c97278b8c76a4')
 
 
 # Overriding -march with generic causes build issues
 export CFLAGS=${CFLAGS/-march=x86-64/}
 export CXXFLAGS=${CXXFLAGS/-march=x86-64/}
 
-# gcc14 is required until upstream flame/blis#845 is resolved or patched
+
 makedepends+=('gcc14' 'gcc14-fortran')
 depends+=('gcc14-libs')
 export FC=/usr/bin/gfortran-14
