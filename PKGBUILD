@@ -34,6 +34,6 @@ package() {
   python setup.py install --root "$pkgdir"
   DESTDIR=$pkgdir meson install -C build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm644 LICENSE-gpl3 "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-gpl3"
-  install -Dm644 LICENSE-lgpl3 "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-lgpl3"
+  install -Dm644 LICENSE-gpl3.txt "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-gpl3"
+  install -Dm644 LICENSE-lgpl3.txt "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-lgpl3"
 }
