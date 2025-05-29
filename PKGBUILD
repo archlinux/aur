@@ -10,7 +10,7 @@ pkgname='kea_config'
 pkgdesc='Manage kea dhcp4 configs from single source config'
 _gitname='kea_config'
 
-pkgver=4.15.0
+pkgver=4.16.0
 pkgrel=1
 url="https://github.com/gene-git/kea_config"
 
@@ -54,3 +54,4 @@ package() {
     ./scripts/do-install ${pkgdir}
 }
 # vim:set ts=4 sts=4 sw=4 et:
+
