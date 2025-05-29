@@ -1,0 +1,67 @@
+#!/bin/bash
+
+_appname="stable-diffusion-webui"
+_appprefix="/opt"
+_appdataprefix="/var/opt"
+_apphome="${_appprefix}/${_appname}"
+_appdata="${_appdataprefix}/${_appname}"
+_model_url="https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors"
+_model_hash="6ce0161689b3853acaa03779ec93eafe75a02f4ced659bee03f50797806fa2fa"
+_model_filename="v1-5-pruned-emaonly.safetensors"
+
+pre_install() {
+    echo "Creating user sdwebui..."
+    getent passwd sdwebui >/dev/null || useradd -r -s /bin/false -d "$_apphome" sdwebui
+}
+
+_install() {
+    echo "Setting up directories..."
+    mkdir -p "${_apphome}" "${_appdata}" "/etc/${_appname}"
+
+    echo "Fixing permissions..."
+    chown -R sdwebui:sdwebui "${_apphome}" "${_appdata}" || return 1
+    chmod -R g+w "${_appdata}" || return 1
+
+    if [ ! -d "${_apphome}/venv" ]; then
+        echo "Creating Python virtual environment..."
+        su sdwebui -s /bin/bash -c "python3.11 -m venv ${_apphome}/venv" || return 1
+    fi
+
+    echo "Preparing Python environment..."
+    su sdwebui -s /bin/bash -c "cd ${_apphome} && ./venv/bin/python -c 'from modules.launch_utils import prepare_environment; prepare_environment()'" || return 1
+
+    # Install default config if not present
+    if [ ! -f "/etc/${_appname}/webui.conf" ]; then
+        echo "Installing default config file..."
+        install -Dm644 "/usr/share/${_appname}/webui.conf" "/etc/${_appname}/webui.conf"
+    fi
+
+    # Download model if needed
+    model_path="/usr/share/${_appname}/models/Stable-diffusion/${_model_filename}"
+    current_hash=""
+    if [[ -f "$model_path" ]]; then
+        current_hash=$(sha256sum "$model_path" | cut -d ' ' -f 1)
+    fi
+
+    if [[ "$current_hash" == "$_model_hash" ]]; then
+        echo "Model already exists and is up to date."
+    else
+        echo "Downloading model from Hugging Face..."
+        mkdir -p "$(dirname "$model_path")"
+        wget --progress=bar:force:noscroll -O "$model_path" "$_model_url" || return 1
+    fi
+}
+
+post_install() {
+    _install || { echo -e "\nERROR: Failed to install and configure ${_appname}\n"; return 1; }
+}
+
+post_upgrade() {
+    _install || { echo -e "\nERROR: Failed to upgrade and reconfigure ${_appname}\n"; return 1; }
+}
+
+post_remove() {
+    echo "Removing application home: ${_apphome}"
+    rm -rf "${_apphome}"
+}
+

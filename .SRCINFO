@@ -1,0 +1,25 @@
+pkgbase = stable-diffusion-webui
+	pkgdesc = Stable Diffusion Web UI (AUTOMATIC1111)
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = https://github.com/AUTOMATIC1111/stable-diffusion-webui
+	install = stable-diffusion-webui.install
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	depends = python311
+	depends = wget
+	optdepends = xorg-xhost: GUI forwarding for remote access
+	optdepends = nvidia-utils: Required for CUDA
+	provides = stable-diffusion-webui
+	conflicts = stable-diffusion-webui-git
+	noextract = v1-5-pruned-emaonly.safetensors
+	options = !strip
+	source = stable-diffusion-webui::git+https://github.com/AUTOMATIC1111/stable-diffusion-webui.git#tag=v1.10.1
+	source = stable-diffusion-webui.service
+	source = webui.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = stable-diffusion-webui

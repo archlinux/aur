@@ -1,0 +1,30 @@
+[Unit]
+Description=Stable Diffusion Web UI
+After=network.target
+
+[Service]
+Type=simple
+User=sdwebui
+Group=sdwebui
+WorkingDirectory=/opt/stable-diffusion-webui
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=/etc/stable-diffusion-webui/webui.conf
+ExecStart=/bin/bash -c '\
+    : "${DATA_DIR:=/var/opt/stable-diffusion-webui}"; \
+    srcdir="/usr/share/stable-diffusion-webui/models/Stable-diffusion"; \
+    destdir="${DATA_DIR}/models/Stable-diffusion"; \
+    modelfile="v1-5-pruned-emaonly.safetensors"; \
+    mkdir -p "$destdir" && \
+    [ ! -f "$destdir/$modelfile" ] && cp "$srcdir/$modelfile" "$destdir/"; \
+    exec /opt/stable-diffusion-webui/venv/bin/accelerate \
+    launch ${ACCELERATE_FLAGS:+$ACCELERATE_FLAGS} \
+    /opt/stable-diffusion-webui/launch.py \
+    --data-dir "$DATA_DIR" ${WEBUI_FLAGS:+$WEBUI_FLAGS}'
+
+Restart=always
+StartLimitInterval=120
+StartLimitBurst=15
+UMask=007
+
+[Install]
+WantedBy=multi-user.target
