@@ -31,7 +31,7 @@ pkgname = python-ginga
 	optdepends = python-exifread>=2.3.2: recommended
 	optdepends = python-beautifulsoup4>=4.3.2
 	optdepends = python-astroquery>=0.3.5: required by Catalogs
-	optdepends = python-dateuil: to display help for plugins
+	optdepends = python-dateutil: to display help for plugins
 	optdepends = python-photutils
 	optdepends = python-fitsio: for opening FITS files
 	optdepends = python-astlib: for WCS resolution

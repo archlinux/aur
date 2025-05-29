@@ -55,7 +55,7 @@ package() {
                 'python-exifread>=2.3.2: recommended'
                 'python-beautifulsoup4>=4.3.2'
                 'python-astroquery>=0.3.5: required by Catalogs'
-                'python-dateuil: to display help for plugins'
+                'python-dateutil: to display help for plugins'
                 'python-photutils'
                 'python-fitsio: for opening FITS files'
                 'python-astlib: for WCS resolution'
