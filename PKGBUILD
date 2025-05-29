@@ -2,8 +2,8 @@
 
 pkgbase=magiskboot-git
 pkgname=magiskboot-git
-pkgver=28102.81.r9.g44bac7a
-pkgrel=1
+pkgver=28102.81.r33.gdb45739
+pkgrel=2
 pkgdesc="Magiskboot_ndk"
 arch=($CARCH)
 url="https://github.com/xiaoxindada/magiskboot_ndk_on_linux"
@@ -45,18 +45,23 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}/native"
 
     if [ ${CARCH} = "x86_64" ]; then
-        install -Dm755 out/$arch/magiskboot ${pkgdir}/usr/bin/magiskboot
+        install -Dm755 out/x86_64/magiskboot ${pkgdir}/usr/bin/magiskboot
+        install -Dm755 out/x86_64/magiskinit ${pkgdir}/usr/bin/magisinit
     elif [ ${CARCH} = "aarch64" ]; then
         install -Dm755 out/arm64-v8a/magiskboot ${pkgdir}/usr/bin/magiskboot
+        install -Dm755 out/arm64-v8a/magiskinit ${pkgdir}/usr/bin/magiskinit
     elif [ ${CARCH} = "i686" ]; then
         install -Dm755 out/x86/magiskboot ${pkgdir}/usr/bin/magiskboot
+        install -Dm755 out/x86/magiskinit ${pkgdir}/usr/bin/magisinit
     elif [ ${CARCH} = "armv7h" ]; then
         install -Dm755 out/armeabi-v7a/magiskboot ${pkgdir}/usr/bin/magiskboot
+        install -Dm755 out/armeabi-v7a/magiskinit ${pkgdir}/usr/bin/magiskinit
     elif [ ${CARCH} = "riscv64" ]; then
         install -Dm755 out/riscv64/magiskboot ${pkgdir}/usr/bin/magiskboot
+        install -Dm755 out/riscv64/magiskinit ${pkgdir}/usr/bin/magiskinit
     fi
 
 }
