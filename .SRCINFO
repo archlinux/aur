@@ -7,6 +7,7 @@ pkgbase = windutils
 	source = syssertui.sh
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = iwdtui
 	pkgdesc = A TUI made with gum for iwd.
@@ -18,3 +19,10 @@ pkgname = syssertui
 	pkgdesc = A TUI made with gum for systemctl basic functions.
 	groups = windutils
 	depends = gum
+
+pkgname = windutils-meta
+	pkgdesc = A collection of TUIs made with gum for popular CLIs.
+	groups = windutils
+	depends = gum
+	depends = iwdtui
+	depends = syssertui
