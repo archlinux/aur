@@ -1,16 +1,17 @@
-# Maintainer: weebney <weebney at gmail dot com>
+# Maintainer: W. Turner Abney <wta at ieee dot org>
 pkgname=webcamize
-pkgver=1.2.0
-pkgrel=2
-pkgdesc="Use any camera as a webcam—DSLR, mirrorless, camcorder, point-and-shoot, and even some smartphones/tablets! "
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Use (almost) any camera as a webcam"
 arch=('any')
-url="https://github.com/weebney/webcamize"
+url="https://github.com/cowtoolz/webcamize"
 license=('BSD-2-Clause')
-depends=('ffmpeg' 'gphoto2' 'v4l2loopback-dkms' 'linux-headers')
+depends=('ffmpeg' 'libgphoto2' 'kmod' 'linux-headers' 'v4l2loopback-dkms')
 source=("$pkgname-$pkgver::git+$url.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "./webcamize" "$pkgdir/usr/bin/webcamize"
+  make
+  install -Dm755 "./bin/webcamize" "$pkgdir/usr/bin/webcamize"
 }
