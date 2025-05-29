@@ -1,14 +1,18 @@
 pkgbase = windutils
-	pkgdesc = A collection of useful TUIs for CLIs. Curently for iwd and system services.
 	pkgver = 1.0
 	pkgrel = 1
 	arch = any
 	license = MIT
-	depends = gum
-	depends = iwd
 	source = iwdtui.sh
 	source = syssertui.sh
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = windutils
+pkgname = iwdtui
+	pkgdesc = A TUI made with gum for iwd.
+	depends = gum
+	depends = iwd
+
+pkgname = syssertui
+	pkgdesc = A TUI made with gum for systemctl basic functions.
+	depends = gum
