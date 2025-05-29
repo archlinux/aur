@@ -1,11 +1,21 @@
 pkgbase = arsenal
-	pkgdesc = Arsenal is just a quick inventory and launcher for hacking programs
-	pkgver = 1.1.0
+	pkgdesc = Quick inventory and launcher for hacking programs
+	pkgver = 1.2.7.0.g7fc3af8
 	pkgrel = 1
 	url = https://github.com/Orange-Cyberdefense/arsenal
 	arch = any
 	license = GPL
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python>=3.7
+	depends = python-libtmux
+	depends = python-docutils
+	depends = python-pyperclip
+	depends = python-yaml
+	optdepends = python-pyfzf
 	source = arsenal::git+https://github.com/Orange-Cyberdefense/arsenal.git
 	sha512sums = SKIP
 
