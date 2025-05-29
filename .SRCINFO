@@ -1,7 +1,7 @@
 pkgbase = solvespace
 	pkgdesc = A parametric 3d CAD program
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://solvespace.com/
 	arch = i686
 	arch = x86_64
