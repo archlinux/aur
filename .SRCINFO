@@ -10,9 +10,11 @@ pkgbase = windutils
 
 pkgname = iwdtui
 	pkgdesc = A TUI made with gum for iwd.
+	groups = windutils
 	depends = gum
 	depends = iwd
 
 pkgname = syssertui
 	pkgdesc = A TUI made with gum for systemctl basic functions.
+	groups = windutils
 	depends = gum
