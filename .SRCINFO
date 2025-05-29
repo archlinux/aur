@@ -1,6 +1,6 @@
 pkgbase = python-hatch-docstring-description
 	pkgdesc = Derive PyPI package description from Python package docstring.
-	pkgver = 1.0.3
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/flying-sheep/hatch-docstring-description
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-hatch-docstring-description
 	makedepends = python-wheel
 	depends = python
 	depends = python-hatchling
-	source = https://files.pythonhosted.org/packages/source/h/hatch-docstring-description/hatch_docstring_description-1.0.3.tar.gz
-	sha256sums = e047997faed9c86725ec88d7574ee208d90998e8d322fb96c485c3d502b26291
+	source = https://files.pythonhosted.org/packages/source/h/hatch-docstring-description/hatch_docstring_description-1.1.1.tar.gz
+	sha256sums = b15d93c273ba3736abc9e2c542bb42a728a6740703ff5ed85cc072ed49458ae3
 
 pkgname = python-hatch-docstring-description
