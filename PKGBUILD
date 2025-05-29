@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=136.0.7103.113
+pkgver=137.0.7151.55
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -36,15 +36,17 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver-lite.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
-        add-more-CFI-suppressions-for-inline-PipeWire-functions.patch
+        disable-clang-fextend-variable-liveness.patch
+        pdfium-fix-build-with-system-libpng.patch
         chromium-136-drop-nodejs-ver-check.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         disable-clang-warning-suppression-flag.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('2eec4669d1aa6c72f7df0e5f3b106751996eed2b0e1edd7ac0dc59a74ca010d8'
+sha256sums=('7b8fa89febed9fae0297c8175bd35cc912d794fbf03d33a121a0bc9d3d13ef34'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'd3dd9b4132c9748b824f3dcf730ec998c0087438db902bc358b3c391658bebf5'
+            '2d98a7a6a553fb5c17c4bfe36f011410f377afa12a6a818ba36543dc9a258f4a'
+            'de3222b13d3a49628a00fd74acae633912b830f78c2de452d3bdff3d0e42026d'
             '32f0080282fc0b2795a342bf17fcb3db4028c5d02619c7e304222230ba99d5fe'
             'cc8a71a312e9314743c289b7b8fddcc80350a31445d335f726bb2e68edf916d1'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
@@ -74,7 +76,7 @@ optdepends=("${optdepends[@]}"
 source=(${source[@]}
         ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
 sha256sums=(${sha256sums[@]}
-            'ab4c1b21292b860eaa750d3fb9ee73dae58a86d2dd59d4e41e06102e8c9f635a')
+            '68ec6108c64ee516ed925d0b0ea44c2dc3d5973da92eb91f2788f7075596ddd6')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -137,7 +139,8 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
-  patch -Np1 -i ../add-more-CFI-suppressions-for-inline-PipeWire-functions.patch
+  patch -Np1 -i ../disable-clang-fextend-variable-liveness.patch
+  patch -d third_party/pdfium -Np1 <../pdfium-fix-build-with-system-libpng.patch
 
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-136-drop-nodejs-ver-check.patch
