@@ -6,9 +6,9 @@ _pkgname=Dopamine
 __pkgname=dopamine
 pkgname=dopamine-appimage-preview
 __pkgver=3.0.0-preview
-_prevver=37
+_prevver=38
 _pkgver=${__pkgver}.${_prevver}
-pkgver=${_pkgver//-/.}+1
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="The audio player that keeps it simple"
 arch=('x86_64')
@@ -21,7 +21,7 @@ options=(!strip)
 source_x86_64=(https://github.com/digimezzo/dopamine/releases/download/v${__pkgver}.${_prevver}/Dopamine-${__pkgver}.${_prevver}.AppImage)
 source=("dopamine.desktop")
 sha512sums=('79ecf7f1bd5f9562289a945f4e07a17adce0e5de9ea005b3b791bc66c2ef3890cc144af4c9364464dd4c34b4789f03b0e56fc743b2ec9d26fab9dcb4f9c3a255')
-sha512sums_x86_64=('25cfa9366aa11870f7a5ee8ed48d73a546d749ed2f42377fb41f5f228f6bb5398677dcd072aad04131eb994b7174ab75474c22f1849345342f104f46b8629059')
+sha512sums_x86_64=('2d16434ea3501243e2021b5b329f546f1570d25d3da6d6d45e1045c60f1f13b7e29e36e01150d675285a9272b1d0505178f5e47b7f711c18083d41c9704e4a61')
 
 prepare() {
     chmod u+x      ${srcdir}/${_pkgname}-${_pkgver}.AppImage
