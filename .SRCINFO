@@ -1,6 +1,6 @@
 pkgbase = amdgpu_top-tui-bin
 	pkgdesc = Tool to display AMDGPU usage (TUI only version, binary release)
-	pkgver = 0.10.4
+	pkgver = 0.10.5
 	pkgrel = 1
 	url = https://github.com/Umio-Yasuno/amdgpu_top
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = amdgpu_top-tui-bin
 	depends = libdrm
 	provides = amdgpu_top
 	conflicts = amdgpu_top
-	source = https://github.com/Umio-Yasuno/amdgpu_top/releases/download/v0.10.4/amdgpu-top_without_gui_0.10.4-1_amd64.deb
-	sha256sums = df976dcce776541a8a55413b0f12016307412e4532b8ae64beb31146996dfc8d
+	source = https://github.com/Umio-Yasuno/amdgpu_top/releases/download/v0.10.5/amdgpu-top_without_gui_0.10.5-1_amd64.deb
+	sha256sums = 81d89c6b4fb55bf117c0d5066d44ccf774fdd9fe47a87260065de2c5ad1d3e9d
 
 pkgname = amdgpu_top-tui-bin
