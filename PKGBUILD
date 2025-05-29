@@ -1,26 +1,21 @@
 # Maintainer: mokurin000 <mokurin000@gmail.com>
 
-pkgname=(fitgirl-ddl-git fitgirl-ddl-gui-git)
+pkgname=fitgirl-ddl-git
 pkgdesc="fitgirl-repacks.site extractor"
 _pkgname=fitgirl-ddl
-pkgver=r25.g42343f1
-pkgrel=3
+pkgver=r27.g6fac928
+pkgrel=1
 url="https://github.com/mokurin000/fitgirl-ddl"
 arch=('x86_64' 'aarch64')
 license=('MIT')
-depends=(
-    'gcc-libs' 'curl' 'glibc'
-)
+depends=(gcc-libs glibc libcurl.so=4-64)
 makedepends=(
-    'rust' 'git' 'qt6-base' 'clang'
+    'rust' 'git'
 )
 
 source=("git+${url}.git")
 
 sha256sums=('SKIP')
-
-# fix building _gui variant
-options=(!lto)
 
 prepare() {
     cd "${_pkgname}"
@@ -36,29 +31,6 @@ pkgver() {
     echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
-package_fitgirl-ddl-git() {
-    conflicts=('fitgirl-ddl')
-    provides=('fitgirl-ddl')
-
-    cd "${_pkgname}"
-
-    install -vDm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
-    install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}-git"
-}
-
-
-package_fitgirl-ddl-gui-git() {
-    conflicts=('fitgirl-ddl-gui')
-    provides=('fitgirl-ddl-gui')
-    pkgdesc+=" (GUI version)"
-    depends+=('qt6-base')
-
-    cd "${_pkgname}"
-
-    install -vDm755 "target/release/${_pkgname}_gui" -t "${pkgdir}/usr/bin/"
-    install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}-gui-git"
-}
-
 build() {
     cd "${_pkgname}"
 
@@ -67,5 +39,14 @@ build() {
 
     export RUSTFLAGS="-C link-args=-flto"
     cargo build --frozen --release --bin ${_pkgname}
-    cargo build --frozen --release --bin ${_pkgname}_gui --no-default-features -F qt
+}
+
+package() {
+    conflicts=('fitgirl-ddl')
+    provides=('fitgirl-ddl')
+
+    cd "${_pkgname}"
+
+    install -vDm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
+    install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}-git"
 }

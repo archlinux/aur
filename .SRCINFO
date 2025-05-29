@@ -1,31 +1,19 @@
 pkgbase = fitgirl-ddl-git
 	pkgdesc = fitgirl-repacks.site extractor
-	pkgver = r25.g42343f1
-	pkgrel = 3
+	pkgver = r27.g6fac928
+	pkgrel = 1
 	url = https://github.com/mokurin000/fitgirl-ddl
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = rust
 	makedepends = git
-	makedepends = qt6-base
-	makedepends = clang
 	depends = gcc-libs
-	depends = curl
 	depends = glibc
-	options = !lto
+	depends = libcurl.so=4-64
 	source = git+https://github.com/mokurin000/fitgirl-ddl.git
 	sha256sums = SKIP
 
 pkgname = fitgirl-ddl-git
 	provides = fitgirl-ddl
 	conflicts = fitgirl-ddl
-
-pkgname = fitgirl-ddl-gui-git
-	pkgdesc = fitgirl-repacks.site extractor (GUI version)
-	depends = gcc-libs
-	depends = curl
-	depends = glibc
-	depends = qt6-base
-	provides = fitgirl-ddl-gui
-	conflicts = fitgirl-ddl-gui
