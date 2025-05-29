@@ -1,0 +1,18 @@
+pkgbase = royal-blocks
+	pkgdesc = A homemade Royal Tetris in C++
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/ulb-info2-group5/Tetris-Blocks
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	makedepends = qt5-base
+	depends = qt5-base
+	options = !debug
+	options = strip
+	source = https://github.com/ulb-info2-group5/Royal-Blocks/releases/download/v1.1.1/royal-blocks-1.1.1-x86_64.pkg.tar.zst
+	sha256sums = 10421b488df7f508378e28d73ec97a5143c5d9551a44e9c4fc4d96f581042812
+
+pkgname = royal-blocks
