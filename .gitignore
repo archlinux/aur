@@ -1,0 +1,4 @@
+src/
+pkg/
+ShokoServer/
+*.pkg.tar.zst

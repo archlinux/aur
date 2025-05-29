@@ -1,0 +1,30 @@
+PKGNAME=ani-rss
+USER=$PKGNAME
+
+link_config() {
+  ln -f "/var/lib/${PKGNAME}/config/config.json" "/etc/${PKGNAME}/config.json"
+}
+link_log() {
+  ln -sf "/var/log/${PKGNAME}" "/var/lib/${PKGNAME}/config/logs"
+  chown $USER: "/var/lib/${PKGNAME}/config/logs" "/var/log/${PKGNAME}"
+}
+
+## arg 1:  the new package version
+post_install() {
+  if ! id -u ${PKGNAME} > /dev/null 2>&1; then
+    useradd --system --shell '/usr/bin/nologin' --create-home --home-dir "/var/lib/${PKGNAME}" $USER
+  fi
+  mkdir "/var/lib/${PKGNAME}/config"
+  chown --recursive $USER: "/var/lib/${PKGNAME}" "/etc/${PKGNAME}"
+  link_config
+  link_log
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  link_config
+  link_log
+}
+
+
