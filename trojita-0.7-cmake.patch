@@ -1,0 +1,23 @@
+diff -rauN trojita-0.7/CMakeLists.txt trojita-0.7-cmake-patch/CMakeLists.txt
+--- trojita-0.7/CMakeLists.txt	2016-06-15 09:17:23.000000000 +0200
++++ trojita-0.7-cmake-patch/CMakeLists.txt	2025-05-29 11:54:11.533973841 +0200
+@@ -4,8 +4,8 @@
+ # Qt5's qt5_use_modules need 2.8.9+
+ # On win32, we need QtMain linking, which means 2.8.11+
+ # EL7 ships 2.8.11, Debian 8 ships 3.0.2, and Ubuntu 14.04 LTS has 2.8.12
+-cmake_minimum_required(VERSION 2.8.11)
+-cmake_policy(SET CMP0020 NEW)
++cmake_minimum_required(VERSION 3.5)
++#cmake_policy(SET CMP0020 NEW)
+ 
+ if(POLICY CMP0054)
+     # Silence warnings in TrojitaOption.cmake; we are fine with only doing the
+@@ -15,7 +15,7 @@
+ 
+ if(POLICY CMP0043)
+     # We make use of CMAKE_CXXFLAGS_DEBUG...
+-    cmake_policy(SET CMP0043 OLD)
++#    cmake_policy(SET CMP0043 OLD)
+ endif()
+ 
+ # Set a default build type if none was specified. This was shamelessly stolen
