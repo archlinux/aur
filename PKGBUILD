@@ -4,7 +4,7 @@
 
 pkgname=qstat
 pkgver=2.17
-pkgrel=2
+pkgrel=3
 pkgdesc="A command-line program that displays information about Internet game servers."
 url="https://github.com/Unity-Technologies/qstat"
 arch=('i686' 'x86_64')
@@ -12,8 +12,13 @@ license=('Artistic-2.0')
 depends=('glibc')
 conflicts=('qstat-cvs' 'qstat-svn' 'qstat-git')
 backup=('etc/qstat.cfg')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Unity-Technologies/qstat/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('880549d220a9a9046910bc2e5564b09349870110c77249b66d2ca77143327c83473da31c00e7b70df45f48e6a5bcb3310487f73983d745a69e6aa6278a125278')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Unity-Technologies/qstat/archive/refs/tags/v${pkgver}.tar.gz" "${pkgname}-${pkgver}-remove-unneeded-cast.patch")
+b2sums=('e66aad52931443183ad91b19d5ed775c78babb0a5bd679c57fdf4c0ef604aab4e071bd16f97d151b84eb0b9b9814da271342a3494ec4123c5cf0ca10a8786341'
+        'f1c4eeef81acf65678dc06e6a2fd2eade06156112c14e557443141a8662efb56ef1241e7b7ce7e16c0e02725643366d13d6cb5c78d9ea35de7e13ee8b9b7428b')
+
+prepare() {
+    patch -d "${pkgname}-${pkgver}" -Np1 -i "../${pkgname}-${pkgver}-remove-unneeded-cast.patch"
+}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
