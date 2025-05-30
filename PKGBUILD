@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=scotty
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Transfer listens and loves between music services"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+$url#tag=v${pkgver}")
-sha256sums=('efdec43a6e69136f8ac03db840c9ec109b64cc9cf7710ee3f1606d56be5dc3b7')
+sha256sums=('1917525c5acf9ef66de4a9eb2fc8311593b3c82f7e4e630d0011d0c75870dc66')
 
 build() {
 	cd "$srcdir/$pkgname"
