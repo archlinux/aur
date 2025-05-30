@@ -3,8 +3,9 @@ folder_name="lucidglyph"
 
 pkgname=("lucidglyph")
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 arch=('any')
+description='Carefully tuned adjustments designed to improve font rendering on Linux systems packaged for Arch Linux. It is patched to install the package globally and deal with an individual file at `/etc/environment.d` file, unlike the original that manually patches `/etc/environment` file directly.'
 source=(
   "$folder_name::git+https://github.com/maximilionus/lucidglyph#tag=v$pkgver"
   "0001-allow-changing-uninstall-file-absolute-path.patch"
@@ -33,19 +34,7 @@ depends=(
   "pam"
   "freetype2"
 )
-provides=(
-  "lucidglyph"
-  "fontconfig-envision"
-  "freetype-envision-normal"
-  "freetype-envision-full"
-)
-replaces=(
-  "lucidglyph"
-  "fontconfig-envision"
-  "freetype-envision-normal"
-  "freetype-envision-full"
-)
-license=("GPL")
+license=("GPL-3.0")
 url="https://github.com/maximilionus/lucidglyph"
 
 build() {
@@ -83,4 +72,10 @@ package() {
   )
 
   env "${env_args[@]}" ./lucidglyph.sh install || exit 1
+
+  # Remove /usr/share/lucidglyph/info
+  rm --verbose "$pkgdir/usr/share/lucidglyph/info"
+
+  # Remove empty files and directories
+  find "$pkgdir" -empty -delete
 }
