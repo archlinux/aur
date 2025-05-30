@@ -1,0 +1,5 @@
+[libctl]
+source='github'
+github='NanoComp/libctl'
+use_latest_release=true
+prefix='v'
