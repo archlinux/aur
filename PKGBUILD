@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
 _pkgname=NVM-Desktop
-pkgver=4.0.8
+pkgver=4.0.9
 _nvmdver="${pkgver}"
 _nodeversion=20
 pkgrel=1
@@ -34,9 +34,9 @@ source_x86_64=("nvmd-${_nvmdver}-x86_64::${_nvmdurl}/releases/download/v${_nvmdv
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('8914d77965b8f098415109f554874cfa1c83f51e6694ed3ff4da3ba0fda13165')
-sha256sums_aarch64=('84b8fd74d6656ab16f6575a570432c860ba8f6dd70827db4371630b918f49300')
-sha256sums_x86_64=('2aca6a012178035198f4bfc80fb853d673387866782f78f743f53101c0ba692d')
+sha256sums=('ce02b5735b518a5ff35fc4b225b6e7603e5e2972b96ec7c063be62782563570f')
+sha256sums_aarch64=('a81f8cbd08024195e226f92adc4113a32625042c6b87d536651d6ef62599c1af')
+sha256sums_x86_64=('f204caff56970e8941c0e542aab22a652dc0b062101e430e577962eea6b85d54')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -45,7 +45,12 @@ _ensure_local_nvm() {
 }
 prepare() {
     _ensure_local_nvm
-    gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${pkgname}" --exec="${pkgname} %U"
+    gendesk -f -n -q \
+        --pkgname="${pkgname}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Development" \
+        --name="${pkgname}" \
+        --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
     install -Dm755 "${srcdir}/nvmd-${_nvmdver}-${CARCH}" "${srcdir}/${pkgname}-${pkgver}/src-tauri/resources/nvmd"
     HOME="${srcdir}/.electron-gyp"
