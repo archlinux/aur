@@ -1,0 +1,15 @@
+[Unit]
+Description=torrcli torrent daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -m torrcli.daemon.daemon
+Restart=on-failure
+User=root
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=torrcli
+
+[Install]
+WantedBy=multi-user.target

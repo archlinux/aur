@@ -1,0 +1,18 @@
+post_install() {
+    echo "Enabling and starting torrcli service..."
+    systemctl daemon-reload
+    systemctl enable --now torrcli.service
+}
+
+post_upgrade() {
+    echo "Reloading daemon and restarting torrcli service..."
+    systemctl daemon-reload
+    systemctl restart torrcli.service
+}
+
+pre_remove() {
+    echo "Stopping torrcli service..."
+    systemctl stop torrcli.service
+    systemctl disable torrcli.service
+    systemctl daemon-reload
+}
