@@ -1,5 +1,5 @@
 post_install(){
-    chmod -R a+w /opt/wind/etc
+    chmod -R a+w /opt/apps/com.wind.wft/files/etc
 } 
 post_upgrade(){
     post_install

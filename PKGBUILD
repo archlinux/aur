@@ -28,11 +28,10 @@ package(){
     cd $srcdir
     mkdir -p $pkgdir/opt
     cp -rf usr $pkgdir/
-    cp -rf opt/apps/com.wind.wft/files   ${pkgdir}/opt/wind
-    cp -rf opt/apps/com.wind.wft/entries/* ${pkgdir}/usr/share
 
-    sed -i "s|^Exec=.*|Exec=wind|g;s|^Icon=.*|Icon=com.wind.wft|g" \
-    $pkgdir/usr/share/applications/com.wind.wft.desktop
+    mkdir -p ${pkgdir}/opt/apps
+    cp -rf opt/apps/com.wind.wft   ${pkgdir}/opt/apps
+    cp -rf usr/share/* ${pkgdir}/usr/share
 
     cd ..
     install -Dm755 ./${_pkgname}.sh ${pkgdir}/usr/bin/${_pkgname}
