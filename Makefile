@@ -38,6 +38,9 @@ take-updates:
 	@sed -i -r -e "s/^pkgver=[0-9.]+\$$/pkgver=$(shell jq -r '.data."azure-storage-fuse".version' < .nvchecker.next.json)/g" PKGBUILD
 	@sed -i -r -e "s/^version = \"[0-9.]+\"\$$/version = \"$(shell jq -r '.data."azure-storage-fuse".version' < .nvchecker.next.json)\"/g" pyproject.toml
 
+.PHONY: build
+build: $(PKGFILE)
+
 #-------------------------------------------------------------------------------
 # FILES
 #-------------------------------------------------------------------------------
