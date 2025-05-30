@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dopamine-bin
 _pkgname=Dopamine
-pkgver=3.0.0_preview.37
+pkgver=3.0.0_preview.38
 _electronversion=26
-pkgrel=2
+pkgrel=1
 pkgdesc="The audio player that keeps it simple.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/digimezzo/dopamine"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('fa288b83fed72853e83e7dd5569130a46d08c53316968b5236537a83a6278448'
+sha256sums=('cffd2aa9d03f38544a686712f1982459e6ee6f24530ca94b688caa6392371340'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
