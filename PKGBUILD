@@ -2,8 +2,8 @@
 pkgname=turbowarp-desktop-git
 _pkgname=TurboWarp
 _appname="org.turbowarp.${_pkgname}"
-pkgver=1.14.0.r2.gdd35cb0
-_electronversion=35
+pkgver=1.14.1.r1.g08b9641
+_electronversion=36
 _nodeversion=22
 pkgrel=1
 pkgdesc="Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more.(Use system-wide electron)"
@@ -21,7 +21,6 @@ makedepends=(
     'nvm'
     'curl'
     'git'
-    'gcc'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
@@ -42,6 +41,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname%-git}.git"
     sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-git}/
@@ -50,14 +50,14 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname%-git}.git"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -69,20 +69,19 @@ prepare() {
         sed -i "s/github.com/github.moeyy.xyz\/https:\/\/github.com/g" .gitmodules
         sed -i "s/github.com\/TurboWarp\/scratch-gui/github.moeyy.xyz\/https:\/\/github.com\/TurboWarp\/scratch-gui/g" package.json
     fi
-    sed -e "
+    sed -i -e "
         s/\/opt\/${_pkgname}\/${pkgname%-git}/${pkgname%-git}/g
         s/${_appname}/${pkgname%-git}/g
-    " -i linux-files/"${_appname}.desktop"
+    " linux-files/"${_appname}.desktop"
     sed -i "s/${_appname}/${pkgname%-git}/g" linux-files/{"${_appname}.metainfo.xml","${_appname}.mime.xml"}
     git submodule init
     git submodule update
-    cp .npmrc extensions
-    NODE_ENV=development    npm install
+    NODE_ENV=development    npm install --legacy-peer-deps
+    NODE_ENV=production     npm run fetch
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     npm run fetch
     NODE_ENV=production     npm run webpack:prod
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
