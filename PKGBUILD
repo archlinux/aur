@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dopamine
 _pkgname=Dopamine
-pkgver=3.0.0_preview.37
+pkgver=3.0.0_preview.38
 _electronversion=26
 _nodeversion=20
 pkgrel=2
@@ -23,7 +23,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver//_/-}"
     "${pkgname}.sh"
 )
-sha256sums=('71bb5e6851a7fa2d3af0f38e3f39a23e51efd2e5bcc239022240206da30fd850'
+sha256sums=('0756a8d085fd4488bafd7bfffb143e99cc1e68b219318e6079ec11b4bbe11eec'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -33,13 +33,13 @@ _ensure_local_nvm() {
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -59,7 +59,7 @@ prepare() {
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install --leagcy-peer-deps
+    NODE_ENV=development    npm install
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
