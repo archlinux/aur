@@ -1,7 +1,7 @@
 pkgbase = nutty-bin
 	pkgdesc = A network utility for linux. Monitor the devices on your network and check bandwidth and speed details.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/babluboy/nutty
 	arch = x86_64
 	license = GPL3

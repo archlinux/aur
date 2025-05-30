@@ -4,7 +4,7 @@ _basename=nutty
 _binname=com.github.babluboy.${_basename}
 pkgname=${_basename}-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A network utility for linux. Monitor the devices on your network and check bandwidth and speed details."
 arch=('x86_64')
 url="https://github.com/babluboy/nutty"
@@ -21,5 +21,5 @@ package() {
 
     # this extracts all into the pkgdir
     tar xf "${srcdir}/data.tar.zst"
-    ln -sf "${pkgdir}/usr/bin/${_binname}" "${pkgdir}/usr/bin/${_basename}"
+    ln -rsf "${pkgdir}/usr/bin/${_binname}" "${pkgdir}/usr/bin/${_basename}"
 }
