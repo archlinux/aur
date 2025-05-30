@@ -3,7 +3,7 @@
 
 pkgname=lotion
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Unofficial Notion.so desktop application for Linux"
 arch=('x86_64')
 url="https://github.com/puneetsl/lotion"
@@ -69,16 +69,34 @@ StartupWMClass=lotion
 EOF
     
     # Install icon (downloaded from upstream repository)
+    # Create a 48x48 version for pixmaps (GNOME application menu)
     install -dm755 "${pkgdir}/usr/share/pixmaps"
-    install -m644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    magick "${srcdir}/icon.png" -resize "48x48" -quality 100 "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     
     # Install hicolor icon (resize the main icon for different sizes using imagemagick)
-    for size in 16 22 24 32 48 64 128 256; do
+    # Include extra sizes commonly used by GNOME and other desktop environments
+    for size in 16 20 22 24 28 32 36 40 48 64 72 96 128 192 256 512; do
         install -dm755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
-        magick "${srcdir}/icon.png" -resize "${size}x${size}" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+        magick "${srcdir}/icon.png" -resize "${size}x${size}" -quality 100 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
     done
     
-    # Install scalable icon
+    # Create SVG version for true scalability (GNOME prefers SVG)
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-    install -m644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.png"
+    magick "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    
+    # Create install script to refresh icon cache (helps with GNOME icon recognition)
+    install -dm755 "${pkgdir}/usr/share/${pkgname}"
+    cat > "${pkgdir}/usr/share/${pkgname}/refresh-icons.sh" << 'EOF'
+#!/bin/bash
+# Refresh icon cache after installation
+echo "Refreshing icon cache for better desktop integration..."
+if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+    gtk-update-icon-cache -f -t /usr/share/icons/hicolor
+fi
+if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database /usr/share/applications
+fi
+echo "Icon cache refreshed. You may need to restart your desktop session to see the icon."
+EOF
+    chmod +x "${pkgdir}/usr/share/${pkgname}/refresh-icons.sh"
 }
