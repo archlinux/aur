@@ -1,0 +1,12 @@
+diff -rauN linux-5.15.184/arch/x86/include/asm/alternative.h linux-5.15.184-cpu_wants_rethunk_64_bit_only-patch/arch/x86/include/asm/alternative.h
+--- linux-5.15.184/arch/x86/include/asm/alternative.h	2025-05-30 17:45:55.447773861 +0200
++++ linux-5.15.184-cpu_wants_rethunk_64_bit_only-patch/arch/x86/include/asm/alternative.h	2025-05-30 17:48:21.500009460 +0200
+@@ -98,7 +98,7 @@
+ }
+ #endif
+ 
+-#ifdef CONFIG_RETHUNK
++#if defined(CONFIG_RETHUNK) && defined(CONFIG_STACK_VALIDATION)
+ extern bool cpu_wants_rethunk(void);
+ extern bool cpu_wants_rethunk_at(void *addr);
+ #else

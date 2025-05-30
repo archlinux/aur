@@ -3,7 +3,7 @@
 
 pkgbase=linux-lts515
 pkgver=5.15.184
-pkgrel=3
+pkgrel=4
 pkgdesc='LTS Linux 5.15.x'
 url="https://www.kernel.org/"
 arch=(x86_64 pentium4 i686 i486)
@@ -262,6 +262,10 @@ if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; t
         }
       '
   )"
+
+  # 5.15.184, 32-bit builds
+  source+=('linux-5.15.184-cpu_wants_rethunk_64_bit_only.patch')
+  sha256sums+=('1ecf101aa35b93b65cc1a075d84ed3332f7ada4fc6f3d1917e21ab4ba8453ff1')
 
   # avoid using zstd compression in ultra mode (exhausts virtual memory)
   source+=('no-ultra-zstd.patch')
