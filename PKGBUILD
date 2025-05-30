@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=wnacg-downloader
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="绅士漫画 wnacg.com wnacg 的多线程下载器，带图形界面 支持导出 cbz 和 pdf"
 arch=($CARCH)
@@ -32,7 +32,7 @@ backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a90f9fb99636f0938e509cfcf5ee2f252bb73c7119e5a4daa5436253d466ab5b')
+sha256sums=('f99800c93ab8a7b250da44e0a950d7b0bdb0944cbb629a4f6db6b63eeb2a4dc1')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/src-tauri"
