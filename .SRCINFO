@@ -1,7 +1,7 @@
 pkgbase = stardom-card
 	pkgdesc = CLI tool to scrape and display Stardom event cards
 	pkgver = 0.1.2
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/dashy-jngl/stardom-card
 	arch = x86_64
 	license = MIT
