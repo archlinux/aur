@@ -1,0 +1,17 @@
+pkgbase = python-xeger-bin
+	pkgdesc = A library for generating random strings from a valid regular expression.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/crdoconnor/xeger
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-installer
+	depends = python
+	conflicts = python-xeger-git
+	source = https://files.pythonhosted.org/packages/py3/x/xeger/xeger-0.4.0-py3-none-any.whl
+	source = LICENSE::https://github.com/crdoconnor/xeger/raw/master/LICENSE.txt
+	sha256sums = a0f544faf45ac56a29af4e628bd1e6996334f090458d78a61581490df1aad252
+	sha256sums = eddc4d81d82f642e4a1bd9995666ca8fcf1aff8a59b2d4d20b173988d709d8a8
+
+pkgname = python-xeger-bin
