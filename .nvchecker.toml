@@ -1,0 +1,4 @@
+[libreport]
+source='github'
+github='abrt/libreport'
+use_max_tag=true
