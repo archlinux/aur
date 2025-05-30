@@ -1,7 +1,7 @@
 # Maintainer: dashy-jngl <you@example.com>
 pkgname=stardom-card
-pkgver=0.1.1
-pkgrel=9
+pkgver=0.1.2
+pkgrel=10
 pkgdesc="CLI tool to scrape and display Stardom event cards"
 arch=('x86_64')
 url="https://github.com/dashy-jngl/stardom-card"
