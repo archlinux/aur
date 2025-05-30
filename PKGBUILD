@@ -5,7 +5,7 @@
 _pkgname=moc
 pkgname="${_pkgname}-pulse-svn"
 pkgver=r3005
-pkgrel=6
+pkgrel=7
 pkgdesc='An ncurses console audio player with support for pulseaudio (SVN)'
 url='http://moc.daper.net'
 arch=('x86_64')
@@ -53,7 +53,7 @@ prepare() {
   patch -p1 -i ../0001-Pulseaudio-backend.patch
 
   # re-configure
-  autoreconf -i -f
+  autoreconf -i -f -I /usr/share/gettext/m4
 }
 
 build() {
