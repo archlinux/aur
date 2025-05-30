@@ -3,7 +3,7 @@
 # Contributor: Zhang Hai <dreaming.in.code.zh@gmail.com>
 
 pkgname=python-mechanicalsoup
-pkgver=1.3.0
+pkgver=1.4.0 # renovate: datasource=github-tags depName=hickford/MechanicalSoup
 pkgrel=1
 pkgdesc="A Python library for automating interaction with websites"
 arch=('any')
@@ -14,14 +14,14 @@ makedepends=(python-build python-installer python-wheel)
 source=("https://github.com/hickford/MechanicalSoup/archive/v${pkgver}.tar.gz")
 
 check() {
-  cd $srcdir/MechanicalSoup-$pkgver 
+  cd $srcdir/MechanicalSoup-$pkgver
   python3 -m build --wheel --no-isolation
 }
 
 package() {
-  cd $srcdir/MechanicalSoup-$pkgver 
+  cd $srcdir/MechanicalSoup-$pkgver
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha512sums=('68b0ef14e4395b7a97461c5730909e449c1edba9f223efd8066b0e227f28032497eaef84263bd88a82c5b3fa3f1e291eccf483bea7358e4c255f9f6346f5b47a')
+sha512sums=('ea5f4c0ea9ccc4437503172d573a3e5353a666c6b85c9f0b7b7cdb4bc47d3da9af4345bc0299d26ae1027b795bc61a9e045c0a70241f0b0596725b370ebe35e3')
