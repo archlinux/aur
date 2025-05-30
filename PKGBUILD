@@ -1,7 +1,7 @@
 # Maintainer: Elia Nitsche <nitscheelia at gmail.com>
 pkgname="v-editor-git"
 _pkgname=${pkgname%-git}
-pkgver=v1.1.r0.g9d2ed26
+pkgver=1.1.r0.g9d2ed26
 pkgrel=1
 pkgdesc="simple wrapper for your editor"
 arch=("any")
@@ -17,7 +17,7 @@ sha512sums=("SKIP")
 
 pkgver() {
     cd "${pkgname}"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 package() {
     cd "${pkgname}"
