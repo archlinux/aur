@@ -1,33 +1,50 @@
-# Maintainer: fossdd <fossdd@tutanota.com>
-pkgname=vlang-coreutils-git
-_pkgname=coreutils
-pkgver=r4.a665583
+# Contributor: fossdd <fossdd@tutanota.com>
+pkgbase=vlang-coreutils-git
+pkgname=($pkgbase coreutils-vlang-git)
+pkgver=r307.3f94d0a
 pkgrel=1
-pkgdesc="coreutils in V"
+
 url='https://github.com/vlang/coreutils'
 license=(MIT)
 arch=(x86_64)
-depends=()
 makedepends=(vlang make)
-conflicts=(coreutils)
-provides=(false true) # Please update if new commands are commited
 source=("git+https://github.com/vlang/coreutils.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd coreutils
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
-prepare() {
-  cd "$srcdir"
-  patch --verbose --ignore-whitespace --fuzz 3 --forward --strip=1 --input="../destdir.patch"
+build(){
+  echo You need to chmod -R 755 /usr/lib/vlang to build this.
+  cd coreutils
+  make
 }
 
-package() {
-  cd "$_pkgname"
-  DESTDIR="$pkgdir/usr/bin" make
+package_vlang-coreutils-git() {
+  pkgdesc="vlang rewrite of coreutils"
+  install -d "$pkgdir"/usr/lib
+  cp -r --reflink=auto coreutils/bin "$pkgdir"/usr/lib/vlang-coreutils
+}
+
+package_coreutils-vlang-git() {
+  pkgdesc="(Dangerous) Swap coreutils with vlang rewrite"
+  depends=(uutils-coreutils nix-busybox)
+  conflicts=(coreutils)
+  provides=(coreutils)
+  install -d "$pkgdir"/usr/bin
+  # missing bins
+  for f in $(uu-coreutils --list)
+    do ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/bin/$f
+  done
+  ln -sf /usr/lib/nix/busybox "$pkgdir"/usr/bin/stty
+  # avaiable bins
+  cd coreutils/bin
+  for f in *
+    do ln -sf /usr/lib/vlang-coreutils/$f "$pkgdir"/usr/bin/$f
+  done
 }

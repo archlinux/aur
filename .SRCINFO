@@ -1,16 +1,20 @@
 pkgbase = vlang-coreutils-git
-	pkgdesc = coreutils in V
-	pkgver = r4.a665583
+	pkgver = r307.3f94d0a
 	pkgrel = 1
 	url = https://github.com/vlang/coreutils
 	arch = x86_64
 	license = MIT
 	makedepends = vlang
 	makedepends = make
-	provides = false
-	provides = true
-	conflicts = coreutils
 	source = git+https://github.com/vlang/coreutils.git
 	sha256sums = SKIP
 
 pkgname = vlang-coreutils-git
+	pkgdesc = vlang rewrite of coreutils
+
+pkgname = coreutils-vlang-git
+	pkgdesc = (Dangerous) Swap coreutils with vlang rewrite
+	depends = uutils-coreutils
+	depends = nix-busybox
+	provides = coreutils
+	conflicts = coreutils
