@@ -2,7 +2,7 @@
 
 _pkgname="gcsfuse"
 pkgname="${_pkgname}-bin"
-pkgver=2.12.1
+pkgver=2.12.2
 pkgrel=1
 pkgdesc="A user-space file system for interacting with Google Cloud Storage"
 arch=('aarch64' 'x86_64')
@@ -22,8 +22,8 @@ noextract=("${source_aarch64[@]%%::*}"
            "${source_x86_64[@]%%::*}")
 sha256sums=('b869f4bab7ee866cd6477101f4cc0bb355cecc1c196f452fcff542b505e5693d'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_aarch64=('db662f244f468c38269045b951cbe05d27f79f0fba0f42af89de40563dd6199c')
-sha256sums_x86_64=('597dde5e1a9b1a37e85f589cc121c40400de55274c5554ff93e57a7aebb5daf4')
+sha256sums_aarch64=('20e6f1c82ccefe65cfabcac2a18ecd391d855571463bef173cfbdfe7137b3a6d')
+sha256sums_x86_64=('ce6edcdc52f7fdf4639463f401fee97f850983bb1f35362b7d6fb7378984a747')
 
 prepare() {
   cd "${srcdir}"
