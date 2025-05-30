@@ -3,7 +3,7 @@ pkgname=clamav-gui
 _pkgname=ClamAV-GUI-QT6-1.1.4-150600.137.1.src.rpm
 __pkgname=ClamAV-GUI-QT6-1.1.4
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="This application provides a graphical user interface for clamav and freshclam with an integrated service menu for Konqueror/Dolphin to scan files directly from your file manager."
 url="https://github.com/wusel1007/clamav-gui"
 arch=('x86_64')
@@ -34,6 +34,7 @@ make -j4
 package() {
 cd "${srcdir}/${pkgname}-${pkgver}"
 make install DESTDIR=${pkgdir}
+install -Dm644  "${srcdir}/${pkgname}-${pkgver}/extra/ClamAV-GUI.desktop" "${pkgdir}/etc/xdg/autostart/ClamAV-GUI.desktop"
 
 }
 
