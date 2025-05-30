@@ -1,6 +1,6 @@
 # Maintainer: Sam Vervaeck <samvv at pm dot me>
 pkgname=evcape
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A small tool for making the CapsLock/Control key act as an Escape-key on Linux/Wayland"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
