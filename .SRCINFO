@@ -1,0 +1,14 @@
+pkgbase = tsqx
+	pkgdesc = Asymptote pre-processor for Euclidean geometry diagrams
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/vEnhance/tsqx
+	arch = any
+	license = MIT
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/tsqx/tsqx-0.1.0.tar.gz
+	source = LICENSE
+	sha256sums = e602154057eb0486ae13434d375b040db0c9dcd83924952d107ca575dc3e36d0
+	sha256sums = 98cc2ce670cd4520a18f5f76a9b69fb085efb342168e79362dc8a2a5b9c118d6
+
+pkgname = tsqx
