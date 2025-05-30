@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=maretf-git
-pkgver=0.3.5.r1.gcdaf760
+pkgver=0.5.0.r1.gb495617
 pkgrel=1
 pkgdesc="A work in progress command-line utility to work with VTF files."
 arch=('x86_64')
@@ -12,15 +12,21 @@ provides=("${pkgname::-4}")
 conflicts=("${pkgname::-4}")
 source=("$pkgname::git+$url.git"
 	"git+https://github.com/craftablescience/sourcepp.git"
+	"git+https://github.com/craftablescience/cmake-helpers.git"
 	"git+https://github.com/p-ranav/argparse.git"
+	"git+https://github.com/SpartanJ/efsw.git"
 	"git+https://github.com/jothepro/doxygen-awesome-css.git"
 	"git+https://github.com/craftablescience/bufferstream.git"
 	"cryptopp::git+https://github.com/abdes/cryptopp-cmake"
 	"git+https://github.com/Tessil/hat-trie.git"
 	"git+https://github.com/richgel999/miniz.git"
-	"git+https://github.com/zlib-ng/minizip-ng.git"
+	"git+https://github.com/craftablescience/minizip-ng.git"
+	"git+https://github.com/phoboslab/qoi.git"
 	)
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -38,15 +44,16 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$pkgname"
 	git submodule init
-	for submodule in {sourcepp,argparse};
+	for submodule in {sourcepp,argparse,efsw};
 	do
 		git config submodule.ext/${submodule}.url "$srcdir/$submodule"
 	done
+	git config submodule.cmake/helpers.url "$srcdir/cmake-helpers"
 	git -c protocol.file.allow=always submodule update
 
 	cd "$srcdir/$pkgname/ext/sourcepp"
 	git submodule init
-	for submodule in {bufferstream,cryptopp,hat-trie,miniz,minizip-ng};
+	for submodule in {bufferstream,cryptopp,hat-trie,miniz,minizip-ng,qoi};
 	do
 		git config submodule.ext/${submodule}.url "$srcdir/$submodule"
 	done
