@@ -1,25 +1,31 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=maretf
-pkgver=0.3.5
-pkgrel=3
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="A work in progress command-line utility to work with VTF files."
 arch=('x86_64')
 url="https://github.com/craftablescience/MareTF"
 license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('ninja' 'cmake' 'git')
-_commit=64cb27f47cd5c898ac3f969bceba33cb503d0e90
+_commit=44255c97ed76e1e4f793ddc15baa10f8fd83e00e
 source=("$pkgname::git+$url.git#commit=$_commit"
+	"git+https://github.com/craftablescience/cmake-helpers.git"
 	"git+https://github.com/craftablescience/sourcepp.git"
 	"git+https://github.com/p-ranav/argparse.git"
+	"git+https://github.com/SpartanJ/efsw.git"
 	"git+https://github.com/jothepro/doxygen-awesome-css.git"
 	"git+https://github.com/craftablescience/bufferstream.git"
 	"cryptopp::git+https://github.com/abdes/cryptopp-cmake"
 	"git+https://github.com/Tessil/hat-trie.git"
 	"git+https://github.com/richgel999/miniz.git"
-	"git+https://github.com/zlib-ng/minizip-ng.git"
+	"git+https://github.com/craftablescience/minizip-ng.git"
+	"git+https://github.com/phoboslab/qoi.git"
 	)
-sha256sums=('9a70881eb576ed57647c893f1b2a74fb5b1d3c3722f030830d4e3094ee9ae59e'
+sha256sums=('c8815e1fff28638228ccd9b047dd64abf5371f03d71b1bf7aa653bcc76c85709'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -32,15 +38,16 @@ sha256sums=('9a70881eb576ed57647c893f1b2a74fb5b1d3c3722f030830d4e3094ee9ae59e'
 prepare() {
 	cd "$srcdir/$pkgname"
 	git submodule init
-	for submodule in {sourcepp,argparse};
+	for submodule in {sourcepp,argparse,efsw};
 	do
 		git config submodule.ext/${submodule}.url "$srcdir/$submodule"
 	done
+	git config submodule.cmake/helpers.url "$srcdir/cmake-helpers"
 	git -c protocol.file.allow=always submodule update
 
 	cd "$srcdir/$pkgname/ext/sourcepp"
 	git submodule init
-	for submodule in {bufferstream,cryptopp,hat-trie,miniz,minizip-ng};
+	for submodule in {bufferstream,cryptopp,hat-trie,miniz,minizip-ng,qoi};
 	do
 		git config submodule.ext/${submodule}.url "$srcdir/$submodule"
 	done

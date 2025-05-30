@@ -1,7 +1,7 @@
 pkgbase = maretf
 	pkgdesc = A work in progress command-line utility to work with VTF files.
-	pkgver = 0.3.5
-	pkgrel = 3
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/craftablescience/MareTF
 	arch = x86_64
 	license = MIT
@@ -10,16 +10,22 @@ pkgbase = maretf
 	makedepends = git
 	depends = glibc
 	depends = gcc-libs
-	source = maretf::git+https://github.com/craftablescience/MareTF.git#commit=64cb27f47cd5c898ac3f969bceba33cb503d0e90
+	source = maretf::git+https://github.com/craftablescience/MareTF.git#commit=44255c97ed76e1e4f793ddc15baa10f8fd83e00e
+	source = git+https://github.com/craftablescience/cmake-helpers.git
 	source = git+https://github.com/craftablescience/sourcepp.git
 	source = git+https://github.com/p-ranav/argparse.git
+	source = git+https://github.com/SpartanJ/efsw.git
 	source = git+https://github.com/jothepro/doxygen-awesome-css.git
 	source = git+https://github.com/craftablescience/bufferstream.git
 	source = cryptopp::git+https://github.com/abdes/cryptopp-cmake
 	source = git+https://github.com/Tessil/hat-trie.git
 	source = git+https://github.com/richgel999/miniz.git
-	source = git+https://github.com/zlib-ng/minizip-ng.git
-	sha256sums = 9a70881eb576ed57647c893f1b2a74fb5b1d3c3722f030830d4e3094ee9ae59e
+	source = git+https://github.com/craftablescience/minizip-ng.git
+	source = git+https://github.com/phoboslab/qoi.git
+	sha256sums = c8815e1fff28638228ccd9b047dd64abf5371f03d71b1bf7aa653bcc76c85709
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
