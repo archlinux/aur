@@ -1,0 +1,5 @@
+[gdmap]
+source='debianpkg'
+debianpkg='gdmap'
+from_pattern='-'
+to_pattern='+'
