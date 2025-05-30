@@ -1,8 +1,8 @@
-# Maintainer:  Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
+# Maintainer: Giuliano Macedo <giuliano.programador@gmail.com>
 
 _target=mips-elf
 pkgname=$_target-gcc
-pkgver=12.2.0
+pkgver=15.1.0
 pkgrel=1
 #_snapshot=8-20180427
 pkgdesc='The GNU Compiler Collection - cross compiler for MIPS ELF (bare-metal) target'
@@ -14,9 +14,9 @@ replaces=('cross-mips-elf-gcc')
 conflicts=('cross-mips-elf-gcc')
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip')
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig})
-sha512sums=('e9e857bd81bf7a370307d6848c81b2f5403db8c7b5207f54bce3f3faac3bde63445684092c2bc1a2427cddb6f7746496d9fbbef05fbbd77f2810b2998f1f9173'
+sha512sums=('ddd35ca6c653dffa88f7c7ef9ee4cd806e156e0f3b30f4d63e75a8363361285cd566ee73127734cde6a934611de815bee3e32e24bfd2e0ab9f7ff35c929821c1'
             'SKIP')
-validpgpkeys=('13975A70E63C361C73AE69EF6EEB81F8981C74C7')	# Richard Guenther <richard.guenther@gmail.com>
+validpgpkeys=('D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62')	# Jakub Jelinek <jakub@redhat.com>
 
 prepare() {
 	cd gcc-$pkgver
