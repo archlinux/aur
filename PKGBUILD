@@ -1,8 +1,8 @@
 # Maintainer: Ailton Baúque <ailtonbauque@outlook.com>
 
 pkgname=vyai
-pkgver=0.0.2
-pkgrel=1
+pkgver=0.1.1
+pkgrel=2
 pkgdesc="A lightweight CLI tool to interact with the Gemini API from the terminal."
 arch=('x86_64' 'i686')
 url="https://github.com/vybraan/vyai"
