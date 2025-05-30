@@ -1,7 +1,7 @@
 pkgbase = dae-avx2-bin
 	pkgdesc = A Linux lightweight and high-performance transparent proxy solution based on eBPF (with AVX2 CPU optimizations)
-	pkgver = 1.0.0rc3
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/daeuniverse/dae
 	install = dae-avx2-bin.install
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = dae-avx2-bin
 	conflicts = dae
 	replaces = dae-bin-x64-v3
 	backup = etc/dae/config.dae
-	source = dae-avx2-bin-1.0.0rc3.zip::https://github.com/daeuniverse/dae/releases/download/v1.0.0rc3/dae-linux-x86_64_v3_avx2.zip
-	source = https://raw.githubusercontent.com/daeuniverse/dae/refs/tags/v1.0.0rc3/install/empty.dae
-	sha256sums = fd0ad7cb817274b2cbe5a11ccaefbf52adddd4fa6015fcb9a63637ec0df35632
+	source = dae-avx2-bin-1.0.0.zip::https://github.com/daeuniverse/dae/releases/download/v1.0.0/dae-linux-x86_64_v3_avx2.zip
+	source = https://raw.githubusercontent.com/daeuniverse/dae/refs/tags/v1.0.0/install/empty.dae
+	sha256sums = c6ebe11c69dc036d28fc1012ebbf2d6dfa6805528a369b468462d653c6b8a38e
 	sha256sums = 8c3b3e962bc1288394e54122e5da8d4d54994d17af2fd290331c464dc6b75c86
 
 pkgname = dae-avx2-bin
