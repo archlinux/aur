@@ -1,8 +1,7 @@
-# Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
-# Contributor: Dråfølin <derg@drafolin.ch>
+#Maintainer: Dråfølin <derg@drafolin.ch>
 
 pkgname=high-tide-git
-pkgver=r374.89d22a8
+pkgver=r390.e8c550e
 pkgrel=1
 pkgdesc="Linux client for TIDAL streaming service"
 url="https://github.com/Nokse22/high-tide"
