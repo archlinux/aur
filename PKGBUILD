@@ -7,7 +7,7 @@
 # Contributor: Anders Bostrom <anders.bostrom@home.se>
 
 pkgname=thunderbird-globalmenu
-pkgver=138.0
+pkgver=139.0
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org'
 url='https://www.thunderbird.net/'
@@ -59,7 +59,7 @@ makedepends=(
   gawk perl findutils libotr wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
 )
 options=(!emptydirs !makeflags !lto)
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/8a343881b2e3226b302f66f3949afbfe9ff448d2
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/7c49594d947aa62edcbd6b3fec7a8dd1fce8a943
 source=(https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}/source/thunderbird-${pkgver}.source.tar.xz{,.asc}
         $commit/vendor-prefs.js
         $commit/distribution.ini
@@ -170,7 +170,7 @@ END
     "$pkgdir/usr/lib/thunderbird/thunderbird-bin"
 }
 
-sha512sums=('923d76cf0a14f29146e5dcfc75dd9522d465512f6c604de6e0acc0812d4240331c170913a821fc0aa03d5945019577f996053498c9a7c691b21a2678a622ac02'
+sha512sums=('8e749ceb7f0e88603ad244485b0d33ff209c71b7419debab5ca0bcecb3d9835079d72fee6333ba29458399ce748b92e55156ebbf1bd147a3787fa2f5bf1ed55c'
             'SKIP'
             '6918c0de63deeddc6f53b9ba331390556c12e0d649cf54587dfaabb98b32d6a597b63cf02809c7c58b15501720455a724d527375a8fb9d757ccca57460320734'
             '5cd3ac4c94ef6dcce72fba02bc18b771a2f67906ff795e0e3d71ce7db6d8a41165bd5443908470915bdbdb98dddd9cf3f837c4ba3a36413f55ec570e6efdbb9f'
