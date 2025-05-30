@@ -1,7 +1,7 @@
 # Maintainer: Roelof Ridderman <roelof@ridderman.nl>
 pkgname=parsehub
-pkgver=2.4.41
-pkgrel=1
+pkgver=2.4.43
+pkgrel=2
 pkgdesc="A free web scraper that is easy to use"
 appimage=ParseHub.AppImage
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom: https://www.parsehub.com/terms')
 source=("${appimage}::https://www.parsehub.com/static/client/${appimage}"
         "${pkgname}.desktop"
         "${pkgname}.png")
-sha256sums=('f63df34973b9f731136f5609dca46cb7f4945b3f89eeeaa2067839dc08c4b719'
+sha256sums=('0c0d6870eb5380632ab957ac0ba129f626e1395efcbe98d7461193c497950214'
             '18cf2c810aa2ac96a59e53553282caa38ff52bba1c1b5b6477827a777167bf45'
             '32eb295845efbcbc888b399590d3eecafd7c6d66a6e70c7b560b305b71c1111b')
 noextract=("${appimage}")
