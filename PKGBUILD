@@ -17,7 +17,7 @@ options=('!strip')
 
 # v1.0.0 provides unified Linux build - no more separate variants
 source=("https://github.com/puneetsl/lotion/releases/download/v1.0.0/Lotion-linux-x64-1.0.0.zip"
-        "https://raw.githubusercontent.com/puneetsl/lotion/master/Notion.png")
+        "https://raw.githubusercontent.com/puneetsl/lotion/master/icon.png")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -70,16 +70,16 @@ EOF
     
     # Install icon (downloaded from upstream repository)
     install -dm755 "${pkgdir}/usr/share/pixmaps"
-    install -m644 "${srcdir}/Notion.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -m644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     
     # Install hicolor icon (resize the main icon for different sizes)
     for size in 16 22 24 32 48 64 128 256; do
         install -dm755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
         # Note: This requires imagemagick to be available during install, or we use the same icon for all sizes
-        install -m644 "${srcdir}/Notion.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+        install -m644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
     done
     
     # Install scalable icon
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-    install -m644 "${srcdir}/Notion.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.png"
+    install -m644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.png"
 }
