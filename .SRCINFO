@@ -1,7 +1,7 @@
 pkgbase = lotion
 	pkgdesc = Unofficial Notion.so desktop application for Linux
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/puneetsl/lotion
 	arch = x86_64
 	license = MIT
