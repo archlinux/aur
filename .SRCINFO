@@ -1,0 +1,17 @@
+pkgbase = python-rocketui
+	pkgdesc = A fast Qt6-based UI Framework for Python.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/neoapps-dev/RocketUI
+	arch = any
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = pyside6
+	source = rocketui-0.1.0.tar.gz::https://github.com/neoapps-dev/RocketUI/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-rocketui
