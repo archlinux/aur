@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "awesomeversion>=25.5.0",
     "httpie>=3.2.4",
     "nvchecker>=2.16",
 ]
