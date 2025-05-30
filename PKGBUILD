@@ -10,7 +10,7 @@
 
 pkgver=36.2.1
 _gcc_patches=136-2
-pkgrel=1
+pkgrel=2
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
@@ -48,7 +48,7 @@ makedepends=(clang
              python-requests
              qt5-base
              rsync
-             rust
+             rustup
              rust-bindgen
              wget
              yarn)
@@ -435,6 +435,9 @@ prepare() {
   sed -i "s|@ELECTRON@|${pkgname}|" electron-launcher.sh
   sed -i "s|@ELECTRON@|${pkgname}|" electron.desktop
   sed -i "s|@ELECTRON_NAME@|Electron ${_major_ver}|" electron.desktop
+
+  rustup toolchain update --profile minimal 1.86.0
+  rustup default 1.86.0
 
   cp -r chromium-mirror_third_party_depot_tools depot_tools
   export PATH+=":$PWD/depot_tools" DEPOT_TOOLS_UPDATE=0
