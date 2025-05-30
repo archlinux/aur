@@ -3,9 +3,10 @@
 pkgname=grayjay
 _appname=Grayjay
 pkgver=7
-pkgrel=4
+pkgrel=5
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
+url="https://grayjay.app/desktop/"
 conflicts=('grayjay-bin')
 conflicts=('grayjay-git')
 options=('!strip' 'staticlibs')
