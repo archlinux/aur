@@ -98,6 +98,7 @@ def create_srcinfo(version_tag):
 	optdepends = jre21-openjdk: Recommended Java version for launching version 1.20.5+ and above
 	provides = xmcl
 	conflicts = xmcl-launcher-bin
+	conflicts = xmcl-electron-bin
 	source = {RELEASE_URL}/{version_tag}
 
 pkgname = xmcl-launcher
