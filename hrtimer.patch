@@ -1,0 +1,13 @@
+--- a/module_timer.c.orig	2025-05-30 12:05:39.333991781 +0200
++++ b/module_timer.c	2025-05-30 12:11:05.755551806 +0200
+@@ -70,8 +70,8 @@
+ 			  enum hrtimer_restart (*function)(struct hrtimer *),
+ 			  clockid_t which_clock, enum hrtimer_mode mode)
+ {
+-	hrtimer_init(&ttimer->timer, which_clock, mode);
+-	ttimer->timer.function = __hrtimer_tasklet_trampoline;
++       hrtimer_setup(&ttimer->timer, __hrtimer_tasklet_trampoline,
++which_clock, mode);
+ 	tasklet_init(&ttimer->tasklet, __tasklet_hrtimer_trampoline,
+ 		     (unsigned long)ttimer);
+ 	ttimer->function = function;
