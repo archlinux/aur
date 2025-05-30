@@ -1,0 +1,14 @@
+pkgbase = flopgen-git
+	pkgdesc = Tool for automatic creation of FAT-formatted floppy disk images
+	pkgver = r48.72d28f7
+	pkgrel = 1
+	url = https://github.com/maksgraczyk/Flopgen
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	provides = flopgen
+	conflicts = flopgen
+	source = flopgen::git+https://github.com/maksgraczyk/Flopgen
+	sha256sums = SKIP
+
+pkgname = flopgen-git
