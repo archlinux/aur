@@ -2,7 +2,7 @@
 
 pkgname=telegram-tdlib-purple-minimal-git
 pkgver=0.8.1.r523.d220fa8
-pkgrel=1
+pkgrel=2
 pkgdesc='libpurple/pidgin Telegram plugin implemented using official tdlib client library, packaged for bitlbee, without voip and image-processing dependencies'
 arch=(x86_64 aarch64)
 url='https://github.com/BenWiederhake/tdlib-purple/'
@@ -43,7 +43,7 @@ build() {
 	# Build specific tdlib version - can be long, use "makepkg -e" to avoid rebuilding from scratch
 	pushd td
 		mkdir -p build && pushd build
-			cmake -DCMAKE_BUILD_TYPE=Release ..
+			cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release ..
 			make
 			make install DESTDIR=destdir
 	popd; popd
@@ -51,6 +51,7 @@ build() {
 	# Build and statically link libtelegram-tdlib.so against tdlib above
 	mkdir -p build && pushd build
 	cmake \
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 		-DTd_DIR="$(realpath ../td)"/build/destdir/usr/local/lib/cmake/Td/ \
 		-DNoVoip=True -DNoWebp=True -DNoLottie=True ..
 	make
