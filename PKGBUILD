@@ -34,8 +34,8 @@ package_vlang-coreutils-git() {
 package_coreutils-vlang-git() {
   pkgdesc="(Dangerous) Swap coreutils with vlang rewrite"
   depends=($pkgbase uutils-coreutils nix-busybox)
-  conflicts=(coreutils{,-arch})
-  provides=(coreutils{,-arch})
+  conflicts=(coreutils{,-arch} b3sum sha3sum)
+  provides=(coreutils{,-arch} b3sum)
   install -d "$pkgdir"/usr/bin
   # missing bins
   for f in $(uu-coreutils --list)
@@ -46,5 +46,5 @@ package_coreutils-vlang-git() {
   for f in $(ls coreutils/bin)
     do ln -sf /usr/lib/vlang-coreutils/$f "$pkgdir"/usr/bin/$f
   done
-  rm "$pkgdir"/usr/bin/{kill,more,uptime,hostname,b3sum} # confliction
+  rm "$pkgdir"/usr/bin/{kill,more,uptime,hostname} # confliction
 }
