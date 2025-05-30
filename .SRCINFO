@@ -1,6 +1,6 @@
 pkgbase = jdk21-dragonwell-extended-bin
 	pkgdesc = an in-house OpenJDK implementation at Alibaba (Extended Edition)
-	pkgver = 21.0.6.0.6
+	pkgver = 21.0.7.0.7
 	pkgrel = 1
 	url = https://dragonwell-jdk.io
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = jdk21-dragonwell-extended-bin
 	provides = java-runtime-headless-openjdk=21
 	source = LICENSE::https://github.com/dragonwell-project/dragonwell21/raw/master/LICENSE
 	sha256sums = 4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726
-	source_x86_64 = jdk21-dragonwell-extended-bin-21.0.6.0.6-x86_64.tar.gz::https://github.com/dragonwell-project/dragonwell21/releases/download/dragonwell-extended-21.0.6.0.6+7_jdk-21.0.6-ga/Alibaba_Dragonwell_Extended_21.0.6.0.6.7_x64_linux.tar.gz
+	source_x86_64 = jdk21-dragonwell-extended-bin-21.0.7.0.7-x86_64.tar.gz::https://github.com/dragonwell-project/dragonwell21/releases/download/dragonwell-extended-21.0.7.0.7+6_jdk-21.0.7-ga/Alibaba_Dragonwell_Extended_21.0.7.0.7.6_x64_linux.tar.gz
 	sha256sums_x86_64 = 370f8ce08b23881c5f2418c32e25cfe947d8d9dafdd09ce3432b193cdeeed074
-	source_aarch64 = jdk21-dragonwell-extended-bin-21.0.6.0.6-aarch64.tar.gz::https://github.com/dragonwell-project/dragonwell21/releases/download/dragonwell-extended-21.0.6.0.6+7_jdk-21.0.6-ga/Alibaba_Dragonwell_Extended_21.0.6.0.6.7_aarch64_linux.tar.gz
+	source_aarch64 = jdk21-dragonwell-extended-bin-21.0.7.0.7-aarch64.tar.gz::https://github.com/dragonwell-project/dragonwell21/releases/download/dragonwell-extended-21.0.7.0.7+6_jdk-21.0.7-ga/Alibaba_Dragonwell_Extended_21.0.7.0.7.6_aarch64_linux.tar.gz
 	sha256sums_aarch64 = 9845c0f4ca601ecbfe8127a36bf7a9ab28904c300f85bc4a7176c5e8307e860e
 
 pkgname = jdk21-dragonwell-extended-bin
