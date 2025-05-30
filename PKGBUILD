@@ -3,7 +3,7 @@
 
 pkgname=lotion
 pkgver=1.0.0
-pkgrel=5
+pkgrel=7
 pkgdesc="Unofficial Notion.so desktop application for Linux"
 arch=('x86_64')
 url="https://github.com/puneetsl/lotion"
@@ -69,12 +69,17 @@ StartupWMClass=Lotion
 Icon=lotion
 StartupNotify=true
 Keywords=notion;notes;productivity;workspace;
+X-GNOME-UsesNotifications=true
 EOF
     
     # Install icon (downloaded from upstream repository)
-    # Create a 48x48 version for pixmaps (GNOME application menu)
+    # Create multiple formats for maximum compatibility with Dash to Dock
     install -dm755 "${pkgdir}/usr/share/pixmaps"
     magick "${srcdir}/icon.png" -resize "48x48" -quality 100 "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    
+    # Also install at common alternative locations for Dash to Dock compatibility
+    install -dm755 "${pkgdir}/usr/share/app-info/icons/hicolor/48x48"
+    magick "${srcdir}/icon.png" -resize "48x48" -quality 100 "${pkgdir}/usr/share/app-info/icons/hicolor/48x48/${pkgname}.png"
     
     # Install hicolor icon (resize the main icon for different sizes using imagemagick)
     # Include extra sizes commonly used by GNOME and other desktop environments
@@ -83,23 +88,12 @@ EOF
         magick "${srcdir}/icon.png" -resize "${size}x${size}" -quality 100 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
     done
     
-    # Create SVG version for true scalability (GNOME prefers SVG)
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-    magick "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    # Skip SVG creation as it causes black/white issues in Dash to Dock
+    # PNG icons work better for this application
     
-    # Create symbolic icon for GNOME dock (fixes black/white appearance)
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/symbolic/apps"
-    # Create proper symbolic SVG (monochrome notes icon for dock integration)
-    cat > "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/${pkgname}-symbolic.svg" << 'EOF'
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-  <!-- Document/notes icon representing Notion/Lotion -->
-  <path d="M3 1v14h8l2-2V1H3zm1 1h8v10h-2v2H4V2z" fill="currentColor"/>
-  <path d="M5 4h5v1H5V4z" fill="currentColor"/>
-  <path d="M5 6h5v1H5V6z" fill="currentColor"/>
-  <path d="M5 8h3v1H5V8z" fill="currentColor"/>
-</svg>
-EOF
+    # Add 512x512 size for high-DPI displays
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
+    magick "${srcdir}/icon.png" -resize "512x512" -quality 100 "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
     
     # Create install script to refresh icon cache (helps with GNOME icon recognition)
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
@@ -113,7 +107,10 @@ fi
 if command -v update-desktop-database >/dev/null 2>&1; then
     update-desktop-database /usr/share/applications
 fi
-echo "Icon cache refreshed. You may need to restart your desktop session to see the icon."
+echo "Icon cache refreshed. For Dash to Dock extension:"
+echo "1. Restart GNOME Shell (Alt+F2, type 'r', Enter)"
+echo "2. Or disable/enable Dash to Dock extension"
+echo "Note: Removed SVG icons to fix black/white appearance"
 EOF
     chmod +x "${pkgdir}/usr/share/${pkgname}/refresh-icons.sh"
 }
