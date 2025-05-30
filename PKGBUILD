@@ -1,8 +1,8 @@
-# Maintainer: Angelo Elias Dalzotto <angelodalzotto97@gmail.com>
+# Maintainer: Giuliano Macedo <giuliano.programador@gmail.com>
 
 _target="mips-elf"
 pkgname=$_target-binutils
-pkgver=2.39
+pkgver=2.44
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files for the MIPS ELF (bare-metal) architecture"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ replaces=('cross-mips-elf-binutils')
 conflicts=('cross-mips-elf-binutils')
 provides=('cross-mips-elf-binutils')
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
-sha256sums=('da24a84fef220102dd24042df06fdea851c2614a5377f86effa28f33b7b16148'
+sha256sums=('f66390a661faa117d00fab2e79cf2dc9d097b42cc296bf3f8677d1e7b452dc3a'
             'SKIP')
 validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F')	# Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 
