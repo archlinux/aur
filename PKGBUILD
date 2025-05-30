@@ -3,8 +3,8 @@
 pkgname=grayjay
 _appname=Grayjay
 pkgver=7
-pkgrel=2
-pkgdesc="Follow creators, not platforms (privacy- and freedom-respecting streaming client)"
+pkgrel=4
+pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
 conflicts=('grayjay-bin')
 conflicts=('grayjay-git')
