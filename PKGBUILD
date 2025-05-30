@@ -8,7 +8,7 @@ _cefbranch="6533"
 _chromiumver="127.0.${_cefbranch}.100"
 _rebuild="3" # The tarball sometime can get rebuild by OBS Project
 pkgver="${_version}+g${_commit}+chromium_${_chromiumver}_${_rebuild}"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Chromium Embedded Framework minimal release needed by OBS Studio release in /opt/cef-obs"
 arch=("x86_64" "aarch64")
@@ -26,9 +26,9 @@ conflicts=("cef-minimal-obs")
 # Prevent people from using link time optimisation for this package because it make OBS unable to be built against it
 options=('!lto' '!strip' 'debug')
 source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v3.tar.xz")
-source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v3.tar.xz")
+source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v4.tar.xz")
 sha256sums_x86_64=("cb7225c7a937ac4cdc9c41700061f45cccc640d696902357782e57f8250bf43a")
-sha256sums_aarch64=("f92df7f076bdc8cac2e3c77e27be418008b7168723201cb73fdbc2f6d91bc778")
+sha256sums_aarch64=("e82388ef61776a88701b37d96e44f65dcc91f4d4f205f4f17cdc0d50f4e6a7a7")
 
 prepare() {
   cd "${srcdir}/cef_binary_${_cefbranch}_linux_${CARCH}"
