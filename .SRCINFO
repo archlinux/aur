@@ -1,7 +1,7 @@
 pkgbase = moc-pulse
 	pkgdesc = An ncurses console audio player with support for pulseaudio
 	pkgver = 2.5.2
-	pkgrel = 16
+	pkgrel = 17
 	url = https://moc.daper.net/
 	arch = x86_64
 	license = GPL-2.0-or-later

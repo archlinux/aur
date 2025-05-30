@@ -5,7 +5,7 @@
 pkgname='moc-pulse'
 _pkgname='moc'
 pkgver=2.5.2
-pkgrel=16
+pkgrel=17
 pkgdesc='An ncurses console audio player with support for pulseaudio'
 arch=('x86_64')
 url="https://moc.daper.net/"
@@ -53,7 +53,7 @@ prepare() {
   patch -p1 -i ../pulseaudio.patch
 
   # reconfigure the build system
-  autoreconf -i -f
+  autoreconf -i -f -I /usr/share/gettext/m4
 }
 
 build() {
