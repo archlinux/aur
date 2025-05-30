@@ -1,7 +1,7 @@
 pkgbase = invert-micmute-led-udev
 	pkgdesc = udev rule to set the microphone mute led to glow when capture is enabled
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/invert-micmute-led-udev
 	arch = any
 	license = GPL-3.0-or-later
