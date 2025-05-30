@@ -2,7 +2,7 @@
 # Contributor: 程式夥伴 (AI Assistant)
 
 pkgname=scrcpy-launcher
-pkgver=1.9.0 # 請在更新時修改此版本號
+pkgver=2.0.0 # 請在更新時修改此版本號
 pkgrel=1
 pkgdesc="A simple launcher for scrcpy, built with NW.js."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 # 依賴: gtk3, nss, alsa-lib, libxtst, libxss 是 NW.js 的常見依賴
 # scrcpy 和 android-tools (提供 adb) 是此啟動器功能所需的
 depends=('gtk3' 'nss' 'alsa-lib' 'libxtst' 'libxss' 'scrcpy' 'android-tools')
-makedepends=() # 預編譯的 NW.js 通常不需要
+makedepends=('nodejs') # 預編譯的 NW.js 通常不需要
 
 # 來源檔案
 # 1. 從 GitHub Release 下載的預編譯 NW.js 應用程式壓縮檔
@@ -26,7 +26,7 @@ source=("${pkgname}-v${pkgver}-${_archive_filename}::https://github.com/velade/s
 # 校驗和 - 請務必在更新 pkgver 或修改 .desktop 檔案後更新這些值
 # Scrcpy_Launcher_Linux64.tar.gz (v0.1.8) 的 SHA256 校驗和
 # LICENSE (for v0.1.8) 的 SHA256 校驗和
-sha256sums=('8acc1b01a3131db7de3153b4b0fad674d03546f9477efcb256283549972cfecf'
+sha256sums=('c9d3e88cb7d060fedb53460a9143f2992fa90be46fb55690955ebc11d4b4596a'
             '93b6dd07d33b0153bcfba6721797290839410870b8f7a379998b4e5fe306de46'
             'a6f3cabbef34490c82cf1eaaadfe3591c5dc8f3924c11c9da74609b660c7c72d')
 
@@ -44,6 +44,7 @@ prepare() {
      "${srcdir}/lib" \
      "${srcdir}/locales" \
      "${srcdir}/swiftshader" \
+     "${srcdir}/node_modules" \
      "${srcdir}/chrome_crashpad_handler" \
      "${srcdir}/credits.html" \
      "${srcdir}/icudtl.dat" \
