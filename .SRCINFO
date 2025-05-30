@@ -1,7 +1,7 @@
 pkgbase = hotspot
 	pkgdesc = The Linux perf GUI for performance analysis
 	pkgver = 1.5.1
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/KDAB/hotspot
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgbase = hotspot
 	depends = solid
 	depends = syntax-highlighting
 	depends = threadweaver
+	depends = vulkan-headers
 	optdepends = binutils: Support for annotating individual instructions
 	optdepends = rustc-demangle>=0.1.18-2: Demangling of Rust symbols
 	source = https://github.com/KDAB/hotspot/releases/download/v1.5.1/hotspot-v1.5.1.tar.gz
