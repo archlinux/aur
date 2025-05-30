@@ -1,6 +1,6 @@
 # Maintainer: Teamon <teamon9161@163.com>
 
-pkgname=wind-bin
+pkgname=tea-wind-bin
 _pkgname=wind
 pkgver=25.1.2.05281
 pkgrel=1
