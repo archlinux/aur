@@ -1,14 +1,14 @@
 # Maintainer: ahab-schoeneberg <code at schoeneberge dot eu>
 pkgname=animolauncher-git
 pkgver=0.4.0_beta
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for launching applications, written in blazingly fast Rust!"
 arch=('x86_64')
 url="https://codeberg.org/AnimoUtils/animolauncher"
 license=('GPL-2.0-only')
 makedepends=(cargo)
 source=("https://codeberg.org/AnimoUtils/animolauncher/archive/dev.tar.gz")
-sha512sums=("853046fefafa110802999f489aca2aa8cf5eb8aeb544950b92023019475f1bf1526b7e7d39c890df4017926aee3c21546f42eca11fe855e18f264f9076d91520")
+sha512sums=("d022dab8ae371da98caa462e5be86cf6456eb7ff18754c7506f0fb6d75a29b48d2ff202b5eba15e842354fa1b628b154c3ad27142af91b57820c2293dc0b60ec")
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
