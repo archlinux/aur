@@ -12,10 +12,8 @@ makedepends=('intltool' 'asciidoc' 'python')
 optdepends=('python: python 3.x bindings')
 url='https://github.com/abrt/libreport'
 license=('GPL-2.0-only')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/abrt/${pkgname}/archive/${pkgver}.tar.gz"
-  '0001-Fix-compatibility-with-libxml2-2.12.patch')
-sha256sums=('cf181ed248f6bf12233b459e4a504fab645b3ce8040b6855a073453756311166'
-            '81ed41029ea35b1c3342dd41725d7814fb63b040cda881793a773202f4073ff8')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/abrt/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('cf181ed248f6bf12233b459e4a504fab645b3ce8040b6855a073453756311166')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

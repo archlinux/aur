@@ -23,8 +23,6 @@ pkgbase = libreport
 	depends = nss
 	optdepends = python: python 3.x bindings
 	source = libreport-2.17.15.tar.gz::https://github.com/abrt/libreport/archive/2.17.15.tar.gz
-	source = 0001-Fix-compatibility-with-libxml2-2.12.patch
 	sha256sums = cf181ed248f6bf12233b459e4a504fab645b3ce8040b6855a073453756311166
-	sha256sums = 81ed41029ea35b1c3342dd41725d7814fb63b040cda881793a773202f4073ff8
 
 pkgname = libreport
