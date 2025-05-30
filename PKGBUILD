@@ -5,7 +5,7 @@
 
 pkgname=commit-patch
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Commit partial patches to version control"
 arch=('any')
 url="http://www.porkrind.org/${pkgname}"
@@ -13,7 +13,7 @@ _repourl="https://github.com/caldwell/${pkgname}"
 license=('GPL-2.0-or-later')
 depends=('perl' 'patch' 'patchutils')
 makedepends=('git')
-checkdepends=('mercurial' 'subversion' 'darcs')
+checkdepends=('perl-ipc-run' 'mercurial' 'subversion' 'darcs')
 optdepends=('git' 'mercurial' 'subversion' 'darcs')
 source=("${pkgname}::git+${_repourl}.git#tag=${pkgver}"
 fix-git-test.patch  remove-bzr.patch  remove-cvs.patch	remove-monotone.patch)
