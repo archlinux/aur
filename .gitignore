@@ -1,3 +1,9 @@
-*.zip
-*.pkg.tar.zst
-*.pkg.tar.gz
+/*
+!/*.desktop
+!/*.install
+!/*.sh
+!/*.sysusers
+!/*.tmpfiles
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
