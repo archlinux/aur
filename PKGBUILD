@@ -2,7 +2,7 @@
 pkgname=agbplay-git
 _pkgname='agbplay-git'
 pkgbase=agbplay
-pkgver=7db9434
+pkgver=5f86264
 pkgrel=2
 pkgdesc='Music player for the most common GBA sound format'
 url='https://github.com/ipatix/agbplay'
