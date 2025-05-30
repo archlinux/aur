@@ -3,13 +3,13 @@
 
 pkgname=lotion
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial Notion.so desktop application for Linux"
 arch=('x86_64')
 url="https://github.com/puneetsl/lotion"
 license=('MIT')
 depends=('gtk3' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'alsa-lib')
-makedepends=('unzip')
+makedepends=('unzip' 'imagemagick')
 optdepends=('libappindicator-gtk3: for system tray support')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
@@ -72,11 +72,10 @@ EOF
     install -dm755 "${pkgdir}/usr/share/pixmaps"
     install -m644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     
-    # Install hicolor icon (resize the main icon for different sizes)
+    # Install hicolor icon (resize the main icon for different sizes using imagemagick)
     for size in 16 22 24 32 48 64 128 256; do
         install -dm755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
-        # Note: This requires imagemagick to be available during install, or we use the same icon for all sizes
-        install -m644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+        magick "${srcdir}/icon.png" -resize "${size}x${size}" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
     done
     
     # Install scalable icon

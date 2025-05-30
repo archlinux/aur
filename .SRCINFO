@@ -1,11 +1,12 @@
 pkgbase = lotion
 	pkgdesc = Unofficial Notion.so desktop application for Linux
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/puneetsl/lotion
 	arch = x86_64
 	license = MIT
 	makedepends = unzip
+	makedepends = imagemagick
 	depends = gtk3
 	depends = nss
 	depends = libxss
