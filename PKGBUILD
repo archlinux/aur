@@ -1,7 +1,7 @@
 # Maintainer: Debasish Patra <patradebasish1987@gmail.com>
 pkgname=linuxthemestore-git
-pkgver=0.2
-pkgrel=0.2
+pkgver=0.3
+pkgrel=0.3
 pkgdesc="A Linux desktop app to install linux themes"
 arch=('x86_64')
 url="https://github.com/debasish-patra-1987/linuxthemestore"
