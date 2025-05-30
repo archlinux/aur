@@ -7,8 +7,8 @@
 
 pkgbase=zoom-system-qt
 pkgname=(${pkgbase}{,-cef} )
-pkgver=6.4.10.2027
-pkgrel=3
+pkgver=6.4.12.2180
+pkgrel=1
 arch=('x86_64')
 license=('LicenseRef-zoom')
 url="https://zoom.us/"
@@ -22,7 +22,7 @@ options=(!strip emptydirs)
 provides=(zoom)
 conflicts=(zoom)
 source=("zoom-origin-${pkgver}.pkg.tar.xz::${url}client/${pkgver}/zoom_x86_64.pkg.tar.xz")
-b2sums=('35b10151940c1497a44e6dcbca3a650baab4a7e7cec6e385cd4bd9b82941622e995202b39843d7b08e13d37a55706de5dd0e1147515f52d83f65b090092e79c9')
+b2sums=('669dfc2efe1819ce6cf774367727e80cc114f046347c96b8695313c6532c0543241d784f9a6b5fc06907393aaa5a776aa982c22f7a65b658dee97b302e4140cf')
 
 build() {	
 	ln -sf /usr/share/pixmaps/Zoom.png usr/share/pixmaps/*-zoom.png
