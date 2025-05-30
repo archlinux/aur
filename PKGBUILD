@@ -12,7 +12,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 license=('GPL-3.0-only')
 
 depends=('gcc-libs')
-conflicts=("${pkgname}")
+conflicts=("${_pkgname}")
 makedepends=('help2man')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
