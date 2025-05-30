@@ -1,0 +1,18 @@
+pkgbase = rusty-socks
+	pkgdesc = A high-performance SOCKS5 and HTTP proxy server written in Rust with journald support
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/quintusl/rusty-socks
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	backup = etc/rusty-socks/config.yml
+	source = rusty-socks-0.1.0.tar.gz::https://github.com/quintusl/rusty-socks/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = rusty-socks
