@@ -4,7 +4,7 @@
 # Maintaner: Polar Phoenix <polarphoenixx at gmail dot com>
 
 pkgname=slime
-pkgver=2.30
+pkgver=2.31
 pkgrel=1
 pkgdesc="The Superior Lisp Interaction Mode for Emacs"
 arch=('any')
@@ -18,7 +18,7 @@ provides=('slime')
 conflicts=('slime')
 install=slime.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/slime/slime/archive/v$pkgver.tar.gz")
-sha256sums=('f4f24788bef400a5b980916d6fcf4590ee0089200eb9a494f88bfbd4b630f25c')
+sha256sums=('b376f756ddcf0afcea36c8dcaeda9de738dec41a8d728af589e9ceef7915d6c8')
 
 build() {
   cd $pkgname-$pkgver
