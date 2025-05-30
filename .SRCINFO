@@ -1,11 +1,12 @@
 pkgbase = python-thop
 	pkgdesc = Count the MACs / FLOPs of your PyTorch model.
 	pkgver = 0.1.1.post2209072238
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/Lyken17/pytorch-OpCounter
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -13,7 +14,7 @@ pkgbase = python-thop
 	depends = python
 	depends = python-pytorch
 	source = git+https://github.com/Lyken17/pytorch-OpCounter#commit=43c064a
-	sha256sums = SKIP
+	sha256sums = 6dea63d70a3fd74b50d32d8caf774c56682e04c056f3e49fe08f629a72707920
 
 pkgname = python-thop
 	depends = python
