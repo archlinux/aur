@@ -1,21 +1,13 @@
 pkgbase = lucidglyph
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maximilionus/lucidglyph
 	arch = any
-	license = GPL
+	license = GPL-3.0
 	makedepends = git
 	depends = fontconfig
 	depends = pam
 	depends = freetype2
-	provides = lucidglyph
-	provides = fontconfig-envision
-	provides = freetype-envision-normal
-	provides = freetype-envision-full
-	replaces = lucidglyph
-	replaces = fontconfig-envision
-	replaces = freetype-envision-normal
-	replaces = freetype-envision-full
 	source = lucidglyph::git+https://github.com/maximilionus/lucidglyph#tag=v0.11.0
 	source = 0001-allow-changing-uninstall-file-absolute-path.patch
 	source = 0002-allow-changing-absolute-environment-file-destination.patch
