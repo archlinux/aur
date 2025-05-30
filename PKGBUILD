@@ -1,6 +1,7 @@
 # Maintainer: Nathan Chere <git@nathanchere.com.au>
 # Contributor: Phillip Schichtel <phillip@schich.tel>
 pkgname=grayjay
+_appname=Grayjay
 pkgver=7
 pkgrel=2
 pkgdesc="Follow creators, not platforms (privacy- and freedom-respecting streaming client)"
@@ -17,9 +18,9 @@ host="${_futo_gitlab_base}"
 license=('custom:Source-First-License-1.1')
 depends=('ffmpeg' 'libsodium')
 makedepends=('dotnet-sdk>=9' 'git' 'git-lfs' 'npm')
-source=("${pkgname}::git+${host}/Grayjay.Desktop.git"
-        "${pkgname}.desktop"
-        "${pkgname}.sh"
+source=("${_appname}::git+${host}/Grayjay.Desktop.git"
+        "grayjay.desktop"
+        "grayjay.sh"
         "Grayjay.Desktop.CEF.csproj.user"
         "FUTO.MDNS.csproj.user")
 sha256sums=('SKIP'
@@ -31,10 +32,10 @@ sha256sums=('SKIP'
 export GIT_LFS_SKIP_SMUDGE=1
 
 prepare() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_appname}"
 
     for _sub in FUTO.MDNS Grayjay.Engine JustCef SyncServer; do
-        # SyncServer isn't mirrored on Github so we use Gitlab for all submodules even]
+        # SyncServer isn't mirrored on Github so we use Gitlab for all submodules even
         #  if we're using the Github main repo.
         git config submodule.${_sub}.url "${_futo_gitlab_base}/${_sub}.git"
     done
@@ -54,7 +55,7 @@ _configuration="Release"
 _target="linux-x64"
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_appname}"
 
     # Build front-end
     cd Grayjay.Desktop.Web
@@ -75,7 +76,7 @@ build() {
 
 package() {
     # Create necessary directories
-    install -dm755 "${pkgdir}/opt/${pkgname}"
+    install -dm755 "${pkgdir}/opt/${_appname}"
     install -dm755 "${pkgdir}/usr/bin"
     install -dm755 "${pkgdir}/usr/share/applications"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
@@ -83,7 +84,7 @@ package() {
 
     # Copy application files
     local _appdir="${pkgdir}/opt/${pkgname}"
-    cp -va "${srcdir}/${pkgname}/Grayjay.Desktop.CEF/bin/${_configuration}/net9.0/${_target}/publish/." "${_appdir}"
+    cp -va "${srcdir}/${_appname}/Grayjay.Desktop.CEF/bin/${_configuration}/net9.0/${_target}/publish/." "${_appdir}"
     rm -v "${_appdir}/ffmpeg"
     rm -v "${_appdir}/Portable"
     rm -v "${_appdir}/libsodium.so"
@@ -91,6 +92,6 @@ package() {
 
     install -Dm755 "${srcdir}/grayjay.sh" "${pkgdir}/usr/bin/grayjay"
     install -Dm644 "${srcdir}/grayjay.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "${srcdir}/${pkgname}/Grayjay.Desktop.CEF/grayjay.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${_appname}/Grayjay.Desktop.CEF/grayjay.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${_appname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${_appname}/LICENSE"
 }
