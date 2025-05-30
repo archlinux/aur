@@ -21,7 +21,7 @@ source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$_name-$pkgver"
+  cd "RocketUI-$pkgver"
   python -m build --wheel --no-isolation
 }
 
