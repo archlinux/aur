@@ -3,7 +3,7 @@
 
 pkgname=lotion
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Notion.so desktop application for Linux"
 arch=('x86_64')
 url="https://github.com/puneetsl/lotion"
