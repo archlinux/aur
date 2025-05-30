@@ -8,7 +8,8 @@ url="https://github.com/quintusl/rusty-socks"
 license=('MIT' 'Apache-2.0')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
-backup=('etc/rusty-socks/config.yml')
+install=$pkgname.install
+backup=('etc/rusty-socks/config.yml' 'etc/rusty-socks/users.yml')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
@@ -44,10 +45,6 @@ package() {
     # Install configuration
     install -Dm0644 config/config.yml.journald.example "$pkgdir/etc/rusty-socks/config.yml"
     install -Dm0664 config/users.yml.example "$pkgdir/etc/rusty-socks/users.yml"
-
-    # Create directories
-    install -dm0755 "$pkgdir/var/log/rusty-socks"
-    install -dm0755 "$pkgdir/var/lib/rusty-socks"
 
     # Install documentation
     install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"

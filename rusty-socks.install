@@ -1,6 +1,5 @@
 post_install() {
     # Create rusty-socks user and group
-    systemd-sysusers
     if ! getent passwd rusty-socks &>/dev/null; then
         useradd -r -s /usr/bin/nologin -d /var/lib/rusty-socks -c "Rusty SOCKS User" rusty-socks
     fi
@@ -9,8 +8,12 @@ post_install() {
     fi
 
     # Set ownership and permissions
+    mkdir -p /var/lib/rusty-socks
+    mkdir -p /var/log/rusty-socks
     chown -R rusty-socks:rusty-socks /var/lib/rusty-socks
+    chmod 750 /var/lib/rusty-socks
     chown -R rusty-socks:rusty-socks /var/log/rusty-socks
+    chmod 750 /var/log/rusty-socks
     chown root:rusty-socks /etc/rusty-socks/config.yml
     chmod 640 /etc/rusty-socks/config.yml
     chown root:rusty-socks /etc/rusty-socks/users.yml
@@ -26,7 +29,6 @@ post_install() {
 }
 
 post_upgrade() {
-    systemd-sysusers
     systemctl daemon-reload
 
     echo "Rusty SOCKS has been upgraded."
