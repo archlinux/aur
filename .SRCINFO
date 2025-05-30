@@ -1,0 +1,16 @@
+pkgbase = cli-reminder
+	pkgdesc = A CLI reminder application with TUI and notification support
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Skeleton-Hacker/CLI_Reminder
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	optdepends = libnotify: for desktop notifications
+	source = git+file:///home/yajatr/Documents/Projects/CLI_Reminder
+	sha256sums = SKIP
+
+pkgname = cli-reminder
