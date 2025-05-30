@@ -9,8 +9,8 @@
 # Contributor: sl1pkn07 <sl1pkn07 at gmail dot com>
 
 pkgname=nvidia-beta-dkms
-pkgver=575.51.02
-pkgrel=2
+pkgver=575.57.08
+pkgrel=1
 pkgdesc='NVIDIA kernel modules - module sources (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -25,11 +25,11 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         '120-nvidia-linux-rt-gift.patch'
         '130-nvidia-make-modeset-fbdev-default.patch'
         '140-nvidia-gcc15-fix.patch')
-sha256sums=('fb8f04643ec826b617aa05961bb35653bdd73d03cdb945262819aba19a6a9018'
-            '2d14bfda380cdcaae3c0dd0cd0a0220a849f6c3664815b13b5b5f04aea5c27b5'
+sha256sums=('d0a0f44a1e3e0ef3670be182e2a55285c46312bde6ac4991193fb03add52757b'
+            'eb2faac1e5075d17df0480e5065af3147a0b86773403c07cf73c19d1854cf93f'
             '291bc6568e18496a4c2e732fd8616f6d536d8e9f3ab51f1959e3fc08f0de126b'
             'f120d0d474647edf722859615d95a0ed726a5bfd9525b211a9b803ca52efded0'
-            'ddd4384b87aa1032b9cf467f90b5c49de2db2f42c9ef5a2015e3c7d8ca145e9f')
+            '2f8c8583f585428bd3b51c8247c9df892ab0c25c1bbab4d3ab2ee10863d89ce8')
 
 prepare() {
     # extract the source file
