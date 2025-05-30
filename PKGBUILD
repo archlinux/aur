@@ -5,7 +5,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname//./_}
 pkgname=("python-${_pname}")
 #"python-${_pyname}-doc")
-pkgver=2.3.10
+pkgver=2.3.11
 pkgrel=1
 pkgdesc="Image array manipulation functions"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ checkdepends=('python-pytest'
 #             'python-pytest-xdist'
               'python-scipy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('0811dedbf0f37ee9060bfd123efaaa97')
+md5sums=('5a4e530006c181a18620026aa6528142')
 
 get_pyinfo() {
     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
