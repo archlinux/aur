@@ -6,6 +6,7 @@ pkgbase = openfoam
 	install = openfoam.install
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = fast_float
 	makedepends = qt5-svg
 	makedepends = qt5-x11extras
 	makedepends = qt5-tools
