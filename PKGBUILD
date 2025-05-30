@@ -9,7 +9,7 @@ license=('MIT')
 depends=(python-requests python-beautifulsoup4 python-wcwidth python-deep-translator)
 makedepends=('python-pip' 'python-flit-core')
 source=(https://github.com/dashy-jngl/stardom-card/archive/v${pkgver}.tar.gz)
-sha512sums=('b3a6f95bf2bb558bb4f2a5e2e88ce1b95c12d9d81559a552c7bd19ee28293c7779fedc5350cd6840a54b08c44c28e802ce8fca292fdbbebd5cf323e8a7c90d66')
+sha512sums=('da4cd2f0ab7ebdb01ed14f61ff971dc68645ee254012d1bb2b97b128e252688c918f38bce812da145dcae85e561ef877c0db8170b5068f6fe499018a0754f70c')
 
 build() {
   cd "$srcdir/stardom-card-${pkgver}"
