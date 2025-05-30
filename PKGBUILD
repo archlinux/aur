@@ -29,6 +29,13 @@ package_uutils-coreutils-selinux() {
   conflicts=(uutils-coreutils)
   cd coreutils-$pkgver
   make install DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROFILE=release MULTICALL=y PROG_PREFIX=uu-
+  # for $PATH
+  install -d "$pkgdir"/usr/lib/uutils-coreutils
+  _uu="$pkgdir"/usr/bin/uu-coreutils
+  install -d "$pkgdir"/usr/lib/uu-coreutils
+  for f in $("$_uu" --list)
+    do ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/lib/uu-coreutils/"$f"
+  done
 }
 
 package_coreutils-uutils-selinux(){
@@ -42,8 +49,7 @@ package_coreutils-uutils-selinux(){
   depends=(uutils-coreutils-selinux)
   _uu="$pkgdir"/usr/bin/coreutils
   for f in $("$_uu" --list|grep -v -E '^(kill|more|uptime|hostname)$')
-  do
-    ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/bin/"$f"
+    do ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/bin/"$f"
   done
   rm "${_uu}"
   # Is this used? https://github.com/uutils/coreutils/issues/6591
