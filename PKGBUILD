@@ -7,7 +7,7 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=5.11.1.0
+pkgver=5.12.0.1
 pkgrel=1
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
@@ -45,12 +45,10 @@ makedepends=(
     'qt5-tools')
 source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_Linux"
         'meganz-sdk'::'git+https://github.com/meganz/sdk.git'
-        '010-megasync-freeimage-remove-obsolete-ffmpeg-macros.patch'
-        '020-megasync-sdk-fix-cmake-dependencies-detection.patch'
-        '030-megasync-app-fix-cmake-dependencies-detection.patch')
-sha256sums=('cc537739076c597e8dc0494ec4d374e0833c4bc3641fd7cca8f6f3a4c1834d53'
+        '010-megasync-sdk-fix-cmake-dependencies-detection.patch'
+        '020-megasync-app-fix-cmake-dependencies-detection.patch')
+sha256sums=('29f916aebfc7552057da882b5959bc5ae53d6c9853a319c8f654ca99d017a749'
             'SKIP'
-            'cd545737c81a45572f8bb1e46bf0368c92d5ddfeea71a346c499e4dbb4c7ca80'
             '62e79d30acafdc13855851e64c4419d8ee4a0b213089ea352882b49413e549f4'
             'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171')
 
@@ -60,15 +58,14 @@ prepare() {
     #git -C MEGAsync -c protocol.file.allow='always' submodule update
     
     # https://github.com/meganz/MEGAsync/issues/1010
-    # https://github.com/meganz/MEGAsync/blob/v5.11.1.0_Linux/src/MEGASync/control/Version.h#L20-L21
+    # https://github.com/meganz/MEGAsync/blob/v5.12.0.1_Linux/src/MEGASync/control/Version.h#L26-L27
     git -C meganz-sdk config --local advice.detachedHead false
-    git -C meganz-sdk checkout f60237a8d46cec993137065d39138fd42c043271
+    git -C meganz-sdk checkout e77b97393b57450c7bfe7227b79f2405468077c7
     rm -r MEGAsync/src/MEGASync/mega
     ln -sf ../../../meganz-sdk MEGAsync/src/MEGASync/mega
     
-    patch -d MEGAsync/src/MEGASync/mega -Np1 -i "${srcdir}/010-megasync-freeimage-remove-obsolete-ffmpeg-macros.patch"
-    patch -d MEGAsync/src/MEGASync/mega -Np1 -i "${srcdir}/020-megasync-sdk-fix-cmake-dependencies-detection.patch"
-    patch -d MEGAsync -Np1 -i "${srcdir}/030-megasync-app-fix-cmake-dependencies-detection.patch"
+    patch -d MEGAsync/src/MEGASync/mega -Np1 -i "${srcdir}/010-megasync-sdk-fix-cmake-dependencies-detection.patch"
+    patch -d MEGAsync -Np1 -i "${srcdir}/020-megasync-app-fix-cmake-dependencies-detection.patch"
 }
 
 build() {
@@ -80,6 +77,7 @@ build() {
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL='YES' \
         -DENABLE_DESIGN_TOKENS_IMPORTER:BOOL='OFF' \
         -DENABLE_DESKTOP_APP_TESTS:BOOL='OFF' \
+        -DUSE_BREAKPAD:BOOL='OFF' \
         -Wno-dev
     cmake --build build --target MEGAsync
 }
