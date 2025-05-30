@@ -3,13 +3,13 @@
 
 pkgbase=linux-lts515
 pkgver=5.15.184
-pkgrel=1
+pkgrel=3
 pkgdesc='LTS Linux 5.15.x'
 url="https://www.kernel.org/"
 arch=(x86_64 pentium4 i686 i486)
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz python gcc14
+  bc libelf pahole cpio perl tar xz python gcc
 )
 options=('!strip')
 _srcname=linux-$pkgver
@@ -219,7 +219,16 @@ pkgname=(
   )
 )
 
+
 if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; then
+
+  # use gcc *which is still gcc 14 on 32-bit" instead of gcc14
+  eval "$(
+    declare -f build | \
+      sed '
+        s|gcc-14|gcc|
+      '
+  )"
 
   # use 32-bit configuration files per subarchitecture instead of main config file
   source_pentium4=('config.pentium4')
@@ -270,4 +279,8 @@ if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; t
   makedepends=(${makedepends[@]//graphviz/})
   makedepends=(${makedepends[@]//imagemagick/})
   makedepends=(${makedepends[@]//texlive-latexextra/})
+else
+  # gcc 14, as gcc 15 breaks
+  makedepends=(${makedepends[@]//gcc/})
+  makedepends+=(gcc14)
 fi
