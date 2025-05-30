@@ -1,4 +1,4 @@
-pkgbase = wind-bin
+pkgbase = tea-wind-bin
 	pkgdesc = Wind financial terminal, 万得金融终端
 	pkgver = 25.1.2.05281
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = wind-bin
 	source = https://d-cdn.wind.com.cn/windnet/linux/com.wind.wft-kylinV10SP1_amd64.deb.zip
 	sha512sums = ef1d521e5646efd5647d7ad94db8fd339230a1420a886a285d6037f112adbd2d26334687143e2598d712703042fcfb3fdfd90def5296f3dc1a0c65923f922910
 
-pkgname = wind-bin
+pkgname = tea-wind-bin
