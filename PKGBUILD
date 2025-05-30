@@ -5,16 +5,18 @@
 pkgname=bird2
 _pkgname=bird
 pkgver=2.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon'
 arch=('x86_64')
 url='https://bird.network.cz/'
 license=('GPL-2.0-or-later')
 depends=('glibc' 'readline' 'ncurses' 'libssh')
+makedepends=('linuxdoc-tools' 'texlive-basic' 'texlive-latex' 'texlive-latexrecommended' 'texlive-latexextra')
 provides=($_pkgname)
 conflicts=($_pkgname)
 replaces=('bird6')
 backup=('etc/bird.conf')
+options=(!emptydirs)
 source=("https://gitlab.nic.cz/labs/bird/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz"
         'bird.service')
 sha256sums=('d89ca9637e92c5ca000b55f26786d7a9b87968a28658753ae9021ed1d19b71f7'
@@ -22,6 +24,7 @@ sha256sums=('d89ca9637e92c5ca000b55f26786d7a9b87968a28658753ae9021ed1d19b71f7'
 
 prepare() {
   cd $_pkgname-v$pkgver
+  sed -i 's|docdir=@prefix@/doc|docdir=@docdir@|g' Makefile.in
   autoreconf -vif
 }
 
@@ -32,9 +35,10 @@ build() {
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --runstatedir=/run/$pkgname \
-    --docdir=/usr/share/doc/$pkgname
+    --runstatedir=/run/$_pkgname \
+    --docdir=/usr/share/doc/$_pkgname
   make
+  make docs
 }
 
 check() {
@@ -45,7 +49,7 @@ check() {
 package() {
   cd $_pkgname-v$pkgver
   make DESTDIR="$pkgdir" install
-  rm -r "$pkgdir/run" # Remove installed runstatedir, should not be packaged.
+  make DESTDIR="$pkgdir" install-docs
 
   # systemd
   install -vD -m 644 -t "$pkgdir/usr/lib/systemd/system" "$srcdir/bird.service"
