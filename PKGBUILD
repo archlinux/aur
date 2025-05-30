@@ -2,9 +2,9 @@
 
 _suffix=rc
 pkgname="obs-studio-${_suffix}"
-_pkgver=31.0.3
+_pkgver=31.1.0-beta1
 pkgver="${_pkgver//-/_}"
-pkgrel=4
+pkgrel=1
 epoch=10
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -66,6 +66,7 @@ depends=(
 makedepends=(
   "asio" # Deps of Websocket plugin (headers-only lib)
   "cmake"
+  "extra-cmake-modules"
   "ffnvcodec-headers" # Deps of NVENC plugin (headers-only lib)
   "jack" # Deps of JACK plugin
   "git"
@@ -134,14 +135,8 @@ prepare() {
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git -c protocol.file.allow=always submodule update
 
-  ## deps/json11: Fix compile error on GCC 15+
-  git cherry-pick -n 6931d80e16afc92498e345835204059ac1980782
-
-  ## linux-v4l2: Fix virtual camera start failure
-  git cherry-pick -n 12c6febae21f369da50f09d511b54eadc1dc1342
-
   ## Mark log and titlebar version
-  sed -i "s|obs_get_version_string()|\"$_pkgver-$_suffix-$pkgrel\"|" UI/obs-app.cpp
+  sed -i "s|obs_get_version_string()|\"$_pkgver-$_suffix-$pkgrel\"|" frontend/OBSApp.cpp
 }
 
 build() {
