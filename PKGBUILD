@@ -4,7 +4,7 @@ _pkgauthor=jooaf
 _pkgname=thoth
 _pkgexec=thoth
 pkgname=${_pkgname}-bin
-pkgver=0.1.82
+pkgver=0.1.84
 pkgrel=1
 pkgdesc='Terminal scratchpad inspired by the Heynote app'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -19,9 +19,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux-musl_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux-musl_arm64.tar.gz")
 sha256sums=('c6a6aec122be3781408ad1c89b1dc150b5e0d4fa3d56242760d5c47f1fa6c4e6'
-            'f540c75128eabe8f8332d40f48ab58f130e5a7687ca41cb4f7191beba01e2286')
-sha256sums_x86_64=('d26f7df312d6a7246897dbef177d837b658c810fe472b262ac4e80036075585c')
-sha256sums_aarch64=('f714e17be6bb5343f37e39d815a70dc03b473ceaa50a65bb39b3aee5d32257d0')
+            '7b2518c05beed662f00018d6244626333638953421829a4a4dd06dbdd46c4018')
+sha256sums_x86_64=('01f56dabddb5fab7f15dbad50417226e9cd6b54069aa7b6366b84ac8e9f997e4')
+sha256sums_aarch64=('07b557aa2d694c3d9854c825084c48dad1187581f8030cbab9056041fe042c3c')
 
 package() {
   cd "${srcdir}/" || exit
