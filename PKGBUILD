@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=fabio-bin
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=1
 pkgdesc='A fast, modern, zero-conf load balancing HTTP(S) and TCP router for deploying applications managed by consul.(Prebuilt version)'
 arch=(
@@ -25,11 +25,11 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64::${_ghurl}/releases/download/v$
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/fabiolb/fabio/v${pkgver}/LICENSE"
 )
-sha256sums=('013df56d9367ed7dbc6ce30d5318bceacdb1c8efcc96b5dfce740497eb499e93')
-sha256sums_aarch64=('3ed87a120f8da3a281e3f9d261408fddc5711d61557593f34671792c7cfc4abf')
-sha256sums_armv7h=('8292cc54d134145b52e92ac948e789956401ab6a61da7321967b4a3e30ec4faa')
-sha256sums_i686=('5197cf0a60bb78a715dc14ebac78eacbf647c5bbcf3cef900044212dffad0442')
-sha256sums_x86_64=('08b563fa309189047f3cfaa1e1baf3aca782121427d5ee0e9c80768887b56169')
+sha256sums=('1b96863084c41c1557336dad7193f7b0d4c03042481da83136b53940ea5a3083')
+sha256sums_aarch64=('214e1187c901bf3a9c8a48cbbfccd7693457637f9b6fc802e411797813a43007')
+sha256sums_armv7h=('7de372ea2722f4dd54d876c2fd4535750af3062673b692283fcf21c8790e4507')
+sha256sums_i686=('8c337a1642c7b1f2ae95e73364395f5a74c0cb485d7393be0d787bb0ff34de86')
+sha256sums_x86_64=('6da1655a16c5adb89136e4c095fe1fe0aecf724b0d546a9c83aae38033034cdb')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
