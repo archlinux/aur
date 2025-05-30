@@ -3,7 +3,7 @@
 
 pkgbase='keepalived-exporter'
 pkgname="prometheus-${pkgbase}"
-pkgver='1.6.1'
+pkgver='1.7.0'
 pkgrel='1'
 pkgdesc='Prometheus exporter for Keepalived'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}"
 	"${pkgname}.service"
 	"${pkgname}.sysusers")
-sha256sums=('392474c5f958d592e50c7f84e03d6b3d68db922cbd683c78d76c49aa4256d17e'
+sha256sums=('9d07728737b0b28855c070e123a329fd6d59eaa74e45e9c8cd466bf7c35411e7'
             '8dc0a0bc730eadc6b8fe352923d11bf3499744f187ca8854bb81b8a4578fd558'
             'de3f9cdc0f25c576ca7346ea909a7099dce529483601ea2872ad242fff4db769'
             'd52f807f4d965b4f8a22238013a3476a1accf941e962b9a0866e58e0ec4676f4')
