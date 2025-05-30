@@ -1,0 +1,20 @@
+pkgbase = htpasswd
+	pkgdesc = OpenBSD's standalone htpasswd ported to Linux
+	pkgver = 1.18p1
+	pkgrel = 1
+	url = https://git.sr.ht/~shtrophic/htpasswd-portable
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	makedepends = meson
+	depends = libbsd
+	depends = nettle
+	conflicts = apache
+	conflicts = apache-tools
+	source = htpasswd-1.18p1.tar.gz::https://git.sr.ht/~shtrophic/htpasswd-portable/archive/1.18p1.tar.gz
+	source = htpasswd-1.18p1.tar.gz.asc::https://git.sr.ht/~shtrophic/htpasswd-portable/archive/1.18p1.tar.gz.asc
+	validpgpkeys = 10F1CC925057D456798EBF9C1B3EB6FE2D338B4A
+	sha256sums = d84f56e5c1446f1226ead594df263745e35e7edea79eddb2804c0bbc85f63bda
+	sha256sums = SKIP
+
+pkgname = htpasswd
