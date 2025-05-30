@@ -1,12 +1,12 @@
 # Maintainer: Nemin <pergerlori@gmail.com>
 pkgname=relive-git
-pkgver=r3641.fcce1105
-pkgrel=3
+pkgver=r5946.7bf8a75de
+pkgrel=1
 pkgdesc="An open-source Abe's Oddysee / Abe's Exoddus engine"
 arch=('i686' 'x86_64')
 url="https://aliveteam.github.io"
 license=('unknown')
-depends=('sdl2' 'zenity' 'glew' 'fluidsynth')
+depends=('sdl2' 'zenity')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -21,7 +21,7 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}"
   git submodule update --init --recursive
-  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" -B build -S .
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" -B build -S .
 }
 
 package() {
