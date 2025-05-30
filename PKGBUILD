@@ -2,7 +2,7 @@
 pkgname="qdiskinfo"
 _pkgname="QDiskInfo"
 pkgver="0.4"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="CrystalDiskInfo alternative for Linux"
 url="https://github.com/edisionnano/QDiskInfo"
 license=("GPL-3.0-only")
@@ -19,9 +19,14 @@ depends=(
 	"smartmontools"
 	"polkit"
 	"hicolor-icon-theme"
+	"vulkan-icd-loader"
 )
 makedepends=(
 	"cmake"
+	"qt6-declarative"
+	"qt6-tools"
+	"clang"
+	"vulkan-headers"
 )
 
 build () {
