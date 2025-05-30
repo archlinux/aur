@@ -1,26 +1,25 @@
 pkgbase = grayjay
 	pkgdesc = Follow creators, not platforms (privacy- and freedom-respecting streaming client)
-	pkgver = 5
-	pkgrel = 4
+	pkgver = 7
+	pkgrel = 1
 	url = https://github.com/futo-org/Grayjay.Desktop.git
 	arch = x86_64
 	license = custom:Source-First-License-1.1
-	makedepends = dotnet-sdk>=8
+	makedepends = dotnet-sdk>=9
 	makedepends = git
 	makedepends = git-lfs
 	makedepends = npm
 	depends = ffmpeg
 	depends = libsodium
-	provides = grayjay
 	conflicts = grayjay-git
 	options = !strip
 	options = staticlibs
-	source = grayjay::git+https://github.com/futo-org/Grayjay.Desktop.git#tag=5
+	source = grayjay::git+https://github.com/futo-org/Grayjay.Desktop.git#tag=7
 	source = grayjay.desktop
 	source = grayjay.sh
 	source = Grayjay.Desktop.CEF.csproj.user
 	source = FUTO.MDNS.csproj.user
-	sha256sums = ca25fe3de75b7b59b768ea1e1f9edcb9136a31e1bf5ba5b5e1d8538797623f98
+	sha256sums = 34be2a165277ece11719dedd5c1f5c46f42be4df67586525a88d2fec83ea6f2f
 	sha256sums = 3d37aacfe2c23495448da3d7202abfa2e28db5a10cb69453f9b00b1e80a70f5d
 	sha256sums = 3a1f43abacc62ad257edbb6c7744c132f5a50d64d0725aa79e251ddc19b6e489
 	sha256sums = bc13ae396e2fcd2849e4564db67fad6e1461cedebb2abdafece81fc4c00f38dd
