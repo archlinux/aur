@@ -1,0 +1,54 @@
+post_install() {
+    # Create rusty-socks user and group
+    systemd-sysusers
+    if ! getent passwd rusty-socks &>/dev/null; then
+        useradd -r -s /usr/bin/nologin -d /var/lib/rusty-socks -c "Rusty SOCKS User" rusty-socks
+    fi
+    if ! getent group rusty-socks &>/dev/null; then
+        groupadd -r rusty-socks
+    fi
+
+    # Set ownership and permissions
+    chown -R rusty-socks:rusty-socks /var/lib/rusty-socks
+    chown -R rusty-socks:rusty-socks /var/log/rusty-socks
+    chown root:rusty-socks /etc/rusty-socks/config.yml
+    chmod 640 /etc/rusty-socks/config.yml
+    chown root:rusty-socks /etc/rusty-socks/users.yml
+    chmod 660 /etc/rusty-socks/users.yml
+
+    # Enable the service
+    systemctl daemon-reload
+    systemctl enable rusty-socks.service
+
+    echo "Rusty SOCKS has been installed successfully."
+    echo "Edit /etc/rusty-socks/config.yml to configure the server."
+    echo "Start the service with: systemctl start rusty-socks"
+}
+
+post_upgrade() {
+    systemd-sysusers
+    systemctl daemon-reload
+
+    echo "Rusty SOCKS has been upgraded."
+    echo "Restart the service with: systemctl restart rusty-socks"
+}
+
+pre_remove() {
+    systemctl stop rusty-socks.service &>/dev/null || true
+    systemctl disable rusty-socks.service &>/dev/null || true
+}
+
+post_remove() {
+    systemctl daemon-reload
+
+    # Remove user and group
+    getent passwd rusty-socks &>/dev/null && userdel rusty-socks
+    getent group rusty-socks &>/dev/null && groupdel rusty-socks
+
+    # Remove directories (but preserve configuration)
+    rm -rf /var/log/rusty-socks
+    rm -rf /var/lib/rusty-socks
+
+    echo "Rusty SOCKS has been removed."
+    echo "Configuration files in /etc/rusty-socks have been preserved."
+}

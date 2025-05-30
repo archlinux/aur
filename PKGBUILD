@@ -39,6 +39,7 @@ package() {
 
     # Install systemd service
     install -Dm0644 config/rusty-socks.service "$pkgdir/usr/lib/systemd/system/rusty-socks.service"
+    install -Dm0644 config/rusty-socks.sysusers.conf "$pkgdir/usr/lib/sysusers.d/rusty-socks.conf"
 
     # Install configuration
     install -Dm0644 config/config.yml.journald.example "$pkgdir/etc/rusty-socks/config.yml"
@@ -46,6 +47,7 @@ package() {
 
     # Create directories
     install -dm0755 "$pkgdir/var/log/rusty-socks"
+    install -dm0755 "$pkgdir/var/lib/rusty-socks"
 
     # Install documentation
     install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
