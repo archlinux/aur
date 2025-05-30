@@ -1,0 +1,16 @@
+pkgbase = szablon-git
+	pkgdesc = A work-in-progress editorconfig inspired cross-editor standard for file templates
+	pkgver = 0.1.0.r3.gdcd079b
+	pkgrel = 1
+	url = https://git.poz.pet/poz/szablon
+	arch = x86_64
+	license = EUPL
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = szablon
+	conflicts = szablon
+	source = git+https://git.poz.pet/poz/szablon
+	md5sums = SKIP
+
+pkgname = szablon-git
