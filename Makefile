@@ -1,5 +1,6 @@
 
 all: .SRCINFO
+	pkgctl build
 
 .SRCINFO: PKGBUILD
 	makepkg --printsrcinfo > .SRCINFO
