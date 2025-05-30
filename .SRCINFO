@@ -1,7 +1,7 @@
 pkgbase = guile-opengl
 	pkgdesc = OpenGL bindings for Guile Scheme
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/guile-opengl/
 	arch = x86_64
 	arch = i686

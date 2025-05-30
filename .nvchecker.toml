@@ -1,0 +1,4 @@
+[guile-opengl]
+source='regex'
+regex='guile-opengl-([0-9.]+).tar.gz'
+url='https://ftp.gnu.org/gnu/guile-opengl'
