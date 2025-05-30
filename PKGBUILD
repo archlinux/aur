@@ -2,8 +2,8 @@
 _pkgname=amethyst
 pkgname="${_pkgname}-player-bin"
 _appname=Amethyst
-pkgver=2.1.5
-_electronversion=24
+pkgver=2.1.6
+_electronversion=36
 pkgrel=1
 pkgdesc="A cross-platform music player made with Typescript.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -18,6 +18,14 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'nodejs'
+    'python'
+    'python-numpy'
+    'python-yaml'
+    'python-setuptools'
+    'python-tqdm'
+    'perl'
+    'libvips'
+    'libpulse'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
@@ -27,15 +35,15 @@ source=(
 )
 sha256sums=('2f892795f62b8f7bef478575fae01c686a673766689d3b50958f8acfddacb510'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('6a0540550e94cbdd88d277bc1c75ba0e9b5c6c27165162ad6688e78f9ca577d2')
-sha256sums_x86_64=('5b393c832f5f994a2c5473bbcf941256b1aacaca9786f3491dc6ce4551eb880b')
+sha256sums_aarch64=('f3cb589293908c40129078bd958f7cf9d149d9348001cb940d69c525105696a0')
+sha256sums_x86_64=('69cec4fe27e1e5a7c42e851f1c348f16f0642fd4109765b5751790f306947bdc')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_appname}/g
-        s/@options@//g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -i -e "
