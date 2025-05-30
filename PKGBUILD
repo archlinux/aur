@@ -1,9 +1,10 @@
 # Maintainer: Sherlock Holo <sherlockya at gmail.com>
 
-pkgname=void-bin
+pkgbase=void-bin
+pkgname=(void{,-electron-latest}-bin)
 pkgdesc="The open-source Cursor alternative."
 pkgver=1.99.30034
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 options=('!strip')
 url="https://github.com/voideditor/void"
