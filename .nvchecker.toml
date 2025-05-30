@@ -1,0 +1,4 @@
+[commit-patch]
+source='regex'
+regex='current version is ([0-9.]+):'
+url='https://www.porkrind.org/commit-patch/'

@@ -1,5 +1,7 @@
+# Maintainer: envolution
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Jonathan Kotta <jpkotta AT gmail DOT com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=commit-patch
 pkgver=2.6.2
@@ -14,29 +16,31 @@ makedepends=('git')
 checkdepends=('mercurial' 'subversion' 'darcs')
 optdepends=('git' 'mercurial' 'subversion' 'darcs')
 source=("${pkgname}::git+${_repourl}.git#tag=${pkgver}"
-        *.patch)
-b2sums=('SKIP'
-        'ecb9ebce304c9691aac3009ef64ca7528d14f7262e39b81ce337856a100ae46d1bc8572f36fe49214d1db83b1275ce97a7f05ae4304f9b362dce7a26b5136905'
-        '9d5870390cc38af40e6e7b0043ec3430e2ec2a632ccb5c789fb771828ef47ce5299f15945c0816f4e36afae84610ddfacf71ded59df0f74b9d75486d6424d115'
-        '624e5e0c81af864b3ec0189e7f1c93301ce2c186b1d647b0112635223a51032d7ffdb073eef721b020b04cca4db33e5f04f0a11507bbb3bfc2c96e1e720343e3'
-        '1973a026c1baa67bc19511dcf93b4aaab8ab683e89830cde4544c0bc170cdb233c063e6f92ec7050117037b5f813c68a8547ed425950951beaec4d7f6a83bc9c')
-
+fix-git-test.patch  remove-bzr.patch  remove-cvs.patch	remove-monotone.patch)
+sha1sums=('79c6ba9a7607ceca8811a600d47a8c90edb35cb4'
+          'c7415ac561b427ce2b93e58b0090c01332f6b7a0'
+          '539f2ba4d76f494611dc6d2586b505a742337a70'
+          'e387de5636abfe7953ee5f64363fcbc4ee093fce'
+          '68362c243f5f35313eb825037d81d247dc035299')
 prepare() {
   cd "${srcdir}/${pkgname}"
-
-  echo "Reverting Makefile commit that broke the installation (a33567f)..."
-  git revert --no-edit --no-commit a33567f5df04eeefc707f4ba8ea6aff32fd1a1e7
-  echo "Done."
-
-  git apply -p1 --verbose ../*.patch
+  if [ $pkgver == 2.6.2 ]; then
+    echo "Reverting Makefile commit that broke the installation (a33567f)..."
+    git revert --no-edit --no-commit a33567f5df04eeefc707f4ba8ea6aff32fd1a1e7
+    echo "Done."
+  fi
+  git apply -p1 --verbose ../fix-git-test.patch  
+  git apply -p1 --verbose ../remove-bzr.patch  
+  git apply -p1 --verbose ../remove-cvs.patch	
+  git apply -p1 --verbose ../remove-monotone.patch
 }
-
 check() {
   cd "${srcdir}/${pkgname}"
   make test
 }
-
 package() {
   cd "${srcdir}/${pkgname}"
+  install -Dm644 COPYING -t ${pkgdir}/usr/share/licenses/${pkgname}
   make PREFIX="$pkgdir"/usr install
 }
+# vim:set ts=2 sw=2 et:
