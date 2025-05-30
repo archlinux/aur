@@ -8,6 +8,7 @@ pkgbase = oryx-bin
 	license = GPL-3.0-only
 	makedepends = help2man
 	depends = gcc-libs
+	conflicts = oryx-bin
 	source = LICENSE-0.6::https://raw.githubusercontent.com/pythops/oryx/v0.6/LICENSE
 	source = README-0.6::https://raw.githubusercontent.com/pythops/oryx/v0.6/Readme.md
 	source = RELEASE-0.6::https://raw.githubusercontent.com/pythops/oryx/v0.6/Release.md
