@@ -4,10 +4,10 @@
 
 _pkgname=rdkafka
 pkgname=php-${_pkgname}
-pkgver=6.0.3
+pkgver=6.0.4
 pkgrel=1
 pkgdesc="AProduction-ready, stable Kafka client for PHP"
-arch=("i686" "x86_64")
+arch=("any")
 url="https://github.com/arnaud-lb/php-rdkafka"
 license=('MIT')
 depends=('php' 'librdkafka')
