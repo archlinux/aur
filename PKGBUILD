@@ -2,7 +2,7 @@
 pkgbase=uutils-coreutils-selinux
 pkgname=(${pkgbase} coreutils-uutils-selinux)
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 license=('MIT')
 url='https://uutils.github.io/'
@@ -20,33 +20,32 @@ prepare() {
 build(){
   cd coreutils-$pkgver
   export RUSTONIG_DYNAMIC_LIBONIG=1
-  export SELINUX_ENABLED=1 # maybe incorrect
-  cargo build --release # include uu-hostname,... for people wants it
+  export SELINUX_ENABLED=1
+  cargo build --release --features feat_selinux # include hostname, etc... for people wants it
 }
 
 package_uutils-coreutils-selinux() {
   pkgdesc='Rust rewrite of GNU coreutils (SELinux build)'
   conflicts=(uutils-coreutils)
   cd coreutils-$pkgver
-  make install DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROFILE=release MULTICALL=y \
-    PROG_PREFIX=uu- # should this conflicts with uutils-coreutils?
+  make install DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROFILE=release MULTICALL=y PROG_PREFIX=uu-
 }
 
 package_coreutils-uutils-selinux(){
   pkgdesc='(Really dangerous) Swap coreutils with uutils (SELinux build)'
+  conflicts=(coreutils b3sum sha3sum)
+  provides=(coreutils sha3sum)
+  cd coreutils-$pkgver
+  make install DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROFILE=release MULTICALL=y # get correct man pages
+  rm -r "$pkgdir"/usr/share/bash-completion # part of Extra/bash-completion
+  # Don't duplicate, add missing *sum symlinks
   depends=(uutils-coreutils-selinux)
-  conflicts=(coreutils)
-  provides=(coreutils)
-  # make install generates correct shell completions. But *sum symlinks are lacking.
-  install -d "$pkgdir"/usr/bin
-  # We also tests out binary at here
-  _uu="coreutils-$pkgver"/target/release/coreutils
+  _uu="$pkgdir"/usr/bin/coreutils
   for f in $("$_uu" --list|grep -v -E '^(kill|more|uptime|hostname)$')
   do
-    "$_uu" ln -s /usr/bin/uu-coreutils "$pkgdir"/usr/bin/"$f"
-    # Avoid broken symlinks
-    "$_uu" cp -s /usr/share/man/man1/uu-"$f".1.gz "$pkgdir"/usr/share/man/man1/"$f".1.gz 2>/dev/null || :
+    ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/bin/"$f"
   done
+  rm "${_uu}"
   # Is this used? https://github.com/uutils/coreutils/issues/6591
-  "$_uu" install -Dm644 coreutils-$pkgver/target/release/deps/liblibstdbuf.so "$pkgdir/usr/lib/coreutils/libstdbuf.so"
+  install -Dm644 target/release/deps/liblibstdbuf.so "$pkgdir/usr/lib/coreutils/libstdbuf.so"
 }

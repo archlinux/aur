@@ -1,6 +1,6 @@
 pkgbase = uutils-coreutils-selinux
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://uutils.github.io/
 	arch = x86_64
 	license = MIT
@@ -23,4 +23,7 @@ pkgname = coreutils-uutils-selinux
 	pkgdesc = (Really dangerous) Swap coreutils with uutils (SELinux build)
 	depends = uutils-coreutils-selinux
 	provides = coreutils
+	provides = sha3sum
 	conflicts = coreutils
+	conflicts = b3sum
+	conflicts = sha3sum
