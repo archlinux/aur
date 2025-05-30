@@ -28,13 +28,13 @@ build() {
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
       -DBUILD_SHARED_LIBS=OFF \
-      -DINSTALL_DOCS=OFF
+      -DINSTALL_DOCS=OFF -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
     ${_arch}-cmake -S ${_pkgname}-${pkgver} -B build/${_arch} -G Ninja \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
       -DBUILD_SHARED_LIBS=ON \
-      -DINSTALL_DOCS=OFF
+      -DINSTALL_DOCS=OFF -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
     cmake --build build/${_arch}-static
     cmake --build build/${_arch}
