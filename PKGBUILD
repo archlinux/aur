@@ -26,7 +26,7 @@ build(){
 }
 
 package_vlang-coreutils-git() {
-  pkgdesc="vlang rewrite of coreutils"
+  pkgdesc="vlang rewrite of coreutils (installed at /usr/lib/vlang-coreutils)"
   install -d "$pkgdir"/usr/lib
   cp -r --reflink=auto coreutils/bin "$pkgdir"/usr/lib/vlang-coreutils
 }

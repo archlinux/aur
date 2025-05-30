@@ -10,7 +10,7 @@ pkgbase = vlang-coreutils-git
 	sha256sums = SKIP
 
 pkgname = vlang-coreutils-git
-	pkgdesc = vlang rewrite of coreutils
+	pkgdesc = vlang rewrite of coreutils (installed at /usr/lib/vlang-coreutils)
 
 pkgname = coreutils-vlang-git
 	pkgdesc = (Dangerous) Swap coreutils with vlang rewrite
