@@ -6,6 +6,7 @@ pkgver=7.r20.gb9ecbd9
 pkgrel=2
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
+url="https://grayjay.app/desktop/"
 provides=('grayjay')
 conflicts=('grayjay-bin')
 options=('!strip' 'staticlibs')
