@@ -1,10 +1,10 @@
 pkgbase = wifiman-desktop
-	pkgdesc = WiFiman Desktop - Network analysis and WiFi speed testing tool by Ubiquiti
+	pkgdesc = WiFiman Desktop - Network analysis tool by Ubiquiti
 	pkgver = 1.1.3
-	pkgrel = 1
-	url = https://www.ui.com/wifiman-desktop/
+	pkgrel = 2
+	url = https://www.ui.com/download/app/wifiman-desktop
 	arch = x86_64
-	license = proprietary
+	license = custom
 	makedepends = debtap
 	depends = cairo
 	depends = desktop-file-utils
@@ -20,7 +20,8 @@ pkgbase = wifiman-desktop
 	depends = pango
 	depends = resolvconf
 	depends = webkit2gtk
+	depends = systemd
 	source = https://desktop.wifiman.com/wifiman-desktop-1.1.3-amd64.deb
-	sha256sums = SKIP
+	sha256sums = cbffe1caaca6b6011daca66dde68a54dbe29a7e4c310341fe917a16200e78730
 
 pkgname = wifiman-desktop
