@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-fa
 	pkgdesc = Persian language pack for Firefox Nightly
-	pkgver = 141.0a1.20250529.033404
+	pkgver = 141.0a1.20250529.210702
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-fa
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-fa-141.0a1.20250529.033404.xpi
-	source = firefox-nightly-i18n-fa-141.0a1.20250529.033404.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-141.0a1.fa.langpack.xpi
-	sha256sums = 6dee588efec350213f1012831ae719f0cba39be40034e8c31eb3985df063381f
+	noextract = firefox-nightly-i18n-fa-141.0a1.20250529.210702.xpi
+	source = firefox-nightly-i18n-fa-141.0a1.20250529.210702.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-141.0a1.fa.langpack.xpi
+	sha256sums = be45a58167d77c0baab7b3560715a24e8cd0d8568fb66df161770ef0a0c7481a
 
 pkgname = firefox-nightly-i18n-fa
