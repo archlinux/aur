@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=arules
-_pkgver=1.7-10
+_pkgver=1.7-11
 pkgname=r-${_pkgname,,}
-pkgver=1.7.10
+pkgver=1.7.11
 pkgrel=1
 pkgdesc='Mining Association Rules and Frequent Itemsets'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-xml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('76f5fb1ec610638db74bdb7e496761c8f24028d06d2d6a6315a4a93a15ce1266')
+sha256sums=('4794274883efdc5a6bb6423df6cae179fb1c71065cf05fc08736c83349eb995c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
