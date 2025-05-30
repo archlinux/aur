@@ -1,5 +1,6 @@
-# Maintainer: Pierre Mavro <pmavro at qovery dot com>
-# Maintainer: Mesmer <ldepaulaf at gmail dot com 
+# Maintainer: Michał Lisowski <lisu at riseup dot net>
+# Contributor: Pierre Mavro <pmavro at qovery dot com>
+# Contributor: Mesmer <ldepaulaf at gmail dot com
 # 
 # Check for new Linux releases in: https://app.vanta.com/employee/onboarding
 
@@ -8,7 +9,7 @@ _svcname=vanta-agent
 
 pkgname=vanta-agent
 # https://app.vanta.com/downloads
-pkgver=2.10.0
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="Vanta agent"
 arch=('x86_64')
@@ -20,6 +21,8 @@ source=(
     "https://vanta-agent-repo.s3.amazonaws.com/targets/versions/${pkgver}/${_binname}-amd64.deb"
     "${_svcname}.conf"
 )
+sha256sums=('0adef85bd058942de59a1fc2ae7476cfad2d154c95d5b0c62fac07bff7670f46'
+            '2d650c20f8cabb78d3c629c38d8eed3b15f0e3f9f0b96b68f67fbe5831b41307')
 
 package() {
 	echo "  -> Extracting the data.tar.gz..."
@@ -28,9 +31,9 @@ package() {
 	echo "  -> Moving stuff in place..."
 	# systemd
 	install -Dm644 "$srcdir"/usr/lib/systemd/system/vanta.service "$pkgdir"/usr/lib/systemd/system/$_svcname.service
-    # systemd override for regular restart because of Agent instability
-    install -Dm644 $_svcname.conf "$pkgdir"/etc/systemd/system/$_svcname.service.d/$_svcname.conf
-    # changelog
+  # systemd override for regular restart because of Agent instability
+  install -Dm644 $_svcname.conf "$pkgdir"/etc/systemd/system/$_svcname.service.d/$_svcname.conf
+  # changelog
 	install -Dm644 usr/share/doc/vanta/changelog.gz "$pkgdir"/usr/share/doc/$_binname/changelog.gz
     # vanta
     for i in var/vanta/* ; do
@@ -43,9 +46,12 @@ package() {
         read email
         echo -e "\nEnter Vanta key:"
         read key
+        echo -e "\nEnter Vanta region:"
+        read region
 
         sed -i "s/\"OWNER_EMAIL\": \"\"/\"OWNER_EMAIL\": \"$email\"/g" $srcdir/etc/$_binname.conf
         sed -i "s/\"AGENT_KEY\": \"\"/\"AGENT_KEY\": \"$key\"/g" $srcdir/etc/$_binname.conf
+        sed -i '/"OWNER_EMAIL"/a\  "REGION": "'"$region"'",' $srcdir/etc/$_binname.conf
         chmod 640 $srcdir/etc/$_binname.conf
         cp $srcdir/etc/$_binname.conf /tmp/$_binname.conf
 
@@ -61,6 +67,3 @@ package() {
         echo -e "More info: https://help.vanta.com/hc/en-us/articles/360060472372-Troubleshooting-the-Vanta-Agent-on-Linux-Machines\n\n"
     fi
 }
-
-sha256sums=('d749eeb61526c4cd53455fbfed99418f274b272a54543f905dba613f851f3829'
-             '2d650c20f8cabb78d3c629c38d8eed3b15f0e3f9f0b96b68f67fbe5831b41307')
