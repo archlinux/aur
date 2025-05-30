@@ -1,0 +1,14 @@
+pkgbase = cobalt-lang
+	pkgdesc = A minimal, fast interpreted programming language.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/cobalt-lang/cobalt-lang
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	source = cobalt-lang-0.7.1.tar.gz::https://github.com/cobalt-lang/cobalt-lang/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = 81b826a97d4ba3dea5d1d8b999bf440e0b9a2ecc131370c04e3753ea070f343b
+
+pkgname = cobalt-lang
