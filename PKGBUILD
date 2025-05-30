@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=systemPipeR
-_pkgver=2.14.0
+_pkgver=2.14.1
 pkgname=r-${_pkgname,,}
-pkgver=2.14.0
+pkgver=2.14.1
 pkgrel=1
 pkgdesc='systemPipeR: NGS workflow and report generation environment'
 arch=('any')
@@ -52,7 +52,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('23a841d43b690095ef189ed4d7bbc8e7691a0127e4886b2c2c608c6f8864f917')
+sha256sums=('c9626f6b30cb7249a254cf309a341d0f9fbe9f6a1a25aea059748d7f48b53665')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
