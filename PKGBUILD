@@ -3,8 +3,8 @@
 _pkgauthor=netheril96
 _pkgname=securefs
 pkgname=${_pkgname}-bin
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="A filesystem in userspace (FUSE) with transparent encryption and decryption"
 arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -22,7 +22,7 @@ source=("${_pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgna
         "DESIGN-${pkgver}::${_urlraw}/docs/design.md"
         "USAGE-${pkgver}::${_urlraw}/docs/usage.md")
 
-sha256sums=('68bcad8312f0ee82a8fb314eec5aca4dff3db50cf64e621ef7e4e3a10c305ae2'
+sha256sums=('6b4b48100cc5374a321ae625cf46fa37133f97351a27354e202d53ab21a55226'
             '4b4e85715ed4e80f60c002775c13c69386faffc84c60f59b5a2fc85ae3f432d1'
             '38dec83cd881018b69e0bb515c61a65c726bf6e9df199b95436b442c7927a7e0'
             '63a5b191613a3e341c9181e12c9655f791916e4189eddc2cf036e05212c66919'
