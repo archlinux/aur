@@ -1,0 +1,20 @@
+pkgbase = evcape
+	pkgdesc = A small tool for making the CapsLock/Control key act as an Escape-key on Linux/Wayland
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/samvv/evcape
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	depends = libevdev
+	depends = systemd-libs
+	source = evcape-1.0.0.tar.gz::https://github.com/samvv/evcape/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 99abacc639b3bdb94746c2b77b3d468bf828add0272cdb3856f89afcc2383b05
+
+pkgname = evcape
