@@ -1,0 +1,100 @@
+diff --git a/lucidglyph.sh b/lucidglyph.sh
+--- lucidglyph.sh
++++ lucidglyph.sh
+@@ -51,8 +51,9 @@
+ DEST_SHARED_DIR_OLD="$DEST_USR/share/freetype-envision"  # TODO: Remove on 1.0.0
+ DEST_SHARED_DIR_USR="$DEST_USR_USR/share/lucidglyph"
+ DEST_INFO_FILE="info"
+ DEST_UNINSTALL_FILE="uninstaller.sh"
++DEST_UNINSTALL_FILE_ABSOLUTE_PATH="${DEST_UNINSTALL_FILE_ABSOLUTE_PATH:-$DEST_SHARED_DIR/$DEST_UNINSTALL_FILE}"
+ 
+ # Colors
+ C_RESET="\e[0m"
+ C_BOLD="\e[1m"
+@@ -231,45 +232,45 @@
+     printf "Setting up\n"
+     printf -- "- %-40s%s" "Storing the installation metadata"
+     mkdir -p "$DEST_SHARED_DIR"
+     touch "$DEST_SHARED_DIR/$DEST_INFO_FILE"
+-    touch "$DEST_SHARED_DIR/$DEST_UNINSTALL_FILE"
+-    chmod +x "$DEST_SHARED_DIR/$DEST_UNINSTALL_FILE"
++    touch "$DEST_UNINSTALL_FILE_ABSOLUTE_PATH"
++    chmod +x "$DEST_UNINSTALL_FILE_ABSOLUTE_PATH"
+     printf "${C_GREEN}Done${C_RESET}\n"
+ 
+     cat <<EOF >> "$DEST_SHARED_DIR/$DEST_INFO_FILE"
+ version="$VERSION"
+ is_user_mode="$per_user_mode"
+ EOF
+-    cat <<EOF >> "$DEST_SHARED_DIR/$DEST_UNINSTALL_FILE"
++    cat <<EOF >> "$DEST_UNINSTALL_FILE_ABSOLUTE_PATH"
+ #!/bin/bash
+ set -e
+ printf "Using uninstaller for version ${C_BOLD}$VERSION${C_RESET}\n"
+ printf -- "- %-40s%s" "Removing the installation metadata "
+ rm -rf "$DEST_SHARED_DIR"
+ EOF
+     if $per_user_mode; then
+-        cat <<EOF >> "$DEST_SHARED_DIR/$DEST_UNINSTALL_FILE"
++        cat <<EOF >> "$DEST_UNINSTALL_FILE_ABSOLUTE_PATH"
+ rm -d "$(dirname $DEST_SHARED_DIR)" 2>/dev/null || true
+ rm -d "$(dirname $(dirname $DEST_SHARED_DIR))" 2>/dev/null || true
+ EOF
+     fi
+-    cat <<EOF >> "$DEST_SHARED_DIR/$DEST_UNINSTALL_FILE"
++    cat <<EOF >> "$DEST_UNINSTALL_FILE_ABSOLUTE_PATH"
+ printf "${C_GREEN}Done${C_RESET}\n"
+ EOF
+ 
+     printf -- "- %-40s%s" "Appending the environment entries "
+ 
+-    cat <<EOF >> "$DEST_SHARED_DIR/$DEST_UNINSTALL_FILE"
++    cat <<EOF >> "$DEST_UNINSTALL_FILE_ABSOLUTE_PATH"
+ printf -- "- %-40s%s" "Cleaning the environment entries "
+ sed -i "/$MARKER_START/,/$MARKER_END/d" "$DEST_ENVIRONMENT"
+ EOF
+     if $per_user_mode; then
+-        cat <<EOF >> "$DEST_SHARED_DIR/$DEST_UNINSTALL_FILE"
++        cat <<EOF >> "$DEST_UNINSTALL_FILE_ABSOLUTE_PATH"
+ [[ ! -s $DEST_ENVIRONMENT ]] && rm -f "$DEST_ENVIRONMENT"
+ EOF
+     fi
+-    cat <<EOF >> "$DEST_SHARED_DIR/$DEST_UNINSTALL_FILE"
++    cat <<EOF >> "$DEST_UNINSTALL_FILE_ABSOLUTE_PATH"
+ printf "${C_GREEN}Done${C_RESET}\n"
+ EOF
+ 
+ if ! $per_user_mode; then [[ ! -d $DEST_CONF ]] && mkdir -p "$DEST_CONF"; fi
+@@ -298,28 +299,28 @@
+ 
+     printf -- "- %-40s%s" "Installing the fontconfig rules "
+     mkdir -p "$DEST_FONTCONFIG_DIR"
+ 
+-    cat <<EOF >> "$DEST_SHARED_DIR/$DEST_UNINSTALL_FILE"
++    cat <<EOF >> "$DEST_UNINSTALL_FILE_ABSOLUTE_PATH"
+ printf -- "- %-40s%s" "Removing the fontconfig rules "
+ EOF
+ 
+     for f in $FONTCONFIG_DIR/*.conf; do
+         install -m 644 "$f" "$DEST_FONTCONFIG_DIR/$(basename $f)"
+-        cat <<EOF >> "$DEST_SHARED_DIR/$DEST_UNINSTALL_FILE"
++        cat <<EOF >> "$DEST_UNINSTALL_FILE_ABSOLUTE_PATH"
+ rm -f "$DEST_FONTCONFIG_DIR/$(basename $f)"
+ EOF
+     done
+ 
+     if $per_user_mode; then
+-        cat <<EOF >> "$DEST_SHARED_DIR/$DEST_UNINSTALL_FILE"
++        cat <<EOF >> "$DEST_UNINSTALL_FILE_ABSOLUTE_PATH"
+ rm -d "$DEST_FONTCONFIG_DIR" 2>/dev/null || true
+ rm -d "$(dirname $DEST_FONTCONFIG_DIR)" 2>/dev/null || true
+ rm -d "$(dirname $(dirname $DEST_FONTCONFIG_DIR))" 2>/dev/null || true
+ EOF
+     fi
+ 
+-    cat <<EOF >> "$DEST_SHARED_DIR/$DEST_UNINSTALL_FILE"
++    cat <<EOF >> "$DEST_UNINSTALL_FILE_ABSOLUTE_PATH"
+ printf "${C_GREEN}Done${C_RESET}\n"
+ EOF
+     printf "${C_GREEN}Done${C_RESET}\n"
+     printf "${C_GREEN}Success!${C_RESET} Reboot to apply the changes.\n"

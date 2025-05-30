@@ -1,0 +1,30 @@
+pkgbase = lucidglyph
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/maximilionus/lucidglyph
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = fontconfig
+	depends = pam
+	depends = freetype2
+	provides = lucidglyph
+	provides = fontconfig-envision
+	provides = freetype-envision-normal
+	provides = freetype-envision-full
+	replaces = lucidglyph
+	replaces = fontconfig-envision
+	replaces = freetype-envision-normal
+	replaces = freetype-envision-full
+	source = lucidglyph::git+https://github.com/maximilionus/lucidglyph#tag=v0.11.0
+	source = 0001-allow-changing-uninstall-file-absolute-path.patch
+	source = 0002-allow-changing-absolute-environment-file-destination.patch
+	validpgpkeys = B7E510C142B88F4B
+	md5sums = SKIP
+	md5sums = d8acbd5c286a8d3fcc9bfb523e626a5a
+	md5sums = bad5d9e406fbccfd55cf56478d73ed56
+	sha512sums = SKIP
+	sha512sums = 79ac53609f0fe97f56202ea12f9a7f755c7edd6de284b7537ed61ab4066228256baae47447dfe8c8f35964418a457ec8c67207fa7b7b37891b675c572169be5b
+	sha512sums = bd7574b55f26a4482b6dc9a5e6da38d3133f0b24070ec7b399e3c482d5dd662a21a6db53bba3ab3f17dad86d6cf993318e3eaf0a614996c9d49b97f5c3bc2d4d
+
+pkgname = lucidglyph

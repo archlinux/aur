@@ -1,0 +1,14 @@
+diff --git a/lucidglyph.sh b/lucidglyph.sh
+--- lucidglyph.sh
++++ lucidglyph.sh
+@@ -38,9 +38,9 @@
+ DEST_USR_USR="${DESTDIR:-$HOME}${DEST_USR_USR:-/.local}"
+ 
+ # environment
+ ENVIRONMENT_DIR="$SRC_DIR/environment"
+-DEST_ENVIRONMENT="$DEST_CONF/environment"
++DEST_ENVIRONMENT="${DEST_ENVIRONMENT:-$DEST_CONF/environment}"
+ 
+ # fontconfig
+ FONTCONFIG_DIR="$SRC_DIR/fontconfig"
+ DEST_FONTCONFIG_DIR="$DEST_CONF/fonts/conf.d"
