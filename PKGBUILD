@@ -15,7 +15,6 @@ sha1sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
-  cargo vendor vendor
   meson setup build --prefix=/usr
   meson compile -C build
 }
