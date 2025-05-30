@@ -1,7 +1,7 @@
 pkgbase = xf86-video-vmware-git
 	pkgdesc = VMware guest video driver for the Xorg X server
 	pkgver = 13.4.0.r6.g92cc453
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/xorg/driver/xf86-video-vmware
 	arch = i686
 	arch = x86_64

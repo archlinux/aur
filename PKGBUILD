@@ -2,7 +2,7 @@
 
 pkgname=xf86-video-vmware-git
 pkgver=13.4.0.r6.g92cc453
-pkgrel=1
+pkgrel=2
 pkgdesc="VMware guest video driver for the Xorg X server"
 arch=('i686' 'x86_64')
 url="https://gitlab.freedesktop.org/xorg/driver/xf86-video-vmware"
@@ -28,8 +28,8 @@ pkgver() {
 build() {
   cd "xf86-video-vmware"
 
-  ./autogen.sh
-  NOCONFIGURE=1 ./configure \
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure \
     --prefix="/usr" \
     --enable-vmwarectrl-client
   make
