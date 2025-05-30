@@ -33,9 +33,9 @@ package_vlang-coreutils-git() {
 
 package_coreutils-vlang-git() {
   pkgdesc="(Dangerous) Swap coreutils with vlang rewrite"
-  depends=(uutils-coreutils nix-busybox)
-  conflicts=(coreutils)
-  provides=(coreutils)
+  depends=($pkgbase uutils-coreutils nix-busybox)
+  conflicts=(coreutils{,-arch})
+  provides=(coreutils{,-arch})
   install -d "$pkgdir"/usr/bin
   # missing bins
   for f in $(uu-coreutils --list)
@@ -43,8 +43,8 @@ package_coreutils-vlang-git() {
   done
   ln -sf /usr/lib/nix/busybox "$pkgdir"/usr/bin/stty
   # avaiable bins
-  cd coreutils/bin
-  for f in *
+  for f in $(ls coreutils/bin)
     do ln -sf /usr/lib/vlang-coreutils/$f "$pkgdir"/usr/bin/$f
   done
+  rm "$pkgdir"/usr/bin/{kill,more,uptime,hostname,b3sum} # confliction
 }

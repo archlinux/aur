@@ -14,7 +14,10 @@ pkgname = vlang-coreutils-git
 
 pkgname = coreutils-vlang-git
 	pkgdesc = (Dangerous) Swap coreutils with vlang rewrite
+	depends = vlang-coreutils-git
 	depends = uutils-coreutils
 	depends = nix-busybox
 	provides = coreutils
+	provides = coreutils-arch
 	conflicts = coreutils
+	conflicts = coreutils-arch
