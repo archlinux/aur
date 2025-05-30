@@ -2,7 +2,7 @@
 pkgbase=uutils-coreutils-selinux
 pkgname=(${pkgbase} coreutils-uutils-selinux)
 pkgver=0.1.0
-pkgrel=3
+pkgrel=2
 arch=('x86_64')
 license=('MIT')
 url='https://uutils.github.io/'
@@ -17,10 +17,11 @@ prepare() {
   sed -i 's/yes/yes stty/' GNUmakefile # remove this at next release
 }
 
+export SELINUX_ENABLED=1
+
 build(){
   cd coreutils-$pkgver
   export RUSTONIG_DYNAMIC_LIBONIG=1
-  export SELINUX_ENABLED=1
   cargo build --release --features feat_selinux # include hostname, etc... for people wants it
 }
 
@@ -29,8 +30,7 @@ package_uutils-coreutils-selinux() {
   conflicts=(uutils-coreutils)
   cd coreutils-$pkgver
   make install DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROFILE=release MULTICALL=y PROG_PREFIX=uu-
-  # for $PATH
-  install -d "$pkgdir"/usr/lib/uutils-coreutils
+  # for $PATH exporting
   _uu="$pkgdir"/usr/bin/uu-coreutils
   install -d "$pkgdir"/usr/lib/uu-coreutils
   for f in $("$_uu" --list)
