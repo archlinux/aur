@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/um 6.14.6 Kernel Configuration
+# Linux/um 6.14.9 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 15.1.1 20250425"
 CONFIG_CC_IS_GCC=y
@@ -11,7 +11,8 @@ CONFIG_AS_VERSION=24400
 CONFIG_LD_IS_BFD=y
 CONFIG_LD_VERSION=24400
 CONFIG_LLD_VERSION=0
-CONFIG_RUSTC_VERSION=108600
+CONFIG_RUSTC_VERSION=108700
+CONFIG_RUST_IS_AVAILABLE=y
 CONFIG_RUSTC_LLVM_VERSION=190107
 CONFIG_CC_CAN_LINK=y
 CONFIG_CC_CAN_LINK_STATIC=y
@@ -186,6 +187,7 @@ CONFIG_KALLSYMS=y
 # end of Kernel Performance Events And Counters
 
 # CONFIG_PROFILING is not set
+# CONFIG_RUST is not set
 
 #
 # Kexec and crash features
