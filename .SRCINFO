@@ -1,19 +1,19 @@
 pkgbase = coinstac-desktop-app-bin
 	pkgdesc = Collaborative Informatics and Neuroimaging Suite Toolkit for Anonymous Computation.(Prebuilt version.Use system-wide electron)
-	pkgver = 6.9.2
-	pkgrel = 2
+	pkgver = 6.9.8
+	pkgrel = 1
 	url = https://github.com/trendscenter/coinstac
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
 	depends = electron18
-	provides = coinstac-desktop-app=6.9.2
+	provides = coinstac-desktop-app=6.9.8
 	conflicts = coinstac-desktop-app
-	source = LICENSE-6.9.2::https://raw.githubusercontent.com/trendscenter/coinstac/v6.9.2/LICENSE
+	source = LICENSE-6.9.8::https://raw.githubusercontent.com/trendscenter/coinstac/v6.9.8/LICENSE
 	source = coinstac-desktop-app.sh
 	sha256sums = fcf8a012e25e06508e76c87a9607116d8cf2a195c8e12f960ff01e64b493f882
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_x86_64 = coinstac-desktop-app-6.9.2-x86_64.AppImage::https://github.com/trendscenter/coinstac/releases/download/v6.9.2/COINSTAC-6.9.2-linux.AppImage
-	sha256sums_x86_64 = 2ac81257b53005fd001f4f91d3712e1aa3e1198f9af698df234ad6b1d74a9c0e
+	source_x86_64 = coinstac-desktop-app-6.9.8-x86_64.AppImage::https://github.com/trendscenter/coinstac/releases/download/v6.9.8/COINSTAC-6.9.8-linux.AppImage
+	sha256sums_x86_64 = 084ed9fcfb39631747dff3075c0bdd68cf76d721cf8c74b8bbc952c393a7b8db
 
 pkgname = coinstac-desktop-app-bin

@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=coinstac-desktop-app-bin
 _pkgname=COINSTAC
-pkgver=6.9.2
+pkgver=6.9.8
 _electronversion=18
-pkgrel=2
+pkgrel=1
 pkgdesc="Collaborative Informatics and Neuroimaging Suite Toolkit for Anonymous Computation.(Prebuilt version.Use system-wide electron)"
 arch=(
     #'aarch64'
@@ -27,7 +27,7 @@ source=(
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.AppImage")
 sha256sums=('fcf8a012e25e06508e76c87a9607116d8cf2a195c8e12f960ff01e64b493f882'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_x86_64=('2ac81257b53005fd001f4f91d3712e1aa3e1198f9af698df234ad6b1d74a9c0e')
+sha256sums_x86_64=('084ed9fcfb39631747dff3075c0bdd68cf76d721cf8c74b8bbc952c393a7b8db')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
