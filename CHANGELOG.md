@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.27.2] - 2025-05-30
+
+### Fixed
+- Unit dependencies navigation crash
+- Action result message
+
 ## [1.27.0] - 2025-05-29
 
 ### Added
@@ -11,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Enable unit file Dialog save context mixed up
-- 1.27.1 Mask unit dialog behaviour
+- 1.27.1 Mask unit dialog behaviour malfunction
 
 ## [1.26.0] - 2025-05-28
 
