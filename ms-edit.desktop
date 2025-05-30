@@ -1,7 +1,6 @@
 [Desktop Entry]
 Name=Microsoft Edit
 GenericName=Text Editor
-TryExec=ms-edit
 Exec=ms-edit %F
 Terminal=true
 Type=Application
