@@ -1,8 +1,9 @@
 pkgbase = obsidian-bin
 	pkgdesc = A powerful knowledge base that works on top of a local folder of plain text Markdown files. (Official binary package with bundled Electron)
 	pkgver = 1.8.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://obsidian.md
+	install = obsidian.install
 	arch = x86_64
 	license = custom
 	depends = gtk3
@@ -19,6 +20,6 @@ pkgbase = obsidian-bin
 	conflicts = obsidian
 	options = !strip
 	source = https://github.com/obsidianmd/obsidian-releases/releases/download/v1.8.10/obsidian_1.8.10_amd64.deb
-	sha256sums = SKIP
+	sha256sums = da19b2755013e9def37271cf04ce7485c03a22fa02b0951e4108884dcd1bd774
 
 pkgname = obsidian-bin
