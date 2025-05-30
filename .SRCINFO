@@ -1,0 +1,22 @@
+pkgbase = pacupdate
+	pkgdesc = Simple but hopefully complete pacman update script
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Pu-Anlai/pacupdate
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-aioresponses
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python-aiohttp
+	depends = python-feedparser
+	depends = pyalpm
+	depends = python-packaging
+	source = https://files.pythonhosted.org/packages/source/p/pacupdate/pacupdate-0.1.tar.gz
+	sha256sums = 9b8d16120a16648572548d3cd2d3754a994c0def5bdd4149fc57f2409876e585
+
+pkgname = pacupdate
