@@ -1,0 +1,4 @@
+[nutty]
+source='github'
+github='babluboy/nutty'
+use_max_tag=true
