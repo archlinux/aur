@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
-pkgver=1.7.12
-_electronversion=35
+pkgver=1.7.13
+_electronversion=36
 pkgrel=1
 pkgdesc="Desktop app for ente Photos.(Prebuilt version)"
 arch=(
@@ -20,14 +20,14 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.pacman")
-sha256sums_aarch64=('ba78d31b7745ca329f3a1925fdea1d3a540614dc6c2b9d95e455d0ca380b1f71')
-sha256sums_x86_64=('c80e3aee3207735120251c659081c6a514d0127f911dbf65c0c757514b5706b4')
+sha256sums_aarch64=('d182689b8a2d543bf7d2b4ed7bdcc5f99d5023f75c9ac7409603b8f6a4fa7131')
+sha256sums_x86_64=('e9e63cffe90f468a7e69470589883a61853e483e4024561553959486ff7529bd')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/\/opt\/${_pkgname}\/${_pkgname}/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
         s/Photography/Graphics/g
-    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     sed -i "s/io.${_pkgname}.photos/${pkgname%-bin}/g" "${srcdir}/opt/${_pkgname}/resources/io.${_pkgname}.photos.appdata.xml"
     _file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome_crashpad_handler chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
         libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
