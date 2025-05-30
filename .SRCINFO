@@ -1,0 +1,19 @@
+pkgbase = convcommitlint-bin
+	pkgdesc = A simple, opinionated, yet usable linter for conventional commits, written in Go.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/coolapso/convcommitlint
+	license = MIT
+	conflicts = convcommitlint
+	provides = convcommitlint
+	arch = aarch64
+	source_aarch64 = https://github.com/coolapso/convcommitlint/releases/download/v0.1.0/convcommitlint_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ebf02df5f15c98d1a90dfe23e457eda50a422c4d041d462f317525f1a590e715
+	arch = i686
+	source_i686 = https://github.com/coolapso/convcommitlint/releases/download/v0.1.0/convcommitlint_0.1.0_linux_386.tar.gz
+	sha256sums_i686 = 5a48bf1a5af78dc4cf8d1f832b3b03a81810b53bbe2684fbdcdd8a7335dfe3fc
+	arch = x86_64
+	source_x86_64 = https://github.com/coolapso/convcommitlint/releases/download/v0.1.0/convcommitlint_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6b6bfddd23edec1013160135a935f7c87be9f7f33608e9e8b127894a9db775c6
+	
+pkgname = convcommitlint-bin
