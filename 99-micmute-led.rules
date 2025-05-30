@@ -1,0 +1,2 @@
+# set the microphone mute led to glow when capture is enabled
+ACTION=="add|change", SUBSYSTEM=="sound", KERNEL=="ctl-led", ATTR{mic/mode}="follow-route"
