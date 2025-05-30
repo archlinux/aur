@@ -1,14 +1,14 @@
 pkgbase = nodejs-appium-espresso-driver
 	pkgdesc = Espresso integration for Appium
-	pkgver = 4.1.9
+	pkgver = 4.1.10
 	pkgrel = 1
 	url = https://www.npmjs.com/package/appium-espresso-driver
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	noextract = nodejs-appium-espresso-driver-4.1.9.tgz
-	source = nodejs-appium-espresso-driver-4.1.9.tgz::https://registry.npmjs.org/appium-espresso-driver/-/appium-espresso-driver-4.1.9.tgz
-	sha256sums = dd594bef4c3100970f0c6a03b30ac2767e58e27f030b9e7b59561249ad52ee1a
+	noextract = nodejs-appium-espresso-driver-4.1.10.tgz
+	source = nodejs-appium-espresso-driver-4.1.10.tgz::https://registry.npmjs.org/appium-espresso-driver/-/appium-espresso-driver-4.1.10.tgz
+	sha256sums = 05ab2a345a6cc2eaea0fb9c5d5f033967a36c8cd12d71c88ad400e23b0a1c423
 
 pkgname = nodejs-appium-espresso-driver
