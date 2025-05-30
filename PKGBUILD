@@ -5,9 +5,9 @@
 
 _realname=cppwinrt
 pkgname=mingw-w64-${_realname}
-pkgver=2.0.240405.15
-_windows_rs_ver=0.59.0
-pkgrel=2
+pkgver=2.0.250303.1
+_windows_rs_ver=65
+pkgrel=1
 arch=('any')
 pkgdesc='C++ language projection for Windows Runtime (WinRT) APIs (mingw-w64)'
 url='https://aka.ms/cppwinrt'
@@ -16,8 +16,8 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-wine' 'ninja' 'git')
 source=("https://github.com/microsoft/cppwinrt/archive/${pkgver}/${_realname}-${pkgver}.tar.gz"
         "https://github.com/microsoft/windows-rs/archive/${_windows_rs_ver}/windows-rs-${_windows_rs_ver}.tar.gz")
-sha256sums=('1da61942ee0a4500440592b7daf7bf5151b2c8aa92e57f85259cfd13c57be0d0'
-            'cc1b581ea290e4c69501793952332777cb25f5c6eae438d450446011d444c2f4')
+sha256sums=('da75b7047f4615a3db582ed8c75ee327f228b05bb47750621593594d2d0459e1'
+            'f044c5046fd32745bef1fa43b27db1977b0f4f2be615b65f69ef7c4a8ed61b3a')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')

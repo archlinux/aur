@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-cppwinrt
 	pkgdesc = C++ language projection for Windows Runtime (WinRT) APIs (mingw-w64)
-	pkgver = 2.0.240405.15
-	pkgrel = 2
+	pkgver = 2.0.250303.1
+	pkgrel = 1
 	url = https://aka.ms/cppwinrt
 	arch = any
 	license = spdx:MIT
@@ -15,9 +15,9 @@ pkgbase = mingw-w64-cppwinrt
 	options = staticlibs
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/microsoft/cppwinrt/archive/2.0.240405.15/cppwinrt-2.0.240405.15.tar.gz
-	source = https://github.com/microsoft/windows-rs/archive/0.59.0/windows-rs-0.59.0.tar.gz
-	sha256sums = 1da61942ee0a4500440592b7daf7bf5151b2c8aa92e57f85259cfd13c57be0d0
-	sha256sums = cc1b581ea290e4c69501793952332777cb25f5c6eae438d450446011d444c2f4
+	source = https://github.com/microsoft/cppwinrt/archive/2.0.250303.1/cppwinrt-2.0.250303.1.tar.gz
+	source = https://github.com/microsoft/windows-rs/archive/65/windows-rs-65.tar.gz
+	sha256sums = da75b7047f4615a3db582ed8c75ee327f228b05bb47750621593594d2d0459e1
+	sha256sums = f044c5046fd32745bef1fa43b27db1977b0f4f2be615b65f69ef7c4a8ed61b3a
 
 pkgname = mingw-w64-cppwinrt
