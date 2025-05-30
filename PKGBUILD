@@ -3,7 +3,6 @@ pkgbase=vlang-coreutils-git
 pkgname=($pkgbase coreutils-vlang-git)
 pkgver=r307.3f94d0a
 pkgrel=1
-
 url='https://github.com/vlang/coreutils'
 license=(MIT)
 arch=(x86_64)
