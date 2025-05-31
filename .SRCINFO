@@ -1,6 +1,6 @@
 pkgbase = tuisic-git
 	pkgdesc = The very first of its kind terminal based online music streaming player
-	pkgver = 1.1.0.r44.6087f0d
+	pkgver = 1.1.1.r44.6087f0d
 	pkgrel = 1
 	url = https://github.com/Dark-Kernel/tuisic
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = tuisic-git
 	depends = yt-dlp
 	depends = fftw
 	depends = sdbus-cpp
+	depends = rapidjson
 	provides = tuisic
 	conflicts = tuisic
 	source = git+https://github.com/Dark-Kernel/tuisic.git
