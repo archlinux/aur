@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gitbutler
-pkgver=0.14.26
-pkgrel=2
+pkgver=0.14.29
+pkgrel=1
 url="https://github.com/${pkgname}app/$pkgname"
 pkgdesc='Version control client, backed by Git, powered by Tauri/Rust/Svelte'
 arch=(x86_64)
@@ -20,7 +20,7 @@ makedepends=(cargo
 options=(!lto)
 _archive="$pkgname-release-$pkgver"
 source=("$url/archive/release%2F$pkgver/$_archive.tar.gz")
-sha256sums=('4a9321dc1b20c40c4527647a167cc05b4a63b51cb310b9818a3f4018b40470ee')
+sha256sums=('f01fdf7e009af7d1abab54d6749923e993ed77fb46ebdfd62d730fe41c5cc0c3')
 
 prepare() {
 	cd "$_archive"
@@ -56,10 +56,11 @@ build() {
 		--release \
 		--bins \
 		-p gitbutler-git \
+		-p but \
 		-p but-testing
 	# keep in sync with crates/gitbutler-tauri/inject-git-binaries.sh
 	local _triple="$(rustc -vV | sed -n 's/host: //p')"
-	for bin in target/release/{gitbutler-git-{askpass,setsid},but-testing}; do
+	for bin in target/release/{gitbutler-git-{askpass,setsid},but{,-testing}}; do
 		cp -av "$bin" "crates/gitbutler-tauri/${bin##*/}-${_triple}"
 	done
 	# tauri does not have "bare files" bundler, piggyback on the deb one
