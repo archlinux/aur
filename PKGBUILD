@@ -9,7 +9,7 @@ url='http://commons.apache.org/cli/'
 license=('Apache-2.0')
 depends=('java-runtime')
 source=("https://dlcdn.apache.org/commons/cli/binaries/commons-cli-${pkgver}-bin.tar.gz")
-sha256sums=('b3f54ab1ff2d87a5ebea635e90ba8d45d034bf60df14ede335bfba96addd135d')
+sha256sums=('133f8cb9bf0bba0de7f7158f3d0dcc2bd7c89bc54c386ba24bb89fdf098f2173')
 
 package() {
    cd "${srcdir}"
