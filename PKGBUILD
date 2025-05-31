@@ -2,7 +2,7 @@
 # Contributor: Manuel <mdomlop@gmail.com>
 
 # options
-: ${_build_clang:=true}
+: ${_build_clang:=false}
 
 : ${_build_level:=1}
 : ${_build_git:=true}
@@ -15,7 +15,7 @@ unset _pkgtype
 
 _pkgname=flycast
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.5.r0.g5f4eefa
+pkgver=2.5.r13.ga1a782d
 pkgrel=1
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
@@ -29,19 +29,13 @@ depends=(
   'libzip'
 )
 makedepends=(
+  'clang'
   'cmake'
   'git'
+  'lld'
   'ninja'
   'python'
 )
-
-if [[ "${_build_clang::1}" == "t" ]]; then
-  makedepends+=(
-    'clang'
-    'lld'
-    'llvm'
-  )
-fi
 
 _source_main() {
   provides+=("$_pkgname")
@@ -135,19 +129,17 @@ build() {
     LDFLAGS="${_ldflags[@]//-fuse-ld=*/} -fuse-ld=lld"
   fi
 
-  if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
-    local _cflags _cxxflags
-    _cflags=(
-      -march=x86-64-v${_build_level::1} -O3
-      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}")
-    )
-    CFLAGS="${_cflags[@]}"
+  local _cflags _cxxflags
+  _cflags=($(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}") -DNDEBUG)
+  _cxxflags=($(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}") -DNDEBUG)
 
-    _cxxflags=(
-      -march=x86-64-v${_build_level::1} -O3
-      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}")
-    )
-    CXXFLAGS="${_cxxflags[@]}"
+  export CFLAGS CXXFLAGS
+  if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
+    CFLAGS="-march=x86-64-v${_build_level::1} -O3 ${_cflags[@]}"
+    CXXFLAGS="-march=x86-64-v${_build_level::1} -O3 ${_cxxflags[@]} "
+  else
+    CFLAGS="-march=x86-64 -O3 ${_cflags[@]}"
+    CXXFLAGS="-march=x86-64 -O3 ${_cxxflags[@]} "
   fi
 
   local _cmake_options=(
