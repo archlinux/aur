@@ -1,0 +1,16 @@
+pkgbase = open-cobol-esql
+	pkgdesc = Embedded SQL pre-compiler and run-time library designed for COBOL applications which access an open-source database.
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/opensourcecobol/Open-COBOL-ESQL
+	arch = any
+	license = GPL
+	makedepends = gcc
+	makedepends = postgresql-libs
+	makedepends = autoconf
+	makedepends = automake
+	depends = postgresql-libs
+	source = open-cobol-esql-1.4.tar.gz::https://github.com/opensourcecobol/Open-COBOL-ESQL/archive/refs/tags/v1.4.tar.gz
+	b2sums = de921189708c24b0859f9e2a82b34d74b242df469302f53de30d7e8e4c24d18a5a4c64abd645add546429a9fdb659982b1a759a24692e58b33148c3cd08c4698
+
+pkgname = open-cobol-esql
