@@ -1,0 +1,5 @@
+[octave-bim]
+source = "github"
+github = "carlodefalco/bim"
+use_latest_release = true
+prefix = "v"
