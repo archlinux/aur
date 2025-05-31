@@ -5,6 +5,11 @@ APP_BASENAME='WISO2025'
 EXE="C:/Program Files/WISO/Steuersoftware 2025/${APP_BASENAME}.exe"
 PKG_USER_DATA_HOME="${XDG_DATA_HOME:-"${HOME}/.local/share"}/wiso"
 
+# https://gitlab.winehq.org/wine/wine/-/wikis/Wine-User's-Guide#winedlloverrides-dll-overrides
+__WISO_WINEDLLOVERRIDES=(
+  'd2d1=n,b'  # Prefer native d2d1.dll over the one built into Wine
+)
+
 echo >&2 'Initializing'
 
 export WINEARCH='win64'
@@ -59,6 +64,17 @@ ln -fns \
   '/usr/lib/wiso-steuer-2025/app' \
   "${WINEPREFIX}/drive_c/Program Files/WISO/Steuersoftware 2025"
 
+echo >&2 "Configuring DLL overrides"
+# Honor `WISO_WINEDLLOVERRIDES` if it is already set, even if empty
+if [[ -z "${WISO_WINEDLLOVERRIDES+x}" ]]; then
+  WISO_WINEDLLOVERRIDES=
+  for directive in "${__WISO_WINEDLLOVERRIDES[@]}"; do
+    WISO_WINEDLLOVERRIDES="${WISO_WINEDLLOVERRIDES:+${WISO_WINEDLLOVERRIDES} }"
+    WISO_WINEDLLOVERRIDES="${WISO_WINEDLLOVERRIDES}${directive}"
+  done
+fi
+
 echo >&2 "Launching app with Wine"
-wine "${EXE}"
+WINEDLLOVERRIDES="${WISO_WINEDLLOVERRIDES}" \
+  wine "${EXE}"
 echo >&2 "==> Finished"
