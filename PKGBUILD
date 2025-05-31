@@ -11,8 +11,8 @@
 
 _pkgname=resolve
 pkgname=davinci-resolve
-pkgver=19.1.4
-pkgrel=2
+pkgver=20.0
+pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -25,7 +25,7 @@ makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
 conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 source=("file://DaVinci_Resolve_${pkgver}_Linux.zip"
         "davinci-control-panels-setup.sh")
-sha256sums=('40bf13b7745b420ed9add11c545545c2ba2174429b6c8eafe8fceb94aa258766'
+sha256sums=('76edc0664ce3a7be7eb74cc6a213f6e91c81c1774a4bfcdfc8604f2fb7262b64'
             'f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8')
 install="${pkgname}.install"
 options=('!strip')
