@@ -1,0 +1,17 @@
+diff --git a/editor.patch b/editor.patch
+new file mode 100644
+index 0000000..1457894
+--- /dev/null
++++ b/editor.patch
+@@ -0,0 +1,11 @@
++--- Makefile   2025-05-31 11:28:53.645328216 +0200
+++++ Makefile.patched   2025-05-31 11:29:06.993328207 +0200
++@@ -7,7 +7,7 @@
++ # SAFE = disable the .sys() function and the ]i and ]! meta commands
++ #        (or just run "make kg.safe")
++ # EDIT = include line editor and history (needs some POSIX functions)
++-OPTIONS= -DEDIT
+++OPTIONS=
++
++ # Modules to load into image file
++ MODULES=-l nstat -l nplot -l time

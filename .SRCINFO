@@ -1,15 +1,17 @@
 pkgbase = klong
 	pkgdesc = A simple array language
-	pkgver = 20220315
+	pkgver = 20221212
 	pkgrel = 1
 	url = http://t3x.org/klong
 	arch = armv7h
 	arch = aarch64
 	arch = x86_64
 	license = CC0
-	source = http://t3x.org/klong/klong20220315.tgz
+	source = http://t3x.org/klong/klong20221212.tgz
 	source = vplot.patch
-	sha256sums = 018b75ca2b2ee86eabc9ac3b6c14b0a2aa9200998d4d860e04432fdc80285191
+	source = editor.patch
+	sha256sums = 5e1a4877228a3c643a99dbfd2d73e60bc3fa856e2615ac2fe78c80370e7f96b4
 	sha256sums = 60be54e072864940c728d1d792b97590886358ecf5fb8f2751f6ce2d36e5e8c5
+	sha256sums = b6ab6648c783959f21cc3fbdf983218caedd7a91faafb363e4240725daa64ef5
 
 pkgname = klong
