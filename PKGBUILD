@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.36.r17936.a9b911750f
+pkgver=0.0.37.r17986.68d2573344
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64 aarch64)
@@ -124,8 +124,7 @@ build() {
     -DUSE_SYSTEM_WOLFSSL=OFF \
     -DCMAKE_LINKER=lld \
     -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -fuse-ld=lld" \
-    -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -fuse-ld=lld" \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -fuse-ld=lld"
   
   cmake --build build
 }
