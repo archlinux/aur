@@ -5,7 +5,7 @@
 # Contributor: Emerson Almeida <duke.m16@gmail.com>
 
 pkgname=zoho-mail-desktop
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=1
 pkgdesc='Lite desktop version of Zoho email client.'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('hicolor-icon-theme')
 source=(
 	"https://downloads.zohocdn.com/zmail-desktop/linux/${pkgname}-lite-installer-x64-v${pkgver}.deb"
 )
-sha512sums=('843a113eafd77a9292a1ccfd87a8f3cf17e6cca7f6f3e63d95085ba1d8cea81d61adff58d3cdee7bb672f914030c5cdf256a65301cac7160d2709edc3835cdb9')
+sha512sums=('4cc12f0d06317d87d22bb57bac35123bd4a6cb53867aaaa4d1b7b52110f2cb791734cf4fd4acacd9990e2f824c1fd474182a2abbe576c283ee7fb44d5fd60198')
 
 package() {
 	# Install application, icons, docs and desktop file
