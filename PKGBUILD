@@ -1,12 +1,12 @@
-# Maintainer: Vojtěch Aschenbrenner <v@asch.cz>
+# Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 
 pkgname=java-commons-cli
-pkgver=1.5.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Java API for parsing command line options passed to programs'
 arch=('i686' 'x86_64')
 url='http://commons.apache.org/cli/'
-license=('APACHE')
+license=('Apache-2.0')
 depends=('java-runtime')
 source=("https://dlcdn.apache.org/commons/cli/binaries/commons-cli-${pkgver}-bin.tar.gz")
 sha256sums=('b3f54ab1ff2d87a5ebea635e90ba8d45d034bf60df14ede335bfba96addd135d')
