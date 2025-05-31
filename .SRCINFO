@@ -1,6 +1,6 @@
 pkgbase = tracy
 	pkgdesc = Real-time, nanosecond resolution frame profiler
-	pkgver = 0.11.1
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/wolfpld/tracy
 	arch = i686
@@ -16,13 +16,11 @@ pkgbase = tracy
 	depends = freetype2
 	depends = dbus
 	depends = hicolor-icon-theme
-	depends = intel-tbb
-	depends = capstone
 	optdepends = xdg-desktop-portal: file dialogs
 	provides = tracy
 	conflicts = tracy
 	options = !lto
-	source = git+https://github.com/wolfpld/tracy#tag=v0.11.1
+	source = git+https://github.com/wolfpld/tracy#tag=v0.12.0
 	sha256sums = SKIP
 
 pkgname = tracy
