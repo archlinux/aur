@@ -1,0 +1,5 @@
+[python-opytional]
+source = "github"
+github = "mmore500/opytional"
+use_max_tag = "true"
+prefix = "v"

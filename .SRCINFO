@@ -1,0 +1,17 @@
+pkgbase = python-opytional
+	pkgdesc = makes working with values that might be None safer and easier
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mmore500/opytional
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = opytional-0.1.0.tar.gz::https://github.com/mmore500/opytional/archive/v0.1.0.tar.gz
+	sha512sums = d387af463b4dda672064183f8d2a13a7d14aed0f8ccfbed1a71c040eed2f77c4918f79a2ba77c351dc51e111ccf5655aeeff06a620040c6e293687ec67251f43
+
+pkgname = python-opytional
