@@ -1,7 +1,7 @@
 pkgbase = wlmaker
 	pkgdesc = Wayland compositor inspired by WindowMaker
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/phkaeser/wlmaker
 	arch = x86_64
 	license = Apache-2.0
@@ -12,7 +12,7 @@ pkgbase = wlmaker
 	depends = bash
 	depends = cairo
 	depends = libxkbcommon
-	depends = wlroots
+	depends = wlroots0.18
 	depends = xorg-xwayland
 	source = https://github.com/phkaeser/wlmaker/releases/download/v0.5/wlmaker-0.5.tar.gz
 	source = wlmaker-0.5-libbase::git+https://github.com/phkaeser/libbase#commit=69a87c3c476c73683c9b12e3ac099ac464bd562e
