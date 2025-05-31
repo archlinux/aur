@@ -2,7 +2,7 @@
 
 pkgname=libaegis
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Portable C implementations of the AEGIS family of high-performance authenticated encryption algorithms. "
 arch=('i686' 'x86_64' 'aarch64')
 makedepends=('cmake')
