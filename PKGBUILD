@@ -9,7 +9,7 @@
 _pkgname=links
 pkgname=links-g-directfb
 pkgver=2.30
-pkgrel=5
+pkgrel=6
 pkgdesc="A text WWW browser, similar to Lynx (with directfb, X, and fb graphics. This version also supports SVGALIB)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://links.twibright.com/"
@@ -18,7 +18,7 @@ license=('GPL-2.0-or-later')
 # 'directfb' package is for the directfb backend
 depends=('bzip2' 'directfb2-git' 'xz' 'openssl' 'gpm' 'libx11' 'libavif' 'libtiff' 'libwebp'
 'libpng' 'libjpeg-turbo' 'librsvg' 'libevent' 'lzlib' 'libbsd' 'freetype2' 'zstd'
-'fontconfig' 'zlib-ng' 'zlib-ng-compat' 'brotli' 'glib2' 'cairo')
+'fontconfig' 'zlib' 'brotli' 'glib2' 'cairo')
 makedepends=('libxt')
 optdepends=('svgalib: svgalib support')
 provides=('links' 'links-g')
