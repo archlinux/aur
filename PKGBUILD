@@ -2,14 +2,14 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts515
-pkgver=5.15.182
-pkgrel=2
+pkgver=5.15.184
+pkgrel=4
 pkgdesc='LTS Linux 5.15.x'
 url="https://www.kernel.org/"
 arch=(x86_64 pentium4 i686 i486)
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz python gcc14
+  bc libelf pahole cpio perl tar xz python gcc
 )
 options=('!strip')
 _srcname=linux-$pkgver
@@ -27,9 +27,9 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('b6abfa53315a04e459070b927c58beb41f085433117d58756504d68b67f6a31e'
+sha256sums=('9c3e98c6dcc7dca7c2e9dd51423eaf0581f5e100d0f04c23bc29f21913dac1d9'
             'SKIP'
-            'a19183d83f103d2f312cc7f01059a63fcac5087fcad4dbe603c505392dbfd98a'
+            '62c66a2e1dd2e66697a391bbfa27c2fd9fd664de0f15fd700fe498811e6a5c2a'
             '3b5cfc9ca9cf778ea2c4b619b933cda26519969df2d764b5a687f63cf59974cd'
             '2af9be5ea71054b709974a8455b65e3ae2de48cd3cf75d2ff7ed4f0ad3c90431'
             '8357f000b2b622e73dcfd41c2bad42b5e99fffe8f7ee64f774aa771f86cef43c'
@@ -219,7 +219,16 @@ pkgname=(
   )
 )
 
+
 if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; then
+
+  # use gcc *which is still gcc 14 on 32-bit" instead of gcc14
+  eval "$(
+    declare -f build | \
+      sed '
+        s|gcc-14|gcc|
+      '
+  )"
 
   # use 32-bit configuration files per subarchitecture instead of main config file
   source_pentium4=('config.pentium4')
@@ -227,10 +236,10 @@ if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; t
   source_i486=('config.i486')
   # fail if upstream's .config changes
   for ((i=0; i<${#sha256sums[@]}; i++)); do
-    if [ "${sha256sums[${i}]}" = 'a19183d83f103d2f312cc7f01059a63fcac5087fcad4dbe603c505392dbfd98a' ]; then
-      sha256sums_pentium4=('d0c2ca2ab6c262cd7e905b9d44bd6b61b72028f2d2cc398d41bbd94e7dc85b57')
-      sha256sums_i686=('ee072f28326047cdd256b19afe88daa04611ca2501fd47b6bd36ba216df8683b')
-      sha256sums_i486=('a7fa2f7e421ed264457974a0a0e18c22b6762d2f04aafe29bb528dd4f7807887')
+    if [ "${sha256sums[${i}]}" = '62c66a2e1dd2e66697a391bbfa27c2fd9fd664de0f15fd700fe498811e6a5c2a' ]; then
+      sha256sums_pentium4=('dce72c0ac95ceb426a5d5323bf0f890bad90c4a92295f157ee9ffec22e647a6a')
+      sha256sums_i686=('4c033a4bc58c5128d436400953c272c5792c63c09d7641c7cb5928f57a2a0c4f')
+      sha256sums_i486=('bc1afcc4dc482a48ec29fcfdac282f23dc58fd5e6191a92184c91b5f019e3620')
     fi
   done
 
@@ -254,6 +263,10 @@ if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; t
       '
   )"
 
+  # 5.15.184, 32-bit builds
+  source+=('linux-5.15.184-cpu_wants_rethunk_64_bit_only.patch')
+  sha256sums+=('1ecf101aa35b93b65cc1a075d84ed3332f7ada4fc6f3d1917e21ab4ba8453ff1')
+
   # avoid using zstd compression in ultra mode (exhausts virtual memory)
   source+=('no-ultra-zstd.patch')
   sha256sums+=('3997ce6033fdf950a9960f1db720b38c47b1a2e06ab75fc6712c154f596e7c47')
@@ -270,4 +283,8 @@ if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; t
   makedepends=(${makedepends[@]//graphviz/})
   makedepends=(${makedepends[@]//imagemagick/})
   makedepends=(${makedepends[@]//texlive-latexextra/})
+else
+  # gcc 14, as gcc 15 breaks
+  makedepends=(${makedepends[@]//gcc/})
+  makedepends+=(gcc14)
 fi
