@@ -2,8 +2,8 @@
 
 pkgname=pinnacle-comp
 _pkgname=pinnacle
-pkgver=0.1.0_beta.1
-_pkgver=0.1.0-beta.1
+pkgver=0.1.0
+_pkgver=0.1.0
 pkgrel=1
 pkgdesc="A Wayland compositor inspired by AwesomeWM"
 arch=(x86_64)
@@ -35,8 +35,8 @@ optdepends=(
 provides=(pinnacle-comp)
 conflicts=(pinnacle-comp)
 source=("$_pkgname-$_pkgver.tar.gz::https://github.com/pinnacle-comp/pinnacle/archive/v$_pkgver.tar.gz")
-sha256sums=('7b3bf821bfbb43c047d6799e55b26777af7d141aa193d695bce7291712a3d2db')
-b2sums=('33218dd8d180e024f0b63e701a2fef71ef0a8251546a91eb82a49c32aa31adf3051db9ee5678fd3d1a4e00e0ced7fd398cf52f484a8979821aadeb1b7a88af7c')
+sha256sums=('9002dd4caa8ab8d7831a8e66f449e535a8bfef6b04eeac9afd98ca1e4b5a3fb4')
+b2sums=('6b90ae1b0c80a916dce078b0961523b8d07f2b383913f1939a992ff884ca9ff7be60cc185a98a8e2e6c0bee10976e5149703cbfcd5057b8ee1e7484e964c0814')
 
 prepare() {
 	cd "$_pkgname-$_pkgver"
@@ -50,8 +50,8 @@ build() {
 
     # Git info (should probably automate if possible)
     export VERGEN_GIT_BRANCH=main
-    export VERGEN_GIT_COMMIT_MESSAGE="rockspec: Add the 'v' in the tag"
-    export VERGEN_GIT_SHA="0642754"
+    export VERGEN_GIT_COMMIT_MESSAGE="release: Fix rockspec"
+    export VERGEN_GIT_SHA="a8974da"
     export VERGEN_GIT_DIRTY="false"
 
 	cargo build --frozen --release
