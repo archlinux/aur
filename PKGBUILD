@@ -15,11 +15,9 @@ options=("!libtool")
 source=(
 	"https://ftp.gnu.org/gnu/gnucobol/$pkgname-$pkgver.tar.xz"
 	"https://ftp.gnu.org/gnu/gnucobol/$pkgname-$pkgver.tar.xz.sig"
-	"fix_test_698.patch"
 )
-sha256sums=('3bb48af46ced4779facf41fdc2ee60e4ccb86eaa99d010b36685315df39c2ee2'
-            'SKIP'
-            '864d7fef6ad3101b84f0a4319839d23956f0a83f2ea971c698e3005125491888')
+b2sums=('66df93fe2f8772aebd807612c8e96be46f5605c316f374ae51b3a8c3f6ce760150af60777cd1d53f12f65ee48bc0a6225c506b813fdafcc87d949e609ff3273e'
+        'SKIP')
 validpgpkeys=(
 	"B9459D0CA8A740B323235CDF13E96B53C005604E"
 )
