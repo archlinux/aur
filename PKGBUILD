@@ -1,20 +1,20 @@
-# Maintainer : qaz <fkxxyz@163.com>
-# Contributor: qaz <fkxxyz@163.com>
+# Maintainer : fkxxyz <fkxxyz@gmail.com>
+# Contributor: fkxxyz <fkxxyz@gmail.com>
 
 _theme_name=qaz-blue-vista
 pkgname=emerald-theme-$_theme_name
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A blue vista theme for emerald."
 arch=('any')
 url="https://github.com/fkxxyz/$pkgname"
 license=('GPL3')
-source=("https://github.com/fkxxyz/emerald-theme-qaz-blue-vista/archive/master.zip")
+source=("qaz-blue-vista-v${pkgver}.tar.gz::https://github.com/fkxxyz/emerald-theme-qaz-blue-vista/archive/refs/tags/v${pkgver}.tar.gz")
 
 package() {
   install -d "$pkgdir/usr/share/emerald/themes"
-  cp -r "$srcdir/$pkgname-master/$_theme_name" "$pkgdir/usr/share/emerald/themes/"
+  cp -r "$srcdir/${pkgname}-${pkgver}/$_theme_name" "$pkgdir/usr/share/emerald/themes/"
 }
 
-sha256sums=('b37583a1fcefb6114660db1149099879f0851201326c67dbe1c587b613efb5a5')
+sha256sums=('5511bcd1eacf2a79dbe92c0e2ede56373d1ac2770a386320beab0fac1188155f')
 
