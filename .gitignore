@@ -2,6 +2,8 @@
 src/
 pkg/
 
+polpettone-pomodoro-timer/
+
 *.pkg.tar*
 *.tar.gz
 *.tar.bz2

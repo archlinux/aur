@@ -1,6 +1,6 @@
 # Maintainer: Stefan Heiden stefanheiden@tuta.com
 pkgname=polpettone-pomodoro-timer
-pkgver=0.1.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A CLI-Pomodoro-Timer"
 arch=('x86_64')
