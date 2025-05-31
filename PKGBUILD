@@ -41,7 +41,7 @@ sha256sums=(
   'SKIP'
   'SKIP'
 )
-options=('debug')
+options=('!lto' 'debug')
 
 pkgver() {
   cd qcma
@@ -56,12 +56,12 @@ prepare() {
 
 build() {
 
+  CFLAGS+=" -Wno-incompatible-pointer-types"
+
   cd ffmpeg-3.4.13
   ./configure \
     --prefix="${srcdir}/fakeroot" \
     --enable-libpulse \
-    --enable-indev=alsa,pulse,oss,fbdev \
-    --enable-outdev=alsa,pulse,oss,fbdev \
     --disable-programs \
     --disable-doc
   make
