@@ -14,22 +14,14 @@ depends=(
 makedepends=(
   "dotnet-sdk-9.0"
 )
-#checkdepends=()
-#optdepends=()
-#provides=()
 conflicts=(
   "supportboi-git"
 )
-#replaces=()
-#backup=()
-#options=()
 install=supportboi.install
-#changelog=
-#source=("git+${url}.git#tag=${pkgver}")
-source=("git+${url}.git")
-#noextract=()
+source=("git+${url}.git#tag=${pkgver}")
 sha512sums=("SKIP")
 #validpgpkeys=()
+backup=(etc/supportboi/config.yml)
 
 _srcdir="SupportBoi"
 

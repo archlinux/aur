@@ -12,7 +12,8 @@ pkgbase = supportboi
 	conflicts = supportboi-git
 	options = !debug
 	options = !strip
-	source = git+https://github.com/KarlOfDuty/SupportBoi.git
+	backup = etc/supportboi/config.yml
+	source = git+https://github.com/KarlOfDuty/SupportBoi.git#tag=4.0.1
 	sha512sums = SKIP
 
 pkgname = supportboi
