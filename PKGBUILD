@@ -1,8 +1,8 @@
 # Maintainer: Pixel
 
 pkgname=walrs
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="A fast color scheme generator"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Pixel2175/walrs"
