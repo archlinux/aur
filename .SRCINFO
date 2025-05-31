@@ -1,6 +1,6 @@
 pkgbase = hyprshell
 	pkgdesc = A modern GTK4-based window switcher and application launcher for Hyprland
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://github.com/h3rmt/hyprshell/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = hyprshell
 	depends = hyprland
 	depends = gtk4-layer-shell
 	depends = gtk4
-	source = hyprshell-4.0.1.tar.gz::https://static.crates.io/crates/hyprshell/hyprshell-4.0.1.crate
-	sha256sums = 93334a43eb03477d85a3462570042996919688888e4f6adfa2f6c339c2b0af64
+	source = hyprshell-4.0.2.tar.gz::https://static.crates.io/crates/hyprshell/hyprshell-4.0.2.crate
+	sha256sums = eec5934fda3a7ffe18ed98fd76bad7e4cd1b1197209c9706fe40454e35f92435
 
 pkgname = hyprshell

@@ -1,6 +1,6 @@
 pkgname=hyprshell
 # x-release-please-start-version
-pkgver=4.0.1
+pkgver=4.0.2
 # x-release-please-end
 pkgrel=1
 pkgdesc="A modern GTK4-based window switcher and application launcher for Hyprland"
@@ -13,6 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgn
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
+    cd "$pkgname-$pkgver"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -24,6 +25,6 @@ build() {
 }
 
 package() {
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname-$pkgver/target/release/$pkgname"
 }
-sha256sums=('93334a43eb03477d85a3462570042996919688888e4f6adfa2f6c339c2b0af64')
+sha256sums=('eec5934fda3a7ffe18ed98fd76bad7e4cd1b1197209c9706fe40454e35f92435')
