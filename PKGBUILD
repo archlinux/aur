@@ -2,8 +2,8 @@
 # Contributor: <aggraef at gmail.com>
 
 pkgname=pd-l2ork-bin
-pkgver=20250501
-_pkgrev=248c6462
+pkgver=20250531
+_pkgrev=76cfc17e
 _ubuntu_ver=24.04
 pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData (upstream Debian package)"
@@ -14,7 +14,7 @@ depends=('bluez-libs' 'fftw' 'flite' 'fluidsynth' 'fribidi' 'ftgl' 'glu' 'lua53'
 provides=('pd-l2ork')
 conflicts=('pd-l2ork')
 source=(https://github.com/pd-l2ork/pd-l2ork/releases/download/${pkgver}-rev.${_pkgrev}/Pd-L2Ork-${_ubuntu_ver}-${pkgver}-rev.${_pkgrev}.deb)
-sha256sums=('b03e4641a530ce63d7138aff1e64152786f869773cc1113337186be2664e4e42')
+sha256sums=('5944f957a00888d053429033df80b5c4208729f8e35bec636ec535763bcb0e7b')
 
 package() {
     cd "$srcdir"
