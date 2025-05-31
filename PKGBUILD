@@ -2,10 +2,10 @@
 
 pkgname=vivictpp
 pkgdesc='An easy to use tool for subjective comparison of the visual quality of different encodings of the same video source.'
-pkgver=1.1.0
+pkgver=1.2.0
 # Uncomment for releases with hyphens
 # _pkgver=$(echo "$pkgver" | tr '~' -)
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/vivictorg/vivictpp'
 license=('GPL2')
@@ -18,10 +18,10 @@ makedepends=('cmake'
   'git')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("https://github.com/vivictorg/vivictpp/archive/refs/tags/v${pkgver}.zip"
-  "meson_build.patch")
-sha256sums=('5825d5de534ddb479c2a1c6052e0fd7536b566c0d342dbd9d007e277c2834344'
-            '72188070abc23685ac47c48bf2c3ce42232bbdf04ebc6d6092252e9b337df4ed')
+source=('https://github.com/vivictorg/vivictpp/archive/refs/tags/v${pkgver}.zip'
+  'meson_build.patch')
+sha256sums=('48a2fc509ff3e97f6912d49b9e3b0b2f059e6064a3d71a71df40f05b9f9433fd'
+  '72188070abc23685ac47c48bf2c3ce42232bbdf04ebc6d6092252e9b337df4ed')
 options=(!lto)
 
 prepare() {
