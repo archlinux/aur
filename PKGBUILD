@@ -7,7 +7,7 @@
 # ```
 
 pkgname=snowflake-client
-pkgver=1.4.0
+pkgver=1.4.1
 _bootstrap=1.3
 pkgrel=1
 epoch=1
@@ -15,14 +15,14 @@ pkgdesc="Snowflake Database command line client (snowsql)"
 arch=('x86_64')
 url="http://www.snowflake.net/"
 license=('custom:commercial')
-depends=('gcc-libs'
+depends=('gcc-libs' 'unzip'
          # Needed for libcrypt.so.1
          'libxcrypt-compat')
 source=(
     "${pkgname}-${pkgver}.bash::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/${_bootstrap}/linux_x86_64/snowsql-${pkgver}-linux_x86_64.bash"
     "${pkgname}-${pkgver}.bash.sig::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/${_bootstrap}/linux_x86_64/snowsql-${pkgver}-linux_x86_64.bash.sig"
 )
-sha256sums=('78aa63d8902c9351745457e4b9e68b05f544f544c669a285a9649dc28b19d67c'
+sha256sums=('5faa0e9f0df18225daf9c98c59e48a20e3998824d2b3980351a40fa03b00ba59'
             'SKIP')
 validpgpkeys=('8564510C6D193BB04E0603062A3149C82551A34A')
 
