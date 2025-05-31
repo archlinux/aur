@@ -1,8 +1,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=gustaf
 pkgname=python-${_base}
-_gitcommit=23ebe6e14ff9ccdd05b802d1978239ff9496ed22
-pkgver=0.0.27
+_gitcommit=790638da5d78659c71f6aef067e67dc96541a3d0
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Process and visualize numerical-analysis-geometries"
 url="https://tataratat.github.io/${_base}"
@@ -17,7 +17,7 @@ optdepends=('python-vedo: for renderer and visualization'
   'python-napf: for fast k-d tree build'
   'python-funi: for find unique float array rows')
 source=(git+https://github.com/tataratat/${_base}.git#commit=${_gitcommit})
-sha512sums=('375998323e6279521f020c11a46ce8caca73481a535cf44fa2e840178c9b71e7e1b9a3d0f9ddfcffb2cf80474156678274bca6e01023434fd613234f196e4eb4')
+sha512sums=('f29cfe9bc656476c87f18375e366fa7e4f496134491fe560debe6177524454de642a5d933802acffdef05dec401a4b7179ed8d1c4a6de73154d10299f55d06c4')
 
 build() {
   cd ${_base}
