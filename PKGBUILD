@@ -3,7 +3,7 @@
 # Contributor: max-k <max-k AT post DOT com>
 pkgname=ampache
 pkgver=7.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP web based audio/video streaming application and file manager"
 arch=('any')
 url="http://www.ampache.org/"
