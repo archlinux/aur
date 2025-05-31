@@ -4,7 +4,7 @@
 _name=cursor
 pkgbase="${_name}-electron"
 pkgname=("$pkgbase"{,-latest,35})
-pkgver=0.50.7
+pkgver=0.51.1
 pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://www.cursor.com"
@@ -15,14 +15,14 @@ depends=('ripgrep' 'xdg-utils' # electron* is added at package()
 makedepends=('desktop-file-utils')
 provides=("${_name}"{,-bin})
 conflicts=("${_name}"{,-bin})
-_hash=02270c8441bdc4b2fdbc30e6f470a589ec78d60d
+_hash=a9dd46cbd249a30044eaae1526eb6ca1ec2f7568
 _code=1.100.2-1
 source=("https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/${_code}/code.sh")
 source_aarch64=("${pkgver}-aarch64.img::https://downloads.cursor.com/production/${_hash}/linux/arm64/Cursor-${pkgver}-aarch64.AppImage")
 source_x86_64=("${pkgver}-x86_64.img::https://downloads.cursor.com/production/${_hash}/linux/x64/Cursor-${pkgver}-x86_64.AppImage")
 sha512sums=('937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37')
-sha512sums_aarch64=('908dcc25fdc7a13b92665db786dc5d805caf5ac8140abc0062b44ed42b5458056bbe5ffd804136fcdc06a31eb70df55bc02642cb80c7e8991c8f52bf58c2fc53')
-sha512sums_x86_64=('c498cc14d51b42dde62b52a3557cd7a9933e5ac9f96bd75b5027d0b2c661156c65811f443176a9aedbb5f6058d83a20481af7416230dd562bd240e679f1d4ae2')
+sha512sums_aarch64=('2ff0cafb6e271fd0399e7e6e8cff9292270ea6658db598354feb758dfe1cd5c8d9dd2e1b168882b7aef205c5c95584b0e1d030ea98606adff95b1125ebd785d2')
+sha512sums_x86_64=('8bc0cfd45374f744236ea4a18960d5d67467a38c001ee888cd6e2bced64add2a86bb5e972ede5011e219b6b60c44f8133ce17fa8dc30bfb78e3e7e842e0c34af')
 options=(!strip) # for ext?
 prepare() { # Create cp -r friendly layout with FHS
 	sed -e "s|code-flags|cursor-flags|" -e "s|lib/code|lib/cursor|" -e "s|/usr/lib/code/code.mjs|--app=/usr/lib/cursor|" code.sh > run.sh
