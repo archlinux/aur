@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur [at] kokakiwi dot com>
 
 pkgname=edgee
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc='The full-stack edge platform for your edge oriented applications'
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('Apache-2.0')
 depends=('openssl' 'bzip2' 'xz')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/edgee-cloud/edgee/archive/v$pkgver.tar.gz")
-sha256sums=('95a20029d8d923aca9517a3a62c613ef79956ef55ffe83010516eddb2477a443')
-b2sums=('0e4252edf3f678de36647153cb73f80c3af6f0707189cd7d6e08bb04aa3d225f26ef395ee5ccded44f13bda01e4b7f0b393b4d20cd38161baf7f36fbb88edf64')
+sha256sums=('88bb036b7ce3de79f9b07c8ff3e695aaca9b7c63a38c5e5dde6bf1a4bdad48be')
+b2sums=('5d772147890d73e316d5a267f7b8559466e1db56f98a8e577b20d342a81e1c7b781a32fce555b2c75c0a565dcb58ae02eca8669b025f5b5ece28f24ef2a82fa2')
 options=('!lto')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
