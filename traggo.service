@@ -14,7 +14,7 @@ ProtectKernelTunables=true
 ProtectSystem=strict
 RuntimeDirectory=traggo
 StateDirectory=traggo
-ExecStart=/usr/bin/traggo-server
+ExecStart=/usr/bin/traggo
 
 [Install]
 WantedBy=multi-user.target
