@@ -21,7 +21,7 @@ optdepends=(
   'lsof: Terminal splitting'
   'org.freedesktop.secrets: Settings sync'
 )
-makedepends=( electron nodejs-electron
+makedepends=( electron nodejs-lts-jod
   git npm pkgconf python libarchive )
 source=("git+https://github.com/voideditor/void.git")
 sha256sums=('SKIP')
