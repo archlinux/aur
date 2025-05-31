@@ -6,12 +6,27 @@
 pkgname=alacarte-git
 pkgver=3.56.0+0+gb0c7ca0
 pkgrel=1
-pkgdesc="Menu editor for gnome. Git version using Python 3."
+pkgdesc="Menu editor for gnome. Git version."
 arch=(any)
-license=('LGPL')
-url="https://www.gnome.org"
-depends=('gnome-menus' 'python-gobject' 'gtk3')
-makedepends=('intltool' 'libxslt' 'docbook-xsl' 'git' 'gnome-common')
+license=('LGPL-2.0-or-later')
+url="https://gitlab.gnome.org/GNOME/alacarte"
+depends=(
+  gdk-pixbuf2
+  glib2
+  gnome-menus
+  gtk3
+  hicolor-icon-theme
+  python
+  python-cairo
+  python-gobject
+)
+
+makedepends=(
+  docbook-xsl
+  git
+  libxslt
+)
+
 provides=("alacarte="$pkgver)
 replaces=("alacarte")
 conflicts=("alacarte")
