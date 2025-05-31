@@ -38,15 +38,25 @@ pkgver() {
   git describe --long | sed 's/-/+/g'
 }
 
-build() {
+prepare() {
   cd alacarte
   NOCONFIGURE=1 ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var PYTHON=/usr/bin/python3
+}
+
+build() {
+  local configure_options=(
+    --prefix=/usr
+    --sysconfdir=/etc
+    --localstatedir=/var
+  )
+
+  cd alacarte
+  ./configure "${configure_options[@]}"
   make
 }
 
 package() {
-  cd alacarte
-  make DESTDIR="$pkgdir" install
-  python3 -m compileall "$pkgdir"/usr/lib/python3.8/site-packages/Alacarte/
+  make -C alacarte DESTDIR="$pkgdir" install
+  python -m compileall -d /usr "$pkgdir/usr"
+  python -O -m compileall -d /usr "$pkgdir/usr"
 }
