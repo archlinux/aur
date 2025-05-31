@@ -1,6 +1,6 @@
 pkgbase = diplib-git
 	pkgdesc = Quantitative Image Analysis in C++, MATLAB and Python
-	pkgver = r2125.dff4c397
+	pkgver = r2685.b9e38162
 	pkgrel = 1
 	url = http://www.diplib.org/
 	arch = x86_64
