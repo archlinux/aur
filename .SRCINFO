@@ -1,0 +1,13 @@
+pkgbase = rset
+	pkgdesc = Remote Staging Execution Tool
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://github.com/eradman/rset
+	arch = x86_64
+	license = custom:ISC-style
+	makedepends = git
+	makedepends = make
+	source = git+https://github.com/eradman/rset#tag=3.2
+	sha256sums = b519d2aef7e27cd5525508d5798a70f4c36e10f67796a6c8cb6a09f4b3afc00b
+
+pkgname = rset
