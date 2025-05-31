@@ -7,7 +7,7 @@ pkgbase = ampache
 	arch = any
 	license = GPL
 	depends = mariadb>=10.0
-	depends = php>=8.3
+	depends = php>=8.4
 	optdepends = lame: all transcoding/downsampling
 	optdepends = vorbis-tools: all transcoding
 	optdepends = flac: flac transcoding/downsampling
@@ -16,10 +16,10 @@ pkgbase = ampache
 	conflicts = ampache-git
 	conflicts = ampache-development
 	options = !strip
-	source = https://github.com/ampache/ampache/releases/download/7.5.1/ampache-7.5.1_all_php8.3_squashed.zip
+	source = https://github.com/ampache/ampache/releases/download/7.5.1/ampache-7.5.1_all_php8.4_squashed.zip
 	source = nginx-example.conf
 	source = ampache.install
-	sha256sums = b0ebb762ae6ce0e17f8a38afdb9e13091ca0f510fe13a244deda20e0308f9087
+	sha256sums = 860be0b73b8dc2cf78352b3382850f3c9eb995fda7b825754440c580a7d2d76b
 	sha256sums = d579f125fc85b6862dc2bd950b6aa3a4ffdad219323b8ee2c93282c8f223c3eb
 	sha256sums = bd9bad5e2825dbc203a7f8e478ba44657de559ce6fe4bd6d079089bbe47734db
 
