@@ -1,0 +1,19 @@
+pkgbase = hfetch-git
+	pkgdesc = A Clio Aite themed neofetch parody written in C just for lulz. Fork of jfetch by jffops.
+	pkgver = 0b13a03
+	pkgrel = 1
+	url = https://github.com/nambona890/hfetch
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = make
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/nambona890/hfetch
+	sha256sums = SKIP
+
+pkgname = hfetch-git
