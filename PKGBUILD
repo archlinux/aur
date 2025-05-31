@@ -5,7 +5,8 @@ _pkgpyname=releng_tool
 pkgver=2.3.0
 _pkgtarget=v2.3
 pkgrel=1
-pkgdesc='A tool to manage the building of packages'
+pkgdesc='A tool to create packages for select runtime environments
+ (e.g. embedded targets)'
 url=https://releng.io/
 arch=(any)
 license=(BSD-2-Clause)
