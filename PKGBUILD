@@ -12,13 +12,13 @@ source=("${pkgname}-${pkgver}::git+$url.git#tag=v${pkgver}")
 sha256sums=('a8cca6880e4cfaefd1fcda2ff4158bd0dab53599b2f56a0e5d014c5284bd7fe4')
 
 prepare() {
-	cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
