@@ -1,7 +1,7 @@
 _pkgname=cyberdrop_dl_patched
 pkgname=cyberdropdownloader
 pkgver=6.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bulk downloader for multiple file hosts and forum sites"
 arch=('any')
 url="https://github.com/jbsparrow/CyberDropDownloader"
@@ -19,7 +19,6 @@ depends=(
     python-browser-cookie3
     python-certifi
     python-curl-cffi
-    python-filedate
     python-get-video-properties
     python-inquirerpy
     python-m3u8

@@ -1,7 +1,7 @@
 pkgbase = cyberdropdownloader
 	pkgdesc = Bulk downloader for multiple file hosts and forum sites
 	pkgver = 6.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jbsparrow/CyberDropDownloader
 	arch = any
 	license = GPL-3.0-or-later
@@ -21,7 +21,6 @@ pkgbase = cyberdropdownloader
 	depends = python-browser-cookie3
 	depends = python-certifi
 	depends = python-curl-cffi
-	depends = python-filedate
 	depends = python-get-video-properties
 	depends = python-inquirerpy
 	depends = python-m3u8
