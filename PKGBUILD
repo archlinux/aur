@@ -1,5 +1,5 @@
 pkgname=playfin
-pkgver=3242a07
+pkgver=9b8cd61
 pkgrel=1
 pkgdesc="Terminal-based Jellyfin player with MPV integration"
 arch=('any')
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/playfin"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
