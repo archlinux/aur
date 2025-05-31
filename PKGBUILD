@@ -1,6 +1,6 @@
 # Maintainer: Cornelius Hoffmann <coding@volucra.de>
 pkgname=prometheus-opnsense-exporter
-pkgver=0.0.8
+pkgver=0.0.10
 pkgrel=1
 
 pkgdesc="OPNsense Exporter for Prometheus"
