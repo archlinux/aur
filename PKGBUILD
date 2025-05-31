@@ -2,7 +2,7 @@
 
 _pkgname=proto
 pkgname="${_pkgname}-bin"
-pkgver=0.49.3
+pkgver=0.49.4
 pkgrel=1
 pkgdesc='Pluggable multi-language version manager'
 license=('MIT')
@@ -13,8 +13,8 @@ arch=('x86_64' 'aarch64')
 depends=('git' 'gcc-libs' 'xz')
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.tar.xz::${url}/releases/download/v${pkgver}/proto_cli-${arch[0]}-unknown-linux-gnu.tar.xz")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}.tar.xz::${url}/releases/download/v${pkgver}/proto_cli-${arch[1]}-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('ee57f9a537ed8e560105247697136c9d28ff2c4f483acdbca43fc77e9e1dd907')
-sha256sums_aarch64=('7f2727ee4f3f731d84e50319ea66aa5271e1c9e8ffeaadf06cd58acc07c89a22')
+sha256sums_x86_64=('11cfa21fd2f5ff80d75d9a30f509de415d9ba72f93e4404175860f4490a4b1cb')
+sha256sums_aarch64=('1a79563c5b806d32df1675fb985957d13593602a5a50ee467c493386b681b6c6')
 
 prepare() {
   cd "proto_cli-${CARCH}-unknown-linux-gnu"
