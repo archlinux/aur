@@ -7,8 +7,8 @@
 _pkgname=wemeet-wayland-screenshare
 pkgname=wemeet-wayland-screenshare-git
 provides=('wemeet-wayland-screenshare')
-pkgver=3.19.2.400_hooked
-pkgrel=8
+pkgver=3.19.2.400.H.r56.g7f33896
+pkgrel=1
 pkgdesc='Hooked wemeet that enables screenshare on Wayland. 实现Wayland下腾讯会议屏幕共享.'
 arch=('x86_64')
 license=('MIT')
@@ -43,6 +43,10 @@ _starter="wemeet-wayland-screenshare.sh"
 _libhook="libhook.so"
 _desktop_entry_file="wemeetapp-wayland-screenshare.desktop"
 
+pkgver() {
+    cd "$srcdir/$_pkgname"
+    printf "3.19.2.400.H.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
     cd "$srcdir/$_pkgname"

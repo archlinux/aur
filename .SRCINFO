@@ -1,7 +1,7 @@
 pkgbase = wemeet-wayland-screenshare-git
 	pkgdesc = Hooked wemeet that enables screenshare on Wayland. 实现Wayland下腾讯会议屏幕共享.
-	pkgver = 3.19.2.400_hooked
-	pkgrel = 8
+	pkgver = 3.19.2.400.H.r56.g7f33896
+	pkgrel = 1
 	url = https://github.com/xuwd1/wemeet-wayland-screenshare
 	arch = x86_64
 	license = MIT
