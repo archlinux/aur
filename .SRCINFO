@@ -1,6 +1,6 @@
 pkgbase = polpettone-pomodoro-timer
 	pkgdesc = A CLI-Pomodoro-Timer
-	pkgver = 0.1.1
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/polpettone/polpettone-pomodoro-timer
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = polpettone-pomodoro-timer
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
-	source = git+https://github.com/polpettone/polpettone-pomodoro-timer.git#tag=v0.1.1
+	source = git+https://github.com/polpettone/polpettone-pomodoro-timer.git#tag=v0.2.1
 	sha256sums = SKIP
 
 pkgname = polpettone-pomodoro-timer
