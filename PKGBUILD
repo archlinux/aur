@@ -3,7 +3,7 @@
 # Contributor: pressh <pressh@gmail.com>
 
 pkgname=alacarte-git
-pkgver=3.11.91+27+g3614c2c
+pkgver=3.56.0+0+gb0c7ca0
 pkgrel=1
 pkgdesc="Menu editor for gnome. Git version using Python 3."
 arch=(any)
