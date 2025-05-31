@@ -45,17 +45,17 @@ sha256sums=('9e8b1389ac7fd4ec8c830630b8b0f525575b22b085bf31ad9950e34befbeaffb'
             'e09bb2551d223102f8aa0449ec419f4941eaf69266751fef1513676be373cff1'
             '18c2b1584cff16da60fd16bbc1ab143daa75c71f046fd83d97b9768bee0d279e')
 noextract=(
-  "MapleMono-CN-unhinted.zip"
-  "MapleMono-CN.zip"
-  "MapleMono-NF-CN-unhinted.zip"
-  "MapleMono-NF-CN.zip"
-  "MapleMono-NF-unhinted.zip"
-  "MapleMono-NF.zip"
-  "MapleMono-OTF.zip"
-  "MapleMono-TTF-AutoHint.zip"
-  "MapleMono-TTF.zip"
-  "MapleMono-Variable.zip"
-  "MapleMono-Woff2.zip"
+  "MapleMono-CN-unhinted-$pkgver.zip"
+  "MapleMono-CN-$pkgver.zip"
+  "MapleMono-NF-CN-unhinted-$pkgver.zip"
+  "MapleMono-NF-CN-$pkgver.zip"
+  "MapleMono-NF-unhinted-$pkgver.zip"
+  "MapleMono-NF-$pkgver.zip"
+  "MapleMono-OTF-$pkgver.zip"
+  "MapleMono-TTF-AutoHint-$pkgver.zip"
+  "MapleMono-TTF-$pkgver.zip"
+  "MapleMono-Variable-$pkgver.zip"
+  "MapleMono-Woff2-$pkgver.zip"
 )
 package_maplemono-cn-unhinted() {
   bsdunzip "MapleMono-CN-unhinted-$pkgver.zip" -d MapleMono-CN-unhinted
