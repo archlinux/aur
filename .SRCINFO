@@ -1,0 +1,23 @@
+pkgbase = python-outset
+	pkgdesc = add zoom indicators, insets, and magnified panels to matplotlib/seaborn visualizations with ease!
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/mmore500/outset
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-cov
+	checkdepends = python-slugify
+	checkdepends = python-scikit-learn
+	checkdepends = python-keras
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-flit
+	depends = python-adjusttext
+	depends = python-frozendict
+	depends = python-opytional
+	depends = python-pandas
+	depends = python-seaborn
+	source = outset-0.1.9.tar.gz::https://github.com/mmore500/outset/archive/v0.1.9.tar.gz
+	sha512sums = aee6670ebd354bea4927975d3f1d9cda3920560ae6b2942c62b726751224d589116e0b3723907b7d243e18285e9547a6204324eb13edfc6dcdba35458cb1773b
+
+pkgname = python-outset

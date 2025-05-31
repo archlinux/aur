@@ -1,0 +1,5 @@
+[python-outset]
+source = "github"
+github = "mmore500/outset"
+use_latest_release = "true"
+prefix = "v"
