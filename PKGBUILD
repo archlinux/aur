@@ -1,5 +1,6 @@
 # Maintainer: Lubosz Sarnecki <lubosz ! gmail ! com>
-# Arch Maintainer: Jan de Groot <jgc@archlinux.org>
+# Arch Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: pressh <pressh@gmail.com>
 
 pkgname=alacarte-git
