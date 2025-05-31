@@ -2,7 +2,7 @@
 
 _pkgname=converternow
 pkgname=$_pkgname-bin
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="The Unit Converter app: easy, immediate and multi-platform (binary release)"
 url="https://github.com/ferraridamiano/ConverterNOW"
@@ -12,7 +12,7 @@ depends=('gtk3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=($_pkgname-linux-x64-$pkgver.tar.gz::"$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
-sha256sums=('2b2153505ea3ef94fdfe7d9c8ce688c56f8e534803dfe35d5a733eba86a059ce')
+sha256sums=('767e650487f2f4529de6741d77ff4af608d32930a3b71904b96ae41a83c39879')
 
 prepare() {
 # Create a shortcut
@@ -31,7 +31,7 @@ package() {
   mkdir -p "$pkgdir/opt/ConverterNOW" "$pkgdir/usr/bin"
 # Install
   install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
-  install -Dm644 data/flutter_assets/assets/logo.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
+  install -Dm644 data/flutter_assets/assets/logo.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
   mv data lib $_pkgname "$pkgdir/opt/ConverterNOW"
   ln -s /opt/ConverterNOW/$_pkgname "$pkgdir/usr/bin"
 }
