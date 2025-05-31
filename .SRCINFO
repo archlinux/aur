@@ -1,6 +1,6 @@
 pkgbase = py3status-cpu-governor
 	pkgdesc = Python module for py3status to keep track of your cpu governor state
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/mcgillij/py3status-cpu-governor
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = py3status-cpu-governor
 	makedepends = python-installer
 	depends = python
 	depends = py3status
-	source = https://github.com/mcgillij/py3status-cpu-governor/releases/download/0.1.7/py3status_cpu_governor-0.1.7.tar.gz
-	md5sums = e8d4917780633227c087d647984eafc0
+	source = https://github.com/mcgillij/py3status-cpu-governor/releases/download/0.1.8/py3status_cpu_governor-0.1.8.tar.gz
+	md5sums = bcf4abf8dcd28a648ab01295f3cbe297
 
 pkgname = py3status-cpu-governor
