@@ -1,6 +1,6 @@
 pkgbase = gog-book-of-hours
 	pkgdesc = Elegant, melancholy, combat-free RPG set in an occult library. GOG version.
-	pkgver = 2023.8.b.4.66885
+	pkgver = 2023.8.b.4
 	pkgrel = 1
 	url = https://www.gog.com/en/game/book_of_hours
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gog-book-of-hours
 	depends = gtk2
 	depends = pango
 	options = !strip
-	source = book-of-hours_latest.sh::gogdownloader://book_of_hours/en3installer0
+	source = book-of-hours_2023_8_b_4.sh::gogdownloader://book_of_hours/en3installer0
 	source = gog-book-of-hours.desktop
 	source = book-of-hours.bash
 	sha512sums = SKIP

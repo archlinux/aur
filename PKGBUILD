@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=gog-book-of-hours
-pkgver=2023.8.b.4.66885
+pkgver=2023.8.b.4
 pkgrel=1
 pkgdesc='Elegant, melancholy, combat-free RPG set in an occult library. GOG version.'
 _shortname="${pkgname#gog-}"
@@ -21,7 +21,7 @@ makedepends=('lgogdownloader')
 options=('!strip')
 
 source=(
-  "${_shortname}_latest.sh::gogdownloader://${_shortname//-/_}/en3installer0"
+  "${_shortname}_${pkgver//./_}.sh::gogdownloader://${_shortname//-/_}/en3installer0"
   "${pkgname}.desktop"
   "${_shortname}.bash"
 )
@@ -35,11 +35,12 @@ sha512sums=(
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 PKGEXT=.pkg.tar
 
-pkgver() {
-  awk -v ORS=. -e 'NR==2,NR==3' data/noarch/gameinfo | head -c -1
-}
-
 prepare() {
+  # Assert that pkgver matches the downloaded version
+  diff -u \
+    --label 'Expected version' <(echo "${pkgver}") \
+    --label 'Actual version' <(awk 'NR==2' data/noarch/gameinfo)
+
   # Remove unneeded 32-bit executable
   # Fixes false alarm in rebuild-detector
   rm -rfv "${srcdir}/data/noarch/support/yad/32"
