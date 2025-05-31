@@ -3,7 +3,7 @@
 pkgname="azaharplus-appimage"
 pkgver=2121_2_A
 _pkgver=2121.2-A
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of the Azahar 3DS emulator that restores some features"
 arch=("x86_64")
 url="https://github.com/AzaharPlus/AzaharPlus"
@@ -12,7 +12,7 @@ provides=("azahar" "azaharplus")
 conflicts=("azahar" "azaharplus")
 depends=(ffmpeg sdl2)
 source=(
-    "$url/releases/download/AZAHARPLUS_${pkgver}/azaharplus-${_pkgver}-linux.zip"
+    "$url/releases/download/AZAHAR_PLUS_${pkgver}/azaharplus-${_pkgver}-linux.zip"
     "azaharplus.desktop"
     "azahar.svg"
 )
