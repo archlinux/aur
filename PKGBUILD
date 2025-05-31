@@ -7,8 +7,8 @@ pkgname=(
 #   'wxwidgets-gtk4-light'
   'wxwidgets-qt5-light'
 )
-pkgver=3.2.6
-pkgrel=2
+pkgver=3.2.8.1
+pkgrel=1
 pkgdesc="wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -51,12 +51,8 @@ makedepends=(
 )
 source=(
   "wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
-  "install_locales_cmake.patch::https://github.com/MaartenBent/wxWidgets/commit/82b50732181a43b4a0a4f3cb6624bf95d05e7a0d.patch"
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('SKIP')
 options=('debug')
 
 prepare() {
@@ -64,7 +60,6 @@ prepare() {
 
   git cherry-pick ed510012bac97f6ad1f3b776d1b13c37a987e83e -n # Fix undefined symbols in Qt build
   git cherry-pick 8ea22b5e92bf46add0b20059f6e39a938858ff97 -n # Avoid crash with GTK3 if console program is using a GUI wxApp
-  patch -p1 -i "${srcdir}/install_locales_cmake.patch"
 }
 
 build() {
