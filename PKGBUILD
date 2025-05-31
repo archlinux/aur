@@ -1,6 +1,6 @@
 # Maintainer: Maciej Dems <macdems@gmail.com>
 pkgname=z-library-bin
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Z-library application"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://z-lib.fm/z-access  "
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'at-spi2-core' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3')
 license=('ISC')
 source=("zlibrary-setup-latest_${pkgver}.deb::https://s3proxy.cdn-zlib.sk/te_public_files/soft/linux/zlibrary-setup-latest.deb")
-sha256sums=('657da8da8761f57bad0893a99812b7821f844540de78d6ba3576c5518fad9e93')
+sha256sums=('d2c0fb2c835ca6db7aef43a173cd74acda2d52e710e46126334851e23c2d87d3')
 
 prepare() {
     mkdir -p "$srcdir/z-library"
