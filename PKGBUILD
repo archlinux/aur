@@ -2,7 +2,7 @@
 
 pkgname=ntpsec
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Security-hardened Network Time Protocol implementation"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.ntpsec.org/"
@@ -46,7 +46,8 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
 
-  ./waf configure --prefix /usr --sbindir=/usr/bin --refclock=all --enable-leap-smear --enable-doc --htmldir=/usr/share/doc/ntpsec -v
+  ./waf configure --prefix /usr --sbindir=/usr/ntpsec/bin --refclock=all \
+      --enable-leap-smear --enable-doc --htmldir=/usr/share/doc/ntpsec
   ./waf build
 
   a2x -f text docs/copyright.adoc
@@ -62,8 +63,6 @@ package() {
   cd "$pkgname-$pkgver"
 
   ./waf install --destdir="$pkgdir/"
-  #mv $pkgdir/usr/sbin/ntpd $pkgdir/usr/bin/ntpd
-  #rmdir $pkgdir/usr/sbin
 
   install -Dm 644 etc/logrotate-config.ntpd "$pkgdir/etc/logrotate.d/ntpd"
   install -Dm 644 build/main/etc/ntpd.service "$pkgdir/usr/lib/systemd/system/ntpd.service"
