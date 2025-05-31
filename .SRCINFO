@@ -1,6 +1,6 @@
 pkgbase = simple-live-app
 	pkgdesc = An app for watching live
-	pkgver = 1.8.3
+	pkgver = 1.8.6
 	pkgrel = 1
 	url = https://github.com/xiaoyaocz/dart_simple_live
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = simple-live-app
 	depends = gtk3
 	depends = mpv
 	source = flutter-3.22.3.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.22.3-stable.tar.xz
-	source = git+https://github.com/xiaoyaocz/dart_simple_live.git#tag=v1.8.3
+	source = git+https://github.com/xiaoyaocz/dart_simple_live.git#tag=v1.8.6
 	sha256sums = 9c5f70ba118b9163552144901a2efd91d40b22a68a04e67271d6a5ad936e8368
-	sha256sums = e016f8c6c3620e0f861ebd33d711149cf9ee65bc7fb098ed6c5e86a928148c7e
+	sha256sums = 5ca0186921c6818bbaa727aa5bd974b133098057bee1700357ac8cd6658b3a2f
 
 pkgname = simple-live-app
