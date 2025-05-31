@@ -1,5 +1,5 @@
 # Maintainer: Tzu-Yu Lee <leejuyuu@gmail.com>
-# Contributor: RayeS <sidorovi4pasha at yandex dot by>
+# Co-maintainer: RayeS <sidorovich.pasha at gmail dot com>
 # Contributor: chn <g897331845@gmail.com>
 # Contributor: xantares
 
