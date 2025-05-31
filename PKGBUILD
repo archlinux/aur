@@ -1,5 +1,5 @@
-# Maintainer: Robin Jadoul (aur@ur4ndom.dev) 
-# Contributor: Wojciech Kępka (wojciech@wkepka.dev) 
+# Maintainer: Robin Jadoul (aur@ur4ndom.dev)
+# Contributor: Wojciech Kępka (wojciech@wkepka.dev)
 pkgname=helix-git
 _pkgname=helix
 pkgver=24.07.r114.g518425e05
@@ -56,14 +56,14 @@ check() {
 package() {
     cd "${_pkgname}"
     mkdir -p "${pkgdir}${_lib_path}"
-    rm -r  "runtime/grammars/sources" 
+    rm -r  "runtime/grammars/sources"
     cp -r "runtime" "${pkgdir}${_lib_path}"
     install -Dm 0755 "target/opt/${_bin}" "${pkgdir}${_lib_path}/${_bin}"
     install -Dm 0644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
     install -Dm 0777 "${srcdir}/${_bin}" "${pkgdir}/usr/bin/${_bin}"
     install -Dm 0644 "contrib/Helix.desktop" "${pkgdir}/usr/share/applications/Helix.desktop"
     install -Dm 0644 "contrib/Helix.appdata.xml" "${pkgdir}/usr/share/appdata/Helix.appdata.xml"
-    install -Dm 0644 "contrib/helix.png" "${pkgdir}/usr/share/icons/Helix.png"
+    install -Dm 0644 "contrib/helix.png" "${pkgdir}/usr/share/icons/helix.png"
     install -Dm 0644 "contrib/completion/hx.zsh" "${pkgdir}/usr/share/zsh/site-functions/_hx"
     install -Dm 0644 "contrib/completion/hx.bash" "${pkgdir}/usr/share/bash-completion/completions/hx.bash"
     install -Dm 0644 "contrib/completion/hx.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/hx.fish"
