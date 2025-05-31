@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=uutils-findutils-git
-pkgver=0.7.0.r83.g5235d78
+pkgver=0.8.0.r33.gd55e2f9
 pkgrel=1
 pkgdesc="Rust implementation of findutils"
 arch=('i686' 'x86_64')
 url="https://github.com/uutils/findutils"
 license=('MIT')
-depends=('gcc-libs')
+depends=('gcc-libs' 'oniguruma')
 makedepends=('git' 'cargo')
 provides=("uutils-findutils=$pkgver")
 conflicts=('uutils-findutils')
@@ -43,6 +43,7 @@ check() {
 package() {
   cd "findutils"
 
+  RUSTONIG_DYNAMIC_LIBONIG=1 \
   cargo install \
     --locked \
     --no-track \
