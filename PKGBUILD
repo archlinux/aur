@@ -3,7 +3,7 @@
 pkgname=technitium-dns-server-git
 _pkgname=technitium-dns-server
 pkgver=r3432.g3a7636ac
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source authoritative and recursive DNS server focused on privacy and security"
 arch=('x86_64')
 url="https://technitium.com/dns/"
@@ -88,7 +88,6 @@ package() {
     mkdir -p "${pkgdir}/opt/${_pkgname}/config"
     touch "${pkgdir}/opt/${_pkgname}/config/.config_files_are_here"
     
-    cd ..
     install -Dm644 "technitium-dns-server.dinit" "${pkgdir}/opt/${_pkgname}/service/technitium-dns-server.dinit"
     install -Dm644 "technitium-dns-server.service" "${pkgdir}/opt/${_pkgname}/service/technitium-dns-server.service"
     install -Dm644 "technitium-dns-server.sysuser" "${pkgdir}/opt/${_pkgname}/service/technitium-dns-server.sysuser"
