@@ -1,11 +1,8 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Maintainer: Naqua Darazaki <n.darazaki@gmail.com>
 
-# Remove this if building against a libadwaita version earlier than 1.2.0
-CONFIG_OPTIONS=-Dadw_1_2=true
-
 pkgname=spedread-git
-pkgver=2.3.1.r0.g2c2ed8b
+pkgver=2.5.0.r0.g400faf7
 pkgrel=1
 pkgdesc="GTK speed reading software: Read like a speedrunner!"
 arch=('x86_64' 'aarch64')

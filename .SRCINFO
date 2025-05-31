@@ -1,6 +1,6 @@
 pkgbase = spedread-git
 	pkgdesc = GTK speed reading software: Read like a speedrunner!
-	pkgver = 2.3.1.r0.g2c2ed8b
+	pkgver = 2.5.0.r0.g400faf7
 	pkgrel = 1
 	url = https://github.com/Darazaki/Spedread
 	arch = x86_64
