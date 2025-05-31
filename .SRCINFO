@@ -12,6 +12,7 @@ pkgbase = python-gustaf
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-numpy
+	depends = python-packaging
 	optdepends = python-vedo: for renderer and visualization
 	optdepends = python-scipy: for create k-d tree
 	optdepends = python-meshio: for load and export numerous mesh formats
