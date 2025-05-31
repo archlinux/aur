@@ -35,6 +35,7 @@ optdepends=(
   'meson: support for building meson-dependent packages'
   'openssh: support for secure-copy fetching of sources'
   'patch: support for patching package sources'
+  'p4: support for Perforce cloning'
   'python-build: support for Python packages using build frontend'
   'python-certifi: support using Mozilla'\''s CA Bundle for Bazaar cloning'
   'python-flit: support for Python packages using Flit'
