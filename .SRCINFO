@@ -1,7 +1,7 @@
 pkgbase = gnucobol
 	pkgdesc = A free, open source and modern COBOL compiler
 	pkgver = 3.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.gnu.org/software/gnucobol/
 	arch = x86_64
 	license = GPL-3.0-only AND LGPL-3.0
