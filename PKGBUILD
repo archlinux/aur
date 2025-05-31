@@ -1,0 +1,29 @@
+pkgname=hyprshell
+# x-release-please-start-version
+pkgver=4.0.1
+# x-release-please-end
+pkgrel=1
+pkgdesc="A modern GTK4-based window switcher and application launcher for Hyprland"
+arch=('any')
+url="https://github.com/h3rmt/hyprshell/"
+license=("MIT")
+makedepends=('cargo')
+depends=('hyprland' 'gtk4-layer-shell' 'gtk4')
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cd "$pkgname-$pkgver"
+    cargo build --frozen --release
+}
+
+package() {
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+}
+sha256sums=('93334a43eb03477d85a3462570042996919688888e4f6adfa2f6c339c2b0af64')
