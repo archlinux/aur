@@ -16,7 +16,7 @@
 
 pkgname=mutter-x11-scaling
 pkgver=48.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -112,7 +112,9 @@ prepare() {
   # Avoid some window tracking issues with XWayland
   # https://gitlab.archlinux.org/archlinux/packaging/packages/mutter/-/issues/12
   # https://gitlab.gnome.org/GNOME/mutter/-/issues/4133
-  git revert -n 02068a8f97df39055bc5e8d631847f5499a821a0
+  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4465
+  git cherry-pick -n 5a78e6ae05ddf099d62e956c32b07ade7321b9b5
+  git cherry-pick -n a38fe3a50427bd0ffdd86d0a565371d992027438
 }
 
 build() {
