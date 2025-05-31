@@ -1,0 +1,21 @@
+pkgbase = mydict-git
+	pkgdesc = Simple & fast dictionary application powered by ODict
+	pkgver = r42.ba6265f
+	pkgrel = 1
+	url = https://github.com/jaxvanyang/mydict
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = just
+	makedepends = cargo
+	depends = gcc-libs
+	depends = bzip2
+	depends = libxkbcommon
+	depends = xz
+	depends = hicolor-icon-theme
+	provides = mydict
+	conflicts = mydict
+	source = mydict::git+https://github.com/jaxvanyang/mydict.git
+	sha256sums = SKIP
+
+pkgname = mydict-git
