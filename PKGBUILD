@@ -2,7 +2,7 @@
 # Maintainer: Luca Giugliardi <lukeemhigh plus dev at protonmail dot com>
 
 pkgname='docker-scout'
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc="Docker Scout is a set of software supply chain features integrated into Docker's user interfaces and command line interface (CLI)."
 url='https://github.com/docker/scout-cli'
@@ -25,10 +25,10 @@ license=('PROPRIETARY')
 source_aarch64=("${pkgname}_${pkgver}_arm64.tar.gz::https://github.com/docker/scout-cli/releases/download/v${pkgver}/docker-scout_${pkgver}_linux_arm64.tar.gz")
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/docker/scout-cli/releases/download/v${pkgver}/docker-scout_${pkgver}_linux_amd64.tar.gz")
 sha256sums_x86_64=(
-  4a09034cb78102d5506c4646fd4c04d188ba5a49e7a57296e720116532eaab49
+  9f7ec0f054d7b1438e7bf3b6a95a5905fe77ec0697c01a59c514db33d4ff1cce
 )
 sha256sums_aarch64=(
-  c4ac80ac708820754e8ba633ea33eef5e1952dc1a5f6fba94a59bc06b8620058
+  f5a88c458e7c73db656d3c6d7036d70b5ab15fa3e365af7d3244cc2620329f0e
 )
 
 package() {
