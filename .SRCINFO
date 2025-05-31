@@ -1,6 +1,6 @@
 pkgbase = playfin
 	pkgdesc = Terminal-based Jellyfin player with MPV integration
-	pkgver = r1.b6dede3
+	pkgver = r1.121a980
 	pkgrel = 1
 	url = https://github.com/AlexJonker/playfin
 	arch = any
