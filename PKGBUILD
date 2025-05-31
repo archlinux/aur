@@ -11,30 +11,27 @@ pkgdesc="A simple tool to calculate the overall performance of an investment por
 arch=('x86_64')
 url="https://www.portfolio-performance.info"
 license=('EPL-1.0')
-options=('!strip')
 depends=('java-runtime' 'gtk3')
-validpgpkeys=('E46E6F8FF02E4C83569084589239277F560C95AC')
-
+conflicts=('portfolio')
+options=('!strip')
 source=(
-    portfolio_$pkgver.tar.gz::"https://github.com/buchen/portfolio/releases/download/${pkgver}/PortfolioPerformance-${pkgver}-linux.gtk.${CARCH}.tar.gz"
-    portfolio_$pkgver.tar.gz.asc::"https://github.com/buchen/portfolio/releases/download/${pkgver}/PortfolioPerformance-${pkgver}-linux.gtk.${CARCH}.tar.gz.asc"
-    portfolio-performance-bin.svg::"https://raw.githubusercontent.com/buchen/portfolio/${pkgver}/portfolio-product/icons/logo.svg"
-    portfolio-performance-bin.desktop
-)
+    portfolio_$pkgver.tar.gz::"https://github.com/portfolio-performance/portfolio/releases/download/${pkgver}/PortfolioPerformance-${pkgver}-linux.gtk.${CARCH}.tar.gz"
+    portfolio_$pkgver.tar.gz.asc::"https://github.com/portfolio-performance/portfolio/releases/download/${pkgver}/PortfolioPerformance-${pkgver}-linux.gtk.${CARCH}.tar.gz.asc"
+    portfolio-performance-bin.svg::"https://raw.githubusercontent.com/portfolio-performance/portfolio/${pkgver}/portfolio-product/icons/logo.svg"
+    portfolio-performance-bin.desktop)
+validpgpkeys=('E46E6F8FF02E4C83569084589239277F560C95AC')
+sha512sums=('aedea424c3fc0f84c7171d31bbe574f40f09b3f2d56c677e720297017e14f02fff2aafe4db30b82a4b176a1cd6be3f184b211fa9906caeb400d27cd68b9ac934'
+            'SKIP'
+            'a7aef110c3379ea40644c3acc8681abd2bda82522d90fc4777632883454055c63426f97dada8ca247e5fa20a9f5b462eead46d2c2bf16989d35cebd774d32162'
+            '29986cbce9bdb3ad385de9d0ca11c41cd640e3fd258b54768e7158cdcc9db303b760b535de3d48d31c888e37966b885c7a645b4a2b0bcc95751b584df4ad834d')
 
 package() {
-    install -d "$pkgdir"/{opt,usr/bin}
+    install -d "$pkgdir"/{opt,usr/bin,usr/share/pixmaps,usr/share/applications}
 
-    cp -a "$srcdir"/portfolio "${pkgdir}"/opt/portfolio-performance-bin
+    cp -a "$srcdir"/portfolio "$pkgdir"/opt/portfolio-performance-bin
 
     ln -s /opt/portfolio-performance-bin/PortfolioPerformance "$pkgdir"/usr/bin/PortfolioPerformance
 
     install -Dm 644 portfolio-performance-bin.desktop -t "$pkgdir"/usr/share/applications
     install -Dm 644 portfolio-performance-bin.svg -t "$pkgdir"/usr/share/pixmaps
 }
-
-
-sha512sums=('aedea424c3fc0f84c7171d31bbe574f40f09b3f2d56c677e720297017e14f02fff2aafe4db30b82a4b176a1cd6be3f184b211fa9906caeb400d27cd68b9ac934'
-            'SKIP'
-            'a7aef110c3379ea40644c3acc8681abd2bda82522d90fc4777632883454055c63426f97dada8ca247e5fa20a9f5b462eead46d2c2bf16989d35cebd774d32162'
-            '29986cbce9bdb3ad385de9d0ca11c41cd640e3fd258b54768e7158cdcc9db303b760b535de3d48d31c888e37966b885c7a645b4a2b0bcc95751b584df4ad834d')

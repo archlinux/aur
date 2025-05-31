@@ -6,6 +6,7 @@ pkgbase = portfolio-performance-bin
 	arch = x86_64
 	license = EPL-1.0
 	depends = java-runtime
+	depends = gtk3
 	options = !strip
 	source = portfolio_0.76.3.tar.gz::https://github.com/buchen/portfolio/releases/download/0.76.3/PortfolioPerformance-0.76.3-linux.gtk.x86_64.tar.gz
 	source = portfolio_0.76.3.tar.gz.asc::https://github.com/buchen/portfolio/releases/download/0.76.3/PortfolioPerformance-0.76.3-linux.gtk.x86_64.tar.gz.asc

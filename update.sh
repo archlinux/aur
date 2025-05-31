@@ -1,19 +1,21 @@
-VERSION=$(curl -sL https://api.github.com/repos/buchen/portfolio/releases/latest | jq -r .tag_name)
-CURRENT_VERSION=$(grep 'pkgver=' PKGBUILD | cut -d'=' -f2)
+#!/bin/bash
+set -e
 
-# If GitHub's version is different from the current version, update the PKGBUILD file
-if [[ $VERSION != $CURRENT_VERSION ]]; then
-    echo "Updating PKGBUILD to version $VERSION..."
-    sed -i -e 's/pkgver=.*/pkgver='$VERSION'/' PKGBUILD
-    sed -i -e 's/pkgrel=.*/pkgrel=1/' PKGBUILD
+pkgctl version upgrade
 
-    updpkgsums
-    makepkg --printsrcinfo > .SRCINFO
-
-    git add PKGBUILD .SRCINFO
-    git commit -m "feat: update to v${VERSION}"
-    echo "Update complete!"
-else
-    echo "Current version ($CURRENT_VERSION) is up-to-date."
+if git diff --exit-code PKGBUILD &>/dev/null; then
+    echo "No changes detected in PKGBUILD"
     exit 0
 fi
+
+VERSION=$(source PKGBUILD && echo "$pkgver")
+
+if [[ -z "$VERSION" ]]; then
+    echo "Error: Could not extract version from PKGBUILD"
+    exit 1
+fi
+
+makepkg --printsrcinfo > .SRCINFO
+
+git add PKGBUILD .SRCINFO
+git commit -m "feat: update to v${VERSION}"

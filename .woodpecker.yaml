@@ -1,0 +1,151 @@
+# Woodpecker CI definition
+# - bump version to latest upstream release
+# - test binary run
+# - push updates to codeberg repo
+# https://codeberg.org/tuxxx/portfolio-performance-bin
+
+when:
+  - event: cron
+    cron: daily-update
+  - event: manual
+  - event: pull_request
+
+steps:
+  - name: build-and-push
+    image: archlinux:latest
+    environment:
+      CODEBERG_TOKEN:
+        from_secret: codeberg_token
+    commands:
+      # Install all required tools (including GUI and screenshot support)
+      - pacman -Syu --noconfirm --needed git base-devel devtools nvchecker pacman-contrib namcap sudo gnupg xorg-server-xvfb ttf-dejavu curl imagemagick
+      # Allow broken git ownerships
+      - git config --global --add safe.directory "$(pwd)"
+      # Create build user
+      - useradd -m -G wheel builduser
+      - "echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
+      - chown -R builduser:builduser .
+      # Configure git for builduser
+      - sudo -u builduser git config --global user.name "Woodpecker CI"
+      - sudo -u builduser git config --global user.email "ci@codeberg.org"
+      # Run update check
+      - chmod +x update.sh
+      - BEFORE_COMMIT=$(git rev-parse HEAD)
+      - TERM=linux sudo -u builduser ./update.sh
+      - AFTER_COMMIT=$(git rev-parse HEAD)
+      # Run PKGBUILD Linter (namcap)
+      - |
+        # Run namcap and save output
+        echo "Running namcap check..."
+        namcap -i PKGBUILD > /tmp/namcap_output.txt 2>&1 || true
+        
+        # Check if namcap produced any output
+        if [ ! -s /tmp/namcap_output.txt ]; then
+          echo "✅ PKGBUILD is clean - no namcap issues found"
+          echo ""
+          echo "=== namcap output ==="
+          echo "(no output - PKGBUILD passed all checks)"
+          echo "===================="
+        else
+          # Check for critical errors
+          if grep -q " E: " /tmp/namcap_output.txt; then
+            echo "❌ Critical namcap errors detected!"
+            echo "Critical errors:"
+            grep " E: " /tmp/namcap_output.txt
+            echo ""
+            echo "=== Full namcap output ==="
+            cat /tmp/namcap_output.txt
+            echo "=========================="
+            exit 1
+          else
+            echo "✅ No critical namcap errors found"
+            echo ""
+            echo "=== Full namcap output ==="
+            cat /tmp/namcap_output.txt
+            echo "=========================="
+          fi
+        fi
+      # Process results based on event type
+      - |
+        echo "Pipeline Event: ${CI_PIPELINE_EVENT}"
+        if [ "$BEFORE_COMMIT" = "$AFTER_COMMIT" ]; then
+          echo "No updates available - package is already current"
+          echo "Result: NO_UPDATE_NEEDED"
+          if [ "$CI_PIPELINE_EVENT" = "pull_request" ]; then
+            echo "PR Test: No updates to test, proceeding with current package build"
+          else
+            exit 0
+          fi
+        fi
+      # Build and test package (always runs)
+      - echo "Building and testing package"
+      - sudo -u builduser gpg --recv-keys E46E6F8FF02E4C83569084589239277F560C95AC
+      - sudo -u builduser makepkg -si --noconfirm
+      # Setup virtual display for GUI testing (as builduser)
+      - echo "Setting up virtual display for GUI application testing"
+      - sudo -u builduser bash -c 'export DISPLAY=:99 && Xvfb :99 -screen 0 1024x768x24 -ac > /tmp/xvfb.log 2>&1 &'
+      - sleep 5
+      - echo "Virtual display started on DISPLAY=:99"
+      # Test the GUI application with proper environment and error checking
+      - echo "Testing Portfolio Performance GUI application"
+      - sudo -u builduser bash -c 'export DISPLAY=:99 && PortfolioPerformance > /tmp/pp_test.log 2>&1 &'
+      - APP_PID=$!
+      - sleep 30
+      # Check if application is actually running
+      - echo "Checking if PortfolioPerformance started successfully..."
+      - |
+        if ! pgrep -f "PortfolioPerformance" > /dev/null; then
+          echo "ERROR: PortfolioPerformance is not running!"
+          echo "Application startup failed. Check logs below:"
+          tail -20 /tmp/pp_test.log || echo "No test log found"
+          exit 1
+        else
+          echo "✓ PortfolioPerformance process is running"
+        fi
+      # Take screenshot for verification
+      - echo "Taking screenshot for verification"
+      - sudo -u builduser bash -c 'export DISPLAY=:99 && import -window root /tmp/portfolio_screenshot.png'
+      - ls -la /tmp/portfolio_screenshot.png
+      # Upload screenshot to imgage hoster
+      - echo "Uploading screenshot..."
+      - curl -F'file=@/tmp/portfolio_screenshot.png' -Fexpires=72  https://0x0.st || true
+      # Verify screenshot is not just black/empty (indicates GUI failure)
+      - echo "Verifying screenshot quality..."
+      - |
+        SCREENSHOT_SIZE=$(stat -c%s /tmp/portfolio_screenshot.png)
+        echo "Screenshot size: $SCREENSHOT_SIZE bytes"
+        if [ "$SCREENSHOT_SIZE" -lt 1000 ]; then
+          echo "ERROR: Screenshot is too small ($SCREENSHOT_SIZE bytes) - GUI likely failed to start"
+          echo "This indicates the GUI application is not working properly"
+          echo "Showing application logs:"
+          tail -20 /tmp/pp_test.log || echo "No test log found"
+          exit 1
+        else
+          echo "✓ Screenshot size OK ($SCREENSHOT_SIZE bytes) - GUI appears to be working"
+        fi
+      # Check for critical errors in logs
+      - echo "Checking for critical errors in application logs..."
+      - |
+        if grep -q "An error has occurred" /tmp/pp_test.log; then
+          echo "ERROR: Critical error found in application logs!"
+          echo "Application reported: An error has occurred"
+          tail -20 /tmp/pp_test.log
+          exit 1
+        else
+          echo "✓ No critical errors found in logs"
+        fi
+      # Kill application
+      - echo "Stopping PortfolioPerformance..."
+      - pkill -f PortfolioPerformance || echo "Process already stopped"
+      - pkill -f Xvfb || echo "Xvfb already stopped"
+      # Conditional push (only for cron and manual and only if tests passed)
+      - |
+        if [ "$CI_PIPELINE_EVENT" = "cron" ] || [ "$CI_PIPELINE_EVENT" = "manual" ]; then
+          echo "All tests passed - Push allowed for event: ${CI_PIPELINE_EVENT}"
+          git remote set-url origin "https://woodpecker:$${CODEBERG_TOKEN}@${CI_REPO_CLONE_URL#https://}"
+          git push origin HEAD
+          echo "Pipeline completed successfully: Package updated and deployed"
+        else
+          echo "All tests passed - Push skipped for event: ${CI_PIPELINE_EVENT} (test-only mode)"
+          echo "Pipeline completed successfully: Package tested successfully"
+        fi

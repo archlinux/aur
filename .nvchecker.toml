@@ -1,0 +1,5 @@
+[portfolio-performance-bin]
+source = "github"
+github = "portfolio-performance/portfolio"
+use_max_release = true    # We want the highest release, not the latest as PP often pushes legacy releases after latest
+prefix = "v"
