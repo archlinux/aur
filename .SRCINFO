@@ -1,0 +1,18 @@
+pkgbase = waybar-media-git
+	pkgdesc = A Waybar module that displays currently playing media
+	pkgver = r4.1a4ba79
+	pkgrel = 1
+	url = https://github.com/yurihs/waybar-media
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pydbus
+	depends = python-psutil
+	optdepends = plasma-browser-integration: native host to fetch data from browsers via KDE Plasma Integration
+	provides = waybar-media
+	conflicts = waybar-media
+	source = waybar-media-git::git+https://github.com/yurihs/waybar-media.git
+	sha256sums = SKIP
+
+pkgname = waybar-media-git
