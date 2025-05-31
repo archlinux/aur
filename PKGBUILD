@@ -6,30 +6,34 @@
 
 set -u
 pkgname='justniffer'
-pkgver='0.5.16'
+pkgver='0.6.7'
 pkgrel='1'
 pkgdesc='TCP sniffer. It reassembles and reorders packets and displays the tcp flow in a customizable way.'
 arch=('i686' 'x86_64')
 url='http://justniffer.sourceforge.net'
 _giturl='https://github.com/onotelli/justniffer'
 license=('GPL-3.0-only')
-depends=('glibc' 'gcc-libs' 'libpcap' 'boost-libs') # 'libnids' the package includes its own custom version of libnids
+depends=('glibc' 'gcc-libs' 'libpcap' 'boost-libs' 'python') # 'libnids' the package includes its own custom version of libnids
 #depends+=('python')
 # I suspect python2 is a makedepends. No python code goes into the package.
 #_verwatch=('https://sourceforge.net/projects/justniffer/files/' "\s\+${pkgname}_\([0-9.]\+\)\.tar\.gz" 'f')
 _patches=(
-  '0000-libnids-tcp-notify-struct-timeval.patch'
+  #'0000-libnids-tcp-notify-struct-timeval.patch'
+  '0001-io_service-to-io_context.patch'
 )
 _srcdir="justniffer-${pkgver}"
 source=("${_srcdir//-/_}.tar.gz::${_giturl}/archive/refs/tags/v${pkgver}.tar.gz" "${_patches[@]}")
-md5sums=('8ebf9653f5a3fc0d956ffbaceb0c8f11'
-         '5078bfc2a875a16b5c75e362cd36a097')
-sha256sums=('60e91abd7c0f3c6dbac3da1dd4a11679f9c804ddda269c27c42f8dbf54fc2fb7'
-            '9da5e2ff6af4ba572ce958c4fb7c2cdc0a0e19282c5582c73c2c19dd1d726cd9')
+if [ "$(vercmp "${pkgver}" "0.6.0")" -ge 0 ]; then
+  _srcdir+='/main'
+fi
+md5sums=('ddb67335dd09d4eae3f2abcdd2d72e38'
+         '53c7d7dd2f38aaf727fedc9236de8bff')
+sha256sums=('df0c19ebdda085c4dc8e2ecef9279f7d847b43d0cd021cc81e24303be79921ff'
+            '1c819bdb553f022fed906aece6d114de8c0bbdec8c4f6b7aa1a16c964fdb816e')
 
 prepare() {
   set -u
-  cd "${_srcdir}"
+  cd "${_srcdir%%/*}"
 
   rm -rf '.svn' '.git'
 
@@ -51,9 +55,10 @@ prepare() {
      set +x
      false
   fi
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  #cd "${srcdir}"; cp -pr "${_srcdir%%/*}" 'a'; ln -s "${_srcdir%%/*}" 'b'; false
   #diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 
+  cd "${srcdir}/${_srcdir}"
 if ! :; then
   #Use python 2.x instead of 3.x
   sed -i -e 's/python/python2/' python/*.py
@@ -84,8 +89,19 @@ build() {
     autoreconf --force --install
   fi
   if [ ! -s 'Makefile' ]; then
+    CFLAGS+=' -std=gnu17 -Wno-incompatible-pointer-types'
+    CFLAGS+=' -Wno-implicit-int -Wno-return-mismatch'
     #CPPFLAGS='-P' CXXFLAGS='-O2' CFLAGS='-O2' LDFLAGS='-Wl,-z,defs' \\
-    ./configure --enable-dependency-tracking --disable-python --prefix='/usr' --sbindir='/usr/bin' # PYTHON='python2'
+    local _conf=(
+      --enable-dependency-tracking
+      --disable-python
+      --prefix='/usr'
+      --sbindir='/usr/bin'
+      # PYTHON='python2'
+      # GCC='gcc-14'
+      # CXX='g++-14'
+    )
+    ./configure "${_conf[@]}"
   fi
   nice make -s
   set +u

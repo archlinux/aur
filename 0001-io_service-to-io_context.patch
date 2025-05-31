@@ -1,0 +1,22 @@
+https://live.boost.org/doc/libs/1_85_0/doc/html/boost_asio/reference/io_service.html
+
+io_service
+Typedef for backwards compatibility.
+typedef io_context io_service;
+
+diff -pNaru5 a/main/src/main.cpp b/main/src/main.cpp
+--- a/main/src/main.cpp	2025-05-10 08:49:55.000000000 -0400
++++ b/main/src/main.cpp	2025-05-31 14:38:48.615621500 -0400
+@@ -125,11 +125,11 @@ bool check_conflicts(const po::variables
+ }
+ 
+ static int max_concurrent_tcp_stream_v;
+ static int max_fragmented_ip_hosts_v;
+ 
+-boost::asio::io_service io_service;
++boost::asio::io_context io_service;
+ boost::asio::signal_set signals(io_service, SIGINT);
+ boost::thread signal_thread;
+ 
+ 
+ 
