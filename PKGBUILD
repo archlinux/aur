@@ -1,7 +1,7 @@
 # Maintainer:
 
 # options
-: ${_build_clang:=true}
+: ${_build_clang:=false}
 
 : ${_build_level:=1}
 : ${_build_git:=false}
@@ -15,7 +15,7 @@ unset _pkgtype
 _pkgname=flycast
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
 license=('GPL-2.0-only')
@@ -28,19 +28,13 @@ depends=(
   'libzip'
 )
 makedepends=(
+  'clang'
   'cmake'
   'git'
+  'lld'
   'ninja'
   'python'
 )
-
-if [[ "${_build_clang::1}" == "t" ]]; then
-  makedepends+=(
-    'clang'
-    'lld'
-    'llvm'
-  )
-fi
 
 _source_main() {
   _pkgsrc="$_pkgname"
@@ -50,50 +44,37 @@ _source_main() {
 
 _source_flycast() {
   local _sources_add=(
-    'bylaws.libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'
-    'flyinghead.asio'::'git+https://github.com/flyinghead/asio.git'
-    'flyinghead.libchdr'::'git+https://github.com/flyinghead/libchdr.git'
-    #'flyinghead.mingw-breakpad'::'git+https://github.com/flyinghead/mingw-breakpad.git'
-    #'google.googletest'::'git+https://github.com/google/googletest.git'
-    #'google.oboe'::'git+https://github.com/google/oboe.git'
-    'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
-    'harmonytf.discord-rpc'::'git+https://github.com/harmonytf/discord-rpc.git'
-    'khronosgroup.glslang'::'git+https://github.com/KhronosGroup/glslang.git'
-    'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
-    'libsdl-org.sdl'::'git+https://github.com/libsdl-org/SDL.git'
-    'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'
-    'vinniefalco.luabridge'::'git+https://github.com/vinniefalco/LuaBridge.git'
-    'vkedwardli.spout2'::'git+https://github.com/vkedwardli/Spout2.git'
-    'vkedwardli.syphon-framework'::'git+https://github.com/vkedwardli/Syphon-Framework.git'
+    'bylaws.libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'::'core/deps/libadrenotools'
+    'flyinghead.asio'::'git+https://github.com/flyinghead/asio.git'::'core/deps/asio'
+    'flyinghead.libchdr'::'git+https://github.com/flyinghead/libchdr.git'::'core/deps/libchdr'
+    #'flyinghead.mingw-breakpad'::'git+https://github.com/flyinghead/mingw-breakpad.git'::'core/deps/breakpad'
+    #'google.googletest'::'git+https://github.com/google/googletest.git'::'core/deps/googletest'
+    #'google.oboe'::'git+https://github.com/google/oboe.git'::'core/deps/oboe'
+    'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'::'core/deps/VulkanMemoryAllocator'
+    'harmonytf.discord-rpc'::'git+https://github.com/harmonytf/discord-rpc.git'::'core/deps/discord-rpc'
+    'khronosgroup.glslang'::'git+https://github.com/KhronosGroup/glslang.git'::'core/deps/glslang'
+    'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'::'core/deps/Vulkan-Headers'
+    'libsdl-org.sdl'::'git+https://github.com/libsdl-org/SDL.git'::'core/deps/SDL'
+    'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'::'core/deps/rcheevos'
+    'vinniefalco.luabridge'::'git+https://github.com/vinniefalco/LuaBridge.git'::'core/deps/luabridge'
+    'vkedwardli.spout2'::'git+https://github.com/vkedwardli/Spout2.git'::'core/deps/Spout'
+    'vkedwardli.syphon-framework'::'git+https://github.com/vkedwardli/Syphon-Framework.git'::'core/deps/Syphon'
   )
 
-  local _p
+  local _p _idx _src _sm_prep _sm_func
   for _p in ${_sources_add[@]}; do
-    source+=("$_p")
+    _idx="${_p%%::*}"
+    _sm_prep+=("${_idx}::${_p##*::}")
+    _src="${_p%::*}"
+    source+=("$_src")
     sha256sums+=('SKIP')
   done
 
-  _prepare_flycast() (
-    cd "$srcdir/$_pkgsrc"
-    local _submodules=(
-      'bylaws.libadrenotools'::'core/deps/libadrenotools'
-      'flyinghead.asio'::'core/deps/asio'
-      'flyinghead.libchdr'::'core/deps/libchdr'
-      #'flyinghead.mingw-breakpad'::'core/deps/breakpad'
-      #'google.googletest'::'core/deps/googletest'
-      #'google.oboe'::'core/deps/oboe'
-      'gpuopen-librariesandsdks.vulkanmemoryallocator'::'core/deps/VulkanMemoryAllocator'
-      'harmonytf.discord-rpc'::'core/deps/discord-rpc'
-      'khronosgroup.glslang'::'core/deps/glslang'
-      'khronosgroup.vulkan-headers'::'core/deps/Vulkan-Headers'
-      'libsdl-org.sdl'::'core/deps/SDL'
-      'retroachievements.rcheevos'::'core/deps/rcheevos'
-      'vinniefalco.luabridge'::'core/deps/luabridge'
-      'vkedwardli.spout2'::'core/deps/Spout'
-      'vkedwardli.syphon-framework'::'core/deps/Syphon'
-    )
+  eval "_prepare_flycast() (
+    cd \"\$srcdir/\$_pkgsrc\"
+    local _submodules=(${_sm_prep[@]})
     _submodule_update
-  )
+  )"
 }
 
 _source_main
@@ -125,19 +106,17 @@ build() {
     LDFLAGS="${_ldflags[@]//-fuse-ld=*/} -fuse-ld=lld"
   fi
 
+  export CFLAGS CXXFLAGS
+  CFLAGS+=" -DNDEBUG"
+  CXXFLAGS+=" -DNDEBUG"
+
   if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
     local _cflags _cxxflags
-    _cflags=(
-      -march=x86-64-v${_build_level::1} -O3
-      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}")
-    )
-    CFLAGS="${_cflags[@]}"
+    _cflags=($(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}"))
+    _cxxflags=($(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}"))
 
-    _cxxflags=(
-      -march=x86-64-v${_build_level::1} -O3
-      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}")
-    )
-    CXXFLAGS="${_cxxflags[@]}"
+    CFLAGS="-march=x86-64-v${_build_level::1} -O3 ${_cflags[@]}"
+    CXXFLAGS="-march=x86-64-v${_build_level::1} -O3 ${_cxxflags[@]}"
   fi
 
   local _cmake_options=(
