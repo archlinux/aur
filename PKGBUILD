@@ -8,7 +8,7 @@ _pkgname='zbackup'
 pkgname="${_pkgname}"
 #pkgname+='-git'
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile deduplicating backup tool'
 arch=('i686' 'x86_64')
 url='http://zbackup.org'
@@ -28,15 +28,18 @@ source=(
   '0002-debian.remove_throw.patch::https://sources.debian.org/data/main/z/zbackup/1.5-2/debian/patches/remove_throw.patch'
   '0003-debian.protobuf.patch::https://sources.debian.org/data/main/z/zbackup/1.5-2/debian/patches/protobuf.patch'
   '0004-ObjectsIteratorComp_operator_const.patch' # https://stackoverflow.com/questions/67809226/getting-weird-compilation-error-in-defining-a-stdset-with-custom-compare-in-c
+  '0005-explicit-std-string.patch'
 )
 md5sums=('ad15fe626eefdb835ec81e0a2d38892c'
          'ab06602fa0ac5188a2bda2f171aabb8c'
          '9f849b1dfd85ca352b87e357c8bb64c0'
-         '77837a55195b6c7cc0d69e4766021670')
+         '77837a55195b6c7cc0d69e4766021670'
+         'a4d0a4a91e97f9533fd9a09ee086896c')
 sha256sums=('344fed4491cb52b6712b03c1d8b1bcf994cfc578ad422cb644502e171585a8f7'
             'bc4e3a9a887880b0555bf457a4566e11c819e00246ff84f75e8fbd3b7a00a3a3'
             '89c765f53db777a429b94a544b0d4bb66350804dace5cdb3cfa2b26d193acab0'
-            '12d77664b83fa3ce321797a691098bbe49440146b75042c29ef029c5136ab92d')
+            '12d77664b83fa3ce321797a691098bbe49440146b75042c29ef029c5136ab92d'
+            '0ddf33435330a4258a474f92b4e2aefee0a50366a50e445f2ffbc22105cb2627')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   _srcdir="${_pkgname}"
@@ -78,7 +81,7 @@ prepare() {
     fi
   done
   #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; cd "${_srcdir}"; false
-  # diff -pNaru5 'a' 'b' > '0000-new.patch'
+  # diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
   set +u
 }
 
@@ -93,12 +96,19 @@ build() {
     #-DCMAKE_CXX_STANDARD='11'
     # PROTOBUF lib detection misses this one.
     -DCMAKE_CXX_STANDARD_LIBRARIES='-labsl_spinlock_wait' # https://stackoverflow.com/questions/25243336/specifying-libraries-for-cmake-to-link-to-from-command-line
+    -DCMAKE_POLICY_VERSION_MINIMUM='3.5'
+    #-DCMAKE_C_COMPILER='gcc-12'
+    #-DCMAKE_CXX_COMPILER='g++-12'
   )
   set +u; msg2 'Compile zbackup'; set -u
-  cmake . -B'build-zbackup' "${_cmakeflags[@]}"
+  if [ ! -s 'build-zbackup/Makefile' ]; then
+    cmake . -B'build-zbackup' "${_cmakeflags[@]}"
+  fi
   make -C 'build-zbackup' # VERBOSE=1 # -j1
   set +u; msg2 'Compile tartool'; set -u
-  cmake 'tools/tartool' -B'build-tartool' "${_cmakeflags[@]}"
+  if [ ! -s 'build-tartool/Makefile' ]; then
+    cmake 'tools/tartool' -B'build-tartool' "${_cmakeflags[@]}"
+  fi
   make -C 'build-tartool' -j1
   set +u
 }

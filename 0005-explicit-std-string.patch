@@ -1,0 +1,62 @@
+Apparently previous gcc versions
+coerced these to std::string before
+trying to concatenate or throw. Now it's
+trying with std::basic_string_view
+and string_view which doesn't support
+concatenate operator+ or
+automatic coerce to string.
+
+config.cc:602:41: error: no match for ‘operator+’ (operand types are ‘absl::lts_20250512::string_view’ {aka ‘std::basic_string_view<char>’} and ‘const char [2]’)
+message.cc:34:46: error: no matching function for call to ‘Message::exCantParse::exCantParse(absl::lts_20250512::string_view)’
+
+diff -pNaru5 a/config.cc b/config.cc
+--- a/config.cc	2020-06-07 11:35:57.000000000 -0400
++++ b/config.cc	2025-05-31 12:44:44.663683101 -0400
+@@ -597,11 +597,11 @@ bool Config::validateProto( const string
+           storageDescriptor->field( j );
+ 
+         dPrintf( "Field: %s - %d - %d\n", field->name().c_str(),
+             field->label(), field->type());
+ 
+-        string option = storage->name() + "." + field->name();
++        string option = string(storage->name()) + "." + string(field->name());
+ 
+         if ( !config.parseOrValidate( option.c_str(), Storable, true ) )
+         {
+           fprintf( stderr, "Invalid option specified: %s\n",
+                    option.c_str() );
+diff -pNaru5 a/message.cc b/message.cc
+--- a/message.cc	2020-06-07 11:35:57.000000000 -0400
++++ b/message.cc	2025-05-31 12:48:02.149898094 -0400
+@@ -16,11 +16,11 @@ void serialize( MessageLite const & mess
+ void serialize( MessageLite const & message, CodedOutputStream & cos )
+ {
+   cos.WriteVarint32( message.ByteSize() );
+   message.SerializeWithCachedSizes( &cos );
+   if ( cos.HadError() )
+-    throw exCantSerialize( message.GetTypeName() );
++    throw exCantSerialize( std::string(message.GetTypeName()) );
+ }
+ 
+ void parse( MessageLite & message, ZeroCopyInputStream & stream )
+ {
+   CodedInputStream cis( &stream );
+@@ -29,16 +29,16 @@ void parse( MessageLite & message, ZeroC
+ 
+ void parse( MessageLite & message, CodedInputStream & cis )
+ {
+   uint32_t v;
+   if ( !cis.ReadVarint32( &v ) )
+-    throw exCantParse( message.GetTypeName() );
++    throw exCantParse( std::string(message.GetTypeName()) );
+ 
+   CodedInputStream::Limit limit = cis.PushLimit( v );
+ 
+   if( !message.ParseFromCodedStream( &cis ) )
+-    throw exCantParse( message.GetTypeName() );
++    throw exCantParse( std::string(message.GetTypeName()) );
+ 
+   cis.PopLimit( limit );
+ }
+ 
+ }

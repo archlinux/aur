@@ -1,7 +1,7 @@
 pkgbase = zbackup
 	pkgdesc = A versatile deduplicating backup tool
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://zbackup.org
 	arch = i686
 	arch = x86_64
@@ -21,14 +21,17 @@ pkgbase = zbackup
 	source = 0002-debian.remove_throw.patch::https://sources.debian.org/data/main/z/zbackup/1.5-2/debian/patches/remove_throw.patch
 	source = 0003-debian.protobuf.patch::https://sources.debian.org/data/main/z/zbackup/1.5-2/debian/patches/protobuf.patch
 	source = 0004-ObjectsIteratorComp_operator_const.patch
+	source = 0005-explicit-std-string.patch
 	md5sums = ad15fe626eefdb835ec81e0a2d38892c
 	md5sums = ab06602fa0ac5188a2bda2f171aabb8c
 	md5sums = 9f849b1dfd85ca352b87e357c8bb64c0
 	md5sums = 77837a55195b6c7cc0d69e4766021670
+	md5sums = a4d0a4a91e97f9533fd9a09ee086896c
 	sha256sums = 344fed4491cb52b6712b03c1d8b1bcf994cfc578ad422cb644502e171585a8f7
 	sha256sums = bc4e3a9a887880b0555bf457a4566e11c819e00246ff84f75e8fbd3b7a00a3a3
 	sha256sums = 89c765f53db777a429b94a544b0d4bb66350804dace5cdb3cfa2b26d193acab0
 	sha256sums = 12d77664b83fa3ce321797a691098bbe49440146b75042c29ef029c5136ab92d
+	sha256sums = 0ddf33435330a4258a474f92b4e2aefee0a50366a50e445f2ffbc22105cb2627
 
 pkgname = zbackup
 	depends = xz
