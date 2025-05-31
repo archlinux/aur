@@ -1,6 +1,6 @@
 pkgbase = flow
 	pkgdesc = A static type checker for JavaScript
-	pkgver = 0.272.1
+	pkgver = 0.272.2
 	pkgrel = 1
 	url = https://flow.org
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = flow
 	makedepends = ocaml-visitors
 	makedepends = ocaml-wtf8
 	depends = libev
-	source = flow-0.272.1.tar.gz::https://github.com/facebook/flow/archive/v0.272.1.tar.gz
-	b2sums = f318fd8df4cd01ac0fb7d70edd182bf7ca375d3c325c64c5b33f8eb99f7070d0d3b89ff1c3b9c573406db44800cc10427965919952198217e305cb39c4bae761
+	source = flow-0.272.2.tar.gz::https://github.com/facebook/flow/archive/v0.272.2.tar.gz
+	b2sums = 94b04831edbcda45edbe13828a6bf948091935d752ed4743d3c9f2c0501d6317650f2a93f666a7e4fbd10a0f86957595bda4c122f1cf4ba6b8cf61a356af077a
 
 pkgname = flow
