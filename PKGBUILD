@@ -1,7 +1,8 @@
 # Maintainer: Arnaud Dovi <mr.dovi@gmail.com>
-
+# Co-Maintainer: Hors Icq <horsicq at googlemail dot com>
+# Co-Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=detect-it-easy-git
-pkgver=3.10
+pkgver=3.10.r18826.f0cc79a
 pkgrel=1
 pkgdesc='Detect It Easy, or abbreviated "DIE" is a program for determining types of files'
 arch=('x86_64')
@@ -45,8 +46,11 @@ _bold='\e[1m'
 _prefix=" ${_bold}${_color}==>${_stop} "
 
 pkgver() {
-  cd "$_srcname" || return
-  printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd "$_srcname"
+  local _base_ver=$(sed -n 's/^AC_INIT([^,]*, *\([^)]*\)).*/\1/p' configure.ac)
+  local _rev_count=$(git rev-list --count HEAD)
+  local _short_hash=$(git rev-parse --short=7 HEAD)
+  printf "%s.r%s.%s" "$_base_ver" "$_rev_count" "$_short_hash"
 }
 
 prepare() {
@@ -84,7 +88,7 @@ package() {
 
   echo -e "${_prefix}Creating the package base"
   install -d "$pkgdir"/{opt/"${_pkgname}",usr/bin,usr/share/pixmaps}
-  install -d "$pkgdir/opt/${_pkgname}"/{lang,qss,info,db,signatures,images}
+  install -d "$pkgdir/opt/${_pkgname}"/{lang,qss,info,db,signatures,images,yara_rules}
 
   echo -e "${_prefix}Copying the package binaries"
   install -Dm 755 build/release/die -t "$pkgdir"/opt/"${_pkgname}"
@@ -96,6 +100,7 @@ package() {
   install -Dm 644 XStyles/qss/* -t "$pkgdir"/opt/"${_pkgname}"/qss
   cp -r XInfoDB/info/* -t "$pkgdir"/opt/"${_pkgname}"/info/
   cp -r Detect-It-Easy/db/* -t "$pkgdir"/opt/"${_pkgname}"/db/
+  cp -r XYara/yara_rules/* -t "$pkgdir"/opt/"${_pkgname}"/yara_rules/
   install -Dm 644 signatures/crypto.db -t "$pkgdir"/opt/"${_pkgname}"/signatures
   cp -r images/* -t "$pkgdir"/opt/"${_pkgname}"/images/
 
@@ -104,11 +109,11 @@ package() {
   ln -s /opt/"${_pkgname}"/diec "$pkgdir"/usr/bin/diec
   ln -s /opt/"${_pkgname}"/diel "$pkgdir"/usr/bin/diel
 
-  echo -e "${_prefix}Setting up desktop icon"
-  install -Dm 644 LINUX/hicolor/48x48/apps/detect-it-easy.png -t "$pkgdir"/usr/share/pixmaps
-
   echo -e "${_prefix}Setting up desktop shortcuts"
-  install -Dm 644 LINUX/die.desktop -t "$pkgdir"/usr/share/applications
+  install -Dm 644 LINUX/io.github.horsicq.detect-it-easy.desktop -t "$pkgdir"/usr/share/applications
+
+  echo -e "${_prefix}Setting up metainfo file"
+  install -Dm 644 LINUX/io.github.horsicq.detect-it-easy.metainfo.xml -t "$pkgdir"/usr/share/metainfo
   
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
