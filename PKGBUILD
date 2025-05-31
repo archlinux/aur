@@ -1,7 +1,7 @@
 pkgname=python-wyoming
 _pkgname=wyoming
 pkgdesc="Peer-to-peer protocol for voice assistants"
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 arch=(any)
 url="https://github.com/rhasspy/wyoming"
@@ -11,7 +11,7 @@ makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setu
 checkdepends=('python-pytest' 'python-pytest-asyncio')
 optdepends=('python-zeroconf: Zeroconf support')
 source=("git+https://github.com/rhasspy/wyoming.git#tag=${pkgver}")
-b2sums=('9448b555ee0e0443700f799a324c2048682188930778cac3296ba1452b61455fb76616b0c4275680b6afe08e2e32c6db3ff86cf89144a7959128588b00e72079')
+b2sums=('8e1048152e9cb6211f85f0ddfb523f4e258a281cced2a8ec4d470e561a2ea840a207ff91904fb26abb9330cef6a5bf8e99c5b0973ef2cf30be2a0f97e7af7a9c')
 
 build() {
   cd $_pkgname
@@ -25,7 +25,6 @@ check() {
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest
 }
-
 
 package() {
   cd $_pkgname
