@@ -1,0 +1,16 @@
+pkgbase = hcl-git
+	pkgdesc = A port to Linux of Hydra Castle Labyrinth (a 'metroidvania' kind of game).
+	pkgver = r126.229369c
+	pkgrel = 1
+	url = https://github.com/ptitSeb/hydracastlelabyrinth
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = sdl2_mixer
+	optdepends = timidity: for MIDI support
+	source = git+https://github.com/ptitSeb/hydracastlelabyrinth.git
+	md5sums = SKIP
+
+pkgname = hcl-git
