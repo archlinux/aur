@@ -1,15 +1,14 @@
 # Maintainer: Nicholas Bors-Sterian <fami_fish@proton.me>
 pkgname='zooc-git'
-pkgver=r17.86f5757
+pkgver=0
 pkgrel=1
 pkgdesc="A C re-write of tsoding's boomer with some added features."
 arch=('x86_64')
-url="https://github.com/fami-fish/zooc"
+url="https://github.com/nick-bors/zooc"
 license=('MIT')
 
-makedepends=('git' 'make' 'gcc')
+makedepends=('base-devel')
 depends=(
-    'glibc'
     'glew'
     'mesa'
     'libx11'
@@ -17,7 +16,7 @@ depends=(
     'libxext'
 )
 
-source=("zooc::git+https://github.com/fami-fish/zooc.git")
+source=("zooc::git+https://github.com/nick-bors/zooc.git")
 sha256sums=('SKIP')
 
 pkgver() {

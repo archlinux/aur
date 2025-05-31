@@ -1,20 +1,17 @@
 pkgbase = zooc-git
 	pkgdesc = A C re-write of tsoding's boomer with some added features.
-	pkgver = r17.86f5757
+	pkgver = 0
 	pkgrel = 1
-	url = https://github.com/fami-fish/zooc
+	url = https://github.com/nick-bors/zooc
 	arch = x86_64
 	license = MIT
-	makedepends = git
-	makedepends = make
-	makedepends = gcc
-	depends = glibc
+	makedepends = base-devel
 	depends = glew
 	depends = mesa
 	depends = libx11
 	depends = libxrandr
 	depends = libxext
-	source = zooc::git+https://github.com/fami-fish/zooc.git
+	source = zooc::git+https://github.com/nick-bors/zooc.git
 	sha256sums = SKIP
 
 pkgname = zooc-git
