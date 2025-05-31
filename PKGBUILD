@@ -17,7 +17,7 @@ build() {
 
 package() {
   cd "$pkgname"
-  install -Dm755 QBinEditor "$pkgdir/usr/bin/QBinEditor"
-  install -Dm755 files/QBinEditor.desktop "$pkgdir/usr/share/applications/QBinEditor.desktop"
-  install -Dm755 files/QBinEditor.png "$pkgdir/usr/share/icons/QBinEditor.png"
+  install -Dm755 QBinEditor "$pkgdir/QBinEditor"
+  install -Dm755 files/QBinEditor.desktop "$pkgdir/QBinEditor.desktop"
+  install -Dm755 files/QBinEditor.png "$pkgdir/QBinEditor.png"
 }

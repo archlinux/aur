@@ -1,0 +1,7 @@
+Name=QBinEditor
+Comment=Binary file editor (HEX, ASCII, BIN views)
+Exec=qbineditor
+Icon=/qbineditor.png
+Terminal=false
+Type=Application
+Categories=Utility;
