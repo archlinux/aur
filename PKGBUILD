@@ -4,7 +4,7 @@ pkgname=pinnacle-comp
 _pkgname=pinnacle
 pkgver=0.1.0
 _pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Wayland compositor inspired by AwesomeWM"
 arch=(x86_64)
 url="https://github.com/pinnacle-comp/$_pkgname"
@@ -34,9 +34,14 @@ optdepends=(
 # Trying not to clash with the already existing `pinnacle` package out there
 provides=(pinnacle-comp)
 conflicts=(pinnacle-comp)
-source=("$_pkgname-$_pkgver.tar.gz::https://github.com/pinnacle-comp/pinnacle/archive/v$_pkgver.tar.gz")
-sha256sums=('9002dd4caa8ab8d7831a8e66f449e535a8bfef6b04eeac9afd98ca1e4b5a3fb4')
-b2sums=('6b90ae1b0c80a916dce078b0961523b8d07f2b383913f1939a992ff884ca9ff7be60cc185a98a8e2e6c0bee10976e5149703cbfcd5057b8ee1e7484e964c0814')
+source=(
+    "$_pkgname-$_pkgver.tar.gz::https://github.com/pinnacle-comp/pinnacle/archive/v$_pkgver.tar.gz"
+    "https://github.com/pinnacle-comp/pinnacle/releases/download/v$_pkgver/pinnacle-api-$_pkgver-1.all.rock"
+)
+sha256sums=('9002dd4caa8ab8d7831a8e66f449e535a8bfef6b04eeac9afd98ca1e4b5a3fb4'
+            '3924f915bd6abfeb714414ae09953e20f86b194aeb08323fdb070262dd93c067')
+b2sums=('6b90ae1b0c80a916dce078b0961523b8d07f2b383913f1939a992ff884ca9ff7be60cc185a98a8e2e6c0bee10976e5149703cbfcd5057b8ee1e7484e964c0814'
+        '629aa5c714e461cd15e6692eca96ed656cd65d3121516eb0f088d383f411d152c49524bf931859163fab772d58e22704cbba148cfa6a464ec2d95f276115bae2')
 
 prepare() {
 	cd "$_pkgname-$_pkgver"
@@ -61,9 +66,6 @@ build() {
     ./target/release/$_pkgname gen-completions --shell fish > completions/$_pkgname.fish
     ./target/release/$_pkgname gen-completions --shell zsh > completions/_$_pkgname
     ./target/release/$_pkgname gen-completions --shell elvish > completions/$_pkgname.elv
-
-    cd "api/lua"
-    luarocks --lua-version 5.4 make --pack-binary-rock --deps-mode none --no-manifest pinnacle-api-dev-1.rockspec
 }
 
 package() {
@@ -89,6 +91,6 @@ package() {
         install -Dm644 "$proto" "$pkgdir/usr/share/$_pkgname/snowcap/protobuf/${proto#\./}"
     done
 
-    cd "$srcdir/$_pkgname-$_pkgver/api/lua"
+    cd "$srcdir"
     luarocks --lua-version 5.4 --tree "$pkgdir/usr/" install --deps-mode none --no-manifest ./*.rock
 }
