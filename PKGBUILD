@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile
-pkgver=0.14.11
+pkgver=0.14.12
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -83,7 +83,7 @@ makedepends=(cargo
              yarn)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.zst"{,.asc})
-sha256sums=('99f6c67277447642005fe526aacab1feabf24292cc77c442ab063d059f30f2d3'
+sha256sums=('975bb68f6f9f759528d768b774ce2727e705c3752e4d49f554cb09e66dbbee59'
             'SKIP')
 validpgpkeys=('9F377DDB6D3153A48EB3EB1E63CC496475267693') # Caleb Maclennan <caleb@alerque.com> (@alerque)
 
