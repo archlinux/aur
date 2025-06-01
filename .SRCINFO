@@ -1,6 +1,6 @@
 pkgbase = scorecard-bin
 	pkgdesc = Security health metrics for Open Source
-	pkgver = 5.2.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://scorecard.dev
 	arch = aarch64
@@ -8,9 +8,9 @@ pkgbase = scorecard-bin
 	license = Apache-2.0
 	provides = scorecard
 	conflicts = scorecard
-	source_aarch64 = scorecard-5.2.0-aarch64.tar.gz::https://github.com/ossf/scorecard/releases/download/v5.2.0/scorecard_5.2.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 034d7519509fb9754a669d707288eba1b5d96b48137fb0f812a441451965aa54
-	source_x86_64 = scorecard-5.2.0-x86_64.tar.gz::https://github.com/ossf/scorecard/releases/download/v5.2.0/scorecard_5.2.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 73c30e6178176ac1224cf27b84d7b8597fba5a9636bc626b7fafc4e344899cef
+	source_aarch64 = scorecard-5.2.1-aarch64.tar.gz::https://github.com/ossf/scorecard/releases/download/v5.2.1/scorecard_5.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 691433f1ef80a023746880b3fa8d2f7272a612627216974318addd78e94c21fa
+	source_x86_64 = scorecard-5.2.1-x86_64.tar.gz::https://github.com/ossf/scorecard/releases/download/v5.2.1/scorecard_5.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = ae54ef0b3ecae4b2d0086a9f99cd44d5c0830e00a51aa0461981178ba4c29fcd
 
 pkgname = scorecard-bin
