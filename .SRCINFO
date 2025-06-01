@@ -1,5 +1,5 @@
-pkgbase = crl-browsering
-	pkgdesc = CRL Browsering - PyQt6 based Arch-browser.
+pkgbase = crl-browser
+	pkgdesc = CRL Browser - PyQt6 based Arch-browser.
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://example.com/crl-browsering
@@ -11,4 +11,4 @@ pkgbase = crl-browsering
 	source = crl-browser.py
 	sha256sums = 0f1edfd938a395fa0317288e632023a8b979b21f603377d050fd0586b4d8613d
 
-pkgname = crl-browsering
+pkgname = crl-browser

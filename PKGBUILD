@@ -1,8 +1,9 @@
-# Maintainer: Senin Adın <email@ornek.com>
-pkgname=crl-browsering
+# Maintainer: Zaman Huseynli <zamanhuseynli23@gmail.com>
+# Backup contact <admin@azccriminal.space>
+pkgname=crl-browser
 pkgver=1.0
 pkgrel=1
-pkgdesc="CRL Browsering - PyQt6 based Arch-browser."
+pkgdesc="CRL Browser - PyQt6 based Arch-browser."
 arch=('any')
 url="https://example.com/crl-browsering"
 license=('MIT')
