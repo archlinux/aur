@@ -2,7 +2,7 @@
 pkgname=rusty-socks
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="A high-performance SOCKS5 and HTTP proxy server written in Rust with journald support"
+pkgdesc="A high-performance SOCKS5 and HTTP proxy server written in Rust"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/quintusl/rusty-socks"
 license=('MIT' 'Apache-2.0')
