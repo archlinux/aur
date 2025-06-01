@@ -1,4 +1,4 @@
 [digitalclock5]
-source="github-graphql"
+source="github"
 github="Kolcha/DigitalClock5"
 use_max_tag=true

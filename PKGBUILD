@@ -3,8 +3,8 @@
 
 pkgname=digitalclock5
 _pkgname=DigitalClock5
-pkgver=5.1.6
-pkgrel=2
+pkgver=5.1.7
+pkgrel=1
 pkgdesc="A modern digital clock application"
 arch=('x86_64')
 url="https://github.com/Kolcha/DigitalClock5"
@@ -20,7 +20,7 @@ source=("git+https://github.com/Kolcha/DigitalClock5.git#tag=${pkgver}"
   digitalclock5.desktop
   digitalclock5.install
 )
-sha256sums=('a4ec590357983c3a112573f3a8db8ff2769241f874e903f4740f8abb3c45d189'
+sha256sums=('926a04f77f7e5427e9236bb474ccfe800a85d5f54bbc353388f7186c20aa1720'
             'SKIP'
             'SKIP'
             'SKIP'
