@@ -1,14 +1,14 @@
 # Maintainer: Tom Brown <tom@CarlsonSpeed.com>
 pkgname='videokit-kde'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="KDE video utility suite that extends Dolphin context menus for transcoding, metadata, etc."
 arch=('any')
-url="https://github.com/TomB16/VideoKit-KDE"
+url="https://github.com/TomB16/videokit-kde"
 license=('MIT')
 depends=('ffmpeg' 'mediainfo' 'bash' 'crudini' 'bashdev')  # Add any runtime deps here
 makedepends=('git')
-source=("git+https://github.com/TomB16/VideoKit-KDE.git#branch=master")  # Fetch from GitHub repo
+source=("git+https://github.com/TomB16/videokit-kde.git#branch=master")  # Fetch from GitHub repo
 sha256sums=('SKIP')  # Don't need this when using Git as source
 
 

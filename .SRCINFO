@@ -1,8 +1,8 @@
 pkgbase = videokit-kde
 	pkgdesc = KDE video utility suite that extends Dolphin context menus for transcoding, metadata, etc.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
-	url = https://github.com/TomB16/VideoKit-KDE
+	url = https://github.com/TomB16/videokit-kde
 	arch = any
 	license = MIT
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = videokit-kde
 	depends = bash
 	depends = crudini
 	depends = bashdev
-	source = git+https://github.com/TomB16/VideoKit-KDE.git#branch=master
+	source = git+https://github.com/TomB16/videokit-kde.git#branch=master
 	sha256sums = SKIP
 
 pkgname = videokit-kde
