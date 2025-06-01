@@ -1,0 +1,19 @@
+pkgbase = fitgirl-ddl-iced-git
+	pkgdesc = fitgirl-repacks.site extractor (iced backend)
+	pkgver = r6.g932dfd4
+	pkgrel = 1
+	url = https://github.com/mokurin000/fitgirl-ddl-iced
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = libcurl.so=4-64
+	provides = fitgirl-ddl-iced
+	conflicts = fitgirl-ddl-iced
+	source = git+https://github.com/mokurin000/fitgirl-ddl-iced.git
+	sha256sums = SKIP
+
+pkgname = fitgirl-ddl-iced-git
