@@ -24,6 +24,7 @@ pkgname = coreutils-uutils-selinux
 	pkgdesc = (Really dangerous) Swap coreutils with uutils (SELinux build)
 	depends = uutils-coreutils-selinux
 	provides = coreutils
+	provides = coreutils-selinux
 	provides = sha3sum
 	conflicts = coreutils
 	conflicts = b3sum

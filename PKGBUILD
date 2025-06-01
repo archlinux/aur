@@ -42,7 +42,7 @@ package_uutils-coreutils-selinux() {
 package_coreutils-uutils-selinux(){
   pkgdesc='(Really dangerous) Swap coreutils with uutils (SELinux build)'
   conflicts=(coreutils b3sum sha3sum)
-  provides=(coreutils sha3sum)
+  provides=(coreutils{,-selinux} sha3sum)
   cd coreutils-$pkgver
   make install DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROFILE=release MULTICALL=y # get correct man pages
   rm -r "$pkgdir"/usr/share/bash-completion # part of Extra/bash-completion
