@@ -1,0 +1,4 @@
+[safecloset]
+source = "git"
+git = "https://github.com/Canop/safecloset.git"
+prefix = "v"
