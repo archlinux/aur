@@ -1,0 +1,14 @@
+pkgbase = nyafetch-bin
+	pkgdesc = A neofetch alike program that shows hardware and distro information written in rust.
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/ico277/nyafetch
+	arch = x86_64
+	license = MIT
+	depends = pciutils
+	provides = nyafetch
+	conflicts = nyafetch
+	source = nyafetch::https://downloads.iusearchbtw.nl/nyafetch-1.6.2
+	sha256sums = 91ee5dcef0cad9030dbb344e7066084e45e8b93df7e9955fdb16aafd7d368658
+
+pkgname = nyafetch-bin
