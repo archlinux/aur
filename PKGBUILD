@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ttf-adwaita-mono-nerd
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched font Adwaita Mono from nerd fonts library"
 arch=('any')
 url="https://github.com/ryanoasis/nerd-fonts"
@@ -19,5 +19,5 @@ prepare() {
 package() {
   cd "AdwaitaMono-$pkgver"
   install -Dm644 *.ttf -t "$pkgdir/usr/share/fonts/TTF/"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licences/$pkgname/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

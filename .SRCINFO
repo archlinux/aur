@@ -1,7 +1,7 @@
 pkgbase = ttf-adwaita-mono-nerd
 	pkgdesc = Patched font Adwaita Mono from nerd fonts library
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	license = OFL-1.1
