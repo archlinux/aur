@@ -1,0 +1,15 @@
+pkgbase = mined-git
+	pkgdesc = A powerful text editor with a comprehensive and easy-to-use user interface and fast, small-footprint behaviour.
+	pkgver = 2022.27.r42.g4e86579
+	pkgrel = 1
+	url = http://towo.net/mined/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = desktop-file-utils
+	conflicts = mined
+	source = mined-git::git+https://github.com/mined/mined
+	md5sums = SKIP
+
+pkgname = mined-git
