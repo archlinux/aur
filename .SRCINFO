@@ -1,6 +1,6 @@
 pkgbase = libixp-git
 	pkgdesc = Portable, simple C-language 9P client and server libary.
-	pkgver = r158.7b212a2
+	pkgver = r159.39bc91a
 	pkgrel = 1
 	url = https://github.com/0intro/libixp
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = libixp-git
 	provides = libixp
 	conflicts = libixp
 	conflicts = libixp-hg
+	options = !strip
 	source = libixp-git::git+https://github.com/0intro/libixp
 	md5sums = SKIP
 
