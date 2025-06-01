@@ -1,7 +1,7 @@
 pkgbase = apfs-fuse-git
 	pkgdesc = FUSE driver for APFS (Apple File System)
 	pkgver = r101.66b86bd
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sgan81/apfs-fuse
 	arch = i686
 	arch = x86_64

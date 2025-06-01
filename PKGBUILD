@@ -3,7 +3,7 @@
 
 pkgname=apfs-fuse-git
 pkgver=r101.66b86bd
-pkgrel=2
+pkgrel=3
 pkgdesc="FUSE driver for APFS (Apple File System)"
 arch=('i686' 'x86_64')
 url="https://github.com/sgan81/apfs-fuse"
@@ -44,7 +44,7 @@ build() {
 
 package() {
   cd "${pkgname%-git}/build"
-  for binary in apfs-dump apfs-dump-quick apfs-fuse ; do
+  for binary in apfs-dump apfs-dump-quick apfs-fuse apfsutil ; do
     install -Dm755 $binary "$pkgdir/usr/bin/$binary"
   done
 }
