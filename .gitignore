@@ -1,0 +1,4 @@
+pkg/
+src/
+proxmox-backup-client*deb
+proxmox-backup-client-bin*zst
