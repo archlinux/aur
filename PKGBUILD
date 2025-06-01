@@ -1,21 +1,20 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 pkgname=martypc
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='An IBM PC/XT emulator written in Rust'
 arch=(x86_64 aarch64)
 depends=(alsa-lib bzip2 libudev.so # explicit
 gcc-libs glibc) # implicit
 # clang because gcc won't link ffi
-# rustup because it doesn't compile with stable
+# rustup because it doesn't compile with nightly
 makedepends=(clang rustup)
 url="https://github.com/dbalsom/${pkgname}"
 license=(MIT)
 install=martypc.install
 #source=("git+https://github.com/dbalsom/martypc.git#branch=version_$(printf $pkgver | tr '\.' '_')")
 source=("${pkgname}-${pkgver}.tgz::https://github.com/dbalsom/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('40b0a6fade9518560c0a87d15169ae7564436044adcf98b3adbb865c28156325e2dd0c3f8561f33aa2fa82d2313a7e7aeb7e0128407fbdde1bf37381ab297da2')
-
+sha512sums=('be12b839be504cd2dae7f0dbc35e57fc0e05badd2ec267c8ffc9c8d07aca5e656a61cdb44b8d7a1ec24f80603507c6534b970bf908597b3e8c1ad39a04b2b0e7')
 
 prepare() {
 	cd ${pkgname}-${pkgver}
