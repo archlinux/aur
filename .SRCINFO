@@ -1,0 +1,20 @@
+pkgbase = plank-reloaded-docklet-lastfm-git
+	pkgdesc = Last.fm docklet for Plank Reloaded
+	pkgver = 0.1.0.r0.gf4b51fd
+	pkgrel = 1
+	url = https://github.com/zquestz/lastfm-docklet
+	arch = x86_64
+	license = GPL3
+	makedepends = gnome-common
+	makedepends = git
+	makedepends = intltool
+	makedepends = vala
+	makedepends = meson
+	makedepends = ninja
+	depends = plank
+	depends = libsoup3
+	depends = json-glib
+	source = git+https://github.com/zquestz/lastfm-docklet.git
+	sha256sums = SKIP
+
+pkgname = plank-reloaded-docklet-lastfm-git
