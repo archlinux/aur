@@ -1,6 +1,6 @@
 pkgname=sudo-rs-symlink
 pkgver=0.2.6
-pkgrel=3
+pkgrel=4
 pkgdesc="(Dangerous) Swap sudo with sudo-rs"
 arch=(any)
 url="https://github.com/trifectatechfoundation/sudo-rs"
@@ -16,6 +16,7 @@ sha256sums=('d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2'
 package (){
 	install -Dm644 sudo.pam "$pkgdir"/etc/pam.d/sudo
 	install -Dm0440 sudoers "$pkgdir"/etc/sudoers
+	install -d "$pkgdir"/etc/sudoers.d # remove warning
 	install -d "$pkgdir"/usr/{bin,share/man/man8}
 	ln -svf /usr/bin/visudo-rs "$pkgdir"/usr/bin/visudo
 	ln -svf /usr/bin/sudo-rs "$pkgdir"/usr/bin/sudo
