@@ -1,7 +1,7 @@
 *
-!/*.patch
 !/.SRCINFO
 !/.gitignore
 !/.nvchecker.toml
 !/PKGBUILD
 !/config
+!/0001-HID-amd_sfh-Add-support-for-tablet-mode-switch-senso.patch
