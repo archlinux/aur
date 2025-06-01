@@ -1,3 +1,5 @@
+# The recipes below may require the installation of pacman if not on archlinux
+
 url := "https://github.com/usagi-flow/evil-helix/releases/latest/download/evil-helix-amd64-linux.tar.gz"
 
 generate-srcinfo:
