@@ -1,0 +1,5 @@
+[safecloset-bin]
+source = "github"
+github = "Canop/safecloset"
+use_latest_release = true
+prefix = "v"
