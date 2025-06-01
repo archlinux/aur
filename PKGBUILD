@@ -1,40 +1,29 @@
-# Maintainer: yl <1016076582@qq.com>
-# Contributor: tuxedocomputers <https://www.tuxedocomputers.com/>
+# Maintainer: Shiina Rikka <rikka@rikka.im>
 
-
-_pkgbase=yt6801
 pkgname=yt6801-dkms
-pkgver=1.0.28
-pkgrel=3
+pkgver=1.0.30
+pkgrel=1
 pkgdesc="Kernel module for Motorcomm YT6801 ethernet controller (DKMS)"
 arch=('x86_64')
-url="https://deb.tuxedocomputers.com/ubuntu/pool/main/t/tuxedo-yt6801/"
+url="https://www.motor-comm.com/product/ethernet-control-chip"
 license=('GPL-2.0-or-later')
-depends=(
-  'dkms'
-  'dos2unix')
-_fullname=${_pkgbase}-${pkgver}
-source=("${_fullname}.tar.gz::${url}/tuxedo-${_pkgbase}_${pkgver}.orig.tar.gz")
-sha256sums=('5ccc8392fee345eb89b6a94b596ce1637ebda0490f1915dcaa78137ec9564f9e')
+depends=('dkms')
+source=('https://www.motor-comm.com/Public/Uploads/uploadfile/files/20250430/yt6801-linux-driver-1.0.30.zip'
+        '6.15-fix.patch')
+sha256sums=('3dd7173a935da10fb9dfa537fd2bf4d6d3ae90c1d12e8091054667fb911bd6c4'
+            '3a3ba74d3a22ac8e1c1cf6c8b28fe4df1c84ad589dd1c5b537fc84a7e1902f93')
+
+prepare() {
+  cd ${srcdir}
+  patch -p1 < 6.15-fix.patch
+}
 
 package() {
-  cd ${srcdir}
-  # change dkms.conf to CRLF
-  find . -type f -exec dos2unix {} \;
+  mkdir -p ${pkgdir}/usr/src/${pkgname}
   
-  # Filter out REMAKE_INITRD from dkms.conf
-  awk '{ if ($0 !~ "REMAKE_INITRD") print }' dkms.conf > dkms_filtered.conf
-
-  # Copy dkms.conf
-  install -Dm644 dkms_filtered.conf ${pkgdir}/usr/src/${_fullname}/dkms.conf
-
-  sed -i -e "1i KERNELRELEASE ?= \$(shell uname -r)" \
-      -e "s|^KSRC = .*|KSRC = /lib/modules/\$(KERNELRELEASE)/build|" \
-      -e "s|^KDST = .*|KDST = /lib/modules/\$(KERNELRELEASE)/kernel/drivers/net/ethernet/motorcomm/|" \
-      Makefile
-
-  # Copy sources (including Makefile)
-  install -Dm644 ${srcdir}/*.c ${pkgdir}/usr/src/${_fullname}/
-  install -Dm644 ${srcdir}/*.h ${pkgdir}/usr/src/${_fullname}/
-  install -Dm644 ${srcdir}/Makefile ${pkgdir}/usr/src/${_fullname}/
+  install -Dm644 ${srcdir}/src/*.c ${pkgdir}/usr/src/${pkgname}/
+  install -Dm644 ${srcdir}/src/*.h ${pkgdir}/usr/src/${pkgname}/
+  install -Dm644 ${srcdir}/src/Makefile ${pkgdir}/usr/src/${pkgname}/
+  install -Dm644 ${srcdir}/src/dkms.conf ${pkgdir}/usr/src/${pkgname}/
+  install -Dm644 ${srcdir}/src/motorcomm ${pkgdir}/usr/src/${pkgname}/
 }
