@@ -1,7 +1,7 @@
 # Maintainer: meanlint <meanlint@outlook.com>
 # Contributor: Robert Baker <reiichi001@gmail.com>
 pkgname=xivlauncher-cn-bin-no-conflict
-pkgver=1.1.0.4
+pkgver=1.1.2.5
 pkgrel=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online CN (Not conflict with xivlauncher)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
     "XIVLauncherCN.desktop"
     "xivlauncher-core-cn"
 )
-sha512sums=('888867e6060a376d8fe457079e2bacb60fd176ba16fb47ea6c345a957c5c9cf55c0d0c00e94131e2b467a6ca4c1d853b6b9ff3644345598c8c56d86641dd2352'
+sha512sums=('575132769e31d7191cbd0b250edcb3f83907f4145a9a92c13f949d19e058367b6a022e09010306fc582bc5dc84e481ebb7f73486bb1d9e2b076664812a63d5ad'
             '3a95e052263310fbcfb67be8d229c8d71baecb1a8b7b19e4499039362f32b1a80e557cd219860c06de2098a1432e6fa802b772612c3c8805197299907f314974'
             'c6f90684f5b6c1e0f83b88c4a7cdc1c258b4cb00d03b74806cd00ce7ae51751c270956337f2cf9583867e43580a937fee0940c54640202d8a59ba0d5cced3ef4'
             '71aa8d36c1f18eec6706dbb7d2518b8995c5d8153fcc32a5b29ae3d9738f6c2248fab181bb758750afddb78a8a1a01fddb28c5b1159a15c10db5f6de1065e575')
