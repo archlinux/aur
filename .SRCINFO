@@ -1,0 +1,23 @@
+pkgbase = got-your-back
+	pkgdesc = A command line tool for backing up your Gmail messages to your local computer.
+	pkgver = 1.82
+	pkgrel = 1
+	url = https://github.com/GAM-team/got-your-back
+	arch = any
+	license = Apache-2.0
+	depends = bash
+	depends = python>=3.13
+	depends = python-httplib2>=0.17.0
+	depends = python-google-api-python-client>=2.0
+	depends = python-google-auth>=1.11.2
+	depends = python-google-auth-httplib2
+	depends = python-google-auth-oauthlib>=0.4.1
+	depends = python-packaging>=25.0
+	provides = gyb
+	conflicts = python-gyb-git
+	source = got-your-back-1.82.tar.gz::https://github.com/GAM-team/got-your-back/archive/refs/tags/v1.82.tar.gz
+	source = 001-default-config-dir.patch
+	sha256sums = 9cd29c81c78fceebe1e7ed34627bb27d758a250ccae92aecf6bacf1da6dfed09
+	sha256sums = e89329299e2040d0f565a69f05dcda0da7465d0f795d39c59a7b0646ab9c858b
+
+pkgname = got-your-back

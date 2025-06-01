@@ -1,0 +1,24 @@
+diff --color -ura a/gyb.py b/gyb.py
+--- a/gyb.py	2024-08-09 12:47:00.000000000 +0100
++++ b/gyb.py	2025-05-25 17:59:25.466965336 +0100
+@@ -14,6 +14,9 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
++
++# Modified by jmansar (2025) - Modify the default configuration directory so that it is separate from the executable location.
++
+ """\n%s\n\nGot Your Back (GYB) is a command line tool which allows users to
+ backup and restore their Gmail.
+ 
+@@ -243,8 +246,8 @@
+     help='extra labels that should be treated as system labels.')
+   parser.add_argument('--config-folder',
+     dest='config_folder',
+-    help='Optional: Alternate folder to store config and credentials',
+-    default=getProgPath())
++    help='Optional: Alternate folder to store config and credentials. Default is /var/lib/gyb',
++    default='/var/lib/gyb')
+   parser.add_argument('--cleanup',
+           action='store_true',
+           dest='cleanup',
