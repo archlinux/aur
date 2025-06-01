@@ -1,12 +1,13 @@
 pkgbase = python-pyvcf3
 	pkgdesc = Variant Call Format (VCF) parser for Python3
-	pkgver = 1.0.3
-	pkgrel = 9
+	pkgver = 1.0.4
+	pkgrel = 1
 	url = https://github.com/dridk/PyVCF3
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = python-setuptools
 	makedepends = python-pytest
+	makedepends = git
 	depends = python
 	depends = cython
 	depends = glibc
@@ -14,9 +15,7 @@ pkgbase = python-pyvcf3
 	depends = python-setuptools
 	provides = python-pyvcf
 	conflicts = python-pyvcf
-	source = PyVCF3-1.0.3.tar.gz::https://files.pythonhosted.org/packages/source/P/PyVCF3/PyVCF3-1.0.3.tar.gz
-	source = check.patch::https://patch-diff.githubusercontent.com/raw/dridk/PyVCF3/pull/8.patch
-	sha256sums = 4b16d71c8b97010487e2c939fb4d5707b7bbfa4e2b313df9dba3e372c5ba031d
-	sha256sums = cfc2f1b67b52738bc3248a13b5435341984e01f8639f11e6597f7eb67ada9eaa
+	source = PyVCF3-1.0.4::git+https://github.com/dridk/PyVCF3.git#tag=1.0.4
+	sha256sums = 4ecbf4a554dc75828f00bb6a7b4f0f96d22805fd84b39666dca071265c61aedf
 
 pkgname = python-pyvcf3
