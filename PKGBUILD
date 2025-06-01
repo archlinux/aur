@@ -18,8 +18,9 @@ depends=('alsa-lib' 'curl' 'faudio' 'ffmpeg' 'flatbuffers>=2' 'gcc-libs' 'glew'
          'qt6-multimedia' 'qt6-svg' 'sdl3' 'systemd-libs' 'vulkan-icd-loader'
          'zlib') # 'wolfssl>=4.7'
 makedepends=('clang' 'cmake>=3.28' 'lld' 'llvm' 'vulkan-headers')
-optdepends=('vulkan-validation-layers'
-            'rpcs3-udev: support DualShock 3, 4 and DualSense controllers')
+optdepends=('ps3-disc-dumper: recommended tool for dumping games'
+            'rpcs3-udev: support DualShock 3, 4 and DualSense controllers'
+            'vulkan-validation-layers')
 options=('!lto' '!strip')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
