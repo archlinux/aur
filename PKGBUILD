@@ -15,7 +15,11 @@ package() {
   cd "$srcdir" || return 1
 
   # Install scripts
-  install -Dm755 "$srcdir/$pkgname/src/*"                     "$pkgdir/usr/bin/"
+  #install -Dm755 "$srcdir/$pkgname/src/*"                     "$pkgdir/usr/bin/"
+  for f in "$srcdir/$pkgname/src/"*; do
+    install -Dm755 "$f" "$pkgdir/usr/bin/$(basename "$f")"
+  done
+
 
   # License
   install -Dm644 "$srcdir/$pkgname/LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname"
