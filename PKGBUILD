@@ -3,7 +3,7 @@
 
 pkgname=immersed
 pkgver=10.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Immersed Desktop Agent"
 arch=('x86_64')
 url="https://immersed.com/"

@@ -1,7 +1,7 @@
 pkgbase = immersed
 	pkgdesc = Immersed Desktop Agent
 	pkgver = 10.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://immersed.com/
 	arch = x86_64
 	license = unknown
