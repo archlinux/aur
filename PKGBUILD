@@ -2,7 +2,7 @@
 
 pkgname=front-panel-designer-eu
 pkgver=6.3.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Free CAD software for front panel design"
 arch=("any")
@@ -10,7 +10,7 @@ url="http://www.schaeffer-ag.de/en/"
 license=('custom')
 groups=()
 depends=(libpng12)
-makedepends=(appimagetool-bin)
+makedepends=(appimagetool)
 options=(!strip)
 source_x86_64=(
 "https://assets.schaeffer-ag.de/fpd/Version-$pkgver/FrontDesign-EU-$pkgver-amd64.AppImage"
