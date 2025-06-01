@@ -1,7 +1,7 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=css-loader-desktop-bin
 pkgver=1.2.1
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="The official desktop app for CSSLoader (Decky Loader Required)"
 arch=(x86_64)
@@ -35,14 +35,12 @@ package() {
    chmod +x cssloader-desktop.AppImage
    ./cssloader-desktop.AppImage --appimage-extract
    cd $srcdir/squashfs-root
-   mkdir $pkgdir/usr/
+   mkdir -p $pkgdir/usr/share/applications
    cp -r usr/bin $pkgdir/usr/bin
    chmod +x $pkgdir/usr/bin/css-loader-desktop
    rm -rf $pkgdir/usr/share/glib-2.0/schemas
    cp $srcdir/cssloader-desktop.AppImage $pkgdir/usr/bin
 
-   mkdir $pkgdir/usr/share/
-   mkdir $pkgdir/usr/share/applications
 echo "[Desktop Entry]
 	Name=CSSLoader Desktop
 	GenericName=The official desktop app for CSSLoader
