@@ -1,15 +1,15 @@
 pkgname=paramountplus
 _pkgname=ParamountPlus
-pkgver=1.0.9.aurpatch
+pkgver=1.0.9.aurpatch.2
 pkgrel=1
 pkgdesc="Unnofficial ParamountPlus desktop application"
 arch=('x86_64')
 url="https://gitlab.com/linuxbombay/paramountplus"
 license=('GPL')
-depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
+depends=('electron-castlab-bin' 'libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('dc821da9b8978c650e1844fd692362278b4305f5ba731c33db5df98c3201674d')
+sha256sums=('90a87b15f39913cb44c3b625ef5bf841d6f6ba00bd907f606cf6cf760ca1e85c')
 
 package() {
     cd "$srcdir/application-$pkgver"
@@ -22,6 +22,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
+    ln -s "/usr/bin/electroncastlab" "$pkgdir/opt/$_pkgname"
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
