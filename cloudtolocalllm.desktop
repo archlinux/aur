@@ -1,0 +1,23 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=CloudToLocalLLM
+GenericName=Local LLM Management
+Comment=Manage and interact with local Large Language Models with system tray integration
+Exec=cloudtolocalllm
+Icon=cloudtolocalllm
+Terminal=false
+Categories=Development;Utility;Network;
+Keywords=LLM;AI;Ollama;Chat;Machine Learning;
+StartupNotify=true
+StartupWMClass=cloudtolocalllm
+MimeType=application/x-ollama-model;
+Actions=ShowWindow;HideToTray;
+
+[Desktop Action ShowWindow]
+Name=Show Window
+Exec=cloudtolocalllm --show
+
+[Desktop Action HideToTray]
+Name=Hide to System Tray
+Exec=cloudtolocalllm --hide
