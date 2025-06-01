@@ -2,7 +2,7 @@
 # Backup contact <admin@azccriminal.space>
 
 pkgname=crl-browser
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="CRL Browser - PyQt6 based Arch-browser packed with PyInstaller."
 arch=('any')
