@@ -108,11 +108,11 @@ function sanity_check() {
     for variant in "${!ukify_variants[@]}"; do
       local path=$(uki_path "$kernel" "${sanity_kernel[$kernel]}" "$variant")
       if [ $verbose -ne 0 ]; then
-        msg "Resolved UKI path for package %s %s in variant %s: %s\n" "$kernel" "${sanity_kernel[$kernel]}" "$variant" "$path"
+        msg "Resolved UKI path for package %s %s in variant %s: %s" "$kernel" "${sanity_kernel[$kernel]}" "$variant" "$path"
       fi
 
       if [ ${uki_path[$path]+_} ]; then
-        error "Found UKI path clash: %s-%s and %s points to the same path: %s\n" "$kernel" "$variant" "${uki_path[$path]}" "$path"
+        error "Found UKI path clash: %s-%s and %s points to the same path: %s" "$kernel" "$variant" "${uki_path[$path]}" "$path"
         result=1
       fi
       uki_path[$path]="$kernel-$variant"
@@ -230,12 +230,12 @@ function gen_image() {
 
     read -r pkgbase < "$path"
 
-    local initrd=$(mktemp ukify.XXXXXXXXXX)
+    local initrd=$(mktemp --tmpdir ukify.XXXXXXXXXX)
 
     msg2 "Building initrd image %s (%s)" "$kernel" "$version_name"
     dracut -q -f --no-hostonly-cmdline --no-uefi --kver "${version}" ${ukify_variants[$variant]} "$initrd"
 
-    local os_release=$(mktemp ukify.XXXXXXXXXX)
+    local os_release=$(mktemp --tmpdir ukify.XXXXXXXXXX)
     grep -v '^BUILD_ID=' /etc/os-release > "$os_release"
     echo "BUILD_ID=\"$version_name\"" >> "$os_release"
     echo "VERSION_ID=\"$(variant_name "$pkgbase" "$variant")\"" >> "$os_release"
