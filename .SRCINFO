@@ -1,0 +1,17 @@
+pkgbase = pam-any-git
+	pkgdesc = A PAM module that runs multiple other PAM modules in parallel, succeeding as long as one of them succeeds (git development version)
+	pkgver = r12.e776877
+	pkgrel = 1
+	url = https://github.com/ChocolateLoverRaj/pam-any
+	arch = i686
+	arch = x86_64
+	makedepends = cargo
+	makedepends = git
+	makedepends = clang
+	depends = glibc
+	depends = gcc-libs
+	depends = pam
+	source = pam-any-git::git+https://github.com/ChocolateLoverRaj/pam-any.git
+	b2sums = SKIP
+
+pkgname = pam-any-git
