@@ -1,7 +1,7 @@
 pkgbase = disneyplus
 	pkgdesc = Unnofficial Disney+ desktop application
 	pkgver = 1.0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/disneyplusdesktop/application
 	arch = x86_64
 	license = GPL
