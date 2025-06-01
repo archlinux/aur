@@ -1,7 +1,7 @@
 # Maintainer: Christopher Maltais <christopher.maltais@gmail.com>
 pkgname=cloudtolocalllm
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-tenant streaming LLM management with system tray integration, platform-specific UI logic, and comprehensive Linux packaging"
 arch=('x86_64')
 url="https://github.com/imrightguy/CloudToLocalLLM"
@@ -26,7 +26,7 @@ makedepends=(
     'pkg-config'
     'clang'
     'imagemagick'
-    'flutter'
+    'flutter'  # Build-time dependency only - uses system Flutter installation
 )
 optdepends=(
     'ollama: Local LLM server for direct desktop connectivity'
@@ -42,6 +42,20 @@ sha256sums=('SKIP')
 prepare() {
     cd "$srcdir/CloudToLocalLLM"
 
+    # Verify Flutter is available and get version info
+    if ! command -v flutter &> /dev/null; then
+        echo "Error: Flutter not found in PATH"
+        echo "Please ensure Flutter is installed via 'pacman -S flutter' or from AUR"
+        exit 1
+    fi
+
+    echo "Found Flutter: $(flutter --version | head -1)"
+
+    # Check Flutter doctor for any critical issues
+    echo "Running Flutter doctor..."
+    flutter doctor --android-licenses > /dev/null 2>&1 || true
+    flutter doctor | grep -E "(✓|✗|!)" || true
+
     # Apply tray_manager deprecation fix before building
     if [[ -f "scripts/fix_tray_manager_deprecation.sh" ]]; then
         echo "Applying tray_manager deprecation fix..."
@@ -50,21 +64,31 @@ prepare() {
         echo "Warning: tray_manager deprecation fix script not found"
     fi
 
-    # Ensure we have the latest Flutter dependencies
-    flutter pub get
-
     # Clean any previous builds
     flutter clean
+
+    # Ensure we have the latest Flutter dependencies
+    echo "Getting Flutter dependencies..."
+    flutter pub get
 }
 
 build() {
     cd "$srcdir/CloudToLocalLLM"
 
-    # Check if Flutter is available in PATH
+    # Double-check Flutter availability (should be verified in prepare())
     if ! command -v flutter &> /dev/null; then
-        echo "Flutter not found in PATH. Please install Flutter manually."
-        echo "You can install Flutter from: https://docs.flutter.dev/get-started/install/linux"
+        echo "Error: Flutter not found in PATH during build"
+        echo "This should have been caught in prepare() - please report this as a bug"
         exit 1
+    fi
+
+    # Configure Flutter for Linux desktop
+    echo "Configuring Flutter for Linux desktop..."
+    flutter config --enable-linux-desktop
+
+    # Verify Linux desktop support is enabled
+    if ! flutter config | grep -q "enable-linux-desktop: true"; then
+        echo "Warning: Linux desktop support may not be properly enabled"
     fi
 
     # Generate monochrome system tray icons for Linux desktop integration
@@ -114,11 +138,9 @@ build() {
         fi
     fi
 
-    # Configure Flutter for Linux desktop
-    flutter config --enable-linux-desktop
-
-    # Build the release version
-    flutter build linux --release
+    # Build the release version with verbose output for debugging
+    echo "Building CloudToLocalLLM for Linux..."
+    flutter build linux --release --verbose
 }
 
 package() {
