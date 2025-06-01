@@ -1,6 +1,6 @@
 pkgbase = libnick
 	pkgdesc = A cross-platform base for native Nickvision applications
-	pkgver = 2025.5.2
+	pkgver = 2025.6.0
 	pkgrel = 1
 	url = https://github.com/NickvisionApps/libnick
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = libnick
 	makedepends = boost
 	makedepends = cmake
 	options = !lto
-	source = libnick-2025.5.2.tar.gz::https://github.com/NickvisionApps/libnick/archive/refs/tags/2025.5.2.tar.gz
-	source = https://github.com/progsource/maddy/releases/download/1.3.0/maddy-src.zip
-	sha256sums = 71f8d6712e4688b055a9d94ecc2706263756b37d673385e2eed3ca6503957b1c
-	sha256sums = 7fb55af73d298a1f49ec939ac01cec35baebe74d2776ce2f91256c1f8187106b
+	source = libnick-2025.6.0.tar.gz::https://github.com/NickvisionApps/libnick/archive/refs/tags/2025.6.0.tar.gz
+	source = maddy-1.5.0.zip::https://github.com/progsource/maddy/releases/download/1.5.0/maddy-src.zip
+	sha256sums = ef5715301d1b2e06c11640b86caecf7f8648e494c9f02753719e777e03e603e1
+	sha256sums = eae8990ab796185547ef06dbb752d0d7cbc38067b327a4c7e5141c280aa633fd
 
 pkgname = libnick

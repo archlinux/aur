@@ -1,7 +1,8 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=libnick
-pkgver=2025.5.2
+pkgver=2025.6.0
+_maddyver=1.5.0
 pkgrel=1
 pkgdesc="A cross-platform base for native Nickvision applications"
 arch=('x86_64')
@@ -10,9 +11,9 @@ license=('MIT')
 makedepends=('boost' 'cmake')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-        "https://github.com/progsource/maddy/releases/download/1.3.0/maddy-src.zip")
-sha256sums=('71f8d6712e4688b055a9d94ecc2706263756b37d673385e2eed3ca6503957b1c'
-            '7fb55af73d298a1f49ec939ac01cec35baebe74d2776ce2f91256c1f8187106b')
+        "maddy-${_maddyver}.zip::https://github.com/progsource/maddy/releases/download/${_maddyver}/maddy-src.zip")
+sha256sums=('ef5715301d1b2e06c11640b86caecf7f8648e494c9f02753719e777e03e603e1'
+            'eae8990ab796185547ef06dbb752d0d7cbc38067b327a4c7e5141c280aa633fd')
 
 prepare() {
     mv include/maddy "${pkgname}-${pkgver}/include"
