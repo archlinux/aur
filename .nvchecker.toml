@@ -1,0 +1,5 @@
+[nvc]
+source = "github"
+github = "nickg/nvc"
+use_max_tag = true
+prefix = "r"
