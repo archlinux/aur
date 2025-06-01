@@ -7,10 +7,10 @@ pkgbase=linux-firmware
 pkgname=(linux-firmware-whence linux-firmware amd-ucode
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}
 )
-_tag=20241210
+_tag=20250509
 #_commit=c979a06518069901e4c43e0019d3a15b435b7e16
-pkgver=20241210.b00a7f7e
-pkgrel=1
+pkgver=20250508.788aadc8
+pkgrel=2
 pkgdesc="Firmware files for Linux"
 pkgdesc+=' (without module compression)'
 url="https://gitlab.com/kernel-firmware/linux-firmware"
@@ -23,15 +23,16 @@ license=(
 arch=('any')
 makedepends=(
   git
-  rdfind
+  parallel
   python
+  rdfind
 )
 options=(
   !strip
   !debug
 )
 source=("git+$url.git?signed#tag=${_tag}")
-b2sums=('6830ae2d2784dbdc8c57b997c30e2694363022a808f6b842c9476f3bb3bd119531b19a656b2843f9509001f4915e8696b70aee7d7996d1f27c578c7e2b67a20e')
+b2sums=('6e606e0b656c8fb177064a71dc7542661141efb2eb4824479f569b2284aac2b14e0afb1bbbf0c1fe6edd442663b4cb971aa537039da17fad34c4dc1c56fae320')
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
 
 _pkgbase="${pkgbase}"
@@ -42,6 +43,10 @@ pkgname=("${pkgname[@]:1}") # remove whence
 _backports=(
 )
 
+_reverts=(
+  360fd45301707daa3d95be32d84132481b17db46 # revert ath12k: https://bugzilla.kernel.org/show_bug.cgi?id=220108
+)
+
 prepare() {
   local pkgbase="${_pkgbase}"
   cd ${pkgbase}
@@ -50,6 +55,10 @@ prepare() {
   for _c in "${_backports[@]}"; do
     git log --oneline -1 "${_c}"
     git cherry-pick -n "${_c}"
+  done
+  for _c in "${_reverts[@]}"; do
+    git log --oneline -1 "${_c}"
+    git revert -n "${_c}"
   done
 }
 
@@ -103,6 +112,7 @@ package_linux-firmware-uncompressed() {
   cd ${pkgbase}
 
   ZSTD_CLEVEL=19 make DESTDIR="${pkgdir}" FIRMWAREDIR=/usr/lib/firmware install #-zst
+  make DESTDIR="${pkgdir}" FIRMWAREDIR=/usr/lib/firmware dedup
 
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICEN*
 

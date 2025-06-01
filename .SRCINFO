@@ -1,7 +1,7 @@
 pkgbase = linux-firmware-uncompressed
 	pkgdesc = Firmware files for Linux (without module compression)
-	pkgver = 20241210.b00a7f7e
-	pkgrel = 1
+	pkgver = 20250508.788aadc8
+	pkgrel = 2
 	url = https://gitlab.com/kernel-firmware/linux-firmware
 	arch = any
 	license = GPL-2.0-only
@@ -9,13 +9,14 @@ pkgbase = linux-firmware-uncompressed
 	license = GPL-3.0-only
 	license = custom
 	makedepends = git
-	makedepends = rdfind
+	makedepends = parallel
 	makedepends = python
+	makedepends = rdfind
 	options = !strip
 	options = !debug
-	source = git+https://gitlab.com/kernel-firmware/linux-firmware.git?signed#tag=20241210
+	source = git+https://gitlab.com/kernel-firmware/linux-firmware.git?signed#tag=20250509
 	validpgpkeys = 4CDE8575E547BF835FE15807A31B6BD72486CFD6
-	b2sums = 6830ae2d2784dbdc8c57b997c30e2694363022a808f6b842c9476f3bb3bd119531b19a656b2843f9509001f4915e8696b70aee7d7996d1f27c578c7e2b67a20e
+	b2sums = 6e606e0b656c8fb177064a71dc7542661141efb2eb4824479f569b2284aac2b14e0afb1bbbf0c1fe6edd442663b4cb971aa537039da17fad34c4dc1c56fae320
 
 pkgname = linux-firmware-uncompressed
 	depends = linux-firmware-whence
