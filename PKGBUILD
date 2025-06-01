@@ -15,8 +15,7 @@ package() {
   cd "$srcdir" || return 1
 
   # Install scripts
-  install -Dm755 "$srcdir/$pkgname/src/*" "$pkgdir/usr/bin"
-
+  install -Dm755 "$srcdir/$pkgname/src/*"                     "$pkgdir/usr/bin/"
 
   # License
   install -Dm644 "$srcdir/$pkgname/LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname"
