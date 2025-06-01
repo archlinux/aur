@@ -1,6 +1,6 @@
 pkgbase = libselinux-static
 	pkgdesc = SELinux library (static version)
-	pkgver = 3.6
+	pkgver = 3.8.1
 	pkgrel = 1
 	url = https://github.com/SELinuxProject/selinux
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = libselinux-static
 	license = custom
 	depends = libsepol>=3.1
 	options = staticlibs
-	source = https://github.com/SELinuxProject/selinux/releases/download/3.6/libselinux-3.6.tar.gz
-	sha256sums = ba4e0ef34b270e7672a5e5f1b523fe2beab3a40bb33d9389f4ad3a8728f21b52
+	source = https://github.com/SELinuxProject/selinux/releases/download/3.8.1/libselinux-3.8.1.tar.gz
+	sha256sums = ec2d2789f931152d21c1db1eb4bc202ce4eccede34d9be9e360e3b45243cee2c
 
 pkgname = libselinux-static
