@@ -2,7 +2,7 @@
 
 _pkgname=vatis
 pkgname="${_pkgname}-appimage"
-pkgver=4.1.0_beta.14
+pkgver=4.1.0_beta.19
 pkgrel=1
 pkgdesc="The latest stable AppImage of vATIS - an ATIS Solution for VATSIM"
 arch=('x86_64')
@@ -17,7 +17,7 @@ _desktop_prefix="org.vatsim.${_pkgname}"
 
 source=("${_appimage}::https://hub.vatis.app/download/linux")
 noextract=("${_appimage}")
-b2sums=('ecde4a2108c8fa568313114482e48997de609a8e77b6ab6b2a5d1b5e95f0a9c76012118dc8c4109cc60974f69d1272d020a22ee34bb36782e118b291b18466ce')
+b2sums=('9242aedb3e08490cb67c21cbffb5071f1febc5dd9f9863c2ee191a07eba8302ce6cd5f89e0a3da13e4ede339dfc8876b46999ee88c1161d6e2b938d7009b1677')
 
 prepare() {
 	chmod +x "${_appimage}"
