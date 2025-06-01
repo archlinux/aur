@@ -2,7 +2,7 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 _pkgname=eden
 pkgname=$_pkgname-git
-pkgver=r27315.15fb1f78b
+pkgver=r27334.fb3988a78a
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -13,30 +13,28 @@ depends=('qt6-base' 'qt6-webengine' 'clang' 'qt6-multimedia' 'qt6-wayland' 'qt6-
 makedepends=('curl' 'git' 'sdl2' 'cubeb' 'vulkan-headers' 'vulkan-utility-libraries' 'gcc' 'cmake' 'clang' 'llvm' 'doxygen' 'python-pip' 'glslang' 'zip' 'unzip' 'boost' 'catch2' 'mbedtls' 'glslang' 'libzip' 'lz4' 'fmt' 'zip' 'unzip' 'nlohmann-json' 'openssl' 'opus' 'zlib' 'zstd')
 conflicts=('eden' 'eden-bin')
 options=('!debug' 'lto')
-source=("git+https://git.eden-emu.dev/eden-emu/eden"
+source=("git+https://git.eden-emu.dev/eden-emu/eden.git"
 		"git+https://git.eden-emu.dev/eden-emu/cubeb.git"
 		"git+https://git.eden-emu.dev/eden-emu/dynarmic.git"
 		"git+https://git.eden-emu.dev/eden-emu/discord-rpc.git"
 		"sirit::git+https://git.eden-emu.dev/eden-emu/sirit.git"
 		"git+https://git.eden-emu.dev/eden-emu/mbedtls.git"
-		"git+https://git.eden-emu.dev/eden-emu/cpp-httplib.git"
-		"git+https://git.eden-emu.dev/eden-emu/SDL.git"
-		"git+https://git.eden-emu.dev/eden-emu/opus.git"
-		"git+https://git.eden-emu.dev/eden-emu/cpp-jwt.git"
+		"git+https://github.com/yhirose/cpp-httplib.git"
+		"git+https://github.com/libsdl-org/SDL.git"
+		"git+https://github.com/xiph/opus.git"
+		"git+https://github.com/arun11299/cpp-jwt.git"
 		"git+https://git.eden-emu.dev/eden-emu/tzdb_to_nx.git"
-		"git+https://git.eden-emu.dev/eden-emu/VulkanMemoryAllocator.git"
+		"git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 		"git+https://git.eden-emu.dev/eden-emu/simpleini.git"
-		"git+https://git.eden-emu.dev/eden-emu/headers.git"
-		"git+https://git.eden-emu.dev/eden-emu/xbyak.git"
-		"git+https://git.eden-emu.dev/eden-emu/mcl.git"  # submodule of dynarmic
-		"zycore::git+https://git.eden-emu.dev/eden-emu/zycore-c.git"  # submodule of dynarmic
-		"git+https://git.eden-emu.dev/eden-emu/zydis.git"  # submodule of dynarmic
+		"git+https://github.com/boostorg/headers.git"
+		"git+https://github.com/herumi/xbyak.git"
+		"git+https://github.com/zyantific/zycore-c.git"  # submodule of dynarmic
+		"git+https://github.com/zyantific/zydis.git"  # submodule of dynarmic
 		"git+https://github.com/Lizzie841/unordered_dense.git"  # submodule of dynarmic
 		"git+https://github.com/KhronosGroup/SPIRV-Headers"  # submodule of sirit 
 		"git+https://github.com/eggert/tz.git")  # submdoule of tzdb_to_nx
 		
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -67,22 +65,12 @@ prepare() {
 		git config submodule.$_submodule.url ../$_submodule
 		done
 	git config submodule.externals/boost-headers.url ../headers
+	git config submodule.externals/sirit/externals/SPIRV-Headers.url ../SPIRV-Headers
+	git config submodule.externals/nx_tzdb/tzdb_to_nx/externals/tz/tz.url ../tz
+	git config submodule.externals/dynarmic/externals/unordered_dense.url ../unordered_dense
+	git config submodule.externals/dynarmic/externals/zycore-c.url ../zycore-c
+	git config submodule.externals/dynarmic/externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
-
-	cd $srcdir/$_pkgname/externals/sirit
-	git config submodule.externals/SPIRV-Headers.url ../../../SPIRV-Headers
-	git -c protocol.file.allow=always submodule update
-
-    cd $srcdir/$_pkgname/externals/nx_tzdb/tzdb_to_nx
-    git config submodule.externals/tz/tz.url ../../../../tz
-    git -c protocol.file.allow=always submodule update
-    
-    cd $srcdir/$_pkgname/externals/dynarmic
-    for _submodule in zydis mcl zycore unordered_dense;
-		do
-		git config submodule.$_submodule.url ../../../$_submodule
-		done
-    git -c protocol.file.allow=always submodule update
 }
 build() {
 	cd $srcdir/$_pkgname
