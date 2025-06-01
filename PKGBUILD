@@ -3,7 +3,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=gtsam
 pkgver=4.2
-pkgrel=3
+pkgrel=1
+epoch=1
 pkgdesc="A library of C++ classes that implement smoothing and mapping (SAM) in\
   robotics and vision, using factor graphs and Bayes networks as the underlying\
   computing paradigm rather than sparse matrices."
