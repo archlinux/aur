@@ -1,15 +1,15 @@
 pkgbase = csvtk-bin
 	pkgdesc = A cross-platform, efficient and practical CSV/TSV toolkit in Golang
-	pkgver = 0.32.0
+	pkgver = 0.34.0
 	pkgrel = 1
 	url = https://bioinf.shenwei.me/csvtk/
 	arch = x86_64
 	license = MIT
 	provides = csvtk
 	conflicts = csvtk
-	source = csvtk-0.32.0::https://github.com/shenwei356/csvtk/archive/v0.32.0.tar.gz
-	source = csvtk-0.32.0-binary.tar.gz::https://github.com/shenwei356/csvtk/releases/download/v0.32.0/csvtk_linux_amd64.tar.gz
-	sha256sums = eb54e0a14207b6c58cefd9bc6747453e758b2bdbf8e111df9873628b6fa23a01
-	sha256sums = cabfe4a3c20693c7ee2d0a49b305a5342039d174a2949a8f798c49cf8f086e76
+	source = csvtk-0.34.0::https://github.com/shenwei356/csvtk/archive/v0.34.0.tar.gz
+	source = csvtk-0.34.0-binary.tar.gz::https://github.com/shenwei356/csvtk/releases/download/v0.34.0/csvtk_linux_amd64.tar.gz
+	sha256sums = 7cff5c7bc5ab79ec6d57237e72cd0c258712814681e1a9e35ca9f15bfbccfb11
+	sha256sums = 6f14d67df9e343374610548e0b91c9c7e2a87bbc027f0ebaebddb655e914a9c3
 
 pkgname = csvtk-bin
