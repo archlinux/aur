@@ -1,0 +1,16 @@
+pkgbase = tldx
+	pkgdesc = Domain Availability Research Tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/brandonyoungdev/tldx
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	provides = tldx
+	conflicts = tldx
+	source = tldx-1.0.0.tar.gz::https://github.com/brandonyoungdev/tldx/archive/v1.0.0.tar.gz
+	sha256sums = 4386238735382f341ddafb96b9d92a65324e51b47c2d3bc3d693de86b602cf84
+
+pkgname = tldx
