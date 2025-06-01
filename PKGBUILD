@@ -1,7 +1,7 @@
 # Maintainer: MingxuanGame <MingxuanGame@outlook.com>
 pkgname="meowpad-configurator-v2-git"
 pkgrel=1
-pkgver=1.0.3.r133.54ba2d7
+pkgver=1.1.0.r141.31de667
 pkgdesc="Meowpad v2 配置器"
 arch=('x86_64')
 license=('MIT')
