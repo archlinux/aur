@@ -1,0 +1,10 @@
+# Source and package directories
+src/
+pkg/
+
+# Archive files
+*.zip
+*.tar.*
+
+# Package files
+*.pkg.tar.*
