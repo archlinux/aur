@@ -1,5 +1,5 @@
 pkgbase = rusty-socks
-	pkgdesc = A high-performance SOCKS5 and HTTP proxy server written in Rust with journald support
+	pkgdesc = A high-performance SOCKS5 and HTTP proxy server written in Rust
 	pkgver = 0.1.0
 	pkgrel = 3
 	url = https://github.com/quintusl/rusty-socks
