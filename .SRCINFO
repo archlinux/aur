@@ -1,6 +1,6 @@
 pkgbase = openstack_cli
 	pkgdesc = CLI for the OpenStack written in Rust
-	pkgver = 0.12.1
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/gtema/openstack
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = openstack_cli
 	makedepends = cargo
 	makedepends = git
 	options = !lto
-	source = git+https://github.com/gtema/openstack.git#tag=openstack_cli-v0.12.1
-	sha256sums = b3f56d2ffa5944024cadfdc6329cbac79ac5a968964d1cdfd1f3556177b95471
+	source = git+https://github.com/gtema/openstack.git#tag=openstack_cli-v0.12.2
+	sha256sums = cf82afe1108903e51072ada4e889bad508f0f44fea7c589d6ee4ef62230b039b
 
 pkgname = openstack_cli
