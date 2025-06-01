@@ -24,7 +24,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/usr/bin/electroncastlab" "/opt/$_pkgname"
+    ln -s "/usr/bin/electroncastlab" "$pkgdir/opt/$_pkgname"
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
