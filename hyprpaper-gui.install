@@ -1,0 +1,3 @@
+post_install() {
+echo ">> Please place your wallpapers in ~/Pictures/Wallpapers/"
+}

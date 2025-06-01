@@ -1,0 +1,13 @@
+pkgbase = hyprpaper-gui-bin
+	pkgdesc = A GUI wallpaper changer for Hyprpaper
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/lexiuwu71/hyprpaper-gui
+	install = hyprpaper-gui.install
+	arch = x86_64
+	license = No license
+	depends = hyprpaper
+	source = https://github.com/lexiuwu71/hyprpaper-gui/releases/download/v0.1/Linux-x86-bin.zip
+	sha256sums = SKIP
+
+pkgname = hyprpaper-gui-bin
