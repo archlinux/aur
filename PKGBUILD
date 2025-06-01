@@ -1,9 +1,9 @@
 # Maintainer: Thayne McCombs <bytecurry.software@gmail.com>
 pkgname=openbao
-pkgver=2.2.0
+pkgver=2.2.2
 # NOTE: this commit should match the commit of the release version
 _commit='a2bf51c891680240888f7363322ac5b2d080bb23'
-pkgrel=3
+pkgrel=1
 pkgdesc="solution to manage, store, and distribute sensitive data"
 arch=("x86_64")
 url="https://openbao.org"
@@ -20,7 +20,7 @@ source=(
   openbao.sysusers
   openbao.tmpfiles
 )
-sha256sums=('345bec77928edab73fdefd30fbe5e2583ba947f099e58504313b4de1e7081778'
+sha256sums=('718eeeda3132a1fec324742d7385e13752d61e1a36b90da20b69d5b0635777e5'
             'b26bf539f6f8b05a77afed4ba0e05d6012322474703265bc2977dafadaf22d38'
             '0b8a4fa3f09ee89a1383f2ce0eb4acc6b16beebbc7f034b23c6069dfe8a43cc1'
             '6009313cb0aa0b47fe330bdc8a40b9d8ce9142814f4cc61a9d58ab410b8f746a')
