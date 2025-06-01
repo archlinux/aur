@@ -3,7 +3,7 @@
 pkgname=reclog
 _pkgname=reclog
 pkgver=0.1.5
-pkgrel=2
+pkgrel=1
 pkgdesc="Command-line tool to capture command output to a file."
 url="https://github.com/gavv/reclog"
 makedepends=('cargo')

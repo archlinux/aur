@@ -1,7 +1,7 @@
 pkgbase = reclog
 	pkgdesc = Command-line tool to capture command output to a file.
 	pkgver = 0.1.5
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/gavv/reclog
 	arch = i686
 	arch = x86_64
