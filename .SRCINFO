@@ -1,6 +1,6 @@
 pkgbase = xpipe
 	pkgdesc = Your entire server infrastructure at your fingertips
-	pkgver = 16.4.1
+	pkgver = 16.5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/xpipe-io/xpipe
@@ -30,9 +30,9 @@ pkgbase = xpipe
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = xpipe-16.4.1-x86_64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/16.4.1/xpipe-portable-linux-x86_64.tar.gz
-	sha256sums_x86_64 = d39fbc37affe5ca869d0bf987001ec2c237b03facbb7bc87aa7a219cba33e77c
-	source_aarch64 = xpipe-16.4.1-arm64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/16.4.1/xpipe-portable-linux-arm64.tar.gz
-	sha256sums_aarch64 = 2359e432a9a5d817da292cd7df2db43b1c7250a652c3bc02d2c21128200deadb
+	source_x86_64 = xpipe-16.5-x86_64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/16.5/xpipe-portable-linux-x86_64.tar.gz
+	sha256sums_x86_64 = d293c72f0c7550ce1a35a60ae628507a955feb9611717f5f589bc30a39c23074
+	source_aarch64 = xpipe-16.5-arm64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/16.5/xpipe-portable-linux-arm64.tar.gz
+	sha256sums_aarch64 = c2f473f1be769f4cb84adde8308a1733b74d0997e000c8a47385713a40cfd705
 
 pkgname = xpipe
