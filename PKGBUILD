@@ -6,8 +6,8 @@
 
 pkgbase=nvidia-utils
 pkgname=('nvidia-utils' 'opencl-nvidia' 'nvidia-dkms' 'nvidia-open-dkms')
-pkgver=570.153.02
-pkgrel=2
+pkgver=575.57.08
+pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -33,8 +33,8 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             'a0183adce78e40853edf7e6b73867e7a8ea5dabac8e8164e42781f64d5232fbe869f850ab0697c3718ebced5cde760d0e807c05da50a982071dfe1157c31d6b8'
             '55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee'
             'c7fea39d11565f05a507d3aded4e9ea506ef9dbebf313e0fc8d6ebc526af3f9d6dec78af9d6c4456c056310f98911c638706bccdd9926d07f492615569430455'
-            '6da277640a4727a420379b43b44c6222869e2fd10794627e73a0a1fe7db6213c0cbab7901799cc9ee2431df54e0c4857eaf1b293fd1750a3bc68c2bf3852413f'
-            'b0cb2e748746906a973df597c91bac087c033bcb06b62e1778f7df5d2499ae90392759a2e7e28187d28211f11b7ca7200f2a903db9fa64854ea93768c362e0a7'
+            '6ade3fb7227e51f88671f460d990bbd090ac9d4f8968c3c5c6d22011a78c1267c959916e9cdd18ba165c6f0b8f459c9b3534fa39eae9ae527232911fdd8f2417'
+            '1fbb0c3da87b61666dff3d6838df291ded0d7d62a83d914233cd11c9fc3ed4becf55ecd00763261a5a87975276a5749fb4a38ed59eb10807b891fd444a1bba75'
             '0bb89b9037f0baa9aae1ff8e70c9c93896f03fd0cc380eea4b0dc094a6991c3ad6738c9fbbaa42d8b5a544f77dc91c0e6401b1501c5970c576d5efbc0de8dd34'
             '42f621179d4fd9bf608f0d84b9019f5a5fdf5d92d68d22ce9b9a9add1cad1c90dcb3764db68e0b9bc7e902bb6b955c59563ea6d4f39f2e39a340387e4d5deb82'
             '21c964b4d0ceda23d543485cb285becf111849313da3ff9cc9c7bed241de83fd826d72f196d071e4f53790b8fd5d1e3dab9319c0ca08b37c9c841f45d3afd041')
@@ -66,8 +66,6 @@ prepare() {
     # Kernel-open
     patch -Np1 -i "${srcdir}/0001-Enable-atomic-kernel-modesetting-by-default.patch" -d "${srcdir}/${_pkg_open}/kernel-open"
     patch -Np1 -i "${srcdir}/0002-Add-IBT-support.patch" -d "${srcdir}/${_pkg_open}/"
-
-
 
     # Attempt to make builds reproducible
     sed -i "s/^  HOSTNAME.*/  HOSTNAME = echo archlinux/" "${srcdir}/${_pkg_open}/utils.mk"
@@ -214,6 +212,7 @@ package_nvidia-utils() {
 
     # NVVM Compiler library loaded by the CUDA driver to do JIT link-time-optimization
     install -Dm644 "libnvidia-nvvm.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-nvvm.so.${pkgver}"
+    install -Dm755 "libnvidia-nvvm70.so.4" "${pkgdir}/usr/lib/libnvidia-nvvm70.so.4"
 
     # PTX JIT Compiler (Parallel Thread Execution (PTX) is a pseudo-assembly language for CUDA)
     install -Dm755 "libnvidia-ptxjitcompiler.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ptxjitcompiler.so.${pkgver}"
@@ -241,6 +240,9 @@ package_nvidia-utils() {
 
     # Sandboxhelper
     install -Dm755 "libnvidia-sandboxutils.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-sandboxutils.so.${pkgver}"
+
+    # Present Helper
+    install -Dm755 "libnvidia-present.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-present.so.${pkgver}"
 
     # Debug
     install -Dm755 nvidia-debugdump "${pkgdir}/usr/bin/nvidia-debugdump"
