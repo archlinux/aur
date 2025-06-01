@@ -1,7 +1,7 @@
 # Maintainer: Devitzer <defecthorizon@icloud.com>
 pkgname=cobalt-lang
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="A minimal, fast interpreted programming language."
 arch=('x86_64')
 url="https://github.com/cobalt-lang/cobalt-lang"
@@ -9,7 +9,7 @@ license=('GPL-3.0')
 depends=('glibc')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('81b826a97d4ba3dea5d1d8b999bf440e0b9a2ecc131370c04e3753ea070f343b')
+sha256sums=('ce9a72f2f606eba76d3d741c66aaeec4925aec7ec443dae34aa637fb29182e1d')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
