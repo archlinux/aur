@@ -2,8 +2,8 @@
 
 pkgname=got-your-back
 pkgver=1.82
-pkgrel=1
-pkgdesc="A command line tool for backing up your Gmail messages to your local computer."
+pkgrel=2
+pkgdesc="A command line tool for backing up Gmail messages. Known as GYB."
 arch=(any)
 url=https://github.com/GAM-team/got-your-back
 license=(Apache-2.0)
