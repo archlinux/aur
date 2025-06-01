@@ -5,7 +5,7 @@ from PyQt6.QtWidgets import (
     QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel,
     QPushButton, QMessageBox, QCheckBox, QHBoxLayout
 )
-from PyQt6.QtGui import QPixmap
+from PyQt6.QtGui import QPixmap,QIcon
 from PyQt6.QtCore import QUrl, Qt
 from PyQt6.QtWebEngineWidgets import QWebEngineView
 from PyQt6.QtWebEngineCore import QWebEngineSettings,QWebEnginePage
@@ -20,6 +20,13 @@ def setup_tor_proxy(enable: bool):
         os.environ.pop("HTTP_PROXY", None)
         os.environ.pop("HTTPS_PROXY", None)
 
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
 # Custom QWebEnginePage to handle link clicks inside the same view
 class CustomWebEnginePage(QWebEnginePage):
     def acceptNavigationRequest(self, url, _type, isMainFrame):
@@ -32,7 +39,9 @@ class CustomWebEnginePage(QWebEnginePage):
 class BrowserWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("crl-browser - Developer Tools & TOR Option")
+        self.setWindowTitle("CRL Browser")
+        icon_path = resource_path("logo.png")
+        self.setWindowIcon(QIcon(icon_path))
         self.setGeometry(100, 100, 1000, 700)
 
         self.central_widget = QWidget()
@@ -41,7 +50,6 @@ class BrowserWindow(QMainWindow):
         self.central_widget.setLayout(self.layout)
 
         self.setup_styles()
-        self.load_logo()
 
         self.controls_layout = QHBoxLayout()
         self.layout.addLayout(self.controls_layout)
@@ -102,24 +110,6 @@ class BrowserWindow(QMainWindow):
                 margin-right: 15px;
             }
         """)
-
-    def load_logo(self):
-        logo_url = "https://azccriminal.space/CRL/logo.png"
-        self.crlnet_directory = os.path.join(pwd.getpwuid(os.getuid()).pw_dir, "crlnet")
-        os.makedirs(self.crlnet_directory, exist_ok=True)
-        logo_path = os.path.join(self.crlnet_directory, "logo.png")
-        try:
-            import requests
-            response = requests.get(logo_url)
-            if response.status_code == 200:
-                with open(logo_path, "wb") as f:
-                    f.write(response.content)
-                pixmap = QPixmap(logo_path)
-                self.logo_label = QLabel()
-                self.logo_label.setPixmap(pixmap)
-                self.layout.insertWidget(0, self.logo_label)
-        except Exception as e:
-            print(f"Error loading logo: {e}")
 
     def load_search_page(self):
       if self.tor_checkbox.isChecked():
