@@ -1,0 +1,2 @@
+d /var/lib/huntarr 0755 huntarr huntarr
+Z /var/lib/huntarr - huntarr huntarr

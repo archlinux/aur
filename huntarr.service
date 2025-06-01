@@ -1,0 +1,13 @@
+[Unit]
+Description=An automatic missing content hunter for Sonarr, Radarr, Lidarr, Readarr, and Whisparr
+
+[Service]
+ExecStart=/bin/python /usr/share/webapps/huntarr/main.py
+WorkingDirectory=/var/lib/huntarr
+User=huntarr
+Group=huntarr
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
