@@ -10,7 +10,7 @@ license=("GPL-3.0-or-later")
 
 url="https://github.com/switchToLinux/libwaybar_cffi_lyrics"
 source_x86_64=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz")
-sha256sums_x86_64=('172dbbf468f2d83896081a22c4d65964cd0fa3dfda7926bfbd6da8b7d4d91d75')
+sha256sums_x86_64=('bb385c8aedf9224ab50ea0c7a8e05b453be20d007ae229e07934f555abe7428d')
 
 makedepends=("meson" "git" "ninja")
 depends=("gtk3" "libepoxy" "sdbus-cpp" "libcurl-gnutls" "glm")
