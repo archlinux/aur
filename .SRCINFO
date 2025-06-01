@@ -1,6 +1,6 @@
 pkgbase = fitgirl-ddl-iced-git
 	pkgdesc = fitgirl-repacks.site extractor (iced backend)
-	pkgver = r6.g932dfd4
+	pkgver = r7.g450cf2f
 	pkgrel = 1
 	url = https://github.com/mokurin000/fitgirl-ddl-iced
 	arch = x86_64
