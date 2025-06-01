@@ -15,6 +15,9 @@ post_install() {
 
     ## for details and known limitations.               ##
     ##                                                  ##
+    ## The app may crash when you try to submit your    ##
+    ## tax declaration.                                 ##
+    ##                                                  ##
 
 EOF
 }

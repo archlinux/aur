@@ -1,0 +1,12 @@
+[wiso-steuer-2025]
+# Not using `htmlparser` because the version number is scattered
+# across nodes.
+# Even if nvchecker supported XPath expressions such as `concat`
+# (which it doesn’t because it expects queries to return nodesets),
+# the result would still contain leading zeroes, which we’d have to
+# carve out using regex anyway.
+source = "regex"
+url = "https://www.buhl.de/shop/updates"
+regex = "(?ms)<h3 class=\"pname\">\\s*Steuer 2025\\s*</h3>.*?\\.exe"
+from_pattern = "(?ms).*Version:.*?<span.*?>([0-9]+).0*([0-9]+)</span>.*2025Update..([0-9]+)\\.exe"
+to_pattern = "\\1.\\2.\\3"
