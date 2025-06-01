@@ -8,8 +8,9 @@
 # Contributor: Gregory Anders <aur@gpanders.com>
 
 # shellcheck disable=2034
+declare srcdir pkgdir
 pkgname=neovim-git
-pkgver=0.12.0.r392.g8e8f4523c6
+pkgver=0.12.0.r471.gb77666e6f9
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -44,7 +45,7 @@ optdepends=(
 provides=("neovim=${pkgver}" 'vim-plugin-runtime')
 conflicts=('neovim')
 source=(
-  "${pkgname}.tar.gz"
+  "git+file:///home/chinmay/code/codebases/neovim.git"
   nvimdoc{,.hook}
 )
 sha512sums=('SKIP'
@@ -56,7 +57,7 @@ b2sums=('SKIP'
 options=(!strip)
 
 pkgver() {
-  cd ../repo
+  cd "${srcdir}/neovim" || exit 1
   local nvim_version nvim_version_git
   nvim_version="$(sed -nE '/NVIM_VERSION_/ s/.* +([0-9]+)\).*/\1/p' ./CMakeLists.txt | sed ':b;N;$!bb;s/\n/\./g')"
   nvim_version_git="$(git describe --first-parent --always | sed -E 's/^v[0-9]+.[0-9]+.[0-9]+-//; s/^([0-9]+)-([a-z0-9]+)/\1\.\2/')"
@@ -64,6 +65,7 @@ pkgver() {
 }
 
 build() {
+  cd "${srcdir}/neovim" || exit 1
 # use bundled libutf8proc
   cmake -S cmake.deps -B .deps \
     -G Ninja \
@@ -88,6 +90,7 @@ build() {
 }
 
 check() {
+  cd "${srcdir}/neovim" || exit 1
   build/bin/nvim --version
   build/bin/nvim --headless -u NONE -i NONE -c ':quit'
 }
@@ -96,12 +99,15 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/libalpm/hooks/" nvimdoc.hook
   install -Dt "$pkgdir/usr/share/libalpm/scripts/" nvimdoc
 
+  pushd .
+  cd "${srcdir}/neovim" || exit 1
   DESTDIR="$pkgdir" cmake --install build
 
   install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dm644 runtime/nvim.desktop -t "${pkgdir}/usr/share/applications/"
   install -Dm644 runtime/nvim.appdata.xml -t "${pkgdir}/usr/share/metainfo/"
   install -Dm644 runtime/nvim.png -t "${pkgdir}/usr/share/pixmaps/"
+  popd || exit 1
 
   # Make Arch Vim packages work
   mkdir -p "${pkgdir}"/etc/xdg/nvim
