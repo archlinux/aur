@@ -27,8 +27,9 @@ pkgname="${pkgbase}"
 #_pkgver='5.70';  _dl='8/0100007658/33';_suffix1='m17n';_suffix2='11'
 #_pkgver='5.70';  _dl='8/0100007658/34';_suffix1='m17n';_suffix2='13'
 #_pkgver='5.80';  _dl='8/0100007658/38';_suffix1='m17n';_suffix2='04'
-_pkgver='6.00'; _dl='8/0100007658/42';_suffix1='m17n';_suffix2='08' # more drivers than 8/0100007658/43
+#_pkgver='6.00'; _dl='8/0100007658/42';_suffix1='m17n';_suffix2='08' # more drivers than 8/0100007658/43
 #_pkgver='6.00'; _dl='8/0100007658/43';_suffix1='m17n';_suffix2='03'
+_pkgver='6.10';  _dl='8/0100007658/45';_suffix1='m17n';_suffix2='01'
 pkgver="${_pkgver}.${_suffix2}"
 pkgrel=1
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
@@ -38,7 +39,7 @@ arch=('x86_64' 'aarch64')
 url='https://www.canon-europe.com/support/business/products/office-printers/imagerunner/series/imagerunner-1730i.html'
 license=('GPL-2.0-only' 'MIT' 'custom')
 # parts of the code are GPL or MIT licensed, some parts have a custom license
-depends=('libcups' 'glibc' 'gcc-libs' 'libxml2' 'glib2')
+depends=('libcups' 'glibc' 'gcc-libs' 'libxml2-legacy' 'glib2' 'hicolor-icon-theme')
 optdepends=(
   'libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS LBP devices'
   'jbigkit: solves some cpu hangs'
@@ -54,12 +55,12 @@ makedepends=('jbigkit' 'gzip' 'gtk3')
 provides=("cnrdrvcups-lb=${_pkgver}")
 conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
 conflicts+=('cndrvcups-lb-bin' 'cnrdrvcups-lb')
-options=('!emptydirs' '!strip' '!libtool')
+options=('!emptydirs' '!strip' '!libtool' '!debug')
 source=(
   "https://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz"
 )
-md5sums=('55050290d01fe0834af5318c5118f514')
-sha512sums=('0564075a7321e3005ebd6d3d94a1bee1ed811805007fad348dcc6e6b884eb3790dc6183e1fdedcdf4ba63561264d3fa81f38657b4e7a8cfe08954ec1e61990a7')
+md5sums=('ce4483bddf5a1a0ac3bc1fd8d742ca73')
+sha512sums=('8d993c2f37ee6103db46b4dccce7ca4378b1f0af854d586462a10b23d9faf80d9a8657ea108e4aa8e43a77caf3d3007e3dffb912bfa06b4a642eb73d173bf796')
 
 build() {
   set -u
