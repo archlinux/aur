@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-pyqt6' 'python-requests' 'pyinstaller')
 makedepends=('python' 'python-pyqt6' 'python-requests' 'pyinstaller')
 source=("crl-browser.py" "logo.png")
-sha256sums=('0f1edfd938a395fa0317288e632023a8b979b21f603377d050fd0586b4d8613d' 'SKIP')
+sha256sums=('b082a7ece7520e2a212df37b70fc481efd361d46175bc1693b5dd400bdf76c9d' 'SKIP')
 
 build() {
   pyinstaller --onefile --windowed --name crl-browser --add-data "logo.png:." "${srcdir}/crl-browser.py"
