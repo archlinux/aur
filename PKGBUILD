@@ -5,7 +5,7 @@ pkgbase=corefreq-git
 pkgname=(corefreq-client-git corefreq-server-git corefreq-dkms-git)
 _gitname=CoreFreq
 _pkgbase=${pkgbase%-*}
-pkgver=1.98.1.r0.ge8fe368
+pkgver=2.0.5.r8.gc2e28ed
 pkgrel=1
 pkgdesc="A CPU monitoring software with BIOS like functionalities"
 arch=('x86_64')
@@ -13,12 +13,12 @@ url='https://github.com/cyring/CoreFreq'
 license=('GPL-2.0-only')
 depends=('dkms')
 makedepends=('git')
-source=(git+"${url}.git#branch=develop"
+source=(git+"${url}.git#branch=master"
         'dkms.conf'
         'honor-archlinux-compiler-flags.patch')
 b2sums=('SKIP'
         '6975aef86f4cb483bfa63cc1d3949bbb82ea7182596741db2a1be9f5886d15273798f50b65ff266ad5eb17267a7a1e26f78b26fed9c62ff366716d82bf4c0b30'
-        '76a9ea8eb4cf8505556d2f546d1ca07acdbd70d94710165a8c85cd24786c40afd3c538c9f11c6c898056958768982bb24d70cee658cb52b12e47a369c77b2e5f')
+        '03396a2b3789908b863600da41e4ef7e598ecb54882a16c9154b0d55235646a68d7b11aac0c8f182503a92224cc95641801fab10682465af9e84639598dfc6f6')
 
 pkgver() {
   cd "${_gitname}"

@@ -2,12 +2,12 @@ diff --git a/Makefile b/Makefile
 index 887ffea..4c28b2f 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -7,7 +7,7 @@ COREFREQ_MINOR = 98
- COREFREQ_REV = 5
+@@ -7,7 +7,7 @@ COREFREQ_MINOR = 0
+ COREFREQ_REV = 1
  HW = $(shell uname -m)
  CC ?= cc
--WARNING = -Wall -Wfatal-errors
-+WARNING = -w
+-WARNING ?= -Wall -Wfatal-errors
++WARNING ?= -w
  SYMLINK ?= ln -s
  INSTALL ?= install
  DEPMOD ?= depmod
