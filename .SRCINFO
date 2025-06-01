@@ -1,13 +1,13 @@
 pkgbase = microw8-bin
 	pkgdesc = WebAssembly based fantasy console
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://exoticorn.github.io/microw8/
 	arch = x86_64
 	license = Unlicense
 	provides = microw8
 	conflicts = microw8
-	source = https://github.com/exoticorn/microw8/releases/download/v0.4.0/microw8-0.4.0-linux.tgz
-	sha256sums = 7f50429ed6b8b6e915c7e500b1d82fb0f5c7b5312dfa8bbdf82208ea192ee388
+	source = https://github.com/exoticorn/microw8/releases/download/v0.4.1/microw8-0.4.1-linux.tgz
+	sha256sums = 88780d5f639920ca04dbb7be2b75f729f5505bc130b21e6fd539e9b33bc0f535
 
 pkgname = microw8-bin
