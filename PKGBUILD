@@ -18,6 +18,7 @@ depends=(
   python
   python-gobject
   python-tidalapi
+  org.freedesktop.secrets
 )
 makedepends=(
   blueprint-compiler
