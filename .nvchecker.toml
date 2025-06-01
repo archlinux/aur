@@ -1,4 +1,4 @@
-["webkitgtk-6.0"]
+["webkitgtk-6.0-devel"]
 source = "github"
 github = "WebKit/WebKit"
 use_max_tag = true
