@@ -1,8 +1,8 @@
 # Maintainer: Andrey Novikov <envek@envek.name>
 
 pkgname=ttf-martian-mono-variable
-provides=('ttf-martian-mono=1.0.0')
-pkgver=1.0.0
+provides=('ttf-martian-mono=1.1.0')
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Free and open-source monospaced font from Evil Martians, variable version with all weights and widths in one file.'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/evilmartians/mono'
 license=('OFL')
 source=("https://github.com/evilmartians/mono/releases/download/v$pkgver/martian-mono-$pkgver-variable.zip"
         "https://raw.githubusercontent.com/evilmartians/mono/v$pkgver/OFL.txt")
-sha256sums=('a526fafe51d1afba9d729c788655b0f8ac79ed836482a53211acc3955e1d2d19'
+sha256sums=('b87730975931dc2dbf0129ecf392ccaf8d29f46bc05e995703da4155db510867'
             'ddafd2c3f37ef1d83ef284ca63e159befd3820850c5e9eded14ca52eee92c256')
 
 package() {
