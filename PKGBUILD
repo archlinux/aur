@@ -1,7 +1,7 @@
 # Maintainer: Akatsuki Rui <akiirui@outlook.com>
 
 pkgname="mpv-handler"
-pkgver=0.3.14
+pkgver=0.3.15
 pkgrel=1
 pkgdesc="Play website videos and songs with mpv & yt-dlp."
 arch=("x86_64")
@@ -14,7 +14,7 @@ install="mpv-handler.install"
 url="https://github.com/akiirui/mpv-handler/"
 license=("MIT")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/akiirui/mpv-handler/archive/v$pkgver.tar.gz")
-b2sums=('671f1109972a7cb83ce4a61303aced56cc21f92981b2ceedc838ffbbcce48c2652d8429508fc9631f17ce7d592f06f12c3ff486ee52a3c23f58f35eacfc1e508')
+b2sums=('12c8dd618e4a196e818c549bf8312c92d112f5d70d2d00a5a7a680598f164de3f88b8f0a6218a6467673011ab4a1e461f15a97b3b9551eae8a72a5c37a2fdf14')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
