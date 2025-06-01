@@ -1,15 +1,15 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=prometheus-transmission-exporter-git
 _pkgname=transmission-exporter
-pkgver=0.3.0.r15.ga7872aa
+pkgver=0.3.1.r0.g967a2ee
 pkgrel=1
 pkgdesc="Prometheus exporter for Transmission metrics"
 arch=('x86_64' 'aarch64')
-url="https://github.com/metalmatze/${_pkgname}"
+url="https://github.com/dcelasun/${_pkgname}"
 options=(!lto)
 license=('MIT')
 makedepends=('go>=1.21')
-source=("git+https://github.com/metalmatze/${_pkgname}.git"
+source=("git+https://github.com/dcelasun/${_pkgname}.git#branch=feat/perf-dashboard-improvements"
         "prometheus-${_pkgname}.service"
         "prometheus-${_pkgname}.conf")
 b2sums=('SKIP'
@@ -17,7 +17,10 @@ b2sums=('SKIP'
         '7043095952720077502e4dab9c396086f24a976b272c08faf53f908169ca859e26dfc6eeb3d0fcbe538637d16a405d86e46c7ef71fca89cf25d41d54b15e9b6f')
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 prepare() {

@@ -1,14 +1,14 @@
 pkgbase = prometheus-transmission-exporter-git
 	pkgdesc = Prometheus exporter for Transmission metrics
-	pkgver = 0.3.0.r15.ga7872aa
+	pkgver = 0.3.1.r0.g967a2ee
 	pkgrel = 1
-	url = https://github.com/metalmatze/transmission-exporter
+	url = https://github.com/dcelasun/transmission-exporter
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go>=1.21
 	options = !lto
-	source = git+https://github.com/metalmatze/transmission-exporter.git
+	source = git+https://github.com/dcelasun/transmission-exporter.git#branch=feat/perf-dashboard-improvements
 	source = prometheus-transmission-exporter.service
 	source = prometheus-transmission-exporter.conf
 	b2sums = SKIP
