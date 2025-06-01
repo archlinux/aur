@@ -1,7 +1,7 @@
 # Maintainer: usagi-flow <>
 
 pkgname=evil-helix-bin
-pkgver=20250413
+pkgver=20250601
 pkgrel=1
 pkgdesc="Helix fork with Vim keybindings and more"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('helix')
 conflicts=('helix')
 
 source=("https://github.com/usagi-flow/evil-helix/releases/download/release-$pkgver/evil-helix-amd64-linux.tar.gz")
-sha512sums=("968bdf713d32b188bd10b9b99d4603e524f5cece7655258bd151551ce20cf4442200d0585e89b4bbc3123cb7f1c30bccbd3438a27e31005ccfe256729c59713b")
+sha512sums=("a2b847c112d7ca694e1c51c2e371621ef1ea07d8a8d3454fea4a38c0b4267505ee8ff0e9ac228ee71d78b30bc8016844b10980dbb534bdfa77f7bacb44d7365a")
 
 options=('!debug' '!lto')
 
