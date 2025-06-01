@@ -1,4 +1,4 @@
-pkgname=vimgo
+pkgname=vimgo-bin
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A TUI file manager written in Go, ntegrated with NVIM"
