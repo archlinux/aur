@@ -7,7 +7,7 @@ pkgname=('brave-extension-bitwarden-git'
          'firefox-extension-bitwarden-git'
          'librewolf-extension-bitwarden-git'
          'opera-extension-bitwarden-git')
-pkgver=2025.5.0.r18368.gbeb00a2
+pkgver=2025.5.1.r18415.gf55f315
 pkgrel=1
 pkgdesc='Bitwarden browser extensions'
 arch=('any')
@@ -25,7 +25,7 @@ pkgver() {
 
 prepare() {
   cd clients || exit
-  npm ci
+  npm install
 }
 
 build() {
