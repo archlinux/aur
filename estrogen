@@ -1,2 +1,74 @@
 #!/bin/bash
-echo "mreowww :3"
+
+kittyify() {
+  echo "nya~ $(whoami)"
+}
+
+meow_loop() {
+  echo "how many times should i meow at you? (default: 5)"
+  read -r n
+  [[ -z "$n" ]] && n=5
+  for ((i=1;i<=n;i++)); do
+    echo "meow! ($i/$(printf '%d' "$n"))"
+    sleep 0.3
+  done
+}
+
+blessings() {
+  bless=(
+    "a random catgirl has patted your head"
+    "trans rights are human rights"
+    "ur cute"
+  )
+  msg="${bless[$RANDOM % ${#bless[@]}]}"
+  echo -e "\e[96m$msg\e[0m"
+}
+
+ascii_kitty() {
+  echo "         ／＞　 フ"
+  echo "         | 　_　_| "
+  echo "       ／\` ミ＿xノ"
+  echo "      /　　　　 |"
+  echo "     /　 ヽ　　 ﾉ"
+  echo "     │　　|　|　|"
+  echo "／￣|　　 |　|　|"
+  echo "| (￣ヽ＿_ヽ_)__)"
+  echo "＼二つ"
+}
+
+trans_flag() {
+  local reset='\e[0m'
+  local stripe='                    '  # adjust width here if you want
+
+  echo -e "\e[48;5;81m$stripe$reset"
+  echo -e "\e[48;5;218m$stripe$reset"
+  echo -e "\e[48;5;15m$stripe$reset"
+  echo -e "\e[48;5;218m$stripe$reset"
+  echo -e "\e[48;5;81m$stripe$reset"
+}
+
+
+# main menu
+while :; do
+  echo
+  trans_flag
+  echo "welcome to estrogen!"
+  echo "choose your estrogen action:"
+  echo " 1. kittyify your terminal"
+  echo " 2. get meow loop"
+  echo " 3. receive estrogen blessings"
+  echo " 4. summon ascii kitty"
+  echo " 5. exit"
+  read -rp "> " choice
+
+  case $choice in
+    1) kittyify ;;
+    2) meow_loop ;;
+    3) blessings ;;
+    4) ascii_kitty ;;
+    5) echo "bye bye nya~"; break ;;
+    *) echo "invalid choice nya :(" ;;
+  esac
+  echo
+  sleep 0.6
+done
