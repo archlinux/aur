@@ -1,6 +1,6 @@
 pkgbase = crl-browser
 	pkgdesc = CRL Browser - PyQt6 based Arch-browser packed with PyInstaller.
-	pkgver = 1.0
+	pkgver = 1.2
 	pkgrel = 1
 	arch = any
 	license = MIT
@@ -14,7 +14,9 @@ pkgbase = crl-browser
 	depends = pyinstaller
 	source = crl-browser.py
 	source = logo.png
+	source = crl-browser.desktop
 	sha256sums = b082a7ece7520e2a212df37b70fc481efd361d46175bc1693b5dd400bdf76c9d
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = crl-browser
