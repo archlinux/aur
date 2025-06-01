@@ -4,37 +4,26 @@ pkgname=('abpoa' 'pyabpoa')
 pkgname=abpoa
 pkgdesc="SIMD-based C library for fast partial order alignment. https://dx.doi.org/10.1093/bioinformatics/btaa963"
 _name=abPOA
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/yangao07/abPOA"
 license=('MIT')
-makedepends=('cmake' 'git' 'python-build' 'quilt' 'simde' 'python'
+makedepends=('cmake' 'git' 'python-build' 'simde' 'python'
              'python-installer' 'python-setuptools'
              'python-wheel'
              'cython')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/yangao07/abPOA/archive/refs/tags/v${pkgver}.tar.gz"
-        "baseline.patch"
-        "series"
-        "buildflags.patch"
         "simde.patch"
-        "relax-cython-dep.patch"
         )
 
-b2sums=('6e4a9d4e6ccb6aa6a08aca438dd9eb99551a3de8c0539d237db432557d521edd05d8ff8c9841d27d82a5541e4b32aa5559d18dd2e673a489cc81ad56801b6ada'
-        'ca47e595ff4d1b27e72ccb8ca900ba1524a23444198be4e9a05b8f49688832553d8e035f391f359d5fb3324ba23178ba5ac280069c46121f0c17e6d6050c66e2'
-        '6ef4e3d5f8a37bc103ca2b720bf4a064825b25382d2cb6d99edfeb5388fda821190dd0ebc35e0ab3e1507e4c27f6815f843419bcfbb9c017594165d377c49a02'
-        '531591beb6430dabb045167a96d901af2fc4945a88b17ca7ba369115bf6314b7d4aa1830a3ca9748ed0cf8a5b5e1a48389ac830bc1a1e5276be1b22ad1b8e11e'
-        '59ebf7e79f80bae90dea9b03e649ac21ea31a2759d0ca340ac5060927c758e3c09327d9074db3ad0abab16d2f15293a3dc611c67388d60b94aad61dfd4a12b99'
-        'd7b5054c4a4092e345bf1d893645eb3a3516faf2b0f76f13f022c01ae3deb6b7d4f871ded08d97d6a44372354aeebbfa8cfcc87cec145eb04514c336fc302e27')
+b2sums=('23df57d1f9ff7ec869761d7b275aa911cc7707670096bc3cc500d4255f454c16c62b95e1c6a54b1ad6a31ffdffb6030c3a880b83cddd79d7ebc1aad47b931531'
+        'c1bfc21cdc6ba1b592879069cc883c4bd0d9408faec35710e982ba587f2e2f305ecda29ea565273853cdedfeec956069a561d0b9267b95f7aee8c0213a40e40c')
 
 prepare() {
     # adapt patches from debian to make use SIMDe from Archlinux repo 
-    mkdir -p ${_name}-${pkgver}/patches
-    cp series ${_name}-${pkgver}/patches
-    cp *.patch ${_name}-${pkgver}/patches
-    cd ${_name}-${pkgver}/patches
-    quilt push -a
+    cd ${_name}-${pkgver}
+    patch -p1 < ${srcdir}/simde.patch
 }
 build() {
   cd ${_name}-${pkgver}
