@@ -1,8 +1,9 @@
 pkgbase = cloudtolocalllm
-	pkgdesc = CloudToLocalLLM - Local LLM Management with Monochrome System Tray Icons and Enhanced Linux Desktop Integration
-	pkgver = 2.0.0.r97202bc
+	pkgdesc = Multi-tenant streaming LLM management with system tray integration, platform-specific UI logic, and comprehensive Linux packaging
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/imrightguy/CloudToLocalLLM
+	install = cloudtolocalllm.install
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -11,6 +12,7 @@ pkgbase = cloudtolocalllm
 	makedepends = pkg-config
 	makedepends = clang
 	makedepends = imagemagick
+	makedepends = flutter
 	depends = libayatana-appindicator
 	depends = gtk3
 	depends = glib2
@@ -21,10 +23,13 @@ pkgbase = cloudtolocalllm
 	depends = at-spi2-atk
 	depends = dbus
 	depends = xdg-utils
-	optdepends = ollama: Local LLM server for direct connectivity
+	depends = hicolor-icon-theme
+	optdepends = ollama: Local LLM server for direct desktop connectivity
+	optdepends = firefox: Web browser for authentication flow
+	optdepends = chromium: Alternative web browser for authentication
 	provides = cloudtolocalllm
 	conflicts = cloudtolocalllm-git
-	source = git+https://github.com/imrightguy/CloudToLocalLLM.git
+	source = git+https://github.com/imrightguy/CloudToLocalLLM.git#tag=v2.1.1
 	sha256sums = SKIP
 
 pkgname = cloudtolocalllm

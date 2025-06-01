@@ -1,0 +1,238 @@
+#!/bin/bash
+
+# CloudToLocalLLM AUR Package Installation Script
+# Handles post-installation, post-upgrade, and post-removal tasks
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Logging functions
+log_info() {
+    echo -e "${BLUE}[INFO]${NC} $1"
+}
+
+log_success() {
+    echo -e "${GREEN}[SUCCESS]${NC} $1"
+}
+
+log_warning() {
+    echo -e "${YELLOW}[WARNING]${NC} $1"
+}
+
+log_error() {
+    echo -e "${RED}[ERROR]${NC} $1"
+}
+
+# Update system caches and databases
+update_system_caches() {
+    log_info "Updating system caches and databases..."
+    
+    # Update icon cache
+    if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+        if gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null; then
+            log_success "Icon cache updated successfully"
+        else
+            log_warning "Failed to update icon cache (non-critical)"
+        fi
+    else
+        log_warning "gtk-update-icon-cache not found, skipping icon cache update"
+    fi
+    
+    # Update desktop database
+    if command -v update-desktop-database >/dev/null 2>&1; then
+        if update-desktop-database -q /usr/share/applications 2>/dev/null; then
+            log_success "Desktop database updated successfully"
+        else
+            log_warning "Failed to update desktop database (non-critical)"
+        fi
+    else
+        log_warning "update-desktop-database not found, skipping desktop database update"
+    fi
+    
+    # Update MIME database
+    if command -v update-mime-database >/dev/null 2>&1; then
+        if update-mime-database /usr/share/mime 2>/dev/null; then
+            log_success "MIME database updated successfully"
+        else
+            log_warning "Failed to update MIME database (non-critical)"
+        fi
+    else
+        log_warning "update-mime-database not found, skipping MIME database update"
+    fi
+}
+
+# Check system tray support
+check_system_tray_support() {
+    log_info "Checking system tray support..."
+    
+    # Check for common desktop environments
+    if [[ -n "$KDE_SESSION_VERSION" ]] || [[ "$XDG_CURRENT_DESKTOP" == *"KDE"* ]]; then
+        log_info "KDE Plasma detected - system tray should work with libayatana-appindicator"
+        if ! pacman -Qi libayatana-appindicator >/dev/null 2>&1; then
+            log_warning "libayatana-appindicator not found - system tray may not work properly"
+        fi
+    elif [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
+        log_info "GNOME detected - system tray requires AppIndicator extension"
+        log_info "Install: https://extensions.gnome.org/extension/615/appindicator-support/"
+    elif [[ "$XDG_CURRENT_DESKTOP" == *"XFCE"* ]]; then
+        log_info "XFCE detected - system tray should work natively"
+    elif [[ "$XDG_CURRENT_DESKTOP" == *"i3"* ]] || [[ "$XDG_CURRENT_DESKTOP" == *"sway"* ]]; then
+        log_info "Tiling window manager detected - system tray support varies"
+        log_info "Consider using a status bar with system tray support (e.g., waybar, polybar)"
+    else
+        log_info "Desktop environment: ${XDG_CURRENT_DESKTOP:-unknown}"
+        log_info "System tray support depends on your desktop environment"
+    fi
+}
+
+# Display installation information
+display_installation_info() {
+    echo
+    echo "=== CloudToLocalLLM Installation Complete ==="
+    echo
+    log_success "CloudToLocalLLM has been installed successfully!"
+    echo
+    echo "Getting Started:"
+    echo "  • Launch from applications menu: 'CloudToLocalLLM'"
+    echo "  • Or run from terminal: 'cloudtolocalllm'"
+    echo "  • The application will minimize to system tray by default"
+    echo
+    echo "Key Features:"
+    echo "  • Multi-tenant streaming LLM management"
+    echo "  • System tray integration with monochrome icons"
+    echo "  • Platform-specific UI logic (desktop vs web)"
+    echo "  • Secure authentication and user isolation"
+    echo "  • Direct Ollama connectivity for desktop use"
+    echo
+    echo "Configuration:"
+    echo "  • Settings: Access via system tray menu or main interface"
+    echo "  • LLM Provider: Configure in Settings → LLM Provider Settings"
+    echo "  • System Tray: Right-click tray icon for context menu"
+    echo
+    echo "For Ollama Integration:"
+    echo "  • Install Ollama: 'yay -S ollama' or from https://ollama.ai"
+    echo "  • Start Ollama service: 'sudo systemctl enable --now ollama'"
+    echo "  • Test connection in CloudToLocalLLM settings"
+    echo
+    echo "Troubleshooting:"
+    echo "  • System tray not visible: Check desktop environment compatibility"
+    echo "  • Connection issues: Verify Ollama is running on localhost:11434"
+    echo "  • Authentication problems: Check internet connection for web features"
+    echo
+    echo "Documentation: https://github.com/imrightguy/CloudToLocalLLM"
+    echo "Issues: https://github.com/imrightguy/CloudToLocalLLM/issues"
+    echo
+}
+
+# Display upgrade information
+display_upgrade_info() {
+    echo
+    echo "=== CloudToLocalLLM Upgrade Complete ==="
+    echo
+    log_success "CloudToLocalLLM has been upgraded successfully!"
+    echo
+    echo "What's New in This Version:"
+    echo "  • Enhanced UI restructuring with dedicated LLM provider settings"
+    echo "  • Platform-specific connection logic (web proxy vs direct desktop)"
+    echo "  • Professional 'Coming Soon' placeholders for cloud features"
+    echo "  • Improved system tray integration with monochrome icons"
+    echo "  • Comprehensive Linux packaging pipeline"
+    echo "  • Zero deprecation warnings with tray_manager fixes"
+    echo
+    echo "Important Changes:"
+    echo "  • Ollama testing moved to Settings → LLM Provider Settings"
+    echo "  • Cloud sync features temporarily disabled (coming soon)"
+    echo "  • Enhanced cross-platform compatibility"
+    echo
+    echo "If you experience any issues after the upgrade:"
+    echo "  • Restart the application"
+    echo "  • Check Settings → LLM Provider Settings for new configuration options"
+    echo "  • Report issues: https://github.com/imrightguy/CloudToLocalLLM/issues"
+    echo
+}
+
+# Post-installation hook
+post_install() {
+    update_system_caches
+    check_system_tray_support
+    display_installation_info
+}
+
+# Post-upgrade hook
+post_upgrade() {
+    update_system_caches
+    check_system_tray_support
+    display_upgrade_info
+}
+
+# Pre-removal hook
+pre_remove() {
+    log_info "Preparing to remove CloudToLocalLLM..."
+    
+    # Kill any running instances
+    if pgrep -f cloudtolocalllm >/dev/null 2>&1; then
+        log_info "Stopping running CloudToLocalLLM instances..."
+        pkill -f cloudtolocalllm 2>/dev/null || true
+        sleep 2
+        
+        # Force kill if still running
+        if pgrep -f cloudtolocalllm >/dev/null 2>&1; then
+            log_warning "Force stopping CloudToLocalLLM instances..."
+            pkill -9 -f cloudtolocalllm 2>/dev/null || true
+        fi
+    fi
+    
+    log_info "CloudToLocalLLM processes stopped"
+}
+
+# Post-removal hook
+post_remove() {
+    log_info "Cleaning up after CloudToLocalLLM removal..."
+    
+    # Update system caches
+    update_system_caches
+    
+    # Note about user data
+    echo
+    echo "=== CloudToLocalLLM Removal Complete ==="
+    echo
+    log_info "CloudToLocalLLM has been removed from your system"
+    echo
+    echo "User Data:"
+    echo "  • Configuration files may remain in ~/.config/cloudtolocalllm/"
+    echo "  • User data may remain in ~/.local/share/cloudtolocalllm/"
+    echo "  • Remove manually if desired: rm -rf ~/.config/cloudtolocalllm ~/.local/share/cloudtolocalllm"
+    echo
+    echo "Thank you for using CloudToLocalLLM!"
+    echo
+}
+
+# Handle different installation phases
+case "$1" in
+    configure)
+        # This is called during package installation
+        post_install
+        ;;
+    upgrade)
+        # This is called during package upgrade
+        post_upgrade
+        ;;
+    remove)
+        # This is called before package removal
+        pre_remove
+        ;;
+    purge)
+        # This is called after package removal
+        post_remove
+        ;;
+    *)
+        # Default case - treat as installation
+        post_install
+        ;;
+esac
+
+exit 0

@@ -1,18 +1,18 @@
 [Desktop Entry]
-Version=1.0
+Version=2.1.0
 Type=Application
 Name=CloudToLocalLLM
-GenericName=Local LLM Management
-Comment=Manage and interact with local Large Language Models with system tray integration
+GenericName=Multi-tenant Streaming LLM Management
+Comment=Multi-tenant streaming LLM management with system tray integration, platform-specific UI logic, and comprehensive Linux packaging
 Exec=cloudtolocalllm
 Icon=cloudtolocalllm
 Terminal=false
-Categories=Development;Utility;Network;
-Keywords=LLM;AI;Ollama;Chat;Machine Learning;
+Categories=Development;Utility;Network;Chat;Office;
+Keywords=LLM;AI;Ollama;Chat;Machine Learning;Streaming;Multi-tenant;System Tray;
 StartupNotify=true
 StartupWMClass=cloudtolocalllm
-MimeType=application/x-ollama-model;
-Actions=ShowWindow;HideToTray;
+MimeType=application/x-cloudtolocalllm;application/x-ollama-model;
+Actions=ShowWindow;HideToTray;Settings;
 
 [Desktop Action ShowWindow]
 Name=Show Window
@@ -21,3 +21,7 @@ Exec=cloudtolocalllm --show
 [Desktop Action HideToTray]
 Name=Hide to System Tray
 Exec=cloudtolocalllm --hide
+
+[Desktop Action Settings]
+Name=Open Settings
+Exec=cloudtolocalllm --settings
