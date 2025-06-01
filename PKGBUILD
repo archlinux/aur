@@ -39,7 +39,7 @@ package() {
     ln -s "/opt/${_pkgname_ucfirst}/${_appimage_unversioned}" "${pkgdir}/usr/bin/${pkgname}"
 
     # Modify and install .desktop file
-    sed -i "s/Exec=Immersed/Exec=${pkgname}/" "${srcdir}/squashfs-root/${_pkgname_ucfirst}.desktop"
+    sed -i "s/^Exec=.*/Exec=${pkgname}/" "${srcdir}/squashfs-root/${_pkgname_ucfirst}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname_ucfirst}.desktop" "${pkgdir}/usr/share/applications/${_pkgname_ucfirst}.desktop"
 
     # Install icon
