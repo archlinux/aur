@@ -8,14 +8,14 @@ url="https://github.com/reim-developer/zclipboard "
 license=('GPL-3.0')
 depends=('qt6-base' 'libnotify')
 makedepends=('cmake' 'make' 'clang')
-source=("https://github.com/reim-developer/zclipboard/archive/v${pkgver}.tar.gz")
+source=("https://github.com/reim-developer/zClipboard/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 release_flags="-DCMAKE_BUILD_TYPE=Release"
 opt_flags="-O3 -march=native -flto -funroll-loops -fomit-frame-pointer -fstrict-aliasing -ftree-vectorize -fvisibility=hidden"
 nproc=$(nproc)
 
 build() {
-  cd "$srcdir/zClipboard-$pkgver" || exit 
+  cd "$srcdir/zclipboard-$pkgver" || exit 
 
   mkdir -p build && cd build || exit
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
