@@ -1,6 +1,6 @@
 pkgname=sudo-rs-symlink
 pkgver=0.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="(Dangerous) Swap sudo with sudo-rs"
 arch=(any)
 url="https://github.com/trifectatechfoundation/sudo-rs"
