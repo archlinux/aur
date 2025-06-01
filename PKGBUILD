@@ -1,7 +1,7 @@
 #Maintainer: Dråfølin <derg@drafolin.ch>
 
 pkgname=high-tide-git
-pkgver=r390.e8c550e
+pkgver=r425.75acb17
 pkgrel=1
 pkgdesc="Linux client for TIDAL streaming service"
 url="https://github.com/Nokse22/high-tide"
@@ -17,6 +17,7 @@ depends=(
   hicolor-icon-theme
   libadwaita
   libsecret
+  org.freedesktop.secrets
   python
   python-gobject
   python-tidalapi

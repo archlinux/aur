@@ -15,6 +15,7 @@ pkgbase = high-tide-git
 	depends = hicolor-icon-theme
 	depends = libadwaita
 	depends = libsecret
+	depends = org.freedesktop.secrets
 	depends = python
 	depends = python-gobject
 	depends = python-tidalapi
