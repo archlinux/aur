@@ -1,12 +1,12 @@
 pkgbase = chatgqt
 	pkgdesc = A simple ChatGPT Webview Client based on QT
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPLv3
 	depends = python-pyqt6-webengine
 	depends = python-dbus
 	source = ChatGQT.tar.gz
-	sha256sums = 437d09370e0d4453060ea5451c570dda235cd2c96c315038abed27508680ed55
+	sha256sums = 23eacc644e2d08969b7c4bb9c9d1b14351d553565f6946bd16fb7132fe6caf12
 
 pkgname = chatgqt
