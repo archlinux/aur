@@ -1,12 +1,12 @@
 # Maintainer: Aayush Kumar <aayush214.kumar@gmail.com>
 pkgname=torrcli
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A cli based torrent client built with libtorrent"
 arch=('x86_64')
 url="https://github.com/aayushkdev/torrcli"
 license=('MIT')
-depends=('python' 'python-pip' 'libtorrent-rasterbar' 'python-rich' 'python-appdirs' 'systemd')
+depends=('python' 'python-pip' 'libtorrent-rasterbar' 'python-rich' 'systemd')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 install="torrcli.install"
 source=(
@@ -26,6 +26,7 @@ package() {
     cd "$srcdir/${pkgname}-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    # Install systemd service file
     install -Dm644 "$srcdir/torrcli.service" "$pkgdir/usr/lib/systemd/system/torrcli.service"
+
+    install -Dm644 torrcli.conf.example "$pkgdir/usr/share/torrcli/torrcli.conf.example"
 }

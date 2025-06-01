@@ -1,0 +1,131 @@
+# ============================
+# TorrCLI Configuration File
+# ============================
+
+[general]
+# Path to the UNIX socket used for daemon communication
+socket_path = /tmp/torrcli_daemon.sock
+
+# File to store the daemon PID
+pid_file = /tmp/torrcli_daemon.pid
+
+# Directory to store torrent data, .torrent files, and fastresume files
+data_dir = ~/.local/share/torrcli
+
+# Default directory where downloaded files are saved
+default_save_path = ~/Downloads
+
+# Logging level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+log_level = INFO
+
+
+[network]
+# Port range for incoming connections (format: start-end)
+listen_interfaces = 0.0.0.0:6881
+
+# Enable Distributed Hash Table (DHT) for peer discovery
+dht_enabled = true
+
+# Enable Local Service Discovery (LSD) to find peers on local network
+lsd_enabled = false
+
+# Enable UPnP for automatic port forwarding on routers
+upnp_enabled = true
+
+# Enable NAT-PMP for automatic port forwarding
+natpmp_enabled = true
+
+# Enable outgoing uTP connections (micro transport protocol)
+outgoing_utp_enabled = true
+
+# Enable incoming uTP connections
+incoming_utp_enabled = true
+
+# Enable outgoing TCP connections
+outgoing_tcp_enabled = true
+
+# Enable incoming TCP connections
+incoming_tcp_enabled = true
+
+
+[limits]
+# Maximum download speed in bytes per second (0 = unlimited)
+max_download_speed = 0
+
+# Maximum upload speed in bytes per second (0 = unlimited)
+max_upload_speed = 0
+
+# Maximum number of torrents allowed to download simultaneously
+max_active_downloads = 3
+
+# Maximum number of torrents allowed to upload simultaneously
+max_active_seeds = 5
+
+# Minimum seeding ratio before auto-stopping seeding (e.g. 200 = seed until uploaded is 2x downloaded; value is in percentage)
+share_ratio_limit = 200
+
+
+[resume]
+# Auto-start torrents from previous session on daemon startup
+auto_start = true
+
+# Interval in seconds to save resume data (used for continuing downloads after restart)
+save_resume_data_interval = 300
+
+
+[security]
+# Hides user-agent, IP, and disables features that may leak identity (may break some trackers)
+anonymous_mode = false
+
+# Ensures secure (SSL) trackers have valid certificates
+validate_https_trackers = true
+
+# Hides actual infohash during DHT lookups
+dht_privacy_lookups = true
+
+# Avoids DHT contacts with private/reserved IPs
+dht_ignore_dark_internet = true
+
+# Blocks tracker/web seed requests to localhost or internal IPs
+ssrf_mitigation = true
+
+# Allow outgoing encrypted connections (0=forced, 1=enabled, 2=disabled)
+out_enc_policy = 1
+
+# Allow incoming encrypted connections
+in_enc_policy = 1
+
+# Support both plaintext and RC4 (1=plaintext, 2=rc4, 3=both)
+allowed_enc_level = 3
+
+# Prefer RC4 over plaintext (might be less compatible)
+prefer_rc4 = false
+
+
+[proxy]
+# 0 = Disabled, 1 = SOCKS5, 2 = SOCKS5 with auth, 3 = HTTP, 4 = HTTP with auth
+proxy_type = 0
+
+# Address of your proxy (e.g., local Tor/SOCKS5 server)
+proxy_hostname = 127.0.0.1
+
+# Port on which the proxy server is listening
+proxy_port = 9050
+
+# Username for authenticated proxies (used only if proxy_type requires it)
+proxy_username =
+
+# Password for authenticated proxies
+proxy_password =
+
+# Resolve hostnames through the proxy server to prevent DNS leaks
+proxy_hostnames = true
+
+# Route all peer connections through the proxy
+proxy_peer_connections = true
+
+# Route all tracker connections through the proxy
+proxy_tracker_connections = true
+
+# Force all BitTorrent traffic (including DHT, LSD, PEX) to go through proxy
+force_proxy = true

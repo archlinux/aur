@@ -1,4 +1,7 @@
 post_install() {
+    local user
+    user=$(logname)
+    sed -i "s/__USER__/$user/" /usr/lib/systemd/system/torrcli.service
     echo "Enabling and starting torrcli service..."
     systemctl daemon-reload
     systemctl enable --now torrcli.service
