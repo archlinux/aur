@@ -1,7 +1,7 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-git
 pkgver=5.70.1.r3.gd557e2d
-pkgrel=1
+pkgrel=2
 pkgdesc="qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems."
 arch=("any")
 url="https://github.com/Zweih/qp"
@@ -48,4 +48,19 @@ package() {
 
   install -Dm644 "${srcdir}/packaging/hooks/pacman/update-qp-cache.hook" \
     "$pkgdir/usr/share/libalpm/hooks/update-qp-cache.hook"
+}
+
+# Fix permission issues from previous version
+post_upgrade() {
+  for user_home in /home/*; do
+    if [ -d "$user_home/.cache/query-packages" ]; then
+      user=$(basename "$user_home")
+      if [ "$(stat -c %U "$user_home/.cache/query-packages")" = "root" ]; then
+        rm -rf "$user_home/.cache/query-packages"
+        echo "Cleaned up root-owned qp cache for user $user"
+      fi
+    fi
+  done
+
+  rm -rf /root/.cache/query-packages 2>/dev/null || true
 }
