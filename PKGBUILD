@@ -12,7 +12,7 @@ license=('GPL-3.0-only')
 depends=('yandex-disk')
 makedepends=('go' 'git' 'gendesk')
 conflicts=('yd-go' 'yd-go-bin' 'yd-go-git-bin' 'yd-go-bin-git')
-source=("git+https://github.com/slytomcat/yd-go.git")
+source=("git+https://github.com/slytomcat/yd-go.git#branch=${pkgver}")
 sha256sums=('SKIP')
 
 options=(!debug)
@@ -26,7 +26,7 @@ prepare() {
 		--categories="Network; FileTools; Monitor" \
 		--icon "/usr/share/pixmaps/${_pkgname}.png" \
 		--exec "/usr/bin/${_pkgname}"
-		# Desktop entry spec.:https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html 
+		# Desktop entry spec.:https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html
 		# Categories spec.: https://specifications.freedesktop.org/menu-spec/menu-spec-1.1.html#category-registry
 
 	mkdir -p "${srcdir}/${_pkgname}/build"
@@ -44,13 +44,13 @@ build() {
 		export CGO_CFLAGS="${CFLAGS}"
 		export CGO_CPPFLAGS="${CPPFLAGS}"
 		export CGO_CXXFLAGS="${CXXFLAGS}"
-		export CGO_ENABLED=0 
+		export CGO_ENABLED=0
 		go build \
 			-buildvcs=false \
 			-trimpath \
 			-ldflags "-s -w -X main.version=v.${pkgver}" \
 			-o build .
-	
+
 	#UPX not working with strip (set by defalut) option in PKGBUILD https://bbs.archlinux.org/viewtopic.php?id=235637
 	#If you need UPX, set !strip in options()
 	#echo "Compress yd-go..."

@@ -14,7 +14,7 @@ pkgbase = yd-go-git
 	conflicts = yd-go-git-bin
 	conflicts = yd-go-bin-git
 	options = !debug
-	source = git+https://github.com/slytomcat/yd-go.git
+	source = git+https://github.com/slytomcat/yd-go.git#branch=master.04cd23b
 	sha256sums = SKIP
 
 pkgname = yd-go-git
