@@ -13,7 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 OPTIONS=(!debug)
 source=("${_pkgname}-${pkgver}.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_bili-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
-	"https://github.com/kingwingfly/fav/raw/v${pkgver}/LICENSE")
+	"LICENSE-${pkgver}::$url/raw/v${pkgver}/LICENSE")
 sha256sums=('cc0ec41fab7db2f23454a50cc9dfa4eb8b8a61fc1a5a6aab68f9430008a5d596'
             '54e2d4c99f8d0eacb6dd9cae4c1bddce86fe7926d29cdb0ceded4d3797df0d65')
 
@@ -29,5 +29,5 @@ package() {
 	install -Dm644 _${_pkgname} "$pkgdir"/usr/share/zsh/site-functions/_${_pkgname}
 
 	# license
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 LICENSE-${pkgver} "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }

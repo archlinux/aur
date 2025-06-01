@@ -9,7 +9,7 @@ pkgbase = fav-bin
 	conflicts = fav
 	conflicts = fav-git
 	source = fav-1.0.0.tar.gz::https://github.com/kingwingfly/fav/releases/download/v1.0.0/fav_bili-v1.0.0-x86_64-unknown-linux-gnu.tar.gz
-	source = https://github.com/kingwingfly/fav/raw/v1.0.0/LICENSE
+	source = LICENSE-1.0.0::https://github.com/kingwingfly/fav/raw/v1.0.0/LICENSE
 	sha256sums = cc0ec41fab7db2f23454a50cc9dfa4eb8b8a61fc1a5a6aab68f9430008a5d596
 	sha256sums = 54e2d4c99f8d0eacb6dd9cae4c1bddce86fe7926d29cdb0ceded4d3797df0d65
 
