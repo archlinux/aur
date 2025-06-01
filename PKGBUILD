@@ -3,7 +3,7 @@
 _pkgbase=yt6801
 pkgname=yt6801-dkms
 pkgver=1.0.30
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel module for Motorcomm YT6801 ethernet controller (DKMS)"
 arch=('x86_64')
 url="https://www.motor-comm.com/product/ethernet-control-chip"
@@ -14,7 +14,7 @@ source=('https://www.motor-comm.com/Public/Uploads/uploadfile/files/20250430/yt6
         'drop-flags.patch')
 sha256sums=('3dd7173a935da10fb9dfa537fd2bf4d6d3ae90c1d12e8091054667fb911bd6c4'
             '3a3ba74d3a22ac8e1c1cf6c8b28fe4df1c84ad589dd1c5b537fc84a7e1902f93'
-            '335ab98a645a6e55428a5110206cbee98eb2030af8b578022865a1cdac4658cc')
+            '814c6a121b392f512ec4c8898dd9f6c50ae3ff9d946bc1d115135fa6f5c6a897')
 
 prepare() {
   cd ${srcdir}
