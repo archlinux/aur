@@ -1,6 +1,6 @@
 pkgbase = estrogen
 	pkgdesc = a silly little script that meows at you because estrogen is powerful
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	arch = any
 	license = WTFPL

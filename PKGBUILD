@@ -1,5 +1,5 @@
 pkgname=estrogen
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="a silly little script that meows at you because estrogen is powerful"
 arch=('any')
