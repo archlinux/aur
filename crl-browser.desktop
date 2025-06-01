@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=CRL Browser
+Comment=PyQt6 based CRL-Browser minimalist browsing.
+Exec=/usr/bin/crl-browser
+Icon=/usr/share/icons/hicolor/256x256/apps/crl-browser.png
+Terminal=false
+Categories=Network;WebBrowser;
