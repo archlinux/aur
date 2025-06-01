@@ -1,7 +1,7 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=kh-melonmix-bin
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A fork of MelonDS, focused on remastering Kingdom Hearts: 358/2 Days and Re:coded"
 arch=(x86_64)
@@ -35,16 +35,10 @@ validpgpkeys=()
 
  package() {
 # making all the directories
-mkdir $pkgdir/opt
-mkdir $pkgdir/opt/Kingdom\ Hearts\ Melon\ Mix
-mkdir $pkgdir/usr
-mkdir $pkgdir/usr/share
-mkdir $pkgdir/usr/bin
-mkdir $pkgdir/usr/share/applications
-mkdir $pkgdir/usr/share/icons
-mkdir $pkgdir/usr/share/icons/hicolor
-mkdir $pkgdir/usr/share/icons/hicolor/256x256
-mkdir $pkgdir/usr/share/icons/hicolor/256x256/apps
+mkdir -p $pkgdir/opt/Kingdom\ Hearts\ Melon\ Mix
+mkdir -p $pkgdir/usr/bin
+mkdir -p $pkgdir/usr/share/applications
+mkdir -p $pkgdir/usr/share/icons/hicolor/256x256/apps
 
 # move everything (and I mean EVERYTHING) to $pkgdir/opt/Kingdom Hearts Melon Mix
 cd $srcdir
