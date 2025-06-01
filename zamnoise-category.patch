@@ -1,0 +1,14 @@
+diff --git a/plugins/ZamNoise/DistrhoPluginInfo.h b/plugins/ZamNoise/DistrhoPluginInfo.h
+index 303b768..15afad0 100644
+--- a/plugins/ZamNoise/DistrhoPluginInfo.h
++++ b/plugins/ZamNoise/DistrhoPluginInfo.h
+@@ -40,6 +40,9 @@
+ 
+ #define DISTRHO_PLUGIN_URI     "urn:zamaudio:ZamNoise"
+ #define DISTRHO_PLUGIN_CLAP_ID "com.zamaudio.ZamNoise"
++#define DISTRHO_PLUGIN_LV2_CATEGORY    "lv2:FilterPlugin"
++#define DISTRHO_PLUGIN_VST3_CATEGORIES "Fx|Filter|Mono"
++#define DISTRHO_PLUGIN_CLAP_FEATURES   "audio-effect", "restoration", "mono"
+ 
+ #define DPF_VST3_DONT_USE_BRAND_ID   1
+ #define DISTRHO_PLUGIN_BRAND_ID ZamP
