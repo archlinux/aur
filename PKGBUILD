@@ -1,8 +1,9 @@
 # Maintainer: Shiina Rikka <rikka@rikka.im>
 
+_pkgbase=yt6801
 pkgname=yt6801-dkms
 pkgver=1.0.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for Motorcomm YT6801 ethernet controller (DKMS)"
 arch=('x86_64')
 url="https://www.motor-comm.com/product/ethernet-control-chip"
@@ -22,11 +23,11 @@ prepare() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/src/${pkgname}
+  mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
   
-  install -Dm644 ${srcdir}/src/*.c ${pkgdir}/usr/src/${pkgname}/
-  install -Dm644 ${srcdir}/src/*.h ${pkgdir}/usr/src/${pkgname}/
-  install -Dm644 ${srcdir}/src/Makefile ${pkgdir}/usr/src/${pkgname}/
-  install -Dm644 ${srcdir}/src/dkms.conf ${pkgdir}/usr/src/${pkgname}/
-  install -Dm644 ${srcdir}/src/motorcomm ${pkgdir}/usr/src/${pkgname}/
+  install -Dm644 ${srcdir}/src/*.c ${pkgdir}/usr/src/${_pkgbase}-${pkgver}/
+  install -Dm644 ${srcdir}/src/*.h ${pkgdir}/usr/src/${_pkgbase}-${pkgver}/
+  install -Dm644 ${srcdir}/src/Makefile ${pkgdir}/usr/src/${_pkgbase}-${pkgver}/
+  install -Dm644 ${srcdir}/src/dkms.conf ${pkgdir}/usr/src/${_pkgbase}-${pkgver}/
+  install -Dm644 ${srcdir}/src/motorcomm ${pkgdir}/usr/src/${_pkgbase}-${pkgver}/
 }
