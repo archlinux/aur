@@ -4,7 +4,7 @@
 pkgname=crl-browser
 pkgver=1.2
 pkgrel=1
-pkgdesc="CRL Browser - PyQt6 based Arch-browser packed with PyInstaller."
+pkgdesc="CRL Browser - PyQt6 based CRL-Browser minimalist browsing"
 arch=('any')
 license=('MIT')
 depends=('python' 'python-pyqt6' 'python-requests' 'pyinstaller')
