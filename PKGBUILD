@@ -9,8 +9,8 @@
 
 pkgbase=glibc-eac
 pkgname=(glibc-eac lib32-glibc-eac glibc-eac-locales)
-pkgver=2.41+r9+ga900dbaf70f0
-_commit=a900dbaf70f0a957f56b52caa69173592ad7596e
+pkgver=2.41+r48+g5cb575ca9a3d
+_commit=5cb575ca9a3da045bc3e2f0dda81ad5804bde1e6
 pkgrel=1
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'
@@ -28,7 +28,7 @@ source=("git+https://sourceware.org/git/glibc.git#commit=${_commit}"
 )
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
-b2sums=('c1b5cc81db71ce62c14864c74c0df39f7f5b2db503a179da79fc5a40a434051f8fc25754f9937a056228e92cf2857c98a98432dc145c0ef646d22c7cb59fd256'
+b2sums=('02359e60590156f471d82bb97eb9e076a53edf460ce04a455adc5dd1746b25cb4e641aa6b9d43f642ca57018331aee1ad49feed89bcf23f5defc7b1852c1ad61'
         'c859bf2dfd361754c9e3bbd89f10de31f8e81fd95dc67b77d10cb44e23834b096ba3caa65fbc1bd655a8696c6450dfd5a096c476b3abf5c7e125123f97ae1a72'
         '04fbb3b0b28705f41ccc6c15ed5532faf0105370f22133a2b49867e790df0491f5a1255220ff6ebab91a462f088d0cf299491b3eb8ea53534cb8638a213e46e3'
         '7c265e6d36a5c0dff127093580827d15519b6c7205c2e1300e82f0fb5b9dd00b6accb40c56581f18179c4fbbc95bd2bf1b900ace867a83accde0969f7b609f8a'
