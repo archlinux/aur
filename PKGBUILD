@@ -2,7 +2,7 @@
 
 _pkgname=ansible_creator
 pkgname=ansible-creator
-pkgver=24.11.0
+pkgver=25.5.0
 pkgrel=1
 pkgdesc="A CLI tool for scaffolding all your Ansible Content."
 arch=('any')
@@ -14,8 +14,8 @@ checkdepends=('python-pytest')
 optdepends=('ansible: check official ansible collections')
 provides=('ansible-creator')
 conflicts=('ansible-creator')
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/6c/4e/0e9075f3a4eedcc2a8e87fc126da033a9ddb797279d93ee7132fd87fba6b/ansible_creator-24.11.0.tar.gz")
-sha256sums=('21f0baa7a37798f2b3c34a17e1c51873f95a33e8e4d2a68c66e39fd8bd33399f')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/d9/e3/923f5c8d6a26a13b2d6a3b640db1923708bd439c5fc368677d61e056e5e2/ansible_creator-25.5.0.tar.gz")
+sha256sums=('cb050df5af0fa398a43464fcde8e761170e1cf12131c014dc4bc0c8f64f80632')
 
 build() {
   ln -sf "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${pkgname}-${pkgver}"
