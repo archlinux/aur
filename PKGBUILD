@@ -2,7 +2,7 @@
 
 _pkgname="candy"
 pkgname="${_pkgname}-bin"
-pkgver=6.0.2
+pkgver=6.0.4
 pkgrel=1
 pkgdesc="A simple networking tool"
 arch=('aarch64' 'armv7h' 'loong64' 'riscv64' 'x86_64')
@@ -21,11 +21,11 @@ source_riscv64=("${_pkgsrc}-riscv64.tar.gz::${url}/releases/download/v${pkgver}/
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}+linux_x86_64.tar.gz")
 sha256sums=('80e9eace4c80dc740e9d17d64ce2cc5f9b8ca41b057bfe8c2c31e849f8f7aeb5'
             '7abc3e1f887be8cf25e77d95486a22a7b6d62f368e864785d995138db7220dcf')
-sha256sums_aarch64=('fb6159b5eb160992766c8f2d733831b87c93cb5980c4a36503df6454a7d0ebae')
-sha256sums_armv7h=('b3924f0635de7088b4918e6602e6916b0a2e926116d939eefdc1728374ea2657')
-sha256sums_loong64=('dc9271fd68d0721e780c29b73b059f4a967372ed1ecd7db40f224532b4fa5aae')
-sha256sums_riscv64=('2bc2cc1b498069ca631b82cf5627d44623eb25875a5af7a91e22a2af5e1bb3c4')
-sha256sums_x86_64=('5167bc046b0c05b830b52fd343e250aebae38f165c95c289501b8fd853737aa2')
+sha256sums_aarch64=('5d38d801d2f551aee9b54f2fae1df4c0caa9aa93775b11d66782f55843119df4')
+sha256sums_armv7h=('cd462cf49815953c3761e1b00243508d47e52113e086969291af5de1e87228d0')
+sha256sums_loong64=('baba65a85ac07b5689422d53109caf708f99499b972b2eab18801b7e5c2af79a')
+sha256sums_riscv64=('1eecbd1817077fc2af488e4381f560e0526c966f2f19ec15b9e58b8468c58a04')
+sha256sums_x86_64=('29ae1a776c6f5deeba285c294893222c056f8fb0af8cc17e19be749674ec3c0a')
 
 package() {
   cd "${srcdir}"
