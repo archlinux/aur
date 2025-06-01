@@ -7,7 +7,7 @@ pkgname=sway-rc
 _pkgname=${pkgname%-rc}
 _pkgver=1.11-rc4
 pkgver=${_pkgver/-/}
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (pre-release version)'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -23,7 +23,7 @@ depends=(
   'libpixman-1.so'
   'libudev.so'
   'libwayland-server.so'
-  'wlroots'
+  'wlroots0.19'
   'libxcb'
   'libxkbcommon.so'
   'pango'

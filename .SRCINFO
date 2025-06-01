@@ -1,7 +1,7 @@
 pkgbase = sway-rc
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager (pre-release version)
 	pkgver = 1.11rc4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://swaywm.org/
 	install = sway.install
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = sway-rc
 	depends = libpixman-1.so
 	depends = libudev.so
 	depends = libwayland-server.so
-	depends = wlroots
+	depends = wlroots0.19
 	depends = libxcb
 	depends = libxkbcommon.so
 	depends = pango
