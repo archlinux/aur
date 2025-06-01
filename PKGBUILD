@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-bin
-pkgver=5.70.1
+pkgver=5.70.2
 pkgrel=1
 pkgdesc="qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems."
 arch=("x86_64" "aarch64" "armv7h")
@@ -17,9 +17,9 @@ source_x86_64+=("${_release_url}-x86_64${_ext}")
 source_aarch64+=("${_release_url}-aarch64${_ext}")
 source_armv7h+=("${_release_url}-armv7h${_ext}")
 
-sha256sums_x86_64=("a6fa6c9cd9b63f293cac74ad0a79798803c7cbb7c252b6595d5738be26242e1e")
-sha256sums_aarch64=("9fafb18946f41e64b803813c462b549f844e0c61a9628a942b9d31e5b7c732ed")
-sha256sums_armv7h=("071787ca2cd7074873e30b2bb72b808a2dca35012e8077b1151cafcfc5905ce4")
+sha256sums_x86_64=("580763776d7d83274c84af066b30584d003c00ac159bf6d4dcc355e9f0a80b75")
+sha256sums_aarch64=("39ee0b1b525ceb551a909d101bb02475c75b563c5de734123e64696f02464470")
+sha256sums_armv7h=("e024ca5ace0a4376e6c78fb4bd5666005ba4f50f08f33d1e8f1b5c1d9dcfa67a")
 
 package() {
   tar -xzf "$srcdir/qp-v${pkgver}-${CARCH}${_ext}" -C "$srcdir"
@@ -30,4 +30,19 @@ package() {
 
   install -Dm644 "update-qp-cache.hook" \
     "$pkgdir/usr/share/libalpm/hooks/update-qp-cache.hook"
+}
+
+# Fix permission issues from previous version
+post_upgrade() {
+  for user_home in /home/*; do
+    if [ -d "$user_home/.cache/query-packages" ]; then
+      user=$(basename "$user_home")
+      if [ "$(stat -c %U "$user_home/.cache/query-packages")" = "root" ]; then
+        rm -rf "$user_home/.cache/query-packages"
+        echo "Cleaned up root-owned qp cache for user $user"
+      fi
+    fi
+  done
+
+  rm -rf /root/.cache/query-packages 2>/dev/null || true
 }
