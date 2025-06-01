@@ -3,14 +3,14 @@
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
 url="https://penpot.app"
 license=('MPL-2.0')
 # penpot is using 19, but archlinux only has 17 and 21. 17 and > 21 doesnt work
 # also jdk is needed and not only jre
-_jdkver="21"
+_jdkver="24"
 makedepends=('clojure' 'git' 'curl' 'npm' 'yarn' 'rsync' 'babashka' 'rustup' 'emscripten' 'emsdk')
 source=(
   https://github.com/penpot/penpot/archive/refs/tags/$pkgver.tar.gz
@@ -41,7 +41,7 @@ build() {
   export RUSTUP_HOME=${srcdir}/.rustup
   export CARGO_HOME=${srcdir}/.cargo
   export RUST_VERSION=1.85.0
-  export JAVA_HOME=/usr/lib/jvm/$(archlinux-java status | grep $_jdkver | head -n 1 | tr -d '[:space:]')/
+  export JAVA_HOME=/usr/lib/jvm/$(archlinux-java status | grep -o "[^ ]*-$_jdkver-[^ ]*" | head -n 1 | tr -d '[:space:]')/
 
   echo "==== BULDING FRONTEND"
   cd "${srcdir}/${_pkgbase}-${pkgver}/frontend"
