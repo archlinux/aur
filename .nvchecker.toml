@@ -1,0 +1,4 @@
+[gtsam]
+source='github'
+github='borglab/gtsam'
+use_latest_release=true
