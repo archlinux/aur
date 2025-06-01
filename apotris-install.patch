@@ -1,8 +1,8 @@
 diff --git a/meson.build b/meson.build
-index 4f7898f..f6f3e94 100644
+index 1bcb424..4d636b6 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -302,6 +302,7 @@ if host_machine.system() != 'gba'
+@@ -363,6 +363,7 @@ if host_machine.system() != 'gba' and host_machine.system() != 'n3ds'
              dependencies : dependencies,
              link_args : link_args,
              win_subsystem : 'windows',
@@ -10,26 +10,41 @@ index 4f7898f..f6f3e94 100644
              install : true
          )
          if host_machine.system() == 'darwin'
-@@ -311,8 +312,7 @@ if host_machine.system() != 'gba'
+@@ -372,9 +373,8 @@ if host_machine.system() != 'gba' and host_machine.system() != 'n3ds'
              install_subdir(audio_dir, install_dir : 'Contents/Resources')
              install_subdir('license', install_dir : 'Contents/Resources')
          else
 -            install_subdir(audio_dir, install_dir : '.')
+-            install_subdir(shaders_dir, install_dir : '.')
 -            install_subdir('license', install_dir : '.')
 +            install_subdir(audio_dir, install_dir : 'share/apotris')
++            install_subdir(shaders_dir, install_dir : 'share/apotris/assets')
          endif
      endif
- else
+ elif host_machine.system() == 'n3ds'
 diff --git a/source/liba_window.cpp b/source/liba_window.cpp
-index 5c05b92..8d44a59 100644
+index 6bbcbd3..1f8ded5 100644
 --- a/source/liba_window.cpp
 +++ b/source/liba_window.cpp
-@@ -85,7 +85,7 @@ void windowInit(){
+@@ -103,7 +103,7 @@ void windowInit() {
  
      refreshWindowSize();
  
 -    loadAudio("");
 +    loadAudio("/usr/share/apotris/");
  
-     nanotime_step_init(&stepper, (uint64_t) (NANOTIME_NSEC_PER_SEC / FPS_TARGET), nanotime_now_max(),nanotime_now,nanotime_sleep);
+     nanotime_step_init(&stepper, (uint64_t)(NANOTIME_NSEC_PER_SEC / FPS_TARGET),
+                        nanotime_now_max(), nanotime_now, nanotime_sleep);
+diff --git a/source/shader.cpp b/source/shader.cpp
+index 5bb2b7e..523580d 100644
+--- a/source/shader.cpp
++++ b/source/shader.cpp
+@@ -328,7 +328,7 @@ static bool hasSuffix(const std::string& s, const std::string& suffix) {
+ }
  
+ std::vector<std::string> findShaders() {
+-    std::string shaderPath = "assets/shaders";
++    std::string shaderPath = "/usr/share/apotris/assets/shaders";
+ 
+     DIR* dir = opendir(shaderPath.c_str());
+     if (!dir) {
