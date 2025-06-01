@@ -2,8 +2,8 @@
 
 _pkgname=gost
 pkgname=gost-v3-bin
-pkgver=3.0.0.20250218
-_ghpkgver=3.0.0-nightly.20250218
+pkgver=3.0.0.20250530
+_ghpkgver=3.0.0-nightly.20250530
 pkgrel=1
 pkgdesc="GO Simple Tunnel - A simple security tunnel"
 arch=('x86_64' 'i386')
@@ -16,8 +16,8 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_ghurl}/releases/download/v${_ghpkgver}/${_pkgname}_${_ghpkgver}_linux_amd64.tar.gz")
 source_i386=("${_ghurl}/releases/download/v${_ghpkgver}/${_pkgname}_${_ghpkgver}_linux_386.tar.gz")
 
-sha256sums_i686=('6f8799122a297fbc95f6f061c337f83e7dca2b76c33cb6cfd3fcb7001d9e76d0')
-sha256sums_x86_64=('88bfb906a07b90ff3716741a8a0c20c76a93850fa60bc9e7a8ecfa4be9384d8b')
+sha256sums_i686=('c9b1bf567efbefe0fa8ea75c29e2c93e5a38eec6cceac5d1e14b30aa5704bd57')
+sha256sums_x86_64=('c5504e0e5999ad12f9ab40c6c4e2eef0b77d2011120c35ad5299c1f7e08c86d6')
 
 package() {
 	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
