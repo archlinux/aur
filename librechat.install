@@ -1,0 +1,86 @@
+readonly RED='\033[0;31m'
+readonly GREEN='\033[0;32m'
+readonly YELLOW='\033[1;33m'
+readonly BLUE='\033[0;34m'
+readonly CYAN='\033[0;36m'
+readonly BOLD='\033[1m'
+readonly NC='\033[0m' # No Color
+print_header() {
+  echo -e "${BOLD}${BLUE}==> $1${NC}"
+}
+print_info() {
+  echo -e "${CYAN}    $1${NC}"
+}
+print_success() {
+  echo -e "${GREEN}✓ $1${NC}"
+}
+print_warning() {
+  echo -e "${YELLOW}⚠ $1${NC}"
+}
+print_command() {
+  echo -e "${BOLD}    $1${NC}"
+}
+post_install() {
+  print_info "Creating LibreChat system user and group..."
+  systemd-sysusers /usr/lib/sysusers.d/librechat.conf
+
+  print_info "Setting ownership of existing files..."
+  chown -R librechat:librechat /usr/lib/librechat
+
+  echo ""
+  print_header "Next Steps"
+  echo ""
+
+  print_info "To start the LibreChat service:"
+  print_command "sudo systemctl start librechat"
+  echo ""
+
+  print_warning "MongoDB Database Required"
+  print_info "LibreChat requires a MongoDB server to function properly."
+  print_info "To install MongoDB locally, choose one of:"
+  print_command "yay -S mongodb-bin    # (binary package)"
+  print_command "yay -S mongodb        # (compile from source)"
+  echo ""
+  print_info "Then enable and start MongoDB:"
+  print_command "sudo systemctl enable --now mongodb.service"
+  echo ""
+
+  print_header "Configuration"
+  echo ""
+  print_info "Configure LibreChat by editing files in:"
+  print_command "/etc/librechat/"
+  echo ""
+
+  print_header "Running as Different User"
+  echo ""
+  print_info "By default, LibreChat runs as the 'librechat' user."
+  print_info "To run it manually as your user, add yourself to the librechat group:"
+  print_command "sudo usermod -aG librechat \"\$(whoami)\""
+  print_info "Then log out and back in, and you can run:"
+  print_command "/usr/bin/librechat-server"
+  echo ""
+}
+
+post_upgrade() {
+  echo ""
+  print_header "LibreChat Upgrade Complete"
+  echo ""
+  post_install
+}
+
+post_remove() {
+  echo ""
+  print_header "LibreChat Removal"
+  echo ""
+
+  if [ -d /usr/lib/librechat ]; then
+    print_warning "Data Directory Preserved"
+    print_info "The directory /usr/lib/librechat still exists and may contain user data."
+    print_info "To completely remove all LibreChat files:"
+    print_command "sudo rm -rf /usr/lib/librechat"
+    echo ""
+  else
+    print_success "LibreChat completely removed"
+    echo ""
+  fi
+}

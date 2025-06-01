@@ -1,0 +1,17 @@
+[Unit]
+Description=LibreChat Server
+After=network.target
+
+[Service]
+Type=simple
+User=librechat
+Group=librechat
+EnvironmentFile=/etc/librechat/librechat.env
+WorkingDirectory=/usr/lib/librechat
+ExecStart=/usr/bin/librechat-server
+Restart=on-failure
+TimeoutStopSec=10
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

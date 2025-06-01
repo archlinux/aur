@@ -1,0 +1,5 @@
+[librechat]
+source='github'
+github='danny-avila/LibreChat'
+use_max_tag=true
+prefix='v'
