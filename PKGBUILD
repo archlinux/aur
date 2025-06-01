@@ -2,8 +2,8 @@
 # Contributor: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=parabolic
-pkgver=2025.5.3
-pkgrel=2
+pkgver=2025.5.5
+pkgrel=1
 pkgdesc="Download web video and audio (GNOME)"
 arch=('x86_64')
 url="https://github.com/NickvisionApps/Parabolic"
@@ -28,7 +28,7 @@ provides=('tube-converter')
 conflicts=('tube-converter')
 replaces=('tube-converter')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('51a4de3cdf191ccfe7a7459ca3f0bc857c83ac00b0f5b3158df26d91cfafd140')
+sha256sums=('7bc52e11df0e63bda40918ba0b305fcecece113c6443a8c7475a348b8454ceb6')
 
 build() {
     cmake -B build -S "${pkgname^}-${pkgver}" \
