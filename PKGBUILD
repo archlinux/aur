@@ -2,7 +2,7 @@
 
 pkgname=fav-git
 _pkgname="${pkgname%-git}"
-pkgver=v0.2.39.r2.g7e2fd9d
+pkgver=v1.0.0.r3.gf1d879c
 pkgrel=1
 pkgdesc='Back up your favorite bilibili resources with CLI'
 url="https://github.com/kingwingfly/${_pkgname}"
@@ -12,6 +12,7 @@ arch=('x86_64')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-bin")
 makedepends=('cargo' 'git' 'pkgconf')
+depends=('sqlite')
 
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
@@ -38,6 +39,8 @@ build() {
 	cd "$_pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	cargo build --release --frozen --all-features
 }
 
@@ -49,6 +52,7 @@ check() {
 
 package() {
 	cd "$_pkgname"
+	mv target/release/fav_bili target/release/${_pkgname}
 	install -Dm755 "target/release/${_pkgname}" -t "$pkgdir/usr/bin/"
 
 	# completions
