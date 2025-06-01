@@ -1,7 +1,7 @@
 # Maintainer: Christopher Maltais <christopher.maltais@gmail.com>
 pkgname=cloudtolocalllm
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-tenant streaming LLM management with system tray integration, platform-specific UI logic, and comprehensive Linux packaging"
 arch=('x86_64')
 url="https://github.com/imrightguy/CloudToLocalLLM"
@@ -26,13 +26,15 @@ makedepends=(
     'pkg-config'
     'clang'
     'imagemagick'
-    'flutter'  # Build-time dependency only - uses system Flutter installation
+    'flutter'  # AUR package - install with: yay -S flutter
 )
 optdepends=(
     'ollama: Local LLM server for direct desktop connectivity'
     'firefox: Web browser for authentication flow'
     'chromium: Alternative web browser for authentication'
 )
+# Note: Flutter is required as a makedepends but is only available in AUR
+# Install Flutter first: yay -S flutter
 provides=('cloudtolocalllm')
 conflicts=('cloudtolocalllm-git')
 install=cloudtolocalllm.install
@@ -45,7 +47,11 @@ prepare() {
     # Verify Flutter is available and get version info
     if ! command -v flutter &> /dev/null; then
         echo "Error: Flutter not found in PATH"
-        echo "Please ensure Flutter is installed via 'pacman -S flutter' or from AUR"
+        echo "Flutter is required as a build dependency. Install it with:"
+        echo "  yay -S flutter"
+        echo "  # or"
+        echo "  paru -S flutter"
+        echo "  # or manually from AUR: https://aur.archlinux.org/packages/flutter"
         exit 1
     fi
 
