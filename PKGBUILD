@@ -7,7 +7,7 @@
 
 _pkgname=rhythmbox
 pkgname=$_pkgname-git
-pkgver=3.4.7+r31+g74c628a3d
+pkgver=3.4.8+r22+ge73b5eb24
 pkgrel=1
 pkgdesc="Music playback and management application"
 arch=(i686 x86_64)

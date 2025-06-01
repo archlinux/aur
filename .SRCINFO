@@ -1,6 +1,6 @@
 pkgbase = rhythmbox-git
 	pkgdesc = Music playback and management application
-	pkgver = 3.4.7+r31+g74c628a3d
+	pkgver = 3.4.8+r22+ge73b5eb24
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Rhythmbox
 	arch = i686
@@ -43,7 +43,7 @@ pkgbase = rhythmbox-git
 	optdepends = libgpod: Portable Players - iPod plugin
 	optdepends = libmtp: Portable Players - MTP plugin
 	optdepends = lirc: LRC plugin
-	provides = rhythmbox=3.4.7+r31+g74c628a3d
+	provides = rhythmbox=3.4.8+r22+ge73b5eb24
 	conflicts = rhythmbox
 	options = !emptydirs
 	source = rhythmbox-git::git+https://gitlab.gnome.org/GNOME/rhythmbox
