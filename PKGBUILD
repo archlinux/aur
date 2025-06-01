@@ -3,7 +3,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=forgit
-pkgver=25.05.0
+pkgver=25.06.0
 pkgrel=1
 pkgdesc="Utility tool powered by fzf for using git interactively"
 arch=('any')
@@ -23,7 +23,7 @@ provides=("$pkgname")
 conflicts=("forgit-git")
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('8e4986f50ca40fd80a6e145b8efe7dc3937d6b9f1c4d04fe51530b2d5d64a728')
+sha256sums=('2fb2237200ef19436e99f42663e3792f41c4fd046b6656a7bfaac369756dc90d')
 
 package() {
 	cd "$pkgname-$pkgver"
