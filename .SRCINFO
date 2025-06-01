@@ -1,6 +1,6 @@
 pkgbase = rime-wanxiang-dict-cn-nightly
 	pkgdesc = 万象中文词库
-	pkgver = 7.0+r20250601.012647
+	pkgver = 7.0.1+r20250601.085535
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/amzxyz/rime_wanxiang
@@ -11,11 +11,11 @@ pkgbase = rime-wanxiang-dict-cn-nightly
 	makedepends = librime
 	makedepends = rime-prelude
 	makedepends = rime-essay
-	provides = rime-wanxiang-dict-cn=7.0
+	provides = rime-wanxiang-dict-cn=7.0.1
 	replaces = rime-wanxiang-dict-cn
 	source = https://github.com/amzxyz/rime_wanxiang/releases/download/dict-nightly/cn_dicts.zip
-	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v7.0.tar.gz
+	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v7.0.1.tar.gz
 	b2sums = SKIP
-	b2sums = fe8f1584f9b6a0af0cc10c3507ac34f19974922d0504e27c415a77b8c695f92bdee8d631bcd484d8736548f18d049e07896c861dc58333079385f86fb8807a53
+	b2sums = bc5931c36388aad819d3efbb7adfa269a0ece7813095f7317eb07020b9f4c7f7254031bb671e39993000e6469bfc41b3d94ba2a64532b61911b15953498a2015
 
 pkgname = rime-wanxiang-dict-cn-nightly
