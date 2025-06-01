@@ -1,12 +1,12 @@
 pkgbase = libfirefly
 	pkgdesc = A standalone C++ Library for vectors calculations
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tbhaxor/firefly
 	arch = any
 	license = GPL-3.0-only
 	makedepends = cmake
-	makedepends = ninja
+	makedepends = make
 	conflicts = libfirefly2
 	source = https://github.com/tbhaxor/firefly/archive/refs/tags/v3.1.0.tar.gz
 	sha256sums = 1e64b1c20da5fde56431a2aa5603323408a98349ea1e9aa76825032bcc0f2ce7
