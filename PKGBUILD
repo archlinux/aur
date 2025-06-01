@@ -7,7 +7,7 @@ pkgdesc="MinGW-w64 winpthreads library (git version)"
 
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
-pkgver=11.0.0.r662.g14315e6
+pkgver=12.0.0.r759.gc3b5e71
 pkgrel=1
 
 arch=(any)
@@ -17,7 +17,7 @@ license=("MIT")
 
 makedepends=(mingw-w64-gcc mingw-w64-binutils mingw-w64-crt)
 
-provides=(mingw-w64-winpthreads)
+provides=("mingw-w64-winpthreads=${pkgver}")
 conflicts=(mingw-w64-winpthreads)
 
 source=("git+https://git.code.sf.net/p/mingw-w64/mingw-w64")
