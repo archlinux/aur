@@ -21,7 +21,7 @@ source=(
     "${_package_name}-${pkgver}.tar.gz::${url}/releases/latest/download/capter_${pkgver}_x86_64.tar.gz"
 )
 sha512sums=(
-    "{{sha512sum}}"
+    "1fb6ba46ecb8c0d9ab630e0fda481ed7560e69a10e12c7bce52023107a16e408ae257eb84c13c777f66d94a4a26d2e6521b7ec6eefb40a64a35a02e3721b49aa"
 )
 
 package() {
