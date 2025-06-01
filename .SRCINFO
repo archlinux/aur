@@ -1,11 +1,11 @@
 pkgbase = archtry
 	pkgdesc = Arch Linux Installation Simulator
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/6z7y56/archtry
 	arch = x86_64
 	arch = aarh64
-	license = MIT
+	license = GPL
 	makedepends = rust
 	makedepends = make
 	makedepends = git

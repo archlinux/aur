@@ -1,10 +1,10 @@
 pkgname=archtry
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 arch=('x86_64' 'aarh64')
 pkgdesc="Arch Linux Installation Simulator"
-url="https://github.com/6z7y56/archtry"
-license=('MIT')
+url="https://github.com/6z7y/archtry"
+license=('GPL')
 depends=('rust' 'make')
 makedepends=('rust' 'make' 'git')
 source=("git+https://github.com/6z7y56/archtry.git")
