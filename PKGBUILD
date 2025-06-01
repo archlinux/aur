@@ -1,7 +1,7 @@
 # Maintainer: Qu Wenruo <wqu@suse.com>
 pkgname=simple-kdump
-pkgver=0.5
-pkgrel=3
+pkgver=0.6
+pkgrel=1
 pkgdesc="A very simple kdump setup for Archlinux"
 url="https://github.com/adam900710/simple-kdump"
 source=("git+$url.git#tag=v${pkgver}?signed")
