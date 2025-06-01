@@ -1,6 +1,6 @@
 # Maintainer: Aayush Kumar <aayush214.kumar@gmail.com>
 pkgname=torrcli
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A cli based torrent client built with libtorrent"
 arch=('x86_64')
