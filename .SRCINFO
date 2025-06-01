@@ -1,7 +1,7 @@
 pkgbase = cyberdropdownloader
 	pkgdesc = Bulk downloader for multiple file hosts and forum sites
 	pkgver = 6.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jbsparrow/CyberDropDownloader
 	arch = any
 	license = GPL-3.0-or-later
@@ -34,6 +34,7 @@ pkgbase = cyberdropdownloader
 	depends = python-rich
 	depends = python-send2trash
 	depends = python-textual
+	depends = python-truststore
 	depends = python-xxhash
 	depends = python-yaml
 	optdepends = flaresolverr: A proxy server to bypass Cloudflare protection

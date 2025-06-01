@@ -1,7 +1,7 @@
 _pkgname=cyberdrop_dl_patched
 pkgname=cyberdropdownloader
 pkgver=6.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bulk downloader for multiple file hosts and forum sites"
 arch=('any')
 url="https://github.com/jbsparrow/CyberDropDownloader"
@@ -32,6 +32,7 @@ depends=(
     python-rich
     python-send2trash
     python-textual
+    python-truststore
     python-xxhash
     python-yaml
 )
