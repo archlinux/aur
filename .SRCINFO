@@ -1,0 +1,16 @@
+pkgbase = tldx-bin
+	pkgdesc = Domain Availability Research Tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/brandonyoungdev/tldx
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = tldx
+	conflicts = tldx
+	source_x86_64 = tldx-bin-1.0.0-x86_64.zip::https://github.com/brandonyoungdev/tldx/releases/download/v1.0.0/tldx_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 47c735fa3ab3cd7765e1aed8313d7b8f40348d07673ba2baf1259ad96be490f0
+	source_aarch64 = tldx-bin-1.0.0-aarch64.zip::https://github.com/brandonyoungdev/tldx/releases/download/v1.0.0/tldx_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b6fa3542c1aee9518b691773d8fed24034292cca49a68605ca36757049676ffd
+
+pkgname = tldx-bin
