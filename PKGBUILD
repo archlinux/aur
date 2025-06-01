@@ -2,7 +2,7 @@
 
 _pkgname="ansible_dev_environment"
 pkgname="ansible-dev-environment"
-pkgver=24.12.0
+pkgver=25.5.0
 pkgrel=1
 pkgdesc="A pip-like install for ansible collections."
 arch=('x86_64')
@@ -14,8 +14,8 @@ checkdepends=('python-pytest')
 optdepends=('ansible: check official ansible collections')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/37/fb/abfe9e73f575deb44a266de220ff0c9ba4c12dac8e875e395f49ab17320e/ansible_dev_environment-24.12.0.tar.gz")
-sha256sums=('1a6169486c2f2c3a450b52518a7356ae026443460cf32bbd7ee1fce02befd596')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/1e/0d/1e8cf80f57b41074585e5a77b03025fa48100996ddd387abeb057f911ab0/ansible_dev_environment-25.5.0.tar.gz")
+sha256sums=('eda6b18dc8084c053bfaac9ec92a52812d2932c55200ddf9bec1ebf6d2fc0d28')
 
 build() {
   cd "${srcdir}"
