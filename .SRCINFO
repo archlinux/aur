@@ -1,6 +1,6 @@
 pkgbase = multibg-wayland
 	pkgdesc = Set a different wallpaper for the background of each Sway or Hyprland or niri workspace
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/gergo-salyi/multibg-wayland
 	arch = x86_64
@@ -18,7 +18,9 @@ pkgbase = multibg-wayland
 	optdepends = sway: supported window manager to set the wallpapers with
 	optdepends = vulkan-driver: upload and serve wallpapers from GPU memory
 	optdepends = vulkan-icd-loader: upload and serve wallpapers from GPU memory
-	source = multibg-wayland-0.2.0.tar.gz::https://static.crates.io/crates/multibg-wayland/multibg-wayland-0.2.0.crate
-	sha256sums = 63f83cfe01d144c7b3bd1ef209c826cdc7669f51b64578f0e8a82133080a3ce8
+	provides = multibg-sway
+	conflicts = multibg-sway
+	source = multibg-wayland-0.2.1.tar.gz::https://static.crates.io/crates/multibg-wayland/multibg-wayland-0.2.1.crate
+	sha256sums = 60b99e65123cf797ccee361169ea28242a8fba7f4cf0f27351ac2d4eaeaccf2e
 
 pkgname = multibg-wayland

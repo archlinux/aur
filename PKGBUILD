@@ -1,7 +1,7 @@
 # Maintainer: Gergő Sályi <salyigergo94@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=multibg-wayland
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Set a different wallpaper for the background of each Sway or Hyprland or niri workspace'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -17,8 +17,10 @@ optdepends=(
     'vulkan-driver: upload and serve wallpapers from GPU memory'
     'vulkan-icd-loader: upload and serve wallpapers from GPU memory'
 )
+conflicts=('multibg-sway')
+provides=('multibg-sway')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('63f83cfe01d144c7b3bd1ef209c826cdc7669f51b64578f0e8a82133080a3ce8')
+sha256sums=('60b99e65123cf797ccee361169ea28242a8fba7f4cf0f27351ac2d4eaeaccf2e')
 
 prepare() {
     cd "$pkgname-$pkgver"
