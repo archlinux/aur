@@ -2,9 +2,9 @@
 
 pkgname=tldx
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Domain Availability Research Tool"
-arch=('x86_64' 'aarch64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 conflicts=('tldx')
 provides=('tldx')
 url="https://github.com/brandonyoungdev/tldx"
