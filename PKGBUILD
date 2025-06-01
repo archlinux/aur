@@ -1,22 +1,57 @@
-# Maintainer: decipher
-pkgname=capter
-pkgver=3.1.0
+# Maintainer: decipher <decipher3114@gmail.com>
+
+_package_name=capter
+pkgname="$_package_name"
+pkgver=4.0.0
 pkgrel=1
 epoch=
 pkgdesc="Cross-Platform Screen Capture and Annotation Tool"
 arch=('x86_64')
-depends=(gtk3 
-xdotool 
-libayatana-appindicator 
-libxcb 
-libxrandr 
-dbus)
-provides=()
-conflicts=()
-replaces=()
-options=(!lto)
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/decipher3114/Capter/releases/latest/download/capter_${pkgver}_x86_64.tar.gz)
-sha512sums=("01700560a4e6347716054b4f87ce3dbd0b79ecf4d67f6b48deab3b4eed9323f0b6d1698f25a023efd3e4b83d56ee22fbb9adf7bbbea532acfc8ef9809e151412")
+url="https://github.com/decipher3114/Capter"
+license=('Apache-2.0')
+
+makedepends=(
+    base-devel
+    clang
+    libxcb
+    libxrandr
+    dbus
+    libpipewire
+    xdotool
+    gtk3
+)
+depends=(
+    libayatana-appindicator
+)
+provides=("${_package_name}")
+conflicts=("${_package_name}-bin")
+replaces=("${_package_name}")
+
+source=(
+    "${_package_name}::git+${url}.git"
+)
+sha512sums=('SKIP')
+
+prepare() {
+    cd "$srcdir/$_package_name"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    cd "$srcdir/$_package_name"
+    cargo build --release --locked
+}
+
 package() {
-	cp -r "${srcdir}"/* "${pkgdir}"/
+    cd "$srcdir/$_package_name"
+
+    install -Dm755 "target/release/$_package_name" "${pkgdir}/usr/bin/$_package_name"
+
+    install -d "$pkgdir/usr/share/icons/hicolor"
+    cp -r "assets/resources/linux/hicolor"/* "$pkgdir/usr/share/icons/hicolor/"
+
+    install -Dm644 "assets/resources/linux/capter.desktop" "${pkgdir}/usr/share/applications/${_package_name}.desktop"
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_package_name}/LICENSE"
 }
