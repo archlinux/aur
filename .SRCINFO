@@ -1,0 +1,11 @@
+pkgbase = vimgo
+	pkgdesc = A TUI file manager written in Go, ntegrated with NVIM
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ethical-buddy/Vimgo
+	arch = x86_64
+	license = MIT
+	source = https://github.com/ethical-buddy/Vimgo/releases/download/v1.0.0/vimgo
+	sha256sums = SKIP
+
+pkgname = vimgo
