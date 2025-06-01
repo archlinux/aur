@@ -3,7 +3,7 @@
 # Contributor: max-k <max-k AT post DOT com>
 pkgname=ampache
 pkgver=7.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="PHP web based audio/video streaming application and file manager"
 arch=('any')
 url="http://www.ampache.org/"
@@ -37,7 +37,7 @@ package() {
   _vendordir="${_targetdir}/lib/vendor"
   mkdir -p "$_targetdir"
   cp -r ./* "${_targetdir}/"
-  unlink "${_targetdir}/${pkgname}-${pkgver}_all_php8.3_squashed.zip"
+  unlink "${_targetdir}/${pkgname}-${pkgver}_all_php8.4_squashed.zip"
   unlink "${_targetdir}/nginx-example.conf"
   unlink "${_targetdir}/ampache.install"
   rm -r "${_targetdir}/docs/man"
