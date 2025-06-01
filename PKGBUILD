@@ -66,10 +66,9 @@ pkgver() {
 
 build() {
   cd "${srcdir}/neovim" || exit 1
-# use bundled libutf8proc
   cmake -S cmake.deps -B .deps \
     -G Ninja \
-    -DUSE_BUNDLED=OFF -DUSE_BUNDLED_UTF8PROC=ON \
+    -DUSE_BUNDLED=OFF \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=mold" \
     -DCMAKE_C_COMPILER_LAUNCHER=sccache \
