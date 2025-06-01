@@ -1,0 +1,17 @@
+pkgbase = mfaomp
+	pkgdesc = Multiple Files At Once Media Player
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/Neurofibromin/mfaomp
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = qt6-webengine
+	makedepends = qt6-base
+	makedepends = qt6-multimedia
+	depends = libvlc
+	source = mfaomp-0.4.0.tar.gz::https://github.com/Neurofibromin/mfaomp/archive/refs/tags/v0.4.0.tar.gz
+	b2sums = d475aaa39153ffc24f56d0c99d31df8d4e40c53b8a41b9c568704d86d04a05dee5842d189924a1ea2a95baf0f6732e9879660827d3d60645029f5a6e1ce413f5
+
+pkgname = mfaomp
