@@ -3,7 +3,7 @@
 # Contributor: Julian <juliannfairfax at protonmail dot com>
 
 pkgname=flare
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=0
 pkgdesc="Chat with your friends on Signal"
 url="https://gitlab.com/schmiddi-on-mobile/$pkgname"
@@ -14,7 +14,7 @@ depends=("libadwaita" "libsecret" "protobuf" "gtksourceview5")
 optdepends=("feedbackd: for vibrating notifications"
   "libspelling: for spell-checking support")
 source=("https://gitlab.com/schmiddi-on-mobile/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=("edb4d3e9fdac65f851d2657e02d4cd24ab6414e0112e973fd46e1ba09e4b91a0")
+sha256sums=("481b29c2004f9b9061759f62cebf7c9036f52484d85493edc875ef710dea5c62")
 options=(!lto)
 
 build() {
