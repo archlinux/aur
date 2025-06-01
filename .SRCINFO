@@ -1,6 +1,6 @@
 pkgbase = immersed
 	pkgdesc = Immersed Desktop Agent
-	pkgver = 10.8.0
+	pkgver = 10.9.0
 	pkgrel = 1
 	url = https://immersed.com/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = immersed
 	optdepends = V4L2LOOPBACK-MODULE: Virtual webcam support
 	options = !strip
 	options = !debug
-	source = Immersed-10.8.0-x86_64.AppImage::https://static.immersed.com/dl/Immersed-x86_64.AppImage
-	sha256sums = e5511a3681f9f96f4c03abe84ae7ea41e30b454e33f5d5ea18c0cc534f866a07
+	source = Immersed-10.9.0-x86_64.AppImage::https://static.immersed.com/dl/Immersed-x86_64.AppImage
+	sha256sums = a6519cbd946957e9e143816862222e2e6c8e83f48727c6634f8161e94c87f56d
 
 pkgname = immersed
