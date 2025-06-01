@@ -2,7 +2,7 @@
 
 pkgname=reclog
 _pkgname=reclog
-pkgver=0.1.3
+pkgver=0.1.5
 pkgrel=2
 pkgdesc="Command-line tool to capture command output to a file."
 url="https://github.com/gavv/reclog"
@@ -11,7 +11,7 @@ depends=('glibc' 'gcc-libs')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_pkgname/$pkgver/download")
-sha256sums=('496d3120f162b7226c85638a1686128cfb2afea861395d208eae627a56e3e7ba')
+sha256sums=('912b2119b4e6a9a757e6646a24c70524bc45014bc64d86adca367090382ae474')
 
 prepare() {
   cd "$_pkgname-$pkgver"
