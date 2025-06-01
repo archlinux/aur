@@ -1,4 +1,4 @@
-# Maintainer: Kartik Mohta <kartikmohta@gmail.com>
+# Maintainer: Paul Irofti <paul@irofti.net>
 pkgname=gtsam-git
 pkgver=r18873.c9498fe0c
 pkgrel=1
