@@ -37,7 +37,7 @@ pkgver() {
 prepare() {
   mkdir -p build
 
-  (cd libvitamtp; autoreconf -vfi)
+  (cd libvitamtp; autoreconf -vfi -I /usr/share/gettext/m4)
 }
 
 build() {
