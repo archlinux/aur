@@ -5,7 +5,6 @@ pkgbase = uutils-coreutils-stty
 	url = https://uutils.github.io/
 	arch = x86_64
 	license = MIT
-	makedepends = clang
 	makedepends = rust
 	makedepends = mold
 	depends = gcc-libs
