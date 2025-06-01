@@ -12,7 +12,7 @@ conflicts=(sudo)
 source=("https://gitlab.archlinux.org/archlinux/packaging/packages/sudo/-/raw/main/sudo.pam"
 sudoers)
 sha256sums=('d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2'
-            '7ac68efbbacbe545298950151592ae89eda6a61494e4cb18819e37633baa04f4')
+            'a17090feee1f91b1205074dc1c542957a08dca7f432bbaa43586b6e70f0858fd')
 package (){
 	install -Dm644 sudo.pam "$pkgdir"/etc/pam.d/sudo
 	install -Dm0440 sudoers "$pkgdir"/etc/sudoers
