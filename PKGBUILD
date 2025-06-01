@@ -1,7 +1,7 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-bin
 pkgver=5.70.2
-pkgrel=1
+pkgrel=2
 pkgdesc="qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems."
 arch=("x86_64" "aarch64" "armv7h")
 url="https://github.com/Zweih/qp"
@@ -33,16 +33,18 @@ package() {
 }
 
 # Fix permission issues from previous version
-post_upgrade() {
+post_install() {
+  rm -rf /root/.cache/query-packages 2>/dev/null || true
+
   for user_home in /home/*; do
     if [ -d "$user_home/.cache/query-packages" ]; then
-      user=$(basename "$user_home")
-      if [ "$(stat -c %U "$user_home/.cache/query-packages")" = "root" ]; then
-        rm -rf "$user_home/.cache/query-packages"
-        echo "Cleaned up root-owned qp cache for user $user"
-      fi
+      rm -rf "$user_home/.cache/query-packages" 2>/dev/null || true
     fi
   done
 
-  rm -rf /root/.cache/query-packages 2>/dev/null || true
+  echo "qp cache cleaned - will be recreated with proper permissions"
+}
+
+post_upgrade() {
+  post_install
 }

@@ -1,7 +1,7 @@
 pkgbase = qp-bin
 	pkgdesc = qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems.
 	pkgver = 5.70.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zweih/qp
 	arch = x86_64
 	arch = aarch64
