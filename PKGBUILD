@@ -3,7 +3,7 @@
 pkgname=('rom-properties' 'rom-properties-gtk' 'rom-properties-kde')
 pkgbase=rom-properties
 pkgdesc="Shell extension for displaying ROM and disc image metadata in file managers"
-pkgver=2.5
+pkgver=2.5.1
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/GerbilSoft/rom-properties'
@@ -33,20 +33,12 @@ makedepends=(
 )
 source=(
     "$pkgbase-$pkgver.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v$pkgver.tar.gz"
-    "0001-cmake-gcc.cmake-Move-Wno-error-stringop-overread-her.patch"
 )
 sha256sums=(
-    'b501d5b0a3a8685471f77aee3cbbb3f092117a2195f12aa2fb964c00a09e1980'
-    '7b9b947d8176db252fd2f2f6bf27b21b0c9750622302401f8bea747fd063d289'
+    '456a2310bcee3daa675e8e0b570e3a9748aabbe8a51f8815759c19f7ffd1a9f6'
 )
 options=(!debug)
 
-
-prepare() {
-    cd "$pkgbase-$pkgver"
-    patch -p1 < "${srcdir}/0001-cmake-gcc.cmake-Move-Wno-error-stringop-overread-her.patch"
-
-}
 
 build() {
     cd "$pkgbase-$pkgver"
@@ -100,12 +92,12 @@ package_rom-properties() {
     rm -rf $pkgdir/usr/lib/nemo
     rm -rf $pkgdir/usr/lib/qt6
     rm -rf $pkgdir/usr/lib/thunarx-3
-    rm -rf $pkgdir/usr/lib/tracker-miners-3.0
+    rm -rf $pkgdir/usr/lib/localsearch-3.0
     rm -rf $pkgdir/usr/share/caja
     rm -rf $pkgdir/usr/share/dbus-1
     rm -rf $pkgdir/usr/share/kio
     rm -rf $pkgdir/usr/share/thumbnailers
-    rm -rf $pkgdir/usr/share/tracker3-miners
+    rm -rf $pkgdir/usr/share/localsearch3
 }
 
 

@@ -1,6 +1,6 @@
 pkgbase = rom-properties
 	pkgdesc = Shell extension for displaying ROM and disc image metadata in file managers
-	pkgver = 2.5
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/GerbilSoft/rom-properties
 	arch = x86_64
@@ -27,10 +27,8 @@ pkgbase = rom-properties
 	makedepends = qt6-tools
 	makedepends = tinyxml2
 	options = !debug
-	source = rom-properties-2.5.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v2.5.tar.gz
-	source = 0001-cmake-gcc.cmake-Move-Wno-error-stringop-overread-her.patch
-	sha256sums = b501d5b0a3a8685471f77aee3cbbb3f092117a2195f12aa2fb964c00a09e1980
-	sha256sums = 7b9b947d8176db252fd2f2f6bf27b21b0c9750622302401f8bea747fd063d289
+	source = rom-properties-2.5.1.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v2.5.1.tar.gz
+	sha256sums = 456a2310bcee3daa675e8e0b570e3a9748aabbe8a51f8815759c19f7ffd1a9f6
 
 pkgname = rom-properties
 	depends = curl
