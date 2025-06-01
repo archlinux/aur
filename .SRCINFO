@@ -1,7 +1,7 @@
 pkgbase = cufflinks-git
 	pkgdesc = Transcriptome assembly and differential expression analysis for RNA-Seq
 	pkgver = 2.2.1.r89.gdc3b0cb
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cole-trapnell-lab.github.io/cufflinks/
 	arch = x86_64
 	license = BSL-1.0
@@ -15,7 +15,9 @@ pkgbase = cufflinks-git
 	conflicts = cufflinks
 	source = git+https://github.com/cole-trapnell-lab/cufflinks.git
 	source = cufflinks-git.patch::https://github.com/cole-trapnell-lab/cufflinks/pull/108.patch
+	source = configure-ac.patch
 	sha256sums = SKIP
 	sha256sums = 22c7ff96d9081290edb10bbdf4193eb08f6d9b5b64980eb82ce9cb62fb513c97
+	sha256sums = 3e9ca62972a0854cfa71a47ab89ce70955f986feb1dbc0cf2cf591616e10ff2a
 
 pkgname = cufflinks-git
