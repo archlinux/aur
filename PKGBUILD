@@ -3,7 +3,7 @@
 : ${_pkgtype=-git}
 
 pkgbase="zenmap-git"
-pkgver=7.95.r273.geddc779
+pkgver=7.97.r27.g49f2072
 pkgrel=1
 url="https://github.com/nmap/nmap"
 license=('LicenseRef-Nmap-Public-Source-License-Version-0.95')
@@ -28,6 +28,7 @@ makedepends=(
   'gtk3'
   'python-cairo'
   'python-gobject'
+  'python-setuptools-gettext'
 )
 
 options=('!debug')

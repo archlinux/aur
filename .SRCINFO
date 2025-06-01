@@ -1,5 +1,5 @@
 pkgbase = zenmap-git
-	pkgver = 7.95.r273.geddc779
+	pkgver = 7.97.r27.g49f2072
 	pkgrel = 1
 	url = https://github.com/nmap/nmap
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = zenmap-git
 	makedepends = gtk3
 	makedepends = python-cairo
 	makedepends = python-gobject
+	makedepends = python-setuptools-gettext
 	options = !debug
 	source = nmap::git+https://github.com/nmap/nmap.git
 	sha256sums = SKIP
@@ -30,7 +31,7 @@ pkgname = nmap-git
 	depends = openssl
 	depends = pcre2
 	depends = zlib
-	provides = nmap=7.95
+	provides = nmap=7.97
 	conflicts = nmap
 
 pkgname = zenmap-git
@@ -42,5 +43,5 @@ pkgname = zenmap-git
 	depends = python-cairo
 	depends = python-gobject
 	optdepends = gksu: start zenmap as root
-	provides = zenmap=7.95
+	provides = zenmap=7.97
 	conflicts = zenmap
