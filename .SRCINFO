@@ -2,7 +2,6 @@ pkgbase = crl-browser
 	pkgdesc = CRL Browser - PyQt6 based Arch-browser.
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://example.com/crl-browsering
 	arch = any
 	license = MIT
 	depends = python
