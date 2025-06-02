@@ -26,6 +26,7 @@ post_install() {
 
   print_info "Setting ownership of existing files..."
   chown -R librechat:librechat /usr/lib/librechat
+  chown -R librechat:librechat /usr/share/webapps/librechat
 
   echo ""
   print_header "Next Steps"
@@ -58,6 +59,12 @@ post_install() {
   print_command "sudo usermod -aG librechat \"\$(whoami)\""
   print_info "Then log out and back in, and you can run:"
   print_command "/usr/bin/librechat-server"
+  echo ""
+
+  print_header "Serving the web front-end through nginx (optional)"
+  echo ""
+  print_info "You'll find the web root in /usr/share/webapps/librechat"
+  print_info "A sample config file can be found in /usr/share/doc/librechat"
   echo ""
 }
 
