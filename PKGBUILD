@@ -10,7 +10,7 @@ depends=('wayland' 'wlroots0.18' 'libinput')
 makedepends=('git' 'make' 'gcc')
 conflicts=(wideriver)
 source=("https://github.com/alex-courtis/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4c956d0572bcad1e8b76751734616fd60f04f53f450e5e8a835c45810347a43a')
+sha256sums=('SKIP')
 install=wideriver.install
 
 build() {
