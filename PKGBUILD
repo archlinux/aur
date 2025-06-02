@@ -7,7 +7,6 @@ pkgdesc="Convert your Audiobooks to Opus in parallel"
 url="https://github.com/rgarber11/yaacs"
 arch=('any')
 license=(GPL-2.0-only)
-# NOTICE: The number of dependencies we rely on is *very high*. If the program does not run after an upgrade, make sure all your deps are upgraded, especially AUR deps!
 depends=('python>=3.9' 'ffmpeg' 'python-packaging' 'python-mutagen')
 
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-lark-parser')
@@ -24,5 +23,3 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
