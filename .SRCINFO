@@ -1,15 +1,15 @@
 pkgbase = restic-rest-server
 	pkgdesc = High-performance HTTP server that implements restic's REST backend API
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/restic/rest-server
 	arch = x86_64
 	license = BSD
 	makedepends = go
 	optdepends = apache: htpasswd manipulation
-	source = restic-rest-server-0.13.0.tar.gz::https://github.com/restic/rest-server/archive/refs/tags/v0.13.0.tar.gz
-	sha256sums = bc2f57f07fc7affa7d419b8034f2bb7638c14976505966c93f7d75e90ad0d460
-	sha512sums = 145ad2da7838a695c8f076298f741b7b6a5013965741d96d766ed0082a58d8361f2bfcf42f39d775577c9d5ea909134f3a2ba5b2604c33ac6fc39d709b78d79d
-	b2sums = de321975ca889a39c00caeac0a6402dd241faf8e55cf8c949861ddab782524ac8593c8847e14fe53eb7e82f9a912a2288ce35236e2f3f15123164ca90cbf96fe
+	source = restic-rest-server-0.14.0.tar.gz::https://github.com/restic/rest-server/archive/refs/tags/v0.14.0.tar.gz
+	sha256sums = 8b3f91d561819ba9bce454505958fcca6d61ecd12e10086954ebfc92ba163ba4
+	sha512sums = d73ff775b740887e869109e8811520640927f44b94837a194d1b1bd8db02b69ce9ae84e645d7a5b3117e40e75a3ca8aab7e9f7c2e3f58db24ca6026f23109775
+	b2sums = 578a8872e60060aeece99366fe7eadd0d694e3052a1553a309c5fd100d753c3b0c90f8fd231c1f338fc8c8b70553b00a3ba44b029361629e359bb1cf28742caf
 
 pkgname = restic-rest-server
