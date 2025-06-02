@@ -1,0 +1,3 @@
+[perl-app-packager]
+source = "cpan"
+cpan = "App-Packager"
