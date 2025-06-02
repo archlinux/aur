@@ -17,14 +17,13 @@ prepare() {
   sed -i 's/yes/yes stty/' GNUmakefile # remove this at next release
 }
 
-export SELINUX_ENABLED=1
+export SELINUX_ENABLED=1 RUSTONIG_DYNAMIC_LIBONIG=1
 export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) -C panic=abort $RUSTFLAGS -C link-arg=-fuse-ld=mold"
-build(){
-  cd coreutils-$pkgver
-  export RUSTONIG_DYNAMIC_LIBONIG=1
-  echo $RUSTFLAGS
-  cargo build --release --features feat_selinux # include hostname, etc... for people wants it
-}
+
+#build(){ cause double build
+#  cd coreutils-$pkgver
+#  cargo build --release --features feat_selinux # include hostname, etc... for people wants it
+#}
 
 package_uutils-coreutils-selinux() {
   pkgdesc='Rust rewrite of GNU coreutils (SELinux build)'
