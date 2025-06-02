@@ -8,8 +8,8 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 _base=pip
 pkgname=pypy3-${_base}
-pkgver=24.2
-pkgrel=2
+pkgver=25.1.1
+pkgrel=1
 pkgdesc="The PyPA recommended tool for installing Python packages"
 url="https://${_base}.pypa.io"
 arch=(any)
@@ -17,7 +17,7 @@ license=(MIT)
 depends=(pypy3)
 makedepends=(pypy3-build pypy3-installer pypy3-setuptools)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('42da0dc6ccf5759fea20fd6f54db272aae7afb2d997c84e1d817e3c95437ba073f4f15cb511e5275cf4f35a82828bb0259c5ffe381d278dc75c2bc8f82dfa404')
+sha512sums=('aa607dc778188700c30086ac03970f991ebcf00308003555552d57ee9edfad25caf78d2ae94260ed3df39c7338eb51d3101950bfe79c800f882031cb31eebe72')
 
 build() {
   cd ${_base}-${pkgver}
