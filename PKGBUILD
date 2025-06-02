@@ -72,24 +72,34 @@ package() {
     # Install the pre-built binary to /usr/share/cloudtolocalllm
     install -dm755 "$pkgdir/usr/share/cloudtolocalllm"
 
-    # Copy the pre-built application files (extracted directly to srcdir)
-    if [[ -f "cloudtolocalllm" && -d "data" && -d "lib" ]]; then
-        cp -r cloudtolocalllm data lib "$pkgdir/usr/share/cloudtolocalllm/"
+    # Copy the pre-built application files from the extracted binary package
+    local binary_dir="cloudtolocalllm-$pkgver-x86_64"
+    if [[ -d "$binary_dir" ]]; then
+        cd "$binary_dir"
+        if [[ -f "cloudtolocalllm" && -d "data" && -d "lib" ]]; then
+            cp -r cloudtolocalllm data lib "$pkgdir/usr/share/cloudtolocalllm/"
+        else
+            echo "Error: Pre-built binary files not found in $binary_dir"
+            echo "Expected: cloudtolocalllm binary, data/, lib/ directories"
+            ls -la
+            exit 1
+        fi
+
+        # Make the binary executable
+        chmod +x "$pkgdir/usr/share/cloudtolocalllm/cloudtolocalllm"
+
+        # Install tray daemon
+        if [[ -f "cloudtolocalllm-tray" ]]; then
+            install -Dm755 "cloudtolocalllm-tray" "$pkgdir/usr/bin/cloudtolocalllm-tray"
+        else
+            echo "Warning: Tray daemon binary not found in pre-built package"
+        fi
+        cd "$srcdir"
     else
-        echo "Error: Pre-built binary files not found"
-        echo "Expected: cloudtolocalllm binary, data/, lib/ directories"
+        echo "Error: Binary package directory not found: $binary_dir"
+        echo "Available directories:"
         ls -la
         exit 1
-    fi
-
-    # Make the binary executable
-    chmod +x "$pkgdir/usr/share/cloudtolocalllm/cloudtolocalllm"
-
-    # Install tray daemon
-    if [[ -f "cloudtolocalllm-tray" ]]; then
-        install -Dm755 "cloudtolocalllm-tray" "$pkgdir/usr/bin/cloudtolocalllm-tray"
-    else
-        echo "Warning: Tray daemon binary not found in pre-built package"
     fi
 
     # Create wrapper script in /usr/bin
