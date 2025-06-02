@@ -1,8 +1,9 @@
-# Maintainer: zebdo < zebdo [4T] posteo [D0T] ee >
+# Previous Maintainer: zebdo < zebdo [4T] posteo [D0T] ee >
+# Current Maintainer: NatureCat < mail [at] naturec.at >
 
 pkgname='hydrus-video-deduplicator-git'
 _pkgname='hydrus-video-deduplicator'
-pkgver=0.6.0.r0.g2f3753c
+pkgver=0.8.2.r0.gab4f217
 pkgrel=1
 pkgdesc='Hydrus Video Deduplicator finds potential duplicate videos through the Hydrus API'
 arch=('any')
@@ -21,7 +22,6 @@ depends=(
   'python-sqlitedict'
   'python-requests'
   'python-psutil'
-  'python-joblib'
   'python-pillow'
   'python-av'
 )
@@ -31,15 +31,25 @@ makedepends=(
 	'python-wheel'
 	'python-hatchling'
 	'git'
+	'python-scikit-build-core'
+	'pybind11'
 	)
 source=("${_pkgname}::git+https://github.com/hydrusvideodeduplicator/${_pkgname}.git"
-	hydrusvideodeduplicator)
+		hydrusvideodeduplicator
+		"hvdaccelerators::git+https://github.com/hydrusvideodeduplicator/hvdaccelerators.git")
 sha256sums=('SKIP'
-            '504aa64d8bcbc5f37d22f798ce40cf0daf127c6835897887e0634fe8b0f2db7f')
+            '504aa64d8bcbc5f37d22f798ce40cf0daf127c6835897887e0634fe8b0f2db7f'
+            'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "hvdaccelerators"
+	msg 'Installing hvdaccelerators...'
+	python -m build --wheel --no-isolation
 }
 
 build() {
