@@ -1,7 +1,7 @@
 pkgbase = plasma-meta
 	pkgdesc = Meta package to install KDE Plasma
 	pkgver = 6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kde.org/plasma-desktop/
 	arch = any
 	license = None
@@ -58,7 +58,6 @@ pkgbase = plasma-meta
 	depends = sddm-kcm
 	depends = spectacle
 	depends = systemsettings
-	depends = wacomtablet
 	depends = xdg-desktop-portal-kde
 	optdepends = breeze-grub: Breeze theme for GRUB
 	optdepends = breeze-plymouth: Breeze theme for Plymouth
@@ -67,5 +66,6 @@ pkgbase = plasma-meta
 	optdepends = kwin-x11: X11 window manager
 	optdepends = plymouth-kcm: Configure Plymouth from systemsettings
 	optdepends = plasma-sdk: Development tools
+	optdepends = wacomtablet: Drawing tablet settings on X
 
 pkgname = plasma-meta
