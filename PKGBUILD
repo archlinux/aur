@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.7.beta4.r0.gd617df423d7
+pkgver=10.7.beta5.r0.g9352a3258c0
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -64,6 +64,7 @@ depends=(brial
          python-numpy
          python-pexpect
          python-pillow
+         python-platformdirs
          python-pplpy
          python-primecountpy
          python-pygments
@@ -137,11 +138,9 @@ makedepends=(bliss
 conflicts=(sagemath)
 provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
-        latte-count.patch
-        cython-3.1.patch)
+        latte-count.patch)
 sha256sums=('SKIP'
-            'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09'
-            '9767a263c6f5f0bbaabbd9aae60fbc592ccd5e9c8536edea5c2774b566d9845b')
+            'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09')
 
 pkgver() {
   cd sage
@@ -153,8 +152,6 @@ prepare(){
 
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
-# support cython 3.1
-  patch -p1 -i ../cython-3.1.patch
 }
 
 build() {
