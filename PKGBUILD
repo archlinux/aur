@@ -5,7 +5,7 @@
 
 pkgname=thinkfan
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist fan control program. Supports the sysfs hwmon interface and thinkpad_acpi"
 url="https://github.com/vmatare/thinkfan"
 arch=('i686' 'x86_64')
