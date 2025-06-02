@@ -17,7 +17,7 @@ provides=("${pkgname%-git}")
 options=("!lto")
 
 pkgver() {
-  return $pkgver
+  date +%Y%m%d
 }
 
 package() {
