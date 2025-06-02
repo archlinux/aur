@@ -1,15 +1,15 @@
 # Maintainer: GhostNaN <GhostNaN@protonmail.com>
 _gitname=mpvpaper
 pkgname="$_gitname-git"
-pkgver=r113.647d8ab
+pkgver=r115.7342c53
 pkgrel=1
 pkgdesc="A video wallpaper program for wlroots based wayland compositors."
 arch=('i686' 'x86_64')
 url="https://github.com/GhostNaN/$_gitname"
 license=('GPL3')
-depends=('mpv' 'wlroots')
+depends=('libmpv.so' 'libwayland-client.so' 'libwayland-egl.so')
 makedepends=('git' 'meson' 'ninja' 'wayland-protocols')
-optdepends=('socat')
+optdepends=('socat: control via sockets')
 provides=('mpvpaper')
 source=("https://github.com/GhostNaN/$_gitname")
 md5sums=('SKIP')
