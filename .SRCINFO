@@ -1,8 +1,8 @@
 pkgbase = python-ignis
 	pkgdesc = A widget framework for building desktop shells, written and configurable in Python
 	pkgver = 0.5.1
-	pkgrel = 1
-	url = https://github.com/linkfrg/ignis
+	pkgrel = 2
+	url = https://github.com/ignis-sh/ignis
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	makedepends = gobject-introspection
@@ -31,7 +31,7 @@ pkgbase = python-ignis
 	provides = python-ignis
 	provides = ignis
 	conflicts = ignis
-	source = ignis-v0.5.1.tar.gz::https://github.com/linkfrg/ignis/releases/download/v0.5.1/ignis-v0.5.1.tar.gz
+	source = ignis-v0.5.1.tar.gz::https://github.com/ignis-sh/ignis/releases/download/v0.5.1/ignis-v0.5.1.tar.gz
 	sha256sums = 3ea240440584f336a31874f79a1e76e3a9f18651ff2ecaac7dab54807c1fd371
 
 pkgname = python-ignis
