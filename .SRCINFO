@@ -1,6 +1,6 @@
 pkgbase = tutanota-desktop
 	pkgdesc = The desktop client for Tutanota, the secure e-mail service.
-	pkgver = 287.250523.0
+	pkgver = 287.250602.0
 	pkgrel = 1
 	url = https://tuta.com/secure-email
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = tutanota-desktop
 	depends = gtk3
 	depends = libsecret
 	depends = nss
-	source = git+https://github.com/tutao/tutanota.git#tag=tutanota-desktop-release-287.250523.0
+	source = git+https://github.com/tutao/tutanota.git#tag=tutanota-desktop-release-287.250602.0
 	source = git+https://github.com/P-H-C/phc-winner-argon2.git
 	source = git+https://github.com/open-quantum-safe/liboqs.git
 	source = git+https://github.com/emscripten-core/emsdk.git
 	source = tutanota-desktop.desktop
-	sha256sums = fb4c01c3fb34109518e9b2e1252c4c80ddf18cdffb2898e4d301443a24afff44
+	sha256sums = 77e187e4a382a9215d6fccf36355011a01f9e4a7b4105edccd23e0430bd1aa24
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
