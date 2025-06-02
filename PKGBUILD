@@ -4,7 +4,7 @@ _gitbranch=main
 _gitauthor=devemio
 pkgname=docker-color-output
 pkgver=2.6.1
-pkgrel=21
+pkgrel=22
 pkgdesc="Colors for Docker CLI"
 arch=('x86_64')
 license=('MIT')
@@ -21,6 +21,6 @@ pkgver() {
 }
 
 package() {
-  install -Dm 755 "$srcdir/${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
-  #install -vDm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
+  install -Dm 755 "$srcdir/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+  #install -vDm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
