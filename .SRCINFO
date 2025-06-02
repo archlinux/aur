@@ -10,7 +10,7 @@ pkgbase = cli-reminder
 	makedepends = git
 	depends = gcc-libs
 	optdepends = libnotify: for desktop notifications
-	source = git+file:///home/yajatr/Documents/Projects/CLI_Reminder
+	source = git+https://github.com/Skeleton-Hacker/CLI_Reminder.git
 	sha256sums = SKIP
 
 pkgname = cli-reminder

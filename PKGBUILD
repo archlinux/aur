@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo' 'git')
 optdepends=('libnotify: for desktop notifications')
-source=("git+file:///home/yajatr/Documents/Projects/CLI_Reminder")
+source=("git+https://github.com/Skeleton-Hacker/CLI_Reminder.git")
 sha256sums=('SKIP')
 
 build() {
@@ -26,7 +26,7 @@ package() {
   # Create systemd service files
   mkdir -p "$pkgdir/usr/lib/systemd/user"
   
-  # Create service file
+  # Create service file with proper environment variables
   cat > "$pkgdir/usr/lib/systemd/user/remindme-check.service" << EOF
 [Unit]
 Description=Check for due reminders
@@ -34,8 +34,9 @@ Description=Check for due reminders
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/remindme notify --desktop
-Environment=DISPLAY=:0
-Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+# Using %t expands to the user's runtime directory: /run/user/\$UID
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=%t/bus
+# Inherit DISPLAY from user environment instead of hardcoding
 EOF
   
   # Create timer file
@@ -52,9 +53,9 @@ AccuracySec=1s
 WantedBy=timers.target
 EOF
 
-# Install desktop entry
-mkdir -p "$pkgdir/usr/share/applications"
-cat > "$pkgdir/usr/share/applications/remindme.desktop" << EOF
+  # Install desktop entry
+  mkdir -p "$pkgdir/usr/share/applications"
+  cat > "$pkgdir/usr/share/applications/remindme.desktop" << EOF
 [Desktop Entry]
 Name=RemindMe
 Comment=CLI Reminder Application
@@ -67,7 +68,9 @@ EOF
 
   # Create documentation directory and files
   mkdir -p "$pkgdir/usr/share/doc/$pkgname"
-  cp setup.sh "$pkgdir/usr/share/doc/$pkgname/"
+  if [ -f "setup.sh" ]; then
+    install -Dm644 "setup.sh" "$pkgdir/usr/share/doc/$pkgname/setup.sh"
+  fi
   
   # Create configuration directory
   mkdir -p "$pkgdir/etc/remindme"
