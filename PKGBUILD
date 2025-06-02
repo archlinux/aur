@@ -10,8 +10,13 @@ pkgdesc="A minimalist fan control program. Supports the sysfs hwmon interface an
 url="https://github.com/vmatare/thinkfan"
 arch=('i686' 'x86_64')
 makedepends=('cmake')
-depends=('libatasmart' 'yaml-cpp')
-optdepends=('lm_sensors: hwmon support')
+depends=(
+  gcc-libs
+  glibc
+  libatasmart
+  lm_sensors
+  yaml-cpp
+)
 license=('GPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vmatare/$pkgname/archive/$pkgver.tar.gz"
         'thinkfan.service'
