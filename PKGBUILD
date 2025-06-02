@@ -1,12 +1,12 @@
 # Maintainer: Swarnaditya Singh <demonkingswarn@protonmail.com>
 pkgname=demonos-core-fonts
-_pkgname=dotfiles
+_pkgname=fonts
 pkgver=1.r.
 pkgrel=1
 epoch=
 pkgdesc="The fonts installed in demonos."
 arch=('any')
-url="https://github.com/demonkingswarn/dotfiles.git"
+url="https://github.com/demonkingswarn/fonts.git"
 license=('GPL3')
 groups=()
 depends=()
@@ -32,6 +32,6 @@ pkgver() {
 package() {
   cd "${_pkgname}"
   install -d ${pkgdir}/usr/local/share/fonts/
-  cp -r ${srcdir}/${_pkgname}/.local/share/fonts/* ${pkgdir}/usr/local/share/fonts/
+  cp -r ${srcdir}/${_pkgname}/* ${pkgdir}/usr/local/share/fonts/
   fc-cache -vf
 }
