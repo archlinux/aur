@@ -27,7 +27,7 @@ sha256sums=('da19b2755013e9def37271cf04ce7485c03a22fa02b0951e4108884dcd1bd774')
 install="obsidian.install"
 
 package() {
-    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
     install -Dm644 "${pkgdir}/opt/Obsidian/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
     install -Dm644 "${pkgdir}/opt/Obsidian/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
 }
