@@ -22,6 +22,11 @@ source=("https://github.com/ElyPrismLauncher/ElyPrismLauncher/releases/download/
 noextract=("ElyPrismLauncher-ArchLinux-x86_64-${pkgver}.pkg.tar")
 sha256sums=('SKIP')
 
+pkgver()
+{
+	printf $(git ls-remote --tags https://github.com/ElyPrismLauncher/ElyPrismLauncher.git | sed 's/.*[/:]//' | tail -n 1) 
+}
+
 package()
 {
 	mkdir ${pkgdir}/usr
