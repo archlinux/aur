@@ -5,7 +5,7 @@
 pkgname='python-qh3-bin'
 _pkgname="${pkgname/-bin}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (pre-compiled)'
 arch=('x86_64')
@@ -27,10 +27,10 @@ package() {
 }
 
 sha256sums=(
-  '9a1a175a0b8732c3e60dcb5595c3f6da66da8c70abb22bbaa67dbca82e91e435'
+  'f0d7845993703cf115c82b9161cc361ddffd91af9d164892297bc009dac70097'
 )
 b2sums=(
-  '31d70a129dac7a3e4570f2d0c38b2d8db5bcb183db6fb16ee2ed093b61032cb8a4ae10e4b5cef83332d330fd934e183534a3c66e7e43c294ef40f619436dad75'
+  '50596bb6e906fd6a3128cd976b494b25ee7cb10e3db055c916d088174efca72e022aac3a9023b3e63ef1788fdf8ddac6833b6dee10028f4446ebf73dd41e27bb'
 )
 
 # eof
