@@ -2,7 +2,7 @@
 pkgname=rpc-gateway-git
 pkgver=0.0.1.r314.7e3aa11
 pkgrel=1
-pkgdesc="RPC Gateway with failover across configured RPC nodes"
+pkgdesc="High-availability Ethereum RPC proxy with automatic failover, load balancing, and request routing capabilities"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kewlfft/rpc-gateway"
 license=('MIT')
@@ -19,7 +19,21 @@ build() {
   cd "$pkgname"
   export CGO_ENABLED=0
   export GOOS=linux
-  go build -o rpcgateway ./cmd/rpcgateway/main.go
+  
+  # Set architecture-specific optimizations
+  case "$CARCH" in
+    x86_64)
+      export GOARCH=amd64
+      export GOAMD64=v4  # Use highest AMD64 microarchitecture level
+      ;;
+    aarch64)
+      export GOARCH=arm64
+      export GOARM=8     # Use highest ARM level
+      ;;
+  esac
+  
+  export GOMAXPROCS=$(nproc)
+  go build -v -trimpath -ldflags="-s -w" -o rpcgateway ./cmd/rpcgateway/main.go
 }
 
 package() {

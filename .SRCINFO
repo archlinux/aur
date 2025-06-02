@@ -1,7 +1,7 @@
 pkgbase = rpc-gateway-git
-	pkgdesc = RPC Gateway with failover across configured RPC nodes
+	pkgdesc = High-availability Ethereum RPC proxy with automatic failover, load balancing, and request routing capabilities
 	pkgver = 0.0.1.r309.d1c47c9
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/kewlfft/rpc-gateway
 	arch = x86_64
 	arch = aarch64
