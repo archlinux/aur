@@ -1,0 +1,4 @@
+[qpdftools]
+source = "git"
+git = "https://github.com/silash35/qpdftools.git"
+prefix = "v"
