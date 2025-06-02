@@ -12,8 +12,8 @@ pkgdesc='A multitrack guitar tablature editor and player'
 arch=('x86_64' 'aarch64')
 url='https://www.tuxguitar.app/'
 license=('LGPL-3.0-or-later')
-depends=('java-runtime' 'gtk3' 'alsa-lib')
-makedepends=('gzip' 'java-environment' 'maven' 'fluidsynth' 'jack' 'lv2' 'suil' 'lilv' 'qt5-base')
+depends=('java-runtime>=9' 'gtk3' 'alsa-lib')
+makedepends=('gzip' 'java-environment>=9' 'maven' 'fluidsynth' 'jack' 'lv2' 'suil' 'lilv' 'qt5-base')
 optdepends=('fluidsynth: FluidSynth plugin support'
             'lv2: LV2 plugin support'
             'suil: LV2 plugin support'

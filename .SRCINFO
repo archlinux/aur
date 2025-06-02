@@ -7,7 +7,7 @@ pkgbase = tuxguitar
 	arch = aarch64
 	license = LGPL-3.0-or-later
 	makedepends = gzip
-	makedepends = java-environment
+	makedepends = java-environment>=9
 	makedepends = maven
 	makedepends = fluidsynth
 	makedepends = jack
@@ -15,7 +15,7 @@ pkgbase = tuxguitar
 	makedepends = suil
 	makedepends = lilv
 	makedepends = qt5-base
-	depends = java-runtime
+	depends = java-runtime>=9
 	depends = gtk3
 	depends = alsa-lib
 	optdepends = fluidsynth: FluidSynth plugin support
@@ -28,7 +28,7 @@ pkgbase = tuxguitar
 	replaces = tuxguitar-common
 	replaces = tuxguitar-gtk2
 	source = tuxguitar-1.6.6.zip::https://github.com/helge17/tuxguitar/archive/refs/tags/1.6.6.zip
-	sha256sums = 6fcc7f6c6fa8dff55e18c92069d543fb7d25183744d12e78bf45e9d666da449d
+	sha256sums = d2dd29bc157097955dc439b5bc38b52ce2f87641498ef618b7252497a31f2465
 	source_x86_64 = https://archive.eclipse.org/eclipse/downloads/drops4/R-4.26-202211231800/swt-4.26-gtk-linux-x86_64.zip
 	sha256sums_x86_64 = fac4cb43891114d56fae2771f3d03759befac05c4777c190662ce24386d332e2
 	source_aarch64 = https://archive.eclipse.org/eclipse/downloads/drops4/R-4.26-202211231800/swt-4.26-gtk-linux-aarch64.zip
