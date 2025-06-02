@@ -1,7 +1,7 @@
 # Maintainer: XiaYeSuiFeng <xiayesuifeng@firerain.me>
 
 pkgname=telepresence2
-pkgver=2.22.4 # renovate: datasource=github-releases depName=telepresenceio/telepresence
+pkgver=2.22.5 # renovate: datasource=github-releases depName=telepresenceio/telepresence
 pkgrel=1
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('go' 'git' 'make' 'jq')
 backup=()
 depends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/telepresenceio/telepresence/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('ba793e3cd290625fd9d656a2bfd93132')
+md5sums=('055320e041244f3c17d0d9b3e0ecb7df')
 
 package() {
   cd "${srcdir}/telepresence-${pkgver}"
