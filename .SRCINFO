@@ -1,6 +1,6 @@
 pkgbase = crl-browser
 	pkgdesc = CRL Browser - PyQt6 based CRL-Browser minimalist browsing
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	arch = any
 	license = MIT

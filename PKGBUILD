@@ -2,7 +2,7 @@
 # Backup contact <admin@azccriminal.space>
 
 pkgname=crl-browser
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="CRL Browser - PyQt6 based CRL-Browser minimalist browsing"
 arch=('any')
