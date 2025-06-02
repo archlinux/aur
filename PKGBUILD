@@ -2,7 +2,7 @@
 
 _pkgname=assimp
 pkgname=mingw-w64-${_pkgname}
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="Portable Open Source library to import various well-known 3D model formats in an uniform manner (mingw-w64)"
 arch=('any')
@@ -13,7 +13,7 @@ checkdepends=('mingw-w64-wine')
 url='http://www.assimp.org/'
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
 options=('!strip' '!buildflags' 'staticlibs') #'!lto'
-sha256sums=('95a7263db4a8478bf0ffa22cedd249f5ef02d7dcafd14d288bbc9a5ca24e5c1d')
+sha256sums=('0c6ec0e601cab4700019c1e60b5cd332cc6355e63e59c11344693623c08a7d38')
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=(
 	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' -DCMAKE_C_FLAGS_RELEASE='-DNDEBUG'
