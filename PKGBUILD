@@ -7,40 +7,24 @@ pkgrel=1
 arch=(any)
 url="https://${_base,,}.io"
 license=(MIT)
-depends=(python-filelock
-  python-platformdirs
+depends=(python-websockets
   python-fasteners
-  python-pdbp
-  python-parse-type
+  # python-mycdp
+  # python-sbvirtualdisplay
   python-colorama
   python-yaml
   python-pygments
-  python-idna
-  python-charset-normalizer
+  python-pdbp
   python-urllib3
   python-requests
-  python-sniffio
-  python-h11
-  python-outcome
-  python-trio
-  python-trio-websocket
-  python-wsproto
-  python-websocket-client
   python-selenium
   python-cssselect
-  python-sortedcontainers
-  python-execnet
-  python-iniconfig
-  python-pluggy
   python-parameterized
   python-behave
-  python-soupsieve
   python-beautifulsoup4
   python-pyotp
-  python-xlib
   python-markdown-it-py
-  python-mdurl
-  python-rich) # python-sbvirtualdisplay python-pynose
+  python-rich)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-rerunfailures selenium-manager chromium)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base,,}/${_base}/archive/v${pkgver}.tar.gz)
