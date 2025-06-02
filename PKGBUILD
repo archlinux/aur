@@ -2,7 +2,7 @@
 # Contributor: éclairevoyant
 _projectname='ocaml-version'
 pkgname="ocaml-$_projectname"
-pkgver='4.0.0'
+pkgver='4.0.1'
 pkgrel='1'
 pkgdesc='Manipulate, parse and generate OCaml compiler version strings'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('dune>=3.6.0')
 checkdepends=('ocaml-alcotest')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('02c15ad6aa712c498e921182a10586dfa7c6cc4dced5923ea7fa28f2485117ac66893bcce595c40eeb6ee2d035c39ffba50ee48f655b39258d56c07958852ce7')
+b2sums=('990426519e62bf6c1e5d4bf6f250efc3ca2d3bb74f4399bb0bd65068f97739d1ef1059339c26095906cbf43d1d4f79292392be890b1f421e19322f9e91330edd')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -29,12 +29,8 @@ check() {
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
-
-	for _folder in "$pkgdir/usr/share/doc/"*; do
-		mv "$_folder" "$pkgdir/usr/share/doc/ocaml-$(basename "$_folder")"
-	done
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc/ocaml' --mandir '/usr/share/man' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/ISC"
+	ln -sf "/usr/share/doc/ocaml/$_projectname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/ISC"
 }

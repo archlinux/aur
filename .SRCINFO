@@ -1,6 +1,6 @@
 pkgbase = ocaml-ocaml-version
 	pkgdesc = Manipulate, parse and generate OCaml compiler version strings
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/ocurrent/ocaml-version
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ocaml-ocaml-version
 	makedepends = dune>=3.6.0
 	depends = ocaml>=4.07.0
 	options = !strip
-	source = ocaml-ocaml-version-4.0.0.tar.gz::https://github.com/ocurrent/ocaml-version/archive/v4.0.0.tar.gz
-	b2sums = 02c15ad6aa712c498e921182a10586dfa7c6cc4dced5923ea7fa28f2485117ac66893bcce595c40eeb6ee2d035c39ffba50ee48f655b39258d56c07958852ce7
+	source = ocaml-ocaml-version-4.0.1.tar.gz::https://github.com/ocurrent/ocaml-version/archive/v4.0.1.tar.gz
+	b2sums = 990426519e62bf6c1e5d4bf6f250efc3ca2d3bb74f4399bb0bd65068f97739d1ef1059339c26095906cbf43d1d4f79292392be890b1f421e19322f9e91330edd
 
 pkgname = ocaml-ocaml-version
