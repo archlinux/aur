@@ -1,5 +1,5 @@
 pkgbase = crl-browser
-	pkgdesc = CRL Browser - PyQt6 based Arch-browser packed with PyInstaller.
+	pkgdesc = CRL Browser - PyQt6 based CRL-Browser minimalist browsing
 	pkgver = 1.2
 	pkgrel = 1
 	arch = any
