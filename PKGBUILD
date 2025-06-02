@@ -2,10 +2,10 @@
 pkgname=python-ignis-git
 _pkgname=ignis
 pkgver=0.5.r61.g1515f46
-pkgrel=1
+pkgrel=2
 pkgdesc="A widget framework for building desktop shells, written and configurable in Python"
 arch=('x86_64')
-url="https://github.com/linkfrg/ignis"
+url="https://github.com/ignis-sh/ignis"
 license=('LGPL-2.1-or-later')
 makedepends=(gobject-introspection
              meson
