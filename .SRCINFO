@@ -1,0 +1,13 @@
+pkgbase = plasma-splash-rem-git
+	pkgdesc = A splash screen loading screen featuring best girl: REM!
+	pkgver = r3.9ab6d38
+	pkgrel = 1
+	url = https://github.com/DhominickJ/sumi
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = plasma-desktop
+	source = plasma-splash-rem-git::git+https://github.com/DhominickJ/sumi.git
+	sha256sums = SKIP
+
+pkgname = plasma-splash-rem-git
