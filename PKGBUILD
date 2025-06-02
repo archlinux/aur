@@ -1,7 +1,7 @@
 #Maintainer: Dråfølin <derg@drafolin.ch>
 
 pkgname=high-tide-git
-pkgver=r425.75acb17
+pkgver=r428.1a2b394
 pkgrel=1
 pkgdesc="Linux client for TIDAL streaming service"
 url="https://github.com/Nokse22/high-tide"
@@ -21,6 +21,9 @@ depends=(
   python
   python-gobject
   python-tidalapi
+)
+optdepends=(
+  'python-discord_rpc: Discord Rich Presence support'
 )
 makedepends=(
   blueprint-compiler
