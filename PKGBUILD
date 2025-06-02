@@ -3,13 +3,13 @@ pkgver=r140.gef7182e
 pkgrel=1
 pkgdesc="A tool to manage system settings easily (git version)"
 arch=('any')
-url="https://github.com/quantumvoid0/better-control"
+url="https://github.com/better-ecosystem/better-control"
 license=('GPL3')
 depends=('gtk3' 'networkmanager' 'bluez' 'bluez-utils' 'pipewire-pulse' 'brightnessctl' 'python-gobject' 'python-dbus' 'python' 'power-profiles-daemon' 'python-psutil' 'python-qrcode' 'python-setproctitle' 'gammastep' 'python-pydbus' 'python-requests' 'usbguard' 'python-pillow')
 makedepends=('git')
 provides=('better-control')
 conflicts=('better-control')
-source=("git+https://github.com/quantumvoid0/better-control.git")
+source=("git+https://github.com/better-ecosystem/better-control.git")
 sha256sums=('SKIP')
 
 pkgver() {
