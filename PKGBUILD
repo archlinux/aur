@@ -71,11 +71,13 @@ package() {
     # Install the pre-built binary to /usr/share/cloudtolocalllm
     install -dm755 "$pkgdir/usr/share/cloudtolocalllm"
 
-    # Copy the pre-built application files
-    if [[ -d "cloudtolocalllm-$pkgver-x86_64" ]]; then
-        cp -r "cloudtolocalllm-$pkgver-x86_64/"* "$pkgdir/usr/share/cloudtolocalllm/"
+    # Copy the pre-built application files (extracted directly to srcdir)
+    if [[ -f "cloudtolocalllm" && -d "data" && -d "lib" ]]; then
+        cp -r cloudtolocalllm data lib "$pkgdir/usr/share/cloudtolocalllm/"
     else
-        echo "Error: Pre-built binary directory not found"
+        echo "Error: Pre-built binary files not found"
+        echo "Expected: cloudtolocalllm binary, data/, lib/ directories"
+        ls -la
         exit 1
     fi
 
