@@ -72,7 +72,7 @@ pkgbase = mutter-mobile
 	sha256sums = 47455e3f33eb13fb1276a943747b1169cec915259fe4b5347b8d7b38b09a0d1e
 
 pkgname = mutter-mobile
-	provides = libmutter-14.so
+	provides = libmutter-16.so
 	provides = mutter=48.r0.g7cb1e9b
 	conflicts = mutter
 

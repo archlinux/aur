@@ -126,7 +126,7 @@ _pick() {
 
 package_mutter-mobile() {
     conflicts=(mutter)
-    provides=(libmutter-14.so mutter=$pkgver)
+    provides=(libmutter-16.so mutter=$pkgver)
 
     meson install -C build --destdir "$pkgdir"
 
