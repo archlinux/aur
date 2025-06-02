@@ -12,7 +12,7 @@ license=('BSD-3-Clause')
 depends=(python-django)
 makedepends=(python-setuptools)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('8e1dba3bbe7761a2295b5b752554c003fc9ca52b7c6606e47033b3f6b92c73bcfcd47dd64c33e063fef0a5b2c664baa1f387934a988f1a321a20b2f8dca34701')
+sha512sums=('107499d7c4590e4b94265db03535e5ec5019ea35229dedd913a0aa9b81257184787b0a8f9a59751c94479a2b4ffcb5ba52c439425eabd5b4cd6c1ccbaa806f03')
 
 build() {
   cd "${_base}-${pkgver}"
