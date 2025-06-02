@@ -1,7 +1,7 @@
 pkgbase = cloudtolocalllm
 	pkgdesc = Multi-tenant streaming LLM management with system tray integration (pre-built binary)
 	pkgver = 2.1.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/imrightguy/CloudToLocalLLM
 	install = cloudtolocalllm.install
 	arch = x86_64
