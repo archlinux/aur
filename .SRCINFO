@@ -1,9 +1,8 @@
 pkgbase = frog-ocr
 	pkgdesc = Intuitive text extraction tool (OCR) for GNOME.
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getfrog.app
-	install = frog-ocr.install
 	arch = any
 	license = MIT
 	checkdepends = appstream-glib
