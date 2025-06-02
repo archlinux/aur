@@ -1,0 +1,14 @@
+pkgbase = mkinitcpio-sd-zfs-poscat
+	pkgdesc = Systemd-based mkinitcpio hooks for ZFS (from poscat0x04)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/poscat0x04/mkinitcpio-sd-zfs
+	arch = any
+	license = MIT
+	depends = mkinitcpio
+	depends = systemd
+	conflicts = mkinitcpio-sd-zfs
+	source = mkinitcpio-sd-zfs.tar.gz::https://github.com/poscat0x04/mkinitcpio-sd-zfs/archive/dece62dfc2b018b7754b29220d9e239ea5056b98.tar.gz
+	sha256sums = 3dcc79915e41c5326135f2c3a8787fd2abfc2fc50c349327ef41222440ba2c4a
+
+pkgname = mkinitcpio-sd-zfs-poscat
