@@ -1,9 +1,0 @@
-/src
-/pkg
-/scalafmt
-*.xz
-*.tar.*
-*.pkg.*
-*.zip
-*.zip.sig
-*.log
