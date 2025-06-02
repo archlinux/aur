@@ -88,8 +88,31 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/cloudtolocalllm" << 'EOF'
 #!/bin/bash
-# CloudToLocalLLM wrapper script with system tray integration
+# CloudToLocalLLM wrapper script with robust system tray integration
+# System tray is enabled by default with proper error handling
+# To disable system tray for debugging, run: DISABLE_SYSTEM_TRAY=true cloudtolocalllm
+
 cd /usr/share/cloudtolocalllm
+
+# Enable debug logging for system tray issues if requested
+if [[ "${DEBUG_SYSTEM_TRAY}" == "true" ]]; then
+    export G_MESSAGES_DEBUG=all
+    echo "Debug mode enabled for system tray troubleshooting"
+fi
+
+# Check for system tray support
+if [[ "${DISABLE_SYSTEM_TRAY}" != "true" ]]; then
+    # Verify desktop environment supports system tray
+    if [[ -z "$XDG_CURRENT_DESKTOP" ]]; then
+        echo "Warning: XDG_CURRENT_DESKTOP not set, system tray may not work properly"
+    fi
+
+    # Check for required libraries
+    if ! ldconfig -p | grep -q libayatana-appindicator; then
+        echo "Warning: libayatana-appindicator not found, system tray may not work"
+    fi
+fi
+
 exec ./cloudtolocalllm "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/cloudtolocalllm"

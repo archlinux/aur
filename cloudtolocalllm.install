@@ -99,7 +99,8 @@ display_installation_info() {
     echo "Getting Started:"
     echo "  • Launch from applications menu: 'CloudToLocalLLM'"
     echo "  • Or run from terminal: 'cloudtolocalllm'"
-    echo "  • The application will minimize to system tray by default"
+    echo "  • The application will start minimized to system tray by default"
+    echo "  • If system tray issues occur: 'DISABLE_SYSTEM_TRAY=true cloudtolocalllm'"
     echo
     echo "Key Features:"
     echo "  • Multi-tenant streaming LLM management"
@@ -119,7 +120,9 @@ display_installation_info() {
     echo "  • Test connection in CloudToLocalLLM settings"
     echo
     echo "Troubleshooting:"
-    echo "  • System tray not visible: Check desktop environment compatibility"
+    echo "  • System tray crashes: Run 'DISABLE_SYSTEM_TRAY=true cloudtolocalllm' to disable"
+    echo "  • Debug system tray: Run 'DEBUG_SYSTEM_TRAY=true cloudtolocalllm' for detailed logs"
+    echo "  • System tray not visible: Check desktop environment compatibility above"
     echo "  • Connection issues: Verify Ollama is running on localhost:11434"
     echo "  • Authentication problems: Check internet connection for web features"
     echo
