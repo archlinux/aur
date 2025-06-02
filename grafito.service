@@ -1,0 +1,26 @@
+[Unit]
+Description=Grafito Log Viewer
+After=network.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+# If set to "systemd-journal" it can access all logs in the system
+# Change if that is not what you want.
+Group=systemd-journal
+
+# --- Authentication Configuration ---
+# Set these environment variables to enable Basic Authentication.
+# If GRAFITO_AUTH_USER and GRAFITO_AUTH_PASS are not set, Grafito will run without authentication.
+#Environment="GRAFITO_AUTH_USER=your_grafito_username"
+#Environment="GRAFITO_AUTH_PASS=your_strong_grafito_password"
+
+# Replace with the actual path to your Grafito directory
+WorkingDirectory=/usr/bin/
+# Replace with the actual path and options to the Grafito binary
+ExecStart=/usr/bin/grafito -b 127.0.0.1 -p 1111
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
