@@ -1,6 +1,6 @@
 pkgname=python-partdb-labeler
 _origpkgname=partdb-labeler
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="print PartDB labels on a Zebra label printer"
 arch=("x86_64")
@@ -20,7 +20,7 @@ makedepends=(
 	"python-flit-core"
 )
 source=("https://gitlab.alfter.us/salfter/partdb-labeler/-/archive/v${pkgver}/partdb-labeler-v${pkgver}.tar.bz2")
-sha256sums=("f68e63d688478739045b87bf7c709d98df38947277e72c92e3c85134a19dc9c3")
+sha256sums=("265b0dc06f8835d00f877a6b6a22a43c159df41ca91033566f041ce1df17ecfa")
 package() {
 	cd "${_origpkgname}-v${pkgver}" || exit
 	python -m build --wheel --no-isolation
