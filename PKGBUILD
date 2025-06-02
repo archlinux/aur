@@ -1,7 +1,7 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 pkgname=rpc-gateway-git
-pkgver=0.0.1.r314.7e3aa11
-pkgrel=2
+pkgver=0.0.1.r6.5ebe911
+pkgrel=1
 pkgdesc="High-availability Ethereum RPC proxy with automatic failover, load balancing, and request routing capabilities"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kewlfft/rpc-gateway"
@@ -11,7 +11,7 @@ source=("$pkgname::git+https://github.com/kewlfft/rpc-gateway.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  # cd "$pkgname"
   printf "0.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -30,8 +30,16 @@ build() {
       ;;
   esac
   
-  export GOMAXPROCS=$(nproc)
-  go build -v -trimpath -ldflags="-s -w" -o rpcgateway ./cmd/rpcgateway/main.go
+  # Get version information
+  VERSION=$(pkgver)
+  COMMIT=$(git rev-parse HEAD)
+  BUILD_TIME=$(date -u '+%Y-%m-%d_%H:%M:%S')
+  
+  go build -v -trimpath -ldflags="-s -w \
+    -X github.com/0xProject/rpc-gateway/internal/version.Version=${VERSION} \
+    -X github.com/0xProject/rpc-gateway/internal/version.GitCommit=${COMMIT} \
+    -X github.com/0xProject/rpc-gateway/internal/version.BuildTime=${BUILD_TIME}" \
+    -o rpcgateway main.go
 }
 
 package() {
