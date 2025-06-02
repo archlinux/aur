@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-mobile
 	pkgdesc = Next generation desktop shell
-	pkgver = 46.r0.g958c555
+	pkgver = 48.r0.gcf9bd6b
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/verdre/gnome-shell-mobile
@@ -59,9 +59,9 @@ pkgbase = gnome-shell-mobile
 	depends = unzip
 	depends = upower
 	depends = webkitgtk-6.0
-	source = git+https://gitlab.gnome.org/verdre/gnome-shell-mobile.git#commit=958c55550b539d03cf6eb990b47bbbf9f9ec11b5
+	source = git+https://gitlab.gnome.org/verdre/gnome-shell-mobile.git#commit=cf9bd6b53932335bbbf413b6d2db7ae74e9e7688
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6
-	sha256sums = 68394e7007110af9dcd070c6813ceea6176f063f44d4ee7cddf0ab4350eb330b
+	sha256sums = 4e2b42451f69ec214b4d6fec8ac8d872f1bf41b1c439a6095bc60914195f1de3
 	sha256sums = 587319b45ff7d989635aed0c3bd9ef834d6e53ae46788cb6ba083d42d7e63855
 
 pkgname = gnome-shell-mobile
@@ -120,11 +120,11 @@ pkgname = gnome-shell-mobile
 	optdepends = python-gobject: gnome-shell-test-tool performance tester
 	optdepends = python-simplejson: gnome-shell-test-tool performance tester
 	optdepends = switcheroo-control: Multi-GPU support
-	provides = gnome-shell=1:46.r0.g958c555
+	provides = gnome-shell=1:48.r0.gcf9bd6b
 	conflicts = gnome-shell
 
 pkgname = gnome-shell-mobile-docs
 	pkgdesc = Next generation desktop shell (API documentation)
 	depends = 
-	provides = gnome-shell-docs=1:46.r0.g958c555
+	provides = gnome-shell-docs=1:48.r0.gcf9bd6b
 	conflicts = gnome-shell-docs

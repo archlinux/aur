@@ -10,7 +10,7 @@ pkgname=(
     gnome-shell-mobile-docs
 )
 pkgdesc="Next generation desktop shell"
-pkgver=46.r0.g958c555
+pkgver=48.r0.gcf9bd6b
 pkgrel=1
 epoch=1
 arch=(
@@ -75,19 +75,19 @@ makedepends=(
     meson
     sassc
 )
-_commit=958c55550b539d03cf6eb990b47bbbf9f9ec11b5 # tags^46-mobile.1
+_commit=cf9bd6b53932335bbbf413b6d2db7ae74e9e7688 # tags^48.mobile.0
 source=(
     "git+https://gitlab.gnome.org/verdre/gnome-shell-mobile.git#commit=$_commit"
     "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6"
 )
 sha256sums=(
-    68394e7007110af9dcd070c6813ceea6176f063f44d4ee7cddf0ab4350eb330b
+    4e2b42451f69ec214b4d6fec8ac8d872f1bf41b1c439a6095bc60914195f1de3
     587319b45ff7d989635aed0c3bd9ef834d6e53ae46788cb6ba083d42d7e63855
 )
 
 pkgver() {
     cd $pkgbase
-    git describe --long --tags --abbrev=7 "$_commit" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g; s/.mobile.0//'
+    git describe --long --tags --abbrev=7 "$_commit" | sed -E 's/^([0-9]+)\.mobile\.[0-9]+-([0-9]+)-g([0-9a-f]+)/\1.r\2.g\3/'
 }
 
 prepare() {
