@@ -1,0 +1,16 @@
+pkgbase = jwtk
+	pkgdesc = A comprehensive CLI JWT toolkit that provides decoding capabilities. JWTK serves as a local alternative to jwt.io with additional features for developers working with JWT tokens.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Hanashiko/jwtk
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = main.go
+	source = go.mod
+	source = go.sum
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = jwtk
