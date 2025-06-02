@@ -35,5 +35,4 @@ done
 exec /usr/bin/${electron} \
 	/usr/share/${name}/resources/app.asar \
 	--ozone-platform-hint=auto \
-	--gtk-version=3 \ # Workaround for bug in electron36: https://github.com/electron/electron/issues/46538#issuecomment-2790356082
 	"${flags[@]}" "$@"
