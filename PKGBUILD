@@ -5,7 +5,7 @@
 pkgname=beast2
 pkgver=2.7.7
 _pkgver=2.7.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Bayesian Evolutionary Analysis by Sampling Trees. https://doi.org/10.1371/journal.pcbi.1003537"
 arch=('any')
 url="http://www.beast2.org/"
@@ -37,8 +37,8 @@ sha256sums=('7c27e4669566c2e8958cb55f2ccf98cc621c0bfbe707b58d0ca15f31ec03e6ba'
             'cb516bf1bfddccd5e7de2c0c1feb82e353a7c872e8c45c9fc552dfd5714fc886'
             '9ca416360e1697768aa5b9cad2cae13b2d9077dd2386d0950466bad6d5cccf60'
             '7b6c125b3dbe7f65cd4903ebca6106893c808f2b444c29aba082f9a66c7ac6af')
-depends=('java-runtime' 'java-openjfx')
-makedepends=('ant' 'java-environment')
+depends=('java-runtime=23' 'java-openjfx=23')
+makedepends=('ant' 'java-environment=23')
 optdepends=('beagle-lib')
 prepare(){
     cd ${srcdir}
