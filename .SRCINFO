@@ -1,6 +1,6 @@
 pkgbase = python-mpl-animators
 	pkgdesc = An interative animation framework for matplotlib
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://sunpy.org
 	arch = any
@@ -17,14 +17,13 @@ pkgbase = python-mpl-animators
 	makedepends = python-matplotlib
 	makedepends = python-sunpy
 	makedepends = python-scipy
-	makedepends = ipython
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/m/mpl_animators/mpl_animators-1.2.1.tar.gz
-	md5sums = f7ef0ed3383245481b395637dae58052
+	source = https://files.pythonhosted.org/packages/source/m/mpl_animators/mpl_animators-1.2.2.tar.gz
+	md5sums = 735400c7210cc1c6e49da608b8eea302
 
 pkgname = python-mpl-animators
 	depends = python-matplotlib>=3.5.0
-	depends = python-astropy>=5.6.0
+	optdepends = python-astropy>=5.3.0: make line or image plots for a numpy array and associated WCS object
 	optdepends = python-mpl-animators-doc: Documentation for mpl-animators
 
 pkgname = python-mpl-animators-doc
