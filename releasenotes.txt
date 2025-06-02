@@ -1,42 +1,114 @@
-# Gaia Sky 3.6.7
+# Gaia Sky 3.6.8 – Release Notes
 
-## Features
-- add composition of timed orbit coordinates and timed orbit coordinates to enable changing orbits during an object's lifetime.
-- update app colors in metainfo file.
-- update metainfo with better screenshots, appropriately sized for flathub.
-- update icons to higher resolution, add macos and round versions.
-- update pointers to project website and docs.
-- add script to test frame output.
-- add instructions to new website in release script.
-- adjust star shader so that sunspots are more prominent. Enable hot reload in star shaders (use `Ctrl`+`Shift`+`Y`).
-- remove music classes and events.
-- increase default line width of recursive grid.
+**Gaia Sky 3.6.8** brings a major UI refresh, significant performance improvements, and many new features and bug fixes.
+
+---
+
+## New Features & Improvements
+
+### User Interface
+- Major UI overhaul: consolidated fonts, updated themes, removed deprecated components.
+- Improved visual quality: increased padding and higher image resolution in UI.
+- Switched to Inter as the default label font.
+- Panels in the main UI now expand when the mouse hovers over the buttons.
+- Welcome window enhancements:
+  - Displays the list of enabled datasets.
+  - New "Recommended Datasets" option for one-click download and launch.
+  - Updated background image.
+
+### Usability Enhancements
+- Time and calendar:
+  - Julian date tab added to date/time dialog.
+  - Time zone support improved; system-default time zone now used.
+- Dialogs remember the last opened tab (e.g. Preferences, About).
+- New star texture selector added to Preferences.
+- New object debug tool available via the debug panel—inspect and edit component fields.
+- Pointer coordinates display disabled by default (can be re-enabled in Preferences).
+- Console output:
+  - Messages and full log can now be copied to the clipboard.
+- Bookmark improvements:
+  - Bookmarks can now include camera position, orientation, time, and settings.
+  - Bookmark information dialog added (accessible via right-click).
+  - Empty folder bookmarks are removed automatically.
+  - Bookmark operations persist immediately.
+  - Invalid characters are now restricted in bookmark and folder names.
+
+### API & Scripting
+- Added:
+  - `setCameraDirectionEquatorial()` and `setCameraDirectionGalactic()`
+  - Enhanced `goToObjectSmooth()` with solid angle and sync options
+- Stars and particles now support a new shading style: `default` or `twinkle`.
+- Added Thiele-Innes conversion script, and support in the Gaia NSS processor.
+
+---
 
 ## Bug Fixes
-- star velocity vectors in VR do not work.
-- star's proper motions do not work in VR.
-- `stopRecordingCameraPath()` does not work.
-- default to .jpg instead of .jpeg as file extension for screenshots and still frames.
-- refreshing orbits sometimes crashes the thread.
-- constellation names sometimes not showing up with LOD catalogs.
-- `FORCE_OBJECT_LABEL_CMD` now accepts an `Entity` type to work with `setForceDisplayLabel(name)` API call.
-- adjust recursive grid labels and base model size.
-- billboard rendering for single stars in VR mode.
-- do not show component types with no style in visibility component or gamepad GUI.
-- focus orientation lock does not work consistently.
-- trajectory scaling.
-- missing translation keys for invisible component type.
-- resotre motion blur settings crashes the app.
-- changelog template contains wrong URL paths.
+
+- Fixed incorrect formatting of uptime duration.
+- Julian vs Gregorian calendar automatically selected based on date.
+- Fixed layout issues in Preferences and other dialogs.
+- UI components:
+  - Image button alignment corrected.
+  - Anchoring of the top info interface improved to prevent jitter.
+  - First UI text size adjusted.
+- Fixed crash when setting data directory to a root drive in Windows ([#825](https://codeberg.org/gaiasky/gaiasky/issues/825)).
+- Fixed crash due to early resolution of `attitudeindicator.png` path when changing data directory ([#795](https://codeberg.org/gaiasky/gaiasky/issues/795)).
+- Improved orbit rendering:
+  - Constant true anomaly spacing used for high-eccentricity orbits.
+  - Better handling of edge cases in Keplerian-to-Cartesian conversion.
+- Reused GZipped file streams no longer break on non-gzipped JSON files.
+- Context menu in bookmarks pane now positioned correctly.
+- Error window layout made consistent.
+- Visibility dialog now properly handles 'Invisible' object types.
+
+---
+
+## Performance Improvements
+
+- Replaced `Apfloat` with `Quadruple`: faster 128-bit floating point math with adequate precision.
+- Reduced short-lived object allocations in many systems.
+- Major speed-up in label rendering via task refactoring.
+- Star size factors now cached instead of recalculated per frame.
+- Internal maps replaced with faster, boxing-free versions.
+- Half-precision (16-bit) floats now used for non-critical star/particle magnitudes.
+- Particle updates split over multiple frames to reduce frame drops.
+- Old particle and variable record types unified into a compact, immutable `Particle` record.
+- `PointCloudData` reimplemented using records with a more compact memory footprint.
+
+---
 
 ## Code Refactoring
-- clean up skins, remove unused icons.
+
+- Removed duplicate star/particle index arrays.
+- Replaced boxed integers with primitives.
+- Top-K particle sorting now uses a priority queue.
+- All shader files renamed to use the `.glsl` extension.
+
+---
 
 ## Build System
-- upgrade to gradle 8.10.
-- remove old downloads-table template, update release script with new instructions regarding release publishing on the new gaiasky.space website.
-- include metainfo file in tarball, flathub now requires this file to come from upstream.
-- remove 16 and 32 pixel icons from launchers. Use only 128px for macOS.
+
+- Upgraded to libGDX 1.13.5.
+- Default builds now use JRE 24 with Generational ZGC for lower latency.
+- Java source compatibility updated from 17 to 20.
+- Gradle upgraded to 8.13.
+- Install4j AUR package URL updated to `gaiasky.space`.
+- Added test infrastructure:
+  - Includes tests for Keplerian-to-Cartesian conversions.
+  - Enabled JUnit dependencies.
+- `gdx-tools` moved to compile-only dependency.
+- Enabled logging for Gradle test runs.
+
+---
 
 ## Documentation
-- update website pointers in readme file.
+
+- Improved descriptions for many fields in the attribute map JSON file.
+
+---
+
+## Merge Requests
+
+- Merged `quadruple` branch (128-bit math support).
+- Merged `particle-update-refactor` branch (particle update system overhaul).
+
