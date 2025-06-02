@@ -116,7 +116,7 @@ build() {
 package_gnome-shell-mobile() {
     conflicts=(gnome-shell)
     provides=(gnome-shell=1:$pkgver)
-    depends+=(libmutter-14.so)
+    depends+=(libmutter-16.so)
     optdepends=(
       'evolution-data-server: Evolution calendar integration'
       'gnome-bluetooth-3.0: Bluetooth support'
