@@ -1,6 +1,6 @@
 # Maintainer: Tom Brown <tom@CarlsonSpeed.com>
 pkgname='videokit-kde'
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="KDE video utility suite that extends Dolphin context menus for transcoding, metadata, etc."
 arch=('any')
@@ -30,6 +30,14 @@ package() {
 
   # Install .desktop file
   install -Dm644 "$srcdir/$pkgname/videokit.desktop" "$pkgdir/usr/share/kio/servicemenus/videokit.desktop"
+
+  # Install service menu icons
+
+  install -Dm644 "$srcdir/$pkgname/transcode.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/transcode.svg"
+  install -Dm644 "$srcdir/$pkgname/transcode.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/transcode.svg"
+  install -Dm644 "$srcdir/$pkgname/videokit.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/videokit.svg"
+  install -Dm644 "$srcdir/$pkgname/videokit.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/videokit.svg"
+
 
   # Install config file
   install -Dm644 "$srcdir/$pkgname/videokit.conf" "$pkgdir/usr/share/videokit/videokit.conf"
