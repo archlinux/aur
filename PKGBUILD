@@ -1,8 +1,8 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 pkgname=rpc-gateway-git
-pkgver=0.0.1.r6.5ebe911
+pkgver=0.0.1.r7.7629b8a
 pkgrel=1
-pkgdesc="High-availability Ethereum RPC proxy with automatic failover, load balancing, and request routing capabilities"
+pkgdesc="RPC gateway with automatic failover, load balancing, and request routing capabilities"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kewlfft/rpc-gateway"
 license=('MIT')
@@ -11,7 +11,6 @@ source=("$pkgname::git+https://github.com/kewlfft/rpc-gateway.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  # cd "$pkgname"
   printf "0.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
