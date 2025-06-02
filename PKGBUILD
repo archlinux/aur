@@ -1,5 +1,5 @@
 pkgname=electron-castlab-bin
-pkgver=v36.3.2+wvcus
+pkgver=v34.4.1+wvcus
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/castlabs/electron-releases"
