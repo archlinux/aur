@@ -1,6 +1,6 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 pkgname=pyrefly
-pkgver=0.16.3
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="A fast type checker and IDE for Python"
 arch=("x86_64")
@@ -8,12 +8,11 @@ url="https://github.com/facebook/pyrefly"
 license=("MIT")
 makedepends=(
   "cargo-nightly"
-  "clang"
   "git"
-  "lld"
 )
+options=(!lto)
 source=("git::git+https://github.com/facebook/pyrefly#tag=${pkgver}")
-sha256sums=('624e856dbac3e68249386c88ce693a2b7de5d9ff3cf5f4c5c2769ecb3d08bbf8')
+b2sums=('44ef00d0962a99549ba9b93b0cfc169438fb60868094e9c6787533cc6db31c543a12dbd9db0c06723d8c06c31beef01753c6396997bb8f14ae30da7a075517ab')
 
 prepare() {
   cd "${srcdir}/git/pyrefly"
@@ -22,14 +21,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/git/pyrefly"
-  CC=clang RUSTFLAGS+=" -Clinker-plugin-lto -Clinker=clang -Clink-arg=-fuse-ld=lld" \
-    cargo build --release --frozen
+  cargo build --release --frozen
 }
 
 check() {
   cd "${srcdir}/git/pyrefly"
-  CC=clang RUSTFLAGS+=" -Clinker-plugin-lto -Clinker=clang -Clink-arg=-fuse-ld=lld" \
-    cargo check
+  cargo check
 }
 
 package() {
