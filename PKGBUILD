@@ -2,14 +2,14 @@
 
 _gitbranch=main
 _gitauthor=devemio
-pkgname=docker-color-output
+pkgname=docker-color-output-git
 pkgver=2.6.1
-pkgrel=22
+pkgrel=23
 pkgdesc="Colors for Docker CLI"
 arch=('x86_64')
 license=('MIT')
-url="https://github.com/${_gitauthor}/${pkgname}"
-source=("docker-color-output::https://github.com/${_gitauthor}/${pkgname}/releases/download/v${pkgver}/${pkgname}-linux-amd64")
+url="https://github.com/${_gitauthor}/${pkgname%-git}"
+source=("docker-color-output::https://github.com/${_gitauthor}/${pkgname%-git}/releases/download/v${pkgver}/${pkgname%-git}-linux-amd64")
 sha512sums=('SKIP')
 makedepends=("go" "git")
 conflicts=("${pkgname%-git}")
