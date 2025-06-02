@@ -6,7 +6,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
 pkgver=0.5.19.r136.g703f805
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Gaming Platform"
 arch=('any')
 url="https://lutris.net"
@@ -32,6 +32,7 @@ depends=(
   'python-pillow'
   'python-requests'
   'python-setproctitle'
+  'python-urllib3'
   'python-yaml'
   'unzip'
   'webkit2gtk-4.1'
@@ -56,7 +57,9 @@ optdepends=(
   'innoextract: Extract Inno Setup installers'
   'lib32-gamemode: Allows games to request a temporary set of optimisations'
   'lib32-glibc: for 32bit games support'
+  'lib32-gnutls: Required to login to some game platforms (e.g. Ubisoft Connect, EA Origin and GOG)'
   "lib32-mangohud: Display the games' FPS + other information"
+  'lib32-mesa-libgl: OpenGL support'
   'lib32-vkd3d: DirectX 12 support'
   'lib32-vulkan-icd-loader: Vulkan support'
   'libayatana-appindicator: tray icon support'
