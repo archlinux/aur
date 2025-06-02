@@ -1,19 +1,19 @@
 # Maintainer: jooch <jooch at gmx dot com>
 pkgname=universal-gcode-sender
-pkgver=2.0.18
+pkgver=2.1.14
 pkgrel=1
 pkgdesc="Java based GRBL compatible cross-platform G-Code sender"
 arch=(any)
 url="https://github.com/winder/Universal-G-Code-Sender"
 license=(GPL3)
-makedepends=(jdk13-openjdk-bin npm maven)
-depends=(jdk13-openjdk-bin npm)
+makedepends=(java-runtime=17 npm maven)
+depends=(java-runtime=17 npm)
 provides=(universal-gcode-sender)
 conflicts=(universal-gcode-sender-git)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/winder/Universal-G-Code-Sender/archive/v${pkgver}.tar.gz"
 	"universal-gcode-sender.desktop"
 	"ugs_logo_square.svg")
-sha256sums=('d893f6d63513d698d3968d5c76ec62415ae4466b1a1d8635f963b32130012d07'
+sha256sums=('3d36c0c8539d78df09d9f930989d334512266590a8204e9469f8bd2ed10824a0'
 	    'bb2c016d343490bdbf666aeb1c7de479af21d9cb1c37d506e289fc9122e00b7d'
 	    '821f25d7fb74e6fc831a05d3220e1a70561833f725cd43b8566854ca05290d9a')
 
@@ -25,7 +25,7 @@ build() {
   cd "${srcdir}/Universal-G-Code-Sender-${pkgver}"
 
   export MAVEN_OPTS="-Xmx2048m"
-  export JAVA_HOME=/usr/lib/jvm/java-13.0.1-openjdk
+  export JAVA_HOME="$(pacman -Ql java-runtime=17 | grep -oE -m1 '/usr/lib/jvm/[^/]+')"
   mvn test install -B -Djava.util.logging.config.file=scripts/logging.config
   mvn package -pl ugs-classic assembly:assembly -DskipTests=true
   mvn package -pl ugs-platform/application -P create-linux-package -DskipTests=true

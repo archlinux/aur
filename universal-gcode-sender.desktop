@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Universal G-Code Sender
 Comment=A Java based, cross platform G-Code sender, compatible with GRBL, TinyG, g2core and Smoothieware.
-Exec=ugs
+Exec=ugs --jdkhome "$(pacman -Ql java-runtime=17 | grep -oE -m1 '/usr/lib/jvm/[^/]+')"
 Icon=/opt/universal-gcode-sender/ugs_logo_square.svg
 Terminal=false
 Type=Application
