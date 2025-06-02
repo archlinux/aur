@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname=journalctl-desktop-notification
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Notifies you on the desktop when any error message appears in the Journalctl log."
 arch=('any')
@@ -13,7 +13,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 backup=("etc/${pkgname}.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7b697ad9660d0deb4b87b909e773435759ce1af723b1e7c99f50e2f36be412bc')
+sha256sums=('ffed82d2ed9a4c3d58438604472711822dd09f634f0238b92ffd1275840867a5')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
