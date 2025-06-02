@@ -3,14 +3,14 @@
 
 pkgname=busybox-udhcpc
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Busybox DHCP client"
 arch=('x86_64')
 url="https://www.busybox.net"
 license=('GPL')
 depends=('busybox')
 source=("https://gitlab.alpinelinux.org/alpine/aports/-/raw/master/main/busybox/default.script")
-sha256sums=('c4e5a7c4783a7a73dec48dee009ee687015d2de7ff86b269679b95bef2c60e13')
+sha256sums=('1cf94e3918ce389c722f4408490ae7334321a5ca2aec2c945b0c47662aa274a6')
 
 package() {
   install -Dm755 "default.script" "${pkgdir}/usr/share/udhcpc/default.script"
