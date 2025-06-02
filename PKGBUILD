@@ -2,12 +2,12 @@
 pkgbase=uutils-coreutils-selinux
 pkgname=(${pkgbase} coreutils-uutils-selinux)
 pkgver=0.1.0
-pkgrel=3
+pkgrel=34
 arch=('x86_64')
 license=('MIT')
 url='https://uutils.github.io/'
 depends=(gcc-libs glibc oniguruma libselinux)
-makedepends=( rust mold)
+makedepends=( rust mold clang ) #libclang.so
 source=($pkgname-$pkgver.tar.gz::https://github.com/uutils/coreutils/archive/$pkgver.tar.gz)
 sha256sums=('55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8')
 options=('!lto') # RUSTFLAGS?

@@ -1,11 +1,12 @@
 pkgbase = uutils-coreutils-selinux
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 34
 	url = https://uutils.github.io/
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = mold
+	makedepends = clang
 	depends = gcc-libs
 	depends = glibc
 	depends = oniguruma
