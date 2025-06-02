@@ -6,7 +6,10 @@ pkgbase = portchaos
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	depends = glibc
 	source = main.go
+	source = LICENSE
 	sha256sums = 3cfdfe0f1bb92bcce056854a6fd8ef8b545381657285c0eecc9f09206f42d760
+	sha256sums = 2caa115b6f809a4f34067ba1bc7550b2f5f39e1915d88eed9d77bc30af278022
 
 pkgname = portchaos
