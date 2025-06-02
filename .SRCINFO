@@ -1,0 +1,13 @@
+pkgbase = hyprland-simple-setup
+	pkgdesc = Minimalistic Hyprland setup
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/Firstp1ck/Hyprland_Simple_Setup
+	arch = any
+	license = GPL3
+	depends = git
+	depends = hyprland
+	source = hyprland-simple-setup::git+https://github.com/Firstp1ck/Hyprland_Simple_Setup.git
+	sha256sums = SKIP
+
+pkgname = hyprland-simple-setup
