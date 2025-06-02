@@ -11,7 +11,6 @@ pkgbase = thinkfan
 	depends = libatasmart
 	depends = yaml-cpp
 	optdepends = lm_sensors: hwmon support
-	backup = etc/systemd/system/thinkfan.service.d/override.conf
 	source = thinkfan-2.0.0.tar.gz::https://github.com/vmatare/thinkfan/archive/2.0.0.tar.gz
 	source = thinkfan.service
 	source = thinkpad_acpi.conf

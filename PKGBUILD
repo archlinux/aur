@@ -12,7 +12,6 @@ arch=('i686' 'x86_64')
 makedepends=('cmake')
 depends=('libatasmart' 'yaml-cpp')
 optdepends=('lm_sensors: hwmon support')
-backup=('etc/systemd/system/thinkfan.service.d/override.conf')
 license=('GPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vmatare/$pkgname/archive/$pkgver.tar.gz"
         'thinkfan.service'
@@ -33,13 +32,12 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   install -d -m755 "$pkgdir"/usr/{bin,lib/{modprobe.d,systemd/system},share/{doc/"$pkgname"/{,examples},man/man{1,5}}}
-  install -d -m755 "$pkgdir"/etc/systemd/system/thinkfan.service.d
   install -D -m755 "$pkgname" "$pkgdir"/usr/bin
   install -D -m644 examples/* "$pkgdir"/usr/share/doc/"$pkgname"/examples
   install -D -m644 "$pkgname".1 "$pkgdir"/usr/share/man/man1
   install -D -m644 "$pkgname".conf.5 "$pkgdir"/usr/share/man/man5
   install -D -m644 "$srcdir/$pkgname".service rcscripts/systemd/thinkfan-{sleep,wakeup}.service "$pkgdir"/usr/lib/systemd/system
-  install -D -m644 rcscripts/systemd/override.conf "$pkgdir"/etc/systemd/system/thinkfan.service.d
+  install -D -m644 rcscripts/systemd/override.conf "$pkgdir"/usr/lib/systemd/system/thinkfan.service.d
   install -D -m644 "$srcdir"/thinkpad_acpi.conf "$pkgdir"/usr/lib/modprobe.d
 }
 
