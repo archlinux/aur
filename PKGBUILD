@@ -2,10 +2,10 @@
 
 pkgname=obsidian-bin
 pkgver=1.8.10
-pkgrel=3
+pkgrel=4
 pkgdesc="A powerful knowledge base that works on top of a local folder of plain text Markdown files. (Official binary package with bundled Electron)"
 arch=('x86_64')
-url="https://obsidian.md"
+url="https://github.com/obsidianmd/obsidian-releases/"
 license=('custom')
 depends=(
     'gtk3'
@@ -22,7 +22,7 @@ optdepends=('libappindicator-gtk3: for tray support')
 conflicts=('obsidian')
 provides=('obsidian')
 options=(!strip)
-source=("https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/obsidian_${pkgver}_amd64.deb")
+source=("${url}releases/download/v${pkgver}/obsidian_${pkgver}_amd64.deb")
 sha256sums=('da19b2755013e9def37271cf04ce7485c03a22fa02b0951e4108884dcd1bd774')
 install="obsidian.install"
 
