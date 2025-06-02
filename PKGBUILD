@@ -28,7 +28,7 @@ prepare()
 
 pkgver()
 {
-	git ls-remote --tags https://github.com/obsidian-level-maker/Obsidian.git | sed 's/^Obsidian-v//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^[^=:]*[=v]//' | tail -n 1
+	printf $(git ls-remote --tags https://github.com/obsidian-level-maker/Obsidian.git | sed 's/^Obsidian-v//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^[^=:]*[=v]//' | tail -n 1)
 }
 
 build()
