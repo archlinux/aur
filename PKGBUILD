@@ -5,21 +5,22 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.17.r474.gcc8dba1
+pkgver=0.5.19.r136.g703f805
 pkgrel=1
 pkgdesc="Open Gaming Platform"
 arch=('any')
 url="https://lutris.net"
 license=('GPL-3.0-or-later')
 depends=(
+  '7zip'
   'cabextract'
   'curl'
   'glib2'
   'gnome-desktop'
   'gtk3'
   'hicolor-icon-theme'
+  'libnotify'
   'mesa-utils'
-  'p7zip'
   'psmisc'
   'python-cairo'
   'python-certifi'
@@ -30,6 +31,7 @@ depends=(
   'python-moddb'
   'python-pillow'
   'python-requests'
+  'python-setproctitle'
   'python-yaml'
   'unzip'
   'webkit2gtk-4.1'
@@ -96,7 +98,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --no-rebuild --print-errorlogs
 
   cd "${pkgname%-git}"
 
@@ -108,5 +110,5 @@ check() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
