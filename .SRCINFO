@@ -1,6 +1,6 @@
 pkgbase = ttf-sarasa_ui
 	pkgver = 1.0.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/be5invis/Sarasa-Gothic/
 	arch = any
 	license = OFL
