@@ -6,6 +6,7 @@ pkgname="$_pkgname-appimage"
 pkgver=2121.2
 
 pkgrel=1
+epoch=1
 pkgdesc="Azahar is an open-source 3DS emulator project based on Citra. (already compiled)"
 url="https://azahar-emu.org"
 license=("GPL2")
