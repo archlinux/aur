@@ -1,4 +1,4 @@
-pkgbase = coreutils-uutils-missing
+pkgbase = uutils-coreutils-missing
 	pkgdesc = Missing files from uutils-coreutils by bug
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -8,4 +8,4 @@ pkgbase = coreutils-uutils-missing
 	depends = uutils-coreutils
 	options = zipman
 
-pkgname = coreutils-uutils-missing
+pkgname = uutils-coreutils-missing

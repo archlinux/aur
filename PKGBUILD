@@ -1,4 +1,4 @@
-pkgname=coreutils-uutils-missing
+pkgname=uutils-coreutils-missing
 pkgver=0.1.0
 pkgrel=1
 pkgdesc='Missing files from uutils-coreutils by bug'
