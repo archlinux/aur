@@ -1,7 +1,7 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-arch
 pkgver=202506021
-pkgrel=1
+pkgrel=2
 pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL3')
@@ -37,7 +37,7 @@ package() {
     install -Dm644 "$tmpdir/defaults/pref/phoenix-desktop.js" "$pkgdir/etc/firefox/defaults/pref/phoenix-desktop.js"
     install -Dm644 "$tmpdir/etc/profile.d/phoenix-env-overrides.sh" "$pkgdir/etc/profile.d/phoenix-env-overrides.sh"
     install -Dm644 "$tmpdir/phoenix.cfg" "$pkgdir/etc/firefox/phoenix.cfg"
-    install -Dm644 "$tmpdir/policies.json" "$pkgdir/etc/firefox/policies/policies.json"
+    install -Dm644 "$tmpdir/policies/policies.json" "$pkgdir/etc/firefox/policies/policies.json"
     install -Dm644 "$tmpdir/symlinks/opt/firefox/phoenix.cfg" "$pkgdir/opt/firefox/phoenix.cfg"
     install -Dm644 "$tmpdir/symlinks/usr/lib/firefox/phoenix.cfg" "$pkgdir/usr/lib/firefox/phoenix.cfg"
     install -Dm644 "$tmpdir/symlinks/usr/lib64/firefox/phoenix.cfg" "$pkgdir/usr/lib64/firefox/phoenix.cfg"
