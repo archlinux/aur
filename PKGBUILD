@@ -1,7 +1,7 @@
 # Maintainer:  Al S <tei8ho.aur.al@ila5.info>
 pkgname=imdone-bin
 _pkgname=imdone
-pkgver=1.28.4
+pkgver=1.54.1
 pkgrel=1
 pkgdesc="Simple and powerful kanban board that works on top of a local folder of plain text markdown files or code."
 arch=('i686' 'x86_64')
@@ -14,9 +14,9 @@ replaces=()
 backup=()
 options=()
 source=("https://imdone.io/downloads/${_pkgname}-${pkgver}.deb"
-        'https://imdone.io/eula')
-sha512sums=('5d58807bcb322e05238f499ec819dd5c7eec8cf81c0844699c506296fe7365c58df2ecfe1104509cdddead3a11b117c4defc5490aaad25d2e2037e6cde54b9e7'
-            'SKIP')
+  'https://imdone.io/eula')
+sha512sums=('30f78582f11a8ccd5494c9a95733666218c89876aa1fa4b47e820c51686da0cdfc1054f112f56070157760c857d9b673ae5099f264c779cad613058dcc7d2538'
+  'SKIP')
 package() {
   install -Dm644 eula "${pkgdir}/usr/share/licenses/${_pkgname}/eula.html"
   bsdtar -xf data.tar.xz -C "$pkgdir/"
