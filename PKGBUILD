@@ -3,46 +3,43 @@
 pkgname=grep-compat
 _pkgname=grep
 pkgver=3.12
-pkgrel=2
+pkgrel=3
 pkgdesc='A string search utility (without egrep and fgrep warnings when used in scripts)'
 arch=('x86_64')
 license=('GPL3')
 url='https://www.gnu.org/software/grep/'
 depends=('glibc' 'pcre2')
-makedepends=('gperf' 'git' 'python' 'texinfo' 'wget')
+makedepends=('texinfo')
 provides=('grep')
 conflicts=('grep')
-source=("git+https://git.savannah.gnu.org/git/grep.git#tag=v${pkgver}"
-        "git+https://git.savannah.gnu.org/git/gnulib.git")
-sha256sums=('9543190d9ca2201ea46fddaeb39031a0acde1f6aa4351a72f33ef3455e6dd41e'
-            'SKIP')
+source=("https://ftp.gnu.org/gnu/$_pkgname/$_pkgname-$pkgver.tar.xz")
+sha256sums=('2649b27c0e90e632eadcd757be06c6e9a4f48d941de51e7c0f83ff76408a07b9')
 
 prepare() {
-  cd $_pkgname
-
-  git submodule init
-  git config submodule.gnulib.url "${srcdir}/gnulib"
-  git -c protocol.file.allow=always submodule update
-
-  git cherry-pick -n \
-    '2e19d07ef1c08c3ce4771bb1bfee1ae6541f1c0d'
-
-  sh bootstrap
+  cd $_pkgname-$pkgver
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 }
 
 build() {
-  cd $_pkgname
+  cd $_pkgname-$pkgver
   ./configure --prefix=/usr
   make
 }
 
 check() {
-  cd $_pkgname
+  cd $_pkgname-$pkgver
   make check
 }
 
 package() {
-  cd $_pkgname
+  cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 
   # add egrep wrapper script with no warnings
