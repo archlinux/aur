@@ -1,6 +1,6 @@
 pkgbase = python-aqtinstall
 	pkgdesc = aqt: Another (unofficial) Qt CLI Installer on multi-platforms
-	pkgver = 3.2.1
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/miurahr/aqtinstall
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-aqtinstall
 	depends = python-requests
 	depends = python-semantic-version
 	depends = python-texttable
-	source = https://pypi.io/packages/source/a/aqtinstall/aqtinstall-3.2.1.tar.gz
-	sha256sums = 80005d4f8eebd50487a87fec2de4d4f808bb72fc923026eef9e3575795f801bf
+	source = https://pypi.io/packages/source/a/aqtinstall/aqtinstall-3.3.0.tar.gz
+	sha256sums = 9c7d85fbe7258be2d7d23fda33f8aff2e8b7536817255eaeaaf4226da8546a31
 
 pkgname = python-aqtinstall

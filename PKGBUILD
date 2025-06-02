@@ -3,7 +3,7 @@
 
 _name=aqtinstall
 pkgname=python-aqtinstall
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='aqt: Another (unofficial) Qt CLI Installer on multi-platforms'
 arch=(any)
@@ -22,7 +22,7 @@ depends=(
 makedepends=(python-build python-installer python-wheel python-setuptools-scm)
 checkdepends=(twine)
 source=("https://pypi.io/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('80005d4f8eebd50487a87fec2de4d4f808bb72fc923026eef9e3575795f801bf')
+sha256sums=('9c7d85fbe7258be2d7d23fda33f8aff2e8b7536817255eaeaaf4226da8546a31')
 
 build() {
     cd "$_name-$pkgver"
