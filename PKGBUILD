@@ -2,9 +2,9 @@
 
 _name=pyaragorn
 pkgname=python-${_name}
-pkgver=0.1.0
+pkgver=0.2.0
 _extraver=""
-pkgrel=2
+pkgrel=1
 pkgdesc="Cython bindings to ARAGORN, a tRNA, tmRNA and mtRNA gene finder."
 url="https://github.com/althonos/pyaragorn"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ license=("GPL-3.0-or-later")
 depends=('python')
 makedepends=('cython' 'python-pycparser' 'python-build' 'python-installer' 'cmake' 'ninja' 'python-scikit-build-core')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-${pkgver}${_extraver}.tar.gz")
-sha256sums=(17dcee8bb9213eafdd0a1d509f03328f39e18ab00cee2ab119ceca7e0b223f19)
+sha256sums=(a47332ecb3fa498de4e500740702ecfea141912152581ddac1654aaa7399b178)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}${_extraver}"
