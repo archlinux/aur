@@ -1,31 +1,24 @@
-                        Regina  3.9.6
-                         29 Apr 2024
 
-Changes in this release (from 3.9.5)
+                        Regina  3.9.7
+                         18 Mar 2025
+
+Changes in this release (from 3.9.6)
 ------------------------------------
   * Bugs Fixed:
-    - Crash with UPPER and LOWER BIFs
-    - #560 MAX(1m2m05,0,4)   returns 5     (not what the doc says)
-    - #561 Crash with 10 trace off
-    - #564 Two STREAM QUERY EXISTS generate wrong result Rexx >= 3.7
-    - #575 Parsing fails
-    - #581 Silly syntax typo causes Regina to CRASH
-    - #583 Trace "Failure" ineffective.
-    - #586 syssearchpath() under Windows not using updated
-    - #588 Configure probes for gethostbyname_r and getpwuid_r fail incorrectly with strict compilers
-    - #589 Translate BIF only translates aplha characters
-    - #593 bad format, numeric digits not honoured
-    - #594 FORMAT(123.4573, ,3,0,0)
-  * Feature Requests:
-    - #44 Regina pauses at execution end - installation check box pls
-  * Potentially improve performance by reducing initial variable pool hash size from
-    2003 to 227. Certainly improves rexxcps - suggested by Jake Hamby
-  * Add REGINA_HASHTABLELENGTH to enable initial variable pool size to be changed
-    at runtime. This value MUST be a prime number! Use with caution.
-  * Add sysgetline() and sysgetlinehistory() to Regutil; implementation of GNU Readline
-    (actually added in v3.9.5)
-  * Add handling support for SIGUSR1 and SIGUSR2 to turn on/off TRACE I
-  * Add ReginaGetAddonDir() API call to obtain location where Regina looks for external function packages
-  * Initial support for Windows ARM64 platform
-  * Check for Windows 11 and arm/arm64 architecture in UNAME BIF
-  * Add OPTION STRICT_ANSI_FORMAT_BIF to apply strict ANSI rules to the FORMAT BIF
+    - #580 Missing files in SVN trunk (target Windows)
+    - #587 https://regina-rexx.sourceforge.io/ Sourceforge links mostly broken
+    - #595 Unexpected NUL bytes from changestr()
+    - #596 stream(filename,"C","OPEN WRITE REPLACE") fails, but "CREATE" works
+    - #598 Implicit command doesn't recognize arguments
+    - #600 Erroneous syntax error 37
+    - #602 Error "System resources exhausted" on Haiku
+    - #606 regina.dll reports WIN8 for Windows 11 systems
+    - #607 Visual C++ 4.0 build is broken
+    - #609 CENTER regression
+    - #610 CALL X(SIGL) passes **updated** SIGL as ARG(1)
+    - #612 Problems with cc23
+    - #613 Fixed typos in PDF
+
+  * Implement return of available memory via STORAGE() and FREESPACE() for Windows and Linux
+  * Distribute binary error message files as source so Regina can be cross-compiled
+  * Add rexxtry.rexx test program

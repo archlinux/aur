@@ -12,8 +12,8 @@ _pkgsuff=rexx
 pkgname=(regina-rexx{,-doc})
 pkgdesc='ANSI compliant REXX interpreter for multiple platforms'
 epoch=1
-pkgver=3.9.6
-pkgrel=8
+pkgver=3.9.7
+pkgrel=1
 url='https://regina-rexx.sourceforge.io/'
 source=(
   "https://downloads.sourceforge.net/regina-rexx/$_pkgname-$_pkgsuff-$pkgver.tar.gz"
@@ -83,10 +83,10 @@ package_regina-rexx-doc() {
 }
 
 sha256sums=(
-  'ed98c7a7f1d5a4148b02fef1b16aee4a6a6d8658d01a80cf5c503015ef01afa5'
+  'f13701ebd542e74d0fc83b2a7876a812b07d21e43400275ed65b1ac860204bd4'
 )
 b2sums=(
-  'd869f9285e0fa0810b690d97932059aa6d3aaf0d99355bad18ffd480cc322a076928d08fce03893124a0ebd330a55ac9b6c580657e92601d8204a2a0b3c15406'
+  '96908aea8327703c22d7d2c7e70781e51bd11fc7473736963f85604d8014e5f561796f8743b8c6d23c4a2fd8ee3f1ebd2afa44134d3652c6b57f4f113b206f01'
 )
 
 # eof
