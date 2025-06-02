@@ -3,7 +3,7 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=('mod_tile-git' 'renderd-git')
-pkgver=0.8.1.r0.ge8ac8f1
+pkgver=0.8.1.r1.gf0811e8
 pkgrel=1
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
