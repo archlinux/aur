@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-auth
-pkgver=4.3.6
-pkgrel=2
+pkgver=4.4.0
+pkgrel=1
 pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
 arch=('x86_64' 'aarch64')
 url="https://ente.io/auth"
@@ -12,6 +12,7 @@ depends=(
   'libsecret'
   'libsodium-1.0.18'
   'sqlite'
+  'zenity'
 )
 makedepends=(
 #  'chrpath'
@@ -21,7 +22,6 @@ makedepends=(
   'jdk17-openjdk'
   'ninja'
   'unzip'
-  'zenity'
 )
 source=("git+https://github.com/ente-io/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/ente-io/sentry-dart.git'
@@ -29,7 +29,7 @@ source=("git+https://github.com/ente-io/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/simple-icons/simple-icons.git'
         'git+https://github.com/ente-io/flutter_distributor_fork.git#branch=develop'
         'enteauth.desktop')
-sha256sums=('72acafe67ddf47550b27c69bc5e4f600d6ffb506440fd5330c5b334b910b71ad'
+sha256sums=('95e3e41ca132fb574ff727fd4ea3467e3f892a775af719c0322b9154daa8e1ce'
             'SKIP'
             'SKIP'
             'SKIP'
