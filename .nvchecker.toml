@@ -1,0 +1,3 @@
+[perl-text-layout]
+source = "cpan"
+cpan = "Text-Layout"
