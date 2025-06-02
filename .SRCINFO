@@ -1,14 +1,13 @@
 pkgbase = xvile
 	pkgdesc = vi like emacs
 	pkgver = 9.8_za
-	pkgrel = 2
+	pkgrel = 3
 	url = http://invisible-island.net/vile/vile.html
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = vile
 	depends = xaw3d
-	depends = libxft
 	options = !libtool
 	source = https://invisible-island.net/archives/vile/current/vile-9.8za.tgz
 	sha256sums = 65ba15ec145dfc5506217162228c7d88f01c0490a0dccde7a8a19f1c7c1b93b2
