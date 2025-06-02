@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=139.0a1+20250402.1+hbefa35dc6ab4
+pkgver=141.0a1+20250602.1+h5d1f6b7f3ffb
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
@@ -182,6 +182,9 @@ build() {
   export MOZ_ENABLE_FULL_SYMBOLS=1
   export MOZ_NOSPAM=1
   export MOZ_SOURCE_REPO="$_repo"
+
+  # Work around https://bugzilla.mozilla.org/show_bug.cgi?id=1969383
+  export RUST_MIN_STACK=16777216
 
   # malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
