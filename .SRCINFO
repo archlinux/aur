@@ -1,4 +1,4 @@
-pkgbase = hyprland-simple-setup
+pkgbase = hyprland-simple-setup-git
 	pkgdesc = Minimalistic Hyprland setup
 	pkgver = 0.3.2
 	pkgrel = 1
