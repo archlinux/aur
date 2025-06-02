@@ -1,18 +1,18 @@
 # Maintainer: Richard Garber <rg.1029384756@gmail.com>
 
 pkgname=yaacs
-pkgver=1.4.1
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Convert your Audiobooks to Opus in parallel"
 url="https://github.com/rgarber11/yaacs"
 arch=('any')
-license=(MIT)
+license=(GPL-2.0-only)
 # NOTICE: The number of dependencies we rely on is *very high*. If the program does not run after an upgrade, make sure all your deps are upgraded, especially AUR deps!
-depends=('python>=3.9' 'opustags' 'mkvtoolnix-cli' 'ffmpeg' 'python-packaging')
+depends=('python>=3.9' 'ffmpeg' 'python-packaging' 'python-mutagen')
 
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-lark-parser')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('034e4b9100fbb326966a9ef383239045dac7ab834d5015672f65421402ee7c5e')
+sha256sums=('203598524844af0055f4c247730f8d2cfeb7592716a406100ddb0800e56226fd')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
