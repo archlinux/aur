@@ -1,6 +1,6 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=simplearchiver
-pkgver=1.26
+pkgver=1.27
 pkgrel=1
 pkgdesc="An alternative to tar"
 arch=(x86_64)
@@ -16,11 +16,14 @@ sha256sums=(SKIP)
 
 prepare() {
     cd "${pkgname}"
-    cmake -S . -B BuildRel -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_DEBUGGING_INFO=On
+    cmake -S . -B BuildRel \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_WITH_DEBUGGING_INFO=On \
+        -DSDSA_OVERRIDE_VERSION_STRING="${pkgver} \\(AUR\\)"
 }
 
 build() {
-	make -C "${pkgname}/BuildRel"
+    make -C "${pkgname}/BuildRel"
 }
 
 check() {
