@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/winder/Universal-G-Code
 	"universal-gcode-sender.desktop"
 	"ugs_logo_square.svg")
 sha256sums=('3d36c0c8539d78df09d9f930989d334512266590a8204e9469f8bd2ed10824a0'
-	    'bb2c016d343490bdbf666aeb1c7de479af21d9cb1c37d506e289fc9122e00b7d'
+	    'a9b9014f7e154d9e789f0774e0efab1015fdfa67e0af866ec56507d66a6d0f69'
 	    '821f25d7fb74e6fc831a05d3220e1a70561833f725cd43b8566854ca05290d9a')
 
 prepare() {
