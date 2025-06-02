@@ -1,6 +1,6 @@
 pkgbase = air
 	pkgdesc = Live reload for Go apps
-	pkgver = 1.61.7
+	pkgver = 1.62.0
 	pkgrel = 1
 	url = https://github.com/air-verse/air
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = air
 	depends = glibc
 	depends = go
 	options = !lto
-	source = air::git+https://github.com/air-verse/air.git#commit=ad8fbb7a1cfba030dc09ae592b2fdc1c2eac6d15
-	b2sums = 54b75a56eea993ee7e8685a327476d80ffc2fa37d92d7fa6c0f3da00891de6a457bfebc1668858b9b83ffc5e4fd4d83e81c8e142e4ff6138a63c968d68a628bd
+	source = air::git+https://github.com/air-verse/air.git#commit=6ba3c07ce640f1c79ada44c41b7484ddbec893e8
+	b2sums = 962631b431a366fe543fa8cfc9df249851cc91f4f4d379f47aeda2275b2e46e9d254840cdc8f01c373f60b6a959a1654da1a37ab6911e5f1061991d682143dab
 
 pkgname = air
