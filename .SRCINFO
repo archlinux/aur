@@ -1,6 +1,6 @@
 pkgbase = gnome-settings-daemon-mobile
 	pkgdesc = GNOME Settings Daemon
-	pkgver = 46.r0.gee5d1b2
+	pkgver = 48.r0.g7dbef7e
 	pkgrel = 1
 	url = https://gitlab.gnome.org/verdre/gnome-settings-daemon-mobile
 	arch = any
@@ -57,13 +57,13 @@ pkgbase = gnome-settings-daemon-mobile
 	depends = xorg-xrdb
 	optdepends = usbguard: USB protection support
 	backup = etc/xdg/Xwayland-session.d/00-xrdb
-	source = git+https://gitlab.gnome.org/verdre/gnome-settings-daemon-mobile.git#commit=ee5d1b246da9ac5bdd635e3d5afb322ecacc3912
+	source = git+https://gitlab.gnome.org/verdre/gnome-settings-daemon-mobile.git#commit=7dbef7eb2f73b6d838c37bcc1354ae1f629943d8
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	source = 0001-subprojects-Update-gvc-to-latest-commit.patch
-	sha256sums = e36313bb07782697b14570beb78b2afaf1823986db2548b341dd99c5aff03379
+	sha256sums = c204a2037b74c3233ddaa140f917dd65925c7bb71f5532d672081fcc779f85f6
 	sha256sums = SKIP
 	sha256sums = 9eca57b6f1c465ab6d70aeabf755edcc727474bfb58505b16a0398abbf2a0b75
 
 pkgname = gnome-settings-daemon-mobile
-	provides = gnome-settings-daemon=1:46.r0.gee5d1b2
+	provides = gnome-settings-daemon=1:48.r0.g7dbef7e
 	conflicts = gnome-settings-daemon

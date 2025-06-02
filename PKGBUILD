@@ -4,7 +4,7 @@
 
 pkgname=gnome-settings-daemon-mobile
 pkgdesc="GNOME Settings Daemon"
-pkgver=46.r0.gee5d1b2
+pkgver=48.r0.g7dbef7e
 pkgrel=1
 arch=(
     any
@@ -71,21 +71,21 @@ checkdepends=(
 optdepends=("usbguard: USB protection support")
 groups=(gnome)
 backup=(etc/xdg/Xwayland-session.d/00-xrdb)
-_commit=ee5d1b246da9ac5bdd635e3d5afb322ecacc3912 # 46-mobile-0
+_commit=7dbef7eb2f73b6d838c37bcc1354ae1f629943d8 # tags^48.mobile.0
 source=(
     "git+https://gitlab.gnome.org/verdre/gnome-settings-daemon-mobile.git#commit=$_commit"
     "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
     0001-subprojects-Update-gvc-to-latest-commit.patch
 )
 sha256sums=(
-    e36313bb07782697b14570beb78b2afaf1823986db2548b341dd99c5aff03379
+    c204a2037b74c3233ddaa140f917dd65925c7bb71f5532d672081fcc779f85f6
     SKIP
     9eca57b6f1c465ab6d70aeabf755edcc727474bfb58505b16a0398abbf2a0b75
 )
 
 pkgver() {
     cd $pkgname
-    git describe --long --tags --abbrev=7 "$_commit" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g; s/.mobile.0//'
+    git describe --long --tags --abbrev=7 "$_commit" | sed -E 's/^([0-9]+)\.mobile\.[0-9]+-([0-9]+)-g([0-9a-f]+)/\1.r\2.g\3/'
 }
 
 prepare() {
