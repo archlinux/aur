@@ -1,4 +1,4 @@
-pkgname=hyprland-simple-setup
+pkgname=hyprland-simple-setup-git
 pkgver=0.3.2
 pkgrel=1
 pkgdesc="Minimalistic Hyprland setup"
