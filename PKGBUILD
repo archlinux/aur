@@ -1,6 +1,6 @@
 # Maintainer: Ton nom <ton_email>
 pkgname=iris-cli
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="iris-cli est un visionneur d'anime en ligne avec une interface simple et intuitive. (Inspiré de ani-cli mais pour les français)"
 arch=('any')
