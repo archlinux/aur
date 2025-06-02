@@ -1,4 +1,4 @@
-pkgbase = wideriver
+pkgbase = wideriver-wlroots0.18
 	pkgdesc = tiling window manager for the river wayland compositor
 	pkgver = 1.2.0
 	pkgrel = 1
@@ -10,9 +10,9 @@ pkgbase = wideriver
 	makedepends = make
 	makedepends = gcc
 	depends = wayland
-	depends = wlroots
+	depends = wlroots0.18
 	depends = libinput
-	source = https://github.com/alex-courtis/wideriver/archive/refs/tags/1.2.0.tar.gz
+	source = https://github.com/alex-courtis/wideriver-wlroots0.18/archive/refs/tags/1.2.0.tar.gz
 	sha256sums = 4c956d0572bcad1e8b76751734616fd60f04f53f450e5e8a835c45810347a43a
 
-pkgname = wideriver
+pkgname = wideriver-wlroots0.18
