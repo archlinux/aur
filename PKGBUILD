@@ -2,7 +2,7 @@
 
 pkgname=nimbus-beacon-node-git
 pkgver=25.5.0.0.gd2f23389a
-pkgrel=1
+pkgrel=2
 pkgdesc="Nimbus Ethereum consensus client (beacon node) - latest development version"
 arch=('x86_64')
 url="https://github.com/status-im/nimbus-eth2"
@@ -10,7 +10,7 @@ license=('MIT' 'Apache')
 depends=()
 makedepends=('base-devel' 'git' 'git-lfs')
 provides=('nimbus-beacon-node')
-conflicts=('nimbus-beacon-node')
+conflicts=('nimbus-beacon-node' 'nimbus-beacon-node-bin')
 source=("git+https://github.com/status-im/nimbus-eth2.git")
 sha256sums=('SKIP')
 
