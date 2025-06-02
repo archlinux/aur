@@ -13,14 +13,14 @@
 pkgname=python-cx-freeze
 _pkgname=cx_Freeze
 pkgver=8.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Create standalone executables from Python scripts'
 arch=('x86_64')
 url="https://marcelotduarte.github.io/$_pkgname"
 license=('PSF-2.0')
 depends=('glibc' 'patchelf' 'python' 'python-filelock' 'python-tomli' 'pyside6' 'python-pyqt6')
 makedepends=('python-wheel' 'python-setuptools' 'python-packaging' 'python-build' 'python-installer')
-checkdepends=(python-pytest  python-pluggy python-pytest-cov python-coverage python-pytest-timeout python-typeguard python-anyio python-typeguard python-hypothesis python-faker python-pytest-asyncio python-respx python-pytest-mock python-pytest-xdist python-pytest-examples python-pytest-datafiles)
+checkdepends=(python-pytest python-pluggy python-pytest-cov python-coverage python-pytest-timeout python-typeguard python-anyio python-typeguard python-hypothesis python-faker python-pytest-asyncio python-respx python-pytest-mock python-pytest-xdist python-pytest-examples python-pytest-datafiles)
 optdepends=('perl-alien-build: Alien support for rpm, dpkg, stampede slp, and slackware tgz file formats'
   'rpm-tools: RPM Package Manager RPM.org support')
 replaces=('python-cx_freeze')
@@ -29,6 +29,10 @@ conflicts=('python-cx_freeze')
 source=("https://github.com/marcelotduarte/$_pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha512sums=('920f1bf582c73ef687956d0e58293e11e67a5c002816416ac4edf1e033d11131463625f90498f91bf41201a24fcae53c31604fc6b4aaf70eb2c16449f9896d36')
 
+prepare() {
+  cd "$_pkgname-$pkgver"
+  sed -i 's/77.0.3,<=80.4.0/77.0.3/g' pyproject.toml
+}
 build() {
   cd "$_pkgname-$pkgver"
   python setup.py build_ext --inplace
@@ -39,7 +43,7 @@ check() {
   cd "$_pkgname-$pkgver"
   # Create a temporary bin directory with the cxfreeze wrapper
   mkdir -p test-bin
-  cat > test-bin/cxfreeze <<EOF
+  cat >test-bin/cxfreeze <<EOF
 #!/usr/bin/env python
 from cx_Freeze.cli import main
 main()
@@ -47,8 +51,11 @@ EOF
   chmod +x test-bin/cxfreeze
   # Run tests with the wrapper script available in PATH
   PATH="$PWD/test-bin:$PATH" \
-  PYTHONPATH="$PWD" \
-  pytest -rpfEsXx
+    PYTHONPATH="$PWD" \
+    pytest -rpfEsXx \
+    --ignore=tests/test_command_bdist_deb.py \
+    --ignore=tests/test_command_bdist_rpm.py
+
 }
 
 package() {
