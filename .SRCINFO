@@ -1,0 +1,21 @@
+pkgbase = simplearchiver-bin
+	pkgdesc = An alternative to tar
+	pkgver = 1.27
+	pkgrel = 1
+	url = https://github.com/Stephen-Seo/simplearchiver
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	depends = glibc
+	provides = simplearchiver
+	conflicts = simplearchiver
+	source = LICENSE-1.27::https://raw.githubusercontent.com/Stephen-Seo/simplearchiver/1.27/LICENSE
+	source = README-1.27.md::https://raw.githubusercontent.com/Stephen-Seo/simplearchiver/1.27/README.md
+	sha256sums = bf08b2cc97b00a4d926624446506713f9e88abaeeedbfcb9f7e1d8e290fe6860
+	sha256sums = 57da2869bd73307068e3911f1fa51e326be86bede0aac6f3a389ef193fe77324
+	source_x86_64 = https://github.com/Stephen-Seo/simplearchiver/releases/download/1.27/simplearchiver_debian_x86_64
+	sha256sums_x86_64 = ee994853abbbf4f51ee127e0a1877f136f6b6102dc853688bd9951daea3804ea
+	source_aarch64 = https://github.com/Stephen-Seo/simplearchiver/releases/download/1.27/simplearchiver_debian_aarch64
+	sha256sums_aarch64 = 0e04ae24dfd020deef7a43ec48815e5bc27b985b7875758dcac2f8e12f0adde5
+
+pkgname = simplearchiver-bin
