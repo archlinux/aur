@@ -15,7 +15,7 @@ pkgbase = python-trame-client
 	makedepends = python-wheel
 	makedepends = nodejs
 	makedepends = npm
-	depends = python
+	depends = python-trame-common
 	source = trame-client-3.9.0.tar.gz::https://github.com/Kitware/trame-client/archive/v3.9.0.tar.gz
 	sha512sums = 688f0c7c0144ed1574506e78edb251c4a5106aec1ff15a166115b774301181e2782923edfb47ac9933ab08a6d10fd9f00cde5ffe633961a3d86702c0a1283d4a
 
