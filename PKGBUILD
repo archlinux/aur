@@ -3,7 +3,7 @@
 # Contributor: goll <adrian.goll+aur[at]gmail>
 pkgname=bambustudio-nvidia-bin
 pkgver=02.00.03.54
-pkgrel=2
+pkgrel=4
 pkgdesc="PC Software for BambuLab's 3D printers with a fix for nVidia cards"
 arch=("x86_64")
 url="https://github.com/bambulab/BambuStudio"
@@ -17,7 +17,7 @@ source=("bambustudio-${pkgver}.AppImage::https://github.com/bambulab/BambuStudio
     "mesa.tar.zst::https://archive.archlinux.org/packages/m/mesa/mesa-1%3A24.3.4-1-x86_64.pkg.tar.zst")
 md5sums=('372b7c26568cb744b22a2253568598b3'
          'c2729c29cbd01844507e1f0562762191'
-         '8d9d8d329aa1d46dc47b8978d7f3b480'
+         '7870efc1c2644441705f8a4316455c5a'
          'e2e9476b8e0924cfc752cce1501b3ea3')
 
 package() {
@@ -37,8 +37,7 @@ package() {
     cp ./bambu-studio "$pkgdir/usr/bin/"
     mkdir -p mesa
     tar -xvf mesa.tar.zst -C mesa
-    cp mesa/usr/lib/libOSMesa.so.8 "$pkgdir/opt/bambustudio-bin/"
-    cp mesa/usr/lib/libglapi.so.0 "$pkgdir/opt/bambustudio-bin/"
+    cp -R mesa/usr/lib/* "$pkgdir/opt/bambustudio-bin/bin/"
     
     mkdir "$pkgdir/usr/share/applications/"
     cp ./BambuStudio.desktop "$pkgdir/usr/share/applications/BambuStudio.desktop"
