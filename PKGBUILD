@@ -14,7 +14,7 @@ depends=(c-ares
          nss
          zlib)
 pkgdesc="Electron for Content Security (ECS) is a fork of Electron created by castLabs to facilitate the use of Google's Widevine Content Decryption Module (CDM) for DRM-enabled playback within Electron"
-sha256sums_x86_64=('d50822821f366fd5572205071328334b6d21df42aa2d205edc517272c77aaa28')
+sha256sums_x86_64=('ad3e1f0d5a5e7477294828172466674b4716f8495b09d93d0e3b1e56fe168898')
 source_x86_64=("https://github.com/castlabs/electron-releases/releases/download/$pkgver/electron-$pkgver-linux-x64.zip")
 
 package() {

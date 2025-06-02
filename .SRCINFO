@@ -15,6 +15,6 @@ pkgbase = electron-castlab-bin
 	depends = nss
 	depends = zlib
 	source_x86_64 = https://github.com/castlabs/electron-releases/releases/download/v34.4.1+wvcus/electron-v34.4.1+wvcus-linux-x64.zip
-	sha256sums_x86_64 = d50822821f366fd5572205071328334b6d21df42aa2d205edc517272c77aaa28
+	sha256sums_x86_64 = ad3e1f0d5a5e7477294828172466674b4716f8495b09d93d0e3b1e56fe168898
 
 pkgname = electron-castlab-bin
