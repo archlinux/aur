@@ -14,7 +14,7 @@ conflicts=('mumps')
 arch=('i686' 'x86_64')
 source=(https://mumps-solver.org/MUMPS_${pkgver}.tar.gz
         Makefile.inc)
-sha256sums=('c784d936a50750c1845b7cbeeebdfeb0d762f3176b851191b8dd46a4663c076e'
+sha256sums=('d762eb8b1d9843a0993b8cfc137d043d04c7c51877ad37c94560433a474340a0'
             'd3695d7c8f16aef345f293418bf222e5bf52968a79ea8ad44060c568d8126602')
 
 prepare() {
