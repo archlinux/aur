@@ -1,13 +1,13 @@
 pkgbase = ideapad-laptop-tb-dkms
 	pkgdesc = The IdeaPad ACPI Extras kernel modules for ThinkBook 2024 NoteBooks (DKMS)
-	pkgver = r31.333b356
+	pkgver = r33.2a27e5f
 	pkgrel = 1
 	url = https://github.com/ferstar/ideapad-laptop-tb
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = dkms
-	provides = ideapad-laptop-tb=r31.333b356
+	provides = ideapad-laptop-tb=r33.2a27e5f
 	conflicts = ideapad-laptop-tb
 	source = git+https://github.com/ferstar/ideapad-laptop-tb
 	sha256sums = SKIP
