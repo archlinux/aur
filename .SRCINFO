@@ -1,15 +1,16 @@
 pkgbase = bitrix24
 	pkgdesc = Messenger, task tracking and file sharing app for companies
 	pkgver = 17.0.17.84
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bitrix24.com/apps/desktop.php
 	arch = x86_64
 	depends = gtk3
-	depends = libnotify
-	depends = nss
 	depends = libxss
-	depends = alsa-lib
 	depends = libappindicator-gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libx11
+	depends = glibc
 	source = https://dl.bitrix24.com/b24/bitrix24_desktop.deb
 	sha256sums = 49f773b0aadedf43e30137e050d406e0bdb9a2965fbdf6441eb2382fe57e230a
 
