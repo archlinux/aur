@@ -1,7 +1,7 @@
 pkgbase = nimbus-beacon-node-git
 	pkgdesc = Nimbus Ethereum consensus client (beacon node) - latest development version
-	pkgver = 25.5.0.0.gd2f23389a
-	pkgrel = 2
+	pkgver = 25.5.0
+	pkgrel = 1
 	url = https://github.com/status-im/nimbus-eth2
 	arch = x86_64
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=nimbus-beacon-node-git
 pkgver=25.5.0.0.gd2f23389a
-pkgrel=2
+pkgrel=1
 pkgdesc="Nimbus Ethereum consensus client (beacon node) - latest development version"
 arch=('x86_64')
 url="https://github.com/status-im/nimbus-eth2"
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cd "$srcdir/nimbus-eth2"
-  make -j$(nproc) nimbus_beacon_node
+  make -j4 nimbus_beacon_node
 }
 
 package() {
