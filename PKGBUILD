@@ -4,7 +4,7 @@
 
 pkgname=cambalache
 pkgver=0.96.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A new RAD tool for Gtk 4 and 3"
 arch=('x86_64')
 url="https://gitlab.gnome.org/jpu/cambalache"
@@ -25,11 +25,12 @@ prepare() {
 }
 
 build() {
-  arch-meson "${pkgname}-${pkgver}" build --reconfigure
+  arch-meson "${pkgname}-${pkgver}" build --reconfigure --force-fallback-for=casilda
 
   meson compile -C build
 }
 
 package() {
+  exit 1
   meson install -C build --destdir "${pkgdir}"
 }
