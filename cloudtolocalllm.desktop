@@ -1,5 +1,5 @@
 [Desktop Entry]
-Version=2.1.0
+Version=1.0
 Type=Application
 Name=CloudToLocalLLM
 GenericName=Multi-tenant Streaming LLM Management
@@ -7,7 +7,7 @@ Comment=Multi-tenant streaming LLM management with system tray integration, plat
 Exec=cloudtolocalllm
 Icon=cloudtolocalllm
 Terminal=false
-Categories=Development;Utility;Network;Chat;Office;
+Categories=Network;
 Keywords=LLM;AI;Ollama;Chat;Machine Learning;Streaming;Multi-tenant;System Tray;
 StartupNotify=true
 StartupWMClass=cloudtolocalllm

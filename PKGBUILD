@@ -5,8 +5,8 @@
 # don't need to install Flutter or any build dependencies.
 #
 pkgname=cloudtolocalllm
-pkgver=2.1.1
-pkgrel=7
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Multi-tenant streaming LLM management with system tray integration (pre-built binary)"
 arch=('x86_64')
 url="https://github.com/imrightguy/CloudToLocalLLM"
@@ -23,6 +23,7 @@ depends=(
     'dbus'
     'xdg-utils'
     'hicolor-icon-theme'
+    'python'  # For tray daemon
 )
 makedepends=()
 optdepends=(
@@ -39,7 +40,7 @@ source=(
 )
 sha256sums=(
     'SKIP'  # Source archive checksum
-    'SKIP'  # Binary package checksum
+    '91c5d0251acbb7b8ad294755face057591daa909540e7ef182cdd2d213d25977'  # Binary package checksum for v3.0.0
 )
 
 prepare() {
@@ -83,6 +84,13 @@ package() {
 
     # Make the binary executable
     chmod +x "$pkgdir/usr/share/cloudtolocalllm/cloudtolocalllm"
+
+    # Install tray daemon
+    if [[ -f "cloudtolocalllm-tray" ]]; then
+        install -Dm755 "cloudtolocalllm-tray" "$pkgdir/usr/bin/cloudtolocalllm-tray"
+    else
+        echo "Warning: Tray daemon binary not found in pre-built package"
+    fi
 
     # Create wrapper script in /usr/bin
     install -dm755 "$pkgdir/usr/bin"
