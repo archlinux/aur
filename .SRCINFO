@@ -7,7 +7,7 @@ pkgbase = hyprland-simple-setup-git
 	license = GPL3
 	depends = git
 	depends = hyprland
-	source = hyprland-simple-setup::git+https://github.com/Firstp1ck/Hyprland_Simple_Setup.git
+	source = hyprland-simple-setup-git::git+https://github.com/Firstp1ck/Hyprland_Simple_Setup.git
 	sha256sums = SKIP
 
-pkgname = hyprland-simple-setup
+pkgname = hyprland-simple-setup-git
