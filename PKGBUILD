@@ -1,6 +1,6 @@
 # Maintainer: Jan-Niklas Tomski <jan-niklas at tomski dot me>
 # Contributor: Greg Brown <greg.brown.00 at outlook dot com>
-pkgver=r115.4dc958d
+pkgver=r141.ab6341d
 pkgname='dracut-sshd-git'
 pkgrel=1
 pkgdesc='Provide SSH access to initramfs'
