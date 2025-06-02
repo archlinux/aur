@@ -7,7 +7,7 @@ arch=('x86_64')
 license=('MIT')
 url='https://uutils.github.io/'
 depends=(gcc-libs glibc oniguruma libselinux)
-makedepends=( clang rust python-sphinx mold)
+makedepends=( rust mold)
 source=($pkgname-$pkgver.tar.gz::https://github.com/uutils/coreutils/archive/$pkgver.tar.gz)
 sha256sums=('55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8')
 options=('!lto') # RUSTFLAGS?
@@ -18,7 +18,7 @@ prepare() {
 }
 
 export SELINUX_ENABLED=1
-export RUSTFLAGS="$RUSTFLAGS -C panic=abort -C link-arg=-fuse-ld=mold"
+export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) -C panic=abort $RUSTFLAGS -C link-arg=-fuse-ld=mold"
 build(){
   cd coreutils-$pkgver
   export RUSTONIG_DYNAMIC_LIBONIG=1
