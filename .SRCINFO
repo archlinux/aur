@@ -1,5 +1,5 @@
 pkgbase = bitrix24
-	pkgdesc = Messenger, task tracking and file sharing app for companies
+	pkgdesc = Bitrix24 unified workspace app (CRM, comms, tasks, and more)
 	pkgver = 17.0.17.84
 	pkgrel = 2
 	url = https://www.bitrix24.com/apps/desktop.php
