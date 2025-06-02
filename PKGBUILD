@@ -7,7 +7,7 @@ pkgname=wlroots0.18-hidpi-xprop
 pkgver=0.18.2
 pkgrel=1
 license=(MIT)
-pkgdesc='Modular Wayland compositor library (stable, with patches)'
+pkgdesc='Modular Wayland compositor library (Legacy version, with patches)'
 url=https://gitlab.freedesktop.org/wlroots/wlroots
 arch=(x86_64)
 provides=('libwlroots-0.18.so' "wlroots0.18=${pkgver}" "wlroots=${pkgver}")
