@@ -1,6 +1,6 @@
 pkgbase = borgctl
 	pkgdesc = borgctl - borgbackup without bash scripts
-	pkgver = 0.4.11
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/kmille/borgctl
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = borgctl
 	makedepends = python-wheel
 	depends = python
 	depends = python-ruamel-yaml
-	source = https://github.com/kmille/borgctl/archive/refs/tags/0.4.11.tar.gz
-	sha256sums = f5b0c10685727df79efad5ca3ab518951e5713d9cc98d2cb85f7dd1cafb98a32
+	source = https://github.com/kmille/borgctl/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = fcf29c707f08d6044e9c9978353df723f5ea7400e9683a17e53ee9df2670cc74
 
 pkgname = borgctl
