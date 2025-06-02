@@ -1,0 +1,13 @@
+pkgbase = papirus-colors-git
+	pkgdesc = Papirus folders with KDE Color Scheme support
+	pkgver = r5.ae694e1
+	pkgrel = 1
+	url = https://github.com/varlesh/papirus-colors
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = plasma-desktop
+	source = papirus-colors-git::git+https://github.com/varlesh/papirus-colors.git
+	sha256sums = SKIP
+
+pkgname = papirus-colors-git
