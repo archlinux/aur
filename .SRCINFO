@@ -1,12 +1,13 @@
 pkgbase = chkbit
 	pkgdesc = Check your files for data corruption and deduplicate.
 	pkgver = 6.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/laktak/chkbit
 	arch = x86_64
 	arch = arm64
 	arch = riscv64
 	license = MIT
+	makedepends = go
 	makedepends = help2man
 	provides = chkbit
 	source = https://github.com/laktak/chkbit/archive/refs/tags/v6.4.0.tar.gz

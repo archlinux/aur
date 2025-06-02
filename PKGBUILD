@@ -4,14 +4,14 @@
 _pkgauthor=laktak
 pkgname=chkbit
 pkgver=6.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Check your files for data corruption and deduplicate."
 url="https://github.com/${_pkgauthor}/${pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${pkgname}/v${pkgver}"
 arch=('x86_64' 'arm64' 'riscv64')
 license=('MIT')
 provides=("${pkgname}")
-makedepends=('help2man')
+makedepends=('go' 'help2man')
 source=("https://github.com/$_pkgauthor/$pkgname/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('99a69e05172ed27f0cf60d4aa967bc3f00a34f49c0d6529f6df41242cab789f8')
 
