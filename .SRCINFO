@@ -1,7 +1,7 @@
 pkgbase = rpc-gateway-git
-	pkgdesc = RPC Gateway acts as a failover proxy routing ETH RPC requests across configured RPC nodes
+	pkgdesc = RPC Gateway with failover across configured RPC nodes
 	pkgver = 0.0.1.r309.d1c47c9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kewlfft/rpc-gateway
 	arch = x86_64
 	arch = aarch64

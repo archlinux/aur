@@ -1,9 +1,8 @@
-# Maintainer: Your Name <your.email@example.com>
-
+# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 pkgname=rpc-gateway-git
-pkgver=0.0.1.r309.d1c47c9
+pkgver=0.0.1.r314.7e3aa11
 pkgrel=1
-pkgdesc="RPC Gateway acts as a failover proxy routing ETH RPC requests across configured RPC nodes"
+pkgdesc="RPC Gateway with failover across configured RPC nodes"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kewlfft/rpc-gateway"
 license=('MIT')
@@ -28,4 +27,11 @@ package() {
   install -Dm755 rpcgateway "$pkgdir/usr/bin/rpcgateway"
   install -Dm644 example_config.yml "$pkgdir/etc/rpc-gateway/config.yml.example"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  
+  # Install systemd service template
+  install -Dm644 contrib/systemd/rpcgateway.service "$pkgdir/usr/lib/systemd/system/rpcgateway@.service"
+  
+  # Create default instance
+  install -dm755 "$pkgdir/etc/systemd/system"
+  ln -s /usr/lib/systemd/system/rpcgateway@.service "$pkgdir/etc/systemd/system/rpcgateway.service"
 }
