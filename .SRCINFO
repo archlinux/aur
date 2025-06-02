@@ -1,16 +1,15 @@
 pkgbase = pypy3-tomli
 	pkgdesc = A lil' TOML parser
-	pkgver = 2.0.1
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/hukkin/tomli
 	arch = any
 	license = MIT
-	makedepends = pypy3-setuptools
-	makedepends = python-dephell
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	makedepends = pypy3-flit-core
 	depends = pypy3
-	source = tomli-2.0.1.tar.gz::https://github.com/hukkin/tomli/archive/2.0.1.tar.gz
-	source = typerror.patch::https://github.com/hukkin/tomli/commit/5646e6923d895725aad7ecfa32be19861812d1fc.patch
-	sha512sums = a467f8d48cdbd7213bd9b6f85fd48ba142ab7c9656c40bb30785e1c4b37a9e29eaed420f183458ad20112baee8413ebbec87755332795c8f02235d1018c3aa5c
-	sha512sums = 11a30c171767414d0f8e8fbe4bb880ceb6c4604fddbd674a6b9016ad2f8273954e278219a8cae2598b609ac6f51ddaba67a1324b55d00f1dcc10568c1511469d
+	source = tomli-2.2.1.tar.gz::https://github.com/hukkin/tomli/archive/2.2.1.tar.gz
+	sha512sums = 6bd2600b06b9d41f45ae34172380d3ec162d0e25a7602e8e77ee37bbe165674ff17afc39c4d1f87c9cec9bd1f02003ba5ebaa313a60efca64ef5124f77a2c887
 
 pkgname = pypy3-tomli
