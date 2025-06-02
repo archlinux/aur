@@ -1,6 +1,6 @@
 pkgbase = neohtop-bin
 	pkgdesc = htop on steroids
-	pkgver = 1.1.3
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Abdenasser/neohtop
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = neohtop-bin
 	depends = webkit2gtk
 	provides = neohtop
 	conflicts = neohtop
-	source = LICENSE-1.1.3::https://raw.githubusercontent.com/Abdenasser/neohtop/v1.1.3/LICENSE
-	source = README-1.1.3.md::https://raw.githubusercontent.com/Abdenasser/neohtop/v1.1.3/README.md
+	source = LICENSE-1.2.0::https://raw.githubusercontent.com/Abdenasser/neohtop/v1.2.0/LICENSE
+	source = README-1.2.0.md::https://raw.githubusercontent.com/Abdenasser/neohtop/v1.2.0/README.md
 	sha256sums = af4f1ed4ec165eb087e3caf30c9b7f68779adfd739ec4a771975fd51db1d5671
 	sha256sums = f7a26ec72177dd005a130f0017371c639e6834c88d5af4923c46719c670a6a50
-	source_x86_64 = https://github.com/Abdenasser/neohtop/releases/download/v1.1.3/NeoHtop_1.1.3_x86_64.deb
-	sha256sums_x86_64 = d346e85dca62e2e1b78a496ed6b67ec9d1f0e4c9b6c41369627693f06deabfd0
+	source_x86_64 = https://github.com/Abdenasser/neohtop/releases/download/v1.2.0/NeoHtop_1.2.0_x86_64.deb
+	sha256sums_x86_64 = 9e4c1cb4482433b91373167d72bc0b6e8f90e4a177eebb00979a295e610be0f9
 
 pkgname = neohtop-bin
