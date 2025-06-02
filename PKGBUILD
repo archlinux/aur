@@ -2,9 +2,9 @@
 
 pkgname=python-plyfile
 pkgdesc="Read and write ASCII and binary PLY files"
-pkgver=1.1
-pkgrel=2
-url='https://github.com/dranjan/python-plyfile'
+pkgver=1.1.2
+pkgrel=1
+url='https://python-plyfile.readthedocs.io/'
 arch=('any')
 license=('GPL-3.0-or-later')
 
@@ -23,17 +23,10 @@ checkdepends=(
 
 source=(
   "git+https://github.com/dranjan/python-plyfile.git#tag=v$pkgver"
-  'update_build_system.patch'
 )
 sha256sums=(
-  '354e26372bbdd683f586ff97b60e11446b7f4b52e7eaaef385ec6f45faec6cc2'
-  '72bd6d21c0e88da2f76e767d5cc3b4e4b5c0e0143a44b0107832b6c131d3d93a'
+  '86e213abcd87c1d39d7ff53299ba5c4790e2f93bbe0e2886d0bd22d3e7e6e67d'
 )
-
-prepare() {
-  cd python-plyfile
-  patch -p0 -i "$srcdir/update_build_system.patch"
-}
 
 build() {
   cd python-plyfile
