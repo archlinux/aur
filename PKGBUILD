@@ -5,8 +5,8 @@
 pkgname='python-qh3-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.5.0.r0.g4859b8f
-pkgrel=3
+pkgver=1.5.2.r0.gb3ccc90
+pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (development version)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/qh3'
@@ -37,7 +37,6 @@ provides=("$_pkgname")
 conflicts=("${provides[@]}")
 source=("$_srcname::git+$url.git")
 sha256sums=('SKIP')
-options=('lto')
 
 pkgver() {
   cd "$_srcname"
@@ -49,23 +48,6 @@ build() {
   cd "$_srcname"
 
   git clean -dfx
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;&  # fall through
-    * )
-      export CC=/usr/bin/gcc
-      export CXX="$CC"
-      export CMAKE_POLICY_VERSION_MINIMUM=3.5
-      export CFLAGS="${CFLAGS//-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2}"
-      export CXXFLAGS="${CXXFLAGS//-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2}"
-    ;;
-  esac
 
   python -m build --wheel --no-isolation
 }
@@ -79,7 +61,7 @@ package() {
     LICENSE
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
     {CHANGELOG,README}.rst SECURITY.md
-  cp -vfax examples "$pkgdir/usr/share/doc/$pkgname/"
+  cp -vfa examples "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 # eof
