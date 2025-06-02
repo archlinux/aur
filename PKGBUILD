@@ -1,4 +1,5 @@
-# Maintainer: Maxime Vincent (vnz0r) <maxime@veemax.be>
+# Maintainer: Gerjan de Groot <gerjandegroot@hotmail.com>
+# Contributor: Maxime Vincent (vnz0r) <maxime@veemax.be>
 
 pkgname=bloom-git
 pkgver=r1964.7aff716d
