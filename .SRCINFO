@@ -1,0 +1,19 @@
+pkgbase = catppuccin-konsole-colorscheme-git
+	pkgdesc = Soothing pastel theme for Konsole
+	pkgver = r30.3b64040
+	pkgrel = 1
+	url = https://github.com/catppuccin/konsole
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = konsole
+	source = catppuccin-konsole-colorscheme-git::git+https://github.com/catppuccin/konsole.git
+	sha256sums = SKIP
+
+pkgname = catppuccin-konsole-colorscheme-latte-git
+
+pkgname = catppuccin-konsole-colorscheme-frappe-git
+
+pkgname = catppuccin-konsole-colorscheme-macchiato-git
+
+pkgname = catppuccin-konsole-colorscheme-mocha-git
