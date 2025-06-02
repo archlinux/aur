@@ -7,7 +7,7 @@
 _pkgbase=sway
 pkgname=sway-hidecursor-leftbar
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -26,7 +26,7 @@ depends=(
   'pango'
   'pcre2'
   'ttf-font'
-  'wlroots'
+  'wlroots0.18'
   'xcb-util-wm'
 )
 makedepends=(git meson ninja scdoc wayland-protocols)
