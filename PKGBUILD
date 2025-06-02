@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-arch
-pkgver=202505111
+pkgver=202506021
 pkgrel=1
 pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL3')
 url="https://phoenix.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Phoenix/-/raw/4dd8da237c6ecf4658fa04e52948000cd6fc6936/archives/phoenix.zip")
-sha512sums=('f4529d0418af51006b0b13d17dfbe3eb5af2d249dade3accbaf0019c500c30607c970156fbc93ab50bd42eb53bc17cc0c01ac7cfb76f441f8ab15db8d651d2c2')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Phoenix/-/raw/9719c3e40c3db6921c5540c801fec5184a6de437/archives/phoenix-linux.zip")
+sha512sums=('4871a901e6e9a22a060dedde4f4dd06f07f6fcb3e126e05d83ed9eca8367445dda65ccb4e778c407fe554e61ee3b3c8c7b4ecfa7062dc77b6af3d66bce0f2b1d')
 makedepends=('unzip')
 
 pkgver() {
@@ -34,10 +34,13 @@ package() {
     install -Dm644 "$tmpdir/configs/ui-fix/twitter.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/twitter.cfg"
     install -Dm644 "$tmpdir/configs/ui-fix/youtube.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/youtube.cfg"
     install -Dm644 "$tmpdir/configs/youtube.cfg" "$pkgdir/etc/firefox/phoenix/configs/youtube.cfg"
+    install -Dm644 "$tmpdir/defaults/pref/phoenix-desktop.js" "$pkgdir/etc/firefox/defaults/pref/phoenix-desktop.js"
     install -Dm644 "$tmpdir/etc/profile.d/phoenix-env-overrides.sh" "$pkgdir/etc/profile.d/phoenix-env-overrides.sh"
-    install -Dm644 "$tmpdir/phoenix.cfg" "$pkgdir/usr/lib/firefox/phoenix.cfg"
+    install -Dm644 "$tmpdir/phoenix.cfg" "$pkgdir/etc/firefox/phoenix.cfg"
     install -Dm644 "$tmpdir/policies.json" "$pkgdir/etc/firefox/policies/policies.json"
-    install -Dm644 "$tmpdir/prefs/phoenix-desktop.js" "$pkgdir/etc/firefox/defaults/pref/phoenix-desktop.js"
+    install -Dm644 "$tmpdir/symlinks/opt/firefox/phoenix.cfg" "$pkgdir/opt/firefox/phoenix.cfg"
+    install -Dm644 "$tmpdir/symlinks/usr/lib/firefox/phoenix.cfg" "$pkgdir/usr/lib/firefox/phoenix.cfg"
+    install -Dm644 "$tmpdir/symlinks/usr/lib64/firefox/phoenix.cfg" "$pkgdir/usr/lib64/firefox/phoenix.cfg"
     install -Dm644 "$tmpdir/userjs/linux/apple-maps/user.js" "$pkgdir/etc/firefox/phoenix/userjs/apple-maps/user.js"
     install -Dm644 "$tmpdir/userjs/linux/discord/user.js" "$pkgdir/etc/firefox/phoenix/userjs/discord/user.js"
     install -Dm644 "$tmpdir/userjs/linux/element/user.js" "$pkgdir/etc/firefox/phoenix/userjs/element/user.js"
