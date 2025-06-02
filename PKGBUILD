@@ -10,7 +10,7 @@ pkgname=(
     mutter-mobile-docs
 )
 pkgdesc="Window manager and compositor for GNOME"
-pkgver=46.r1.g1daa120
+pkgver=48.r0.g7cb1e9b
 pkgrel=1
 arch=(
     any
@@ -84,13 +84,13 @@ makedepends=(
     sysprof
     wayland-protocols
 )
-_commit=1daa12072d108ddaee9dc25252ce67b74d404edf # tags^46-mobile.1
+_commit=7cb1e9bc53bd98532bd9a9d00ddcb613cd3774af # tags^48.mobile.0
 source=("git+https://gitlab.gnome.org/verdre/mutter-mobile.git#commit=$_commit")
-sha256sums=(72d4fbe203cf19abef0e060d3226a977da380788a610eb9691cb77bf362a95b4)
+sha256sums=(47455e3f33eb13fb1276a943747b1169cec915259fe4b5347b8d7b38b09a0d1e)
 
 pkgver() {
     cd "$pkgbase"
-    git describe --long --tags --abbrev=7 "$_commit" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g; s/.mobile.1//' | sed 's/0/1/'
+    git describe --long --tags --abbrev=7 "$_commit" | sed -E 's/^([0-9]+)\.mobile\.[0-9]+-([0-9]+)-g([0-9a-f]+)/\1.r\2.g\3/'
 }
 
 prepare() {

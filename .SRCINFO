@@ -1,6 +1,6 @@
 pkgbase = mutter-mobile
 	pkgdesc = Window manager and compositor for GNOME
-	pkgver = 46.r1.g1daa120
+	pkgver = 48.r0.g7cb1e9b
 	pkgrel = 1
 	url = https://gitlab.gnome.org/verdre/mutter-mobile
 	arch = any
@@ -68,16 +68,16 @@ pkgbase = mutter-mobile
 	depends = systemd-libs
 	depends = wayland
 	depends = xorg-xwayland
-	source = git+https://gitlab.gnome.org/verdre/mutter-mobile.git#commit=1daa12072d108ddaee9dc25252ce67b74d404edf
-	sha256sums = 72d4fbe203cf19abef0e060d3226a977da380788a610eb9691cb77bf362a95b4
+	source = git+https://gitlab.gnome.org/verdre/mutter-mobile.git#commit=7cb1e9bc53bd98532bd9a9d00ddcb613cd3774af
+	sha256sums = 47455e3f33eb13fb1276a943747b1169cec915259fe4b5347b8d7b38b09a0d1e
 
 pkgname = mutter-mobile
 	provides = libmutter-14.so
-	provides = mutter=46.r1.g1daa120
+	provides = mutter=48.r0.g7cb1e9b
 	conflicts = mutter
 
 pkgname = mutter-mobile-docs
 	pkgdesc = Window manager and compositor for GNOME (documentation)
 	depends = 
-	provides = mutter-mobile-docs=46.r1.g1daa120
+	provides = mutter-mobile-docs=48.r0.g7cb1e9b
 	conflicts = mutter-mobile-docs
