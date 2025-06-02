@@ -2,7 +2,7 @@
 
 pkgname=snapcast
 pkgver=0.31.0
-pkgrel=3
+pkgrel=4
 _pkgname_snapweb=snapweb
 _snapweb_version=0.8.0
 pkgdesc="Synchronous multi-room audio player"
@@ -20,17 +20,20 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/badaix/snapcast/archive
         "${_pkgname_snapweb}-${_snapweb_version}.zip::https://github.com/badaix/snapweb/releases/download/v${_snapweb_version}/snapweb.zip"
         "snapcast.sysusers"
         "snapcast.tmpfiles"
-        "snapcast.install")
+        "snapcast.install"
+        "Fix-build-failure-with-boost-1.88.0.patch")
 noextract=("${_pkgname_snapweb}-${_snapweb_version}.zip")
 sha256sums=('d38d576f85bfa936412413b6860875ba3b462a8e67405f3984a0485778f2fdac'
             '71078f94d87e44881c7bf6491456d528420a69ae09f1ae115dd6c48c03c2a65c'
             '9fe6e9e07adb77f555a617b772e6d01e098e1dfaad1e8075e03a7d7ba76141de'
             'e8c3441c4ca646a9b66d61355e90862fd3481562ae3b4e0a4bc1c978464ae2c7'
-            '23a0390774279f8c5d02d3307cfb67f2e9360f42704bb4f13d8c43e091fe997f')
+            '23a0390774279f8c5d02d3307cfb67f2e9360f42704bb4f13d8c43e091fe997f'
+            '0a8f1de5dbb3f12306f4719826050faf058f103833bafa6e81af9121eb4f7894')
 
 prepare() {
     mkdir -p ${_pkgname_snapweb}-${_snapweb_version}
     bsdtar -xf ${_pkgname_snapweb}-${_snapweb_version}.zip -C ${_pkgname_snapweb}-${_snapweb_version}
+    patch -d $pkgname-$pkgver -Np1 -i ../Fix-build-failure-with-boost-1.88.0.patch
 }
 
 build() {
