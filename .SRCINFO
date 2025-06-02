@@ -1,14 +1,17 @@
 pkgbase = nvi-multibyte-git
 	pkgdesc = nvi with multibyte support
 	pkgver = 1.81.6_20241228
-	pkgrel = 1
+	pkgrel = 2
 	url = git://repo.or.cz/nvi.git
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
+	depends = sh
+	depends = glibc
+	depends = ncurses
 	provides = nvi
 	conflicts = nvi
 	conflicts = nvi-multibyte-upstream
-	source = http://repo.or.cz/nvi.git/snapshot/ec6c4a2d8889319a21893cbaf2cc63d11598fba2.tar.gz
+	source = http://repo.or.cz/nvi.git/snapshot/957906b0e3bcc0f795cf8c6b7313fcc4ec338784.tar.gz
 	sha512sums = f49ffca6a58669f08ebd11bc141509f190389f74cb1670f30550a40b4d5b7350e144e72daf425682b4d032bcb95a3ec78ce595a9a533eaabda5e5c8d5a780565
 
 pkgname = nvi-multibyte-git

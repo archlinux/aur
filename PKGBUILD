@@ -9,7 +9,12 @@ pkgname=nvi-multibyte-git
 pkgdesc="nvi with multibyte support"
 arch=('x86_64')
 url="git://repo.or.cz/nvi.git"
-license=("BSD")
+license=("BSD-3-Clause")
+depends=(
+  sh
+  glibc
+  ncurses
+)
 conflicts=('nvi' 'nvi-multibyte-upstream')
 provides=('nvi')
 
@@ -20,7 +25,7 @@ sha512sums=('f49ffca6a58669f08ebd11bc141509f190389f74cb1670f30550a40b4d5b7350e14
 # The last official release was 1.81.6, but there have been commits since then.
 # Append timestamp (yyyymmdd) of latest commit.
 pkgver=1.81.6_20241228
-pkgrel=1
+pkgrel=2
 _COMMIT_HASH="${_COMMIT:0:7}"
 
 build(){
@@ -28,7 +33,8 @@ build(){
   ./distrib
   cd ../build.unix
 
-  ../dist/configure \
+  env CPPFLAGS="$CFLAGS -fpermissive  " \
+    ../dist/configure \
     --prefix="$pkgdir"/usr \
     --program-prefix=n \
     --enable-widechar # for multibyte support
