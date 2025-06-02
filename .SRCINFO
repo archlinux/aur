@@ -1,11 +1,12 @@
 pkgbase = heidisql
 	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases.
 	pkgver = 12.10.1.133
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.heidisql.com/
 	install = heidisql.install
 	arch = any
 	license = GPL
+	depends = gtk2
 	depends = mariadb-libs
 	depends = postgresql-libs
 	depends = sqlite
