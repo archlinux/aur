@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=S4Arrays
-_pkgver=1.8.0
+_pkgver=1.8.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-hdf5array
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f33028043f3f87ce4acd09d5316b321e')
-b2sums=('ffc04c41ccee545a1ec1280154e7e479b5d95d8a6f39d3805e7fb38d76be9964952b6f98a9bcd245a78238335d98b0b7aac61d234a98ecc0e8f7ac7e21f447e3')
+md5sums=('f8044ce103449bbd67d1764d3e8d17ad')
+b2sums=('6903f0664ad654328658c3dd81a057686d5f9da07a56490f2d73f1d010f51169b55126517cfd1d332ed2e18e2ee9050cc55de8f26d59a3a92a2c24109e980d75')
 
 build() {
   mkdir build
