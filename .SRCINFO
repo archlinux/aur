@@ -1,0 +1,14 @@
+pkgbase = adif-multitool
+	pkgdesc = Validate, modify, and convert ham radio log files with a handy command-line tool
+	pkgver = 0.1.20
+	pkgrel = 1
+	url = https://github.com/flwyd/adif-multitool
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = https://github.com/flwyd/adif-multitool/archive/v0.1.20/adif-multitool-0.1.20.tar.gz
+	sha256sums = cab8ee80d77633bf18b1699026b06ddb1c6c7bed499e94f075e2510caea459e2
+	b2sums = e73701b4d31c31aa046eaa845bbecce377ada2649317a6f2ccc3f566bc5d85cc58d263d1da4efd480d3fcd496d1192a894cc74f91088648978a9853d3bcbf8ac
+
+pkgname = adif-multitool
