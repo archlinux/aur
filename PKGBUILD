@@ -5,8 +5,8 @@
 pkgname='python-qh3-bin'
 _pkgname="${pkgname/-bin}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (pre-compiled)'
 arch=('x86_64')
 url='https://github.com/jawah/qh3'
@@ -16,7 +16,7 @@ makedepends=('python-installer')
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
 _wheel="qh3-$pkgver-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
-source=("https://github.com/jawah/qh3/releases/download/v$pkgver/$_wheel")
+source=("$url/releases/download/v$pkgver/$_wheel")
 
 package() {
   python -m installer --destdir="$pkgdir" "$_wheel"
@@ -27,10 +27,10 @@ package() {
 }
 
 sha256sums=(
-  '55892618388a01e6caef332e56be3f92ffa5d2ab84ab7e584ec52bb466a3e833'
+  '9a1a175a0b8732c3e60dcb5595c3f6da66da8c70abb22bbaa67dbca82e91e435'
 )
 b2sums=(
-  '28c30176d82b09f034d74d155f888499a601c2208f8b637751dc79c039017858ec354033db86233559fa69ec8af85a3c341518a8a0e74b485d7fa12ea7edd5d4'
+  '31d70a129dac7a3e4570f2d0c38b2d8db5bcb183db6fb16ee2ed093b61032cb8a4ae10e4b5cef83332d330fd934e183534a3c66e7e43c294ef40f619436dad75'
 )
 
 # eof
