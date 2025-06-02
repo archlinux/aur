@@ -1,7 +1,7 @@
 pkgbase = uutils-coreutils-missing
 	pkgdesc = Missing files from uutils-coreutils by bug
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uutils/coreutils/issues/4464
 	arch = x86_64
 	license = MIT
