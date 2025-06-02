@@ -1,0 +1,5 @@
+[python-apkinspector]
+source = "github"
+github = "erev0s/apkInspector"
+prefix = "v"
+use_latest_release = "true"
