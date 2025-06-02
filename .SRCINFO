@@ -1,6 +1,6 @@
 pkgbase = geteduroam
 	pkgdesc = Configure your Eduroam Wifi connection
-	pkgver = 0.10
+	pkgver = 0.11
 	pkgrel = 1
 	url = https://get.eduroam.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = geteduroam
 	depends = gtk4>=4.06
 	depends = libadwaita>=1.1
 	optdepends = libnotify: to be notified for certificate expiration
-	source = geteduroam-0.10.tar.gz::https://github.com/geteduroam/linux-app/archive/0.10.tar.gz
-	sha256sums = e04225a17e5604069c5873b8398ee99cb86460e866ea6ea638462c10e5f0234f
+	source = geteduroam-0.11.tar.gz::https://github.com/geteduroam/linux-app/archive/0.11.tar.gz
+	sha256sums = 264850bb466ab7266eb5030da2095f7ba0a42d95bee7a92afadac5ce3ba1f4b7
 
 pkgname = geteduroam
