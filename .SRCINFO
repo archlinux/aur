@@ -1,12 +1,12 @@
 pkgbase = vile
 	pkgdesc = vi like emacs
-	pkgver = 9.8_z
+	pkgver = 9.8_za
 	pkgrel = 1
 	url = http://invisible-island.net/vile/vile.html
 	arch = x86_64
 	license = custom
 	depends = ncurses
-	source = https://invisible-island.net/archives/vile/current/vile-9.8z.tgz
-	sha256sums = 0b3286c327b70a939f21992d22e42b5c1f8a6e953bd9ab9afa624ea2719272f7
+	source = https://invisible-island.net/archives/vile/current/vile-9.8za.tgz
+	sha256sums = 65ba15ec145dfc5506217162228c7d88f01c0490a0dccde7a8a19f1c7c1b93b2
 
 pkgname = vile
