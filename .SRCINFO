@@ -1,7 +1,7 @@
 pkgbase = spotify-remove-ad-banner
 	pkgdesc = Remove Spotify ad banner
 	pkgver = 6
-	pkgrel = 1
+	pkgrel = 2
 	install = spotify-remove-ad-banner.install
 	arch = any
 	license = unknown

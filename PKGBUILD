@@ -1,7 +1,7 @@
 # Maintainer: coxackie
 pkgname=spotify-remove-ad-banner
 pkgver=6
-pkgrel=1
+pkgrel=2
 pkgdesc='Remove Spotify ad banner'
 arch=('any')
 license=('unknown')
