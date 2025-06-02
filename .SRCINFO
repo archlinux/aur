@@ -1,0 +1,13 @@
+pkgbase = godot-double-bin
+	pkgver = 4.4.1
+	pkgrel = 1
+	url = https://godotengine.org/
+	arch = x86_64
+	license = MIT
+	provides = godot-double
+	conflicts = godot-double
+	noextract = godot-double-4.4.1-1-x86_64.pkg.tar.zst
+	source = godot-double-4.4.1-1-x86_64.pkg.tar.zst::https://github.com/Norpyx-Godot/godot-double/releases/download/v4.4.1-1/godot-double-4.4.1-1-x86_64.pkg.tar.zst
+	sha256sums = d0587cddd36f1671f7f7d1086a722efd5b743d52829becbae0b2fc08357ab74f
+
+pkgname = godot-double-bin
