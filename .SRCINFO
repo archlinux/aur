@@ -1,6 +1,6 @@
 pkgbase = python-kombu
 	pkgdesc = A messaging library for Python
-	pkgver = 5.5.3
+	pkgver = 5.5.4
 	pkgrel = 1
 	url = https://github.com/celery/kombu
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = python-kombu
 	optdepends = python-sqlalchemy: for SQLAlchemy support
 	optdepends = python-yaml: for YAML support
 	optdepends = python-zstandard: for zstd compression support
-	source = https://github.com/celery/kombu/archive/v5.5.3/python-kombu-5.5.3.tar.gz
-	sha256sums = e02e2d0e230f16fece41190a3f33c774eec3075398f02aba62bbd5c80068fe58
+	source = https://github.com/celery/kombu/archive/v5.5.4/python-kombu-5.5.4.tar.gz
+	sha256sums = 7793a288cc0316d06e66785a18182b8629a692a9fb2976b85c51cb466f95c008
 
 pkgname = python-kombu
