@@ -1,8 +1,8 @@
-# Maintainer: Dmitriy Q <dmitry-at-atsip-dot-ru> 
+# Maintainer: Dmitriy Q <dmkrotesk-at-mail-dot-ru> 
 # Contributor: Alexey Stukalov <astukalov-at-gmail-dot-com>
 
 pkgname=ilorest
-pkgver=6.0.0.0
+pkgver=6.1.0.0
 pkgrel=1
 pkgdesc="HPE RESTful Interface Tool"
 arch=(x86_64)
@@ -19,8 +19,7 @@ provides=('ilorest')
 groups=(hpproliant)
 license=("HPE")
 source=("https://github.com/HewlettPackard/python-redfish-utility/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-#source=("https://github.com/HewlettPackard/python-redfish-utility/archive/refs/heads/master.zip")
-sha256sums=('89406688ba606bc98ccd2f09d03439d756d323b558a4665a8ce8e872c5f2dcb9')
+sha256sums=('1ccc3250bc1d4d795c87da930d8e56aa2c6aae8391192e3511068121c74da276')
 changelog=ChangeLog
 
 package() {
