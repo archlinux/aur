@@ -1,7 +1,7 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 pkgname=rpc-gateway-git
 pkgver=0.0.1.r314.7e3aa11
-pkgrel=1
+pkgrel=2
 pkgdesc="High-availability Ethereum RPC proxy with automatic failover, load balancing, and request routing capabilities"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kewlfft/rpc-gateway"
@@ -24,11 +24,9 @@ build() {
   case "$CARCH" in
     x86_64)
       export GOARCH=amd64
-      export GOAMD64=v4  # Use highest AMD64 microarchitecture level
       ;;
     aarch64)
       export GOARCH=arm64
-      export GOARM=8     # Use highest ARM level
       ;;
   esac
   
