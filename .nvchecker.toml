@@ -1,0 +1,5 @@
+[thunderbird-extension-import-export-tools-ng]
+source = "github"
+github = "thunderbird/import-export-tools-ng"
+prefix = "v"
+use_latest_release = "true"
