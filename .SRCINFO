@@ -1,6 +1,6 @@
 pkgbase = python-stripe
 	pkgdesc = Stripe python bindings
-	pkgver = 10.12.0
+	pkgver = 12.2.0
 	pkgrel = 1
 	url = https://github.com/stripe/stripe-python
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-stripe
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.6
-	source = https://github.com/stripe/stripe-python/archive/refs/tags/v10.12.0.tar.gz
-	sha512sums = 872a3990f8dbaf933f4d9cb190d8fcb72062d81f3c431f58291216ab72dacb098057a75b7189e00a414ba62af6c9db658afc8e055833efa28aa03516060e6c35
-	b2sums = c3ac7abc345609071a4479ae02232ccff3bd3b8514d060cc41e75b4b549ed959412c2479e92219c7fb7694a38a00f0bea585549352a00025bd8845b9d432e500
+	source = https://github.com/stripe/stripe-python/archive/refs/tags/v12.2.0.tar.gz
+	sha512sums = bcc779e26cfc02bfb4364f017158fee50c80f628c412897b3e0e4d240ee1a801cebd5fc3b3430a95e57779437b518772b96b297b7db3291dee67a5779a08902b
+	b2sums = eb9f10395f333042bd94d4c9bba98e45b27083c0cb870d4b166b41f70b636d43842cd54507b2b81ac0c36a72d5dbd5c5c94b2c22f3dff46d03f41356ad3fa72d
 
 pkgname = python-stripe
