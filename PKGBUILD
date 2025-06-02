@@ -1,5 +1,6 @@
 # Maintainer: Swarnaditya Singh <demonkingswarn@protonmail.com>
 pkgname=wideriver-wlroots0.18
+_pkgname=wideriver
 pkgver=1.2.0
 pkgrel=1
 pkgdesc="tiling window manager for the river wayland compositor"
@@ -14,12 +15,12 @@ sha256sums=('SKIP')
 install=wideriver.install
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname-$pkgver"
 	make CC=gcc CXX=g++ wideriver
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname-$pkgver"
 	make PREFIX="/usr" PREFIX_ETC="" DESTDIR="$pkgdir" install
 }
 
