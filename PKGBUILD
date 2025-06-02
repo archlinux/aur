@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="aws-nuke"
-pkgver=3.55.0
+pkgver=3.56.0
 pkgrel=1
 pkgdesc="Remove all the resources from an AWS account"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 _pkgsrc="${_url##*/}"
 source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
-b2sums=('81735ba1f7789480f7834afbc018f542bbe8b48378b40abcaa5154e23465b7bafe4e99dbc158e7668fa2d5d5b8a48d8dafcff9b728731abe6e406e3d92b50c44')
+b2sums=('b44dd4c67b59c8d47c270cb25e29d75ea497d54bffcb0f05a2ab7df7c71ef6f9a85a72f9776cbf00e0c4de84b39e399d1982bf7a2adb0fd15e4679f18f403a80')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
