@@ -2,7 +2,7 @@
 # Contributor: Alexandru Frincu <alexandru.frincu@accenture.com>
 
 pkgname=cm
-pkgver=3.18.0
+pkgver=3.18.1
 pkgrel=1
 pkgdesc="fast logfile viewer for Analyzing Large Logfiles
  Chipmunk is a fast logfile viewer designed for analyzing 
@@ -14,7 +14,7 @@ url="https://github.com/esrlabs/chipmunk"
 license=('Apache-2.0')
 depends=('gtk3' 'alsa-lib' 'libdrm' 'cups')
 source=("https://github.com/esrlabs/chipmunk/releases/download/$pkgver/chipmunk@$pkgver-linux-portable.tgz")
-sha256sums=('aef340c855d85174f61c45ebfcc3ea76a086bce7f61e7254cfe97e17d998432b')
+sha256sums=('5b4158e4f2043c4062b65b25e96b2d1ab1251e6f4b61431b12600ecf32a29f7a')
 
 package() {
 
