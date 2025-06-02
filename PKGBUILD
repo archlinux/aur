@@ -2,7 +2,7 @@
 
 _pkgname=supermodel
 pkgname=$_pkgname-sinden-git
-pkgver=r78.6a377d0
+pkgver=r140.711ecc6
 pkgrel=1
 pkgdesc='A Sega Model 3 Arcade Emulator, patched for multiple mice support and Sinden borders'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=("$_pkgname::git+https://github.com/DirtBagXon/model3emu-code-sinden.git"
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
