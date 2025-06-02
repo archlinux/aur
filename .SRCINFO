@@ -1,18 +1,11 @@
 pkgbase = cloudtolocalllm
-	pkgdesc = Multi-tenant streaming LLM management with system tray integration, platform-specific UI logic, and comprehensive Linux packaging
+	pkgdesc = Multi-tenant streaming LLM management with system tray integration (pre-built binary)
 	pkgver = 2.1.1
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/imrightguy/CloudToLocalLLM
 	install = cloudtolocalllm.install
 	arch = x86_64
 	license = MIT
-	makedepends = git
-	makedepends = cmake
-	makedepends = ninja
-	makedepends = pkg-config
-	makedepends = clang
-	makedepends = imagemagick
-	makedepends = flutter
 	depends = libayatana-appindicator
 	depends = gtk3
 	depends = glib2
@@ -29,7 +22,9 @@ pkgbase = cloudtolocalllm
 	optdepends = chromium: Alternative web browser for authentication
 	provides = cloudtolocalllm
 	conflicts = cloudtolocalllm-git
-	source = git+https://github.com/imrightguy/CloudToLocalLLM.git#tag=v2.1.1
+	source = https://github.com/imrightguy/CloudToLocalLLM/archive/v2.1.1.tar.gz
+	source = cloudtolocalllm-2.1.1-x86_64.tar.gz::https://cloudtolocalllm.online/cloudtolocalllm-2.1.1-x86_64.tar.gz
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = cloudtolocalllm
