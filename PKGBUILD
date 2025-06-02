@@ -1,11 +1,11 @@
 #Maintainer: Walter <preparationh67 at gmail dot com>
 pkgname=linux-firmware-hauppauge
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional Hauppauge Firmware"
 arch=('any')
 url="https://www.hauppauge.com/pages/support/support_linux.html"
-license=('custom')
+license=('GPL-3.0-or-later')
 conflicts=('hauppauge-wintv-quadhd-firmware')
 provides=('hauppauge-wintv-quadhd-firmware')
 _source=linux-firmware-hauppauge_$pkgver+focal.tar.gz

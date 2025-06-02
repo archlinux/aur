@@ -1,10 +1,10 @@
 pkgbase = linux-firmware-hauppauge
 	pkgdesc = Additional Hauppauge Firmware
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hauppauge.com/pages/support/support_linux.html
 	arch = any
-	license = custom
+	license = GPL-3.0-or-later
 	provides = hauppauge-wintv-quadhd-firmware
 	conflicts = hauppauge-wintv-quadhd-firmware
 	source = http://ppa.launchpad.net/b-rad/kernel+mediatree+hauppauge/ubuntu/pool/main/l/linux-firmware-hauppauge/linux-firmware-hauppauge_0.2.3+focal.tar.gz
