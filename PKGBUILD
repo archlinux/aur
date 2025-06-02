@@ -1,13 +1,13 @@
 # Maintainer: blekki <blekkiw at gmail dot com>
 pkgname=ed-odyssey-materials-helper-bin
-pkgver=2.180
+pkgver=2.181
 pkgrel=1
 pkgdesc="Elite Dangerous Odyssey Materials Helper"
 arch=('x86_64')
 url="https://github.com/jixxed/ed-odyssey-materials-helper"
 license=('GPL-3.0')
 source=(
-  "https://github.com/jixxed/ed-odyssey-materials-helper/releases/download/$pkgver/Elite.Dangerous.Odyssey.Materials.Helper-$pkgver.portable.linux.zip"
+  "https://github.com/jixxed/ed-odyssey-materials-helper/releases/download/$pkgver/Elite.Dangerous.Odyssey.Materials.Helper-$pkgver.linux.autoupdater.zip"
   "ed-odyssey-materials-helper-bin.desktop"
   "icon.png"
 )
@@ -19,10 +19,9 @@ package() {
   install -d "$pkgdir/usr/bin"
   install -d "$pkgdir/usr/share/applications"
   install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps"
-  install -m755 "bin/Elite Dangerous Odyssey Materials Helper" "$pkgdir/opt/$pkgname/bin/EliteDangerousOdysseyMaterialsHelper"
+  install -m755 "bin/Elite Dangerous Odyssey Materials Helper Launcher" "$pkgdir/opt/$pkgname/bin/Elite Dangerous Odyssey Materials Helper Launcher"
   cp -r lib/* "$pkgdir/opt/$pkgname/lib/"
-  ln -s "/opt/$pkgname/bin/EliteDangerousOdysseyMaterialsHelper" "$pkgdir/usr/bin/EliteDangerousOdysseyMaterialsHelper"
-  mv "$pkgdir/opt/$pkgname/lib/app/Elite Dangerous Odyssey Materials Helper.cfg" "$pkgdir/opt/$pkgname/lib/app/EliteDangerousOdysseyMaterialsHelper.cfg"
+  ln -s "/opt/$pkgname/bin/Elite Dangerous Odyssey Materials Helper Launcher" "$pkgdir/usr/bin/Elite Dangerous Odyssey Materials Helper Launcher"
   install -m644 "$srcdir/ed-odyssey-materials-helper-bin.desktop" "$pkgdir/usr/share/applications/"
   install -m644 "$srcdir/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/ed-odyssey-materials-helper-bin.png"
 }
