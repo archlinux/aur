@@ -24,10 +24,12 @@ pkgbase = tuxclocker
 	source = git+https://github.com/Lurkki14/tuxclocker.git#tag=1.5.1
 	source = git+https://github.com/mpark/patterns.git
 	source = git+https://github.com/Dobiasd/FunctionalPlus.git
-	source = tuxclocker.patch
+	source = cstdint.patch
+	source = gcc15.patch
 	sha256sums = 36ea9d97009bf9890d3168c84a07fdd3262f9fa8c671fd48631ad37c9cd44d01
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 9e0f528d7f24e501fa9586101231c7f85cf5fbb1709ff354b2abe8d422977d9f
+	sha256sums = 7f0355adcd3650e6fbec3757512297c08975bf8c12c80ee421a7053d58b75ec5
 
 pkgname = tuxclocker

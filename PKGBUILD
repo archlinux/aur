@@ -32,11 +32,13 @@ optdepends=(
 source=("git+https://github.com/Lurkki14/tuxclocker.git#tag=$pkgver"
         'git+https://github.com/mpark/patterns.git'
         'git+https://github.com/Dobiasd/FunctionalPlus.git'
-        "$pkgname.patch")
+        "cstdint.patch"
+        'gcc15.patch')
 sha256sums=('36ea9d97009bf9890d3168c84a07fdd3262f9fa8c671fd48631ad37c9cd44d01'
             'SKIP'
             'SKIP'
-            '9e0f528d7f24e501fa9586101231c7f85cf5fbb1709ff354b2abe8d422977d9f')
+            '9e0f528d7f24e501fa9586101231c7f85cf5fbb1709ff354b2abe8d422977d9f'
+            '7f0355adcd3650e6fbec3757512297c08975bf8c12c80ee421a7053d58b75ec5')
 
 prepare() {
   cd "$pkgname"
@@ -46,7 +48,12 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   # Add missing cstdint include
-  patch -Np1 -i ../"$pkgname.patch"
+  patch -Np1 -i ../cstdint.patch
+
+  # GCC 15
+  # https://github.com/Lurkki14/tuxclocker/issues/106
+  # https://github.com/Lurkki14/tuxclocker/pull/107
+  patch -Np1 -i ../gcc15.patch
 }
 
 build() {
@@ -55,5 +62,5 @@ build() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
