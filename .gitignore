@@ -1,7 +1,4 @@
-src
-pkg
-*.zst
-*.tar.gz
-*.log
-*.log.*
-docker-color-output
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

@@ -1,13 +1,15 @@
 pkgbase = docker-color-output-git
-pkgdesc = Colors for Docker CLI
-pkgver = 2.6.1
-pkgrel = 23
-url = https://github.com/devemio/docker-color-output
-arch = x86_64
-license = MIT
-makedepends = git
-provides = docker-color-output-git
-conflicts = docker-color-output-git
-source = git://github.com/devemio/docker-color-output#branch=main
-sha512sums = SKIP
+	pkgdesc = Enhances docker's command output by adding customizable colors
+	pkgver = 2.6.1.r0.g7c44fec
+	pkgrel = 1
+	url = https://github.com/devemio/docker-color-output
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = docker-color-output
+	conflicts = docker-color-output
+	source = git+https://github.com/devemio/docker-color-output.git
+	sha512sums = SKIP
+
 pkgname = docker-color-output-git
