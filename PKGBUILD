@@ -10,7 +10,7 @@ license=('MIT')
 depends=('wayland' 'wlroots0.18' 'libinput')
 makedepends=('git' 'make' 'gcc')
 conflicts=(wideriver)
-source=("https://github.com/alex-courtis/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+source=("https://github.com/alex-courtis/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 install=wideriver.install
 

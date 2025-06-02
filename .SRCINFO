@@ -13,7 +13,7 @@ pkgbase = wideriver-wlroots0.18
 	depends = wlroots0.18
 	depends = libinput
 	conflicts = wideriver
-	source = https://github.com/alex-courtis/wideriver-wlroots0.18/archive/refs/tags/1.2.0.tar.gz
+	source = https://github.com/alex-courtis/wideriver/archive/refs/tags/1.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = wideriver-wlroots0.18
