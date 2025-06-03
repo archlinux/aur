@@ -11,7 +11,7 @@ pkgname=(
         'dfl-wayfireparser'
 )
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Collection of Config Parsers for DFL"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
@@ -21,7 +21,7 @@ makedepends=(
             'meson'
             'ninja'
             'dfl-color-utils'
-            'wlroots'
+            'wlroots0.18'
 )
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
 sha256sums=('e7ea505139fe8db077d934d78b14d24b7ca788f058ae0f586c43872c89f1b970')
@@ -29,7 +29,6 @@ sha256sums=('e7ea505139fe8db077d934d78b14d24b7ca788f058ae0f586c43872c89f1b970')
 build() {
   cd "${_pkgname}-v${pkgver}"
   echo "Building QT6 version..."
-  #PKG_CONFIG_PATH=/usr/lib/wlroots0.17/pkgconfig \
   meson setup .build --prefix=/usr --buildtype=release
   ninja -C .build
 }
@@ -53,7 +52,7 @@ package_dfl-hjsonparser() {
 
 package_dfl-wayfireparser() {
   depends+=(
-          'wlroots'
+          'wlroots0.18'
   )
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build install

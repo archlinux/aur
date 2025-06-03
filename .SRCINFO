@@ -1,7 +1,7 @@
 pkgbase = dfl-config-parser
 	pkgdesc = A Collection of Config Parsers for DFL
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/desktop-frameworks/config-parser
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = dfl-config-parser
 	makedepends = meson
 	makedepends = ninja
 	makedepends = dfl-color-utils
-	makedepends = wlroots
+	makedepends = wlroots0.18
 	depends = qt6-base
 	source = https://gitlab.com/desktop-frameworks/config-parser/-/archive/v0.3.0/config-parser-v0.3.0.tar.gz
 	sha256sums = e7ea505139fe8db077d934d78b14d24b7ca788f058ae0f586c43872c89f1b970
@@ -22,4 +22,4 @@ pkgname = dfl-hjsonparser
 
 pkgname = dfl-wayfireparser
 	depends = qt6-base
-	depends = wlroots
+	depends = wlroots0.18
