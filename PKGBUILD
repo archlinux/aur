@@ -2,7 +2,7 @@
 pkgname=organicmaps
 pkgver=2025.05.20_5
 tag="${pkgver%%_*}-${pkgver##*_}-android"
-pkgrel=2
+pkgrel=3
 pkgdesc="Organic Maps: Offline Hike, Bike, Trails and Navigation"
 arch=(x86_64)
 makedepends=("cmake<=3.31.6" git jq gcc ninja)
@@ -11,7 +11,7 @@ depends=(mesa libglvnd freetype2 sqlite icu qt6-svg qt6-base zlib libpng glibc
 optdepends=("ccache: faster re-compilation" "qt6-wayland: for Wayland users")
 license=("Apache")
 url="https://organicmaps.app"
-source_url="https://git.omaps.dev/organicmaps/organicmaps.git"
+source_url="https://github.com/organicmaps/organicmaps.git"
 source=(organicmaps.desktop)
 sha256sums=('8205a6abb2c053380940d5c2e83cf10b5b889544e2d36c1c777778bf35772729')
 conflicts=("${pkgname}-bin" "${pkgname}-git")

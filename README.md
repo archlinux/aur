@@ -1,5 +1,4 @@
-Traffic-efficient way to update this package:
-
+# Traffic-efficient way to update this package:
 1. Designate a permanent location for mirroring repositories, in this example
    /path/to/src_git_mirrors. Clone the repositories (do this only once):
 ```sh
