@@ -1,0 +1,5 @@
+[pypy3-pathspec]
+source = "github"
+github = "cpburnz/python-pathspec"
+use_latest_release = "true"
+prefix = "v"
