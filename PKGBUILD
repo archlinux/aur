@@ -2,7 +2,7 @@
 
 pkgname=com.qq.weixin.work.deepin
 pkgver=4.1.32.6005deepin2_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Deepin Wine 版企业微信 | Deepin-wine Wecom"
 arch=('i686' 'x86_64')
 url="https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/"

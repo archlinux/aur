@@ -1,7 +1,7 @@
 pkgbase = com.qq.weixin.work.deepin
 	pkgdesc = Deepin Wine 版企业微信 | Deepin-wine Wecom
 	pkgver = 4.1.32.6005deepin2_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/
 	install = wecom.install
 	arch = i686
