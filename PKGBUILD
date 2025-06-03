@@ -3,7 +3,7 @@ pkgname=mangabox-bin
 _pkgname=MangaBox
 pkgver=0.1.5
 _electronversion=34
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron client for Komga.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/zpaolo11x/mangabox"
@@ -17,10 +17,10 @@ makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-${CARCH}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux-${CARCH}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ac017d8a0dac798feca063ba4f24b2a0528e8fc356a6ac9c913b690151c67169'
+sha256sums=('5bc8dacfe60c077def255728d881c72061a7bf940e48105af28addf3165fadfa'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
