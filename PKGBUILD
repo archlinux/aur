@@ -2,7 +2,7 @@
 
 _pkgname=redis
 pkgname=redis-bin
-pkgver=8.0.1
+pkgver=8.0.2
 pkgrel=1
 pkgdesc='An in-memory database that persists on disk.'
 arch=('x86_64' 'aarch64')
@@ -31,21 +31,15 @@ source=(
 source_x86_64=("${_deb_url_prefix}-"{sentinel,server,tools}"_$pkgver-${_deb_codename}_amd64.deb")
 source_aarch64=("${_deb_url_prefix}-"{sentinel,server,tools}"_$pkgver-${_deb_codename}_arm64.deb")
 noextract=("${source_x86_64[@]##*/}" "${source_aarch64[@]##*/}")
-sha256sums=(
-    '4a0e416b9537688f30dfe69ddaceb2ca64d96b7df02a0a6760d376890ddc4e40'
-    '5f66305c49ba5ed67e777336e0a193c1d2b8ac7ba20a3e3cf0764804b60601f8'
-    'e75e37458c8774ca1c01290e211a8805c6fd83bd1d5f8fe8b1907a9ae59d4e49'
-)
-sha256sums_x86_64=(
-    '8958733a0170e48abc7acc7efe0df8f1e23ca4a48f5825efa43743ebbe0f8db0'
-    'fb81b335495883f61c94ce3aef319b3ec299900fec376b31ad6915d85bec8c9f'
-    '0ddd06d7b0220d28fa062e6354e0f7546cceaebfad5bb0cfa0d5f51fb2cd340f'
-)
-sha256sums_aarch64=(
-    '847fece45ee37f12492f743837272c850531a9ffea3e560052954703c2609c8f'
-    '24a5563fc35f80a50f12701972ff6a560821ef1ba85defacf52470d26cb34d28'
-    '3d58d7e8521c28aa0c3f0cc9c56dbd7984666910a4a0f542703f6c80fd2db0bc'
-)
+sha256sums=('4a0e416b9537688f30dfe69ddaceb2ca64d96b7df02a0a6760d376890ddc4e40'
+            '5f66305c49ba5ed67e777336e0a193c1d2b8ac7ba20a3e3cf0764804b60601f8'
+            'e75e37458c8774ca1c01290e211a8805c6fd83bd1d5f8fe8b1907a9ae59d4e49')
+sha256sums_x86_64=('a5db8b0f35663643f46a72a601cf0c68d3627126c0f694aac6d8fb9e4a8a52ed'
+                   '65c975dec0f55e4f3935662de82ad4e44464c23d47b445adf75beaca25e0e116'
+                   '83bca79c3a60967df67b3c230967736777ee3a35b0395c9b7ea5a59bc81d18e0')
+sha256sums_aarch64=('b2373b88d6484e6bc2bcb15b763f24bc429f0b08c1659502debb0179c1a9cfa6'
+                    '3d075ace5c36a1bc48a5abaca55d570c4a5a1de5af1173f7e6cae96a86b24bd0'
+                    'a04f51b3f866f1b613dff7206655e75f79ed3edae95c8a01d7c480dedbf629ab')
 
 prepare() {
     cd "$srcdir"
