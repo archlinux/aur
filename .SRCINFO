@@ -1,7 +1,7 @@
 pkgbase = python-pyfmodex-git
 	pkgdesc = Python bindings for the FMOD Ex sound library
 	pkgver = r231.80b028b
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tyrylu/pyfmodex
 	install = python-pyfmodex-git.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = python-pyfmodex-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = python-poetry
 	makedepends = git
 	depends = python
 	optdepends = fmodengine: FMOD Engine API and tools
