@@ -1,4 +1,4 @@
-[pypy3-pyparsing]
+[pypy-pyparsing]
 source = "github"
 github = "pyparsing/pyparsing"
 use_latest_release = "true"

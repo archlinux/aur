@@ -1,13 +1,15 @@
 pkgbase = pypy-pyparsing
 	pkgdesc = General parsing module for Python
-	pkgver = 3.0.7
+	pkgver = 3.2.3
 	pkgrel = 1
 	url = https://github.com/pyparsing/pyparsing
 	arch = any
 	license = MIT
-	makedepends = pypy3-setuptools
-	source = https://pypi.org/packages/source/p/pyparsing/pyparsing-3.0.7.tar.gz
-	sha512sums = 1e692f4cdaa6b6e8ca2729d0a3e2ba16d978f1957c538b6de3a4220ec7d996bdbe87c41c43abab851fffa3b0498a05841373e435602917b8c095042e273badb5
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	makedepends = pypy3-flit-core
+	source = https://pypi.org/packages/source/p/pyparsing/pyparsing-3.2.3.tar.gz
+	sha512sums = ef01403a158f15215b3be7f7c4aad2ceb6020d578dac68351b732df3447c685aa478d23ab645d554070ad2aec14ee565a0407f428b91f398e4429c0e53eb4a6d
 
 pkgname = pypy3-pyparsing
 	depends = pypy3
