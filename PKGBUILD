@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/StreamController/StreamController"
 license=('GPL-3')
 depends=('python' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk' 'libportal' 'libportal-gtk4' 'libadwaita')
-makedepends=('python-pip')
+makedepends=('python-pip' 'sed')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/StreamController/StreamController/archive/refs/tags/$_pkgver.tar.gz")
 sha256sums=('737c358b45e37fec62f92c433e703496f99b4854c606ff7e09041524c88cee95')
 provides=('streamcontroller')
@@ -24,6 +24,11 @@ package() {
   cd "$srcdir/$_reponame"
   pip install -r requirements.txt
   deactivate
+
+  # Ensure correct venv is used after install
+  cd "$pkgdir/usr/local/lib/$_pkgname/bin"
+  sed -i "s|$pkgdir||g" *
+  cd "$srcdir/$_reponame"
 
   # Install source files
   mkdir -p "$pkgdir/usr/lib/$_pkgname"

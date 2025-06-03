@@ -6,6 +6,7 @@ pkgbase = streamcontroller
 	arch = any
 	license = GPL-3
 	makedepends = python-pip
+	makedepends = sed
 	depends = python
 	depends = xdg-desktop-portal
 	depends = xdg-desktop-portal-gtk
