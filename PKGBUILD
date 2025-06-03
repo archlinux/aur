@@ -7,7 +7,7 @@ pkgdesc="A text user interface for Kafka. Interact and consume topics from your 
 arch=('any')
 url="https://github.com/sauljabin/${pkgname}"
 license=('MIT')
-depends=('python>=3.10' 'python-click' 'python-cloup>=3' 'python-confluent-kafka' # >=2.10
+depends=('python>=3.10' 'python-click' 'python-cloup>=3' 'python-confluent-kafka>=2.10'
          'python-fastavro' 'python-protobuf' 'python-rich' 'python-textual>=3.3')
 makedepends=('python-build' 'python-installer' 'python-poetry-core>=2')
 _pkgsrc="${pkgname}-${pkgver}"
