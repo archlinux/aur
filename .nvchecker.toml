@@ -1,0 +1,4 @@
+[pypy3-beniget]
+source = "github"
+github = "serge-sans-paille/beniget"
+use_max_tag = "true"
