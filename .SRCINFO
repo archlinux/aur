@@ -1,0 +1,20 @@
+pkgbase = ocd
+	pkgdesc = Organize current dotfiles
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/awkless/ocd
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = openssl
+	depends = libssh2
+	options = !lto
+	source = git+https://github.com/awkless/ocd#tag=v0.8.0
+	b2sums = ffdd32e3e06618b92c0fab6c408dd99ab47f2a8e0542b8110978755e488e7c8ca97b1ca2d6c40f0019f0d7f4a320b9c7cf796bbaa84a36d9ea672c2e7c0a575e
+
+pkgname = ocd
