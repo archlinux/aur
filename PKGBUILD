@@ -1,7 +1,7 @@
 # Maintainer: Wenqian <lazycat7706@gmail.com>
 
 pkgname=roxide-release
-pkgver=0.18.1
+pkgver=0.18.2
 pkgrel=1
 pkgdesc="A git repositories manager CLI, easy to use and very fast"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('git' 'fzf')
 
 source=("$pkgname-$pkgver::https://github.com/fioncat/roxide/releases/download/v${pkgver}/roxide-linux-amd64.tar.gz")
-sha256sums=('e8002663339586be45b50d6a5e37ff192e9b6ba77102dfef4043dd7c3317ff2a')
+sha256sums=('f108689ca597b9c9d90fa816607b7318d3beb18824093d34b48751c47d97b13a')
 
 options=('!strip' '!debug')
 
