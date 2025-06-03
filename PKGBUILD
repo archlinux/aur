@@ -4,12 +4,12 @@
 
 pkgname=albert
 pkgver=0.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/albertlauncher"
 license=('custom')
-depends=('hicolor-icon-theme' 'qt6-5compat' 'qt6-declarative' 'qt6-scxml' 'qt6-shadertools' 'qt6-svg')
+depends=('hicolor-icon-theme' 'qt6-5compat' 'qt6-declarative' 'qt6-scxml' 'qt6-shadertools' 'qt6-svg' 'qtkeychain-qt6')
 makedepends=('cmake' 'git' 'libqalculate' 'pybind11' 'python' 'qt6-tools')
 optdepends=('libarchive: documentation plugin'
             'libqalculate: calculator plugin'
