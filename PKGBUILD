@@ -3,7 +3,7 @@
 # Contributor: Thomas Heinemann <thomas@nipha.de>
 # Contributor: Jean Lucas < jean at 4ray dot co>
 pkgname='parsedmarc'
-pkgver='8.18.1'
+pkgver='8.18.4'
 pkgrel='1'
 pkgdesc='Python package and CLI for parsing aggregate and forensic DMARC reports'
 arch=('any')
@@ -21,7 +21,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	'run-tests-offline.diff'
 )
-b2sums=('a869d7da09a317ff773dd53d91e5b9bf8708796327be2a58287e3c3315e5e3cd4ded1301df43a871748c22e79a60de3f1a03795cbed68e9e66891cba4ae93ec7'
+b2sums=('203de1ce3e8bde7bb3635f2a5c28c94f2b209e8033ed6c96976ab9209e506ca980616f7867de52a491201d843a91cd2d44b111ab4b2cb1e331a77862acaf75f6'
         '72b3826cb1a61eb4004e4763aefd9996a0c28bee387a36ecd8d4837f1b33a265c1691ff0e11478d10ce30adeb49c277f24eb737067d6ca090bb9967e0895429d')
 
 _sourcedirectory="$pkgname-$pkgver"
