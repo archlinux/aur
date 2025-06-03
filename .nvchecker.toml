@@ -1,0 +1,4 @@
+[gog-rail-route]
+source = "jq"
+url = "https://www.gogdb.org/data/products/2011886219/product.json"
+filter = ".dl_installer | map(select(.os == \"linux\"))[0] | .version"

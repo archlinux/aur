@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Rail Route
-Comment=Design and automate your own railway network. GOG version.
+Comment=Design and automate your own railway network
 Exec=rail-route
 Icon=gog-rail-route
 Type=Application

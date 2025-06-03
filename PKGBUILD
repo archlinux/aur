@@ -1,13 +1,13 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=gog-rail-route
-pkgver=2.0.19.0.73164
+pkgver=2.3.20
 pkgrel=1
 pkgdesc='Design and automate your own railway network. GOG version.'
 _shortname="${pkgname#gog-}"
 arch=('x86_64')
 url="https://www.gog.com/en/game/${_shortname//-/_}"
-license=('LicenseRef-custom')
+license=('LicenseRef-eula')
 depends=(
   'bash'
   'cairo'
@@ -19,24 +19,19 @@ depends=(
   'pango'
   'zlib'
 )
-makedepends=('lgogdownloader')
+makedepends=('execstack' 'lgogdownloader')
 conflicts=('gog-rail-route-demo')
-options=('!debug')
-
-# Need to hard-code the ID because lgogdownloader would force a
-# prompt whenever we attempt to download `rail_route` while
-# our GOG account also owns `rail_route_demo`
-_gog_id='2011886219'
+options=('!debug' '!strip')
 
 source=(
-  "${_shortname}-${pkgver}.sh::gogdownloader://${_gog_id}/en3installer0"
+  "${_shortname}_${pkgver//./_}.sh::gogdownloader://${_shortname//-/_}/en3installer0"
   "${pkgname}.desktop"
   "${_shortname}.bash"
 )
 
 sha512sums=(
-  '01ae5af1a87cf8df5ab882b7c1be5cf4aa550d79c9d3e16d5294fe10aaa2473a3cac6f349f2606140a1c356cf3c763486b1bec8d99f81b5b44585a6898d2687b'
-  '3e24869eed65b44d252c6913f359d75a90c431d207bafa7fe90c0390fda1becd1b2d4a8060694903ab2928a85f0b3b94b42534f04957f8e5b5b590cdc7fa7b26'
+  'adccfb7db516d9fd6463ba65e82e7c7d3342fb36a8519fd83be3c3304a78a689afbbc8c247692b8ed81c3b15f2ee7b2e30c05dd44457b902d13f9c1a19be6e55'
+  '2ca22352d18d7409cd68a47434d499c0f01fccff998ed890e893cad284eae2cc798d1c3fdb2a669642feb87fda5b5ac2f934b6afd59fec5b277b6e8f999c197b'
   'aadace0dcf1f13359966cae76dde2b125187480501d2ac6d6569327ecece78f91f881bf74c207703a63477de86b7d537aa40b553d73e8d7aa79fef2e13376d8a'
 )
 
@@ -44,8 +39,18 @@ DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 PKGEXT=.pkg.tar
 
 prepare() {
-  # Remove unneeded 32-bit binaries
-  # Fixes false alarms in rebuild-detector
+  # Assert that pkgver matches the downloaded version
+  diff -u \
+    --label 'Expected version' <(echo "${pkgver}") \
+    --label 'Actual version' <(awk 'NR==2' data/noarch/gameinfo)
+
+  # Work around glibc 2.41 execstack issue
+  # See also: https://sourceware.org/bugzilla/show_bug.cgi?id=32653
+  find "${srcdir}"/data/noarch/game -name 'libfmod*.so' -exec \
+    execstack -c '{}' +
+
+  # Remove unneeded 32-bit executable
+  # Fixes false alarm in rebuild-detector
   rm -rfv "${srcdir}/data/noarch/support/yad/32"
 }
 
