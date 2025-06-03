@@ -26,5 +26,5 @@ package() {
   install -Dm644 assets/sqrrlch_icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/sqlch.png"
 
   # License
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

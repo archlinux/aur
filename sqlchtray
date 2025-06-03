@@ -2,6 +2,7 @@
 # sqlchtray-3.1.py — sqlchTray Reborn
 
 import os
+import shutil
 import subprocess
 import threading
 import time
@@ -19,9 +20,6 @@ LAST_PLAYED = os.path.join(CONFIG_DIR, "last")
 
 sqlchCTL = "/home/prepko/.local/bin/sqlchctl"
 sqlchKNOB = "/home/prepko/.local/bin/sqlchknob"
-
-
-import shutil
 
 
 def launch_command(cmd):
@@ -54,7 +52,7 @@ def launch_command(cmd):
                         f"{' '.join(cmd)}; echo; read -p 'Press enter to close...'",
                     ]
                 )
-            return  # Exit after launching once
+            return
     subprocess.Popen(
         ["notify-send", "sqlch Error", "No terminal emulator found to launch command."]
     )
@@ -98,7 +96,6 @@ class sqlchTray:
         header.show()
 
         self.populate_stations()
-
         self.add_channel_menu()
 
         self.menu.append(Gtk.SeparatorMenuItem())

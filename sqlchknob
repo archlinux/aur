@@ -7,7 +7,10 @@ IFS=$'\n\t'
 
 CONFIG_DIR="$HOME/.config/sqlch"
 STATION_FILE="$CONFIG_DIR/stations"
+<<<<<<< HEAD
 CHANNEL_FILE="$CONFIG_DIR/channels"
+=======
+>>>>>>> 7121b57 (Clean flat AUR-compliant repo)
 LAST_PLAYED="$CONFIG_DIR/last"
 DEFAULT_STATION="$CONFIG_DIR/default"
 SOCKET="/tmp/mpvsocket"
@@ -112,37 +115,9 @@ delete_station() {
   [[ -n "$name" ]] && sed -i "/^\*\?$name=/d" "$STATION_FILE"
 }
 
+<<<<<<< HEAD
 select_channel() {
   local selected
   selected=$(cut -d= -f1 "$CHANNEL_FILE" | gum choose --height=20)
   [[ -n "$selected" ]] && sqlchctl play-channel "$selected"
 }
-
-show_status() {
-  sqlchctl status
-  sleep 2
-}
-
-stop_playback() {
-  sqlchctl stop
-}
-
-main_menu() {
-  splash
-  local choice
-  choice=$(gum choose "🎧 Play Station" "🔍 Search & Add" "🎚 Browse by Genre" "✏️ Edit Station" "🗑 Delete Station" "ℹ️ Now Playing" "⛔ Stop" "🚪 Quit")
-  case "$choice" in
-    "🎧 Play Station") choose_play ;;
-    "🔍 Search & Add") search_add ;;
-    "🎚 Browse by Genre") browse_genre ;;
-    "✏️ Edit Station") edit_station ;;
-    "🗑 Delete Station") delete_station ;;
-    "📺 Channels" select_channel) select_channel ;;
-    "ℹ️ Now Playing") show_status ;;
-    "⛔ Stop") stop_playback ;;
-    "🚪 Quit") exit 0 ;;
-  esac
-}
-
-ensure_gum
-while true; do main_menu; done
