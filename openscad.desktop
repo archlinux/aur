@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=OpenSCAD
+Comment=Create 3D models and compile to STL format
+Exec=/opt/openscad-snapshot-appimage/openscad.AppImage
+Icon=openscad
+Terminal=false
+Type=Application
+Categories=Graphics;3DGraphics;
