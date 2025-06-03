@@ -1,14 +1,14 @@
 # Maintainer: ApplicationMaker <Application-Maker.Uinwad@erine.email>
 pkgname=pacman-mirrors-helper-git
-pkgver=r268.7f1db7e
+pkgver=r270.79a0c04
 pkgrel=1
-pkgdesc="A lightweight CLI tool to manage repository mirrors and configuration."
+pkgdesc="A TUI/CLI tool to manage repository mirrors and configuration."
 arch=(any)
 url="https://codeberg.org/Application-Maker/pacman-mirrors-helper"
 license=(GPL-3.0-or-later)
 depends=(bash coreutils curl gawk sed util-linux)
-optdepends=('ncurses: Required for interactive menus to work.'
-            'sudo: The script will use sudo if available')
+optdepends=('ncurses: For interactive menus.'
+            'sudo: Used if installed, otherwise `su` is used.')
 makedepends=(coreutils git)
 source=("git+https://codeberg.org/Application-Maker/pacman-mirrors-helper.git#branch=main")
 sha256sums=(SKIP)
