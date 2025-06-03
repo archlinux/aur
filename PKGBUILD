@@ -46,7 +46,7 @@ source=("${pkgname}::git+${url}.git"
 	"50-systemd-user.conf"
 	"scroll-portals.conf")
 b2sums=('SKIP'
-        '3b7d7cd9b3de3944e910c7903edc49b1f85ab5c8e40de4b930148456cd000dfb81c79fead29c71feacaf006bbccd5180ce01e922516e6aa41c2964422b942605'
+        '9f913e2262718289e4d1e9e77420617e15c682d3c9006627ea119ba8df19e3ffe6db0fe2610d9fb32daa96c361544faed334321ea35685a11241bed45ffd7958'
         'cdba5fd2988b7ead8b264d5b41f1c7adb47a6487be1e3a4ce98c0af2094d9964f4bc364237c4437014be18061f067aa741b0382f21365be497e06b189c5c7728')
 
 _meson_setup() {
