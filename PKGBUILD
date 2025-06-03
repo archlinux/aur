@@ -2,7 +2,7 @@
 
 pkgname=python-cynthion
 _gitpkgname=cynthion
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Python package and utilities for the Great Scott Gadgets Cynthion USB Test Instrument'
 arch=('any')
@@ -42,10 +42,8 @@ source=(
   'archlinux-managed-udev-rules.patch'
 )
 
-sha512sums=(
-  '752a1bb976f778281b8dfee2b1ee2412ab25a9392d5977ca87d73ea3fbf3edf10dcd5c6c2e80b466cac695d2b19e1fc2eb7a381477a619a8a546f2ec8f3a8b4b'
-  '45d3b73f3651485177b43ffb2d413a7a008f01550dcff7973e6581afb337b6b37beda50ee8499a632754e791734186ec647eb48bea8a3efb2899844bac40fd0b'
-)
+sha512sums=('d532f0359f0ec3962a14697a77503365ebc7aeaa848f94ecff3488d5a010f01f12bd5674314ce0fb1a92b58ac6cf2979d1fccf039976d00d11135201509d990b'
+            '45d3b73f3651485177b43ffb2d413a7a008f01550dcff7973e6581afb337b6b37beda50ee8499a632754e791734186ec647eb48bea8a3efb2899844bac40fd0b')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
