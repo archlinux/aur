@@ -1,8 +1,8 @@
-# Maintainer: Dan Johansen <strit@strits.dk>
+# Maintainer: Dan Johansen <strit@archlinux.org>
 
 pkgname=gpu-viewer
 _pkgname=GPU-Viewer
-pkgver=3.12
+pkgver=3.13
 pkgrel=1
 pkgdesc="A frontend to glxinfo and vulkaninfo."
 arch=('i686' 'x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url="https://github.com/arunsivaramanneo/$_pkgname/"
 license=('GPL-3.0-or-later')
 depends=(
         'gtk4'
-        'libadwaita>=1.4'
+        'libadwaita'
         'python'
         'python-gobject'
         'python-click'
@@ -51,4 +51,4 @@ package() {
     DESTDIR="$pkgdir" ninja install
 }
 
-sha256sums=('3d8bd94279008c82af28fb5df7f0e82efcd3915bf3e9cfd5e1760b0ec6f74f7f')
+sha256sums=('fbe486a2b3084085500f4937da8de1327c0a005ff0347b4069cd0dbdeb2e395c')
