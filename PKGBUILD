@@ -1,4 +1,5 @@
-# Maintainer: Marko Givens <marcxjo@cerebralbleach.com>
+# Maintainer: Rukkhadevata123 <3083913301@qq.com>
+# Contributor: Marko Givens <marcxjo@cerebralbleach.com>
 # Contributor: Rukkhadevata123 <3083913301@qq.com>
 
 pkgname=gnome-shell-extension-extension-list
