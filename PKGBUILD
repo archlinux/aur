@@ -4,7 +4,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-workspaces
-pkgver=0.3.6
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Cargo plugin for managing cargo workspaces and their crates"
 url="https://github.com/pksunkara/cargo-workspaces"
@@ -13,7 +13,7 @@ makedepends=('cargo')
 arch=('x86_64')
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('8dbf983b29e641ae6d80b3a048095223bd3c08458cbc38ea952cc5e72caa5bb68487763ac6dca96520f45a4faeb913be707cb90121b62834a3fc637de8fcdeec')
+sha512sums=('41d56437b2b3fff54a2e4170a4076f423a7d356e6f12632ebd1f3862daec7df4244f87d080f34987811eb9cdc0359f06d1155e6ab3906f109b609bb2075ec934')
 options=('!lto')
 
 prepare() {
