@@ -1,12 +1,13 @@
 pkgbase = mediago-bin
 	pkgdesc = Video online extraction tool streaming media download, video download,m3u8 download,Bilibili video download.视频在线提取工具,流媒体下载,视频下载,m3u8下载,B站视频下载.
 	pkgver = 3.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://downloader.caorushizi.cn/
 	arch = x86_64
 	license = MIT
 	depends = electron30
 	depends = python
+	depends = ffmpeg
 	provides = mediago=3.0.1
 	conflicts = mediago
 	source = mediago-3.0.1.deb::https://github.com/caorushizi/mediago/releases/download/v3.0.1/mediago-setup-linux-amd64-3.0.1.deb
