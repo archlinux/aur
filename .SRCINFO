@@ -1,7 +1,7 @@
 pkgbase = python-snakemake-interface-common
 	pkgdesc = Common functions and classes for Snakemake and its plugins
-	pkgver = 1.17.4
-	pkgrel = 2
+	pkgver = 1.18.0
+	pkgrel = 1
 	url = https://github.com/snakemake/snakemake-interface-common
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = python-snakemake-interface-common
 	makedepends = python-wheel
 	makedepends = python-poetry-core
 	depends = python
-	source = snakemake-interface-common-1.17.4.tar.gz::https://github.com/snakemake/snakemake-interface-common/archive/refs/tags/v1.17.4.tar.gz
-	sha256sums = 327502b1d37855c1425f296f0eaec785474d625629b2fb2127f867f8c9304d32
+	source = snakemake-interface-common-1.18.0.tar.gz::https://github.com/snakemake/snakemake-interface-common/archive/refs/tags/v1.18.0.tar.gz
+	sha256sums = 3da1b744e79c1a6a2ae04ceaf65d2d036e2793b936a52ac50c7daf92fd871979
 
 pkgname = python-snakemake-interface-common
