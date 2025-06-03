@@ -1,7 +1,7 @@
 pkgbase = cherry-studio-electron-bin
 	pkgdesc = 🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.3.12
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://cherry-ai.com/
 	arch = aarch64
 	arch = x86_64
@@ -10,15 +10,15 @@ pkgbase = cherry-studio-electron-bin
 	makedepends = fuse2
 	depends = electron35
 	optdepends = ollama: Use your local LLM
-	provides = cherry-studio=1.3.12
+	provides = cherry-studio=1.4.0
 	conflicts = cherry-studio
-	source = LICENSE-1.3.12::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.3.12/LICENSE
+	source = LICENSE-1.4.0::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.4.0/LICENSE
 	source = cherry-studio-electron.sh
-	sha256sums = 086ed1a05e38dcc383b15670b22cfdee5ea54931cd0ee528f8494c792d8c9a7d
+	sha256sums = ca8950fcf72aef9d46e0bccc0b456c5e2e14bd37d2bbd04bb99632e09eda36b3
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = cherry-studio-electron-1.3.12-aarch64.AppImage::https://github.com/CherryHQ/cherry-studio/releases/download/v1.3.12/Cherry-Studio-1.3.12-arm64.AppImage
-	sha256sums_aarch64 = 01cfaa7b08a0aa8f8d85acb56e22219b1181f1cc6c502571d941af03b2a51354
-	source_x86_64 = cherry-studio-electron-1.3.12-x86_64.AppImage::https://github.com/CherryHQ/cherry-studio/releases/download/v1.3.12/Cherry-Studio-1.3.12-x86_64.AppImage
-	sha256sums_x86_64 = 2f4cf000e8571a387068f65dfce8f2d05937c85649ee657891f958255e3650f9
+	source_aarch64 = cherry-studio-electron-1.4.0-aarch64.AppImage::https://github.com/CherryHQ/cherry-studio/releases/download/v1.4.0/Cherry-Studio-1.4.0-arm64.AppImage
+	sha256sums_aarch64 = 0b671f74ab31846819d847fcd61f48ebd1b318e94957b95c60b5b788caf39739
+	source_x86_64 = cherry-studio-electron-1.4.0-x86_64.AppImage::https://github.com/CherryHQ/cherry-studio/releases/download/v1.4.0/Cherry-Studio-1.4.0-x86_64.AppImage
+	sha256sums_x86_64 = 4738c5d43f077da8aeab0e9a9b9f1a5e955e68c705572e4ffed4354ac69966f7
 
 pkgname = cherry-studio-electron-bin
