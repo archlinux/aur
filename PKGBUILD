@@ -8,12 +8,9 @@ license=('GPL3')
 depends=('python-click' 'python-pillow' 'python-pyshp' 'python-requests')
 makedepends=('python-setuptools' 'python-wheel')
 
-source=("termtrack")
-sha256sums=()
+source=("https://wumbo.site/bin/linux/termtrack/termtrack-0.7.4.tar.gz")
+sha256sums=("5390f20563d84d7923b18d0876fa48ba57b6f3083cd250435afd457d47d25f69")
 
-prepare() {
-  cp -r "${startdir}/termtrack" "$srcdir/"
-}
 
 build() {
   cd "$srcdir/termtrack" || exit 1
@@ -24,4 +21,3 @@ package() {
   cd "$srcdir/termtrack" || exit 1
   python setup.py install --root="$pkgdir/" --optimize=1
 }
-
