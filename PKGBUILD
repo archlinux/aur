@@ -1,16 +1,15 @@
+pkgdesc="(Dangerous) Swap system coreutils with uutils (more than PATH)"
 pkgname=coreutils-uutils-symlink
 pkgver=0.1.0
-pkgrel=8
+pkgrel=9
 arch=('any')
 url='https://uutils.github.io/'
 license=('MIT')
-depends=(uutils-coreutils)
+depends=(uutils-coreutils{,-stty})
 makedepends=(grep)
-package_coreutils-uutils-symlink() {
-  pkgdesc="(Dangerous) Swap coreutils with uutils (more than PATH)"
-  depends+=(uutils-coreutils-stty)
-  conflicts=(coreutils{,-uutils,-arch} b3sum sha3sum)
-  provides=(coreutils{,-arch} b3sum)
+conflicts=(coreutils b3sum sha3sum)
+provides=(coreutils b3sum)
+package() {
   uu-install -d "$pkgdir"/usr/{bin,share/man/man1}
   for f in $(uu-coreutils --list|grep -v -E '^(kill|more|uptime|hostname)$');do
     uu-ln -s /usr/bin/uu-coreutils "$pkgdir"/usr/bin/"$f"
