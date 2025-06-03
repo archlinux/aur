@@ -1,10 +1,10 @@
 # Maintainer: Roberto Alsina <roberto.alsina@gmail.com>
 pkgname=crycco
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A literate programming tool"
 arch=('x86_64' 'aarch64')
-url="https://github.com/ralsina/tartrazine"
+url="https://crycco.ralsina.me"
 license=('MIT')
 makedepends=('crystal' 'shards')
 options=()
@@ -30,5 +30,5 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm755 bin/$pkgname $pkgdir/usr/bin/tartrazine
+	install -Dm755 bin/$pkgname $pkgdir/usr/bin/$pkgname
 }
