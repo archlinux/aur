@@ -30,7 +30,7 @@ pkgver() {
 prepare() {
   cd $_pkgname
   patch -Np1 -i ../disable_selinux.patch
-  cargo fetch --target "${CARCH}"-unknown-linux-gnu # -locked is omitted for -git
+  # cargo fetch --target "${CARCH}"-unknown-linux-gnu # DL larger crates
 }
 
 export RUSTONIG_DYNAMIC_LIBONIG=1
@@ -38,7 +38,7 @@ export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) -C link-arg=-fuse-ld=
 
 #build() { cause build twice
 #  cd $_pkgname
-#  cargo build --release # --frozen is omitted for -git
+#  cargo build --release # --locked
 #}
 
 package() {
