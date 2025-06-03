@@ -3,7 +3,9 @@
 _pkgname=stackablectl
 pkgname="${_pkgname}-bin"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
+# We moved to epoch=1 because we moved from CalVer to SemVer
+epoch=1
 pkgdesc="Command line tool to interact with a Stackable Data Platform"
 arch=('x86_64')
 url="https://github.com/stackabletech/stackable-cockpit/"
