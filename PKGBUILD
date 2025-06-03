@@ -36,7 +36,7 @@ makedepends=(
 conflicts=('goldendict' 'goldendict-git' 'goldendict-svn' 'goldendict-git-opt')
 provides=('goldendict')
 replaces=('goldendict-svn' 'goldendict-git-opt' 'goldendict-webengine-git')
-source=("$pkgname::git+https://github.com/xiaoyifang/goldendict.git")
+source=("$pkgname::git+https://github.com/xiaoyifang/goldendict-ng.git")
 md5sums=('SKIP')
 
 pkgver() {
