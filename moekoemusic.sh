@@ -21,9 +21,14 @@ if [[ -f "${_FLAGS_FILE}" ]]; then
         fi
     done < "${_FLAGS_FILE}"
 fi
+case "${XDG_SESSION_TYPE}" in
+    wayland)
+        _DISPLAY_OPTIONS="--enable-wayland-ime"
+        ;;
+esac
 cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
 if [[ "${EUID}" -ne 0 ]] || [[ "${ELECTRON_RUN_AS_NODE}" ]]; then
-    exec electron@electronversion@ "${_RUNNAME}" ${_OPTIONS} "${_USER_FLAGS[@]}" "$@"
+    exec electron@electronversion@ "${_RUNNAME}" ${_OPTIONS} ${_DISPLAY_OPTIONS} "${_USER_FLAGS[@]}" "$@"
 else
-    exec electron@electronversion@ "${_RUNNAME}" ${_OPTIONS} --no-sandbox "${_USER_FLAGS[@]}" "$@"
+    exec electron@electronversion@ "${_RUNNAME}" ${_OPTIONS} ${_DISPLAY_OPTIONS} --no-sandbox "${_USER_FLAGS[@]}" "$@"
 fi

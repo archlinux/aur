@@ -4,7 +4,7 @@ _pkgname='MoeKoe Music'
 _zhsname='萌音'
 pkgver=1.4.7
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, concise, and aesthetically pleasing third-party client for KuGou.(Prebuilt version.Use system-wide electron)一款开源简洁高颜值的酷狗第三方客户端"
 arch=('x86_64')
 url="https://moejue.cn/"
@@ -29,7 +29,7 @@ source=(
 )
 sha256sums=('7f3745c0c00530716b93c8e5b3341cd58c4bdb0b3648f06bc40128bfcfdec1c7'
             'f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'a342af4d5c4e93ad5b1e740d8b6cebb1ef803b396d0a62ec6e6647d23a722141')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
