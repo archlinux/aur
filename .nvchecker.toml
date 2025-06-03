@@ -1,0 +1,4 @@
+[pypy3-trove-classifiers]
+source = "github"
+github = "pypa/trove-classifiers"
+use_latest_release = "true"
