@@ -2,13 +2,13 @@
 # Contributor: solarbaron
 # Contributor: Dlani
 pkgname=feishin
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='A modern self-hosted music player.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jeffvli/feishin'
 license=('GPL-3.0-only')
-makedepends=('npm' 'nodejs-lts-iron')
+makedepends=('pnpm')
 optdepends=('mpv: Alternative audio backend')
 conflicts=('feishin-git' 'feishin-bin')
 source=("git+${url}.git#tag=v${pkgver}"
@@ -17,11 +17,10 @@ sha256sums=('SKIP'
 	'17f4e5c319e625198ffe2032045657e0d33db1d9d64f534bfc2d40f6082fd5db')
 
 build() {
+  pnpm cache delete
   cd $pkgname
-  export npm_config_cache="$(mktemp -d)"
-  npm install --legacy-peer-deps
-  npm run package
-  rm -rf "$npm_config_cache"
+  pnpm install
+  pnpm run package
 }
 
 package() {
@@ -29,7 +28,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/$pkgname"
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/applications"
-  cp -r "$pkgname/release/build/linux-unpacked/"* "$pkgdir/usr/share/$pkgname"
+  cp -r "$pkgname/dist/linux-unpacked/"* "$pkgdir/usr/share/$pkgname"
   install -Dm644 "$pkgdir/usr/share/feishin/resources/assets/icons/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname%}.png"
   ln -s /usr/share/feishin/feishin "${pkgdir}/usr/bin/feishin"
   install -Dm644 feishin.desktop "$pkgdir/usr/share/applications/"
