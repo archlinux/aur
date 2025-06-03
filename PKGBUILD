@@ -25,7 +25,7 @@ pkgname=(
   #"python2-linux-gpib-git"
   "tcl-linux-gpib-git"
 )
-pkgver=4.3.7.r2137.20250525.c6d9beb8
+pkgver=4.3.7.r2139.20250526.4c820721
 pkgrel=1
 pkgdesc='A support package for GPIB (IEEE 488) hardware: Kernel drivers, userspace utilities and libraries, python bindings.'
 arch=('i686' 'x86_64' 'aarch64')
