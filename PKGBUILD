@@ -2,7 +2,7 @@
 
 pkgname='python-pygreat'
 _gitpkgname=libgreat
-pkgver=2024.0.3
+pkgver=2024.0.5
 pkgrel=1
 pkgdesc='Host-side drivers for communication with embedded devices'
 arch=('any')
@@ -25,20 +25,12 @@ makedepends=(
 
 source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/libgreat/archive/v${pkgver}.tar.gz"
-  'github-pr-47.patch'
 )
 
-sha512sums=('94b26328625f9c1172d2aad1320a7ea27f218d5d456bbf09df700c32b7ad191919eb6eed0d074ee5f5a444e0b454c91afc1a86b836541f94a23198aa6709437a'
-            '38900d94099ac9f156304de0564471036c03a1b05fa6baa91137ddfe3e84c1c91654b90fe52c5d6a84a37e942cec3c8b8a5b2377c6bcbbfaffdec2d816c01cd1')
+sha512sums=('d57869cccee70a5ad9dbc273713bfa133eae8f4abe5dfab2ce81a2677322dd238c072af5a8a28354dcb0db33ef3adf45d385623b72be1c9734daeeb20c32ad28')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
-
-  # Remove this patch once the upstream author has merged PR #47 and
-  # included it in a stable release.
-  # See also: https://github.com/greatscottgadgets/libgreat/pull/47
-  echo >&2 "Removing references to obsolete 'python-future' package"
-  patch -p1 < ../github-pr-47.patch
 
   echo >&2 'Pinning version number'
   export pkgver
