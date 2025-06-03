@@ -1,6 +1,6 @@
 pkgbase = funkin
 	pkgdesc = A rhythm game made with HaxeFlixel
-	pkgver = 0.4.1
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://www.newgrounds.com/portal/view/770371
 	arch = x86_64

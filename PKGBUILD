@@ -1,7 +1,8 @@
-# Maintainer: Harrison <contact@htv04.com>
+# Maintainer : Syazmi <mrcorpzpro@gmail.com>
+# Contributer: Harrison <contact@htv04.com>
 
 pkgname=funkin
-pkgver=0.4.1
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="A rhythm game made with HaxeFlixel"
 arch=(x86_64)
@@ -38,11 +39,17 @@ build() {
 
   # Download required Haxe libraries via HMM
   haxelib install hmm
-  haxelib run hmm reinstall
+  echo n | haxelib run hmm reinstall
 
   # Set up Lime
   echo n | haxelib run lime setup # Decline prompt to add "lime" command
-  haxelib run lime rebuild linux -64 -release
+
+  # Get lime libraries
+  pushd ${srcdir}/Funkin/.haxelib/lime/git
+  git submodule update --init --recursive
+  popd
+  
+  echo y | haxelib run lime rebuild linux -64 -release
 
   # Build Friday Night Funkin'
   haxelib run lime build linux -64 -release
