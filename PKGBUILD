@@ -4,7 +4,7 @@
 _pkgname=uqmi
 pkgname="${_pkgname}-git"
 _gitname="${_pkgname}"
-pkgver=r155.a933061
+pkgver=r180.71f9c94
 pkgrel=1
 pkgdesc='OpenWrt QMI modem utility'
 url='https://git.openwrt.org/project/uqmi.git'
