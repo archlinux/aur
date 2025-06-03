@@ -14,6 +14,7 @@ source=(
 )
 sha256sums=('ef5921d32d609db6d1024e7e8cdfa440a50efff7776cbaac7dba48a7a65d7a9f'
             'e4bca8df123ce01b104780f576ea1a58b9a5ff1662a91124b6d3180cb6c88212')
+install="wecom.install"
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}/"
