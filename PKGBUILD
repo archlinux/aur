@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-diffsims
 pkgshort=diffsims
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Python library for simulating diffraction."
 arch=('any')
@@ -32,4 +32,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('d41a5884e369c8ab058e2a37bc1387f8')
+md5sums=('c908a8aec2f559f644e8f5c6aa3e195f')
