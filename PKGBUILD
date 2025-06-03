@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-liberty
 pkgver=31.0.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc."
 arch=('x86_64')
 url="https://github.com/obsproject/obs-studio"
@@ -112,7 +112,7 @@ prepare() {
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
 
-  git checkout 9bd4514b45a8150328190cd6bc3d2dbf00ebfd3b
+  git checkout 8e66418dc9ffa3259f4cf0cee678dd7b448e1b32
 
   git -c protocol.file.allow=always submodule update
 
