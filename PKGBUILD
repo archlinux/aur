@@ -13,11 +13,16 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/uutils/coreutils/archive/$pk
 sha256sums=('55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8')
 options=('!lto') # RUSTFLAGS= -C lto=thin also fail
 
-export RUSTFLAGS="$RUSTFLAGS -C panic=abort -C link-arg=-fuse-ld=mold"
+export RUSTFLAGS="-C codegen-units=1 -C panic=abort $RUSTFLAGS -C link-arg=-fuse-ld=mold"
+
+prepare() {
+  cd coreutils-$pkgver
+  cargo fetch --locked --target "${CARCH}"-unknown-linux-gnu
+}
 
 build() {
   cd coreutils-$pkgver
-  cargo build -p uu_stty --release
+  cargo build -p uu_stty --release --frozen
 }
 
 package() {
