@@ -8,7 +8,7 @@ pkgbase = coreutils-uutils-symlink
 	depends = uutils-coreutils
 
 pkgname = coreutils-uutils-symlink
-	pkgdesc = (dangerous) Swap coreutils with uutils
+	pkgdesc = (Dangerous) Swap coreutils with uutils (more than PATH)
 	depends = uutils-coreutils
 	depends = uutils-coreutils-stty
 	provides = coreutils

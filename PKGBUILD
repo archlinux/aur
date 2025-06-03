@@ -7,7 +7,7 @@ license=('MIT')
 depends=(uutils-coreutils)
 makedepends=(grep)
 package_coreutils-uutils-symlink() {
-  pkgdesc="(dangerous) Swap coreutils with uutils"
+  pkgdesc="(Dangerous) Swap coreutils with uutils (more than PATH)"
   depends+=(uutils-coreutils-stty)
   conflicts=(coreutils{,-uutils,-arch} b3sum sha3sum)
   provides=(coreutils{,-arch} b3sum)
