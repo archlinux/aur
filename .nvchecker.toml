@@ -1,0 +1,4 @@
+[gog-slay-the-princess]
+# GOG metadata is unreliable and non-monotonic for this game
+source = "manual"
+manual = "2025.0305.105240"

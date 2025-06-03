@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=gog-slay-the-princess
-pkgver=1.2e.73222
+pkgver=2025.0305.105240
 pkgrel=1
 pkgdesc='Choice-driven psychological horror visual novel. GOG version.'
 _shortname="${pkgname#gog-}"
@@ -19,24 +19,19 @@ depends=(
   'pango'
   'python'
 )
-makedepends=('lgogdownloader' 'pv' 'unzip')
+makedepends=('lgogdownloader' 'libxml2' 'pv' 'unzip')
 options=('!strip')
-_setup_basename="${_shortname}_${pkgver%.*}_(${pkgver##*.})"
-
-# Need to hard-code the ID because lgogdownloader would force a
-# prompt whenever we attempt to download `slay_the_princess` while
-# our GOG account also owns `slay_the_princess_demo`
-_gog_id='1512893158'
+_setup_basename="${_shortname}_${pkgver//./_}"
 
 source=(
-  "${_setup_basename}.sh::gogdownloader://${_gog_id}/en3installer0"
+  "${_setup_basename}.sh::gogdownloader://${_shortname//-/_}/en3installer0"
   "${pkgname}.desktop"
   "${_shortname}.bash"
 )
 noextract=("${_setup_basename}.sh")
 
 sha512sums=(
-  'd22ea8c9556b007bf2c0c4d44542aab9e299bf8797ad8b208d780fd69269e8174ddd4abcfb3638ad2726afb3eeea3586a053cad3e696a24ae46d6e40089977bf'
+  '1983c944fc915e726034388e1579b0c8029dc5c6df1e026e9d9c0fd0bd3ef0120cb02b92beae064b5064b48c1f88147c0c9ef30067a4feecb4e3249901e87b93'
   '053dadf56f087d73b8eb29d77779ce0c40c974c8dd93d17d8835f7d447e54e7fb6d784d250b4a0087e936be49c31427da67245514f5cb36cbe93ad6586c3a1cb'
   '31aa2a5d6ea3038e18011452e6da9826d6ff0b8eb7b6ad4df3ead21027887800d12842614e2ec9c930de3045c0f0e7d8fb011a5e09316f5155c7df7df2a1c0ad'
 )
@@ -76,6 +71,15 @@ prepare() {
     | pv -f -s "${archive_size}" \
     | dd iflag=fullblock of=data/noarch/game/game/archive.rpa bs=1M status=none
   rm -v "${zipfile}"
+
+  # Assert that pkgver matches the downloaded version
+  diff -u \
+    --label 'Expected version' <(echo "${pkgver}") \
+    --label 'Actual version' <(
+      xmllint \
+        -xpath '/plist/dict/key[text()="CFBundleVersion"]/following-sibling::string[1]/text()' \
+        data/noarch/game/SlaythePrincess.app/Contents/Info.plist
+    )
 
   echo >&2 'Removing unneeded files meant for other OSes'
   rm -rfv data/noarch/support/yad/32  # fixes false alarm in rebuild-detector
