@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=newelle
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="Your Ultimate Virtual Assistant"
 url="https://github.com/qwersyk/Newelle"
@@ -12,7 +12,7 @@ depends=('gtksourceview5' 'libadwaita' 'portaudio' 'python-expandvars' 'python-g
          'python-matplotlib' 'python-numpy' 'python-pillow' 'python-pylatexenc')
 makedepends=('git' 'meson')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('5ed44cc1dbe7991836cb76cf85e5368805511adf45782e4972c827252a2d25c6')
+sha256sums=('db9d3b3b8c55cb82fbf93231594c6d905f1671d0a6ee0c61141af7095dcebd9b')
 
 build() {
   arch-meson Newelle-$pkgver build
