@@ -6,8 +6,8 @@
 # Contributor: maleadt <tim dot besard at gmail dot com>
 pkgname="turbovnc"
 pkgdesc="A derivative of Virtual Network Computing that is tuned to provide peak performance for 3D and video workloads"
-pkgver=3.1.3
-pkgrel=2
+pkgver=3.2
+pkgrel=1
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="http://www.turbovnc.org/"
 license=('GPL-2.0-or-later')
@@ -40,8 +40,8 @@ conflicts=('tigervnc' 'tigervnc-git' 'tightvnc' 'tightvnc-git')
 backup=(etc/turbovnc/turbovncserver.conf
         etc/turbovnc/turbovncserver-security.conf)
 source=("https://github.com/TurboVNC/turbovnc/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('fa5df2691ad0755cec790f631727791abfec7a35684b2ae23283e4ae4376adae'
-            'ee7aff6aa7904b5f928cb42ff967c234c056d4265193992fd011ab32f7a61058')
+sha256sums=('a4fd895ebb8a40a5962db8c38e3de61e4d22c77d64d2ea0afe8fd78c7a8aff72'
+            'c48fe608bbf82c100e19aebd2f3a09cc423cf1bf7e7775275416979dac1dfab0')
 validpgpkeys=(AE1A7BA4EFFF9A9987E1474C4BACCAB36E7FE9A1) # The VirtualGL Project <information@VirtualGL.org>
 
 build() {
@@ -55,9 +55,7 @@ build() {
 	      -DCMAKE_INSTALL_SYSCONFDIR=/etc/turbovnc \
 	      -Wno-dev \
 	      -G "Unix Makefiles" \
-	      -DTJPEG_LIBRARY=/usr/lib/libturbojpeg.so \
-	      -DTVNC_SYSTEMLIBS=1 \
-	      -DTVNC_SYSTEMX11=1
+	      -DTJPEG_LIBRARY=/usr/lib/libturbojpeg.so
 	cmake --build build
 }
 
