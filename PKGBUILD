@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=oqsprovider
 _pkgname=oqs-provider
-pkgver=0.8.0
-_pkgverliboqs=0.12.0
+pkgver=0.9.0
+_pkgverliboqs=0.13.0
 pkgrel=1
 pkgdesc="OpenSSL 3 provider containing post-quantum algorithms"
 arch=(x86_64)
@@ -25,8 +25,8 @@ source=(
     $pkgname-$pkgver.tar.gz::https://github.com/open-quantum-safe/$_pkgname/archive/refs/tags/$pkgver.tar.gz
     liboqs-$_pkgverliboqs.tar.gz::https://github.com/open-quantum-safe/liboqs/archive/refs/tags/$_pkgverliboqs.tar.gz
 )
-b2sums=('d55cac22b4d7f69d5f2e1955b76bbdd07dd5c2325ece286927e72125566517f69db04b32ce1c2d7daf198603b9018e4d7d5a548689ba36ff4b48b8351b743502'
-        'e3dfc1056f4d8a0356a80eec5fd7d946b9cf72f3a59a1c75b7d22bff8c500376cbaace53ce2e60506ccc918811dbf506863f386d9a34ea93be0cd79622064c3d')
+b2sums=('4eb272d637a647f74a55643c744af889859997fbcd94c0622dd6d70fa71ccc1029776f6e261b644af8cbbde496f4b26e081b5cb3733375f009c15f3b2650716d'
+        '16442c2e15397d0148c93d1f23bc768e3371b742fbd8bb95fecd34338ccbdd7c595e5b46f4ff82b16d6724516f618fa2cb462411da1f4e359268f6ce33756be7')
 
 prepare() {
     cd $_pkgname-$pkgver
