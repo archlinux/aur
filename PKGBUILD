@@ -2,7 +2,7 @@
 
 pkgname=gz-tools2
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Command line tools for the Gazebo libraries"
@@ -13,7 +13,7 @@ depends=()
 makedepends=(
   'cmake'
   'doxygen'
-  'gz-cmake=3'
+  'gz-cmake'
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
