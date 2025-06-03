@@ -4,6 +4,7 @@
 pkgname=crl-browser
 pkgver=1.3
 pkgrel=1
+url="https://gitlab.com/Azccriminalus/crlnxlion"
 pkgdesc="CRL Browser - PyQt6 based CRL-Browser minimalist browsing"
 arch=('any')
 license=('MIT')
