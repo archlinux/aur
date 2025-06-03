@@ -1,0 +1,6 @@
+[gog-unrest]
+# GOG metadata in https://www.gogdb.org/data/products/1207665053/product.json
+# has no machine-readable version number
+# (`version` field is null in the `dl_installer` entry)
+source = "manual"
+manual = "2.0.0.5"

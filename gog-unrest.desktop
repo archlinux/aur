@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Unrest
+Comment=Adventure RPG set in ancient India, focused on story and choices
+Exec=unrest
+Icon=gog-unrest
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
