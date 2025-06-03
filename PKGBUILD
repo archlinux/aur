@@ -1,16 +1,18 @@
 # Maintainer: c4 
 pkgname=lsr-iouring-git
 _pkgname=lsr
-pkgver=0.2.0.r12.g87b0c6b
-pkgrel=2
+pkgver=0.2.0.r19.g2f8e1f0
+pkgrel=1
 pkgdesc="ls but with io_uring"
 arch=('x86_64')
 url="https://tangled.sh/@rockorager.dev/lsr"
 license=('MIT')
 
-makedepends=('anyzig' 'git')
-#'zig=0.14.0' but PKGBUILD does not seem to recognize zig-git as 0.14.0? just gonna use anyzig then
-optdepends=('anyzig-symlinks: symlink anyzig to zig')
+makedepends=('zig' 'git')
+optdepends=(
+'anyzig: lets you run any version of zig'
+'anyzig-symlinks: symlink anyzig to zig'
+)
 
 _pkgsrc="$_pkgname"
 source=('git+https://tangled.sh/@rockorager.dev/lsr')
@@ -20,10 +22,10 @@ prepare() {
   cd "$_pkgsrc"
   # PACKAGING.md -> build.zig.zon
   for i in $(grep '\.url' build.zig.zon | sed -E 's&^.* = "(\S+)".*$&\1&'); do
-    anyzig fetch --global-cache-dir $HOME/.cache/zig "$i"
+    zig fetch --global-cache-dir $HOME/.cache/zig "$i"
   done
   for i in $(grep '\.url' $HOME/.cache/zig/p/ourio-0.0.0-*/build.zig.zon | sed -E 's&^.* = "(\S+)".*$&\1&'); do
-    anyzig fetch --global-cache-dir $HOME/.cache/zig "$i"
+    zig fetch --global-cache-dir $HOME/.cache/zig "$i"
   done
 }
 
@@ -44,13 +46,13 @@ build() {
     --search-prefix /usr
     --global-cache-dir $HOME/.cache/zig
     --system $HOME/.cache/zig/p
-    -Dtarget=native-native-gnu.2.41
+    -Dtarget=native-native-gnu
     -Dcpu=native
     -Doptimize=ReleaseSmall
   )
 
   cd "$_pkgsrc"
-  DESTDIR="build" anyzig build "${_zig_options[@]}"
+  DESTDIR="build" zig build "${_zig_options[@]}"
 }
 
 package() {
