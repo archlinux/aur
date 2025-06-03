@@ -1,6 +1,6 @@
 pkgbase = tari-universe-appimage
 	pkgdesc = Tari desktop wallet
-	pkgver = 1.2.0
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://tari.com/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tari-universe-appimage
 	provides = tari_universe
 	conflicts = tari_universe
 	options = !strip
-	source = https://github.com/tari-project/universe/releases/download/v1.2.0/tari_universe_1.2.0_amd64.AppImage
-	sha256sums = 72b4fe18364fbcf08d4e9a954d5e4177c3a2777294a92e7015116a0d6c24768a
+	source = https://github.com/tari-project/universe/releases/download/v1.2.6/tari_universe_1.2.6_amd64.AppImage
+	sha256sums = 961e7ff783801f241e0b45c20992c01db6ccea4355d73690d3adf1d4ac2bd277
 
 pkgname = tari-universe-appimage
