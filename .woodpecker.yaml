@@ -1,0 +1,62 @@
+# Woodpecker CI definition
+# - build binary from latest git commit
+# - test binary run
+# https://codeberg.org/tuxxx/sparrow-wallet-git
+
+when:
+  - event: cron
+    cron: daily-build
+  - event: manual
+  - event: pull_request
+
+steps:
+  - name: build-and-test
+    image: archlinux:latest
+    commands:
+      # Install all required tools
+      - pacman -Syu --noconfirm --needed git base-devel jq pacman-contrib namcap curl sudo
+      # Allow broken git ownerships
+      - git config --global --add safe.directory "$(pwd)"
+      # Create build user
+      - useradd -m -G wheel builduser
+      - "echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
+      - chown -R builduser:builduser .
+      # Configure git for builduser
+      - sudo -u builduser git config --global user.name "Woodpecker CI"
+      - sudo -u builduser git config --global user.email "ci@codeberg.org"
+      # Run PKGBUILD Linter (namcap)
+      - |
+        # Run namcap and save output
+        echo "Running namcap check..."
+        namcap -i PKGBUILD > /tmp/namcap_output.txt 2>&1 || true
+        
+        # Check if namcap produced any output
+        if [ ! -s /tmp/namcap_output.txt ]; then
+          echo "✅ PKGBUILD is clean - no namcap issues found"
+          echo ""
+          echo "=== namcap output ==="
+          echo "(no output - PKGBUILD passed all checks)"
+          echo "===================="
+        else
+          # Check for critical errors
+          if grep -q " E: " /tmp/namcap_output.txt; then
+            echo "❌ Critical namcap errors detected!"
+            echo "Critical errors:"
+            grep " E: " /tmp/namcap_output.txt
+            echo ""
+            echo "=== Full namcap output ==="
+            cat /tmp/namcap_output.txt
+            echo "=========================="
+            exit 1
+          else
+            echo "✅ No critical namcap errors found"
+            echo ""
+            echo "=== Full namcap output ==="
+            cat /tmp/namcap_output.txt
+            echo "=========================="
+          fi
+        fi
+      # Build and test package
+      - echo "Building and testing package"
+      - sudo -u builduser makepkg -si --noconfirm
+      - sudo -u builduser sparrow --version
