@@ -1,49 +1,70 @@
-# Maintainer: Gennadiy Mykhailiuta <gmykhailiuta@gmail.com>
-# Contributor: Xuanwo <xuanwo@archlinuxcn.org>
+# Maintainer: NekoLOvO <nekolyin@qq.com>
 
-pkgname=obsidian
-pkgver=0.13.23
+pkgbase=obsidian
+pkgname=(${pkgbase}-{bin,appimage})
+pkgver=1.8.10
 pkgrel=1
-pkgdesc="Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files"
-arch=('x86_64')
-url="https://obsidian.md/"
-license=('custom:Commercial')
-depends=('zlib' 'hicolor-icon-theme' 'fuse' 'electron13')
-makedepends=('asar')
+arch=('x86_64' 'aarch64')
+url="https://github.com/obsidianmd/obsidian-releases"
+license=('custom')
+conflicts=('obsidian')
+provides=('obsidian')
 options=(!strip)
-source=(
-    "${pkgname}"
-    "${pkgname}.desktop"
-    "https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/obsidian-${pkgver}.tar.gz"
+source=("obsidian")
+source_x86_64=(
+  "${pkgbase}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/obsidian_${pkgver}_amd64.deb"
+  "Obsidian-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/Obsidian-${pkgver}.AppImage"
 )
-sha256sums=(
-    '5f4699e03045f68932e976727a746342f971eddb77fe5a31d8d2c4084034ed5f'
-    '1153b7f4ce342663f766efa38dc07677aec13f7f619afef1f9b8e2b1f1849fe6'
-    '0c393639b516e40b5866ed0eb010373b9abd7ba143193389615b2e9fb7711db2'
+source_aarch64=(
+  "Obsidian-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/Obsidian-${pkgver}-arm64.AppImage"
 )
 
-prepare() {
-    cd "$srcdir"
-    asar ef "${pkgname}-${pkgver}"/resources/obsidian.asar icon.png
+sha256sums=('56e6892346fb16287fd4a3c8d521d51e620604052ac8aee5be7b6a8fee9452c0')
+sha256sums_x86_64=('da19b2755013e9def37271cf04ce7485c03a22fa02b0951e4108884dcd1bd774'
+                   '05d4bfb76ef409ace4f4e59ccafb49dbd5a537c1ec15e570b59db603ddaad715')
+sha256sums_aarch64=('667378116211b95eeb89bbb72d32c7d1f6243a8891c82d81bd9e17cde1162bee')
+noextract=("Obsidian-${pkgver}-${CARCH}.AppImage")
+
+package_obsidian-bin() {
+    pkgdesc="A powerful knowledge base that works on top of a local folder of plain text Markdown files (Official binary package with bundled Electron)"
+    arch=('x86_64')
+    depends=(
+        'gtk3'
+        'libnotify'
+        'nss'
+        'libxss'
+        'libxtst'
+        'xdg-utils'
+        'at-spi2-core'
+        'util-linux-libs'
+        'libsecret'
+    )
+    optdepends=('libappindicator-gtk3: tray icon support')
+    install="obsidian.install"
+
+    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
+    install -Dm644 "${pkgdir}/opt/Obsidian/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
+    install -Dm644 "${pkgdir}/opt/Obsidian/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
 }
 
-package() {
-    # Go to source directory
-    cd "$srcdir"
+package_obsidian-appimage() {
+    pkgdesc="A powerful knowledge base that works on top of a local folder of plain text Markdown files (AppImage version)"
+    arch=('x86_64' 'aarch64')
+    depends=(
+        'zlib'
+        'hicolor-icon-theme'
+        'fuse2'
+    )
 
-    # Create directories for installation
-    install -dm0755 "$pkgdir"/usr/bin
-    install -dm0755 "$pkgdir"/usr/lib/obsidian
+    chmod +x "${srcdir}/Obsidian-${pkgver}-${CARCH}.AppImage"
+    "${srcdir}/Obsidian-${pkgver}-${CARCH}.AppImage" --appimage-extract
 
-    # Install executable file
-    install -Dm755 "$pkgname" "$pkgdir"/usr/bin/
-    # Install desktop file
-    install -Dm644 "$pkgname".desktop -t "$pkgdir"/usr/share/applications/
-    install -Dm644 icon.png "$pkgdir"/usr/share/pixmaps/obsidian.png
-    # Most of the release package is electron, but we use system's default one
-    # So strip away asar packages and put them to /usr/lib/
-    cd "${pkgname}-${pkgver}"/resources/
-    find . -type d -exec install -d {,"$pkgdir"/usr/lib/obsidian/}{} \;
-    find . -type f -exec install -D {,"$pkgdir"/usr/lib/obsidian/}{} \;
+    sed -i "s|AppRun|/usr/bin/obsidian|" "${srcdir}/squashfs-root/obsidian.desktop"
+
+    install -Dm755 "${srcdir}/Obsidian-${pkgver}-${CARCH}.AppImage" "${pkgdir}/opt/obsidian-appimage/obsidian.AppImage"
+    install -Dm755 "${srcdir}/obsidian" "${pkgdir}/usr/bin/obsidian"
+    install -Dm644 "${srcdir}/squashfs-root/obsidian.desktop" "${pkgdir}/usr/share/applications/obsidian.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
+    install -Dm644 "${srcdir}/squashfs-root/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
+    cp -rf "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
 }
-

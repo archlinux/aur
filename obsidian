@@ -1,2 +1,3 @@
 #!/bin/sh
-exec /bin/electron13 /usr/lib/obsidian/app.asar "$@"
+
+exec /opt/obsidian-appimage/obsidian.AppImage "$@"
