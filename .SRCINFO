@@ -1,6 +1,6 @@
 pkgbase = coreutils-uutils-symlink
 	pkgver = 0.1.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://uutils.github.io/
 	arch = any
 	license = MIT
@@ -11,15 +11,11 @@ pkgname = coreutils-uutils-symlink
 	pkgdesc = (dangerous) Swap coreutils with uutils
 	depends = uutils-coreutils
 	depends = uutils-coreutils-stty
-	depends = uutils-coreutils-missing
 	provides = coreutils
+	provides = coreutils-arch
 	provides = b3sum
 	conflicts = coreutils
 	conflicts = coreutils-uutils
+	conflicts = coreutils-arch
 	conflicts = b3sum
 	conflicts = sha3sum
-
-pkgname = coreutils-uutils-arch
-	pkgdesc = Symlink for apps accidently depending on arch
-	provides = coreutils-arch
-	conflicts = coreutils-arch
