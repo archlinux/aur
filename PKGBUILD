@@ -1,5 +1,4 @@
-# Maintainer: Alec Mev <alec@mev.earth>
-# Maintainer: Raphael Nestler <raphael.nestler@gmail.com>
+# Maintainer: Alessio Biancalana <alessio@dottorblaster.it>
 
 pkgname=schedctl
 pkgver=1.0.0
