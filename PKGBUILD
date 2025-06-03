@@ -1,6 +1,6 @@
 # Maintainer: Mickaël Gastineau <Mickael.Gastineau@obspm.fr>
 pkgname=calceph
-pkgver=4.0.4
+pkgver=4.0.5
 pkgrel=1
 pkgdesc='The library is designed to access the binary planetary ephemeris files, such INPOPxx and JPL DExxx ephemeris files'
 url='https://www.imcce.fr/inpop/calceph'
@@ -9,7 +9,7 @@ arch=('x86_64')
 depends=('glibc'  'gcc-libs')
 makedepends=('cmake>=3.12' 'gcc' 'gcc-fortran')
 source=("https://www.imcce.fr/content/medias/recherche/equipes/asd/calceph/calceph-${pkgver}.tar.gz")
-sha256sums=('20c9f0bd720c5cfe99a7b342babda3ff91428adfec9d55357b380b4a13205d60')
+sha256sums=('3460d8a3e10a86e7fe0228d5d9abcda589713b8ed3ee007ce061ae01f8c2e1ea')
 
 
 build() {
