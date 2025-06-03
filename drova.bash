@@ -2,6 +2,6 @@
 set -eu
 
 PKGNAME='drova-forsaken-kin'
-echo >&2 "Launching app"
+echo >&2 "Launching game"
 cd "/opt/${PKGNAME}"
 exec ./start.sh "$@"

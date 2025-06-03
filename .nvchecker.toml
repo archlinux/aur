@@ -1,0 +1,4 @@
+[gog-drova-forsaken-kin]
+source = "jq"
+url = "https://www.gogdb.org/data/products/1254250206/product.json"
+filter = ".dl_installer | map(select(.os == \"linux\"))[0] | .version"
