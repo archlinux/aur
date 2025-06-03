@@ -1,8 +1,8 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=python-rchitect
 _name=${pkgname#python-}
-pkgver=0.4.7
-pkgrel=2
+pkgver=0.4.8
+pkgrel=1
 pkgdesc="Minimal R API for Python"
 url="https://github.com/randy3k/rchitect"
 arch=('any')
@@ -11,12 +11,11 @@ depends=('r>3.4.0' 'python-cffi>=1.10.0' 'python-six>=1.9.0')
 makedepends=(python-build python-installer python-wheel python-setuptools)
 checkdepends=(python-pytest)
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('8283d0e026d1d38a4cf67983d58a7537cb1dc82d78d9c057b45ad8786a654057')
+sha256sums=('c611abcc2c56373dd3d098fab2876c6f4544c4f285197f1b1c5e9f2364bdd8fb')
 
 build() {
   cd "$_name-$pkgver"
-#  python -m build --wheel --no-isolation
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check_disabled() { # errors in test_callbacks.py 
@@ -27,6 +26,5 @@ check_disabled() { # errors in test_callbacks.py
 
 package() {
   cd "$_name-$pkgver"
-#  python -m installer --destdir="$pkgdir" dist/*.whl
-  python setup.py install --skip-build --prefix=/usr --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
