@@ -2,7 +2,7 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 _base=dill
 pkgname=pypy3-${_base}
-pkgver=0.3.9
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="serialize all of python"
 arch=(any)
@@ -12,7 +12,7 @@ optdepends=('python-objgraph: graph support')
 depends=(pypy3)
 makedepends=(pypy3-setuptools)
 source=(${url}/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
-sha512sums=('0dc553ca15ec842f658ec4a0d3970e38364ba1d758f7d444023c6c563d5e5a638e37f3b0ed3e032bca3f6c437fa0080f238323ca96ba2b5537bf2efea0bfe96b')
+sha512sums=('c7c2230146a8ffdad89883db47fe59363459533f2d73dbf8528cb773f0ade33567b9852e45789b4c2c84afee0d381cc6039c545135f6a55a515884357d40a3f0')
 
 build() {
   cd ${_base}-${pkgver}
@@ -26,4 +26,3 @@ package() {
   mv "${pkgdir}/opt/pypy3/bin" "$pkgdir/usr/bin"
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }
-
