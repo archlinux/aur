@@ -1,6 +1,6 @@
 pkgbase = mdns-browser-bin
 	pkgdesc = A cross platform mDNS-Browser app written in Rust using tauri and leptos
-	pkgver = 0.19.2
+	pkgver = 0.19.3
 	pkgrel = 1
 	url = https://github.com/hrzlgnm/mdns-browser
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = mdns-browser-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/hrzlgnm/mdns-browser/releases/download/mdns-browser-v0.19.2/mdns-browser_0.19.2_amd64.deb
-	sha256sums_x86_64 = be017f0cccabce1c2b398bc0e38ab6bb421a6b35f92c3d3b9eff66ab58cf1d21
+	source_x86_64 = https://github.com/hrzlgnm/mdns-browser/releases/download/mdns-browser-v0.19.3/mdns-browser_0.19.3_amd64.deb
+	sha256sums_x86_64 = 125f9c88b2d75c856ad41af9da660c114dd5dce2915f3a0a06e592c0aa4af297
 
 pkgname = mdns-browser-bin
