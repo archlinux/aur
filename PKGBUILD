@@ -1,8 +1,8 @@
 # Maintainer: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 
 pkgname=pdudaemon-git
-pkgver=r261.8aa9950
-pkgrel=3
+pkgver=r268.40c7a57
+pkgrel=1
 pkgdesc='Daemon for controlling PDUs (Power Distribution Units)'
 arch=(any)
 url="https://github.com/pdudaemon/pdudaemon"
