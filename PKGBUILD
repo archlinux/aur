@@ -1,7 +1,7 @@
 # Maintainer: Roberto Alsina <roberto.alsina@gmail.com>
 pkgname=crycco
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A literate programming tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ralsina/tartrazine"
