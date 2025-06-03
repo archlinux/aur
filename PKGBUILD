@@ -2,7 +2,7 @@
 
 pkgname=picacg-qt-appimage
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 glibcrev=2.38
 pkgdesc="PicACG Comic PC Client For Linux"
 arch=("x86_64")
@@ -26,7 +26,8 @@ prepare() {
     cd ${srcdir}
     chmod a+x ${_pkgname}
     ${srcdir}/${_pkgname} --appimage-extract >/dev/null
-    sed -i "s+^Exec.*+Exec=env DESKTOPINTEGRATION=no ${_installdir}/${_installname}.AppImage+" "squashfs-root/PicACG.desktop"
+    sed -i "s|^Exec.*|Exec=env DESKTOPINTEGRATION=no ${_installdir}/${_installname}.AppImage|" "squashfs-root/PicACG.desktop"
+    sed -i "s|^Icon.*|Icon=/usr/share/icons/PicACG.png|" "squashfs-root/PicACG.desktop"
 }
 
 package() {
