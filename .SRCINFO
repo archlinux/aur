@@ -9,6 +9,7 @@ pkgbase = coreutils-uutils-symlink
 	depends = uutils-coreutils
 	depends = uutils-coreutils-stty
 	provides = coreutils
+	provides = coreutils-uutils
 	provides = b3sum
 	conflicts = coreutils
 	conflicts = b3sum

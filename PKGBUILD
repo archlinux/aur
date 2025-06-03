@@ -8,7 +8,7 @@ license=('MIT')
 depends=(uutils-coreutils{,-stty})
 makedepends=(grep)
 conflicts=(coreutils b3sum sha3sum)
-provides=(coreutils b3sum)
+provides=(coreutils{,-uutils} b3sum)
 package() {
   uu-install -d "$pkgdir"/usr/{bin,share/man/man1}
   for f in $(uu-coreutils --list|grep -v -E '^(kill|more|uptime|hostname)$');do
