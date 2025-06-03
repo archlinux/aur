@@ -1,7 +1,7 @@
 # Maintainer: Sumit Khatri <sumit.SwayKh@gmail.com>
 
 pkgname="linksym"
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A Dotfiles management tool, helps in tracking and creating Symlinks."
 arch=("x86_64")
