@@ -55,9 +55,7 @@ pkgbase = conkyluanv-autoscale-fixed
 	conflicts = conky
 	replaces = conky
 	replaces = torsmo
-	source = conkyluanv-autoscale-fixed::git+https://github.com/Jayhub-ai/conkyluanv-autoscale-fixed.git
-	source = xmms2-optional.patch
-	sha256sums = SKIP
+	source = git+https://github.com/Jayhub-ai/conkyluanv-autoscale-fixed.git
 	sha256sums = SKIP
 
 pkgname = conkyluanv-autoscale-fixed

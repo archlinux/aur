@@ -28,18 +28,19 @@ optdepends=('nvidia: for NVIDIA GPU monitoring'
 provides=('conky')
 conflicts=('conky')
 replaces=('conky' 'torsmo')
-source=("$pkgname::git+https://github.com/Jayhub-ai/conkyluanv-autoscale-fixed.git"
-        "xmms2-optional.patch")
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+https://github.com/Jayhub-ai/conkyluanv-autoscale-fixed.git")
+sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/$pkgname"
-  patch -Np1 -i "$srcdir/xmms2-optional.patch"
+  cd "$srcdir/conkyluanv-autoscale-fixed"
+  
+  # Make XMMS2 optional by directly modifying the CMake file
+  sed -i 's/pkg_check_modules(XMMS2 REQUIRED xmms2-client>=0.6)/pkg_check_modules(XMMS2 xmms2-client>=0.6)\n  if(XMMS2_FOUND)/' cmake/ConkyPlatformChecks.cmake
+  sed -i '/set(conky_includes ${conky_includes} ${XMMS2_INCLUDE_DIRS})/a\  else(XMMS2_FOUND)\n    message(STATUS "XMMS2 client not found, disabling XMMS2 support")\n    set(BUILD_XMMS2 OFF)\n  endif(XMMS2_FOUND)' cmake/ConkyPlatformChecks.cmake
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/conkyluanv-autoscale-fixed"
   
   cmake \
     -D CMAKE_BUILD_TYPE=Release \
@@ -68,7 +69,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/conkyluanv-autoscale-fixed"
   
   DESTDIR="$pkgdir" cmake --install build
   
