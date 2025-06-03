@@ -2,7 +2,7 @@
 
 pkgname='veracrypt-inyourlanguage'
 _pkgname='VeraCrypt'
-pkgver=1.26.20
+pkgver=1.26.24
 pkgrel=1
 pkgdesc='Disk encryption with strong security based on TrueCrypt 7.1a. Supporting 40+ languages, changeable while running the program.'
 url='https://www.veracrypt.fr'
@@ -13,7 +13,7 @@ conflicts=('veracrypt' 'veracrypt-console-bin' 'veracrypt-git' 'veracrypt-trans'
 depends=('device-mapper' 'fuse2' 'wxwidgets-gtk3')
 makedepends=('pcsclite' 'yasm')
 source=(https://launchpad.net/veracrypt/trunk/${pkgver}/+download/${_pkgname}_${pkgver}_Source.tar.bz2)
-sha512sums=('6382d4a34aae537c87088429c17f7cb397d0f23bd3c8e5497f302799255b93d1eb2a40284222d23b44ac37934e9a2ab056199892aa9e6b826da57a07aa09eaa0')
+sha512sums=('c2e42a77f6535e5958289bb85429f813ced3592c58409240d9c4411dfd18e2fae4b1fe62a9ed36da7577971259024b52da1eabebbe8e9cd17b13d64f194bbf29')
 
 build() {
   cd src
