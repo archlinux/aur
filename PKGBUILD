@@ -3,7 +3,7 @@
 _base=pythran
 pkgname=pypy3-${_base}
 pkgdesc="Ahead of Time compiler for numeric kernels"
-pkgver=0.16.1
+pkgver=0.18.0
 pkgrel=1
 arch=(any)
 url="https://github.com/serge-sans-paille/${_base}"
@@ -11,7 +11,7 @@ license=(BSD-3-Clause)
 depends=(pypy3-ply pypy3-numpy pypy3-beniget xsimd boost)
 makedepends=(pypy3-setuptools)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('7a89546b52bdae9bdaeba42768ac822c584a3714b8f4e32417d793454dc0b5492342dfd393d92f8ecee12c854bc39e418f5860aadd00d328afef7b17ebddec99')
+sha512sums=('70761b08724264ab048d6943b143123d19d81b65d3a5ab9aa023dc7d989bc51b33e17f9bb81a6e8f25f7bde4745f36d1208c8c2bd49f8d27b7a4776611f310a5')
 
 build() {
   cd ${_base}-${pkgver}
