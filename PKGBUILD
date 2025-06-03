@@ -2,10 +2,10 @@
 
 _pkgname="libva-intel-driver"
 pkgname="$_pkgname-hybrid"
-pkgver=2.4.1
-pkgrel=3
+pkgver=2.4.4
+pkgrel=1
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family'
-url="https://github.com/intel/intel-vaapi-driver"
+url="https://github.com/irql-notlessorequal/intel-vaapi-driver"
 license=('MIT')
 arch=('x86_64')
 
@@ -25,10 +25,9 @@ optdepends=(
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 
-_pkgsrc="$_pkgname"
-_commit='9a1f0c64174f970a26380d4957583c71372fbb7c'
-source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
-sha256sums=('SKIP')
+_pkgsrc="irql-notlessorequal.intel-vaapi-driver"
+source=("$_pkgsrc"::"git+$url.git#tag=$pkgver")
+sha256sums=('55f012a1663cd9faeb202fa14bc162dafef0400e9ff73f4e296f102faef31eec')
 
 pkgver() {
   cd "$_pkgsrc"
@@ -37,12 +36,10 @@ pkgver() {
 
 build() {
   arch-meson -Denable_hybrid_codec=true "$_pkgsrc" build
-  ninja -C build
+  meson compile -C build
 }
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
-  install -Dm644 "$_pkgsrc/COPYING" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
-# vim: ts=2 sw=2 et:

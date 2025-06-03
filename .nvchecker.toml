@@ -1,0 +1,3 @@
+[libva-intel-driver-hybrid]
+source = "git"
+git = "https://github.com/irql-notlessorequal/intel-vaapi-driver.git"
