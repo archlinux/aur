@@ -1,3 +1,6 @@
-onsyuri*
 *.zst
-
+pkg/
+src/
+*.tar.gz
+*.txt
+onsyuri_*
