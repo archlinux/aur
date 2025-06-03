@@ -1,17 +1,17 @@
 pkgbase = shimmer-git
 	pkgdesc = A minimalistic notepad app.(Use system-wide electron)
-	pkgver = Main.r2.g29fa481
+	pkgver = 2.0.0.r0.g6f91f70
 	pkgrel = 1
 	url = https://github.com/Akashonbeats/Shimmer
 	arch = any
-	license = LicenseRef-unknown
+	license = MIT
 	makedepends = npm
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
 	makedepends = gendesk
 	depends = electron25
-	provides = shimmer=Main
+	provides = shimmer=2.0.0
 	conflicts = shimmer
 	source = shimmer.git::git+https://github.com/Akashonbeats/Shimmer.git
 	source = shimmer.sh
