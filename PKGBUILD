@@ -8,7 +8,7 @@ url="https://codeberg.org/AnimoUtils/animolauncher"
 license=('GPL-2.0-only')
 makedepends=(cargo)
 source=("https://codeberg.org/AnimoUtils/animolauncher/archive/dev.tar.gz")
-sha512sums=("d022dab8ae371da98caa462e5be86cf6456eb7ff18754c7506f0fb6d75a29b48d2ff202b5eba15e842354fa1b628b154c3ad27142af91b57820c2293dc0b60ec")
+sha512sums=("17ba3bbab37b2d89c1bb7b41832651f706953e1a92b6e02521f880e5e58dfdf95df88d3b013432d09980f9885c6c15b1fa88fd3d84cd5f41a6e98e073363adfd")
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
