@@ -9,8 +9,10 @@ url="https://github.com/Jayhub-ai/conkyluanv-autoscale-fixed"
 license=('GPL3')
 depends=('alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'glib2' 'libxdamage' 
          'imlib2' 'lua' 'librsvg' 'libxinerama' 'libxnvctrl' 'libpulse' 'hicolor-icon-theme'
-         'gcc-libs' 'glibc' 'fontconfig' 'libx11' 'libxext' 'libxfixes' 'ncurses' 'systemd-libs')
-makedepends=('cmake' 'git' 'man-db' 'docbook2x' 'docbook-xsl' 'pandoc' 'python-yaml')
+         'gcc-libs' 'glibc' 'fontconfig' 'libx11' 'libxext' 'libxfixes' 'ncurses' 'systemd-libs'
+         'wayland' 'pango')
+makedepends=('cmake' 'git' 'man-db' 'docbook2x' 'docbook-xsl' 'pandoc' 'python-yaml'
+             'wayland-protocols')
 optdepends=('nvidia: for NVIDIA GPU monitoring'
             'audacious: for Audacious music player monitoring'
             'pulseaudio: for PulseAudio volume monitoring'
@@ -26,8 +28,15 @@ optdepends=('nvidia: for NVIDIA GPU monitoring'
 provides=('conky')
 conflicts=('conky')
 replaces=('conky' 'torsmo')
-source=("git+https://github.com/Jayhub-ai/conkyluanv-autoscale-fixed.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/Jayhub-ai/conkyluanv-autoscale-fixed.git"
+        "xmms2-optional.patch")
+sha256sums=('SKIP'
+            'SKIP')
+
+prepare() {
+  cd "$srcdir/conkyluanv-autoscale-fixed"
+  patch -p1 -i "$srcdir/xmms2-optional.patch"
+}
 
 build() {
   cd "$srcdir/conkyluanv-autoscale-fixed"
@@ -48,9 +57,10 @@ build() {
     -D BUILD_APCUPSD=ON \
     -D BUILD_MPD=ON \
     -D BUILD_HDDTEMP=ON \
-    -D BUILD_XMMS2=ON \
+    -D BUILD_XMMS2=OFF \
     -D BUILD_CMUS=ON \
     -D BUILD_IPV6=ON \
+    -D BUILD_WAYLAND=ON \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -B build
 
@@ -63,7 +73,7 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
   
   # Install documentation
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 
   # Install example configuration files
