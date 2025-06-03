@@ -20,6 +20,6 @@ pkgbase = bitwig-studio-earlyaccess
 	conflicts = bitwig-studio
 	options = !strip
 	source = bitwig-studio-5.3.9.deb::https://www.bitwig.com/dl/Bitwig%20Studio/5.3.9/installer_linux/
-	sha384sums = 269d855c73e39302f9374a0aa1fbcd8c87d503a655e83c21b9d853def2459c8b25f07bef0635bb53f3e501013a04dc9c
+	sha384sums = 540284cc2d12f74404e8b1c3d62d1902e9bcc41c57a3fc44af4a306e41a5318d5d0f65ce0c9fd13a31de1f23575e6ed0
 
 pkgname = bitwig-studio-earlyaccess
