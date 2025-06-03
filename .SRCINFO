@@ -1,13 +1,13 @@
 pkgbase = coreutils-uutils-symlink
 	pkgdesc = (Dangerous) Swap system coreutils with uutils (more than PATH)
 	pkgver = 0.1.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://uutils.github.io/
 	arch = any
 	license = MIT
 	makedepends = grep
-	depends = uutils-coreutils
-	depends = uutils-coreutils-stty
+	depends = uutils-coreutils=0.1.0
+	depends = uutils-coreutils-stty=0.1.0
 	provides = coreutils
 	provides = coreutils-uutils
 	provides = b3sum
