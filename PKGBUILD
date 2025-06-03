@@ -2,14 +2,14 @@
 pkgname=streamcontroller-git
 _pkgname=${pkgname%-git}
 _reponame=StreamController
-pkgver=r1783.98ec06f1
+pkgver=r1793.24478fb9
 pkgrel=1
 pkgdesc="An elegant Linux app for the Elgato Stream Deck with support for plugins"
 arch=('any')
 url="https://github.com/StreamController/StreamController"
 license=('GPL-3')
 depends=('python' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk' 'libportal' 'libportal-gtk4' 'libadwaita')
-makedepends=('git' 'python-pip')
+makedepends=('git' 'python-pip' 'sed')
 provides=('streamcontroller')
 conflicts=('streamcontroller')
 source=("git+https://github.com/StreamController/StreamController.git")
@@ -28,6 +28,11 @@ package() {
   cd "$srcdir/$_reponame"
   pip install -r requirements.txt
   deactivate
+
+  # Ensure correct venv is used after install
+  cd "$pkgdir/usr/local/lib/$_pkgname/bin"
+  sed -i "s|$pkgdir||g" *
+  cd "$srcdir/$_reponame"
   
   # Install source files
   cd "$srcdir"
