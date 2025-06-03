@@ -9,10 +9,7 @@
 
 ## arg 1:  the new package version
 post_install() {
-	if [ ${1:2:-2} = 2121.1 ]
-	then
-		echo "Azahar 2021.1 has fixed a bug dealing with save states, resulting in any save state made before this version to be invalid. Use Vulkan renderer to create an in-game save"
-	fi
+	echo "Azahar 2021.1 has fixed a bug dealing with save states, resulting in any save state made before this version to be invalid. Use Vulkan renderer to create an in-game save"
 }
 
 ## arg 1:  the new package version
@@ -25,10 +22,7 @@ post_install() {
 ## arg 2:  the old package version
 post_upgrade() {
 	# do something here
-	if [ ${1:2:-2} > 2121.1 ];
-	then
-		echo "Azahar 2021.1 has fixed a bug dealing with save states, resulting in any save state made before this version to be invalid. Use Vulkan renderer to create an in-game save"
-	fi
+	echo "Azahar 2021.1 has fixed a bug dealing with save states, resulting in any save state made before this version to be invalid. Use Vulkan renderer to create an in-game save"
 }
 
 ## arg 1:  the old package version
