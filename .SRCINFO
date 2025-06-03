@@ -1,13 +1,13 @@
 pkgbase = pypy3-psutil
 	pkgdesc = Cross-platform lib for process and system monitoring in Python
-	pkgver = 6.1.0
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = https://github.com/giampaolo/psutil
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = pypy3-setuptools
 	depends = pypy3
-	source = https://github.com/giampaolo/psutil/archive/release-6.1.0.tar.gz
-	sha512sums = 7dc755c62ad4607b3f34dd60701be86836f9226ac305387205a9dbf2837b6fded6d71f4919323a4e6b77308f9851db560f1bebedb2ae9a9e5fc59ee3adbc4538
+	source = https://github.com/giampaolo/psutil/archive/release-6.1.1.tar.gz
+	sha512sums = b362446f7154831eba344e7c2a741d0d5b1159b20b58f4642e5cce9599d7dca77d36dac7d69fb6f55fee3c56e384c0c4a86b74f2591df463aeceb50ea6e7b616
 
 pkgname = pypy3-psutil
