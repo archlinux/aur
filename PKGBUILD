@@ -1,6 +1,6 @@
 # Maintainer: Hanashiko <hlichisper@gmail.com>
 pkgname=jwtk
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="CLI/TUI tool for decodeing, validating and generating JWT tokens"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=('main.go' 'go.mod' 'go.sum' 'LICENSE')
-sha256sums=('8d3f9dddc3d84115d246c9e073e050fb7f5a973259decc9841e1523a52ad3822'
+sha256sums=('e828d371c827e664733cc6c47ab2ed5b7321bbfb80abe24cb01775c345269275'
     '0c3a8cdc4eec061dd960248c8bd960d7611a308ee0fd0cdf24eb74b2a2eef89b' 
     '5a21a9a2128cdf32dd0d2d3b45391edbd78db948f3b37970b0d6a7252be84c93' 
     '60a21faf5459b93996f566dde48d4bb44218cec03417bbcdd6c4731ef3b31bf5')
