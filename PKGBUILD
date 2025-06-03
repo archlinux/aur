@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wallet-recovery-wizard-bin
 _pkgname=Wallet.Recovery.Wizard
-pkgver=4.38.1
+pkgver=5.0.0
 _electronversion=22
 pkgrel=1
 pkgdesc="Electron-based home for all BitGo recovery tools ⛓️🔮.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-Linux-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('60ce62068fd7f7c41991a6deb0ea1b6fc71baa177766a32057737dec2ab22650'
+sha256sums=('0ef3d014ed5efbd08b628f77bc2031662efbfeea769f6517dc27b5a0c30ea69f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -31,7 +31,7 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    ln -sf "/usr/bin/python3" "${srcdir}/opt/${_pkgname//./ }/resources/app.asar.unpacked/node_modules/bigint-buffer/build/node_gyp_bins/python3"
+    ln -sf "/usr/bin/python" "${srcdir}/opt/${_pkgname//./ }/resources/app.asar.unpacked/node_modules/bigint-buffer/build/node_gyp_bins/python3"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
