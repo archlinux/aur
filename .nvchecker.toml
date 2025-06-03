@@ -1,0 +1,4 @@
+[pypy3-calver]
+source = "github"
+github = "di/calver"
+use_latest_release = "true"

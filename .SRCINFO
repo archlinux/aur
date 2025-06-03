@@ -1,0 +1,15 @@
+pkgbase = pypy3-calver
+	pkgdesc = Setuptools extension for CalVer package versions
+	pkgver = 2025.04.17
+	pkgrel = 1
+	url = https://github.com/di/calver
+	arch = any
+	license = Apache-2.0
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	makedepends = pypy3-setuptools
+	depends = pypy3
+	source = calver-2025.04.17.tar.gz::https://github.com/di/calver/archive/2025.04.17.tar.gz
+	sha512sums = 9d15bfefd02be1d6449beaed4f9dc8b5662442ebb747153cea1ea246c484c9240f449126fef3f175a2e66d49ec75112aaf91cf28f966abf4109d22ef2932e022
+
+pkgname = pypy3-calver
