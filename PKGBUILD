@@ -41,7 +41,6 @@ optdepends=(
   'swaybg: Default wallpaper'
   'swayidle: Default idle daemon'
   'waybar: Default bar'
-  'wlopm: Default output power controller'
   'xdg-desktop-portal-gtk: Default portal for file picker'
   'xdg-desktop-portal-wlr: Portal for screen sharing'
 )

@@ -34,7 +34,6 @@ pkgbase = cwc-git
 	optdepends = swaybg: Default wallpaper
 	optdepends = swayidle: Default idle daemon
 	optdepends = waybar: Default bar
-	optdepends = wlopm: Default output power controller
 	optdepends = xdg-desktop-portal-gtk: Default portal for file picker
 	optdepends = xdg-desktop-portal-wlr: Portal for screen sharing
 	provides = wayland-compositor
