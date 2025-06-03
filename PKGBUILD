@@ -19,7 +19,7 @@ prepare() {
   fi
   mkdir _build
   cd _build
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
 }
 
 build() {
