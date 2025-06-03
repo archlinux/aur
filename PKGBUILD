@@ -1,6 +1,6 @@
 # Contributor: solarbaron
 pkgname=feishin-git
-pkgver=0.14.0.r22.g636c227
+pkgver=0.14.0.r7.g636c227
 pkgdesc='Modern music player with support for navidrome servers.'
 pkgrel=1
 arch=('x86_64' 'aarch64')
@@ -35,7 +35,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/$pkgname"
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/applications"
-  cp -r "$pkgname/release/build/linux-unpacked/"* "$pkgdir/usr/share/$pkgname"
+  cp -r "$pkgname/dist/linux-unpacked/"* "$pkgdir/usr/share/$pkgname"
   install -Dm644 "$pkgdir/usr/share/feishin-git/resources/assets/icons/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
   ln -s /usr/share/feishin-git/feishin "${pkgdir}/usr/bin/feishin"
   install -Dm644 feishin.desktop "$pkgdir/usr/share/applications/"
