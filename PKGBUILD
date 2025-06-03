@@ -3,7 +3,7 @@
 
 pkgname=python-confluent-kafka
 pkgver=2.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Confluent's Python client for Apache Kafka"
 arch=(x86_64)
 url="https://github.com/confluentinc/confluent-kafka-python"
@@ -36,6 +36,7 @@ makedepends=(
     'python-wheel'
     'python-sphinx'
     'python-sphinx_rtd_theme'
+    'python-authlib'
     'tar'
 )
 changelog="CHANGELOG.md"
@@ -57,5 +58,5 @@ package(){
     cd "$pkgname-$pkgver" || exit
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 README.md -t "$pkgdir/usr/share/$pkgname/"
-    install -Dm644 "docs/build/confluent-kafka.1" -t "$pkgdir/usr/share/man/man1/python-confluent-kafka.1"
+    install -Dm644 "docs/build/confluent-kafka.1" "$pkgdir/usr/share/man/man1/python-confluent-kafka.1"
 }
