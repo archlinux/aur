@@ -1,10 +1,11 @@
 pkgbase = nvi-multibyte-git
 	pkgdesc = nvi with multibyte support
 	pkgver = 1.81.6_20241228
-	pkgrel = 2
+	pkgrel = 3
 	url = git://repo.or.cz/nvi.git
 	arch = x86_64
 	license = BSD-3-Clause
+	makedepends = chrpath
 	depends = sh
 	depends = glibc
 	depends = ncurses
