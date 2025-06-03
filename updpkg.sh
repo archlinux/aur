@@ -1,14 +1,24 @@
 #!/bin/bash
 
+# Upstream name
 _pkgnamefmt=LibreOffice
-_pkgver=25.2.4.1
-pkgver=25.2.4.1
+
+# Upstream version
+_pkgver=25.2.4.2
+
+# Package version
+pkgver=25.2.4.2
+
+#
+pkgrel=1
 
 sed -i "6s|_pkgnamefmt=.*|_pkgnamefmt=${_pkgnamefmt}|" PKGBUILD
 
 sed -i "7s|_pkgver=.*|_pkgver=${_pkgver}|" PKGBUILD
 
 sed -i "8s|pkgver=.*|pkgver=${pkgver}|" PKGBUILD
+
+sed -i "9s|pkgrel=.*|pkgrel=${pkgrel}|" PKGBUILD
 
 makepkg --printsrcinfo > .SRCINFO
 
