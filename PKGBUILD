@@ -2,7 +2,7 @@
 _appname="youtube music for desktop"
 pkgname="${_appname// /-}-bin"
 _pkgname=YouTube-Music-for-Desktop
-pkgver=0.14.10
+pkgver=0.16.1
 _electronversion=33
 pkgrel=1
 pkgdesc="Unofficial Youtube Music Desktop App, with LastFM support.(Prebuilt version.Use system-wide electron)"
@@ -29,8 +29,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('226fa82dcadc6b207e99721cb46acb4fc624620c89be5c45aa001b69993d69a0')
-sha256sums_x86_64=('97f5b8b975c9031cedb64fdcecb481d4c50cc776bc34c607a23209ef332fa9b8')
+sha256sums_aarch64=('34cc7e9950cd80be2d9cf4af2752e3e0fa0ba4e11266f37d69c2cb6210868ab4')
+sha256sums_x86_64=('26e9820309797588fe30f7102e3f4e434e94c9bc65d55446701586763153d84a')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -55,6 +55,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
