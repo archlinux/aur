@@ -2,19 +2,8 @@
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo), YellowRoseCx
 
-# Build configuration could be change with environment variables.
-# Or via `${XDG_CONFIG_HOME}/koboldcpp_build.conf` (default is `~/.config/koboldcpp_build.conf`).
-#
-# Disabling portable build
-# KOBOLDCPP_NO_PORTABLE:
-#   '0' - Keep portable build enabled (default)
-#   '1' or any other value that isn't '0' - Disable portable build.
-
-: ${KOBOLDCPP_BUILD_CONF:=${XDG_CONFIG_HOME:-~/.config}/koboldcpp_build.conf}
-: ${KOBOLDCPP_NO_PORTABLE:=0}
-
 pkgname=koboldcpp-hipblas
-_pkgver=1.86.2
+_pkgver=1.92.1
 pkgver=$_pkgver.yr0
 _git_pkgver=$pkgver-ROCm
 pkgrel=1
@@ -40,27 +29,14 @@ source=(
     'koboldcpp.desktop'
     'koboldcpp.png'
 )
-sha256sums=('1991ce564ab319374aac294d0c69b63eea47cba5cdf6f823408620a038bdb786'
+sha256sums=('d490d193a45b1b51227c7d591c66c313f3cd658844490b3f00a23002b589873d'
             'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
             'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54')
 
 build() {
-    if [ -f "${KOBOLDCPP_BUILD_CONF}" ]; then
-        echo "Using config from ${KOBOLDCPP_BUILD_CONF}"
-        source "${KOBOLDCPP_BUILD_CONF}"
-    fi
-
-    if [ "${KOBOLDCPP_NO_PORTABLE}" == "0" ]; then
-        export LLAMA_PORTABLE=1
-    fi
-
-    export LLAMA_VULKAN=1
-    export LLAMA_CLBLAST=1
-    export LLAMA_HIPBLAS=1
-
     cd "$srcdir/koboldcpp-rocm-${_git_pkgver}"
 
-    make clean && make
+    make LLAMA_VULKAN=1 LLAMA_CLBLAST=1 LLAMA_HIPBLAS=1
 }
 
 package() {
