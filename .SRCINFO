@@ -1,6 +1,6 @@
 pkgbase = todoist-wrapper-bin
 	pkgdesc = Electron Wrapper for Todoist on Linux.(Prebuilt version.Use system-wide electron)
-	pkgver = 4.20250531015432
+	pkgver = 4.20250603015906
 	pkgrel = 1
 	url = https://github.com/conjfrnk/todoist-wrapper
 	arch = x86_64
@@ -8,14 +8,14 @@ pkgbase = todoist-wrapper-bin
 	makedepends = gendesk
 	depends = electron35
 	depends = nodejs
-	provides = todoist-wrapper=4.20250531015432
+	provides = todoist-wrapper=4.20250603015906
 	conflicts = todoist-wrapper
 	options = !emptydirs
 	options = !strip
-	source = todoist-wrapper-4.20250531015432.zip::https://github.com/conjfrnk/todoist-wrapper/releases/download/v4.20250531015432/todoist-wrapper-linux-x64.zip
+	source = todoist-wrapper-4.20250603015906.zip::https://github.com/conjfrnk/todoist-wrapper/releases/download/v4.20250603015906/todoist-wrapper-linux-x64.zip
 	source = todoist-wrapper.png::https://www.todoist.com/static/favicon-16x16.png
 	source = todoist-wrapper.sh
-	sha256sums = bf4a31a26eb398e3f6050993cf990a6373cee810abde02a30904b26c21a35e18
+	sha256sums = 41e76cfe1139d43484758abc8905b20c09b57c55e32a5fd4067ed271a1cac2ce
 	sha256sums = 3260f6adfa0d38458fa2ebcb3a7a51fc4901b9239576d2f25016c15027e88966
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
