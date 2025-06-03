@@ -15,7 +15,7 @@ options=('!lto')
 prepare() {
   cd coreutils-$pkgver
   sed -i 's/yes/yes stty/' GNUmakefile # remove this at next release
-  cargo fetch --locked --target "${CARCH}"-unknown-linux-gnu
+#  cargo fetch --locked --target "${CARCH}"-unknown-linux-gnu DL larger crates
 }
 
 export SELINUX_ENABLED=1 RUSTONIG_DYNAMIC_LIBONIG=1
@@ -25,14 +25,14 @@ build(){
   cd coreutils-$pkgver
   # build every uu-cmd for people wants it
   # cargo build --release --frozen --features feat_selinux # cause double build
-  make USE=selinux PROFILE=release MULTICALL=y CARGOFLAGS="--frozen"
+  make USE=selinux PROFILE=release MULTICALL=y
 }
 
 package_uutils-coreutils-selinux() {
-  pkgdesc='Rust rewrite of GNU coreutils (SELinux build)'
+  pkgdesc='Rust rewrite of GNU coreutils (SELinux)'
   conflicts=(uutils-coreutils)
   cd coreutils-$pkgver
-  make install USE=selinux PROFILE=release MULTICALL=y CARGOFLAGS="--frozen" \
+  make install USE=selinux PROFILE=release MULTICALL=y \
     DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROG_PREFIX=uu- 
   # for $PATH exporting
   _uu="$pkgdir"/usr/bin/uu-coreutils
@@ -43,7 +43,7 @@ package_uutils-coreutils-selinux() {
 }
 
 package_coreutils-uutils-selinux(){
-  pkgdesc='(Really dangerous) Swap coreutils with uutils (SELinux build)'
+  pkgdesc='(Really dangerous) Swap coreutils with uutils (SELinux)'
   conflicts=(coreutils b3sum sha3sum)
   provides=(coreutils{,-selinux} sha3sum)
   cd coreutils-$pkgver
