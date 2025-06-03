@@ -6,15 +6,22 @@ arch=('any')
 url='https://github.com/trehn/termtrack'
 license=('GPL3')
 depends=('python-click' 'python-pillow' 'python-pyshp' 'python-requests')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-setuptools' 'python-wheel')
+
+source=()
+sha256sums=()
+
+prepare() {
+  cp -r "${startdir}/termtrack" "$srcdir/"
+}
 
 build() {
-  cd "$srcdir/termtrack"
+  cd "$srcdir/termtrack" || exit 1
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/termtrack"
+  cd "$srcdir/termtrack" || exit 1
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
