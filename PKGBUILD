@@ -2,8 +2,8 @@
 _appname=feishin
 pkgname="${_appname}-electron-bin"
 _pkgname=Feishin
-pkgver=0.13.0
-_electronversion=36
+pkgver=0.14.0
+_electronversion=35
 pkgrel=1
 pkgdesc="A modern self-hosted music player.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -26,8 +26,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('6541464f8d29580dbaeb1fc540650da38075bd0172b3d5e788d6fdd37cb37b2c')
-sha256sums_x86_64=('bc6aadc9fdcd4a38ad6eb81ad2851af3741d098416860da182b3a4c3f07a27f6')
+sha256sums_aarch64=('8ab37f0634c95a975f53315d7c51fc7ede4d6dbc3d8e6739d67af5d112842112')
+sha256sums_x86_64=('cbf6b90e98003573d7fe1ad49d76e1a3d2aa66669a7b3c574aade06a3fb8e3ad')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -45,7 +45,7 @@ prepare() {
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/squashfs-root/${_appname}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
+    find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
     find "${srcdir}/squashfs-root/resources/assets" -type d -exec chmod 755 {} +
 }
