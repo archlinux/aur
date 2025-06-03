@@ -1,6 +1,5 @@
 pkgname=ktls-utils
 pkgver=1.1.0
-_commit=8e93cc211ea9dbb13cd20cdca57b48732fe0bb2c
 pkgrel=1
 pkgdesc="TLS handshake utilities for NFSv4, NVMe-oF, and other in-kernel TLS consumers"
 url="https://github.com/oracle/ktls-utils"
@@ -14,13 +13,7 @@ depends=(
   libnl-genl-3.so
 )
 makedepends=(gcc git make pkg-config)
-# recent releases do not have signed tags
-#source=("git+https://github.com/oracle/ktls-utils#tag=v$pkgver?signed")
-#sha256sums=('SKIP')
-# and no more release tarballs either, apparently
-#source=("https://github.com/oracle/ktls-utils/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
-#sha256sums=('37262bff4e63764aa22949887a3d571c8081a0249800fcf24483214a7144f9ba')
-source=("git+https://github.com/oracle/ktls-utils#commit=$_commit")
+source=("git+https://github.com/oracle/ktls-utils#tag=ktls-utils-$pkgver")
 sha256sums=('e248b0aec185c216ab7ae922ded46f7ec7df7111c1f6e04ffa8d805a6a785813')
 backup=(etc/tlshd.conf)
 

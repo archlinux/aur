@@ -15,7 +15,7 @@ pkgbase = ktls-utils
 	depends = libnl-3.so
 	depends = libnl-genl-3.so
 	backup = etc/tlshd.conf
-	source = git+https://github.com/oracle/ktls-utils#commit=8e93cc211ea9dbb13cd20cdca57b48732fe0bb2c
+	source = git+https://github.com/oracle/ktls-utils#tag=ktls-utils-1.1.0
 	sha256sums = e248b0aec185c216ab7ae922ded46f7ec7df7111c1f6e04ffa8d805a6a785813
 
 pkgname = ktls-utils
