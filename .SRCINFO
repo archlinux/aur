@@ -8,8 +8,10 @@ pkgbase = universal-gcode-sender
 	makedepends = java-runtime=17
 	makedepends = npm
 	makedepends = maven
+	makedepends = ttf-font
 	depends = java-runtime=17
 	depends = npm
+	depends = ttf-font
 	provides = universal-gcode-sender
 	conflicts = universal-gcode-sender-git
 	source = universal-gcode-sender-2.1.14.tar.gz::https://github.com/winder/Universal-G-Code-Sender/archive/v2.1.14.tar.gz

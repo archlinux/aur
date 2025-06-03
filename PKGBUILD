@@ -6,8 +6,8 @@ pkgdesc="Java based GRBL compatible cross-platform G-Code sender"
 arch=(any)
 url="https://github.com/winder/Universal-G-Code-Sender"
 license=(GPL3)
-makedepends=(java-runtime=17 npm maven)
-depends=(java-runtime=17 npm)
+makedepends=(java-runtime=17 npm maven ttf-font)
+depends=(java-runtime=17 npm ttf-font)
 provides=(universal-gcode-sender)
 conflicts=(universal-gcode-sender-git)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/winder/Universal-G-Code-Sender/archive/v${pkgver}.tar.gz"
