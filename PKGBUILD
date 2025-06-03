@@ -1,45 +1,82 @@
 # Maintainer: Hiroshi Hatake <cosmo0920.wp[at]gmail.com>
 
-pkgname=('groonga')
-pkgver=15.0.9
-pkgbase=groonga
-pkgrel=2
+pkgname=groonga
+pkgdesc="An open-source fulltext search engine and column store."
+pkgver=15.1.1
+pkgrel=1
 arch=('i686' 'x86_64')
-url="http://groonga.org/"
-license=('LGPL2.1')
-source=("https://github.com/groonga/groonga/releases/download/v$pkgver/$pkgbase-$pkgver.tar.gz"
-    "https://github.com/groonga/groonga/releases/download/v$pkgver/$pkgbase-$pkgver.tar.gz.asc"
-    "groonga-httpd.service")
-makedepends=('glib2' 'libedit' 'zeromq' 'autoconf-archive' 'libstemmer'
-    'libevent' 'mecab' 'mecab-ipadic' 'msgpack-c' 'ruby' 'cmake')
+url="https://groonga.org/"
+license=('LGPL2.1-or-later')
+depends=(
+  arrow
+  blosc2
+  gcc
+  libedit
+  libevent
+  libstemmer
+  lz4
+  mecab-git
+  mecab-ipadic
+  msgpack-c
+  simdjson
+  xsimd
+  xxhash
+  zeromq
+)
+makedepends=(
+  cmake
+  ninja
+  pkgconf
+  ruby
+  ruby-rake
+)
+checkdepends=(
+  git
+  make
+  ruby-bundler
+  ruby-erb
+)
+source=(
+  "https://github.com/groonga/groonga/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+  "https://github.com/groonga/groonga/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc"
+)
+sha512sums=(
+  "63a4d8c026a280254870361c14e0d874eb1f757cac1c3a4340cbdf1c1eb10376a7a84443386dab9e2f6c86971e33eea861e3f05b494959ed2dac6e730ac92154"
+  "SKIP"
+)
 validpgpkeys=(2701F317CFCCCB975CADE9C2624CF77434839225)
 
+# See also: https://wiki.archlinux.org/title/CMake_package_guidelines
 build() {
-    cd $srcdir/$pkgbase-$pkgver
-    cmake . -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DGRN_WITH_MRUBY=ON \
-        -DGRN_WITH_APACHE_ARROW=ON
-
-    cmake --build .
+  rm -rf build
+  local cmake_options=(
+    -B build
+    -S "${pkgname}-${pkgver}"
+    -G Ninja
+    -W no-dev
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D CMAKE_SKIP_RPATH=ON
+    -D GRN_WITH_APACHE_ARROW=ON
+    -D GRN_WITH_BLOSC=system
+    -D GRN_WITH_MRUBY=ON
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
-package_groonga() {
-    pkgdesc="An opensource fulltext search engine."
-    depends=('glib2' 'libedit' 'zeromq' 'autoconf-archive' 'arrow' 'simdjson'
-        'libevent' 'mecab-ipadic' 'msgpack-c' 'ruby' 'libstemmer')
-    optdepends=('cutter-test_framework' 'mercurial' 'kytea')
-
-    cd $srcdir/$pkgbase-$pkgver
-    cmake --install . --prefix="$pkgdir/usr"
-
-    # cleanup
-    rm -rf "${pkgdir}/var/run"
-
-    install -Dm644 ../groonga-httpd.service "$pkgdir"/usr/lib/systemd/system/groonga-httpd.service
+check() {
+  cd build
+  export GEM_HOME="${PWD}/gem"
+  PATH="${GEM_HOME}/bin:${PATH}"
+  MAKEFLAGS="-j$(nproc)" gem install --no-user-install grntest
+  BUILD_DIR="${PWD}/test/command" \
+    "../${pkgname}-${pkgver}/test/command/run-test.sh" \
+    --n-retries=2 \
+    --read-timeout=30 \
+    --reporter=mark
 }
-sha1sums=('1c01eeb3af69b42e4faa2fb89b5c56cda1261a6f'
-    'SKIP'
-    '56b68b5ebfc6785f08ce101b263d6f56acd74d8a')
-sha256sums=('f9969d2f8025a31dd201d8ce0e5db3a1547144e6191f75a9bbb1d771b7f0def2'
-    'SKIP'
-    '4d3f91b40b37ab473b716c6c303c1e58ca7b3f777439fc4c055be80d04ffa65b')
+
+package() {
+  DESTDIR="${pkgdir}" cmake --install build
+}
