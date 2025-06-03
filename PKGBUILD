@@ -9,6 +9,7 @@ depends=('mpv')
 source=("goanime-linux::https://github.com/alvarorichard/GoAnime/releases/download/v$pkgver/goanime-linux")
 sha256sums=('SKIP')  # Ignora validação de checksum
 
+
 package() {
   install -Dm755 "$srcdir/goanime-linux" "$pkgdir/usr/bin/goanime"
 }
