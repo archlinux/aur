@@ -1,7 +1,7 @@
 pkgbase = picacg-qt-appimage
 	pkgdesc = PicACG Comic PC Client For Linux
-	pkgver = 1.4.4
-	pkgrel = 1
+	pkgver = 1.5.2
+	pkgrel = 2
 	url = https://github.com/tonquer/picacg-qt
 	arch = x86_64
 	license = LGPL3
@@ -9,9 +9,9 @@ pkgbase = picacg-qt-appimage
 	optdepends = python-waifu2x-vulkan: Waifu2x-Vulkan support
 	provides = bika
 	conflicts = bika
-	noextract = bika_v1.4.4_linux-x86_64.AppImage
+	noextract = bika_v1.5.2_linux_glibc2.38.AppImage
 	options = !strip
-	source = https://github.com/tonquer/picacg-qt/releases/download/v1.4.4/bika_v1.4.4_linux-x86_64.AppImage
-	sha256sums = 30c9d40583a7ae73f29ab334a636040de33428d79dcf5a17ea91fe6997f1cbdd
+	source = https://github.com/tonquer/picacg-qt/releases/download/v1.5.2/bika_v1.5.2_linux_glibc2.38.AppImage
+	sha256sums = cc0a24d3c47d5ddc7acfa24118da109713eb495bf192ab9883d7e07fc38c8f5a
 
 pkgname = picacg-qt-appimage
