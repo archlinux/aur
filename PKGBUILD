@@ -5,7 +5,7 @@
 pkgname=('greetd-qtgreet')
 _pkgname=QtGreet
 pkgver=2.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Qt based greeter for greetd'
 arch=('aarch64' 'x86_64')
 url="https://gitlab.com/marcusbritanicus/$_pkgname"
@@ -23,11 +23,11 @@ depends=(
         'mpv'
         'python-pyqt6'
         'qt6-base'
-        'wlroots'
+        'wlroots0.18'
+        'sway'
 )
 optdepends=(
             'wayfire: for wayfire support'
-            'sway: for sway support'
             'labwc: for labwc support'
 )
 makedepends=(

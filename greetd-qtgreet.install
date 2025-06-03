@@ -1,3 +1,5 @@
 post_install() {
-    echo "Either Wayfire, Sway or LabWC is required for QtGreet to function. Make sure at least of of them is installed!"
+    echo "The greetd setup needs to be changed for QtGreet to work!"
+    echo "Edit /etc/greetd/config.toml and make the change mentioned below."
+    echo 'Under [default_session], set command = "sway --config /etc/qtgreet/sway.cfg"'
 }
