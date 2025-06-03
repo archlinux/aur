@@ -13,8 +13,9 @@ depends=(
   libnl-genl-3.so
 )
 makedepends=(gcc git make pkg-config)
-source=("git+https://github.com/oracle/ktls-utils#tag=ktls-utils-$pkgver")
+source=("git+https://github.com/oracle/ktls-utils#tag=ktls-utils-$pkgver?signed")
 sha256sums=('e248b0aec185c216ab7ae922ded46f7ec7df7111c1f6e04ffa8d805a6a785813')
+validpgpkeys=('28B2E5B01286DF243CF23EFE336AB3336F667F97')
 backup=(etc/tlshd.conf)
 
 prepare() {
