@@ -1,6 +1,6 @@
 pkgbase = doxygen-git
 	pkgdesc = A documentation system for C++, C, Java, IDL and PHP - git version
-	pkgver = 1.9.7.r248.ge2bc7d2a
+	pkgver = 1.14.0.r361.ge7e0dac1
 	pkgrel = 1
 	url = http://www.doxygen.org
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = doxygen-git
 	makedepends = flex
 	makedepends = bison
 	makedepends = python
-	depends = qt5-base
+	depends = qt6-base
 	depends = xapian-core
 	optdepends = graphviz: enable dot support
 	provides = doxygen
