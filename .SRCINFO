@@ -1,6 +1,6 @@
 pkgbase = libwaybar_cffi_lyrics
 	pkgdesc = a cffi module for waybar to get lyrics from various music providers
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/switchToLinux/libwaybar_cffi_lyrics
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = libwaybar_cffi_lyrics
 	depends = sdbus-cpp
 	depends = libcurl-gnutls
 	depends = glm
-	source_x86_64 = libwaybar_cffi_lyrics-0.2.3.tar.gz::https://github.com/switchToLinux/libwaybar_cffi_lyrics/archive/refs/tags/0.2.3.tar.gz
-	sha256sums_x86_64 = 9445a6e40c55a7bb4c035eefb8d6a3e66c3383f34c692ac5eb5c29810d0f1a0e
+	source_x86_64 = libwaybar_cffi_lyrics-0.2.4.tar.gz::https://github.com/switchToLinux/libwaybar_cffi_lyrics/archive/refs/tags/0.2.4.tar.gz
+	sha256sums_x86_64 = 3aa1324767b2383bf46a3043edf88fc57d8b50fbe68f7cce7a0cd989855b8bad
 
 pkgname = libwaybar_cffi_lyrics
