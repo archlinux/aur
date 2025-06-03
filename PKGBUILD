@@ -5,7 +5,7 @@
 
 pkgname=git-review
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to submit code to Gerrit'
 arch=('any')
 url='https://opendev.org/opendev/git-review'
@@ -18,7 +18,7 @@ source=("git+https://opendev.org/opendev/git-review.git#commit=a3be713b85919706d
 b2sums=('SKIP'
         '4473e5eef14e8b741a998470a193340c62eb09f239a9ca5bf7372b15638fb2914bbc605b92722221f19ded088bbf2237eb25055217ff1b79e7a0334e9a1feb0b')
 
-#prepare() {
+prepare() {
 #  export PBR_VERSION=$pkgver
 #  mkdir -p $pkgname/.gerrit
 #  cp gerrit-3.4.4.war $pkgname/.gerrit/
@@ -35,7 +35,10 @@ b2sums=('SKIP'
 #  sed -e "s/'Branch test_branch set up to track remote'/\"Branch 'test_branch' set up to track remote\"/" \
 #      -e "s/' branch maint from origin.'/\" branch 'maint' from 'origin'.\"/" \
 #      -i git_review/tests/test_git_review.py
-#}
+
+  # Clean up untracked files like stale wheels to avoid build failures
+  git -C "${srcdir}/${pkgname}" clean -dfx
+}
 
 build() {
   cd $pkgname
