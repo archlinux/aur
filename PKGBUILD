@@ -15,14 +15,14 @@ options=('!lto') # RUSTFLAGS= -C lto=thin also fail
 
 export RUSTFLAGS="-C codegen-units=1 -C panic=abort $RUSTFLAGS -C link-arg=-fuse-ld=mold"
 
-prepare() {
-  cd coreutils-$pkgver
-  cargo fetch --locked --target "${CARCH}"-unknown-linux-gnu
-}
+#prepare() { DL larger crate
+#  cd coreutils-$pkgver
+#  cargo fetch --target "${CARCH}"-unknown-linux-gnu --locked
+#}
 
 build() {
   cd coreutils-$pkgver
-  cargo build -p uu_stty --release --frozen
+  cargo build -p uu_stty --release # --target "${CARCH}"-unknown-linux-gnu seems no effect
 }
 
 package() {
