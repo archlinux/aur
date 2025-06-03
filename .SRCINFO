@@ -1,6 +1,6 @@
 pkgbase = high-tide-git
 	pkgdesc = Linux client for TIDAL streaming service
-	pkgver = r428.1a2b394
+	pkgver = r425.75acb17
 	pkgrel = 1
 	url = https://github.com/Nokse22/high-tide
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = high-tide-git
 	depends = python-gobject
 	depends = python-tidalapi
 	optdepends = python-discord_rpc: Discord Rich Presence support
-	provides = high-tide=r428.1a2b394
+	provides = high-tide=r425.75acb17
 	conflicts = high-tide
 	source = high-tide-git::git+https://github.com/Nokse22/high-tide.git
 	b2sums = SKIP
