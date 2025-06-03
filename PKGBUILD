@@ -3,7 +3,7 @@
 
 _hkgname=GLUT
 pkgname=haskell-glut
-pkgver=2.6.0.0
+pkgver=2.7.0.16
 pkgrel=1
 pkgdesc="A binding for the OpenGL Utility Toolkit"
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -14,26 +14,27 @@ depends=('ghc' 'haskell-opengl>=2.8.0.0' 'haskell-openglraw>=1.3.0.0'
          'haskell-array>=0.3' 'haskell-containers>=0.3' 'freeglut')
 options=('strip' 'staticlibs')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
-install=${pkgname}.install
-sha1sums=('6bea5743ecec2479bfb04ea3da0327757407bae5')
+sha512sums=('0ff118991041ebd602f156241e85c5e04c5628890dad55ecefd31c1d70fb283097a8520de1e29c62537b9435a619c048a6d74c31372eb97960d847a129aba0ea')
 
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
-    runhaskell Setup configure -O ${PKGBUILD_HASKELL_ENABLE_PROFILING:+-p } --enable-split-objs --enable-shared \
-       --prefix=/usr --docdir=/usr/share/doc/${pkgname} --libsubdir=\$compiler/site-local/\$pkgid
-    runhaskell Setup build
-    runhaskell Setup haddock
-    runhaskell Setup register   --gen-script
+
+    runhaskell Setup configure -O --enable-shared --enable-debug-info --enable-executable-dynamic --disable-library-vanilla \
+        --prefix=/usr --docdir=/usr/share/doc/$pkgname --datasubdir=$pkgname \
+        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
+    runhaskell Setup build $MAKEFLAGS
+    runhaskell Setup register --gen-script
     runhaskell Setup unregister --gen-script
+    sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
     sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
+
 package() {
     cd ${srcdir}/${_hkgname}-${pkgver}
-    install -D -m744 register.sh   ${pkgdir}/usr/share/haskell/${pkgname}/register.sh
-    install    -m744 unregister.sh ${pkgdir}/usr/share/haskell/${pkgname}/unregister.sh
-    install -d -m755 ${pkgdir}/usr/share/doc/ghc/html/libraries
-    ln -s /usr/share/doc/${pkgname}/html ${pkgdir}/usr/share/doc/ghc/html/libraries/${_hkgname}
-    runhaskell Setup copy --destdir=${pkgdir}
-    install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-    rm -f ${pkgdir}/usr/share/doc/${pkgname}/LICENSE
+
+    install -D -m744 register.sh "$pkgdir"/usr/share/haskell/register/$pkgname.sh
+    install -D -m744 unregister.sh "$pkgdir"/usr/share/haskell/unregister/$pkgname.sh
+    runhaskell Setup copy --destdir="$pkgdir"
+    install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    rm -f "$pkgdir"/usr/share/doc/$pkgname/LICENSE
 }
