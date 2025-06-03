@@ -1,7 +1,7 @@
 pkgbase = simple-web-server-bin
 	pkgdesc = Create a local web server in just a few clicks with an easy to use interface. A continuation of Web Server for Chrome, built with Electron.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.2.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://simplewebserver.org/
 	arch = aarch64
 	arch = x86_64
