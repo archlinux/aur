@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=f1mv-lights-integration-bin
 _pkgname=F1MV-Lights-Integration
-pkgver=3.2.2
+pkgver=3.2.3
 _electronversion=36
 pkgrel=1
 pkgdesc="The best way to connect your smart home lights to MultiViewer.(Prebuilt version.Use system-wide electron)"
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f15435e93592cfad5f6753b8d19495411e93dbfe43e38224c3e02e597a13490c'
+sha256sums=('6427752d66188f6f7d4a60bbb36a8b468b7a702d8222403892e1a29a2135defd'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
