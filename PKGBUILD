@@ -1,6 +1,6 @@
 pkgname=ktls-utils
-pkgver=1.0.0
-_commit=c787cd26330af457e1ca9cf43232db2c71c03154
+pkgver=1.1.0
+_commit=8e93cc211ea9dbb13cd20cdca57b48732fe0bb2c
 pkgrel=1
 pkgdesc="TLS handshake utilities for NFSv4, NVMe-oF, and other in-kernel TLS consumers"
 url="https://github.com/oracle/ktls-utils"
@@ -21,7 +21,7 @@ makedepends=(gcc git make pkg-config)
 #source=("https://github.com/oracle/ktls-utils/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
 #sha256sums=('37262bff4e63764aa22949887a3d571c8081a0249800fcf24483214a7144f9ba')
 source=("git+https://github.com/oracle/ktls-utils#commit=$_commit")
-sha256sums=('a111d0d0aa3471d0d7880686b537382d00d60bc170f6aa45d4feb642d9b168af')
+sha256sums=('e248b0aec185c216ab7ae922ded46f7ec7df7111c1f6e04ffa8d805a6a785813')
 backup=(etc/tlshd.conf)
 
 prepare() {
