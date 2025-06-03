@@ -1,0 +1,4 @@
+[pypy3-pluggy]
+source = "github"
+github = "pytest-dev/pluggy"
+use_max_tag = "true"
