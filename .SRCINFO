@@ -1,6 +1,6 @@
 pkgbase = python-mpl-animators
 	pkgdesc = An interative animation framework for matplotlib
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://sunpy.org
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = python-mpl-animators
 	makedepends = python-sunpy
 	makedepends = python-scipy
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/m/mpl_animators/mpl_animators-1.2.2.tar.gz
-	md5sums = 735400c7210cc1c6e49da608b8eea302
+	source = https://files.pythonhosted.org/packages/source/m/mpl_animators/mpl_animators-1.2.3.tar.gz
+	md5sums = 339118b95be44deec640c767aef62473
 
 pkgname = python-mpl-animators
 	depends = python-matplotlib>=3.5.0
