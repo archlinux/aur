@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mediago-git
 _pkgname=MediaGo
-pkgver=3.0.0.beta.1.r0.gb047411
+pkgver=3.0.1.r56.gbf239da
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -9,20 +9,20 @@ pkgdesc="Video online extraction tool streaming media download, video download,m
 arch=('x86_64')
 url="https://downloader.caorushizi.cn/"
 _ghurl="https://github.com/caorushizi/mediago"
-license=("MIT")
+license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
     'python'
+    'ffmpeg'
+    'gopeed-bin'
 )
 makedepends=(
     'npm'
     'git'
     'nvm'
     'gendesk'
-    'gcc'
-    'cmake'
     'curl'
     'pnpm'
 )
@@ -44,16 +44,22 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    cd "${srcdir}/${pkgname//-/.}"
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="AudioVideo" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -75,13 +81,18 @@ build() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" packages/main/package.json
     sed -i "s/icon.icns/icon.png/g;s/deb/dir/g" packages/main/scripts/config.ts
     NODE_ENV=development    pnpm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     pnpm run release
+    ln -sf "/usr/bin/ffmpeg" "${srcdir}/${pkgname//-/.}/packages/main/release/linux-unpacked/resources/bin/ffmpeg"
+    ln -sf "/usr/bin/gopeed" "${srcdir}/${pkgname//-/.}/packages/main/release/linux-unpacked/resources/bin/gopeed"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/packages/main/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname//-/.}/packages/main/release/linux-"*/resources/{app.asar.unpacked,bin,plugin} "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/packages/main/release/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -r "${srcdir}/${pkgname//-/.}/packages/main/release/linux-unpacked/resources/"{app.asar.unpacked,bin,mobile,plugin} "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/packages/main/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
