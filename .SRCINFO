@@ -1,7 +1,7 @@
 pkgbase = pypy3-build
 	pkgdesc = A simple, correct PEP 517 build frontend
 	pkgver = 1.2.2.post1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://build.pypa.io
 	arch = any
 	license = MIT
