@@ -2,16 +2,16 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=thoth
-pkgver=0.1.82
+pkgver=0.1.84
 pkgrel=1
 pkgdesc="Terminal scratchpad inspired by the Heynote app"
 arch=('x86_64')
 url="https://github.com/jooaf/thoth"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('cargo' 'oniguruma')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('fac682dc9691309b5a094141cff49d2c9fa4ec1210ab61b465e17f83395fcca5bb5c3d86cd84adf5354fce0fc6d9a5648324f93136df0cc46545b511451701a1')
+sha512sums=('f56619e99675b33999faed522cf237bc9f030b09a0369afb1a13e1aba367c9da3a520f562eceabcdbc114244cb8f69f7303dbc64b6db7b44b08e5bcdfaf4ceaa')
 options=('!lto')
 
 prepare() {
@@ -21,6 +21,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+  export RUSTONIG_DYNAMIC_LIBONIG=1
   cargo build --release --frozen
 }
 
