@@ -11,5 +11,6 @@ pkgbase = termtrack
 	depends = python-pillow
 	depends = python-pyshp
 	depends = python-requests
+	source = termtrack
 
 pkgname = termtrack

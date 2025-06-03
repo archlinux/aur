@@ -8,7 +8,7 @@ license=('GPL3')
 depends=('python-click' 'python-pillow' 'python-pyshp' 'python-requests')
 makedepends=('python-setuptools' 'python-wheel')
 
-source=()
+source=("termtrack")
 sha256sums=()
 
 prepare() {
