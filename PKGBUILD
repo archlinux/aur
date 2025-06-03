@@ -1,6 +1,6 @@
 # Maintainer: Victor "psygreg" Gregory <psygreg_at_pm_dot_me>
 pkgname="wine-tkg-staging-ntsync-bin"
-pkgver=10.8
+pkgver=10.9
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs (WOW64 with TkG-Staging and NTSYNC patches)"
 url="https://github.com/Kron4ek/Wine-Builds"
@@ -14,7 +14,7 @@ provides=(
 )
 conflicts=("wine")
 source=("https://github.com/Kron4ek/Wine-Builds/releases/download/${pkgver}/wine-${pkgver}-staging-tkg-ntsync-amd64-wow64.tar.xz")
-sha256sums=('536a853de65372f68d8563aa2cf9e25e9e3ac2366e8a770cc40437fc0be76047')
+sha256sums=('dfad05ffc3a97e2cf6f7b123f9954f0886c53b4ce139a986d2fcf70f291f73af')
 
 package() {
 
