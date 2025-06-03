@@ -32,7 +32,4 @@ package(){
     mkdir -p ${pkgdir}/opt/apps
     cp -rf opt/apps/com.wind.wft   ${pkgdir}/opt/apps
     cp -rf usr/share/* ${pkgdir}/usr/share
-
-    cd ..
-    install -Dm755 ./${_pkgname}.sh ${pkgdir}/usr/bin/${_pkgname}
 }
