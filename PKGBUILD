@@ -5,7 +5,7 @@ pkgrel=10
 arch=('any')
 url='https://uutils.github.io/'
 license=('MIT')
-depends=(uutils-coreutils{,-stty}=0.1.0)
+depends=(uutils-coreutils{,-stty}=$pkgver)
 makedepends=(grep)
 conflicts=(coreutils b3sum sha3sum)
 provides=(coreutils{,-uutils} b3sum)
