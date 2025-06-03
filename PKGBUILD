@@ -2,7 +2,7 @@
 # Thanks to kate-latex-plugin.git which was my starting point for this PKGBUILD
 pkgname="kate-indexview-plugin"
 _pkgname="KatePlugin-IndexView"
-pkgver="0.9.3"
+pkgver="0.9.4"
 pkgrel="1"
 pkgdesc="A fork from Kate's SymbolViewer plugin with a couple of modifications"
 arch=("i686" "x86_64")
@@ -11,7 +11,7 @@ license=("LGPL-2.0-or-later")
 depends=("kate>=24.02.0")
 makedepends=("cmake" "extra-cmake-modules")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loh-tar/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=('654c409d519906cd67487fbec88fabf0')
+md5sums=('b227602bf6f36a0272012ce14228cfa9')
 
 build()
 {

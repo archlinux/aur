@@ -1,6 +1,6 @@
 pkgbase = kate-indexview-plugin
 	pkgdesc = A fork from Kate's SymbolViewer plugin with a couple of modifications
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/loh-tar/KatePlugin-IndexView
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = kate-indexview-plugin
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	depends = kate>=24.02.0
-	source = kate-indexview-plugin-0.9.3.tar.gz::https://github.com/loh-tar/KatePlugin-IndexView/archive/v0.9.3.tar.gz
-	md5sums = 654c409d519906cd67487fbec88fabf0
+	source = kate-indexview-plugin-0.9.4.tar.gz::https://github.com/loh-tar/KatePlugin-IndexView/archive/v0.9.4.tar.gz
+	md5sums = b227602bf6f36a0272012ce14228cfa9
 
 pkgname = kate-indexview-plugin
