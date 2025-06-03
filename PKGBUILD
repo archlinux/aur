@@ -34,9 +34,32 @@ sha256sums=('SKIP')
 prepare() {
   cd "$srcdir/conkyluanv-autoscale-fixed"
   
-  # Make XMMS2 optional by directly modifying the CMake file
-  sed -i 's/pkg_check_modules(XMMS2 REQUIRED xmms2-client>=0.6)/pkg_check_modules(XMMS2 xmms2-client>=0.6)\n  if(XMMS2_FOUND)/' cmake/ConkyPlatformChecks.cmake
-  sed -i '/set(conky_includes ${conky_includes} ${XMMS2_INCLUDE_DIRS})/a\  else(XMMS2_FOUND)\n    message(STATUS "XMMS2 client not found, disabling XMMS2 support")\n    set(BUILD_XMMS2 OFF)\n  endif(XMMS2_FOUND)' cmake/ConkyPlatformChecks.cmake
+  # Create a patch file to make XMMS2 optional
+  cat > ../xmms2-optional.patch << 'EOL'
+diff --git a/cmake/ConkyPlatformChecks.cmake b/cmake/ConkyPlatformChecks.cmake
+index a17280c..ab87690 100644
+--- a/cmake/ConkyPlatformChecks.cmake
++++ b/cmake/ConkyPlatformChecks.cmake
+@@ -593,8 +593,13 @@ endif(BUILD_AUDACIOUS)
+ 
+ if(BUILD_XMMS2)
+-  pkg_check_modules(XMMS2 REQUIRED xmms2-client>=0.6)
+-  set(conky_libs ${conky_libs} ${XMMS2_LINK_LIBRARIES})
+-  set(conky_includes ${conky_includes} ${XMMS2_INCLUDE_DIRS})
++  pkg_check_modules(XMMS2 xmms2-client>=0.6)
++  if(XMMS2_FOUND)
++    set(conky_libs ${conky_libs} ${XMMS2_LINK_LIBRARIES})
++    set(conky_includes ${conky_includes} ${XMMS2_INCLUDE_DIRS})
++  else(XMMS2_FOUND)
++    message(STATUS "XMMS2 client not found, disabling XMMS2 support")
++    set(BUILD_XMMS2 OFF)
++  endif(XMMS2_FOUND)
+ endif(BUILD_XMMS2)
+ 
+EOL
+  
+  # Apply the patch
+  patch -p1 -i ../xmms2-optional.patch
 }
 
 build() {
