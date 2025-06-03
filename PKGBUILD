@@ -8,34 +8,32 @@
 
 pkgname=linux-apfs-rw-dkms-git
 epoch=1
-pkgver=r298.3f9d529
+pkgver=0.3.14.r0.g7d8dc88
 pkgrel=1
 pkgdesc="Experimental APFS kernel module with Write support (DKMS)"
 arch=('any')
 url="https://github.com/linux-apfs/linux-apfs-rw"
 license=('GPL-2.0-only')
 depends=('dkms')
-makedepends=('git')
-source=("git+${url}.git"
-        "version.patch")
-sha256sums=('SKIP'
-            '8a2814889a0a8a016d45cc2d7c032aec4a9f6eaa0a8551166c0124ce35bf766c')
+makedepends=('git' 'bash')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 prepare() {
   cd "$srcdir/linux-apfs-rw"
-  patch -p1 < "$srcdir/version.patch"
 }
 
 pkgver() {
   cd "$srcdir/linux-apfs-rw"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
   cd "$srcdir/linux-apfs-rw"
   dkms_version=$(grep PACKAGE_VERSION dkms.conf | sed -r 's#PACKAGE_VERSION="([0-9.]+)"#\1#')
   dkms_dir="${pkgdir}/usr/src/linux-apfs-rw-$dkms_version/"
-  make version
+  ./genver.sh
   install -Ddm755 "${dkms_dir}"
   cp -dr --no-preserve=ownership * "$dkms_dir"
+  rm "$dkms_dir/genver.sh"
 }
