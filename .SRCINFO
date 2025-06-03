@@ -11,6 +11,7 @@ pkgbase = qqc2-desktop-style5-git
 	depends = kirigami2
 	depends = kiconthemes5
 	depends = sonnet5
+	provides = qqc2-desktop-style5
 	conflicts = qqc2-desktop-style<5.111
 	replaces = qqc2-desktop-style<5.111
 	source = https://download.kde.org/stable/frameworks/5.116/qqc2-desktop-style-5.116.1.tar.xz
