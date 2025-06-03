@@ -82,6 +82,13 @@ func main() {
 		Run: generateKeyPairCommand,
 	}
 
+	var tuiCmd = &cobra.Command {
+		Use: "tui",
+		Short: "Launch interactive TUI mode",
+		Long: "Launch an interactive Terminal User INterface for JWT operations",
+		Run: tuiCommand,
+	}
+
 	decodeCmd.Flags().BoolP("raw", "r", false, "Show raw JSON without colors")
 	decodeCmd.Flags().StringP("secret", "s", "", "Secret key for signature validation")
 	decodeCmd.Flags().StringP("keyfile", "k", "", "Path to key file for signature validation")
@@ -101,7 +108,7 @@ func main() {
 
 	genKeysCmd.Flags().StringP("outdir", "o", ".", "Output directory for the key pair")
 
-	rootCmd.AddCommand(decodeCmd, validateCmd, generateCmd, genKeysCmd)
+	rootCmd.AddCommand(decodeCmd, validateCmd, generateCmd, genKeysCmd, tuiCmd)
 	rootCmd.Execute()
 }
 
@@ -256,6 +263,210 @@ func generateKeyPairCommand(cmd *cobra.Command, args []string) {
 	fmt.Printf("  - Public key: %s\n", publicFile)
 }
 
+func tuiCommand(cmd *cobra.Command, args []string) {
+	for {
+		fmt.Println()
+		headerColor.Println("=== JWTK - JWT Toolkit ===")
+		fmt.Println("1. Decode JWT")
+		fmt.Println("2. Validate JWT")
+		fmt.Println("3. Generate JWT")
+		fmt.Println("4. Generate RSA Key Pair")
+		fmt.Println("5. Exit")
+		fmt.Print("\nSelect an option (1-5): ") 
+
+		choice := readInput("")
+
+		switch choice {
+		case "1":
+			tuiDecode()
+		case "2":
+			tuiValidate()
+		case "3":
+			tuiGenerate()
+		case "4":
+			tuiGenerateKeyPair()
+		case "5":
+			fmt.Println("Goodbye!")
+			return
+		default:
+			errorColor.Println("Invalid option. Please select 1-4.")
+		}
+	}
+}
+
+func tuiDecode() {
+	fmt.Println()
+	headerColor.Println("=== JWT Decoder ===")
+	token := readTokenFromInput("Enter JWT token: ")
+
+	components := parseJWT(token)
+	displayJWTComponents(components, nil)
+}
+
+func tuiValidate() {
+	fmt.Println()
+	headerColor.Println("=== JWT Validator ===")
+	token := readTokenFromInput("Enter JWT token: ")
+
+	components := parseJWT(token)
+	if !components.Valid {
+		errorColor.Printf("Invalid token: %s\n", components.Error)
+		return
+	}
+
+	alg, ok := components.Header["alg"].(string)
+	if !ok {
+		errorColor.Println("Cannot determine token algorithm")
+		return
+	}
+
+	infoColor.Printf("Detected algorithm: %s\n", alg)
+
+	var valid bool
+	var err error
+
+	switch alg {
+	case "HS256", "HS384", "HS512":
+		secret := readInput("Enter secret key: ")
+		valid, err = validateJWT(token, secret, "")
+	case "RS256", "RS384", "RS512":
+		keyfile := readInput("Enter path to public key file: ")
+		valid, err = validateJWT(token, "", keyfile)
+	default:
+		errorColor.Printf("Unsupported algorithm: %s\n", alg)
+		return
+	}
+
+	if valid {
+		successColor.Println("✓ Token is valid")
+	} else {
+		errorColor.Printf("✗ Token is invalid: %v\n",err)
+	}
+}
+
+func tuiGenerate() {
+	fmt.Println()
+	headerColor.Println("=== JWT Generator ===")
+
+	fmt.Println("1. HS256 (HMAC)")
+	fmt.Println("2. RS256 (RSA)")
+	fmt.Print("Select algorithm (1-2): ")
+
+	algChoice := readInput("")
+
+	claims := jwt.MapClaims{
+		"iat": time.Now().Unix(),
+	}
+
+	subject := readInput("Subject (sub) [optional]: ")
+	if subject != "" {
+		claims["sub"] = subject
+	}
+
+	issuer := readInput("Issuer (iss) [optional]: ")
+	if issuer != "" {
+		claims["iss"] = issuer
+	}
+
+	audience := readInput("Audience (aud) [optional]: ")
+	if audience != "" {
+		claims["aud"] = audience
+	}
+
+	name := readInput("Name (name) [optional]: ")
+	if name != "" {
+		claims["name"]  = name
+	}
+
+	admin := readInput("Admin (admin) [optional]: ")
+	if admin != "" {
+		adminBool := strings.ToLower(admin) == "true"
+		claims["admin"] = adminBool
+	}
+
+	expires := readInput("Expires in seconds [optional]: ")
+	if expires != "" {
+		expiresNum, err := strconv.Atoi(expires)
+		if err == nil {
+			claims["exp"] = time.Now().Add(time.Duration(expiresNum) * time.Second).Unix()
+		}
+	}
+
+	var token string
+	var err error
+
+	switch algChoice {
+	case "1":
+		secret := readInput("Enter secret key: ")
+		token, err = generateHS256Token(claims, secret)
+	case "2":
+		keyfile := readInput("Enter path to private key file: ")
+		token, err = generateRS256Token(claims, keyfile)
+	default:
+		errorColor.Println("Invalid algorithm choice")
+		return
+	}
+
+	if err != nil {
+		errorColor.Printf("Error generating token: %v\n", err)
+		return
+	}
+	
+	successColor.Println("\nGenerated JWT token:")
+	fmt.Println(token)
+}
+
+func tuiGenerateKeyPair() {
+	fmt.Println()
+	headerColor.Println("=== RSA Key Pair Generator ===")
+
+	outdir := readInput("Enter output directory [current directory]: ")
+	if outdir == "" {
+		outdir = "."
+	}
+    privateKey, err := rsa.GenerateKey(rand.Reader, 2048)
+	if err != nil {
+		errorColor.Printf("Failed to generate RSA key: %v\n", err)
+		return
+	}
+
+	privateFile := outdir + "/private.pem"
+	privBytes := x509.MarshalPKCS1PrivateKey(privateKey)
+	privPem := &pem.Block{
+		Type: "RSA PRIVATE KEY",
+		Bytes: privBytes,
+	}
+	err = os.WriteFile(privateFile, pem.EncodeToMemory(privPem), 0600)
+	if err != nil {
+		errorColor.Printf("Failed to write private key: %v\n", err)
+		return
+	}
+
+	publicFile := outdir + "/public.pem"
+	pubBytes, err := x509.MarshalPKIXPublicKey(&privateKey.PublicKey)
+	if err != nil {
+		errorColor.Printf("Failed to marshal public key: %v\n", err)
+		return
+	}
+
+	pubPem := &pem.Block{
+		Type: "PUBLIC KEY",
+		Bytes: pubBytes,
+	}
+	err = os.WriteFile(publicFile, pem.EncodeToMemory(pubPem), 0644)
+	if err != nil {
+		errorColor.Printf("Failed to write public key: %v\n", err)
+		return
+	}
+
+	successColor.Printf("✓ RSA key pair generated:\n")
+	fmt.Printf("  - Private key: %s\n", privateFile)
+	fmt.Printf("  - Public key: %s\n", publicFile)
+
+	infoColor.Println("\nNote: The private key should be kept secure and never shared.")
+	infoColor.Println("      The public key can be used to verify RS256 tokens.")
+}
+
 func parseJWT(tokenString string) JWTComponents {
 	parts := strings.Split(tokenString, ".")
 	if len(parts) != 3 {
@@ -335,7 +546,16 @@ func displayJWTComponents(components JWTComponents, cmd *cobra.Command) {
 		fmt.Println()
 		headerColor.Println("=== JWT SIGNATURE ===")
 		fmt.Printf("%s\n", components.Signature)
-	} // TODO: write else for without colors
+	} else {
+		headerJson, _ := json.MarshalIndent(components.Header, "", "  ")
+		payloadJson, _ := json.MarshalIndent(components.Payload, "", "  ")
+
+		fmt.Println("HEADER:")
+		fmt.Println(string(headerJson))
+		fmt.Println("\nPAYLOAD:")
+		fmt.Println(string(payloadJson))
+		fmt.Printf("\nSIGNATURE:\n%s\n", components.Signature)
+	}
 
 	if exp, ok := components.Payload["exp"]; ok {
 		if expFloat, ok := exp.(float64); ok {
