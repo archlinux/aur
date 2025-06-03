@@ -1,10 +1,8 @@
-# $Id$
-# Maintainer: Emanuel Couto <unit73e at gmail dot com>
-# Contributor: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: MajorX234 <majorx234 at gmail dot com>
 
 _hkgname=OpenGL
 pkgname=haskell-opengl
-pkgver=3.0.2.0
+pkgver=3.0.3.0
 pkgrel=1
 pkgdesc="A binding for the OpenGL graphics system"
 url="http://www.haskell.org/haskellwiki/Opengl"
@@ -14,7 +12,7 @@ depends=('ghc-libs' 'haskell-gluraw' 'haskell-objectname' 'haskell-openglraw'
          'haskell-statevar' 'haskell-text' 'haskell-transformers')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha512sums=('f562d0ca75321a443aec46d457741a52a6adbfd9a9710d4444f7f1c3e71f774f62f46129f7b30418382172beba60aab41c93ad4c7d3938474999e4512cc0fa5f')
+sha512sums=('1ccd11095d5d36346bd22c8ebeab3b9bcb267744d6c3ddfe3c76dc2ed620493d688353a778454a053c710464db0de8228823a95f63dfae5784c2f1ca931b0ae9')
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
