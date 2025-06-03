@@ -8,8 +8,8 @@
 # Contributor: wxt1221 <3264117476@qq.com>
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
-_pkgver=1.16.4
-_subver=1
+_pkgver=1.16.5
+_subver=2
 pkgver="${_pkgver}_${_subver}"
 _electronversion=33
 epoch=5
@@ -36,8 +36,8 @@ source=(
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('4d2bf4186146c105d72562741795bd20deae79952614e67c27fcec04e63bd2ef')
-sha256sums_x86_64=('927903f076372bf059aa9effcc2ce65b522a9dc45111454649c50d237dca3251')
+sha256sums_aarch64=('4a9a30046a13bd78ca372003468ff4a3276e1711a0f23dacfdf50f170aa66939')
+sha256sums_x86_64=('6072f8ba60e51e8f4e61a46ef2dda228d73bbaa12913acd653875ec28e8bef5f')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
