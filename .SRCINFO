@@ -1,4 +1,4 @@
-pkgbase = RGFW
+pkgbase = rgfw
 	pkgdesc = A cross platform lightweight single-header simple-to-use window abstraction library for creating graphical programs or libraries.
 	pkgver = 1.70
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = RGFW
 	source = https://github.com/ColleagueRiley/RGFW/archive/refs/tags/1.70.zip
 	sha256sums = c0b6f4ecabd186b37ff1e10ba49644d9f11bb950b485618cbfb203948871d0c3
 
-pkgname = RGFW
+pkgname = rgfw

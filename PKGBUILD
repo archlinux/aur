@@ -1,11 +1,10 @@
-# Maintainer: Your Name <youremail@domain.com>
-pkgname=RGFW
+pkgname=rgfw
 pkgver=1.70
 pkgrel=1
 epoch=
 pkgdesc="A cross platform lightweight single-header simple-to-use window abstraction library for creating graphical programs or libraries."
 arch=(any)
-url="https://github.com/ColleagueRiley/$pkgname"
+url="https://github.com/ColleagueRiley/RGFW"
 license=('zlib')
 groups=()
 depends=()
@@ -27,11 +26,9 @@ noextract=()
 sha256sums=('c0b6f4ecabd186b37ff1e10ba49644d9f11bb950b485618cbfb203948871d0c3')
 validpgpkeys=()
 
-
-
 package() {
 	cd "$pkgname-$pkgver"
 	mkdir -p $pkgdir/usr/include
-	cp $pkgname.h $pkgdir/usr/include
+	cp RGFW.h $pkgdir/usr/include
 	cp XDL.h $pkgdir/usr/include
 }
