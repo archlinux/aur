@@ -3,7 +3,7 @@
 pkgname=rime-wanxiang-dict-cn-nightly
 _pkgbase=${pkgname%-nightly}
 _schema_version=7.0.4
-pkgver=7.0.4+r20250602.232907
+pkgver=7.0.4+r20250603.174659
 pkgrel=1
 epoch=1
 pkgdesc="万象中文词库"
@@ -22,7 +22,7 @@ makedepends=(curl rsync librime rime-prelude rime-essay)
 
 pkgver() {
     _last_modified=$(curl -ILs -o /dev/null -w '%header{last-modified}' ${_dict_url})
-    _dict_version=$(date -d "${_last_modified}" +%Y%m%d.%H%M%S)
+    _dict_version=$(TZ="Asia/Shanghai" date -d "${_last_modified}" +%Y%m%d.%H%M%S)
     
     printf "%s+r%s" "${_schema_version}" "${_dict_version}"
 }
