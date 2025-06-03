@@ -1,0 +1,14 @@
+pkgbase = tscli
+	pkgdesc = tscli is a fast, single-binary CLI for the Tailscale HTTP API.
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/jaxxstorm/tscli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	source_x86_64 = tscli-0.0.7-x86_64.tar.gz::https://github.com/jaxxstorm/tscli/releases/download/v0.0.7/tscli_0.0.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8e215b51f03d5d429c22ddcb6becd01a2f865e2fbb7086a957a271d2557f8e42
+	source_aarch64 = tscli-0.0.7-aarch64.tar.gz::https://github.com/jaxxstorm/tscli/releases/download/v0.0.7/tscli_0.0.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1ea94934a899ecff1e856b6ddbc582beb52b20afaa88c30b060a7fa21facd8c7
+
+pkgname = tscli
