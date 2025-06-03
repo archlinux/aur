@@ -4,9 +4,8 @@
 # Contributor: vscncls <lucaslou4@protonmail.com>
 
 pkgname=insomnia
-pkgver=10.3.1
+pkgver=11.1.0
 pkgrel=1
-_nodeversion=12.18.3
 pkgdesc="Cross-platform HTTP and GraphQL Client"
 url="https://github.com/Kong/insomnia"
 arch=('any')
@@ -17,7 +16,7 @@ source=(
   "https://github.com/Kong/insomnia/archive/refs/tags/core@${pkgver}.tar.gz"
   "insomnia.desktop"
 )
-b2sums=('d7a4864361354be4e6391514db17053d05ad622bcdf99937fe25629f2199ebdbb00f29d1e0e945684ab2e202988b43c7c151839eaf2a27af16c9e17be11de2aa'
+b2sums=('c120b4ced872f332374e28ee37e4ac40e4c852f3aea7bf87fc48175e90a762afc94b156ff36aa2bd63f1b34a10ac3774e7c7dceb958eb02748f4b707b0e883b7'
         '38c2edd681b012931e25498a4a65007cc2a2152c9bbc5505dbb7cf03e1143a7365c41e9ad7eb2318c8ea894dccad0e0b6601cf76f680ea4085d12b5059e61a6e')
 
 _ensure_local_nvm() {
@@ -43,7 +42,7 @@ build() {
   npm install
 
   export GIT_TAG="core@${pkgver}"
-  export NODE_OPTIONS="--max-old-space-size=4096"
+  export NODE_OPTIONS="--max-old-space-size=8192"
 
   npm run package --workspace=packages/insomnia -- --linux dir
 }
