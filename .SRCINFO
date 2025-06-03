@@ -1,7 +1,7 @@
 pkgbase = kc57-drivers-dkms
 	pkgdesc = Intel NUC X15(LAPKC51E, LAPKC71E, LAPKC71F) kernel module drivers for general hardware I/O using the SysFS interface
 	pkgver = 4.13.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/tuxedocomputers/tuxedo-drivers
 	arch = x86_64
 	license = GPL2
