@@ -9,7 +9,7 @@ pkgver=3.0.2
 pkgrel=1
 pkgdesc="Local LLM interface with cloud synchronization and essential tunneling functionality (Unified 126MB package)"
 arch=('x86_64')
-url="https://github.com/imrightguy/CloudToLocalLLM"
+url="https://sourceforge.net/projects/cloudtolocalllm/"
 license=('MIT')
 depends=(
     'libayatana-appindicator'
