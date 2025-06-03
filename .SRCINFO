@@ -1,13 +1,14 @@
 pkgbase = schedctl
 	pkgdesc = eBPF sched_ext plug and play schedulers for fun and profit
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/schedkit/schedctl
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = go
-	depends = btrfs-progs
+	makedepends = btrfs-progs
+	makedepends = gpgme
 	optdepends = podman: podman container runtime
 	optdepends = containerd: containerd container runtime
 	source = schedctl-1.0.0.tar.gz::https://github.com/schedkit/schedctl/archive/v1.0.0.tar.gz

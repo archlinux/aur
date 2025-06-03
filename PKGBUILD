@@ -2,14 +2,15 @@
 
 pkgname=schedctl
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='eBPF sched_ext plug and play schedulers for fun and profit'
 arch=('x86_64' 'aarch64')
 url='https://github.com/schedkit/schedctl'
 license=('Apache-2.0')
-makedepends=('go')
-depends=(
+makedepends=(
+  'go'
   'btrfs-progs'
+  'gpgme'
 )
 optdepends=(
   'podman: podman container runtime'
