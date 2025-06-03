@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Tangent
+Comment=Record and connect your thoughts
+Exec=tangent %U
+Icon=tangent
+Categories=Office;TextEditor;
+Keywords=markdown;notes;pkm;brain;writing;
+MimeType=text/plain;text/markdown;
+StartupNotify=true
