@@ -1,0 +1,42 @@
+--- a/mp3splt-gtk/src/utilities.h
++++ b/mp3splt-gtk/src/utilities.h
+@@ -50,7 +50,7 @@
+ //points and tags utilities
+ 
+ points_and_tags *new_points_and_tags();
+-void free_points_and_tags();
++void free_points_and_tags(points_and_tags **pat);
+ void append_point_to_pat(splt_point *point, points_and_tags *pat);
+ void append_tags_to_pat(splt_tags *tags, points_and_tags *pat);
+ 
+--- a/mp3splt-gtk/src/widgets_helper.c
++++ b/mp3splt-gtk/src/widgets_helper.c
+@@ -37,7 +37,7 @@
+ 
+ #include "widgets_helper.h"
+ 
+-static guint _wh_add_row_to_table();
++static guint _wh_add_row_to_table(GtkWidget *table);
+ static void _wh_attach_to_table(GtkWidget *table, GtkWidget *widget,
+     guint start_column, guint end_column, guint row, int expand);
+ static void _wh_add_in_table_with_label(GtkWidget *table, const gchar *label_text,
+--- a/mp3splt-gtk/src/ui_manager.c
++++ b/mp3splt-gtk/src/ui_manager.c
+@@ -33,7 +33,7 @@
+ 
+ static void ui_main_window_new(ui_infos *infos);
+ static void ui_infos_new(ui_state *ui);
+-static gui_status *ui_status_new();
++static gui_status *ui_status_new(ui_state *ui);
+ static gui_state *ui_gui_new();
+ static player_infos *ui_player_infos_new();
+ 
+@@ -108,7 +108,7 @@
+   ui->splitpoints = g_array_new(FALSE, FALSE, sizeof(Split_point));
+   ui->files_to_split = NULL;
+ 
+-  ui->status = ui_status_new();
++  ui->status = ui_status_new(ui);
+   ui->gui = ui_gui_new();
+   ui->pi = ui_player_infos_new();
+ 
