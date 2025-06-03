@@ -1,14 +1,13 @@
 From e458a927bc5c87efdcc1b621ec5997773a85922a Mon Sep 17 00:00:00 2001
 From: nuvole <mitltlatltl@gmail.com>
 Date: Thu, 1 Aug 2024 14:53:16 +0800
-Subject: [PATCH] remove the unnecessary for NUC X15
+Subject: [PATCH] add initial support for NUC X15
 
 ---
- src/Kbuild                | 18 +++++++++---------
  src/tuxedo_io/tuxedo_io.c |  3 ++-
  src/tuxedo_keyboard.c     |  7 ++++---
  src/uniwill_keyboard.h    |  1 +
- 4 files changed, 7 insertions(+), 4 deletions(-)
+ 3 files changed, 7 insertions(+), 4 deletions(-)
 
 diff --git a/src/tuxedo_io/tuxedo_io.c b/src/tuxedo_io/tuxedo_io.c
 index 264a954..8009127 100644
@@ -43,7 +42,7 @@ index 21b4087..063290b 100644
  
 -	if (!tuxedo_is_compatible())
 -		return -ENODEV;
-+	// have already skipped for >= gen12
++	// Unconditionally true for cpu <= gen12, comment out to drop the module
 +	// if (!tuxedo_is_compatible())
 +	// 	return -ENODEV;
  

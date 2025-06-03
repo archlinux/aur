@@ -1,6 +1,7 @@
 # NUC X15
 # Maintainer: nuvole <mitltlatltl@gmail.com>
 # Contributor: nuvole <mitltlatltl@gmail.com>
+# Contributor: Artyom Gavrilov <artyom.e.gavrilov@gmail.com>
 
 # Original TUXEDO
 # Maintainer: Steven Seifried <gitlab@canox.net>
@@ -9,7 +10,7 @@
 _pkgname=tuxedo-drivers
 pkgname=kc57-drivers-dkms
 pkgver=$(curl https://raw.githubusercontent.com/tuxedocomputers/tuxedo-drivers/refs/heads/main/debian/changelog | sed -n 's/.*tuxedo-drivers (\([0-9]\+\.[0-9]\+\.[0-9]\+\)).*/\1/p' | head -n1 )
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel NUC X15(LAPKC51E, LAPKC71E, LAPKC71F) kernel module drivers for general hardware I/O using the SysFS interface"
 url="https://github.com/tuxedocomputers/tuxedo-drivers"
 license=('GPL2' 'GPL3')
@@ -29,20 +30,24 @@ source=($_pkgname-$pkgver.tar.gz::https://github.com/tuxedocomputers/tuxedo-driv
         kc57_battery.h::https://raw.githubusercontent.com/right-0903/kc57_battery/tuxedo/kc57_battery.h
         tuxedo_io.conf
         dkms.conf
-        0001-remove-the-unnecessary-for-NUC-X15.patch)
+        0001-add-initial-support-for-NUC-X15.patch
+        0002-add-micmute-F5-support.patch)
 
 sha256sums=('SKIP'
             'SKIP'
             '9ee323b90ec7fc3512dd8db9bf359cb1422c41a9f0f0dd31e8a8ea9714663173'
             '1debb5fe0f454295746712286198399486fd3a08692916bf17846f9d93f4bdbb'
             '3e041d1838dc5fc83ac76c88a246e71e128fb4b3f26f963b46af4ac9f31d7a74'
-            'e78fa2a2193fe96ad8b21f2f280978f6592f922528fe9897b01ebe6fb082372b')
+            '0cc3d27d7d4fecb67528ba1bd0e1d46c4088f48214cf911d02a769591d7ddfb7'
+            'f76d5033dc2913d00ea1d394daa621bf42edcfdd31b4a7336a5cb195283dab92')
 
 prepare() {
-  # remove unnecessary modules for NUC X15
-  patch -d "${srcdir}/${_pkgname}-${pkgver}/" -p1 -i "${srcdir}/0001-remove-the-unnecessary-for-NUC-X15.patch"
+  # add initial support for NUC X15
+  for p in "${srcdir}"/*.patch; do
+    patch -d "${srcdir}/${_pkgname}-${pkgver}/" -p1 -i "$p"
+  done
 
-  # place charging limit driver, if you don't need this, comment it.
+  # place charging limit driver, if you don't need this, comment out it.
   cp "${srcdir}/kc57_battery."{c,h} "${srcdir}/${_pkgname}-${pkgver}/src"
   echo 'obj-m += kc57_battery.o' >> "${srcdir}/${_pkgname}-${pkgver}/src/Kbuild"
 }

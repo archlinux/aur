@@ -1,0 +1,32 @@
+From 72c7ad8d38a97f7e95f97841277ad9172ca1b0a4 Mon Sep 17 00:00:00 2001
+From: Artyom Gavrilov <artyom.e.gavrilov@gmail.com>
+Date: Mon, 2 Jun 2025 19:58:36 +0300
+Subject: [PATCH] add micmute (F5) support
+
+---
+ src/uniwill_keyboard.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/uniwill_keyboard.h b/src/uniwill_keyboard.h
+index be747f7..994fb74 100644
+--- a/src/uniwill_keyboard.h
++++ b/src/uniwill_keyboard.h
+@@ -50,6 +50,7 @@
+ #define UNIWILL_KEY_RFKILL			0x0A4
+ #define UNIWILL_KEY_KBDILLUMDOWN		0x0B1
+ #define UNIWILL_KEY_KBDILLUMUP			0x0B2
++#define UNIWILL_KEY_MICMUTE			0x0B7
+ #define UNIWILL_KEY_FN_LOCK			0x0B8
+ #define UNIWILL_KEY_KBDILLUMTOGGLE		0x0B9
+ 
+@@ -73,6 +74,7 @@ static struct key_entry uniwill_wmi_keymap[] = {
+ 	// { KE_KEY,	UNIWILL_OSD_RADIOOFF,		{ KEY_RFKILL } },
+ 	// { KE_KEY,	0xb0,				{ KEY_F13 } },
+ 	// Manual mode rfkill
++	{ KE_KEY,	UNIWILL_KEY_MICMUTE,		{ KEY_MICMUTE }},
+ 	{ KE_KEY,	UNIWILL_KEY_RFKILL,		{ KEY_RFKILL }},
+ 	{ KE_KEY,	UNIWILL_OSD_TOUCHPADWORKAROUND,	{ KEY_F21 } },
+ 	// Keyboard brightness
+-- 
+2.49.0
+
