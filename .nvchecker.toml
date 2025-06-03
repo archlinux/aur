@@ -1,0 +1,4 @@
+[pypy3-editables]
+source = "github"
+github = "pfmoore/editables"
+use_max_tag = "true"
