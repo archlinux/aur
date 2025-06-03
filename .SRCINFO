@@ -1,6 +1,6 @@
 pkgbase = vrf-decompiler
 	pkgdesc = File data viewer and decompiler for Valve's Source 2 resource file format
-	pkgver = 12.0
+	pkgver = 13.0
 	pkgrel = 1
 	url = https://github.com/ValveResourceFormat/ValveResourceFormat
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = vrf-decompiler
 	makedepends = git
 	depends = dotnet-runtime>=9.0.0
 	options = !strip
-	source = vrf-decompiler-12.0::git+https://github.com/ValveResourceFormat/ValveResourceFormat#tag=12.0?signed
+	source = vrf-decompiler-13.0::git+https://github.com/ValveResourceFormat/ValveResourceFormat#tag=13.0?signed
 	validpgpkeys = E58081FB804DF24DF217AB772B6E7BF31D171C61
-	b2sums = f28bf6e76bfd0d07d717ae33ebcbd8c2f057d029b5dbfa8cb51800848d1536677ca4ac7dfab88d86ec0ad4c6f2b3197542b50c25e3f0aaba18e7945a1770011d
+	b2sums = 824c5db46895522a79687ac3143b7a760b11057b527d66910e1778ec9033a9c59f43ff88cbf3af3db23d00a918e53999d8494068eaa7bfdc642841712d6f820d
 
 pkgname = vrf-decompiler
