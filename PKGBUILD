@@ -1,7 +1,7 @@
 # Maintainer: Roberto Alsina <roberto.alsina@gmail.com>
 pkgname=crycco
 pkgver=0.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A literate programming tool"
 arch=('x86_64' 'aarch64')
 url="https://crycco.ralsina.me"

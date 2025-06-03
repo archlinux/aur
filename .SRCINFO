@@ -1,8 +1,8 @@
 pkgbase = crycco
 	pkgdesc = A literate programming tool
 	pkgver = 0.3.1
-	pkgrel = 1
-	url = https://github.com/ralsina/tartrazine
+	pkgrel = 4
+	url = https://crycco.ralsina.me
 	install = install
 	arch = x86_64
 	arch = aarch64
