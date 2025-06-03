@@ -1,5 +1,5 @@
 pkgname=playfin
-pkgver=r87.0733e21
+pkgver=r88.22154ed
 pkgrel=1
 pkgdesc="Terminal-based Jellyfin player with MPV integration"
 arch=('any')
@@ -7,8 +7,6 @@ url="https://github.com/AlexJonker/playfin"
 license=('MIT')
 depends=('mpv' 'python' 'python-requests')
 makedepends=('git' 'pyinstaller')
-conflicts=('jellyplayer-git')
-replaces=('jellyplayer-git')
 source=("git+$url.git")
 md5sums=('SKIP')
 
