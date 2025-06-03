@@ -1,19 +1,19 @@
 # Maintainer: Firegem <firinggems@hotmail.com>
 # shellcheck disable=SC2034,2154,2164
 pkgname=lux-cli
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A luxurious package manager for Lua"
 arch=('x86_64')
 url="https://github.com/nvim-neorocks/lux"
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'libgit2' 'openssl' 'libgpg-error' 'gpgme')
+depends=('glibc' 'gcc-libs' 'libgit2' 'openssl' 'libgpg-error' 'gpgme' 'bzip2' 'xz')
 makedepends=('cargo' 'luajit')
 provides=('lx')
 conflicts=('lux-cli-git')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1b2122fcc33158853522a68fb0083e30d4432d05da286b1d0e154c2b9e779a84')
+sha256sums=('0ce74da80bdfa46fb1e59d22ef9405ed896c2111d340c2dca6bffc9f2e219c99')
 
 prepare() {
     cd "${pkgname%-cli}-${pkgver}"
