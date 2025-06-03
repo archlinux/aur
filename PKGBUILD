@@ -2,16 +2,16 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fzf-make
-pkgver=0.56.0
+pkgver=0.59.0
 pkgrel=1
 pkgdesc="A command line tool that executes make target using fuzzy finder with preview window"
 arch=('x86_64')
 url="https://github.com/kyu08/fzf-make"
 license=('MIT')
-depends=('gcc-libs')
+depends=('gcc-libs' 'oniguruma')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a3b5d0fe880dec4417f5078b93ad808678168d0edd418cc6e0489b982a97cc58')
+sha256sums=('9180cd307891aa36647d64c2eaaa492850e15c4af035086c7465cfcf0a1fa362')
 options=('!lto')
 
 prepare() {
@@ -23,6 +23,7 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export RUSTONIG_DYNAMIC_LIBONIG=1
   cargo build --release --frozen
 }
 
