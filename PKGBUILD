@@ -1,6 +1,6 @@
 pkgname=rgfw
 pkgver=1.70
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A cross platform lightweight single-header simple-to-use window abstraction library for creating graphical programs or libraries."
 arch=(any)
