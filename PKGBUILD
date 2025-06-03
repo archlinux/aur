@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shutter-encoder-bin
 _pkgname='Shutter Encoder'
-pkgver=19.0
+pkgver=19.1
 pkgrel=1
 pkgdesc="Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux.(Prebuilt version)"
 arch=('x86_64')
@@ -25,12 +25,17 @@ depends=(
     'alsa-lib'
     'vulkan-icd-loader'
     'libxtst'
+    'ffmpeg'
+    '7zip'
+    'yt-dlp'
+    'mediainfo'
+    'dvdauthor'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/Shutter%20Encoder%20${pkgver}%20Linux%2064bits.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('262483ccda863fd76484c4e61ac683c16f117c77a5a9388cb7597bc6474f1105'
+sha256sums=('fbbbaf2a8d1bed9ea50195bf33ab76f8c5de3655a24c95599542c728235d6c02'
             'a81897397409f2d750ead9f53f7cded8bffbb765da2305dea006d2fb4fcd2b1d')
 prepare() {
     sed -i -e "
@@ -46,6 +51,13 @@ prepare() {
         s/\/usr\/lib\/${_pkgname}\/usr\/bin\/icon.png/${pkgname%-bin}/g
         s/\/usr\/share\/icons\/hicolor\/256x256\/apps\/icon/${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_pkgname// /_}.desktop"
+    ln -sf "/usr/bin/7za" "${srcdir}/usr/lib/${_pkgname}/usr/bin/Library/7za"
+    ln -sf "/usr/bin/ffmpeg" "${srcdir}/usr/lib/${_pkgname}/usr/bin/Library/ffmpeg"
+    ln -sf "/usr/bin/ffprobe" "${srcdir}/usr/lib/${_pkgname}/usr/bin/Library/ffprobe"
+    ln -sf "/usr/bin/yt-dlp" "${srcdir}/usr/lib/${_pkgname}/usr/bin/Library/yt-dlp_linux"
+    ln -sf "/usr/bin/mediainfo" "${srcdir}/usr/lib/${_pkgname}/usr/bin/Library/mediainfo"
+    ln -sf "/usr/bin/dcraw" "${srcdir}/usr/lib/${_pkgname}/usr/bin/Library/dcraw"
+    ln -sf "/usr/bin/dvdauthor" "${srcdir}/usr/lib/${_pkgname}/usr/bin/Library/dvdauthor"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
