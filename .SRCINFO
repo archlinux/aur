@@ -1,6 +1,6 @@
 pkgbase = logria
 	pkgdesc = A powerful CLI tool that puts log analytics at your fingertips.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/ReagentX/Logria
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = logria
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = logria-0.2.0.tar.gz::https://github.com/ReagentX/Logria/archive/refs/tags/0.2.0.tar.gz
-	sha256sums = dc73c234aa5f661a1edc4320d0471135d36722d0c313a3f97835402a51eb5358
+	source = logria-0.3.0.tar.gz::https://github.com/ReagentX/Logria/archive/refs/tags/0.3.0.tar.gz
+	sha256sums = 4c3e15884e44a75fadca3a23c24a388e410829a0df18f4812abfbbcf9ee98412
 
 pkgname = logria
