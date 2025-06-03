@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-confluent-kafka
-pkgver=2.8.2
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Confluent's Python client for Apache Kafka"
 arch=(x86_64)
@@ -41,7 +41,7 @@ makedepends=(
 changelog="CHANGELOG.md"
 source=("$pkgname-$pkgver.tar.gz::https://api.github.com/repos/confluentinc/confluent-kafka-python/tarball/refs/tags/v$pkgver")
 noextract=("$pkgname-$pkgver.tar.gz")
-b2sums=('e79d58ae68ca40afa766d779309ac495e0f82bda58fc911ed0fd7015c2df737e4eec0d7d30f5c1b5aa449253822b5349a4917839e21e90201937569685a99859')
+b2sums=('a8ecaacaf6aeca70153fd1f847832c436b7eaecc67bd8075190419d70d5b16bf3999562cddd4df3769ac4c2c82b336b4199fd02164282ce5fe23d3217a7c8e4c')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
