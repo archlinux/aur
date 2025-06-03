@@ -1,6 +1,6 @@
 pkgbase = meson-pypy3
 	pkgdesc = Meson PEP 517 Python build backend
-	pkgver = 0.17.1
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/mesonbuild/meson-python
 	arch = any
@@ -16,7 +16,9 @@ pkgbase = meson-pypy3
 	depends = pypy3-packaging
 	depends = pypy3-pyproject-metadata
 	optdepends = python-colorama: colored output
-	source = git+https://github.com/mesonbuild/meson-python#tag=0.17.1
-	sha256sums = aa4b6f8f90c6e5bdcb6991efdb4e1eed4b9bcc50583c9611375ee589696b5854
+	source = git+https://github.com/mesonbuild/meson-python#tag=0.18.0
+	source = remove-meson-dependency.patch
+	sha256sums = 8a63df1fc44d72efa737405eef4bf4e395252305cfc19c20974c3dd50e0fa9a2
+	sha256sums = 2decf6c12ef1646bacd6bf733ff313cb4d43c8214a18ff68b0d66cc55685571e
 
 pkgname = meson-pypy3
