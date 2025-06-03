@@ -7,10 +7,10 @@
 # Contributor: Daniel Kozak <kozzi11@gmail.com>
 
 pkgname=(gcc14 gcc14-libs gcc14-fortran)
-pkgver=14.2.1+r753+g1cd744a6828f
-_commit=1cd744a6828f6ab9179906d16434ea40b6404737
+pkgver=14.3.1+r25+g42e99e057bd7
+_commit=42e99e057bd7cea8be374e1a47f0dfbf77974f88
 _majorver=${pkgver%%.*}
-pkgrel=3
+pkgrel=1
 pkgdesc='The GNU Compiler Collection (14.x.x)'
 arch=(x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
@@ -42,7 +42,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               86CFFCA918CF3AF47147588051E8B148A9999C34  # foutrelis@archlinux.org
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
-sha256sums=('33378643f1c72686181f9d3fcd09caf9b06815324467f5dc9b9a3ea41cfba4b4'
+sha256sums=('36817cc71fad1f13c93dfd2a5de24016accb8b993ef13bdf0465e1ef742f7007'
             '7b09ec947f90b98315397af675369a1e3dfc527fa70013062e6e85c4be0275ab'
             '44ea973558842f3f4bd666bdaf6e810fd7b7c7bd36b5cc4c69f93d2cd0124fc7')
 
