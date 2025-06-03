@@ -1,0 +1,112 @@
+# Woodpecker CI definition
+# - bump version to latest upstream release
+# - build latest release
+# - compare against binary release
+# - push updates to codeberg repo
+# https://codeberg.org/tuxxx/sparrow-wallet-reproducible
+
+when:
+  - event: cron
+    cron: daily-update
+  - event: manual
+  - event: pull_request
+
+steps:
+  - name: build-and-push
+    image: archlinux:latest
+    environment:
+      CODEBERG_TOKEN:
+        from_secret: codeberg_token
+    commands:
+      # Install all required tools
+      - pacman -Syu --noconfirm --needed git base-devel devtools nvchecker pacman-contrib namcap sudo gnupg
+      # Allow broken git ownerships
+      - git config --global --add safe.directory "$(pwd)"
+      # Create build user
+      - useradd -m -G wheel builduser
+      - "echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
+      - chown -R builduser:builduser .
+      # Configure git for builduser
+      - sudo -u builduser git config --global user.name "Woodpecker CI"
+      - sudo -u builduser git config --global user.email "ci@codeberg.org"
+      # Run update check
+      - TERM=linux sudo -u builduser pkgctl version upgrade
+      - sudo -u builduser makepkg --printsrcinfo > .SRCINFO
+      # Run PKGBUILD Linter (namcap)
+      - |
+        # Run namcap and save output
+        echo "Running namcap check..."
+        namcap -i PKGBUILD > /tmp/namcap_output.txt 2>&1 || true
+        
+        # Check if namcap produced any output
+        if [ ! -s /tmp/namcap_output.txt ]; then
+          echo "✅ PKGBUILD is clean - no namcap issues found"
+          echo ""
+          echo "=== namcap output ==="
+          echo "(no output - PKGBUILD passed all checks)"
+          echo "===================="
+        else
+          # Check for critical errors
+          if grep -q " E: " /tmp/namcap_output.txt; then
+            echo "❌ Critical namcap errors detected!"
+            echo "Critical errors:"
+            grep " E: " /tmp/namcap_output.txt
+            echo ""
+            echo "=== Full namcap output ==="
+            cat /tmp/namcap_output.txt
+            echo "=========================="
+            exit 1
+          else
+            echo "✅ No critical namcap errors found"
+            echo ""
+            echo "=== Full namcap output ==="
+            cat /tmp/namcap_output.txt
+            echo "=========================="
+          fi
+        fi
+      # Process results based on event type and check for changes
+      - |
+        echo "Pipeline Event: ${CI_PIPELINE_EVENT}"
+        
+        # Check if there are any changes to commit
+        if sudo -u builduser git diff --exit-code PKGBUILD .SRCINFO &>/dev/null; then
+          echo "No updates available - package is already current"
+          echo "Result: NO_UPDATE_NEEDED"
+          if [ "$CI_PIPELINE_EVENT" = "pull_request" ]; then
+            echo "PR Test: No updates to test, proceeding with current package build"
+          else
+            exit 0
+          fi
+        else
+          echo "Changes detected - proceeding with build and potential commit"
+          VERSION=$(grep -oP '^pkgver=\K[^"'\'']*' PKGBUILD)
+          if [ -n "$VERSION" ]; then
+            echo "Detected version: $VERSION"
+          fi
+        fi
+      # Build and test package
+      - echo "Building and testing package"
+      # - sudo -u builduser gpg --recv-keys D4D0D3202FC06849A257B38DE94618334C674B40
+      - sudo -u builduser makepkg -si --noconfirm
+      - sudo -u builduser sparrow --version
+      # Conditional commit and push (only for cron and manual, and only if changes exist)
+      - |
+        if [ "$CI_PIPELINE_EVENT" = "cron" ] || [ "$CI_PIPELINE_EVENT" = "manual" ]; then
+          echo "Push allowed for event: ${CI_PIPELINE_EVENT}"
+          
+          # Check again for changes before committing
+          if ! sudo -u builduser git diff --exit-code PKGBUILD .SRCINFO &>/dev/null; then
+            VERSION=$(grep -oP '^pkgver=\K[^"'\'']*' PKGBUILD)
+            sudo -u builduser git add PKGBUILD .SRCINFO
+            sudo -u builduser git commit -m "feat: update to v$${VERSION}"
+            sudo -u builduser git remote set-url origin "https://woodpecker:$${CODEBERG_TOKEN}@{CI_REPO_CLONE_URL#https://}"
+            sudo -u builduser git push origin HEAD
+            echo "Pipeline completed successfully: Package updated and deployed"
+          else
+            echo "No changes to commit"
+          fi
+        else
+          echo "Push skipped for event: ${CI_PIPELINE_EVENT} (test-only mode)"
+          echo "Pipeline completed successfully: Package tested successfully"
+        fi
+

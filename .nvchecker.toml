@@ -1,0 +1,4 @@
+[sparrow-wallet-reproducible]
+source = "github"
+github = "sparrowwallet/sparrow"
+use_latest_release = true
