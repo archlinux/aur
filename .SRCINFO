@@ -1,6 +1,6 @@
 pkgbase = pakeplus-bin
 	pkgdesc = Turn any webpage into a desktop app and mobile app with Rust.(Prebuilt version)利用 Rust 轻松构建轻量级(仅5M)多端桌面应用和多端手机应用
-	pkgver = 0.5.28
+	pkgver = 0.5.30
 	pkgrel = 1
 	url = https://pakeplus.com/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = pakeplus-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = pakeplus=0.5.28
+	provides = pakeplus=0.5.30
 	conflicts = pakeplus
-	source = pakeplus-0.5.28.rpm::https://github.com/Sjj1024/PakePlus/releases/download/PakePlus-v0.5.28/PakePlus-0.5.28-1.x86_64.rpm
-	source = LICENSE-0.5.28::https://raw.githubusercontent.com/Sjj1024/PakePlus/PakePlus-v0.5.28/LICENSE
-	sha256sums = 9e96025f6c594531dea7a2617ee73d12ad301dbc3791357694175695e82a1ce2
+	source = pakeplus-0.5.30.rpm::https://github.com/Sjj1024/PakePlus/releases/download/PakePlus-v0.5.30/PakePlus-0.5.30-1.x86_64.rpm
+	source = LICENSE-0.5.30::https://raw.githubusercontent.com/Sjj1024/PakePlus/PakePlus-v0.5.30/LICENSE
+	sha256sums = 32307ae4c09bf4b5e2895eb4336fe132cfb7f0b74dd21159603c4ef2f9bcddc4
 	sha256sums = 2476bac4e033612ada3dfc61bae1166c1f5b90b58194f89c594eba3d8a408abf
 
 pkgname = pakeplus-bin
