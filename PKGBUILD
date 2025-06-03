@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=burrow-bin
 _pkgname='Burrow HTML and Markdown'
-pkgver=1.8.3
+pkgver=1.9.0
 _electronversion=36
 pkgrel=1
 pkgdesc="Integrated HTML, markdown, and SVG viewer, code editor, and debugger built with Electron.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('18874cc101f68c8729aeebbd570aa004bbd2bd0cc9363ae0802df205ebe71491'
+sha256sums=('c5cd63211ac1578c1a06bc7de15127786d0424fc622f415d426f78572b0e3378'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
