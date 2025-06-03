@@ -1,18 +1,21 @@
 pkgbase = ocd-git
 	pkgdesc = Organize current dotfiles
-	pkgver = 0.8.0
+	pkgver = 0.8.0.r0.ga553a48
 	pkgrel = 1
 	url = https://github.com/awkless/ocd
+	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
 	license = MIT
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
 	depends = openssl
-	depends = pkg-config
-	provides = ocd=0.8.0
-	conflicts = ocd
+	depends = libssh2
+	provides = ocd=0.8.0.r0
+	options = !lto
 	source = ocd::git+https://github.com/awkless/ocd.git
-	sha256sum = SKIP
+	b2sums = SKIP
 
 pkgname = ocd-git

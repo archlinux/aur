@@ -1,56 +1,43 @@
 # Maintainer: Jason Pena <jasonpena@awkless.com>
-# Contributor: Jason Pena <jasonpena@awkless.com>
-
-: "${CARGO_HOME:=$SRCDEST/cargo-home}"
-: "${CARGO_TARGET_DIR:=target}"
-: "${RUSTUP_TOOLCHAIN:=stable}"
-export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 pkgname="ocd-git"
-pkgver="0.8.0"
+pkgver=0.8.0.r0.ga553a48
 pkgrel=1
 pkgdesc="Organize current dotfiles"
 url="https://github.com/awkless/ocd"
-arch=('x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=("MIT")
-
-depends=(
-  'gcc-libs'
-  'openssl'
-)
-makedepends=(
-  'cargo'
-  'git'
-)
-
+makedepends=('cargo' 'git')
+depends=('gcc-libs' 'openssl' 'libssh2')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+source=("ocd"::"git+$url.git")
 provides=("ocd=${pkgver%%.g*}")
-conflicts=("ocd")
-
-source=("ocd::git+$url.git")
-sha256sum=('SKIP')
+options=(!lto)
+b2sums=('SKIP')
 
 pkgver() {
   cd ocd
-  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+  git describe --long --tags --abbrev=7 --exclude='*[A-Za-z][A-Za-z]*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd ocd
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  export RUSTONIG_SYSTEM_LIBONIG=1
-
   cd ocd
-  VERGEN_GIT_SHA="Arch Linux"
-  cargo build --release
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
 }
 
 check() {
   cd ocd
-  cargo test --frozen
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test
 }
 
 package() {
