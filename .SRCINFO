@@ -1,5 +1,5 @@
 pkgbase = sudo-rs-symlink
-	pkgdesc = (Dangerous) Swap sudo with sudo-rs
+	pkgdesc = Swap system sudo with -rs for compability for very few apps
 	pkgver = 0.2.6
 	pkgrel = 4
 	url = https://github.com/trifectatechfoundation/sudo-rs

@@ -1,7 +1,7 @@
 pkgname=sudo-rs-symlink
 pkgver=0.2.6
 pkgrel=4
-pkgdesc="(Dangerous) Swap sudo with sudo-rs"
+pkgdesc="Swap system sudo with -rs for compability for very few apps"
 arch=(any)
 url="https://github.com/trifectatechfoundation/sudo-rs"
 license=('Apache-2.0 AND MIT')
