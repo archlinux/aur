@@ -60,11 +60,22 @@ func main() {
 		Run: decodeCommand,
 	}
 
+	var validateCmd = &cobra.Command{
+		Use: "validate [token]",
+		Short: "Validate JWT token signature",
+		Long: "Validate a JWT token's signature using the provided secret or key",
+		Args: cobra.MaximumNArgs(1),
+		Run: validateCommand,
+	}
+
 	decodeCmd.Flags().BoolP("raw", "r", false, "Show raw JSON without colors")
 	decodeCmd.Flags().StringP("secret", "s", "", "Secret key for signature validation")
 	decodeCmd.Flags().StringP("keyfile", "k", "", "Path to key file for signature validation")
 
-	rootCmd.AddCommand(decodeCmd)
+	validateCmd.Flags().StringP("secret", "s", "", "Secret key for validation")
+	validateCmd.Flags().StringP("keyfile", "k", "", "Path to key file for validation")
+
+	rootCmd.AddCommand(decodeCmd, validateCmd)
 	rootCmd.Execute()
 }
 
@@ -79,6 +90,31 @@ func decodeCommand(cmd *cobra.Command, args []string) {
 
 	components := parseJWT(token)
 	displayJWTComponents(components, cmd)
+}
+
+func validateCommand(cmd *cobra.Command, args []string) {
+	var token string
+
+	if len(args) > 0 {
+		token = args[0]
+	} else {
+		token = readTokenFromInput("Enter JWT token: ")
+	}
+
+	secret, _ := cmd.Flags().GetString("secret")
+	keyfile, _ := cmd.Flags().GetString("keyfile")
+
+	if secret == "" && keyfile == "" {
+		secret = readInput("Enter secret key: ")
+	}
+
+	valid, err := validateJWT(token, secret, keyfile)
+
+	if valid {
+		successColor.Println("✓ Token is valid")
+	} else {
+		errorColor.Printf("✗ Token is invalid: %v\n",err)
+	}
 }
 
 func parseJWT(tokenString string) JWTComponents {
@@ -285,6 +321,16 @@ func validateJWT(tokenString, secret, keyfile string) (bool, error) {
 	}
 
 	return token.Valid, nil
+}
+
+func readInput(prompt string) string {
+	if prompt != "" {
+		fmt.Print(prompt)
+	}
+
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	return strings.TrimSpace(scanner.Text())
 }
 
 func readTokenFromInput(prompt string) string {
