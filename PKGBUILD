@@ -1,43 +1,58 @@
-# Maintainer: Sebastian Krzyszkowiak <dos@dosowisko.net>
+# Maintainer: Jan Wütherich <jan (at) wuetherich (dot) de>
+# Contributor: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Contributor: Sebastian Krzyszkowiak <dos@dosowisko.net>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-
 pkgname=libqmi-git
-pkgver=1.23.1+68+ga48f7ee
+pkgver=1.36.0.r24.g9ad80dc
 pkgrel=1
 pkgdesc="QMI modem protocol helper library"
-arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/libqmi/"
-license=(GPL2)
-provides=(libqmi)
-conflicts=(libqmi)
-depends=(libmbim libgudev)
-makedepends=(gtk-doc python git help2man)
-source=("git+https://gitlab.freedesktop.org/mobile-broadband/libqmi.git")
-sha256sums=('SKIP')
+arch=(x86_64)
+license=('GPL-2.0-or-later AND LGPL-2.1-or-later')
+depends=(
+  bash
+  gcc-libs
+  glib2
+  glibc
+  libgudev
+  libmbim
+  libqrtr-glib
+)
+makedepends=(
+  bash-completion
+  git
+  gobject-introspection
+  help2man
+  meson
+)
+source=(git+https://gitlab.freedesktop.org/mobile-broadband/libqmi.git)
+b2sums=('SKIP')
 
 pkgver() {
   cd libqmi
-  git describe --tags | sed 's/-/+/g'
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd libqmi
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd libqmi
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --libexecdir=/usr/lib --disable-static --disable-gtk-doc
-  make
+  local meson_options=(
+    -D gtk_doc=false
+  )
+
+  arch-meson libqmi build "${meson_options[@]}"
+  meson compile -C build
 }
 
 check() {
-  cd libqmi
-  make check
+  meson test -C build --print-errorlogs --no-rebuild
 }
 
-package() {
-  cd libqmi
-  make DESTDIR="$pkgdir" install
+package_libqmi-git() {
+  provides=(libqmi libqmi-glib.so)
+  conflicts=(libqmi)
+
+  meson install -C build --destdir "$pkgdir" --no-rebuild
 }

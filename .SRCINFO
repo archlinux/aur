@@ -1,20 +1,26 @@
 pkgbase = libqmi-git
 	pkgdesc = QMI modem protocol helper library
-	pkgver = 1.23.1+68+ga48f7ee
+	pkgver = 1.36.0.r24.g9ad80dc
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/libqmi/
 	arch = x86_64
-	license = GPL2
-	makedepends = gtk-doc
-	makedepends = python
+	license = GPL-2.0-or-later AND LGPL-2.1-or-later
+	makedepends = bash-completion
 	makedepends = git
+	makedepends = gobject-introspection
 	makedepends = help2man
-	depends = libmbim
+	makedepends = meson
+	depends = bash
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
 	depends = libgudev
-	provides = libqmi
-	conflicts = libqmi
+	depends = libmbim
+	depends = libqrtr-glib
 	source = git+https://gitlab.freedesktop.org/mobile-broadband/libqmi.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = libqmi-git
-
+	provides = libqmi
+	provides = libqmi-glib.so
+	conflicts = libqmi
