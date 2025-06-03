@@ -1,0 +1,13 @@
+pkgbase = haskell-text
+	pkgdesc = An efficient packed Unicode text type.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = An efficient packed Unicode text type.
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/text/2.1.2/text-2.1.2.tar.gz
+	sha512sums = ec91b3b1d459a3eb287411b4b334c525b655c801e9d38ee931de7f8e8432bbdbc67b06357fdd8ee06e79b68a7cf02a36b7e437970270eecdd6c66885c9331241
+
+pkgname = haskell-text
