@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=dfidx
-_pkgver=0.1-0
+_pkgver=0.1-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-quarto
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3b183bbab14576a438979f1772845f74')
-b2sums=('098e8480aa670e10d9fdc037978075e46b5a36598eb32f984dd1bb1581cc93e790983622ef294ac516e01a3cf4dcd4d7922df850b11cf67f9cac2517a1e025fb')
+md5sums=('c6a7f74c8ea9d86c5ba078e73bc98cf3')
+b2sums=('883f1f458d663448ddeb30d06ba792f43d7dfb0128090dd51dbc4c5145be6581e7a0c35bb17f46a2bd3af38fd89a90a649c6d7554152f63674f11f1e56b75acf')
 
 build() {
   mkdir build
