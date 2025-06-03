@@ -37,7 +37,7 @@ pkgbase = goldendict-ng-git
 	replaces = goldendict-svn
 	replaces = goldendict-git-opt
 	replaces = goldendict-webengine-git
-	source = goldendict-ng-git::git+https://github.com/xiaoyifang/goldendict.git
+	source = goldendict-ng-git::git+https://github.com/xiaoyifang/goldendict-ng.git
 	md5sums = SKIP
 
 pkgname = goldendict-ng-git
