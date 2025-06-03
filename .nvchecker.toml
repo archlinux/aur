@@ -1,0 +1,5 @@
+[gog-the-will-of-arthur-flabbington]
+source = "jq"
+url = "https://www.gogdb.org/data/products/1433245370/product.json"
+filter = ".dl_installer | map(select(.os == \"linux\"))[0] | .version"
+prefix = "v"

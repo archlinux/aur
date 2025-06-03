@@ -1,33 +1,35 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=gog-the-will-of-arthur-flabbington
-pkgver=v1.0.3.68960
-pkgrel=2
+pkgver=2.1.2
+pkgrel=1
 pkgdesc="Comedy point-and-click adventure. Find your uncle’s lost treasure with the help of a reluctant sidekick. GOG version."
 _shortname="${pkgname#gog-}"
 arch=('x86_64')
 url="https://www.gog.com/en/game/${_shortname//-/_}"
-license=('custom')
+license=('LicenseRef-eula')
 depends=(
   'bash'
   'cairo'
+  'gcc-libs'
   'gdk-pixbuf2'
   'glib2'
   'glibc'
   'gtk2'
   'pango'
+  'zlib'
 )
 makedepends=('lgogdownloader')
 options=('!strip')
 
 source=(
-  "${_shortname}_latest.sh::gogdownloader://${_shortname//-/_}/en3installer0"
+  "${_shortname}_${pkgver//./_}.sh::gogdownloader://${_shortname//-/_}/en3installer0"
   "${pkgname}.desktop"
   "${_shortname}.bash"
 )
 
 sha512sums=(
-  'SKIP'
+  '2143fb4f82e348348eb5a7c103d11f3ad14862f9b8d82b2e5c5a6c3f834de2e3b41fab020fb59022126cb69c672f56bbdf324fa131713bf90182f3cf30b7d5ed'
   '6c8e948fcf35a08fa6c3712039529a8e1d2d1c68c5ab114a4a013389deed443e6c1f75ad4496a9437e3f3997f2fc2a52776da5a2df03bf6804a1768d0e78e382'
   '63ad09ff0156c793b9b0079ba25c6082d5a4f20e9a7ad8080c133f78098db2a5020663259be681a63f357a7b77ea17433dcd6db8a14c10b2c9a3f7ba9774edc9'
 )
@@ -35,11 +37,12 @@ sha512sums=(
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 PKGEXT=.pkg.tar
 
-pkgver() {
-  awk -v ORS=. -e 'NR==2,NR==3' data/noarch/gameinfo | head -c -1
-}
-
 prepare() {
+  # Assert that pkgver matches the downloaded version
+  diff -u \
+    --label 'Expected version' <(echo "${pkgver}") \
+    --label 'Actual version' <(awk -F v 'NR==2 { print $2 }' data/noarch/gameinfo)
+
   # Remove unneeded 32-bit executable
   # Fixes false alarm in rebuild-detector
   rm -rfv "${srcdir}/data/noarch/support/yad/32"
