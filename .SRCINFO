@@ -1,7 +1,7 @@
 pkgbase = cambalache
 	pkgdesc = A new RAD tool for Gtk 4 and 3
 	pkgver = 0.96.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.gnome.org/jpu/cambalache
 	arch = x86_64
 	license = LGPL-2.1-only
