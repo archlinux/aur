@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=regioneR
-_pkgver=1.39.0
+_pkgver=1.40.1
 pkgname=r-${_pkgname,,}
-pkgver=1.39.0
+pkgver=1.40.1
 pkgrel=1
 pkgdesc='Association analysis of genomic regions based on permutation tests'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0bdf5be88702540faf668f30c68b7cb71e82083fa65cc059dc0756bd22cb083b')
+sha256sums=('ac0f5850448b4c52c89e9d1a288faab7df75f238f211de7ee4ba7fb1fe0e1af1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
