@@ -1,7 +1,7 @@
 # Maintainer: Maks Verver <maks@verver.ch>
 
 pkgname=pypy3-numpy
-pkgver=2.2.1
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('cblas' 'lapack' 'pypy3')
 optdepends=('blas-openblas: faster linear algebra')
 makedepends=('pypy3-build' 'pypy3-cython' 'pypy3-installer' 'meson-pypy3' 'cmake' 'gcc-fortran')
 source=("https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
-md5sums=('57c5757508a50d1daefa4b689e9701cb')
-sha256sums=('45681fd7128c8ad1c379f0ca0776a8b0c6583d2f69889ddac01559dfe4390918')
+md5sums=('63d66dc1db9d603df0a84c870e703cfc')
+sha256sums=('e29554e2bef54a90aa5cc07da6ce955accb83f21ab5de01a62c8478897b264fd')
 
 build() {
   cd numpy-$pkgver
