@@ -1,0 +1,5 @@
+pkg
+src
+usr
+*.deb
+*.zst
