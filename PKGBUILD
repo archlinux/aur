@@ -3,7 +3,7 @@
 
 pkgname=nut-monitor
 pkgver=2.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI to manage devices connected a NUT server"
 arch=('any')
 url="http://www.networkupstools.org/"
@@ -29,10 +29,6 @@ build() {
 
 package() {
   cd "$srcdir/nut-$pkgver"
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -v -d -m 755 "${pkgdir}${site_packages}"
-  install -m644 scripts/python/module/PyNUT.py "${pkgdir}${site_packages}"
-
   install -v -d -m 755 ${pkgdir}/usr/{bin,share/{appdata,nut-monitor/{pixmaps,ui,icons/256x256}}}
   install -m 755 scripts/python/app/NUT-Monitor-py3qt5 ${pkgdir}/usr/bin
   install -m 644 scripts/python/app/nut-monitor.appdata.xml ${pkgdir}/usr/share/appdata
