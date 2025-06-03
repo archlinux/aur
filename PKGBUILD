@@ -27,7 +27,7 @@ sha256sums=('c0b6f4ecabd186b37ff1e10ba49644d9f11bb950b485618cbfb203948871d0c3')
 validpgpkeys=()
 
 package() {
-	cd "$pkgver"
+	cd "RGFW-$pkgver"
 	mkdir -p $pkgdir/usr/include
 	cp RGFW.h $pkgdir/usr/include
 	cp XDL.h $pkgdir/usr/include
