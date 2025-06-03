@@ -1,16 +1,16 @@
 pkgbase = virtualbox-ext-oracle
 	pkgdesc = Oracle VM VirtualBox Extension Pack
-	pkgver = 7.1.8
+	pkgver = 7.1.10
 	pkgrel = 1
 	url = https://www.virtualbox.org/
 	install = virtualbox-ext-oracle.install
 	arch = any
 	license = custom:PUEL
-	depends = virtualbox=7.1.8
+	depends = virtualbox=7.1.10
 	optdepends = rdesktop: client to connect vm via RDP
-	noextract = Oracle_VirtualBox_Extension_Pack-7.1.8.vbox-extpack
+	noextract = Oracle_VirtualBox_Extension_Pack-7.1.10.vbox-extpack
 	options = !strip
-	source = https://download.virtualbox.org/virtualbox/7.1.8/Oracle_VirtualBox_Extension_Pack-7.1.8.vbox-extpack
-	sha256sums = 912586a3a1e9285f9df264f7999e6fffc0b8a42f2e013dd898a86f7ed3975d37
+	source = https://download.virtualbox.org/virtualbox/7.1.10/Oracle_VirtualBox_Extension_Pack-7.1.10.vbox-extpack
+	sha256sums = e020755711849fa0ee23d3bc47bc90cb0ea595da7dda804499568a0dc2387989
 
 pkgname = virtualbox-ext-oracle
