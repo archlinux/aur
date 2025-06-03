@@ -3,8 +3,8 @@
 pkgbase=void-bin
 pkgname=(void{,-electron-latest}-bin)
 pkgdesc="The open-source Cursor alternative."
-pkgver=1.99.30034
-pkgrel=3
+pkgver=1.99.30036
+pkgrel=1
 arch=('x86_64')
 options=('!strip')
 url="https://github.com/voideditor/void"
@@ -15,7 +15,7 @@ libx11 libxcb libxcomposite libxdamage libxext libxfixes libxkbcommon libxrandr 
 optdepends=('electron: /usr/share/void/void-latestron')
 source=("https://github.com/voideditor/binaries/releases/download/${pkgver}/void_${pkgver}_amd64.deb"
 "https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
-sha256sums=('aed80c55736d5de9b4473e8e7c7e8fb9d3b2999b45fac5ebfc302c40a13b9d83'
+sha256sums=('38e1c875b4b113ea4f77e3c0cb80f1676b72521a18163d797be9c32a7532179e'
             '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
 
 build() {
@@ -35,6 +35,7 @@ build() {
 
 package_void-bin() {
         pkgdesc="Cursor alternative AI code editor"
+        conflicts=(void-electron-latest-bin)
         cp -r --reflink=auto usr "${pkgdir}"/usr
         install -Dm755 run-safe.sh "${pkgdir}/usr/bin/void"
         echo $_electron
@@ -43,6 +44,8 @@ package_void-bin() {
 
 package_void-electron-latest-bin() {
         pkgdesc="Void editor on latest stable electron"
+        conflicts=(void-bin)
+        provides=(void-bin)
         mv usr "${pkgdir}"/usr # breaks --repackage
         install -Dm755 run.sh "${pkgdir}/usr/bin/void"
         depends+=(electron)
