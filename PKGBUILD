@@ -9,8 +9,12 @@ arch=('any')
 license=('MIT')
 depends=('python' 'python-pyqt6' 'python-requests' 'pyinstaller')
 makedepends=('python' 'python-pyqt6' 'python-requests' 'pyinstaller')
-source=("crl-browser.py" "logo.png" "crl-browser.desktop")
-sha256sums=('b082a7ece7520e2a212df37b70fc481efd361d46175bc1693b5dd400bdf76c9d' 'SKIP' 'SKIP')
+source=(
+  "https://gitlab.com/Azccriminalus/crlnxlion/-/raw/main/src/crl-browser.py"
+  "https://gitlab.com/Azccriminalus/crlnxlion/-/raw/main/src/logo.png"
+  "https://gitlab.com/Azccriminalus/crlnxlion/-/raw/main/src/crl-browser.desktop"
+)
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 build() {
   pyinstaller --onefile --windowed --name crl-browser --add-data "logo.png:." "${srcdir}/crl-browser.py"

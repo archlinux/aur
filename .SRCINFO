@@ -12,10 +12,10 @@ pkgbase = crl-browser
 	depends = python-pyqt6
 	depends = python-requests
 	depends = pyinstaller
-	source = crl-browser.py
-	source = logo.png
-	source = crl-browser.desktop
-	sha256sums = b082a7ece7520e2a212df37b70fc481efd361d46175bc1693b5dd400bdf76c9d
+	source = https://gitlab.com/Azccriminalus/crlnxlion/-/raw/main/src/crl-browser.py
+	source = https://gitlab.com/Azccriminalus/crlnxlion/-/raw/main/src/logo.png
+	source = https://gitlab.com/Azccriminalus/crlnxlion/-/raw/main/src/crl-browser.desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
