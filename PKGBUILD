@@ -8,12 +8,12 @@ pkgdesc="An elegant Linux app for the Elgato Stream Deck with support for plugin
 arch=('any')
 url="https://github.com/StreamController/StreamController"
 license=('GPL-3')
-depends=('python' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk' 'libportal' 'libportal-gtk4' 'libadwaita')
+depends=('python' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk' 'libportal' 'libportal-gtk4' 'libadwaita' 'gobject-introspection')
 makedepends=('git' 'python-pip' 'sed')
 provides=('streamcontroller')
 conflicts=('streamcontroller')
-source=("git+https://github.com/StreamController/StreamController.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/StreamController/StreamController.git" "streamcontroller.desktop")
+sha256sums=('SKIP' 'b671ce8638922fca5ea05bf12852886d983b9cae33aaf226a57c8bcc51a39760')
 
 pkgver() {
   cd "$srcdir/$_reponame"

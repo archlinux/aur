@@ -14,9 +14,12 @@ pkgbase = streamcontroller-git
 	depends = libportal
 	depends = libportal-gtk4
 	depends = libadwaita
+	depends = gobject-introspection
 	provides = streamcontroller
 	conflicts = streamcontroller
 	source = git+https://github.com/StreamController/StreamController.git
+	source = streamcontroller.desktop
 	sha256sums = SKIP
+	sha256sums = b671ce8638922fca5ea05bf12852886d983b9cae33aaf226a57c8bcc51a39760
 
 pkgname = streamcontroller-git
