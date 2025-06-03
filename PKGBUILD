@@ -1,12 +1,12 @@
 # Contributor: solarbaron
 pkgname=feishin-git
-pkgver=0.12.3.r17.g12c517f
+pkgver=0.14.0.r22.g636c227
 pkgdesc='Modern music player with support for navidrome servers.'
 pkgrel=1
 arch=('x86_64' 'aarch64')
 license=('GPL-3.0-only')
 optdepends=('mpv: Alternative audio backend')
-makedepends=('npm')
+makedepends=('pnpm')
 url='https://github.com/jeffvli/feishin'
 provides=("${pkgname%-git}")
 conflicts=("feishin" "feishin-bin")
@@ -25,8 +25,8 @@ pkgver() {
 build() {
   cd $pkgname
   export npm_config_cache="$(mktemp -d)"
-  npm install --force
-  npm run package
+  pnpm install --force
+  pnpm run package
   rm -rf "$npm_config_cache"
 }
 

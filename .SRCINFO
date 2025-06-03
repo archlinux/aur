@@ -1,12 +1,12 @@
 pkgbase = feishin-git
 	pkgdesc = Modern music player with support for navidrome servers.
-	pkgver = 0.12.3.r17.g12c517f
+	pkgver = 0.14.0.r24.g636c227
 	pkgrel = 1
 	url = https://github.com/jeffvli/feishin
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
-	makedepends = npm
+	makedepends = pnpm
 	optdepends = mpv: Alternative audio backend
 	provides = feishin
 	conflicts = feishin
