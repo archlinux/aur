@@ -1,12 +1,15 @@
 pkgbase = python-lzstring
 	pkgdesc = String encoding/decoding of binary data
 	pkgver = 1.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/gkovacs/lz-string-python
 	arch = any
 	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
-	depends = python
+	depends = python-future
 	source = https://files.pythonhosted.org/packages/source/l/lzstring/lzstring-1.0.4.tar.gz
 	sha256sums = 1afa61e598193fbcc211e0899f09a9679e33f9102bccc37fbfda0b7fef4d9ea2
 
