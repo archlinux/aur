@@ -28,18 +28,18 @@ optdepends=('nvidia: for NVIDIA GPU monitoring'
 provides=('conky')
 conflicts=('conky')
 replaces=('conky' 'torsmo')
-source=("git+https://github.com/Jayhub-ai/conkyluanv-autoscale-fixed.git"
+source=("$pkgname::git+https://github.com/Jayhub-ai/conkyluanv-autoscale-fixed.git"
         "xmms2-optional.patch")
 sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-  cd "$srcdir/conkyluanv-autoscale-fixed"
-  patch -p1 -i "$srcdir/xmms2-optional.patch"
+  cd "$srcdir/$pkgname"
+  patch -Np1 -i "$srcdir/xmms2-optional.patch"
 }
 
 build() {
-  cd "$srcdir/conkyluanv-autoscale-fixed"
+  cd "$srcdir/$pkgname"
   
   cmake \
     -D CMAKE_BUILD_TYPE=Release \
@@ -68,7 +68,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/conkyluanv-autoscale-fixed"
+  cd "$srcdir/$pkgname"
   
   DESTDIR="$pkgdir" cmake --install build
   
