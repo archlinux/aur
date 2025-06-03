@@ -1,7 +1,7 @@
 pkgbase = haskell-glut
 	pkgdesc = A binding for the OpenGL Utility Toolkit
 	pkgver = 2.7.0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/GLUT
 	arch = i686
 	arch = x86_64
