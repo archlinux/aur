@@ -9,7 +9,7 @@
 
 pkgname=lib32-audit
 _name=audit-userspace
-pkgver=4.0.3
+pkgver=4.0.5
 pkgrel=1
 pkgdesc='Userspace components of the audit framework'
 url="https://github.com/linux-audit/audit-userspace"
@@ -19,9 +19,8 @@ license=(
   LGPL-2.0-or-later
 )
 depends=(
-  audit
+  audit=$pkgver
   lib32-glibc
-  lib32-libldap
 )
 provides=(
   libaudit.so
@@ -29,8 +28,8 @@ provides=(
 source=(
   $url/archive/v$pkgver/$_name-v$pkgver.tar.gz
 )
-sha512sums=('a20d2f832632fa844764086aac98c80f7fcb120ceeaae7472248e04eec0493981e31fd59f22c3f0dbff81ccbcd132b8297812f2b4cdb87b866c59aedf3611342')
-b2sums=('35c5c45773b931d0751abf7e22130ce1217f96acb1192bd9351f54dc4f34e9a94fc42392287fd241bc76e7fac06b30e96ea34bfd7302a37a10851bd1e36cccc5')
+sha512sums=('14fa19922cf6436284e1448d5a0e069ce5066d2d49d28679fe3ad019be60c133aee6e345b36e0f482ea1fdeadad7d78676f931aab1c25b91a2d0b445dce3eedf')
+b2sums=('eaa3106f4ec4fae9a356e33717922131975c5421977af4baad9364f80a4c72a07d725f32b2bf39f49b6ff6063365fd3f047b3eb209c231abaaff67a4506ec2f7')
 
 prepare() {
   cd $_name-$pkgver
@@ -43,6 +42,7 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   local configure_options=(
+    --disable-zos-remote
     --libdir=/usr/lib32
     --libexecdir=/usr/lib32/audit
     --prefix=/usr
