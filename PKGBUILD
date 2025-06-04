@@ -1,9 +1,11 @@
 # Maintainer: MajorX234 <majorx234 at gmail dot com>
+# Contributor: Emanuel Couto <unit73e at gmail dot com>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 
 _hkgname=OpenGL
 pkgname=haskell-opengl
 pkgver=3.0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A binding for the OpenGL graphics system"
 url="http://www.haskell.org/haskellwiki/Opengl"
 license=('custom:BSD3')
