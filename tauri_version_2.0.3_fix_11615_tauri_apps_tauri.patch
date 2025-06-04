@@ -1,17 +1,17 @@
 diff --git a/package-lock.json b/package-lock.json
-index d69dcfd..d7e4012 100644
+index 085270b..034deec 100644
 --- a/package-lock.json
 +++ b/package-lock.json
 @@ -21,7 +21,7 @@
          "@sveltejs/adapter-static": "^3.0.5",
          "@sveltejs/kit": "^2.7.0",
-         "@sveltejs/vite-plugin-svelte": "^4.0.0",
+         "@sveltejs/vite-plugin-svelte": "^5.0.3",
 -        "@tauri-apps/cli": "^2.0.4",
 +        "@tauri-apps/cli": "2.0.3",
          "husky": "^8.0.0",
          "lint-staged": "^15.2.10",
          "prettier": "^3.3.3",
-@@ -870,9 +870,9 @@
+@@ -958,9 +958,9 @@
        }
      },
      "node_modules/@tauri-apps/cli": {
@@ -24,7 +24,7 @@ index d69dcfd..d7e4012 100644
        "dev": true,
        "license": "Apache-2.0 OR MIT",
        "bin": {
-@@ -886,22 +886,22 @@
+@@ -974,22 +974,22 @@
          "url": "https://opencollective.com/tauri"
        },
        "optionalDependencies": {
@@ -60,7 +60,7 @@ index d69dcfd..d7e4012 100644
        "cpu": [
          "arm64"
        ],
-@@ -916,9 +916,9 @@
+@@ -1004,9 +1004,9 @@
        }
      },
      "node_modules/@tauri-apps/cli-darwin-x64": {
@@ -73,7 +73,7 @@ index d69dcfd..d7e4012 100644
        "cpu": [
          "x64"
        ],
-@@ -933,9 +933,9 @@
+@@ -1021,9 +1021,9 @@
        }
      },
      "node_modules/@tauri-apps/cli-linux-arm-gnueabihf": {
@@ -86,7 +86,7 @@ index d69dcfd..d7e4012 100644
        "cpu": [
          "arm"
        ],
-@@ -950,9 +950,9 @@
+@@ -1038,9 +1038,9 @@
        }
      },
      "node_modules/@tauri-apps/cli-linux-arm64-gnu": {
@@ -99,7 +99,7 @@ index d69dcfd..d7e4012 100644
        "cpu": [
          "arm64"
        ],
-@@ -967,9 +967,9 @@
+@@ -1055,9 +1055,9 @@
        }
      },
      "node_modules/@tauri-apps/cli-linux-arm64-musl": {
@@ -112,7 +112,7 @@ index d69dcfd..d7e4012 100644
        "cpu": [
          "arm64"
        ],
-@@ -984,9 +984,9 @@
+@@ -1072,9 +1072,9 @@
        }
      },
      "node_modules/@tauri-apps/cli-linux-x64-gnu": {
@@ -125,7 +125,7 @@ index d69dcfd..d7e4012 100644
        "cpu": [
          "x64"
        ],
-@@ -1001,9 +1001,9 @@
+@@ -1089,9 +1089,9 @@
        }
      },
      "node_modules/@tauri-apps/cli-linux-x64-musl": {
@@ -138,7 +138,7 @@ index d69dcfd..d7e4012 100644
        "cpu": [
          "x64"
        ],
-@@ -1018,9 +1018,9 @@
+@@ -1106,9 +1106,9 @@
        }
      },
      "node_modules/@tauri-apps/cli-win32-arm64-msvc": {
@@ -151,7 +151,7 @@ index d69dcfd..d7e4012 100644
        "cpu": [
          "arm64"
        ],
-@@ -1035,9 +1035,9 @@
+@@ -1123,9 +1123,9 @@
        }
      },
      "node_modules/@tauri-apps/cli-win32-ia32-msvc": {
@@ -164,7 +164,7 @@ index d69dcfd..d7e4012 100644
        "cpu": [
          "ia32"
        ],
-@@ -1052,9 +1052,9 @@
+@@ -1140,9 +1140,9 @@
        }
      },
      "node_modules/@tauri-apps/cli-win32-x64-msvc": {
@@ -178,13 +178,13 @@ index d69dcfd..d7e4012 100644
          "x64"
        ],
 diff --git a/package.json b/package.json
-index 911323b..53a6a6f 100644
+index 78a45ae..383568c 100644
 --- a/package.json
 +++ b/package.json
 @@ -28,7 +28,7 @@
      "@sveltejs/adapter-static": "^3.0.5",
      "@sveltejs/kit": "^2.7.0",
-     "@sveltejs/vite-plugin-svelte": "^4.0.0",
+     "@sveltejs/vite-plugin-svelte": "^5.0.3",
 -    "@tauri-apps/cli": "^2.0.4",
 +    "@tauri-apps/cli": "2.0.3",
      "husky": "^8.0.0",
