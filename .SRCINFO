@@ -1,0 +1,26 @@
+pkgbase = compiler-rt19
+	pkgdesc = Compiler runtime libraries for clang 19
+	pkgver = 19.1.7
+	pkgrel = 1
+	url = https://compiler-rt.llvm.org/
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	makedepends = llvm19
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	depends = gcc-libs
+	options = staticlibs
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.7/compiler-rt-19.1.7.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.7/compiler-rt-19.1.7.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.7/cmake-19.1.7.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.7/cmake-19.1.7.src.tar.xz.sig
+	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
+	validpgpkeys = D574BD5D1D0E98895E3BF90044F2485E45D59042
+	sha256sums = c12b6e764202c615c1a3af9a13d477846878757ae0e29e5f8979215a6958fffc
+	sha256sums = SKIP
+	sha256sums = 11c5a28f90053b0c43d0dec3d0ad579347fc277199c005206b963c19aae514e3
+	sha256sums = SKIP
+	makedepends_x86_64 = lib32-gcc-libs
+
+pkgname = compiler-rt19
