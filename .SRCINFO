@@ -1,7 +1,7 @@
 pkgbase = libhydrogen-git
 	pkgdesc = A lightweight, secure, easy-to-use crypto library suitable for constrained environments.
-	pkgver = r338.14441a6
-	pkgrel = 2
+	pkgver = r382.bbca575
+	pkgrel = 1
 	url = https://github.com/jedisct1/libhydrogen
 	arch = x86_64
 	license = custom:ISC

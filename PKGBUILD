@@ -1,7 +1,7 @@
 # Maintainer: Leonard Iklé <leonard.ikle at gmail dot com>
 pkgname=libhydrogen-git
-pkgver=r338.14441a6
-pkgrel=2
+pkgver=r382.bbca575
+pkgrel=1
 pkgdesc="A lightweight, secure, easy-to-use crypto library suitable for constrained environments."
 arch=('x86_64')
 url="https://github.com/jedisct1/libhydrogen"
@@ -17,6 +17,7 @@ pkgver() {
 }
 
 build() {
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake -S "$srcdir/${pkgname%-git}" -B build \
     -DCMAKE_BUILD_TYPE="None" \
     -DCMAKE_INSTALL_PREFIX='/usr' \
