@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-httpserver
-_qtver=6.9.0
+_qtver=6.9.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,13 +18,17 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qthttpserver-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('91d2cfef1b4c4c09c6189ab26a3a0afa02f0e9512683aecf4d1b44e56112ae73')
+sha256sums=('bfc7b511e2bbc365f11027ae8d7d2e33f3ff63591b866df9a880c51363f02b53')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   for _arch in ${_architectures}; do
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
+
+    # workaround https://gcc.gnu.org/bugzilla/show_bug.cgi?id=120495
+    [[ $pkgname =~ .*-clang-.* ]] || export CXXFLAGS+=' -Wno-template-body -fcoroutines'
+
     $_arch-cmake -G Ninja -B build-$_arch -S $_pkgfqn \
       -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
