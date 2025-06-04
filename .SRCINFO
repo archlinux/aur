@@ -1,6 +1,6 @@
 pkgbase = git-who
 	pkgdesc = Git blame for file trees
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/sinclairtarget/git-who
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = git-who
 	makedepends = ruby-rake
 	depends = glibc
 	depends = git
-	source = git-who-1.0.tar.gz::https://github.com/sinclairtarget/git-who/archive/refs/tags/v1.0.tar.gz
-	b2sums = 2cbf26593d4522d78cef02ae79ab7eed99f87b919df39faee3eab1ddfe325a1a2bd64029f2afada77985479ed93db904186da14fe5036c4c9890d44dd96f5b51
+	source = git-who-1.1.tar.gz::https://github.com/sinclairtarget/git-who/archive/refs/tags/v1.1.tar.gz
+	b2sums = f8a23650b2845e0a86b7341df9086d6dd8b47ec4f82c99cf98331696c0a5c38509de8e91ed5d0ce003849f3f200aa461f192320f4faeb313da805c0d59d09357
 
 pkgname = git-who
