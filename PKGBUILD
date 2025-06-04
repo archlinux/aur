@@ -1,4 +1,4 @@
-# Maintainer: Dominik Stanisław Suchora <suchora.dominik7@gmail.com>
+# Maintainer: Dominik Stanisław Suchora <hexderm@gmail.com>
 
 pkgname='torge'
 pkgver=1
