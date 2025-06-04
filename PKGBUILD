@@ -5,9 +5,9 @@
 
 pkgname=libjwt
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="JWT C Library"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/benmcollins/libjwt"
 license=('MPL-2.0')
 depends=('jansson' 'openssl' 'gnutls' 'mbedtls')
