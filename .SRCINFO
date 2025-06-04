@@ -1,6 +1,6 @@
 pkgbase = maretf
 	pkgdesc = A work in progress command-line utility to work with VTF files.
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/craftablescience/MareTF
 	arch = x86_64
