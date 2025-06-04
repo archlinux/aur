@@ -1,5 +1,5 @@
 pkgbase = 2048-tui
-	pkgdesc = A simple terminal-based 2048 game written in C using ncurses
+	pkgdesc = A simple terminal-based 2048 game written in C using ncurses.
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/aramyamal/2048-tui
