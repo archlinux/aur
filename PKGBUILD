@@ -5,13 +5,13 @@
 # Contributor: moostik <mooostik_at_gmail.com>
 
 pkgname=veusz
-pkgver=3.6.2
+pkgver=4.0
 pkgrel=1
 pkgdesc="A 2D and 3D scientific plotting package, designed to create publication-ready PDF or SVG output"
 arch=('x86_64')
 url="https://veusz.github.io/"
-license=('GPL2')
-depends=('python-pyqt5' 'python-numpy' 'hicolor-icon-theme')
+license=('GPL-2.0-or-later')
+depends=('python-pyqt6' 'python-numpy' 'hicolor-icon-theme')
 makedepends=('sip>=6.7.5' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('python-h5py:  HDF5 support'
             'python-pyemf3: EMF export'
@@ -19,8 +19,8 @@ optdepends=('python-h5py:  HDF5 support'
             'python-iminuit: improved fitting'
             'python-astropy: VO table import and FITS import'
             'ghostscript: for EPS/PS output')
-source=("https://github.com/veusz/veusz/releases/download/veusz-${pkgver}/veusz-${pkgver}.tar.gz")
-sha256sums=('c2171ac45e4b30424d8fc35261e2e99dbe6e25ba1197ebc24355b106b26395d1')
+source=("https://github.com/veusz/veusz/releases/download/veusz-${pkgver}-fix/veusz-${pkgver}.tar.gz")
+sha256sums=('012b16e0047d349c0c9a11dffcd3260bb4a85b38b6309824897842d8b0f650a5')
 
 build() {
   cd "${pkgname}-${pkgver}"
