@@ -3,7 +3,7 @@
 # Contributor: Frank Tao <frank.tao@uwaterloo.ca>
 _wlrootsver=0.18.2
 pkgname=wayfire-hidpi-xprop-git
-pkgver=0.9.0.r85.g33620c18
+pkgver=0.9.0.r95.g32c4ada7
 pkgrel=1
 pkgdesc="3D wayland compositor, integrating the wlroots hidpi-xprop patch set"
 arch=('x86_64')
@@ -24,8 +24,7 @@ depends=(
          # wlroots
          'pkgconf' 'xcb-util-errors' 'xcb-util-renderutil'
          'xcb-util-wm' 'wayland' 'wayland-protocols'
-         'libdisplay-info' 'wlroots-hidpi-xprop>=0.18'
-         'wlroots-hidpi-xprop<0.19')
+         'libdisplay-info' 'wlroots0.18-hidpi-xprop')
 makedepends=('git' 'meson' 'ninja' 'cmake' 'vulkan-headers' 'doctest'
              'pkgconf' 'wayland-protocols' 'libxml2')
 optdepends=('xorg-xeyes'
