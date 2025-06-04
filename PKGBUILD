@@ -53,7 +53,7 @@ package_ocaml-compiler-libs-git() {
 pkgdesc="Several modules used internally by the OCaml compiler"
 license=('custom: QPL-1.0')
 depends=('ocaml-git')
-provides=("ocaml-compiler-libs-git")
+provides=("ocaml-compiler-libs")
 conflicts=("ocaml-compiler-libs")
 optdepends=()
 
