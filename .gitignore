@@ -1,0 +1,17 @@
+# pacman/makepkg artifacts
+pkg/
+src/
+*.pkg.tar.*
+*.tar.zst
+*.sig
+*.log
+
+# Editor temp files
+*~
+*.swp
+
+# macOS
+.DS_Store
+
+# Binary built locally for testing
+electron

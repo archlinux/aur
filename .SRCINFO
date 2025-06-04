@@ -1,0 +1,17 @@
+pkgbase = electron-launcher
+	pkgdesc = Launcher script that forwards to the latest installed electronXX binary
+	pkgver = 1.0
+	pkgrel = 1
+	install = electron-launcher.install
+	arch = any
+	license = MIT
+	provides = electron
+	provides = electron-launcher
+	conflicts = electron
+	conflicts = electron-nightly-bin
+	replaces = electron
+	replaces = electron-nightly-bin
+	source = electron.sh
+	sha256sums = 9d80a970fe40d7294b0a6f7587b6aa0107bbee46f45c07da39cdb53c4741c181
+
+pkgname = electron-launcher

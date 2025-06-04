@@ -1,0 +1,19 @@
+post_install() {
+  echo ":: electron-launcher installed."
+  echo ":: This script forwards /usr/bin/electron to the highest available electronXX binary (e.g., electron35, electron36, etc.)."
+  echo "::"
+  echo ":: To test it, run:"
+  echo "::   electron --version"
+  echo "::"
+  echo ":: Make sure at least one electronXX-bin package is installed (e.g., electron35-bin)."
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo ":: electron-launcher removed."
+  echo ":: The /usr/bin/electron wrapper is no longer available."
+}
+
