@@ -3,8 +3,8 @@
 # Contributor: yetist <yetist@gmail.com>
 
 pkgname=gmchess
-pkgver=0.29.6
-pkgrel=5
+pkgver=0.29.6.4
+pkgrel=1
 pkgdesc="Play Chinese chess (Xiangqi) against a human opponent or the computer"
 arch=("i686" "x86_64")
 url="https://salsa.debian.org/chinese-team/gmchess"
@@ -13,7 +13,7 @@ depends=("gtkmm")
 makedepends=('pkgconfig' 'intltool')
 conflicts=('gmchess-bin' 'eleeye-bin' 'convert-pgn-bin')
 source=("$pkgname-$pkgver.tar.gz::https://salsa.debian.org/chinese-team/gmchess/-/archive/master/${pkgname}-master.tar.gz" 'board-fix-segfault.patch')
-sha1sums=('26fb365af83d3364a699175718ca0573c0b62ca5'
+sha1sums=('7a4a951bba2830419cc6b134cc3a0c7bfd105089'
           '49e378db48b0d10188480084f6bd9f2c0d0d28e2')
 
 prepare() {

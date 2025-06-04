@@ -1,7 +1,7 @@
 pkgbase = gmchess
 	pkgdesc = Play Chinese chess (Xiangqi) against a human opponent or the computer
-	pkgver = 0.29.6
-	pkgrel = 5
+	pkgver = 0.29.6.4
+	pkgrel = 1
 	url = https://salsa.debian.org/chinese-team/gmchess
 	arch = i686
 	arch = x86_64
@@ -12,10 +12,9 @@ pkgbase = gmchess
 	conflicts = gmchess-bin
 	conflicts = eleeye-bin
 	conflicts = convert-pgn-bin
-	source = gmchess-0.29.6.tar.gz::https://salsa.debian.org/chinese-team/gmchess/-/archive/master/gmchess-master.tar.gz
+	source = gmchess-0.29.6.4.tar.gz::https://salsa.debian.org/chinese-team/gmchess/-/archive/master/gmchess-master.tar.gz
 	source = board-fix-segfault.patch
-	sha1sums = 26fb365af83d3364a699175718ca0573c0b62ca5
+	sha1sums = 7a4a951bba2830419cc6b134cc3a0c7bfd105089
 	sha1sums = 49e378db48b0d10188480084f6bd9f2c0d0d28e2
 
 pkgname = gmchess
-
