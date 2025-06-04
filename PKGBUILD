@@ -43,10 +43,12 @@ package() {
   cd "$srcdir/$_pkgname"
 
   install -Dm755 build/release/rlvm "$pkgdir/usr/bin/rlvm"
-  install -Dm644 src/platforms/gtk/rlvm.desktop "$pkgdir/usr/share/applications/rlvm.desktop"
+  install -Dm644 debian/rlvm.6 "$pkgdir/usr/share/man/man6/rlvm.6"
 
+  install -Dm644 src/platforms/gtk/rlvm.desktop "$pkgdir/usr/share/applications/rlvm.desktop"
   local _i
   for _i in 16 24 32 48 128 256; do
     install -Dm644 "resources/$_i/rlvm.png" "$pkgdir/usr/share/icons/hicolor/${_i}x${_i}/apps/rlvm.png"
   done
+  install -Dm644 resources/512.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/rlvm.png"
 }
