@@ -29,9 +29,10 @@ package() {
 	# install -Dm0755 -t "$pkgdir/usr/bin/" "build/scripts/$pkgname"
     mkdir -p "$pkgdir/$_sharedir/../lib/qmd"
 	unzip -q -o -j build/distributions/quarkdown.zip "quarkdown/lib/qmd/*" -d "$pkgdir/$_sharedir/../lib/qmd"
-	cat <<- EOF | install -Dm0755 /dev/stdin "$pkgdir/usr/bin/$pkgname"
-		#!/usr/bin/env bash
-		exec java -jar '$_sharedir/$pkgname.jar' "\$@"
-	EOF
+	unzip -q -o -j build/distributions/quarkdown.zip "quarkdown/bin/*" -d "$pkgdir/usr/bin"
+	# cat <<- EOF | install -Dm0755 /dev/stdin "$pkgdir/usr/bin/$pkgname"
+	# 	#!/usr/bin/env bash
+	# 	exec java -jar '$_sharedir/$pkgname.jar' "\$@"
+	# EOF
 }
 
