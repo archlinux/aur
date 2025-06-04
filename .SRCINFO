@@ -1,14 +1,14 @@
 pkgbase = quiet-desktop-bin
 	pkgdesc = A private, p2p alternative to Slack and Discord built on Tor & IPFS
-	pkgver = 5.0.1
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://github.com/TryQuiet/quiet
 	arch = x86_64
 	license = GPL-3.0-only
 	options = !strip
-	source = https://github.com/TryQuiet/quiet/releases/download/@quiet/desktop@5.0.1/Quiet-5.0.1.AppImage
-	source = https://raw.githubusercontent.com/TryQuiet/quiet/5.0.1/LICENSE.md
-	sha512sums = 0c5143a0b9b3023d5847f914a56b1e3713819c05839ff0d3a160cb534bdb8e5b118d95215be968dedaed1e1fc5aa0feea80c5c33694969d131160903745ea1a6
+	source = https://github.com/TryQuiet/quiet/releases/download/@quiet/desktop@5.1.1/Quiet-5.1.1.AppImage
+	source = https://raw.githubusercontent.com/TryQuiet/quiet/5.1.1/LICENSE.md
+	sha512sums = 62113e95e69da77ced3ccab4406304bca7bafeb9db0ebe6bd5f2da7a0222a35f190266774360294cc07f84e50e526f8c209938adca6966a77e6a8da32089a52e
 	sha512sums = d361e5e8201481c6346ee6a886592c51265112be550d5224f1a7a6e116255c2f1ab8788df579d9b8372ed7bfd19bac4b6e70e00b472642966ab5b319b99a2686
 
 pkgname = quiet-desktop-bin
