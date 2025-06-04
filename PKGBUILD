@@ -3,7 +3,7 @@
 pkgname=python-vllm-bin
 _pkgname=vllm
 pkgver=0.9.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
@@ -35,6 +35,7 @@ depends=(
   python-msgspec
   python-pyzmq
   python-blake3
+  python-cloudpickle
   python-huggingface-hub)
 
 optdepends=(

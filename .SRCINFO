@@ -1,7 +1,7 @@
 pkgbase = python-vllm-bin
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
 	pkgver = 0.9.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
 	license = Apache-2.0
@@ -30,6 +30,7 @@ pkgbase = python-vllm-bin
 	depends = python-msgspec
 	depends = python-pyzmq
 	depends = python-blake3
+	depends = python-cloudpickle
 	depends = python-huggingface-hub
 	optdepends = cuda: use nvidia GPU
 	optdepends = cuda-tools: use nvidia GPU
