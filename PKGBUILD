@@ -5,16 +5,22 @@
 
 pkgname=libjwt
 pkgver=3.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="JWT C Library"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/benmcollins/libjwt"
 license=('MPL-2.0')
 depends=('jansson' 'openssl' 'gnutls' 'mbedtls')
 checkdepends=('check')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/benmcollins/libjwt/archive/v${pkgver}.tar.gz")
-sha256sums=('900b89695dc4da96629778d3713c8194d99ca12c8b585af0306badecfa4cbcf8')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/benmcollins/libjwt/archive/v${pkgver}.tar.gz"
+init-jwk_set.patch)
+sha256sums=('900b89695dc4da96629778d3713c8194d99ca12c8b585af0306badecfa4cbcf8'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np2 -i ../init-jwk_set.patch
+}
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   cmake -B build -S . \
