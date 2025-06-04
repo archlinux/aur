@@ -1,11 +1,11 @@
 # Maintainer: Moabeat <moabeat@berlin.de>
 
 pkgname=beaver-notes
-pkgver=3.9.0
+pkgver=4.0.0
 pkgrel=1
 epoch=
 pkgdesc="Your Personal Note-Taking Haven for Privacy and Efficiency"
-_electron=electron31
+_electron=electron35
 arch=('x86_64')
 url="https://www.beavernotes.com/"
 license=('MIT')
@@ -14,7 +14,7 @@ makedepends=('asar' 'npm' 'yarn' 'nodejs' 'libxcrypt-compat')
 provides=('beaver-notes')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Daniele-rolli/Beaver-Notes/archive/refs/tags/$pkgver.tar.gz"
         "beaver-notes.desktop")
-b2sums=('6af47d48bdaca7ec79c5561040c9f391433fc68df1bbb145f8a7e64a98d1c2656d7ed898e3d508d3300115d904ca91e138740ccdad974af9cff787c6159c0fe9'
+b2sums=('d67ca17a3ec95e7a204e8f429c12792ae2dfd2b2f5c89648bda270db0c60419d5c69384b7cc0bf0182288b70dfdc2ce7e590cbf7f2de44220845b84d10aba34e'
         'f8aa4e47ede5efc642c97fb30dd483c9e120b58f05964711c0c2bce831c90e0129f5c0ec544a47bcd769159eb1dadd79ccfe34311436e56208ac2af4567cab51')
 
 prepare() {
