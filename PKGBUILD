@@ -1,16 +1,17 @@
 # Maintainer: Julian Houba <craftingdragon007 at outlook dot com>
 pkgname='caqtdm'
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="caQtDM is a popular Epics framework for developing panels"
 arch=('any')
 url="http://caqtdm.github.io/"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-tools' 'qwt-qt6' 'epics-base' 'zeromq' 'python' 'bash' 'glibc' 'gcc-libs')
-makedepends=('patch' 'make' 'gcc' 'git')
+makedepends=('patch' 'make' 'gcc' 'git' 'qt6-5compat')
 source=("git+https://github.com/caqtdm/caqtdm.git#tag=V4.5.0"
-        "fix_qwt_static_cast_gcc.patch")
-sha512sums=('SKIP' '10e281ea0f6670ff908421622589b217187e998abd260a3a2a2f43d8d8f577ce072379aa21f35506208c27d2a3c8fd69295ae05a8f90dbdae597a58fdf8568ad')
+        "fix_qwt_static_cast_gcc.patch"
+        "no_rpath.patch")
+sha512sums=('SKIP' '10e281ea0f6670ff908421622589b217187e998abd260a3a2a2f43d8d8f577ce072379aa21f35506208c27d2a3c8fd69295ae05a8f90dbdae597a58fdf8568ad'  '0b65a78690a223fa4114982604caf865cff0257126a6c299966508b8f21583755259cb71b07fa51f9614a13d75bd9474aed66295396235faa9404a3d1b371dd3')
 
 prepare() {
     # Write environment variables to env_config.sh
@@ -48,8 +49,11 @@ export PYTHONINCLUDE=/usr/include/python$PYTHONVERSION
 export PYTHONLIB=/usr/lib/
 EOF
 
-    # Patch broken files
+    echo patching broken files
     patch --forward --strip=1 --input="${srcdir}/fix_qwt_static_cast_gcc.patch"
+    echo patching config for rpath removal
+    cd "$srcdir/caqtdm"
+    patch --forward --strip=1 --input="${srcdir}/no_rpath.patch"
 }
 
 build() {
@@ -74,7 +78,7 @@ package() {
     mkdir -p "${pkgdir}/usr/include/caqtdm/caQtDM_Plugins"
     mkdir -p "${pkgdir}/usr/lib"
     mkdir -p "${pkgdir}/usr/lib/qt6/plugins/designer/"
-
+    mkdir -p "${pkgdir}/etc/ld.so.conf.d/"
     
     # Install binaries
     cp -r $srcdir/binaries/* $pkgdir/opt/caqtdm/lib/qt6
@@ -100,6 +104,11 @@ package() {
     echo "assistant6 -register \$CAQTDM_HOME/doc/caQtDM.qch" >> "$pkgdir/opt/caqtdm/lib/qt6/caqtdm_designer"
     echo "export QT_PLUGIN_PATH=\$CAQTDM_HOME/lib/qt6" >> "$pkgdir/opt/caqtdm/lib/qt6/caqtdm_designer"
     echo "designer6 \$@" >> "$pkgdir/opt/caqtdm/lib/qt6/caqtdm_designer"
+
+    # Create linker config for finding so files without rpath
+    echo "/opt/caqtdm/lib/qt6" > "$pkgdir/etc/ld.so.conf.d/caqtdm.conf"
+    echo "/opt/caqtdm/lib/qt6/designer" >> "$pkgdir/etc/ld.so.conf.d/caqtdm.conf"
+    echo "/opt/caqtdm/lib/qt6/controlsystems" >> "$pkgdir/etc/ld.so.conf.d/caqtdm.conf"
 
     # Make the script executable
     chmod +x $pkgdir/opt/caqtdm/lib/qt6/caqtdm_designer

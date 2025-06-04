@@ -1,0 +1,184 @@
+diff --git a/caQtDM.pri b/caQtDM.pri
+index c281141d..02cae259 100644
+--- a/caQtDM.pri
++++ b/caQtDM.pri
+@@ -4,7 +4,7 @@ archive_plugin {
+ 
+         unix:!macx:!ios:!android {
+                 message("archive_plugin configuration unix:!macx:!ios:!android")
+-                LIBS += -L$(CAQTDM_COLLECT) -Wl,-rpath,$(QTDM_RPATH) -lcaQtDM_Lib
++                LIBS += -L$(CAQTDM_COLLECT) -lcaQtDM_Lib
+                 CONFIG += release
+         }
+ 
+@@ -44,7 +44,7 @@ demo_plugin {
+         unix:!macx:!ios:!android {
+                 message("demo_plugin configuration unix:!macx:!ios:!android")
+  		INCLUDEPATH   += $(EPICSINCLUDE)/os/Linux
+-                LIBS += -L$(CAQTDM_COLLECT) -Wl,-rpath,$(QTDM_RPATH) -lcaQtDM_Lib
++                LIBS += -L$(CAQTDM_COLLECT)  -lcaQtDM_Lib
+  		CONFIG += release
+ 	}
+ 
+@@ -87,7 +87,7 @@ gps_plugin {
+         unix:!macx:!ios:!android {
+                 message("gps_plugin configuration unix:!macx:!ios:!android")
+                 INCLUDEPATH   += $(EPICSINCLUDE)/os/Linux
+-                LIBS += -L$(CAQTDM_COLLECT) -Wl,-rpath,$(QTDM_RPATH) -lcaQtDM_Lib
++                LIBS += -L$(CAQTDM_COLLECT)  -lcaQtDM_Lib
+                 CONFIG += release
+         }
+ 
+@@ -130,7 +130,7 @@ bsread_Plugin {
+         unix:!macx:!ios:!android {
+                 message(“bsread_plugin configuration unix:!macx:!ios:!android”)
+  		INCLUDEPATH   += $(EPICSINCLUDE)/os/Linux
+-                LIBS += -L$(CAQTDM_COLLECT) -Wl,-rpath,$(QTDM_RPATH) -lcaQtDM_Lib
++                LIBS += -L$(CAQTDM_COLLECT)  -lcaQtDM_Lib
+  		CONFIG += release
+ 	}
+ 
+@@ -171,8 +171,8 @@ epics3_plugin {
+ #for epics 3.15 and gcc we need this
+                 INCLUDEPATH   += $(EPICSINCLUDE)/compiler/gcc
+ 
+-                LIBS += -L$(EPICSLIB) -Wl,-rpath,$(EPICSLIB) -lca -lCom
+- 		LIBS += -L$(QTBASE) -Wl,-rpath,$(QTDM_RPATH) -lcaQtDM_Lib
++                LIBS += -L$(EPICSLIB)  -lca -lCom
++ 		LIBS += -L$(QTBASE)  -lcaQtDM_Lib
+  		CONFIG += release
+ 	}
+ 
+@@ -227,7 +227,7 @@ environment_Plugin {
+                 message(“environment_plugin configuration unix:!macx:!ios:!android”)
+                 INCLUDEPATH   += $(EPICSINCLUDE)
+                 INCLUDEPATH   += $(EPICSINCLUDE)/os/Linux
+-                LIBS += -L$(QTBASE) -Wl,-rpath,$(QTDM_RPATH) -lcaQtDM_Lib
++                LIBS += -L$(QTBASE)  -lcaQtDM_Lib
+                 CONFIG += release
+         }
+ 
+@@ -236,7 +236,7 @@ environment_Plugin {
+                 INCLUDEPATH   += $(EPICSINCLUDE)
+                 INCLUDEPATH   += $(EPICSINCLUDE)/os/Linux
+                 LIBS += -L$(CAQTDM_COLLECT) -lqtcontrols
+-		LIBS += -L$(QTBASE) -Wl,-rpath,$(QTDM_RPATH) -lcaQtDM_Lib
++		LIBS += -L$(QTBASE)  -lcaQtDM_Lib
+ 		LIBS += $$(EPICSLIB)/libCom.dylib
+ 
+ 
+@@ -302,8 +302,8 @@ epics4_plugin {
+ 
+                 !EPICS4_STATICBUILD {
+                    message( "epics4_plugin build with shared object libraries of epics4" )
+-                   LIBS += -L$(EPICSLIB) -Wl,-rpath,$(EPICSLIB) -lca -lCom -lpvAccess -lpvAccessCA -lpvData -lpvaClient -lnt
+-                   LIBS += -L$(QTBASE) -Wl,-rpath,$(QTDM_RPATH) -lcaQtDM_Lib
++                   LIBS += -L$(EPICSLIB)  -lca -lCom -lpvAccess -lpvAccessCA -lpvData -lpvaClient -lnt
++                   LIBS += -L$(QTBASE)  -lcaQtDM_Lib
+                 }
+                 EPICS4_STATICBUILD  {
+                    message( "epics4_plugin build with static libraries of epics4" )
+@@ -311,7 +311,7 @@ epics4_plugin {
+                    LIBS += $(EPICSLIB)/libpvData.a
+                    LIBS += $(EPICSLIB)/libpvaClient.a
+                    LIBS += $(EPICSLIB)/libnt.a
+-                   LIBS += -L$(EPICSLIB) -Wl,-rpath,$(EPICSLIB) -lca -lCom
++                   LIBS += -L$(EPICSLIB)  -lca -lCom
+                 }
+                 CONFIG += release
+                 CAQTDM_PSI_SPECIAL_EPICS7_C11 {
+@@ -403,7 +403,7 @@ caQtDM_QtControls {
+  		OBJECTS_DIR = obj
+ 		DESTDIR = $$(CAQTDM_COLLECT)
+  		INCLUDEPATH += $$(QWTINCLUDE)
+-                LIBS += -L$$(QWTLIB) -Wl,-rpath,$(QWTLIB) -l$$(QWTLIBNAME)
++                LIBS += -L$$(QWTLIB) -l$$(QWTLIBNAME)
+   	}
+ 
+         macx {
+@@ -452,8 +452,8 @@ caQtDM_QtControls {
+ caQtDM_Lib {
+         unix:!macx:!ios:!android  {
+                 message("caQtDM_Lib configuration : unix:!macx:!ios:!android")
+-                LIBS += -L$(EPICSLIB) -Wl,-rpath,$(EPICSLIB) -lCom
+-      		LIBS += -L$(CAQTDM_COLLECT) -Wl,-rpath,$(QTDM_RPATH) -lqtcontrols
++                LIBS += -L$(EPICSLIB)  -lCom
++      		LIBS += -L$(CAQTDM_COLLECT)  -lqtcontrols
+       		INCLUDEPATH += $(EPICSINCLUDE)/os/Linux
+ #for epics 3.15 and gcc we need this
+                 INCLUDEPATH   += $(EPICSINCLUDE)/compiler/gcc
+@@ -544,11 +544,11 @@ caQtDM_Viewer {
+                         message("caQtDM_viewer configuration : !ios!android (all unixes + mac)")
+                         DESTDIR = $(CAQTDM_COLLECT)
+                  !macx: {CONFIG += x11}
+-                        LIBS += -L$(QTBASE) -Wl,-rpath,$(QTDM_RPATH) -lcaQtDM_Lib
+-                        LIBS += -L$(QTBASE) -Wl,-rpath,$(QTDM_RPATH) -lqtcontrols
++                        LIBS += -L$(QTBASE)  -lcaQtDM_Lib
++                        LIBS += -L$(QTBASE)  -lqtcontrols
+                         ADL_EDL_FILES {
+-                           LIBS += -L$(QTBASE) -Wl,-rpath,$(QTDM_RPATH) -ladlParser
+-                           LIBS += -L$(QTBASE) -Wl,-rpath,$(QTDM_RPATH) -ledlParser
++                           LIBS += -L$(QTBASE)  -ladlParser
++                           LIBS += -L$(QTBASE)  -ledlParser
+                         }
+                         LIBS += -L$(CAQTDM_COLLECT) -L$(CAQTDM_COLLECT)/designer
+                 }
+@@ -972,7 +972,7 @@ Define_ZMQ_Lib{
+         }
+ 
+         unix:!macx {
+-                 LIBS += -L$$(ZMQLIB) -Wl,-rpath,$$(ZMQLIB) -lzmq
++                 LIBS += -L$$(ZMQLIB) -lzmq
+                  #LIBS += $$(ZMQLIB)/libzmq.a
+ 	}
+         macx {
+@@ -996,7 +996,7 @@ Define_Build_Python {
+ 	   unix:!macx {
+ 	      DEFINES += PYTHON
+ 	      INCLUDEPATH += $(PYTHONINCLUDE)
+-	      LIBS += -L$(PYTHONLIB) -Wl,-rpath,$(PYTHONLIB) -lpython$(PYTHONVERSION)
++	      LIBS += -L$(PYTHONLIB) -lpython$(PYTHONVERSION)
+ 	    }
+ 	    unix:macx {
+ 	       DEFINES += PYTHON
+diff --git a/caQtDM_Lib/caQtDM_Plugins/archive/archiveCA/archiveCA.pro b/caQtDM_Lib/caQtDM_Plugins/archive/archiveCA/archiveCA.pro
+index 24b3a861..938b1d8b 100644
+--- a/caQtDM_Lib/caQtDM_Plugins/archive/archiveCA/archiveCA.pro
++++ b/caQtDM_Lib/caQtDM_Plugins/archive/archiveCA/archiveCA.pro
+@@ -33,7 +33,7 @@ HEADERS         = ../../controlsinterface.h archiveCA_plugin.h ../archiverCommon
+ SOURCES         =  archiveCA_plugin.cpp ../archiverCommon.cpp
+ TARGET          = archiveCA_plugin
+ 
+-LIBS += -L$(EPICSLIB) -Wl,-rpath,$(EPICSLIB) -lca -lCom
++LIBS += -L$(EPICSLIB)  -lca -lCom
+ 
+ QMAKESPEC = $$(QMAKESPEC)
+ X64 = $$find(QMAKESPEC, 64)
+diff --git a/caQtDM_QtControls/plugins/plugins.pri b/caQtDM_QtControls/plugins/plugins.pri
+index baa75977..af0b7bcb 100644
+--- a/caQtDM_QtControls/plugins/plugins.pri
++++ b/caQtDM_QtControls/plugins/plugins.pri
+@@ -73,8 +73,8 @@ unix:!ios {
+    }
+ 
+    unix:!macx {
+-      LIBS += -L$(QWTLIB) -Wl,-rpath,$(QWTLIB) -l$$(QWTLIBNAME)
+-      LIBS += -L$(CAQTDM_COLLECT) -Wl,-rpath,$(QTDM_RPATH) -lqtcontrols
++      LIBS += -L$(QWTLIB) -l$$(QWTLIBNAME)
++      LIBS += -L$(CAQTDM_COLLECT)  -lqtcontrols
+    }
+ 
+    macx: {
+diff --git a/caQtDM_Viewer/parserEDM/parserEDM.pro b/caQtDM_Viewer/parserEDM/parserEDM.pro
+index f4082f61..d79866cb 100644
+--- a/caQtDM_Viewer/parserEDM/parserEDM.pro
++++ b/caQtDM_Viewer/parserEDM/parserEDM.pro
+@@ -23,7 +23,7 @@ SOURCES += \
+ 
+ TARGET = edl2ui
+ 
+-#LIBS += -L$(CAQTDM_COLLECT) -Wl,-rpath,$(QTDM_RPATH) -ledlParser
++#LIBS += -L$(CAQTDM_COLLECT)  -ledlParser
+ LIBS += $(CAQTDM_COLLECT)/libedlParser.a
+ OTHER_FILES += \
+     stylesheet.qss
