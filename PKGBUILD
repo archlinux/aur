@@ -12,7 +12,7 @@ _name=audit-userspace
 pkgver=4.0.3
 pkgrel=1
 pkgdesc='Userspace components of the audit framework'
-url='https://people.redhat.com/sgrubb/audit'
+url="https://github.com/linux-audit/audit-userspace"
 arch=(x86_64)
 license=(
   GPL-2.0-or-later
@@ -27,7 +27,7 @@ provides=(
   libaudit.so
 )
 source=(
-  https://github.com/linux-audit/$_name/archive/v$pkgver/$_name-v$pkgver.tar.gz
+  $url/archive/v$pkgver/$_name-v$pkgver.tar.gz
 )
 sha512sums=('a20d2f832632fa844764086aac98c80f7fcb120ceeaae7472248e04eec0493981e31fd59f22c3f0dbff81ccbcd132b8297812f2b4cdb87b866c59aedf3611342')
 b2sums=('35c5c45773b931d0751abf7e22130ce1217f96acb1192bd9351f54dc4f34e9a94fc42392287fd241bc76e7fac06b30e96ea34bfd7302a37a10851bd1e36cccc5')
