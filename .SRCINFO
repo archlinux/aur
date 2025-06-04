@@ -1,6 +1,6 @@
 pkgbase = icestorm-nightly
 	pkgdesc = Lattice iCE40 FPGAs Bitstream Documentation
-	pkgver = 20250603_3cdcf4b
+	pkgver = 20250604_f31c39c
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/icestorm
@@ -14,7 +14,7 @@ pkgbase = icestorm-nightly
 	provides = icestorm
 	conflicts = icestorm-git
 	options = !strip
-	source = icestorm::git+https://github.com/YosysHQ/icestorm.git#commit=3cdcf4b
+	source = icestorm::git+https://github.com/YosysHQ/icestorm.git#commit=f31c39c
 	sha256sums = SKIP
 
 pkgname = icestorm-nightly
