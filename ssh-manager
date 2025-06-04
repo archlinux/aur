@@ -214,6 +214,7 @@ def signal_handler(sig, frame):
 def bye():
     deleteTmp()
     print(f"{bcolors.FAIL}GoodBye!{bcolors.ENDC}")
+    exit()
 
 def services_type(c):
     return {0: "ssh", 1: "rdesktop"}.get(c, "Invalid!")
