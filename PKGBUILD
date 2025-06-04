@@ -1,7 +1,7 @@
 # Maintainer: Dmytro Meleshko <qzlgeb.zryrfuxb@tznvy.pbz>
 _pkgname=emmylua-ls
 pkgname="${_pkgname}-bin"
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Lua Language Server based on EmmyLua-Analyzer-Rust"
 arch=('x86_64' 'aarch64' 'riscv64')
