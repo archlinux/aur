@@ -1,10 +1,12 @@
 #!/usr/bin/env python
+import base64
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QTextEdit, QMessageBox, QSpinBox, QDialog, QFormLayout, QDialogButtonBox, QMainWindow, QAction, QMenu
 import sys
 import hashlib
 import bcrypt
 from argon2 import PasswordHasher
+
 
 class Argon2ConfigDialog(QDialog):
     def __init__(self, parent=None):
@@ -122,6 +124,18 @@ class PasswordHasherApp(QMainWindow):
         configure_bcrypt_action.triggered.connect(self.configure_bcrypt)
         configure_menu.addAction(configure_bcrypt_action)
 
+        tools_menu = menubar.addMenu("Tools")
+        base64_menu = QMenu("Base64", self)
+        tools_menu.addMenu(base64_menu)
+
+        encode_action = QAction("Encode", self)
+        encode_action.triggered.connect(self.encode_base64)
+        base64_menu.addAction(encode_action)
+
+        decode_action = QAction("Decode", self)
+        decode_action.triggered.connect(self.decode_base64)
+        base64_menu.addAction(decode_action)
+
     def show_about_dialog(self):
         QMessageBox.information(
             self,
@@ -198,6 +212,39 @@ class PasswordHasherApp(QMainWindow):
             result.append(f"{algo}: {'MATCH' if match else 'NO MATCH'}")
 
         QMessageBox.information(self, "Verification Result", "\n".join(result))
+
+    def show_custom_message(self, title, text):
+        dialog = QDialog(self)
+        dialog.setWindowTitle(title)
+        layout = QVBoxLayout()
+
+        editor = QTextEdit()
+        editor.setReadOnly(True)
+        editor.setText(text)
+        editor.setMinimumSize(600, 300)
+        layout.addWidget(editor)
+
+        buttons = QDialogButtonBox(QDialogButtonBox.Ok)
+        buttons.accepted.connect(dialog.accept)
+        layout.addWidget(buttons)
+
+        dialog.setLayout(layout)
+        dialog.exec_()
+    def encode_base64(self):
+        text, ok = QtWidgets.QInputDialog.getText(self, "Base64 Encode", "Enter text to encode:")
+        if ok and text:
+            encoded = base64.b64encode(text.encode('utf-8')).decode('utf-8')
+            self.show_custom_message("Encoded Base64", encoded)
+
+    def decode_base64(self):
+        text, ok = QtWidgets.QInputDialog.getText(self, "Base64 Decode", "Enter Base64 text to decode:")
+        if ok and text:
+            try:
+                decoded = base64.b64decode(text.encode('utf-8')).decode('utf-8')
+                self.show_custom_message("Decoded Base64", decoded)
+            except Exception as e:
+                QMessageBox.critical(self, "Decode Error", f"Invalid Base64 input.\n\n{str(e)}")
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
