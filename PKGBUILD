@@ -57,7 +57,7 @@ build() {
     -D BUILD_APCUPSD=ON \
     -D BUILD_MPD=ON \
     -D BUILD_HDDTEMP=ON \
-     \
+    -D BUILD_XMMS2=ON \
     -D BUILD_CMUS=ON \
     -D BUILD_IPV6=ON \
     -D BUILD_WAYLAND=ON \
