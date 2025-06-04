@@ -5,7 +5,7 @@
 
 pkgname=libjwt
 pkgver=3.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="JWT C Library"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/benmcollins/libjwt"
@@ -15,7 +15,7 @@ checkdepends=('check')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/benmcollins/libjwt/archive/v${pkgver}.tar.gz"
 init-jwk_set.patch)
 sha256sums=('900b89695dc4da96629778d3713c8194d99ca12c8b585af0306badecfa4cbcf8'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+            '141a0176faa957f26a24d46b9a56bc152ab030873fc6c34012b8cd9bfad21d32')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
