@@ -1,7 +1,7 @@
 pkgbase = ed-odyssey-materials-helper-bin
 	pkgdesc = Elite Dangerous Odyssey Materials Helper
 	pkgver = 2.181
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jixxed/ed-odyssey-materials-helper
 	arch = x86_64
 	license = GPL-3.0
