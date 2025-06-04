@@ -5,7 +5,7 @@
 
 pkgname=libjwt
 pkgver=3.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="JWT C Library"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/benmcollins/libjwt"
