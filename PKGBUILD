@@ -6,7 +6,7 @@ pkgdesc="Equibop is a Vesktop fork that gives you the performance of web Discord
 pkgver=2.1.4
 # Reminder for devs: don't forget to update the electron version on equibop.sh
 pkgrel=1
-electron=electron35
+electron=electron36
 arch=('x86_64' 'aarch64')
 url="https://github.com/Equicord/Equibop"
 license=('GPL3')
