@@ -1,7 +1,7 @@
 # Maintainer: David Campbell <dcampbell24@gmail.com>
 
 pkgname=hnefatafl-copenhagen
-pkgver=1.1.4
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client."
 url="https://hnefatafl.org"
@@ -11,11 +11,11 @@ provides=("hnefatafl-copenhagen")
 conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib")
 makedepends=("base-devel" "clang" "llvm" "mold" "pandoc" "rustup")
-source=("https://github.com/dcampbell24/hnefatafl-copenhagen/archive/refs/tags/v1.1.4.tar.gz")
-sha256sums=("769cc19ae201899e50a5f727a493664af82ebbf1c7842ecbded5ee4c58a9bb5c")
+source=("https://github.com/dcampbell24/hnefatafl-copenhagen/archive/refs/tags/v1.2.1.tar.gz")
+sha256sums=("224f05477fe1c44423bf250f49cbfd0481b72fa91b6e3e36bb1ebc065c78d0ec")
 
 build() {
-    tar -xvzf v1.1.4.tar.gz
+    tar -xvzf v1.2.1.tar.gz
     cd "$pkgname-$pkgver"
     cargo build --release --bin hnefatafl-client --no-default-features --features client,sound,timer,www
 
@@ -48,6 +48,6 @@ package() {
 }
 
 check() {
-        cd "$pkgname-$pkgver"
-        .githooks/pre-commit
+    cd "$pkgname-$pkgver"
+    .githooks/pre-commit
 }
