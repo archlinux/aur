@@ -13,13 +13,13 @@ optdepends=(
 )
 source=("https://github.com/SW-philip/sqlch-suite/releases/download/v0.1.1/sqlch-suite-0.1.1.tar.gz")
 sha256sums=('144d8bfccfd0cd14a5d4e734f448fb5022c755302033019e1607a9730d13b588')
-
+# just for reference 144d8bfccfd0cd14a5d4e734f448fb5022c755302033019e1607a9730d13b588
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # Install binaries
-  install -Dm755 bin/sqlchctl "$pkgdir/usr/bin/sqlchctl"
-  install -Dm755 bin/squelchknob "$pkgdir/usr/bin/squelchknob"
+  install -Dm755 sqlchctl "$pkgdir/usr/bin/sqlchctl"
+  install -Dm755 squelchknob "$pkgdir/usr/bin/squelchknob"
   install -Dm755 sqlchtray "$pkgdir/usr/bin/sqlchtray"
 
   # Install icons
