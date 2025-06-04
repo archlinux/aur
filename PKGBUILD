@@ -6,9 +6,10 @@ url='https://github.com/Akash420-oss/project-monalisa'
 pkgdesc="This project allows you to explore networking protocols by sending custom packets, monitoring traffic, and identifying services like SSH, FTP, and Telnet without using traditional commands or tools."
 arch=('any')
 license=('MIT')
-depends=('git' 'firefox' 'wireshark-qt' 'gnome-terminal' 'python' 'nmap' 'termshark' 'tcpdump' 'nmap' 'scapy' 'python-progressbar' 'python-rich' 'python-distro' 'python-termcolor' 'python-prettytable' 'python-treelib')
-checkdepends=('git' 'firefox' 'wireshark-qt' 'gnome-terminal' 'python' 'python-pip' 'termshark' 'tcpdump' 'nmap' 'scapy' 'python-progressbar' 'python-rich' 'python-distro' 'python-termcolor' 'python-prettytable' 'python-treelib')
-makedepends=('git' 'firefox' 'wireshark-qt' 'gnome-terminal' 'python' 'python-pip' 'termshark' 'tcpdump' 'nmap')
+depends=('git' 'proxychains' 'sudo' 'firefox' 'wireshark-qt' 'gnome-terminal' 'python' 'nmap' 'termshark' 'tcpdump' 'nmap' 'scapy' 'python-progressbar' 'python-rich' 'python-distro' 'python-termcolor' 'python-prettytable' 'python-treelib')
+#checkdepends=('git' 'firefox' 'wireshark-qt' 'gnome-terminal' 'python' 'python-pip' 'termshark' 'tcpdump' 'nmap' 'scapy' 'python-progressbar' 'python-rich' 'python-distro' 'python-termcolor' 'python-prettytable' 'python-treelib')
+makedepends=('git')
+source=("$pkgname-git::https://github.com/akash420-oss/Project-Monalisa.git#tag=0.1.1")
 source=($pkgname::git+https://github.com/Akash420-oss/Project-Monalisa.git)
 md5sums=('SKIP')
 prepare(){
