@@ -15,6 +15,6 @@ pkgbase = sqlch-suite
 	optdepends = gum: TUI interface in sqlchknob
 	optdepends = jq: JSON parsing for radio-browser search
 	source = https://github.com/SW-philip/sqlch-suite/releases/download/v0.1.1/sqlch-suite-0.1.1.tar.gz
-	sha256sums = 9e77b0e295b7ba9b45007a739a9d91c7e8cbe18f4cb654c61538fc5d3ebc9bf6
+	sha256sums = 144d8bfccfd0cd14a5d4e734f448fb5022c755302033019e1607a9730d13b588
 
 pkgname = sqlch-suite
