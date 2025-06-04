@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-multimedia
-_qtver=6.9.0
+_qtver=6.9.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,9 +18,11 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtmultimedia-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Fix-compile-flags-of-resonance-audio-for-mingw-w64.patch')
-sha256sums=('995c3b194f3de3e1929280639642f7661d94aa57523c459dbbf2f71dbdcaa18c'
-            'f7a6a5e9d3b0638e442f16896f9ceb7c33e77893721c610b8a81f5f72e3fd061')
+        '0001-Fix-compile-flags-of-resonance-audio-for-mingw-w64.patch'
+        '0002-Fix-casing-when-including-wininet.h.patch')
+sha256sums=('955e36459518ee55f8e2bb79defc6e44aa94dc1edf5ac58a22d7734b2e07391d'
+            'f974e0a54693cda47d07964c44130e66e8c4e6207e5e3be4fd3fb8b2d12a05fa'
+            '273c69ad51282eb63a2e427239ad771a55d4469cfb2272d853b3308c94a676f2')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
@@ -41,6 +43,10 @@ prepare () {
 build() {
   for _arch in ${_architectures}; do
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
+
+    # workaround https://gcc.gnu.org/bugzilla/show_bug.cgi?id=120495
+    [[ $pkgname =~ .*-clang-.* ]] || export CXXFLAGS+=' -Wno-template-body -fcoroutines'
+
     $_arch-cmake -G Ninja -B build-$_arch -S $_pkgfqn \
       -DFEATURE_pkg_config=ON \
       -DFEATURE_wmsdk=ON \
