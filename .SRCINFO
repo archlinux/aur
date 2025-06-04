@@ -1,0 +1,20 @@
+pkgbase = vitch
+	pkgdesc = A stupidly simple system fetch that is inspired by Nitch! (Written in Vlang)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/Redefa/Vitch
+	install = vitch.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = ISC
+	makedepends = git
+	makedepends = vlang
+	makedepends = clang
+	depends = vlang
+	source = git+https://codeberg.org/Redefa/Vitch
+	source = vitch.install
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = vitch
