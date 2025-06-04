@@ -1,0 +1,5 @@
+[pypy3-requests]
+source = "github"
+github = "psf/requests"
+use_latest_release = "true"
+prefix = "v"
