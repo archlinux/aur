@@ -1,4 +1,5 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: moyi geek <moyigeek@qq.com>
 
 pkgname=quarkdown
 pkgver=1.3.1
@@ -26,6 +27,8 @@ package() {
 	local _sharedir="/usr/share/java/$pkgname"
 	install -Dm0644 -t "$pkgdir/$_sharedir" "build/libs/$pkgname.jar"
 	# install -Dm0755 -t "$pkgdir/usr/bin/" "build/scripts/$pkgname"
+    mkdir -p "$pkgdir/$_sharedir/../lib/qmd"
+	unzip -q -o -j build/distributions/quarkdown.zip "quarkdown/lib/qmd/*" -d "$pkgdir/$_sharedir/../lib/qmd"
 	cat <<- EOF | install -Dm0755 /dev/stdin "$pkgdir/usr/bin/$pkgname"
 		#!/usr/bin/env bash
 		exec java -jar '$_sharedir/$pkgname.jar' "\$@"
