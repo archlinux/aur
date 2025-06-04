@@ -1,0 +1,26 @@
+From 63b17396c09ff70b47281c982fc63b953a501e7e Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Tue, 3 Jun 2025 22:18:13 +0200
+Subject: [PATCH 2/2] Fix casing when including `wininet.h`
+
+Change-Id: I8ae8a61e555842278e26c48a44c8ff57b3bb716d
+---
+ src/plugins/multimedia/windows/player/mfplayersession.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/plugins/multimedia/windows/player/mfplayersession.cpp b/src/plugins/multimedia/windows/player/mfplayersession.cpp
+index ccdd5b6c5..94218a5b9 100644
+--- a/src/plugins/multimedia/windows/player/mfplayersession.cpp
++++ b/src/plugins/multimedia/windows/player/mfplayersession.cpp
+@@ -30,7 +30,7 @@
+ #include <mfidl.h>
+ #include <mmdeviceapi.h>
+ #include <propvarutil.h>
+-#include <Wininet.h>
++#include <wininet.h>
+ #include <functiondiscoverykeys_devpkey.h>
+ 
+ //#define DEBUG_MEDIAFOUNDATION
+-- 
+2.49.0
+
