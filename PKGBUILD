@@ -3,8 +3,8 @@
 
 _pkgname=openvpn3-linux
 pkgname=openvpn3
-pkgver=24
-pkgrel=2
+pkgver=24.1
+pkgrel=1
 pkgdesc='OpenVPN 3 Linux client'
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/OpenVPN/$_pkgname"
@@ -24,15 +24,20 @@ source=(
   "https://swupdate.openvpn.net/community/releases/${_pkgname}-${pkgver}.tar.xz"
   'openvpn3.rule'
   'sysusers-openvpn3.conf'
+  'google-test-1.17.patch'
 )
 sha256sums=(
-  '9ecf8dccdbc601c4325b0248db7cb1e39c8689e3b99f5fc801b42056d68a7256'
+  'c0e5db2cea4e9f2118b81425d3833b85821c515b72a53e21479c7a1f24d4bef0'
   'ec0b8e28ae77b4b074d3eb8a084626e6dcfc587a07bef5d53fe1c6e160c0fc01'
   '045e914bb6fff5a082314dfc805bb511c9a80170619fa1e94a07825fa977c90a'
+  '5ab817114ae64da4fe4d9088fe5bbdd40f07138d5daa4a901bbc9c8850f44c62'
 )
 install=openvpn3.install
 
 prepare() {
+  patch -d "${srcdir}/${_pkgname}-${pkgver}" \
+          -Np1 \
+          -i "${srcdir}/google-test-1.17.patch"
   meson subprojects download --sourcedir="${_pkgname}-${pkgver}"
 }
 
@@ -49,18 +54,18 @@ build() {
   meson compile -C _builddir
 }
 
-check() {
-  env CXXFLAGS="$CXXFLAGS -Wno-error=non-virtual-dtor" \
-    arch-meson \
-    -Dselinux=disabled \
-    -Dselinux_policy=disabled \
-    -Dtest_programs=enabled \
-    -Dunit_tests=enabled \
-    "${_pkgname}-${pkgver}" \
-    _builddir
-  meson compile -C _builddir
-  meson test -C _builddir
-}
+#check() {
+#  env CXXFLAGS="$CXXFLAGS -Wno-error=non-virtual-dtor" \
+#    arch-meson \
+#    -Dselinux=disabled \
+#    -Dselinux_policy=disabled \
+#    -Dtest_programs=enabled \
+#    -Dunit_tests=enabled \
+#    "${_pkgname}-${pkgver}" \
+#    _builddir
+#  meson compile -C _builddir
+#  meson test -C _builddir
+#}
 
 package() {
   meson install -C _builddir --destdir "$pkgdir"

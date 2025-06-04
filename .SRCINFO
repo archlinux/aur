@@ -1,7 +1,7 @@
 pkgbase = openvpn3
 	pkgdesc = OpenVPN 3 Linux client
-	pkgver = 24
-	pkgrel = 2
+	pkgver = 24.1
+	pkgrel = 1
 	url = https://codeberg.org/OpenVPN/openvpn3-linux
 	install = openvpn3.install
 	arch = x86_64
@@ -26,11 +26,13 @@ pkgbase = openvpn3
 	optdepends = mbedtls: mbed TLS version
 	optdepends = polkit>=0.112: for systemd-resolved integration
 	optdepends = repkg: Automatically rebuild the package on dependency updates
-	source = https://swupdate.openvpn.net/community/releases/openvpn3-linux-24.tar.xz
+	source = https://swupdate.openvpn.net/community/releases/openvpn3-linux-24.1.tar.xz
 	source = openvpn3.rule
 	source = sysusers-openvpn3.conf
-	sha256sums = 9ecf8dccdbc601c4325b0248db7cb1e39c8689e3b99f5fc801b42056d68a7256
+	source = google-test-1.17.patch
+	sha256sums = c0e5db2cea4e9f2118b81425d3833b85821c515b72a53e21479c7a1f24d4bef0
 	sha256sums = ec0b8e28ae77b4b074d3eb8a084626e6dcfc587a07bef5d53fe1c6e160c0fc01
 	sha256sums = 045e914bb6fff5a082314dfc805bb511c9a80170619fa1e94a07825fa977c90a
+	sha256sums = 5ab817114ae64da4fe4d9088fe5bbdd40f07138d5daa4a901bbc9c8850f44c62
 
 pkgname = openvpn3
