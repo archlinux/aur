@@ -1,38 +1,46 @@
 # Maintainer: robertfoster
 
 pkgname=partclone-git
-pkgver=1142.3ecae45
-pkgrel=2
-pkgdesc="Utilities to back up and restore used-blocks of a partition."
+pkgver=1468.ee77626
+pkgrel=1
+pkgdesc="Utilities to save and restore used blocks on a partition"
 arch=('i686' 'x86_64')
-url="http://partclone.nchc.org.tw/"
+url="https://partclone.org/"
 license=('GPL')
-depends=('progsreiserfs' 'ntfs-3g' 'nilfs-utils')
+depends=('ntfs-3g' 'nilfs-utils')
 makedepends=('git')
-provides=('partclone')
-conflicts=('partlcone')
-source=('partclone::git+https://github.com/Thomas-Tsai/partclone.git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+https://github.com/Thomas-Tsai/${pkgname%-git}.git")
 
 build() {
-  cd partclone
-
-  ./autogen  
-  ./configure --prefix=/usr --enable-extfs --enable-reiserfs --enable-fat \
-    --enable-hfsp --enable-btrfs --enable-ncursesw --enable-ntfs \
-    --enable-exfat --enable-f2fs --enable-minix --enable-nilfs2 --enable-xfs \
+  cd "${pkgname%-git}"
+  ./autogen
+  ./configure \
+    --prefix=/usr \
+    --enable-extfs \
+    --enable-fat \
+    --enable-hfsp \
+    --enable-btrfs \
+    --enable-ncursesw \
+    --enable-ntfs \
+    --enable-exfat \
+    --enable-f2fs \
+    --enable-minix \
+    --enable-nilfs2 \
+    --enable-xfs \
     --sbindir=/usr/bin
-
   make
 }
 
 package() {
-  cd partclone
-  make DESTDIR="$pkgdir/" install
+  cd ${pkgname%-git}
+  make PREFIX=/usr DESTDIR="$pkgdir" install
 }
 
 pkgver() {
-  cd partclone
+  cd ${pkgname%-git}
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
-md5sums=('SKIP')
+sha256sums=('SKIP')
