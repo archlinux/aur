@@ -1,0 +1,18 @@
+pkgbase = pypy3-pooch
+	pkgdesc = A friend to fetch your data files
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://github.com/fatiando/pooch
+	arch = any
+	license = BSD-3-Clause
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	makedepends = pypy3-setuptools-scm
+	depends = pypy3-platformdirs
+	depends = pypy3-packaging
+	depends = pypy3-requests
+	source = pooch-1.8.2.tar.gz::https://github.com/fatiando/pooch/archive/v1.8.2.tar.gz
+	source = fixwheel.patch::https://github.com/fatiando/pooch/commit/96bd5437.patch
+	sha512sums = 7110811103c36de75542280b7cd4f0c2148786c0e455a4465fdf8eb96640043ca1c6daa638755c2ad5cf9be0dbe89e646417a75e52321f199ae2b55e8960a4bc
+
+pkgname = pypy3-pooch

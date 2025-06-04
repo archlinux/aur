@@ -1,0 +1,5 @@
+[pypy3-pooch]
+source = "github"
+github = "fatiando/pooch"
+use_latest_release = "true"
+prefix = "v"
