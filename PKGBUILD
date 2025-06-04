@@ -1,9 +1,11 @@
 # Maintainer: MajorX234 <majorx234 at gmail com>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
+# Contributor: Austin Robinson <austin.rbsn@gmail.com>
 
 _hkgname=GLUT
 pkgname=haskell-glut
 pkgver=2.7.0.16
-pkgrel=2
+pkgrel=3
 pkgdesc="A binding for the OpenGL Utility Toolkit"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
