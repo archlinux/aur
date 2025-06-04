@@ -5,7 +5,7 @@ _mayaver=2026
 _mayaminor=0
 
 pkgname=maya-usd-bin
-pkgver=0.31.0
+pkgver=0.32.0
 pkgrel=1
 pkgdesc='Autodesk Maya Universal Scene Description Plugin'
 arch=('x86_64')
@@ -17,12 +17,13 @@ conflicts=('maya-usd')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
 source=("https://github.com/Autodesk/maya-usd/releases/download/v${pkgver}/MayaUSD_${pkgver}_Maya${_mayaver}_Linux.run")
-b2sums=('dc3e0be604948fcb4c13e3d93080b5c0973b315d8817a7cdccf4caa36963592cdc1ce85487057849a68913e9c6d365465378a03dd615bfa0a838807678c92bbc')
+b2sums=('dccd645cc31bcdbca587fb130d10a23d56c08c0dcb5ea33aaebe7be7e17cc942773cdeb324b12cc6e0f3c5795ca09173bc6ea3dc46d174e03024eb5f07223e91')
 
 options=(!strip)
 
 prepare() {
     chmod +x ./MayaUSD_${pkgver}_Maya${_mayaver}_Linux.run
+    rm *.rpm
     ./MayaUSD_${pkgver}_Maya${_mayaver}_Linux.run --tar xvf
     echo 'Extracting rpm...'
     bsdtar -xf *.rpm
