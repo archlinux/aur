@@ -2,7 +2,7 @@
 _pkgname=wenku
 pkgname="baidu${_pkgname}-bin"
 _zhsname='百度文库'
-pkgver=3.2.0
+pkgver=3.2.3
 _electronversion=22
 pkgrel=1
 pkgdesc="Baidu wenku Client.(Prebuilt version.Use system-wide electron)一款由百度发布的供网友在线分享文档的平台"
@@ -19,7 +19,7 @@ depends=(
     'nodejs'
 )
 makedepends=(
-    'p7zip'
+    '7zip'
     'asar'
     'gendesk'
     'curl'
@@ -29,11 +29,11 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.exe::https://edu-wenku.bdimg.com/v1/na/0807/PC%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%89%88%E6%9C%AC%E5%8C%85/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%20Setup%20${pkgver}.exe"
+    "${pkgname%-bin}-${pkgver}.exe::https://edu-wenku.bdimg.com/v1/na/0807/PC%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%89%88%E6%9C%AC%E5%8C%85/${_pkgname}-Setup-${pkgver}.exe"
     "LICENSE.html::https://edu-wenku.bdimg.com/v1/pc/protocols/help24-new.htm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('dc136baca762c55bda49d546c63d55ea39b96162e97bcb99325fa75d093c2f50'
+sha256sums=('70401d9b7b39f5c38ff9f73041a2e87f18619c9b5f565ef6176711a9d48023ce'
             'eb85aa9b3586dcd16b0f18b4b467b46b076688f9d1f723dea7f2eb92cd797ce7'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
@@ -44,8 +44,13 @@ prepare() {
         s/@cfgdirname@/${_pkgname}-pc/g
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
-    sed -i "3i\Name[zh_CN]=${_zhsname}" "${srcdir}/${pkgname%-bin}.desktop"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Office" \
+        --name="${pkgname%-bin}" \
+        --exec="${pkgname%-bin} %U" \
+        --custom="Name[zh_CN]=${_zhsname}"
     rm -rf "${srcdir}/tmp"
     install -Dm755 -d "${srcdir}/tmp"
     7z x -aoa "${srcdir}/${pkgname%-bin}-${pkgver}.exe" -o"${srcdir}/tmp"
