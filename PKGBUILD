@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-scxml
-_qtver=6.9.0
+_qtver=6.9.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,13 +18,17 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtscxml-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('a73bb5241c124d776d79ea24749d707b71365e395d8af3382a1f1c43a69a6892')
+sha256sums=('0c33de2023b33a54fa6debd46f422440dca92da532faa7742af051fd88254780')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   for _arch in ${_architectures}; do
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
+
+    # workaround https://gcc.gnu.org/bugzilla/show_bug.cgi?id=120495
+    [[ $pkgname =~ .*-clang-.* ]] || export CXXFLAGS+=' -Wno-template-body -fcoroutines'
+
     $_arch-cmake -G Ninja -B build-$_arch -S $_pkgfqn \
       -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
