@@ -1,5 +1,5 @@
 pkgbase = topgrade-bin
-	pkgdesc = Invoke the upgrade procedure of multiple package managers
+	pkgdesc = Upgrade all the things
 	pkgver = 16.0.3
 	pkgrel = 1
 	url = https://github.com/topgrade-rs/topgrade
