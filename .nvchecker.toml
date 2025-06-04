@@ -1,0 +1,6 @@
+[gog-pony-island]
+source = "jq"
+url = "https://www.gogdb.org/data/products/1454596244/product.json"
+filter = ".dl_installer | map(select(.os == \"linux\"))[0] | .version"
+from_pattern = " \\(gog-([^)]+)\\)"
+to_pattern = ".\\1"

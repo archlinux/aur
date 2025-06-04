@@ -6,7 +6,7 @@ PKG_USER_DATA_HOME="${XDG_DATA_HOME:-"${HOME}/.local/share"}/${PKGNAME}"
 
 echo >&2 "Initializing"
 
-APPDIR_SOURCE='/opt/pony-island/data/noarch'
+APPDIR_SOURCE='/opt/pony-island'
 USER_OVERLAYDIR="${PKG_USER_DATA_HOME}/overlay"
 
 echo >&2 "Refreshing symlinks from ${USER_OVERLAYDIR}"
@@ -27,7 +27,7 @@ cp -vP --preserve=mode "${APPDIR_SOURCE}/game/64/PonyIsland.x86_64" \
 
 echo >&2 "==> Done"
 
-echo >&2 "Launching app"
+echo >&2 "Launching game"
 cd "${USER_OVERLAYDIR}"
 ./start.sh "$@"
 echo >&2 "==> Finished"
