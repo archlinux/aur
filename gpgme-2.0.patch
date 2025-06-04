@@ -1,0 +1,12 @@
+diff --git a/tool/seahorse-pgp-operation.c b/tool/seahorse-pgp-operation.c
+index 1c01c13..f1c459a 100644
+--- a/tool/seahorse-pgp-operation.c
++++ b/tool/seahorse-pgp-operation.c
+@@ -300,7 +300,6 @@ event_cb (void *data, gpgme_event_io_t type, void *type_data)
+         break;
+ 
+     case GPGME_EVENT_NEXT_KEY:
+-    case GPGME_EVENT_NEXT_TRUSTITEM:
+     default:
+         /* Ignore unsupported event types */
+         break;
