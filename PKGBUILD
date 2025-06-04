@@ -13,6 +13,7 @@ optdepends=(
 )
 source=("https://github.com/SW-philip/sqlch-suite/releases/download/v0.1.1/sqlch-suite-0.1.1.tar.gz")
 sha256sums=('eff44fd2ca7e3e895ba28b6d4ae5ff1da9bfcd4adc38be6a89e6d220f80ceed0')
+
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
@@ -25,5 +26,5 @@ package() {
   install -Dm644 assets/sqlchtray-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/sqlch.png"
 
   # License
-install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
