@@ -1,6 +1,6 @@
 # Maintainer: Philip J. Repko <you@example.com>
 pkgname=sqlch-suite
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Terminal-based internet radio suite with TUI, tray, and controller"
 arch=('any')
@@ -20,10 +20,10 @@ package() {
   # Install binaries
   install -Dm755 bin/sqlchctl "$pkgdir/usr/bin/sqlchctl"
   install -Dm755 bin/squelchknob "$pkgdir/usr/bin/squelchknob"
-  install -Dm755 sqlchtray.py "$pkgdir/usr/bin/sqlchtray"
+  install -Dm755 sqlchtray "$pkgdir/usr/bin/sqlchtray"
 
   # Install icons
-  install -Dm644 assets/sqrrlch_icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/sqlch.png"
+  install -Dm644 assets/sqlchtray-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/sqlch.png"
 
   # License
 install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
