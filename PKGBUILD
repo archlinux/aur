@@ -5,7 +5,7 @@
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
 _appname=SiYuan
-pkgver=3.1.31
+pkgver=3.1.32
 _electronversion=35
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system.(Prebuilt version.Use system-wide electron)"
@@ -30,8 +30,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('9d57437e3dcbab063fd7e522b095ab36442e2cb2ecbe79495b25797a3b56dfdc')
-sha256sums_x86_64=('80011f3148355a3fea869b62884f1683c7bd69781b3aad168f685b1430d51064')
+sha256sums_aarch64=('221f792ed4566a0ada609f2b4f20a9443c3ec08be88321f7cfc080ce562e3d76')
+sha256sums_x86_64=('b467a07af6c07eeb5ab4117fc7e6f221f373200db5f0543f0afe9907aec797cb')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -47,7 +47,7 @@ prepare() {
         s/Utility/Office/g
         3i\Name[zh_CN]=思源笔记
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
-    find "${srcdir}/opt/${_appname}/resources" -type d -exec chmod 755 {} \;
+    find "${srcdir}/opt/${_appname}/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
