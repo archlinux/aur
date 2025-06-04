@@ -1,24 +1,28 @@
 pkgbase = wangle-git
-	pkgdesc = A full featured, high performance C++ futures implementation
-	pkgver = 0.13.0.r152.g0eae7be
+	pkgdesc = C++ networking library providing client/server abstractions for building services
+	pkgver = 2025.06.02.00+r6863+g86633ba4b
 	pkgrel = 1
 	url = https://github.com/facebook/wangle
-	arch = i686
 	arch = x86_64
-	license = BSD
+	license = Apache-2.0
+	checkdepends = expat
 	makedepends = git
+	makedepends = boost
 	makedepends = cmake
+	makedepends = gtest
+	depends = double-conversion
+	depends = fizz
+	depends = fmt
 	depends = folly
-	depends = boost
-	depends = boost-libs
-	depends = openssl
-	depends = google-glog
+	depends = gcc-libs
 	depends = gflags
-	provides = wangle
+	depends = glibc
+	depends = google-glog
+	depends = openssl
+	provides = wangle=2025.06.02.00
+	provides = libwangle.so
 	conflicts = wangle
-	replaces = wangle
 	source = git+https://github.com/facebook/wangle.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = wangle-git
-

@@ -1,40 +1,76 @@
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
-# Contributor: Joel Teichroeb <joel@teichroeb.net>
-# Contributor: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer: envolution
+# Contributor: Carl Smedstad <carsme@archlinux.org>
+# Contributor: László Várady <laszlo.varady93@gmail.com>
+# Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
+# Contributor: Daichi Shinozaki <dsdseg at gmail dot com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=wangle-git
-pkgver=0.13.0.r152.g0eae7be
+_pkgname=wangle
+pkgver=2025.06.02.00+r6863+g86633ba4b
 pkgrel=1
-pkgdesc='A full featured, high performance C++ futures implementation'
-arch=(i686 x86_64)
-url='https://github.com/facebook/wangle'
-license=(BSD)
+pkgdesc="C++ networking library providing client/server abstractions for building services"
+arch=(x86_64)
+url="https://github.com/facebook/wangle"
+license=(Apache-2.0)
+depends=(
+  double-conversion
+  fizz
+  fmt
+  folly
+  gcc-libs
+  gflags
+  glibc
+  google-glog
+  openssl
+)
+makedepends=(
+  git
+  boost
+  cmake
+  gtest
+)
+checkdepends=(expat)
+provides=("wangle=${pkgver%%+*}" libwangle.so)
 conflicts=(wangle)
-provides=(wangle)
-replaces=(wangle)
-depends=(folly boost boost-libs openssl google-glog gflags)
-makedepends=(git cmake)
 source=(git+https://github.com/facebook/wangle.git)
-md5sums=(SKIP)
+sha256sums=('SKIP')
 
 pkgver() {
-  cd wangle
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/$_pkgname"
+  _version=$(git describe --tags --abbrev=0 | tr - .)
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
 }
 
 prepare() {
-  cd wangle/wangle
-  sed -i 's|std=c++0x|std=c++11|' CMakeLists.txt
+  cd $_pkgname
+  # Use system CMake config instead of bundled module, incompatible with glog
+  # v0.7.0+
+  sed -i 's/find_package(Glog REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
+    wangle/CMakeLists.txt
 }
 
 build() {
-  cd wangle/wangle
-	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTS=OFF
-  make
+  cd $_pkgname
+  cmake -S wangle -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev \
+    -DBUILD_TESTS=ON \
+    -DBUILD_SHARED_LIBS=ON \
+    -DPACKAGE_VERSION="${pkgver%%+*}"
+  cmake --build build
 }
 
 package() {
-  cd wangle/wangle
-  make DESTDIR="$pkgdir" install
-}
+  cd $_pkgname
+  DESTDIR="$pkgdir" cmake --install build
 
+  # Remove empty directories to avoid namcap warnings
+  rm -vr "$pkgdir/usr/include/wangle/service/test" || true
+  rm -vr "$pkgdir/usr/include/wangle/ssl/test/certs" || true
+  rm -vr "$pkgdir/usr/include/wangle/util/test" || true
+}
+# vim:set ts=2 sw=2 et:
