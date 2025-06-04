@@ -1,6 +1,6 @@
 pkgbase = dnscontrol
 	pkgdesc = Synchronize your DNS to multiple providers from a simple DSL
-	pkgver = 4.20.0
+	pkgver = 4.21.0
 	pkgrel = 1
 	url = https://stackexchange.github.io/dnscontrol/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = dnscontrol
 	license = MIT
 	makedepends = go
 	depends = glibc
-	provides = dnscontrol=4.20.0
-	source = dnscontrol-4.20.0.tar.gz::https://github.com/StackExchange/dnscontrol/archive/v4.20.0.tar.gz
-	b2sums = 66f923e8b18414ba49b7ba177d5e0b69f719e8b47fd2610f0e111ac6e3021b97d1087ec372e5b9398095406e06cb7206d0be9dc2b7d7de5a259ea8d9f0ba0689
+	provides = dnscontrol=4.21.0
+	source = dnscontrol-4.21.0.tar.gz::https://github.com/StackExchange/dnscontrol/archive/v4.21.0.tar.gz
+	b2sums = 5023ab99bf400d4812b16246f63505d72a405358024057196b74f59814e76802b11b0d57e6605591880c87ce281a62a51473b9f2a55f87c7e2295b6da8e8f3dc
 
 pkgname = dnscontrol
