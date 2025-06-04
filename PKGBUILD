@@ -2,7 +2,7 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 _pkgname=eden
 pkgname=$_pkgname-git
-pkgver=r27334.fb3988a78a
+pkgver=r27340.6397bb0809
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -10,7 +10,7 @@ url=https://eden-emulator.github.io/
 license=('GPL-3.0')
 provides=('eden')
 depends=('qt6-base' 'qt6-webengine' 'clang' 'qt6-multimedia' 'qt6-wayland' 'qt6-tools' 'ffmpeg' 'sdl2-compat' 'gamemode' 'hicolor-icon-theme' 'brotli' 'libusb' 'enet' 'opus' 'boost')
-makedepends=('curl' 'git' 'sdl2' 'cubeb' 'vulkan-headers' 'vulkan-utility-libraries' 'gcc' 'cmake' 'clang' 'llvm' 'doxygen' 'python-pip' 'glslang' 'zip' 'unzip' 'boost' 'catch2' 'mbedtls' 'glslang' 'libzip' 'lz4' 'fmt' 'zip' 'unzip' 'nlohmann-json' 'openssl' 'opus' 'zlib' 'zstd')
+makedepends=('curl' 'yasm' 'git' 'sdl2' 'cubeb' 'vulkan-headers' 'vulkan-utility-libraries' 'gcc' 'cmake' 'clang' 'llvm' 'doxygen' 'python-pip' 'glslang' 'zip' 'unzip' 'boost' 'catch2' 'mbedtls' 'glslang' 'libzip' 'lz4' 'fmt' 'zip' 'unzip' 'nlohmann-json' 'openssl' 'opus' 'zlib' 'zstd')
 conflicts=('eden' 'eden-bin')
 options=('!debug' 'lto')
 source=("git+https://git.eden-emu.dev/eden-emu/eden.git"
@@ -28,6 +28,7 @@ source=("git+https://git.eden-emu.dev/eden-emu/eden.git"
 		"git+https://git.eden-emu.dev/eden-emu/simpleini.git"
 		"git+https://github.com/boostorg/headers.git"
 		"git+https://github.com/herumi/xbyak.git"
+		"ffmpeg::git+https://github.com/FFmpeg/FFmpeg.git"
 		"git+https://github.com/zyantific/zycore-c.git"  # submodule of dynarmic
 		"git+https://github.com/zyantific/zydis.git"  # submodule of dynarmic
 		"git+https://github.com/Lizzie841/unordered_dense.git"  # submodule of dynarmic
@@ -53,6 +54,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             'SKIP')
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -60,7 +62,7 @@ pkgver() {
 }
 prepare() {
 	cd $_pkgname
-	for _submodule in opus SDL cubeb dynarmic discord-rpc simpleini VulkanMemoryAllocator tzdb_to_nx cpp-jwt cpp-httplib xbyak mbedtls sirit;
+	for _submodule in opus SDL cubeb dynarmic discord-rpc simpleini VulkanMemoryAllocator tzdb_to_nx cpp-jwt cpp-httplib xbyak mbedtls sirit ffmpeg;
 		do
 		git config submodule.$_submodule.url ../$_submodule
 		done
@@ -84,7 +86,7 @@ build() {
 		-DYUZU_ENABLE_LTO=ON \
 		-DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
 		-DYUZU_USE_EXTERNAL_VULKAN_UTILITY_LIBRARIES=OFF \
-		-DYUZU_USE_BUNDLED_FFMPEG=OFF \
+		-DYUZU_USE_BUNDLED_FFMPEG=ON \
 		-DYUZU_USE_BUNDLED_VCPKG=OFF \
 		-DYUZU_TESTS=OFF
 	cmake --build Build
