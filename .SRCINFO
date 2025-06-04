@@ -1,0 +1,46 @@
+pkgbase = pacman-fancy-git
+	pkgdesc = pacman, but patched to selectively have FiraCode's progressbar on supported terminals
+	pkgver = 7.0.0.r7.g1f38429b
+	pkgrel = 1
+	url = https://www.archlinux.org/pacman/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL-2.0-or-later
+	checkdepends = python
+	checkdepends = fakechroot
+	makedepends = git
+	makedepends = asciidoc
+	makedepends = doxygen
+	makedepends = meson
+	depends = archlinux-keyring
+	depends = bash
+	depends = curl
+	depends = gpgme
+	depends = libarchive
+	depends = pacman-mirrorlist
+	optdepends = pacman-contrib: various helper utilities
+	optdepends = perl-locale-gettext: translation support in makepkg-template
+	provides = pacman=7.0.0
+	conflicts = pacman
+	options = emptydirs
+	options = strip
+	backup = etc/pacman.conf
+	backup = etc/makepkg.conf
+	source = git+https://gitlab.archlinux.org/pacman/pacman.git#branch=release/7.0.x
+	source = pacman.conf.i686
+	source = pacman.conf.x86_64
+	source = pacman.conf.arm
+	source = makepkg.conf
+	source = progress.patch
+	sha256sums = SKIP
+	sha256sums = 52d7a593fdee6ec30fbba2a0c70601f66996a490ff3a4f009665ecd132fee40e
+	sha256sums = d54141a88b71b26f3ef9f1069da528eb761ebc3b286cefba35e91c40f7aa35f8
+	sha256sums = fd476a031fd5dffebede1122a0f28fd3e613d2c55c962105f7d84ee76ed7eefd
+	sha256sums = 0c1ecbb8c57e8ef2c600b41d4458269095fc4ddb6778d0000d4a9a067f68fe2d
+	sha256sums = 3f91a3a53abe8ad58506fe25e48515074e36122c5f709aa96c7c92f3f9b66be0
+
+pkgname = pacman-fancy-git
