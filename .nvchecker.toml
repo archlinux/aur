@@ -1,0 +1,6 @@
+[libjwt2]
+source = 'github'
+github = 'benmcollins/libjwt'
+use_max_tag = true
+prefix = 'v'
+include_regex = '^v2.*'
