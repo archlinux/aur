@@ -3,10 +3,10 @@
 # Contributor: FlyInWind <2518509078@qq.com>
 pkgname=ynote-desktop-bin
 _zhsname='有道云笔记'
-pkgver=8.1.21
+pkgver=8.1.30
 _electronversion=18
-_reldate='%2F2025%2F04%2F30%2F'
-pkgrel=2
+_reldate='%2F2025%2F05%2F23%2F3d16244e'
+pkgrel=1
 pkgdesc="Netease Youdao Ynote for Linux.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://note.youdao.com/"
@@ -25,11 +25,11 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::https://cowork-common-public-cdn.lx.netease.com/artifact${_reldate}7b6607a9.deb"
+    "${pkgname%-bin}-${pkgver}.deb::https://cowork-common-public-cdn.lx.netease.com/artifact${_reldate}.deb"
     "LICENSE.html::https://note.youdao.com/license.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bdfb74d66a700217d742be40f2b97ca2e10ed4a5fb9b476b15790c54b7ea5ef7'
+sha256sums=('d4996389dc79e304071527760902c3b63be92004a790da228088eaf238aa5cca'
             'a8aec47c7cc6e6d838d525c89b58a962d650c84b0ebec09ecfb8955381fe6460'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
@@ -44,7 +44,7 @@ prepare() {
     sed -i -e "
         s/\"\/opt\/${_zhsname}\/${pkgname%-bin}\" --no-sandbox/${pkgname%-bin}/g
         s/\/opt\/${_zhsname}\/resources\/build\/icon.svg/${pkgname%-bin}/g
-        s/Utility/Utility;Office/g
+        s/Utility/Office/g
     " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_zhsname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed -i -e "
