@@ -6,7 +6,7 @@ pkgver=0.8.0
 pkgrel=1
 pkgdesc="API compatible maintained fork of google-glog application-level logging library"
 arch=(x86_64)
-url="https://ng-log.github.io/"
+url='https://ng-log.github.io/ng-log'
 license=(BSD-3-Clause)
 depends=(
   gcc-libs
