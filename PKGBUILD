@@ -11,7 +11,8 @@ depends=(pypy3-platformdirs pypy3-packaging pypy3-requests)
 makedepends=(pypy3-build pypy3-installer pypy3-setuptools-scm)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   fixwheel.patch::${url}/commit/96bd5437.patch)
-sha512sums=('7110811103c36de75542280b7cd4f0c2148786c0e455a4465fdf8eb96640043ca1c6daa638755c2ad5cf9be0dbe89e646417a75e52321f199ae2b55e8960a4bc')
+sha512sums=('7110811103c36de75542280b7cd4f0c2148786c0e455a4465fdf8eb96640043ca1c6daa638755c2ad5cf9be0dbe89e646417a75e52321f199ae2b55e8960a4bc'
+            '7f1740da65438c3858357096dd866a33a1aafb266e98dc8b33e8b9167d4775ad770661c2b4308c38277b459ad05e1f26803d3ddd002e914e1f136725ff7bd96e')
 
 prepare() {
   cd ${_base}-${pkgver}

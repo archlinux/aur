@@ -14,5 +14,6 @@ pkgbase = pypy3-pooch
 	source = pooch-1.8.2.tar.gz::https://github.com/fatiando/pooch/archive/v1.8.2.tar.gz
 	source = fixwheel.patch::https://github.com/fatiando/pooch/commit/96bd5437.patch
 	sha512sums = 7110811103c36de75542280b7cd4f0c2148786c0e455a4465fdf8eb96640043ca1c6daa638755c2ad5cf9be0dbe89e646417a75e52321f199ae2b55e8960a4bc
+	sha512sums = 7f1740da65438c3858357096dd866a33a1aafb266e98dc8b33e8b9167d4775ad770661c2b4308c38277b459ad05e1f26803d3ddd002e914e1f136725ff7bd96e
 
 pkgname = pypy3-pooch
