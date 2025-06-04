@@ -4,7 +4,7 @@
 # Contributor: Xwang <xwaang1976@gmail.com>
 _base=SU2
 pkgname=${_base,,}
-pkgver=8.1.0
+pkgver=8.2.0
 pkgrel=1
 pkgdesc="An Open-Source Suite for Multiphysics Simulation and Design"
 url="https://${pkgname}code.github.io"
@@ -14,8 +14,8 @@ makedepends=(swig python-setuptools git)
 arch=(x86_64)
 source=(${_base}-${pkgver}::git+https://github.com/${pkgname}code/${_base}.git#tag=v${pkgver}
   ${pkgname}.sh)
-sha512sums=('e0722722cb481b35c6477541576d45622daaebcbe251bfa4b4a391e2c86d84a05910c2516410174a0aaefb8a23c64be89a06cd1a4c71fe58fc0b7feb2b774975'
-  '1c753dc503cc56f86f784071a18ae71dd6fbf64a6d7948275f65cfb1187a68dbff9c01729ffdde86147fb2b8ff25cb5aaa934ffda7d3aa1563313a033d650993')
+sha512sums=('6b3bc9fa78a3ad4d57270a1492267b16ea7c7f47d2a65d9ac0cfa9498d6728abe589c0967362dc6dea23124fb869a0128ce336ea5e37d8671af95989d8a14c31'
+            '1c753dc503cc56f86f784071a18ae71dd6fbf64a6d7948275f65cfb1187a68dbff9c01729ffdde86147fb2b8ff25cb5aaa934ffda7d3aa1563313a033d650993')
 
 prepare() {
   cd ${_base}-${pkgver}
