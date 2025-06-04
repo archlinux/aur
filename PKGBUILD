@@ -1,4 +1,4 @@
-S# Maintainer: Philip J. Repko <you@example.com>
+# Maintainer: Philip J. Repko <philipjrepko@gmail.com>
 pkgname=sqlch-suite
 pkgver=0.1.1
 pkgrel=1
