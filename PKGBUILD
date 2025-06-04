@@ -19,15 +19,11 @@ _check_pypy3-setuptools() {
   pypy3 unitTests.py
 }
 
-build_pypy3-pyparsing() {
-  cd ${_base}-${pkgver}
-  pypy3 -m build --wheel --no-isolation
-}
-
 package_pypy3-pyparsing() {
   depends=(pypy3)
 
   cd ${_base}-${pkgver}
+  pypy3 -m build --wheel --no-isolation
   pypy3 -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
