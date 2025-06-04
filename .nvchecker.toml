@@ -1,0 +1,5 @@
+[ng-log]
+source = 'github'
+github = 'ng-log/ng-log'
+use_latest_release = true
+prefix = 'v'
