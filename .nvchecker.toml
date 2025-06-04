@@ -1,0 +1,4 @@
+[mergiraf-bin]
+source = "git"
+git = "https://codeberg.org/mergiraf/mergiraf.git"
+prefix = "v"
