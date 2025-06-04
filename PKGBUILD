@@ -1,8 +1,8 @@
 pkgname=llama-swap
 
-_fragment=tag=v123
+_fragment=tag=v124
 
-pkgver=123
+pkgver=124
 pkgrel=1
 pkgdesc='Model swapping for llama.cpp (or any local OpenAPI compatible server)'
 
@@ -16,8 +16,8 @@ source=(
 	"git+$url.git#$_fragment"
 	llama-swap.service
 )
-sha256sums=('5ce7a1940e21c251afd9150de921735035b9e31863ef1c2845fc2a728f8d4e1c'
-            '0fe45b16f9a1378db90aad386205b0ff1446055bd27866c7ce757d6b3ae76fe0')
+sha256sums=('c74013f8018f7a09e71792a6025990aa70ac600d5430724f097ab716f1ba12a0'
+            'b4546cefb0c4255e432c6bd95143ae19735068951945d233011b02caecc641ff')
 
 pkgver() {
 	git -C $pkgname describe --first-parent --tags | sed 's/^v//; s/-/+/g'
@@ -35,21 +35,21 @@ build() {
 	export CGO_CXXFLAGS="$CXXFLAGS"
 	export CGO_LDFLAGS="$LDFLAGS"
 
-	local GOBUILDOPTS=(
+	local BUILD_OPTS=(
 		-v
 		-trimpath
 		-mod=readonly
 		-modcacherw
 		-buildmode=pie
 		-ldflags="
-        	-linkmode=external
-        	-X main.version=$pkgver
-        	-X main.commit=$(git rev-parse --short HEAD)
-        	-X main.date=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-        "
+			-linkmode=external
+			-X main.version=$pkgver
+			-X main.commit=$(git rev-parse --short HEAD)
+			-X main.date=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+		"
 	)
 
-	go build "${GOBUILDOPTS[@]}"
+	go build "${BUILD_OPTS[@]}"
 }
 
 package() {

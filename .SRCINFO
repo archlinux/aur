@@ -7,7 +7,7 @@ pkgbase = llama-swap
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/mostlygeek/llama-swap.git#tag=v123
+	source = git+https://github.com/mostlygeek/llama-swap.git#tag=v124
 	source = llama-swap.service
 	sha256sums = 5ce7a1940e21c251afd9150de921735035b9e31863ef1c2845fc2a728f8d4e1c
 	sha256sums = 0fe45b16f9a1378db90aad386205b0ff1446055bd27866c7ce757d6b3ae76fe0
