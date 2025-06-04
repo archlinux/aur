@@ -1,0 +1,16 @@
+pkgbase = python-jpy
+	pkgdesc = Bi-directional Python-Java bridge
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/jpy-consortium/jpy
+	arch = x86_64
+	license = Apache
+	depends = jdk-openjdk
+	depends = python
+	noextract = ${_pkgname}-${pkgver}-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	source = jpy-1.1.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl::https://github.com/jpy-consortium/jpy/releases/download/v1.1.0/jpy-1.1.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	source = LICENSE.txt::https://raw.githubusercontent.com/jpy-consortium/jpy/v1.1.0/LICENSE.txt
+	sha256sums = 9fdb2cac7649465b25df55fa102fbc2cebdbbecd496799f882a19744e732e0fe
+	sha256sums = 58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd
+
+pkgname = python-jpy
