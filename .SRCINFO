@@ -8,7 +8,7 @@ pkgbase = python-west
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.6
+	depends = python>=3.9
 	depends = python-colorama
 	depends = python-yaml>=5.1
 	depends = python-pykwalify

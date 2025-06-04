@@ -6,11 +6,11 @@ pkgname="python-west"
 _name=${pkgname##"python-"}
 pkgdesc="Zephyr RTOS Project meta-tool"
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 arch=("any")
 url="https://pypi.org/project/west/"
 license=("Apache")
-depends=("python>=3.6"
+depends=("python>=3.9"
          "python-colorama"
          "python-yaml>=5.1"
          "python-pykwalify"
