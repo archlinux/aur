@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=static-web-server
-pkgver=2.36.1
+pkgver=2.37.0
 pkgrel=1
 pkgdesc="A cross-platform, high-performance and asynchronous web server for static files-serving"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 backup=('etc/default/static-web-server')
 options=('!lto')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/static-web-server/static-web-server/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e242e21b3e4b46395bda21b351438df6b5c54b1319a41a86b52eb49ed5567a40')
+sha256sums=('596444e276dc912b5ae0223cad15fc9d700b66a6e466b8904175f3f7f5546b64')
 
 
 prepare() {
