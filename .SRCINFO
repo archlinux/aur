@@ -1,7 +1,7 @@
 pkgbase = speedtest++
 	pkgdesc = Unofficial speedtest.net cli using raw TCP for better accuracy. Written in C++.
 	pkgver = 1.15.r72.b743996
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/taganaka/SpeedTest
 	arch = any
 	license = MIT

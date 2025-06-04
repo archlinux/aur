@@ -3,7 +3,7 @@
 pkgname=speedtest++
 _gitname=SpeedTest
 pkgver=1.15.r72.b743996
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial speedtest.net cli using raw TCP for better accuracy. Written in C++."
 arch=('any')
 url="https://github.com/taganaka/SpeedTest"
@@ -18,6 +18,12 @@ pkgver() {
   local maj=$(grep -m 1 VERSION_MAJOR CMakeLists.txt |sed 's/[^0-9]*//g')
   local min=$(grep -m 1 VERSION_MINOR CMakeLists.txt |sed 's/[^0-9]*//g')
   printf "%s.%s.r%s.%s" $maj $min "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$_gitname"
+  # Replace any cmake_minimum_required line with version >= 3.5
+  sed -i 's/cmake_minimum_required(VERSION [0-9.]\+)/cmake_minimum_required(VERSION 3.5)/' CMakeLists.txt
 }
 
 build() {
