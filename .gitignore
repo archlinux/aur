@@ -6,3 +6,4 @@ pkg/
 src/
 *.tar.gz
 apifox-*
+.history/

@@ -52,5 +52,3 @@ sed -i "s/pkgver=${current_version}/pkgver=${next_version}/" PKGBUILD;
 echo "Update version to $next_version";
 
 mv "${current_file}" "apifox-v${next_version}.zip";
-
-makepkg --printsrcinfo > .SRCINFO
