@@ -1,0 +1,18 @@
+pkgbase = myhelper-bin
+	pkgdesc = 🔥跨平台桌面效率工具 - 支持可上传、下载的插件市场
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/MyHelperHub/MyHelper
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	depends = webkit2gtk-4.1
+	provides = myhelper-bin
+	provides = myhelper
+	conflicts = myhelper
+	source = LICENSE::https://raw.githubusercontent.com/MyHelperHub/MyHelper/refs/heads/main/LICENSE
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = myhelper-0.0.1_amd64.deb::https://github.com/MyHelperHub/MyHelper/releases/download/v0.0.1/myhelper_0.0.1_amd64.deb
+	sha256sums_x86_64 = 413213557351437fe9db4a93f1d0229f6cff3cdb320495b0bb657473ef129838
+
+pkgname = myhelper-bin
