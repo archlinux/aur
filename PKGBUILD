@@ -11,7 +11,7 @@ arch=('any')
 url="https://${pkgname}.apache.org"
 license=('Apache-2.0')
 depends=('java-runtime-headless')
-optdepends=('tesseract: OCR support' 'sox: Audio support' 'ffmpeg: Video support' 'exiftool: EXIF Metadata support')
+optdepends=('tesseract: OCR support' 'sox: Audio support' 'ffmpeg: Video support' 'perl-image-exiftool: EXIF Metadata support')
 source=("${pkgname}-${pkgver}.jar::https://dlcdn.apache.org/${pkgname}/${pkgver}/${pkgname}-app-${pkgver}.jar"
         "${pkgname}.desktop"
         "${pkgname}.sh"
