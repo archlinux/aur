@@ -1,44 +1,29 @@
-# Maintainer: Your Name <your_email@example.com>
+# Maintainer: Velade <support@velhlkj.com>
 # Contributor: 程式夥伴 (AI Assistant)
 
 pkgname=scrcpy-launcher
-pkgver=2.0.0 # 請在更新時修改此版本號
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A simple launcher for scrcpy, built with NW.js."
 arch=('x86_64')
 url="https://github.com/velade/scrcpy-launcher"
 license=('MIT')
 
-# 依賴: gtk3, nss, alsa-lib, libxtst, libxss 是 NW.js 的常見依賴
-# scrcpy 和 android-tools (提供 adb) 是此啟動器功能所需的
 depends=('gtk3' 'nss' 'alsa-lib' 'libxtst' 'libxss' 'scrcpy' 'android-tools')
-makedepends=('nodejs') # 預編譯的 NW.js 通常不需要
+makedepends=()
 
-# 來源檔案
-# 1. 從 GitHub Release 下載的預編譯 NW.js 應用程式壓縮檔
-# 2. 你本地的 .desktop 檔案
-# 3. 從 GitHub 下載的 LICENSE 檔案
 _archive_filename="Scrcpy_Launcher_Linux64.tar.gz"
 source=("${pkgname}-v${pkgver}-${_archive_filename}::https://github.com/velade/scrcpy-launcher/releases/download/${pkgver}/${_archive_filename}"
         "${pkgname}.desktop"
         "LICENSE::https://raw.githubusercontent.com/velade/scrcpy-launcher/${pkgver}/LICENSE")
 
-# 校驗和 - 請務必在更新 pkgver 或修改 .desktop 檔案後更新這些值
-# Scrcpy_Launcher_Linux64.tar.gz (v0.1.8) 的 SHA256 校驗和
-# LICENSE (for v0.1.8) 的 SHA256 校驗和
-sha256sums=('c9d3e88cb7d060fedb53460a9143f2992fa90be46fb55690955ebc11d4b4596a'
+sha256sums=('9c75f9114dde25ce220d03ee84ad243d29a27734e85fb6699e13ee0e9da9b003'
             '93b6dd07d33b0153bcfba6721797290839410870b8f7a379998b4e5fe306de46'
             'a6f3cabbef34490c82cf1eaaadfe3591c5dc8f3924c11c9da74609b660c7c72d')
 
-# prepare() 函數用於整理原始碼，因為 .tar.gz 檔案解壓縮後沒有根目錄
 prepare() {
   cd "${srcdir}"
-  # 建立一個臨時目錄來存放解壓縮後的應用程式檔案，避免與 .desktop 和 LICENSE 檔案混淆
   mkdir -p "${srcdir}/app_extracted_contents"
-
-  # 將 .tar.gz 解壓縮到臨時目錄
-  # makepkg 已經自動解壓縮了 source[0] (我們的 .tar.gz) 到 $srcdir
-  # 我們需要將這些檔案移動到 app_extracted_contents/
 
   mv "${srcdir}/app" \
      "${srcdir}/lib" \
@@ -59,10 +44,8 @@ prepare() {
      "${srcdir}/app_extracted_contents/"
 }
 
-# build() 函數對於預編譯的二進位檔案通常是空的
 build() {
-  # 不需要編譯步驟
-  : # Bash 'no-op' (什麼都不做)
+  :
 }
 
 package() {
