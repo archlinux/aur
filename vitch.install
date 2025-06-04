@@ -1,0 +1,6 @@
+post_install() {
+	echo ">>> You may rmeove Vlang and Clang if no longer needed, but if you are interested learning in V you may visit their website"
+	echo "Vitch has successfully installed! /usr/bin/vitch"
+	echo "sudo pacman -Rns vlang clang"
+	echo "doas pacman -Rns vlang clang"
+}
