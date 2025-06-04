@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Elite Dangerous Odyssey Materials Helper
 Comment=Helper for managing materials in Elite Dangerous Odyssey
-Exec=EliteDangerousOdysseyMaterialsHelper
+Exec="Elite Dangerous Odyssey Materials Helper Launcher"
 Icon=ed-odyssey-materials-helper-bin
 Terminal=false
 Type=Application
