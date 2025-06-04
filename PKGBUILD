@@ -2,21 +2,24 @@
 # Contributor: h3li0p4us3 Moharami <h3li0p4us3 at proton dot me>
 
 pkgname=dnschanger-desktop
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="DNS Changer for Windows, Mac and Linux operating systems"
 arch=('x86_64')
 url="https://dnschanger.github.io"
 license=('MIT')
-_electron=electron33
+_electron=electron36
 depends=('bash' "${_electron}" 'gcc-libs' 'glibc')
-makedepends=('gendesk' 'npm' 'python-setuptools')
+makedepends=('gendesk' 'nvm' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DnsChanger/dnsChanger-desktop/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname%-desktop}.sh")
-sha256sums=('e1849aef7b5a8b9cfd8256fd2416bfa4c2d47234bbed9ab7db653187a385a5ed'
+sha256sums=('9efaca7f0c66c590e909b02e485a356afcc6fd1b1b946f7bc9a4a0d96f087b4e'
             '98d8ee3e79aab28eaad39a4064dce1c5eaf946b7f437fd421b3bca30dd294810')
 
 prepare() {
+    source /usr/share/nvm/init-nvm.sh
+    nvm install 22
+
     cd "dnsChanger-desktop-${pkgver}"
     gendesk -f -n \
         --pkgname "${pkgname}" \
