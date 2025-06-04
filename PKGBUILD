@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-git
-pkgver=5.72.1.r0.gd5dfcc5
+pkgver=5.73.0.r0.g38dc1eb
 pkgrel=1
 pkgdesc="qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems."
 arch=("any")
@@ -10,6 +10,7 @@ makedepends=("go>=1.24.1" "git")
 provides=("qp")
 conflicts=("qp" "qp-bin")
 replaces=("yaylog" "yaylog-bin" "yaylog-git")
+optdepends=('sqlite: RPM support')
 source=(
   "qp::git+https://github.com/Zweih/qp.git"
   "packaging::git+https://github.com/Zweih/qp.git#branch=packaging"
@@ -48,21 +49,4 @@ package() {
 
   install -Dm644 "${srcdir}/packaging/hooks/pacman/update-qp-cache.hook" \
     "$pkgdir/usr/share/libalpm/hooks/update-qp-cache.hook"
-}
-
-# Fix permission issues from previous version
-post_install() {
-  rm -rf /root/.cache/query-packages 2>/dev/null || true
-
-  for user_home in /home/*; do
-    if [ -d "$user_home/.cache/query-packages" ]; then
-      rm -rf "$user_home/.cache/query-packages" 2>/dev/null || true
-    fi
-  done
-
-  echo "qp cache cleaned - will be recreated with proper permissions"
-}
-
-post_upgrade() {
-  post_install
 }
