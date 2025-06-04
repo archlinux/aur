@@ -10,6 +10,7 @@ pkgbase = atelierb-bin
 	depends = libxinerama
 	depends = fontconfig
 	depends = libsm
+	depends = icu72-bin
 	optdepends = texlive-bin
 	optdepends = firefox
 	provides = atelierb
