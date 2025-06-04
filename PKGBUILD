@@ -12,7 +12,7 @@ optdepends=(
   'jq: JSON parsing for radio-browser search'
 )
 source=("https://github.com/SW-philip/sqlch-suite/releases/download/v0.1.1/sqlch-suite-0.1.1.tar.gz")
-sha256sums=('9e77b0e295b7ba9b45007a739a9d91c7e8cbe18f4cb654c61538fc5d3ebc9bf6')
+sha256sums=('.7bf7fa37519063848cd8651c3f98b815b741bd3fb09ffa78d032c28b066fcab7 ')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
