@@ -1,0 +1,22 @@
+diff --git a/resolvconf-override.c b/resolvconf-override.c
+index 3ce2647..d51a86d 100644
+--- a/resolvconf-override.c
++++ b/resolvconf-override.c
+@@ -87,7 +87,7 @@ struct hostent *gethostbyname(const char *name)
+ {
+ 	if (res_init () < 0)
+ 		return NULL;
+-	struct hostent * (*f)() = dlsym (RTLD_NEXT, "gethostbyname");
++	struct hostent * (*f)(const char*) = dlsym (RTLD_NEXT, "gethostbyname");
+ 	struct hostent *ret =  f(name);
+ 
+ 	return ret;
+@@ -99,7 +99,7 @@ int getaddrinfo(const char *node, const char *service,
+ {
+ 	if (res_init () < 0)
+ 		return EAI_SYSTEM;
+-	int (*f)() = dlsym (RTLD_NEXT, "getaddrinfo");
++	int (*f)(const char*, const char*, const struct addrinfo*, struct addrinfo**) = dlsym (RTLD_NEXT, "getaddrinfo");
+ 	return f(node, service, hints, res);
+ }
+ 
