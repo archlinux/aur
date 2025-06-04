@@ -2,7 +2,7 @@
 _appname=iptvnator
 pkgname="${_appname}-electron-bin"
 _pkgname=IPTVnator
-pkgver=0.16.6
+pkgver=0.16.7
 _electronversion=27
 pkgrel=1
 pkgdesc="IPTVnator Electron 0.16 with DRM & H.265 playback support. This build version also adds Shaka player and Artplayer components.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/Mikoshi-nyudo/iptvnator-electron/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('705758c9c3a6ed637db621a2b8dfea752f1e0e8ff14315bc93bd6cf24cb37d90'
+sha256sums=('8eb8b2e9147e839d60e6874168bdcf5b9da048478ae2cb7243bfd52fae2b08fe'
             '475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
