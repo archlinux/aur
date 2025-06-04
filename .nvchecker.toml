@@ -1,0 +1,5 @@
+[pypy3-scipy]
+source = "github"
+github = "scipy/scipy"
+use_latest_release = "true"
+prefix = "v"

@@ -1,26 +1,28 @@
-_name=scipy
-pkgname=pypy3-scipy
-pkgver=1.8.0
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Michel Zou <xantares09@hotmail.com>
+_base=scipy
+pkgname=pypy3-${_base}
+pkgver=1.15.2
 pkgrel=1
-pkgdesc='Open-source software for mathematics, science, and engineering'
+pkgdesc="Fundamental algorithms for scientific computing in Python"
 arch=(x86_64)
-url='https://www.scipy.org/'
-license=(BSD)
-depends=(pypy3-numpy)
-provides=(scipy)
-makedepends=(gcc-fortran pypy3-setuptools pypy3-cython pypy3-pythran pypy3-pybind11)
-source=(https://pypi.python.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('31d4f2d6b724bc9a98e527b5849b8a7e589bf1ea630c33aa563eda912c9ff0bd')
+url="https://${_base}.org"
+license=(BSD-3-Clause)
+depends=(blas gcc-libs glibc lapack pypy3-numpy) # pypy3-platformdirs pypy3-pooch
+makedepends=(gcc-fortran pypy3-build pypy3-installer meson-pypy3 pypy3-cython pypy3-pybind11 pypy3-pythran)
+source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base}/${_base}/archive/v${pkgver}.tar.gz)
+sha512sums=('c5eba94a32970f0978780c453656f8dbe1784461e5dd37615b224079bff4aed49e20d1c183e1cad9da8aa141392c6afd33276412bd319298a5e469de327ee58a')
+options=(!lto)
 
 build() {
-  cd scipy-${pkgver}
-  pypy3 setup.py config_fc build
+  cd ${_base}-${pkgver}
+  pypy3 -m build --wheel --skip-dependency-check --no-isolation \
+    -C setup-args=-Dblas=blas \
+    -C setup-args=-Dlapack=lapack
 }
 
 package() {
-  cd scipy-$pkgver
-  pypy3 setup.py config_fc install \
-    --prefix=/opt/pypy3 --root="$pkgdir" --optimize=1
-
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" pypy3 -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/pypy3-$pkgname
 }
