@@ -3,7 +3,7 @@ _base=hatchling
 pkgname=pypy3-${_base}
 pkgdesc="Utility library for gitignore style pattern matching of file paths"
 pkgver=1.27.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/pypa/${_base::5}"
 license=(MIT)
@@ -14,11 +14,11 @@ sha512sums=('d519428c4c7c21950df2484f38332b5c89525347f3557ff21a55a85811955c8466f
 
 build() {
   cd ${_base::5}-${_base}-v${pkgver}
-  pypy3 -m build --wheel --skip-dependency-check --no-isolation
+  pypy3 -m build --wheel --no-isolation backend
 }
 
 package() {
   cd ${_base::5}-${_base}-v${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" pypy3 -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" pypy3 -m installer --destdir="$pkgdir" backend/dist/*.whl
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
