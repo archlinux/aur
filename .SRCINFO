@@ -1,0 +1,17 @@
+pkgbase = vite
+	pkgdesc = Trace explorer. Visualize execution traces in Pajé or OTF format, for debugging and profiling.
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://solverstack.gitlabpages.inria.fr/vite/
+	arch = x86_64
+	license = custom
+	depends = qt5-base
+	depends = qt5-charts
+	source = https://gitlab.inria.fr/solverstack/vite/-/archive/v1.4/vite-v1.4.tar.bz2
+	source = LICENSE::http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
+	source = vite.desktop.in
+	sha1sums = 75803a7ea237dfc961100d42410a3865f0eb9f99
+	sha1sums = dbd6cd4e7899507a33be1f8bcc67a87e7cf61f8c
+	sha1sums = 7ead22ad4f2cf618a217a3dfbdf9312a5d288aa3
+
+pkgname = vite
