@@ -1,7 +1,7 @@
 # Maintainer: ahab-schoeneberg <code at schoeneberge dot eu>
 pkgname=animolauncher-git
 pkgver=0.4.0_beta
-pkgrel=3
+pkgrel=4
 pkgdesc="GUI for launching applications, written in blazingly fast Rust!"
 arch=('x86_64')
 url="https://codeberg.org/AnimoUtils/animolauncher"
