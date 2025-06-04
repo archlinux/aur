@@ -1,0 +1,5 @@
+[pypy3-idna]
+source = "github"
+github = "kjd/idna"
+use_latest_release = "true"
+prefix = "v"

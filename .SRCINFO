@@ -1,0 +1,15 @@
+pkgbase = pypy3-idna
+	pkgdesc = Internationalized Domain Names in Applications
+	pkgver = 3.10
+	pkgrel = 1
+	url = https://github.com/kjd/idna
+	arch = any
+	license = BSD-3-Clause
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	makedepends = pypy3-flit-core
+	depends = pypy3
+	source = idna-3.10.tar.gz::https://github.com/kjd/idna/archive/v3.10.tar.gz
+	sha512sums = c3ab2d49ab0b3b96d390a6ca1634d2ea3813655df767868ca72f3d4cb0bf4c6e72830579fe0b43a49dba060cd28a66b041715ff0fd63bb27ed1b6bfa66030625
+
+pkgname = pypy3-idna
