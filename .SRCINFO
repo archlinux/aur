@@ -1,7 +1,7 @@
 pkgbase = haskell-openglraw
 	pkgdesc = A raw binding for the OpenGL graphics system
 	pkgver = 3.3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/
 	arch = i686
 	arch = x86_64

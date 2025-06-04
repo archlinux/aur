@@ -1,11 +1,12 @@
 # $Id$
+# Maintainer: MajorX234 <majorx234 at gmail dot com>
 # Maintainer: Emanuel Couto <unit73e at gmail dot com>
 # Maintainer: Carlos E. Garcia <carlos at cgarcia dot org>
 
 _hkgname=OpenGLRaw
 pkgname=haskell-openglraw
 pkgver=3.3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A raw binding for the OpenGL graphics system"
 url="http://hackage.haskell.org/package/${_hspkgname}"
 license=('custom:BSD3')
