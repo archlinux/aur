@@ -1,0 +1,15 @@
+pkgbase = pypy3-hatch-vcs
+	pkgdesc = Hatch plugin for versioning with your preferred VCS
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/ofek/hatch-vcs
+	arch = any
+	license = MIT
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	depends = pypy3-hatchling
+	depends = pypy3-setuptools-scm
+	source = hatch-vcs-0.5.0.tar.gz::https://github.com/ofek/hatch-vcs/archive/v0.5.0.tar.gz
+	sha512sums = ed2b81df3f0b51f9ebca28c023bbf1e66088971e76439ab864838012dc28ec140eadf4f07a4b7aca66b0f5c52fd3ccc001602e6c91dcc8d6241c0b56193cba54
+
+pkgname = pypy3-hatch-vcs

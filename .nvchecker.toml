@@ -1,0 +1,5 @@
+[pypy3-hatch-vcs]
+source = "github"
+github = "ofek/hatch-vcs"
+use_latest_release = true
+prefix = "v"
