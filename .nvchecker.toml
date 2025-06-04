@@ -1,0 +1,4 @@
+[pypy3-testpath]
+source = "github"
+github = "jupyter/testpath"
+use_max_tag = true

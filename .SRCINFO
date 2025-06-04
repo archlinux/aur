@@ -1,0 +1,15 @@
+pkgbase = pypy3-testpath
+	pkgdesc = A collection of utilities for Python code working with files and commands
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/jupyter/testpath
+	arch = any
+	license = BSD-3-Clause
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	makedepends = pypy3-flit-core
+	depends = pypy3
+	source = testpath-0.6.0.tar.gz::https://github.com/jupyter/testpath/archive/0.6.0.tar.gz
+	sha512sums = fe13523138c1e67f33a3aa707e81b8cc8b5a720ab231ea2c2407da003178d779a649f664213822022e26325fed4ddf468cf727737b94eb2ebf7315aacbce6857
+
+pkgname = pypy3-testpath
