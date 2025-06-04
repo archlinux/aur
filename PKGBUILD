@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 depends=('obs-studio')
 provides=('wlrobs')
 conflicts=('wlrobs-hg')
-makedepends=('wayland' 'mercurial' 'meson' 'ninja' 'wlroots0.19')
+makedepends=('wayland' 'mercurial' 'meson' 'ninja' 'wlroots0.18')
 source=("${pkgname}-v${pkgver}.tar.gz::https://hg.sr.ht/~scoopta/wlrobs/archive/v${pkgver}.tar.gz")
 sha256sums=('04b7796da8f9eb5a24fa5a23e0e87f18c6ea69632104949fbd78f0fbe693c0f6')
 
