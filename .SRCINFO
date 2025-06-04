@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-graphs
 	pkgdesc = Qt Graphs for data visualization (mingw-w64)
-	pkgver = 6.9.0
+	pkgver = 6.9.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = mingw-w64-qt6-graphs
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.9/6.9.0/submodules/qtgraphs-everywhere-src-6.9.0.tar.xz
-	sha256sums = 9e5b08cdc1934b2525b5586a458861c180ee9f3aaccf6c36bac37b502afaa0c6
+	source = https://download.qt.io/official_releases/qt/6.9/6.9.1/submodules/qtgraphs-everywhere-src-6.9.1.tar.xz
+	sha256sums = f52ddc5052cdbb5a3a321b211e42371014cccf3bc6c0f442d9bec3ddfe593444
 
 pkgname = mingw-w64-qt6-graphs
