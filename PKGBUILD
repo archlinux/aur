@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=shh
 pkgver=2025.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Automatic systemd service hardening guided by strace profiling'
 arch=('x86_64')
 url="https://github.com/desbma/${pkgname}"
@@ -22,8 +22,13 @@ prepare() {
 build() {
     cd "${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
+
     mkdir -p target/man
-    cargo run --frozen --features gen-man-pages -- ./target/man/
+    cargo run --frozen --features generate-extra -- gen-man-pages ./target/man/
+
+    mkdir -p target/shellcompletions
+    cargo run --frozen --features generate-extra -- gen-shell-complete ./target/shellcompletions
+
     cargo build --frozen --release
 }
 
@@ -37,4 +42,7 @@ package() {
     cd "${pkgname}-${pkgver}"
     install -Dm 755 -t "${pkgdir}/usr/bin" ./target/release/${pkgname}
     install -Dm 644 -t "${pkgdir}/usr/share/man/man1" ./target/man/*
+    install -Dm 644 -t "${pkgdir}/usr/share/bash-completion/completions" ./target/shellcompletions/*.bash
+    install -Dm 644 -t "${pkgdir}/usr/share/zsh/site-functions" ./target/shellcompletions/_shh
+    install -Dm 644 -t "${pkgdir}/usr/share/fish/vendor_completions.d" ./target/shellcompletions/*.fish
 }

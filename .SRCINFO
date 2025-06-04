@@ -1,7 +1,7 @@
 pkgbase = shh
 	pkgdesc = Automatic systemd service hardening guided by strace profiling
 	pkgver = 2025.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/desbma/shh
 	arch = x86_64
 	license = GPL3
