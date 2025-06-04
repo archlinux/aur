@@ -2,7 +2,7 @@
 
 _pkgname=ntfy
 pkgname=${_pkgname}sh-bin
-pkgver=2.11.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="Send push notifications to your phone or desktop using PUT/POST"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -21,11 +21,11 @@ source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux
 source_armv7h=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv7.tar.gz"
                "${_pkgname}.sysusers")
 
-sha256sums_x86_64=('61722868e2ace31f736e2b9be8ada1b42d0c2e62d0e785252fdaf482b0a677ed'
+sha256sums_x86_64=('7adec06908ee095695640474e239caa03f92b6fb9d2cdbab9f46675e86dd8901'
                    '0799a140256072b350b56c1b2db5fc21c94c6992277d6d1364c28ddf7058cc8f')
-sha256sums_aarch64=('02f742c5dd00906a28ebed3d1cb1e1aeb551ebe7789271ee3d28ae2dcc876e4c'
+sha256sums_aarch64=('75797f7eb388d74f53f249d70bad9c889635483123f6ada20a9cc04529bf9f18'
                    '0799a140256072b350b56c1b2db5fc21c94c6992277d6d1364c28ddf7058cc8f')
-sha256sums_armv7h=('b2b9b95aa896b71f36bd46f31fae277d8d94171f4209659017f026210c45e722'
+sha256sums_armv7h=('defafe8342007a921e60199d873e4885138bac4488f5727bc91f5e16453a7923'
                    '0799a140256072b350b56c1b2db5fc21c94c6992277d6d1364c28ddf7058cc8f')
 
 package() {
@@ -43,6 +43,7 @@ package() {
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "client/${_pkgname}-client.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}-client.service"
     install -Dm644 "client/client.yml" "${pkgdir}/etc/ntfy/client.yml"
+    install -Dm644 "client/user/${_pkgname}-client.service" "${pkgdir}/usr/lib/systemd/user/${_pkgname}-client.service"
     install -Dm644 "server/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
     install -Dm644 "server/server.yml" "${pkgdir}/etc/ntfy/server.yml"
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
