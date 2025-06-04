@@ -1,16 +1,17 @@
 pkgbase = libjwt
 	pkgdesc = JWT C Library
-	pkgver = 2.1.1
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/benmcollins/libjwt
 	arch = i686
 	arch = x86_64
-	license = LGPL3
-	depends = check
+	license = MPL-2.0
+	checkdepends = check
 	depends = jansson
 	depends = openssl
 	depends = gnutls
-	source = libjwt-2.1.1.tar.gz::https://github.com/benmcollins/libjwt/archive/v2.1.1.tar.gz
-	sha256sums = 5a057e536e92a0fb27785207799753fefad703ba95d8a18dfb3ae4a4a9d54a0f
+	depends = mbedtls
+	source = libjwt-3.2.1.tar.gz::https://github.com/benmcollins/libjwt/archive/v3.2.1.tar.gz
+	sha256sums = 900b89695dc4da96629778d3713c8194d99ca12c8b585af0306badecfa4cbcf8
 
 pkgname = libjwt

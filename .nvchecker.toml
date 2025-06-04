@@ -1,0 +1,5 @@
+[libjwt]
+source = 'github'
+github = 'benmcollins/libjwt'
+use_latest_release = true
+prefix = 'v'
