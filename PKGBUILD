@@ -6,12 +6,12 @@
 
 pkgname=caddy-custom
 pkgver=2.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Caddy web server with plugins'
 url='https://github.com/caddyserver/caddy'
 arch=('x86_64' 'aarch64')
 license=('Apache-2.0')
-depends=('glibc')
+depends=('mailcap')
 makedepends=('go' 'git')
 provides=('caddy')
 conflicts=('caddy')
@@ -27,9 +27,9 @@ sha256sums=('SKIP'
             '0cb259107accced91a0d50d66eaf754c2d90fd7916cd895987b9290d0a01324b'
             'b7b29543628f55a1209021a35b5769fa5424d867301a467721010e8d0324344e')
 
-if [[ "${CADDY_STATICALLY_LINKED}" == "yes" ]]
+if [[ "${CADDY_STATICALLY_LINKED}" != "yes" ]]
 then
-    depends=()
+    depends+=('glibc')
 fi
 
 prepare() {
