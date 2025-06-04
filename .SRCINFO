@@ -1,6 +1,6 @@
 pkgbase = libxfce4windowing-git
 	pkgdesc = Windowing concept abstraction library for X11 and Wayland (git checkout)
-	pkgver = 4.19.3+49+ga9b4ff4
+	pkgver = 4.20.3+4+ga0b3c31
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/libxfce4windowing/start
 	arch = i686
@@ -8,16 +8,18 @@ pkgbase = libxfce4windowing-git
 	arch = armv7h
 	arch = aarch64
 	groups = xfce4-git
-	license = LGPL2.1
+	license = GPL-2.0-or-later
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
 	makedepends = xfce4-dev-tools
 	makedepends = git
 	makedepends = wayland-protocols
 	makedepends = wlr-protocols
+	makedepends = vala
+	makedepends = meson
 	depends = libwnck3
 	depends = wayland
-	provides = libxfce4windowing=4.19.3
+	provides = libxfce4windowing=4.20.3
 	conflicts = libxfce4windowing
 	source = libxfce4windowing::git+https://gitlab.xfce.org/xfce/libxfce4windowing
 	sha256sums = SKIP

@@ -2,16 +2,16 @@
 
 _pkgname=libxfce4windowing
 pkgname=${_pkgname}-git
-pkgver=4.19.3+49+ga9b4ff4
+pkgver=4.20.3+4+ga0b3c31
 pkgrel=1
 pkgdesc="Windowing concept abstraction library for X11 and Wayland (git checkout)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/libxfce4windowing/start"
-license=('LGPL2.1')
+license=('GPL-2.0-or-later')
 groups=('xfce4-git')
 depends=('libwnck3' 'wayland')
 makedepends=('gtk-doc' 'gobject-introspection' 'xfce4-dev-tools' 'git' 
-             'wayland-protocols' 'wlr-protocols')
+             'wayland-protocols' 'wlr-protocols' 'vala' 'meson')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}")
@@ -23,22 +23,19 @@ pkgver() {
 }
 
 build() {
-  cd "${_pkgname}"
+  local meson_options=(
+    -D x11=enabled
+    -D wayland=enabled
+    -D gtk-doc=true
+    -D introspection=true
+    -D vala=enabled
+    -D tests=false
+  )
 
-  ./autogen.sh \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --disable-static \
-    --enable-wayland \
-    --enable-gtk-doc \
-    --disable-debug
-  make
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd "${_pkgname}"
-
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
