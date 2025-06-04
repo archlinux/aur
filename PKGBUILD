@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=linux-assistant-bin
-pkgver=0.5.7
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A daily linux helper with powerful integrated search, routines checks and administrative tasks. The Project is built with flutter and python.(Prebuilt version)"
 arch=('x86_64')
@@ -21,14 +21,14 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('02ffd2b014474f1e6e435a501a28dfd653ec10f6807bb396407d7762eac94e5e'
+sha256sums=('e0ea1f344a1f6687b99bd41924a0fcee95ff6c8cf4a9409f756a482f58dd5c4c'
             '55e26214c0c668492818389c24db99827d7357bd4141294e264210160e6edc77')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-     sed -i "s/\/usr\/share\/icons\/hicolor\/256x256\/apps\/${pkgname%-bin}.png/${pkgname%-bin}/g" \
+    sed -i "s/\/usr\/share\/icons\/hicolor\/256x256\/apps\/${pkgname%-bin}.png/${pkgname%-bin}/g" \
         "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
