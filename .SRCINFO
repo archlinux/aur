@@ -1,7 +1,7 @@
 pkgbase = resolvconf-override-git
 	pkgdesc = Override resolv.conf using LD_PRELOAD
 	pkgver = r15.06a91f9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/hadess/resolvconf-override
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = resolvconf-override-git
 	makedepends = ninja
 	depends = glibc
 	source = git+https://gitlab.freedesktop.org/hadess/resolvconf-override.git
+	source = gcc15.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = resolvconf-override-git
