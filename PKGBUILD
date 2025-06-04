@@ -5,15 +5,16 @@
 
 pkgname=libjwt
 pkgver=3.2.1
-pkgrel=5
+pkgrel=6
 pkgdesc="JWT C Library"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/benmcollins/libjwt"
 license=('MPL-2.0')
 depends=('jansson' 'openssl' 'gnutls' 'mbedtls')
 checkdepends=('check')
+makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/benmcollins/libjwt/archive/v${pkgver}.tar.gz"
-init-jwk_set.patch)
+  init-jwk_set.patch)
 sha256sums=('900b89695dc4da96629778d3713c8194d99ca12c8b585af0306badecfa4cbcf8'
             '141a0176faa957f26a24d46b9a56bc152ab030873fc6c34012b8cd9bfad21d32')
 
