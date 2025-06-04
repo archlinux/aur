@@ -19,7 +19,7 @@ package() {
 
   # Install binaries
   install -Dm755 sqlchctl "$pkgdir/usr/bin/sqlchctl"
-  install -Dm755 squelchknob "$pkgdir/usr/bin/squelchknob"
+  install -Dm755 squlchknob "$pkgdir/usr/bin/squlchknob"
   install -Dm755 sqlchtray "$pkgdir/usr/bin/sqlchtray"
 
   # Install icons
