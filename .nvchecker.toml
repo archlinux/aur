@@ -1,0 +1,4 @@
+[gog-thimbleweedpark-dlc-ransome-unbeeped]
+source = "jq"
+url = "https://www.gogdb.org/data/products/1858019230/product.json"
+filter = ".dl_installer | map(select(.os == \"linux\"))[0] | .version"
