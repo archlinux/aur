@@ -1,6 +1,6 @@
 pkgbase = httpdirfs-git
 	pkgdesc = A filesystem which allows you to mount HTTP directory listings
-	pkgver = r586.de9e594
+	pkgver = r603.b274dd8
 	pkgrel = 1
 	url = https://github.com/fangfufu/httpdirfs
 	arch = x86_64

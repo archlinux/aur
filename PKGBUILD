@@ -1,7 +1,7 @@
 # Maintainer: Owen Trigueros <owentrigueros@gmail.com>
 
 pkgname=httpdirfs-git
-pkgver=r586.de9e594
+pkgver=r603.b274dd8
 pkgrel=1
 pkgdesc="A filesystem which allows you to mount HTTP directory listings"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson "$pkgname" build
+  arch-meson "$pkgname" build -Dc_args="-std=gnu17"
   meson compile -C build
 }
 
