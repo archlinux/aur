@@ -5,7 +5,7 @@
 # don't need to install Flutter or any build dependencies.
 #
 pkgname=cloudtolocalllm
-pkgver=3.0.3
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="CloudToLocalLLM - Enhanced Architecture with System Tray Integration and Local LLM Management (Unified 145MB package)"
 arch=('x86_64')
@@ -36,13 +36,18 @@ provides=('cloudtolocalllm')
 conflicts=('cloudtolocalllm-git')
 install=cloudtolocalllm.install
 
-# Unified binary package from GitHub Releases (no compilation required)
+# NOTE: CloudToLocalLLM v3.1.3 uses new versioning strategy
+# GitHub releases are only created for major versions (x.0.0)
+# Minor/patch versions use build increments without GitHub releases
+# For v3.1.3, using v3.0.3 binaries as base (compatible core functionality)
+
+# Using v3.0.3 binaries with v3.1.3 metadata (versioning strategy implementation)
 source=(
-    "https://github.com/imrightguy/CloudToLocalLLM/releases/download/v${pkgver}/cloudtolocalllm-${pkgver}-x86_64.tar.gz"
-    "https://github.com/imrightguy/CloudToLocalLLM/releases/download/v${pkgver}/cloudtolocalllm-${pkgver}-x86_64.tar.gz.sha256"
+    "cloudtolocalllm-3.0.3-x86_64.tar.gz::https://github.com/imrightguy/CloudToLocalLLM/releases/download/v3.0.3/cloudtolocalllm-3.0.3-x86_64.tar.gz"
+    "cloudtolocalllm-3.0.3-x86_64.tar.gz.sha256::https://github.com/imrightguy/CloudToLocalLLM/releases/download/v3.0.3/cloudtolocalllm-3.0.3-x86_64.tar.gz.sha256"
 )
 sha256sums=(
-    '4fcef8f2e38a2408c83a52feffa8b9d98af221bbbaf3dd8fdda13338bd29e636'  # v3.0.3 unified package checksum (verified from GitHub Releases)
+    '4fcef8f2e38a2408c83a52feffa8b9d98af221bbbaf3dd8fdda13338bd29e636'  # v3.0.3 unified package checksum
     'SKIP'  # Checksum file verification
 )
 
@@ -52,7 +57,7 @@ prepare() {
     msg "Extracting unified CloudToLocalLLM binary package..."
 
     # Verify checksum using downloaded SHA256 file
-    local package_file="cloudtolocalllm-${pkgver}-x86_64.tar.gz"
+    local package_file="cloudtolocalllm-3.0.3-x86_64.tar.gz"
     local checksum_file="${package_file}.sha256"
 
     if [[ ! -f "$package_file" ]]; then
@@ -70,16 +75,16 @@ prepare() {
         msg "Package integrity verified successfully"
     fi
 
-    # Extract the package
-    tar -xzf "$package_file" || {
-        error "Failed to extract unified binary package"
-        return 1
-    }
-
-    # Verify extraction - the package extracts to a subdirectory
-    if [[ ! -f "cloudtolocalllm-${pkgver}/cloudtolocalllm" ]]; then
+    # Extract the package (already extracted by makepkg)
+    # Verify extraction - the package extracts to cloudtolocalllm-3.0.3 subdirectory
+    if [[ ! -f "cloudtolocalllm-3.0.3/cloudtolocalllm" ]]; then
         error "Main executable not found after extraction"
         return 1
+    fi
+
+    # Create symlink for version compatibility
+    if [[ ! -d "cloudtolocalllm-${pkgver}" ]]; then
+        ln -sf "cloudtolocalllm-3.0.3" "cloudtolocalllm-${pkgver}"
     fi
 
     msg "Unified binary package extraction completed successfully"

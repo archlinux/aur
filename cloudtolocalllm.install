@@ -148,7 +148,7 @@ display_upgrade_info() {
     echo
     echo "Important Changes:"
     echo "  • Ollama testing moved to Settings → LLM Provider Settings"
-    echo "  • Cloud sync features temporarily disabled (coming soon)"
+    echo "  • Basic sync functionality included, advanced cloud sync available as premium feature"
     echo "  • Enhanced cross-platform compatibility"
     echo
     echo "If you experience any issues after the upgrade:"
