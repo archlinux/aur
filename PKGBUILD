@@ -1,4 +1,5 @@
-# Maintainer: KokaKiwi <kokakiwi+aur [at] kokakiwi dot net>
+# Maintainer: Patrik Plihal <patrik dot plihal at gmail dot com>
+# Contributor: KokaKiwi <kokakiwi+aur [at] kokakiwi dot net>
 # Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 # Contributor: Ondrej Kucera <ondrej.kucera@centrum.cz>
 
