@@ -1,0 +1,30 @@
+pkgbase = fb303-git
+	pkgdesc = thrift functions for querying stats and other information from a service
+	pkgver = 2025.06.02.00
+	pkgrel = 1
+	url = https://github.com/facebook/fb303
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = boost
+	makedepends = cmake
+	makedepends = mvfst
+	depends = fbthrift
+	depends = fmt
+	depends = folly
+	depends = gcc-libs
+	depends = gflags
+	depends = glibc
+	depends = google-glog
+	depends = python
+	provides = fb303=2025.06.02.00
+	provides = libfb303.so
+	provides = libfb303_thrift_cpp.so
+	conflicts = fb303
+	options = !lto
+	source = git+https://github.com/facebook/fb303.git
+	source = fix-py-thrift-include.patch
+	sha256sums = SKIP
+	sha256sums = ea5a29bbc5db28cf694a3734090d561c7b60278d5148a5a70b238d3a6e75a4a4
+
+pkgname = fb303-git

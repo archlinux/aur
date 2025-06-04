@@ -1,0 +1,10 @@
+--- fb303/build/fbcode_builder/CMake/FBThriftPyLibrary.cmake	2025-06-04 15:34:02.822619701 -0400
++++ fb303/build/fbcode_builder/CMake/FBThriftPyLibrary.cmake	2025-06-04 15:33:40.830622087 -0400
+@@ -87,6 +87,7 @@
+       --legacy-strict
+       --gen "py:${GEN_ARG_STR}"
+       "${thrift_include_options}"
++      -I "${FBTHRIFT_INCLUDE_DIR}"
+       -o "${output_dir}"
+       "${CMAKE_CURRENT_SOURCE_DIR}/${THRIFT_FILE}"
+     WORKING_DIRECTORY
