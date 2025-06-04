@@ -1,0 +1,44 @@
+diff --unified --recursive --text --new-file edencommon-2024.10.28.00.orig/eden/common/os/CMakeLists.txt edencommon-2024.10.28.00/eden/common/os/CMakeLists.txt
+--- edencommon-2024.10.28.00.orig/eden/common/os/CMakeLists.txt	2024-10-27 17:33:45.000000000 +0100
++++ edencommon-2024.10.28.00/eden/common/os/CMakeLists.txt	2024-11-03 16:44:53.993179920 +0100
+@@ -7,6 +7,7 @@
+ file(GLOB os_sources CONFIGURE_DEPENDS *.cpp)
+ 
+ add_library(edencommon_os
++  SHARED
+   ${os_headers}
+   ${os_sources}
+ )
+diff --unified --recursive --text --new-file edencommon-2024.10.28.00.orig/eden/common/telemetry/CMakeLists.txt edencommon-2024.10.28.00/eden/common/telemetry/CMakeLists.txt
+--- edencommon-2024.10.28.00.orig/eden/common/telemetry/CMakeLists.txt	2024-10-27 17:33:45.000000000 +0100
++++ edencommon-2024.10.28.00/eden/common/telemetry/CMakeLists.txt	2024-11-03 16:44:53.993179920 +0100
+@@ -8,6 +8,7 @@
+ 
+ add_library(
+   edencommon_telemetry
++  SHARED
+   ${telemetry_headers}
+   ${telemetry_sources})
+ 
+diff --unified --recursive --text --new-file edencommon-2024.10.28.00.orig/eden/common/testharness/CMakeLists.txt edencommon-2024.10.28.00/eden/common/testharness/CMakeLists.txt
+--- edencommon-2024.10.28.00.orig/eden/common/testharness/CMakeLists.txt	2024-10-27 17:33:45.000000000 +0100
++++ edencommon-2024.10.28.00/eden/common/testharness/CMakeLists.txt	2024-11-03 16:44:53.996513258 +0100
+@@ -8,6 +8,7 @@
+ 
+ add_library(
+   edencommon_testharness
++  SHARED
+   ${testharness_headers}
+   ${testharness_sources}
+ )
+diff --unified --recursive --text --new-file edencommon-2024.10.28.00.orig/eden/common/utils/CMakeLists.txt edencommon-2024.10.28.00/eden/common/utils/CMakeLists.txt
+--- edencommon-2024.10.28.00.orig/eden/common/utils/CMakeLists.txt	2024-10-27 17:33:45.000000000 +0100
++++ edencommon-2024.10.28.00/eden/common/utils/CMakeLists.txt	2024-11-03 16:44:53.996513258 +0100
+@@ -26,6 +26,7 @@
+ 
+ add_library(
+   edencommon_utils
++  SHARED
+     ${utils_headers}
+     ${utils_sources})
+ 

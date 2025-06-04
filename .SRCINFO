@@ -1,0 +1,32 @@
+pkgbase = edencommon-git
+	pkgdesc = Shared library for Watchman and Eden projects
+	pkgver = 2025.06.02.00+r1649+g6c93ae382
+	pkgrel = 1
+	url = https://github.com/facebookexperimental/edencommon
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = boost
+	makedepends = cmake
+	makedepends = gtest
+	makedepends = mvfst
+	depends = boost-libs
+	depends = fb303
+	depends = fmt
+	depends = folly
+	depends = gcc-libs
+	depends = glibc
+	depends = google-glog
+	provides = edencommon=2025.06.02.00
+	provides = libedencommon_os.so
+	provides = libedencommon_telemetry.so
+	provides = libedencommon_testharness.so
+	provides = libedencommon_utils.so
+	conflicts = edencommon
+	options = !lto
+	source = git+https://github.com/facebookexperimental/edencommon.git
+	source = build-shared-libraries.patch
+	sha256sums = SKIP
+	sha256sums = 1f351de94a786c8be397c07454a48d28a0dd0b758924792e6e3f1f49405c492a
+
+pkgname = edencommon-git
