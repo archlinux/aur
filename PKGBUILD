@@ -28,38 +28,14 @@ optdepends=('nvidia: for NVIDIA GPU monitoring'
 provides=('conky')
 conflicts=('conky')
 replaces=('conky' 'torsmo')
-source=("git+https://github.com/Jayhub-ai/conkyluanv-autoscale-fixed.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/Jayhub-ai/conkyluanv-autoscale-fixed.git" "xmms2-optional.patch")
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
   cd "$srcdir/conkyluanv-autoscale-fixed"
   
-  # Create a patch file to make XMMS2 optional
-  cat > ../xmms2-optional.patch << 'EOL'
-diff --git a/cmake/ConkyPlatformChecks.cmake b/cmake/ConkyPlatformChecks.cmake
-index a17280c..ab87690 100644
---- a/cmake/ConkyPlatformChecks.cmake
-+++ b/cmake/ConkyPlatformChecks.cmake
-@@ -593,8 +593,13 @@ endif(BUILD_AUDACIOUS)
- 
- if(BUILD_XMMS2)
--  pkg_check_modules(XMMS2 REQUIRED xmms2-client>=0.6)
--  set(conky_libs ${conky_libs} ${XMMS2_LINK_LIBRARIES})
--  set(conky_includes ${conky_includes} ${XMMS2_INCLUDE_DIRS})
-+  pkg_check_modules(XMMS2 xmms2-client>=0.6)
-+  if(XMMS2_FOUND)
-+    set(conky_libs ${conky_libs} ${XMMS2_LINK_LIBRARIES})
-+    set(conky_includes ${conky_includes} ${XMMS2_INCLUDE_DIRS})
-+  else(XMMS2_FOUND)
-+    message(STATUS "XMMS2 client not found, disabling XMMS2 support")
-+    set(BUILD_XMMS2 OFF)
-+  endif(XMMS2_FOUND)
- endif(BUILD_XMMS2)
- 
-EOL
-  
-  # Apply the patch
-  patch -p1 -i ../xmms2-optional.patch
+  # Apply the patch to make XMMS2 optional
+  patch -p1 -i "$srcdir/xmms2-optional.patch"
 }
 
 build() {
