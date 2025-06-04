@@ -1,7 +1,7 @@
-From 42ebf6809f08f0da249da7e207228545cbc47f08 Mon Sep 17 00:00:00 2001
+From 858f5ee4e2ff3dff3cbcf2e694900e56d2f8c7c8 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 23:11:18 +0100
-Subject: [PATCH 15/19] Workaround linker error about missing symbol
+Subject: [PATCH 15/21] Workaround linker error about missing symbol
  `__sync_bool_compare_and_swap_16`
 
 This error only happens when compiling for the x86_64-w64-mingw32 target
@@ -19,7 +19,7 @@ Change-Id: I1b96a6dc44c5f7d527dbed9db58b4f030f175721
  4 files changed, 20 insertions(+)
 
 diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
-index 5cde8505d66..c2eec84bd0d 100644
+index 63b15cce88e..2c7d6b3e241 100644
 --- a/src/corelib/CMakeLists.txt
 +++ b/src/corelib/CMakeLists.txt
 @@ -874,6 +874,11 @@ qt_internal_extend_target(Core CONDITION WASM

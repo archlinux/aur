@@ -1,7 +1,7 @@
-From 81723685ef85faf4263490a6982fada3e0ae909a Mon Sep 17 00:00:00 2001
+From 20fb58a81999352693b7334f76e9fcdd76905a0b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:13:19 +0100
-Subject: [PATCH 03/19] Fix using static PCRE2 and DBus-1
+Subject: [PATCH 03/21] Fix using static PCRE2 and DBus-1
 
 When making a static build of Qt we're using the static version of these
 libraries and must define the corresponding macros.
@@ -13,10 +13,10 @@ Change-Id: I2387b79462b6d183b71f9433dd937f63fc7ef26e
  2 files changed, 9 insertions(+)
 
 diff --git a/src/corelib/text/qregularexpression.cpp b/src/corelib/text/qregularexpression.cpp
-index 906fabd2dea..0df432ed32d 100644
+index a8ff90b5072..e061c31e7b8 100644
 --- a/src/corelib/text/qregularexpression.cpp
 +++ b/src/corelib/text/qregularexpression.cpp
-@@ -20,6 +20,11 @@
+@@ -21,6 +21,11 @@
  #endif
  
  #define PCRE2_CODE_UNIT_WIDTH 16

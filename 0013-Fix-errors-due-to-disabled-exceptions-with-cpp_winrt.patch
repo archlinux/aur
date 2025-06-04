@@ -1,7 +1,7 @@
-From 4097181e0e83a178076ed25b924133b5425ae304 Mon Sep 17 00:00:00 2001
+From af8f66102b40db23a1df7b6ccc6acbff9cc82fcf Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 20:31:12 +0100
-Subject: [PATCH 13/19] Fix errors due to disabled exceptions with cpp_winrt
+Subject: [PATCH 13/21] Fix errors due to disabled exceptions with cpp_winrt
  support
 
 The winrt headers use exceptions so code using them must be compiled

@@ -1,7 +1,7 @@
-From d39de7b7a9d4473b932a25376b92cf9532631470 Mon Sep 17 00:00:00 2001
+From 3199109f32e9c78989e1c6239453aff0e8b1b68b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 9 Jun 2024 23:28:03 +0200
-Subject: [PATCH 16/19] Workaround `Unknown CMake command
+Subject: [PATCH 16/21] Workaround `Unknown CMake command
  "_qt_test_emscripten_version".`
 
 Not sure why `QtPublicWasmToolchainHelpers.cmake` is not included

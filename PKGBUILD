@@ -11,7 +11,7 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base-static
-_qtver=6.9.0
+_qtver=6.9.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -51,27 +51,31 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0016-Workaround-Unknown-CMake-command-_qt_test_emscripten.patch'
         '0017-Fix-configuration-when-EMSCRIPTEN_ROOT-is-an-absolut.patch'
         '0018-Allow-handling-Android-activity-lifecycle-by-user-pr.patch'
-        '0019-Avoid-compile-error-due-to-inconsistent-use-of-noexc.patch')
-sha256sums=('c1800c2ea835801af04a05d4a32321d79a93954ee3ae2172bbeacf13d1f0598c'
-            '33b840666d25b811793ab7036f283808985e25759a26fd7774a8a3806f3b6623'
-            'f98ea3a3dd22978ce810fd6905679dcc1a6169581370a5df271bfaafc321e171'
-            'a5ceea4ec85ff27584d3a037bfec6a6c781c262dc9f79bb85ab3330fb10222f2'
-            'cb3dca040644e16dcb793582da514ce05c6e30949e9970f9c6009baa5204d2c8'
-            'bdc57cd43bd43cc7f7314b974c2f350279808d8917bb9ececca0ad6c5d76cb4f'
-            'c15773c5aeddb6a7e5a64519b7fdecda41e18b3b1aef7636ed0f5c749ee4bc2b'
-            '24a1926b9846bb7f952b4a04c913d94bbdd9e467997bea64a5f8ff2c1bd7b393'
-            'c74c59c11fc00fe31c534bbe2ebf145130bfa126cdff949e1b0a0f0787cf0893'
-            'dadde9eeb666f67fda6b060a224cb38cb3cd4f5fdb7fb6ed3a2ddf51552ccc37'
-            '0573476620eca661c8c2857448e019dfac4a40b7f919a8243bb47771cf11ab08'
-            'e0b69a9c2bc2ab00357b8b7348695b460751dfa8bc3e3facf34250c9ec795185'
-            '4b1c4c95debb340a0aae66214f67074557cda9ff360334f01b89cc55ad397351'
-            '01c817322bbf9652e4566f002651dd3fb51cdc09fa6b1039615807f96afb5f1b'
-            '06e83450a1767fbff9c5621b9483989cccc14b2ff71727f503e37cd837f27777'
-            'af2616c13115a11edd9230110dd34443f8f8a51e894d053609f37224c084dd35'
-            'd2696b6df1e2c7aa1bc201c7e0176d77d5fd2a4ea177d263e7221486409a6e75'
-            '3c4beba49164d9d3b7d102a7eceb0057d8a226f4811aeaad19d1cfcbb987f900'
-            'd422db7b864b8158bc45d1049edf342915e7eb134aeb278eadd3158c8dd526de'
-            'c53b4c041bda08e637573d1c54857704e54bf4c36054a4aeb2d8b9c6ee0486d0')
+        '0019-Avoid-compile-error-due-to-inconsistent-use-of-noexc.patch'
+        '0020-Allow-keeping-Android-app-in-background-with-QtQuick.patch'
+        '0021-Allow-resuming-native-app-when-Android-activity-is-r.patch')
+sha256sums=('40caedbf83cc9a1959610830563565889878bc95f115868bbf545d1914acf28e'
+            '4dd316eff8b4e5c393175aae84accfb6bbfbdd92ce89a65e04e6d71095121521'
+            'f7f7bdcda47181f47c83c9e3653f9f2b1b6d5d7433e5e7f31e29a6b5b6cb4988'
+            'e9cb8ce8872f6618f547b3de62fc265ad0517d457c3410ae38f0c41b588c46a2'
+            '61395a0faaf2d88194aa1ca6144e8b2d789f0b08c0fdb23adc84548a76215541'
+            '29b58e0d6687b955827c078c7d32766cb8a6fab8201fc0aeb4d9598e43ff6db1'
+            'b688ed710b5450c0b1110da73b51df5dc9e719e39d161b927056f963e9e90542'
+            'e5fec53b66b0db5cb6a8db4f805ddef8e960e98579be3aa8d1df417ff5489a87'
+            'a1d6bd511ab47f23aa1b5df3f13bbcdc455153e2abcc241d586942b681016eb0'
+            '88eb2d9743f16ee26a2d44c261a24bb3aa46ac9275d65d11576e0dda75a0a4a1'
+            'cfb5467f1460ae0dab38c58cc80b63d726fffe894101f686ed853c153c9f7a0f'
+            '44b412f26d18439c06977ac0af3db6e7fdf4cb868b1cac449907ad58b52ae258'
+            '9a4d98a64e2a04b0b48b13b8e66664be98ca57bebd4b242e5184f72534d80825'
+            '5ffc584862c97e5b607ec8c6bf4d88244ae6a93d62e901c5e34b37c6fe57c7fe'
+            '4cc11e63f9d49019be1c2cc1ca074714276a4f14bb4518e409cd29f2573aebce'
+            '08811df307fce23fe65cebf4077d4502f4708d7d0d026adf6e6919fc524cf33d'
+            '8e6f42f62f9dbad86181d488f3f13641bf85073860a84e5f1be225cfb696aa92'
+            '9c946d99e810d200dde147da5c545863acfe720f99efc351eee8ca40cbc0d25d'
+            'e54dd30aea47ba060915c8ff365f870c1352c87b582234f49fc248bc74afb82a'
+            '7fb16759c8ce8cedb6aa6453da8fc20003d76a59a98090dc87b13fb50607c1e4'
+            '52dd592b7a08ba1dd90965c5670e121cb1569c1004215afc12b7452388cdde9c'
+            'd6982440a6d7ee110d4f5f7006ae4531f0f9a5e4ebfe01b1d2008bd423524240')
 
 # disable i686 build because 32-bit Windows is generally not supported by upstream and
 # it does not build anymore as of GCC 14 (probably due to commit 9a19fa8b616f83474c35cc5b34a3865073ced829)
@@ -94,6 +98,9 @@ prepare () {
 build() {
   for _arch in ${_architectures}; do
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
+
+    # workaround https://gcc.gnu.org/bugzilla/show_bug.cgi?id=120495
+    [[ $pkgname =~ .*-clang-.* ]] || export CXXFLAGS+=' -Wno-template-body -fcoroutines'
 
     local _enable_winrt_support=ON
     if [[ ! -e /usr/${_arch}/include/winrt/Windows.Foundation.h ]]; then

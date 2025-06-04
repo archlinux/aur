@@ -1,0 +1,48 @@
+From d06ea20e5cf44f8fa46489d05f4cbbfdc8e0ec8c Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 4 May 2025 00:51:18 +0200
+Subject: [PATCH 20/21] Allow keeping Android app in background with
+ QtQuickView
+
+Do not terminate Qt as this would stop the main Qt thread which is not
+desirable when the app is supposed to keep running in the background (and
+still supposed to process events via the Qt event loop, e.g. to process
+network traffic and update a notification accordingly). This change also
+makes sure that the absence of an activity or service is treated as if the
+app is not a "full" Qt application as we're still just using QtQuickView
+here.
+
+Change-Id: I18e2c2a054b19bdbdbe03d189f9a36dcdbe1e204
+---
+ .../jar/src/org/qtproject/qt/android/QtEmbeddedDelegate.java    | 1 -
+ src/plugins/platforms/android/androidjnimain.cpp                | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/android/jar/src/org/qtproject/qt/android/QtEmbeddedDelegate.java b/src/android/jar/src/org/qtproject/qt/android/QtEmbeddedDelegate.java
+index fbfe71dd1a8..31cc04fa5fe 100644
+--- a/src/android/jar/src/org/qtproject/qt/android/QtEmbeddedDelegate.java
++++ b/src/android/jar/src/org/qtproject/qt/android/QtEmbeddedDelegate.java
+@@ -75,7 +75,6 @@ class QtEmbeddedDelegate extends QtActivityDelegateBase
+                     m_activity.getApplication().unregisterActivityLifecycleCallbacks(this);
+                     QtNative.unregisterAppStateListener(QtEmbeddedDelegate.this);
+                     QtEmbeddedViewInterfaceFactory.remove(m_activity);
+-                    QtNative.quitQt();
+                     QtNative.setActivity(null);
+                 }
+             }
+diff --git a/src/plugins/platforms/android/androidjnimain.cpp b/src/plugins/platforms/android/androidjnimain.cpp
+index c6afdc716db..e607176f8c3 100644
+--- a/src/plugins/platforms/android/androidjnimain.cpp
++++ b/src/plugins/platforms/android/androidjnimain.cpp
+@@ -195,7 +195,7 @@ namespace QtAndroid
+             return env->IsInstanceOf(QtAndroidPrivate::service().object(), m_qtServiceClass);
+         // return true as default as Qt application is our default use case.
+         // famous last words: we should not end up here
+-        return true;
++        return false;
+     }
+ 
+ #if QT_CONFIG(accessibility)
+-- 
+2.49.0
+
