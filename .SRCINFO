@@ -1,6 +1,6 @@
 pkgbase = maturin-git
 	pkgdesc = Build and publish crates with pyo3, rust-cpython and cffi bindings
-	pkgver = 1.8.6.r7.g529c8404
+	pkgver = 1.8.6.r11.g90b30a4e
 	pkgrel = 1
 	url = https://github.com/PyO3/maturin
 	arch = x86_64
@@ -20,11 +20,8 @@ pkgbase = maturin-git
 	makedepends = rust
 	options = !lto
 	source = maturin::git+https://github.com/PyO3/maturin.git
-	source = https://raw.githubusercontent.com/AerynOS/recipes/aef489e1845f2914d43bfd66cf91c5da0528efee/m/maturin/pkg/0001-Revert-Add-compression-level-option-to-build-command.patch
 	sha512sums = SKIP
-	sha512sums = daf095bd9cc5ad84da3d79462b19cf1ce571ee3ff539dd2aa8c20514580ae6d4def7e2e818807d71fcbc90f0c2c36762135bdcfb442b93f873f3952d50ec7336
 	b2sums = SKIP
-	b2sums = fdbf0ef27e25db27f3dfb8d12362a7a861b1ab827aff568ef5ace2f05849bc56a8ec9a6cd0510a2faefa54df998e8903f867a5ede2a0246d86364bfadde0fd91
 
 pkgname = maturin-git
 	depends = bzip2
@@ -37,7 +34,7 @@ pkgname = maturin-git
 
 pkgname = python-maturin-git
 	pkgdesc = Build and publish crates with pyo3, rust-cpython and cffi bindings - Python bindings
-	depends = maturin-git=1.8.6.r7.g529c8404
+	depends = maturin-git=1.8.6.r11.g90b30a4e
 	depends = python
 	provides = python-maturin
 	conflicts = python-maturin
