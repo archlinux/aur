@@ -1,7 +1,7 @@
 pkgbase = conkyluanv-autoscale-fixed
 	pkgdesc = Lightweight system monitor for X with independent scaling of upload and download speed graphs
 	pkgver = 1.22.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jayhub-ai/conkyluanv-autoscale-fixed
 	install = conkyluanv-autoscale-fixed.install
 	arch = x86_64

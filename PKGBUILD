@@ -2,7 +2,7 @@
 
 pkgname=conkyluanv-autoscale-fixed
 pkgver=1.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight system monitor for X with independent scaling of upload and download speed graphs"
 arch=('x86_64' 'i686')
 url="https://github.com/Jayhub-ai/conkyluanv-autoscale-fixed"
@@ -83,6 +83,10 @@ package() {
   # Make sure the icon is installed properly
   install -Dm644 data/logo/conky-logomark-violet.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/conky-logomark-violet.svg"
   
-  # Make sure the desktop file is installed properly
+  # Create a symlink with the simpler "conky" name
+  ln -sf conky-logomark-violet.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/conky.svg"
+  
+  # Make sure the desktop file is installed properly and uses the correct icon name
   install -Dm644 data/conky.desktop "$pkgdir/usr/share/applications/conky.desktop"
+  sed -i 's/Icon=conky-logomark-violet/Icon=conky/g' "$pkgdir/usr/share/applications/conky.desktop"
 } 
