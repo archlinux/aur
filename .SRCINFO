@@ -9,6 +9,7 @@ pkgbase = python-drools-jpy
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = jdk-openjdk
+	depends = python-jpy
 	depends = maven
 	source = drools_jpy-0.3.10.tar.gz::https://github.com/ansible/drools_jpy/archive/refs/tags/v0.3.10.tar.gz
 	sha256sums = 42747f0c9777a8334a75cc6659eb37f978ca72a003db2a0bb5091c675bfeb362
