@@ -4,8 +4,8 @@
 # Maintainer: Luciano Ciccariello <luciano.ciccariello@docker.com>
 
 pkgname=docker-desktop
-pkgver=4.41.2
-_revision=191736
+pkgver=4.42.0
+_revision=195023
 pkgrel=1
 pkgdesc="Docker Desktop is an easy-to-install application that enables you to locally build and share containerized applications and microservices."
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=('docker-compose' 'docker-buildx')
 makedepends=('w3m')
 install='docker-desktop.install'
 source=("$pkgname-$pkgver-x86_64.tar.zst::https://desktop.docker.com/linux/main/amd64/$_revision/$pkgname-x86_64.pkg.tar.zst")
-sha256sums=('1220a2ba9f9065983de580bd80d717a643651216a0ffd400d0ca6f08a127571d')
+sha256sums=('b00e5a150f0096985c82e02db98504bb61f5fae751d805d0fec2cf50ac77ee6a')
 
 package() {
     install -d "${pkgdir}/usr/bin"
@@ -31,9 +31,9 @@ package() {
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-compose" "${pkgdir}/usr/lib/docker/cli-plugins/docker-compose"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-debug" "${pkgdir}/usr/lib/docker/cli-plugins/docker-debug"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-desktop" "${pkgdir}/usr/lib/docker/cli-plugins/docker-desktop"
-    install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-dev" "${pkgdir}/usr/lib/docker/cli-plugins/docker-dev"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-extension" "${pkgdir}/usr/lib/docker/cli-plugins/docker-extension"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-init" "${pkgdir}/usr/lib/docker/cli-plugins/docker-init"
+    install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-mcp" "${pkgdir}/usr/lib/docker/cli-plugins/docker-mcp"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-sbom" "${pkgdir}/usr/lib/docker/cli-plugins/docker-sbom"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-scout" "${pkgdir}/usr/lib/docker/cli-plugins/docker-scout"
     install -m755 "${srcdir}/usr/bin/docker-credential-desktop" "${pkgdir}/usr/bin/docker-credential-desktop"
