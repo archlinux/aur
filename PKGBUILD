@@ -5,11 +5,11 @@
 # don't need to install Flutter or any build dependencies.
 #
 pkgname=cloudtolocalllm
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
-pkgdesc="Local LLM interface with cloud synchronization and essential tunneling functionality (Unified 126MB package)"
+pkgdesc="CloudToLocalLLM - Enhanced Architecture with System Tray Integration and Local LLM Management (Unified 145MB package)"
 arch=('x86_64')
-url="https://sourceforge.net/projects/cloudtolocalllm/"
+url="https://github.com/imrightguy/CloudToLocalLLM"
 license=('MIT')
 depends=(
     'libayatana-appindicator'
@@ -36,34 +36,53 @@ provides=('cloudtolocalllm')
 conflicts=('cloudtolocalllm-git')
 install=cloudtolocalllm.install
 
-# Unified binary package from SourceForge (no compilation required)
+# Unified binary package from GitHub Releases (no compilation required)
 source=(
-    "https://sourceforge.net/projects/cloudtolocalllm/files/releases/v${pkgver}/cloudtolocalllm-${pkgver}-x86_64.tar.gz/download"
+    "https://github.com/imrightguy/CloudToLocalLLM/releases/download/v${pkgver}/cloudtolocalllm-${pkgver}-x86_64.tar.gz"
+    "https://github.com/imrightguy/CloudToLocalLLM/releases/download/v${pkgver}/cloudtolocalllm-${pkgver}-x86_64.tar.gz.sha256"
 )
 sha256sums=(
-    'aa245738361bf3b44dbd98d3d47db5b0d0aaa5a932bc0c06cf3acf66a4a0ab98'  # v3.0.2 unified package checksum (verified from SourceForge)
+    '4fcef8f2e38a2408c83a52feffa8b9d98af221bbbaf3dd8fdda13338bd29e636'  # v3.0.3 unified package checksum (verified from GitHub Releases)
+    'SKIP'  # Checksum file verification
 )
 
 prepare() {
     cd "$srcdir"
 
-    msg "Verifying unified CloudToLocalLLM binary package..."
+    msg "Extracting unified CloudToLocalLLM binary package..."
 
-    # Check if the extracted directory exists (makepkg extracts automatically)
-    local extracted_dir="cloudtolocalllm-${pkgver}"
-    
-    if [[ ! -d "$extracted_dir" ]]; then
-        error "Extracted directory not found: $extracted_dir"
+    # Verify checksum using downloaded SHA256 file
+    local package_file="cloudtolocalllm-${pkgver}-x86_64.tar.gz"
+    local checksum_file="${package_file}.sha256"
+
+    if [[ ! -f "$package_file" ]]; then
+        error "Unified binary package not found: $package_file"
         return 1
     fi
 
-    # Verify main executable exists in the extracted directory
-    if [[ ! -f "$extracted_dir/cloudtolocalllm" ]]; then
-        error "Main executable not found in extracted directory"
+    # Verify integrity using the downloaded checksum file
+    if [[ -f "$checksum_file" ]]; then
+        msg "Verifying package integrity..."
+        if ! sha256sum -c "$checksum_file"; then
+            error "Package integrity verification failed"
+            return 1
+        fi
+        msg "Package integrity verified successfully"
+    fi
+
+    # Extract the package
+    tar -xzf "$package_file" || {
+        error "Failed to extract unified binary package"
+        return 1
+    }
+
+    # Verify extraction - the package extracts to a subdirectory
+    if [[ ! -f "cloudtolocalllm-${pkgver}/cloudtolocalllm" ]]; then
+        error "Main executable not found after extraction"
         return 1
     fi
 
-    msg "Unified binary package verification completed successfully"
+    msg "Unified binary package extraction completed successfully"
 }
 
 build() {
@@ -78,7 +97,15 @@ package() {
     install -dm755 "$pkgdir/usr/share/cloudtolocalllm"
 
     # Copy all files from the extracted binary package
-    cp -r * "$pkgdir/usr/share/cloudtolocalllm/"
+    # The package extracts to a subdirectory
+    cp -r * "$pkgdir/usr/share/cloudtolocalllm/" 2>/dev/null || {
+        # If that fails, try copying specific files
+        for file in cloudtolocalllm data lib VERSION PACKAGE_INFO.txt; do
+            if [[ -e "$file" ]]; then
+                cp -r "$file" "$pkgdir/usr/share/cloudtolocalllm/"
+            fi
+        done
+    }
 
     # Make the Flutter binary executable
     chmod +x "$pkgdir/usr/share/cloudtolocalllm/cloudtolocalllm"
@@ -95,9 +122,9 @@ package() {
     fi
 
     # Create unified wrapper script in /usr/bin
-    cat > "$pkgdir/usr/bin/cloudtolocalllm" << 'WRAPPER_EOF'
+    cat > "$pkgdir/usr/bin/cloudtolocalllm" << 'EOF'
 #!/bin/bash
-# CloudToLocalLLM v3.0.2 unified wrapper script
+# CloudToLocalLLM v3.0.3 unified wrapper script
 # Manages essential tray daemon and Flutter application
 
 cd /usr/share/cloudtolocalllm
@@ -115,14 +142,17 @@ fi
 
 # Launch main Flutter application
 exec ./cloudtolocalllm "$@"
-WRAPPER_EOF
+EOF
     chmod +x "$pkgdir/usr/bin/cloudtolocalllm"
 
-    # Create applications directory
-    install -dm755 "$pkgdir/usr/share/applications"
-
-    # Create desktop entry
-    cat > "$pkgdir/usr/share/applications/cloudtolocalllm.desktop" << 'DESKTOP_EOF'
+    # Install desktop entry from the aur-package directory
+    cd "$srcdir/.."
+    if [[ -f "cloudtolocalllm.desktop" ]]; then
+        install -Dm644 "cloudtolocalllm.desktop" \
+            "$pkgdir/usr/share/applications/cloudtolocalllm.desktop"
+    else
+        # Create a basic desktop entry if not found
+        cat > "$pkgdir/usr/share/applications/cloudtolocalllm.desktop" << 'EOF'
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -135,18 +165,22 @@ Terminal=false
 Categories=Network;
 Keywords=LLM;AI;Ollama;Chat;Machine Learning;
 StartupNotify=true
-DESKTOP_EOF
+EOF
+    fi
 
     # Create a simple icon (placeholder) for desktop integration
     install -dm755 "$pkgdir/usr/share/pixmaps"
     install -dm755 "$pkgdir/usr/share/icons/hicolor/48x48/apps"
 
-    # Create a minimal placeholder icon
-    echo "CloudToLocalLLM Icon Placeholder" > "$pkgdir/usr/share/pixmaps/cloudtolocalllm.png"
-    cp "$pkgdir/usr/share/pixmaps/cloudtolocalllm.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/"
+    # Create a simple text-based icon if no icon file is found
+    if [[ ! -f "$pkgdir/usr/share/pixmaps/cloudtolocalllm.png" ]]; then
+        # Create a minimal placeholder icon
+        echo "CloudToLocalLLM Icon Placeholder" > "$pkgdir/usr/share/pixmaps/cloudtolocalllm.png"
+        cp "$pkgdir/usr/share/pixmaps/cloudtolocalllm.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/"
+    fi
 
     # Install documentation if present in the binary package
-    if [[ -f "ENHANCED_ARCHITECTURE.md" ]]; then
-        install -Dm644 "ENHANCED_ARCHITECTURE.md" "$pkgdir/usr/share/doc/$pkgname/ENHANCED_ARCHITECTURE.md"
+    if [[ -f "PACKAGE_INFO.txt" ]]; then
+        install -Dm644 "PACKAGE_INFO.txt" "$pkgdir/usr/share/doc/$pkgname/PACKAGE_INFO.txt"
     fi
 }
