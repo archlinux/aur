@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,2154,2164
 pkgname=lux-cli
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A luxurious package manager for Lua"
 arch=('x86_64')
 url="https://github.com/nvim-neorocks/lux"
