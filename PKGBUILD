@@ -2,6 +2,7 @@
 
 pkgname=sparrow-wallet-git
 pkgver=2.2.2.r7.g8885e48
+_jdkver=22.0.2_9
 pkgrel=1
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy (git version)"
 arch=('x86_64')
@@ -15,7 +16,7 @@ source=(
     "sparrow::git+https://github.com/sparrowwallet/sparrow.git#branch=master"
     "drongo::git+https://github.com/sparrowwallet/drongo.git"
     "lark::git+https://github.com/sparrowwallet/lark.git"
-    "https://github.com/adoptium/temurin22-binaries/releases/download/jdk-22.0.2%2B9/OpenJDK22U-jdk_x64_linux_hotspot_22.0.2_9.tar.gz"
+    "https://github.com/adoptium/temurin22-binaries/releases/download/jdk-${_jdkver/_/%2B}/OpenJDK22U-jdk_x64_linux_hotspot_${_jdkver}.tar.gz"
 )
 sha256sums=(
     'SKIP'
@@ -25,8 +26,8 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "$srcdir/sparrow"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir/sparrow"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -39,7 +40,7 @@ prepare() {
 
 build() {
     # Setup Java build environment - only for build, not for runtime
-    export JAVA_HOME="$srcdir/jdk-22.0.2+9"
+    export JAVA_HOME="$srcdir/jdk-${_jdkver/_/+}"
     export PATH="$JAVA_HOME/bin:$PATH"
     
     cd "$srcdir/sparrow"
