@@ -1,0 +1,4 @@
+[pypy3-charset-normalizer]
+source = "github"
+github = "jawah/charset_normalizer"
+use_latest_release = "true"
