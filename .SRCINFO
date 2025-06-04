@@ -1,6 +1,6 @@
 pkgbase = python-arrow-adbc
 	pkgdesc = Database connectivity API standard for Arrow
-	pkgver = 17
+	pkgver = 18
 	pkgrel = 1
 	url = https://arrow.apache.org/adbc/current/index.html
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = python-arrow-adbc
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
-	source = python-arrow-adbc-17.tar.gz::https://github.com/apache/arrow-adbc/archive/refs/tags/apache-arrow-adbc-17.tar.gz
-	sha256sums = 5b07f68e6a86a2211d75eaa6b38b9c438c26320315ba4eef7767b807e06037e3
+	source = python-arrow-adbc-18.tar.gz::https://github.com/apache/arrow-adbc/archive/refs/tags/apache-arrow-adbc-18.tar.gz
+	sha256sums = f1f80ade384c8185f67cf01ec0a30391cad1f2e09bdaffb018f9069849c3c50e
 
 pkgname = python-arrow-adbc
 	depends = python
@@ -21,6 +21,7 @@ pkgname = python-arrow-adbc
 
 pkgname = python-adbc-driver-postgresql
 	depends = python-arrow-adbc
+	depends = python-importlib_resources
 	depends = postgresql-libs
 
 pkgname = python-adbc-driver-flightsql

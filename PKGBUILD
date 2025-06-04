@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=(python-arrow-adbc python-adbc-driver-postgresql python-adbc-driver-flightsql)
 _module='arrow-adbc-apache-arrow-adbc'
-pkgver='17'
+pkgver='18'
 pkgrel=1
 pkgdesc="Database connectivity API standard for Arrow"
 url="https://arrow.apache.org/adbc/current/index.html"
@@ -10,7 +10,7 @@ makedepends=(cython go python-build python-installer python-setuptools python-se
 license=('Apache-2.0')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/apache/arrow-adbc/archive/refs/tags/apache-arrow-adbc-$pkgver.tar.gz")
-sha256sums=('5b07f68e6a86a2211d75eaa6b38b9c438c26320315ba4eef7767b807e06037e3')
+sha256sums=('f1f80ade384c8185f67cf01ec0a30391cad1f2e09bdaffb018f9069849c3c50e')
 build() {
     cmake -S "${_module}-${pkgver}/c" -B build \
         -DCMAKE_INSTALL_PREFIX='/usr' \
@@ -28,7 +28,7 @@ build() {
 }
 
 package_python-adbc-driver-postgresql() {
-    depends=(python-arrow-adbc postgresql-libs)
+    depends=(python-arrow-adbc python-importlib_resources postgresql-libs)
     cd "${_module}-${pkgver}/python/adbc_driver_postgresql"
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
