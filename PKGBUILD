@@ -3,7 +3,7 @@
 pkgname=2048-tui
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="A simple terminal-based 2048 game written in C using ncurses"
+pkgdesc="A simple terminal-based 2048 game written in C using ncurses."
 arch=('x86_64')
 url="https://github.com/aramyamal/2048-tui"
 license=('GPL-3.0-or-later') 
