@@ -1,0 +1,10 @@
+diff --git a/src/GOTCHA-1.0.8/CMakeLists.txt b/src/GOTCHA-1.0.8/CMakeLists.txt
+index 7c870c1..b2d4aae 100644
+--- a/src/GOTCHA-1.0.8/CMakeLists.txt
++++ b/src/GOTCHA-1.0.8/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5)
+ option(GOTCHA_ENABLE_TESTS "Enable internal tests" Off)
+ option(GOTCHA_ENABLE_WARNING_ERROR "Enable throw error for build warning" Off)
+ project(gotcha)

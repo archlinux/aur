@@ -1,0 +1,5 @@
+[gotcha]
+source = "github"
+github = "LLNL/GOTCHA"
+use_latest_release = true
+use_release_name = true
