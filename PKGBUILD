@@ -15,7 +15,7 @@ optdepends=(
 	'wayland: Wayland Support (experimental)'
 )
 provides=('RGFW')
-conflicts=()
+conflicts=( 'rgfw-git' )
 replaces=()
 backup=()
 options=()
