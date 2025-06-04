@@ -1,7 +1,7 @@
 # Maintainer: claymorwan <claymorwan@fembois.dev>
 pkgname=shiru-git
 _pkgname=shiru
-pkgver=r1493.dc0804b
+pkgver=r1560.7ed5569
 pkgrel=1
 pkgdesc="BitTorrent streaming software with no paws in the way—watch anime in real-time, no waiting for downloads!"
 arch=('x86_64')
@@ -35,7 +35,7 @@ build() {
 
 package() {
 	cd "$srcdir/$_pkgname/electron/"
-	install -Dm755 "dist/linux-Shiru-v6.1.3.AppImage" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm755 dist/linux-Shiru-*.AppImage "$pkgdir/usr/bin/$_pkgname"
 	install -D "buildResources/icon.png" "$pkgdir/usr/share/icons/$_pkgname.png"
 
 	install -Dm0644 /dev/stdin $pkgdir/usr/share/applications/$_pkgname.desktop <<EOF

@@ -1,6 +1,6 @@
 pkgbase = shiru-git
 	pkgdesc = BitTorrent streaming software with no paws in the way—watch anime in real-time, no waiting for downloads!
-	pkgver = r1493.dc0804b
+	pkgver = r1560.7ed5569
 	pkgrel = 1
 	url = https://github.com/RockinChaos/Shiru
 	arch = x86_64
