@@ -3,7 +3,7 @@
 # Contributor: Brian F.G. <bidulock@openss7.org>
 pkgname=accel-ppp
 pkgver=1.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc="High performance PPTP/L2TP/SSTP/PPPoE/IPoE server for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/accel-ppp/accel-ppp"
@@ -56,6 +56,7 @@ build() {
 		-DLUA_INCLUDE_DIR="/usr/include/lua5.1" \
 		-DLIB_SUFFIX='' \
 		-DCMAKE_INSTALL_LOCALSTATEDIR=/var \
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 		"$srcdir/$pkgname-$pkgver"
 	make || return 1
 }
