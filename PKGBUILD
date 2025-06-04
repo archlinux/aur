@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dtv-bin
 _pkgname=DTV
-pkgver=3.3.5
+pkgver=3.3.6
 pkgrel=1
 pkgdesc="Lightweight Douyu live streaming desktop client.(Prebuilt version.Use system-wide electron)轻量化斗鱼直播桌面客户端"
 arch=('x86_64')
@@ -14,10 +14,10 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_3.3.0_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/c-zeong/DTV/v${pkgver}/LICENSE"
 )
-sha256sums=('d5f118f2d8ec5de2e051fc4c34f1226029138abe0f5072a73223145b5f71f132'
+sha256sums=('2ac21d3cf5ac1394bae96ec0ea831398f1801a12374cf52b845d11664cda0ca5'
             'ca61883629a40325b21aa31860f834ebfee4c71cce39a519c80732183ac73315')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
