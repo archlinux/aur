@@ -24,7 +24,11 @@ pkgbase = project-monalisa-git
 	depends = python-termcolor
 	depends = python-prettytable
 	depends = python-treelib
+	source = project-monalisa-git.deb::https://github.com/Akash420-oss/Project-Monalisa/releases/download/0.1.1/project-monalisa-git.deb
+	source = project-monalisa-git.zip::https://github.com/Akash420-oss/Project-Monalisa/releases/download/0.1.1/project-monalisa-git.zip
 	source = project-monalisa-git::git+https://github.com/Akash420-oss/Project-Monalisa.git#tag=0.1.1
+	md5sums = 54df9ddb2919551e5cc535be6a81fd87
+	md5sums = 3292a369ae3bf954e6fa7a3941c5719a
 	md5sums = SKIP
 
 pkgname = project-monalisa-git
