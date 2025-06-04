@@ -1,0 +1,14 @@
+pkgbase = 2048-tui
+	pkgdesc = A simple terminal-based 2048 game written in C using ncurses
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/aramyamal/2048-tui
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = clang
+	makedepends = make
+	depends = ncurses
+	source = 2048-tui-1.0.1.tar.gz::https://github.com/aramyamal/2048-tui/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = ba77b1b76f2cd8cb5d26bc22a0608614d37a30445ce8869d98b93fb5302dc07e
+
+pkgname = 2048-tui
