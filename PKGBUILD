@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-webview-static
-_qtver=6.9.0
+_qtver=6.9.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,13 +17,17 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtwebview-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('5b24070e8ceb12c3c4df5a887f3ffc3544193646386e6ce18e41c20d42d7ed6b')
+sha256sums=('c29ad4fbb8f7a2042c4941bef88bb13bd04757eed94d6937ae69e0e4ea0d59a5')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   for _arch in ${_architectures}; do
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
+
+    # workaround https://gcc.gnu.org/bugzilla/show_bug.cgi?id=120495
+    [[ $pkgname =~ .*-clang-.* ]] || export CXXFLAGS+=' -Wno-template-body -fcoroutines'
+
     $_arch-cmake-static -G Ninja -B build-$_arch -S $_pkgfqn \
       -DCMAKE_INSTALL_PREFIX:PATH="/usr/$_arch/static" \
       -DCMAKE_DISABLE_FIND_PACKAGE_harfbuzz=TRUE \
