@@ -1,16 +1,16 @@
 pkgbase = hactool-git
 	pkgdesc = hactool is a tool to view information about, decrypt, and extract common file formats for the Nintendo Switch, especially Nintendo Content Archives.
-	pkgver = 1.2.2.r4.g4d8d84d
+	pkgver = 1.4.0.r13.g1d64a83
 	pkgrel = 1
 	url = https://github.com/SciresM/hactool
-	arch = any
+	arch = x86_64
 	groups = base-devel
 	license = ISC
 	makedepends = git
-	depends = gcc
+	depends = glibc
 	provides = hactool
+	conflicts = hactool
 	source = git+https://github.com/SciresM/hactool.git
 	md5sums = SKIP
 
 pkgname = hactool-git
-
