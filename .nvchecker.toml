@@ -1,0 +1,5 @@
+[pypy3-setuptools-scm]
+source = "github"
+github = "pypa/setuptools-scm"
+use_latest_release = "true"
+prefix = "v"
