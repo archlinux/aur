@@ -1,0 +1,4 @@
+[pypy3-platformdirs]
+source = "github"
+github = "tox-dev/platformdirs"
+use_latest_release = true
