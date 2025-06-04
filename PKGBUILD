@@ -4,7 +4,7 @@
 _pkgname="katawa-shoujo"
 pkgname="$_pkgname"
 pkgver=1.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A bishoujo-style visual novel by Four Leaf Studios"
 url="https://www.katawa-shoujo.com"
 license=("CC-BY-NC-ND-3.0")
@@ -14,7 +14,7 @@ options=('!debug' '!strip')
 
 _pkgsrc="Katawa Shoujo-$pkgver-linux"
 source=(
-  "[4ls]_katawa_shoujo_${pkgver}-[linux-x86][18161880].tar.bz2"::"https://cdn.fhs.sh/ks/bin/gold_1.3.1/%255B4ls%255D_katawa_shoujo_1.3.1-%255Blinux-x86%255D%255B18161880%255D.tar.bz2"
+  "[4ls]_katawa_shoujo_${pkgver}-[linux-x86][18161880].tar.bz2::https://cdn.fhs.sh/ks/bin/gold_${pkgver}/%5B4ls%5D_katawa_shoujo_${pkgver}-%5Blinux-x86%5D%5B18161880%5D.tar.bz2"
   "katawa-shoujo.png"
 )
 sha256sums=(
