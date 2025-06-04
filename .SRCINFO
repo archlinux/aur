@@ -7,7 +7,7 @@ pkgbase = equibop-git
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = pnpm
-	depends = electron34
+	depends = electron36
 	optdepends = libnotify: Notifications
 	optdepends = xdg-utils: Open links, files, etc
 	provides = equibop=2.1.1
