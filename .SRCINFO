@@ -1,7 +1,7 @@
 pkgbase = python-west
 	pkgdesc = Zephyr RTOS Project meta-tool
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/west/
 	arch = any
 	license = Apache
