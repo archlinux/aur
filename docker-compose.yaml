@@ -1,0 +1,24 @@
+services:
+  access-server:
+    image: openvpn/openvpn-as:2.14.3-5936bcd7-Ubuntu24
+    devices:
+      - /dev/net/tun
+    cap_add:
+      - MKNOD
+      - NET_ADMIN
+    ports:
+      - target: 943
+        published: 943
+      - target: 443
+        published: 443
+      - target: 1194
+        published: 1194
+        protocol: udp
+    volumes:
+      - type: volume
+        target: /openvpn
+        source: as-data
+    restart: unless-stopped
+
+volumes:
+  as-data: {}
