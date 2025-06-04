@@ -2,7 +2,7 @@
 pkgname=cloudhub-bin
 _pkgname=CloudHub
 _zhsname='云之家'
-pkgver=4.5.3
+pkgver=4.5.4
 _electronversion=12
 pkgrel=1
 pkgdesc="The desktop client of CloudHub.(Prebuilt version.Use system-wide electron)云之家桌面端"
@@ -30,12 +30,12 @@ source=(
     "LICENSE-${pkgver}.html::${url}/public/agreement/client-agreement.html"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://res.yunzhijia.com/mixed/cloudhubx/linux_arm64/${_pkgname}_arm64_${pkgver}_2504171606.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://res.yunzhijia.com/mixed/cloudhubx/linux_x64/${_pkgname}_x64_${pkgver}_2504171606.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://res.yunzhijia.com/mixed/cloudhubx/linux_arm64/${_pkgname}_arm64_${pkgver}_2505152055.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://res.yunzhijia.com/mixed/cloudhubx/linux_x64/${_pkgname}_x64_${pkgver}_2505152053.rpm")
 sha256sums=('c4088260f72395d24a8ba49eaaa78620895489107af496c7d00976f8c8825dae'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('43a04199e878c6ed3c2963cc314815b063dcdb2b105ccc738c5bef45bf45cdbf')
-sha256sums_x86_64=('7e9de382f348c0d2c14e7b985f44a96a17e0d69867f433269216a07bd0b94cf1')
+sha256sums_aarch64=('e1fea5c3706d162c86aa18cea9b2e209b8833e27b2fe0d48f0f720e2ab03190f')
+sha256sums_x86_64=('cca4bbbb0e3cb2a8655075a0346d058bdfda20b456191fc4345d220ddd81ddf7')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
