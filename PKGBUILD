@@ -5,7 +5,7 @@
 
 pkgname=seafile-server
 pkgver=12.0.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Seafile server core'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/haiwen/seafile-server'
@@ -19,7 +19,7 @@ depends=(
     'libevent'
     'libevhtp-seafile'
     'libarchive'
-    'libjwt'
+    'libjwt2'
 )
 makedepends=('intltool' 'vala' 'go' 'git')
 conflicts=('seafile')

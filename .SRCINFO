@@ -1,7 +1,7 @@
 pkgbase = seafile-server
 	pkgdesc = Seafile server core
 	pkgver = 12.0.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/haiwen/seafile-server
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = seafile-server
 	depends = libevent
 	depends = libevhtp-seafile
 	depends = libarchive
-	depends = libjwt
+	depends = libjwt2
 	conflicts = seafile
 	source = seafile-server-12.0.11.tar.gz::https://github.com/haiwen/seafile-server/archive/v12.0.11-server.tar.gz
 	source = fix_seafile-controller_paths.diff
