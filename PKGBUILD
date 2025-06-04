@@ -2,7 +2,7 @@
 _appname=clouddm
 pkgname="${_appname}-personal-bin"
 _pkgname=CloudDM
-pkgver=3.0.5
+pkgver=3.0.7
 _electronversion=22
 pkgrel=1
 pkgdesc="One-stop multi-source development management tool.(Prebuilt version.Use system-wide electron)一站式多数据源开发管理工具"
@@ -24,12 +24,12 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_dlurl}/releases/download/${_pkgname}${pkgver}/${_pkgname}-v${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_dlurl}/releases/download/${_pkgname}${pkgver}/${_pkgname}-v${pkgver}.AppImage"
     "LICENSE.html::https://www.clougence.com/cc-doc/protocol/terms_of_use"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7d304bb4819fa3d313f288bce7f31cf730686570f3661a4e9a3649189048dc55'
-            '909136537f9cb324b6bf765873fe1627201a5d7f2611cb102ed82b76ad19ea1f'
+sha256sums=('31ee64778398be8a5cf1fc8d87e961ab9c8d09a1e73feede08d8462a962c7069'
+            '81fb05542be421f0b53604eb75cd2b9e1b18ddfb755bc7f08963915b9417e3d6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -39,14 +39,15 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Utility/Development/g
     " "${srcdir}/squashfs-root/${_appname}.desktop"
+    rm -rf "${srcdir}/squashfs-root/resources/app/assets/"{macos,win}
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} +
 }
 package() {
