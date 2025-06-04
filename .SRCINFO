@@ -1,5 +1,5 @@
 pkgbase = cursor-electron
-	pkgver = 0.51.1
+	pkgver = 0.51.2
 	pkgrel = 1
 	url = https://www.cursor.com
 	arch = aarch64
@@ -18,10 +18,10 @@ pkgbase = cursor-electron
 	options = !strip
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/1.100.2-1/code.sh
 	sha512sums = 937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37
-	source_aarch64 = 0.51.1-aarch64.img::https://downloads.cursor.com/production/a9dd46cbd249a30044eaae1526eb6ca1ec2f7568/linux/arm64/Cursor-0.51.1-aarch64.AppImage
-	sha512sums_aarch64 = 2ff0cafb6e271fd0399e7e6e8cff9292270ea6658db598354feb758dfe1cd5c8d9dd2e1b168882b7aef205c5c95584b0e1d030ea98606adff95b1125ebd785d2
-	source_x86_64 = 0.51.1-x86_64.img::https://downloads.cursor.com/production/a9dd46cbd249a30044eaae1526eb6ca1ec2f7568/linux/x64/Cursor-0.51.1-x86_64.AppImage
-	sha512sums_x86_64 = 8bc0cfd45374f744236ea4a18960d5d67467a38c001ee888cd6e2bced64add2a86bb5e972ede5011e219b6b60c44f8133ce17fa8dc30bfb78e3e7e842e0c34af
+	source_aarch64 = 0.51.2-aarch64.img::https://downloads.cursor.com/production/f364e608fc11d38303429b80fd1e1f32d7587d43/linux/arm64/Cursor-0.51.2-aarch64.AppImage
+	sha512sums_aarch64 = f0cf6d311a4d743356a975a87d5e91895e702ff8cbac5ab549b9423647da0ff23c6566e192b19e5e69770ba0e02f73c76815d8d6f1a407fb55b0dff89f4d6e61
+	source_x86_64 = 0.51.2-x86_64.img::https://downloads.cursor.com/production/f364e608fc11d38303429b80fd1e1f32d7587d43/linux/x64/Cursor-0.51.2-x86_64.AppImage
+	sha512sums_x86_64 = f153dbeeade25d6e1fe231924fd354755f9192e395ea32e6309da3cbdf63780df48f48aa9f1be0b84e15ba64a35ec9c16d933a143ec50a16d2082a13e3828376
 
 pkgname = cursor-electron
 	pkgdesc = AI Code Editor on system electron
@@ -40,12 +40,3 @@ pkgname = cursor-electron-latest
 	depends = hicolor-icon-theme
 	depends = libxkbfile
 	depends = electron
-
-pkgname = cursor-electron35
-	pkgdesc = AI Code Editor on electron35
-	depends = ripgrep
-	depends = xdg-utils
-	depends = gcc-libs
-	depends = hicolor-icon-theme
-	depends = libxkbfile
-	depends = electron35

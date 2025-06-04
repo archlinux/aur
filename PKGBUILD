@@ -3,8 +3,8 @@
 
 _name=cursor
 pkgbase="${_name}-electron"
-pkgname=("$pkgbase"{,-latest,35})
-pkgver=0.51.1
+pkgname=("$pkgbase"{,-latest})
+pkgver=0.51.2
 pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://www.cursor.com"
@@ -15,18 +15,18 @@ depends=('ripgrep' 'xdg-utils' # electron* is added at package()
 makedepends=('desktop-file-utils')
 provides=("${_name}"{,-bin})
 conflicts=("${_name}"{,-bin})
-_hash=a9dd46cbd249a30044eaae1526eb6ca1ec2f7568
+_hash=f364e608fc11d38303429b80fd1e1f32d7587d43
 _code=1.100.2-1
 source=("https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/${_code}/code.sh")
 source_aarch64=("${pkgver}-aarch64.img::https://downloads.cursor.com/production/${_hash}/linux/arm64/Cursor-${pkgver}-aarch64.AppImage")
 source_x86_64=("${pkgver}-x86_64.img::https://downloads.cursor.com/production/${_hash}/linux/x64/Cursor-${pkgver}-x86_64.AppImage")
 sha512sums=('937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37')
-sha512sums_aarch64=('2ff0cafb6e271fd0399e7e6e8cff9292270ea6658db598354feb758dfe1cd5c8d9dd2e1b168882b7aef205c5c95584b0e1d030ea98606adff95b1125ebd785d2')
-sha512sums_x86_64=('8bc0cfd45374f744236ea4a18960d5d67467a38c001ee888cd6e2bced64add2a86bb5e972ede5011e219b6b60c44f8133ce17fa8dc30bfb78e3e7e842e0c34af')
+sha512sums_aarch64=('f0cf6d311a4d743356a975a87d5e91895e702ff8cbac5ab549b9423647da0ff23c6566e192b19e5e69770ba0e02f73c76815d8d6f1a407fb55b0dff89f4d6e61')
+sha512sums_x86_64=('f153dbeeade25d6e1fe231924fd354755f9192e395ea32e6309da3cbdf63780df48f48aa9f1be0b84e15ba64a35ec9c16d933a143ec50a16d2082a13e3828376')
 options=(!strip) # for ext?
 prepare() { # Create cp -r friendly layout with FHS
 	sed -e "s|code-flags|cursor-flags|" -e "s|lib/code|lib/cursor|" -e "s|/usr/lib/code/code.mjs|--app=/usr/lib/cursor|" code.sh > run.sh
-	rm -rf squashfs-root # clean cache
+	rm -rf squashfs-root # for unclean build
 	chmod +x "${pkgver}-${CARCH}.img"; ./"${pkgver}-${CARCH}.img" --appimage-extract > /dev/null
  	cd squashfs-root/usr
  	# Fin desktop entries
@@ -57,13 +57,5 @@ package_cursor-electron(){
 	pkgdesc="${_desc}system electron"
 	cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
 	sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
-	install -Dm755 run-safe.sh "${pkgdir}/usr/bin/cursor"
-}
-
-package_cursor-electron35(){
-	depends+=(electron35)
-	pkgdesc="${_desc}electron35"
-	mv squashfs-root/usr "${pkgdir}/usr" # breaks --repackage
-	sed "s|name=electron|name=electron35|" run.sh > run-safe.sh
 	install -Dm755 run-safe.sh "${pkgdir}/usr/bin/cursor"
 }
