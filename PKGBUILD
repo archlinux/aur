@@ -2,7 +2,7 @@
 
 _pkgname=vidmerger
 pkgname="${_pkgname}-bin"
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Merge video and audio files via CLI."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('ffmpeg' 'glibc' 'gcc-libs')
 source=("${_pkgname}-${pkgver}::${url}/releases/download/${pkgver}/${_pkgname}-linux.tar.gz"
         "https://raw.githubusercontent.com/tgotwig/vidmerger/cb3526790dae9ebc72f52c5c16d1428846645e53/LICENSE")
-sha256sums=('8c061848f9879fc06771dbd9b4311452e113efa80d57cf157402934602082487'
+sha256sums=('538641badacc0380a281d0cf31eec928b10835563aaae6ecb4311fa30a7a2991'
             'fb25a5d14edb9164a63a126aec696eceb654b4b0e8b382bcac378b6c44eb920c')
 
 package() {
