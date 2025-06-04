@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=oba-live-tool-git
-pkgver=1.5.3.r5.g1e2d52b
-_electronversion=35
+pkgver=1.5.6.r0.g0c8a801
+_electronversion=36
 _nodeversion=22
 pkgrel=1
 pkgdesc="Live delivery tool,support Douyin,Buyin,Douyin group buying,Xiaohongshu Qianfan,WeChat Channels platform,can automatically pop up windows,automatically speak,AI help reply(Use system-wide electron)"
@@ -77,12 +77,23 @@ prepare() {
         } >> .npmrc
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    sed -i "s/favicon.ico/favicon.png/g" electron/main/index.ts
     sed -i -e "
-        s/favicon.ico/favicon.png/g
         s/chrome.exe/google-chrome-stable/g
         s/msedge.exe/microsoft-edge-stable/g
-        s/'exe'//g
-    " electron/main/index.ts
+    " src/pages/SettingsPage/components/BrowserSetting.tsx
+    sed -i -e "
+        s/chrome.exe/google-chrome-stable/g
+        s/msedge.exe/microsoft-edge-stable/g
+    " electron/main/ipc/browser.ts
+    sed -i -e "
+        s/macConfig/linuxConfig/g
+        s/darwin/linux/g
+        s/\/Applications\/Microsoft Edge.app\/Contents\/MacOS\/Microsoft Edge/\/usr\/bin\/microsoft-edge-stable/g
+        s/\/Applications\/Google Chrome.app\/Contents\/MacOS\/Google Chrome/\/usr\/bin\/google-chrome-stable/g
+        s/name\: \'Microsoft Edge\',/name\: \'microsoft-edge-stable\',/g
+        s/name\: \'Google Chrome\',/name\: \'google-chrome-stable\',/g
+    " electron/main/utils/checkChrome.ts
     NODE_ENV=development    pnpm install
 }
 build() {
