@@ -4,7 +4,7 @@
 _slug=Venom
 _name=VenomModules
 pkgname=vcvrack-venom
-pkgver=2.12.1
+pkgver=2.12.2
 pkgrel=1
 pkgdesc='Venom VCV Rack modules'
 arch=(aarch64 x86_64)
@@ -14,7 +14,7 @@ groups=(pro-audio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(git simde zstd)
 source=("git+https://github.com/DaveBenham/$_name#tag=v$pkgver")
-sha256sums=('32553296819a2f1736a51398f58d7a4640e06fba76de054230604a42a7235413')
+sha256sums=('96d60b3cfa5d5484244b543248ac8a4b8bf44c00c4f02533e8e3bdc23815976a')
 
 prepare() {
   cd $_name
