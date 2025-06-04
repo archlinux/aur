@@ -2,14 +2,14 @@
 # Contributor:
 
 pkgname=aligo
-pkgver=2.2.6
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Utility for checking and viewing Golang struct alignment info"
 arch=('any')
 url="https://github.com/essentialkaos/aligo"
 license=('Apache')
 makedepends=('make' 'go')
-_commit='11712e7fbc3b21a4a6466d92a06c5fa413862eab'
+_commit='f134c6dbf1afa9debf063b6bba2831f98b8931b0'
 source=("${pkgname}::git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
