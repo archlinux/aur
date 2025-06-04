@@ -3,7 +3,7 @@
 pkgname=fav-bin
 _pkgname=fav
 pkgver=1.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Back up your favorite bilibili resources with CLI'
 arch=('x86_64')
 url="https://github.com/kingwingfly/${_pkgname}"
@@ -18,7 +18,8 @@ sha256sums=('11ca34ef4b37dac753f0ffefd697dbd9669c43253815a62391fc98ca321b45db'
             '54e2d4c99f8d0eacb6dd9cae4c1bddce86fe7926d29cdb0ceded4d3797df0d65')
 
 package() {
-	install -Dm755 ${_pkgname}_bili "$pkgdir"/usr/bin/${_pkgname}
+	mv ${_pkgname}_bili ${_pkgname}
+	install -Dm755 ${_pkgname} "$pkgdir"/usr/bin/${_pkgname}
 
 	# completions
 	./${_pkgname} completion bash > ${_pkgname}.bash
