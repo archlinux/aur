@@ -3,6 +3,7 @@ pkgbase = conkyluanv-autoscale-fixed
 	pkgver = 1.22.1
 	pkgrel = 1
 	url = https://github.com/Jayhub-ai/conkyluanv-autoscale-fixed
+	install = conkyluanv-autoscale-fixed.install
 	arch = x86_64
 	arch = i686
 	license = GPL3

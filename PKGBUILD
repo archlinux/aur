@@ -30,6 +30,7 @@ conflicts=('conky')
 replaces=('conky' 'torsmo')
 source=("git+https://github.com/Jayhub-ai/conkyluanv-autoscale-fixed.git" "xmms2-optional.patch")
 sha256sums=('SKIP' 'SKIP')
+install="${pkgname}.install"
 
 prepare() {
   cd "$srcdir/conkyluanv-autoscale-fixed"
@@ -78,4 +79,10 @@ package() {
   # Install example configuration files
   install -Dm644 data/conky.conf "$pkgdir/usr/share/doc/$pkgname/examples/conky.conf"
   install -Dm644 data/conky_no_x11.conf "$pkgdir/usr/share/doc/$pkgname/examples/conky_no_x11.conf"
+  
+  # Make sure the icon is installed properly
+  install -Dm644 data/logo/conky-logomark-violet.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/conky-logomark-violet.svg"
+  
+  # Make sure the desktop file is installed properly
+  install -Dm644 data/conky.desktop "$pkgdir/usr/share/applications/conky.desktop"
 } 
