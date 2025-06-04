@@ -1,0 +1,72 @@
+From 669e0924afcedf27350469a944267cad4aabb866 Mon Sep 17 00:00:00 2001
+From: Evangelos Foutras <evangelos@foutras.com>
+Date: Sun, 30 Jun 2024 08:51:20 +0000
+Subject: [PATCH] Enable -fstack-protector-strong by default
+
+---
+ clang/lib/Driver/ToolChains/Linux.h | 5 +++++
+ clang/test/Driver/fsanitize.c       | 6 +++---
+ clang/test/Driver/stack-protector.c | 4 ++--
+ 3 files changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/clang/lib/Driver/ToolChains/Linux.h b/clang/lib/Driver/ToolChains/Linux.h
+index 524391743090..0d4e1944118b 100644
+--- a/clang/lib/Driver/ToolChains/Linux.h
++++ b/clang/lib/Driver/ToolChains/Linux.h
+@@ -10,6 +10,7 @@
+ #define LLVM_CLANG_LIB_DRIVER_TOOLCHAINS_LINUX_H
+ 
+ #include "Gnu.h"
++#include "clang/Basic/LangOptions.h"
+ #include "clang/Driver/ToolChain.h"
+ 
+ namespace clang {
+@@ -48,6 +49,10 @@ public:
+   IsAArch64OutlineAtomicsDefault(const llvm::opt::ArgList &Args) const override;
+   bool isPIEDefault(const llvm::opt::ArgList &Args) const override;
+   bool IsMathErrnoDefault() const override;
++  LangOptions::StackProtectorMode
++  GetDefaultStackProtectorLevel(bool KernelOrKext) const override {
++    return LangOptions::SSPStrong;
++  }
+   SanitizerMask getSupportedSanitizers() const override;
+   void addProfileRTLibs(const llvm::opt::ArgList &Args,
+                         llvm::opt::ArgStringList &CmdArgs) const override;
+diff --git a/clang/test/Driver/fsanitize.c b/clang/test/Driver/fsanitize.c
+index 1671825042c3..5d8ac7009f8c 100644
+--- a/clang/test/Driver/fsanitize.c
++++ b/clang/test/Driver/fsanitize.c
+@@ -700,12 +700,12 @@
+ // RUN: %clang -fno-sanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=NOSP
+ // NOSP-NOT: "-fsanitize=safe-stack"
+ 
+-// RUN: %clang --target=x86_64-linux-gnu -fsanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=NO-SP
++// RUN: %clang --target=x86_64-linux-gnu -fsanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=SP
+ // RUN: not %clang --target=x86_64-linux-gnu -fsanitize=address,safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=SP-ASAN
+ // RUN: %clang --target=x86_64-linux-gnu -fstack-protector -fsanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=SP
+ // RUN: %clang --target=x86_64-linux-gnu -fsanitize=safe-stack -fstack-protector-all -### %s 2>&1 | FileCheck %s -check-prefix=SP
+-// RUN: %clang --target=arm-linux-androideabi -fsanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=NO-SP
+-// RUN: %clang --target=aarch64-linux-android -fsanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=NO-SP
++// RUN: %clang --target=arm-linux-androideabi -fsanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=SP
++// RUN: %clang --target=aarch64-linux-android -fsanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=SP
+ // NO-SP-NOT: stack-protector
+ // NO-SP: "-fsanitize=safe-stack"
+ // SP-ASAN: error: invalid argument '-fsanitize=safe-stack' not allowed with '-fsanitize=address'
+diff --git a/clang/test/Driver/stack-protector.c b/clang/test/Driver/stack-protector.c
+index 169376919a71..2470b7f7e39e 100644
+--- a/clang/test/Driver/stack-protector.c
++++ b/clang/test/Driver/stack-protector.c
+@@ -3,11 +3,11 @@
+ // NOSSP-NOT: "-stack-protector-buffer-size" 
+ 
+ // RUN: %clang -target i386-unknown-linux -fstack-protector -### %s 2>&1 | FileCheck %s -check-prefix=SSP
+-// SSP: "-stack-protector" "1"
++// SSP: "-stack-protector" "2"
+ // SSP-NOT: "-stack-protector-buffer-size" 
+ 
+ // RUN: %clang -target i386-unknown-linux -fstack-protector --param ssp-buffer-size=16 -### %s 2>&1 | FileCheck %s -check-prefix=SSP-BUF
+-// SSP-BUF: "-stack-protector" "1"
++// SSP-BUF: "-stack-protector" "2"
+ // SSP-BUF: "-stack-protector-buffer-size" "16" 
+ 
+ // RUN: %clang -target i386-pc-openbsd -### %s 2>&1 | FileCheck %s -check-prefix=OPENBSD
