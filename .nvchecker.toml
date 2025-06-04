@@ -1,0 +1,4 @@
+[pypy3-urllib3]
+source = "github"
+github = "urllib3/urllib3"
+use_latest_release = "true"

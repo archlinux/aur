@@ -1,0 +1,15 @@
+pkgbase = pypy3-urllib3
+	pkgdesc = HTTP library with thread-safe connection pooling, file post, and more
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/urllib3/urllib3
+	arch = any
+	license = MIT
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	makedepends = pypy3-hatch-vcs
+	depends = pypy3
+	source = urllib3-2.4.0.tar.gz::https://github.com/urllib3/urllib3/archive/2.4.0.tar.gz
+	sha512sums = 78afd6daea5594381783cae2cc3efbfcc89455da7f86994a17bd86c3c840d2e304fd3b744e8c0789cbbe6704502ef03a1bbaaadd2b1713b084adb250cfdffb9f
+
+pkgname = pypy3-urllib3
