@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-positioning
 	pkgdesc = Provides access to position, satellite and area monitoring classes (mingw-w64)
-	pkgver = 6.9.0
+	pkgver = 6.9.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = mingw-w64-qt6-positioning
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.9/6.9.0/submodules/qtpositioning-everywhere-src-6.9.0.tar.xz
-	sha256sums = c00b4c01d92bf99c5562910aab59f80146b976cdb1dcb7bd2f27833624605ed1
+	source = https://download.qt.io/official_releases/qt/6.9/6.9.1/submodules/qtpositioning-everywhere-src-6.9.1.tar.xz
+	sha256sums = 7062734b4989248ca3f0e3e4aebb9aa2e7ed2d6bf19e779e520c6ef69706ff26
 
 pkgname = mingw-w64-qt6-positioning
