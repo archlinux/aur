@@ -1,0 +1,12 @@
+diff --git a/daemon/seahorse-gpgme-operation.c b/daemon/seahorse-gpgme-operation.c
+index 47356d64..2a8c2378 100644
+--- a/daemon/seahorse-gpgme-operation.c
++++ b/daemon/seahorse-gpgme-operation.c
+@@ -302,7 +302,6 @@ event_cb (void *data, gpgme_event_io_t type, void *type_data)
+         break;
+     
+     case GPGME_EVENT_NEXT_KEY:
+-    case GPGME_EVENT_NEXT_TRUSTITEM:
+     default:
+         /* Ignore unsupported event types */
+         break;

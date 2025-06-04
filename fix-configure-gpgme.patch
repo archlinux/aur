@@ -1,0 +1,65 @@
+diff --git a/configure.ac b/configure.ac
+index be5b28b4..c4e1f9a1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -95,7 +95,7 @@ AC_ARG_ENABLE(gpg-check,
+ 	DO_CHECK=$enableval, DO_CHECK=yes)
+ 
+ if test	"$DO_CHECK" = "yes"; then
+-	accepted_versions="1.2 1.4 2.0 2.1 2.2"
++	accepted_versions="1.2 1.4 2.0 2.1 2.2 2.3 2.4"
+ 	AC_PATH_PROGS(GNUPG, [gpg gpg2], no)
+ 	AC_DEFINE_UNQUOTED(GNUPG, "$GNUPG", [Path to gpg executable.])
+ 	ok="no"
+@@ -128,50 +128,7 @@ if test	"$DO_CHECK" = "yes"; then
+ 	fi
+ fi
+ 
+-ok="no"
+-min_gpgme_version=1.0.0
+-AC_PATH_PROG(GPGME_CONFIG, gpgme-config, "failed")
+-if test $GPGME_CONFIG != "failed" ; then
+-	AC_MSG_CHECKING(for GPGME - version >= $min_gpgme_version)
+-	req_major=`echo $min_gpgme_version | \
+-		sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\)/\1/'`
+-	req_minor=`echo $min_gpgme_version | \
+-		sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\)/\2/'`
+-	req_micro=`echo $min_gpgme_version | \
+-		sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\)/\3/'`
+-	gpgme_config_version=`$GPGME_CONFIG --version`
+-	major=`echo $gpgme_config_version | \
+-		sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\).*/\1/'`
+-	minor=`echo $gpgme_config_version | \
+-		sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\).*/\2/'`
+-	micro=`echo $gpgme_config_version | \
+-		sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\).*/\3/'`
+-
+-	if test "$major" -eq "$req_major"; then
+-		if test "$minor" -ge "$req_minor"; then
+-			if test "$micro" -ge "$req_micro"; then
+-				ok="yes"
+-			fi
+-		fi
+-	fi
+-fi
+-
+-if test $ok = "yes"; then
+-	GPGME_CFLAGS=`$GPGME_CONFIG --cflags`
+-	GPGME_LIBS=`$GPGME_CONFIG --libs`
+-	AC_MSG_RESULT(yes)
+-	have_gpgme="$gpgme_config_version"
+-else
+-	AC_MSG_RESULT(no)
+-fi
+-
+-if test -z "$have_gpg"; then
+-	AC_MSG_ERROR([Appropriate version of GnuPG not found. Please install one of versions: $accepted_versions])
+-fi
+-
+-if test -z "$have_gpgme"; then
+-	AC_MSG_ERROR(GPGME $min_gpgme_version or later needed)
+-fi
++PKG_CHECK_MODULES(GPGME, gpgme)
+ 
+ SEAHORSE_CFLAGS="$SEAHORSE_CFLAGS $GPGME_CFLAGS"
+ SEAHORSE_LIBS="$SEAHORSE_LIBS $GPGME_LIBS"
