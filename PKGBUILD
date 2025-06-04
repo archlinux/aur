@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-declarative
-_qtver=6.9.0
+_qtver=6.9.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -22,8 +22,8 @@ groups=(mingw-w64-qt6)
 _pkgfqn="qtdeclarative-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Exclude-qmltime-when-cross-compiling.patch')
-sha256sums=('a3175fa510847a136734f989e2bfea7f7bbb9dc9acc98b40b544d26f5ba20d3d'
-            '20bb45dab9d47722e6e6e8c39afdc14cd556f0431214e8754336e8bb77dd5eb1')
+sha256sums=('ccb94665df0199d7ee387b965b29677c8b89cfb1782bb6f01239b1d1524cec97'
+            '717b403ed5d28097e3f4b80e7a29505ffd75023c073b3015b8cf37ce38861910')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
@@ -40,6 +40,10 @@ prepare () {
 build() {
   for _arch in ${_architectures}; do
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
+
+    # workaround https://gcc.gnu.org/bugzilla/show_bug.cgi?id=120495
+    [[ $pkgname =~ .*-clang-.* ]] || export CXXFLAGS+=' -Wno-template-body -fcoroutines'
+
     $_arch-cmake -G Ninja -B build-$_arch -S $_pkgfqn \
       -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
