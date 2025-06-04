@@ -3,7 +3,7 @@
 
 _pkgname=katawa-shoujo-reengineered
 pkgname=${_pkgname}-bin
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A fan-made modernization of the classic visual novel (uses bundled Ren'Py)"
 arch=("x86_64")
@@ -41,8 +41,8 @@ package() {
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
-sha512sums=(
-    'cb9fe41d53f52d8853dc03c0bad65e5e4a93414ebde2700d0b99193db8276dced5a3e99b5c3de3e32591b14734f6983ed63f29e1efe2c3e1d841bf1c1d220a40'
+sha512sums=('
+    cf610947f81054a422935e4fd27d2d1b49a5f87f6dbe5fcc30e47f922ef62d6e329ecdefa03c614e9f6f3c3fdf9be87046412374f3b05f76c5ea8a3b7c4e29db'
     'cef74391b6691e8f480fe4527265af96cba5c4b9c87418fe2665bc5e5965e26f225545704b4aba85ddff1609ba96a1f43314dd713abfda8d4fca449993811725'
     'a1e5d6f0662955fe5abd48b5d0e3f3d82faa3c6f6f845fefe5facad93a7ba42f2b682dd52845189432f4328ccef437d786ed942aaaee44d97df86acd47a9bc03'
     'e4c4413fd9418adf91b97b5d23f3f30008fff909a7b0e3190be5d56b2b163d81cfefe78981dbad42562b749de0f5666596b582a0476c649d138f512068e1bbe6'
