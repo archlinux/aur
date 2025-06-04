@@ -1,5 +1,5 @@
 pkgname=python-ocpsvg
-pkgdesc="Find all the sides and angles of a triangle"
+pkgdesc="Python library to convert between OCP and SVG"
 pkgver=0.5.0
 pkgrel=1
 arch=('any')
