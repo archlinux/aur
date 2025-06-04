@@ -1,7 +1,7 @@
-From 770d58d3c19571f5a255b88263066d96d2c86349 Mon Sep 17 00:00:00 2001
+From 5724ee3dd68e04d64628f73a6fcf7379ed9e1cb6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:49:36 +0200
-Subject: [PATCH 09/19] Fix dependency of xcb-image on xcb-util
+Subject: [PATCH 09/21] Fix dependency of xcb-image on xcb-util
 
 Considering this linker error, xcb-image apparently depends on xcb-util:
 ```

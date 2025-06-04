@@ -1,7 +1,7 @@
-From bd1382c445bea9a5e8af19cac7b08bbcb9de2319 Mon Sep 17 00:00:00 2001
+From 219d6d37d7c14d50162acf1f467e18d87665a48b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 22:08:10 +0100
-Subject: [PATCH 01/19] Use CMake's default import library suffix
+Subject: [PATCH 01/21] Use CMake's default import library suffix
 
 Change-Id: I3dbedaec74683e5bfd008f7f2fd1e046dfb921b2
 ---
@@ -98,7 +98,7 @@ index 24ed125f12b..73ebe453d3d 100644
          CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qtmain$${QT_LIBINFIX}$${debug_suffix}.lib
          CMAKE_WINMAIN_FILE_LOCATION_RELEASE = qtmain$${QT_LIBINFIX}.lib
 diff --git a/src/corelib/Qt6CoreMacros.cmake b/src/corelib/Qt6CoreMacros.cmake
-index a036bef1d92..351d3e2bc5a 100644
+index d28189f25bc..a47efae155b 100644
 --- a/src/corelib/Qt6CoreMacros.cmake
 +++ b/src/corelib/Qt6CoreMacros.cmake
 @@ -612,7 +612,6 @@ function(_qt_internal_apply_win_prefix_and_suffix target)
