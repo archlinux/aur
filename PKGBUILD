@@ -1,11 +1,11 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-hardened
-_pkgver=6.14.8.hardened1
-_kernver=6.14.8
+_pkgver=6.14.9.hardened1
+_kernver=6.14.9
 _hardenedver=hardened1
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
-_KERNNAME=6.14.8-hardened1-1-hardened
+_KERNNAME=6.14.9-hardened1-1-hardened
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-hardened"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -21,9 +21,9 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=linux-hardened-6.14.8.hardened1-1-x86_64.pkg.tar.zst
-_headerspkg=linux-hardened-headers-6.14.8.hardened1-1-x86_64.pkg.tar.zst
-_docspkg=linux-hardened-docs-6.14.8.hardened1-1-x86_64.pkg.tar.zst
+_kernpkg=linux-hardened-6.14.9.hardened1-1-x86_64.pkg.tar.zst
+_headerspkg=linux-hardened-headers-6.14.9.hardened1-1-x86_64.pkg.tar.zst
+_docspkg=linux-hardened-docs-6.14.9.hardened1-1-x86_64.pkg.tar.zst
 
 source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
         "https://archive.archlinux.org/packages/.all/${_headerspkg}"
@@ -31,9 +31,9 @@ source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('d2a6f52635f97d5affa3eca986f0d050f04e28abcbc62bf3d7dbb2c9b507c8d6'
-            'e3cfe4b70ddb2e501da5e558dfba8cce9c94a256f4dbfe47d67f22d23b1dab17'
-            'd1f9bc246862ea73960d948bfeeb0c2706080520e8c4fa44dcdde28b47cc3732')
+sha256sums=('859fb97053721e44638147fead471d70ec796622b1552c7cbf3c9560341b47a2'
+            '453626f8ee2b50ca57710032364a928c1702958ba210ff098ae2670eb2403fec'
+            '577742615dd7c52b59a5bcdd1152bc6fb10ba04626191a73aecb226f26ee5147')
 
 package_linux-hardened-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -51,7 +51,7 @@ package_linux-hardened-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.14.8.hardened1-1-hardened-bin() {
+package_linux6.14.9.hardened1-1-hardened-bin() {
   pkgdesc="The Security-Hardened Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -70,7 +70,7 @@ package_linux6.14.8.hardened1-1-hardened-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.14.8.hardened1-1-hardened-headers-bin() {
+package_linux6.14.9.hardened1-1-hardened-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Security-Hardened Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -79,7 +79,7 @@ package_linux6.14.8.hardened1-1-hardened-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.14.8.hardened1-1-hardened-docs-bin() {
+package_linux6.14.9.hardened1-1-hardened-docs-bin() {
   pkgdesc="Documentation for the Security-Hardened Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
