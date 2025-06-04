@@ -1,7 +1,7 @@
-From 07a3dd527b4ca28cf86b4917b7c7a59ecef7813b Mon Sep 17 00:00:00 2001
+From cce7c423e7c02793c3876d5ac9e8fa7317436f73 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 2 Nov 2020 13:47:45 +0100
-Subject: [PATCH 05/19] Fix libjpeg workaround for conflict with rpcndr.h
+Subject: [PATCH 05/21] Fix libjpeg workaround for conflict with rpcndr.h
 
 Otherwise it won't compile against mingw-w64-libjpeg-turbo. This version of
 libjpeg seems to take care of the conflict already as long as jconfig.h is
@@ -13,10 +13,10 @@ Change-Id: I011b7735485689c9797cffe2646c8c3d15d0645e
  1 file changed, 1 insertion(+)
 
 diff --git a/src/plugins/imageformats/jpeg/qjpeghandler.cpp b/src/plugins/imageformats/jpeg/qjpeghandler.cpp
-index 59b73587c52..cc0c3702f31 100644
+index 1f43407a75f..d36cb74ff67 100644
 --- a/src/plugins/imageformats/jpeg/qjpeghandler.cpp
 +++ b/src/plugins/imageformats/jpeg/qjpeghandler.cpp
-@@ -26,6 +26,7 @@
+@@ -27,6 +27,7 @@
  // including jpeglib.h seems to be a little messy
  extern "C" {
  #define XMD_H           // shut JPEGlib up
