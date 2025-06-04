@@ -1,13 +1,11 @@
 pkgbase = sunsetr-bin
 	pkgdesc = Automatic color temperature controller for hyprsunset (pre-compiled binary)
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/psi4j/sunsetr
 	arch = x86_64
 	license = MIT
-	depends = hyprland>=0.48.0
-	depends = hyprsunset>=0.2.0
-	source = sunsetr-0.3.0-x86_64-linux.tar.gz::https://github.com/psi4j/sunsetr/releases/download/v0.3.0/sunsetr-v0.3.0-x86_64-linux.tar.gz
-	sha256sums = fcf20dd906763a4110016819c794d024c07c3b7719082b18c936f08830870d0e
+	source = sunsetr-0.4.0-x86_64-linux.tar.gz::https://github.com/psi4j/sunsetr/releases/download/v0.4.0/sunsetr-v0.4.0-x86_64-linux.tar.gz
+	sha256sums = 9af39ed63d4c52681833b5a2b54795c44418d82362bc3a0507dae344542c9209
 
 pkgname = sunsetr-bin
