@@ -1247,3 +1247,15 @@ Improvements:
 Fixes:
 - Event merging between tasks and events created by Calendar Propagation has been restored. Also, due date slots can be merged with the corresponding scheduled task.
 - The time zone button is no longer removed from the toolbar when the app window is not large enough. Instead, the Command Bar button will be hidden if there is not enough space to accommodate both (you can still access Command Bar with CTRL+K or Command+K on macOS).
+
+=== Morgen 3.6.15
+Fixes:
+- Last week, Microsoft broke access to personal Outlook calendars (@outlook.com, @hotmail.com) for third-party clients like Morgen. This release ships a workaround that restores functionality of these calendars while waiting for a fix from Microsoft of the underlying issue.
+- A problem preventing Morgen tasks without a priority to appear in a filtered view has been fixed.
+- A bug causing the wrong order for unified task lists sorted by Priority has been fixed.
+
+Improvements:
+- The Menu Bar now displays events created by a Morgen Workflow.
+- The "Custom" repeat field powered by AI is now more reliable.
+- Linear tasks without a priority are now displayed at the bottom, below low-priority tasks, when tasks are sorted by Priority. This is consistent with Linear's UI.
+
