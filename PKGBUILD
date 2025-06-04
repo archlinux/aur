@@ -3,7 +3,7 @@
 
 pkgname=lld19
 pkgver=19.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Linker from the LLVM project (Version 19)"
 arch=('x86_64')
 url="https://lld.llvm.org/"
@@ -68,8 +68,13 @@ package() {
   DESTDIR="$pkgdir" ninja install
   install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # https://bugs.llvm.org/show_bug.cgi?id=42455
-  install -Dm644 -t "$pkgdir/usr/lib/llvm19/share/man/man1" ../docs/ld.lld.1
+  local _libname _lib
+  for _libname in COFF Common ELF MachO MinGW Wasm; do
+    _lib=liblld$_libname.so.19.1
+    mv "$pkgdir"/usr/lib/{llvm19/lib/,}$_lib
+    ln -s ../../$_lib "$pkgdir/usr/lib/llvm19/lib/$_lib"
+  done
+
 }
 
 # vim:set ts=2 sw=2 et:
