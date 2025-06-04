@@ -3,13 +3,13 @@
 # AUR package author : Robin Trioux <robin@trioux.eu>
 
 pkgname=python-depthai
-pkgver=2.26.0.0
-pkgrel=2
+pkgver=2.30.0.0
+pkgrel=1
 pkgdesc="DepthAI Python Library"
 arch=('x86_64')
 url="https://github.com/luxonis/depthai-python"
 license=(MIT)
-makedepends=("python" "python-build" "python-installer" "gcc-libs" "glibc" "curl" "sed" "cmake>=3.25")
+makedepends=("python" "python-build" "python-installer" "gcc-libs" "glibc" "curl" "sed" "cmake>3.5")
 depends=("python" "libusb")
 optdepends=("mypy" "python-pyqt5" "python-psutil" "python-numpy" "python-opencv")
 options+=(!strip)
@@ -35,6 +35,8 @@ build() {
 	#export HUNTER_BINARY_DIR=$srcdir/hunterdir
 	#mkdir -p $HUNTER_ROOT
 	#mkdir -p $HUNTER_BINARY_DIR
+	export CMAKE_MINIMUM_REQUIRED_VERSION=3.5
+	export CMAKE_POLICY_VERSION_MINIMUM=3.5
 	ncpu=$(nproc --all)
 	export MAKEFLAGS="-j$ncpu"
 	cd $srcdir/depthai-python-$pkgver
@@ -49,7 +51,7 @@ package() {
 	sudo udevadm control --reload-rules && sudo udevadm trigger
 }
 
-sha256sums=('fef1bf905288021aafa60b582617a5ceb57c12fe85e9b1994f2e28523b7aa281'
-            '7f1ef051f18f47ef109db9351fdf97e5240fa5d24043f1434e4a3c004ae6e063'
+sha256sums=('f11d82815c02f217b83064153036e2664c11ef09465f660d4cb527c14ef2a0e5'
+            '73b4f079b987a1e330ae8c7f7c23a799fe9d0171ae77996571eeb50468bd04ef'
             '06643091a944b1e562f8ba5ecf8011b473120c6256ba2a2ac9b85fe8c1bb30aa'
             'a0b59fa6f09767cce0e5bd1f5097db4381a9ecb119304113fe0533db5c7e52b5')
