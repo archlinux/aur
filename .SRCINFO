@@ -1,0 +1,21 @@
+pkgbase = repoprompter-git
+	pkgdesc = Git repository viewer with AI assistance.(Use system-wide electron)
+	pkgver = 0.2.r16.ge1d1522
+	pkgrel = 1
+	url = https://repoprompter.com/
+	arch = any
+	license = ISC
+	makedepends = pnpm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron34
+	provides = repoprompter=0.2
+	conflicts = repoprompter
+	source = repoprompter.git::git+https://github.com/Bikz/repoprompter.git
+	source = repoprompter.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = repoprompter-git
