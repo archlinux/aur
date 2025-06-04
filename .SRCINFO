@@ -1,7 +1,7 @@
 pkgbase = zig-bin
 	pkgdesc = a general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
 	pkgver = 0.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ziglang.org/
 	arch = x86_64
 	arch = pentium4

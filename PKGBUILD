@@ -2,7 +2,7 @@
 
 pkgname=zig-bin
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='a general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software'
 arch=('x86_64' 'pentium4' 'aarch64' 'armv7h' 'riscv64')
 url='https://ziglang.org/'
@@ -25,7 +25,7 @@ package() {
 	*) return 1 ;;
 	esac
 
-	cd "zig-linux-$zigarch-$pkgver"
+	cd "zig-$zigarch-linux-$pkgver"
 
 	install -Dm755 -t "$pkgdir/usr/bin/" zig
 
