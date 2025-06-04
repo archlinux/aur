@@ -2,6 +2,6 @@
 set -eu
 
 PKGNAME='slay-the-princess'
-echo >&2 "Launching app"
-cd "/opt/${PKGNAME}/data/noarch"
-exec ./start.sh "$@"
+echo >&2 "Launching game"
+cd "/opt/${PKGNAME}"
+exec ./SlaythePrincessDemo.sh "$@"
