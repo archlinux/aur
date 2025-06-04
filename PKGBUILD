@@ -2,7 +2,7 @@
 pkgname=ansible-rulebook
 _pkgname=ansible_rulebook
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Event-driven automation CLI for Ansible"
 arch=('any')
 url="https://github.com/ansible/ansible-rulebook"
@@ -13,7 +13,9 @@ depends=(
   'jdk-openjdk'
   'python-aiohttp'
   'python-dpath'
+  'python-drools-jpy'
   'python-janus'
+  'python-jpy'
   'python-psycopg'
   'python-requests'
   'python-watchdog'
