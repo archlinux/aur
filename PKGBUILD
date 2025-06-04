@@ -4,7 +4,7 @@
 _wlroots_version=0.18.2
 _wlroots_majver=0.18
 pkgname=wayfire-git
-pkgver=0.9.0.r85.g33620c18
+pkgver=0.9.0.r95.g32c4ada7
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
