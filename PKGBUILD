@@ -1,6 +1,6 @@
 # Maintainer: elbachir-one <bachiralfa@gmail.com>
 pkgname=typtea
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Minimal terminal-based typing speed test"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go>=1.22')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ashish0kumar/typtea/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b07181857850e44548db9123cf38fb827a25c1a7a40b3ebbf39feb0f32da72fd')
+sha256sums=('31618e10bc4eb01cb33cda8535d395b0c7290c4c48ebc5795a38a468f028572c')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"

@@ -1,13 +1,13 @@
 pkgbase = typtea
 	pkgdesc = Minimal terminal-based typing speed test
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ashish0kumar/typtea
 	arch = x86_64
 	license = MIT
 	makedepends = go>=1.22
 	depends = glibc
-	source = typtea-0.1.0.tar.gz::https://github.com/ashish0kumar/typtea/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = b07181857850e44548db9123cf38fb827a25c1a7a40b3ebbf39feb0f32da72fd
+	source = typtea-0.1.2.tar.gz::https://github.com/ashish0kumar/typtea/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 31618e10bc4eb01cb33cda8535d395b0c7290c4c48ebc5795a38a468f028572c
 
 pkgname = typtea
