@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zhiximind-desktop-bin
 _debname=com.zhixi.desktop
-pkgver=3.3.8
+pkgver=3.3.10
 _electronversion=22
 pkgrel=1
 pkgdesc="A mind mapping and mind mapping software present on all major platforms.(Prebuilt version.Use system-wide electron)知犀思维导图官方版"
@@ -18,8 +18,8 @@ source=(
     "LICENSE-${pkgver}.html::${url}/user-agreement"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e66a15df508f6d56acdfc74c9bcbbbbb2b787a2ca44b5e58fe0b764cac02096c'
-            'be1a1b010393e64babfac8c5a8f1643256fd7d7d0b99f30fc8e12659205586e6'
+sha256sums=('6d55b40207b537b685e1b5192bcf4c9cd0e53c102eefa9ed3703e10015892a38'
+            '0521f5ff6b0a0e0bb52e3bec36aba5d5f2d614c989e8b90b1ffd7979221e859f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
