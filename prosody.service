@@ -9,7 +9,6 @@ Type=simple
 ExecStart=/usr/bin/prosody -F
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-abnormal
-PIDFile=/run/prosody/prosody.pid
 User=prosody
 Group=prosody
 UMask=0027

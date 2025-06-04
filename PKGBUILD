@@ -7,7 +7,7 @@
 # Contributor: Christoph Stahl <christoph.stahl@uni-dortmund.de>
 
 pkgname=prosody-hg-stable
-pkgver=13.0.r13854+.0b01f40df0f9+
+pkgver=13.0.r13892+.c83fdee8efda+
 pkgrel=1
 pkgdesc="Lightweight and extensible Jabber/XMPP server written in Lua (latest from stable-branch)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -22,7 +22,7 @@ depends=('lua'
          'openssl')
 makedepends=('mercurial')
 conflicts=('prosody' 'prosody-hg')
-provides=('prosody=0.12')
+provides=('prosody=13.0')
 optdepends=(
             'lua-event: libevent support'
             'lua-dbi: SQL storage support'
@@ -38,7 +38,7 @@ sha256sums=('SKIP'
             '0753bd9260f1cfdce6e18e01a61e320b396acfe9fca8ccf3250653bfa6af997e'
             '5a2466b73bd069fb73be97a4e23b24e4c8dd1adb7db871cb8f5ab4094c1f967f'
             '211295ad5fe71742a8ec4a4420da31720e3bb407c6653250f9c6c7574e44f14e'
-            'e9d6abc4c53bd9e7b1d2acc56c7513416751f9436bf382ed52d703d29b13bfaa')
+            'd50dfae041855e3c95551c3b4cff4ba9f8b2f00f5e5f79dd410836d88be33c12')
 
 
 pkgver() {
@@ -53,20 +53,6 @@ prepare() {
   sed -i s/"info = "/"-- info = "/g prosody.cfg.lua.dist
   sed -i s/"error = "/"-- error = "/g prosody.cfg.lua.dist
   sed -i s/"--\ \"\*syslog\"\;"/"info = \"*syslog\"\;"/g prosody.cfg.lua.dist
-
-  # add pidfile and daemonize
-  # daemonize is important for systemd!
-  mv prosody.cfg.lua.dist prosody.cfg.lua.old
-
-  echo --Important for systemd >> prosody.cfg.lua.dist
-  echo -- daemonize is important for systemd. if you set this to false the systemd startup will freeze. >> prosody.cfg.lua.dist
-  echo daemonize = true >> prosody.cfg.lua.dist
-  echo 'pidfile = "/run/prosody/prosody.pid"'>> prosody.cfg.lua.dist
-  echo "" >> prosody.cfg.lua.dist
-  cat prosody.cfg.lua.old >> prosody.cfg.lua.dist
-  rm prosody.cfg.lua.old
-
-  #sed -i 's|sock, err = socket.udp();|sock, err = (socket.udp4 or socket.udp)();|g' net/dns.lua
 }
 
 build() {
@@ -77,6 +63,7 @@ build() {
     --sysconfdir=/etc/prosody \
     --datadir=/var/lib/prosody \
     --idn-library=idn \
+    --with-random=getrandom \
     --cflags="${CPPFLAGS} ${CFLAGS} -fPIC -D_GNU_SOURCE" \
     --ldflags="${LDFLAGS} -shared" \
     --no-example-certs
