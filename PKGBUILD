@@ -15,8 +15,9 @@ sha1sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
-  cargo --offline fetch --manifest-path Cargo.toml --verbose
-  cargo --offline build --release --verbose
+  cargo update
+  cargo fetch --manifest-path Cargo.toml --verbose
+  cargo build --release --verbose
 }
 package() {
   cd "$srcdir/$pkgname"
