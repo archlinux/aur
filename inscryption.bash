@@ -6,7 +6,7 @@ PKG_USER_DATA_HOME="${XDG_DATA_HOME:-"${HOME}/.local/share"}/${PKGNAME}"
 
 echo >&2 "Initializing"
 
-APPDIR_SOURCE='/opt/inscryption/data/noarch'
+APPDIR_SOURCE='/opt/inscryption'
 USER_OVERLAYDIR="${PKG_USER_DATA_HOME}/overlay"
 
 echo >&2 "Refreshing symlinks from ${USER_OVERLAYDIR}"
@@ -34,7 +34,7 @@ echo >&2 "Migrating saved game files from previous version"
 find "${USER_OVERLAYDIR}" -mindepth 1 -maxdepth 1 -name '*.gwsave' \
   -exec mv -nv '{}' "${USER_OVERLAYDIR}/game/" ';' >&2
 
-echo >&2 "Launching app"
+echo >&2 "Launching game"
 cd "${USER_OVERLAYDIR}"
 ./start.sh "$@"
 echo >&2 "==> Finished"

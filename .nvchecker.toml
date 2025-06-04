@@ -1,0 +1,6 @@
+[gog-inscryption]
+source = "jq"
+url = "https://www.gogdb.org/data/products/1224800338/product.json"
+filter = ".dl_installer | map(select(.os == \"linux\"))[0] | .version"
+from_pattern = "\\s+Linux$"
+to_pattern = ""
