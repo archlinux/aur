@@ -1,0 +1,4 @@
+[gog-thimbleweedpark]
+source = "jq"
+url = "https://www.gogdb.org/data/products/1325604411/product.json"
+filter = ".dl_installer | map(select(.os == \"linux\"))[0] | .version"
