@@ -9,7 +9,6 @@ license=('MIT')
 depends=('git' 'proxychains' 'sudo' 'firefox' 'wireshark-qt' 'gnome-terminal' 'python' 'nmap' 'termshark' 'tcpdump' 'nmap' 'scapy' 'python-progressbar' 'python-rich' 'python-distro' 'python-termcolor' 'python-prettytable' 'python-treelib')
 #checkdepends=('git' 'firefox' 'wireshark-qt' 'gnome-terminal' 'python' 'python-pip' 'termshark' 'tcpdump' 'nmap' 'scapy' 'python-progressbar' 'python-rich' 'python-distro' 'python-termcolor' 'python-prettytable' 'python-treelib')
 makedepends=('git')
-source=("$pkgname-git::https://github.com/akash420-oss/Project-Monalisa.git#tag=0.1.1")
 source=($pkgname::git+https://github.com/Akash420-oss/Project-Monalisa.git)
 md5sums=('SKIP')
 prepare(){
