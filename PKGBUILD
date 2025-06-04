@@ -6,7 +6,7 @@
 # Contributor: trya <tryagainprod (at) gmail.com>
 
 pkgname=quazip-legacy
-pkgver=0.9
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Legacy ersion of quazip-qt5"
 url="https://stachenov.github.io/quazip/"
