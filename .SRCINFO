@@ -1,7 +1,7 @@
 pkgbase = haskell-objectname
 	pkgdesc = Explicitly handled object names
 	pkgver = 1.1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hackage.haskell.org/package/ObjectName
 	arch = i686
 	arch = x86_64

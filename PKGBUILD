@@ -1,9 +1,11 @@
-# Contributor: MajorX234 <majorx234 at gmail dot com>
+# Maintainer: MajorX234 <majorx234 at gmail dot com>
+# Contributor: Emanuel Couto <unit73e at gmail dot com>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 
 _hkgname=ObjectName
 pkgname=haskell-objectname
 pkgver=1.1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Explicitly handled object names"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
