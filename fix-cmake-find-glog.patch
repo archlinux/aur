@@ -2,7 +2,7 @@ diff --git a/CMake/folly-deps.cmake b/CMake/folly-deps.cmake
 index c72273a73..d0408f2b3 100644
 --- a/CMake/folly-deps.cmake
 +++ b/CMake/folly-deps.cmake
-@@ -61,10 +61,9 @@ if(LIBGFLAGS_FOUND)
+@@ -64,10 +64,9 @@ if(LIBGFLAGS_FOUND)
    set(FOLLY_LIBGFLAGS_INCLUDE ${LIBGFLAGS_INCLUDE_DIR})
  endif()
  
