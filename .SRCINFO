@@ -1,7 +1,7 @@
 pkgbase = haskell-gluraw
 	pkgdesc = A raw binding for the OpenGL graphics system
 	pkgver = 2.0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/GLURaw
 	arch = i686
 	arch = x86_64

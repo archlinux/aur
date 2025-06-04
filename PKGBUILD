@@ -1,9 +1,11 @@
 # Maintainer: MajorX234 <MajorX234 at gmail dot com>
+# Contributor: Emanuel Couto <unit73e at gmail dot com>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 
 _hkgname=GLURaw
 pkgname=haskell-gluraw
 pkgver=2.0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A raw binding for the OpenGL graphics system"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
