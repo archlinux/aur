@@ -1,0 +1,17 @@
+pkgbase = aurras
+	pkgdesc = A high-end command line music player with YouTube and Spotify integration
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/vedant-asati03/Aurras
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.12
+	depends = python-pip
+	depends = mpv
+	source = https://files.pythonhosted.org/packages/source/a/aurras/aurras-1.1.1.tar.gz
+	sha256sums = d313100d3d5992d26eb8aa995604688b5a8b557e725956d85b4d72548b00a44e
+
+pkgname = aurras
