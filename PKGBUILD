@@ -2,7 +2,7 @@
 
 _pkgbase=ravenna-alsa-lkm
 pkgname="${_pkgbase}-dkms"
-pkgver=r161.1ee47ea
+pkgver=r164.7cd5712
 pkgrel=1
 pkgdesc="A kernel module for ALSA RAVENNA/AES67 Driver"
 url="https://bitbucket.org/MergingTechnologies/ravenna-alsa-lkm"
@@ -13,8 +13,8 @@ optdepends=(
     'linux-rt-headers: Needed for build the module for Arch RT kernel'
     'linux-headers: Needed for build the module for Arch kernel'
 	)
-source=("git+https://github.com/bondagit/ravenna-alsa-lkm.git#branch=aes67-daemon" "dkms.conf" "hrtimer.patch")
-sha256sums=('SKIP' 'd8e96a5bbd763d15bbec571bc0abec9e357dcce6b5dccac69a4e053e15ff8d8c' 'ff0188b56c0a92d862632e426509083ad9580179cc524078a03193f8531b1e58')
+source=("git+https://github.com/bondagit/ravenna-alsa-lkm.git#branch=aes67-daemon" "dkms.conf")
+sha256sums=('SKIP' 'd8e96a5bbd763d15bbec571bc0abec9e357dcce6b5dccac69a4e053e15ff8d8c')
 
 pkgver() {
   cd "$_pkgbase"
@@ -24,7 +24,6 @@ pkgver() {
 prepare() {
 sed -i '/MODULE_SUPPORTED_DEVICE/d' $srcdir/$_pkgbase/driver/module_interface.c
 sed -i 's#include <stdarg.h>#include <linux/stdarg.h>#g' $srcdir/$_pkgbase/driver/MTAL_LKernelAPI.c
-patch -i hrtimer.patch $srcdir/$_pkgbase/driver/module_timer.c
 }
 
 package() {
