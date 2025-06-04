@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-activeqt
-_qtver=6.9.0
+_qtver=6.9.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -20,9 +20,9 @@ _pkgfqn="qtactiveqt-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch'
         '0002-Build-tools-for-the-target-platform.patch')
-sha256sums=('23314bd8740fc4911025028cf20bfcdffa799f0beb55a7799463c016f604853e'
-            '3602de40fef98c7bd8e705f71a06c658b60f00c92f52aa66ed15f185be4018a1'
-            '39b28f6310615213b06a19b38735f0e2ed41e0d351889595e61c4fe42a4a60bd')
+sha256sums=('fd7ea1e80e783fabb0bd0c2e17dd77ab7035282bd5186c4d8b8e796f4c316d53'
+            'c16e675e4be2bc760fb6ede289ad1b14908ad7a9691671c66660ec7287ab1d68'
+            '76fd21c21a20ced21c907ded4df35775b295fda1b1771b49639d7f70bca7e0e8')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
@@ -39,6 +39,10 @@ prepare () {
 build() {
   for _arch in ${_architectures}; do
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
+
+    # workaround https://gcc.gnu.org/bugzilla/show_bug.cgi?id=120495
+    [[ $pkgname =~ .*-clang-.* ]] || export CXXFLAGS+=' -Wno-template-body -fcoroutines'
+
     $_arch-cmake -G Ninja -B build-$_arch -S $_pkgfqn \
       -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
