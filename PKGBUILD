@@ -9,6 +9,8 @@ license=('MIT')
 depends=('git' 'firefox' 'wireshark-qt' 'gnome-terminal' 'proxychains' 'sudo' 'python' 'nmap' 'termshark' 'tcpdump' 'nmap' 'scapy' 'python-progressbar' 'python-rich' 'python-distro' 'python-termcolor' 'python-prettytable' 'python-treelib')
 #checkdepends=('git' 'firefox' 'wireshark-qt' 'gnome-terminal' 'python' 'python-pip' 'termshark' 'tcpdump' 'nmap' 'scapy' 'python-progressbar' 'python-rich' 'python-distro' 'python-termcolor' 'python-prettytable' 'python-treelib')
 makedepends=('git')
+source=("$pkgname.deb::https://github.com/Akash420-oss/Project-Monalisa/releases/download/$pkgver/$pkgname.deb")
+source=("$pkgname.zip::https://github.com/Akash420-oss/Project-Monalisa/releases/download/$pkgver/$pkgname.zip")
 source=("$pkgname::git+https://github.com/Akash420-oss/Project-Monalisa.git#tag=$pkgver")
 md5sums=('SKIP')
 prepare(){
