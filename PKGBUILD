@@ -1,8 +1,8 @@
 # Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
-# 28-Apr-2025
+# 4-Jun-2025
 
 pkgname=c-evo-dh
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="C-evo: Distant Horizon, Empire Building Game"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('gtk2' 'gdk-pixbuf2' 'glib2' 'glibc' 'pango' 'libx11' 'at-spi2-core' 'c
 optdepends=('sox: Needed for sounds if ffmpeg not installed')
 source=("$pkgname-$pkgver"::git+$url#tag=$pkgver)
 #source=("$pkgname-$pkgver".orig.tar.xz)
-sha256sums=('26908d8c1849dbf2902bfe2a7c6771b7c5596c7e8fc7b0629fd6648dcb395483')
+sha256sums=('e42a0778bb9d28f08d5632e6648771e9e29114e934049afb8d81b0cbf48af24a')
 
 # Arch does not use games or libexec folders
 prepare() {
@@ -21,7 +21,7 @@ prepare() {
   sed -i "s|share/games|share|"     Linux/c-evo-launch-gtk2
   sed -i "s|/usr/games|/usr/bin|"   Linux/c-evo-launch-gtk2
   sed -i "s|/usr/libexec|/usr/lib|" Linux/c-evo-launch-gtk2
-  
+
   # currently cannot build with -pie as the RTL is not built with pie
   sed -i 's/-k-pie/-k-z shstk/' Pascal/Release.cfg
 }
