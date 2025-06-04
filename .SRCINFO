@@ -1,0 +1,20 @@
+pkgbase = ansible-rulebook
+	pkgdesc = Event-driven automation CLI for Ansible
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/ansible/ansible-rulebook
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = ansible-core
+	depends = ansible-runner
+	depends = python-aiohttp
+	depends = python-requests
+	depends = python-websockets
+	depends = python-yaml
+	source = https://github.com/ansible/ansible-rulebook/releases/download/v1.1.6/ansible_rulebook-1.1.6.tar.gz
+	sha256sums = b2a27fccdb70a3b1faaeae45cef5c37fb1e2613649f0d1679ac1ba3dfc2657d3
+
+pkgname = ansible-rulebook
