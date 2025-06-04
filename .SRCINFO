@@ -1,0 +1,22 @@
+pkgbase = yt-dlp-gui-git
+	pkgdesc = A user-friendly interface for yt-dlp, making video and audio downloads easy for everyone.(Use system-wide electron)
+	pkgver = r10.299cbe7
+	pkgrel = 1
+	url = https://github.com/Ardish05/ytdlp-gui-app
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron36
+	depends = yt-dlp
+	provides = yt-dlp-gui=r10.299cbe7
+	conflicts = yt-dlp-gui
+	source = yt-dlp-gui.git::git+https://github.com/Ardish05/ytdlp-gui-app
+	source = yt-dlp-gui.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = yt-dlp-gui-git
