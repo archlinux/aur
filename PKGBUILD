@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=prometheus-transmission-exporter-git
 _pkgname=transmission-exporter
-pkgver=0.3.1.r0.g967a2ee
+pkgver=0.3.1.r0.gc7771a1
 pkgrel=1
 pkgdesc="Prometheus exporter for Transmission metrics"
 arch=('x86_64' 'aarch64')

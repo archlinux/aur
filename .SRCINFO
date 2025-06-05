@@ -1,6 +1,6 @@
 pkgbase = prometheus-transmission-exporter-git
 	pkgdesc = Prometheus exporter for Transmission metrics
-	pkgver = 0.3.1.r0.g967a2ee
+	pkgver = 0.3.1.r0.gc7771a1
 	pkgrel = 1
 	url = https://github.com/dcelasun/transmission-exporter
 	arch = x86_64
