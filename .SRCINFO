@@ -1,0 +1,19 @@
+pkgbase = pypy3-gmpy2
+	pkgdesc = Interface to GMP, MPFR, and MPC
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/aleaxit/gmpy
+	arch = any
+	license = LGPL-3.0-or-later
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	makedepends = pypy3-setuptools
+	depends = glibc
+	depends = gmp
+	depends = libmpc
+	depends = mpfr
+	depends = pypy3-packaging
+	source = gmpy-2.2.1.tar.gz::https://github.com/aleaxit/gmpy/archive/v2.2.1.tar.gz
+	sha512sums = 88e506c20ca4a1fc67c8fb7a7258750316437e5d66a22845e09b87e76a1265746762156cfda9c1e2e47a2aa6771ea807282169a0af6a5b782a3b7c3117f77940
+
+pkgname = pypy3-gmpy2

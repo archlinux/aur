@@ -1,0 +1,5 @@
+[pypy3-gmpy2]
+source = "github"
+github = "aleaxit/gmpy"
+use_max_tag = "true"
+prefix = "v"
