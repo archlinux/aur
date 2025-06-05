@@ -1,6 +1,5 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
-# Contributor: moyi geek <moyigeek@qq.com>
-
+# Maintainer: moyi geek <moyigeek@qq.com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 pkgname=quarkdown
 pkgver=1.3.1
 pkgrel=1
