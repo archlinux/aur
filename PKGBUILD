@@ -1,7 +1,7 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@proton.me>
 _pkgname=compose-language-service
 pkgname="nodejs-$_pkgname"
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Language service for Docker Compose documents'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('npm' 'jq')
 depends=('nodejs')
 source=("https://registry.npmjs.org/@microsoft/$_pkgname/-/$_pkgname-$pkgver.tgz")
-b2sums=('e27429faa82c9009257279338058f88ad9afca4262fe6246a087f71eac90a2d0f0b4dddb1bbf1852d55fa6847599b37d5a82706fb449b52ed71e1666d8b383f9')
+b2sums=('2acf8625c091691f6e52130b7f300c4e85c7675d2cec25f82579b36d18408d9578fa8fdda451677924e88368a97813e0ba054f80d175b3311a48f7de96564af6')
 noextract=("$_pkgname-$pkgver.tgz")
 
 package() {
