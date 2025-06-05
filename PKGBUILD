@@ -43,11 +43,14 @@ prepare(){
 build() {
   export XDG_CACHE_HOME="${srcdir}/xdgcache" HOME="${srcdir}/home" # Do not taint user dir
   cd "${_pkgname}"
-  # Set version of electron
+  # electron version
+  _elver=$(npm pkg get devDependencies.electron)
+  echo Replacing electron $_elver
   _elver=$(cat /usr/lib/${_electron}/version)
+  npm pkg set devDependencies.electron=${_elver} # needed ?
   sed -i "s/^target=.*/target=\"${_elver}\"/" .npmrc # native modules
-  echo Replaced version of electron with $(rg -N 'target' .npmrc)
-  npm pkg set devDependencies.electron=${_elver}
+  echo with $(rg -N 'target' .npmrc)
+
   # Stop downloading electron
   _cachedir="${XDG_CACHE_HOME}"/electron/$(echo -n "https://github.com/electron/electron/releases/download/v${_elver}" | sha256sum | cut -d ' ' -f 1)
   _zip="electron-v${_elver}-linux-x64.zip"
@@ -62,7 +65,6 @@ build() {
 }
 
 package() {
-  _elnum=$(cut -d. -f1 /usr/lib/${_electron}/version) # hide ver from --printsrcinfo
   _pkg=VSCode-linux-x64
   _app=/usr/share/void/resources/app
   # appdata and desktop files
