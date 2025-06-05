@@ -8,8 +8,7 @@
 
 _target=arm-linux-gnueabihf
 pkgname=${_target}-gcc-stage1
-pkgver=15.1.1.git+f36ec88aa85a
-_majorver="15.1.1"
+pkgver=15.1.1+r7+gf36ec88aa85a
 _commit=f36ec88aa85a1a8f4ec300dfcd862fc4fbca1c53
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building"
@@ -27,13 +26,12 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
 sha256sums=('7dc521dbaf5e8db83574db217c5fdb8c4fed6ec1cc6ce9f0095755f599890b8c')
 
 pkgver() {
-  cd gcc
-  local _hash="$(git rev-parse --short ${_commit})"
-  echo "${_majorver}.git+${_hash}"
+  cd "${srcdir}"/gcc
+  echo "$(cat gcc/BASE-VER)+$(git describe --abbrev=12 --tags | sed 's/[^-]*-[^-]*-//;s/[^-]*-/r&/;s/-/+/g;s/_/./')"
 }
 
 prepare() {
-  cd gcc
+  cd "${srcdir}"/gcc
 
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
@@ -49,7 +47,7 @@ build() {
   CFLAGS="${CFLAGS/ -Werror=format-security/}"
   CXXFLAGS="${CXXFLAGS/ -Werror=format-security/}"
 
-  ../gcc/configure \
+  "${srcdir}"/gcc/configure \
     --target=${_target} \
     --host=${CHOST} \
     --build=${CHOST} \
@@ -93,7 +91,7 @@ build() {
 }
 
 package() {
-  cd gcc-build
+  cd "${srcdir}"/gcc-build
 
   make DESTDIR="${pkgdir}" install-gcc install-target-libgcc
 
