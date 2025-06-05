@@ -2,21 +2,44 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 _base=scipy
 pkgname=pypy3-${_base}
-pkgver=1.15.2
+pkgver=1.15.3
 pkgrel=1
 pkgdesc="Fundamental algorithms for scientific computing in Python"
 arch=(x86_64)
 url="https://${_base}.org"
 license=(BSD-3-Clause)
 depends=(blas gcc-libs glibc lapack pypy3-numpy) # pypy3-platformdirs pypy3-pooch
-makedepends=(gcc-fortran pypy3-build pypy3-installer meson-pypy3 pypy3-cython pypy3-pybind11 pypy3-pythran)
-source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base}/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('c5eba94a32970f0978780c453656f8dbe1784461e5dd37615b224079bff4aed49e20d1c183e1cad9da8aa141392c6afd33276412bd319298a5e469de327ee58a')
+makedepends=(boost pypy3-cython gcc-fortran git meson-pypy3
+  pypy3-pybind11 pypy3-build pypy3-installer pypy3-pythran)
+source=(${_base}-${pkgver}::git+https://github.com/${_base}/${_base}.git?signed#tag=v${pkgver}
+  git+https://github.com/data-apis/array-api-compat
+  git+https://github.com/boostorg/math
+  git+https://github.com/cobyqa/cobyqa
+  git+https://github.com/${_base}/pocketfft
+  git+https://github.com/${_base}/unuran)
+validpgpkeys=('AD0C5067D1DECED72F6245670196A9293365B112') # Tyler Reddy <tyler.je.reddy@gmail.com>
+sha512sums=('5aa456248274e85726aba6380e9d8242a2e3cad6a2efa0c0d2c7a06f02b75bcec1988203f15496d0d0268628aa3355bef1e54a2ec34698790c80cc0b4944da0e'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 options=(!lto)
+
+prepare() {
+  cd ${_base}-${pkgver}
+  git submodule init
+  git submodule set-url scipy/_lib/array_api_compat "${srcdir}"/array-api-compat
+  git submodule set-url scipy/_lib/boost_math "${srcdir}"/math
+  git submodule set-url scipy/_lib/cobyqa "${srcdir}"/cobyqa
+  git submodule set-url scipy/_lib/pocketfft "${srcdir}"/pocketfft
+  git submodule set-url scipy/_lib/unuran "${srcdir}"/unuran
+  git -c protocol.file.allow=always submodule update
+}
 
 build() {
   cd ${_base}-${pkgver}
-  pypy3 -m build --wheel --skip-dependency-check --no-isolation \
+  PATH=/opt/pypy3/bin:${PATH} pypy3 -m build --wheel --skip-dependency-check --no-isolation \
     -C setup-args=-Dblas=blas \
     -C setup-args=-Dlapack=lapack
 }
