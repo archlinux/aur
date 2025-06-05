@@ -4,8 +4,8 @@ _pkgname=ReadCat-linux
 _pkgname1=read-cat-insiders
 pkgver=1.0.0
 _pkgver=v1.0.0-dev.241109
-_electronversion=33
-pkgrel=1
+_electronversion=36
+pkgrel=2
 pkgdesc="一款免费,开源,简洁,纯净,无广告的小说阅读器"
 arch=(
     'aarch64'
