@@ -1,0 +1,5 @@
+[pypy3-contourpy]
+source = "github"
+github = "contourpy/contourpy"
+use_latest_release = "true"
+prefix = "v"
