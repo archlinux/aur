@@ -2,7 +2,7 @@
 pkgname=minecraft-ttf-git
 pkgver=1.3
 pkgrel=1
-pkgdesc="Fonts from Minecraft: Java Edition"
+pkgdesc="Pixel-accurate and complete TrueType fonts from Minecraft: Java Edition, generated automatically from the latest version of the game"
 url="https://github.com/tryashtar/minecraft-ttf"
 license=("custom")
 arch=("any")
