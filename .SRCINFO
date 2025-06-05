@@ -1,7 +1,7 @@
 pkgbase = r-pheatmap
 	pkgdesc = Pretty Heatmaps
-	pkgver = 1.0.12
-	pkgrel = 4
+	pkgver = 1.0.13
+	pkgrel = 1
 	url = https://cran.r-project.org/package=pheatmap
 	arch = any
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = r-pheatmap
 	depends = r-gtable
 	depends = r-rcolorbrewer
 	depends = r-scales
-	source = https://cran.r-project.org/src/contrib/pheatmap_1.0.12.tar.gz
-	sha256sums = 579d96ee0417203b85417780eca921969cda3acc210c859bf9dfeff11539b0c1
+	source = https://cran.r-project.org/src/contrib/pheatmap_1.0.13.tar.gz
+	sha256sums = 4ac34d4c5f787624f45cc98a97b8c28295c57eb635d1523554252c5a583142f7
 
 pkgname = r-pheatmap
