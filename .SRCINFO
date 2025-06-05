@@ -1,6 +1,6 @@
 pkgbase = cloudtolocalllm
 	pkgdesc = CloudToLocalLLM - Enhanced Architecture with System Tray Integration and Local LLM Management (Unified 145MB package)
-	pkgver = 3.1.3
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/imrightguy/CloudToLocalLLM
 	install = cloudtolocalllm.install
@@ -24,9 +24,9 @@ pkgbase = cloudtolocalllm
 	optdepends = chromium: Alternative web browser for authentication
 	provides = cloudtolocalllm
 	conflicts = cloudtolocalllm-git
-	source = cloudtolocalllm-3.0.3-x86_64.tar.gz::https://github.com/imrightguy/CloudToLocalLLM/releases/download/v3.0.3/cloudtolocalllm-3.0.3-x86_64.tar.gz
-	source = cloudtolocalllm-3.0.3-x86_64.tar.gz.sha256::https://github.com/imrightguy/CloudToLocalLLM/releases/download/v3.0.3/cloudtolocalllm-3.0.3-x86_64.tar.gz.sha256
-	sha256sums = 4fcef8f2e38a2408c83a52feffa8b9d98af221bbbaf3dd8fdda13338bd29e636
+	source = cloudtolocalllm-3.2.0-x86_64.tar.gz::https://github.com/imrightguy/CloudToLocalLLM/releases/download/v3.2.0/cloudtolocalllm-3.2.0-x86_64.tar.gz
+	source = cloudtolocalllm-3.2.0-x86_64.tar.gz.sha256::https://github.com/imrightguy/CloudToLocalLLM/releases/download/v3.2.0/cloudtolocalllm-3.2.0-x86_64.tar.gz.sha256
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = cloudtolocalllm
