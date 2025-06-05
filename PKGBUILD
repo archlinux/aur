@@ -10,33 +10,36 @@
 
 _target="arm-linux-gnueabihf"
 pkgname="${_target}-binutils"
-pkgver=2.44
+pkgver=2.44+r94+gfe459e33c676
+_commit=fe459e33c676883b5f28cc96c00e242973d906a9
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files"
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
-license=(GPL)
+license=(GPL-2.0-or-later GPL-3.0-or-later LGPL-2.0-or-later LGPL-3.0-or-later GFDL-1.3 FSFAP)
 depends=(glibc libelf zlib zstd)
-makedepends=(gcc glibc libelf zlib zstd)
+makedepends=(gcc git glibc libelf zlib zstd)
 options=(!emptydirs !distcc !strip)
-source=(https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz{,.sig})
-sha256sums=('ce2017e059d63e67ddb9240e9d4ec49c2893605035cd60e92ad53177f4377237'
-            'SKIP')
+source=(git+https://sourceware.org/git/binutils-gdb.git#commit=${_commit})
+sha256sums=('07a821f494fbb61dcf9e958f6f840eaa4a45c748c59415fd3ea1ec4b3326673c')
 validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 
+pkgver() {
+  cd binutils-gdb
+  git describe --abbrev=12 --tags | sed 's/[^-]*-//;s/[^-]*-/&r/;s/-/+/g;s/_/./'
+}
+
 prepare() {
-  mkdir -p binutils-build
-
-  cd binutils-${pkgver}
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
-
-  cd ../binutils-build
+  if [ ! -d "${srcdir}"/binutils-gdb ]; then
+    ln -s "${srcdir}"/binutils-${pkgver} "${srcdir}"/binutils-gdb
+  fi
+  mkdir "${srcdir}"/binutils-build
 }
 
 build() {
-  cd binutils-build
+  cd "${srcdir}"/binutils-build
 
-  ../binutils-${pkgver}/configure \
+  "${srcdir}"/binutils-gdb/configure \
     --build=$CHOST \
     --host=$CHOST \
     --target=$_target \
@@ -63,7 +66,7 @@ build() {
 }
 
 check() {
-  cd binutils-build
+  cd "${srcdir}"/binutils-build
 
   # unset LDFLAGS as testsuite makes assumptions about which ones are active
   # ignore failures in gold testsuite...
@@ -71,7 +74,7 @@ check() {
 }
 
 package() {
-  cd binutils-build
+  cd "${srcdir}"/binutils-build
 
   make DESTDIR="${pkgdir}" install
 
