@@ -1,0 +1,15 @@
+pkgbase = departure
+	pkgdesc = A flexible logout application for Wayland with Material You theming support
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mpalatsi/departure
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gtk4
+	depends = gtk4-layer-shell
+	source = departure-0.1.0.tar.gz::https://github.com/mpalatsi/departure/archive/v0.1.0.tar.gz
+	sha256sums = 2f20310819645dc2697af0bdf1105828e379b1a4c263d1d56fadaeec1179ff79
+
+pkgname = departure
