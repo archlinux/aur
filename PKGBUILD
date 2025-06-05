@@ -1,5 +1,5 @@
 pkgname=kalc-plot
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="a graphing program intended to be used with kalc"
 arch=('any')
@@ -8,14 +8,11 @@ license=('GPL3')
 depends=('gmp' 'mpfr')
 makedepends=('rust' 'diffutils' 'gcc' 'm4' 'make')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bgkillas/kalc-plot/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('ad5d174f3a4fd6e235b5be3c18f6f05f903541696f1aa3f39642c26f30719248ca1db7c6c237e031cd5fd135fd7220731057aef6114000ad609b289b21106314')
+sha512sums=('8ba21526e662056e1d58b19db7809c6fabbfe81273e65a4717839b54325232d549d242cc67877865116dd5a9778e14834909a24d2864000f5e62dde96972b7e4')
 build()
 {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo build --release||(
-  sed -i 's/\["force-cross"\]/\["use-system-libs"\]/g' Cargo.toml
-  cargo build --release
-  )
+  cargo build --release||cargo build --release --features "system-libs"
 }
 package()
 {

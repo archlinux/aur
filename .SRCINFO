@@ -1,6 +1,6 @@
 pkgbase = kalc-plot
 	pkgdesc = a graphing program intended to be used with kalc
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/bgkillas/kalc-plot
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = kalc-plot
 	makedepends = make
 	depends = gmp
 	depends = mpfr
-	source = kalc-plot-0.1.1.tar.gz::https://github.com/bgkillas/kalc-plot/archive/refs/tags/v0.1.1.tar.gz
-	sha512sums = ad5d174f3a4fd6e235b5be3c18f6f05f903541696f1aa3f39642c26f30719248ca1db7c6c237e031cd5fd135fd7220731057aef6114000ad609b289b21106314
+	source = kalc-plot-0.1.2.tar.gz::https://github.com/bgkillas/kalc-plot/archive/refs/tags/v0.1.2.tar.gz
+	sha512sums = 8ba21526e662056e1d58b19db7809c6fabbfe81273e65a4717839b54325232d549d242cc67877865116dd5a9778e14834909a24d2864000f5e62dde96972b7e4
 
 pkgname = kalc-plot
