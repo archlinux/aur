@@ -7,7 +7,6 @@ pkgbase = uutils-coreutils-git
 	license = MIT
 	makedepends = git
 	makedepends = rust
-	makedepends = mold
 	depends = gcc-libs
 	depends = glibc
 	depends = oniguruma

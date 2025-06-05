@@ -1,4 +1,4 @@
-# Maintainer: xiota
+# Contributor: xiota
 # Contributor: Sam <dev at samarthj dot com>
 # Contributor: Árni Dagur <arnidg at protonmail dot ch>
 
@@ -12,14 +12,14 @@ license=('MIT')
 arch=('x86_64')
 
 depends=(gcc-libs glibc oniguruma)
-makedepends=(git rust mold)
+makedepends=(git rust) # clang for SELinux build
 options=('!lto')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("$_pkgname"::"git+${url}.git"
 https://gitlab.archlinux.org/archlinux/packaging/packages/uutils-coreutils/-/raw/main/disable_selinux.patch)
 sha256sums=('SKIP'
-            '302614165d99f04600627222ddad0444a0144fcad6a1ff59ad43fb0b3162060e')
+'302614165d99f04600627222ddad0444a0144fcad6a1ff59ad43fb0b3162060e')
 
 pkgver() {
   cd $_pkgname
@@ -33,8 +33,8 @@ prepare() {
   # cargo fetch --target "${CARCH}"-unknown-linux-gnu # DL larger crates
 }
 
-export RUSTONIG_DYNAMIC_LIBONIG=1
-export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) -C link-arg=-fuse-ld=mold $RUSTFLAGS"
+RUSTONIG_DYNAMIC_LIBONIG=1
+RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) ${RUSTFLAGS} --remap-path-prefix=${srcdir}="
 
 #build() { cause build twice
 #  cd $_pkgname
