@@ -1,6 +1,6 @@
 pkgbase = xmrig-donateless
 	pkgdesc = RandomX, KawPow, CryptoNight, AstroBWT and GhostRider unified CPU/GPU miner and RandomX benchmark - No Donate Version
-	pkgver = 6.22.2
+	pkgver = 6.22.3
 	pkgrel = 1
 	url = https://github.com/xmrig/xmrig
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = xmrig-donateless
 	depends = hwloc
 	depends = libssl.so
 	depends = libuv
-	provides = xmrig=6.22.2
+	provides = xmrig=6.22.3
 	conflicts = xmrig
 	backup = etc/xmrig/xmrig.conf
-	source = https://github.com/xmrig/xmrig/archive/v6.22.2/xmrig-6.22.2.tar.gz
+	source = https://github.com/xmrig/xmrig/archive/v6.22.3/xmrig-6.22.3.tar.gz
 	source = xmrig@.service
 	source = xmrig.sysusers
-	sha256sums = 34759ca9c1b2486ecb7b6bc267c76a6f365d401b2b6de6d667e0a13ae30882a2
+	sha256sums = 79bf51c11ad3670b8330ca1432c9cdaf84f82b96f94b636e33d253be2b916d20
 	sha256sums = bbc54b04a7da5ea473eb7d976307eb995fbfd96f0d012f1553b8c487182d9fb3
 	sha256sums = d8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6
 
