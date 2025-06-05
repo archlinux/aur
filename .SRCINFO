@@ -1,0 +1,15 @@
+pkgbase = pypy3-mpmath
+	pkgdesc = Python library for arbitrary-precision floating-point arithmetic
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/mpmath/mpmath
+	arch = any
+	license = BSD-3-Clause
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	makedepends = pypy3-setuptools
+	depends = pypy3-gmpy2
+	source = mpmath-1.3.0.tar.gz::https://github.com/mpmath/mpmath/archive/1.3.0.tar.gz
+	sha512sums = ec703e661323035e3c973fc2e52206e793f6182ed9897e5a483cb35a22421d7869df850cdd89fc1ef4e1bb28b17b4914447116dbeed136a687e582cce0bf9e42
+
+pkgname = pypy3-mpmath

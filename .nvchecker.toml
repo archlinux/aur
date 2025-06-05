@@ -1,0 +1,4 @@
+[pypy3-mpmath]
+source = "github"
+github = "mpmath/mpmath"
+use_latest_release = "true"
