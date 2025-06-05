@@ -1,0 +1,14 @@
+[Unit]
+Description=Download Gaurdian (watches ~/Downloads and prompts to scan new files using ClamAV)
+After=graphical.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/download-guardian-scan
+Restart=on-failure
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
+
