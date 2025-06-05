@@ -1,7 +1,7 @@
 # Maintainer: Struan Robertson <contact@struanrobertson.co.uk>
 pkgname=wlinhibit
-pkgver=0.1.1
-pkgrel=1
+pkgver=0.1.2
+pkgrel=0
 pkgdesc="Simple, stupid idle inhibitor for wayland."
 arch=("x86_64")
 url="https://github.com/0x5a4/wlinhibit"
