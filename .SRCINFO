@@ -1,6 +1,6 @@
 pkgbase = arm-linux-gnueabihf-gcc-stage2
 	pkgdesc = The GNU Compiler Collection. Stage 2 for toolchain building
-	pkgver = 15.1.1.git+f36ec88aa85a
+	pkgver = 15.1.1+r7+gf36ec88aa85a
 	pkgrel = 1
 	url = https://gcc.gnu.org
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = arm-linux-gnueabihf-gcc-stage2
 	makedepends = zlib
 	depends = arm-linux-gnueabihf-binutils>=2.42
 	depends = arm-linux-gnueabihf-glibc-headers>=2.40
-	provides = arm-linux-gnueabihf-gcc-stage1=15.1.1.git+f36ec88aa85a
 	conflicts = arm-linux-gnueabihf-gcc-stage1
 	replaces = arm-linux-gnueabihf-gcc-stage1
 	options = !emptydirs
