@@ -1,0 +1,4 @@
+[pypy3-dateutil]
+source = "github"
+github = "dateutil/dateutil"
+use_latest_release = "true"

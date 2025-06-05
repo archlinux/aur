@@ -1,0 +1,16 @@
+pkgbase = pypy3-dateutil
+	pkgdesc = Extensions to the standard Python datetime module
+	pkgver = 2.9.0.post0
+	pkgrel = 1
+	url = https://github.com/dateutil/dateutil
+	arch = any
+	license = Apache-2.0
+	license = BSD-3-Clause
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	makedepends = pypy3-setuptools-scm
+	depends = pypy3
+	source = dateutil-2.9.0.post0.tar.gz::https://github.com/dateutil/dateutil/archive/2.9.0.post0.tar.gz
+	sha512sums = 8ba2bf0f5a0d74298094c638368ec58033b47b5abd3b3bc182e0fec753e8d5fb8592eb6a6db22a1f7a9d48cf90e414ccbafea25208dcd148a16dd907007f52d0
+
+pkgname = pypy3-dateutil
