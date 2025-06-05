@@ -9,8 +9,8 @@
 
 _pkgname=geany-plugins
 pkgname=$_pkgname-git
-pkgver=2.0.0.r156.g57ad48e7
-pkgrel=2
+pkgver=2.0.0.r177.g1d0e74a7
+pkgrel=1
 pkgdesc='Various plugins for Geany (git version)'
 arch=(x86_64)
 url='https://plugins.geany.org/'
@@ -21,10 +21,8 @@ depends=(cairo ctpl discount enchant geany-git gdk-pixbuf2 glib2 glibc gpgme
 makedepends=(git intltool python)
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("$_pkgname::git+https://github.com/geany/geany-plugins.git"
-        'https://github.com/geany/geany-plugins/pull/1434.patch')
-sha256sums=('SKIP'
-            '52172e212433ec07b61477239d8bb624fbc81d20a7af590cfa135fd6dd8806e8')
+source=("$_pkgname::git+https://github.com/geany/geany-plugins.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -37,8 +35,6 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-  patch -p1 -N -r - -i "$srcdir"/1434.patch || \
-    echo "WARNING: Ignoring error. Patch already applied?"
   NOCONFIGURE=1 ./autogen.sh
 }
 
