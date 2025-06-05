@@ -1,0 +1,14 @@
+pkgbase = drawonscreen_rust
+	pkgdesc = Draw on screen
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/enheit/drawonscreen_rust
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/enheit/drawonscreen_rust.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = draw-on-screen
