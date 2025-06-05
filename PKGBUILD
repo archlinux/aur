@@ -18,9 +18,9 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # Install binaries
-  install -Dm755 bin/sqlchctl "$pkgdir/usr/bin/sqlchctl"
-  install -Dm755 bin/sqlchknob "$pkgdir/usr/bin/sqlchknob"
-  install -Dm755 bin/sqlchtray "$pkgdir/usr/bin/sqlchtray"
+  install -Dm755 "$srcdir/sqlch-suite-${pkgver}/bin/sqlchctl" "$pkgdir/usr/bin/sqlchctl"
+  install -Dm755 "$srcdir/sqlch-suite-${pkgver}/bin/sqlchknob" "$pkgdir/usr/bin/sqlchknob"
+  install -Dm755 "$srcdir/sqlch-suite-${pkgver}/bin/sqlchtray" "$pkgdir/usr/bin/sqlchtray"
 
   # Install icons
   install -Dm644 assets/sqlchtray-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/sqlch.png"
