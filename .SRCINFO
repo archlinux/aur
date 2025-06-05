@@ -1,0 +1,26 @@
+pkgbase = udb-git
+	pkgdesc = An open-source, multi-agent based modern database management tool.(Use system-wide electron)
+	pkgver = 0.0.2.r4.gba44cda
+	pkgrel = 1
+	url = https://github.com/udb-org/udb-app
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron35
+	provides = udb=0.0.2
+	conflicts = udb
+	noextract = jdk21.0.2.tar.gz
+	source = udb.git::git+https://github.com/udb-org/udb-app.git
+	source = jdk21.0.2.tar.gz::https://download.java.net/java/GA/jdk21.0.2/f2283984656d49d69e91c558476027ac/13/GPL/openjdk-21.0.2_linux-x64_bin.tar.gz
+	source = udb-0.0.2.jar::https://github.com/udb-org/udb-java/releases/download/0.0.2/udb-java-0.0.2.jar
+	source = udb.sh
+	sha256sums = SKIP
+	sha256sums = a2def047a73941e01a73739f92755f86b895811afb1f91243db214cff5bdac3f
+	sha256sums = f11e4cd5bd776b4907713dc92c3b6bc362567c01a534301efe91f652fcaf06e0
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = udb-git
