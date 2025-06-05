@@ -10,7 +10,7 @@ fi
 
 java_options=(
   # the application enforces the use of certain JVM parameters:
-  # https://github.com/mediathekview/MediathekView/blob/14.0.0/src/main/java/mediathek/Main.java#L286
+  # https://github.com/mediathekview/MediathekView/blob/14.3.0/src/main/java/mediathek/Main.java#L282
   -XX:+UseShenandoahGC
   -XX:ShenandoahGCHeuristics=compact
   -XX:+UseStringDeduplication
