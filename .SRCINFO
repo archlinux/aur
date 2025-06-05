@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-readonly-git
 	pkgdesc = The official GUI for MongoDB - Readonly Edition - git version
-	pkgver = r18579.g870460f23
+	pkgver = r18603.g667a0e34d
 	pkgrel = 1
 	epoch = 1
 	url = https://www.mongodb.com/products/compass
@@ -12,7 +12,7 @@ pkgbase = mongodb-compass-readonly-git
 	makedepends = npm>=10.2.4
 	makedepends = python
 	makedepends = unzip
-	depends = electron32
+	depends = electron36
 	depends = krb5
 	depends = libmongocrypt>=1.12.0
 	depends = libsecret
@@ -28,7 +28,7 @@ pkgbase = mongodb-compass-readonly-git
 	source = fix-argv.diff
 	source = mongodb-compass.conf
 	b2sums = SKIP
-	b2sums = c862d8df4fd1bab14dbfd6b910561c9baf8448d813c9b91ed41d7ee599ff10f472618eb87bd3816a679241d6fa3c319d8e38714e57334366122b1390fbf8edfc
+	b2sums = 860ed63ad0e3bfe56da032c6ced44777221cda791533080fc1ca73c47fe0c3e68e3f31d4df8cb537c5dca0012e1fb36b7c1b9192b01e378fc9f151ac80f012a0
 	b2sums = 339cb2f14805ce8f186064d823b3b01630ea02b16052fb764a46a4df2c9b06f8d12b012e764d00aaa1906639e8019869816ddbb6c02fedac2cb06caeefab28ef
 	b2sums = 8d473880f9b834890fc64f81579b4e05f7777cf18b8668ae45b448b9b788fbe8cb31841f12274bdb155152d3377c018cd7bf80850dd21e58ef207a3ae975c3fa
 	b2sums = 42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec
