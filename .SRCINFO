@@ -1,0 +1,12 @@
+pkgbase = plasma-weather-plus
+	pkgdesc = plasma天气插件
+	pkgver = 4.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/tully-t/weather-widget-plus
+	arch = any
+	license = custom
+	source = git+https://github.com/tully-t/weather-widget-plus.git
+	sha512sums = SKIP
+
+pkgname = plasma-weather-plus
