@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+set -eu
+set -o pipefail
+
+if ! command -v fzf &>/dev/null; then
+  echo "fzf is required but not installed. Please install fzf to use this script." >&2
+  exit 1
+fi
+
+declare -a management_kubeconfigs=()
+mapfile -t management_kubeconfigs < <(
+  [[ -v MANAGEMENT_KUBECONFIGS ]] && echo -e "${MANAGEMENT_KUBECONFIGS//;/\\n}"
+  [[ -v KUBECONFIG ]] && echo -e "${KUBECONFIG//;/\\n}"
+)
+
+declare -a custom_columns=()
+for custom_column_var in ${!MULTI_CAPO_SHELL_CUSTOM_COLUMN_*}; do
+  custom_columns+=("${!custom_column_var}")
+done
+if [[ "${#custom_columns[@]}" -gt 0 ]]; then
+  printf -v custom_columns_string "\\(%s):" "${custom_columns[@]}"
+else
+  custom_columns_string=""
+fi
+
+MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION="${MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION:-\"\"}"
+
+if [[ "${#management_kubeconfigs[@]}" -gt 0 ]]; then
+  shopt -s lastpipe
+  for mgmt_kubeconfig in "${management_kubeconfigs[@]}"; do
+    export KUBECONFIG="$mgmt_kubeconfig"
+    for context in $(kubectl config get-contexts -o name); do
+      kubectl --context "$context" get cluster -A -o yaml | yq -r --arg kubeconfig "$KUBECONFIG" --arg context "$context" '.items | map("\($kubeconfig):\($context):\(.metadata.namespace):\(.metadata.name):'"$custom_columns_string"'\(('"${MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION}"') as $custom_name | if $custom_name == "" then .metadata.name else "\($custom_name) (\(.metadata.name))" end)")[]'
+    done
+  done | fzf --track --preview="awk -v name={} 'BEGIN{split(name,splitted,\":\"); print splitted[2] \"@\" splitted[1]}'" +s -d : --with-nth=$((4 + ${#custom_columns[@]})),$((5 + ${#custom_columns[@]})) | IFS=: read -r mgmt_kubeconfig namespace name _
+  exec env KUBECONFIG="$mgmt_kubeconfig" capo-shell "$namespace" "$name" "${@}"
+fi
