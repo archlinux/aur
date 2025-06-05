@@ -1,6 +1,6 @@
 pkgbase = void-bin
 	pkgdesc = The open-source Cursor alternative.
-	pkgver = 1.99.30036
+	pkgver = 1.99.30037
 	pkgrel = 1
 	url = https://github.com/voideditor/void
 	arch = x86_64
@@ -28,9 +28,9 @@ pkgbase = void-bin
 	depends = ripgrep
 	optdepends = electron: /usr/share/void/void-latestron
 	options = !strip
-	source = https://github.com/voideditor/binaries/releases/download/1.99.30036/void_1.99.30036_amd64.deb
+	source = https://github.com/voideditor/binaries/releases/download/1.99.30037/void_1.99.30037_amd64.deb
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh
-	sha256sums = aed80c55736d5de9b4473e8e7c7e8fb9d3b2999b45fac5ebfc302c40a13b9d83
+	sha256sums = a80d01a0d09e042ddb64fe318947a27d62f6124e418593a4407bab06e4677e71
 	sha256sums = 5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1
 
 pkgname = void-bin
