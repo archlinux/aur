@@ -2,7 +2,7 @@
 
 _pkgname="gphotos-uploader-cli"
 pkgname="${_pkgname}-bin"
-pkgver=5.0.2
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Command line tool to mass upload media folders to your Google Photos account(s)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('3099b33d04cd952659e4d6d0bad2437bb083084f042cf8c1545504c770b0bc20')
+sha256sums_x86_64=('9f8f6b0cde141d993cd48bfbf1e779d9daf0c6ccab43df4365deacf6c815af06')
 
 package() {
   cd "${srcdir}"
