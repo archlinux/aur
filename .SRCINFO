@@ -1,4 +1,4 @@
-pkgbase = SJTU-Canvas-Helper
+pkgbase = sjtu-canvas-helper
 	pkgdesc = Helping you use the SJTU course platform more quickly and easily
 	pkgver = 1.3.30
 	pkgrel = 1
@@ -8,11 +8,11 @@ pkgbase = SJTU-Canvas-Helper
 	depends = fuse2
 	depends = gtk3
 	depends = libnotify
-	source = SJTU-Canvas-Helper_1.3.30_amd64.AppImage::https://github.com/Okabe-Rintarou-0/SJTU-Canvas-Helper/releases/download/app-v1.3.30/SJTU-Canvas-Helper_1.3.30_amd64.AppImage
-	source = SJTU-Canvas-Helper.desktop
+	source = sjtu-canvas-helper_1.3.30_amd64.AppImage::https://github.com/Okabe-Rintarou-0/SJTU-Canvas-Helper/releases/download/app-v1.3.30/sjtu-canvas-helper_1.3.30_amd64.AppImage
+	source = sjtu-canvas-helper.desktop
 	source = LICENSE::https://raw.githubusercontent.com/Okabe-Rintarou-0/SJTU-Canvas-Helper/main/LICENSE
 	sha256sums = 8e18d29510c575513d574f13b642b61871a151363aff3b4ebe3690e8033f2ebf
 	sha256sums = acab9da96b740c32f9d03265e00dd541c0643c6513869eb134d9e472bd9b7e73
 	sha256sums = d78852e5fb84b91fa0dddd826ff37103d40f680a2a00d6725d7d3fbe0b68288c
 
-pkgname = SJTU-Canvas-Helper
+pkgname = sjtu-canvas-helper

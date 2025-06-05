@@ -1,5 +1,5 @@
 # Maintainer: AspirinZ <aspirin000@sjtu.edu.cn>
-pkgname=SJTU-Canvas-Helper
+pkgname=sjtu-canvas-helper
 pkgver=1.3.30
 pkgrel=1
 pkgdesc="Helping you use the SJTU course platform more quickly and easily"
