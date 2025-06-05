@@ -1,6 +1,7 @@
-# Maintainer: MYT1 <myt1 @ QQ.com>
-# Maintainer: Sukanka <su975853527 [AT] gmail.com>
-# Maintainer: Zhong Lufan <lufanzhong@gmail.com>
+# Maintainer: Rukkhadevata123 <3083913301@qq.com>
+# Contributor: MYT1 <myt1 @ QQ.com>
+# Contributor: Sukanka <su975853527 [AT] gmail.com>
+# Contributor: Zhong Lufan <lufanzhong@gmail.com>
 
 pkgname=qqmusic-bin
 _pkgname=qqmusic
@@ -10,7 +11,7 @@ pkgdesc="腾讯QQ音乐"
 arch=("x86_64")
 url="https://y.qq.com/"
 license=("CC0-1.0")
-depends=('nss' 'libxss' 'gtk3')
+depends=('nss' 'libxss' 'gtk3' 'alsa-lib')
 provides=("$_pkgname")
 source=(
     "qqmusic_${pkgver}_amd64.deb::https://dldir1.qq.com/music/clntupate/linux/qqmusic_${pkgver}_amd64.deb"
