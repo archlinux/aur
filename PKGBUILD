@@ -3,18 +3,18 @@
 # Contributor: syntheit <daniel@matv.io>
 
 pkgname=tagspaces
-pkgver=6.4.7
+pkgver=6.4.9
 pkgrel=1
 pkgdesc="Offline file organizer and browser with tagging support"
 arch=('x86_64')
 url="https://www.tagspaces.org"
 license=('AGPL-3.0-or-later')
 _electron=electron35
-depends=('bash' "${_electron}" 'gcc-libs' 'glibc' 'nodejs')
+depends=('bash' "${_electron}" 'gcc-libs' 'glibc')
 makedepends=('gendesk' 'git' 'nvm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tagspaces/tagspaces/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('65fa55a434a00e60b23dc475495085de03917e24a00671d525628b518d2530f9'
+sha256sums=('e4c4f8a1e488e3d10896b756b544da10c3996c74a7d5b18ba0ce05c25780eabd'
             '3ece307810a9e0acedb73bb422a58233b9d0933ebfd125db6064b5ea4723a60f')
 
 prepare() {
