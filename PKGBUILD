@@ -2,7 +2,7 @@
 
 pkgname=asgi-webdav
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An asynchronous WebDAV server implementation, Support multi-provider, multi-account and permission control."
 arch=("any")
 url="https://github.com/rexzhang/${pkgname}"
@@ -12,7 +12,7 @@ install="${pkgname}.install"
 provides=("python-${pkgname}")
 conflicts=("python-${pkgname}")
 replaces=("python-${pkgname}")
-depends=("python-aiofiles" "python-arrow" "python-asgi-middleware-static-file" "python-chardet" "python-click" "python-pydantic" "python-xmltodict")
+depends=("python-aiofiles" "python-arrow" "python-asgi-middleware-static-file" "python-chardet" "python-click" "python-pydantic" "python-xmltodict" "uvicorn")
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=("python-icecream" "python-pytest" "python-pytest-asyncio" "python-pytest-cov" "python-requests")
 optdepends=("python-bonsai: LDAP support")
