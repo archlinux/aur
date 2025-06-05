@@ -1,6 +1,6 @@
 pkgbase = qp
 	pkgdesc = qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems.
-	pkgver = 5.75.0
+	pkgver = 5.75.2
 	pkgrel = 1
 	url = https://github.com/Zweih/qp
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = qp
 	replaces = yaylog
 	replaces = yaylog-bin
 	replaces = yaylog-git
-	source = https://github.com/Zweih/qp/releases/download/v5.75.0/qp-v5.75.0.tar.gz
-	sha256sums = 6e5c31ec74b9fc4af0f34f8c9f105f0596f197bbfea957430c487b9b8fd0eebc
+	source = https://github.com/Zweih/qp/releases/download/v5.75.2/qp-v5.75.2.tar.gz
+	sha256sums = fdaf3deaf1255a95bb52b7d2a9ba9eae257184e22ec407b1424b29d9d7e11d29
 
 pkgname = qp
