@@ -1,0 +1,4 @@
+[pypy3-pillow]
+source = "github"
+github = "python-pillow/Pillow"
+use_latest_release = "true"
