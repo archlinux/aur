@@ -1,0 +1,16 @@
+pkgbase = pku3b-git
+	pkgdesc = A Better Black Board for PKUers 🎓
+	pkgver = 0.8.1.r3.g8f9f88d
+	pkgrel = 1
+	url = https://github.com/sshwy/pku3b
+	arch = x86_64
+	license = custom
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	conflicts = pku3b
+	options = !lto
+	source = git+https://github.com/sshwy/pku3b.git
+	sha256sums = SKIP
+
+pkgname = pku3b-git
