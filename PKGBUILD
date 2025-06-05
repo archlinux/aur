@@ -3,14 +3,14 @@ _target='compass'
 _edition=''
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r18579.g870460f23'
+pkgver='r18603.g667a0e34d'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - git version'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
-_electronpkg='electron32'
+_electronpkg='electron36'
 depends=("$_electronpkg" 'krb5' 'libmongocrypt>=1.12.0' 'libsecret' 'lsb-release' 'nodejs>=20.16.0')
 makedepends=('git' 'npm>=10.2.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
@@ -25,7 +25,7 @@ source=(
 	'mongodb-compass.conf'
 )
 b2sums=('SKIP'
-        'c862d8df4fd1bab14dbfd6b910561c9baf8448d813c9b91ed41d7ee599ff10f472618eb87bd3816a679241d6fa3c319d8e38714e57334366122b1390fbf8edfc'
+        '860ed63ad0e3bfe56da032c6ced44777221cda791533080fc1ca73c47fe0c3e68e3f31d4df8cb537c5dca0012e1fb36b7c1b9192b01e378fc9f151ac80f012a0'
         '339cb2f14805ce8f186064d823b3b01630ea02b16052fb764a46a4df2c9b06f8d12b012e764d00aaa1906639e8019869816ddbb6c02fedac2cb06caeefab28ef'
         '8d473880f9b834890fc64f81579b4e05f7777cf18b8668ae45b448b9b788fbe8cb31841f12274bdb155152d3377c018cd7bf80850dd21e58ef207a3ae975c3fa'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
@@ -45,8 +45,8 @@ prepare() {
 	# Force the newest version of electron-to-chromium to make sure we support the Electron version set above
 	npm update electron-to-chromium --package-lock-only
 
-	# Fix build of ssh2
-	npm update ssh2 --package-lock-only
+	# Fix ssh2 and cpu-features build
+	npm update nan ssh2 --package-lock-only
 
 	# Don't use the bundled ffmpeg
 	patch --forward -p1 < "$srcdir/hadron-build-ffmpeg.diff"
