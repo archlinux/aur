@@ -1,6 +1,6 @@
 # Maintainer: markusressel <mail+archlinuxaur@markusressel.de>
 pkgname=fan2go-git
-pkgver=0.5.0.r17.g5582b62
+pkgver=0.9.2.r68.g5bc5dd3
 pkgrel=1
 pkgdesc="A simple daemon providing dynamic fan speed control based on temperature sensors"
 arch=('x86_64')
@@ -27,9 +27,11 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
+	# causes issues with nvml
+	# export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
+	# causes issues with nvml
+	# export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 	make build
 }
