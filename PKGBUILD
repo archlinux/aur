@@ -5,7 +5,7 @@ _pkgbase=rtl8851bu
 _pkgver=1.19.10
 
 pkgname=rtl8851bu-dkms-git
-pkgver=1.19.10.r25.c623a50
+pkgver=1.19.10.r28.19802fa
 pkgrel=1
 pkgdesc="Kernel module for Realtek RTL8851BU WiFi chipset"
 arch=('any')
