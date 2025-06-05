@@ -2,7 +2,7 @@
 # Contributor: Giovanni Bottaro <aur@mybotti.eu>
 
 pkgname=('ocis')
-pkgver=7.1.2
+pkgver=7.1.3
 pkgrel=1
 pkgdesc="A file sync & share platform designed to scale"
 arch=('aarch64' 'x86_64')
@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/owncloud/$pkgname/archive/r
         "ocis.sysusers"
         "ocis.tmpfiles")
 
-sha512sums=('2a26c955f144c345f9b652e85dc05640326400f5377286d70332ae5d9287b9a6162ce1f6440577da668865262a5129a2017099900259c4770306822f35459eae'
+sha512sums=('4b677b7c94b9562d2537c5a5062f9684aab23510005c8949dc4e7f283d29766f1a0d2517810f1823582d46a6d9cbfc1852b2adcf0f8ab75825582362ffbfd8af'
             'da70b77bf25c87d75f1a662d00a339f9b8756e6f8e33e17dcc0663d2dcd7d4981720a93fe1ba6c788d8a5e7f484f8e292e59273793106d496955c5a670862318'
             '4323568df0101385a068ff867df58b178a8ead63ac6fd7fe601027809b07786da996f95477de6b8ce0d5f635fcc930fde34b948d86e40026e7130e0f19d3b0c9'
             'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
