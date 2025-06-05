@@ -1,7 +1,7 @@
 # Maintainer: Sakari <sk308269317@outlook.com>
 
 pkgname=uuplugin-bin
-pkgver=8.5.20
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="UU Steam Deck Plugin for General Linux"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 source=(
   "https://uu.gdl.netease.com/uuplugin/steam-deck-plugin-x86_64/v${pkgver}/uu.tar.gz"
   'uuplugin.service')
-md5sums=('f784e2d7470e4ce5afa5e9edf6124288'
+md5sums=('ee7c9c958001948a9f7b77a0512c11ba'
   '3d8004125dbbea0b07b6c2e3ff225767')
 
 package() {
