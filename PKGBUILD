@@ -7,13 +7,13 @@ arch=('x86_64')
 url='https://uutils.github.io/'
 license=('MIT')
 depends=(gcc-libs glibc)
-makedepends=(rust mold)
+makedepends=(rust)
 conflicts=(uutils-coreutils-git)
 source=($pkgname-$pkgver.tar.gz::https://github.com/uutils/coreutils/archive/$pkgver.tar.gz)
 sha256sums=('55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8')
 options=('!lto') # RUSTFLAGS= -C lto=thin also fail
 
-export RUSTFLAGS="-C codegen-units=1 -C panic=abort $RUSTFLAGS -C link-arg=-fuse-ld=mold"
+RUSTFLAGS="-C panic=abort $RUSTFLAGS --remap-path-prefix=${srcdir}="
 
 #prepare() { DL larger crate
 #  cd coreutils-$pkgver
@@ -22,7 +22,7 @@ export RUSTFLAGS="-C codegen-units=1 -C panic=abort $RUSTFLAGS -C link-arg=-fuse
 
 build() {
   cd coreutils-$pkgver
-  cargo build -p uu_stty --release # --target "${CARCH}"-unknown-linux-gnu seems no effect
+  cargo build -p uu_stty --release
 }
 
 package() {

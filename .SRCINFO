@@ -6,7 +6,6 @@ pkgbase = uutils-coreutils-stty
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	makedepends = mold
 	depends = gcc-libs
 	depends = glibc
 	conflicts = uutils-coreutils-git
