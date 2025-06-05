@@ -1,13 +1,13 @@
 pkgbase = tizen-sdb
 	pkgdesc = Tizen Smart Development Bridge
 	pkgver = 2.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/TizenTeam/sdb
 	arch = i686
 	arch = x86_64
 	license = Apache
 	provides = tizen-sdb
-	source = git+https://git.tizen.org/cgit/sdk/tools/sdb
+	source = git://git.tizen.org/sdk/tools/sdb
 	source = https://github.com/openssl/openssl/releases/download/OpenSSL_1_0_1u/openssl-1.0.1u.tar.gz
 	source = gcc10p_build.patch
 	sha512sums = SKIP
