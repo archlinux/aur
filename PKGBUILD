@@ -1,18 +1,29 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgsubn=vimium
-pkgname=chromium-vimium
-pkgver=2.1.2
+# Maintainer: RickIsGone <riccardotedeschi247@gmail.com>
+pkgsubn=bin2cpp
+pkgname=bin2cpp-git
+pkgver=1.0.5.8.g40c3a38
 pkgrel=1
-pkgdesc="Browser extension that provides keyboard-based navigation (unpacked)"
+pkgdesc="CLI tool to embed binary files into C++ headers"
 arch=('any')
-url="https://github.com/philc/vimium"
+url="https://github.com/rickisgone/bin2cpp"
 license=('MIT')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("bin2cpp::git+$url.git")
 sha256sums=('SKIP')
+conflicts=('bin2cpp')
+makedepends=('cmake' 'git')
+
+pkgver() {
+    cd "$srcdir/$pkgsubn"
+    git describe --tags | sed -E 's/^v//;s/-/./g'
+}
+
+build() {
+    mkdir -p build
+    cd build
+    cmake ../"$pkgsubn" -DCMAKE_INSTALL_PREFIX=/usr
+    make
+}
 
 package() {
-    mkdir -p "$pkgdir/usr/share/"
-
-    cd "$pkgsubn-$pkgver"
-    cp -r --no-preserve=ownership . "$pkgdir/usr/share/$pkgname-$pkgver"
+    install -Dm755 build/bin2cpp "$pkgdir/usr/bin/bin2cpp"
 }
