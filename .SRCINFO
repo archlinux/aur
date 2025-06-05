@@ -1,6 +1,6 @@
 pkgbase = portable
 	pkgdesc = Portable Sandboxing framework
-	pkgver = 5.1.2
+	pkgver = 5.2
 	pkgrel = 1
 	url = https://github.com/Kraftland/portable
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = portable
 	provides = portable
 	options = !debug
 	options = !strip
-	source = portable-source::git+https://github.com/Kraftland/portable.git#tag=5.1.2
-	md5sums = fb7a76224f96980b14f7754212224337
+	source = portable-source::git+https://github.com/Kraftland/portable.git#tag=5.2
+	md5sums = 65c4ac9a4be8d5035bf0382cf2d16ed8
 
 pkgname = portable
