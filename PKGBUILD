@@ -2,7 +2,7 @@
 
 _pkgname="kalc"
 pkgname="${_pkgname}-bin"
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A complex numbers, 2D/3D graphing, arbitrary precision, vector/matrix, CLI calculator with real-time output and support for units"
 arch=('x86_64')
@@ -15,14 +15,14 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
         "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
-source_x86_64=("${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-gnu")
-b2sums=('b828e1fe3035b355920221432f61388241cb19e6756488ec29c87045e7db1aa61330db16f3e58b66c4257da74b49fbbd68cd9ed926ae79c415a94d4b5c279a3c'
-        '74915e048cf8b5207abf603136e7d5fcf5b8ad512cce78a2ebe3c88fc3150155893bf9824e6ed6a86414bbe4511a6bd4a42e8ec643c63353dc8eea4a44a021cd')
-b2sums_x86_64=('1b02b7a194e1192816160d42b92a9664004b8842ea0f4ae36fc85cbf05485011b059c55255c40ac7feb054d478779a2bd19045da2363492af9fc12d7173f9e11')
+source_x86_64=("${_pkgsrc}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux.zip")
+sha256sums=('c609575cee4b42a102b27fa8208503dcc2fc469f8b7a142f7e9636e52b207937'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
+sha256sums_x86_64=('2ee54bd51f4ec8a63b1fe5a95b0f7c4c43725448110fe240a7879a6736b496f6')
 
 package() {
   cd "${srcdir}"
-  install -vDm755 "${_pkgsrc}-${CARCH}"  "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -vDm644 "${_pkgsrc}-LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
