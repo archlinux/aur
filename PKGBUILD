@@ -1,6 +1,6 @@
 # Maintainer: MingxuanGame <MingxuanGame@outlook.com>
 pkgname="meowpad-configurator-v2-bin"
-pkgver="1.0.3"
+pkgver="1.1.0"
 pkgrel=1
 pkgdesc="Meowpad v2 配置器"
 arch=('x86_64')
@@ -26,13 +26,13 @@ conflicts=("meowpad-configurator-v2" "meowpad-configurator-v2-git")
 options=('!emptydirs')
 install='udev.install'
 source=(
-  "MeowpadConfiguratorForV2_v${pkgver}_linux_deb.zip::https://assets.desu.life/device/app/resources/MeowpadConfiguratorForV2_v${pkgver}_linux_deb.zip"
+  "MeowpadConifiguratorForV2_v${pkgver}_linux.deb::https://assets.desu.life/device/app/resources/MeowpadConfiguratorForV2_v${pkgver}_linux.deb"
   '52-meowpad.rules'
   'LICENSE::https://raw.githubusercontent.com/desu-life/MeowpadConfigurator/refs/heads/2.0-meowpad/LICENSE'
   'udev.install'
 )
 sha256sums=(
-  'c73ecd81317fd0e0cea1cdcca381e326c2d2594fc0956613dee905a296ac2bd8'
+  'dc3532e9dfcfba377e2bba3233c26b06767ff0e3495b700a89387a25ae5890c2'
   '5c399802e5cb6e55ab13058e3474ea9c3b67601bdefb5da85061e3628e862428'
   '20572bbf6ce7d98829f48e0281a2109469f6b3068e814d10400066014deee9c5'
   '97ed0869cf8d327096c734d070c588838913c189187f3c439e07dc368b984fde'
@@ -40,7 +40,7 @@ sha256sums=(
 
 package(){
   cd "$srcdir"
-  ar x "meowpad-configurator-for-v2_${pkgver}_amd64.deb"
+  ar x "MeowpadConifiguratorForV2_v${pkgver}_linux.deb"
   tar xf data.tar.gz -C "$pkgdir"
   install -Dm 644 "$srcdir/52-meowpad.rules" "$pkgdir"/usr/lib/udev/rules.d/52-meowpad.rules
   install -Dm 644 "LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
