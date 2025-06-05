@@ -2,8 +2,8 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts515
-pkgver=5.15.184
-pkgrel=4
+pkgver=5.15.185
+pkgrel=1
 pkgdesc='LTS Linux 5.15.x'
 url="https://www.kernel.org/"
 arch=(x86_64 pentium4 i686 i486)
@@ -27,9 +27,9 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('9c3e98c6dcc7dca7c2e9dd51423eaf0581f5e100d0f04c23bc29f21913dac1d9'
+sha256sums=('3d03eb798910f32929f7fda5a56e4bb1a121f10bde320d6f3063639c009313dc'
             'SKIP'
-            '62c66a2e1dd2e66697a391bbfa27c2fd9fd664de0f15fd700fe498811e6a5c2a'
+            '4b48b8df713ce6abcfa6af3c45f404bb9421120772542ee92c4ef3ac3a1c2842'
             '3b5cfc9ca9cf778ea2c4b619b933cda26519969df2d764b5a687f63cf59974cd'
             '2af9be5ea71054b709974a8455b65e3ae2de48cd3cf75d2ff7ed4f0ad3c90431'
             '8357f000b2b622e73dcfd41c2bad42b5e99fffe8f7ee64f774aa771f86cef43c'
@@ -236,10 +236,10 @@ if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; t
   source_i486=('config.i486')
   # fail if upstream's .config changes
   for ((i=0; i<${#sha256sums[@]}; i++)); do
-    if [ "${sha256sums[${i}]}" = '62c66a2e1dd2e66697a391bbfa27c2fd9fd664de0f15fd700fe498811e6a5c2a' ]; then
-      sha256sums_pentium4=('dce72c0ac95ceb426a5d5323bf0f890bad90c4a92295f157ee9ffec22e647a6a')
-      sha256sums_i686=('4c033a4bc58c5128d436400953c272c5792c63c09d7641c7cb5928f57a2a0c4f')
-      sha256sums_i486=('bc1afcc4dc482a48ec29fcfdac282f23dc58fd5e6191a92184c91b5f019e3620')
+    if [ "${sha256sums[${i}]}" = '4b48b8df713ce6abcfa6af3c45f404bb9421120772542ee92c4ef3ac3a1c2842' ]; then
+      sha256sums_pentium4=('2c5582a97c4a6dc002adf1e8b921db5886efd2e7918d4d71edc593300fe76c4b')
+      sha256sums_i686=('2fafc6ef77b5699b335262a54e969d66897e6592ca24310ade260a2a421af3fe')
+      sha256sums_i486=('7fa63e5436d0ba27f5863ddd9113deee4797318598292d9a3fb839e1eec7299b')
     fi
   done
 
@@ -262,10 +262,6 @@ if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; t
         }
       '
   )"
-
-  # 5.15.184, 32-bit builds
-  source+=('linux-5.15.184-cpu_wants_rethunk_64_bit_only.patch')
-  sha256sums+=('1ecf101aa35b93b65cc1a075d84ed3332f7ada4fc6f3d1917e21ab4ba8453ff1')
 
   # avoid using zstd compression in ultra mode (exhausts virtual memory)
   source+=('no-ultra-zstd.patch')
