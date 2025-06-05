@@ -1,0 +1,4 @@
+[pypy3-cycler]
+source = "github"
+github = "sympy/sympy"
+use_latest_release = "true"

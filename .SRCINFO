@@ -1,0 +1,15 @@
+pkgbase = pypy3-cycler
+	pkgdesc = Composable style cycles
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/matplotlib/cycler
+	arch = any
+	license = BSD-3-Clause
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	makedepends = pypy3-setuptools
+	depends = pypy3
+	source = cycler-0.12.1.tar.gz::https://github.com/matplotlib/cycler/archive/v0.12.1.tar.gz
+	sha512sums = f1d264de9c5e63515649aefb5937ef7a85d781c07b1c7c8fe291c969565abb18eb48d6d62f77d278746c60900c93700cbb095d280e09de768aedc2463e60d9a2
+
+pkgname = pypy3-cycler
