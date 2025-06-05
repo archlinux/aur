@@ -3,7 +3,7 @@
 
 pkgname=void-git
 _pkgname=void
-pkgver=1.99.3.r2532.g4358b9e3
+pkgver=1.99.3.r2668.g282800e3
 pkgrel=1
 pkgdesc="The Cursor alternative AI code editor"
 url="https://voideditor.com/"
@@ -12,7 +12,8 @@ license=("MIT")
 provides=('void')
 conflicts=('void')
 oprions=(!strip) # for sign of ext
-depends=( ripgrep xdg-utils # electron* is added at packaging
+_electron=electron34
+depends=( ${_electron} ripgrep xdg-utils
  alsa-lib gnupg libnotify libsecret libxkbfile libxss shared-mime-info)
 optdepends=(
   'glib2: Move to trash functionality'
@@ -21,8 +22,9 @@ optdepends=(
   'lsof: Terminal splitting'
   'org.freedesktop.secrets: Settings sync'
 )
-makedepends=( electron nodejs-lts-jod
-  git npm pkgconf python libarchive )
+makedepends=( nodejs-lts-iron # sync with _electron
+  git npm python
+  libarchive make pkgconf) # base base-devel
 source=("git+https://github.com/voideditor/void.git")
 sha256sums=('SKIP')
 
@@ -42,7 +44,7 @@ build() {
   export XDG_CACHE_HOME="${srcdir}/xdgcache" HOME="${srcdir}/home" # Do not taint user dir
   cd "${_pkgname}"
   # Set version of electron
-  _elver=$(cat /usr/lib/electron/version)
+  _elver=$(cat /usr/lib/${_electron}/version)
   sed -i "s/^target=.*/target=\"${_elver}\"/" .npmrc # native modules
   echo Replaced version of electron with $(rg -N 'target' .npmrc)
   npm pkg set devDependencies.electron=${_elver}
@@ -60,8 +62,7 @@ build() {
 }
 
 package() {
-  _elnum=$(cut -d. -f1 /usr/lib/electron/version) # hide ver from --printsrcinfo
-  depends+=(electron${_elnum})
+  _elnum=$(cut -d. -f1 /usr/lib/${_electron}/version) # hide ver from --printsrcinfo
   _pkg=VSCode-linux-x64
   _app=/usr/share/void/resources/app
   # appdata and desktop files
@@ -78,7 +79,7 @@ package() {
   # launcher
   sed -e "s|exec /usr|ELECTRON_RUN_AS_NODE=1 exec /usr|" \
       -e "s|flags=()|flags=(${_app}/out/cli.js --app=${_app})|" \
-      /usr/bin/electron${_elnum} > run.sh # should be supported by electron$_elnum
+      /usr/bin/${_electron} > run.sh # should be supported by electron$_elnum
   install -Dm755 run.sh "${pkgdir}/usr/bin/void"
   # Install editor on /usr/share for compability with void-bin
   install -d "${pkgdir}/usr/share/void"
