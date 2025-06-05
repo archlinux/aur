@@ -1,6 +1,6 @@
 pkgbase = bangumium-git
 	pkgdesc = Universal third-party desktop client for bgm.tv
-	pkgver = v0.9.4.r2.b3006b0
+	pkgver = 0.9.5.r0.b3006b0
 	pkgrel = 1
 	url = https://github.com/Bangumium/Bangumium
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = bangumium-git
 	depends = python-json5
 	depends = python-notify-py
 	depends = python-pystray
+	depends = python-pywebview
 	provides = bangumium
 	conflicts = bangumium
 	source = bangumium::git+https://github.com/Bangumium/Bangumium.git

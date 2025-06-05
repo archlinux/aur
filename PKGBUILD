@@ -1,13 +1,14 @@
 # Maintainer:       baiyuanneko <i at nekomoe.xyz>
+# Co-Maintainer:    Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=bangumium-git
 _pkgname=${pkgname%-git}
-pkgver=v0.9.4.r2.b3006b0
+pkgver=0.9.5.r0.b3006b0
 pkgrel=1
 pkgdesc="Universal third-party desktop client for bgm.tv"
 arch=('any')
 url="https://github.com/Bangumium/Bangumium"
 license=('MIT')
-depends=('python-gobject' 'webkit2gtk-4.1' 'python-beautifulsoup4' 'python-httpx' 'python-json5' 'python-notify-py' 'python-pystray')
+depends=('python-gobject' 'webkit2gtk-4.1' 'python-beautifulsoup4' 'python-httpx' 'python-json5' 'python-notify-py' 'python-pystray' 'python-pywebview')
 makedepends=('git' 'npm' 'python' 'python-pip' 'nodejs')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
