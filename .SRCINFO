@@ -1,0 +1,18 @@
+pkgbase = qmusicplayer-bin
+	pkgdesc = A Simple Local Music Player Based on Qt6 Development.(Prebuilt version)
+	pkgver = 0.2.2_beta
+	pkgrel = 1
+	url = https://github.com/CatIsNotFound/QMusicPlayer
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = qt6-declarative
+	provides = qmusicplayer=0.2.2_beta
+	conflicts = qmusicplayer
+	options = !strip
+	options = staticlibs
+	source = qmusicplayer-0.2.2_beta-x86_64.rpm::https://github.com/CatIsNotFound/QMusicPlayer/releases/download/v0.2.2-beta/QMusicPlayer-0.2.2_beta-1.fc41.x86_64.rpm
+	source = qmusicplayer.sh
+	sha256sums = c4b342a016c67caca8e242e225aef671ccd7a3b6958582100cd1506d4a28fcd6
+	sha256sums = db1db4c15024a45337e7e7190046e6414184603321be058797422a54ed5fc85d
+
+pkgname = qmusicplayer-bin
