@@ -1,0 +1,4 @@
+[pypy3-fonttools]
+source = "github"
+github = "fonttools/fonttools"
+use_latest_release = "true"
