@@ -13,7 +13,8 @@ arch=('x86_64')
 url='https://neovim.io'
 backup=('etc/xdg/nvim/sysinit.vim')
 license=('custom:neovim')
-depends=('hicolor-icon-theme' 'jq')
+depends=('hicolor-icon-theme')
+makedepends=('jq')
 optdepends=('python-neovim: for Python 3 plugin support (see :help provider-python)'
 	'ruby-neovim: for Ruby plugin support (see :help provider-ruby)'
 	'xclip: for X11 clipboard support (or xsel) (see :help provider-clipboard)'
