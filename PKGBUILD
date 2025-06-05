@@ -21,7 +21,7 @@ depends=(python
          libpulse
          python-cairo
          python-gobject
-         python-typer
+         python-click
          python-loguru
          python-rich)
 optdepends=('gst-plugin-pipewire: required for Recorder Service'
