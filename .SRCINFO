@@ -1,7 +1,7 @@
 pkgbase = zig-git
 	pkgdesc = General-purpose programming language and toolchain
-	pkgver = 0.14.0.r134.g0cb9ffc
-	pkgrel = 2
+	pkgver = 0.14.1.r1.g6d1f0eca773e
+	pkgrel = 1
 	url = https://ziglang.org/
 	arch = aarch64
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = zig-git
 	depends = xz
 	depends = zlib
 	depends = zstd
-	provides = zig=0.14.0
+	provides = zig=0.14.1
 	conflicts = zig
 	options = !lto
 	source = git+https://github.com/ziglang/zig.git#branch=0.14.x

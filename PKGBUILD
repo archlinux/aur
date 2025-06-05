@@ -1,8 +1,8 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=zig-git
-pkgver=0.14.0.r134.g0cb9ffc
-pkgrel=2
+pkgver=0.14.1.r1.g6d1f0eca773e
+pkgrel=1
 pkgdesc='General-purpose programming language and toolchain'
 arch=('aarch64' 'x86_64')
 url='https://ziglang.org/'
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd zig
-  git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=12 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
