@@ -1,0 +1,18 @@
+pkgbase = lzmusic-bin
+	pkgdesc = Bilibili API-based music player.(Prebuilt version.Use system-wide electron)基于 Bilibili API 的音乐播放器
+	pkgver = 1.0.6_beta
+	pkgrel = 1
+	url = https://lzmusic.nanhaiblog.top/
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = asar
+	depends = electron25
+	provides = lzmusic=1.0.6_beta
+	conflicts = lzmusic
+	options = !emptydirs
+	source = lzmusic-1.0.6_beta.rpm::https://github.com/yan5236/lzmusic/releases/download/1.0.6-beta/LZ-Music-1.0.6-beta-linux.rpm
+	source = lzmusic.sh
+	sha256sums = 2c735ac5d89490654d0cb88d9d971cd597c724ec00ed9d5f733d770d896956cc
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = lzmusic-bin
