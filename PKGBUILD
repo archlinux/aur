@@ -1,6 +1,6 @@
 # Maintainer: arelive <me@are.moe>
 pkgname=alertify
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Notification tool for battery, memory, storage, devices and power supply state monitoring on Linux"
 arch=('x86_64')
