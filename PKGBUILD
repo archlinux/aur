@@ -1,8 +1,8 @@
 # Maintainer: Shi Yanling <sylphenix@outlook.com>
 
 pkgname=sff
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Simple and fast terminal file manager"
 arch=('x86_64')
 license=('BSD')
@@ -20,6 +20,5 @@ package() {
   cd ${pkgname}
   make install DESTDIR="${pkgdir}" PREFIX=/usr
   mkdir -p ${pkgdir}/usr/share/doc/${pkgname}
-  cp ./CHANGELOG.md ${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG
-  chmod 644 ${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG
+  install -m 644 CHANGELOG.md README.md ${pkgdir}/usr/share/doc/${pkgname}/
 }
