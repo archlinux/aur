@@ -1,13 +1,12 @@
 pkgbase = plymouth-themes-adi1090x-git
 	pkgdesc = The plymouth theme collection by adi1090x
 	pkgver = r47.5d88174
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/adi1090x/plymouth-themes
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git
 	depends = plymouth
-	depends = ttf-dejavu
 	optdepends = cantarell-fonts: text support
 	optdepends = ttf-dejavu: text support
 	source = git+https://github.com/adi1090x/plymouth-themes.git
