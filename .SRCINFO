@@ -1,0 +1,21 @@
+pkgbase = yandex-music-download-git
+	pkgdesc = Yandex Music downloader
+	pkgver = r121.9de8e34
+	pkgrel = 1
+	url = https://github.com/kaimi-io/yandex-music-download
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = perl
+	depends = perl-mozilla-ca
+	depends = perl-file-util
+	depends = perl-mp3-tag
+	depends = perl-getopt-long-descriptive
+	depends = perl-lwp-useragent-cached
+	depends = perl-lwp-protocol-https
+	depends = perl-http-cookies
+	depends = perl-html-html5-entities
+	source = git+https://github.com/kaimi-io/yandex-music-download.git
+	md5sums = SKIP
+
+pkgname = yandex-music-download-git
