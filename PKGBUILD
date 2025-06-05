@@ -1,9 +1,9 @@
 # Maintainer: Emil Bay <archlinux@tixz.dk>
 pkgname=nethermind-ethereum-bin
 _pkgname=nethermind
-pkgver=1.31.9
-_pkgver=1.31.9
-_commit=98c5dca4
+pkgver=1.31.11
+_pkgver=1.31.11
+_commit=2be1890e
 pkgrel=1
 pkgdesc='A robust execution client for Ethereum node operators. Binary distribution.'
 arch=('x86_64' 'aarch64')
@@ -20,17 +20,17 @@ source_aarch64=(
   "https://github.com/NethermindEth/nethermind/releases/download/${_pkgver}/nethermind-${_pkgver}-${_commit}-linux-arm64.zip"
   "https://nethdev.blob.core.windows.net/builds/nethermind-${_pkgver}-${_commit}-linux-arm64.zip.asc"
 )
-md5sums_x86_64=('51d545c960be3eee49d88ff27c4a4f8a'
+md5sums_x86_64=('25574b3affd0ef227efaf45ed38633d3'
                 'SKIP')
-md5sums_aarch64=('7117d25cbe36dd60b215203e56f27ac5'
+md5sums_aarch64=('062d95ce7ef8c10cafeb1799cf78d510'
                  'SKIP')
-sha256sums_x86_64=('69401a256debb65fb86226a196311252ff356dde8482a36213199cd5114fa998'
+sha256sums_x86_64=('f1dc84a798b5c9305577206f4b506c302c6eaac8075daed329ba603093ca6961'
                    'SKIP')
-sha256sums_aarch64=('3f90034c15b26c3be2bfd213d47f99b337a099370273f1fdc3be6446c8bd689c'
+sha256sums_aarch64=('90f201e5c2c49804bbdfe9f8e97b3364caca289a19c3489c62f5b9b92c37bd4e'
                     'SKIP')
-b2sums_x86_64=('3b30d6e9ce01534859ebea0b1494b7adb1683da794224fff8eba8e4f9f9da6432e83a0d18c92fd425b4ae4934c11a6b0d1c215d119a017e0a404c6a5cfddad1a'
+b2sums_x86_64=('66379eab08b1918df4ec2338f82ee998df3aab0980114afa74a54cb7dd69d631c01b6e1f55deaf2f0fe73f2414ca0111336255679fa06d4e3198712a39757e86'
                'SKIP')
-b2sums_aarch64=('5cdff05b07354b85b90da224b146a589d16bd45c404f8da4b648a4a4a7bd4e0c63c2f9d8abe1a6a38f3939c12992b088e424bb14beb27229d8a067bc4c6aad6b'
+b2sums_aarch64=('6fdfe704d2f8f15b394ed91ea11e021f17740a14d967085ac9417d622b38db6fd900ddf3e6f8f174d1bd7a741c121a808ca9fc00cd45f0faeda8f3a8644eb157'
                 'SKIP')
 # Can be acquired with `gpg --receive-keys CB6DA407 34E353C6` (listed at the bottom of https://downloads.nethermind.io/)
 validpgpkeys=('6942FB745ECE67D86CDA45704770A0C134E353C6' 'EECCEA1473108E3222D76722D39BE1DDCB6DA407')
