@@ -2,7 +2,7 @@
 
 _pkgname="epson-inkjet-printer-escpr2"
 pkgname="${_pkgname}-bin"
-pkgver=1.2.33
+pkgver=1.2.34
 pkgrel=1
 pkgdesc="Epson inkjet printer driver 2 (ESC/P-R) used with CUPS"
 arch=('armv7h' 'x86_64')
@@ -14,12 +14,12 @@ conflicts=("${_pkgname}")
 # makedepends=('patchelf')
 _pkgsrc="${_pkgname}-${pkgver}"
 # DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
-source_armv7h=("${_pkgsrc}-armv7h.deb::https://download3.ebz.epson.net/dsc/f/03/00/17/16/23/e91507cb05e9793b7cf3d4e1469719dd553f5521/${_pkgname}_${pkgver}_armhf.deb")
-source_x86_64=("${_pkgsrc}-x86_64.deb::https://download3.ebz.epson.net/dsc/f/03/00/17/16/20/85d4aab7e4095f066b121b863e7ef2203cd82a38/${_pkgname}_${pkgver}-1_amd64.deb")
+source_armv7h=("${_pkgsrc}-armv7h.deb::https://download3.ebz.epson.net/dsc/f/03/00/17/17/87/f844bb65a9aabb11e4b7b172e29bd31ea4316e5a/${_pkgname}_${pkgver}_armhf.deb")
+source_x86_64=("${_pkgsrc}-x86_64.deb::https://download3.ebz.epson.net/dsc/f/03/00/17/17/84/5d3c2268d00f5965e99471328ebc481df19c8c2f/${_pkgname}_${pkgver}-1_amd64.deb")
 noextract=("${source_armv7h[@]%%::*}"
            "${source_x86_64[@]%%::*}")
-sha256sums_armv7h=('d355f1ceffeca3c463a249954e7f9ac48bfbb59748068cb74305fda81f704d71')
-sha256sums_x86_64=('a996f964e61063603500c5615951e5b9fb89a49544f9d07f9c493aafad3b9970')
+sha256sums_armv7h=('b53150220fdc07951dcceaec36acf538aaa186c6f90f8e4e1aabedac81b60b76')
+sha256sums_x86_64=('5b699579ac68f44e43239240d3b0655aeba3eb7fd98bb521876495c0cbb24a6a')
 
 prepare() {
   cd "${srcdir}"
