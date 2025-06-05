@@ -1,3 +1,6 @@
+# Maintainer: Tasin Farhan <tasinfarhan1016@gmail.com> -> https://github.com/TasinFarhanMC
+# Contributor: Mahmud Ridwan <m[at]hjr265[dot]me>
+
 pkgname=ibus-avro
 pkgver=1.2
 pkgrel=1
