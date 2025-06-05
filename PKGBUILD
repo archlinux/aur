@@ -1,14 +1,14 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# vim:set ts=4 sw=4 et:
 
 pkgname=python-django-docs
-pkgver=5.1
+pkgver=5.2
 pkgrel=1
-pkgdesc="Documentation for Python Django module."
+pkgdesc="Documentation for the Django framework"
 arch=('any')
 url='https://docs.djangoproject.com/'
-license=('GPL')
+license=('BSD-3-Clause')
 source=("${pkgname}-${pkgver}.zip::https://media.djangoproject.com/docs/django-docs-${pkgver}-en.zip")
-sha256sums=('ec17fa7454e00efe8b33f64fda2da856f5cb323acd099644cc6a615b849444f2')
 
 prepare() {
 	rm ${pkgname}-${pkgver}.zip
@@ -19,4 +19,5 @@ package() {
 	cp -r ./* ${pkgdir}/usr/share/doc/python-django/html/
 	chmod -R a=rX,u=rwX ${pkgdir}/usr/share/doc/python-django/html
 }
-# vim:set ts=4 sw=4 et:
+
+sha256sums=('02fb9605550bf109f1ae2fda07eb91a29f80a932985409185fb664a0bc5f5d71')
