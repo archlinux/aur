@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tree-sitter-r
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="R grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/r-lib/tree-sitter-r"
@@ -13,7 +13,7 @@ makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-r.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/r-lib/tree-sitter-r/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8134b66e67323f1f607b98b2ad70146fe7648f8e218953bdadfb892cf959f67e')
+sha256sums=('a95b6e79a40b6b906a3b61ec040c15422c549d599e01d87092bf7ae78ebcadc5')
 
 
 build() {
