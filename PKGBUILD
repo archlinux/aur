@@ -73,7 +73,7 @@ fi
 
 pkgbase=linux-xanmod-edge
 _major=6.15
-pkgver=${_major}.0
+pkgver=${_major}.1
 _branch=6.x
 xanmod=1
 _revision=
@@ -120,7 +120,7 @@ done
 
 sha256sums=('7586962547803be7ecc4056efc927fb25214548722bd28171172f3599abb9764'
             'SKIP'
-            '89854d9f13c153e2d277c789469a5c2b64202884ac622eda00ac0d5b22338d98'
+            '10c7c09fb3fea071bedc3f548faea5157dadf4d137fd12b44a8f9692c41135b3'
             '252688b672d7a6982c28120a9509d63d8dda230e3a21bafd1177819ca161c88f')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
@@ -339,8 +339,8 @@ _package-headers() {
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
   msg2 "Installing Rust files..."
-  install -Dt "$builddir/rust" -m644 rust/*.rmeta
-  install -Dt "$builddir/rust" rust/*.so
+  [ -f rust/*.rmeta ] && install -Dt "$builddir/rust" -m644 rust/*.rmeta
+  [ -f rust/*.so ] && install -Dt "$builddir/rust" rust/*.so
 
   msg2 "Installing unstripped VDSO..."
   make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
