@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=SJTU-Canvas-Helper
-Exec=SJTU-Canvas-Helper
+Name=sjtu-canvas-helper
+Exec=sjtu-canvas-helper
 Icon=sjtu-canvas-helper
 Terminal=false
 Type=Application

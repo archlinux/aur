@@ -11,7 +11,7 @@ source=("${pkgname}_${pkgver}_amd64.AppImage::https://github.com/Okabe-Rintarou-
   "${pkgname}.desktop"
   "LICENSE::https://raw.githubusercontent.com/Okabe-Rintarou-0/SJTU-Canvas-Helper/main/LICENSE")
 sha256sums=('8e18d29510c575513d574f13b642b61871a151363aff3b4ebe3690e8033f2ebf'
-'acab9da96b740c32f9d03265e00dd541c0643c6513869eb134d9e472bd9b7e73'
+'e7a0ae6af81be8039e3cff6079a4607a722af41012b8d24844583e07a9293065'
 'd78852e5fb84b91fa0dddd826ff37103d40f680a2a00d6725d7d3fbe0b68288c')
 prepare() {
   chmod +x "${pkgname}_${pkgver}_amd64.AppImage"
