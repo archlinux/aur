@@ -9,7 +9,7 @@ arch=(any)
 conflicts=('google-tsunami-security-scanner-git')
 url="https://github.com/google/tsunami-security-scanner"
 license=('Apache')
-depends=('nmap>=7.80' 'ncrack>=0.7' 'jdk11-openjdk') 
+depends=('nmap>=7.80' 'ncrack>=0.7' 'java-runtime=21')
 source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${url}/raw/master/tsunami.yaml"
