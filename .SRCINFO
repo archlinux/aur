@@ -1,6 +1,6 @@
 pkgbase = bin2cpp-git
 	pkgdesc = CLI tool to embed binary files into C++ headers
-	pkgver = 1.0.5.8.g40c3a38
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/rickisgone/bin2cpp
 	arch = any

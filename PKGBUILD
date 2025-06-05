@@ -1,7 +1,7 @@
 # Maintainer: RickIsGone <riccardotedeschi247@gmail.com>
 pkgsubn=bin2cpp
 pkgname=bin2cpp-git
-pkgver=1.0.5.8.g40c3a38
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="CLI tool to embed binary files into C++ headers"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('cmake' 'git')
 
 pkgver() {
     cd "$srcdir/$pkgsubn"
-    git describe --tags | sed -E 's/^v//;s/-/./g'
+    git describe --tags | sed -E 's/^v//;s/-.*//'
 }
 
 build() {
