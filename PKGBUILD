@@ -14,7 +14,7 @@ _gmpver=6.3.0
 _islver=0.26
 _mpcver=1.3.1
 _mpfrver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -123,7 +123,7 @@ package() {
 
   make DESTDIR="${pkgdir}" install-gcc install-target-{libatomic,libgcc,libgm2,libgomp,libitm,libquadmath,libsanitizer,libstdc++-v3,libvtv}
 
-  rm -rf "${pkgdir}"/usr/share/{gcc-${_majorver},info,man/man7}
+  rm -rf "${pkgdir}"/usr/share/{gcc-*,info,man/man7}
 
   # strip it manually
   find "${pkgdir}"/usr -type f -exec /usr/bin/"${_target}"-strip --strip-unneeded {} \; 2>/dev/null || true
