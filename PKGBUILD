@@ -1,6 +1,6 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 pkgname=rpc-gateway-git
-pkgver=0.0.1.r13.89d2618
+pkgver=0.0.1.r14.c0676b2
 pkgrel=1
 pkgdesc="RPC gateway with automatic failover, load balancing, and request routing capabilities"
 arch=('x86_64' 'aarch64')
