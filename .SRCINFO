@@ -1,0 +1,17 @@
+pkgbase = r-semsens
+	pkgdesc = Bayesian Variable Selection and Model Averaging using Bayesian Adaptive Sampling
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=SEMsens
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-lavaan
+	depends = r-stats
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/SEMsens_1.5.5.tar.gz
+	sha256sums = ee15d80ea05f1a031fb907f821f8dee9d5163c415a9c056858a22ed93b3aec49
+
+pkgname = r-semsens
