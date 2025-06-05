@@ -1,0 +1,30 @@
+pkgbase = python-build123d-git
+	pkgdesc = A python CAD programming library
+	pkgver = v0.9.1.r167.08a9014
+	pkgrel = 1
+	url = https://github.com/gumyr/build123d
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-ocp>=7.8
+	depends = python-lib3mf>=2.3.1
+	depends = python-typing_extensions
+	depends = python-numpy
+	depends = python-svgpathtools
+	depends = python-anytree
+	depends = python-ezdxf
+	depends = ipython
+	depends = python-ocpsvg
+	depends = python-trianglesolver
+	depends = python-sympy
+	provides = python-build123d
+	conflicts = python-build123d
+	source = build123d::git+https://github.com/gumyr/build123d#branch=dev
+	sha256sums = SKIP
+
+pkgname = python-build123d-git
