@@ -1,7 +1,7 @@
 pkgbase = topiary
 	pkgdesc = The universal code formatter
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://topiary.tweag.io/
 	arch = x86_64
 	license = MIT

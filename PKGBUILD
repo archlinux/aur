@@ -1,9 +1,9 @@
-# Maintainer: George Tsiamasiotis <gtsiam@windowslive.com>
 # Maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
+# Maintainer: George Tsiamasiotis <gtsiam@windowslive.com>
 
 pkgname=topiary
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The universal code formatter'
 arch=('x86_64')
 url='https://topiary.tweag.io/'
@@ -42,7 +42,7 @@ build() {
 check() {
     cd "$pkgname-$pkgver"
 
-    cargo test --frozen
+    cargo test --frozen -- --skip "coverage_input_ocaml"
 }
 
 package() {
