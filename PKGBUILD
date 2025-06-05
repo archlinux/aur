@@ -6,7 +6,7 @@
 
 pkgname='qt6-wasm'
 
-_qtver=6.9.0
+_qtver=6.9.1
 _emsdkver=3.1.70
 _emsdk=4.0.3
 
@@ -39,7 +39,7 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/sing
 # https://17797152399858172281.googlegroups.com/attach/12036d62e8f2a/0001-cmake-QtBuildInternalsExtra.cmake.in-Patch-out-embed.patch?part=0.0.1&view=1&view=1&vt=ANaJVrE9sl_mZ0X1hLMbYFWN-vllz3OwGD8lcLaPm6Du2jY-KE_-YabjHUIqtXqMhx7Lk1j0x_sYmC5j4kJNK1BH32jMeEEpR3jXxh10v5-kl7hFkK22Hy0
 
 
-sha256sums=('4f61e50551d0004a513fefbdb0a410595d94812a48600646fb7341ea0d17e1cb'
+sha256sums=('364fde2d7fa42dd7c9b2ea6db3d462dd54f3869e9fd0ca0a0ca62f750cd8329b'
             '91f711089f73d385295246beec35a7b4302e1732f5d7406ee792065fea0a0b65'
             '9dba88f1628175272c2509a7d823155ae35021a45532240c19941fa681ebb865'
             '8617181969f97d1a245295ad62537c64267f0a4646ff832cd55b37282f4f4ad9'
