@@ -13,12 +13,16 @@ _staging_ver=${_staging_ver%-staging}
 
 if /usr/bin/git ls-remote -t --exit-code "${_git_repo}" "zfs-${_staging_ver}" >/dev/null; then
     _git_branch="tag=zfs-${_staging_ver}"
+    _base_ver="${_staging_ver}"
 else
     _git_branch="branch=${_git_branch}"
+    _base_ver="$(/usr/bin/git ls-remote -t --sort=-v:refname "${_git_repo}" "zfs-${_staging_ver%.*}.*[0-9]" | grep -F '.99' -v | head -n 1)"
+    _base_ver="${_base_ver##*/zfs-}"
+    _base_ver="${_base_ver:=${_staging_ver%.*}.$((${_staging_ver##*.}-1))}"
 fi
 
 pkgname=${_pkgname}-dkms-staging-git
-pkgver=2.3.2.r0.g92f430b00f
+pkgver=2.3.2.r56.g4c8425715c
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
@@ -62,23 +66,20 @@ prepare() {
 /]\)/n
 /^\s*(module\/.*|${_pkgname}.release|Makefile)/!d
 }" configure.ac
+
+    sed -i -e "s/Version:[[:print:]]*/Version:       ${pkgver}/" META
+    sed -i -e "s/Release:[[:print:]]*/Release:       ${pkgrel}/" META
+    autoreconf -fi
 }
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
 
-    METAVER=$(grep -F Version "${srcdir}/${_pkgname}/META" | tr -d '[:space:]')
-    METAVER=${METAVER##*:}
-    printf "%s.r%s.g%s" "${METAVER}" "$(git rev-list zfs-${METAVER}..HEAD --count)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.g%s" "${_base_ver}" "$(git rev-list zfs-${_base_ver}..HEAD --count)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
-
-    # modify META after pkgver() called
-    sed -i -e "s/Version:[[:print:]]*/Version:       ${pkgver}/" META
-    sed -i -e "s/Release:[[:print:]]*/Release:       ${pkgrel}/" META
-    autoreconf -fi
 
     ./scripts/dkms.mkconf -n ${_pkgname} -v "${pkgver}" -f dkms.conf
     printf '#define\tZFS_META_GITREV "zfs-%s"\n' "${pkgver}" >include/zfs_gitrev.h
@@ -88,7 +89,7 @@ build() {
 }
 
 package() {
-    depends=("zfs-utils>=${pkgver%%.r*}" "zfs-utils<=${_staging_ver}" 'dkms')
+    depends=("zfs-utils>=${_base_ver}" "zfs-utils<=${_staging_ver}" 'dkms')
 
     cd "${srcdir}/${_pkgname}"
 
