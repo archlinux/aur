@@ -14,7 +14,7 @@
 
 pkgname=zoneminder
 pkgver=1.36.35
-pkgrel=1
+pkgrel=2
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
 url='https://zoneminder.com/'
@@ -33,7 +33,7 @@ depends=('polkit' 'ffmpeg'
          # Encryption
          'perl-crypt-eksblowfish' 'perl-data-entropy'
          # JSON Web Token API
-         'libjwt')
+         'libjwt2')
 makedepends=('cmake')
 optdepends=('mariadb'
             'apache'

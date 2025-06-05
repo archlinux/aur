@@ -1,7 +1,7 @@
 pkgbase = zoneminder
 	pkgdesc = A full-featured, open source, state-of-the-art video surveillance software system
 	pkgver = 1.36.35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zoneminder.com/
 	install = zoneminder.install
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = zoneminder
 	depends = perl-json-maybexs
 	depends = perl-crypt-eksblowfish
 	depends = perl-data-entropy
-	depends = libjwt
+	depends = libjwt2
 	optdepends = mariadb
 	optdepends = apache
 	optdepends = nginx
