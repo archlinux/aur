@@ -5,7 +5,7 @@
 pkgdesc='Dynamic, bytecode-compiled programming language and a dialect of Python (development version)'
 pkgname='kuroko-git'
 pkgver=1.4.0.r152.g05d30e8
-pkgrel=1
+pkgrel=2
 url='https://github.com/kuroko-lang/kuroko'
 arch=('aarch64' 'x86_64')
 conflicts=('kuroko')
