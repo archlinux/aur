@@ -1,22 +1,24 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: BryanLiang <liangrui.ch at gmail dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=vim-suda
-pkgver=0.3.3
+pkgver=1.2.4
 pkgrel=1
-pkgdesc="Vim plugin for writing out files with sudo"
+pkgdesc="An alternative sudo.vim for Vim and Neovim"
 arch=('any')
-url="https://github.com/lambdalisue/suda.vim"
+url="https://github.com/lambdalisue/vim-suda"
 license=('MIT')
 groups=('vim-plugins')
-depends=('vim-plugin-runtime' 'sudo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('275c7e9551824f28a1bdc21db3b8c6586f0dea11d525ab74f922c491edbde88d')
+depends=('vim-plugin-runtime' 'sudo' 'git')
+source=("${pkgname}::git+https://github.com/lambdalisue/vim-suda.git#tag=v${pkgver}")
+sha256sums=('3595910cfdc8bd8ffaa3e6e0e272969c5a1cae826b614e17c9eb7c3a464b951e')
 
 package() {
-	cd "suda.vim-$pkgver"
-	find autoload doc plugin \
-		-type f \
-		-exec install -Dm644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+    install -dm755 "${pkgdir}/usr/share/vim/vimfiles"
+
+    cd "${pkgname}"
+
+    cp -r --preserve=mode autoload doc plugin "${pkgdir}/usr/share/vim/vimfiles"/
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
