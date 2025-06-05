@@ -1,0 +1,12 @@
+pkgbase = nimlsp
+	pkgdesc = Nim Language Server Protocol
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/PMunch/nimlsp
+	arch = x86_64
+	license = MIT
+	makedepends = nim
+	source = https://github.com/PMunch/nimlsp/archive/v0.4.6.tar.gz
+	md5sums = ad43f976326bf5d93f267dd23a67bbab
+
+pkgname = nimlsp
