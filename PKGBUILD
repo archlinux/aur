@@ -5,18 +5,18 @@
 _pkgname=code
 pkgname=code-git
 pkgdesc='OSS version of Visual Studio Code editor'
-pkgver=1.101.0.r134040.gb3f7ce2d5a6
+pkgver=1.101.0.r134042.g7cc3d44323c
 pkgrel=1
 arch=('x86_64')
 _vscode_arch=x64 # https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/PKGBUILD
 _electron_arch=x64
 url='https://github.com/microsoft/vscode'
 license=('MIT')
-_electron=electron35
-depends=( $_electron ripgrep xdg-utils # don't add electron* at here
+_electron=electron
+depends=( $_electron ripgrep xdg-utils
 libsecret libxkbfile )
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=( nodejs-lts-jod # sync with _electron
+makedepends=( nodejs-lts-iron # not matching with .nvmrc
 git npm pnpm python desktop-file-utils libarchive)
 conflicts=(code vscode)
 provides=(code vscode)
@@ -42,6 +42,7 @@ prepare() {
   
   # electron version
   _electronver=$(npm pkg get devDependencies.electron)
+  echo Warning: using incorrect version of nodejs by some reason.
   echo Replacing $_electronver
   _electronver=$(cat /usr/lib/${_electron}/version)
   npm pkg set devDependencies.electron=${_electronver} # unneeded ?
