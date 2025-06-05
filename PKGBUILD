@@ -5,18 +5,18 @@
 _pkgname=code
 pkgname=code-git
 pkgdesc='OSS version of Visual Studio Code editor'
-pkgver=1.101.0.r133628.g9880502f0ee
+pkgver=1.101.0.r134040.gb3f7ce2d5a6
 pkgrel=1
 arch=('x86_64')
 _vscode_arch=x64 # https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/PKGBUILD
 _electron_arch=x64
 url='https://github.com/microsoft/vscode'
 license=('MIT')
-# todo: extract correct electron* deps at build() abd add.
-depends=( ripgrep xdg-utils # electron* is added at build process
+_electron=electron35
+depends=( $_electron ripgrep xdg-utils # don't add electron* at here
 libsecret libxkbfile )
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=( electron nodejs-lts-jod # should be nvm
+makedepends=( nodejs-lts-jod # sync with _electron
 git npm pnpm python desktop-file-utils libarchive)
 conflicts=(code vscode)
 provides=(code vscode)
@@ -41,13 +41,14 @@ prepare() {
   pnpm add @vscode/vsce-sign @vscode/vsce-sign-linux-$_vscode_arch
   
   # electron version
-  _electronver=$(cat /usr/lib/electron/version)
+  _electronver=$(npm pkg get devDependencies.electron)
+  echo Replacing $_electronver
+  _electronver=$(cat /usr/lib/${_electron}/version)
   npm pkg set devDependencies.electron=${_electronver} # unneeded ?
   sed -i "s/^target=.*/target=\"${_electronver/}\"/" .npmrc # native modules
-  echo Replaced version of electron with $(rg -N 'target' .npmrc)
+  echo with $(rg -N 'target' .npmrc)
 
   # Launcher
-  _electron=electron${_electronver%%.*}
   sed -e "s|name=electron|name=$_electron |" -e '/PKGBUILD/d' -i ../code.sh
   sed "1s|.*|#!/usr/lib/$_electron/electron|" -i ../code.mjs
 
@@ -98,8 +99,6 @@ build() {
 }
 
 package() {
-  _elnum=$(cut -d. -f1 /usr/lib/electron/version) # hide version from --printsrcinfo
-  depends+=(electron${_elnum})
   # Resource files
   install -dm755 "$pkgdir"/usr/lib/code
   cp -r --reflink=auto --no-preserve=ownership VSCode-linux-${_vscode_arch}/resources/app/* "$pkgdir"/usr/lib/code/
