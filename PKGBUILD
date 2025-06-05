@@ -9,31 +9,39 @@
 
 _target=arm-linux-gnueabihf
 pkgname=${_target}-glibc-headers
-pkgver=2.41
-pkgrel=2
+pkgver=2.41+r48+g5cb575ca9a3d
+_commit=5cb575ca9a3da045bc3e2f0dda81ad5804bde1e6
+pkgrel=1
 pkgdesc="GNU C Library headers"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
 license=(GPL LGPL)
 depends=("${_target}-linux-api-headers>=6.12")
-makedepends=("${_target}-gcc-stage1>=14.2.0" python)
+makedepends=("${_target}-gcc-stage1>=15.1.0" python)
 conflicts=("${_target}-glibc" "${_target}-eglibc")
 options=(!buildflags !strip !lto staticlibs)
-source=(https://ftp.gnu.org/gnu/glibc/glibc-${pkgver}.tar.xz{,.sig}
+source=(git+https://sourceware.org/git/glibc.git#commit=${_commit}
         sdt.h sdt-config.h)
-validpgpkeys=(35B17DF5752577CA0C541CEB94BFDF4484AD142F # Andreas K. Huettel
+validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
-sha256sums=('a5a26b22f545d6b7d7b3dd828e11e428f24f4fac43c934fb071b6a7d0828e901'
-            'SKIP'
+sha256sums=('ba3708d5452115c252fcb60e97f400770aedd8a9f6b2e499b8d29140643241f9'
             '1ecf90005ff5a65374c7266acb164fa265aff92328593bdca2352acf5dab240d'
             'cdc234959c6fdb43f000d3bb7d1080b0103f4080f5e67bcfe8ae1aaf477812f0')
 
+pkgver() {
+  cd "${srcdir}"/glibc
+  git describe --abbrev=12 --tags | sed 's/[^-]*-//;s/[^-]*-/&r/;s/-/+/g'
+}
+
 prepare() {
-  mkdir -p glibc-build
+  if [ -d "${srcdir}"/glibc-${pkgver} ]; then
+    ln -s "${srcdir}"/glibc-${pkgver} "${srcdir}"/glibc
+  fi
+  mkdir -p "${srcdir}"/glibc-build
 }
 
 build() {
-  cd glibc-build
+  cd "${srcdir}"/glibc-build
 
   echo "slibdir=/lib" >> configparms
   echo "rtlddir=/lib" >> configparms
@@ -53,7 +61,7 @@ build() {
   export AR=${_target}-ar
   export RANLIB=${_target}-ranlib
 
-  ../glibc-${pkgver}/configure \
+  "${srcdir}"/glibc/configure \
     --target=${_target} \
     --host=${_target} \
     --build=${CHOST} \
@@ -79,7 +87,7 @@ build() {
 }
 
 package() {
-  cd glibc-build
+  cd "${srcdir}"/glibc-build
 
   make install_root="${pkgdir}"/usr/"${_target}" install-headers install-bootstrap-headers=yes
 
