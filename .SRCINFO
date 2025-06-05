@@ -1,0 +1,22 @@
+pkgbase = ugonlinemusicplayer-git
+	pkgdesc = An open-source online music player that supports resource aggregation across multiple major music platforms.(Use system-wide electron)一款开源的在线音乐播放器，支持多个主流音乐平台的资源聚合
+	pkgver = 1.0.2.r0.gff5902e
+	pkgrel = 1
+	url = https://github.com/uguang2003/UGOnlineMusicPlayer
+	arch = any
+	license = ISC
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	makedepends = imagemagick
+	depends = electron29
+	provides = ugonlinemusicplayer=1.0.2
+	conflicts = ugonlinemusicplayer
+	source = ugonlinemusicplayer.git::git+https://github.com/uguang2003/UGOnlineMusicPlayer.git
+	source = ugonlinemusicplayer.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = ugonlinemusicplayer-git
