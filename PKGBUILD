@@ -1,6 +1,6 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 pkgname=rpc-gateway-git
-pkgver=0.0.1.r12.519068f
+pkgver=0.0.1.r13.89d2618
 pkgrel=1
 pkgdesc="RPC gateway with automatic failover, load balancing, and request routing capabilities"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ build() {
       ;;
   esac
   
-  go build -v -trimpath -ldflags="-s -w" -o rpcgateway main.go
+  make build
 }
 
 package() {
