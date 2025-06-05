@@ -1,5 +1,5 @@
 pkgbase = opentelemetry-python-contrib
-	pkgver = 0.54b1
+	pkgver = 0.55b0
 	pkgrel = 1
 	arch = any
 	license = Apache-2.0
@@ -7,8 +7,8 @@ pkgbase = opentelemetry-python-contrib
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = opentelemetry-python-contrib-0.54b1.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.54b1.tar.gz
-	b2sums = b577e69a4046f30d875c731aa03feb412690ab50cfeec1978d3c15c4661ed967e8b72f71e6db822e6fca35443b4e1ac61c0e50d31596b1f6c4703e158ea0ede2
+	source = opentelemetry-python-contrib-0.55b0.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.55b0.tar.gz
+	b2sums = a6336a740052586aeea26be34db2e9b92ea52970ecd0a8a1006bf8b3ce8ffad8642d1571a00101dee7a7e5981b4ab795f425e42bd5bd623cbd659f5a73327b91
 
 pkgname = python-opentelemetry-exporter-prometheus-remote-write
 	pkgdesc = Prometheus Remote Write Metrics Exporter for OpenTelemetry
@@ -79,6 +79,7 @@ pkgname = python-opentelemetry-instrumentation-aiokafka
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-instrumentation
 	depends = python-opentelemetry-semantic-conventions
+	depends = python-typing_extensions
 	optdepends = python-aiokafka
 
 pkgname = python-opentelemetry-instrumentation-aiopg
@@ -610,9 +611,9 @@ pkgname = python-opentelemetry-resource-detector-azure
 	depends = python-opentelemetry-sdk
 	optdepends = 
 
-pkgname = python-opentelemetry-resource-detector-container
+pkgname = python-opentelemetry-resource-detector-containerid
 	pkgdesc = Container Resource Detector for OpenTelemetry
-	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/resource/opentelemetry-resource-detector-container
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/resource/opentelemetry-resource-detector-containerid
 	depends = python-opentelemetry-sdk
 	optdepends = 
 

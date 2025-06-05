@@ -2,14 +2,14 @@
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgbase=opentelemetry-python-contrib
-pkgver=0.54b1
+pkgver=0.55b0
 pkgrel=1
 arch=("any")
 _url="https://github.com/open-telemetry/${pkgbase}"
 license=("Apache-2.0")
 makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel')
 source=("${pkgbase}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('b577e69a4046f30d875c731aa03feb412690ab50cfeec1978d3c15c4661ed967e8b72f71e6db822e6fca35443b4e1ac61c0e50d31596b1f6c4703e158ea0ede2')
+b2sums=('a6336a740052586aeea26be34db2e9b92ea52970ecd0a8a1006bf8b3ce8ffad8642d1571a00101dee7a7e5981b4ab795f425e42bd5bd623cbd659f5a73327b91')
 
 # run './geninfo.sh' to generate following variables
 pkgname=(
@@ -76,7 +76,7 @@ pkgname=(
     "python-opentelemetry-propagator-aws-xray"
     "python-opentelemetry-propagator-ot-trace"
     "python-opentelemetry-resource-detector-azure"
-    "python-opentelemetry-resource-detector-container"
+    "python-opentelemetry-resource-detector-containerid"
     "python-opentelemetry-sdk-extension-aws"
     "python-opentelemetry-util-http"
 )
@@ -212,7 +212,7 @@ _urls=(
     "${_url}/tree/main/propagator/opentelemetry-propagator-aws-xray"
     "${_url}/tree/main/propagator/opentelemetry-propagator-ot-trace"
     "${_url}/tree/main/resource/opentelemetry-resource-detector-azure"
-    "${_url}/tree/main/resource/opentelemetry-resource-detector-container"
+    "${_url}/tree/main/resource/opentelemetry-resource-detector-containerid"
     "${_url}/tree/main/sdk-extension/opentelemetry-sdk-extension-aws"
     "${_url}/tree/main/util/opentelemetry-util-http"
 )
@@ -224,7 +224,7 @@ _depends=(
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-http python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-http python-wrapt"
-    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-typing_extensions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-instrumentation-dbapi python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-wrapt"
     "python-asgiref python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-http"
