@@ -8,23 +8,23 @@
 pkgname=snapd-glib
 pkgdesc="Library to allow GLib/Qt based applications access to snapd, the daemon that controls Snaps"
 depends=('libsoup3' 'json-glib' 'qt6-declarative' 'glib2-devel' 'qt6-base')
-pkgver=1.67.9f327d1
-_hash=9f327d194b7bc143c0ea2ace20246cf4d20a9bc4
-pkgrel=3
+pkgver=1.70
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd-glib"
 license=('GPL3')
 makedepends=('git' 'gobject-introspection' 'gtk-doc' 'meson' 'qt6-tools' 'vala' 'gi-docgen')
-source=(snapd-glib-${pkgver}.tar.xz::"https://github.com/canonical/snapd-glib/archive/$_hash.tar.gz")
-sha256sums=('13893f986275bf5728380bc1bf085d7065f5fb2215f4ea8f9ab552814cfd4c9c')
+source=(snapd-glib-${pkgver}.tar.xz::"https://github.com/canonical/snapd-glib/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('022df48e519fe2e80f90eba2043aaa54f829f05c87ec38bc1ba794aec8e3c0a4')
+optinos=(!lto)
 
 build() {
-  cd "snapd-glib-$_hash"
+  cd "snapd-glib-$pkgver"
   meson setup -Dprefix=/usr -Dbuildtype=release -Ddebug=false -Doptimization=3 -Dqt6=true build
   ninja -C build
 }
 
 package() {
-  cd "snapd-glib-$_hash"
+  cd "snapd-glib-$pkgver"
   DESTDIR="$pkgdir" meson install -C build
 }
