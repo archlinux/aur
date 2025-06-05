@@ -1,7 +1,7 @@
 pkgbase = arm-linux-gnueabihf-gdb
 	pkgdesc = The GNU Debugger
 	pkgver = 16.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/gdb/
 	arch = x86_64
 	license = GPL3
@@ -37,8 +37,10 @@ pkgbase = arm-linux-gnueabihf-gdb
 	options = !strip
 	source = http://ftp.gnu.org/gnu/gdb/gdb-16.3.tar.xz
 	source = http://ftp.gnu.org/gnu/gdb/gdb-16.3.tar.xz.sig
+	source = fix-missing-includes.patch
 	validpgpkeys = F40ADB902B24264AA42E50BF92EDB04BFF325CF3
 	sha256sums = bcfcd095528a987917acf9fff3f1672181694926cc18d609c99d0042c00224c5
 	sha256sums = SKIP
+	sha256sums = 008c3d2e9f3f14ca2c73e59e8fcb268bd6624aa0ebe2fda072f9fec4d9165626
 
 pkgname = arm-linux-gnueabihf-gdb

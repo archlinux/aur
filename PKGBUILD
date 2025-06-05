@@ -4,7 +4,7 @@
 _target=arm-linux-gnueabihf
 pkgname=${_target}-gdb
 pkgver=16.3
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Debugger'
 arch=(x86_64)
 url='http://www.gnu.org/software/gdb/'
@@ -12,23 +12,24 @@ license=(GPL3)
 depends=(boost expat gdb-common glibc gmp guile libelf mpfr ncurses python readline source-highlight xz zstd)
 makedepends=(boost expat gcc glibc gmp guile libelf mpfr ncurses python readline source-highlight xz zstd)
 options=(!emptydirs !strip)
-source=(http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz{,.sig})
+source=(http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz{,.sig}
+        fix-missing-includes.patch)
 sha256sums=('bcfcd095528a987917acf9fff3f1672181694926cc18d609c99d0042c00224c5'
-            'SKIP')
+            'SKIP'
+            '008c3d2e9f3f14ca2c73e59e8fcb268bd6624aa0ebe2fda072f9fec4d9165626')
 validpgpkeys=('F40ADB902B24264AA42E50BF92EDB04BFF325CF3') # Joel Brobecker <brobecker@adacore.com>
 
 prepare() {
-  mkdir -p gdb-build
+  mkdir -p "${srcdir}"/gdb-build
+
+  cd "${srcdir}"/gdb-${pkgver}
+  patch -Np1 -i "${srcdir}"/fix-missing-includes.patch
 }
 
 build() {
-  #cd gdb-${pkgver}
+  cd "${srcdir}"/gdb-build
 
-  #sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
-
-  cd ${srcdir}/gdb-build
-
-  ../gdb-${pkgver}/configure \
+  "${srcdir}"/gdb-${pkgver}/configure \
     --target=${_target} \
     --prefix=/usr \
     --with-system-readline \
@@ -46,7 +47,7 @@ build() {
 }
 
 package() {
-  cd gdb-build
+  cd "${srcdir}"/gdb-build
 
   make -C gdb DESTDIR="${pkgdir}" install
 

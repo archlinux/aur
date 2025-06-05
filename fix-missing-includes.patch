@@ -1,0 +1,11 @@
+diff --no-dereference -urpN a/gdb/dwarf2/read.h b/gdb/dwarf2/read.h
+--- a/gdb/dwarf2/read.h	2025-06-05 11:05:57.202015610 +0200
++++ b/gdb/dwarf2/read.h	2025-06-05 11:10:51.105761347 +0200
+@@ -23,6 +23,7 @@
+ #include <queue>
+ #include <unordered_map>
+ #include "dwarf2/comp-unit-head.h"
++#include "dwarf2/dwz.h"
+ #include "dwarf2/file-and-dir.h"
+ #include "dwarf2/index-cache.h"
+ #include "dwarf2/mapped-index.h"
