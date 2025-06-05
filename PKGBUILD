@@ -1,4 +1,4 @@
-# Maintainer: Jürgen Hötzel <juergen@archlinux.org>
+# Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
 pkgbase="ocaml-git"
 _pkgbase="ocaml"
 pkgname=('ocaml-git' 'ocaml-compiler-libs-git')
