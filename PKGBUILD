@@ -2,21 +2,23 @@
 pkgname=shadps4-pre-release-bin
 _pkgname=shadPS4
 _pkgid=net.shadps4.shadPS4
-_url="$(curl -s "https://api.github.com/repos/shadps4-emu/shadPS4/releases" | awk -F'"' '/browser_download_url.*Pre-release-shadPS4.*linux-qt.*zip/ {print $4}')"
+_url="$(curl -s "$(curl -s "https://api.github.com/repos/shadps4-emu/shadPS4/releases" | jq -r '.[] | select(.prerelease == true) | .url')" | awk -F'"' '/browser_download_url.*Pre-release-shadPS4.*linux-qt.*zip/ {print $4}')"
 _date="$(echo $_url | awk -F '[-/]' -v OFS="-" '{print $12,$13,$14}')"
 _pkgver="$(echo $_url | awk -F '[-/]' '{print $15}')"
-pkgver="$(echo $_url | awk -F '[-/]' -v OFS="" '{print $12,$13,$14,".",$15}')"
+_commit="$(echo $_url | awk -F '[-/]' '{print $22}' | sed 's/\.zip$//')"
+pkgver="$(echo $_url | awk -F '[-/]' -v OFS="" '{print $12,$13,$14,".",$22}' | sed 's/\.zip$//')"
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (Pre-release version)"
 arch=('x86_64')
 url="https://shadps4.net/"
 license=('GPL-2.0-only')
+makedepends=('yq')
 replaces=("${pkgname%-pre-release-bin}")
 provides=("${pkgname%-pre-release-bin}")
 conflicts=("${pkgname%-pre-release-bin}")
 options=('!strip')
 _appimage=Shadps4-qt.AppImage
-source=("https://github.com/shadps4-emu/shadPS4/releases/download/Pre-release-shadPS4-${_date}-${_pkgver}/shadps4-linux-qt-${_date}-${_pkgver}.zip")
+source=("https://github.com/shadps4-emu/shadPS4/releases/download/Pre-release-shadPS4-${_date}-${_pkgver}/shadps4-linux-qt-${_date}-${_commit}.zip")
 sha256sums=('SKIP')
 
 prepare() {
