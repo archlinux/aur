@@ -3,7 +3,7 @@
 _pkgbase=ravenna-alsa-lkm
 pkgname="${_pkgbase}-dkms"
 pkgver=r164.7cd5712
-pkgrel=1
+pkgrel=2
 pkgdesc="A kernel module for ALSA RAVENNA/AES67 Driver"
 url="https://bitbucket.org/MergingTechnologies/ravenna-alsa-lkm"
 license=("GPL")
