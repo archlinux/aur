@@ -1,14 +1,14 @@
-# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Maintainer: Jürgen Hötzel <juergen@archlinux.org>
 pkgbase="ocaml-git"
 _pkgbase="ocaml"
 pkgname=('ocaml-git' 'ocaml-compiler-libs-git')
 pkgver=r32422.ec88aac
-pkgrel=1
+pkgrel=2
 pkgdesc="A functional language with OO extensions"
 arch=('x86_64')
 license=('LGPL2.1' 'custom: QPL-1.0')
 url="https://caml.inria.fr/"
-makedepends=('ncurses')
+makedepends=('ncurses' 'git')
 optdepends=('ncurses: advanced ncurses features' 'tk: advanced tk features')
 source=(git+https://github.com/ocaml/ocaml.git)
 sha256sums=('SKIP')

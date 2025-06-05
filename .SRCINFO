@@ -1,12 +1,13 @@
 pkgbase = ocaml-git
 	pkgdesc = A functional language with OO extensions
 	pkgver = r32422.ec88aac
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caml.inria.fr/
 	arch = x86_64
 	license = LGPL2.1
 	license = custom: QPL-1.0
 	makedepends = ncurses
+	makedepends = git
 	optdepends = ncurses: advanced ncurses features
 	optdepends = tk: advanced tk features
 	options = !makeflags
