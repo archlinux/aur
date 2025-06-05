@@ -1,0 +1,4 @@
+[pypy3-cppy]
+source = "github"
+github = "nucleic/cppy"
+use_latest_release = "true"
