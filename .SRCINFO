@@ -1,14 +1,14 @@
 pkgbase = vim-suda
 	pkgdesc = An alternative sudo.vim for Vim and Neovim
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lambdalisue/vim-suda
 	arch = any
 	groups = vim-plugins
 	license = MIT
+	makedepends = git
 	depends = vim-plugin-runtime
 	depends = sudo
-	depends = git
 	source = vim-suda::git+https://github.com/lambdalisue/vim-suda.git#tag=v1.2.4
 	sha256sums = 3595910cfdc8bd8ffaa3e6e0e272969c5a1cae826b614e17c9eb7c3a464b951e
 
