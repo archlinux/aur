@@ -50,6 +50,8 @@ depends=(
     python-pypdf
     python-requests
     python-youtube-transcript-api # AUR dependency
+    python-pyaudio
+    python-openai-whisper
     vte4
     libvoikko
     nuspell
