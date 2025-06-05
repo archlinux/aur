@@ -8,17 +8,17 @@ arch=('any')
 url="https://github.com/xxanqw/justdd"
 license=('GPL3')
 depends=('ntfs-3g' 'dosfstools' 'rsync' 'polkit')
-makedepends=('jq')
+makedepends=('jq') # jq is needed to parse the GitHub API response
 provides=("${_realname}")
 conflicts=("${_realname}")
 options=('!strip')
 
 source=("$_realname-$pkgver-$pkgrel-$arch.pkg.tar.zst::$url/releases/download/v$pkgver-$pkgrel/$_realname-$pkgver-$pkgrel-any.pkg.tar.zst")
-sha256sums=('SKIP')
+sha256sums=('6b0e58e22cc4ce318cea94e738acaea9a90f1b764be9c1ee26ae82b31e88685a')
 
 pkgver() {
   curl -s "https://api.github.com/repos/xxanqw/justdd/releases/latest" | \
-    jq -r '.tag_name' | sed 's/^v//'
+    jq -r '.tag_name' | sed -e 's/^v//' -e 's/-.*//'
 }
 
 build() {

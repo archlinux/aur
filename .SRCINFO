@@ -14,6 +14,6 @@ pkgbase = justdd-bin
 	conflicts = justdd
 	options = !strip
 	source = justdd-0.1.3-1-any.pkg.tar.zst::https://github.com/xxanqw/justdd/releases/download/v0.1.3-1/justdd-0.1.3-1-any.pkg.tar.zst
-	sha256sums = SKIP
+	sha256sums = 6b0e58e22cc4ce318cea94e738acaea9a90f1b764be9c1ee26ae82b31e88685a
 
 pkgname = justdd-bin
