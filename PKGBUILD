@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=librechat
 pkgver=0.7.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source ChatGPT clone fully customizable and compatible with any AI provider"
 arch=('x86_64')
 url="https://github.com/danny-avila/LibreChat"
@@ -58,7 +58,7 @@ package() {
 set -a
 source /etc/librechat/librechat.env 2>/dev/null || true
 set +a
-exec node /usr/share/webapps/librechat/api/server/index.js "$@"
+exec node /usr/lib/librechat/api/server/index.js "$@"
 EOF
 
   # service and service user creation
