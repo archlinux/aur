@@ -1,6 +1,6 @@
 pkgbase = nerdfonts-installer-bin
 	pkgdesc = Executable binary to install Nerd Fonts
-	pkgver = 2024.10.30.1
+	pkgver = v2025.06.05.1
 	pkgrel = 1
 	url = https://github.com/fam007e/nerd_fonts_installer
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nerdfonts-installer-bin
 	depends = unzip
 	depends = fontconfig
 	depends = shc
-	source = https://github.com/fam007e/nerd_fonts_installer/releases/download/v2024.10.30.1/nerdfonts-installer-2024.10.30.1.tar.gz
-	sha256sums = f7b0d2a4b04fe0de1d36819dfc7a4af6804f26c143ea0dc1510d7a3ac5daeafd
+	source = https://github.com/fam007e/nerd_fonts_installer/releases/download/vv2025.06.05.1/nerdfonts-installer-v2025.06.05.1.tar.gz
+	sha256sums = ad3153d12589b61e6e465fd8e9cbca572be1f6d237d3896d8081b1b1f5485b72
 
 pkgname = nerdfonts-installer-bin
