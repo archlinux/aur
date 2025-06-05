@@ -1,6 +1,6 @@
 pkgbase = rpc-gateway-git
 	pkgdesc = RPC gateway with automatic failover, load balancing, and request routing capabilities
-	pkgver = 0.0.1.r9.fca57dc
+	pkgver = 0.0.1.r11.7fd64ab
 	pkgrel = 1
 	url = https://github.com/kewlfft/rpc-gateway
 	arch = x86_64
