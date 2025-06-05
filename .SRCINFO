@@ -1,7 +1,7 @@
 pkgbase = tldx
 	pkgdesc = Domain Availability Research Tool
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/brandonyoungdev/tldx
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = tldx
 	makedepends = git
 	provides = tldx
 	conflicts = tldx
-	source = tldx-1.0.0.tar.gz::https://github.com/brandonyoungdev/tldx/archive/v1.0.0.tar.gz
-	sha256sums = 4386238735382f341ddafb96b9d92a65324e51b47c2d3bc3d693de86b602cf84
+	source = tldx-1.1.1.tar.gz::https://github.com/brandonyoungdev/tldx/archive/v1.1.1.tar.gz
+	sha256sums = 52a28c89881dfbd907113101e7180eee82bc72ceb1ceb7e56f20e96a887b4ead
 
 pkgname = tldx
