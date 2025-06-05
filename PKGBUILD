@@ -1,4 +1,5 @@
 # Maintainer: Julianmb <julianmboruta@gmail.com>
+# Generate .SRCINFO file: makepkg --printsrcinfo > .SRCINFO
 pkgname=autosubsync-bin
 pkgver=5.8
 pkgrel=1
