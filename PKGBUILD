@@ -4,7 +4,7 @@
 pkgname=void-git
 _pkgname=void
 pkgver=1.99.3.r2668.g282800e3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cursor alternative AI code editor"
 url="https://voideditor.com/"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=("MIT")
 provides=('void')
 conflicts=('void')
 oprions=(!strip) # for sign of ext
-_electron=electron34
+_electron=electron
 depends=( ${_electron} ripgrep xdg-utils
  alsa-lib gnupg libnotify libsecret libxkbfile libxss shared-mime-info)
 optdepends=(
@@ -22,7 +22,7 @@ optdepends=(
   'lsof: Terminal splitting'
   'org.freedesktop.secrets: Settings sync'
 )
-makedepends=( nodejs-lts-iron # sync with _electron
+makedepends=( nodejs-lts-iron # sync with .npmrc
   git npm python
   libarchive make pkgconf) # base base-devel
 source=("git+https://github.com/voideditor/void.git")
