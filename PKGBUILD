@@ -11,7 +11,7 @@ pkgname=rpcs3-bin
 # Overwrited the "-" for "_" as instructed on the ArchWiki. It will change dynamically
 # everytime there is a new release. It just need to be recompiled.
 pkgver="$(echo $_url | awk -F '[-_]' -v OFS='_' '{gsub("v", "", $5); print $5,$6,$7}')"
-pkgrel=5
+pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
 url='https://rpcs3.net/'
