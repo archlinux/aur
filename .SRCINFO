@@ -1,14 +1,14 @@
 pkgbase = ft-bin
 	pkgdesc = Tunnel TCP connections through a file
-	pkgver = 2.2.3
-	pkgrel = 2
+	pkgver = 2.2.4
+	pkgrel = 1
 	url = https://github.com/fiddyschmitt/File-Tunnel
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = ft::https://github.com/fiddyschmitt/File-Tunnel/releases/download/v2.2.3/ft-linux-x64
+	source_x86_64 = ft::https://github.com/fiddyschmitt/File-Tunnel/releases/download/v2.2.4/ft-linux-x64
 	sha256sums_x86_64 = 0387c640a2cc667f56747afe027b7e166f1b5714bd5bd0f5609e009755bd4f09
-	source_aarch64 = ft::https://github.com/fiddyschmitt/File-Tunnel/releases/download/v2.2.3/ft-linux-arm64
+	source_aarch64 = ft::https://github.com/fiddyschmitt/File-Tunnel/releases/download/v2.2.4/ft-linux-arm64
 	sha256sums_aarch64 = 0387c640a2cc667f56747afe027b7e166f1b5714bd5bd0f5609e009755bd4f09
 
 pkgname = ft-bin
