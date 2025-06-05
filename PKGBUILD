@@ -1,7 +1,8 @@
 # Maintainer: George Tsiamasiotis <gtsiam@windowslive.com>
+# Maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
 
 pkgname=topiary
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='The universal code formatter'
 arch=('x86_64')
@@ -9,9 +10,10 @@ url='https://topiary.tweag.io/'
 license=(MIT)
 depends=(glibc gcc-libs)
 makedepends=(cargo)
+options=(!debug !lto)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tweag/topiary/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d0cc71693a1d889e6031eb9b0ad453f50bfde4a9bbe58a2294b9d2c88449a06c')
+sha256sums=('e2bbac9cb46a3743cc41ca55245026580308722242c9df84bc0ef3cbb989aa81')
 
 export RUSTUP_TOOLCHAIN=stable
 export CARGO_TARGET_DIR=target
@@ -27,6 +29,14 @@ build() {
     cd "$pkgname-$pkgver"
 
     cargo build --frozen --release --bin topiary
+
+    local topiary="cargo run --frozen --release --bin topiary --"
+    mkdir -p completions
+    $topiary completion bash > "completions/${pkgname}"
+    $topiary completion elvish > "completions/${pkgname}.elv"
+    $topiary completion fish > "completions/${pkgname}.fish"
+    $topiary completion zsh > "completions/_${pkgname}"
+
 }
 
 check() {
@@ -38,7 +48,12 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
     
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-    install -Dm0755 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+    install -Dm0755 -t "${pkgdir}/usr/bin/" "target/${CARGO_BUILD_TARGET}/release/${pkgname}"
+    install -Dm0755 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
+
+    install -Dm 644 -t "${pkgdir}/usr/share/bash-completion/completions/" "completions/${pkgname}"
+    install -Dm 644 -t "${pkgdir}/usr/share/elvish/lib/" "completions/${pkgname}.elv"
+    install -Dm 644 -t "${pkgdir}/usr/share/fish/vendor_completions.d/" "completions/${pkgname}.fish"
+    install -Dm 644 -t "${pkgdir}/usr/share/zsh/site-functions/" "completions/_${pkgname}"
 }
 
