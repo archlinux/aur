@@ -25,7 +25,7 @@ build() {
 
 package() {
     appdir="${pkgdir}/opt/${_pkgname}"
-    jar=$(find ${srcdir} -name "tsunami-main-${pkgver}-all.jar")
+    jar=$(find ${srcdir} -name "tsunami-main-*.jar")
     jar_filename=$(basename -- "${jar}")
 
     mkdir -p "${appdir}"
