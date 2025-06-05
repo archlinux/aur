@@ -1,25 +1,23 @@
 pkgbase = rtorrent-vi-color
 	pkgdesc = Ncurses BitTorrent client based on libTorrent with vi like keybindings and color patch.
-	pkgver = 0.15.3
-	pkgrel = 2
+	pkgver = 0.15.4
+	pkgrel = 1
 	url = http://libtorrent.rakshasa.no
 	install = rtorrent-vi-color.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = curl
-	depends = libtorrent>=0.15.3
+	depends = libtorrent>=0.15.4
 	depends = xmlrpc-c
 	depends = libsigc++
 	depends = autoconf-archive
 	depends = libtool
 	provides = rtorrent
 	conflicts = rtorrent
-	source = rtorrent-vi-color-0.15.3.tar.gz::https://github.com/rakshasa/rtorrent/archive/v0.15.3.tar.gz
-	source = rtorrent-0.15.3_vi_keybinding_tjwoosta.patch
-	source = rtorrent-0.15.3_compact_display.patch
-	sha1sums = 0db45db082c13639f1a5be9aa4be0f7db81c4773
-	sha1sums = 7423c2eee0933f572b5e921330ce622843f14765
-	sha1sums = a82a73c999058cb6552ecd0be8fa9b945b154558
+	source = rtorrent-vi-color-0.15.4.tar.gz::https://github.com/rakshasa/rtorrent/archive/v0.15.4.tar.gz
+	source = rtorrent-0.15.4_vi_keybinding.patch
+	sha1sums = 03f7771c55773dc9fab148f87bef11d8d97de757
+	sha1sums = 7257771fb1cd8a5d4c92ca478db79149ba0af8ee
 
 pkgname = rtorrent-vi-color

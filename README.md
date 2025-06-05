@@ -39,3 +39,13 @@ ui.color.leeching.set = green
 ui.color.odd.set = dim
 #ui.color.even.set = white
 ```
+
+# Update 2025-06-04
+
+vi navigation has been implemented in the base rtorrent package with this pr: [https://github.com/rakshasa/rtorrent/pull/1484](https://github.com/rakshasa/rtorrent/pull/1484) and will most likely be included in the v0.15.4 release.
+
+To enable vi navigation please set the following in you rtorrent.rc file: `ui.keymap.style.set = "vi"`
+
+# Future of this package
+
+And with the release of v0.15.4 this package, `rtorrent-vi-color` will be obsolete and in due time removed.

@@ -1,0 +1,430 @@
+From a7d9ef7ad4518b68d343e6cc106f2b0ae6ee5416 Mon Sep 17 00:00:00 2001
+From: Fredrik Lindell <fredrik@cafebabe.se>
+Date: Sat, 17 May 2025 10:34:35 +0200
+Subject: [PATCH] Add emacs and vi keymap config logic
+
+* Add emacs and vi keymap config logic
+---
+ doc/rtorrent.rc                 |  4 +++
+ src/command_ui.cc               |  3 ++
+ src/ui/download_list.cc         |  6 ++--
+ src/ui/element_chunks_seen.cc   |  7 +++--
+ src/ui/element_download_list.cc | 17 ++++++------
+ src/ui/element_file_list.cc     |  9 +++---
+ src/ui/element_menu.cc          |  9 +++---
+ src/ui/element_peer_list.cc     | 11 ++++----
+ src/ui/element_text.cc          |  9 +++---
+ src/ui/element_tracker_list.cc  |  7 +++--
+ src/ui/element_transfer_list.cc |  7 +++--
+ src/ui/root.cc                  | 49 +++++++++++++++++++++++++++++++++
+ src/ui/root.h                   | 22 +++++++++++++++
+ 13 files changed, 123 insertions(+), 37 deletions(-)
+
+diff --git a/doc/rtorrent.rc b/doc/rtorrent.rc
+index e17c191..6d25cef 100644
+--- a/doc/rtorrent.rc
++++ b/doc/rtorrent.rc
+@@ -119,6 +119,10 @@
+ #
+ #ui.torrent_list.layout.set = "full"
+ 
++# Set navigation keymap style ("vi", "emacs"). Default is "emacs".
++#
++#ui.keymap.style.set = "emacs"
++
+ # Run rTorrent as a daemon, controlled via XMLRPC.
+ #
+ #system.daemon.set = false
+diff --git a/src/command_ui.cc b/src/command_ui.cc
+index 52b2767..58d281e 100644
+--- a/src/command_ui.cc
++++ b/src/command_ui.cc
+@@ -824,6 +824,9 @@ initialize_command_ui() {
+   CMD2_ANY_LIST  ("ui.status.throttle.up.set",   std::bind(&cmd_status_throttle_names, true, std::placeholders::_2));
+   CMD2_ANY_LIST  ("ui.status.throttle.down.set", std::bind(&cmd_status_throttle_names, false, std::placeholders::_2));
+ 
++  CMD2_ANY         ("ui.keymap.style",     std::bind(&ui::Root::keymap_style, control->ui()));
++  CMD2_ANY_STRING_V("ui.keymap.style.set", std::bind(&ui::Root::set_keymap_style, control->ui(), std::placeholders::_2));
++
+   // TODO: Add 'option_string' for rtorrent-specific options.
+   CMD2_VAR_STRING("ui.torrent_list.layout", "full");
+ 
+diff --git a/src/ui/download_list.cc b/src/ui/download_list.cc
+index 662764f..6d30ff0 100644
+--- a/src/ui/download_list.cc
++++ b/src/ui/download_list.cc
+@@ -360,12 +360,12 @@ DownloadList::setup_keys() {
+   m_bindings['F']           = std::bind(&DownloadList::receive_view_input, this, INPUT_FILTER);
+ 
+   m_uiArray[DISPLAY_LOG]->bindings()[KEY_LEFT] =
+-    m_uiArray[DISPLAY_LOG]->bindings()['B' - '@'] =
++    m_uiArray[DISPLAY_LOG]->bindings()[control->ui()->navigation_key(RT_KEY_LEFT)] =
+     m_uiArray[DISPLAY_LOG]->bindings()[' '] = std::bind(&DownloadList::activate_display, this, DISPLAY_DOWNLOAD_LIST);
+ 
+   m_uiArray[DISPLAY_DOWNLOAD_LIST]->bindings()[KEY_RIGHT] =
+-    m_uiArray[DISPLAY_DOWNLOAD_LIST]->bindings()['F' - '@'] = std::bind(&DownloadList::activate_display, this, DISPLAY_DOWNLOAD);
+-  m_uiArray[DISPLAY_DOWNLOAD_LIST]->bindings()['l'] = std::bind(&DownloadList::activate_display, this, DISPLAY_LOG);
++    m_uiArray[DISPLAY_DOWNLOAD_LIST]->bindings()[control->ui()->navigation_key(RT_KEY_RIGHT)] = std::bind(&DownloadList::activate_display, this, DISPLAY_DOWNLOAD);
++  m_uiArray[DISPLAY_DOWNLOAD_LIST]->bindings()[control->ui()->navigation_key(RT_KEY_DISPLAY_LOG)] = std::bind(&DownloadList::activate_display, this, DISPLAY_LOG);
+ }
+ 
+ }
+diff --git a/src/ui/element_chunks_seen.cc b/src/ui/element_chunks_seen.cc
+index a5a8af7..01f6e03 100644
+--- a/src/ui/element_chunks_seen.cc
++++ b/src/ui/element_chunks_seen.cc
+@@ -44,16 +44,17 @@
+ 
+ #include "control.h"
+ #include "element_chunks_seen.h"
++#include "root.h"
+ 
+ namespace ui {
+ 
+ ElementChunksSeen::ElementChunksSeen(core::Download* d) :
+     m_download(d) {
+ 
+-  m_bindings[KEY_LEFT] = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
++  m_bindings[KEY_LEFT]  = m_bindings[control->ui()->navigation_key(RT_KEY_LEFT)] = std::bind(&slot_type::operator(), &m_slot_exit);
+ 
+-  m_bindings[KEY_DOWN]  = m_bindings['N' - '@'] = std::bind(&ElementChunksSeen::receive_next, this);
+-  m_bindings[KEY_UP]    = m_bindings['P' - '@'] = std::bind(&ElementChunksSeen::receive_prev, this);
++  m_bindings[KEY_DOWN]  = m_bindings[control->ui()->navigation_key(RT_KEY_DOWN)] = std::bind(&ElementChunksSeen::receive_next, this);
++  m_bindings[KEY_UP]    = m_bindings[control->ui()->navigation_key(RT_KEY_UP)]   = std::bind(&ElementChunksSeen::receive_prev, this);
+   m_bindings[KEY_NPAGE] = std::bind(&ElementChunksSeen::receive_pagenext, this);
+   m_bindings[KEY_PPAGE] = std::bind(&ElementChunksSeen::receive_pageprev, this);
+ }
+diff --git a/src/ui/element_download_list.cc b/src/ui/element_download_list.cc
+index 939eae7..9623c24 100644
+--- a/src/ui/element_download_list.cc
++++ b/src/ui/element_download_list.cc
+@@ -15,6 +15,7 @@
+ 
+ #include "control.h"
+ #include "element_download_list.h"
++#include "root.h"
+ 
+ namespace ui {
+ 
+@@ -54,16 +55,16 @@ ElementDownloadList::ElementDownloadList() {
+   m_bindings['9'] = std::bind(&ElementDownloadList::receive_change_view, this, "leeching");
+   m_bindings['0'] = std::bind(&ElementDownloadList::receive_change_view, this, "active");
+ 
+-  m_bindings[KEY_UP] = m_bindings['P' - '@'] = std::bind(&ElementDownloadList::receive_prev, this);
+-  m_bindings[KEY_DOWN] = m_bindings['N' - '@'] = std::bind(&ElementDownloadList::receive_next, this);
++  m_bindings[KEY_UP]    = m_bindings[control->ui()->navigation_key(RT_KEY_UP)]    = std::bind(&ElementDownloadList::receive_prev, this);
++  m_bindings[KEY_DOWN]  = m_bindings[control->ui()->navigation_key(RT_KEY_DOWN)]  = std::bind(&ElementDownloadList::receive_next, this);
+ 
+-  m_bindings[KEY_PPAGE] = m_bindings['U' - '@'] = [this] { receive_pageprev(); };
+-  m_bindings[KEY_NPAGE] = m_bindings['H' - '@'] = [this] { receive_pagenext(); };
++  m_bindings[KEY_PPAGE] = m_bindings[control->ui()->navigation_key(RT_KEY_PPAGE)] = [this] { receive_pageprev(); };
++  m_bindings[KEY_NPAGE] = m_bindings[control->ui()->navigation_key(RT_KEY_NPAGE)] = [this] { receive_pagenext(); };
+ 
+-  m_bindings[KEY_HOME] = m_bindings['A' - '@'] = [this] { receive_home(); };
+-  m_bindings[KEY_END] = m_bindings['E' - '@'] = [this] { receive_end(); };
+-
+-  m_bindings['L'] = std::bind(&ElementDownloadList::toggle_layout, this);
++  m_bindings[KEY_HOME]  = m_bindings[control->ui()->navigation_key(RT_KEY_HOME)]  = [this] { receive_home(); };
++  m_bindings[KEY_END]   = m_bindings[control->ui()->navigation_key(RT_KEY_END)]   = [this] { receive_end(); };
++ 
++  m_bindings[control->ui()->navigation_key(RT_KEY_TOGGLE_LAYOUT)] = std::bind(&ElementDownloadList::toggle_layout, this);
+ }
+ 
+ void
+diff --git a/src/ui/element_file_list.cc b/src/ui/element_file_list.cc
+index 677ee88..922e906 100644
+--- a/src/ui/element_file_list.cc
++++ b/src/ui/element_file_list.cc
+@@ -50,6 +50,7 @@
+ #include "control.h"
+ #include "element_file_list.h"
+ #include "element_text.h"
++#include "root.h"
+ 
+ namespace ui {
+ 
+@@ -57,8 +58,8 @@ ElementFileList::ElementFileList(core::Download* d) :
+     m_download(d),
+     m_selected(iterator(d->download()->file_list()->begin())) {
+ 
+-  m_bindings[KEY_LEFT]  = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
+-  m_bindings[KEY_RIGHT] = m_bindings['F' - '@'] = std::bind(&ElementFileList::receive_select, this);
++  m_bindings[KEY_LEFT]  = m_bindings[control->ui()->navigation_key(RT_KEY_LEFT)]  = std::bind(&slot_type::operator(), &m_slot_exit);
++  m_bindings[KEY_RIGHT] = m_bindings[control->ui()->navigation_key(RT_KEY_RIGHT)] = std::bind(&ElementFileList::receive_select, this);
+ 
+   m_bindings[' '] = std::bind(&ElementFileList::receive_priority, this);
+   m_bindings['*'] = std::bind(&ElementFileList::receive_change_all, this);
+@@ -66,8 +67,8 @@ ElementFileList::ElementFileList(core::Download* d) :
+   m_bindings[KEY_NPAGE] = std::bind(&ElementFileList::receive_pagenext, this);
+   m_bindings[KEY_PPAGE] = std::bind(&ElementFileList::receive_pageprev, this);
+ 
+-  m_bindings[KEY_DOWN] = m_bindings['N' - '@'] = std::bind(&ElementFileList::receive_next, this);
+-  m_bindings[KEY_UP]   = m_bindings['P' - '@'] = std::bind(&ElementFileList::receive_prev, this);
++  m_bindings[KEY_DOWN]  = m_bindings[control->ui()->navigation_key(RT_KEY_DOWN)]  = std::bind(&ElementFileList::receive_next, this);
++  m_bindings[KEY_UP]    = m_bindings[control->ui()->navigation_key(RT_KEY_UP)]    = std::bind(&ElementFileList::receive_prev, this);
+ }
+ 
+ inline ElementText*
+diff --git a/src/ui/element_menu.cc b/src/ui/element_menu.cc
+index 079f469..f5f53e3 100644
+--- a/src/ui/element_menu.cc
++++ b/src/ui/element_menu.cc
+@@ -45,6 +45,7 @@
+ 
+ #include "control.h"
+ #include "element_menu.h"
++#include "root.h"
+ 
+ namespace ui {
+ 
+@@ -72,11 +73,11 @@ ElementMenu::ElementMenu() :
+   m_entry(entry_invalid) {
+ 
+   // Move bindings into a function that defines default bindings.
+-  m_bindings[KEY_LEFT]  = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
+-  m_bindings[KEY_RIGHT] = m_bindings['F' - '@'] = std::bind(&ElementMenu::entry_select, this);
++  m_bindings[KEY_LEFT]  = m_bindings[control->ui()->navigation_key(RT_KEY_LEFT)]  = std::bind(&slot_type::operator(), &m_slot_exit);
++  m_bindings[KEY_RIGHT] = m_bindings[control->ui()->navigation_key(RT_KEY_RIGHT)] = std::bind(&ElementMenu::entry_select, this);
+ 
+-  m_bindings[KEY_UP]   = m_bindings['P' - '@'] = std::bind(&ElementMenu::entry_prev, this);
+-  m_bindings[KEY_DOWN] = m_bindings['N' - '@'] = std::bind(&ElementMenu::entry_next, this);
++  m_bindings[KEY_UP]    = m_bindings[control->ui()->navigation_key(RT_KEY_UP)]    = std::bind(&ElementMenu::entry_prev, this);
++  m_bindings[KEY_DOWN]  = m_bindings[control->ui()->navigation_key(RT_KEY_DOWN)]  = std::bind(&ElementMenu::entry_next, this);
+ }
+ 
+ ElementMenu::~ElementMenu() {
+diff --git a/src/ui/element_peer_list.cc b/src/ui/element_peer_list.cc
+index e462a59..ba66cbf 100644
+--- a/src/ui/element_peer_list.cc
++++ b/src/ui/element_peer_list.cc
+@@ -52,6 +52,7 @@
+ #include "control.h"
+ #include "element_peer_list.h"
+ #include "element_text.h"
++#include "root.h"
+ 
+ namespace ui {
+ 
+@@ -74,14 +75,14 @@ ElementPeerList::ElementPeerList(core::Download* d) :
+ 
+   m_elementInfo->slot_exit(std::bind(&ElementPeerList::activate_display, this, DISPLAY_LIST));
+ 
+-  m_bindings['k']       = std::bind(&ElementPeerList::receive_disconnect_peer, this);
++  m_bindings[control->ui()->navigation_key(RT_KEY_DISCONNECT_PEER)] = std::bind(&ElementPeerList::receive_disconnect_peer, this);
+   m_bindings['*']       = std::bind(&ElementPeerList::receive_snub_peer, this);
+   m_bindings['B']       = std::bind(&ElementPeerList::receive_ban_peer, this);
+-  m_bindings[KEY_LEFT]  = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
+-  m_bindings[KEY_RIGHT] = m_bindings['F' - '@'] = std::bind(&ElementPeerList::activate_display, this, DISPLAY_INFO);
++  m_bindings[KEY_LEFT]  = m_bindings[control->ui()->navigation_key(RT_KEY_LEFT)]  = std::bind(&slot_type::operator(), &m_slot_exit);
++  m_bindings[KEY_RIGHT] = m_bindings[control->ui()->navigation_key(RT_KEY_RIGHT)] = std::bind(&ElementPeerList::activate_display, this, DISPLAY_INFO);
+ 
+-  m_bindings[KEY_UP]   = m_bindings['P' - '@'] = std::bind(&ElementPeerList::receive_prev, this);
+-  m_bindings[KEY_DOWN] = m_bindings['N' - '@'] = std::bind(&ElementPeerList::receive_next, this);
++  m_bindings[KEY_UP]    = m_bindings[control->ui()->navigation_key(RT_KEY_UP)]    = std::bind(&ElementPeerList::receive_prev, this);
++  m_bindings[KEY_DOWN]  = m_bindings[control->ui()->navigation_key(RT_KEY_DOWN)]  = std::bind(&ElementPeerList::receive_next, this);
+ }
+ 
+ ElementPeerList::~ElementPeerList() {
+diff --git a/src/ui/element_text.cc b/src/ui/element_text.cc
+index 6428da2..9a413f4 100644
+--- a/src/ui/element_text.cc
++++ b/src/ui/element_text.cc
+@@ -45,6 +45,7 @@
+ 
+ #include "control.h"
+ #include "element_text.h"
++#include "root.h"
+ 
+ namespace ui {
+ 
+@@ -52,11 +53,11 @@ ElementText::ElementText(rpc::target_type target) :
+     m_window(new WindowText(target)) {
+ 
+   // Move bindings into a function that defines default bindings.
+-  m_bindings[KEY_LEFT] = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
++  m_bindings[KEY_LEFT]  = m_bindings[control->ui()->navigation_key(RT_KEY_LEFT)]  = std::bind(&slot_type::operator(), &m_slot_exit);
+ 
+-//   m_bindings[KEY_UP]    = std::bind(this, &ElementText::entry_prev);
+-//   m_bindings[KEY_DOWN]  = std::bind(this, &ElementText::entry_next);
+-//   m_bindings[KEY_RIGHT] = m_bindings['F' - '@'] = std::bind(this, &ElementText::entry_select);
++//   m_bindings[KEY_UP]    = m_bindings[control->ui()->navigation_key(RT_KEY_UP)]    = std::bind(this, &ElementText::entry_prev);
++//   m_bindings[KEY_DOWN]  = m_bindings[control->ui()->navigation_key(RT_KEY_DOWN)]  = std::bind(this, &ElementText::entry_next);
++//   m_bindings[KEY_RIGHT] = m_bindings[control->ui()->navigation_key(RT_KEY_RIGHT)] = std::bind(this, &ElementText::entry_select);
+ }
+ 
+ ElementText::~ElementText() {
+diff --git a/src/ui/element_tracker_list.cc b/src/ui/element_tracker_list.cc
+index ec78429..e1873ff 100644
+--- a/src/ui/element_tracker_list.cc
++++ b/src/ui/element_tracker_list.cc
+@@ -9,19 +9,20 @@
+ 
+ #include "control.h"
+ #include "element_tracker_list.h"
++#include "root.h"
+ 
+ namespace ui {
+ 
+ ElementTrackerList::ElementTrackerList(core::Download* d) :
+     m_download(d) {
+ 
+-  m_bindings[KEY_LEFT] = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
++  m_bindings[KEY_LEFT] = m_bindings[control->ui()->navigation_key(RT_KEY_LEFT)] = std::bind(&slot_type::operator(), &m_slot_exit);
+ 
+   m_bindings[' ']      = std::bind(&ElementTrackerList::receive_cycle_group, this);
+   m_bindings['*']      = std::bind(&ElementTrackerList::receive_disable, this);
+ 
+-  m_bindings[KEY_DOWN] = m_bindings['N' - '@'] = std::bind(&ElementTrackerList::receive_next, this);
+-  m_bindings[KEY_UP]   = m_bindings['P' - '@'] = std::bind(&ElementTrackerList::receive_prev, this);
++  m_bindings[KEY_DOWN] = m_bindings[control->ui()->navigation_key(RT_KEY_DOWN)] = std::bind(&ElementTrackerList::receive_next, this);
++  m_bindings[KEY_UP]   = m_bindings[control->ui()->navigation_key(RT_KEY_UP)]   = std::bind(&ElementTrackerList::receive_prev, this);
+ }
+ 
+ void
+diff --git a/src/ui/element_transfer_list.cc b/src/ui/element_transfer_list.cc
+index a813ebc..40497c5 100644
+--- a/src/ui/element_transfer_list.cc
++++ b/src/ui/element_transfer_list.cc
+@@ -44,16 +44,17 @@
+ 
+ #include "control.h"
+ #include "element_transfer_list.h"
++#include "root.h"
+ 
+ namespace ui {
+ 
+ ElementTransferList::ElementTransferList(core::Download* d) :
+     m_download(d) {
+ 
+-  m_bindings[KEY_LEFT] = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
++  m_bindings[KEY_LEFT]  = m_bindings[control->ui()->navigation_key(RT_KEY_LEFT)]  = std::bind(&slot_type::operator(), &m_slot_exit);
+ 
+-  m_bindings[KEY_DOWN]  = std::bind(&ElementTransferList::receive_next, this);
+-  m_bindings[KEY_UP]    = std::bind(&ElementTransferList::receive_prev, this);
++  m_bindings[KEY_DOWN]  = m_bindings[control->ui()->navigation_key(RT_KEY_DOWN)]  = std::bind(&ElementTransferList::receive_next, this);
++  m_bindings[KEY_UP]    = m_bindings[control->ui()->navigation_key(RT_KEY_UP)]    = std::bind(&ElementTransferList::receive_prev, this);
+   m_bindings[KEY_NPAGE] = std::bind(&ElementTransferList::receive_pagenext, this);
+   m_bindings[KEY_PPAGE] = std::bind(&ElementTransferList::receive_pageprev, this);
+ }
+diff --git a/src/ui/root.cc b/src/ui/root.cc
+index 3a3d675..7865b3e 100644
+--- a/src/ui/root.cc
++++ b/src/ui/root.cc
+@@ -27,6 +27,34 @@
+ 
+ namespace ui {
+ 
++static const int emacs_keymap[RT_KEYMAP_MAX] = {
++  'B' - '@',
++  'F' - '@',
++  'P' - '@',
++  'N' - '@',
++  'l',
++  'k',
++  'U' - '@',
++  'H' - '@',
++  'A' - '@',
++  'E' - '@',
++  'L'
++};
++
++static const int vi_keymap[RT_KEYMAP_MAX] = {
++  'h',
++  'l',
++  'k',
++  'j',
++  'L',
++  'K',
++  'B' - '@',
++  'D' - '@',
++  'H',
++  'G',
++  'L' - '@'
++};
++
+ Root::Root() {
+   // Initialise prefilled m_input_history and m_input_history_pointers objects.
+   for (int type = ui::DownloadList::INPUT_LOAD_DEFAULT; type != ui::DownloadList::INPUT_EOI; type++) {
+@@ -34,6 +62,9 @@ Root::Root() {
+     m_input_history_pointers.insert( std::make_pair(type, 0) );
+   }
+ 
++  // set default keymap to emacs
++  m_keymap_style = "emacs";
++  m_keymap = emacs_keymap;
+ }
+ 
+ void
+@@ -451,4 +482,22 @@ Root::clear_input_history() {
+   }
+ }
+ 
++void
++Root::set_keymap_style(const std::string& style) {
++  if (style == "vi") {
++    m_keymap = vi_keymap;
++  } else if (style == "emacs") {
++    m_keymap = emacs_keymap;
++  } else {
++    throw torrent::input_error("Root::set_keymap_style() -> ui.keymap.style is configured with unknown keymap style: " + m_keymap_style);
++  }
++
++  m_keymap_style = style;
++}
++
++const int
++Root::navigation_key(NavigationKeymap key) {
++  return m_keymap[key];
++}
++
+ }
+diff --git a/src/ui/root.h b/src/ui/root.h
+index 023de98..14fce50 100644
+--- a/src/ui/root.h
++++ b/src/ui/root.h
+@@ -23,6 +23,21 @@ namespace input {
+ 
+ namespace ui {
+ 
++enum NavigationKeymap {
++  RT_KEY_LEFT,
++  RT_KEY_RIGHT,
++  RT_KEY_UP,
++  RT_KEY_DOWN,
++  RT_KEY_DISPLAY_LOG,
++  RT_KEY_DISCONNECT_PEER,
++  RT_KEY_PPAGE,
++  RT_KEY_NPAGE,
++  RT_KEY_HOME,
++  RT_KEY_END,
++  RT_KEY_TOGGLE_LAYOUT,
++  RT_KEYMAP_MAX,
++};
++
+ class DownloadList;
+ 
+ typedef std::vector<std::string> ThrottleNameList;
+@@ -80,6 +95,10 @@ public:
+   void                save_input_history();
+   void                clear_input_history();
+ 
++  const std::string&  keymap_style()                          { return m_keymap_style; }
++  void                set_keymap_style(const std::string& style);
++  const int           navigation_key(NavigationKeymap key);
++
+ private:
+   void                setup_keys();
+ 
+@@ -104,6 +123,9 @@ private:
+ 
+   void                reset_input_history_attributes(ui::DownloadList::Input type);
+ 
++  std::string         m_keymap_style;
++  const int*          m_keymap;
++
+   ThrottleNameList    m_throttle_up_names;
+   ThrottleNameList    m_throttle_down_names;
+ };
+-- 
+2.49.0
+
