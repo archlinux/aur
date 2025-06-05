@@ -47,7 +47,8 @@ prepare() {
   local status=''
   read -ra javac_version < <(javac --version) || status='failed'
   if [ -n "$status" ] || [ ! "${javac_version[1]%%.*}" = "$_java_version" ]; then
-    echo "Please set your java version to openjdk $_java_version using \"archlinux-java\"" >&2
+    echo "Please set your java version to openjdk $_java_version using:"  >&2
+    printf -- '\e[93;1m %s\e[0m' "archlinux-java set java-$_java_version-openjdk" >&2
     return 1
   fi
 
