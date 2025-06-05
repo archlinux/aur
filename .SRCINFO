@@ -1,0 +1,17 @@
+pkgbase = verylup-bin
+	pkgdesc = The Veryl toolchain installer
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/veryl-lang/verylup
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	provides = verylup
+	conflicts = verylup
+	source_x86_64 = verylup-bin-0.1.5::https://github.com/veryl-lang/verylup/releases/download/v0.1.5/verylup-x86_64-linux.zip
+	sha256sums_x86_64 = cc46659ed52b54c26721f47f0fab31b4bfc8adcc279222b5560b31f77bfe6c20
+	source_aarch64 = verylup-bin-0.1.5::https://github.com/veryl-lang/verylup/releases/download/v0.1.5/verylup-x86_64-mac.zip
+	sha256sums_aarch64 = 4ddb685634a07df0202e2bce838017fff3b354e5e86ca41f49e4025a2b81d2e9
+
+pkgname = verylup-bin
