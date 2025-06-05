@@ -1,0 +1,21 @@
+pkgbase = yahee-music-player-git
+	pkgdesc = 🎵 A modern local music player built on Electron and TypeScript.(Use system-wide electron)一个简洁美观的本地音乐播放器
+	pkgver = 1.0.0.r15.g069d7f4
+	pkgrel = 1
+	url = https://github.com/yukito0209/yahee-music-player
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron35
+	provides = yahee-music-player=1.0.0
+	conflicts = yahee-music-player
+	source = yahee-music-player.git::git+https://github.com/yukito0209/yahee-music-player
+	source = yahee-music-player.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = yahee-music-player-git
