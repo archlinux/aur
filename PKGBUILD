@@ -8,8 +8,7 @@
 
 _target=arm-linux-gnueabihf
 pkgname="${_target}-gcc"
-pkgver=15.1.1.git+f36ec88aa85
-_majorver="15.1.1"
+pkgver=15.1.1+r7+gf36ec88aa85a
 _commit=f36ec88aa85a1a8f4ec300dfcd862fc4fbca1c53
 _gmpver=6.3.0
 _islver=0.26
@@ -46,13 +45,12 @@ sha256sums=('7dc521dbaf5e8db83574db217c5fdb8c4fed6ec1cc6ce9f0095755f599890b8c'
             'SKIP')
 
 pkgver() {
-  cd gcc
-  local _hash="$(git rev-parse --short ${_commit})"
-  echo "${_majorver}.git+${_hash}"
+  cd "${srcdir}"/gcc
+  echo "$(cat gcc/BASE-VER)+$(git describe --abbrev=12 --tags | sed 's/[^-]*-[^-]*-//;s/[^-]*-/r&/;s/-/+/g;s/_/./')"
 }
 
 prepare() {
-  cd gcc
+  cd "${srcdir}"/gcc
 
   mv ../gmp-${_gmpver} gmp
   mv ../isl-${_islver} isl
@@ -66,14 +64,14 @@ prepare() {
 }
 
 build() {
-  cd gcc-build
+  cd "${srcdir}"/gcc-build
 
   # using -Werror=format-security causes libcpp buildig failures
   # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100207 
   CFLAGS="${CFLAGS/-Werror=format-security/}"
   CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
 
-  ../gcc/configure \
+  "${srcdir}"/gcc/configure \
     --target=${_target} \
     --host=${CHOST} \
     --build=${CHOST} \
@@ -121,7 +119,7 @@ build() {
 }
 
 package() {
-  cd gcc-build
+  cd "${srcdir}"/gcc-build
 
   make DESTDIR="${pkgdir}" install-gcc install-target-{libatomic,libgcc,libgm2,libgomp,libitm,libquadmath,libsanitizer,libstdc++-v3,libvtv}
 
