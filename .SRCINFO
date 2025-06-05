@@ -1,0 +1,17 @@
+pkgbase = gxinput-git
+	pkgdesc = Graphical front-end for xinput using wxwidgets
+	pkgver = r5.5dc5117
+	pkgrel = 1
+	url = https://github.com/gogoprog/gxinput
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = haxe
+	makedepends = wxwidgets-common
+	depends = wxwidgets
+	provides = gxinput
+	conflicts = gxinput
+	source = gxinput::git+https://github.com/gogoprog/gxinput
+	sha256sums = SKIP
+
+pkgname = gxinput-git
