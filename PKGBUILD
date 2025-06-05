@@ -2,8 +2,8 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=affine
 _pkgname=AFFiNE
-pkgver=0.21.6
-_electronversion=35
+pkgver=0.22.0
+_electronversion=36
 pkgrel=1
 pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use."
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
     "${pkgname}.sh"
     "${pkgname}.desktop"
 )
-sha256sums=('9e407d3b56018b5bf45b377995a4e79609fefb95c51b614542f8eb6f49cfe740'
+sha256sums=('2a133ec661bf12173446efac47d41497c9743ae59cc4c7931f1aff0a7f7732e0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980'
             '18724474ab2351ed00965f9fe9adea04967458dec810866b572cf44ca8185b5b')
 
