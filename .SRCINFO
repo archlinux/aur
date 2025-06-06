@@ -1,7 +1,7 @@
 pkgbase = capo-shell
 	pkgdesc = Wrapper to start a tool or shell with KUBECONFIG and OS_ environment variables to interact with cluster-api-provider-openstack clusters
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = APACHE
 	depends = kubectl

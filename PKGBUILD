@@ -2,7 +2,7 @@
 
 pkgname=capo-shell
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper to start a tool or shell with KUBECONFIG and OS_ environment variables to interact with cluster-api-provider-openstack clusters"
 license=('APACHE')
 arch=('x86_64')
@@ -14,6 +14,7 @@ sha512sums=('db8bac0a69c75a1b3d267600aadddce3d5d67c503b9441e0d1bc236da3c3060df7e
 
 package() {
   install -D -m 0755 -t $pkgdir/usr/bin/ $srcdir/$pkgname
+  install -D -m 0755 -t $pkgdir/usr/bin/ $srcdir/multi-capo-shell
 }
 
 #vim: syntax=sh
