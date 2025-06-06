@@ -1,0 +1,3 @@
+[perl-feature-compat-try]
+source = "cpan"
+cpan = "Feature-Compat-Try"
