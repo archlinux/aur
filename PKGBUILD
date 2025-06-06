@@ -2,18 +2,20 @@
 # Maintainer: Maarten de Boer <maarten@cloudstek.nl>
 # Maintainer: Dan Fuhry <dan@fuhry.com>
 
-pkgname=('teleport' 'teleport-client')
+pkgname=teleport
 _pkgname=teleport
-pkgver=17.3.4
+pkgver=17.5.1
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
 license=('AGPLv3')
 depends=('glibc' 'libbpf')
-makedepends=('go>=1.17.0' 'rustup' 'yarn' 'libbpf-static>=1.2.0' 'pnpm'
-             'python' 'python-setuptools' 'libfido2')
-provides=('tctl' 'tsh')
+makedepends=('go>=1.17.0' 'rustup' 'yarn' 'libbpf-static>=1.2.0' 'python'
+             'python-setuptools' 'libfido2' 'nvm' 'clang' 'llvm')
+provides=('tctl' 'tsh' 'teleport-client')
+replaces=('teleport-client')
+conflicts=('teleport-client')
 
 _go_srcpath="go/src/github.com/gravitational"
 
@@ -42,9 +44,13 @@ prepare() {
         fi
     done
 
-    RUST_VERSION="$(grep -oP 'RUST_VERSION .= \K[0-9\.]+$' build.assets/versions.mk)"
-
+    RUST_VERSION="$(make -s -C build.assets print-rust-version 2>/dev/null)"
     rustup install $RUST_VERSION
+
+    NODE_VERSION="$(make -s -C build.assets print-node-version 2>/dev/null)"
+    . /usr/share/nvm/init-nvm.sh
+    nvm i "$NODE_VERSION"
+    nvm use "$NODE_VERSION"
 
     mkdir -p "${srcdir}/${_go_srcpath}/build"
 }
@@ -63,11 +69,13 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export ADDFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    RUST_VERSION="$(grep -oP 'RUST_VERSION .= \K[0-9\.]+$' build.assets/versions.mk)"
-    WASM_PACK_VERSION="$(grep -oP 'WASM_PACK_VERSION .= \K[0-9\.]+$' build.assets/versions.mk)"
+    RUST_VERSION="$(make -s -C build.assets print-rust-version 2>/dev/null)"
+    NODE_VERSION="$(make -s -C build.assets print-node-version 2>/dev/null)"
+    . /usr/share/nvm/init-nvm.sh
+    nvm use "$NODE_VERSION"
 
-    # Install wasm-pack
-    rustup run $RUST_VERSION cargo install wasm-pack@$WASM_PACK_VERSION
+    # Install wasm-pack and wasm-bindgen
+    rustup run $RUST_VERSION make ensure-wasm-deps FORCE=true
 
     # Build
     rustup run $RUST_VERSION \
@@ -78,33 +86,35 @@ build() {
     chmod -R u+w "${srcdir}/go"
 }
 
+_install_binary() {
+    local binary="$1"
+
+    install -Dm755 "build/${binary}" "${pkgdir}/opt/teleport/system/bin/${binary}"
+}
+
 package_teleport() {
     install=teleport.install
-    optdepends=('teleport-client: for "tsh" and "tctl" commands')
 
     cd "${srcdir}/${_go_srcpath}"
 
     # Install binaries
-    install -Dm755 build/teleport "${pkgdir}/usr/bin/teleport"
+    _install_binary teleport
+    _install_binary tctl
+    _install_binary tsh
+    _install_binary tbot
+    _install_binary fdpass-teleport
+    _install_binary teleport-update
 
     # Install services
-    install -Dm644 ${srcdir}/teleport.service "${pkgdir}/usr/lib/systemd/system/teleport.service"
-    install -Dm644 ${srcdir}/teleport@.service "${pkgdir}/usr/lib/systemd/system/teleport@.service"
+    install -Dm644 ${srcdir}/teleport.service "${pkgdir}/opt/teleport/system/lib/systemd/system/teleport.service"
+    install -Dm644 ${srcdir}/teleport@.service "${pkgdir}/opt/teleport/system/systemd/system/teleport@.service"
 
     # Copy example files
     install -dm755 "${pkgdir}/usr/share/teleport"
     cp -r examples "${pkgdir}/usr/share/teleport/"
 }
 
-package_teleport-client() {
-    cd "${srcdir}/${_go_srcpath}"
-
-    install -Dm755 build/tctl "${pkgdir}/usr/bin/tctl"
-    install -Dm755 build/tsh "${pkgdir}/usr/bin/tsh"
-    install -Dm755 build/tbot "${pkgdir}/usr/bin/tbot"
-    install -Dm755 build/fdpass-teleport "${pkgdir}/usr/lib/teleport/fdpass-teleport"
-}
-sha512sums=('049734723470cfc2bc417e597e7d529d47f1ac2d2dd11ac32212c117c28933a0c6233c1a9b1b397482c1fdeec6b8868a751c1ca5fd60b9d86339c30a04c711d1'
+sha512sums=('9def782f5bd5d283cb3c0ab7f109375389dd0ef19dbb75a347296531bf84e3076cf14a224cd31b3285f8e53b40ece15a807c3b6efcd6a5a83f825fe6372a342a'
             '409116e201c40b7e0a379b316123500ab7691cbf441ecee048811885f97cd1185671676bb61bf36cb288399e8c0355a0a9f963ce7f94e44ba49e061187c9249e'
             '469249bebaa974e5e205c66c0459ed071b06a35aa9b94a3f34d3cbc5e75aa0f290d70ba8e5c63b49a6319a0f524a846ded459e07e3dde4c260e7668959821b96'
-            '8e7092082e0ba074c1f055d895229d8554a3b0f308447ddef9355b18502425ce28392420d22479c1b7d1001a9d0673645a1b4a66ac57c8d1d60df1c2b59bb73d')
+            '71edc21c14d83fec85be730eb6c83c5371932cc08113d0d69167e1bc7a810965b82b3a8591ee7adb3f4b1004db66ee1857350d4fd30a30dcbf20f1146ffdc345')

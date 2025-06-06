@@ -4,8 +4,8 @@
 . /usr/share/makepkg/util/message.sh
 
 _notify_clients_pkg() {
-    msg 'NOTE: The "tsh", "tctl" and "tbot" commands are in the "teleport-client"'
-    msg 'package. This package contains only the server components.'
+    msg 'NOTE: The "tsh", "tctl" and "tbot" commands which were previously packaged'
+    msg 'separately in "teleport-client" are now merged back into this package.'
 }
 
 post_install() {
@@ -14,8 +14,15 @@ post_install() {
 
     echo ''
     _notify_clients_pkg
+    /opt/teleport/system/bin/teleport-update link-package
 }
 
 post_upgrade() {
     _notify_clients_pkg
+    /opt/teleport/system/bin/teleport-update link-package
 }
+
+pre_remove() {
+    /opt/teleport/system/bin/teleport-update unlink-package
+}
+

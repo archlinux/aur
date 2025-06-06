@@ -16,7 +16,9 @@ if [ -n "$1" ]; then
 else
     msg "Getting latest Teleport release"
     gh_url="https://api.github.com/repos/gravitational/teleport/git/matching-refs/tags/v${major_version}."
-    vers=$(curl -SsLl "${gh_url}" | jq -r 'reverse | .[0].ref' | sed -re 's;^refs/tags/v;;')
+    # There are lots of dev release tags in the teleport repo.
+    # Filter them out by only selecting tags which are valid semantic version numbers.
+    vers=$(curl -SsLl "${gh_url}" | jq -r 'reverse | [ .[] | select(.ref| test("^refs/tags/v[0-9]+(\\.[0-9]+){2}$"))  ] | .[0].ref' | sed -re 's;^refs/tags/v;;')
     if ! [[ "$vers" =~ ^[0-9]+(\.[0-9]+)+$ ]]; then
 		echo "Version string "\""${vers}"\"" doesn't look like a valid version number" >&2
 		exit 1
