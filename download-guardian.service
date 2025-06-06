@@ -1,10 +1,11 @@
 [Unit]
-Description=Download Gaurdian (watches ~/Downloads and prompts to scan new files using ClamAV)
+Description=Download Guardian (watches ~/Downloads and prompts to scan new files)
 After=graphical.target
 
 [Service]
 Type=simple
 ExecStart=/usr/bin/download-guardian-scan
+ExecReload=/usr/bin/kill -HUP $MAINPID
 Restart=on-failure
 StandardOutput=journal
 StandardError=journal

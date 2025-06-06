@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type      = Package
+Target    = download-guardian
+
+[Action]
+Description = Reload & Restart Download Guardian service...
+When        = PostTransaction
+Exec        = /bin/sh -c 'if [ "$(whoami)" != "root" ]; then systemctl --user daemon-reload && systemctl --user restart download-guardian.service; fi'
+
