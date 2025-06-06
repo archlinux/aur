@@ -1,18 +1,18 @@
 pkgbase = aniparser-bin
 	pkgdesc = AniParser Electron application.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.2.4
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/Sinedka/aniparser
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
 	depends = electron35
-	provides = aniparser=0.2.4
+	provides = aniparser=0.2.6
 	conflicts = aniparser
-	source = aniparser-0.2.4-x86_64.AppImage::https://github.com/Sinedka/aniparser/releases/download/0.2.4/aniparser-0.2.4.AppImage
-	source = LICENSE-0.2.4::https://raw.githubusercontent.com/Sinedka/aniparser/0.2.4/LICENSE
+	source = aniparser-0.2.6-x86_64.AppImage::https://github.com/Sinedka/aniparser/releases/download/0.2.6/aniparser-0.2.6.AppImage
+	source = LICENSE-0.2.6::https://raw.githubusercontent.com/Sinedka/aniparser/0.2.6/LICENSE
 	source = aniparser.sh
-	sha256sums = 7940a5879f5165d24137de153193305abd2fdf7519156afe38dd751d981b9f78
+	sha256sums = 0c049e927c7d39b29ebe760e7ec3fda722332b1b31f01e7a00db617d4a52b6d6
 	sha256sums = 002c2696d92b5c8cf956c11072baa58eaf9f6ade995c031ea635c6a1ee342ad1
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
