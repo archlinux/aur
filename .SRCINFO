@@ -1,0 +1,18 @@
+pkgbase = icloud-wrapper-bin
+	pkgdesc = Electron wrapper for Apple iCloud (https://www.icloud.com).(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/chillcarne/icloud-wrapper
+	arch = x86_64
+	license = MIT
+	depends = electron25
+	provides = icloud-wrapper=1.0.2
+	conflicts = icloud-wrapper
+	source = icloud-wrapper-1.0.2.deb::https://github.com/chillcarne/icloud-wrapper/releases/download/v1.0.2/iCloud-1.0.2.deb
+	source = LICENSE-1.0.2::https://raw.githubusercontent.com/chillcarne/icloud-wrapper/v1.0.2/LICENSE
+	source = icloud-wrapper.sh
+	sha256sums = 0a1f6d8a841960fa9ec8fe064bd48308ab449c021f261a38b1fa62d52cefca7b
+	sha256sums = bd511ceb3c4280a307fe633f8279568b8703aef377badb36ddf999b37b241ecf
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = icloud-wrapper-bin
