@@ -4,8 +4,8 @@
 pkgbase=libreoffice-dev-i18n
 
 _pkgnamefmt=LibreOffice
-_pkgver=25.2.4.2
-pkgver=25.2.4.2
+_pkgver=25.2.4.3
+pkgver=25.2.4.3
 pkgrel=1
 #_basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
 
@@ -178,7 +178,7 @@ prepare() {
 
 _package() {
   pkgdesc="$2 language pack for LibreOffice Dev"
-  depends=("libreoffice-dev-bin>=$( cut -f1-3 -d'.' <<< ${pkgver} )")
+  depends=("libreoffice-dev-bin>=$( cut -f1-4 -d'.' <<< ${pkgver} )")
 
   cd "$srcdir"/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_$1/RPMS
   cp -R opt "$pkgdir"
