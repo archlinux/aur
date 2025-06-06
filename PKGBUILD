@@ -1,3 +1,4 @@
+# Maintainer: Andrzej Wąsowski <wasowski [at] data [dot] pl>
 # Maintainer: Thore Bödecker <me [at] foxxx0 [dot] de>
 # Contributor: George Rawlinson <george@rawlinson.net.nz>
 # Contriburo: Christopher Loen <christopherloen at gmail dot com>
@@ -6,7 +7,7 @@
 
 pkgbase=awl
 pkgname=('awl' 'awl-docs')
-pkgver=0.63
+pkgver=0.64
 pkgrel=1
 pkgdesc="Andrew's Web Libraries"
 arch=('any')
