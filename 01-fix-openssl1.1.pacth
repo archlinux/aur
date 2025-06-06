@@ -1,7 +1,7 @@
-Index: ccrtp/crypto/openssl/hmac.cpp
+Index: src/ccrtp/crypto/openssl/hmac.cpp
 ===================================================================
---- ccrtp/crypto/openssl/hmac.cpp
-+++ ccrtp/crypto/openssl/hmac.cpp
+--- src/ccrtp/crypto/openssl/hmac.cpp
++++ src/ccrtp/crypto/openssl/hmac.cpp
 @@ -52,6 +52,7 @@ void hmac_sha1( uint8_t* key, int32_t ke
                  const uint8_t* data_chunks[],
                  uint32_t data_chunck_length[],
