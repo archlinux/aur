@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-bin
-pkgver=5.76.0
+pkgver=5.79.2
 pkgrel=1
 pkgdesc="qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems."
 arch=("x86_64" "aarch64" "armv7h")
@@ -18,9 +18,9 @@ source_x86_64+=("${_release_url}-x86_64${_ext}")
 source_aarch64+=("${_release_url}-aarch64${_ext}")
 source_armv7h+=("${_release_url}-armv7h${_ext}")
 
-sha256sums_x86_64=("b6b7fc04ed10e92c7748f1c9f4eb95fbb969c388b1c6558e58a217383bfb86b2")
-sha256sums_aarch64=("16dda64f2edb477106426ee0cb3d66451bc5d46a2a30a510bee69c728dc6d129")
-sha256sums_armv7h=("9981b5261f5a89c505fc4b13559e47eb075fe2b7b6bdff9966737ef9cf851dec")
+sha256sums_x86_64=("118f0c91f98dd9b31c697f4584b55deea0d5c78b144bf93490e8b8e56f32d7f6")
+sha256sums_aarch64=("051bb1910a28320ef915329f1d537c8061145a0fa30b8b39f6c84d6fdaef44d7")
+sha256sums_armv7h=("35819e3b7249687a10186dfc28fb7b92d838baa60881b5b784bf0604379ea2a4")
 
 package() {
   tar -xzf "$srcdir/qp-v${pkgver}-${CARCH}${_ext}" -C "$srcdir"
