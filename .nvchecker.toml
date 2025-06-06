@@ -1,0 +1,5 @@
+[cutechess]
+source = "git"
+git = "https://github.com/cutechess/cutechess.git"
+prefix = "v"
+exclude_regex = '.*[a-z]{2}.*'
