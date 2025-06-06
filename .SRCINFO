@@ -1,0 +1,30 @@
+pkgbase = perl-string-license
+	pkgdesc = Detect source code license statements in a text string
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = https://metacpan.org/dist/String-License
+	arch = any
+	license = AGPL-3.0-or-later
+	checkdepends = perl-file-basedir
+	checkdepends = perl-regexp-pattern-license>=3.9.0
+	checkdepends = perl-software-license>=0.104006
+	checkdepends = perl-yaml-libyaml
+	checkdepends = perl-test2-suite>=0.000060
+	checkdepends = perl-test-without-module
+	makedepends = perl-extutils-makemaker>=6.17
+	depends = perl-array-intspan
+	depends = perl-feature-compat-class>=0.07
+	depends = perl-scalar-list-utils>=1.45
+	depends = perl-log-any
+	depends = perl-namespace-clean
+	depends = perl-path-tiny>=0.062
+	depends = perl>=5.20
+	depends = perl-regexp-pattern>=0.2.12
+	depends = perl-regexp-pattern-license>=3.4.0
+	optdepends = perl-re-engine-re2: enable additional detections
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/J/JO/JONASS/String-License-v0.0.11.tar.gz
+	b2sums = 733af1f8edfc3ba402f475ada43435ec698b0f227543927efcd0dbeff10401869da418b8770e517d3380509e3ac8f27892ac4c1269df33b8420d8445c87cc2ce
+
+pkgname = perl-string-license

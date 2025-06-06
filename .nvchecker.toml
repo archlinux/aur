@@ -1,0 +1,4 @@
+[perl-string-license]
+source = "cpan"
+cpan = "String-License"
+prefix = "v"
