@@ -1,0 +1,21 @@
+pkgbase = promptly-git
+	pkgdesc = Git-native desktop tool for crafting context-aware LLM prompts from local codebases with full transparency and control.(Use system-wide electron)
+	pkgver = r6.422c1fd
+	pkgrel = 1
+	url = https://github.com/timosaarinen/promptly
+	arch = any
+	license = MIT
+	makedepends = pnpm
+	makedepends = nvm
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron28
+	depends = git
+	provides = promptly=r6.422c1fd
+	conflicts = promptly
+	source = promptly.git::git+https://github.com/timosaarinen/promptly.git
+	source = promptly.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = promptly-git
