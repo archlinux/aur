@@ -1,0 +1,19 @@
+pkgbase = catppuccin-gtk-theme-git
+	pkgdesc = A GTK theme based on the Catppuccin colour palette.
+	pkgver = r62.c961826d0
+	pkgrel = 1
+	url = https://github.com/Fausto-Korpsvart/Catppuccin-GTK-Theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = sassc
+	depends = gnome-themes-extra
+	optdepends = gtk-engine-murrine
+	options = !strip
+	options = !debug
+	options = !libtool
+	options = !emptydirs
+	source = git+https://github.com/Fausto-Korpsvart/Catppuccin-GTK-Theme.git
+	sha256sums = SKIP
+
+pkgname = catppuccin-gtk-theme-git
