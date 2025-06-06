@@ -1,7 +1,7 @@
 pkgbase = camunda-modeler-bin
 	pkgdesc = An integrated modeling solution for BPMN, DMN and Forms based on bpmn.io
-	pkgver = 5.35.0
-	pkgrel = 2
+	pkgver = 5.36.0
+	pkgrel = 1
 	url = https://github.com/camunda/camunda-modeler
 	install = camunda-modeler.install
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = camunda-modeler-bin
 	depends = xdg-utils
 	depends = gtk3
 	depends = nss
-	source = https://github.com/camunda/camunda-modeler/releases/download/v5.35.0/camunda-modeler-5.35.0-linux-x64.tar.gz
+	source = https://github.com/camunda/camunda-modeler/releases/download/v5.36.0/camunda-modeler-5.36.0-linux-x64.tar.gz
 	source = camunda-modeler.install
 	source = camunda-modeler.sh
-	b2sums = f95b58095e855677050001d8e39fc0904870c294ab0981ff5892f55962f3db1fabf88a0ccb379455685d909ccd54963365a31592036c74af759e4444cc09b20d
+	b2sums = dc4af231711868ca400a2325afccedc410672e62bd6c7c09d6a27c92b46360a4dc02dca8de88c2e07094745929d2a064eceb50c1ae466799388581280df6c950
 	b2sums = 67491c423c4513c78a01c47cffd0e28287a18913fd7c7b39278d0eeba6203432a84f5db221e9d3c2e755b42fa9a5063c246644c07dcaedc0b0c3f0af2777d604
 	b2sums = e2d15fa4996ba95fb29fabaafb57efc0bca02d5d073b25bd453e9f72aa4ca7f02ebe4454c711e26559940ca3e24422c2361a900a9b39c9c42e6cb22547a042a2
 
