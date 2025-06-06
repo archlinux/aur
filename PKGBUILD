@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=dektec-utilities
-pkgver=25.05.24
+pkgver=25.06.06
 pkgrel=1
 pkgdesc="DekTec utilities DtEpc, DtPlay, DtRecord and DtInfoCL"
 arch=('x86_64')
@@ -10,24 +10,20 @@ license=('LicenseRef-custom')
 depends=('gcc-libs' 'glibc')
 makedepends=('make')
 _dtepc=2.13.1
-_dtplay=4.19.0
-_dtrecord=4.16.0
+_dtplay=4.19.1
+_dtrecord=4.16.1
 _dtinfocl=1.7.1
 _sdk=2025.04.0
 source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdk}.tar.gz"
         "https://www.dektec.com/products/applications/DtEpc/downloads/DtEpc-${_dtepc}.zip"
         "https://www.dektec.com/products/applications/DtInfoCL/downloads/DtInfoCL_v${_dtinfocl}.zip"
         "https://www.dektec.com/products/applications/DtPlay/downloads/DtPlay_v${_dtplay}.zip"
-        "https://www.dektec.com/products/applications/DtRecord/downloads/DtRecord_v${_dtrecord}.zip"
-        '0001-dtplay-fix.patch'
-        '0002-dtrecord-fix.patch')
+        "https://www.dektec.com/products/applications/DtRecord/downloads/DtRecord_v${_dtrecord}.zip")
 sha256sums=('37fe7622b6b609adda95f21c4eed6fca6e25cb156e34cace71191b35749ded94'
             '4fbbfe09d55b3528a6a45bc6a2effce3ba0431d7ac141bf190423accc7c4a435'
             'df45c1330fc76f08576c6f8af4bad2c0a2ab872d3c325a356ac0eaf446c06d93'
-            '2037fda8d97e01cd0d1db055db6ff2e184486e3350d1e59eee0edde42527e9dd'
-            '0a3a2e1ab86bf554d408954e6064b65b782df0fd4e4e512cdc8c41641b248f78'
-            '5b0816590bc22cb2973a26afd9456160d277c8f4c03333c90baf5c547f8a3e3b'
-            '2d1ded3658de44981232ca0a7756f401f989e23f18e043a7c16bbca8ded6a827')
+            '0d53c9122e879fe6ca18d242fb22f6e06f3778f5144f8a5fd14064295d32ed76'
+            '1bc6b04a579e594ba34d653c8afd2e24e9398c0cec5d3a4482bb76067739967d')
 
 prepare() {
   # Define directories
@@ -55,8 +51,6 @@ prepare() {
   cp -r "${sdk_lib_dir}/"* "${dtrecord_dir}/Import/DTAPI"
 
   # Patches
-  patch -Np1 -i "${srcdir}/0001-dtplay-fix.patch"
-  patch -Np1 -i "${srcdir}/0002-dtrecord-fix.patch"
 }
 
 build() {
