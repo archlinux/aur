@@ -1,0 +1,18 @@
+pkgbase = woodfish-bin
+	pkgdesc = A simple and feature-rich computer app for knocking on wooden fish.(Prebuilt version,use system-wide electron)一款简单而功能丰富的电脑敲木鱼应用
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/silenceboychen/woodfish
+	arch = x86_64
+	license = MIT
+	depends = electron28
+	provides = woodfish=1.0.7
+	conflicts = woodfish
+	source = woodfish-1.0.7.deb::https://github.com/silenceboychen/woodfish/releases/download/v1.0.7/woodfish-1.0.7-amd64.deb
+	source = LICENSE-1.0.7::https://raw.githubusercontent.com/silenceboychen/woodfish/v1.0.7/LICENSE
+	source = woodfish.sh
+	sha256sums = 17cb702ba6f47edd9d83a8864ccb82dc6e686b4bc4c4c34fda6a920b0e765aa5
+	sha256sums = 535423b7d4344c585d758c34f2bf1c9f02a64ae05a1b3c97cf3310c1cca9eb1f
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = woodfish-bin
