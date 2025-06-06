@@ -1,7 +1,7 @@
 pkgbase = audiality2-git
 	pkgdesc = Realtime audio and music engine
 	pkgver = 1.9.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://audiality.org/
 	arch = x86_64
 	license = zlib
