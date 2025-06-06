@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-downloader-git
 _pkgname=Ghost-Downloader
-pkgver=3.5.8.r1.g4f5a53e
+pkgver=3.5.13.r0.g7bf48d6
 pkgrel=1
 pkgdesc="A multi-threading async downloader with QThread based on PyQt/PySide.多线程下载器 协程下载器."
 arch=('any')
@@ -41,17 +41,29 @@ prepare() {
         s/@appname@/${pkgname%-git}/g
         s/@runname@/${_pkgname}-3.bin/g
     " "${srcdir}/${pkgname%-git}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Network" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
-    sed -i "s/6.7.2/6.9.0/g" requirements.txt
+    sed -i -e "
+        /6.7.2/d
+        /win32/d
+        /macos/d
+        s/darwin/linux/g
+    " requirements.txt
     sed -i "s/nuitka/.\/bin\/nuitka/g" deploy.py
     python -m venv ./
-    ./bin/pip install --timeout=300 -r requirements.txt
-    ./bin/pip install -U nuitka
+    source ./bin/activate
+    pip install --timeout=300 -r requirements.txt
+    pip install -U nuitka
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
-    ./bin/python deploy.py
+    source ./bin/activate
+    python deploy.py
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
