@@ -1,6 +1,6 @@
 pkgbase = reaction
 	pkgdesc = A daemon that scans program outputs for repeated patterns, and takes action. A lightweight alternative to fail2ban.
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://framagit.org/ppom/reaction
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = reaction
 	provides = nft46
 	conflicts = reaction-git
 	backup = etc/reaction.jsonnet
-	source = https://framagit.org/ppom/reaction/-/archive/v2.0.0/reaction-v2.0.0.tar.gz
-	sha256sums = 754f68f4c329aef8862420e12d9c507e36e5d1b89a497d9df49d4ae4507f4bbe
+	source = https://framagit.org/ppom/reaction/-/archive/v2.0.1/reaction-v2.0.1.tar.gz
+	sha256sums = 1fe8d9fdecfa89beab43b0ae871186db579b5cce04934e1e0f0a78454d652cc8
 
 pkgname = reaction

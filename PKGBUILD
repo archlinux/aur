@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Cebula <tomasz.cebula@gmail.com>
 
 pkgname=reaction
-pkgver=2.0.0
+pkgver=2.0.1
 _pkgver="v${pkgver/rc/-rc}"
 pkgrel=1
 pkgdesc="A daemon that scans program outputs for repeated patterns, and takes action. A lightweight alternative to fail2ban."
@@ -14,7 +14,7 @@ provides=('reaction' 'ip46tables' 'nft46')
 conflicts=('reaction-git')
 backup=('etc/reaction.jsonnet')
 source=("https://framagit.org/ppom/reaction/-/archive/${_pkgver}/reaction-${_pkgver}.tar.gz")
-sha256sums=('754f68f4c329aef8862420e12d9c507e36e5d1b89a497d9df49d4ae4507f4bbe')
+sha256sums=('1fe8d9fdecfa89beab43b0ae871186db579b5cce04934e1e0f0a78454d652cc8')
 
 prepare() {
     cd "${pkgname}-${_pkgver}"
