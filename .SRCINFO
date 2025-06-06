@@ -1,7 +1,7 @@
 pkgbase = fluffychat
 	pkgdesc = The cutest instant messenger in the [matrix]
-	pkgver = 1.26.1
-	pkgrel = 2
+	pkgver = 1.27.0
+	pkgrel = 1
 	url = https://github.com/krille-chan/fluffychat
 	arch = x86_64
 	arch = aarch64
@@ -23,7 +23,7 @@ pkgbase = fluffychat
 	optdepends = kdialog: for flutter_file_picker
 	options = !strip
 	options = !debug
-	source = fluffychat-1.26.1.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v1.26.1.tar.gz
-	sha256sums = ca5d32ae785e8a8688d433a9f16524d217c18b685fcb5b9369700fbfabf3f5f4
+	source = fluffychat-1.27.0.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v1.27.0.tar.gz
+	sha256sums = b673eb2559853d2b4a4b52e74be212c50169a12a22e05d62dfadb3fd7ed15965
 
 pkgname = fluffychat
