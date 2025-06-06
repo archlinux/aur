@@ -27,7 +27,8 @@ build() {
   cd build
   cmake ../ZRTPCPP-${pkgver} \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build .
 }
 
