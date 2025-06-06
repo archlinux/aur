@@ -13,7 +13,7 @@ arch=('x86_64')
 url='http://twinkle.dolezel.info/'
 license=('GPL2')
 depends=('ucommon' 'ccrtp-openssl1.1' 'libxml2' 'libsndfile' 'imagemagick' 'readline'
-          'qt5-base' 'qt5-declarative' 'alsa-lib' 'libzrtpcpp'
+          'qt5-base' 'qt5-declarative' 'alsa-lib' 'libzrtpcpp-openssl1.1'
           'bcg729' 'speex' 'speexdsp')
 makedepends=('cmake' 'bison' 'flex' 'qt5-tools')
 source=("https://github.com/LubosD/twinkle/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
