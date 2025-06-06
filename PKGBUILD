@@ -5,12 +5,12 @@ _variant=consumer
 _appname="Threema"
 pkgdesc="Threema Desktop (Threema Web in Electron)."
 pkgver=1.2.47
-pkgrel=1
+pkgrel=2
 _threema_web_ver=2.6.1 # Keep in sync with version used by threema-desktop
 arch=('any')
 url="https://github.com/threema-ch/threema-web-electron"
 license=('AGPL-3.0-only')
-depends=(electron32)
+depends=(electron34)
 makedepends=(npm nodejs-lts-iron git)
 source=(
   "threema-web-electron-v${pkgver}-${pkgrel}.tar.gz::https://github.com/threema-ch/threema-web-electron/archive/refs/tags/${pkgver}.tar.gz"
@@ -38,7 +38,7 @@ build() {
   # Build Threema Web
   export DEV_ENV=production
   export THREEMA_WEB_VERSION=threema-web-${_threema_web_ver}
-  npm install
+  npm install --no-audit
   ./tools/patches/patch-threema-web.sh
   npm run app:build:web
   ./tools/patches/post-patch-threema-web.sh
@@ -66,7 +66,7 @@ package() {
   # Create launcher
   mkdir -p "${pkgdir}/usr/bin/"
   _launcher="${pkgdir}/usr/bin/${_binname}"
-  echo -e "#!/bin/sh\nexec electron32 '/usr/lib/${pkgname}/resources/app.asar' '$@'" > "$_launcher"
+  echo -e "#!/bin/sh\nexec electron34 '/usr/lib/${pkgname}/resources/app.asar' '$@'" > "$_launcher"
   chmod +x "$_launcher"
 
   # Copy desktop files
