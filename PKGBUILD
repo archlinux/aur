@@ -1,9 +1,9 @@
 # Maintainer: Pixel
 
 pkgname=walrs
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
-pkgdesc="A fast color scheme generator"
+pkgdesc="Generate colorscheme from image"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Pixel2175/walrs"
 license=('GPL3')
@@ -21,8 +21,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 target/release/walrs "$pkgdir/usr/bin/walrs"
-  install -d "$pkgdir/etc/walrs/templates"
-  cp -r templates/ "$pkgdir/etc/walrs"
-  cp -r colorschemes/ "$pkgdir/etc/walrs"
+  mkdir -p ~/.cache/walrs/
+  cp -r templates/ scripts/ colorschemes/ "$pkgdir~/.cache/walrs"
 }
 
