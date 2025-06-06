@@ -1,7 +1,7 @@
 Index: src/ccrtp/crypto/openssl/hmac.cpp
 ===================================================================
---- src/ccrtp/crypto/openssl/hmac.cpp
-+++ src/ccrtp/crypto/openssl/hmac.cpp
+--- a/src/ccrtp/crypto/openssl/hmac.cpp
++++ b/src/ccrtp/crypto/openssl/hmac.cpp
 @@ -52,6 +52,7 @@ void hmac_sha1( uint8_t* key, int32_t ke
                  const uint8_t* data_chunks[],
                  uint32_t data_chunck_length[],
@@ -28,10 +28,3 @@ Index: src/ccrtp/crypto/openssl/hmac.cpp
  }
  
  void* createSha1HmacContext(uint8_t* key, int32_t key_length)
-@@ -103,4 +115,4 @@ void freeSha1HmacContext(void* ctx)
-         HMAC_CTX_cleanup((HMAC_CTX*)ctx);
-         free(ctx);
-     }
--}
-\ No newline at end of file
-+}
