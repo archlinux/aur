@@ -3,7 +3,7 @@
 
 pkgname=mattermost-push-proxy
 pkgver=6.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Mattermost Push Notifications Service'
 arch=('x86_64')
 url="https://github.com/mattermost/mattermost-push-proxy"
@@ -19,7 +19,7 @@ sha512sums=('e5f9a4b187daab28353590988ba43f3b0dcf3412a4bc3891f67787bdff9772ba0f4
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    GOPATH="${srcdir}" make go-build
+    GOPATH="${srcdir}" make go-build APP_NAME=$pkgname APP_VERSION=$pkgver
 }
 
 package() {
