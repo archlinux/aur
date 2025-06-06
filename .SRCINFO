@@ -1,6 +1,6 @@
 pkgbase = vitch
 	pkgdesc = A stupidly simple system fetch that is inspired by Nitch! (Written in Vlang)
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://codeberg.org/Redefa/Vitch
 	install = vitch.install

@@ -1,5 +1,5 @@
 pkgname=vitch
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A stupidly simple system fetch that is inspired by Nitch! (Written in Vlang)"
 arch=('x86_64' 'aarch64' 'armv7h')
