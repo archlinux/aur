@@ -1,7 +1,7 @@
 pkgbase = ufprog-git
 	pkgdesc = Universal Flash Programmer - SPI-NOR/NAND ECC/SPI-NAND/WCH CH341 CH347/FTDI MPSSE FT232H FT2232H FT4232H FT4222H/SPI (Single/Dual/Quad/QPI using SPI-MEM)
 	pkgver = 1.0.2023.09.18.r82.g57fc859
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/hackpascal/ufprog
 	arch = x86_64
 	license = GPL-2.0-only AND LGPL-2.0-only

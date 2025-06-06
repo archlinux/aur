@@ -3,7 +3,7 @@
 pkgbase=ufprog-git
 pkgname=ufprog-git
 pkgver=1.0.2023.09.18.r82.g57fc859
-pkgrel=1
+pkgrel=4
 groups=()
 pkgdesc="Universal Flash Programmer - SPI-NOR/NAND ECC/SPI-NAND/WCH CH341 CH347/FTDI MPSSE FT232H FT2232H FT4232H FT4222H/SPI (Single/Dual/Quad/QPI using SPI-MEM)"
 arch=($CARCH)
@@ -43,6 +43,8 @@ build() {
     cmake -DCMAKE_BUILD_TYPE=None \
         -DBUILD_PORTABLE=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -Wno-dev \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -B build \
         -G Ninja
 
