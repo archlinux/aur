@@ -1,0 +1,3 @@
+[perl-feature-compat-class]
+source = "cpan"
+cpan = "Feature-Compat-Class"
