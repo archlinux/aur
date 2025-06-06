@@ -2,7 +2,7 @@
 _pkgname=git-add--interactive
 __pkgname=gai
 pkgname=git-add-interactive
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="git-add--interactive with extra features"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('git')
 makedepends=('go>=1.21')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('82d3e4fc82b4bc285f8771696e7815be1347e664ff14968f82cd65d79bfb2797')
+sha256sums=('2699f1d65a01fcd45aaf303b1c8fca084fef1b2e311b9aed345e183ec4349448')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
