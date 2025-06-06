@@ -34,7 +34,7 @@ build_openssl() {
 
 build() {
   build_openssl
-  cd ${pkgname}-${pkgver}
+  cd ccrtp-${pkgver}
   export CFLAGS+=" -I$srcdir/openssl-static/include"
   export CXXFLAGS+=" -I$srcdir/openssl-static/include"
   export LDFLAGS+=" -L$srcdir/openssl-static/lib -l:libssl.a -l:libcrypto.a -ldl -lpthread"
@@ -43,8 +43,8 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ccrtp-${pkgver}
   make DESTDIR="${pkgdir}" install
 
-  install -Dm644 COPYING.addendum "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 COPYING.addendum "$pkgdir/usr/share/licenses/ccrtp/LICENSE"
 }
