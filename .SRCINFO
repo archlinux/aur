@@ -1,0 +1,20 @@
+pkgbase = libexecinfo
+	pkgdesc = BSD-licensed clone of backtrace facility found in GNU libc
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/fam007e/libexecinfo
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = BSD
+	makedepends = python
+	depends = glibc
+	provides = libexecinfo.so
+	conflicts = libexecinfo-git
+	source = libexecinfo-1.1.0.tar.gz::https://github.com/fam007e/libexecinfo/archive/v1.1.0.tar.gz
+	source = libexecinfo.pc.in
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libexecinfo

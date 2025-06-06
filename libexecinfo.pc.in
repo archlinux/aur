@@ -1,0 +1,10 @@
+prefix=@PREFIX@
+exec_prefix=${prefix}
+libdir=@LIBDIR@
+includedir=@INCLUDEDIR@
+
+Name: libexecinfo
+Description: BSD backtrace library
+Version: @VERSION@
+Libs: -L${libdir} -lexecinfo
+Cflags: -I${includedir}
