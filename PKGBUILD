@@ -19,7 +19,6 @@ sha256sums=('77966f5922c0ffb998d39e344c32cc5bdaa6105039c42e9977cdc859a90e986a'
 prepare() {
     # Generate .desktop
     gendesk --pkgname "GDLauncher Carbon" --pkgdesc "${pkgdesc}" --icon ${pkgname%-bin} --exec "/usr/bin/${pkgname%-bin}" --categories "Game" -n -f
-    chmod +x "${srcdir}/${pkgname}.AppImage"
 }
 
 package() {

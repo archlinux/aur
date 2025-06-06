@@ -1,12 +1,12 @@
 pkgbase = gdlauncher-carbon-bin
 	pkgdesc = GDLauncher Carbon is the new version of the simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
 	pkgver = 2.0.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gdlauncher.com
 	arch = x86_64
 	license = ARR
 	makedepends = gendesk
-	provides = gdlauncher-carbon-bin
+	provides = gdlauncher-carbon
 	conflicts = gdlauncher
 	conflicts = gdlauncher-beta
 	conflicts = gdlauncher-beta-bin
