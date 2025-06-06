@@ -1,12 +1,13 @@
 pkgbase = tiny-editor
 	pkgdesc = A Frickin Tiny Editor, all written in bash!
 	pkgver = 1.2
-	pkgrel = 3
+	pkgrel = 5
 	url = https://codeberg.org/aneeshlingala/fkin-tiny-editor
 	arch = any
 	license = GPL3
-	makedepends = git
+	makedepends = wget
 	depends = bash
-	source = https://codeberg.org/aneeshlingala/fkin-tiny-editor
+	source = https://codeberg.org/aneeshlingala/fkin-tiny-editor/raw/branch/main/te.bash
+	sha256sums = e7d5641c4c54fd78da8b4c418f338fb44de4cd1651499534c062b22c24e75ae3
 
 pkgname = tiny-editor
