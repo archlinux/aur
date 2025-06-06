@@ -1,0 +1,22 @@
+pkgbase = kcmlaptop
+	pkgdesc = Laptop control panel for KDE - including battery monitor and suspend control
+	pkgver = 0.82+r25+g8f31d4d
+	pkgrel = 1
+	url = https://invent.kde.org/sandsmark/kde1-kcmlaptop
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	groups = kde1-applications
+	groups = kde1-settings
+	license = GPL-2.0-or-later
+	makedepends = cmake>=3
+	depends = gcc-libs
+	depends = glibc
+	depends = kdelibs1
+	depends = libxss
+	depends = qt1
+	depends = systemd-libs
+	source = kde1-kcmlaptop-8f31d4dee991d166612d7b6f05c6b0909e340541.tar.gz::https://invent.kde.org/sandsmark/kde1-kcmlaptop/-/archive/8f31d4dee991d166612d7b6f05c6b0909e340541/kde1-kcmlaptop-8f31d4dee991d166612d7b6f05c6b0909e340541.tar.gz
+	b2sums = 3fc56a43dab7c1b2f11cd1475f636a8048ce3d1e06d7ff9511217b2f9a3446dab02e199f65a6bf238a5366512367528ade33961988401ce6439357120d067180
+
+pkgname = kcmlaptop
