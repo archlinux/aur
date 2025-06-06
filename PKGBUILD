@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gperf-git
-pkgver=3.1.r34.g09844ce
+pkgver=3.3.r3.g4939b6b
 pkgrel=1
 pkgdesc="A perfect hash function generator"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/gperf/"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('git')
 provides=("gperf=$pkgver")
@@ -24,6 +24,7 @@ pkgver() {
 build() {
   cd "gperf"
 
+  ./gitsub.sh pull
   ./autogen.sh
   ./configure \
     --prefix="/usr"
