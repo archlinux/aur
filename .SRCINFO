@@ -1,0 +1,21 @@
+pkgbase = financemono-git
+	pkgdesc = 💼 All internet banking branches, electronic payment institutions (EMI), gold, stock market, and cryptocurrency data in one place.(Use system-wide electron)
+	pkgver = 1.1.0.r10.gafe875f
+	pkgrel = 1
+	url = https://github.com/berkaygediz/financeMONO
+	arch = any
+	license = MIT
+	makedepends = yarn
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron36
+	provides = financemono=1.1.0
+	conflicts = financemono
+	source = financemono.git::git+https://github.com/berkaygediz/financeMONO.git
+	source = financemono.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = financemono-git
