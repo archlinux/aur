@@ -1,0 +1,170 @@
+Starting with version 1.0.2, bcg729 has changed its API to add support
+for G.729B, thus requiring us to adjust our function calls depending on
+which version is installed.
+
+When dealing with the new API, we merely need to add a few parameters to
+disable all G.729B features, namely:
+
+* On the decoder side: When `SIDFrameFlag` is not set, the decoder will
+  behave just like before, decoding the payload as a standard G.729A
+  voice frame (or concealing an erased frame).  The other parameters,
+  `rfc3389PayloadFlag` and `bitStreamLength`, are only of use when
+  dealing with a SID frame sent as per RFC 3389, and are ignored if
+  `SIDFrameFlag` is not set.
+
+* On the encoder side: When `enableVAD` is disabled, the encoder will
+  behave just like before, producing only standard G.729A voice frames.
+  The only API difference is the introduction of `*bitStreamLength`, to
+  return the length of the encoded frame (0, 2 or 10 bytes).  In our
+  case, this will always be 10 bytes just like before; an assert() was
+  added to guarantee this.
+
+Closes #104
+---
+ CMakeLists.txt              |  4 ++++
+ cmake/FindG729.cmake        | 36 ++++++++++++++++++++++++++++++++++++
+ src/audio/audio_decoder.cpp |  8 ++++++++
+ src/audio/audio_encoder.cpp | 10 ++++++++++
+ twinkle_config.h.in         |  1 +
+ 5 files changed, 59 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1dafe55..7e3fde0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -116,6 +116,10 @@ if (WITH_G729)
+ 	if (G729_FOUND)
+ 		message(STATUS "bcg729 OK")
+ 		set(HAVE_BCG729 TRUE)
++
++		if (G729_ANNEX_B)
++			set(HAVE_BCG729_ANNEX_B TRUE)
++		endif (G729_ANNEX_B)
+ 		
+ 		include_directories(${G729_INCLUDE_DIR})
+ 	else (G729_FOUND)
+diff --git a/cmake/FindG729.cmake b/cmake/FindG729.cmake
+index 4a30ba0..1fbfeeb 100644
+--- a/cmake/FindG729.cmake
++++ b/cmake/FindG729.cmake
+@@ -1,14 +1,50 @@
++INCLUDE(CMakePushCheckState)
++INCLUDE(CheckCSourceCompiles)
++
+ FIND_PATH(G729_INCLUDE_DIR bcg729/decoder.h)
+ FIND_LIBRARY(G729_LIBRARY NAMES bcg729)
+ 
+ IF(G729_INCLUDE_DIR AND G729_LIBRARY)
+ 	SET(G729_FOUND TRUE)
++
++	# The bcg729 API was changed in 1.0.2 to add support for G.729 Annex B.
++	# This checks whether we are dealing with the old or new API.
++	CMAKE_PUSH_CHECK_STATE()
++	SET(CMAKE_REQUIRED_INCLUDES "${INCLUDE_DIRECTORIES}" "${G729_INCLUDE_DIR}")
++	SET(CMAKE_REQUIRED_LIBRARIES "${G729_LIBRARY}")
++	SET(CMAKE_REQUIRED_QUIET TRUE)
++	# Try to compile something using the old (pre-1.0.2) API.
++	#
++	# We cannot do it the other way around, as initBcg729EncoderChannel()
++	# did not have a prototype before 1.0.2, thus compilation would not fail
++	# when passing it an extra argument.
++	CHECK_C_SOURCE_COMPILES("
++		#include <bcg729/encoder.h>
++
++		int main() {
++			/* This function requires an argument since 1.0.2 */
++			initBcg729EncoderChannel();
++			return 0;
++		}
++	" G729_OLD_API)
++	CMAKE_POP_CHECK_STATE()
++
++	IF (G729_OLD_API)
++		SET(G729_ANNEX_B FALSE)
++	ELSE (G729_OLD_API)
++		SET(G729_ANNEX_B TRUE)
++	ENDIF (G729_OLD_API)
+ ENDIF(G729_INCLUDE_DIR AND G729_LIBRARY)
+ 
+ IF(G729_FOUND)
+ 	IF (NOT G729_FIND_QUIETLY)
+ 		MESSAGE(STATUS "Found bcg729 includes:	${G729_INCLUDE_DIR}/bcg729/decoder.h")
+ 		MESSAGE(STATUS "Found bcg729 library: ${G729_LIBRARY}")
++		IF (G729_ANNEX_B)
++			MESSAGE(STATUS "bcg729 supports Annex B; using the new (1.0.2) API")
++		ELSE (G729_ANNEX_B)
++			MESSAGE(STATUS "bcg729 does not support Annex B; using the old (pre-1.0.2) API")
++		ENDIF (G729_ANNEX_B)
+ 	ENDIF (NOT G729_FIND_QUIETLY)
+ ELSE(G729_FOUND)
+ 	IF (G729_FIND_REQUIRED)
+diff --git a/src/audio/audio_decoder.cpp b/src/audio/audio_decoder.cpp
+index 65935dd..c661910 100644
+--- a/src/audio/audio_decoder.cpp
++++ b/src/audio/audio_decoder.cpp
+@@ -547,7 +547,11 @@ uint16 t_g729a_audio_decoder::decode(uint8 *payload, uint16 payload_size,
+ 
+ 	for (uint16 done = 0; done < payload_size; done += 10)
+ 	{
++#ifdef HAVE_BCG729_ANNEX_B
++		bcg729Decoder(_context, &payload[done], 0, false, false, false, &pcm_buf[done * 8]);
++#else
+ 		bcg729Decoder(_context, &payload[done], false, &pcm_buf[done * 8]);
++#endif
+ 	}
+ 
+ 	return payload_size * 8;
+@@ -562,7 +566,11 @@ uint16 t_g729a_audio_decoder::conceal(int16 *pcm_buf, uint16 pcm_buf_size)
+ {
+ 	assert(pcm_buf_size >= 80);
+ 
++#ifdef HAVE_BCG729_ANNEX_B
++	bcg729Decoder(_context, nullptr, 0, true, false, false, pcm_buf);
++#else
+ 	bcg729Decoder(_context, nullptr, true, pcm_buf);
++#endif
+ 	return 80;
+ }
+ 
+diff --git a/src/audio/audio_encoder.cpp b/src/audio/audio_encoder.cpp
+index d6ff356..952b1ee 100644
+--- a/src/audio/audio_encoder.cpp
++++ b/src/audio/audio_encoder.cpp
+@@ -433,7 +433,11 @@ uint16 t_g726_audio_encoder::encode(int16 *sample_buf, uint16 nsamples,
+ t_g729a_audio_encoder::t_g729a_audio_encoder(uint16 payload_id, uint16 ptime, t_user *user_config)
+ 	: t_audio_encoder(payload_id, ptime, user_config)
+ {
++#ifdef HAVE_BCG729_ANNEX_B
++	_context = initBcg729EncoderChannel(false);
++#else
+ 	_context = initBcg729EncoderChannel();
++#endif
+ }
+ 
+ t_g729a_audio_encoder::~t_g729a_audio_encoder()
+@@ -451,7 +455,13 @@ uint16 t_g729a_audio_encoder::encode(int16 *sample_buf, uint16 nsamples,
+ 
+ 	for (uint16 done = 0; done < nsamples; done += 80)
+ 	{
++#ifdef HAVE_BCG729_ANNEX_B
++		uint8 frame_size = 10;
++		bcg729Encoder(_context, &sample_buf[done], &payload[done / 8], &frame_size);
++		assert(frame_size == 10);
++#else
+ 		bcg729Encoder(_context, &sample_buf[done], &payload[done / 8]);
++#endif
+ 	}
+ 
+ 	return nsamples / 8;
+diff --git a/twinkle_config.h.in b/twinkle_config.h.in
+index a1aa3b4..53a0426 100644
+--- a/twinkle_config.h.in
++++ b/twinkle_config.h.in
+@@ -4,6 +4,7 @@
+ #cmakedefine HAVE_ILBC_CPP
+ #cmakedefine HAVE_ZRTP
+ #cmakedefine HAVE_BCG729
++#cmakedefine HAVE_BCG729_ANNEX_B
+ #cmakedefine HAVE_GSM
+ 
+ #cmakedefine HAVE_UNISTD_H
