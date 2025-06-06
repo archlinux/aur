@@ -2,8 +2,8 @@
 pkgname=affine-bin
 _pkgname=AFFiNE
 pkgver=0.22.2
-_electronversion=36
-pkgrel=1
+_electronversion=35
+pkgrel=2
 pkgdesc="There can be more than Notion and Miro.AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://affine.pro/"
