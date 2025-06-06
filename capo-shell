@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -eu
 set -o pipefail
 
 namespace="${1?}"
@@ -16,6 +16,12 @@ function cleanup() {
 
 trap 'EC=$?; cleanup || true; exit $EC' EXIT INT TERM
 NEW_KUBECONFIG="$(mktemp -p "$XDG_RUNTIME_DIR")"
+
+if [[ -v KUBECONFIG_CONTEXT ]]; then
+  function kubectl() {
+    command kubectl --context "$KUBECONFIG_CONTEXT" "$@"
+  }
+fi
 
 if kubectl -n "$namespace" get secrets "${name}-kubeconfig" -o jsonpath='{.data.value}' 2>/dev/null | base64 -d >"$NEW_KUBECONFIG"; then
   hasKubeconfig=true
@@ -50,4 +56,4 @@ if [[ "$hasKubeconfig" == false ]]; then
 #  export HTTPS_PROXY=http://localhost:8888
 #  PROXY_PID=$!
 fi
-env "${envs[@]}" "${@:-${SHELL:-/usr/bin/env bash}}"
+env -u KUBECONFIG -u KUBECONFIG_CONTEXT "${envs[@]}" "${@:-${SHELL:-/usr/bin/env bash}}"

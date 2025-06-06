@@ -1,16 +1,16 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
 pkgname=capo-shell
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Wrapper to start a tool or shell with KUBECONFIG and OS_ environment variables to interact with cluster-api-provider-openstack clusters"
 license=('APACHE')
 arch=('x86_64')
 depends=('kubectl' 'yq')
 optdepends=('fzf: needed for multi-capo-shell')
 source=("$pkgname" "multi-capo-shell")
-sha512sums=('db8bac0a69c75a1b3d267600aadddce3d5d67c503b9441e0d1bc236da3c3060df7e83d90fe74baa54958916998ae3b6348fdd47a262e4d938cde3ae95fbb06b0'
-            '961468b8c39de3fb8ada37fdf57c50edc7912ed0b287153657e8fe2a6a656b5f26308b120c377d04b590a3d484108ca8070708bb25d3de2087080a09a5b2c57d')
+sha512sums=('a864fcc5e1d662813d40119a364b210660ba81309c056cc5bdc8cbdb0599d298211ed5cee09c4eeb7425016d493f097d03ece3f24a1527c0bc5e05c34eefb4e2'
+            'a76b113012dbdd86d952f6e6d6d72fd0159e366808597594f04d5f24667e58fffb9bc9722d0addfb6cecd518b5f73d0044beb18962f71bb2c431e1a31e3175d9')
 
 package() {
   install -D -m 0755 -t $pkgdir/usr/bin/ $srcdir/$pkgname
