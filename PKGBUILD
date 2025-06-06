@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 pkgname=nnd
-pkgver=0.27
+pkgver=0.31
 pkgrel=1
 pkgdesc="A debugger for Linux"
 arch=('x86_64')

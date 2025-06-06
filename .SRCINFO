@@ -1,6 +1,6 @@
 pkgbase = nnd
 	pkgdesc = A debugger for Linux
-	pkgver = 0.27
+	pkgver = 0.31
 	pkgrel = 1
 	url = https://github.com/al13n321/nnd
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nnd
 	makedepends = rust-musl
 	makedepends = musl
 	makedepends = git
-	source = nnd::git+https://github.com/al13n321/nnd#tag=v0.27
+	source = nnd::git+https://github.com/al13n321/nnd#tag=v0.31
 	b2sums = SKIP
 
 pkgname = nnd
