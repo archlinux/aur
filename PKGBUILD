@@ -2,7 +2,7 @@
 _base=fenics-plotly
 pkgname=python-${_base}
 pkgdesc="A package for plotting FEniCS objects using plotly"
-pkgver=2022.0.0
+pkgver=2025.0.0
 pkgrel=1
 arch=(any)
 url="https://github.com/finsberg/${_base}"
@@ -11,7 +11,7 @@ depends=(python-dolfin python-ipywidgets python-plotly)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('456fa4e617b233a5bd28768c0e99812c730ae01a2c9937ef3ffa0f529cf82372b5e3d8596cb4bab7630d835e8f4abdfc58e30d26e08576c83333c58b9859e016')
+sha512sums=('bdbdab190f478a64e1f3c77964bde7d32e90fc98f99e6454fb481b07af2459fe8afe192d31b848bca73675aa3483d38fff41c3a01ab02c93f01a7c9f14da51f5')
 
 build() {
   cd ${_base}-${pkgver}
