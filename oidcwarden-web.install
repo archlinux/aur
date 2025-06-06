@@ -1,0 +1,9 @@
+post_install() {
+  cat << EOF
+Uncomment WEB_VAULT_FOLDER and set WEB_VAULT_ENABLED to true in your
+/etc/vaultwarden.env.
+
+Restart vaultwarden after configuration changes have been made:
+# systemctl restart vaultwarden
+EOF
+}
