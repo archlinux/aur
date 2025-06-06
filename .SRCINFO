@@ -1,15 +1,15 @@
 pkgbase = llama-swap
 	pkgdesc = Model swapping for llama.cpp (or any local OpenAPI compatible server)
-	pkgver = 124
+	pkgver = 125
 	pkgrel = 1
 	url = https://github.com/mostlygeek/llama-swap
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/mostlygeek/llama-swap.git#tag=v124
+	source = git+https://github.com/mostlygeek/llama-swap.git#tag=v125
 	source = llama-swap.service
-	sha256sums = c74013f8018f7a09e71792a6025990aa70ac600d5430724f097ab716f1ba12a0
+	sha256sums = a0e9077e50a1f96e03335e63759221f59fd2e6e5ac6452153b9c86e39224f83e
 	sha256sums = b4546cefb0c4255e432c6bd95143ae19735068951945d233011b02caecc641ff
 
 pkgname = llama-swap
