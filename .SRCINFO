@@ -1,7 +1,7 @@
 pkgbase = mpdris2
 	pkgdesc = MPRIS2 support for MPD
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eonpatapon/mpDris2
 	arch = any
 	license = GPL-3.0-only
@@ -13,6 +13,8 @@ pkgbase = mpdris2
 	optdepends = python-mutagen: read covers from music files
 	optdepends = libnotify: notifications on track change
 	source = mpdris2-0.9.1.tar.gz::https://github.com/eonpatapon/mpDris2/archive/0.9.1.tar.gz
+	source = 798b410a286879801ecebbf165273c4105ed07c9.patch
 	sha256sums = d0f0467841e7866310cff44a1063334a9c776a64fd594815d926670b765fbee6
+	sha256sums = 36feedf56cda2d064e379512df717fc1a4a0104e05f7913140cd9ad1acd3fff0
 
 pkgname = mpdris2

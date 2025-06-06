@@ -1,0 +1,37 @@
+From 798b410a286879801ecebbf165273c4105ed07c9 Mon Sep 17 00:00:00 2001
+From: Anagastes <jacky_009@miluriel.info>
+Date: Fri, 6 Jun 2025 22:04:08 +0200
+Subject: [PATCH] Update autogen.sh
+
+fix compile issue on actually systems.
+
+```text
+[PC mpDris2]# ./autogen.sh --sysconfdir=/etc
+configure.ac:21: warning: AM_NLS is m4_require'd but not m4_defun'd
+aclocal.m4:26: IT_PROG_INTLTOOL is expanded from...
+configure.ac:21: the top level
+configure:3264: error: possibly undefined macro: AM_NLS
+      If this token and others are legitimate, please use m4_pattern_allow.
+      See the Autoconf documentation.
+autoreconf: error: /usr/bin/autoconf failed with exit status: 1
+```
+---
+ autogen.sh | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/autogen.sh b/autogen.sh
+index 43b4459..4157d47 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -1,9 +1,9 @@
+ #!/bin/sh
+ 
+-autoreconf -f -i || exit
++autoreconf -fvi -I /usr/share/gettext/m4 || exit
+ 
+ intltoolize -f || exit
+ 
+ if [ -z "$NOCONFIGURE" ]; then
+-	./configure --sysconfdir=/etc "$@"
++    ./configure --sysconfdir=/etc "$@"
+ fi
