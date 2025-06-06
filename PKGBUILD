@@ -25,7 +25,7 @@ sha256sums=('f035ca0e1b5d37b78e358f07a25b05c5cdaf2c85c4b31cf29f6be17f288a349e'
 validpgpkeys=('5CF995AAD5CC1E4079F76C38B1732A9CB37C87BA')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd ccrtp-${pkgver}
   patch -Np1 < "${srcdir}"/01-fix-openssl1.1.pacth
 }
 
