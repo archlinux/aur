@@ -1,0 +1,15 @@
+pkgbase = dbusevents
+	pkgdesc = Small tool to react on dbus signals
+	pkgver = 0.0.6
+	pkgrel = 0
+	url = https://github.com/findus/dbusevents
+	install = btevents.install
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = dbus
+	source = https://codeload.github.com/findus/dbusevents/tar.gz/refs/tags/0.0.6
+	validpgpkeys = 61FFD901BD7C555A8888B7D078F2B0F63DDC9CBC
+	md5sums = 58f106eaa95ed366d96479cd0450b546
+
+pkgname = dbusevents

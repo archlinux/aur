@@ -1,0 +1,4 @@
+post_install() {
+	/usr/bin/systemctl --system daemon-reload || true
+	echo "start service with: systemctl --user enable --now dbusevents"
+}
