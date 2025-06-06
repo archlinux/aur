@@ -6,7 +6,7 @@
 pkgname=sddm-idle
 _pkgname=sddm
 pkgver=0.21.0
-pkgrel=6
+pkgrel=6.1
 pkgdesc='QML based X11 and Wayland display manager'
 arch=(x86_64)
 url='https://github.com/sddm/sddm'
@@ -54,11 +54,13 @@ build() {
         -DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d \
         -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf \
         -DBUILD_MAN_PAGES=ON \
-        -DUID_MAX=60513
+        -DUID_MAX=60513 \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 
   cmake -B build5 -S $_pkgname-$pkgver \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build5/src/greeter
   cmake --build build5/components
 }
