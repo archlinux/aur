@@ -1,3 +1,4 @@
+# Maintainer: Andrzej Wąsowski <wasowski [at] data [dot] pl> 
 # Maintainer: Elrondo46 <elrond94@hotmail.com> 
 # Contributor: Thore Bödecker <me [at] foxxx0 [dot] de>
 # Contributor: Stefan Tatschner <rumpelsepp@sevenbyte.org>
@@ -14,7 +15,7 @@ arch=('any')
 url="https://gitlab.com/davical-project/davical"
 license=('GPL' 'LGPL')
 depends=('php>=8.2' 'awl' 'php-sqlite' 'php-pgsql' 'perl-dbd-pg' 'perl-yaml' 'perl-dbi')
-makedepends=('phpdocumentor2' 'doxygen')
+makedepends=('phpdoc-phar' 'doxygen')
 optdepends=('postgresql: run postgresql locally'
             'apache: Web server to run davical'
             'nginx: Web server to run davical'

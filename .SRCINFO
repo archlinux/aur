@@ -7,7 +7,7 @@ pkgbase = davical
 	arch = any
 	license = GPL
 	license = LGPL
-	makedepends = phpdocumentor2
+	makedepends = phpdoc-phar
 	makedepends = doxygen
 	depends = php>=5.1
 	depends = awl
