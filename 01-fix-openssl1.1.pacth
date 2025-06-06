@@ -1,0 +1,37 @@
+Index: ccrtp/crypto/openssl/hmac.cpp
+===================================================================
+--- ccrtp/crypto/openssl/hmac.cpp
++++ ccrtp/crypto/openssl/hmac.cpp
+@@ -52,6 +52,7 @@ void hmac_sha1( uint8_t* key, int32_t ke
+                 const uint8_t* data_chunks[],
+                 uint32_t data_chunck_length[],
+                 uint8_t* mac, int32_t* mac_length ) {
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+     HMAC_CTX ctx;
+     HMAC_CTX_init(&ctx);
+     HMAC_Init_ex(&ctx, key, key_length, EVP_sha1(), NULL);
+@@ -62,6 +63,17 @@ void hmac_sha1( uint8_t* key, int32_t ke
+     }
+     HMAC_Final(&ctx, mac, reinterpret_cast<uint32_t*>(mac_length));
+     HMAC_CTX_cleanup(&ctx);
++#else
++    HMAC_CTX *ctx = HMAC_CTX_new();
++    HMAC_Init_ex(ctx, key, key_length, EVP_sha1(), NULL);
++    while (*data_chunks) {
++        HMAC_Update(ctx, *data_chunks, *data_chunck_length);
++        data_chunks ++;
++        data_chunck_length ++;
++    }
++    HMAC_Final(ctx, mac, reinterpret_cast<uint32_t*>(mac_length));
++    HMAC_CTX_free(ctx);
++#endif
+ }
+ 
+ void* createSha1HmacContext(uint8_t* key, int32_t key_length)
+@@ -103,4 +115,4 @@ void freeSha1HmacContext(void* ctx)
+         HMAC_CTX_cleanup((HMAC_CTX*)ctx);
+         free(ctx);
+     }
+-}
+\ No newline at end of file
++}

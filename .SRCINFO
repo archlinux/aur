@@ -12,10 +12,10 @@ pkgbase = ccrtp-openssl1.1
 	optdepends = texinfo: handle and view info files
 	source = https://ftp.gnu.org/gnu/ccrtp/ccrtp-2.1.2.tar.gz
 	source = https://ftp.gnu.org/gnu/ccrtp/ccrtp-2.1.2.tar.gz.sig
-	source = https://www.openssl.org/source/openssl-1.0.2u.tar.gz
+	source = 01-fix-openssl1.1.pacth
 	validpgpkeys = 5CF995AAD5CC1E4079F76C38B1732A9CB37C87BA
 	sha256sums = f035ca0e1b5d37b78e358f07a25b05c5cdaf2c85c4b31cf29f6be17f288a349e
 	sha256sums = SKIP
-    sha256sums = ecd0c6ffb493dd06707d38b14bb4d8c2288bb7033735606569d8f90f89669d16
+    sha256sums = 4151baf2138ee081596b23767552ad810bd17a019b01184022fa28f70b68bb5e
 
 pkgname = ccrtp-openssl1.1

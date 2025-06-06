@@ -17,27 +17,20 @@ depends=('ucommon>=6.2.2' 'libgcrypt')
 optdepends=("texinfo: handle and view info files")
 source=(
     "https://ftp.gnu.org/gnu/ccrtp/ccrtp-$pkgver.tar.gz"{,.sig}
-    "https://www.openssl.org/source/openssl-1.0.2u.tar.gz"
+    "01-fix-openssl1.1.pacth"
     )
 sha256sums=('f035ca0e1b5d37b78e358f07a25b05c5cdaf2c85c4b31cf29f6be17f288a349e'
             'SKIP'
-            'ecd0c6ffb493dd06707d38b14bb4d8c2288bb7033735606569d8f90f89669d16')
+            '4151baf2138ee081596b23767552ad810bd17a019b01184022fa28f70b68bb5e')
 validpgpkeys=('5CF995AAD5CC1E4079F76C38B1732A9CB37C87BA')
 
-build_openssl() {
-    cd openssl-1.0.2u
-    ./config --prefix="$srcdir/openssl-static" -fPIC no-shared enable-camellia enable-seed enable-rfc3779 enable-cms enable-weak-ssl-ciphers  # 静态编译，安装到临时目录
-    make -j$(nproc)
-    make install_sw  # 仅安装库文件（不安装文档）
-    cd -
+prepare() {
+  cd ${pkgname}-${pkgver}
+  patch -Np1 < "${srcdir}"/01-fix-openssl1.1.pacth
 }
 
 build() {
-  build_openssl
   cd ccrtp-${pkgver}
-  export CFLAGS+=" -I$srcdir/openssl-static/include"
-  export CXXFLAGS+=" -I$srcdir/openssl-static/include"
-  export LDFLAGS+=" -L$srcdir/openssl-static/lib -l:libssl.a -l:libcrypto.a -ldl -lpthread"
   ./configure --prefix=/usr
   make -j$(nproc)
 }
