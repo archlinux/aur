@@ -15,24 +15,19 @@ optdepends=('maya-usd: Universal scene description support'
             'maya-bifrost: Bifrost effects support')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from Autodesk.com')
-source=("manual://MtoA-${pkgver}-linux-${_mayaver}.run")
-b2sums=('ea3bc9ece9da15707fb4968383bf5724c7ff43e119849397f48aa69b080ebf860a72ff38201d06dcebec49d79077169aa21719adfde34d83a9b2092434ec1569')
+source=("manual://package.zip")
+b2sums=('e92d057533aa8e2ae07fe5f471e0bad512d645d534a787afbef5f9c503a16e279aeadaa0b91cdf163ca2c925e34a04c81dd46fb3206681a70dc85e0927a77cea')
 
 options=(!strip)
 
 prepare() {
-    rm -Rf extracted
-    chmod +x ./MtoA-${pkgver}-linux-${_mayaver}.run
-    ./MtoA-${pkgver}-linux-${_mayaver}.run --tar xvf
-    mkdir extracted
-    echo 'Extracting zip...'
-    bsdtar -xf *.zip --directory extracted
-    sed -i "s|any .|any /usr/autodesk/maya${_mayaver}/plug-ins/arnold|g" extracted/mtoa.mod
+    sed -i 's|any .|any /usr/autodesk/maya2026/plug-ins/arnold|g' mtoa.mod
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/autodesk/maya${_mayaver}/"{modules,plug-ins/arnold}
+    unlink package.zip
+    mkdir -p "$pkgdir/usr/autodesk/maya2026/"{modules,plug-ins/arnold}
 
-    mv extracted/mtoa.mod "$pkgdir/usr/autodesk/maya${_mayaver}/modules/"
-    mv extracted/* "$pkgdir/usr/autodesk/maya${_mayaver}/plug-ins/arnold/"
+    mv mtoa.mod "$pkgdir/usr/autodesk/maya2026/modules/"
+    mv * "$pkgdir/usr/autodesk/maya2026/plug-ins/arnold/"
 }

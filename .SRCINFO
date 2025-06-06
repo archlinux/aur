@@ -10,7 +10,7 @@ pkgbase = maya-arnold
 	optdepends = maya-usd: Universal scene description support
 	optdepends = maya-bifrost: Bifrost effects support
 	options = !strip
-	source = manual://MtoA-5.5.2-linux-2026.run
-	b2sums = ea3bc9ece9da15707fb4968383bf5724c7ff43e119849397f48aa69b080ebf860a72ff38201d06dcebec49d79077169aa21719adfde34d83a9b2092434ec1569
+	source = manual://package.zip
+	b2sums = e92d057533aa8e2ae07fe5f471e0bad512d645d534a787afbef5f9c503a16e279aeadaa0b91cdf163ca2c925e34a04c81dd46fb3206681a70dc85e0927a77cea
 
 pkgname = maya-arnold
