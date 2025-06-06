@@ -39,7 +39,7 @@ build() {
   export CXXFLAGS+=" -I$srcdir/openssl-static/include"
   export LDFLAGS+=" -L$srcdir/openssl-static/lib -l:libssl.a -l:libcrypto.a -ldl -lpthread"
   ./configure --prefix=/usr
-  make
+  make -j$(nproc)
 }
 
 package() {
