@@ -3,14 +3,22 @@ _base=gmpy
 pkgname=pypy3-${_base}2
 pkgdesc="Interface to GMP, MPFR, and MPC"
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/aleaxit/${_base}"
 license=(LGPL-3.0-or-later)
 depends=(glibc gmp libmpc mpfr pypy3-packaging)
 makedepends=(pypy3-build pypy3-installer pypy3-setuptools)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('88e506c20ca4a1fc67c8fb7a7258750316437e5d66a22845e09b87e76a1265746762156cfda9c1e2e47a2aa6771ea807282169a0af6a5b782a3b7c3117f77940')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
+  remove-cpython-header.patch::${url}/pull/546.patch)
+sha512sums=('88e506c20ca4a1fc67c8fb7a7258750316437e5d66a22845e09b87e76a1265746762156cfda9c1e2e47a2aa6771ea807282169a0af6a5b782a3b7c3117f77940'
+  'aec084385f3d352f58565326065b711404eede8af75c244673e19d5f076032149b14b089371863badd3b990176c4c5907c49dac56b21a73c28e28166439866bc')
+
+prepare() {
+  cd ${_base}-${pkgver}
+  # src/gmpy2.c:108:11: fatal error: cpython/longintrepr.h: No such file or directory
+  patch -p1 -i ../remove-cpython-header.patch
+}
 
 build() {
   cd ${_base}-${pkgver}
