@@ -1,0 +1,14 @@
+pkgbase = mal-cli
+	pkgdesc = A powerful CLI tool for MyAnimeList
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/L4z3x/mal-tui
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	source = mal-cli-0.1.1.tar.gz::https://github.com/L4z3x/mal-tui/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 77660a984fd735cf1313f709807dee613da732407354341b104ccae2ce89e43f
+
+pkgname = mal-cli
