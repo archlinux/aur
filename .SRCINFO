@@ -1,11 +1,12 @@
 pkgbase = tcpping
 	pkgdesc = test response times using TCP SYN packets
-	pkgver = 2.4
-	pkgrel = 2
+	pkgver = 2.7
+	pkgrel = 1
 	url = https://github.com/deajan/tcpping
 	arch = any
+	license = GPL-3.0
 	depends = traceroute
-	source = tcpping-2.4.tar.gz::https://github.com/deajan/tcpping/archive/refs/tags/v2.4.tar.gz
-	sha256sums = dc3072d3d0ba2e5b072ce800f6b067c930fef86798504b11b328925e749b34ff
+	source = tcpping-2.7.tar.gz::https://github.com/deajan/tcpping/archive/refs/tags/v2.7.tar.gz
+	sha256sums = f527b00174c08b47f029fb386c9e6263ac52d4bff1e186deddc83e9af4556cef
 
 pkgname = tcpping
