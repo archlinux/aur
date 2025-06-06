@@ -1,0 +1,22 @@
+pkgbase = open-image-tiny-git
+	pkgdesc = Open source image compression tool.(Use system-wide electron)
+	pkgver = 25.6.6.r0.g135934d
+	pkgrel = 1
+	url = https://github.com/0604hx/open-image-tiny
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = pnpm
+	depends = electron36
+	provides = open-image-tiny=25.6.6
+	conflicts = open-image-tiny
+	source = open-image-tiny.git::git+https://github.com/0604hx/open-image-tiny
+	source = open-image-tiny.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = open-image-tiny-git
