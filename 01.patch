@@ -1,0 +1,34 @@
+Index: b/ZRTPCPP-4.7.0/CMakeLists.txt
+===================================================================
+--- a/ZRTPCPP-4.7.0/CMakeLists.txt
++++ b/ZRTPCPP-4.7.0/CMakeLists.txt
+@@ -17,6 +17,9 @@ cmake_minimum_required(VERSION 3.0)
+ 
+ PROJECT(libzrtpcpp)
+ 
++set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD_REQUIRED ON)
++
+ SET(CPACK_PACKAGE_VERSION_MAJOR 4)
+ SET(CPACK_PACKAGE_VERSION_MINOR 7)
+ SET(CPACK_PACKAGE_VERSION_PATCH 0)
+@@ -352,7 +355,6 @@ endif()
+ 
+ if (CCRTP)
+     add_subdirectory(clients/ccrtp)
+-    add_subdirectory(demo)
+ endif()
+ 
+ if (TIVI)
+Index: b/ZRTPCPP-4.7.0/zrtp/EmojiBase32.cpp
+===================================================================
+--- a/ZRTPCPP-4.7.0/zrtp/EmojiBase32.cpp
++++ b/ZRTPCPP-4.7.0/zrtp/EmojiBase32.cpp
+@@ -1,6 +1,7 @@
+ //
+ // Created by werner on 26.12.15.
+ //
++#include <cstdint>
+ #include <iostream>
+ // stdlib.h required for Android NDK builds, not included within the above includes
+ #include <cstdlib>
