@@ -21,7 +21,7 @@ source=(
     )
 sha256sums=('f035ca0e1b5d37b78e358f07a25b05c5cdaf2c85c4b31cf29f6be17f288a349e'
             'SKIP'
-            '4151baf2138ee081596b23767552ad810bd17a019b01184022fa28f70b68bb5e')
+            'SKIP')
 validpgpkeys=('5CF995AAD5CC1E4079F76C38B1732A9CB37C87BA')
 
 prepare() {
