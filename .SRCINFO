@@ -1,6 +1,6 @@
 pkgbase = naviterm-bin
 	pkgdesc = A cli client for Navidrome (subsonic)
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://gitlab.com/detoxify92/naviterm
 	arch = x86_64
@@ -9,9 +9,10 @@ pkgbase = naviterm-bin
 	depends = mpv
 	provides = naviterm
 	conflicts = naviterm
-	source_x86_64 = naviterm-x86_64.tar.gz::https://gitlab.com/detoxify92/naviterm/-/releases/0.2.1/downloads/binaries/naviterm-amd64
-	sha256sums_x86_64 = 9e0c1d7653a14c6596355d9d74685a0a0981843fa2b9f59673b532ba8df672d2
-	source_aarch64 = naviterm-aarch64.tar.gz::https://gitlab.com/detoxify92/naviterm/-/releases/0.2.1/downloads/binaries/naviterm-aarch64
-	sha256sums_aarch64 = 56c8679d5eb79ba7092d6220fe33e37b36fdc947f843eb36cf3b1fef24c4f41d
+	options = !debug
+	source_x86_64 = naviterm-x86_64-0.3.0.tar.gz::https://gitlab.com/detoxify92/naviterm/-/releases/0.3.0/downloads/binaries/naviterm-amd64
+	sha256sums_x86_64 = e5af9e3fd2f359b7158c3591d825f50f26d33c2554d4176e1a2ddc770e61b21f
+	source_aarch64 = naviterm-aarch64-0.3.0.tar.gz::https://gitlab.com/detoxify92/naviterm/-/releases/0.3.0/downloads/binaries/naviterm-aarch64
+	sha256sums_aarch64 = 9465f9307f2a25f6056b4158409b3a24c387027a66d1dae9bdee494ddffa53c3
 
 pkgname = naviterm-bin
