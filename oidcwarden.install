@@ -1,0 +1,25 @@
+post_install() {
+  cat << EOF
+
+Configure the server via its environment variables in /etc/vaultwarden.env.
+
+If vaultwarden is run at ports >1024, you should apply these systemd unit
+options via a drop-in file:
+[Service]
+CapabilityBoundingSet=
+AmbientCapabilities=
+PrivateUsers=yes
+
+If the service produces too much noise in your journal, you can redirect stdout
+to /dev/null (vaultwarden will still also write to /var/log/vaultwarden.log if
+configured to do so):
+[Service]
+StandardOutput=null
+
+Create or edit drop-in file:
+# systemctl edit vaultwarden
+
+Start vaultwarden and enable its systemd service:
+# systemctl enable --now vaultwarden
+EOF
+}

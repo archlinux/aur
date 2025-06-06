@@ -1,0 +1,33 @@
+diff --git a/.env.template b/.env.template
+index ff0af609..b3f8a2ff 100644
+--- a/.env.template
++++ b/.env.template
+@@ -15,7 +15,7 @@
+ ####################
+ 
+ ## Main data folder
+-# DATA_FOLDER=data
++DATA_FOLDER=/var/lib/vaultwarden
+ 
+ ## Individual folders, these override %DATA_FOLDER%
+ # RSA_KEY_FILENAME=data/rsa_key
+@@ -31,8 +31,8 @@
+ # RELOAD_TEMPLATES=false
+ 
+ ## Web vault settings
+-# WEB_VAULT_FOLDER=web-vault/
+-# WEB_VAULT_ENABLED=true
++# WEB_VAULT_FOLDER=/usr/share/webapps/vaultwarden-web
++WEB_VAULT_ENABLED=false
+ 
+ #########################
+ ### Database settings ###
+@@ -370,7 +370,7 @@
+ # USE_SYSLOG=false
+ 
+ ## Logging to file
+-# LOG_FILE=/path/to/log
++# LOG_FILE=/var/log/vaultwarden.log
+ 
+ ## Log level
+ ## Change the verbosity of the log output

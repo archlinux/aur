@@ -1,0 +1,32 @@
+pkgbase = oidcwarden
+	pkgdesc = Soft fork from vaultwarden. Goal is to provide an OIDC compatible solution with the ultimate goal of merging features back in Vaultwarden.
+	pkgver = 1.34.1
+	pkgrel = 4
+	url = https://github.com/timshel/vaultwarden
+	install = oidcwarden.install
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = postgresql-libs
+	depends = sqlite
+	optdepends = oidcwarden-web: for the web app
+	conflicts = vaultwarden
+	options = !lto
+	backup = etc/vaultwarden.env
+	source = git+https://github.com/timshel/vaultwarden.git#branch=sso-support
+	source = systemd.service
+	source = sysusers.conf
+	source = tmpfiles.conf
+	source = env-overrides.patch
+	sha512sums = SKIP
+	sha512sums = a12e993bbb568370b9a19f1634085eceda33c1f6bc98ea2c4fa2686a91676f3e9aafc681ab83450bf90b52e553770aabec871c311746faf2098e589cb67c7436
+	sha512sums = d133aec7f75cc5653e847e81bd11c36374eb20da62b2e197bbdcd306ef9c5d4d1de9fc41b7afe88645bebecc1397f64089bfd57c22eb2c9fb83b1da7b44c23aa
+	sha512sums = efbe316f8d22f14c88b5020ea163b58a42e9a0de1028d04af6e439276a55eefc7f7631dd9c4aee5cf5ca2fb642e4fa5b31eedef4370d6d785e106474c0940afe
+	sha512sums = bcd7fcd50f8939601f142e18a0f0e548183fce732f1c9648c9ec43f3a9a4a06731e82340498f45f676642aee8ee5df889bc2a13d3dddf8de594198c2b8e37d07
+	depends_x86_64 = mariadb-libs
+
+pkgname = oidcwarden
