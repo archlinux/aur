@@ -29,6 +29,7 @@ build_openssl() {
     ./config --prefix="$srcdir/openssl-static" no-shared  # 静态编译，安装到临时目录
     make -j$(nproc)
     make install_sw  # 仅安装库文件（不安装文档）
+    cd -
 }
 
 build() {
