@@ -4,7 +4,7 @@
 
 pkgname=swftools
 pkgver=0.9.2
-pkgrel=7
+pkgrel=8
 pkgdesc="A collection of SWF manipulation and creation utilities"
 arch=('i686' 'x86_64')
 url="http://www.swftools.org/"
@@ -34,7 +34,7 @@ prepare() {
 build() {
   cd ${srcdir}/$pkgname-$pkgver
 
-  CFLAGS="${CFLAGS} -Wno-error=incompatible-pointer-types" \
+  CFLAGS="${CFLAGS} -std=gnu17 -Wno-error=incompatible-pointer-types" \
   ./configure --prefix=/usr
   make
 }
