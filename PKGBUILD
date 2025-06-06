@@ -1,32 +1,59 @@
 # Maintainer: Davide Gerhard <rainbow@irh.it>
 
 pkgname=freedv-gui
-pkgver=1.9.9.2
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('x86_64' 'aarch64')
 license=('LGPL2.1')
 url="https://freedv.org/"
-# leave sioclient as an internal build
-depends=('libpulse' 'hamlib' 'sox' 'wxwidgets-gtk3' 'codec2-lpcnet' 'speex' 'libao' 'libsamplerate' 'gsm' 'libsndfile' 'lpcnetfreedv' 'portaudio')
+depends=('libpulse' 'hamlib' 'sox' 'wxwidgets-gtk3' 'codec2' 'speex' 'libao' 'libsamplerate' 'gsm' 'libsndfile' 'python-pytorch' 'python-torchaudio' 'python-matplotlib')
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/drowe67/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('fe7f6b69d8af000fca1ca0025b36165659a0a0bfc6105a1d9ccf8785ba268b06796bddab1fe9bb49f4a79da1a587e111fa8004250532dee5fabeb99ab853750c')
+source=(
+  "codec2_gp_interleaver.h.patch"
+  "freedv.sh"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/drowe67/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
+  )
+sha512sums=('89aebd2ddec75e7770cd4f6224b6cdfe59de8175480040d55ee56201ecb77f5e087743a018b9a4b18cda0f19a8eebe13816d83609e1a703b461900a1dc6ceeff'
+            '7d505ff36176baeca347c52a5c7bdb819bea9cd059783588e3438a02a9f707d66cf2201ce7ff202cee660936ff33adcfda4b1a707013b14fcb25b82c3007531a'
+            'c7395a7aa306ffd6af1cd9fd4f8a971e32efc7d6caddb6607faca9be13dafa3f081e592461c6445b8ff781c3e4235c8fb3e98c634e98c130009a5856fb34fcf4')
+
+prepare() {
+  patch --directory="$pkgname-$pkgver" --forward --strip=1 --input="${srcdir}/codec2_gp_interleaver.h.patch"
+}
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_INTERNAL_CODEC2=FALSE \
-    -DUSE_STATIC_SPEEXDSP=FALSE \
-    -DUSE_STATIC_PORTAUDIO=FALSE \
-    -DBOOTSTRAP_WXWIDGETS=FALSE \
-    -DUSE_PULSEAUDIO=TRUE
+    -DUSE_STATIC_DEPS=FALSE \
+    -DUSE_NATIVE_AUDIO=TRUE
   make -C build
 }
 
 package() {
   make -C build DESTDIR="$pkgdir" install
-  install -m644 -D "$pkgname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
+  install -m0755 -D "build/rade_build/src/radae_rx" "$pkgdir/usr/bin/radae_rx"
+  install -m0755 -D "build/rade_build/src/radae_tx" "$pkgdir/usr/bin/radae_tx"
+  install -m0755 -D "build/rade_build/src/lpcnet_demo" "$pkgdir/usr/bin/lpcnet_demo"
+  install -m0755 -D "build/rade_build/src/test_rade_dec" "$pkgdir/usr/bin/test_rade_dec"
+  install -m0755 -D "build/rade_build/src/test_rade_enc" "$pkgdir/usr/bin/test_rade_enc"
+  install -m0755 -D "build/rade_build/src/write_rade_weights" "$pkgdir/usr/bin/write_rade_weights"
+  install -m0755 -D "build/rade_build/src/librade.so" "$pkgdir/usr/lib/librade.so"
+  install -m0755 -D "build/rade_build/src/librade.so.0.1" "$pkgdir/usr/lib/librade.so.0.1"
+  install -m0644 -D "$pkgname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
+
+  # not nice but this avoid to patch the code; copy as is without cleanup
+  # at the moment we don't create __pycache__
+  # in this way we don't have any issues with new python versions
+  install -m0755 -d "${pkgdir}/opt/freedv-gui"
+  # preserve=mode,timestamp
+  cp -dr --preserve=timestamp "build/rade_src" "${pkgdir}/opt/freedv-gui/rade"
+  rm -rf "${pkgdir}/opt/freedv-gui/rade/.git"
+  rm -rf "${pkgdir}/opt/freedv-gui/rade/.github"
+
+  # we need to change PYTHONPATH to use rade
+  mv "${pkgdir}/usr/bin/freedv" "${pkgdir}/usr/bin/freedv_gui"
+  install -m0755 "${srcdir}/freedv.sh" "${pkgdir}/usr/bin/freedv"
 }
