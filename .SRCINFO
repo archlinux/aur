@@ -1,16 +1,16 @@
 pkgbase = rssbridge
 	pkgdesc = The RSS feed for websites missing it
-	pkgver = 2025_01_02
+	pkgver = 2025_06_03
 	pkgrel = 1
 	url = https://rss-bridge.github.io/rss-bridge/
 	arch = any
 	license = Unlicense
 	depends = php-interpreter
 	backup = etc/webapps/rss-bridge/config.ini.php
-	source = https://github.com/RSS-Bridge/rss-bridge/archive/2025-01-02.tar.gz
+	source = https://github.com/RSS-Bridge/rss-bridge/archive/2025-06-03.tar.gz
 	source = rss-bridge.sysusers
 	source = rss-bridge.tmpfiles
-	sha256sums = 826abde379cbe6dbf3c8c3803b2f04acd3bf6375b2b3e12fb8f30fdeeb1806a6
+	sha256sums = b85a9c019034adfafc23f1455c4036a34b148fd98e66cc9cecb28b2c347b4986
 	sha256sums = 42eb933a4632ada3247341d24f967c76cf363ff50e6ed13b39963983454f8020
 	sha256sums = 53103f6c5ad1bb59823ed3b0da6d0900517ed199bf64881b7bbf85f12dee39ad
 
