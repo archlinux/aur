@@ -10,9 +10,9 @@ license=(LGPL-3.0-or-later)
 depends=(glibc gmp libmpc mpfr pypy3-packaging)
 makedepends=(pypy3-build pypy3-installer pypy3-setuptools)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
-  remove-cpython-header.patch::${url}/pull/546.patch)
+  remove-cpython-header.patch::${url}/commit/7a076a7e2746daf1f26de5af81adf1d7907cfe2c.patch)
 sha512sums=('88e506c20ca4a1fc67c8fb7a7258750316437e5d66a22845e09b87e76a1265746762156cfda9c1e2e47a2aa6771ea807282169a0af6a5b782a3b7c3117f77940'
-  'aec084385f3d352f58565326065b711404eede8af75c244673e19d5f076032149b14b089371863badd3b990176c4c5907c49dac56b21a73c28e28166439866bc')
+            '42f87f50cc656f086e83d81160cadbcf33534fc5b58f2871caf48276b9ec22e028e9450914de0a0fa1a0caed21583ef93d38dc3c514ecb7d86b304dad2efc73f')
 
 prepare() {
   cd ${_base}-${pkgver}
