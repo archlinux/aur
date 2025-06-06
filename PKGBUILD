@@ -10,7 +10,7 @@ makedepends=('crystal' 'shards')
 options=()
 install=install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ralsina/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('87ec1465358cb965581b5e5cc5052cdb4d17254cb2350d6589e86869c80c9dd0')
+sha256sums=('fcd85968a485574e409feb48f59e54f91605456b1dd71ead992ef32dfab264ec')
 
 prepare() {
 	cd "$pkgname-$pkgver"
