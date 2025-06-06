@@ -1,6 +1,11 @@
 Changelog for zsh-auto-notify
 =============================
 
+0.11.1
+------
+* Thank you to @devnoname120 for this release
+* Add support to MACOS for control of notifications on SIGINT
+
 0.11.0
 ------
 * thankyou to @tommyhaley for the contributions in this release
