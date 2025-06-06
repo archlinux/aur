@@ -1,8 +1,8 @@
 # Maintainer: nosduco <nosduco at gmail dot com>
 pkgname=streamcontroller
-pkgver=1.5.0beta10
+pkgver=1.5.0beta11
 pkgrel=1
-_pkgver=1.5.0-beta.10
+_pkgver=1.5.0-beta.11
 _reponame=StreamController-$_pkgver
 _pkgname=${pkgname}
 pkgdesc="An elegant Linux app for the Elgato Stream Deck with support for plugins"
@@ -12,7 +12,8 @@ license=('GPL-3')
 depends=('python' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk' 'libportal' 'libportal-gtk4' 'libadwaita' 'gobject-introspection')
 makedepends=('python-pip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/StreamController/StreamController/archive/refs/tags/$_pkgver.tar.gz" "streamcontroller.desktop")
-sha256sums=('737c358b45e37fec62f92c433e703496f99b4854c606ff7e09041524c88cee95' 'b671ce8638922fca5ea05bf12852886d983b9cae33aaf226a57c8bcc51a39760')
+sha256sums=('fab06ab9875350af385892fce4f00e7175363661f6a921b717e1f5fd9cf5e8f6'
+            'b671ce8638922fca5ea05bf12852886d983b9cae33aaf226a57c8bcc51a39760')
 provides=('streamcontroller')
 conflicts=('streamcontroller-git')
 
