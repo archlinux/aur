@@ -13,7 +13,7 @@ license=('MIT')
 depends=( ripgrep xdg-utils # electron* is added at build process
 libsecret libxkbfile )
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=( nodejs-lts-jod
+makedepends=( nodejs-lts-iron # next .nvmrc wants -jod. But it may false
 git npm pnpm python desktop-file-utils libarchive )
 conflicts=(code vscode)
 provides=(code vscode)
@@ -80,7 +80,7 @@ prepare() {
 
 build() {
   cd vscode
-  # Stop downloading electron.
+  # Stop DL electron
   export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
   _cache_dir="$XDG_CACHE_HOME/electron/$(echo -n "https://github.com/electron/electron/releases/download/v${_electronver}" | sha256sum | cut -d ' ' -f 1)"
   mkdir -p "$_cache_dir"
