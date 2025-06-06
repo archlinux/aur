@@ -1,23 +1,23 @@
 pkgbase = meru-bin
 	pkgdesc = 📮 Nifty Gmail desktop app.(previously Gmail Desktop).(Prebuilt version.Use system-wide electron)
-	pkgver = 3.7.0
+	pkgver = 3.8.1
 	pkgrel = 1
 	url = https://github.com/timche/meru
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron36
-	provides = meru=3.7.0
+	provides = meru=3.8.1
 	conflicts = meru
 	options = !emptydirs
 	options = !strip
-	source = LICENSE-3.7.0::https://raw.githubusercontent.com/timche/meru/v3.7.0/LICENSE
+	source = LICENSE-3.8.1::https://raw.githubusercontent.com/timche/meru/v3.8.1/LICENSE
 	source = meru.sh
 	sha256sums = 96c1d04d710fd54233ab3a7a799ebb23926c683300f1e0cee2a54ff9a18ed791
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = meru-3.7.0-aarch64.deb::https://github.com/timche/meru/releases/download/v3.7.0/meru_3.7.0_arm64.deb
-	sha256sums_aarch64 = 13e595011dacbd0e07a644254fbf962db8680ef68fa02adb9d2b638ee3706035
-	source_x86_64 = meru-3.7.0-x86_64.deb::https://github.com/timche/meru/releases/download/v3.7.0/meru_3.7.0_amd64.deb
-	sha256sums_x86_64 = d056ec03cc2a80775ff4ff7de3b8f4eb39812d373cf2bbb19faa67b852630adf
+	source_aarch64 = meru-3.8.1-aarch64.deb::https://github.com/timche/meru/releases/download/v3.8.1/meru_3.8.1_arm64.deb
+	sha256sums_aarch64 = ada75116be07363b7e621aae677467bbb8012046d1b2189a4ca687e2d2c7d42e
+	source_x86_64 = meru-3.8.1-x86_64.deb::https://github.com/timche/meru/releases/download/v3.8.1/meru_3.8.1_amd64.deb
+	sha256sums_x86_64 = 8766b43dedca315963ff47ac57d8f17d107a58d8f1a6896c913eeacbdb6ee778
 
 pkgname = meru-bin
