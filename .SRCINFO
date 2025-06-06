@@ -1,33 +1,48 @@
 pkgbase = licensecheck
 	pkgdesc = Simple license checker for source files
 	pkgver = 3.2.12
-	pkgrel = 1
-	url = https://salsa.debian.org/build-common-team/licensecheck
+	pkgrel = 2
+	url = https://metacpan.org/dist/App-Licensecheck
 	arch = any
-	license = AGPL3
+	license = AGPL-3.0-or-later
+	checkdepends = perl-file-basedir
+	checkdepends = perl-regexp-pattern-license>=3.9.0
+	checkdepends = perl-software-license>=0.103014
+	checkdepends = perl-yaml-libyaml
+	checkdepends = perl-encode
 	checkdepends = perl-encode-locale
-	checkdepends = perl-test2-suite
+	checkdepends = perl
+	checkdepends = perl-test2-suite>=0.000060
 	checkdepends = perl-test-command-simple
 	checkdepends = perl-test-without-module
-	depends = perl
+	makedepends = perl-extutils-makemaker>=6.17
 	depends = perl-array-intspan
+	depends = perl-autodie
+	depends = perl-encode
+	depends = perl-experimental
+	depends = perl-getopt-long>=2.24
 	depends = perl-io-interactive
 	depends = perl-list-someutils
 	depends = perl-log-any
 	depends = perl-log-any-adapter-screen
-	depends = perl-moo
+	depends = perl-moo>=1.001000
 	depends = perl-moox-struct
+	depends = perl-namespace-clean
 	depends = perl-path-iterator-rule
-	depends = perl-path-tiny
+	depends = perl-path-tiny>=0.062
+	depends = perl>=5.14
 	depends = perl-pod-constants
-	depends = perl-regexp-pattern
-	depends = perl-regexp-pattern-license
-	depends = perl-string-copyright
+	depends = perl-pod-usage
+	depends = perl-regexp-pattern>=0.2.12
+	depends = perl-regexp-pattern-license>=3.4.0
+	depends = perl-string-copyright>=0.003
 	depends = perl-string-escape
 	depends = perl-try-tiny
-	depends = perl-namespace-clean
 	optdepends = perl-re-engine-re2
-	source = https://www.cpan.org/modules/by-module/App/App-Licensecheck-v3.2.12.tar.gz
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/J/JO/JONASS/App-Licensecheck-v3.2.12.tar.gz
 	sha512sums = 76d9eaf83d6f688d765581b57bdcd80529aa55017bff8f8c8390240c1429a45785109d8129de638ff1c5fea956b510faf6eb4ec38708bd918c702e3269081f55
+	b2sums = bbc58a4eb0c36c86bce9e367e93a0dc0bab814dd5214439fde5cb36413a52b7a9ffcd3dfc3150b1dd4baa052bd63c3ba9ca48d0811c92cf2e9da5a860afe742c
 
 pkgname = licensecheck

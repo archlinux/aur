@@ -1,0 +1,4 @@
+[licensecheck]
+source = "cpan"
+cpan = "App-Licensecheck"
+prefix = "v"
