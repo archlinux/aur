@@ -2,7 +2,7 @@
 # Maintainer: Dan Fuhry <dan@fuhry.com>
 
 pkgbase=coder
-pkgver=2.18.4
+pkgver=2.23.0
 pkgrel=1
 pkgdesc="Provision remote development environments via Terraform"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ url="https://github.com/coder/coder"
 # Those binaries may not be legally redistributed.
 license=('AGPL-3.0-only')
 depends=('glibc')
-makedepends=('go>=1.22.0' 'pnpm' 'nodejs-lts-iron')
+makedepends=('go>=1.22.0' 'pnpm' 'nodejs-lts-iron' 'protobuf')
 
 # Set to 1 to build the "coder-agent"/"coder-oss-agent" package.
 # This package is really only useful for instances managed by Coder,
@@ -190,5 +190,5 @@ if test $_package_agent -eq 0 ; then
 fi
 
 
-sha512sums=('6fcd69e9a77d1c94493d183de85fee847f9547537367bded0c5431c359316f4c6015dd58d88e1979279fc6fe5b756a0a46057d4018cd03ee03297e2aef2276b2'
+sha512sums=('98bbef8e186b5a625554921871296ec162c4bdb437819364abd3f69896df3a4429dc489e442c86de662aa9dda99cb4f23386008aebff789195d44250254a8f6f'
             '2882e905971ace0722f4e28dcabaacab8f9ab0eb555fd71448a71725dbc8d397f52467c522aa982e50239bd2486c6448cc8bb5a2b23891312520a425038e14f4')
