@@ -2,7 +2,7 @@
 
 pkgname=python-pytelegrambotapi-git
 _pkgname=pyTelegramBotAPI
-pkgver=r2434.e10517e
+pkgver=r3025.fefe38b
 pkgrel=1
 pkgdesc="Python Telegram bot api - git"
 arch=('any')
@@ -22,5 +22,6 @@ pkgver() {
 
 package() {
     cd ${_pkgname}
-    python setup.py install --root ${pkgdir}
+    python -m build
+    #python setup.py install --root ${pkgdir}
 }
