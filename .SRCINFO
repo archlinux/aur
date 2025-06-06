@@ -1,7 +1,7 @@
 pkgbase = clash-nyanpasu-bin
 	pkgdesc = A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LibNyanpasu/clash-nyanpasu
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = clash-nyanpasu-bin
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = clash-meta
+	depends = clash-meta-is-mihomo
 	optdepends = clash-rs: custom protocol network proxy, coding with rust
 	provides = clash-nyanpasu
 	conflicts = clash-nyanpasu-git
