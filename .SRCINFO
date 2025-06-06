@@ -1,0 +1,22 @@
+pkgbase = live2d-desktop-pet-git
+	pkgdesc = Live2D Desktop Pet.(Use system-wide electron)
+	pkgver = 1.0.r5.g2f77c07
+	pkgrel = 1
+	url = https://github.com/wasd09090030/live2Dpet_Miku
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = imagemagick
+	depends = electron24
+	provides = live2d-desktop-pet=1.0
+	conflicts = live2d-desktop-pet
+	source = live2d-desktop-pet.git::git+https://github.com/wasd09090030/live2Dpet_Miku
+	source = live2d-desktop-pet.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = live2d-desktop-pet-git
