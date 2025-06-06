@@ -3,7 +3,7 @@
 pkgbase=115-browser-bin
 pkgname=115-browser-bin
 _pkgname=115br
-pkgver=35.22.0
+pkgver=35.23.0
 pkgrel=1
 arch=('x86_64')
 options=(!strip !debug)
@@ -36,7 +36,7 @@ source_x86_64=(
 sha256sums=('e65199037614ec40eae799f013d007a9252d1b870ec9406fffd7f0aaee3951f1'
             'cfe25e4d5d8236b3b68089fbc4b56aaa7db1d0a560905f1faf004bc5e4534245'
             'ce0e3cdf98637003986feb9abb198cf04135333116f44e1642ba438d344a6a2e')
-sha256sums_x86_64=('08dcfa5c43a37cd759205f8fb919089c4b53a442aeaeb57f6785d4dd62332297')
+sha256sums_x86_64=('f0443f36da0ecbd96d0acbf35678a5435b2ad30e843bd5881a9a0dde6382a9cc')
 noextract=("${pkgname}-${pkgver}.deb")
 
 prepare() {
