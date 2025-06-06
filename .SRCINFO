@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-json
-	pkgdesc = json grammar for tree-sitter
-	pkgver = 0.20.1
-	pkgrel = 2
+	pkgdesc = JSON grammar for tree-sitter
+	pkgver = 0.24.8
+	pkgrel = 1
 	url = https://github.com/tree-sitter/tree-sitter-json
 	arch = x86_64
 	groups = tree-sitter-grammars
@@ -9,8 +9,8 @@ pkgbase = tree-sitter-json
 	makedepends = tree-sitter
 	makedepends = tree-sitter-cli
 	makedepends = npm
-	provides = libtree-sitter-json.so
-	source = tree-sitter-json-0.20.1.tar.gz::https://github.com/tree-sitter/tree-sitter-json/archive/refs/tags/v0.20.1.tar.gz
-	sha256sums = 982f994fe9cad9cc5c874d472e11f963b927266f8353a7137da8c62eb1fd1e0e
+	provides = libtree-sitter-json
+	source = tree-sitter-json-0.24.8.tar.gz::https://github.com/tree-sitter/tree-sitter-json/archive/refs/tags/v0.24.8.tar.gz
+	sha256sums = acf6e8362457e819ed8b613f2ad9a0e1b621a77556c296f3abea58f7880a9213
 
 pkgname = tree-sitter-json

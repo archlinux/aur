@@ -1,9 +1,9 @@
 # Maintainer: Kevin Schoon <me at kevinschoon dot com>
 
 pkgname=tree-sitter-json
-pkgver=0.20.1
-pkgrel=2
-pkgdesc="json grammar for tree-sitter"
+pkgver=0.24.8
+pkgrel=1
+pkgdesc="JSON grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-json"
 license=('MIT')
@@ -11,7 +11,7 @@ groups=('tree-sitter-grammars')
 makedepends=('tree-sitter' 'tree-sitter-cli' 'npm')
 provides=('libtree-sitter-json')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('982f994fe9cad9cc5c874d472e11f963b927266f8353a7137da8c62eb1fd1e0e')
+sha256sums=('acf6e8362457e819ed8b613f2ad9a0e1b621a77556c296f3abea58f7880a9213')
 
 prepare() {
 	cd "$pkgname-$pkgver"
