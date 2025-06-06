@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simpleshell-git
 _pkgname=SimpleShell
-pkgver=1.3.3.r6.ge0f6f7e
+pkgver=0.1.0.r0.g8dcfdfd
 _electronversion=35
 _nodeversion=22
 pkgrel=1
@@ -55,39 +55,32 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
+    if [ -f bunfig.toml ]; then
+        rm -rf bunfig.toml
+    fi
+        if [ -f bun.lockb ];then
+        rm -rf bun.lockb
+    fi
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        export npm_config_electron_mirror="https://registry.npmmirror.com/-/binary/electron/"
+        export npm_config_electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+        export sqlite3_binary_site="https://registry.npmmirror.com/-/sqlite3/"
         {
-            echo -e '\n'
-            echo 'registry "https://registry.npmmirror.com"'
-            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
-            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
-            echo "cacheFolder "${srcdir}"/.yarn/cache"
-            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
-            echo "globalFolder "${srcdir}"/.yarn/global"
-            echo 'useHardlinks true'
-            #echo 'buildFromSource true'
-            echo 'linkWorkspacePackages true'
-            echo 'fetchRetries 3'
-            echo 'fetchRetryTimeout 10000'
-            echo 'networkConcurrency 10'
-        } >> .yarnrc
-        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
+            echo '[install]'
+            echo 'registry = "https://registry.npmmirror.com"'
+        } >> bunfig.toml
     fi
     sed -i "s/logo.ico/${_pkgname}.png/g" src/main.js
-    cp src/core/configManager.js src/core/ConfigManager.js
-    rm -rf src/core/configManager.js
-    sed -i "3i\const configDir = process.env.XDG_CONFIG_HOME || path.join(require('os').homedir(), '.config');" src/core/ConfigManager.js
+    sed -i "3i\const configDir = process.env.XDG_CONFIG_HOME || path.join(require('os').homedir(), '.config');" src/core/configManager.js
     sed -i "3i\const configDir = process.env.XDG_CONFIG_HOME || path.join(require('os').homedir(), '.config');" src/core/utils/logger.js
-    sed -i 's/return path.join(path.dirname(app.getPath("exe")), "config.json");/return path.join(configDir, 'simpleshell', 'config.json');/g' src/core/ConfigManager.js
-    sed -i "s/return path.join(path.dirname(process.execPath), 'log');/return path.join(configDir, 'simpleshell', 'log');/g" src/core/utils/logger.js
+    sed -i 's/return path.join(path.dirname(app.getPath("exe")), "config.json");/return path.join(configDir, "simpleshell", "config.json");/g' src/core/configManager.js
+    sed -i 's/return path.join(path.dirname(process.execPath), "log");/return path.join(configDir, "simpleshell", "log");/g' src/core/utils/logger.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    #NODE_ENV=development    pnpm add -D "@vercel/webpack-asset-relocator-loader@latest"
-    NODE_ENV=development    yarn add -D "@electron-forge/plugin-local-electron" "@mui/material" "@mui/icons-material" \
-        "@mui/types" "@mui/core-downloads-tracker" "@mui/private-theming" "@mui/styled-engine" "@mui/system" "@mui/utils"
+    bun install
+    bun add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
@@ -100,7 +93,7 @@ build() {
             electronPath: \'${electronDist}\',\\
         },\\
     }," forge.config.*
-    NODE_ENV=development    yarn run package
+    NODE_ENV=development    bun run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
