@@ -35,7 +35,8 @@ build() {
     -DWITH_ALSA=On \
     -DWITH_ZRTP=On \
     -DWITH_G729=On \
-    -DWITH_SPEEX=On
+    -DWITH_SPEEX=On \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make -C build
 }
 
