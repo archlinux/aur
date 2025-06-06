@@ -1,13 +1,13 @@
 pkgbase = cinnamon-applet-weather
 	pkgdesc = View your local weather forecast
-	pkgver = 3.3.1
+	pkgver = 3.8
 	pkgrel = 1
-	url = https://cinnamon-spices.linuxmint.com/applets/view/322
+	url = https://cinnamon-spices.linuxmint.com/applets/view/17
 	arch = any
 	groups = cinnamon-applets
 	license = GPL
 	depends = cinnamon
 	source = https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip
-	sha512sums = 049b21184d716b6609114a41d9e356bad57715409815482ec8326818d3027e9c856167f7a58ba181315351a1fb313dee9efa72e446c1e747f0ec538dbe48e1b0
+	sha512sums = ca947731d0dabb647a66d1b20ca7785c93605098b50642dfd6401c6bc83e52c08c688552cc3cd95c4a660030ad0ec426a3b7511feaf521a3e5b88fe89748bc91
 
 pkgname = cinnamon-applet-weather
