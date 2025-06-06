@@ -8,7 +8,7 @@ url="https://github.com/OpenStarbound/OpenStarbound"
 license=('custom')
 depends=('glibc')
 source=(
-  "$pkgname-$pkgver.zip::https://nightly.link/OpenStarbound/OpenStarbound/workflows/build/main/OpenStarbound-Linux-Client.zip"
+  "$pkgname-$pkgver.zip::https://nightly.link/OpenStarbound/OpenStarbound/workflows/build/main/OpenStarbound-Linux-Clang-Client.zip"
   "starbound.png"
   )
 sha256sums=('SKIP'
