@@ -21,7 +21,7 @@ source=(
     )
 sha256sums=('f035ca0e1b5d37b78e358f07a25b05c5cdaf2c85c4b31cf29f6be17f288a349e'
             'SKIP'
-            'cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8')
+            'ecd0c6ffb493dd06707d38b14bb4d8c2288bb7033735606569d8f90f89669d16')
 validpgpkeys=('5CF995AAD5CC1E4079F76C38B1732A9CB37C87BA')
 
 build_openssl() {
