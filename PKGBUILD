@@ -18,6 +18,7 @@ optdepends=("texinfo: handle and view info files")
 source=(
     "https://ftp.gnu.org/gnu/ccrtp/ccrtp-$pkgver.tar.gz"{,.sig}
     "01-fix-openssl1.1.pacth"
+    ""
     )
 sha256sums=('f035ca0e1b5d37b78e358f07a25b05c5cdaf2c85c4b31cf29f6be17f288a349e'
             'SKIP'
@@ -31,12 +32,14 @@ prepare() {
 
 build() {
   cd ccrtp-${pkgver}
-  ./configure --prefix=/usr
+  mkdir build
+  cd build
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make -j$(nproc)
 }
 
 package() {
-  cd ccrtp-${pkgver}
+  cd ccrtp-${pkgver}/build
   make DESTDIR="${pkgdir}" install
 
   install -Dm644 COPYING.addendum "$pkgdir/usr/share/licenses/ccrtp/LICENSE"
