@@ -1,0 +1,18 @@
+pkgbase = oidcwarden-web
+	pkgdesc = Bitwarden web vault with the patches to make it work with oidcwarden
+	pkgver = 2025.5.1
+	pkgrel = 1
+	url = https://github.com/Timshel/oidc_web_vault
+	install = oidcwarden-web.install
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = nodejs-lts-iron
+	makedepends = npm
+	depends = oidcwarden
+	conflicts = vaultwarden-web
+	source = oidcwarden-web-2025.5.1.tar.gz::https://github.com/Timshel/oidc_web_vault/archive/refs/tags/v2025.5.1-1.tar.gz
+	sha512sums = 8a98f3f5e52268e06afbba78dda09f6b64cdd90b83908f0606b52896d27b8a51424dc07e9876bbd52c5cab4f2897c5348ed8d81d35b0d0c3e48bb7f032fe9cf3
+	b2sums = fdcb16a3405d7068e11a8657f07164e1b924109e39cd1231bb54e96dd6b54181a3f6f3cad069f1cd7e1c8744afa03c84c87f0ba567d8b1a9ae04fe36750c92a7
+
+pkgname = oidcwarden-web
