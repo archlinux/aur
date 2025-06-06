@@ -1,0 +1,20 @@
+pkgbase = kurisu-bin
+	pkgdesc = A program that converts file formats based on verbal descriptions.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/MCDFsteve/Kurisu
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = fuse2
+	depends = electron29
+	depends = ffmpeg
+	depends = steam
+	depends = nodejs
+	provides = kurisu=1.2.0
+	conflicts = kurisu
+	source = kurisu-1.2.0-x86_64.AppImage::https://github.com/MCDFsteve/Kurisu/releases/download/v1.2.0/Kurisu-1.2.0-linux-x86_64.AppImage
+	source = kurisu.sh
+	sha256sums = 1f801e4c55b571ed25d216371875f2ed81fd5ee7e426cc9da8c81ef5c33b456d
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = kurisu-bin
