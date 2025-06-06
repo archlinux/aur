@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 2025.05.0.496
+	pkgver = 2025.05.1.513
 	pkgrel = 1
 	url = https://github.com/rstudio/rstudio
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgbase = rstudio-desktop
 	conflicts = rstudio-desktop
 	options = !emptydirs
 	options = !debug
-	source = rstudio-2025.05.0.496-f0b76cc.tar.gz::https://github.com/rstudio/rstudio/archive/f0b76cc00df96fe7f0ee687d4bed0423bc3de1f8.tar.gz
+	source = rstudio-2025.05.1.513-ab7c1bc.tar.gz::https://github.com/rstudio/rstudio/archive/ab7c1bc795c7dcff8f26215b832a3649a19fc16c.tar.gz
 	source = quarto::git+https://github.com/quarto-dev/quarto.git#branch=release/rstudio-cranberry-hibiscus
 	source = soci-4.0.3.tar.gz::https://github.com/SOCI/soci/archive/refs/tags/v4.0.3.tar.gz
 	source = https://github.com/github/copilot-language-server-release/releases/download/1.300.0/copilot-language-server-linux-x64-1.300.0.zip
