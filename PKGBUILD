@@ -18,8 +18,8 @@ makedepends=('doxygen' 'graphviz')
 options=('!strip')
 install=${pkgbase}.install
 source=("${pkgbase}-${pkgver}.tar.gz::$url/-/archive/r$pkgver/$pkgbase-r$pkgver.tar.gz")
-sha512sums=('9ea5aad9762ec889fdc7f870a793cec82eaa374f08bead122de219c98d255677f55baf943f529cbd5008381cdf0f61283babfaa780c2d9468c9e56c739a092ea')
-b2sums=('a49892f205662763c909af448e897114555867c751cced60da7338881243e60270f9c9da243cebd501c953f6eebc22ef093baab2a04627b09bf011b0fbd0b52d')
+sha512sums=('c3fd27286a663a4493500133185a245046ec41672cf37a64d6edaea87f159b173f590fda180082758b11e75404a2bec717ea692dc6e949a2f284f0376e045fc0')
+b2sums=('a3220495661c6299e7b7be87b830ea7f95b3ff39efc916566534223c5f8fa09a086d9341b4419614451af9a45b9fcfae6e72641bd01498245a2c21211150cadc')
 
 package_awl() {
     pkgdesc="Andrew's Web Libraries - PHP Utility Libraries"
