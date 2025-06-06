@@ -1,7 +1,7 @@
 # Maintainer:  Jason Kercher <jkercher 43 at gmail dot com>
 
 pkgname=linuxcnc-git
-pkgver=2.9.4.r2806.g868975c2da
+pkgver=2.9.4.r2969.g80a94cb30b
 pkgrel=1
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=($CARCH)
@@ -22,6 +22,7 @@ depends=(
   gtk3
   harfbuzz
   libepoxy
+  libmodbus
   libgpiod
   librsvg
   libtirpc
@@ -63,7 +64,6 @@ depends=(
   #   gtksourceview2
   #   python-pyodbc
   # python-espeak
-  libmodbus
 )
 makedepends=(
   asciidoc
