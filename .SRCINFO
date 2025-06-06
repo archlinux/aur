@@ -1,0 +1,21 @@
+pkgbase = ccrtp-openssl1.1
+	pkgdesc = An implementation of RTP, the real-time transport protocol from the IETF
+	pkgver = 2.1.2
+	pkgrel = 4
+	url = https://www.gnu.org/software/ccrtp/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	depends = ucommon>=6.2.2
+	depends = libgcrypt
+	optdepends = texinfo: handle and view info files
+	source = https://ftp.gnu.org/gnu/ccrtp/ccrtp-2.1.2.tar.gz
+	source = https://ftp.gnu.org/gnu/ccrtp/ccrtp-2.1.2.tar.gz.sig
+	source = https://www.openssl.org/source/openssl-1.1.1w.tar.gz
+	validpgpkeys = 5CF995AAD5CC1E4079F76C38B1732A9CB37C87BA
+	sha256sums = f035ca0e1b5d37b78e358f07a25b05c5cdaf2c85c4b31cf29f6be17f288a349e
+	sha256sums = SKIP
+        sha256sums = cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8
+
+pkgname = ccrtp-openssl1.1
