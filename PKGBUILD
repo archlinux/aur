@@ -18,7 +18,6 @@ optdepends=("texinfo: handle and view info files")
 source=(
     "https://ftp.gnu.org/gnu/ccrtp/ccrtp-$pkgver.tar.gz"{,.sig}
     "01-fix-openssl1.1.pacth"
-    ""
     )
 sha256sums=('f035ca0e1b5d37b78e358f07a25b05c5cdaf2c85c4b31cf29f6be17f288a349e'
             'SKIP'
