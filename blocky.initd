@@ -1,0 +1,20 @@
+#!/usr/bin/openrc-run
+
+description="Fast and lightweight DNS proxy as ad-blocker"
+name="blocky"
+
+command="/usr/bin/blocky"
+command_args="-c /etc/blocky/blocky.yml"
+
+command_background=true
+pidfile="/run/blocky.pid"
+
+output_log="/var/log/blocky.log"
+error_log="/var/log/blocky.log"
+
+capabilities="^cap_net_bind_service"
+
+depend() {
+	need net
+	provide dns
+}

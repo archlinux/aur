@@ -1,0 +1,15 @@
+pkgbase = blocky-openrc
+	pkgdesc = An OpenRC init script for the fast and lightweight DNS proxy as ad-blocker
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/0xERR0R/blocky
+	arch = any
+	license = 0BSD
+	depends = openrc
+	depends = blocky
+	source = blocky.initd
+	source = LICENSE
+	b2sums = 955d7909f1ca1d023ee8e0a9958ce98f41831e6d3b9ba18d55dcd7511b3fc5b6ff2883e02347ddfcd9ba11b6b0dcc622a3851b382d072afaaa907be17781ff86
+	b2sums = a29664104e1ee73ca0aee1d633e9095d92a57c92787f8d8740bdb7211ba3205782ed8677f539bdb8cae3dd75a3694be3132e185fa3fc4b3f401e1f88eb776101
+
+pkgname = blocky-openrc
