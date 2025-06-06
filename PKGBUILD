@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2503a.r566.g1dc4dc6b6d'
+pkgver='2506.r25.ga0611b512b'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -41,7 +41,6 @@ source=(
 	"$pkgbase-tinygltf::git+https://github.com/syoyo/tinygltf.git"
 	"$pkgbase-vh::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"$pkgbase-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
-	'minizip-ng.diff'
 	'cmake-discord-rpc.diff'
 	'cmake-mgba.diff'
 )
@@ -52,7 +51,6 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'e90d1cd324d8c317afecaedfc3cc1074c9284d5416299c06dede2bbe61e034065c47eb89badc9bb52092472d384641fa3bcac5a7e70e743a65fcbf75569501fe'
         '7db29101fc7496355776eee0701ddb971147aea096828f73dc02501d8981a8f1105f16e206a24f3ab94d169dc7ea0443c37b664c25ba064533b7cdcc644bd6f4'
         'd9e6ba73de8e1c49a7ebf9efe6caffcffbe1a545dfb61caebe2b830d8f496aaa221269c25a3f849ba02228dfb866b362c8c74f7e897e66a9362469dea679721d')
 
@@ -62,9 +60,6 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 	if [ -d 'build/' ]; then rm -rf 'build/'; fi
 	mkdir 'build/'
-
-	# Fix minizip-ng check for Arch (see https://github.com/dolphin-emu/dolphin/pull/12910#issuecomment-2249001387)
-	patch --forward -p1 < "$srcdir/minizip-ng.diff"
 
 	# Provide submodules
 	declare -A _submodules=(
@@ -97,9 +92,6 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-
-	# Consider symbols in dependencies of directly specified dynamic libraries as available to fix the build
-	export LDFLAGS="$LDFLAGS -Wl,--copy-dt-needed-entries"
 
 	# CMAKE_BUILD_TYPE - the dolphin-emu package in the repos uses 'None' for some reason, so we use it as well
 	# CMAKE_SKIP_RPATH - do not add run time path information (the package in the repos does it, presumably because of reproducible builds)
