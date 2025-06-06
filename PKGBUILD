@@ -1,7 +1,7 @@
 # Maintainer: Aneesh Lingala <aneeshlingala61@gmail.com>
 pkgname=tiny-editor
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Frickin Tiny Editor, all written in bash!"
 arch=('any')
 url="https://codeberg.org/aneeshlingala/fkin-tiny-editor"
