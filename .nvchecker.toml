@@ -1,0 +1,3 @@
+[hledger-bin]
+source = "hackage"
+hackage = "hledger"
