@@ -17,7 +17,7 @@ depends=('ucommon>=6.2.2' 'libgcrypt')
 optdepends=("texinfo: handle and view info files")
 source=(
     "https://ftp.gnu.org/gnu/ccrtp/ccrtp-$pkgver.tar.gz"{,.sig}
-    "https://www.openssl.org/source/openssl-1.1.1w.tar.gz"
+    "https://www.openssl.org/source/openssl-1.0.2u.tar.gz"
     )
 sha256sums=('f035ca0e1b5d37b78e358f07a25b05c5cdaf2c85c4b31cf29f6be17f288a349e'
             'SKIP'
