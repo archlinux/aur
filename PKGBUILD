@@ -1,6 +1,6 @@
 pkgname=rgfw-git
 pkgver=1.70
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="A cross platform lightweight single-header simple-to-use window abstraction library for creating graphical programs or libraries."
 arch=(any)
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("$url/archive/refs/heads/main.zip")
 noextract=()
-sha256sums=('fa22f50ea323cb2b55ddd595649573f729291d58f05237d2d0eab7ba0a49a07e')
+sha256sums=('SKIP')
 validpgpkeys=()
 
 package() {
