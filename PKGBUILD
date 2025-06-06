@@ -39,6 +39,7 @@ build() {
   cd "${pkgname}-release-${pkgver}"
 
   _ensure_local_nvm
+  npm install
   npm install -g pnpm
 
   make version SEMVER="${pkgver}"
