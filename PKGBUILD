@@ -3,7 +3,7 @@
 _pkgname=koboredux
 pkgname=$_pkgname-git
 pkgver=0.7.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Arcade style 2D shooter'
 arch=(x86_64)
 url='http://koboredux.com/'
@@ -42,7 +42,7 @@ prepare() {
 
 build() {
   rm -rf build; mkdir build; cd build
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr "$srcdir/$_pkgname"
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5 "$srcdir/$_pkgname"
   make
 }
 
