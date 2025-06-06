@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=taratormusic-bin
 _pkgname=TaratorMusic
-pkgver=1.5.6
+pkgver=1.5.7
 _electronversion=31
 pkgrel=1
 pkgdesc="A music player application with playlist support and Discord integration.(Prebuilt version.Use system-wide electron)"
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9e8dc77524e7e68a36924dd5ff3763f605972208fb602c63e0f79e703ad3f918'
+sha256sums=('d1e747880cff73bc9398e5bc7a77f3f32f06ac1854c14ab594f0e8d155fbe34d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
