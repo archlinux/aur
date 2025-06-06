@@ -1,6 +1,6 @@
 pkgbase = rmpc-git
 	pkgdesc = A beautiful and configurable TUI client for MPD
-	pkgver = 0.4.0.r9.g02918bc
+	pkgver = 0.8.0.r122.g5680c76
 	pkgrel = 1
 	url = https://mierak.github.io/rmpc/
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = rmpc-git
 	optdepends = ffmpeg: for youtube playback
 	optdepends = python-mutagen: for youtube playback
 	optdepends = ueberzugpp: for alternative album art method
+	optdepends = cava: for music visualisation
 	provides = rmpc
 	conflicts = rmpc
 	source = git+https://github.com/mierak/rmpc.git

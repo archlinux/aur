@@ -1,7 +1,7 @@
 # Maintainer: MieraK <mrkpwnz@gmail.com>
 pkgname=rmpc-git
 _pkgname=rmpc
-pkgver=0.4.0.r9.g02918bc
+pkgver=0.8.0.r122.g5680c76
 pkgrel=1
 pkgdesc='A beautiful and configurable TUI client for MPD'
 url='https://mierak.github.io/rmpc/'
@@ -12,7 +12,8 @@ optdepends=(
     'yt-dlp: for youtube playback'
     'ffmpeg: for youtube playback'
     'python-mutagen: for youtube playback'
-    'ueberzugpp: for alternative album art method')
+    'ueberzugpp: for alternative album art method'
+    'cava: for music visualisation')
 conflicts=('rmpc')
 provides=('rmpc')
 makedepends=(cargo git)
