@@ -12,7 +12,7 @@ license=(BSD-3-Clause)
 depends=(python-trame-client vtk openmpi fmt jsoncpp glew ospray openxr
   openvr ffmpeg hdf5-openmpi postgresql-libs netcdf pdal mariadb-libs
   liblas cgns adios2 libharu gl2ps verdict qt5-tools opencascade)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+makedepends=(python-build python-installer python-hatchling python-wheel)
 checkdepends=(python-pytest-xprocess python-pixelmatch python-seleniumbase python-pyvista) # python-trame-vuetify
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   https://registry.npmjs.org/${_npm_base}/-/${_npm_base}-${_npm_pkgver}.tgz
