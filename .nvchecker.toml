@@ -1,0 +1,5 @@
+[pypy3-matplotlib]
+source = "github"
+github = "matplotlib/matplotlib"
+use_latest_release = "true"
+prefix = "v"
