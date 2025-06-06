@@ -1,6 +1,6 @@
 # Maintainer: Romain Chardiny <romain.chardiny@gmail.com>
 pkgname=floc-git
-pkgver=r172.1910852
+pkgver=0.2.0.r0.543c798
 pkgrel=1
 pkgdesc="Flo Compiler"
 arch=("any")
@@ -15,8 +15,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/floc"
 
-# Git, no tags available
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
