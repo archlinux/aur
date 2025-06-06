@@ -18,9 +18,10 @@ optdepends=(
   'wps-office-365-fonts: FZ TTF fonts provided by wps office 365'
   'cups: for printing support')
 options=(!strip !zipman !debug)
-source_x86_64=("https://pubwps-wps365-obs.wpscdn.cn/download/Linux/${pkgver: -5}/wps-office_${pkgver}.AK.preload.sw_amd64.deb")
-source_aarch64=("https://pubwps-wps365-obs.wpscdn.cn/download/Linux/${pkgver: -5}/wps-office_${pkgver}.AK.preload.sw_arm64.deb")
-source_loong64=("https://pubwps-wps365-obs.wpscdn.cn/download/Linux/${pkgver: -5}/wps-office_${pkgver}.AK.preload.sw_loongarch64.deb")
+source_base="https://pubwps-wps365-obs.wpscdn.cn/download/Linux/${pkgver: -5}/wps-office_${pkgver}.AK.preload.sw"
+source_x86_64=("${source_base}_amd64.deb")
+source_aarch64=("${source_base}_arm64.deb")
+source_loong64=("${source_base}_loongarch64.deb")
 sha256sums_x86_64=('91cc59e72496629049edaf1b35fa7d868e2f58f65a573d9f70dfb91f04281b2c')
 sha256sums_aarch64=('a5c8fbc50406b59d07b2a5075fbbab04c430cbe9e66ec55605a52458eb3a52ce')
 sha256sums_loong64=('2fd7d542714fbf295febc66958c2cc09b5d386f14cbec0ec6a5546f82f704ed2')
