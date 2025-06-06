@@ -1,0 +1,13 @@
+pkgbase = lnk
+	pkgdesc = 🔗 Git-native dotfiles management that doesn't suck.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/yarlson/lnk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = lnk-0.3.0.tar.gz::https://github.com/yarlson/lnk/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = bf9f329d194a4f267f2d8684fc658c862ee003f712ba58b75ed970f6ea0368a8
+
+pkgname = lnk
