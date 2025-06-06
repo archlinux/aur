@@ -1,8 +1,8 @@
-# Maintainer: Hajos Attila <linux.alucard@gmail.com>
+# Maintainer: Hajos Attila <linux[dot]alucard[at]gmail[dot]com>
 # Contributor: Tim Schumacher <timschumi@gmx.de>
 
 pkgname=epk2extract-git
-pkgver=r682
+pkgver=r709
 pkgrel=1
 pkgdesc="Extraction tool for LG, Hisense, Sharp, Philips/TPV, Thompson and similar TVs/Embedded Devices."
 url='https://github.com/openlgtv/epk2extract'
