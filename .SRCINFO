@@ -1,8 +1,8 @@
 pkgbase = pass-menu-git
 	pkgdesc = Simple Frontend for Password Store, for fzf, dmenu and similar
 	pkgver = r11.b862cb0
-	pkgrel = 1
-	url = https://github.com/udayvir-singh/pass-menu
+	pkgrel = 2
+	url = https://github.com/bartlibert/pass-menu
 	arch = any
 	license = MIT
 	makedepends = git
@@ -17,7 +17,7 @@ pkgbase = pass-menu-git
 	optdepends = wl-clipboard: clipboard support on wayland
 	optdepends = wtype: autofill support on wayland
 	provides = pass-menu
-	source = pass-menu::git+https://github.com/udayvir-singh/pass-menu
+	source = pass-menu::git+https://github.com/bartlibert/pass-menu
 	sha256sums = SKIP
 
 pkgname = pass-menu-git

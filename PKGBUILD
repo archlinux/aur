@@ -1,10 +1,10 @@
 # Maintainer: Bart Libert <bart plus aur at libert dot email>
 pkgname=pass-menu-git
 pkgver=r11.b862cb0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Frontend for Password Store, for fzf, dmenu and similar"
 arch=('any')
-url="https://github.com/udayvir-singh/pass-menu"
+url="https://github.com/bartlibert/pass-menu"
 license=('MIT')
 depends=('bash' 'findutils' 'pass')
 makedepends=('git' 'make')
