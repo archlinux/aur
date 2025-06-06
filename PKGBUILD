@@ -2,11 +2,11 @@
 pkgname=less-reader-git
 _pkgname='Less Reader'
 _zhsname='简阅'
-pkgver=0.0.7.r1.g12e8bf1
+pkgver=0.0.8.r0.g334f547
 _electronversion=35
 _nodeversion=20
 pkgrel=1
-pkgdesc="An e-book reader developed based on Electron + Vue 3. Supported formats: epub, mobi, azw3, (pdf, txt are not supported yet)(Use system-wide electron)"
+pkgdesc="An e-book reader developed based on Electron + Vue 3. Supported formats: epub, mobi, azw3, pdf, txt.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/laowus/Less-Reader"
 license=('Apache-2.0')
@@ -55,8 +55,8 @@ prepare() {
         --pkgdesc="${pkgdesc}" \
         --categories="Utility" \
         --name="${_pkgname}" \
-        --exec="${pkgname%-git} %U"
-    sed -i "4i\Comment[zh_CN]=${_zhsname}" "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop"
+        --exec="${pkgname%-git} %U" \
+        --custom="Name[zh_CN]=${_pkgname}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
