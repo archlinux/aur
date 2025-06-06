@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=(
   "python-build" "python-scikit-build-core" "python-pybind11-stubgen"
-  "python-sphinx_rtd_theme" "python-sphinx"
+  "python-sphinx_rtd_theme" "python-sphinx" "python-installer"
 )
 optdepends=(
   "python-pytest: for testing"

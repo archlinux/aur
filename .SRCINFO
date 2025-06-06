@@ -14,6 +14,7 @@ pkgbase = python-pytango
 	makedepends = python-pybind11-stubgen
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-sphinx
+	makedepends = python-installer
 	depends = tango-cpp>=10.0.0
 	depends = boost
 	depends = boost-libs
