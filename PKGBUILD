@@ -5,7 +5,7 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=5.14.3
+pkgver=5.15.2
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -76,7 +76,7 @@ source=(
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
 )
 sha256sums=(
-  '9c800258b48e1f7038017a7f50c02f0f64feae6caadcfe22db40e7cc70c39cda'
+  '3e3b3d3f579021c079712ab40636877fc84b3566d6db8727703607caee2f5338'
   'SKIP'
 )
 
@@ -129,7 +129,7 @@ package() {
   rm "$pkgdir/usr/share/dbus-1/services/org.telegram.desktop.service"
 
   # rename executable
-  mv -v "$pkgdir"/usr/bin/{telegram-desktop,"$_pkgname"}
+  mv -v "$pkgdir"/usr/bin/{Telegram,"$_pkgname"}
 
   # icon
   install -Dm644 "$srcdir/$_pkgsrc/Telegram/Resources/art/forkgram/logo_256.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
