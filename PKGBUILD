@@ -26,7 +26,7 @@ validpgpkeys=('5CF995AAD5CC1E4079F76C38B1732A9CB37C87BA')
 
 build_openssl() {
     cd openssl-1.0.2u
-    ./config --prefix="$srcdir/openssl-static" -fPIC no-shared  # 静态编译，安装到临时目录
+    ./config --prefix="$srcdir/openssl-static" -fPIC no-shared enable-camellia enable-seed enable-rfc3779 enable-cms enable-weak-ssl-ciphers  # 静态编译，安装到临时目录
     make -j$(nproc)
     make install_sw  # 仅安装库文件（不安装文档）
     cd -
