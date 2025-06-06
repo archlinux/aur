@@ -31,7 +31,7 @@ prepare() {
 
 build() {
   cd ccrtp-${pkgver}
-  ./configure --prefix=/usr --disable-demo
+  ./configure --prefix=/usr --disable-demos
   make -j$(nproc)
 }
 
