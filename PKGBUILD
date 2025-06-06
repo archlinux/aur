@@ -12,7 +12,7 @@ source=("https://codeberg.org/aneeshlingala/fkin-tiny-editor")
 
 build() {
     cd "$srcdir/$_pkgname"
-    git clone $source
+    git clone $_source
 }
 
 package() {
