@@ -25,7 +25,7 @@ sha256sums=('f035ca0e1b5d37b78e358f07a25b05c5cdaf2c85c4b31cf29f6be17f288a349e'
 validpgpkeys=('5CF995AAD5CC1E4079F76C38B1732A9CB37C87BA')
 
 build_openssl() {
-    cd openssl-1.1.1w
+    cd openssl-1.0.2u
     ./config --prefix="$srcdir/openssl-static" no-shared  # 静态编译，安装到临时目录
     make -j$(nproc)
     make install_sw  # 仅安装库文件（不安装文档）
