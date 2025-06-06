@@ -1,6 +1,6 @@
 pkgbase = stackandconquer
 	pkgdesc = A challenging tower conquest board game.
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/ElTh0r0/stackandconquer/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = stackandconquer
 	depends = qt6-declarative
 	depends = qt6-svg
 	depends = hicolor-icon-theme
-	source = stackandconquer-0.11.0.tar.gz::https://github.com/ElTh0r0/stackandconquer/archive/v0.11.0.tar.gz
-	sha256sums = c7fda94be5912c50b504076d800ff3de275c2b715f7aef96fe59ef6c0bf05c47
+	source = stackandconquer-0.11.1.tar.gz::https://github.com/ElTh0r0/stackandconquer/archive/v0.11.1.tar.gz
+	sha256sums = 2821383e2ee12fb62e0c3b2e850ab064f3d8c9ba0ca605d8e853869e91617cda
 
 pkgname = stackandconquer
