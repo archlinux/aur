@@ -10,12 +10,8 @@ depends=('bash')
 makedepends=('git')
 source=("https://codeberg.org/aneeshlingala/fkin-tiny-editor")
 
-build() {
-    cd "$srcdir/$_pkgname"
-    git clone $_source
-}
-
 package() {
+    git clone $_source
     cd "$srcdir/$_pkgname"
     cd fkin-tiny-editor
     cp te.bash /usr/bin/te
