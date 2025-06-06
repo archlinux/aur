@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hexopress-git
 _pkgname=HexoPress
-pkgver=1.2.0.r23.g1ee9a4d
-_electronversion=33
-_nodeversion=22
+pkgver=1.3.0.r0.g19c7d34
+_electronversion=36
+_nodeversion=24
 pkgrel=1
 pkgdesc="A client software designed specifically for editing blog articles and managing blog content that supports Hexo!.(Use system-wide electron)"
 arch=('any')
@@ -56,7 +56,6 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
@@ -79,6 +78,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     local electronDist="/usr/lib/electron${_electronversion}"
     sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
     {\\
