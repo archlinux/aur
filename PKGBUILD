@@ -31,14 +31,12 @@ prepare() {
 
 build() {
   cd ccrtp-${pkgver}
-  mkdir build
-  cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  ./configure --prefix=/usr --disable-demo
   make -j$(nproc)
 }
 
 package() {
-  cd ccrtp-${pkgver}/build
+  cd ccrtp-${pkgver}
   make DESTDIR="${pkgdir}" install
 
   install -Dm644 COPYING.addendum "$pkgdir/usr/share/licenses/ccrtp/LICENSE"
