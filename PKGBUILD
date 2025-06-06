@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=atena
-_pkgver=1.14.0
+_pkgver=1.14.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,8 +37,8 @@ optdepends=(
   r-txdb.dmelanogaster.ucsc.dm6.ensgene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6df35452c39403adb449a974ef1d8d4d')
-b2sums=('36eb79f1032d1bb134d6c5238322eea9e69d85c561072dbfe2c4dcd873e3cf3a7d2c483136d6a068250086d37379bc78239f8c150fc2e54b5dcd3bca5a014650')
+md5sums=('80d066b237bb1a4a9cb468b62d381b11')
+b2sums=('652f7111c92f11ee3b78c294889e71dc31373e2c0df07905c916cf105d38521c8c9bc8c7888db99a5aac0131f2d7f161ad9860c16e6a0754b9f2f84f57958703')
 
 build() {
   mkdir build
