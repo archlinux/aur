@@ -1,6 +1,6 @@
 pkgbase = icloudpd-bin
 	pkgdesc = A command-line tool to download photos from iCloud
-	pkgver = 1.27.5
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://github.com/icloud-photos-downloader/icloud_photos_downloader
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = icloudpd-bin
 	conflicts = icloudpd
 	source = LICENSE::https://github.com/icloud-photos-downloader/icloud_photos_downloader/raw/master/LICENSE.md
 	sha256sums = bb04f6adb55cf312f3f5fefc559bf332bc8fb2bd680e309041449c18644ae385
-	source_x86_64 = icloudpd-bin-1.27.5-x86_64::https://github.com/icloud-photos-downloader/icloud_photos_downloader/releases/download/v1.27.5/icloudpd-1.27.5-linux-amd64
-	sha256sums_x86_64 = dc6058bc6499688d953986838a91f40d5d58ac80e5abea3f025e36abbc5a8dc5
-	source_aarch64 = icloudpd-bin-1.27.5-aarch64::https://github.com/icloud-photos-downloader/icloud_photos_downloader/releases/download/v1.27.5/icloudpd-1.27.5-linux-arm64
-	sha256sums_aarch64 = 5f18f89ebc8d7dfcb0c0a9771f5f82b1e6ee516d4b3de1d43b1b3a6cf72c1d31
-	source_armv7h = icloudpd-bin-1.27.5-armv7h::https://github.com/icloud-photos-downloader/icloud_photos_downloader/releases/download/v1.27.5/icloudpd-1.27.5-linux-arm32v7
-	sha256sums_armv7h = 11b1e73cf951d4322206aad48b41168bf22cbb871c7a54c564be3c62d0a7df3b
+	source_x86_64 = icloudpd-bin-1.28.0-x86_64::https://github.com/icloud-photos-downloader/icloud_photos_downloader/releases/download/v1.28.0/icloudpd-1.28.0-linux-amd64
+	sha256sums_x86_64 = 0edcb5fb8cdef6c21f4a36782f3fa38636a06b6e9e0853b110bde728f725ed77
+	source_aarch64 = icloudpd-bin-1.28.0-aarch64::https://github.com/icloud-photos-downloader/icloud_photos_downloader/releases/download/v1.28.0/icloudpd-1.28.0-linux-arm64
+	sha256sums_aarch64 = 0dcefd8f4b9d98c4c75b5e0aa24324950a8134c932aadd4f3892eb1eb43ee151
+	source_armv7h = icloudpd-bin-1.28.0-armv7h::https://github.com/icloud-photos-downloader/icloud_photos_downloader/releases/download/v1.28.0/icloudpd-1.28.0-linux-arm32v7
+	sha256sums_armv7h = 326cec1177b52df829328448ee77f70f5e2009d6f0a9829970097e8adfdcc2a6
 
 pkgname = icloudpd-bin
