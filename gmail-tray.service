@@ -1,0 +1,12 @@
+[Unit]
+Description=Gmail Tray Notifier
+After=graphical-session.target network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/gmail-tray
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
