@@ -8,7 +8,7 @@
 # Contributor: zerathidune <zerathidune @ gmail . com>
 
 pkgname=bluej
-pkgver=5.4.2
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="A free Java Development Environment designed for beginners, used by millions worlwide."
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("https://github.com/k-pet-group/BlueJ-Greenfoot/releases/download/BLUEJ-
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}.xml")
-sha256sums=('6be5f125fc9bf3216bf42646c7179eb607ca9e021fcb6e506206fe8c78dbca89'
+sha256sums=('c060301af30705bd231eaf37655eb0198ce3bdcaaa228393c09622003f5a4a02'
             '8ec0152633f246326ec6f6eca8ccbfb0a00405e0d70532bde5867151864d71db'
             'a845f3997ce91cfb1eeb882f4a6e1e4408b7a7d7c2e164495b5a077bdf353e7f'
             'e05453bd791b34ab6cfd6b67250dd18210f47505344b7980ad28bf922c014772')
