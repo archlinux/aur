@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="vtm"
-pkgver=2025.06.05
+pkgver=2025.06.06
 pkgrel=1
 pkgdesc="Terminal multiplexer with window manager and session sharing"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake>=3.24')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}_system_deps.patch")
-b2sums=('e2729b9932933cdac601ca6b19e2ab3637195739a2673060225308a0015420bcadddb73df92b9343488dfc1daea0f9e86717f03497a81de151802dd1bdacc079'
+b2sums=('7271bc6f8844e510343090c10380892c12e34f6374196c5fa1dac635ff60cb1070cbed7887d65eec97b18a070b747df9d2241dd1b91dc04d8c5933a2ab0d0903'
         '54b668965735b1bf36a3254e1557d7fe265dbd235dc16d921d23a341c9371806e2df00655be754f9b3edec06bb9843cc07b9cfecebf27b8063850d53a33bc6b9')
 
 prepare() {
