@@ -2,7 +2,7 @@
 
 pkgname=tango-test
 _pkgname=TangoTest
-pkgver=3.10
+pkgver=3.11
 pkgrel=1
 groups=(tango-controls)
 pkgdesc="A famous TANGO server developed for testing."
@@ -16,7 +16,7 @@ source=(
   "cmake_version.patch"
 )
 sha256sums=(
-  "ef563bbd2299e3c1c19e6072bda5c1dafd551936ba3af7559fb5cf80d349b6cd"
+  "793d5340a5fe0f9954296eff96afe0a15191d1c1a3895ba3c535cf26984f1677"
   "af54571ed8374c85899b219680fdfa7547b7d9ea3cc0cbf17fefe9212a629628"
 )
 

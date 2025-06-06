@@ -1,6 +1,6 @@
 pkgbase = tango-test
 	pkgdesc = A famous TANGO server developed for testing.
-	pkgver = 3.10
+	pkgver = 3.11
 	pkgrel = 1
 	url = https://gitlab.com/tango-controls/TangoTest
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tango-test
 	depends = gcc-libs
 	depends = omniorb
 	depends = tango-cpp
-	source = https://gitlab.com/tango-controls/TangoTest/-/releases/3.10/downloads/TangoTest-with-submodules-3.10.tar.gz
+	source = https://gitlab.com/tango-controls/TangoTest/-/releases/3.11/downloads/TangoTest-with-submodules-3.11.tar.gz
 	source = cmake_version.patch
 	sha256sums = ef563bbd2299e3c1c19e6072bda5c1dafd551936ba3af7559fb5cf80d349b6cd
 	sha256sums = af54571ed8374c85899b219680fdfa7547b7d9ea3cc0cbf17fefe9212a629628
