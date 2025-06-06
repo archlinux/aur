@@ -1,4 +1,4 @@
 [pypy3-kiwisolver]
 source = "github"
-github = "nucleic/kiwisolver"
+github = "nucleic/kiwi"
 use_latest_release = "true"
