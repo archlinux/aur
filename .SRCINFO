@@ -8,6 +8,7 @@ pkgbase = floc-git
 	makedepends = git
 	makedepends = rust
 	makedepends = llvm
+	makedepends = clang
 	depends = llvm-libs
 	depends = gcc-libs
 	provides = floc

@@ -8,7 +8,7 @@ url="https://github.com/romch007/floc"
 license=('MIT')
 depends=("llvm-libs" "gcc-libs")
 provides=('floc')
-makedepends=('git' 'rust' 'llvm')
+makedepends=('git' 'rust' 'llvm' 'clang')
 source=('git+https://github.com/romch007/floc.git')
 sha256sums=('SKIP')
 
