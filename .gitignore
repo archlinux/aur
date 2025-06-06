@@ -1,3 +1,3 @@
-ashell
-pkg
-ashell-*.pkg.tar.zst
+*
+!.SRCINFO
+!PKGBUILD
