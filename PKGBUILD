@@ -2,8 +2,8 @@
 pkgname=vt-cli
 _gitcommit=4ece259925ad5b08ea5883d595437e57ce2e3d6e
 epoch=1
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='VirusTotal Command Line Interface'
 arch=('i686' 'x86_64')
 url=https://virustotal.github.io/vt-cli/

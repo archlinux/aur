@@ -1,7 +1,7 @@
 pkgbase = vt-cli
 	pkgdesc = VirusTotal Command Line Interface
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	epoch = 1
 	url = https://virustotal.github.io/vt-cli/
 	arch = i686

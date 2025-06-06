@@ -1,0 +1,4 @@
+[vt-cli]
+source = "github"
+github = "VirusTotal/vt-cli"
+use_max_tag = true
