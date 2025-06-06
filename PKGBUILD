@@ -5,9 +5,9 @@
 # don't need to install Flutter or any build dependencies.
 #
 pkgname=cloudtolocalllm
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
-pkgdesc="CloudToLocalLLM - Enhanced Architecture with System Tray Integration and Local LLM Management (Unified 145MB package)"
+pkgdesc="CloudToLocalLLM - Multi-App Flutter Architecture with System Tray Integration and Local LLM Management"
 arch=('x86_64')
 url="https://github.com/imrightguy/CloudToLocalLLM"
 license=('MIT')
@@ -56,7 +56,7 @@ prepare() {
     msg "Extracting unified CloudToLocalLLM binary package..."
 
     # Verify checksum using downloaded SHA256 file
-    local package_file="cloudtolocalllm-3.2.0-x86_64.tar.gz"
+    local package_file="cloudtolocalllm-${pkgver}-x86_64.tar.gz"
     local checksum_file="${package_file}.sha256"
 
     if [[ ! -f "$package_file" ]]; then
@@ -75,15 +75,16 @@ prepare() {
     fi
 
     # Extract the package (already extracted by makepkg)
-    # Verify extraction - the package extracts to linux-x64 subdirectory
-    if [[ ! -f "linux-x64/cloudtolocalllm" ]]; then
-        error "Main executable not found after extraction"
+    # Verify extraction - the package extracts to cloudtolocalllm-${pkgver}-x86_64 subdirectory
+    if [[ ! -d "cloudtolocalllm-${pkgver}-x86_64/bin" ]]; then
+        error "Multi-app binary package structure not found after extraction"
         return 1
     fi
 
-    # Create symlink for version compatibility
-    if [[ ! -d "cloudtolocalllm-${pkgver}" ]]; then
-        ln -sf "linux-x64" "cloudtolocalllm-${pkgver}"
+    # Verify main executables exist
+    if [[ ! -f "cloudtolocalllm-${pkgver}-x86_64/bin/cloudtolocalllm_main" ]]; then
+        error "Main executable not found after extraction"
+        return 1
     fi
 
     msg "Unified binary package extraction completed successfully"
@@ -95,57 +96,60 @@ build() {
 }
 
 package() {
-    cd "$srcdir/cloudtolocalllm-${pkgver}"
+    cd "$srcdir/cloudtolocalllm-${pkgver}-x86_64"
 
-    # Install the unified CloudToLocalLLM application
+    # Install the multi-app CloudToLocalLLM package
     install -dm755 "$pkgdir/usr/share/cloudtolocalllm"
 
     # Copy all files from the extracted binary package
-    # The package extracts to a subdirectory
-    cp -r * "$pkgdir/usr/share/cloudtolocalllm/" 2>/dev/null || {
-        # If that fails, try copying specific files
-        for file in cloudtolocalllm data lib VERSION PACKAGE_INFO.txt; do
-            if [[ -e "$file" ]]; then
-                cp -r "$file" "$pkgdir/usr/share/cloudtolocalllm/"
-            fi
-        done
-    }
+    cp -r * "$pkgdir/usr/share/cloudtolocalllm/"
 
-    # Make the Flutter binary executable
-    chmod +x "$pkgdir/usr/share/cloudtolocalllm/cloudtolocalllm"
-
-    # Install essential tray daemon (core component) if present
+    # Install all Flutter applications to /usr/bin
     install -dm755 "$pkgdir/usr/bin"
-    if [[ -f "cloudtolocalllm-enhanced-tray" ]]; then
-        install -Dm755 "cloudtolocalllm-enhanced-tray" "$pkgdir/usr/bin/cloudtolocalllm-tray"
+
+    # Install main application (primary interface)
+    if [[ -f "bin/cloudtolocalllm_main" ]]; then
+        install -Dm755 "bin/cloudtolocalllm_main" "$pkgdir/usr/bin/cloudtolocalllm-main"
     fi
 
-    # Install settings application if present
-    if [[ -f "cloudtolocalllm-settings" ]]; then
-        install -Dm755 "cloudtolocalllm-settings" "$pkgdir/usr/bin/cloudtolocalllm-settings"
+    # Install chat application
+    if [[ -f "bin/cloudtolocalllm_chat" ]]; then
+        install -Dm755 "bin/cloudtolocalllm_chat" "$pkgdir/usr/bin/cloudtolocalllm-chat"
+    fi
+
+    # Install tray daemon (core component)
+    if [[ -f "bin/cloudtolocalllm_tray" ]]; then
+        install -Dm755 "bin/cloudtolocalllm_tray" "$pkgdir/usr/bin/cloudtolocalllm-tray"
+    fi
+
+    # Install settings application
+    if [[ -f "bin/cloudtolocalllm_settings" ]]; then
+        install -Dm755 "bin/cloudtolocalllm_settings" "$pkgdir/usr/bin/cloudtolocalllm-settings"
     fi
 
     # Create unified wrapper script in /usr/bin
     cat > "$pkgdir/usr/bin/cloudtolocalllm" << 'EOF'
 #!/bin/bash
-# CloudToLocalLLM v3.0.3 unified wrapper script
-# Manages essential tray daemon and Flutter application
+# CloudToLocalLLM v3.3.0 multi-app wrapper script
+# Manages tray daemon and launches main Flutter application
 
-cd /usr/share/cloudtolocalllm
-
-# Start essential tray daemon (core tunneling functionality)
+# Start tray daemon if available and not already running
 if [[ -x "/usr/bin/cloudtolocalllm-tray" ]]; then
-    # Start tray daemon if not already running
-    if ! pgrep -f "cloudtolocalllm-enhanced-tray" > /dev/null; then
-        /usr/bin/cloudtolocalllm-tray --daemon &
+    if ! pgrep -f "cloudtolocalllm_tray" > /dev/null; then
+        /usr/bin/cloudtolocalllm-tray &
         sleep 1
     fi
 else
-    echo "Warning: Essential tray daemon not found. Some functionality may be limited."
+    echo "Warning: Tray daemon not found. Some functionality may be limited."
 fi
 
 # Launch main Flutter application
-exec ./cloudtolocalllm "$@"
+if [[ -x "/usr/bin/cloudtolocalllm-main" ]]; then
+    exec /usr/bin/cloudtolocalllm-main "$@"
+else
+    echo "Error: Main application not found"
+    exit 1
+fi
 EOF
     chmod +x "$pkgdir/usr/bin/cloudtolocalllm"
 
