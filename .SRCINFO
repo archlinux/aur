@@ -1,0 +1,17 @@
+pkgbase = cribarth-music-player-bin
+	pkgdesc = A lightweight Electron wrapper for Home Assistant`s Music Assistant "This Device" player.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://github.com/glanyrafon01/cribarth-music-player
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	depends = electron29
+	provides = cribarth-music-player=1.1.8
+	conflicts = cribarth-music-player
+	source = cribarth-music-player-1.1.8.deb::https://github.com/glanyrafon01/cribarth-music-player/releases/download/v1.1.8/cribarth-music-player_1.1.8_amd64.deb
+	source = cribarth-music-player.sh
+	sha256sums = 516c48f9453c1253e94d5e402c677c1a5effdaa070195db06581b457d5f71eb5
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = cribarth-music-player-bin
