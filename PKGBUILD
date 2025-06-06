@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=wiso-steuer-2025
-pkgver=32.7.2480
+pkgver=32.7.2520
 pkgrel=1
 pkgdesc='File your German tax return for the tax year 2024'
 arch=('x86_64')
@@ -39,13 +39,11 @@ source=(
   'wiso-steuer-2025.desktop'
 )
 
-sha512sums=(
-  'SKIP'
-  'SKIP'
-  '2ea34ccbe09cb22f9f417eae4fa3ea051dcafc78d552498744416904e25aa62bf72bc11884a77fdacba095abef1d64610e5afbdce7a13df33b4f555d32ca8335'
-  '2381be9fd74e26caf4fba059d5dcf14a49c83d4c57ce142803fbb8155403385de1dd1eddad28cc0cdf68ab2ab96592b9511064062731fb3e96c308ae0eb786f7'
-  'ede44188da134d5d120c6c8c4d619d91e998a1b9f28497e82307a99a65a7791e492d9c3e7ae2d6c297ef7a12e87a5579cd86bd36b805a5bc0ad1ff7197addaaa'
-)
+sha512sums=('SKIP'
+            'SKIP'
+            '0c0f7d144255b42ad935223b6c535c14b32b8f82c34dda27627964e111095ba3ac26130cf11895f4a1e3827278b89d39b0f6b076436a34315d23ead941d6c5f4'
+            '2381be9fd74e26caf4fba059d5dcf14a49c83d4c57ce142803fbb8155403385de1dd1eddad28cc0cdf68ab2ab96592b9511064062731fb3e96c308ae0eb786f7'
+            'ede44188da134d5d120c6c8c4d619d91e998a1b9f28497e82307a99a65a7791e492d9c3e7ae2d6c297ef7a12e87a5579cd86bd36b805a5bc0ad1ff7197addaaa')
 
 prepare() {
   _extract_original_installer \
