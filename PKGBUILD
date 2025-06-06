@@ -65,6 +65,7 @@ build() {
         -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='true' \
         -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO' \
+        -DJPEGXL_ENABLE_AVX512:BOOL='true' \
         -DJPEGXL_INSTALL_JARDIR='/usr/share/java' \
         -Wno-dev
     cmake --build build
