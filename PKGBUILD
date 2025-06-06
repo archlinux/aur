@@ -2,7 +2,7 @@
 
 pkgname=moz-phab
 _gitpkgname=review
-pkgver=1.9.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='Phabricator review submission/management tool'
 arch=('any')
@@ -41,15 +41,26 @@ source=(
   'disable-auto-update.patch'
   'disable-exception-reporting.patch'
   'disable-telemetry.patch'
+  'phabricator-D252875.patch'
 )
 
-sha512sums=('b4dca4e337ad34857c37fc43f5ef1ee0b2b0b4a740206ead9da82dd03cf46c1641239c82604db5ddf00409a7c427ee8f2f209e4ec96a4757a3de4f1455769621'
+sha512sums=('014709675f1be87cc7798aebe13d79938b7858a908afc73af89e4a32753ba86f5effdc60e5e93c830d8b643665b2938324d3685bd178a097914e07b8b2596b57'
             'dd5fd9467261866549596836f72dd7d28519f71bce6e838bb1a0de8f607fa7dd7407abd5ac3a02fd8ab139e8a53affef05a73f8597ba0367be15a4e78811ca54'
             '35087a5d373f7ec1c726204b272454e08b8e43469000eb415f218adeb5606e7f48d603191571f88f23295c15b97275866ac117a5d87d0ea9e7ffefc837fefe43'
-            'd8ca129d5441282124599a74e5f0c898d28f4bde574ce0e6c792d492fdcd262c0bb40e3ed79611f603a3dde74fc18659b9b6303abd1022644ebe57031f993ef6')
+            'd8ca129d5441282124599a74e5f0c898d28f4bde574ce0e6c792d492fdcd262c0bb40e3ed79611f603a3dde74fc18659b9b6303abd1022644ebe57031f993ef6'
+            '6aeba4733afd58e51748acef8907021e372ed253b00cc17391a82d0b0d840c995c8aa6117cd0b33f9c375005970968d85d2376f9e63d940b2915ebe98687ba04')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
+
+  # Remove this patch once upstream has merged D252875 and included
+  # it in a stable release.
+  # See also:
+  # - https://bugzilla.mozilla.org/show_bug.cgi?id=1970907
+  # - https://phabricator.services.mozilla.com/D252875
+  echo >&2 'Applying patch to fix distracting warning'
+  patch -p1 < ../phabricator-D252875.patch
+
   # Do not let the package upgrade itself
   patch -p1 < ../disable-auto-update.patch
   # Do not report exceptions to upstream project by default
