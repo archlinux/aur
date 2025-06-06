@@ -1,0 +1,20 @@
+pkgbase = kmorph
+	pkgdesc = A simple morph-utility for the KDE
+	pkgver = 0.1.5+r3+g747d0fb
+	pkgrel = 1
+	url = https://invent.kde.org/sandsmark/kde1-kmorph
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	groups = kde1-applications
+	groups = kde1-utilities
+	license = GPL-2.0-or-later
+	makedepends = cmake>=3
+	depends = gcc-libs
+	depends = glibc
+	depends = kdelibs1
+	depends = qt1
+	source = kde1-kmorph-747d0fb4fc4716b11f9288a80a125b289c41b80d.tar.gz::https://invent.kde.org/sandsmark/kde1-kmorph/-/archive/747d0fb4fc4716b11f9288a80a125b289c41b80d/kde1-kmorph-747d0fb4fc4716b11f9288a80a125b289c41b80d.tar.gz
+	b2sums = 2ad6ff8e8b94b2ec9abd1743fbd16f215fd6612f01644baa9d20e4d70708268f8d426b6fceaf5e4808f09a0c1c802e456bd912eb79c3ea8f2d9b6f6fdd5903cf
+
+pkgname = kmorph
