@@ -6,7 +6,7 @@
 # Contributor: John Proctor <jproctor@prium.net>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
-pkgname=ccrtp
+pkgname=ccrtp-openssl1.1
 pkgver=2.1.2
 pkgrel=4
 pkgdesc="An implementation of RTP, the real-time transport protocol from the IETF"
