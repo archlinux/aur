@@ -1,7 +1,7 @@
 # Maintainer: Nick Dowsett <nick42d at gmail dot com>
 
 pkgname=openscad-lsp
-pkgver=1.2.6
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A LSP server for OpenSCAD"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ keywords=('cad' 'lsp')
 license=('Apache-2.0')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('56a6aeb7808475ae08292fd9e2a41f52706ea745a8a291b06b59840befba971f')
+sha256sums=('4b515451d2d54837b5556d83cdfdb494901ef9ca18a3ec9821b7eb01d282825f')
 # This is the pre-existing lto/rust bug.
 # More info: https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
 options=(!lto)
