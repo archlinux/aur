@@ -1,0 +1,15 @@
+pkgbase = netparty-git
+	pkgdesc = A tool for hassle-free LAN parties over the Internet
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/Taro94/netparty
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = wireguard-tools
+	depends = iproute2
+	options = !strip
+	source = git+https://gitlab.com/Taro94/netparty.git
+	md5sums = SKIP
+
+pkgname = netparty-git
