@@ -6,7 +6,7 @@ _name=manimpango
 
 pkgname=python-manimpango
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="C binding for Pango using Cython used in Manim to render (non-LaTeX) text."
 
 arch=("x86_64")
@@ -40,6 +40,10 @@ checkdepends=(
     # https://github.com/ManimCommunity/ManimPango/issues/110
     "cantarell-fonts" # An installed font is required; it doesn't need to be this one.
 )
+
+prepare () {
+    sed -i 's/Cython>=3.0.2,<3.1/Cython>=3.1/' "$_name-$pkgver/pyproject.toml"
+}
 
 build () {
     cd "$srcdir/$_name-$pkgver"
