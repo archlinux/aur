@@ -1,0 +1,7 @@
+/.vscode/
+/fire/
+/src/
+/pkg/
+*.log
+*.pkg.*
+*.tar.*
