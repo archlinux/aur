@@ -2,7 +2,7 @@
 
 pkgname=garage-webui
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Garage去中心化的存储服务的前端UI界面。"
 url="https://github.com/khairul169/garage-webui"
 arch=("any")

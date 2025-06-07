@@ -3,6 +3,8 @@ Description=Garage Web UI
 After=network.target
 
 [Service]
+User=garage
+Group=garage
 Environment="PORT=3919"
 Environment="CONFIG_PATH=/etc/garage.toml"
 ExecStart=/usr/local/bin/garage-webui
