@@ -111,7 +111,7 @@ diff -rauN pcc/cc/ccom/trees.c pcc-true-false-patch/cc/ccom/trees.c
  }
 diff -rauN pcc/cc/cxxcom/trees.c pcc-true-false-patch/cc/cxxcom/trees.c
 --- pcc/cc/cxxcom/trees.c	2025-06-07 13:56:46.672272618 +0200
-+++ pcc-true-false-patch/cc/cxxcom/trees.c	2025-06-07 13:57:29.526862196 +0200
++++ pcc-true-false-patch/cc/cxxcom/trees.c	2025-06-07 14:34:42.269699663 +0200
 @@ -2024,7 +2024,7 @@
   * Write out logical expressions as branches.
   */
@@ -201,12 +201,15 @@ diff -rauN pcc/cc/cxxcom/trees.c pcc-true-false-patch/cc/cxxcom/trees.c
  
  	default:
  		rmcops(p);
- 		if (true >= 0)
+-		if (true >= 0)
 -			fixbranch(p, true);
-+			fixbranch(p, _true);
- 		if (false >= 0) {
- 			if (true >= 0)
+-		if (false >= 0) {
+-			if (true >= 0)
 -				branch(false);
++		if (_true >= 0)
++			fixbranch(p, _true);
++		if (_false >= 0) {
++			if (_true >= 0)
 +				branch(_false);
  			else
 -				fixbranch(buildtree(EQ, p, bcon(0)), false);
