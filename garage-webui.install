@@ -1,0 +1,12 @@
+post_install() {
+    echo "==== Garage WebUI 安装完成 ===="
+    echo "请运行以下命令启用并设置开机自启动："
+    echo "  sudo systemctl enable --now garage-webui.service"
+    echo ""
+    echo "可以通过以下命令查看服务状态："
+    echo "  systemctl status garage-webui.service"
+}
+
+post_upgrade() {
+    post_install
+}

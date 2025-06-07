@@ -1,0 +1,12 @@
+[Unit]
+Description=Garage Web UI
+After=network.target
+
+[Service]
+Environment="PORT=3919"
+Environment="CONFIG_PATH=/etc/garage.toml"
+ExecStart=/usr/local/bin/garage-webui
+Restart=always
+
+[Install]
+WantedBy=default.target
