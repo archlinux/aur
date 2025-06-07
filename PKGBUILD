@@ -12,6 +12,8 @@ makedepends=('pandoc')
 # this is a hard requirement, otherwise we would need to declare a conflict with
 # extra/shellcheck, which would then block 'shellcheck-bin'
 depends=('shellcheck-bin')
+provides=('shellcheck-doc')
+conflicts=('shellcheck-doc')
 replaces=('shellcheck-doc')
 source=("https://raw.githubusercontent.com/koalaman/shellcheck/v${pkgver}/shellcheck.1.md"
         "https://raw.githubusercontent.com/koalaman/shellcheck/v${pkgver}/manpage")
