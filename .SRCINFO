@@ -3,6 +3,7 @@ pkgbase = vencord-hook
 	pkgver = 1
 	pkgrel = 9
 	url = https://github.com/Vencord/Installer.git
+	install = vencord-hook.install
 	arch = any
 	license = GPL3
 	license = MIT
