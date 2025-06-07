@@ -1,0 +1,12 @@
+diff --git a/src/backend/common/deterministicHash.cpp b/src/backend/common/deterministicHash.cpp
+index 2280d4cbb..5aa7991e9 100644
+--- a/src/backend/common/deterministicHash.cpp
++++ b/src/backend/common/deterministicHash.cpp
+@@ -12,6 +12,7 @@
+ #include <nonstd/span.hpp>
+ #include <numeric>
+ #include <string>
++#include <cstdint>
+
+ using nonstd::span;
+ using std::accumulate;
