@@ -1,6 +1,6 @@
 pkgbase = dev_ink
 	pkgdesc = A Gui program to create, save and sort different color themes, written in python.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Veicm/Dev_Ink
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = dev_ink
 	depends = python-customtkinter
 	provides = dev_ink
 	conflicts = dev_ink-git
-	source = dev_ink-1.0.0.tar.gz::https://github.com/Veicm/Dev_Ink/archive/refs/tags/v1.0.0.tar.gz
+	source = dev_ink-1.0.1.tar.gz::https://github.com/Veicm/Dev_Ink/archive/refs/tags/v1.0.1.tar.gz
 	source = dev_ink.desktop
 	md5sums = SKIP
 	md5sums = SKIP

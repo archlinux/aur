@@ -1,5 +1,5 @@
 pkgname=dev_ink
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A Gui program to create, save and sort different color themes, written in python. "
 arch=('any')
