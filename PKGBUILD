@@ -1,7 +1,7 @@
 # Maintainer: jimzrt <jimzrt1@gmail.com>
 
 pkgname=apprenticevr-bin
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A modern, cross-platform desktop application designed for managing and sideloading content onto Meta Quest devices"
 arch=('x86_64' 'aarch64')
