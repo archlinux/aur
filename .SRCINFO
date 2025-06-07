@@ -1,7 +1,7 @@
 pkgbase = imfile
 	pkgdesc = A full-featured download manager.Forked from motrix.(Use system-wide electron)
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://imfile.io/
 	arch = aarch64
 	arch = armv7l
@@ -14,6 +14,7 @@ pkgbase = imfile
 	makedepends = curl
 	makedepends = git
 	depends = electron31
+	depends = aria2
 	provides = motrix
 	conflicts = imfile
 	conflicts = imfile-electron
