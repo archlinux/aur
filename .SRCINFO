@@ -1,0 +1,14 @@
+pkgbase = rust-images-matching-subdirectories
+	pkgdesc = A Rust crate for matching images in subdirectories
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://crates.io/crates/images_matching_subdirectories
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	source = rust-images-matching-subdirectories-0.1.0.tar.gz::https://crates.io/api/v1/crates/images_matching_subdirectories/0.1.0/download
+	sha256sums = 5ed1de2e81a3fa920c0d6ce56b6707f71802747395fad9c3d9dbbe7a8e79fd56
+
+pkgname = rust-images-matching-subdirectories
