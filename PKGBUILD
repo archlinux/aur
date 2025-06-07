@@ -1,5 +1,5 @@
 pkgname=dev_ink
-pkgver=0.9.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A Gui program to create, save and sort different color themes, written in python. "
 arch=('any')
@@ -8,7 +8,7 @@ license=('Apache')
 depends=('python' 'tk' 'python-setuptools' 'python-customtkinter')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 source=(
-    "$pkgname::git+$url.git"
+    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     "dev_ink.desktop"
 )
 md5sums=('SKIP' 'SKIP')
