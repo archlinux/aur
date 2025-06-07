@@ -1,0 +1,3 @@
+[perl-test2-tools-command]
+source = "cpan"
+cpan = "Test2-Tools-Command"
