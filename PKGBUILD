@@ -23,7 +23,7 @@ depends=(
   sdl2 speexdsp
   zlib
 )
-optdepends=(rpg200{0,3}-rtp)  
+optdepends=(rpg200{0,3}-rtp 'soundfont-gmgsx: recommended --soundfont')
 makedepends=(binutils flatpak grep patchelf)
 
 FLATPAK_USER_DIR="${srcdir}"
