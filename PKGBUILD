@@ -1,7 +1,7 @@
 # Maintainer: atemmel <temmeladam@gmail.com>
 pkgname=spider
 pkgrel=1
-pkgver=r8.d644ada
+pkgver=current
 pkgdesc="Fast and simple terminal file manager"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/atemmel/${pkgname}"
@@ -17,7 +17,7 @@ source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver(){
-	cd "${srcdir}/${_pkgbasename}"
+	cd "${srcdir}/${pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
