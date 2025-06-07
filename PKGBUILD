@@ -5,7 +5,7 @@
 pkgname=hyprnav
 _origpkgname=hyprnav
 pkgver=0.1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern and customizable workspace navigation effect for Hyprland."
 arch=("x86_64")
 url='https://pypi.org/project/hyprnav/'
@@ -19,6 +19,10 @@ depends=(
   "alsa-utils"
   "python-playsound3"
   "ttf-hack-nerd"
+  "gtk4-layer-shell"
+  "gst-plugins-base"
+  "gst-plugins-good"
+  "gstreamer"
 )
 makedepends=(
   "python-build"
