@@ -1,6 +1,6 @@
 # Maintainer: Shantanu Tushar <shantanu@kde.org>
 pkgname=ruqola-git
-pkgver=2.5.0.r167.gf4fd399
+pkgver=2.5.1.r409.g3379835
 pkgrel=1
 epoch=
 pkgdesc="Rocket.Chat client for the KDE desktop"
