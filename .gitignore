@@ -1,5 +1,6 @@
 pkg
 src
+hath-rust
 *.pkg.tar.*
 *.log
 *.tar.gz
