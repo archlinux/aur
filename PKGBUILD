@@ -7,7 +7,7 @@ pkgname=danser-git-no-surprise
 url="https://github.com/Wieku/danser-go"
 pkgver=0.11.0.r0.g8331b0ff
 pkgrel=1
-pkgdesc="Dancing visualizer of osu! maps and custom osu! client written in Go (git version)"
+pkgdesc="Dancing visualizer of osu! maps and custom osu! client written in Go (git version), now with the unfunny rick roll removed"
 arch=('x86_64')
 license=('GPL3')
 source=("git+https://github.com/Wieku/danser-go.git"
@@ -65,13 +65,16 @@ build() {
     cc -o danser -I. cmain/main_danser.c -Wl,-rpath,. -Wl,-rpath,/usr/lib/danser -L. -ldanser-core
     # build the launcher
     cc -D LAUNCHER -o danser-launcher -I. cmain/main_danser.c -Wl,-rpath,. -Wl,-rpath,/usr/lib/danser -L. -ldanser-core
+
+	# build assets.dpak
+	go run tools/assets/assets.go ./
 }
 
 package() {
     cd "${srcdir}/danser-go"
     mkdir -p "${pkgdir}/usr/lib/danser" "${pkgdir}/usr/bin"
 
-    install -Dm755 libdanser-core.so libbass.so libbass_fx.so libbassmix.so "${pkgdir}/usr/lib/danser"
+    install -Dm755 libdanser-core.so libbass.so libbass_fx.so libbassmix.so assets.dpak "${pkgdir}/usr/lib/danser"
     cp -r "assets" "${pkgdir}/usr/lib/danser/assets"
     chmod 755 "${pkgdir}/usr/lib/danser/assets"
 
