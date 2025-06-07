@@ -2,7 +2,7 @@
 
 pkgname=media-downloader-git
 pkgver=5.4.0.r10.g18adeee
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI front-end for downloading media files (yt-dlp, gallery-dl, lux-dl, you-get, svtplay-dl, aria2c, wget, safari books)'
 arch=(x86_64)
 url=https://github.com/mhogomchungu/media-downloader
@@ -11,8 +11,11 @@ depends=(qt6-base)
 makedepends=(cmake git)
 optdepends=(
   'aria2: download plugin'
+  'atomicparsley: for metadata download (for yt-dlp)'
+  'ffmpeg: for media file post-processing' # extensions/yt-dlp-ffmpeg.json
   'gallery-dl: download plugin'
   'lux-dl: download plugin'
+  'python-mutagen: for metadata download (for yt-dlp)'
   'svtplay-dl: download plugin'
   'wget: download plugin'
   'you-get: download plugin'
