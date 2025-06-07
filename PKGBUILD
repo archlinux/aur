@@ -1,0 +1,1 @@
+/home/a/Documents/easyrpg-player-bin/PKGBUILD
