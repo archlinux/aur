@@ -2,7 +2,7 @@
 # Contributor: Tony Lambiris <tony@libpcap.net>
 # Contributor: Shaleen Jain <shaleen(at)jain(dot)sh>
 pkgname=system76-dkms-git
-pkgver=1.0.17.r0.gf01bffd
+pkgver=1.0.18.r7.gcc41a32
 pkgrel=1
 pkgdesc="On newer System76 laptops, this driver controls some of the hotkeys and allows for custom fan control."
 arch=('x86_64')
@@ -27,7 +27,8 @@ prepare() {
 
 package() {
   cd "${pkgname%-git}"
-  install -Dm644 Makefile *.c -t "$pkgdir/usr/src/system76-${pkgver//.r*/}/"
+  install -Dm644 Kbuild Makefile -t "$pkgdir/usr/src/system76-${pkgver//.r*/}/"
+  cp -r src "$pkgdir/usr/src/system76-${pkgver//.r*/}/"
   install -Dm644 "lib/udev/hwdb.d/99-${pkgname%-git}.hwdb" -t \
     "$pkgdir/usr/lib/udev/hwdb.d/"
   install -Dm644 "debian/${pkgname%-git}.dkms" \
