@@ -1,7 +1,7 @@
 pkgbase = perl-test2-tools-command
 	pkgdesc = Test simple unix commands in Perl
 	pkgver = 0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/dist/Test2-Tools-Command
 	arch = any
 	license = BSD-3-Clause

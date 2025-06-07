@@ -3,7 +3,7 @@
 
 pkgname=perl-test2-tools-command
 pkgver=0.20
-pkgrel=1
+pkgrel=2
 pkgdesc='Test simple unix commands in Perl'
 arch=('any')
 url="https://metacpan.org/dist/Test2-Tools-Command"
@@ -35,7 +35,7 @@ build() {
 
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
-  perl Build.PL --installdirs=vendor
+  perl Build.PL --installdirs=vendor --create_packlist=0
   ./Build
 }
 
