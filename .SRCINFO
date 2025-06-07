@@ -1,0 +1,16 @@
+pkgbase = netbird-ui-bin
+	pkgdesc = Official GUI for the Netbird client
+	pkgver = 0.46.0
+	pkgrel = 1
+	url = https://netbird.io
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	depends = netbird
+	provides = netbird-ui
+	source = https://github.com/netbirdio/netbird/releases/download/v0.46.0/netbird-ui-linux_0.46.0_linux_amd64.tar.gz
+	sha256sums = 64187153ce655dab1b47d605e4d42d0ec54f39556f16c7ea5e44e846ea45e108
+
+pkgname = netbird-ui-bin
