@@ -1,0 +1,15 @@
+pkgbase = zsh-zce-git
+	pkgdesc = zsh EasyMotion/ace-jump-mode
+	pkgver = 0.6.16.r0.gcf4354f
+	pkgrel = 1
+	url = https://github.com/hchbaw/zce.zsh
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	depends = zsh
+	provides = zce
+	conflicts = zce
+	source = zsh-zce-git::git+https://github.com/hchbaw/zce.zsh.git
+	b2sums = SKIP
+
+pkgname = zsh-zce-git
