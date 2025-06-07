@@ -3,12 +3,12 @@
 pkgname=pcem-git
 _pkgname=pcem
 pkgver=17.r217.g82357eab
-pkgrel=1
+pkgrel=2
 pkgdesc="Emulator for various IBM PC computers and clones - development version"
 url="http://pcem-emulator.co.uk/"
 arch=('x86_64' 'i686')
 license=('GPL-2.0-or-later')
-depends=('wxwidgets-gtk3' 'openal' 'sdl2' 'alsa-lib' 'libpcap')
+depends=('wxwidgets-gtk3' 'openal' 'sdl2-compat' 'alsa-lib' 'libpcap')
 makedepends=('git' 'ninja' 'meson' 'cmake')
 conflicts=('pcem')
 provides=("pcem=${pkgver}")
