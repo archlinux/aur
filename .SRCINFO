@@ -1,8 +1,8 @@
 pkgbase = jellyfin-git
 	pkgdesc = The Free Software Media System
-	pkgver = 10.11.0.r27254.86b81c9
+	pkgver = 10.11.0.r27401.6d287d5
 	pkgrel = 1
-	url = https://github.com/jellyfin/jellyfin
+	url = https://jellyfin.org
 	arch = any
 	license = GPL2
 	makedepends = dotnet-sdk>=9
@@ -12,20 +12,22 @@ pkgbase = jellyfin-git
 	conflicts = jellyfin
 	source = git+https://github.com/jellyfin/jellyfin.git
 	source = git+https://github.com/jellyfin/jellyfin-web.git
-	source = jellyfin.conf
-	source = jellyfin.service
-	source = jellyfin.sysusers
-	source = jellyfin.tmpfiles
+	source = jellyfin-packaging::git+https://github.com/jellyfin/jellyfin-packaging
+	source = sysusers.conf
+	source = tmpfiles.conf
+	source = fix-service-file.patch
+	source = fix-ffmpeg-default.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 2aa97a1a7a8a447171b59be3e93183e09cbbc32c816843cc47c6777b9aec48bd9c1d9d354f166e0b000ad8d2e94e6e4b0559aa52e5c159abbc103ed2c5afa3f0
-	sha512sums = 99d02080b1b92e731250f39ddd13ceca7129d69d0c05e0939620cbc3f499a9574668c63fa889704a4905560888131e980d7ab1fbcc5837b04d33ce26daa9d42b
-	sha512sums = 6fc2638e6ec4b1ee0240e17815c91107b694e5fde72c1bc7956c83067bbeacb632de899b86837e47a0ec04288131b15c20746373b45e0669c8976069a55d627a
-	sha512sums = 45a62b62d97b9a83289d4dfde684163b1bcf340c1921fb958e5a701812c61b392901841940c67e5fa5148783277d5b4dc65ba01d3a22e8f855ea62154ad9be33
+	sha512sums = SKIP
+	sha512sums = 3d2699174fe8719536e4f3ad98bac609a959815e38491f166257d248c195f007745634fa1907557d55c814bb06235130e9cea2d226770956004650d7d9b2b564
+	sha512sums = 3e12ec3d3fcb15975d5f86bc3ce3363ae89b0e9e0b2580c29fc8a612c0220a74a067138b15c48ae27bb3c5777eca33055f10651949678a1ee7bd094293f6abb6
+	sha512sums = f2e1c0a6da7a4edc850ab7fb6b93edc3b97c9a1278e3ba88cb86da5260afe21fc59e8f230120119d0998868d99fb85bda4eb17afb1a99a031eabf8941b36cc40
+	sha512sums = 8d04e440cf8f545089d24ad4c4c927141e9f27be75c965decb96b378424bc96253dd5f12ffc62856a8c0b803e586ab2e4f80b911ba1557aeea1470a265d66668
 
 pkgname = jellyfin-git
-	depends = jellyfin-web-git=10.11.0.r27254.86b81c9
-	depends = jellyfin-server-git=10.11.0.r27254.86b81c9
+	depends = jellyfin-web-git=10.11.0.r27401.6d287d5
+	depends = jellyfin-server-git=10.11.0.r27401.6d287d5
 
 pkgname = jellyfin-web-git
 	pkgdesc = Jellyfin web client
@@ -33,11 +35,12 @@ pkgname = jellyfin-web-git
 	conflicts = jellyfin-web
 
 pkgname = jellyfin-server-git
-	pkgdesc = Jellyfin server component
+	pkgdesc = Jellyfin server backend
 	depends = dotnet-runtime>=9
 	depends = aspnet-runtime>=9
 	depends = ffmpeg
 	depends = sqlite
 	provides = jellyfin-server
 	conflicts = jellyfin-server
-	backup = etc/conf.d/jellyfin
+	backup = etc//logging.json
+	backup = etc//.env

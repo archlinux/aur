@@ -5,60 +5,75 @@
 
 pkgbase=jellyfin-git
 pkgname=(jellyfin-git jellyfin-web-git jellyfin-server-git)
-pkgver=10.11.0.r27254.86b81c9
+pkgver=10.11.0.r27401.6d287d5
 pkgrel=1
 pkgdesc='The Free Software Media System'
 arch=('any')
-url='https://github.com/jellyfin/jellyfin'
+url='https://jellyfin.org'
+_url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
 makedepends=('dotnet-sdk>=9' 'npm' 'git')
 provides=('jellyfin')
 conflicts=('jellyfin')
 source=('git+https://github.com/jellyfin/jellyfin.git'
         'git+https://github.com/jellyfin/jellyfin-web.git'
-        'jellyfin.conf'
-        'jellyfin.service'
-        'jellyfin.sysusers'
-        'jellyfin.tmpfiles')
+        "jellyfin-packaging::git+${_url}-packaging"
+        'sysusers.conf'
+        'tmpfiles.conf'
+        'fix-service-file.patch'
+        'fix-ffmpeg-default.patch'
+      )
 sha512sums=('SKIP'
             'SKIP'
-            '2aa97a1a7a8a447171b59be3e93183e09cbbc32c816843cc47c6777b9aec48bd9c1d9d354f166e0b000ad8d2e94e6e4b0559aa52e5c159abbc103ed2c5afa3f0'
-            '99d02080b1b92e731250f39ddd13ceca7129d69d0c05e0939620cbc3f499a9574668c63fa889704a4905560888131e980d7ab1fbcc5837b04d33ce26daa9d42b'
-            '6fc2638e6ec4b1ee0240e17815c91107b694e5fde72c1bc7956c83067bbeacb632de899b86837e47a0ec04288131b15c20746373b45e0669c8976069a55d627a'
-            '45a62b62d97b9a83289d4dfde684163b1bcf340c1921fb958e5a701812c61b392901841940c67e5fa5148783277d5b4dc65ba01d3a22e8f855ea62154ad9be33')
-
+            'SKIP'
+            '3d2699174fe8719536e4f3ad98bac609a959815e38491f166257d248c195f007745634fa1907557d55c814bb06235130e9cea2d226770956004650d7d9b2b564'
+            '3e12ec3d3fcb15975d5f86bc3ce3363ae89b0e9e0b2580c29fc8a612c0220a74a067138b15c48ae27bb3c5777eca33055f10651949678a1ee7bd094293f6abb6'
+            'f2e1c0a6da7a4edc850ab7fb6b93edc3b97c9a1278e3ba88cb86da5260afe21fc59e8f230120119d0998868d99fb85bda4eb17afb1a99a031eabf8941b36cc40'
+            '8d04e440cf8f545089d24ad4c4c927141e9f27be75c965decb96b378424bc96253dd5f12ffc62856a8c0b803e586ab2e4f80b911ba1557aeea1470a265d66668'
+          )
 pkgver() {
   cd jellyfin
   printf "%s.r%s.%s" "$(grep AssemblyVersion SharedVersion.cs | cut -d'"' -f2)" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
+prepare() {
+  pushd jellyfin-packaging
+
+  # fix systemd service file
+  patch -p1 -i "$srcdir/fix-service-file.patch"
+  patch -p1 -i "$srcdir/fix-ffmpeg-default.patch"
+  popd
+
+  pushd jellyfin-web
+  # download dependencies
+  # FS#79713 - remove environment variable with 10.9.x release
+  SKIP_PREPARE=1 npm ci --no-audit --no-fund --no-update-notifier
+  popd
+}
+
 build(){
-  # Build jellyfin-web
-  cd jellyfin-web
+  pushd jellyfin
 
-  npm ci --no-audit
-  npm run build:production
-
-  # Build jellyfin-server
-  cd ../jellyfin
-
-  # Disable dotnet telemetry
+  # disable dotnet telemetry
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
+  export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
+  export DOTNET_NOLOGO=1
 
-  # Force dotnet to use 8.x when multiple SDKs are installed
-  dotnet new globaljson --sdk-version 9.0.0 --roll-forward latestMinor --force
+  dotnet \
+    publish \
+    Jellyfin.Server \
+    --configuration Release \
+    --output builddir \
+    --self-contained false\
+    --runtime "$_dotnet_runtime" \
+    -p:DebugSymbols=false \
+    -p:DebugType=none
+  popd
 
-  dotnet build --configuration Release Jellyfin.Server
-  # Ideally, this would be run in package() with the --output variable pointing
-  # to "$pkgdir"/usr/lib/jellyfin, but this step fails in fakeroot.
-  # The makepkg output looks like
-  #   Restore completed in 56.84 ms for /aur/jellyfin-git/src/jellyfin/Jellyfin.Server/Jellyfin.Server.csproj.
-  #   ==> ERROR: A failure occurred in package().
-  # without indicating any sort of failure.
-  dotnet publish --configuration Release Jellyfin.Server --output "$PWD"/publish
-  # Clean up the runtimes folder (keep glibc linux-*)
-  rm -rfv publish/runtimes/{alpine-*,linux-musl-*,osx*,tizen-*,win*}
+  pushd jellyfin-web
+  npm run build:production
+  popd
 }
 
 package_jellyfin-git() {
@@ -66,19 +81,42 @@ package_jellyfin-git() {
 }
 
 package_jellyfin-server-git() {
-  pkgdesc="Jellyfin server component"
-  depends=('dotnet-runtime>=9' 'aspnet-runtime>=9' 'ffmpeg' 'sqlite')
-  backup=('etc/conf.d/jellyfin')
+  pkgdesc='Jellyfin server backend'
+  _pkgname="${pkgname%-server-git}"
+  depends=(
+    'dotnet-runtime>=9'
+    'aspnet-runtime>=9'
+    'ffmpeg'
+    'sqlite'
+  )
+  backup=(
+    "etc/$_pkgname/logging.json"
+    "etc/$_pkgname/$_pkgname.env"
+  )
   provides=('jellyfin-server')
   conflicts=('jellyfin-server')
 
-  mkdir -p "$pkgdir"/usr/lib
-  cp -dr --no-preserve='ownership' jellyfin/publish "$pkgdir"/usr/lib/jellyfin
+  pushd jellyfin
+  # install binaries
+  install -vd "$pkgdir/usr/"{lib,bin}
+  cp -r builddir "$pkgdir/usr/lib/jellyfin"
+  ln -sf /usr/lib/jellyfin/jellyfin "$pkgdir/usr/bin/jellyfin"
 
-  install -Dm 644 jellyfin.service -t "$pkgdir"/usr/lib/systemd/system/
-  install -Dm 644 jellyfin.sysusers "$pkgdir"/usr/lib/sysusers.d/jellyfin.conf
-  install -Dm 644 jellyfin.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/jellyfin.conf
-  install -Dm 644 jellyfin.conf "$pkgdir"/etc/conf.d/jellyfin
+  # ensure binaries have correct permissions
+  chmod 755 "$pkgdir/usr/lib/$_pkgname/jellyfin"
+
+  # use upstream provided packaging files
+  cd "$srcdir/jellyfin-packaging/debian/conf"
+
+  # systemd integration
+  install -vDm644 jellyfin.service -t "$pkgdir/usr/lib/systemd/system"
+  install -vDm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+  install -vDm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
+  # set /etc/jellyfin to 750 according to tmpfiles
+  install -vdm750 "$pkgdir/etc/$_pkgname"
+  install -vDm640 jellyfin "$pkgdir/etc/$_pkgname/$_pkgname.env"
+  install -vDm640 logging.json -t "$pkgdir/etc/$_pkgname"
+  popd
 }
 
 package_jellyfin-web-git() {
@@ -86,8 +124,9 @@ package_jellyfin-web-git() {
   provides=('jellyfin-web')
   conflicts=('jellyfin-web')
 
-  mkdir -p "$pkgdir"/usr/lib/jellyfin
-  cp -r jellyfin-web/dist "$pkgdir"/usr/lib/jellyfin/jellyfin-web
+  pushd jellyfin-web
+  install -vd "$pkgdir/usr/share/jellyfin/web"
+  cp -vr dist/* "$pkgdir/usr/share/jellyfin/web"
 }
 
 # vim: ts=2 sw=2 et:
