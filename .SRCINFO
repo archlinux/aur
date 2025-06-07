@@ -1,7 +1,7 @@
 pkgbase = libunity
 	pkgdesc = Library for instrumenting and integrating with all aspects of the Unity shell
-	pkgver = 7.2.4
-	pkgrel = 16
+	pkgver = 7.2.5
+	pkgrel = 17
 	url = https://github.com/MercySimp/libunity
 	arch = i686
 	arch = x86_64
