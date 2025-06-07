@@ -1,6 +1,6 @@
 pkgbase = grabit
 	pkgdesc = Screenshot and file uploader for Zipline and other services
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://git.creations.works/creations/grabit
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = grabit
 	optdepends = xclip: X11 clipboard
 	optdepends = python-pillow: image preview
 	optdepends = python-screeninfo: screen placement
-	source = git+https://git.creations.works/creations/grabit.git#tag=v1.0.3
+	source = git+https://git.creations.works/creations/grabit.git#tag=v1.0.4
 	sha256sums = SKIP
 
 pkgname = grabit

@@ -1,5 +1,5 @@
 pkgname=grabit
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Screenshot and file uploader for Zipline and other services"
 arch=('any')
