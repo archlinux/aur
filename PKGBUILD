@@ -1,6 +1,6 @@
 # Maintainer: Karl Essinger <xkaess22@gmail.com>
 pkgname=scpdiscord-git
-pkgver=3.3.0.RC5.24.gitfb7be27
+pkgver=3.3.0.RC5.25.git883d139
 pkgrel=1
 pkgdesc="A very customisable Discord bot + SCP:SL plugin combo. Dev build."
 arch=("x86_64")
@@ -56,7 +56,7 @@ package() {
   install -d "${pkgdir}/usr/lib/systemd/system/"
   install -Dm 644 packaging/scpdiscord@.service "${pkgdir}/usr/lib/systemd/system/"
 
-  install -d "${pkgdir}/etc/scpdiscord/"
+  install -d "${pkgdir}/usr/share/scpdiscord/"
   install -Dm 644 SCPDiscordBot/default_config.yml "${pkgdir}/usr/share/scpdiscord/"
 
   install -d "${pkgdir}/usr/lib/sysusers.d/"
