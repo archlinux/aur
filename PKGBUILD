@@ -9,7 +9,7 @@ pkgdesc='Bringing loggers and listeners together'
 arch=('any')
 url="https://metacpan.org/dist/Log-Any"
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
-# See "prereqs" in https://metacpan.org/dist/Log-Any/source/Makefile.PL
+# See https://metacpan.org/dist/Log-Any/source/Makefile.PL
 makedepends=(
   ## CONFIGURE_REQUIRES
   'perl-extutils-makemaker'
