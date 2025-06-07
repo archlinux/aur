@@ -1,4 +1,4 @@
-# Maintainer: WitheringAway <124115470+notwithering@users.noreply.github.com>
+# Maintainer: Jim Philip <jimphilip394 at gmail dot com>
 pkgname=vencord-hook
 pkgver=1
 pkgrel=9
