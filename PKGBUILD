@@ -1,0 +1,20 @@
+pkgname='linuxtoys'
+pkgver='2.1.6'
+pkgrel=1
+pkgdesc="A collection of tools for Linux in a user-friendly way."
+arch=('x86_64')
+depends=(bash curl wget libnewt base-devel git)
+makedepends=()
+conflicts=(linuxtoys)
+provides=("linuxtoys=$pkgver")
+install=linuxtoys.install
+source=("https://github.com/psygreg/linuxtoys/releases/download/${pkgver}/linuxtoys-${pkgver}.tar.xz")
+sha256sums=('8ea514018097474ac17dfc96985cbe04145a4389dc4888c30c491d2e09d1ed9c')
+
+package() {
+
+    mkdir -p ${pkgdir}/usr
+    cp -rf ${srcdir}/linuxtoys-${pkgver}/{bin,share} ${pkgdir}/usr
+    chmod +x "${pkgdir}/usr/bin/linuxtoys.sh"
+
+}
