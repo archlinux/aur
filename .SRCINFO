@@ -1,6 +1,6 @@
 pkgbase = linux-git
 	pkgdesc = Linus Torvalds' Mainline Linux
-	pkgver = 6.15.r13627.119b1e61a769
+	pkgver = 6.17.r6871.f79e772258df
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = linux-git
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	b2sums = SKIP
-	b2sums = a2644043800a384d40677ed957c5c9cbd70600b20f700fa5c3e84684574da7496f8a17b10f2984a15a918ef60211db08996cb189daf3a98cbb8bb5cbad0a8512
+	b2sums = 3beca3300f4f51c41e15b456dfc5185746aaf883537f974f0c2ac0fb979bff2ecf942742352a13dbaaa2a77b371ac71f62d0ee6bd8f6247ab56ea5e0ae65ea3b
 	b2sums = 249bec61fed688345a0f41245af9e8e189af3149e66a3c0dcc8e833151428232a701a35ed760ef93ceb5f25d9378c44f903f380a7051a65fb9a203c6fb51ebcd
 	b2sums = SKIP
 	b2sums = SKIP
