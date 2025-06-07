@@ -6,7 +6,7 @@
 pkgname=danser-git-no-surprise
 url="https://github.com/Wieku/danser-go"
 pkgver=0.11.0.r0.g8331b0ff
-pkgrel=1
+pkgrel=2
 pkgdesc="Dancing visualizer of osu! maps and custom osu! client written in Go (git version), now with the unfunny rick roll removed"
 arch=('x86_64')
 license=('GPL3')
