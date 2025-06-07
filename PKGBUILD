@@ -2,7 +2,7 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=terminal-parrot
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 conflicts=('terminal-parrot-git')
 pkgdesc="Party parrot (http://cultofthepartyparrot.com) for your terminal"
@@ -12,17 +12,15 @@ license=('MIT')
 makedepends=('go')
 options=('!strip' '!emptydirs')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/jmhobbs/terminal-parrot/archive/${pkgver}.tar.gz")
-sha256sums=('fa860eec47f3158c16978d29e34eb0d9f77c733f5792162fb01dc78ed3f5a775')
+sha256sums=('bfa921f6263627488ae498e60bf7f8cbb22054956336f5339319f0ff83a275b6')
 
 prepare() {
-    mkdir -p go
-    export GOPATH="${srcdir}/go"
-    go mod init github.com/nsf/termbox-go
-    go mod tidy
+    cd "${pkgname}-${pkgver}"
+    go mod download
 }
 
 build() {
-  export GOPATH="${srcdir}/go"
+  #export GOPATH="${srcdir}/go"
   cd "${pkgname}-${pkgver}"
 
   go build \
@@ -31,7 +29,9 @@ build() {
   -mod=readonly \
   -modcacherw \
   -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+  -o ${pkgname} \
   .
+
 }
 
 package() {
