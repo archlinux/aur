@@ -14,7 +14,7 @@ conflicts=("${_realname}")
 options=('!strip')
 
 source=("$_realname-$pkgver-$pkgrel-$arch.pkg.tar.zst::$url/releases/download/v$pkgver-$pkgrel/$_realname-$pkgver-$pkgrel-any.pkg.tar.zst")
-sha256sums=('6b0e58e22cc4ce318cea94e738acaea9a90f1b764be9c1ee26ae82b31e88685a')
+sha256sums=('fe950e3462d1209ee08ae62ebbbaaf2fae67f411ae1358470c264a6f1ab6cd73')
 
 pkgver() {
   curl -s "https://api.github.com/repos/xxanqw/justdd/releases/latest" | \
