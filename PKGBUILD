@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=financemono-git
 _pkgname=financeMONO
-pkgver=1.1.0.r10.gafe875f
+pkgver=1.2.0.r0.g150a773
 _electronversion=36
 _nodeversion=24
 pkgrel=1
