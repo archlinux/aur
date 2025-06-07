@@ -1,7 +1,7 @@
 pkgbase = libunity
 	pkgdesc = Library for instrumenting and integrating with all aspects of the Unity shell
-	pkgver = 7.2.5
-	pkgrel = 17
+	pkgver = 7.2.6
+	pkgrel = 18
 	url = https://github.com/MercySimp/libunity
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = libunity
 	depends = dee
 	depends = gtk3
 	depends = libdbusmenu-glib
-	source = libunity_7.2.4.tar.gz::https://github.com/MercySimp/libunity/releases/download/7.2.4/libunity_7.2.4.tar.gz
-	sha256sums = 870508715a6c38f9031e61e00dd7825068f3b5a7a74e97fb9c6eb748815ad0e7
+	source = libunity_7.2.4.tar.gz::https://github.com/MercySimp/libunity/releases/download/7.2.6/libunity_7.2.6.tar.gz
+	sha256sums = c66ae9319421f42428115c7249d0c1c4aca5b55e31d81efdd736d7241f4d6a93
 
 pkgname = libunity

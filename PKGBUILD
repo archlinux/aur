@@ -18,7 +18,7 @@ license=('LGPL3.0')
 depends=('dee' 'gtk3' 'libdbusmenu-glib')
 makedepends=('gnome-common' 'gobject-introspection' 'intltool' 'vala')
 source=("${pkgname}_${pkgver}.tar.gz::$url/releases/download/${pkgver}/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('870508715a6c38f9031e61e00dd7825068f3b5a7a74e97fb9c6eb748815ad0e7')
+sha256sums=('c66ae9319421f42428115c7249d0c1c4aca5b55e31d81efdd736d7241f4d6a93')
 
 prepare() {
 	cd "$srcdir/${pkgname}_${pkgver}"
