@@ -13,6 +13,6 @@ pkgbase = perl-feature-compat-try
 	options = !emptydirs
 	options = purge
 	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Feature-Compat-Try-0.05.tar.gz
-	b2sums = 69675b5fb0a4586eb9418fcb07f699801cce18384c674fc2a27d48d49749e5a373d214418b366b16fb8c844e9565409b39b6fd940b578e837346004259af32a5
+	b2sums = c713975d02fc5d0eaa439dfb8ab0c905589f4020eb5f8bb49e72a9e77f7fc65818c45e77604fca0a3c1ac09906007d9fa93e9d3d68ec4faa55bc27bde39c4d60
 
 pkgname = perl-feature-compat-try
