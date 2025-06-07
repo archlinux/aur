@@ -46,17 +46,12 @@ depends=(
 )
 makedepends=(
   bash-completion
-  dnsmasq
   git
   glusterfs
-  iproute2
   libiscsi
   libxslt
-  lvm2
   meson
-  open-iscsi
   python-docutils
-  qemu-base
   systemd
 )
 optdepends=(
