@@ -23,19 +23,3 @@ package() {
 	install -Dm644 "$srcdir/LICENSE-VENCORD-HOOK" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-VENCORD-HOOK"
 	install -Dm644 "$srcdir/LICENSE-VENCORD" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-VENCORD"
 }
-
-post_remove() {
-	if [[ -f /etc/pacman.d/hookbin/vencord.sh ]]; then
-		rm /etc/pacman.d/hookbin/vencord.sh
-	fi
-
-	rmdir /etc/pacman.d/hookbin 2>/dev/null || true
-
-	if [[ -f /etc/pacman.d/hooks/vencord.hook ]]; then
-		rm /etc/pacman.d/hooks/vencord.hook
-	fi
-
-	rm -f "$pkgdir/usr/share/licenses/$pkgname/LICENSE-VENCORD-HOOK"
-	rm -f "$pkgdir/usr/share/licenses/$pkgname/LICENSE-VENCORD"
-	rmdir "$pkgdir/usr/share/licenses/$pkgname" 2>/dev/null || true
-}
