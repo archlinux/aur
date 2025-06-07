@@ -3,7 +3,7 @@
 
 pkgname="fenrir"
 pkgver=2025.06.06
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
@@ -26,7 +26,7 @@ backup=('etc/fenrirscreenreader/settings/settings.conf')
 source=("git+https://git.stormux.org/storm/${pkgname}.git#tag=${pkgver}"
   'fenrirscreenreader.service')
 install=fenrir.install
-sha512sums=('b564647226426983d6815afeeb10b35c33a7e7508d6420c6ece8b24bc25f9e9997982a53668b47e07a7f6dc3ac078d0a54753fa74541132a70a5214eea37e54c'
+sha512sums=('cd210bc8fcd37c411cf0ef9f657f6d1177ffe21982a229226ec4046febece49132b9c533d0fb6122ecd647698d931d1b5c8c4d2c934016bb27afd168df0ad84b'
             'e5e690bd9084d20a3c96ed391989e1db5211ef65b36a18ca6a49f8e16b40771a8a35151388df69d3cc64459d075ecb5fd0c415e11dfb43bc6ed2927612262168')
 
 package() {
