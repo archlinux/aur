@@ -1,7 +1,7 @@
 pkgbase = faff
 	pkgdesc = ollama powered conventional commit message generator
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wimpysworld/faff
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = faff
 	depends = curl
 	depends = jq
 	depends = git
-	depends = ollama
+	optdepends = ollama: default usage expects models on localhost
 	source = git+https://github.com/wimpysworld/faff.git#tag=0.1.0
 	sha256sums = f99c59bc26d4155e396eb37df1cb4fa5b9f1905b4d7396e5e3567ea5575af7d5
 
