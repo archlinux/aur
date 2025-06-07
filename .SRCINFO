@@ -14,6 +14,7 @@ pkgbase = imfile-git
 	makedepends = gendesk
 	makedepends = curl
 	depends = electron31
+	depends = aria2
 	provides = motrix
 	provides = imfile=1.1.2
 	conflicts = imfile
