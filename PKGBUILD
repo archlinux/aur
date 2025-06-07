@@ -6,7 +6,7 @@
 # will be on config.extra file.
 
 pkgbase=linux-git
-pkgver=6.18.rc1.r104.98ac9cc4b445
+pkgver=7.0.r11782.c1f49dea2b8f
 pkgrel=1
 pkgdesc="Linus Torvalds' Mainline Linux"
 url="https://www.kernel.org"
@@ -22,12 +22,16 @@ backup=(
 )
 makedepends=(
   bc
+  binutils
   bison
   cpio
   flex
   gettext
+  glibc
   git
   libelf
+  libgcc
+  openssl
   pahole
   perl
   python
@@ -35,7 +39,10 @@ makedepends=(
   rust-bindgen
   rust-src
   tar
+  xxhash
   xz
+  zlib
+  zstd
 )
 options=(
   !debug
@@ -56,7 +63,7 @@ validpgpkeys=(
 )
 b2sums=(
   'SKIP'                                                                                                                              # linux git source
-  '408c78776556e4d90dd55db3f90b140f92abf8d02d05e8c782aad9428793f32b9de4af9657fdc25f8e439e52a7042a03c62d0586592a0194e9a65fdca67353af'  # config
+  'e3ac836fb2ed5474821c80f54deb209dcbe989b4c28489a7583ab8bc4181fe9739f319d093021311b12d152799adc2d15eefadec45cf66df84ba3189dbc13dc3'  # config
   '249bec61fed688345a0f41245af9e8e189af3149e66a3c0dcc8e833151428232a701a35ed760ef93ceb5f25d9378c44f903f380a7051a65fb9a203c6fb51ebcd'  # config.extra
   'SKIP'                                                                                                                              # config.user
   'SKIP'                                                                                                                              # remote
@@ -165,6 +172,7 @@ _package() {
     kmod
   )
   optdepends=(
+    "$pkgbase-headers: headers and scripts for building modules"
     'linux-firmware: firmware images needed for some devices'
     'scx-scheds: to use sched-ext schedulers'
     'wireless-regdb: to set the correct wireless channels of your country'
@@ -207,7 +215,18 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-  depends=(pahole)
+  depends=(
+    binutils
+    glibc
+    libelf
+    libgcc
+    openssl
+    pahole
+    xxhash
+    zlib
+    zstd
+  )
+  provides=(LINUX-HEADERS)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
