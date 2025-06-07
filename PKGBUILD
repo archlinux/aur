@@ -22,8 +22,8 @@ sha256sums=('870508715a6c38f9031e61e00dd7825068f3b5a7a74e97fb9c6eb748815ad0e7')
 
 prepare() {
 	cd "$srcdir/${pkgname}_${pkgver}"
-	patch -p1 < "$srcdir/0001-Fix-FTB-with-recent-vala-requiring-non-public-abstra.patch"
-	patch -p1 < "$srcdir/libunity-7.1.4-vala-053.patch"
+	patch -p1 < "0001-Fix-FTB-with-recent-vala-requiring-non-public-abstra.patch"
+	patch -p1 < "libunity-7.1.4-vala-053.patch"
 }
 
 build() {
