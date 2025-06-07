@@ -19,7 +19,7 @@ optdepends=(
 checkdepends=(
   ## tests_requires
   'perl-test-simple>=0.88'
-  'perl-test-pod>=1.00'
+  'perl-test-pod>=1.00' # See https://metacpan.org/dist/Feature-Compat-Class/source/t/99pod.t
 )
 makedepends=(
   ## configure_requires
