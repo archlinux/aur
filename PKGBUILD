@@ -27,10 +27,10 @@ prepare() {
   cd ${pkgname}
   git apply ../tracee_include.patch
   git apply ../py313-imp-importlib.patch
-  sed -i \
-    -e "s/^GIT_VERSION :=.*/GIT_VERSION := ${pkgver}/" \
-    -e "s/^GIT_COMMIT :=.*/GIT_COMMIT := unknown/" \
-    src/GNUmakefile
+#  sed -i \
+#    -e "s/^GIT_VERSION :=.*/GIT_VERSION := ${pkgver}/" \
+#    -e "s/^GIT_COMMIT :=.*/GIT_COMMIT := unknown/" \
+#    src/GNUmakefile
 }
 
 check() {
