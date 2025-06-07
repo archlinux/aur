@@ -2,7 +2,7 @@
 pkgname=justdd-bin
 _realname=justdd
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="JustDD - Simple graphical USB image writer for Linux and Windows ISOs (pre-built binary)"
 arch=('any')
 url="https://github.com/xxanqw/justdd"
