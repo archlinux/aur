@@ -1,0 +1,5 @@
+[proot]
+source = 'github'
+github = 'proot-me/proot'
+use_latest_release = true
+prefix = 'v'

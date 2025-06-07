@@ -1,16 +1,21 @@
 pkgbase = proot
 	pkgdesc = chroot, mount --bind, and binfmt_misc without privilege/setup
 	pkgver = 5.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://proot-me.github.io/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
+	makedepends = git
 	makedepends = python-docutils
 	makedepends = libxslt
+	depends = python
 	depends = talloc
-	provides = proot
-	source = proot-v5.4.0.tar.gz::https://github.com/cedric-vincent/proot/archive/v5.4.0.tar.gz
-	sha256sums = 29248aac2a7ce10c3bd5ee5602742ec33b2532310ff9cf73b79f3c133e5a5f68
+	source = git+https://github.com/cedric-vincent/proot.git#commit=5f780cba57ce7ce557a389e1572e0d30026fcbca
+	source = tracee_include.patch::https://github.com/proot-me/proot/pull/397.patch
+	source = py313-imp-importlib.patch::https://github.com/proot-me/proot/pull/398.patch
+	sha256sums = 27e88869a8394fd7f5b81b806e2ed612e714d8eaf6888b203c0b70846738201e
+	sha256sums = a2daf48cf4042c2e949ef827a0f2554dd2a513c25e3567eaa65fb0900bb9b19b
+	sha256sums = 4c1149819e5aafc088b0dadbd8a9ddf6ca8e6b9ceb10b9574704f68f5a8549a2
 
 pkgname = proot
