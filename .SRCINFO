@@ -1,6 +1,6 @@
 pkgbase = python-pybind11-stubgen
 	pkgdesc = PEP 561 type stubs generator for pybind11 modules
-	pkgver = 2.5.3
+	pkgver = 2.5.4
 	pkgrel = 1
 	url = https://github.com/sizmailov/pybind11-stubgen
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-pybind11-stubgen
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = pybind11-stubgen-2.5.3::git+https://github.com/sizmailov/pybind11-stubgen.git#tag=v2.5.3
-	sha256sums = 9e1925808ff4cfedf35a86fc71409a6f10e275824240b38f193e6a312fb48eb8
+	source = pybind11-stubgen-2.5.4::git+https://github.com/sizmailov/pybind11-stubgen.git#tag=v2.5.4
+	sha256sums = 5448e72da3e78424c9e1d1e81c8540ff7f0487d42150ffc7c5c5bdc024f638a6
 
 pkgname = python-pybind11-stubgen
