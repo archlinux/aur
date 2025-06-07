@@ -1,7 +1,7 @@
 # Maintainer: Andrew Lin <andrewlin16 at gmail dot com>
 
 pkgname=zxtune-bin
-pkgver=r5080
+pkgver=r5100
 pkgrel=1
 pkgdesc="Portable toolkit for ZX-Spectrum music playing (pre-compiled)"
 arch=(x86_64)
@@ -18,7 +18,7 @@ optdepends=(
 provides=(zxtune)
 conflicts=(zxtune-git)
 source=("https://bitbucket.org/zxtune/zxtune/downloads/zxtune_${pkgver}_linux_x86_64.tar.gz")
-md5sums=('263fed2f494a1b30551a8f6bd725cf0c')
+md5sums=('07f4be11470805c30ee3e32fc9baa9f9')
 
 package() {
   cp -r usr "${pkgdir}/usr"
