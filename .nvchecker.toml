@@ -1,0 +1,5 @@
+[omekasy-bin]
+source = "github"
+github = "ikanago/omekasy"
+use_latest_release = true
+prefix = "v"
