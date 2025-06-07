@@ -2,9 +2,9 @@
 # Maintainer: MYT <MYT @ QQ COM>
 pkgname=zyfun-git
 _pkgname=ZyFun
-pkgver=3.4.0.r0.gee1b2da
-_electronversion=35
-_nodeversion=23
+pkgver=3.4.0.r13.gc49f4ad
+_electronversion=36
+_nodeversion=24
 pkgrel=1
 epoch=1
 pkgdesc="zyfun client"
@@ -15,6 +15,8 @@ provides=("${pkgname%-git}")
 conflicts=(
     "${pkgname%-git}"
     "zy-player"
+    "${pkgname%-git}-appimage"
+    "${pkgname%-git}-bin"
 )
 depends=(
     "electron${_electronversion}"
