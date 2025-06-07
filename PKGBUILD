@@ -1,13 +1,13 @@
 pkgname=clash-nyanpasu-bin
 _pkgname=clash-nyanpasu
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​"
 arch=('x86_64')
 url="https://github.com/LibNyanpasu/clash-nyanpasu"
 license=('GPL3')
 options=('!strip' '!debug')
-depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator' 'clash-meta' 'clash-meta-is-mihomo')
+depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator' 'mihomo')
 conflicts=('clash-nyanpasu-git' 'clash-nyanpasu-appimage' 'clash-nyanpasu')
 provides=('clash-nyanpasu')
 optdepends=('clash-rs: custom protocol network proxy, coding with rust')
