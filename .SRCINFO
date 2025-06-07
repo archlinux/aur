@@ -1,0 +1,14 @@
+pkgbase = rust-name-time-period
+	pkgdesc = A Rust crate for handling named time periods
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://crates.io/crates/name_time_period
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	source = rust-name-time-period-0.3.1.tar.gz::https://crates.io/api/v1/crates/name_time_period/0.3.1/download
+	sha256sums = d565f8e12bbb8212fc4407fa25da8ad2b8e28f316333764ff276d8c8461b83af
+
+pkgname = rust-name-time-period
