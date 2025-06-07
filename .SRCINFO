@@ -1,36 +1,36 @@
 pkgbase = linux-lts-versioned-bin
 	pkgdesc = The LTS Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 6.12.31
+	pkgver = 6.12.32
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
 	license = GPL2
-	noextract = linux-lts-6.12.31-1-x86_64.pkg.tar.zst
-	noextract = linux-lts-headers-6.12.31-1-x86_64.pkg.tar.zst
-	noextract = linux-lts-docs-6.12.31-1-x86_64.pkg.tar.zst
+	noextract = linux-lts-6.12.32-1-x86_64.pkg.tar.zst
+	noextract = linux-lts-headers-6.12.32-1-x86_64.pkg.tar.zst
+	noextract = linux-lts-docs-6.12.32-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://archive.archlinux.org/packages/.all/linux-lts-6.12.31-1-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-lts-headers-6.12.31-1-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-lts-docs-6.12.31-1-x86_64.pkg.tar.zst
-	sha256sums = 8a3c3fcec71da0ce5f0eebdc46b8d68e8ede089c5f54b64584d98eeca6035e39
-	sha256sums = 672de009f4ef2e80f1caee93a93c3ea3c7aef24ab53d9f76b2fe9abc809e23c6
-	sha256sums = fe0ee151987a7097ef723074c62681715da0548650ae82117bb5d0eb0522473c
+	source = https://archive.archlinux.org/packages/.all/linux-lts-6.12.32-1-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-lts-headers-6.12.32-1-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-lts-docs-6.12.32-1-x86_64.pkg.tar.zst
+	sha256sums = b37ef2adb8fc45cf98e96e08fe9c0a125d59f04c0bed94110b3065658f14c2b2
+	sha256sums = 871127ef06a2b85f98869b3c87fb5a1a2374e73f3e3a0a978778aeb84e6a3ba0
+	sha256sums = 9d69c33707372cf6459a47009365fd6d060ed169743eb1fed854753b4b1605fe
 
 pkgname = linux-lts-versioned-bin
-	pkgdesc = Metapackage depending on linux6.12.31-1-lts-bin
-	depends = linux6.12.31-1-lts-bin
+	pkgdesc = Metapackage depending on linux6.12.32-1-lts-bin
+	depends = linux6.12.32-1-lts-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-lts-versioned-headers-bin
-	pkgdesc = Metapackage depending on linux6.12.31-1-lts-headers-bin
-	depends = linux6.12.31-1-lts-headers-bin
+	pkgdesc = Metapackage depending on linux6.12.32-1-lts-headers-bin
+	depends = linux6.12.32-1-lts-headers-bin
 
 pkgname = linux-lts-versioned-docs-bin
-	pkgdesc = Metapackage depending on linux6.12.31-1-lts-docs-bin
-	depends = linux6.12.31-1-lts-docs-bin
+	pkgdesc = Metapackage depending on linux6.12.32-1-lts-docs-bin
+	depends = linux6.12.32-1-lts-docs-bin
 
-pkgname = linux6.12.31-1-lts-bin
-	pkgdesc = The LTS Linux kernel and modules, version 6.12.31-1-lts
+pkgname = linux6.12.32-1-lts-bin
+	pkgdesc = The LTS Linux kernel and modules, version 6.12.32-1-lts
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -43,11 +43,11 @@ pkgname = linux6.12.31-1-lts-bin
 	conflicts = linux-lts
 	replaces = wireguard-lts
 
-pkgname = linux6.12.31-1-lts-headers-bin
-	pkgdesc = Headers and scripts for building modules for the LTS Linux kernel 6.12.31-1-lts
+pkgname = linux6.12.32-1-lts-headers-bin
+	pkgdesc = Headers and scripts for building modules for the LTS Linux kernel 6.12.32-1-lts
 	depends = pahole
 	conflicts = linux-lts-headers
 
-pkgname = linux6.12.31-1-lts-docs-bin
-	pkgdesc = Documentation for the LTS Linux kernel 6.12.31-1-lts
+pkgname = linux6.12.32-1-lts-docs-bin
+	pkgdesc = Documentation for the LTS Linux kernel 6.12.32-1-lts
 	conflicts = linux-lts-docs
