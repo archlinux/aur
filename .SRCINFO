@@ -1,0 +1,12 @@
+pkgbase = 42fecth-git
+	pkgdesc = 42fetch is a neofetch-like tool for fetching system information and displaying it in a visually appealing way and making it highly customizable. Usable for 42Students it is written Shell.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/0xySan/42fetch
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = 42fecth-git::git+https://github.com/0xySan/42fetch
+	md5sums = SKIP
+
+pkgname = 42fecth-git
