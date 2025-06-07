@@ -50,5 +50,4 @@ package() {
 
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   ./Build install destdir="${pkgdir}" create_packlist=0
-  tree "${pkgdir}"
 }
