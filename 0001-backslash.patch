@@ -1,0 +1,16 @@
+Description: escape a double quote in a regexp
+Author: gregor herrmann <gregoa@debian.org>
+Reviewed-by: Jonathan Yu <jawnsy@cpan.org>
+Origin: vendor
+Forwarded: no
+--- a/Escape.pm
++++ b/Escape.pm
+@@ -699,7 +699,7 @@
+ 		} elsif ($text =~ s/\A\s+//m){
+ 			push(@words, unprintable($word));
+ 			$word = '';
+-		} elsif ($text =~ s/\A"//) {
++		} elsif ($text =~ s/\A\"//) {
+ 			carp "string2list found an unmatched quote at '$text'";
+ 			return;
+ 		} else {
