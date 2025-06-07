@@ -1,26 +1,31 @@
-# Maintainer: Gabriel Jensen <gabrielbjensen@icloud.com>
+# Maintainer: Gabriel Bjørnager Jensen <gabriel@achernar.io>
+
 pkgname=agbsum-git
-pkgver=11
+pkgver=1.0
 pkgrel=1
-pkgdesc="GBA ROM header checksum patcher."
+pkgdesc="AGB image header checksum patcher."
 arch=("any")
-url="https://mandelbrot.dk/agbsum"
+url="https://mandelbrot.dk/bjoernager/agbsum/"
 makedepends=("git")
-provides=("agbsum")
-conflicts=("agbsum")
-source=("git+https://mandelbrot.dk/agbsum")
-license=("AGPL3")
+source=("git+https://gitlab.com/bjoernager/agbsum.git")
+license=("GPL-3.0-only")
 sha512sums=("SKIP")
+
 pkgver() {
 	cd "${srcdir}/agbsum"
-	printf "%s" "$(git describe --abbrev=0)"
+
+	echo -n "$(git describe --abbrev=0)"
 }
+
 build() {
 	cd "${srcdir}/agbsum"
-	make -j$(($(nproc)+0x1))
+
+	make -j$(($(nproc) + 1))
 }
+
 package() {
 	cd "${srcdir}/agbsum"
+
 	make install BINDIR="${pkgdir}/usr/bin"
 }
 

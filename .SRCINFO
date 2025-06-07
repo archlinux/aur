@@ -1,14 +1,12 @@
 pkgbase = agbsum-git
-	pkgdesc = GBA ROM header checksum patcher.
-	pkgver = 11
+	pkgdesc = AGB image header checksum patcher.
+	pkgver = 1.0
 	pkgrel = 1
-	url = https://mandelbrot.dk/agbsum
+	url = https://mandelbrot.dk/bjoernager/agbsum/
 	arch = any
-	license = AGPL3
+	license = GPL-3.0-only
 	makedepends = git
-	provides = agbsum
-	conflicts = agbsum
-	source = git+https://mandelbrot.dk/agbsum
+	source = git+https://gitlab.com/bjoernager/agbsum.git
 	sha512sums = SKIP
 
 pkgname = agbsum-git
