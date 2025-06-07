@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
 pkgver=4.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
 url="https://blender.org"
@@ -19,7 +19,7 @@ license=(
   libtiff
   LGPL-2.1-or-later
   MIT
-  MIT-Khronos-Old
+  MIT-Khronos-old
   MPL-2.0
   NCSA
   OFL-1.1
@@ -38,7 +38,6 @@ depends=('glibc' 'bash' 'hicolor-icon-theme'
 'libxt'
 'libxfixes'
 'libxxf86vm'
-'level-zero-loader'
 'libsm'
 'libice'
 'mesa'
@@ -55,6 +54,7 @@ depends=('glibc' 'bash' 'hicolor-icon-theme'
 'zlib')
 optdepends=('cuda: Cycles renderer CUDA support'
             'intel-compute-runtime: Cycles renderer Intel OneAPI support'
+	    'level-zero-loader: Cycles rrender Intel OneAPI support'
             'libdecor: wayland support'
 	    'hip-runtime-amd: HIP renderer AMD support')
 provides=('blender')
