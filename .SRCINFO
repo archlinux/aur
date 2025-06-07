@@ -12,10 +12,10 @@ pkgbase = fnott-git
 	makedepends = wayland-protocols
 	depends = dbus
 	depends = fcft
-	depends = wlroots
+	depends = wayland
 	provides = fnott
 	conflicts = fnott
 	source = fnott-git::git+https://codeberg.org/dnkl/fnott.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = fnott-git
