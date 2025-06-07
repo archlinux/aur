@@ -1,7 +1,7 @@
 pkgbase = gopher64
 	pkgdesc = A Nintendo64 emulator
-	pkgver = 1.0.16
-	pkgrel = 2
+	pkgver = 1.0.17
+	pkgrel = 1
 	url = https://github.com/gopher64/gopher64/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -10,6 +10,7 @@ pkgbase = gopher64
 	makedepends = clang
 	makedepends = cmake
 	makedepends = dbus
+	makedepends = fcitx
 	makedepends = git
 	makedepends = hidapi
 	makedepends = icoutils
@@ -28,11 +29,13 @@ pkgbase = gopher64
 	makedepends = libxcursor
 	makedepends = libxext
 	makedepends = libxfixes
+	makedepends = libxi
 	makedepends = libxinerama
 	makedepends = libxkbcommon
 	makedepends = libxrandr
 	makedepends = libxrender
 	makedepends = libxss
+	makedepends = libxtst
 	makedepends = mesa
 	makedepends = sndio
 	makedepends = systemd-libs
@@ -45,9 +48,9 @@ pkgbase = gopher64
 	depends = hicolor-icon-theme
 	depends = vulkan-icd-loader
 	depends = xz
-	source = git+https://github.com/gopher64/gopher64.git#tag=v1.0.16
+	source = git+https://github.com/gopher64/gopher64.git#tag=v1.0.17
 	source = git+https://github.com/Themaister/parallel-rdp-standalone.git
-	sha256sums = 1cca26ffb769ce28c3522b4bd960b42b75c5e99b90ad13726a8d4d103e5ae0bd
+	sha256sums = e34cfc8faef7d43fc664476a0ccfa3d33c24df0bdad8ad0e313d634d524989e3
 	sha256sums = SKIP
 
 pkgname = gopher64
