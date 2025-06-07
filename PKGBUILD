@@ -2,7 +2,7 @@
 # Contributor: 程式夥伴 (AI Assistant)
 
 pkgname=scrcpy-launcher
-pkgver=2.1.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A simple launcher for scrcpy, built with NW.js."
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("${pkgname}-v${pkgver}-${_archive_filename}::https://github.com/velade/s
         "${pkgname}.desktop"
         "LICENSE::https://raw.githubusercontent.com/velade/scrcpy-launcher/${pkgver}/LICENSE")
 
-sha256sums=('9c75f9114dde25ce220d03ee84ad243d29a27734e85fb6699e13ee0e9da9b003'
+sha256sums=('6f6d3735fe212dcaf4b355d9fa59c677fccff467c1b705f5090657de35a3c5fb'
             '93b6dd07d33b0153bcfba6721797290839410870b8f7a379998b4e5fe306de46'
             'a6f3cabbef34490c82cf1eaaadfe3591c5dc8f3924c11c9da74609b660c7c72d')
 
@@ -39,7 +39,6 @@ prepare() {
      "${srcdir}/resources.pak" \
      "${srcdir}/Scrcpy_logo.png" \
      "${srcdir}/Scrcpy啟動器" \
-     "${srcdir}/user_config.json.org" \
      "${srcdir}/v8_context_snapshot.bin" \
      "${srcdir}/app_extracted_contents/"
 }
@@ -54,7 +53,6 @@ package() {
 
   # 從 prepare() 中整理好的目錄複製所有應用程式檔案到 /opt/scrcpy-launcher/
   cp -R "${srcdir}/app_extracted_contents/"* "${pkgdir}/opt/${pkgname}/"
-  cp "${srcdir}/app_extracted_contents/user_config.json.org" "${pkgdir}/opt/${pkgname}/user_config.json"
 
   # 批量修正權限：
   find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} +
@@ -64,7 +62,6 @@ package() {
   # 確保主執行檔案有執行權限
   chmod +x "${pkgdir}/opt/${pkgname}/Scrcpy啟動器"
   chmod +x "${pkgdir}/opt/${pkgname}/chrome_crashpad_handler"
-  chmod -c 666 "${pkgdir}/opt/${pkgname}/user_config.json"
 
   # 安裝 .desktop 檔案到 /usr/share/applications/
   # ${srcdir}/${pkgname}.desktop 是你本地提供的檔案
