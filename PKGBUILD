@@ -2,7 +2,7 @@
 
 _pkgname="iwe"
 pkgname="${_pkgname}-bin"
-pkgver=0.0.32
+pkgver=0.0.33
 pkgrel=1
 pkgdesc="Text editor extension for markdown notes taking"
 arch=('x86_64' 'aarch64')
