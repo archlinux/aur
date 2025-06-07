@@ -1,6 +1,6 @@
 # Maintainer: Eric Torres <eric.torres@its-et.me>
 pkgname=podcheck
-pkgver=0.5.6.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="CLI tool to automate podman image updates. Selective, notifications, autoprune, no pre-pulling."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/sudo-kraken/podcheck"
 license=('GPL-3.0-only')
 depends=(bash podman podman-compose jq regclient-regctl)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sudo-kraken/podcheck/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7d9f5c9985484454e5d1146c7dfba75bb7d06dd7871b30401a6418ac635d6d9a')
+sha256sums=('420b4eda119080d3287c1d3172c33e78fc01ebf24e0cd463b3a761d450c48b02')
 
 package() {
 	cd "$pkgname-$pkgver"
