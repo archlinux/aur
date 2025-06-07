@@ -1,0 +1,5 @@
+[shellcheck-doc]
+source = "github"
+github = "koalaman/shellcheck"
+use_max_release = true
+prefix = "v"
