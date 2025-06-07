@@ -1,11 +1,11 @@
 pkgbase = valentina-studio-bin
 	pkgdesc = Create, administer, query and explore Valentina DB, MySQL, MariaDB, PostgreSQL and SQLite databases for FREE.
-	pkgver = 15.3.2
+	pkgver = 15.3.5
 	pkgrel = 1
 	url = http://www.valentina-db.com
 	arch = x86_64
 	license = custom
-	source_x86_64 = valentina-studio-bin-15.3.2-x86_64.deb::http://valentina-db.com/download/release/lin_64/vstudio_x64_15_lin.deb
-	sha256sums_x86_64 = ee8509f770665bdeedcb9aa2a7e73bb8112871d1602137a6efb4552594fe3076
+	source_x86_64 = valentina-studio-bin-15.3.5-x86_64.deb::http://valentina-db.com/download/release/lin_64/vstudio_x64_15_lin.deb
+	sha256sums_x86_64 = 2091b123ddc396cc613dae12b5b236a385dedd17dc6dabb6437c56d6903118d6
 
 pkgname = valentina-studio-bin
