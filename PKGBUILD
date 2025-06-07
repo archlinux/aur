@@ -7,7 +7,7 @@
 
 _pkgname="dolphin"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=25.04.1
+pkgver=25.04.2
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
@@ -49,7 +49,7 @@ source=(
   "dolphin-tabopts-${_commit_patch::7}.patch"::"https://invent.kde.org/xiota/dolphin/-/commit/${_commit_patch}.patch"
 )
 sha256sums=(
-  '380f372f3b5f1b1435d1c6c54e4bb53a6c6ef7eceb38a1dc10278eb7dd09afb9'
+  '5aa5df1f3136f23ced6ca5a9f3eec6eab257f3f3d45c04544da6b69cc5a6651b'
   'a299037d34c16d8e078e1f751ab6a921bae64f4804755864a5416da2f62db121'
 )
 
