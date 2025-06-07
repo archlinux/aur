@@ -2,8 +2,8 @@
 # Contributor: Wilhelm Schuster <aur [aT] rot13 _dot_ io>
 pkgname=wget2-no-docs
 _name=wget2
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Updated version of wget URL retrieval tool, no docs (avoids pandoc makedep)"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/gnuwget/wget2"
@@ -33,7 +33,7 @@ makedepends=(
 conflicts=("$_name-git" "$_name")
 provides=("$_name")
 source=("https://ftp.gnu.org/gnu/wget/${_name}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('a05dc5191c6bad9313fd6db2777a78f5527ba4774f665d5d69f5a7461b49e2e7'
+sha256sums=('2b3b9c85b7fb26d33ca5f41f1f8daca71838d869a19b406063aa5c655294d357'
             'SKIP')
 validpgpkeys=("1CB27DBC98614B2D5841646D08302DB6A2670428")
 
