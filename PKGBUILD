@@ -2,7 +2,7 @@
 _appname=daily_diary
 pkgname="${_appname//_/-}-bin"
 _pkgname=Daily-Diary
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="An app to create a diary entry every day.(Prebuilt version)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/Voklen/Daily-Diary/v${pkgver}/metadata/en-GB/images/icon.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f84a5504748ed2257cb290bf69d17a8d9f5fbe3526c035fbc12614edcee60bef'
+sha256sums=('b3d2629a4fa40a82110797d590f7a2f81cec990fdbf027a25f871ccb72fc60a6'
             'dc10c98253ebd96235ef66b2343a1f3a73a83d90ce7222fb81b8d5e79e6c341d'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 prepare() {
