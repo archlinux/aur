@@ -9,8 +9,8 @@
 # Contributor: Tony Smith <bakugantony@proton.me>
 
 pkgname=libunity
-pkgver=7.2.5
-pkgrel=17
+pkgver=7.2.6
+pkgrel=18
 pkgdesc='Library for instrumenting and integrating with all aspects of the Unity shell'
 arch=('i686' 'x86_64')
 url="https://github.com/MercySimp/libunity"
