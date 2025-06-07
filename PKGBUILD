@@ -9,11 +9,9 @@
 
 # shellcheck disable=SC2034
 _py="python"
-_pkg="blivet"
-pkgname="${_pkg}-gui"
+pkgname="blivet-gui"
 pkgver=2.4.1
-_pkgver="${pkgver}-1"
-pkgrel=2
+pkgrel=3
 pkgdesc='GUI tool for storage configuration'
 arch=(
   'x86_64'
@@ -21,10 +19,10 @@ arch=(
   'i686'
   'arm')
 license=('GPL')
-url="https://github.com/storaged-project/${_pkg}-gui"
+url="https://github.com/storaged-project/${pkgname}"
 depends=(
   "${_py}"
-  "${_py}-${_pkg}"
+  "${_py}-blivet"
   "${_py}-cairo"
   "${_py}-gobject"
   "${_py}-pid"
@@ -55,5 +53,3 @@ package() {
     RPM_BUILD_ROOT="${pkgdir}" \
     install
 }
-
-# vim:set sw=2 sts=-1 et:
