@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tree-sitter-cli-git
-pkgver=0.22.2.r22.g78b6067a
+pkgver=0.25.6.r109.g0fdf5695
 pkgrel=1
 pkgdesc="CLI tool for developing, testing, and using Tree-sitter parsers"
 arch=('i686' 'x86_64')
@@ -17,16 +17,18 @@ sha256sums=('SKIP')
 
 
 prepare() {
-  cd "tree-sitter/cli"
+  cd "tree-sitter"
 
   if [ ! -f "Cargo.lock" ]; then
-    cargo update
+    cargo update \
+      --manifest-path "crates/cli/Cargo.toml"
   fi
-  cargo fetch
+  cargo fetch \
+    --manifest-path "crates/cli/Cargo.toml"
 }
 
 pkgver() {
-  cd "tree-sitter/cli"
+  cd "tree-sitter"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
@@ -35,7 +37,7 @@ pkgver() {
 }
 
 check() {
-  cd "tree-sitter/cli"
+  cd "tree-sitter"
 
   #cargo test \
   #  --frozen
@@ -44,12 +46,11 @@ check() {
 package() {
   cd "tree-sitter"
 
-  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-cli"
-
-  cd "cli"
   cargo install \
     --locked \
     --no-track \
     --root "$pkgdir/usr" \
-    --path .
+    --path "$srcdir/tree-sitter/crates/cli"
+
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-cli"
 }
