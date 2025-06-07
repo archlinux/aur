@@ -13,6 +13,8 @@ pkgbase = hfetch-git
 	makedepends = make
 	makedepends = git
 	depends = glibc
+	optdepends = nvidia: NVIDIA GPU detection support
+	optdepends = amdgpu_top: AMD GPU detection support
 	source = git+https://github.com/nambona890/hfetch
 	sha256sums = SKIP
 
