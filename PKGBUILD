@@ -6,9 +6,11 @@ pkgrel=1
 pkgdesc="AGB image header checksum patcher."
 arch=("any")
 url="https://mandelbrot.dk/bjoernager/agbsum/"
-makedepends=("git")
-source=("git+https://gitlab.com/bjoernager/agbsum.git")
 license=("GPL-3.0-only")
+makedepends=("git")
+provides=("agbsum")
+conflicts=("agbsum")
+source=("git+https://gitlab.com/bjoernager/agbsum.git")
 sha512sums=("SKIP")
 
 pkgver() {

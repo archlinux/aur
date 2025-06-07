@@ -6,6 +6,8 @@ pkgbase = agbsum-git
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git
+	provides = agbsum
+	conflicts = agbsum
 	source = git+https://gitlab.com/bjoernager/agbsum.git
 	sha512sums = SKIP
 
