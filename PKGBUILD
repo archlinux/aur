@@ -3,7 +3,7 @@
 
 pkgname=pcc-git
 pkgver=20250607
-pkgrel=1
+pkgrel=2
 pkgdesc="A Portable C Compiler."
 arch=('i686' 'x86_64')
 url="https://github.com/PortableCC/"
@@ -13,12 +13,29 @@ options=('!lto')
 depends=('pcc-libs')
 provides=(pcc)
 conflicts=(pcc)
-source=($pkgname::git+https://github.com/PortableCC/pcc license)
-md5sums=('SKIP' '51f6cc02b26af53f26cfe87494ca5c87')
-
+source=(
+  $pkgname::git+https://github.com/PortableCC/pcc
+  license
+  'pcc-revert-negrel.patch'
+  'pcc-true-false.patch'
+)
+md5sums=('SKIP'
+         '51f6cc02b26af53f26cfe87494ca5c87'
+         'd3c3f1a1471418a91e1a72d7f8911c29'
+         '3adb1e21863e7b6c4b944f8cf7a4cd91')
 pkgver() {
   cd "$srcdir/$pkgname"
   git log -1 --date=format:"%Y%m%d" --format="%ad"
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+
+  # true and false are reserved
+  patch -p1 -i "${srcdir}/pcc-true-false.patch"
+
+  # negrel is still needed in parts of trees.c
+  patch -p1 -i "${srcdir}/pcc-revert-negrel.patch"
 }
 
 build() {
