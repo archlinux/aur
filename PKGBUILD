@@ -1,4 +1,4 @@
-# Maintainer: marmis
+# Maintainer: marmis <tiagodepalves@gmail.com>
 # Contributor: gee
 # Contributor: yochananmarqos
 # Contributor: bpierre
