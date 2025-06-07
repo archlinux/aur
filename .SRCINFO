@@ -1,0 +1,25 @@
+pkgbase = serial-monitor-rust-bin
+	pkgdesc = Serial Monitor and Plotter written in Rust (pre-compiled binary)
+	pkgver = 0.3.5.1
+	pkgrel = 1
+	url = https://github.com/hacknus/serial-monitor-rust
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	depends = gtk3
+	depends = libxcb
+	depends = openssl
+	depends = gcc-libs
+	depends = libudev.so
+	provides = serial-monitor-rust
+	conflicts = serial-monitor-rust
+	options = !strip
+	options = !debug
+	source = serial-monitor-rust-src-0.3.5.1.zip::https://github.com/hacknus/serial-monitor-rust/archive/v0.3.5.1.zip
+	sha256sums = f9b1b60a288aeec12c1e68309f6032cb8210d22a50f0e918008131d77019e2f7
+	source_x86_64 = serial-monitor-rust-0.3.5.1-x86_64.zip::https://github.com/hacknus/serial-monitor-rust/releases/download/v0.3.5.1/serial-monitor-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 982f26839d0495cb04d602f5d6ae6883f2a5f6db3fb9dfa85e7b570bfee8d89c
+	source_aarch64 = serial-monitor-rust-0.3.5.1-aarch64.zip::https://github.com/hacknus/serial-monitor-rust/releases/download/v0.3.5.1/serial-monitor-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = a7c465846eda346a0a62c1879729d97ea9b23f542a0ce0464f4ee6efa6266674
+
+pkgname = serial-monitor-rust-bin
