@@ -1,6 +1,6 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=imagot-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="An image viewer made in godot (binary release)"
 arch=('x86_64' 'aarch64')
@@ -13,11 +13,11 @@ provides=('imagot')
 conflicts=('imagot')
 options=('!strip')
 source=("https://raw.githubusercontent.com/mlm-games/imagot/main/icon.png")
-source_x86_64=("imagot-0.2.2-x64::https://github.com/mlm-games/imagot/releases/download/0.2.2/imagot.x86_64")
-source_aarch64=("imagot-0.2.2-arm64::https://github.com/mlm-games/imagot/releases/download/0.2.2/imagot.arm64")
+source_x86_64=("imagot-0.2.3-x64::https://github.com/mlm-games/imagot/releases/download/0.2.3/imagot.x86_64")
+source_aarch64=("imagot-0.2.3-arm64::https://github.com/mlm-games/imagot/releases/download/0.2.3/imagot.arm64")
 sha256sums=('SKIP')
-sha256sums_x86_64=('9af27838363b433488d78d97b2363c57d3a0a59b7ad5b7419ea7eb8909d642a9')
-sha256sums_aarch64=('dd7dc5172f196a2d1947db9d6c1686a02b1270363f25e223e7d1ad86263d73e4')
+sha256sums_x86_64=('bc3177cc77fc7a0ee6cdfa8f244d0aa8ba1bafa4648bd8ed57d3eecfe165ede4')
+sha256sums_aarch64=('db8b14637da0e08c166f4573da47e07e4092954fad06ecd3906c1d45b65fd678')
 
 package() {
     install -d "${pkgdir}/usr/bin/"
@@ -26,14 +26,15 @@ package() {
     install -d "${pkgdir}/opt/${pkgname}/"
 
     if [[ $CARCH == "x86_64" ]]; then
-        install -Dm755 "$srcdir/imagot-0.2.2-x64" "${pkgdir}/opt/${pkgname}/imagot"
+        install -Dm755 "$srcdir/imagot-0.2.3-x64" "${pkgdir}/opt/${pkgname}/imagot"
     elif [[ $CARCH == "aarch64" ]]; then
-        install -Dm755 "$srcdir/imagot-0.2.2-arm64" "${pkgdir}/opt/${pkgname}/imagot"
+        install -Dm755 "$srcdir/imagot-0.2.3-arm64" "${pkgdir}/opt/${pkgname}/imagot"
     fi
 
     ln -s "/opt/${pkgname}/imagot" "${pkgdir}/usr/bin/imagot"
     
     install -Dm644 "$srcdir/icon.png" "${pkgdir}/usr/share/pixmaps/imagot.png"
+    install -Dm644 "$srcdir/icon.png" "${pkgdir}/usr/share/icons/imagot.png"
 
     cat > "${pkgdir}/usr/share/applications/imagot.desktop" << DESKTOP_EOF
 [Desktop Entry]
