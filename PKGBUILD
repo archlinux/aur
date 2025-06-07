@@ -3,7 +3,7 @@ pkgname=imfile-bin
 _pkgname=imFile
 pkgver=1.1.2
 _electronversion=31
-pkgrel=2
+pkgrel=3
 pkgdesc="A full-featured download manager.Forked from motrix.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -24,6 +24,7 @@ provides=(
 )
 depends=(
     "electron${_electronversion}"
+    'aria2'
 )
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/imfile-io/imfile-desktop/v${pkgver}/LICENSE"
@@ -47,6 +48,7 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    ln -sf "/usr/bin/aria2c" "${srcdir}/opt/${_pkgname}/resources/engine/aria2c"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

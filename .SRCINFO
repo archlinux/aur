@@ -1,13 +1,14 @@
 pkgbase = imfile-bin
 	pkgdesc = A full-featured download manager.Forked from motrix.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://imfile.io/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
 	depends = electron31
+	depends = aria2
 	provides = motrix
 	provides = imfile=1.1.2
 	conflicts = imfile
