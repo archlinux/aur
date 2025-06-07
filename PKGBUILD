@@ -2,7 +2,7 @@
 
 _projname="pulp-cli"
 pkgname="pulp-glue"
-pkgver="0.32.3"
+pkgver="0.33.0"
 pkgrel=1
 epoch=0
 pkgdesc="Command line interface to talk to the Pulp 3 REST API"
@@ -47,7 +47,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    "fbd9b659c259d951b1a9ec74ee4f55a8541478abc518c94115e7fdb634aa5731"
+    "e07feae37b81a0fcb4ee110c179498639ac86b54641012b54d78c573dfe15cc2"
 )
 
 
