@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-    tar -xvf "$srcdir/$_realname-$pkgver-$pkgrel-any.pkg.tar.zst" -C "$pkgdir/"
+    tar -xvf "$srcdir/$_realname-$pkgver-$pkgrel-any.pkg.tar.zst" -C "$pkgdir/" usr
 }
 
 post_install() {
