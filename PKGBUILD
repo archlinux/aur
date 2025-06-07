@@ -1,34 +1,40 @@
 # Maintainer
 
-_name=libbpf
-pkgname=lib32-$_name
-pkgver=1.5.0
+pkgname=lib32-libbpf
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Library for loading eBPF programs and reading and manipulating eBPF objects from user-space'
 url='https://github.com/libbpf/libbpf'
-arch=('x86_64')
-license=('LGPL2.1')
-depends=($_name 'lib32-glibc' 'lib32-libelf')
-makedepends=('rsync')
-provides=('libbpf.so')
-source=(https://github.com/libbpf/libbpf/archive/v${pkgver}/${_name}-${pkgver}.tar.gz)
-sha512sums=('0cc25addcf5fcee0537d598037feab4bc73a513e6025d8f559bed58fe8850a10fcfeefd1a9dafc5e0bac6202d445944b12811cb7254b9b3be4dd3d2cc1e9419b')
-b2sums=('fd9bbf7689632c6f3fc18705bf1cfb5ba8abca632f6da1264692f0b6ff0e5887fb88697dd4418cc9a451df3421015f4c8de5162c1b8a40594af050dca3442669')
+arch=(x86_64)
+license=('LGPL-2.1-only OR BSD-2-Clause')
+depends=(
+  lib32-glibc
+  lib32-libelf
+  lib32-zlib
+  libbpf
+)
+makedepends=(
+  git
+)
+provides=(libbpf.so)
+source=("git+${url}#tag=v${pkgver}")
+sha512sums=('2b4087d1c84985630c96fce807146cb699676069d55a5f57781f9fbef6135513df5d055a8286f86fd3de03cccd85450924748c52f4cb5868c5a158d99bb8bf2a')
+b2sums=('4d62738d8097a7d9be34fcbf2d546621cfb11d28db79e313fcbf7885e3e16a5f76357840cc1b072cc76d184090e6f4d7ca92d144ce5e172af875450a8f09dac5')
 
 build() {
-  export CC="gcc -m32"
-  export CXX="g++ -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export CC='gcc -m32'
+  export CXX='g++ -m32'
+  export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
 
-  cd ${_name}-${pkgver}
+  cd libbpf
   make -C src
 }
 
 package() {
-  cd ${_name}-${pkgver}
+  cd libbpf
   make -C src DESTDIR="${pkgdir}" LIBSUBDIR=lib32 install
-  install -Dm 644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  rm -r "$pkgdir"/usr/include
+  rm -r "${pkgdir}/usr/include"
+  install -Dm 644 LICENSE.BSD-2-Clause -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-# vim: ts=2 sw=2 et:
+# vim:set sw=2 sts=-1 et:
