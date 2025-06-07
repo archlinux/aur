@@ -1,8 +1,8 @@
-pkgbase = pcc-libs-cvs
+pkgbase = pcc-libs-git
 	pkgdesc = Libraries for the Portable C Compiler.
 	pkgver = 20230806
-	pkgrel = 2
-	url = http://pcc.ludd.ltu.se/
+	pkgrel = 3
+	url = https://github.com/PortableCC/
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -10,9 +10,9 @@ pkgbase = pcc-libs-cvs
 	provides = pcc-libs
 	conflicts = pcc-libs
 	options = !lto
-	source = pcc-libs-cvs::git+https://repo.or.cz/pcc-libs.git
+	source = pcc-libs-git::git+https://github.com/PortableCC/pcc-libs.git
 	source = license
 	md5sums = SKIP
 	md5sums = 51f6cc02b26af53f26cfe87494ca5c87
 
-pkgname = pcc-libs-cvs
+pkgname = pcc-libs-git
