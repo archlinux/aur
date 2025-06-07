@@ -1,4 +1,5 @@
-# Maintainer: Catppuccin <releases@catppuccin.com>
+# Maintainer: Dvd-Znf <email@dvdznf.xyz>
+# Contributor: Catppuccin <releases@catppuccin.com>
 
 pkgname=catppuccin-gtk-theme-macchiato
 pkgver=1.0.3 # renovate: datasource=github-tags depName=catppuccin/gtk
