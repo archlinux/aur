@@ -1,7 +1,7 @@
 # Maintainer: Chris G <aur@szlig.net>
 pkgname=openterface_qt
 _pkgname=Openterface_QT
-pkgver=0.3.12
+pkgver=0.3.15
 pkgrel=1
 pkgdesc="Openterface Mini-KVM Host Application"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=(qt6-tools clang)
 install="openterfaceQT.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TechxArtisanStudio/Openterface_QT/archive/${pkgver}.tar.gz"
         "openterfaceQT.desktop")
-sha256sums=('1ad64c4767a7ae6ad668cbb57663563be73fa0ec977842eed3bc3159b0bbf343'
+sha256sums=('dfdf966011e5a6d05766c359d08174f2cb75082ed3d8b1e15f611deaa3d49297'
             '48d2a22fb5816c9bd7aa7641eb1a4d127effee888a823ce9dcc972b24741cce7')
 
 
