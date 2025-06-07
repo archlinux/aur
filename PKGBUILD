@@ -1,6 +1,6 @@
 # Maintainer: tuxxx <nzb_tuxxx@proton.me>
 pkgname=nzb-monkey-go-git
-pkgver=r57.2c2c189
+pkgver=0.1.17.r0.gd7c0cc6
 pkgrel=1
 pkgdesc="NZBLNK-URI handler supporting SABnzbd, NZBGet & Synology DS (Go-based)"
 arch=('x86_64')

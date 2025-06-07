@@ -1,6 +1,6 @@
 pkgbase = nzb-monkey-go-git
 	pkgdesc = NZBLNK-URI handler supporting SABnzbd, NZBGet & Synology DS (Go-based)
-	pkgver = r57.2c2c189
+	pkgver = 0.1.17.r0.gd7c0cc6
 	pkgrel = 1
 	url = https://github.com/Tensai75/nzb-monkey-go
 	install = nzb-monkey-go.install
