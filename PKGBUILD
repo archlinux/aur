@@ -4,26 +4,29 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=html2text-cpp
-pkgver=2.2.3
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc='HTML to text rendering aimed for E-mail'
 arch=(x86_64)
-url=https://github.com/grobian/html2text
-license=(GPL2)
+#url=https://github.com/grobian/html2text
+url=https://gitlab.com/grobian/html2text
+license=(GPL-2.0-or-later)
 #depends=(gcc-libs)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('29e4b04e7cc7b9b6acb7db76edf4739d3a72a672f37452267e707d40249520ee')
+#source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/html2text-v$pkgver.tar.gz")
+sha256sums=('342ed425161708822f08e61148d4bfa66aab5b4279e8339ae59d264b0b169763')
 
 build() {
-  cd "${pkgname%-cpp}-$pkgver"
+  #cd "${pkgname%-cpp}-$pkgver"
+  cd "${pkgname%-cpp}-v$pkgver"
   #autoreconf -fi
-  autoreconf -fi -I /usr/share/gettext/m4
   ./configure
   make
 }
 
 package() {
-  cd "${pkgname%-cpp}-$pkgver"
+  #cd "${pkgname%-cpp}-$pkgver"
+  cd "${pkgname%-cpp}-v$pkgver"
   #make DESTDIR="$pkgdir" install
   install -Dm755 html2text "$pkgdir/usr/bin/$pkgname"
   install -Dm644 html2text.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
