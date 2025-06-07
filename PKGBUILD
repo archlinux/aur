@@ -2,17 +2,19 @@
 
 pkgname=gperf-git
 pkgver=3.3.r3.g4939b6b
-pkgrel=1
+pkgrel=2
 pkgdesc="A perfect hash function generator"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/gperf/"
 license=('GPL-3.0-or-later')
 depends=('glibc')
-makedepends=('git')
+makedepends=('git' 'python')
 provides=("gperf=$pkgver")
 conflicts=('gperf')
-source=("git+https://git.savannah.gnu.org/git/gperf.git")
-sha256sums=('SKIP')
+source=("git+https://git.savannah.gnu.org/git/gperf.git"
+        "git+https://git.savannah.gnu.org/git/gnulib.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 
 pkgver() {
@@ -24,7 +26,7 @@ pkgver() {
 build() {
   cd "gperf"
 
-  ./gitsub.sh pull
+  export GNULIB_SRCDIR="$srcdir/gnulib"
   ./autogen.sh
   ./configure \
     --prefix="/usr"

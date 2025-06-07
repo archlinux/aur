@@ -1,16 +1,19 @@
 pkgbase = gperf-git
 	pkgdesc = A perfect hash function generator
 	pkgver = 3.3.r3.g4939b6b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/gperf/
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = python
 	depends = glibc
 	provides = gperf=3.3.r3.g4939b6b
 	conflicts = gperf
 	source = git+https://git.savannah.gnu.org/git/gperf.git
+	source = git+https://git.savannah.gnu.org/git/gnulib.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = gperf-git
