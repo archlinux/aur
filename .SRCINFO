@@ -1,6 +1,6 @@
 pkgbase = yandex-music
 	pkgdesc = Yandex Music - Personal recommendations, selections for any occasion and new music
-	pkgver = 5.53.1
+	pkgver = 5.54.0
 	pkgrel = 1
 	url = https://github.com/cucumber-sp/yandex-music-linux
 	arch = any
@@ -16,9 +16,9 @@ pkgbase = yandex-music
 	depends = xdg-utils
 	depends = bash
 	depends = hicolor-icon-theme
-	source = https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_5.53.1.exe
-	source = git+https://github.com/cucumber-sp/yandex-music-linux#tag=v5.53.1
-	sha256sums = 693977b05f27d2fd7b4de0324308eb5d40ca2bf31a0ada07437e081c311e99ef
+	source = https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_5.54.0.exe
+	source = git+https://github.com/cucumber-sp/yandex-music-linux#tag=v5.54.0
+	sha256sums = 437b83ac4e553ea181c6ddcfaec2fb5e7f588295190dcfa527845f29d19a682a
 	sha256sums = SKIP
 
 pkgname = yandex-music
