@@ -1,6 +1,6 @@
 pkgbase = lief
 	pkgdesc = Library to instrument executable formats
-	pkgver = 0.16.5
+	pkgver = 0.16.6
 	pkgrel = 1
 	url = https://github.com/lief-project/lief
 	arch = x86_64
@@ -27,9 +27,7 @@ pkgbase = lief
 	optdepends = python: python bindings
 	provides = libLIEF.so
 	conflicts = python-lief
-	source = lief-0.16.5.tar.gz::https://github.com/lief-project/lief/archive/refs/tags/0.16.5.tar.gz
-	source = fix-missing-headers.patch
-	sha256sums = 10ef46bc958d7936feb155040c874504ab0bd40dc59b4678f807691ccd0d138f
-	sha256sums = eea63ef3250abcda3a684925c5db6bcd592e52f3af75ef97d488bcb7b5735a6e
+	source = lief-0.16.6.tar.gz::https://github.com/lief-project/lief/archive/refs/tags/0.16.6.tar.gz
+	sha256sums = 20bae0130c98d6b29a8a7853f6a0f270398b277f12c3673164b08563cbd18e0c
 
 pkgname = lief
