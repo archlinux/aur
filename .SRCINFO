@@ -9,6 +9,6 @@ pkgbase = mal-cli
 	makedepends = cargo
 	depends = gcc-libs
 	source = mal-cli-0.1.1.tar.gz::https://github.com/L4z3x/mal-cli/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = c1a2f656152efe8af8daca14d404d3481d24ca6a633e3ad000d1cad8ad610c86
+	sha256sums = 25c3fdbce082e714244fb2267c502f2c2ae0ce7683e31c1c0e20ae06d2842625
 
 pkgname = mal-cli

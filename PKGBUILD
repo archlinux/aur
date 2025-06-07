@@ -9,14 +9,14 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/L4z3x/mal-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c1a2f656152efe8af8daca14d404d3481d24ca6a633e3ad000d1cad8ad610c86')
+sha256sums=('25c3fdbce082e714244fb2267c502f2c2ae0ce7683e31c1c0e20ae06d2842625')
 
 build() {
-    cd "${srcdir}/mal-tui-${pkgver}"
+    cd "${srcdir}/mal-cli-${pkgver}"
     cargo build --release --locked
 }
 
 package() {
-    cd "${srcdir}/mal-tui-${pkgver}"
+    cd "${srcdir}/mal-cli-${pkgver}"
     install -Dm755 "target/release/mal" "${pkgdir}/usr/bin/mal"
 }
