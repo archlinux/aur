@@ -1,13 +1,13 @@
 # Maintainer: MingxuanGame <MingxuanGame@outlook.com>
 pkgname="meowpad-configurator-v2-bin"
 pkgver="1.1.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Meowpad v2 配置器"
 arch=('x86_64')
 license=('MIT')
 url="https://desu.life/"
 depends=(    
-  'webkit2gtk'
+  'webkit2gtk-4.1'
   'gtk3'
   'systemd-libs'
   'openssl-1.1'
