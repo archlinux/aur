@@ -25,8 +25,9 @@ depends=(
 )
 optdepends=(rpg200{0,3}-rtp)  
 makedepends=(binutils flatpak grep patchelf)
+
+FLATPAK_USER_DIR="${srcdir}"
 prepare() {
-  export FLATPAK_USER_DIR=${srcdir}
   flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
   flatpak --user install -y --reinstall --no-deps $_flathub
 }
