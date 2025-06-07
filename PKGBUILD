@@ -29,9 +29,9 @@ build() {
 package() {
     cd "$srcdir/Dev_Ink" # Manual intervention since repo and pkg name are different.
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 dev_ink.desktop "$pkgdir/usr/share/applications/dev_ink.desktop"
-    install -Dm644 "$srcdir/$pkgname/assets/icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/dev_ink.png"
-    install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "$srcdir/$pkgname/dev_ink/db.json" "$pkgdir/usr/share/dev_ink/db.json"
+    install -Dm644 "$srcdir/dev_ink.desktop" "$pkgdir/usr/share/applications/dev_ink.desktop"
+    install -Dm644 "$srcdir/Dev_Ink/assets/icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/dev_ink.png"
+    install -Dm644 "$srcdir/Dev_Ink/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/Dev_Ink/dev_ink/db.json" "$pkgdir/usr/share/dev_ink/db.json"
 
 }
