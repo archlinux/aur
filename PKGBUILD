@@ -14,7 +14,7 @@ source=("$pkgname::https://github.com/khairul169/garage-webui/releases/download/
         "$pkgname.service")
 
 sha256sums=('46b01c5e0c306873db249613de7609b3665b2c3695596e77e98ee4a00030252f'
-            'd04ce0911920652e80444c5b853c57e6b90d3b752cdeea9944fcb43c3e6fabad')
+            'fa8dc29dfe6d42760d693436771146dab8cb1a98d17222ad6778c8d5ba1f3def')
 
 
 package() {
