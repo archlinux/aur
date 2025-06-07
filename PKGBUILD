@@ -1,5 +1,6 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
-# Maintainer: Truocolo <truocolo@aol.com>
+# Maintainer: Dvd-Znf <email@dvdznf.xyz>
+# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Truocolo <truocolo@aol.com>
 # Contributor: Julian Mac Kenzie <jukiangm@gmail.com>
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 # Contributor: Christian Hesse <mail@eworm.de>
