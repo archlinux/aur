@@ -1,6 +1,6 @@
 pkgname=wallhaven-cli
 cli=wallhaven
-pkgver=2.0.3
+pkgver=2.0.6
 pkgrel=1
 pkgdesc='Search and download wallpapers from wallhaven.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=(
   'kitty'
 )
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('c042ce2773eb49f4cbac875172e5365873c66a8a81e80844c6691bd77a07ac50')
 
 prepare(){
   cd "$pkgname-$pkgver"
