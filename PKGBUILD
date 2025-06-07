@@ -3,11 +3,11 @@
 
 pkgname=perl-feature-compat-class
 pkgver=0.07
-pkgrel=1
+pkgrel=2
 pkgdesc="Make 'class' syntax available in older Perl versions"
 arch=('any')
 url="https://metacpan.org/dist/Feature-Compat-Class"
-license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 # See https://metacpan.org/dist/Feature-Compat-Class/source/Build.PL
 depends=(
   ## requires
@@ -33,7 +33,7 @@ build() {
 
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
-  perl Build.PL --installdirs=vendor
+  perl Build.PL installdirs=vendor
   ./Build
 }
 
@@ -49,5 +49,6 @@ package() {
   cd "${srcdir}/Feature-Compat-Class-${pkgver}"
 
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  ./Build install --destdir="${pkgdir}"
+  ./Build install destdir="${pkgdir}" create_packlist=0
+  tree "${pkgdir}"
 }
