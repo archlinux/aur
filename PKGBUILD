@@ -4,7 +4,7 @@
 
 pkgname=moonplayer
 pkgver=4.3
-pkgrel=1
+pkgrel=19
 pkgdesc="A qt font-end for mplayer with the abilities of watching and downloading videos from chinese network"
 arch=('i686' 'x86_64')
 url="https://github.com/coslyk/moonplayer"
@@ -26,7 +26,7 @@ build() {
   mkdir build
   cd build
 
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
 	make
 }
