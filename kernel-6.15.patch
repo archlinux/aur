@@ -1,0 +1,269 @@
+Based on 
+https://aur.archlinux.org/cgit/aur.git/tree/nvidia-470xx-fix-linux-6.15.patch?h=nvidia-470xx-utils
+https://gist.github.com/joanbm/def2bf57ed7a799c1d84a67606459314
+
+From original(s):
+This is an experimental patch! Use at your own risk!
+TODO: Verify that the fix for vm_flags_(set|clear) is correct.
+EDIT 20250426: I don't believe that this patch is clean: the VMA flags
+               piggybacks on previous calls to acquire the VMA lock,
+               which is very hacky, and most likely doesn't happen 100%
+               of the time and in all code paths.
+
+Replacing EXTRA_CFLAGS with ccflags-y is rel. commit "kbuild: remove
+EXTRA_*FLAGS support" (Masahiro Yamada, 6 Feb 2025), according to which
+they have been deprecated since 2007, so no need to add any fallback.
+
+Thanks to Willy Frissen and Satadru Pramanik, who shared patches for
+various of the necessary changes.
+
+diff --git a/Kbuild b/Kbuild
+index b7cdfdf..644bd8a 100644
+--- a/Kbuild	
++++ b/Kbuild
+@@ -61,62 +61,55 @@ $(foreach _module, $(NV_KERNEL_MODULES), \
+  $(eval include $(src)/$(_module)/$(_module).Kbuild))
+ 
+ 
+-#
+-# Define CFLAGS that apply to all the NVIDIA kernel modules. EXTRA_CFLAGS
+-# is deprecated since 2.6.24 in favor of ccflags-y, but we need to support
+-# older kernels which do not have ccflags-y. Newer kernels append
+-# $(EXTRA_CFLAGS) to ccflags-y for compatibility.
+-#
+-
+-EXTRA_CFLAGS += -std=gnu17
+-EXTRA_CFLAGS += -I$(src)/common/inc
+-EXTRA_CFLAGS += -I$(src)
+-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
+-EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM
+-EXTRA_CFLAGS += -DNV_VERSION_STRING=\"525.147.05\"
++ccflags-y += -std=gnu17
++ccflags-y += -I$(src)/common/inc
++ccflags-y += -I$(src)
++ccflags-y += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
++ccflags-y += -D__KERNEL__ -DMODULE -DNVRM
++ccflags-y += -DNV_VERSION_STRING=\"525.147.05\"
+ 
+-EXTRA_CFLAGS += -Wno-unused-function
++ccflags-y += -Wno-unused-function
+ 
+ ifneq ($(NV_BUILD_TYPE),debug)
+- EXTRA_CFLAGS += -Wuninitialized
++ ccflags-y += -Wuninitialized
+ endif
+ 
+-EXTRA_CFLAGS += -fno-strict-aliasing
++ccflags-y += -fno-strict-aliasing
+ 
+ ifeq ($(ARCH),arm64)
+- EXTRA_CFLAGS += -mstrict-align
++ ccflags-y += -mstrict-align
+ endif
+ 
+ ifeq ($(NV_BUILD_TYPE),debug)
+- EXTRA_CFLAGS += -g -gsplit-dwarf
++ ccflags-y += -g -gsplit-dwarf
+ endif
+ 
+-EXTRA_CFLAGS += -ffreestanding
++ccflags-y += -ffreestanding
+ 
+ ifeq ($(ARCH),arm64)
+- EXTRA_CFLAGS += -mgeneral-regs-only -march=armv8-a
+- EXTRA_CFLAGS += $(call cc-option,-mno-outline-atomics,)
++ ccflags-y += -mgeneral-regs-only -march=armv8-a
++ ccflags-y += $(call cc-option,-mno-outline-atomics,)
+ endif
+ 
+ ifeq ($(ARCH),x86_64)
+- EXTRA_CFLAGS += -mno-red-zone -mcmodel=kernel
++ ccflags-y += -mno-red-zone -mcmodel=kernel
+ endif
+ 
+ ifeq ($(ARCH),powerpc)
+- EXTRA_CFLAGS += -mlittle-endian -mno-strict-align -mno-altivec
++ ccflags-y += -mlittle-endian -mno-strict-align -mno-altivec
+ endif
+ 
+-EXTRA_CFLAGS += -DNV_UVM_ENABLE
+-EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
+-EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
+-EXTRA_CFLAGS += -DNV_KERNEL_INTERFACE_LAYER
++ccflags-y += -DNV_UVM_ENABLE
++ccflags-y += $(call cc-option,-Werror=undef,)
++ccflags-y += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
++ccflags-y += -DNV_KERNEL_INTERFACE_LAYER
+ 
+ #
+ # Detect SGI UV systems and apply system-specific optimizations.
+ #
+ 
+ ifneq ($(wildcard /proc/sgi_uv),)
+- EXTRA_CFLAGS += -DNV_CONFIG_X86_UV
++ ccflags-y += -DNV_CONFIG_X86_UV
+ endif
+ 
+ 
+@@ -144,7 +137,7 @@ NV_CONFTEST_CMD := /bin/sh $(NV_CONFTEST_SCRIPT) \
+ 
+ NV_CFLAGS_FROM_CONFTEST := $(shell $(NV_CONFTEST_CMD) build_cflags)
+ 
+-NV_CONFTEST_CFLAGS = $(NV_CFLAGS_FROM_CONFTEST) $(EXTRA_CFLAGS) -fno-pie
++NV_CONFTEST_CFLAGS = $(NV_CFLAGS_FROM_CONFTEST) $(ccflags-y) -fno-pie
+ 
+ NV_CONFTEST_COMPILE_TEST_HEADERS := $(obj)/conftest/macros.h
+ NV_CONFTEST_COMPILE_TEST_HEADERS += $(obj)/conftest/functions.h
+diff --git a/common/inc/nv-mm.h b/common/inc/nv-mm.h
+index fbdf237..dbcecf3 100644
+--- a/common/inc/nv-mm.h	
++++ b/common/inc/nv-mm.h
+@@ -44,6 +44,7 @@ typedef int vm_fault_t;
+ 
+ #include <linux/mm.h>
+ #include <linux/sched.h>
++#include <linux/version.h>
+ #if defined(NV_PIN_USER_PAGES_PRESENT)
+     #if defined(NV_PIN_USER_PAGES_HAS_ARGS_VMAS)
+         #define NV_PIN_USER_PAGES pin_user_pages
+@@ -294,7 +295,15 @@ static inline struct rw_semaphore *nv_mmap_get_lock(struct mm_struct *mm)
+ 
+ static inline void nv_vm_flags_set(struct vm_area_struct *vma, vm_flags_t flags)
+ {
+-#if defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0)
++    // Rel. commit "mm: uninline the main body of vma_start_write()" (Suren Baghdasaryan, 13 Feb 2025)
++    // Since Linux 6.15, vm_flags_set and vm_flags_clear call a GPL-only symbol
++    // for locking (__vma_start_write), which can't be called from non-GPL code.
++    // However, it appears all uses on the driver are on VMAs being initially
++    // mapped / which are already locked, so we can use vm_flags_reset, which
++    // doesn't lock the VMA, but rather just asserts it is already write-locked.
++    vm_flags_reset(vma, vma->vm_flags | flags);
++#elif defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
+     vm_flags_set(vma, flags);
+ #else
+     vma->vm_flags |= flags;
+@@ -303,7 +312,11 @@ static inline void nv_vm_flags_set(struct vm_area_struct *vma, vm_flags_t flags)
+ 
+ static inline void nv_vm_flags_clear(struct vm_area_struct *vma, vm_flags_t flags)
+ {
+-#if defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0)
++    // Rel. commit "mm: uninline the main body of vma_start_write()" (Suren Baghdasaryan, 13 Feb 2025)
++    // See above
++    vm_flags_reset(vma, vma->vm_flags & ~flags);
++#elif defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
+     vm_flags_clear(vma, flags);
+ #else
+     vma->vm_flags &= ~flags;
+diff --git a/common/inc/nv-timer.h b/common/inc/nv-timer.h
+index 6af49fb..233bf30 100644
+--- a/common/inc/nv-timer.h	
++++ b/common/inc/nv-timer.h
+@@ -25,6 +25,7 @@
+ 
+ #include <linux/timer.h>
+ #include <linux/kernel.h> // For container_of
++#include <linux/version.h>
+ 
+ #include "conftest.h"
+ 
+@@ -63,4 +64,13 @@ static inline void nv_timer_setup(struct nv_timer *nv_timer,
+ #endif
+ }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 2, 0)
++// Rel. commit "treewide: Switch/rename to timer_delete[_sync]()" (Thomas Gleixner, 5 Apr 2025)
++// This provides a shim for ancient kernels before timer_delete_sync was introduced
++static inline int timer_delete_sync(struct timer_list *timer)
++{
++    return del_timer_sync(timer);
++}
++#endif
++
+ #endif // __NV_TIMER_H__
+diff --git a/nvidia/nv-nano-timer.c b/nvidia/nv-nano-timer.c
+index 3a37054..2ef908b 100644
+--- a/nvidia/nv-nano-timer.c	
++++ b/nvidia/nv-nano-timer.c
+@@ -209,7 +209,7 @@ void NV_API_CALL nv_cancel_nano_timer(
+ #if NV_NANO_TIMER_USE_HRTIMER
+     hrtimer_cancel(&nv_nstimer->hr_timer);
+ #else
+-    del_timer_sync(&nv_nstimer->jiffy_timer);
++    timer_delete_sync(&nv_nstimer->jiffy_timer);
+ #endif
+ 
+ }
+diff --git a/nvidia/nv.c b/nvidia/nv.c
+index 512228b..43d672d 100644
+--- a/nvidia/nv.c	
++++ b/nvidia/nv.c
+@@ -3737,7 +3737,7 @@ int NV_API_CALL nv_stop_rc_timer(
+ 
+     nv_printf(NV_DBG_INFO, "NVRM: stopping rc timer\n");
+     nv->rc_timer_enabled = 0;
+-    del_timer_sync(&nvl->rc_timer.kernel_timer);
++    timer_delete_sync(&nvl->rc_timer.kernel_timer);
+     nv_printf(NV_DBG_INFO, "NVRM: rc timer stopped\n");
+ 
+     return 0;
+@@ -3781,7 +3781,7 @@ void NV_API_CALL nv_stop_snapshot_timer(void)
+     NV_SPIN_UNLOCK_IRQRESTORE(&nvl->snapshot_timer_lock, flags);
+ 
+     if (timer_active)
+-        del_timer_sync(&nvl->snapshot_timer.kernel_timer);
++        timer_delete_sync(&nvl->snapshot_timer.kernel_timer);
+ }
+ 
+ void NV_API_CALL nv_flush_snapshot_timer(void)
+diff --git a/nvidia-drm/nvidia-drm-connector.c b/nvidia-drm/nvidia-drm-connector.c
+index 2b893c5..9fc0986 100644
+--- a/nvidia-drm/nvidia-drm-connector.c	
++++ b/nvidia-drm/nvidia-drm-connector.c
+@@ -44,6 +44,8 @@
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_edid.h>
+ 
++#include <linux/version.h>
++
+ static void nv_drm_connector_destroy(struct drm_connector *connector)
+ {
+     struct nv_drm_connector *nv_connector = to_nv_connector(connector);
+@@ -307,8 +309,14 @@ static int nv_drm_connector_get_modes(struct drm_connector *connector)
+     return count;
+ }
+ 
++// Rel. commit. "drm/connector: make mode_valid take a const struct drm_display_mode" (Dmitry Baryshkov, 14 Dec 2024)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0)
++static int nv_drm_connector_mode_valid(struct drm_connector          *connector,
++                                       const struct drm_display_mode *mode)
++#else
+ static int nv_drm_connector_mode_valid(struct drm_connector    *connector,
+                                        struct drm_display_mode *mode)
++#endif
+ {
+     struct drm_device *dev = connector->dev;
+     struct nv_drm_device *nv_dev = to_nv_device(dev);
+diff --git a/nvidia-modeset/nvidia-modeset-linux.c b/nvidia-modeset/nvidia-modeset-linux.c
+index 093a9ed..3eb4645 100644
+--- a/nvidia-modeset/nvidia-modeset-linux.c	
++++ b/nvidia-modeset/nvidia-modeset-linux.c
+@@ -617,7 +617,7 @@ static void nvkms_kthread_q_callback(void *arg)
+      * pending timers and than waiting for workqueue callbacks.
+      */
+     if (timer->kernel_timer_created) {
+-        del_timer_sync(&timer->kernel_timer);
++        timer_delete_sync(&timer->kernel_timer);
+     }
+ 
+     /*
+@@ -1590,7 +1590,7 @@ restart:
+              * completion, and we wait for queue completion with
+              * nv_kthread_q_stop below.
+              */
+-            if (del_timer_sync(&timer->kernel_timer) == 1) {
++            if (timer_delete_sync(&timer->kernel_timer) == 1) {
+                 /*  We've deactivated timer so we need to clean after it */
+                 list_del(&timer->timers_list);
+ 
