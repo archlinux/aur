@@ -2,7 +2,7 @@
 
 _pkgname="Pixiv Viewer"
 pkgname="pixiv-viewer-bin"
-pkgver=0.0.2
+pkgver=$(curl -s https://api.github.com/repos/asadahimeka/pixiv-viewer-app/releases/latest | grep '"tag_name":' | cut -d '"' -f 4 | sed 's/^v//')
 pkgrel=1
 pkgdesc="App version of pixiv-viewer, supports Android/Windows/macOS/iOS/Linux."
 arch=('x86_64')
@@ -11,7 +11,8 @@ license=('MIT')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 _appimage="Pixiv-Viewer_${pkgver}_amd64.AppImage"
-source_x86_64=("${_appimage}::https://github.com/asadahimeka/pixiv-viewer-app/releases/download/${pkgver}/Pixiv-Viewer_${pkgver}_amd64.AppImage")
+source_x86_64=("${_appimage}::https://github.com/asadahimeka/pixiv-viewer-app/releases/download/v${pkgver}/Pixiv-Viewer_${pkgver}_amd64.AppImage")
+sha256sums=('SKIP')
 
 prepare() {
     chmod +x "${_appimage}"
