@@ -1,7 +1,7 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=logria
 _pkgname=Logria
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 url="https://github.com/ReagentX/Logria"
 makedepends=('rust' 'cargo')
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'aarch64')
 pkgdesc="A powerful CLI tool that puts log analytics at your fingertips."
 license=('GPL-3.0-only')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('ff6cf106ff5da17b157f10bb70dc193f784029048c1563b52188733d1750b6a8')
+sha256sums=('d0d78265cbf3df9a3f88df7666a7d000d7360664544fd67a09c9ef681bd0cd43')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
