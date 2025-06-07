@@ -16,7 +16,7 @@ pkgbase = dfshow
 	depends = libconfig
 	options = !buildflags
 	options = !makeflags
-	source = https://github.com/roberthawdon/dfshow/archive/v0.10.3-beta.tar.gz
-	sha1sums = 3c905eca139eb5904ef6e50693d1c10abc0a8946
+	source = https://github.com/roberthawdon/dfshow/archive/v0.10.3-1-beta.tar.gz
+	sha1sums = 6c3c5eafccba461f421ae55381c9371552069fa3
 
 pkgname = dfshow
