@@ -26,7 +26,7 @@ backup=('etc/fenrirscreenreader/settings/settings.conf')
 source=("git+https://git.stormux.org/storm/${pkgname}.git#tag=${pkgver}"
   'fenrirscreenreader.service')
 install=fenrir.install
-sha512sums=('c8dca6bddf41d3b84cafd6bc9350d445ed2609ee2358dfc9ec1ab8e18e0d2a3a22b3ecb40a33572f9a8807398438b1dbf46fd3042a6184c753b490f32d24a2bd'
+sha512sums=('974073eb10af0c70dc5ca1ee9284f440401d39910477d6a87e2cf1a0c174b4477a7e4763d1c62346f79e45d5ad2b1ac582ff9e02a7c4546c1e18910966526534'
             'e5e690bd9084d20a3c96ed391989e1db5211ef65b36a18ca6a49f8e16b40771a8a35151388df69d3cc64459d075ecb5fd0c415e11dfb43bc6ed2927612262168')
 
 package() {
