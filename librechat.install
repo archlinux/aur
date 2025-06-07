@@ -25,6 +25,8 @@ post_install() {
   systemd-sysusers /usr/lib/sysusers.d/librechat.conf
 
   print_info "Setting ownership of existing files..."
+  #retain group ownership of new files
+  chmod g+s /usr/lib/librechat
   chown -R librechat:librechat /usr/lib/librechat
   chown -R librechat:librechat /usr/share/webapps/librechat
 
