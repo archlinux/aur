@@ -6,7 +6,7 @@
 pkgbase=nvidia-510xx-utils
 pkgname=('nvidia-510xx-utils' 'opencl-510xx-nvidia' 'nvidia-510xx-dkms')
 pkgver=510.108.03
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -19,6 +19,7 @@ source=('nvidia-drm-outputclass.conf'
         "0001-Fix-conftest-to-ignore-implicit-function-declaration.patch"
         "0002-Fix-conftest-to-use-a-short-wchar_t.patch"
         "0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch"
+	'gcc-15.patch'
         'kernel-6.2.patch'
         'kernel-6.3.patch'
         'kernel-6.4.patch'
@@ -27,7 +28,8 @@ source=('nvidia-drm-outputclass.conf'
         'kernel-6.10.patch'
         'kernel-6.12.patch'
         'kernel-6.13.patch'
-        'kernel-6.14.patch')
+        'kernel-6.14.patch'
+        'kernel-6.15.patch')
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
@@ -35,6 +37,7 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             '29df50e64a4f797028d05df78395683ce14b604fc7c7f8270c9c23b57311cfba749c132e8530d48eee935c2187323b14c6c429bf70243314350b99d2cac23acc'
             '6cf622b8c139e1a08c7fcf248a6b5e2054cbad765fda9709c2ead17a937a2fe3d6822703ae406f0505d5f49511903b993a41f136b5329f7553dca973dc058280'
             '5d5f83a15cdd77b0d62d595e71a98de5e55b952b9b6b837b1d8ee32790c48b020c41f3a2089e37ab2f073ad021f593da24f1ff06cfdfe6629cdb5e217cffd5ff'
+            '700dc9e67e0f89fd202caa144b53499f82ae42055a0c8f4717b133e2d12c13c49d14912dd6749d703877963b39deaaef174b7a6dd3551d87c78cd558be6c5e47'
             '0446d411f549e1a56d48c53f8d0284eb9942d1addeb7f6b8b72c8425303b94f0602f9227f8777898aa6c3a23a6ef572a4ce57739ac848fac34abd85fed10255c'
             'b4c0063d419dbafc23b33d434e146193ffed2027eecee9d119f7c0b4cff2a1bd513a0c5bbf4928821c6bde419dcd0d4f5ccba6dc81b16e60dddf11186ba58e0e'
             'd5f80a7deb76ada84e89ff1ca26772546505f11322bfe3f6f17a043f17bcaace3512096af8d4156f725cf7d87dfb2218a23a9edf0f326834c85144bebb7ec3c6'
@@ -43,7 +46,8 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             '2ed1c0b6b75b7101f2b125f8369620685aaa13e04f9c13eb3b017a82b9f97bc90fa4c0ac0aab135a8f14252276bbed7751f1efd93ace93a536fee5b899e20c23'
             '7f68fa3122441affa9fe40b1eb7cfa38013649c90f84a71197fd51d9dc45f4a51acbc68d06cc0f7825f3929db37fdd66d99a57ab0cae589a6a360294800c2e2e'
             '68a63db7e1b2c17d1a23e9a44d3a2e0114560f89a158f7eb4c585f6c6416c844f9cf82fcc58141134e730fae7e36995e31de5d2565371ee4cc53e41c41185418'
-            '3a7c68efebfb35da07cc464e50685cda69ba1dce060ba3aeb1603f9bc01d5912905d60a18aaa56be64bb2b9ea7f03f2775c78c43d0df33513cbadf9137b39677')
+            '3a7c68efebfb35da07cc464e50685cda69ba1dce060ba3aeb1603f9bc01d5912905d60a18aaa56be64bb2b9ea7f03f2775c78c43d0df33513cbadf9137b39677'
+            'eb2e103009b35615c5f51323929a51d27f34c9be65b677250c6a92e2102f19eea66b5e33f41bce9d5e4ab74941e710243a3aa9a97c20ae1cbc2adfcb1661604e')
 
 
 create_links() {
@@ -76,6 +80,8 @@ prepare() {
     patch -p1 -i "$srcdir/kernel-6.12.patch"
     patch -p1 -i "$srcdir/kernel-6.13.patch"
     patch -p1 -i "$srcdir/kernel-6.14.patch"
+    patch -p1 -i "$srcdir/gcc-15.patch"
+    patch -p1 -i "$srcdir/kernel-6.15.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf

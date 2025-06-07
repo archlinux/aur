@@ -1,0 +1,337 @@
+Based on
+https://aur.archlinux.org/cgit/aur.git/tree/nvidia-470xx-fix-linux-6.15.patch?h=nvidia-470xx-utils
+https://gist.github.com/joanbm/def2bf57ed7a799c1d84a67606459314
+
+I had to backport some more changes from newer driver versions to make it work for 510.108.3,
+specifically nv_vm_flags_set and the conftest for NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS.
+ - Karl
+
+From original(s):
+This is an experimental patch! Use at your own risk!
+TODO: Verify that the fix for vm_flags_(set|clear) is correct.
+EDIT 20250426: I don't believe that this patch is clean: the VMA flags
+               piggybacks on previous calls to acquire the VMA lock,
+               which is very hacky, and most likely doesn't happen 100%
+               of the time and in all code paths.
+
+Replacing EXTRA_CFLAGS with ccflags-y is rel. commit "kbuild: remove
+EXTRA_*FLAGS support" (Masahiro Yamada, 6 Feb 2025), according to which
+they have been deprecated since 2007, so no need to add any fallback.
+
+Thanks to Willy Frissen and Satadru Pramanik, who shared patches for
+various of the necessary changes.
+
+diff --git a/Kbuild b/Kbuild
+index cbd8d43..81a905a 100644
+--- a/Kbuild	
++++ b/Kbuild
+@@ -59,28 +59,21 @@ $(foreach _module, $(NV_KERNEL_MODULES), \
+  $(eval include $(src)/$(_module)/$(_module).Kbuild))
+ 
+ 
+-#
+-# Define CFLAGS that apply to all the NVIDIA kernel modules. EXTRA_CFLAGS
+-# is deprecated since 2.6.24 in favor of ccflags-y, but we need to support
+-# older kernels which do not have ccflags-y. Newer kernels append
+-# $(EXTRA_CFLAGS) to ccflags-y for compatibility.
+-#
+-
+-EXTRA_CFLAGS += -std=gnu17
+-EXTRA_CFLAGS += -I$(src)/common/inc
+-EXTRA_CFLAGS += -I$(src)
+-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
+-EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"510.108.03\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
+-EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
+-EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
+-EXTRA_CFLAGS += -DNV_KERNEL_INTERFACE_LAYER
++ccflags-y += -std=gnu17
++ccflags-y += -I$(src)/common/inc
++ccflags-y += -I$(src)
++ccflags-y += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
++ccflags-y += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"510.108.03\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
++ccflags-y += $(call cc-option,-Werror=undef,)
++ccflags-y += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
++ccflags-y += -DNV_KERNEL_INTERFACE_LAYER
+ 
+ #
+ # Detect SGI UV systems and apply system-specific optimizations.
+ #
+ 
+ ifneq ($(wildcard /proc/sgi_uv),)
+- EXTRA_CFLAGS += -DNV_CONFIG_X86_UV
++ ccflags-y += -DNV_CONFIG_X86_UV
+ endif
+ 
+ 
+@@ -108,7 +101,7 @@ NV_CONFTEST_CMD := /bin/sh $(NV_CONFTEST_SCRIPT) \
+ 
+ NV_CFLAGS_FROM_CONFTEST := $(shell $(NV_CONFTEST_CMD) build_cflags)
+ 
+-NV_CONFTEST_CFLAGS = $(NV_CFLAGS_FROM_CONFTEST) $(EXTRA_CFLAGS) -fno-pie
++NV_CONFTEST_CFLAGS = $(NV_CFLAGS_FROM_CONFTEST) $(ccflags-y) -fno-pie
+ 
+ NV_CONFTEST_COMPILE_TEST_HEADERS := $(obj)/conftest/macros.h
+ NV_CONFTEST_COMPILE_TEST_HEADERS += $(obj)/conftest/functions.h
+diff --git a/common/inc/nv-mm.h b/common/inc/nv-mm.h
+index fcebff2..c77b6a4 100644
+--- a/common/inc/nv-mm.h	
++++ b/common/inc/nv-mm.h
+@@ -311,4 +311,34 @@ static inline struct rw_semaphore *nv_mmap_get_lock(struct mm_struct *mm)
+ #endif
+ }
+ 
++static inline void nv_vm_flags_set(struct vm_area_struct *vma, vm_flags_t flags)
++{
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0)
++    // Rel. commit "mm: uninline the main body of vma_start_write()" (Suren Baghdasaryan, 13 Feb 2025)
++    // Since Linux 6.15, vm_flags_set and vm_flags_clear call a GPL-only symbol
++    // for locking (__vma_start_write), which can't be called from non-GPL code.
++    // However, it appears all uses on the driver are on VMAs being initially
++    // mapped / which are already locked, so we can use vm_flags_reset, which
++    // doesn't lock the VMA, but rather just asserts it is already write-locked.
++    vm_flags_reset(vma, vma->vm_flags | flags);
++#elif defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
++    vm_flags_set(vma, flags);
++#else
++    vma->vm_flags |= flags;
++#endif
++}
++
++static inline void nv_vm_flags_clear(struct vm_area_struct *vma, vm_flags_t flags)
++{
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0)
++    // Rel. commit "mm: uninline the main body of vma_start_write()" (Suren Baghdasaryan, 13 Feb 2025)
++    // See above
++    vm_flags_reset(vma, vma->vm_flags & ~flags);
++#elif defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
++    vm_flags_clear(vma, flags);
++#else
++    vma->vm_flags &= ~flags;
++#endif
++}
++
+ #endif // __NV_MM_H__
+diff --git a/common/inc/nv-timer.h b/common/inc/nv-timer.h
+index 6af49fb..233bf30 100644
+--- a/common/inc/nv-timer.h	
++++ b/common/inc/nv-timer.h
+@@ -25,6 +25,7 @@
+ 
+ #include <linux/timer.h>
+ #include <linux/kernel.h> // For container_of
++#include <linux/version.h>
+ 
+ #include "conftest.h"
+ 
+@@ -63,4 +64,13 @@ static inline void nv_timer_setup(struct nv_timer *nv_timer,
+ #endif
+ }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 2, 0)
++// Rel. commit "treewide: Switch/rename to timer_delete[_sync]()" (Thomas Gleixner, 5 Apr 2025)
++// This provides a shim for ancient kernels before timer_delete_sync was introduced
++static inline int timer_delete_sync(struct timer_list *timer)
++{
++    return del_timer_sync(timer);
++}
++#endif
++
+ #endif // __NV_TIMER_H__
+diff --git a/conftest.sh b/conftest.sh
+index cc22f28..313fe9d 100755
+--- a/conftest.sh	
++++ b/conftest.sh
+@@ -5268,6 +5268,25 @@ compile_test() {
+             compile_check_conftest "$CODE" "NV_DRM_OUTPUT_POLL_CHANGED_PRESENT" "" "types"
+          ;;
+ 
++        vm_area_struct_has_const_vm_flags)
++            #
++            # Determine if the 'vm_area_struct' structure has
++            # const 'vm_flags'.
++            #
++            # A union of '__vm_flags' and 'const vm_flags' was added 
++            # by commit bc292ab00f6c ("mm: introduce vma->vm_flags
++            # wrapper functions") in mm-stable branch (2023-02-09)
++            # of the akpm/mm maintainer tree.
++            #
++            CODE="
++            #include <linux/mm_types.h>
++            int conftest_vm_area_struct_has_const_vm_flags(void) {
++                return offsetof(struct vm_area_struct, __vm_flags);
++            }"
++
++            compile_check_conftest "$CODE" "NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS" "" "types"
++        ;;
++
+         # When adding a new conftest entry, please use the correct format for
+         # specifying the relevant upstream Linux kernel commit.
+         #
+diff --git a/nvidia/nv-mmap.c b/nvidia/nv-mmap.c
+index 42f3888..89d5aef 100644
+--- a/nvidia/nv-mmap.c	
++++ b/nvidia/nv-mmap.c
+@@ -460,7 +460,7 @@ static int nvidia_mmap_numa(
+     }
+ 
+     // Needed for the linux kernel for mapping compound pages
+-    vm_flags_set(vma, VM_MIXEDMAP);
++    nv_vm_flags_set(vma, VM_MIXEDMAP);
+ 
+     for (i = 0, addr = mmap_context->page_array[0]; i < pages;
+          addr = mmap_context->page_array[++i], start += PAGE_SIZE)
+@@ -608,7 +608,7 @@ int nvidia_mmap_helper(
+         }
+         up(&nvl->mmap_lock);
+ 
+-        vm_flags_set(vma, VM_IO | VM_PFNMAP | VM_DONTEXPAND);
++        nv_vm_flags_set(vma, VM_IO | VM_PFNMAP | VM_DONTEXPAND);
+     }
+     else
+     {
+@@ -675,15 +675,15 @@ int nvidia_mmap_helper(
+ 
+         NV_PRINT_AT(NV_DBG_MEMINFO, at);
+ 
+-        vm_flags_set(vma, VM_IO | VM_LOCKED | VM_RESERVED);
+-        vm_flags_set(vma, VM_DONTEXPAND | VM_DONTDUMP);
++        nv_vm_flags_set(vma, VM_IO | VM_LOCKED | VM_RESERVED);
++        nv_vm_flags_set(vma, VM_DONTEXPAND | VM_DONTDUMP);
+     }
+ 
+     if ((prot & NV_PROTECT_WRITEABLE) == 0)
+     {
+         vma->vm_page_prot = NV_PGPROT_READ_ONLY(vma->vm_page_prot);
+-        vm_flags_clear(vma, VM_WRITE);
+-        vm_flags_clear(vma, VM_MAYWRITE);
++        nv_vm_flags_clear(vma, VM_WRITE);
++        nv_vm_flags_clear(vma, VM_MAYWRITE);
+     }
+ 
+     vma->vm_ops = &nv_vm_ops;
+diff --git a/nvidia/nv.c b/nvidia/nv.c
+index 1728386..2f9fd33 100644
+--- a/nvidia/nv.c	
++++ b/nvidia/nv.c
+@@ -3756,7 +3756,7 @@ int NV_API_CALL nv_stop_rc_timer(
+ 
+     nv_printf(NV_DBG_INFO, "NVRM: stopping rc timer\n");
+     nv->rc_timer_enabled = 0;
+-    del_timer_sync(&nvl->rc_timer.kernel_timer);
++    timer_delete_sync(&nvl->rc_timer.kernel_timer);
+     nv_printf(NV_DBG_INFO, "NVRM: rc timer stopped\n");
+ 
+     return 0;
+@@ -3800,7 +3800,7 @@ void NV_API_CALL nv_stop_snapshot_timer(void)
+     NV_SPIN_UNLOCK_IRQRESTORE(&nvl->snapshot_timer_lock, flags);
+ 
+     if (timer_active)
+-        del_timer_sync(&nvl->snapshot_timer.kernel_timer);
++        timer_delete_sync(&nvl->snapshot_timer.kernel_timer);
+ }
+ 
+ void NV_API_CALL nv_flush_snapshot_timer(void)
+diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
+index fd09ccf..93e59a7 100644
+--- a/nvidia/nvidia.Kbuild	
++++ b/nvidia/nvidia.Kbuild
+@@ -238,6 +238,7 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += pci_channel_state
+ NV_CONFTEST_TYPE_COMPILE_TESTS += pci_dev_has_ats_enabled
+ NV_CONFTEST_TYPE_COMPILE_TESTS += remove_memory_has_nid_arg
+ NV_CONFTEST_TYPE_COMPILE_TESTS += num_registered_fb
++NV_CONFTEST_TYPE_COMPILE_TESTS += vm_area_struct_has_const_vm_flags
+ 
+ NV_CONFTEST_GENERIC_COMPILE_TESTS += dom0_kernel_present
+ NV_CONFTEST_GENERIC_COMPILE_TESTS += nvidia_vgpu_kvm_build
+diff --git a/nvidia-drm/nvidia-drm-connector.c b/nvidia-drm/nvidia-drm-connector.c
+index a5ab9e9..295702b 100644
+--- a/nvidia-drm/nvidia-drm-connector.c	
++++ b/nvidia-drm/nvidia-drm-connector.c
+@@ -317,10 +317,17 @@ static int nv_drm_connector_get_modes(struct drm_connector *connector)
+     }
+ 
+     return count;
++
+ }
+ 
++// Rel. commit. "drm/connector: make mode_valid take a const struct drm_display_mode" (Dmitry Baryshkov, 14 Dec 2024)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0)
++static int nv_drm_connector_mode_valid(struct drm_connector          *connector,
++                                       const struct drm_display_mode *mode)
++#else
+ static int nv_drm_connector_mode_valid(struct drm_connector    *connector,
+                                        struct drm_display_mode *mode)
++#endif
+ {
+     struct drm_device *dev = connector->dev;
+     struct nv_drm_device *nv_dev = to_nv_device(dev);
+diff --git a/nvidia-drm/nvidia-drm-gem-user-memory.c b/nvidia-drm/nvidia-drm-gem-user-memory.c
+index 3ea9099..b996c80 100644
+--- a/nvidia-drm/nvidia-drm-gem-user-memory.c	
++++ b/nvidia-drm/nvidia-drm-gem-user-memory.c
+@@ -93,9 +93,9 @@ static int __nv_drm_gem_user_memory_mmap(struct nv_drm_gem_object *nv_gem,
+         return -EINVAL;
+     }
+ 
+-    vm_flags_clear(vma, VM_PFNMAP);
+-    vm_flags_clear(vma, VM_IO);
+-    vm_flags_set(vma, VM_MIXEDMAP);
++    nv_vm_flags_clear(vma, VM_PFNMAP);
++    nv_vm_flags_clear(vma, VM_IO);
++    nv_vm_flags_set(vma, VM_MIXEDMAP);
+ 
+     return 0;
+ }
+diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
+index 388b991..f9b2677 100644
+--- a/nvidia-drm/nvidia-drm.Kbuild	
++++ b/nvidia-drm/nvidia-drm.Kbuild
+@@ -119,3 +119,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_add_fence
+ NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_reserve_fences
+ NV_CONFTEST_TYPE_COMPILE_TESTS += reservation_object_reserve_shared_has_num_fences_arg
+ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_output_poll_changed
++NV_CONFTEST_TYPE_COMPILE_TESTS += vm_area_struct_has_const_vm_flags
+diff --git a/nvidia-modeset/nvidia-modeset-linux.c b/nvidia-modeset/nvidia-modeset-linux.c
+index 16321cb..0799335 100644
+--- a/nvidia-modeset/nvidia-modeset-linux.c	
++++ b/nvidia-modeset/nvidia-modeset-linux.c
+@@ -709,7 +709,7 @@ static void nvkms_kthread_q_callback(void *arg)
+      * pending timers and than waiting for workqueue callbacks.
+      */
+     if (timer->kernel_timer_created) {
+-        del_timer_sync(&timer->kernel_timer);
++        timer_delete_sync(&timer->kernel_timer);
+     }
+ 
+     /*
+@@ -1724,7 +1724,7 @@ restart:
+              * completion, and we wait for queue completion with
+              * nv_kthread_q_stop below.
+              */
+-            if (del_timer_sync(&timer->kernel_timer) == 1) {
++            if (timer_delete_sync(&timer->kernel_timer) == 1) {
+                 /*  We've deactivated timer so we need to clean after it */
+                 list_del(&timer->timers_list);
+ 
+diff --git a/nvidia-uvm/nvidia-uvm.Kbuild b/nvidia-uvm/nvidia-uvm.Kbuild
+index 2055fa6..554d857 100644
+--- a/nvidia-uvm/nvidia-uvm.Kbuild	
++++ b/nvidia-uvm/nvidia-uvm.Kbuild
+@@ -113,3 +113,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += timespec64
+ NV_CONFTEST_TYPE_COMPILE_TESTS += mm_has_mmap_lock
+ NV_CONFTEST_TYPE_COMPILE_TESTS += migrate_vma_added_flags
+ NV_CONFTEST_TYPE_COMPILE_TESTS += make_device_exclusive_range
++NV_CONFTEST_TYPE_COMPILE_TESTS += vm_area_struct_has_const_vm_flags
+diff --git a/nvidia-uvm/uvm.c b/nvidia-uvm/uvm.c
+index 98c0669..0c6f80d 100644
+--- a/nvidia-uvm/uvm.c	
++++ b/nvidia-uvm/uvm.c
+@@ -831,7 +831,7 @@ static int uvm_mmap(struct file *filp, struct vm_area_struct *vma)
+     // Using VM_DONTCOPY would be nice, but madvise(MADV_DOFORK) can reset that
+     // so we have to handle vm_open on fork anyway. We could disable MADV_DOFORK
+     // with VM_IO, but that causes other mapping issues.
+-    vm_flags_set(vma, VM_MIXEDMAP | VM_DONTEXPAND);
++    nv_vm_flags_set(vma, VM_MIXEDMAP | VM_DONTEXPAND);
+ 
+     vma->vm_ops = &uvm_vm_ops_managed;
+ 
