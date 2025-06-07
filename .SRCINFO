@@ -9,6 +9,7 @@ pkgbase = omniorb
 	license = LGPL-2.0-or-later
 	makedepends = pkgconfig
 	depends = python
+	depends = zstd
 	source = http://downloads.sourceforge.net/omniorb/omniORB-4.3.3.tar.bz2
 	sha256sums = accd25e2cb70c4e33ed227b0d93e9669e38c46019637887c771398870ed45e7a
 
