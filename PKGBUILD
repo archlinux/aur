@@ -1,8 +1,9 @@
-# Maintainer: Connor M. <connor@connstruct.tech>
+# Maintainer: Connor M. <connor@connstruct.net>
+# Contributor: Connor M. <connor@connstruct.net>
 
 pkgname=tinyfugue
 pkgver=5.0b8
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="a flexible, screen-oriented MUD client, for use with any type of MUD"
 url="http://tinyfugue.sourceforge.net"

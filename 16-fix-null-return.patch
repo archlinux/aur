@@ -1,0 +1,13 @@
+diff --git a/src/signals.c b/src/signals.c
+index bd96b87..83eeb00 100644
+--- a/src/signals.c
++++ b/src/signals.c
+@@ -326,7 +326,7 @@ static RETSIGTYPE core_handler(int sig)
+ 	    fflush(stdout);
+ 	    if (igetchar() != 'y') {
+ 		redraw();
+-		return;
++		return 0;
+ 	    }
+ 	}
+         fputs("Abnormal termination - SIGQUIT\r\n", stderr);
