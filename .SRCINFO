@@ -1,8 +1,8 @@
 pkgbase = hyprland-simple-setup-git
 	pkgdesc = Setup Hyprland the simple way. (Swiss/German Edition)
 	pkgver = 0.4.0
-	pkgrel = 1
-	url = https://github.com/Firstp1ck/Hyprland_Simple_Setup.git
+	pkgrel = 2
+	url = https://github.com/Firstp1ck/Hyprland-Simple-Setup.git
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = hyprland-simple-setup-git
 	depends = bash
 	depends = base-devel
 	depends = xdg-user-dirs
-	source = hyprland-simple-setup-git::git+https://github.com/Firstp1ck/Hyprland_Simple_Setup.git
+	source = hyprland-simple-setup-git::git+https://github.com/Firstp1ck/Hyprland-Simple-Setup.git
 	sha256sums = SKIP
 
 pkgname = hyprland-simple-setup-git

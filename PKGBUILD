@@ -1,17 +1,17 @@
 # Maintainer: Firstp1ck <al.leuzi@hotmail.com>
 pkgname="hyprland-simple-setup-git"
 pkgver="0.4.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Setup Hyprland the simple way. (Swiss/German Edition)"
 arch=('any')
-url="https://github.com/Firstp1ck/Hyprland_Simple_Setup.git"
+url="https://github.com/Firstp1ck/Hyprland-Simple-Setup.git"
 license=('GPL3')
 makedepends=('git')
 depends=('git' 'sudo'
 'bash'
 'base-devel'
 'xdg-user-dirs')
-source=("$pkgname::git+https://github.com/Firstp1ck/Hyprland_Simple_Setup.git")
+source=("$pkgname::git+https://github.com/Firstp1ck/Hyprland-Simple-Setup.git")
 sha256sums=('SKIP')
 
 package() {
