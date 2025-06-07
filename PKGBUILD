@@ -3,8 +3,8 @@
 # Contributor: Florian Pritz <bluewind@archlinux.org>
 
 pkgname=perl-log-any
-pkgver=1.717
-pkgrel=4
+pkgver=1.718
+pkgrel=1
 pkgdesc='Bringing loggers and listeners together'
 arch=('any')
 url="https://metacpan.org/dist/Log-Any"
@@ -27,7 +27,7 @@ checkdepends=(
 )
 options=('!emptydirs' 'purge')
 source=("https://cpan.metacpan.org/authors/id/P/PR/PREACTION/Log-Any-${pkgver}.tar.gz")
-b2sums=('fc2d4e6d1869c4699092bb27bd65f1ac09f58003fc5e849541f2b27e1e18f2e1e4b762a44b444b5a3d0e8a4df303623b4a289fdee8d08b9a67d760ebc8166eda')
+b2sums=('bbf9418026fbc301df7cec3c7a52027215fc7737e1c7678a6a0ae0040143398173e67b0b6c249359490956554e942458a3ae923b060c212b35de08e2cf1af256')
 
 build() {
   cd "${srcdir}/Log-Any-${pkgver}"
