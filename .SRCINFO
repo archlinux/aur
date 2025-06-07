@@ -1,0 +1,16 @@
+pkgbase = osmedeus-bin
+	pkgdesc = A Workflow Engine for Offensive Security
+	pkgver = 4.7.0
+	pkgrel = 1
+	url = https://github.com/j3ssie/osmedeus
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	optdepends = nmap: for network scanning
+	optdepends = metasploit: for exploitation modules
+	optdepends = docker: for isolated tools
+	provides = osmedeus
+	source = osmedeus-bin-4.7.0.tar.gz::https://github.com/j3ssie/osmedeus/releases/download/v4.7.0/osmedeus_4.7.0_linux_amd64.tar.gz
+	sha256sums = fabb2d2a0729d6c39bea83fd9cd7d8dee31f80cf7586298b399b20001b36ef5d
+
+pkgname = osmedeus-bin
