@@ -8,10 +8,10 @@ pkgrel=1
 url='https://shellcheck.net'
 arch=('any')
 license=('GPL-3.0-or-later')
+makedepends=('pandoc')
 # this is a hard requirement, otherwise we would need to declare a conflict with
 # extra/shellcheck, which would then block 'shellcheck-bin'
 depends=('shellcheck-bin')
-makedepends=('pandoc')
 source=("https://raw.githubusercontent.com/koalaman/shellcheck/v${pkgver}/shellcheck.1.md"
         "https://raw.githubusercontent.com/koalaman/shellcheck/v${pkgver}/manpage")
 b2sums=('76f2c729db93346677d16abcb1ff43ee95ab76a6057f49af90d71bfe77c9b1a1f5e98c525384cf198fba6a682a5a06af5514775e8261d577a3203e4e855503e0'
