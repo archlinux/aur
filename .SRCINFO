@@ -2,15 +2,15 @@ pkgbase = perl-string-escape
 	pkgdesc = Backslash escapes, quoted phrase, word elision, etc.
 	pkgver = 2010.002
 	pkgrel = 1
-	url = http://search.cpan.org/dist/String-Escape
+	url = https://metacpan.org/dist/String-Escape
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	depends = perl
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker>=6.3002
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/E/EV/EVO/String-Escape-2010.002.tar.gz
-	md5sums = f48000fbade3f46e1a37a43f12c7f01a
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/E/EV/EVO/String-Escape-2010.002.tar.gz
 	sha512sums = 668e196bbd95b4e9e5fc9ae3aebe0e7f1990362973bd027f2f3728f212786bc2104141ced3e024006b3ed22fa6345b968440029c98b87cbc299ac192221724c7
+	b2sums = d012323bdf10b9c8e47c90dfe1bbb064e09c7a0b00c469d9285d8a9a7ad1ee80b1d30b1fff1d5218d4491a36780174526273775dac790db2f22c0a22cc01fb14
 
 pkgname = perl-string-escape
-

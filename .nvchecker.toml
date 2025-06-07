@@ -1,0 +1,3 @@
+[perl-string-escape]
+source = "cpan"
+cpan = "String-Escape"

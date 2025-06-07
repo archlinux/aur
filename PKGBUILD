@@ -1,50 +1,43 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Maintainer: marmis <tiagodepalves@gmail.com>
+# Contributor: John D Jones III <jnbek1972@gmail.com>
 
-pkgname='perl-string-escape'
-pkgver='2010.002'
-pkgrel='1'
-pkgdesc="Backslash escapes, quoted phrase, word elision, etc."
+pkgname=perl-string-escape
+pkgver=2010.002
+pkgrel=1
+pkgdesc='Backslash escapes, quoted phrase, word elision, etc.'
 arch=('any')
-license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl')
-makedepends=()
-url='http://search.cpan.org/dist/String-Escape'
-source=('http://search.cpan.org/CPAN/authors/id/E/EV/EVO/String-Escape-2010.002.tar.gz')
-md5sums=('f48000fbade3f46e1a37a43f12c7f01a')
+url="https://metacpan.org/dist/String-Escape"
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+# See https://metacpan.org/dist/String-Escape/source/Makefile.PL
+makedepends=('perl-extutils-makemaker>=6.3002')
+checkdepends=(
+  'perl-test-simple' # "Test::More"
+)
+options=('!emptydirs' 'purge')
+source=("https://cpan.metacpan.org/authors/id/E/EV/EVO/String-Escape-${pkgver}.tar.gz")
 sha512sums=('668e196bbd95b4e9e5fc9ae3aebe0e7f1990362973bd027f2f3728f212786bc2104141ced3e024006b3ed22fa6345b968440029c98b87cbc299ac192221724c7')
-_distdir="String-Escape-2010.002"
+b2sums=('d012323bdf10b9c8e47c90dfe1bbb064e09c7a0b00c469d9285d8a9a7ad1ee80b1d30b1fff1d5218d4491a36780174526273775dac790db2f22c0a22cc01fb14')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  cd "${srcdir}/String-Escape-${pkgver}"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true INSTALLDIRS=vendor
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "${srcdir}/String-Escape-${pkgver}"
+
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
+  cd "${srcdir}/String-Escape-${pkgver}"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  make install DESTDIR="${pkgdir}"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
