@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/Dev_Ink-$pkgver" # Manual intervention since repo and pkg name are different.
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 dev_ink.desktop "$pkgdir/usr/share/applications/dev_ink.desktop"
     install -Dm644 "$srcdir/$pkgname/assets/icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/dev_ink.png"
