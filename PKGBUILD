@@ -7,6 +7,8 @@ url="https://github.com/Veicm/Dev_Ink"
 license=('Apache')
 depends=('python' 'tk' 'python-setuptools' 'python-customtkinter')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+conflicts=('dev_ink')
+provides=('dev_ink')
 source=(
     "git+$url.git"
     "dev_ink.desktop"
@@ -20,7 +22,7 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/Dev_Ink" # Manual intervention since repo and pkg name are different.
     python -m build --wheel
 }
 
