@@ -1,0 +1,11 @@
+--- nosync/Makefile	2017-12-21 12:42:37.000000000 +0100
++++ nosync-ldflags/Makefile	2025-04-16 21:54:56.627892271 +0300
+@@ -4,7 +4,7 @@
+ CFLAGS = -O2 -g
+ 
+ nosync.so: $(OBJS)
+-	$(CC) -shared -fPIC -ldl -lpthread $(CFLAGS) -o $@ $+
++	$(CC) -shared -fPIC -ldl -lpthread $(CFLAGS) $(LDFLAGS) -o $@ $+
+ 
+ %.o: %.c
+ 	$(CC) -c -fPIC $(CFLAGS) -o $@ $+

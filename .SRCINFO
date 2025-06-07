@@ -1,13 +1,17 @@
 pkgbase = nosync
 	pkgdesc = Preload library for disabling file's content synchronization
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kjn/nosync
 	arch = i686
 	arch = x86_64
-	license = Apache
-	source = nosync-1.1.tar.gz::https://github.com/kjn/nosync/archive/1.1.tar.gz
-	md5sums = 6b49297ef2f953bbcc8c8ce71b57e609
+	license = Apache-2.0
+	depends = glibc
+	source = https://github.com/kjn/nosync/archive/1.1/nosync-1.1.tar.gz
+	source = nosync-open-segfault.patch::https://github.com/kjn/nosync/pull/4.patch
+	source = nosync-ldflags.patch
+	sha256sums = 998f21e6e599f6372795ca5d30144362597eb73c9a5a38a6bfe60370feccaf4f
+	sha256sums = cec118c1cb2940ed1948324eb34db433ed15ac98e58a785986556c553381bedd
+	sha256sums = 5b99e70b6a0fde15d8888a366c5c825fc122e90fb63a1da20a08189930b67660
 
 pkgname = nosync
-
