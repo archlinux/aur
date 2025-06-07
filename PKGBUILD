@@ -1,6 +1,6 @@
 # Maintainer: etaquet 0xySan <etaquet@gmail.com>
 
-pkgname="42fecth-git"
+pkgname="42fetch-git"
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="42fetch is a neofetch-like tool for fetching system information and displaying it in a visually appealing way and making it highly customizable. Usable for 42Students it is written Shell."
