@@ -1,0 +1,22 @@
+pkgbase = danser-git
+	pkgdesc = Dancing visualizer of osu! maps and custom osu! client written in Go (git version)
+	pkgver = 0.10.2.r0.491ee29
+	pkgrel = 2
+	url = https://github.com/Wieku/danser-go
+	arch = x86_64
+	license = GPL3
+	makedepends = xorg-server-devel
+	makedepends = libxi
+	makedepends = libxinerama
+	makedepends = libxrandr
+	makedepends = go>=1.17
+	makedepends = git
+	makedepends = gcc
+	depends = libyuv
+	depends = ffmpeg
+	depends = gtk3
+	conflicts = danser
+	source = git+https://github.com/Wieku/danser-go.git
+	sha256sums = SKIP
+
+pkgname = danser-git

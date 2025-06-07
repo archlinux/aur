@@ -1,0 +1,11 @@
+--- app/app.go.og	2025-06-07 04:07:13.118370539 -0700
++++ app/app.go	2025-06-07 04:06:14.211116506 -0700
+@@ -294,7 +294,7 @@
+ 		}
+ 
+ 		if !newSettings && len(os.Args) == 1 {
+-			platform.OpenURL("https://youtu.be/dQw4w9WgXcQ")
++			// platform.OpenURL("https://youtu.be/dQw4w9WgXcQ")
+ 			closeAfterSettingsLoad = true
+ 		}
+ 
