@@ -1,19 +1,18 @@
 pkgbase = skalibs-musl
 	pkgdesc = A set of general-purpose C programming libraries
-	pkgver = 2.10.0.0
+	pkgver = 2.14.4.0
 	pkgrel = 1
 	url = http://www.skarnet.org/software/skalibs
-	changelog = CHANGELOG
+	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
 	makedepends = musl
-	provides = skalibs=2.10.0.0
+	provides = skalibs=2.14.4.0
 	conflicts = skalibs
 	replaces = skalibs
 	options = staticlibs
-	source = http://www.skarnet.org/software/skalibs/skalibs-2.10.0.0.tar.gz
-	sha256sums = c1acf81f47cad74174e18fe85b6b6d16bde11093f50ce99ad35c19d8d78d5d88
+	source = http://www.skarnet.org/software/skalibs/skalibs-2.14.4.0.tar.gz
+	sha256sums = 0e626261848cc920738f92fd50a24c14b21e30306dfed97b8435369f4bae00a5
 
 pkgname = skalibs-musl
-
