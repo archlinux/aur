@@ -3,7 +3,7 @@
 _pkgbasename=ghostty
 pkgname=${_pkgbasename}-git-zen3
 pkgrel=1
-pkgver=1.1.2.r842.gbcff488
+pkgver=1.1.2.r1073.g269d296
 pkgdesc="Fast, native, feature-rich terminal emulator pushing modern features (Zen 3 optimized)"
 arch=('x86_64')
 url="https://github.com/ghostty-org/${_pkgbasename}"
@@ -28,7 +28,7 @@ depends=(
     'wayland' 'libwayland-client.so'
     'zlib'
 )
-makedepends=('git' 'blueprint-compiler' 'pandoc-cli' 'zig=0.14.0' 'wayland-protocols')
+makedepends=('git' 'blueprint-compiler' 'pandoc-cli' 'zig=0.14.1' 'wayland-protocols')
 source=("git+https://git@github.com/ghostty-org/${_pkgbasename}")
 sha256sums=('SKIP')
 
