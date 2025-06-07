@@ -1,0 +1,4 @@
+[sionlib]
+source = "regex"
+url = "https://www.fz-juelich.de/en/ias/jsc/services/user-support/software-tools/sionlib/download"
+regex = "<b>current stable SIONlib version</b> \\(([\\d.]+)\\):"
