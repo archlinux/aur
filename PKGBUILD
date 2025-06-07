@@ -1,11 +1,12 @@
 # Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
+# Contributor: Alexander Mamzikov <av.mamzikov@gmail.com>
 # Contributor: Dobroslaw Kijowski <dobo90_at_gmail.com>
 # Contributor: Paul N. Maxwell <msg.maxwel@gmail.com>
 
 pkgbase='transgui'
 pkgname=("${pkgbase}-qt" "${pkgbase}-gtk")
-pkgver='5.18.7.f'
+pkgver='5.18.8.f'
 pkgrel='1'
 pkgdesc='Transmission BitTorrent client'
 arch=('x86_64' 'aarch64')
@@ -15,16 +16,15 @@ license=("GPL")
 makedepends=('git' 'lazarus' 'qt6pas' 'gtk2')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgbase}.desktop")
-sha256sums=('d0cb8b93da6e05496b91f110541d471d19d77f0f002cefbec5e273c79c5e3176'
+sha256sums=('86107eca8982402ff6292f93e361957b4017e48d32d23516d7ec97b2dae6c7d6'
             '6ee61ee4b01445ef67cc76abaee051c17043b57a743a977a2528a4c78a9a638b')
 
 prepare() {
   cd "${pkgbase}-${pkgver}"
   mkdir -v "../build-qt6" "../build-gtk2"
-  git clone --progress --branch="${pkgbase}" "${_url}/synapse.git" "synapse/source/lib"
 
-  # https://github.com/transmission-remote-gui/transgui/issues/1486
-  sed -i -e 's|h <> INVALID_HANDLE_VALUE|h >= 0|' "main.pas"
+  # Add custom dependency
+  git clone --progress --branch="${pkgbase}" "${_url}/synapse.git" "synapse/source/lib"
 }
 
 _build() {

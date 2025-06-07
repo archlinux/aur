@@ -1,6 +1,6 @@
 pkgbase = transgui
 	pkgdesc = Transmission BitTorrent client
-	pkgver = 5.18.7.f
+	pkgver = 5.18.8.f
 	pkgrel = 1
 	url = https://github.com/lighterowl/transgui
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = transgui
 	makedepends = lazarus
 	makedepends = qt6pas
 	makedepends = gtk2
-	source = https://github.com/lighterowl/transgui/archive/refs/tags/v5.18.7.f.tar.gz
+	source = https://github.com/lighterowl/transgui/archive/refs/tags/v5.18.8.f.tar.gz
 	source = transgui.desktop
-	sha256sums = d0cb8b93da6e05496b91f110541d471d19d77f0f002cefbec5e273c79c5e3176
+	sha256sums = 86107eca8982402ff6292f93e361957b4017e48d32d23516d7ec97b2dae6c7d6
 	sha256sums = 6ee61ee4b01445ef67cc76abaee051c17043b57a743a977a2528a4c78a9a638b
 
 pkgname = transgui-qt
