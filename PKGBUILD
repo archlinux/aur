@@ -1,6 +1,6 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=imagot-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="An image viewer made in godot (binary release)"
 arch=('x86_64' 'aarch64')
@@ -13,11 +13,11 @@ provides=('imagot')
 conflicts=('imagot')
 options=('!strip')
 source=("https://raw.githubusercontent.com/mlm-games/imagot/main/icon.png")
-source_x86_64=("imagot-0.2.0-x64::https://github.com/mlm-games/imagot/releases/download/0.2.0/imagot.x86_64")
-source_aarch64=("imagot-0.2.0-arm64::https://github.com/mlm-games/imagot/releases/download/0.2.0/imagot.arm64")
+source_x86_64=("imagot-0.2.1-x64::https://github.com/mlm-games/imagot/releases/download/0.2.1/imagot.x86_64")
+source_aarch64=("imagot-0.2.1-arm64::https://github.com/mlm-games/imagot/releases/download/0.2.1/imagot.arm64")
 sha256sums=('SKIP')
-sha256sums_x86_64=('a76fa5e5a918b5b9c9c9b2e4c845f0fc3ac742afdeab824f4dfb86351c1bb5f1')
-sha256sums_aarch64=('00421f11007fbd360a86cfb0fb851982239a1c9639391b410f2bf860fc1b372a')
+sha256sums_x86_64=('dcec2ac4332460e1dc29d94937bb8c35ad1887800ba351df728c83b460afb53d')
+sha256sums_aarch64=('0dfb6c1de6391f4afdf7a2a076c1fc8ddd966a55245d85a7a4e9fd159ed80e42')
 
 package() {
     install -d "${pkgdir}/usr/bin/"
@@ -26,9 +26,9 @@ package() {
     install -d "${pkgdir}/opt/${pkgname}/"
 
     if [[ $CARCH == "x86_64" ]]; then
-        install -Dm755 "$srcdir/imagot-0.2.0-x64" "${pkgdir}/opt/${pkgname}/imagot"
+        install -Dm755 "$srcdir/imagot-0.2.1-x64" "${pkgdir}/opt/${pkgname}/imagot"
     elif [[ $CARCH == "aarch64" ]]; then
-        install -Dm755 "$srcdir/imagot-0.2.0-arm64" "${pkgdir}/opt/${pkgname}/imagot"
+        install -Dm755 "$srcdir/imagot-0.2.1-arm64" "${pkgdir}/opt/${pkgname}/imagot"
     fi
 
     ln -s "/opt/${pkgname}/imagot" "${pkgdir}/usr/bin/imagot"
