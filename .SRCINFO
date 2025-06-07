@@ -13,7 +13,7 @@ pkgbase = libunity
 	depends = dee
 	depends = gtk3
 	depends = libdbusmenu-glib
-	source = libunity_7.2.4.tar.gz::https://github.com/MercySimp/libunity/releases/download/7.2.6/libunity_7.2.6.tar.gz
+	source = libunity_7.2.6.tar.gz::https://github.com/MercySimp/libunity/releases/download/7.2.6/libunity_7.2.6.tar.gz
 	sha256sums = c66ae9319421f42428115c7249d0c1c4aca5b55e31d81efdd736d7241f4d6a93
 
 pkgname = libunity
