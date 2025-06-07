@@ -1,6 +1,6 @@
 pkgbase = spider
 	pkgdesc = Fast and simple terminal file manager
-	pkgver = current
+	pkgver = r228.1f95a80
 	pkgrel = 1
 	url = https://github.com/atemmel/spider
 	arch = x86_64
