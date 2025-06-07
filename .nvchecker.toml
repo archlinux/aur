@@ -1,0 +1,4 @@
+[ssl-checker]
+source = "git"
+git = "https://github.com/fabio42/ssl-checker.git"
+prefix = "v"

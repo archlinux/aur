@@ -1,0 +1,17 @@
+pkgbase = ssl-checker
+	pkgdesc = Fast and beautiful program to check all your https endpoint
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/fabio42/ssl-checker
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	options = strip
+	options = buildflags
+	source = https://github.com/fabio42/ssl-checker/archive/refs/tags/v0.1.7/ssl-checker-0.1.7.tar.gz
+	sha256sums = a29d9ff77be95acbc4e1100b6e0dce867f5554d9bd3f0ae7bbc4a8c825f07ec8
+
+pkgname = ssl-checker
