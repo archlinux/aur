@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64-git
-pkgver=1.0.16.r1.gdef89329
+pkgver=1.0.17.r1.gaf5f2924
 pkgrel=1
 pkgdesc='A Nintendo64 emulator (git version)'
 arch=('x86_64')
@@ -20,6 +20,7 @@ makedepends=(
     'clang'
     'cmake'
     'dbus'
+    'fcitx'
     'git'
     'hidapi'
     'icoutils'
@@ -38,11 +39,13 @@ makedepends=(
     'libxcursor'
     'libxext'
     'libxfixes'
+    'libxi'
     'libxinerama'
     'libxkbcommon'
     'libxrandr'
     'libxrender'
     'libxss'
+    'libxtst'
     'mesa'
     'sndio'
     'systemd-libs'
