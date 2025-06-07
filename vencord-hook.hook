@@ -8,5 +8,5 @@ Target=discord-canary
 
 [Action]
 When=PostTransaction
-Exec=/etc/pacman.d/hookbin/vencord.sh
+Exec=/etc/pacman.d/hookbin/vencord-hook.sh
 NeedsTargets
