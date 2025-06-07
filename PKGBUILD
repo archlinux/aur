@@ -7,11 +7,12 @@ arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/atemmel/${pkgname}"
 license=('MIT')
 depends=(
-	'curl'
 	'ncurses'
-	'tidy'
 )
-makedepends=('git' 'zig')
+makedepends=(
+    'git' 
+    'zig'
+)
 source=("git+${url}")
 sha256sums=('SKIP')
 
