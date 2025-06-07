@@ -1,8 +1,8 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=bluejay-git
-pkgver=1.0.2.r1.gfbe059e
-pkgrel=2
+pkgver=1.0.3.r0.ga556b2f
+pkgrel=1
 pkgdesc="Bluetooth manager written in Qt"
 arch=(x86_64)
 url="https://github.com/EbonJaeger/bluejay"
@@ -30,6 +30,7 @@ makedepends=(
     extra-cmake-modules
     git
     ninja
+    vulkan-headers
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -48,6 +49,7 @@ build() {
         -D CMAKE_BUILD_TYPE=None
         -DCMAKE_INSTALL_PREFIX=/usr
         -G Ninja
+        -W no-dev
     )
     cmake "${cmake_options[@]}"
     cmake --build build
