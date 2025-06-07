@@ -1,7 +1,7 @@
 # Maintainer: Jim Philip <jimphilip394 at gmail dot com>
 pkgname=vencord-hook
 pkgver=1
-pkgrel=9
+pkgrel=10
 pkgdesc="Pacman hook to automatically install Vencord after Discord updates"
 arch=('any')
 url="https://github.com/Vencord/Installer.git"
