@@ -1,8 +1,8 @@
 pkgbase = py-nvfan
 	pkgdesc = Automatic Fan Control for NVIDIA Graphics Cards Based on Temperature.
 	pkgver = 0.1.18
-	pkgrel = 1
-	url = https://github.com/antrax2024/py-nvfan/
+	pkgrel = 4
+	url = https://pypi.org/project/py-nvfan/
 	arch = x86_64
 	license = MIT
 	makedepends = python-build
@@ -10,13 +10,7 @@ pkgbase = py-nvfan
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-hatchling
-	depends = python
-	depends = python-pynvml
-	depends = python-rich
-	depends = confz
-	depends = xorg-xhost
-	depends = nvidia-settings
 	source = https://files.pythonhosted.org/packages/aa/bb/2f30019493e63fb2fd82f1fd677cb91eaa7b4a2ae995213429ee16970af5/py_nvfan-0.1.18.tar.gz
-	md5sums = 192da6caf112dba0a741f9041fdddb0e
+	sha256sums = 0aedbb25c9b3936337cc18aa36fe32f58a114333438f0fd3002679766588e12f
 
 pkgname = py-nvfan
