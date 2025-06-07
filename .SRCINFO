@@ -1,5 +1,5 @@
 pkgbase = shellcheck-doc
-	pkgdesc = man pages for shellcheck-bin
+	pkgdesc = Man pages for shellcheck-bin
 	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://shellcheck.net
