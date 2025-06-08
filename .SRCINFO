@@ -1,7 +1,7 @@
 pkgbase = neocmakelsp
 	pkgdesc = CMake LSP implementation based on Tower and Tree-sitter
 	pkgver = 0.8.23
-	pkgrel = 2.0
+	pkgrel = 3.0
 	url = https://github.com/Decodetalkers/neocmakelsp
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,7 @@ pkgbase = neocmakelsp
 	makedepends = meson
 	makedepends = rust
 	makedepends = python
+	depends = cmake
 	options = !lto
 	source = neocmakelsp-v0.8.23.tar.gz::https://github.com/Decodetalkers/neocmakelsp/archive/refs/tags/v0.8.23.tar.gz
 	source = bash_completion.patch
