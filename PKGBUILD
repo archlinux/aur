@@ -2,7 +2,7 @@
 
 pkgname="python-marker-pdf"
 _name="marker_pdf"
-pkgver=1.5.2
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="Convert PDF to markdown + JSON quickly with high accuracy"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(python-pytorch-cuda python-pytorch-rocm)
 makedepends=(python-build python-installer python-wheel)
 checkdepends=(python-pytest)
 source=("$_name-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('53e9ca31cf4ded8655b777d91d8b25d69219936b50c5200ed2a8204a03d7d65e')
+sha256sums=('292e9e42eb8f426e713b1dc147edbfdc5608731b0f00646e34be1f03dec0d7df')
 
 build() {
   cd "${_name}-${pkgver}"
