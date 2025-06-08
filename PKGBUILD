@@ -7,7 +7,7 @@
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
-pkgver=a26.r1273.g03ceb27e90
+pkgver=a26.r1606.gff03dd45c4
 pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game (git version)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ license=('GPL-2.0-or-later' 'LicenseRef-CCPL')
 makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'git' 'enet' 'fmt'
              'gloox' 'libminiupnpc.so' 'libpng' 'libsodium' 'libvorbis'
              'miniupnpc' 'openal' 'sdl2' 'wxwidgets-gtk3' 'which' 'subversion'
-             'makepkg-git-lfs-proto' 'premake' 'python' 'llvm')
+             'makepkg-git-lfs-proto' 'python' 'llvm')
 options=('!lto' '!debug') # lto breaks spidermonkey linking (https://bugs.gentoo.org/746947)
 source=(
   "git-lfs+https://gitea.wildfiregames.com/0ad/0ad"
@@ -31,13 +31,13 @@ pkgver() {
 }
 
 build() {
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
   cd "$srcdir/${_pkgname}/libraries"
   ./build-source-libs.sh
   cd "$srcdir/${_pkgname}/build/workspaces"
   ./update-workspaces.sh \
       --with-lto \
       --without-pch \
-      --with-system-premake5 \
       --bindir=/usr/bin \
       --libdir=/usr/lib/0ad \
       --datadir=/usr/share/${pkgname}/data

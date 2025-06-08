@@ -1,6 +1,6 @@
 pkgbase = 0ad-git
 	pkgdesc = Cross-platform, 3D and historically-based real-time strategy game (git version)
-	pkgver = a26.r1273.g03ceb27e90
+	pkgver = a26.r1606.gff03dd45c4
 	pkgrel = 1
 	epoch = 1
 	url = https://play0ad.com
@@ -29,7 +29,6 @@ pkgbase = 0ad-git
 	makedepends = which
 	makedepends = subversion
 	makedepends = makepkg-git-lfs-proto
-	makedepends = premake
 	makedepends = python
 	makedepends = llvm
 	options = !lto
