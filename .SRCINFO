@@ -1,7 +1,7 @@
 pkgbase = iso-commander
 	pkgdesc = The Fastest ISO Manager on the Planet, written in C++
-	pkgver = 6.0.7
-	pkgrel = 2
+	pkgver = 6.0.8
+	pkgrel = 1
 	url = https://github.com/siyia2/iso-commander
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = iso-commander
 	depends = glibc
 	depends = readline
 	depends = util-linux
-	source = iso-commander-6.0.7.tar.gz::https://github.com/siyia2/iso-commander/archive/v6.0.7.tar.gz
-	md5sums = 06e7855e9af9ecaa7749683b182a5509
+	source = iso-commander-6.0.8.tar.gz::https://github.com/siyia2/iso-commander/archive/v6.0.8.tar.gz
+	md5sums = 6474851e2523a8b657c1e03292dadbf4
 
 pkgname = iso-commander
