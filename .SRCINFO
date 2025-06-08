@@ -1,0 +1,12 @@
+pkgbase = grlx-bin
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/gogrlx/grlx
+	arch = x86_64
+	license = 0BSD
+	provides = grlx
+	conflicts = grlx
+	source = https://github.com/gogrlx/grlx/releases/download/v1.0.5/grlx-v1.0.5-linux-amd64.tar.gz
+	sha256sums = 70e980e41c91ab0905294f696ff53f2578982146aa63a7b69d495fee68549a12
+
+pkgname = grlx-bin
