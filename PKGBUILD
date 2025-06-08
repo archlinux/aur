@@ -1,16 +1,17 @@
-# Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
+# Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
+# Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 # Contributor: Vincent Bernardoff <vb@luminar.eu.org>
 # Contributor: Raphaël Proust <raphlalou@gmail.com>
 
 _pkgname=opam
 pkgname=$_pkgname-git
-pkgver=2.1.0.beta4.r13.g6929b39c
+pkgver=2.4.0.alpha2.r22.g708d62ec2
 pkgrel=1
 pkgdesc='OCaml package manager'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://opam.ocaml.org/'
 license=(GPL)
-depends=(bubblewrap ocaml-compiler-libs unzip)
+depends=('bubblewrap' 'ocaml-compiler-libs' 'unzip')
 makedepends=('git' 'curl')
 optdepends=(
   'darcs: For downloading packages with darcs'
@@ -18,9 +19,9 @@ optdepends=(
   'mercurial: For downloading packages with mercurial'
   'rsync: For downloading packages with rsync'
 )
-provides=(_$pkgname)
+provides=($_pkgname)
 conflicts=($_pkgname)
-source=('git://github.com/ocaml/opam.git')
+source=('git+https://github.com/ocaml/opam.git')
 sha256sums=('SKIP')
 
 pkgver() {
