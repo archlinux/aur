@@ -59,24 +59,42 @@ class GenericTrayApp:
     def get_unread_count(self):
         try:
             output = subprocess.run(["fetchmail", "-c"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL).stdout
+            print("Output from fetchmail:", output.decode().strip())
             line = output.decode().strip().splitlines()[0].split()
-            idx = line.index("fetchmail:") + 3
-            # removing parenteses
-            count = int(line[idx][1:])
-            return count
+            idx = line.index("message") - 1
+            msg = int(line[idx])
+            print("Message count:", msg)
+            if "seen)" in line:
+                print("Seen count found in fetchmail output.")
+                # remove parenteses
+                seen = int(line[line.index("seen)") - 1][1:])
+                print("Seen count:", seen)
+                return msg - seen
+            kw = "unread)" if "unread)" in line else "unseen)"
+            if kw not in line:
+                print("No unread count found in fetchmail output.")
+                return msg
+            # verify if unread count is available
+            idx_unread = line.index(kw) - 1
+            unread = int(line[idx_unread][1:])
+            print("Unread count:", unread)
+            return unread
         except Exception as e:
             print("Erro em get_unread_count", e)
             return 0
     
     def update_label(self):
         print("Updating label...")
+        print("previous unread count:", self.prev_unread)
         try:
-            count = self.get_unread_count()        
+            count = self.get_unread_count()
             if count > self.prev_unread:
+                print(f"New unread msgs: {count} (previous: {self.prev_unread})")
                 threading.Thread(target=self.notify_new_mail, args=(count,)).start()
-            label = f"{count}"
-            self.indicator.set_label(label, APP_TITLE)
             self.prev_unread = count
+            print("Current unread count:", self.prev_unread)
+            label = f"{self.prev_unread}"
+            self.indicator.set_label(label, APP_TITLE)
             return True
         except Exception as e:
             print("Erro em update_label-->", e)
