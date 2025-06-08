@@ -3,7 +3,7 @@
 pkgname=amule-daemon
 pkgver=r11121
 _pkgcomm=d6693fb
-pkgrel=3
+pkgrel=4
 pkgdesc='An eMule-like client for the eD2k and Kademlia p2p networks. (Only Daemon, CLI tools and Webserver)'
 url='http://www.amule.org'
 arch=('x86_64' 'armv7h')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=(
   'gcc-libs' # libgcc_s.so libstdc++.so
   'glibc' # ld-linux-x86-64.so libc.so libm.so
-  'wxwidgets-common-light' 'libwx_baseu-3.2.so' 'libwx_baseu_net-3.2.so'
+  'wxwidgets-common' 'libwx_baseu-3.2.so' 'libwx_baseu_net-3.2.so'
   'crypto++' # libcryptopp.so
   'libupnp' 'libixml.so' 'libupnp.so'
   'libpng' 'libpng16.so'
