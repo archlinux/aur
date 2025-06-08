@@ -1,3 +1,4 @@
-vim.api.nvim_command('set runtimepath+=/usr/share/nvchad')
-vim.api.nvim_command('luafile /usr/share/nvchad/init.lua')
+vim.g.LAZY_NVIM_SETUP_COMPLETE = true
 
+local starter_path = debug.getinfo(1, "S").source:match("@?(.*[/\\])")
+vim.opt.rtp:prepend(starter_path)
