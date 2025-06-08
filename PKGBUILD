@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 pkgname=libqmi-dev
-pkgver=1.35.95_dev
-_commit=affc3af83a8ceeb2f8462081b9d5fc39b0a7258d
+pkgver=1.37.1_dev
+_commit=f94755fec4b8b3dfc2d66df647844518025365a8
 pkgrel=1
 pkgdesc="QMI modem protocol helper library"
 url="https://www.freedesktop.org/wiki/Software/libqmi/"
@@ -25,7 +25,7 @@ makedepends=(
   meson
 )
 source=(git+https://gitlab.freedesktop.org/mobile-broadband/libqmi.git#commit=$_commit)
-b2sums=('02094636892305ef8de0514dd92a8cfc1dc6a51bc835080087fb200b935716062f25dedd4c257fc88591d8c9c0a39d62648f5a111a949f68ed3d23d14551d76e')
+b2sums=('bbcd5e66076340c7503631698617345dff6211afdff8ca5be4bf8190aafb153cc6a06881f90185367207c4d4377c8031ec8f291792f08b92d2a7d2888af11a35')
 validpgpkeys=(
   A814D09B9C5BC01945A64308AECE0239C6606AD5 # Aleksander Morgado <aleksandermj@chromium.org>
 )
