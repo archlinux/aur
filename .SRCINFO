@@ -13,7 +13,7 @@ pkgbase = decent-sampler-bin
 	source = decent-sampler.desktop
 	source = application-decent-sampler.xml
 	sha256sums = d55fe5016da91e8323b159a1566649e310fcd3dec2d73980bcf314b569baba82
-	sha256sums = f1eb1d90eb08cf725a139b2c05c48a3b40b245aa8c92aea34c5ec6f35630e31b
+	sha256sums = f2eb1d90eb08cf725a139b2c05c48a3b40b245aa8c92aea34c5ec6f35630e31b
 	sha256sums = 2341jf5a6839ce70c3f28fe8e3abd45b47b722be9805ebfbf5630bd4cda17ca1
 	sha256sums = f45eefe4e35d6973e55af2ff3a07d392273b2141dc8ff025c0f86597bbb90bb8
 
