@@ -26,7 +26,7 @@ unset _pkgtype
 
 _pkgname="dolphin-emu"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2503.r174.g9819d66
+pkgver=2506.r98.g5064b61
 pkgrel=1
 pkgdesc='A Gamecube and Wii emulator'
 url="https://github.com/dolphin-emu/dolphin"
@@ -64,6 +64,7 @@ makedepends=(
   'git'
   'ninja'
   'python'
+  'vulkan-headers'
 )
 
 if [[ "${_build_unittests::1}" == "t" ]]; then
@@ -110,68 +111,48 @@ _source_main() {
 
 _source_dolphin() {
   local _sources_add=(
-    #'bylaws.libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'
-    #'curl'::'git+https://github.com/curl/curl.git'
-    'cyan4973.xxhash'::'git+https://github.com/Cyan4973/xxHash.git'
-    #'dolphin-emu.ext-win-ffmpeg'::'git+https://github.com/dolphin-emu/ext-win-ffmpeg.git'
-    #'dolphin-emu.ext-win-qt'::'git+https://github.com/dolphin-emu/ext-win-qt.git'
-    'epezent.implot'::'git+https://github.com/epezent/implot.git'
-    'fmtlib.fmt'::'git+https://github.com/fmtlib/fmt.git'
-    #'google.googletest'::'git+https://github.com/google/googletest.git'
-    'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
-    #'khronosgroup.spirv-cross'::'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
-    'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
-    #'libsdl-org.sdl'::'git+https://github.com/libsdl-org/SDL.git'
-    #'libusb'::'git+https://github.com/libusb/libusb.git'
-    #'libusb.hidapi'::'git+https://github.com/libusb/hidapi.git'
-    'lsalzman.enet'::'git+https://github.com/lsalzman/enet.git'
-    #'lz4'::'git+https://github.com/lz4/lz4.git'
-    'mgba-emu.mgba'::'git+https://github.com/mgba-emu/mgba.git'
-    'mozilla.cubeb'::'git+https://github.com/mozilla/cubeb.git'
-    #'randy408.libspng'::'git+https://github.com/randy408/libspng.git'
-    'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'
-    'sfml'::'git+https://github.com/SFML/SFML.git'
-    'syoyo.tinygltf'::'git+https://github.com/syoyo/tinygltf.git'
-    'zlib-ng'::'git+https://github.com/zlib-ng/zlib-ng.git'
-    'zlib-ng.minizip-ng'::'git+https://github.com/zlib-ng/minizip-ng.git'
+    #'bylaws.libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'::'Externals/libadrenotools'
+    #'curl'::'git+https://github.com/curl/curl.git'::'Externals/curl/curl'
+    'cyan4973.xxhash'::'git+https://github.com/Cyan4973/xxHash.git'::'Externals/xxhash/xxHash'
+    #'dolphin-emu.ext-win-ffmpeg'::'git+https://github.com/dolphin-emu/ext-win-ffmpeg.git'::'Externals/FFmpeg-bin'
+    #'dolphin-emu.ext-win-qt'::'git+https://github.com/dolphin-emu/ext-win-qt.git'::'Externals/Qt'
+    'e-dant.watcher'::'git+https://github.com/e-dant/watcher.git'::'Externals/watcher/watcher'
+    'epezent.implot'::'git+https://github.com/epezent/implot.git'::'Externals/implot/implot'
+    'facebook.zstd'::'git+https://github.com/facebook/zstd.git'::'Externals/zstd/zstd'
+    'fmtlib.fmt'::'git+https://github.com/fmtlib/fmt.git'::'Externals/fmt/fmt'
+    #'google.googletest'::'git+https://github.com/google/googletest.git'::'Externals/gtest'
+    'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'::'Externals/VulkanMemoryAllocator'
+    #'khronosgroup.spirv-cross'::'git+https://github.com/KhronosGroup/SPIRV-Cross.git'::'Externals/spirv_cross/SPIRV-Cross'
+    #'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'::'Externals/Vulkan-Headers'
+    #'libsdl-org.sdl'::'git+https://github.com/libsdl-org/SDL.git'::'Externals/SDL/SDL'
+    #'libusb'::'git+https://github.com/libusb/libusb.git'::'Externals/libusb/libusb'
+    #'libusb.hidapi'::'git+https://github.com/libusb/hidapi.git'::'Externals/hidapi/hidapi-src'
+    'lsalzman.enet'::'git+https://github.com/lsalzman/enet.git'::'Externals/enet/enet'
+    #'lz4'::'git+https://github.com/lz4/lz4.git'::'Externals/lz4/lz4'
+    'mgba-emu.mgba'::'git+https://github.com/mgba-emu/mgba.git'::'Externals/mGBA/mgba'
+    'mozilla.cubeb'::'git+https://github.com/mozilla/cubeb.git'::'Externals/cubeb/cubeb'
+    #'randy408.libspng'::'git+https://github.com/randy408/libspng.git'::'Externals/libspng/libspng'
+    'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'::'Externals/rcheevos/rcheevos'
+    'sfml'::'git+https://github.com/SFML/SFML.git'::'Externals/SFML/SFML'
+    'syoyo.tinygltf'::'git+https://github.com/syoyo/tinygltf.git'::'Externals/tinygltf/tinygltf'
+    'zlib-ng'::'git+https://github.com/zlib-ng/zlib-ng.git'::'Externals/zlib-ng/zlib-ng'
+    'zlib-ng.minizip-ng'::'git+https://github.com/zlib-ng/minizip-ng.git'::'Externals/minizip-ng/minizip-ng'
   )
 
-  local _p
+  local _p _idx _src _sm_prep _sm_func
   for _p in ${_sources_add[@]}; do
-    source+=("$_p")
+    _idx="${_p%%::*}"
+    _sm_prep+=("${_idx}::${_p##*::}")
+    _src="${_p%::*}"
+    source+=("$_src")
     sha256sums+=('SKIP')
   done
 
-  _prepare_dolphin() (
-    cd "$srcdir/$_pkgsrc"
-    local _submodules=(
-      #'bylaws.libadrenotools'::'Externals/libadrenotools'
-      #'curl'::'Externals/curl/curl'
-      'cyan4973.xxhash'::'Externals/xxhash/xxHash'
-      #'dolphin-emu.ext-win-ffmpeg'::'Externals/FFmpeg-bin'
-      #'dolphin-emu.ext-win-qt'::'Externals/Qt'
-      'epezent.implot'::'Externals/implot/implot'
-      'fmtlib.fmt'::'Externals/fmt/fmt'
-      #'google.googletest'::'Externals/gtest'
-      'gpuopen-librariesandsdks.vulkanmemoryallocator'::'Externals/VulkanMemoryAllocator'
-      #'khronosgroup.spirv-cross'::'Externals/spirv_cross/SPIRV-Cross'
-      'khronosgroup.vulkan-headers'::'Externals/Vulkan-Headers'
-      #'libsdl-org.sdl'::'Externals/SDL/SDL'
-      #'libusb'::'Externals/libusb/libusb'
-      #'libusb.hidapi'::'Externals/hidapi/hidapi-src'
-      'lsalzman.enet'::'Externals/enet/enet'
-      #'lz4'::'Externals/lz4/lz4'
-      'mgba-emu.mgba'::'Externals/mGBA/mgba'
-      'mozilla.cubeb'::'Externals/cubeb/cubeb'
-      #'randy408.libspng'::'Externals/libspng/libspng'
-      'retroachievements.rcheevos'::'Externals/rcheevos/rcheevos'
-      'sfml'::'Externals/SFML/SFML'
-      'syoyo.tinygltf'::'Externals/tinygltf/tinygltf'
-      'zlib-ng'::'Externals/zlib-ng/zlib-ng'
-      'zlib-ng.minizip-ng'::'Externals/minizip-ng/minizip-ng'
-    )
+  eval "_prepare_dolphin() (
+    cd \"\$srcdir/\$_pkgsrc\"
+    local _submodules=(${_sm_prep[@]})
     _submodule_update
-  )
+  )"
 }
 
 _source_main
@@ -194,8 +175,6 @@ prepare() {
 }
 
 build() (
-  export CMAKE_POLICY_VERSION_MINIMUM=3.5
-
   export CC CXX CFLAGS CXXFLAGS LDFLAGS
   local _pkgver _cmake_options _ldflags _cflags _cxxflags
 
@@ -216,6 +195,7 @@ END
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
     -DENABLE_AUTOUPDATE=OFF
     # -DENABLE_ANALYTICS=OFF # default:Opt-in
@@ -226,7 +206,6 @@ END
     -DUSE_SYSTEM_ENET=OFF
     -DUSE_SYSTEM_FMT=OFF
     -DUSE_SYSTEM_LIBMGBA=OFF
-    -DUSE_SYSTEM_MINIZIP=OFF
     -DUSE_SYSTEM_XXHASH=OFF
     -Wno-dev
   )
