@@ -1,8 +1,8 @@
 # Maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
 
 pkgname=cargo-afl
-pkgver=0.15.18
-pkgrel=3
+pkgver=0.15.19
+pkgrel=1
 pkgdesc="Fuzzing Rust code with AFLplusplus"
 arch=(x86_64)
 url="https://github.com/rust-fuzz/afl.rs"
