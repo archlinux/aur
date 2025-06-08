@@ -4,7 +4,7 @@
 _pkgauthor=aquaproj
 _pkgname=aqua
 pkgname=${_pkgname}-bin
-pkgver=2.52.0
+pkgver=2.53.0
 pkgrel=1
 pkgdesc="Declarative CLI version manager"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -14,7 +14,7 @@ license=('MIT')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 makedepends=('help2man')
-depends=()
+depends=('bash')
 optdepends=()
 
 install=aqua-bin.install
@@ -22,8 +22,8 @@ install=aqua-bin.install
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('962ccadea3795094c9520e5a9b2965f4175f95f36e67a296a2d7a86e0cd62e82')
-sha256sums_aarch64=('2078d364ca043eb35a42b812faed54165ddf9c3d32bf580871e4b1c291424749')
+sha256sums_x86_64=('c1f2727684e0f6cc54a5816282d69927e002d7310a3fbd3d7ebcf57bf3e931c5')
+sha256sums_aarch64=('f6a7e93f77cb1c16b67d531e7aca042413fddd4dc89ed8912f8c23eed8fac9f6')
 
 build() {
     cd "${srcdir}/" || exit
