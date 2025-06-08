@@ -62,7 +62,7 @@ pkgbase = mathematica
 	optdepends = zlib
 	options = !strip
 	options = !debug
-	source = Wolfram_14.2.1_LIN_Bndl.sh::https://account.wolfram.com/dl/WolframApp?version=14.2.1&platform=Linux&downloadManager=false&signature=09d7f5942c445782756030c9300d6386f8265c6910537efd11672b0a2b38d638bf4b845786832252bbd5eca6ef9bb8251dda952bdaf34248a9069f5e
+	source = Wolfram_14.2.1_LIN_Bndl.sh::https://account.wolfram.com/dl/WolframApp?version=14.2.1&platform=Linux&downloadManager=false
 	source = remove-xdg-scripts.patch
 	source = insecure-runpath.list
 	sha256sums = 0dc65b7adaf9c0ede2fc391c860a6c5b74461df6b53ec940e1f2be6d143af018

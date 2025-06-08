@@ -1,7 +1,11 @@
-Mathematica*.sh
-Wolfram*.sh
-/*.pkg.*
-build/
-bundle/
-out/
-pkg/
+*
+# dev tools
+!.gitignore
+!.nvchecker.toml
+!.shellcheckrc
+!mksrcinfo
+# actual package
+!PKGBUILD
+!remove-xdg-scripts.patch
+!insecure-runpath.list
+!.SRCINFO

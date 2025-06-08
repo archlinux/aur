@@ -76,7 +76,7 @@ optdepends=(
 _source_url=$(
     curl -s 'https://www.wolfram.com/download-center/' \
     | grep 'account.wolfram.com/dl/WolframApp' \
-    | grep "version=${_pkgver}" \
+    | grep -E "version=${_pkgver}\b" \
     | grep 'platform=Linux' \
     | grep -v 'includesDocumentation=false' \
     | sed -E 's/.*href="([^"]+)".*/\1/' \
@@ -90,6 +90,14 @@ source=(
 sha256sums=('0dc65b7adaf9c0ede2fc391c860a6c5b74461df6b53ec940e1f2be6d143af018'
             '20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0'
             '8f808af5ee778bad8a78b4544bbda9854a06159b65f3368d508ebcaabf4bbadd')
+## Symbol searching and stripping takes a long time, so they are disabled by default.
+## Also, `debug` won't find any source files here, since this is a binary distribution.
+## Here's a quick comparison on my machine:
+## | Build options   | Build time | Package Size (Zstd) | Uncompressed Size |
+## | :-------------- | ---------: | ------------------: | ----------------: |
+## | (!strip !debug) |   139.26 s |            7346 MiB |         18668 MiB |
+## | (!strip debug)  |   331.50 s |            7346 MiB |         18668 MiB |
+## | (strip !debug)  |   353.99 s |            7120 MiB |         17768 MiB |
 options=(!strip !debug)
 
 ## To build this package you might need to place the mathematica-installer into
@@ -100,9 +108,15 @@ options=(!strip !debug)
 ## to keep it, uncomment the relevant lines at the bottom of this PKGBUILD, or
 ## install https://aur.archlinux.org/packages/mathematica-light.
 
-## The final package can be very large (especially if documentation is kept) and
-## compression can be quite slow.  In most cases, the package is installed
-## straight away and the package need not be kept, so compression can be disabled.
+## Package compression can be disabled if it won't be kept, but keep in mind that
+## CPU operations are much faster than disk, so campressing with the default Zstd
+## options will probably be just as fast or faster than writing the whole .pkg.tar.
+## Here's a comparison on my a Gen4 NVMe SSD:
+## | PKGEXT       | Build time | Package size |
+## | :----------- | ---------: | -----------: |
+## | .pkg.tar     |   141.29 s |    18551 MiB |
+## | .pkg.tar.zst |   139.26 s |     7346 MiB |
+## | .pkg.tar.lz4 |   143.98 s |    11657 MiB |
 # PKGEXT='.pkg.tar'
 
 ## Here you can change the installation directory. The default is '/opt/Mathematica'.
@@ -129,7 +143,8 @@ prepare() {
 }
 
 package() {
-    export installdir="$(realpath -m "${pkgdir}/${_installdir}")"
+    installdir="$(realpath -m "${pkgdir}/${_installdir}")"
+    export installdir
 
     msg2 'Running Mathematica installer'
     # https://reference.wolfram.com/language/tutorial/InstallingWolfram.html#650929293
@@ -158,37 +173,30 @@ package() {
 
     msg2 'Copying menu and mimetype information'
 
-    install -d "${pkgdir}"/usr/share/applications
     desktop_file="com.wolfram.Wolfram.${_pkgver}.desktop"
     _fix_dekstop_file "${installdir}/SystemFiles/Installation/$desktop_file"
-    cp "${installdir}/SystemFiles/Installation/$desktop_file" "${pkgdir}"/usr/share/applications/
 
-    install -d "${pkgdir}"/usr/share/desktop-directories
-    cp "${installdir}"/SystemFiles/Installation/*.directory "${pkgdir}"/usr/share/desktop-directories/
-
-    install -d "${pkgdir}"/usr/share/mime/packages
-    cp "${installdir}"/SystemFiles/Installation/*.xml "${pkgdir}"/usr/share/mime/packages/
+    install -D -m644 "${installdir}/SystemFiles/Installation/$desktop_file" -t "${pkgdir}"/usr/share/applications/
+    install -D -m644 "${installdir}"/SystemFiles/Installation/*.directory -t "${pkgdir}"/usr/share/desktop-directories
+    install -D -m644 "${installdir}"/SystemFiles/Installation/*.xml -t "${pkgdir}"/usr/share/mime/packages
 
     msg2 'Copying icons'
-    install -d "${pkgdir}"/usr/share/icons/hicolor/{32x32,64x64,128x128}/{apps,mimetypes}
     for i in 32 64 128; do
-        cp "${installdir}/SystemFiles/FrontEnd/SystemResources/X/App-${i}.png" \
+        install -D -m644 "${installdir}/SystemFiles/FrontEnd/SystemResources/X/App-${i}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram-${_pkgver}.png"
 
         for mimetype in $(find . -name 'vnd.*' | cut -d '-' -f1 | uniq); do
             mimetype="$(basename "$mimetype")"
-            cp "${installdir}/SystemFiles/FrontEnd/SystemResources/X/${mimetype}-${i}.png" \
+            install -D -m644 "${installdir}/SystemFiles/FrontEnd/SystemResources/X/${mimetype}-${i}.png" \
                 "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-${mimetype}.png"
         done
     done
 
     msg2 'Copying man pages'
-    install -d "${pkgdir}"/usr/share/man/man1
-    cp "${installdir}"/SystemFiles/SystemDocumentation/Unix/*.1 "${pkgdir}"/usr/share/man/man1
+    install -D -m644 "${installdir}"/SystemFiles/SystemDocumentation/Unix/*.1 -t "${pkgdir}"/usr/share/man/man1
 
     msg2 'Copying license'
-    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    cp "${installdir}"/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+    install -D -m644 "${installdir}"/LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
     _fix_binary_symlinks # namcap rule: symlink
     _fix_insecure_runpath # namcap rule: rpath, runpath
@@ -228,18 +236,18 @@ _fix_binary_symlinks() {
 _fix_insecure_runpath() {
     msg2 'Fixing insecure RPATH and RUNPATH on ELF files'
 
-    cat "${srcdir}/insecure-runpath.list" | while read elffile; do
-        # remove all RPATHs and RUNPATHs that aren't realtive to $ORIGIN
+    while read -r elffile; do
+        # remove all RPATHs and RUNPATHs that aren't relative to $ORIGIN
         safe_runpath="$(chrpath -l "${installdir}/${elffile}" |\
             sed -E 's/.*\bR(UN)?PATH=(.*)/\2/g' |\
-            tr ':' '\n' | grep -E '^\$ORIGIN' | paste -sd ':')"
+            tr ':' '\n' | grep -E "^\\\$ORIGIN" | paste -sd ':')"
 
         if [ -z "$safe_runpath" ]; then
             chrpath -d "${installdir}/${elffile}"
         else
             chrpath -r "$safe_runpath" "${installdir}/${elffile}"
         fi
-    done
+    done < "${srcdir}/insecure-runpath.list"
 }
 
 _fix_permissions() {
