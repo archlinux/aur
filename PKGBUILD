@@ -3,13 +3,16 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
 pkgname=rustup-git
-pkgver=1.27.0.r15.g6e8769c7
+pkgver=1.28.2.r61.g3197587f
 pkgrel=1
 pkgdesc="The Rust toolchain installer"
 arch=('x86_64')
 url="https://github.com/rust-lang/rustup"
 license=('MIT' 'Apache-2.0')
-depends=('curl')
+depends=('gcc-libs'
+         'glibc'
+         'xz'
+         'zstd')
 makedepends=('git' 'cargo')
 optdepends=('lldb: rust-lldb script'
             'gdb: rust-gdb script')
@@ -38,7 +41,7 @@ build() {
     cd "$srcdir/$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --features no-self-update --bin rustup-init --bin list-proxy-names
+    cargo build --frozen --release --no-default-features --features reqwest-rustls-tls --features no-self-update --bin rustup-init --bin list-proxy-names
 }
 
 package() {
