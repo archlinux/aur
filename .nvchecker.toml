@@ -1,0 +1,3 @@
+[pigment]
+source = "git"
+git = "https://github.com/Jeffser/Pigment.git"
