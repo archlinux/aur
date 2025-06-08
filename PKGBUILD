@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=ValveResourceFormat
 pkgname=source2viewer
-pkgver=12.0
+pkgver=13.0
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('valveresourceformat')
 replaces=('valveresourcefromat')
 install=$pkgname.install
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a34bbc74094fb012615f0d3c7775a651c51f22649d076b4acbb055eb4e2ad5ed')
+sha256sums=('48f4806daa08899f5310653e22270bb25700feb2a604e2bbf961c2ba29bb82cd')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
@@ -23,7 +23,7 @@ prepare() {
 
 
 build() {
-	cd "$srcdir/$_pkgname-$pkgver/Decompiler"
+	cd "$srcdir/$_pkgname-$pkgver/CLI"
 	dotnet publish -r linux-x64
 
 	cd "$srcdir/$_pkgname-$pkgver/GUI"
@@ -45,7 +45,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver/Decompiler/bin/Release/linux-x64/publish"
+	cd "$srcdir/$_pkgname-$pkgver/CLI/bin/Release/linux-x64/publish"
 	install -Dm755 Source2Viewer-CLI "$pkgdir/usr/bin/${pkgname}-cli"
 
 
