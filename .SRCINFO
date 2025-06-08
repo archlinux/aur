@@ -8,6 +8,7 @@ pkgbase = ixgo
 	license = Apache-2.0
 	makedepends = go
 	provides = ixgo
+	conflicts = igop
 	replaces = igop
 	source = https://github.com/goplus/ixgo/archive/refs/tags/v0.51.0.tar.gz
 	sha256sums = 4b0bf4ea7eb728f766710ed0b0499edc392a8878ceb5195737279f0ef6963a77

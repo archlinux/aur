@@ -10,6 +10,7 @@ url="https://github.com/${_pkgauthor}/${pkgname}"
 license=('Apache-2.0')
 
 provides=("${pkgname}")
+conflicts=('igop')
 replaces=('igop')
 makedepends=('go')
 
