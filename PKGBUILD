@@ -1,16 +1,16 @@
 # Maintainer: Matt Cuneo <m@cuneo.au>
 
 pkgname=huntarr
-pkgver=7.5.6
+pkgver=7.6.9
 pkgrel=1
 _reponame=Huntarr.io
 pkgdesc="an automatic missing content hunter for Sonarr, Radarr, Lidarr, Readarr, and Whisparr."
 arch=('x86_64')
 url="https://github.com/plexguide/$_reponame"
 license=('GPL3')
-depends=('python' 'python-flask' 'python-requests' 'python-waitress' 'python-bcrypt' 'python-qrcode' 'python-pyotp' 'apprise')
+depends=('python' 'python-flask' 'python-requests' 'python-waitress' 'python-bcrypt' 'python-qrcode' 'python-pyotp' 'apprise' 'python-pytz')
 source=("${url}/archive/refs/tags/$pkgver.tar.gz" 'huntarr.service' 'huntarr.sysusers' 'huntarr.tmpfiles')
-sha256sums=('decc3d5f03b200fd6ea810cc25339abff2d2af8cb0782083acb9bf3d7b2fe177'
+sha256sums=('f7b466f4b2c9a3f18d859f13898cfc753a2ecc082fc2a8c6b685392ffb020969'
             '660e4f9dc6d38b06feeda7e7e8748191887a63a4a4087d6a23d36a4a4394bbd4'
             '42a4c3451509f4ee82aa555f83f80fa638fbef162a33e937127a82723e2ab19e'
             '57d8031a1a03293bc422cfd20cd8238219c4823557d17f5ad0874e633e864db5')
