@@ -1,10 +1,10 @@
 pkgbase = tela-circle-icon-theme-spl-git
-	pkgdesc = A flat colorful design icon theme
+	pkgdesc = A flat, colorful design icon theme
 	pkgver = 2024.04.19.r6.ge88833b9
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Tela-circle-icon-theme
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = hicolor-icon-theme
 	optdepends = adwaita-icon-theme: for better GNOME integration
@@ -16,7 +16,7 @@ pkgbase = tela-circle-icon-theme-spl-git
 	b2sums = SKIP
 
 pkgname = tela-circle-icon-theme-all-git
-	pkgdesc = A flat colorful design icon theme (all variants)
+	pkgdesc = A flat, colorful design icon theme (all variants)
 	depends = tela-circle-icon-theme-standard-git
 	depends = tela-circle-icon-theme-black-git
 	depends = tela-circle-icon-theme-blue-git
@@ -35,61 +35,61 @@ pkgname = tela-circle-icon-theme-all-git
 	conflicts = tela-circle-icon-theme-all
 
 pkgname = tela-circle-icon-theme-standard-git
-	pkgdesc = A flat colorful design icon theme (standard variant)
+	pkgdesc = A flat, colorful design icon theme (standard variant)
 	conflicts = tela-circle-icon-theme-standard
 
 pkgname = tela-circle-icon-theme-black-git
-	pkgdesc = A flat colorful design icon theme (black variant)
+	pkgdesc = A flat, colorful design icon theme (black variant)
 	conflicts = tela-circle-icon-theme-black
 
 pkgname = tela-circle-icon-theme-blue-git
-	pkgdesc = A flat colorful design icon theme (blue variant)
+	pkgdesc = A flat, colorful design icon theme (blue variant)
 	conflicts = tela-circle-icon-theme-blue
 
 pkgname = tela-circle-icon-theme-brown-git
-	pkgdesc = A flat colorful design icon theme (brown variant)
+	pkgdesc = A flat, colorful design icon theme (brown variant)
 	conflicts = tela-circle-icon-theme-brown
 
 pkgname = tela-circle-icon-theme-green-git
-	pkgdesc = A flat colorful design icon theme (green variant)
+	pkgdesc = A flat, colorful design icon theme (green variant)
 	conflicts = tela-circle-icon-theme-green
 
 pkgname = tela-circle-icon-theme-grey-git
-	pkgdesc = A flat colorful design icon theme (grey variant)
+	pkgdesc = A flat, colorful design icon theme (grey variant)
 	conflicts = tela-circle-icon-theme-grey
 
 pkgname = tela-circle-icon-theme-orange-git
-	pkgdesc = A flat colorful design icon theme (orange variant)
+	pkgdesc = A flat, colorful design icon theme (orange variant)
 	conflicts = tela-circle-icon-theme-orange
 
 pkgname = tela-circle-icon-theme-pink-git
-	pkgdesc = A flat colorful design icon theme (pink variant)
+	pkgdesc = A flat, colorful design icon theme (pink variant)
 	conflicts = tela-circle-icon-theme-pink
 
 pkgname = tela-circle-icon-theme-purple-git
-	pkgdesc = A flat colorful design icon theme (purple variant)
+	pkgdesc = A flat, colorful design icon theme (purple variant)
 	conflicts = tela-circle-icon-theme-purple
 
 pkgname = tela-circle-icon-theme-red-git
-	pkgdesc = A flat colorful design icon theme (red variant)
+	pkgdesc = A flat, colorful design icon theme (red variant)
 	conflicts = tela-circle-icon-theme-red
 
 pkgname = tela-circle-icon-theme-yellow-git
-	pkgdesc = A flat colorful design icon theme (yellow variant)
+	pkgdesc = A flat, colorful design icon theme (yellow variant)
 	conflicts = tela-circle-icon-theme-yellow
 
 pkgname = tela-circle-icon-theme-manjaro-git
-	pkgdesc = A flat colorful design icon theme (manjaro variant)
+	pkgdesc = A flat, colorful design icon theme (manjaro variant)
 	conflicts = tela-circle-icon-theme-manjaro
 
 pkgname = tela-circle-icon-theme-ubuntu-git
-	pkgdesc = A flat colorful design icon theme (ubuntu variant)
+	pkgdesc = A flat, colorful design icon theme (ubuntu variant)
 	conflicts = tela-circle-icon-theme-ubuntu
 
 pkgname = tela-circle-icon-theme-dracula-git
-	pkgdesc = A flat colorful design icon theme (dracula variant)
+	pkgdesc = A flat, colorful design icon theme (dracula variant)
 	conflicts = tela-circle-icon-theme-dracula
 
 pkgname = tela-circle-icon-theme-nord-git
-	pkgdesc = A flat colorful design icon theme (nord variant)
+	pkgdesc = A flat, colorful design icon theme (nord variant)
 	conflicts = tela-circle-icon-theme-nord

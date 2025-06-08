@@ -1,16 +1,17 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
-_themes=(standard black blue brown green grey orange pink purple red yellow manjaro ubuntu dracula nord)
+# Contributor: "marmis" Tiago de Paula Alves <tiagodepalves@gmail.com>
+_variants=(standard black blue brown green grey orange pink purple red yellow manjaro ubuntu dracula nord)
 
 _pkgbase='tela-circle-icon-theme'
 pkgbase="${_pkgbase}-spl-git"
-_pkgname=("${_themes[@]/#/${_pkgbase}-}")
-pkgname=(${_pkgbase}-all-git ${_pkgname[@]/%/-git})
-pkgdesc='A flat colorful design icon theme'
+_pkgname=("${_variants[@]/#/${_pkgbase}-}")
+pkgname=("${_pkgbase}-all-git" "${_pkgname[@]/%/-git}")
+pkgdesc='A flat, colorful design icon theme'
 pkgver=2024.04.19.r6.ge88833b9
 pkgrel=1
 url="https://github.com/vinceliuice/${_pkgbase^}"
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('git')
 depends=('hicolor-icon-theme')
 optdepends=('adwaita-icon-theme: for better GNOME integration'
@@ -27,8 +28,8 @@ pkgver() {
 
 package_tela-circle-icon-theme-all-git() {
   pkgdesc="${pkgdesc} (all variants)"
-  depends=(${_pkgname[@]/%/-git})
-  conflicts=(${_pkgbase}-all)
+  depends=("${_pkgname[@]/%/-git}")
+  conflicts=("${_pkgbase}-all")
 }
 
 _package() {
@@ -37,6 +38,7 @@ _package() {
   # does things this way.
   # See https://gitlab.archlinux.org/archlinux/packaging/packages/gtk4/-/blob/main/gtk-update-icon-cache.hook
   gtk-update-icon-cache() {
+    # shellcheck disable=SC2317 # Used in 'install.sh'
     true
   }
   export -f gtk-update-icon-cache
@@ -46,11 +48,11 @@ _package() {
   ./install.sh -d "${pkgdir}/usr/share/icons" "${1}"
 }
 
-for _theme in "${_themes[@]}"; do
-  eval "package_${_pkgbase}-${_theme}-git() {
-    pkgdesc='${pkgdesc} (${_theme} variant)'
-    conflicts=(${_pkgbase}-${_theme})
+for _variant in "${_variants[@]}"; do
+  eval "package_${_pkgbase}-${_variant}-git() {
+    pkgdesc='${pkgdesc} (${_variant} variant)'
+    conflicts=(${_pkgbase}-${_variant})
 
-    _package '${_theme}'
+    _package '${_variant}'
   }"
 done

@@ -1,4 +1,6 @@
 *
 !.gitignore
+!.shellcheckrc
+!.nvchecker.toml
 !PKGBUILD
 !.SRCINFO

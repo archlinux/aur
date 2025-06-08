@@ -1,0 +1,5 @@
+[tela-circle-icon-theme-spl-git]
+source = "git"
+git = "https://github.com/vinceliuice/Tela-circle-icon-theme.git"
+from_pattern = '(\d+)-(\d+)-(\d+)'
+to_pattern = '\1.\2.\3'
