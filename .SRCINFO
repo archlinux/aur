@@ -1,0 +1,17 @@
+pkgbase = piazzolla-font
+	pkgdesc = A font with a compact appearance
+	pkgver = 2.005
+	pkgrel = 1
+	url = https://piazzolla.huertatipografica.com/
+	arch = any
+	license = OFL
+	source = https://github.com/huertatipografica/piazzolla/releases/download/v2.005/Piazzolla.zip
+	source = https://github.com/huertatipografica/piazzolla/releases/download/v2.005/PiazzollaSC.zip
+	sha256sums = a45561a595c9511f380548e3f7e35e1a6c5cb79d2c9939803161c5d95d5b0cd9
+	sha256sums = a72861fbeff4c32ba14f6f02b487f9849cc40963dc02be2ac7f8cc460ca9f01d
+
+pkgname = otf-piazzolla
+
+pkgname = ttf-piazzolla
+
+pkgname = ttf-piazzolla-variable
