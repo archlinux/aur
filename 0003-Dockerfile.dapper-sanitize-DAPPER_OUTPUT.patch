@@ -1,4 +1,4 @@
-From 6ee660911efcca10ecb3bfeef9b85c8251480b70 Mon Sep 17 00:00:00 2001
+From 159e29132f0b1553591b82996a7d11f086268aec Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 01:11:52 +0100
 Subject: [PATCH 3/6] Dockerfile.dapper: sanitize $DAPPER_OUTPUT
@@ -16,10 +16,10 @@ extracting anything other than the final artifacts.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Dockerfile.dapper b/Dockerfile.dapper
-index 89b31edded..7db22f3cf8 100644
+index a246fba08e..028d792f2b 100644
 --- a/Dockerfile.dapper
 +++ b/Dockerfile.dapper
-@@ -54,7 +54,7 @@ ENV SELINUX=${SELINUX}
+@@ -46,7 +46,7 @@ ENV SELINUX=${SELINUX}
  ENV DAPPER_RUN_ARGS="--privileged -v k3s-cache:/go/src/github.com/k3s-io/k3s/.cache -v trivy-cache:/root/.cache/trivy" \
      DAPPER_ENV="REPO TAG DRONE_TAG IMAGE_NAME SKIP_VALIDATE SKIP_IMAGE SKIP_AIRGAP AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY_ID GITHUB_TOKEN GOLANG GOCOVER GOOS DEBUG" \
      DAPPER_SOURCE="/go/src/github.com/k3s-io/k3s/" \
@@ -29,5 +29,5 @@ index 89b31edded..7db22f3cf8 100644
      CROSS=true \
      STATIC_BUILD=true
 -- 
-2.48.1.5.g9188e14f140
+2.49.0.5.g15b5d850cb1
 

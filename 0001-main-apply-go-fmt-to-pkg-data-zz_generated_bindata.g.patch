@@ -1,4 +1,4 @@
-From cd5224d277cf62a1d169ebb0678a7fbba0aaa602 Mon Sep 17 00:00:00 2001
+From 82c619067fa5a9e8b37fba5c89bcc4b3d80aa66f Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 01:10:59 +0100
 Subject: [PATCH 1/6] main: apply go-fmt to pkg/data/zz_generated_bindata.go
@@ -9,17 +9,15 @@ No reason other than for consistency.
  1 file changed, 1 insertion(+)
 
 diff --git a/main.go b/main.go
-index 7859d13a4d..852869f271 100644
+index f000ad6a6e..6964114b2d 100644
 --- a/main.go
 +++ b/main.go
-@@ -1,6 +1,7 @@
- //go:generate go run pkg/codegen/cleanup/main.go
- //go:generate rm -rf pkg/generated
+@@ -1,4 +1,5 @@
  //go:generate go run pkg/codegen/main.go
 +//go:generate go fmt pkg/data/zz_generated_bindata.go
  //go:generate go fmt pkg/deploy/zz_generated_bindata.go
  //go:generate go fmt pkg/static/zz_generated_bindata.go
  
 -- 
-2.48.1.5.g9188e14f140
+2.49.0.5.g15b5d850cb1
 
