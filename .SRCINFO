@@ -1,6 +1,6 @@
 pkgbase = screen-orientation-manager-git
 	pkgdesc = This app rotates the touchscreen, display and touchpad orientation of convertible laptops and tablets running X11 based desktop environments.
-	pkgver = v1.3.1
+	pkgver = 1.3.1.r13.g20caa7f
 	pkgrel = 2
 	url = https://github.com/archisman-panigrahi/surface-RT-screen-rotator
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = screen-orientation-manager-git
 	depends = libayatana-appindicator
 	provides = screen-orientation-manager
 	conflicts = screen-orientation-manager
-	source = git+https://github.com/archisman-panigrahi/surface-RT-screen-rotator#branch=master
+	source = git+https://github.com/archisman-panigrahi/surface-RT-screen-rotator#branch=screen-orientation-manager
 	sha256sums = SKIP
 
 pkgname = screen-orientation-manager-git

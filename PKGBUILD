@@ -1,7 +1,7 @@
 # Maintainer: Archisman Panigrahi <apandada1@gmail.com>
 pkgname=screen-orientation-manager-git
 _pkgname=screen-orientation-manager
-pkgver=v1.3.1
+pkgver=1.3.1.r13.g20caa7f
 pkgrel=2
 pkgdesc="This app rotates the touchscreen, display and touchpad orientation of convertible laptops and tablets running X11 based desktop environments."
 arch=('any')
@@ -11,11 +11,11 @@ conflicts=($_pkgname)
 license=('GPL-3.0-or-later')
 depends=('gtk3' 'python' 'libayatana-appindicator')
 makedepends=('git' 'meson' 'ninja')
-source=("git+$url#branch=master")
+source=("git+$url#branch=screen-orientation-manager")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
+  cd "surface-RT-screen-rotator"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
