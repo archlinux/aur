@@ -3,8 +3,8 @@
 # Contributor:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
-# Contributors: jdc, rayman2200, TheCycoONE
 # shellcheck shell=bash disable=SC2034,SC2154
+# Contributors: jdc, rayman2200, TheCycoONE
 
 pkgname='corsix-th'
 _pkgname='CorsixTH'
