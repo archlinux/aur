@@ -1,0 +1,16 @@
+pkgbase = BalatroTUI-git
+	pkgdesc = A TUI clone of Balatro
+	pkgver = r81.5b052f7
+	pkgrel = 1
+	url = https://github.com/Passeriform/BalatroTUI
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = BalatroTUI
+	conflicts = BalatroTUI
+	source = git+https://github.com/Passeriform/BalatroTUI
+	sha256sums = SKIP
+
+pkgname = BalatroTUI-git
