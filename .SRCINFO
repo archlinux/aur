@@ -9,6 +9,7 @@ pkgbase = easyrpg-player-bin
 	makedepends = flatpak
 	makedepends = grep
 	makedepends = patchelf
+	makedepends = sed
 	depends = alsa-lib
 	depends = fmt
 	depends = freetype2

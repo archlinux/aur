@@ -24,7 +24,7 @@ depends=(
   zlib
 )
 optdepends=(rpg200{0,3}-rtp soundfont-gmgsx)
-makedepends=(binutils flatpak grep patchelf)
+makedepends=(binutils flatpak grep patchelf sed)
 
 prepare() {
   export FLATPAK_USER_DIR="${srcdir}"
@@ -49,5 +49,7 @@ package() {
   install -Dm644 {,"$pkgdir"/usr/}lib/liblcf.so.0
   install -Dm644 {,"${pkgdir}"/usr/}share/icons/hicolor/scalable/apps/${_flathub}.svg
   # Use same path with easyrpg-player for templete using
-  install -Dm644 share/applications/${_flathub}.desktop "${pkgdir}"/usr/share/applications/${_name}.desktop
+  install -d "${pkgdir}"/usr/share/applications
+  sed '/Flatpak/d' share/applications/${_flathub}.desktop > "${pkgdir}"/usr/share/applications/${_name}.desktop
+  #install -Dm644 share/applications/${_flathub}.desktop "${pkgdir}"/usr/share/applications/${_name}.desktop
 }
