@@ -1,9 +1,8 @@
 pkgbase = nextpvr-bin
 	pkgdesc = NextPVR binary distribution
-	pkgver = 6.1.5
+	pkgver = 7.0.1
 	pkgrel = 1
-	epoch = 1
-	url = https://www.nextpvr.com/download.html
+	url = https://forums.nextpvr.com/forumdisplay.php?fid=18
 	arch = arm64
 	arch = arm32
 	arch = x86_64
@@ -32,10 +31,10 @@ pkgbase = nextpvr-bin
 	depends = dotnet-runtime-6.0
 	provides = nextpvr
 	conflicts = nextpvr
-	source = nextpvr-bin-6.1.5.zip::https://github.com/sub3/releases/releases/download/6.1.5/NPVR-6.1.5.zip
+	source = nextpvr-bin-7.0.1.zip::https://github.com/sub3/releases/releases/download/7.0.1/NPVR-7.0.1.zip
 	source = launch.sh
 	source = nextpvr.service
-	sha256sums = 0ffe647e8375a6088c89473b9cc797635ec53a2165983633716aaf5dd53f4885
+	sha256sums = c6ce27fa79bb0466a7a11248b08901193f7f7733e4dd091ebe521c9934e67d5c
 	sha256sums = SKIP
 	sha256sums = SKIP
 
