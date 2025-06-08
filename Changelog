@@ -1,9 +1,15 @@
 -------------------------------------------------------
  Changelog    : dns_tools
- Tags         : 4.0.3 ➙ 4.3.0
-              : 2025-05-16 ➙ 2025-05-27
+ Tags         : 4.0.4 ➙ 4.4.1
+              : 2025-05-19 ➙ 2025-06-08
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-08   : 4.4.1
+                remove debug
+                bug: dns-prod-push int-ext option defaulted off instead of both
+                Improved code which runs external programs.
+ 2025-05-27     update Docs/Changelog Docs/${my_name}.pdf
 
  2025-05-27   : 4.3.0
                 Fix option parser for dns-prod-push --int-ext
@@ -20,7 +26,3 @@
  2025-05-19   : 4.0.4
                 Arch PKGBUILD: move pytest to checkdepends instead of makedepends
  2025-05-16     update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-05-16   : 4.0.3
-                Arch PKGBUILD add missed dependency on lockmgr
-                update Docs/Changelog Docs/${my_name}.pdf
