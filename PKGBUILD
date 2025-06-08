@@ -2,11 +2,11 @@
 
 pkgname=outils
 pkgver=0.14
-pkgrel=1
+pkgrel=3
 pkgdesc="A port of some non-standard OpenBSD tools to Linux"
 arch=('x86_64')
 url="https://github.com/leahneukirchen/outils"
-license=('BSD')
+license=('0BSD')
 depends=('glibc')
 provides=('apply'
         'ou-cksum'
@@ -16,7 +16,6 @@ provides=('apply'
         'md5'
         'rdate'
         'rs'
-        'ts'
         'signify'
         'unvis'
         'vis'
@@ -33,11 +32,16 @@ prepare(){
   cd "$pkgname-$pkgver"/
   # set proper LDFLAGS as recommended by Archlinux packging guidelines
   sed -i 's|-Wl,--as-needed|-Wl,-O2,--sort-common,--as-needed,-z,relro,-z,now|g' Makefile
+  sed -i 's|DESTDIR=|DESTDIR?=|g' Makefile
+
   # calendar is also part of bsdmainutils. hence building same has to be disabled in the makefile
   sed -i '58d' Makefile
   sed -i '57d' Makefile
   sed -i '28d' Makefile
   sed -i 's/src\/usr\.bin\/calendar\/calendar//g' Makefile
+   # ts is provided by moreutil package from archlinux repo
+  sed -i 's|src/usr.bin/ts/ts||g' Makefile
+  sed -i '26d' Makefile
   # cksum binary from package is in conflict with 'cksum' provided by 'coreutils'. Hence the former is renamed to ou-cksum
   sed -i 's/cksum/ou-cksum/g' Makefile
   sed -i 's/cksum/ou-cksum/g' src/bin/md5/Makefile
@@ -52,7 +56,8 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
-  # remove man entry fro calendar as the same is not part of the package
+  # remove man entry for calendar and ts as the same is not part of the package
   rm ${pkgdir}/usr/share/man/man1/calendar.1
+  rm ${pkgdir}/usr/share/man/man1/ts.1
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
 }
