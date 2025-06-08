@@ -27,7 +27,6 @@ prepare(){
 	export CARGO_HOME="$srcdir/cargo-cache"       # do not litter in ~
 	# install the toolchain recorded in rust-toolchain.toml
 	rustup toolchain install $(grep -oP '(?<=toolchain = ").*(?=")' rust-toolchain.toml)
-	#rustup default $(grep -oP '(?<=toolchain = ").*(?=")' rust-toolchain.toml)
 
 	# pre-download rust dependencies
 	cargo fetch --locked --target="$CARCH-unknown-linux-gnu"

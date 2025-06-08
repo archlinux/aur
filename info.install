@@ -10,7 +10,7 @@ To fully activate VectorChord, you need to do the following additional steps in 
 1. Add the extension to you shared_preload_libraries in postgresql.conf
 (default under /var/lib/postgres/data, (comma-separated list, if you have more extensions):
 
-	shared_preload_libraries = 'vchord'
+	shared_preload_libraries = 'vchord.so'
 
 2. Restart PostgreSQL to load the extension:
 
