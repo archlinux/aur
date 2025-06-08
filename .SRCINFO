@@ -1,7 +1,7 @@
 pkgbase = easyrpg-player-bin
 	pkgdesc = RPG Maker 2000/2003 compat game interpreter (flatpak binary)
 	pkgver = 0.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://easyrpg.org
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -38,5 +38,7 @@ pkgbase = easyrpg-player-bin
 	provides = liblcf
 	conflicts = easyrpg-player
 	conflicts = liblcf
+	source = https://ci.easyrpg.org/downloads/flatpak/EasyRPG-Player.flatpak
+	sha256sums = SKIP
 
 pkgname = easyrpg-player-bin
