@@ -1,5 +1,5 @@
 pkgbase = sorena
-	pkgdesc = An English-Arabic font.
+	pkgdesc = An English-Arabic pixel font.
 	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/MDarvishi5124/Sorena
