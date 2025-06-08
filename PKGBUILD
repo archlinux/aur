@@ -2,7 +2,7 @@
 # Maintainer: Chinmay Dalal
 pkgname=ttf-aporetic
 _pkgmajor=1
-_pkgminor=1
+_pkgminor=2
 _pkgpatch=0
 pkgver=${_pkgmajor}.${_pkgminor}.${_pkgpatch}
 pkgrel=1
@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/protesilaos/aporetic"
 license=('OFL')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/protesilaos/aporetic/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('9093a412d0ecc33211597b3dfab5335019fcb54ef327eaf2c43e78baf6ecd5c06d4a6fbcd9a23b30f2798c42cc8efbf116b7a5f3ec6992f0698f033b3cfbda1c')
+b2sums=('5241eeba8920db6bb71443f60dfbd6fa2cbe8687479018f28ce72530ae3122f587cefd173208830c5e95927fe0eca916e482f42acc11974958f2a7f49e41e4bb')
 
 package() {
   # Create font directory
