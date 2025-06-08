@@ -9,8 +9,8 @@
 
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
-pkgver=2.2.13
-pkgrel=2
+pkgver=2.2.14
+pkgrel=1
 pkgdesc="Small but very powerful text-based mail client - slang version"
 arch=(x86_64)
 url="http://www.mutt.org/"
@@ -28,6 +28,7 @@ makedepends=(
   docbook-xsl
   elinks
   gdbm
+  git
   gpgme
   krb5
   libidn2
@@ -45,15 +46,13 @@ optdepends=(
 )
 backup=(etc/${_pkgbase}/Muttrc)
 install=${_pkgbase}.install
-source=(https://bitbucket.org/${_pkgbase}/${_pkgbase}/downloads/${_pkgbase}-$pkgver.tar.gz{,.asc})
-sha512sums=('dcd84235b6f759c31b56cf021efc17c0bb1fd4d59226d12af9838f3cbbcf0301262ae5f67803565cce3afd6ff5eed3a380a81958f57fb7d8f38e2ecfd0ff7d2c'
-            'SKIP')
-b2sums=('993b5dc43f09a313acb7e02b1d182e2856f4f9a9d61c7137a9e4ea3c399302adf69993d6f7d3af3dc1f89e17473071689eb3692949daadaacb0338302090abea'
-        'SKIP')
+source=("git+https://gitlab.com/muttmua/mutt.git#tag=mutt-${pkgver//./-}-rel?signed")
+sha512sums=('e83e8beff1994d1f371a95ca15106060212f6a6e260544a4ef5314532aaac24178250e29f5c6ba220104af1b9c45c2b21bcfee28d946e38b7918bb241e578023')
+b2sums=('628142f0a41a3eb217a0a4c6c1e2ace4682481488fef6f080becbaa8c4c851796c6efa38459ec174ce3033fec07c6d9277553b56a83316addaae10ee5e3c2e22')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA') # Kevin J. McCarthy <kevin@8t8.us>
 
 prepare() {
-  cd "${_pkgbase}-$pkgver"
+  cd "${_pkgbase}"
   autoreconf -fiv
 }
 
@@ -79,7 +78,7 @@ build() {
     --with-ssl=/usr
   )
 
-  cd "${_pkgbase}-$pkgver"
+  cd "${_pkgbase}"
   ./configure "${configure_options[@]}"
   make
 }
@@ -94,7 +93,7 @@ package() {
     openssl libssl.so
   )
 
-  make DESTDIR="$pkgdir" install -C ${_pkgbase}-$pkgver
+  make DESTDIR="$pkgdir" install -C ${_pkgbase}
   # we backup /etc/mutt/Muttrc and don't need another copy
   rm -v "$pkgdir/etc/${_pkgbase}/Muttrc.dist"
   # a more comprehensive list of mime types is provided by mailcap in /etc/mime.types
