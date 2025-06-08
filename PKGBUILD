@@ -3,7 +3,7 @@
 pkgname=sorena
 pkgver=1.2.0
 pkgrel=1
-pkgdesc="An English-Arabic font."
+pkgdesc="An English-Arabic pixel font."
 url="https://github.com/MDarvishi5124/Sorena"
 arch=('any')
 license=('OFL')
