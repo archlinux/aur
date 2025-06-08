@@ -1,0 +1,17 @@
+pkgbase = libfds
+	pkgdesc = Flow Data Storage library
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/CESNET/ipfixcol2
+	arch = x86_64
+	license = LicenseRef-CESNET
+	makedepends = cmake
+	depends = libxml2
+	depends = lz4
+	depends = zstd
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/CESNET/libfds/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 30b13b84668961192d9ea2326bdf02c9842b688574dac8af9fdfcfca29354b4b
+
+pkgname = libfds
