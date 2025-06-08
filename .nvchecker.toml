@@ -1,0 +1,4 @@
+[keep-me-awake]
+source = "git"
+git = "https://codeberg.org/swsnr/keep-me-awake.git"
+prefix = "v"
