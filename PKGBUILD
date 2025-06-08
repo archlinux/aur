@@ -1,5 +1,7 @@
-# Uploaded by: Rafael Senties Martinelli <rafael@senties-martinelli.com>
-# Updated for python3, from https://aur.archlinux.org/packages/python2-cssmin
+# Maintainer: Rafael Senties Martinelli <rafael@senties-martinelli.com>
+# Contributor: Chris Oelmueller <chris.oelmueller@gmail.com>
+
+# This package was updated from: https://aur.archlinux.org/packages/python2-cssmin
 
 pkgname=python-cssmin
 _name=cssmin
