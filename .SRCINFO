@@ -1,6 +1,6 @@
 pkgbase = tela-circle-icon-theme-spl-git
 	pkgdesc = A flat, colorful design icon theme
-	pkgver = 2024.04.19.r6.ge88833b9
+	pkgver = 2025.02.10.r30.g389083ce
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Tela-circle-icon-theme
 	arch = any
