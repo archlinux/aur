@@ -9,6 +9,7 @@ pkgbase = balatrotui-git
 	makedepends = cargo
 	makedepends = git
 	provides = balatrotui
+	conflicts = balatrotui
 	source = git+https://github.com/Passeriform/BalatroTUI
 	sha256sums = SKIP
 

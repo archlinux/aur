@@ -12,7 +12,7 @@ license=('GPL-3.0')
 source=("git+https://github.com/Passeriform/BalatroTUI")
 sha256sums=('SKIP')
 provides=(balatrotui)
-conflicts=($balatrotui)
+conflicts=(balatrotui)
 
 pkgver() {
     cd "$srcdir"
