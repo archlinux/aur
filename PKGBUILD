@@ -1,8 +1,10 @@
 # Maintainer: apropos <jj@toki.la>
+# Co-maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
+
 pkgname=binaryninja-free
 _pkgname=binaryninja
-pkgver=5.0.7290
-pkgrel=3
+pkgver=5.0.7486
+pkgrel=1
 pkgdesc="An interactive decompiler, disassembler, debugger, and binary analysis platform."
 arch=('x86_64')
 url="https://binary.ninja"
@@ -14,7 +16,7 @@ source=(
 	"${pkgname}.png"
 	"${pkgname}.desktop"
 )
-sha256sums=('17376ffb8e780238fc23199d731bdc0c678f16c4e69b23e99df05781ee29f225'
+sha256sums=('8998c88289309c725a63a3a0ae70dcb68dd49f9838d8ca935972a8e8e2f545cb'
             '4f318001e7d39279ce063ef42077bae03e95c112aa203a4be3ea3d913c34327e'
             '075158d0131dd89565e021a6854a6ae0237442e0b4e03a61638a7f8a69ec9f85')
 
