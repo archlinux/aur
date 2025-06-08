@@ -1,7 +1,7 @@
 # Maintainer: Lauri Gustafsson <lauri dot gustafsson at iki dot fi>
 # Maintainer: Benjamin Brienen <benjamin dot brienen at outlook dot com>
 pkgname=wgsl-analyzer-bin
-_pkgver=2025-04-04
+_pkgver=2025-06-02
 pkgver=${_pkgver//-}
 pkgrel=1
 pkgdesc='A language server for the WGSL shading language'
@@ -12,7 +12,7 @@ license=('MIT OR Apache-2.0')
 depends=('glibc')
 conflicts=('wgsl-analyzer')
 provides=('wgsl-analyzer')
-sha256sums=('8f2c1def3a6bb7597bd96d18cc2f88b4dd4e7ee4979c503df5d9034e796e81ca')
+sha256sums=('c8fa2c3c6672f3df52175eddc0205ff37534f8da3eeb92a17d44b20fb4d5c48c')
 options=('!debug')
 
 package() {
