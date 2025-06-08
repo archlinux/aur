@@ -2,7 +2,7 @@
 
 _pkgname=MangoHud
 pkgname=lib32-mangohud-git
-pkgver=0.7.2.r110.g24d3cd9
+pkgver=0.8.1.r75.g4bcf06a
 pkgrel=1
 pkgdesc="32-bit libraries for MangoHud and MangoApp"
 url='https://github.com/flightlessmango/MangoHud'
@@ -18,7 +18,6 @@ makedepends=(
     'lib32-libxrandr'
     'libxnvctrl'
     'meson'
-    'nlohmann-json'
     'python-mako'
     'vulkan-headers'
 )
@@ -48,9 +47,7 @@ build() {
     export LLVM_CONFIG="/usr/bin/llvm-config32"
 
     arch-meson "$_pkgname" build \
-        -Dinclude_doc=true \
-        -Dmangoapp=false \
-        -Dmangohudctl=false \
+        -Dmangoplot=disabled \
         --libdir lib32 \
         --wrap-mode=default
 
@@ -58,9 +55,7 @@ build() {
 }
 
 package() {
-    meson install -C build --tags runtime,mangoapp --destdir "$pkgdir"
-
-    rm -rf "$pkgdir/usr/bin"
+    meson install -C build --tags runtime --destdir "$pkgdir"
 
     install -Dm 0644 "$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

@@ -1,6 +1,6 @@
 pkgbase = lib32-mangohud-git
 	pkgdesc = 32-bit libraries for MangoHud and MangoApp
-	pkgver = 0.7.2.r110.g24d3cd9
+	pkgver = 0.8.1.r75.g4bcf06a
 	pkgrel = 1
 	url = https://github.com/flightlessmango/MangoHud
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = lib32-mangohud-git
 	makedepends = lib32-libxrandr
 	makedepends = libxnvctrl
 	makedepends = meson
-	makedepends = nlohmann-json
 	makedepends = python-mako
 	makedepends = vulkan-headers
 	depends = lib32-gcc-libs
