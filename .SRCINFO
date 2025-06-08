@@ -1,7 +1,8 @@
 pkgbase = libmbim-dev
 	pkgdesc = MBIM modem protocol helper library
-	pkgver = 1.35.95_dev
+	pkgver = 1.33.1_dev
 	pkgrel = 1
+	epoch = 1
 	url = https://www.freedesktop.org/wiki/Software/libmbim/
 	arch = x86_64
 	license = GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -16,8 +17,8 @@ pkgbase = libmbim-dev
 	provides = libmbim
 	provides = libmbim-glib.so
 	conflicts = libmbim
-	source = git+https://gitlab.freedesktop.org/mobile-broadband/libmbim.git#commit=c491dbae17281e32ee781d5c588fef932e29cc12
+	source = git+https://gitlab.freedesktop.org/mobile-broadband/libmbim.git#commit=e10df4b6b3edfe6a46d93f7f5f5cab31c29a7091
 	validpgpkeys = A814D09B9C5BC01945A64308AECE0239C6606AD5
-	b2sums = 2974348a5beed7b344826e49c582e2707649f331553f323bb2bb49e1149c335148ffb7f35ecfe66b730f1b72316c90729f80bd70e4d4c0d2a15def4512b39218
+	b2sums = d45ab07a908c2a0387ac91d7cc79e200330fd98d79c88800f584085fa074badc9526a6cd3b142f3c115a602512c371b3a6b925f70cd160792dd7c2e218b81844
 
 pkgname = libmbim-dev
