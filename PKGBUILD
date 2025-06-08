@@ -6,8 +6,7 @@ pkgdesc='Meta package to install all Persian fonts.'
 arch=(any)
 url='https://www.archlinux.org/'
 license=(GPL)
-depends=('borna-fonts'
-         'behdad-fonts'
+depends=('behdad-fonts'
          'gandom-fonts'
          'iran-nastaliq-fonts'
          'iranian-fonts'
@@ -24,5 +23,9 @@ depends=('borna-fonts'
          'vazirmatn-fonts'
          'vazir-code-fonts'
          'ttf-x2'
+         'sorena'
+         'estedad-mad'
+         'unixel'
+
 )
 # vim:set ts=4 sw=4 et:
