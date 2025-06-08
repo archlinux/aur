@@ -7,7 +7,6 @@ pkgbase = cvrx-appimage
 	license = MIT
 	makedepends = util-linux
 	makedepends = findutils
-	depends = fuse2
 	provides = cvrx
 	conflicts = cvrx
 	options = !strip
