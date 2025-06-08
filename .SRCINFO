@@ -1,0 +1,16 @@
+pkgbase = gradia
+	pkgdesc = Make your screenshots ready for the world.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/AlexanderVanhee/Gradia
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = blueprint-compiler
+	depends = python
+	depends = python-gobject
+	depends = python-pillow
+	source = gradia-1.4.0.tar.gz::https://github.com/AlexanderVanhee/Gradia/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = 1ebe515af9feb73a672af11d07dc532e1ebac52a33d6a05b8bdea96f0ba5e761
+
+pkgname = gradia
