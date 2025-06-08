@@ -1,50 +1,55 @@
-# Maintainer: Sick Codes <info at sick dot codes>
+# Maintainer: Michał Tomczyk <tomczykmk94 _at_ gmail _dot_ com>
+# Contributor: Sick Codes <info at sick dot codes>
 pkgname=doomtools-bin
-_pkgname=${pkgname%-bin}
-pkgver=2022.07.28
-pkgrel=005119764
-_jar="${_pkgname}-${pkgver}.${pkgrel}.jar"
-pkgdesc="Doom-related tools for Java. Home of DECOHack and lots of other utilities. Build WAD projects (and soon, other kinds) with ease! Includes decohack dimgconv dmxconv doommake wadmerge wadscript wadtex wswantbl wtexport wtexscan"
-arch=('x86_64')
-url="https://github.com/MTrop/DoomTools"
+pkgver=2025.05.10.194013274
+_pkgdate=${pkgver%%.?????????}
+pkgrel=1
+pkgdesc="Set of command-line utilities for building projects or for other things related to Doom Engine games."
+arch=('any')
+url="https://mtrop.github.io/DoomTools/"
 license=('MIT')
-provides=(${_pkgname} decohack dimgconv dmxconv doommake wadmerge wadscript wadtex wswantbl wtexport wtexscan)
-depends=()
-optdepends=()
-makedepends=()
-source=("https://github.com/MTrop/DoomTools/releases/download/${pkgver}-RELEASE/${_pkgname}-bash-${pkgver}.${pkgrel}.tar.gz")
-options=('!strip')
-sha256sums=('4d049600a62bb82a964605ebb4a7764198e3f00f634fa6a8033f02c13437caa4')
+provides=(decohack dmxconv doomfetch doomtools rookscript wadscript wswantbl wtexport dimgconv doommake wadmerge wadtex wtexlist wtexscan)
+depends=('java-runtime')
+makedepends=('imagemagick')
+source=(
+	"https://github.com/MTrop/DoomTools/releases/download/${_pkgdate}-RELEASE/doomtools-bash-${pkgver}.tar.gz"
+	"template.sh"
+	"doomtools.desktop"
+)
+sha256sums=(
+	"fff26d6f9e88f9ab4427301acda57fca9088b6f0047c8e42aab9cd62ad8c038e"
+	"68b4473057736da26385d5b1680d099e7cf62334dcfd121dfc1620096eec7768"
+	"e90aecc14f66eed27b8afe409de6f058a285f8eee84a8af207b0398b5450cf57"
+)
 
-package() {
+prepare() {
+	mkdir -p ${srcdir}/scripts
+	find ${srcdir} -maxdepth 1 -type f -print0 | while IFS= read -r -d $'\0' file; do
+		trimfname=${file##*/}
+		CLASSNAME=$(sed -nE 's/MAINCLASS=(.+)/\1/p' $file)
+		if [[ "$CLASSNAME" == "" ]]; then
+			continue
+		fi
+		cp ${srcdir}/template.sh ${srcdir}/scripts/$trimfname
+		sed -i -e "s/MAINCLASS_PLACEHOLDER/$CLASSNAME/g" ${srcdir}/scripts/$trimfname
+	done
 
-  # /opt/doomtools
-  # install -dm755 "${pkgdir}/opt/${_pkgname}/"
-  install -dm755 "${pkgdir}/usr/bin/"
-  install -dm755 "${pkgdir}/usr/share/licenses/${_pkgname}"
-  install -dm755 "${pkgdir}/usr/share/${_pkgname}"
-
-  cp -r "${srcdir}"/* "${pkgdir}/usr/share/${_pkgname}/"
-  chmod -R +x "${pkgdir}/usr/share/${_pkgname}/"
-
-  # add all tools
-  # cp "${srcdir}"/{wtexport,wadscript,rookscript,doommake,dmxconv,dimgconv,decohack,wtexscan,wswantbl,wadtex,wadmerge} "${pkgdir}/usr/bin/"
-  # chmod +x "${pkgdir}"/usr/bin/{wtexport,wadscript,rookscript,doommake,dmxconv,dimgconv,decohack,wtexscan,wswantbl,wadtex,wadmerge}
-  SCRIPTS=({wtexport,wadscript,rookscript,doommake,dmxconv,dimgconv,decohack,wtexscan,wswantbl,wadtex,wadmerge})
-
-  for SCRIPT in "${SCRIPTS[@]}"; do
-    ln -s "${pkgdir}/usr/share/${_pkgname}/${SCRIPT}" "${pkgdir}/usr/bin/${SCRIPT}" 
-    chmod +x "${pkgdir}/usr/bin/${SCRIPT}"
-  done
-
-  # add the jar
-  install -Dm 755 "${srcdir}/jar/${_jar}" "${pkgdir}/usr/share/${_pkgname}/${_jar}"
-
-  touch "${pkgdir}/usr/bin/${_pkgname}"
-  chmod +x "${pkgdir}/usr/bin/${_pkgname}"
-
-  # add licenses
-  cp -r "${srcdir}"/docs/* "${pkgdir}/usr/share/licenses/${_pkgname}/"
-
+	magick ${srcdir}/docs/doomtools-logo.ico[0] ${srcdir}/doomtools-logo.png
 }
 
+package() {
+	for file in ${srcdir}/scripts/*; do
+		install -Dm755 $file ${pkgdir}/usr/bin/"${file##*/}"
+	done
+	install -Dm755 ${srcdir}/jar/doomtools-${pkgver}.jar ${pkgdir}/usr/share/java/doomtools/doomtools.jar
+	install -Dm755 ${srcdir}/doomtools.desktop ${pkgdir}/usr/share/applications/doomtools.desktop
+	install -Dm644 ${srcdir}/doomtools-logo.png ${pkgdir}/usr/share/icons/doomtools-logo.png
+	install -Dm644 ${srcdir}/docs/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
+	mkdir -p ${pkgdir}/usr/share/doomtools/docs
+	cp ${srcdir}/docs/*.md ${pkgdir}/usr/share/doomtools/docs
+	cp ${srcdir}/docs/*.txt ${pkgdir}/usr/share/doomtools/docs
+	cp -r ${srcdir}/docs/licenses ${pkgdir}/usr/share/licenses/${pkgname}/
+	chmod -R 644 ${pkgdir}/usr/share/doomtools 
+	chmod 755 ${pkgdir}/usr/share/doomtools
+	chmod 755 ${pkgdir}/usr/share/doomtools/docs
+}

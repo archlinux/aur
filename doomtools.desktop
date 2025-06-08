@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=DoomTools
+Exec=/usr/bin/doomtools --gui
+Type=Application
+Categories=Development
+Icon=doomtools-logo.png
+Comment=Set of utilities for building projects for Doom engine games
+Terminal=false
+
+Path=/usr/share/doomtools/
