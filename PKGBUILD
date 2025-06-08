@@ -2,11 +2,11 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname="tqm"
-pkgver=1.5.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="CLI tool to manage your torrent client queues. Primary focus is on removing torrents that meet specific criteria."
 arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/l3uddz/tqm"
+url="https://github.com/autobrr/tqm"
 license=('GPL3')
 makedepends=('go')
 optdepends=(
@@ -17,10 +17,10 @@ optdepends=(
 #backup=('etc/unpackerr/unpackerr.conf')
 
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/l3uddz/tqm/archive/v${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/autobrr/tqm/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=('4406ac9a435ec4e960962e4d36a662a08b7a28b5e1a1f50dcfa229438a11dd088203e37c78f17394529993bfa64773b56d7d52b25d1a07d6debfc344ecd1fa87')
+sha512sums=('8a85a0b0a4b9fd5a8497539f501e46248fd5daea9333a40c2dc81c750cd173a1a009ba88671d26b402d177e877e7fd7d543eccbc15d9c2dea819be3e210f2471')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -34,7 +34,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
-  go build -o tqm
+  go build -o tqm ./cmd/tqm
 }
 
 package() {
