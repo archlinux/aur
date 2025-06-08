@@ -2,7 +2,7 @@
 # Co-Maintainer: Hors Icq <horsicq at googlemail dot com>
 # Co-Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=detect-it-easy-git
-pkgver=3.10.r18826.f0cc79a
+pkgver=3.10.r18916.f0655a9
 pkgrel=1
 pkgdesc='Detect It Easy, or abbreviated "DIE" is a program for determining types of files'
 arch=('x86_64')
@@ -16,9 +16,11 @@ conflicts=(
 )
 depends=(
   'freetype2'
+  'gcc-libs'
   'glib2'
   'glibc'
   'graphite'
+  'hicolor-icon-theme'
   'icu'
   'krb5'
   'qt5-base'
@@ -27,9 +29,7 @@ depends=(
   'systemd-libs'
 )
 makedepends=(
-  'coreutils'
   'git'
-  'imagemagick'
   'qt5-tools'
 )
 _srcname="DIE-engine"
@@ -54,8 +54,8 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$_srcname"
-    git submodule update --init --recursive
+  cd "$srcdir/$_srcname"
+  git submodule update --init --recursive
 }
 
 build() {
@@ -87,7 +87,7 @@ package() {
   cd "$_srcname" || return
 
   echo -e "${_prefix}Creating the package base"
-  install -d "$pkgdir"/{opt/"${_pkgname}",usr/bin,usr/share/pixmaps}
+  install -d "$pkgdir"/{opt/"${_pkgname}",usr/bin,usr/share/icons}
   install -d "$pkgdir/opt/${_pkgname}"/{lang,qss,info,db,signatures,images,yara_rules}
 
   echo -e "${_prefix}Copying the package binaries"
@@ -108,6 +108,9 @@ package() {
   ln -s /opt/"${_pkgname}"/die "$pkgdir"/usr/bin/die
   ln -s /opt/"${_pkgname}"/diec "$pkgdir"/usr/bin/diec
   ln -s /opt/"${_pkgname}"/diel "$pkgdir"/usr/bin/diel
+
+  echo -e "${_prefix}Setting up desktop icons"
+  cp -r LINUX/hicolor "$pkgdir"/usr/share/icons
 
   echo -e "${_prefix}Setting up desktop shortcuts"
   install -Dm 644 LINUX/io.github.horsicq.detect-it-easy.desktop -t "$pkgdir"/usr/share/applications
