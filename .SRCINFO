@@ -1,6 +1,6 @@
 pkgbase = obsidian
 	pkgver = 1.8.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/obsidianmd/obsidian-releases
 	arch = x86_64
 	arch = aarch64
@@ -31,6 +31,7 @@ pkgname = obsidian-bin
 	depends = at-spi2-core
 	depends = util-linux-libs
 	depends = libsecret
+	depends = hicolor-icon-theme
 	optdepends = libappindicator-gtk3: tray icon support
 
 pkgname = obsidian-appimage

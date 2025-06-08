@@ -3,7 +3,7 @@
 pkgbase=obsidian
 pkgname=(${pkgbase}-{bin,appimage})
 pkgver=1.8.10
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/obsidianmd/obsidian-releases"
 license=('custom')
@@ -38,6 +38,7 @@ package_obsidian-bin() {
         'at-spi2-core'
         'util-linux-libs'
         'libsecret'
+        'hicolor-icon-theme'
     )
     optdepends=('libappindicator-gtk3: tray icon support')
     install="obsidian.install"
