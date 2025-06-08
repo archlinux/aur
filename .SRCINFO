@@ -1,7 +1,7 @@
 pkgbase = anubis-smtp
 	pkgdesc = An SMTP message submission daemon.
 	pkgver = 4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/anubis/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = anubis-smtp
 	depends = pam
 	depends = pcre
 	conflicts = anubis
-	source = ftp://ftp.gnu.org/gnu/anubis/anubis-4.3.tar.gz
+	source = http://ftp.gnu.org/gnu/anubis/anubis-4.3.tar.gz
 	md5sums = bc80b9045b3c8f3b1d6798200cd81586
 
 pkgname = anubis-smtp

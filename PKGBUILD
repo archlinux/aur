@@ -5,7 +5,7 @@
 _pkgname=anubis
 pkgname=$_pkgname-smtp
 pkgver=4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An SMTP message submission daemon. "
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/anubis/"
@@ -14,12 +14,12 @@ depends=('gdbm' 'glibc' 'gnutls' 'gsasl' 'guile' 'libmariadbclient' 'pam' 'pcre'
 # 'postgresql-libs'
 makedepends=('emacs') # for anubis-mode
 conflicts=('anubis')
-source=(ftp://ftp.gnu.org/gnu/anubis/$_pkgname-$pkgver.tar.gz)
+source=(http://ftp.gnu.org/gnu/anubis/$_pkgname-$pkgver.tar.gz)
 md5sums=('bc80b9045b3c8f3b1d6798200cd81586')
 
 build() {
   cd $srcdir/$_pkgname-$pkgver
-
+  CFLAGS="$CFLAGS -std=gnu17"
   ./configure --prefix=/usr \
               --sbindir=/usr/bin \
               --with-guile \
