@@ -1,6 +1,6 @@
 # Maintainer: Frank Tao <boku@kaneki.dev>
 pkgname=vega
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A way faster command line system information tool"
 arch=('x86_64')
