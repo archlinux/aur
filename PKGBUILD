@@ -6,7 +6,7 @@
 
 pkgname=frobtads
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Combined TADS 2 & 3 interpreter and compilers for playing and creating Interactive Fiction games"
 arch=('i686' 'x86_64')
 url="http://www.tads.org/frobtads.htm"
@@ -21,7 +21,7 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   mkdir build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
 }
 
 build() {
