@@ -3,7 +3,7 @@
 # Contributor: Shaleen Jain <shaleen(at)jain(dot)sh>
 pkgname=system76-dkms-git
 pkgver=1.0.18.r7.gcc41a32
-pkgrel=1
+pkgrel=2
 pkgdesc="On newer System76 laptops, this driver controls some of the hotkeys and allows for custom fan control."
 arch=('x86_64')
 url="https://github.com/pop-os/system76-dkms"
@@ -23,6 +23,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   sed -i "s/#MODULE_VERSION#/${pkgver//.r*/}/" "debian/${pkgname%-git}.dkms"
+  echo "BUILT_MODULE_LOCATION[0]=\"src\"" >>"debian/${pkgname%-git}.dkms"
 }
 
 package() {
