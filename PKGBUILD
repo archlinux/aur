@@ -3,22 +3,22 @@
 # Contributor: Robin Candau <antiz@archlinux.org>
 
 pkgname=mingw-w64-libplacebo
-pkgver=7.349.0
-pkgrel=2
+pkgver=7.351.0
+pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives (mingw-w64)'
 url='https://github.com/haasn/libplacebo'
 arch=('any')
 license=('LGPL-2.1-or-later')
 depends=('mingw-w64-crt' 'mingw-w64-libdovi' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-glslang' 'mingw-w64-lcms2' 'mingw-w64-shaderc' 'mingw-w64-spirv-cross')
-options=(!strip !buildflags staticlibs)
+options=(!strip !buildflags staticlibs !debug)
 makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'mingw-w64-wine' 'ninja' 'mingw-w64-vulkan-headers'
              'glad' 'nuklear' 'python' 'python-setuptools' 'python-mako' 'python-markupsafe' 'python-jinja')
 #provides=('libplacebo.so')
 source=(https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/libplacebo-v${pkgver}.tar.gz
         skip-vulkan-test.patch)
-sha512sums=('94fb0ad4f6cdafc81a43f06a73e49ef8ed7f81e751ad2a028f6f91295a06d8c12f2959e2595bd654db946fc5aa89758ab9d37f985ebb82badbd517ed02f3ddca'
+sha512sums=('325e14b783aafdd0120abc6125d3949d60e2336fba3cd8d9aefececf93005a8333e5e6c53d6e54bb4c19e4a29981c9014f303fb48b5b89383ca948f64e7e6449'
             '9828cf93bdc0502a2ace4d143058bfb85244573118a008ed3c768e13f2ac35a586e46668032656e7488a51416500515b1f0c0ae339cb93cc8ab8825bb74b835a')
-b2sums=('4a1a667e608e559f2ac163d25183ce9cd2a3ddfa05d88219e5597db08478c883f12efb2e66fe54d9aab65f2863efbe60f0448e241a69109ea423af8222008493'
+b2sums=('631b292b789b44e51a1b7352f07c6eb8010c372e3562af49b670b7bac3f41b1a1b0100bd6b15988626831ecfad5bc328cbca1fccae45cb053172417f29673a00'
         '71e770824e4898b730b577f376c75dd29c6ef371fe8a388df5717fe539f19345bc77aff30e0bdaea8800785f553df36628b7b74b3da9a83d22d83e78fdfc8ac9')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
