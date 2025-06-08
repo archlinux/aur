@@ -1,0 +1,14 @@
+pkgbase = aic8800-6.12
+	pkgdesc = AIC8800 WiFi driver and firmware
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/friddle/arch-aic8800-6.12
+	arch = x86_64
+	license = GPL2
+	makedepends = linux-headers
+	makedepends = git
+	depends = linux-headers
+	source = git+https://github.com/friddle/arch-aic8800-6.12.git
+	md5sums = SKIP
+
+pkgname = aic8800-6.12
