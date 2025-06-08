@@ -9,7 +9,6 @@ pkgdesc='A standalone companion app for ChilloutVR that expands the user experie
 arch=('x86_64')
 url='https://github.com/AstroDogeDX/CVRX'
 license=('MIT')
-depends=('fuse2')
 makedepends=('util-linux' 'findutils')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
