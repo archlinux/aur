@@ -1,0 +1,16 @@
+pkgbase = ponyfetch-git
+	pkgdesc = Just a simple cross-platform neofetch for all the bronies out there.
+	pkgver = releases.r10.gef2a1d1
+	pkgrel = 1
+	url = https://github.com/Atsukoro1/ponyfetch
+	arch = any
+	license = GPL2
+	depends = rust
+	depends = inetutils
+	depends = xorg-xrandr
+	provides = ponyfetch
+	conflicts = ponyfetch
+	source = ponyfetch-git::git+https://github.com/Atsukoro1/ponyfetch.git
+	sha256sums = SKIP
+
+pkgname = ponyfetch-git
