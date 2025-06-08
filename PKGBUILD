@@ -19,8 +19,8 @@ _CUDA_ARCH_LIST_CMAKE="52-real;53-real;60-real;61-real;62-real;70-real;72-real;7
 _pkgname=vision
 pkgbase='torchvision'
 pkgname=('torchvision' 'torchvision-cuda' 'python-torchvision' 'python-torchvision-cuda')
-pkgver=0.20.1
-pkgrel=5
+pkgver=0.22.1
+pkgrel=1
 pkgdesc='Datasets, transforms, and models specific to computer vision'
 arch=('x86_64')
 url='https://github.com/pytorch/vision'
@@ -56,7 +56,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive
         "https://github.com/NVIDIA/DALI/raw/main/dali/operators/video/dynlink_nvcuvid/nvcuvid.h"
         "torchvision-0_17_1-fix-build.patch"
 )
-b2sums=('e598d0b4c3523a905ad06aa218c554622d2f2acaa19277b82b7611cbe19ad51937ee7c74e18933160ad37d79870e55b4b84b0eddc02b324241cacf67134bb888'
+b2sums=('79ccb41de26c23da4c59a478e208b93b2de540baddaf05d0545f40d70d2e1307c96937abbc276f72d1fcad0e397da0681d90f1e4790f80f894889f9eb62841a9'
         '9ccff204a4e1e93340d8b12c2b1d17e01663c12957b4665c0043eccf76d507a7308745a5d9e4d89657840aaf8abf0aa8f51bd79d6e0d5dc57a376d54a754755a'
         '7db5d621f3099bc5455f1faeb7f4c3575a9cf70153ba56a6efc6d67d0ef2ac5438f6e117e621c5ef35c239eb3bce3fe17ce160e6b7765e8203d67a7299085429'
         'b2036b9f4102c50cbcf6813e4a5c46d2899c11ab8d20236eadb5ac1f88d927ee0fb809c880ca3ad9194efa8df665a47d05085b5352b804dabe8925836ecfd0f7')
@@ -89,6 +89,7 @@ build() {
     -DTORCH_CUDA_ARCH_LIST="${_CUDA_ARCH_LIST}"
     -DCUDA_ARCH_LIST="${_CUDA_ARCH_LIST}"
     -DCMAKE_CUDA_ARCHITECTURES="${_CUDA_ARCH_LIST_CMAKE}"
+    -DUSE_SYSTEM_NVTX=ON
   )
 
   echo "Building torchvision (CPU version)"
