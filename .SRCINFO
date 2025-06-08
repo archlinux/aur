@@ -1,0 +1,13 @@
+pkgbase = hmy-agsv1-fork-enessmr-git
+	pkgdesc = That dotfiles
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/enessmr/hyprland-material-you
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = base-devel
+	source = git+https://github.com/enessmr/hyprland-material-you.git
+	sha256sums = SKIP
+
+pkgname = hmy-agsv1-fork-enessmr-git
