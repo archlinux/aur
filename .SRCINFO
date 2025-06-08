@@ -1,0 +1,17 @@
+pkgbase = python-emacs
+	pkgdesc = Python interface to GNU Emacs.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/jlumpe/python-emacs
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = emacs
+	source = https://github.com/jlumpe/python-emacs/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = ee3132df17a1504452774eb5c30393ac56115c70987a8ed88ead3db1904f3fd2
+
+pkgname = python-emacs
