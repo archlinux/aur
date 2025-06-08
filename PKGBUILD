@@ -2,7 +2,7 @@
 pkgname=screen-orientation-manager-git
 _pkgname=screen-orientation-manager
 pkgver=v1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="This app rotates the touchscreen, display and touchpad orientation of convertible laptops and tablets running X11 based desktop environments."
 arch=('any')
 url="https://github.com/archisman-panigrahi/surface-RT-screen-rotator"
@@ -20,12 +20,12 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/surface-RT-screen-rotator"
   meson setup build --prefix=/usr
   meson compile -C build
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/surface-RT-screen-rotator"
   DESTDIR="$pkgdir" meson install -C build
 }
