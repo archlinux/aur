@@ -1,0 +1,15 @@
+pkgbase = python-pyorg
+	pkgdesc = Python library for working with Emacs org mode.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/jlumpe/pyorg
+	arch = x86_64
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://github.com/jlumpe/pyorg/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = e741a774073cac644a07861208a6287b1e5da7aa7dcba8e5348ee024e9bca225
+
+pkgname = python-pyorg
