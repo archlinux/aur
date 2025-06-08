@@ -1,0 +1,8 @@
+
+*.tar
+*.tar.gz
+*pkg.tar.zst
+LICENSE
+
+pkg/
+src/
