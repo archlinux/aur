@@ -1,0 +1,19 @@
+pkgbase = hexpatch-git
+	pkgdesc = A binary patcher and editor with a TUI
+	pkgver = 1.12.0.r25.gcc36625
+	pkgrel = 1
+	url = https://github.com/Etto48/HexPatch
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
+	depends = gcc-libs
+	provides = hexpatch
+	conflicts = hexpatch
+	options = !lto
+	source = git+https://github.com/Etto48/HexPatch
+	sha512sums = SKIP
+
+pkgname = hexpatch-git
