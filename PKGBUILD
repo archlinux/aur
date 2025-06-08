@@ -3,7 +3,7 @@
 _binname=asdf
 _pkgname=${_binname}-vm
 pkgname=${_pkgname}-git
-pkgver=0.16.1.r2.g98ffa86
+pkgver=0.18.0.r1.g2114f1e
 pkgrel=1
 pkgdesc='Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more. Git version.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')

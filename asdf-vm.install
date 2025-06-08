@@ -6,25 +6,11 @@ Auto-completion shell scripts are automatically installed for Bash, ZSH and Fish
 
 To update or get auto-completion scripts for other shells, run the following command:
 
-    asdf completion <shell>
+asdf completion <shell>
 
 Where <shell> can be any of: [bash, elvish, fish, nushell, zsh]
 
-https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
-https://asdf-vm.com/guide/upgrading-from-v0-15-to-v0-16.html
-
-EOF
-}
-
-post_upgrade() {
-	cat <<-'EOF'
-:: Shell configuration
-
-Remove the following line from your ~/.bashrc file:
-
-    . /opt/asdf-vm/asdf.sh
-
-https://asdf-vm.com/guide/upgrading-from-v0-15-to-v0-16.html
+https://asdf-vm.com/guide/getting-started.html#_2-configure-asdf
 
 EOF
 }
@@ -35,8 +21,7 @@ post_remove() {
 
 For more information refer to the official instructions.
 
-https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
-https://asdf-vm.com/guide/upgrading-from-v0-15-to-v0-16.html
+https://asdf-vm.com/guide/getting-started.html#_2-configure-asdf
 
 EOF
 }
