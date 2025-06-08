@@ -1,0 +1,18 @@
+# --- makepkg build artifacts ---
+/src/
+/pkg/
+/*.pkg.tar*
+/*.tar
+/*.tar.*
+
+# --- Python build artifacts ---
+dist/
+build/
+*.egg-info/
+__pycache__/
+*.py[co]
+
+# --- misc ---
+*~
+.DS_Store
+

@@ -1,0 +1,26 @@
+pkgbase = recoder
+	pkgdesc = A GTK4 video transcoding GUI application
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jeena/recoder
+	install = recoder.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = glib2
+	depends = gtk4
+	depends = libadwaita
+	depends = gobject-introspection-runtime
+	depends = python
+	depends = python-gobject
+	depends = ffmpeg
+	depends = glib2
+	optdepends = libcanberra: play system notification sounds
+	optdepends = sound-theme-freedesktop: standard system sounds like "complete.oga"
+	source = https://github.com/jeena/recoder/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 2f3a56621e1e4e2faf295b460b45eeb2e7bbe21e74141ef6ebe0fd49c7160b41
+
+pkgname = recoder
