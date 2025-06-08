@@ -1,0 +1,11 @@
+pkgbase = git-mkver-bin
+	pkgdesc = Automatic Semantic Versioning for git based software development
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/idc101/git-mkver
+	arch = x86_64
+	license = MIT
+	source_x86_64 = git-mkver-1.3.0-bin.tar.gz::https://github.com/idc101/git-mkver/releases/download/v1.3.0/git-mkver-linux-x86_64-1.3.0.tar.gz
+	sha256sums_x86_64 = 775b75df4e1ee8ea874fdee360d89b278e9c90628c1b8f6ae51421960547a7d3
+
+pkgname = git-mkver-bin
