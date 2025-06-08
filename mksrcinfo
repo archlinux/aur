@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+
+makepkg --printsrcinfo > .SRCINFO
+# signatures are updated often, so we drop them from .SCRINFO and the AUR
+# page, but keep them in the actual PKGBUILD script to avoid logging in
+sed -i -E 's/&signature=[a-zA-Z0-9]+\b//g' .SRCINFO

@@ -78,7 +78,7 @@ optdepends=(
 _source_url=$(
     curl -s 'https://www.wolfram.com/download-center/' \
     | grep 'account.wolfram.com/dl/WolframApp' \
-    | grep "version=${_pkgver}" \
+    | grep -E "version=${_pkgver}\b" \
     | grep 'platform=Linux' \
     | grep 'includesDocumentation=false' \
     | sed -E 's/.*href="([^"]+)".*/\1/' \
@@ -92,6 +92,14 @@ source=(
 sha256sums=('58d2eeabd46f898177323f2e3802e19af7311861d5abf4c0185313196a1805c7'
             '20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0'
             '8f808af5ee778bad8a78b4544bbda9854a06159b65f3368d508ebcaabf4bbadd')
+## Symbol searching and stripping takes a long time, so they are disabled by default.
+## Also, `debug` won't find any source files here, since this is a binary distribution.
+## Here's a quick comparison on my machine:
+## | Build options   | Build time | Package Size (Zstd) | Uncompressed Size |
+## | :-------------- | ---------: | ------------------: | ----------------: |
+## | (!strip !debug) |    45.12 s |            2853 MiB |          8855 MiB |
+## | (!strip debug)  |   169.80 s |            2853 MiB |          8855 MiB |
+## | (strip !debug)  |   200.99 s |            2628 MiB |          7955 MiB |
 options=(!strip !debug)
 
 ## To build this package you might need to place the mathematica-installer into
@@ -122,7 +130,8 @@ prepare() {
 }
 
 package() {
-    export installdir="$(realpath -m "${pkgdir}/${_installdir}")"
+    installdir="$(realpath -m "${pkgdir}/${_installdir}")"
+    export installdir
 
     msg2 'Running Mathematica installer'
     # https://reference.wolfram.com/language/tutorial/InstallingWolfram.html#650929293
@@ -147,34 +156,28 @@ package() {
     install -d "${pkgdir}"/usr/share/applications
     desktop_file="com.wolfram.Wolfram.${_pkgver}.desktop"
     _fix_dekstop_file "${installdir}/SystemFiles/Installation/$desktop_file"
-    cp "${installdir}/SystemFiles/Installation/$desktop_file" "${pkgdir}"/usr/share/applications/
 
-    install -d "${pkgdir}"/usr/share/desktop-directories
-    cp "${installdir}"/SystemFiles/Installation/*.directory "${pkgdir}"/usr/share/desktop-directories/
-
-    install -d "${pkgdir}"/usr/share/mime/packages
-    cp "${installdir}"/SystemFiles/Installation/*.xml "${pkgdir}"/usr/share/mime/packages/
+    install -D -m644 "${installdir}/SystemFiles/Installation/$desktop_file" -t "${pkgdir}"/usr/share/applications/
+    install -D -m644 "${installdir}"/SystemFiles/Installation/*.directory -t "${pkgdir}"/usr/share/desktop-directories
+    install -D -m644 "${installdir}"/SystemFiles/Installation/*.xml -t "${pkgdir}"/usr/share/mime/packages
 
     msg2 'Copying icons'
-    install -d "${pkgdir}"/usr/share/icons/hicolor/{32x32,64x64,128x128}/{apps,mimetypes}
     for i in 32 64 128; do
-        cp "${installdir}/SystemFiles/FrontEnd/SystemResources/X/App-${i}.png" \
+        install -D -m644 "${installdir}/SystemFiles/FrontEnd/SystemResources/X/App-${i}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram-${_pkgver}.png"
 
         for mimetype in $(find . -name 'vnd.*' | cut -d '-' -f1 | uniq); do
             mimetype="$(basename "$mimetype")"
-            cp "${installdir}/SystemFiles/FrontEnd/SystemResources/X/${mimetype}-${i}.png" \
+            install -D -m644 "${installdir}/SystemFiles/FrontEnd/SystemResources/X/${mimetype}-${i}.png" \
                 "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-${mimetype}.png"
         done
     done
 
     msg2 'Copying man pages'
-    install -d "${pkgdir}"/usr/share/man/man1
-    cp "${installdir}"/SystemFiles/SystemDocumentation/Unix/*.1 "${pkgdir}"/usr/share/man/man1
+    install -D -m644 "${installdir}"/SystemFiles/SystemDocumentation/Unix/*.1 -t "${pkgdir}"/usr/share/man/man1
 
     msg2 'Copying license'
-    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    cp "${installdir}"/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+    install -D -m644 "${installdir}"/LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
     _fix_binary_symlinks # namcap rule: symlink
     _fix_insecure_runpath # namcap rule: rpath, runpath
@@ -214,18 +217,18 @@ _fix_binary_symlinks() {
 _fix_insecure_runpath() {
     msg2 'Fixing insecure RPATH and RUNPATH on ELF files'
 
-    cat "${srcdir}/insecure-runpath.list" | while read elffile; do
-        # remove all RPATHs and RUNPATHs that aren't realtive to $ORIGIN
+    while read -r elffile; do
+        # remove all RPATHs and RUNPATHs that aren't relative to $ORIGIN
         safe_runpath="$(chrpath -l "${installdir}/${elffile}" |\
             sed -E 's/.*\bR(UN)?PATH=(.*)/\2/g' |\
-            tr ':' '\n' | grep -E '^\$ORIGIN' | paste -sd ':')"
+            tr ':' '\n' | grep -E "^\\\$ORIGIN" | paste -sd ':')"
 
         if [ -z "$safe_runpath" ]; then
             chrpath -d "${installdir}/${elffile}"
         else
             chrpath -r "$safe_runpath" "${installdir}/${elffile}"
         fi
-    done
+    done < "${srcdir}/insecure-runpath.list"
 }
 
 _fix_permissions() {

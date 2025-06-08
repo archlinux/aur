@@ -63,7 +63,7 @@ pkgbase = mathematica-light
 	conflicts = mathematica
 	options = !strip
 	options = !debug
-	source = Wolfram_14.2.1_LIN.sh::https://account.wolfram.com/dl/WolframApp?version=14.2.1&platform=Linux&downloadManager=false&includesDocumentation=false&signature=09d7f5942c445782756030c9300d6386f8265c6910537efd11672b0a2b38d638bf4b845786832252bbd5eca6ef9bb8251dda952bd7fc4248f0ea1cf1
+	source = Wolfram_14.2.1_LIN.sh::https://account.wolfram.com/dl/WolframApp?version=14.2.1&platform=Linux&downloadManager=false&includesDocumentation=false
 	source = remove-xdg-scripts.patch
 	source = insecure-runpath.list
 	sha256sums = 58d2eeabd46f898177323f2e3802e19af7311861d5abf4c0185313196a1805c7
