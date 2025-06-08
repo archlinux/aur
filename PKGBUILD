@@ -3,7 +3,7 @@
 pkgname=balatrotui-git
 _pkgname=BalatroTUI
 pkgver=r81.5b052f7
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI clone of Balatro"
 url="https://github.com/Passeriform/BalatroTUI"
 makedepends=('cargo' 'git')
@@ -11,8 +11,8 @@ arch=('i686' 'x86_64')
 license=('GPL-3.0')
 source=("git+https://github.com/Passeriform/BalatroTUI")
 sha256sums=('SKIP')
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=(balatrotui)
+conflicts=($balatrotui)
 
 pkgver() {
     cd "$srcdir"
