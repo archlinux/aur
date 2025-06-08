@@ -1,0 +1,4 @@
+mullvad-udp-over-tcp
+*.tar.zst
+pkg
+src

@@ -1,0 +1,14 @@
+pkgbase = mullvad-udp-over-tcp
+	pkgdesc = Proxy UDP traffic over a TCP stream (provides tcp2udp and udp2tcp binaries)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/mullvad/udp-over-tcp
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	source = mullvad-udp-over-tcp::git+https://github.com/mullvad/udp-over-tcp#tag=v0.4.0
+	sha256sums = dc233e10c211f19afc63efe1def5fda7f78cb0e62fcdb9057c89a74f87caee44
+
+pkgname = mullvad-udp-over-tcp
