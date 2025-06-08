@@ -1,6 +1,6 @@
 pkgbase = copymanga-downloader-bin
 	pkgdesc = 拷贝漫画 copymanga 的多线程下载器
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/lanyeeee/copymanga-downloader
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = copymanga-downloader-bin
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	conflicts = copymanga-downloader
-	source = https://github.com/lanyeeee/copymanga-downloader/releases/download/v0.9.1/copymanga-downloader_0.9.1_linux_amd64.deb
+	source = https://github.com/lanyeeee/copymanga-downloader/releases/download/v0.10.0/copymanga-downloader_0.10.0_linux_amd64.deb
 	sha256sums = SKIP
 
 pkgname = copymanga-downloader-bin
