@@ -1,21 +1,20 @@
 pkgbase = yumenikki-zh-cn
 	pkgdesc = Surrealistic adventure game about exploring the dreams (Simplified chinese)
 	pkgver = 0.10
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www3.nns.ne.jp/pri/tk-mto/
 	arch = any
 	license = custom
 	makedepends = 7zip
+	makedepends = desktop-file-utils
 	depends = easyrpg-player
 	noextract = yumenikki0.10chs.rar
 	options = !strip
 	source = http://yumenikki.info/yumenikki0.10chs.rar
-	source = yumenikki-zh-cn.desktop
 	source = yumenikki-zh-cn.png
 	source = yumenikki-zh-cn.sh
 	sha256sums = 912af73da62b739a8ea4ebd0542ae46939e3ba61791f438dbe5ad1ef345ab24b
-	sha256sums = b79c3a8125598b35d2a5baba5d44aba4973220e8415a86e9f88fe2aad21003c6
 	sha256sums = 39125abeef72301782c30322f1649a22354760a76017b37531fbb642af6ccf0b
-	sha256sums = 6b3262a56d9883bd10efcd34566b81077c81c45fcc97250b229f4ed02ba5501b
+	sha256sums = b3a283f1e65ee9c99458df049743c4dc87f15e7ab51e9014d5de0a71ebaf9cdc
 
 pkgname = yumenikki-zh-cn
