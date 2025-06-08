@@ -1,4 +1,5 @@
-# Maintainer: exu <aur _a_ frm01 _d_ net>
+# Maintainer: jason _d_ nader _a_ proton _d_ me
+# Submitter: exu <aur _a_ frm01 _d_ net>
 
 pkgname=feishin-bin
 pkgdesc='Rewrite of Sonixd'
