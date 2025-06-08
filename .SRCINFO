@@ -1,6 +1,6 @@
 pkgbase = lbreakouthd
 	pkgdesc = Scalable 16:9 remake of LBreakout2
-	pkgver = 1.1.9
+	pkgver = 1.1.11
 	pkgrel = 1
 	url = http://lgames.sourceforge.net/LBreakoutHD/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = lbreakouthd
 	depends = sdl2_ttf
 	depends = sdl2_image
 	depends = sdl2_mixer
-	source = https://downloads.sourceforge.net/project/lgames/lbreakouthd/lbreakouthd-1.1.9.tar.gz
-	sha256sums = 1c8cd9707ff2181457ffd53216e472bac024ce0ce144490c44d68ffbabd00be1
+	source = https://downloads.sourceforge.net/project/lgames/lbreakouthd/lbreakouthd-1.1.11.tar.gz
+	sha256sums = 405a8d1afdbe5d77b50edf07028a9710759714d53f210d9cf45604a9e86b59d2
 
 pkgname = lbreakouthd
