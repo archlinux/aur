@@ -1,11 +1,11 @@
 pkgbase = jfed
 	pkgdesc = jFed is a Java-based framework for testbed federation
 	pkgver = 6.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jfed.iminds.be/
 	arch = x86_64
 	license = MIT
-	depends = java-openjfx
+	depends = java-openjfx>=14
 	options = !emptydirs
 	options = !strip
 	source = http://jfed.iminds.be/downloads/stable/installers/jFed_linux_6_4_7.deb

@@ -4,12 +4,12 @@
 pkgname=jfed
 _pkgname=jFed
 pkgver=6.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="jFed is a Java-based framework  for testbed federation"
 arch=('x86_64')
 url="http://jfed.iminds.be/"
 license=('MIT')
-depends=('java-openjfx')
+depends=('java-openjfx>=14')
 options=('!emptydirs' '!strip')
 #install=$pkgname.install
 source=(
