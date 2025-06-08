@@ -1,0 +1,12 @@
+pkgbase = grlx-sprout-bin
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/gogrlx/grlx/cmd/sprout
+	arch = x86_64
+	license = 0BSD
+	provides = grlx-sprout
+	conflicts = grlx-sprout
+	source = https://github.com/gogrlx/grlx/releases/download/v1.0.5/grlx-sprout-v1.0.5-linux-amd64.tar.gz
+	sha256sums = 5027dc90e6158e03b0057ca14e9a4a0dbf26a8bc63e13b90028bbfeff667574d
+
+pkgname = grlx-sprout-bin
