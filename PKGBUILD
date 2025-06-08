@@ -2,13 +2,13 @@
 
 pkgname=foxglove-bin
 pkgver=2.28.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An integrated visualization and diagnosis tool for robotics'
 arch=('x86_64' 'aarch64')
 license=('MPL')
 url='https://foxglove.dev/'
-depends=()
-optdepends=()
+depends=(gtk3 libnotify nss libxtst xdg-utils at-spi2-core libdrm egl-gbm libxcb)
+optdepends=(libappindicator-gtk3)
 provides=('foxglove-studio')
 conflicts=('foxglove-studio')
 replaces=('foxglove-studio-bin')
