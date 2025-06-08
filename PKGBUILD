@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2506.r25.ga0611b512b'
+pkgver='2506.r91.g944dd711b7'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -41,10 +41,12 @@ source=(
 	"$pkgbase-tinygltf::git+https://github.com/syoyo/tinygltf.git"
 	"$pkgbase-vh::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"$pkgbase-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
+	"$pkgbase-watcher::git+https://github.com/e-dant/watcher.git"
 	'cmake-discord-rpc.diff'
 	'cmake-mgba.diff'
 )
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -69,6 +71,7 @@ prepare() {
 		[tinygltf]='tinygltf/tinygltf'
 		[vh]='Vulkan-Headers'
 		[vma]='VulkanMemoryAllocator'
+		[watcher]='watcher/watcher'
 	)
 
 	for _submod in "${!_submodules[@]}"; do
