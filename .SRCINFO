@@ -1,6 +1,6 @@
 pkgbase = readest-bin
 	pkgdesc = A reader application for EPUB files (AppImage version)
-	pkgver = 0.9.53
+	pkgver = 0.9.55
 	pkgrel = 1
 	url = https://github.com/chrox/readest
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = readest-bin
 	provides = readest
 	conflicts = readest
 	options = !strip
-	source = https://github.com/chrox/readest/releases/download/v0.9.53/Readest_0.9.53_amd64.AppImage
-	sha256sums = 9e44514a341a56db60db25a6a06a7b45417f6bab55d9c732e96a62ce46edf1c9
+	source = https://github.com/chrox/readest/releases/download/v0.9.55/Readest_0.9.55_amd64.AppImage
+	sha256sums = 806521436c61b36ad25835ec1dd9e39eec6c221a473e7c1c50b0bdb88038c008
 
 pkgname = readest-bin

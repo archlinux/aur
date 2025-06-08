@@ -2,64 +2,64 @@
 # Contributor: czyt<czytcn@gmail.com>
 
 pkgname=readest-bin
-pkgver=0.9.53
+pkgver=0.9.55
 pkgrel=1
 pkgdesc="A reader application for EPUB files (AppImage version)"
 arch=('x86_64')
 url="https://github.com/chrox/readest"
 license=('AGPL-3.0')
 depends=(
-    'fuse2'
-    'appmenu-gtk-module'
-    'gtk3'
-    'libappindicator-gtk3'
+  'fuse2'
+  'appmenu-gtk-module'
+  'gtk3'
+  'libappindicator-gtk3'
 )
 optdepends=(
-    'libappindicator-gtk2: GTK2 support'
-    'libappindicator-gtk3: GTK3 support'
+  'libappindicator-gtk2: GTK2 support'
+  'libappindicator-gtk3: GTK3 support'
 )
 provides=('readest')
 conflicts=('readest')
 options=('!strip')
 source=("https://github.com/chrox/readest/releases/download/v${pkgver}/Readest_${pkgver}_amd64.AppImage")
-sha256sums=('9e44514a341a56db60db25a6a06a7b45417f6bab55d9c732e96a62ce46edf1c9')  
+sha256sums=('806521436c61b36ad25835ec1dd9e39eec6c221a473e7c1c50b0bdb88038c008')
 
 prepare() {
-    cd "${srcdir}"
-    chmod +x "Readest_${pkgver}_amd64.AppImage"
-    
-    # extract
-    ./Readest_${pkgver}_amd64.AppImage --appimage-extract
+  cd "${srcdir}"
+  chmod +x "Readest_${pkgver}_amd64.AppImage"
+
+  # extract
+  ./Readest_${pkgver}_amd64.AppImage --appimage-extract
 }
 
 package() {
-    cd "${srcdir}"
-    
-    install -dm755 "${pkgdir}/usr/bin"
-    install -dm755 "${pkgdir}/usr/share/applications"
-    install -dm755 "${pkgdir}/usr/share/pixmaps"
-    
-    # install AppImage
-    install -Dm755 "Readest_${pkgver}_amd64.AppImage" "${pkgdir}/opt/${pkgname}/readest.AppImage"
-    
-    # create launcher
-    cat > "${pkgdir}/usr/bin/readest" << EOF
+  cd "${srcdir}"
+
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/applications"
+  install -dm755 "${pkgdir}/usr/share/pixmaps"
+
+  # install AppImage
+  install -Dm755 "Readest_${pkgver}_amd64.AppImage" "${pkgdir}/opt/${pkgname}/readest.AppImage"
+
+  # create launcher
+  cat >"${pkgdir}/usr/bin/readest" <<EOF
 #!/bin/bash
 exec "/opt/${pkgname}/readest.AppImage" "\$@"
 EOF
-    chmod 755 "${pkgdir}/usr/bin/readest"
-    
-    # install icon
-    if [ -f squashfs-root/readest.png ]; then
-        install -Dm644 squashfs-root/readest.png "${pkgdir}/usr/share/pixmaps/readest.png"
-    elif [ -f squashfs-root/usr/share/icons/hicolor/256x256/apps/readest.png ]; then
-        install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256/apps/readest.png "${pkgdir}/usr/share/pixmaps/readest.png"
-    elif [ -f squashfs-root/.DirIcon ]; then
-        install -Dm644 squashfs-root/.DirIcon "${pkgdir}/usr/share/pixmaps/readest.png"
-    fi
-    
-    # create desktop entry
-    cat > "${pkgdir}/usr/share/applications/readest.desktop" << EOF
+  chmod 755 "${pkgdir}/usr/bin/readest"
+
+  # install icon
+  if [ -f squashfs-root/readest.png ]; then
+    install -Dm644 squashfs-root/readest.png "${pkgdir}/usr/share/pixmaps/readest.png"
+  elif [ -f squashfs-root/usr/share/icons/hicolor/256x256/apps/readest.png ]; then
+    install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256/apps/readest.png "${pkgdir}/usr/share/pixmaps/readest.png"
+  elif [ -f squashfs-root/.DirIcon ]; then
+    install -Dm644 squashfs-root/.DirIcon "${pkgdir}/usr/share/pixmaps/readest.png"
+  fi
+
+  # create desktop entry
+  cat >"${pkgdir}/usr/share/applications/readest.desktop" <<EOF
 [Desktop Entry]
 Name=Readest
 Comment=EPUB Reader
@@ -71,5 +71,5 @@ Terminal=false
 MimeType=application/epub+zip;
 EOF
 
-rm -rf "${srcdir}/squashfs-root"
+  rm -rf "${srcdir}/squashfs-root"
 }
