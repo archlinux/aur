@@ -1,16 +1,14 @@
 pkgbase = garage-webui
 	pkgdesc = Garage去中心化的存储服务的前端UI界面。
 	pkgver = 1.0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/khairul169/garage-webui
 	install = garage-webui.install
 	arch = any
 	license = MIT
 	depends = garage-bin
 	provides = garage-webui
-	source = garage-webui::https://github.com/khairul169/garage-webui/releases/download/1.0.9/garage-webui-v1.0.9-linux-amd64
 	source = garage-webui.service
-	sha256sums = 46b01c5e0c306873db249613de7609b3665b2c3695596e77e98ee4a00030252f
-	sha256sums = d04ce0911920652e80444c5b853c57e6b90d3b752cdeea9944fcb43c3e6fabad
+	sha256sums = fa8dc29dfe6d42760d693436771146dab8cb1a98d17222ad6778c8d5ba1f3def
 
 pkgname = garage-webui
