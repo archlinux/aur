@@ -1,8 +1,8 @@
 # Maintainer: Brycen Granville <brycengranville@outlook.com>
 pkgbase=snapx
 pkgname=(snapx snapx-ui)
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.2.0
+pkgrel=2
 pkgdesc="Screenshot tool that handles images, text, and video (fork of ShareX)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/BrycensRanch/SnapX"
@@ -12,6 +12,7 @@ makedepends=(
     'dotnet-sdk>=9.0'
     'clang'
     'zlib'
+    'curl'
 )
 
 source=("$pkgbase::git+https://github.com/BrycensRanch/SnapX.git")
@@ -20,6 +21,7 @@ sha256sums=('SKIP')
 build() {
     cd "$pkgbase"
     export VERSION=$pkgver
+    export PKGTYPE=ARCH
     ./build.sh --configuration Release
 }
 
@@ -31,7 +33,6 @@ check() {
 package_snapx() {
     depends=(
         'ffmpeg'
-        'curl'
         'fontconfig'
         'freetype2'
         'openssl'
@@ -47,9 +48,9 @@ package_snapx() {
 
     cd "$pkgbase"
     ./build.sh install --prefix /usr --dest-dir "${pkgdir}" --skip compile
+    rm -f "${pkgdir}/usr/bin/snapx-ui"
     rm -f "${pkgdir}/usr/bin/libSkiaSharp.so"
     rm -f "${pkgdir}/usr/bin/libHarfBuzzSharp.so"
-    rm -f "${pkgdir}/usr/bin/snapx-ui"
 }
 
 package_snapx-ui() {
@@ -63,5 +64,5 @@ package_snapx-ui() {
     rm -rf "${pkgdir}/usr/share"
     rm -f "${pkgdir}/usr/bin/snapx"
     rm -f "${pkgdir}/usr/bin/libe_sqlite3.so"
-    rm -f "${pkgdir}/usr/lib/snapx/SnapX_NativeMessagingHost"
+
 }
