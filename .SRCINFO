@@ -1,0 +1,20 @@
+pkgbase = tithon
+	pkgdesc = Modern IRC client
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = https://github.com/greboid/tithon
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = npm
+	makedepends = git
+	makedepends = gendesk
+	depends = electron
+	depends = glibc
+	options = !debug
+	source = git+https://github.com/greboid/tithon.git#tag=v0.0.11
+	source = launcher.sh
+	sha256sums = 56a0bec9365b555430a5abc9bc6c7761771ee1a38054ff7eb073eccbc5f666cb
+	sha256sums = 96f891aa77f7374c9d40689add1ec8f5402915a08a70d820725d026fa8ec0f29
+
+pkgname = tithon
