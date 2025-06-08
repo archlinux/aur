@@ -1,22 +1,24 @@
 # Maintainer: Santiago Burgos <santiago.burgos1089@gmail.com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=fingwit
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fingerprint Configuration Tool"
 url="https://github.com/xapp-project/fingwit"
 arch=(x86_64)
 license=(GPL-3.0-or-later)
 depends=(
     'fprintd'
-    'gobject-introspection'
     'gtk3'
     'libfprint'
     'pam'
     'python'
+    'python-gobject'
+    'python-setproctitle'
+    'xapp'
 )
 makedepends=(
-    'appstream-glib'
     'meson'
     'ninja'
 )
@@ -25,6 +27,9 @@ sha256sums=('9fd3513794464e9a1a7ff584a233a6c6b366b32c8d45d7455d18c48b3a2b01ec')
 
 prepare(){
     cd $pkgname-$pkgver
+    # Fix license path
+    # Dialog expands too wide
+#    sed -i 's|common-licenses/GPL|licenses/spdx/GPL-3.0-or-later.txt|g' "$pkgname"
 }
 
 build() {
@@ -33,5 +38,5 @@ build() {
 }
 
 package() {
-    meson install -C build --destdir "$pkgdir"
+    meson install -C build --no-rebuild --destdir "$pkgdir"
 }
