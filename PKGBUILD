@@ -12,7 +12,7 @@ url="https://github.com/timoxa0/silk-guardian"
 license=('MIT')
 makedepends=('git')
 depends=('python-jinja' 'python-yaml' 'python-pyusb' 'dkms')
-conflicts=('lkrg-dkms' 'lkrg-dkms-git')
+conflicts=('lkrg-dkms' 'lkrg-dkms-git' 'silk-guardian-dkms')
 source=("https://github.com/timoxa0/silk-guardian/archive/${pkgver}.tar.gz")
 sha256sums=('fc2f684cdad93c1a43b196ac59f21ce6590ec28719fa76e8ad81b903aa5cd840')
 

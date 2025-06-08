@@ -13,6 +13,7 @@ pkgbase = silk-guardian-blacklist-dkms
 	depends = dkms
 	conflicts = lkrg-dkms
 	conflicts = lkrg-dkms-git
+	conflicts = silk-guardian-dkms
 	source = https://github.com/timoxa0/silk-guardian/archive/v1.0.2.tar.gz
 	sha256sums = fc2f684cdad93c1a43b196ac59f21ce6590ec28719fa76e8ad81b903aa5cd840
 
