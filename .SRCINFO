@@ -1,6 +1,6 @@
 pkgbase = vcvrack-not-things
 	pkgdesc = not-things VCV Rack modules
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/not-things-modular/not-things-vcv
 	arch = aarch64
@@ -9,11 +9,14 @@ pkgbase = vcvrack-not-things
 	groups = vcvrack-plugins
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = nlohmann-json
 	makedepends = simde
 	makedepends = zstd
 	depends = gcc-libs
 	depends = vcvrack
-	source = git+https://github.com/not-things-modular/not-things-vcv#tag=v2.0.2
-	sha256sums = 529b355d888b6a195567d2ef9089fe471bae55e4a117f53df94d9543d5ca668a
+	source = git+https://github.com/not-things-modular/not-things-vcv#tag=v2.0.3
+	source = include-cstdint.patch::https://github.com/not-things-modular/not-things-vcv/pull/12.patch
+	sha256sums = bd7a0d648416f8dece3d9b9f6938927290ba267514e548260b0d56b5e61f464f
+	sha256sums = 5e5ca379d811c1ef7ca4a71061f08316b75608722348e68980b99f285c9269e2
 
 pkgname = vcvrack-not-things

@@ -1,4 +1,5 @@
 /not-things-vcv
+/include-cstdint.patch
 pkg/
 src/
 *.tar.*
