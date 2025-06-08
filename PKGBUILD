@@ -1,7 +1,7 @@
 # Maintainer: Tuure Piitulainen <tuure.piitulainen@gmail.com>
 
 pkgname="vivify"
-pkgver="0.8.0"
+pkgver="0.8.1"
 pkgrel=1
 pkgdesc="Markdown preview tool which can be used standalone or plug into an editor like (Neo)Vim"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("GPL-3.0-or-later")
 depends=("gcc-libs" "sh")
 makedepends=("yarn" "nvm" "zip")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jannis-baum/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("8ef4bcad388f791a6e96cda102ae61eb719d8aa6b5d254ce69257667d788c687")
+sha256sums=("9a31381e80524066d6ea1e0d1baf7cf82eb22eabf6f9a0555ddb94736c20bf3b")
 
 # Stripping 'unneeded symbols' causes vivify-server executable to break
 # (segmentation fault)
