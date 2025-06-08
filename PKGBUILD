@@ -2,7 +2,7 @@
 
 pkgname=ntpsec
 pkgver=1.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Security-hardened Network Time Protocol implementation"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.ntpsec.org/"
@@ -15,8 +15,8 @@ optdepends=('gnuplot: for ntpviz'
             'ttf-liberation: Improves font quality in ntpviz renderings')
 provides=('ntp')
 conflicts=('ntp')
-source=("ftp://ftp.ntpsec.org/pub/releases/$pkgname-$pkgver.tar.gz"
-        "ftp://ftp.ntpsec.org/pub/releases/$pkgname-$pkgver.tar.gz.asc"
+source=("http://ftp.ntpsec.org/pub/releases/$pkgname-$pkgver.tar.gz"
+        "http://ftp.ntpsec.org/pub/releases/$pkgname-$pkgver.tar.gz.asc"
         use-arch-pool.patch
         ntpsec.sysusers
         waf-2.0.27)
