@@ -22,8 +22,8 @@ pkgbase = sirikali-bin
 	conflicts = sirikali-git
 	conflicts = sirikali
 	source_i686 = https://download.opensuse.org/repositories/home:/obs_mhogomchungu/Debian_12/i386/sirikali_1.8.2-1_i386.deb
-	sha256sums_i686 = 0d9f9dbee20fe597d29c1ded53c908e2aaab235d2037923f21df6134f56da9c5
+	sha256sums_i686 = 25907e6017185e757228959be09c7d19f3e019aa6be575a8393154c697e19e5b
 	source_x86_64 = https://download.opensuse.org/repositories/home:/obs_mhogomchungu/Debian_12/amd64/sirikali_1.8.2-1_amd64.deb
-	sha256sums_x86_64 = a72e20636d22657d7a55c8fed4a248269254a5c70ee66e56b766b4b862ed05bc
+	sha256sums_x86_64 = 846084f7af49c14918bcd2c69d74bcd2b275bdc5c9b615434a7d68dacc98a512
 
 pkgname = sirikali-bin
