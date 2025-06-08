@@ -1,6 +1,6 @@
 pkgbase = pdf4qt-git
 	pkgdesc = Open source PDF editor
-	pkgver = 1.5.1.0.r7.gb87493f
+	pkgver = 1.5.1.0.r16.gba80dbd
 	pkgrel = 1
 	url = https://jakubmelka.github.io/
 	arch = x86_64
@@ -30,12 +30,10 @@ pkgbase = pdf4qt-git
 	conflicts = pdf4qt
 	source = pdf4qt-git::git+https://github.com/JakubMelka/PDF4QT
 	source = CMakeListsMain.patch
-	source = CMakeListsLib.patch
 	source = FindLCMS2.cmake
 	source = FixPluginsDir.patch
 	sha256sums = SKIP
-	sha256sums = ec88fc35b8a071c382ee29e8a33e806d0ea2d1a1e8ef99f7be0f5fd4577b8068
-	sha256sums = d53ecb1906965453b38e7b0e75495f60ee9da141162f39b02ba18ae6885ab31d
+	sha256sums = 0df1f6c6ac3c1025a06c509cd61dca8e6ecda932feed339784cff7d64a16fd1f
 	sha256sums = fb438faf87211cf3c21c6fa624cedd2ec6af49b03827e1ad230e0202e939a8ec
 	sha256sums = 857271d65f06efe437c1312bb92c40f96afc808a368d6ddcda89a0f4216c613e
 

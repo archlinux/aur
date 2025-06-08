@@ -1,6 +1,6 @@
 # Maintainer: Raffaele Mancuso <raffaelemancuso532 at gmail dot com>
 pkgname=pdf4qt-git
-pkgver=1.5.1.0.r7.gb87493f
+pkgver=1.5.1.0.r16.gba80dbd
 pkgrel=1
 pkgdesc="Open source PDF editor"
 arch=('x86_64')
@@ -36,14 +36,12 @@ conflicts=("${pkgname%-git}")
 source=(
   "$pkgname"::'git+https://github.com/JakubMelka/PDF4QT'
   'CMakeListsMain.patch'
-  'CMakeListsLib.patch'
   'FindLCMS2.cmake'
   'FixPluginsDir.patch'
 )
 sha256sums=(
   'SKIP'
-  'ec88fc35b8a071c382ee29e8a33e806d0ea2d1a1e8ef99f7be0f5fd4577b8068'
-  'd53ecb1906965453b38e7b0e75495f60ee9da141162f39b02ba18ae6885ab31d'
+  '0df1f6c6ac3c1025a06c509cd61dca8e6ecda932feed339784cff7d64a16fd1f'
   'fb438faf87211cf3c21c6fa624cedd2ec6af49b03827e1ad230e0202e939a8ec'
   '857271d65f06efe437c1312bb92c40f96afc808a368d6ddcda89a0f4216c613e'
 )
@@ -56,7 +54,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   patch -p1 -i "$srcdir/CMakeListsMain.patch"
-  patch -p1 -i "$srcdir/CMakeListsLib.patch"
   patch -p1 -i "$srcdir/FixPluginsDir.patch"
 }
 
