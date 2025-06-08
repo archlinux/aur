@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=source2viewer-git
-pkgver=11.0.r3.gfacd407
+pkgver=13.0.r17.g0b78052
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$pkgname/Decompiler"
+	cd "$srcdir/$pkgname/CLI"
 	dotnet publish -r linux-x64
 
 	cd "$srcdir/$pkgname/GUI"
@@ -45,8 +45,8 @@ build() {
 }
 
 package() {
-	# Install Decompiler
-	cd "$srcdir/$pkgname/Decompiler/bin/Release/linux-x64/publish"
+	# Install CLI
+	cd "$srcdir/$pkgname/CLI/bin/Release/linux-x64/publish"
 	install -Dm755 Source2Viewer-CLI "$pkgdir/usr/bin/${pkgname::-4}-cli"
 
 	#Install Source2Viewer.exe
