@@ -22,11 +22,11 @@ from gi.repository import Gtk, AppIndicator3, GLib
 
 ### CONFIGURAÇÃO PERSONALIZÁVEL ###
 URL = "https://mail.google.com"
-APP_ICON = "gmail-tray"   # ícone do sistema OU caminho absoluto ex: "/home/user/.icons/logo.png"
-APP_TITLE = "Gmail"                                 # Título do aplicativo
-CHECK_INTERVAL = 60                                 # seconds
-BROWSER = "firefox"                                 # Browser to open Gmail
-ARGS = ["-P", "Main", "--new-window"]               # Arguments for the browser, e.g., profile and new window
+APP_ICON = "/usr/share/icons/hicolor/48x48/apps/gmail-tray.png"     # ícone do sistema OU caminho absoluto ex: "/home/user/.icons/logo.png"
+APP_TITLE = "Gmail"                                                 # Título do aplicativo
+CHECK_INTERVAL = 60                                                 # seconds
+BROWSER = "firefox"                                                 # Browser to open Gmail
+FLAGS = ["--ProfileManager", "--new-window", "--safe-mode"]          # Arguments for the browser, e.g., profile and new window
 #####################################
 
 class GenericTrayApp:
@@ -86,12 +86,13 @@ class GenericTrayApp:
     def notify_new_mail(self, count):
         print(f"New mail notification: {count} new email(s)")
         try:
+            print("Using dunstify for notification...")
             subprocess.run([
                 "dunstify", "-a", "Gmail", "-u", "normal",
                 "-I", APP_ICON, "-c", "gmail", "-t", "1000", 
                 "-h", "string:x-dunst-stack-tag:gmail",
-                f"> {count} new email(s)"
-            ], stderr=subprocess.DEVNULL)
+                f"{count} new email(s)"
+            ])
         except FileNotFoundError:
             print("dunstify not found, using notify-send instead.")
             subprocess.run(["notify-send", f"> {count} new Gmail message(s)"])
@@ -100,7 +101,10 @@ class GenericTrayApp:
 
     def launch_app(self, _):
         print("Launching app...")
-        subprocess.Popen([BROWSER, *ARGS, URL], stderr=subprocess.DEVNULL)
+        subprocess.Popen([BROWSER, *FLAGS, URL]).wait()
+        print("App launched.")
+        # Update the unread count after launching the app
+        self.update_label()
 
     def quit(self, _):
         print("Exiting...")
