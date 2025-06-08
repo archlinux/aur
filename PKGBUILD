@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
-pkgver=1.3.3.r24.gd730f93
+pkgver=1.3.3.r32.g44d0471
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -40,11 +40,11 @@ prepare() {
   cd "${pkgname%-git}"
 
   # modify compiler options
-  for i in "${pkgname%-git}.lpi"; do
-    xmlstarlet edit --inplace --delete '//Other' "$i"
-    sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value='\''-O3 -Sa -CX -XX -k"--sort-common --as-needed -z relro -z now"'\''/></Other>\n\1&' \
-      -i "$i"
-  done
+#  for i in "${pkgname%-git}.lpi"; do
+#    xmlstarlet edit --inplace --delete '//Other' "$i"
+#    sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value='\''-O3 -Sa -CX -XX -k"--sort-common --as-needed -z relro -z now"'\''/></Other>\n\1&' \
+#      -i "$i"
+#  done
 
   mkdir -p build
 }
