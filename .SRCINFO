@@ -1,6 +1,6 @@
 pkgbase = python-click-prompt
 	pkgdesc = Interactive command line options for the click library
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/markusgrotz/click-prompt
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-click-prompt
 	depends = python-click>=8.0.4
 	depends = python-click<9.0
 	depends = python-questionary>=1.10.0
-	source = https://files.pythonhosted.org/packages/ef/5b/1c642ba27a72afb537df8210ec3092dbaef0df6ac890a656977577c31583/click_prompt-0.6.3.tar.gz
-	sha256sums = d9411ff0909387da6404595f7bac13b859021fad3f73649b437dd0b61de21c05
+	source = https://files.pythonhosted.org/packages/84/62/a89437343bd8387cc1cca2b9b116bebe17a2a79b6fd19fe33b378f3069fd/click_prompt-0.6.4.tar.gz
+	sha256sums = b914a4afb37e1172d75989738d42a701dd43cd354a2981e11ee7ec17f8baa821
 
 pkgname = python-click-prompt
