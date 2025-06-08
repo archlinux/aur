@@ -3,7 +3,7 @@
 pkgname="yd-go-git"
 _pkgname=${pkgname%-git}
 pkgrel=1
-pkgver=master.04cd23b
+pkgver=master.cd1b952.r0.gcd1b952
 pkgdesc="Panel indicator for Yandex-disk CLI daemon (linux)"
 arch=('x86_64')
 url="https://github.com/slytomcat/${_pkgname}/"
@@ -12,7 +12,7 @@ license=('GPL-3.0-only')
 depends=('yandex-disk')
 makedepends=('go' 'git' 'gendesk')
 conflicts=('yd-go' 'yd-go-bin' 'yd-go-git-bin' 'yd-go-bin-git')
-source=("git+https://github.com/slytomcat/yd-go.git#branch=${pkgver}")
+source=("git+https://github.com/slytomcat/${_pkgname}.git#branch=master")
 sha256sums=('SKIP')
 
 options=(!debug)
