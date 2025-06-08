@@ -1,0 +1,16 @@
+pkgbase = graxpert-bin
+	pkgdesc = gradient removal tool for astro photographing
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/Steffenhir/GraXpert
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = python-pip
+	provides = graxpert
+	conflicts = graxpert
+	options = !strip
+	source = https://github.com/Steffenhir/GraXpert/releases/download/3.0.2/graxpert-linux-amd64.zip
+	sha256sums = 0a7364c3304ba19f12231d533c80b294054d6558d54ecd81668e4dec49092588
+
+pkgname = graxpert-bin
