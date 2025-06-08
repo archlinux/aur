@@ -1,4 +1,4 @@
-# Maintainer: Mike Pento <mpento@darkforge.net>
+# Maintainer: Mike Pento <mjpento@gmail.com>
 
 # list of source files to be patched
 _file_list=(
@@ -12,7 +12,7 @@ _file_list=(
 pkgname=eterm
 _pkgname=Eterm
 pkgver=0.9.6
-pkgrel=2
+pkgrel=3
 _pkgrel=1
 pkgdesc="A vt102 terminal emulator intended as a replacement for xterm."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ url="https://launchpad.net/ubuntu/+source/eterm/0.9.6-1"
 license=('custom')
 depends=('libast>=0.7' 'libxmu' 'libxres' 'libutempter' 'xorg-fonts-75dpi'
 'xorg-fonts-misc')
-options=('!libtool')
+options=('!libtool' '!debug')
 provides=('esetroot')
 conflicts=('esetroot')
 install=${pkgname}.install
@@ -58,7 +58,8 @@ build() {
     --enable-xim --with-theme-update \
     --with-backspace=bs --without-terminfo \
     --enable-multi-charset ${CONF}
-  make
+  
+  make CFLAGS+=-std=gnu89
 }
 
 package() {

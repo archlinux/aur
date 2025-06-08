@@ -1,7 +1,7 @@
 pkgbase = eterm
 	pkgdesc = A vt102 terminal emulator intended as a replacement for xterm.
 	pkgver = 0.9.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/ubuntu/+source/eterm/0.9.6-1
 	install = eterm.install
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = eterm
 	provides = esetroot
 	conflicts = esetroot
 	options = !libtool
+	options = !debug
 	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/eterm/0.9.6-1/eterm_0.9.6.orig.tar.gz
 	source = eterm.install
 	source = libscream.c.patch
