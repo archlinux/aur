@@ -1,20 +1,19 @@
 pkgbase = yumenikki-jp
 	pkgdesc = Surrealistic adventure game about exploring the dreams (Japanese)
 	pkgver = 0.10
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www3.nns.ne.jp/pri/tk-mto/
 	arch = any
 	license = custom
 	makedepends = unarchiver
+	makedepends = desktop-file-utils
 	depends = easyrpg-player
 	depends = rpg2003-rtp
 	options = !strip
 	source = http://ftp.vector.co.jp/43/88/3084/yumenikki0.10.lzh
-	source = yumenikki-jp.desktop
 	source = yumenikki-jp.png
 	source = yumenikki-jp.sh
 	md5sums = f3a16c395078dcec4950200732bc5194
-	md5sums = b383c1a5cc04c8a637597eb8a45f5534
 	md5sums = 50288d205493517d498ddfcc40df2b09
 	md5sums = e6d724ce5a36ab364f0eed09a03f3ffe
 
