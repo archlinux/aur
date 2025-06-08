@@ -3,10 +3,10 @@
 
 pkgname=fingwit
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fingerprint Configuration Tool"
 url="https://github.com/xapp-project/fingwit"
-arch=(x86_64)
+arch=(any)
 license=(GPL-3.0-or-later)
 depends=(
     'fprintd'

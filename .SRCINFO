@@ -1,9 +1,9 @@
 pkgbase = fingwit
 	pkgdesc = Fingerprint Configuration Tool
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xapp-project/fingwit
-	arch = x86_64
+	arch = any
 	license = GPL-3.0-or-later
 	makedepends = meson
 	makedepends = ninja
