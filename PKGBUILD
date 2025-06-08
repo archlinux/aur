@@ -38,7 +38,6 @@ package_obsidian-bin() {
         'at-spi2-core'
         'util-linux-libs'
         'libsecret'
-        'hicolor-icon-theme'
     )
     optdepends=('libappindicator-gtk3: tray icon support')
     install="obsidian.install"
@@ -53,7 +52,6 @@ package_obsidian-appimage() {
     arch=('x86_64' 'aarch64')
     depends=(
         'zlib'
-        'hicolor-icon-theme'
         'fuse2'
     )
 
