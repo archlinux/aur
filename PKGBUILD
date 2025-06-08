@@ -10,7 +10,8 @@
 # you could also use https://aur.archlinux.org/packages/nvidia-sdk
 # just update environment variable `TORCHVISION_INCLUDE` and `TORCHVISION_LIBRARY`
 # see also https://github.com/pytorch/vision/blob/main/torchvision/csrc/io/decoder/gpu/README.rst
-#
+# See this to find the location of nvcuvid.h and cuviddec.h headers in the DALI project:
+# https://github.com/NVIDIA/DALI/blob/4d95a057199a09590490b2d99ae0b9948655e07d/internal_tools/stub_generator/nvcuvid.json#L4-L5
 
 # update when available in pytorch
 _CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.9;9.0;9.0+PTX"
@@ -51,8 +52,8 @@ makedepends=(
   nvidia-utils
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive/v${pkgver}.tar.gz"
-        "https://github.com/NVIDIA/DALI/raw/main/dali/operators/reader/loader/video/nvdecode/cuviddec.h"
-        "https://github.com/NVIDIA/DALI/raw/main/dali/operators/reader/loader/video/nvdecode/nvcuvid.h"
+        "https://github.com/NVIDIA/DALI/raw/main/dali/operators/video/dynlink_nvcuvid/cuviddec.h"
+        "https://github.com/NVIDIA/DALI/raw/main/dali/operators/video/dynlink_nvcuvid/nvcuvid.h"
         "torchvision-0_17_1-fix-build.patch"
 )
 b2sums=('e598d0b4c3523a905ad06aa218c554622d2f2acaa19277b82b7611cbe19ad51937ee7c74e18933160ad37d79870e55b4b84b0eddc02b324241cacf67134bb888'
