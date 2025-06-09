@@ -12,6 +12,5 @@ provides=('catbox')
 conflicts=('catbox' 'catbox-git')
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+    install -Dm755 "$srcdir/catbox" -t "$pkgdir/usr/bin"
 }
