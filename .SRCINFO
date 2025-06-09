@@ -1,0 +1,14 @@
+pkgbase = brother-dcp-t536dw
+	pkgdesc = CUPS driver for Brother DCP-T536DW printer
+	pkgver = 3.6.1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadtop.aspx?c=us_ot&lang=en&prod=dcpt536dw_all
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	depends = cups
+	source = https://download.brother.com/welcome/dlf106523/dcpt536dwpdrv-3.6.1-1.amd64.deb
+	sha256sums = a876678fa86d524d671a9ac3eedc7130b265b9ff9425d83945f317b299872b0b
+
+pkgname = brother-dcp-t536dw
