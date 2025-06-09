@@ -1,0 +1,13 @@
+pkgbase = yad-zenity
+	pkgdesc = Replace zenity with yad.Use at own risk
+	pkgver = 114514.1919.810
+	pkgrel = 1
+	url = https://archlinux.org/packages/extra/x86_64/yad/
+	arch = any
+	license = GPL3
+	depends = yad
+	provides = zenity
+	conflicts = zenity
+	replaces = zenity
+
+pkgname = yad-zenity
