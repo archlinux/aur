@@ -1,0 +1,13 @@
+pkgbase = sorena-fonts
+	pkgdesc = An English-Arabic pixel font.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/MDarvishi5124/Sorena
+	arch = any
+	license = OFL
+	provides = sorena
+	provides = sorena-fonts
+	source = https://github.com/MDarvishi5124/Sorena/archive/refs/tags/1.2.0v.tar.gz
+	sha256sums = 8a85b40122144d7fe9d77d47076eb9be8851bdae608d550e11090b8b8ea2d704
+
+pkgname = sorena-fonts
