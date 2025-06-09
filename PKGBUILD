@@ -1,6 +1,6 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Maintainer: Donald Webster <fryfrog@gmail.com>
-# Helpful URL: https://whisparr.servarr.com/v1/update/nightly?version=0.0.0.0&os=linux&runtime=netcore&arch=x64
+# Helpful URL: https://whisparr.servarr.com/v1/update/nightly?version=0.0.0.0&os=linux&runtime=netcore&arch=x64&includeMajorVersion=true
 
 pkgname=whisparr-nightly-bin
 pkgver=2.0.0.1092
