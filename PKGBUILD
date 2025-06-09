@@ -15,7 +15,7 @@ depends=(gcc-libs glibc oniguruma)
 makedepends=(git rust) # clang for SELinux build
 options=('!lto')
 provides=(${_pkgname})
-conflicts=(${_pkgname} libselinux)
+conflicts=(${_pkgname})
 source=("$_pkgname"::"git+${url}.git")
 sha256sums=('SKIP')
 
@@ -36,7 +36,7 @@ export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) ${RUSTFLAGS} --remap-
 package() {
   cd $_pkgname
   make install DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROFILE=release MULTICALL=y \
-    PROG_PREFIX=uu- SKIP_UTILS="runcon chcon" # Avoid SELinux err
+    PROG_PREFIX=uu- SKIP_UTILS="runcon chcon" # Avoid SELinux bug for build
   # for $PATH
   _uu="$pkgdir"/usr/bin/uu-coreutils
   install -d "$pkgdir"/usr/lib/uu-coreutils

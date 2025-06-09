@@ -12,7 +12,6 @@ pkgbase = uutils-coreutils-git
 	depends = oniguruma
 	provides = uutils-coreutils
 	conflicts = uutils-coreutils
-	conflicts = libselinux
 	options = !lto
 	source = uutils-coreutils::git+https://github.com/uutils/coreutils.git
 	sha256sums = SKIP
