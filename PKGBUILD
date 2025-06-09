@@ -82,7 +82,7 @@ url="https://www.mesa3d.org"
 license=('custom')
 # https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/29275
 source=(
-    'mesa::git+https://gitlab.freedesktop.org/DadSchoorse/mesa.git#branch=radv-float8-hack'
+    'mesa::git+https://gitlab.freedesktop.org/DadSchoorse/mesa.git#branch=radv-float8-hack3'
     'LICENSE'
     'swapchain.patch'
 )

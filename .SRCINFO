@@ -85,7 +85,7 @@ pkgbase = mesa-fp8-git
 	conflicts = opencl-rusticl-mesa
 	options = !lto
 	options = !debug
-	source = mesa::git+https://gitlab.freedesktop.org/DadSchoorse/mesa.git#branch=radv-float8-hack
+	source = mesa::git+https://gitlab.freedesktop.org/DadSchoorse/mesa.git#branch=radv-float8-hack3
 	source = LICENSE
 	source = swapchain.patch
 	source = proc-macro2-1.0.70.tar.gz::https://crates.io/api/v1/crates/proc-macro2/1.0.70/download
