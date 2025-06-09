@@ -14,7 +14,7 @@ source=("kontainer::git+https://invent.kde.org/silverhadch/k-box.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/k-box" || return 1
+  cd "$srcdir/kontainer" || return 1
   git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/./g' || \
     echo "1.0.r0.g$(git rev-parse --short HEAD)"
 }
