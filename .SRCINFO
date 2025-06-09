@@ -1,7 +1,7 @@
 pkgbase = jetbrains-toolbox
 	pkgdesc = Manage all your JetBrains Projects and Tools
 	pkgver = 2.6.3.43718
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/toolbox/
 	arch = x86_64
 	arch = i686
