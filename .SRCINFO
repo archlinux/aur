@@ -1,0 +1,20 @@
+pkgbase = kontainer-git
+	pkgdesc = A KDE-style Qt GUI to manage Distrobox containers
+	pkgver = Beta.9.g2a1a4ae
+	pkgrel = 1
+	url = https://invent.kde.org/silverhadch/k-box
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = qt6-base
+	depends = qt6-tools
+	depends = qt6-declarative
+	depends = distrobox
+	provides = kontainer
+	conflicts = kontainer
+	source = https://invent.kde.org/silverhadch/k-box.git
+	sha256sums = SKIP
+
+pkgname = kontainer-git
