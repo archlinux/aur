@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=mexTool
+Comment=Super Smash Bros. Melee Modding Tool
+Exec=mextool
+Icon=mextool
+Type=Application
+Categories=Game;Utility;
+Terminal=false
+

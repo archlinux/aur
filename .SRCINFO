@@ -1,0 +1,22 @@
+pkgbase = mextool
+	pkgdesc = Super Smash Bros. Melee modding tool (runs with Wine)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/akaneia/mexTool
+	arch = x86_64
+	license = custom:none
+	makedepends = mono-msbuild
+	makedepends = imagemagick
+	makedepends = wget
+	depends = wine
+	depends = winetricks
+	depends = mono
+	depends = unzip
+	source = git+https://github.com/akaneia/mexTool.git
+	source = mextool.desktop
+	source = mextool.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mextool
