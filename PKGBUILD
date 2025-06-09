@@ -18,7 +18,7 @@ pkgver() {
 }
 
 pkgver=1.9.2
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
@@ -67,7 +67,7 @@ makedepends=(
   'cmake'
   'meson'
   'git'
-  'clang'
+  'clang>=20'
   'lld'
   'llvm'
   # AMD VCE encoding on Linux requires Vulkan

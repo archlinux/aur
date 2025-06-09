@@ -1,6 +1,6 @@
 pkgbase = handbrake-llvm-optimized
 	pkgver = 1.9.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://handbrake.fr/
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = handbrake-llvm-optimized
 	makedepends = cmake
 	makedepends = meson
 	makedepends = git
-	makedepends = clang
+	makedepends = clang>=20
 	makedepends = lld
 	makedepends = llvm
 	makedepends = vulkan-headers
