@@ -11,9 +11,9 @@ source=("git+https://github.com/enessmr/hyprland-material-you.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/hyprland-material-you"
+  cd "$srcdir/hmy-agsv1-fork-enessmr-git"
   cd ..
-  mv hyprland-material-you dotfiles
+  mv hmy-agsv1-fork-enessmr-git dotfiles
   cd "dotfiles"
   cat pkgver.txt
 }
