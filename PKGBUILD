@@ -9,7 +9,7 @@ pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url="https://git.stormux.org/storm/fenrir"
 license=('LGPL')
-depends=('python' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyte')
+depends=('python' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyperclip' 'python-pyte')
 optdepends=('brltty: For Braille support'
 'espeak-ng: Default speech synthesizer for the generic speech driver'
 'gstreamer: for soundicons via gstreamer'

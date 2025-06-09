@@ -15,6 +15,7 @@ pkgbase = fenrir
 	depends = python-daemonize
 	depends = python-evdev
 	depends = python-dbus
+	depends = python-pyperclip
 	depends = python-pyte
 	optdepends = brltty: For Braille support
 	optdepends = espeak-ng: Default speech synthesizer for the generic speech driver
