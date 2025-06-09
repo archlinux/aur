@@ -1,0 +1,28 @@
+pkgbase = openttd-jgrpp-opendata
+	pkgdesc = Metapackage which symlinks 'openttd-opengfx/opensfx/openmsx' such that 'openttd-jgrpp' can find them.
+	pkgver = 20250609.01
+	pkgrel = 1
+	epoch = 0
+	url = http://aur.archlinux.org/packages/openttd-jgrpp/
+	arch = any
+	license = CC0-1.0
+	makedepends = grep
+	makedepends = openttd-opengfx
+	makedepends = openttd-opensfx
+	makedepends = openttd-openmsx
+	makedepends = pacman
+	options = emptydirs
+	source = COPYING
+	sha256sums = 90d77bbbe6aa2cfdaf6eaa3580fd1a981e0d0428ae586ac37b47aee5e67fcf12
+
+pkgname = openttd-jgrpp-opengfx
+	pkgdesc = Metapackage which symlinks 'openttd-opengfx' such that 'openttd-jgrpp' can find it.
+	depends = openttd-opengfx
+
+pkgname = openttd-jgrpp-opensfx
+	pkgdesc = Metapackage which symlinks 'openttd-opensfx' such that 'openttd-jgrpp' can find it.
+	depends = openttd-opensfx
+
+pkgname = openttd-jgrpp-openmsx
+	pkgdesc = Metapackage which symlinks 'openttd-openmsx' such that 'openttd-jgrpp' can find it.
+	depends = openttd-openmsx
