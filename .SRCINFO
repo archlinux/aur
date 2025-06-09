@@ -22,8 +22,8 @@ pkgbase = mesa-fp8-git
 	makedepends = wayland-protocols
 	makedepends = python-packaging
 	makedepends = python-pyaml
-	makedepends = llvm=19.1.7
-	makedepends = clang=19.1.7
+	makedepends = llvm
+	makedepends = clang
 	makedepends = libclc
 	makedepends = spirv-llvm-translator
 	makedepends = spirv-tools
@@ -51,7 +51,7 @@ pkgbase = mesa-fp8-git
 	depends = zlib
 	depends = python
 	depends = xcb-util-keysyms
-	depends = llvm-libs=19.1.7
+	depends = llvm-libs
 	depends = clang
 	depends = libclc
 	depends = spirv-llvm-translator
@@ -85,7 +85,7 @@ pkgbase = mesa-fp8-git
 	conflicts = opencl-rusticl-mesa
 	options = !lto
 	options = !debug
-	source = mesa::git+https://gitlab.freedesktop.org/DadSchoorse/mesa.git#branch=radv-float8-hack3
+	source = mesa::git+https://gitlab.freedesktop.org/DadSchoorse/mesa.git#branch=radv-float8-hack
 	source = LICENSE
 	source = swapchain.patch
 	source = proc-macro2-1.0.70.tar.gz::https://crates.io/api/v1/crates/proc-macro2/1.0.70/download

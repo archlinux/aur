@@ -82,7 +82,7 @@ url="https://www.mesa3d.org"
 license=('custom')
 # https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/29275
 source=(
-    'mesa::git+https://gitlab.freedesktop.org/DadSchoorse/mesa.git#branch=radv-float8-hack3'
+    'mesa::git+https://gitlab.freedesktop.org/DadSchoorse/mesa.git#branch=radv-float8-hack'
     'LICENSE'
     'swapchain.patch'
 )
@@ -188,8 +188,8 @@ case $MESA_WHICH_LLVM in
     4)
         # extra/llvm
         makedepends+=(
-            'llvm=19.1.7'
-            'clang=19.1.7'
+            'llvm'
+            'clang'
             'libclc'
             'spirv-llvm-translator'
             'spirv-tools'
@@ -197,7 +197,7 @@ case $MESA_WHICH_LLVM in
             'rust-bindgen'
         )
         depends+=(
-            'llvm-libs=19.1.7'
+            'llvm-libs'
             'clang'
             'libclc'
             'spirv-llvm-translator'
