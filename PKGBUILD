@@ -1,20 +1,23 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=citron
 pkgname=citron-git
-pkgver=v0.6.1.canary.refresh.r52.gba98d0f
+pkgver=0.6.1.r62.g046538b
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
 license=(GPL-2.0-or-later)
 provides=('citron')
-depends=('qt6-base' 'qt6-webengine' 'qt6-multimedia' 'qt6-wayland' 'qt6-tools' 'ffmpeg' 'sdl2-compat' 'gamemode' 'hicolor-icon-theme' 'brotli' 'libusb' 'enet' 'opus' 'boost')
-makedepends=('curl' 'git' 'cmake' 'clang' 'llvm' 'doxygen' 'python-pip' 'glslang' 'ninja' 'zip' 'unzip' 'libzip' 'fmt' 'nlohmann-json' 'zlib' 'zstd')
+depends=('qt6-base' 'qt6-webengine' 'ffmpeg' 'sdl2-compat' 'hicolor-icon-theme' 'brotli' 'libusb' 'enet' 'opus' 'fmt' 'zydis' 'glibc' 'boost-libs' 'gcc-libs' 'lz4' 'openssl' 'zstd' 'libva' 'zlib')
+makedepends=('git' 'cmake' 'glslang' 'ninja' 'doxygen' 'nlohmann-json' 'vulkan-headers' 'boost' 'qt6-tools' 'qt6-multimedia' 'rapidjson')
+optdepends=('gamemode: Gamemoded support')
 conflicts=('citron')
 options=(!debug)
 source=(citron::git+https://git.citron-emu.org/citron/emu.git
         cubeb::git+https://github.com/mozilla/cubeb.git
         dynarmic::git+https://github.com/yuzu-mirror/dynarmic.git
+        discord-rpc::git+https://github.com/yuzu-mirror/discord-rpc.git
         Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
         sirit::git+https://github.com/yuzu-mirror/sirit.git
         SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers
@@ -56,11 +59,12 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
+        'SKIP'
         'SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/canary.refresh.//g'
 }
 
 prepare() {
@@ -72,10 +76,9 @@ prepare() {
   git rm -f externals/opus
   git rm -f externals/vcpkg
   git rm -f externals/libusb/libusb
-  git rm -f externals/discord-rpc
   
   git submodule init
-  for _submodule in cubeb dynarmic Vulkan-Headers sirit mbedtls xbyak cpp-httplib cpp-jwt libadrenotools tzdb_to_nx VulkanMemoryAllocator breakpad simpleini oaknut Vulkan-Utility-Libraries;
+  for _submodule in cubeb dynarmic discord-rpc Vulkan-Headers sirit mbedtls xbyak cpp-httplib cpp-jwt libadrenotools tzdb_to_nx VulkanMemoryAllocator breakpad simpleini oaknut Vulkan-Utility-Libraries;
     do
       git config submodule.$_submodule.url "${srcdir}/$_submodule"
     done
@@ -115,9 +118,9 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir"
   
-  cmake -B build -GNinja \
+  cmake -B build -GNinja -S "$_pkgname" \
     -DCITRON_USE_BUNDLED_VCPKG=OFF \
     -DCITRON_USE_BUNDLED_QT=OFF \
     -DUSE_SYSTEM_QT=ON \
@@ -133,18 +136,24 @@ build() {
     -DENABLE_QT_TRANSLATION=ON \
     -DCITRON_USE_FASTER_LD=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_FLAGS="-march=native -mtune=native -Wno-error" \
-    -DCMAKE_C_FLAGS="-march=native -mtune=native" \
-    -DUSE_DISCORD_PRESENCE=OFF \
+    -DUSE_DISCORD_PRESENCE=ON \
+    -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
     -DBUNDLE_SPEEX=ON \
     -DCMAKE_SYSTEM_PROCESSOR=x86_64 \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     
-  ninja -C build
+  cmake --build build
 } 
 
 package() {
-  DESTDIR="$pkgdir/" ninja -C "$srcdir/$_pkgname"/build install
+  cd "$srcdir"
+  DESTDIR="$pkgdir/" cmake --install build
+  cd "$srcdir/$_pkgname/LICENSES"
+  for file in *.txt;
+  do
+    install -Dm644 $file "$pkgdir/usr/share/licenses/$pkgname/$file"
+  done
 
 }
