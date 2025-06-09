@@ -31,7 +31,7 @@ build() {
     cd 'build'
     if [ ! -s 'Makefile' ]; then
       CFLAGS=" ${CFLAGS} -Wno-error=stringop-overflow= -Wno-error=stringop-truncation -Wno-error=return-local-addr" \
-      cmake -DCMAKE_INSTALL_PREFIX='/usr' ..
+      cmake -DCMAKE_POLICY_VERSION_MINIMUM='3.5' -DCMAKE_INSTALL_PREFIX='/usr' ..
     fi
   fi
   make -s
