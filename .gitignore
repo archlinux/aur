@@ -1,0 +1,4 @@
+*.pkg.*
+pkg/*
+src/*
+laser_tool*.tar.bz2

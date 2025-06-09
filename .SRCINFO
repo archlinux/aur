@@ -1,0 +1,15 @@
+pkgbase = laser-magic
+	pkgdesc = A powerful, open-source tool designed for laser cutting and engraving, written in Rust
+	pkgver = 0.1.26
+	pkgrel = 1
+	url = https://gitlab.com/MadSquirrels/lasermagic/laser_tool
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = gtk3
+	depends = gcc-libs
+	depends = glibc
+	source = https://gitlab.com/MadSquirrels/lasermagic/laser_tool/-/archive/v0.1.26/laser_tool-v0.1.26.tar.bz2
+	sha256sums = 2d64fed406e8f58f9471b95318fd01894ee1c387d9d8687cfcab823e20dec47d
+
+pkgname = laser-magic
