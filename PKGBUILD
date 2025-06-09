@@ -2,7 +2,7 @@
 
 pkgname=lovely-injector
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A runtime lua injector for games built with LÖVE'
 url='https://github.com/ethangreen-dev/lovely-injector'
 license=('MIT')
@@ -20,6 +20,7 @@ sha256sums=('329d2f463360a939b9a8a05281541e81d816932c0cc837ccde6bedc4dbf55ca6'
             'ff3c03ed50d42f1b8b26517fb8d43c0b474bcfe89d56227bb6a48b5661e6e482')
 b2sums=('73df00e113d811e3e77be01f68ca91f9d07208662e9d7fdbf2ba67dc5167e393b8c1c116289af4c7b693ca710ded9f792a7a6a12a7375091711e58f85be5104b'
         '17430c58cd1efba07e93376e3e897160baec50ab874e83a27103d1a51e748aaa68e10c21344c676d50c4abd2566064aa0329228e289a2f5319b51723b3396766')
+options=(!lto)
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 

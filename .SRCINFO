@@ -1,7 +1,7 @@
 pkgbase = lovely-injector
 	pkgdesc = A runtime lua injector for games built with LÖVE
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ethangreen-dev/lovely-injector
 	arch = x86_64
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = lovely-injector
 	makedepends = git
 	makedepends = cargo
 	makedepends = cmake
+	options = !lto
 	source = lovely-injector-0.8.0.tar.gz::https://github.com/ethangreen-dev/lovely-injector/archive/refs/tags/v0.8.0.tar.gz
 	source = dobby::git+https://github.com/jmpews/Dobby.git#commit=0932d69c320e786672361ab53825ba8f4245e9d3
 	sha256sums = 329d2f463360a939b9a8a05281541e81d816932c0cc837ccde6bedc4dbf55ca6
