@@ -18,7 +18,7 @@ pkgbase = onekeepass-bin
 	depends = glibc
 	depends = hicolor-icon-theme
 	provides = OneKeePass
-	conflicts = OneKeePass
+	conflicts = onekeepass
 	source_x86_64 = https://github.com/OneKeePass/desktop/releases/download/v0.16.0/OneKeePass_0.16.0_linux_x86_64.deb
 	sha256sums_x86_64 = fe24616492305b2c5f7d86d3f7a64136ae8a03b30d9cf06a6260b7f6d038b2c1
 
