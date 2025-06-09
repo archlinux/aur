@@ -65,22 +65,22 @@ sha512sums=(SKIP
             SKIP)
 
 prepare() {
-  cd "$pkgname"
+  cd scroll
   # Patch meson.build to not use git version format (despite `git` presence in the build env)
   patch -Np1 -i "$srcdir/remove_git_version_format.patch"
 }
 
 build() {
   mkdir -p build
-  arch-meson build "$pkgname" -D sd-bus-provider=libsystemd -D werror=false -D b_ndebug=true
+  arch-meson build scroll -D sd-bus-provider=libsystemd -D werror=false -D b_ndebug=true
   ninja -C build
 }
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
-  install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/scroll/LICENSE"
+  install -Dm644 "scroll/LICENSE" "$pkgdir/usr/share/licenses/scroll/LICENSE"
   install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/scroll/config.d/"
-  install -Dm644 sway-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/scroll-portals.conf"
+  install -Dm644 scroll-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/scroll-portals.conf"
 }
 
 # vim: ts=2 sw=2 et
