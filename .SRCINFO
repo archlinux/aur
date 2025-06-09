@@ -1,6 +1,6 @@
 pkgbase = dbeaver-connection-search
 	pkgdesc = DBeaver connection decryption query script.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/witt-bit/dbeaver-connection-search
 	arch = any
@@ -18,9 +18,9 @@ pkgbase = dbeaver-connection-search
 	provides = dbeaver-connection-query
 	options = !strip
 	options = !debug
-	source = dbeaver-connection-search-1.0.1.sh::https://github.com/witt-bit/dbeaver-connection-search/releases/download/1.0.1/dbeaver-connection-search.sh
+	source = dbeaver-connection-search-1.0.2.sh::https://github.com/witt-bit/dbeaver-connection-search/releases/download/1.0.2/dbeaver-connection-search.sh
 	source = license::https://raw.githubusercontent.com/witt-bit/dbeaver-connection-search/refs/heads/main/LICENSE
-	sha256sums = cc6de4d81c05a9e00ebc1d82f3a4d68bd48d6c86f705ef9631a32b59c06400f5
+	sha256sums = 2adb857c21ddd91c78c76dc8df3375a65412215082b35d79dd37bf6f989a4b6b
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 
 pkgname = dbeaver-connection-search
