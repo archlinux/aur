@@ -1,0 +1,16 @@
+pkgbase = python-jinja2_getenv_extension
+	pkgdesc = A jinja2 extension to access to system environment variables
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/metwork-framework/jinja2_getenv_extension
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	source = python-jinja2_getenv_extension-1.0.3.tar.gz::https://github.com/metwork-framework/jinja2_getenv_extension/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 6c4f41c67df840e128f02a9266c5e6b515429ea685d94e844d99d84d8702b5d0
+
+pkgname = python-jinja2_getenv_extension
