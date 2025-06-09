@@ -1,6 +1,6 @@
 pkgbase = catbox
 	pkgdesc = Rust wrapper for the Catbox.moe API
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/APT37/catbox
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = catbox
 	conflicts = catbox-git
 	conflicts = catbox-bash
 	options = !lto
-	source = catbox-0.9.1.tar.gz::https://github.com/APT37/catbox/archive/refs/tags/0.9.1.tar.gz
-	sha256sums = 139672256ad1bab30d9ccd5654c124a1a1f90991a6b3ebbf4a00e9191379f044
+	source = catbox-0.9.2.tar.gz::https://github.com/APT37/catbox/archive/refs/tags/0.9.2.tar.gz
+	sha256sums = SKIP
 
 pkgname = catbox

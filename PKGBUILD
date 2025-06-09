@@ -1,5 +1,5 @@
 pkgname=catbox
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='Rust wrapper for the Catbox.moe API'
 url='https://github.com/APT37/catbox'
@@ -7,7 +7,7 @@ arch=('x86_64')
 makedepends=('git' 'cargo' 'clang' 'mold')
 license=('MIT-0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('139672256ad1bab30d9ccd5654c124a1a1f90991a6b3ebbf4a00e9191379f044')
+sha256sums=('SKIP')
 options=('!lto')
 provides=('catbox')
 conflicts=('catbox-bin' 'catbox-git' 'catbox-bash')
