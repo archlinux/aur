@@ -1,6 +1,6 @@
 # Maintainer: Allen Choong <allen.choong at gmail dot com>
 pkgname=prayer-clock
-pkgver=5.0.0.4.g97468ed
+pkgver=5.0.0.5.gcf185ce
 pkgrel=1
 pkgdesc="Catholic prayers reminder, contains Angelus and 3 O'clock Prayer"
 url='https://github.com/allencch/prayer-clock'
