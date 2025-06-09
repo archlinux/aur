@@ -3,7 +3,7 @@
 
 _pkgname="novelwriter"
 pkgname="$_pkgname-git"
-pkgver=2.5.r4.gb7da56a
+pkgver=2.7.r44.ge816cbc
 pkgrel=1
 pkgdesc="A markdown-like document editor for writing novels"
 url="https://github.com/vkbo/novelWriter"
@@ -42,11 +42,11 @@ build() {
 package() {
   depends+=(
     'python-pyenchant'
-    'python-pyqt5'
+    'python-pyqt6'
   )
 
   cd "$_pkgsrc"
-  python -m installer --destdir="$pkgdir" "$(ls -1 dist/*.whl | sort -rV | head -1)"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 setup/data/x-novelwriter-project.xml -t "$pkgdir/usr/share/mime/packages"
   install -Dm644 setup/data/novelwriter.desktop -t "$pkgdir/usr/share/applications/"
