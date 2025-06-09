@@ -1,7 +1,7 @@
 pkgbase = python-habanero
 	pkgdesc = A low level client for Crossref's Search API
-	pkgver = 2.2.0
-	pkgrel = 4
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://github.com/sckott/habanero
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = python-habanero
 	depends = python-tqdm
 	depends = python-urllib3
 	optdepends = python-bibtexparser: attempt to fix misformatted bibtex
-	source = https://files.pythonhosted.org/packages/source/h/habanero/habanero-2.2.0.tar.gz
-	sha256sums = 18c5c3b59b8db1887811da6de8bd976ac4077d61a25a058f3a67044e8bcab8eb
+	source = https://files.pythonhosted.org/packages/source/h/habanero/habanero-2.3.0.tar.gz
+	sha256sums = 871e5d088ef641b05514d44b004af512852b309bcd0d81f10545e58d54a654ab
 
 pkgname = python-habanero
