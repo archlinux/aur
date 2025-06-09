@@ -1,6 +1,6 @@
 # Maintainer: Vianney le Clément <vleclement AT gmail·com>
 pkgname=imx-usb-loader-git
-pkgver=r242.2913fd0
+pkgver=r269.30b43d6
 pkgrel=1
 pkgdesc="USB loader for Freescale i.MX 51/53/6x"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/boundarydevices/imx_usb_loader"
 license=('LGPL2.1')
 depends=('libusb')
 makedepends=('git')
-source=("git://github.com/boundarydevices/imx_usb_loader.git")
+source=("git+https://github.com/boundarydevices/imx_usb_loader.git")
 md5sums=('SKIP')
 
 pkgver() {
