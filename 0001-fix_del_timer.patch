@@ -1,0 +1,28 @@
+From 45b3a913c3561187582ce3d3f1c90669d385ba5b Mon Sep 17 00:00:00 2001
+From: wangyifan <wangyifan@acoinfo.com>
+Date: Mon, 9 Jun 2025 20:51:03 +0800
+Subject: [PATCH] fix del timer
+
+---
+ driver/ch9344.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/driver/ch9344.c b/driver/ch9344.c
+index 36402c0..0e81fc6 100644
+--- a/driver/ch9344.c
++++ b/driver/ch9344.c
+@@ -1251,7 +1251,11 @@ static void ch9344_port_shutdown(struct tty_port *port)
+ 	struct ch9344 *ch9344 = tty_get_portdata(ttyport);
+ 	int portnum = ttyport->portnum;
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,15,0)
++	try_to_del_timer_sync(&ttyport->timer);
++#else
+ 	del_timer(&ttyport->timer);
++#endif
+ 	ch9344_set_control(ch9344, portnum, 0x00);
+ 	ch9344_set_control(ch9344, portnum, 0x10);
+ 	ttyport->isopen = false;
+-- 
+2.49.0
+

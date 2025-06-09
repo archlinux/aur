@@ -1,0 +1,26 @@
+pkgbase = ch9344ser_linux-dkms
+	pkgdesc = linux serial driver of kernel module for CH9344/CH348 USB UART controller
+	pkgver = r55.e0a38c4
+	pkgrel = 1
+	url = https://github.com/WCHSoftGroup/ch9344ser_linux
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = patch
+	depends = dkms
+	optdepends = linux-headers: Build the module for Arch kernel
+	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
+	conflicts = ch9344-dkms-git
+	conflicts = ch9344ser-dkms-git
+	source = ch9344::git+https://github.com/WCHSoftGroup/ch9344ser_linux.git
+	source = dkms.conf
+	source = fix_unaligned_header.patch::https://github.com/WCHSoftGroup/${_reponame}/pull/34/commits/74db2b926948364d09f52b91fb69c09721ebcc77.patch
+	source = 0001-fix_del_timer.patch
+	source = 0002-fix-uninitialized-condition.patch
+	sha1sums = SKIP
+	sha1sums = eb54d5f0ba8a99dd31f3be168b5ff5ee27ae2d32
+	sha1sums = 91b7bd64597cb9d62a4d898f0243fc6da9d09786
+	sha1sums = acde099d92d2f2945957a32a925f229dbe5610b3
+	sha1sums = dec97fad5e49155ece2cfc7af25987268100a279
+
+pkgname = ch9344ser_linux-dkms-git
