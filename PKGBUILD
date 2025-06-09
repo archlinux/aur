@@ -17,7 +17,7 @@ optdepends=('linux-headers: Build the module for Arch kernel'
             'linux-lts-headers: Build the module for LTS Arch kernel')
 source=("${_pkgname}::git+${url}.git"
         'dkms.conf'
-        'fix_unaligned_header.patch::https://github.com/WCHSoftGroup/${_reponame}/pull/34/commits/74db2b926948364d09f52b91fb69c09721ebcc77.patch'
+        "fix_unaligned_header.patch::https://github.com/WCHSoftGroup/${_reponame}/pull/34/commits/74db2b926948364d09f52b91fb69c09721ebcc77.patch"
         '0001-fix_del_timer.patch'
         '0002-fix-uninitialized-condition.patch')
 sha1sums=('SKIP'
