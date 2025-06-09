@@ -1,7 +1,7 @@
 pkgbase = sway-scroll-stable
 	pkgdesc = Fork of the sway Wayland compositor with a scrolling layout like PaperWM or niri (stable version)
 	pkgver = 1.11
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/dawsers/scroll
 	install = sway-scroll-stable.install
