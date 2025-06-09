@@ -11,7 +11,7 @@
 set -u
 _pkgname='pom-ng'
 pkgname="${_pkgname}-git"
-pkgver=0.0.19.r2.gcb92fb7
+pkgver=0.0.19.r3.gd5d1eef
 pkgrel=1
 pkgdesc='Packet-o-Matic real time network packet capture forensic tool'
 arch=('i686' 'x86_64')
@@ -51,6 +51,7 @@ build() {
     autoreconf -f -i
   fi
   if [ ! -s 'Makefile' ]; then
+    export CFLAGS="${CFLAGS} -Wno-incompatible-pointer-types -std=gnu17"
     lua_CFLAGS="$(pkg-config --cflags lua51)" \
     lua_LIBS="$(pkg-config --libs lua51)" \
     ./configure --prefix='/usr'

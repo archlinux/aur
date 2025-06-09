@@ -1,6 +1,6 @@
 pkgbase = pom-ng-git
 	pkgdesc = Packet-o-Matic real time network packet capture forensic tool
-	pkgver = 0.0.19.r2.gcb92fb7
+	pkgver = 0.0.19.r3.gd5d1eef
 	pkgrel = 1
 	url = http://www.packet-o-matic.org/
 	arch = i686
