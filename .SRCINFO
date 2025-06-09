@@ -1,10 +1,10 @@
 pkgbase = ttf-sil-padauk
 	pkgdesc = Unicode font that supports the many diverse languages that use the Myanmar script
 	pkgver = 5.100
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.sil.org/padauk
 	arch = any
-	license = OFL
+	license = OFL-1.1-RFN
 	conflicts = ttf-sil-fonts<=6
 	source = http://software.sil.org/downloads/r/padauk/Padauk-5.100.zip
 	sha256sums = e3f9484ad6d240c5b622a1253cadc0392afdeaf9bb8b0ec8af6aeed9543b26ef
