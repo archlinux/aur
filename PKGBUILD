@@ -44,7 +44,7 @@ source=(
     "cloudtolocalllm-${pkgver}-x86_64.tar.gz::https://cloudtolocalllm.online/cloudtolocalllm-${pkgver}-x86_64.tar.gz"
 )
 sha256sums=(
-    'dba073580aab091a6268452350086f1f9be2d4475ebc4ff7155a4ab9b95c2b7e'  # cloudtolocalllm-3.5.2-x86_64.tar.gz
+    'f09bace9aed3340a30dcea31b8c80a17d4b941b7b7c08e64310285f583705c76'  # cloudtolocalllm-3.5.3-x86_64.tar.gz
 )
 
 prepare() {
