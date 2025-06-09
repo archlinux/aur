@@ -1,7 +1,7 @@
 pkgbase = coredns
 	pkgdesc = A DNS server that chains plugins
 	pkgver = 1.12.2
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/coredns/coredns
 	arch = i686
 	arch = pentium4

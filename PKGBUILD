@@ -2,7 +2,7 @@
 # Maintainer: Shengyu Zhang <la@archlinuxcn.org>
 pkgname=coredns
 pkgver=1.12.2
-pkgrel=3
+pkgrel=1
 pkgdesc="A DNS server that chains plugins"
 makedepends=('go' 'make')
 conflicts=('coredns-bin')
