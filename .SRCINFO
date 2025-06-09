@@ -1,0 +1,14 @@
+pkgbase = demonos-backgrounds
+	pkgdesc = The wallpapers from demonos.
+	pkgver = 1.r.
+	pkgrel = 1
+	url = https://github.com/demonkingswarn/wallpapers.git
+	install = demonos-backgrounds.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = demonos-backgrounds
+	source = git+https://github.com/demonkingswarn/wallpapers.git
+	md5sums = SKIP
+
+pkgname = demonos-backgrounds
