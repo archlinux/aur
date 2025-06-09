@@ -1,14 +1,19 @@
 pkgbase = waydroid-biglinux
 	pkgdesc = Simplify waydroid usage
-	pkgver = 22.10.08
-	pkgrel = 0007
+	pkgver = r25.f84180a
+	pkgrel = 1
 	url = https://github.com/biglinux/waydroid-biglinux
 	arch = any
 	license = GPL
+	makedepends = git
+	source = git+https://github.com/biglinux/waydroid-biglinux.git
+	sha512sums = SKIP
+
+pkgname = waydroid-biglinux-git
 	depends = waydroid
 	depends = python-pyclip
 	depends = bigbashview
-	source = git+https://github.com/biglinux/waydroid-biglinux.git
-	md5sums = SKIP
-
-pkgname = waydroid-biglinux
+	depends = yad
+	depends = weston
+	provides = waydroid-biglinux
+	conflicts = waydroid-biglinux
