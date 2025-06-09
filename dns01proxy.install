@@ -1,0 +1,10 @@
+post_install() {
+  # dns01proxy.toml is not world-readable because it contains hashed passwords.
+  # Change its group ownership so that dns01proxy can read it.
+  systemd-sysusers usr/lib/sysusers.d/dns01proxy.conf
+  chgrp dns01proxy etc/dns01proxy/dns01proxy.toml
+}
+
+post_upgrade() {
+  post_install "$1"
+}

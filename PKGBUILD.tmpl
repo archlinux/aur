@@ -1,0 +1,74 @@
+# Maintainer: Jed Liu <liujed@users.noreply.github.com>
+pkgname=(
+{{- range $build := .Builds }}
+  'dns01proxy-{{$build}}'
+{{- end}}
+)
+pkgbase='dns01proxy'
+pkgver='{{.Version}}'
+pkgrel=1
+pkgdesc='ACME DNS-01 proxy server'
+arch=('x86_64' 'aarch64')
+url='https://github.com/liujed/dns01proxy'
+license=('Apache-2.0')
+makedepends=('go')
+backup=(
+  'etc/dns01proxy/dns01proxy.toml'
+  'etc/dns01proxy/env.conf'
+)
+install='dns01proxy.install'
+source=(
+  "git+https://github.com/liujed/dns01proxy#tag=v${pkgver}?signed"
+  'dns01proxy.service'
+  'dns01proxy.sysusers'
+  'dns01proxy.tmpfiles'
+  'dns01proxy.toml'
+  'env.conf'
+)
+validpgpkeys=(
+  # Jed Liu <liujed@users.noreply.github.com>
+  B7505955F1CF93F83656A95D9A00B50131DEAC06
+)
+
+build() {
+  cd "$pkgbase"
+  case "${CARCH}" in
+    x86_64)  export GOARCH=amd64 ;;
+    aarch64) export GOARCH=arm64 ;;
+    *)
+      echo >&2 "Unsupported architecture: ${CARCH}"
+      exit 1
+      ;;
+  esac
+  make
+}
+{{range $build := .Builds}}
+package_dns01proxy-{{$build}}() {
+  conflicts=(
+{{- range $pkg := $.AllPackages}}
+  {{- if ne $pkg (print "dns01proxy-" $build) }}
+    '{{$pkg}}'
+  {{- end}}
+{{- end}}
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-{{$build}} "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/{{$build}}/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+{{end}}

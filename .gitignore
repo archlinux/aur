@@ -1,0 +1,4 @@
+/dns01proxy/
+/dns01proxy-*.pkg.tar.zst
+/pkg/
+/src/

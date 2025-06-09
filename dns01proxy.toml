@@ -1,0 +1,68 @@
+# The server's hostnames. Used for obtaining TLS/SSL certificates.
+hostnames = ["dns01proxy.example.com"]
+
+# The sockets on which to listen.
+listen = [":443"]
+
+# Configures the set of trusted proxies, for accurate logging of client IP
+# addresses. Optional.
+#
+# This must be an `http.ip_sources` Caddy module. See Caddy's module
+# documentation at https://caddyserver.com/docs/modules/
+#
+# Note that Caddy documents its modules' options in JSON. You'll need to
+# configure the module in TOML. For example, to configure
+# `http.ip_sources.static`:
+#
+#     [trusted_proxies]
+#     source = "static"
+#     ranges = ["10.0.0.1", "192.168.0.1"]
+#
+#[trusted_proxies]
+#source = "<module_name>"
+#•••  # Module-specific configuration goes here.
+
+[dns]
+
+# The TTL to use in DNS TXT records. Optional. Not usually needed.
+#ttl = "2m"
+
+# Custom DNS resolvers to prefer over system or built-in defaults. Optional.
+# Set this to a public resolver if you are using split-horizon DNS.
+#resolvers = ["1.1.1.1", "8.8.8.8"]
+
+# The DNS provider for publishing DNS-01 responses. See the Caddy documentation
+# for your provider:
+#
+#   https://caddyserver.com/docs/modules/dns.providers.@BUILD@
+#
+# Note that Caddy documents its modules' options in JSON. You'll need to
+# configure the module in TOML. For example, to configure
+# `dns.providers.cloudflare`:
+#
+#     [dns.provider]
+#     name = "cloudflare"
+#     api_token = "{env.CF_API_TOKEN}"  # Reads from an environment variable.
+[dns.provider]
+name = "@BUILD@"
+# •••  # Module-specific configuration goes here.
+
+
+# Configures HTTP basic authentication and the domains for which each user can
+# get TLS/SSL certificates. One required for each user.
+#
+# To hash passwords, use `dns01proxy hash-password`.
+#
+# The `allow_domains` and `deny_domains` rules are optional. They largely
+# follow Smallstep's domain name rules:
+#
+#   https://smallstep.com/docs/step-ca/policies/#domain-names
+#
+# Due to a limitation in ACME and DNS-01, allowing a domain also allows
+# wildcard certificates for that domain.
+
+#[[accounts]]
+#user_id = "<userID>"
+#password = "<hashed_password>"
+#allow_domains = ["<domain>"]
+#deny_domains = ["<domain>"]
