@@ -7,6 +7,7 @@ pkgbase = vectorchord-bin
 	license = AGPLv3
 	depends = postgresql
 	depends = pgvector
+	provides = vectorchord
 	source = https://github.com/tensorchord/VectorChord/releases/download/0.4.2/postgresql-17-vchord_0.4.2_x86_64-linux-gnu.zip
 	sha256sums = d5b4001ed4db29e4ee68473b59677d30a09078608625c91aad03dd190ed53b43
 

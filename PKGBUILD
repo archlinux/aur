@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/tensorchord/VectorChord"
 license=('AGPLv3')
 depends=('postgresql' 'pgvector')
-provide="vectorchord"
+provides=("vectorchord")
 source=("${url}/releases/download/${pkgver}/postgresql-17-vchord_${pkgver}_${arch}-linux-gnu.zip")
 sha256sums=('d5b4001ed4db29e4ee68473b59677d30a09078608625c91aad03dd190ed53b43')
 
