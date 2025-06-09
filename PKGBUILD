@@ -1,6 +1,6 @@
 pkgname=python-templated-dictionary
 _name=${pkgname#python-}
-pkgver=1.5
+pkgver=1.6
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later')
 depends=('python' 'python-jinja')
 makedepends=('python-setuptools')
 source=("$url/archive/$_pkgtag.tar.gz")
-sha256sums=('52da6aa0dccbfb6bbce767f495dfd8ac5f0ecaa09f4b593820e88976567e7d7c')
+sha256sums=('814b158bb8a45b1e111a9a19085ed5bb7ea7b63c9b42239e8a8b5fb440ca1885')
 
 prepare() {
 	mv "$_name-$_pkgtag" "$_name-$pkgver"
