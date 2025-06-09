@@ -10,7 +10,7 @@ pkgname=(
 )
 epoch=0
 pkgver=20250609.01
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Metapackage which symlinks 'openttd-opengfx/opensfx/openmsx' such that 'openttd-jgrpp' can find them."
 url="http://aur.archlinux.org/packages/openttd-jgrpp/"
@@ -26,6 +26,9 @@ makedepends=(
   'openttd-opensfx'
   'openttd-openmsx'
   'pacman'
+)
+optdepends=(
+  'openttd-jgrpp: To make use of the symlinked data files by the actual game.'
 )
 
 options=('emptydirs')

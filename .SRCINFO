@@ -1,7 +1,7 @@
 pkgbase = openttd-jgrpp-opendata
 	pkgdesc = Metapackage which symlinks 'openttd-opengfx/opensfx/openmsx' such that 'openttd-jgrpp' can find them.
 	pkgver = 20250609.01
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://aur.archlinux.org/packages/openttd-jgrpp/
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = openttd-jgrpp-opendata
 	makedepends = openttd-opensfx
 	makedepends = openttd-openmsx
 	makedepends = pacman
+	optdepends = openttd-jgrpp: To make use of the symlinked data files by the actual game.
 	options = emptydirs
 	source = COPYING
 	sha256sums = 90d77bbbe6aa2cfdaf6eaa3580fd1a981e0d0428ae586ac37b47aee5e67fcf12
