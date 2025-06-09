@@ -10,7 +10,7 @@ source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 options=('!lto')
 provides=('catbox')
-conflicts=('catbox' 'catbox-bin')
+conflicts=('catbox' 'catbox-bin' 'catbox-bash')
 
 build() {
 	cd $pkgname

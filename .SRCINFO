@@ -12,6 +12,7 @@ pkgbase = catbox-git
 	provides = catbox
 	conflicts = catbox
 	conflicts = catbox-bin
+	conflicts = catbox-bash
 	options = !lto
 	source = catbox-git::git+https://github.com/APT37/catbox
 	sha256sums = SKIP
