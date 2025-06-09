@@ -1,12 +1,12 @@
 pkgname=zugferd-manager
 pkgver="1.1.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Desktop-Anwendung zur Erstellung und Überprüfung von E-Rechnungen im ZUGFeRD-Format."
 arch=("x86_64")
 url="https://github.com/OpenIndex/ZUGFeRD-Manager/"
 license=('Apache-2.0')
 groups=()
-depends=()
+depends=(jdk-openjdk)
 makedepends=()
 checkdepends=()
 optdepends=()
