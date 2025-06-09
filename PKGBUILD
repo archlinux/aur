@@ -3,7 +3,7 @@
 
 pkgname=dosbox-staging-git
 _pkgname=dosbox-staging
-pkgver=0.82.0.alpha
+pkgver=0.82.0.alpha.1847.gfb0804c9f
 pkgrel=1
 pkgdesc="A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems"
 arch=('any')
@@ -11,8 +11,8 @@ url="https://github.com/dosbox-staging/dosbox-staging"
 license=('GPL2')
 depends=('sdl2' 'sdl2_net' 'opusfile' 'libslirp' 'alsa-lib' 'iir1' 'fluidsynth' 'munt' 'libpng' 'zlib-ng')
 makedepends=('meson' 'gcc' 'gzip')
-provides=("dosbox")
-conflicts=("dosbox")
+provides=("dosbox" "dosbox-staging")
+conflicts=("${provides[@]}")
 source=(
   "git+https://github.com/dosbox-staging/${_pkgname}.git"
 )
@@ -37,7 +37,7 @@ build() {
   # Add current commit info to the README
   sed -i "s|%GIT_COMMIT%|$(git rev-parse main)|" docs/README.template
   sed -i "s|%GIT_BRANCH%|main|" docs/README.template
-  sed -i "s|%GITHUB_REPO%|dreamer/dosbox-staging|" docs/README.template
+  sed -i "s|%GITHUB_REPO%|${_pkgname}/${_pkgname}|" docs/README.template
 }
 
 package() {
@@ -48,5 +48,5 @@ package() {
   # dosbox-staging documents
   install -Dm 644 "${srcdir}/${_pkgname}/docs/README.template" "${pkgdir}/usr/share/doc/${_pkgname}/README"
   install -Dm 644 "${srcdir}/${_pkgname}/docs/README.video" "${pkgdir}/usr/share/doc/${_pkgname}/video.txt"
-  install -Dm 644 "${srcdir}/${_pkgname}/README" "${pkgdir}/usr/share/doc/${_pkgname}/manual.txt"
+  install -Dm 644 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/manual.txt"
   }
