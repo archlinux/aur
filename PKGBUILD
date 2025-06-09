@@ -23,20 +23,20 @@ pkgver() {
 
 package_catppuccin-konsole-colorscheme-latte-git() {
 	install -Dm644 "${pkgbase}/themes/catppuccin-latte.colorscheme" "${pkgdir}/usr/share/konsole/catppuccin-latte.colorscheme"
-	install -Dm644 "${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+	install -Dm644 "${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_catppuccin-konsole-colorscheme-frappe-git() {
 	install -Dm644 "${pkgbase}/themes/catppuccin-frappe.colorscheme" "${pkgdir}/usr/share/konsole/catppuccin-frappe.colorscheme"
-	install -Dm644 "${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+	install -Dm644 "${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_catppuccin-konsole-colorscheme-macchiato-git() {
 	install -Dm644 "${pkgbase}/themes/catppuccin-macchiato.colorscheme" "${pkgdir}/usr/share/konsole/catppuccin-macchiato.colorscheme"
-	install -Dm644 "${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+	install -Dm644 "${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_catppuccin-konsole-colorscheme-mocha-git() {
 	install -Dm644 "${pkgbase}/themes/catppuccin-mocha.colorscheme" "${pkgdir}/usr/share/konsole/catppuccin-mocha.colorscheme"
-	install -Dm644 "${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+	install -Dm644 "${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
