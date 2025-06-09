@@ -1,7 +1,7 @@
 pkgbase = vpinball
-	pkgdesc = An open source pinball table editor and simulator - BGFX standalone version built with dependencies as defined by the developers
-	pkgver = r8030.2652993
-	pkgrel = 3
+	pkgdesc = An open source pinball table editor and simulator - BGFX standalone (binary) version
+	pkgver = 10.8.1_3155_8054cc2
+	pkgrel = 1
 	url = https://github.com/vpinball/vpinball
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -26,11 +26,13 @@ pkgbase = vpinball
 	provides = vpinball
 	conflicts = vpinball-git
 	options = !lto
-	source = vpinball::git+https://github.com/vpinball/vpinball.git
+	source = https://github.com/vpinball/vpinball/releases/download/v10.8.1-3155-8054cc2/VPinballX_BGFX-10.8.1-3155-8054cc2-linux-x64-Release.zip
 	source = vpinball.desktop
 	source = visualpinball_screen1.jpg
-	sha256sums = SKIP
-	sha256sums = 4f094e7177ecde9afdafa29805635084aae5967560d33b46c8f95ef732898b93
+	source = vpinball-launcher.sh
+	sha256sums = fae99ec876bd1bccb67e98e8a4cc1719948a11e95166e1ec97b9c9a43b58460c
+	sha256sums = 1fd5a1252bf2932416ec4d2b68f6a4060c87e996a3dfccaacf59b1b3326b5590
 	sha256sums = ca5d4a89d1a137eba199ebd91463d3df7fe90fd47ff41c73d6f456d879ab5011
+	sha256sums = 3741acd5c8b82673fd287bb8a14ad4784a7312bcbc6351c7fbb737d0500ec299
 
 pkgname = vpinball
