@@ -2,8 +2,8 @@
 
 pkgbase=gcopy
 pkgname=("${pkgbase}" "${pkgbase}-web")
-pkgver=1.4.8
-pkgrel=2
+pkgver=1.4.9
+pkgrel=1
 pkgdesc="A clipboard synchronization service for different devices that can synchronize text, screenshots, and files"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/llaoj/${pkgbase}"
@@ -15,7 +15,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgbase}.env"
         "${pkgbase}.service"
         "${pkgbase}.sysusers")
-sha256sums=('8f370c28c4170d6d2cac1675643ce80db4cafb06f34caa571f768caaa993771c'
+sha256sums=('8fe7e69a892a73f9aa10496d4055ca8417cc65368469f286043a21b94553ccf4'
             '1b47cd9ba854ec53df8de892c906cf74a687f237ca141b200aada620316200ee'
             '1ffd97492315c562f075b14cf1d5a6cbda1806f635ef57868ef10fa39fec3cbb'
             '1fbb6961942c7c1f9e8876613d10356608e84e00914ac9acf7b134a4366b350b'
