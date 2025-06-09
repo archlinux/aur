@@ -10,7 +10,7 @@
 # Caleb Maclennan <caleb@alerque.com>
 _pkgname=electron38
 pkgname=electron-nightly-bin
-_pkgver=38.0.0-nightly.20250602
+_pkgver=38.0.0-nightly.20250609
 pkgver="${_pkgver/-}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt nightly binary"
@@ -48,9 +48,9 @@ source_aarch64=("electron-${_pkgver}-aarch64.zip::${_ghurl}/releases/download/v$
 source_armv7h=("electron-${_pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-armv7l.zip")
 source_x86_64=("electron-${_pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-x64.zip"
 'electron')
-sha256sums_aarch64=('baba98e35756dd6df969635e23c5ac6edee90d460aaef9bad1b4b1faf2f7c633')
-sha256sums_armv7h=('3060eb8b02d70d3ebd628583d31ce6133c10370da67aeab4c2215a249b09705c')
-sha256sums_x86_64=('8b4aa5a701a02124868ff41a872065e721968564ac8c83ec7d41269e9f93f994'
+sha256sums_aarch64=('dceca8664134edef5971294029f5f6c5de6e459709d1f2fc4c1147f4c93dc463')
+sha256sums_armv7h=('d75e21f0a498aebc5e6f1434b60665cf368a3e853c8500a8c802c686e0731ba1')
+sha256sums_x86_64=('7a0daf85a5f1962db5e7810bfab5fbafbf129f1bf040794d8c731f0110b6403f'
                    'f074713d0322b652b78ed2491dce2676d05d10a284187c5deba4a047b8283e4c')
 prepare() {
     install -Dm755 -d "${srcdir}/${_pkgname}"
