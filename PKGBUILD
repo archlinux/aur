@@ -3,13 +3,13 @@
 
 pkgname='bzr-player'
 pkgver='2.0.79'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('x86_64')
 url="https://bzrplayer.blazer.nu"
 license=('GPL-3.0-only')
-depends=('hicolor-icon-theme' 'qt6-base' 'qt-advanced-docking-system')
-makedepends=('cmake' 'dos2unix' 'gendesk' 'libglvnd' 'ninja' 'patchutils' 'qt6-declarative' 'qt6-svg' 'sdl2-compat'
+depends=('hicolor-icon-theme' 'qt6-base' 'qt6-svg' 'qt-advanced-docking-system')
+makedepends=('cmake' 'dos2unix' 'gendesk' 'libglvnd' 'ninja' 'patchutils' 'qt6-declarative' 'sdl2-compat'
   'vulkan-headers')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aargirakis/BZRPlayer/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('33d96587a373f42a1232d21fc74089993b632184d8e0519ee4a0202986cbf0e5')
