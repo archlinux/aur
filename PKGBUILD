@@ -10,11 +10,11 @@ depends=('qt6-base' 'qt6-tools' 'qt6-declarative' 'distrobox')
 makedepends=('cmake' 'git' 'extra-cmake-modules')
 provides=('kontainer')
 conflicts=('kontainer')
-source=("https://invent.kde.org/silverhadch/k-box.git")
+source=("git+https://invent.kde.org/silverhadch/k-box.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/k-box"
+  cd "$srcdir/k-box" || return 1
   git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/./g' || \
     echo "1.0.r0.g$(git rev-parse --short HEAD)"
 }
@@ -29,4 +29,3 @@ package() {
   install -Dm644 "$srcdir/k-box/kontainer.desktop" \
     "$pkgdir/usr/share/applications/kontainer.desktop"
 }
-
