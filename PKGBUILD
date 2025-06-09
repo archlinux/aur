@@ -3,7 +3,7 @@
 
 pkgname='kikoplay'
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="linux danmaku player"
 arch=('x86_64')
 license=('GPL3' 'MIT')
@@ -44,6 +44,9 @@ prepare() {
     # Use ld.bfd instead.
     # https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/21
     sed -i 's|-fuse-ld=gold|-fuse-ld=bfd|' "${srcdir}/KikoPlay/KikoPlay.pro"
+
+    # fix - "No cmake_minimum_required command is present" in KikoPlay/Extension/Lua/CMakeLists.
+    sed -i '1 i\cmake_minimum_required(VERSION 3.21)' "${srcdir}/KikoPlay/Extension/Lua/CMakeLists.txt"
 }
 
 build() {
