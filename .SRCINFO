@@ -1,6 +1,6 @@
 pkgbase = go-zero
 	pkgdesc = A cloud-native Go microservices framework with cli tool for productivity.
-	pkgver = 1.8.3
+	pkgver = 1.8.4
 	pkgrel = 1
 	url = https://github.com/zeromicro/go-zero
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = go-zero
 	depends = protoc-gen-go-grpc
 	provides = go-zero
 	provides = goctl
-	source = go-zero-1.8.3.tar.gz::https://github.com/zeromicro/go-zero/archive/refs/tags/v1.8.3.tar.gz
-	sha1sums = b9e354ecfdf87e71f65b047076d22209b3a13fb3
+	source = go-zero-1.8.4.tar.gz::https://github.com/zeromicro/go-zero/archive/refs/tags/v1.8.4.tar.gz
+	sha1sums = eb58e49799f3dbaf3eaa439146f4d7d2d1898ddb
 
 pkgname = go-zero

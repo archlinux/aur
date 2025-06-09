@@ -2,7 +2,7 @@
 # Contributor: go-zero team <@kevwanzero>
 
 pkgname=go-zero
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="A cloud-native Go microservices framework with cli tool for productivity."
 arch=(any)
@@ -12,7 +12,7 @@ depends=('glibc' 'go' 'protobuf' 'protoc-gen-go' 'protoc-gen-go-grpc')
 makedepends=('upx')
 makeoptions=('!strip')
 source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha1sums=('b9e354ecfdf87e71f65b047076d22209b3a13fb3')
+sha1sums=('eb58e49799f3dbaf3eaa439146f4d7d2d1898ddb')
 provides=('go-zero' 'goctl')
 
 build() {
