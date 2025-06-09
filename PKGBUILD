@@ -1,6 +1,6 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=codename-goose
-pkgver=1.0.24
+pkgver=1.0.26
 pkgrel=1
 pkgdesc="An open-source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ depends=()
 makedepends=(
 	'cargo'
 	'libxcb'
+	'protobuf'
 )
 optdepends=(
 	'bash: developer and computer controller extensions'
@@ -29,15 +30,12 @@ optdepends=(
 # LTO is broken for dependency ring https://github.com/briansmith/ring/issues/1444
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/block/goose/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('fbdb973ad14d9923fc5ea390e94de54e8e06bcedfdc6d115d08229664e10c365126988f7087de6407ca114b994d40a3f16ce250f958f84d6e2fc7dc726a454e9')
+b2sums=('7290c929714feaba18d45f762ea705ebb65536ce7c7072f7e3855b545e19e4af78b24e1775fa54c1db84bae01cc070d1107471232d3e164477ca4cca3169b1cc')
 
 prepare() {
 	cd "goose-$pkgver"
 
 	export RUSTUP_TOOLCHAIN=stable
-
-	# can be removed if upstream checks in Cargo.lock
-	cargo update
 
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -46,8 +44,6 @@ build() {
 	cd "goose-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	# https://github.com/rust-onig/rust-onig/issues/196
-	export CFLAGS+=" -std=gnu17"
 	cargo build --frozen --release --all-features
 }
 
