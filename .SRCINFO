@@ -1,7 +1,7 @@
 pkgbase = catppuccin-plasma-colorscheme
 	pkgdesc = Soothing pastel theme for KDE Plasma
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/catppuccin/kde
 	arch = any
 	license = MIT

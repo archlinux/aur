@@ -3,7 +3,7 @@
 pkgbase=catppuccin-plasma-colorscheme
 pkgname=(${pkgbase}-{latte,frappe,macchiato,mocha})
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Soothing pastel theme for KDE Plasma"
 arch=('any')
 url="https://github.com/catppuccin/kde"
@@ -25,23 +25,23 @@ sha256sums=('efcdaf787e0bc956a6f88d61d09d319257ab4e063ee33341d2651ac5d2f83062'
 package_catppuccin-plasma-colorscheme-latte() {
 	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	mkdir -p "${pkgdir}/usr/share/color-schemes/"
-	cp -rf ${srcdir}/*Latte* "${pkgdir}/usr/share/color-schemes/"
+	cp -rf ${srcdir}/Latte-colour-schemes/* "${pkgdir}/usr/share/color-schemes/"
 }
 
 package_catppuccin-plasma-colorscheme-frappe() {
 	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	mkdir -p "${pkgdir}/usr/share/color-schemes/"
-	cp -rf ${srcdir}/*Frappe* "${pkgdir}/usr/share/color-schemes/"
+	cp -rf ${srcdir}/Frappe-Colour-Schemes/* "${pkgdir}/usr/share/color-schemes/"
 }
 
 package_catppuccin-plasma-colorscheme-macchiato() {
 	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	mkdir -p "${pkgdir}/usr/share/color-schemes/"
-	cp -rf ${srcdir}/*Macchiato* "${pkgdir}/usr/share/color-schemes/"
+	cp -rf ${srcdir}/Macchiato-color-schemes/* "${pkgdir}/usr/share/color-schemes/"
 }
 
 package_catppuccin-plasma-colorscheme-mocha() {
 	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	mkdir -p "${pkgdir}/usr/share/color-schemes/"
-	cp -rf ${srcdir}/*Mocha* "${pkgdir}/usr/share/color-schemes/"
+	cp -rf ${srcdir}/Mocha-color-schemes/* "${pkgdir}/usr/share/color-schemes/"
 }
