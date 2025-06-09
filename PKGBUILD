@@ -1,4 +1,4 @@
-# Maintainer: Thomas Arnhold <thomas at arnhold dot org>
+# Maintainer: Shimi Chen <shimi dot chen at gmail dot com>
 pkgname=python-yahooquery
 _name=${pkgname#python-}
 pkgver=2.4.1
