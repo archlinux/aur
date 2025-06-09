@@ -42,7 +42,6 @@ sha256sums=('20bae0130c98d6b29a8a7853f6a0f270398b277f12c3673164b08563cbd18e0c')
 
 prepare() {
   cd "LIEF-$pkgver"
-  cat ../fix-missing-headers.patch | patch -p1
   sed 's/==.*//' --in-place api/python/build-requirements.txt
 }
 
