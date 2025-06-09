@@ -1,0 +1,12 @@
+diff --git a/src/third-party/fuzzy-path/vendor/MatcherBase.h b/src/third-party/fuzzy-path/vendor/MatcherBase.h
+index fbaabc3d92..06b2383f82 100644
+--- a/src/third-party/fuzzy-path/vendor/MatcherBase.h
++++ b/src/third-party/fuzzy-path/vendor/MatcherBase.h
+@@ -4,6 +4,7 @@
+ #include <string>
+ #include <unordered_map>
+ #include <vector>
++#include <cstdint>
+ 
+ struct MatcherOptions {
+   bool first_match_can_be_weak = true;
