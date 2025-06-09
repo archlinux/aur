@@ -4,7 +4,7 @@ _pkgname=Vesktop
 _name=vesktop
 pkgname=vesktop-electron
 pkgdesc="An Electron-based Discord app with Vencord & improved Linux support using system provided electron. Unsupported"
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 
 arch=("x86_64" "aarch64")
@@ -23,7 +23,7 @@ conflicts=('vesktop')
 
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Vencord/Vesktop/archive/v${pkgver}.tar.gz" "vesktop.desktop" "vesktop.sh" "afterPack.js")
 
-sha256sums=('757beb3a8b4e0dc182b3e1109a68d4f98836521e3ee3fba89a1f19a831c57499'
+sha256sums=('5018a7df4c10bc95ff62234f94c903a56c2051f826adb1110bf3d00297e4a848'
             '455c00b862aa0a7e18ca8e23d65d5c5ee4506cdfb15f1bf6f622cce39827de46'
             'a2da313031cfaa892f0f2e51fd0ffafbc14001d4efb0523bb8bfaeb7f4ddc3fa'
             '122b17ce996318e533e6f2ab1c9b2961b39c3eba271c9b40f10c0da5dd738baa')
