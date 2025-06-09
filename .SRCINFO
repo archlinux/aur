@@ -1,12 +1,12 @@
 pkgbase = kubectl-cnpg
 	pkgdesc = A kubectl plugin to interact with CloudNativePG
-	pkgver = 1.25.1
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://github.com/cloudnative-pg/cloudnative-pg
 	arch = x86_64
 	license = Apache 2.0
 	depends = kubectl
-	source = https://github.com/cloudnative-pg/cloudnative-pg/releases/download/v1.25.1/kubectl-cnpg_1.25.1_linux_x86_64.tar.gz
-	sha256sums = 533b04e09e44a6d07097a88419045b4ce5e04a4111907dded15b21e05b61409e
+	source = https://github.com/cloudnative-pg/cloudnative-pg/releases/download/v1.26.0/kubectl-cnpg_1.26.0_linux_x86_64.tar.gz
+	sha256sums = 321177da7f19a5f600e240648284ad8b7d5f184af5a1c45b0edecf1342d3fcf2
 
 pkgname = kubectl-cnpg
