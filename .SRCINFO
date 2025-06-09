@@ -6,7 +6,6 @@ pkgbase = mextool
 	arch = x86_64
 	license = custom:none
 	makedepends = mono-msbuild
-	makedepends = imagemagick
 	makedepends = wget
 	depends = wine
 	depends = winetricks

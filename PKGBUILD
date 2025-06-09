@@ -7,7 +7,7 @@ arch=("x86_64")
 url="https://github.com/akaneia/mexTool"
 license=('custom:none')
 depends=('wine' 'winetricks' 'mono' 'unzip')
-makedepends=('mono-msbuild' 'imagemagick' 'wget')
+makedepends=('mono-msbuild' 'wget')
 source=("git+https://github.com/akaneia/mexTool.git"
         "mextool.desktop"
         "mextool.png")
