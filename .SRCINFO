@@ -1,0 +1,17 @@
+pkgbase = ncdu-git
+	pkgdesc = Disk usage analyzer with an ncurses interface
+	pkgver = v2.8.2.r0.g5b96a48
+	pkgrel = 1
+	url = https://dev.yorhel.nl/ncdu
+	arch = x86_64
+	license = MIT
+	makedepends = zig
+	depends = ncurses
+	depends = glibc
+	depends = zstd
+	provides = ncdu
+	conflicts = ncdu
+	source = git://g.blicky.net/ncdu.git
+	md5sums = SKIP
+
+pkgname = ncdu-git
