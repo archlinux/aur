@@ -1,12 +1,12 @@
 # Maintainer: Manel Castillo Giménez
 pkgname="clavis-git"
-pkgver="1.3.0"
+pkgver="2.0.0"
 pkgrel="1"
 pkgdesc="An easy to use Password Manager. Development version"
 arch=("x86_64")
 url="https://github.com/ManelCG/clavis"
 depends=("gtk3" "cairo" "pango" "pixman" "pass" "make" "pkgconf" "xdotool" "xclip" "grep" "awk" "gnupg")
-conflicts=("clavis")
+conflicts=("clavis" "clavis-debug")
 optdepends=()
 
 _gitroot="https://github.com/ManelCG/clavis.git"
@@ -34,5 +34,5 @@ package(){
 
   echo "Starting configure"
 
-  make BDIR=${pkgdir} archlinux
+  BDIR=${pkgdir} ./make.sh archlinux
 }
