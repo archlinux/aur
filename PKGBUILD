@@ -31,7 +31,8 @@ depends=(
   'xcb-util-wm'
 )
 makedepends=(git meson ninja scdoc wayland-protocols)
-provides=('wayland-compositor')
+provides=('sway-scroll-stable' 'wayland-compositor')
+conflicts=('sway-scroll-git')
 backup=(
   etc/scroll/config
   etc/scroll/config.d/50-systemd-user.conf

@@ -42,7 +42,9 @@ pkgbase = sway-scroll-stable
 	optdepends = xorg-xwayland: X11 support
 	optdepends = xdg-desktop-portal-gtk: Default xdg-desktop-portal for file picking
 	optdepends = xdg-desktop-portal-wlr: xdg-desktop-portal backend
+	provides = sway-scroll-stable
 	provides = wayland-compositor
+	conflicts = sway-scroll-git
 	backup = etc/scroll/config
 	backup = etc/scroll/config.d/50-systemd-user.conf
 	source = git+https://github.com/dawsers/scroll.git#tag=1.11
