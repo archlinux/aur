@@ -1,4 +1,4 @@
 [vitis]
 source = 'regex'
 url = 'https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis.html'
-regex = '\?filename=FPGAs_AdaptiveSoCs_Unified_([.0-9]+)_[0-9_]+\.tar(?:\.gz)?"'
+regex = '\?filename=FPGAs_AdaptiveSoCs_Unified_SDI_([.0-9]+)_[0-9_]+\.tar(?:\.gz)?"'

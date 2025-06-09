@@ -13,8 +13,8 @@
 #
 # SOME MORE NOTES:
 #
-# This package is huge. The download alone is a 140GB tar (in SI units),
-# and the final zstd-compressed package is another 103GB.
+# This package is huge. The download alone is a 118GB tar (in SI units),
+# and the final zstd-compressed package is another 79GB.
 # Reserve at least 470GB in total for building.
 #
 # It can also take several hours to build,
@@ -28,10 +28,10 @@
 # wrap the `getpwuid()` function and modify the original return value for uid==0.
 
 pkgname=vitis
-_srcname=FPGAs_AdaptiveSoCs_Unified
-_pkgver=2024.2  # used in install paths
-pkgver=2024.2.2
-_more_ver=0306_2141
+_srcname=FPGAs_AdaptiveSoCs_Unified_SDI
+_pkgver=2025.1  # used in install paths
+pkgver=${_pkgver}
+_more_ver=0530_0145
 pkgrel=1
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vitis.html"
@@ -49,43 +49,43 @@ depends=(
     'gcc'                       # for Vitis
     'git'                       # for Vitis
     'inetutils'                 # `hostname` for setupEnv.sh
+    'libsecret'                 # libsecret-1.so.0
     'libxcrypt-compat'          # needed by setup tools
     'ncurses5-compat-libs'      # albeit provided internally
+    'openssl-1.1'               # for DocNav
     'unzip'                     # for Vitis
     'zip'                       # for Vitis
     ## The following are required but presumably satisfied indirectly:
     'at-spi2-core'              # libatk-1.0.so.0 libatk-bridge-2.0.so.0 libatspi.so.0
     'cairo'                     # libcairo-gobject.so.2 libcairo.so.2
-    'e2fsprogs'                 # libcom_err.so.2
     'fontconfig'                # libfontconfig.so.1
     'freetype2'                 # libfreetype.so.6
-    'gdbm'                      # libgdbm_compat.so.4
     'gdk-pixbuf2'               # libgdk_pixbuf-2.0.so.0
+    'glib2'                     # for libsecret
     'glibc'                     # libc.so libm.so
-    'keyutils'                  # libkeyutils.so.1
     'libglvnd'                  # (via gtk3) libEGL.so.1 libGL.so.1
+    'libx11'                    # libX11-xcb.so.1
+    'libxcb'                    # libxcb-dri3.so.0
     'libxft'                    # libXft.so.2
-    'libxrandr'                 # libXrandr.so.2
     'pango'                     # libpango-1.0.so.0 libpangocairo-1.0.so.0 libpangoft2-1.0.so.0
+    'pcre2'                     # for glib2
     'util-linux-libs'           # libuuid.so.1
 )
 optdepends=(
-    # 'cpio'                      # no longer needed?
     'dbus: for Vitis xsct if Xvfb is used'
     'digilent.adept.runtime'
     'digilent.adept.utilities'
     'fxload'
     'graphviz: AIE tools'
-    # 'lib32-libpng12'            # no longer needed?
-    # 'libpng12'                  # no longer needed?
+    'libselinux'                # libselinux.so.1
     'libxss: AIE tools'
     'make: AIE tools'
     'matlab: Model Composer'
     'net-tools: AIE tools'
     'nss: for Vitis tools'
     'openssl: AIE tools'
+    'openssl-1.0'               # closest to RH compat-openssl10
     'python'
-    # 'qt4: Model Composer'       # no longer needed?
     'util-linux: fdisk for Vitis tools'
     'xorg-server-xvfb: for Vitis xsct as fallback X11 display'
     'xorg-xlsclients: for Vitis xsct unless -nodisp'
@@ -97,7 +97,6 @@ optdepends=(
     'lib32-glibc'               # lib32/ld-linux.so.2 lib32/libc.so lib32/libm.so
     'lib32-zlib'                # lib32/libz.so.1
     'libice'                    # libICE.so.6
-    'libsecret'                 # libsecret-1.so.0
     'libsm'                     # libSM.so.6
     'libstdc++5'                # libstdc++.so.5
     'libunwind'                 # libunwind.so.8
@@ -113,7 +112,7 @@ source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar"
         'spoof_homedir.c')
 
 # checksum from https://www.xilinx.com/support/download.html
-md5sums=('93abf41f18b5a0e9dedff8417b556282'
+md5sums=('144b21e7a231081821d13f85495dd809'
          '69d14ad64f6ec44e041eaa8ffcb6f87c')
 
 # takes forever for probably minimal gain
@@ -133,16 +132,20 @@ package() {
 
     # LD_PRELOAD already contains libfakeroot.so, add our own library before that
     LD_PRELOAD="$srcdir/spoof_homedir.so:$LD_PRELOAD" ./xsetup \
-        --batch Install \
-        --agree XilinxEULA,3rdPartyEULA \
+        --batch ConfigGen \
         --product Vitis \
         --edition 'Vitis Unified Software Platform' \
         --location "$pkgdir/opt/Xilinx"
+    sed -i '/^Modules=/s,:0\>,:1,g' "$srcdir"/installer_temp/.Xilinx/install_config.txt
+    LD_PRELOAD="$srcdir/spoof_homedir.so:$LD_PRELOAD" ./xsetup \
+        --config "$srcdir"/installer_temp/.Xilinx/install_config.txt \
+        --batch Install \
+        --agree XilinxEULA,3rdPartyEULA
 
     # install udev rules
-    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${_pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${_pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${_pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+    install -Dm644 "$pkgdir/opt/Xilinx/${_pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+    install -Dm644 "$pkgdir/opt/Xilinx/${_pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+    install -Dm644 "$pkgdir/opt/Xilinx/${_pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
 
     # install desktop files
     for deskfile in "$srcdir"/installer_temp/Desktop/*.desktop; do
@@ -151,7 +154,7 @@ package() {
     done
 
     # Remove $pkgdir from load paths in binaries
-    _relocator=$pkgdir/opt/Xilinx/Vitis/${_pkgver}/data/emulation/qemu/comp/qemu/relocate_sdk
+    _relocator=$pkgdir/opt/Xilinx/${_pkgver}/data/emulation/qemu/comp/qemu/relocate_sdk
     # old_prefix is hardcoded in the relocator script,
     # but the relocator has already run, so we need to update it.
     sed -i -e '/old_prefix *=[^=]/s|"[^"]*"|"'"${_relocator%/*}"'"|' \
@@ -165,9 +168,6 @@ package() {
     sed -i -e "s|$pkgdir||g" "$_relocator".* \
         "${_relocator%/*}"/environment-setup-*
     find "$pkgdir/opt/Xilinx" -name '*settings64*' -type f \
-        -exec sed -i -e "s|$pkgdir||g" '{}' \+
-    find "$pkgdir"/opt/Xilinx/*/"${_pkgver}"/tps/lnx64/lopper-*/env \
-        -maxdepth 2 -type f \
         -exec sed -i -e "s|$pkgdir||g" '{}' \+
 
     # Fix symlinks into pkgdir
@@ -205,7 +205,7 @@ package() {
     done
 
     # clean up artefacts
-    rm -rf "$pkgdir/opt/Xilinx/.xinstall/" "$pkgdir/opt/Xilinx/xic/%HOME%"
+    rm -rf "$pkgdir/opt/Xilinx/.xinstall/"
 
     # There are lots of files with useless x permissions.
     # This looks weird and slows dependency checking.
@@ -235,7 +235,7 @@ package() {
         -type f -exec chmod a-x {} +)
     # Normalize permissions
     find "$pkgdir" ! -type l ! -perm 755 ! -perm 644 \
-      -exec chmod -c u=rwX,go=rX {} +
+      -exec chmod u=rwX,go=rX {} +
 
     # Save space for subsequent packaging, checking etc
     cd ..
