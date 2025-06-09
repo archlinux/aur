@@ -10,7 +10,7 @@ depends=('qt6-base' 'qt6-tools' 'qt6-declarative' 'distrobox')
 makedepends=('cmake' 'git' 'extra-cmake-modules')
 provides=('kontainer')
 conflicts=('kontainer')
-source=("git+https://invent.kde.org/silverhadch/k-box.git")
+source=("kontainer::git+https://invent.kde.org/silverhadch/k-box.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -20,12 +20,12 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S "$srcdir/k-box" -DCMAKE_BUILD_TYPE=Release
+  cmake -B build -S "$srcdir/kontainer" -DCMAKE_BUILD_TYPE=Release
   cmake --build build
 }
 
 package() {
   install -Dm755 build/Kontainer "$pkgdir/usr/bin/Kontainer"
-  install -Dm644 "$srcdir/k-box/kontainer.desktop" \
+  install -Dm644 "$srcdir/kontainer/kontainer.desktop" \
     "$pkgdir/usr/share/applications/kontainer.desktop"
 }
