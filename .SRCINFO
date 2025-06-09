@@ -1,0 +1,16 @@
+pkgbase = catbox
+	pkgdesc = Rust wrapper for the Catbox.moe API
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/APT37/catbox
+	arch = x86_64
+	license = MIT-0
+	makedepends = git
+	makedepends = cargo
+	makedepends = clang
+	makedepends = mold
+	options = !lto
+	source = catbox-0.9.0.tar.gz::https://github.com/APT37/catbox/archive/refs/tags/0.9.0.tar.gz
+	sha256sums = ba8767886022de33f9c7154aebac67308435c1368644fb2ebd1ca867bb5ae898
+
+pkgname = catbox
