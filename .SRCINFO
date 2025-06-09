@@ -1,0 +1,188 @@
+pkgbase = xlibre-server-git
+	pkgver = 21.1.13.r2999.610e91dc5
+	pkgrel = 1
+	url = https://github.com/x11libre/xserver
+	arch = aarch64
+	arch = x86_64
+	groups = xlibre-git
+	license = LicenseRef-Adobe-Display-PostScript
+	license = BSD-3-Clause
+	license = LicenseRef-DEC-3-Clause
+	license = HPND
+	license = LicenseRef-HPND-sell-MIT-disclaimer-xserver
+	license = HPND-sell-variant
+	license = ICU
+	license = ISC
+	license = MIT
+	license = MIT-open-group
+	license = NTP
+	license = SGI-B-2.0
+	license = SMLNJ
+	license = X11
+	license = X11-distribute-modifications-variant
+	makedepends = git
+	makedepends = libepoxy
+	makedepends = libpciaccess
+	makedepends = libunwind
+	makedepends = libx11
+	makedepends = libxaw
+	makedepends = libxcvt
+	makedepends = libxfont2
+	makedepends = libxi
+	makedepends = libxkbfile
+	makedepends = libxmu
+	makedepends = libxrender
+	makedepends = libxres
+	makedepends = libxshmfence>=1.1
+	makedepends = libxtst
+	makedepends = libxv
+	makedepends = mesa
+	makedepends = mesa-libgl
+	makedepends = meson>=0.58
+	makedepends = pixman>=0.27.2
+	makedepends = systemd>=209
+	makedepends = xcb-util
+	makedepends = xcb-util-image
+	makedepends = xcb-util-keysyms
+	makedepends = xcb-util-renderutil
+	makedepends = xcb-util-wm
+	makedepends = xorg-font-util
+	makedepends = xorg-util-macros
+	makedepends = xorg-xkbcomp
+	makedepends = xorgproto>=7.0.31
+	makedepends = xtrans>=1.3.5
+	options = !emptydirs
+	source = xlibre-server::git+https://github.com/x11libre/xserver.git
+	source = xvfb-run
+	source = xvfb-run.1
+	b2sums = SKIP
+	b2sums = 58c48ed893be841d14d3a09c9e1092a6da7bcb7fb773e1bf634c50a12e51ea3ad4aeba3843164a2834ee9f8ea95a7bca8b3ce8196a5328ce782724c082cb416f
+	b2sums = 0e3738e099ee2b958df3e5a5adbdfcbd1150ad64645fdae70d74b50123c3f3d43f9f95f5e4bac82bf5c72b3deb978655b8c3177d37de0bd0a2a6e0e343863511
+
+pkgname = xlibre-server-git
+	pkgdesc = XLibre X server
+	install = xlibre-server.install
+	depends = dbus
+	depends = glibc
+	depends = libdrm
+	depends = libepoxy
+	depends = libgl
+	depends = libpciaccess
+	depends = libtirpc
+	depends = libunwind
+	depends = libxau
+	depends = libxcvt
+	depends = libxdmcp
+	depends = libxfont2
+	depends = libxshmfence>=1.1
+	depends = nettle
+	depends = pixman>=0.27.2
+	depends = sh
+	depends = systemd-libs>=209
+	depends = xf86-input-libinput
+	depends = xlibre-server-common-git=21.1.13.r2999.610e91dc5-1
+	provides = xlibre-server=21.1.13
+	provides = xorg-server=21.1.13
+	provides = X-ABI-VIDEODRV_VERSION=28.0
+	provides = X-ABI-XINPUT_VERSION=26.0
+	provides = X-ABI-EXTENSION_VERSION=11.0
+	provides = x-server
+	conflicts = xlibre-server
+	conflicts = xorg-server
+	conflicts = nvidia-utils<=331.20
+	conflicts = glamor-egl
+	conflicts = xf86-video-modesetting
+	replaces = glamor-egl
+	replaces = xf86-video-modesetting
+	options = emptydirs
+
+pkgname = xlibre-server-common-git
+	pkgdesc = XLibre server common files
+	arch = any
+	depends = xkeyboard-config
+	depends = xorg-setxkbmap
+	depends = xorg-xkbcomp
+	provides = xlibre-server-common=21.1.13
+	provides = xorg-server-common=21.1.13
+	conflicts = xlibre-server-common
+	conflicts = xorg-server-common
+
+pkgname = xlibre-server-devel-git
+	pkgdesc = Development files for the XLibre X server
+	arch = any
+	depends = libpciaccess
+	depends = mesa
+	depends = pixman>=0.27.2
+	depends = xorgproto>=7.0.31
+	depends = xorg-util-macros
+	provides = xlibre-server-devel=21.1.13
+	provides = xorg-server-devel=21.1.13
+	conflicts = xlibre-server-devel
+	conflicts = xorg-server-devel
+
+pkgname = xlibre-server-xephyr-git
+	pkgdesc = A nested XLibre server that runs as an X application
+	depends = glibc
+	depends = libepoxy
+	depends = libgl
+	depends = libtirpc
+	depends = libunwind
+	depends = libx11
+	depends = libxau
+	depends = libxdmcp
+	depends = libxfont2
+	depends = libxshmfence
+	depends = nettle
+	depends = pixman>=0.27.2
+	depends = systemd-libs>=209
+	depends = xcb-util
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = xcb-util-renderutil
+	depends = xcb-util-wm
+	depends = xlibre-server-common-git=21.1.13.r2999.610e91dc5-1
+	provides = xlibre-server-xephyr=21.1.13
+	provides = xorg-server-xephyr=21.1.13
+	conflicts = xlibre-server-xephyr
+	conflicts = xorg-server-xephyr
+
+pkgname = xlibre-server-xnest-git
+	pkgdesc = A nested XLibre server that runs as an X application
+	depends = glibc
+	depends = libtirpc
+	depends = libunwind
+	depends = libx11
+	depends = libxau
+	depends = libxdmcp
+	depends = libxext
+	depends = libxfont2
+	depends = nettle
+	depends = pixman>=0.27.2
+	depends = systemd-libs>=209
+	depends = xlibre-server-common-git=21.1.13.r2999.610e91dc5-1
+	provides = xlibre-server-xnest=21.1.13
+	provides = xorg-server-xnest=21.1.13
+	conflicts = xlibre-server-xnest
+	conflicts = xorg-server-xnest
+
+pkgname = xlibre-server-xvfb-git
+	pkgdesc = Virtual framebuffer XLibre server
+	license = MIT
+	license = GPL-2.0-only
+	depends = glibc
+	depends = libgl
+	depends = libtirpc
+	depends = libunwind
+	depends = libxau
+	depends = libxdmcp
+	depends = libxfont2
+	depends = nettle
+	depends = pixman
+	depends = sh
+	depends = systemd-libs>=209
+	depends = xlibre-server-common-git=21.1.13.r2999.610e91dc5-1
+	depends = xorg-xauth
+	provides = xlibre-server-xvfb=21.1.13
+	provides = xorg-server-xvfb=21.1.13
+	conflicts = xlibre-server-xvfb
+	conflicts = xorg-server-xvfb
