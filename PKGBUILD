@@ -2,7 +2,7 @@
 # Contributor: Thomas Booker <tw.booker@outlook.com>
 
 pkgname=phosh-tour
-pkgver=0.46.0
+pkgver=0.47.0
 pkgrel=1
 pkgdesc='Simple tour through phosh'
 arch=(x86_64 aarch64 armv7h)
@@ -11,7 +11,7 @@ license=(GPL-3.0-or-later)
 depends=(libadwaita libgmobile)
 makedepends=(meson git glib2-devel)
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('13807384e4c6012156a4aab2cf8ecbd4e14588f2fba02f46d1f04f98d68796d1')
+sha256sums=('3d82ac023b20e74fee4949ab386ddfc8cfcc2702549a25f606471d89e1aa311a')
 
 build() {
 	arch-meson "${pkgname}-v${pkgver}" _build -D vendor="Arch Linux" -D brand="device"
