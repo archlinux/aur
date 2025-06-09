@@ -1,22 +1,20 @@
 pkgbase = synfigstudio-appimage
 	pkgdesc = Professional vector animation program (GUI)
-	pkgver = 1.2.2
-	pkgrel = 2
+	pkgver = 1.5.3
+	pkgrel = 1
 	url = https://www.synfig.org
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = hicolor-icon-theme
 	provides = synfigstudio
 	conflicts = synfigstudio
-	options = !strip
-	source = https://github.com/synfig/synfig/releases/download/v1.2.2/SynfigStudio-1.2.2-18.09.14-linux64-286f1.appimage
+	source = https://github.com/synfig/synfig/releases/download/v1.5.3/SynfigStudio-1.5.3-2024.08.23-linux64-3b7c5.appimage
 	source = synfigstudio.desktop
 	source = synfigstudio.png
 	source = synfigstudio.sh
-	sha256sums = 6c4cb9ce465aa1e1bd8fd528add089cd1bdf690847f61cceb428a8f72e5e02f9
+	sha256sums = 704c56477e7f93622e75264bbb1f801efb4894e8e33a1e9cf3cf8e246770fb8b
 	sha256sums = cf1d7721325196f0b606a152c7b651c0abf735cb9c72ffbdb036e30517d3f725
 	sha256sums = 3e6b8fd52343b942c131f51f791e6ec8bcce36a15e4538b859f01a2f5674958e
 	sha256sums = 5150126853ec6ec646fb9bb02d62cf0346d6e362a83acc8be604b34cbf7ebbab
 
 pkgname = synfigstudio-appimage
-
