@@ -1,0 +1,18 @@
+pkgbase = doas-sudo-shim-k
+	pkgdesc = Shim for the sudo command which utilizes doas (includes -k flag to ensure makepkg compatibility)
+	pkgver = 0.1.2k
+	pkgrel = 1
+	url = https://github.com/fclivaz42/doas-sudo-shim
+	arch = any
+	license = ISC
+	makedepends = asciidoctor
+	depends = awk
+	depends = doas
+	depends = sh
+	provides = sudo
+	conflicts = sudo
+	conflicts = doas-sudo-shim
+	source = doas-sudo-shim-k-0.1.2k.tar.gz::https://github.com/fclivaz42/doas-sudo-shim/archive/refs/tags/v0.1.2k.tar.gz
+	sha256sums = ed49ac624c4eb7080107e1cdc546cdce5be6994a9548f7f46ae0d35b3150ae51
+
+pkgname = doas-sudo-shim-k
