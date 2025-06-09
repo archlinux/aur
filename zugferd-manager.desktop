@@ -13,10 +13,10 @@ Name=ZUGFeRD Manager
 Comment=Application to create ZUGFeRD compatible files
 
 # The path to the folder in which the executable is run
-Path=/usr/share/ZUGFeRD-Manager/
+Path=/opt/zugferd-manager/
 
 # The executable of the application, possibly with arguments.
-Exec=ZUGFeRD-Manager
+Exec=/usr/bin/zugferd-manager
 
 # The name of the icon that will be used to display this entry
 Icon=ZUGFeRD-Manager
