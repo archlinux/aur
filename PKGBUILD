@@ -10,7 +10,7 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=4.0.2.r949.gc7391d102
+pkgver=4.0.2.r1018.g5346d3d49
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
@@ -87,7 +87,7 @@ build() {
 
 check() {
   cd "$_gitname"
-  make test
+  make -C build test
 }
 
 package() {
