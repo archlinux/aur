@@ -1,17 +1,18 @@
 pkgbase = thor-flash-utility
-	pkgdesc = Utility for flashing firmware on Samsung devices, based on dotnet 7.0
-	pkgver = 1.0.4
-	pkgrel = 6
+	pkgdesc = Utility for flashing firmware on Samsung devices, based on .NET 9 Native AOT
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/Samsung-Loki/Thor
 	arch = x86_64
 	arch = aarch64
 	license = MPL-2.0
-	makedepends = dotnet-sdk-7.0
-	depends = dotnet-runtime-7.0
-	depends = gcc-libs
+	makedepends = dotnet-sdk-9.0
+	makedepends = ca-certificates
 	depends = glibc
-	optdepends = android-udev: Adds udev rules for non-root users (Group adbusers)
-	source = thor-flash-utility-1.0.4.tar.gz::https://github.com/Samsung-Loki/Thor/archive/refs/tags/1.0.4.tar.gz
-	sha256sums = 7c6a5482a2a6a0af2711849441f8a8227bca240e38ab56ba9a50ed6eb13ed78e
+	options = !strip
+	source = thor-flash-utility-1.1.0.tar.gz::https://github.com/Samsung-Loki/Thor/archive/refs/tags/1.1.0.tar.gz
+	source = NuGet.Config
+	sha256sums = af1b55c9143b6001f07e537a58a2761911746419e4312d4fab239efee0200579
+	sha256sums = b8ff5486232770da7b6bced4a4b829b7c9dc184961bad1c2b8c965f46f584b90
 
 pkgname = thor-flash-utility
