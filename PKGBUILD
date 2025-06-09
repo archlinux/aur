@@ -1,18 +1,31 @@
-pkgname=bigbashview
-pkgver=$(curl https://raw.githubusercontent.com/biglinux/bigbashview/master/bigbashview/usr/lib/python3/dist-packages/bbv/globaldata.py | grep APP_VERSION  | cut -f2 -d\")_$(date +"%Y_%m_%d")
-pkgrel=2
+# Maintainer: tioguda  <guda.flavio@gmail.com>
+# Contributor: barnabedikartola
+
+pkgbase=bigbashview
+pkgname=${pkgbase}-git
+_pkgver=3.8.1
+pkgver=3.8.1_r484.2ee7f3c
+pkgrel=1
 arch=('any')
 license=('GPL')
-url="https://github.com/biglinux/bigbashview"
+url="https://github.com/biglinux/${pkgbase}"
 pkgdesc="BigBashView is a python app to run Bash+HTML in a Desktop WebView"
-depends=('pyside6' 'python-six' 'webkit2gtk-4.1' 'qt6-webengine')
-source=("git+https://github.com/biglinux/bigbashview.git")
-md5sums=(SKIP)
+makedepends=('git')
+source=("git+https://github.com/biglinux/${pkgbase}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+    cd ${srcdir}/${pkgbase}
+    printf "${_pkgver}_r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
-    mkdir -p "${pkgdir}/usr" "${pkgdir}/usr/lib"
-    cp -r "${srcdir}/bigbashview/bigbashview/usr/" "${pkgdir}/"
-    mv "${pkgdir}/usr/lib/python3/dist-packages/bbv/" "${pkgdir}/usr/lib/bbv/"
-    rm -Rf "${pkgdir}/usr/lib/python3"
-    sed -i 's|/usr/lib/python3/dist-packages/bbv/|/usr/lib/bbv/|g' "${pkgdir}/usr/bin/bigbashview"
+    depends=('bigbashview-framework' 'pyside6' 'python-six' 'webkit2gtk-4.1'
+            'python-pyqt6-webengine' 'ttf-lato' 'python-setproctitle' 'python-webpy'
+            'python-pyqt5-webengine')
+    provides=("${pkgbase}=${_pkgver}")
+    conflicts=("${pkgbase}")
+
+    mkdir -p "${pkgdir}"/usr/{bin,lib/bbv,share}
+    cp -r "${srcdir}/${pkgbase}/${pkgbase}"/usr/* "${pkgdir}/usr/"
 }
