@@ -24,6 +24,6 @@ pkgbase = cloudtolocalllm
 	provides = cloudtolocalllm
 	conflicts = cloudtolocalllm-git
 	source = cloudtolocalllm-3.5.1-x86_64.tar.gz::https://cloudtolocalllm.online/cloudtolocalllm-3.5.1-x86_64.tar.gz
-	sha256sums = 30590ad4e4262fd47b8c39a818084190ba27db02b03b19ac90aefd846f7248fe
+	sha256sums = 88b92e39512095ea8655ecc2030b2180f686418ab11b0b82758d825ba126aae7
 
 pkgname = cloudtolocalllm
