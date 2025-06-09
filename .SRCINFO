@@ -1,6 +1,6 @@
 pkgbase = rehex-git
 	pkgdesc = A cross-platform (Windows, Linux, Mac) hex editor for reverse engineering, and everything else (git version)
-	pkgver = r1414.ddb03d9
+	pkgver = r1722.1a0ea43
 	pkgrel = 1
 	url = https://github.com/solemnwarning/rehex
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = rehex-git
 	makedepends = busted
 	depends = jansson
 	depends = capstone
-	depends = wxgtk3
+	depends = wxwidgets-gtk3
 	depends = lua>=5.3
 	depends = botan2
 	conflicts = rehex
