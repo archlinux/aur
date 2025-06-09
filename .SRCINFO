@@ -1,14 +1,13 @@
 pkgbase = opencalphad-git
 	pkgdesc = A thermodynamic calculation code
 	pkgver = 6.0.110.ge1f8cb7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.opencalphad.com
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = gcc-fortran
 	makedepends = git
-	makedepends = sed
-	depends = gcc-libs
+	depends = lapack
 	provides = opencalphad
 	source = git+https://github.com/sundmanbo/opencalphad.git
 	sha256sums = SKIP
