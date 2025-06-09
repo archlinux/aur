@@ -1,0 +1,14 @@
+pkgbase = geminicommit
+	pkgdesc = A CLI that writes your git commit messages for you with Google Gemini AI
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/tfkhdyt/geminicommit
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	depends = git
+	source = https://github.com/tfkhdyt/geminicommit/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 0ebbe8a2a861e061a5c1161e81e6f3c8e819eae3ec70b6dbfb3b5608317b8192
+
+pkgname = geminicommit
