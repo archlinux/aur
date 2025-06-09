@@ -2,3 +2,4 @@
 pkg/
 src/
 phanpy-dist.tar.gz
+phanpy-dist-*.tar.gz
