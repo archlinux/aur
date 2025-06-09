@@ -25,12 +25,8 @@ build() {
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
-
-	for _folder in "$pkgdir/usr/share/doc/"*; do
-		mv "$_folder" "$pkgdir/usr/share/doc/ocaml-$(basename "$_folder")"
-	done
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc/ocaml' --mandir '/usr/share/man' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT"
+	ln -sf "/usr/share/doc/ocaml/$_projectname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
