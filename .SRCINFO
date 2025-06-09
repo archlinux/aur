@@ -9,6 +9,7 @@ pkgbase = catbox
 	makedepends = cargo
 	makedepends = clang
 	makedepends = mold
+	provides = catbox
 	conflicts = catbox-bin
 	conflicts = catbox-git
 	options = !lto

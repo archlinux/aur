@@ -9,7 +9,8 @@ license=('MIT-0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('139672256ad1bab30d9ccd5654c124a1a1f90991a6b3ebbf4a00e9191379f044')
 options=('!lto')
-conflicts=("$pkgname-bin" "$pkgname-git")
+provides=('catbox')
+conflicts=('catbox-bin' 'catbox-git')
 
 build() {
 	cd $pkgname-$pkgver
