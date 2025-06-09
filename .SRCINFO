@@ -1,10 +1,10 @@
 pkgbase = aw87559-firmware
 	pkgdesc = Firmware for Awinic aw87559 audio device (taken from OrangePI firmware)
-	pkgver = db5e862
+	pkgver = 20250609_db5e862
 	pkgrel = 1
 	arch = x86_64
 	license = unknown
-	source = aw87xxx_acf.bin::https://github.com/orangepi-xunlong/firmware/raw/master/db5e862/aw87xxx_acf.bin
+	source = aw87xxx_acf.bin::https://github.com/orangepi-xunlong/firmware/raw/master/aw87xxx_acf.bin
 	sha256sums = 7db2c6eaca3135d732c2e635388e87cb49fc998b3f9a859c2a891ee78797eba3
 
 pkgname = aw87559-firmware
