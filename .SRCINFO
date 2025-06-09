@@ -1,17 +1,17 @@
 pkgbase = koboldcpp-cuda-bin
        pkgdesc = A simple one-file way to run various GGML and GGUF models with KoboldAI's UI, CUDA version
-       pkgver = 1.93
+       pkgver = 1.93.1
        pkgrel = 1
        url = https://github.com/LostRuins/koboldcpp
        arch = x86_64
        license = AGPL3
        depends = glibc
-       provides = koboldcpp=1.93
+       provides = koboldcpp=1.93.1
        conflicts = koboldcpp
-       source = koboldcpp-cuda-bin-1.93::https://github.com/LostRuins/koboldcpp/releases/download/v1.93/koboldcpp-linux-x64-cuda1210
+       source = koboldcpp-cuda-bin-1.93.1::https://github.com/LostRuins/koboldcpp/releases/download/v1.93.1/koboldcpp-linux-x64-cuda1210
        source = koboldcpp.desktop
        source = koboldcpp.png
-       sha256sums = 8b2ed245fcab643e188dd148da50df2abc14c142a23afd9485eb89cdfc768e05
+       sha256sums = e5d3c3d36ba957af150429231df75108ecacac39133992f2f7af639cce0cec99
        sha256sums = fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef
        sha256sums = d244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54
 
