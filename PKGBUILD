@@ -1,11 +1,12 @@
-# Maintainer: Gobidev <adrian[dot]groh[at]t-online[dot]de>
+# Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
+# Contributor: Gobidev <adrian[dot]groh[at]t-online[dot]de>
 # Contributor: luxcem <a@luxcem.fr>
 # Contributor: kpcyrd <kpcyrd[at]archlinux[dot]org>
 # Contributor: vscncls <lucaslou4@protonmail.com>
 
 pkgname=insomnia
 pkgver=11.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform HTTP and GraphQL Client"
 url="https://github.com/Kong/insomnia"
 arch=('any')
