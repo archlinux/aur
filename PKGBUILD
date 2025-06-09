@@ -1,6 +1,6 @@
 pkgname=catbox-bin
-pkgver=0.9.0
-pkgrel=3
+pkgver=0.9.1
+pkgrel=1
 pkgdesc='Rust wrapper for the Catbox.moe API'
 url='https://github.com/APT37/catbox'
 arch=('x86_64')
