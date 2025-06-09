@@ -18,7 +18,6 @@ pkgbase = sherpa-onnx
 	makedepends = python-wheel
 	depends = jack
 	depends = onnxruntime
-	depends = openmpi
 	depends = protobuf
 	optdepends = cuda: nVidia GPU acceleration
 	optdepends = cudnn: nVidia GPU acceleration

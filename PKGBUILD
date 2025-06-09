@@ -8,7 +8,7 @@ pkgdesc="Speech-to-text, text-to-speech, speaker diarization, and VAD using next
 arch=("x86_64" "aarch64" "arm" "riscv64")
 url="https://github.com/k2-fsa/${pkgbase}"
 license=("Apache-2.0")
-depends=("jack" "onnxruntime" "openmpi" "protobuf")
+depends=("jack" "onnxruntime" "protobuf")
 makedepends=("cargs" "cmake" "ninja" "pybind11" "python-build" "python-installer" "python-setuptools" "python-wheel")
 optdepends=("cuda: nVidia GPU acceleration"
             "cudnn: nVidia GPU acceleration"
