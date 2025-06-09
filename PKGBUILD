@@ -4,7 +4,7 @@
 # Contributor: jskier <jay @jskier.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=keeper-commander
-pkgver=17.1.0
+pkgver=17.1.1
 pkgrel=1
 epoch=1
 pkgdesc="CLI, SDK and interactive shell for Keeper® Password Manager."
@@ -52,7 +52,7 @@ makedepends=(
 )
 checkdepends=('python-ifaddr' 'python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('88bcf8fbb81e7d1aa5d6f8d2a6abdc438fd8dc2a49a007dd3f390412bdd8b0ba109a223040b39b9ed888a358f812da4634e67403805699c6ebb2777e773d43bd')
+sha512sums=('11f3055822b2af6b6c1c1980649c5e7746145f0adbe201b5fa1b1466a556f62ac86a77e9cc4cd91801063421be3c430b4ffd49b984d5a99a73af14926178a8b4')
 
 build() {
   cd "Commander-$pkgver"
