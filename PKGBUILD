@@ -1,15 +1,15 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron
 pkgver=0.6.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
 license=(GPL-2.0-or-later)
-provides=('citron')
-depends=('qt6-base' 'qt6-webengine' 'qt6-multimedia' 'qt6-wayland' 'qt6-tools' 'fmt' 'boost-libs' 'ffmpeg' 'sdl2' 'gamemode' 'hicolor-icon-theme' 'brotli' 'libusb' 'enet' 'opus')
-makedepends=('curl' 'git' 'cmake' 'clang' 'boost' 'python-pip' 'glslang' 'ninja' 'zip' 'unzip' 'libzip' 'nlohmann-json' 'zlib' 'zstd' 'rapidjson')
-conflicts=('citron')
+depends=('qt6-base' 'qt6-webengine' 'fmt' 'boost-libs' 'ffmpeg' 'sdl2' 'hicolor-icon-theme' 'brotli' 'libusb' 'enet' 'opus' 'zydis' 'lz4' 'zlib' 'glibc' 'libva' 'zstd' 'gcc-libs' 'openssl')
+makedepends=('git' 'cmake' 'boost' 'glslang' 'ninja' 'nlohmann-json' 'zlib' 'zstd' 'rapidjson' 'qt6-multimedia' 'qt6-tools' 'gamemode' 'doxygen' 'vulkan-headers')
+optdepends=('gamemode: Gamemoded support')
 options=(!debug)
 _tag="v${pkgver}-canary-refresh"
 source=(${pkgname}::git+https://git.citron-emu.org/citron/emu.git#tag=${_tag}
@@ -109,8 +109,8 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  cmake -B build -GNinja \
+  cd "$srcdir"
+  cmake -B build -GNinja -S "$pkgname" \
     -DCITRON_USE_BUNDLED_VCPKG=OFF \
     -DCITRON_USE_BUNDLED_QT=OFF \
     -DUSE_SYSTEM_QT=ON \
@@ -128,15 +128,21 @@ build() {
     -DBUNDLE_SPEEX=ON \
     -DCITRON_USE_FASTER_LD=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
-    -DCMAKE_C_FLAGS="$CFLAGS" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
+    -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
     -DCMAKE_SYSTEM_PROCESSOR=x86_64 \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     
-  ninja -C build
+  cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir/" ninja -C "$srcdir/$pkgname"/build install
+  cd "$srcdir"
+  DESTDIR="$pkgdir/" cmake --install build
+  cd "$srcdir/$pkgname/LICENSES"
+  for file in *.txt;
+  do
+    install -Dm644 $file "$pkgdir/usr/share/licenses/$pkgname/$file"
+  done
 }
