@@ -1,6 +1,6 @@
 pkgbase = music-assistant-desktop-bin
 	pkgdesc = Music Assistant Companion App
-	pkgver = 0.0.87
+	pkgver = 0.0.88
 	pkgrel = 1
 	url = https://github.com/music-assistant/companion/
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = music-assistant-desktop-bin
 	depends = libappindicator-gtk3
 	provides = music-assistant-companion
 	conflicts = music-assistant-desktop
-	source = squeezelite::https://github.com/music-assistant/companion//releases/download/v0.0.87/squeezelite-x86_64-unknown-linux-gnu
-	source = music-assistant-companion.png::https://raw.githubusercontent.com/music-assistant/music-assistant-desktop/v0.0.87/src-tauri/icons/128x128.png
-	source = music-assistant-companion.desktop::https://raw.githubusercontent.com/music-assistant/music-assistant-desktop/v0.0.87/musicassistant.desktop
-	source = music-assistant-desktop-bin-0.0.87::https://github.com/music-assistant/companion//releases/download/v0.0.87/music-assistant-companion-0.0.87
+	source = squeezelite::https://github.com/music-assistant/companion//releases/download/v0.0.88/squeezelite-x86_64-unknown-linux-gnu
+	source = music-assistant-companion.png::https://raw.githubusercontent.com/music-assistant/music-assistant-desktop/v0.0.88/src-tauri/icons/128x128.png
+	source = music-assistant-companion.desktop::https://raw.githubusercontent.com/music-assistant/music-assistant-desktop/v0.0.88/musicassistant.desktop
+	source = music-assistant-desktop-bin-0.0.88::https://github.com/music-assistant/companion//releases/download/v0.0.88/music-assistant-companion-0.0.88
 	sha256sums = 4cce2f26f734bd814550ae632b8784299146f4182c3e773a2a0a4d33ae8668f8
 	sha256sums = 7d92e65da6fc3aadb7115904d805216615ac41980558162751cc0c6781451f8a
 	sha256sums = 57473f7260ab129975f130cd9827fa77aacb819d76f99de3f76e162963c9f0c2
-	sha256sums = 613024c78f6b01ea842dea96643acedb139595e2eef9920d3470ae48c94e58b8
+	sha256sums = 516304e91002e816b0016c7ef3010fd2bab05cf37d619bcab964636d2f2b758b
 
 pkgname = music-assistant-desktop-bin
