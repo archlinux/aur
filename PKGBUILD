@@ -1,7 +1,7 @@
 # Maintainer: Lehel Gyuro <lehel@freemail.hu>
 
 pkgname=libindi-sx
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="INDI driver for products manufactured by indi-sx"
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -10,7 +10,7 @@ arch=(i686 x86_64 aarch64)
 depends=(glibc libindi=${pkgver})
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz" "fix_cmake.patch")
-sha256sums=("bcb7cf2b9053c5b1e052a35247ec499a9d513f4ed257178b244c190394d0daa6" "162adc65156c4e4be2526fce5dbfc2e2d0d9742b9fff812fc72fc2a6f63a400c")
+sha256sums=("e9ab43d08d09555d2c9d3c658d1bcc3130c3465a3afe2300995fba0d6e737080" "162adc65156c4e4be2526fce5dbfc2e2d0d9742b9fff812fc72fc2a6f63a400c")
 
 prepare() {
   mkdir -p build
