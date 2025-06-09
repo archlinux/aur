@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Gamepadla Polling
+Comment=Gamepads polling rate and synthetic latency tester
+Categories=Utilities
+Exec=/usr/bin/gamepadla-polling %F
+Terminal=true
+Type=Application
+Icon=gamepadla-polling
+Keywords=
+StartupNotify=false
