@@ -44,7 +44,7 @@ package() {
 
   install -Dm755 "target/release/mpdris" "$pkgdir/usr/bin/mpdris"
   install -Dm644 "$startdir/mpdris.service" "$pkgdir/usr/lib/systemd/user/mpdris.service"
-  install -Dm644 "resources/sample.mpDris.conf" "$pkgdir/usr/share/doc/${_pkgname}/sample.mpDris.conf"
+  install -Dm644 "resources/sample.mpdris.conf" "$pkgdir/usr/share/doc/${_pkgname}/sample.mpdris.conf"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }
