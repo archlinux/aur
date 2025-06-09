@@ -1,9 +1,9 @@
 # Original AUR Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
-# Current Maintainer: Dylan Morrison <dylanjmorrison611 at gmail.com>
+# Current Maintainer: Dylan "Dizzy" O'Malley-Morrison <dizzy at domad.science>
 
 pkgname=megazeux
-pkgver=2.93c
-pkgrel=2
+pkgver=2.93d
+pkgrel=1
 pkgdesc="Game creation system"
 arch=('i686' 'x86_64')
 url="https://www.digitalmzx.com/"
@@ -17,11 +17,11 @@ _filename=${_base}src.tar.xz
 # To get the _rid from upstream, look at the last page of
 # https://www.digitalmzx.com/search.php?browse=4&desc=recordReleaseDate.
 # Look for the "Source Code" download.
-_rid=2893
+_rid=2919
 
 # To get the _sha256sum from upstream, open the link from the table in the step
 # above, and look at the target of the download link in the sidebar on the left.
-_sha256sum=a878d0937324c6d8ff057348d4efd96effaf070b16b314b57031d7fae3b75974
+_sha256sum=33dd6bced55dcbe5dcaf89e640191ee4c70e7a63fd5b66a6150a59740f20bc29
 # download.php URL: Identifies the download using the Megazeux version.
 #source=("${_filename}::https://www.digitalmzx.com/download.php?latest=src&ver=${pkgver}")
 
