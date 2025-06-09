@@ -20,6 +20,12 @@ sha256sums=('SKIP'
             '29fb19d923984a0d58edf647be99f916d82c37b04e58abb40f793517c8e0a903')
 options=(!lto)
 
+prepare() {
+  cd "$srcdir/$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 pkgver() {
   cd "$srcdir/$_pkgname"
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
@@ -27,7 +33,9 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  cargo build --release --locked
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
 }
 
 package() {
