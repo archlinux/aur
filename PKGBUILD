@@ -1,44 +1,115 @@
-# Maintainer: ahmetlii
+# Maintainer:
+# Contributor: ahmetlii
 
-pkgname='organicmaps-git'
-pkgver=2024.06.19_3
+_pkgname="organicmaps"
+pkgname="$_pkgname-git"
+pkgver=2025.05.20.r101.gd9ca79e
 pkgrel=1
-pkgdesc='A free offline maps app for travelers, tourists, hikers, and cyclists based on top of crowd-sourced OpenStreetMap data'
-arch=("x86_64" "aarch64" "riscv64")
-depends=("cmake>=3.22.1" "mesa" "libglvnd" "libc++" "freetype2" "sqlite" "qt6-base" "icu" "clang" "ninja" "python3" "qt6-svg" "qt6-positioning")
-optdepends=("ccache: faster compilation" "qt6-wayland: for Wayland users")
-makedepends=("git" "git-lfs" "gendesk" "libxml2" "jq")
-license=("Apache")
+pkgdesc="An offline maps app for travelers, tourists, hikers, and cyclists, using crowd-sourced OpenStreetMap data"
 url="https://github.com/organicmaps/organicmaps"
-conflicts=("${pkgname%-git}-bin")
+license=("Apache-2.0")
+arch=("x86_64" "aarch64" "riscv64")
+
+depends=(
+  'freetype2'
+  'hicolor-icon-theme'
+  'icu'
+  'libglvnd'
+  'perl'
+  'python'
+  'qt6-base'
+  'qt6-positioning'
+  'qt6-svg'
+)
+makedepends=(
+  'boost'
+  'cmake'
+  'git'
+  'glm'
+  'libxcursor'
+  'libxi'
+  'libxinerama'
+  'libxml2'
+  'libxrandr'
+  'ninja'
+  'vulkan-headers'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+options=('!lto')
+
+_pkgsrc="$_pkgname"
+#source=("$_pkgsrc"::"git+$url.git")
+#sha256sums=('SKIP')
 
 prepare() {
- if [ ! -e ./organicmaps-git ]
- then
-   git clone --recurse-submodules --depth=1 https://github.com/organicmaps/organicmaps.git ./organicmaps-git
-   cd $pkgname
- else
-   cd $pkgname
-   git pull
- fi
- bash ./configure.sh
+  # partial clone because repo is 8GB
+  if [ ! -e "$_pkgsrc" ]; then
+    git clone --filter=tree:0 "$url.git" "$_pkgsrc"
+    cd "$_pkgsrc"
+  else
+    cd "$_pkgsrc"
+    git reset --hard
+    git clean -f -d -x
+    git pull
+  fi
+
+  git rm -r '3party/CMake-MetalShaderSupport'
+  git rm -r '3party/Vulkan-Headers'
+  git rm -r '3party/boost'
+  git rm -r '3party/freetype/freetype'
+  git rm -r '3party/glm'
+  git rm -r '3party/harfbuzz/harfbuzz'
+  git rm -r '3party/icu/icu'
+
+  git submodule update --init --recursive --depth 1
+
+  sed -E \
+    -e 's&PLATFORM_LINUX OR PLATFORM_ANDROID&FALSE&' \
+    -e 's&FATAL_ERROR&WARNING&g' \
+    -e '/add_compile_options/d' \
+    -i CMakeLists.txt
 }
 
 pkgver() {
- cd $pkgname
- xmllint --xpath "string(//releases/release/@version)"  "${srcdir}/${pkgname}/packaging/app.organicmaps.desktop.metainfo.xml" | sed -r 's/-/_/g'
+  cd "$_pkgsrc"
+  local _tag _version _revision _hash
+  _tag=$(git tag -l '[0-9]*' | sort -rV | head -1)
+  _version=$(sed -E 's&-.*$&&' <<< "${_tag:?}")
+  _revision=$(git rev-list --count --cherry-pick "$_tag"..HEAD)
+  _commit=$(git rev-parse --short=7 HEAD)
+  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_commit:?}"
 }
 
 build() {
-  $srcdir/$pkgname/tools/unix/build_omim.sh -n 1 -r desktop #pass option -DUNITY_DISABLE=1 if running into free memory issues, remove option -n 1 if not having problems with multi-core compiling
+  CFLAGS+=" -DNDEBUG"
+  CXXFLAGS+=" -DNDEBUG"
+
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_UNITY_BUILD=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
+}
+
+check() {
+  ctest --test-dir build --verbose --timeout 300 || :
 }
 
 package() {
- install -dm755 "$pkgdir/usr/share/${pkgname%-git}"
- cp -r "$srcdir/$pkgname/data" "$pkgdir/usr/share/${pkgname%-git}"
- install -dm777 "$pkgdir/usr/share/organicmaps/data/$(jq .v $srcdir/$pkgname/data/countries.txt)"
- install -Dm644 "$srcdir/omim-build-release/OMaps.app/Contents/Resources/mac.icns" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
- gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec "/usr/bin/OMaps --data_path=/usr/share/${pkgname%-git}/data" --name "OrganicMaps" --icon="/usr/share/pixmaps/${pkgname%-git}.png" --categories="Utility;Maps;Navigation" --startupnotify=true
- install -Dm755 "$srcdir/omim-build-release/OMaps" "$pkgdir/usr/bin/OMaps"
- install -Dm644 "organicmaps.desktop" -t "$pkgdir/usr/share/applications"
+  DESTDIR="$pkgdir" cmake --install build
+
+  rm -rf "$pkgdir"/usr/include
+  rm -rf "$pkgdir"/usr/lib
+  rm -rf "$pkgdir"/usr/share/organicmaps/data/*test*
+  rm -rf "$pkgdir"/usr/share/organicmaps/data/.Trash
 }
