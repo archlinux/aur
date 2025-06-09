@@ -1,16 +1,17 @@
 pkgbase = wxhexeditor-git
 	pkgdesc = A free hex editor / disk editor for Linux, Windows and MacOSX
-	pkgver = 0.25.r98.gc22ce20
+	pkgver = 0.25.r109.gf439d8f
 	pkgrel = 1
 	url = http://www.wxhexeditor.org
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = python
 	makedepends = git
-	depends = wxgtk3
-	depends = webkit2gtk
+	depends = glibc
 	depends = gcc-libs
+	depends = wxwidgets-common
+	depends = wxwidgets-gtk3
 	optdepends = gksu: For root access support
 	optdepends = polkit: For root access support
 	provides = wxhexeditor=0.25
