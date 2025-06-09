@@ -1,12 +1,12 @@
 pkgbase = hasura-cli-bin
 	pkgdesc = Hasura CLI util binary
-	pkgver = 2.47.0
+	pkgver = 2.48.1
 	pkgrel = 1
 	url = https://hasura.io/docs/latest/hasura-cli/overview/
 	arch = x86_64
 	license = Apache-2.0
 	options = !strip
-	source = hasura-cli-2.47.0::https://github.com/hasura/graphql-engine/releases/download/v2.47.0/cli-hasura-linux-amd64
-	sha256sums = e1beb64a22ee90af6d1375bfd4d20a1f867706ab2c2090c7ecbda284bff77db6
+	source = hasura-cli-2.48.1::https://github.com/hasura/graphql-engine/releases/download/v2.48.1/cli-hasura-linux-amd64
+	sha256sums = 4ea0d1e00d1a70687e4f15bde8bdf1850c151f0fe71113e4c766b55dd80b96f1
 
 pkgname = hasura-cli-bin
