@@ -3,7 +3,7 @@
 
 pkgname=mesa-fp8-git
 pkgdesc="Semi-reguraly updated mainline mesa with fp8 hacks"
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 arch=('x86_64')
 makedepends=(
