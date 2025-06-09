@@ -4,8 +4,8 @@
 
 _gitname=Apktool
 pkgname=android-apktool-git
-pkgver=2.2.4.r5.g2f387288
-pkgrel=2
+pkgver=2.11.1.r23.g42f94d54
+pkgrel=1
 pkgdesc="a tool for reengineering Android apk files"
 arch=(any)
 url="https://ibotpeaches.github.io/Apktool/"
@@ -37,5 +37,5 @@ package() {
   cd "$srcdir/$_gitname"
   mkdir -p "${pkgdir}"/usr/bin
   install -m 0755 "${srcdir}/$_gitname/scripts/linux/apktool" "${pkgdir}"/usr/bin
-  install -m 0644 "${srcdir}/$_gitname/brut.apktool/apktool-cli/build/libs/apktool"*"small.jar" "${pkgdir}"/usr/bin/apktool.jar
+  install -m 0644 "${srcdir}/$_gitname/brut.apktool/apktool-cli/build/libs/apktool-cli.jar" "${pkgdir}"/usr/bin/apktool.jar
 }
