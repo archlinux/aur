@@ -2,14 +2,14 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=aw87559-firmware
-pkgver=f71b944
+pkgver=db5e862
 pkgrel=1
 pkgdesc='Firmware for Awinic aw87559 audio device (taken from OrangePI firmware)'
 arch=('x86_64')
 license=('unknown')
 _filename='aw87xxx_acf.bin'
 source=(
-	"$_filename::https://github.com/orangepi-xunlong/firmware/raw/$pkgver/$_filename"
+	"$_filename::https://github.com/orangepi-xunlong/firmware/raw/master/$pkgver/$_filename"
 )
 sha256sums=(
 	'7db2c6eaca3135d732c2e635388e87cb49fc998b3f9a859c2a891ee78797eba3'
