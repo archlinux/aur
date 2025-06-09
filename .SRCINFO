@@ -1,7 +1,7 @@
 pkgbase = cobang
 	pkgdesc = A QR code scanner desktop app for Linux
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hongquan/CoBang
 	arch = any
 	license = GPL-3.0-or-later
@@ -9,7 +9,7 @@ pkgbase = cobang
 	makedepends = gobject-introspection
 	makedepends = meson
 	depends = adwaita-icon-theme
-	depends = gst-plugin-gtk
+	depends = gst-plugin-gtk4
 	depends = gst-plugins-good
 	depends = gst-python
 	depends = gtk4
