@@ -3,7 +3,7 @@
 pkgbase=python-tweakwcs
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.8.10
+pkgver=0.8.11
 pkgrel=1
 pkgdesc="A package for correcting alignment errors in WCS objects"
 arch=('any')
@@ -21,7 +21,7 @@ checkdepends=('python-pytest-doctestplus'
               'python-sphinx')
 # 'python-codecov'-cov 'python-stsci.imagestats'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('3846c7f76b66b5bae801725f8ed4c486')
+md5sums=('1d76b70daa3be560cb7a106a95a0ce41')
 
 get_pyinfo() {
     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
