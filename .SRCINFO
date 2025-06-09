@@ -1,12 +1,12 @@
 pkgbase = ttf-andika
 	pkgdesc = A sans serif, Unicode-compliant font designed especially for literacy use
 	pkgver = 7.000
-	pkgrel = 1
-	url = https://software.sil.org/andika/
+	pkgrel = 2
+	url = https://software.sil.org/andika
 	arch = any
-	license = OFL
+	license = OFL-1.1-RFN
 	conflicts = ttf-sil-fonts<=6
-	source = https://software.sil.org/downloads/r/andika/Andika-7.000.zip
+	source = http://software.sil.org/downloads/r/andika/Andika-7.000.zip
 	sha256sums = 88ba6ea41ef4a8e5214b090df8fa2983be1babe4843efaa99cdb6078b0e2c070
 
 pkgname = ttf-andika
