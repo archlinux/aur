@@ -3,7 +3,7 @@
 
 pkgname=sponge
 pkgver=1.13.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A powerful and easy-to-use Go development framework that enables you to effortlessly build high-performance, highly available backend service systems through a 'low-code' approach."
 arch=(any)
 url="https://github.com/go-dev-frame/sponge"
@@ -15,7 +15,7 @@ sha1sums=('f5e105d003d22b4b089f7d48af33b8f4fd276e5e')
 build() {
     mkdir -vp $pkgname-$pkgver/build
     cd "$pkgname-$pkgver"
-    CGO_ENABLED=0 go build -ldflags "all=-s -w" ./cmd/sponge
+    go build -ldflags "all=-s -w" ./cmd/sponge
     export GOBIN=$PWD/build
     make install
     cd cmd/protoc-gen-json-field
