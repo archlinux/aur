@@ -1,0 +1,13 @@
+pkgbase = estedad-mad-fonts
+	pkgdesc = An English-Arabic font.
+	pkgver = 1.1v
+	pkgrel = 1
+	url = https://github.com/MDarvishi5124/Estedad-Mad/
+	arch = any
+	license = OFL
+	provides = estedad-mad
+	provides = estedad-mad-fonts
+	source = https://github.com/MDarvishi5124/Estedad-Mad/archive/refs/tags/1.1v.tar.gz
+	sha256sums = d110000f2b90a622af541767eb429392fbef5398641e3d389818c18e2a065024
+
+pkgname = estedad-mad-fonts
