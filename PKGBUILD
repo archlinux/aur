@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-mistral-common
 _pkgname=mistral-common
-pkgver=1.5.6
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="set of tools to help you work with Mistral models"
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
 )
 source=("https://files.pythonhosted.org/packages/source/m/mistral-common/mistral_common-${pkgver}.tar.gz")
 
-sha256sums=('4dab9243068432114a15f2c46ff4916a05620a722b0df8deb49dcf383fb7e2bf')
+sha256sums=('7abde886f9346a395e017a12c8f943eb9832f14c554b4128dfd61e96866f5af5')
 
 build() {
   cd "mistral_common-${pkgver}"
@@ -35,6 +35,6 @@ build() {
 package() {
   cd "mistral_common-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENCE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+#  install -Dm644 LICENCE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE # missing in 1.6.0
 }
 # vim:set ts=2 sw=2 et:
