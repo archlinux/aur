@@ -3,12 +3,11 @@
 # Maintainer: Jia Li <lijia1608@gmail.com>
 pkgname=libcint
 pkgver=6.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="General GTO integrals for quantum chemistry"
 arch=(i686 x86_64)
 url="https://github.com/sunqm/libcint"
 license=('Apache-2.0')
-depends=('blas')
 makedepends=('cmake' 'gcc-fortran')
 checkdepends=('python' 'python-numpy')
 optdepends=('clisp: for common lisp scripts.')
@@ -22,7 +21,8 @@ build() {
           -DWITH_F12=ON -DWITH_RANGE_COULOMB=1 -DWITH_COULOMB_ERF=1 \
           -DENABLE_EXAMPLE=1 -DENABLE_TEST=1 \
           -DCMAKE_INSTALL_LIBDIR:PATH="lib" \
-          -DCMAKE_INSTALL_PREFIX:PATH="/usr"
+          -DCMAKE_INSTALL_PREFIX:PATH="/usr" \
+          -DCMAKE_C_STANDARD=99
     cmake --build build
 }
 
