@@ -1,6 +1,6 @@
 pkgbase = uutils-coreutils-git
 	pkgdesc = Rust rewrite of coreutils
-	pkgver = 0.1.0.r131.g040532a
+	pkgver = 0.1.0.r251.g3b225aa
 	pkgrel = 1
 	url = https://github.com/uutils/coreutils
 	arch = x86_64
@@ -12,10 +12,9 @@ pkgbase = uutils-coreutils-git
 	depends = oniguruma
 	provides = uutils-coreutils
 	conflicts = uutils-coreutils
+	conflicts = libselinux
 	options = !lto
 	source = uutils-coreutils::git+https://github.com/uutils/coreutils.git
-	source = https://gitlab.archlinux.org/archlinux/packaging/packages/uutils-coreutils/-/raw/main/disable_selinux.patch
 	sha256sums = SKIP
-	sha256sums = 302614165d99f04600627222ddad0444a0144fcad6a1ff59ad43fb0b3162060e
 
 pkgname = uutils-coreutils-git
