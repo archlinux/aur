@@ -1,0 +1,4 @@
+[ttf-andika]
+source = "regex"
+url = "https://software.sil.org/andika/download/"
+regex = 'Andika-(\d+\.\d+)\.zip'
