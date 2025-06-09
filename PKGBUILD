@@ -37,7 +37,7 @@ prepare() {
 
     for p in $srcdir/*.patch; do
         echo "Patching with ${p}"
-        patch -p1 -N -i $p
+        patch --no-backup-if-mismatch -p1 -N -i $p
     done
 }
 
