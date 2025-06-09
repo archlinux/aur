@@ -1,7 +1,7 @@
 pkgbase = stm32cubemonitor
 	pkgdesc = Graphical software for helping debug and diagnose STM32 applications while they are running by reading and displaying their variables in real-time
-	pkgver = 1.9.0
-	pkgrel = 2
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = https://www.st.com/en/development-tools/stm32cubemonitor.html
 	arch = x86_64
 	license = custom:SLA0048
@@ -15,9 +15,9 @@ pkgbase = stm32cubemonitor
 	depends = util-linux-libs
 	depends = stlink
 	options = !strip
-	source = en.stm32cubemon-lin-v-1-9-0.zip::https://www.st.com/content/ccc/resource/technical/software/sw_development_suite/group1/95/37/7e/37/8d/49/40/e7/stm32cubemon-lin-v-1-9-0/files/stm32cubemon-lin-v-1-9-0.zip/jcr:content/translations/en.stm32cubemon-lin-v-1-9-0.zip
+	source = en.stm32cubemon-lin-v-1-10-0.zip::https://www.st.com/content/ccc/resource/technical/software/sw_development_suite/group1/8e/7a/75/00/6d/06/41/07/stm32cubemon-lin-v-1-10-0/files/stm32cubemon-lin-v-1-10-0.zip/jcr:content/translations/en.stm32cubemon-lin-v-1-10-0.zip
 	source = http_headers
-	sha256sums = efd5f4ce5cc9b5b44f2be90fd469559f081c6c28f1fe4a095af698b9dccc4adf
-	sha256sums = 4fc6f177425adbd491cbb7326969a4e77a78588c30e674a1e3455981ad523c40
+	sha256sums = 571de07e86bc493b65f967ff4bee8bf565a65a215af6bbfdce872cc71f26bc50
+	sha256sums = 177c920f68668f7a435e952b265163fe25376ae6332dcb4f924931370b113fed
 
 pkgname = stm32cubemonitor

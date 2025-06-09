@@ -3,9 +3,9 @@
 
 pkgname=stm32cubemonitor
 _pkgname=STM32CubeMon
-_pkg_file_name=en.stm32cubemon-lin-v-1-9-0.zip
-pkgver=1.9.0
-pkgrel=2
+_pkg_file_name=en.stm32cubemon-lin-v-1-10-0.zip
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="Graphical software for helping debug and diagnose STM32 applications while they are running by reading and displaying their variables in real-time"
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubemonitor.html"
@@ -32,8 +32,8 @@ DLAGENTS=("https::/usr/bin/curl \
               
 source=("${_pkg_file_name}"::"$_download_path"
       	"http_headers")
-sha256sums=('efd5f4ce5cc9b5b44f2be90fd469559f081c6c28f1fe4a095af698b9dccc4adf'
-            '4fc6f177425adbd491cbb7326969a4e77a78588c30e674a1e3455981ad523c40')
+sha256sums=('571de07e86bc493b65f967ff4bee8bf565a65a215af6bbfdce872cc71f26bc50'
+            '177c920f68668f7a435e952b265163fe25376ae6332dcb4f924931370b113fed')
 
 prepare() {
   install -dm755 build
