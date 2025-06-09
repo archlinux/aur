@@ -6,12 +6,12 @@
 # Release versions are often broken. We can pull patches from future commits
 # or just use a working commit
 _commit=''
-_commit='#commit=b17fffe099ebe26759100fc722b66b8b218b287b'
+#_commit='#commit=b17fffe099ebe26759100fc722b66b8b218b287b'
 
 set -u
 pkgname='ckmame'
 #pkgname+='-git'
-pkgver=2.1.r9.gb17fffe
+pkgver=3.0
 pkgrel=1
 pkgdesc='check ROM sets for MAME'
 arch=('i686' 'x86_64')
@@ -32,8 +32,8 @@ source=(
   #"0000-DatDb.h-optional.patch::${_giturl}/commit/932308538325e7036b8223631a201909064fc036.patch"
   #"0001-Command.cc-compat-getprogname.patch::${_giturl}/commit/a8fe3862c921e9648342361ccbdfe8eaa785a83b.patch"
 )
-md5sums=('9fa3bce66ccefda200ba51fe802db0dc')
-sha256sums=('d62e63f639084484d0fac8f215703b32f6d3c8e16f443d3340b7b54bfa37183a')
+md5sums=('3dae8ce2d2327784bdfbb56a60a415d8')
+sha256sums=('9a0a2b364fec534aade6adb4afdcd50b6ee0a9e12312846edac446e0091d5ec3')
 
 if [ "${pkgname%-git}" != "${pkgname}" ] || [ ! -z "${_commit}" ]; then
   source[0]="git+${_giturl}.git${_commit}"

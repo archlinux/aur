@@ -1,6 +1,6 @@
 pkgbase = ckmame
 	pkgdesc = check ROM sets for MAME
-	pkgver = 2.1.r9.gb17fffe
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://www.nih.at/ckmame/
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = ckmame
 	license = MIT
 	checkdepends = perl
 	makedepends = cmake
-	makedepends = git
 	depends = glibc
 	depends = gcc-libs
 	depends = zlib>=1.1.2
@@ -16,10 +15,8 @@ pkgbase = ckmame
 	depends = libzip>=1.8.0
 	depends = sqlite3
 	depends = libarchive
-	provides = ckmame=2.1
-	conflicts = ckmame
-	source = git+https://github.com/nih-at/ckmame.git#commit=b17fffe099ebe26759100fc722b66b8b218b287b
-	md5sums = SKIP
-	sha256sums = SKIP
+	source = https://www.nih.at/ckmame/ckmame-3.0.tar.xz
+	md5sums = 3dae8ce2d2327784bdfbb56a60a415d8
+	sha256sums = 9a0a2b364fec534aade6adb4afdcd50b6ee0a9e12312846edac446e0091d5ec3
 
 pkgname = ckmame
