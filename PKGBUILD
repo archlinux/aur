@@ -7,7 +7,7 @@ arch=('x86_64')
 makedepends=('git' 'cargo' 'clang' 'mold')
 license=('MIT-0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ba8767886022de33f9c7154aebac67308435c1368644fb2ebd1ca867bb5ae898')
+sha256sums=('139672256ad1bab30d9ccd5654c124a1a1f90991a6b3ebbf4a00e9191379f044')
 options=('!lto')
 
 build() {
