@@ -25,8 +25,8 @@ pkgver() {
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-RUSTONIG_DYNAMIC_LIBONIG=1
-RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) ${RUSTFLAGS} --remap-path-prefix=${srcdir}="
+export RUSTONIG_DYNAMIC_LIBONIG=1
+export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) ${RUSTFLAGS} --remap-path-prefix=${srcdir}="
 
 #build() { cause build twice
 #  cd $_pkgname
