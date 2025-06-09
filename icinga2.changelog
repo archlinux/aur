@@ -1,3 +1,7 @@
+2.14.6-1
+  - New upstream version 2.14.6
+  - Includes a fix for CVE-2025-48057, however, Arch Linux is not affected
+
 2.14.5-2
   - Add patch to allow building with Boost 1.87 (and later)
   - Add patch to allow building with CMake 4.0
