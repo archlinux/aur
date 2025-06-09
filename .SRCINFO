@@ -1,9 +1,8 @@
 pkgbase = facetimehd-firmware
 	pkgdesc = Firmware for the FacetimeHD (Broadcom 1570) PCIe webcam
 	pkgver = 1.43_5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
-	url = https://github.com/patjak/facetimehd-firmware
 	arch = any
 	license = LicenseRef-Apple
 	makedepends = cpio

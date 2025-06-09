@@ -1,13 +1,15 @@
 # Maintainer: Harrison <contact@htv04.com>
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 
+## extraction reference
+# https://github.com/patjak/facetimehd-firmware
+
 _pkgname="facetimehd-firmware"
 pkgname="$_pkgname"
 pkgver=1.43_5
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Firmware for the FacetimeHD (Broadcom 1570) PCIe webcam'
-url='https://github.com/patjak/facetimehd-firmware'
 license=('LicenseRef-Apple')
 arch=('any')
 
@@ -23,8 +25,8 @@ _pkgsrc="$_pkgname"
 source=('LicenseRef-Apple.tar.xz')
 sha256sums=('SKIP')
 
-build() {
-  local URL RANGE OSX_DRV OSX_DRV_DIR FILE DRV_HASH FW_HASH OFFSET SIZE
+prepare() (
+  # partial download because dmg is 723 MiB
   URL="https://updates.cdn-apple.com/2019/cert/041-88431-20191011-e7ee7d98-2878-4cd9-bc0a-d98b3a1e24b1/OSXUpd10.11.5.dmg"
   RANGE=204909802-207733123
   OSX_DRV=AppleCameraInterface
@@ -49,7 +51,7 @@ build() {
 $DRV_HASH  $OSX_DRV
 $FW_HASH  firmware.bin
 END
-}
+)
 
 check() {
   sha256sum -c firmware.sha256
