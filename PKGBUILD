@@ -3,12 +3,12 @@
 # Contributor: Dlani
 pkgname=feishin
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern self-hosted music player.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jeffvli/feishin'
 license=('GPL-3.0-only')
-makedepends=('pnpm')
+makedepends=('pnpm' 'git')
 optdepends=('mpv: Alternative audio backend')
 conflicts=('feishin-git' 'feishin-bin')
 source=("git+${url}.git#tag=v${pkgver}"
