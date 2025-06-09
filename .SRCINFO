@@ -1,15 +1,16 @@
 pkgbase = turnon
 	pkgdesc = Turn on devices in your local network
-	pkgver = 2.6.3
+	pkgver = 2.7.1
 	pkgrel = 1
-	url = https://github.com/swsnr/turnon
+	url = https://codeberg.org/swsnr/turnon
 	arch = x86_64
 	arch = aarch64
-	license = MPL-2.0
+	license = EUPL-1.2
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
 	makedepends = blueprint-compiler
+	makedepends = just
 	depends = libadwaita
 	depends = gtk4
 	depends = hicolor-icon-theme
@@ -18,7 +19,7 @@ pkgbase = turnon
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
-	source = git+https://github.com/swsnr/turnon.git#tag=v2.6.3
-	md5sums = 50ffac4736a64f86d71a8753ecc7e559
+	source = git+https://codeberg.org/swsnr/turnon.git#tag=v2.7.1
+	md5sums = e2e6835b08427a1002144df4c5874b50
 
 pkgname = turnon
