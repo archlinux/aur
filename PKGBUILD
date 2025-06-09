@@ -5,7 +5,7 @@
 pkgname='python-whenever-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.8.2.r0.ge7e0178
+pkgver=0.8.5.r0.g46799e2
 pkgrel=1
 pkgdesc='Modern datetime library for Python (development version)'
 arch=('aarch64' 'x86_64')
