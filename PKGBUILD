@@ -24,6 +24,10 @@ _common_package() {
     install -Dm 644 "$_pkgname".info -t "$pkgdir/usr/share/info/"
 }
 
+check() {
+    ./hledger test
+}
+
 package_hledger-bin() {
     pkgdesc='Command-line interface for the hledger accounting system'
     provides=(hledger="$pkgver")
