@@ -1,7 +1,7 @@
 # Maintainer: Erik Reider <erik.reider@protonmail.com>
 pkgname="swayfx-git"
 pkgver=r7069.03a07969
-pkgrel=1
+pkgrel=2
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
 makedepends=(
@@ -16,7 +16,7 @@ depends=(
 	"gdk-pixbuf2"
 	"libevdev.so"
 	"libinput"
-	"libscenefx-0.2.so"
+	"libscenefx-0.3.so"
 	"libjson-c.so"
 	"libpixman-1.so"
 	"libudev.so"
