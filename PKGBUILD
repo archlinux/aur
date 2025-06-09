@@ -53,7 +53,7 @@ package() {
   install -Dm 644 "${pkgdir}/opt/vpinball/assets/vpinball.png"  "${pkgdir}/usr/share/icons/hicolor/128x128/apps/vpinball.png"
   install -Dm 644 "${srcdir}/vpinball.desktop"			"${pkgdir}/usr/share/applications/vpinball.desktop"
   install -Dm 644 "${srcdir}/visualpinball_screen1.jpg"		"${pkgdir}/usr/share/pixmaps/visualpinball_screen1.jpg"
-  install -Dm 644 "${srcdir}/vpinball/LICENSE"			"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 "${srcdir}/${pkgname}/LICENSE"		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }  # package
 
 post_install() {
