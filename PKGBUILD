@@ -3,9 +3,9 @@
 pkgname=eclipse-rcp-bin
 _pkgname=eclipse-rcp
 epoch=1
-pkgver=4.35
+pkgver=4.36
 pkgrel=1
-_release=2025-03/R
+_release=2025-06/R
 pkgdesc="IDE for Rich Client Platform (RCP) and Remote Application Platform (RAP)"
 arch=('x86_64')
 url="https://eclipse.org/ide"
@@ -19,7 +19,7 @@ optdepends=('libsecret: password storage'
 _srcfilename="$_pkgname-${_release//\//-}-linux-gtk-$CARCH.tar.gz"
 source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename&r=1"
         "eclipse.desktop::https://raw.githubusercontent.com/eclipse-linuxtools/org.eclipse.linuxtools.eclipse-build/refs/heads/master/desktopintegration/eclipse.desktop")
-sha512sums=('eb6330b58a03cf9052e2f834a2119c1c9c3ca7370f49674112b1d160d5a60c2445a39638788e81757d1cb52bf680e29610639f4cb63c0abc5905c5f227305c44'
+sha512sums=('5bd2644f598e5ed216b36dcad5d86eef1847fa7c06424cfbb1291afc4ce4d018ff5dc9524177d38669cc81a80b9a1eabf3a5751b195235da0cbbdfa45d39156c'
             '824875ab1454349a58eb2bb6fd70edd5e7a8e14a9b999372024374a1e04722398095db9bdba91b17bfb424c1e1271446f0370c79596f35fb516dbada31aebec5')
 
 options=(!strip)
