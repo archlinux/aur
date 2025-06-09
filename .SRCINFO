@@ -1,7 +1,7 @@
 pkgbase = sway-scroll-git
 	pkgdesc = Fork of the sway Wayland compositor with a scrolling layout like PaperWM or niri (git development version)
 	pkgver = .r7546.c33803e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dawsers/scroll
 	install = sway-scroll-git.install
 	arch = x86_64
