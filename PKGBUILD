@@ -22,7 +22,7 @@ makedepends=(
 	"wayland-protocols"
 )
 optdepends=()
-provides=("libscenefx-${pkgver%.*}.so")
+provides=("libscenefx-${pkgver}.so")
 conflicts=("scenefx-git")
 options=("debug")
 source=("scenefx-${pkgver}.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz")
