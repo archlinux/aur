@@ -2,8 +2,8 @@
 # Contributor: ryuukk_ <ryuukk.dev@gmail.com>
 
 pkgname=freetype2-macos
-pkgver=2.13.2
-pkgrel=5
+pkgver=2.13.3
+pkgrel=1
 epoch=
 pkgdesc="freetype2 with a patch to make it render text like on macOS"
 url="https://www.freetype.org/"
@@ -36,7 +36,7 @@ source=(
   9999-macos-like.patch
   freetype2.sh
 )
-b2sums=('cebc82180d9afaeb112a65ba78903d7bf7a9295a803166a033585ad2325add6023f05066852240c4665e56285345ba503b01ecd461d48f0478a8f3f56136988e'
+b2sums=('f9591c6998df02b072adaf38a968e91deae8ed4d53ea0cb74d08982c4f0e48b1a98c1378a698164e4f730f07a3b0bea308a94fcc2e2b8ce9967dbf9478b599bd'
         'SKIP'
         '2c148694e150b3faae9dc46ead824ae6d94cfe34f2918bc9066f45bab7e6b6f77b4d4b2fee00c3d466d866e1985132cea4a774dcf1bab95409b7cf55efff01e1'
         '9598d13eae0411878c1af8e5d875c3b1fc09f4e6649edfbbf3b0a819c4c585648521f0b30ffd1318f5106cfde9c899d3db70c8ffe36dac59f3f98b5fd7dab115'
