@@ -30,11 +30,13 @@ _giturl="https://github.com/${_gitname}/${_pkgname}"
 _verwatch=("${_giturl}/releases" "${_giturl#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 #source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz") # <=1.3.7
 source=("${_pkgname}-${pkgver}.tar.gz::${_giturl}/archive/v${pkgver}.tar.gz")
+md5sums=('a0c799f2f8d982b64a1c1a4ba3db1529')
 sha256sums=('298bef69cb1e1fa5983698081378ab54c2cb143b29d574928b0c771bc7a309a8')
 
 prepare() {
   set -u
   cd "${_pkgname}-${pkgver}"
+  export CFLAGS="${CFLAGS} -std=gnu17"
   export CXXFLAGS="${CXXFLAGS} -O2 -Wno-misleading-indentation -Wno-unused-parameter -Wno-unused-result"
   if [ -f 'autogen.sh' ]; then
     # Postgres wants a config file. Perl won't compile. Python configure claims no but is really yes. db2pdf doesn't work.
@@ -53,8 +55,7 @@ prepare() {
 build() {
   set -u
   cd "${_pkgname}-${pkgver}"
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  nice make -s -j "${_nproc}"
+  nice make # -s
   set +u
 }
 

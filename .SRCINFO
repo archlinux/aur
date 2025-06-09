@@ -14,6 +14,7 @@ pkgbase = librlib
 	provides = rlib
 	provides = libr
 	source = rlib-2.0.20.tar.gz::https://github.com/SICOM/rlib/archive/v2.0.20.tar.gz
+	md5sums = a0c799f2f8d982b64a1c1a4ba3db1529
 	sha256sums = 298bef69cb1e1fa5983698081378ab54c2cb143b29d574928b0c771bc7a309a8
 
 pkgname = librlib
