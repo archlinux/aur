@@ -18,7 +18,7 @@ source=(https://github.com/OpenIndex/ZUGFeRD-Manager/releases/download/v$pkgver/
 "zugferd-manager.desktop")
 noextract=()
 sha256sums=('f1f9b056a3dab326c690e039a3e66875b56489766d8244d7628a1845c57e4b89'
-            '0de0d22331248379027412381448e9afdc86149337d0d7fef20d6f51e37532dd')
+            '7c78cc33ffbec17981e57cf32e0189006deb1e06a00b694a1cb1473768cda822')
 
 package() {
 	install -Dm755 "${srcdir}/ZUGFeRD-Manager/bin/ZUGFeRD"* -t "${pkgdir}/opt/${pkgname}/bin"
@@ -27,7 +27,7 @@ package() {
 	cp -r "${srcdir}/ZUGFeRD-Manager/lib/"* -t "${pkgdir}/opt/${pkgname}/lib"
 	
 	mkdir m644 -p "${pkgdir}/usr/bin/"
-	ln -s "/opt/${pkgname}/bin/ZUGFeRD-Manager.sh" "${pkgdir}/usr/bin/${pkgname}"
+	ln -s "/opt/${pkgname}/bin/ZUGFeRD-Manager" "${pkgdir}/usr/bin/${pkgname}"
 
 
 	install -d "${pkgdir}/usr/share/applications/"
