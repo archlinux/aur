@@ -1,5 +1,5 @@
 pkgbase = gamepadla-polling
-	pkgdesc = Unofficial Python wrapper for Nyaa anime torrent sites
+	pkgdesc = Gamepads latency and polling rate tester (XinputTest analog)
 	pkgver = 1.2.0.2
 	pkgrel = 1
 	url = https://github.com/cakama3a/Polling

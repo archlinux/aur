@@ -1,7 +1,7 @@
 pkgname=gamepadla-polling
 pkgver=1.2.0.2
 pkgrel=1
-pkgdesc="Unofficial Python wrapper for Nyaa anime torrent sites"
+pkgdesc="Gamepads latency and polling rate tester (XinputTest analog)"
 url="https://github.com/cakama3a/Polling"
 depends=('python>=3.10' 'python-requests' 'python-numpy' 'python-colorama' 'python-pygame')
 license=('MIT')
