@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-posthog
 _name=posthog-python
-pkgver=4.2.0
+pkgver=4.6.1
 pkgrel=1
 pkgdesc="Integrate PostHog into any python application."
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   'python-sentry_sdk: Django Sentry Integration'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bb95876cc12b4430336b748b4e87cb2909eecaba7b3bdc736500e80b5f54d94d')
+sha256sums=('d26d2ee9c16ced82101e1d647ec4c8963a97345cfb8efff4293749b72da48591')
 
 prepare() {
   cd "$_name-$pkgver"
@@ -47,7 +47,7 @@ prepare() {
   # Drop python-mock checkdepends
   # https://archlinux.org/todo/drop-python-mock-checkdepends/
   sed -i 's/import mock/from unittest import mock/g' \
-    posthog/test/test_{client,consumer,feature_flag_result,feature_flags,request}.py
+    posthog/test/test_{before_send,client,consumer,feature_flag_result,feature_flags,request}.py
 }
 
 build() {
