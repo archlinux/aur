@@ -1,6 +1,6 @@
 # Maintainer: dawsers <dawser at gmx dot com>
 pkgname=sway-scroll-git
-pkgver=.r7546.c33803e
+pkgver=1.12.r7546.c33803e
 pkgrel=2
 pkgdesc='Fork of the sway Wayland compositor with a scrolling layout like PaperWM or niri (git development version)'
 arch=('x86_64')
