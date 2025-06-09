@@ -1,0 +1,13 @@
+pkgbase = unixel-fonts
+	pkgdesc = An English-Arabic pixel font.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/MDarvishi5124/Unixel
+	arch = any
+	license = OFL
+	provides = unixel
+	provides = unixel-fonts
+	source = unixel-fonts-1.0.tar.gz::https://github.com/MDarvishi5124/Unixel/archive/refs/tags/1.0.tar.gz
+	sha256sums = a68feb3adad37bd708bb4bbebaa3e72111ecd20140dda585df025f7d35915d4f
+
+pkgname = unixel-fonts
