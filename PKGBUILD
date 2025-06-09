@@ -1,38 +1,40 @@
-# Maintainer:  Devin J. Pohly <djpohly+arch@gmail.com>
+# Maintainer:  nesk_aur
 # Contributor: Olivier Brunel <jjk at jjacky.com>
 # Contributor: Lukas Braun <koomi+aur at hackerspace-bamberg dot de>
 # Contributor: David Arroyo <droyo@aqwari.us>
 # Contributor: Andrew O'Neill <andrew at meanjollies dot com>
 # Contributor: Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: Josh VanderLinden <arch@cloudlery.com>
-
 pkgname=execline-musl
 _pkgname=${pkgname%-musl}
-pkgver=2.9.0.1
-pkgrel=2
+pkgver=2.9.7.0
+pkgrel=1
 pkgdesc='A (non-interactive) scripting language, like sh'
-arch=('i686' 'x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 url="http://skarnet.org/software/${_pkgname}"
 license=('ISC')
-makedepends=('skalibs-musl>=2.12.0.0' 'musl')
+makedepends=('skalibs-musl>=2.14.4.0' 'musl' 'gcc' 'links')
 provides=('execline')
 conflicts=('execline')
 options=('staticlibs')
 source=("${url}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('01260fcaf80ffbca2a94aa55ea474dfb9e39b3033b55c8af88126791879531f6')
-
+sha256sums=('73c9160efc994078d8ea5480f9161bfd1b3cf0b61f7faab704ab1898517d0207')
 build() {
   cd "${_pkgname}-${pkgver}"
-
   export CPPFLAGS='-nostdinc -isystem /usr/lib/musl/include -isystem /usr/include'
   export CC="musl-gcc"
-  ./configure --enable-static-libc --prefix=/usr --libdir=/usr/lib/execline
-  make
+  ./configure --enable-static-libc --enable-pedantic-posix --enable-multicall \
+    --prefix=/usr --libdir=/usr/lib/execline
+  make -j $(nproc)
 }
-
 package() {
   cd "${_pkgname}-${pkgver}"
-
   make DESTDIR="${pkgdir}" install
+  strip ${pkgdir}/usr/bin/execline # strip in makepkg options doesn't do it
+  rm doc/*.txt
+  for f in doc/*.html; do
+    links -dump $f|tail -n +5 > ${f%.html}.txt
+  done
+  install -Dm644 -t ${pkgdir}/usr/share/execline/doc/ doc/*.txt
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
