@@ -2,8 +2,8 @@
 
 pkgname=python-electrum_ecc
 _pkgname=electrum-ecc
-pkgver=0.0.4
-pkgrel=2
+pkgver=0.0.5
+pkgrel=1
 pkgdesc="python library for libsecp256k1, using ctypes"
 arch=('any')
 depends=(python)
