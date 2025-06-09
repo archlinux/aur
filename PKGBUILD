@@ -39,8 +39,8 @@ optdepends=(
 	'xdg-desktop-portal-gtk: Portal used for default file picking'
 	'xdg-desktop-portal-wlr: Portal used for screen sharing'
 )
-provides=("${pkgname%-git}" "wayland-compositor")
-conflicts=("${pkgname%-git}")
+provides=("sway-scroll-git" "wayland-compositor")
+conflicts=("sway-scroll-stable")
 install="${pkgname}.install"
 source=("${pkgname}::git+${url}.git"
 	"50-systemd-user.conf"
