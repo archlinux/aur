@@ -3,7 +3,7 @@
 # Contributor: Christopher Arndt <aur -at -chrisarndt -dot- de>
 
 pkgname=neural-amp-modeler-lv2
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='Neural Amp Modeler (NAM) LV2 plugin'
 arch=(x86_64)
@@ -31,7 +31,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/mikeoliphant/$pkgname/archi
         "math_approx-${_modules[math_approx]}.tar.gz::https://github.com/Chowdhury-DSP/math_approx/archive/${_modules[math_approx]}.tar.gz"
         "xsimd-${_modules[xsimd]}.tar.gz::https://github.com/xtensor-stack/xsimd/archive/${_modules[xsimd]}.tar.gz"
 )
-sha256sums=('ef571a28fc913ccc12f3cef0f6832abe3449dd66f12b2567269d3ddfed82465d'
+sha256sums=('6c7696f2a2f4afab28c34fd89ecf7b7c1d57546dc273123e75600b3af95308ea'
             'b1fcaf3ada0e90b9ba6eb633e8564413c11882d685d1e33128166946bdbdf937'
             'e732c6e204597d4059aa01f5f416034383dac13d26859b97ef4b97ba0cb3ab39'
             '76f7f6160e681acbb4dd1fff4cfc23a3b61f51f0df2f8b3b5449c010628e4013'
