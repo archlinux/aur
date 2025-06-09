@@ -1,0 +1,39 @@
+diff --color -Naur libint2/libint2-config.cmake libint2/libint2-config.cmake
+--- libint2/libint2-config.cmake	2025-06-09 15:12:37.000000000 +0300
++++ libint2/libint2-config.cmake	2025-06-09 15:26:15.325871312 +0300
+@@ -96,9 +96,7 @@
+ 
+ # alias new target names to old namespaced targets
+ alias_target(Libint2::int2 Libint2::libint2)
+-alias_target(Libint2::int2-static Libint2::libint2-static)
+ alias_target(Libint2::Eigen Libint2::libint2_Eigen)
+ alias_target(Libint2::cxx Libint2::libint2_cxx)
+-alias_target(Libint2::cxx-static Libint2::libint2_cxx-static)
+ 
+ set(LIBINT2_FOUND TRUE)
+diff --color -Naur libint2/libint2-targets.cmake libint2/libint2-targets.cmake
+--- libint2/libint2-targets.cmake	2025-06-09 15:24:05.674291466 +0300
++++ libint2/libint2-targets.cmake	2025-06-09 15:27:39.582830911 +0300
+@@ -19,7 +19,7 @@
+ set(_cmake_targets_defined "")
+ set(_cmake_targets_not_defined "")
+ set(_cmake_expected_targets "")
+-foreach(_cmake_expected_target IN ITEMS Libint2::libint2_Eigen Libint2::libint2-static Libint2::libint2 Libint2::libint2_cxx_prerequisites Libint2::libint2_cxx Libint2::libint2_cxx-static)
++foreach(_cmake_expected_target IN ITEMS Libint2::libint2_Eigen Libint2::libint2 Libint2::libint2_cxx_prerequisites Libint2::libint2_cxx)
+   list(APPEND _cmake_expected_targets "${_cmake_expected_target}")
+   if(TARGET "${_cmake_expected_target}")
+     list(APPEND _cmake_targets_defined "${_cmake_expected_target}")
+@@ -95,13 +95,6 @@
+   INTERFACE_LINK_LIBRARIES "Libint2::libint2_cxx_prerequisites;Libint2::libint2"
+ )
+ 
+-# Create imported target Libint2::libint2_cxx-static
+-add_library(Libint2::libint2_cxx-static INTERFACE IMPORTED)
+-
+-set_target_properties(Libint2::libint2_cxx-static PROPERTIES
+-  INTERFACE_LINK_LIBRARIES "Libint2::libint2_cxx_prerequisites;Libint2::libint2-static"
+-)
+-
+ # Load information for each installed configuration.
+ file(GLOB _cmake_config_files "${CMAKE_CURRENT_LIST_DIR}/libint2-targets-*.cmake")
+ foreach(_cmake_config_file IN LISTS _cmake_config_files)
