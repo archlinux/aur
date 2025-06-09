@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/makepkg -p
 
 # Maintainer: dreieck
 
