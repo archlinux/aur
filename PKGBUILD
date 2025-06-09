@@ -7,12 +7,12 @@
 set -u
 pkgname='wxhexeditor'
 pkgver=0.24
-pkgrel=4
+pkgrel=5
 pkgdesc='A free hex editor / disk editor for Linux, Windows and MacOSX'
 arch=('i686' 'x86_64')
 url='http://www.wxhexeditor.org'
-license=('GPL2')
-depends=('wxgtk3')
+license=('GPL-2.0-only')
+depends=('glibc' 'gcc-libs' 'wxwidgets-common' 'wxwidgets-gtk3')
 makedepends=('python')
 optdepends=('gksu: For root access support'
             'polkit: For root access support')
@@ -40,6 +40,7 @@ build() {
   set -u
   cd "${_srcdir}"
   test -x '/usr/bin/wx-config' || echo "${}"
+  export CFLAGS="${CFLAGS} -std=gnu17"
   make -s WXCONFIG='/usr/bin/wx-config'
   set +u
 }
