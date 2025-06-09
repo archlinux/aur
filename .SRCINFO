@@ -1,6 +1,6 @@
 pkgbase = webcamize
 	pkgdesc = Use (almost) any camera as a webcam
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/cowtoolz/webcamize
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = webcamize
 	depends = kmod
 	depends = linux-headers
 	depends = v4l2loopback-dkms
-	source = webcamize-2.0.0::git+https://github.com/cowtoolz/webcamize.git#tag=v2.0.0
+	source = webcamize-2.0.1::git+https://github.com/cowtoolz/webcamize.git#tag=v2.0.1
 	md5sums = SKIP
 
 pkgname = webcamize

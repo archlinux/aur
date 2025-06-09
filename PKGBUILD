@@ -1,6 +1,6 @@
 # Maintainer: W. Turner Abney <wta at ieee dot org>
 pkgname=webcamize
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Use (almost) any camera as a webcam"
 arch=('any')
