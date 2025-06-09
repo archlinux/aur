@@ -10,6 +10,11 @@ url='http://www.tt-forums.net/viewtopic.php?f=33&t=73469'
 license=(GPL-3.0-only)
 makedepends=(cmake ninja)
 depends=(fluidsynth fontconfig hicolor-icon-theme lzo sdl2-compat)
+optdepends=(
+  'openttd-jgrpp-opengfx: free graphics'
+  'openttd-jgrpp-opensfx: free sound set'
+  'openttd-jgrpp-openmsx: free music set'
+)
 options=(!debug !lto)
 source=("https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-$pkgver.tar.gz")
 b2sums=('1dd5e2503c6887ae28acd98d4703149e90422052caca1304bfe4ec3c285bce1f7587f2d0f4e58ebc8c670bd4a90e862e2b235953038b3f071aa880ac3eaae223')
