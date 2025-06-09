@@ -1,5 +1,8 @@
-/pkg
-/src
-*.pkg.tar.xz
-*.pkg.tar.zst
-*.tar.gz
+*
+!.gitignore
+!.nvchecker.toml
+!.SRCINFO
+!update-systemd-resolved.install
+!update-systemd-resolved.rules
+!LICENSE
+!PKGBUILD

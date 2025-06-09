@@ -1,0 +1,5 @@
+[update-systemd-resolved]
+source = "github"
+github = "jonathanio/update-systemd-resolved"
+use_latest_release = true
+prefix = "v"
