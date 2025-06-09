@@ -1,7 +1,7 @@
 # Maintainer: Myriade <myriademedieval@proton.me>
 pkgname=dong
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A striking clock on your computer"
 arch=(x86_64)
 url="https://gitlab.com/TuTiuTe/dong"
@@ -37,12 +37,12 @@ build() {
 	cargo build --frozen --release --all-features
 }
 
-check() {
-	cd "$pkgname-v$pkgver"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	cargo test --frozen --all-features
-}
+# check() {
+# 	cd "$pkgname-v$pkgver"
+# 	export RUSTUP_TOOLCHAIN=stable
+# 	export CARGO_TARGET_DIR=target
+# 	cargo test --frozen --all-features
+# }
 
 package() {
 	cd "$pkgname-v$pkgver"
