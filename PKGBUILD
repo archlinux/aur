@@ -1,6 +1,6 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Maintainer: Donald Webster <fryfrog@gmail.com>
-# Helpful URL: https://prowlarr.servarr.com/v1/update/master?version=0.0.0.0&os=linux&runtime=netcore&arch=x64
+# Helpful URL: https://prowlarr.servarr.com/v1/update/master?version=0.0.0.0&os=linux&runtime=netcore&arch=x64&includeMajorVersion=true
 
 pkgname=prowlarr-bin
 pkgver=1.37.0.5076
