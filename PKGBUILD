@@ -8,6 +8,7 @@ license=('MIT-0')
 source=("catbox::$url/releases/download/$pkgver/catbox")
 sha256sums=('sha256:2bb56c414f03c01c8e1fddb944672543ba2952e160da0925c6fd46db83e81b85')
 options=('!lto')
+provides=('catbox')
 conflicts=('catbox' 'catbox-git')
 
 package() {

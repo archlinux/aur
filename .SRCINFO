@@ -5,6 +5,7 @@ pkgbase = catbox-bin
 	url = https://github.com/APT37/catbox
 	arch = x86_64
 	license = MIT-0
+	provides = catbox
 	conflicts = catbox
 	conflicts = catbox-git
 	options = !lto
