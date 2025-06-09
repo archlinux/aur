@@ -1,21 +1,20 @@
 # Maintainer: fam007e <faisalmoshiur@gmail.com>
 # Contributor: Maxim Sobolev <sobomax@FreeBSD.org>
-
 pkgname=libexecinfo
 pkgver=1.1.0
-pkgrel=1
+pkgrel=13
 pkgdesc="BSD-licensed clone of backtrace facility found in GNU libc"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/fam007e/libexecinfo"
 license=('BSD')
 depends=('glibc')
-makedepends=('python')
+makedepends=()
 provides=('libexecinfo.so')
 conflicts=('libexecinfo-git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/fam007e/libexecinfo/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/fam007e/libexecinfo/releases/download/v$pkgver.$pkgrel/$pkgname-$pkgver.tar.gz"
         "libexecinfo.pc.in")
-sha256sums=('SKIP'  
-            'SKIP') 
+sha256sums=('8845169352088a02522ab779a5d3706449eea56cc5e24a67aaf2e19980518291'
+            '5e67fc815189d99d1493c1f936ac1509537e394fd7f8c74404d746144636a1a2') 
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"

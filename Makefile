@@ -28,29 +28,45 @@ CFLAGS ?= -O2 -g
 LDFLAGS ?=
 
 # Security and modern compiler flags
-SECURITY_CFLAGS = -fstack-protector-strong -D_FORTIFY_SOURCE=2 \
-                  -fPIC -Wall -Wextra -Wformat=2 -Wformat-security \
-                  -Wnull-dereference -Wstack-protector -Wtrampolines
+ifeq ($(DEBUG), 1)
+    SECURITY_CFLAGS = -fstack-protector-strong \
+                      -fPIC -Wall -Wextra -Wformat=2 -Wformat-security \
+                      -Wnull-dereference -Wstack-protector -Wtrampolines \
+                      -fsanitize=address \
+                      -fno-omit-frame-pointer
+    SECURITY_LDFLAGS = -fsanitize=address
+else
+    SECURITY_CFLAGS = -fstack-protector-strong -D_FORTIFY_SOURCE=2 \
+                      -fPIC -Wall -Wextra -Wformat=2 -Wformat-security \
+                      -Wnull-dereference -Wstack-protector -Wtrampolines \
+                      -fno-omit-frame-pointer
+    SECURITY_LDFLAGS =
+endif
 
 # Standard compliance
 STD_CFLAGS = -std=gnu11
 
-# Architecture-specific optimizations
-ARCH_CFLAGS = -march=native -mtune=native
-
 # Debug vs Release
 DEBUG ?= 0
+
 ifeq ($(DEBUG), 1)
-    BUILD_CFLAGS = -O0 -g3 -DDEBUG -fsanitize=address -fsanitize=undefined
-    BUILD_LDFLAGS = -fsanitize=address -fsanitize=undefined
+    SECURITY_CFLAGS = -fstack-protector-strong \
+                      -fPIC -Wall -Wextra -Wformat=2 -Wformat-security \
+                      -Wnull-dereference -Wstack-protector -Wtrampolines \
+                      -fsanitize=address \
+                      -fno-omit-frame-pointer
+    SECURITY_LDFLAGS = -fsanitize=address
 else
-    BUILD_CFLAGS = -O2 -g -DNDEBUG -flto
-    BUILD_LDFLAGS = -flto -Wl,-O1 -Wl,--as-needed -Wl,-z,relro -Wl,-z,now
+    SECURITY_CFLAGS = -fstack-protector-strong -D_FORTIFY_SOURCE=2 \
+                      -fPIC -Wall -Wextra -Wformat=2 -Wformat-security \
+                      -Wnull-dereference -Wstack-protector -Wtrampolines \
+                      -fno-omit-frame-pointer
+    SECURITY_LDFLAGS =
 endif
 
 # Final flags
 EXECINFO_CFLAGS = $(CPPFLAGS) $(CFLAGS) $(STD_CFLAGS) $(SECURITY_CFLAGS) \
-                  $(BUILD_CFLAGS) -c
+                  $(BUILD_CFLAGS) $(ARCH_CFLAGS) -Wno-frame-address -c
 EXECINFO_LDFLAGS = $(LDFLAGS) $(BUILD_LDFLAGS)
 
 # Source files
@@ -66,7 +82,7 @@ STATIC_LIB = libexecinfo.a
 SHARED_LIB = libexecinfo.so.$(VERSION)
 TEST_BINARY = test
 
-.PHONY: all static dynamic test clean install install-static install-dynamic \
+.PHONY: all static dynamic test test-dynamic clean install install-static install-dynamic \
         install-headers install-pkgconfig uninstall help generate
 
 # Default target
@@ -88,7 +104,7 @@ $(STATIC_LIB): $(OBJECTS)
 dynamic: $(SHARED_LIB)
 
 $(SHARED_LIB): $(SHARED_OBJECTS)
-	$(CC) -shared -Wl,-soname,$(SONAME) $(EXECINFO_LDFLAGS) -o $@ $^
+	$(CC) -shared -Wl,-soname,$(SONAME) $(EXECINFO_LDFLAGS) -o $@ $^ -lm -ldl
 	ln -sf $@ $(SONAME)
 	ln -sf $@ libexecinfo.so
 
@@ -103,22 +119,26 @@ $(SHARED_LIB): $(SHARED_OBJECTS)
 test: $(TEST_BINARY)
 
 $(TEST_BINARY): test.c $(STATIC_LIB)
-	$(CC) $(CFLAGS) $(STD_CFLAGS) -o $@ $< -L. -lexecinfo -ldl
+	$(CC) $(CFLAGS) $(STD_CFLAGS) $(SECURITY_CFLAGS) $(SECURITY_LDFLAGS) $(BUILD_LDFLAGS) -rdynamic -o $@ $< -L. -lexecinfo -lm -ldl
 
-# Generate pkg-config file
+# Test using dynamic lib
+test-dynamic: test.c $(SHARED_LIB)
+	$(CC) $(CFLAGS) $(STD_CFLAGS) $(BUILD_LDFLAGS) -rdynamic -o $(TEST_BINARY) $< -L. -lexecinfo -lm -ldl
+
+# Pkg-config file
 libexecinfo.pc:
 	@echo "prefix=$(PREFIX)" > $@
-	@echo "exec_prefix=\$${prefix}" >> $@
+	@echo "exec_prefix=$${prefix}" >> $@
 	@echo "libdir=$(LIBDIR)" >> $@
 	@echo "includedir=$(INCLUDEDIR)" >> $@
 	@echo "" >> $@
 	@echo "Name: libexecinfo" >> $@
 	@echo "Description: BSD backtrace library" >> $@
 	@echo "Version: $(VERSION)" >> $@
-	@echo "Libs: -L\$${libdir} -lexecinfo" >> $@
-	@echo "Cflags: -I\$${includedir}" >> $@
+	@echo "Libs: -L$${libdir} -lexecinfo -lm -ldl" >> $@
+	@echo "Cflags: -I$${includedir}" >> $@
 
-# Installation targets
+# Install targets
 install: install-dynamic install-static install-headers install-pkgconfig
 
 install-static: $(STATIC_LIB)
@@ -149,7 +169,7 @@ clean:
 	rm -f *.o *.So *.a *.so *.so.* $(TEST_BINARY) libexecinfo.pc
 	rm -f $(GENERATED_FILES)
 
-# Help target
+# Help
 help:
 	@echo "libexecinfo build system"
 	@echo ""
@@ -157,14 +177,11 @@ help:
 	@echo "  all              - Build static and dynamic libraries (default)"
 	@echo "  static           - Build static library only"
 	@echo "  dynamic          - Build dynamic library only"
-	@echo "  test             - Build test program"
-	@echo "  generate         - Generate source files"
+	@echo "  test             - Build test program (static lib)"
+	@echo "  test-dynamic     - Build test program (dynamic lib)"
+	@echo "  generate         - Generate stacktraverse.c"
 	@echo "  install          - Install everything"
-	@echo "  install-static   - Install static library"
-	@echo "  install-dynamic  - Install dynamic library"
-	@echo "  install-headers  - Install header files"
-	@echo "  clean            - Remove build artifacts"
-	@echo "  help             - Show this help"
+	@echo "  clean            - Clean build artifacts"
 	@echo ""
 	@echo "Variables:"
 	@echo "  DEBUG=1          - Enable debug build with sanitizers"

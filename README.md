@@ -1,55 +1,41 @@
 # libexecinfo
 
-[![License: BSD](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)
-[![GitHub release](https://img.shields.io/github/release/fam007e/libexecinfo.svg)](https://github.com/fam007e/libexecinfo/releases)
-[![Arch Linux](https://img.shields.io/badge/Arch%20Linux-1793D1?logo=arch-linux&logoColor=fff)](https://aur.archlinux.org/packages/libexecinfo)
+[![License: BSD-2-Clause](https://img.shields.io/badge/License-BSD_2--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)
+[![Build Status](https://github.com/fam007e/libexecinfo/workflows/CI/badge.svg)](https://github.com/fam007e/libexecinfo/actions)
+[![AUR Package](https://img.shields.io/aur/version/libexecinfo)](https://aur.archlinux.org/packages/libexecinfo)
 
 A modern, BSD-licensed clone of the backtrace facility found in GNU libc. This library is primarily intended for porting Linux code to BSD platforms and other systems that don't have built-in backtrace support.
 
-## 🚀 Features
+## ✨ Features
 
-- **Fully compatible** with GNU libc's backtrace API
-- **Modern C11** implementation with enhanced security
-- **Cross-platform** support (Linux, BSD, macOS)
-- **Comprehensive testing** suite with performance benchmarks
-- **Memory safe** with proper error handling
-- **pkg-config** integration for easy project integration
-- **Extensive documentation** with usage examples
+- **Full GNU libc compatibility**: Drop-in replacement for GNU libc's backtrace API
+- **Modern C11 implementation**: Enhanced security and memory safety features
+- **Cross-platform support**: Linux, BSD, macOS, and other POSIX systems
+- **Performance optimized**: Fast backtrace capture with minimal overhead
+- **Comprehensive testing**: Extensive test suite with performance benchmarks
+- **Easy integration**: pkg-config support and build system integration
+- **Python-generated code**: Configurable stack depth with code generation
+- **Production ready**: Memory safe with proper error handling
 
-## 📚 About
+## 🚀 Quick Start
 
-This is a resurrected and modernized version of the original libexecinfo by Maxim Sobolev, updated for 2025 with:
-
-- Enhanced memory safety and security features
-- Modern build system with comprehensive testing
-- Python 3 code generation
-- Full documentation and examples
-- Arch Linux packaging support
-
-The library provides three main functions:
-- `backtrace()` - Capture stack frames
-- `backtrace_symbols()` - Convert addresses to symbol information  
-- `backtrace_symbols_fd()` - Write symbols directly to file descriptor
-
-## 🏗️ Installation
-
-### Arch Linux (Recommended)
+### Arch Linux Installation
 
 ```bash
 # Install from AUR
 yay -S libexecinfo
-
 # Or using paru
 paru -S libexecinfo
 ```
-### From Source
 
-```sh
+### Build from Source
+
+```bash
 # Clone repository
 git clone https://github.com/fam007e/libexecinfo.git
 cd libexecinfo
 
-# Generate source files
+# Generate source files (configurable stack depth)
 python gen.py --max-depth 128 --output stacktraverse.c
 
 # Build
@@ -62,14 +48,14 @@ make test
 sudo make install PREFIX=/usr
 ```
 
-### Build Requirements
+## 📋 Requirements
 
 - **C Compiler**: GCC 7+ or Clang 6+
 - **Python**: 3.6+ (for code generation)
 - **Make**: GNU Make
 - **Development tools**: Standard POSIX utilities
 
-📖 Usage
+## 📖 Usage
 
 ### Basic Example
 
@@ -82,15 +68,14 @@ void print_backtrace() {
     void *buffer[64];
     char **strings;
     int size, i;
-
+    
     size = backtrace(buffer, 64);
     strings = backtrace_symbols(buffer, size);
-
+    
     printf("Backtrace (%d frames):\n", size);
     for (i = 0; i < size; i++) {
-        printf("  [%d] %s\n", i, strings[i]);
+        printf(" [%d] %s\n", i, strings[i]);
     }
-
     free(strings);
 }
 
@@ -117,11 +102,12 @@ gcc -Wl,--export-dynamic -o myprogram myprogram.c -lexecinfo
 gcc -o myprogram myprogram.c $(pkg-config --cflags --libs libexecinfo)
 ```
 
-### Advanced Usage
+### Signal Handler Example
 
 ```c
 #include <execinfo.h>
 #include <unistd.h>
+#include <signal.h>
 
 // Signal handler for crash reports
 void crash_handler(int sig) {
@@ -133,7 +119,6 @@ void crash_handler(int sig) {
     // Write directly to stderr (safe in signal handlers)
     write(STDERR_FILENO, "Crashed! Backtrace:\n", 20);
     backtrace_symbols_fd(buffer, size, STDERR_FILENO);
-    
     exit(1);
 }
 
@@ -146,7 +131,7 @@ int main() {
 }
 ```
 
-## 🛠️ Project Integration
+## 🔧 Build System Integration
 
 ### CMake
 
@@ -189,14 +174,14 @@ make test
 make test DEBUG=0  # Optimized build for benchmarks
 ```
 
-Test coverage includes:
+**Test coverage includes:**
 - Basic functionality verification
-- Edge cases and error conditions  
+- Edge cases and error conditions
 - Memory safety validation
 - Performance benchmarks
 - Cross-platform compatibility
 
-## ⚙️ Build Configuration
+## ⚙️ Configuration
 
 ### Build Options
 
@@ -207,7 +192,7 @@ make DEBUG=1 clean all
 # Release build with optimizations
 make DEBUG=0 clean all
 
-# Custom depth (default: 128)
+# Custom stack depth (default: 128)
 python gen.py --max-depth 256 --output stacktraverse.c
 make clean all
 ```
@@ -220,11 +205,12 @@ make clean all
 - `DEBUG` - Enable debug build (0/1)
 - `PYTHON` - Python interpreter (default: python3)
 
-## 📋 API Reference
+## 📚 API Reference
 
 ### Functions
 
 #### `int backtrace(void **buffer, int size)`
+
 Capture return addresses from the current call stack.
 
 **Parameters:**
@@ -233,7 +219,8 @@ Capture return addresses from the current call stack.
 
 **Returns:** Number of addresses actually captured
 
-#### `char **backtrace_symbols(void *const *buffer, int size)`  
+#### `char **backtrace_symbols(void *const *buffer, int size)`
+
 Convert return addresses to symbolic information.
 
 **Parameters:**
@@ -243,46 +230,48 @@ Convert return addresses to symbolic information.
 **Returns:** Array of strings with symbol information (must be freed)
 
 #### `void backtrace_symbols_fd(void *const *buffer, int size, int fd)`
+
 Write symbolic backtrace directly to file descriptor.
 
 **Parameters:**
 - `buffer` - Array of return addresses from `backtrace()`
-- `size` - Number of addresses in buffer  
+- `size` - Number of addresses in buffer
 - `fd` - File descriptor to write to
 
-### Macros
+### Macros and Constants
 
 - `EXECINFO_MAX_FRAMES` - Maximum supported stack depth (128)
 - `PRINT_BACKTRACE()` - Convenience macro to print backtrace to stderr
 - `EXECINFO_VERSION_*` - Version information macros
 
-## 🔧 Troubleshooting
+## 🔍 Troubleshooting
 
-### Common Issues
+### No symbol names shown
 
-**No symbol names shown:**
 ```bash
 # Compile with export-dynamic flag
 gcc -Wl,--export-dynamic -o myprogram myprogram.c -lexecinfo
 ```
 
-**Compilation errors:**
+### Compilation errors
+
 ```bash
 # Make sure development packages are installed
 sudo pacman -S base-devel
 
-# Check pkg-config setup  
+# Check pkg-config setup
 pkg-config --exists libexecinfo && echo "OK" || echo "Missing"
 ```
 
-**Runtime crashes:**
+### Runtime crashes
+
 ```bash
 # Enable debug build
 make DEBUG=1 clean all
 ./test
 ```
 
-### Performance Considerations
+## ⚡ Performance Notes
 
 - `backtrace()` is relatively fast (~1-10μs per call)
 - `backtrace_symbols()` is slower due to symbol resolution (~1-100ms)
@@ -291,9 +280,9 @@ make DEBUG=1 clean all
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please see our [Contributing Guidelines](CONTRIBUTING.md).
+Contributions are welcome! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
-### Development Setup
+### Quick Development Setup
 
 ```bash
 git clone https://github.com/fam007e/libexecinfo.git
@@ -305,13 +294,15 @@ python gen.py --max-depth 128 --output stacktraverse.c
 make DEBUG=1 all test
 ```
 
-### Submitting Changes
+### Contribution Process
 
 1. Fork the repository
-2. Create a feature branch
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Make your changes with tests
-4. Ensure all tests pass
-5. Submit a pull request
+4. Ensure all tests pass (`make test`)
+5. Commit your changes (`git commit -m 'Add amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
 
 ## 📄 License
 
@@ -326,7 +317,7 @@ This project is licensed under the BSD 2-Clause License - see the [LICENSE](LICE
 ## 📞 Support
 
 - **GitHub Issues**: [https://github.com/fam007e/libexecinfo/issues](https://github.com/fam007e/libexecinfo/issues)
-- **Email**: faisalmoshiur@gmail.com
+- **Email**: [faisalmoshiur@gmail.com](mailto:faisalmoshiur@gmail.com)
 - **AUR Package**: [libexecinfo](https://aur.archlinux.org/packages/libexecinfo)
 
 ## 🔗 Related Projects
@@ -337,4 +328,4 @@ This project is licensed under the BSD 2-Clause License - see the [LICENSE](LICE
 
 ---
 
-**Made with ❤️ for the open source community
+**Made with ❤️ for the open source community**
