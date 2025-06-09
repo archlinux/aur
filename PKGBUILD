@@ -4,8 +4,8 @@
 
 _pkgname=mir-core
 pkgname=d-$_pkgname
-pkgver=1.1.14
-pkgrel=12
+pkgver=1.7.1
+pkgrel=1
 pkgdesc='Base software building blocks and conventions for libmir'
 arch=('x86_64')
 url='https://github.com/libmir/mir-core'
@@ -13,7 +13,7 @@ license=('custom:BSL')
 depends=('liblphobos')
 makedepends=('meson' 'ldc')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('393ee409d50c7c825407b19fb860cce21907eb12ae5575eb5cd223bf0d4c3186bf6f0a61d4f3c7d07c6741c9d1d8f9a3421f7735520bba6e4bb52a5c18cb55f1')
+sha512sums=('d6e209201a86256ad3ce1d3913425d96a61b7e4536b2ea731e8b6bfa8fe714d84421da186d9573fbbd018dffde7004122754d796cacae0396bc5d968b2a87474')
 
 prepare() {
   cd $_pkgname-$pkgver
