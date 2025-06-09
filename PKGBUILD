@@ -8,8 +8,8 @@
 pkgbase=mariadb-git
 pkgname=('mariadb-libs-git' 'mariadb-clients-git' 'mariadb-git' 'mytop-git')
 pkgdesc='Fast SQL database server, derived from MySQL'
-_pkgver=11.7
-pkgver=11.7.2.r0.g80067a6
+_pkgver=11.8
+pkgver=11.8.2.r8.g67e6fde
 pkgrel=1
 arch=('x86_64')
 license=('GPL-2.0-only')
@@ -113,6 +113,9 @@ build() {
     -DWITH_SYSTEMD=yes
     -DWITH_UNIT_TESTS=OFF
     -DWITH_ZLIB=system
+
+    # fix build with cmake 4.0
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   )
 
   # this uses malloc_usable_size, which is incompatible with fortification level 3
@@ -136,10 +139,21 @@ check() {
 
 package_mariadb-libs-git() {
   pkgdesc='MariaDB libraries'
-  depends=('liburing' 'libxcrypt' 'libcrypt.so' 'openssl' 'pcre2' 'zlib' 'zstd')
+  depends=('liburing' 'liburing.so'
+           'libxcrypt' 'libcrypt.so'
+           'openssl' 'libcrypto.so' 'libssl.so'
+           'pcre2' 'libpcre2-8.so'
+           'zlib' 'libz.so'
+           'zstd' 'libzstd.so')
   optdepends=('krb5: for gssapi authentication')
-  conflicts=(mariadb-libs 'libmysqlclient' 'libmariadbclient' 'mariadb-connector-c')
-  provides=('libmariadbclient' 'mariadb-connector-c' 'libmariadb.so' 'libmariadbd.so')
+  conflicts=(mariadb-libs
+             'libmysqlclient'
+             'libmariadbclient'
+             'mariadb-connector-c')
+  provides=('libmariadbclient'
+            'mariadb-connector-c'
+            'libmariadb.so'
+            'libmariadbd.so')
 
   cd build
 
@@ -165,7 +179,9 @@ package_mariadb-libs-git() {
 
 package_mariadb-clients-git() {
   pkgdesc='MariaDB client tools'
-  depends=("mariadb-libs-git=${pkgver}" 'jemalloc' 'ncurses')
+  depends=("mariadb-libs-git=${pkgver}"
+           'jemalloc'
+           'ncurses' 'libncursesw.so')
   conflicts=('mariadb-clients' 'mysql-clients')
   provides=("mysql-clients=${pkgver}")
 
@@ -193,8 +209,13 @@ package_mariadb-git() {
           'etc/my.cnf.d/spider.cnf'
           'etc/security/user_map.conf')
   install=mariadb.install
-  depends=("mariadb-clients-git=${pkgver}" 'bzip2' 'coreutils' 'libxml2' 'lz4'
-           'systemd-libs' 'zstd')
+  depends=("mariadb-clients-git=${pkgver}"
+           'bzip2' 'libbz2.so'
+           'coreutils'
+           'libxml2' 'libxml2.so'
+           'lz4' 'liblz4.so'
+           'systemd-libs' 'libsystemd.so'
+           'zstd' 'libzstd.so')
   optdepends=('cracklib: for cracklib plugin'
               'curl: for ha_s3 plugin'
               'galera: for MariaDB cluster with Galera WSREP'
@@ -203,7 +224,8 @@ package_mariadb-git() {
               'python-mysqlclient: for myrocks_hotbackup'
               'xz: lzma provider')
   conflicts=('mariadb' 'mysql')
-  provides=("mariadb-server=${pkgver}" "mysql=${pkgver}")
+  provides=("mariadb-server=${pkgver}"
+            "mysql=${pkgver}")
   options=('emptydirs')
 
   cd build
@@ -257,7 +279,9 @@ package_mariadb-git() {
 
 package_mytop-git() {
   pkgdesc='Top clone for MariaDB'
-  depends=('perl' 'perl-dbd-mariadb' 'perl-term-readkey')
+  depends=('perl'
+           'perl-dbd-mariadb'
+           'perl-term-readkey')
   conflicts=('mytop')
   provides=("mytop=${pkgver}")
 
