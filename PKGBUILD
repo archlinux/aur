@@ -1,6 +1,6 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Maintainer: Donald Webster <fryfrog@gmail.com>
-# Helpful URL: https://radarr.servarr.com/v1/update/develop?version=0.0.0.0&os=linux&runtime=netcore&arch=x64
+# Helpful URL: https://radarr.servarr.com/v1/update/develop?version=0.0.0.0&os=linux&runtime=netcore&arch=x64&includeMajorVersion=true
 
 pkgname=radarr-develop-bin
 pkgver=5.26.1.10080
