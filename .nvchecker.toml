@@ -1,0 +1,4 @@
+[ttf-sil-padauk]
+source = "regex"
+url = "https://software.sil.org/padauk/download/"
+regex = 'Padauk-(\d+\.\d+)\.zip'
