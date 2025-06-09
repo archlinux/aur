@@ -3,7 +3,7 @@
 
 pkgname=mpdris-git
 _pkgname=mpdris
-pkgver=1.2.0.r19.g1a024ce
+pkgver=1.2.0.r32.g725f550
 pkgrel=1
 pkgdesc='A MPD client implementing the dbus MPRIS standard written in rust -- git version'
 url='https://github.com/jasger9000/mpDris'
