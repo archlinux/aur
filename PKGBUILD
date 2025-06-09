@@ -1,6 +1,6 @@
 pkgname=catbox-bin
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Rust wrapper for the Catbox.moe API'
 url='https://github.com/APT37/catbox'
 arch=('x86_64')
@@ -12,5 +12,5 @@ provides=('catbox')
 conflicts=('catbox' 'catbox-git')
 
 package() {
-    install -Dm755 "$srcdir/catbox" -t "$pkgdir/usr/bin"
+    install -Dm755 'catbox' -t "$pkgdir/usr/bin"
 }
