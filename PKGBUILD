@@ -1,7 +1,7 @@
 # Maintainer:  JakobDev<jakobdev at gmx dot de>
 
 pkgname=pyproject-appimage
-pkgver=3.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="Generate AppImages from your Python projects"
 arch=("any")
@@ -10,7 +10,7 @@ license=("BSD")
 depends=("python" "python-requests")
 makedepends=("python-build" "python-setuptools" "python-installer" "python-wheel")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/JakobDev/pyproject-appimage/archive/${pkgver}.tar.gz")
-sha256sums=("6e578762a605e1cd9ecb5acd13a71a11a0ad9a44c6c2aee1eb86c3451b3eedaa") 
+sha256sums=("008f7448532ae899f39e228e033fcbe8143aa9aea05cca0741d32b6b54fec831") 
 
 build() {
       cd "pyproject-appimage"
