@@ -1,6 +1,6 @@
 pkgname=zugferd-manager
-pkgver="1.1.0"
-pkgrel="3"
+pkgver="1.3.2"
+pkgrel="1"
 pkgdesc="Desktop-Anwendung zur Erstellung und Überprüfung von E-Rechnungen im ZUGFeRD-Format."
 arch=("x86_64")
 url="https://github.com/OpenIndex/ZUGFeRD-Manager/"
@@ -17,7 +17,7 @@ changelog=
 source=(https://github.com/OpenIndex/ZUGFeRD-Manager/releases/download/v$pkgver/ZUGFeRD-Manager-$pkgver-linux-x64.tar.gz
 "zugferd-manager.desktop")
 noextract=()
-sha256sums=('f1f9b056a3dab326c690e039a3e66875b56489766d8244d7628a1845c57e4b89'
+sha256sums=('e738495353c02f32f95d639ac3ff59a739a0458c3d3b348f2f8fe4456f9fab12'
             '7c78cc33ffbec17981e57cf32e0189006deb1e06a00b694a1cb1473768cda822')
 
 package() {
