@@ -1,27 +1,30 @@
 pkgname=gamepadla-polling
-pkgver=1.2.0.1
+pkgver=1.2.0.2
 pkgrel=1
 pkgdesc="Unofficial Python wrapper for Nyaa anime torrent sites"
 url="https://github.com/cakama3a/Polling"
 depends=('python>=3.10' 'python-requests' 'python-numpy' 'python-colorama' 'python-pygame')
 license=('MIT')
 arch=('any')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+#_commitish=refs/tags/$pkgver
+_commitish=b272e0979c1befcd5dc92f96a8b282524d8a9852
+_dirname=Polling-$(echo "${_commitish}" | awk -F/ '{print $NF}')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/${_commitish}.tar.gz"
 	"gamepadla-polling.desktop")
-sha256sums=('1e9dd6f2f5bf752e12d313230a9ffcd4ba515302d17dcaf324c3a479dd0c9b73'
+sha256sums=('dce895dd5ed7dd7ed2fed5203738bdf05a669280a8f67aa7ef35fd5ea1bcab5d'
 	'SKIP')
 
 build() {
-	cd "Polling-${pkgver}"
-	sed -i '1s|^|#!/usr/bin/env python3\n|' Polling.py
-	chmod +x Polling.py
+	cd "$_dirname"
+	sed -i '1s|^|#!/usr/bin/env python3\n|' Python.py
+	chmod +x Python.py
 }
 
 package() {
 	install -Dm644 gamepadla-polling.desktop -t "$pkgdir"/usr/share/applications/
-	cd "Polling-${pkgver}"
-	install -Dm755 Polling.py "$pkgdir"/usr/bin/$pkgname
+	cd "$_dirname"
+	install -Dm755 Python.py "$pkgdir"/usr/bin/$pkgname
 	install -Dm644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
 	install -Dm644 README.md -t "$pkgdir"/usr/share/doc/$pkgname/
-	install -Dm644 icon.ico "$pkgdir"/usr/share/icons/$pkgname.ico
+	install -Dm644 icon.png "$pkgdir"/usr/share/icons/$pkgname.png
 }
