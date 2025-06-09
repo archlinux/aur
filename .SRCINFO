@@ -1,10 +1,10 @@
 pkgbase = gnome-radio
 	pkgdesc = Easily find live radio programs based on geographical location of radio broadcasters on the Internet
 	pkgver = 49.0
-	pkgrel = 1
-	url = https://wiki.gnome.org/Apps/Radio
+	pkgrel = 2
+	url = https://www.gnomeradio.org
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = intltool
 	makedepends = itstool
 	makedepends = python
