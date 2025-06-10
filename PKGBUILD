@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-common6
-pkgver=6.0.2
-pkgrel=3
+pkgver=6.1.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Gazebo Common, a component of Gazebo, provides a set of libraries that cover many different use cases."
@@ -27,14 +27,11 @@ makedepends=(
   'gz-cmake=4'
   )
 provides=("${_pkgbase}=${_pkgmaj}")
-source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
-        "https://github.com/gazebosim/${_pkgbase}/pull/672.patch")
-sha256sums=('d301b7e5c9e7dca173002a08b2c3daf6e8738c6eafae633876a5d8940b71ba39'
-            '923fb973b93b0e71f814bf499ddf29d6412a82d4ba768eeb3efaefcaea1d9fff')
+source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
+sha256sums=('74596a71d3b230beb372d55592df8327b5734119fddf411ba9da7ab495741387')
 
 prepare() {
   cd "${_pkgbase}-${pkgname}_${pkgver}"
-  patch -p1 < ${srcdir}/672.patch
 }
 
 build() {
