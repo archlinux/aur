@@ -1,7 +1,7 @@
 pkgbase = coreutils-uutils-symlink
 	pkgdesc = (Dangerous) Swap system coreutils with uutils (more than PATH)
 	pkgver = 0.1.0
-	pkgrel = 11
+	pkgrel = 12
 	url = https://uutils.github.io/
 	arch = any
 	license = MIT
