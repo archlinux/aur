@@ -1,13 +1,13 @@
 pkgbase = aptly
 	pkgdesc = A Swiss Army knife for Debian repository management.
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://www.aptly.info
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/aptly-dev/aptly/archive/refs/tags/v1.6.1.tar.gz
-	sha256sums = 0488bc0717a1becda77fe1094a5eb4972ef1b6cd335f4108ddbbf89c6f917410
+	source = https://github.com/aptly-dev/aptly/archive/refs/tags/v1.6.2.tar.gz
+	sha256sums = cadfabda2a59f397adfe6f9ce3c9ddc6fe4c6052f0e03a300ba1f22d7cf0e09a
 
 pkgname = aptly
