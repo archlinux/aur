@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=quarkdown
-pkgver=1.3.1
-pkgrel=4
+pkgver=1.4.0
+pkgrel=1
 _jdkver=21
 pkgdesc='a Markdown based typesetting system'
 arch=(any)
@@ -16,8 +16,8 @@ optdepends=('puppeteer: generate PDF output')
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz"
         "$pkgname-$pkgver-$pkgrel.patch::https://github.com/iamgio/quarkdown/compare/v$pkgver...alerque:quarkdown:packageable.patch")
-sha256sums=('6abfeaf7ce5fb68c070e02aa1afe627a5dbad12259d6e3f4dc906c3582d126c6'
-            '7144fe52ec5cbaa24fc1c8258eb0c51236e14853f337ac235d31f66dfd6e779a')
+sha256sums=('ec46a6eb35f80e7f34a62c55345c32b78d1a07758f12b89d73ec5bf2b090c4f2'
+            'ed1f50bba78042db3ef0b7a686bbb3aaff7a4ddc1d4291d342cc7cfc0af0eb2e')
 
 prepare() {
 	cd "$_archive"
@@ -25,8 +25,8 @@ prepare() {
 }
 
 build() {
-	export JAVA_HOME="/usr/lib/jvm/java-${_jdkver}-openjdk"
-	export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin:$PATH"
+	export JAVA_HOME="/usr/lib/jvm/java-$_jdkver-openjdk"
+	export PATH="/usr/lib/jvm/java-$_jdkver-openjdk/bin:$PATH"
 	cd "$_archive"
 	gradle --no-daemon shadowJar
 }
@@ -38,7 +38,7 @@ package() {
 	install -Dm0644 -t "$pkgdir/$_sharedir/lib/qmd/" quarkdown-libs/src/main/resources/*.qmd
 	cat <<- EOF | install -Dm0755 /dev/stdin "$pkgdir/usr/bin/$pkgname"
 		#!/usr/bin/env bash
-		export JAVA_HOME="/usr/lib/jvm/java-${_jdkver}-openjdk"
+		export JAVA_HOME="/usr/lib/jvm/java-$_jdkver-openjdk"
 		exec java -jar '$_sharedir/java/$pkgname.jar' "\$@"
 	EOF
 }

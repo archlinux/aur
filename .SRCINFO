@@ -1,7 +1,7 @@
 pkgbase = quarkdown
 	pkgdesc = a Markdown based typesetting system
-	pkgver = 1.3.1
-	pkgrel = 4
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://github.com/iamgio/quarkdown
 	arch = any
 	license = Apache-2.0
@@ -10,9 +10,9 @@ pkgbase = quarkdown
 	depends = bash
 	depends = java-runtime-openjdk=21
 	optdepends = puppeteer: generate PDF output
-	source = https://github.com/iamgio/quarkdown/archive/v1.3.1/quarkdown-1.3.1.tar.gz
-	source = quarkdown-1.3.1-4.patch::https://github.com/iamgio/quarkdown/compare/v1.3.1...alerque:quarkdown:packageable.patch
-	sha256sums = 6abfeaf7ce5fb68c070e02aa1afe627a5dbad12259d6e3f4dc906c3582d126c6
-	sha256sums = 7144fe52ec5cbaa24fc1c8258eb0c51236e14853f337ac235d31f66dfd6e779a
+	source = https://github.com/iamgio/quarkdown/archive/v1.4.0/quarkdown-1.4.0.tar.gz
+	source = quarkdown-1.4.0-1.patch::https://github.com/iamgio/quarkdown/compare/v1.4.0...alerque:quarkdown:packageable.patch
+	sha256sums = ec46a6eb35f80e7f34a62c55345c32b78d1a07758f12b89d73ec5bf2b090c4f2
+	sha256sums = ed1f50bba78042db3ef0b7a686bbb3aaff7a4ddc1d4291d342cc7cfc0af0eb2e
 
 pkgname = quarkdown
