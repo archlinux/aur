@@ -3,11 +3,11 @@
 
 pkgname=libsql
 pkgver=0.24.32
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of SQLite that is both Open Source, and Open Contributions'
 url='https://turso.tech/libsql'
 license=(MIT)
-makedepends=(cargo)
+makedepends=(cmake cargo)
 optdepends=('libsql-sqlite3: use libsql for your sqlite3 needs')
 options=(!lto)
 arch=('i686' 'x86_64')
@@ -23,9 +23,6 @@ prepare() {
 
 build() {
   cd $_pkgdir
-  # TODO: figure out what flag is causing the build failure, possibly force-frame-pointer?
-  #RUSTFLAGS=$(echo "$RUSTFLAGS" | sed 's|-Cforce-frame-pointers=yes||g' | xargs)
-  ## even removing the flag results in compilation problems with unstable config options.  We unset the variables just to avoid the incompatible macros
   unset RUSTFLAGS
   unset DEBUG_RUSTFLAGS
 

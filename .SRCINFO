@@ -1,11 +1,12 @@
 pkgbase = libsql
 	pkgdesc = Fork of SQLite that is both Open Source, and Open Contributions
 	pkgver = 0.24.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://turso.tech/libsql
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = cmake
 	makedepends = cargo
 	optdepends = libsql-sqlite3: use libsql for your sqlite3 needs
 	options = !lto
