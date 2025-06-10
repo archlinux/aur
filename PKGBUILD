@@ -15,15 +15,16 @@ options=('!lto')
 prepare() {
   cd coreutils-$pkgver
   sed -i 's/yes/yes stty/' GNUmakefile # remove this at next release
-#  cargo fetch --locked --target "${CARCH}"-unknown-linux-gnu DL larger crates
+  # cargo fetch DL larger crates
 }
 
 export SELINUX_ENABLED=1 RUSTONIG_DYNAMIC_LIBONIG=1
+# release-fast profile has panic=abort
 export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) -C panic=abort $RUSTFLAGS -C --remap-path-prefix=${srcdir}="
 
 build(){ 
   cd coreutils-$pkgver
-  # build every uu-cmd for people wants it
+  build every uu-cmd for people wants it
   make USE=selinux PROFILE=release MULTICALL=y
 }
 
@@ -46,13 +47,15 @@ package_coreutils-uutils-selinux(){
   conflicts=(coreutils b3sum sha3sum)
   provides=(coreutils{,-selinux} sha3sum)
   cd coreutils-$pkgver
-  make install DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROFILE=release MULTICALL=y # get correct man pages
+  # get correct man pages and completions
+  make install DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 USE=selinux PROFILE=release MULTICALL=y
   rm -r "$pkgdir"/usr/share/bash-completion # part of Extra/bash-completion
   # Don't duplicate, dislike "coreutils" name, add missing *sum symlinks
   depends=(uutils-coreutils-selinux)
   _uu="$pkgdir"/usr/bin/coreutils
-  for f in $("$_uu" --list)
-    do ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/bin/"$f"
+  for f in $("$_uu" --list); do
+    ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/bin/"$f"
+    uu-echo -e "#compdef ${f}=uu-${f}\n_${f}" | install -Dm644 /dev/stdin "$pkgdir"/usr/share/zsh/site-functions/_$f
   done
   rm "$pkgdir"/usr/bin/{coreutils,kill,more,uptime,hostname}
   # Is this used? https://github.com/uutils/coreutils/issues/6591
