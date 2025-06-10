@@ -1,14 +1,16 @@
 pkgbase = python-asyncio-dgram
 	pkgdesc = Higher level Datagram support for Asyncio
-	pkgver = 1.2.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/jsbronder/asyncio-dgram
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	source = https://github.com/jsbronder/asyncio-dgram/archive/v1.2.0.tar.gz
-	sha256sums = f252b0976ec7100f7716fddc1804dd8a7732cb404d6ef95354a34096548acfae
+	source = asyncio-dgram-2.2.0.tar.gz::https://github.com/jsbronder/asyncio-dgram/archive/v2.2.0.tar.gz
+	sha256sums = 5a1aa6b2d1247a8ad0222ae83f789edfb49a413e912607bb827976c94711293d
 
 pkgname = python-asyncio-dgram
-
