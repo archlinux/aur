@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.14.7.arch2
+pkgver=6.15.1.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -37,12 +37,12 @@ source=(
   # patches to config & for tuning purposes
   #  modprobed.db
   choose-gcc-optimization.sh
-  more-uarches-for-kernel-6.8+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/lite-more-x86-64-ISA-levels-for-kernel-6.8-rc4%2B.patch"
+#  more-uarches-for-kernel-6.8+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/lite-more-x86-64-ISA-levels-for-kernel-6.8-rc4%2B.patch"
 
   # actual kernel patch series
   # 0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.14/asus-patch-series.patch"
-  # 0000-asus-patch-series.patch::"https://raw.githubusercontent.com/CachyOS/kernel-patches/refs/heads/master/6.14/0003-asus.patch"
-  asus-patch-series.patch
+  0000-asus-patch-series.patch::"https://raw.githubusercontent.com/CachyOS/kernel-patches/refs/heads/master/6.15/0002-asus.patch"
+  # asus-patch-series.patch
   0001-acpi-proc-idle-skip-dummy-wait.patch
   0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0005-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
@@ -58,14 +58,13 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('8112202bc26d086957a94d2109a6dcd4478c5ba18d0f0a5e1c5dfeea01f54972'
+sha256sums=('44f1bb84fe512e7bafe0e6dc85d38ec1c6c8fcbe97ccb51d8c19930b799f0d64'
             'SKIP'
-            '15279324c21cf41119574a36d80b05bbe6d4e7116d52d2940f2261443ead4cce'
+            'cb29546b25147d93ad4f8e1a65ffda76bcaf83c31387662d255fbf165fa541c1'
             'SKIP'
-            'a4b06477ef0980436668b8fc7dd2207ffc5476e75ab7849a48e51bb49b7270c9'
+            '85c4e091c0c8a0f189c1c61603b774442b8b375f7232e2f779296bc4418c428f'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
-            'a6045647f030f2686b2c42075569a40ca9833f559dcd2cdebd01b1964e7388cd'
-            '9414339c7cedbb5733c872326ffaa187154dad27fdd570bb0ba9c8c76ac65c09'
+            '06ea1762ecd313f22dc61029eee8e16c1691b5b8accf92659938d47a3f1f6f98'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
