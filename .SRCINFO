@@ -1,27 +1,31 @@
 pkgbase = prjtrellis-git-pinned
-	pkgdesc = Tools for working with the Lattice ECP5 bit-stream format
-	pkgver = 1.4.r66.g2dab009
+	pkgdesc = Documenting the Lattice ECP5 bit-stream format.
+	pkgver = 1.5_alpha20250501
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/YosysHQ/prjtrellis
 	arch = x86_64
 	license = custom:ISC
 	license = MIT
-	makedepends = prjtrellis-db
 	makedepends = git
+	makedepends = gcc
 	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
 	makedepends = boost
-	makedepends = python
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
-	makedepends = python-recommonmark
 	depends = boost-libs
-	optdepends = python: python support
-	provides = prjtrellis=1.4.r66.g2dab009
-	provides = libtrellis.so
-	provides = pytrellis.so
+	depends = python
+	provides = prjtrellis-db
+	provides = prjtrellis
+	conflicts = prjtrellis-nightly
+	conflicts = prjtrellis-db-git
+	conflicts = prjtrellis-git
+	conflicts = prjtrellis-db
 	conflicts = prjtrellis
-	replaces = trellis-git
-	source = git+https://github.com/YosysHQ/prjtrellis.git
+	options = !strip
+	source = prjtrellis::git+https://github.com/YosysHQ/prjtrellis.git#commit=f98e72e4963d9c9da57620595282e58d46a045f7
+	source = prjtrellis-db::git+https://github.com/YosysHQ/prjtrellis-db.git#commit=4dda149b9e4f1753ebc8b011ece2fe794be1281a
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = prjtrellis-git-pinned
