@@ -1,6 +1,6 @@
 pkgbase = uutils-coreutils-selinux
 	pkgver = 0.1.0
-	pkgrel = 35
+	pkgrel = 36
 	url = https://uutils.github.io/
 	arch = x86_64
 	license = MIT
