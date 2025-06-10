@@ -1,8 +1,8 @@
 # Maintainer: Nils Werner <nils.werner@gmail.com>
 
 pkgname=crestic
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Configurable restic wrapper"
 arch=('any')
 url="https://github.com/nils-werner/$pkgname"
@@ -17,7 +17,7 @@ source=(
     "crestic-forget@.timer"
 )
 sha256sums=(
-    "3960553be13a32d390cdc605c54b69ef82be1c4d529775102f8afa9d89772045"
+    "02969343c517ac5954724491e2f721e0ee4ac287cc7dbf0a307816bb9ec67aa8"
     "487bdee984708f7c8e3fdf300d372a9cf60ac212c3898231011d50b4bb2161e6"
     "be3b2461029a2d92329bcc1b42a8207f1c75ce03a6df86d72788ff2b8772ba70"
     "d8a94324994b2caae186f70f1463bee7b998547e31739c6e790f9fca37019022"
