@@ -1,0 +1,13 @@
+pkgbase = libxml2-so.2-compat
+	pkgdesc = Legacy libxml2.so.2.13.8 symlinked as libxml2.so.2 for Unity compatibility
+	pkgver = 2.13.8
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	provides = libxml2.so.2
+	noextract = libxml2-2.13.8-1-x86_64.pkg.tar.zst
+	options = !strip
+	source = https://archive.archlinux.org/packages/l/libxml2/libxml2-2.13.8-1-x86_64.pkg.tar.zst
+	sha256sums = SKIP
+
+pkgname = libxml2-so.2-compat
