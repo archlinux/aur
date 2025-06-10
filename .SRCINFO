@@ -6,7 +6,7 @@ pkgbase = thinkfan-cli
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	source = git+https://github.com/rahmedi/thinkfan-cli#tag=0.1.0
+	source = git+https://github.com/rahmedi/thinkfan-cli
 	sha256sums = SKIP
 
 pkgname = thinkfan-cli

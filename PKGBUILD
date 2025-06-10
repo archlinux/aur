@@ -8,7 +8,7 @@ url="https://github.com/rahmedi/thinkfan-cli"
 license=('GPL3')
 makedepends=('cargo')
 arch=('x86_64')
-source=("git+$url#tag=$pkgver")
+source=("git+$url")
 sha256sums=('SKIP')
 
 prepare() {
