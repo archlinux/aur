@@ -10,6 +10,7 @@ pkgbase = chatty-git
 	checkdepends = xorg-server-xvfb
 	makedepends = appstream
 	makedepends = git
+	makedepends = glib2-devel
 	makedepends = itstool
 	makedepends = meson
 	depends = cairo

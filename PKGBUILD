@@ -33,6 +33,7 @@ depends=(
 makedepends=(
   appstream
   git
+  glib2-devel
   itstool
   meson
 )
