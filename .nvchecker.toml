@@ -1,0 +1,4 @@
+[python-asyncio-dgram]
+source = "git"
+git = "https://github.com/jsbronder/asyncio-dgram.git"
+prefix = "v"
