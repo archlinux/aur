@@ -4,7 +4,7 @@
 _gemname=fastlane
 pkgname=$_gemname
 pkgver=2.228.0
-pkgrel=2
+pkgrel=1
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
 url='https://fastlane.tools'

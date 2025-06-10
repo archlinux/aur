@@ -1,7 +1,7 @@
 pkgbase = fastlane
 	pkgdesc = The easiest way to automate beta deployments and releases for your iOS and Android apps
 	pkgver = 2.228.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://fastlane.tools
 	arch = any
 	license = MIT
