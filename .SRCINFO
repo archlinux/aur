@@ -1,7 +1,7 @@
 pkgbase = trustedqsl
 	pkgdesc = QSO log signing data for the ARRL Logbook of The World (LoTW)
 	pkgver = 2.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lotw.arrl.org/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = trustedqsl
 	makedepends = cmake
 	makedepends = libxxf86vm
 	depends = lmdb
-	depends = wxgtk3
+	depends = wxwidgets-gtk3
 	depends = hamradio-menus
 	provides = tqsllib
 	provides = trustedqsl
