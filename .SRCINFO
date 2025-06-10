@@ -1,0 +1,26 @@
+pkgbase = k3s-1.33-bin
+	pkgdesc = Lightweight Kubernetes
+	pkgver = 1.33.1+k3s1
+	pkgrel = 1
+	url = https://k3s.io
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	provides = k3s
+	conflicts = k3s
+	backup = etc/conf.d/k3s
+	source = k3s.service
+	source = k3s.env
+	source = k3s-killall.sh
+	md5sums = 2c98ae8a95712a68f1f280fae7dc81cc
+	md5sums = c05e139fcdf93434640618c6237892b7
+	md5sums = 958f9ca03f5ccfb71b52f90ca02cc2c8
+	source_x86_64 = k3s-1.33.1+k3s1-x86_64::https://github.com/k3s-io/k3s/releases/download/v1.33.1+k3s1/k3s
+	md5sums_x86_64 = ea90dd4170121b4f23665517e41bdc81
+	source_armv7h = k3s-1.33.1+k3s1-armv7h::https://github.com/k3s-io/k3s/releases/download/v1.33.1+k3s1/k3s-armhf
+	md5sums_armv7h = bb8aec591d6b8d798e58d3591bc8d05e
+	source_aarch64 = k3s-1.33.1+k3s1-aarch64::https://github.com/k3s-io/k3s/releases/download/v1.33.1+k3s1/k3s-arm64
+	md5sums_aarch64 = 80d281b3886e21f569f4952a07ad98fc
+
+pkgname = k3s-1.33-bin
