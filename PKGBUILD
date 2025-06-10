@@ -6,7 +6,7 @@
 
 pkgname=sonarr-develop
 _pkgname=Sonarr
-pkgver=4.0.14.2938
+pkgver=4.0.15.2940
 pkgrel=1
 pkgdesc='Smart PVR for newsgroup and torrent users (develop branch)'
 arch=(x86_64 aarch64 armv7h)
@@ -48,7 +48,7 @@ source=(
   sonarr.sysusers
   sonarr.tmpfiles
 )
-sha256sums=('cfd832fa855ae10498664cd3dfbfe2ac1b4ea91391d979aa2f90a4a99fa309b0'
+sha256sums=('1df03d0e283568d74671a8ff21d780ff1712e765afb699217b0bcc47a66d69fa'
             'a6b37e75143a309b1d8c163c3f90f7f0275fd730015c3f74e3ad27c278b1ae90'
             'a5fc162aeafb2c6322176db736a503047a39f2740eea4dead05438ed47187fbd'
             '00141d4cbf34daa6d91b26179d4847ec970e2767382e18fdf9af2ec84a0ff43e'
