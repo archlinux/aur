@@ -8,9 +8,8 @@ _opt_OpenSSL=''
 set -u
 pkgname='proftpd'
 #pkgname+='-git'
-pkgver=1.3.8c
-# 0.0.0a to 0.0.0b are not seen as updates by some AUR helpers and pacman vercmp. We increase pkgrel with this kind of version change (too bad, this would work if they were equal, but they aren't. -# has no effect)
-pkgrel=4
+pkgver=1.3.8d
+pkgrel=1
 epoch='2'
 pkgdesc='High-performance, scalable FTP SSL TLS and SFTP server'
 arch=('x86_64' 'i686')
@@ -32,17 +31,19 @@ backup=(
   'etc/blacklist.dat'
 )
 options=('!emptydirs')
+_srcdir="${pkgname}-${pkgver}"
 source=(
-  "ftp://ftp.proftpd.org/distrib/source/${pkgname}-${pkgver}.tar.gz"
+  "${_srcdir}.tar.gz::https://github.com/proftpd/proftpd/archive/refs/tags/v${pkgver}.tar.gz"
+  #"ftp://ftp.proftpd.org/distrib/source/${_srcdir}.tar.gz"
   'proftpd.logrotate'
   'proftpd.service'
   'proftpd.tmpfiles'
 )
-md5sums=('790e3d6221eb5a195dde6da5e4f17dff'
+md5sums=('380d3b9838a99570ea5a9b4276ae0958'
          '4d7a3eedc1852d4fa9faafc072fb8320'
          'f7e0c3a402a845ba8d546b2801f77ed2'
          '907b149a120b046f05647c73502e23c9')
-sha256sums=('2a48f2ca338456e750d2373bf671025ed799e04e0baa16c7bb8dbfd67d8734d2'
+sha256sums=('42ba40d8d5a5a9f28c9dcd7f15aa6b5368fe5efceaacb999041311b170f076d5'
             'eaacf8df09c3d267cb08e962910af9cab50d1d5b007b232eb79b5240d8c5a721'
             '3a4558773ed747ab66b51551b6fc1732148e30908edc010f00a5e8675c817e64'
             '359cb8f5b30e66627929f7c50cbdd7dcc6919f7261f36eb617045210caf90abb')
@@ -51,7 +52,6 @@ _cherries=(
 #CHERRIES
 )
 
-_srcdir="${pkgname}-${pkgver}"
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   source[0]='git+https://github.com/proftpd/proftpd.git'
   md5sums[0]='SKIP'
@@ -69,9 +69,11 @@ pkgver() {
 }
 fi
 
-#true && pkgver="${_pkgvercmp}" # Let's see if Repology paints this dotted version in black (bogus)
+# @eomanis: 0.0.0 to 0.0.0a is seen as a downgrade, not an upgrade by vercmp because 0.0.0 is an upgrade to 0.0.0alpha or 0.0.0rc1.
+# The version is not equal so increasing pkgrel has no effect.
+#true && pkgver="${_pkgvercmp}" # This promotes 1.3.8a to 1.3.8.a to fix vercmp. This would make all lettered versions differ from other distros and would likely make Repology paint our dotted version in black as bogus.
 if [[ "${pkgver}" =~ ^[.0-9]+$ ]]; then
-  pkgver+='A' # we promote 1.3.8 -> 1.3.8A to vercmp more than 1.3.7c and less than than 1.3.8a
+  pkgver+='A' # promote 1.3.8 -> 1.3.8A to make vercmp more than 1.3.7f and less than 1.3.8a. This makes all release versions match other distros except for the first non lettered release. This minimizes how often our version is bogus as the first point release may be broken enough to rerelease within a few days like 1.3.7 -> 1.3.7a.
 fi
 
 prepare() {
@@ -90,11 +92,20 @@ prepare() {
     -e '/digests\[\] =/,/^}/ s:,\s*FALSE\s*,:,/* patched */TRUE,:'
   )
   #sed -E "${_allcrypto[@]}" -i 'contrib/mod_sftp/crypto.c'
-  local _cherry
-  for _cherry in "${_cherries[@]}"; do
-    set +u; msg2 "Cherry-pick ${_cherry}"; set -u
-    git cherry-pick -n "${_cherry}"
-  done
+  if [ "${pkgname%-git}" != "${pkgname}" ]; then
+    local _cherry
+    for _cherry in "${_cherries[@]}"; do
+      set +u; msg2 "Cherry-pick ${_cherry}"; set -u
+      git cherry-pick -n "${_cherry}"
+    done
+  fi
+  if ! :; then
+    local _bool
+    readarray -t _bool < <(grep --include="*.c" -lre '\bbool\b' .)
+    if [ "${#_bool[@]}" -gt 0 ]; then
+      sed -e '/\btrue\b/! s:\bbool\b:z&:g' -i "${_bool[@]}" # gcc-15 -std=gnu23 https://github.com/proftpd/proftpd/commit/61be7eb14f200b97804a3cfa85fed51661067c62
+    fi
+  fi
   set +u
 }
 
@@ -107,7 +118,7 @@ _configure() {
     CFLAGS+=' -fcommon'
   fi
   #CFLAGS+=' -fno-strict-aliasing'
-  CFLAGS+=' -DOPENSSL_NO_DSA'
+  CFLAGS+=' -DOPENSSL_NO_DSA -std=gnu17'
   local _modules=(
     'mod_digest'
     'mod_dynmasq'
