@@ -1,17 +1,18 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=sudachi
 pkgver=1.0.15
-pkgrel=3
+pkgrel=4
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://sudachi.emuplace.app
 license=(GPL-3.0-or-later)
-provides=('sudachi')
-depends=('qt6-base' 'qt6-wayland' 'qt6-tools' 'sdl3' 'ffmpeg' 'gamemode' 'hicolor-icon-theme' 'brotli')
-makedepends=('git' 'cmake' 'nasm' 'doxygen' 'ninja' 'zip' 'unzip' 'rapidjson')
-conflicts=('sudachi')
+depends=('qt6-base' 'hicolor-icon-theme' 'brotli' 'zydis' 'libvdpau' 'libx11' 'openssl' 'libdrm' 'glibc' 'opus' 'systemd-libs' 'libva' 'gcc-libs' 'speexdsp')
+makedepends=('git' 'cmake' 'doxygen' 'ninja' 'rapidjson' 'qt6-tools' 'qt6-multimedia' 'vulkan-headers' 'nasm' 'llvm' 'gamemode' 'zip' 'unzip')
+optdepends=('gamemode: gamemoded support')
 options=(!debug)
-source=(sudachi::https://github.com/emuplace/sudachi.emuplace.app/releases/download/v${pkgver}/latest.zip
+noextract=(sudachi-${pkgver}.zip)
+source=(sudachi-${pkgver}.zip::https://github.com/emuplace/sudachi.emuplace.app/releases/download/v${pkgver}/latest.zip
 	enet::git+https://github.com/lsalzman/enet#tag=v1.3.18
 	dynarmic::git+https://github.com/sudachi-emu/dynarmic#commit=efa2ebefe1f502fc886cbbcebabed2506121eb24
 	libusb::git+https://github.com/libusb/libusb#tag=v1.0.24
@@ -76,6 +77,10 @@ b2sums=('deacfbf286580efea76745c973b497eaa83a27b8157cb3af978e8911ad94f2d428c98c1
         'SKIP')
         
 prepare() {
+  cd "$srcdir"
+  [[ -d ${pkgname}-${pkgver} ]] && rm -rf ${pkgname}-${pkgver}
+  bsdunzip -d ${pkgname}-${pkgver} ${pkgname}-${pkgver}.zip
+  cd "$srcdir/${pkgname}-${pkgver}"
   git init
   
   for _submodule in enet dynarmic discord-rpc vulkan-headers sirit mbedtls xbyak opus cpp-httplib cpp-jwt libadrenotools VulkanMemoryAllocator breakpad simpleini oaknut Vulkan-Utility-Libraries vcpkg cubeb SDL3;
@@ -85,45 +90,46 @@ prepare() {
     done
     
   rm -rf externals/libusb/libusb
-  git -c protocol.file.allow=always submodule add ${srcdir}/libusb externals/libusb/libusb
+  git -c protocol.file.allow=always submodule add "${srcdir}/libusb" externals/libusb/libusb
   
   rm -rf externals/ffmpeg/ffmpeg
-  git -c protocol.file.allow=always submodule add ${srcdir}/ffmpeg externals/ffmpeg/ffmpeg
+  git -c protocol.file.allow=always submodule add "${srcdir}/ffmpeg" externals/ffmpeg/ffmpeg
   
   rm -rf externals/nx_tzdb/tzdb_to_nx
-  git -c protocol.file.allow=always submodule add ${srcdir}/tzdb_to_nx externals/nx_tzdb/tzdb_to_nx
+  git -c protocol.file.allow=always submodule add "${srcdir}/tzdb_to_nx" externals/nx_tzdb/tzdb_to_nx
 
   pushd externals/cubeb
-    git config submodule.googletest.url ${srcdir}/googletest
-    git config submodule.cmake/sanitizers-cmake.url ${srcdir}/sanitizers-cmake
-    git config submodule.src/cubeb-coreaudio-rs.url ${srcdir}/cubeb-coreaudio-rs
-    git config submodule.src/cubeb-pulse-rs.url ${srcdir}/cubeb-pulse-rs
+    git config submodule.googletest.url "${srcdir}/googletest"
+    git config submodule.cmake/sanitizers-cmake.url "${srcdir}/sanitizers-cmake"
+    git config submodule.src/cubeb-coreaudio-rs.url "${srcdir}/cubeb-coreaudio-rs"
+    git config submodule.src/cubeb-pulse-rs.url "${srcdir}/cubeb-pulse-rs"
     git -c protocol.file.allow=always submodule update
   popd
   
   pushd externals/libadrenotools
-    git config submodule.lib/linkernsbypass.url ${srcdir}/linkernsbypass
+    git config submodule.lib/linkernsbypass.url "${srcdir}/linkernsbypass"
     git -c protocol.file.allow=always submodule update
   popd
   
   pushd externals/sirit
-    git config submodule.externals/SPIRV-Headers.url ${srcdir}/SPIRV-Headers
+    git config submodule.externals/SPIRV-Headers.url "${srcdir}/SPIRV-Headers"
     git -c protocol.file.allow=always submodule update
   popd
   
   pushd externals/nx_tzdb/tzdb_to_nx
-    git config submodule.externals/tz/tz.url ${srcdir}/tz
+    git config submodule.externals/tz/tz.url "${srcdir}/tz"
     git -c protocol.file.allow=always submodule update
   popd
   
   pushd externals/dynarmic/externals/zydis
-    git config submodule.dependencies/zycore.url ${srcdir}/zycore
+    git config submodule.dependencies/zycore.url "${srcdir}/zycore"
     git -c protocol.file.allow=always submodule update
   popd
   
-  sed -i 's/\bwindow\b/render_window/g' "${srcdir}/src/sudachi_cmd/emu_window/emu_window_sdl3_vk.cpp"
-  sed -i '/namespace {/d' src/core/guest_memory.h
-  sed -i '/} \/\/ namespace Core::Memory/d' src/core/guest_memory.h
+  sed -i 's/\bwindow\b/render_window/g' "${srcdir}/${pkgname}-${pkgver}/src/sudachi_cmd/emu_window/emu_window_sdl3_vk.cpp"
+  sed -i '/namespace {/d' "${srcdir}/${pkgname}-${pkgver}/src/core/guest_memory.h"
+  sed -i '/} \/\/ namespace Core::Memory/d' "${srcdir}/${pkgname}-${pkgver}/src/core/guest_memory.h"
+  #sed -i "s/find_package(FFmpeg 4.3/find_package(FFmpeg 4.4/g" "${srcdir}/${pkgname}-${pkgver}/CMakeLists.txt"
   
   # make some corrections for cmake 4.0
   sed -i '/"overrides": \[/a \        {\n            "name": "lz4",\n            "version": "1.10.0"\n        },' vcpkg.json
@@ -131,24 +137,45 @@ prepare() {
 
 build() {
   export VCPKG_DISABLE_METRICS=1
+  export VCPKG_C_FLAGS="$CFLAGS"
+  export VCPKG_CXX_FLAGs="$CXXFLAGS"
   cd "$srcdir"
   cmake -B build -GNinja \
+    -S "${pkgname}-${pkgver}" \
+    -DCMAKE_BUILD_TYPE=None \
     -DSUDACHI_TESTS=OFF \
     -DENABLE_QT6=ON \
     -DENABLE_QT_TRANSLATION=ON \
     -DSUDACHI_USE_BUNDLED_VCPKG=ON \
     -DSUDACHI_USE_BUNDLED_FFMPEG=ON \
+    -DSUDACHI_USE_QT_MULTIMEDIA=OFF \
+    -DSUDACHI_USE_QT_WEB_ENGINE=OFF \
+    -DUSE_DISCORD_PRESENCE=OFF \
+    -DSUDACHI_DOWNLOAD_TIME_ZONE_DATA=OFF \
     -DSUDACHI_USE_BUNDLED_QT=OFF \
-    -DSUDACHI_USE_BUNDLED_SDL3=ON \
+    -DUSE_SDL3_FROM_EXTERNALS=OFF \
+    -DSUDACHI_USE_BUNDLED_SDL3=OFF \
     -DSUDACHI_ENABLE_LTO=ON \
     -DSUDACHI_USE_FASTER_LD=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_FLAGS="-march=native -mtune=native -Wno-unused-variable" \
-    -DCMAKE_C_FLAGS="-march=native -mtune=native" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS --param=destructive-interference-size=64 -Wno-unused-variable -msse4.1" \
+    -DCMAKE_C_FLAGS="$CFLAGS --param=destructive-interference-size=64 -Wno-unused-variable -msse4.1" \
+    -DCMAKE_C_COMPILER=gcc \
+    -DCMAKE_CXX_COMPILER=g++ \
+    -DTITLE_BAR_FORMAT_RUNNING="sudachi | ${pkgver} {}" \
+    -DTITLE_BAR_FORMAT_IDLE="sudachi | ${pkgver} {}" \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-  ninja -C build
+
+  cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir/" ninja -C build install
+  cd "$srcdir"
+  DESTDIR="$pkgdir/" cmake --install build
+  cd "$srcdir/${pkgname}-${pkgver}/LICENSES"
+  for file in *.txt;
+  do
+    install -Dm644 $file "$pkgdir/usr/share/licenses/$pkgname/$file"
+  done
+  install -Dm644 "$srcdir/$pkgname-$pkgver/dist/72-sudachi-input.rules" "$pkgdir/usr/lib/udev/rules.d/72-sudachi-input-rules"
 }
