@@ -2,7 +2,7 @@
 
 pkgname=garnet-bin
 _pkgname=${pkgname/-bin/}
-pkgver=1.0.70
+pkgver=1.0.71
 pkgrel=1
 pkgdesc='A high-performance cache-store from Microsoft Research'
 url='https://microsoft.github.io/garnet'
@@ -19,7 +19,7 @@ source=(
 	"https://raw.githubusercontent.com/microsoft/garnet/refs/heads/main/LICENSE"
 )
 
-sha256sums=('e8290e0a668847d12568281d9d947cf4029039b9dc5aaac3e4ea7121d5bfab67'
+sha256sums=('41d4050cd57d7d1d7cb87eb06e3bc44504a6f9757b2e4d081176ad7ef2ca199c'
             '0c16f0124c3c962e4fac1241cc1b1d86f61600758a4ff3846cd00a580e76cfdf'
             'c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383')
 
