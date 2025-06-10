@@ -1,8 +1,8 @@
-# Maintainer: Rin Cat <rincat@rincat.dev>
+# Maintainer: Rin Cat <dev@rincat.ch>
 
 pkgname=rtl88x2bu-dkms-git
 _pkgbase=rtl88x2bu
-pkgver=5.13.1.r205.9624bd8
+pkgver=5.13.1.r209.fcf8bf2
 _pkgver=5.13.1
 pkgrel=1
 pkgdesc="Kernel module for Realtek rtl88x2bu WiFi chipset"
