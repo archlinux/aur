@@ -1,5 +1,36 @@
 #!/bin/sh
-mkdir -p -m 755 $HOME/.java/.systemPrefs
-export _JAVA_OPTIONS="-Djava.util.prefs.systemRoot=$HOME/.java -Djava.util.prefs.userRoot=$HOME/.java/.userPrefs"
+
+# If $XDG_CONFIG_HOME/stm32cubeide.env exists, source it
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/stm32cubeide.env" ]; then
+    # shellcheck source=/dev/null
+    . "${XDG_CONFIG_HOME:-$HOME/.config}/stm32cubeide.env"
+fi
+
+# If _JAVA_OPTIONS exists, try to extract java.util.prefs.systemRoot and java.util.prefs.userRoot from it
+if [ -n "$_JAVA_OPTIONS" ]; then
+    JAVA_SYSTEM_ROOT=$(echo "$_JAVA_OPTIONS" | sed -n 's/.*-Djava.util.prefs.systemRoot=\([^ ]*\).*//p')
+    JAVA_USER_ROOT=$(echo "$_JAVA_OPTIONS" | sed -n 's/.*-Djava.util.prefs.userRoot=\([^ ]*\).*//p')
+fi
+
+# If values do not exist, fallback to "$XDG_CONFIG_HOME/java"
+if [ -z "$JAVA_SYSTEM_ROOT" ]; then
+    JAVA_SYSTEM_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/java"
+    if [ -z "$_JAVA_OPTIONS" ]; then
+        _JAVA_OPTIONS="-Djava.util.prefs.systemRoot=$JAVA_SYSTEM_ROOT"
+    else
+        _JAVA_OPTIONS="$_JAVA_OPTIONS -Djava.util.prefs.systemRoot=$JAVA_SYSTEM_ROOT"
+    fi
+fi
+if [ -z "$JAVA_USER_ROOT" ]; then
+    JAVA_USER_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/java"
+    _JAVA_OPTIONS="$_JAVA_OPTIONS -Djava.util.prefs.userRoot=$JAVA_USER_ROOT"
+fi
+
+# If $JAVA_SYSTEM_ROOT/.systemPrefs does not exist, create it
+if [ ! -d "$JAVA_SYSTEM_ROOT/.systemPrefs" ]; then
+    mkdir -p "$JAVA_SYSTEM_ROOT/.systemPrefs"
+    chmod 755 "$JAVA_SYSTEM_ROOT/.systemPrefs"
+fi
+export _JAVA_OPTIONS
 
 /opt/stm32cubeide/stm32cubeide "$@"

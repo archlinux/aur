@@ -2,9 +2,9 @@
 Name=STM32CubeIDE
 Comment=Integrated Development Environment for STM32
 GenericName=STM32CubeIDE
-#Exec=env GDK_BACKEND=x11 stm32cubeide %F
-Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 stm32cubeide_wayland %F
-#Exec=stm32cubeide_wayland %F
+#Exec=env GDK_BACKEND=x11 /usr/bin/stm32cubeide %F
+Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 /usr/bin/stm32cubeide_wayland %F
+#Exec=/usr/bin/stm32cubeide_wayland %F
 Icon=stm32cubeide
 Path=/opt/stm32cubeide/
 Terminal=false

@@ -1,7 +1,7 @@
 pkgbase = stm32cubeide
 	pkgdesc = Integrated Development Environment for STM32
 	pkgver = 1.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.st.com/en/development-tools/stm32cubeide.html
 	arch = x86_64
 	license = custom:SLA0048
@@ -26,8 +26,8 @@ pkgbase = stm32cubeide
 	sha256sums = 0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3
 	sha256sums = SKIP
 	sha256sums = 4fc6f177425adbd491cbb7326969a4e77a78588c30e674a1e3455981ad523c40
-	sha256sums = 362d9b1d342d87a0af6de02d9dcba4e306c3234ad4f138cea353b46118bcc391
-	sha256sums = dbae11d3431ffd954f0a42a8daf9cc047a94cb9d10be924e11765194e9e7e3ec
-	sha256sums = e0e6b15baae37802de27be8cbf1816a7b715d1071f736827eb0f2024ffd925e3
+	sha256sums = 48849f72574f043c0d2d0132750f7bc0a95f14c89ff74e10ba2bc34b0a081103
+	sha256sums = dc0605bac1910558b9fd3f0ecdd06bfd9d72eb3969827cba276a418a5749bcd2
+	sha256sums = 222265e3ccc1f8db608ca89b27768e2bf175eebafff6ad81530f46d374af12ba
 
 pkgname = stm32cubeide
