@@ -1,5 +1,5 @@
 _pkgname=eternallands
-_pkgver=1.9.6.1
+_pkgver=1.9.7.0
 _appimage="EternalLands-Linux-x86_64_${_pkgver}.AppImage"
 _desktopfile="com.eternal_lands.elc.desktop"
 
@@ -9,16 +9,16 @@ pkgrel=1
 pkgdesc="A free 3D MMORPG game with thousands of on-line players. Appimage version"
 arch=(x86_64)
 license=('custom')
-url="http://www.eternal-lands.com/"
+url="http://eternal-lands.com/"
 depends=()
 options=(!strip)
-source=("https://github.com/raduprv/Eternal-Lands/releases/download/${pkgver}/${_appimage}")
-sha256sums=('f7238f060b9df98704e61d3d03939e94e373616ec9228dd01a877ba981c4b4a3')
+source=("https://github.com/raduprv/Eternal-Lands/releases/download/${pkgver}-4/${_appimage}")
+sha256sums=('12a4e54214c85a11fdbf7464319a63f43e0974f1300c9fa71f8a216f4113498b')
 
 
 prepare() {
     chmod +x ${_appimage}
-    ./${_appimage} --appimage-extract ${_desktopfile}
+    ./${_appimage} --appimage-extract usr/share/applications/${_desktopfile}
     ./${_appimage} --appimage-extract usr/share/icons/hicolor/128x128/apps/${_pkgname}.png
 }
 
@@ -29,7 +29,7 @@ package() {
     
     # Desktop file
     install -dm755 "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/squashfs-root/${_desktopfile}" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/${_desktopfile}" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/pixmaps"
