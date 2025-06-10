@@ -1,7 +1,7 @@
 pkgbase = gz-fuel-tools10
 	pkgdesc = A client library and command line tools for interacting with Gazebo Fuel servers.
-	pkgver = 10.0.1
-	pkgrel = 2
+	pkgver = 10.1.0
+	pkgrel = 1
 	url = https://github.com/gazebosim/gz-fuel-tools
 	arch = any
 	license = Apache-2.0
@@ -20,7 +20,7 @@ pkgbase = gz-fuel-tools10
 	depends = tinyxml2
 	optdepends = ruby
 	provides = gz-fuel-tools=10
-	source = https://github.com/gazebosim/gz-fuel-tools/archive/gz-fuel-tools10_10.0.1.tar.gz
-	sha256sums = 839df226983a6e7be6458b3de63032557d64bf390258541107eb443e02c4aef9
+	source = https://github.com/gazebosim/gz-fuel-tools/archive/gz-fuel-tools10_10.1.0.tar.gz
+	sha256sums = e91621153885ab403d9ed6aaa39b936318bcf8458febe223478b74d0d8cb0151
 
 pkgname = gz-fuel-tools10
