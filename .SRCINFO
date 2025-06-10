@@ -1,14 +1,14 @@
 pkgbase = gerbv
 	pkgdesc = Gerber file (RS-274X only) viewer - w/ fork patches
 	pkgver = 2.10.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/gerbv/gerbv
 	arch = x86_64
 	license = GPL-2.0-only
 	depends = gtk2
 	depends = dconf
 	optdepends = cairo: for better graphics
-	source = gerbv-2.10.0.93f1b5b0c4fc74ba25dcbcd20154bed825c77126::git+https://github.com/gerbv/gerbv.git#tag=93f1b5b0c4fc74ba25dcbcd20154bed825c77126
-	sha256sums = 5757b7c046408b726130d8de5014577d537d01be8acbe43a28df731144d6046d
+	source = gerbv-2.10.0.7c1553da070b4585e45b5550f7ba2f9a0b37450b::git+https://github.com/gerbv/gerbv.git#tag=7c1553da070b4585e45b5550f7ba2f9a0b37450b
+	sha256sums = e6bf4247d0acbcf712950008dea207405362a97e6824cf305a417fca1cc73a89
 
 pkgname = gerbv

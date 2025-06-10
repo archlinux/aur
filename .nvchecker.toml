@@ -1,0 +1,5 @@
+[gerbv]
+source = 'github'
+github = 'gerbv/gerbv'
+use_latest_release = true
+prefix = 'v'

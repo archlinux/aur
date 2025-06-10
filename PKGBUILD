@@ -7,7 +7,7 @@
 
 pkgname=gerbv
 pkgver=2.10.0
-pkgrel=2
+pkgrel=4
 pkgdesc="Gerber file (RS-274X only) viewer - w/ fork patches"
 #dead original link url="http://gerbv.gpleda.org/"
 #dead original link url="http://gerbv.geda-project.org/"
@@ -16,9 +16,9 @@ license=('GPL-2.0-only')
 arch=('x86_64')
 depends=('gtk2' 'dconf')
 optdepends=('cairo: for better graphics')
-_tag='93f1b5b0c4fc74ba25dcbcd20154bed825c77126'
+_tag='7c1553da070b4585e45b5550f7ba2f9a0b37450b'
 source=("gerbv-$pkgver.${_tag}::git+https://github.com/gerbv/gerbv.git#tag=${_tag}")
-sha256sums=('5757b7c046408b726130d8de5014577d537d01be8acbe43a28df731144d6046d')
+sha256sums=('e6bf4247d0acbcf712950008dea207405362a97e6824cf305a417fca1cc73a89')
 
 prepare() {
   cd $pkgname-$pkgver.$_tag
@@ -29,7 +29,8 @@ build () {
   cd $pkgname-$pkgver.$_tag
   ./autogen.sh
   ./configure --prefix=/usr \
-              --disable-update-desktop-database 
+              --disable-update-desktop-database \
+              CFLAGS="-g -O2 -std=c17 -D_GNU_SOURCE"
   make
 }
 
