@@ -1,6 +1,6 @@
 pkgbase = immich-runit
 	pkgdesc = Runit service script for immich.
-	pkgver = 20250404
+	pkgver = 20250610
 	pkgrel = 1
 	url = https://github.com/immich-app/immich
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: picokan <todaysoracvle@protonmail.com>
 
 pkgname=immich-runit
-pkgver=20250404
+pkgver=20250610
 pkgrel=1
 pkgdesc="Runit service script for immich."
 arch=("any")

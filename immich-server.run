@@ -6,4 +6,4 @@ set -a
 . /etc/immich.conf
 set +a
 
-exec chpst -u immich node dist/main
+exec chpst -u immich node dist/main 2>&1
