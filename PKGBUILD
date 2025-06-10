@@ -6,7 +6,7 @@ _mlver="manylinux_2_28_$CARCH"
 
 pkgname=python-skia
 _pkgname=skia-python
-pkgver=87.9
+pkgver=138.0
 pkgrel=1
 pkgdesc='Python binding to Skia Graphics Library (wheel)'
 arch=(x86_64 ararch64)
@@ -17,7 +17,7 @@ makedepends=(python-installer)
 options=(!strip)
 _wheel="${_pkgname/-/_}-$pkgver-$_pyver-$_pyver-$_mlver.whl"
 source=("https://files.pythonhosted.org/packages/$_pyver/${_pkgname::1}/$_pkgname/$_wheel")
-sha256sums=('f1abc7205b419da9c1f74be35acafe850f6ed3d36434f9eaff49da1fb32c4fe8')
+sha256sums=('a6b3e58756a9fa8af3714edc05aeafc7922090f5a276c4be11337f252921dbe8')
 
 # If anybody wants to muck around with the Chromium tree and figure out how to
 # build skia from source on Arch I'm open to patches, but even after mucking
