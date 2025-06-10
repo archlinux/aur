@@ -3,9 +3,9 @@
 
 _name=aiomax
 pkgname=python-$_name
-pkgver=1.0.4
+pkgver=2.0.1
 pkgrel=1
-pkgdesc="The asynchronous library for Max"
+pkgdesc="Asynchronous framework for Max Bot API"
 arch=('any')
 url="https://github.com/dpnspn/aiomax"
 license=('MIT')
