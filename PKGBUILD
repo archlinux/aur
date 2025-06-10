@@ -1,7 +1,7 @@
 # Maintainer: tuxxx <nzb_tuxxx@proton.me>
 
 pkgname=sparrow-wallet-reproducible
-pkgver=2.2.2
+pkgver=2.2.3
 _jdkver=22.0.2_9
 pkgrel=1
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy (reproducible build)"
@@ -19,8 +19,8 @@ source=(
     "lark::git+https://github.com/sparrowwallet/lark.git"
     "https://github.com/adoptium/temurin22-binaries/releases/download/jdk-${_jdkver/_/%2B}/OpenJDK22U-jdk_x64_linux_hotspot_${_jdkver}.tar.gz"
 )
-sha256sums=('43706075c1dd44e01fc55a6d408e50723137f1e1a14d1726a520d9fb053b57e1'
-            'a5a9be550ddbc32287d00822c809021135f936801f95c4fae1c481fea16ee51b'
+sha256sums=('e2a2bd8b484e450d12b5ce4d85ef8e11443a75b732033a2dbb4f60fecad77813'
+            '32c11181f246a71464426e16c37d1373de644e18e5808fa73b86eadb334675e5'
             'SKIP'
             'SKIP'
             '05cd9359dacb1a1730f7c54f57e0fed47942a5292eb56a3a0ee6b13b87457a43')
