@@ -2,7 +2,7 @@
 
 pkgname=quarkdown
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 _jdkver=11
 pkgdesc='a Markdown based typesetting system'
 arch=(any)
@@ -27,7 +27,7 @@ package() {
 	install -Dm0644 -t "$pkgdir/$_sharedir" "build/libs/$pkgname.jar"
 	bsdtar xvf build/distributions/$pkgname.zip -C "$pkgdir/$_sharedir/../"
 	mkdir -p "$pkgdir/usr/share/docs/"
-	mv "$pkgdir/$_sharedir/" "$pkgdir/usr/share/docs/$pkgname"
+	mv "$pkgdir/$_sharedir/docs" "$pkgdir/usr/share/docs/$pkgname"
 	cat <<- EOF | install -Dm0755 /dev/stdin "$pkgdir/usr/bin/$pkgname"
 		#!/usr/bin/env bash
 		exec $_sharedir/bin/$pkgname "\$@"
