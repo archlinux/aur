@@ -1,7 +1,9 @@
 [Desktop Entry]
 Type=Application
-Name=Scrcpy啟動器
+Name=Scrcpy Launcher
+Name[zh_TW]=Scrcpy啟動器
+Name[zh_CN]=Scrcpy启动器
 Comment=A simple launcher for scrcpy, built with NW.js.
-Exec=/opt/scrcpy-launcher/Scrcpy啟動器
+Exec=/opt/scrcpy-launcher/ScrcpyLauncher
 Icon=/opt/scrcpy-launcher/Scrcpy_logo.png
 Categories=Utility;System;

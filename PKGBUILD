@@ -2,7 +2,7 @@
 # Contributor: 程式夥伴 (AI Assistant)
 
 pkgname=scrcpy-launcher
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A simple launcher for scrcpy, built with NW.js."
 arch=('x86_64')
@@ -17,8 +17,8 @@ source=("${pkgname}-v${pkgver}-${_archive_filename}::https://github.com/velade/s
         "${pkgname}.desktop"
         "LICENSE::https://raw.githubusercontent.com/velade/scrcpy-launcher/${pkgver}/LICENSE")
 
-sha256sums=('1d1c66762387affa403d5847d8c9091e3b96b1cbd8436017561d05136f1d0fb9'
-            '93b6dd07d33b0153bcfba6721797290839410870b8f7a379998b4e5fe306de46'
+sha256sums=('dd12c825d5da48e07e7108305458bcac55492475c7475c014cac16ada3baab61'
+            'e50cde4a31dbfa162da8305734ba85ff8ed0026e52303c9f8c8bddd4318ae6d9'
             'a6f3cabbef34490c82cf1eaaadfe3591c5dc8f3924c11c9da74609b660c7c72d')
 
 prepare() {
@@ -38,9 +38,10 @@ prepare() {
      "${srcdir}/package.json" \
      "${srcdir}/resources.pak" \
      "${srcdir}/Scrcpy_logo.png" \
-     "${srcdir}/Scrcpy啟動器" \
+     "${srcdir}/ScrcpyLauncher" \
      "${srcdir}/v8_context_snapshot.bin" \
      "${srcdir}/app_extracted_contents/"
+  rm "${srcdir}/app_extracted_contents/app/tmp/wallpaper.webp"
 }
 
 build() {
@@ -63,7 +64,7 @@ package() {
   chmod -c 777 "${pkgdir}/opt/${pkgname}/app/tmp/"
   
   # 確保主執行檔案有執行權限
-  chmod +x "${pkgdir}/opt/${pkgname}/Scrcpy啟動器"
+  chmod +x "${pkgdir}/opt/${pkgname}/ScrcpyLauncher"
   chmod +x "${pkgdir}/opt/${pkgname}/chrome_crashpad_handler"
 
   # 安裝 .desktop 檔案到 /usr/share/applications/
