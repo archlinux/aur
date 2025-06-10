@@ -1,0 +1,14 @@
+pkgbase = catppuccin-qt5ct-git
+	pkgdesc = Soothing pastel theme for qt5ct & qt6ct
+	pkgver = r6.cb58530
+	pkgrel = 1
+	url = https://github.com/catppuccin/qt5ct
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = qt5ct
+	optdepends = qt6ct
+	source = git+https://github.com/catppuccin/qt5ct.git
+	sha256sums = SKIP
+
+pkgname = catppuccin-qt5ct-git
