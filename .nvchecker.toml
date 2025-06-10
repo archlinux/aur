@@ -1,5 +1,5 @@
 [godu-bin]
-source="github-graphql"
+source="github"
 github="viktomas/godu"
 use_max_tag=true
 prefix='v'
