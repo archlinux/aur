@@ -1,3 +1,4 @@
 [briquolo]
-source='cmd'
-cmd="echo 0.5.8"
+source='regex'
+url='http://briquolo.free.fr/en/download.html'
+regex='briquolo-(\d+(?:\.\d+)*)\.*tar.bz2'
