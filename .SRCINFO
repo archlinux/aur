@@ -1,6 +1,6 @@
 pkgbase = hyprland-plugins
 	pkgdesc = Official plugins for Hyprland
-	pkgver = 0.49.0
+	pkgver = 0.49.1
 	pkgrel = 1
 	url = https://github.com/hyprwm/hyprland-plugins
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = hyprland-plugins
 	makedepends = git
 	makedepends = hyprland
 	depends = hyprland=0.49.0
-	source = hyprland-plugins::git+https://github.com/hyprwm/hyprland-plugins.git#commit=c491d2831448645f24a1597a17f564aa52691ac6
+	source = hyprland-plugins::git+https://github.com/hyprwm/hyprland-plugins.git#commit=4dea1029e837ae642979ab509eb2eddc959470d0
 	sha256sums = SKIP
 
 pkgname = hyprland-plugin-borders-plus-plus
@@ -23,8 +23,14 @@ pkgname = hyprland-plugin-hyprbars
 pkgname = hyprland-plugin-hyprexpo
 	pkgdesc = A Hyprland plugin that adds an expo-like workspace overview
 
+pkgname = hyprland-plugin-hyprscrolling
+	pkgdesc = A Hyprland plugin that adds a scrolling layout
+
 pkgname = hyprland-plugin-hyprtrails
 	pkgdesc = A Hyprland plugin that adds smooth trails behind moving windows
 
 pkgname = hyprland-plugin-hyprwinwrap
 	pkgdesc = A Hyprland clone of xwinwrap that allows you to put any app as a wallpaper
+
+pkgname = hyprland-plugin-xtra-dispatchers
+	pkgdesc = A Hyprland plugin that adds some additional dispatchers.

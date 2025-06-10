@@ -1,7 +1,7 @@
 # Maintainer: x70b1
-pkgname=('hyprland-plugin-borders-plus-plus' 'hyprland-plugin-csgo-vulkan-fix' 'hyprland-plugin-hyprbars' 'hyprland-plugin-hyprexpo' 'hyprland-plugin-hyprtrails' 'hyprland-plugin-hyprwinwrap')
+pkgname=('hyprland-plugin-borders-plus-plus' 'hyprland-plugin-csgo-vulkan-fix' 'hyprland-plugin-hyprbars' 'hyprland-plugin-hyprexpo' 'hyprland-plugin-hyprscrolling' 'hyprland-plugin-hyprtrails' 'hyprland-plugin-hyprwinwrap' 'hyprland-plugin-xtra-dispatchers')
 pkgbase='hyprland-plugins'
-pkgver='0.49.0'
+pkgver='0.49.1'
 pkgrel=1
 pkgdesc='Official plugins for Hyprland'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/hyprwm/hyprland-plugins'
 license=('BSD')
 depends=('hyprland=0.49.0')
 makedepends=('git' 'hyprland')
-source=("$pkgbase::git+https://github.com/hyprwm/hyprland-plugins.git#commit=c491d2831448645f24a1597a17f564aa52691ac6")
+source=("$pkgbase::git+https://github.com/hyprwm/hyprland-plugins.git#commit=4dea1029e837ae642979ab509eb2eddc959470d0")
 sha256sums=('SKIP')
 
 build() {
@@ -54,6 +54,14 @@ package_hyprland-plugin-hyprexpo() {
     install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/hyprland-plugin-hyprexpo/LICENSE"
 }
 
+package_hyprland-plugin-hyprscrolling() {
+    pkgdesc="A Hyprland plugin that adds a scrolling layout"
+
+    cd "$srcdir/$pkgbase/hyprscrolling"
+    install -Dm755 hyprscrolling.so "$pkgdir/usr/lib/libhyprscrolling.so"
+    install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/hyprland-plugin-hyprscrolling/LICENSE"
+}
+
 package_hyprland-plugin-hyprtrails() {
     pkgdesc="A Hyprland plugin that adds smooth trails behind moving windows"
 
@@ -68,4 +76,12 @@ package_hyprland-plugin-hyprwinwrap() {
     cd "$srcdir/$pkgbase/hyprwinwrap"
     install -Dm755 hyprwinwrap.so "$pkgdir/usr/lib/libhyprwinwrap.so"
     install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/hyprland-plugin-hyprwinwrap/LICENSE"
+}
+
+package_hyprland-plugin-xtra-dispatchers() {
+    pkgdesc="A Hyprland plugin that adds some additional dispatchers."
+
+    cd "$srcdir/$pkgbase/xtra-dispatchers"
+    install -Dm755 xtra-dispatchers.so "$pkgdir/usr/lib/libxtradispatchers.so"
+    install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/hyprland-plugin-xtra-dispatchers/LICENSE"
 }
