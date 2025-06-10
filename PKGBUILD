@@ -2,7 +2,7 @@
 
 pkgname=walrs
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate colorscheme from image"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Pixel2175/walrs"
