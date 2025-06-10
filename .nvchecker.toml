@@ -1,0 +1,3 @@
+[fbcat]
+source='git'
+git='https://github.com/jwilk/fbcat.git'
