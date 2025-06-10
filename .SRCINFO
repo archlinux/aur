@@ -1,7 +1,7 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
 	pkgver = 3.0.21
-	pkgrel = 17
+	pkgrel = 18
 	url = https://www.videolan.org/vlc/
 	arch = x86_64
 	arch = aarch64
@@ -105,7 +105,7 @@ pkgbase = vlc-luajit
 	makedepends = wayland
 	makedepends = wayland-protocols
 	makedepends = x264>=0.164
-	makedepends = x265>=4
+	makedepends = x265>=4.1
 	makedepends = xcb-util-keysyms
 	makedepends = xosd
 	makedepends = zlib
