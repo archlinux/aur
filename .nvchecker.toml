@@ -1,0 +1,3 @@
+[puppeteer]
+source = "npm"
+npm = "puppeteer"
