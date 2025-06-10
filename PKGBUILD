@@ -1,49 +1,45 @@
-# Maintainer: ByteDream
-pkgname=puppeteer
-pkgdesc="VTuber application made with Godot 3.4 (former OpenSeeFace-GD)"
-arch=('x86_64')
-url="https://github.com/virtual-puppet-project/vpuppr"
-license=('MIT')
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgver=0.9.0
+pkgbase=puppeteer
+pkgname=($pkgbase{,-core,-chromium,-firefox})
+pkgver=24.10.0
 pkgrel=1
+pkgdesc='JavaScript API for Chrome and Firefox'
+arch=(any)
+url=https://pptr.dev
+license=(Apache-2.0)
+depends=(nodejs)
+makedepends=(npm)
+_archive1="$pkgbase-$pkgver"
+_archive2="$pkgbase-core-$pkgver"
+source=("https://registry.npmjs.org/$pkgname/-/$_archive1.tgz"
+        "https://registry.npmjs.org/$pkgname/-/$_archive2.tgz")
+noextract=("$_archive.tgz")
+sha256sums=('d6ea8c4e59e4a1785fb29a2067c6877b39a94812df62767bc1fe0dc7ccc6502a'
+            '8fd10212ad58f63a0dadf908cf3f598bee2105cbc7fef9b87a338cd4e69f6803')
 
-replaces=(
-  'openseeface-gd'
-)
-
-depends=(
-  'python'
-  'python-pip'
-)
-
-source=("${pkgname}-${pkgver}.zip::https://github.com/virtual-puppet-project/vpuppr/releases/download/${pkgver}/vpuppr_${pkgver}_linux.zip")
-sha256sums=('95c436e55a68e4abeb967acfa0ec9717dd6e0472ee72c346ded5aeb4a65ef587')
-
-package() {
-  mkdir -p $pkgdir/usr/{share/vpuppr,share/applications,bin}
-  cp -rf ./flatpak/* $pkgdir/usr/share/vpuppr
-  chmod 755 -R $pkgdir/usr/share/vpuppr/*
-  ln -sf ../share/vpuppr/vpuppr.x86_64 $pkgdir/usr/bin/vpuppr
-  ln -sf ../share/vpuppr/vpuppr.x86_64 $pkgdir/usr/bin/puppeteer # keep the symlink for compatability reasons
-
-  curl -L https://github.com/virtual-puppet-project/vpuppr/raw/0.9.0/assets/osfgd_icon.png -o "$pkgdir/usr/share/vpuppr/vpuppr_icon.png"
-  cat > "$pkgdir/usr/share/applications/vpuppr.desktop"<< EOF
-[Desktop Entry]
-Name=VPupPr
-Exec=/usr/share/vpuppr/vpuppr.x86_64
-Icon=/usr/share/vpuppr/vpuppr_icon.png
-Type=Application
-Categories=Graphics;AudioVideo;Recoder;
-Terminal=False
-EOF
-
-  for v in "" "3" "3.10" "3.9" "3.8" "3.7"; do
-    if "python$v" --version 2> /dev/null | grep -E -q "3.([7-9]|10)\."; then
-      return
-    fi
-  done
-
-  echo "No valid python version detected. Please install any python version from 3.7 - 3.10 to run VPupPr correctly." >&2
+_npm_i() {
+	npm install --no-audit --no-fund -g --prefix "$pkgdir/usr" "$1.tgz"
+	find "$pkgdir/usr" -type d -exec chmod 755 {} +
+	chown -R root:root "$pkgdir"
 }
 
+package_puppeteer() {
+	depends+=("$pkgname-core=$pkgver")
+	_npm_i "$_archive1"
+	rm -rf "$pkgdir/usr/lib/node_modules/$pkgname/node_modules/$pkgname-core"
+}
+
+package_puppeteer-core() {
+	optdepends=('chromium: for use with Chrome'
+	            'firefox: for use with Firefox')
+	_npm_i "$_archive2"
+}
+
+package_puppeteer-chromium() {
+	depends+=("$pkgbase=$pkgver" chromium)
+}
+
+package_puppeteer-firefox() {
+	depends+=("$pkgbase=$pkgver" firefox)
+}

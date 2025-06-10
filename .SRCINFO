@@ -1,14 +1,32 @@
 pkgbase = puppeteer
-	pkgdesc = VTuber application made with Godot 3.4 (former OpenSeeFace-GD)
-	pkgver = 0.9.0
+	pkgdesc = JavaScript API for Chrome and Firefox
+	pkgver = 24.10.0
 	pkgrel = 1
-	url = https://github.com/virtual-puppet-project/vpuppr
-	arch = x86_64
-	license = MIT
-	depends = python
-	depends = python-pip
-	replaces = openseeface-gd
-	source = puppeteer-0.9.0.zip::https://github.com/virtual-puppet-project/vpuppr/releases/download/0.9.0/vpuppr_0.9.0_linux.zip
-	sha256sums = 95c436e55a68e4abeb967acfa0ec9717dd6e0472ee72c346ded5aeb4a65ef587
+	url = https://pptr.dev
+	arch = any
+	license = Apache-2.0
+	makedepends = npm
+	depends = nodejs
+	noextract = .tgz
+	source = https://registry.npmjs.org/puppeteer/-/puppeteer-24.10.0.tgz
+	source = https://registry.npmjs.org/puppeteer/-/puppeteer-core-24.10.0.tgz
+	sha256sums = d6ea8c4e59e4a1785fb29a2067c6877b39a94812df62767bc1fe0dc7ccc6502a
+	sha256sums = 8fd10212ad58f63a0dadf908cf3f598bee2105cbc7fef9b87a338cd4e69f6803
 
 pkgname = puppeteer
+	depends = nodejs
+	depends = puppeteer-core=24.10.0
+
+pkgname = puppeteer-core
+	optdepends = chromium: for use with Chrome
+	optdepends = firefox: for use with Firefox
+
+pkgname = puppeteer-chromium
+	depends = nodejs
+	depends = puppeteer=24.10.0
+	depends = chromium
+
+pkgname = puppeteer-firefox
+	depends = nodejs
+	depends = puppeteer=24.10.0
+	depends = firefox
