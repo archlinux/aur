@@ -1,7 +1,7 @@
 pkgbase = commit-patch
 	pkgdesc = Commit partial patches to version control
 	pkgver = 2.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.porkrind.org/commit-patch
 	arch = any
 	license = GPL-2.0-or-later
