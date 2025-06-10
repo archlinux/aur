@@ -1,0 +1,4 @@
+[stagit]
+source="regex"
+regex="stagit-([0-9.]*).tar.gz"
+url="https://codemadness.org/releases/stagit/"

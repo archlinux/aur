@@ -1,4 +1,5 @@
-# Maintainer: PolpOnline <aur at t0mmy dot anonaddy dot com>
+# Maintainer: envolurion
+# Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Ankit R Gadiya <arch@argp.in>
 # Contributor: John W. Trengrove <john@retrofilter.com>
