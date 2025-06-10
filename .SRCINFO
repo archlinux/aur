@@ -1,0 +1,15 @@
+pkgbase = quickoverflow
+	pkgdesc = A CLI Tool to auto-detect code errors and open solutions
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/SpaciousCoder78/QuickOverflow
+	arch = x86_64
+	license = GPL3
+	makedepends = python-pipenv
+	makedepends = python-pip
+	makedepends = gcc
+	depends = python
+	source = https://github.com/SpaciousCoder78/QuickOverflow/releases/download/v3.0.0/QuickOverflow3.0.0.tar.gz
+	md5sums = 3812a9438f234df57e26f75a7b9e4dc1
+
+pkgname = quickoverflow
