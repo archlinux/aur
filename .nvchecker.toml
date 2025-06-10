@@ -1,5 +1,5 @@
 [hyperrogue]
-source="github-graphql"
+source="github"
 github="zenorogue/hyperrogue"
 use_latest_release=true
 prefix="v"
