@@ -2,8 +2,8 @@
 # Maintainer:  Josh Ellithorpe <quest@mac.com>
 
 pkgname=plank-reloaded-git
-pkgver=0.11.130.r0.g9e7b6ec
-pkgrel=2
+pkgver=0.11.131
+pkgrel=1
 pkgdesc='Fork of the original Plank project, providing a simple dock for X11 desktop environments'
 arch=('x86_64')
 url='https://github.com/zquestz/plank-reloaded'
