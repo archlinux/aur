@@ -1,6 +1,6 @@
 pkgbase = emmental
 	pkgdesc = The cheesy music player
-	pkgver = 3.2.3
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = https://git.nowheycreamery.com/anna/emmental
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = emmental
 	depends = xdg-user-dirs-gtk
 	optdepends = gst-plugins-bad
 	optdepends = gst-plugins-ugly
-	source = https://git.nowheycreamery.com/anna/emmental/archive/emmental-3.2.3.tar.gz
-	sha256sums = 3479580491180d0b42a9ba525e44d32d429deee0c5be62575c7126a64072b732
+	source = https://git.nowheycreamery.com/anna/emmental/archive/emmental-3.2.4.tar.gz
+	sha256sums = 374a2c4f8582c0a9a57cd1c942c48e18064b7ec9b00a9f3e3ac6f0fc37e2a350
 
 pkgname = emmental

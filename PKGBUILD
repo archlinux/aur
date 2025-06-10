@@ -1,6 +1,6 @@
 # Maintainer: Anna Schumaker <anna@nowheycreamery.com>
 pkgname=emmental
-pkgver=3.2.3
+pkgver=3.2.4
 pkgrel=1
 pkgdesc='The cheesy music player'
 url='https://git.nowheycreamery.com/anna/emmental'
@@ -11,7 +11,7 @@ makedepends=(git desktop-file-utils)
 optdepends=(gst-plugins-bad gst-plugins-ugly)
 checkdepends=(flake8 python-flake8-docstrings python-pytest python-pytest-timeout python-pytest-subtests)
 source=("https://git.nowheycreamery.com/anna/emmental/archive/emmental-$pkgver.tar.gz")
-sha256sums=(3479580491180d0b42a9ba525e44d32d429deee0c5be62575c7126a64072b732)
+sha256sums=(374a2c4f8582c0a9a57cd1c942c48e18064b7ec9b00a9f3e3ac6f0fc37e2a350)
 
 prepare() {
 	cd $pkgname
@@ -28,7 +28,7 @@ build() {
 
 package() {
 	cd $pkgname
-	make -j1 PREFIX="$pkgdir/usr" install
+	make PREFIX="$pkgdir/usr" install
 	sed -i "s|$pkgdir||" $pkgdir/usr/bin/emmental
 	sed -i "s|$pkgdir||" $pkgdir/usr/share/applications/com.nowheycreamery.emmental.desktop
 	rm -f "$pkgdir/usr/share/applications/mimeinfo.cache"
