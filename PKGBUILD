@@ -6,7 +6,7 @@
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
 pkgver=575.57.08
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -253,7 +253,7 @@ package_nvidia-utils-beta() {
     install -D -m644 "${srcdir}/nvidia-utils.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -D -m644 "${srcdir}/nvidia.rules" "${pkgdir}/usr/lib/udev/rules.d/60-nvidia.rules"
     
-    install -D -m644 <(printf '%s\n' 'blacklist nouveau') "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
+    install -D -m644 <(printf '%s\n%s\n%s\n' 'blacklist nouveau' 'blacklist nova_core' 'blacklist nova_drm') "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
     install -D -m644 <(printf '%s\n' 'nvidia-uvm') "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
     
     # enable PreserveVideoMemoryAllocations and TemporaryFilePath
