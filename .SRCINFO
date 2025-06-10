@@ -9,6 +9,7 @@ pkgbase = spotitube-git
 	makedepends = go
 	depends = glibc
 	depends = docker
+	depends = bash
 	provides = spotitube
 	conflicts = spotitube
 	source = spotitube-git::git+https://github.com/streambinder/spotitube
