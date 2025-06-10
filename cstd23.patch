@@ -1,0 +1,40 @@
+Only in src/doom-ascii/src: build
+diff -ur src_orig/doom-ascii/src/doomtype.h src/doom-ascii/src/doomtype.h
+--- src_orig/doom-ascii/src/doomtype.h	2025-06-10 13:10:03.729100712 -0400
++++ src/doom-ascii/src/doomtype.h	2025-06-10 13:23:43.464449216 -0400
+@@ -65,23 +65,20 @@
+ 
+ #include <inttypes.h>
+ 
+-#ifdef __cplusplus
+-
+-// Use builtin bool type with C++.
+-
+-typedef bool bool;
+-
++#if (defined __STDC_VERSION__ && __STDC_VERSION__ >= 199901L) || defined __cplusplus
++// For C99+ and C++, use the standard boolean type
++#  include <stdbool.h>
+ #else
+-
+-typedef enum
+-{
+-    false	= 0,
+-    true	= 1,
+-	undef	= 0xFFFFFFFF
+-} bool;
+-
++// For older C standards, use the original custom enum
++typedef enum { false = 0, true = 1 } bool;
+ #endif
+ 
++// The original enum also defined an 'undef' state.
++// left for compatibility
++enum {
++    undef = 0xFFFFFFFF
++};
++
+ typedef uint8_t byte;
+ 
+ #include <limits.h>
+Only in src/doom-ascii/src: doomtype.h.rej
