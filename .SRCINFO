@@ -1,13 +1,16 @@
 pkgbase = local-ai-bin
 	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first
 	pkgver = 2.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://localai.io
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	provides = local-ai
 	conflicts = local-ai
+	noextract = local-ai-2.29.0-aarch64
+	noextract = local-ai-2.29.0-x86_64
+	options = !strip
 	source = local-ai.conf
 	source = local-ai.service
 	source = local-ai.sysusers
