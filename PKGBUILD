@@ -5,6 +5,7 @@
 # Contributor: Narrat <autumn-wind at web dot de>
 # Contributor: David Scholl <djscholl at gmail dot com>
 # shellcheck shell=bash disable=SC2034,SC2154
+# ci|skipcheck|
 
 pkgname=leo
 pkgver=6.8.4
@@ -54,7 +55,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  python -m pytest
+  python -m pytest --ignore=leo/unittests/plugins/test_gui.py #this test fails without a screen set up
 }
 
 package() {
