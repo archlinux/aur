@@ -2,6 +2,7 @@
 bmap-tools/
 pkg/
 src/
-/*.tgz
+/*.log
 /*.tar.gz
 /*.tar.zst
+/*.tgz

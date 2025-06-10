@@ -1,6 +1,6 @@
 pkgbase = bmaptool
 	pkgdesc = Tool optimized for copying largely sparse files using information from a block map (bmap) file
-	pkgver = 3.8.0
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://github.com/yoctoproject/bmaptool
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = bmaptool
 	depends = python-setuptools
 	depends = python-six
 	replaces = bmap-tools
-	source = https://github.com/yoctoproject/bmaptool/archive/v3.8.0.tar.gz
-	sha256sums = 3c741ccdd5049b5cb6983bc186f7be8040a132ed7e9c2afda4d9e7390888163c
+	source = https://github.com/yoctoproject/bmaptool/archive/v3.9.0.tar.gz
+	sha256sums = 9940bb97fa0f2c11ee4625a2f620a4ae2b94c556f8d01c070aee08486a2a1812
 
 pkgname = bmaptool
