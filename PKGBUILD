@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 pkgname=moar
-pkgver=1.31.8
+pkgver=1.31.9
 pkgrel=1
 pkgdesc="A pager designed to just do the right thing without any configuration."
 arch=('x86_64' 'i686' 'pentium4' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(go)
 conflicts=(moarvm) #Both packages install a file to /usr/bin/moar
 source=("$pkgname-$pkgver.tar.gz"::"$url/archive/v$pkgver.tar.gz")
-sha256sums=('77943278d1ca22c3ca405c6a227e4807ce8637b807c40802c739f901ae980151')
+sha256sums=('dcc65cc2935b61b82bf4fbe2d1261c511bd1041054dce3d53744991e67986040')
 
 prepare() {
 	cd "$pkgname-$pkgver"
