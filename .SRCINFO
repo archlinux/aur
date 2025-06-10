@@ -1,0 +1,47 @@
+pkgbase = libpeas136
+	pkgdesc = GObject Plugin System version 1.36.0 with working pythonloader when used together with with python-gobject350
+	pkgver = 1.36.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/Libpeas
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	checkdepends = xorg-server-xvfb
+	makedepends = gi-docgen
+	makedepends = git
+	makedepends = glade
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = lua51
+	makedepends = lua51-lgi
+	makedepends = luajit
+	makedepends = meson
+	makedepends = python
+	makedepends = python-gobject
+	makedepends = python-setuptools
+	makedepends = vala
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libgirepository
+	conflicts = libpeas
+	source = git+https://gitlab.gnome.org/GNOME/libpeas.git#tag=libpeas-1.36.0
+	b2sums = 8845366ccd5c0244a6ed1b28d5b44590496d260db0da47bc0ac87b2063c1063ee92541bc7f4eb056bb2c52d1299febedf517e90b9dc8765a0f3f9f954430e691
+
+pkgname = libpeas136
+	depends = lua51-lgi
+	depends = python-gobject
+	provides = libpeas
+
+pkgname = libpeas136-demos
+	pkgdesc = GObject Plugin System version 1.36.0 with working pythonloader when used together with with python-gobject350 (demo applications)
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgirepository
+	depends = libpeas
+	depends = python-gobject
+
+pkgname = libpeas136-docs
+	pkgdesc = GObject Plugin System version 1.36.0 with working pythonloader when used together with with python-gobject350 (documentation)
+	depends = 
