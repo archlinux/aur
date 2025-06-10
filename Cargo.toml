@@ -1,9 +1,0 @@
-[package]
-name = "thinkfan-cli"
-version = "0.2.0"
-edition = "2024"
-
-[dependencies]
-clap = "4.5.39"
-colored = "3.0.0"
-libc = "0.2.172"
