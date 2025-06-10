@@ -1,6 +1,6 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=quik
-pkgver=12.3.0
+pkgver=12.4.0
 pkgrel=1
 stratver=3.0.5
 trustver=2.10.0
@@ -12,26 +12,26 @@ noextract=('keygen.zip')
 depends=('wine')
 
 source=(
-"https://arqatech.com/upload/iblock/35a/quik_${pkgver}_upd.zip"
+"https://arqatech.com/upload/iblock/149/quik_${pkgver}_upd.zip"
 "ftp://ftp.quik.ru/public/updates/10.2/StratVolat_${stratver}_upd.zip"
 #"ftp://ftp.quik.ru/public/updates/11.2/TrustManager_${trustver}_upd.zip"
 #"ftp://ftp.quik.ru/public/updates/10.2/BTrading_${btradever}_upd.zip"
 "keygen.zip::ftp://ftp.quik.ru/public/updates/keygen_1.3.0_upd.zip"
 "https://github.com/alain-riedinger/luasocket/releases/download/3.0-5.3.5/luasocket-3.0-5.3.5.zip"
-"https://github.com/alain-riedinger/luasocket/releases/download/3.0-5.4.3/luasocket-3.0-5.4.3.zip"
+"https://github.com/alain-riedinger/luasocket/releases/download/3.1-5.4.7/luasocket-3.1-5.4.7.zip"
 "quik"
 "quik-keygen"
 "qrypto.cfg"
 "ip.cfg"
 )
 sha256sums=(
-'59ca71fbbc84c06a4b4d052323a384601e6285ecc3f6185929c62d6553f5d61d' # quik_12.3.0_upd.zip
+'d4e1ffea61080ecb9d99a78566c59871a42e94d9c3ad3eda73cebcf7bcd9b174' # quik_12.4.0_upd.zip
 'd32095309cd7359f4078a74179d8ae42e013e3fd3ad75837f0fa3941e7091b75' # StratVolat 3.0.5
 #'ff4dd52e56fabe8c06730daca770a92312338303bc06b58d417105d44c5a0869' # TrustManager
 #'0f6724e6666c379cf9a1f53aa627f4b0c56fded2d7e3fbf3704d6526066fa8e3' # BasketTrading
 'bc66665d2209836abe51ae9258c289c0f682dba4ea5261f9319996a60a6a4ae7' # keygen
 'b2a3a2e2a895cea35aad5dee97640ef7bcccbb38e61e61b14baff6cecbdd79af' # lua-socket 5.3.5
-'2e69ea49e9b6a9d7c84bcf37653f4a1e15e8b73d7b21302e7cd40d29af6104aa' # lua-socket 5.4.3
+'f45993d0f5d1d84fe0c084433505d3a84babd6f5686fc2c3c7a7119b9727e927' # lua-socket 5.4.7
 'e4ddfc7a2a12bba0fdc880dcb05757fff2c035b2625f721ea1a0383bdc6ad1bf'
 '92563c563a9781592d1e119117e3b7a899addfabd733648986b97db999386821'
 'd981ee4cc35d33a3b37c43fb7343bde5c24e15e003dbb67907b602d22f60a469'
@@ -42,7 +42,7 @@ prepare() {
 	mkdir -p {keygen,socket-5.3,socket-5.4}
 	bsdtar -xzf keygen.zip -C keygen
 	bsdtar -xzf luasocket-3.0-5.3.5.zip -C socket-5.3
-	bsdtar -xzf luasocket-3.0-5.4.3.zip -C socket-5.4
+	bsdtar -xzf luasocket-3.1-5.4.7.zip -C socket-5.4
 
 	# bugfix in luasock 5.4 @url https://gist.github.com/ttys3/31dbf88ee7d708294d8ae5b0a4954424
 #	cd ./socket-5.4/x64/socket/
