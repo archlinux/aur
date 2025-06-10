@@ -2,30 +2,45 @@
 # Contributor: Duy Truong <jimreynold2nd@yahoo.com>
 
 pkgname=ubports-installer
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
+_nodeversion=18
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
 arch=('x86_64' 'i686')
 url='https://github.com/ubports/ubports-installer'
 license=('GPL-3.0-or-later')
 depends=('android-tools' 'android-udev' 'electron' 'e2fsprogs' 'heimdall' 'p7zip')
-makedepends=('npm' 'nodejs' 'electron')
+makedepends=('nvm')
 options=('!strip' '!emptydirs')
 conflicts=('ubports-installer-git' 'ubports-installer-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ubports/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9962c0e44c28c13e5e77b16804514721009e899b035615edbf404a9bf1a08259')
+sha256sums=('b3831d268dd6e5aa88711eb1a9feb0ce68710d13dd4546b7ebedf298526a9972')
 
 _srcdir="$pkgname-$pkgver"
 
+_ensure_local_nvm() {
+  local NVM_DIR="${srcdir}/.nvm"
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+  nvm install "${_nodeversion}"
+  nvm use "${_nodeversion}"
+}
+
 prepare() {
+	export npm_config_cache="$srcdir/npm-cache"
+	_ensure_local_nvm
+
 	cd "$_srcdir"
 
 	npm ci
 }
 
 build() {
+	export npm_config_cache="$srcdir/npm-cache"
+	_ensure_local_nvm
+
 	cd "$_srcdir"
 
+	npm install
 	npm run build
 	./node_modules/.bin/electron-builder --linux --x64 --dir -c.electronDist=/usr/lib/electron -c.electronVersion="$(cat /usr/lib/electron/version)"
 }
