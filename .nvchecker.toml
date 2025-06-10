@@ -1,0 +1,5 @@
+[vim-sensible]
+source="github"
+github="tpope/vim-sensible"
+use_max_tag=true
+prefix="v"
