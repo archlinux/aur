@@ -1,10 +1,13 @@
 pkgbase = quartodoc
 	pkgdesc = Generate Python package API reference documentation using Markdown and Quarto
-	pkgver = 0.1.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://machow.github.io/quartodoc
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-syrupy
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
@@ -24,7 +27,7 @@ pkgbase = quartodoc
 	depends = python-typing_extensions>=4.4.0
 	depends = python-watchdog>=3.0.0
 	depends = python>=3.10
-	source = quartodoc-0.1.0::git+https://github.com/machow/quartodoc.git#tag=v0.1.0
-	b2sums = 3373ee02f682d754a6776da08d6d994071b51495d3d11837f73a5676a3061b2e8c3120b01812381f033d54db89eaba91970c77eb3d05125ed60346a3cd910e62
+	source = quartodoc-0.11.0::git+https://github.com/machow/quartodoc.git#tag=v0.11.0
+	b2sums = 835be84c7a22facab3dde9c77dbdc5f818b79544fb9aaf3ff79a1526c6290c6934a3c7ae71965b1053c43aa7a12e25dcf99c0cb2041f75879537130d5454cd1b
 
 pkgname = quartodoc

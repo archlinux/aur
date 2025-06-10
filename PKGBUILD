@@ -1,7 +1,7 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 pkgname=quartodoc
-pkgver=0.1.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Generate Python package API reference documentation using Markdown and Quarto"
 arch=('any')
@@ -30,20 +30,18 @@ makedepends=(
     'python-setuptools-scm'
     'python-wheel'
 )
-# checkdepends=(
-#     'python-pytest'
-#     'python-syrupy'
-# )
+checkdepends=(
+    'python-pytest'
+    'python-pytest-cov'
+    'python-syrupy'
+)
 source=("${pkgname}-${pkgver}::git+https://github.com/machow/quartodoc.git#tag=v${pkgver}")
-b2sums=('3373ee02f682d754a6776da08d6d994071b51495d3d11837f73a5676a3061b2e8c3120b01812381f033d54db89eaba91970c77eb3d05125ed60346a3cd910e62')
+b2sums=('835be84c7a22facab3dde9c77dbdc5f818b79544fb9aaf3ff79a1526c6290c6934a3c7ae71965b1053c43aa7a12e25dcf99c0cb2041f75879537130d5454cd1b')
 
-# Broken until upstream updates to griffe >= 1.0
-# https://github.com/mkdocstrings/griffe/releases/tag/1.0.0
-# Shouldn't affect functionality
-# check() {
-#     cd $pkgname-$pkgver
-#     PYTHONPATH=. pytest
-# }
+check() {
+    cd $pkgname-$pkgver
+    PYTHONPATH=. pytest
+}
 
 build() {
     cd $pkgname-$pkgver
