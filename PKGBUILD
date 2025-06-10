@@ -1,10 +1,9 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=r-air-bin
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="Air is an R formatter and language server, written in Rust.
- from Posit"
+pkgdesc="An R language server and formatter"
 arch=('x86_64')
 url="https://github.com/posit-dev/air"
 license=('MIT')

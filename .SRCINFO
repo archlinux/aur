@@ -1,6 +1,6 @@
 pkgbase = r-air-bin
-	pkgdesc = Air is an R formatter and language server, written in Rust. from Posit
-	pkgver = 0.6.0
+	pkgdesc = An R language server and formatter
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/posit-dev/air
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = r-air-bin
 	depends = gcc-libs
 	depends = glibc
 	options = !debug
-	source_x86_64 = https://github.com/posit-dev/air/releases/download/0.6.0/air-x86_64-unknown-linux-gnu.tar.gz
-	source_x86_64 = https://raw.githubusercontent.com/posit-dev/air/refs/tags/0.6.0/LICENSE
-	provides_x86_64 = r-air=0.6.0
+	source_x86_64 = https://github.com/posit-dev/air/releases/download/0.7.0/air-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/posit-dev/air/refs/tags/0.7.0/LICENSE
+	provides_x86_64 = r-air=0.7.0
 	sha256sums_x86_64 = dbb23ea9350d1b477b29139a2caac8c86dd77392ef6eb1100aa0290140b9c136
 	sha256sums_x86_64 = 19713ea69a4231105033c381dc2145148d26eab51e0b7e458ef4e775db531863
 
