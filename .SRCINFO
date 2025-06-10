@@ -1,0 +1,14 @@
+pkgbase = matlab-mpm
+	pkgdesc = MATLAB Package Manager
+	pkgver = 2025.1
+	pkgrel = 1
+	url = https://www.mathworks.com/products/mpm.html
+	arch = x86_64
+	license = cusstom:MATLAB EULA
+	depends = ca-certificates
+	depends = glibc
+	depends = unzip
+	source_x86_64 = mpm-2025.1-x86_64::https://ssd.mathworks.com/supportfiles/downloads/mpm/2025.1/glnxa64/mpm
+	sha256sums_x86_64 = 09a430390e93919c95272b3178ebd29468d600791a6e1f2200c48bb25d675243
+
+pkgname = matlab-mpm

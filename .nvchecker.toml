@@ -1,0 +1,4 @@
+[matlab-mpm]
+source = "httpheader"
+url = "https://www.mathworks.com/mpm/glnxa64/mpm"
+regex = '/supportfiles/downloads/mpm/([0-9.]+)/glnxa64/mpm'
