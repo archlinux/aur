@@ -1,6 +1,6 @@
 # Maintainer: Greboid <greboid@github>
 pkgname=tithon
-pkgver=0.0.14
+pkgver=0.0.15
 pkgrel=1
 pkgdesc="Modern IRC client"
 arch=('x86_64')
@@ -59,3 +59,5 @@ package() {
 
   install -Dm755 "${srcdir}/launcher.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
+sha256sums=('SKIP'
+            '96f891aa77f7374c9d40689add1ec8f5402915a08a70d820725d026fa8ec0f29')
