@@ -16,7 +16,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 build() {
   cd HiGHS-${pkgver}
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -DBUILD_CXX_EXAMPLE=OFF -DBUILD_CXX_EXE=OFF -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -B build-${_arch} .
+    ${_arch}-cmake -DBUILD_CXX_EXE=OFF -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -B build-${_arch} .
     make -C build-${_arch}
   done
 }
