@@ -1,6 +1,8 @@
 # Maintainer: envolution
 # Contributor: Jose Fernandez <josefernandez.dev@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
+# ci|skipcheck|
+
 pkgname=below
 pkgver=0.9.0
 pkgrel=1
@@ -31,8 +33,8 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   export LIBBPF_LIB_DIR=/usr/lib
-  export LIBBPF_INCLUDE_DIR=/usr/include/bpf 
-  cargo build  --frozen --no-default-features --features "libbpf-cargo/default libbpf-rs/default" --release
+  export LIBBPF_INCLUDE_DIR=/usr/include/bpf
+  cargo build --frozen --no-default-features --features "libbpf-cargo/default libbpf-rs/default" --release
 }
 
 check() {
@@ -40,7 +42,7 @@ check() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   export LIBBPF_LIB_DIR=/usr/lib
-  export LIBBPF_INCLUDE_DIR=/usr/include/bpf 
+  export LIBBPF_INCLUDE_DIR=/usr/include/bpf
   cargo test --no-default-features --features "libbpf-cargo/default libbpf-rs/default" --workspace -- --skip sudotest
 }
 
