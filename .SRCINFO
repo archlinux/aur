@@ -1,6 +1,6 @@
 pkgbase = pipeline-gtk
 	pkgdesc = Watch YouTube and PeerTube videos in one place
-	pkgver = 2.3.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://gitlab.com/schmiddi-on-mobile/pipeline
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = pipeline-gtk
 	conflicts = tubefeeder
 	replaces = tubefeeder
 	options = !lto
-	source = https://gitlab.com/schmiddi-on-mobile/pipeline/-/archive/2.3.0/pipeline-2.3.0.tar.gz
-	sha256sums = 2cc14e349f28e77f19aef57cd502c9e79edf454e641e7afd37e3f198bdd8bcdb
+	source = https://gitlab.com/schmiddi-on-mobile/pipeline/-/archive/2.4.1/pipeline-2.4.1.tar.gz
+	sha256sums = 7f6bc0866bcc2a22f662f97d63bb97f8c75ad04754022a4709588cf88651a0ba
 
 pkgname = pipeline-gtk
