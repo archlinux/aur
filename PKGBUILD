@@ -2,10 +2,10 @@
 
 _basename="openrct2"
 _pkgname="${_basename}-appimage"
-_version="v0.4.23-24-g01d0fa52ea"
+_version="v0.4.23-26-gec3f9d1272"
 pkgname=${_basename}-appimage
 pkgdesc="Develop appimages for OpenRCT2"
-pkgver=0.4.23.24
+pkgver=0.4.23.26
 pkgrel=1
 provides=("${pkgname}")
 conflicts=("${pkgname}")
