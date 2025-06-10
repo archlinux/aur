@@ -2,7 +2,7 @@
 
 pkgname=quarkdown
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 _jdkver=21
 pkgdesc='a Markdown based typesetting system'
 arch=(any)
@@ -38,7 +38,8 @@ package() {
 	install -Dm0644 -t "$pkgdir/$_sharedir/lib/qmd/" quarkdown-libs/src/main/resources/*.qmd
 	cat <<- EOF | install -Dm0755 /dev/stdin "$pkgdir/usr/bin/$pkgname"
 		#!/usr/bin/env bash
-		export JAVA_HOME="/usr/lib/jvm/java-$_jdkver-openjdk"
+		export JAVA_HOME='/usr/lib/jvm/java-$_jdkver-openjdk'
+		export NODE_PATH='/usr/lib/node_modules'
 		exec java -jar '$_sharedir/java/$pkgname.jar' "\$@"
 	EOF
 }
