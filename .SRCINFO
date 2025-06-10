@@ -1,13 +1,14 @@
 pkgbase = cram
 	pkgdesc = functional testing framework for command line applications
 	pkgver = 0.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://bitheap.org/cram/
 	arch = any
 	license = GPL-2.0-or-later
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-build
 	depends = python
-	depends = python-installer
-	depends = python-build
 	source = cram-0.7.tar.gz::https://bitheap.org/cram/cram-0.7.tar.gz
 	sha512sums = 9fa57e504abac8fd15bf5ff4a74405cb7acd10fd4c797adee87052a4f1c4e975bbc0f4219afd9485358b2c2939b48b3ffe538ae2abc6eea71e0ba8b458d50103
 

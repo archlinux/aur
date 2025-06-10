@@ -5,12 +5,13 @@
 
 pkgname=cram
 pkgver=0.7
-pkgrel=5
+pkgrel=6
 pkgdesc="functional testing framework for command line applications"
 arch=('any')
 url="https://bitheap.org/cram/"
 license=('GPL-2.0-or-later')
-depends=('python' 'python-installer' 'python-build')
+depends=('python')
+makedepends=('python-setuptools' 'python-installer' 'python-build')
 source=("${pkgname}-${pkgver}.tar.gz::https://bitheap.org/cram/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('9fa57e504abac8fd15bf5ff4a74405cb7acd10fd4c797adee87052a4f1c4e975bbc0f4219afd9485358b2c2939b48b3ffe538ae2abc6eea71e0ba8b458d50103')
 
