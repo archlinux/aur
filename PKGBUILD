@@ -2,24 +2,14 @@
 # Contributor: Andrea Feletto <andrea@andreafeletto.com>
 # Contributor: Daurnimator <daurnimator@archlinux.org>
 
-## useful links
-# https://codeberg.org/river/river
-# https://github.com/riverwm/river
+: ${_branch:=next-wlroots}
+: ${_ver_wlr:=0.19}
 
-## options
-: ${_build_xwayland:=true}
-: ${_build_git:=true}
-
-unset _pkgtype
-[ "${_build_xwayland::1}" != "t" ] && _pkgtype+="-noxwayland"
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
-# basic info
 _pkgname="river"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.3.5.r31.g1b5dd21
-pkgrel=3
-pkgdesc='Dynamic tiling wayland compositor'
+pkgname="$_pkgname-git"
+pkgver=0.3.9.r7.gee1e36c
+pkgrel=1
+pkgdesc="A dynamic tiling wayland compositor"
 url='https://codeberg.org/river/river'
 license=('GPL-3.0-only')
 arch=('x86_64')
@@ -30,8 +20,10 @@ depends=(
   'libxkbcommon'
   'mesa'
   'pixman'
+  'sh'
   'wayland'
-  'wlroots'
+  "wlroots${_ver_wlr}"
+  'xorg-xwayland'
 )
 makedepends=(
   'git'
@@ -43,13 +35,11 @@ optdepends=(
   'polkit: access seat through systemd-logind'
 )
 
-[[ "${_build_xwayland::1}" == "t" ]] && depends+=('xorg-xwayland')
-
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-_pkgsrc="$_pkgname"
-source=('git+https://github.com/riverwm/river.git')
+_pkgsrc="codeberg.$_pkgname"
+source=("$_pkgsrc"::"git+$url.git#branch=$_branch")
 sha256sums=('SKIP')
 
 prepare() {
@@ -69,8 +59,8 @@ pkgver() {
   printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
-build() {
-  local _zig_options=(
+_zig_options() {
+  _zig_options=(
     --summary all
     --prefix /usr
     --search-prefix /usr
@@ -80,19 +70,29 @@ build() {
     -Dcpu=baseline
     -Dpie
     -Doptimize=ReleaseSafe
+    -Dxwayland
   )
+}
 
-  [[ "${_build_xwayland::1}" == "t" ]] && _zig_options+=(-Dxwayland)
+build() {
+  _zig_options
 
   cd "$_pkgsrc"
   DESTDIR="build" zig build "${_zig_options[@]}"
 }
 
+check() {
+  _zig_options
+
+  cd "$_pkgsrc"
+  zig build test "${_zig_options[@]}"
+}
+
 package() {
   cd "$_pkgsrc"
-  cp --reflink=auto -a build/* "$pkgdir"
+  cp -a build/* "$pkgdir"
   install -Dm644 contrib/river.desktop -t "$pkgdir/usr/share/wayland-sessions/"
 
-  install -d "$pkgdir/usr/share/$_pkgname"
-  cp --reflink=auto -fr example "$pkgdir/usr/share/$_pkgname/"
+  mkdir -pm755 "$pkgdir/usr/share/$_pkgname"
+  cp -fr example "$pkgdir/usr/share/$_pkgname/"
 }
