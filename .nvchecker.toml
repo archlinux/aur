@@ -1,5 +1,5 @@
 [lib32-sdl2_sound]
-source="github-graphql"
+source="github"
 github="icculus/SDL_sound"
 use_latest_release=true
 prefix="v"
