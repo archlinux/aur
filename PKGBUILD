@@ -3,7 +3,7 @@
 pkgname=python-pyxem
 pkgshort=pyxem
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for multi-dimensional diffraction microscopy extending HyperSpy"
 arch=('any')
 url="https://pyxem.github.io/pyxem-website/"
@@ -30,7 +30,7 @@ depends=('python>=3.7'
          'python-tqdm'
          'python-traits'
 	 'python-transforms3d'
-         'python-zarr<3.0.0'
+         'python-zarr'
          )
 
 makedepends=('python-setuptools' )
