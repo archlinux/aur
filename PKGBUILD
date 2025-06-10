@@ -2,7 +2,7 @@
 # Contributor: 程式夥伴 (AI Assistant)
 
 pkgname=scrcpy-launcher
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A simple launcher for scrcpy, built with NW.js."
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("${pkgname}-v${pkgver}-${_archive_filename}::https://github.com/velade/s
         "${pkgname}.desktop"
         "LICENSE::https://raw.githubusercontent.com/velade/scrcpy-launcher/${pkgver}/LICENSE")
 
-sha256sums=('6f6d3735fe212dcaf4b355d9fa59c677fccff467c1b705f5090657de35a3c5fb'
+sha256sums=('1d1c66762387affa403d5847d8c9091e3b96b1cbd8436017561d05136f1d0fb9'
             '93b6dd07d33b0153bcfba6721797290839410870b8f7a379998b4e5fe306de46'
             'a6f3cabbef34490c82cf1eaaadfe3591c5dc8f3924c11c9da74609b660c7c72d')
 
@@ -58,6 +58,9 @@ package() {
   find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} +
 
   find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} +
+  
+  # 確保tmp檔案夾有創建和刪除權限
+  chmod -c 777 "${pkgdir}/opt/${pkgname}/app/tmp/"
   
   # 確保主執行檔案有執行權限
   chmod +x "${pkgdir}/opt/${pkgname}/Scrcpy啟動器"

@@ -1,6 +1,6 @@
 pkgbase = scrcpy-launcher
 	pkgdesc = A simple launcher for scrcpy, built with NW.js.
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/velade/scrcpy-launcher
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = scrcpy-launcher
 	depends = libxss
 	depends = scrcpy
 	depends = android-tools
-	source = scrcpy-launcher-v3.0.0-Scrcpy_Launcher_Linux64.tar.gz::https://github.com/velade/scrcpy-launcher/releases/download/3.0.0/Scrcpy_Launcher_Linux64.tar.gz
+	source = scrcpy-launcher-v3.1.0-Scrcpy_Launcher_Linux64.tar.gz::https://github.com/velade/scrcpy-launcher/releases/download/3.1.0/Scrcpy_Launcher_Linux64.tar.gz
 	source = scrcpy-launcher.desktop
-	source = LICENSE::https://raw.githubusercontent.com/velade/scrcpy-launcher/3.0.0/LICENSE
-	sha256sums = 6f6d3735fe212dcaf4b355d9fa59c677fccff467c1b705f5090657de35a3c5fb
+	source = LICENSE::https://raw.githubusercontent.com/velade/scrcpy-launcher/3.1.0/LICENSE
+	sha256sums = 1d1c66762387affa403d5847d8c9091e3b96b1cbd8436017561d05136f1d0fb9
 	sha256sums = 93b6dd07d33b0153bcfba6721797290839410870b8f7a379998b4e5fe306de46
 	sha256sums = a6f3cabbef34490c82cf1eaaadfe3591c5dc8f3924c11c9da74609b660c7c72d
 
