@@ -1,7 +1,7 @@
 # Maintainer: haxibami <contact at haxibami dot net>
 
 pkgname=qdrant
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="Vector Database for the next generation of AI applications"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'cmake' 'mold' 'clang' 'protobuf')
 source=(
   "${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('08e6eb063d959a148bf46b61120d78e1ad2f492d65b14ab70b64ac1a60c71e4b')
+sha256sums=('e029eeeb4dc303d531fd5d553b7351f50de97c27732a939f4bee9815580edc02')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -24,6 +24,7 @@ build() {
   # note: (GCC +) mold or (Clang +) lld are required to build with LTO
   export RUSTFLAGS="${RUSTFLAGS} -Clink-arg=-fuse-ld=mold"
   # export CC=clang CXX=clang++ RUSTFLAGS="${RUSTFLAGS} -Clink-arg=-fuse-ld=lld"
+  export CXXFLAGS="$CXXFLAGS -include cstdint"
   cargo build --release --bin qdrant
 }
 
