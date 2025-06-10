@@ -1,5 +1,5 @@
 pkgname=mlir
-pkgver=19.1.7
+pkgver=20.1.6
 pkgrel=1
 pkgdesc="Multi-Level IR Compiler Framework for LLVM"
 arch=('x86_64')
@@ -11,9 +11,9 @@ options=(!lto)
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/mlir-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig})
-sha256sums=('4e1ea9ed9a60589466ad89d4b739f12a3a51fb828caaebc3bfc59172c6ce0eee'
+sha256sums=('972a2c01a5eba63f068ab7e4094a0a49c9bb6a9bb13d283a34ba299deff39c2d'
             'SKIP'
-            '11c5a28f90053b0c43d0dec3d0ad579347fc277199c005206b963c19aae514e3'
+            'b4b3efa5d5b01b3f211f1ba326bb6f0c318331f828202d332c95b7f30fca5f8c'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
               'D574BD5D1D0E98895E3BF90044F2485E45D59042') # Tobias Hieta <tobias@hieta.se>
@@ -22,14 +22,6 @@ prepare() {
   cd mlir-${pkgver}.src/
   # /usr/bin/ld: cannot find -lLLVMCodeGenTypes: No such file or directory
   sed -i 's|LLVM_LINK_COMPONENTS|IGNORE_THAT|g' tools/mlir-tblgen/CMakeLists.txt
-
-  # FuncOps.h.inc: No such file or directory
-  curl -L https://github.com/llvm/llvm-project/pull/97885.patch | patch -p2
-
-  #include <cstdint> for gcc 15
-  curl -L https://github.com/llvm/llvm-project/pull/110932.patch | patch -p2 -f || :
-  curl -L https://github.com/llvm/llvm-project/commit/101109f.patch | patch -p2
-  curl -L https://github.com/llvm/llvm-project/commit/a6bb8a7.patch | patch -p2
 }
 
 build() {
