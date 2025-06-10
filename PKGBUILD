@@ -15,11 +15,11 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation-openrc
-pkgver=17.6.0
-_buildver=24238078
+pkgver=17.6.3
+_buildver=24583834
 _pkgver=${pkgver}_${_buildver}
-pkgrel=1
-_tools_version=12.4.5_23787635
+pkgrel=6
+_tools_version=12.5.0-24276846
 _legacy_ver=17.5.2
 _legacy_buildver=23775571
 _legacy_tools_version=12.4.0_23259341
@@ -48,6 +48,7 @@ depends=(
   pcsclite
   hicolor-icon-theme
   libxcrypt-compat # needed for ovftool
+  libxml2-legacy # needed for vmrun
   # needed to use Arch GTK3 library (for theme integration)
   gtk3
   gcr
@@ -63,14 +64,18 @@ backup=(
   'etc/conf.d/vmware'
 )
 source=(
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/core/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-linux-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-linuxPreGlibc25-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-netware-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-solaris-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-winPre2k-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-winPreVista-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/core/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle.tar"
+  "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-linux-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-linuxPreGlibc25-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-netware-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-solaris-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
+  "vmware-tools-windows-${_tools_version/_/-}-${pkgver}.${CARCH}.component.tar::https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component.tar"
+  "vmware-tools-windows-x86-${_tools_version/_/-}-${pkgver}.${CARCH}.component.tar::https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-windows-x86-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-winPre2k-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
+  "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-winPreVista-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
+
+  "winVistaSP1.iso::https://packages-prod.broadcom.com/tools/frozen/windows/WindowsToolsVista/SP1/windows.iso"
+  "winVistaSP2.iso::https://packages-prod.broadcom.com/tools/frozen/windows/WindowsToolsVista/SP2/windows.iso"
 
   'vmware-bootstrap'
   'vmware-vix-bootstrap'
@@ -87,31 +92,29 @@ source=(
   'vmmon.patch'
   'vmnet.patch'
 )
-sha256sums=(
-  '5ec0b5f08961cc943369168b676f5a5cf6c7e7886043508f7226dab37e78cb80'
-  'd862be0d12796134b40e5ffc7534a5e6161b8898355fe32ca8f705a3806cbfe4'
-  'd79f79f17e5f37399046d16be3967e0cff3c9474e2cb6ea3f2c3ebea3ff68cea'
-  '4643fff3ed4f8af5a56a1c4c2084fa7327d78e58ee9b0687b98390a4b4a1ac14'
-  '196c842f758b813afb202b0db2d09d457fccafac212ca41ef3277dfe9ceaf9ec'
-  'bf2e5ff35f06c1447bff4c9dc4c6faf1f1ddd0af048eed1cfca9d661b15cdc2c'
-  'd4e9884f5f11cef4e261023d895eba5b57a8a80623bff0de8b3f1c47154b2a11'
-  '20abd21da43ac31741f8bb26db1ae7d8f4ef4c5082c9a2cc3ae5da494f1b9529'
-
-  '67edc40e39686281f5101ced1a250648ae32e4cd5dffe4fd47bc3c7aed929d50'
-  'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
-  'bcf24ce469527844c60f8fd50fda61a6b65cc326ff6bf026d5ae0576cf749c2c'
-  'f2c9272dfa1e3de1de5f5545989e6e3d9f400084decaa5504559a20209648329'
-  'b94959a11b28e51b541321be0588190eb10825e9ff55cbd16eb01483a839a69f'
-
-  '6114cab1760bd1393de2ed16d9bc6f01c013a706e1b0a0a7fc34156d6adb7ae9'
-  '8534321485f16783a70f8ce78ca04599756a98b955b046af623910e1ee6e412c'
-  '452c1bfebac52f4808ba5f4bf2fc3eae9858f8745d60c13d3c46e7550a3e1eb1'
-
-  '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
-  '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-  '4ef2944491390ecf8e924bffbad9069cacf7083d51a8bf655473b52143deb401'
-  'e02b8f37ddb78cb8463f4fe33c8ca7f131ddf666ea0bb3d34c6bf74262a9401c'
-)
+sha256sums=('4f3b643068bbd6e4c864e1b434cfef080faa18382b988d012dc4738094a73e74'
+            'd862be0d12796134b40e5ffc7534a5e6161b8898355fe32ca8f705a3806cbfe4'
+            'd79f79f17e5f37399046d16be3967e0cff3c9474e2cb6ea3f2c3ebea3ff68cea'
+            '4643fff3ed4f8af5a56a1c4c2084fa7327d78e58ee9b0687b98390a4b4a1ac14'
+            '196c842f758b813afb202b0db2d09d457fccafac212ca41ef3277dfe9ceaf9ec'
+            '81b63fd7f3a7f9f7b24cddb8712a592b4b3c9f269338a8897c55146c9766a18b'
+            '5078060e520cf1491d1585d9b85a311bfcde1da080fc527512840d44040eb137'
+            'd4e9884f5f11cef4e261023d895eba5b57a8a80623bff0de8b3f1c47154b2a11'
+            '20abd21da43ac31741f8bb26db1ae7d8f4ef4c5082c9a2cc3ae5da494f1b9529'
+            '3b8f9d6e43f5d1dff0576cb93d008c14e0434d7233872f6c63988513d2bda5d1'
+            '8f1cc3181055891b98672f715e0ca7bbe4018960eae945d7a4b9f640c44c3d79'
+            '67edc40e39686281f5101ced1a250648ae32e4cd5dffe4fd47bc3c7aed929d50'
+            'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
+            'bcf24ce469527844c60f8fd50fda61a6b65cc326ff6bf026d5ae0576cf749c2c'
+            'f2c9272dfa1e3de1de5f5545989e6e3d9f400084decaa5504559a20209648329'
+            'b94959a11b28e51b541321be0588190eb10825e9ff55cbd16eb01483a839a69f'
+            '6114cab1760bd1393de2ed16d9bc6f01c013a706e1b0a0a7fc34156d6adb7ae9'
+            '8534321485f16783a70f8ce78ca04599756a98b955b046af623910e1ee6e412c'
+            '452c1bfebac52f4808ba5f4bf2fc3eae9858f8745d60c13d3c46e7550a3e1eb1'
+            '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
+            '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
+            '32ae0ba7836c2212b819e3e7ec3f96667c1ac6d5083003eab1e794f0c032f640'
+            '74453f184ff57390ea0696144f0fc767cc875635595c964d5d5e7924a01c82d8')
 options=(!strip emptydirs !debug)
 
 if [ -z "$_remove_vmware_keymaps_dependency" ]; then
@@ -121,28 +124,31 @@ depends+=(
 fi
 
 
-_isoimages=(linux linuxPreGlibc25 netware solaris windows winPre2k winPreVista)
+_isoimages=(linux linuxPreGlibc25 netware solaris windows windows-x86 winPre2k winPreVista)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
 _vmware_fusion_ver=13.5.2
 _vmware_fusion_buildver=23775688
 _vmware_fusion_ver_full=${_vmware_fusion_ver}_${_vmware_fusion_buildver}
-# List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
+# List of VMware Fusion versions: https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/fusion/index.html
 
 makedepends+=(
   python
-  p7zip
+  7zip
   uefitool
 )
 
 source+=(
-  "VMware-Fusion-${_vmware_fusion_ver_full/_/-}_universal.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver}/${_vmware_fusion_buildver}/universal/core/com.vmware.fusion.zip.tar"
+  "https://packages-prod.broadcom.com/tools/frozen/darwin/darwin.iso"
+  "https://packages-prod.broadcom.com/tools/frozen/darwin/darwinPre15.iso"
   "unlocker.py"
   "efi-patches.txt"
 )
+
 sha256sums+=(
-  '4d470e2160acb5da7d52d478f6ef12829c5ebe3c04e3154652466ba0bfeed3f6'
+  'e0c96286f376b30e2c2362bd991709f0f6bc6ebd911be4056a58da8698c49236'
+  'ef33fc5d152fd9db27cac0b1f21160226dfa5e5b7a501ffa25818682f3b4aaa0'
   '8a61e03d0edbbf60c1c84a43aa87a6e950f82d2c71b968888f019345c2f684f3'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
@@ -185,13 +191,12 @@ prepare() {
     --install-component "vmware-tools-netware-${_legacy_tools_version/_/-}.${CARCH}.component" \
     --install-component "vmware-tools-solaris-${_legacy_tools_version/_/-}.${CARCH}.component" \
     --install-component "vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component" \
+    --install-component "vmware-tools-windows-x86-${_tools_version/_/-}.${CARCH}.component" \
     --install-component "vmware-tools-winPre2k-${_legacy_tools_version/_/-}.${CARCH}.component" \
     --install-component "vmware-tools-winPreVista-${_legacy_tools_version/_/-}.${CARCH}.component" \
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then
-  7z e -y com.vmware.fusion.zip payload/VMware\ Fusion.app/Contents/Library/isoimages/\* -o"fusion-isoimages" > /dev/null
-
   sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker.py"
 fi
 }
@@ -264,6 +269,10 @@ package() {
   do
     install -Dm 644 "vmware-tools-$isoimage/$isoimage.iso" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso"
   done
+
+  # Add Windows Vista SP1 and SP2 ISO images
+  install -Dm 644 "$srcdir/winVistaSP1.iso" "$pkgdir/usr/lib/vmware/isoimages/winVistaSP1.iso"
+  install -Dm 644 "$srcdir/winVistaSP2.iso" "$pkgdir/usr/lib/vmware/isoimages/winVistaSP2.iso"
 
   install -Dm 644 "vmware-workstation/doc/EULA" "$pkgdir/usr/share/doc/vmware-workstation/EULA"
   ln -s "/usr/share/doc/vmware-workstation/EULA" "$pkgdir/usr/share/licenses/$pkgname/VMware Workstation - EULA.txt"
@@ -404,7 +413,7 @@ if [ -n "$_enable_macOS_guests" ]; then
 
   for isoimage in ${_fusion_isoimages[@]}
   do
-    install -Dm 644 "$srcdir/fusion-isoimages/$isoimage.iso" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso"
+    install -Dm 644 "$srcdir/$isoimage.iso" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso"
   done
 
   msg "Patching EFI firmwares to disable macOS server checking"

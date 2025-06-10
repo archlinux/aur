@@ -59,7 +59,7 @@
 --- a/vmnet/userif.c
 +++ b/vmnet/userif.c
 Fixing VMWare Player on Linux when using DHCP addresses: https://www.nikhef.nl/~janjust/vmnet/
-@@ -1029,6 +1029,9 @@
+@@ -1030,6 +1030,9 @@
     userIf = (VNetUserIF *)port->jack.private;
     hubJack = port->jack.peer;
  
@@ -69,22 +69,3 @@ Fixing VMWare Player on Linux when using DHCP addresses: https://www.nikhef.nl/~
     if (port->jack.state == FALSE || hubJack == NULL) {
        return -EINVAL;
     }
-Patch for Linux 6.9 from https://github.com/mkubecek/vmware-host-modules/issues/239
---- a/vmnet-only/vmnetInt.h
-+++ b/vmnet-only/vmnetInt.h
-@@ -41,8 +41,13 @@
-     compat_skb_set_network_header(skb, sizeof (struct ethhdr)),  \
-     dev_queue_xmit(skb)                                   \
-   )
--#define dev_lock_list()    read_lock(&dev_base_lock)
--#define dev_unlock_list()  read_unlock(&dev_base_lock)
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 9, 0)
-+#   define dev_lock_list()    rcu_read_lock()
-+#   define dev_unlock_list()  rcu_read_unlock()
-+#else
-+#   define dev_lock_list()    read_lock(&dev_base_lock)
-+#   define dev_unlock_list()  read_unlock(&dev_base_lock)
-+#endif
- 
- 
- extern struct proto vmnet_proto;
