@@ -12,7 +12,7 @@ pkgbase = spotitube-git
 	provides = spotitube
 	conflicts = spotitube
 	source = spotitube-git::git+https://github.com/streambinder/spotitube
-	source = https://aur.archlinux.org/cgit/aur.git/tree/server.sh?h=spotitube-git
+	source = server.sh
 	sha256sums = SKIP
 	sha256sums = 4a6da86f3743d72fe8d4f001fd16bff092ab0a51a3be1ad5ff4dc7c507e10ec4
 
