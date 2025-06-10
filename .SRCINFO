@@ -1,16 +1,19 @@
 pkgbase = uutils-coreutils-selinux
 	pkgver = 0.1.0
-	pkgrel = 34
+	pkgrel = 35
 	url = https://uutils.github.io/
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = clang
+	makedepends = make
+	makedepends = pkgconf
 	depends = gcc-libs
 	depends = glibc
 	depends = oniguruma
 	depends = libselinux
 	options = !lto
+	options = zipman
 	source = uutils-coreutils-selinux-0.1.0.tar.gz::https://github.com/uutils/coreutils/archive/0.1.0.tar.gz
 	sha256sums = 55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8
 
