@@ -19,42 +19,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
   'hunspell-en_US: Spell checking, American English')
 provides=("waterfox=${pkgver}")
 source=("https://cdn1.waterfox.net/waterfox/releases/${pkgver}/Linux_x86_64/waterfox-${pkgver}.tar.bz2"
-        "waterfox.desktop")
-
-#agent lizard
-export _agent="Mozilla/5.0 (X11; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
-# override the download function and split out filename since waterfox's web admin wants to make life difficult
-download_file() {
-  # source url with/without :: filename identifier
-  if [[ "$1" == *"::"* ]]; then
-    local url="${1#*::}"  #everything before ::
-    local output_file="${1%%::*}"  #grab download name pre ::
-  else
-    local url="$1"
-    local output_file="$2"
-  fi
-  
-  # if we still don't have a filename, get it from the url
-  if [ -z "$output_file" ]; then
-    output_file=$(basename "$url")
-  fi
-  
-  # imagine being able to download a file normally
-  curl -L \
-    -A "$_agent" \
-    -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" \
-    -H "Accept-Language: en-US,en;q=0.5" \
-    -H "Referer: https://www.waterfox.net/" \
-    -H "Connection: keep-alive" \
-    -H "Upgrade-Insecure-Requests: 1" \
-    -o "$output_file" \
-    "$url"
-  
-  return $?
-}
-
-#use our override function for the download 
-DLAGENTS=('https::/bin/bash -c "download_file %u %o"')
+  "waterfox.desktop")
 
 package() {
   # Create the necessary directories.
