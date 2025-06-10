@@ -1,0 +1,19 @@
+--- src_orig/canorus-0.7.3rc3/src/widgets/pyconsole.cpp	2025-06-10 11:37:24.560944961 -0400
++++ src/canorus-0.7.3rc3/src/widgets/pyconsole.cpp	2025-06-10 12:07:42.358654205 -0400
+@@ -305,14 +305,14 @@
+ 
+ // blocking operation;
+ PyThreadState_Swap(CASwigPython::mainThreadState);
+-PyEval_ReleaseLock();
++PyEval_ReleaseThread(PyThreadState_Get());
+ 
+ //Py_BEGIN_ALLOW_THREADS
+ 	_thrWaitMut->lock();
+ 	_thrWait->wait(_thrWaitMut);
+ //Py_END_ALLOW_THREADS
+ 
+-PyEval_AcquireLock();
++PyEval_AcquireThread(PyThreadState_Get());
+ PyThreadState_Swap(CASwigPython::pycliThreadState);
+ 
+ 	QString *str = new QString(_bufSend);	//put contents of _bufSend into buffer \todo: synch

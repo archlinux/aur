@@ -1,0 +1,111 @@
+--- src_orig/canorus-0.7.3rc3/src/scripting/swigpython.cpp	2025-06-10 11:37:24.553603614 -0400
++++ src/canorus-0.7.3rc3/src/scripting/swigpython.cpp	2025-06-10 12:01:53.820340051 -0400
+@@ -78,16 +78,16 @@
+ #endif
+ 
+     mainThreadState = PyThreadState_Get();
+-    PyEval_ReleaseLock();
++    PyEval_ReleaseThread(mainThreadState);
+ 
+        // my section with thread initialization
+-PyEval_AcquireLock();
++PyEval_AcquireThread(PyThreadState_Get());
+     PyInterpreterState * mainInterpreterState = mainThreadState->interp;
+ 
+     pycliThreadState = PyThreadState_New(mainInterpreterState);
+     PyThreadState_Swap(mainThreadState);
+ 
+-PyEval_ReleaseLock();
++PyEval_ReleaseThread(PyThreadState_Get());
+ }
+ 
+ /*!
+@@ -136,7 +136,7 @@
+ 	QString moduleName = fileName.left(fileName.lastIndexOf(".py"));
+ 	moduleName = moduleName.remove(0, moduleName.lastIndexOf("/")+1);
+ 
+-	PyEval_AcquireLock();
++  PyEval_AcquireThread(PyThreadState_Get());
+ 	
+ 	PyObject *pyModule;
+ 	if (autoReload) {
+@@ -152,19 +152,20 @@
+ 	} else {
+ 		pyModule = PyImport_ImportModule((char*)moduleName.toStdString().c_str());
+ 	}
+-	if (PyErr_Occurred()) { PyErr_Print(); PyEval_ReleaseLock(); return NULL; }
++	if (PyErr_Occurred()) { PyErr_Print(); PyEval_ReleaseThread(PyThreadState_Get()); return NULL; }
+ 
+ 	// Get function object
+ 	PyObject *pyFunction = PyObject_GetAttrString(pyModule, (char*)function.toStdString().c_str());
+-	if (PyErr_Occurred()) { PyErr_Print(); PyEval_ReleaseLock(); return NULL; }
++	if (PyErr_Occurred()) { PyErr_Print(); PyEval_ReleaseThread(PyThreadState_Get()); return NULL; }
+ 
+ 	// Call the actual function
+ 	PyObject *ret;
+ 	if (args.size())
+-		ret = PyEval_CallObject(pyFunction, pyArgs);
+-	else
+-		ret = PyEval_CallObject(pyFunction, NULL);
+-	if (PyErr_Occurred()) { PyErr_Print(); PyEval_ReleaseLock(); return NULL; }
++    ret = PyObject_Call(pyFunction, pyArgs, NULL);
++  else
++    ret = PyObject_CallNoArgs(pyFunction);
++
++	if (PyErr_Occurred()) { PyErr_Print(); PyEval_ReleaseThread(PyThreadState_Get()); return NULL; }
+ 
+ //	Py_DECREF(pyFunction); // -Matevz
+ //	Py_DECREF(pyModule); // -Matevz
+@@ -172,7 +173,8 @@
+ //	for (int i=0; i<args.size(); i++)
+ //		Py_DECREF(args[i]); // -Matevz
+ 
+-    PyEval_ReleaseLock();
++    PyEval_ReleaseThread(PyThreadState_Get());
++
+ 	return ret;
+ }
+ 
+@@ -189,7 +191,7 @@
+ void *CASwigPython::callPycli(void*) {
+ 
+ 
+-    PyEval_AcquireLock();
++    PyEval_AcquireThread(PyThreadState_Get());
+     PyThreadState_Swap(pycliThreadState);
+ 
+ 	QString fileName = thr_fileName;
+@@ -208,20 +210,20 @@
+ 
+ 	PyObject *pyModule = PyImport_ImportModule((char*)moduleName.toStdString().c_str());
+ 
+-	if (PyErr_Occurred()) { PyErr_Print(); PyEval_ReleaseLock(); return NULL; }
++	if (PyErr_Occurred()) { PyErr_Print(); PyEval_ReleaseThread(PyThreadState_Get()); return NULL; }
+ 
+ 	// Get function object
+ 
+ 	//PyObject *pyFunction = PyObject_GetAttrString(pyModule, "pycli");
+ 	PyObject *pyFunction = PyObject_GetAttrString(pyModule, (char*)function.toStdString().c_str());
+ 
+-	if (PyErr_Occurred()) { PyErr_Print(); PyEval_ReleaseLock(); return NULL; }
++	if (PyErr_Occurred()) { PyErr_Print(); PyEval_ReleaseThread(PyThreadState_Get()); return NULL; }
+ 
+ 	// Call the actual function
+ 	//
+ 	PyObject *ret;
+-	ret = PyEval_CallObject(pyFunction, pyArgs);
+-	if (PyErr_Occurred()) { PyErr_Print(); PyEval_ReleaseLock(); return NULL; }
++	ret = PyObject_Call(pyFunction, pyArgs, NULL);
++	if (PyErr_Occurred()) { PyErr_Print(); PyEval_ReleaseThread(PyThreadState_Get()); return NULL; }
+ 
+ //	Py_DECREF(pyFunction); // -Matevz
+ //	Py_DECREF(pyArgs); /// \todo Crashes if uncommented?!d
+@@ -231,7 +233,7 @@
+ 
+ 
+     PyThreadState_Swap(mainThreadState);
+-    PyEval_ReleaseLock();
++    PyEval_ReleaseThread(PyThreadState_Get());
+ 
+ //	pthread_exit((void*)NULL);
+     return ret;
