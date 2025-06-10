@@ -3,12 +3,12 @@
 
 pkgname=pipeline-gtk
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch YouTube and PeerTube videos in one place"
 arch=("x86_64" "aarch64" "riscv64")
 url="https://gitlab.com/schmiddi-on-mobile/pipeline"
 license=("GPL-3.0-or-later")
-depends=("libadwaita" "libclapper" "libclapper-gtk" "gst-plugins-gtuber")
+depends=("libadwaita" "libclapper" "libclapper-gtk" "clapper-enhancers")
 makedepends=("blueprint-compiler" "cargo" "meson")
 conflicts=("tubefeeder")
 replaces=("tubefeeder")
