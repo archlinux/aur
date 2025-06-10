@@ -1,14 +1,18 @@
 # Gmail-Tray
 
-Minimal Gmail notifier, with tray-icon, unread counter, opening the gmail page on a browser.
+Minimal Gmail notifier, with tray-icon, unread counter, opening the gmail page on a browser (firefox).
 
-It mostly uses [fetchmail](https://www.fetchmail.info) to poll for new emails and notify you, so you must set it up first
+It mostly uses [fetchmail](https://www.fetchmail.info) to search for new emails and notify you, so you the main credits go for it's creator
+
+*   My main job was create an interface and set up the polling code, so that it checks for emails on terminal, notifies the user and update the unread emails count
+
+Also, you must set it (fetchmail) up first for it to wirk
 
 ## Build from Source
 
 > cd gmail-tray/src
 
-> makepkg -fsi
+> makepkg -fsirc
 
 Or, if you have the tar file:
 
@@ -35,12 +39,12 @@ Or, if you have the tar file:
 
 ## Uninstall
 
-> sudo pacman -R gmail-tray
+> sudo pacman -Rns gmail-tray
 
 Customizations  
 It's a simple python script (eventually I will remake it in rust),
 
-So you could just add, remove and modify any functions and parameters easily.
+So you if you build it from source, you could just add, remove and modify any functions and parameters easily.
 
 You can increase or decrease the check interval, change the icon, and you can also change the browser and the flags used
 
@@ -48,6 +52,4 @@ You can increase or decrease the check interval, change the icon, and you can al
  (like --new-tab, --safe-mode (to use without extensions and make it lighter), ...)
 ```
 
-But then you you have to re0build from source
-
-I actually started doing this with surf, because it's so light, but it doesn't allow for dark mode.
+But then you you have to rebuild from source for it to work.

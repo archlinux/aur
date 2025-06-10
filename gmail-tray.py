@@ -1,9 +1,15 @@
 #!/usr/bin/env python3
+from calendar import c
 import gi
 import subprocess
 import signal
 import threading
 import fcntl
+import json
+
+gi.require_version('Gtk', '3.0')
+gi.require_version('AppIndicator3', '0.1')
+from gi.repository import Gtk, AppIndicator3, GLib # type: ignore
 
 LOCK_FILE = "/tmp/gmail-tray.lock"
 
@@ -16,36 +22,38 @@ def already_running():
     except OSError:
         return True
 
-gi.require_version('Gtk', '3.0')
-gi.require_version('AppIndicator3', '0.1')
-from gi.repository import Gtk, AppIndicator3, GLib
 
-### CONFIGURAÇÃO PERSONALIZÁVEL ###
-URL = "https://mail.google.com"
-APP_ICON = "/usr/share/icons/hicolor/48x48/apps/gmail-tray.png"     # ícone do sistema OU caminho absoluto ex: "/home/user/.icons/logo.png"
-APP_TITLE = "Gmail"                                                 # Título do aplicativo
-CHECK_INTERVAL = 60                                                 # seconds
-BROWSER = "firefox"                                                 # Browser to open Gmail
-FLAGS = ["--ProfileManager", "--new-window", "--safe-mode"]          # Arguments for the browser, e.g., profile and new window
-#####################################
 
 class GenericTrayApp:
     def __init__(self):
         self.prev_unread = 0
+        # get the variables from the gmail-tray-configs.json file
+        try:
+            with open("/usr/bin/gmail-tray-configs.json", "r") as f:
+                configs = json.load(f)
+                self.url = configs["url"]
+                self.icon = configs["icon"]
+                self.title = configs["title"]
+                self.interval = configs["interval"]
+                self.browser = configs["browser"]
+                self.flags = configs["flags"]
+        except Exception as e:
+            print("Error reading configuration file:", e)
+            return None
         self.indicator = AppIndicator3.Indicator.new(
-            APP_TITLE,
-            APP_ICON,
+            self.title,
+            self.icon,
             AppIndicator3.IndicatorCategory.APPLICATION_STATUS
         )
         self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
         self.indicator.set_menu(self.build_menu())
         self.update_label()
-        GLib.timeout_add_seconds(CHECK_INTERVAL, self.update_label)
+        GLib.timeout_add_seconds(self.interval, self.update_label)
 
     def build_menu(self):
         menu = Gtk.Menu()
 
-        toggle_item = Gtk.MenuItem(label=f"Open {APP_TITLE}")
+        toggle_item = Gtk.MenuItem(label=f"Open {self.title}")
         toggle_item.connect("activate", self.launch_app)
         menu.append(toggle_item)
 
@@ -61,7 +69,8 @@ class GenericTrayApp:
             output = subprocess.run(["fetchmail", "-c"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL).stdout
             print("Output from fetchmail:", output.decode().strip())
             line = output.decode().strip().splitlines()[0].split()
-            idx = line.index("message") - 1
+            kw = "message" if "message" in line else "messages"
+            idx = line.index(kw) - 1
             msg = int(line[idx])
             print("Message count:", msg)
             if "seen)" in line:
@@ -94,11 +103,11 @@ class GenericTrayApp:
             self.prev_unread = count
             print("Current unread count:", self.prev_unread)
             label = f"{self.prev_unread}"
-            self.indicator.set_label(label, APP_TITLE)
+            self.indicator.set_label(label, self.title)
             return True
         except Exception as e:
             print("Erro em update_label-->", e)
-            self.indicator.set_label("?", APP_TITLE)
+            self.indicator.set_label("?", self.title)
     
 
     def notify_new_mail(self, count):
@@ -107,7 +116,7 @@ class GenericTrayApp:
             print("Using dunstify for notification...")
             subprocess.run([
                 "dunstify", "-a", "Gmail", "-u", "normal",
-                "-I", APP_ICON, "-c", "gmail", "-t", "1000", 
+                "-I", self.icon, "-c", "gmail", "-t", "1000", 
                 "-h", "string:x-dunst-stack-tag:gmail",
                 f"{count} new email(s)"
             ])
@@ -119,7 +128,7 @@ class GenericTrayApp:
 
     def launch_app(self, _):
         print("Launching app...")
-        subprocess.Popen([BROWSER, *FLAGS, URL]).wait()
+        subprocess.Popen([self.browser, *self.flags, self.url]).wait()
         print("App launched.")
         # Update the unread count after launching the app
         self.update_label()
