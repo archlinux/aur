@@ -7,9 +7,9 @@
 # Check this file: namcap PKGBUILD
 # Run installer: sudo pacman -U --noconfirm <pkg.tar.gz file>
 
-# Maintainer: Gliim LLC <team@golf-lang.com>
+# Maintainer: Golf Team <team@golf-lang.com>
 pkgname=golf
-pkgver=601.4.41
+pkgver=601.4.51
 pkgrel=0
 epoch=
 pkgdesc="Programming language and application server for building and running web services and web applications. High performance and memory-safe."
