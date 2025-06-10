@@ -16,7 +16,7 @@ backup=()
 options=()
 install=
 source=("$pkgname::git+https://github.com/streambinder/spotitube"
-	"https://aur.archlinux.org/cgit/aur.git/tree/server.sh?h=$pkgname")
+	"server.sh")
 noextract=()
 sha256sums=(SKIP
 	"4a6da86f3743d72fe8d4f001fd16bff092ab0a51a3be1ad5ff4dc7c507e10ec4")
