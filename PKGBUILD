@@ -13,19 +13,17 @@ _flutter_version=3.29.2
 
 pkgname=spotube
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
 arch=("x86_64" "aarch64")
 url="https://spotube.krtirtho.dev/"
 license=("BSD-4-Clause")
 depends=("gcc-libs" "mpv" "libappindicator-gtk3" "libsecret" "libnotify" "webkit2gtk-4.1" "libsoup3" "libayatana-appindicator")
 makedepends=("clang" "cmake" "ninja" "pkgconf" "gtk3" "rustup" "imagemagick" "jsoncpp" "patchelf")
-optdepends=(
-    "avahi: required if using remote controlling"
-    "nss-mdns: required if using remote controlling"
-    "mdns-scan: required if using remote controlling"
-    "yt-dlp: Alternative YouTube engine support"
-)
+optdepends=("avahi: required if using remote controlling"
+            "nss-mdns: required if using remote controlling"
+            "mdns-scan: required if using remote controlling"
+            "yt-dlp: Alternative YouTube engine support")
 options=("!lto") # undefined symbol: Dart_NewPersistentHandle_DL
 source=("spotube-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('ae8fc82c47fa7ebb4b87b1d64787f3a7c916499d46065789bb1ef6140d2d3fda'
@@ -35,15 +33,11 @@ _release_date=2025-03-17
 
 if $_system_flutter
 then
-    makedepends+=(
-        "flutter-tool=$_flutter_version" 
-        "flutter-target-linux=$_flutter_version"
-    )
+    makedepends+=("flutter-tool=$_flutter_version" 
+                  "flutter-target-linux=$_flutter_version")
 else
     source+=("flutter-$_flutter_version.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_$_flutter_version-stable.tar.xz")
-    makedepends+=(
-        "curl" "git" "unzip" "xz" "zip" "libglvnd"
-    )
+    makedepends+=("curl" "git" "unzip" "xz" "zip" "libglvnd")
 fi
 
 prepare() {
@@ -73,7 +67,7 @@ prepare() {
 }
 build() {
     CFLAGS+=" -Wno-deprecated-declarations"
-    CXXFLAGS+=" -Wno-deprecated-declarations"
+    CXXFLAGS+=" -Wno-deprecated-declarations -Wno-deprecated-literal-operator"
     cd "$srcdir/spotube-$pkgver"
     if $_system_flutter
     then
