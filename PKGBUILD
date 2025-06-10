@@ -3,7 +3,7 @@
 # Contributor: Diab Neiroukh <lazerl0rd@thezest.dev>
 
 pkgname=mimalloc
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc='General-purpose allocator with excellent performance characteristics'
 arch=('x86_64')
@@ -15,9 +15,9 @@ source=(
   "$pkgname::git+$url#tag=v$pkgver"
   'remove-staticlib-refs.patch'
 )
-sha512sums=('69917fdee99f818e653e3cdb6ae3ad4c3131d715ec7752972ea28b0a801d077e30d6202f9c13e2114050b67553ea9c758fe0311ba3c2359f62f67501b53cd3f7'
+sha512sums=('9d4b6aa445c7cf1056fdd0e7aebfb534784e591c267f20242085aa3249dd9f92069bda52e7325f0b262a2063581ddfe7cabee47cfe171c46c69e834250acd65f'
             'e8a32f066f269d449a765ddc54c192ce7b615e034753b1ffdc66153374e9b7f1973ebc7acf45a90f8ccf05962708f9288e4c5f3819abfe2c909530152e24437a')
-b2sums=('9fba0e21b5c6f87c562c40d1c0028318aeb114ce3e59fd055496769da1b2d35b3564b029db5260fca601523976d4ceecf1967e789696211162be8ad172e2bb36'
+b2sums=('c998cacfd3711eaddde276d26ab99955ef326d9587b2865ddbf183524989c8258d4c4ce7d15b28dace975f84f057248519035f9bbd4d574b522c8010130fcf93'
         'b34f447b1cf74110c97404fe815329cf84ae8ff798766eefc0f4e451cf52211e5745463c3d99209eafa8d3e1bc02ca66b5e526c04773ec5a21b626b428942f1c')
 
 build() {
