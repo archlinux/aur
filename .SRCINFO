@@ -1,7 +1,7 @@
 pkgbase = evrouter
 	pkgdesc = An Input Event Router for Linux
 	pkgver = 0.4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.bedroomlan.org/projects/evrouter
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = evrouter
 	makedepends = automake
 	depends = libxtst
 	source = http://debian.bedroomlan.org/debian/pool/main/e/evrouter/evrouter_0.4.tar.gz
+	source = evrouter-modern-compiler-fixes.patch
 	md5sums = eef1b9d8e3b545c330eb025670ffa3e8
+	md5sums = 5ec6c3392bc127c6a2fc9630fc701d78
 
 pkgname = evrouter

@@ -1,0 +1,37 @@
+--- src_orig/evrouter-0.4/src/evrouter.c	2025-06-10 13:55:54.267855443 -0400
++++ src/evrouter-0.4/src/evrouter.c	2025-06-10 14:03:32.346370423 -0400
+@@ -84,7 +84,6 @@
+ #include "parser.h"
+ #include "cmdline.h"
+ 
+-char * progname;
+ 
+ 
+ #define NEV 64
+@@ -149,7 +148,7 @@
+ #define getbit(buf,n) (buf [(n) >> 3] & (1 << ((n) & 7)))
+ 
+ static unsigned int
+-get_modifier_state ()
++get_modifier_state (Display *d)
+ {
+ 	int i, j;
+ 	char km [32];
+@@ -452,7 +451,7 @@
+ 	unlink (fname);
+ }
+ 
+-static void forced_exit ()
++static void forced_exit (int sig)
+ {
+ 	rmlock ();
+ 	exit (1);
+@@ -523,7 +522,7 @@
+ 
+ 	if (pid) {
+ 		snprintf (s, sizeof (s), "%d\n", pid);
+-		write (fd, s, strlen (s));
++		(void)write (fd, s, strlen (s));
+ 
+ 		/* The parent process exits here (if running as a daemon) */
+ 
