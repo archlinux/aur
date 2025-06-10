@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ethercat
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="IgH EtherCAT Master for Linux"
 arch=($CARCH)
@@ -24,7 +24,7 @@ options=()
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('3b9343abd862e4fd52d700c95173579329de87dbebbe767413c5de83886743d2')
+sha256sums=('57d01fe538fe641780754dfd824dfaa6aec860562fb85037897e4c8901aa5950')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
