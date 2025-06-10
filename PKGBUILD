@@ -1,7 +1,7 @@
 #Maintainer: Alessandro Bernardello <aleberna at erine dot eu>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=glance-bin
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="A self-hosted dashboard that puts all your feeds in one place"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -17,10 +17,10 @@ b2sums=('c78e93b279833ed3962ee4abd36cc64dcb9ad15f01d00e4f927ce6a809eead1ab96a525
         '813fc617ce94ace9f4b5e716072a481de01c0c579f4658bf0e52ad09a18a2347c2417ce605a4d09121db78692c127e41686d50d2bd46b8df888717f4ae64b022'
         '4fc636320adf8b7810bd3b4786a6d30f848f6e183a1e351dc3780ea4d66c72ebb96f4fc6e9ed13277a385cbfdd3c07d5e1ec05dc0b12afc3b69270a3c5b7e971'
         'c77dfe04cf5b2f59e919e6dfc5fd85709d5c4bf0f1d83185c15efad2072b6a1389514df5a4ff80920b73690588d373b49e59a36fef2f51fba5bdc06e177dd46e')
-b2sums_x86_64=('8fd6ce4f0290ef453f11dc2e0d9f39a93bc02772e668c65d49943bdbadbc4383055a5ee0ef1a119bc37393bf02c21519a05a86acf7975c7295d70ce8bf64b495')
-b2sums_i686=('24ab299ae63b8f91385d663058884a8ea58fb87d242cf4cfc7c9aff12df8566b3819990179287be4d51d11ca02853308c574e44a178a048da8b95527cd81f173')
-b2sums_armv7h=('d961568cc44f54fe96f736973410f8f7980be1f6a960d4e38ead32962fe8d347db53b18a95644e5b7038d084ab54d7cb754c65076b9fbc3a010afd2b7cc1a31e')
-b2sums_aarch64=('b2faef4015e950fe2b9ee0d65319e3e3ae08e5dc450235dc5a1fc17fb1925776320b1352a0389ec9136c1a62779b1d84b86ea638cc6580809230e8881a035722')
+b2sums_x86_64=('2dd0836d0195c16002254a7448d5b71217db6e62bcbd55627a58c05952f73d417e2512c570cae854415c0ba6518d18e28b959328855ba56765d64ab7542bbec7')
+b2sums_i686=('4700f7bde958837827e52404b4c640f1bf5d26de34df429fff5ce82c9ff53c000db0fbb70e91b30357d750e87327f746576adf6ec005cd28f2bf93d5ecea635b')
+b2sums_armv7h=('6fc70d32c4cc00afe3154d9833265682ee5a1c0ec2381b222caa972c8faa464c40ec09390e035aad8728eb974351543d1a2c0b16ff13028f8959bdd4ad0d5285')
+b2sums_aarch64=('d8b3e1aa611d022ece661b90e09699fe1ab4da6bb201c8066fc54e92e1e938c206a9d3d7423d86af622ea73e808b56343416f7f5c360761ddba2cffdd3dbfa03')
 source_x86_64=("https://github.com/glanceapp/glance/releases/download/v${pkgver}/glance-linux-amd64.tar.gz")
 source_i686=("https://github.com/glanceapp/glance/releases/download/v${pkgver}/glance-linux-386.tar.gz")
 source_aarch64=("https://github.com/glanceapp/glance/releases/download/v${pkgver}/glance-linux-arm64.tar.gz")
