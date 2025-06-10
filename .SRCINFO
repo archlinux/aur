@@ -1,0 +1,15 @@
+pkgbase = git-plumber-git
+	pkgdesc = Explore git internals, the plumbing
+	pkgver = v0.1.0.r0.g458ba84
+	pkgrel = 1
+	url = https://github.com/ejiektpobehuk/git-plumber
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = git-plumber
+	conflicts = git-plumber
+	source = git+https://github.com/ejiektpobehuk/git-plumber.git
+	sha256sums = SKIP
+
+pkgname = git-plumber-git
