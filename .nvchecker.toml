@@ -1,5 +1,5 @@
 [harsh]
-source="github-graphql"
+source="github"
 github="wakatara/harsh"
 use_latest_release=true
 prefix="v"
