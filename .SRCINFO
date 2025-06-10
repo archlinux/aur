@@ -1,6 +1,6 @@
 pkgbase = kikit-git
 	pkgdesc = Automation for KiCAD boards
-	pkgver = r714.f972993
+	pkgver = r748.559d637
 	pkgrel = 1
 	url = https://github.com/yaqwsx/KiKit.git
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = kikit-git
 	depends = python-commentjson
 	depends = python-matplotlib
 	depends = python-pybars3
+	depends = python-pcbnewtransition
 	optdepends = python-wxpython: for plugin hideReferences
 	provides = kikit
 	conflicts = python-kikit

@@ -2,7 +2,7 @@
 # Contributor: Julian Daube <joposter at gmail dot com>
 pkgname=kikit-git
 pkgdesc="Automation for KiCAD boards"
-pkgver=r714.f972993
+pkgver=r748.559d637
 pkgrel=1
 
 url="https://github.com/yaqwsx/KiKit.git"
@@ -25,6 +25,7 @@ depends=(
 	"python-commentjson"
 	"python-matplotlib"
 	"python-pybars3"
+	"python-pcbnewtransition"
 )
 optdepends=("python-wxpython: for plugin hideReferences")
 
