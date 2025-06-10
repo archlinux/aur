@@ -2,7 +2,7 @@
 
 pkgname=freetube-electron-git
 _pkgname=FreeTube
-pkgver=0.23.5.beta.r8748.4f5b932
+pkgver=0.23.5.beta.r8806.55342d9
 pkgrel=1
 pkgdesc='A private YouTube client - built from latest git, with the default electron.'
 arch=('x86_64')
@@ -36,17 +36,17 @@ package() {
   install -d "${pkgdir}/usr/bin"
 
   # copying libs
-  cp -R ./$_pkgname/build/linux-unpacked/. "${pkgdir}/usr/lib/freetube/"
+  cp -R "./$_pkgname/build/linux-unpacked/." "${pkgdir}/usr/lib/freetube/"
 
   # executable
-  ln -s /usr/lib/freetube/freetube "${pkgdir}/usr/bin/freetube"
+  ln -s "/usr/lib/freetube/$_pkgname" "${pkgdir}/usr/bin/freetube"
   
   # license
-  install -Dm644 ./$_pkgname/LICENSE "${pkgdir}/usr/share/licenses/freetube/LICENSE"
+  install -Dm644 "./$_pkgname/LICENSE" "${pkgdir}/usr/share/licenses/freetube/LICENSE"
 
   # icon
-  install -Dm644 ./$_pkgname/_icons/icon.svg "${pkgdir}/usr/share/pixmaps/freetube.svg"
+  install -Dm644 "./$_pkgname/_icons/icon.svg" "${pkgdir}/usr/share/pixmaps/freetube.svg"
   
   # desktop file
-  install -Dm644 ./freetube.desktop "${pkgdir}/usr/share/applications/freetube.desktop"
+  install -Dm644 "./freetube.desktop" "${pkgdir}/usr/share/applications/freetube.desktop"
 }
