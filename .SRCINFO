@@ -1,7 +1,7 @@
 pkgbase = python-pscript
 	pkgdesc = Python to JavaScript compiler
 	pkgver = 0.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/flexxui/pscript
 	changelog = releasenotes.rst
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = python-pscript
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
+	makedepends = python-flit-core
 	makedepends = python-wheel
 	depends = python
 	source = python-pscript-0.8.0.tar.gz::https://github.com/flexxui/pscript/archive/v0.8.0.tar.gz
