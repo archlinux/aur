@@ -6,7 +6,7 @@ _desktopfile="space.celestiaproject.celestia.desktop"
 
 pkgname=celestia-appimage
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time space simulation"
 arch=(x86_64)
 license=(GPL-2.0-or-later)
@@ -14,7 +14,7 @@ url="https://github.com/CelestiaProject/Celestia"
 depends=()
 options=(!strip)
 source=("https://download.opensuse.org/repositories/home:/munix9:/unstable/AppImage/celestia-latest-x86_64.AppImage")
-sha512sums=('bd0bc0b86e70a82c93970b4aa7896eb2eaf0b35c323ee9b4aaf4b8200893a42b88eae6f827fab4791e39aef78f2d83f539c9367664ee1369942e9ef58ad9b5b0')
+sha512sums=('e1fcbb6f49d86ff8c089753af887b3dff3c63eb2e98c57dd3de7e057193ef53d63fe50367ad9c584fcceac81796546c64dd02f2a16f398528c4d219c4b1161ec')
 
 
 prepare() {
