@@ -23,9 +23,9 @@ depends=('behdad-fonts'
          'vazirmatn-fonts'
          'vazir-code-fonts'
          'ttf-x2'
-         'sorena'
-         'estedad-mad'
-         'unixel'
+         'sorena-fonts'
+         'estedad-mad-fonts'
+         'unixel-fonts'
 
 )
 # vim:set ts=4 sw=4 et:
