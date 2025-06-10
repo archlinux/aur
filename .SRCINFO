@@ -1,7 +1,7 @@
 pkgbase = nodejs-cross-env
-	pkgdesc = Node cross platform setting of environment scripts.
+	pkgdesc = Node cross platform setting of environment scripts
 	pkgver = 7.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kentcdodds/cross-env
 	arch = i686
 	arch = x86_64
