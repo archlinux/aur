@@ -2,9 +2,9 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Sebastian Bøe <sebastianbooe@gmail.com>
 pkgname=icestorm-git-pinned
-_git_commit=738af822905fdcf0466e9dd784b9ae4b0b34987f
-pkgver=r831.738af82
-pkgrel=2
+_git_commit=f31c39cc2eadd0ab7f29f34becba1348ae9f8721
+pkgver=r851.f31c39c
+pkgrel=1
 pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation (Reverse Engineered)"
 arch=(x86_64)
 url="https://github.com/YosysHQ/icestorm"

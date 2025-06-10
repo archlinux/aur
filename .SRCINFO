@@ -1,7 +1,7 @@
 pkgbase = icestorm-git-pinned
 	pkgdesc = Lattice iCE40 FPGAs Bitstream Documentation (Reverse Engineered)
-	pkgver = r831.738af82
-	pkgrel = 2
+	pkgver = r851.f31c39c
+	pkgrel = 1
 	url = https://github.com/YosysHQ/icestorm
 	arch = x86_64
 	license = ISC
