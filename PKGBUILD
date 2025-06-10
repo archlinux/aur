@@ -1,9 +1,9 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgbase=puppeteer
-pkgname=($pkgbase{,-core,-chromium,-firefox})
+pkgname=($pkgbase{,-core}) #,-chromium,-firefox})
 pkgver=24.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='JavaScript API for Chrome and Firefox'
 arch=(any)
 url=https://pptr.dev

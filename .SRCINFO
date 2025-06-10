@@ -1,7 +1,7 @@
 pkgbase = puppeteer
 	pkgdesc = JavaScript API for Chrome and Firefox
 	pkgver = 24.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pptr.dev
 	arch = any
 	license = Apache-2.0
@@ -20,13 +20,3 @@ pkgname = puppeteer
 pkgname = puppeteer-core
 	optdepends = chromium: for use with Chrome
 	optdepends = firefox: for use with Firefox
-
-pkgname = puppeteer-chromium
-	depends = nodejs
-	depends = puppeteer=24.10.0
-	depends = chromium
-
-pkgname = puppeteer-firefox
-	depends = nodejs
-	depends = puppeteer=24.10.0
-	depends = firefox
