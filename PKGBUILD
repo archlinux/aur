@@ -5,36 +5,35 @@
 pkgname=gurush
 _origpkgname=gurush
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Shell AI Agent."
 arch=("x86_64")
 url='https://pypi.org/project/gurush/'
 license=("MIT")
 depends=(
-	"python"
-	"confz"
-	"python-inquirerpy"
-	"python-rich"
-	"python-term-image"
-	"python-langchain-openai"
-	"python-langchain"
-	"python-openai"
-	"python-tiktoken"
+  "python"
+  "confz"
+  "python-inquirerpy"
+  "python-rich"
+  "python-langchain-openai"
+  "python-langchain"
+  "python-openai"
+  "python-tiktoken"
 )
 makedepends=(
-	"python-build"
-	"python-installer"
-	"python-wheel"
-	"python-setuptools"
-	"python-hatchling"
+  "python-build"
+  "python-installer"
+  "python-wheel"
+  "python-setuptools"
+  "python-hatchling"
 )
 source=("https://files.pythonhosted.org/packages/11/48/523cdff7d000d5b9f8a00a98cb50c696d0c5411e4fafa983f93bc0ed9877/gurush-0.2.8.tar.gz")
 sha256sums=("fe4596c223ef4f3f98d8eff013a02bcf1f8589b263c159f8b4a0efe06a1fdcb0")
 package() {
-	cd "${_origpkgname}-${pkgver}" || exit
-	python -m build --wheel --no-isolation
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${_origpkgname}-${pkgver}" || exit
+  python -m build --wheel --no-isolation
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,7 +1,7 @@
 pkgbase = gurush
 	pkgdesc = Linux Shell AI Agent.
 	pkgver = 0.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/gurush/
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,6 @@ pkgbase = gurush
 	depends = confz
 	depends = python-inquirerpy
 	depends = python-rich
-	depends = python-term-image
 	depends = python-langchain-openai
 	depends = python-langchain
 	depends = python-openai
