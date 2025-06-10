@@ -3,6 +3,6 @@ pkg/
 *.pkg.tar.zst
 *.tar.gz
 LICENSE*
-fsnotifier
+fsnotifier*
 .history/
 .vscode/

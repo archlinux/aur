@@ -3,8 +3,8 @@
 pkgname=intellij-idea-community-edition-bin
 _pkgname=${pkgname%-bin}
 pkgrel=1
-_buildver=251.25410.129
-_majorver=2025.1.1.1
+_buildver=251.26094.121
+_majorver=2025.1.2
 pkgver="${_majorver}_${_buildver}"
 jbr_ver=21.0.6
 jbr_build=aarch64-b895
@@ -29,23 +29,22 @@ source=(
 source_x86_64=("https://download.jetbrains.com/idea/ideaIC-${_majorver}.tar.gz")
 source_aarch64=("https://download.jetbrains.com/idea/ideaIC-${_majorver}-aarch64.tar.gz"
                 "https://cache-redirector.jetbrains.com/intellij-jbr/jbr-$jbr_ver-linux-$jbr_build.$jbr_minor.tar.gz"
-                 "https://github.com/JetBrains/intellij-community/raw/master/bin/linux/aarch64/fsnotifier")
+                 "fsnotifier-${pkgver}::https://github.com/JetBrains/intellij-community/raw/master/bin/linux/aarch64/fsnotifier")
 sha256sums=('64746b03736aa97c0917ac8b96d135dae7891834b845e2b0b8442b1b5c2c48ab'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('36b72ac85e8e1536dfccb300b5a435461b1e2953585a90a5d8f06e1b263b0b5c')
-sha256sums_aarch64=('7860b836a18b82827fdb54a86cc5601fe8ef28aab4253981f238ef975a982915'
+sha256sums_x86_64=('70dc870bd31fda67de30d3a132cfed543d5e67c15c7db52f6f4c4691a044930a')
+sha256sums_aarch64=('d98c8d7bdc3e274d278b81ba2b6c1baa38f67be9407b4bfd3bad3413c6f128f1'
                     '04fbf6d6a0e15f8bc0ae8ff9fdcf80995eb2ce6be1ef6f543618ba66d86498e5'
-                    'eb3c61973d34f051dcd3a9ae628a6ee37cd2b24a1394673bb28421a6f39dae29')
+                    'aa812c5acac06435217b9018aa3e187a3546ea8d3cf136481a2d50aee4b9b23a')
 
 prepare() {
-  # exit 1;
   # # Extract the JRE from the main pacakge
   [ -d "$srcdir/jbr" ] && rm -rf "$srcdir"/jbr
 
   # https://youtrack.jetbrains.com/articles/IDEA-A-48/JetBrains-IDEs-on-AArch64#linux
   if [ "${CARCH}" == "aarch64" ]; then
     cp -a "$srcdir/jbr-${jbr_ver}-linux-${jbr_build}.${jbr_minor}" "$srcdir"/jbr
-    cp -f fsnotifier "$srcdir/idea-IC-$_buildver/bin/fsnotifier"
+    cp -f "fsnotifier-${pkgver}" "$srcdir/idea-IC-$_buildver/bin/fsnotifier"
     chmod +x "$srcdir/idea-IC-$_buildver/bin/fsnotifier"
     rm -rf "$srcdir/idea-IC-$_buildver/jbr"
   else
