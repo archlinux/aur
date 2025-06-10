@@ -3,63 +3,94 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=yubioath-desktop
+_pkgname=yubioath-flutter
 pkgdesc='Yubico Authenticator for Desktop'
-pkgver=5.1.0
-pkgrel=4
+pkgver=7.2.0
+pkgrel=1
 arch=('x86_64')
-url='https://github.com/Yubico/yubioath-desktop'
+url='https://github.com/Yubico/yubioath-flutter'
 license=('BSD-3-Clause')
-depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-quickcontrols2'
-	'python-pyotherside' 'qt5-graphicaleffects' 'qt5-multimedia'
-	'ccid' 'pcsclite' 'yubikey-manager')
-makedepends=('git' 'python')
-source=(
-	"git+$url.git#tag=$pkgname-$pkgver?signed"
-	"0001-cstdint.patch"
+makedepends=(
+  'git'
+  'python'
+  'cmake'
+  'clang'
+  'ninja'
+  'pkgconf'
+  'flutter'
+  'git'
+  'python-poetry'
+  'libappindicator-gtk3'
+  'libnotify'
 )
-validpgpkeys=('8D0B4EBA9345254BCEC0E843514F078FF4AB24C3' # Dag Heyman <dag@yubico.com>
-	'57A9DEED4C6D962A923BB691816F3ED99921835E'              # Emil Lundberg <emil@yubico.com>
-	'9E885C0302F9BB9167529C2D5CBA11E6ADC7BCD1')             # Dennis Fokin <dennis.fokin@yubico.com>
-sha512sums=('b7139e99301cf1dffe21f1d16c5ad45c7331fd3fc940a5c2b4ef39902ed693db5a5d5896f5515bd368d4957bf64d5a8253e5bfeab3127d44f923e45155952e44'
-            '3147b875c246ad9290a669145f9bf61b7c3af6f176114609787cdbe960b139dac6a249f0aa8316872a630eec8a6fd75251aeb6dd5ed8c45a37103a646b2333f1')
+depends=(
+  'gtk3'
+  'libx11'
+  'hicolor-icon-theme'
+  'libappindicator-gtk3'
+  'libnotify'
+  'pcsclite'
+  'ccid'
+  'yubikey-manager'
+  'mpdecimal'
+)
+source=(
+  "git+$url.git#tag=$pkgver?signed"
+)
+provides=(yubioath-authenticator)
+validpgpkeys=(
+  '59944611C823D88CEB7245B906FC004369E7D338' # Dag Heyman <dag@yubico.com> (Expires: 2021-05-07)
+  '2D6753CFF0B0FB32F9EEBA485B9688125FF0B636' # Emil Lundberg (staff engineer) <emil@yubico.com> (Expires: Never)
+  'D6919FBF48C484F3CB7B71CD870B88256690D8BC' # Dennis Fokin <dennis.fokin@yubico.com> (Expires: 2025-08-01)
+  '5084E25301EDF4A1C9B1DF62C9B1E4A3CBBD2E10' # Adam Velebil <adam.velebil@yubico.com> (Expires: Never)
+  '20EE325B86A81BCBD3E56798F04367096FBA95E8' # Dain Nilsson <dain@yubico.com> (Expires: 2026-04-30)
+  'D6EAB59739E09A9F7C7771ACAC6D6B9D715FC084' # Adam Velebil <adam.velebil@yubico.com> (Expires: Never)
+)
+sha512sums=('65f65d00b85abdac7ca2264b6c3d84945901e8cb60cc349beba37c87dd58827abda5e4b55c31006abfd9aeee1f34f3c01b8f3dd9817a01803960856613795a48')
 
 prepare() {
-	cd $pkgname
+  cd $_pkgname
+  sed -i 's/intl: ^0.19.0/intl: ^0.20.2/' pubspec.yaml
+# This forces prefix - TODO: there must be a better way
+  sed -i '/if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)/, /endif()/ {
+    /if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)/s/^/#/
+    /endif()/s/^/#/
+}' "linux/CMakeLists.txt"
 
-	local src
-	for src in "${source[@]}"; do
-		src="${src%%::*}"
-		src="${src##*/}"
-		[[ "${src}" = *.patch ]] || continue
-		msg2 "Applying patch ${src}..."
-		patch -Np1 -i "${srcdir}/${src}"
-	done
 }
-
 build() {
-	cd $pkgname
+  cd "${srcdir}/${_pkgname}"
 
-	qmake . \
-		PREFIX=/usr \
-		QMAKE_CFLAGS_RELEASE="$CFLAGS" \
-		QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS"
+  echo "Building authenticator-helper for Linux..."
+  cd helper
+  poetry install
+  rm -rf ../build/linux/helper
+  poetry -n -q run pyinstaller authenticator-helper.spec --distpath ../build/linux
 
-	make
+  echo "Building main Flutter application..."
+  cd "${srcdir}/${_pkgname}"
+  flutter build linux --release
 }
-
 package() {
-	cd $pkgname
+  cd "${srcdir}/${_pkgname}"
 
-	make INSTALL_ROOT="$pkgdir" install
+  install -d "${pkgdir}/opt/${pkgname}"
+  cp -r "build/linux/x64/release/bundle/"* "${pkgdir}/opt/${pkgname}/"
+  cp -r "build/linux/helper" "${pkgdir}/opt/${pkgname}/"
 
-	mkdir "$pkgdir"/usr/bin
-	mv "$pkgdir"/usr/{lib,bin}/yubioath-desktop
+  # The compiled binary is named "authenticator". Rename it to match the package name.
+  mv "${pkgdir}/opt/${pkgname}/authenticator" "${pkgdir}/opt/${pkgname}/${pkgname}"
 
-	install -Dm 644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -d "${pkgdir}/usr/bin"
+  ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-	install -Dm 644 resources/icons/com.yubico.yubioath.svg "$pkgdir"/usr/share/pixmaps/com.yubico.yubioath.svg
-	install -Dm 644 resources/com.yubico.yubioath.desktop "$pkgdir"/usr/share/applications/com.yubico.yubioath.desktop
-	install -Dm 644 resources/com.yubico.yubioath.appdata.xml "$pkgdir"/usr/share/metainfo/com.yubico.yubioath.appdata.xml
+  install -Dm644 "${pkgdir}/opt/${pkgname}/linux_support/com.yubico.yubioath.desktop" \
+    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${pkgdir}/opt/${pkgname}/linux_support/com.yubico.yubioath.png" \
+    "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  sed -i "s|Exec=.*|Exec=${pkgname}|" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  sed -i "s|Icon=.*|Icon=${pkgname}|" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
 # vim:set ts=2 sw=2 et:

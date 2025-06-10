@@ -1,6 +1,4 @@
 [yubioath-desktop]
 source = "github"
 github = "Yubico/yubioath-desktop"
-use_max_tag = true
-include_regex = 'yubioath-desktop.*'
-prefix = 'yubioath-desktop-'
+use_latest_release = true
