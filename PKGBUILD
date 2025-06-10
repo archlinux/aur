@@ -1,7 +1,7 @@
 # Maintainer: rahmed <rahmedyev@gmail.com>
 
 pkgname=thinkfan-cli
-pkgver=0.2.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A lightweight tool for controlling ThinkPad Laptop's Fan"
 url="https://github.com/rahmedi/thinkfan-cli"
