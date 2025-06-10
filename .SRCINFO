@@ -1,7 +1,7 @@
 pkgbase = chatgpt.sh
-	pkgdesc = Wrapper for ChatGPT, STT, and TTS. Features LocalAI, Ollama, and more.
+	pkgdesc = Wrapper for ChatGPT, STT, and TTS. Features Ollama, Gemini, Anthropic, and more
 	pkgver = 0.99.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/fenixdragao/shellchatgpt
 	arch = any
 	license = GPL-3.0-or-later
