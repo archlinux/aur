@@ -1,5 +1,5 @@
 [kwok]
-source="github-graphql"
+source="github"
 github="kubernetes-sigs/kwok"
 use_max_tag=true
 prefix='v'
