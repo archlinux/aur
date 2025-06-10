@@ -99,7 +99,7 @@ steps:
             VERSION=$(grep -oP '^pkgver=\K[^"'\'']*' PKGBUILD)
             sudo -u builduser git add PKGBUILD .SRCINFO
             sudo -u builduser git commit -m "feat: update to v$${VERSION}"
-            sudo -u builduser git remote set-url origin "https://woodpecker:$${CODEBERG_TOKEN}@{CI_REPO_CLONE_URL#https://}"
+            sudo -u builduser git remote set-url origin "https://woodpecker:$${CODEBERG_TOKEN}@${CI_REPO_CLONE_URL#https://}"
             sudo -u builduser git push origin HEAD
             echo "Pipeline completed successfully: Package updated and deployed"
           else
