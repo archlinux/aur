@@ -2,31 +2,41 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=jilu-git
-pkgver=0.4.0.r2.gc334c5d
-pkgrel=2
+pkgver=0.10.0.r0.g55a5f21
+pkgrel=1
 pkgdesc="Generate a change log based on the state of your Git repository (git)"
 arch=('x86_64')
 url="https://github.com/rustic-games/jilu"
-license=('Apache')
-makedepends=('rust' 'git')
+license=('Apache-2.0')
+makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
 sha512sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --locked
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --release --frozen
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release --locked
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen
 }
 
 package() {
