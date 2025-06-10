@@ -4,13 +4,13 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=guile-ncurses
 pkgver=3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Guile bindings for the ncurses library'
 arch=('x86_64')
 license=('LGPL-3.0-or-later')
 depends=('guile' 'ncurses')
 url='http://www.gnu.org/software/guile-ncurses/'
-source=(ftp://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz{,.sig}
+source=(http://ftpmirror.gnu.org/$pkgname/$pkgname-$pkgver.tar.gz{,.sig}
   item-store.patch)
 sha256sums=('ee89e8ceafcab9dd0ef3fc1acc9b10f4d21ba4b256d329d842d6183e63f8d733'
             'SKIP'
