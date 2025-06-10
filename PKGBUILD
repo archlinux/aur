@@ -44,6 +44,8 @@ prepare() {
 build() {
   cd $pkgname
 
+  export CFLAGS="$CFLAGS -std=gnu17"
+
   cmake . -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build .
 }
