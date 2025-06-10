@@ -4,7 +4,7 @@ _gitname="plutovg"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=1.1.0+4.r220.20250609.6cbcea0
-pkgrel=1
+pkgrel=2
 pkgdesc="A standalone 2D vector graphics library in C."
 arch=(
   'x86_64'
@@ -28,6 +28,7 @@ optdepends=()
 checkdepends=()
 provides=(
   "${_pkgname}=${pkgver}"
+  "libplutovg.so"
 )
 conflicts=(
   "${_pkgname}"
@@ -69,6 +70,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPLUTOVG_BUILD_EXAMPLES=ON \
+    -DBUILD_SHARED_LIBS=ON \
     -DCMAKE_VERBOSE_MAKEFILE=ON
 
   make -C build
