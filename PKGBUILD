@@ -3,7 +3,7 @@
 _pkgname=citron
 pkgname=citron-git
 pkgver=0.6.1.r62.g046538b
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
@@ -139,6 +139,8 @@ build() {
     -DUSE_DISCORD_PRESENCE=ON \
     -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
+    -DTITLE_BAR_FORMAT_RUNNING="citron | ${pkgver} {}" \
+    -DTITLE_BAR_FORMAT_IDLE="citron | ${pkgver} {}" \
     -DBUNDLE_SPEEX=ON \
     -DCMAKE_SYSTEM_PROCESSOR=x86_64 \
     -DCMAKE_BUILD_TYPE=None \
@@ -155,5 +157,7 @@ package() {
   do
     install -Dm644 $file "$pkgdir/usr/share/licenses/$pkgname/$file"
   done
+
+  install -Dm644 "$srcdir/$_pkgname/dist/72-citron-input.rules" "$pkgdir/usr/lib/udev/rules.d/72-citron-input.rules"
 
 }
