@@ -1,7 +1,7 @@
 pkgbase = 1panel-git
 	pkgdesc = 1Panel, a modern open source linux panel.
-	pkgver = 1.10.27.lts.r1.g617970a
-	pkgrel = 2
+	pkgver = 1.10.29.lts.r27.g708499a
+	pkgrel = 1
 	url = https://1panel.cn
 	install = 1panel.install
 	arch = x86_64

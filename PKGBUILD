@@ -3,8 +3,8 @@
 # Contributor: Senge Dev <sengedev at gmail dot com>
 
 pkgname=1panel-git
-pkgver=1.10.27.lts.r1.g617970a
-pkgrel=2
+pkgver=1.10.29.lts.r27.g708499a
+pkgrel=1
 pkgdesc="1Panel, a modern open source linux panel."
 arch=('x86_64' 'aarch64')
 url="https://1panel.cn"
@@ -72,6 +72,7 @@ build() {
 
     cd ${srcdir}/${pkgname}/frontend
     npm install
+    npm audit fix --force
     npm rum build:pro
     cd ${srcdir}/${pkgname}/backend
     GOOS=linux GOARCH=$(go env GOARCH) go build -trimpath -ldflags '-s -w' -o ${srcdir}/${pkgname}//build/1panel ${srcdir}/${pkgname}/cmd/server/main.go
