@@ -7,6 +7,7 @@ pkgbase = atuin-lily-git
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	makedepends = protobuf
 	depends = gcc-libs
 	optdepends = bash-preexec: bash integration
 	provides = atuin
