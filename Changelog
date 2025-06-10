@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : dns_tools
- Tags         : 4.0.4 ➙ 4.4.1
-              : 2025-05-19 ➙ 2025-06-08
+ Tags         : 4.0.5 ➙ 4.5.0
+              : 2025-05-19 ➙ 2025-06-10
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-10   : 4.5.0
+                Enhance run_prog to pass env.
+                pytest now uses the run_prog from src via a symlink
+ 2025-06-08     update Docs/Changelog Docs/${my_name}.pdf
 
  2025-06-08   : 4.4.1
                 remove debug
@@ -22,7 +27,3 @@
  2025-05-19   : 4.0.5
                 test fixup
                 update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-05-19   : 4.0.4
-                Arch PKGBUILD: move pytest to checkdepends instead of makedepends
- 2025-05-16     update Docs/Changelog Docs/${my_name}.pdf
