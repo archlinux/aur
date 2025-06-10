@@ -1,5 +1,5 @@
 pkgname=playfin
-pkgver=r90.ad2cf26
+pkgver=r91.4f2a979
 pkgrel=1
 pkgdesc="Terminal-based Jellyfin player with MPV integration"
 arch=('any')
