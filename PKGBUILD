@@ -14,7 +14,7 @@
 pkgname=mongodb
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=8.0.4
+pkgver=8.0.10
 pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
@@ -36,14 +36,17 @@ source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz"
         mongodb-5.0.2-skip-reqs-check.patch
         mongodb-5.0.2-no-compass.patch
         mongodb-7.0.2-sconstruct.patch
-        mongodb-4.4.29-no-enterprise.patch)
-sha256sums=('1fa8bb002983580fd3668099ce218778a294d864db4d3721fffc6782bea6ba2c'
+        mongodb-4.4.29-no-enterprise.patch
+		boost_issue_402.patch
+)
+sha256sums=('32dafc101bbac2a19280f508ad92473960241a9f3b74ac2a1a76352355269a05'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             '3438f7f463b98270d1fe580b3153c19cff1c86c18745a40d4f2984e73086005e'
             '41b75d19ed7c4671225f08589e317295b7abee934b876859c8777916272f3052'
             '52119e543a575b236c688b293a472d4ab6aac9f8b92cc222a1c867d710efac31'
-            '7cd27b2ce15cc6efdce07ef934ed3d9356025ebade4856a9d0a75a80f7c08905')
+            '7cd27b2ce15cc6efdce07ef934ed3d9356025ebade4856a9d0a75a80f7c08905'
+			'2e344124ca748a7859934b104b04584999024b0efd0f05465994332e886922fd')
 sha256sums_aarch64=('6dd9f20e153ff2a3e185d9411e9d9ec54ba8ed29a0a1489828ccb047205cceac')
 source_aarch64=(extrapatch-sconstruct.patch)
 
@@ -53,6 +56,8 @@ _scons_args=(
   AR="${AR:-ar}"
   MONGO_DISTMOD=arch
   MONGO_VERSION="$pkgver"
+  CCFLAGS="-w"
+  #VERBOSE=off
 
   #--use-system-boost
   #--use-system-pcre2
