@@ -1,7 +1,7 @@
 # Maintainer: Peter Rice <{first name}@peterrice.xyz>
 
 pkgname=qbpm-git
-pkgver=1.0.rc2.r3
+pkgver=1.0.rc3.r1
 pkgrel=1
 pkgdesc="A profile manager for qutebrowser"
 url="https://github.com/pvsr/qbpm"
@@ -9,7 +9,7 @@ license=('GPL')
 sha512sums=('SKIP')
 arch=('any')
 depends=('python' 'python-click' 'python-xdg-base-dirs')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'scdoc')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-flit-core' 'scdoc')
 provides=('qbpm')
 source=("git+https://github.com/pvsr/qbpm")
 
