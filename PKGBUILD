@@ -7,17 +7,18 @@
 
 pkgname=python-pscript
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python to JavaScript compiler'
 arch=('any')
 url='https://github.com/flexxui/pscript'
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('python')
 makedepends=(
   'python-build'
   'python-installer'
   'python-setuptools'
   'python-sphinx'
+  'python-sphinx_rtd_theme'
   'python-wheel')
 changelog=releasenotes.rst
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
