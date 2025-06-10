@@ -1,9 +1,44 @@
+install_dummy_webkit2gtk3() {
+	if ! rpm --query --quiet webkit2gtk3; then
+		echo "Installing dummy webkit2gtk3 rpm..."
+		spec_file=$(mktemp)
+		cat > ${spec_file} << EOF
+Name: webkit2gtk3
+Version: 2.46.6
+Release: 0
+Vendor: dummy
+Group: dummy
+Summary: Dummy webkit2gtk3 package
+License: %{vendor}
+Buildroot: %{_tmppath}/%{name}-%{version}-root
+%description
+%{summary}
+%files
+EOF
+		build_log=$(mktemp)
+		rpmbuild -bb "${spec_file}" > "${build_log}"
+		rpm_file=$(awk '/^Wrote:/ { print $2 }' < "${build_log}")
+		if [ -z "${rpm_file}" ]; then
+			echo "Error: Failed to build dummy webkit2gtk3 package."
+			exit 1
+		fi
+		rpm --install "${rpm_file}"
+		rm "${spec_file}" "${build_log}" "${rpm_file}"
+	fi
+}
+
 post_install() {
 	getent group adsklic &>/dev/null || groupadd adsklic
 	id -u adsklic &>/dev/null || useradd -M -r -g adsklic adsklic -d / -s /usr/bin/nologin
 
 	mkdir -p /var/opt/Autodesk/AdskLicensingService
 	chown adsklic:adsklic /var/opt/Autodesk/AdskLicensingService
+
+  install_dummy_webkit2gtk3
+}
+
+post_upgrade() {
+	install_dummy_webkit2gtk3
 }
 
 pre_remove() {
@@ -20,6 +55,11 @@ pre_remove() {
 	if [ -d "/var/opt/Autodesk/AdskLicensingService" ]
 	then
 		rm -rf "/var/opt/Autodesk/AdskLicensingService"
+	fi
+
+	if rpm --queryformat "%{VENDOR}" --query webkit2gtk3 | grep --quiet dummy; then
+		echo "Removing dummy webkit2gtk3 rpm..."
+		rpm --erase webkit2gtk3
 	fi
 }
 
