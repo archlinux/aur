@@ -1,53 +1,59 @@
 # Maintainer: Scott Alfter <scott@alfter.us>
-# Contributor: xiretza <xiretza+aur@xiretza.xyz>
-_pkgname=prjtrellis
-_git_commit=f1e5710099313d2e1862d4ef2582293f6b7ee122
-pkgname=$_pkgname-git-pinned
-pkgver=1.4.r66.g2dab009
+# Contributor: Aki-nyan <aur@catgirl.link>
+
+pkgname=prjtrellis-git-pinned
+pkgver=1.5_alpha20250501
 pkgrel=1
-pkgdesc='Tools for working with the Lattice ECP5 bit-stream format'
-arch=('x86_64')
-url="https://github.com/YosysHQ/$_pkgname"
-license=('custom:ISC' 'MIT')
-depends=('boost-libs')
-makedepends=("$_pkgname-db" 'git' 'cmake' 'boost' 'python' 'python-sphinx' 'python-sphinx_rtd_theme' 'python-recommonmark')
-optdepends=(
-	'python: python support'
+epoch=1
+pkgdesc="Documenting the Lattice ECP5 bit-stream format."
+arch=("x86_64")
+url="https://github.com/YosysHQ/prjtrellis"
+license=("custom:ISC" "MIT")
+groups=()
+options=("!strip")
+provides=("prjtrellis-db" "prjtrellis")
+depends=("boost-libs" "python")
+optdepends=()
+makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "boost")
+conflicts=(
+	"prjtrellis-nightly"
+	"prjtrellis-db-git"
+	"prjtrellis-git"
+	"prjtrellis-db"
+	"prjtrellis"
 )
-provides=("$_pkgname=$pkgver" 'libtrellis.so' 'pytrellis.so')
-conflicts=("$_pkgname")
-replaces=('trellis-git')
-source=("git+$url.git")
-sha256sums=('SKIP')
+replaces=()
+source=(
+	"prjtrellis::git+https://github.com/YosysHQ/prjtrellis.git#commit=f98e72e4963d9c9da57620595282e58d46a045f7"
+	"prjtrellis-db::git+https://github.com/YosysHQ/prjtrellis-db.git#commit=4dda149b9e4f1753ebc8b011ece2fe794be1281a"
+)
+sha256sums=(
+	"SKIP"
+	"SKIP"
+)
 
-pkgver() {
-	cd "$srcdir/$_pkgname"
+_PREFIX="/usr"
+prepare() {
+	cd "${srcdir}/prjtrellis"
+	git submodule init
+	git config submodule.database.url "$srcdir/prjtrellis-db"
+	git -c protocol.file.allow=always submodule update
+	[ ! -d "${srcdir}/prjtrellis/libtrellis/build" ] && mkdir -p libtrellis/build
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cmake -S "$_pkgname/libtrellis" -B build \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=None
-	make -C build
+	cd "${srcdir}/prjtrellis/libtrellis"
+	cd ./build
+	cmake -G Ninja -DCMAKE_INSTALL_PREFIX=${_PREFIX} ..
+	ninja
 
-	make -C "$_pkgname/docs" html
 }
 
 package() {
-	make -C build DESTDIR="$pkgdir" install
-
-	rmdir "$pkgdir/usr/share/trellis/database/"
-
-	cd "$_pkgname"
-
-	install -dm 755 "$pkgdir/usr/share/doc/$pkgname"
-	cp -r --no-preserve=ownership docs/_build/* "$pkgdir/usr/share/doc/$pkgname/"
-	rm -rf "$pkgdir/usr/share/doc/$pkgname/html/.doctrees"
-
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-
-	# used by the examples to convert the bitstreams to SVF files for programming
-	install -D tools/bit_to_svf.py "$pkgdir/usr/share/trellis/tools/bit_to_svf.py"
+	cd "${srcdir}/prjtrellis/libtrellis"
+	DESTDIR="${pkgdir}" ninja -C build install
+	install -Dm644 "${srcdir}/prjtrellis/COPYING" "${pkgdir}${_PREFIX}/share/licenses/trellis/COPYING"
+	install -D "${srcdir}/prjtrellis/tools/bit_to_svf.py" "${pkgdir}${_PREFIX}/share/trellis/tools/bit_to_svf.py"
+	cd ..
 }
