@@ -24,6 +24,7 @@ pkgbase = java8-openjfx
 	makedepends = qt5-base
 	makedepends = ruby
 	makedepends = ruby-erb
+	makedepends = ruby-getoptlong
 	makedepends = unzip
 	makedepends = webkit2gtk
 	source = https://github.com/danwood76/openjfx8-mirror/releases/download/8u202-ga/8u202-ga.tar.bz2

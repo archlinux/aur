@@ -41,6 +41,7 @@ makedepends=(
   qt5-base
   ruby
   ruby-erb
+  ruby-getoptlong
   unzip
   webkit2gtk
 )
