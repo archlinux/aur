@@ -15,6 +15,7 @@ package() {
   for f in $(uu-coreutils --list|grep -v -E '^(kill|more|uptime|hostname)$');do
     uu-cp -s /usr/bin/uu-coreutils "$pkgdir"/usr/bin/"$f"
     uu-ln -s /usr/share/man/man1/uu-"$f".1.gz "$pkgdir"/usr/share/man/man1/"$f".1.gz
+    uu-echo -e "#compdef ${f}=uu-${f}\n_${f}" | install -Dm644 /dev/stdin "$pkgdir"/usr/share/zsh/site-functions/_uu-$f
   done
   uu-ln -s /usr/bin/uu-stty "$pkgdir"/usr/bin/stty
 }
