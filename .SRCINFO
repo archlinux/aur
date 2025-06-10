@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-highs
+	pkgdesc = Linear optimization software (mingw-w64)
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/ERGO-Code/HiGHS
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/ERGO-Code/HiGHS/archive/refs/tags/v1.11.0.tar.gz
+	sha256sums = 2b44b074cf41439325ce4d0bbdac2d51379f56faf17ba15320a410d3c1f07275
+
+pkgname = mingw-w64-highs
