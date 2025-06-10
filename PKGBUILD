@@ -1,6 +1,6 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
-pkgver=0.76.3
+pkgver=0.77.1
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
@@ -14,12 +14,12 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "i686" ]   && _platform="x86"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
-_mvnver=3.9.9
+_mvnver=3.9.10
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz"
         "https://dlcdn.apache.org/maven/maven-3/$_mvnver/binaries/apache-maven-$_mvnver-bin.tar.gz")
-sha1sums=('d9ac95fcd8bfee63cd36eb21c27487185eac166a'
-          'ab87467cfef9d9cb422c56ecdc4b20e368a71793')
+sha1sums=('6d4fa50d41a2d02d1a1367f3c47dba9c307461eb'
+          'b06edaf09ae03e77d65a9fa6ffc2f6db311b8334')
 
 prepare() {
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
