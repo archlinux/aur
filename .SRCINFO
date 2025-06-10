@@ -1,13 +1,13 @@
 pkgbase = gt
 	pkgdesc = A tree-like command-line tool written in Go
-	pkgver = 1.4.1
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/elbachir-one/gt
 	arch = x86_64
 	license = MIT
 	makedepends = go>=1.22
 	depends = glibc
-	source = gt-1.4.1.tar.gz::https://github.com/elbachir-one/gt/archive/refs/tags/v1.4.1.tar.gz
-	sha256sums = 8bbfa5b9b3ef756f547d0f40a4de612ffa957a6eb45fee735a9737c0a8824189
+	source = gt-1.4.3.tar.gz::https://github.com/elbachir-one/gt/archive/refs/tags/v1.4.3.tar.gz
+	sha256sums = 33de9e42658c50eb639f8a6848ad89cb279d3fc35286c639b44b8b665c8d6f17
 
 pkgname = gt
