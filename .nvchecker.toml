@@ -1,4 +1,4 @@
 [portainer-bin]
-source="github-graphql"
+source="github"
 github="portainer/portainer"
-use_latest_tag=true
+use_max_tag=true
