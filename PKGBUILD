@@ -8,7 +8,7 @@
 pkgname=execline-musl
 _pkgname=${pkgname%-musl}
 pkgver=2.9.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A (non-interactive) scripting language, like sh'
 arch=('aarch64' 'i686' 'x86_64')
 url="http://skarnet.org/software/${_pkgname}"
@@ -35,6 +35,6 @@ package() {
   for f in doc/*.html; do
     links -dump $f|tail -n +5 > ${f%.html}.txt
   done
-  install -Dm644 -t ${pkgdir}/usr/share/execline/doc/ doc/*.txt
+  install -Dm644 -t ${pkgdir}/usr/share/doc/execline/ doc/*.txt
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
