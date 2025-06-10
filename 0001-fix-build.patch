@@ -1,0 +1,23 @@
+From a0a0939ede929088df15d08a3b6653162c6d3bff Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Juan=20Jos=C3=A9=20Nicola?= <juan.nicola@greenbone.net>
+Date: Tue, 10 Jun 2025 09:39:05 -0300
+Subject: [PATCH] Change: pin libgcrypt-error to a newer version 1.54 (#1931)
+
+This new version fixes a variable name which was a reserved keyword
+SC-1319
+Close #1923
+---
+ rust/crates/nasl-c-lib/libgcrypt-sys/install-gcrypt.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rust/crates/nasl-c-lib/libgcrypt-sys/install-gcrypt.sh b/rust/crates/nasl-c-lib/libgcrypt-sys/install-gcrypt.sh
+index 731b156e3..c005f6ec2 100755
+--- a/rust/crates/nasl-c-lib/libgcrypt-sys/install-gcrypt.sh
++++ b/rust/crates/nasl-c-lib/libgcrypt-sys/install-gcrypt.sh
+@@ -26,5 +26,5 @@ install_gnu() {
+ [ "$CLEAN" -ne 0 ] && rm -rf "$WORK_DIR"
+ [ ! -d "$WORKDIR" ] && mkdir -p "$WORK_DIR"
+ 
+-install_gnu  "libgpg-error" "1.47"
++install_gnu  "libgpg-error" "1.54"
+ install_gnu  "libgcrypt" "1.10.2"

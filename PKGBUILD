@@ -2,7 +2,7 @@
 
 pkgname=openvas-scanner
 pkgver=23.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/openvas-scanner"
@@ -15,10 +15,12 @@ install=openvas.install
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         ${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.gz.asc
+        0001-fix-build.patch
         openvas-scanner.tmpfiles
         openvasd.service)
 sha512sums=('90c29cc53a4b97e4575ebb12ad34cb6a21f2d000d151c568ce345f3bc934d32603cfab633e9f34a93094fa51d4f4c840bf6224bb86222c0a8256d7d4b7a0535b'
             'SKIP'
+            'ca6b7cfb39c042c6c0076747164dff271482af4a1c172051412c09746b678824123d74e71b5984515ab3b8ea4316d6872f6565cfb18fc8b92533e6afefd276c7'
             'c87d7890698368a6b8d569d9af73712676d0e0061de8e058cc6c7f609da1def99ebbf9b11d35d1dd0234538dbb07987ff18bbf186928ea39c33441f231eb8751'
             '476e0aaeb916959b93082bf2529774ff46db46e6e699c34ea0ac246c461d554c87d15c25a2bc6565c06f0cd39df5dd14609d99777608c1c8afb824b0a6de99ae')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
@@ -31,6 +33,9 @@ prepare() {
   cd rust
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  # Add patch for build issue with GCC15
+  patch -Np2 -i "${srcdir}"/0001-fix-build.patch
 }
 
 build() {
