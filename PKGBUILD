@@ -4,11 +4,11 @@
 #: ${_dotnet_type=-bin}
 : ${_install_path:=usr/lib}
 
-: ${_commit=4c9e8f8e5ce5868ca50af215dd293eb8c48d2b71}
+: ${_commit=9d83dfd19cd838042abb833891da6aa9dee8b2bc}
 
 _pkgname="ryujinx"
 pkgname="$_pkgname"
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://git.ryujinx.app/ryubing/ryujinx"
