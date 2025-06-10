@@ -1,0 +1,11 @@
+pkgbase = bontmia
+	pkgdesc = Bontmia (Backup Over Network To Multiple Incremental Archives)
+	pkgver = 0.18.3
+	pkgrel = 1
+	url = https://github.com/hcartiaux/bontmia
+	arch = x86_64
+	license = GPL-2.0
+	source = bontmia-0.18.3.tar.gz::https://github.com/hcartiaux/bontmia/archive/refs/tags/v0.18.3.tar.gz
+	sha256sums = 6d787f531bcb3ebd3741c2c270d21117559bf84cbec833d7395dc4c859ede361
+
+pkgname = bontmia
