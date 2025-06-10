@@ -30,7 +30,7 @@ depends=('python>=3.7'
          'python-tqdm'
          'python-traits'
 	 'python-transforms3d'
-         'python-zarr'
+         'python-zarr<3.0'
          )
 
 makedepends=('python-setuptools' )
