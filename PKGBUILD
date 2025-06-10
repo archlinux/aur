@@ -3,7 +3,7 @@
 
 pkgname=python-mitmproxy-rs-git
 _pyname=mitmproxy_rs
-pkgver=0.11.5.r4.g38f2821
+pkgver=0.12.6.r2.g25a0851
 pkgrel=1
 pkgdesc="Python bindings for mitmproxy's Rust code"
 arch=('x86_64')
@@ -16,11 +16,10 @@ depends=(
 )
 makedepends=(
   'bpf-linker'
-  'cargo'
+  'cargo-nightly'
   'git'
   'maturin'
   'python-installer'
-  'rust-src'
 )
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
@@ -33,11 +32,17 @@ pkgver() {
   git describe --long --tags --match='v*.*.*' | sed -e 's/^v//;s/-/.r/;s/-/./g'
 }
 
+prepare() {
+  export RUSTUP_TOOLCHAIN=nightly
+  rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+}
+
 build() {
+  export RUSTUP_TOOLCHAIN=nightly
   cd mitmproxy_rs/mitmproxy-rs
   maturin build --release --strip
   cd ../mitmproxy-linux
-  RUSTC_BOOTSTRAP=1 maturin build --release --strip
+  maturin build --release --strip
 }
 
 check() {
