@@ -3,7 +3,7 @@
 _gitname="plutosvg"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
-pkgver=0.0.7+7.r132.20250602.eb34f71
+pkgver=0.0.7+9.r134.20250609.b9d3ead
 pkgrel=1
 pkgdesc="A compact and efficient SVG rendering library written in C."
 arch=(
@@ -19,6 +19,7 @@ url="https://${_githost}/${_gituser}/${_gitname}"
 license=("MIT")
 depends=(
   'glibc'
+  'plutovg'
 )
 makedepends=(
   'cmake'
@@ -32,6 +33,7 @@ optdepends=(
 checkdepends=()
 provides=(
   "${_pkgname}=${pkgver}"
+  "libplutosvg.so"
 )
 conflicts=(
   "${_pkgname}"
@@ -72,6 +74,8 @@ build() {
   cmake -S "${_pkgname}" -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_STATIC_LIBS=ON \
     -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
     -DFETCHCONTENT_QUIET=OFF \
     -DFETCHCONTENT_UPDATES_DISCONNECTED=ON \

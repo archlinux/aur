@@ -1,6 +1,6 @@
 pkgbase = plutosvg-git
 	pkgdesc = A compact and efficient SVG rendering library written in C.
-	pkgver = 0.0.7+7.r132.20250602.eb34f71
+	pkgver = 0.0.7+9.r134.20250609.b9d3ead
 	pkgrel = 1
 	url = https://github.com/sammycage/plutosvg
 	arch = x86_64
@@ -14,8 +14,10 @@ pkgbase = plutosvg-git
 	makedepends = git
 	makedepends = plutovg
 	depends = glibc
+	depends = plutovg
 	optdepends = freetype2: For Freetype integration, and for example '/usr/bin/emoji2png'.
-	provides = plutosvg=0.0.7+7.r132.20250602.eb34f71
+	provides = plutosvg=0.0.7+9.r134.20250609.b9d3ead
+	provides = libplutosvg.so
 	conflicts = plutosvg
 	options = !lto
 	source = plutosvg::git+https://github.com/sammycage/plutosvg.git
