@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=mecab-ipadic
 pkgver=2.7.0_20070801
-pkgrel=7
+pkgrel=8
 pkgdesc="IPA dictionary for mecab"
 arch=('any')
 url="https://taku910.github.io/mecab"
@@ -14,14 +14,13 @@ _tag="2fd29256c6d5e1b10211cac838069ee9ede8c77a"
 source=("$pkgname::git+https://github.com/taku910/mecab.git#tag=${_tag}")
 md5sums=('5e33399fd830b3c3f66cd4b5c366c989')
 
+prepare() {
+  cd "$pkgname/$pkgname"
+  ./configure --libexec=/usr/lib/mecab --prefix=/usr --with-charset=utf-8
+  sed -i "s|^MECAB_DICT_INDEX=.*|MECAB_DICT_INDEX=/usr/lib/mecab/mecab-dict-index|g" configure.in
+}
 build() {
   cd "$pkgname/$pkgname"
-  ./configure --libexecdir=/usr/lib --prefix=/usr --with-charset=utf-8
-  # change (several) hardcoded mecab installation paths
-  sed -i "s|^MECAB_DICT_INDEX =.*|MECAB_DICT_INDEX = /usr/lib/mecab/mecab-dict-index|g" Makefile
-  sed -i "s|^mecab_dict_index =.*|mecab_dict_index = /usr/lib/mecab/mecab-dict-index|g" Makefile
-  sed -i "s|^MECAB_DICT_INDEX=.*|MECAB_DICT_INDEX=/usr/lib/mecab/mecab-dict-index|g" configure
-  sed -i "s|/usr/libexec|/usr/lib|g" config.status
   make
 }
 
