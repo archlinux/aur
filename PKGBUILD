@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
 	"fff26d6f9e88f9ab4427301acda57fca9088b6f0047c8e42aab9cd62ad8c038e"
-	"68b4473057736da26385d5b1680d099e7cf62334dcfd121dfc1620096eec7768"
+	"aaac007643388ee2bb5737f9c8bd1b36d2f17c54bda38c0757b74ad47425ac9e"
 	"e90aecc14f66eed27b8afe409de6f058a285f8eee84a8af207b0398b5450cf57"
 )
 
@@ -32,6 +32,7 @@ prepare() {
 		fi
 		cp ${srcdir}/template.sh ${srcdir}/scripts/$trimfname
 		sed -i -e "s/MAINCLASS_PLACEHOLDER/$CLASSNAME/g" ${srcdir}/scripts/$trimfname
+		sed -i -e "s/PKGVER_PLACEHOLDER/${pkgver}/g" ${srcdir}/scripts/$trimfname
 	done
 
 	magick ${srcdir}/docs/doomtools-logo.ico[0] ${srcdir}/doomtools-logo.png
@@ -41,7 +42,7 @@ package() {
 	for file in ${srcdir}/scripts/*; do
 		install -Dm755 $file ${pkgdir}/usr/bin/"${file##*/}"
 	done
-	install -Dm755 ${srcdir}/jar/doomtools-${pkgver}.jar ${pkgdir}/usr/share/java/doomtools/doomtools.jar
+	install -Dm755 ${srcdir}/jar/doomtools-${pkgver}.jar ${pkgdir}/usr/share/java/doomtools/doomtools-${pkgver}.jar
 	install -Dm755 ${srcdir}/doomtools.desktop ${pkgdir}/usr/share/applications/doomtools.desktop
 	install -Dm644 ${srcdir}/doomtools-logo.png ${pkgdir}/usr/share/icons/doomtools-logo.png
 	install -Dm644 ${srcdir}/docs/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
