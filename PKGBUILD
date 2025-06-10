@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=DepotDownloader
 pkgname=steamdepotdownloader
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Steam depot downloader utilizing the SteamKit2 library."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL-2.0-only')
 depends=('glibc' 'gcc-libs' 'zlib' 'dotnet-runtime')
 makedepends=('dotnet-sdk') #Dotnet 9
 source=("$url/archive/refs/tags/DepotDownloader_${pkgver}.tar.gz")
-sha256sums=('f4d52a79f0294d3561261c922840df57bde08ce29bfb255cc562eac4014d7beb')
+sha256sums=('2f09a0aaf003ee01fce44ec9acc0371441172e27d544eb7ccbe7974c01f47f42')
 options=('!strip')
 validpgpkeys=()
 
