@@ -2,9 +2,9 @@
 pkgname=yubico-authenticator
 _app_id=com.yubico.yubioath
 pkgdesc="Yubico Authenticator for Desktop"
-pkgver=7.2.0
-pkgrel=2
-_flutter_ver=3.29.2  ## Check .github/workflows/env for version
+pkgver=7.2.3
+pkgrel=1
+_flutter_ver=3.32.1  ## Check .github/workflows/env for version
 arch=('x86_64' 'aarch64')
 url="https://github.com/Yubico/yubioath-flutter"
 license=('Apache-2.0')
@@ -33,7 +33,7 @@ makedepends=(
   'python-wheel'
 )
 source=("git+https://github.com/Yubico/yubioath-flutter.git#tag=$pkgver?signed")
-sha256sums=('3def9e6c8eb0e8b60129cb76ef4928f5a7f80752aeeb96a1667088290dc40b90')
+sha256sums=('1f06b7349697aaa65549c8e0c7a947fb5bb9bb4125a98a02ede26ca330410ede')
 validpgpkeys=('20EE325B86A81BCBD3E56798F04367096FBA95E8')  # Dain Nilsson <dain@yubico.com>
 
 prepare() {
