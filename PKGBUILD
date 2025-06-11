@@ -27,7 +27,5 @@ build() {
 package() {
   cd "PyGitUp-$pkgver"
   python -m installer -d "$pkgdir" dist/*.whl
-  ls -hal
-  pwd
   install -Dm644 LICENCE -t "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
