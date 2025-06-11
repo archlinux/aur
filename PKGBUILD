@@ -1,7 +1,7 @@
 # Maintainer: Juliette Cordor
 pkgname=arctis-bat-git
 pkgrel=1
-pkgver=v0.1.0.r1.35f7fcc
+pkgver=v0.1.2.r0.7623399
 pkgdesc="CLI tool for checking SteelSeries Arctis headsets battery on linux"
 license=(Apache-2.0)
 arch=(x86_64)
