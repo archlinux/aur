@@ -1,7 +1,7 @@
 # Maintainer: Lina Roether <lina.roether@proton.me>
 
 pkgname=niji-git
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A customizable tool for theming linux systems"
 url="https://github.com/lina-roether/niji"
@@ -16,7 +16,7 @@ md5sums=("SKIP" "SKIP")
 
 pkgver() {
 	cd niji
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cargo read-manifest --manifest-path=crates/main/Cargo.toml | jq -r .version
 }
 
 prepare() {
