@@ -13,9 +13,10 @@ if $current_version == $latest_version {
 
 print "Updating package"
 
+let current_source_file = $pkgbuild_file | lines | parse "source_x86_64=(\"https://github.com/apple/foundationdb/releases/download/$\{pkgver\}/{file}\")" | $in.0.file
 let current_source_hash = $pkgbuild_file | lines | parse "sha256sums_x86_64=('{hash}')" | $in.0.hash
 
-let latest_source_url = $latest_release.assets | where name == "fdbcli.x86_64.sha256" | $in.0.browser_download_url
+let latest_source_url = $latest_release.assets | where name == $"($current_source_file).sha256" | $in.0.browser_download_url
 let latest_source_hash = http get $latest_source_url | decode | str substring ..63
 
 let pkgbuild_file = $pkgbuild_file | str replace $current_version $latest_version
