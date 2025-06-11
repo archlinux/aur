@@ -1,25 +1,17 @@
 # Maintainer: Juliette Cordor
-pkgbase=arctis-bat
-pkgname=arctis-bat-git
+pkgname=arctis-bat
 pkgrel=1
-pkgver=v0.1.0.r1.35f7fcc
+pkgver=0.1.1
 pkgdesc="CLI tool for checking SteelSeries Arctis headsets battery on linux"
 license=(Apache-2.0)
 arch=(x86_64)
-source=("$pkgname::git+https://github.com/jewlexx/arctis-bat.git")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jewlexx/arctis-bat/archive/refs/tags/v$pkgver.tar.gz")
 url="https://github.com/jewlexx/arctis-bat"
 depends=(hidapi glibc)
 makedepends=(meson ninja git)
-sha1sums=('SKIP')
+sha256sums=('8d09f474be3964e4f105aa2a7dad8f5bfe9a8d5f625a1cb527db6a7f1f7f1eff')
 provides=(arctis-bat)
 conflicts=(arctis-bat)
-
-pkgver() {
-    cd "$pkgname"
-    local tag=$(git tag --sort=-v:refname | grep '^v[0-9]' | head -1)
-    local commits_since=$(git rev-list $tag..HEAD --count)
-    echo "$tag.r$commits_since.$(git log --pretty=format:'%h' -n 1)"
-}
 
 prepare() {
     return 0
@@ -27,7 +19,7 @@ prepare() {
 
 build() {
     local BUILD_DIR=builddir
-    arch-meson "$pkgname" "$BUILD_DIR" -Dcpu_native=true
+    arch-meson "$pkgname-$pkgver" "$BUILD_DIR" -Dcpu_native=true
     meson compile -C $BUILD_DIR
 }
 
