@@ -7,14 +7,14 @@ pkgrel=2
 pkgdesc="Plugins for Fauxdacious Mediaplayer (git version)"
 arch=('x86_64')
 url="https://wildstar84.wordpress.com/fauxdacious/"
-license=('BSD')
+license=('BSD' 'custom')
 depends=(
 		'alsa-lib' 'curl' 'faad2' 'ffmpeg' 'flac' 'fluidsynth'
 		'jack' 'json-glib' 'lame' 'libbs2b' 'libcddb' 'libcdio-paranoia'
 		'libcue' 'libmms' 'libmodplug' 'libmtp' 'libnotify' 'libopenmpt'
 		'libpipewire' 'libpulse' 'libsamplerate' 'libsidplayfp' 'libvorbis'
 		'lirc' 'mpg123' 'neon' 'opusfile' 'wavpack')
-makedepends=('fauxdacious-git' 'make' 'git' 'glib2-devel')
+makedepends=('fauxdacious-git' 'make' 'autoconf' 'automake' 'git' 'glib2-devel')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("${pkgname}::git+https://github.com/wildstar84/fauxdacious-plugins.git")
