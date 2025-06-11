@@ -1,0 +1,14 @@
+pkgbase = packinstall-git
+	pkgdesc = A simple package installer for Arch Linux using bash and git.
+	pkgver = r10.g4b7149a
+	pkgrel = 1
+	url = https://github.com/rainbownx/Packinstall
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = git
+	source = git+https://github.com/rainbownx/Packinstall.git
+	md5sums = SKIP
+
+pkgname = packinstall-git
