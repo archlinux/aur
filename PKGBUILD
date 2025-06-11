@@ -2,7 +2,7 @@
 
 pkgname=login-ng
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A greeter with addition functionalities'
 url='https://github.com/neroreflex/login-ng'
 license=()
