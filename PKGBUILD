@@ -1,7 +1,7 @@
 # Maintainer: vociferous <vociferous@fail.pm>
 # Contributor: Stetsed <aur.arch@stetsed.xyz>
 pkgname=caddy-hetzner
-pkgver=2.8.4
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Caddy web server"
 arch=('any')
