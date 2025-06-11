@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=nancy
-pkgver=1.0.48
+pkgver=1.0.49
 pkgrel=1
 pkgdesc="Checks for vulnerabilities in Golang dependencies"
 arch=(x86_64 i686 aarch64)
@@ -11,7 +11,7 @@ license=(Apache-2.0)
 depends=(glibc)
 makedepends=(go)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c407b4c5ffd594eb88478868f2d022da386dbc837e6a6a336ba43ebef9bbb1b08ceda1093836c2423bf9dc756bf2f8f8cce0636f2b7915e2b7cc5135a86568ed')
+sha512sums=('1142724d0c4fa37be9711934151c93cf2578782aef23ecabc8e792f1093598a70a09f4a55a645e5f8ffd49ddbcf34f6e2b9f3f5616d36e08914a5401d7364521')
 
 prepare() {
   cd ${pkgname}-${pkgver}
