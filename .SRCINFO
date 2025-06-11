@@ -1,7 +1,8 @@
 pkgbase = chromium-gost
 	pkgdesc = Chromium-Gost — веб-браузер с открытым исходным кодом на основе Chromium с поддержкой криптографических алгоритмов ГОСТ при установке защищённых соединений через интерфейс msspi
 	pkgver = 137.0.7151.69
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/deemru/Chromium-Gost
 	arch = x86_64
 	license = MIT
 	source = https://github.com/deemru/Chromium-Gost/releases/download/137.0.7151.69/chromium-gost-137.0.7151.69-linux-amd64.deb
