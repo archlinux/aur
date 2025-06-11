@@ -1,5 +1,5 @@
 pkgname=nullfs-dkms-git
-pkgver=0.18.r0.ga21815d
+pkgver=0.19.r0.gb00a177
 pkgrel=1
 pkgdesc='A virtual black hole file system that behaves like /dev/null (DKMS)'
 arch=('x86_64')
