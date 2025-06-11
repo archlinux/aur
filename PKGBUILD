@@ -9,7 +9,7 @@ _svcname=vanta-agent
 
 pkgname=vanta-agent
 # https://app.vanta.com/downloads
-pkgver=2.13.1
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="Vanta agent"
 arch=('x86_64')
@@ -18,10 +18,10 @@ depends=('systemd')
 license=('custom:vanta')
 install=$pkgname.install
 source=(
-    "https://vanta-agent-repo.s3.amazonaws.com/targets/versions/${pkgver}/${_binname}-amd64.deb"
+    "https://agent-downloads.vanta.com/targets/versions/${pkgver}/${_binname}-amd64.deb"
     "${_svcname}.conf"
 )
-sha256sums=('0adef85bd058942de59a1fc2ae7476cfad2d154c95d5b0c62fac07bff7670f46'
+sha256sums=('21845a5e9477cfb61f779a9c1d9af2c9ad94cd7f6b95d8dd076effb935ee7d49'
             '2d650c20f8cabb78d3c629c38d8eed3b15f0e3f9f0b96b68f67fbe5831b41307')
 
 package() {
