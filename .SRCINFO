@@ -1,6 +1,6 @@
 pkgbase = tooka-git
 	pkgdesc = A rule-based automatic file sorter
-	pkgver = 0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/benji377/tooka
 	arch = i686
