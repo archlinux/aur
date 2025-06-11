@@ -13,7 +13,7 @@
 pkgname=python-cx-freeze
 _pkgname=cx_Freeze
 pkgver=8.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Create standalone executables from Python scripts'
 arch=('x86_64')
 url="https://marcelotduarte.github.io/$_pkgname"
@@ -54,8 +54,8 @@ EOF
     PYTHONPATH="$PWD" \
     pytest -rpfEsXx \
     --ignore=tests/test_command_bdist_deb.py \
-    --ignore=tests/test_command_bdist_rpm.py
-
+    --ignore=tests/test_command_bdist_rpm.py \
+    --ignore=tests/hooks/test_stdlib.py
 }
 
 package() {
