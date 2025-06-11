@@ -51,8 +51,9 @@ package_coreutils-uutils-selinux(){
   for f in $("$_uu" --list); do
     ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/bin/"$f"
     ln -s /usr/share/man/man1/uu-"$f".1.gz "$pkgdir"/usr/share/man/man1/"$f".1.gz
-    # Don't conflict with Extra/bash-completion: https://github.com/scop/bash-completion/discussions/1386
+    # Conflicting with Extra/bash-completion: https://github.com/scop/bash-completion/discussions/1386
     echo -e "#compdef ${f}=uu-${f}\n_${f}" > "$pkgdir"/usr/share/zsh/site-functions/_$f
+    echo "complete -c ${f} -w uu-${f}" > "$pkgdir"/usr/share/fish/vendor_completions.d/${f}.fish
     # Is aliasing *.fish possible? https://github.com/uutils/coreutils/issues/4464 may removed
     "$_uu" completion $f fish > "$pkgdir"/usr/share/fish/vendor_completions.d/${f}.fish
   done
