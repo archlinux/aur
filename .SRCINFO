@@ -1,14 +1,14 @@
 pkgbase = programmers-turkish-f
 	pkgdesc = Variant of the Turkish-F layout with symbols and usage adapted from Programmer Dvorak
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alerque/programmers-turkish-f
 	arch = any
 	license = BSD-3-Clause
 	makedepends = coreutils
 	depends = kbd
 	depends = libxslt
-	source = https://github.com/alerque/programmers-turkish-f/archive/0.0.2.tar.gz
+	source = https://github.com/alerque/programmers-turkish-f/archive/0.0.2/programmers-turkish-f-0.0.2.tar.gz
 	source = LICENSE
 	sha256sums = 0c3144063d62c3e7a5c4e28d0cefa508519a25e29fd476d90ad1ea6c1648eb11
 	sha256sums = 123675c594fe0349a7c27b124cf03715d293af60047d1916c657ac25d0f86ce8
