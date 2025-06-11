@@ -1,7 +1,7 @@
 pkgbase = stremio-git
 	pkgdesc = The next generation media center
 	pkgver = 4.4.168.qt6+r851+gf16a7b177
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.stremio.com
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = stremio-git
 	makedepends = qt5-base
 	makedepends = qt5-declarative
 	makedepends = qt5-webengine
+	depends = qt5-quickcontrols
 	depends = nodejs
 	depends = ffmpeg
 	depends = qt6-base

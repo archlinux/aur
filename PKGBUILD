@@ -4,12 +4,12 @@
 _pkgname=stremio
 pkgname=${_pkgname}-git
 pkgver=4.4.168.qt6+r851+gf16a7b177
-pkgrel=3
+pkgrel=4
 pkgdesc="The next generation media center"
 arch=('x86_64')
 url="https://www.stremio.com"
 license=("MIT")
-depends=("nodejs" "ffmpeg" "qt6-base" "mpv" "openssl" "hicolor-icon-theme")
+depends=("qt5-quickcontrols" "nodejs" "ffmpeg" "qt6-base" "mpv" "openssl" "hicolor-icon-theme")
 #depends=("qt5-webchannel" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-translations") - not clear yet if these are being replaced in qt6
 makedepends=("git" "wget" "librsvg" "cmake" "qt5-base" "qt5-declarative" "qt5-webengine")
 provides=("${_pkgname}")
