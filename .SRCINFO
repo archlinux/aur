@@ -1,0 +1,12 @@
+pkgbase = thumbor-aws
+	pkgdesc = AWS support for Thumbor image service
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/thumbor/thumbor-aws
+	arch = any
+	license = mit
+	depends = python
+	source = https://github.com/thumbor/thumbor-aws/archive/refs/tags/v0.8.1.tar.gz
+	md5sums = 6a4384b458032a2318e6edfdcdc5d202
+
+pkgname = thumbor-aws
