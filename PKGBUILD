@@ -32,6 +32,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  export CFLAGS="$CFLAGS -std=gnu89 -w"
   ./configure \
     --prefix=/usr \
     --mandir=/usr/share/man \

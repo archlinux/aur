@@ -1,0 +1,4 @@
+[xcircuit]
+source="github"
+github="RTimothyEdwards/XCircuit"
+use_max_tag=true
