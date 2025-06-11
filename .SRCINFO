@@ -1,7 +1,7 @@
 pkgbase = kumono-bin
 	pkgdesc = Media ripper for coomer.su and kemono.su
-	pkgver = 0.33.3
-	pkgrel = 2
+	pkgver = 0.34.0
+	pkgrel = 1
 	url = https://github.com/APT37/kumono
 	arch = x86_64
 	license = MIT-0
@@ -9,7 +9,7 @@ pkgbase = kumono-bin
 	conflicts = kumono
 	conflicts = kumono-git
 	options = !lto
-	source = catbox::https://github.com/APT37/kumono/releases/download/0.33.3/kumono
+	source = catbox::https://github.com/APT37/kumono/releases/download/0.34.0/kumono
 	sha256sums = SKIP
 
 pkgname = kumono-bin
