@@ -1,9 +1,10 @@
 pkgbase = intel-ucode-shrink-hook
-	pkgdesc = A hook to shrink intel-ucode.img
+	pkgdesc = Improve boot performance by shrinking intel-ucode.img
 	pkgver = 2.3.1
 	pkgrel = 1
+	url = https://gitlab.com/iucode-tool/iucode-tool/wikis/home
 	arch = any
-	license = none
+	license = GPL
 	depends = intel-ucode
 	depends = iucode-tool
 	source = 80-shrink-intel-ucode.hook
