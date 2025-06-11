@@ -1,7 +1,7 @@
 pkgbase = quickshell-git
 	pkgdesc = Simple and flexbile QtQuick based desktop shell toolkit
 	pkgver = r571.2b01a75
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.outfoxxed.me/quickshell/quickshell
 	arch = x86_64
 	arch = aarch64
@@ -25,6 +25,8 @@ pkgbase = quickshell-git
 	depends = qt6-svg
 	depends = qt6-wayland
 	depends = wayland
+	provides = quickshell
+	conflicts = quickshell
 	source = quickshell::git+https://git.outfoxxed.me/quickshell/quickshell.git
 	sha256sums = SKIP
 

@@ -5,7 +5,7 @@
 _pkgname="quickshell"
 pkgname="$_pkgname-git"
 pkgver=r571.2b01a75
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and flexbile QtQuick based desktop shell toolkit"
 url='https://git.outfoxxed.me/quickshell/quickshell'
 license=('LGPL-3.0-only')
@@ -36,6 +36,9 @@ checkdepends=(
   'kwin'
   'wlheadless-run' # aur/xwayland-run
 )
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
