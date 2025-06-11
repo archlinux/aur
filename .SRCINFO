@@ -1,7 +1,7 @@
 pkgbase = liana-bin
         pkgdesc = A Bitcoin wallet focused on recovery options (includes headless daemon and GUI).
-        pkgver = 10.0
-        pkgrel = 1
+        pkgver = 11.0
+        pkgrel = 2
         url = https://github.com/wizardsardine/liana
         arch = x86_64
         license = BSD
