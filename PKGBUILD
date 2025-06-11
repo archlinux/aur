@@ -2,8 +2,8 @@
 # vim: set ts=4 sw=4 et:
 
 pkgname=kellnr
-pkgver=5.5.0
-pkgrel=2
+pkgver=5.6.0
+pkgrel=1
 pkgdesc='The registry for Rust crates'
 arch=('x86_64')
 url='https://kellnr.io/'
@@ -34,7 +34,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/kellnr/kellnr/archive/refs/
         "kellnr.service"
         "kellnr.sysusers"
         "kellnr.tmpfiles")
-sha256sums=('a072b293ce3ca452fcbafb729afb91e67630dbc48f60b082b064ed83f8695389'
+sha256sums=('d3f6d6dce5667d559cb326282989a74bebdf0cecc60343f3cefb451306ee26de'
             '7b5af39e16841e3f1d25072c4b79b0210add6b0797f1758fdce568a1a058c7f7'
             '28c931c3b6c1ab2e16e318a55e137300a9bfdd8581d7d668a3350574094e1c6d'
             'a268b595b0048f3dda5d6cf8dea37d9c60b2333d8f4aae76ac93deb4b6e2e62e'
@@ -67,7 +67,7 @@ build() {
 check() {
     cd "$pkgname-$pkgver"
 
-    cargo nextest run --workspace -E 'not (binary_id(db::postgres_test) | binary_id(storage::s3_tests))'
+    cargo nextest run --workspace -E 'not (test(~postgres_) | binary_id(storage::s3_tests))'
 }
 
 package() {
