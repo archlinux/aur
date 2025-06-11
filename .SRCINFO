@@ -1,8 +1,9 @@
 pkgbase = python-r3pcomms-git
 	pkgdesc = Local communication with a River 3 Plus over USB HID and/or CDC(ACM)
-	pkgver = 2.0.1
+	pkgver = 2.0.2.dev10+g83d84ec
 	pkgrel = 1
 	url = https://github.com/greyltc/r3pcomms
+	install = r3pcomms.install
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -16,6 +17,10 @@ pkgbase = python-r3pcomms-git
 	provides = python-r3pcomms
 	conflicts = python-r3pcomms
 	source = git+https://github.com/greyltc/r3pcomms.git
+	source = 99-ef.rules
+	source = efusb.sysusers
 	sha256sums = SKIP
+	sha256sums = 279cfba01f5d9cdccf1c96708d964077435a145f00bd15113d351bf19bd0e7fd
+	sha256sums = ea304f66f09bd8b989bb53e99f02ac8f3b538c2afa82d287594a371800acd25e
 
 pkgname = python-r3pcomms-git
