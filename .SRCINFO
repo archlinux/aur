@@ -10,7 +10,6 @@ pkgbase = ayaan-unstable
 	source = https://github.com/ayaan511/AyaanScriptPlus/releases/download/v1.0.2.1/aspkg.exe
 	source = ayaan-launcher.sh
 	source = aspkg-launcher.sh
-	source = PKGBUILD
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

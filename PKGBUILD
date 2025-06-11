@@ -11,7 +11,6 @@ source=(
   "https://github.com/ayaan511/AyaanScriptPlus/releases/download/v1.0.2.1/aspkg.exe"
   "ayaan-launcher.sh"
   "aspkg-launcher.sh"
-  "PKGBUILD"
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
