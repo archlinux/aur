@@ -3,6 +3,8 @@
 # Contributor: Xuanrui Qi <me@xuanruiqi.com>
 # Contributor: Jeff Mickey <jeff@archlinux.org>
 # shellcheck shell=bash disable=SC2034,SC2154
+# ci|skipcheck|
+
 pkgname=shepherd
 pkgver=1.0.5
 pkgrel=1
