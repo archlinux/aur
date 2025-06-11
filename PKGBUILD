@@ -1,7 +1,7 @@
 # Maintainer: Ary Kleinerman <kleinerman at gmail dot com>
 #
 pkgname=yubico-authenticator-bin
-pkgver=7.2.0
+pkgver=7.2.3
 pkgdesc="Cross-platform application for managing your YubiKey's second factor credentials (version 7)"
 arch=('x86_64')
 url="https://github.com/Yubico/yubioath-flutter"
@@ -11,7 +11,7 @@ conflicts=('yubico-authenticator')
 options=(!strip)
 optdepends=('gnome-screenshot: QR scanning feature on GNOME'
             'spectacle: QR scanning feature on KDE')
-pkgrel=2
+pkgrel=1
 source=(
     "${url}/releases/download/${pkgver}/yubico-authenticator-${pkgver}-linux.tar.gz"{,.sig}
 )
@@ -20,7 +20,7 @@ validpgpkeys=(
     '20EE325B86A81BCBD3E56798F04367096FBA95E8'
 )
 
-sha256sums=('5dbe2ae34ae77598c79bd5d844e9f60aca37af9bba9149c464c9a683e9b3f38d'
+sha256sums=('05a6127bd58481780649026bf8dcc73020eb940512971a81d765c6c0e4a2bb7d'
             'SKIP')
 
 # If the installation fails with 'One or more PGP signatures could not be verified',
