@@ -1,11 +1,12 @@
 pkgbase = python-novas_de405
 	pkgdesc = JPL DE405 ephemeris needed by the NOVAS package
 	pkgver = 1997.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/brandon-rhodes/python-novas
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
