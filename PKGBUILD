@@ -3,7 +3,7 @@
 _pkgauthor=laktak
 _pkgname=rsyncy
 pkgname=${_pkgname}-bin
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A status/progress bar for rsync"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -17,8 +17,8 @@ source=("LICENSE_${pkgver}::${_urlraw}/LICENSE"
 		"README_${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}_${pkgver}_x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.tar.gz")
 sha256sums=('b04ffed3126b1640db6a77dbf8990785723ffc59d07b808e663830f04768bbf5'
-            'b02e96a842c1f5d8806d813f29539f2e2fcd2bc0b64169cf9dc1f29ba8bfd334')
-sha256sums_x86_64=('f7185fe90213b8bb397a2daedb946ca7babae163a399f0e86dd5e102ab90ef94')
+            'cab286096f387b399e8936980a5317b35f8d493ff965144dd5a8389be6ee5792')
+sha256sums_x86_64=('0dea09f05d9839aa279b389c0a7cdc56d6c084dd070203a0a3c2dd73a3967fdc')
 
 package() {
 	cd "${srcdir}/" || exit
