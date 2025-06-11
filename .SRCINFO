@@ -1,0 +1,24 @@
+pkgbase = login_ng-bin
+	pkgdesc = A greeter with addition functionalities
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/neroreflex/login_ng
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	makedepends = cargo
+	makedepends = clang
+	depends = pam
+	depends = dbus
+	depends = greetd
+	depends = seatd
+	depends = qt6-base
+	backup = etc/login_ng-session/default.service
+	backup = etc/login_ng-session/steamdeck.service
+	backup = etc/pam.d/login_ng
+	backup = etc/pam.d/login_ng-autologin
+	backup = etc/pam.d/login_ng-ctl
+	source = login_ng-0.6.2.tar.bz2::https://github.com/neroreflex/login_ng/releases/download/0.6.2/login_ng.bin.tar.bz2
+	sha256sums = df63dba185d1ef6ba5336e523ea4744d5b14cfea1e031b1df8d716f97391ddfa
+
+pkgname = login_ng-bin
