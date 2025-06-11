@@ -3,7 +3,7 @@
 
 pkgname=qcm-git
 _pkgname=${pkgname%-git}
-pkgver=1.2.0_qsql.r104.ga885863
+pkgver=1.2.0_qsql.r158.gd69a332
 pkgrel=2
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
@@ -49,14 +49,12 @@ prepare() {
 }
 
 build() {
-	export CXXFLAGS+=" -fno-builtin" # Temporary fix for clang 19
-
 	cmake -B build \
 		-S Qcm \
 		-G Ninja \
 		-D CMAKE_BUILD_TYPE=None \
 		-D CMAKE_INSTALL_PREFIX=/usr \
-		-D CMAKE_CXX_COMPILER=clang++ # Require clang 19+ to build
+		-D CMAKE_CXX_COMPILER=clang++ # Require clang 20+ to build
 
 	cmake --build build
 }
