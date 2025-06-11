@@ -1,6 +1,6 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=mockgen
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='GoMock is a mocking framework for the Go programming language.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go>1.20')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('41c16668926118ccfe8606e335487c0213efbb1330061e3ab7e97650b78e7737')
+sha256sums=('3b321abaf4705051a5aa16a1b7e89b75fb004d92c10ed9adc64e327e4fd4d412')
 
 prepare(){
   cd "mock-$pkgver"
