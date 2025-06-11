@@ -1,6 +1,6 @@
 pkgbase = python-posthog
 	pkgdesc = Integrate PostHog into any python application.
-	pkgver = 4.6.2
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = https://posthog.com/docs/libraries/python
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-posthog
 	optdepends = python-langchain: LLM observability callback handler
 	optdepends = python-openai: OpenAI SDK support
 	optdepends = python-sentry_sdk: Django Sentry Integration
-	source = posthog-python-4.6.2.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v4.6.2.tar.gz
-	sha256sums = 3daa2f24924a44e7c66d08bad379c1951ba5cf9a3f17f14942765bcd7ea0248e
+	source = posthog-python-4.7.0.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v4.7.0.tar.gz
+	sha256sums = ec008da5629eed51370b5da206f316f7654a472544df51d2c0c551003c7a1d62
 
 pkgname = python-posthog
