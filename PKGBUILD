@@ -17,9 +17,11 @@ prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  mkdir -p "build" "completions"
+  go mod download -x
+  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
+  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
 
-  go mod download
+  mkdir -p "build" "completions"
 }
 
 build() {
@@ -27,6 +29,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
   export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
