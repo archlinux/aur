@@ -56,6 +56,7 @@ depends=(
     libvoikko
     nuspell
     hspell
+    ollama
     python-markitdown          # AUR dependency (found during runtime error)
     python-mammoth             # AUR dependency (dependency of python-markitdown)
     python-markdownify         # AUR dependency (dependency of python-markitdown)
@@ -76,10 +77,6 @@ makedepends=(
     meson
 )
 
-# List of optional dependencies with a description
-optdepends=(
-    'ollama: local ollama instance'
-)
 
 build() {
     # The extracted source directory is 'Alpaca-X.X.X' (with 'A' capitalized)
