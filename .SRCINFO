@@ -1,6 +1,6 @@
 pkgbase = python-aiomax
 	pkgdesc = Asynchronous framework for Max Bot API
-	pkgver = 2.0.2
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/dpnspn/aiomax
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-aiomax
 	depends = python3
 	depends = python-aiohttp
 	conflicts = python-aiomax-git
-	source = https://files.pythonhosted.org/packages/source/a/aiomax/aiomax-2.0.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/a/aiomax/aiomax-2.1.0.tar.gz
 	sha256sums = cc124cc9477609db0fddc732a30aece2696cb2ee6ec8dae53cb49597b9bc087c
 
 pkgname = python-aiomax

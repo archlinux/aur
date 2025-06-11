@@ -3,7 +3,7 @@
 
 _name=aiomax
 pkgname=python-$_name
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Asynchronous framework for Max Bot API"
 arch=('any')
