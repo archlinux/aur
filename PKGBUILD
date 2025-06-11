@@ -7,7 +7,7 @@ pkgdesc="Foundation for the RenderMan rendering pipeline"
 arch=('x86_64')
 url="https://renderman.pixar.com/"
 license=('custom')
-depends=('numactl' 'glu')
+depends=('numactl' 'glu' 'libxml2-legacy')
 optdepends=('renderman: Downloader for the RPM package')
 
 DLAGENTS+=("manual::/usr/bin/echo \ \ Note: Please download the RPM through the renderman package")

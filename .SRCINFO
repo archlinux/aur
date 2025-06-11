@@ -7,6 +7,7 @@ pkgbase = renderman-pro-server
 	license = custom
 	depends = numactl
 	depends = glu
+	depends = libxml2-legacy
 	optdepends = renderman: Downloader for the RPM package
 	options = !strip
 	source = manual://RenderManProServer-26.3_2352291-linuxRHEL9_gcc11icx232.x86_64.rpm
