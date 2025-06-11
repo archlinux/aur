@@ -1,0 +1,16 @@
+pkgbase = dawnpro-gui
+	pkgdesc = GUI tool for controlling the Moondrop Dawn Pro AMP/DAC
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shaypower/DawnPro-GUI
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyusb
+	depends = python-gobject
+	depends = gtk3
+	makedepends = git
+	source = dawnpro-gui-1.0.0.tar.gz::https://github.com/shaypower/DawnPro-GUI/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = dawnpro-gui 
