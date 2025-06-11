@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1927.443e2ebe
+pkgver=r1974.9e2e6ca6
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -16,9 +16,11 @@ conflicts=('ksh' 'ksh93')
 provides=('ksh' 'ksh93')
 install='ksh93.install'
 source=("${_pkgname}::git+https://github.com/ksh93/ksh#branch=dev"
-	'sample.kshrc')
+	'sample.kshrc'
+	'https://patch-diff.githubusercontent.com/raw/ksh93/ksh/pull/866.patch')
 sha512sums=('SKIP'
-	'252e3253b663dcee91f775d6164b84952e3c4602d9b921c25204bca7d66bc32fc28cf718a8a3ad4f114dabfc70fb8faa5ecf092a0fc893159ce4acb0ddf48ed4')
+	'252e3253b663dcee91f775d6164b84952e3c4602d9b921c25204bca7d66bc32fc28cf718a8a3ad4f114dabfc70fb8faa5ecf092a0fc893159ce4acb0ddf48ed4'
+	'6a6f4868d3b62a53728a1e0706b0fa7d1c1aa307a1db434b2df3759a1b0ec679868d3367de0134ce7e6a998456c846b5dce40fd372474e07ed43a9bd46675cd0')
 
 pkgver() {
 	cd "${_pkgname}"
@@ -33,6 +35,20 @@ prepare() {
 	# file from operating. To work around this, file is passed the --no-sandbox
 	# flag via an alias inserted into the bin/package script.
 	sed -i '1s/^/alias file="file --no-sandbox" /' bin/package
+	# Patch out the recently discovered ACE vulnerabilities
+	# (I get Martijn is swamped with real life, but he's being
+	# WAY TOO SLOW. This needs to be patched out NOW, if not
+	# yesterday.)
+	if test -e src/lib/libast/path/pathshell.c; then
+		# The insecure pathshell(3) function was found, which
+		# means we're vulnerable. Get rid of the code implementing
+		# the ACE vulnerabilities. If the patch fails, then don't
+		# continue and let the build fail loudly.
+		if ! patch -p1 < "$srcdir/866.patch"; then
+			echo "CANNOT PATCH OUT CODE INJECTION VULNS, ABORTING BUILD!!!"
+			exit 1
+		fi
+	fi
 }
 
 build() {
