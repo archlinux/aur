@@ -2,7 +2,7 @@
 # Maintainer: JeremyStarTM <jeremystartm@staropensource.de>
 
 pkgname=osuboot-git
-pkgver=r31.c89a2bc
+pkgver=r36.131230c
 pkgrel=1
 pkgdesc="Wrapper for osu!lazer. Downloads and executes the AppImage automatically without requiring any manual work."
 arch=("any")
@@ -10,9 +10,10 @@ url="https://git.staropensource.de/JeremyStarTM/aur-osuboot-git"
 license=("GPL-3.0-or-later")
 sha512sums=("SKIP")
 source=("git+https://git.staropensource.de/JeremyStarTM/osuboot.git")
-depends=("wget"
+depends=("curl"
          "fuse2"
          "iputils"
+         "jq"
          "libappimage")
 provides=("osuboot"
           "osu")

@@ -1,13 +1,14 @@
 pkgbase = osuboot-git
 	pkgdesc = Wrapper for osu!lazer. Downloads and executes the AppImage automatically without requiring any manual work.
-	pkgver = r31.c89a2bc
+	pkgver = r36.131230c
 	pkgrel = 1
 	url = https://git.staropensource.de/JeremyStarTM/aur-osuboot-git
 	arch = any
 	license = GPL-3.0-or-later
-	depends = wget
+	depends = curl
 	depends = fuse2
 	depends = iputils
+	depends = jq
 	depends = libappimage
 	provides = osuboot
 	provides = osu
