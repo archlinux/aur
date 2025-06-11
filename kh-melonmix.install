@@ -15,3 +15,10 @@ ln -s "/opt/Kingdom Hearts Melon Mix/MelonMix" /usr/bin/kh-melonmix
 post_remove() {
 	su -c "rm -rf /usr/bin/kh-melonmix"
 }
+
+
+pre_upgrade() {
+rm MelonMix
+
+}
+
