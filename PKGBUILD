@@ -4,8 +4,8 @@
 
 _pkgname="quickshell"
 pkgname="$_pkgname-git"
-pkgver=r571.2b01a75
-pkgrel=2
+pkgver=0.1.0.r0.g703a378
+pkgrel=1
 pkgdesc="Simple and flexbile QtQuick based desktop shell toolkit"
 url='https://git.outfoxxed.me/quickshell/quickshell'
 license=('LGPL-3.0-only')
@@ -48,7 +48,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
