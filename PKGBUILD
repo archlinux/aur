@@ -1,6 +1,6 @@
 # Maintainer: washedparu
 pkgname=tinyprocess-git
-pkgver=r12.248901e
+pkgver=r16.5808efc
 pkgrel=1
 pkgdesc="A minimal process manager in C for Linux (Still in early development)"
 arch=('x86_64')
