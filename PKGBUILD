@@ -1,5 +1,4 @@
 # Maintainer: Juliette Cordor
-pkgbase=arctis-bat
 pkgname=arctis-bat-git
 pkgrel=1
 pkgver=v0.1.0.r1.35f7fcc

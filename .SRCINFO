@@ -1,4 +1,4 @@
-pkgbase = arctis-bat
+pkgbase = arctis-bat-git
 	pkgdesc = CLI tool for checking SteelSeries Arctis headsets battery on linux
 	pkgver = v0.1.0.r1.35f7fcc
 	pkgrel = 1
