@@ -5,7 +5,7 @@
 
 pkgname=zdoom
 pkgver=2.8.1
-pkgrel=7
+pkgrel=8
 pkgdesc='Advanced Doom source port'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
@@ -69,6 +69,7 @@ build() {
           -D NO_FMOD=ON \
           -D GME_INCLUDE_DIR=/usr/include/gme \
           -D FORCE_INTERNAL_GME=OFF \
+          -D CMAKE_C_FLAGS="-std=gnu89" \
           -D CMAKE_CXX_FLAGS="$CXXFLAGS \
             -ffile-prefix-map=\"$PWD\"=. \
             -DSHARE_DIR=\\\"/usr/share/zdoom\\\"" \

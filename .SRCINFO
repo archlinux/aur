@@ -1,7 +1,7 @@
 pkgbase = zdoom
 	pkgdesc = Advanced Doom source port
 	pkgver = 2.8.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.zdoom.org/
 	arch = i686
 	arch = x86_64
