@@ -1,7 +1,7 @@
 # Maintainer: washedparu
 pkgname=tinyprocess-git
-pkgver=r12.248901e
-pkgrel=1
+pkgver="v0.0.2"
+pkgrel=2
 pkgdesc="A minimal process manager in C for Linux (Still in early development)"
 arch=('x86_64')
 url="https://github.com/washedparu/tinyprocess"
@@ -11,10 +11,10 @@ makedepends=('git' 'cmake' 'ninja' 'gcc')
 source=("git+https://github.com/washedparu/tinyprocess.git")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/tinyprocess"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
+# pkgver() {
+#   cd "$srcdir/tinyprocess"
+#   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+# }
 
 build() {
   echo "Listing srcdir contents before building:"
@@ -28,3 +28,4 @@ package() {
   cd "$srcdir/tinyprocess"
   install -Dm755 build/tinyprocess "$pkgdir/usr/bin/tinyprocess"
 }
+
