@@ -1,7 +1,7 @@
 pkgbase = login-ng
 	pkgdesc = A greeter with addition functionalities
 	pkgver = 0.6.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/neroreflex/login-ng
 	arch = i686
 	arch = x86_64

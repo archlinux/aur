@@ -1,10 +1,11 @@
 # Maintainer: Denis Benato <benato.denis96@gmail.org>
 
-pkgname=login-ng
+_pkgname=login_ng
+pkgname=$_pkgname
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A greeter with addition functionalities'
-url='https://github.com/neroreflex/login-ng'
+url="https://github.com/neroreflex/$_pkgname"
 license=()
 makedepends=(
     'cargo'
@@ -15,17 +16,16 @@ depends=(
     'dbus'
     'greetd'
     'seatd'
-    'qt6-base'
 )
 arch=('i686' 'x86_64' 'armv7h')
 source=(
-    "login-ng-${pkgver}.tar.gz::https://github.com/NeroReflex/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
 )
 b2sums=(
-    '823c140f8c39bc99dd4e2b4a7cd5edc8802418ffaafdaa0fc178e76f05b8c5cbc6527a71e8cf4653b2081d6963775294dbb70dbc5474485dd6207350ca3a6f95' # login-ng-${pkgver}.tar.gz
+    'a95686442f486b4ac7497ed5b303098402b955470796e4872025bfdd2fdd06131538ee316b4bda21d3f99b675ac9be1f348222cac1e20379e8c13a887080d767' # login-ng-${pkgver}.tar.gz
 )
 sha256sums=(
-    'f18432e775e5cec76c9989471efc99ad3300819de4234ff3be36be063c00a9b2' # login-ng-${pkgver}.tar.gz
+    '3b4b73587fa92633497e0db6478c902bee396b91d447dd538b1c408796edeca6' # login-ng-${pkgver}.tar.gz
 )
 backup=(
     etc/login_ng-session/default.service
@@ -36,26 +36,26 @@ backup=(
 )
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     make build
 }
 
 check() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     make PREFIX="${pkgdir}" install
 
     mkdir -m 640 -p "${pkgdir}/etc/login_ng"
