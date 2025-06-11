@@ -1,7 +1,7 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=angie-bin
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Actively developing fork of nginx aiming to keep it great with brand new extra functionality.'
 arch=("x86_64" "aarch64")
@@ -28,11 +28,13 @@ backup=(
 	"etc/logrotate.d/angie"
 )
 
-source_aarch64=("https://download.angie.software/angie/ubuntu/24.04/pool/main/a/angie/angie_${pkgver}-1~noble_arm64.deb")
-source_x86_64=("https://download.angie.software/angie/ubuntu/24.04/pool/main/a/angie/angie_${pkgver}-1~noble_amd64.deb")
+_baseurl="https://download.angie.software/angie/ubuntu/24.04/pool/main/a/angie"
 
-sha256sums_x86_64=('6479277b9aa834a229f496ecb9bd317c5f54fc85235531b1ce1448e7665a8642')
-sha256sums_aarch64=('2458e71c7c3d327928d0b2ffd93ab5adb146b86cbe092f95fc5ca9bae66baa14')
+source_aarch64=("${_baseurl}/angie_${pkgver}-1~noble_arm64.deb")
+source_x86_64=("${_baseurl}/angie_${pkgver}-1~noble_amd64.deb")
+
+sha256sums_x86_64=('5eb3d9adc4b4ef07ed509aa9b2525795ffc527519d7f20f39687e546785bd64c')
+sha256sums_aarch64=('2247b27075c9e5f6e06648029891d6780707e7f9920f4c2a87c28f864df4f1df')
 
 package() {
 
