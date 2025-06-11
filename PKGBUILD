@@ -12,7 +12,7 @@ source=(
   "ayaan-launcher.sh"
   "aspkg-launcher.sh"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
   # Install EXEs
