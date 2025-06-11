@@ -10,7 +10,7 @@ license=('AGPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dcmfx/dcmfx/archive/v$pkgver.tar.gz")
 sha256sums=('c6b609747f0fbceb6dccf88a88ae19cc468352f4bfd725a2fadebaa700c0fe8c')
 makedepends=('cargo' 'clang' 'cmake' 'nasm')
-depends=('gcc-libs' 'glibc' 'x264' 'x265')
+depends=('ffmpeg' 'gcc-libs' 'glibc')
 options=('!lto')
 
 prepare() {
