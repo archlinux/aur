@@ -9,6 +9,7 @@ url="https://github.com/acme-dns/${pkgname}"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
+optdepends=('certbot: DNS-01 challenge integration')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('70f501e1cdfe6f8ff7c48303cb8d209c026fde8e7de048a41bca9252e40b1732')
 

@@ -7,6 +7,7 @@ pkgbase = acme-dns-client
 	license = MIT
 	makedepends = go
 	depends = glibc
+	optdepends = certbot: DNS-01 challenge integration
 	source = acme-dns-client-0.3.tar.gz::https://github.com/acme-dns/acme-dns-client/archive/v0.3.tar.gz
 	sha256sums = 70f501e1cdfe6f8ff7c48303cb8d209c026fde8e7de048a41bca9252e40b1732
 
