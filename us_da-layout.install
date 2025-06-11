@@ -1,6 +1,6 @@
 set -euo pipefail
 
-cd /usr/share/X11/xkb/rules
+cd /usr/share/xkeyboard-config-2/rules
 
 post_install() {
 	/usr/share/libalpm/scripts/install-us_da-layout

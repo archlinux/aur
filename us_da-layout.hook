@@ -3,7 +3,7 @@ Operation = Install
 Operation = Upgrade
 Operation = Remove
 Type = File
-Target = usr/share/X11/xkb/rules/evdev.xml
+Target = usr/share/xkeyboard-config-2/rules/evdev.xml
 
 [Action]
 When = PostTransaction

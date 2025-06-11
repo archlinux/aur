@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-cd /usr/share/X11/xkb/rules
+cd /usr/share/xkeyboard-config-2/rules
 
 if grep us_da evdev.xml > /dev/null; then
     exit

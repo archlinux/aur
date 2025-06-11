@@ -1,6 +1,6 @@
 pkgbase = us_da-layout
 	pkgdesc = US keyboard layout with level 3-4 æøå
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Tyilo/us_da-layout
 	install = us_da-layout.install
@@ -12,8 +12,7 @@ pkgbase = us_da-layout
 	source = install-us_da-layout
 	source = us_da-layout.hook
 	sha256sums = 5f9e7e69a69a0c604640c9dd26ab56331af2027dc0ca42a9695feaa138f1e457
-	sha256sums = 579702a5617a25749d35f89fa71fbcee912a43b37a1d2e0f46109f1d11f2e65a
-	sha256sums = 342adf441ce7fe42cf8694ae2294204b4d0391111e2d85dc6fefe49b6333abef
+	sha256sums = 83c3ffc4aaa3af3dddc7b088b834561562d69df7bd94500ca577f4da151e5d99
+	sha256sums = 94338cdccb7ea0280c79abefe5b187745f2240c8cc0fa324addb9fa449d01e67
 
 pkgname = us_da-layout
-
