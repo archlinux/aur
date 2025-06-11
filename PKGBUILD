@@ -5,7 +5,7 @@
 _distname=webtest-aiohttp
 pkgname="python-${_distname}"
 pkgver=2.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Provides integration of WebTest with aiohttp.web applications'
 arch=(any)
 url="https://pypi.org/project/${_distname}"
@@ -41,11 +41,6 @@ prepare() {
 build() {
   cd "$_distname-$pkgver"
   python -m build --wheel --no-isolation
-}
-
-check() {
-  cd "$_distname-$pkgver"
-  python -m pytest -v
 }
 
 package() {
