@@ -1,0 +1,14 @@
+The old sources no longer build with -std=gnu23, that is the default in gcc 15.
+So we use -std=gnu17 that was used and is available since gcc v8.1
+
+--- unix/Makefile.in	2025-06-12 01:09:07.357815855 +0200
++++ unix/Makefile.in	2025-06-12 01:06:25.191636697 +0200
+@@ -31,7 +31,7 @@
+ 
+ INCLUDES  = ${XINCLUDES} @TCL_INCLUDE_SPEC@ -I${TCL_INCPATH} -I${TK_INCPATH} @AINC@ @NISTINC@
+ 
+-CFLAGS    = -O @CFLAGS@ @AFLAG@ ${INCLUDES} @TCLAPI@ -I${GENERIC_DIR} @DEFS@
++CFLAGS    = -std=gnu17 -O @CFLAGS@ @AFLAG@ ${INCLUDES} @TCLAPI@ -I${GENERIC_DIR} @DEFS@
+ 
+ LIBSO     = -lc @ALIB@ @TCL_LIB_SPEC@
+ 
