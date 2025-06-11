@@ -1,23 +1,25 @@
 pkgname=unzip-bsdunzip-symlink
 pkgver=6.0
-pkgrel=3
-pkgdesc='A drop-in for unzip by bsdunzip to omit makedepends'
+pkgrel=4
+pkgdesc='funzip,zipgrep,and unzip-shim by libarchive (makedeps and -O only)'
 url='http://infozip.sourceforge.net/UnZip.html'
 arch=('any')
-license=('custom')
+license=('LicenseRef-Info-ZIP')
 depends=(bash libarchive)
 conflicts=('unzip')
 provides=('unzip')
 source=("https://downloads.sourceforge.net/infozip/unzip60.tar.gz"
 'funzip.sh' )
 sha256sums=('036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37'
-            'ea7a642d06e6be7b36f57dbd343988b1c370ba7f4e3b6cfa3b50dce4d91fec99')
+'909df4550b52139ea588e8f4e98f613ff25f02c3444d5dc188e8461a1f9b40de')
 options=(!strip !debug)
 
 package() {
-	install -Dm 755 funzip.sh "$pkgdir"/usr/bin/funzip
-	ln -sf /usr/bin/bsdunzip "${pkgdir}"/usr/bin/unzip
-	mkdir -p "${pkgdir}"/usr/share/man/man1
-	ln -sf /usr/share/man/man1/bsdunzip.1.gz "${pkgdir}"/usr/share/man/man1/unzip.1.gz
-	install unzip60/unix/zipgrep "${pkgdir}"/usr/bin/zipgrep
+  install -Dm755 funzip.sh "$pkgdir"/usr/bin/funzip
+  ln -sf /usr/bin/bsdunzip "${pkgdir}"/usr/bin/unzip
+  install -Dm644 unzip60/man/zipgrep.1 "${pkgdir}"/usr/share/man/man1/zipgrep.1
+  install -Dm644 unzip60/man/funzip.1 "${pkgdir}"/usr/share/man/man1/funzip.1
+  ln -sf /usr/share/man/man1/bsdunzip.1.gz "${pkgdir}"/usr/share/man/man1/unzip.1.gz
+  install unzip60/unix/zipgrep "${pkgdir}"/usr/bin/zipgrep
+  install -Dm644 unzip60/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }

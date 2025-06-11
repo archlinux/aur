@@ -1,10 +1,10 @@
 pkgbase = unzip-bsdunzip-symlink
-	pkgdesc = A drop-in for unzip by bsdunzip to omit makedepends
+	pkgdesc = funzip,zipgrep,and unzip-shim by libarchive (makedeps and -O only)
 	pkgver = 6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://infozip.sourceforge.net/UnZip.html
 	arch = any
-	license = custom
+	license = LicenseRef-Info-ZIP
 	depends = bash
 	depends = libarchive
 	provides = unzip
@@ -14,6 +14,6 @@ pkgbase = unzip-bsdunzip-symlink
 	source = https://downloads.sourceforge.net/infozip/unzip60.tar.gz
 	source = funzip.sh
 	sha256sums = 036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37
-	sha256sums = ea7a642d06e6be7b36f57dbd343988b1c370ba7f4e3b6cfa3b50dce4d91fec99
+	sha256sums = 909df4550b52139ea588e8f4e98f613ff25f02c3444d5dc188e8461a1f9b40de
 
 pkgname = unzip-bsdunzip-symlink
