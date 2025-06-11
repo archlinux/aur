@@ -1,6 +1,6 @@
 pkgbase = wordnet
 	pkgver = 3.1
-	pkgrel = 11
+	pkgrel = 12
 	url = https://wordnet.princeton.edu/
 	arch = i686
 	arch = x86_64

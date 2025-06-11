@@ -7,7 +7,7 @@ pkgbase=wordnet
 pkgname=(wordnet-common wordnet-progs)
 pkgver=3.1
 _srcver=3.0
-pkgrel=11
+pkgrel=12
 arch=('i686' 'x86_64')
 url="https://wordnet.princeton.edu/"
 license=("LicenseRef-custom")
@@ -31,8 +31,6 @@ prepare() {
   for _patch in "${_patch_series[@]}"; do
     patch -Np1 -i "../debian/patches/$_patch"
   done
-  #remove invalid dict flag caused by debian patches
-  #sed -i '/dictzip -n wn.dict/s/ -n//' contrib/wordnet_structures/Makefile
   sed -i '/dictzip -n wn.dict/s/ -n//' contrib/wordnet_structures/Makefile*
   find dict -type d -exec chmod 755 {} + && find dict -type f -exec chmod 644 {} +
 }
@@ -41,7 +39,7 @@ build() {
   cd "$srcdir/WordNet-$_srcver"
   sed 's:/usr/lib/wordnet/wishwn:/usr/bin/wishwn:g' -i src/wnb
   ./configure --prefix=/usr --mandir=/usr/share/man \
-    CFLAGS="${CFLAGS} -fPIC -DUSE_INTERP_RESULT -Wno-error=format-security" \
+    CFLAGS="${CFLAGS} -std=gnu89 -fPIC -DUSE_INTERP_RESULT -Wno-error=format-security" \
     CXXFLAGS="${CXXFLAGS} -fPIC"
   make
 }
