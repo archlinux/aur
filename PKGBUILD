@@ -4,7 +4,6 @@ _pkgname=compiler-screensaver
 pkgname=$_pkgname-git
 pkgver=r3.19ebf3a
 pkgrel=1
-epoch=
 pkgdesc="A screensaver, that simulates a compilation process."
 arch=('any')
 url="https://github.com/workonfire/CompilerScreensaver"
