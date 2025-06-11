@@ -1,0 +1,14 @@
+pkgbase = acme-dns-client-bin
+	pkgdesc = A client software for https://github.com/joohoi/acme-dns
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/acme-dns/acme-dns-client
+	arch = x86_64
+	license = MIT
+	optdepends = certbot: DNS-01 challenge integration
+	provides = acme-dns-client=0.3
+	conflicts = acme-dns-client
+	source = acme-dns-client-bin-0.3.tar.gz::https://github.com/acme-dns/acme-dns-client/releases/download/v0.3/acme-dns-client_0.3_linux_amd64.tar.gz
+	sha256sums = f7b1892ee9ce2eb22d9d3b5bd8d03d01e2660661d7d461da512f60cca64ae3ef
+
+pkgname = acme-dns-client-bin

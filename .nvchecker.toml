@@ -1,0 +1,6 @@
+[acme-dns-client-bin]
+source           = "github"
+github           = "acme-dns/acme-dns-client"
+use_max_release  = true
+use_release_name = true
+prefix           = "v"
