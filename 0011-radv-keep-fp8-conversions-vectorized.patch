@@ -1,0 +1,57 @@
+From 45b64d3442ccaaca4001f02722a17c18583c0d5a Mon Sep 17 00:00:00 2001
+From: Georg Lehmann <dadschoorse@gmail.com>
+Date: Wed, 9 Apr 2025 14:31:26 +0200
+Subject: [PATCH 11/13] radv: keep fp8 conversions vectorized
+
+---
+ src/amd/compiler/aco_interface.cpp | 2 ++
+ src/amd/vulkan/radv_pipeline.c     | 4 ++++
+ src/amd/vulkan/radv_shader.c       | 4 ++++
+ 3 files changed, 10 insertions(+)
+
+diff --git a/src/amd/compiler/aco_interface.cpp b/src/amd/compiler/aco_interface.cpp
+index a08f6560578..055ba4c1645 100644
+--- a/src/amd/compiler/aco_interface.cpp
++++ b/src/amd/compiler/aco_interface.cpp
+@@ -482,6 +482,8 @@ aco_nir_op_supports_packed_math_16bit(const nir_alu_instr* alu)
+       return (shader->options->force_f2f16_rtz && !nir_is_rounding_mode_rtne(execution_mode, 16)) ||
+              nir_is_rounding_mode_rtz(execution_mode, 16);
+    }
++   case nir_op_f2e4m3fn:
++   case nir_op_e4m3fn2f:
+    case nir_op_fadd:
+    case nir_op_fsub:
+    case nir_op_fmul:
+diff --git a/src/amd/vulkan/radv_pipeline.c b/src/amd/vulkan/radv_pipeline.c
+index e042223f8b2..fa8bdd49cb9 100644
+--- a/src/amd/vulkan/radv_pipeline.c
++++ b/src/amd/vulkan/radv_pipeline.c
+@@ -265,6 +265,10 @@ opt_vectorize_callback(const nir_instr *instr, const void *_)
+       return 1;
+ 
+    const nir_alu_instr *alu = nir_instr_as_alu(instr);
++
++   if (alu->op == nir_op_f2e4m3fn || alu->op == nir_op_e4m3fn2f)
++      return 2;
++
+    const unsigned bit_size = alu->def.bit_size;
+    if (bit_size != 16)
+       return 1;
+diff --git a/src/amd/vulkan/radv_shader.c b/src/amd/vulkan/radv_shader.c
+index dcbc559a1b7..988fb77370d 100644
+--- a/src/amd/vulkan/radv_shader.c
++++ b/src/amd/vulkan/radv_shader.c
+@@ -82,6 +82,10 @@ vectorize_vec2_16bit(const nir_instr *instr, const void *_)
+       return 0;
+ 
+    const nir_alu_instr *alu = nir_instr_as_alu(instr);
++
++   if (alu->op == nir_op_f2e4m3fn || alu->op == nir_op_e4m3fn2f)
++      return 2;
++
+    const unsigned bit_size = alu->def.bit_size;
+    if (bit_size == 16)
+       return 2;
+-- 
+2.49.0
+

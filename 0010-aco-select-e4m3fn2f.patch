@@ -1,0 +1,62 @@
+From 3f866bfcdf9770962c1b3747b292776222f5689d Mon Sep 17 00:00:00 2001
+From: Georg Lehmann <dadschoorse@gmail.com>
+Date: Wed, 9 Apr 2025 14:26:16 +0200
+Subject: [PATCH 10/13] aco: select e4m3fn2f
+
+---
+ src/amd/compiler/aco_ir.cpp                          |  2 ++
+ .../instruction_selection/aco_isel_setup.cpp         |  1 +
+ .../instruction_selection/aco_select_nir_alu.cpp     | 12 ++++++++++++
+ 3 files changed, 15 insertions(+)
+
+diff --git a/src/amd/compiler/aco_ir.cpp b/src/amd/compiler/aco_ir.cpp
+index 68512146641..293f4eaccab 100644
+--- a/src/amd/compiler/aco_ir.cpp
++++ b/src/amd/compiler/aco_ir.cpp
+@@ -715,6 +715,8 @@ get_gfx11_true16_mask(aco_opcode op)
+    case aco_opcode::v_and_b16:
+    case aco_opcode::v_or_b16:
+    case aco_opcode::v_xor_b16: return 0x3 | 0x8;
++   case aco_opcode::v_cvt_pk_f32_fp8:
++   case aco_opcode::v_cvt_pk_f32_bf8:
+    case aco_opcode::v_cvt_f32_f16:
+    case aco_opcode::v_cvt_i32_i16:
+    case aco_opcode::v_cvt_u32_u16: return 0x1;
+diff --git a/src/amd/compiler/instruction_selection/aco_isel_setup.cpp b/src/amd/compiler/instruction_selection/aco_isel_setup.cpp
+index 9dbd27e8812..ad7e7ce5f3e 100644
+--- a/src/amd/compiler/instruction_selection/aco_isel_setup.cpp
++++ b/src/amd/compiler/instruction_selection/aco_isel_setup.cpp
+@@ -413,6 +413,7 @@ init_context(isel_context* ctx, nir_shader* shader)
+                      type = RegType::vgpr;
+                   break;
+                case nir_op_f2e4m3fn:
++               case nir_op_e4m3fn2f:
+                case nir_op_fmulz:
+                case nir_op_ffmaz:
+                case nir_op_f2f64:
+diff --git a/src/amd/compiler/instruction_selection/aco_select_nir_alu.cpp b/src/amd/compiler/instruction_selection/aco_select_nir_alu.cpp
+index 799356fb44f..8719fa564ee 100644
+--- a/src/amd/compiler/instruction_selection/aco_select_nir_alu.cpp
++++ b/src/amd/compiler/instruction_selection/aco_select_nir_alu.cpp
+@@ -2491,6 +2491,18 @@ visit_alu_instr(isel_context* ctx, nir_alu_instr* instr)
+          emit_split_vector(ctx, dst, 2);
+       break;
+    }
++   case nir_op_e4m3fn2f: {
++      if (instr->def.num_components == 2) {
++         Temp src = get_alu_src(ctx, instr->src[0], 2);
++         bld.vop1(aco_opcode::v_cvt_pk_f32_fp8, Definition(dst), src);
++         emit_split_vector(ctx, dst, 2);
++      } else {
++         Temp src = get_alu_src(ctx, instr->src[0]);
++         assert(instr->def.num_components == 1);
++         bld.vop1(aco_opcode::v_cvt_f32_fp8, Definition(dst), src);
++      }
++      break;
++   }
+    case nir_op_i2f16: {
+       Temp src = get_alu_src(ctx, instr->src[0]);
+       const unsigned input_size = instr->src[0].src.ssa->bit_size;
+-- 
+2.49.0
+

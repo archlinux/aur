@@ -1,0 +1,56 @@
+From 5d9c6fd15074c13fe44c1c98017e4eecfacfea6a Mon Sep 17 00:00:00 2001
+From: Georg Lehmann <dadschoorse@gmail.com>
+Date: Wed, 9 Apr 2025 14:04:18 +0200
+Subject: [PATCH 07/13] aco: emit v_wmma_f32_16x16x16_fp8_fp8
+
+---
+ src/amd/compiler/aco_optimizer.cpp                            | 4 +++-
+ .../instruction_selection/aco_select_nir_intrinsics.cpp       | 3 ++-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/amd/compiler/aco_optimizer.cpp b/src/amd/compiler/aco_optimizer.cpp
+index 8aacb3c9538..ba047ab4e90 100644
+--- a/src/amd/compiler/aco_optimizer.cpp
++++ b/src/amd/compiler/aco_optimizer.cpp
+@@ -467,7 +467,8 @@ can_apply_sgprs(opt_ctx& ctx, aco_ptr<Instruction>& instr)
+           instr->opcode != aco_opcode::v_wmma_f16_16x16x16_f16 &&
+           instr->opcode != aco_opcode::v_wmma_bf16_16x16x16_bf16 &&
+           instr->opcode != aco_opcode::v_wmma_i32_16x16x16_iu8 &&
+-          instr->opcode != aco_opcode::v_wmma_i32_16x16x16_iu4;
++          instr->opcode != aco_opcode::v_wmma_i32_16x16x16_iu4 &&
++          instr->opcode != aco_opcode::v_wmma_f32_16x16x16_fp8_fp8;
+ }
+ 
+ /* only covers special cases */
+@@ -528,6 +529,7 @@ alu_can_accept_constant(const aco_ptr<Instruction>& instr, unsigned operand)
+    case aco_opcode::v_interp_p2_rtz_f16_f32_inreg:
+    case aco_opcode::v_dot2_bf16_bf16: /* TODO */
+    case aco_opcode::v_wmma_f32_16x16x16_f16:
++   case aco_opcode::v_wmma_f32_16x16x16_fp8_fp8:
+    case aco_opcode::v_wmma_f32_16x16x16_bf16:
+    case aco_opcode::v_wmma_f16_16x16x16_f16:
+    case aco_opcode::v_wmma_bf16_16x16x16_bf16:
+diff --git a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
+index f4ee6af3f83..6dc808827cc 100644
+--- a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
++++ b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
+@@ -3718,7 +3718,7 @@ get_replicated_constant(nir_def* def, unsigned stride, uint32_t* constant)
+    return true;
+ }
+ 
+-void
++static void
+ visit_cmat_muladd(isel_context* ctx, nir_intrinsic_instr* instr)
+ {
+    aco_opcode opcode = aco_opcode::num_opcodes;
+@@ -3748,6 +3748,7 @@ visit_cmat_muladd(isel_context* ctx, nir_intrinsic_instr* instr)
+       neg_lo[0] = type_a == GLSL_TYPE_INT8;
+       neg_lo[1] = type_b == GLSL_TYPE_INT8;
+       break;
++   case GLSL_TYPE_FLOAT_E4M3FN: opcode = aco_opcode::v_wmma_f32_16x16x16_fp8_fp8; break;
+    }
+    default: unreachable("invalid cmat_muladd_amd type");
+    }
+-- 
+2.49.0
+

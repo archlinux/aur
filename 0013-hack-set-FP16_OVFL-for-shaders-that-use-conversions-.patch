@@ -1,0 +1,81 @@
+From fa81930282c218e87232643937418bb2a1ca15bd Mon Sep 17 00:00:00 2001
+From: Georg Lehmann <dadschoorse@gmail.com>
+Date: Tue, 15 Apr 2025 16:51:48 +0200
+Subject: [PATCH 13/13] hack: set FP16_OVFL for shaders that use conversions to
+ fp8
+
+---
+ src/amd/vulkan/radv_shader.c      |  3 ++-
+ src/amd/vulkan/radv_shader_info.c | 15 +++++++++++++++
+ src/amd/vulkan/radv_shader_info.h |  1 +
+ 3 files changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/src/amd/vulkan/radv_shader.c b/src/amd/vulkan/radv_shader.c
+index 988fb77370d..d9deff645b8 100644
+--- a/src/amd/vulkan/radv_shader.c
++++ b/src/amd/vulkan/radv_shader.c
+@@ -2144,7 +2144,8 @@ radv_postprocess_binary_config(struct radv_device *device, struct radv_shader_bi
+    case MESA_SHADER_ANY_HIT:
+    case MESA_SHADER_COMPUTE:
+    case MESA_SHADER_TASK:
+-      config->rsrc1 |= S_00B848_MEM_ORDERED(radv_mem_ordered(pdev)) | S_00B848_WGP_MODE(wgp_mode);
++      config->rsrc1 |= S_00B848_MEM_ORDERED(radv_mem_ordered(pdev)) | S_00B848_WGP_MODE(wgp_mode) |
++                       S_00B848_FP16_OVFL(info->uses_f2e4m3fn);
+       config->rsrc2 |= S_00B84C_TGID_X_EN(info->cs.uses_block_id[0]) | S_00B84C_TGID_Y_EN(info->cs.uses_block_id[1]) |
+                        S_00B84C_TGID_Z_EN(info->cs.uses_block_id[2]) |
+                        S_00B84C_TIDIG_COMP_CNT(info->cs.uses_thread_id[2]   ? 2
+diff --git a/src/amd/vulkan/radv_shader_info.c b/src/amd/vulkan/radv_shader_info.c
+index 0a541bc6e75..4495dae8a88 100644
+--- a/src/amd/vulkan/radv_shader_info.c
++++ b/src/amd/vulkan/radv_shader_info.c
+@@ -345,6 +345,18 @@ gather_tex_info(const nir_shader *nir, const nir_tex_instr *instr, struct radv_s
+    }
+ }
+ 
++static void
++gather_alu_info(const nir_shader *nir, const nir_alu_instr *instr, struct radv_shader_info *info)
++{
++   switch (instr->op) {
++   case nir_op_f2e4m3fn:
++      info->uses_f2e4m3fn = true;
++      break;
++   default:
++      break;
++   }
++}
++
+ static void
+ gather_info_block(const nir_shader *nir, const nir_block *block, struct radv_shader_info *info,
+                   const struct radv_graphics_state_key *gfx_state, const struct radv_shader_stage_key *stage_key,
+@@ -358,6 +370,8 @@ gather_info_block(const nir_shader *nir, const nir_block *block, struct radv_sha
+       case nir_instr_type_tex:
+          gather_tex_info(nir, nir_instr_as_tex(instr), info);
+          break;
++      case nir_instr_type_alu:
++         gather_alu_info(nir, nir_instr_as_alu(instr), info);
+       default:
+          break;
+       }
+@@ -1845,6 +1859,7 @@ radv_nir_shader_info_merge(const struct radv_shader_stage *src, struct radv_shad
+    dst_info->desc_set_used_mask |= src_info->desc_set_used_mask;
+    dst_info->uses_view_index |= src_info->uses_view_index;
+    dst_info->uses_prim_id |= src_info->uses_prim_id;
++   dst_info->uses_f2e4m3fn |= src_info->uses_f2e4m3fn;
+    dst_info->inline_push_constant_mask |= src_info->inline_push_constant_mask;
+ 
+    /* Only inline all push constants if both allows it. */
+diff --git a/src/amd/vulkan/radv_shader_info.h b/src/amd/vulkan/radv_shader_info.h
+index eb70b764ab5..c6afbc216a0 100644
+--- a/src/amd/vulkan/radv_shader_info.h
++++ b/src/amd/vulkan/radv_shader_info.h
+@@ -89,6 +89,7 @@ struct radv_shader_info {
+    bool uses_view_index;
+    bool uses_invocation_id;
+    bool uses_prim_id;
++   bool uses_f2e4m3fn;
+    uint8_t wave_size;
+    uint8_t ballot_bit_size;
+    struct radv_userdata_locations user_sgprs_locs;
+-- 
+2.49.0
+

@@ -1,0 +1,24 @@
+From 6060c3229d78c177d1de16dfae1c255d2a061ae7 Mon Sep 17 00:00:00 2001
+From: Georg Lehmann <dadschoorse@gmail.com>
+Date: Wed, 9 Apr 2025 13:14:09 +0200
+Subject: [PATCH 03/13] hack: e4m3fn nir opcodes
+
+---
+ src/compiler/nir/nir_opcodes.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/compiler/nir/nir_opcodes.py b/src/compiler/nir/nir_opcodes.py
+index c2995cccf09..def4b6f284c 100644
+--- a/src/compiler/nir/nir_opcodes.py
++++ b/src/compiler/nir/nir_opcodes.py
+@@ -1765,3 +1765,7 @@ opcode("bfdot2_bfadd", 1, tint16, [2, 2, 1], [tint16, tint16, tint16],
+ 
+    dst.x = _mesa_float_to_bfloat16_bits_rte(acc);
+ """)
++
++
++unop_numeric_convert("e4m3fn2f", tfloat32, tuint8, "0") # TODO constant fold
++unop_numeric_convert("f2e4m3fn", tuint8, tfloat32, "0") # TODO constant fold
+-- 
+2.49.0
+

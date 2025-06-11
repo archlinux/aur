@@ -1,0 +1,25 @@
+From 1351ef2c69d703098824f5feaf9739e61481e6ea Mon Sep 17 00:00:00 2001
+From: Georg Lehmann <dadschoorse@gmail.com>
+Date: Tue, 15 Apr 2025 15:50:35 +0200
+Subject: [PATCH 09/13] aco/isel: fix get_alu_src with 8bit vec2 source
+
+---
+ src/amd/compiler/instruction_selection/aco_select_nir_alu.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/amd/compiler/instruction_selection/aco_select_nir_alu.cpp b/src/amd/compiler/instruction_selection/aco_select_nir_alu.cpp
+index 8d5ac777629..799356fb44f 100644
+--- a/src/amd/compiler/instruction_selection/aco_select_nir_alu.cpp
++++ b/src/amd/compiler/instruction_selection/aco_select_nir_alu.cpp
+@@ -101,7 +101,7 @@ get_alu_src(struct isel_context* ctx, nir_alu_src src, unsigned size = 1)
+          elems[i] = emit_extract_vector(ctx, vec, src.swizzle[i], elem_rc);
+          vec_instr->operands[i] = Operand{elems[i]};
+       }
+-      Temp dst = ctx->program->allocateTmp(RegClass(vec.type(), elem_size * size / 4));
++      Temp dst = ctx->program->allocateTmp(RegClass::get(vec.type(), elem_size * size));
+       vec_instr->definitions[0] = Definition(dst);
+       ctx->block->instructions.emplace_back(std::move(vec_instr));
+       ctx->allocated_vec.emplace(dst.id(), elems);
+-- 
+2.49.0
+

@@ -1,0 +1,29 @@
+From 33e843403bf1700b2c4927ecf0c664ddfacafe3e Mon Sep 17 00:00:00 2001
+From: Georg Lehmann <dadschoorse@gmail.com>
+Date: Wed, 9 Apr 2025 17:48:51 +0200
+Subject: [PATCH 12/13] radv/nir/lower_cmat: handle e4m3fn conversions
+
+---
+ src/amd/vulkan/nir/radv_nir_lower_cooperative_matrix.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/amd/vulkan/nir/radv_nir_lower_cooperative_matrix.c b/src/amd/vulkan/nir/radv_nir_lower_cooperative_matrix.c
+index 5aece711987..6b7a6361595 100644
+--- a/src/amd/vulkan/nir/radv_nir_lower_cooperative_matrix.c
++++ b/src/amd/vulkan/nir/radv_nir_lower_cooperative_matrix.c
+@@ -212,6 +212,12 @@ convert_base_type(nir_builder *b, nir_def *src, enum glsl_base_type src_type, en
+    } else if (dst_type == GLSL_TYPE_BFLOAT16) {
+       src = convert_base_type(b, src, src_type, GLSL_TYPE_FLOAT);
+       return nir_f2bf(b, src);
++   } else if (src_type == GLSL_TYPE_FLOAT_E4M3FN) {
++      src = nir_e4m3fn2f(b, src);
++      return convert_base_type(b, src, GLSL_TYPE_FLOAT, dst_type);
++   } else if (dst_type == GLSL_TYPE_FLOAT_E4M3FN) {
++      src = convert_base_type(b, src, src_type, GLSL_TYPE_FLOAT);
++      return nir_f2e4m3fn(b, src);
+    }
+ 
+    nir_op op = nir_type_conversion_op(nir_get_nir_type_for_glsl_base_type(src_type),
+-- 
+2.49.0
+

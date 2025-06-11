@@ -1,0 +1,211 @@
+From 268c75a01d236e405eaf3ca238333831361dd0bd Mon Sep 17 00:00:00 2001
+From: Georg Lehmann <dadschoorse@gmail.com>
+Date: Wed, 9 Apr 2025 13:36:15 +0200
+Subject: [PATCH 04/13] glsl_type garbage
+
+---
+ src/compiler/builtin_types.py      |  1 +
+ src/compiler/glsl_types.c          | 13 +++++++++++++
+ src/compiler/glsl_types.h          | 11 +++++++++++
+ src/compiler/nir/nir.c             |  1 +
+ src/compiler/spirv/vtn_variables.c |  2 ++
+ 5 files changed, 28 insertions(+)
+
+diff --git a/src/compiler/builtin_types.py b/src/compiler/builtin_types.py
+index 99bb1709676..ec48be2bac0 100644
+--- a/src/compiler/builtin_types.py
++++ b/src/compiler/builtin_types.py
+@@ -62,6 +62,7 @@ vector_type("int8_t",    "i8vec",  "GLSL_TYPE_INT8",    "GL_INT8", "_NV")
+ vector_type("uint8_t",   "u8vec",  "GLSL_TYPE_UINT8",   "GL_UNSIGNED_INT8", "_NV")
+ 
+ vector_type("bfloat16_t", "bf16vec", "GLSL_TYPE_BFLOAT16", None)
++vector_type("e4m3fn_t", "e4m3fnvec", "GLSL_TYPE_FLOAT_E4M3FN", None)
+ 
+ simple_type("mat2",   "GL_FLOAT_MAT2",   "GLSL_TYPE_FLOAT", 2, 2)
+ simple_type("mat3",   "GL_FLOAT_MAT3",   "GLSL_TYPE_FLOAT", 3, 3)
+diff --git a/src/compiler/glsl_types.c b/src/compiler/glsl_types.c
+index 10fcd786fac..280f971f244 100644
+--- a/src/compiler/glsl_types.c
++++ b/src/compiler/glsl_types.c
+@@ -349,6 +349,8 @@ glsl_get_base_glsl_type(const glsl_type *t)
+       return &glsl_type_builtin_double;
+    case GLSL_TYPE_BFLOAT16:
+       return &glsl_type_builtin_bfloat16_t;
++   case GLSL_TYPE_FLOAT_E4M3FN:
++      return &glsl_type_builtin_e4m3fn_t;
+    case GLSL_TYPE_BOOL:
+       return &glsl_type_builtin_bool;
+    case GLSL_TYPE_UINT64:
+@@ -387,6 +389,7 @@ glsl_get_bare_type(const glsl_type *t)
+    case GLSL_TYPE_INT16:
+    case GLSL_TYPE_FLOAT16:
+    case GLSL_TYPE_BFLOAT16:
++   case GLSL_TYPE_FLOAT_E4M3FN:
+    case GLSL_TYPE_UINT:
+    case GLSL_TYPE_INT:
+    case GLSL_TYPE_FLOAT:
+@@ -597,6 +600,7 @@ glsl_ ## vname ## _type (unsigned components)    \
+ VECN(components, float, vec)
+ VECN(components, float16_t, f16vec)
+ VECN(components, bfloat16_t, bf16vec)
++VECN(components, e4m3fn_t, e4m3fnvec)
+ VECN(components, double, dvec)
+ VECN(components, int, ivec)
+ VECN(components, uint, uvec)
+@@ -647,6 +651,8 @@ glsl_simple_explicit_type(unsigned base_type, unsigned rows, unsigned columns,
+          return glsl_f16vec_type(rows);
+       case GLSL_TYPE_BFLOAT16:
+          return glsl_bf16vec_type(rows);
++      case GLSL_TYPE_FLOAT_E4M3FN:
++         return glsl_e4m3fnvec_type(rows);
+       case GLSL_TYPE_DOUBLE:
+          return glsl_dvec_type(rows);
+       case GLSL_TYPE_BOOL:
+@@ -1749,6 +1755,7 @@ glsl_get_component_slots(const glsl_type *t)
+    case GLSL_TYPE_FLOAT:
+    case GLSL_TYPE_FLOAT16:
+    case GLSL_TYPE_BFLOAT16:
++   case GLSL_TYPE_FLOAT_E4M3FN:
+    case GLSL_TYPE_BOOL:
+       return glsl_get_components(t);
+ 
+@@ -1802,6 +1809,7 @@ glsl_get_component_slots_aligned(const glsl_type *t, unsigned offset)
+    case GLSL_TYPE_FLOAT:
+    case GLSL_TYPE_FLOAT16:
+    case GLSL_TYPE_BFLOAT16:
++   case GLSL_TYPE_FLOAT_E4M3FN:
+    case GLSL_TYPE_BOOL:
+       return glsl_get_components(t);
+ 
+@@ -2889,6 +2897,7 @@ glsl_count_vec4_slots(const glsl_type *t, bool is_gl_vertex_input, bool is_bindl
+    case GLSL_TYPE_FLOAT:
+    case GLSL_TYPE_FLOAT16:
+    case GLSL_TYPE_BFLOAT16:
++   case GLSL_TYPE_FLOAT_E4M3FN:
+    case GLSL_TYPE_BOOL:
+       return t->matrix_columns;
+    case GLSL_TYPE_DOUBLE:
+@@ -3094,6 +3103,7 @@ encode_type_to_blob(struct blob *blob, const glsl_type *type)
+    case GLSL_TYPE_FLOAT:
+    case GLSL_TYPE_FLOAT16:
+    case GLSL_TYPE_BFLOAT16:
++   case GLSL_TYPE_FLOAT_E4M3FN:
+    case GLSL_TYPE_DOUBLE:
+    case GLSL_TYPE_UINT8:
+    case GLSL_TYPE_INT8:
+@@ -3743,6 +3753,7 @@ glsl_get_natural_size_align_bytes(const glsl_type *type,
+    case GLSL_TYPE_INT16:
+    case GLSL_TYPE_FLOAT16:
+    case GLSL_TYPE_BFLOAT16:
++   case GLSL_TYPE_FLOAT_E4M3FN:
+    case GLSL_TYPE_UINT:
+    case GLSL_TYPE_INT:
+    case GLSL_TYPE_FLOAT:
+@@ -3803,6 +3814,7 @@ glsl_get_word_size_align_bytes(const glsl_type *type,
+    case GLSL_TYPE_INT16:
+    case GLSL_TYPE_FLOAT16:
+    case GLSL_TYPE_BFLOAT16:
++   case GLSL_TYPE_FLOAT_E4M3FN:
+    case GLSL_TYPE_UINT:
+    case GLSL_TYPE_INT:
+    case GLSL_TYPE_FLOAT:
+@@ -3863,6 +3875,7 @@ glsl_get_vec4_size_align_bytes(const glsl_type *type,
+    case GLSL_TYPE_INT16:
+    case GLSL_TYPE_FLOAT16:
+    case GLSL_TYPE_BFLOAT16:
++   case GLSL_TYPE_FLOAT_E4M3FN:
+    case GLSL_TYPE_UINT:
+    case GLSL_TYPE_INT:
+    case GLSL_TYPE_FLOAT:
+diff --git a/src/compiler/glsl_types.h b/src/compiler/glsl_types.h
+index 4afba690abf..2defbf3136a 100644
+--- a/src/compiler/glsl_types.h
++++ b/src/compiler/glsl_types.h
+@@ -64,6 +64,7 @@ enum glsl_base_type {
+    GLSL_TYPE_FLOAT,
+    GLSL_TYPE_FLOAT16,
+    GLSL_TYPE_BFLOAT16,
++   GLSL_TYPE_FLOAT_E4M3FN,
+    GLSL_TYPE_DOUBLE,
+    GLSL_TYPE_UINT8,
+    GLSL_TYPE_INT8,
+@@ -107,6 +108,7 @@ static unsigned glsl_base_type_bit_size(enum glsl_base_type type)
+ 
+    case GLSL_TYPE_UINT8:
+    case GLSL_TYPE_INT8:
++   case GLSL_TYPE_FLOAT_E4M3FN:
+       return 8;
+ 
+    case GLSL_TYPE_DOUBLE:
+@@ -176,6 +178,7 @@ glsl_base_type_get_bit_size(const enum glsl_base_type base_type)
+ 
+    case GLSL_TYPE_UINT8:
+    case GLSL_TYPE_INT8:
++   case GLSL_TYPE_FLOAT_E4M3FN:
+       return 8;
+ 
+    case GLSL_TYPE_DOUBLE:
+@@ -630,6 +633,12 @@ glsl_type_is_bfloat_16(const glsl_type *t)
+    return t->base_type == GLSL_TYPE_BFLOAT16;
+ }
+ 
++static inline bool
++glsl_type_is_e4m3fn(const glsl_type *t)
++{
++   return t->base_type == GLSL_TYPE_FLOAT_E4M3FN;
++}
++
+ static inline bool
+ glsl_type_is_int_16_32_64(const glsl_type *t)
+ {
+@@ -947,6 +956,7 @@ static inline const glsl_type *glsl_uint8_t_type(void) { return &glsl_type_built
+ static inline const glsl_type *glsl_bool_type(void) { return &glsl_type_builtin_bool; }
+ static inline const glsl_type *glsl_atomic_uint_type(void) { return &glsl_type_builtin_atomic_uint; }
+ static inline const glsl_type *glsl_bfloat16_t_type(void) { return &glsl_type_builtin_bfloat16_t; }
++static inline const glsl_type *glsl_e4m3fn_t_type(void) { return &glsl_type_builtin_e4m3fn_t; }
+ 
+ static inline const glsl_type *
+ glsl_floatN_t_type(unsigned bit_size)
+@@ -999,6 +1009,7 @@ glsl_uintN_t_type(unsigned bit_size)
+ const glsl_type *glsl_vec_type(unsigned components);
+ const glsl_type *glsl_f16vec_type(unsigned components);
+ const glsl_type *glsl_bf16vec_type(unsigned components);
++const glsl_type *glsl_e4m3fnvec_type(unsigned components);
+ const glsl_type *glsl_dvec_type(unsigned components);
+ const glsl_type *glsl_ivec_type(unsigned components);
+ const glsl_type *glsl_uvec_type(unsigned components);
+diff --git a/src/compiler/nir/nir.c b/src/compiler/nir/nir.c
+index f3a32256a63..18cec968501 100644
+--- a/src/compiler/nir/nir.c
++++ b/src/compiler/nir/nir.c
+@@ -2904,6 +2904,7 @@ nir_get_nir_type_for_glsl_base_type(enum glsl_base_type base_type)
+    case GLSL_TYPE_FLOAT:   return nir_type_float32;
+    case GLSL_TYPE_FLOAT16: return nir_type_float16;
+    case GLSL_TYPE_BFLOAT16: return nir_type_uint16;
++   case GLSL_TYPE_FLOAT_E4M3FN: return nir_type_uint8;
+    case GLSL_TYPE_DOUBLE:  return nir_type_float64;
+       /* clang-format on */
+ 
+diff --git a/src/compiler/spirv/vtn_variables.c b/src/compiler/spirv/vtn_variables.c
+index baf359c9f9f..c474ea9a81c 100644
+--- a/src/compiler/spirv/vtn_variables.c
++++ b/src/compiler/spirv/vtn_variables.c
+@@ -716,6 +716,7 @@ _vtn_variable_load_store(struct vtn_builder *b, bool load,
+    case GLSL_TYPE_INT64:
+    case GLSL_TYPE_FLOAT:
+    case GLSL_TYPE_FLOAT16:
++   case GLSL_TYPE_FLOAT_E4M3FN:
+    case GLSL_TYPE_BFLOAT16:
+    case GLSL_TYPE_BOOL:
+    case GLSL_TYPE_DOUBLE:
+@@ -811,6 +812,7 @@ _vtn_variable_copy(struct vtn_builder *b, struct vtn_pointer *dest,
+    case GLSL_TYPE_FLOAT:
+    case GLSL_TYPE_FLOAT16:
+    case GLSL_TYPE_BFLOAT16:
++   case GLSL_TYPE_FLOAT_E4M3FN:
+    case GLSL_TYPE_DOUBLE:
+    case GLSL_TYPE_BOOL:
+       /* At this point, we have a scalar, vector, or matrix so we know that
+-- 
+2.49.0
+
