@@ -5,24 +5,24 @@
 # Contributor: chaseme <aur@chase.ninja>
 
 pkgname='tenv-bin'
-pkgver=4.7.3
+pkgver=4.7.5
 pkgrel=1
 pkgdesc='OpenTofu, Terraform, Terragrunt, and Atmos version manager, written in Go.'
 url='https://tofuutils.github.io/tenv/'
 arch=('aarch64' 'i686' 'x86_64')
 license=('Apache-2.0')
-provides=('atmos' 'tenv' 'terraform' 'terragrunt' 'tf' 'tofu')
-conflicts=('atmos' 'atmos-bin' 'opentofu' 'opentofu-bin' 'opentofu-bin-stable' 'opentofu-git' 'terraform' 'terragrunt' 'tfenv' 'tgenv' 'tofuenv')
+provides=('atmos' 'tenv' 'terraform' 'terragrunt' 'terramate' 'tf' 'tofu')
+conflicts=('atmos' 'atmos-bin' 'opentofu' 'opentofu-bin' 'opentofu-bin-stable' 'opentofu-git' 'terraform' 'terragrunt' 'terramate' 'tfenv' 'tgenv' 'tofuenv')
 optdepends=('cosign: package validation for OpenTofu')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tofuutils/tenv/releases/download/v4.7.3/tenv_v4.7.3_Linux_arm64.tar.gz")
-sha256sums_aarch64=('7c51cb05d9cd25a71fda9cd43b7a70fdc07a4740423c6f1028bf424f25d4fcb7')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tofuutils/tenv/releases/download/v4.7.5/tenv_v4.7.5_Linux_arm64.tar.gz")
+sha256sums_aarch64=('ae89e9227f9e343d3a4e38db288169b74da2fb8f97982dbe23ecb559b521b7aa')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/tofuutils/tenv/releases/download/v4.7.3/tenv_v4.7.3_Linux_i386.tar.gz")
-sha256sums_i686=('a9b585bbc995ffd40540fbfeb421f0f5adc0be594c3a5f19ea4286619642171e')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/tofuutils/tenv/releases/download/v4.7.5/tenv_v4.7.5_Linux_i386.tar.gz")
+sha256sums_i686=('7c67c3c2c5e4c551a9b2f6886cc979c6a00027d1a5f8ba7914acd831aa1e6e11')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tofuutils/tenv/releases/download/v4.7.3/tenv_v4.7.3_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('7a1ddc5fb359dc56d786a11216596ccae1328dfb27b619fe91465cba893adab8')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tofuutils/tenv/releases/download/v4.7.5/tenv_v4.7.5_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('6808f66a59b14e2748be49403827314bda65208f213815511bfb3dbf17d5dcf6')
 
 package() {
   # bin
@@ -30,6 +30,7 @@ package() {
   install -Dm 0755 "tenv" "${pkgdir}/usr/bin/tenv"
   install -Dm 0755 "terraform" "${pkgdir}/usr/bin/terraform"
   install -Dm 0755 "terragrunt" "${pkgdir}/usr/bin/terragrunt"
+  install -Dm 0755 "terragrunt" "${pkgdir}/usr/bin/terramate"
   install -Dm 0755 "tf" "${pkgdir}/usr/bin/tf"
   install -Dm 0755 "tofu" "${pkgdir}/usr/bin/tofu"
 
