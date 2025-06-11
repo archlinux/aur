@@ -16,7 +16,7 @@ pkgname=(
     'lib32-nvidia-vulkan-utils'
     'lib32-opencl-nvidia-vulkan'
 )
-pkgver=570.123.14
+pkgver=570.123.18
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
@@ -25,6 +25,7 @@ makedepends=('libglvnd' 'linux' 'linux-headers')
 license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
+_pkg_open="open-gpu-kernel-modules-${pkgver}"
 source=(
     'nvidia-drm-outputclass.conf'
     'nvidia-vulkan-utils.sysusers'
@@ -37,6 +38,12 @@ source=(
     0001-Enable-atomic-kernel-modesetting-by-default.patch
     0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch
     0003-Add-IBT-support.patch
+    0003-Kbuild-Convert-EXTRA_CFLAGS-to-ccflags-y.patch
+    0004-Workaround-nv_vm_flags_-calling-GPL-only-code.patch
+    0005-kernel-open-nvidia-Use-new-timer-functions-for-6.15.patch
+    0006-nvidia-uvm-Use-__iowrite64_hi_lo.patch
+    0007-nvidia-uvm-Use-page_pgmap.patch
+    0008-nvidia-uvm-Convert-make_device_exclusive_range-to-ma.patch
 )
 
 sha512sums=(
@@ -46,11 +53,17 @@ sha512sums=(
     'a0183adce78e40853edf7e6b73867e7a8ea5dabac8e8164e42781f64d5232fbe869f850ab0697c3718ebced5cde760d0e807c05da50a982071dfe1157c31d6b8'
     '55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee'
     'c7fea39d11565f05a507d3aded4e9ea506ef9dbebf313e0fc8d6ebc526af3f9d6dec78af9d6c4456c056310f98911c638706bccdd9926d07f492615569430455'
-    '20956b215c6b6b1adc706a481070d9e70e5556632b86e2d64ffb07a67e50a50339b7cf81f73f645216e148a4f50a6f44478a331afa6f7179b4a3bea15512ab62'
-    '66592e77fbd0641982eac99e78ce46e477d77eeb7d12014b89af8c0816be96224130e700b66c0f03fa18e182238a78ed5636e64e29ed41411167e0d88a84930e'
+    '64cc8fca0b2d0c3b5c118940b4ae3ffecb297cb1595cc71f66927926e1467cb6577b15d2bcf46cbda4d928a0218ca1d019b0ed27e2c03bfebf244b8551cbb485'
+    '5a4c01153d4033ebc5b3b5f67b00ca8331bd13ed67b850af9ffe65380593f575764d07a56b5278e1af09c74610d36fd76e738a229713afa0e0102f54ceefcdfc'
     '0bb89b9037f0baa9aae1ff8e70c9c93896f03fd0cc380eea4b0dc094a6991c3ad6738c9fbbaa42d8b5a544f77dc91c0e6401b1501c5970c576d5efbc0de8dd34'
-    '6814990f8046759d35f724ac9114d7fa284710fd1ad8cca7e1a861ea54a72fe4f67b5614f157a911f5ecfa0c964fa989edc61c85b1cfef6428e0cd7cdeea856e'
+    '7b0ad137f534930ed5e510818df18185c45ecf0a4ef3a8b421112dacf95df868c7fa5a726cd15026d54eaba797d4dc609e776b9fbf12f8cf22482f987291482b'
     '42f621179d4fd9bf608f0d84b9019f5a5fdf5d92d68d22ce9b9a9add1cad1c90dcb3764db68e0b9bc7e902bb6b955c59563ea6d4f39f2e39a340387e4d5deb82'
+    'fa8f0ac5ca5d5a7acd334870699ea08058b749956aac2a2e59edaab7cdc57868d501a8866551c34719724b1429355c75c63b4497b42a3bb80e5868d714bba78a'
+    '21c964b4d0ceda23d543485cb285becf111849313da3ff9cc9c7bed241de83fd826d72f196d071e4f53790b8fd5d1e3dab9319c0ca08b37c9c841f45d3afd041'
+    '40075a203ad98d9d8cc214a95eabf4a17274211d97deb26c1aab9fa97bb5f8c647f535a1aa7a6f928b28779d844bc3cdfe28b453eac810f8f4a1ef1d6850bdeb'
+    '296049309e3b953876b50c31bd8b5e6f3b3f71065f533a1a6d2e0270375183991997268a7c2507f0688454a212dfaeb7940d37cb77057dd650ac787201b7e788'
+    '003daa27c45eae4041f838c8a05d1d92d88362ec086f4a37b46436fa7c27ef81b16e663a41b12375a83d67be03d6e2f848c70f9cec9e601d28e8697b4e72ab93'
+    '0f6b59f41d658a0f271f93f0bb26a3234844f091cdfd29f27084ab896a9516413c8f8dbd7374c202ea4f042a47ef0cfe2360cf53775fa642fe9f59984b93f394'
 )
 
 create_links() {
@@ -68,6 +81,24 @@ prepare() {
     cd "${_pkg}"
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
+    # 6.15 Compatibility
+    patch -Np1 -i "${srcdir}/0003-Kbuild-Convert-EXTRA_CFLAGS-to-ccflags-y.patch" -d "${srcdir}/${_pkg}/kernel"
+    patch -Np1 -i "${srcdir}/0004-Workaround-nv_vm_flags_-calling-GPL-only-code.patch" -d "${srcdir}/${_pkg}/kernel"
+    patch -Np2 -i "${srcdir}/0005-kernel-open-nvidia-Use-new-timer-functions-for-6.15.patch" -d "${srcdir}/${_pkg}/kernel"
+    patch -Np2 -i "${srcdir}/0006-nvidia-uvm-Use-__iowrite64_hi_lo.patch" -d "${srcdir}/${_pkg}/kernel"
+    patch -Np1 -i "${srcdir}/0007-nvidia-uvm-Use-page_pgmap.patch" -d "${srcdir}/${_pkg}/"
+    patch -Np1 -i "${srcdir}/0008-nvidia-uvm-Convert-make_device_exclusive_range-to-ma.patch" -d "${srcdir}/${_pkg}/"
+    patch -Np1 -i "${srcdir}/0003-Kbuild-Convert-EXTRA_CFLAGS-to-ccflags-y.patch" -d "${srcdir}/${_pkg_open}/kernel-open"
+    patch -Np1 -i "${srcdir}/0004-Workaround-nv_vm_flags_-calling-GPL-only-code.patch" -d "${srcdir}/${_pkg_open}/kernel-open"
+    patch -Np1 -i "${srcdir}/0005-kernel-open-nvidia-Use-new-timer-functions-for-6.15.patch" -d "${srcdir}/${_pkg_open}/"
+    patch -Np1 -i "${srcdir}/0006-nvidia-uvm-Use-__iowrite64_hi_lo.patch" -d "${srcdir}/${_pkg_open}/"
+    patch -Np1 -i "${srcdir}/0007-nvidia-uvm-Use-page_pgmap.patch" -d "${srcdir}/${_pkg_open}/"
+    patch -Np1 -i "${srcdir}/0008-nvidia-uvm-Convert-make_device_exclusive_range-to-ma.patch" -d "${srcdir}/${_pkg_open}/"
+
+    # Fix building with GCC 15
+    patch -Np1 -d "${srcdir}/${_pkg}/kernel" -i "$srcdir"/0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch
+    patch -Np1 -d "${srcdir}/${_pkg_open}/kernel-open" -i "$srcdir"/0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch
+
     # Enable modeset by default
     # This avoids various issue, when Simplefb is used
     # https://gitlab.archlinux.org/archlinux/packaging/packages/nvidia-utils/-/issues/14
@@ -75,9 +106,6 @@ prepare() {
     patch -Np1 -d "${srcdir}/${_pkg}/kernel" -i "$srcdir"/0001-Enable-atomic-kernel-modesetting-by-default.patch
 
     cd kernel
-
-    # Fix building with GCC 15
-    patch -Np1 --no-backup-if-mismatch -i "$srcdir"/0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
@@ -103,10 +131,6 @@ DEST_MODULE_LOCATION[4]="/kernel/drivers/video"' dkms.conf
     # https://gitlab.archlinux.org/archlinux/packaging/packages/nvidia-utils/-/issues/14
     # https://github.com/rpmfusion/nvidia-kmod/blob/master/make_modeset_default.patch
     patch -Np1 -i "$srcdir"/0001-Enable-atomic-kernel-modesetting-by-default.patch -d "${srcdir}/open-gpu-kernel-modules-${pkgver}/kernel-open"
-
-    # Fix building with GCC 15
-    patch -Np1 --no-backup-if-mismatch -i "$srcdir"/0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch \
-        -d "${srcdir}/open-gpu-kernel-modules-${pkgver}/kernel-open"
 
     # Fix for https://bugs.archlinux.org/task/74886
     patch -Np1 --no-backup-if-mismatch -i "$srcdir"/0003-Add-IBT-support.patch
@@ -221,8 +245,8 @@ package_nvidia-vulkan-utils() {
     pkgdesc="NVIDIA drivers utilities (vulkan developer branch)"
     depends=('libglvnd' 'egl-wayland' 'egl-gbm' 'egl-x11')
     optdepends=('xorg-server: Xorg support'
-                'xorg-server-devel: nvidia-xconfig'
-                'opencl-nvidia: OpenCL support')
+        'xorg-server-devel: nvidia-xconfig'
+        'opencl-nvidia: OpenCL support')
     conflicts=('nvidia-libgl' 'nvidia-settings' 'nvidia-utils')
     provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-settings' "nvidia-utils=$pkgver")
     replaces=('nvidia-libgl')

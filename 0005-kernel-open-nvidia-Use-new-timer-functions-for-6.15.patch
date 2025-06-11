@@ -1,0 +1,159 @@
+From 34f0e942ccb1947d71150a55f5f9c592bd175c5c Mon Sep 17 00:00:00 2001
+From: Eric Naim <dnaim@cachyos.org>
+Date: Mon, 7 Apr 2025 16:32:31 +0800
+Subject: [PATCH 4/8] kernel-open/nvidia: Use new timer functions for 6.15
+
+Signed-off-by: Eric Naim <dnaim@cachyos.org>
+---
+ kernel-open/nvidia-drm/nvidia-drm-os-interface.c  |  5 +++++
+ kernel-open/nvidia-modeset/nvidia-modeset-linux.c |  9 +++++++++
+ kernel-open/nvidia/nv-nano-timer.c                | 12 +++++++++++-
+ kernel-open/nvidia/nv.c                           |  9 +++++++++
+ 4 files changed, 34 insertions(+), 1 deletion(-)
+
+diff --git a/kernel-open/nvidia-drm/nvidia-drm-os-interface.c b/kernel-open/nvidia-drm/nvidia-drm-os-interface.c
+index f22afd776ebc..59ecaf2d310e 100644
+--- a/kernel-open/nvidia-drm/nvidia-drm-os-interface.c
++++ b/kernel-open/nvidia-drm/nvidia-drm-os-interface.c
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include <linux/slab.h>
++#include <linux/version.h>
+ 
+ #include "nvidia-drm-os-interface.h"
+ 
+@@ -238,7 +239,11 @@ unsigned long nv_drm_timeout_from_ms(NvU64 relative_timeout_ms)
+ 
+ bool nv_drm_del_timer_sync(nv_drm_timer *timer)
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 15, 0)
+     if (del_timer_sync(&timer->kernel_timer)) {
++#else
++    if (timer_delete_sync(&timer->kernel_timer)) {
++#endif
+         return true;
+     } else {
+         return false;
+diff --git a/kernel-open/nvidia-modeset/nvidia-modeset-linux.c b/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
+index cbe2ad186afa..6dc5bc9f10aa 100644
+--- a/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
++++ b/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
+@@ -37,6 +37,7 @@
+ #include <linux/freezer.h>
+ #include <linux/poll.h>
+ #include <linux/cdev.h>
++#include <linux/version.h>
+ 
+ #include <acpi/video.h>
+ 
+@@ -738,7 +739,11 @@ static void nvkms_kthread_q_callback(void *arg)
+      * pending timers and than waiting for workqueue callbacks.
+      */
+     if (timer->kernel_timer_created) {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 15, 0)
+         del_timer_sync(&timer->kernel_timer);
++#else
++        timer_delete_sync(&timer->kernel_timer);
++#endif
+     }
+ 
+     /*
+@@ -1922,7 +1927,11 @@ restart:
+              * completion, and we wait for queue completion with
+              * nv_kthread_q_stop below.
+              */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 15, 0)
+             if (del_timer_sync(&timer->kernel_timer) == 1) {
++#else
++            if (timer_delete_sync(&timer->kernel_timer) == 1) {
++#endif
+                 /*  We've deactivated timer so we need to clean after it */
+                 list_del(&timer->timers_list);
+ 
+diff --git a/kernel-open/nvidia/nv-nano-timer.c b/kernel-open/nvidia/nv-nano-timer.c
+index 6549c82f4340..c5d614185230 100644
+--- a/kernel-open/nvidia/nv-nano-timer.c
++++ b/kernel-open/nvidia/nv-nano-timer.c
+@@ -27,6 +27,7 @@
+ #include <linux/hrtimer.h>
+ #include <linux/ktime.h>
+ #include <linux/timer.h>
++#include <linux/version.h>
+ #include "os-interface.h"
+ #include "nv-linux.h"
+ 
+@@ -50,7 +51,7 @@ struct nv_nano_timer
+ };
+ 
+ /*!
+- * @brief runs nano second resolution timer callback 
++ * @brief runs nano second resolution timer callback
+ *
+  * @param[in] nv_nstimer    Pointer to nv_nano_timer_t object
+  */
+@@ -154,8 +155,13 @@ void NV_API_CALL nv_create_nano_timer(
+     nv_nstimer->nv_nano_timer_callback = nvidia_nano_timer_callback;
+ 
+ #if NV_NANO_TIMER_USE_HRTIMER
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 15, 0)
+     hrtimer_init(&nv_nstimer->hr_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
+     nv_nstimer->hr_timer.function = nv_nano_timer_callback_typed_data;
++#else
++    hrtimer_setup(&nv_nstimer->hr_timer, nv_nano_timer_callback_typed_data,
++                  CLOCK_MONOTONIC, HRTIMER_MODE_REL);
++#endif /* Kernel < 6.15 */
+ #else
+ #if defined(NV_TIMER_SETUP_PRESENT)
+     timer_setup(&nv_nstimer->jiffy_timer, nv_jiffy_timer_callback_typed_data, 0);
+@@ -207,7 +213,11 @@ void NV_API_CALL nv_cancel_nano_timer(
+ #if NV_NANO_TIMER_USE_HRTIMER
+     hrtimer_cancel(&nv_nstimer->hr_timer);
+ #else
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 15, 0)
+     del_timer_sync(&nv_nstimer->jiffy_timer);
++#else
++    timer_delete_sync(&nv_nstimer->jiffy_timer);
++#endif
+ #endif
+ 
+ }
+diff --git a/kernel-open/nvidia/nv.c b/kernel-open/nvidia/nv.c
+index 8edc491927e2..e8e1fc09befc 100644
+--- a/kernel-open/nvidia/nv.c
++++ b/kernel-open/nvidia/nv.c
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include <linux/module.h>  // for MODULE_FIRMWARE
++#include <linux/version.h>
+ 
+ // must precede "nv.h" and "nv-firmware.h" includes
+ #define NV_FIRMWARE_FOR_NAME(name)  "nvidia/" NV_VERSION_STRING "/" name ".bin"
+@@ -4106,7 +4107,11 @@ int NV_API_CALL nv_stop_rc_timer(
+ 
+     nv_printf(NV_DBG_INFO, "NVRM: stopping rc timer\n");
+     nv->rc_timer_enabled = 0;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 15, 0)
+     del_timer_sync(&nvl->rc_timer.kernel_timer);
++#else
++    timer_delete_sync(&nvl->rc_timer.kernel_timer);
++#endif
+     nv_printf(NV_DBG_INFO, "NVRM: rc timer stopped\n");
+ 
+     return 0;
+@@ -4150,7 +4155,11 @@ void NV_API_CALL nv_stop_snapshot_timer(void)
+     NV_SPIN_UNLOCK_IRQRESTORE(&nvl->snapshot_timer_lock, flags);
+ 
+     if (timer_active)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 15, 0)
+         del_timer_sync(&nvl->snapshot_timer.kernel_timer);
++#else
++        timer_delete_sync(&nvl->snapshot_timer.kernel_timer);
++#endif
+ }
+ 
+ void NV_API_CALL nv_flush_snapshot_timer(void)
+-- 
+2.49.0
+

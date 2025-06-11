@@ -1,6 +1,6 @@
-From 610f6f8a297e6d4b3457c46d73611edb9e46405c Mon Sep 17 00:00:00 2001
+From 843e7b26f926e243dccf05a45d541b7879fecd0e Mon Sep 17 00:00:00 2001
 From: Peter Jung <admin@ptr1337.dev>
-Date: Tue, 29 Apr 2025 11:24:31 +0200
+Date: Wed, 11 Jun 2025 16:08:29 +0300
 Subject: [PATCH] CFLAGS: Set -std=gnu17 for all compilation flags
 
 GCC15 uses C23 by default, which breaks a lot of compatibility with the
@@ -9,38 +9,39 @@ kernel uses across the project.
 
 Signed-off-by: Peter Jung <admin@ptr1337.dev>
 Signed-off-by: Eric Naim <dnaim@cachyos.org>
+Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
 ---
  Kbuild      | 1 +
  conftest.sh | 4 ++--
  2 files changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/Kbuild b/Kbuild
-index bf06edb7..6cbc79d3 100644
+index 28db89e..bd69c0d 100644
 --- a/Kbuild
 +++ b/Kbuild
-@@ -82,6 +82,7 @@ $(foreach _module, $(NV_KERNEL_MODULES), \
- # $(EXTRA_CFLAGS) to ccflags-y for compatibility.
- #
-
-+EXTRA_CFLAGS += -std=gnu17
- EXTRA_CFLAGS += -I$(src)/common/inc
- EXTRA_CFLAGS += -I$(src)
- EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-format-extra-args
+@@ -75,6 +75,7 @@ $(foreach _module, $(NV_KERNEL_MODULES), \
+  $(eval include $(src)/$(_module)/$(_module).Kbuild))
+ 
+ 
++ccflags-y += -std=gnu17
+ ccflags-y += -I$(src)/common/inc
+ ccflags-y += -I$(src)
+ ccflags-y += -Wall $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-format-extra-args
 diff --git a/conftest.sh b/conftest.sh
-index 20f694ec..0019e67c 100755
+index 20f694e..0019e67 100755
 --- a/conftest.sh
 +++ b/conftest.sh
 @@ -69,7 +69,7 @@ test_header_presence() {
      # NV_LINUX_FENCE_H_PRESENT, and that is either defined or undefined, in the
      # output (which goes to stdout, just like the rest of this file).
-
+ 
 -    TEST_CFLAGS="-E -M $CFLAGS"
 +    TEST_CFLAGS="-std=gnu17 -E -M $CFLAGS"
-
+ 
      file="$1"
      file_define=NV_`echo $file | tr '/.-' '___' | tr 'a-z' 'A-Z'`_PRESENT
 @@ -94,7 +94,7 @@ test_header_presence() {
-
+ 
  build_cflags() {
      ISYSTEM=`$CC -print-file-name=include 2> /dev/null`
 -    BASE_CFLAGS="-O2 -D__KERNEL__ \
@@ -48,3 +49,6 @@ index 20f694ec..0019e67c 100755
  -DKBUILD_BASENAME=\"#conftest$$\" -DKBUILD_MODNAME=\"#conftest$$\" \
  -nostdinc -isystem $ISYSTEM \
  -Wno-implicit-function-declaration -Wno-strict-prototypes"
+-- 
+2.49.0
+
