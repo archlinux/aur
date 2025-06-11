@@ -3,7 +3,7 @@
 pkgname=fauxdacious-plugins-git
 _pkgname=fauxdacious-plugins
 pkgver=4.5devel1.r659
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugins for Fauxdacious Mediaplayer (git version)"
 arch=('x86_64')
 url="https://wildstar84.wordpress.com/fauxdacious/"
@@ -47,6 +47,5 @@ build() {
 package() {
 	cd "${pkgname}"
 	make DESTDIR=${pkgdir} install
-	install -Dm644 ./contrib/fauxdacious.appdata.xml -t "$pkgdir/usr/share/metainfo"
 	install -Dm644 ./COPYING -t "$pkgdir/usr/share/licenses/$_pkgname"
 }

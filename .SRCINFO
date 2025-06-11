@@ -1,7 +1,7 @@
 pkgbase = fauxdacious-plugins-git
 	pkgdesc = Plugins for Fauxdacious Mediaplayer (git version)
 	pkgver = 4.5devel1.r659
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wildstar84.wordpress.com/fauxdacious/
 	arch = x86_64
 	license = BSD
