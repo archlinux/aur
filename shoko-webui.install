@@ -1,0 +1,20 @@
+link_webui() {
+  webui_index='/usr/lib/shoko/webui/index.html.fulfil'
+  if [ -f "${webui_index}" ]; then
+    ln -sf "${webui_index}" '/usr/lib/shoko/webui/index.html'
+  fi
+}
+
+## arg 1:  the new package version
+post_install() {
+  link_webui
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  link_webui
+}
+
+
+
