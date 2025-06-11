@@ -16,7 +16,7 @@ package() {
   install -Dm755 "$pkgname-$pkgver/$pkgname" \
     "$pkgdir/usr/bin/$pkgname"
 
-  # helper scripts (optional—delete these two lines if you don’t ship them)
+  # helper scripts
   install -Dm755 "$pkgname-$pkgver/install.sh" \
     "$pkgdir/usr/share/$pkgname/install.sh"
   install -Dm755 "$pkgname-$pkgver/uninstall.sh" \
