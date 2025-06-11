@@ -1,0 +1,15 @@
+pkgbase = fdbcli-bin
+	pkgdesc = FoundationDB is a scalable, fault-tolerant, ordered key-value store with full ACID transactions.
+	pkgver = 7.3.63
+	pkgrel = 1
+	url = https://www.foundationdb.org/
+	arch = x86_64
+	groups = foundationdb
+	license = Apache-2.0
+	provides = fdbcli=7.3.63
+	conflicts = foundationdb-clients-bin
+	options = !debug
+	source_x86_64 = https://github.com/apple/foundationdb/releases/download/7.3.63/fdbcli.x86_64
+	sha256sums_x86_64 = b9080a774847c0648e7f4e030cf5e3f309a170c1ab83de463b7b08493ed3ee57
+
+pkgname = fdbcli-bin
