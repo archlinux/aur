@@ -1,6 +1,7 @@
 # Maintainer: envolution
 # Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 # shellcheck shell=bash disable=SC2034,SC2154
+# ci|forcedep=python-libpulse-git|
 pkgname="pa-dlna"
 pkgver=1.0
 pkgrel=3
