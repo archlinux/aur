@@ -30,11 +30,13 @@ makedepends=(
   'cmake'
   'git'
   'ninja'
+  'qt6-shadertools'
   'wayland-protocols'
 )
 checkdepends=(
-  'kwin'
+  'weston'
   'wlheadless-run' # aur/xwayland-run
+  'xorg-xwayland'
 )
 
 provides=("$_pkgname")
@@ -71,7 +73,7 @@ build() {
 check() {
   local _headless_run=(
     wlheadless-run
-    -c kwin --width=1920 --height=1080
+    -c weston --width=1920 --height=1080
   )
 
   env "${_headless_run[@]}" -- ctest --test-dir build --rerun-failed --output-on-failure || :
