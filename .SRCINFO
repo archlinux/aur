@@ -23,4 +23,4 @@ pkgbase = prospect-mail-beta-bin
 	md5sums_armv7l = 7de3837d7e54d9e5181ebaf7093d5f41
 	md5sums_armv7l = 8bc10d8d7c90786378362af8b5ce292f
 
-pkgname = prospect-mail-bin
+pkgname = prospect-mail-beta-bin
