@@ -46,6 +46,7 @@ import                   shlex
 import                   shutil
 import                   ssl
 import                   sys
+import                   tarfile
 import                   tempfile
 import                   threading
 import                   time
@@ -82,7 +83,7 @@ log = logging.getLogger(__name__)
 __absfile__ = op.abspath(__file__).rstrip('c')
 
 
-__version__ = '3.15.2'
+__version__ = '3.16.8'
 """Installer script version number. This must be updated
 whenever a new version of the installer script is released.
 """
@@ -116,6 +117,26 @@ FSL_DEV_RELEASES = 'https://fsl.fmrib.ox.ac.uk/fsldownloads/' \
 internal/development FSL releases. See the download_dev_releases function
 for more details.
 """
+
+TEMPLATE_IDENTIFIER = '%%%%%%%%%%%%%'
+"""String used when generating the standalone fslinstaler.py script to identify
+content that is to be inserted. See the .ci/new_release.py script.
+"""
+
+FSL_CREATE_WRAPPER_SCRIPT = """
+%%%%%%%%%%%%%fsl/installer/createFSLWrapper.py
+""".strip()
+"""Contents of the fsl.installer.createFSLWrapper.py script. This is populated
+when the standalone fslinstaller.py script is generated.
+"""
+
+FSL_REMOVE_WRAPPER_SCRIPT = """
+%%%%%%%%%%%%%fsl/installer/removeFSLWrapper.py
+""".strip()
+"""Contents of the fsl.installer.removeFSLWrapper.py script. This is populated
+when the standalone fslinstaller.py script is generated.
+"""
+
 
 
 # List of modifiers which can be used to change how
@@ -173,6 +194,21 @@ def str2bool(value):
     """
     if isinstance(value, str): return value.lower() == 'true'
     else:                      return bool(value)
+
+
+def is_shell_script(filepath):
+    """Check the given file and return True if it is a shell script, or
+    False otherwise.
+    """
+    try:
+        with open(filepath, 'rt') as f:
+            header = f.read(20)
+
+        return any((header.startswith('#!/bin/'),
+                    header.startswith('#!/usr/bin/')))
+
+    except Exception as e:
+        return False
 
 
 def printmsg(*args, **kwargs):
@@ -734,6 +770,11 @@ def install_environ(fsldir, username=None, password=None, cuda_version=None):
     # https://github.com/mamba-org/mamba/issues/1941
     env['MAMBA_NO_LOW_SPEED_LIMIT'] = '1'
 
+    # If we are installing FSL with micromamba, we
+    # need to set the MAMBA_ROOT_PREFIX variable.
+    if op.exists(op.join(fsldir, 'bin', 'micromamba')):
+        env['MAMBA_ROOT_PREFIX'] = fsldir
+
     # FSL environments which source packages from the internal
     # FSL conda channel will refer to the channel as:
     #
@@ -767,6 +808,10 @@ def install_environ(fsldir, username=None, password=None, cuda_version=None):
     # latest/user-guide/tasks/manage-virtual.html
     if cuda_version is not None: env['CONDA_OVERRIDE_CUDA'] = cuda_version
     else:                        env['CONDA_OVERRIDE_CUDA'] = ''
+
+    # Don't prompt for confirmation
+    env['MAMBA_ALWAYS_YES'] = 'true'
+    env['CONDA_ALWAYS_YES'] = 'true'
 
     return env
 
@@ -821,22 +866,30 @@ def download_file(url,
             sslctx.verify_mode    = ssl.CERT_NONE
             kwargs['context']     = sslctx
 
-    req = None
+    # py2: urlopen result cannot be used as a
+    # context manager, so we use try-finally
+    # to ensure that the connection is closed
+    # cleanly
+    resp = None
 
     try:
-        # py2: urlopen result cannot be
-        # used as a context manager
-        req = urlrequest.urlopen(url, **kwargs)
+
+        # Some servers reject requests originating
+        # from urllib, so we pretend to be firefox
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        req     = urlrequest.Request(url, headers=headers)
+        resp    = urlrequest.urlopen(req, **kwargs)
+
         with open(destination, 'wb') as outf:
 
-            try:             total = int(req.headers['content-length'])
+            try:             total = int(resp.headers['content-length'])
             except KeyError: total = None
 
             downloaded = 0
 
             progress(downloaded, total)
             while True:
-                block = req.read(blocksize)
+                block = resp.read(blocksize)
                 if len(block) == 0:
                     break
                 downloaded += len(block)
@@ -844,8 +897,8 @@ def download_file(url,
                 progress(downloaded, total)
 
     finally:
-        if req:
-            req.close()
+        if resp:
+            resp.close()
 
 
 def download_manifest(url, workdir=None, **kwargs):
@@ -1622,17 +1675,23 @@ class Context(object):
 
     @property
     def miniconda_metadata(self):
-        """Returns a dict with information about the miniconda installer
-        to use as the base of the FSL installation. This must not be called
-        until after the download_fsl_environment_files function has been
-        called.
+        """Returns a dict with information about the micromamba/miniconda/
+        miniforge installer to use as the base of the FSL installation. This
+        must not be called until after the download_fsl_environment_files
+        function has been called.
 
         The returned dict has `'url'`, `'sha256'` and `'output'` keys.
         """
         # Get information about the miniconda installer
         # from the manifest.
         metadata = self.manifest['miniconda'][self.platform]
-        pyver    = 'python{}'.format(self.python_version)
+
+        # From FSL 6.0.7.17 and newer, installations
+        # may be based on micromamba. If micromamba is
+        # present in the manifest, use it, unless the
+        # user has requested otherwise via --conda.
+        if 'micromamba' in metadata and (not self.args.conda):
+            return metadata['micromamba']
 
         # From FSL 6.0.7.12 and newer, the manifest
         # contains a separate miniconda installer URL
@@ -1641,17 +1700,19 @@ class Context(object):
         # manifest just contained a single miniconda URL
         # for each platform. This code supports both the
         # old and new manifest formats.
+        pyver = 'python{}'.format(self.python_version)
+
         if pyver in metadata:
-            metadata = metadata[pyver]
+            return metadata[pyver]
 
         # if pyver is not in metadata, we either have an
         # old manifest format which contains info for a
         # single miniconda installer, or the manifest
         # does not contain a miniconda installer entry
         # for the python version to be installed.
-        elif 'url' not in metadata:
+        if 'url' not in metadata:
             raise Exception('Manifest does not contain metadata for a Python '
-                            '{} miniconda installer!'.format(pyver))
+                            '{} conda installer!'.format(pyver))
 
         return metadata
 
@@ -1786,21 +1847,26 @@ class Context(object):
 
     @property
     def conda(self):
-        """Return a path to the ``conda`` or ``mamba`` executable. """
+        """Return a path to the ``conda``, ``mamba``, or ``micromamba``
+        executable. """
         bindir   = op.join(self.basedir, 'bin')
         condabin = op.join(bindir, 'conda')
         mambabin = op.join(bindir, 'mamba')
+        mmbin    = op.join(bindir, 'micromamba')
 
-        # If mamba is present, prefer it over conda, unless
-        # the user requestd otherwise via the --conda flag
-        if not self.args.conda: candidates = [mambabin, condabin]
-        else:                   candidates = [condabin, mambabin]
+        # Prefer, in this order:
+        #  - micromamba
+        #  - mamba
+        #  - conda
+        # unless the user requestd otherwise via the --conda flag
+        if not self.args.conda: candidates = [mmbin, mambabin, condabin]
+        else:                   candidates = [condabin, mambabin, mmbin]
 
         for c in candidates:
             if op.exists(c):
                 return c
 
-        raise RuntimeError('Cannot find conda/mamba '
+        raise RuntimeError('Cannot find conda/mamba/micromamba '
                            'executable in {}'.format(bindir))
 
 
@@ -1932,9 +1998,13 @@ class Context(object):
             ctx.run(Process.monitor_progress, 'my_command', total=100)
         """
 
-        env          = kwargs.pop('env',        {})
-        append_env   = kwargs.pop('append_env', {})
         process_func = ft.partial(process_func, *args, **kwargs)
+        env          = dict(kwargs.pop('env',        {}))
+        append_env   = dict(kwargs.pop('append_env', {}))
+        install_env  = install_environ(self.destdir,
+                                       self.args.username,
+                                       self.args.password,
+                                       self.cuda_version)
 
         # Clear any environment variables that refer to
         # existing FSL or conda installations, and ensure
@@ -1944,15 +2014,12 @@ class Context(object):
         # details, and see Process.sudo_popen regarding
         # append_env.
         env.update(clean_environ())
-        append_env.update(install_environ(self.destdir,
-                                          self.args.username,
-                                          self.args.password,
-                                          self.cuda_version))
+        install_env.update(append_env)
 
         return process_func(admin=self.need_admin,
                             password=self.admin_password,
                             env=env,
-                            append_env=append_env)
+                            append_env=install_env)
 
 
 def agree_to_license(ctx):
@@ -2367,8 +2434,10 @@ def download_fsl_environment_files(ctx):
 
 
 def download_miniconda(ctx, **kwargs):
-    """Downloads the miniconda/miniforge installer and saves it as
-    "miniconda.sh".
+    """Downloads the miniconda/miniforge/micromamba installer and saves it as
+    a file called "miniconda.sh". Miniconda and miniforge installers are
+    assumed to be executable shell scripts, whereas micromamba installers are
+    assumed to be tarballs. The file is saved as "miniconda.sh" in either case.
 
     This function assumes that it is run within a temporary/scratch directory.
 
@@ -2408,10 +2477,12 @@ def download_miniconda(ctx, **kwargs):
 
 
 def install_miniconda(ctx, **kwargs):
-    """Downloads the miniconda/miniforge installer, and installs it to the
-    destination directory.
+    """Runs the micromamba/miniconda/miniforge installer, installing it to
+    the destination directory.
 
-    This function assumes that it is run within a temporary/scratch directory.
+    This function assumes that it is run within a temporary/scratch directory,
+    which contains the installer file called "miniconda.sh". This file is
+    created by the download_miniconda function.
 
     Keyword arguments are passed through to the Progress bar constructor.
     """
@@ -2421,31 +2492,106 @@ def install_miniconda(ctx, **kwargs):
     if ctx.use_existing_base:
         return
 
-    # Get information about the miniconda installer
-    # from the manifest.
-    metadata = ctx.miniconda_metadata
-    output   = metadata.get('output', '')
+    # Get progress reporting information about
+    # the miniconda installer from the manifest.
+    if not ctx.args.miniconda:
+        metadata = ctx.miniconda_metadata
+        output   = metadata.get('output', '')
+    else:
+        output = None
 
-    # output may be a string or int
+    # output should be an int (or
+    # string containing an int)
     if isinstance(output, str):
         output = output.strip()
-
-    if output == '': output = None
-    else:            output = int(output)
+    if output == '':
+        output = None
+    if output is not None:
+        output = int(output)
 
     # The download_miniconda function saved
-    # the installer to <pwd>/miniconda.sh
-    printmsg('Installing miniconda at {}...'.format(ctx.basedir))
-    cmd = 'bash miniconda.sh -b -p {}'.format(ctx.basedir)
-    ctx.run(Process.monitor_progress, cmd, total=output,
-            proglabel='install_miniconda',
-            progfile=ctx.args.progress_file,
-            **kwargs)
+    # the installer to <pwd>/miniconda. This
+    # is assumed to be either an executable
+    # shell script (miniconda/miniforge), or
+    # a tarball (micromamba).
+    printmsg('Installing conda at {}...'.format(ctx.basedir))
+    if is_shell_script('miniconda.sh'):
+        cmd = 'bash miniconda.sh -b -p {}'.format(ctx.basedir)
+        ctx.run(Process.monitor_progress, cmd, total=output,
+                proglabel='install_miniconda',
+                progfile=ctx.args.progress_file,
+                **kwargs)
+    else:
+        cmds = ['mkdir {}'                    .format(ctx.basedir),
+                'tar -x -f miniconda.sh -C {}'.format(ctx.basedir)]
+        with Progress(label='%',
+                      fmt='{:.0f}',
+                      total=1,
+                      transform=Progress.percent,
+                      **kwargs) as prog:
+            for cmd in cmds:
+                ctx.run(Process.check_call, cmd)
+                prog.update(0.5)
 
     # Avoid WSL filesystem issue
-    # https://github.com/conda/conda/issues/9948
+    # https://github.com/conda/conda/issues/9948#issuecomment-909989810
     cmd = 'find {} -type f -exec touch {{}} +'.format(ctx.basedir)
     ctx.run(Process.check_call, cmd)
+
+
+@warn_on_error('WARNING: An error occurred while generating the FSL wrapper '
+               'management scripts! Installation will proceed, but you may '
+               'encounter problems with your FSL installation.',
+               WARNING, EMPHASIS)
+def install_wrapper_scripts(ctx, **kwargs):
+    """Creates the ${FSLDIR}/shrae/fsl/sbin/createFSLWrapper and
+    ${FSLDIR}/shrae/fsl/sbin/removeFSLWrapper scripts. These scripts are used by
+    FSL package post-link.sh scripts to create "wrappers" for FSL tools in
+    ${FSLDIR}/share/fsl/bin/. These wrapper scripts are created so that FSL commands
+    can be isolated from the other executables in ${FSLDIR}/bin/.
+    """
+    thisdir              = op.dirname(__file__)
+    destdir              = op.join(ctx.destdir, 'share', 'fsl', 'sbin')
+    createFSLWrapperSrc  = op.join(thisdir, 'createFSLWrapper.py')
+    removeFSLWrapperSrc  = op.join(thisdir, 'removeFSLWrapper.py')
+    createFSLWrapperDest = op.join(destdir, 'createFSLWrapper')
+    removeFSLWrapperDest = op.join(destdir, 'removeFSLWrapper')
+    createFSLWrapperText = FSL_CREATE_WRAPPER_SCRIPT
+    removeFSLWrapperText = FSL_REMOVE_WRAPPER_SCRIPT
+
+    # This is obviously a super quick operation, but we
+    # use a progress bar so that the terminal output
+    # is consistent with the other installation steps
+    printmsg('Creating FSL wrapper management scripts...')
+    with Progress(label='%',
+                  fmt='{:.0f}',
+                  total=1,
+                  transform=Progress.percent,
+                  **kwargs) as prog:
+
+        # Running from source code - load wrapper
+        # script contents from source files
+        if createFSLWrapperText.startswith(TEMPLATE_IDENTIFIER):
+            with open(createFSLWrapperSrc, 'rt') as f:
+                createFSLWrapperText = f.read().strip()
+        if removeFSLWrapperText.startswith(TEMPLATE_IDENTIFIER):
+            with open(removeFSLWrapperSrc, 'rt') as f:
+                removeFSLWrapperText = f.read().strip()
+
+        with open('createFSLWrapper', 'wt') as f:
+            f.write(createFSLWrapperText)
+        with open('removeFSLWrapper', 'wt') as f:
+            f.write(removeFSLWrapperText)
+
+        cmds = ['mkdir -p {}'           .format(destdir),
+                'cp createFSLWrapper {}'.format(createFSLWrapperDest),
+                'cp removeFSLWrapper {}'.format(removeFSLWrapperDest),
+                'chmod 755 {}'          .format(createFSLWrapperDest),
+                'chmod 755 {}'          .format(removeFSLWrapperDest)]
+
+        for cmd in cmds:
+            ctx.run(Process.check_call, cmd)
+        prog.update(1)
 
 
 def generate_condarc(fsldir,
@@ -2453,7 +2599,7 @@ def generate_condarc(fsldir,
                      skip_ssl_verify=False,
                      throttle_downloads=False,
                      pkgsdir=None):
-    """Called by install_miniconda. Generates content for a .condarc file to
+    """Called by install_fsl. Generates content for a .condarc file to
     be saved in $FSLDIR/.condarc. This file contains some default values, and
     also enforces some settings so that they cannot be overridden by the
     user. For example. the list of conda channels is configured so that it
@@ -2741,8 +2887,10 @@ def install_fsl(ctx, **kwargs):
     with open('.condarc', 'wt') as f:
         f.write(condarc_contents)
 
-    cmds = ['mkdir -p {}'.format(ctx.destdir),
-            'cp -f .condarc {}'.format(ctx.destdir)]
+    condarc = op.join(ctx.destdir, '.condarc')
+    cmds    = ['mkdir -p ' + ctx.destdir,
+               'cp -f .condarc ' + condarc]
+
     for cmd in cmds:
         ctx.run(Process.check_call, cmd)
 
@@ -2751,12 +2899,31 @@ def install_fsl(ctx, **kwargs):
     if ctx.destdir == ctx.basedir: cmd = 'update'
     else:                          cmd = 'create'
 
+    env = {}
+
+    # For the main FSL installation, we do not
+    # want conda to install any CUDA-related
+    # packages. Set this var so that conda
+    # ignores any installed GPU
+    env['CONDA_OVERRIDE_CUDA'] = ''
+
+    # One of several methods employed to try and
+    # convince conda to only use settings from
+    # ${FSLDIR}/.condarc
+    env['CONDARC'] = condarc
+
     # We install FSL simply by running conda
     # env [update|create] -f env.yml.
     envfile = ctx.environment_file
     cmd     = (ctx.conda + ' env ' + cmd +
                ' -p ' + ctx.destdir      +
                ' -f ' + envfile)
+
+    # Another method employed to try and persuade
+    # conda to ignore other .condarc files. The --rc-file
+    # flag is only supported by mamba/micromamba
+    if op.basename(ctx.conda) in ('mamba', 'micromamba'):
+        cmd += ' --rc-file ' + condarc
 
     # Make conda/mamba super verbose if the
     # hidden --debug option was specified.
@@ -2795,8 +2962,9 @@ def install_fsl(ctx, **kwargs):
             return len(logmsgs) > 0
 
         retry_on_error(ctx.run, ctx.args.num_retries, Process.monitor_progress,
-                       cmd, timeout=2, total=progval, progfunc=progfunc,
-                       proglabel='install_fsl', progfile=ctx.args.progress_file,
+                       cmd, append_env=env, timeout=2, total=progval,
+                       progfunc=progfunc, proglabel='install_fsl',
+                       progfile=ctx.args.progress_file,
                        retry_error_message=err_message,
                        retry_condition=retry_install, **kwargs)
 
@@ -2820,6 +2988,16 @@ def install_extra(ctx, name, **kwargs):
     cmd = (ctx.conda + ' env ' + action +
                ' -p ' + destdir +
                ' -f ' + envfile)
+
+    env     = {}
+    condarc = op.join(ctx.destdir, '.condarc')
+
+    # Try to convince conda to only use our settings
+    if op.exists(condarc):
+        env['CONDARC'] = condarc
+
+        if op.basename(ctx.conda) in ('mamba', 'micromamba'):
+            cmd += ' --rc-file ' + condarc
 
     if ctx.args.debug:
         cmd += ' -v -v -v'
@@ -3329,6 +3507,13 @@ def parse_args(argv=None, include=None, parser=None):
         #   fslinstaller.py --miniconda https://path/to/miniconda.sh
         #   fslinstaller.py --miniconda ~/Downloads/miniconda.sh
         #
+        # URLs to a micromamba installer are
+        # also accepted - if the file is an
+        # executable shell script, the
+        # installer assumes it is miniconda,
+        # otherwise the installer assumes it
+        # is micromamba.
+        #
         # Alternatively, pass the directory of
         # an existing [mini]conda installation
         # to use that - for example, if a conda
@@ -3356,7 +3541,9 @@ def parse_args(argv=None, include=None, parser=None):
         # existing miniconda installation.
         'extras_dir' : argparse.SUPPRESS,
 
-        # Use conda and not mamba
+        # Use conda and not mamba, and install
+        # miniconda and not micromamba if the
+        # latter is an option.
         'conda' : argparse.SUPPRESS,
 
         # Disable SHA256 checksum validation
@@ -3659,9 +3846,10 @@ def main(argv=None):
             # We iterate over them so we can show the user
             # a step number and a total, e.g. "Step 2 of 4".
             steps = [
-                (download_miniconda, ctx),
-                (install_miniconda,  ctx),
-                (install_fsl,        ctx)]
+                (download_miniconda,      ctx),
+                (install_miniconda,       ctx),
+                (install_wrapper_scripts, ctx),
+                (install_fsl,             ctx)]
 
             for name in args.extra:
                 if name not in ctx.extra_environment_files:
