@@ -4,7 +4,7 @@ _pkgname=yandex-browser
 pkgname=yandex-browser-corporate
 pkgver=25.4.1.1137
 _pkgver=25.4.1.1137-1
-pkgrel=1
+pkgrel=2
 
 pkgdesc="The web browser from Yandex.
  Yandex Browser is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
@@ -30,5 +30,5 @@ prepare() {
 
 package() {
     cp -dr --no-preserve=ownership opt usr "${pkgdir}"/
-    chmod 4755 "${pkgdir}"/opt/yandex/browser/${_pkgname}-sandbox
+    chmod 4755 "${pkgdir}"/opt/yandex/browser/yandex_browser-sandbox
 }
