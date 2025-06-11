@@ -26,6 +26,6 @@ build() {
 
 package() {
   cd "$srcdir/tinyprocess"
-  install -Dm755 build/tprocess "$pkgdir/usr/bin/tprocess"
+  install -Dm755 build/tinyprocess "$pkgdir/usr/bin/tinyprocess"
 }
 
