@@ -1,6 +1,6 @@
 # Maintainer: Leone <comdir@infonix.info>
 pkgname=yd-go
-pkgver=f52cab1
+pkgver=cd1b952
 pkgrel=1
 epoch=
 pkgdesc="Panel indicator for Yandex-disk CLI daemon (linux)"
@@ -19,7 +19,7 @@ conflicts=("yd-go-git")
 options=('!strip' '!debug')
 install=
 changelog=
-source=("https://github.com/slytomcat/yd-go/releases/download/master-f52cab1/yd-go"
+source=("https://github.com/slytomcat/yd-go/releases/download/master-cd1b952/yd-go"
 yd-go.png)
 
 #noextract=()
