@@ -7,10 +7,10 @@ Product=Vivado
 Destination=/tools/Xilinx
 
 # Choose the Products/Devices the you would like to install.
-Modules=Kintex UltraScale:0,Versal AI Edge Series:0,Vitis Networking P4:0,Artix UltraScale+:0,Spartan-7:0,Artix-7:0,Vitis Model Composer(Toolbox for MATLAB and Simulink. Includes the functionality of System Generator for DSP):0,Versal Prime Series:0,DocNav:0,Zynq UltraScale+ MPSoC:0,Zynq-7000:1,Virtex UltraScale+:0,Virtex UltraScale+ HBM:0,Power Design Manager (PDM):0,Vitis Embedded Development:0,Kintex UltraScale+:0,Virtex UltraScale+ 58G:0,Kintex-7:0,Install Devices for Kria SOMs and Starter Kits:0,Versal ACAP:0
+Modules=xcvm1102:0,Zynq UltraScale+ MPSoCs:0,Kintex UltraScale+ FPGAs:0,Virtex UltraScale+ 58G FPGAs:0,Vitis Model Composer(A toolbox for Simulink):0,Artix-7 FPGAs:0,Install devices for Alveo and edge acceleration platforms:0,Vitis Embedded Development:0,Zynq-7000 All Programmable SoC:0,Virtex UltraScale+ HBM FPGAs:0,xcve2202:0,Spartan UltraScale+:0,xcve2002:0,Vitis Networking P4:0,Kintex UltraScale FPGAs:0,Power Design Manager (PDM):0,Virtex UltraScale+ FPGAs:0,Artix UltraScale+ FPGAs:0,xcv80:0,Spartan-7 FPGAs:1,DocNav:0,xcve2102:0,xcve2302:0,Install Devices for Kria SOMs and Starter Kits:0,Kintex-7 FPGAs:0
 
 # Choose the post install scripts you'd like to run as part of the finalization step. Please note that some of these scripts may require user interaction during runtime.
-InstallOptions=
+InstallOptions=Acquire or Manage a License Key:0
 
 ## Shortcuts and File associations ##
 # Choose whether Start menu/Application menu shortcuts will be created or not.
@@ -27,7 +27,4 @@ CreateDesktopShortcuts=1
 
 # Choose whether file associations will be created or not.
 CreateFileAssociation=1
-
-# Choose whether disk usage will be optimized (reduced) after installation
-EnableDiskUsageOptimization=1
 
