@@ -1,11 +1,13 @@
 pkgbase = nerdfetch-git
 	pkgdesc = A POSIX fetch using NerdFonts
-	pkgver = r343.ab1373a
+	pkgver = r365.1a7dd36
 	pkgrel = 1
 	url = https://github.com/ThatOneCalculator/NerdFetch
 	arch = any
 	license = MIT
 	optdepends = nerd-fonts: NerdFont to show icons in fetch
+	provides = nerdfetch
+	conflicts = nerdfetch
 	source = git+https://github.com/ThatOneCalculator/NerdFetch.git
 	md5sums = SKIP
 
