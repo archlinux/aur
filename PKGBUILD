@@ -19,7 +19,7 @@ source_x86_64=("https://github.com/apple/foundationdb/releases/download/${pkgver
 sha256sums_x86_64=('e3b425d544f3133900928bdb94f33521faa3cc205e09287e26068aef2ecde408')
 
 package() {
-    install -dm644 "${pkgdir}/usr/bin"
+    install -dm755 "${pkgdir}/usr/bin"
     install -Dm755 "${srcdir}/fdbbackup.x86_64" "${pkgdir}/usr/lib/foundationdb/backup_agent/backup_agent"
 
     ln -s /usr/lib/foundationdb/backup_agent/backup_agent "${pkgdir}/usr/bin/fdbbackup"
