@@ -1,6 +1,6 @@
 # Maintainer: Atrexian <ondra.smehlik@gmail.com>
 pkgname=newfetch
-pkgver=1.0.0.r6b6f240
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A fast and clear system information tool written in C."
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=(!debug)  # Přidej tento řádek
 
 pkgver() {
   cd "$srcdir/Newfetch"
-  echo "1.0.0.r$(git rev-parse --short HEAD)"
+  echo "1.0.1.r$(git rev-parse --short HEAD)"
 }
 
 build() {

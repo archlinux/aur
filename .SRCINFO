@@ -1,6 +1,6 @@
 pkgbase = newfetch
 	pkgdesc = A fast and clear system information tool written in C.
-	pkgver = 1.0.0.r6b6f240
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/atrexian/Newfetch
 	arch = x86_64
