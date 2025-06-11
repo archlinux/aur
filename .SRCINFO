@@ -1,8 +1,9 @@
 pkgbase = yalmip-git
 	pkgdesc = MATLAB toolbox for optimization modeling
 	pkgver = R20230622
-	pkgrel = 1
+	pkgrel = 2
 	url = https://yalmip.github.io/
+	install = .install
 	arch = x86_64
 	license = custom
 	optdepends = matlab: MATLAB programming interface support, versions 2008b onwards

@@ -2,7 +2,7 @@
 
 pkgname=yalmip-git
 pkgver=R20230622
-pkgrel=1
+pkgrel=2
 pkgdesc="MATLAB toolbox for optimization modeling"
 arch=('x86_64')
 url="https://yalmip.github.io/"
@@ -37,3 +37,4 @@ package() {
   cp -a * "${pkgdir}/usr/lib/YALMIP"
 }
 
+install=.install
