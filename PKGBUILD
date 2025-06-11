@@ -1,7 +1,7 @@
 # Maintainer: Juliette Cordor
 pkgname=arctis-bat-git
 pkgrel=1
-pkgver=.r0.9c5b6f0
+pkgver=.r0.35f7fcc
 pkgdesc="CLI tool for checking SteelSeries Arctis headsets battery on linux"
 license=(Apache-2.0)
 arch=(x86_64)
@@ -15,7 +15,7 @@ conflicts=(arctis-bat)
 
 pkgver() {
     cd "$pkgname"
-    local tag=$(git tag --sort=-v:refname | grep '^[0-9]' | head -1)
+    local tag=$(git tag --sort=-v:refname | grep '^v[0-9]' | head -1)
     local commits_since=$(git rev-list $tag..HEAD --count)
     echo "$tag.r$commits_since.$(git log --pretty=format:'%h' -n 1)"
 }
