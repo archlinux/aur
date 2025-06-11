@@ -5,8 +5,10 @@ Documentation=https://docs.shokoanime.com/
 After=network.target
 
 [Service]
+Type=simple
 User=shoko
-WorkingDirectory=/var/lib/shoko-server
+Group=shoko
+WorkingDirectory=/var/lib/shoko
 ExecStart=/usr/bin/shoko-server
 Restart=on-failure
 

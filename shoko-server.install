@@ -1,21 +1,29 @@
-PKGNAME=ani-rss
-USER=$PKGNAME
+PKGNAME=shoko-server
+PATHNAME=shoko
+USER=shoko
+WORKING_DIR="/var/lib/${PATHNAME}/.shoko/Shoko.CLI"
 
 link_config() {
-  ln -f "/var/lib/${PKGNAME}/config/config.json" "/etc/${PKGNAME}/config.json"
+  ln -f "${WORKING_DIR}/settings-server.json" "/etc/${PATHNAME}/settings-server.json"
 }
 link_log() {
-  ln -sf "/var/log/${PKGNAME}" "/var/lib/${PKGNAME}/config/logs"
-  chown $USER: "/var/lib/${PKGNAME}/config/logs" "/var/log/${PKGNAME}"
+  ln -sf "/var/log/${PATHNAME}" "${WORKING_DIR}/logs"
+  chown $USER: "/var/log/${PATHNAME}" "${WORKING_DIR}/logs"
+}
+
+link_webui() {
+  webui_index='/usr/lib/shoko/webui/index.html.fulfil'
+  if [ -f "${webui_index}" ]; then
+    ln -sf "${webui_index}" '/usr/lib/shoko/webui/index.html'
+  fi
 }
 
 ## arg 1:  the new package version
 post_install() {
-  if ! id -u ${PKGNAME} > /dev/null 2>&1; then
-    useradd --system --shell '/usr/bin/nologin' --create-home --home-dir "/var/lib/${PKGNAME}" $USER
+  if ! id -u ${USER} > /dev/null 2>&1; then
+    useradd --system --shell '/usr/bin/nologin' --create-home --home-dir "/var/lib/${PATHNAME}" ${USER}
   fi
-  mkdir "/var/lib/${PKGNAME}/config"
-  chown --recursive $USER: "/var/lib/${PKGNAME}" "/etc/${PKGNAME}"
+  chown --recursive $USER: "/var/lib/${PATHNAME}" "/etc/${PATHNAME}"
   link_config
   link_log
 }
@@ -25,6 +33,7 @@ post_install() {
 post_upgrade() {
   link_config
   link_log
+  link_webui
 }
 
 
