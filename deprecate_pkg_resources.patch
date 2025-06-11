@@ -1,0 +1,84 @@
+diff --git a/PyGitUp/gitup.py b/PyGitUp/gitup.py
+index c1c3e1f..0b3c2d5 100644
+--- a/PyGitUp/gitup.py
++++ b/PyGitUp/gitup.py
+@@ -22,13 +22,8 @@ from urllib.error import HTTPError, URLError
+ from urllib.request import urlopen
+ 
+ # 3rd party libs
+-try:
+-    # noinspection PyUnresolvedReferences
+-    import pkg_resources as pkg
+-except ImportError:  # pragma: no cover
+-    NO_DISTRIBUTE = True
+-else:  # pragma: no cover
+-    NO_DISTRIBUTE = False
++import importlib.metadata
++import importlib.resources
+ 
+ import colorama
+ from git import Repo, GitCmdObjectDB
+@@ -88,7 +83,6 @@ class GitUp:
+         'rebase.arguments': None,
+         'rebase.auto': True,
+         'rebase.log-hook': None,
+-        'updates.check': True,
+         'push.auto': False,
+         'push.tags': False,
+         'push.all': False,
+@@ -414,40 +408,11 @@ class GitUp:
+     def version_info(self):
+         """ Tell, what version we're running at and if it's up to date. """
+ 
+-        # Retrive and show local version info
+-        package = pkg.get_distribution('git-up')
+-        local_version_str = package.version
+-        local_version = package.parsed_version
++        # Retrieve and show local version info
++        local_version_str = importlib.metadata.version('git-up')
+ 
+         print('GitUp version is: ' + colored('v' + local_version_str, 'green'))
+ 
+-        if not self.settings['updates.check']:
+-            return
+-
+-        # Check for updates
+-        print('Checking for updates...', end='')
+-
+-        try:
+-            # Get version information from the PyPI JSON API
+-            reader = codecs.getreader('utf-8')
+-            details = json.load(reader(urlopen(PYPI_URL)))
+-            online_version = details['info']['version']
+-        except (HTTPError, URLError, ValueError):
+-            recent = True  # To not disturb the user with HTTP/parsing errors
+-        else:
+-            recent = local_version >= pkg.parse_version(online_version)
+-
+-        if not recent:
+-            # noinspection PyUnboundLocalVariable
+-            print(
+-                '\rRecent version is: '
+-                + colored('v' + online_version, color='yellow', attrs=['bold'])
+-            )
+-            print('Run \'pip install -U git-up\' to get the update.')
+-        else:
+-            # Clear the update line
+-            sys.stdout.write('\r' + ' ' * 80 + '\n')
+-
+     ###########################################################################
+     # Helpers
+     ###########################################################################
+@@ -554,11 +519,7 @@ def run():  # pragma: no cover
+     args = parser.parse_args()
+ 
+     if args.version:
+-        if NO_DISTRIBUTE:
+-            print(colored('Please install \'git-up\' via pip in order to '
+-                          'get version information.', 'yellow'))
+-        else:
+-            GitUp(sparse=True).version_info()
++        GitUp(sparse=True).version_info()
+         return
+ 
+     if args.quiet:
