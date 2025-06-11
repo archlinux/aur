@@ -1,11 +1,12 @@
 pkgbase = thinkfan-cli
 	pkgdesc = A lightweight tool for controlling ThinkPad Laptop's Fan
-	pkgver = 0.1.0
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/rahmedi/thinkfan-cli
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
+	makedepends = git
 	source = git+https://github.com/rahmedi/thinkfan-cli
 	sha256sums = SKIP
 
