@@ -1,12 +1,12 @@
 pkgbase = futubull-appimage
 	pkgdesc = Futubull (富途牛牛) for Linux (AppImage) - Trade HK, US, CN (A-shares), options, ETFs across global markets platform
-	pkgver = 15.13.11208
+	pkgver = 15.18.11708
 	pkgrel = 1
 	url = https://github.com/skychan/futubull-appimage.git
 	arch = x86_64
 	license = MIT
 	options = !strip
-	source = https://softwaredownload.futunn.com/FTNN_desktop_15.13.11208_amd64.AppImage
+	source = https://softwaredownload.futunn.com/FTNN_desktop_15.18.11708_amd64.AppImage
 	sha512sums = SKIP
 
 pkgname = futubull-appimage
