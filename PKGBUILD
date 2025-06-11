@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp
-pkgver=5.86.3
+pkgver=5.86.4
 pkgrel=1
 pkgdesc="qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems."
 arch=("any")
@@ -11,7 +11,7 @@ conflicts=("qp-bin" "qp-git")
 replaces=("yaylog" "yaylog-bin" "yaylog-git")
 optdepends=('sqlite: RPM support')
 source=("${url}/releases/download/v${pkgver}/qp-v${pkgver}.tar.gz")
-sha256sums=("e503ed468c1f751f0b9474e7d23d4e2e05a3feb31d6a1f839a3f164629cd3483")
+sha256sums=("310508b6a708de463b3e665be0af0b1e2394c0246dbeccadf49699472b629fb1")
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
