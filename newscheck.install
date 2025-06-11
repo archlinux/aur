@@ -1,0 +1,13 @@
+CLEAR="$(tput sgr0)"
+YELLOW="$(tput bold)$(tput setaf 3)"
+
+post_install() {
+    groupadd newscheck 2>/dev/null
+
+    mkdir -p /var/lib/newscheck
+    touch /var/lib/newscheck/data
+    chgrp newscheck /var/lib/newscheck/data
+    chmod 664 /var/lib/newscheck/data
+
+    printf "%sNOTE%s: Add yourself to group \"newscheck\" to avoid the need for \`sudo\`\n" "$YELLOW" "$CLEAR"
+}
