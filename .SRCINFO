@@ -1,0 +1,13 @@
+pkgbase = gitfetch-bin
+	pkgdesc = A simple command-line tool to fetch and display your GitHub statistics (C# port)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/BeanDx/GitFetchCSharp
+	arch = x86_64
+	license = MIT
+	provides = gitfetch
+	conflicts = gitfetch
+	source_x86_64 = gitfetch-bin-1.0.0-linux-x64::https://github.com/BeanDx/GitFetchCSharp/releases/download/v1.0.0/gitfetch-linux-x64
+	sha256sums_x86_64 = ee384b713548755f59f548f0d87ff9a39cc45af5089903464bd8028385db2be2
+
+pkgname = gitfetch-bin
