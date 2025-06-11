@@ -46,4 +46,4 @@ package() {
     chmod a+rw "$pkgdir"/usr/share/lightworks/Preferences
     chmod a+rw "$pkgdir"/usr/share/lightworks/"Audio Mixes"
 }
-sha256sums=('8aec12ddc4af85640c83c0e6c38ab2acfe2696e71759b8ece117a861bdf73854')
+sha256sums=('07ad40364115edbc64565d805d82c92e152bad2767a9943e095cbb27db92ad35')
