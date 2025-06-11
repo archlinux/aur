@@ -1,0 +1,15 @@
+pkgbase = fdbbackup-bin
+	pkgdesc = FoundationDB is a scalable, fault-tolerant, ordered key-value store with full ACID transactions.
+	pkgver = 7.3.63
+	pkgrel = 1
+	url = https://www.foundationdb.org/
+	arch = x86_64
+	groups = foundationdb
+	license = Apache-2.0
+	provides = fdbbackup=7.3.63
+	conflicts = foundationdb-clients-bin
+	options = !debug
+	source_x86_64 = https://github.com/apple/foundationdb/releases/download/7.3.63/fdbbackup.x86_64
+	sha256sums_x86_64 = e3b425d544f3133900928bdb94f33521faa3cc205e09287e26068aef2ecde408
+
+pkgname = fdbbackup-bin
