@@ -1,7 +1,7 @@
 pkgbase = vtex2
 	pkgdesc = A VTF converter and editor
 	pkgver = 0.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/StrataSource/vtex2
 	arch = x86_64
 	license = MIT
@@ -9,15 +9,16 @@ pkgbase = vtex2
 	makedepends = git
 	makedepends = qt6-svg
 	makedepends = ninja
+	makedepends = vulkan-headers
 	depends = gcc-libs
 	depends = glibc
 	depends = qt6-base
 	depends = hicolor-icon-theme
 	source = git+https://github.com/StrataSource/vtex2.git#commit=d68ca2808d5bd5694b47eb9a2a3939f5d49dd58a
-	source = vtflib::git+https://github.com/StrataSource/VTFLib.git
-	source = fmtlib::git+https://github.com/fmtlib/fmt.git
+	source = vtflib::git+https://github.com/StrataSource/VTFLib.git#commit=418b1fc341f0912c86fb31867c91dbfd19beff66
+	source = fmtlib::git+https://github.com/fmtlib/fmt.git#commit=8a484ad577150766b586ce7d3bedf2b79ae02998
 	sha256sums = c5e131e3d710b7d7d1b7d28e69d88f9266f92ae182f2ef67836f3fee1e1b5dd8
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 6e478ea19936b91ae743b5b2c4a78d2291d6342b0608a812e37eb65845c72116
+	sha256sums = 61c8bf4ef8359b6c2117501aa3dfd6be41e2d5a3c371c82eb3f7ca3134934814
 
 pkgname = vtex2
