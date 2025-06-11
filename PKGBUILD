@@ -1,7 +1,7 @@
 # Maintainer: Strykar <strykar@hotmail.com>
 
 pkgname=perl-pod-usage
-pkgver=2.03
+pkgver=2.05
 pkgrel=1
 pkgdesc='Perl module for displaying usage messages for Perl scripts'
 url="https://metacpan.org/pod/Pod::Usage"
@@ -10,7 +10,7 @@ depends=('perl')
 makedepends=('perl-module-build')
 arch=('any')
 source=("https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Usage-${pkgver}.tar.gz")
-sha256sums=('7d8fdc7dce60087b6cf9e493b8d6ae84a5ab4c0608a806a6d395cc6557460744')
+sha256sums=('100c27908757c56ebfeca8b7bf15a9867e449df663ff013de3855d183dfbea30')
 options=('!emptydirs' 'purge')
 
 build() {
