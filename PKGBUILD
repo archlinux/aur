@@ -11,7 +11,7 @@ pkgver=12.20250206
 _pkgver="${pkgver%.*}"
 _subver="${pkgver#*.}"
 [[ "$pkgver" = "$_subver" ]] && _subver="version-$pkgver"
-pkgrel=7
+pkgrel=8
 pkgdesc="The open source CFD toolbox (www.openfoam.org)"
 _distpkgbase=OpenFOAM
 _gitname=$_distpkgbase-$_pkgver
@@ -39,7 +39,7 @@ depends=(
   hdf5
   zlib
 )
-makedepends=(fast_float qt5-svg qt5-x11extras qt5-tools qt5-xmlpatterns flex)
+makedepends=(cli11 nlohmann-json fast_float qt5-svg qt5-x11extras qt5-tools qt5-xmlpatterns flex)
 provides=(openfoam)
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/OpenFOAM/$_gitname/archive/refs/tags/$_subver.tar.gz"

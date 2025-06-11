@@ -1,11 +1,13 @@
 pkgbase = openfoam
 	pkgdesc = The open source CFD toolbox (www.openfoam.org)
 	pkgver = 12.20250206
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.openfoam.org
 	install = openfoam.install
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = cli11
+	makedepends = nlohmann-json
 	makedepends = fast_float
 	makedepends = qt5-svg
 	makedepends = qt5-x11extras
