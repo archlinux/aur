@@ -1,7 +1,7 @@
 # Maintainer: Juliette Cordor
 pkgname=arctis-bat
 pkgrel=1
-pkgver=0.1.1
+pkgver=0.1.2
 pkgdesc="CLI tool for checking SteelSeries Arctis headsets battery on linux"
 license=(Apache-2.0)
 arch=(x86_64)
@@ -9,7 +9,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/jewlexx/arctis-bat/archive/
 url="https://github.com/jewlexx/arctis-bat"
 depends=(hidapi glibc)
 makedepends=(meson ninja git)
-sha256sums=('8d09f474be3964e4f105aa2a7dad8f5bfe9a8d5f625a1cb527db6a7f1f7f1eff')
+sha256sums=(4392c5aefe1149ecd51048a83aa0a71e553e2c4ef0df9ea2862f7a07affae352)
 provides=(arctis-bat)
 conflicts=(arctis-bat)
 
