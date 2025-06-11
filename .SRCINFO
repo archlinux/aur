@@ -5,7 +5,10 @@ pkgbase = roc-nightly-bin-alpha3
 	url = https://www.roc-lang.org
 	arch = x86_64
 	license = ULP
+	depends = glibc>=2.38
+	depends = binutils>=2.41
 	replaces = roc-nightly-bin
+	options = !debug
 	source = https://github.com/roc-lang/roc/releases/download/alpha3-rolling/roc-linux_x86_64-alpha3-rolling.tar.gz
 	sha256sums = c96045f1f54dc3d9e20c33ede8698d79b01e43f09652795beb4f0bc7fb38cba8
 

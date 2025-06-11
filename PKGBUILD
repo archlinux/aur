@@ -6,7 +6,8 @@ pkgdesc="A fast, friendly, functional language."
 arch=('x86_64')
 url="https://www.roc-lang.org"
 license=('ULP')
-depends=()
+options=('!debug')
+depends=('glibc>=2.38' 'binutils>=2.41')
 source=("https://github.com/roc-lang/roc/releases/download/alpha3-rolling/roc-linux_x86_64-alpha3-rolling.tar.gz")
 sha256sums=('c96045f1f54dc3d9e20c33ede8698d79b01e43f09652795beb4f0bc7fb38cba8')
 replaces=('roc-nightly-bin')
