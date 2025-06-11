@@ -5,12 +5,12 @@ pkgbase = dawnpro-gui
 	url = https://github.com/shaypower/DawnPro-GUI
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = python
 	depends = python-pyusb
 	depends = python-gobject
 	depends = gtk3
-	makedepends = git
 	source = dawnpro-gui-1.0.0.tar.gz::https://github.com/shaypower/DawnPro-GUI/archive/v1.0.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 15d72666466d370a162882dea7635659449473199d976ba8f27d18a76877c279
 
-pkgname = dawnpro-gui 
+pkgname = dawnpro-gui
