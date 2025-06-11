@@ -1,6 +1,9 @@
 _plug=rife-ncnn-vulkan
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=9_mod_v32
+
+_fragment=tag=r9_mod_v33
+
+pkgver=9_mod_v33
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: Real-Time Intermediate Flow Estimation for Video Frame Interpolation"
 arch=('x86_64')
@@ -21,7 +24,7 @@ makedepends=(
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+${url}.git")
+source=("${_plug}::git+${url}.git#${_fragment}")
 sha256sums=('SKIP')
 
 prepare() {
@@ -38,9 +41,9 @@ build() {
 	ninja
 }
 
-package(){
+package() {
 	DESTDIR="${pkgdir}" ninja -C build install
 
 	install -Dm644 -t "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}" "${_plug}/README.md"
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"              "${_plug}/LICENSE"
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_plug}/LICENSE"
 }
