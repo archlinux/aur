@@ -1,6 +1,6 @@
 pkgbase = opera-ffmpeg-vivaldi-symlink
-	pkgdesc = Stupid symlinks for proprietary codecs for Opera
-	pkgver = 134.0.6998.178
+	pkgdesc = Proprietary codecs for Opera
+	pkgver = 136.0.7103.113
 	pkgrel = 1
 	url = https://ffmpeg.org/
 	arch = x86_64
