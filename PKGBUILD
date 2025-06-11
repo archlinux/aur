@@ -2,6 +2,7 @@
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: ZaZam <zazaamm ät gmail döt com>
 # Contributor: Yegorius <yegorius@domic.us>
+# ci|forcedep=python-libpulse-git|
 
 pkgname=pulseaudio-dlna
 pkgver=1
