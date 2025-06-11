@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=137.0.7151.68
+pkgver=137.0.7151.103
 pkgrel=1
 _manual_clone=0
 # The following error occures on Abseil 20250512.0:
@@ -23,7 +23,6 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         disable-clang-fextend-variable-liveness.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
-        disable-clang-warning-suppression-flag.patch
         abseil-fix-missing-algorithm.patch
         abseil-remove-unused-targets.patch
         disable-logging.patch
@@ -31,11 +30,10 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-numeric_limits.patch
         fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch)
-sha256sums=('63dfb8509737466ac4de636ddf3d8110f1434e0c4999ba5e6f34891439dbfe20'
+sha256sums=('f5f051a30c732b21ce9957cdd7fe0a083623e19078a15ee20d49b27a5cb857e6'
             '2d98a7a6a553fb5c17c4bfe36f011410f377afa12a6a818ba36543dc9a258f4a'
             'cc8a71a312e9314743c289b7b8fddcc80350a31445d335f726bb2e68edf916d1'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
-            'd6f3914c6adadaf061e7e2b1430c96d32b0cad05244b5cfaf58cf5344006a169'
             SKIP
             SKIP
             SKIP
@@ -196,8 +194,7 @@ prepare() {
   # Increase _FORTIFY_SOURCE level to match Arch's default flags
   patch -Np1 -i ../increase-fortify-level.patch
 
-  # Disable usage of --warning-suppression-mappings flag which needs clang 20
-  patch -Np1 -i ../disable-clang-warning-suppression-flag.patch
+  # Fixes for building with libstdc++ instead of libc++
 
   # Fixes the build crashing with the following error:
   # ../../components/cronet/native/engine.cc:155:8: error: use of undeclared identifier 'isnan'
