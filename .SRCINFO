@@ -1,6 +1,6 @@
 pkgbase = scalar-desktop-bin
 	pkgdesc = Scalar on Desktop
-	pkgver = 0.1.191
+	pkgver = 0.1.203
 	pkgrel = 1
 	url = https://scalar.com/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = scalar-desktop-bin
 	depends = glib2
 	depends = hicolor-icon-theme
 	provides = scalar-desktop
-	source = scalar_v0.1.191.deb::http://download.scalar.com/versions/0.1.191/linux/deb
-	sha256sums = f0ebd42d2eeaa35acbc841d79da72c8d0ce44bf2773845f086f2037e83fb1e1f
+	source = scalar_v0.1.203.deb::http://download.scalar.com/versions/0.1.203/linux/deb
+	sha256sums = 1671382abcb55cdafb01c386620d76b68e5feb70fb319f0703d9c1032d465ee2
 
 pkgname = scalar-desktop-bin
