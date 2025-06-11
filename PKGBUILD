@@ -2,7 +2,7 @@
 pkgbase=uutils-coreutils-selinux
 pkgname=(${pkgbase} coreutils-uutils-selinux)
 pkgver=0.1.0
-pkgrel=36
+pkgrel=37
 arch=('x86_64')
 license=('MIT')
 url='https://uutils.github.io/'
@@ -25,7 +25,7 @@ export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) -C panic=abort $RUSTF
 
 # include every command
 package_uutils-coreutils-selinux() {
-  pkgdesc='Rust rewrite of GNU coreutils (SELinux)'
+  pkgdesc='Rust rewrite of coreutils (SELinux)'
   conflicts=(uutils-coreutils)
   cd coreutils-$pkgver
   make install USE=selinux PROFILE=release MULTICALL=y \
@@ -40,24 +40,21 @@ package_uutils-coreutils-selinux() {
 
 # Don't build twice
 package_coreutils-uutils-selinux(){
-  pkgdesc='(Really dangerous) Swap coreutils with uutils (SELinux)'
+  pkgdesc='(Dangerous) Swap system coreutils with uutils (SELinux)'
   conflicts=(coreutils b3sum sha3sum)
   provides=(coreutils{,-selinux} sha3sum)
   depends=(uutils-coreutils-selinux)
 
-  cd coreutils-$pkgver
-  _uu=./target/release/coreutils
   install -d "$pkgdir"/usr/{bin,share/{man/man1,zsh/site-functions,fish/vendor_completions.d}}
-  for f in $("$_uu" --list); do
-    ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/bin/"$f"
-    ln -s /usr/share/man/man1/uu-"$f".1.gz "$pkgdir"/usr/share/man/man1/"$f".1.gz
+  cd "$pkgdir"/usr
+  for f in $("$srcdir"/coreutils-$pkgver/target/release/coreutils --list); do
+    ln -sf /usr/bin/uu-coreutils bin/"$f"
+    ln -s /usr/share/man/man1/uu-"$f".1.gz share/man/man1/"$f".1.gz
     # Conflicting with Extra/bash-completion: https://github.com/scop/bash-completion/discussions/1386
-    echo -e "#compdef ${f}=uu-${f}\n_${f}" > "$pkgdir"/usr/share/zsh/site-functions/_$f
-    echo "complete -c ${f} -w uu-${f}" > "$pkgdir"/usr/share/fish/vendor_completions.d/${f}.fish
-    # Is aliasing *.fish possible? https://github.com/uutils/coreutils/issues/4464 may removed
-    "$_uu" completion $f fish > "$pkgdir"/usr/share/fish/vendor_completions.d/${f}.fish
+    echo -e "#compdef ${f}=uu-${f}\n_${f}" > share/zsh/site-functions/_$f
+    echo "complete -c ${f} -w uu-${f}" > share/fish/vendor_completions.d/${f}.fish
   done
-  rm "$pkgdir"/usr/bin/{kill,more,uptime,hostname}
+  rm bin/{kill,more,uptime,hostname}
   # Dynamic libstdbuf may supported: https://github.com/uutils/coreutils/issues/6591
-  install -Dm644 target/release/deps/liblibstdbuf.so "$pkgdir/usr/lib/coreutils/libstdbuf.so"
+  install -Dm644 "$srcdir"/coreutils-$pkgver/target/release/deps/liblibstdbuf.so lib/coreutils/libstdbuf.so
 }
