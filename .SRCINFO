@@ -1,0 +1,13 @@
+pkgbase = acme-dns-client
+	pkgdesc = A client software for https://github.com/joohoi/acme-dns
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/acme-dns/acme-dns-client
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = acme-dns-client-0.3.tar.gz::https://github.com/acme-dns/acme-dns-client/archive/v0.3.tar.gz
+	sha256sums = 70f501e1cdfe6f8ff7c48303cb8d209c026fde8e7de048a41bca9252e40b1732
+
+pkgname = acme-dns-client
