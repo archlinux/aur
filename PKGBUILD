@@ -20,13 +20,13 @@ _mirror="https://mirrors.dotsrc.org"
 
 _pkgfile=${pkgname%-lts-bin}-$pkgver-linux-x64.tar.xz
 source=("${_mirror}/blender/release/Blender${pkgver%.*}/$_pkgfile" 'blender.sh')
-pkgrel=1
+pkgrel=2
 license=('GPL')
 arch=('x86_64')
 url='https://www.blender.org'
 
 b2sums=('b96a0990d93217ef3fabcfccdbb9a7ff1c3d2d98ec3b9089af79d9caa3dc0f548037af20a555aa1bd7445a2857fb884dba47cd9257c43e807e8e3498e81b37e7'
-'4a8c6ca5fbcb23b91fa3c3f091994336869b2c5b0e7fa443e4edaa68863c15f8544ef1117b9c65b414db8a5a76ce0cd06db26648e26cf06ee01c7a1c78114060')
+'7009d16d3afe2c59d3b906b32fdb5540ad70b221e84f308959986d58e4a5391cdcc49f78651c5039ea94f1cf305e6cf39b01c105e05fb0e76f6c3cc068e06bf4')
 
 _setvars() {
   _base_dir="$srcdir/${pkgname%-lts-bin}-$pkgver-linux-x64"
