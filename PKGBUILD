@@ -6,7 +6,7 @@
 
 pkgname=xz-static
 pkgver=5.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Statically linked library for XZ and LZMA'
 arch=('x86_64')
 url='https://tukaani.org/xz/'
@@ -14,11 +14,17 @@ license=('GPL-2.0-or-later' 'LGPL-2.1-or-later' 'LicenseRef-custom' 'LicenseRef-
 depends=('sh')
 provides=("liblzma.a=$pkgver")
 options=('staticlibs')
-source=("https://tukaani.org/xz/xz-${pkgver}.tar.gz"{,.sig})
+source=("https://tukaani.org/xz/xz-${pkgver}.tar.gz"{,.sig}
+test_bcj_size.patch)
 sha256sums=('507825b599356c10dca1cd720c9d0d0c9d5400b9de300af00e4d1ea150795543'
-            'SKIP')
+            'SKIP'
+            '118941b517fd434f2c2e12c55d30f0ab339670d9636f9f377d6d1dc1d2ddca9d')
 validpgpkeys=('3690C240CE51B4670D30AD1C38EE757D69184620') # Lasse Collin <lasse.collin@tukaani.org> https://tukaani.org/misc/lasse_collin_pubkey.txt
 
+prepare() {
+  cd xz-${pkgver}
+  patch -Np3 -i ../test_bcj_size.patch
+}
 build() {
   cd xz-${pkgver}
 

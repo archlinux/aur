@@ -1,0 +1,14 @@
+--- ./src_orig/xz-5.8.1/tests/test_bcj_exact_size.c	2025-06-10 21:33:06.310280909 -0400
++++ ./src/xz-5.8.1/tests/test_bcj_exact_size.c	2025-06-10 21:36:36.662479728 -0400
+@@ -27,7 +27,10 @@
+ 				"is disabled");
+ 
+ 	// Something to be compressed
+-	const uint8_t in[16] = "0123456789ABCDEF";
++	const uint8_t in[16] = {
++	    '0', '1', '2', '3', '4', '5', '6', '7',
++	    '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'
++	};
+ 
+ 	// in[] after compression
+ 	uint8_t compressed[1024];
