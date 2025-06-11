@@ -6,8 +6,8 @@
 
 _pkgbase=sway
 pkgname=sway-hidecursor-leftbar
-pkgver=1.10.1
-pkgrel=2
+pkgver=1.11
+pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -26,7 +26,7 @@ depends=(
   'pango'
   'pcre2'
   'ttf-font'
-  'wlroots0.18'
+  'wlroots0.19'
   'xcb-util-wm'
 )
 makedepends=(git meson ninja scdoc wayland-protocols)
@@ -37,6 +37,7 @@ backup=(
 optdepends=(
   'brightnessctl: Brightness adjustment tool used in the default configuration'
   'foot: Terminal emulator used in the default configuration'
+  'grim: Screenshot utility used in the default configuration'
   'i3status: Status line generation'
   'libpulse: Volume adjustment tool (pactl) used in the default configuration'
   'mako: Lightweight notification daemon'
@@ -58,7 +59,7 @@ source=("git+https://github.com/swaywm/sway.git#tag=$pkgver?signed"
         "hidecursor.patch"
         "leftbar.patch")
 install=sway.install
-sha512sums=('ec7752ac270dac861130255d00b135f03b1e9bc8313b2f21b1e565a7e0a10ef4fa839c6566f541e5b922715b8da836c654b29ebad0d0850699c03e0bb08a8796'
+sha512sums=('29e1eb9c4c5176c9e0ad10c27199f98b7356850090efbb85655c6f1569cce7173016b5a0482afc714e63a9da6cbf715652950b978a9e9363805e07ccb35d3f27'
             'd5f9aadbb4bbef067c31d4c8c14dad220eb6f3e559e9157e20e1e3d47faf2f77b9a15e52519c3ffc53dc8a5202cb28757b81a4b3b0cc5dd50a4ddc49e03fe06e'
             '4f9576b7218aef8152eb60e646985e96b13540b7a4fd34ba68fdc490199cf7a7b46bbee85587e41bffe81fc730222cf408d5712e6251edc85a0a0b0408c1a2df'
             'c3a450d3411b5ec6d4bcb485744213a49ee95698d3237804a7bf93258e091753de4666a2245ffe74129151749ec296be4d7741814380133b673f3fd2ec71932b'
