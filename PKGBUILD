@@ -1,7 +1,7 @@
 # Maintainer: Juliette Cordor
 pkgname=ignoreit
 pkgver=2.4.10
-pkgrel=2
+pkgrel=3
 depends=('openssl' 'gcc-libs' 'glibc')
 makedepends=('cargo')
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv7h' 'aarch64')
@@ -11,11 +11,11 @@ url="https://github.com/jewlexx/ignoreit"
 
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/jewlexx/ignoreit/archive/v$pkgver.tar.gz"
-  "LICENSE::https://github.com/jewlexx/ignoreit/blob/v$pkgver/LICENSE"
+  "LICENSE::https://github.com/jewlexx/ignoreit/raw/refs/tags/v$pkgver/LICENSE"
 )
 sha256sums=(
   'dd91a8b36bd669dd997a7aee25df02bb317b4e43ac08637383fd7ef0e7203833'
-  '37d771e17880cdea5e4c0544b70645cb35605e51553e94bebd82fb7744c4b19b'
+  '2b164c5af4c64b5578ac5048f71a87ea1b86c30fc7899d620adef4b9a5e71769'
 )
 
 prepare() {
