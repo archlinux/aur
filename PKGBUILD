@@ -49,7 +49,7 @@ package() {
 	mkdir -p ${pkgdir}/usr/share/doomtools/docs
 	cp ${srcdir}/docs/*.md ${pkgdir}/usr/share/doomtools/docs
 	cp ${srcdir}/docs/*.txt ${pkgdir}/usr/share/doomtools/docs
-	cp -r ${srcdir}/docs/licenses ${pkgdir}/usr/share/licenses/${pkgname}/
+	cp ${srcdir}/docs/licenses/* ${pkgdir}/usr/share/licenses/${pkgname}/
 	chmod -R 644 ${pkgdir}/usr/share/doomtools 
 	chmod 755 ${pkgdir}/usr/share/doomtools
 	chmod 755 ${pkgdir}/usr/share/doomtools/docs
