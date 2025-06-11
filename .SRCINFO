@@ -1,14 +1,14 @@
 pkgbase = trios-bin
 	pkgdesc = Starsector mod manager & toolkit.
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/wispborne/TriOS
 	arch = x86_64
 	license = GPL3
 	optdepends = starsector
-	source = https://github.com/wispborne/TriOS/releases/download/1.2.1/TriOS-Linux.zip
+	source = https://github.com/wispborne/TriOS/releases/download/1.2.2/TriOS-Linux.zip
 	source = trios.desktop
-	sha256sums = e418d41a9d0c4f4a35fd75e83574a4245b982865677b87aea13f037879bb91d1
+	sha256sums = 82f9fe861f9a16435bcaf0738868d539038051dbcd6e2fc3f857f35850c39a22
 	sha256sums = a34536873f548821d7d91f192029114470f066fbac5aeb5854ad36bc2ed91f24
 
 pkgname = trios-bin
