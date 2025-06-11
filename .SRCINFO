@@ -1,7 +1,7 @@
 pkgbase = roc-nightly-bin-alpha3
 	pkgdesc = A fast, friendly, functional language.
 	pkgver = 2025.03.22.c47a8e9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.roc-lang.org
 	arch = x86_64
 	license = ULP

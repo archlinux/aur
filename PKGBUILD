@@ -1,7 +1,7 @@
 # Maintainer: Ramsey Nasser <ram at nas dot sr>
 pkgname=roc-nightly-bin-alpha3
 pkgver=2025.03.22.c47a8e9
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, friendly, functional language."
 arch=('x86_64')
 url="https://www.roc-lang.org"
