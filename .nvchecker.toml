@@ -1,0 +1,4 @@
+[os-prober-btrfs]
+source="regex"
+url="http://deb.debian.org/debian/pool/main/o/os-prober/"
+regex='os-prober_([^"]*).tar.xz'
