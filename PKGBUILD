@@ -1,23 +1,27 @@
 # Maintainer: Juliette Cordor
 pkgname=ignoreit
 pkgver=2.4.10
-pkgrel=1
-makedepends=('rust' 'cargo')
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+pkgrel=2
+depends=('openssl' 'gcc-libs' 'glibc')
+makedepends=('cargo')
+arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv7h' 'aarch64')
 pkgdesc="Quickly load .gitignore templates"
 license=('MIT')
-depends=('openssl')
 url="https://github.com/jewlexx/ignoreit"
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jewlexx/ignoreit/archive/v$pkgver.tar.gz")
-sha256sums=('dd91a8b36bd669dd997a7aee25df02bb317b4e43ac08637383fd7ef0e7203833')
+source=(
+  "$pkgname-$pkgver.tar.gz::https://github.com/jewlexx/ignoreit/archive/v$pkgver.tar.gz"
+  "LICENSE::https://github.com/jewlexx/ignoreit/blob/v$pkgver/LICENSE"
+)
+sha256sums=(
+  'dd91a8b36bd669dd997a7aee25df02bb317b4e43ac08637383fd7ef0e7203833'
+  '37d771e17880cdea5e4c0544b70645cb35605e51553e94bebd82fb7744c4b19b'
+)
 
-# Generated in accordance to https://wiki.archlinux.org/title/Rust_package_guidelines.
-# Might require further modification depending on the package involved.
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -39,4 +43,5 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
