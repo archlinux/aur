@@ -6,6 +6,7 @@ pkgbase = uutils-coreutils-selinux
 	license = MIT
 	makedepends = rust
 	makedepends = clang
+	makedepends = grep
 	makedepends = make
 	makedepends = pkgconf
 	depends = gcc-libs

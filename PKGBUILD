@@ -8,7 +8,7 @@ license=('MIT')
 url='https://uutils.github.io/'
 depends=(gcc-libs glibc oniguruma libselinux)
 makedepends=( rust clang #libclang.so is only for SElinux
-  make pkgconf ) # base-devel
+  grep make pkgconf ) # base-devel
 source=($pkgname-$pkgver.tar.gz::https://github.com/uutils/coreutils/archive/$pkgver.tar.gz)
 sha256sums=('55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8')
 options=('!lto' 'zipman')
@@ -47,14 +47,13 @@ package_coreutils-uutils-selinux(){
 
   install -d "$pkgdir"/usr/{bin,share/{man/man1,zsh/site-functions,fish/vendor_completions.d}}
   cd "$pkgdir"/usr
-  for f in $("$srcdir"/coreutils-$pkgver/target/release/coreutils --list); do
+  for f in $("$srcdir"/coreutils-$pkgver/target/release/coreutils --list|grep -v -E '^(kill|more|uptime|hostname)$'); do
     ln -sf /usr/bin/uu-coreutils bin/"$f"
     ln -s /usr/share/man/man1/uu-"$f".1.gz share/man/man1/"$f".1.gz
     # Conflicting with Extra/bash-completion: https://github.com/scop/bash-completion/discussions/1386
     echo -e "#compdef ${f}=uu-${f}\n_${f}" > share/zsh/site-functions/_$f
     echo "complete -c ${f} -w uu-${f}" > share/fish/vendor_completions.d/${f}.fish
   done
-  rm bin/{kill,more,uptime,hostname}
   # Dynamic libstdbuf may supported: https://github.com/uutils/coreutils/issues/6591
   install -Dm644 "$srcdir"/coreutils-$pkgver/target/release/deps/liblibstdbuf.so lib/coreutils/libstdbuf.so
 }
