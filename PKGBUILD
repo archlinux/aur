@@ -1,7 +1,7 @@
 # Maintainer: Tim Lagnese tim@inept.tech
 
 pkgname=pulseshitter
-pkgver=2.1.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Adds audio to your Discord video stream"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=(libpulse)
 makedepends=(cargo)
 optdepends=("pulseaudio: For pulseaudio backend", "pipewire: For pipewire backend")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Enitoni/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('bf63bb61ca575d0f7e59c9ed36c8a0200a41cc7bd1c36e9d8681a683c35d0949c3e0738e5c80f6385bd98d71529a90939352d8d19276abc82052e3f888c51c7e')
+b2sums=('16f702f335e277513da2062bb3fe0a60b2cdceea1dd1aefcfd229a60fd7e55e2073127f1f512e9b8f59f661ffc17a7839faeeea74963e7caf9cae1235dafa98e')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
