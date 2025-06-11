@@ -1,0 +1,21 @@
+pkgbase = ninve
+	pkgdesc = A text user interface written in Rust to losslessly trim videos. Uses mpv to allow visual seeking.
+	pkgver = 0.1.21
+	pkgrel = 1
+	url = https://github.com/Niedzwiedzw/ninve
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	depends = ffmpeg
+	depends = mpv
+	provides = ninve
+	conflicts = ninve
+	source = ninve-0.1.21.tar.xz::https://github.com/Niedzwiedzw/ninve/archive/refs/tags/0.1.21.tar.gz
+	source = LICENSE-0.1.21::https://raw.githubusercontent.com/Niedzwiedzw/ninve/0.1.21/LICENSE
+	sha256sums = 316ed2855851e500c4fc16123b884e36d1772a76377b322587c435931a264be0
+	sha256sums = 088abcb863a847f3bdd75348534d245ead78c9947f473e6f7f8f110f3dcc6286
+
+pkgname = ninve
