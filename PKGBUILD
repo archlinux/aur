@@ -1,6 +1,6 @@
 pkgname=python-partdb-labeler
 _origpkgname=partdb-labeler
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="print PartDB labels on a Zebra label printer"
 arch=("x86_64")
@@ -15,13 +15,11 @@ depends=(
 makedepends=(
 	"python-build"
 	"python-installer"
-	"python-wheel"
 	"python-setuptools"
 )
 source=("https://gitlab.alfter.us/salfter/partdb-labeler/-/archive/v${pkgver}/partdb-labeler-v${pkgver}.tar.bz2")
-sha256sums=("1e60315c78887e68ad3536b459ead976e5b2f8be34770c66e5564c85a208153a")
+sha256sums=("f9a471e1a73c660b4f7cf1f11786d6f37057abbd6d00dad8d46fb33b1ee01368")
 package() {
 	cd "${_origpkgname}-v${pkgver}" || exit
-	python -m build --wheel --no-isolation
-	python -m installer --destdir="$pkgdir" dist/*.whl
+	python setup.py install --root="$pkgdir" --optimize=1
 }
