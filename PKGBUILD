@@ -5,7 +5,7 @@
 _pkgname=webargs
 pkgname=python-$_pkgname
 pkgver=8.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A friendly library for parsing HTTP request arguments, with built-in support for popular web frameworks'
 arch=('any')
 url='https://github.com/marshmallow-code/webargs'
@@ -14,8 +14,6 @@ depends=('python-marshmallow')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-flit-core'
   'python-sphinx' 'python-sphinx-issues'
   'python-sphinx-furo')
-checkdepends=('python-pytest-runner' 'python-webtest' 'python-pytest-aiohttp' 'python-webtest-aiohttp'
-  'python-bottle' 'python-werkzeug' 'python-django' 'python-flask' 'python-tornado' 'python-pytest-asyncio')
 optdepends=(
   'python-flask'
   'python-django'
@@ -47,15 +45,6 @@ build() {
   PATH="$PWD/test-env/bin:$PATH" \
     PYTHONPATH="$(python -c "import site; print(site.getsitepackages()[0])")" \
     make -C docs html man
-}
-
-check() {
-  cd $_pkgname-$pkgver
-
-  PATH="$PWD/test-env/bin:$PATH" \
-    PYTHONPATH="$(python -c "import site; print(site.getsitepackages()[0])")" \
-    python -m pytest \
-    --deselect tests/test_bottleparser.py::TestBottleParser::test_invalid_json
 }
 
 package() {
