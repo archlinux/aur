@@ -1,6 +1,6 @@
 pkgbase = mcuviewer
 	pkgdesc = Real-time embedded variable & trace viewer
-	pkgver = 1.1.0
+	pkgver = 1.2.1
 	pkgrel = 2
 	url = https://github.com/klonyyy/MCUViewer
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = mcuviewer
 	depends = glib2
 	provides = mcuviewer
 	conflicts = mcuviewer-git
-	source = mcuviewer.src.tgz::https://github.com/klonyyy/MCUViewer/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 6853b9c295ac428a9daff27e7905b5878315325b7391cf343277563d02b60ce1
+	source = mcuviewer.src.tgz::https://github.com/klonyyy/MCUViewer/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = d29889a31ad7dacab21c4f9219c9c68025ca18019949b49dbf37f0823c0dc03e
 
 pkgname = mcuviewer

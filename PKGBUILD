@@ -7,7 +7,7 @@
 _pkg_name="MCUViewer"
 
 pkgname="mcuviewer"
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=2
 pkgdesc="Real-time embedded variable & trace viewer "
 
@@ -23,7 +23,7 @@ optdepends=()
 source=(${pkgname}.src.tgz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
 conflicts=("mcuviewer-git")
 provides=("mcuviewer")
-sha256sums=('6853b9c295ac428a9daff27e7905b5878315325b7391cf343277563d02b60ce1')
+sha256sums=('d29889a31ad7dacab21c4f9219c9c68025ca18019949b49dbf37f0823c0dc03e')
 
 
 prepare()
