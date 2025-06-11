@@ -1,4 +1,4 @@
-pkgbase = prospect-mail-bin
+pkgbase = prospect-mail-beta-bin
 	pkgdesc = Prospect Mail is an Outlook Electron desktop application for the new design.
 	pkgver = 0.6.0.beta1
 	pkgrel = 1
@@ -8,8 +8,8 @@ pkgbase = prospect-mail-bin
 	arch = aarch64
 	arch = armv7l
 	license = MIT
-	provides = prospect-mail
-	conflicts = prospect-mail
+	provides = prospect-mail-beta-bin
+	conflicts = prospect-mail-bin
 	source_x86_64 = https://github.com/julian-alarcon/prospect-mail/releases/download/v0.6.0-beta1/prospect-mail-0.5.4.pacman
 	source_x86_64 = LICENSE
 	md5sums_x86_64 = fb75794e2ba1b8ca222d057b594e7d98
