@@ -1,0 +1,11 @@
+pkgbase = syncthing-resolve-conflicts
+	pkgdesc = A tool to handles synchronization conflicts that necessarily pop up when using Syncthing, inspired by pacdiff.
+	pkgver = 1.2.0
+	pkgrel = 0
+	arch = x86_64
+	license = GPL-3
+	depends = bash
+	source = https://github.com/dschrempf/syncthing-resolve-conflicts/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = f4e3b54297ff0a647b64d0d34618e8ac60ce1ffe412a4a3f4cb300d9dbab6598
+
+pkgname = syncthing-resolve-conflicts
