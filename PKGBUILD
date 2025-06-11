@@ -28,8 +28,11 @@ sha256sums=(
     'f18432e775e5cec76c9989471efc99ad3300819de4234ff3be36be063c00a9b2' # login-ng-${pkgver}.tar.gz
 )
 backup=(
+    etc/login_ng-session/default.service
+    etc/login_ng-session/steamdeck.service
     etc/pam.d/login_ng
     etc/pam.d/login_ng-autologin
+    etc/pam.d/login_ng-ctl
 )
 
 prepare() {
