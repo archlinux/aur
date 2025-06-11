@@ -1,0 +1,3 @@
+d /var/lib/foundationdb      755 foundationdb foundationdb
+d /var/lib/foundationdb/data 755 foundationdb foundationdb
+d /var/log/foundationdb      755 foundationdb foundationdb

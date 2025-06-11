@@ -1,0 +1,15 @@
+[Unit]
+Description=FoundationDB Key-Value Store
+After=syslog.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+PIDFile=/run/fdbmonitor.pid
+ExecStart=/usr/lib/foundationdb/fdbmonitor --conffile /etc/foundationdb/foundationdb.conf --lockfile /run/fdbmonitor.pid --daemonize
+KillMode=mixed
+Restart=on-failure
+RestartSec=60s
+
+[Install]
+WantedBy=multi-user.target

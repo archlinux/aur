@@ -1,0 +1,25 @@
+pkgbase = fdbmonitor-bin
+	pkgdesc = FoundationDB is a scalable, fault-tolerant, ordered key-value store with full ACID transactions.
+	pkgver = 7.3.63
+	pkgrel = 1
+	url = https://www.foundationdb.org/
+	install = fdbmonitor-bin.install
+	arch = x86_64
+	groups = foundationdb
+	license = Apache-2.0
+	depends = fdbbackup-bin>=7.3.63
+	depends = fdbbackup-bin<8.0.0
+	depends = fdbserver-bin>=7.3.63
+	depends = fdbserver-bin<8.0.0
+	conflicts = foundationdb-server-bin
+	options = !debug
+	source = fdbmonitor-bin.conf
+	source = fdbmonitor-bin.service
+	source = fdbmonitor-bin.tmpfiles
+	sha256sums = e0ce39ed384458fa2bf112d0803473a566a6f09937a89460e5b25627120d401e
+	sha256sums = 9d2b381404339a5e2b66f85af1017d6f4796f92d0109089bdf4c6746c55febd7
+	sha256sums = cf99d319aaed7c8e0c6e70695f0ce8656bf83b81b193fb7a44a9b801c2b72604
+	source_x86_64 = https://github.com/apple/foundationdb/releases/download/7.3.63/fdbmonitor.x86_64
+	sha256sums_x86_64 = c31f41275b4c328248aff26f4dd8380f1115c4aa1d067ed4919a56403e554125
+
+pkgname = fdbmonitor-bin
