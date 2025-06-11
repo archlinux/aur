@@ -2,7 +2,7 @@
 
 pkgname=nexusmods-app-bin
 _pkgname=nexusmods-app
-pkgver=0.11.3
+pkgver=0.12.3
 pkgrel=1
 _fullver=${pkgver}-${pkgrel}
 pkgdesc="A mod installer, creator and manager for all your popular games."
@@ -19,9 +19,9 @@ source=("https://github.com/Nexus-Mods/NexusMods.App/releases/download/v${pkgver
 	"${pkgname}-${pkgver}.desktop::https://github.com/Nexus-Mods/NexusMods.App/raw/v${pkgver}/src/NexusMods.App/com.nexusmods.app.desktop"
 	"nexusmods-app-bin.install")
 
-sha256sums=('1110f42df82f1b85c1502350daae234db2eced4b5419a0bc1c66b2311928f352'
+sha256sums=('672c18e8a2a455ac2752ce26b658da0b3f2b468cc0fa3810cf837c0284713c67'
             '5a22eccfb001eacbf2756f2e21fa371dbafd9e84b20bb6a484d781bde33089cb'
-            'acdd5d56705f9c986ab1a4cbb490b84b274750a812341d0de35439172fd2cfbf'
+            '32dbc2977aaba2d5013a2534462da9d4c2534c3d2ef4391505bcd6a287ae8925'
             '4bac4c5db66d92ebb80285ecc2c4ec5fb4d738d68ad5bde10f6058cfbf03a445')
 install="nexusmods-app-bin.install"
 optdepends=('xdg-desktop-portal-dde: Deepin'
