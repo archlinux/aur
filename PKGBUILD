@@ -39,8 +39,8 @@ prepare() {
   sed -i "s/^target=.*/target=\"${_electronver/}\"/" .npmrc # native modules
   echo Replaced version of electron with $(rg -N 'target' .npmrc)
 
-  # Drop this at next release. app.dock is only for macOS
-  #sed -i '/app\.dock\.setMenu/i\// @ts-ignore' src/vs/platform/menubar/electron-main/menubar.ts
+  # -git does not need this. app.dock is only for macOS
+  sed -i '/app\.dock\.setMenu/i\// @ts-ignore' src/vs/platform/menubar/electron-main/menubar.ts
 
   # Launcher
   _electron=electron${_electronver%%.*}
