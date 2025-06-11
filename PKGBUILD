@@ -4,7 +4,7 @@ pkgver=14.2.0
 _pkgdate=2025.06.06
 _pkgfilename="x86_64-cross-tools-loongarch64-binutils_2.44-gcc_15.1.0-glibc_2.41.tar.xz"
 _target="loongarch64-unknown-linux-gnu"
-pkgrel=1
+pkgrel=2
 pkgdesc="Build tools for Loongson (Binary)."
 arch=('x86_64')
 url="https://github.com/loongson/build-tools"
@@ -18,6 +18,7 @@ options=(!debug !strip staticlibs)
 package() {
   install -Ddm755 "$pkgdir"/usr/"$_target"
   cp -r "$srcdir"/cross-tools/* "$pkgdir"/usr
+  rm -r "$pkgdir"/usr/lib64
   rm -r "$pkgdir"/usr/include/gdb
   rm -r "$pkgdir"/usr/share/gdb
   rm -r "$pkgdir"/usr/share/info
