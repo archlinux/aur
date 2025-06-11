@@ -1,6 +1,6 @@
 # Maintainer: washedparu
 pkgname=tinyprocess-git
-pkgver=r16.5808efc
+pkgver=r12.248901e
 pkgrel=1
 pkgdesc="A minimal process manager in C for Linux (Still in early development)"
 arch=('x86_64')
@@ -28,4 +28,3 @@ package() {
   cd "$srcdir/tinyprocess"
   install -Dm755 build/tinyprocess "$pkgdir/usr/bin/tinyprocess"
 }
-
