@@ -1,0 +1,12 @@
+pkgbase = pokedex-terminal
+	pkgdesc = 1998 Pokemon in your terminal
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/secretlay3r/pokedex-terminal
+	arch = any
+	license = MIT
+	depends = python
+	source = pokedex-terminal-1.0.tar.gz
+	sha256sums = 59751249e660cd59efa607b8e45bd78c3cf49d9bfd6bff0e15154c3a5db9c177
+
+pkgname = pokedex-terminal
