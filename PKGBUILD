@@ -1,13 +1,16 @@
+# Maintainer: envolution
 # Contributor: Luís Ferreira < org dot aurorafoss at luis, backwards>
 # Contributor: Artem Vorotnikov <artem@vorotnikov.me>
 
 pkgname="ruby-cabin"
+#0.9.0 gem never made a tag release on github
+#https://github.com/jordansissel/ruby-cabin/issues/51
 pkgver=0.9.0
 pkgrel=1
 pkgdesc='Experiments in structured and contextual logging'
 arch=(any)
 url='https://github.com/jordansissel/ruby-cabin'
-license=('Apache')
+license=('Apache-2.0')
 depends=('ruby')
 makedepends=('rubygems')
 options=(!emptydirs)
