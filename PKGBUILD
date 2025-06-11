@@ -3,8 +3,8 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r2560.61c2308a
-pkgrel=2
+pkgver=r2564.8d2d42ba
+pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
 url='https://netradiant.gitlab.io/'
@@ -34,10 +34,6 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}/"
-
-    # Workaround for https://gitlab.com/xonotic/netradiant/-/issues/196
-    export CFLAGS+=" -std=gnu17"
-
     # Workaround for https://gitlab.com/xonotic/netradiant/-/issues/194
     export CFLAGS+=" -Wno-error=incompatible-pointer-types"
 
@@ -47,7 +43,6 @@ build() {
     # use -DGAMEPACKS_LICENSE_LIST=none and -DGAMEPACKS_NAME_LIST="Unvanquished Xonotic".
     # See https://gitlab.com/xonotic/netradiant/-/blob/master/README.md for further instructions.
     cmake -G "Unix Makefiles" -S. -Bbuild \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE=Release \
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DFHS_INSTALL=ON \
