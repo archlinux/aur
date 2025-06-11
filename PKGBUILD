@@ -1,7 +1,7 @@
 # Maintainer: Anton Karmanov <a.karmanov@inventati.org>
 
 pkgname='stompbox-remote-bin'
-pkgver='0.1.14'
+pkgver='0.1.15'
 pkgrel=1
 pkgdesc='Guitar amplification and effects (remote UI)'
 arch=('x86_64' 'aarch64')
@@ -14,11 +14,11 @@ conflicts=("$_comp_name")
 provides=("$_comp_name")
 options=(!strip)
 source=('StompboxRemote.desktop')
-source_x86_64=("${url}/releases/download/v${pkgver}/StompboxRemoteLinux-x64.zip")
-source_aarch64=("${url}/releases/download/v${pkgver}/StompboxRemoteLinux-Arm64.zip")
+source_x86_64=("StompboxRemoteLinux-x64-v${pkgver}.zip::${url}/releases/download/v${pkgver}/StompboxRemoteLinux-x64.zip")
+source_aarch64=("StompboxRemoteLinux-Arm64-v${pkgver}.zip::${url}/releases/download/v${pkgver}/StompboxRemoteLinux-Arm64.zip")
 sha256sums=('92df3628ce69f113421cb8e4cc9f4473da0b3de40f6841cb5937812126ebc7db')
-sha256sums_x86_64=('1ff5b18e601ebec64898b8553e128e4045986d3ba591c9cd6267ee1ebf2b71e7')
-sha256sums_aarch64=('fd4a93655e2af9593a7e956798d3e4e6189d610c4edd685f2f708dfd430494b6')
+sha256sums_x86_64=('5e31db98d40d40b2125270f132f4114b2aa50e3bdd28f87e2423abc77e368b7f')
+sha256sums_aarch64=('edbab6a1b1ad21437f9ec93fb3cd11ff6e176caa05e16efa38b849e6d2ee20ce')
 
 package() {
   cd "${srcdir}/StompboxRemote/"
