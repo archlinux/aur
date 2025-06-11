@@ -2,7 +2,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!fdbmonitor-bin.conf
-!fdbmonitor-bin.install
-!fdbmonitor-bin.service
-!fdbmonitor-bin.tmpfiles
+!fdbmonitor-bin.*
+!*.nu
