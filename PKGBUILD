@@ -5,10 +5,9 @@
 _pkgname=llama-cpp-python
 pkgname=python-llama-cpp
 pkgver=0.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for llama.cpp"
 arch=(any)
-options=(!debug)
 url=https://github.com/abetlen/llama-cpp-python
 license=(GPL-3.0-or-later)
 depends=(
@@ -39,6 +38,7 @@ checkdepends=(
   python-sse-starlette
   #python-sse-starlette-context #missing but tests don't seem to require it
   python-pydantic-settings
+  python-jinja
 )
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver.tar.gz")
 sha256sums=('a3a985f558385e2f5de5b663f4e9b0817506d6af98122450142cd98e79216370')
