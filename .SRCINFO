@@ -1,6 +1,6 @@
 pkgbase = yd-go
 	pkgdesc = Panel indicator for Yandex-disk CLI daemon (linux)
-	pkgver = f52cab1
+	pkgver = cd1b952
 	pkgrel = 1
 	url = https://github.com/slytomcat/yd-go
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = yd-go
 	conflicts = yd-go-git
 	options = !strip
 	options = !debug
-	source = https://github.com/slytomcat/yd-go/releases/download/master-f52cab1/yd-go
+	source = https://github.com/slytomcat/yd-go/releases/download/master-cd1b952/yd-go
 	source = yd-go.png
 	b2sums = 02de3216ecd1d52e340ebe4abfe838399183993419c68c19be81a39340497d7a7884059d6cfa62daa5723705d26612669371fa4836204f9afe6d4bcfc35b196a
 	b2sums = 647865327ba584fdc36ddc37e85b6457af6ca888d1b25479a7b8a94a81d0629a71c954a21c8604ef5e96c529178fcf9c4b6fd82df41a1ab6a9ab2d5c281c2c41
