@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=jilu
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Generate a change log based on the state of your Git repository"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/rustic-games/jilu"
 license=('Apache-2.0')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('61ae49fe62a215f8d592ad6bbef718882aa5d0f19317fa7d37b5ecb786c54ce4a2009a1f2ee88fa6824cae2d6d9c12a5e0720fcc7ebd205aaba800ce0f2b9513')
+sha512sums=('232361f3a4aaba1464df9094d2bddbb3278591a6edbba69bb8e4819933981326c72380f9cf6e442beabf6e821ce26e2724bd91cf2a2f3ad08caa3cbd90111a29')
 options=('!lto')
 
 prepare() {
