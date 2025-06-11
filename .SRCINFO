@@ -1,6 +1,6 @@
 pkgbase = dprint-plugin-typescript
 	pkgdesc = TypeScript and JavaScript code formatting plugin for dprint.
-	pkgver = 0.95.5
+	pkgver = 0.95.6
 	pkgrel = 1
 	url = https://github.com/dprint/dprint-plugin-typescript
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = dprint-plugin-typescript
 	makedepends = rust
 	makedepends = rust-wasm
 	depends = dprint
-	source = dprint-plugin-typescript-v0.95.5.tar.gz::https://github.com/dprint/dprint-plugin-typescript/archive/refs/tags/0.95.5.tar.gz
-	sha512sums = 9cdda0c75928dd895b334d244f0d66213725160f6e749bc7fe2819bf74ab1afce9e07889caaf3d6940255bd567dc660b83348697fed1848793d7acc9a6424a25
+	source = dprint-plugin-typescript-v0.95.6.tar.gz::https://github.com/dprint/dprint-plugin-typescript/archive/refs/tags/0.95.6.tar.gz
+	sha512sums = 83f835f8e0e049bfb0a7306f15cf630b3d41b4623bad830987dd58148a16820dfcb4a427717e039a78a4ac52bcfe2e02c1f501a69825bae825bb062c31832f0b
 
 pkgname = dprint-plugin-typescript
