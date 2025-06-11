@@ -3,13 +3,14 @@
 pkgname=python-html2image-bin
 _pkgname=html2image
 pkgver=2.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Generates images from headless browsers and html/css strings or files"
 arch=('any')
 url="https://github.com/vgalin/html2image"
 license=('MIT')
 provides=(python-html2image)
 conflicts=(python-html2image)
+makedepends=(python-installer)
 _py='py3'
 _url="https://files.pythonhosted.org/packages/${_py}/${_pkgname::1}/${_pkgname}/"
 _filename="${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
