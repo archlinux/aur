@@ -1,0 +1,27 @@
+pkgbase = daltonlens-git
+	pkgdesc = DaltonLens is a utility to help colorblind people by providing color filters and highlighting tools.
+	pkgver = 2.5.r0.gb37c33f
+	pkgrel = 1
+	url = https://github.com/DaltonLens/DaltonLens
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = cmake
+	makedepends = git
+	makedepends = git-lfs
+	makedepends = makepkg-git-lfs-proto
+	depends = glibc
+	depends = gcc-libs
+	depends = glib2
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libglvnd
+	depends = libx11
+	depends = libxcb
+	provides = daltonlens=2.5.r0.gb37c33f
+	conflicts = daltonlens
+	source = daltonlens::git-lfs+https://github.com/DaltonLens/DaltonLens.git
+	source = fix-cmake-version.patch
+	sha256sums = SKIP
+	sha256sums = bcc96dd8e792b787f481f406d91f2b96a5bc8b36c9caa1c16880ecc385de7e1d
+
+pkgname = daltonlens-git
