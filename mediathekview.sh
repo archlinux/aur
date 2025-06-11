@@ -16,6 +16,9 @@ java_options=(
   -XX:+UseStringDeduplication
   -XX:MaxRAMPercentage=25  # use the default 25%
   --add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED
+  --add-exports=java.desktop/sun.swing=ALL-UNNAMED
+  --enable-native-access=ALL-UNNAMED
+  --add-modules jdk.incubator.vector
   -DexternalUpdateCheck  # disable automatic update check
   -jar /usr/share/java/mediathekview/MediathekView.jar
 )
