@@ -1,6 +1,7 @@
 # Maintainer: envolution
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # shellcheck shell=bash disable=SC2034,SC2154
+# ci|forcedep=flutter-target-linux flutter-target-android flutter-target-web|
 
 pkgname=yubioath-desktop
 _pkgname=yubioath-flutter
