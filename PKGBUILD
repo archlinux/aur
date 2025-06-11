@@ -12,9 +12,8 @@ arch=('x86_64')
 url="https://wildstar84.wordpress.com/fauxdacious/"
 license=('BSD')
 depends=('glib2')
-#depends=('glib2' 'fauxdacious-plugins')	#dev
 makedepends=('make' 'git' 'glib2-devel')
-#optdepends=('')	#dev unzip?
+optdepends+=('fauxdacious-plugins-git: needed for it to run, but needs to be installed afterwards')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("${pkgname}::git+https://github.com/wildstar84/fauxdacious.git")
@@ -56,7 +55,7 @@ build() {
 }
 
 package() {
-	depends+=('fauxdacious-plugins-git')
+	#depends+=('fauxdacious-plugins-git')
 	
 	cd "${pkgname}"
 	make DESTDIR=${pkgdir} install

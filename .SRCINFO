@@ -13,15 +13,10 @@ pkgbase = fauxdacious-git
 	depends = qt6-base
 	depends = qt6-imageformats
 	depends = qt6-svg
+	optdepends = fauxdacious-plugins-git: needed for it to run, but needs to be installed afterwards
 	provides = fauxdacious
 	conflicts = fauxdacious
 	source = fauxdacious-git::git+https://github.com/wildstar84/fauxdacious.git
 	sha256sums = SKIP
 
 pkgname = fauxdacious-git
-	depends = glib2
-	depends = gtk3
-	depends = qt6-base
-	depends = qt6-imageformats
-	depends = qt6-svg
-	depends = fauxdacious-plugins-git
