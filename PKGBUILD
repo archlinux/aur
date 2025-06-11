@@ -1,7 +1,7 @@
 # Maintainer: Juliette Cordor
 pkgname=arctis-bat-git
 pkgrel=1
-pkgver=.r0.35f7fcc
+pkgver=v0.1.0.r1.35f7fcc
 pkgdesc="CLI tool for checking SteelSeries Arctis headsets battery on linux"
 license=(Apache-2.0)
 arch=(x86_64)
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
     local BUILD_DIR=builddir
-    arch-meson "$pkgname" "$BUILD_DIR"
+    arch-meson "$pkgname" "$BUILD_DIR" -Dcpu_native=true
     meson compile -C $BUILD_DIR
 }
 
