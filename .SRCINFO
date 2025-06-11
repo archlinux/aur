@@ -1,13 +1,13 @@
 pkgbase = pmdk
 	pkgdesc = Persistent Memory Development Kit
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pmem.io/
 	arch = x86_64
 	license = BSD-3-Clause OSL-1.0
+	makedepends = pandoc-cli
 	depends = ndctl>=63
 	optdepends = libfabric>=1.4.2: required by librpmem
-	optdepends = pandoc
 	provides = libpmem
 	provides = libpmem2
 	provides = libpmemobj

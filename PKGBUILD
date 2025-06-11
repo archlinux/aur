@@ -4,17 +4,17 @@
 # Co-Maintainer: Simon Krogmann <$(base64 --decode <<<'cy5rcm9nbWFubkB5YWhvby5jb20K')>
 pkgname=pmdk
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Persistent Memory Development Kit"
 arch=('x86_64')
 url="https://pmem.io/"
 license=('BSD-3-Clause OSL-1.0')
+makedepends=(pandoc-cli)
 depends=(
   'ndctl>=63'
 )
 optdepends=(
   'libfabric>=1.4.2: required by librpmem'
-  'pandoc'
 )
 provides=(
   'libpmem'
@@ -25,6 +25,7 @@ provides=(
   'libpmempool'
   'librpmem'
 )
+makedepends=(pandoc-cli)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pmem/pmdk/archive/$pkgver.tar.gz")
 sha1sums=('60ca219fff75741bcc66d355c0764ca8692e07d5')
 
