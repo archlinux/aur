@@ -1,0 +1,13 @@
+pkgbase = compiler-screensaver-git
+	pkgdesc = A screensaver, that simulates a compilation process.
+	pkgver = r3.19ebf3a
+	pkgrel = 1
+	url = https://github.com/workonfire/CompilerScreensaver
+	arch = any
+	depends = python-colorama
+	provides = compiler-screensaver
+	conflicts = compiler-screensaver
+	source = compiler-screensaver-git::git+https://github.com/workonfire/CompilerScreensaver.git
+	sha256sums = SKIP
+
+pkgname = compiler-screensaver-git
