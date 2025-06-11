@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname='perl-apache-session-browseable'
-pkgver='1.3.14'
+pkgver='1.3.16'
 pkgrel='1'
 pkgdesc="Add index and search methods to Apache::Session"
 arch=('any')
@@ -12,8 +12,8 @@ makedepends=('perl-module-build')
 #checkdepends=('perl-test-time')
 url='https://metacpan.org/dist/Apache-Session-Browseable'
 _distdir="Apache-Session-Browseable-${pkgver}"
-source=("https://cpan.metacpan.org/authors/id/C/CO/COUDOT/${_distdir}.tar.gz")
-md5sums=('3d5cc01ac9f235d2aff509412c32b1f9')
+source=("https://cpan.metacpan.org/authors/id/G/GU/GUIMARD/${_distdir}.tar.gz")
+md5sums=('b87897f581d8df73994090896636c134')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
