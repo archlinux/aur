@@ -1,4 +1,4 @@
-# Maintainer: washedparu <your-email@example.com>
+# Maintainer: washedparu
 pkgname=tinyprocess-git
 pkgver=r12.248901e
 pkgrel=1
@@ -23,7 +23,6 @@ build() {
   cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
   ninja -C build
 }
-
 
 package() {
   cd "$srcdir/tinyprocess"
