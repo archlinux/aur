@@ -1,12 +1,13 @@
 pkgname=python-r3pcomms-git
-pkgver=1.0.1.dev2+g4182f9b
+pkgver=2.0.1
 pkgrel=1
-pkgdesc="River 3 Plus comms from scratch via USB CDC (ACM)"
+pkgdesc="Local communication with a River 3 Plus over USB HID and/or CDC(ACM)"
 arch=('any')
 url='https://github.com/greyltc/r3pcomms'
 license=('MIT')
 depends=(
 	python-pyserial
+	python-pyusb
 )
 makedepends=(
 	python-build
