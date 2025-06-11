@@ -1,8 +1,8 @@
 # Maintainer: lilikoi <jamilbio20@gmail.com>
 pkgname='chatgpt.sh'
-pkgver=0.99.6
-pkgrel=2
-_commit=930422381210d596d4302934dfb5c8e5e4a7fbc6
+pkgver=0.99.7
+pkgrel=1
+_commit=1662726dbe6c831c8cd4f0453d85440f388269f5
 pkgdesc="Wrapper for ChatGPT, STT, and TTS. Features Ollama, Gemini, Anthropic, and more"
 url='https://gitlab.com/fenixdragao/shellchatgpt'
 arch=('any')
@@ -21,6 +21,7 @@ optdepends=(
 	'poppler: dump PDF as text (gs, abiword, ebook-convert)'
 	'libreoffice: dump doc files as text'
 	'dialog: file picker (kdialog, zenity, vifm, ranger, nnn)'
+	'yt-dlp: dump YouTube captions'
 )
 source=("${pkgname}-${pkgver}::git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
