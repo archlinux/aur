@@ -7,8 +7,8 @@ url="https://github.com/ayaan511/AyaanScriptPlus"  # Optional website or GitHub
 license=('custom')
 depends=('wine')
 source=(
-  "https://github.com/ayaan511/AyaanScriptPlus/releases/download/v1.0.0/ayaan.exe"
-  "https://github.com/ayaan511/AyaanScriptPlus/releases/download/v1.0.0/aspkg.exe"
+  "https://github.com/ayaan511/AyaanScriptPlus/releases/download/v1.0.2.1/ayaan.exe"
+  "https://github.com/ayaan511/AyaanScriptPlus/releases/download/v1.0.2.1/aspkg.exe"
   "ayaan-launcher.sh"
   "aspkg-launcher.sh"
   "PKGBUILD"
