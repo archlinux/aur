@@ -1,5 +1,5 @@
 pkgbase = quickshell
-	pkgdesc = Simple and flexbile QtQuick based desktop shell toolkit.
+	pkgdesc = Flexible toolkit for making desktop shells with QtQuick
 	pkgver = v0.1.0
 	pkgrel = 1
 	url = https://git.outfoxxed.me/quickshell/quickshell

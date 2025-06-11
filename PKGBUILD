@@ -3,7 +3,7 @@
 pkgname=quickshell
 pkgver=v0.1.0
 pkgrel=1
-pkgdesc='Simple and flexbile QtQuick based desktop shell toolkit.'
+pkgdesc='Flexible toolkit for making desktop shells with QtQuick'
 arch=(x86_64 aarch64)
 url='https://git.outfoxxed.me/quickshell/quickshell'
 options=(!strip)
