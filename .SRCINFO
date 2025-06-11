@@ -1,7 +1,7 @@
 pkgbase = proxmox-backup-client-bin
 	pkgdesc = Client for Proxmox Backup Server (binary release from Debian)
 	pkgver = 3.4.1_1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pbs.proxmox.com
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = proxmox-backup-client-bin
 	conflicts = proxmox-backup-client
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = http://download.proxmox.com/debian/pbs-client/dists/bookworm/pbs-no-subscription/binary-amd64/proxmox-backup-client_3.4.1-1_amd64.deb
+	source_x86_64 = http://download.proxmox.com/debian/pbs-client/dists/bookworm/main/binary-amd64/proxmox-backup-client_3.4.1-1_amd64.deb
 	sha512sums_x86_64 = f575a399443c0cddd452fbe9b256857621d6bdf51758133a476cb20f907b18087f5b6d7e5f13907789c52dd2c51e3b55866ed52dcbc6ed3672957f3fd4bf9347
 
 pkgname = proxmox-backup-client-bin

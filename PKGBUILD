@@ -15,8 +15,8 @@ makedepends=('patchelf>=0.18.0')
 options=('!strip' '!emptydirs')
 
 pkgver=3.4.1_1
-pkgrel=2
-source_x86_64=("http://download.proxmox.com/debian/pbs-client/dists/bookworm/pbs-no-subscription/binary-amd64/proxmox-backup-client_3.4.1-1_amd64.deb")
+pkgrel=3
+source_x86_64=("http://download.proxmox.com/debian/pbs-client/dists/bookworm/main/binary-amd64/proxmox-backup-client_3.4.1-1_amd64.deb")
 sha512sums_x86_64=('f575a399443c0cddd452fbe9b256857621d6bdf51758133a476cb20f907b18087f5b6d7e5f13907789c52dd2c51e3b55866ed52dcbc6ed3672957f3fd4bf9347')
 
 conflicts=('proxmox-backup-client')
