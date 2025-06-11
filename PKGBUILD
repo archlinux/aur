@@ -1,6 +1,6 @@
 pkgname=hyprshell
 # x-release-please-start-version
-pkgver=4.1.1
+pkgver=4.2.0
 # x-release-please-end
 pkgrel=1
 pkgdesc="A modern GTK4-based window switcher and application launcher for Hyprland"
@@ -27,4 +27,4 @@ build() {
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname-$pkgver/target/release/$pkgname"
 }
-sha256sums=('f65ba3cd2f1e5067fbfd5b3d494531aa40e7701260f183819729afc910fa151b')
+sha256sums=('8cadd3c703bb3f1a0ba69543dee44840cf27459e7e86acf6af941da1f9e306e8')
