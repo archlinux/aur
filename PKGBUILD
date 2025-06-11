@@ -1,20 +1,19 @@
-# Maintainer: kiasoc5 <kiasoc5 at disroot dot org>
+# Maintainer: envolution
+# Contributor: kiasoc5 <kiasoc5 at disroot dot org>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 _name=fibers
 pkgname=guile-$_name
 pkgver=1.3.1
-pkgrel=1
-_commit=e94ce968caf77c487d0ceda99c417498bab6bb5e
+pkgrel=2
 pkgdesc="Concurrent ML-like concurrency for Guile"
-arch=(any)
-license=(LGPL3+)
+arch=(x86_64)
+license=(LGPL-3.0-or-later)
 makedepends=(git)
-depends=("guile>=2.1.7")
-source=(git+https://github.com/wingo/${_name}.git#commit=${_commit})
+depends=("guile")
+source=(git+https://github.com/wingo/${_name}.git#tag=v${pkgver})
 url="https://github.com/wingo/fibers"
-md5sums=('SKIP')
-# shows warnings for .go files
-options=(!strip)
+md5sums=('b065f1ace0de478ee881bb5a5bc6a2af')
 
 build() {
   cd "$srcdir/$_name"
@@ -36,3 +35,4 @@ check() {
   sed -i "s|tests/speedup.scm||g" Makefile
   GUILE_AUTO_COMPILE=0 make check
 }
+# vim:set ts=2 sw=2 et:

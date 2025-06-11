@@ -1,0 +1,5 @@
+[guile-fibers]
+source = 'github'
+github = 'wingo/fibers'
+use_latest_release = true
+prefix = 'v'
