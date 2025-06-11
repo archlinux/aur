@@ -1,4 +1,4 @@
 [slade]
-source="github-graphql"
+source="github"
 github="sirjuddington/SLADE"
 use_latest_release=true
