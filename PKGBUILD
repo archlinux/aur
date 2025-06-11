@@ -4,7 +4,7 @@
 
 pkgname=python-binary
 _pkg="${pkgname#python-}"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Easily convert between binary and SI units"
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 source=("git+${url}.git#commit=v$pkgver")
-sha256sums=('1ccc00c8550100d93d844683c6ca01d5753006403803c0b57dac5bbd88463407')
+sha256sums=('dbd20271b5cda43f807fc9676bd55c75f193163632242b38dedd46a0037418ea')
 
 build() {
 	cd "$_pkg"

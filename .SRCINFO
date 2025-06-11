@@ -1,6 +1,6 @@
 pkgbase = python-binary
 	pkgdesc = Easily convert between binary and SI units
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/ofek/binary
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-binary
 	makedepends = python-hatch-vcs
 	makedepends = python-wheel
 	depends = python
-	source = git+https://github.com/ofek/binary.git#commit=v1.0.1
-	sha256sums = 1ccc00c8550100d93d844683c6ca01d5753006403803c0b57dac5bbd88463407
+	source = git+https://github.com/ofek/binary.git#commit=v1.0.2
+	sha256sums = dbd20271b5cda43f807fc9676bd55c75f193163632242b38dedd46a0037418ea
 
 pkgname = python-binary
