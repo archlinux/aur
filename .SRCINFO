@@ -1,0 +1,14 @@
+pkgbase = newfetch
+	pkgdesc = A fast and clear system information tool written in C.
+	pkgver = 1.0.0.r6b6f240
+	pkgrel = 1
+	url = https://github.com/atrexian/Newfetch
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	makedepends = make
+	options = !debug
+	source = git+https://github.com/atrexian/Newfetch.git
+	sha256sums = SKIP
+
+pkgname = newfetch
