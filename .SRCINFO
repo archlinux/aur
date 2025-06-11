@@ -1,0 +1,22 @@
+pkgbase = tooka-git
+	pkgdesc = A rule-based automatic file sorter
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/benji377/tooka
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	makedepends = jq
+	depends = glibc
+	depends = gcc-libs
+	provides = tooka
+	conflicts = tooka-cli
+	conflicts = tooka
+	source = tooka-git::git+https://github.com/benji377/tooka.git
+	sha256sums = SKIP
+
+pkgname = tooka-git
