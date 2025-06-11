@@ -1,18 +1,19 @@
 pkgbase = airspy-git
 	pkgdesc = Host code for Airspy SDR
-	pkgver = 1.0.10.r24.g43570b6
+	pkgver = 1.0.12.r12.ga379373
 	pkgrel = 1
-	url = https://github.com/airspy/host
+	url = https://github.com/airspy/airspyone_host
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
+	license = LicenseRef-AirSpyVarious
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
 	depends = libusb
-	provides = airspy
+	provides = airspy=1.0.12.r12
 	conflicts = airspy
-	source = airspyone_host::git+https://github.com/airspy/host.git
+	source = airspy.airspyone_host::git+https://github.com/airspy/airspyone_host.git
 	source = airspy.conf
 	sha256sums = SKIP
 	sha256sums = b210dd0698c3bb8ad59f0393c12a74e1ed8fe1b16a2faabc38467f68ebed0120

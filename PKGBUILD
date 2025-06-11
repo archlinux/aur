@@ -3,11 +3,14 @@
 
 _pkgname="airspy"
 pkgname="$_pkgname-git"
-pkgver=1.0.10.r24.g43570b6
+pkgver=1.0.12.r12.ga379373
 pkgrel=1
 pkgdesc="Host code for Airspy SDR"
-url="https://github.com/airspy/host"
-license=('GPL-2.0-or-later')
+url="https://github.com/airspy/airspyone_host"
+license=(
+  'GPL-2.0-or-later'         # airspy-tools
+  'LicenseRef-AirSpyVarious' # libairspy
+)
 arch=('i686' 'x86_64')
 
 depends=(
@@ -19,10 +22,10 @@ makedepends=(
   'ninja'
 )
 
-provides=("$_pkgname")
+provides=("$_pkgname=${pkgver%.g*}")
 conflicts=("$_pkgname")
 
-_pkgsrc="airspyone_host"
+_pkgsrc="airspy.airspyone_host"
 source=(
   "$_pkgsrc"::"git+$url.git"
   "airspy.conf"
@@ -34,8 +37,19 @@ sha256sums=(
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+  local _file _hash _ver _rev _commit
+  _file="libairspy/src/airspy.h"
+  read -r _hash _ver < <(
+    NL=$(awk '/^#define AIRSPY_VERSION "[0-9\.]+"/{n=NR}END{print n}' "$_file")
+
+    git blame -L "$NL,+1" -- "$_file" \
+      | awk '{print $1" "$NF }' \
+      | sed -E -e 's& "([0-9\.]+)"& \1&'
+  )
+  _rev=$(git rev-list --count --cherry-pick "$_hash"...HEAD)
+  _commit=$(git rev-parse --short=7 HEAD)
+
+  printf "%s.r%s.g%s" "${_ver:?}" "${_rev:?}" "${_commit:?}"
 }
 
 build() {
@@ -45,6 +59,7 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -Wno-dev
   )
 
@@ -57,4 +72,7 @@ package() {
 
   install -Dm644 "$_pkgsrc/airspy-tools/52-airspy.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
   install -Dm644 "airspy.conf" -t "$pkgdir/etc/modprobe.d/"
+
+  install -Dm644 "$_pkgsrc/airspy-tools/LICENSE.md" "$pkgdir/usr/share/licenses/LICENSE-airspy-tools.md"
+  install -Dm644 "$_pkgsrc/libairspy/LICENSE.md" "$pkgdir/usr/share/licenses/LICENSE-libairspy.md"
 }
