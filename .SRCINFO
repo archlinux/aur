@@ -1,7 +1,7 @@
 pkgbase = nullfsvfs-dkms
 	pkgdesc = Virtual black hole file system that behaves like /dev/null
 	pkgver = 0.19
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/abbbi/nullfsvfs
 	arch = any
 	license = GPL-3.0-or-later

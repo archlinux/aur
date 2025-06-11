@@ -6,7 +6,7 @@
 _pkgname='nullfsvfs'
 pkgname='nullfsvfs-dkms'
 pkgver=0.19
-pkgrel=0
+pkgrel=1
 pkgdesc='Virtual black hole file system that behaves like /dev/null'
 arch=('any')
 license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
