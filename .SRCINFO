@@ -1,0 +1,16 @@
+pkgbase = keenwrite
+	pkgdesc = desktop Markdown text editor with live preview, string interpolation, and math
+	pkgver = 3.5.13
+	pkgrel = 0
+	url = https://keenwrite.com/
+	arch = any
+	license = BSD-2-Clause
+	makedepends = gradle
+	makedepends = java-environment-openjdk=23
+	depends = bash
+	depends = java-runtime-openjdk=23
+	optdepends = texlive-context: generate PDF output
+	source = https://gitlab.com/DaveJarvis/KeenWrite/-/archive/3.5.13/KeenWrite-3.5.13.tar.bz2
+	sha256sums = adef6493a409d4fe7bed0aaf91cf95a0d53bec08cdc3e022e511baebe19706d0
+
+pkgname = keenwrite
