@@ -15,11 +15,9 @@ replaces=()
 backup=()
 options=()
 install=
-source=("$pkgname::git+https://github.com/streambinder/spotitube"
-	"server.sh")
+source=("$pkgname::git+https://github.com/streambinder/spotitube")
 noextract=()
-sha256sums=(SKIP
-	"4a6da86f3743d72fe8d4f001fd16bff092ab0a51a3be1ad5ff4dc7c507e10ec4")
+sha256sums=(SKIP)
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -39,13 +37,10 @@ build() {
 }
 
 package() {
-	cd "$srcdir"
-	install -Dm0755 server.sh "$pkgdir/usr/bin/spotitube-server"
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 	go install
 	install -Dm0755 output-binary "$pkgdir/usr/bin/spotitube"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" streambinder
-	echo "Spotitube server has been installed as spotitube-server"
 	echo "Check the docs at https://davidepucci.it/doc/spotitube"
 	echo "You can create a Spotify API ID/secret pair at https://developer.spotify.com/dashboard/create"
 	echo "You can create a Genius API token at https://genius.com/api-clients/new"
