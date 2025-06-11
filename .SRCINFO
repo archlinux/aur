@@ -1,0 +1,18 @@
+pkgbase = ayaan-unstable
+	pkgdesc = AyaanScript+ (unstable version using .exe + Wine)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ayaan511/AyaanScriptPlus
+	arch = x86_64
+	license = custom
+	depends = wine
+	source = ayaan.exe
+	source = aspkg.exe
+	source = ayaan-launcher.sh
+	source = aspkg-launcher.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ayaan-unstable
