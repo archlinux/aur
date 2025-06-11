@@ -56,7 +56,7 @@ build() {
 }
 
 package() {
-	depends+=('audacious-plugins')
+	depends+=('fauxdacious-plugins-git')
 	
 	cd "${pkgname}"
 	make DESTDIR=${pkgdir} install

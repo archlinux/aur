@@ -24,4 +24,4 @@ pkgname = fauxdacious-git
 	depends = qt6-base
 	depends = qt6-imageformats
 	depends = qt6-svg
-	depends = audacious-plugins
+	depends = fauxdacious-plugins-git
