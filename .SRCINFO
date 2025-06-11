@@ -1,6 +1,6 @@
 pkgbase = python-partdb-labeler
 	pkgdesc = print PartDB labels on a Zebra label printer
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://gitlab.alfter.us/salfter/partdb-labeler/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-partdb-labeler
 	depends = python-zebra
 	depends = python-qrcode
 	depends = python-pillow
-	source = https://gitlab.alfter.us/salfter/partdb-labeler/-/archive/v0.2.1/partdb-labeler-v0.2.1.tar.bz2
-	sha256sums = a6476d6b829cab89bf4ef6864b31b71a2b3c92446d93ba10ed24b29237f97991
+	source = https://gitlab.alfter.us/salfter/partdb-labeler/-/archive/v0.2.2/partdb-labeler-v0.2.2.tar.bz2
+	sha256sums = 0d1c5afafd0b326b3d8011f1e9fd107b1853e6241ce6b6b3cca2bc5c368c4f82
 
 pkgname = python-partdb-labeler
