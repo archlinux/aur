@@ -1,0 +1,15 @@
+pkgbase = python-attrs-git
+	pkgdesc = helps you to write concise and correct software without slowing down your code.
+	pkgver = 25.3.0
+	pkgrel = 1
+	url = https://www.attrs.org/en/stable/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-attrs
+	conflicts = python-attrs
+	source = https://github.com/python-attrs/attrs/archive/refs/tags/25.3.0.tar.gz
+	sha256sums = 1116ff6fff7a79c8de6115e38532daa2507dfffeabd6bbc364d1d441fb14d00f
+
+pkgname = python-attrs-git
