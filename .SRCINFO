@@ -7,6 +7,9 @@ pkgbase = fdbbackup-bin
 	groups = foundationdb
 	license = Apache-2.0
 	provides = fdbbackup=7.3.63
+	provides = fdbrestore=7.3.63
+	provides = fdbdr=7.3.63
+	provides = dr_agent=7.3.63
 	conflicts = foundationdb-clients-bin
 	options = !debug
 	source_x86_64 = https://github.com/apple/foundationdb/releases/download/7.3.63/fdbbackup.x86_64
