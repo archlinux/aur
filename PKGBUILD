@@ -2,7 +2,7 @@
 
 pkgname=ros2-kilted-base
 pkgver=2025.05.23
-pkgrel=1
+pkgrel=2
 _rosdist="Kilted Kaiju"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -45,15 +45,13 @@ source=(
     "fastdds.patch"
     "mcap_vendor_cstdint.patch"
     "rosidl_cstdint.patch"
-    "zenoh_cpp_vendor_lto_tls.patch"
 )
 sha256sums=('79ab777f61b6928933d02c4560f3a6ce00edb0b57521947a450170fb1b03b567'
             '5089bf2dea8368020243d40a2b513405cd060aacc42de6fae2289c1a87f74f99'
             'd2b905b6dccc972cdc83a9c1410bf15494dcc22c888bb2ccf36497b25bd9134b'
             '42228a501fb2647c5c127906eed329145d4a1d81fe626e50e80c6a4cc53729e3'
             'f2ac0967f508f6a4f1fd4f278800e64052127859ee3e21cdf1b467b3ffe7563f'
-            '23718705092c81860e50182341c006e0addcbec61c6b87c7f744e9185740b21c'
-            'f0652c312b34ef92e91bf0f3e733507b29c8722bc24365295ddbd7608d4160fd')
+            '23718705092c81860e50182341c006e0addcbec61c6b87c7f744e9185740b21c')
 
 # Uncomment this if zenoh/transport_tls is needed in zenoh_cpp_vendor
 # TODO: find a way to disable LTO for only the zenoh_cpp_vendor package
@@ -84,18 +82,22 @@ prepare() {
     git -C "$srcdir/ros2/src/ros2/rosidl" checkout .
     git -C "$srcdir/ros2/src/ros2/rosidl" apply "$srcdir/rosidl_cstdint.patch"
 
-    # Disable the zenoh/transport_tls feature (TLS/QUIC secure transports)
-    # This is because GCC LTO is incompatible with the LLVM LTO
-    # Disable LTO if you need this feature (see options comment above).
-    # https://github.com/ros2/rmw_zenoh/issues/624
-    git -C "$srcdir/ros2/src/ros2/rmw_zenoh" checkout .
-    git -C "$srcdir/ros2/src/ros2/rmw_zenoh" apply "$srcdir/zenoh_cpp_vendor_lto_tls.patch"
-
     # Patches for iceoryx cpptoml dependency
     git -C "$srcdir/ros2/src/eclipse-iceoryx/iceoryx" checkout .
     git -C "$srcdir/ros2/src/eclipse-iceoryx/iceoryx" cherry-pick 2a2c00bbbc3d42ff91492f8b16b44289c4dc4e58
     git -C "$srcdir/ros2/src/eclipse-iceoryx/iceoryx" cherry-pick a3458f823008ffc65868e884b82a3da5a93366f9
     git -C "$srcdir/ros2/src/eclipse-iceoryx/iceoryx" cherry-pick b99ac0c434e799b5b03087ec38a6709d7bbedb63
+
+    # Patches for rmw_zenoh
+    git -C "$srcdir/ros2/src/ros2/rmw_zenoh" checkout .
+    git -C "$srcdir/ros2/src/ros2/rmw_zenoh" cherry-pick -n 5199759f9d1849affc1e5236f0cf24c65c70e00b
+    git -C "$srcdir/ros2/src/ros2/rmw_zenoh" cherry-pick -n fce38ddb99358dad479a184442292682c8590423
+
+    # Disable the zenoh/transport_tls feature (TLS/QUIC secure transports)
+    # This is because GCC LTO is incompatible with the LLVM LTO
+    # Disable LTO if you need this feature (see options comment above).
+    # https://github.com/ros2/rmw_zenoh/issues/624
+    sed -i 's/ zenoh\/transport_tls//' "$srcdir/ros2/src/ros2/rmw_zenoh/zenoh_cpp_vendor/CMakeLists.txt"
 }
 
 build() {

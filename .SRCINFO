@@ -1,7 +1,7 @@
 pkgbase = ros2-kilted-base
 	pkgdesc = A set of software libraries and tools for building robot applications (Kilted Kaiju, base variant)
 	pkgver = 2025.05.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/ros_base/#kilted
 	arch = any
 	license = Apache-2.0
@@ -33,13 +33,11 @@ pkgbase = ros2-kilted-base
 	source = fastdds.patch
 	source = mcap_vendor_cstdint.patch
 	source = rosidl_cstdint.patch
-	source = zenoh_cpp_vendor_lto_tls.patch
 	sha256sums = 79ab777f61b6928933d02c4560f3a6ce00edb0b57521947a450170fb1b03b567
 	sha256sums = 5089bf2dea8368020243d40a2b513405cd060aacc42de6fae2289c1a87f74f99
 	sha256sums = d2b905b6dccc972cdc83a9c1410bf15494dcc22c888bb2ccf36497b25bd9134b
 	sha256sums = 42228a501fb2647c5c127906eed329145d4a1d81fe626e50e80c6a4cc53729e3
 	sha256sums = f2ac0967f508f6a4f1fd4f278800e64052127859ee3e21cdf1b467b3ffe7563f
 	sha256sums = 23718705092c81860e50182341c006e0addcbec61c6b87c7f744e9185740b21c
-	sha256sums = f0652c312b34ef92e91bf0f3e733507b29c8722bc24365295ddbd7608d4160fd
 
 pkgname = ros2-kilted-base
