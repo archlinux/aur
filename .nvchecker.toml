@@ -1,0 +1,4 @@
+[algolia]
+source = "git"
+git = "https://github.com/algolia/cli.git"
+prefix = "v"

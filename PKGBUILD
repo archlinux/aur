@@ -1,31 +1,40 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="algolia"
-pkgver=1.6.11
-pkgrel=3
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Interact with and configure Algolia applications"
-arch=('x86_64' 'aarch64' 'i686' 'armv6h')
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://www.algolia.com/doc/tools/cli"
 _url="https://github.com/algolia/cli"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
-_pkgsrc="cli-${pkgver}"
+_pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0965dadab1519128130532141701efbf56310f7cb9735c1da596cf6f2aad4657')
+sha256sums=('34083ff0480baef9cc4fe3339fa605cec9b66f7da89aecadca1256477799f396')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
+  go mod download -x
+  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
+  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+
   mkdir -p "build" "completions"
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  cd "${srcdir}/${_pkgsrc}"
   go build -v -o "build/${pkgname}" -ldflags "\
     -X ${_url#https://}/pkg/version.Version=${pkgver}" \
     ./"cmd/${pkgname}"
@@ -49,5 +58,6 @@ package() {
   cd "completions"
   install -vDm644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
   install -vDm644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
-  install -vDm644 "${pkgname}.zsh"  "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -vDm644 "${pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -vDm644 "${pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${pkgname}.ps1"
 }
