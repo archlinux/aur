@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <mumei6102@gmail.com>
 
 pkgname=qmplay2
-pkgver=25.01.19
+pkgver=25.06.11
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('pulseaudio: PulseAudio support'
 makedepends=('ninja' 'clang' 'pkg-config' 'qt6-tools' 'cmake' 'fakeroot' 'patch')
 options=(!lto)
 source=("https://github.com/zaps166/QMPlay2/releases/download/${pkgver}/QMPlay2-src-${pkgver}.tar.xz")
-sha256sums=(13282cf25d425309c86491fd0bd017c7fc517fe68dccb863641e3f7e4f8f9bb6)
+sha256sums=(0dda6bc8c05d256b293bf3b5da20058b05e9844693292b2d175cc3b289f86eac)
 
 prepare()
 {
