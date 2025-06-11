@@ -2,26 +2,26 @@
 
 pkgname=code-electron-latest
 pkgdesc='VSCode on latest stable electron'
-pkgver=1.100.2
-pkgrel=3
+pkgver=1.100.3
+pkgrel=1
 arch=('x86_64')
 _vscode_arch=x64 # https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/PKGBUILD
 _electron_arch=x64
-_url=https://github.com/microsoft/vscode
-url="${_url}/pull/245423"
+url=https://github.com/microsoft/vscode
 license=('MIT')
 depends=( ripgrep xdg-utils # electron* is added at build process
 libsecret libxkbfile )
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=( nodejs-lts-iron # next .nvmrc wants -jod. But it may false
-git npm pnpm python desktop-file-utils libarchive )
+makedepends=( nodejs-lts-iron # -git .nvmrc wants -jod. But build fails
+git npm pnpm python desktop-file-utils 
+patch libarchive ) # base base-devel
 conflicts=(code vscode)
 provides=(code vscode)
 options=(!strip) # sign of ext
 # Do not sync $pkgrel
-source=(vscode::"git+${_url}.git#tag=${pkgver}"
+source=(vscode::"git+${url}.git#tag=${pkgver}"
 "https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/${pkgver}-1/"{code.sh,code.mjs,clipath.patch,product_json.diff})
-sha512sums=('2694841afae736d7424d9f6ed4a9eebcccd1b6e167682c454da639b37a3442e62d405b009d28e138cc56de03b0711fedf6d28f5a2b0fdd105962421d9d563b6f'
+sha512sums=('dd9c523f5c9af0608af563661fe20c71b1f91bbb3502f85c0c97a46287640d7a87e029f06c63b5394a45301c94db5f0583dba0d7f8658d57c1d78390d16d8181'
             '937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37'
             '793f9ff6306e3992ac89802d98110cba288ea1181a901467333293b7d76182ef9792c2a39ff49d9347a18a174b1f42bc58862091dff583f4146c2704eea28033'
             'e570b30cd470190aa56596913478d5fb8ba265a0f8c9d1408ea2118612cc69a360cc55e4523c3dc9c65f73e3dea53fc6620c97f6592fb9f86c3aca51ad3d9744'
@@ -40,7 +40,7 @@ prepare() {
   echo Replaced version of electron with $(rg -N 'target' .npmrc)
 
   # Drop this at next release. app.dock is only for macOS
-  sed -i '/app\.dock\.setMenu/i\// @ts-ignore' src/vs/platform/menubar/electron-main/menubar.ts
+  #sed -i '/app\.dock\.setMenu/i\// @ts-ignore' src/vs/platform/menubar/electron-main/menubar.ts
 
   # Launcher
   _electron=electron${_electronver%%.*}
