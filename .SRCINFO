@@ -1,6 +1,6 @@
 pkgbase = seq66
 	pkgdesc = A live-looping MIDI sequencer with a Qt graphical interface
-	pkgver = 0.99.19
+	pkgver = 0.99.20
 	pkgrel = 1
 	url = https://github.com/ahlstromcj/seq66
 	arch = aarch64
@@ -16,9 +16,9 @@ pkgbase = seq66
 	depends = glibc
 	depends = graphite
 	depends = qt5-base
-	source = seq66-0.99.19.tar.gz::https://github.com/ahlstromcj/seq66/archive/refs/tags/0.99.19.tar.gz
+	source = seq66-0.99.20.tar.gz::https://github.com/ahlstromcj/seq66/archive/refs/tags/0.99.20.tar.gz
 	source = seq66-docdir.patch
-	sha256sums = 560be033cd40fc50d677da629c15b3b363beaae11ab8913aae66e5c18986fa83
+	sha256sums = fb7dc06a891aa761d16e14dcb7ff790ff71137cb14577fcd4696ac0379615df7
 	sha256sums = c689e2bfc95002483830c4ddc75694748be6f40a6a88ca8f983640f558285558
 
 pkgname = seq66
