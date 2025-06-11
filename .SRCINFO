@@ -6,7 +6,6 @@ pkgbase = fdbserver-bin
 	arch = x86_64
 	groups = foundationdb
 	license = Apache-2.0
-	provides = fdbserver=7.3.63
 	conflicts = foundationdb-server-bin
 	options = !debug
 	source_x86_64 = https://github.com/apple/foundationdb/releases/download/7.3.63/fdbserver.x86_64
