@@ -1,0 +1,18 @@
+pkgbase = mkdocs-awesome-nav
+	pkgdesc = An MkDocs plugin that simplifies configuring page titles and their order
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/lukasgeiter/mkdocs-awesome-nav
+	arch = any
+	license = MIT
+	makedepends = python-flit-core
+	makedepends = python-build
+	depends = python
+	depends = mkdocs
+	depends = python-wcmatch
+	depends = python-natsort
+	depends = python-pydantic
+	source = mkdocs-awesome-nav.zip::https://github.com/lukasgeiter/mkdocs-awesome-nav/archive/refs/heads/main.zip
+	sha256sums = SKIP
+
+pkgname = mkdocs-awesome-nav
