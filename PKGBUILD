@@ -7,7 +7,7 @@ pkgname=yubioath-desktop
 _pkgname=yubioath-flutter
 pkgdesc='Yubico Authenticator for Desktop'
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/Yubico/yubioath-flutter'
 license=('BSD-3-Clause')
@@ -58,6 +58,7 @@ prepare() {
     /endif()/s/^/#/
 }' "linux/CMakeLists.txt"
 
+  sed -i 's/-Wall -Werror/-Wall -Werror -Wno-error=deprecated-declarations/' linux/CMakeLists.txt
 }
 build() {
   cd "${srcdir}/${_pkgname}"
