@@ -1,0 +1,30 @@
+From 1aaf3bd313ba6ef442fd572ac4d8cb10a8ca3a99 Mon Sep 17 00:00:00 2001
+From: Max Harmathy <harmathy@alumni.tum.de>
+Date: Wed, 11 Jun 2025 16:50:14 +0200
+Subject: [PATCH] Fix class path for dependencies
+
+Since 25934bc dependencies are not bundled in the jar anymore but have
+their own respectve jar file in the build output directory under
+`dependency`. This change adds that directory to the class path in the
+manifest.
+
+Fixes #795
+---
+ pom.xml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pom.xml b/pom.xml
+index 2e4acf37c..e5a5a385c 100755
+--- a/pom.xml
++++ b/pom.xml
+@@ -618,6 +618,7 @@
+                         <manifest>
+                             <addClasspath>true</addClasspath>
+                             <mainClass><![CDATA[${mainclass}]]></mainClass>
++                            <classpathPrefix>dependency/</classpathPrefix>
+                         </manifest>
+                     </archive>
+                 </configuration>
+-- 
+2.49.0
+
