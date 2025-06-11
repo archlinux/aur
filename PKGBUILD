@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=maretf
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="A work in progress command-line utility to work with VTF files."
 arch=('x86_64')
 url="https://github.com/craftablescience/MareTF"
@@ -13,6 +13,7 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/craftablescience/sourcepp.git#commit=84b708786a594821afe5c616dc5eafaa7304e565"
 	"git+https://github.com/p-ranav/argparse.git#commit=d924b84eba1f0f0adf38b20b7b4829f6f65b6570"
 	"git+https://github.com/SpartanJ/efsw.git#commit=f4ec910175a2abcd8aaa193e7643739a1efad321"
+	"git+https://github.com/p-ranav/indicators.git#commit=3872f37abd90d7557bac5f834bfb45bd6c75259a"
 	"git+https://github.com/craftablescience/bufferstream.git#commit=d468baf2bcdfb99cf7c426dd1565e6f23ac4c2fa"
 	"cryptopp::git+https://github.com/abdes/cryptopp-cmake.git#commit=edb9a71bed2b663c996fded6a104714e05a113f9"
 	"git+https://github.com/Tessil/hat-trie.git#commit=25fdf359711eb27e9e7ec0cfe19cc459ec6488d7"
@@ -21,11 +22,12 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/craftablescience/minizip-ng.git#commit=2c0dc5d82c22df373515f890a656b5394285493c"
 	"git+https://github.com/phoboslab/qoi.git#commit=4461cc37ef08b24f157a5ab7c3f7d6c9e6caa6c0"
 	)
-sha256sums=('99ad105adaa7d878974ed9c7c83fb929686f6e00bd0ae988797fed52c9a0d729'
+sha256sums=('bb3ae020737f6a843c12edd3d9b86b7dd586638a45e9f41a61e68053e99ee4c1'
             '8510317b204d5c8722252c2a2c01532a76ff7d196902546ddad2ff239fcf961e'
             '3f0e4218e858ad461ab70b7c77371d57a9305281e33d86e55de3576d1ce20723'
             '42b2b012a0724cfe279a79a520e63602d0dc7d549e8e56ea626018ffcc3f0bc9'
             '3950bb988897f593a3d97093eb2cc41c11a89290f36ae39854ab108c4e9f862b'
+            '91c88da51a60cf533a95aaa0838cfba311a00579c3377a11ccf32141dc93eb93'
             '8fe0e77441a851589cf8a435290ff537842c19b2265eae62dfb9b397e159887e'
             '0eddee044b59813498ed7d4495546d8abb670d233209c0fbf73812ea33d5f447'
             '8f71a0140aab6196d1d841b1a572115e5794f9c81cf5ce86eb482fbb45ed3751'
@@ -37,7 +39,7 @@ sha256sums=('99ad105adaa7d878974ed9c7c83fb929686f6e00bd0ae988797fed52c9a0d729'
 prepare() {
 	cd "$srcdir/$pkgname"
 	git submodule init
-	for submodule in {sourcepp,argparse,efsw};
+	for submodule in {sourcepp,argparse,efsw,indicators};
 	do
 		git config submodule.ext/${submodule}.url "$srcdir/$submodule"
 	done
