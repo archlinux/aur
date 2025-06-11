@@ -6,6 +6,7 @@ pkgbase = xephem
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = cmake
 	depends = libxmu
 	depends = openmotif
 	depends = perl

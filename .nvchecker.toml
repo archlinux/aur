@@ -1,4 +1,4 @@
 [xephem]
-source="github-graphql"
+source="github"
 github="XEphem/XEphem"
 use_max_tag=true

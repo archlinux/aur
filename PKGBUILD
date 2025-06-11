@@ -14,6 +14,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/XEphem/XEphem"
 license=('MIT')
 depends=('libxmu' 'openmotif' 'perl' 'openssl')
+makedepends=(cmake)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
   cmake.patch::https://patch-diff.githubusercontent.com/raw/XEphem/XEphem/pull/60.patch
   strptime.patch::https://github.com/XEphem/XEphem/commit/30e14f685ede015fcd8985cd83ee6510f93f0073.patch
