@@ -2,8 +2,9 @@
 
 name=chromium-gost
 pkgname=chromium-gost
+url="https://github.com/deemru/Chromium-Gost"
 pkgver=137.0.7151.69
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium-Gost — веб-браузер с открытым исходным кодом на основе Chromium с поддержкой криптографических алгоритмов ГОСТ при установке защищённых соединений через интерфейс msspi"
 arch=('x86_64')
 license=('MIT')
