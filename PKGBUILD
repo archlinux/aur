@@ -2,7 +2,7 @@
 # Contributor: Martin Andersson <m.t.andersson at gmail dot com>
 
 pkgname="gphotos-uploader-cli"
-pkgver="5.0.0"
+pkgver="5.1.0"
 pkgrel=0
 pkgdesc='Command line tool to mass upload media folders to your Google Photos account(s).'
 
@@ -17,10 +17,10 @@ makedepends=(
 depends=()
 
 source=(
- "https://github.com/gphotosuploader/gphotos-uploader-cli/archive/v${pkgver}.tar.gz"
+ "https://github.com/gphotosuploader/gphotos-uploader-cli/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha256sums=('215f02dd0485fe6c772487395a24937b741896a83280bb059a1d7a41ef436c64')
+sha256sums=('180ced2507d796b2305627097017aacd2b0206e1131e0b40da2a46563a823ec1')
 
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -28,7 +28,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_ENABLED=1
-  
+
   cd "$srcdir/$pkgname-$pkgver"
   LDFLAGS="-extldflags \"${LDFLAGS}\"" \
     make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX="/usr" build
