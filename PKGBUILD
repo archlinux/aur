@@ -1,6 +1,6 @@
 # Maintainer: ComputerElite <ComputerElite.dev@gmail.com>
 pkgname=shock-alarm
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="A flutter app for controlling OpenShock devices"
 arch=('x86_64')
