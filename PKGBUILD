@@ -1,9 +1,9 @@
 # Maintainer: Stezko <stezko@gmail.com>
 
-_pkgname=browser-corporate
+_pkgname=yandex-browser
 pkgname=yandex-browser-corporate
-pkgver=25.2.4.1036
-_pkgver=25.2.4.1036-1
+pkgver=25.4.1.1137
+_pkgver=25.4.1.1137-1
 pkgrel=1
 
 pkgdesc="The web browser from Yandex.
@@ -20,8 +20,8 @@ depends=( "binutils" "ttf-liberation" "jq" "alsa-lib" "at-spi2-atk" "libcups" "c
 "vulkan-driver" "vulkan-icd-loader" "ffmpeg")
 optdepends=("speech-dispatcher" "gstreamer-meta" "cryptopro-csp-k1")
 
-source=("${pkgname}-${_pkgver}.deb::https://repo.yandex.ru/yandex-browser/deb/pool/main/y/${pkgname}/${pkgname}_${_pkgver}_amd64.deb")
-sha256sums=("ef9a3b79acdc61c30ca256d30cbd5c5c1c234ae573062d7bc6d650a66f047001")
+source=("${pkgname}-${_pkgver}.deb::https://repo.yandex.ru/${_pkgname}/deb/pool/main/y/${pkgname}/${pkgname}_${_pkgver}_amd64.deb")
+sha256sums=("ae00f4d5353ee497031cc5c503d33799226a1ec000c473e35e941bdb6765fef4")
 install=${pkgname}.install
 
 prepare() {
@@ -30,5 +30,5 @@ prepare() {
 
 package() {
     cp -dr --no-preserve=ownership opt usr "${pkgdir}"/
-    chmod 4755 "${pkgdir}"/opt/yandex/browser/yandex_browser-sandbox
+    chmod 4755 "${pkgdir}"/opt/yandex/browser/${_pkgname}-sandbox
 }
