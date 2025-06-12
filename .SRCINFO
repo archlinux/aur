@@ -1,6 +1,6 @@
 pkgbase = python-nolds
 	pkgdesc = Nonlinear measures for dynamical systems (based on one-dimensional time series)
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/CSchoel/nolds
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-nolds
 	depends = python
 	depends = python-numpy
 	depends = python-setuptools
-	noextract = nolds-0.6.1-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/n/nolds/nolds-0.6.1-py2.py3-none-any.whl
-	sha256sums = 208714600333f03e428c968a0cea0e8029d75ac30b454e28e968630b14973829
+	noextract = nolds-0.6.2-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/n/nolds/nolds-0.6.2-py2.py3-none-any.whl
+	sha256sums = 91fa5982432d306f9889129bf2f270080cfa11cba69c528a00bdf2abe0e3819b
 
 pkgname = python-nolds
