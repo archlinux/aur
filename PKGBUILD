@@ -2,7 +2,7 @@
 
 pkgname=r-air-bin
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An R language server and formatter"
 arch=('x86_64')
 url="https://github.com/posit-dev/air"
@@ -12,7 +12,7 @@ options=('!debug')
 provides_x86_64=("r-air=${pkgver}")
 source_x86_64=("https://github.com/posit-dev/air/releases/download/${pkgver}/air-$CARCH-unknown-linux-gnu.tar.gz"
                 "https://raw.githubusercontent.com/posit-dev/air/refs/tags/${pkgver}/LICENSE")
-sha256sums_x86_64=('dbb23ea9350d1b477b29139a2caac8c86dd77392ef6eb1100aa0290140b9c136'
+sha256sums_x86_64=('e1e09fd3f482892a67c8fdba8d7c9a5fc508cc20f626ca8cb551f12c03b787cb'
                     '19713ea69a4231105033c381dc2145148d26eab51e0b7e458ef4e775db531863')
 
 
