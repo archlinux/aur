@@ -1,10 +1,11 @@
 pkgbase = workman-git
 	pkgdesc = The Workman Keyboard Layout created by OJ Bucao.
 	pkgver = r125.gec91fc3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://workmanlayout.org/
 	arch = any
 	license = custom
+	makedepends = git
 	source = Workman::git+https://github.com/workman-layout/Workman
 	sha256sums = SKIP
 
