@@ -7,8 +7,8 @@ url="https://github.com/ulb-info2-group5/Royal-Blocks"
 license=('GPL3')
 depends=('qt5-base')  # Qt remains dynamic
 makedepends=('cmake' 'gcc' 'make' 'qt5-base')
-source=("https://github.com/ulb-info2-group5/Royal-Blocks/releases/download/v1.1.1/royal-blocks-linux-bin.tar.zst")
-sha256sums=('8331766727af996aca1b8d30b78d88e6f82bdfafa6825f55dcad4cae129d55b2')
+source=("https://github.com/ulb-info2-group5/Royal-Blocks/releases/download/v1.1.2/royal-blocks-linux-bin.tar.zst")
+sha256sums=('187589e0ceb2bc3254edb99aa2b1df16bbe4a63558d2d6c727551f0142576d3d')
 options=(!strip)
 
 package() {
