@@ -1,0 +1,25 @@
+diff --git a/libinstagram.c b/libinstagram.c
+index e7f6d29..bdea86e 100644
+--- a/libinstagram.c
++++ b/libinstagram.c
+@@ -11,10 +11,10 @@
+ #	define PURPLE_PLUGINS
+ #endif
+ 
+-#define IG_VERSION           "27.0.0.7.97"
++#define IG_VERSION           "136.0.0.34.124"
+ #define SIG_KEY_VERSION      "4"
+-#define IG_SIG_KEY           "109513c04303341a7daf27bb41b268e633b30dcc65a3fe14503f743176113869"
+-#define INSTAGRAM_USERAGENT  "Instagram 27.0.0.7.97 Android (22/6.0.1; 577dpi; 1440x2560; LGE; LG-P990; p990_505-xxx; en_US)"
++#define IG_SIG_KEY           "46024e8f31e295869a0e861eaed42cb1dd8454b55232d85f6c6764365079374b"
++#define INSTAGRAM_USERAGENT  "Instagram 136.0.0.34.124 Android (22/6.0.1; 577dpi; 1440x2560; LGE; LG-P990; p990_505-xxx; en_US)"
+ #define IG_URL_PREFIX        "https://i.instagram.com/api/v1"
+ 
+ #ifndef _
+@@ -1153,4 +1153,4 @@ static PurplePluginInfo info = {
+ 
+ PURPLE_INIT_PLUGIN(instagram, plugin_init, info);
+ 
+-#endif
+\ No newline at end of file
++#endif
