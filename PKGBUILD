@@ -5,7 +5,7 @@ pkgname="stm32cubeide"
 pkgver=1.18.1
 _pkgver_ext=1.18.1_24813_20250409_2138
 _pkg_file_name=en.st-stm32cubeide_1.18.1_24813_20250409_2138_amd64.sh.zip
-pkgrel=2
+pkgrel=3
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
@@ -45,8 +45,8 @@ sha256sums=('6ac76ee6d35a0d2cbd6dc14ded0fa32f1788565c866b9dd28cba7c6250d8d54f'
 	'SKIP'
 	'4fc6f177425adbd491cbb7326969a4e77a78588c30e674a1e3455981ad523c40'
 	'48849f72574f043c0d2d0132750f7bc0a95f14c89ff74e10ba2bc34b0a081103'
-	'dc0605bac1910558b9fd3f0ecdd06bfd9d72eb3969827cba276a418a5749bcd2'
-	'222265e3ccc1f8db608ca89b27768e2bf175eebafff6ad81530f46d374af12ba'
+	'59063401ec21ed8a88cfebbc71328331165108919758a2655454bb00dfdf174f'
+	'accaaa9d5e9bdac89418fcb0bfdb7c9c76c4faa58ccb70b32137864808fa9984'
 )
 
 prepare(){

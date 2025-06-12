@@ -8,8 +8,8 @@ fi
 
 # If _JAVA_OPTIONS exists, try to extract java.util.prefs.systemRoot and java.util.prefs.userRoot from it
 if [ -n "$_JAVA_OPTIONS" ]; then
-    JAVA_SYSTEM_ROOT=$(echo "$_JAVA_OPTIONS" | sed -n 's/.*-Djava.util.prefs.systemRoot=\([^ ]*\).*//p')
-    JAVA_USER_ROOT=$(echo "$_JAVA_OPTIONS" | sed -n 's/.*-Djava.util.prefs.userRoot=\([^ ]*\).*//p')
+    JAVA_SYSTEM_ROOT=$(echo "$_JAVA_OPTIONS" | sed -n 's/.*-Djava.util.prefs.systemRoot=\([^ ]*\).*/\1/p')
+    JAVA_USER_ROOT=$(echo "$_JAVA_OPTIONS" | sed -n 's/.*-Djava.util.prefs.userRoot=\([^ ]*\).*/\1/p')
 fi
 
 # If values do not exist, fallback to "$XDG_CONFIG_HOME/java"
