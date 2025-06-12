@@ -4,9 +4,9 @@
 pkgname=vesktop-bin
 _pkgname=Vesktop
 _appname=vencord-desktop
-pkgver=1.5.6
-_electronversion=35
-pkgrel=3
+pkgver=1.5.7
+_electronversion=36
+pkgrel=1
 pkgdesc="A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -33,8 +33,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 source=("${pkgname%-bin}.sh")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('41143a823e98acc3c4fee65d531b867ba693a2f51c1ff4e8e4a27d41a04b9426')
-sha256sums_x86_64=('f54b0cd47e6a7251f7238b07666bb677ae621bfcf57b42c29fabf11f70ca7ae2')
+sha256sums_aarch64=('741cb8def79803d81c942c5bce2f53a9d24eac1e1d74fc3595065dc4f998f443')
+sha256sums_x86_64=('d2be41df066a5a6d053d8607a2c25ac1cffdd00d014833f0931521ecf11191c0')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
