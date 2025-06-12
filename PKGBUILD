@@ -1,8 +1,8 @@
 # shellcheck disable=SC2034,2154
 # Maintainer: Bruno Carlin <bruno@bcarlin.net>
 pkgname=ember-language-server
-pkgver=2.30.5
-pkgrel=3
+pkgver=2.30.9
+pkgrel=1
 pkgdesc="The Ember Language Server (ELS) implements the Language Server Protocol for Ember.js projects."
 arch=( 'any' )
 url="https://github.com/ember-tooling/ember-language-server"
@@ -19,7 +19,7 @@ makedepends=('npm' 'jq')
 #install=
 #changelog=
 source=("https://registry.npmjs.com/@ember-tooling/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('a48194589ff1f03b8fa2c9859f7481b2b678fff9d8ce40f0588efdd6c31cb5c1')
+sha256sums=('736e5175ec6a38ab590f2e4c17546d1f3ab85c03c82032e56a8634a67080a75e')
 noextract=("${pkgname}-${pkgver}.tgz")
 #validpgpkeys=()
 
