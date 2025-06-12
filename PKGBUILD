@@ -1,29 +1,29 @@
 # Maintainer: Atrexian <ondra.smehlik@gmail.com>
 pkgname=newfetch
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A fast and clear system information tool written in C."
 arch=('x86_64')
-url="https://github.com/atrexian/Newfetch"
+url="https://github.com/atrexian/newfetch"
 license=('GPL-3.0-or-later')
 depends=()
 makedepends=('gcc' 'make')
-source=("git+https://github.com/atrexian/Newfetch.git")
+source=("git+https://github.com/atrexian/newfetch.git")
 sha256sums=('SKIP')
 
-options=(!debug)  # Přidej tento řádek
+options=(!debug)
 
 pkgver() {
-  cd "$srcdir/Newfetch"
-  echo "1.0.1.r$(git rev-parse --short HEAD)"
+  cd "$srcdir/newfetch"
+  echo "1.0.2.r$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/Newfetch"
+  cd "$srcdir/newfetch"
   make
 }
 
 package() {
-  cd "$srcdir/Newfetch"
+  cd "$srcdir/newfetch"
   install -Dm755 newfetch "$pkgdir/usr/bin/newfetch"
 }
