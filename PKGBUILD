@@ -4,7 +4,7 @@
 _pkgname=Workman
 pkgname=workman-git
 pkgver=r125.gec91fc3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Workman Keyboard Layout created by OJ Bucao."
 url="https://workmanlayout.org/"
 arch=('any')
@@ -23,8 +23,8 @@ pkgver() {
 
 package() {
   cd ${srcdir}/${_pkgname}/xorg/
-  install -Dm644 workman  ${pkgdir}/usr/share/X11/xkb/symbols/workman
-  install -Dm644 workman-p  ${pkgdir}/usr/share/X11/xkb/symbols/workman-p
+  install -Dm644 workman  ${pkgdir}/usr/share/xkeyboard-config-2/symbols/workman
+  install -Dm644 workman-p  ${pkgdir}/usr/share/xkeyboard-config-2/symbols/workman-p
 
   cd ${srcdir}/${_pkgname}/linux_console/
   install -Dm644 workman.iso15.kmap ${pkgdir}/usr/share/kbd/keymaps/i386/workman/workman.map
