@@ -1,0 +1,22 @@
+From 24a4c44d62322f20b26f883f85a6815cc42b3cb8 Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Sun, 18 May 2025 11:56:16 +0200
+Subject: [PATCH] spcify_cmake3.5
+
+---
+ src/libs/ec/abstracts/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libs/ec/abstracts/CMakeLists.txt b/src/libs/ec/abstracts/CMakeLists.txt
+index 12bb46568..d3da890a8 100644
+--- a/src/libs/ec/abstracts/CMakeLists.txt
++++ b/src/libs/ec/abstracts/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED (VERSION 2.8)
++CMAKE_MINIMUM_REQUIRED (VERSION 3.5)
+ MESSAGE (STATUS "Generating ${HEADER_FILE}")
+ FILE (READ License.abstract LICENSE_TEXT)
+ STRING (REGEX REPLACE "\n\n+" "" LICENSE_TEXT ${LICENSE_TEXT})
+-- 
+2.49.0
+
