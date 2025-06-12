@@ -1,6 +1,6 @@
 # Maintainer: bipin kumar <kbipinkumar@pm.me>
 pkgname=cramino
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A fast tool for BAM/CRAM quality evaluation of long reads. https://doi.org/10.1093/bioinformatics/btad311'
 arch=(x86_64)
@@ -10,12 +10,12 @@ url='https://github.com/wdecoster/cramino'
 license=('MIT')
 options=(!lto)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/wdecoster/cramino/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('70b577982955cc8a736f07fe92e4ddb0855676ff9b98e7380c78aac67a7309f8')
+sha256sums=('3474fbec95c16ad414fb5cc85ab1c74b89ddacd8b214aee90e7ff905a0d88ad9')
 
 prepare() {
     cd ${pkgname}-${pkgver}
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch  --target "$CARCH-unknown-linux-gnu"
+    cargo fetch  --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
