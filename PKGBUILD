@@ -2,7 +2,7 @@
 # Contributor: Valerio Pizzi (pival81) <pival81@yahoo.com>
 pkgname=museeks
 _pkgname=Museeks
-pkgver=0.20.9
+pkgver=0.21.1
 _nodeversion=23
 pkgrel=1
 pkgdesc="🎵 A simple, clean and cross-platform music player."
@@ -19,11 +19,12 @@ makedepends=(
     'nvm'
     'curl'
 	'rust'
+	'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${_ghurl}#tag=${pkgver}"
 )
-sha256sums=('2d957cb0a7f52fdbc48a88427daa4abbdcf77b8700ab7fdd9d27624ae5f4c52f')
+sha256sums=('29da551a8b6f21a5a3a777c1ddd99123d3a3b0033b0352acadb22917978f1e71')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -43,18 +44,18 @@ prepare() {
 	fi
 	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
 		{
-			echo '[install]'
-			echo 'registry = "https://registry.npmmirror.com"'
-		} >> bunfig.toml
+			echo 'registry=https://registry.npmmirror.com'
+		} >> .npmrc
 		export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 		export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+		export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
 	fi
-    NODE_ENV=development    bun install
+    bun install --frozen-lockfile
 }
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	sed -i 's/"dmg", "nsis", "appimage", "deb", "rpm"/"deb"/g' src-tauri/tauri.conf.json
-	NODE_ENV=production    bun tauri build
+	bun tauri build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_"*/data/usr/bin/"${pkgname}" -t "${pkgdir}/usr/bin"
