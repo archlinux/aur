@@ -1,0 +1,4 @@
+[gtkd]
+source = "git"
+git = "https://github.com/gtkd-developers/GtkD.git"
+prefix = "v"

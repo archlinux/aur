@@ -1,32 +1,45 @@
-# Maintainer: Severen Redwood <severen@shrike.me>
-# Contributors: Robert Welin <robert.welin@gmail.com>
-#               dsboger <https://github.com/dsboger>
-# Report all package issues to `https://github.com/SShrike/pkgbuilds`
+# Maintainer: Dan Printzell <wild@archlinux.org>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Contributor: Severen Redwood <severen@shrike.me>
+# Contributor: Robert Welin <robert.welin@gmail.com>
+# Contributorr: dsboger <https://github.com/dsboger>
 
-pkgname='gtkd'
-pkgver='3.7.5'
+pkgname=gtkd
+pkgver=3.11.0
 pkgrel=1
 pkgdesc='D bindings for GTK+ and related libraries.'
-arch=('x86_64' 'i686')
-url='http://gtkd.org/'
-license=('LGPL')
+arch=('x86_64')
+url='https://gtkd.org'
+license=('LGPL-3.0-or-later')
 depends=('liblphobos' 'gtk3')
 makedepends=('ldc')
 optdepends=('pango' 'atk' 'gdk-pixbuf2' 'gtksourceview3' 'gstreamer' 'vte3' 'libpeas')
-source=("https://github.com/gtkd-developers/GtkD/archive/v${pkgver}.tar.gz")
-sha512sums=('258bdb53d56006d6aeab04adbc8d8ed61b5ac56c4a0b63e4df135f801f08aa324b0506a059b1c29bd6dd76a0330756b50221316b33d18b9272949e0775539b93')
+source=("GtkD-$pkgver.tar.gz::https://github.com/gtkd-developers/GtkD/archive/v$pkgver.tar.gz")
+sha512sums=('8c2a19fa7d71b0b9341d22e45d8c8804d84db25842b30affaaf62672d93a9173551e420103c30887cd111301999ca12b4148ddf270cb27bf67f4e1e51ea144a9')
 
 build() {
-  cd ${srcdir}/GtkD-${pkgver}
+    cd GtkD-$pkgver
+    export _ldFlags="$(echo -ne $LDFLAGS | sed -e 's/-Wl,/-L=/g' -e 's/=auto/=full')"
 
-  LDFLAGS='-defaultlib=druntime-ldc-shared,phobos2-ldc-shared' DC='ldc' make libdir='lib/' shared-{gtkd,gtkdgl,sv,gstreamer,vte,peas}
+    make \
+        DC='ldc' \
+        LDFLAGS="$_ldFlags" \
+        libdir='lib/' \
+        shared-{gtkd,gtkdgl,sv,gstreamer,vte,peas}
+}
+
+check() {
+    cd GtkD-$pkgver
+
+    make LDFLAGS='' test
 }
 
 package() {
-  cd ${srcdir}/GtkD-${pkgver}
+    cd GtkD-$pkgver
 
-  make prefix='/usr' libdir='lib/' DESTDIR="${pkgdir}/" \
-    install-{shared,headers}-{gtkd,gtkdgl,gtkdsv,gstreamer,vte,peas}
+    make \
+        prefix='/usr' \
+        libdir='lib/' \
+        DESTDIR="$pkgdir" \
+        install-{shared,headers}-{gtkd,gtkdgl,gtkdsv,gstreamer,vte,peas}
 }
-
-# vim:set ts=2 sw=2 et:
