@@ -1,7 +1,7 @@
 pkgbase = sddm-minesddm-theme-git
 	pkgdesc = A Minecraft themed SDDM.
 	pkgver = v1.1.0.r10.g428ca3f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Davi-S/sddm-theme-minesddm
 	arch = any
 	license = AGPL-3.0-only
@@ -9,6 +9,8 @@ pkgbase = sddm-minesddm-theme-git
 	depends = sddm
 	depends = qt5-quickcontrols2
 	depends = layer-shell-qt5
+	provides = sddm-minesddm-theme
+	conflicts = sddm-minesddm-theme
 	source = sddm-minesddm-theme-git::git+https://github.com/Davi-S/sddm-theme-minesddm
 	sha512sums = SKIP
 
