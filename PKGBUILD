@@ -143,15 +143,6 @@
 # Set to anything but null to activate.
 : "${_debug:=""}"
 
-# Show full compilation output
-# Enabling this will cause 'make' to display
-# all targets currently compiling instead of
-# the 'pv' magic we're doing.
-#
-# Active by default.
-# Set to 'n' or 'false' to show the 'pv' output.
-: "${_show_compile:="y"}"
-
 ### BUILD OPTIONS END
 
 ### DEPRECATED BUILD OPTIONS START
@@ -162,19 +153,24 @@
 # See '_optimize_defconfig'
 : "${_update_kconfig_on_reuse:=""}"
 
+# Show full compilation output
+# This used to control whether normal build
+# or some magic pv output should be
+# displayed while the kernel is compiling.
+: "${_show_compile:=""}"
+
 ### DEPRECATED BUILD OPTIONS END
 
 
 # Kernel version
-_kernel_major=6.13
-_kernel_minor=7
+_kernel_major=6.14
+_kernel_minor=10
 # Clear Linux patches version
-_clr=6.13.6-1551
+_clr=6.14.8-1574
 # kernel_compiler_patch version
 _kernelcompilerpatch="20241018"
 # Source directory names
 _src_linux=linux-${_kernel_major}
-_src_clr=${_clr}
 
 # Package information
 pkgbase=linux-clear-cjktty-zfs
@@ -185,22 +181,21 @@ arch=("x86_64")
 url="https://git.staropensource.de/JeremyStarTM/aur-linux-clear"
 license=(GPL-2.0-only)
 makedepends=("bc" "cpio" "gettext" "git" "libelf" "pahole" "perl" "python" "tar" "xz" "zstd")
-[[ -n "${_use_llvm_to}" ]] && makedepends+=("clang" "llvm" "lld")
-[[ -z "${_show_compile}" ]] && makedepends+=("pv")
+[ -n "${_use_llvm_to}" ] && makedepends+=("clang" "llvm" "lld")
 options=("!strip" "!debug")
-[[ "${_debug}" == "y" ]] && options=("!strip")
+[ "${_debug}" == "y" ] && options=("!strip")
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
-  "cl-linux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_src_clr}"
+  "cl-linux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
   "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
-  "git+https://github.com/openzfs/zfs.git#tag=zfs-2.3.1"
+  "git+https://github.com/openzfs/zfs.git#tag=zfs-2.3.2"
   "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v6.x/cjktty-6.9.patch"
   "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
 )
 
-[[ -n "${_use_llvm_lto}" ]] && BUILD_FLAGS=("LLVM=1" "LLVM_IAS=1")
+[ -n "${_use_llvm_lto}" ] && BUILD_FLAGS=("LLVM=1" "LLVM_IAS=1")
 
 export "KBUILD_BUILD_HOST=archlinux"
 export "KBUILD_BUILD_USER=${pkgbase}"
@@ -216,6 +211,45 @@ _check_deprecated_settings() {
         warning "Please switch to using '_use_current' flag instead of '_reuse_current'"
         _use_current="y"
     fi
+    [ -n "${_show_compile}" ] && warning "'_show_compile' is no longer supported"
+
+    # To avoid an error
+    true
+}
+
+_get_patches() {
+    # set -x
+    local spec_file="${srcdir}/cl-linux/linux.spec"
+
+    # 1. Search for patches in the linux.spec file
+    #    Matches lines starting exactly with: %patch followed immediately by digits.
+    #    This implicitly ignores commented-out lines.
+    # 2. Pipe the grep output to sed to extract the patch number.
+    #    Captures the digits immediately following '%patch'.
+    local applied_patch_numbers=$(grep -E '^%patch[0-9]+' $spec_file | sed -E 's/^%patch([0-9]+).*/\1/')
+
+    # Check if any patch numbers were found
+    if [ -z "$applied_patch_numbers" ]; then
+        error "No applied '%patchXXXX' directives found in the %prep section."
+        exit 0
+    fi
+
+    # 4. Iterate through the extracted patch numbers
+    while IFS= read -r num; do
+        # 5. For each number, find the corresponding uncommented 'PatchXXXX:' line.
+        #    Grep for lines starting exactly with 'Patch', the number, ':', and optional whitespace.
+        patch_line=$(grep -E "^Patch${num}:[[:space:]]*" "$spec_file")
+
+        # 6. Check if a corresponding PatchXXXX line was found
+        if [ -n "$patch_line" ]; then
+            # 7. Extract the filename part after the first ': ' delimiter.
+            #    Remove the "Patch0XXX: " prefix using bash substr removal
+            echo "${patch_line#Patch[0-9]*:[[:space:]]}"
+        else
+            # Output a warning if the definition line is missing (shouldn't happen with valid spec files)
+            warning "Warning: Could not find definition line 'Patch${num}:' for applied patch number $num"
+        fi
+    done <<< "$applied_patch_numbers" # Feed the numbers into the loop
 }
 
 # Applies all patches
@@ -228,7 +262,8 @@ _apply_patches() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
     
     # Patch with Clear Linux patches
-    for i in $(grep '^Patch' "${srcdir}"/cl-linux/linux.spec|grep -Ev '^Patch0132|^Patch0109|^Patch0118|^Patch0113|^Patch0138|^Patch0139|^Patch0147' | sed -n 's/.*: //p'); do
+    for i in $(_get_patches); do
+        echo "Applying $i"
         if [ -n "${_use_llvm_lto}" ]; then
             if [ "${i}" == "0133-novector.patch" ] ; then
                 continue
@@ -246,9 +281,9 @@ _apply_patches() {
 
 # Allows user to modify the kernel config
 _modify_defconfig() {
-    [[ -n "$_makemenuconfig" ]] && make ${BUILD_FLAGS[*]} menuconfig
-    [[ -n "$_makexconfig" ]] && make ${BUILD_FLAGS[*]} xconfig
-    [[ -n "$_makenconfig" ]] && make ${BUILD_FLAGS[*]} nconfig
+    [ -n "$_makemenuconfig" ] && make ${BUILD_FLAGS[*]} menuconfig
+    [ -n "$_makexconfig" ] && make ${BUILD_FLAGS[*]} xconfig
+    [ -n "$_makenconfig" ] && make ${BUILD_FLAGS[*]} nconfig
 
     # Don't crash if all three are false
     true
@@ -257,10 +292,10 @@ _modify_defconfig() {
 # Copies the kernel config
 _copy_defconfig() {
     local _cur_major_ver="$(uname -r | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
-    [[ "${_cur_major_ver}" != "${_kernel_major}" ]] &&
+    [ "${_cur_major_ver}" != "${_kernel_major}" ] &&
         warning "Major version was updated, you should regen the defconfig"
 
-    if [[ -s /proc/config.gz ]]; then
+    if [ -s /proc/config.gz ]; then
         # modprobe configs
         zcat /proc/config.gz > ./.config
         make ${BUILD_FLAGS[*]} olddefconfig
@@ -384,27 +419,31 @@ _update_defconfig() {
     # Library routines
     scripts/config -k -e FONT_TER16x32
     
+    # EDAC enablement for modern CPUs
+    scripts/config -e EDAC_AMD64 \
+                -e EDAC_IGEN6
+
     # Enable LLVM compilation
-    [[ -n "${_use_llvm_lto}" ]] && scripts/config -d LTO_NONE \
-                                                  -e LTO \
-                                                  -e LTO_CLANG \
-                                                  -e ARCH_SUPPORTS_LTO_CLANG \
-                                                  -e ARCH_SUPPORTS_LTO_CLANG_THIN \
-                                                  -e HAS_LTO_CLANG \
-                                                  -e LTO_CLANG_THIN \
-                                                  -e HAVE_GCC_PLUGINS
-    
+    [ -n "${_use_llvm_lto}" ] && scripts/config -d LTO_NONE \
+                                                -e LTO \
+                                                -e LTO_CLANG \
+                                                -e ARCH_SUPPORTS_LTO_CLANG \
+                                                -e ARCH_SUPPORTS_LTO_CLANG_THIN \
+                                                -e HAS_LTO_CLANG \
+                                                -e LTO_CLANG_THIN \
+                                                -e HAVE_GCC_PLUGINS
+
     # Enable or disable debug settings
-    [[ "${_debug}" == "y" ]] && scripts/config -e DEBUG_INFO \
-                                               -e DEBUG_INFO_BTF \
-                                               -e DEBUG_INFO_DWARF4 \
-                                               -e PAHOLE_HAS_SPLIT_BTF \
-                                               -e DEBUG_INFO_BTF_MODULES
-    [[ "${_debug}" == "n" ]] && scripts/config -d DEBUG_INFO \
-                                               -d DEBUG_INFO_BTF \
-                                               -d DEBUG_INFO_DWARF4 \
-                                               -d PAHOLE_HAS_SPLIT_BTF \
-                                               -d DEBUG_INFO_BTF_MODULES
+    [ "${_debug}" == "y" ] && scripts/config -e DEBUG_INFO \
+                                            -e DEBUG_INFO_BTF \
+                                            -e DEBUG_INFO_DWARF4 \
+                                            -e PAHOLE_HAS_SPLIT_BTF \
+                                            -e DEBUG_INFO_BTF_MODULES
+    [ "${_debug}" == "n" ] && scripts/config -d DEBUG_INFO \
+                                            -d DEBUG_INFO_BTF \
+                                            -d DEBUG_INFO_DWARF4 \
+                                            -d PAHOLE_HAS_SPLIT_BTF \
+                                            -d DEBUG_INFO_BTF_MODULES
     
     # Run olddefconfig
     make ${BUILD_FLAGS[*]} olddefconfig
@@ -443,7 +482,7 @@ _update_defconfig() {
 
             # Invoke echo to sanitize the __ERROR, it can contain a newline or a \r
             # symbol, thus breaking the script
-            if [[ -n "$(echo $__ERROR)" ]]; then
+            if [ -n "$(echo $__ERROR)" ]; then
                 warning "Selected subarch: ${_subarch} is not supported"
                 exit
             fi
@@ -469,24 +508,25 @@ prepare() {
     _check_deprecated_settings
     _apply_patches
 
-    [[ -n "${_use_current}" ]] && _copy_defconfig
-    [[ -n "${_optimize_defconfig}" ]] || [[ -z "${_use_current}" ]] && _update_defconfig
+    [ -n "${_use_current}" ] && _copy_defconfig
+    [ -n "${_optimize_defconfig}" ] || [ -z "${_use_current}" ] && _update_defconfig
     
     # Read and apply modprobed database
     # See https://aur.archlinux.org/packages/modprobed-db
-    [[ -n "${_localmodcfg}" ]] &&
+    if [ -n "${_localmodcfg}" ]; then
         if [ -e "${HOME}/.config/modprobed.db" ]; then
             make ${BUILD_FLAGS[*]} LSMOD=${HOME}/.config/modprobed.db localmodconfig
         else
             echo ":: No modprobed.db file was found at ${HOME}/.config, skipping"
         fi
+    fi
 
     # Open configuration editors
     _modify_defconfig
 
     # Save configuration
     # shellcheck disable=SC2015
-    [[ -n "${_copyfinalconfig}" ]] && cp -Tf ./.config "${startdir}/kconfig-new" || true
+    [ -n "${_copyfinalconfig}" ] && cp -Tf ./.config "${startdir}/kconfig-new" || true
 
     # Write kernel version
     make -s kernelrelease > version
@@ -495,11 +535,7 @@ prepare() {
 # Build kernel
 build() {
     cd "${_src_linux}" || exit 1
-    if [[ "${_show_compile}" == "n" ]] || [[ "${_show_compile}" == "false" ]]; then
-        make ${BUILD_FLAGS[*]} all | pv -l -F "Elapsed time: %t, targets per sec: %a" > /dev/null
-    else
-        make ${BUILD_FLAGS[*]} all
-    fi
+    make ${BUILD_FLAGS[*]} all
 }
 
 # Packages the kernel package
@@ -548,7 +584,7 @@ local "builddir=${pkgdir}/usr/lib/modules/$(<version)/build"
     install -Dt "${builddir}/tools/objtool" tools/objtool/objtool
     
     # Required when DEBUG_INFO_BTF_MODULES is enabled
-    [[ -f tools/bpf/resolve_btfids/resolve_btfids ]] && install -Dt "${builddir}/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+    [ -f tools/bpf/resolve_btfids/resolve_btfids ] && install -Dt "${builddir}/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
     
     cp -t "${builddir}" -a include
     cp -t "${builddir}/arch/x86" -a arch/x86/include
@@ -625,9 +661,9 @@ validpgpkeys=(
   "E27E5D8A3403A2EF66873BBCDEA66FF797772CDC"  # Sasha Levin (sashal@kernel.org)
   "AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109"  # Ben Hutchings (benh@debian.org)
 )
-sha256sums=("e79dcc6eb86695c6babfb07c2861912b635d5075c6cd1cd0567d1ea155f80d6e"
+sha256sums=("a294b683e7b161bb0517bb32ec7ed1d2ea7603dfbabad135170ed12d00c47670"
             "SKIP"
-            "3c33fc5a395406d58627007548f3682dce18eab9991d937c9ccfb8e610c37d2a"
+            "6ed2cf0d734b872ff433726dc18da14a501bacd4ec4e9d16c95daf1d9fc5bfa5"
             "SKIP"
             "b3fd8b1c5bbd39a577afcccf6f1119fdf83f6d72119f4c0811801bdd51d1bc61"
             'SKIP'
