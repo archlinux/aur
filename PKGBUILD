@@ -26,7 +26,7 @@ optdepends=('nvidia-utils: only for nVidia users' 'libc++: only for BlackMagic R
 conflicts=('lwks-beta')
 replaces=('lwks')
 source=(
-    "https://cdn.lwks.com/releases/$lwksreldir/lightworks-${lwksver}-r${lwksbuild}.deb"
+    "https://cdn.lwks.com/releases/$lwksreldir/Lightworks-${lwksver}-r${lwksbuild}.deb"
     )
 
 package() {
