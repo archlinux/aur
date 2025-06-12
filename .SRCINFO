@@ -7,6 +7,7 @@ pkgbase = easyrpg-rtp
 	license = GPL3
 	makedepends = git
 	makedepends = oxipng
+	optdepends = easyrpg-player
 	source = easyrpg-rtp::git+https://github.com/EasyRPG/RTP.git
 	sha256sums = SKIP
 

@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/EasyRPG/RTP"
 license=('GPL3')
 makedepends=(git oxipng)
-optional=(easyrpg-player)
+optdepends=(easyrpg-player)
 source=(${pkgname}::"git+${url}.git") # replace with stable frozen commit
 sha256sums=('SKIP')
 
