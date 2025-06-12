@@ -1,6 +1,6 @@
 pkgbase = royal-blocks-bin
 	pkgdesc = A homemade Royal Tetris in C++
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 2
 	url = https://github.com/ulb-info2-group5/Royal-Blocks
 	arch = x86_64
