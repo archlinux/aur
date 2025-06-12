@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://www.tv-lite.com"
 license=('GPL2')
 groups=()
-depends=('vlc' 'wxgtk3' 'sqlite' 'curl' 'util-linux-libs')
+depends=('vlc' 'wxwidgets-gtk3' 'sqlite' 'curl' 'util-linux-libs')
 makedepends=('rapidjson' 'cmake')
 optdepends=()
 provides=()
@@ -20,7 +20,7 @@ install=
 changelog=
 source=(https://gitlab.com/cburneci/tv-lite/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('SKIP') #generate with 'makepkg -g'
+md5sums=('219feb6e7c08ad1eeda4f2b88b4e91f4') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/src"
