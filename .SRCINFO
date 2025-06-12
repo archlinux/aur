@@ -1,6 +1,6 @@
 pkgbase = royal-blocks
 	pkgdesc = A homemade Royal Tetris in C++
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/ulb-info2-group5/Royal-Blocks
 	arch = x86_64
@@ -13,6 +13,6 @@ pkgbase = royal-blocks
 	options = !debug
 	options = strip
 	source = https://github.com/ulb-info2-group5/Royal-Blocks/releases/download/v1.1.2/royal-blocks-1.1.2-x86_64.pkg.tar.zst
-	sha256sums = 31d84bac823313ea7438010e51f647a26be23452df97a3d356bcc5546574567a
+	sha256sums = e94ad52cfa4087fb2d1a5287725a02d129af6148d6723771a78c4d1f833f028a
 
 pkgname = royal-blocks
