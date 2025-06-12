@@ -1,11 +1,12 @@
 pkgbase = actual-server
 	pkgdesc = Actual Budget server used for syncing across devices. Includes the web client.
 	pkgver = 25.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://actualbudget.org
 	arch = x86_64
 	license = MIT
 	makedepends = npm
+	makedepends = python
 	depends = nodejs
 	noextract = actual-server-25.6.1.tar.gz
 	options = !debug

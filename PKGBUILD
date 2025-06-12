@@ -8,13 +8,13 @@ _npmver=25.6.1
 
 pkgname=actual-server
 pkgver=${_npmver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Actual Budget server used for syncing across devices. Includes the web client."
 arch=(x86_64)
 url="https://actualbudget.org"
 license=('MIT')
 depends=('nodejs')
-makedepends=('npm')
+makedepends=('npm' 'python')
 backup=("etc/conf.d/${pkgname}")
 options=('!debug')
 source=(
