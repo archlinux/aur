@@ -7,7 +7,7 @@ pkgdesc='Flexible toolkit for making desktop shells with QtQuick'
 arch=(x86_64 aarch64)
 url='https://git.outfoxxed.me/quickshell/quickshell'
 options=(!strip)
-license=('LGPL-3.0-only')
+license=('GPL')
 depends=(
   'qt6-declarative'
   'qt6-base'
@@ -29,7 +29,7 @@ makedepends=(
   'cmake'
   'pkgconf'
 )
-source=("$pkgname"-"$pkgver".tar.gz:::"$url"/archive/v0.1.0.tar.gz
+source=("$pkgname"-"$pkgver".tar.gz::"$url/archive/v0.1.0.tar.gz"
   quickshell-check.hook)
 
 sha256sums=('5962043c7d4264cc7d71445dc86e175d0fbb1701ce390c24f92c6371e24bc127'
@@ -51,8 +51,7 @@ build() {
 
 package() {
   install -Dm644 "quickshell-check.hook" -t "$pkgdir/usr/share/libalpm/hooks"
-
   cd "$pkgname"
-  DESTDIR=$pkgdir cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
