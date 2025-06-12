@@ -6,6 +6,9 @@ pkgbase = thumbor-aws
 	arch = any
 	license = mit
 	depends = python
+	depends = python-aiobotocore
+	depends = python-deprecated
+	depends = python-pycurl
 	source = https://github.com/thumbor/thumbor-aws/archive/refs/tags/v0.8.1.tar.gz
 	md5sums = 6a4384b458032a2318e6edfdcdc5d202
 
