@@ -1,17 +1,17 @@
 # Maintainer: Thomas Scholtes <geigerzaehler@axiom.fm>
 #
-# shellcheck shell=bash disable=SC2034 disable=SC2154
+# shellcheck shell=bash disable=SC2034 disable=SC2154 disable=SC2164
 
-_commit=33dd37714b7dbf56a11339a4c6f56f11d8b85351
+_commit=dab7b4455e897c2dd1fa3e9711654880c4f90237
 pkgname=radicle-desktop
-pkgver='0.4.1'
+pkgver='0.5.0'
 pkgrel='1'
 pkgdesc='Radicle desktop app'
 arch=('x86_64')
 url='https://www.radworks.garden/'
 license=('GPL-3.0-only')
 depends=(
-  'radicle-node-bin'
+  'radicle-node'
   # See https://v2.tauri.app/distribute/aur/#building-from-source
   'cairo'
   'desktop-file-utils'
@@ -39,14 +39,14 @@ source=("$pkgname::git+https://seed.radicle.xyz/z4D5UCArafTzTQpDZNQRuqswh3ury.gi
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$pkgname" || return 1
+  cd "$pkgname"
 
   npm install
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "$pkgname" || return 1
+  cd "$pkgname"
 
   npx tauri build --bundles deb
 }
