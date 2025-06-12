@@ -1,7 +1,7 @@
 # Maintainer: Entailz <entail-wraps0r at icloud dot com>
 
 pkgname=quickshell
-pkgver=v0.1.0
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Flexible toolkit for making desktop shells with QtQuick'
 arch=(x86_64 aarch64)
