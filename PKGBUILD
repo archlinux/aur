@@ -3,7 +3,7 @@
 
 pkgname=substance-sampler
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 _rc=rc.3
 _build=2229
 _tag=3dd2456e
@@ -11,7 +11,7 @@ pkgdesc="Transform a real-life picture into a photorealistic surface or HDR envi
 arch=('x86_64')
 url='https://www.adobe.com/products/substance3d-sampler.html'
 license=('custom')
-depends=('libicu50' 'fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
+depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'libxml2-legacy' 'libxcrypt-compat' 'xcb-util-wm' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil')
 options=('!strip')
 replaces=('substance-alchemist')
 source=("https://download.substance3d.com/adobe-substance-3d-sampler/3.x/Adobe_Substance_3D_Sampler-${pkgver}-${_rc}-${_build}-linux-x64-standard-Release-${_tag}.rpm")
