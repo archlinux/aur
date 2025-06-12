@@ -10,6 +10,6 @@ pkgbase = dbusevents
 	depends = dbus
 	source = https://github.com/findus/dbusevents/archive/refs/tags/0.1.1.tar.gz
 	validpgpkeys = 61FFD901BD7C555A8888B7D078F2B0F63DDC9CBC
-	md5sums = b6669ae19791ea318cea93e07d97939a
+	md5sums = a49197f369cdad25841eacddb698a2a9
 
 pkgname = dbusevents
