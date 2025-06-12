@@ -1,0 +1,13 @@
+pkgbase = toml-cli
+	pkgdesc = CLI for editing and querying TOML files
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/gnprice/toml-cli
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = toml-cli-0.2.3.tar.gz::https://github.com/gnprice/toml-cli/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = 913f104612b0e549090e1cf77a7a49a12fa286af7e720dd46265bcc554b8f73a
+
+pkgname = toml-cli

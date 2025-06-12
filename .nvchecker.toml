@@ -1,0 +1,5 @@
+[toml-cli]
+source = 'github'
+github = 'gnprice/toml-cli'
+use_latest_release = true
+prefix = 'v'
