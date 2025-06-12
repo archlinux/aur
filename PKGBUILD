@@ -11,5 +11,5 @@ sha256sums=('f9f5140d8be62840c6e80aab4a988c8913fd6130a1b6340b067c49ca2989301b')
 
 package() {
     install -D "${pkgname}-${pkgver}/dnstwist.py" "${pkgdir}/usr/bin/dnstwist.py"
-    install -D "${pkgname}-${pkgver}/docs/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+    install -D "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
