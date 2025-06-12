@@ -1,0 +1,17 @@
+pkgbase = mkdocs-include-markdown-plugin
+	pkgdesc = Mkdocs Markdown includer plugin.
+	pkgver = 7.1.5
+	pkgrel = 1
+	url = https://github.com/mondeja/mkdocs-include-markdown-plugin
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = mkdocs
+	depends = python-wcmatch
+	source = mkdocs-include-markdown-plugin-7.1.5.tar.gz::https://github.com/mondeja/mkdocs-include-markdown-plugin/archive/refs/tags/v7.1.5.tar.gz
+	sha256sums = 351b7a3b0718e6f13410b4d7ea884e6a2c8c22ab31ea2f5a57ff9c78fa467ed4
+
+pkgname = mkdocs-include-markdown-plugin
