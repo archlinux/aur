@@ -16,4 +16,5 @@ package() {
     ln -s /usr/bin/spaces.py "$pkgdir/usr/bin/spaces"
     sed -i '1s|^|#!/usr/bin/env python\n|' "$pkgdir/usr/bin/spaces.py"
 
+
 }
