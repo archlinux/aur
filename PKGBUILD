@@ -1,33 +1,27 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 
 pkgname=dvbinspector
-pkgver=1.19.2
+pkgver=1.20.0
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="DVB analyzer, written in java"
 url="https://github.com/EricBerendsen/dvbinspector"
 license=("GPL-3.0-or-later")
 arch=('any')
-depends=('java-runtime>=17')
-makedepends=('maven' 'jdk17-openjdk')
+depends=('java-runtime>=21')
+makedepends=('maven' 'jdk21-openjdk')
 
 source=("$url/archive/refs/tags/release_${_pkgver}.tar.gz"
         "dvbinspector.sh"
-        "version-1.19.2.patch"
         )
-sha256sums=('40e8c85549362ded8e7661c2ca0c9e5284ae2a4d2b63b5e1ef95e25df1ae8b3e'
+sha256sums=('ec7767e0d33e2b96738e2e317da09d138ecd132c70122faaab54161e7c9e934c'
             'af320db41a920b3838a7598c8d0712352a59081112015f893f7b713d407773e4'
-            '2cd4b535278a29cb78ce4cbffc6ea7ca8244ecda98f23c03092fe5fc66826a2f')
-
-prepare() {
-    cd "${pkgname}-release_${_pkgver}"
-    patch -p1 -i "${srcdir}/version-1.19.2.patch"
-}
+           )
 
 build() {
     cd "${pkgname}-release_${_pkgver}"
-    export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
-    export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+    export PATH="/usr/lib/jvm/java-21-openjdk/bin/:$PATH"
+    export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
 
     mvn package
 }
