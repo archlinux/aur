@@ -1,6 +1,6 @@
 pkgbase = dynamic-power-daemon
 	pkgdesc = Auto-switches powerprofilesctl/asusctl profiles by CPU load & workload
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/evertvorster/dynamic-power-daemon
 	install = dynamic-power-daemon.install
@@ -8,7 +8,7 @@ pkgbase = dynamic-power-daemon
 	license = GPL3
 	depends = bc
 	depends = systemd
-	source = https://github.com/evertvorster/dynamic-power-daemon/archive/refs/tags/v3.2.0.tar.gz
+	source = https://github.com/evertvorster/dynamic-power-daemon/archive/refs/tags/v3.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = dynamic-power-daemon
