@@ -3,12 +3,12 @@
 
 pkgname=renderman
 pkgver=26.3.2352291
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary photorealistic 3D rendering software produced by Pixar Animation Studios"
 arch=('x86_64')
 url="https://renderman.pixar.com"
 license=('custom')
-depends=('libidn' 'libicu50' 'xcb-util-keysyms' 'libxcomposite' 'xcb-util-image' 'libxcb'
+depends=('glibc' 'gcc-libs' 'xcb-util-keysyms' 'libxcomposite' 'xcb-util-image' 'libxcb'
          'libxext' 'xcb-util-wm' 'xcb-util-renderutil' 'freetype2' 'libdrm' 'libsm' 'dbus'
          'libglvnd' 'zlib' 'zstd' 'krb5' 'libxkbcommon-x11' 'libice' 'glib2' 'wayland'
          'fontconfig' 'libxkbcommon' 'libx11')
