@@ -23,24 +23,31 @@ package() {
   install -Dm755 "$srcdir/ayaan-launcher.sh" "$pkgdir/usr/bin/unstable/ayaan"
   install -Dm755 "$srcdir/aspkg-launcher.sh" "$pkgdir/usr/bin/unstable/aspkg"
 
-  # Auto PATH injection into bashrc or zshrc
+  # Handle PATH modification per user
   for home in /home/*; do
-    user_shell=$(getent passwd "$(basename "$home")" | cut -d: -f7)
+    user="$(basename "$home")"
+    rcfile=""
 
-    if [ "$user_shell" = "/bin/zsh" ] && [ -f "$home/.zshrc" ]; then
+    # Detect shell
+    user_shell=$(getent passwd "$user" | cut -d: -f7)
+    if [[ "$user_shell" == */zsh ]] && [[ -f "$home/.zshrc" ]]; then
       rcfile="$home/.zshrc"
-    elif [ -f "$home/.bashrc" ]; then
+    elif [[ -f "$home/.bashrc" ]]; then
       rcfile="$home/.bashrc"
-    else
-      continue
     fi
 
-    if ! grep -q '/usr/bin/unstable' "$rcfile"; then
+    [[ -z "$rcfile" ]] && continue
+
+    # Safe PATH injection
+    if ! grep -Fxq 'export PATH="$PATH:/usr/bin/unstable"' "$rcfile"; then
       echo 'export PATH="$PATH:/usr/bin/unstable"' >> "$rcfile"
       echo "✅ Patched: $rcfile"
     fi
 
-    # Auto-source it immediately
-    su "$(basename "$home")" -c "source $rcfile"
+    # Check if this is an uninstall situation
+    if [[ "$1" == "remove" ]] || [[ "$1" == "uninstall" ]] || [[ ! -f "$pkgdir/usr/bin/unstable/ayaan" ]]; then
+      sed -i '/export PATH="\$PATH:\/usr\/bin\/unstable"/d' "$rcfile"
+      echo "🧹 Cleaned: $rcfile"
+    fi
   done
 }
