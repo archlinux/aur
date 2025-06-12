@@ -26,6 +26,9 @@ fi
 if kubectl -n "$namespace" get secrets "${name}-kubeconfig" -o jsonpath='{.data.value}' 2>/dev/null | base64 -d >"$NEW_KUBECONFIG"; then
   hasKubeconfig=true
   envs+=(KUBECONFIG="$NEW_KUBECONFIG")
+  if [[ -v CAPO_SHELL_KUBECONFIG_FILTER ]]; then
+    yq -Y "$CAPO_SHELL_KUBECONFIG_FILTER" "$NEW_KUBECONFIG" | sponge "$NEW_KUBECONFIG"
+  fi
 else
   hasKubeconfig=false
   envs+=(KUBECONFIG="")
