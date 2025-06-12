@@ -1,21 +1,21 @@
 # Maintainer: Jan-Niklas Tomski <jan-niklas at tomski dot me>
 _pkgname='wootility'
 pkgname="${_pkgname}5-beta"
-pkgver='5.0.0_beta.10'
+pkgver='5.1.0_beta.3'
 _appimage="${_pkgname^}-${pkgver//_/-}.AppImage"
 pkgrel=1
-pkgdesc="Utility for configuring Wooting keyboards (v${pkgver//_/-})"
+pkgdesc="Utility for configuring Wooting keyboards (AppImage beta release)"
 arch=(any)
 url='https://wooting.io/wootility'
 license=('unknown')
 depends=('fuse2')
 makedepends=('util-linux' 'findutils')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}" 'wootility5-appimage' 'wootility-appimage' 'wootility3-appimage')
 options=(!strip)
 source=("https://wootility-updates.ams3.cdn.digitaloceanspaces.com/wootility-linux/${_appimage}"
         '70-wooting.rules')
-b2sums=('959b454798f03c703b48b04f4cdd473f4f8fbc9ee107792548b312e0a0595373334c7d832c323c866402ad31d4427c86cbfe379aa14242418f8429c3787372e0'
+b2sums=('12c9c43de0ab9054d93faba156cdf8ec6a98d209305c5314547a3030a8f669e77ac5f559ecf5846e5b99538c85289c1ae3bf9cf5b69e8e8e6dcf88fe35203239'
         '80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1')
 
 prepare() {
