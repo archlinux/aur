@@ -9,7 +9,7 @@
 
 # Maintainer: Golf Team <team@golf-lang.com>
 pkgname=golf
-pkgver=601.4.54
+pkgver=601.4.58
 pkgrel=0
 epoch=
 pkgdesc="Programming language and application server for building and running web services and web applications. High performance and memory-safe."
@@ -42,7 +42,7 @@ prepare() {
 build() {
 	cd "${pkgname}-${pkgver}"
 	make DESTDIR="$pkgdir/" clean
-	make DESTDIR="$pkgdir/"
+	make GG_ARCH_BUILD=1 DESTDIR="$pkgdir/"
 }
 
 check() {
@@ -51,7 +51,7 @@ check() {
 
 package() {
 	cd "${pkgname}-${pkgver}"
-	make DESTDIR="$pkgdir/" install
+	make GG_ARCH_BUILD=1 DESTDIR="$pkgdir/" install
 }
 
 post_install() {
