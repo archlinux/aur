@@ -8,7 +8,7 @@ import random
 
 import os
 
-class Main:
+class Spaces:
 
     def __init__(self):
         # self.name = name
@@ -215,7 +215,7 @@ class Main:
 
         ################################################################### main
 
-    def main(self, args):
+    def spaces(self, args):
 
         # Expand the path to the user's home directory
         config_dir = os.path.expanduser('~/.config/spaces')
@@ -270,8 +270,8 @@ class Main:
 
 if __name__ == "__main__":
     # user_name = input("Enter your name: ")
-    app = Main()
+    app = Spaces()
     args = app.make_ARGS()
 
     # Call the main method
-    app.main(args)
+    app.spaces(args)
