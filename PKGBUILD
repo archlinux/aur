@@ -2,8 +2,8 @@
 
 pkgbase=decasify-git
 _pkgbase=${pkgbase%-git}
-pkgname=("$pkgbase" "lua-$pkgbase" "lua53-$pkgbase" "lua52-$pkgbase" "lua51-$pkgbase" "neovim-$pkgbase" "python-$pkgbase" "sile-$pkgbase")
-pkgver=0.10.1.r0.gffd4fd9
+pkgname=("$pkgbase" "lua-$pkgbase" "lua53-$pkgbase" "lua52-$pkgbase" "lua51-$pkgbase" "neovim-$pkgbase" "python-$pkgbase" "sile-$pkgbase" "vim-$pkgbase" )
+pkgver=0.10.1.r20.g356000d
 _rockrel=1
 pkgrel=1
 pkgdesc='cast strings to title-case according to locale specific style guides including Turkish'
@@ -90,12 +90,11 @@ package_lua53-decasify-git() {
 package_neovim-decasify-git() {
 	cd "$_pkgbase"
 	pkgdesc+=' (Neovim plugin)'
-	depends=("lua51-$pkgbase-git=$pkgver"
+	depends=("lua51-$pkgbase=$pkgver"
 	         neovim)
 	provides=("${pkgname%-git}=$pkgver")
 	conflicts=("${pkgname%-git}")
-	find plugin -type f -exec \
-		install -Dm0644 {} "$pkgdir/usr/share/nvim/site/pack/dist/start/$_pkgbase/{}" \;
+	install -Dm0644 -t "$pkgdir/usr/share/nvim/site/pack/dist/start/$_pkgbase/" plugin/*
 }
 
 package_python-decasify-git() {
@@ -110,10 +109,20 @@ package_python-decasify-git() {
 package_sile-decasify-git() {
 	cd "$_pkgbase"
 	pkgdesc+=' (SILE package)'
-	depends=("lua51-$pkgbase-git=$pkgver"
+	depends=("lua51-$pkgbase=$pkgver"
 	         sile)
 	provides=("${pkgname%-git}=$pkgver")
 	conflicts=("${pkgname%-git}")
 	luarocks --lua-version 5.1 --tree "$pkgdir/usr/" \
 		make --deps-mode none --no-manifest "$_pkgbase.sile-dev-$_rockrel.rockspec"
+}
+
+package_vim-decasify-git() {
+	cd "$_pkgbase"
+	pkgdesc+=' (VIM plugin)'
+	depends=("$pkgbase=$pkgver"
+	         vim)
+	provides=("${pkgname%-git}=$pkgver")
+	conflicts=("${pkgname%-git}")
+	install -Dm0644 -t "$pkgdir/usr/share/vim/vimfiles/$_pkgbase/" plugin/*
 }
