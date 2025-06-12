@@ -2,7 +2,7 @@
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=crmsh
-pkgver=4.6.1
+pkgver=4.6.2
 pkgrel=1
 pkgdesc="Command-line interface for high-availability cluster management on GNU/Linux systems"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python'
          'python-dateutil'
          'python-yaml')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ClusterLabs/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('ff4860bc4f9dffb16279897459a9385bb4bee886ebf881e693d2173375a09265702adcb700cff6e8a39df406fac1ce7afb5f7213210245ae515099c1f90500b3')
+sha512sums=('02e7b145f3860490690aa95fdab535afa5f0c1e12d58743b32ea47df53e1dc3b51bfbf14f8e6f4a6ba5608c1f3240656d2bacda6b43bbc198e98c760081b6324')
 
 prepare() {
   cd ${pkgname}-${pkgver}
