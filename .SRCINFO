@@ -1,0 +1,11 @@
+pkgbase = libhangul2
+	pkgdesc = Input method library for Korean
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/libhangul/libhangul
+	arch = x86_64
+	license = LGPL
+	source = https://github.com/libhangul/libhangul/releases/download/libhangul-0.2.0/libhangul-0.2.0.tar.gz
+	sha512sums = a8e1e70a91d51932bedc9b9d9e3099aba18d1b696cdc2395430076bf433855d0dbe807bc901f4eee4bd7bfda1e0079f73d58c6564a03e5f7828a7fe41c357c0a
+
+pkgname = libhangul2
