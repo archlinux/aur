@@ -1,6 +1,6 @@
 pkgbase = kiwix-js-electron-bin
 	pkgdesc = Kiwix JS Offline Browser implemented as a Progressive Web App (PWA), and packaged as Electron, NWJS and UWP apps for Windows and Linux.(Prebuild version.Use system-wide electron)
-	pkgver = 3.5.8
+	pkgver = 3.6.6
 	pkgrel = 1
 	url = https://pwa.kiwix.org/
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = kiwix-js-electron-bin
 	license = GPL-3.0-only
 	makedepends = fuse2
 	depends = electron29
-	provides = kiwix-js-electron=3.5.8
+	provides = kiwix-js-electron=3.6.6
 	conflicts = kiwix-js-electron
 	source = kiwix-js-electron.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = kiwix-js-electron-3.5.8-aarch64.AppImage::https://github.com/kiwix/kiwix-js-pwa/releases/download/v3.5.8/Kiwix-JS-Electron-3.5.8-E-arm64.AppImage
-	sha256sums_aarch64 = 012bcfb63e71e6f8ef1d3cfaa4749e96fdc74a62b89a6a062426d5b6ee08300f
-	source_i686 = kiwix-js-electron-3.5.8-i686.AppImage::https://github.com/kiwix/kiwix-js-pwa/releases/download/v3.5.8/Kiwix-JS-Electron-3.5.8-E-i386.AppImage
-	sha256sums_i686 = dd36a4f37170467e0d322b981baa950659d63252a4f65368f6e71ca67df7ebec
-	source_x86_64 = kiwix-js-electron-3.5.8-x86_64.AppImage::https://github.com/kiwix/kiwix-js-pwa/releases/download/v3.5.8/Kiwix-JS-Electron-3.5.8-E.AppImage
-	sha256sums_x86_64 = 19526f03a398815a152440c63e1ec14a6ae2fbd6a2af6d9763edd014db26761a
+	source_aarch64 = kiwix-js-electron-3.6.6-aarch64.AppImage::https://github.com/kiwix/kiwix-js-pwa/releases/download/v3.6.6/Kiwix-JS-Electron-3.6.6-E-arm64.AppImage
+	sha256sums_aarch64 = ab244700d484a4d7e9c6caef4c88c8ef9b868f9aa0d359fbb2f32b96645114d7
+	source_i686 = kiwix-js-electron-3.6.6-i686.AppImage::https://github.com/kiwix/kiwix-js-pwa/releases/download/v3.6.6/Kiwix-JS-Electron-3.6.6-E-i386.AppImage
+	sha256sums_i686 = 87d62d10e6ae2e9d7958114ba51a74327f15a50271fc08b92d61decb5449cf84
+	source_x86_64 = kiwix-js-electron-3.6.6-x86_64.AppImage::https://github.com/kiwix/kiwix-js-pwa/releases/download/v3.6.6/Kiwix-JS-Electron-3.6.6-E.AppImage
+	sha256sums_x86_64 = e31d7f17d032579947dba18a450a70074f4860d96032d714dbf59ad1012b06b8
 
 pkgname = kiwix-js-electron-bin

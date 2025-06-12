@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kiwix-js-electron-bin
-_pkgname="Kiwix-JS-Electron"
-pkgver=3.5.8
+_pkgname=Kiwix-JS-Electron
+pkgver=3.6.6
 _electronversion=29
 pkgrel=1
 pkgdesc="Kiwix JS Offline Browser implemented as a Progressive Web App (PWA), and packaged as Electron, NWJS and UWP apps for Windows and Linux.(Prebuild version.Use system-wide electron)"
@@ -26,9 +26,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_i686=("${pkgname%-bin}-${pkgver}-i686.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E-i386.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E.AppImage")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('012bcfb63e71e6f8ef1d3cfaa4749e96fdc74a62b89a6a062426d5b6ee08300f')
-sha256sums_i686=('dd36a4f37170467e0d322b981baa950659d63252a4f65368f6e71ca67df7ebec')
-sha256sums_x86_64=('19526f03a398815a152440c63e1ec14a6ae2fbd6a2af6d9763edd014db26761a')
+sha256sums_aarch64=('ab244700d484a4d7e9c6caef4c88c8ef9b868f9aa0d359fbb2f32b96645114d7')
+sha256sums_i686=('87d62d10e6ae2e9d7958114ba51a74327f15a50271fc08b92d61decb5449cf84')
+sha256sums_x86_64=('e31d7f17d032579947dba18a450a70074f4860d96032d714dbf59ad1012b06b8')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -37,7 +37,9 @@ prepare() {
         s/@cfgdirname@/${_pkgname//-/ }/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
