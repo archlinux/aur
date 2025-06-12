@@ -9,7 +9,6 @@ pkgbase = storage-executive-cli
 	depends = glibc
 	provides = storage-executive-cli
 	provides = msecli
-	conflicts = storage-executive-cli
 	source = SLA
 	sha256sums = 7b385cd18e9b747cf76ac5999dd01768c2931358f6da2751cdb8745d6dde32c7
 	source_x86_64 = storage-executive-cli-10.01.012024.00-x86_64.run::https://assets.micron.com/adobe/assets/urn:aaid:aem:f60bf728-a665-4760-b099-31631a1f02bc/renditions/original/as/msecli-linux.run
