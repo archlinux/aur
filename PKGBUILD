@@ -2,26 +2,26 @@
 #              Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=scorep
-pkgver=8.4
-pkgrel=2
+pkgver=9.0
+pkgrel=1
 pkgdesc="Highly scalable and easy-to-use tool suite for profiling, event tracing, and online analysis of HPC applications."
 arch=('i686' 'x86_64')
 url="http://www.vi-hps.org/projects/score-p/"
 license=('BSD')
-depends=('cubew>=4.8.2' 'cubelib>=4.8.2' 'openmpi' 'otf2>=3.0.3' 'opari2>=2.0.8')
+depends=('cubew>=4.9' 'cubelib>=4.9' 'openmpi' 'otf2>=3.1.1' 'opari2>=2.0.9' 'gotcha>=1.0.8')
 options=('staticlibs')
 source=(
 	http://perftools.pages.jsc.fz-juelich.de/cicd/${pkgname}/tags/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz
-	scorep-update-fake-gmp-header.patch
+	#scorep-update-fake-gmp-header.patch
 )
 sha256sums=(
-	'7bbde9a0721d27cc6205baf13c1626833bcfbabb1f33b325a2d67976290f7f8a'
-	'36601285a46cafc35f3f821e884e1936e72442b084338d6d068308ff07d9d188'
+	'5d0a5db4cc6f31c30ae03c7e6f6245e83667b0ff38a7041ffe8b2e8e581e0997'
+	#'36601285a46cafc35f3f821e884e1936e72442b084338d6d068308ff07d9d188'
 )
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 < ${srcdir}/scorep-update-fake-gmp-header.patch
+  #patch -Np1 < ${srcdir}/scorep-update-fake-gmp-header.patch
 }
 
 build() {
