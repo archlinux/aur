@@ -2,8 +2,8 @@
 #              Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=cubelib
-_version=4.8
-_patch=.2
+_version=4.9
+_patch=
 pkgver=${_version}${_patch}
 pkgrel=1
 pkgdesc="Library for reading and writing a multi-dimensional performance space."
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('zlib')
 options=('staticlibs')
 source=(http://apps.fz-juelich.de/scalasca/releases/cube/${_version}/dist/${pkgname}-${pkgver}.tar.gz)
-md5sums=('1a785f5666824015fbc7c6e6626c12ff')
+md5sums=('345cf857bab43157d295a296773f93fe')
 replaces=('cube-perf')
 
 build() {
