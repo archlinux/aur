@@ -3,7 +3,7 @@
 
 pkgname=python-mammoth
 pkgver=1.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Convert Word documents (.docx files) to HTML"
 arch=(any)
 url="https://github.com/mwilliamson/python-mammoth"
@@ -28,7 +28,6 @@ checkdepends=(
   python-spur
   python-tempman
 )
-depends=(python)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mwilliamson/python-mammoth/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('1e8f61ab2e67a19c000128806e8e3ca251ee159ff33c8177b93215ab66a868d8')
 
