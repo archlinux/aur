@@ -1,5 +1,5 @@
 pkgname='stork-server'
-pkgver='2.1.1'
+pkgver='2.2.0'
 pkgrel='1'
 pkgdesc="A dashboard for BIND 9 and Kea DHCP."
 arch=('any')
@@ -17,8 +17,8 @@ source=(
   # "https://gitlab.isc.org/isc-projects/${_repo}/-/archive/v${pkgver}/${_pkg}.tar.gz"
   # "https://gitlab.isc.org/isc-projects/stork-hook-ldap/-/archive/v${pkgver}/stork-hook-ldap-v${pkgver}.tar.gz"
 sha512sums=(
-  'b77a37592ce0d70037783c7511287a150e46feca814496126cfffb4917c9c555e3f4da77ebfa30be0db9fdc3a8889112884f6356d9ae5f196cd0c6479adacb49'
-  '724b8462f4006a28e62e1c67f66bf9aab64d6b8c9c108b85f5917e2cd382fc81c304c6dc28c1611036c8e2366d7ba822a20a73f8e0cd9a1f1be86fe24591c23a'
+  '1784accc9cc7351b3b446c0be41619800fdcb2d03942c7703263a1382fceb3dab4ffc88304771abcaa922d01052ce86ed3e630ad13e26e4a68572097fb3b312f'
+  '17f9a6777df640e702102421099eb6b15fd52140ee3be9b357cd731dd0743f821f37a130d08df83ef024ffb4aa82004376ec815c9617966af6c558ab64f625a5'
   '524a319ab3b938bdab902b82c99744dcbf90cf5b44dc2bc7003b5fac7b77f6bb07d260c7f5cdd3fee8d3f673ca23611b00d1ded27a96da6fcb85d16e70b7a580'
 )
 
