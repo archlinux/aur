@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@example.com>
 
 pkgname=spaces
-pkgver=13
+pkgver=14
 pkgrel=1
 pkgdesc="A CLI tool that helps you open your apps more easily"
 arch=('any')
@@ -12,14 +12,18 @@ source=("https://raw.githubusercontent.com/simit22/spaces/main/spaces.py")
 md5sums=('SKIP')
 
 package() {
-    # Install the actual script to /usr/bin
-    install -Dm644 "$srcdir/spaces.py" "$pkgdir/usr/bin/spaces"
+    # Create the necessary bin directory
+    install -d "$pkgdir/usr/bin"
 
-    # Create a wrapper script at /usr/bin/spaces that runs it via python
+    # Install the Python script to /usr/bin
+    install -Dm644 "$srcdir/spaces.py" "$pkgdir/usr/bin/spaces.py"
+
+    # Create a wrapper script at /usr/bin/spaces
     cat > "$pkgdir/usr/bin/spaces" <<'EOF'
 #!/bin/sh
-exec python /usr/bin/spaces "$@"
+exec python /usr/bin/spaces.py "$@"
 EOF
 
+    # Make the wrapper executable
     chmod +x "$pkgdir/usr/bin/spaces"
 }
