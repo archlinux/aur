@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('qt6-base' 'qt6-svg' 'qt6-declarative' 'qt6-5compat' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'alsa-lib' 'libcdio' 'taglib' 'libcddb' 'libpulse' 'libgme' 'libsidplayfp' 'pipewire' 'rubberband')
 optdepends=('pulseaudio: PulseAudio support'
             'game_music_emu-kode54-git: Better chiptune support (less bugs in sound, AUR package)')
-makedepends=('ninja' 'clang' 'pkg-config' 'qt6-tools' 'cmake' 'fakeroot' 'patch')
+makedepends=('ninja' 'clang' 'llvm' 'pkg-config' 'qt6-tools' 'cmake' 'fakeroot' 'patch')
 options=(!lto)
 source=("https://github.com/zaps166/QMPlay2/releases/download/${pkgver}/QMPlay2-src-${pkgver}.tar.xz")
 sha256sums=(0dda6bc8c05d256b293bf3b5da20058b05e9844693292b2d175cc3b289f86eac)
