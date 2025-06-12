@@ -1,6 +1,6 @@
 pkgbase = qdmr
 	pkgdesc = A GUI application for configuring and programming cheap DMR radios
-	pkgver = 0.12.1
+	pkgver = 0.12.3
 	pkgrel = 1
 	url = https://github.com/hmatuschek/qdmr
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = qdmr
 	depends = yaml-cpp
 	provides = qdmr
 	conflicts = qdmr
-	source = qdmr-0.12.1.tar.gz::https://github.com/hmatuschek/qdmr/archive/refs/tags/v0.12.1.tar.gz
+	source = qdmr-0.12.3.tar.gz::https://github.com/hmatuschek/qdmr/archive/refs/tags/v0.12.3.tar.gz
 	source = udev-rules.patch
-	sha256sums = 80eaadc6f817894fde6773d1b021e7a8ec051cbb774f63e6a097e21d8a56d8b5
+	sha256sums = 1ee2adc912120025190eff65c78b1f8a153d1cab14909cbd5291403fb7b04643
 	sha256sums = f9bc5366df6186e475d010e79d002bf1d495220f269535c526b1faaf14fa1997
 
 pkgname = qdmr
