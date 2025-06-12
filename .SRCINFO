@@ -1,6 +1,6 @@
 pkgbase = fylepad-bin
 	pkgdesc = a notepad with powerful rich-text editing, built with Vue & Tauri (Rust).(Prebuilt version)
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://fylepad.vercel.app/
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = fylepad-bin
 	depends = gdk-pixbuf2
 	depends = webkit2gtk
 	depends = libsoup
-	provides = fylepad=2.2.0
+	provides = fylepad=2.3.0
 	conflicts = fylepad
-	source = fylepad-2.2.0.deb::https://github.com/imrofayel/fylepad/releases/download/app-v2.2.0/fylepad_2.2.0_amd64.deb
-	source = LICENSE-2.2.0::https://raw.githubusercontent.com/imrofayel/fylepad/app-v2.2.0/LICENSE
-	sha256sums = 2a09655d6829f1c4d75d7825bd299f7f6406589bec037494b7b038d91d10d0b1
+	source = fylepad-2.3.0.deb::https://github.com/imrofayel/fylepad/releases/download/app-v2.3.0/fylepad_2.3.0_amd64.deb
+	source = LICENSE-2.3.0::https://raw.githubusercontent.com/imrofayel/fylepad/app-v2.3.0/LICENSE
+	sha256sums = b2384247f618d9f9cec38180cfb685586da9dde8a4a019fbf13f8db195e73728
 	sha256sums = 9f744f8fc618bb8f55a2ba34dbcc67c2bc71d4485bcd1ae83703dc69ff9ea99d
 
 pkgname = fylepad-bin
