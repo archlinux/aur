@@ -10,6 +10,7 @@ url="https://workmanlayout.org/"
 arch=('any')
 license=('custom')
 depends=()
+makedepends=('git')
 source=("${_pkgname}::git+https://github.com/workman-layout/${_pkgname}")
 sha256sums=('SKIP')
 
