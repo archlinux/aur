@@ -2,12 +2,12 @@
 
 pkgname=renderman-pro-server
 pkgver=26.3.2352291
-pkgrel=1
+pkgrel=2
 pkgdesc="Foundation for the RenderMan rendering pipeline"
 arch=('x86_64')
 url="https://renderman.pixar.com/"
 license=('custom')
-depends=('numactl' 'glu' 'libxml2-legacy')
+depends=('numactl' 'glu' 'libxml2-legacy' 'qt5-tools')
 optdepends=('renderman: Downloader for the RPM package')
 
 DLAGENTS+=("manual::/usr/bin/echo \ \ Note: Please download the RPM through the renderman package")
