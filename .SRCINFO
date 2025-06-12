@@ -1,6 +1,6 @@
 pkgbase = reader-project-bin
 	pkgdesc = XML based feed reader for your desktop.(Prebuilt version)
-	pkgver = 0.1.5
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://rahuldshetty.github.io/reader-project/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = reader-project-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = reader-project=0.1.5
+	provides = reader-project=0.2.1
 	conflicts = reader-project
-	source = reader-project-0.1.5.rpm::https://github.com/rahuldshetty/reader-project/releases/download/v0.1.5/reader-project-0.1.5-1.x86_64.rpm
-	source = LICENSE-0.1.5::https://raw.githubusercontent.com/rahuldshetty/reader-project/v0.1.5/LICENSE
-	sha256sums = e90299ec66255d488f1a8bf25da9235b5bd2b31083972b50900b5ed7c1402ec8
+	source = reader-project-0.2.1.rpm::https://github.com/rahuldshetty/reader-project/releases/download/v0.2.1/reader-project-0.2.1-1.x86_64.rpm
+	source = LICENSE-0.2.1::https://raw.githubusercontent.com/rahuldshetty/reader-project/v0.2.1/LICENSE
+	sha256sums = ef005495360f194220adaf84db09fcc188c15ce8e9e34fbda19c3c3226eb9fdb
 	sha256sums = 84afb780728548ed34cc26b8490d3f84f7753010c7c1eae92141db7c0869fbf5
 
 pkgname = reader-project-bin
