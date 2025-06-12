@@ -1,7 +1,7 @@
 # Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 
 pkgname=hare-clrfmt
-pkgver=r1.b980bef
+pkgver=r4.f1db20c
 pkgrel=1
 pkgdesc='ANSI escape codes for Hare'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://git.sr.ht/~blainsmith/hare-clrfmt'
 license=('MIT')
 depends=('hare')
 makedepends=('git')
-_commit='b980bef3a365721647ddedbbeacc20ac38b47f70'
+_commit='f1db20c5df314470cec8494ddc34582ede4e3080'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
