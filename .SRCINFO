@@ -1,0 +1,15 @@
+pkgbase = mkdocs-exclude
+	pkgdesc = A mkdocs plugin that lets you exclude files or trees.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/apenwarr/mkdocs-exclude
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = mkdocs
+	source = mkdocs-exclude-1.0.2.tar.gz::https://files.pythonhosted.org/packages/54/b5/3a8e289282c9e8d7003f8a2f53d673d4fdaa81d493dc6966092d9985b6fc/mkdocs-exclude-1.0.2.tar.gz
+	sha256sums = ba6fab3c80ddbe3fd31d3e579861fd3124513708271180a5f81846da8c7e2a51
+
+pkgname = mkdocs-exclude
