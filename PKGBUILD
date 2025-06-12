@@ -1,8 +1,8 @@
-# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=snmpb
 pkgver=1.0
-pkgrel=10
+pkgrel=11
 pkgdesc="SNMP browser and MIB editor written in Qt"
 arch=('x86_64')
 url="https://sourceforge.net/projects/snmpb"
@@ -31,63 +31,49 @@ source=(
   "https://www.ibr.cs.tu-bs.de/projects/libsmi/download/libsmi-${_smi}.tar.gz"
   "https://github.com/libtom/libtomcrypt/releases/download/v${_tomcrypt}/crypt-${_tomcrypt}.tar.xz"
   "https://sourceforge.net/projects/qwt/files/qwt/${_qwt}/qwt-${_qwt}.tar.bz2"
+  "0001-Fix-build-failure-with-gcc-15.patch"
 )
 sha256sums=('SKIP'
             'f21accdadb1bb328ea3f8a13fc34d715baac6e2db66065898346322c725754d3'
             '96ad4c3b8336050993c5bc2cf6c057484f2b0f9f763448151567fbab5e767b84'
-            'dcb085896c28aaec5518cbc08c0ee2b4e60ada7ac929d82639f6189851a6129a')
+            'dcb085896c28aaec5518cbc08c0ee2b4e60ada7ac929d82639f6189851a6129a'
+            '7afa41f292e404854953ea52dac269671462cb638a6daf5cc21b5baaf92df7c5')
+
 prepare() {
-  # Create the build directory
-  mkdir -p "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}"
+  mv "libsmi-${_smi}" "libsmi"
+  mv "libtomcrypt-${_tomcrypt}" "libtomcrypt"
+  mv "qwt-${_qwt}" "qwt"
 
-  # Arrays to hold original and new folder names
-  local original_folders=("libsmi-${_smi}" "libtomcrypt-${_tomcrypt}" "qwt-${_qwt}")
-  local new_folders=("libsmi" "libtomcrypt" "qwt")
-  
-  # Rename source folders
-  for i in "${!original_folders[@]}"; do
-    mv "${srcdir}/${original_folders[i]}" "${srcdir}/${new_folders[i]}"
-  done
-  
-  # Files and directories to copy
-  local items_to_copy=("app" "snmp++" "license.txt" "Makefile")
+  # Copy code to working directory
+  mkdir -p "${pkgname}-${pkgver}"
+  cp -Pr "${pkgname}-code"/{app,snmp++,license.txt,Makefile} "${pkgname}-${pkgver}/"
+  cp -Pr libsmi libtomcrypt qwt "${pkgname}-${pkgver}/"
 
-  # Copy project files
-  for item in "${items_to_copy[@]}"; do
-    cp -Pr "${srcdir}/${pkgname}-code/${item}" "${srcdir}/${pkgname}-${pkgver}/"
-  done 
+  # Apply GCC 15 patch to libsmi
+  patch -d "${pkgname}-${pkgver}/libsmi" -p1 < "${srcdir}/0001-Fix-build-failure-with-gcc-15.patch"
 
-  # Copy necessary libraries
-  for lib in "${new_folders[@]}"; do
-    cp -Pr "${srcdir}/${lib}" "${srcdir}/${pkgname}-${pkgver}/"
-  done
+  # Fix Qwt includes in app sources
+  sed '30i#include <qwt_scale_widget.h>' -i "${pkgname}-${pkgver}/app/graph.cpp"
+  sed '31i#include <qwt_scale_widget.h>' -i "${pkgname}-${pkgver}/app/graph.h"
 
-  # Include QwtScaleWidget
-  sed '30i#include <qwt_scale_widget.h>' -i "${srcdir}/${pkgname}-${pkgver}/app/graph.cpp"
-  sed '31i#include <qwt_scale_widget.h>' -i "${srcdir}/${pkgname}-${pkgver}/app/graph.h"
-
-  # Patch qwt configuration
+  # Patch qwt config for proper install locations
   sed -e '/^\s*QWT_INSTALL_PREFIX/ s|=.*|= /usr|' \
-    -e '/^QWT_INSTALL_DOCS/ s|/doc|/share/doc/qwt|' \
-    -e '/^QWT_INSTALL_HEADERS/ s|include|&/qwt|' \
-    -e '/^QWT_INSTALL_PLUGINS/ s|plugins/designer|lib/qt/&|' \
-    -e '/^QWT_INSTALL_FEATURES/ s|features|lib/qt/mkspecs/&|' \
-    -i "${srcdir}/${pkgname}-${pkgver}/qwt/qwtconfig.pri"
+      -e '/^QWT_INSTALL_DOCS/ s|/doc|/share/doc/qwt|' \
+      -e '/^QWT_INSTALL_HEADERS/ s|include|&/qwt|' \
+      -e '/^QWT_INSTALL_PLUGINS/ s|plugins/designer|lib/qt/&|' \
+      -e '/^QWT_INSTALL_FEATURES/ s|features|lib/qt/mkspecs/&|' \
+      -i "${pkgname}-${pkgver}/qwt/qwtconfig.pri"
 }
-build() {
-  local build_dir="${srcdir}/${pkgname}-${pkgver}"
-  local libsmi_dir="${build_dir}/libsmi"
-  local libtomcrypt_dir="${build_dir}/libtomcrypt"
-  local qwt_dir="${build_dir}/qwt"
-  local app_dir="${build_dir}/app"
 
+build() {
+  local build_dir="${pkgname}-${pkgver}"
   cd "${build_dir}"
 
-  # Fix for gcc-14 issues
   export CFLAGS="${CFLAGS} -Wno-error=implicit-function-declaration"
 
-  # Build Libsmi
-  cd "${libsmi_dir}"
+  # Build libsmi
+  cd libsmi
   autoreconf -i
   ./configure \
     --disable-shared \
@@ -95,28 +81,34 @@ build() {
     --with-pathseparator=";" \
     --with-dirseparator="/" \
     --with-smipath="/usr/share/apps/snmpb/mibs;/usr/share/apps/snmpb/pibs"
-  make V=0
+  make
+  cd ..
 
-  # Build Libtomcrypt
-  cd "${libtomcrypt_dir}"
+  # Build libtomcrypt
+  cd libtomcrypt
   make library
+  cd ..
 
   # Build Qwt
-  cd "${qwt_dir}"
+  cd qwt
   qmake qwt.pro
   make
+  cd ..
 
-  # Build snmpb Qt App
-  cd "${app_dir}"
+  # Build main app
+  cd app
   qmake -o makefile.snmpb snmpb.pro
   make -f makefile.snmpb
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   # Install the built package
   make INSTALL_PREFIX="${pkgdir}/usr" install
+
+  # Remove setuid/setgid if set
+  chmod u-s,g-s "${pkgdir}/usr/bin/snmpb"
 
   # User config files stored in
   # $HOME/.config/snmpb.sourceforge.net

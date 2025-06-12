@@ -1,0 +1,47 @@
+diff --git a/lib/parser-smi.h b/lib/parser-smi.h
+index 90d7ec2..c2a3d1f 100644
+--- a/lib/parser-smi.h
++++ b/lib/parser-smi.h
+@@ -24,7 +24,7 @@
+ 
+ 
+ 
+-extern int smiparse();
++extern int smiparse(struct Parser *parserPtr);
+ 
+ 
+ 
+diff --git a/lib/parser-yang.h b/lib/parser-yang.h
+index dbfec46..f008cd6 100644
+--- a/lib/parser-yang.h
++++ b/lib/parser-yang.h
+@@ -6,14 +6,14 @@
+ #include <stdio.h>
+ 
+ #include "yang-data.h"
+-
++#include "smi-data.h"
+ 
+ 
+ #define YYERROR_VERBOSE
+ 
+ 
+ 
+-extern int yangparse();
++extern int yangparse(struct Parser *parserPtr);
+ 
+ 
+ 
+diff --git a/lib/smi-data.c b/lib/smi-data.c
+index c9d95a4..773bc01 100644
+--- a/lib/smi-data.c
++++ b/lib/smi-data.c
+@@ -39,7 +39,7 @@
+ 
+ #ifdef BACKEND_SMI
+ #include "scanner-smi.h"
+-extern int smiparse();
++extern int smiparse(struct Parser *parserPtr);
+ #endif
+ 
+ #ifdef BACKEND_SMING
