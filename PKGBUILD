@@ -3,12 +3,12 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=screenpipe
 pkgver=0.2.74
-pkgrel=2
+pkgrel=3
 pkgdesc="24/7 Screen and Audio Capture with AI-powered tools"
 arch=('x86_64')
 url="https://github.com/mediar-ai/screenpipe"
 license=('MIT')
-depends=('onnxruntime' 'ffmpeg' 'tesseract' 'curl' 'libxi' 'libxtst' 'xdo' 'xdotool')
+depends=('protobuf' 'onnxruntime' 'ffmpeg' 'tesseract' 'curl' 'libxi' 'libxtst' 'xdo' 'xdotool')
 makedepends=('python' 'python-tomlkit' 'rust' 'cargo' 'git' 'cmake')
 
 # current release doesn't build anymore - interim commit was just the latest
