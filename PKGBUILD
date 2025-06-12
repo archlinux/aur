@@ -6,7 +6,7 @@ arch=('any')
 url="https://github.com/simit22/spaces"
 license=('GPL')
 depends=('python' 'python-rich')
-source=("main.py")
+source=("spaces.py")
 md5sums=('SKIP')
 
 package() {
