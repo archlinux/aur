@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=risuai-bin
 _pkgname=RisuAI
-pkgver=161.3.0
+pkgver=163.0.1
 pkgrel=1
 pkgdesc="Make your own story. User-friendly software for LLM roleplaying.(Prebuilt version)"
 arch=('x86_64')
@@ -14,11 +14,15 @@ depends=(
     'gtk3'
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
+    'python'
+    'python-pydantic'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('59a5acb8a234cdb333bb5b0352c2f49641f15f5474236b8240751ffb0a0d36ec')
+sha256sums=('ebe2bf4f12f0f23de50037f9d9fe849078f052fc927fda43f11d74cf91f2cc2d')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/${_pkgname}" "${pkgdir}/usr/lib"
     _icon_sizes=(32x32 128x128 256x256@2)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
