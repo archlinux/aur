@@ -1,28 +1,45 @@
-# Maintainer: zeGolem <zegolem1383@outlook.fr>
-# Contributor: Ben Westover <kwestover.kw@gmail.com>
-pkgname=python-py-cord
-pkgver=2.4.1
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
+
+_name=pytest-discord
+
+pkgname=python-pytest-discord
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Pycord is a maintained fork of discord.py, a python wrapper for the Discord API"
-arch=(any)
-url="https://github.com/Pycord-Development/pycord"
+pkgdesc='Pytest plugin to report test results to a Discord channel'
+arch=('any')
+url='https://github.com/thombashi/pytest-discord'
 license=('MIT')
-depends=('python' 'python-aiohttp')
-makedepends=('python-setuptools')
-optdepends=('python-pynacl: Voice support'
-            'libffi: Voice support')
-conflicts=('python-discord')
-provides=('python-discord' 'python-pycord')
-source=("pycord-${pkgver}.tar.gz::https://github.com/Pycord-Development/pycord/archive/v${pkgver}.tar.gz")
-sha256sums=('c8e24951b940b67f432babcd4aa7fcc4664e2d7225874a6592bc186a221f48b8')
+depends=(
+  'python-aiohttp'
+  'python-discord'
+  'python-pathvalidate'
+  'python-pytest'
+  'python-pytest-md-report'
+  'python-typepy')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-mock' 'python-dateutil' 'python-pytz')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz.asc")
+sha256sums=('4f7a1a2841106611ef071122d918f93fbf17504b4af4fc0a5f5cbf80149e2a77'
+            'SKIP')
+validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 build() {
-	cd "$srcdir"/pycord-$pkgver
-	python setup.py build
+  cd "$_name-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$_name-$pkgver"
+  PYTHONPATH=./ pytest -x -c /dev/null --disable-warnings
 }
 
 package() {
-	cd "$srcdir"/pycord-$pkgver
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir/" dist/*.whl
+  install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+
+# vim: ts=2 sw=2 et:
