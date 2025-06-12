@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=git-it-electron-git
 _pkgname=Git-it
-pkgver=6.0.0.r23.g88c78e6
-_electronversion=33
+pkgver=6.0.1.r0.g0a2ff8a
+_electronversion=36
 _nodeversion=22
 pkgrel=1
 pkgdesc="A Desktop App for Learning Git and GitHub.(Use system-wide electron)"
@@ -52,7 +52,12 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -72,16 +77,28 @@ prepare() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+    NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
 }
 build() {
-    cd "${srcdir}/${pkgname%-git}.git"
-    NODE_ENV=production     npm run build
-    NODE_ENV=production     npx electron-packager . "${_pkgname}" --platform=linux  --icon="assets/${pkgname%-electron-git}.png"  --overwrite --out=dist --extraResource=resources/i18n/ --ignore=.github/ --ignore=resources
+    cd "${srcdir}/${pkgname%-git}.git# zxp-endeavouros @ 3993EndeavourOS in ~/.cache/paru/clone/git-it-electron-git on git:master x [9:30:06] C:130
+"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    local electronDist="/usr/lib/electron${_electronversion}"
+    sed -i '/makers: \[/i\
+	plugins: [\
+		{\
+			name: "@electron-forge/plugin-local-electron",\
+			config: {\
+				electronPath: "'"${electronDist}"'",\
+			},\
+		},\
+	],' forge.config.*
+    NODE_ENV=production     npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/dist/${_pkgname}-linux-"*/resources/{app,i18n} "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/out/${_pkgname}-linux-"*/resources/{app,i18n} "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/${pkgname%-electron-git}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
