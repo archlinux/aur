@@ -11,6 +11,7 @@ pkgbase = qmplay2-git
 	license = LGPL
 	makedepends = ninja
 	makedepends = clang
+	makedepends = llvm
 	makedepends = git
 	makedepends = pkg-config
 	makedepends = qt6-tools

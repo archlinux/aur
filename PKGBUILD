@@ -12,7 +12,7 @@ optdepends=('pulseaudio: PulseAudio support'
             'game_music_emu-kode54-git: Better chiptune support (less bugs in sound, AUR package)')
 conflicts=('qmplay2')
 provides=('qmplay2')
-makedepends=('ninja' 'clang' 'git' 'pkg-config' 'qt6-tools' 'cmake' 'fakeroot' 'shaderc')
+makedepends=('ninja' 'clang' 'llvm' 'git' 'pkg-config' 'qt6-tools' 'cmake' 'fakeroot' 'shaderc')
 options=(!lto)
 source=(
     'git+https://github.com/zaps166/QMPlay2.git'
