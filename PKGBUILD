@@ -43,8 +43,7 @@ makedepends=(# "Meta" dependencies
 source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
         "skia-$_skiaver.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/$_skiaver-$_skiahash.tar.gz"
-        # we need icudtl.dat, and I refuse to add a 1GiB-large git repo.
-        # update hash with skia
+        # forgive me, I couldn't figure out linker errors.
         skia-$_skiaver-icu::git+https://chromium.googlesource.com/chromium/deps/icu.git#commit=a0718d4f121727e30b8d52c7a189ebf5ab52421f
 		aseprite-strings::git+https://github.com/aseprite/strings.git#commit=5660117490fe3eaf57774023b8152d42e828165f
         desktop.patch
@@ -75,7 +74,7 @@ sha256sums=('191ca47bc1b483a529ac9dc4826f53b9363bdd46feaa1f3638acac20096fed40'
             'ba02fc060dc930cfd66a8903a5d8a59f981753bdf416e91cc77a48c56c86aea3'
             '72605d6760c29eb98f2d8d8cf2cc9f9f7d7655bcf7cfc944f6a46b0957adbb14'
             '3381038fc5209600428801fa0b2b05ddee031b0926eaa75c114172e503916cd5'
-            'bfc1969835da58de8777724a16a3396313a03f53eaa0a16b20ff0ac558d9c6e8')
+            '0fa67d34f63cb4ed472b620ebad0656aeca646cb7f1069b7066ee91e6902fe6c')
 _debug="true"
 prepare() {
 	# Extract Aseprite's sources

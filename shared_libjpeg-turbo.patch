@@ -4,7 +4,7 @@ index 33b5204..5f345ef 100644
 +++ b/cmake/FindJpegTurbo.cmake
 @@ -8,7 +8,11 @@
  #
- 
+
  if(LAF_BACKEND STREQUAL "skia")
 -
 +  if(USE_SHARED_LIBJPEG_TURBO)
@@ -22,7 +22,7 @@ index 33b5204..5f345ef 100644
 -
 +  endif()
  else()
- 
+
    if(WIN32)
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 70ea111..5ef2df3 100644
