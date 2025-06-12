@@ -1,6 +1,6 @@
 # Maintainer: Philip J. Repko <philipjrepko@gmail.com>
 pkgname=sqlch-suite
-pkgver=1.1
+pkgver=1.0
 pkgrel=1
 pkgdesc="Terminal-based internet radio suite with TUI, tray, and controller"
 arch=('any')
@@ -11,8 +11,8 @@ optdepends=(
   'gum: TUI interface in sqlchknob'
   'jq: JSON parsing for radio-browser search'
 )
-source=("https://github.com/SW-philip/sqlch-suite/releases/download/v0.1.1/sqlch-suite-0.1.1.tar.gz")
-sha256sums=('75ddc71a4c257fcd0e3f3129a08a135285535ab09c4631f1202645863a721124')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/SW-philip/sqlch-suite/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('70a73bd050797a155a1ac93b0407d6cdfff8bd1faef171bd4e4cc10aba9d6e82')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"

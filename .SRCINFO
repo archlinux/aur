@@ -1,6 +1,6 @@
 pkgbase = sqlch-suite
 	pkgdesc = Terminal-based internet radio suite with TUI, tray, and controller
-	pkgver = 1.1
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/SW-philip/sqlch-suite
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = sqlch-suite
 	depends = hicolor-icon-theme
 	optdepends = gum: TUI interface in sqlchknob
 	optdepends = jq: JSON parsing for radio-browser search
-	source = https://github.com/SW-philip/sqlch-suite/releases/download/v0.1.1/sqlch-suite-0.1.1.tar.gz
-	sha256sums = 75ddc71a4c257fcd0e3f3129a08a135285535ab09c4631f1202645863a721124
+	source = sqlch-suite-1.0.tar.gz::https://github.com/SW-philip/sqlch-suite/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 70a73bd050797a155a1ac93b0407d6cdfff8bd1faef171bd4e4cc10aba9d6e82
 
 pkgname = sqlch-suite
