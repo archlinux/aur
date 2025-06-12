@@ -1,7 +1,7 @@
 pkgbase = python-pyopal
 	pkgdesc = Cython bindings and Python interface to Opal, a SIMD-accelerated database search aligner.
-	pkgver = 0.7.1
-	pkgrel = 2
+	pkgver = 0.7.2
+	pkgrel = 1
 	url = https://github.com/althonos/pyopal
 	arch = i686
 	arch = pentium4
@@ -18,7 +18,9 @@ pkgbase = python-pyopal
 	makedepends = ninja
 	makedepends = python-scikit-build-core
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pyopal/pyopal-0.7.1.tar.gz
-	sha256sums = db6bb2ad4f1c76d892ff6974e8eef0f5cf9a0881924b9bd7b96fbd9606a11af4
+	depends = python-archspec
+	depends = python-scoring-matrices
+	source = https://files.pythonhosted.org/packages/source/p/pyopal/pyopal-0.7.2.tar.gz
+	sha256sums = 42d5a230f4f183e92ef49ef390eddea8498c9716be19057d2a347814c4a7ba44
 
 pkgname = python-pyopal
