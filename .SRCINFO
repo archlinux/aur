@@ -1,7 +1,7 @@
 pkgbase = asngecko
 	pkgdesc = Advanced swiss-army tool for resolving ASN IPv4 / IPv6 prefixes.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/furrofurry/asngecko
 	arch = any
 	license = MIT

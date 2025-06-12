@@ -2,7 +2,7 @@
 
 pkgname=asngecko
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced swiss-army tool for resolving ASN IPv4 / IPv6 prefixes."
 arch=('any')
 url="https://github.com/furrofurry/asngecko"
