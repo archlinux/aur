@@ -2,7 +2,7 @@
 # Contributor: 程式夥伴 (AI Assistant)
 
 pkgname=scrcpy-launcher
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="A simple launcher for scrcpy, built with NW.js."
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("${pkgname}-v${pkgver}-${_archive_filename}::https://github.com/velade/s
         "${pkgname}.desktop"
         "LICENSE::https://raw.githubusercontent.com/velade/scrcpy-launcher/${pkgver}/LICENSE")
 
-sha256sums=('dd12c825d5da48e07e7108305458bcac55492475c7475c014cac16ada3baab61'
+sha256sums=('9c78f40187601746d8e3068ecbc5729ada8b250357c70f5b896511d6ef7c9e0c'
             'e50cde4a31dbfa162da8305734ba85ff8ed0026e52303c9f8c8bddd4318ae6d9'
             'a6f3cabbef34490c82cf1eaaadfe3591c5dc8f3924c11c9da74609b660c7c72d')
 
