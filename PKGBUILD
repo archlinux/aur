@@ -6,10 +6,10 @@ pkgrel=2
 epoch=1
 pkgdesc='Instagram plugin for libpurple'
 arch=('x86_64')
-url='https://codeberg.org/grgergo/purple-instagram'
+url='https://github.com/EionRobb/purple-instagram'
 license=('GPL3')
 depends=('libpurple' 'glib2' 'json-glib')
-
+makedepends=('git')
 source=('git+https://github.com/EionRobb/purple-instagram'
         'install.sh'
 				'signature.patch')
