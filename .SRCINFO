@@ -1,6 +1,6 @@
 pkgbase = nuclear-player
 	pkgdesc = A free, multiplatform music player app that streams from multiple sources.(Use system-wide electron)
-	pkgver = 0.6.47
+	pkgver = 0.6.48
 	pkgrel = 1
 	url = http://nuclear.gumblert.tech/
 	arch = any
@@ -11,10 +11,13 @@ pkgbase = nuclear-player
 	makedepends = curl
 	makedepends = rust
 	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
 	depends = electron33
-	source = nuclear-player-0.6.47::git+https://github.com/nukeop/nuclear#tag=v0.6.47
+	depends = ffmpeg
+	source = nuclear-player-0.6.48::git+https://github.com/nukeop/nuclear#tag=v0.6.48
 	source = nuclear-player.sh
-	sha256sums = cdc14e97dbf31ebb09da5ad1d3d6c181f957f38e367907a5f5bde28fac47be56
+	sha256sums = 73459ab99b2a6f1ee84130f62ff4e4175f52133e251b9b4c1cf3520a04e5db3e
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = nuclear-player

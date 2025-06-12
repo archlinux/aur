@@ -3,7 +3,7 @@
 _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname='Nuclear Player'
-pkgver=0.6.47
+pkgver=0.6.48
 _electronversion=33
 _nodeversion=22
 pkgrel=1
@@ -14,6 +14,7 @@ _ghurl="https://github.com/nukeop/nuclear"
 license=('AGPL-3.0-only')
 depends=(
     "electron${_electronversion}"
+    'ffmpeg'
 )
 makedepends=(
     'gendesk'
@@ -22,12 +23,14 @@ makedepends=(
     'curl'
     'rust'
     'git'
+    'python'
+    'python-setuptools'
 )
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('cdc14e97dbf31ebb09da5ad1d3d6c181f957f38e367907a5f5bde28fac47be56'
+sha256sums=('73459ab99b2a6f1ee84130f62ff4e4175f52133e251b9b4c1cf3520a04e5db3e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -45,7 +48,12 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="AudioVideo" \
+        --name="${_pkgname}" \
+        --exec="${pkgname} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export CARGO_HOME="${srcdir}/.cargo"
@@ -74,8 +82,8 @@ build() {
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npx shx rm -rf dist
     NODE_ENV=production     npx lerna run build
-    NODE_ENV=production NODE_OPTIONS='--max-old-space-size=8192' npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} -c.extraMetadata.main=dist/main.js" 
-
+    NODE_ENV=production NODE_OPTIONS='--max-old-space-size=8192' npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} -c.extraMetadata.main=dist/main.js"
+    ln -sf "/usr/bin/ffmpeg" "${srcdir}/${pkgname}-${pkgver}/release/linux-"*/resources/bin/ffmpeg
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
