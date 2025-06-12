@@ -1,50 +1,46 @@
-# Maintainer:
+# Maintainer: Entailz <entail-wraps0r at icloud dot com>
 
-: ${_distributor=}
+: "${_distributor=}"
 
-_pkgname="quickshell"
+_pkgname=quickshell
 pkgname="$_pkgname-git"
-pkgver=0.1.0.r0.g703a378
+pkgver=0.1.0.r1.g0fb809b
 pkgrel=1
-pkgdesc="Simple and flexbile QtQuick based desktop shell toolkit"
+pkgdesc='Flexible toolkit for making desktop shells with QtQuick'
+arch=(x86_64 aarch64)
 url='https://git.outfoxxed.me/quickshell/quickshell'
+options=(!strip)
 license=('LGPL-3.0-only')
-arch=('x86_64' 'aarch64')
-
 depends=(
-  'jemalloc'
-  'libdrm'
-  'libglvnd'
-  'libpipewire'
-  'libxcb'
-  'mesa'
-  'pam'
-  'qt6-base'
   'qt6-declarative'
+  'qt6-base'
+  'jemalloc'
   'qt6-svg'
+  'libpipewire'
   'qt6-wayland'
+  'wayland-protocols'
+  'libxcb'
   'wayland'
+  'cli11'
+  'libdrm'
+  'mesa'
+  'google-breakpad'
+  'qt6-shadertools'
 )
 makedepends=(
-  'cli11'
-  'cmake'
-  'git'
   'ninja'
-  'qt6-shadertools'
-  'wayland-protocols'
+  'cmake'
+  'pkgconf'
 )
-checkdepends=(
-  'weston'
-  'wlheadless-run' # aur/xwayland-run
-  'xorg-xwayland'
-)
-
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git")
-sha256sums=('SKIP')
+source=("$_pkgsrc"::"git+$url.git"
+  quickshell-check.hook)
+sha256sums=('SKIP'
+            '8543e21aeaaa5441b73a679160e7601a957f16c433e8d6bd9257e80bd0e94083')
+
 
 pkgver() {
   cd "$_pkgsrc"
@@ -53,34 +49,20 @@ pkgver() {
 }
 
 build() {
-  local _cmake_options=(
-    -B build
-    -S "$_pkgsrc"
-    -G Ninja
-    -DCMAKE_BUILD_TYPE=None
-    -DCMAKE_INSTALL_PREFIX='/usr'
-    -DCRASH_REPORTER=OFF
-    -DDISTRIBUTOR="${_distributor:-aur/$pkgname}"
-    -DDISTRIBUTOR_DEBUGINFO_AVAILABLE=NO
+  cd "$_pkgname"
+  cmake -GNinja -B build \
+    -DCMAKE_BUILD_TYPE="RelWithDebInfo" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DDISTRIBUTOR="$(_distributor:-AUR/$pkgname)" \
+    -DDISTRIBUTOR_DEBUGINFO_AVAILABLE=NO \
     -DINSTALL_QML_PREFIX=lib/qt6/qml
-    -DBUILD_TESTING=$CHECKFUNC
-    -Wno-dev
-  )
 
-  cmake "${_cmake_options[@]}"
   cmake --build build
 }
 
-check() {
-  local _headless_run=(
-    wlheadless-run
-    -c weston --width=1920 --height=1080
-  )
-
-  env "${_headless_run[@]}" -- ctest --test-dir build --rerun-failed --output-on-failure || :
-}
-
 package() {
+  install -Dm644 "quickshell-check.hook" -t "$pkgdir/usr/share/libalpm/hooks"
+  cd "$_pkgname"
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
