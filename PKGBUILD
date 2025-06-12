@@ -2,7 +2,7 @@
 pkgname=servicebus-browser-bin
 _appname='@service-bus-browsersource'
 _pkgname='Servicebus Browser'
-pkgver=0.12.1
+pkgver=0.12.2
 _electronversion=33
 pkgrel=1
 pkgdesc="A cross platform tool to manage your Azure Service Bus instances.(Prebuilt version.Use system-wide electron)"
@@ -15,14 +15,13 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'asar'
     'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${pkgname%-bin}-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('21e05a46f3f09e13a1baa4828064d398d4de182ad7e27b9144e5f21cca11c63c'
+sha256sums=('da6776ee97e2903961a52115a104b13430caacc774b45c4c454cfdee4125c7ee'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
