@@ -1,6 +1,6 @@
 # Maintainer: Karl Essinger <xkaess22@gmail.com>
 pkgname=scpdiscord-git
-pkgver=3.3.0.RC5.38.git2932684
+pkgver=3.3.0.RC5.40.git9ac948d
 pkgrel=1
 pkgdesc="A very customisable Discord bot + SCP:SL plugin combo. Dev build."
 arch=("x86_64")
@@ -35,11 +35,6 @@ _srcdir="SCPDiscord"
 pkgver() {
   cd "$_srcdir"
   git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/./g;s/g/git/' || echo "r$(git rev-list --count HEAD).git$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$_srcdir"
-  dotnet restore
 }
 
 build() {
