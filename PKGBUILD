@@ -1,4 +1,3 @@
-pkgbase=spaces
 pkgname=spaces
 pkgver=6.0
 pkgrel=1
@@ -11,11 +10,10 @@ source=("spaces.py")
 md5sums=('SKIP')
 
 package() {
+
     cd "$srcdir"
+    install -Dm755 spaces.py "$pkgdir/usr/bin/spaces.py"
+    ln -s /usr/bin/spaces.py "$pkgdir/usr/bin/spaces"
+    sed -i '1s|^|#!/usr/bin/env python\n|' "$pkgdir/usr/bin/spaces.py"
 
-    # Ensure the script has the correct shebang
-    sed -i '1s|^|#!/usr/bin/env python3\n|' spaces.py
-
-    # Install the main script
-    install -Dm755 spaces.py "$pkgdir/usr/bin/spaces"
 }
