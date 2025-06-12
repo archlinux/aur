@@ -1,6 +1,6 @@
-pkgbase = login_ng
+pkgbase = login-ng
 	pkgdesc = A greeter with addition functionalities
-	pkgver = 0.6.4
+	pkgver = 0.6.5
 	pkgrel = 1
 	url = https://github.com/neroreflex/login_ng
 	arch = i686
@@ -17,8 +17,16 @@ pkgbase = login_ng
 	backup = etc/pam.d/login_ng
 	backup = etc/pam.d/login_ng-autologin
 	backup = etc/pam.d/login_ng-ctl
-	source = login_ng-0.6.4.tar.gz::https://github.com/neroreflex/login_ng/archive/refs/tags/0.6.4.tar.gz
-	sha256sums = bcd9df0e708d273b3bdd7961f1221242711a776d5b2979478a3485199e5caa07
-	b2sums = a4be19df8987f4101b1af2d02bb71a6b9e32e71545e2fb24ae6d2dd341cd8bf61aa30b1843c92ae6a6360ba01ab6f546134b489a00bcf21ebd707890df91c099
+	source = login_ng-0.6.5.tar.gz::https://github.com/neroreflex/login_ng/archive/refs/tags/0.6.5.tar.gz
+	sha256sums = bda4a101fa8f0c42e815cfef213e0e48fa62a8af5a4c03f7092f97e4b4379616
+	b2sums = 4fb8becd8029a9fb31299c8afc0b92cc35406916ec0622d8b5744323f4c4cf4a1c5d74ab22d48521fbb3cb4e6004abbd6c5ceb5db73ec64f3a701d427669c46d
 
-pkgname = login_ng
+pkgname = login_ng-cli
+
+pkgname = login_ng-ctl
+
+pkgname = pam_login_ng
+
+pkgname = login_ng-session
+
+pkgname = sessionexec

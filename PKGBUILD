@@ -1,8 +1,15 @@
 # Maintainer: Denis Benato <benato.denis96@gmail.org>
 
 _pkgname=login_ng
-pkgname=$_pkgname
-pkgver=0.6.4
+pkgbase=login-ng
+pkgname=(
+    ${_pkgname}-cli
+    ${_pkgname}-ctl
+    pam_${_pkgname}
+    ${_pkgname}-session
+    sessionexec
+)
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='A greeter with addition functionalities'
 url="https://github.com/neroreflex/$_pkgname"
@@ -19,13 +26,13 @@ depends=(
 )
 arch=('i686' 'x86_64' 'armv7h')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
+    "${_pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
 )
 b2sums=(
-    'a4be19df8987f4101b1af2d02bb71a6b9e32e71545e2fb24ae6d2dd341cd8bf61aa30b1843c92ae6a6360ba01ab6f546134b489a00bcf21ebd707890df91c099' # login-ng-${pkgver}.tar.gz
+    '4fb8becd8029a9fb31299c8afc0b92cc35406916ec0622d8b5744323f4c4cf4a1c5d74ab22d48521fbb3cb4e6004abbd6c5ceb5db73ec64f3a701d427669c46d' # ${_pkgname}-${pkgver}.tar.gz
 )
 sha256sums=(
-    'bcd9df0e708d273b3bdd7961f1221242711a776d5b2979478a3485199e5caa07' # login-ng-${pkgver}.tar.gz
+    'bda4a101fa8f0c42e815cfef213e0e48fa62a8af5a4c03f7092f97e4b4379616' # ${_pkgname}-${pkgver}.tar.gz
 )
 backup=(
     etc/login_ng-session/default.service
@@ -36,27 +43,49 @@ backup=(
 )
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     make build
 }
 
 check() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
-package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make PREFIX="${pkgdir}" install
+package_login_ng-cli() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    make PREFIX="${pkgdir}" install_login_ng-cli
+}
+
+package_login_ng-ctl() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    make PREFIX="${pkgdir}" install_login_ng-ctl
+}
+
+package_pam_login_ng() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    make PREFIX="${pkgdir}" install_pam_login_ng
 
     mkdir -m 640 -p "${pkgdir}/etc/login_ng"
+}
+
+package_login_ng-session() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    make PREFIX="${pkgdir}" install_login_ng-session
+
+    mkdir -m 640 -p "${pkgdir}/etc/login_ng"
+}
+
+package_sessionexec() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    make PREFIX="${pkgdir}" install_sessionexec
 }
