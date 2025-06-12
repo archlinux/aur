@@ -2,7 +2,7 @@
 _base=trame-markdown
 pkgname=python-${_base}
 pkgdesc="Markdown widget for trame"
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
@@ -11,7 +11,7 @@ depends=(python-trame-client)
 makedepends=(python-build python-installer python-setuptools python-wheel nodejs npm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('58dfda47f3894ca896abd23c22268860b889468e9a4112f47f028996e4f977aad51b13c5d4ea0bf318e1fe2ca70b7a693b89e6e2375bd5827ecee61574686044')
+sha512sums=('6c09e12e608b5f204ff7bac1224910453913378a8932d7547f43d9c1ee5ec526c5649ec4222a469dcc6af54b13ea46ba1a61d8e85f203ed17ca4a541dbbb597b')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
