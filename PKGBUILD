@@ -14,10 +14,10 @@ depends=('btrfs-progs' 'util-linux')
 backup=('etc/refind-btrfs-snapshots.conf')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/refind-btrfs-snapshots/releases/download/v0.0.3/refind-btrfs-snapshots_0.0.3_linux_arm64.tar.gz")
-sha256sums_aarch64=('f0389d737e9203813a4250feb5ee8787962c0b00c8e8a17d782da6a5978f1480')
+sha256sums_aarch64=('4a911152d861312792da4f57f037f438873c4dd915bcff9857caddaf32606395')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/refind-btrfs-snapshots/releases/download/v0.0.3/refind-btrfs-snapshots_0.0.3_linux_amd64.tar.gz")
-sha256sums_x86_64=('f107d338dee31da9b723f5acd4d2cf3173948d430292a87f8298e07ee8bb5a27')
+sha256sums_x86_64=('d200d59a636e46a2c6820b5065cee8c42d04d233589eb498f73eb962bfa709d3')
 
 package() {
   # binaries
