@@ -2,7 +2,7 @@
 _appname=trilium
 pkgname="${_appname}next-bin"
 _pkgname='TriliumNext Notes'
-pkgver=0.94.0
+pkgver=0.94.1
 _electronversion=36
 pkgrel=1
 pkgdesc="Build your personal knowledge base with TriliumNext Notes.(Prebuilt version.Use system-wide electron)"
@@ -33,8 +33,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_pkgname// /}-v${pkgver}-linux-arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname// /}-v${pkgver}-linux-x64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('00f2f86176b2e0c94ac6640a1e7f95b2264377490393d8135962289de5f7d1dc')
-sha256sums_x86_64=('9246e8d0230ed27086e62bc6d1cb259e90b70a26ed625e5e4c140b5fa56cc240')
+sha256sums_aarch64=('3110450a257f53c38ffd00e77afa2d9daeee1c2ff765c17e70775b2e570b93a5')
+sha256sums_x86_64=('444a0febfd399c71b1676488233f4a08cca2c0e09cb6dba6dc90943f75b7aed4')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
