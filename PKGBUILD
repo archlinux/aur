@@ -4,14 +4,18 @@
 pkgname=python-precisely
 _pkgname=precisely
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="write precise assertions so you only test the behaviour you’re really interested in"
 arch=(any)
 url="https://github.com/mwilliamson/python-precisely"
 license=(BSD-2-Clause)
 depends=(
+  python
 )
 makedepends=(
+  python-build
+  python-installer
+  python-wheel
 )
 depends=(python)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mwilliamson/python-precisely/archive/refs/tags/${pkgver}.tar.gz")
