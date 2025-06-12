@@ -1,6 +1,6 @@
 pkgbase = fishing-funds-bin
 	pkgdesc = Fund, Market, Stocks, Virtual Currency Status Bar Display Small Applications, based on Electron.(Prebuilt version.Use system-wide electron)基金,大盘,股票,虚拟货币状态栏显示小应用,基于Electron开发.
-	pkgver = 8.4.2
+	pkgver = 8.5.0
 	pkgrel = 1
 	url = https://ff.1zilc.top/
 	arch = aarch64
@@ -8,14 +8,14 @@ pkgbase = fishing-funds-bin
 	license = GPL-3.0-only
 	makedepends = fuse2
 	makedepends = asar
-	depends = electron35
-	provides = fishing-funds=8.4.2
+	depends = electron36
+	provides = fishing-funds=8.5.0
 	conflicts = fishing-funds
 	source = fishing-funds.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = fishing-funds-8.4.2-aarch64.AppImage::https://github.com/1zilc/fishing-funds/releases/download/v8.4.2/Fishing-Funds-8.4.2-arm64.AppImage
-	sha256sums_aarch64 = 21651d770b86a84cf331cd6efac6d42e445655d999660c4ec4f22f8c3c9fe8e1
-	source_x86_64 = fishing-funds-8.4.2-x86_64.AppImage::https://github.com/1zilc/fishing-funds/releases/download/v8.4.2/Fishing-Funds-8.4.2.AppImage
-	sha256sums_x86_64 = e5ab7e8a8f02ab995d9b1d2ee4b2671d0dedcb769020268328ee68e0bda10180
+	source_aarch64 = fishing-funds-8.5.0-aarch64.AppImage::https://github.com/1zilc/fishing-funds/releases/download/v8.5.0/Fishing-Funds-8.5.0-arm64.AppImage
+	sha256sums_aarch64 = bd92a1bf90e427a805f943bc8802ac4fef98321a217eb399401cb0750f57aab2
+	source_x86_64 = fishing-funds-8.5.0-x86_64.AppImage::https://github.com/1zilc/fishing-funds/releases/download/v8.5.0/Fishing-Funds-8.5.0.AppImage
+	sha256sums_x86_64 = 9ea3c17eb454900016332bb1b84f61b51acf9feee668914b1c0856c041184f08
 
 pkgname = fishing-funds-bin
