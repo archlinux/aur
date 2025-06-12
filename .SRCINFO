@@ -1,17 +1,17 @@
 pkgbase = buildozer-bin
 	pkgdesc = A command line tool to rewrite Bazel BUILD files using standard conventions
-	pkgver = 8.2.0
+	pkgver = 8.2.1
 	pkgrel = 1
 	url = https://github.com/bazelbuild/buildtools
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	conflicts = buildozer
-	source = LICENSE-8.2.0::https://raw.githubusercontent.com/bazelbuild/buildtools/v8.2.0/LICENSE
+	source = LICENSE-8.2.1::https://raw.githubusercontent.com/bazelbuild/buildtools/v8.2.1/LICENSE
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	source_x86_64 = buildozer-bin-x86_64-8.2.0::https://github.com/bazelbuild/buildtools/releases/download/v8.2.0/buildozer-linux-amd64
-	sha256sums_x86_64 = 775d17118aecd023352e75611dbe7c12a340e23615ffb270a1dec3f339239949
-	source_aarch64 = buildozer-bin-aarch64-8.2.0::https://github.com/bazelbuild/buildtools/releases/download/v8.2.0/buildozer-linux-arm64
-	sha256sums_aarch64 = 058ad60f279a7b1db339bb287aed2056a992eddfe1b5d2e56d86256bdc9a93b3
+	source_x86_64 = buildozer-bin-x86_64-8.2.1::https://github.com/bazelbuild/buildtools/releases/download/v8.2.1/buildozer-linux-amd64
+	sha256sums_x86_64 = 0e54770aa6148384d1edde39ef20e10d2c57e8c09dd42f525e100f51b0b77ae1
+	source_aarch64 = buildozer-bin-aarch64-8.2.1::https://github.com/bazelbuild/buildtools/releases/download/v8.2.1/buildozer-linux-arm64
+	sha256sums_aarch64 = a9f38f2781de41526ce934866cb79b8b5b59871c96853dc5a1aee26f4c5976bb
 
 pkgname = buildozer-bin
