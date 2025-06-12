@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=brisqi-bin
 _pkgname=Brisqi
-pkgver=0.18.0
-_electronversion=35
-pkgrel=2
+pkgver=0.18.1
+_electronversion=36
+pkgrel=1
 pkgdesc="Offline-first personal Kanban app.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://brisqi.com"
@@ -19,8 +19,8 @@ source=(
     "LICENSE.html::${url}/terms"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('778e5ccafebe3ac7f71f357875227172786fa28497637d5dda9f703e0a7f6e8b'
-            'SKIP'
+sha256sums=('8b7852de932519e791ff31487177066308a21078d3a30307477ccea43d8cf6dd'
+            '57b70123043501e0162afe41761ac7e271e55f7f2f635bc66857643e9d07cf64'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -31,7 +31,7 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
