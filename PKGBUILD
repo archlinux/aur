@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your_email@example.com>
 pkgname=spaces
-pkgver=11.0
+pkgver=3.0
 pkgrel=1
 pkgdesc="A CLI tool that help u open your apps easier"
 arch=('any')
