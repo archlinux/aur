@@ -1,7 +1,7 @@
 pkgbase = r-rcppdist
 	pkgdesc = 'Rcpp' Integration of Additional Probability Distributions
-	pkgver = 0.1.1
-	pkgrel = 4
+	pkgver = 0.1.1.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=RcppDist
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = r-rcppdist
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/RcppDist_0.1.1.tar.gz
-	sha256sums = 3dfcc6f34d781f055ecba64e21bd9bc9e2d504a8304f03b6a4acdde8783fe509
+	source = https://cran.r-project.org/src/contrib/RcppDist_0.1.1.1.tar.gz
+	sha256sums = aefd99dd207b9b545cf6070078bb9dd7f4ba51049063f3324e9849c7131b09ae
 
 pkgname = r-rcppdist

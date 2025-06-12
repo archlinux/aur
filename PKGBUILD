@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppDist
-_pkgver=0.1.1
+_pkgver=0.1.1.1
 pkgname=r-${_pkgname,,}
-pkgver=0.1.1
-pkgrel=4
+pkgver=0.1.1.1
+pkgrel=1
 pkgdesc="'Rcpp' Integration of Additional Probability Distributions"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3dfcc6f34d781f055ecba64e21bd9bc9e2d504a8304f03b6a4acdde8783fe509')
+sha256sums=('aefd99dd207b9b545cf6070078bb9dd7f4ba51049063f3324e9849c7131b09ae')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
