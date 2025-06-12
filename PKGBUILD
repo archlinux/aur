@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box-bin
 _pkgname=Pandora-Box
-pkgver=1.0.10
+pkgver=1.0.11
 _electronversion=36
 pkgrel=1
 pkgdesc="A Simple Mihomo GUI.(Prebuilt version.Use system-wide electron)"
@@ -23,8 +23,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/linux-arm64-rpm.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/linux-amd64-rpm.zip")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('910cb5f78b22bcf8be22604cae95fc120ef0153b0bb7672d1c5eb0d597057817')
-sha256sums_x86_64=('8cd9141ae4fe760f2b5c773a2c7d1fefdd54612f7bdb2af55fdd1baad6d1cdd5')
+sha256sums_aarch64=('9d7eb043ed941bbd5b4032eb6dd81f0724d77c135c4c8c61ce7959c38e3ad5bd')
+sha256sums_x86_64=('e62efab0d4dbbeb326f49b290d7433d14fb9e344c5a6e0fdf4b68b31c0c86433')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -40,7 +40,7 @@ prepare() {
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     asar e "${srcdir}/usr/lib/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/.vite" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    asar pack "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
