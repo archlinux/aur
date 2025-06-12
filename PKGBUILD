@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fishing-funds-git
 _pkgname=Fishing-Funds
-pkgver=8.4.2.r0.g9c395e0
-_electronversion=35
-_nodeversion=22
+pkgver=8.5.0.r0.g59a2947
+_electronversion=36
+_nodeversion=24
 pkgrel=1
 pkgdesc="Fund, Market, Stocks, Virtual Currency Status Bar Display Small Applications, based on Electron.(Use system-wide electron)基金,大盘,股票,虚拟货币状态栏显示小应用,基于Electron开发."
 arch=('any')
@@ -42,6 +42,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname%-git}.git"
     sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-git}/
@@ -50,8 +51,12 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname%-git}.git"
+    gendesk -f -n -q \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -92,6 +97,6 @@ package() {
         install -Dm644 "${srcdir}/${pkgname%-git}.git/build/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
