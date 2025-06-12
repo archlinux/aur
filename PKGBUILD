@@ -1,12 +1,12 @@
 pkgname=crdir
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Simple tool to create folders and then, CD into the folder."
 arch=('x86_64')
 url="https://github.com/ghosty309/crdir"
 license=('MIT')
 depends=('python')
-source=("https://github.com/ghosty309/crdir/archive/refs/tags/v1.0.0.tar.gz")
+source=("https://github.com/ghosty309/crdir/archive/refs/tags/v1.1.0.tar.gz")
 sha256sums=('SKIP')
 
 package() {
