@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lzmusic-bin
 _pkgname='LZ Music'
-pkgver=1.0.6_beta
-_electronversion=25
+pkgver=1.0.7_beta
+_electronversion=36
 pkgrel=1
 pkgdesc="Bilibili API-based music player.(Prebuilt version.Use system-wide electron)基于 Bilibili API 的音乐播放器 "
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver//_/-}/${_pkgname// /-}-${pkgver//_/-}-linux.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2c735ac5d89490654d0cb88d9d971cd597c724ec00ed9d5f733d770d896956cc'
+sha256sums=('7f215a30537611194b219a014ea07353a92870e9189cb3fa0e7cab8124aee9b4'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -32,7 +32,7 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@//g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
