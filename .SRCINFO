@@ -1,20 +1,22 @@
 pkgbase = networkmanager-ssh
-	pkgdesc = SSH VPN support for NetworkManager
+	pkgdesc = OpenSSH VPN support for NetworkManager
 	pkgver = 1.2.12
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/danfruehauf/NetworkManager-ssh
-	arch = any
-	license = GPL2
+	arch = x86_64
+	license = GPL-2.0-or-later
 	makedepends = git
-	makedepends = make
-	makedepends = gcc
-	makedepends = autoconf
 	makedepends = intltool
-	depends = networkmanager
+	depends = gtk3
 	depends = libnm
-	depends = nm-connection-editor
-	provides = networkmanager-ssh
+	depends = libnma
+	depends = libsecret
+	depends = networkmanager
+	depends = openssh
+	depends = sshpass
 	source = networkmanager-ssh::git+https://github.com/danfruehauf/NetworkManager-ssh.git#tag=1.2.12
-	md5sums = SKIP
+	source = nm-ssh-service.name
+	md5sums = d032fda77e8a4b0e3a646b6dc96a6a27
+	md5sums = df217faa2823494c3fd83e778540e880
 
 pkgname = networkmanager-ssh

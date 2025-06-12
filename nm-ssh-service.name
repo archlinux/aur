@@ -1,0 +1,14 @@
+[VPN Connection]
+name=ssh
+service=org.freedesktop.NetworkManager.ssh
+program=/usr/lib/NetworkManager/nm-ssh-service
+supports-multiple-connections=true
+
+[libnm]
+plugin=libnm-vpn-plugin-ssh.so
+
+[GNOME]
+auth-dialog=/usr/lib/NetworkManager/nm-ssh-auth-dialog
+properties=libnm-ssh-properties
+supports-external-ui-mode=true
+supports-hints=true
