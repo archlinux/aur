@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=master-key
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="A password manager application"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('libadwaita' 'python-gobject' 'libpwquality' 'sqlcipher' 'tcl')
 makedepends=('meson' 'gobject-introspection' 'blueprint-compiler')
 checkdepends=('appstream-glib' 'desktop-file-utils')
 source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar)
-b2sums=('42bd2c47dd2911a045f3a4d24ccb9d8eaa1767f94bb0d1c51211a219410203a7e6db0ec2a047a88434b379bedb4c894a4c8334d08b14e924e838d02525bb4a13')
+b2sums=('b8ec63a2fed2153a332ba3e81f55d2de65782353c72abbb52c5261366f9f1aa4bfa80e1d177ee066568458df56759f173f4fc8236809b7750dbc680a0784dc38')
 
 build() {
   arch-meson "$pkgname-v$pkgver" build
