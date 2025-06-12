@@ -2,15 +2,15 @@
 #              Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=otf2
-pkgver=3.0.3
-pkgrel=2
+pkgver=3.1.1
+pkgrel=1
 pkgdesc="Scalable, memory efficient event trace data format and support library."
 arch=('i686' 'x86_64')
 url="http://www.vi-hps.org/projects/score-p/"
 license=('BSD')
 options=('staticlibs')
 source=(http://perftools.pages.jsc.fz-juelich.de/cicd/${pkgname}/tags/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('18a3905f7917340387e3edc8e5766f31ab1af41f4ecc5665da6c769ca21c4ee8')
+sha256sums=('5a4e013a51ac4ed794fe35c55b700cd720346fda7f33ec84c76b86a5fb880a6e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
