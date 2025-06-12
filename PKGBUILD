@@ -4,7 +4,7 @@ _pkgbase=chordpro
 _pkgbasever=6.070
 pkgname=${_pkgbase}-cli
 pkgver=${_pkgbasever}.7
-pkgrel=2
+pkgrel=3
 _pkgdownload=App-Music-ChordPro-${pkgver}
 _wxver=3.005
 pkgdesc="A lyrics and chords formatting program (CLI)"
@@ -12,7 +12,22 @@ arch=('any')
 url="https://chordpro.org/"
 _ghurl="https://github.com/ChordPro/chordpro"
 license=('Artistic-2.0')
-depends=('perl')
+depends=(
+    'perl'                           # Provides JSON::PP, Storable, Pod::Usage, File::Copy and ExtUtils::MakeMaker
+    'perl-pdf-api2'                  # PDF::API2
+    'perl-text-layout'               # Text::Layout
+    'perl-json-xs'                   # JSON::XS
+    'perl-string-interpolate-named'  # String::Interpolate::Named
+    'perl-file-loadlines'            # File::LoadLines
+    'perl-lwp-protocol-https'        # LWP::Protocol::https
+    'perl-mozilla-ca'                # Mozilla::CA
+    'perl-file-homedir'              # File::HomeDir
+    'perl-image-info'                # Image::Info
+    'perl-list-allutils'             # List::Util
+    'perl-data-printer'              # Data::Printer
+    'perl-object-pad'                # Object::Pad
+    'perl-ref-util'                  # Ref::Util
+)
 makedepends=('perl-local-lib' 'cpanminus')
 provides=(chordpro)
 conflicts=(chordpro)
@@ -28,16 +43,16 @@ sha256sums=(
 build() {
     cd "${srcdir}/${_pkgdownload}"
     export PERL_MM_USE_DEFAULT=1
-    eval "$(perl -I "${srcdir}" -Mlocal::lib="${srcdir}")"
-    cpanm --notest --local-lib="${srcdir}" --verbose --installdeps .
-    perl Makefile.PL
+    cpanm --notest --skip-satisfied --local-lib="${srcdir}" --verbose --installdeps .
+    eval "$(perl -I "${srcdir}/lib/perl5" -Mlocal::lib="${srcdir}")"
+    perl Makefile.PL INSTALL_BASE="${srcdir}"
     make install
 }
 
 check() {
     cd "${srcdir}/${_pkgdownload}"
     export PERL_MM_USE_DEFAULT=1
-    eval "$(perl -I "${srcdir}" -Mlocal::lib="${srcdir}")"
+    eval "$(perl -I "${srcdir}/lib/perl5" -Mlocal::lib="${srcdir}")"
     make test
 }
 
