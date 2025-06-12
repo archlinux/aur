@@ -1,6 +1,6 @@
 pkgbase = refind-btrfs-snapshots-bin
 	pkgdesc = Generate rEFInd boot entries for btrfs snapshots
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/jmylchreest/refind-btrfs-snapshots
 	license = GPL3
@@ -9,10 +9,10 @@ pkgbase = refind-btrfs-snapshots-bin
 	conflicts = refind-btrfs-snapshots
 	provides = refind-btrfs-snapshots
 	arch = aarch64
-	source_aarch64 = https://github.com/jmylchreest/refind-btrfs-snapshots/releases/download/v0.0.2/refind-btrfs-snapshots_0.0.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 7be929d52f74f4e2bdb6d6b95c7347e2137929a2e5feac3cf532c0bd1e3dc3cf
+	source_aarch64 = https://github.com/jmylchreest/refind-btrfs-snapshots/releases/download/v0.0.3/refind-btrfs-snapshots_0.0.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = f0389d737e9203813a4250feb5ee8787962c0b00c8e8a17d782da6a5978f1480
 	arch = x86_64
-	source_x86_64 = https://github.com/jmylchreest/refind-btrfs-snapshots/releases/download/v0.0.2/refind-btrfs-snapshots_0.0.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 9cac5139e4b82f95e1a86c74b6171c56945005aa8e7d67e616141098f5280caf
+	source_x86_64 = https://github.com/jmylchreest/refind-btrfs-snapshots/releases/download/v0.0.3/refind-btrfs-snapshots_0.0.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = f107d338dee31da9b723f5acd4d2cf3173948d430292a87f8298e07ee8bb5a27
 	
 pkgname = refind-btrfs-snapshots-bin
