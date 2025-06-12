@@ -1,18 +1,22 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=inkdown-git
 _pkgname=Inkdown
-pkgver=1.2.0.r0.gbd62a61
-_electronversion=29
-_nodeversion=20
+pkgver=2.0.1.r0.gc31eb37
+_electronversion=35
+_nodeversion=22
 pkgrel=1
 pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience. and generate your Markdown files into online documents in the easiest and fastest way.(Use system-wide electron)"
-arch=('any')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/1943time/inkdown"
 license=('AGPL-3.0-only')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
+    'libvips'
 )
 makedepends=(
     'npm'
@@ -50,7 +54,12 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Office" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -64,7 +73,7 @@ prepare() {
         echo "shamefully-hoist=true"
         echo "virtual-store-dir-max-length=80"
         echo "node-linker=hoisted"
-        echo "network-concurrency=10"
+        echo "network-concurrency=32"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -73,14 +82,28 @@ prepare() {
         echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
     fi
+    sed -i "s/\/\${platform}\/\${arch}//g" electron-builder.yml
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    pnpm install
+    NODE_ENV=development    pnpm install --no-frozen-lockfile
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=development    pnpm run build
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.yml"
+    rm -rf "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/{darwin,win32}
+    case "${CARCH}" in
+        'aarch64')
+            cp -r "${srcdir}/${pkgname%-git}.git/node_modules/onnxruntime-node/bin/napi-v3/linux" \
+                "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/
+            rm -rf "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/linux/x64
+            ;;
+        'x86_64')
+            cp -r "${srcdir}/${pkgname%-git}.git/node_modules/onnxruntime-node/bin/napi-v3/linux" \
+                "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/
+            rm -rf "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/linux/arm64
+            ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
