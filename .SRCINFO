@@ -1,7 +1,7 @@
 pkgbase = wretch-bin
 	pkgdesc = A simple Fetch CLI program Built with Rust
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheSillyBoi/wretch
 	arch = x86_64
 	license = GPL-3.0
@@ -11,8 +11,10 @@ pkgbase = wretch-bin
 	conflicts = wretch
 	source = LICENSE-1.3.0::https://raw.githubusercontent.com/TheSillyBoi/wretch/v1.3.0/LICENSE
 	source = README-1.3.0.md::https://raw.githubusercontent.com/TheSillyBoi/wretch/v1.3.0/README.md
+	source = CHANGELOG-1.3.0.md::https://raw.githubusercontent.com/TheSillyBoi/wretch/v1.3.0/CHANGELOG.md
 	sha256sums = f12c6f6b5b0accd597242e5c91fb886d89442197119da9b96a6a96bc7de06243
 	sha256sums = dc10f827056d8938fca83d3e215e738bbf2591f9cdf3e8781e632430dd5a9201
+	sha256sums = f0fba33bd0c11f7f9bef5e4f929a2eb34d197497e0eedd11a988c91932b837c7
 	source_x86_64 = wretch-1.3.0::https://github.com/TheSillyBoi/wretch/releases/download/v1.3.0/wretch-release-1.3.0-linux
 	sha256sums_x86_64 = 9a4b0bba8d52dafcf22fc0a708d5b41114d7d1fc4a150dcdd60d7d86d33ddbb5
 
