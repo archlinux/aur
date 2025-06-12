@@ -3,8 +3,8 @@
 _gituser=p0n1
 pkgname=epub_to_audiobook
 pkgdesc="command-line tool to convert EPUB ebooks into audiobooks"
-pkgver=0.8.0
-pkgrel=3
+pkgver=0.8.2
+pkgrel=1
 #epoch=1
 arch=("any")
 url="https://github.com/$_gituser/$pkgname"
@@ -36,10 +36,9 @@ source=(
 	run.sh
 	run_ui.sh
 )
-sha512sums=('3205139d393b258676c7a3833e9a1f37c45e78368d5234482981e90451d99a6a41cccf779d82a3991bcff361450de634509ad1a603e9616d719c96862be8dc19'
+sha512sums=('d5b92fa222b2c95c37c48a4cb46c351475c8746fc783deb8d19d7d9c8da613a2333b9554501722e239c2debf79f9977158faed30fe5da43fcf595497a161cacb'
             'fb715e3fdc5c18d8c72d9493b345f1b1562528fb745767b9dcaf01bcebb1e5d4edde93b4da30c0078db3b57e859b40b67309763736545f9c0b0307fe778b8cba'
-            'e65affd982fc1de2d6603b8680dc09e91e7b63f10955db8c2ab22abb88cd205dee3fbf4e7542ad55ced1627fa7ff40d8a4b0bb0146432bf81e8b393ed3496013'
-)
+            'e65affd982fc1de2d6603b8680dc09e91e7b63f10955db8c2ab22abb88cd205dee3fbf4e7542ad55ced1627fa7ff40d8a4b0bb0146432bf81e8b393ed3496013')
 
 package() {
     install -Dm755 run.sh "$pkgdir/usr/bin/$pkgname"

@@ -1,7 +1,7 @@
 pkgbase = epub_to_audiobook
 	pkgdesc = command-line tool to convert EPUB ebooks into audiobooks
-	pkgver = 0.8.0
-	pkgrel = 3
+	pkgver = 0.8.2
+	pkgrel = 1
 	url = https://github.com/p0n1/epub_to_audiobook
 	arch = any
 	license = MIT
@@ -21,11 +21,11 @@ pkgbase = epub_to_audiobook
 	optdepends = python-sentencex: web gui
 	provides = epub_to_audiobook
 	conflicts = epub_to_audiobook-git
-	source = epub_to_audiobook-0.8.0.tar.gz::https://github.com/p0n1/epub_to_audiobook/archive/refs/tags/v0.8.0.tar.gz
+	source = epub_to_audiobook-0.8.2.tar.gz::https://github.com/p0n1/epub_to_audiobook/archive/refs/tags/v0.8.2.tar.gz
 	source = run.sh
 	source = run_ui.sh
-	sha512sums = 3205139d393b258676c7a3833e9a1f37c45e78368d5234482981e90451d99a6a41cccf779d82a3991bcff361450de634509ad1a603e9616d719c96862be8dc19
+	sha512sums = d5b92fa222b2c95c37c48a4cb46c351475c8746fc783deb8d19d7d9c8da613a2333b9554501722e239c2debf79f9977158faed30fe5da43fcf595497a161cacb
 	sha512sums = fb715e3fdc5c18d8c72d9493b345f1b1562528fb745767b9dcaf01bcebb1e5d4edde93b4da30c0078db3b57e859b40b67309763736545f9c0b0307fe778b8cba
-	sha512sums = 855d5b20cbaf1dc4e42ad46670df40eb372f4dc61d36e8c2d86c41b103819cbb8ad652cd7115e08fb1b4b29fd899a3cf13985d3fc4fd7893537eb016938004d4
+	sha512sums = e65affd982fc1de2d6603b8680dc09e91e7b63f10955db8c2ab22abb88cd205dee3fbf4e7542ad55ced1627fa7ff40d8a4b0bb0146432bf81e8b393ed3496013
 
 pkgname = epub_to_audiobook
