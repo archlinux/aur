@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zasper-bin
 _pkgname=Zasper
-pkgver=0.1.0_alpha
+pkgver=0.2.0_beta
 _electronversion=30
 pkgrel=1
 pkgdesc="An IDE designed from the ground up to support massive concurrency. It provides a minimal memory footprint, exceptional speed, and the ability to handle numerous concurrent connections.(Prebuilt version.Use system-wide electron)"
@@ -21,8 +21,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_arm64_linux.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64_linux.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('265e4d90ff33429fca539dbdb59e3ddf019b5762265f935e0de8f9c74d7b558e')
-sha256sums_x86_64=('20b6c1e4829092d4989a843c09ed0c10d2fcab794240299d0c07b6fd203a4313')
+sha256sums_aarch64=('ce2faa379a65ff84ef1e3e44c13fd223989324c58dd7f35db135654648872b5b')
+sha256sums_x86_64=('1b51771ac92d2cc604a26d4d3b24a89e02962f71c6a0b246d6f633c21a19e235')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -37,6 +37,10 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }

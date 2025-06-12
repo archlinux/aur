@@ -1,19 +1,19 @@
 pkgbase = zasper-bin
 	pkgdesc = An IDE designed from the ground up to support massive concurrency. It provides a minimal memory footprint, exceptional speed, and the ability to handle numerous concurrent connections.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.1.0_alpha
+	pkgver = 0.2.0_beta
 	pkgrel = 1
 	url = https://zasper.io/
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	depends = electron30
-	provides = zasper=0.1.0_alpha
+	provides = zasper=0.2.0_beta
 	conflicts = zasper
 	source = zasper.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = zasper-0.1.0_alpha-aarch64.deb::https://github.com/zasper-io/zasper/releases/download/v0.1.0-alpha/zasper_0.1.0-alpha_arm64_linux.deb
-	sha256sums_aarch64 = 265e4d90ff33429fca539dbdb59e3ddf019b5762265f935e0de8f9c74d7b558e
-	source_x86_64 = zasper-0.1.0_alpha-x86_64.deb::https://github.com/zasper-io/zasper/releases/download/v0.1.0-alpha/zasper_0.1.0-alpha_amd64_linux.deb
-	sha256sums_x86_64 = 20b6c1e4829092d4989a843c09ed0c10d2fcab794240299d0c07b6fd203a4313
+	source_aarch64 = zasper-0.2.0_beta-aarch64.deb::https://github.com/zasper-io/zasper/releases/download/v0.2.0-beta/zasper_0.2.0-beta_arm64_linux.deb
+	sha256sums_aarch64 = ce2faa379a65ff84ef1e3e44c13fd223989324c58dd7f35db135654648872b5b
+	source_x86_64 = zasper-0.2.0_beta-x86_64.deb::https://github.com/zasper-io/zasper/releases/download/v0.2.0-beta/zasper_0.2.0-beta_amd64_linux.deb
+	sha256sums_x86_64 = 1b51771ac92d2cc604a26d4d3b24a89e02962f71c6a0b246d6f633c21a19e235
 
 pkgname = zasper-bin
