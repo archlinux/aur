@@ -1,6 +1,6 @@
 pkgbase = onekey-wallet-bin
 	pkgdesc = Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions.(Prebuilt version.Use system-wide electron)
-	pkgver = 5.8.3
+	pkgver = 5.9.0
 	pkgrel = 1
 	url = https://onekey.so/
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = onekey-wallet-bin
 	makedepends = fuse2
 	makedepends = asar
 	depends = electron31
-	provides = onekey-wallet=5.8.3
+	provides = onekey-wallet=5.9.0
 	conflicts = onekey-wallet
 	options = !strip
 	options = !emptydirs
 	source = onekey-wallet.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = onekey-wallet-5.8.3-aarch64.AppImage::https://github.com/OneKeyHQ/app-monorepo/releases/download/v5.8.3/OneKey-Wallet-5.8.3-linux-arm64.AppImage
-	sha256sums_aarch64 = 7448146a6f35a774d22f93d50aee3de8134d6f8512e634ac57ae94951688400f
-	source_x86_64 = onekey-wallet-5.8.3-x86_64.AppImage::https://github.com/OneKeyHQ/app-monorepo/releases/download/v5.8.3/OneKey-Wallet-5.8.3-linux-x86_64.AppImage
-	sha256sums_x86_64 = 57d7d09cc4cf227f35d920520d34a4682ce7f43b8dd6d28c3cd2d0353036eefe
+	source_aarch64 = onekey-wallet-5.9.0-aarch64.AppImage::https://github.com/OneKeyHQ/app-monorepo/releases/download/v5.9.0/OneKey-Wallet-5.9.0-linux-arm64.AppImage
+	sha256sums_aarch64 = 8c68150a77e58cea113a35f6de49ec98e5efbfefc99d801e09958ddb69a9cace
+	source_x86_64 = onekey-wallet-5.9.0-x86_64.AppImage::https://github.com/OneKeyHQ/app-monorepo/releases/download/v5.9.0/OneKey-Wallet-5.9.0-linux-x86_64.AppImage
+	sha256sums_x86_64 = f9b67679606623be6e437167f99b5964df2eba753678450c424de7050d91734f
 
 pkgname = onekey-wallet-bin
