@@ -1,6 +1,8 @@
 *
 !.gitignore
+
 !.SRCINFO
 !PKGBUILD
 !fdbmonitor-bin.*
-!*.nu
+
+!.nvchecker.toml
