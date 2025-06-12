@@ -2,8 +2,8 @@
 # Contributor: Valerio Pizzi (pival81) <pival81@yahoo.com>
 pkgname=museeks-git
 _pkgname=Museeks
-pkgver=0.20.9.r0.g10da2d1
-_nodeversion=23
+pkgver=0.21.1.r0.g45dae96
+_nodeversion=24
 pkgrel=1
 pkgdesc="🎵 A simple, clean and cross-platform music player.(Git version)"
 arch=('any')
@@ -52,18 +52,17 @@ prepare() {
     fi
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo '[install]'
-            echo 'registry = "https://registry.npmmirror.com"'
-        } >> bunfig.toml
+            echo 'registry=https://registry.npmmirror.com'
+        } >> .npmrc
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
         export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
     fi
-    NODE_ENV=development    bun install
+    bun install --frozen-lockfile
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
     sed -i 's/"dmg", "nsis", "appimage", "deb", "rpm"/"deb"/g' src-tauri/tauri.conf.json
-    NODE_ENV=production    bun tauri build
+    bun tauri build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${_pkgname}_"*/data/usr/bin/"${pkgname%-git}" -t "${pkgdir}/usr/bin"
