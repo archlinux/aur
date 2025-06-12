@@ -16,7 +16,7 @@ validpgpkeys=('E65941B71CF3C459A34FA89C45E7572A28CD8CC8'
 
 build() {
   cd heimdal-$pkgver
-  ./configure \
+  LDFLAGS='-lcrypt' ./configure \
     --prefix="/usr/heimdal" \
     --sbindir="/usr/heimdal/bin" \
     --enable-hdb-openldap-module \
