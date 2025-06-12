@@ -4,29 +4,21 @@
 pkgname=python-httpstan
 _pkgname=httpstan
 pkgver=4.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="HTTP-based REST interface to Stan, a package for Bayesian inference."
 arch=('i686' 'x86_64')
 url='https://httpstan.readthedocs.org'
-license=(ISCL)
+license=(LicenseRef-ISCL)
 depends=(python-numpy python-marshmallow python-webargs python-setuptools python-appdirs python-aiohttp)
-makedepends=(python-build python-installer python-wheel python-setuptools python-poetry-core)
-checkdepends=(python-apispec python-sphinx_rtd_theme)
+makedepends=(python-poetry python-build python-installer python-wheel python-setuptools python-poetry-core)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/stan-dev/httpstan/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('6b15a07557715e79e6fd66993930003b270f8b8b0c9e65f84978afe5e6bb3047')
 
 build() {
   cd $_pkgname-$pkgver
   make
-  python -m poetry build
-  #python -m build --wheel --no-isolation
+  poetry build -v --no-interaction
 }
-
-#check() {
-#  cd $_pkgname-$pkgver
-# python -m pytest -s -v tests
-# tests work, but a not of them need disabling due to external services
-#}
 
 package() {
   cd $_pkgname-$pkgver

@@ -1,13 +1,12 @@
 pkgbase = python-httpstan
 	pkgdesc = HTTP-based REST interface to Stan, a package for Bayesian inference.
 	pkgver = 4.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://httpstan.readthedocs.org
 	arch = i686
 	arch = x86_64
-	license = ISCL
-	checkdepends = python-apispec
-	checkdepends = python-sphinx_rtd_theme
+	license = LicenseRef-ISCL
+	makedepends = python-poetry
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
