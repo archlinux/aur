@@ -1,6 +1,6 @@
 # Maintainer: Raja Mukherji <rajamukherji@gmail.com>
 pkgname=minilang
-pkgver=2.12.0
+pkgver=2.13.0
 pkgrel=1
 epoch=
 pkgdesc="Mini programming language"
