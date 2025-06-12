@@ -3,7 +3,7 @@
 pkgname=python-writer-sdk
 _pkgname=${pkgname#python-}
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Writer REST API"
 arch=(any)
 url="https://github.com/writer/writer-python"
@@ -23,6 +23,7 @@ makedepends=(
   python-installer
   python-wheel
   python-hatchling
+  python-hatch-fancy-pypi-readme
 )
 optdepends=(
   'python-pytorch-cuda: cuda extensions'
