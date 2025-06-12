@@ -17,13 +17,13 @@ depends=(
   'wayland-protocols'
   'libxcb'
   'wayland'
-  'cli11'
   'libdrm'
   'mesa'
   'google-breakpad'
   'qt6-shadertools'
 )
 makedepends=(
+  'cli11'
   'ninja'
   'cmake'
   'pkgconf'
