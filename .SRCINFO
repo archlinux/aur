@@ -1,19 +1,19 @@
 pkgbase = gltfpack-bin
 	pkgdesc = Automatically optimize glTF files to reduce the download size and improve loading and rendering speed
-	pkgver = 0.23
+	pkgver = 0.24
 	pkgrel = 1
-	url = https://github.com/zeux/meshoptimizer
+	url = https://github.com/zeux/meshoptimizer/tree/master/gltf
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
 	depends = glibc
 	provides = gltfpack
 	conflicts = gltfpack
-	source = gltfpack-0.23-README.md::https://github.com/zeux/meshoptimizer/raw/refs/tags/v0.23/gltf/README.md
-	source = gltfpack-0.23-LICENSE.md::https://github.com/zeux/meshoptimizer/raw/refs/tags/v0.23/LICENSE.md
+	source = gltfpack-0.24-README.md::https://github.com/zeux/meshoptimizer/raw/refs/tags/v0.24/gltf/README.md
+	source = gltfpack-0.24-LICENSE.md::https://github.com/zeux/meshoptimizer/raw/refs/tags/v0.24/LICENSE.md
 	sha256sums = d2ea1950d6d574ca60e0847b660509ee44f2c00175aeda11cdb4467e80a96b33
 	sha256sums = e4a26033e3551fb2722888949fbb41e77aee628e8e8f04dcffeee301aa7e5634
-	source_x86_64 = gltfpack-0.23-x86_64.zip::https://github.com/zeux/meshoptimizer/releases/download/v0.23/gltfpack-ubuntu.zip
-	sha256sums_x86_64 = 75952eb64391a44fc28a3341f2524ac03a74cfc7e8b363ac43d2074e43ff2873
+	source_x86_64 = gltfpack-0.24-x86_64.zip::https://github.com/zeux/meshoptimizer/releases/download/v0.24/gltfpack-ubuntu.zip
+	sha256sums_x86_64 = 4a8a1724706380738ca3e026f106849b8f891ffa725a73f9c9d184d3db68de37
 
 pkgname = gltfpack-bin
