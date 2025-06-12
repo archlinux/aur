@@ -1,13 +1,13 @@
 pkgbase = cjose
 	pkgdesc = C library implementing the Javascript Object Signing and Encryption (JOSE)
-	pkgver = 0.6.2.3
+	pkgver = 0.6.2.4
 	pkgrel = 1
 	url = https://github.com/OpenIDC/cjose
 	arch = x86_64
 	license = MIT
 	depends = openssl
 	depends = jansson
-	source = https://github.com/OpenIDC/cjose/releases/download/v0.6.2.3/cjose-0.6.2.3.tar.gz
-	sha256sums = 2c5f930ddcb09be7db04ab6ffb679b20aa5f24f4fc26f47cc63bc01c19c9fe11
+	source = https://github.com/OpenIDC/cjose/releases/download/v0.6.2.4/cjose-0.6.2.4.tar.gz
+	sha256sums = 138f0115811c76e77632318115b7cf7b64da8bf0de5859c485af1259c6acc9e4
 
 pkgname = cjose
