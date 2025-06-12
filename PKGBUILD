@@ -12,8 +12,8 @@ md5sums=('SKIP')
 package() {
     cd "$srcdir"
 
-    install -Dm755 spaces.py "$pkgdir/usr/bin/spaces.py"
-    ln -s /usr/bin/spaces.py "$pkgdir/usr/bin/spaces"
-    sed -i '1s|^|#!/usr/bin/env python\n|' "$pkgdir/usr/bin/spaces.py"
-
+    # Install the main script
+    install -Dm755 spaces.py "$pkgdir/usr/bin/spaces"
+    # Ensure the script has the correct shebang
+    sed -i '1s|^|#!/usr/bin/env python3\n|' "$pkgdir/usr/bin/spaces"
 }
