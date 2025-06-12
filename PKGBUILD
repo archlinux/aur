@@ -3,7 +3,7 @@
 pkgname="yd-go-git"
 _pkgname=${pkgname%-git}
 pkgrel=1
-pkgver=master.cd1b952.r0.gcd1b952
+pkgver=master.cfa24b6.r0.gcfa24b6
 pkgdesc="Panel indicator for Yandex-disk CLI daemon (linux)"
 arch=('x86_64')
 url="https://github.com/slytomcat/${_pkgname}/"
@@ -23,7 +23,7 @@ prepare() {
 		--genericname "Yandex Disk panel" \
 		--custom "GenericName[ru]=Панель Яндекс Диска" \
 		--pkgdesc "${pkgdesc}" \
-		--categories="Network; FileTools; Monitor" \
+		--categories="Utility" \
 		--icon "/usr/share/pixmaps/${_pkgname}.png" \
 		--exec "/usr/bin/${_pkgname}"
 		# Desktop entry spec.:https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html
