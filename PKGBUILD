@@ -15,16 +15,9 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/SW-philip/sqlch-suite/archi
 sha256sums=('70a73bd050797a155a1ac93b0407d6cdfff8bd1faef171bd4e4cc10aba9d6e82')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname}-${pkgver}"
 
-  # Install binaries
-  install -Dm755 "$srcdir/sqlch-suite-${pkgver}/bin/sqlchctl" "$pkgdir/usr/bin/sqlchctl"
-  install -Dm755 "$srcdir/sqlch-suite-${pkgver}/bin/sqlchknob" "$pkgdir/usr/bin/sqlchknob"
-  install -Dm755 "$srcdir/sqlch-suite-${pkgver}/bin/sqlchtray" "$pkgdir/usr/bin/sqlchtray"
-
-  # Install icons
-  install -Dm644 assets/sqlchtray-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/sqlch.png"
-
-  # License
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 sqlchctl "$pkgdir/usr/bin/sqlchctl"
+  install -Dm755 sqlchtray "$pkgdir/usr/bin/sqlchtray"
+  install -Dm755 sqlchknob "$pkgdir/usr/bin/sqlchknob"
 }
