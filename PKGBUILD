@@ -1,7 +1,7 @@
 pkgname=ayaan-unstable
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="AyaanScript+ (unstable version using .exe + Wine)"
+pkgdesc="AyaanScript+ (unstable version)"
 arch=('x86_64')
 url="https://github.com/ayaan511/AyaanScriptPlus"  # Optional website or GitHub
 license=('custom')

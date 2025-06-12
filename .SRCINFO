@@ -1,5 +1,5 @@
 pkgbase = ayaan-unstable
-	pkgdesc = AyaanScript+ (unstable version using .exe + Wine)
+	pkgdesc = AyaanScript+ (unstable version)
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/ayaan511/AyaanScriptPlus
