@@ -1,7 +1,7 @@
 # Maintainer: Philipp Hentschel  <aur[at]trsk[dot]cc>
 
 pkgname=dbusevents
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=0
 pkgdesc='Small tool to react on dbus signals'
 url='https://github.com/findus/dbusevents'
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('rust')
 depends=('dbus')
 source=(https://github.com/findus/dbusevents/archive/refs/tags/${pkgver}.tar.gz)
-md5sums=('3a4d9c57ca925c88cd8a00c0f696c0e3')
+md5sums=('b6669ae19791ea318cea93e07d97939a')
 install='btevents.install'
 validpgpkeys=('61FFD901BD7C555A8888B7D078F2B0F63DDC9CBC')
 
