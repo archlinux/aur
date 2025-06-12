@@ -18,12 +18,6 @@ makedepends=(
     'cargo'
     'clang'
 )
-depends=(
-    'pam'
-    'dbus'
-    'greetd'
-    'seatd'
-)
 arch=('i686' 'x86_64' 'armv7h')
 source=(
     "${_pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
@@ -33,13 +27,6 @@ b2sums=(
 )
 sha256sums=(
     'bda4a101fa8f0c42e815cfef213e0e48fa62a8af5a4c03f7092f97e4b4379616' # ${_pkgname}-${pkgver}.tar.gz
-)
-backup=(
-    etc/login_ng-session/default.service
-    etc/login_ng-session/steamdeck.service
-    etc/pam.d/login_ng
-    etc/pam.d/login_ng-autologin
-    etc/pam.d/login_ng-ctl
 )
 
 prepare() {
@@ -62,16 +49,35 @@ check() {
 }
 
 package_login_ng-cli() {
+    depends=(
+        'pam'
+        'greetd'
+        'seatd'
+    )
+    backup=(
+        etc/pam.d/login_ng
+        etc/pam.d/login_ng-autologin
+    )
+
     cd "${srcdir}/${_pkgname}-${pkgver}"
     make PREFIX="${pkgdir}" install_login_ng-cli
 }
 
 package_login_ng-ctl() {
+    backup=(
+        etc/pam.d/login_ng-ctl
+    )
+
     cd "${srcdir}/${_pkgname}-${pkgver}"
     make PREFIX="${pkgdir}" install_login_ng-ctl
 }
 
 package_pam_login_ng() {
+    depends=(
+        'pam'
+        'dbus'
+    )
+
     cd "${srcdir}/${_pkgname}-${pkgver}"
     make PREFIX="${pkgdir}" install_pam_login_ng
 
@@ -79,6 +85,10 @@ package_pam_login_ng() {
 }
 
 package_login_ng-session() {
+    depends=(
+        'dbus'
+    )
+
     cd "${srcdir}/${_pkgname}-${pkgver}"
     make PREFIX="${pkgdir}" install_login_ng-session
 
@@ -86,6 +96,12 @@ package_login_ng-session() {
 }
 
 package_sessionexec() {
+    optdepends=(
+        'gamescope: for game-mode'
+        'steam: for game-mode steam session'
+        'plasma: for desktop-mode'
+    )
+
     cd "${srcdir}/${_pkgname}-${pkgver}"
     make PREFIX="${pkgdir}" install_sessionexec
 }
