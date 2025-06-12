@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=piclist-bin
 _pkgname=PicList
-pkgver=2.9.8
+pkgver=2.9.9
 _electronversion=22
 pkgrel=1
 pkgdesc="A cloud storage platform management and file upload tool based on PicGo, which has been deeply redeveloped.(Prebuilt version.Use system-wide electron)一款云储存/图床管理和文件上传客户端工具,基于PicGo深度二次开发."
@@ -18,11 +18,11 @@ makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Kuingsmile/PicList/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('332f891be47c3e614ca4d1e582d1ecd35325caccd8aad00985e4fd1369b4a13d'
+sha256sums=('0e38697d61b6842a4af577b4a10e927b2990126e768cc832a04f8c1007b4292f'
             'cddebc59798c76d191fc65eb4176d960e4e157177c9d81db80eaff8d84d86a1c'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
@@ -33,10 +33,12 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
-    find "${srcdir}/squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} \;
+    find "${srcdir}/squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
