@@ -1,7 +1,7 @@
 # Maintainer: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=dynamic-power-daemon
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Auto-switches powerprofilesctl/asusctl profiles by CPU load & workload"
 arch=('any')
