@@ -43,9 +43,9 @@ index e1e3bc1ae3..4a37838e95 100644
 --- a/src/app/CMakeLists.txt
 +++ b/src/app/CMakeLists.txt
 @@ -651,8 +651,8 @@ target_link_libraries(app-lib
-   ${GIF_LIBRARIES}
    ${PNG_LIBRARIES}
    ${ZLIB_LIBRARIES}
+   libjpeg-turbo
 +  ${LibArchive_LIBRARIES}
    json11
 -  archive_static

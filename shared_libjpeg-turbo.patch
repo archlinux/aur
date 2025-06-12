@@ -1,0 +1,51 @@
+diff --git a/cmake/FindJpegTurbo.cmake b/cmake/FindJpegTurbo.cmake
+index 33b5204..5f345ef 100644
+--- a/cmake/FindJpegTurbo.cmake
++++ b/cmake/FindJpegTurbo.cmake
+@@ -8,7 +8,11 @@
+ #
+ 
+ if(LAF_BACKEND STREQUAL "skia")
+-
++  if(USE_SHARED_LIBJPEG_TURBO)
++    find_library(LIBJPEG_TURBO_LIBRARY NAMES libjpeg jpeg REQUIRED)
++    include_directories(${LIBJPEG_TURBO_INCLUDE_DIRS})
++    set(LIBJPEG_TURBO_LIBRARIES jpeg)
++  else()
+   find_library(LIBJPEG_TURBO_LIBRARY NAMES libjpeg jpeg
+     HINTS "${SKIA_LIBRARY_DIR}" NO_DEFAULT_PATH)
+   set(LIBJPEG_TURBO_INCLUDE_DIRS "${SKIA_DIR}/third_party/externals/libjpeg-turbo")
+@@ -17,7 +21,7 @@ if(LAF_BACKEND STREQUAL "skia")
+   set_target_properties(libjpeg-turbo PROPERTIES
+     IMPORTED_LOCATION "${LIBJPEG_TURBO_LIBRARY}"
+     INTERFACE_INCLUDE_DIRECTORIES ${LIBJPEG_TURBO_INCLUDE_DIRS})
+-
++  endif()
+ else()
+ 
+   if(WIN32)
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 70ea111..5ef2df3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -68,6 +68,7 @@ option(USE_SHARED_CMARK   "Use your installed copy of cmark" off)
+ option(USE_SHARED_GIFLIB  "Use your installed copy of giflib" off)
+ option(USE_SHARED_ZLIB    "Use your installed copy of zlib" off)
+ option(USE_SHARED_LIBARCHIVE "Use your installed copy of libarchive" off)
++option(USE_SHARED_LIBJPEG_TURBO "Use your installed copy of libjpeg-turbo" off)
+ option(USE_SHARED_LIBPNG  "Use your installed copy of libpng" off)
+ option(USE_SHARED_TINYEXIF "Use your installed copy of TinyEXIF" off)
+ option(USE_SHARED_TINYXML "Use your installed copy of tinyxml" off)
+diff --git a/src/app/CMakeLists.txt b/src/app/CMakeLists.txt
+index 5a84b7c..8a16814 100644
+--- a/src/app/CMakeLists.txt
++++ b/src/app/CMakeLists.txt
+@@ -769,7 +769,7 @@ target_link_libraries(app-lib
+   ${GIF_LIBRARIES}
+   ${PNG_LIBRARIES}
+   ${ZLIB_LIBRARIES}
+-  libjpeg-turbo
++  ${LIBJPEG_TURBO_LIBRARIES}
+   ${LibArchive_LIBRARIES}
+   json11
+   ${FMT_LIBRARIES}

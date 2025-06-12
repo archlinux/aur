@@ -10,10 +10,10 @@
 # Contributor: Jomar Milan <jomarm@jomarm.com>
 
 pkgname=aseprite
-pkgver=1.3.13
-_skiaver=m102
-_skiahash=861e4743af
-pkgrel=6
+pkgver=1.3.14.2
+_skiaver=m124
+_skiahash=08a5439a6b
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -22,7 +22,7 @@ depends=(# ~ Aseprite's direct dependencies ~
          # pixman is not linked to because we use Skia instead
          # harfbuzz is linked statically because Aseprite expects an older version
          cmark libcurl.so libgif.so libjpeg.so zlib libpng 'tinyxml2>=11.0.0' libfreetype.so libarchive.so libfmt.so
-         libwebp.so libwebpmux.so libwebpdemux.so
+         libwebp.so libwebpmux.so libwebpdemux.so libjpeg.so
          hicolor-icon-theme # For installing Aseprite's icons
          # ~ Skia deps ~
          # (Skia links dynamically to HarfBuzz, only Aseprite itself doesn't. >_<)
@@ -43,7 +43,10 @@ makedepends=(# "Meta" dependencies
 source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
         "skia-$_skiaver.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/$_skiaver-$_skiahash.tar.gz"
-        aseprite-strings::git+https://github.com/aseprite/strings.git#commit=5499ce2030d831c614f1ce7fdfdaf36a973c21f8
+        # we need icudtl.dat, and I refuse to add a 1GiB-large git repo.
+        # update hash with skia
+        skia-$_skiaver-icu::git+https://chromium.googlesource.com/chromium/deps/icu.git#commit=a0718d4f121727e30b8d52c7a189ebf5ab52421f
+		aseprite-strings::git+https://github.com/aseprite/strings.git#commit=5660117490fe3eaf57774023b8152d42e828165f
         desktop.patch
         shared-fmt.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
@@ -54,22 +57,26 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         optional-pixman.patch
         fix-shared-tinyxml2.patch
         shared-libwebp-found.patch
-        include_cstdint.patch)
+        include_cstdint.patch
+        shared_libjpeg-turbo.patch)
 noextract=("Aseprite-v$pkgver-Source.zip"
-           "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
-sha256sums=('c2e639c083d99a5a478ded7c86d9d7f4e4ff9ebebf6fedac7f8bfc94d6bd94c1'
-            '8d76c1ad3693e1fc019eb14d806082148eb4ed7d601474aeeaae601b05a9b3ad'
-            '8ee87f57b5792e5751f63fe37cdda8d29053cd4449e1f533e792e15abcfefa79'
+           "skia-$_skiaver.tar.gz"
+           "aseprite-skia-$_skiaver-flutter.tar.gz") # Don't extract Aseprite or skia sources at the root
+sha256sums=('191ca47bc1b483a529ac9dc4826f53b9363bdd46feaa1f3638acac20096fed40'
+            'c2a567d6b8bb933a92615cbdee0de268d02c3a06863337ee8822eedab9ed66ba'
+            'b52f179a687ef2f91a52b696ab6581f4a37df5e88cb22040fa1ec6567cf0ebb1'
+            'ad46a79be08d94809fe007f39a0708e15012cb85bed9fb467e6b9a6d1c4853f8'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'c3591d376180d99ff8001c3d549c0bd18ef5e4d95f1755ccaa8e2fd65dd5d2b3'
-            '89cd28a5a90ee9dd42e85866b6f954bde526068d94311b0730a62f00f9cfffdb'
+            '96d75ecc951712e80734f476511658fcc3c91fc1655fe9a01453c3fc8c2a9274'
             '0f8adb959d7000697af453d6cf5aaf9984b74868008382aad541d2c29871c751'
             'eb9f544e68b41b5cb1a9ab7a6648db51587e67e94f1a452cb5a84f3d224bf5d0'
             'c2d14f9738a96a9db3695c00ac3d14b1312b6a595b151bd56e19422c86517654'
             'ba02fc060dc930cfd66a8903a5d8a59f981753bdf416e91cc77a48c56c86aea3'
             '72605d6760c29eb98f2d8d8cf2cc9f9f7d7655bcf7cfc944f6a46b0957adbb14'
-            'ce20c8caa61b0e4b478eb08853e1148eba76836027ec04cf5d0f76c4db9ae112')
-_debug="false"
+            '3381038fc5209600428801fa0b2b05ddee031b0926eaa75c114172e503916cd5'
+            'bfc1969835da58de8777724a16a3396313a03f53eaa0a16b20ff0ac558d9c6e8')
+_debug="true"
 prepare() {
 	# Extract Aseprite's sources
 	mkdir -p aseprite
@@ -77,6 +84,9 @@ prepare() {
 	# Extract Skia's sources
 	mkdir -p skia
 	bsdtar xf skia-$_skiaver.tar.gz  --strip-components=1 -C skia
+	# link to skia's icu
+	mkdir -p skia/third_party/externals/
+	ln -s $srcdir/skia-$_skiaver-icu skia/third_party/externals/icu
 	# Fix up Aseprite's desktop integration
 	[[ -n $_debug ]] && echo desktop.patch
 	env -C aseprite patch -tp1 <desktop.patch
@@ -98,6 +108,8 @@ prepare() {
 	env -C aseprite/third_party/TinyEXIF patch -tp1 <fix-shared-tinyxml2.patch
 	[[ -n $_debug ]] && echo shared-libwebp-found.patch
 	env -C aseprite patch -tp1 <shared-libwebp-found.patch
+	[[ -n $_debug ]] && echo shared_libjpeg-turbo.patch
+	env -C aseprite patch -tp1 <shared_libjpeg-turbo.patch
 	[[ -n $_debug ]] && echo include_cstdint.patch
 	patch -tp1 <include_cstdint.patch
 }
@@ -107,6 +119,7 @@ build() {
 	local _skiadir="$PWD/skia/obj"
 	export CXX=clang++
 	export CC=clang
+	export CXXFLAGS+=" -std=c++11 -stdlib=libstdc++"
 	export AR=ar
 	export NM=nm
 	# Flags can be found by running `gn args --list "$_skiadir"` from skia's directory.
@@ -120,27 +133,25 @@ build() {
 	#   skia_build_fuzzers: We don't care about them.
 	#   skia_enable_pdf: Not used by Aseprite.
 	#   skia_enable_skottie: Not used by Aseprite.
-	#   skia_enable_sksl: laf seems to want to use it... but no references are made anywhere.
-	#   skia_enable_svg: Not used by Aseprite. It seems it has its own SVG exporter.
 	#   skia_use_lib*_{encode,decode}: Aseprite only loads PNG assets, so only libpng is required.
 	#   skia_use_expat: Only required for the Android font manager and SVGCanvas/SVGDevice.
 	#   skia_use_piex: Not used by Aseprite. Only used for reading RAW files.
 	#   skia_use_xps: Not used outside of Windows.
 	#   skia_use_zlib: Only used for PDF and RAW files.
-	#   skia_use_libgifcodec: Only used for GIFs, which Aseprite doesn't use.
-	#   skia_enable_{particles,skparagraph,sktext}: Aseprite does not link against this library.
+	#   skia_enable_skparagraph: Aseprite does not link against this library.
+	#   skia_use_system_icu: Aseprite wants an `icudtl.dat`, which would require pulling a 1GiB git repo
+	#                        as a dependency
 
 	# gn is bad software
-	env -C skia gn gen "$_skiadir" --args='is_official_build=true skia_build_fuzzers=false skia_enable_pdf=false skia_enable_skottie=false skia_enable_sksl=false skia_enable_svg=false skia_use_libjpeg_turbo_encode=false skia_use_libjpeg_turbo_decode=false skia_use_libwebp_encode=false skia_use_libwebp_decode=false skia_use_expat=false skia_use_piex=false skia_use_xps=false skia_use_zlib=false skia_use_libgifcodec=false skia_enable_particles=false skia_enable_skparagraph=false skia_enable_sktext=false cc="clang" cxx="clang++"'
+	env -C skia gn gen "$_skiadir" --args='is_official_build=true skia_build_fuzzers=false skia_enable_pdf=false skia_enable_skottie=false skia_enable_svg=false skia_use_libjpeg_turbo_encode=false skia_use_libjpeg_turbo_decode=false skia_use_libwebp_encode=false skia_use_libwebp_decode=false skia_use_expat=false skia_use_piex=false skia_use_xps=false skia_use_zlib=false skia_enable_skparagraph=false skia_use_wuffs=false skia_use_system_icu=false cc="clang" cxx="clang++"'
 	ninja -C "$_skiadir" skia modules
-
 	echo Building Aseprite...
 	# Suppress install messages since we install to a temporary area; `install -v` will do the job
 	cmake -S aseprite -B build -G Ninja -Wno-dev -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_BUILD_TYPE=None \
 -DENABLE_UPDATER=OFF -DENABLE_{SCRIPTING,WEBSOCKET}=ON \
 -DLAF_WITH_{EXAMPLES,TESTS}=OFF -DLAF_BACKEND=skia \
 -DSKIA_DIR="$PWD/skia" -DSKIA_LIBRARY_DIR="$_skiadir" \
--DUSE_SHARED_{CMARK,CURL,FMT,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES \
+-DUSE_SHARED_{CMARK,CURL,FMT,GIFLIB,LIBJPEG_TURBO,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=ON \
 -DCMAKE_POLICY_VERSION_MINIMUM=3.5 # workaround
 	cmake --build build
 }
@@ -148,6 +159,7 @@ build() {
 check() {
 	export CXX=clang++
 	export CC=clang
+	export CXXFLAGS+=" -std=c++11 -stdlib=libstdc++"
 	export AR=ar
 	export NM=nm
 	env -C build ctest --output-on-failure
@@ -156,6 +168,7 @@ check() {
 package() {
 	export CXX=clang++
 	export CC=clang
+	export CXXFLAGS+=" -std=c++11 -stdlib=libstdc++"
 	export AR=ar
 	export NM=nm
 	# Now the fun part: components of e.g. `libwebp` get installed as well,
