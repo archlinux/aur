@@ -4,8 +4,8 @@
 
 pkgname=zsh-you-should-use
 _plugname=you-should-use
-pkgver=1.9.0
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc='ZSH plugin that reminds you to use existing aliases for commands you just typed'
 url='https://github.com/MichaelAquilina/zsh-you-should-use'
 depends=(zsh ncurses)
@@ -13,7 +13,7 @@ arch=('any')
 license=('GPL-3.0-or-later')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MichaelAquilina/zsh-you-should-use/archive/${pkgver}.tar.gz")
 install="${pkgname}.install"
-sha256sums=('6ca0128883ab73d3782f70a6b16c95ed033c2497c3e27d5db0a68c90d8fde4a2')
+sha256sums=('51aa37bc72aa67ac93fb3881500ea7cb085a28e80fe79228c2436978072b4451')
 
 package() {
   cd ${pkgname}-${pkgver}
