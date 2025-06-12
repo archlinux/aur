@@ -1,13 +1,13 @@
 pkgbase = wretch
 	pkgdesc = A simple Fetch CLI program Built with Rust
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/thesillyboi/wretch
 	arch = x86_64
 	license = GPL3
 	makedepends = rustup
 	makedepends = git
-	source = wretch-v1.2.0.tar.gz::https://github.com/thesillyboi/wretch/archive/refs/tags/v1.2.0.tar.gz
-	sha512sums = e301298d8763b2ad6947528dad7291a2ff16976f1fb941fa2cbc03ab2b373278e1f0e12c775eece8f56e4d648c5bce6fc24bd4f6e05862c7b23bc60983be8d22
+	source = wretch-v1.3.0.tar.gz::https://github.com/thesillyboi/wretch/archive/refs/tags/v1.3.0.tar.gz
+	sha512sums = 7a5bdd9e8089dbcff817b12401d6d28af0fb0ce83e93e8f77a737f60bf85fa8b946ce7d5be360f7a20cf6513ecbfbb104a9ff63212fd90808f44f3a275214897
 
 pkgname = wretch
