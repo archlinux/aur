@@ -1,29 +1,29 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# COntributor: maz-1
 
 pkgname=easyrpg-rtp
-pkgver=25.f15e1dd
+pkgver=91.993d88c
 pkgrel=1
-pkgdesc="RPG Maker 2000/2003 material replacement "
+pkgdesc="RPG Maker 2000/2003 material replacement"
 arch=('any')
-url="https://easy-rpg.org/"
+url="https://github.com/EasyRPG/RTP"
 license=('GPL3')
-makedepends=('git' 'advancecomp')
-depends=('easyrpg-player')
-source=(${pkgname}::"git+https://github.com/EasyRPG/RTP.git")
-md5sums=('SKIP')
+makedepends=(git oxipng)
+optional=(easyrpg-player)
+source=(${pkgname}::"git+${url}.git") # replace with stable frozen commit
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
-  echo "$(git rev-list --count HEAD).$(git describe --always)"
+  cd $pkgname
+  echo $(git rev-list --count HEAD).$(git describe --always)
 }
 
 build() {
-      cd ${pkgname}
-      make optimize
+  cd $pkgname
+  oxipng -o 6 --strip safe -r . # -Z is slow
+  rm -r .git *.md Makefile .gitattributes .gitignore COPYING
 }
 
 package () {
-  mkdir -p "${pkgdir}/usr/share/easyrpg"
-  cp -r ${srcdir}/${pkgname} "${pkgdir}/usr/share/easyrpg/rtp"
-  rm -r "${pkgdir}/usr/share/easyrpg/rtp/.git"
+  install -d "${pkgdir}"/usr/share/easyrpg
+  cp -r --reflink=auto ${pkgname} "${pkgdir}"/usr/share/easyrpg/rtp
 }
