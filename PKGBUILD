@@ -3,7 +3,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qmplay2-appimage
 _pkgname=QMPlay2
-pkgver=25.01.19
+pkgver=25.06.11
 pkgrel=1
 pkgdesc="A video and audio player which can play most formats and codecs"
 arch=('x86_64')
@@ -21,22 +21,24 @@ options=(
     '!strip'
 )
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-1-${CARCH}.AppImage")
-sha256sums=('d54bb31332f3d56275de9c71b2c3085eaebbcad7be09cdb79a12ad756614b2f6')
+source=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-1-${CARCH}.AppImage")
+sha256sums=('ab6f12e2dcc04eeb4023cb20a38d9c4496422c34c55d07dcba4a93698ff1eabd')
 prepare() {
-    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
-    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "
+    if [ ! -x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
+    fi
+    "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-appimage}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-appimage}/g
-    " -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
-    sed -e "
+    " "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    sed -i -e "
         s/io.github.zaps166.${_pkgname}.desktop/${pkgname%-appimage}.desktop/g
         s/${_pkgname}.desktop/${pkgname%-appimage}.desktop/g
-    " -i "${srcdir}/squashfs-root/usr/share/metainfo/${_pkgname}.appdata.xml"
+    " "${srcdir}/squashfs-root/usr/share/metainfo/${_pkgname}.appdata.xml"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
+    install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
     install -Dm755 -d "${pkgdir}/usr/bin"
     ln -sf "${_install_path}/${pkgname%-appimage}.AppImage" "${pkgdir}/usr/bin/${pkgname%-appimage}"
     _icon_sizes=(16x16 22x22 32x32 48x48 64x64 128x128 256x256)
