@@ -1,6 +1,6 @@
 pkgbase = sqlch-suite
 	pkgdesc = Terminal-based internet radio suite with TUI, tray, and controller
-	pkgver = 0.1.1
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/SW-philip/sqlch-suite
 	arch = any
