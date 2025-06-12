@@ -1,0 +1,19 @@
+pkgbase = foundationdb-bin
+	pkgdesc = Meta package to install FoundationDB utilities
+	pkgver = 7.3.63
+	pkgrel = 1
+	url = https://www.foundationdb.org/
+	arch = any
+	groups = foundationdb
+	license = Apache-2.0
+	depends = fdbcli-bin>=7.3.63
+	depends = fdbcli-bin<8.0.0
+	depends = fdbbackup-bin>=7.3.63
+	depends = fdbbackup-bin<8.0.0
+	depends = fdbserver-bin>=7.3.63
+	depends = fdbserver-bin<8.0.0
+	depends = fdbmonitor-bin>=7.3.63
+	depends = fdbmonitor-bin<8.0.0
+	options = !debug
+
+pkgname = foundationdb-bin
