@@ -1,6 +1,6 @@
 # Maintainer: Raja Mukherji <rajamukherji@gmail.com>
 pkgname=minilang-libs-postgres
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 epoch=
 pkgdesc="Mini programming language"
