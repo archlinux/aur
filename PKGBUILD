@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bbg-bin
-pkgver=20250311
-_electronversion=34
+pkgver=20250611
+_electronversion=36
 pkgrel=1
 pkgdesc="A static blog generator based on Electron Technology(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -24,8 +24,8 @@ source=(
 )
 sha256sums=('436a6d536138f203ac333858cff92a568be62797752b3adb94bcaa0f6ffe7ef6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('2ec6439c3e1c153c643f3436f0c39cc8102b5afb9a49344e8bf4c9e0f9d3b6f4')
-sha256sums_x86_64=('b8208a54d6c4c377aa5636749dd9ae521afde5b7de18a9d6678e416b6e71b1b1')
+sha256sums_aarch64=('f9c14f171684d2043f440c7a0154794bd207e52677b166db80e3008241503a1b')
+sha256sums_x86_64=('ab5f77c204e0b015e9b96ac86fb10642133c032f0697e2a9b5dc9cd696c35017')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
