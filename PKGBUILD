@@ -30,7 +30,6 @@ depends=(
 makedepends=(
   'ninja'
   'cmake'
-  'pkgconf'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
