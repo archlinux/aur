@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="electron35-castlab-bin"
-pkgver='35.5.0+wvcus'
+pkgname=electron35-castlab-bin
+pkgver='35.5.1+wvcus'
 pkgrel=1
 pkgdesc="Electron for Content Security (ECS) is a fork of Electron created by castLabs to facilitate the use of Google's Widevine Content Decryption Module (CDM) for DRM-enabled playback within Electron"
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
 options=('!strip')
 noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/electron-v${pkgver}-linux-x64.zip")
-sha256sums=('781115b8d404cdbe9c99fcba1395dc6ab44447954485bb723dfb7368d8a116be')
+sha256sums=('36a8444f24ba23f4d8e848b06c57e70d51073598865607f404d5f97a589478cb')
 prepare() {
     install -Dm755 -d "${srcdir}/${pkgname%-bin}"
     bsdtar -xf "${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/${pkgname%-bin}"
