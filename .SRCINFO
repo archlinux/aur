@@ -1,0 +1,18 @@
+pkgbase = scpdiscord
+	pkgdesc = A very customisable Discord bot + SCP:SL plugin combo.
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/KarlOfDuty/SCPDiscord
+	install = scpdiscord.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = dotnet-sdk-9.0
+	depends = dotnet-runtime-9.0
+	conflicts = scpdiscord-git
+	options = !debug
+	options = !strip
+	backup = etc/scpdiscord/config.yml
+	source = git+https://github.com/KarlOfDuty/SCPDiscord.git#tag=3.3.0
+	sha512sums = SKIP
+
+pkgname = scpdiscord
