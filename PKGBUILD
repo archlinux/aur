@@ -4,7 +4,7 @@
 _pkgname=Sparrow
 pkgname=sparrow-wallet
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy. Free and open source"
 arch=('x86_64')
 url="https://sparrowwallet.com/"
@@ -12,15 +12,17 @@ license=('Apache-2.0')
 depends=('hicolor-icon-theme' 'alsa-lib' 'libxtst' 'libxrender' 'freetype2' 'libxcrypt-compat')
 conflicts=('sparrow-wallet-git' 'sparrow-wallet-reproducible')
 source=(
-    "https://github.com/sparrowwallet/sparrow/releases/download/$pkgver/sparrowwallet-$pkgver-$CARCH.tar.gz"
-    "https://github.com/sparrowwallet/sparrow/releases/download/$pkgver/sparrow-$pkgver-manifest.txt"{,.asc}
-    "https://raw.githubusercontent.com/sparrowwallet/sparrow/refs/heads/master/src/main/deploy/package/linux/Sparrow.desktop"
+    "https://github.com/sparrowwallet/sparrow/releases/download/${pkgver}/sparrowwallet-${pkgver}-${CARCH}.tar.gz"
+    "https://github.com/sparrowwallet/sparrow/releases/download/${pkgver}/sparrow-${pkgver}-manifest.txt"{,.asc}
+    "https://raw.githubusercontent.com/sparrowwallet/sparrow/refs/tags/${pkgver}/src/main/deploy/package/linux/Sparrow.desktop"
+    "MimeInfo.xml"
 )
 validpgpkeys=('D4D0D3202FC06849A257B38DE94618334C674B40')
 sha256sums=('32c11181f246a71464426e16c37d1373de644e18e5808fa73b86eadb334675e5'
             'a8f22596a16a7bce014887186186beaca26f4a937f427a261e7b0ea13c65ca5e'
             'SKIP'
-            '71c5d812d7f84faff1898c2407454f230308e148052cde950ccf4ab9a0b2848c')
+            '71c5d812d7f84faff1898c2407454f230308e148052cde950ccf4ab9a0b2848c'
+            'd0ad5f5457005776fb5021752f9468a55f3a01f498a7984fc97ef652b44460c1')
 
 prepare() {
     sha256sum -c --ignore-missing sparrow-$pkgver-manifest.txt
@@ -42,4 +44,11 @@ EOF
     sed "s|/opt/sparrowwallet|/opt/${pkgname}|g" \
         "${srcdir}/Sparrow.desktop" > \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+    install -Dm644 "${srcdir}/MimeInfo.xml" \
+        "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
+
+    install -dm755 "${pkgdir}/usr/lib/udev/rules.d"
+    install -m644 "${srcdir}/Sparrow/lib/runtime/conf/udev"/*.rules \
+        "${pkgdir}/usr/lib/udev/rules.d/"
 }
