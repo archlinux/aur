@@ -6,12 +6,12 @@ pkgrel=1
 pkgdesc="free branch of the targetcli LIO administration shell (iSCSI + Co)"
 arch=('any')
 url="https://github.com/open-iscsi/targetcli-fb"
-license=('Apache')
+license=('Apache-2.0')
 groups=()
 depends=(
+  'python'
   'python-rtslib-fb'
   'python-configshell-fb'
-  'python-dbus'
   'python-gobject'
 )
 makedepends=(
@@ -26,7 +26,7 @@ provides=('targetcli')
 backup=()
 options=()
 install=
-source=(https://github.com/open-iscsi/targetcli-fb/archive/v${pkgver}.tar.gz)
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/open-iscsi/${pkgname}/archive/v${pkgver}.tar.gz)
 sha512sums=('e4ed5b1911ba8858fcf8fe39580462b7b645672f836b195fba0549fb5f9532bf5223a7034bf92c14e5d01c106e388d8ec942cacac421dfd1271f9916ac47f4c0')
 
 
