@@ -1,14 +1,14 @@
 pkgbase = iozone
 	pkgdesc = A filesystem benchmark tool
-	pkgver = 3.506
-	pkgrel = 4
+	pkgver = 3.507
+	pkgrel = 1
 	url = http://www.iozone.org/
 	install = iozone.install
 	arch = any
 	license = custom
 	depends = sh
 	optdepends = gnuplot: for generating graph reports
-	source = https://www.iozone.org/src/current/iozone3_506.tar
-	sha512sums = 908919aef957ee587e23ab1d29c0e7cdb985caa1ec80ddee0d3fcdad8aa78978de0f8fc83161b37223237119c50e0626a8366ce6b29debefbfee00240e97105e
+	source = https://www.iozone.org/src/current/iozone3_507.tar
+	sha512sums = 28f2cf091e3d7e1e17ce712cf9530160c55ea928ba1eb64514deb8581fa3de59bd79e2c2de2bddd786fb0e7f05749b8251afb4127fea2fe4e736ad4fd1a6ae9c
 
 pkgname = iozone
