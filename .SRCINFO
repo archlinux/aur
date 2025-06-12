@@ -12,7 +12,7 @@ pkgbase = royal-blocks
 	depends = qt5-base
 	options = !debug
 	options = strip
-	source = https://github.com/ulb-info2-group5/Royal-Blocks/releases/download/v1.1.1/royal-blocks-1.1.1-x86_64.pkg.tar.zst
-	sha256sums = 10421b488df7f508378e28d73ec97a5143c5d9551a44e9c4fc4d96f581042812
+	source = https://github.com/ulb-info2-group5/Royal-Blocks/releases/download/v1.1.2/royal-blocks-1.1.2-x86_64.pkg.tar.zst
+	sha256sums = 31d84bac823313ea7438010e51f647a26be23452df97a3d356bcc5546574567a
 
 pkgname = royal-blocks
