@@ -1,14 +1,13 @@
 pkgbase = spaces
-	pkgdesc = A CLI tool that help u open your apps easier
-	pkgver = 4.0
-	pkgrel = 1
-	url = https://github.com/simit22/spaces
-	arch = any
-	license = GPL
-	depends = python
-	depends = python-rich
-
-	source = main.py
-	md5sums = SKIP
+pkgdesc = A CLI tool that helps you open your apps more easily
+pkgver = 5.0
+pkgrel = 1
+url = https://github.com/simit22/spaces
+arch = any
+license = GPL
+depends = python
+depends = python-rich
+source = main.py
+md5sums = SKIP
 
 pkgname = spaces
