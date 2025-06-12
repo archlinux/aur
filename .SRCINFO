@@ -1,0 +1,20 @@
+pkgbase = snippai-bin
+	pkgdesc = AI-Powered Snipping Tool.(Use system-wide electron)
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://snippai.de/
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = gendesk
+	depends = electron29
+	provides = snippai=0.1.9
+	conflicts = snippai
+	options = !emptydirs
+	source = snippai-0.1.9.zip::https://github.com/xyTom/snippai/releases/download/v0.1.9/Snippai-linux-x64.zip
+	source = snippai-0.1.9.svg::https://raw.githubusercontent.com/xyTom/snippai/v0.1.9/docs/public/logo.svg
+	source = snippai.sh
+	sha256sums = cc996350045ad1c1baa6b188182e46b7350c2d7b8dcd04268e0935e57c768429
+	sha256sums = ec0c42565d1a536da8e70b67539ec3405b7d78e76fa08f425aba222129c91904
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = snippai-bin
