@@ -1,16 +1,16 @@
 # Maintainer: Olaf Bauer <hydro@freenet.de>
 
 pkgname=udfclient
-pkgver=0.8.12
+pkgver=0.8.21
 pkgrel=1
 pkgdesc="a userland implementation of the UDF filingsystem"
-arch=('i686' 'x86_64')
-url="http://www.13thmonkey.org/udfclient/"
-license=('custom:Clarified Artistic')
+arch=('x86_64')
+url="https://www.13thmonkey.org/udfclient/"
+license=('LicenseRef-Clarified Artistic')
 depends=(glibc)
 makedepends=('bmake')
-source=(${url}releases/UDFclient.$pkgver.tgz)
-md5sums=('ca9e81bb4ffe17682e8cd97b6ebb62d2')
+source=(${url}releases/UDFclient.${pkgver}.tgz)
+sha256sums=('83deab4d97d8e5f67baa47aa779c41d35b5f5ef348bcea36bebb1549534c6f5e')
 
 build() {
   cd "$srcdir/UDFclient.$pkgver"
@@ -22,5 +22,5 @@ package() {
   cd "$srcdir/UDFclient.$pkgver"
   install -d "$pkgdir/usr/bin"
   bmake prefix="$pkgdir/usr" install
-  install -Dm 644 LICENCE.clearified.artistic "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
+  install -Dm 644 LICENCE.clearified.artistic "$pkgdir/usr/share/licenses/${pkgname}/LICENCE"
 }
