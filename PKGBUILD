@@ -4,7 +4,7 @@
 _pkgname=pymilvus
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=2.5.10
+pkgver=2.5.11
 pkgrel=1
 pkgdesc="Python Sdk for Milvus"
 arch=('any')
@@ -13,7 +13,7 @@ license=('Apache-2.0')
 depends=(python-grpcio python-milvus-lite python-pandas python-protobuf python-dotenv python-setuptools python-ujson)
 makedepends=('python-build' 'python-gitpython' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
-b2sums=('7f9add322f3d89ccc28d0ebc376d0de96bddc67fdfad49647c08c80756d89a785662b3a198962228b472cd14fec1ce13f855c329b781c12db2956232b618acbb')
+b2sums=('ae2f7a71d6ae15e179b1718136a90fe569c7499e8753c9cc2a2a2f4cb5f367d2c2a25690c2ca6b3ef88b3dd8866d2ebce3828571a6db415c32dfeeb3d9f2573d')
 
 build() {
     cd "${_pipname}-${pkgver}"
