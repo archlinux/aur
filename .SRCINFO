@@ -1,6 +1,6 @@
 pkgbase = soulfire-bin
 	pkgdesc = A frontend for the SoulFire server. It mainly targets the web, but uses native APIs using Tauri.(Prebuilt version)
-	pkgver = 1.10.7
+	pkgver = 1.10.8
 	pkgrel = 1
 	url = https://app.soulfiremc.com/
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = soulfire-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = soulfire=1.10.7
+	provides = soulfire=1.10.8
 	conflicts = soulfire
-	source_aarch64 = soulfire-1.10.7-aarch64.deb::https://github.com/AlexProgrammerDE/SoulFireClient/releases/download/1.10.7/soulfire_1.10.7_arm64.deb
-	sha256sums_aarch64 = d9b43d7054dbff61255f0b98adb19ee1b59a40872657e28f3b651a00c792ddff
-	source_x86_64 = soulfire-1.10.7-x86_64.deb::https://github.com/AlexProgrammerDE/SoulFireClient/releases/download/1.10.7/soulfire_1.10.7_amd64.deb
-	sha256sums_x86_64 = cc16ccfaa720a541363485cb59bc6dd92923977000cf57902c83895a510a57ca
+	source_aarch64 = soulfire-1.10.8-aarch64.deb::https://github.com/AlexProgrammerDE/SoulFireClient/releases/download/1.10.8/soulfire_1.10.8_arm64.deb
+	sha256sums_aarch64 = ff11c8b134b8cb7d17630f05095296120edc9f6b6aaa119994567d8f1a59bfb4
+	source_x86_64 = soulfire-1.10.8-x86_64.deb::https://github.com/AlexProgrammerDE/SoulFireClient/releases/download/1.10.8/soulfire_1.10.8_amd64.deb
+	sha256sums_x86_64 = 544eaf678e5f0536dc2a7806ae9b7167db94b19648f8f689819c44ad45b6c46f
 
 pkgname = soulfire-bin
