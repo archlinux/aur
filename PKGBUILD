@@ -3,7 +3,7 @@
 
 pkgname=mustache-d
 pkgver=0.1.5
-pkgrel=18
+pkgrel=19
 pkgdesc='Moustache template engine for D'
 arch=('x86_64')
 url='https://github.com/repeatedly/mustache-d'
