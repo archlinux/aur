@@ -7,6 +7,7 @@ pkgdesc='Flexible toolkit for making desktop shells with QtQuick'
 arch=(x86_64 aarch64)
 url='https://git.outfoxxed.me/quickshell/quickshell'
 options=(!strip)
+license=('LGPL-3.0-only')
 depends=(
   'qt6-declarative'
   'qt6-base'
@@ -14,15 +15,17 @@ depends=(
   'qt6-svg'
   'libpipewire'
   'qt6-wayland'
-  'wayland-protocols'
   'libxcb'
   'wayland'
   'libdrm'
   'mesa'
   'google-breakpad'
-  'qt6-shadertools'
 )
 makedepends=(
+  'spirv-tools'
+  'qt6-shadertools'
+  'wayland'
+  'wayland-protocols'
   'cli11'
   'ninja'
   'cmake'
