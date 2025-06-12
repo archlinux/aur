@@ -1,20 +1,21 @@
 pkgbase = qdep
-	pkgdesc = A very basic yet simple to use dependency management tool for qmake based projects.
+	pkgdesc = A dependency management tool for qmake based projects
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Skycoder42/qdep
 	install = qdep.install
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = qt5-base
-	depends = python
 	depends = python-argcomplete
 	depends = python-lockfile
 	depends = python-appdirs
 	optdepends = qt5-tools: Needed for lupdate to generate qdep translations
-	source = qdep-1.1.1::git+https://github.com/Skycoder42/qdep.git#tag=1.1.1
-	sha256sums = SKIP
+	source = qdep-1.1.1.tar.gz::https://github.com/Skycoder42/qdep/archive/1.1.1.tar.gz
+	sha256sums = b42a8f934d1114e6d7b32c78c513b153fe15fd0e7eb55872af0726ca6514dcec
 
 pkgname = qdep
-
