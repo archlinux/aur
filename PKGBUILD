@@ -2,32 +2,24 @@
 # Maintainer: icyleaf <icyleaf.cn at gmail dot com>
 
 pkgname='hypr-input-switcher-bin'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Smart input method switcher for Hyprland'
 url='https://github.com/icyleaf/hypr-input-switcher'
 arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('hypr-input-switcher')
-conflicts=('hypr-input-switcher-bin')
+conflicts=('hypr-input-switcher')
 depends=('fcitx5' 'hyprland')
-optdepends=('fcitx5-rime: Chinese input support' 'fcitx5-mozc: Japanese input support' 'fcitx5-hangul: Korean input support')
+optdepends=('fcitx5-rime: Chinese input support' 'fcitx5-mozc: Japanese input support' 'fcitx5-hangul: Korean input support' 'dunst: Desktop notifications')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/icyleaf/hypr-input-switcher/releases/download/0.1.0/hypr-input-switcher_Linux_arm64.tar.gz")
-sha256sums_aarch64=('2fdd838477604846f86c634507647102722487445b36a42f0b898737b447f401')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/icyleaf/hypr-input-switcher/releases/download/0.1.1/hypr-input-switcher-bin_0.1.1_arm64.tar.gz")
+sha256sums_aarch64=('bc816e631e4f38cbf64217ebbc42b1fa51570c429b9b69d439227ebcead1d71d')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/icyleaf/hypr-input-switcher/releases/download/0.1.0/hypr-input-switcher_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('ee0c84fb8245663ef3f345638bebfa0cfd91af03b82d50ea10f52e91456b067e')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/icyleaf/hypr-input-switcher/releases/download/0.1.1/hypr-input-switcher-bin_0.1.1_x86_64.tar.gz")
+sha256sums_x86_64=('cef05930e480ba059d7d99feec5885dc845ebd170d2a9c2e88afb7d0880651bc')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  # Build from source
-  export CGO_ENABLED=0
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -s -w -X main.version=${pkgver}" -o hypr-input-switcher ./cmd/hypr-input-switcher
-
-  # Install
   install -Dm755 "./hypr-input-switcher" "${pkgdir}/usr/bin/hypr-input-switcher"
   install -Dm644 "./configs/default.yaml" "${pkgdir}/usr/share/hypr-input-switcher/default.yaml"
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/hypr-input-switcher/LICENSE"

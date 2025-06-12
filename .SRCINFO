@@ -1,21 +1,22 @@
 pkgbase = hypr-input-switcher-bin
 	pkgdesc = Smart input method switcher for Hyprland
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/icyleaf/hypr-input-switcher
-	arch = aarch64
-	arch = x86_64
 	license = MIT
-	depends = fcitx5
-	depends = hyprland
 	optdepends = fcitx5-rime: Chinese input support
 	optdepends = fcitx5-mozc: Japanese input support
 	optdepends = fcitx5-hangul: Korean input support
+	optdepends = dunst: Desktop notifications
+	depends = fcitx5
+	depends = hyprland
+	conflicts = hypr-input-switcher
 	provides = hypr-input-switcher
-	conflicts = hypr-input-switcher-bin
-	source_aarch64 = hypr-input-switcher-bin_0.1.0_aarch64.tar.gz::https://github.com/icyleaf/hypr-input-switcher/releases/download/0.1.0/hypr-input-switcher_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 2fdd838477604846f86c634507647102722487445b36a42f0b898737b447f401
-	source_x86_64 = hypr-input-switcher-bin_0.1.0_x86_64.tar.gz::https://github.com/icyleaf/hypr-input-switcher/releases/download/0.1.0/hypr-input-switcher_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = ee0c84fb8245663ef3f345638bebfa0cfd91af03b82d50ea10f52e91456b067e
-
+	arch = aarch64
+	source_aarch64 = https://github.com/icyleaf/hypr-input-switcher/releases/download/0.1.1/hypr-input-switcher-bin_0.1.1_arm64.tar.gz
+	sha256sums_aarch64 = bc816e631e4f38cbf64217ebbc42b1fa51570c429b9b69d439227ebcead1d71d
+	arch = x86_64
+	source_x86_64 = https://github.com/icyleaf/hypr-input-switcher/releases/download/0.1.1/hypr-input-switcher-bin_0.1.1_x86_64.tar.gz
+	sha256sums_x86_64 = cef05930e480ba059d7d99feec5885dc845ebd170d2a9c2e88afb7d0880651bc
+	
 pkgname = hypr-input-switcher-bin
