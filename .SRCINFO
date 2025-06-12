@@ -1,5 +1,5 @@
 pkgbase = xlibre-server-git
-	pkgver = 21.1.13.r2999.610e91dc5
+	pkgver = 21.1.13.r3009.942b0e96c
 	pkgrel = 1
 	url = https://github.com/x11libre/xserver
 	arch = aarch64
@@ -79,8 +79,8 @@ pkgname = xlibre-server-git
 	depends = pixman>=0.27.2
 	depends = sh
 	depends = systemd-libs>=209
-	depends = xf86-input-libinput
-	depends = xlibre-server-common-git=21.1.13.r2999.610e91dc5-1
+	depends = xf86-input-libinput-xlibre
+	depends = xlibre-server-common-git=21.1.13.r3009.942b0e96c-1
 	provides = xlibre-server=21.1.13
 	provides = xorg-server=21.1.13
 	provides = X-ABI-VIDEODRV_VERSION=28.0
@@ -89,6 +89,45 @@ pkgname = xlibre-server-git
 	provides = x-server
 	conflicts = xlibre-server
 	conflicts = xorg-server
+	conflicts = nvidia-utils<=331.20
+	conflicts = glamor-egl
+	conflicts = xf86-video-modesetting
+	replaces = glamor-egl
+	replaces = xf86-video-modesetting
+	replaces = xlibre-server-bootstrap
+	options = emptydirs
+
+pkgname = xlibre-server-bootstrap-git
+	pkgdesc = XLibre X server (bootstrap)
+	install = xlibre-server.install
+	depends = dbus
+	depends = glibc
+	depends = libdrm
+	depends = libepoxy
+	depends = libgl
+	depends = libpciaccess
+	depends = libtirpc
+	depends = libunwind
+	depends = libxau
+	depends = libxcvt
+	depends = libxdmcp
+	depends = libxfont2
+	depends = libxshmfence>=1.1
+	depends = nettle
+	depends = pixman>=0.27.2
+	depends = sh
+	depends = systemd-libs>=209
+	depends = xlibre-server-common-git=21.1.13.r3009.942b0e96c-1
+	provides = xlibre-server=21.1.13
+	provides = xorg-server=21.1.13
+	provides = xlibre-server-bootstrap=21.1.13
+	provides = x-server
+	provides = X-ABI-VIDEODRV_VERSION=28.0
+	provides = X-ABI-XINPUT_VERSION=26.0
+	provides = X-ABI-EXTENSION_VERSION=11.0
+	conflicts = xlibre-server
+	conflicts = xorg-server
+	conflicts = xlibre-server-bootstrap
 	conflicts = nvidia-utils<=331.20
 	conflicts = glamor-egl
 	conflicts = xf86-video-modesetting
@@ -140,7 +179,7 @@ pkgname = xlibre-server-xephyr-git
 	depends = xcb-util-keysyms
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
-	depends = xlibre-server-common-git=21.1.13.r2999.610e91dc5-1
+	depends = xlibre-server-common-git=21.1.13.r3009.942b0e96c-1
 	provides = xlibre-server-xephyr=21.1.13
 	provides = xorg-server-xephyr=21.1.13
 	conflicts = xlibre-server-xephyr
@@ -159,7 +198,7 @@ pkgname = xlibre-server-xnest-git
 	depends = nettle
 	depends = pixman>=0.27.2
 	depends = systemd-libs>=209
-	depends = xlibre-server-common-git=21.1.13.r2999.610e91dc5-1
+	depends = xlibre-server-common-git=21.1.13.r3009.942b0e96c-1
 	provides = xlibre-server-xnest=21.1.13
 	provides = xorg-server-xnest=21.1.13
 	conflicts = xlibre-server-xnest
@@ -180,7 +219,7 @@ pkgname = xlibre-server-xvfb-git
 	depends = pixman
 	depends = sh
 	depends = systemd-libs>=209
-	depends = xlibre-server-common-git=21.1.13.r2999.610e91dc5-1
+	depends = xlibre-server-common-git=21.1.13.r3009.942b0e96c-1
 	depends = xorg-xauth
 	provides = xlibre-server-xvfb=21.1.13
 	provides = xorg-server-xvfb=21.1.13

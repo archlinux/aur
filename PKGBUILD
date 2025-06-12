@@ -1,10 +1,10 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgbase="xlibre-server"
-_pkgname=("${_pkgbase}"{,-common,-devel,-xephyr,-xnest,-xvfb})
+_pkgname=("${_pkgbase}"{,-bootstrap,-common,-devel,-xephyr,-xnest,-xvfb})
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgname[@]/%/-git}")
-pkgver=21.1.13.r2999.610e91dc5
+pkgver=21.1.13.r3009.942b0e96c
 pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://github.com/x11libre/xserver"
@@ -78,12 +78,43 @@ package_xlibre-server-git() {
   depends=('dbus' 'glibc' 'libdrm' 'libepoxy' 'libgl' 'libpciaccess' 'libtirpc'
            'libunwind' 'libxau' 'libxcvt' 'libxdmcp' 'libxfont2'
            'libxshmfence>=1.1' 'nettle' 'pixman>=0.27.2' 'sh'
-           'systemd-libs>=209' 'xf86-input-libinput'
+           'systemd-libs>=209' 'xf86-input-libinput-xlibre'
            "xlibre-server-common-git=${pkgver}-${pkgrel}") # FS#52949
   # see xlibre-server*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xlibre-server-devel pkg
   provides=({xlibre,xorg}"-server=${pkgver%%.r*}" 'X-ABI-VIDEODRV_VERSION=28.0' 'X-ABI-XINPUT_VERSION=26.0' 'X-ABI-EXTENSION_VERSION=11.0' 'x-server')
   conflicts=({xlibre,xorg}'-server' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
+  replaces=('glamor-egl' 'xf86-video-modesetting' 'xlibre-server-bootstrap')
+  options=('emptydirs')
+  install="${_pkgbase}.install"
+
+  cd "${srcdir}"
+  meson install -C "${_pkgsrc}/build" --destdir "${pkgdir}"
+
+  cd "${pkgdir}"
+  install -vdm755 "etc/X11/xorg.conf.d"
+
+  cd "usr"
+  # devel
+  rm -rf "include" "lib/pkgconfig" "share/aclocal"
+  # common
+  rm -f "lib/xorg/protocol.txt" "share/man/man1/Xserver.1"
+  # xephyr, xnest, xvfb
+  find . -type f,l \( -name '*Xephyr*' -o -name '*Xnest*' -o -name '*Xvfb*' \) -delete
+}
+
+package_xlibre-server-bootstrap-git() {
+  pkgdesc="XLibre X server (bootstrap)"
+  depends=('dbus' 'glibc' 'libdrm' 'libepoxy' 'libgl' 'libpciaccess' 'libtirpc'
+           'libunwind' 'libxau' 'libxcvt' 'libxdmcp' 'libxfont2'
+           'libxshmfence>=1.1' 'nettle' 'pixman>=0.27.2' 'sh'
+           'systemd-libs>=209'
+           "xlibre-server-common-git=${pkgver}-${pkgrel}") # FS#52949
+  # see xlibre-server*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
+  # and /usr/lib/pkgconfig/xorg-server.pc in xlibre-server-devel pkg
+  provides=({xlibre,xorg}"-server=${pkgver%%.r*}" "xlibre-server-bootstrap=${pkgver%%.r*}" 'x-server'
+            'X-ABI-VIDEODRV_VERSION=28.0' 'X-ABI-XINPUT_VERSION=26.0' 'X-ABI-EXTENSION_VERSION=11.0')
+  conflicts=({xlibre,xorg}'-server' 'xlibre-server-bootstrap' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
   replaces=('glamor-egl' 'xf86-video-modesetting')
   options=('emptydirs')
   install="${_pkgbase}.install"
