@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=taratormusic-bin
 _pkgname=TaratorMusic
-pkgver=1.5.7
+pkgver=1.5.8
 _electronversion=31
 pkgrel=1
 pkgdesc="A music player application with playlist support and Discord integration.(Prebuilt version.Use system-wide electron)"
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d1e747880cff73bc9398e5bc7a77f3f32f06ac1854c14ab594f0e8d155fbe34d'
+sha256sums=('3abfa9e8250df703336351b3fd28cce148ed8b8ab15bd994c0cf37991d303d92'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -47,8 +47,8 @@ prepare() {
     find "${srcdir}/squashfs-root/resources/" -type d -exec chmod 755 {} +
     ln -sf "/usr/bin/ffmpeg" "${srcdir}/squashfs-root/resources/app/node_modules/@ffmpeg-installer/linux-x64/ffmpeg"
     ln -sf "/usr/bin/ffprobe" "${srcdir}/squashfs-root/resources/app/node_modules/ffprobe-static/bin/linux/x64/ffprobe"
-    ln -sf "/usr/bin/python3" "${srcdir}/squashfs-root/resources/app/node_modules/better-sqlite3/build/node_gyp_bins/python3"
-    ln -sf "/usr/bin/python3" "${srcdir}/squashfs-root/resources/app/node_modules/register-scheme/build/node_gyp_bins/python3"
+    ln -sf "/usr/bin/python" "${srcdir}/squashfs-root/resources/app/node_modules/better-sqlite3/build/node_gyp_bins/python3"
+    ln -sf "/usr/bin/python" "${srcdir}/squashfs-root/resources/app/node_modules/register-scheme/build/node_gyp_bins/python3"
     rm -rf \
         "${srcdir}/squashfs-root/resources/app/node_modules/ffprobe-static/bin/"{darwin,linux/ia32} \
         "${srcdir}/squashfs-root/resources/ffmpeg.exe" \
