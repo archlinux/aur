@@ -7,7 +7,6 @@ pkgdesc='Flexible toolkit for making desktop shells with QtQuick'
 arch=(x86_64 aarch64)
 url='https://git.outfoxxed.me/quickshell/quickshell'
 options=(!strip)
-license=('GPL')
 depends=(
   'qt6-declarative'
   'qt6-base'
