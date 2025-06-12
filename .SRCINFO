@@ -1,7 +1,7 @@
 pkgbase = programmers-turkish-f
 	pkgdesc = Variant of the Turkish-F layout with symbols and usage adapted from Programmer Dvorak
 	pkgver = 0.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alerque/programmers-turkish-f
 	arch = any
 	license = BSD-3-Clause

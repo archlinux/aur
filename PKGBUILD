@@ -2,7 +2,7 @@
 
 pkgname=programmers-turkish-f
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Variant of the Turkish-F layout with symbols and usage adapted from Programmer Dvorak'
 arch=(any)
 url="https://github.com/alerque/$pkgname"
@@ -18,7 +18,7 @@ sha256sums=('0c3144063d62c3e7a5c4e28d0cefa508519a25e29fd476d90ad1ea6c1648eb11'
 
 package() {
 	cd "$_archive/linux"
-	install -Dm0644 ptf.xkb "$pkgdir/usr/share/X11/xkb/symbols/ptf"
+	install -Dm0644 ptf.xkb "$pkgdir/usr/share/xkeyboard-config-2/symbols/ptf"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
 
