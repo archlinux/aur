@@ -1,22 +1,27 @@
 pkgname=heimdal
 pkgdesc="Heimdal, an implementation of Kerberos and PKIX"
-pkgver=7.8.0
+pkgver=7.8.0+git
 pkgrel=1
 url="https://www.heimdal.software/"
 arch=(x86_64)
 depends=(libcap-ng readline sqlite)
 makedepends=(libldap perl-json)
 optdepends=(libldap)
-source=("https://github.com/heimdal/heimdal/releases/download/heimdal-$pkgver/heimdal-$pkgver.tar.gz"
-        "https://github.com/heimdal/heimdal/releases/download/heimdal-$pkgver/heimdal-$pkgver.tar.gz.sig")
-sha256sums=('fd87a207846fa650fd377219adc4b8a8193e55904d8a752c2c3715b4155d8d38'
-            'SKIP')
-validpgpkeys=('E65941B71CF3C459A34FA89C45E7572A28CD8CC8'
-              'FB925C7AFA000F52B4BBD1ED9A077911BB7DC320')
+source=(
+  "${pkgname}-${pkgver}::git+https://github.com/heimdal/heimdal.git"
+  # "https://github.com/heimdal/heimdal/releases/download/heimdal-$pkgver/heimdal-$pkgver.tar.gz"
+  # "https://github.com/heimdal/heimdal/releases/download/heimdal-$pkgver/heimdal-$pkgver.tar.gz.sig"
+)
+sha256sums=(
+  'SKIP'
+  # 'fd87a207846fa650fd377219adc4b8a8193e55904d8a752c2c3715b4155d8d38'
+  # 'SKIP'
+)
 
 build() {
-  cd heimdal-$pkgver
-  LDFLAGS='-lcrypt' ./configure \
+  cd "${pkgname}-${pkgver}"
+  sh autogen.sh
+  ./configure \
     --prefix="/usr/heimdal" \
     --sbindir="/usr/heimdal/bin" \
     --enable-hdb-openldap-module \
@@ -26,8 +31,6 @@ build() {
 }
 
 package() {
-  cd heimdal-$pkgver
-  make DESTDIR="$pkgdir" install
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
-
-# vim: ts=2:sw=2:et
