@@ -62,6 +62,7 @@ build() {
   patch -p1 -i ../configure.patch
   patch -p1 -i ../fix-tests.patch
   patch -p1 -i ../archbuild.patch
+  patch -p0 -i ../use-std-gnu17.patch
 
   cd unix
 
