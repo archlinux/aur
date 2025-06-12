@@ -3,13 +3,13 @@
 _pkgname='storage-executive-cli'
 _execname='msecli'
 pkgname="$_pkgname"
-pkgver='10.01.012024.00'
+pkgver='11.01.012025.00'
 pkgrel='1'
 pkgdesc='Crucial Storage Executive CLI - Command Line Interface management tool for Crucial SSDs'
 provides=("$_pkgname" "$_execname")
 conflicts=()
 arch=('x86_64' 'aarch64')
-url='https://www.micron.com/sales-support/downloads/software-drivers/storage-executive-software'
+url='https://www.micron.com/sales-support/downloads/software-drivers/storage-executive-software#cli'
 license=('LicenseRef-SLA')
 source=("SLA")
 depends=('glibc')
