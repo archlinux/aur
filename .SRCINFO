@@ -1,6 +1,6 @@
 pkgbase = python-biosutilities
 	pkgdesc = Various BIOS Utilities for Modding/Research
-	pkgver = 25.6.9
+	pkgver = 25.6.12
 	pkgrel = 1
 	url = https://pypi.org/project/biosutilities
 	arch = any
@@ -22,9 +22,9 @@ pkgbase = python-biosutilities
 	conflicts = biosutilities
 	options = !strip
 	options = !debug
-	source = biosutilities-25.6.9.tar.gz::https://files.pythonhosted.org/packages/source/b/biosutilities/biosutilities-25.6.9.tar.gz
-	source = main-25.6.9.py::https://github.com/platomav/BIOSUtilities/raw/refs/heads/main/main.py
-	sha256sums = 24c943ce967e330dd5ee076fa4c1f2a73b3639eefb5ffa01bb9fb678ccf16587
+	source = biosutilities-25.6.12.tar.gz::https://files.pythonhosted.org/packages/source/b/biosutilities/biosutilities-25.6.12.tar.gz
+	source = main-25.6.12.py::https://github.com/platomav/BIOSUtilities/raw/refs/heads/main/main.py
+	sha256sums = 1726b6ade7400e8d24980981f5166fecdbefd10954cba15ba91ae46820376537
 	sha256sums = 5a4b7e3b7a46de5e6c3477f3157ffb6e9860a3fe5208f614ce6ffdbbda2579a4
 
 pkgname = python-biosutilities
