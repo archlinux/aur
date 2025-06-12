@@ -1,5 +1,5 @@
 pkgname=spaces
-pkgver=6.0
+pkgver=6.2
 pkgrel=1
 pkgdesc="A CLI tool that helps you open your apps more easily"
 arch=('any')
