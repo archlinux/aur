@@ -5,13 +5,12 @@
 
 pkgname=write_stylus
 pkgver=jan.2025
-pkgrel=4
+pkgrel=5
 pkgdesc="Write(orignal name) - A word processor for handwriting"
 arch=(i686 x86_64)
 url="http://www.styluslabs.com/"
 license=('AGPL-3.0-only')
 depends=(sdl2 pugixml libxi)
-options=(!lto)
 makedepends=(git)
 source=(
   "${pkgname}::git+https://github.com/styluslabs/Write.git#tag=${pkgver//./-}"
@@ -36,10 +35,10 @@ prepare() {
   git -C "${pkgname}" config --local submodule.deps/ugui.url "${srcdir}/ugui"
   git -C "${pkgname}" -c protocol.file.allow='always' submodule update
 
+  sed -i '/^#pragma once/a #include <cstdint>' write_stylus/usvg/svgnode.h
   sed -i 's#^Exec=.*#Exec=/usr/bin/write_stylus#' write_stylus/scribbleres/linux/Write.desktop
   sed -i 's#^Icon=.*#Icon=write_stylus#' write_stylus/scribbleres/linux/Write.desktop
   sed -i '/#ifndef NDEBUG/,/#endif/s/#define SCRIBBLE_TEST 1/#undef SCRIBBLE_TEST/' write_stylus/syncscribble/basics.h
-
 }
 build() {
   cd $pkgname/syncscribble

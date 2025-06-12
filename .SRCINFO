@@ -1,7 +1,7 @@
 pkgbase = write_stylus
 	pkgdesc = Write(orignal name) - A word processor for handwriting
 	pkgver = jan.2025
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.styluslabs.com/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = write_stylus
 	depends = pugixml
 	depends = libxi
 	noextract = eula.docx
-	options = !lto
 	source = write_stylus::git+https://github.com/styluslabs/Write.git#tag=jan-2025
 	source = http://www.styluslabs.com/write/eula.docx
 	source = git+https://github.com/styluslabs/nanovgXC.git

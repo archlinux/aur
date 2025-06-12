@@ -1,5 +1,5 @@
 [write_stylus]
-source="github-graphql"
+source="github"
 github="styluslabs/Write"
 use_max_tag=true
 from_pattern="-"
