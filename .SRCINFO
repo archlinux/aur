@@ -7,7 +7,6 @@ pkgbase = spaces
 	license = GPL
 	depends = python
 	depends = python-rich
-	depends = python-argparse
 
 	source = main.py
 	md5sums = SKIP

@@ -6,7 +6,7 @@ pkgdesc="A CLI tool that help u open your apps easier"
 arch=('any')
 url="https://github.com/simit22/spaces"
 license=('GPL')
-depends=('python' 'python-rich' 'python-argparse')
+depends=('python' 'python-rich' )
 source=("main.py")
 md5sums=('SKIP')
 
