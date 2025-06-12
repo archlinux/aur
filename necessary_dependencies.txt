@@ -173,6 +173,13 @@ Module: requests
     open_webui/utils/auth.py
     open_webui/utils/telemetry/instrumentors.py
     open_webui/utils/webhook.py
+Module: redis
+  Imported in:
+    open_webui/config.py
+    open_webui/main.py
+    open_webui/socket/main.py
+    open_webui/utils/redis.py
+    open_webui/utils/telemetry/instrumentors.py
 Module: fastapi
   Imported in:
     open_webui/functions.py
@@ -202,9 +209,11 @@ Module: fastapi
     open_webui/routers/tools.py
     open_webui/routers/users.py
     open_webui/routers/utils.py
+    open_webui/tasks.py
     open_webui/test/util/mock_user.py
     open_webui/utils/auth.py
     open_webui/utils/chat.py
+    open_webui/utils/embeddings.py
     open_webui/utils/middleware.py
     open_webui/utils/models.py
     open_webui/utils/oauth.py
@@ -331,10 +340,12 @@ Module: open_webui.models.models
     open_webui/routers/openai.py
     open_webui/test/apps/webui/routers/test_models.py
     open_webui/utils/chat.py
+    open_webui/utils/embeddings.py
     open_webui/utils/middleware.py
     open_webui/utils/models.py
 Module: open_webui.models.users
   Imported in:
+    open_webui/functions.py
     open_webui/main.py
     open_webui/models/auths.py
     open_webui/models/functions.py
@@ -361,6 +372,7 @@ Module: open_webui.models.users
     open_webui/utils/audit.py
     open_webui/utils/auth.py
     open_webui/utils/chat.py
+    open_webui/utils/embeddings.py
     open_webui/utils/middleware.py
     open_webui/utils/models.py
     open_webui/utils/oauth.py
@@ -501,6 +513,7 @@ Module: open_webui.env
     open_webui/utils/auth.py
     open_webui/utils/chat.py
     open_webui/utils/code_interpreter.py
+    open_webui/utils/embeddings.py
     open_webui/utils/filter.py
     open_webui/utils/images/comfyui.py
     open_webui/utils/logger.py
@@ -519,11 +532,15 @@ Module: open_webui.utils.models
   Imported in:
     open_webui/main.py
     open_webui/utils/chat.py
+    open_webui/utils/embeddings.py
 Module: open_webui.utils.chat
   Imported in:
     open_webui/main.py
     open_webui/routers/tasks.py
     open_webui/utils/middleware.py
+Module: open_webui.utils.embeddings
+  Imported in:
+    open_webui/main.py
 Module: open_webui.utils.middleware
   Imported in:
     open_webui/main.py
@@ -601,16 +618,16 @@ Module: open_webui.utils.oauth
 Module: open_webui.utils.security_headers
   Imported in:
     open_webui/main.py
-Module: open_webui.tasks
-  Imported in:
-    open_webui/main.py
-    open_webui/utils/middleware.py
 Module: open_webui.utils.redis
   Imported in:
     open_webui/config.py
     open_webui/main.py
     open_webui/socket/main.py
     open_webui/socket/utils.py
+Module: open_webui.tasks
+  Imported in:
+    open_webui/main.py
+    open_webui/utils/middleware.py
 Module: open_webui.utils.telemetry.setup
   Imported in:
     open_webui/main.py
@@ -659,6 +676,7 @@ Module: open_webui.utils.payload
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
     open_webui/utils/chat.py
+    open_webui/utils/embeddings.py
 Module: importlib.metadata
   Imported in:
     open_webui/env.py
@@ -704,12 +722,10 @@ Module: open_webui.constants
 Module: dotenv
   Imported in:
     open_webui/env.py
-Module: redis
+Module: redis.asyncio
   Imported in:
-    open_webui/config.py
-    open_webui/socket/main.py
+    open_webui/tasks.py
     open_webui/utils/redis.py
-    open_webui/utils/telemetry/instrumentors.py
 Module: chromadb
   Imported in:
     open_webui/config.py
@@ -797,9 +813,11 @@ Module: open_webui.routers.openai
   Imported in:
     open_webui/routers/pipelines.py
     open_webui/utils/chat.py
+    open_webui/utils/embeddings.py
 Module: open_webui.routers.ollama
   Imported in:
     open_webui/utils/chat.py
+    open_webui/utils/embeddings.py
 Module: open_webui.routers.pipelines
   Imported in:
     open_webui/routers/tasks.py
@@ -808,6 +826,7 @@ Module: open_webui.routers.pipelines
 Module: open_webui.utils.response
   Imported in:
     open_webui/utils/chat.py
+    open_webui/utils/embeddings.py
 Module: open_webui.utils.filter
   Imported in:
     open_webui/utils/chat.py
@@ -1409,6 +1428,9 @@ Module: pymilvus
 Module: pinecone
   Imported in:
     open_webui/retrieval/vector/dbs/pinecone.py
+Module: pinecone.grpc
+  Imported in:
+    open_webui/retrieval/vector/dbs/pinecone.py
 Module: grpc
   Imported in:
     open_webui/retrieval/vector/dbs/qdrant_multitenancy.py
@@ -1433,6 +1455,9 @@ Module: elasticsearch
 Module: elasticsearch.helpers
   Imported in:
     open_webui/retrieval/vector/dbs/elasticsearch.py
+Module: xml.etree.ElementTree
+  Imported in:
+    open_webui/retrieval/loaders/youtube.py
 Module: youtube_transcript_api
   Imported in:
     open_webui/retrieval/loaders/youtube.py
