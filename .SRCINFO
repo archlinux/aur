@@ -1,6 +1,6 @@
 pkgbase = leenfetch-bin
 	pkgdesc = Fast, minimal, customizable system info tool in Rust (Neofetch alternative)
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/drunkleen/leenfetch
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = leenfetch-bin
 	depends = gcc-libs
 	provides = leenfetch
 	conflicts = leenfetch
-	source = LICENSE-0.2.2::https://raw.githubusercontent.com/drunkleen/leenfetch/v0.2.2/LICENSE
-	source = README-0.2.2.md::https://raw.githubusercontent.com/drunkleen/leenfetch/v0.2.2/README.md
+	source = LICENSE-0.2.3::https://raw.githubusercontent.com/drunkleen/leenfetch/v0.2.3/LICENSE
+	source = README-0.2.3.md::https://raw.githubusercontent.com/drunkleen/leenfetch/v0.2.3/README.md
 	sha256sums = e673ac9666ad19db4dceaac6e42e8b0c3e9e86b1911e6877bb6ee7f3f31565ee
 	sha256sums = b86578f8457b84c49547c7d1fb6b06ef76158d97c480abb1c9604e592272a5ca
-	source_x86_64 = https://github.com/drunkleen/leenfetch/releases/download/v0.2.2/leenfetch-v0.2.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 79af3143e6314d428d58a407e6aea4bc677f42a2c78385e14173bed285c8b4e3
-	source_aarch64 = https://github.com/drunkleen/leenfetch/releases/download/v0.2.2/leenfetch-v0.2.2-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 50cfdbbf43da3378304572f67b23749a94b60ddacccc28e92557403b99befbc3
+	source_x86_64 = https://github.com/drunkleen/leenfetch/releases/download/v0.2.3/leenfetch-v0.2.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = d465d88cf63db36324621af5e796c78c4162b3eab1045e626cd458609f28944f
+	source_aarch64 = https://github.com/drunkleen/leenfetch/releases/download/v0.2.3/leenfetch-v0.2.3-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 573ef809283c575e8d49c103ca347ccf3613a3e99138a843b3fd931a1a0c95ac
 
 pkgname = leenfetch-bin
