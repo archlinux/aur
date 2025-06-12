@@ -1,5 +1,5 @@
 pkgname=spaces
-pkgver=6.2
+pkgver=7
 pkgrel=1
 pkgdesc="A CLI tool that helps you open your apps more easily"
 arch=('any')
@@ -9,12 +9,10 @@ depends=('python' 'python-rich')
 source=("spaces.py")
 md5sums=('SKIP')
 
+
 package() {
-
     cd "$srcdir"
-    install -Dm755 spaces.py "$pkgdir/usr/bin/spaces.py"
-    ln -s /usr/bin/spaces.py "$pkgdir/usr/bin/spaces"
-    sed -i '1s|^|#!/usr/bin/env python\n|' "$pkgdir/usr/bin/spaces.py"
-
-
+    install -Dm755 spaces.py "$pkgdir/bin/spaces.py"  # Install the script in /bin/
+    echo -e '#!/bin/bash\npython /bin/spaces.py "$@"' > "$pkgdir/bin/spaces"  # Create a wrapper script
+    chmod +x "$pkgdir/bin/spaces"  # Make the wrapper script executable
 }
