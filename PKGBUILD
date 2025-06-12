@@ -4,7 +4,7 @@
 : ${_build_debug_enabled:=false}
 
 pkgname=cloud-sql-proxy
-pkgver=2.16.0
+pkgver=2.17.1
 pkgrel=1
 pkgdesc='Cloud SQL Auth Proxy'
 arch=(x86_64)
@@ -16,19 +16,24 @@ if [[ ${_build_debug_enabled} == false ]]; then
   options+=(!debug)
 fi
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=('374bd5a1b0ca96effb6942e81868ab464bbc0116b0b095a3dc28f0ce146aaa339eb42d40fcac0b2f00fc79e195a8ddf84942b07d256c3a7a15d027f1c2b637a4')
+b2sums=('9aa6692e82fe06f3eb6584dba8085fcef5c4718f4c0e22b430fcd8cfe1525e3cbdd4d3e3ce80776f7825c1a75ceae82add77747c289fbe565b383b34427b4ce7')
 
 prepare() {
-  export GOPATH="${srcdir}"
-
   cd ${pkgname}-${pkgver}
 
+  export GOFLAGS='-mod=readonly'
+
   rm -rf out
-  go clean -modcache
-  go mod download
+  go clean \
+    -modcache
+  go mod tidy -v
+  go mod vendor -v
+  go mod verify
 }
 
 build() {
+  cd ${pkgname}-${pkgver}
+
   local _ldflags
   _ldflags=(
     -X=main.versionString=v${pkgver}
@@ -39,7 +44,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOPATH="${srcdir}"
-  export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw'
+  export GOFLAGS='-buildmode=pie -mod=vendor -modcacherw'
 
   if [[ ${_build_debug_enabled} == false ]]; then
     _ldflags+=(
@@ -52,8 +57,6 @@ build() {
       -compressdwarf=false
     )
   fi
-
-  cd ${pkgname}-${pkgver}
 
   go build \
     -v \
