@@ -2,12 +2,12 @@
 # Maintainer: Jonathan Hilger <joni dot hilger at yahoo dot de>
 pkgname=vpinball-git
 pkgver=r8144.ea58c5c
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source pinball table editor and simulator - BGFX standalone version built with dependencies as defined by the developers"
 arch=('x86_64')
 url="https://github.com/vpinball/vpinball"
 license=('GPL-3.0-or-later' 'LicenseRef-MAME')
-depends=('python' 'glibc' 'gcc-libs' 'python-lxml' 'python-pillow' 'libxkbcommon' 'libx11' 'nasm' 'wayland' 'systemd-libs' 'mesa' 'zlib-ng' 'alsa-lib')
+depends=('python' 'glibc' 'gcc-libs' 'python-lxml' 'python-pillow' 'libxkbcommon' 'libx11' 'nasm' 'wayland' 'systemd-libs' 'mesa' 'zlib-ng' 'alsa-lib' 'zenity')
 makedepends=('unzip' 'cmake' 'git' 'curl')
 provides=('vpinball' 'vpinball-git')
 conflicts=('vpinball')
