@@ -1,12 +1,13 @@
 # Maintainer: envolution
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # shellcheck shell=bash disable=SC2034,SC2154
+# ci|forcedep=flutter-target-linux flutter-target-android flutter-target-web|
 
 pkgname=yubioath-desktop
 _pkgname=yubioath-flutter
 pkgdesc='Yubico Authenticator for Desktop'
 pkgver=7.2.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://github.com/Yubico/yubioath-flutter'
 license=('BSD-3-Clause')
@@ -20,6 +21,8 @@ makedepends=(
   'flutter'
   'git'
   'python-poetry'
+  'python-build'
+  'python-installer'
   'libappindicator-gtk3'
   'libnotify'
 )
@@ -59,12 +62,13 @@ prepare() {
 
   sed -i 's/-Wall -Werror/-Wall -Werror -Wno-error=deprecated-declarations/' linux/CMakeLists.txt
 }
+
 build() {
   cd "${srcdir}/${_pkgname}"
 
   echo "Building authenticator-helper for Linux..."
   cd helper
-  poetry install
+  poetry install --no-root
   rm -rf ../build/linux/helper
   poetry -n -q run pyinstaller authenticator-helper.spec --distpath ../build/linux
 
@@ -72,12 +76,12 @@ build() {
   cd "${srcdir}/${_pkgname}"
   flutter build linux --release
 }
+
 package() {
   cd "${srcdir}/${_pkgname}"
 
   install -d "${pkgdir}/opt/${pkgname}"
   cp -r "build/linux/x64/release/bundle/"* "${pkgdir}/opt/${pkgname}/"
-  cp -r "build/linux/helper" "${pkgdir}/opt/${pkgname}/"
 
   # The compiled binary is named "authenticator". Rename it to match the package name.
   mv "${pkgdir}/opt/${pkgname}/authenticator" "${pkgdir}/opt/${pkgname}/${pkgname}"
