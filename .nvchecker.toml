@@ -1,0 +1,4 @@
+[xf86-input-libinput-xlibre]
+source = "archpkg"
+archpkg = "xf86-input-libinput"
+strip_release = true
