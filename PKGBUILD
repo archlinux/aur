@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your_email@example.com>
 pkgname=spaces
-pkgver=3.0
+pkgver=4.0
 pkgrel=1
 pkgdesc="A CLI tool that help u open your apps easier"
 arch=('any')
@@ -12,5 +12,5 @@ md5sums=('SKIP')
 
 package() {
     cd "$srcdir"
-    install -Dm755 main.py "$pkgdir/usr/bin/spaces"  # Install the main script as 'spaces'
+	install -Dm755 main.py "$pkgdir/usr/bin/spaces"
 }
