@@ -6,8 +6,8 @@
 pkgname=yubioath-desktop
 _pkgname=yubioath-flutter
 pkgdesc='Yubico Authenticator for Desktop'
-pkgver=7.2.0
-pkgrel=3
+pkgver=7.2.3
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/Yubico/yubioath-flutter'
 license=('BSD-3-Clause')
@@ -49,7 +49,7 @@ validpgpkeys=(
   '20EE325B86A81BCBD3E56798F04367096FBA95E8' # Dain Nilsson <dain@yubico.com> (Expires: 2026-04-30)
   'D6EAB59739E09A9F7C7771ACAC6D6B9D715FC084' # Adam Velebil <adam.velebil@yubico.com> (Expires: Never)
 )
-sha512sums=('65f65d00b85abdac7ca2264b6c3d84945901e8cb60cc349beba37c87dd58827abda5e4b55c31006abfd9aeee1f34f3c01b8f3dd9817a01803960856613795a48')
+sha512sums=('43bcdf9e468b31ea255b2b898d5b9308a79697fdea9e2e9060c2f7f97b58100309cd4ff041bf72c96c1178db8ce79a03edcdbe2720b9fc29e7f557785a7fbd02')
 
 prepare() {
   cd $_pkgname
