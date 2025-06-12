@@ -1,6 +1,6 @@
 # Maintainer: nazdridoy <nazdridoy399@gmail.com>
 pkgname=ngpt
-pkgver=3.10.0
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="A Swiss army knife for LLMs: A fast, lightweight CLI and interactive chat tool that brings the power of any OpenAI-compatible LLMs straight to your terminal. rewrite texts or refine code, craft git commit messages, generate and run OS-aware shell commands"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python' 'python-requests>=2.31.0' 'python-rich>=10.0.0' 'python-prompt
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 options=(!debug)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nazdridoy/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('e52841a0a7f657dd725fa0f13f5bc053a290bc0d8a946f7b38caa65fb65d5061')
+sha256sums=('12d82f5704f85af566b55ba7f9c75fdde2493d2861aa9e06c0de26e5a15a3af2')
 
 build() {
   cd "$pkgname-$pkgver"

@@ -251,7 +251,7 @@ usage: ngpt [-h] [-v] [--language LANGUAGE] [--config [CONFIG]] [--config-index 
             [--preprompt PREPROMPT | --role ROLE] [--no-stream | --prettify | --stream-prettify]
             [--renderer {auto,rich,glow}] [--rec-chunk] [--diff [FILE]] [--chunk-size CHUNK_SIZE]
             [--analyses-chunk-size ANALYSES_CHUNK_SIZE] [--max-msg-lines MAX_MSG_LINES]
-            [--max-recursion-depth MAX_RECURSION_DEPTH] [-i | -s | -c | -t | -r | -g]
+            [--max-recursion-depth MAX_RECURSION_DEPTH] [-i | -s | -c | -t | -r | -g] [--humanize]
             [prompt]
 
 nGPT - Interact with AI language models via OpenAI-compatible APIs
@@ -317,6 +317,10 @@ Modes (mutually exclusive)::
 -t, --text                          Enter multi-line text input (submit with Ctrl+D)
 -r, --rewrite                       Rewrite text from stdin to be more natural while preserving tone and meaning
 -g, --gitcommsg                     Generate AI-powered git commit messages from staged changes or diff file
+
+Rewrite Mode Options::
+
+--humanize                          Transform AI-generated text into human-like content that passes AI detection tools
 
 ```
 
