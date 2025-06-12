@@ -4,7 +4,7 @@
 pkgname=python-precisely
 _pkgname=precisely
 pkgver=0.1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="write precise assertions so you only test the behaviour you’re really interested in"
 arch=(any)
 url="https://github.com/mwilliamson/python-precisely"
@@ -14,6 +14,7 @@ depends=(
 )
 makedepends=(
   python-build
+  python-setuptools
   python-installer
   python-wheel
 )

@@ -1,11 +1,12 @@
 pkgbase = python-precisely
 	pkgdesc = write precise assertions so you only test the behaviour you’re really interested in
 	pkgver = 0.1.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mwilliamson/python-precisely
 	arch = any
 	license = BSD-2-Clause
 	makedepends = python-build
+	makedepends = python-setuptools
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
