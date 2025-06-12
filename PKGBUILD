@@ -2,7 +2,7 @@
 
 _pkgname="intel-xed"
 pkgname="$_pkgname"
-pkgver=2025.03.02
+pkgver=2025.06.08
 pkgrel=1
 pkgdesc="A library for encoding and decoding x86 instructions"
 url="https://github.com/intelxed/xed"
@@ -28,7 +28,7 @@ source=(
   "$_pkgsrc_mbuild"::"git+https://github.com/intelxed/mbuild"
 )
 sha256sums=(
-  '09fa84a3d35ecac0a40e43073f9994f6724938f382a8e427671557ca7400b917'
+  'c7f95b76cb33ad68d10ac173d0846138c38f4f675786c0c4e03d45425efb9bbd'
   'SKIP'
 )
 
