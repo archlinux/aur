@@ -18,19 +18,21 @@ depends=(
   'qt6-svg'
   'libpipewire'
   'qt6-wayland'
-  'wayland-protocols'
   'libxcb'
   'wayland'
   'libdrm'
   'mesa'
   'google-breakpad'
-  'qt6-shadertools'
 )
 makedepends=(
-  'pkgconf'
+  'spirv-tools'
+  'qt6-shadertools'
+  'wayland'
+  'wayland-protocols'
   'cli11'
   'ninja'
   'cmake'
+  'pkgconf'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
