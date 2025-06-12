@@ -26,15 +26,15 @@ source=(
   'vendor.js'
 )
 source_x86_64=(
-  thunderbird-$pkgver-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/candidates/139.0.2-candidates/build1/linux-x86_64/en-US/thunderbird-139.0.2.tar.xz
+  thunderbird-$pkgver-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/139.0.2/linux-x86_64/en-US/thunderbird-139.0.2.tar.xz
 #thunderbird-$pkgver-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/139.0.1/linux-x86_64/thunderbird-$pkgver.tar.xz.asc
 )
 source_pentium4=(
-  thunderbird-$pkgver-pentium4.tar.xz::https://archive.mozilla.org/pub/thunderbird/candidates/139.0.2-candidates/build1/linux-i686/en-US/thunderbird-139.0.2.tar.xz
+  thunderbird-$pkgver-pentium4.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/139.0.2/linux-i686/en-US/thunderbird-139.0.2.tar.xz
 #thunderbird-$pkgver-pentium4.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/139.0.1/linux-i686/thunderbird-$pkgver.tar.xz.asc
 )
 source_i686=(
-  thunderbird-$pkgver-i686.tar.xz::https://archive.mozilla.org/pub/thunderbird/candidates/139.0.2-candidates/build1/linux-i686/en-US/thunderbird-139.0.2.tar.xz
+  thunderbird-$pkgver-i686.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/139.0.2/linux-i686/en-US/thunderbird-139.0.2.tar.xz
 #thunderbird-$pkgver-i686.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/139.0.1/thunderbird-$pkgver.tar.xz.asc
 )
 
