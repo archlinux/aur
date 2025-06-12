@@ -14,8 +14,8 @@ optdepends=('polkit: support application shortcut to launch Zen monitor as root'
 makedepends=('git')
 provides=('zenmonitor')
 
-source=("$_pkgbase::git+$url.git#commit=07572e66d432877955139d1e9e81fd9e9abc5d0f")
-sha256sums=('521cee8c3d4163d1e6ec365b76a4095015d1b1cdcbacdb44a915fc8366ce8d6a')
+source=("$_pkgbase::git+$url.git#commit=1e1ceec7353dc418578fe8ae56536bfee6adeca3")
+sha256sums=('2d581105fccf9d5d139a5c1b284d4691499694a2e4ef2866024f86f5ea24d51b')
 
 prepare() {
   cd "$srcdir/$_pkgbase"
