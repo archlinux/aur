@@ -1,23 +1,28 @@
-# Maintainer: Tim Schumacher <timschumi@gmx.de>
+# Maintainer: Ali Mohammad Pur <totally@fakegmail.ch>
+# Contributor: Tim Schumacher <timschumi@gmx.de>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird
-pkgver=20250312
+pkgver=20250612
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
 url='https://github.com/LadybirdBrowser/ladybird'
 license=(BSD-2-Clause)
+conflicts=(ladybird)
+provides=(ladybird)
 depends=(curl ffmpeg libgl qt6-base qt6-multimedia qt6-tools qt6-wayland ttf-liberation)
 makedepends=(autoconf-archive automake cmake git nasm ninja tar unzip zip)
-options=('!lto' '!debug' '!buildflags')
+options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
-  "git+$url#commit=ec1f7f87eaf605098fe6b56098ddf995a7753ec8" # 2025-03-12
-  "git+https://github.com/microsoft/vcpkg.git#commit=74ec888e385d189b42d6b398d0bbaa6f1b1d3b0e" # 2025-02-07 (Toolchain/BuildVcpkg.py)
+  "git+$url#commit=aab0f3c23f45d6076088ceb7ebdb52b9874ecb68" # 2025-06-12
+  "git+https://github.com/microsoft/vcpkg.git#commit=89dc8be6dbcf18482a5a1bf86a2f4615c939b0fb" # 2025-06-02 (vcpkg.json:builtin-baseline)
   "ladybird.desktop"
+  "hb-fc-whole-archive.patch"
 )
 sha256sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -29,25 +34,38 @@ build() {
   export VCPKG_ROOT="${srcdir}/vcpkg"
   export VCPKG_DISABLE_METRICS="true"
 
+  local use_linker=
+  if ! echo $'#if defined(__clang__)\nWE ARE ON CLANG\n#endif' | "${CC:-/usr/bin/cc}" -E - | grep -q 'WE ARE ON CLANG'; then
+    echo "Disabling LTO on Release build with GCC"
+    use_linker='-DENABLE_LTO_FOR_RELEASE=OFF'
+  fi
+
+  patch ladybird/UI/Qt/CMakeLists.txt < hb-fc-whole-archive.patch
+
   cmake \
-    --preset default \
+    --preset Release \
     -B build \
     -S ladybird \
     -DBUILD_SHARED_LIBS=OFF \
     -DCMAKE_BUILD_TYPE=Release \
+    $use_linker \
     -DVCPKG_OVERLAY_TRIPLETS="${srcdir}/ladybird/Meta/CMake/vcpkg/distribution-triplets" \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" \
     -DENABLE_INSTALL_HEADERS=OFF \
+    -DCMAKE_INSTALL_LIBEXECDIR="lib/${pkgname%-git}" \
     -GNinja \
     -Wno-dev
-  ninja -C build
+  cmake --build build
 }
 
 package() {
   cd "${srcdir}"
 
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" cmake --install build
+
+  find "$pkgdir" -name '*.a' -delete
+  find "$pkgdir" -name '*.cmake' -delete
 
   install -Dm644 "ladybird.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "ladybird/Base/res/icons/128x128/app-browser.png" "${pkgdir}/usr/share/pixmaps/ladybird.png"

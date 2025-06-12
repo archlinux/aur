@@ -1,6 +1,6 @@
 pkgbase = ladybird
 	pkgdesc = Truly independent web browser
-	pkgver = 20250312
+	pkgver = 20250612
 	pkgrel = 1
 	url = https://github.com/LadybirdBrowser/ladybird
 	arch = x86_64
@@ -22,12 +22,18 @@ pkgbase = ladybird
 	depends = qt6-tools
 	depends = qt6-wayland
 	depends = ttf-liberation
+	provides = ladybird
+	conflicts = ladybird
 	options = !lto
 	options = !debug
 	options = !buildflags
-	source = git+https://github.com/LadybirdBrowser/ladybird#commit=ec1f7f87eaf605098fe6b56098ddf995a7753ec8
-	source = git+https://github.com/microsoft/vcpkg.git#commit=74ec888e385d189b42d6b398d0bbaa6f1b1d3b0e
+	options = !staticlibs
+	options = !emptydirs
+	source = git+https://github.com/LadybirdBrowser/ladybird#commit=aab0f3c23f45d6076088ceb7ebdb52b9874ecb68
+	source = git+https://github.com/microsoft/vcpkg.git#commit=89dc8be6dbcf18482a5a1bf86a2f4615c939b0fb
 	source = ladybird.desktop
+	source = hb-fc-whole-archive.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
