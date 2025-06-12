@@ -5,17 +5,17 @@
 # Contributor: Curtis Smith <kman922002@gmail.com>
 
 pkgname=odamex
-pkgver=10.6.0
+pkgver=11.0.0
 pkgrel=1
 pkgdesc='A free client/server multiplayer engine for the classic FPS Doom.'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://odamex.net/'
 license=('GPL')
-depends=('sdl2_mixer' 'portmidi' 'wxwidgets-gtk3' 'miniupnpc')
+depends=('sdl2_mixer' 'portmidi' 'wxwidgets-gtk3' 'miniupnpc' 'jsoncpp')
 makedepends=('cmake' 'deutex')
 optdepends=('timidity++: Required for music')
 source=("http://downloads.sourceforge.net/odamex/Odamex/${pkgver}/odamex-src-${pkgver}.tar.gz")
-sha256sums=('56f05c11aef72eafbf5d1e76ea05f57e98495148f930ad8afca01f6f26ada13b')
+sha256sums=('7e4e83ac08546b778ea9e08d5a34a82a0f57f3505bde3ad4aba265a13c1f1387')
 
 prepare() {
   cd $pkgname-src-$pkgver
@@ -23,8 +23,9 @@ prepare() {
 
 build() {
   cd $pkgname-src-${pkgver}
-  cmake -DCMAKE_BUILD_TYPE=Release                              \
-        -DCMAKE_INSTALL_PREFIX=/usr                             \
+  cmake -DCMAKE_BUILD_TYPE=Release   \
+        -DCMAKE_INSTALL_PREFIX=/usr  \
+        -DUSE_INTERNAL_JSONCPP=0     \
         .
   make
 }
