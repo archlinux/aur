@@ -1,6 +1,6 @@
 pkgbase = cpptrace
 	pkgdesc = Simple, portable, and self-contained stacktrace library for C++11 and newer
-	pkgver = 0.8.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/jeremy-rifkin/cpptrace
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = cpptrace
 	depends = libunwind
 	provides = cpptrace
 	conflicts = cpptrace
-	source = cpptrace::git+https://github.com/jeremy-rifkin/cpptrace.git#tag=v0.8.3
+	source = cpptrace::git+https://github.com/jeremy-rifkin/cpptrace.git#tag=v1.0.0
 	sha256sums = SKIP
 
 pkgname = cpptrace
