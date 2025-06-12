@@ -3,7 +3,7 @@
   # Contributor:  derbetakevin <derbetakevin@outlook.de>
 pkgname=extraterm-bin
 _pkgname=ExtratermQt
-pkgver=0.81.1
+pkgver=0.81.2
 pkgrel=1
 pkgdesc="The swiss army chainsaw of terminal emulators.(Prebuilt versrion)"
 arch=('x86_64')
@@ -25,13 +25,13 @@ depends=(
     'libxkbcommon-x11'
 )
 options=('!strip')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.glibc2.34-${CARCH}.AppImage")
-sha256sums=('4099969f7746287e09c2d5def5e407d78eaf652bb661a20c52215a4e5a938f07')
+source=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.glibc2.34-${CARCH}.AppImage")
+sha256sums=('c1f5f51f08ff9e4b8e1a6081900b14a1b0f5ba1f295195fb12ce169cc4b93c66')
 prepare() {
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i -e "
       s/Exec=${pkgname%-bin}qt/Exec=${pkgname%-bin}/g
       s/Icon=extratermqt/Icon=${pkgname%-bin}/g

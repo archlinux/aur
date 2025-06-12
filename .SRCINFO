@@ -1,6 +1,6 @@
 pkgbase = extraterm-bin
 	pkgdesc = The swiss army chainsaw of terminal emulators.(Prebuilt versrion)
-	pkgver = 0.81.1
+	pkgver = 0.81.2
 	pkgrel = 1
 	url = https://extraterm.org/
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = extraterm-bin
 	depends = qt6-base
 	depends = xcb-util-wm
 	depends = libxkbcommon-x11
-	provides = extraterm=0.81.1
+	provides = extraterm=0.81.2
 	conflicts = extraterm
 	options = !strip
-	source = extraterm-0.81.1.AppImage::https://github.com/sedwards2009/extraterm/releases/download/v0.81.1/ExtratermQt-0.81.1.glibc2.34-x86_64.AppImage
-	sha256sums = 4099969f7746287e09c2d5def5e407d78eaf652bb661a20c52215a4e5a938f07
+	source = extraterm-0.81.2-x86_64.AppImage::https://github.com/sedwards2009/extraterm/releases/download/v0.81.2/ExtratermQt-0.81.2.glibc2.34-x86_64.AppImage
+	sha256sums = c1f5f51f08ff9e4b8e1a6081900b14a1b0f5ba1f295195fb12ce169cc4b93c66
 
 pkgname = extraterm-bin
