@@ -1,0 +1,4 @@
+[fdbcli-bin]
+source = "github"
+github = "apple/foundationdb"
+use_latest_release = true
