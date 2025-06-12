@@ -1,5 +1,5 @@
 pkgname=spaces
-pkgver=5.0
+pkgver=6.0
 pkgrel=1
 pkgdesc="A CLI tool that helps you open your apps more easily"
 arch=('any')
@@ -11,5 +11,9 @@ md5sums=('SKIP')
 
 package() {
     cd "$srcdir"
-    install -Dm755 main.py "$pkgdir/usr/bin/spaces"  # Install the main script as 'spaces'
+
+    install -Dm755 spaces.py "$pkgdir/usr/bin/spaces.py"
+    ln -s /usr/bin/spaces.py "$pkgdir/usr/bin/spaces"
+    sed -i '1s|^|#!/usr/bin/env python\n|' "$pkgdir/usr/bin/spaces.py"
+
 }
