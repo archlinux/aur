@@ -1,0 +1,17 @@
+pkgbase = expertisex-bin
+	pkgdesc = A powerful, user-friendly desktop application designed for advanced Discord self-bot music and utility management.(Prebuilt version.Use system-wide electron)
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://expertisex.vercel.app/
+	arch = x86_64
+	license = Apache-2.0
+	depends = electron35
+	provides = expertisex=3.2.0
+	conflicts = expertisex
+	options = !emptydirs
+	source = expertisex-3.2.0.rpm::https://github.com/Adivise/ExpertiseX/releases/download/v3.2.0/expertisex-3.2.0.rpm
+	source = expertisex.sh
+	sha256sums = 1d0f4385e4a82f592c410d894a15583af15b05a00113a554007f3a9c4bb4b051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = expertisex-bin
