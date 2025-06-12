@@ -29,7 +29,10 @@ makedepends=(
   'cmake'
   'pkgconf'
 )
-source=("$pkgname"-"$pkgver".tar.gz::"$url/archive/v0.1.0.tar.gz"
+provides=("$pkgname")
+conflicts=("$pkgname")
+
+source=("$pkgname"-"$pkgver.tar.gz"::"$url/archive/v0.1.0.tar.gz"
   quickshell-check.hook)
 
 sha256sums=('5962043c7d4264cc7d71445dc86e175d0fbb1701ce390c24f92c6371e24bc127'
