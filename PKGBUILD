@@ -9,7 +9,7 @@
 
 pkgname=gnupg-largekeys
 _base_name=${pkgname%%-largekeys}
-pkgver=2.4.7
+pkgver=2.4.8
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='https://www.gnupg.org'
@@ -22,9 +22,9 @@ depends=('npth' 'libgpg-error' 'libgcrypt' 'libksba' 'libassuan'
 optdepends=('libldap: gpg2keys_ldap'
             'libusb-compat: scdaemon'
             'pcsclite: scdaemon')
-options=('!strip' '!debug')
+options=('!strip')
 validpgpkeys=('AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD'
-              '5B80C5754298F0CB55D8ED6ABCEF7E294B092E28'
+              '3B761AE4E63BF3519CE7D63BECB664CBE1332EEF'
 	      '6DAA6E64A76D2840571B4902528897B826403ADA'
 	      '02F38DFF731FF97CB039A1DA549E695E905BA208')
 source=("${url}/ftp/gcrypt/${_base_name}/${_base_name}-${pkgver}.tar.bz2"{,.sig}
@@ -32,7 +32,7 @@ source=("${url}/ftp/gcrypt/${_base_name}/${_base_name}-${pkgver}.tar.bz2"{,.sig}
         'avoid-beta-warning.patch'
         'max-mpi-bits.patch'
         'gnupg.install')
-sha256sums=('7b24706e4da7e0e3b06ca068231027401f238102c41c909631349dcc3b85eb46'
+sha256sums=('b58c80d79b04d3243ff49c1c3fc6b5f83138eb3784689563bcdd060595318616'
             'SKIP'
             '6ac90c4e8ad7cb2e3ae37b328449efac7b0c3a8b30dbbf9d3650ab679244f768'
             '2e0d0ae24027b8f21cac442b9a67ee6cf153caf304cde5e0447b6071d1ac543c'
