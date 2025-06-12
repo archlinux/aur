@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=printnotes-bin
 _pkgname=printnotes
-pkgver=0.9.16
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="A cross-platform markdown notes app inspired by Google Keep and Obsidian.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/RoBoT095/printnotes"
@@ -16,20 +16,20 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${CARCH}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c0132619018988c3230d046ba0b8889eba7fcdc43ea489dfc59aa11b730657b3'
+sha256sums=('a3cf081b0f018e86451db303ea7d455cb78c9c75ed5778bc1108fc7538406230'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/AppRun/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/application-vnd.appimage/${pkgname%-bin}/g" "${srcdir}/squashfs-root/com.${pkgname%-bin}.${pkgname%-bin}.desktop"
 }
 package() {
