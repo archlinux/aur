@@ -1,7 +1,7 @@
 pkgbase = ty-bin
 	pkgdesc = An extremely fast Python type checker and language server, written in Rust.
 	pkgver = 0.0.1_alpha.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/astral-sh/ty
 	arch = aarch64
 	arch = armv7

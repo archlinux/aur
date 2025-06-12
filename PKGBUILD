@@ -2,7 +2,7 @@
 
 pkgname=ty-bin
 pkgver=0.0.1_alpha.9
-pkgrel=1
+pkgrel=2
 pkgdesc='An extremely fast Python type checker and language server, written in Rust.'
 arch=('aarch64' 'armv7' 'i686' 'x86_64')
 url='https://github.com/astral-sh/ty'
@@ -27,6 +27,21 @@ sha256sums_x86_64=('02bcf0c95c794b254cac68f34e16e20b2d16bedf8510769f8c035559d133
 
 
 package() {
-	install -Dm755 "ty-${CARCH}-unknown-linux-gnu/ty" "${pkgdir}/usr/bin/ty"
+
+	local target="${pkgdir}/usr/bin/ty"
+
+	install -Dm755 "ty-${CARCH}-unknown-linux-gnu/ty" "$target"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	$target generate-shell-completion bash | \
+	install -Dm0644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$pkgbase.bash"
+
+	$target generate-shell-completion elvish | \
+	install -Dm0644 /dev/stdin "$pkgdir/usr/share/elvish/lib/$pkgbase.elv"
+
+	$target generate-shell-completion fish | \
+	install -Dm0644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$pkgbase.fish"
+
+	$target generate-shell-completion zsh | \
+	install -Dm0644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$pkgbase"
 }
