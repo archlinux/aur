@@ -1,0 +1,7 @@
+*.tar
+*.zst
+*.zip
+*.run
+pkg
+src
+LICENSE
