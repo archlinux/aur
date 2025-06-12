@@ -1,6 +1,6 @@
 pkgbase = haskell-language-server-static
 	pkgdesc = Official haskell ide support via language server (LSP). Successor of ghcide & haskell-ide-engine.
-	pkgver = 2.10.0.0
+	pkgver = 2.11.0.0
 	pkgrel = 1
 	url = https://github.com/haskell/haskell-language-server
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = haskell-language-server-static
 	conflicts = haskell-language-server
 	conflicts = haskell-language-server-git
 	options = !strip
-	source = https://downloads.haskell.org/~hls/haskell-language-server-2.10.0.0/haskell-language-server-2.10.0.0-x86_64-linux-unknown.tar.xz
-	sha256sums = f8d3c5ce2eb7bc28ea8ecc8b720ee019821bb7f16e474bf2d8b902daa41f817c
+	source = https://downloads.haskell.org/~hls/haskell-language-server-2.11.0.0/haskell-language-server-2.11.0.0-x86_64-linux-unknown.tar.xz
+	sha256sums = f82af0d923d19a4b7c9419da9015a942de6705e8ccc13a8ca6b03a050af84753
 
 pkgname = haskell-language-server-static
