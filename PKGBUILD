@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r69545.486602e7962
+pkgver=r69665.aab0f3c23f4
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -48,7 +48,7 @@ build() {
   patch ladybird/UI/Qt/CMakeLists.txt < hb-fc-whole-archive.patch
 
   cmake \
-    --preset default \
+    --preset Release \
     -B build \
     -S ladybird \
     -DBUILD_SHARED_LIBS=OFF \
