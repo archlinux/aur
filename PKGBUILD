@@ -1,7 +1,5 @@
 # Maintainer: Entailz <entail-wraps0r at icloud dot com>
 
-: "${_distributor=}"
-
 _pkgname=quickshell
 pkgname="$_pkgname-git"
 pkgver=0.1.0.r1.g0fb809b
@@ -55,7 +53,7 @@ build() {
   cmake -GNinja -B build \
     -DCMAKE_BUILD_TYPE="RelWithDebInfo" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DDISTRIBUTOR="$(_distributor:-AUR/$pkgname)" \
+    -DDISTRIBUTOR="AUR (package: quickshell)" \
     -DDISTRIBUTOR_DEBUGINFO_AVAILABLE=NO \
     -DINSTALL_QML_PREFIX=lib/qt6/qml
 
