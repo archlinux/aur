@@ -1,0 +1,6 @@
+*.log
+*.deb
+*.tar.*
+pkg/
+src/
+*.git
