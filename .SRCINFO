@@ -1,7 +1,7 @@
 pkgbase = 9now
 	pkgdesc = Unofficial 9 Now desktop application.
 	pkgver = 1.0.2.aurpatch
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/9now
 	arch = x86_64
 	arch = arm7h
