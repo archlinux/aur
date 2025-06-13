@@ -6,19 +6,27 @@
 
 _pkgname=zfs
 _git_repo=https://github.com/openzfs/zfs.git
-_git_branch="$(/usr/bin/git ls-remote -h --sort=-v:refname "${_git_repo}" 'zfs-*-staging' | head -n 1)"
-_git_branch=${_git_branch##*/}
-_staging_ver=${_git_branch#zfs-}
-_staging_ver=${_staging_ver%-staging}
 
-if /usr/bin/git ls-remote -t --exit-code "${_git_repo}" "zfs-${_staging_ver}" >/dev/null; then
-    _git_branch="tag=zfs-${_staging_ver}"
-    _base_ver="${_staging_ver}"
+if command -v git > /dev/null; then
+    _git_branch="$(git ls-remote -h --sort=-v:refname "${_git_repo}" 'zfs-*-staging' | head -n 1)"
+    _git_branch=${_git_branch##*/}
+    _staging_ver=${_git_branch#zfs-}
+    _staging_ver=${_staging_ver%-staging}
+
+    if git ls-remote -t --exit-code "${_git_repo}" "zfs-${_staging_ver}" >/dev/null; then
+        _git_branch="tag=zfs-${_staging_ver}"
+        _base_ver="${_staging_ver}"
+    else
+        _git_branch="branch=${_git_branch}"
+        _base_ver="$(git ls-remote -t --sort=-v:refname "${_git_repo}" "zfs-${_staging_ver%.*}.*[0-9]" | grep -F '.99' -v | head -n 1)"
+        _base_ver="${_base_ver##*/zfs-}"
+        _base_ver="${_base_ver:=${_staging_ver%.*}.$((${_staging_ver##*.}-1))}"
+    fi
 else
-    _git_branch="branch=${_git_branch}"
-    _base_ver="$(/usr/bin/git ls-remote -t --sort=-v:refname "${_git_repo}" "zfs-${_staging_ver%.*}.*[0-9]" | grep -F '.99' -v | head -n 1)"
-    _base_ver="${_base_ver##*/zfs-}"
-    _base_ver="${_base_ver:=${_staging_ver%.*}.$((${_staging_ver##*.}-1))}"
+    # We are probably inside a clean chroot environment, use fixed version info instead
+    _git_branch="branch=zfs-2.3.3-staging"
+    _staging_ver="2.3.3"
+    _base_ver="2.3.2"
 fi
 
 pkgname=${_pkgname}-dkms-staging-git
