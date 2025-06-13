@@ -1,5 +1,5 @@
 #! /bin/sh
 cd /usr/lib/globusconnectpersonal
 export LD_PRELOAD="/usr/lib/libcrypto.so:/usr/lib/libssl.so:/usr/lib/libltdl.so:/usr/lib/libz.so:$LD_PRELOAD"
-# Override broken PyInstaller libraries
+# Override old/broken PyInstaller libraries
 exec /usr/lib/globusconnectpersonal/globusconnect "$@"
