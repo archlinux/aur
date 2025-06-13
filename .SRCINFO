@@ -1,0 +1,12 @@
+pkgbase = background.fm
+	pkgdesc = Set your background as your now playing. Uses Last.fm API (Requires Last.fm scrobbling).
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/bharat-nair/background.fm
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = background.fm-0.1.tar.gz::https://github.com/bharat-nair/background.fm/archive/refs/tags/v0.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = background.fm
