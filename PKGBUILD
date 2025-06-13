@@ -1,6 +1,6 @@
 # Maintainer: Your Name <dennnn8888@gmail.com>
 pkgname=aniparser
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="AniParser Electron application"
 arch=('x86_64')
@@ -15,7 +15,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   
   # Install dependencies
-  npm install
+  npm install --production
   
   # Build the application
   npm run transpile:electron
