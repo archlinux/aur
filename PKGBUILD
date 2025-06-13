@@ -16,7 +16,7 @@
 
 pkgname=mutter-x11-scaling
 pkgver=48.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -108,6 +108,12 @@ prepare() {
 
   # Add scaling support using randr under x11
   patch -p1 -i "${srcdir}/x11-Add-support-for-fractional-scaling-using-Randr.patch"
+
+  # Fix a crash
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/mutter/-/issues/15
+  # https://gitlab.gnome.org/GNOME/mutter/-/issues/3970
+  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4481
+  git cherry-pick -n ef4406783ea41ead69afbcbb6182ed82fdf8fba0
 }
 
 build() {
