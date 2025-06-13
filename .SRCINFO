@@ -1,7 +1,7 @@
 pkgbase = sparrow-wallet
 	pkgdesc = Desktop Bitcoin Wallet focused on security and privacy. Free and open source
 	pkgver = 2.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sparrowwallet.com/
 	arch = x86_64
 	license = Apache-2.0

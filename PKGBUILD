@@ -4,7 +4,7 @@
 _pkgname=Sparrow
 pkgname=sparrow-wallet
 pkgver=2.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy. Free and open source"
 arch=('x86_64')
 url="https://sparrowwallet.com/"
@@ -47,8 +47,4 @@ EOF
 
     install -Dm644 "${srcdir}/MimeInfo.xml" \
         "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
-
-    install -dm755 "${pkgdir}/usr/lib/udev/rules.d"
-    install -m644 "${srcdir}/Sparrow/lib/runtime/conf/udev"/*.rules \
-        "${pkgdir}/usr/lib/udev/rules.d/"
 }
