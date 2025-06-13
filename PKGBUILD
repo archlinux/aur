@@ -2,29 +2,30 @@
 # Contributor: SoleSoul
 # shellcheck shell=bash disable=SC2034,SC2154
 
-_appname=lm-studio
 pkgname=lmstudio
+_appname=lm-studio
 pkgver=0.3.16.8
-pkgrel=2
+_pkgver="${pkgver%.*}-${pkgver##*.}"
+pkgrel=3
 pkgdesc="Discover, download, and run local LLMs"
 arch=('x86_64')
 url="https://lmstudio.ai/"
-license=('custom')
+license=('LicenseRef-EULA')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2' 'clblast')
 makedepends=('squashfs-tools' 'graphicsmagick')
 options=(!strip !debug)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source=("${_appimage}::https://installers.lmstudio.ai/linux/x64/${pkgver%.*}-${pkgver##*.}/LM-Studio-${pkgver%.*}-${pkgver##*.}-x64.AppImage")
+source=("${_appimage}::https://installers.lmstudio.ai/linux/x64/${_pkgver}/LM-Studio-${_pkgver}-x64.AppImage")
 sha256sums=('be8b83cda4a091837ef852b3d2d2e7f48b47834b509a7164d94ed1950c805168')
 noextract=("${_appimage}")
 
 prepare() {
   rm -rf squashfs-root
   chmod +x "${_appimage}"
-
   # get the files we need for packaging
   offset=$(./"${_appimage}" --appimage-offset)
-  unsquashfs -o "$offset" -d squashfs-root "${_appimage}" \
+  unset PAGER # unsquashfs is very picky about pager settings
+  unsquashfs -q -o "$offset" -d squashfs-root "${_appimage}" \
     "${_appname}.desktop" \
     "usr/share/icons/hicolor/0x0/apps/lm-studio.png" \
     "LICENSE.electron.txt" \
@@ -44,6 +45,8 @@ package() {
   # AppImage
   install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appname}.AppImage"
   install -Dm644 "${srcdir}/squashfs-root/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/EULA" <<< "https://lmstudio.ai/app-terms"
+
 
   # Desktop file
   install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop" \
