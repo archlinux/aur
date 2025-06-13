@@ -1,0 +1,11 @@
+[gworkspace]
+#github has versioning issues https://github.com/gnustep/apps-gworkspace/issues/44
+#source = 'github'
+#github = 'gnustep/apps-gworkspace'
+#use_max_release = true
+#prefix = 'gworkspace-'
+#from_pattern = "_"
+#to_pattern = '.'
+source = 'regex'
+url = 'https://ftp.gnustep.org/pub/gnustep/usr-apps/'
+regex = 'gworkspace-([0-9.]+).tar.gz'

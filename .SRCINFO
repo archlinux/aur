@@ -1,19 +1,17 @@
 pkgbase = gworkspace
 	pkgdesc = The GNUstep Workspace
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = http://www.gnustep.org/experience/GWorkspace.html
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = gcc-objc
 	makedepends = gnustep-make
+	depends = gnustep-pdfkit
 	depends = gnustep-base
-	depends = gnustep-gui
 	depends = gnustep-back
-	provides = gworkspace
-	conflicts = gworkspace
-	source = ftp://ftp.gnustep.org/pub/gnustep/usr-apps/gworkspace-1.0.0.tar.gz
-	md5sums = 94b4f2ae855ce9656082c50033d8a923
+	depends = gnustep-gui
+	source = https://ftp.gnustep.org/pub/gnustep/usr-apps/gworkspace-1.1.0.tar.gz
+	md5sums = 84737d04c7471b9d928d7ca9a38ff2eb
 
 pkgname = gworkspace
-
