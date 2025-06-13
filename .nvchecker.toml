@@ -1,0 +1,4 @@
+[pdfkit]
+source = 'regex'
+url = 'https://gap.nongnu.org/pdfkit/index.html#downloads'
+regex = 'PDFKit-([0-9.]+).tar.gz'
