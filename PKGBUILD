@@ -4,7 +4,7 @@
 _gitname="librediscord"
 pkgname="librediscord-git"
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source voice client for Discord"
 url="https://gitlab.com/zipdox/librediscord"
 license=("GPL-3.0-or-later")
