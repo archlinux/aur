@@ -1,0 +1,13 @@
+pkgbase = ttf-azuki-font
+	pkgdesc = A handwritten font, includes custom emojis
+	pkgver = 1.21
+	pkgrel = 2
+	url = http://azukifont.com/font/azuki.html
+	arch = any
+	license = custom
+	source = http://azukifont.com/font/azukifont121.zip
+	source = LICENSE
+	sha256sums = 4d6363e21e69327756688dbd1aebef12435c09b9e79581aee7a79c1ec486830d
+	sha256sums = 2e68b7b2866a1f297d7a5fd47e74450450b2dbbc35ce12b65aced2b2aae8120c
+
+pkgname = ttf-azuki-font
