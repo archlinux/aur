@@ -3,7 +3,7 @@
 
 pkgname="galaxy-flasher"
 pkgver=0.6.0
-pkgrel=0
+pkgrel=1
 pkgdesc="A GUI for Samsung flash-tools"
 url="https://codeberg.org/ethical_haquer/galaxy-flasher"
 license=("GPL-3.0")
@@ -39,7 +39,7 @@ Type=Application
 Categories=GNOME;Utility;GTK;
 EOF
 	install -d 755 "${pkgdir}/home/$USER/.config/galaxy-flasher"
-	chmod
+	chmod +x ${pkgdir}/home/$USER/.config/galaxy-flasher
 	cat <<EOF > "${pkgdir}/home/$USER/.config/galaxy-flasher/settings.json"
 {"odin4_file": "/bin/odin4", "flash_tool": "odin4", "thor_file": "/opt/thor-flash-utility/TheAirBlow.Thor.Shell"}
 EOF

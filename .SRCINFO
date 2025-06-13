@@ -1,7 +1,7 @@
 pkgbase = galaxy-flasher
 	pkgdesc = A GUI for Samsung flash-tools
 	pkgver = 0.6.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://codeberg.org/ethical_haquer/galaxy-flasher
 	arch = x86_64
 	license = GPL-3.0
