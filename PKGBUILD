@@ -4,7 +4,7 @@
 #
 pkgname=python-langchain-openai
 _origpkgname=langchain_openai
-pkgver=0.3.22
+pkgver=0.3.23
 pkgrel=1
 pkgdesc="An integration package connecting OpenAI and LangChain"
 arch=("x86_64")
@@ -19,8 +19,8 @@ makedepends=(
   "python-hatchling"
   "python-pdm-backend"
 )
-source=("https://files.pythonhosted.org/packages/32/88/28a78b1f15dbabc32e3b892c3c71bdcb4a48a501e7d604f5d42fb365a191/langchain_openai-0.3.22.tar.gz")
-sha256sums=("42802b1c64824edd4a0e5093bdb791e4323cf1d281594cf58194ad714db6cd49")
+source=("https://files.pythonhosted.org/packages/74/f1/575120e829430f9bdcfc2c5c4121f04b1b5a143d96e572ff32399b787ef2/langchain_openai-0.3.23.tar.gz")
+sha256sums=("73411c06e04bc145db7146a6fcf33dd0f1a85130499dcae988829a4441ddaa66")
 package() {
   cd "${_origpkgname}-${pkgver}" || exit
   python -m build --wheel --no-isolation
