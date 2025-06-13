@@ -1,0 +1,15 @@
+image: archlinux
+sources:
+    - https://git.sr.ht/~ineptattech/aur-pulseshitter
+packages:
+    - libpulse
+    - cargo
+    - pipewire
+    - pulseaudio
+tasks:
+- build: |
+    cd aur-pulseshitter
+    makepkg
+- install: |
+    cd aur-pulseshitter
+    makepkg --install --noconfirm
