@@ -16,11 +16,7 @@ makedepends=('git' 'cmake' 'nlohmann-json' 'vulkan-headers' 'vulkan-utility-libr
 optdepends=('gamemode: Gamemoded support')
 options=('!debug' 'lto')
 source=("git+https://git.eden-emu.dev/eden-emu/eden.git"
-		"git+https://git.eden-emu.dev/eden-emu/cubeb.git"
-		"git+https://git.eden-emu.dev/eden-emu/dynarmic.git"
-		"git+https://git.eden-emu.dev/eden-emu/discord-rpc.git"
-		"sirit::git+https://git.eden-emu.dev/eden-emu/sirit.git"
-		"git+https://git.eden-emu.dev/eden-emu/mbedtls.git"
+		"git+https://github.com/mozilla/cubeb.git"
 		"git+https://github.com/yhirose/cpp-httplib.git"
 		"git+https://github.com/libsdl-org/SDL.git"
 		"git+https://github.com/xiph/opus.git"
@@ -63,10 +59,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP')
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -74,7 +66,7 @@ pkgver() {
 }
 prepare() {
 	cd "$srcdir/$_pkgname"
-	for _submodule in opus SDL cubeb dynarmic discord-rpc simpleini VulkanMemoryAllocator tzdb_to_nx cpp-jwt cpp-httplib xbyak mbedtls sirit ffmpeg;
+	for _submodule in opus SDL cubeb simpleini VulkanMemoryAllocator tzdb_to_nx cpp-jwt cpp-httplib xbyak ffmpeg;
 		do
 		git config submodule.$_submodule.url ../$_submodule
 		done
