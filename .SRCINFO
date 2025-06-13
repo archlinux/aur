@@ -14,6 +14,7 @@ pkgbase = declaro-git
 	depends = make
 	depends = sudo
 	depends = coreutils
+	depends = tar
 	backup = etc/declaro/config.sh
 	source = git+https://github.com/mantinhas/declaro.git
 	sha256sums = SKIP
