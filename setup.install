@@ -1,0 +1,12 @@
+post_install() {
+	echo "Follow the instructions on the website to set up the config.ini file properly."
+	echo "The website is: https://github.com/kmille/deezer-downloader"
+	echo "It is also possible to add a startup command to your DE to start the daemon, and then access the program via your browser at any time."
+	echo "Add 'deezer-downloader -c /etc/config.ini' to your startup programs, assuming your config.ini file is in /etc"
+	}
+post_upgrade() {
+echo "Follow the instructions on the website to set up the config.ini file properly."
+	echo "The website is: https://github.com/kmille/deezer-downloader"
+	echo "It is also possible to add a startup command to your DE to start the daemon, and then access the program via your browser at any time."
+	echo "Add 'deezer-downloader -c /etc/config.ini' to your startup programs, assuming your config.ini file is in /etc"
+	}
