@@ -1,12 +1,12 @@
 pkgbase = mkdotenv
 	pkgdesc = Lightweight and efficient tool for managing your .env files.
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/pc-magas/mkdotenv
 	arch = x86_64
 	license = GPL-3
 	makedepends = go
-	source = mkdotenv-0.3.1.tar.gz::https://github.com/pc-magas/mkdotenv/releases/download/v0.3.1/mkdotenv-0.3.1.tar.gz
-	sha256sums = cccca80ac3280eb1de0b0bb75ee967c8dd642d5dbdc85611cffe7c0e8206e9da
+	source = mkdotenv-0.3.2.tar.gz::https://github.com/pc-magas/mkdotenv/releases/download/v0.3.2/mkdotenv-0.3.2.tar.gz
+	sha256sums = 0331436abf6680c4beddf3fb3869fa5c59eb01f24455eafd928ef0893a559a09
 
 pkgname = mkdotenv
