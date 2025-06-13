@@ -1,7 +1,7 @@
 pkgbase = aur-sync-vote
 	pkgdesc = Automates voting on installed and uninstalled AUR packages
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hengtseChou/aur-sync-vote
 	arch = any
 	license = MIT
