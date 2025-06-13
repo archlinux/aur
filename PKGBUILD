@@ -42,7 +42,7 @@ check() {
   # TODO: once filesystem tests are in-place, make sure this
   # doesn't break builds because fs testing can be finnicky.
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --workspace --frozen --all-features
+  cargo test --release --workspace --frozen --all-features
 }
 
 package() {
