@@ -1,5 +1,5 @@
-# Maintainer: aulonsal <seraur at aulonsal dot com>
-
+# Maintainer: archlinuxauruser <archlinuxauruser at messagebox dot email>
+# Contributor: aulonsal <seraur at aulonsal dot com>
 pkgname=f2
 pkgver=2.1.2
 pkgrel=2
