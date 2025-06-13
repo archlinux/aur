@@ -2,7 +2,7 @@
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 _base=flake8-import-order
 pkgname=python-${_base}
-pkgver=0.18.2
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Flake8 and pylama plugin that checks the ordering of import statements"
 arch=('any')
@@ -14,7 +14,7 @@ checkdepends=(flake8 pylama python-pytest)
 provides=('flake8-import-order')
 replaces=('flake8-import-order')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('eb2d06823513c7d2673b07c7c924ff1fac3754b2484405666b95e8ce51ed1b1c1eae3a04946047ebeeb98a19ed989b8e3cff3553cc164470e9ab47a37039d637')
+sha512sums=('12a8145daf6a7d2d45dc57edefe9b43a5c5584064d7fdabc351f8fd290bd5e12da1c511cdcfe4118dbfb1f81c709b7a99c180215675e98bcbff6158f1f84f1fb')
 
 build() {
   cd ${_base}-${pkgver}
