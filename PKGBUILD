@@ -2,7 +2,7 @@
 
 pkgname=zxtune-bin
 pkgver=r5100
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable toolkit for ZX-Spectrum music playing (pre-compiled)"
 arch=(x86_64)
 url="https://zxtune.bitbucket.io/"
@@ -17,8 +17,8 @@ optdepends=(
 )
 provides=(zxtune)
 conflicts=(zxtune-git)
-source=("https://bitbucket.org/zxtune/zxtune/downloads/zxtune_${pkgver}_linux_x86_64.tar.gz")
-md5sums=('07f4be11470805c30ee3e32fc9baa9f9')
+source=("https://storage.zxtune.ru/builds/public/r5100/linux/x86_64/zxtune_${pkgver}_linux_x86_64.tar.gz")
+md5sums=('88674efc799d2b3f0d9102b90b76981e')
 
 package() {
   cp -r usr "${pkgdir}/usr"
