@@ -1,7 +1,7 @@
 pkgbase = wl-plant
 	pkgdesc = A suckless wayland daemonless notification utility
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gitRaiku/plant
 	install = wl-plant.install
 	arch = any

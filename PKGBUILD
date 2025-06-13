@@ -1,7 +1,7 @@
 # Maintainer: Raiku <rikunn.rikunn@proton.me>
 pkgname=wl-plant
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/gitRaiku/plant"
 pkgdesc="A suckless wayland daemonless notification utility"
 arch=(any)
