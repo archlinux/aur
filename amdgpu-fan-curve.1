@@ -1,0 +1,48 @@
+.TH AMDGPU-FAN-CURVE 1 "2025-06-13" "Version 1.0" "User Commands"
+.SH NAME
+amdgpu-fan-curve \- apply custom fan curves for AMD RDNA3 GPUs
+
+.SH SYNOPSIS
+.B amdgpu-fan-curve
+[\fIprofile_name\fR]
+
+.SH DESCRIPTION
+.B amdgpu-fan-curve
+is a script to apply custom fan speed curves to AMD RDNA3 GPUs by writing values
+to the kernel sysfs interface.
+
+It automatically detects all AMD GPU cards and applies the selected fan curve profile.
+
+Profiles are stored in
+.RS
+/var/fan_curves/
+.RE
+
+If no profile name is provided, the script uses the default profile named "default".
+
+.SH OPTIONS
+.TP
+\fIprofile_name\fR
+Name of the fan curve profile to apply. Must correspond to a file named
+\fIfan_curve_<profile_name>\fR
+in the profile directory.
+
+.SH EXIT STATUS
+Returns 0 on success, non-zero if an error occurs (e.g., missing profile file or insufficient permissions).
+
+.SH EXAMPLES
+Apply the default profile:
+.RS
+$ sudo amdgpu-fan-curve
+.RE
+
+Apply a custom profile named "gaming":
+.RS
+$ sudo amdgpu-fan-curve gaming
+.RE
+
+.SH SEE ALSO
+systemctl(1), systemd(1)
+
+.SH AUTHOR
+Maintainer: Fox-sys <berestovborisasz@gmail.com>

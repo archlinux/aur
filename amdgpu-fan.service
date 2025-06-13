@@ -1,0 +1,15 @@
+[Unit] 
+Description=Apply custom fan curve for AMDGPU RDNA3 
+After=systemd-modules-load.service 
+Documentation=man:systemd.service(5)
+
+[Service] 
+Type=oneshot 
+ExecStart=/usr/bin/amdgpu-fan-curve
+EnvironmentFile=/etc/environment 
+RemainAfterExit=yes 
+StandardOutput=journal 
+StandardError=journal
+
+[Install] 
+WantedBy=multi-user.target

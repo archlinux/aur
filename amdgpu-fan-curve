@@ -1,0 +1,43 @@
+#!/bin/bash
+
+[ "$EUID" -ne 0 ] && { echo "Error: This script must be run as root."; exit 1; }
+
+PROFILE_DIR="/var/fan_curves"
+DEFAULT_PROFILE="default"
+
+[ -d "$PROFILE_DIR" ] || mkdir -p "$PROFILE_DIR" || { echo "Error: Cannot create $PROFILE_DIR."; exit 1; }
+
+PROFILE_NAME="${1:-${FAN_PROFILE:-$DEFAULT_PROFILE}}"
+PROFILE_FILE="$PROFILE_DIR/fan_curve_$PROFILE_NAME"
+
+[ -f "$PROFILE_FILE" ] || { echo "Error: Profile $PROFILE_FILE not found."; exit 1; }
+
+while read -r idx temp speed; do
+    [[ "$idx" =~ ^[0-4]$ ]] && [[ "$temp" =~ ^[0-9]+$ ]] && [[ "$speed" =~ ^[0-9]+$ ]] || { echo "Error: Invalid format in $PROFILE_FILE."; exit 1; }
+done < "$PROFILE_FILE"
+
+GPU_CARDS=$(find /sys/class/drm/ -maxdepth 1 -name "card[0-9]*" | grep -E '/card[0-9]$')
+
+for CARD in $GPU_CARDS; do
+    GPU_SYS=$(readlink -f "$CARD/device")
+    FAN_CURVE_PATH="$GPU_SYS/gpu_od/fan_ctrl/fan_curve"
+    PWM_ENABLE=$(readlink -f "$GPU_SYS/hwmon"/hwmon*/pwm1_enable 2>/dev/null)
+
+    [ -f "$FAN_CURVE_PATH" ] || { echo "Warning: $FAN_CURVE_PATH not found, skipping $CARD."; continue; }
+
+    if [ -n "$PWM_ENABLE" ]; then
+        echo "1" > "$PWM_ENABLE" 2>/dev/null || echo "Warning: Cannot enable manual fan control on $CARD."
+    fi
+
+    while read -r idx temp speed; do
+        echo "$idx $temp $speed" > "$FAN_CURVE_PATH"
+    done < "$PROFILE_FILE"
+
+    echo "c" > "$FAN_CURVE_PATH"
+
+    if [ $? -eq 0 ]; then
+        echo "Fan curve '$PROFILE_NAME' applied to $CARD successfully."
+    else
+        echo "Error: Failed to apply fan curve to $CARD."
+    fi
+done

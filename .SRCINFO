@@ -1,0 +1,18 @@
+pkgbase = amdgpu-fan-curve
+	pkgdesc = Custom fan curve script and systemd service for AMD RDNA3 GPUs
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Fox-sys/amdgpu-custom-fan-curve
+	arch = any
+	license = MIT
+	depends = bash
+	source = amdgpu-fan-curve
+	source = fan_curve_default
+	source = amdgpu-fan.service
+	source = amdgpu-fan-curve.1
+	sha256sums = 0757c67946e1e1453f712c117812dfb4d59a40c2c12be1fc199808aed8300863
+	sha256sums = cb37e5ab3b29aa87c7b3e583fcbeac790ff98d667dc48c1381c636907bd3cbf9
+	sha256sums = c06734e6cebeb107d6d3539ad82e187c6f60711800ea24237c54db324441afb6
+	sha256sums = b2255eb5d20a342bebc6d5804989be021ac05ff8c3c8ed368048f762a58750a1
+
+pkgname = amdgpu-fan-curve
