@@ -2,7 +2,7 @@
 
 pkgname=ruby-ctf-party
 _gemname=ctf-party
-pkgver=3.0.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='A CLI tool & library to enhance and speed up script/exploit writing with string conversion/manipulation.'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 provides=('ctf-party')
 conflicts=('ctf-party')
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('2a1873754f5f84197ec7a223b137fa9f56b453dd835d43e056fa955cbfc1e321f4fe95906b5a8b362a4577d6cb22958a82758f9c8fe5276688890c9323bf7c1f')
+b2sums=('d0cc9dad1891a600d9a70e1f76e8e332b9f32dbec50f2ca261f97e3d95b75bc22f094662db8dbe8c6d7a3fd3740997e647083321c13ce9965f26d4cfa17d620b')
 
 package() {
   _gemdir="$(ruby -e'puts Gem.default_dir')"
@@ -25,8 +25,8 @@ package() {
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   find "$pkgdir/$_gemdir/extensions/" -name *.so -delete
-  rm -r "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/test"
 
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+

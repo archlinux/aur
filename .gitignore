@@ -1,2 +1,4 @@
 *.gem
 *.pkg.tar.xz
+*.pkg.tar.zst
+*.log
