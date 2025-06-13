@@ -1,5 +1,5 @@
 pkgname=background.fm
-pkgver=0.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Set your background as your now playing. Uses Last.fm API (Requires Last.fm scrobbling)."
 arch=('x86_64')
