@@ -8,13 +8,13 @@ pkgbase = gtkd
 	makedepends = ldc
 	depends = liblphobos
 	depends = gtk3
-	optdepends = pango
 	optdepends = atk
 	optdepends = gdk-pixbuf2
-	optdepends = gtksourceview3
 	optdepends = gstreamer
-	optdepends = vte3
+	optdepends = gtksourceview3
 	optdepends = libpeas
+	optdepends = pango
+	optdepends = vte3
 	source = GtkD-3.11.0.tar.gz::https://github.com/gtkd-developers/GtkD/archive/v3.11.0.tar.gz
 	sha512sums = 8c2a19fa7d71b0b9341d22e45d8c8804d84db25842b30affaaf62672d93a9173551e420103c30887cd111301999ca12b4148ddf270cb27bf67f4e1e51ea144a9
 
