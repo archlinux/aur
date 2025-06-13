@@ -26,13 +26,10 @@ source=(vscode::"git+https://github.com/microsoft/vscode.git"
 sha256sums=('SKIP'{,,,,}) # should we have cksums ?
 
 pkgver() {
-    cd "${srcdir}/vscode"
-    # People love to complain, so here's a complex version that still
-    # increases monotonically by commit but also has the package.json
-    # version instead of the most recent tag...
-    printf "%s.r%s.g%s" \
-        $(awk 'match($0,/"version":\s*"([^"]+)"/,v) {print v[1]}' package.json) \
-        $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  cd "${srcdir}/vscode"
+  printf "%s.r%s.g%s" \
+    $(awk 'match($0,/"version":\s*"([^"]+)"/,v) {print v[1]}' package.json) \
+    $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare() {
@@ -90,9 +87,8 @@ build() {
   _vsrgver=$(npm pkg get dependencies.@vscode/ripgrep | sed 's/[\"^]//g')
   _rgver=13.0.0-13
   mkdir -p "$TMPDIR"/vscode-ripgrep-cache-$_vsrgver
-  bsdtar -czf "$TMPDIR"/vscode-ripgrep-cache-${_vsrgver}/ripgrep-v${_vsrgver}-x86_64-unknown-linux-musl.tar.gz -C /usr/bin rg
-  # actual binary seems needed
-  ln -sf "$TMPDIR"/vscode-ripgrep-cache-${_vsrgver}/ripgrep-v{${_vsrgver},${_rgver}}-x86_64-unknown-linux-musl.tar.gz
+  touch rg # Archived symlink is replaced
+  bsdtar -czf "$TMPDIR"/vscode-ripgrep-cache-${_vsrgver}/ripgrep-v${_rgver}-x86_64-unknown-linux-musl.tar.gz rg
   # Don't DL Electron
   export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home # Don't taint user dir
   _cache_dir="$XDG_CACHE_HOME"/electron/$(echo -n "https://github.com/electron/electron/releases/download/v${_electronver}" | sha256sum | cut -d ' ' -f 1)
