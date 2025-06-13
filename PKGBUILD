@@ -32,7 +32,7 @@ depends=(
         )
 
 makedepends=(
-  "p7zip"
+  # "p7zip" # Extraction already happens automatically with 'bsdtar'.
   "wget"
 )
 
@@ -47,7 +47,7 @@ optdepends=(
 
 provides=(
   "${_pkgname}=${pkgver}"
-  
+
   "idos-timetable-data=${pkgver}"
   "idos-timetable-data-trains=${pkgver}"
 
@@ -99,9 +99,11 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}"
-  for _file in *.exe; do
-    7z x "${_file}"
-  done
+
+  ## Extraction already happens automatically with 'bsdtar'.
+  #for _file in *.exe; do
+  #  7z x "${_file}"
+  #done
 }
 
 package() {

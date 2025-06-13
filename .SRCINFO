@@ -7,7 +7,6 @@ pkgbase = idos-timetable-data-zsr-europe+sk-2025-latest
 	arch = any
 	groups = idos-timetable
 	license = custom
-	makedepends = p7zip
 	makedepends = wget
 	depends = idos-timetable-data-trains-common
 	optdepends = idos-timetable-tariff-trains-europe: For showing prices.
