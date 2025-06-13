@@ -1,14 +1,14 @@
 pkgbase = phanpy-bin
 	pkgdesc = A minimalistic opinionated Mastodon web client
-	pkgver = 2025.06.08.34eb5f8
-	pkgrel = 2
+	pkgver = 2025.06.12.43d0d1e
+	pkgrel = 1
 	url = https://github.com/cheeaun/phanpy/
 	arch = any
 	license = MIT
 	provides = phanpy
 	conflicts = phanpy
-	noextract = phanpy-dist-2025.06.08.34eb5f8.tar.gz
-	source = phanpy-dist-2025.06.08.34eb5f8.tar.gz::https://github.com/cheeaun/phanpy/releases/download/2025.06.08.34eb5f8/phanpy-dist.tar.gz
-	sha256sums = 24a3b5352ce69b4df198077ae032a716539b411bf34f42f07ca1b57e82e80cc2
+	noextract = phanpy-dist-2025.06.12.43d0d1e.tar.gz
+	source = phanpy-dist-2025.06.12.43d0d1e.tar.gz::https://github.com/cheeaun/phanpy/releases/download/2025.06.12.43d0d1e/phanpy-dist.tar.gz
+	sha256sums = 9c93da4a6b2f78d22c3bc6d030118a646b2f22575152324b8daf7f7e4ffb1f09
 
 pkgname = phanpy-bin
