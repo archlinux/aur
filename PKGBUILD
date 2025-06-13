@@ -1,22 +1,22 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
-
-_pipname=Flask-Silk
 pkgname=python-flask-silk
 pkgver=0.2
-pkgrel=6
-pkgdesc='Adds silk icons to your Flask application or blueprint, or extension'
-url='https://pythonhosted.org/Flask-Silk/index.html'
-arch=('any')
-license=('custom:BSD')
-depends=('python-flask')
-makedepends=('python-setuptools')
-source=("https://pypi.python.org/packages/source/F/Flask-Silk/Flask-Silk-$pkgver.tar.gz")
-sha256sums=('80a21faf09fe257443a4fbbf8cd3f6c793c567c87ff784751a1c38d2e18b5fbe')
+pkgrel=1
+arch=('x86_64')
+url='https://github.com/sublee/flask-silk'
+license=('custom')
+depends=('python' 'python-flask')
+makedepends=('python-setuptools' 'git')
+pkgdesc="Adds silk icons to your Flask application or module, or extension"
+source=("$pkgname-$pkgver::git+https://github.com/sublee/flask-silk")
+sha256sums=('SKIP')
+
+build() {
+	cd $pkgname-$pkgver
+	python setup.py build
+}
 
 package() {
-  cd $_pipname-$pkgver 
-  python setup.py install --root="$pkgdir/" --optimize=1
-
-  mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
-  install -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname
+	cd $pkgname-$pkgver
+	python setup.py install --root="$pkgdir"
+	install -Dm644 $srcdir/python-flask-silk-0.2/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

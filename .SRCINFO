@@ -1,14 +1,15 @@
 pkgbase = python-flask-silk
-	pkgdesc = Adds silk icons to your Flask application or blueprint, or extension
+	pkgdesc = Adds silk icons to your Flask application or module, or extension
 	pkgver = 0.2
-	pkgrel = 6
-	url = https://pythonhosted.org/Flask-Silk/index.html
-	arch = any
-	license = custom:BSD
+	pkgrel = 1
+	url = https://github.com/sublee/flask-silk
+	arch = x86_64
+	license = custom
 	makedepends = python-setuptools
+	makedepends = git
+	depends = python
 	depends = python-flask
-	source = https://pypi.python.org/packages/source/F/Flask-Silk/Flask-Silk-0.2.tar.gz
-	sha256sums = 80a21faf09fe257443a4fbbf8cd3f6c793c567c87ff784751a1c38d2e18b5fbe
+	source = python-flask-silk-0.2::git+https://github.com/sublee/flask-silk
+	sha256sums = SKIP
 
 pkgname = python-flask-silk
-
