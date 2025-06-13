@@ -3,7 +3,7 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname='updatecli-bin'
-pkgver=0.101.0
+pkgver=0.102.0
 pkgrel=1
 pkgdesc='A declarative dependency management command line tool.'
 url='https://www.updatecli.io'
@@ -12,11 +12,11 @@ license=('Apache')
 provides=('updatecli')
 conflicts=('updatecli')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/updatecli/updatecli/releases/download/v0.101.0/updatecli_Linux_arm64.tar.gz")
-sha256sums_aarch64=('7ae8db9cac27d38980782ac8ad989369b440d11d8759f78a732d129f10ef34ad')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/updatecli/updatecli/releases/download/v0.102.0/updatecli_Linux_arm64.tar.gz")
+sha256sums_aarch64=('873786f46e5d4d2120f47b71c6ba6835990e2a2227eab96ad3c60e82981f9fef')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/updatecli/updatecli/releases/download/v0.101.0/updatecli_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('e19c68203962eca15bc1ac335dce719ef327a4e1239289f6536fb0e38ab00f0a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/updatecli/updatecli/releases/download/v0.102.0/updatecli_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('841ce20c0c317eaa6b327efe1244020b76831e7b64c637c7077af6fd241e20da')
 
 package() {
   # bin
