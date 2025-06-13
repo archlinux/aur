@@ -2,7 +2,7 @@
 
 pkgname=porymap
 _pkgname=porymap
-pkgver=6.0.0
+pkgver=6.1.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/huderlem/porymap/"
@@ -10,7 +10,7 @@ license=('LGPL-3.0-only')
 depends=('gcc-libs' 'glibc' 'qt6-base' 'qt6-declarative')
 makedepends=('icoutils' 'qt6-tools' 'git')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/huderlem/porymap/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('42a77797b29572db7a8602450bb3be867814d4e52b11aab3908435e6e48e91bb')
+sha256sums=('2cce3a912679ca99caa321abb11fae0e470d0e8f37f565d55fb43c1958e0406f')
 
 # Grabs the latest release number, e.g. 6.0.0
 pkgver() {
