@@ -5,7 +5,8 @@
 _appname=lm-studio
 pkgname=lmstudio-beta
 pkgver=0.3.17.1
-pkgrel=2
+_pkgver="${pkgver%.*}-${pkgver##*.}"
+pkgrel=3
 pkgdesc="Discover, download, and run local LLMs"
 arch=('x86_64')
 url="https://lmstudio.ai/"
