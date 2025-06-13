@@ -1,8 +1,8 @@
 # Maintainer: randomnobody <nobody "at" 420blaze "dot" it>
 # Contributor: brent s. <bts[at]square-r00t[dot]net>
 pkgname=zandronum
-pkgver=3.1
-pkgrel=2
+pkgver=3.2
+pkgrel=1
 _fmodex_ver=4.44.64
 pkgdesc="OpenGL ZDoom port with Client/Server multiplayer"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
 )
 
 sha256sums=(
-	'3dee92d2ab9ad9d7c485b46cac28c381e46ff9fe060695a9ca5034dd425dc9c6'
+	'9fbdcb56ef9b05c68168c7a13cef830d19be78e66157cddada7f1a2a8274c42b'
 	'c9407f638950af1dc4ff0884aa73a41490390b79435a81805a8e9c8c0ec84adf'
 	'2ff85effc7146b467201f473be5614dc109a03ae2528eafccffba5dcb8354b97'
 	'3e08296d00c8ee7445a9f9dfa6659acc7fd69ad672ae5382d79e1535413aa8fa'
@@ -44,7 +44,6 @@ package() {
   cd ${srcdir}
 
   install -Dm644 "zandronum.pk3" "${pkgdir}/usr/share/${pkgname}/zandronum.pk3"
-  install -Dm644 "brightmaps.pk3" "${pkgdir}/usr/share/${pkgname}/brightmaps.pk3"
   install -Dm644 "skulltag_actors.pk3" "${pkgdir}/usr/share/${pkgname}/skulltag_actors.pk3"
   install -Dm755 "zandronum" "${pkgdir}/usr/share/${pkgname}/zandronum"
   install -Dm755 "zandronum-server" "${pkgdir}/usr/share/${pkgname}/zandronum-server"
