@@ -1,4 +1,4 @@
-# Maintainer: ethermagicka <ethermagicka at proton dot me>
+# Maintainer: esoterica <ethermagicka at proton dot me>
 
 pkgname=ttf-azuki-font
 pkgver=1.21
