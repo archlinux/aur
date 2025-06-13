@@ -2,12 +2,12 @@
 
 pkgname=pulseshitter
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds audio to your Discord video stream"
 arch=('i686' 'x86_64')
 url="https://github.com/Enitoni/$pkgname"
 license=('MPL2')
-depends=(libpulse)
+depends=(libpulse opus gcc-libs glibc openssl)
 makedepends=(cargo)
 optdepends=("pulseaudio: For pulseaudio backend", "pipewire: For pipewire backend")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Enitoni/$pkgname/archive/refs/tags/v$pkgver.tar.gz")

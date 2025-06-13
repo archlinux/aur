@@ -1,4 +1,6 @@
 image: archlinux
+secrets:
+    - dfe6fb71-a8ee-4f35-8d17-dd6ca8617047
 sources:
     - https://git.sr.ht/~ineptattech/aur-pulseshitter
 packages:
