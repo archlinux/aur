@@ -1,7 +1,7 @@
 pkgbase = minilpa
 	pkgdesc = Professional LPA UI
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EsimMoe/MiniLPA
 	arch = x86_64
 	license = AGPL-3.0
@@ -13,8 +13,12 @@ pkgbase = minilpa
 	source = MiniLPA-1.1.1.tar.gz::https://github.com/EsimMoe/MiniLPA/archive/refs/tags/v1.1.1.tar.gz
 	source = minilpa.desktop
 	source = minilpa.sh
+	source = eum-manifest.json
+	source = ci-manifest.json
 	sha256sums = a56a8342215d25d127bdc17fb3bc2e569eb4b28bb2043ee81407ff59373e4218
 	sha256sums = c3f3c4f24581d89af194e6605eb3fdac59612752b94e6841d15aff927d812a13
 	sha256sums = 89bd22e555dbd9eb8a9fee7cbdfd8f21c05120141cc4edef38d4c65ac4615ed0
+	sha256sums = 88eb7c2d3a8c4903c761ca8265c5af56960fd5fe5834887d41acd74312f39ec6
+	sha256sums = 00296c332838d593f9066d8d53d20763aa9c77bc512f3d4e38b5357fd1f6bdad
 
 pkgname = minilpa

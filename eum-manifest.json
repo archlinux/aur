@@ -1,0 +1,108 @@
+[
+  {
+    "eum": "89033023",
+    "country": "FR",
+    "manufacturer": "Thales",
+    "products": [
+      { "pattern": "89033023424110*", "name": "Amazfit" },
+      { "pattern": "89033023424210*", "name": "TicWatch" },
+      { "pattern": "89033023425110*", "name": "Lenovo" },
+      { "pattern": "890330234261000000000121*", "name": "OPPO" },
+      { "pattern": "890330234261000000000173*", "name": "HONOR" },
+      { "pattern": "89033023426120*", "name": "Rakuten Hand 5G" },
+      { "pattern": "890330234262*", "name": "Pixel 6 Series" },
+      { "pattern": "890330234271*", "name": "Pixel 7 Series" },
+      { "pattern": "89033023553419*", "name": "Pixel 8 Series" }
+    ]
+  },
+  {
+    "eum": "89033024",
+    "country": "FR",
+    "manufacturer": "IDEMIA",
+    "products": [
+      { "pattern": "890330240681027499102*", "chip": "ST33G1M2STL8EMQ4", "name": "AVNET eUICC" },
+      { "pattern": "890330240681*", "name": "AVNET eUICC" }
+    ]
+  },
+  {
+    "eum": "89034011",
+    "country": "ES",
+    "manufacturer": "Valid"
+  },
+  {
+    "eum": "89043051",
+    "country": "AT",
+    "manufacturer": "NXP"
+  },
+  {
+    "eum": "89043052",
+    "country": "AT",
+    "manufacturer": "NXP"
+  },
+  {
+    "eum": "89044045",
+    "country": "GB",
+    "manufacturer": "Kigen",
+    "products": [
+      { "pattern": "890440451167274948*", "name": "sysmoEUICC1-C2G" },
+      { "pattern": "890440452167274948*", "name": "9eSIM" }
+    ]
+  },
+  {
+    "eum": "89044047",
+    "country": "GB",
+    "manufacturer": "Truphone"
+  },
+  {
+    "eum": "89049032",
+    "country": "DE",
+    "manufacturer": "G+D",
+    "products": [
+      { "pattern": "890490321030288823*", "chip": "ST33G1M2LCL9EMM4", "name": "Entrust?" },
+      { "pattern": "890490320030088823*", "chip": "ST33G1M2STL8ENH0", "name": "Apple, 2017" },
+      { "pattern": "890490320040088826*", "chip": "ST33G1M2STL8ENL0", "name": "Apple, 2018" },
+      { "pattern": "890490320050088826*", "chip": "ST33G1M2STL8ENP0", "name": "Apple, 2019" },
+      { "pattern": "890490320060088826*", "chip": "ST33J2M0STL9DZB0", "name": "Apple, 2020" },
+      { "pattern": "890490320070088826*", "chip": "ST33J2M0STL9DZD0", "name": "Apple, 2021" },
+      { "pattern": "890490320071088800*", "chip": "ST33J2M0STL9DZF2", "name": "Apple, 2022" },
+      { "pattern": "890490320072088889*", "chip": "ST33J2M0STL9DZH2", "name": "Apple, 2023" },
+      { "pattern": "890490320073088836*", "name": "Apple, 2024" },
+      { "pattern": "890490320000010000*", "name": "<non-specific>" }
+    ]
+  },
+  {
+    "eum": "89049038",
+    "country": "DE",
+    "manufacturer": "G+D"
+  },
+  {
+    "eum": "89086001",
+    "country": "CN",
+    "manufacturer": "Hengbao",
+    "products": [{ "pattern": "89086001202200101019000001*", "name": "Abardeen" }]
+  },
+  {
+    "eum": "89086029",
+    "country": "CN",
+    "manufacturer": "Wuhan Tianyu",
+    "products": [
+      { "pattern": "890860292022000001210107*", "name": "TicWatch GTW" },
+      { "pattern": "8908602920220000212100006*", "name": "CUCC VN007+" }
+    ]
+  },
+  {
+    "eum": "89086030",
+    "country": "CN",
+    "manufacturer": "Eastcompeace",
+    "products": [
+      { "pattern": "89086030202200000022217630*", "name": "eSIM.me" },
+      { "pattern": "89086030202200000022281675*", "name": "eSIM.me" },
+      { "pattern": "89086030202200000023000178*", "name": "CCSMEC" },
+      { "pattern": "89086030202200000023100930*", "name": "5ber.eSIM" },
+      { "pattern": "89086030202200000024000034*", "name": "5ber.eSIM" },
+      { "pattern": "89086030202200000024000055*", "name": "Jianwei Tek" },
+      { "pattern": "89086030202200000024000059*", "name": "Sakura eSIM (Phase II)" },
+      { "pattern": "89086030202200000024000083*", "name": "Plan B" }
+    ]
+  }
+]
