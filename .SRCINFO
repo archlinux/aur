@@ -1,6 +1,6 @@
 pkgbase = spaces
 	pkgdesc = A CLI tool that helps you open your apps more easily
-	pkgver = 16
+	pkgver = 17
 	pkgrel = 1
 	url = https://github.com/simit22/spaces
 	arch = any
