@@ -1,6 +1,6 @@
 # Maintainer: Ayash Bera ayashbera@gmail.com
 pkgname=keyshade
-pkgver=3.0.5
+pkgver=3.0.2
 pkgrel=6
 pkgdesc="Realtime secret and configuration management CLI tool with end-to-end encryption"
 arch=('any')

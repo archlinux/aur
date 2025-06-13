@@ -1,6 +1,6 @@
 pkgbase = keyshade
 	pkgdesc = Realtime secret and configuration management CLI tool with end-to-end encryption
-	pkgver = 3.0.5
+	pkgver = 3.0.2
 	pkgrel = 6
 	url = https://github.com/keyshade-xyz/keyshade
 	arch = any
