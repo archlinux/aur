@@ -6,13 +6,13 @@
 # Contributor: dsboger <https://github.com/dsboger>
 pkgname=gtkd
 pkgver=3.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="D bindings for GTK+ and related libraries."
 arch=('x86_64')
 url="https://gtkd.org"
 license=('LGPL-3.0-or-later')
 depends=(
-  'libphobos'
+  'liblphobos'
   'gtk3'
 )
 makedepends=('ldc')
