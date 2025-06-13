@@ -1,7 +1,7 @@
 pkgbase = icaclient
 	pkgdesc = Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)
 	pkgver = 25.03.0.66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html
 	install = citrix-client.install
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = icaclient
 	depends = libsoup
 	depends = libvorbis
 	depends = libxaw
+	depends = libxml2-legacy
 	depends = libxp
 	depends = openssl
 	depends = speex

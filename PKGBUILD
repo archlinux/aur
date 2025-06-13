@@ -8,14 +8,14 @@
 
 pkgname=icaclient
 pkgver=25.03.0.66
-pkgrel=1
+pkgrel=2
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)"
 arch=(x86_64 aarch64)
 url='https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html'
 license=(LicenseRef-Citrix)
-depends=('alsa-lib' 'curl' 'gst-plugins-base-libs' 'gtk2' 'libc++' 'libc++abi' 'libidn11'
-         'libjpeg6-turbo' 'libpng12' 'libsecret' 'libsoup' 'libvorbis' 'libxaw' 'libxp'
-         'openssl' 'speex' 'webkit2gtk')
+depends=(alsa-lib curl gst-plugins-base-libs gtk2 libc++ libc++abi libidn11
+         libjpeg6-turbo libpng12 libsecret libsoup libvorbis libxaw libxml2-legacy libxp
+         openssl speex webkit2gtk)
 optdepends=('xerces-c: gtk2 configuration manager'
             'webkit2gtk: gtk2 selfservice/storefront ui'
             'libc++: for HDXTeams')
