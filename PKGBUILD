@@ -6,8 +6,7 @@ pkgdesc="A homemade arkanoid game in C++"
 arch=('x86_64')
 url="https://github.com/LuxySs-Evr5/RaquetteBaballe"
 license=('GPL3')
-depends=('allegro')
-makedepends=('gcc' 'make' 'cmake')
+makedepends=('gcc' 'make')
 source=('https://github.com/LuxySs-Evr5/RaquetteBaballe/releases/download/v1.0.1/raquette-baballe-1.0.1.pkg.tar.zst')
 sha256sums=('59cfbcf92b21a40a6d6fbfc0eb1985038eff0900cd1b41daf1e13027711d761e')
 
