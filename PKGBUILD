@@ -3,8 +3,8 @@
 
 pkgname=void-git
 _pkgname=void
-pkgver=1.99.3.r2668.g282800e3
-pkgrel=2
+pkgver=1.99.3.r2720.gda425ab0
+pkgrel=1
 pkgdesc="The Cursor alternative AI code editor"
 url="https://voideditor.com/"
 arch=('x86_64')
@@ -41,8 +41,10 @@ prepare(){
 }
 
 build() {
-  export XDG_CACHE_HOME="${srcdir}/xdgcache" HOME="${srcdir}/home" # Do not taint user dir
+  # Don't put broken files on user dir
+  export XDG_CACHE_HOME="${srcdir}/xdgcache" TMPDIR="$srcdir"/tmp HOME="${srcdir}/home"
   cd "${_pkgname}"
+
   # electron version
   _elver=$(npm pkg get devDependencies.electron)
   echo Replacing electron $_elver
@@ -51,13 +53,24 @@ build() {
   sed -i "s/^target=.*/target=\"${_elver}\"/" .npmrc # native modules
   echo with $(rg -N 'target' .npmrc)
 
-  # Stop downloading electron
+  # Don't DL ripgrep
+  _vsrgver=$(npm pkg get dependencies.@vscode/ripgrep | sed 's/[\"^]//g')
+  _rgver=13.0.0-10
+  mkdir -p "$TMPDIR"/vscode-ripgrep-cache-$_vsrgver
+  # actual binary seems needed
+  bsdtar -czf "$TMPDIR"/vscode-ripgrep-cache-${_vsrgver}/ripgrep-v${_rgver}-x86_64-unknown-linux-musl.tar.gz -C /usr/bin rg
+  _vsrgver2=1.15.10 # Why DL twice?
+  mkdir -p "$TMPDIR"/vscode-ripgrep-cache-$_vsrgver2
+  ln -sf "$TMPDIR"/vscode-ripgrep-cache-{${_vsrgver},${_vsrgver2}}/ripgrep-v${_rgver}-x86_64-unknown-linux-musl.tar.gz
+
+  # Don't DL electron
   _cachedir="${XDG_CACHE_HOME}"/electron/$(echo -n "https://github.com/electron/electron/releases/download/v${_elver}" | sha256sum | cut -d ' ' -f 1)
   _zip="electron-v${_elver}-linux-x64.zip"
   mkdir -p "${_cachedir}"
   bsdtar --format zip -cf "${_cachedir}/${_zip}" /dev/null 2> /dev/null
   echo $(sha256sum "${_cachedir}/${_zip}" | cut -d " " -f 1) *${_zip} > build/checksums/electron.txt
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+
   # Build
   npm install
   npm run buildreact # needed by unknown reason
