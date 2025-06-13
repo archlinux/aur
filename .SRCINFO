@@ -1,6 +1,6 @@
 pkgbase = electron37-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 37.0.0beta.4
+	pkgver = 37.0.0beta.5
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -17,21 +17,21 @@ pkgbase = electron37-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron37=37.0.0beta.4
+	provides = electron37=37.0.0beta.5
 	conflicts = electron37
-	noextract = electron37-chromedriver-37.0.0beta.4-x86_64.zip
-	noextract = electron37-37.0.0beta.4-x86_64.zip
-	source_aarch64 = electron37-chromedriver-37.0.0beta.4-aarch64.zip::https://github.com/electron/electron/releases/download/v37.0.0-beta.4/chromedriver-v37.0.0-beta.4-linux-arm64.zip
-	source_aarch64 = electron37-37.0.0beta.4-aarch64.zip::https://github.com/electron/electron/releases/download/v37.0.0-beta.4/electron-v37.0.0-beta.4-linux-arm64.zip
-	sha256sums_aarch64 = 6e38fdf1c97b532d15c7daa4fe46e05a7f61207642768a9ba41130327f075b37
-	sha256sums_aarch64 = c2e40c3c009fb9b7368359d75d636611e542f72f25d2ebaf2833b949e016d6ef
-	source_armv7h = electron37-chromedriver-37.0.0beta.4-armv7h.zip::https://github.com/electron/electron/releases/download/v37.0.0-beta.4/chromedriver-v37.0.0-beta.4-linux-armv7l.zip
-	source_armv7h = electron37-37.0.0beta.4-armv7h.zip::https://github.com/electron/electron/releases/download/v37.0.0-beta.4/electron-v37.0.0-beta.4-linux-armv7l.zip
-	sha256sums_armv7h = 3145bf5d5670932adf85d2be9a38aede2dbc4d79553dade3b559e8986ea67e27
-	sha256sums_armv7h = 588e4f1950fcba06ea555b91c2b86b3e1053e54f24e78498c37da16b5cbd387b
-	source_x86_64 = electron37-chromedriver-37.0.0beta.4-x86_64.zip::https://github.com/electron/electron/releases/download/v37.0.0-beta.4/chromedriver-v37.0.0-beta.4-linux-x64.zip
-	source_x86_64 = electron37-37.0.0beta.4-x86_64.zip::https://github.com/electron/electron/releases/download/v37.0.0-beta.4/electron-v37.0.0-beta.4-linux-x64.zip
-	sha256sums_x86_64 = 85bcb34167eadd9adc774dad85f99f3af1c8739a5634e1a842428902f9f5c0cf
-	sha256sums_x86_64 = dd77249c4bde862bdbfb0804aa83798b8c65773e6dfdaa0ffbb706787ae89b7e
+	noextract = electron37-chromedriver-37.0.0beta.5-x86_64.zip
+	noextract = electron37-37.0.0beta.5-x86_64.zip
+	source_aarch64 = electron37-chromedriver-37.0.0beta.5-aarch64.zip::https://github.com/electron/electron/releases/download/v37.0.0-beta.5/chromedriver-v37.0.0-beta.5-linux-arm64.zip
+	source_aarch64 = electron37-37.0.0beta.5-aarch64.zip::https://github.com/electron/electron/releases/download/v37.0.0-beta.5/electron-v37.0.0-beta.5-linux-arm64.zip
+	sha256sums_aarch64 = 185d327719735a5067713fdafdc858073c06832c32925c997a43cc7759c7c15d
+	sha256sums_aarch64 = 63452ac3d8ef3a500d871fca699b45ead9313dc1c58f49955fdd3371c04f2c74
+	source_armv7h = electron37-chromedriver-37.0.0beta.5-armv7h.zip::https://github.com/electron/electron/releases/download/v37.0.0-beta.5/chromedriver-v37.0.0-beta.5-linux-armv7l.zip
+	source_armv7h = electron37-37.0.0beta.5-armv7h.zip::https://github.com/electron/electron/releases/download/v37.0.0-beta.5/electron-v37.0.0-beta.5-linux-armv7l.zip
+	sha256sums_armv7h = 954c7c968b6f0040b82397b6bdf2540934e6f8b2a4c9d2181c41246dc5f7adcf
+	sha256sums_armv7h = f481ff7c9a1b0ef565de437cb449ede8f6fd1b8342a3dc2a31b751b883dec5b1
+	source_x86_64 = electron37-chromedriver-37.0.0beta.5-x86_64.zip::https://github.com/electron/electron/releases/download/v37.0.0-beta.5/chromedriver-v37.0.0-beta.5-linux-x64.zip
+	source_x86_64 = electron37-37.0.0beta.5-x86_64.zip::https://github.com/electron/electron/releases/download/v37.0.0-beta.5/electron-v37.0.0-beta.5-linux-x64.zip
+	sha256sums_x86_64 = 764c117b7b78bc68bb3253c17bff6efa034d41fd7a871c415303768f10e95ed3
+	sha256sums_x86_64 = ed96623bbe0a4bde216297ea6b8390f1fae7925eac1e7b92b1589004322d34c9
 
 pkgname = electron37-bin
