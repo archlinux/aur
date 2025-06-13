@@ -1,7 +1,7 @@
 # Maintainer: Ayash Bera ayashbera@gmail.com
 pkgname=keyshade
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Realtime secret and configuration management CLI tool with end-to-end encryption"
 arch=('any')
 url="https://github.com/keyshade-xyz/keyshade"
@@ -28,6 +28,7 @@ package() {
     ln -s "../lib/node_modules/@keyshade/cli/dist/index.cjs" "$pkgdir/usr/bin/keyshade"
     
     # Remove unnecessary development files to reduce package size
+    # BUT keep all native modules (.node files) that are required at runtime
     rm -rf "$pkgdir/usr/lib/node_modules/@keyshade/cli/src"
     rm -rf "$pkgdir/usr/lib/node_modules/@keyshade/cli/.turbo"
     rm -f "$pkgdir/usr/lib/node_modules/@keyshade/cli/.eslintrc.cjs"
@@ -35,6 +36,9 @@ package() {
     rm -f "$pkgdir/usr/lib/node_modules/@keyshade/cli/esbuild.config.js"
     rm -f "$pkgdir/usr/lib/node_modules/@keyshade/cli/tsconfig.json"
     rm -f "$pkgdir/usr/lib/node_modules/@keyshade/cli/tsup.config.ts"
+    
+    # Ensure all .node files have proper permissions and are kept
+    find "$pkgdir/usr/lib/node_modules/@keyshade/cli" -name "*.node" -exec chmod 755 {} \;
 }
 
 # To get the correct checksum, run:
