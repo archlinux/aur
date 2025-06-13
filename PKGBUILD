@@ -3,25 +3,26 @@
 pkgbase=python-echo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}"-doc)
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Callback Properties in Python"
 arch=('any')
 url="https://echo.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools-scm'
-#            'python-build'
-#            'python-installer'
+             'python-build'
+             'python-installer'
              'python-sphinx-automodapi'
              'python-numpydoc'
              'python-numpy')
 checkdepends=('python-pytest-xvfb'
+#             'python-pytest-xdist'
               'xorg-server-xvfb'
               'python-qtpy'
               'python-pyqt6')  # numpy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix_sphinx-doc_link.patch')
-md5sums=('de67fedfcc8eb879b5bd146049681726'
+md5sums=('1f5129b40d0d71f9d988ec335efcc7b3'
          'b6441be6fa18db4f59a7784b1fcc67a6')
 
 get_pyver() {
@@ -36,8 +37,7 @@ prepare() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py build
-#   python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation
 
     msg "Building Docs"
     ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
@@ -48,20 +48,19 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count # no need -p xvfb
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 # no need -p xvfb
 }
 
 package_python-echo() {
-    depends=('python>=3.8' 'python-numpy')
-    optdepends=('python-pyqt5>=5.9: Interfacing with Qt widgets¶'
+    depends=('python>=3.10' 'python-numpy')
+    optdepends=('python-pyqt5>=5.14: Interfacing with Qt widgets¶'
                 'python-qtpy: Interfacing with Qt widgets¶'
                 'python-echo-doc: Documentation for python-echo')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
-#   python -m installer --destdir="${pkgdir}" dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
 package_python-echo-doc() {
