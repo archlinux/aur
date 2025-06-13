@@ -1,6 +1,6 @@
 pkgbase = lpm-git
 	pkgdesc = A lite-xl plugin manager.
-	pkgver = 1.2.9.r47.gbf98e52
+	pkgver = 1.4.0.r53.g26b73eb
 	pkgrel = 1
 	url = https://github.com/lite-xl/lite-xl-plugin-manager
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = lpm-git
 	depends = zlib
 	depends = libzip
 	depends = libgit2
-	depends = mbedtls2
+	depends = mbedtls
 	depends = xz
 	provides = lpm
 	conflicts = lpm

@@ -4,13 +4,13 @@
 pkgname=lpm-git
 _pkgname=lpm
 _gitname=lite-xl-plugin-manager
-pkgver=1.2.9.r47.gbf98e52
+pkgver=1.4.0.r53.g26b73eb
 pkgrel=1
 pkgdesc='A lite-xl plugin manager.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/lite-xl/lite-xl-plugin-manager"
 license=('MIT')
-depends=('lua' 'zlib' 'libzip' 'libgit2' 'mbedtls2' 'xz')
+depends=('lua' 'zlib' 'libzip' 'libgit2' 'mbedtls' 'xz')
 makedepends=('git' 'meson')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
