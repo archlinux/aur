@@ -1,0 +1,5 @@
+[python-datasketch]
+source = 'github'
+github = 'ekzhu/datasketch'
+use_latest_release = true
+prefix = 'v'

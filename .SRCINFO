@@ -1,0 +1,19 @@
+pkgbase = python-datasketch
+	pkgdesc = Probabilistic data structures for processing and searching very large datasets
+	pkgver = 1.6.5
+	pkgrel = 1
+	url = https://ekzhu.com/datasketch/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-poetry
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	source = python-datasketch-1.6.5.tar.gz::https://github.com/ekzhu/datasketch/archive/refs/tags/v1.6.5.tar.gz
+	sha256sums = 0ffdc2dcb7db51891d09be141e8233398b17c64d456ebf375f36d64548611653
+
+pkgname = python-datasketch
