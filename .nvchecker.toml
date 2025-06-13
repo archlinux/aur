@@ -1,0 +1,5 @@
+[sgdboop-bin]
+source = 'github'
+github = 'SteamGridDB/SGDBoop'
+use_latest_release = true
+prefix = 'v'
