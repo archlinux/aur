@@ -1,7 +1,7 @@
 # Maintainer: Dest1n1s <dest1nis2022@gmail.com>
 
 pkgname=sync-rs
-pkgver=1.3.6
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="A CLI tool to sync files between directories"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'rsync' 'openssh')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Dest1n1s/sync-rs/archive/v$pkgver.tar.gz")
-sha256sums=('ce7f9c6c871aa76980651c6e6338a3b3f966340a45c4d8d6628e6ed8857bfc62')
+sha256sums=('09833fc6386be9bd29790db86b0ced75bbbd09406d3fa98eeab469f33502d179')
 
 prepare() {
   cd "$pkgname-$pkgver"
