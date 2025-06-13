@@ -11,7 +11,7 @@
 _pkgname=kate
 pkgname="${_pkgname}-root"
 pkgver=25.04.2
-pkgrel=1
+pkgrel=2
 arch=(
   'x86_64'
   'i686'
@@ -56,7 +56,6 @@ depends=(
   'knewstuff>=6'
   'kparts>=6'
   'kservice>=6'
-  'ktextwidgets>=6'
   'ktexteditor>=6'
   'kxmlgui>=6'
   'kwidgetsaddons>=6'
