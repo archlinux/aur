@@ -1,6 +1,6 @@
 pkgbase = microfetch-bin
 	pkgdesc = a fast fetch utility
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/DemonKingSwarn/microfetch
 	arch = x86_64

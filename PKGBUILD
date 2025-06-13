@@ -1,7 +1,7 @@
 # Maintainer: Swarnaditya Singh <demonkingswarn@protonmail.com>
 pkgname=microfetch-bin
 _pkgname=microfetch
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="a fast fetch utility"
 arch=('x86_64')
