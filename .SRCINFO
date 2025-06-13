@@ -11,6 +11,7 @@ pkgbase = readest-git
 	makedepends = openssl
 	makedepends = librsvg
 	makedepends = pnpm
+	makedepends = npm
 	makedepends = nodejs
 	makedepends = rust
 	depends = cairo

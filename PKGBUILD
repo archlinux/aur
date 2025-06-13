@@ -24,7 +24,7 @@ depends=(
   'webkit2gtk-4.1'
   'gst-plugins-good'
 )
-makedepends=('git' 'openssl' 'librsvg' 'pnpm' 'nodejs' 'rust')
+makedepends=('git' 'openssl' 'librsvg' 'pnpm' 'npm' 'nodejs' 'rust')
 provides=('readest')
 conflicts=('readest' 'readest-bin')
 source=("git+${url}.git")
