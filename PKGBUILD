@@ -17,12 +17,14 @@ source=(
     "drongo::git+https://github.com/sparrowwallet/drongo.git"
     "lark::git+https://github.com/sparrowwallet/lark.git"
     "https://github.com/adoptium/temurin22-binaries/releases/download/jdk-${_jdkver/_/%2B}/OpenJDK22U-jdk_x64_linux_hotspot_${_jdkver}.tar.gz"
+    "MimeInfo.xml"
 )
 sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
     '05cd9359dacb1a1730f7c54f57e0fed47942a5292eb56a3a0ee6b13b87457a43'
+    'd0ad5f5457005776fb5021752f9468a55f3a01f498a7984fc97ef652b44460c1'
 )
 
 pkgver() {
@@ -72,4 +74,11 @@ EOF
     sed "s|/opt/sparrowwallet|/opt/${pkgname%-git}|g" \
         "src/main/deploy/package/linux/Sparrow.desktop" > \
         "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+
+    install -Dm644 "${srcdir}/MimeInfo.xml" \
+        "${pkgdir}/usr/share/mime/packages/${pkgname%-git}.xml"
+
+    install -dm755 "${pkgdir}/usr/lib/udev/rules.d"
+    install -m644 "${srcdir}/sparrow/build/jpackage/Sparrow/lib/runtime/conf/udev"/*.rules \
+        "${pkgdir}/usr/lib/udev/rules.d/"
 }
