@@ -1,0 +1,21 @@
+pkgbase = playboy-git
+	pkgdesc = A libmpv based media player with Material 3 design.
+	pkgver = 0.25.4.r1.g453d6c2
+	pkgrel = 1
+	url = https://github.com/Playboy-Player/Playboy
+	arch = any
+	license = Apache-2.0
+	makedepends = flutter
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = gtk3
+	depends = mpv
+	provides = playboy=0.25.4
+	conflicts = playboy
+	source = playboy.git::git+https://github.com/Playboy-Player/Playboy.git
+	source = playboy.sh
+	sha256sums = SKIP
+	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
+
+pkgname = playboy-git
