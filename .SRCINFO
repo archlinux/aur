@@ -1,7 +1,7 @@
 pkgbase = lnk
 	pkgdesc = 🔗 Git-native dotfiles management that doesn't suck.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yarlson/lnk
 	arch = x86_64
 	arch = aarch64
