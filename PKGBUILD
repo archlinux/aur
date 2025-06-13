@@ -5,7 +5,7 @@
 
 pkgname=pyglossary
 pkgver=5.0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="convert dictionary files/glossaries with various formats"
 arch=(any)
 url="https://github.com/ilius/pyglossary"
@@ -31,7 +31,7 @@ optdepends=(
   'python-psutil: Required to show memory usage'
   'python-polib: Required for gettext support'
 )
-makedepends=('python-setuptools')
+makedepends=('python-installer' 'python-build' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ilius/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('66a446b16c9606e0264c2e82123f2bfc51b068e08e9a6dd2d3f5738844bc3a4e')
 
