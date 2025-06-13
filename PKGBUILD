@@ -9,7 +9,7 @@ pkgname=(
   "${_pkgbase}-git"
   "${_pkgbase}-docs-git"
 )
-pkgver=1.0.0+23.r140.20250418.cdd2fef
+pkgver=1.1.0.r145.20250610.d69ef5e
 pkgrel=1
 pkgdesc="Configurable restic wrapper. Lastest git checkout. Split package: Software and documentation."
 arch=('any')
