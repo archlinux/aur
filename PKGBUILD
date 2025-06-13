@@ -3,7 +3,7 @@
 pkgname=polycule-git
 _name=polycule
 _appid=business.braid.polycule
-pkgver=0.2.5.r33.g572a297
+pkgver=0.2.5.r78.g848b9fd
 pkgrel=1
 pkgdesc="A geeky and efficient [matrix] client for power users."
 # Flutter officially supports amd64 and AArch64
@@ -17,8 +17,6 @@ depends=(
   'libsecret'
   # path_provider
   'xdg-user-dirs'
-  # for e2ee
-  'libolm'
   # sqlcipher_flutter_libs
   'openssl'
   # media_kit
@@ -36,6 +34,7 @@ makedepends=(
   'flutter-target-linux'
   # used for packaging
   'cmake'
+  'rustup'
 )
 # prevent conflicts with binary or release packages
 provides=("$_name=${pkgver}")
