@@ -1,0 +1,8 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!LICENSE
+!sysusers.conf
+!tmpfiles.conf
+!glance.service
