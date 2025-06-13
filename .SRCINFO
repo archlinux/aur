@@ -1,0 +1,15 @@
+pkgbase = brave-hook-wayland
+	pkgdesc = Pacman hook to enable Wayland support for brave-bin
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://aur.archlinux.org/packages/brave-hook-wayland
+	install = brave-hook-wayland.install
+	arch = any
+	license = GPL
+	depends = brave-bin
+	source = brave-wayland.hook
+	source = apply-brave-wayland.sh
+	sha256sums = 586ce85607ad2febfc7b0cc75975a11974cd5e13405e2ce95516dffa4faf3111
+	sha256sums = 16b6c296ce5075f8ad971d94fb873fc6afe60e7cd7d17b4c6e23177c66fa8826
+
+pkgname = brave-hook-wayland

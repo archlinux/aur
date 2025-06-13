@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = brave-bin
+
+[Action]
+Description = Applying Wayland support to Brave browser...
+When = PostTransaction
+Exec = /usr/share/brave-hook-wayland/apply-brave-wayland.sh
+Depends = brave-bin

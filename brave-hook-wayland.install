@@ -1,0 +1,39 @@
+post_install() {
+    echo "==> brave-hook-wayland installed successfully!"
+    echo "==> Pacman hook will automatically apply Wayland support when brave-bin is installed or updated"
+
+    # Apply the hook immediately if brave-bin is already installed
+    if pacman -Qi brave-bin >/dev/null 2>&1; then
+        echo "==> brave-bin is already installed, applying Wayland support now..."
+        /usr/share/brave-hook-wayland/apply-brave-wayland.sh
+    fi
+}
+
+post_upgrade() {
+    echo "==> brave-hook-wayland upgraded successfully!"
+    echo "==> Pacman hook will continue to apply Wayland support automatically"
+
+    # Reapply the hook if brave-bin is installed
+    if pacman -Qi brave-bin >/dev/null 2>&1; then
+        echo "==> Reapplying Wayland support..."
+        /usr/share/brave-hook-wayland/apply-brave-wayland.sh
+    fi
+}
+
+pre_remove() {
+    echo "==> Removing brave-hook-wayland..."
+
+    # Restore original brave script if backup exists
+    if [ -f "/usr/bin/brave.orig" ]; then
+        echo "==> Restoring original brave script..."
+        mv /usr/bin/brave.orig /usr/bin/brave
+        echo "==> Original brave script restored"
+    else
+        echo "==> No backup found, brave script will be restored when brave-bin is reinstalled"
+    fi
+}
+
+post_remove() {
+    echo "==> brave-hook-wayland removed successfully!"
+    echo "==> Pacman hook has been removed, brave-bin will use default settings"
+}
