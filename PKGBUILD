@@ -2,7 +2,7 @@
 
 _pkgname=imgui
 pkgname="${_pkgname}-git"
-pkgver=1.91.9b+104.r8870.20250604.201899b61
+pkgver=1.91.9b+307.r9073.20250612.1ec1510ef
 pkgrel=1
 pkgdesc="Dear ImGui: Bloat-free Graphical User interface for C++ with minimal dependencies."
 license=('MIT')
