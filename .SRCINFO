@@ -1,6 +1,6 @@
 pkgbase = lynxhub
 	pkgdesc = Manage and launch all your AI from a single dashboard.(Use system-wide electron)
-	pkgver = 2.4.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/KindaBrazy/LynxHub
 	arch = any
@@ -10,13 +10,14 @@ pkgbase = lynxhub
 	makedepends = cmake
 	makedepends = nvm
 	makedepends = curl
-	depends = electron34
+	makedepends = git
+	depends = electron36
 	depends = libsecret
 	depends = python
 	conflicts = lynxhub
-	source = lynxhub-2.4.0.tar.gz::https://github.com/KindaBrazy/LynxHub/archive/refs/tags/V2.4.0.tar.gz
+	source = lynxhub-3.0.1::git+https://github.com/KindaBrazy/LynxHub#tag=V3.0.1
 	source = lynxhub.sh
-	sha256sums = bc7576c729b0581108ed4998201a4b87a4851c4f8c31797f3f62d01ba939ae6d
+	sha256sums = 756e720092c45cb46b9e0a2224322991bd848b570bacf8f301966291c54ea8eb
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = lynxhub
