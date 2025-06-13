@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lyrically-bin
 _pkgname=Lyrically
-pkgver=0.4.0
-_electronversion=35
+pkgver=0.5.0
+_electronversion=30
 pkgrel=1
 pkgdesc="Music player inspired by Lyric Speaker.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -33,7 +33,12 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -f -n -q --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -f -n -q \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="AudioVideo" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
