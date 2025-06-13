@@ -6,13 +6,13 @@
 # Contributor: dsboger <https://github.com/dsboger>
 pkgname=gtkd
 pkgver=3.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="D bindings for GTK+ and related libraries."
 arch=('x86_64')
 url="https://gtkd.org"
 license=('LGPL-3.0-or-later')
 depends=(
-  'liblphobos'
+  'libphobos'
   'gtk3'
 )
 makedepends=('ldc')
@@ -27,6 +27,13 @@ optdepends=(
 )
 source=("GtkD-$pkgver.tar.gz::https://github.com/gtkd-developers/GtkD/archive/v$pkgver.tar.gz")
 sha512sums=('8c2a19fa7d71b0b9341d22e45d8c8804d84db25842b30affaaf62672d93a9173551e420103c30887cd111301999ca12b4148ddf270cb27bf67f4e1e51ea144a9')
+
+prepare() {
+  cd GtkD-$pkgver
+
+  # Fix build
+  find ./demos/gtkD/TestWindow -type f -exec sed -i 's/debug(1)/debug(trace)/g' {} +
+}
 
 build() {
   cd GtkD-$pkgver
