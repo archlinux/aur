@@ -7,7 +7,7 @@
 
 pkgname='mlmmj'
 pkgver=1.6.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 depends=('bash' 'glibc' 'smtp-server')
 optdepends=(
