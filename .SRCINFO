@@ -1,6 +1,6 @@
 pkgbase = python-pypresence-git
 	pkgdesc = Discord RPC and Rich Presence wrapper library - git version
-	pkgver = v4.3.0.r41.g4e882c3
+	pkgver = 4.3.0.r41.g4e882c3
 	pkgrel = 1
 	url = https://github.com/qwertyquerty/pypresence
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-pypresence-git
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
-	provides = python-pypresence=v4.3.0.r41.g4e882c3
+	provides = python-pypresence=4.3.0.r41.g4e882c3
 	conflicts = python-pypresence
 	source = pypresence::git+https://github.com/qwertyquerty/pypresence.git
 	b2sums = SKIP
