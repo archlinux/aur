@@ -1,7 +1,7 @@
 pkgbase = python-pypugjs
 	pkgdesc = PugJS syntax adapter for Django, Jinja2 and Mako templates
-	pkgver = 5.11.0
-	pkgrel = 3
+	pkgver = 5.12.0
+	pkgrel = 1
 	url = https://github.com/kakulukia/pypugjs
 	arch = any
 	license = MIT
@@ -23,7 +23,7 @@ pkgbase = python-pypugjs
 	optdepends = python-tornado
 	optdepends = python-mako
 	optdepends = python-markdown
-	source = https://github.com/kakulukia/pypugjs/archive/v5.11.0/pypugjs-5.11.0.tar.gz
-	sha256sums = 869232738796078bcbe609a7822f5c94527b1bc9c198898fb5d85c04bf7c658d
+	source = https://github.com/kakulukia/pypugjs/archive/v5.12.0/pypugjs-5.12.0.tar.gz
+	sha256sums = f3a2efd4f8dd7918b931565259478900883200754d43aaf5e07ce291a573688c
 
 pkgname = python-pypugjs
