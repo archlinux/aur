@@ -7,7 +7,7 @@ url='https://gitlab.isc.org/isc-projects/stork'
 license=('MPL2')
 depends=()
 makedepends=('java-runtime' 'python' 'rake' 'sed' 'tar' 'unzip' 'wget')
-backup=('etc/stork')
+backup=('etc/stork/server.env')
 _repo='stork'
 source=(
   "https://downloads.isc.org/isc/${_repo}/${pkgver}/${_repo}-${pkgver}.tar.gz"
