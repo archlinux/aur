@@ -5,7 +5,7 @@ pkgbase=python-glymur
 _pyname=${pkgbase#python-}
 #_pyname=Glymur
 pkgname=('python-glymur' 'python-glymur-doc')
-pkgver=0.14.1
+pkgver=0.14.3
 #_pkgver=0.14.0post2
 #_commit="d0134123978678d33573d53a144ce1634e770e10"
 pkgrel=1
@@ -19,7 +19,7 @@ makedepends=('python-setuptools-scm>=8.0'
              'python-numpydoc'
              'python-sphinx_rtd_theme'
              'python-lxml'
-             'python-pillow')   # typing_extensions already in makedepends
+             'python-pillow')
 checkdepends=('python-pytest'
 #             'python-pytest-xdist'
 #             'openjpeg2'   # <- pillow <- skimage
@@ -44,7 +44,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.10.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.11.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.12.rst")
-md5sums=('cc3205614550edebecb63739e834f8f2')
+md5sums=('146c0f95a66a4514d59088a97325cd7c')
 #        'SKIP'
 #        'SKIP'
 #        'SKIP'
@@ -73,7 +73,7 @@ prepare() {
 #    ln -rs ${srcdir}/0.12.rst docs/source/whatsnew
 #    ln -rs {${srcdir}/${pkgver}-,}conftest.py
 #   patch -Np1 -i "${srcdir}/fix-sphinx8-intersphinx.patch"
-    sed -i "s/'MIT'/{ text = 'MIT' }/" pyproject.toml
+#   sed -i "s/'MIT'/{ text = 'MIT' }/" pyproject.toml
     sed -e "/platform.system/s/linux/Linux/" -e "/os_release/s/and/or/" \
         -e "/os_release/s/id/ID/" -i tests/fixtures.py
 }
@@ -87,7 +87,8 @@ build() {
 
     msg "Building Docs"
     mkdir -p docs/source/_static
-    PYTHONPATH="${srcdir}/${_pyname}-${_pkgver}/build/lib" make -C docs html
+#   PYTHONPATH="${srcdir}/${_pyname}-${_pkgver}/build/lib" make -C docs html
+    PYTHONPATH="build/lib" make -C docs html
 }
 
 check() {
