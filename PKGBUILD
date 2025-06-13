@@ -4,7 +4,7 @@
 # Contributor: Jakub "Kubuxu" Sztandera  <kubuxu@protonmail.ch>
 
 pkgname=ipget
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="wget for IPFS: retrieve files over IPFS and save them locally"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('glibc')
 makedepends=('go')
 optdepends=('go-ipfs: to use full potential of IPFS network')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3dd56e9243ab59383d206c2b374980cc987c016a391976dd9dcf5bff33a96f35')
+sha256sums=('6c929d5ba324d9e0eeccf3e22ff0caa359e9937e3abdfda283caffe3fda5e2dc')
 
 build() {
   cd "${pkgname}-${pkgver}"
