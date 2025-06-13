@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=gsconnect
-pkgver=62
+pkgver=66
 pkgrel=1
 pkgdesc="KDE Connect implementation. CLI usage without Gnome environment"
 arch=(x86_64)
@@ -47,7 +47,7 @@ source=(
   $pkgname.service
   gvc::git+https://github.com/JingMatrix/gvc.git
 )
-b2sums=('e33fddd6b8cabb702fdae466be3e3e970c45a57faacf3bdccbc56a8d0a7f077cf0aafd977a9e8868c961c6b2228e38ae9ddc96cfe8315f39b62d90245e20f2ee'
+b2sums=('f0eef3817c8d263ef258435da0a5e951a490d139be1e0d9172505d8fbb17fa350910cb71ac0ba15e36eb6f90c0073e584acb41a452c6adb3243d1c7329d79eba'
         'ecd31b50393dbbf23b5f33d16d11573200ce28fd818b99e3f54f269287c505b724fc55f0135809c679629842448b29f7986bed309baa6193aaf1211f144171b4'
         'SKIP')
 
