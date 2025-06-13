@@ -1,0 +1,23 @@
+pkgbase = gtkwave-gtk2-git
+	pkgdesc = GTKWave is a fully featured GTK+ based wave viewer for Unix and Win32 which reads LXT, LXT2, VZT, FST, and GHW files as well as standard Verilog VCD/EVCD files and allows their viewing
+	pkgver = 3.3.116
+	pkgrel = 1
+	url = https://github.com/gtkwave/gtkwave
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = gtk2
+	makedepends = pkg-config
+	makedepends = gperf
+	depends = gtk2
+	depends = bzip2
+	depends = judy
+	provides = gtkwave
+	conflicts = gtkwave
+	conflicts = gtkwave-git
+	source = git+https://github.com/gtkwave/gtkwave.git#tag=v3.3.116
+	sha256sums = SKIP
+
+pkgname = gtkwave-gtk2-git
