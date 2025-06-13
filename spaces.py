@@ -1,7 +1,9 @@
 
 import sqlite3
 import argparse
+import subprocess
 
+import time  # Make sure to import time if you're using it
 from rich.console import Console
 from rich.table import Table
 import random
@@ -206,7 +208,7 @@ class Spaces:
         ################################################################## VMS
 
 
-    def run_i3(app_list):
+    def run_i3(self , app_list):
         for app in app_list:
             # Switch to the desired workspace
             subprocess.run(f'i3-msg "workspace {app[3]}"', shell=True)
