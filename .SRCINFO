@@ -1,6 +1,6 @@
 pkgbase = nerdshade
 	pkgdesc = hyprsunset client to smoothly transition color temperature during sunrise/sunset
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/sstark/nerdshade
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nerdshade
 	makedepends = go>=1.24
 	depends = hyprsunset
 	depends = hyprland
-	source = nerdshade-1.2.0.tar.gz::https://github.com/sstark/nerdshade/archive/refs/tags/rel-1.2.0.tar.gz
-	sha256sums = 6e68f5f088e764ea8fe41225724057823b27230f5a5e96505233a1f2a65f0750
+	source = nerdshade-1.3.0.tar.gz::https://github.com/sstark/nerdshade/archive/refs/tags/rel-1.3.0.tar.gz
+	sha256sums = 7f1989086cc5f8bfc4699dbec73e34c2b8575331c07f6f89ad7c9b88dff25d1c
 
 pkgname = nerdshade

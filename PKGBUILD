@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Stark <sstark+aur@mailbox.org>
 pkgname=nerdshade
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="hyprsunset client to smoothly transition color temperature during sunrise/sunset"
 arch=("x86_64")
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('hyprsunset' 'hyprland')
 makedepends=('git' 'go>=1.24')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sstark/nerdshade/archive/refs/tags/rel-$pkgver.tar.gz")
-sha256sums=('6e68f5f088e764ea8fe41225724057823b27230f5a5e96505233a1f2a65f0750')
-_commit=("f5f05d651b7b453229a7234e0c0a27e70232d9c3")
+sha256sums=('7f1989086cc5f8bfc4699dbec73e34c2b8575331c07f6f89ad7c9b88dff25d1c')
+_commit=("a6536e98048d2a21778b645eb534473eda803e08")
 
 build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
