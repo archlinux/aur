@@ -1,6 +1,6 @@
 pkgbase = python-google-cloud-translate
 	pkgdesc = Google Cloud Translation API client library
-	pkgver = 3.20.2
+	pkgver = 3.20.3
 	pkgrel = 1
 	url = https://pypi.org/project/google-cloud-translate/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-google-cloud-translate
 	depends = python-grpc-google-iam-v1
 	depends = python-proto-plus
 	depends = python-protobuf
-	source = https://files.pythonhosted.org/packages/source/g/google_cloud_translate/google_cloud_translate-3.20.2.tar.gz
-	sha256sums = b54384ee55f4bc5d966cee0e10b0814ffee1375c1f2af70b9220d3bcf58d85f8
+	source = https://files.pythonhosted.org/packages/source/g/google_cloud_translate/google_cloud_translate-3.20.3.tar.gz
+	sha256sums = 6d3654c7f8773bfcad75d84190f75ba9eeaf269e63e0bfb73c3f10ad5511e4fb
 
 pkgname = python-google-cloud-translate
