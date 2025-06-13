@@ -1,0 +1,16 @@
+pkgbase = gnustep-pdfkit
+	pkgdesc = GNUstep PDF rendering framework based on xpdf
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://gap.nongnu.org/pdfkit/
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = gcc-objc
+	makedepends = gnustep-make
+	depends = freetype2
+	depends = gnustep-base
+	depends = gnustep-gui
+	source = http://savannah.nongnu.org/download/gap/PDFKit-1.2.0.tar.gz
+	md5sums = d6326e4c8685c4e4c0a4b7980f2a712d
+
+pkgname = gnustep-pdfkit
