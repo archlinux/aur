@@ -1,7 +1,7 @@
 pkgname=10play
 _pkgname=10Play
 pkgver=1.0.2.aurpatch
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial 10 Play desktop app."
 arch=('x86_64' 'arm7h' 'aarch64')
 url="https://gitlab.com/linuxbombay/10play"
@@ -22,6 +22,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
+    ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
     ln -s "/opt/$_pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
