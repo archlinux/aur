@@ -1,6 +1,6 @@
 pkgbase = svg2tikz-git
 	pkgdesc = Set of tools for converting SVG graphics to TikZ/PGF code.
-	pkgver = 3.3.2.r596.20250530.812279c
+	pkgver = 3.3.2+2.r598.20250610.cd2c37f
 	pkgrel = 1
 	url = http://xyz2tex.github.io/svg2tikz/
 	arch = any
@@ -29,10 +29,10 @@ pkgbase = svg2tikz-git
 	optdepends = inkscape: for using the inksape extension files.
 	optdepends = python-lxml>=4.9.2
 	optdepends = xclip
-	provides = inkscape-tikz=3.3.2.r596.20250530.812279c
-	provides = svg2tikz=3.3.2.r596.20250530.812279c
-	provides = svg2tikz-doc=3.3.2.r596.20250530.812279c
-	provides = python-svg2tikz=3.3.2.r596.20250530.812279c
+	provides = inkscape-tikz=3.3.2+2.r598.20250610.cd2c37f
+	provides = svg2tikz=3.3.2+2.r598.20250610.cd2c37f
+	provides = svg2tikz-doc=3.3.2+2.r598.20250610.cd2c37f
+	provides = python-svg2tikz=3.3.2+2.r598.20250610.cd2c37f
 	conflicts = inkscape-tikz
 	conflicts = svg2tikz
 	conflicts = svg2tikz-doc
