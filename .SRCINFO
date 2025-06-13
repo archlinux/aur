@@ -1,19 +1,22 @@
 pkgbase = pyglossary
-	pkgdesc = A tool for converting dictionary files aka glossaries with various formats for different dictionary applications
-	pkgver = 4.6.1
-	pkgrel = 2
+	pkgdesc = convert dictionary files/glossaries with various formats
+	pkgver = 5.0.10
+	pkgrel = 1
 	url = https://github.com/ilius/pyglossary
-	install = pyglossary.install
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-setuptools
-	depends = python>=3.9.0
+	depends = python
+	optdepends = python-tqdm
+	optdepends = gtk3
+	optdepends = python-pygments
+	optdepends = python-mistune
+	optdepends = python-yaml
 	optdepends = python-gobject: Gtk3-based interface
+	optdepends = python-beautifulsoup4: HTML parsing
 	optdepends = tix: Tkinter-based interface
 	optdepends = python-prompt_toolkit: interactive command-line interface
 	optdepends = python-lxml: Many optional flags and formats
-	optdepends = python-beautifulsoup4: HTML parsing
-	optdepends = python-yaml: Reading from cc-kedict
 	optdepends = python-pyicu: Reading or writing Aard 2 (.slob) files
 	optdepends = python-marisa: Writing to Kobo E-Reader Dictionary
 	optdepends = python-lzo: Required for some MDX glossaries
@@ -22,8 +25,7 @@ pkgbase = pyglossary
 	optdepends = gtk4: Required for the new Gtk4-based interface
 	optdepends = python-psutil: Required to show memory usage
 	optdepends = python-polib: Required for gettext support
-	provides = pyglossary=4.6.1
-	source = pyglossary-4.6.1.tar.gz::https://github.com/ilius/pyglossary/archive/refs/tags/4.6.1.tar.gz
-	sha256sums = 1eb56bc7e670b5908ad0997ca5974bee11e717ee186fe19cc8d5c7fcecafead2
+	source = pyglossary-5.0.10.tar.gz::https://github.com/ilius/pyglossary/archive/refs/tags/5.0.10.tar.gz
+	sha256sums = 66a446b16c9606e0264c2e82123f2bfc51b068e08e9a6dd2d3f5738844bc3a4e
 
 pkgname = pyglossary

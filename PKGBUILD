@@ -1,22 +1,27 @@
-# Maintainer: Julian Maingot <sikmir@gmail.com>
+# Maintainer: envolution
+# Contributor: Julian Maingot <sikmir@gmail.com>
 # Contributor: Nikolay Korotkiy <sikmir@gmail.com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=pyglossary
-pkgver=4.6.1
-pkgrel=2
-pkgdesc="A tool for converting dictionary files aka glossaries with various formats for different dictionary applications"
+pkgver=5.0.10
+pkgrel=1
+pkgdesc="convert dictionary files/glossaries with various formats"
 arch=(any)
 url="https://github.com/ilius/pyglossary"
-license=('GPL3')
-# TODO add python-libzim if/when it exists
-depends=('python>=3.9.0')
+license=('GPL-3.0-or-later')
+depends=('python')
 optdepends=(
+  'python-tqdm'
+  'gtk3'
+  'python-pygments'
+  'python-mistune'
+  'python-yaml'
   'python-gobject: Gtk3-based interface'
+  'python-beautifulsoup4: HTML parsing'
   'tix: Tkinter-based interface'
   'python-prompt_toolkit: interactive command-line interface'
   'python-lxml: Many optional flags and formats'
-  'python-beautifulsoup4: HTML parsing'
-  'python-yaml: Reading from cc-kedict'
   'python-pyicu: Reading or writing Aard 2 (.slob) files'
   'python-marisa: Writing to Kobo E-Reader Dictionary'
   'python-lzo: Required for some MDX glossaries'
@@ -27,16 +32,13 @@ optdepends=(
   'python-polib: Required for gettext support'
 )
 makedepends=('python-setuptools')
-provides=("${pkgname}=${pkgver}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ilius/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('1eb56bc7e670b5908ad0997ca5974bee11e717ee186fe19cc8d5c7fcecafead2')
+sha256sums=('66a446b16c9606e0264c2e82123f2bfc51b068e08e9a6dd2d3f5738844bc3a4e')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
   cp config.json $pkgdir/usr/share/pyglossary
 }
-
-install=pyglossary.install
 
 # vim:set ts=2 sw=2 et:

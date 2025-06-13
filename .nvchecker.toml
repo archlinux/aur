@@ -1,0 +1,4 @@
+[pyglossary]
+source = 'github'
+github = 'ilius/pyglossary'
+use_latest_release = true
