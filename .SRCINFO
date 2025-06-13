@@ -1,15 +1,14 @@
 pkgbase = fortune-mod-es
 	pkgdesc = Fortune Cookies in Spanish, from the Debian project
 	pkgver = 1.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://packages.debian.org/source/sid/fortunes-es
 	arch = any
 	groups = fortune-mods
 	license = custom
 	makedepends = recode
 	depends = fortune-mod
-	source = http://ftp.es.debian.org/debian/pool/main/f/fortunes-es/fortunes-es_1.36.tar.xz
-	md5sums = 3731218d800e18022349df6a3ef66cd4
+	source = http://ftp.es.debian.org/debian/pool/main/f/fortunes-es/fortunes-es_1.36+nmu1.tar.xz
+	md5sums = 64489a8fdb1a50f63d1e679df483fe61
 
 pkgname = fortune-mod-es
-
