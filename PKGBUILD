@@ -12,7 +12,7 @@ license=('MIT')
 depends=()
 conflicts=()
 provides=("nvtx3")
-makedepends=('boost' 'cmake' 'git')
+makedepends=('cmake' 'git')
 source=(${pkgname}::git+https://github.com/NVIDIA/NVTX.git#tag=v${pkgver})
 md5sums=('SKIP')
 
