@@ -1,7 +1,7 @@
 pkgbase = aur-sync-vote
 	pkgdesc = Automates voting on installed and uninstalled AUR packages
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hengtseChou/aur-sync-vote
 	arch = any
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = aur-sync-vote
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python
 	depends = python-beautifulsoup4
 	depends = python-html5lib
 	depends = python-requests
