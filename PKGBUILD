@@ -3,14 +3,13 @@
 # Contributor: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
 license=('GPL-3.0-only' 'MIT')
-makedepends=('git' 'cmake' 'ninja' 'qt6-tools' 'clang' 'vulkan-headers')
-depends=('qt6-base' 'qt6-webengine' 'qt6-declarative' 'qt6-svg' 'libzip' 'protobuf' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'mcpelauncher-linux' 'zlib' 'curl' 'glibc' 'qt6-webchannel' 'gcc-libs' 'openssl'
-	 'hicolor-icon-theme' 'abseil-cpp')
+makedepends=('git' 'cmake' 'ninja' 'qt6-tools' 'clang' 'vulkan-headers' 'qt6-svg' 'libxinerama')
+depends=('qt6-base' 'qt6-webengine' 'qt6-declarative' 'libzip' 'protobuf' 'mcpelauncher-linux' 'zlib' 'curl' 'glibc' 'qt6-webchannel' 'gcc-libs' 'openssl' 'hicolor-icon-theme')
 optdepends=('mcpelauncher-msa-ui-qt: Microsoft authentication for version before 1.16.1X')
 _commit=1eaf570482161715a1d71a2a2541ca27087bc8ac # qt6 branch
 source=(
