@@ -1,5 +1,5 @@
 pkgbase = libelectron
-	pkgdesc = A collection of npm dependencies for electron packages.
+	pkgdesc = A meta package for electron and electron dependencies.
 	pkgver = 2025.5
 	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/libelectron/libelectron
