@@ -1,5 +1,5 @@
 pkgbase = trezord-runit-git
-	pkgdesc = trezord-runit service
+	pkgdesc = trezord-runit runit service
 	pkgver = r7.f9565f4
 	pkgrel = 1
 	url = https://codeberg.org/sripwoud/trezord-runit

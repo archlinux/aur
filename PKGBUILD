@@ -1,7 +1,7 @@
 # Maintainer: sripwoud <me@sripwoud.xyz>
 _pkgname=trezord-runit
 pkgname="${_pkgname}-git"
-pkgdesc="${_pkgname} service"
+pkgdesc="Runit service for Trezor Communication Daemon (aka Trezor Bridge)"
 url="https://codeberg.org/sripwoud/${_pkgname}"
 arch=('any')
 depends=('runit' 'trezor-bridge-bin')
