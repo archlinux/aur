@@ -1,12 +1,12 @@
 pkgbase = ipatool
 	pkgdesc = Command-line tool that allows searching and downloading app packages (known as ipa files) from the iOS App Store
-	pkgver = 2.1.6
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/majd/ipatool
 	arch = any
-	license = MIT
+	license = x86_64
 	makedepends = go
-	source = ipatool-2.1.6.tar.gz::https://github.com/majd/ipatool/archive/v2.1.6.tar.gz
-	sha256sums = 7527e6896185c10a8c009124e1d3c62276ebf06915701f90b123afcffd03d480
+	source = ipatool-2.2.0.tar.gz::https://github.com/majd/ipatool/archive/v2.2.0.tar.gz
+	sha256sums = 676cd6bd039c25fe649a35ea86977706c0818442624da87c7f4285257cc7aa12
 
 pkgname = ipatool
