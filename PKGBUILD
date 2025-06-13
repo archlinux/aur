@@ -1,8 +1,8 @@
 # Maintainer: levinion <levinnion@gmail.com>
 pkgname=stor
 pkgver=0.1.1
-pkgrel=1
-pkgdesc="Stor is an alternative to GNU Stow written in rust."
+pkgrel=2
+pkgdesc="An alternative to GNU Stow written in rust."
 url="https://github.com/levinion/stor"
 arch=("any")
 license=("GPLv3")
@@ -14,6 +14,11 @@ source=(
   "$pkgname::git+https://github.com/levinion/$pkgname.git"
 )
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  cargo pkgid | cut -d '#' -f2
+}
 
 build() {
   cd "$srcdir/$pkgname"
