@@ -5,7 +5,7 @@
 _pkgname=code
 pkgname=code-git
 pkgdesc='OSS version of Visual Studio Code editor'
-pkgver=1.101.0.r134042.g7cc3d44323c
+pkgver=1.102.0.r134325.g5547eb94df1
 pkgrel=1
 arch=('x86_64')
 _vscode_arch=x64 # https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/PKGBUILD
@@ -16,14 +16,14 @@ _electron=electron
 depends=( $_electron ripgrep xdg-utils
 libsecret libxkbfile )
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=( nodejs-lts-iron # not matching with .nvmrc
+makedepends=( nodejs-lts-iron # see .nvmrc
 git npm pnpm python desktop-file-utils libarchive)
 conflicts=(code vscode)
 provides=(code vscode)
 options=(!strip) # for sign of ext
 source=(vscode::"git+https://github.com/microsoft/vscode.git"
 'https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/'{code.sh,code.mjs,clipath.patch,product_json.diff})
-sha512sums=('SKIP'{,,,,}) # should we have cksums ?
+sha256sums=('SKIP'{,,,,}) # should we have cksums ?
 
 pkgver() {
     cd "${srcdir}/vscode"
@@ -42,7 +42,6 @@ prepare() {
   
   # electron version
   _electronver=$(npm pkg get devDependencies.electron)
-  echo Warning: using incorrect version of nodejs by some reason.
   echo Replacing $_electronver
   _electronver=$(cat /usr/lib/${_electron}/version)
   npm pkg set devDependencies.electron=${_electronver} # unneeded ?
@@ -86,11 +85,19 @@ prepare() {
 
 build() {
   cd vscode
-  # Put a zip to skip downloading electron
+  # Don't DL ripgrep
+  export TMPDIR="$srcdir"/tmp
+  _vsrgver=$(npm pkg get dependencies.@vscode/ripgrep | sed 's/[\"^]//g')
+  _rgver=13.0.0-13
+  mkdir -p "$TMPDIR"/vscode-ripgrep-cache-$_vsrgver
+  bsdtar -czf "$TMPDIR"/vscode-ripgrep-cache-${_vsrgver}/ripgrep-v${_vsrgver}-x86_64-unknown-linux-musl.tar.gz -C /usr/bin rg
+  # actual binary seems needed
+  ln -sf "$TMPDIR"/vscode-ripgrep-cache-${_vsrgver}/ripgrep-v{${_vsrgver},${_rgver}}-x86_64-unknown-linux-musl.tar.gz
+  # Don't DL Electron
   export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home # Don't taint user dir
-  local _cache_dir="$XDG_CACHE_HOME"/electron/$(echo -n "https://github.com/electron/electron/releases/download/v${_electronver}" | sha256sum | cut -d ' ' -f 1)
+  _cache_dir="$XDG_CACHE_HOME"/electron/$(echo -n "https://github.com/electron/electron/releases/download/v${_electronver}" | sha256sum | cut -d ' ' -f 1)
   mkdir -p "$_cache_dir"
-  local _zip="electron-v${_electronver}-linux-${_electron_arch}.zip"
+  _zip="electron-v${_electronver}-linux-${_electron_arch}.zip"
   bsdtar --format zip -cf "${_cache_dir}/${_zip}" /dev/null 2> /dev/null
   echo "$(sha256sum "$_cache_dir/$_zip" | cut -d " " -f 1) *$_zip" > build/checksums/electron.txt
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
