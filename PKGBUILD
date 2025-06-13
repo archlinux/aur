@@ -1,7 +1,7 @@
 # Maintainer: Raiku <rikunn.rikunn@proton.me>
 pkgname=wl-neco
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 url="https://github.com/gitRaiku/neco"
 pkgdesc="A wayland bouncing neco"
 arch=(any)

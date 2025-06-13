@@ -1,7 +1,7 @@
 pkgbase = wl-neco
 	pkgdesc = A wayland bouncing neco
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gitRaiku/neco
 	arch = any
 	license = GPL-3.0
