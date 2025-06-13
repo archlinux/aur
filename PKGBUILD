@@ -15,7 +15,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   
   # Install dependencies
-  npm install --production
+  npm install
   
   # Build the application
   npm run transpile:electron
