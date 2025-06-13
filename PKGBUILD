@@ -6,7 +6,7 @@ pkgdesc="Unofficial 7Plus desktop application."
 arch=('x86_64' 'arm7h' 'aarch64')
 url="https://gitlab.com/linuxbombay/7plus"
 license=('GPL')
-depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
+depends=('libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
 sha256sums=('1542a1a791fe4653e3ea04d1658692d2f535d8ac18e548976a74e8d3637e2355')
