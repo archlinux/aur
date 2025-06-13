@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=postybirb-git
 _pkgname=PostyBirb
-pkgver=4.0.1.r40.g6b71908
+pkgver=4.0.2.r4.g9a9408d
 _electronversion=32
 _nodeversion=22
 pkgrel=1
@@ -45,6 +45,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname//-/.}"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -53,8 +54,12 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname//-/.}"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -78,19 +83,18 @@ prepare() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/\/packages//g" electron-builder.yml
-    NODE_ENV=development    yarn add -D node-addon-api node-gyp
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --prefer-offline
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run build:prod
-    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.yml
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/packaging-resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
