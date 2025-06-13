@@ -1,12 +1,12 @@
 pkgname=abciview
 _pkgname=ABCiview
 pkgver=1.0.2.aurpatch
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial ABC iview desktop application."
 arch=('x86_64' 'arm7h' 'aarch64')
 url="https://gitlab.com/linuxbombay/abciview"
 license=('GPL')
-depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
+depends=('libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
 sha256sums=('24cae17fc4d705768eec362501b3361c8fa577e5d696d867a9c80a4d1190ce12')
@@ -22,6 +22,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
+    ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
     ln -s "/opt/$_pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
