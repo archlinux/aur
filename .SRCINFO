@@ -1,0 +1,22 @@
+pkgbase = echolab-git
+	pkgdesc = A video player designed for language learners, helping users learn foreign languages efficiently through sentence-by-sentence intensive listening.(Use system-wide electron)
+	pkgver = 0.2.0.alpha.2.r5.g2e62c9a
+	pkgrel = 1
+	url = https://github.com/mkdir700/echolab
+	arch = any
+	license = Apache-2.0
+	makedepends = pnpm
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron35
+	provides = echolab=0.2.0.alpha.2
+	conflicts = echolab
+	source = echolab.git::git+https://github.com/mkdir700/echolab.git
+	source = echolab.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = echolab-git
