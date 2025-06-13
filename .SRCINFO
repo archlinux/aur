@@ -1,0 +1,16 @@
+pkgbase = nvtx3
+	pkgdesc = NVIDIA Tools Extension (NVTX) library for C++ applications
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://github.com/NVIDIA/NVTX.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	provides = nvtx3
+	source = nvtx3::git+https://github.com/NVIDIA/NVTX.git#tag=v3.2.1
+	md5sums = SKIP
+
+pkgname = nvtx3
