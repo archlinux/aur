@@ -1,7 +1,7 @@
 # Maintainer: Didrole <Didrole@gmail.com>
 
 pkgname='hostd'
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='An advanced host solution, designed to enhance the experience for storage providers within the Sia network.'
 arch=('x86_64' 'aarch64')
@@ -11,14 +11,14 @@ url='https://sia.tech/software/hostd'
 license=('MIT')
 install='hostd.install'
 backup=('etc/hostd/hostd.yml')
-_tag='781d52c82cc635c63469a133f0f288c4c0d8816d'
+_tag='d28fa3fabf7cd07503e843712c098ba58aed0134'
 source=("git+https://github.com/SiaFoundation/hostd.git#tag=${_tag}"
         "hostd.sysusers"
         "hostd.tmpfiles"
         "hostd.service"
         "hostd.install"
         "hostd.yml")
-sha256sums=('bf15d444497591c0a4ec9ec8985109898039618ae0c8d8b8312708f19f975815'
+sha256sums=('6468a3db4ec783805ac8630a2133309292fc0e0b96d5e42fb95a6c36b5ffb58b'
             'd65ccb7decc6b266a64f51ab30d43912a6d8dcdc3aa67ccd703ee3d187f16c74'
             '14cdb76c39de37037b712a051e81b231164be6a1a1a021b1a2d0da490fb048eb'
             'a3237f0859becc05bf30809dc8dcac198fea22d893c38ba9514bd50e558b4bc9'
