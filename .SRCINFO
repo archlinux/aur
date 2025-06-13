@@ -11,7 +11,7 @@ pkgbase = stork-agent
 	makedepends = tar
 	makedepends = unzip
 	makedepends = wget
-	backup = etc/stork
+	backup = etc/stork/agent.env
 	source = https://downloads.isc.org/isc/stork/2.2.0/stork-2.2.0.tar.gz
 	sha512sums = 1784accc9cc7351b3b446c0be41619800fdcb2d03942c7703263a1382fceb3dab4ffc88304771abcaa922d01052ce86ed3e630ad13e26e4a68572097fb3b312f
 
