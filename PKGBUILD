@@ -14,7 +14,7 @@ optdepends=(
 provides=('tonkeeper')
 conflicts=('tonkeeper')
 options=(!debug)
-_repo_url=https://github.com/tonkeeper/tonkeeper-web/releases/download;
+_repo_url=https://github.com/tonkeeper/tonkeeper-web/releases/download
 source_x86_64=(
     "tonkeeper_${pkgver}_x86_64.deb::${_repo_url}/v${pkgver}/tonkeeper_${pkgver}_amd64.deb"
 )
@@ -26,8 +26,8 @@ sha256sums_x86_64=('e2c7619229148b0c5534b5edc41c2e1e00fe25c14b10321dd67cb7fbe7b9
 sha256sums_aarch64=('5f08ee386dfa823d05ae0d31ad52e436036c88dc3874af424125def0acdcdfd9')
 
 prepare() {
-	mkdir -p out
-	bsdtar -O -xf tonkeeper_${pkgver}_${CARCH}.deb data.tar.xz | bsdtar -C out -xJf -
+    mkdir -p out
+    bsdtar -O -xf tonkeeper_${pkgver}_${CARCH}.deb data.tar.xz | bsdtar -C out -xJf -
 }
 
 package() {
