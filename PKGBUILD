@@ -22,8 +22,8 @@ source=("https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/${
 source_aarch64=("${pkgver}-aarch64.img::https://downloads.cursor.com/production/${_commit}/linux/arm64/Cursor-${pkgver}-aarch64.AppImage")
 source_x86_64=("${pkgver}-x86_64.img::https://downloads.cursor.com/production/${_commit}/linux/x64/Cursor-${pkgver}-x86_64.AppImage")
 sha512sums=('937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37')
-sha512sums_aarch64=('d54dd8396f2589d9466261e339615a1cdf699b481cbc558d8d50361cf11661c6cdeb0ff3da70da2e98ef4189934a31c344953a9508b78a837edc25a92fff3c80')
-sha512sums_x86_64=('44220bf0dd2889c6353b2a65c63703edb6980a93710a937fcd49136774193325b98af67b55a854a248e564c3cdd9974f55026a6b00e9e194bcebab112672377b')
+sha512sums_aarch64=('68849918fcc4d9ba37b8ab21065a9f00aa0ea30264ec70c3938ccaba6c9d918340a42d6dc7238edbee7fca077fc0881a6b6d2d70576c35304682354cb794c065')
+sha512sums_x86_64=('c10b4b32b984ca260aed03f8a1f426c35d8763b0d3a878679c1c1ab9a0471e3447488bdaec5b072b2968f3149708c4f47d0947ee5ab7696ad9b1954aa99dada6')
 options=(!strip) # for ext?
 prepare() { # Create cp -r friendly layout with FHS
 	sed -e "s|code-flags|cursor-flags|" -e "s|lib/code|lib/cursor|" -e "s|/usr/lib/code/code.mjs|--app=/usr/lib/cursor|" code.sh > run.sh
