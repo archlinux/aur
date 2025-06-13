@@ -1,6 +1,6 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 pkgname=bookman-cockpit
-pkgver=1.16.2
+pkgver=1.17.3
 pkgrel=1
 options=(!strip)
 pkgdesc="Bookman Cockpit"
@@ -11,18 +11,18 @@ depends=('java-environment=21' 'java21-openjfx' 'ttf-liberation')
 makedepends=('jdk17-openjdk' 'unzip')
 # the bit.ly link looks suspicious, but that's what they use on their website.
 # Also the download is not versioned, so this will eventuelly break due to integrity checks failing.
-source=("installer-${pkgver}.exe::https://cockpit.bookman-gmbh.de/api/java/update/newest/WINDOWS/file"
+source=("${pkgname}-${pkgver}.zip::https://bit.ly/3smjJRP"
         "https://maven.ej-technologies.com/repository/com/install4j/install4j-runtime/9.0.7/install4j-runtime-9.0.7.jar"
         "OperatingSystemUtil.java"
         "logback.xml"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('6308118dfe0c314a519924eac944d13a05696e52075e81a5b99f7b0bdd38fd23'
+sha256sums=('77547edd92e9a5ac66a3132a50020ead085a08bf3d5afc75ad138b2b0916a541'
             '5a0bd9ca7d0632eec36d9f3b4980741f70e47511ee070c1da6c7c778ed058106'
             'f2a742dabb4f1ac32867c3ba152355695220e4bd4a7ba032de98e3c5d2ed3309'
             'ef6cf40ff0a46853f2d5308c884e17328a6a36009f5697d5914bfbb720cac261'
             '32db57235ad25fadb8b2a4a02f7618c7a51df33b50df780613f06cb33fb977e3'
-            'ea33865658911fcafb54d9898f4823d854bddc9877ba14f59b7534c7eed93970')
+            '69cc61018f38cc8389f3c6649059e3452113f6df6e327a9f61d1aaede7fbb808')
 
 build() {
     export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
