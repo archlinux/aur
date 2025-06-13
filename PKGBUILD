@@ -5,11 +5,11 @@ pkgver=3.4.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/dftd4/dftd4"
-depends=('gcc-fortran'
-         'openblas'
+depends=('blas'
          'lapack')
 makedepends=('meson'
              'ninja'
+             'gcc-fortran'
              'asciidoctor')
 license=('LGPL3')
 pkgdesc="A Generally Applicable Atomic-Charge Dependent London Dispersion Correction"
