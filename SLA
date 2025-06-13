@@ -1,0 +1,149 @@
+MICRON TECHNOLOGY, INC. SOFTWARE LICENSE AGREEMENT
+
+PLEASE READ THIS LICENSE AGREEMENT ("AGREEMENT") FROM MICRON TECHNOLOGY, INC. 
+("MTI") 
+CAREFULLY: BY INSTALLING, COPYING OR OTHERWISE USING THE MICRON STORAGE 
+EXECUTIVE OR 
+MICRON STORAGE EXECUTIVE COMMAND LINE INTERFACE SOFTWARE AND ANY RELATED PRINTED 
+
+MATERIALS ("SOFTWARE"), YOU ARE ACCEPTING AND AGREEING TO THE TERMS OF THIS 
+AGREEMENT. 
+IF YOU DO NOT AGREE WITH THE TERMS OF THIS AGREEMENT, DO NOT INSTALL THE 
+SOFTWARE.
+
+LICENSE: MTI hereby grants to you the following rights: You may use the Software 
+for management 
+and/or analysis of Micron solid state storage products subject to the terms of 
+this Agreement. You must 
+maintain all copyright notices on all copies of the Software. You agree not to 
+modify, adapt, decompile, 
+reverse engineer, disassemble, or otherwise translate the Software. MTI may make 
+changes to the 
+Software at any time without notice to you. In addition, MTI is under no 
+obligation whatsoever to 
+update, maintain, or provide new versions or other support for the Software.
+
+OWNERSHIP OF MATERIALS: You acknowledge and agree that the Software and any 
+derivative works 
+thereof are proprietary property of MTI (and/or its licensors) and protected by 
+United States copyright 
+law and international treaty provisions. Except as expressly provided herein, 
+MTI does not grant any 
+express or implied right to you under any patents, copyrights, trademarks, or 
+trade secret information. 
+You further acknowledge and agree that all right, title, and interest in and to 
+the Software, including 
+associated proprietary rights, are and shall remain with MTI (and/or its 
+licensors). This Agreement does 
+not convey to you an interest in or to the Software, but only a limited right to 
+use and copy the Software 
+in accordance with the terms of this Agreement. The Software is licensed to you 
+and not sold.
+
+DISCLAIMER OF WARRANTY: THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY 
+KIND. 
+MTI, ON BEHALF OF ITSELF AND ITS LICENSORS, EXPRESSLY DISCLAIMS ALL WARRANTIES 
+EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO, NONINFRINGEMENT OF THIRD PARTY RIGHTS, 
+AND ANY 
+IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE. MTI 
+DOES 
+NOT WARRANT THAT THE SOFTWARE WILL MEET YOUR REQUIREMENTS, OR THAT THE OPERATION 
+OF 
+THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE. FURTHERMORE, MTI DOES NOT MAKE 
+ANY 
+REPRESENTATIONS REGARDING THE USE OR THE RESULTS OF THE USE OF THE SOFTWARE IN 
+TERMS OF 
+ITS CORRECTNESS, ACCURACY, RELIABILITY, OR OTHERWISE. THE ENTIRE RISK ARISING 
+OUT OF USE OR 
+PERFORMANCE OF THE SOFTWARE REMAINS WITH YOU. IN NO EVENT SHALL MTI, ITS 
+AFFILIATED 
+COMPANIES OR THEIR SUPPLIERS BE LIABLE FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL, 
+INCIDENTAL, 
+OR SPECIAL DAMAGES (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF PROFITS, 
+BUSINESS 
+INTERRUPTION, OR LOSS OF INFORMATION) ARISING OUT OF YOUR USE OF OR INABILITY TO 
+USE THE 
+SOFTWARE, EVEN IF MTI HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. 
+Because some 
+jurisdictions prohibit the exclusion or limitation of liability for
+consequential or incidental damages, the 
+above limitation may not apply to you.  
+
+During performance of this Agreement, the parties may disclose or furnish to 
+each other proprietary 
+marketing, technical, or business confidential information ("Confidential 
+Information"). Confidential 
+Information provided in tangible form shall be clearly marked as confidential. 
+Confidential Information 
+provided orally shall be considered confidential, if the disclosing party 
+identifies it as confidential at the 
+time of oral disclosure and summarizes such Confidential Information in a 
+writing to the receiving party 
+within thirty (30) days of the initial disclosure thereof. Regardless of any 
+markings or identification as 
+confidential, the parties agree that the Tools, and corresponding code and 
+documentation are 
+Confidential Information under this Agreement. 
+
+The receiving party shall: (i) hold Confidential Information in confidence using 
+the same degree of care 
+as it normally exercises to protect its own Confidential Information, but no 
+less than reasonable care; (ii)
+subject to and in accordance with the license grants herein, restrict disclosure 
+and use of Confidential 
+Information to employees, and as applicable end users on a need-to-know basis 
+and not disclose it to 
+any other parties; (iii) advise those employees and end users of their 
+obligations with respect to the 
+Confidential Information; (iv) not copy, duplicate, reverse engineer or 
+decompile Confidential 
+Information except as authorized herein; (v) use the Confidential Information 
+only in furtherance of 
+performance under this Agreement or as authorized under this Agreement; and (vi) 
+upon expiration or 
+termination of this Agreement, return all Confidential Information to the 
+disclosing party or at the 
+request of the disclosing party, destroy such Confidential Information. The 
+receiving party shall have no 
+obligation to keep Confidential Information that: (i) was previously known to it 
+free of any 
+confidentiality obligation; (ii) was independently developed by it; (iii) is or 
+becomes publicly available 
+other than by unauthorized disclosure; (iv) is disclosed to third parties by the 
+disclosing party without 
+restriction; or (v) is received from a third party without violation of any
+confidentiality obligation. If a 
+party is faced with legal action or a requirement under government regulations 
+to disclose or make 
+available Confidential Information received hereunder, such party shall 
+forthwith notify the disclosing 
+party and, upon request of the latter, cooperate in contesting such action or 
+requirement at the 
+disclosing party's expense. 
+
+The disclosing party makes no warranty as to the accuracy of any Confidential 
+Information, which 
+Confidential Information is furnished "AS IS" with all faults. In no event shall 
+either party be liable for the 
+accuracy or completeness of the Confidential Information. Each party agrees that 
+for a period of five (5) 
+years from the date of disclosure it shall not disclose Confidential Information 
+received from the 
+disclosing party to any third party, and shall use such Confidential Information 
+solely for the purpose 
+stated herein.  Notwithstanding the foregoing, any information which is a trade 
+secret or source code 
+shall remain confidential in perpetuity and Licensee shall not disclose it to 
+any third party without the
+express written consent of MTI. 
+
+This Agreement constitutes the entire agreement between MTI and you regarding 
+the subject matter 
+hereof and supersedes all previous oral or written communications between the 
+parties. This 
+Agreement shall be governed by the laws of the State of Idaho without regard to 
+its conflict of laws rules.
+By proceeding with the installation of the Software, you agree to the terms of 
+this Agreement. You must 
+agree to the terms in order to install and use the Software.
