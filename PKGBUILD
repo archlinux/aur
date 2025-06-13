@@ -1,6 +1,6 @@
 # Maintainer: Root-Core <aur at root-core dot net>
 pkgname=easylpac
-pkgver=0.7.7.2
+pkgver=0.7.8.3
 pkgrel=1
 pkgdesc="lpac GUI Frontend"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("easylpac")
 source=(
   easylpac-$pkgver.tar.gz::https://github.com/creamlike1024/EasyLPAC/archive/refs/tags/$pkgver.tar.gz
 )
-sha256sums=('55b602750b7cced00a753c721ad898a88264ff3ddfeff48f80538632c303f019')
+sha256sums=('cbfc36591724a6445203d27240b59ea93ac7a0de3915609637cc8c5484abaaf2')
 
 build() {
   cd $srcdir/EasyLPAC-$pkgver
