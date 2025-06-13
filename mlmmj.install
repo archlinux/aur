@@ -2,10 +2,10 @@
 
 post_install() {
   cat <<EOF
-# Please notice that some of the contributed programs found in
-# /usr/share/doc/mlmmj/contrib/* may have different licensings
-# than the mlmmj suite proper.
-#     ~kseistrup
+»  Please notice that some of the contributed programs found in
+»  /usr/share/doc/mlmmj/contrib/* may have different licensings
+»  than the mlmmj suite proper.
+»     ~kseistrup
 EOF
 }
 

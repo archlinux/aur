@@ -1,7 +1,7 @@
 pkgbase = mlmmj
 	pkgdesc = Simple and slim mailing list manager (MLM) inspired by ezmlm
-	pkgver = 1.5.2
-	pkgrel = 1
+	pkgver = 1.6.0
+	pkgrel = 0
 	url = https://codeberg.org/mlmmj/mlmmj
 	install = mlmmj.install
 	arch = aarch64
@@ -14,13 +14,13 @@ pkgbase = mlmmj
 	depends = smtp-server
 	optdepends = perl: for running some of the contributed scripts
 	optdepends = python: for running some of the contributed scripts
-	source = https://codeberg.org/mlmmj/mlmmj/releases/download/RELEASE_1.5.2/mlmmj-1.5.2.tar.xz
+	source = https://codeberg.org/mlmmj/mlmmj/releases/download/RELEASE_1.6.0/mlmmj-1.6.0.tar.xz
 	source = sysuser.conf
 	source = tmpfile.conf
-	sha256sums = 898f56ee9b8363f75b15681fcc6feb7879e449f50c334ea9e432d3a73d07cb98
+	sha256sums = 5442cb9d46b925593831743668f47a0b44c1c8a6bd6dc80ba582f435369a3b4a
 	sha256sums = SKIP
 	sha256sums = SKIP
-	b2sums = 905782fbbbc82993124cd0ebd6f99b5683c743e6053ddfcf6bdab7f601a7a2737a2dad2c7ad2b36a7a31201a8a4bd4066a57b7feceac739b5bec9b8840a13a49
+	b2sums = 247018d16ef82c96ead6d381e5dfc7bac18daf4286f567a37715ab6beeff7f8587f740438228f25012952af18ccd30d6b03884849cce92116d380bac5f000f67
 	b2sums = SKIP
 	b2sums = SKIP
 

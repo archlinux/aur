@@ -6,13 +6,13 @@
 # Contributor: Uffe Jakobsen <uffe at uffe dot org>
 
 pkgname='mlmmj'
-pkgver=1.5.2
-pkgrel=1
+pkgver=1.6.0
+pkgrel=0
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 depends=('bash' 'glibc' 'smtp-server')
 optdepends=(
-  'perl: for running some of the contributed scripts'
-  'python: for running some of the contributed scripts'
+  'perl:	for running some of the contributed scripts'
+  'python:	for running some of the contributed scripts'
 )
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 #url='http://mlmmj.org/'
@@ -56,11 +56,11 @@ package() {
 }
 
 sha256sums=(
-  '898f56ee9b8363f75b15681fcc6feb7879e449f50c334ea9e432d3a73d07cb98'
+  '5442cb9d46b925593831743668f47a0b44c1c8a6bd6dc80ba582f435369a3b4a'
   'SKIP' 'SKIP'  # Skip to my lou
 )
 b2sums=(
-  '905782fbbbc82993124cd0ebd6f99b5683c743e6053ddfcf6bdab7f601a7a2737a2dad2c7ad2b36a7a31201a8a4bd4066a57b7feceac739b5bec9b8840a13a49'
+  '247018d16ef82c96ead6d381e5dfc7bac18daf4286f567a37715ab6beeff7f8587f740438228f25012952af18ccd30d6b03884849cce92116d380bac5f000f67'
   'SKIP' 'SKIP'  # Skip to my lou
 )
 
