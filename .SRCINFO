@@ -1,7 +1,7 @@
 pkgbase = readest
 	pkgdesc = Modern, feature-rich ebook reader designed for avid readers offering seamless cross-platform access, powerful tools, and an intuitive interface
 	pkgver = 0.9.55
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/readest/readest
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,7 @@ pkgbase = readest
 	makedepends = openssl
 	makedepends = librsvg
 	makedepends = pnpm
+	makedepends = npm
 	makedepends = nodejs
 	makedepends = rust
 	depends = cairo

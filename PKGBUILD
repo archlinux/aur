@@ -4,7 +4,7 @@
 pkgname=readest
 _Packagename=Readest
 pkgver=0.9.55
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern, feature-rich ebook reader designed for avid readers offering seamless cross-platform access, powerful tools, and an intuitive interface"
 arch=('x86_64' 'aarch64' 'i686')
 url='https://github.com/readest/readest'
@@ -24,7 +24,7 @@ depends=(
   'webkit2gtk-4.1'
   'gst-plugins-good'
 )
-makedepends=('git' 'openssl' 'librsvg' 'pnpm' 'nodejs' 'rust')
+makedepends=('git' 'openssl' 'librsvg' 'pnpm' 'npm' 'nodejs' 'rust')
 conflicts=('readest-bin' 'readest-deb' 'readest-git')
 source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
