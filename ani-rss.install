@@ -1,8 +1,22 @@
 PKGNAME=ani-rss
 USER=$PKGNAME
 
+migrate_from_v1() {
+  echo "coping '/var/lib/${PKGNAME}/config/ani.json' to '/var/lib/${PKGNAME}/config/ani.v2.json'"
+  cp "/var/lib/${PKGNAME}/config/ani.json" "/var/lib/${PKGNAME}/config/ani.v2.json"
+
+  echo "coping '/var/lib/${PKGNAME}/config/config.json' to '/var/lib/${PKGNAME}/config/config.v2.json'"
+  cp "/var/lib/${PKGNAME}/config/config.json" "/var/lib/${PKGNAME}/config/config.v2.json"
+
+  echo "replacing with 's|backRssList|standbyRssList|g' in '/var/lib/${PKGNAME}/config/ani.v2.json'"
+  sed 's|backRssList|standbyRssList|g' -i "/var/lib/${PKGNAME}/config/ani.v2.json"
+
+  echo "unlinking '/etc/${PKGNAME}/config.json'"
+  unlink "/etc/${PKGNAME}/config.json"
+}
+
 link_config() {
-  ln -f "/var/lib/${PKGNAME}/config/config.json" "/etc/${PKGNAME}/config.json"
+  ln -f "/var/lib/${PKGNAME}/config/config.v2.json" "/etc/${PKGNAME}/config.v2.json"
 }
 link_log() {
   ln -sf "/var/log/${PKGNAME}" "/var/lib/${PKGNAME}/config/logs"
@@ -23,6 +37,7 @@ post_install() {
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
+  migrate_from_v1
   link_config
   link_log
 }
