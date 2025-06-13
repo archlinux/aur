@@ -4,7 +4,7 @@ _pkgname=Creamplayer
 pkgver=5.2.2
 _electronversion=33
 _nodeversion=22
-pkgrel=2
+pkgrel=3
 pkgdesc="🎵 QQ Netease Music Downloader.(Use system-wide electron)网易云播放/下载器,QQ音乐批量下载工具."
 arch=('any')
 url="https://github.com/Beadd/Creamplayer"
@@ -86,14 +86,15 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     local electronDist="/usr/lib/electron${_electronversion}"
-    sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+    sed -i "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
     {\\
         name: \"@electron-forge/plugin-local-electron\",\\
         config: {\\
-            electronPath: \"${electronDist}\"\\
-        }\\
-    }," forge.config.cjs
+            electronPath: \'${electronDist}\',\\
+        },\\
+    }," forge.config.*
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm run package
 }
