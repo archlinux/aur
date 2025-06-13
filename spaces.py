@@ -205,9 +205,20 @@ class Spaces:
 
         ################################################################## VMS
 
-    def run_i3(self ,app_list):
+
+    def run_i3(app_list):
         for app in app_list:
-            os.system( f'i3-msg "workspace {app[3]}; exec {app[2]}"')
+            # Switch to the desired workspace
+            subprocess.run(f'i3-msg "workspace {app[3]}"', shell=True)
+            
+            # Optional: Add a small delay to ensure the workspace switch is complete
+            time.sleep(0.1)  # Adjust the delay as needed
+
+            # Execute the application
+            subprocess.Popen(app[2], shell=True)
+
+            # Optional: Add a delay to allow the application to start
+            time.sleep(0.5)  # Adjust the delay as needed
 
         ################################################################### app info
     def app_info(self):
