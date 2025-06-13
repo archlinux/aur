@@ -1,17 +1,19 @@
-# Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
-# Contributor: Benjamin Abendroth <braph93@gmx.de>
+# Maintainer: Benjamin Abendroth <braph93@gmx.de>
+# Contributor: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 
 pkgname=nbfc-linux
-pkgver=0.2.7
+pkgver=0.3.19
 pkgrel=1
 pkgdesc="Lightweight C port of NoteBook FanControl (no Mono required)"
 arch=('i686' 'x86_64')
 url="https://github.com/nbfc-linux/nbfc-linux"
-license=('GPL3')
+license=('GPL-3.0-only')
 conflicts=('nbfc')
 provides=('nbfc')
+depends=('curl' 'openssl')
+makedepends=('curl' 'openssl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nbfc-linux/nbfc-linux/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('05273e24b10346994675a34fc9464e10555f25a877f99f517239ac9f449a9731a93f297c57593988fc84ec6db633acaf42bddd8ab5c3abff0ad84603ed26cade')
+sha256sums=('b36f5851100bb3493a7c2957b58acd0e163a7781431c386ccd3b3de9318c6223')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
