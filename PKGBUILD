@@ -3,7 +3,7 @@
 
 _pyname=glyphsLib
 pkgname=python-${_pyname,,}
-pkgver=6.10.3
+pkgver=6.11.0
 pkgrel=1
 pkgdesc='A bridge from Glyphs source files (.glyphs) to UFOs'
 arch=(any)
@@ -29,7 +29,7 @@ optdepends=(python-defcon
             python-ufonormalizer)
 _archive="${_pyname,,}-$pkgver" # upstream goes back and forth on casing of sdist
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('a23a76867bbcb92d91cf3dbb50d98cf96c1757b08477cc275bd480e22d39b2d9')
+sha256sums=('ea31a870888ea0502bf38ac71160215f5b6ff68daa0a9aa81258509f7e005dae')
 
 build() {
 	cd "$_archive"
