@@ -1,7 +1,7 @@
 pkgbase = 7plus
 	pkgdesc = Unofficial 7Plus desktop application.
 	pkgver = 1.0.4.aurpatch
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/7plus
 	arch = x86_64
 	arch = arm7h

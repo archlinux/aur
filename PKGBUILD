@@ -1,7 +1,7 @@
 pkgname=7plus
 _pkgname=7Plus
 pkgver=1.0.4.aurpatch
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial 7Plus desktop application."
 arch=('x86_64' 'arm7h' 'aarch64')
 url="https://gitlab.com/linuxbombay/7plus"
@@ -22,6 +22,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
+    ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
     ln -s "/opt/$_pkgname/$pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
 
     # Desktop Entry
