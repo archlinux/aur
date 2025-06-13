@@ -11,7 +11,7 @@ _commit="8d84924e79d5d0caa42892a2d4c85c0d3b3fdf87" # 2025.1
 _name="mpm"
 pkgname="matlab-${_name}"
 pkgver="${_pkgver}.${_release}"
-pkgrel=1
+pkgrel=2
 pkgdesc="MATLAB Package Manager"
 arch=('x86_64')
 url="https://www.mathworks.com/products/mpm.html"
@@ -21,7 +21,7 @@ provides=("${pkgname}-version=${_release}")
 depends=('ca-certificates' 'glibc' 'unzip')
 _pkgsrc="${pkgname}-${_pkgver}"
 source=("${_pkgsrc}-README.md::${_url}/raw/${_commit}/MPM.md"
-        "${pkgname}-${_release}-input.txt::${_url}/matlab-dockerfile/raw/refs/heads/main/mpm-input-files/${_release}/mpm_input_${_release,,}.txt")
+        "${pkgname}-${_release}-input.txt::${_url}/raw/refs/heads/main/mpm-input-files/${_release}/mpm_input_${_release,,}.txt")
 source_x86_64=("${_pkgsrc}-x86_64::https://ssd.mathworks.com/supportfiles/downloads/${_name}/${_pkgver}/glnxa64/${_name}")
 for _rel in "${_releases[@]}"; do
   source+=("${pkgname}-${_rel}-input.txt::${_url}/raw/refs/heads/main/mpm-input-files/${_rel}/mpm_input_${_rel,,}.txt")
