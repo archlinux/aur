@@ -2,7 +2,7 @@
 
 _pluginname=obs-draw
 pkgname=$_pluginname
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="The Draw plugin for OBS Studio allows you to draw on your stream output in a dock."
 arch=("x86_64" "aarch64")
@@ -12,7 +12,7 @@ depends=("obs-studio>=28" "glibc" "gcc-libs" "qt6-base")
 makedepends=("cmake")
 options=('debug')
 source=("$_pluginname-$pkgver.tar.gz"::"https://github.com/exeldro/$_pluginname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=(""69fe0945062ab31127369233600f3f1b3e5e8635dac4e55ac2188fc78adf4530)
+sha256sums=(""b686e33a98d78a4ae44e852ead5f2c5b27678ab5aaa8531abad682ee0943748c)
 
 build() {
   cmake -B build -S "$_pluginname-$pkgver" \
