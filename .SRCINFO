@@ -8,6 +8,6 @@ pkgbase = tattoy-bin
 	provides = tattoy
 	conflicts = tattoy
 	source = https://github.com/tattoy-org/tattoy/releases/download/v0.1.0/tattoy-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 7607d58f1ee866ab1ee7aca8ada96c388afa099aa39f5459a602a85190ef9fff
+	sha256sums = 93c432de358a12a24aaccbf40efea6c15271015cb1e3505a599fcb8864373fd1
 
 pkgname = tattoy-bin
