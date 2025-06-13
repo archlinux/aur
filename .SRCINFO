@@ -1,7 +1,7 @@
 pkgbase = npreal2
 	pkgdesc = real tty driver for Moxa NPort serial console terminal server
 	pkgver = 5.0
-	pkgrel = 10
+	pkgrel = 11
 	url = https://www.moxa.com/en/products/industrial-edge-connectivity/serial-device-servers/terminal-servers/nport-6100-6200-series
 	install = npreal2-install.sh
 	arch = i686

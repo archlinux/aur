@@ -5,7 +5,7 @@ _opt_ttymajor=33       # default 33
 _opt_calloutmajor=38   # default 38
 _opt_defaultmode='666' # default: 666
 
-#export UNAME_R="$(basename /usr/lib/modules/5.10.*)"
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/6.15.*/vmlinuz))"
 
 # Some items are fixed as of 1.19 according to Moxa. I haven't tested them yet.
 
@@ -83,7 +83,7 @@ set -u
 pkgname='npreal2'
 #pkgver='1.18.49'; _commit='6d9ef0dbafd487595c4f5e4e5e64c1faba98d060'
 pkgver='5.0'; # _build='17110917'
-pkgrel='10'
+pkgrel='11'
 pkgdesc='real tty driver for Moxa NPort serial console terminal server'
 _pkgdescshort="Moxa NPort ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
@@ -189,10 +189,18 @@ prepare() {
       -e 's: /lib/: /usr/lib/:g' \
       -e '# Cut some of the warnings we dont want to fix' \
       -e '#s:^CC+=.*$:& -Wno-misleading-indentation:g' \
+      -e '# gcc-15' \
+      -e 's:\bcc\b:$(CC):g' \
+      -e 's:^CC+=.*$:& -std=gnu17:g' \
       -e '# Add back SUBDIRS= for dkms detection' \
       -e '/ modules/ s: M=: SUBDIRS=$(PWD)&:g' \
-      -e 's:shell uname -r:UNAME_R:g' \
-      -e '1i UNAME_R?=$(shell uname -r)' \
+      -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile' \
+      -e '# Fix by changing the detection var.' \
+      -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!' \
+      -e 's:^ifneq ($(KERNELRELEASE),):ifneq ($(SUBDIRS),):g' \
+      -e '# Compile any specified kernel version, not just the current one' \
+      -e 's:shell uname -r:KERNELRELEASE:g' \
+      -e '1i KERNELRELEASE?=$(shell uname -r)' \
     -i 'Makefile'
   ! test -s 'Makefile.Arch' || echo "${}"
 
@@ -472,20 +480,12 @@ BUILT_MODULE_NAME[0]="npreal2"
 BUILT_MODULE_LOCATION[0]=""
 # Using all processors doesn't compile this tiny module any faster.
 MAKE[0]="make -j1 module"
-CLEAN[0]="make -j1 clean"
+#CLEAN[0]="make -j1 clean"
 # Placing the DKMS generated module in a different location than the standard install prevents conflicts when PKGBUILD _opt_DKMS is toggled
 DEST_MODULE_LOCATION[0]="/kernel/drivers/misc"
 EOF
     ) "${_dkms}/dkms.conf"
     install -Dpm644 'np_ver.h' -t "${_dkms}/"
-    sed -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
-        -e 's:$(shell uname -r):$(KERNELRELEASE):g' \
-        -e 's:`uname -r`:$(KERNELRELEASE):g' \
-        -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile' \
-        -e '# Fix by changing the detection var.' \
-        -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!' \
-        -e 's:^ifneq ($(KERNELRELEASE),):ifneq ($(SUBDIRS),):g' \
-      -i "${_dkms}/Makefile"
     make -s -C "${_dkms}/" clean
   fi
   set +u
