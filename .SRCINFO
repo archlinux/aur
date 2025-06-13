@@ -1,0 +1,21 @@
+pkgbase = leptonica5
+	pkgdesc = Software that is broadly useful for image processing and image analysis applications (so-version 5)
+	pkgver = 1.82.0
+	pkgrel = 1
+	url = https://www.leptonica.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = giflib>=5.1
+	depends = glibc
+	depends = libjpeg
+	depends = libpng
+	depends = libtiff
+	depends = libwebp>=0.5
+	depends = openjpeg2
+	depends = zlib
+	provides = libleptonica.so
+	source = leptonica-1.82.0.tar.gz::https://github.com/DanBloomberg/leptonica/archive/refs/tags/1.82.0.tar.gz
+	sha256sums = 40fa9ac1e815b91e0fa73f0737e60c9eec433a95fa123f95f2573dd3127dd669
+
+pkgname = leptonica5
