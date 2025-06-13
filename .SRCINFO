@@ -1,6 +1,6 @@
 pkgbase = python-asdf_wcs_schemas
 	pkgdesc = World Coordinate System (WCS) ASDF schemas
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/asdf-format/asdf-wcs-schemas
 	arch = any
@@ -8,15 +8,14 @@ pkgbase = python-asdf_wcs_schemas
 	checkdepends = python-pytest
 	checkdepends = python-asdf_coordinates_schemas
 	makedepends = python-setuptools-scm
-	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/a/asdf_wcs_schemas/asdf_wcs_schemas-0.4.0.tar.gz
-	md5sums = 08707642fa2fff2450513a7ac4543ed7
+	source = https://files.pythonhosted.org/packages/source/a/asdf_wcs_schemas/asdf_wcs_schemas-0.5.0.tar.gz
+	md5sums = feddebbe469ece55692ba761ae4ebd74
 
 pkgname = python-asdf_wcs_schemas
 	depends = python>=3.9
 	depends = python-asdf-standard>=1.1.0
-	depends = python-asdf_transform_schemas>=0.5.0
-	depends = python-asdf_coordinates_schemas>=0.3.0
+	depends = python-asdf_transform_schemas>=0.6.0
+	depends = python-asdf_coordinates_schemas>=0.4.0
 	optdepends = python-asdf_wcs_schemas-doc: Documentation for ASDF WCS Schemas
