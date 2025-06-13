@@ -2,7 +2,7 @@
 
 pkgname=f2
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform command-line tool for batch renaming files and directories quickly and safely'
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/ayoisaiah/${pkgname}"
@@ -13,6 +13,7 @@ depends=(
 makedepends=(
 	'go'
 	'just'
+	'perl-image-exiftool'
 )
 conflicts=("${pkgname}-bin")
 
