@@ -3,7 +3,7 @@
 # Contributor: Claudio d'Angelis <claudiodangelis at gmail dot com>
 
 pkgname=postman-bin
-pkgver=11.48.0
+pkgver=11.49.4
 pkgrel=1
 pkgdesc="Build, test, and document your APIs faster"
 provides=('postman')
@@ -21,9 +21,9 @@ source_aarch64=(
   "postman.desktop"
 )
 depends=(libxss nss gtk3 alsa-lib libsecret)
-sha256sums_x86_64=('8a5fbb983f3ded6ca07068dedc84f6c095fd5bd6585f936f1ab4dea289d2cfca'
+sha256sums_x86_64=('45ea0e5bf12c1794aa571a92a75ae9a1eddf54c36a3047f426bc9dd1359bd8ea'
                    'd87542ac18455ff341da7c5efd01db96a01f659b1bf546840aa4ac8bd085802d')
-sha256sums_aarch64=('314945e8621fad3cdce781aaeab1279566b0d983568c63189ee092c2222d247a'
+sha256sums_aarch64=('2182299b9b4f2afb0cbfdd8eb06d99723503d79b1397c0532c0cdb4c4aefaa11'
                     'd87542ac18455ff341da7c5efd01db96a01f659b1bf546840aa4ac8bd085802d')
 
 package() {
