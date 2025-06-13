@@ -1,35 +1,32 @@
+# Maintainer: Aleksy Grabowski <hurufu@gmail.com>
 # Contributor: eagletmt <eagletmt@gmail.com>
-# Maintainer: kaptoxic
+# Contributor: kaptoxic
 
 pkgname=teyjus
-pkgver=2.1
+pkgver=2.1.1
 pkgrel=1
-pkgdesc='An efficient implementation of the higher-order logic programming language Lambda Prolog'
+pkgdesc='An efficient implementation of the higher-order logic programming language λProlog'
 url='http://teyjus.cs.umn.edu/'
-arch=('i686' 'x86_64')
-license=('GPL3')
-depends=('glibc')
-makedepends=('ocaml' 'omake' 'flex' 'bison')
-source=(https://github.com/teyjus/teyjus/archive/v${pkgver/_/-}.tar.gz)
+arch=(i686 x86_64)
+license=(GPL-3.0-only)
+depends=(glibc)
+makedepends=(ocaml omake flex bison)
+source=("https://github.com/teyjus/teyjus/archive/v${pkgver/_/-}.tar.gz")
+sha256sums=('a8fafe8ab7cd857a3f46ab8e4a7f76f9f3fac2169fdb72f95b84d1d0bcdf66f9')
 
-build () {
-  cd "$srcdir/$pkgname-$pkgver"
-  omake
+prepare() {
+    patch -p1 -d "$pkgname-$pkgver"  <../0001-Fix-build.patch
+}
+
+build() {
+    make -C "$pkgname-$pkgver" all
+}
+
+check() {
+    make -C "$pkgname-$pkgver" test
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  mkdir -p "$pkgdir/usr/bin"
-  local bin
-  for bin in tjcc tjdepend tjdis tjlink tjsim
-  do
-    install -m755 $bin "$pkgdir/usr/bin/"
-  done
-
-  mkdir -p "$pkgdir/usr/share/emacs/site-lisp"
-  install -m644 emacs/teyjus.el "$pkgdir/usr/share/emacs/site-lisp/"
+    cd "$pkgname-$pkgver"
+    dune install --release --prefix="$pkgdir/usr"
 }
-
-# vim:set ts=2 sw=2 et:
-md5sums=('e146dc66f1c526d3906112cc5edfb93c')

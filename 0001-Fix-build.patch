@@ -1,0 +1,71 @@
+From 7ef6fb0422b3cce434e5b1a3ca3e0d14cd54ed22 Mon Sep 17 00:00:00 2001
+From: Aleks Grabowski <hurufu@gmail.com>
+Date: Fri, 13 Jun 2025 11:46:39 +0200
+Subject: [PATCH] Fix build
+
+It looks like they used more relaxed rules in the past for C compiler.
+---
+ source/linker/kind.h           | 3 +--
+ source/simulator/abstmachine.h | 2 +-
+ source/simulator/siminstr.c    | 4 ++--
+ 3 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/source/linker/kind.h b/source/linker/kind.h
+index b6e43c4..7689eba 100644
+--- a/source/linker/kind.h
++++ b/source/linker/kind.h
+@@ -34,6 +34,7 @@ extern void LoadGKinds(int fd, struct Module_st* CMData);
+ //Loads the global kinds of the top-level bytecode file.
+ extern void LoadTopGKinds(int fd, struct Module_st* CMData);
+ 
++//Loads the local kinds of a bytecode file.
+ extern void LoadLKinds(int fd, struct Module_st* CMData);
+ 
+ //LKind Header Data
+@@ -41,8 +42,6 @@ extern void LoadLKinds(int fd, struct Module_st* CMData);
+ 
+ //Initializes the Local Kind Vector
+ extern void InitTLKinds();
+-//Loads the local kinds of a bytecode file.
+-extern void LoadLKinds();
+ 
+ //Writes out the contents of the Global and Local Kind Vectors.
+ extern void WriteKinds(int fd);
+diff --git a/source/simulator/abstmachine.h b/source/simulator/abstmachine.h
+index c43fdb4..1283d06 100644
+--- a/source/simulator/abstmachine.h
++++ b/source/simulator/abstmachine.h
+@@ -186,7 +186,7 @@ AM_DataTypePtr AM_envVar(int n);             //the nth var fd
+ int            AM_envUC();                   //the env universe count 
+ CSpacePtr      AM_envCP();                   //the env continuation point
+ MemPtr         AM_envCE();                   //continuation point 
+-MemPtr         AM_envCI();                   //impl point 
++MemPtr         AM_envCI(MemPtr);             //impl point
+ Boolean        AM_inCurEnv(MemPtr p);        //is p an addr in the curr env?
+ 
+ //access functions for clause environment
+diff --git a/source/simulator/siminstr.c b/source/simulator/siminstr.c
+index 6cb78cc..912fdbf 100644
+--- a/source/simulator/siminstr.c
++++ b/source/simulator/siminstr.c
+@@ -1549,7 +1549,7 @@ void SINSTR_proceed()                   //proceed -- X
+     if (AM_noEnv()) EM_THROW(EM_QUERY_RESULT);
+     else {
+         AM_preg  = AM_cpreg;
+-        AM_cireg = AM_envCI();
++        AM_cireg = AM_envCI(NULL);
+         if (AM_isImplCI()) AM_cereg = AM_cimpCE();
+     }
+ }
+@@ -1807,7 +1807,7 @@ void SINSTR_builtin()                   //builtin n -- I1_X
+ {
+     INSACC_I1X(n);
+     if (!AM_noEnv()) {
+-        AM_cireg = AM_envCI();
++        AM_cireg = AM_envCI(NULL);
+         if (AM_isImplCI()) AM_cereg = AM_cimpCE();
+     }
+     BI_dispatch(n);
+-- 
+2.49.0
+
