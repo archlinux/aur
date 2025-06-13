@@ -1,7 +1,7 @@
 # Maintainer: Mateusz Krawczynski <matikrawczpl@gmail.com>
 
 pkgname=rewind-bin
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=0
 pkgdesc="Rewind is a beatmap/replay analyzer for osu!"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("$pkgname-$pkgver.AppImage::https://github.com/abstrakt8/rewind/releases
         "$pkgname-LICENCE.md::https://raw.githubusercontent.com/abstrakt8/rewind/master/LICENSE.md"
         "rewind.desktop")
 noextract=("$pkgname-$pkgver.AppImage")
-sha256sums=('13a56a8cc1d62913a94184b7c89dc57bec1fc360d19503e62c10f8ed45eb6298'
+sha256sums=('d927eb98ffd8dc9ad07989f4eafbe329152b1dbda9d12a9207bc35f3fc9b6de8'
             'cceae28fec491bf1306c40daad13eee832fed4d410e085b6b4e121392b257528'
             '18e5330dd98f639f915217afe123ec3fa625d61556dbace7d52bd2d2fbd2226b'
             'cf6de555412d62f0212857c4a3dd9bf4f686ac20224e18ccfe865098054f6a09')
