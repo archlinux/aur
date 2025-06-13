@@ -5,7 +5,7 @@
 
 pkgname=pyglossary
 pkgver=5.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="convert dictionary files/glossaries with various formats"
 arch=(any)
 url="https://github.com/ilius/pyglossary"
@@ -35,10 +35,16 @@ makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ilius/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('66a446b16c9606e0264c2e82123f2bfc51b068e08e9a6dd2d3f5738844bc3a4e')
 
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python -m build --wheel --no-isolation
+}
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
-  cp config.json $pkgdir/usr/share/pyglossary
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 pkg/${pkgname}.desktop -t ${pkgdir}/usr/share/applications
+  install -Dm644 res/hicolor/scalable/apps/${pkgname}.svg \
+    -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 }
 
 # vim:set ts=2 sw=2 et:

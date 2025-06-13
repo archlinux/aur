@@ -1,7 +1,7 @@
 pkgbase = pyglossary
 	pkgdesc = convert dictionary files/glossaries with various formats
 	pkgver = 5.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ilius/pyglossary
 	arch = any
 	license = GPL-3.0-or-later
