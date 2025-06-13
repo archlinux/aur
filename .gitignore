@@ -1,5 +1,5 @@
-/pkg
-/src
-/*.zst
-/*.proto
-/*.ttf
+pkg
+src
+*.zst
+*.ttf
+*.tar
