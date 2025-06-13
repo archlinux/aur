@@ -37,7 +37,7 @@ source=(
   # patches to config & for tuning purposes
   #  modprobed.db
   choose-gcc-optimization.sh
-#  more-uarches-for-kernel-6.8+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/lite-more-x86-64-ISA-levels-for-kernel-6.8-rc4%2B.patch"
+  more-uarches-for-kernel-6.15+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/lite-more-x86-64-ISA-levels-for-kernel-6.15-rc1%2B.patch"
 
   # actual kernel patch series
   # 0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.14/asus-patch-series.patch"
@@ -64,6 +64,7 @@ sha256sums=('3458cd6a6c508e161dbc5406e72b99d5dbdf929faf704a67db9ba46d07514858'
             'SKIP'
             'b91f05f010dbf6786026278c2e095201c9b043c91d9a2065fc4de2d28d0dcb37'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
+            '122adb860d3c28872cac2facb38d809f5b08520040060bd2131513243576e5ee'
             '06ea1762ecd313f22dc61029eee8e16c1691b5b8accf92659938d47a3f1f6f98'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
@@ -82,12 +83,12 @@ sha256sums=('3458cd6a6c508e161dbc5406e72b99d5dbdf929faf704a67db9ba46d07514858'
 # 93, x86-64-v3 (package default) = CONFIG_GENERIC_CPU3
 # 98, Intel Native = CONFIG_MNATIVE_INTEL
 # 99, AMD Native = CONFIG_MNATIVE_AMD
-if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=93
-fi
-if [ -z ${Microarchitecture+x} ]; then
-  Microarchitecture='CONFIG_GENERIC_CPU3'
-fi
+#if [ -z ${_microarchitecture+x} ]; then
+#  _microarchitecture=93
+#fi
+#if [ -z ${Microarchitecture+x} ]; then
+#  Microarchitecture='CONFIG_GENERIC_CPU3'
+#fi
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -123,9 +124,11 @@ prepare() {
   ## at the top of this file!
   # make LSMOD=../modprobed.db localmodconfig 
 
-  ## let user choose microarchitecture optimization in GCC  
+  ## choose microarchitecture optimization in GCC here
   ## this needs to run *after* `make olddefconfig` so that our newly added configuration macros exist
-  sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
+  scripts/config  -d CONFIG_GENERIC_CPU \
+                  -d CONFIG_GENERIC_CPU2 \
+                  -e CONFIG_X86_64_v3
  
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
