@@ -1,0 +1,41 @@
+From 352a8b9bfec0bafc6d2aa789bbfc8eac23ab8cc1 Mon Sep 17 00:00:00 2001
+From: Aren Moynihan <aren@peacevolution.org>
+Date: Fri, 13 Jun 2025 12:08:29 -0400
+Subject: [PATCH pnc] bump minimum cmake version to 3.10
+
+Cmake 4.0 removed compatibility with versions older than 3.5, so this
+now produces an error. Compatibility with cmake older than 3.10 will be
+deprecated in the future.
+
+https://cmake.org/cmake/help/latest/release/4.0.html#id15
+https://gitlab.kitware.com/cmake/cmake/-/merge_requests/9875
+
+The error that was generated:
+
+CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 has been removed from CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+  Or, add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to try configuring anyway.
+
+Signed-off-by: Aren Moynihan <aren@peacevolution.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 41b3d65..c06721c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.10)
+ project("pnc" VERSION 0.9.4 LANGUAGES C CXX)
+ 
+ find_library(LIBPHONENUMBER phonenumber PATHS /usr/local/lib REQUIRED)
+-- 
+2.49.0
+
