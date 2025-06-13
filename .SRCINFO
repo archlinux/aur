@@ -1,6 +1,6 @@
 pkgbase = kontainer-git
 	pkgdesc = A KDE-style Qt GUI to manage Distrobox containers
-	pkgver = Beta.9.g2a1a4ae
+	pkgver = Beta.57.g6d59e05
 	pkgrel = 1
 	url = https://invent.kde.org/silverhadch/k-box
 	arch = any
