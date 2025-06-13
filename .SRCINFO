@@ -29,6 +29,7 @@ pkgbase = void-git
 	optdepends = org.freedesktop.secrets: Settings sync
 	provides = void
 	conflicts = void
+	options = !strip
 	source = git+https://github.com/voideditor/void.git
 	sha256sums = SKIP
 

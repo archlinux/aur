@@ -11,7 +11,7 @@ arch=('x86_64')
 license=("MIT")
 provides=('void')
 conflicts=('void')
-oprions=(!strip) # for sign of ext
+options=(!strip) # for sign of ext
 _electron=electron
 depends=( ${_electron} ripgrep xdg-utils
  alsa-lib gnupg libnotify libsecret libxkbfile libxss shared-mime-info)
@@ -57,8 +57,8 @@ build() {
   _vsrgver=$(npm pkg get dependencies.@vscode/ripgrep | sed 's/[\"^]//g')
   _rgver=13.0.0-10
   mkdir -p "$TMPDIR"/vscode-ripgrep-cache-$_vsrgver
-  # actual binary seems needed
-  bsdtar -czf "$TMPDIR"/vscode-ripgrep-cache-${_vsrgver}/ripgrep-v${_rgver}-x86_64-unknown-linux-musl.tar.gz -C /usr/bin rg
+  touch rg # Archived symlink is replaced
+  bsdtar -czf "$TMPDIR"/vscode-ripgrep-cache-${_vsrgver}/ripgrep-v${_rgver}-x86_64-unknown-linux-musl.tar.gz rg
   _vsrgver2=1.15.10 # Why DL twice?
   mkdir -p "$TMPDIR"/vscode-ripgrep-cache-$_vsrgver2
   ln -sf "$TMPDIR"/vscode-ripgrep-cache-{${_vsrgver},${_vsrgver2}}/ripgrep-v${_rgver}-x86_64-unknown-linux-musl.tar.gz
