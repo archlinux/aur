@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwa at clttr dot info>
 pkgname=art-rawconverter
-pkgver=1.25.4
+pkgver=1.25.5
 pkgrel=1
 pkgdesc="raw image converter ART (forked from RawTherapee with ease of use in mind)"
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,14 +11,13 @@ depends=('opencolorio' 'lensfun' 'libraw' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3
 optdepends=('perl-image-exiftool: metadata support for CR3 images' 'art-rawconverter-imageio: add support for additional image formats' 'art-rawconverter-ctlscripts: CTL scripts for advanced color transformations' 'lcms2-ff: lcms2 with fast-float plugin for improved export speed' )
 makedepends=('pkgconf' 'cmake' 'make' 'git' 'gcc' 'hicolor-icon-theme' 'fakeroot')
 conflicts=('art-rawconverter-git')
-source=("${pkgname}::git+https://github.com/artpixls/ART.git#tag=${pkgver}")
-sha256sums=('SKIP')
+source=("${pkgname}_${pkgver}::https://github.com/artpixls/ART/archive/refs/tags/${pkgver}.tar.gz")
 
 build() {
 	mkdir -p "$srcdir/${pkgname}_build"
 	cd "$srcdir/${pkgname}_build"
 
-	cmake "../${pkgname}" \
+	cmake "../ART-${pkgver}" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DPROC_TARGET_NUMBER=2 \
@@ -36,3 +35,4 @@ package() {
 	cd "$srcdir/${pkgname}_build"
 	make DESTDIR="$pkgdir/" install
 }
+sha256sums=('13adeeaeaffcbf7ef466b02e04dad8cd77ce26e7b9be5046a744e1f8a7a29416')
