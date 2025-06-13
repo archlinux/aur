@@ -1,20 +1,25 @@
 pkgbase = minilpa-git
 	pkgdesc = Professional LPA UI
 	pkgver = r21.bb1ee40
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EsimMoe/MiniLPA
 	arch = x86_64
 	license = AGPL-3.0
 	makedepends = powershell-bin
 	makedepends = jdk-openjdk
+	makedepends = git
 	depends = java-runtime-common
 	provides = minilpa
 	conflicts = minilpa
 	source = git+https://github.com/EsimMoe/MiniLPA.git
 	source = minilpa.desktop
 	source = minilpa.sh
+	source = eum-manifest.json
+	source = ci-manifest.json
 	sha256sums = SKIP
 	sha256sums = c3f3c4f24581d89af194e6605eb3fdac59612752b94e6841d15aff927d812a13
 	sha256sums = 4aeb061946552e1974415e2954bc6057f118ca51a78b0545cb79b1dcd934f409
+	sha256sums = 88eb7c2d3a8c4903c761ca8265c5af56960fd5fe5834887d41acd74312f39ec6
+	sha256sums = 00296c332838d593f9066d8d53d20763aa9c77bc512f3d4e38b5357fd1f6bdad
 
 pkgname = minilpa-git
