@@ -1,0 +1,5 @@
+ttquot.sty
+*.pkg.tar.*
+aprolog/
+pkg/
+src/

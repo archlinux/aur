@@ -1,0 +1,19 @@
+pkgbase = aprolog-git
+	pkgdesc = αProlog a prototype nominal logic programming language
+	pkgver = 0.4.r15.g01ebffa
+	pkgrel = 1
+	url = https://homepages.inf.ed.ac.uk/jcheney/programs/aprolog/
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = ocaml
+	makedepends = texlive-bin
+	makedepends = gzip
+	depends = rlwrap
+	provides = aprolog
+	source = git+https://github.com/aprolog-lang/aprolog.git
+	source = https://raw.githubusercontent.com/akcheung/apsys13/refs/heads/master/ttquot.sty
+	sha256sums = SKIP
+	sha256sums = 6326af83786801306ac6ed051269dc3121a30eecba8d7932d688fe89eef44cec
+
+pkgname = aprolog-git
