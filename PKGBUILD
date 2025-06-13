@@ -2,7 +2,7 @@
 
 pkgname=python-tf-playwright-stealth
 _name=${pkgname#python-}
-pkgver=1.1.5
+pkgver=1.2.0
 pkgrel=1
 epoch=
 pkgdesc="Makes playwright stealthy like a ninja!."
@@ -29,7 +29,7 @@ options=('!strip' '!debug')
 _name=${_name//-/_}
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('28a01cf65beb340876fd77487cf46df27124fab291ec97c0c9ac61f783f40059')
+sha256sums=('7bb8d32d3e60324fbf6b9eeae540b8cd9f3b9e07baeb33b025dbc98ad47658ba')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
