@@ -1,15 +1,17 @@
 pkgbase = zdbsp
 	pkgdesc = Standalone version of ZDoom's internal node builder
 	pkgver = 1.19
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zdoom.org/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = cmake
 	depends = gcc-libs
 	depends = zlib
 	source = http://zdoom.org/files/utils/zdbsp/zdbsp-1.19-src.zip
+	source = cmake-minver.patch::https://patch-diff.githubusercontent.com/raw/rheit/zdbsp/pull/7.patch
 	sha256sums = b98956fb1c52f5e25062f829b2468cb8028492add0b7672654763f78dec10249
+	sha256sums = b239eb7690520ef906b332decf0736be724d8383265c63d066ede49733dbc303
 
 pkgname = zdbsp
