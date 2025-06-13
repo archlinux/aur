@@ -1,0 +1,26 @@
+--- a/Tensile/bin/TensileCreateLibrary	2025-06-13 06:34:24.527511071 +0100
++++ b/Tensile/bin/TensileCreateLibrary	2025-06-13 06:38:35.872077233 +0100
+@@ -25,17 +25,15 @@
+ ################################################################################
+ 
+ # This script only gets called by CMake
+ 
+-try:
+-    from Tensile.TensileCreateLibrary import TensileCreateLibrary
+-except ImportError:
+-    import os.path
+-    import sys
+-    parentdir = os.path.normpath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", ".."))
+-    sys.path.append(parentdir)
+ 
+-    from Tensile.TensileCreateLibrary import TensileCreateLibrary
++import os.path
++import sys
++parentdir = os.path.normpath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", ".."))
++sys.path.insert(0, parentdir)
++
++from Tensile.TensileCreateLibrary import TensileCreateLibrary
+ 
+ ################################################################################
+ # Main
+ ################################################################################
