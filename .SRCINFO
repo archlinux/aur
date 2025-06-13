@@ -1,13 +1,13 @@
 pkgbase = ripasso-gnome-search-provider
 	pkgdesc = A GNOME search provider for the pass password manager written in rust with no runtime dependencies
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://github.com/Fingel/ripasso-gnome-search-provider/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = libssh2
-	source = ripasso-gnome-search-provider-1.2.0.tar.gz::https://github.com/Fingel/ripasso-gnome-search-provider/archive/refs/tags/v1.2.0.tar.gz
-	sha512sums = 8bd024fe3bb5c92dd3ea3b62abe0034fdd9b5ac08b66fb6708ad1f93ba44a4694f6a21ff98ef76d406e96897b175ec5642a2ba4fe2850061588ea650264d7969
+	source = ripasso-gnome-search-provider-1.2.1.tar.gz::https://github.com/Fingel/ripasso-gnome-search-provider/archive/refs/tags/v1.2.1.tar.gz
+	sha512sums = e81c2e626d006d1b77ff59bc7dd4e3eb5e98f5bc6349cad3c63767b97e7cc7efb36e6a847800f21a6f16d9d1f935a05cb809d8d620a86b6a5811af051044c70f
 
 pkgname = ripasso-gnome-search-provider
