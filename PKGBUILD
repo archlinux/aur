@@ -2,15 +2,15 @@
 # Contributor: SoleSoul
 # shellcheck shell=bash disable=SC2034,SC2154
 
-_appname=lm-studio
 pkgname=lmstudio-beta
+_appname=lm-studio
 pkgver=0.3.17.1
 _pkgver="${pkgver%.*}-${pkgver##*.}"
-pkgrel=3
+pkgrel=4
 pkgdesc="Discover, download, and run local LLMs"
 arch=('x86_64')
 url="https://lmstudio.ai/"
-license=('custom')
+license=('LicenseRef-EULA')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2' 'clblast')
 makedepends=('squashfs-tools' 'graphicsmagick')
 options=(!strip !debug)
@@ -24,8 +24,9 @@ prepare() {
   chmod +x "${_appimage}"
 
   # get the files we need for packaging
+  unset PAGER # unsquashfs is very picky about pager settings
   offset=$(./"${_appimage}" --appimage-offset)
-  unsquashfs -o "$offset" -d squashfs-root "${_appimage}" \
+  unsquashfs -q -o "$offset" -d squashfs-root "${_appimage}" \
     "${_appname}.desktop" \
     "usr/share/icons/hicolor/0x0/apps/lm-studio.png" \
     "LICENSE.electron.txt" \
@@ -47,6 +48,7 @@ package() {
   # AppImage
   install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appname}.AppImage"
   install -Dm644 "${srcdir}/squashfs-root/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/EULA" <<< "https://lmstudio.ai/app-terms"
 
   # Desktop file
   install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop" \

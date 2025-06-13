@@ -1,10 +1,10 @@
 pkgbase = lmstudio-beta
 	pkgdesc = Discover, download, and run local LLMs
 	pkgver = 0.3.17.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://lmstudio.ai/
 	arch = x86_64
-	license = custom
+	license = LicenseRef-EULA
 	makedepends = squashfs-tools
 	makedepends = graphicsmagick
 	depends = zlib
