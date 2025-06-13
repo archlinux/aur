@@ -4,7 +4,7 @@ pkgname=python-pypresence-git
 _stablename=${pkgname%-git}
 _name=${_stablename#python-}
 
-pkgver=r549.4e882c3
+pkgver=v4.3.0.r41.g4e882c3
 pkgrel=1
 pkgdesc='Discord RPC and Rich Presence wrapper library - git version'
 url='https://github.com/qwertyquerty/pypresence'
@@ -27,7 +27,7 @@ b2sums=('SKIP')
 pkgver() {
   cd $_name
   ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --tags --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
