@@ -3,12 +3,12 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gbsplay-git
-pkgver=0.0.98.1202
+pkgver=0.0.100.1242
 pkgrel=1
 pkgdesc="A command line application for playing GameBoy sound files (GBS)"
 arch=('i686' 'x86_64')
 url='https://github.com/mmitch/gbsplay'
-license=('GPL')
+license=('GPL-1.0-or-later')
 optdepends=('nas: for NAS sound driver'
 			'alsa-lib: for ALSA sound driver'
 			'libpulse: for pulseaudio sound driver'
@@ -50,8 +50,6 @@ package() {
 	cd gbsplay
 
 	make DESTDIR="$pkgdir" install
-
-	install -Dm644 LICENCE "$pkgdir"/usr/share/licenses/gbsplay/LICENCE
 
 	cd contrib
 	install -Dm755 gbs2ogg.sh "$pkgdir"/usr/bin/gbs2ogg
