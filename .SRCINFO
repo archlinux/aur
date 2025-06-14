@@ -1,0 +1,17 @@
+pkgbase = r-mcmcse
+	pkgdesc = Provides tools for computing Monte Carlo standard errors (MCSE) in Markov chain Monte Carlo (MCMC) settings.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mcmcse
+	arch = any
+	license = MIT
+	makedepends = gcc
+	depends = r
+	depends = r-ellipse
+	depends = r-fftwtools
+	depends = r-testthjat
+	optdepends = r-knittr
+	source = https://cran.r-project.org/src/contrib/mcmcse_1.5-0.tar.gz
+	sha256sums = 4a820dc22c48efd32b7f9d1e1b897b4b3f165cd64b2ff85ba7029621cf9e7463
+
+pkgname = r-mcmcse
