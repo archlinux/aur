@@ -1,12 +1,17 @@
 pkgbase = python-google-generativeai
 	pkgdesc = Google AI Python SDK for the Gemini API
 	pkgver = 0.8.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/google-gemini/generative-ai-python
 	arch = any
 	license = Apache-2.0
+	checkdepends = ipython
+	checkdepends = libwebp
+	checkdepends = python-absl
+	checkdepends = python-pandas
+	checkdepends = python-pillow
 	makedepends = python-setuptools
-	depends = python-google-ai-generativelanguage=0.6.10
+	depends = python-google-ai-generativelanguage>=0.6.18
 	depends = python-google-api-core
 	depends = python-google-api-python-client
 	depends = python-google-auth>=2.15.0
@@ -14,7 +19,14 @@ pkgbase = python-google-generativeai
 	depends = python-pydantic
 	depends = python-tqdm
 	depends = python-typing_extensions
+	depends = python-grpcio
+	optdepends = ipython: for image conversion
+	optdepends = libwebp: for webp images
+	optdepends = python-pandas: for the notebook feature
+	optdepends = python-pillow: for image conversion (as an alternative to ipython)
 	source = generative-ai-0.8.5.tar.gz::https://github.com/google-gemini/generative-ai-python/archive/refs/tags/v0.8.5.tar.gz
+	source = tests-accept-additional-props.patch
 	sha256sums = 2baa9b7cda3df8d9ca609b0eeac404e697bf0d046294becc5d90aa5b30c4c272
+	sha256sums = e8e42daf626582db7f1c3e040b7ef10bd7516ddc17d61f854a128587ff885865
 
 pkgname = python-google-generativeai

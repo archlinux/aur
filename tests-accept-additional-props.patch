@@ -1,0 +1,77 @@
+From a320e88064fbba9b225967007be2c0e39bb24697 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Thu, 22 May 2025 16:17:01 +0200
+Subject: [PATCH] tests: accept additional property from evolved API
+
+Upstream PR 13846 has added an additional property, `thought` [1], to
+its response structure. Make tests accept that property.
+
+Introduced in v0.6.18 [2].
+
+[1]: https://github.com/googleapis/google-cloud-python/pull/13846/files#diff-fbf58af7f2d7adbd6c057bed6fd0c5857d835bfb044d32876fd5629aeb2ea1b6R242-R245
+[2]: https://github.com/googleapis/google-cloud-python/commit/d530650ea02714abaef4c8295717d286743ed4f1
+---
+ tests/test_generation.py        | 9 ++++++---
+ tests/test_generative_models.py | 6 +++---
+ 2 files changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/tests/test_generation.py b/tests/test_generation.py
+index 67b1544..41c5cc3 100644
+--- a/tests/test_generation.py
++++ b/tests/test_generation.py
+@@ -134,8 +134,11 @@ class UnitTests(parameterized.TestCase):
+         result = generation_types._join_contents(contents)
+         expected = {
+             "parts": [
+-                {"text": "Tell me a story about a magic backpack that looks like" " this: "},
+-                {"inline_data": {"mime_type": "image/png", "data": "REFUQSE="}},
++                {
++                    "text": "Tell me a story about a magic backpack that looks like" " this: ",
++                    "thought": False,
++                },
++                {"inline_data": {"mime_type": "image/png", "data": "REFUQSE="}, "thought": False},
+             ],
+             "role": "assistant",
+         }
+@@ -207,7 +210,7 @@ class UnitTests(parameterized.TestCase):
+ 
+         result = generation_types._join_contents(contents)
+         expected = {
+-            "parts": [{"text": string.ascii_lowercase}],
++            "parts": [{"text": string.ascii_lowercase, "thought": False}],
+             "role": "assistant",
+         }
+ 
+diff --git a/tests/test_generative_models.py b/tests/test_generative_models.py
+index 74469e5..0f3a261 100644
+--- a/tests/test_generative_models.py
++++ b/tests/test_generative_models.py
+@@ -1128,7 +1128,7 @@ class CUJTests(parameterized.TestCase):
+                     system_instruction=None,
+                     cached_content=None
+                 ),
+-                history=[protos.Content({'parts': [{'text': 'I really like fantasy books.'}], 'role': 'user'}), protos.Content({'parts': [{'text': 'first'}], 'role': 'model'}), protos.Content({'parts': [{'text': 'I also like this image.'}, {'inline_data': {'data': 'iVBORw0KGgoA...AAElFTkSuQmCC', 'mime_type': 'image/png'}}], 'role': 'user'}), protos.Content({'parts': [{'text': 'second'}], 'role': 'model'}), protos.Content({'parts': [{'text': 'What things do I like?.'}], 'role': 'user'}), protos.Content({'parts': [{'text': 'third'}], 'role': 'model'})]
++                history=[protos.Content({'parts': [{'text': 'I really like fantasy books.', 'thought': False}], 'role': 'user'}), protos.Content({'parts': [{'text': 'first', 'thought': False}], 'role': 'model'}), protos.Content({'parts': [{'text': 'I also like this image.', 'thought': False}, {'inline_data': {'data': 'iVBORw0KGgoA...AAElFTkSuQmCC', 'mime_type': 'image/png'}, 'thought': False}], 'role': 'user'}), protos.Content({'parts': [{'text': 'second', 'thought': False}], 'role': 'model'}), protos.Content({'parts': [{'text': 'What things do I like?.', 'thought': False}], 'role': 'user'}), protos.Content({'parts': [{'text': 'third', 'thought': False}], 'role': 'model'})]
+             )"""
+         )
+         self.assertEqual(expected, result)
+@@ -1157,7 +1157,7 @@ class CUJTests(parameterized.TestCase):
+                     system_instruction=None,
+                     cached_content=None
+                 ),
+-                history=[protos.Content({'parts': [{'text': 'I really like fantasy books.'}], 'role': 'user'}), <STREAMING IN PROGRESS>]
++                history=[protos.Content({'parts': [{'text': 'I really like fantasy books.', 'thought': False}], 'role': 'user'}), <STREAMING IN PROGRESS>]
+             )"""
+         )
+         self.assertEqual(expected, result)
+@@ -1202,7 +1202,7 @@ class CUJTests(parameterized.TestCase):
+                     system_instruction=None,
+                     cached_content=None
+                 ),
+-                history=[protos.Content({'parts': [{'text': 'I really like fantasy books.'}], 'role': 'user'}), <STREAMING ERROR>]
++                history=[protos.Content({'parts': [{'text': 'I really like fantasy books.', 'thought': False}], 'role': 'user'}), <STREAMING ERROR>]
+             )"""
+         )
+         self.assertEqual(expected, result)
+-- 
+2.49.0
