@@ -2,10 +2,10 @@
 #
 # mantainer: Muflone http://www.muflone.com/contacts/english/
 # contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=679330eaa3ab3f535f31a94abeea0d94e2a901df
+_commit=ba5cb15ceb823c470a000f012210f67a18af1302
 pkgname=penguins-eggs
 pkgver=10.1.1
-pkgrel=11
+pkgrel=13
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
 url="https://penguins-eggs.net"
@@ -61,27 +61,31 @@ build() {
  cd "$srcdir"/"$pkgname"
  pnpm install
  pnpm build  
+ rm -rf node_modules
+ pnpm install --prod --offline
+
 }
 
 package() {
  cd "$srcdir"/"$pkgname"
 
  install -Dm644 .oclif.manifest.json package.json -t "$pkgdir/"usr/lib/"$pkgname"
+ install -Dm644 .oclif.manifest.json package.json -t "$pkgdir/"usr/lib/"$pkgname"
  cp -r addons \
-  assets \
-  bin \
-  conf \
-  ipxe \
-  dracut \
-  dist \
-  eui \
-  mkinitcpio \
-  mkinitfs \
-  node_modules \
-  scripts \
-  syslinux \
-  "$pkgdir/"usr/lib/"$pkgname/"
-
+    assets \
+    bin \
+    conf \
+    ipxe \
+    dracut \
+    dist \
+    eui \
+    mkinitcpio \
+    mkinitfs \
+    node_modules \
+    scripts \
+    syslinux \
+    "$pkgdir/usr/lib/$pkgname/"
+ 
  # Fix permissions
  chown root:root "$pkgdir/"usr/lib/"$pkgname/"
 
