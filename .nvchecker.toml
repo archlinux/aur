@@ -1,0 +1,4 @@
+[onedrivegui]
+source = "git"
+git = "https://github.com/bpozdena/OneDriveGUI.git"
+prefix = "v"
