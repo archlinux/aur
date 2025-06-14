@@ -5,7 +5,7 @@ _name=cursor
 pkgbase="${_name}-electron"
 pkgname=("$pkgbase"{,-latest})
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 arch=('aarch64' 'x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor')
@@ -13,6 +13,7 @@ _electron=electron34 # for --printsrcinfo
 depends=('ripgrep' 'xdg-utils' # electron* is added at package()
 		'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 makedepends=('desktop-file-utils')
+optdepends=('code: use extensions at code-oss ?')
 provides=("${_name}"{,-bin})
 conflicts=("${_name}"{,-bin})
 _commit=87ea1604be1f602f173c5fb67582e647fcef6c48
@@ -26,6 +27,7 @@ sha512sums_x86_64=('c10b4b32b984ca260aed03f8a1f426c35d8763b0d3a878679c1c1ab9a047
 options=(!strip) # for ext?
 prepare() { # Create cp -r friendly layout with FHS
 	_api='https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest'
+	echo pkgver=$pkgver
 	echo latest=$(curl -Ls "$_api"|grep -oP '"version":"\K[^"]+'), commit=$(curl -Ls "$_api"|grep -oP '"commitSha":"\K[^"]+')
 
 	sed -e "s|code-flags|cursor-flags|" -e "s|lib/code|lib/cursor|" -e "s|/usr/lib/code/code.mjs|--app=/usr/lib/cursor|" code.sh > run.sh
@@ -41,9 +43,11 @@ prepare() { # Create cp -r friendly layout with FHS
 	# Replace bundled runtimes
 	mv share/cursor/resources/app lib/cursor
 	rm -r share/cursor
-	cd lib/cursor/node_modules
-	ln -svf /usr/bin/rg       @vscode/ripgrep/bin/rg
-	ln -svf /usr/bin/xdg-open open/xdg-open
+	ln -svf /usr/bin/rg       lib/cursor/node_modules/@vscode/ripgrep/bin/rg
+	ln -svf /usr/bin/xdg-open lib/cursor/node_modules/open/xdg-open
+	# Provide exts to code-oss
+	install -d lib/code/extensions
+	ln -sv lib/cursor/extensions/cursor-* lib/code/extensions/
 }
 _desc="AI Code Editor on "
 package_cursor-electron-latest(){
