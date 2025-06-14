@@ -1,7 +1,7 @@
 pkgbase = twitch
 	pkgdesc = Unofficial Twitch desktop application.
 	pkgver = 1.0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/twitch-application
 	arch = x86_64
 	arch = aarch64
