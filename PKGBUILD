@@ -1,6 +1,6 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=sling-cli-bin
-pkgver=1.4.9
+pkgver=1.4.10
 pkgrel=1
 pkgdesc="Sling is a CLI tool that extracts data from a source storage/database"
 arch=(x86_64)
@@ -9,10 +9,10 @@ license=('GPL-3.0-only')
 provides=('sling')
 conflicts=('sling')
 source=("$pkgname-$pkgver.tgz::https://github.com/slingdata-io/sling-cli/releases/download/v$pkgver/sling_linux_amd64.tar.gz")
-sha256sums=('3b432adf5e1b52d9d5ab4eb6d8c6c596b16f4813c8d663fcfed2ee156d357063')
+sha256sums=('72edf55f53aa0a1e9b30a5de75395d486dbd4aba03e4bd5eae74ca7d77098692')
 
 package() {
-    install -Dm755 sling -t "$pkgdir/usr/bin/"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm755 sling -t "$pkgdir/usr/bin/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 # vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
