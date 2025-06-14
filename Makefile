@@ -74,7 +74,7 @@ clean:
 build: clean
 	namcap -i PKGBUILD && \
 	makepkg --printsrcinfo > .SRCINFO && \
-	makepkg
+	makepkg --syncdeps
 
 test: build
 	sudo pacman -U flameshot-git-r*.zst
