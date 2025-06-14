@@ -2,14 +2,14 @@
 # Contributor:
 
 pkgname=connections
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc='A command-line client for the NYT Connections game.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jmelahman/connections'
 license=('MIT')
 makedepends=('go' 'git')
-_commit='48340eb7c509c56834aa56736e5d4322a02bbb71'
+_commit='a79007fec25fa612c2340ac46a0da8eeba36531d'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
