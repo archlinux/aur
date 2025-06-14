@@ -1,7 +1,7 @@
 pkgbase = open3d
 	pkgdesc = A Modern Library for 3D Data Processing
 	pkgver = 0.19.0
-	pkgrel = 11
+	pkgrel = 12
 	epoch = 1
 	url = http://www.open3d.org
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = open3d
 	makedepends = cmake
 	makedepends = git
 	makedepends = python-setuptools
-	depends = gcc13
+	depends = gcc14
 	depends = libc++abi
 	depends = libc++
 	depends = curl
@@ -62,7 +62,7 @@ pkgbase = open3d
 	sha256sums = 18a4dc14fc7d027b864575a856422c2a1b520cbbba47fb7e22300054e796d09b
 
 pkgname = open3d
-	depends = gcc13
+	depends = gcc14
 	depends = libc++abi
 	depends = libc++
 	depends = curl
@@ -105,7 +105,7 @@ pkgname = open3d
 	conflicts = open3d-git
 
 pkgname = python-open3d
-	depends = gcc13
+	depends = gcc14
 	depends = libc++abi
 	depends = libc++
 	depends = curl
@@ -152,7 +152,7 @@ pkgname = python-open3d
 	conflicts = python-py3d-git
 
 pkgname = python-py3d
-	depends = gcc13
+	depends = gcc14
 	depends = libc++abi
 	depends = libc++
 	depends = curl
