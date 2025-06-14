@@ -1,6 +1,6 @@
 pkgbase = cherryctl
 	pkgdesc = Cherry Servers CLI.
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/cherryservers/cherryctl
 	arch = x86_64
