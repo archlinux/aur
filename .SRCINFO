@@ -1,6 +1,6 @@
 pkgbase = codechecker
 	pkgdesc = Analyzer tooling, defect database and viewer extension for the Clang Static Analyzer and Clang Tidy
-	pkgver = 6.25.1
+	pkgver = 6.26.0
 	pkgrel = 1
 	url = https://github.com/Ericsson/codechecker
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = codechecker
 	depends = python
 	optdepends = clang: for running Clang Static Analyzer and Clang Tidy
 	optdepends = cppcheck: for running CPPCheck analysis
-	source = codechecker-6.25.1.tar.gz::https://github.com/Ericsson/codechecker/archive/v6.25.1.tar.gz
+	source = codechecker-6.26.0.tar.gz::https://github.com/Ericsson/codechecker/archive/v6.26.0.tar.gz
 	source = fix-ldflags.patch
-	sha256sums = 6b19333ca3abe9f48309fbd1d3117047aab92d1cea8d7939ecbe80b0545a86c4
+	sha256sums = 6e3b2f329550eab8f7c7c78fd8bb3acaef32aee4a97fbcf9c45147c20f02a81f
 	sha256sums = e59cb4d96642ccea7c3536e020b3961c1717bc65983424ced48b0ae1b1a3871a
 
 pkgname = codechecker

@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=codechecker
-pkgver=6.25.1
+pkgver=6.26.0
 pkgrel=1
 pkgdesc="Analyzer tooling, defect database and viewer extension for the Clang Static Analyzer and Clang Tidy"
 arch=(x86_64)
@@ -26,13 +26,13 @@ source=(
   "fix-ldflags.patch"
 )
 sha256sums=(
-  '6b19333ca3abe9f48309fbd1d3117047aab92d1cea8d7939ecbe80b0545a86c4'
+  '6e3b2f329550eab8f7c7c78fd8bb3acaef32aee4a97fbcf9c45147c20f02a81f'
   'e59cb4d96642ccea7c3536e020b3961c1717bc65983424ced48b0ae1b1a3871a'
 )
 
 prepare() {
   cd $pkgname-$pkgver
-  patch -Np1 -i "$srcdir/fix-ldflags.patch"
+  patch -Np1 < ../fix-ldflags.patch
 }
 
 build() {
@@ -54,14 +54,14 @@ build() {
 package() {
   cd $pkgname-$pkgver
   install -vdm755 "$pkgdir/opt"
-  cp -a build/CodeChecker "$pkgdir/opt"
-  rm -r "$pkgdir/opt/CodeChecker/lib/python3/codechecker"
+  cp -va build/CodeChecker "$pkgdir/opt"
+  rm -vr "$pkgdir/opt/CodeChecker/lib/python3/codechecker"
 
-  cp -r venv/lib/python*/site-packages/* "$pkgdir/opt/CodeChecker/lib/python3/"
+  cp -vr venv/lib/python*/site-packages/* "$pkgdir/opt/CodeChecker/lib/python3/"
 
-  cp -a codechecker_api-*/codechecker_api/ "$pkgdir/opt/CodeChecker/lib/python3/"
-  cp -a codechecker_api_shared-*/codechecker_api_shared/ "$pkgdir/opt/CodeChecker/lib/python3/"
+  cp -va codechecker_api-*/codechecker_api/ "$pkgdir/opt/CodeChecker/lib/python3/"
+  cp -va codechecker_api_shared-*/codechecker_api_shared/ "$pkgdir/opt/CodeChecker/lib/python3/"
 
   install -vdm755 "$pkgdir/usr/bin"
-  ln -s /opt/CodeChecker/bin/CodeChecker "$pkgdir/usr/bin/CodeChecker"
+  ln -vs /opt/CodeChecker/bin/CodeChecker "$pkgdir/usr/bin/CodeChecker"
 }
