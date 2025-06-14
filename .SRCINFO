@@ -1,12 +1,13 @@
 pkgbase = swww-git
 	pkgdesc = Efficient animated wallpaper daemon for Wayland, controlled at runtime
-	pkgver = 0.10.0.r3.g107576a
+	pkgver = 0.10.3.r12.g66d270f
 	pkgrel = 1
 	url = https://github.com/LGFae/swww
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cargo
+	makedepends = dav1d
 	makedepends = git
 	makedepends = scdoc
 	makedepends = wayland
