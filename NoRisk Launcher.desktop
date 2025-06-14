@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=
+Comment=A Tauri App
+Exec=noriskclient-launcher-v3
+Icon=noriskclient-launcher-v3
+Name=NoRisk Launcher
+Terminal=false
+Type=Application

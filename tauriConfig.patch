@@ -1,0 +1,20 @@
+diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
+index def92aa..ab8df56 100644
+--- a/src-tauri/tauri.conf.json
++++ b/src-tauri/tauri.conf.json
+@@ -6,7 +6,7 @@
+   "build": {
+     "beforeDevCommand": "yarn dev",
+     "devUrl": "http://localhost:1420",
+-    "beforeBuildCommand": "yarn build",
++    "beforeBuildCommand": "npm run build",
+     "frontendDist": "../dist"
+   },
+   "plugins": {
+@@ -120,4 +120,4 @@
+       }
+     ]
+   }
+-}
+\ No newline at end of file
++}
