@@ -1,0 +1,26 @@
+pkgbase = linyaps-installer
+	pkgdesc = 玲珑（Linglong）linyaps-web-store-installer is a package installer for the Linyaps Web store.
+	pkgver = 1.6.6
+	pkgrel = 0
+	url = https://github.com/OpenAtom-Linyaps/linyaps-web-store-installer?
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = gtest
+	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = xdg-utils
+	optdepends = linyaps: Linglong is the container application toolkit ofdeepin.
+	optdepends = linyaps-box: 玲珑（Linglong） is the container application toolkit of deepin.
+	optdepends = linglong-pica: deb package to Linglong package tool.
+	provides = linyaps-installer
+	conflicts = linyaps-installer
+	source = linyaps-installer::git+https://github.com/OpenAtom-Linyaps/linyaps-web-store-installer?.git#tag=v1.6.6
+	sha256sums = 9ed8959c7c4e92976e92ded10ac7c6f112271ef3241ceee26e57e2109f6165d2
+
+pkgname = linyaps-installer
