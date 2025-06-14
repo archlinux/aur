@@ -3,9 +3,9 @@
 pkgname=python-sslpsk-pmd3
 _pkgname="${pkgname#python-}"
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Fork of sslpsk with support for latest python versions'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/doronz88/sslpsk-pmd3'
 license=('Apache-2.0')
 depends=('python' 'openssl')

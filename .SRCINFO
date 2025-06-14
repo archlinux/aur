@@ -1,9 +1,9 @@
 pkgbase = python-sslpsk-pmd3
 	pkgdesc = Fork of sslpsk with support for latest python versions
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/doronz88/sslpsk-pmd3
-	arch = any
+	arch = x86_64
 	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-wheel
