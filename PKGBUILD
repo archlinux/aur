@@ -3,7 +3,7 @@
 
 pkgname=napcatqq-git
 _pkgname=NapCatQQ
-pkgver=r3891.7ec61f08
+pkgver=r4167.f576cd94
 pkgrel=1
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64'
@@ -11,7 +11,7 @@ arch=('x86_64'
       'loong64')
 url="https://github.com/NapNeko/NapCatQQ"
 license=('GPL2')
-depends=('linuxqq' 'xorg-server-xvfb' 'execstack')
+depends=('linuxqq' 'xorg-server-xvfb')
 makedepends=('git' 'npm' 'jq')
 options=('!strip')
 conflicts=('napcatqq'
@@ -38,7 +38,6 @@ build() {
     npm i && cd napcat.webui && npm i && cd .. || exit 1
     npm run build:shell && npm run depend  || exit 1
     rm dist/package-lock.json
-    execstack -c dist/moehoo/MoeHoo.linux.x64.node
 }
 
 package() {
