@@ -1,0 +1,13 @@
+pkgbase = inhibit-bridge-git
+	pkgdesc = A bridge from dbus ScreenSaver inhibit to systemd/logind idle inhibit.
+	pkgver = r54.962b658
+	pkgrel = 1
+	url = https://github.com/bdwalton/inhibit-bridge
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = go
+	makedepends = git
+	source = inhibit-bridge::git+https://github.com/bdwalton/inhibit-bridge
+	sha256sums = SKIP
+
+pkgname = inhibit-bridge-git
