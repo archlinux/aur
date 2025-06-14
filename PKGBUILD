@@ -1,12 +1,12 @@
 # Maintainer: Matilde Morrone <aur at morrone dot dev>
 
 pkgname=verdi-git
-pkgver=r237.1069fc9
+pkgver=r248.be53f55
 pkgrel=1
 pkgdesc="The elegant Wayland compositor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/verdiwm/verdi"
-license=('Apache-2.0')
+license=('EUPL-1.2')
 groups=('verdi')
 depends=('libinput')
 makedepends=('git' 'cargo' 'clang' 'lld' 'libgit2')
@@ -28,4 +28,5 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	cargo xtask install --destdir $pkgdir
+	install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 }
