@@ -17,8 +17,8 @@ sha256sums=('8205a6abb2c053380940d5c2e83cf10b5b889544e2d36c1c777778bf35772729')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 prepare() {
   avail=$(df -P -B 1048576 $srcdir|awk 'NR>1 {print $4}')
-  if [ $avail -le 6144 ]; then
-    printf "need at least 6 GiB of free space\n"
+  if [ $avail -le 5120 ]; then
+    printf "need at least 5 GiB of free space\n"
     exit 1
   fi
   src_url=$source_url
