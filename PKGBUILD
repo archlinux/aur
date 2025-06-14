@@ -1,14 +1,17 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Mike Pento <mjpento@gmail.com>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
+
 pkgname=fvwm-themes-extra
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extra themes for fvwm"
 arch=('any')
 url="http://fvwm-themes.sourceforge.net"
 license=('GPL')
+depends=('fvwm')
 replaces=('fvwm-themes-extra-devel')
-source=("http://downloads.sourceforge.net/sourceforge/fvwm-themes/$pkgname-$pkgver.tar.gz")
+source=("https://downloads.sourceforge.net/sourceforge/fvwm-themes/$pkgname-$pkgver.tar.gz")
 md5sums=('66c13802933942949c7c1be79a497496')
 
 package() {
