@@ -4,10 +4,10 @@
 
 pkgbase=linux-fsync-nobara-bin
 pkgname=${pkgbase}
-pkgver=6.14.4
+pkgver=6.15.2
 pkgrel=1
-build_id=8970507
-fedora=41
+build_id=9150195
+fedora=42
 extras=200.nobara.fc${fedora}
 printf -v l_build_id %08d%s ${build_id}
 pkgdesc='The Linux kernel and modules of Nobara Project - Prebuilt version'
@@ -22,21 +22,21 @@ provides=(VIRTUALBOX-GUEST-MODULES
           WIREGUARD-MODULE
           KSMBD-MODULE
           NTFS3-MODULE)
-source=("https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-41/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-core-${pkgver}-${extras}.x86_64.rpm"
-        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-41/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-${pkgver}-${extras}.x86_64.rpm"
-        #"https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-41/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-core-${pkgver}-${extras}.x86_64.rpm"
-        #"https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-41/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-extra-${pkgver}-${extras}.x86_64.rpm"
-        #"https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-41/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-internal-${pkgver}-${extras}.x86_64.rpm"
-        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-41/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-devel-${pkgver}-${extras}.x86_64.rpm")
-#        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-41/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-uki-virt-${pkgver}-${extras}.x86_64.rpm")
+source=("https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-core-${pkgver}-${extras}.x86_64.rpm"
+        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-${pkgver}-${extras}.x86_64.rpm"
+        #"https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-core-${pkgver}-${extras}.x86_64.rpm"
+        #"https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-extra-${pkgver}-${extras}.x86_64.rpm"
+        #"https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-internal-${pkgver}-${extras}.x86_64.rpm"
+        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-devel-${pkgver}-${extras}.x86_64.rpm")
+#        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-uki-virt-${pkgver}-${extras}.x86_64.rpm")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('45e9c95b89c1526c4a1e1a75d0c106483a28b988871279af73691555cc8d281b'
-            '741cca4a6f1a702f750a5537346e73603589d770f45d4748eb9d7776205fbf6d'
-            'f6d2028773b50f4b272963f5b3767b6efc5ae45450b25cb314e8f0ad746ac93c')
+sha256sums=('33893aec83e128c1e2422a320f14eb86e7efa9bd4dfa8b4aa6f10e93230214a7'
+            'a1c696fc69432a1ef2cffa59af5c0ebe8e5232af7d1cc80b1f3738f0f5c58eb6'
+            '5a22e9c317d1a1ed8a432470cec54ce861ac36f9be1a4ddfa1c4f4f2480a7b70')
 
 package() {
 
