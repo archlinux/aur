@@ -5,7 +5,6 @@ pkgbase = mkdotenv
 	url = https://github.com/pc-magas/mkdotenv
 	arch = x86_64
 	license = GPL-3
-	makedepends = go
 	source = mkdotenv-0.3.2.tar.gz::https://github.com/pc-magas/mkdotenv/releases/download/v0.3.2/mkdotenv-0.3.2.tar.gz
 	sha256sums = 0331436abf6680c4beddf3fb3869fa5c59eb01f24455eafd928ef0893a559a09
 
