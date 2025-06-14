@@ -1,0 +1,54 @@
+# Maintainer: Integral <integral@member.fsf.org>
+
+pkgname=danxi-git
+_pkgname=${pkgname%-git}
+pkgver=1.4.8.r5.ge2e5f72
+pkgrel=1
+pkgdesc="Maybe the best all-rounded service app for Fudan University students | 可能是复旦学生最好的第三方校园服务 APP"
+url="https://github.com/DanXi-Dev/DanXi"
+license=('GPL-3.0-or-later')
+arch=('x86_64')
+depends=('gtk3' 'libsecret')
+makedepends=('fvm')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+	git -C DanXi describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd DanXi
+
+	fvm use stable
+	fvm flutter --disable-analytics
+	fvm flutter pub get
+}
+
+build() (
+	cd DanXi
+	export CXXFLAGS+=" -Wno-error=unused-result"
+	fvm dart run intl_utils:generate
+	fvm dart build_release.dart --target linux --versionCode dummy
+)
+
+package() {
+	cd DanXi
+
+	pushd build/linux/x64/release/bundle
+	install -Dm755 dan_xi -t "${pkgdir}/usr/lib/${_pkgname}/"
+	cp -a lib data "${pkgdir}/usr/lib/${_pkgname}/"
+	popd
+
+	# Symlink
+	install -dm755 "${pkgdir}/usr/bin"
+	ln -s "/usr/lib/${_pkgname}/dan_xi" "${pkgdir}/usr/bin/dan_xi"
+
+	# Icon
+	install -Dm644 "packaging/dan_xi.png" -t "${pkgdir}/usr/share/icons/hicolor/apps/1024x1024/"
+
+	# Desktop Launcher
+	install -Dm644 "packaging/io.github.danxi_dev.dan_xi.desktop" "${pkgdir}/usr/share/applications/dan_xi.desktop"
+}
