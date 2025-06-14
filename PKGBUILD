@@ -1,4 +1,5 @@
-# Maintainer: Tiago "marmis" de Paula <tiagodepalves@gmail.com>
+# Maintainer: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
+# Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=licensecheck

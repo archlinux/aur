@@ -1,2 +1,8 @@
-App-Licensecheck-*/
-*.tar.*
+*
+# dev tools
+!.gitignore
+!.nvchecker.toml
+!.shellcheckrc
+# actual package
+!PKGBUILD
+!.SRCINFO
