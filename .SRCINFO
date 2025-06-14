@@ -4,13 +4,13 @@ pkgbase = anitr-cli
 	pkgrel = 1
 	url = https://github.com/xeyossr/anitr-cli
 	arch = x86_64
-	license = GPL-3
+	license = GPL3
 	depends = mpv
 	depends = rofi
 	provides = anitr-cli
 	conflicts = anitr-cli
-	noextract = anitr-cli
-	source = https://github.com/xeyossr/anitr-cli/releases/latest/download/anitr-cli
+	noextract = anitr-cli-3.2.0
+	source = anitr-cli-3.2.0::https://github.com/xeyossr/anitr-cli/releases/download/v3.2.0/anitr-cli
 	sha256sums = SKIP
 
 pkgname = anitr-cli

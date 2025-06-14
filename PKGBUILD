@@ -7,14 +7,14 @@ pkgrel=1
 pkgdesc="Terminal üzerinden Türkçe anime izleme aracı"
 arch=('x86_64')
 url="https://github.com/xeyossr/anitr-cli"
-license=('GPL-3')
+license=('GPL3')
 depends=('mpv' 'rofi')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("https://github.com/xeyossr/anitr-cli/releases/latest/download/anitr-cli")
-noextract=("anitr-cli")
+source=("${pkgname}-${pkgver}::https://github.com/xeyossr/anitr-cli/releases/download/v${pkgver}/anitr-cli")
+noextract=("${pkgname}-${pkgver}")
 sha256sums=('SKIP')
 
 package() {
-  install -Dm755 "${srcdir}/anitr-cli" "${pkgdir}/usr/bin/anitr-cli"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
 }
