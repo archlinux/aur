@@ -1,0 +1,10 @@
+#!/bin/bash
+
+post_remove() {
+    for home in /home/*; do
+        bottle_path="${home}/.deepinwine/Deepin-WXWork"
+        if [[ -d "$bottle_path" ]]; then
+            rm -rf "$bottle_path"
+        fi
+    done
+}
