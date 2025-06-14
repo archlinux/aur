@@ -1,7 +1,7 @@
 # Maintainer: Dani Rodríguez <dani@danirod.es>
 pkgname=gitfourchette
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The comfortable Git UI for Linux"
 arch=(any)
 url="https://gitfourchette.org/"
@@ -15,6 +15,7 @@ depends=(
 )
 makedepends=(
 	'git'
+	'python-pip'
 	'python-setuptools'
 )
 checkdepends=(

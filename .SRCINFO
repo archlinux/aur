@@ -1,7 +1,7 @@
 pkgbase = gitfourchette
 	pkgdesc = The comfortable Git UI for Linux
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitfourchette.org/
 	arch = any
 	license = GPL-3.0-only
@@ -11,6 +11,7 @@ pkgbase = gitfourchette
 	checkdepends = python-pytest-xdist
 	checkdepends = python-ruff
 	makedepends = git
+	makedepends = python-pip
 	makedepends = python-setuptools
 	depends = hicolor-icon-theme
 	depends = python
