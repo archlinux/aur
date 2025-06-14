@@ -1,13 +1,13 @@
 # Maintainer: Manel Castillo Giménez
 pkgname="clavis"
-pkgver="2.0.2"
+pkgver="2.0.3"
 pkgrel="1"
 pkgdesc="An easy to use Password Manager."
 arch=("x86_64")
 url="https://github.com/ManelCG/clavis"
-depends=("gtk3" "cairo" "pango" "pixman" "pass" "make" "pkgconf" "xdotool" "xclip" "grep" "awk" "gnupg")
+depends=("gtk4" "gtkmm-4.0" "cmake" "gpgme")
 conflicts=("clavis-git" "clavis-git-debug")
-optdepends=()
+optdepends=("git")
 
 _gitroot="https://github.com/ManelCG/clavis.git"
 _gitname="clavis"
@@ -28,7 +28,7 @@ package(){
   fi
 
   cd ${srcdir}/${_gitname}
-  git checkout v2.0.2
+  git checkout v2.0.3
 
   echo "Git checkout done"
 
