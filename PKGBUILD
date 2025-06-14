@@ -17,8 +17,6 @@ depends=('alsa-lib' 'glibc' 'libogg' 'libpng' 'libvorbis' 'libvpx1.7' 'libx11' '
 optdepends=(
 	'pulseaudio: PulseAudio support'
 	'pipewire-pulse: PipeWire support as a replacement for PulseAudio'
-	'xorg-server: Required to run the game under Xorg'
-	'weston: Required to run the game under Wayland'
 )
 options=(!strip)
 source=("${_filename} V${pkgver} Linux x64.tar.gz::https://archive.org/download/${pkgname}-v-${pkgver}-linux-x-64.tar/${_urlname}%20V${pkgver}%20Linux%20x64.tar.gz"
