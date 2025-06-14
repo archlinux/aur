@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-box
-_tagname=2.0.0-rc.5
+_tagname=2.0.0
 pkgver="${_tagname//-/_}"
-pkgrel=3
+pkgrel=4
 pkgdesc='玲珑（Linglong） is the container application toolkit of deepin.'
 arch=($CARCH)
 url='https://github.com/OpenAtom-Linyaps/linyaps-box'
@@ -36,7 +36,7 @@ optdepends=(
   "linglong-pica: deb package to Linglong package tool."
 )
 source=("${pkgname}-${_tagname}.tar.gz::${url}/archive/refs/tags/${_tagname}.tar.gz")
-sha1sums=('773e453629b88bad83fbc85710da4420f1a7b612')
+sha1sums=('026c780a118d919876f3f4c5bee3593635a3b179')
 
 build() {
   cd "${srcdir}"/${pkgname}-${_tagname}/
