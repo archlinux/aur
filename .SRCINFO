@@ -1,6 +1,6 @@
 pkgbase = wine-osu-spectator-wow64
 	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches (doesn't conflict with other Wine installations) (WoW64 version)
-	pkgver = 10.9.w26.sdf97d6c
+	pkgver = 10.10.w0.sc37f9f5
 	pkgrel = 1
 	url = http://www.winehq.com
 	install = wine-wow64.install
@@ -112,10 +112,10 @@ pkgbase = wine-osu-spectator-wow64
 	source = Makefile.single
 	source = makedep-fix.patch
 	source = buildiswow64
-	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=5063ab8a805e77b9b9dfe5587fb38981923e422d
+	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=885446556ce443b496e368b8f2c68807dcc7df0f
 	source = lto-fixup.patch
-	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=06-02-2025-5063ab8a-df97d6c3
-	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=df97d6c328104fe7197583818812be6b2f3475cc
+	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=06-14-2025-88544655-c37f9f50
+	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=c37f9f50912bd801e217ba81d2512feb7386f0d1
 	sha512sums = 05e6d1148841b7844155e9992ad16fe8cfe924db4092a9aeb707d47551c63df5b6ba3a8036f8b70d1320b07ca11458a8bf614baf9f82542c96e7b72c48de6a8f
 	sha512sums = 59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266
 	sha512sums = 3ce23732b9c433a9b295e366fc397ad8ff21624fbde635facfdd9435fd3132f51a7adf30d2a7b097d5509f8e333a144bcea550b9c6c479b9129d1405b90e8431

@@ -14,7 +14,7 @@ _debug=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.9.w26.sdf97d6c
+pkgver=10.10.w0.sc37f9f5
 pkgrel=1
 eval pkgrel=1
 
@@ -33,12 +33,13 @@ _enabled_staging=()
 
 ## if all staging patches are to be applied, what (array of) patches to omit?
 ## e.g. "Compiler_Warnings user32-. . ."
-_disabled_staging=(winedevice-Default_Drivers dsound-EAX ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath ws2_32-af_unix eventfd_synchronization)
+_disabled_staging=(ntdll-ForceBottomUpAlloc winedevice-Default_Drivers dsound-EAX ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath ws2_32-af_unix eventfd_synchronization)
+                   # ntdll-ForceBottomUpAlloc causes crashes with mimalloc (should be reported/fixed)
                    # esync added manually from proton, the rest are known to cause performance issues with path/directory traversal
                    # dsound-EAX causes crashing in osu! with compat. mode enabled
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="06-02-2025-5063ab8a-df97d6c3"
+_patchbase_tag="06-14-2025-88544655-c37f9f50"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -49,8 +50,8 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=5063ab8a805e77b9b9dfe5587fb38981923e422d
-_desired_staging_commit=df97d6c328104fe7197583818812be6b2f3475cc
+_desired_wine_commit=885446556ce443b496e368b8f2c68807dcc7df0f
+_desired_staging_commit=c37f9f50912bd801e217ba81d2512feb7386f0d1
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
