@@ -1,9 +1,9 @@
 post_install() {
-  perl -ne '/^[[:blank:]]*vok_sk[[:blank:]]{1,}/ && exit 1' /usr/share/X11/xkb/rules/xorg.lst && (
-  sed -i "s/^! layout$/! layout\n  vok_sk          vogo's keyboard (slovak)/" /usr/share/X11/xkb/rules/evdev.lst
-  sed -i "s/^! variant$/! variant\n  basic           vok_sk: Qwerty (national chars with AltGr)\n  slovak          vok_sk: Qwerty (digits with AltGr)\n  qwertz          vok_sk: Qwertz (national chars with AltGr)\n  slovak_qwertz   vok_sk: Qwertz (digits with AltGr)/" /usr/share/X11/xkb/rules/xorg.lst;)
+  perl -ne '/^[[:blank:]]*vok_sk[[:blank:]]{1,}/ && exit 1' /usr/share/xkeyboard-config-2/rules/xorg.lst && (
+  sed -i "s/^! layout$/! layout\n  vok_sk          vogo's keyboard (slovak)/" /usr/share/xkeyboard-config-2/rules/evdev.xml
+  sed -i "s/^! variant$/! variant\n  basic           vok_sk: Qwerty (national chars with AltGr)\n  slovak          vok_sk: Qwerty (digits with AltGr)\n  qwertz          vok_sk: Qwertz (national chars with AltGr)\n  slovak_qwertz   vok_sk: Qwertz (digits with AltGr)/" /usr/share/xkeyboard-config-2/rules/xorg.lst;)
 tmpfile=$(mktemp)
-echo 'copy $d := doc("/usr/share/X11/xkb/rules/evdev.xml")
+echo 'copy $d := doc("/usr/share/xkeyboard-config-2/rules/evdev.xml")
 modify (
 insert node
 
@@ -46,38 +46,38 @@ as first into $d/xkbConfigRegistry/layoutList
 )
 return $d' | qizx - | /bin/sed '/^ *$/d' > $tmpfile
 if [ "${PIPESTATUS[1]}" -eq 0 ]; then
-	mv $tmpfile /usr/share/X11/xkb/rules/evdev.xml
+	mv $tmpfile /usr/share/xkeyboard-config-2/rules/evdev.xml
 fi
-chmod a+r /usr/share/X11/xkb/rules/evdev.xml
+chmod a+r /usr/share/xkeyboard-config-2/rules/evdev.xml
   echo "-- Please read http://www.abclinuxu.cz/blog/origami/2006/12/21/162644"
   /bin/true
 }
 
 post_upgrade() {
-  perl -ne '/^[[:blank:]]*vok_sk[[:blank:]]{1,}/ && exit 1' /usr/share/X11/xkb/rules/xorg.lst && (
-  sed -i "s/^! layout$/! layout\n  vok_sk          vogo's keyboard (slovak)/" /usr/share/X11/xkb/rules/xorg.lst
-  sed -i "s/^! variant$/! variant\n  basic           vok_sk: Qwerty (national chars with AltGr)\n  slovak          vok_sk: Qwerty (digits with AltGr)\n  qwertz          vok_sk: Qwertz (national chars with AltGr)\n  slovak_qwertz   vok_sk: Qwertz (digits with AltGr)/" /usr/share/X11/xkb/rules/xorg.lst;)
+  perl -ne '/^[[:blank:]]*vok_sk[[:blank:]]{1,}/ && exit 1' /usr/share/xkeyboard-config-2/rules/xorg.lst && (
+  sed -i "s/^! layout$/! layout\n  vok_sk          vogo's keyboard (slovak)/" /usr/share/xkeyboard-config-2/rules/xorg.lst
+  sed -i "s/^! variant$/! variant\n  basic           vok_sk: Qwerty (national chars with AltGr)\n  slovak          vok_sk: Qwerty (digits with AltGr)\n  qwertz          vok_sk: Qwertz (national chars with AltGr)\n  slovak_qwertz   vok_sk: Qwertz (digits with AltGr)/" /usr/share/xkeyboard-config-2/rules/xorg.lst;)
   echo "-- Please read http://www.abclinuxu.cz/blog/origami/2006/12/21/162644"
   /bin/true
 /bin/true
 }
 
 pre_remove() {
-sed -ni '/vok_sk          vogo'\''s keyboard (slovak)$/!p' /usr/share/X11/xkb/rules/xorg.lst
-sed -ni '/  basic           vok_sk: Qwerty (national chars with AltGr)$/!p' /usr/share/X11/xkb/rules/xorg.lst
-sed -ni '/  slovak          vok_sk: Qwerty (digits with AltGr)/!p' /usr/share/X11/xkb/rules/xorg.lst
-sed -ni '/  qwertz          vok_sk: Qwertz (national chars with AltGr)/!p' /usr/share/X11/xkb/rules/xorg.lst
-sed -ni '/  slovak_qwertz   vok_sk: Qwertz (digits with AltGr)/!p' /usr/share/X11/xkb/rules/xorg.lst
+sed -ni '/vok_sk          vogo'\''s keyboard (slovak)$/!p' /usr/share/xkeyboard-config-2/rules/xorg.lst
+sed -ni '/  basic           vok_sk: Qwerty (national chars with AltGr)$/!p' /usr/share/xkeyboard-config-2/rules/xorg.lst
+sed -ni '/  slovak          vok_sk: Qwerty (digits with AltGr)/!p' /usr/share/xkeyboard-config-2/rules/xorg.lst
+sed -ni '/  qwertz          vok_sk: Qwertz (national chars with AltGr)/!p' /usr/share/xkeyboard-config-2/rules/xorg.lst
+sed -ni '/  slovak_qwertz   vok_sk: Qwertz (digits with AltGr)/!p' /usr/share/xkeyboard-config-2/rules/xorg.lst
 tmpfile=$(mktemp)
-echo 'copy $d := doc("/usr/share/X11/xkb/rules/evdev.xml")
+echo 'copy $d := doc("/usr/share/xkeyboard-config-2/rules/evdev.xml")
 modify (
 delete node $d/xkbConfigRegistry/layoutList/layout[configItem/name='\''vok_sk'\'']
 )
 return $d' | qizx - | /bin/sed '/^ *$/d' >$tmpfile
 if [ "${PIPESTATUS[1]}" -eq 0 ]; then
-        mv $tmpfile /usr/share/X11/xkb/rules/evdev.xml
+        mv $tmpfile /usr/share/xkeyboard-config-2/rules/evdev.xml
 fi
-chmod a+r /usr/share/X11/xkb/rules/evdev.xml
+chmod a+r /usr/share/xkeyboard-config-2/rules/evdev.xml
 /bin/true
 }
 
