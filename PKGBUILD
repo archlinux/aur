@@ -1,13 +1,13 @@
 # Maintainer: Swarnaditya Singh <demonkingswarn@protonmail.com>
 pkgname=hypr-wellbeing-bin
 _pkgname=hypr-wellbeing
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
-pkgdesc="app usage logger for hyprland"
+pkgdesc="app usage logger for hyprland and niri"
 arch=('x86_64')
 url="https://github.com/DemonKingSwarn/hypr-wellbeing"
 license=('GPL3')
-depends=(hyprland)
+optdepends=(hyprland niri)
 provides=(hypr-wellbeing)
 conflicts=()
 replaces=()
