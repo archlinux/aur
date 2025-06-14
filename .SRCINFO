@@ -1,0 +1,13 @@
+pkgbase = opencl-language-server-bin
+	pkgdesc = OpenCL language server
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/Galarius/opencl-language-server
+	arch = x86_64
+	license = MIT
+	source = https://github.com/Galarius/opencl-language-server/releases/download/0.6.3/opencl-language-server-linux-x86_64.tar.gz
+	source = https://github.com/Galarius/opencl-language-server/releases/download/0.6.3/licenses.tar.gz
+	sha256sums = aa24259e40faeecc66084106cfbab5b7efec83be7b730c93a3f9b147a1351f9d
+	sha256sums = eef9d09c425353ba8070be1b6abdf66c56d15e401d1dd771f66d3f2339bd3f45
+
+pkgname = opencl-language-server-bin
