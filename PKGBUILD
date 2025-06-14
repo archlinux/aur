@@ -1,12 +1,13 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 # Contributor: Baptiste Jonglez <baptiste--aur at jonglez dot org>
+
 pkgname=bdsync
 pkgver=0.11.3
 pkgrel=1
 pkgdesc="Fast block device synchronizing tool"
 arch=("i686" "x86_64")
 url="https://github.com/rolffokkens/bdsync"
-license=('GPL')
+license=('GPL-2.0-only')
 depends=("openssl")
 makedepends=("git" "pandoc")
 source=("git+https://github.com/rolffokkens/$pkgname#tag=v${pkgver}")
@@ -15,21 +16,21 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname"
-  sed -i -r 's|^CFLAGS=(.*)|CFLAGS:=\1 $(CFLAGS)|' Makefile
-  sed -i -r 's|$\(CRYPTO_LDFLAGS\)$|\0 $(LDFLAGS)|' Makefile
+  sed -i -r \
+    -e 's|^CFLAGS=(.*)|CFLAGS?=\1|' \
+    -e 's|\$\(CRYPTO_LDFLAGS\)|\0 $(LDFLAGS)|' \
+    Makefile
 }
 
 build() {
   cd "$pkgname"
-
-  CFLAGS="${CFLAGS//-O2/-O3}"
   make
 }
 
 package() {
   cd "$pkgname"
-  install -D -m755 bdsync "$pkgdir/usr/bin/bdsync"
-  install -D -m644 bdsync.1 "$pkgdir/usr/share/man/man1/bdsync.1"
+  install -Dm755 bdsync -t "$pkgdir/usr/bin"
+  install -Dm644 bdsync.1 -t "$pkgdir/usr/share/man/man1"
 }
 
 # vim:set ts=2 sw=2 et:
