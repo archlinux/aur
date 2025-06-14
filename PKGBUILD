@@ -6,14 +6,14 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-pure-git
-pkgver=10.9.r98.g3295365ba56
+pkgver=10.10.r0.g885446556ce
 pkgrel=1
 source=(
   "git+https://gitlab.winehq.org/wine/wine.git"
   "git+https://gitlab.winehq.org/wine/wine-staging.git"
   30-win32-aliases.conf
   wine-binfmt.conf
-  ntsync-10.8-staging.patch
+  ntsync-10.10-staging.patch
   7064.patch
   winex11.drv-Recognize-the-keyboard-in-a-locale-indep.patch
   0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch
@@ -32,7 +32,7 @@ sha256sums=(
   'SKIP'
   '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
   '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
-  '6230b4fae37d0b80652a56d804e75fa3a52a5145931097af1918b80474f66d69'
+  '9d9fcb22979b33c080e7f32977ea30bb7801b954df9b75fe3848a72d8467791b'
   'a7e69169f2869a71e6eed3fe01116629ea889c26d6a7c80b48945d88d9a2a09c'
   '5f1065a4a404ee424fd80baf2c4f66f1ada83a088d56bc57e99260a2444ee006'
   '13c94740b1030818c41c8745928c8d4125386066e794a7ddcd0b2f48a09ccd60'
@@ -118,8 +118,8 @@ prepare() {
     -W server-Signal_Thread \
     -W eventfd_synchronization
 
-  # NTSync for Wine 10.8
-  patch -Np1 -i "${srcdir}/ntsync-10.8-staging.patch"
+  # NTSync for Wine 10.10
+  patch -Np1 -i "${srcdir}/ntsync-10.10-staging.patch"
 
   # Use native Visual C++ DLLs, fix Windows product version
   patch -Np1 -i "${srcdir}/0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch"

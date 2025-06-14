@@ -1,8 +1,8 @@
 diff --git a/configure b/configure
-index 4f4d63aa84b..0cdc257e929 100755
+index 3c6ad49a68b..b3bdc71c834 100755
 --- a/configure
 +++ b/configure
-@@ -9838,6 +9838,12 @@ if test "x$ac_cv_header_linux_major_h" = xyes
+@@ -9908,6 +9908,12 @@ if test "x$ac_cv_header_linux_major_h" = xyes
  then :
    printf "%s\n" "#define HAVE_LINUX_MAJOR_H 1" >>confdefs.h
  
@@ -16,10 +16,10 @@ index 4f4d63aa84b..0cdc257e929 100755
  ac_fn_c_check_header_compile "$LINENO" "linux/param.h" "ac_cv_header_linux_param_h" "$ac_includes_default"
  if test "x$ac_cv_header_linux_param_h" = xyes
 diff --git a/configure.ac b/configure.ac
-index e0a9cf44ec8..c3d620436a6 100644
+index e591cad824c..623ab75d758 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -666,6 +666,7 @@ AC_CHECK_HEADERS(\
+@@ -677,6 +677,7 @@ AC_CHECK_HEADERS(\
  	linux/input.h \
  	linux/ioctl.h \
  	linux/major.h \
@@ -28,10 +28,10 @@ index e0a9cf44ec8..c3d620436a6 100644
  	linux/seccomp.h \
  	linux/serial.h \
 diff --git a/dlls/ntdll/unix/file.c b/dlls/ntdll/unix/file.c
-index c6e49537829..a07ef184c5f 100644
+index e1b56e2c5f8..b0556eda1a9 100644
 --- a/dlls/ntdll/unix/file.c
 +++ b/dlls/ntdll/unix/file.c
-@@ -7691,7 +7691,7 @@ NTSTATUS WINAPI NtLockFile( HANDLE file, HANDLE event, PIO_APC_ROUTINE apc, void
+@@ -7667,7 +7667,7 @@ NTSTATUS WINAPI NtLockFile( HANDLE file, HANDLE event, PIO_APC_ROUTINE apc, void
          }
          if (handle)
          {
@@ -54,10 +54,10 @@ index 36ffe20f6dc..c086731cd69 100644
      {
          req->info = wine_server_obj_handle( process_info );
 diff --git a/dlls/ntdll/unix/server.c b/dlls/ntdll/unix/server.c
-index 63ccc4ed4b7..b6de32b70ff 100644
+index 87bdf3a6641..2077c07300b 100644
 --- a/dlls/ntdll/unix/server.c
 +++ b/dlls/ntdll/unix/server.c
-@@ -123,7 +123,7 @@ sigset_t server_block_set;  /* signals to block during server calls */
+@@ -124,7 +124,7 @@ sigset_t server_block_set;  /* signals to block during server calls */
  static int fd_socket = -1;  /* socket to exchange file descriptors with the server */
  static int initial_cwd = -1;
  static pid_t server_pid;
@@ -66,7 +66,7 @@ index 63ccc4ed4b7..b6de32b70ff 100644
  
  /* atomically exchange a 64-bit value */
  static inline LONG64 interlocked_xchg64( LONG64 *dest, LONG64 val )
-@@ -837,6 +837,21 @@ unsigned int server_wait( const union select_op *select_op, data_size_t size, UI
+@@ -838,6 +838,21 @@ unsigned int server_wait( const union select_op *select_op, data_size_t size, UI
  }
  
  
@@ -88,7 +88,7 @@ index 63ccc4ed4b7..b6de32b70ff 100644
  /***********************************************************************
   *              NtContinue  (NTDLL.@)
   */
-@@ -913,7 +928,7 @@ unsigned int server_queue_process_apc( HANDLE process, const union apc_call *cal
+@@ -914,7 +929,7 @@ unsigned int server_queue_process_apc( HANDLE process, const union apc_call *cal
          }
          else
          {
@@ -97,7 +97,7 @@ index 63ccc4ed4b7..b6de32b70ff 100644
  
              SERVER_START_REQ( get_apc_result )
              {
-@@ -980,7 +995,7 @@ void wine_server_send_fd( int fd )
+@@ -981,7 +996,7 @@ void wine_server_send_fd( int fd )
   *
   * Receive a file descriptor passed from the server.
   */
@@ -106,7 +106,7 @@ index 63ccc4ed4b7..b6de32b70ff 100644
  {
      struct iovec vec;
      struct msghdr msghdr;
-@@ -1175,7 +1190,7 @@ int server_get_unix_fd( HANDLE handle, unsigned int wanted_access, int *unix_fd,
+@@ -1176,7 +1191,7 @@ int server_get_unix_fd( HANDLE handle, unsigned int wanted_access, int *unix_fd,
                  if (type) *type = reply->type;
                  if (options) *options = reply->options;
                  access = reply->access;
@@ -115,7 +115,7 @@ index 63ccc4ed4b7..b6de32b70ff 100644
                  {
                      assert( wine_server_ptr_handle(fd_handle) == handle );
                      *needs_close = (!reply->cacheable ||
-@@ -1651,7 +1666,7 @@ size_t server_init_process(void)
+@@ -1652,7 +1667,7 @@ size_t server_init_process(void)
      pthread_sigmask( SIG_BLOCK, &server_block_set, NULL );
  
      /* receive the first thread request fd on the main socket */
@@ -124,7 +124,7 @@ index 63ccc4ed4b7..b6de32b70ff 100644
  
  #ifdef SO_PASSCRED
      /* now that we hopefully received the server_pid, disable SO_PASSCRED */
-@@ -1866,12 +1881,17 @@ NTSTATUS WINAPI NtDuplicateObject( HANDLE source_process, HANDLE source, HANDLE
+@@ -1868,12 +1883,17 @@ NTSTATUS WINAPI NtDuplicateObject( HANDLE source_process, HANDLE source, HANDLE
          return result.dup_handle.status;
      }
  
@@ -142,7 +142,7 @@ index 63ccc4ed4b7..b6de32b70ff 100644
  
      SERVER_START_REQ( dup_handle )
      {
-@@ -1937,12 +1957,16 @@ NTSTATUS WINAPI NtClose( HANDLE handle )
+@@ -1939,12 +1959,16 @@ NTSTATUS WINAPI NtClose( HANDLE handle )
      if (HandleToLong( handle ) >= ~5 && HandleToLong( handle ) <= ~0)
          return STATUS_SUCCESS;
  
@@ -1390,10 +1390,10 @@ index a16507155c8..f2ad8ef0435 100644
      if (status != WAIT_OBJECT_0) goto done;
  
 diff --git a/dlls/ntdll/unix/thread.c b/dlls/ntdll/unix/thread.c
-index 93900da9add..b355a2b3633 100644
+index 6a59fdb3cb3..2344cbcba58 100644
 --- a/dlls/ntdll/unix/thread.c
 +++ b/dlls/ntdll/unix/thread.c
-@@ -1802,7 +1802,7 @@ NTSTATUS get_thread_context( HANDLE handle, void *context, BOOL *self, USHORT ma
+@@ -1804,7 +1804,7 @@ NTSTATUS get_thread_context( HANDLE handle, void *context, BOOL *self, USHORT ma
  
      if (ret == STATUS_PENDING)
      {
@@ -1403,10 +1403,10 @@ index 93900da9add..b355a2b3633 100644
          SERVER_START_REQ( get_thread_context )
          {
 diff --git a/dlls/ntdll/unix/unix_private.h b/dlls/ntdll/unix/unix_private.h
-index 76f627761d5..3da5748be4d 100644
+index 31df2359944..057661c36e2 100644
 --- a/dlls/ntdll/unix/unix_private.h
 +++ b/dlls/ntdll/unix/unix_private.h
-@@ -114,6 +114,7 @@ struct ntdll_thread_data
+@@ -115,6 +115,7 @@ struct ntdll_thread_data
      PRTL_THREAD_START_ROUTINE start;         /* thread entry point */
      void                     *param;         /* thread entry point parameter */
      void                     *jmp_buf;       /* setjmp buffer for exception handling */
@@ -1414,7 +1414,7 @@ index 76f627761d5..3da5748be4d 100644
  };
  
  C_ASSERT( sizeof(struct ntdll_thread_data) <= sizeof(((TEB *)0)->GdiTebBatch) );
-@@ -221,6 +222,8 @@ extern NTSTATUS load_start_exe( WCHAR **image, void **module );
+@@ -223,6 +224,8 @@ extern NTSTATUS load_start_exe( WCHAR **image, void **module );
  extern ULONG_PTR redirect_arm64ec_rva( void *module, ULONG_PTR rva, const IMAGE_ARM64EC_METADATA *metadata );
  extern void start_server( BOOL debug );
  
@@ -1423,7 +1423,7 @@ index 76f627761d5..3da5748be4d 100644
  extern unsigned int server_call_unlocked( void *req_ptr );
  extern void server_enter_uninterrupted_section( pthread_mutex_t *mutex, sigset_t *sigset );
  extern void server_leave_uninterrupted_section( pthread_mutex_t *mutex, sigset_t *sigset );
-@@ -228,11 +231,13 @@ extern unsigned int server_select( const union select_op *select_op, data_size_t
+@@ -230,11 +233,13 @@ extern unsigned int server_select( const union select_op *select_op, data_size_t
                                     timeout_t abs_timeout, struct context_data *context, struct user_apc *user_apc );
  extern unsigned int server_wait( const union select_op *select_op, data_size_t size, UINT flags,
                                   const LARGE_INTEGER *timeout );
@@ -1437,7 +1437,7 @@ index 76f627761d5..3da5748be4d 100644
  extern void process_exit_wrapper( int status ) DECLSPEC_NORETURN;
  extern size_t server_init_process(void);
  extern void server_init_process_done(void);
-@@ -393,6 +398,8 @@ extern NTSTATUS wow64_wine_spawnvp( void *args );
+@@ -389,6 +394,8 @@ extern NTSTATUS wow64_wine_spawnvp( void *args );
  
  extern void dbg_init(void);
  
@@ -1446,7 +1446,7 @@ index 76f627761d5..3da5748be4d 100644
  extern NTSTATUS call_user_apc_dispatcher( CONTEXT *context_ptr, ULONG_PTR arg1, ULONG_PTR arg2, ULONG_PTR arg3,
                                            PNTAPCFUNC func, NTSTATUS status );
  extern NTSTATUS call_user_exception_dispatcher( EXCEPTION_RECORD *rec, CONTEXT *context );
-@@ -401,6 +408,7 @@ extern void call_raise_user_exception_dispatcher(void);
+@@ -397,6 +404,7 @@ extern void call_raise_user_exception_dispatcher(void);
  #define IMAGE_DLLCHARACTERISTICS_PREFER_NATIVE 0x0010 /* Wine extension */
  
  #define TICKSPERSEC 10000000
@@ -1454,7 +1454,7 @@ index 76f627761d5..3da5748be4d 100644
  #define SECS_1601_TO_1970  ((369 * 365 + 89) * (ULONGLONG)86400)
  
  static inline ULONGLONG ticks_from_time_t( time_t time )
-@@ -472,7 +480,7 @@ static inline struct async_data server_async( HANDLE handle, struct async_fileio
+@@ -468,7 +476,7 @@ static inline struct async_data server_async( HANDLE handle, struct async_fileio
  
  static inline NTSTATUS wait_async( HANDLE handle, BOOL alertable )
  {
@@ -1464,7 +1464,7 @@ index 76f627761d5..3da5748be4d 100644
  
  static inline BOOL in_wow64_call(void)
 diff --git a/dlls/ntdll/unix/virtual.c b/dlls/ntdll/unix/virtual.c
-index 51dd62d68ee..0afee693142 100644
+index bb082777128..3898a10ee79 100644
 --- a/dlls/ntdll/unix/virtual.c
 +++ b/dlls/ntdll/unix/virtual.c
 @@ -4026,6 +4026,7 @@ static TEB *init_teb( void *ptr, BOOL is_wow )
@@ -1476,10 +1476,10 @@ index 51dd62d68ee..0afee693142 100644
      return teb;
  }
 diff --git a/include/config.h.in b/include/config.h.in
-index bd86433a954..fb00f30d14a 100644
+index da596d65bb2..b5b57d8fd7b 100644
 --- a/include/config.h.in
 +++ b/include/config.h.in
-@@ -201,6 +201,9 @@
+@@ -198,6 +198,9 @@
  /* Define to 1 if you have the <linux/major.h> header file. */
  #undef HAVE_LINUX_MAJOR_H
  
@@ -1490,10 +1490,10 @@ index bd86433a954..fb00f30d14a 100644
  #undef HAVE_LINUX_PARAM_H
  
 diff --git a/include/wine/server_protocol.h b/include/wine/server_protocol.h
-index 2c0e8c27fb5..0bae2621076 100644
+index 84a83612471..99edbe8326a 100644
 --- a/include/wine/server_protocol.h
 +++ b/include/wine/server_protocol.h
-@@ -5936,6 +5936,81 @@ struct set_keyboard_repeat_reply
+@@ -5911,6 +5911,81 @@ struct set_keyboard_repeat_reply
      char __pad_12[4];
  };
  
@@ -1575,7 +1575,7 @@ index 2c0e8c27fb5..0bae2621076 100644
  
  enum request
  {
-@@ -6233,6 +6308,11 @@ enum request
+@@ -6208,6 +6283,11 @@ enum request
      REQ_get_next_process,
      REQ_get_next_thread,
      REQ_set_keyboard_repeat,
@@ -1587,7 +1587,7 @@ index 2c0e8c27fb5..0bae2621076 100644
      REQ_NB_REQUESTS
  };
  
-@@ -6534,6 +6614,11 @@ union generic_request
+@@ -6509,6 +6589,11 @@ union generic_request
      struct get_next_process_request get_next_process_request;
      struct get_next_thread_request get_next_thread_request;
      struct set_keyboard_repeat_request set_keyboard_repeat_request;
@@ -1599,7 +1599,7 @@ index 2c0e8c27fb5..0bae2621076 100644
  };
  union generic_reply
  {
-@@ -6833,8 +6918,13 @@ union generic_reply
+@@ -6808,8 +6893,13 @@ union generic_reply
      struct get_next_process_reply get_next_process_reply;
      struct get_next_thread_reply get_next_thread_reply;
      struct set_keyboard_repeat_reply set_keyboard_repeat_reply;
@@ -1610,8 +1610,8 @@ index 2c0e8c27fb5..0bae2621076 100644
 +    struct get_inproc_alert_event_reply get_inproc_alert_event_reply;
  };
  
--#define SERVER_PROTOCOL_VERSION 872
-+#define SERVER_PROTOCOL_VERSION 875
+-#define SERVER_PROTOCOL_VERSION 878
++#define SERVER_PROTOCOL_VERSION 881
  
  #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
 diff --git a/server/Makefile.in b/server/Makefile.in
@@ -2278,7 +2278,7 @@ index 39a740e07e5..2aaa87ed792 100644
      else
      {
 diff --git a/server/device.c b/server/device.c
-index 1f93cca437d..2eb38b0674b 100644
+index 2e3c5eb5bff..8c5ac281537 100644
 --- a/server/device.c
 +++ b/server/device.c
 @@ -25,6 +25,7 @@
@@ -2348,7 +2348,7 @@ index 1f93cca437d..2eb38b0674b 100644
  }
  
  static struct object *device_open_file( struct object *obj, unsigned int access,
-@@ -752,6 +764,9 @@ static void delete_file( struct device_file *file )
+@@ -760,6 +772,9 @@ static void delete_file( struct device_file *file )
          set_irp_result( irp, STATUS_FILE_DELETED, NULL, 0, 0 );
      }
  
@@ -2358,7 +2358,7 @@ index 1f93cca437d..2eb38b0674b 100644
      release_object( file );
  }
  
-@@ -783,6 +798,14 @@ static int device_manager_signaled( struct object *obj, struct wait_queue_entry
+@@ -791,6 +806,14 @@ static int device_manager_signaled( struct object *obj, struct wait_queue_entry
      return !list_empty( &manager->requests );
  }
  
@@ -2373,7 +2373,7 @@ index 1f93cca437d..2eb38b0674b 100644
  static void device_manager_destroy( struct object *obj )
  {
      struct device_manager *manager = (struct device_manager *)obj;
-@@ -817,6 +840,8 @@ static void device_manager_destroy( struct object *obj )
+@@ -825,6 +848,8 @@ static void device_manager_destroy( struct object *obj )
          assert( !irp->file && !irp->async );
          release_object( irp );
      }
@@ -2382,7 +2382,7 @@ index 1f93cca437d..2eb38b0674b 100644
  }
  
  static struct device_manager *create_device_manager(void)
-@@ -826,6 +851,7 @@ static struct device_manager *create_device_manager(void)
+@@ -834,6 +859,7 @@ static struct device_manager *create_device_manager(void)
      if ((manager = alloc_object( &device_manager_ops )))
      {
          manager->current_call = NULL;
@@ -2390,7 +2390,7 @@ index 1f93cca437d..2eb38b0674b 100644
          list_init( &manager->devices );
          list_init( &manager->requests );
          wine_rb_init( &manager->kernel_objects, compare_kernel_object );
-@@ -1015,6 +1041,10 @@ DECL_HANDLER(get_next_device_request)
+@@ -1023,6 +1049,10 @@ DECL_HANDLER(get_next_device_request)
                  }
                  list_remove( &irp->mgr_entry );
                  list_init( &irp->mgr_entry );
@@ -2766,7 +2766,7 @@ index 5f4cf029ad3..3b79530d56b 100644
  extern void default_poll_event( struct fd *fd, int event );
  extern void fd_cancel_async( struct fd *fd, struct async *async );
 diff --git a/server/handle.c b/server/handle.c
-index 8968df73647..58b0fe290d2 100644
+index 44232daf48c..5be66a2490c 100644
 --- a/server/handle.c
 +++ b/server/handle.c
 @@ -138,6 +138,7 @@ static const struct object_ops handle_table_ops =
@@ -2778,7 +2778,7 @@ index 8968df73647..58b0fe290d2 100644
      handle_table_destroy             /* destroy */
  };
 diff --git a/server/hook.c b/server/hook.c
-index bf2ad266e76..f2a9c650633 100644
+index 4c55c565968..fcb3dbcfbea 100644
 --- a/server/hook.c
 +++ b/server/hook.c
 @@ -93,6 +93,7 @@ static const struct object_ops hook_table_ops =
@@ -2996,10 +2996,10 @@ index 00000000000..f3c6a37fc8c
 +#endif
 +}
 diff --git a/server/mailslot.c b/server/mailslot.c
-index c54281c2101..929ca3ecb82 100644
+index 420e3d67345..bd52815c614 100644
 --- a/server/mailslot.c
 +++ b/server/mailslot.c
-@@ -93,6 +93,7 @@ static const struct object_ops mailslot_ops =
+@@ -94,6 +94,7 @@ static const struct object_ops mailslot_ops =
      default_unlink_name,       /* unlink_name */
      mailslot_open_file,        /* open_file */
      no_kernel_obj_list,        /* get_kernel_obj_list */
@@ -3007,7 +3007,7 @@ index c54281c2101..929ca3ecb82 100644
      no_close_handle,           /* close_handle */
      mailslot_destroy           /* destroy */
  };
-@@ -154,6 +155,7 @@ static const struct object_ops mail_writer_ops =
+@@ -155,6 +156,7 @@ static const struct object_ops mail_writer_ops =
      NULL,                       /* unlink_name */
      no_open_file,               /* open_file */
      no_kernel_obj_list,         /* get_kernel_obj_list */
@@ -3015,7 +3015,7 @@ index c54281c2101..929ca3ecb82 100644
      no_close_handle,            /* close_handle */
      mail_writer_destroy         /* destroy */
  };
-@@ -219,6 +221,7 @@ static const struct object_ops mailslot_device_ops =
+@@ -220,6 +222,7 @@ static const struct object_ops mailslot_device_ops =
      default_unlink_name,            /* unlink_name */
      mailslot_device_open_file,      /* open_file */
      no_kernel_obj_list,             /* get_kernel_obj_list */
@@ -3023,7 +3023,7 @@ index c54281c2101..929ca3ecb82 100644
      no_close_handle,                /* close_handle */
      mailslot_device_destroy         /* destroy */
  };
-@@ -249,6 +252,7 @@ static const struct object_ops mailslot_device_file_ops =
+@@ -250,6 +253,7 @@ static const struct object_ops mailslot_device_file_ops =
      NULL,                                   /* unlink_name */
      no_open_file,                           /* open_file */
      no_kernel_obj_list,                     /* get_kernel_obj_list */
@@ -3032,7 +3032,7 @@ index c54281c2101..929ca3ecb82 100644
      mailslot_device_file_destroy            /* destroy */
  };
 diff --git a/server/mapping.c b/server/mapping.c
-index 6704ef27e36..22a9c3dbc7d 100644
+index 7edadcbbeda..5cd62e2fb77 100644
 --- a/server/mapping.c
 +++ b/server/mapping.c
 @@ -79,6 +79,7 @@ static const struct object_ops ranges_ops =
@@ -3303,7 +3303,7 @@ index af0efe72132..671e1a77e36 100644
          release_object( mutex );
      }
 diff --git a/server/named_pipe.c b/server/named_pipe.c
-index 61395cf574a..104ced9be3b 100644
+index f1263013bf1..607d3d6e06e 100644
 --- a/server/named_pipe.c
 +++ b/server/named_pipe.c
 @@ -131,6 +131,7 @@ static const struct object_ops named_pipe_ops =
@@ -3330,7 +3330,7 @@ index 61395cf574a..104ced9be3b 100644
      async_close_obj_handle,       /* close_handle */
      pipe_end_destroy              /* destroy */
  };
-@@ -270,6 +273,7 @@ static const struct object_ops named_pipe_device_ops =
+@@ -271,6 +274,7 @@ static const struct object_ops named_pipe_device_ops =
      default_unlink_name,              /* unlink_name */
      named_pipe_device_open_file,      /* open_file */
      no_kernel_obj_list,               /* get_kernel_obj_list */
@@ -3338,7 +3338,7 @@ index 61395cf574a..104ced9be3b 100644
      no_close_handle,                  /* close_handle */
      named_pipe_device_destroy         /* destroy */
  };
-@@ -301,6 +305,7 @@ static const struct object_ops named_pipe_device_file_ops =
+@@ -302,6 +306,7 @@ static const struct object_ops named_pipe_device_file_ops =
      NULL,                                    /* unlink_name */
      no_open_file,                            /* open_file */
      no_kernel_obj_list,                      /* get_kernel_obj_list */
@@ -3346,7 +3346,7 @@ index 61395cf574a..104ced9be3b 100644
      no_close_handle,                         /* close_handle */
      named_pipe_device_file_destroy           /* destroy */
  };
-@@ -351,6 +356,7 @@ static const struct object_ops named_pipe_dir_ops =
+@@ -352,6 +357,7 @@ static const struct object_ops named_pipe_dir_ops =
      NULL,                                    /* unlink_name */
      named_pipe_dir_open_file,                /* open_file */
      no_kernel_obj_list,                      /* get_kernel_obj_list */
@@ -3355,7 +3355,7 @@ index 61395cf574a..104ced9be3b 100644
      named_pipe_dir_destroy                   /* destroy */
  };
 diff --git a/server/object.c b/server/object.c
-index e4c62b20a42..cf4d6155c75 100644
+index a4794a01b5a..8680b865422 100644
 --- a/server/object.c
 +++ b/server/object.c
 @@ -120,6 +120,7 @@ static const struct object_ops apc_reserve_ops =
@@ -3374,7 +3374,7 @@ index e4c62b20a42..cf4d6155c75 100644
      no_close_handle,           /* close_handle */
      no_destroy                 /* destroy */
  };
-@@ -639,6 +641,11 @@ struct fd *no_get_fd( struct object *obj )
+@@ -640,6 +642,11 @@ struct fd *no_get_fd( struct object *obj )
      return NULL;
  }
  
@@ -3387,7 +3387,7 @@ index e4c62b20a42..cf4d6155c75 100644
  {
      return map_access( access, &obj->ops->type->mapping );
 diff --git a/server/object.h b/server/object.h
-index 1ca093198e1..1f7cf5c65a5 100644
+index 83fdcd94ec1..a81a360118b 100644
 --- a/server/object.h
 +++ b/server/object.h
 @@ -42,6 +42,7 @@ struct async;
@@ -3563,10 +3563,10 @@ index 1648e46fe98..160dc4b4b43 100644
  
  /* process functions */
 diff --git a/server/protocol.def b/server/protocol.def
-index 683dc548091..f9c07729346 100644
+index 78c0b7e80b3..d95dadb7a5d 100644
 --- a/server/protocol.def
 +++ b/server/protocol.def
-@@ -4120,3 +4120,46 @@ struct handle_info
+@@ -4119,3 +4119,46 @@ struct handle_info
  @REPLY
      int enable;                /* previous state of auto-repeat enable */
  @END
@@ -3813,7 +3813,7 @@ index f57ea874ee5..708d0eca899 100644
 +    }
 +}
 diff --git a/server/registry.c b/server/registry.c
-index 7cca695a3ba..4b19e985576 100644
+index b693bf044dc..0e503f25f0a 100644
 --- a/server/registry.c
 +++ b/server/registry.c
 @@ -192,6 +192,7 @@ static const struct object_ops key_ops =
@@ -3837,7 +3837,7 @@ index 2254315b79e..24a4f779e68 100644
      master_socket_destroy          /* destroy */
  };
 diff --git a/server/request_handlers.h b/server/request_handlers.h
-index 82bc1bc32ba..d0568d9a073 100644
+index abed86cfe6a..369ae8f74bd 100644
 --- a/server/request_handlers.h
 +++ b/server/request_handlers.h
 @@ -301,6 +301,11 @@ DECL_HANDLER(resume_process);
@@ -3864,7 +3864,7 @@ index 82bc1bc32ba..d0568d9a073 100644
  };
  
  C_ASSERT( sizeof(abstime_t) == 8 );
-@@ -2291,3 +2301,15 @@ C_ASSERT( offsetof(struct set_keyboard_repeat_request, period) == 20 );
+@@ -2279,3 +2289,15 @@ C_ASSERT( offsetof(struct set_keyboard_repeat_request, period) == 20 );
  C_ASSERT( sizeof(struct set_keyboard_repeat_request) == 24 );
  C_ASSERT( offsetof(struct set_keyboard_repeat_reply, enable) == 8 );
  C_ASSERT( sizeof(struct set_keyboard_repeat_reply) == 16 );
@@ -3881,10 +3881,10 @@ index 82bc1bc32ba..d0568d9a073 100644
 +C_ASSERT( offsetof(struct get_inproc_alert_event_reply, handle) == 8 );
 +C_ASSERT( sizeof(struct get_inproc_alert_event_reply) == 16 );
 diff --git a/server/request_trace.h b/server/request_trace.h
-index 7156d1bb0ad..a0099f3250c 100644
+index d0346c6780a..0cc5f9b20f4 100644
 --- a/server/request_trace.h
 +++ b/server/request_trace.h
-@@ -3378,6 +3378,39 @@ static void dump_set_keyboard_repeat_reply( const struct set_keyboard_repeat_rep
+@@ -3357,6 +3357,39 @@ static void dump_set_keyboard_repeat_reply( const struct set_keyboard_repeat_rep
      fprintf( stderr, " enable=%d", req->enable );
  }
  
@@ -3924,7 +3924,7 @@ index 7156d1bb0ad..a0099f3250c 100644
  typedef void (*dump_func)( const void *req );
  
  static const dump_func req_dumpers[REQ_NB_REQUESTS] =
-@@ -3676,6 +3709,11 @@ static const dump_func req_dumpers[REQ_NB_REQUESTS] =
+@@ -3655,6 +3688,11 @@ static const dump_func req_dumpers[REQ_NB_REQUESTS] =
      (dump_func)dump_get_next_process_request,
      (dump_func)dump_get_next_thread_request,
      (dump_func)dump_set_keyboard_repeat_request,
@@ -3936,7 +3936,7 @@ index 7156d1bb0ad..a0099f3250c 100644
  };
  
  static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
-@@ -3974,6 +4012,11 @@ static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
+@@ -3953,6 +3991,11 @@ static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
      (dump_func)dump_get_next_process_reply,
      (dump_func)dump_get_next_thread_reply,
      (dump_func)dump_set_keyboard_repeat_reply,
@@ -3948,7 +3948,7 @@ index 7156d1bb0ad..a0099f3250c 100644
  };
  
  static const char * const req_names[REQ_NB_REQUESTS] =
-@@ -4272,6 +4315,11 @@ static const char * const req_names[REQ_NB_REQUESTS] =
+@@ -4251,6 +4294,11 @@ static const char * const req_names[REQ_NB_REQUESTS] =
      "get_next_process",
      "get_next_thread",
      "set_keyboard_repeat",
@@ -4166,7 +4166,7 @@ index 0bf82370961..8f92d22813c 100644
      no_destroy                  /* destroy */
  };
 diff --git a/server/symlink.c b/server/symlink.c
-index 74b60162c01..f0314f2ee90 100644
+index 55638a502bd..5f8db81eec9 100644
 --- a/server/symlink.c
 +++ b/server/symlink.c
 @@ -83,6 +83,7 @@ static const struct object_ops symlink_ops =
@@ -4425,10 +4425,10 @@ index 3cdb9e5be5f..87cfde364be 100644
      token_destroy              /* destroy */
  };
 diff --git a/server/window.c b/server/window.c
-index 914d376a44a..80458b193aa 100644
+index e2e9d5cc485..a521165bdbe 100644
 --- a/server/window.c
 +++ b/server/window.c
-@@ -119,6 +119,7 @@ static const struct object_ops window_ops =
+@@ -120,6 +120,7 @@ static const struct object_ops window_ops =
      NULL,                     /* unlink_name */
      no_open_file,             /* open_file */
      no_kernel_obj_list,       /* get_kernel_obj_list */
