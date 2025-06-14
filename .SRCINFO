@@ -6,6 +6,7 @@ pkgbase = danxi-git
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = fvm
+	makedepends = imagemagick
 	depends = gtk3
 	depends = libsecret
 	provides = danxi
