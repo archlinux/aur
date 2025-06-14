@@ -1,0 +1,16 @@
+pkgbase = danxi-git
+	pkgdesc = Maybe the best all-rounded service app for Fudan University students | 可能是复旦学生最好的第三方校园服务 APP
+	pkgver = 1.4.8.r5.ge2e5f72
+	pkgrel = 1
+	url = https://github.com/DanXi-Dev/DanXi
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = fvm
+	depends = gtk3
+	depends = libsecret
+	provides = danxi
+	conflicts = danxi
+	source = git+https://github.com/DanXi-Dev/DanXi.git
+	sha256sums = SKIP
+
+pkgname = danxi-git
