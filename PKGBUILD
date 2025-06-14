@@ -13,9 +13,9 @@ sha256sums=('2c790d15c8cf90063fa59d46114e1356f4658a600afc8b3034258218d471b2e3')
 
 
 package() {
-    cd "srcdir/application-$pkgver"
+    cd "$srcdir/application-$pkgver"
     chmod +x $pkgname.sh
-    ln -sf "/opt/libelectron/node_modules" "srcdir/application-$pkgver"
+    ln -sf "/opt/libelectron/node_modules" "$srcdir/application-$pkgver"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
@@ -28,7 +28,7 @@ package() {
     ln -s "/opt/$_pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
-    install -Dm644 "srcdir/application-$pkgver/$_pkgname.desktop" \
+    install -Dm644 "$srcdir/application-$pkgver/$_pkgname.desktop" \
         "$pkgdir/usr/share/applications/$_pkgname.desktop"
     sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
