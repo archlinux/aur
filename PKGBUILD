@@ -1,7 +1,7 @@
 # Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 
 pkgname="kapitano"
-pkgver="1.0"
+pkgver="1.1"
 pkgrel="1"
 epoch="1"
 pkgdesc="Modern ClamAV front-end that uses gtk4/libadwaita"
@@ -12,7 +12,7 @@ depends=("glib2" "gtk4" "libadwaita" "python-gobject")
 makedepends=("git" "meson" "appstream")
 provides=("kapitano")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/zynequ/Kapitano/archive/${pkgver}.tar.gz")
-sha256sums=("f05124ac2c3cceb8e636f3eef9ba6677ed35302541d6ac68948857a794e246e0")
+sha256sums=("541ff3e04df2b8f602dfd7789d9ee90530b299c170f79bbaab4c4e12a8023a94")
 
 build() {
   opts=()
@@ -22,4 +22,6 @@ build() {
 
 package() {
   meson install --destdir "${pkgdir}" -C build
+  install "${startdir}/page.codeberg.zynequ.Kapitano.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+  install "${startdir}/page.codeberg.zynequ.Kapitano-symbolic.svg" "${pkgdir}/usr/share/icons/hicolor/symbolic/apps"
 }
