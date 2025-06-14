@@ -4,7 +4,7 @@
 
 basename='rq'
 pkgname='python-rq'
-pkgver=2.3.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="Simple job queues for Python"
 arch=(any)
@@ -26,4 +26,4 @@ package() {
 }
 
 
-sha256sums=('bb51d5d5854954d1b035fc6cfff07ae067f02ad39748b77dfdd42278a460b282')
+sha256sums=('ad2dcbb74244ac6c4d7687e25ee6e9cbe308049e330a5c4a3d8c27184367f59b')
