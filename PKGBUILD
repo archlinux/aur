@@ -2,13 +2,13 @@
 
 pkgname=words-insane
 pkgver=2020.12.07
-pkgrel=1
+pkgrel=2
 pkgdesc="really big wordlist based on SCOWL"
 arch=('any')
 url="http://wordlist.sourceforge.net/"
 license=('custom:copyright')
 makedepends=(coreutils glibc)
-source=("http://downloads.sourceforge.net/wordlist/scowl-$pkgver.tar.gz")
+source=("https://downloads.sourceforge.net/wordlist/scowl-$pkgver.tar.gz")
 b2sums=('b65b984f830a05e05c45c90212d27185a71f83477e0c3d97f4555f2296234ae50c6460903508a7c9d466a0267237de2e6c78901d8b396f83f58cea68086b7dd2')
 
 
