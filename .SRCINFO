@@ -1,0 +1,32 @@
+pkgbase = gimp-plugin-gimp3-tools
+	pkgdesc = Ofnuts' Gimp Tools for Gimp 3
+	pkgver = 20250610T095711
+	pkgrel = 1
+	epoch = 1
+	url = https://sourceforge.net/projects/gimp3-tools/files/
+	arch = any
+	license = none
+	makedepends = subversion
+	depends = gimp>=3
+	depends = python
+	options = !strip
+	source = gimp-plugin-gimp3-tools-20250610T095711-readme.md::https://sourceforge.net/projects/gimp3-tools/files//readme.md
+	source = https://sourceforge.net/projects/gimp3-tools/files/general/ofn3-layer-tiles.zip
+	source = https://sourceforge.net/projects/gimp3-tools/files/management/ofn3-resource-manager.zip
+	source = https://sourceforge.net/projects/gimp3-tools/files/general/ofn3-export-layers.zip
+	source = https://sourceforge.net/projects/gimp3-tools/files/general/ofn3-list-guides.zip
+	source = https://sourceforge.net/projects/gimp3-tools/files/general/ofn3-align-layers.zip
+	source = https://sourceforge.net/projects/gimp3-tools/files/general/ofn3-colormap-to-paths.zip
+	source = https://sourceforge.net/projects/gimp3-tools/files/general/ofn3-interleave-layers.zip
+	source = https://sourceforge.net/projects/gimp3-tools/files/general/ofn3-mirror-layers.zip
+	sha256sums = 1307f1cffdd4a1a173fe7014f60dbe40ec295f4e18c42db27049bffb8532bb4f
+	sha256sums = dcc99e7dec2a87e943c14dea44031b439ce7c91655d0fdc6433c275ecff11125
+	sha256sums = 56a442e02a8df409ecf631df6fbee552083f4f8b3e67390088f705320cf7a6d2
+	sha256sums = cb193403fe33e76765179fa597e0fe423715dcb58ab7d3a1341bd40c8014b4b8
+	sha256sums = 40fcbfaa2559c3711a3b7c1a61ff150693223c25b5361b7a6fc4dd238c496816
+	sha256sums = 9d9aafdd7f5d1620e454b7ed51a57fb1bec49c4643320341d3e6a03f37a9924f
+	sha256sums = dcd2aeb0c9d73aab98ab581424d211825f9ca92da3d437f8e48f6be31631c72b
+	sha256sums = ebb956addd973b1c08b32c20448f9120bb5020d2007a645bb6c470536a764a7e
+	sha256sums = cd5f10f72012bcb073b838024de7c6c6e78586cba13860849e53b25dd0c41a7d
+
+pkgname = gimp-plugin-gimp3-tools
