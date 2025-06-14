@@ -13,12 +13,25 @@ makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('11c2844bae4e06b83e182455a2774e252f123c2a87a4b17d8510895257a605c687d9b510183b4e225a926af8074344506ebc56b550ffe60d07a39441f3c45212')
 
-build() {
+prepare() {
+  export RUSTUP_TOOLCHAIN=stable
+
   cd $pkgname-$pkgver
-  cargo build --release --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+
+  cd $pkgname-$pkgver
+  cargo build --release --frozen
 }
 
 check() {
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+
   cd $pkgname-$pkgver
 
   if grep --quiet '^mail:' /etc/passwd; then
