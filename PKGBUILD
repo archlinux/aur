@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-cash-node
 pkgver=28.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Bitcoin Cash Node with bitcoind, bitcoin-tx, bitcoin-seeder and bitcoin-cli"
 arch=('i686' 'x86_64')
 url="https://bitcoincashnode.org"
@@ -35,6 +35,7 @@ build() {
   cd "$srcdir/${pkgname}-$pkgver"
 
   patch -p1 < ../1954.diff
+  patch -p1 < ../1955.diff
 
   msg2 'Building...'
   mkdir -p build
