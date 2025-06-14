@@ -7,7 +7,7 @@
 pkgname=i3-gradients-git
 pkgver=4.21.r4.g09670218+GRADIENTS
 pkgrel=1
-pkgdesc='An improved dynamic tiling window manager - with gradients!'
+pkgdesc='i3 with highly customizable gradient titlebars, dithering effects, and more!'
 arch=('i686' 'x86_64')
 url='https://github.com/RedBeesRGD/i3-gradients'
 license=('BSD')

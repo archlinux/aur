@@ -1,5 +1,5 @@
 pkgbase = i3-gradients-git
-	pkgdesc = An improved dynamic tiling window manager - with gradients!
+	pkgdesc = i3 with highly customizable gradient titlebars, dithering effects, and more!
 	pkgver = 4.21.r4.g09670218+GRADIENTS
 	pkgrel = 1
 	url = https://github.com/RedBeesRGD/i3-gradients
