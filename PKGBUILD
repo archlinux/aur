@@ -2,16 +2,16 @@
 #Contributor: Maël Leclair <mael.leclair@gmail.com>
 pkgname=grisbi-git
 _pkgname=grisbi
-pkgver=3.1.0.r168.g207f1338e
+pkgver=3.1.0.r246.gb6d55b509
 pkgrel=1
 epoch=1
 pkgdesc="Personal financial management program - Development version"
 arch=('x86_64')
 url="https://www.grisbi.org"
 license=('GPL')
-depends=('gtk3' 'openssl')
+depends=('gtk3' 'openssl' 'goffice' 'libofx')
 optdepends=('libofx: for OFX support')
-makedepends=('git' 'intltool' 'libgsf')
+makedepends=('git' 'intltool' 'libgsf' 'meson')
 conflicts=('grisbi')
 source=("$pkgname"::'git+https://github.com/grisbi/grisbi.git')
 sha256sums=('SKIP')
@@ -24,12 +24,12 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+  rm -rf build
+  meson setup build --prefix=/usr
+  meson compile -C build
 }
 
 package() {
   cd "$pkgname"
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="${pkgdir}" meson install -C build
 }
