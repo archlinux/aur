@@ -1,9 +1,18 @@
 -------------------------------------------------------
  Changelog    : Arch-mkpkg
- Tags         : 6.2.0 ➙ 7.0.0
-              : 2024-12-19 ➙ 2025-05-22
+ Tags         : 6.2.2 ➙ 7.1.0
+              : 2024-12-31 ➙ 2025-06-14
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-14   : 7.1.0
+                Fixed issue where build subprocesses that generate very large amounts
+                of data on stdout/stderr could occasionally lead to blocked IO when data
+                exceeded python
+                IO.DEFAULT_BUFFER_SIZE.
+                Symptom is that the build hangs waiting for IO to get unblocked.
+                Fixed by enhancing run_prog() to use non-blocking I/O.
+ 2025-05-22     update Docs/Changelogs Docs/mkpkg.pdf for 7.0.0
 
  2025-05-22   : 7.0.0
                 Immproved code
@@ -28,7 +37,3 @@
                 PKGBUILD has info on how to activate verifying git signature once key is in
                 keyring
  2024-12-19     update Docs/Changelog.rst Docs/mkpkg.pdf for 6.2.0
-
- 2024-12-19   : 6.2.0
-                drop tomli for tomllib (python now >= 3.11)
- 2024-03-09     update Docs/Changelog.rst Docs/mkpkg.pdf for 6.1.0
