@@ -10,7 +10,6 @@ pkgbase = ubridge
 	license = GPL3
 	depends = libpcap
 	source = ubridge-0.9.19.tar.gz::https://github.com/GNS3/ubridge/archive/refs/tags/v0.9.19.tar.gz
-	${pkgname}${pkgver}.tar.gz")
 	sha512sums = b693a64569ba17fcb40f8a7894fcc205efba17fc3103150bb6f1d7a8a165505c88251e75f56d003f4c4337e97bffa57b5948156e42d01a2938b8d969a088ff32
 
 pkgname = ubridge
