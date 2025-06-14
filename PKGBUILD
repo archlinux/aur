@@ -9,7 +9,7 @@ url='https://github.com/graysky2/clean-chroot-manager'
 license=(MIT)
 depends=('devtools>=1:1.0.0-1' rsync 'libarchive>=3.3.3' 'pacman>=7.0.0-1' bc)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/graysky2/clean-chroot-manager/archive/v$pkgver.tar.gz")
-b2sums=('0fed92c8cc39b6c2c0cff935f3fc3aff744008dcc7b270beecbfa25ee4f68692e05c8e200f6c20e5301e58b6e48b8e30c32f40328e6356e0a301155db51d9423')
+b2sums=('c66b5ab9e64cf79189f5f55521d69f51488fe24ab4635cb2a75e5ee82189e5567fe07924d02de0014daeee8c226514e2be096504cb96d14a742dee4b1e617e7b')
 install=ccm.install
 
 build() {
