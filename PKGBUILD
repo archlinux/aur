@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=keep-me-awake
 _app_id=de.swsnr.keepmeawake
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Inhibit screensaver and suspend in GNOME"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=(
   'just'
 )
 source=("git+https://codeberg.org/swsnr/keep-me-awake.git#tag=v$pkgver")
-sha256sums=('e778cc3dbd167db591f486a01532833c7331b0f80e98623c1e30e4927f0eb240')
+sha256sums=('b2993941178d09c78f7a7ea8ff4292280e9b3cbc7a30335d94d6c97dbe8c6d33')
 
 prepare() {
   cd "$pkgname"
