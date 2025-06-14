@@ -1,6 +1,6 @@
 pkgbase = python-monai
 	pkgdesc = AI Toolkit for Healthcare Imaging
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://monai.io
 	arch = x86_64
@@ -26,9 +26,9 @@ pkgbase = python-monai
 	optdepends = python-tqdm
 	optdepends = python-transformers
 	optdepends = tensorboard
-	source = python-monai-1.4.0.tar.gz::https://github.com/Project-MONAI/MONAI/archive/refs/tags/1.4.0.tar.gz
+	source = python-monai-1.5.0.tar.gz::https://github.com/Project-MONAI/MONAI/archive/refs/tags/1.5.0.tar.gz
 	source = 0001-fix-building-torch-extension-with-glog.patch
-	sha512sums = e9860f6bd7987a802d763d1296ecb7eb466acce66ac2ddf7887c844b3004cd427e4d9dd6a588937abd536f01a728c8f82023ae3cc44ba4e39579bb4f16ce0363
+	sha512sums = f3024d97e0541809390a35e21c23502d790c01a4f1c05404382ef3da17c6b8ea08e988939a5f6283d2e197c7d36457267a350bf2f1744f5c6c90685dc376d7aa
 	sha512sums = 7096cc49314e366e60ce07e76709a6ccf13221cf95f01267a91ac5668e65935ede33eb28f957a561d16c5ff42f45a5b0bd65d869be0ef96f9ed61b9517157343
 
 pkgname = python-monai
