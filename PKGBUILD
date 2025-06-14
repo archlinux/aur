@@ -21,10 +21,9 @@ pkgver() {
 
 prepare() {
 	cd DanXi
-
 	fvm use stable
 	fvm flutter --disable-analytics
-	fvm flutter pub get
+	fvm flutter --no-version-check pub get
 }
 
 build() (
