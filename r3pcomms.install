@@ -1,5 +1,5 @@
 message_the_user() {
-  echo "If not already done, you might want to add your user to the efusb and uucp groups:"
+  echo "If not already done, you might want to add your user to the following groups:"
   echo 'usermod -a -G efusb $USER'
   echo 'usermod -a -G uhid $USER'
   echo 'usermod -a -G uucp $USER'
