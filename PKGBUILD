@@ -2,9 +2,9 @@
 
 pkgbase=zen-browser
 pkgname=("$pkgbase")
-pkgver=1.12.8b
+pkgver=1.13b
 _zen_version=${pkgver//_/-}
-_firefox_version=138.0.4
+_firefox_version=139.0.4
 pkgrel=1
 pkgdesc='Experience tranquillity while browsing the web without people tracking you'
 url='https://zen-browser.app/'
@@ -78,8 +78,8 @@ source=("git+$_repo.git#tag=$_zen_version"
         0001-fix-desktop.zen.patch
         0003-do-not-disable-system-extensions.zen.patch
         0004-fix-package-json.zen.patch)
-sha256sums=('e3674302567bcc1b676fbce24e019590aa71193d19dc2142c13a31e8b08be0e0'
-            '3fd30db08dad90b339e08d27db1e3aab03a174817d336314327dc5305c145056'
+sha256sums=('1c0355075edc6673a0f7bc06ec150d731afa965fed0bc4a92879d62ea5facb31'
+            '535e053fc3f949c6d7dd78a0a0b4997e5e26db7ef1e11d51b2b9a9f4022287f5'
             'f55ed69dc6f90f898f91d24966b203cb7fb10211ce62405e3ccb8b3069014990'
             '36bff2af04da55da0cc71f960d921889ccf21c11fcd8343087c144dfcc50f10a'
             '803c3f456abfc1acd963b594cf684aed2453534e7ab951abc38efa0351b648a1')
@@ -157,7 +157,7 @@ ac_add_options --prefix=/usr
 # ac_add_options --enable-hardening
 # ac_add_options --enable-optimize
 # ac_add_options --enable-rust-simd
-# ac_add_options --enable-linker=lld
+ac_add_options --enable-linker=lld
 # ac_add_options --disable-install-strip
 # ac_add_options --disable-elf-hack
 # It seems to be overwritten by surfer internal mozconfg, let's keep it for now
@@ -184,7 +184,7 @@ ac_add_options --with-system-nss
 # Features
 # ac_add_options --enable-alsa
 # ac_add_options --enable-jack
-# ac_add_options --enable-crashreporter
+ac_add_options --enable-crashreporter
 ac_add_options --disable-updater
 # ac_add_options --disable-tests
 END
@@ -209,7 +209,8 @@ build() {
   # Breaks compilation since https://bugzilla.mozilla.org/show_bug.cgi?id=1896066
   CFLAGS="${CFLAGS/-fexceptions/}"
   CXXFLAGS="${CXXFLAGS/-fexceptions/}"
-
+  LD=ld.lld
+  RUSTFLAGS="-Clink-arg=-fuse-ld=lld -Clink-arg=-Xlinker"
   # LTO needs more open files
   ulimit -n 4096
 
