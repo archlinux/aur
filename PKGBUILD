@@ -51,42 +51,47 @@
 
 pkgname=flameshot-git
 _pkgname=flameshot
-pkgver=r1938.fa29bcb4
+pkgver=r2057.58afdce7
 pkgrel=1
 pkgdesc="Powerful yet simple to use screenshot software"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/flameshot-org/flameshot"
-license=('GPL')
-depends=(qt5-base hicolor-icon-theme qt5-svg kguiaddons5)
-makedepends=(qt5-tools git cmake)
+license=('GPL-3.0-or-later')
+depends=('qt6-base' 'qt6-svg' 'hicolor-icon-theme' 'kguiaddons')
+makedepends=('git' 'qt6-tools' 'cmake' 'ninja')
 optdepends=('xdg-desktop-portal: To make Sway, Hyprland, and wlroots work'
             'xdg-desktop-portal-wlr: To make Sway, Hyprland, and wlroots work'
+            'xdg-desktop-portal-kde: For KDE Plasma'
             'grim: To make Sway, Hyprland, and wlroots work'
-            'xdg-desktop-portal-kde: For KDE Plasma')
+            'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
+            'qt6-imageformats: for additional export image formats (e.g. tiff, webp, and more)'
+           )
 provides=(flameshot)
 conflicts=(flameshot)
 source=("git+https://github.com/flameshot-org/flameshot.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
 
-  # Get the version number. Suggested in https://gitlab.archlinux.org/pacman/pacman/blob/master/proto/PKGBUILD-vcs.proto#L49
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # Get the version number. Suggested in https://gitlab.archlinux.org/pacman/pacman/blob/master/proto/PKGBUILD-vcs.proto#L49
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
 
-  cmake -S ./ \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DUSE_WAYLAND_CLIPBOARD=1 \
-      -DUSE_WAYLAND_GRIM=true
+    cmake -GNinja -B build -S . \
+          -DCMAKE_BUILD_TYPE=None \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DUSE_WAYLAND_CLIPBOARD=1 \
+          -DDISABLE_UPDATE_CHECKER=1 \
 
-  make -j$(nproc --ignore 1)
+    cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${_pkgname}"
+    
+    DESTDIR="${pkgdir}" cmake --install build
 }
