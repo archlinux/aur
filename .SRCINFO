@@ -1,12 +1,17 @@
 pkgbase = poppler-git
-	pkgver = 22.04.0.r43.g368465a8
+	pkgver = 25.06.0.r18.g12597a17
 	pkgrel = 1
 	url = https://poppler.freedesktop.org/
 	arch = x86_64
 	arch = i686
 	arch = aarch64
-	license = GPL
-	makedepends = libjpeg
+	license = GPL-2.0-only
+	license = GPL-3.0-or-later
+	license = LGPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	license = MIT
+	license = HPND-sell-variant
+	makedepends = libjpeg-turbo
 	makedepends = gcc-libs
 	makedepends = cairo
 	makedepends = fontconfig
@@ -20,15 +25,17 @@ pkgbase = poppler-git
 	makedepends = qt6-base
 	makedepends = git
 	makedepends = nss
+	makedepends = gpgmepp
 	makedepends = gtk-doc
 	makedepends = curl
 	makedepends = poppler-data
 	makedepends = cmake
 	makedepends = python
 	makedepends = boost
+	makedepends = glib2-devel
 	options = !emptydirs
-	source = git://git.freedesktop.org/git/poppler/poppler
-	source = git://git.freedesktop.org/git/poppler/test
+	source = git+https://gitlab.freedesktop.org/poppler/poppler.git/
+	source = test::git+https://gitlab.freedesktop.org/poppler/test.git
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	md5sums = SKIP
 	md5sums = SKIP
@@ -37,7 +44,7 @@ pkgbase = poppler-git
 
 pkgname = poppler-git
 	pkgdesc = PDF rendering library based on xpdf 3.0
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = gcc-libs
 	depends = cairo
 	depends = fontconfig
@@ -45,34 +52,53 @@ pkgname = poppler-git
 	depends = lcms2
 	depends = nss
 	depends = curl
+	depends = gpgmepp
+	depends = nspr
+	depends = libpng
+	depends = freetype2
+	depends = zlib
+	depends = libtiff
+	depends = glibc
 	optdepends = poppler-data: highly recommended encoding data to display PDF documents with certain encodings and characters
 	provides = libpoppler.so
 	provides = libpoppler-cpp.so
-	provides = poppler=22.04.0
-	conflicts = poppler-qt3<22.04.0
-	conflicts = poppler-qt4<22.04.0
+	provides = poppler=25.06.0
+	conflicts = poppler-qt3<25.06.0
+	conflicts = poppler-qt4<25.06.0
 	conflicts = poppler
 
 pkgname = poppler-glib-git
 	pkgdesc = Poppler glib bindings
-	depends = poppler=22.04.0
+	depends = poppler=25.06.0
 	depends = glib2
+	depends = gcc-libs
+	depends = freetype2
+	depends = cairo
+	depends = glibc
 	provides = libpoppler-glib.so
-	provides = poppler-glib=22.04.0
+	provides = poppler-glib=25.06.0
 	conflicts = poppler-glib
 
 pkgname = poppler-qt5-git
 	pkgdesc = Poppler Qt5 bindings
-	depends = poppler=22.04.0
+	depends = poppler=25.06.0
 	depends = qt5-base
+	depends = lcms2
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
 	provides = libpoppler-qt5.so
-	provides = poppler-qt5=22.04.0
+	provides = poppler-qt5=25.06.0
 	conflicts = poppler-qt5
 
 pkgname = poppler-qt6-git
 	pkgdesc = Poppler Qt6 bindings
-	depends = poppler=22.04.0
+	depends = poppler=25.06.0
 	depends = qt6-base
+	depends = lcms2
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
 	provides = libpoppler-qt6.so
-	provides = poppler-qt6=22.04.0
+	provides = poppler-qt6=25.06.0
 	conflicts = poppler-qt6
