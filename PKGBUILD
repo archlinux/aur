@@ -2,7 +2,7 @@
 # Contributor: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 
 pkgname=bdsync
-pkgver=0.11.3
+pkgver=0.11.4
 pkgrel=1
 pkgdesc="Fast block device synchronizing tool"
 arch=("i686" "x86_64")
@@ -11,7 +11,7 @@ license=('GPL-2.0-only')
 depends=("openssl")
 makedepends=("git" "pandoc")
 source=("git+https://github.com/rolffokkens/$pkgname#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('b4383e4a866ca6eae4dbb5e219461100b32d41dc3035faeb9d258e58fbdce57e')
 
 
 prepare() {

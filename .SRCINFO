@@ -1,6 +1,6 @@
 pkgbase = bdsync
 	pkgdesc = Fast block device synchronizing tool
-	pkgver = 0.11.3
+	pkgver = 0.11.4
 	pkgrel = 1
 	url = https://github.com/rolffokkens/bdsync
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = bdsync
 	makedepends = git
 	makedepends = pandoc
 	depends = openssl
-	source = git+https://github.com/rolffokkens/bdsync#tag=v0.11.3
-	sha256sums = SKIP
+	source = git+https://github.com/rolffokkens/bdsync#tag=v0.11.4
+	sha256sums = b4383e4a866ca6eae4dbb5e219461100b32d41dc3035faeb9d258e58fbdce57e
 
 pkgname = bdsync
