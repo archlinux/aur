@@ -15,7 +15,7 @@ options=(!debug)
 
 pkgver() {
   cd "$srcdir/newfetch"
-  echo "1.0.5.r$(git rev-parse --short HEAD)"
+  echo "1.0.6.r$(git rev-parse --short HEAD)"
 }
 
 build() {
