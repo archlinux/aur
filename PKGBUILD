@@ -8,7 +8,12 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/verdiwm/verdi"
 license=('EUPL-1.2')
 groups=('verdi')
-depends=('libinput')
+depends=(
+	'gcc-libs'
+	'glibc'
+	'systemd-libs'
+	'libinput'
+)
 makedepends=('git' 'cargo' 'clang' 'lld' 'libgit2')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
