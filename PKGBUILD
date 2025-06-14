@@ -1,12 +1,12 @@
 pkgname=syncthingdesktop
 _pkgname=SyncthingDesktop
 pkgver=1.0.5.aurpatch
-pkgrel=1
+pkgrel=2
 pkgdesc="Unnofficial Syncthing desktop application"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/syncthingdesktop"
 license=('GPL')
-depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git' 'syncthing')
+depends=('libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git' 'syncthing')
 makedepends=('unzip')
 source=("https://gitlab.com/linuxbombay/syncthingdesktop/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
 sha256sums=('1ce02369c0abcc77280e0e24595efb948b48aa0de96f2328e6522bde865b6db3')
@@ -23,6 +23,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
+    ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
