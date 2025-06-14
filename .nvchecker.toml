@@ -1,0 +1,5 @@
+[opa-psm2]
+source = "git"
+git = "https://github.com/cornelisnetworks/opa-psm2.git"
+include_regex = "PSM2_.*"
+prefix = "PSM2_"

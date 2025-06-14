@@ -1,0 +1,16 @@
+pkgbase = opa-psm2
+	pkgdesc = Omni-Path Performance Scaled Messaging 2 (PSM2) library
+	pkgver = 12.0.1
+	pkgrel = 1
+	url = https://github.com/cornelisnetworks/opa-psm2
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = glibc
+	depends = sh
+	depends = numactl
+	provides = libpsm2.so
+	source = opa-psm2-PSM2_12.0.1.tar.gz::https://github.com/cornelisnetworks/opa-psm2/archive/refs/tags/PSM2_12.0.1.tar.gz
+	b2sums = c240c301873269656e49e382dd744169861b68cd55634ae9f9fc7d293009009862fe1ad2b8b23a1080c67f928d19688b169e9ecbee0a0fdcf38fa995f92c874c
+
+pkgname = opa-psm2
