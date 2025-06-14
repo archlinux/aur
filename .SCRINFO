@@ -1,0 +1,16 @@
+pkgbase = hyprshot-gui
+	pkgdesc = A simple GTK-based GUI for Hyprshot, designed to provide an easy way to capture and manage screenshots on Hyprland.
+	pkgver = r18.7cc2d5a
+	pkgrel = 1
+	url = https://github.com/s-adi-dev/hyprshot-gui
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = hyprshot
+	depends = gtk4
+	depends = python-gobject
+	provides = hyprshot-gui
+	source = git+https://github.com/s-adi-dev/hyprshot-gui.git
+	sha256sums = SKIP
+
+pkgname = hyprshot-gui
