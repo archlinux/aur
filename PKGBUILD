@@ -34,7 +34,7 @@ prepare() {
     git clone --depth=1 --single-branch -b "$tag" --filter=blob:limit=128k \
       $src_url $pkgname
   fi
-  if [ -n $SOURCE_URL_REWRITER ]; then
+  if [ -n "$SOURCE_URL_REWRITER" ]; then
     for submodule_path in $(git -C $pkgname submodule status|
         awk '/icu/ || /harfbuzz/ || /expat/ {print $2}');
     do
