@@ -1,7 +1,7 @@
 #Maintainer: Dråfølin <derg@drafolin.ch>
 
 pkgname=high-tide-git
-pkgver=r425.75acb17
+pkgver=0.1.7.r0.gc7d97b6
 pkgrel=1
 pkgdesc="Linux client for TIDAL streaming service"
 url="https://github.com/Nokse22/high-tide"
@@ -23,7 +23,7 @@ depends=(
   python-tidalapi
 )
 optdepends=(
-  'python-discord_rpc: Discord Rich Presence support'
+  'python-pypresence>=4.3.0.r27.gd6709d3: Discord Rich Presence support'
 )
 makedepends=(
   blueprint-compiler
@@ -37,8 +37,7 @@ b2sums=('SKIP')
 pkgver() {
   cd "$pkgname"
   ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --tags --long --abbrev=7 2>/dev/null | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   )
 }
 
