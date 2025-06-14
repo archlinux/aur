@@ -3,8 +3,8 @@
 _pkgname=httpx-socks
 pkgname=python-$_pkgname
 epoch=1
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 pkgdesc='HTTP/SOCKS-proxy transports for httpx'
 arch=('any')
 url="https://github.com/romis2012/$_pkgname"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 depends=( 'python-python-socks' 'python-httpcore' 'python-httpx')
 optdepends=('python-async-timeout' 'python-trio' 'python-curio')
 source=("$_pkgname-$pkgver.tgz::https://github.com/romis2012/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('14751971b63b615ce1a0738ec06b5045074086f0c8dbef0686138a6f30faba33')
+sha256sums=('e01ecd46c623e60e1e0e2ff1728f50e954985a7bbb631e3971fddc955e7c363c')
 
 build() {
   cd "$_pkgname-$pkgver"
