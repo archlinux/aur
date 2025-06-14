@@ -3,7 +3,7 @@
 pkgname=netatop-dkms
 _pkgname=netatop
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Atop network kernel module, enables network statistics in atop"
 url="http://www.atoptool.nl/"
 groups=('modules')
@@ -12,17 +12,19 @@ depends=('atop' 'dkms' 'bash' 'zlib')
 conflicts=('netatop')
 makedepends=()
 source=("http://atoptool.nl/download/netatop-${pkgver}.tar.gz"
+		netatop_kernel_6.15.patch
         "netatop-dkms.conf"
         "netatop-dkms.install")
 install="netatop-dkms.install"
 sha256sums=('508a8977cd3d1cdd67587a13c25e3a414647b48f92d1ce38fc138b5914aea3f6'
+            'e63b02601617756652ca22405713e911f029024446d28f00f6571cac18eecbc8'
             '56e9094e396fcdabadde4db8a9f21945484e4db93359dc22f2fb76436b1b2ea9'
             '0cda5de65ab96445951e39decfc18b50aad90245f661eb58438ac402cd2496b7')
 arch=('x86_64' 'i686')
 
 prepare() {
 	true
-	#patch -d "${srcdir}/${_pkgname}-${pkgver}" -Np1 -i "${srcdir}"/netatop_kernel_5.5.patch
+	patch -d "${srcdir}/${_pkgname}-${pkgver}" -Np1 -i "${srcdir}"/netatop_kernel_6.15.patch
 }
 
 build() {
