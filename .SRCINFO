@@ -1,7 +1,7 @@
 pkgbase = declaro-git
 	pkgdesc = a simple declarative wrapper for any package manager
-	pkgver = 1.0.0.r17.ga62ee66
-	pkgrel = 2
+	pkgver = 0
+	pkgrel = 3
 	url = https://github.com/mantinhas/declaro
 	arch = x86_64
 	license = GPL
@@ -15,6 +15,7 @@ pkgbase = declaro-git
 	depends = sudo
 	depends = coreutils
 	depends = tar
+	depends = git
 	backup = etc/declaro/config.sh
 	source = git+https://github.com/mantinhas/declaro.git
 	sha256sums = SKIP

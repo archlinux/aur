@@ -1,13 +1,13 @@
 # Maintainer: Hugo Mantinhas <hugofbmantinhas@gmail.com>
 _projectname=declaro
 pkgname="$_projectname-git"
-pkgver=1.0.0.r17.ga62ee66
-pkgrel=2
+pkgver=0
+pkgrel=3
 pkgdesc="a simple declarative wrapper for any package manager"
 arch=('x86_64')
 url="https://github.com/mantinhas/$_projectname"
 license=('GPL')
-depends=('pacman' 'bash' 'diffutils' 'sed' 'findutils' 'make' 'sudo' 'coreutils' 'tar')
+depends=('pacman' 'bash' 'diffutils' 'sed' 'findutils' 'make' 'sudo' 'coreutils' 'tar' 'git')
 makedepends=('git')
 source=("git+$url.git")
 sha256sums=("SKIP")
