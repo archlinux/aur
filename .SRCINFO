@@ -19,8 +19,10 @@ pkgbase = python-r3pcomms-git
 	source = git+https://github.com/greyltc/r3pcomms.git
 	source = 99-r3pcomms.rules
 	source = r3pcomms.sysusers
+	source = uhid.conf
 	sha256sums = SKIP
 	sha256sums = 3e045646c311e6c68e12fca85fdc5a7d151069aaa4c4214e27ede13ca7bc427d
 	sha256sums = 7210679c9799b504f6f64f50966b099893691793da669fc1cea25e8a5a8df78e
+	sha256sums = 0d328038322f62ff1f3319666df5f8f58c0a028415a917ad247b0446c1ff90f5
 
 pkgname = python-r3pcomms-git

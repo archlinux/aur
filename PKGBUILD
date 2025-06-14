@@ -21,12 +21,14 @@ source=(
 	git+https://github.com/greyltc/r3pcomms.git
 	99-r3pcomms.rules
 	r3pcomms.sysusers
+	uhid.conf
 )
 conflicts=(python-r3pcomms)
 provides=(python-r3pcomms)
 sha256sums=('SKIP'
             '3e045646c311e6c68e12fca85fdc5a7d151069aaa4c4214e27ede13ca7bc427d'
-            '7210679c9799b504f6f64f50966b099893691793da669fc1cea25e8a5a8df78e')
+            '7210679c9799b504f6f64f50966b099893691793da669fc1cea25e8a5a8df78e'
+            '0d328038322f62ff1f3319666df5f8f58c0a028415a917ad247b0446c1ff90f5')
 
 install=r3pcomms.install
 
@@ -45,5 +47,6 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dt "${pkgdir}/etc/udev/rules.d" -m644 ../99-r3pcomms.rules
   install -Dt "${pkgdir}/usr/bin" -m755 scripts/ups-poweroff.sh
+  install -Dt "${pkgdir}/etc/modules.load.d" -m644 ../uhid.conf
   install -Dm 644 ../r3pcomms.sysusers "${pkgdir}/usr/lib/sysusers.d/r3pcomms.conf"
 }
