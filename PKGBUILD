@@ -3,13 +3,13 @@
 pkgname=danxi-git
 _pkgname=${pkgname%-git}
 pkgver=1.4.8.r5.ge2e5f72
-pkgrel=1
+pkgrel=2
 pkgdesc="Maybe the best all-rounded service app for Fudan University students | 可能是复旦学生最好的第三方校园服务 APP"
 url="https://github.com/DanXi-Dev/DanXi"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 depends=('gtk3' 'libsecret')
-makedepends=('fvm' 'imagemagick')
+makedepends=('git' 'clang' 'cmake' 'ninja' 'fvm' 'imagemagick')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("git+${url}.git")
@@ -21,6 +21,7 @@ pkgver() {
 
 prepare() {
 	cd DanXi
+	fvm install stable
 	fvm use stable
 	fvm flutter --disable-analytics
 	fvm flutter --no-version-check pub get
