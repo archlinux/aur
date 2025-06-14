@@ -1,13 +1,13 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # -*- mode: sh -*-
 
 pkgname=detect-old-python-modules
-pkgver=0.0.2
-pkgrel=2
+pkgver=0.0.3
+pkgrel=1
 pkgdesc='Detect old modules after Python upgrade (ALPM hook)'
 arch=('any')
 url='https://codeberg.org/kas/detect-old-python-modules'
-license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
+license=('EUPL-1.2')  # SPDX-License-Identifier: EUPL-1.2
 depends=('python')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
@@ -28,7 +28,7 @@ package() {
 }
 
 sha256sums=(
-  'c9bad73d8d74313b1171f2005519cdf1f25ba65d8caec5f97f643a1aeffa5dd4'
+  '4cd11b30b9935c33ccd10af639589bd134c3923596e8dc55ec592b9b4da97edd'
 )
 
 # eof
