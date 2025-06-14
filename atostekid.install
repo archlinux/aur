@@ -1,7 +1,11 @@
 pkgname="atostekid"
-certificate_path_legacy="/etc/${pkgname}/scsca.cer"
-certificate_path="/usr/share/${pkgname}/certs/scsca.cer"
-certificate_label="Atostek ID Local SCS CA"
+legacy_ca_path="/etc/${pkgname}/scsca.cer"
+legacy_ca_label="Atostek ID Local SCS CA"
+ca_filename_scs="scsca.cer"
+ca_filename_ehoito="erasmartcard_ehoito_fi_ca.cer"
+ca_label_scs="Atostek ID Local SCS CA"
+ca_label_ehoito="Atostek ID Local CA"
+ca_install_dir="/usr/share/${pkgname}/certs"
 
 # colors
 all_off="$(tput sgr0)"
@@ -18,17 +22,87 @@ warn() {
     printf "${red}==> WARN:${bold} $1${all_off}\n"
 }
 
-post_install() {
+install_ca() {
+    local ca_dir
+    local ca_type
+    local ca_label
+    local ca_filename
+    local ca_install_path
+    local install_flag
     local HOME
+
     HOME=$(mktemp -d)
-    if atostekid -installSCSCA 2>/dev/null; then
-        note "Extracted ${certificate_label}"
-        install -D -m 644 "${HOME}/.local/share/Atostek Oy/Atostek ID/scsca.cer" "${certificate_path}"
-        note "Trusting ${certificate_label}"
-        trust anchor "${certificate_path}"
+    ca_dir="${HOME}/.local/share/Atostek Oy/Atostek ID/"
+    ca_type="${1}"
+
+    case "${ca_type}" in
+        "scs")
+            install_flag="-installSCSCA"
+            ca_filename="${ca_filename_scs}"
+            ca_label="${ca_label_scs}"
+            ;;
+        "ehoito")
+            install_flag="-installCA"
+            ca_filename="${ca_filename_ehoito}"
+            ca_label="${ca_label_ehoito}"
+            ;;
+        *)
+            echo "Missing paramater CA type (scs or ehoito)";
+            return 1
+            ;;
+    esac
+
+    ca_install_path="${ca_install_dir}/${ca_filename}"
+    export QT_QPA_PLATFORM="offscreen"
+    if atostekid "${install_flag}" 2>/dev/null; then
+        note "Extracted ${ca_label}"
+        install -D -m 644 "${ca_dir}/${ca_filename}" "${ca_install_path}"
+        note "Trusting ${ca_label}"
+        trust anchor --store "${ca_install_path}"
     else
-        warn "Unable to extract ${certificate_label}. Please install it manually."
+        warn "Unable to extract ${ca_label}. Please install it manually."
     fi
+
+}
+
+remove_ca() {
+    local ca_type
+    local ca_label
+    local ca_filename
+    local ca_install_path
+
+    ca_type="${1}"
+
+    case "${ca_type}" in
+        "scs")
+            ca_filename="${ca_filename_scs}"
+            ca_label="${ca_label_scs}"
+            ;;
+        "ehoito")
+            ca_filename="${ca_filename_ehoito}"
+            ca_label="${ca_label_ehoito}"
+            ;;
+        *)
+            echo "Missing paramater CA type (scs or ehoito)";
+            return 1
+            ;;
+    esac
+
+    ca_install_path="${ca_install_dir}/${ca_filename}"
+    if trust list | grep -q "${ca_label}"; then
+        if [[ -f "${ca_install_path}" ]]; then
+            note "Removing trust for ${ca_label}"
+            trust anchor --remove "${ca_install_path}"
+            rm "${ca_install_path}"
+        else
+            warn "Unable to remove ${ca_label}. Please remove it manually."
+        fi
+    fi
+}
+
+post_install() {
+    install_ca "scs"
+    install_ca "ehoito"
 
     if ! systemctl --quiet is-active pcscd.socket 2>/dev/null; then
         note "${pkgname} requires that the PC/SC Smart Card Daemon systemd socket (pcscd.socket) is active. Please ensure it is started before launching ${pkgname}."
@@ -36,31 +110,21 @@ post_install() {
 }
 
 post_upgrade() {
-    if [ -f "${certificate_path_legacy}" ]; then
-        note "Removing trust for current ${certificate_label}"
-        trust anchor --remove "${certificate_path_legacy}"
-        rm "${certificate_path_legacy}"
-        rmdir "/etc/${pkgname:-atostekid}"
-    fi
-    if [ -f "${certificate_path}" ]; then
-        note "Removing trust for current ${certificate_label}"
-        trust anchor --remove "${certificate_path}"
-    fi
-
+    post_remove
     post_install
 }
 
 post_remove() {
-    if [ -f "${certificate_path_legacy}" ]; then
-        note "Removing trust for ${certificate_label}"
-        trust anchor --remove "${certificate_path_legacy}"
-        rm "${certificate_path_legacy}"
+    if [[ -f "${legacy_ca_path}" ]]; then
+        note "Removing trust for ${legacy_ca_label} (legacy path ${legacy_ca_path})"
+        trust anchor --remove "${legacy_ca_path}"
+        rm "${legacy_ca_path}"
         rmdir "/etc/${pkgname:-atostekid}"
     fi
-    if [ -f "${certificate_path}" ]; then
-        note "Removing trust for ${certificate_label}"
-        trust anchor --remove "${certificate_path}"
-        rm "${certificate_path}"
-        rmdir "/usr/share/${pkgname:-atostekid}/certs"
+
+    remove_ca "scs"
+    remove_ca "ehoito"
+    if [[ -d "${ca_install_dir}" ]]; then
+        rmdir "${ca_install_dir}"
     fi
 }
