@@ -1,7 +1,7 @@
 pkgbase = matlab-mpm
 	pkgdesc = MATLAB Package Manager
 	pkgver = 2025.1.R2025a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mathworks.com/products/mpm.html
 	arch = x86_64
 	license = custom:MATLAB EULA

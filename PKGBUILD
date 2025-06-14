@@ -11,7 +11,7 @@ _commit="8d84924e79d5d0caa42892a2d4c85c0d3b3fdf87" # 2025.1
 _name="mpm"
 pkgname="matlab-${_name}"
 pkgver="${_pkgver}.${_release}"
-pkgrel=2
+pkgrel=3
 pkgdesc="MATLAB Package Manager"
 arch=('x86_64')
 url="https://www.mathworks.com/products/mpm.html"
@@ -54,6 +54,7 @@ package() {
     install -vDm644 "${pkgname}-${_rel}-input.txt" "${pkgdir}/usr/share/${pkgname}/input/${_rel}.txt"
   done
   install -vDm644 "${pkgname}-${_release}-input.txt" "${pkgdir}/usr/share/${pkgname}/input/${_release}.txt"
+  ln -vsf "/usr/share/${pkgname}/input/${_release}.txt" "${pkgdir}/usr/share/${pkgname}/input/latest.txt"
 
   ln -vsf "/usr/bin/${_name}" "${pkgdir}/usr/bin/${pkgname}"
 }
