@@ -40,7 +40,7 @@ source=(
     "https://raw.githubusercontent.com/imrightguy/CloudToLocalLLM/master/dist/cloudtolocalllm-${pkgver}-x86_64.tar.gz"
 )
 sha256sums=(
-    'f99d6e6f11d08e7d50101883744d3e88eb3a85bd6877b3a48b7dd83e49e02328'  # cloudtolocalllm-3.5.7-x86_64.tar.gz
+    'a3479b3dba0088cc8cf7dd3d3237e2cdb1bea57ff1062a4621af190f9464b2fd'  # cloudtolocalllm-3.5.9-x86_64.tar.gz
 )
 
 prepare() {
