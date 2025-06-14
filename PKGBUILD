@@ -1,6 +1,6 @@
 # Maintainer: Jeena <hello@jeena.net>
 pkgname=recoder
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A GTK4 video transcoding GUI application"
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ makedepends=(
     'glib2'
 )
 source=("https://github.com/jeena/recoder/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2f3a56621e1e4e2faf295b460b45eeb2e7bbe21e74141ef6ebe0fd49c7160b41')
+sha256sums=('92aeba679b022245f1ec22ec0da64a598be363464921a30f7758b4c6b2219fd6')
 
 build() {
     cd "$srcdir/recoder-${pkgver}"
@@ -49,6 +49,8 @@ package() {
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/net.jeena.Recoder.svg"
     install -Dm644 src/resources/net.jeena.recoder.gschema.xml \
         "$pkgdir/usr/share/glib-2.0/schemas/net.jeena.recoder.gschema.xml"
+    install -Dm644 src/resources/net.jeena.Recoder.metainfo.xml \
+        "$pkgdir/usr/share/metainfo/net.jeena.Recoder.metainfo.xml"
 }
 
 install=recoder.install
