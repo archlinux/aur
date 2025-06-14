@@ -1,5 +1,6 @@
 # Maintainer: marmis <tiagodepalves@gmail.com>
 # Contributor: marmis <tiagodepalves@gmail.com>
+# Contributor: Kudlaty
 # Contributor: vitor_hideyoshi <vitor.h.n.batista@gmail.com>
 # Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: Yangtse Su <i@yangtse.me>
