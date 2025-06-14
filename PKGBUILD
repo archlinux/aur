@@ -25,8 +25,13 @@ makedepends=(
     'python-installer'
     'glib2'
 )
-source=("https://github.com/jeena/recoder/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('92aeba679b022245f1ec22ec0da64a598be363464921a30f7758b4c6b2219fd6')
+source=(
+	"https://github.com/jeena/recoder/archive/refs/tags/v${pkgver}.tar.gz"
+	"https://github.com/jeena/recoder/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc"
+)
+sha256sums=('92aeba679b022245f1ec22ec0da64a598be363464921a30f7758b4c6b2219fd6'
+            'SKIP')
+validpgpkeys=('1DF6570C929E2C186685046F0D6A8E36B9EE6177')
 
 build() {
     cd "$srcdir/recoder-${pkgver}"

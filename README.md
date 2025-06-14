@@ -37,6 +37,14 @@ When a new version of Recoder is released on GitHub, follow these steps to updat
      ```bash
      makepkg --printsrcinfo > .SRCINFO
      ```
+4. **Create gpg .asc**
+   - Download the release tarball from https://github.com/jeena/recoder/releases/
+   - Sign it with gpg:
+     ```bash
+     mv recoder-1.0.1.tar.gz v1.0.1.tar.gz
+     gpg --armor --detach-sign v1.0.1.tar.gz
+     ```
+   - Upload the .asc file and attach it to the release as download
 
 4. **Commit and push**
    ```bash
