@@ -1,7 +1,7 @@
 pkgbase = youtube
 	pkgdesc = Unnofficial Youtube desktop application
 	pkgver = 1.1.5.aurpatch
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/youtube-desktop
 	arch = x86_64
 	arch = aarch64

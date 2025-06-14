@@ -1,7 +1,7 @@
 pkgname=youtube
 _pkgname=Youtube
 pkgver=1.1.5.aurpatch
-pkgrel=1
+pkgrel=2
 pkgdesc="Unnofficial Youtube desktop application"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/youtube-desktop"
@@ -26,6 +26,7 @@ package() {
 
     # Link to binary
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
 
     # Desktop Entry
     install -Dm644 "$srcdir/application-$pkgver/$_pkgname.desktop" \
