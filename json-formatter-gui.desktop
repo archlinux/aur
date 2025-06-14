@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=My JSON Formatter
+Comment=A simple JSON formatting and JQ tool
+Exec=/usr/bin/json-formatter %F
+Icon=my-json-formatter
+Terminal=false
+Type=Application
+Categories=Development;Utility;
+Keywords=json;formatter;jq;
+StartupNotify=true
