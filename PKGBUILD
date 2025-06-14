@@ -3,7 +3,7 @@
 
 pkgname=anitr-cli
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal üzerinden Türkçe anime izleme aracı"
 arch=('x86_64')
 url="https://github.com/xeyossr/anitr-cli"
