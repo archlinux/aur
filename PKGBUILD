@@ -28,5 +28,5 @@ package() {
 	cd "${_pkgname}"
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	install -Dm755 fzf-vjour "$pkgdir/usr/bin/fzf-vjour"
+	install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
