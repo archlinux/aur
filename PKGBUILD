@@ -5,7 +5,7 @@ buildarch=8
 _pkgname=gt
 pkgname=gt-git
 pkgver="r146.a2aa973"
-pkgrel=1
+pkgrel=2
 pkgdesc="Gadget Tool: Linux command line tool for setting USB gadget using configFS"
 arch=('x86_64' 'aarch64')
 url='https://github.com/linux-usb-gadgets/gt'
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "$_pkgname"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -S ./source -B ./build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -S ./source -B ./build
   cmake --build ./build --target all
 }
 
