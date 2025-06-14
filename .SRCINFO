@@ -1,7 +1,7 @@
 pkgbase = ryzenadj
 	pkgdesc = RyzenAdj tool for adjusting Ryzen Mobile power states
-	pkgver = 0.16.0
-	pkgrel = 2
+	pkgver = 0.17.0
+	pkgrel = 1
 	url = https://github.com/FlyGoat/RyzenAdj
 	arch = x86_64
 	license = LGPL3
@@ -11,7 +11,7 @@ pkgbase = ryzenadj
 	optdepends = ryzen_smu-dkms-git: (AUR) kernel module needed to access pm_table on systems with strict memory access policy
 	provides = ryzenadj-git
 	conflicts = ryzenadj-git
-	source = ryzenadj-0.16.0-2.tar.gz::https://github.com/FlyGoat/RyzenAdj/archive/refs/tags/v0.16.0.tar.gz
-	sha256sums = 7bef7dbde006afbe316091d8da8c8c551d5d7d43185d9e62281671959b7a3ca2
+	source = ryzenadj-0.17.0-1.tar.gz::https://github.com/FlyGoat/RyzenAdj/archive/refs/tags/v0.17.0.tar.gz
+	sha256sums = 848ac9d86ff65d30f5e2c8600aac2613f0f10003b0d6f0e516a54761d7345d44
 
 pkgname = ryzenadj
