@@ -1,0 +1,30 @@
+pkgbase = tonkeeper
+	pkgdesc = Your desktop wallet on The Open Network
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://tonkeeper.com
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = nvm
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libdrm
+	depends = mesa
+	depends = libxcb
+	depends = glib2
+	depends = alsa-lib
+	optdepends = org.freedesktop.secrets: Store secrets
+	options = !debug
+	source = git+https://github.com/tonkeeper/tonkeeper-web.git#tag=v4.0.2
+	source = tonkeeper.desktop
+	source = tonkeeper.png
+	sha256sums = 687b6fdc8e0385f0218806a617aa8c4d6863c73a4184f7ff7b9804ad4fbaeb94
+	sha256sums = 4a4aee7691da80aba21dbd1bff28791e9edd6ea5e9712457207c6e1b0bc6c5d5
+	sha256sums = e9dc80e0c41560ca754f668196054317494d32eed827ac0afbf641d86f799d40
+
+pkgname = tonkeeper

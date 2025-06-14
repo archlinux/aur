@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Tonkeeper
+Comment=Your desktop wallet on The Open Network
+GenericName=Tonkeeper
+Exec=tonkeeper %U
+Icon=tonkeeper
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;
+MimeType=x-scheme-handler/tc;x-scheme-handler/tonkeeper;x-scheme-handler/tonkeeper-tc;
+
