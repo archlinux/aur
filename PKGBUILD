@@ -21,9 +21,6 @@ source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/skewb1k/u
 sha256sums_x86_64=('81d3727015bb7e27960edb487a251db343a435af6c34e78d86df186edb3c6bef')
 
 package() {
-  local x86_64=amd64 i686=386 aarch64=arm64 armv6h=armv6 armv7h=armv7
-  cd "upfile-${pkgver}-linux-${!CARCH}"
-
   # bin
   install -Dm755 "./upfile" "${pkgdir}/usr/bin/upfile"
 
