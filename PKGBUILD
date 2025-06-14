@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.40.0.r119.g1d1535ff91
+pkgver=0.40.0.r135.ge8ade130fa
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -324,7 +324,7 @@ prepare() {
     '--enable-libtesseract'
     '--enable-libtheora'
     '--enable-libtwolame'
-    # '--enable-libv4l2'
+    '--enable-libv4l2'
     '--enable-libvidstab'
     '--enable-libvmaf'
     '--enable-libvorbis'
