@@ -2,7 +2,7 @@
 
 _pkgname="justniffer"
 pkgname="${_pkgname}-bin"
-pkgver=0.6.8
+pkgver=0.6.9
 pkgrel=1
 pkgdesc="TCP sniffer. It reassembles and reorders packets and displays the TCP flow in a customizable way."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md")
 source_x86_64=("${_pkgsrc}-x86_64.deb::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}.noble_amd64.deb")
 noextract=("${source_x86_64[@]%%::*}")
 sha256sums=('c887ce8db4485df2d6838da4338a61e708dd1583064c6ffdc99c836f766c5ac8')
-sha256sums_x86_64=('7efbdc59aafea96789f09f94ca41b024752aba6c5a3647aabd7666edd9cf309d')
+sha256sums_x86_64=('dc54e4e3bfd46e32e8bb226d142814ada6566dccfcd67b06001ad8ee12e65041')
 
 prepare() {
   cd "${srcdir}"
