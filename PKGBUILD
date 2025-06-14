@@ -1,6 +1,6 @@
 # Maintainer: nesk_aur
 pkgname=organicmaps
-pkgver=2025.05.20_5
+pkgver=2025.06.12_3
 tag="${pkgver%%_*}-${pkgver##*_}-android"
 pkgrel=3
 pkgdesc="Organic Maps: Offline Hike, Bike, Trails and Navigation"
