@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pigment
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Extract color palettes from your images"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('meson')
 source=("Pigment-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('23b0f8c2785d0319d0e5dd998efac152c753e9df9a800b20b3177135dbdde3cb')
+sha256sums=('0a7f3b41ecfdcfe595bf1217774a819a17dfe8d13fa9218a43733340206367c5')
 
 build() {
   arch-meson "Pigment-$pkgver" build
