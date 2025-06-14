@@ -1,6 +1,6 @@
 pkgbase = python-r3pcomms-git
 	pkgdesc = Local communication with a River 3 Plus over USB HID and/or CDC(ACM)
-	pkgver = 2.0.2.dev10+g83d84ec
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/greyltc/r3pcomms
 	install = r3pcomms.install
