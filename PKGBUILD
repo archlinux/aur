@@ -1,7 +1,7 @@
 pkgname=tailscaledesktop
 _pkgname=TailscaleDesktop
 pkgver=1.0.6.1.aurpatch
-pkgrel=1
+pkgrel=2
 pkgdesc="Unnofficial Tailscale desktop application"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/tailscaledesktop"
@@ -22,6 +22,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
+    ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
