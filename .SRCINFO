@@ -1,14 +1,14 @@
 pkgbase = matlab-batch
 	pkgdesc = CLI tool that starts MATLAB non-interactively using a batch licensing token and any MATLAB startup options
 	pkgver = 2025.03.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mathworks-ref-arch/matlab-dockerfile/blob/main/alternates/non-interactive/MATLAB-BATCH.md
 	arch = x86_64
 	license = custom:MATLAB EULA
 	optdepends = matlab
-	source = matlab-batch-1749851801310-README.md::https://github.com/mathworks-ref-arch/matlab-dockerfile/raw/refs/heads/main/alternates/non-interactive/MATLAB-BATCH.md
+	source = matlab-batch-README.md::https://github.com/mathworks-ref-arch/matlab-dockerfile/raw/refs/heads/main/alternates/non-interactive/MATLAB-BATCH.md
 	sha256sums = SKIP
-	source_x86_64 = matlab-batch-1749851801310-x86_64::https://ssd.mathworks.com/supportfiles/ci/matlab-batch/v1/glnxa64/matlab-batch
+	source_x86_64 = matlab-batch-x86_64::https://ssd.mathworks.com/supportfiles/ci/matlab-batch/v1/glnxa64/matlab-batch
 	sha256sums_x86_64 = SKIP
 
 pkgname = matlab-batch
