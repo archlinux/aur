@@ -1,12 +1,12 @@
 pkgname=simplelogin
 _pkgname=SimpleLogin
 pkgver=1.0.5.aurpatch
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Simple Login desktop application."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/simplelogin"
 license=('GPL')
-depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
+depends=('libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
 sha256sums=('02a3e8ad2dad4a6f92ab55ac0ed0df30e25cc8cb64e7ccb88fc0f7c9b8f6736b')
@@ -23,6 +23,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
+    ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
