@@ -10,4 +10,4 @@ pkgbase = swengine
 	depends = ffmpeg
 	depends = swww
 
-pkgname = swengine
+pkgname = swengine-revanced
