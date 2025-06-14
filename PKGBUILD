@@ -10,7 +10,7 @@ url='https://github.com/GNS3/ubridge'
 license=('GPL3')
 groups=('gns3')
 depends=('libpcap')
-source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/GNS3/${pkgname}/tar.gz/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 install="${pkgname}.install"
 sha512sums=('b693a64569ba17fcb40f8a7894fcc205efba17fc3103150bb6f1d7a8a165505c88251e75f56d003f4c4337e97bffa57b5948156e42d01a2938b8d969a088ff32')
 
