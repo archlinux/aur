@@ -1,7 +1,7 @@
 # Maintainer: Nukleari <nukleari@pm.me>
 pkgname=ms-edit-desktop
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop entry for Microsoft Edit"
 url='https://github.com/microsoft/edit'
 arch=('any')

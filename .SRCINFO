@@ -1,7 +1,7 @@
 pkgbase = ms-edit-desktop
 	pkgdesc = Desktop entry for Microsoft Edit
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/microsoft/edit
 	arch = any
 	license = MIT
