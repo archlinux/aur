@@ -1,0 +1,24 @@
+pkgbase = gtkada-git
+	pkgdesc = a high-level portable graphical toolkit, based on the gtk+ toolkit
+	pkgver = 25.0.0.r17.g054a067e5bcb
+	pkgrel = 1
+	url = https://www.adacore.com/gtkada
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-with-GCC-exception
+	makedepends = gcc-ada
+	makedepends = gprbuild
+	makedepends = gprtools
+	depends = cairo
+	depends = gcc-ada
+	depends = glib2
+	depends = gtk3
+	depends = fontconfig
+	depends = pango
+	provides = gtkada=25.0.0
+	conflicts = gtkada
+	options = !lto
+	source = git+https://github.com/AdaCore/gtkada#branch=master
+	sha256sums = SKIP
+
+pkgname = gtkada-git
