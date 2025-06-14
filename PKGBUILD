@@ -9,7 +9,7 @@ url="https://github.com/DanXi-Dev/DanXi"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 depends=('gtk3' 'libsecret')
-makedepends=('fvm')
+makedepends=('fvm' 'imagemagick')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("git+${url}.git")
@@ -47,7 +47,10 @@ package() {
 	ln -s "/usr/lib/${_pkgname}/dan_xi" "${pkgdir}/usr/bin/dan_xi"
 
 	# Icon
-	install -Dm644 "packaging/dan_xi.png" -t "${pkgdir}/usr/share/icons/hicolor/apps/1024x1024/"
+	for r in 16 24 32 48 64 128 256 512; do
+		install -dm755 "${pkgdir}/usr/share/icons/hicolor/${r}x${r}/apps/"
+		magick packaging/dan_xi.png -resize "${r}x${r}" "${pkgdir}/usr/share/icons/hicolor/${r}x${r}/apps/dan_xi.png"
+	done
 
 	# Desktop Launcher
 	install -Dm644 "packaging/io.github.danxi_dev.dan_xi.desktop" "${pkgdir}/usr/share/applications/dan_xi.desktop"
