@@ -26,6 +26,12 @@ options=(!lto)
 source=("git+https://gitlab.freedesktop.org/libevdev/udev-hid-bpf.git#tag=${pkgver}-${_pkgdate}")
 b2sums=('5b190071fd01c2ec32843c19a3a3338ccd51975c88c8d90343ea25153288b9e11258e1a377db60ecf7269723cea87a22a2a8adb7b0ba64012da83c3a97347f98')
 
+prepare() {
+  cd udev-hid-bpf
+
+  #CARGO_HOME="$srcdir/build/cargo-home" cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
   local meson_options=(
     -D tests=disabled
