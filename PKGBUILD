@@ -3,12 +3,12 @@
 pkgname=python-opack2
 _pkgname="${pkgname#python-}"
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Python library for parsing the opack format (fork)'
 arch=('any')
 url='https://github.com/doronz88/opack2'
 license=('GPL-3.0-or-later')
-depends=('python' 'python-arrow' 'python-construct')
+depends=('python' 'python-construct')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools')
 checkdepends=('python-pytest')
 conflicts=('python-opack')
