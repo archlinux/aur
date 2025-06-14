@@ -17,7 +17,7 @@ depends=('dkms' 'bluez' 'bluez-utils')
 source=("${_pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         0001-drop-etc-files.patch)
 b2sums=('6715e684d046ad3162db65196896d23f0c70046d02adbf5886d849818120fb731acb86da0a9e18e54b56b31220911ea25c296f1b8473eb0f0fca4fe96b98712b'
-        'a11c9f312a1355407b749766640ad8097a9608c11ae521b1a32f0a9c7c02d39fabca22960528f5e06926b1a7690679cba83f07e9c8f033745119b89732b0fe6b')
+        '72d59fc99c8fdd66b3b6bfa45a302114e54e7d1621addde8086723a7c18a6ecc080da7497ac7d43de19c460424a05bba35c51ea0d92cf86498fe9223aceba453')
 
 prepare() {
     cd "${_pkgname}-${pkgver}/${_dkmsname}"
@@ -25,7 +25,7 @@ prepare() {
     # Upstream uses dkms.post_install to create modprobe and udev files in
     # /etc. In Arch, it makes more sense to create these files in /usr/lib
     # and let pacman take care of them.
-    patch -p1 -i "${srcdir}/0001-drop-etc-files.patch"
+    patch -i "${srcdir}/0001-drop-etc-files.patch"
 
     # Set the current version in DKMS config file.
     sed "s/@DO_NOT_CHANGE@/v${pkgver}/" dkms.conf.in > dkms.conf
