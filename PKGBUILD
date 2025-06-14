@@ -5,7 +5,7 @@ _name=cursor
 pkgbase="${_name}-electron"
 pkgname=("$pkgbase"{,-latest})
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 arch=('aarch64' 'x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor')
@@ -26,28 +26,30 @@ sha512sums_aarch64=('68849918fcc4d9ba37b8ab21065a9f00aa0ea30264ec70c3938ccaba6c9
 sha512sums_x86_64=('c10b4b32b984ca260aed03f8a1f426c35d8763b0d3a878679c1c1ab9a0471e3447488bdaec5b072b2968f3149708c4f47d0947ee5ab7696ad9b1954aa99dada6')
 options=(!strip) # for ext?
 prepare() { # Create cp -r friendly layout with FHS
-	_api='https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest'
-	echo pkgver=$pkgver
-	echo latest=$(curl -Ls "$_api"|grep -oP '"version":"\K[^"]+'), commit=$(curl -Ls "$_api"|grep -oP '"commitSha":"\K[^"]+')
+  _api='https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest'
+  echo pkgver=$pkgver
+  echo latest=$(curl -Ls "$_api"|grep -oP '"version":"\K[^"]+'), commit=$(curl -Ls "$_api"|grep -oP '"commitSha":"\K[^"]+')
 
-	sed -e "s|code-flags|cursor-flags|" -e "s|lib/code|lib/cursor|" -e "s|/usr/lib/code/code.mjs|--app=/usr/lib/cursor|" code.sh > run.sh
-	rm -rf squashfs-root # for unclean build
-	chmod +x Cursor-${pkgver}-${CARCH}.AppImage; ./Cursor-${pkgver}-${CARCH}.AppImage --appimage-extract > /dev/null
- 	cd squashfs-root/usr
- 	# Fin desktop entries
-	desktop-file-edit --set-key Icon --set-value cursor share/applications/cursor.desktop
-	desktop-file-edit --set-key Exec --set-value cursor share/applications/cursor.desktop
-	desktop-file-edit --set-key Exec --set-value 'cursor --open-url' share/applications/cursor-url-handler.desktop
-	# Shell completions
-	mv -v share/zsh/{vendor-completions,site-functions}
-	# Replace bundled runtimes
-	mv share/cursor/resources/app lib/cursor
-	rm -r share/cursor
-	ln -svf /usr/bin/rg       lib/cursor/node_modules/@vscode/ripgrep/bin/rg
-	ln -svf /usr/bin/xdg-open lib/cursor/node_modules/open/xdg-open
-	# Provide exts to code-oss
-	install -d lib/code/extensions
-	ln -sv lib/cursor/extensions/cursor-* lib/code/extensions/
+  sed -e "s|code-flags|cursor-flags|" -e "s|lib/code|lib/cursor|" -e "s|/usr/lib/code/code.mjs|--app=/usr/lib/cursor|" code.sh > run.sh
+  rm -rf squashfs-root # for unclean build
+  chmod +x Cursor-${pkgver}-${CARCH}.AppImage; ./Cursor-${pkgver}-${CARCH}.AppImage --appimage-extract > /dev/null
+  cd squashfs-root/usr
+  # Fin desktop entries
+  desktop-file-edit --set-key Icon --set-value cursor share/applications/cursor.desktop
+  desktop-file-edit --set-key Exec --set-value cursor share/applications/cursor.desktop
+  desktop-file-edit --set-key Exec --set-value 'cursor --open-url' share/applications/cursor-url-handler.desktop
+  # Shell completions
+  mv -v share/zsh/{vendor-completions,site-functions}
+  # Replace bundled runtimes
+  mv share/cursor/resources/app lib/cursor
+  rm -r share/cursor
+  ln -svf /usr/bin/rg       lib/cursor/node_modules/@vscode/ripgrep/bin/rg
+  ln -svf /usr/bin/xdg-open lib/cursor/node_modules/open/xdg-open
+  # Provide exts to code-oss
+  install -d lib/code/extensions
+  for f in lib/cursor/extensions/cursor-*;do
+    ln -sv /usr/$f lib/code/extensions/
+  done
 }
 _desc="AI Code Editor on "
 package_cursor-electron-latest(){
