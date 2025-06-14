@@ -3,9 +3,9 @@
 pkgname=python-pylzss
 _pkgname=pylzss
 pkgver=0.3.8
-pkgrel=2
+pkgrel=3
 pkgdesc='A collection of common interactive command line user interfaces, based on Inquirer.js (fork of magmax/python-inquirer)'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/m1stadev/pylzss'
 license=('LGPL-3.0-only')
 depends=('python')
