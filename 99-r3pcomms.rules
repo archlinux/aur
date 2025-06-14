@@ -1,0 +1,8 @@
+# allow r/w access by users of the efusb group
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="3746", ATTRS{idProduct}=="ffff", MODE="0660", GROUP="efusb"
+
+# allow users in the uhid group to r/w /dev/uhid
+KERNEL=="uhid", MODE="0660", GROUP="uhid"
+
+# allow users in the hidraw group to r/w /dev/hidraw*
+KERNEL=="hidraw*", mode="0660", GROUP="hidraw"

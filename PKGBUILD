@@ -1,5 +1,5 @@
 pkgname=python-r3pcomms-git
-pkgver=2.1.0
+pkgver=2.1.1.dev1+g25fb505
 pkgrel=1
 pkgdesc="Local communication with a River 3 Plus over USB HID and/or CDC(ACM)"
 arch=('any')
@@ -19,14 +19,14 @@ makedepends=(
 	)
 source=(
 	git+https://github.com/greyltc/r3pcomms.git
-	99-ef.rules
-	efusb.sysusers
+	99-r3pcomms.rules
+	r3pcomms.sysusers
 )
 conflicts=(python-r3pcomms)
 provides=(python-r3pcomms)
 sha256sums=('SKIP'
-            '279cfba01f5d9cdccf1c96708d964077435a145f00bd15113d351bf19bd0e7fd'
-            'ea304f66f09bd8b989bb53e99f02ac8f3b538c2afa82d287594a371800acd25e')
+            '3e045646c311e6c68e12fca85fdc5a7d151069aaa4c4214e27ede13ca7bc427d'
+            '7210679c9799b504f6f64f50966b099893691793da669fc1cea25e8a5a8df78e')
 
 install=r3pcomms.install
 
@@ -43,7 +43,7 @@ build() {
 package() {
   cd r3pcomms
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dt "${pkgdir}/etc/udev/rules.d" -m644 ../99-ef.rules
+  install -Dt "${pkgdir}/etc/udev/rules.d" -m644 ../99-r3pcomms.rules
   install -Dt "${pkgdir}/usr/bin" -m755 scripts/ups-poweroff.sh
-  install -Dm 644 ../efusb.sysusers "${pkgdir}/usr/lib/sysusers.d/efusb.conf"
+  install -Dm 644 ../r3pcomms.sysusers "${pkgdir}/usr/lib/sysusers.d/r3pcomms.conf"
 }

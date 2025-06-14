@@ -1,2 +1,0 @@
-# allow r/w access by users of the efusb group
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="3746", ATTRS{idProduct}=="ffff", GROUP="efusb", MODE="0660"
