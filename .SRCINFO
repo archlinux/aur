@@ -1,6 +1,6 @@
 pkgbase = python-specutils
 	pkgdesc = Astropy Affiliated package for 1D spectral operations
-	pkgver = 1.20.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://specutils.readthedocs.io
 	arch = any
@@ -16,19 +16,19 @@ pkgbase = python-specutils
 	makedepends = python-gwcs
 	makedepends = python-ndcube>=2.0
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/s/specutils/specutils-1.20.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/specutils/specutils-2.0.0.tar.gz
 	source = https://stsci.box.com/shared/static/28a88k1qfipo4yxc4p4d40v4axtlal8y.fits
 	source = https://data.sdss.org/sas/dr16/sdss/spectro/redux/26/spectra/1323/spec-1323-52797-0012.fits
 	source = use_local_doc_fits_offline.patch
-	md5sums = 586e3d0264854e2e763c341cfe51252f
+	md5sums = cd17e0485f09b8667c800b4dc67c6e24
 	md5sums = 6de4c8ee5659e87a302e3de595074ba5
 	md5sums = 3586c5d0810108a182ba9146908dc180
-	md5sums = 49c57591fdc60365a3e31a0f10e4e57d
+	md5sums = 1bda649a83a3d021e75dc09a0da395b3
 
 pkgname = python-specutils
 	depends = python>=3.10
-	depends = python-scipy
-	depends = python-gwcs>=0.18
+	depends = python-scipy>=1.14
+	depends = python-gwcs>=0.22
 	depends = python-ndcube>=2.0
 	optdepends = python-specutils-doc: Documentation for Specutils
 
