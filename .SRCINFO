@@ -1,6 +1,6 @@
 pkgbase = swengine-revanced
 	pkgdesc = Download and apply live wallpapers with swww
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/Shnimlz/Swengine
 	arch = x86_64
