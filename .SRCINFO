@@ -1,6 +1,6 @@
 pkgbase = anitr-cli
 	pkgdesc = Terminal üzerinden Türkçe anime izleme aracı
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/xeyossr/anitr-cli
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = anitr-cli
 	depends = rofi
 	provides = anitr-cli
 	conflicts = anitr-cli
-	noextract = anitr-cli-3.2.0
-	source = anitr-cli-3.2.0::https://github.com/xeyossr/anitr-cli/releases/download/v3.2.0/anitr-cli
+	noextract = anitr-cli-3.3.0
+	source = anitr-cli-3.3.0::https://github.com/xeyossr/anitr-cli/releases/download/v3.3.0/anitr-cli
 	sha256sums = SKIP
 
 pkgname = anitr-cli
