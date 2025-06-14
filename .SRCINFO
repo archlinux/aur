@@ -1,7 +1,7 @@
 pkgbase = parui
 	pkgdesc = Simple TUI frontend for paru or yay
 	pkgver = 1.0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Vonr/parui
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,6 @@ pkgbase = parui
 	depends = gcc-libs
 	optdepends = paru: default AUR interface
 	optdepends = yay: alternative AUR interface
-	options = !lto
 	source = parui-1.0.18.tar.gz::https://github.com/Vonr/parui/archive/1.0.18.tar.gz
 	sha512sums = 6652313edbfef499c6d7810ecf14c85e88c7647137958d0b9350a50e34b79a0cc4c161fec0f671fc6cea259f8cd78d8030c2021229125aea121f120d1cbc2318
 

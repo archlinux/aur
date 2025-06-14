@@ -3,7 +3,7 @@
 
 pkgname=parui
 pkgver=1.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple TUI frontend for paru or yay"
 arch=('x86_64')
 url="https://github.com/Vonr/parui"
@@ -11,10 +11,9 @@ license=('MIT')
 depends=('git' 'pacman' 'gcc-libs')
 makedepends=('cargo')
 optdepends=('paru: default AUR interface'
-            'yay: alternative AUR interface')
+  'yay: alternative AUR interface')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('6652313edbfef499c6d7810ecf14c85e88c7647137958d0b9350a50e34b79a0cc4c161fec0f671fc6cea259f8cd78d8030c2021229125aea121f120d1cbc2318')
-options=('!lto')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -26,7 +25,7 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release --frozen
+  CFLAGS+=" -ffat-lto-objects" cargo build --release --frozen
 }
 
 check() {
