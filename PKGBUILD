@@ -1,7 +1,7 @@
 # Maintainer: Dråfølin <derg@drafolin.ch>
 
 pkgname=high-tide
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Linux client for TIDAL streaming service"
 url="https://github.com/Nokse22/high-tide"
@@ -21,7 +21,7 @@ depends=(
   org.freedesktop.secrets
 )
 optdepends=(
-  "python-discord_rpc: Discord Rich Presence support"
+  'python-pypresence>=4.3.0.r27.gd6709d3: Discord Rich Presence support'
 )
 makedepends=(
   blueprint-compiler
@@ -29,8 +29,8 @@ makedepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nokse22/high-tide/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7ad88a8cd8cb7a87fbb48fa5cb2f854b3943f966a53086b7f89a4c70cda44480')
-b2sums=('3a117ff8081adb5a4baf13066b8d9d4819523c22694ba6395088f4a4bd3ac2a113148cea42c768ea96596606094b7d8e9f3d4bc643bd1d7d8214a2156e73f1d7')
+sha256sums=('edda931acf197cdaea144b68537e3bf1f5ce5b1236eb0da9930434c9977ef352')
+b2sums=('31ecccfa70b7366f2c9d97ea0cf1e88c4fceae5b9c6bd587e58883696b6c38ab9d6b7cb619a5d4b5174a64d956ca840452a886ef216869cdf6fbda1c8c370ea2')
 
 build() {
   arch-meson "${pkgname}-${pkgver}" build
