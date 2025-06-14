@@ -11,5 +11,7 @@ source_x86_64=("https://github.com/davedude1011/argonaut/releases/download/v${pk
 sha256sums_x86_64=('SKIP')
 
 package() {
-  bsdtar -xvf "${srcdir}/argonaut_${pkgver}_amd64.deb" -C "${pkgdir}"
+  mkdir -p "${srcdir}/deb_extract"
+  bsdtar -xvf "${srcdir}/argonaut_${pkgver}_amd64.deb" -C "${srcdir}/deb_extract"
+  cp -r "${srcdir}/deb_extract/usr/"* "${pkgdir}/usr/"
 }
