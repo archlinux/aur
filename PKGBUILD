@@ -1,4 +1,5 @@
-# Maintainer: Ayush Agarwal <ayush at ayushnix dot com>
+# Maintainer: Pierre Ayoub (Drack) <pierreay@proton.me>
+# Contributor: Ayush Agarwal <ayush at ayushnix dot com>
 # Contributor: Ben Oliver <ben at bfoliver dot com>
 # Contributor: Andy Weidenbaum <archbaum at gmail dot com>
 # Contributor: John Jenkins <twodopeshaggy at gmail dot com>
