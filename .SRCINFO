@@ -21,6 +21,9 @@ pkgbase = recoder
 	optdepends = libcanberra: play system notification sounds
 	optdepends = sound-theme-freedesktop: standard system sounds like "complete.oga"
 	source = https://github.com/jeena/recoder/archive/refs/tags/v1.0.1.tar.gz
+	source = https://github.com/jeena/recoder/releases/download/v1.0.1/v1.0.1.tar.gz.asc
+	validpgpkeys = 1DF6570C929E2C186685046F0D6A8E36B9EE6177
 	sha256sums = 92aeba679b022245f1ec22ec0da64a598be363464921a30f7758b4c6b2219fd6
+	sha256sums = SKIP
 
 pkgname = recoder
