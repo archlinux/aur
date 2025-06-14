@@ -1,6 +1,6 @@
 # Maintainer: Atrexian <ondra.smehlik@gmail.com>
 pkgname=newfetch
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A fast and clear system information tool written in C."
 arch=('x86_64')
