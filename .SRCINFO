@@ -1,4 +1,4 @@
-pkgbase = swengine
+pkgbase = swengine-revanced
 	pkgdesc = Download and apply live wallpapers with swww
 	pkgver = 0.2
 	pkgrel = 1
