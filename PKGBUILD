@@ -3,7 +3,7 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gbsplay
-pkgver=0.0.98
+pkgver=0.0.100
 pkgrel=1
 pkgdesc="A command line application for playing GameBoy sound files (GBS)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('nas: for Network Audio System sound driver'
 			'zlib: for compressed input files')
 source=("https://github.com/mmitch/gbsplay/archive/refs/tags/$pkgver.tar.gz"
         'do-not-update-database.patch')
-sha512sums=('0e450244b87fc19beb14865e8a99def120b4783fa922382c79f9a78312f3ff91c11d5e4ee386d8b593d2e266af8474404bdd55bde46dbdcd1e1c03c27973c765'
+sha512sums=('a0c08fcfb295e0455b4f1391d99c26ff1e1e2e11ae3cab3cc9fba69e73891760ebea316284bae9ea2c3601265bb41a809164dab2d2fd8da2cb9343260eebe8a0'
             '2de20d227fe5cb17fd29b666fb55438560b6859a2bcccad910a631189a3698f220b29791493b5ab105fcabd92419b04edd220b85a4b5034723a63fe2f4b898ff')
 
 prepare() {
@@ -26,6 +26,9 @@ prepare() {
 	
 	# modifies usage string to print the full path instead of just the filename
 	sed 's|gbs2ogg.sh|gbs2ogg|g' --in-place contrib/gbs2ogg.sh
+
+	# sets version so it doesn't return "0.0.100ish" anymore
+	sed 's|^VERSION=unknown$|VERSION='$pkgver'|g' --in-place configure
 	
 	# stops mime database from updating
 	patch -p1 < "$srcdir"/do-not-update-database.patch
@@ -41,8 +44,6 @@ package() {
 	cd gbsplay-$pkgver
 
 	make DESTDIR="$pkgdir" install
-
-	install -Dm644 LICENCE "$pkgdir"/usr/share/licenses/gbsplay/LICENCE
 
 	cd contrib
 	install -Dm755 gbs2ogg.sh "$pkgdir"/usr/bin/gbs2ogg
