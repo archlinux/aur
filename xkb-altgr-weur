@@ -85,7 +85,7 @@ sub process_xml
 	return 1;
 }
 
-my $XKB = "/usr/share/X11/xkb";
+my $XKB = "/usr/share/xkeyboard-config-2";
 
 my $VARIANT = "altgr-weur";
 my $VARIANT_XML = <<'END_XML';
