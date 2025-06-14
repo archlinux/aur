@@ -1,0 +1,13 @@
+pkgbase = authelia-runit
+	pkgdesc = Runit service script for authelia.
+	pkgver = 20250612
+	pkgrel = 1
+	url = https://github.com/authelia/authelia
+	arch = any
+	license = Apache-2.0
+	depends = authelia
+	depends = runit
+	source = authelia.run
+	sha256sums = SKIP
+
+pkgname = authelia-runit
