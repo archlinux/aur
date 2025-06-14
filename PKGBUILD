@@ -22,7 +22,7 @@ prepare() {
     exit 1
   fi
   src_url=$source_url
-  if [ -n $SOURCE_URL_REWRITER ]; then
+  if [ -n "$SOURCE_URL_REWRITER" ]; then
     src_url=$($SOURCE_URL_REWRITER $source_url)
     case $src_url in
       file://*)
