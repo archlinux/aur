@@ -1,0 +1,13 @@
+pkgbase = flandre-grub-theme-git
+	pkgdesc = Flandre scarlet GRUB2 theme
+	pkgver = r3.a76f8ae
+	pkgrel = 1
+	url = https://git.jamjar.ws/strat/flandre_grub
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = flandre-grub-theme=r3.a76f8ae1c1
+	source = git+https://git.jamjar.ws/strat/flandre_grub.git
+	sha512sums = SKIP
+
+pkgname = flandre-grub-theme-git
