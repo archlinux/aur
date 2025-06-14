@@ -12,7 +12,7 @@ makedepends=('xorg-server' 'fontconfig')
 optdepends=('gst-plugins-base-libs')
 license=('custom')
 pkgver=${_version}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 install=$pkgname.install
 source=("https://files.latticesemi.com/Diamond/${_version}/${_version}.0.${_base}_Diamond_lin.zip"
@@ -39,6 +39,8 @@ prepare() {
     cd "${srcdir}/${_version}/synpbase/linux_a_64/lib"
     rm libstdc++.so.6
     ln -sf /usr/lib/libstdc++.so.6
+    # Also symlink host libxml2 as libxml2.so.2 or Synplify Pro will not start
+    ln -sf /usr/lib/libxml2.so libxml2.so.2
 }
 
 package() {
