@@ -2,7 +2,7 @@
 
 pkgname=libastal-bluetooth-git
 _pkgname=bluetooth
-pkgver=r3.b6ca176
+pkgver=r785.4e455bb
 pkgrel=1
 provides=(astal-bluetooth libastal-bluetooth libastal-bluetooth.so=0-64)
 pkgdesc="library to control bluez over dbus "
@@ -20,14 +20,21 @@ makedepends=(
   vala
 )
 groups=("libastal")
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+${url}.git" "skip_valadoc.patch")
+sha256sums=('SKIP'
+            '7037b665a3997ef774edda01356014e5517b1f7c901938bb9692e67d3fbba915')
 
 pkgver() {
   cd astal
   #git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
+
+prepare() {
+    cd astal 
+    patch -Np1 -i ../skip_valadoc.patch
+}
+
 
 build() {
   cd astal/lib/$_pkgname

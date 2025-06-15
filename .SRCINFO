@@ -1,6 +1,6 @@
 pkgbase = libastal-bluetooth-git
 	pkgdesc = library to control bluez over dbus
-	pkgver = r3.b6ca176
+	pkgver = r785.4e455bb
 	pkgrel = 1
 	url = https://github.com/Aylur/astal
 	arch = x86_64
@@ -16,6 +16,8 @@ pkgbase = libastal-bluetooth-git
 	provides = libastal-bluetooth
 	provides = libastal-bluetooth.so=0-64
 	source = git+https://github.com/Aylur/astal.git
+	source = skip_valadoc.patch
 	sha256sums = SKIP
+	sha256sums = 7037b665a3997ef774edda01356014e5517b1f7c901938bb9692e67d3fbba915
 
 pkgname = libastal-bluetooth-git
