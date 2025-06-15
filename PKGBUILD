@@ -2,19 +2,19 @@
 
 pkgname=(haskell-trial haskell-trial-tomland haskell-trial-optparse-applicative)
 pkgver=0.0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Trial Data Structure"
 url="https://github.com/kowainik/trial"
 license=("MPL2")
 arch=('x86_64')
-depends=(ghc-libs haskell-colourista haskell-dlist)
+depends=(haskell-base haskell-colourista haskell-dlist)
 makedepends=(cabal-install ghc
              haskell-doctest haskell-hedgehog haskell-hspec haskell-hspec-hedgehog haskell-splitmix
              uusi)
-# NOTE: source taken from GH so that all 3 subpackages get built in one go
-_commit=5f67d4ad805ec4efb4e53805ff728dc73cb503e8
+# NOTE: source monorepo taken from GH instead of hackage so that all 3 subpackages get built in one go
+_commit=e86477e60649a99b8b9fed72dbe3cd566fde30ff
 source=("https://github.com/kowainik/trial/archive/${_commit}.tar.gz")
-sha256sums=(1d8760b4cbef4e29fd9895bfdbf1a6a4cf5a31a5fe3e46ee50119ef4912b7d07)
+sha256sums=('2c7f9a4f72dcbfc6b90abc3bad33698c67573b60d2074562598c087ecf27cc1a')
 
 build() {
   cd trial-${_commit}
