@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=mcptools
-pkgver=0.7.0
+pkgver=0.7.0 # renovate: datasource=github-tags depName=f/mcptools
 pkgrel=1
 pkgdesc='Swiss Army Knife for MCP Servers'
 arch=('x86_64')
