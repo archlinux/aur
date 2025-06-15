@@ -1,0 +1,405 @@
+Commit: Made code base C23 compliant.
+https://tdom.org/index.html/info/2db2c39167
+
+diff -ur tdom-0.9.5-src/generic/datatypes.c tdom-0.9.5-src.patched/generic/datatypes.c
+--- tdom-0.9.5-src/generic/datatypes.c	2024-10-15 21:18:56.000000000 +0300
++++ tdom-0.9.5-src.patched/generic/datatypes.c	2025-06-14 15:20:37.950771749 +0300
+@@ -227,7 +227,7 @@
+     )
+ {
+     tclTCData *tcdata = constraintData;
+-    int result, bool;
++    int result, boolVal;
+ 
+     tcdata->evalStub[tcdata->nrArg-1] = Tcl_NewStringObj(text, -1);
+     Tcl_IncrRefCount (tcdata->evalStub[tcdata->nrArg-1]);
+@@ -240,11 +240,11 @@
+         tcdata->sdata->evalError = 1;
+         return 0;
+     }
+-    result = Tcl_GetBooleanFromObj (interp, Tcl_GetObjResult (interp), &bool);
++    result = Tcl_GetBooleanFromObj (interp, Tcl_GetObjResult (interp), &boolVal);
+     if (result != TCL_OK) {
+         return 0;
+     }
+-    if (bool) {
++    if (boolVal) {
+         return 1;
+     } 
+     return 0;
+diff -ur tdom-0.9.5-src/generic/dom.c tdom-0.9.5-src.patched/generic/dom.c
+--- tdom-0.9.5-src/generic/dom.c	2024-10-15 21:18:56.000000000 +0300
++++ tdom-0.9.5-src.patched/generic/dom.c	2025-06-14 15:20:37.952268992 +0300
+@@ -5491,7 +5491,7 @@
+     )
+ {
+     CHandlerSet     *handlerSet;
+-    int              methodIndex, result, bool;
++    int              methodIndex, result, boolVal;
+     tdomCmdReadInfo *info;
+     TclGenExpatInfo *expat;
+     Tcl_Obj         *newObjName = NULL;
+@@ -5603,10 +5603,10 @@
+         }
+         Tcl_SetIntObj (Tcl_GetObjResult (interp), info->storeLineColumn);
+         if (objc == 4) {
+-            if (Tcl_GetBooleanFromObj (interp, objv[3], &bool) != TCL_OK) {
++            if (Tcl_GetBooleanFromObj (interp, objv[3], &boolVal) != TCL_OK) {
+                 return TCL_ERROR;
+             }
+-            info->storeLineColumn = bool;
++            info->storeLineColumn = boolVal;
+         }
+         info->tdomStatus = 1;
+         break;
+@@ -5658,11 +5658,11 @@
+             return TCL_ERROR;
+         }
+         Tcl_SetIntObj (Tcl_GetObjResult (interp), info->ignoreWhiteSpaces);
+-        if (Tcl_GetBooleanFromObj (interp, objv[3], &bool) != TCL_OK) {
++        if (Tcl_GetBooleanFromObj (interp, objv[3], &boolVal) != TCL_OK) {
+             return TCL_ERROR;
+         }
+-        info->ignoreWhiteSpaces = !bool;
+-        handlerSet->ignoreWhiteCDATAs = !bool;
++        info->ignoreWhiteSpaces = !boolVal;
++        handlerSet->ignoreWhiteCDATAs = !boolVal;
+         info->tdomStatus = 1;
+         break;
+ 
+@@ -5682,10 +5682,10 @@
+             Tcl_SetResult (interp, "parser object isn't tdom enabled.", NULL);
+             return TCL_ERROR;
+         }
+-        if (Tcl_GetBooleanFromObj (interp, objv[3], &bool) != TCL_OK) {
++        if (Tcl_GetBooleanFromObj (interp, objv[3], &boolVal) != TCL_OK) {
+             return TCL_ERROR;
+         }
+-        if (bool) {
++        if (boolVal) {
+             handlerSet->startCdataSectionCommand = tdom_startCDATA;
+             handlerSet->endCdataSectionCommand = endCDATA;
+         } else {
+@@ -5711,11 +5711,11 @@
+             Tcl_SetResult (interp, "parser object isn't tdom enabled.", NULL);
+             return TCL_ERROR;
+         }
+-        if (Tcl_GetBooleanFromObj (interp, objv[3], &bool) != TCL_OK) {
++        if (Tcl_GetBooleanFromObj (interp, objv[3], &boolVal) != TCL_OK) {
+             return TCL_ERROR;
+         }
+         expat = GetExpatInfo (interp, objv[1]);
+-        expat->keepTextStart = bool;
++        expat->keepTextStart = boolVal;
+         expat->cdataStartLine = 0;
+         break;
+         
+@@ -5727,10 +5727,10 @@
+         }
+         Tcl_SetIntObj (Tcl_GetObjResult (interp), info->ignorexmlns);
+         if (objc == 4) {
+-            if (Tcl_GetBooleanFromObj (interp, objv[3], &bool) != TCL_OK) {
++            if (Tcl_GetBooleanFromObj (interp, objv[3], &boolVal) != TCL_OK) {
+                 return TCL_ERROR;
+             }
+-            info->ignorexmlns = bool;
++            info->ignorexmlns = boolVal;
+         }
+         info->tdomStatus = 1;
+         break;
+diff -ur tdom-0.9.5-src/generic/tcldom.c tdom-0.9.5-src.patched/generic/tcldom.c
+--- tdom-0.9.5-src/generic/tcldom.c	2024-10-15 21:18:56.000000000 +0300
++++ tdom-0.9.5-src.patched/generic/tcldom.c	2025-06-14 15:20:37.953002477 +0300
+@@ -3362,8 +3362,8 @@
+     Tcl_Obj  *object;
+     Tcl_Obj  *array;
+     Tcl_Obj  *null;
+-    Tcl_Obj  *true;
+-    Tcl_Obj  *false;
++    Tcl_Obj  *trueVal;
++    Tcl_Obj  *falseVal;
+     Tcl_Obj  *number;
+     Tcl_Obj  *string;
+ } asTypedListTypes;
+@@ -3438,10 +3438,10 @@
+             Tcl_ListObjAppendElement (NULL, resultObj, c->null);
+             break;
+         case JSON_TRUE:
+-            Tcl_ListObjAppendElement (NULL, resultObj, c->true);
++            Tcl_ListObjAppendElement (NULL, resultObj, c->trueVal);
+             break;
+         case JSON_FALSE:
+-            Tcl_ListObjAppendElement (NULL, resultObj, c->false);
++            Tcl_ListObjAppendElement (NULL, resultObj, c->falseVal);
+             break;
+         case JSON_NUMBER:
+             textNode = (domTextNode *)node;
+@@ -3482,16 +3482,16 @@
+     c.object = Tcl_NewStringObj ("OBJECT", 6);
+     c.array = Tcl_NewStringObj ("ARRAY", 5);
+     c.null = Tcl_NewStringObj ("NULL", 4);
+-    c.true = Tcl_NewStringObj ("TRUE", 4);
+-    c.false = Tcl_NewStringObj ("FALSE", 5);
++    c.trueVal = Tcl_NewStringObj ("TRUE", 4);
++    c.falseVal = Tcl_NewStringObj ("FALSE", 5);
+     c.number = Tcl_NewStringObj ("NUMBER", 6);
+     c.string = Tcl_NewStringObj ("STRING", 6);
+ 
+     Tcl_IncrRefCount (c.object);
+     Tcl_IncrRefCount (c.array);
+     Tcl_IncrRefCount (c.null);
+-    Tcl_IncrRefCount (c.true);
+-    Tcl_IncrRefCount (c.false);
++    Tcl_IncrRefCount (c.trueVal);
++    Tcl_IncrRefCount (c.falseVal);
+     Tcl_IncrRefCount (c.number);
+     Tcl_IncrRefCount (c.string);
+ 
+@@ -3509,8 +3509,8 @@
+     Tcl_DecrRefCount (c.object);
+     Tcl_DecrRefCount (c.array);
+     Tcl_DecrRefCount (c.null);
+-    Tcl_DecrRefCount (c.true);
+-    Tcl_DecrRefCount (c.false);
++    Tcl_DecrRefCount (c.trueVal);
++    Tcl_DecrRefCount (c.falseVal);
+     Tcl_DecrRefCount (c.number);
+     Tcl_DecrRefCount (c.string);
+ }
+@@ -3562,7 +3562,7 @@
+ {
+     char          *channelId, prefix[MAX_PREFIX_LEN];
+     const char    *localName;
+-    int            indent, mode, bool;
++    int            indent, mode, boolVal;
+     int            outputFlags = 0;
+     int            optionIndex, cdataChild;
+     Tcl_Obj       *resultPtr, *encString = NULL;
+@@ -3678,11 +3678,11 @@
+                           "as argument");
+                 goto cleanup;
+             }
+-            if (Tcl_GetBooleanFromObj(interp, objv[3], &bool)
++            if (Tcl_GetBooleanFromObj(interp, objv[3], &boolVal)
+                 != TCL_OK) {
+                 goto cleanup;
+             }
+-            if (bool) outputFlags |= SERIALIZE_DOCTYPE_DECLARATION;
++            if (boolVal) outputFlags |= SERIALIZE_DOCTYPE_DECLARATION;
+             objc -= 2;
+             objv += 2;
+             break;
+@@ -3693,11 +3693,11 @@
+                           "as argument");
+                 goto cleanup;
+             }
+-            if (Tcl_GetBooleanFromObj(interp, objv[3], &bool)
++            if (Tcl_GetBooleanFromObj(interp, objv[3], &boolVal)
+                 != TCL_OK) {
+                 goto cleanup;
+             }
+-            if (bool) outputFlags |= SERIALIZE_XML_DECLARATION;
++            if (boolVal) outputFlags |= SERIALIZE_XML_DECLARATION;
+             objc -= 2;
+             objv += 2;
+             break;
+@@ -4895,7 +4895,7 @@
+     domLength    length;
+     XML_Size     line, column;
+     XML_Index    byteIndex;
+-    int          nsIndex, bool, hnew, legacy, jsonType;
++    int          nsIndex, boolVal, hnew, legacy, jsonType;
+     Tcl_Obj     *namePtr, *resultPtr;
+     Tcl_Obj     *mobjv[MAX_REWRITE_ARGS], *storedErrMsg;
+     Tcl_CmdInfo  cmdInfo;
+@@ -5907,10 +5907,10 @@
+             SetIntResult(
+                 (((node->nodeFlags & DISABLE_OUTPUT_ESCAPING) == 0) ? 0 : 1));
+             if (objc == 3) {
+-                if (Tcl_GetBooleanFromObj(interp, objv[2], &bool) != TCL_OK) {
++                if (Tcl_GetBooleanFromObj(interp, objv[2], &boolVal) != TCL_OK) {
+                     return TCL_ERROR;
+                 }
+-                if (bool) {
++                if (boolVal) {
+                     node->nodeFlags |= DISABLE_OUTPUT_ESCAPING;
+                 } else {
+                     node->nodeFlags &= (~DISABLE_OUTPUT_ESCAPING);
+@@ -5952,16 +5952,16 @@
+ 
+         case m_normalize:
+             CheckArgs (2,3,2, "?-forXPath?");
+-            bool = 0;
++            boolVal = 0;
+             if (objc == 3) {
+                 if (strcmp (Tcl_GetString(objv[2]), "-forXPath") == 0) {
+-                    bool = 1;
++                    boolVal = 1;
+                 } else {
+                     SetResult("unknown option! Options: ?-forXPath?");
+                     return TCL_ERROR;
+                 }
+             }
+-            domNormalize (node, bool, tcldom_deleteNode, interp);
++            domNormalize (node, boolVal, tcldom_deleteNode, interp);
+             return TCL_OK;
+ 
+         case m_jsonType:
+@@ -6035,7 +6035,7 @@
+     domDocument         * doc;
+     char                * method, *tag, *data, *target, *uri, tmp[100];
+     char                * str, *docName, *errMsg;
+-    int                   methodIndex, result, i, nsIndex, forXPath, bool;
++    int                   methodIndex, result, i, nsIndex, forXPath, boolVal;
+     int                   setDocumentElement = 0, restoreDomCreateCmdMode = 0;
+     domLength             data_length, target_length;
+     domNode             * n;
+@@ -6382,10 +6382,10 @@
+                 SetBooleanResult(0);
+             }
+             if (objc == 3) {
+-                if (Tcl_GetBooleanFromObj (interp, objv[2], &bool) != TCL_OK) {
++                if (Tcl_GetBooleanFromObj (interp, objv[2], &boolVal) != TCL_OK) {
+                     return TCL_ERROR;
+                 }
+-                if (bool) {
++                if (boolVal) {
+                     doc->nodeFlags |= OUTPUT_DEFAULT_INDENT;
+                 } else {
+                     doc->nodeFlags &= ~OUTPUT_DEFAULT_INDENT;
+@@ -7736,7 +7736,7 @@
+ 
+     char        * method, tmp[300], *string, *option,
+                  *replacement;
+-    int           methodIndex, result, i, bool, changed;
++    int           methodIndex, result, i, boolVal, changed;
+     domLength     repllen;
+     Tcl_CmdInfo   cmdInfo;
+     Tcl_Obj     * mobjv[MAX_REWRITE_ARGS], *newObj, *storedErrMsg;
+@@ -7897,30 +7897,30 @@
+ 
+         case m_setStoreLineColumn:
+             if (objc == 3) {
+-                if (Tcl_GetBooleanFromObj(interp, objv[2], &bool) != TCL_OK) {
++                if (Tcl_GetBooleanFromObj(interp, objv[2], &boolVal) != TCL_OK) {
+                     return TCL_ERROR;
+                 }
+-                TcldomDATA(storeLineColumn) = bool;
++                TcldomDATA(storeLineColumn) = boolVal;
+             }
+             SetBooleanResult(TcldomDATA(storeLineColumn));
+             return TCL_OK;
+ 
+         case m_setNameCheck:
+             if (objc == 3) {
+-                if (Tcl_GetBooleanFromObj(interp, objv[2], &bool) != TCL_OK) {
++                if (Tcl_GetBooleanFromObj(interp, objv[2], &boolVal) != TCL_OK) {
+                     return TCL_ERROR;
+                 }
+-                TcldomDATA(dontCheckName) = !bool;
++                TcldomDATA(dontCheckName) = !boolVal;
+             }
+             SetBooleanResult(!TcldomDATA(dontCheckName));
+             return TCL_OK;
+             
+         case m_setTextCheck:
+             if (objc == 3) {
+-                if (Tcl_GetBooleanFromObj(interp, objv[2], &bool) != TCL_OK) {
++                if (Tcl_GetBooleanFromObj(interp, objv[2], &boolVal) != TCL_OK) {
+                     return TCL_ERROR;
+                 }
+-                TcldomDATA(dontCheckCharData) = !bool;
++                TcldomDATA(dontCheckCharData) = !boolVal;
+             }
+             SetBooleanResult(!TcldomDATA(dontCheckCharData));
+             return TCL_OK;
+diff -ur tdom-0.9.5-src/generic/tclexpat.c tdom-0.9.5-src.patched/generic/tclexpat.c
+--- tdom-0.9.5-src/generic/tclexpat.c	2024-10-15 21:18:56.000000000 +0300
++++ tdom-0.9.5-src.patched/generic/tclexpat.c	2025-06-14 15:20:37.953782292 +0300
+@@ -1267,7 +1267,7 @@
+       EXPAT_PARAMENTITYPARSINGNEVER,
+       EXPAT_PARAMENTITYPARSINGNOTSTANDALONE
+   };
+-  int optionIndex, value, bool;
++  int optionIndex, value, boolVal;
+   Tcl_Obj *const *objPtr = objv;
+   Tcl_CmdInfo cmdInfo;
+   int rc;
+@@ -1396,11 +1396,11 @@
+           
+       case EXPAT_FINAL:			/* -final */
+ 
+-	if (Tcl_GetBooleanFromObj(interp, objPtr[1], &bool) != TCL_OK) {
++	if (Tcl_GetBooleanFromObj(interp, objPtr[1], &boolVal) != TCL_OK) {
+             return TCL_ERROR;
+ 	}
+ 
+-        expat->final = bool;
++        expat->final = boolVal;
+ 	break;
+ 
+       case EXPAT_BASE:			/* -baseurl */
+@@ -1593,18 +1593,18 @@
+ 
+       case EXPAT_USEFOREIGNDTD:                /* -useForeignDTD */
+         
+-        if (Tcl_GetBooleanFromObj (interp, objPtr[1], &bool) != TCL_OK) {
++        if (Tcl_GetBooleanFromObj (interp, objPtr[1], &boolVal) != TCL_OK) {
+             return TCL_ERROR;
+         }
+         if (expat->parser) {
+             /* Cannot be changed after parsing as started (which is
+                kind of understandable). */
+-            if (XML_UseForeignDTD (expat->parser, (unsigned char)bool)
++            if (XML_UseForeignDTD (expat->parser, (unsigned char)boolVal)
+                 != XML_ERROR_NONE) {
+-                expat->useForeignDTD = bool;
++                expat->useForeignDTD = boolVal;
+             }
+         } else {
+-            expat->useForeignDTD = bool;
++            expat->useForeignDTD = boolVal;
+         }
+         break;
+ 
+@@ -1776,33 +1776,33 @@
+         break;
+ 
+     case EXPAT_NOEXPAND:
+-        if (Tcl_GetBooleanFromObj (interp, objPtr[1], &bool) != TCL_OK) {
++        if (Tcl_GetBooleanFromObj (interp, objPtr[1], &boolVal) != TCL_OK) {
+             return TCL_ERROR;
+         }
+-        if (bool) {
++        if (boolVal) {
+             XML_SetDefaultHandler( expat->parser,
+                                    TclGenExpatDefaultHandler);
+         } else {
+             XML_SetDefaultHandlerExpand( expat->parser,
+                                          TclGenExpatDefaultHandler);
+         }
+-        expat->noexpand = bool;
++        expat->noexpand = boolVal;
+         break;
+ 
+     case EXPAT_FASTCALL:
+-        if (Tcl_GetBooleanFromObj (interp, objPtr[1], &bool) != TCL_OK) {
++        if (Tcl_GetBooleanFromObj (interp, objPtr[1], &boolVal) != TCL_OK) {
+             return TCL_ERROR;
+         }
+         CheckDefaultTclHandlerSet;
+-        activeTclHandlerSet->fastCall = bool;
++        activeTclHandlerSet->fastCall = boolVal;
+         break;
+                   
+     case EXPAT_KEEPTEXTSTART:
+-        if (Tcl_GetBooleanFromObj(interp, objPtr[1], &bool) != TCL_OK) {
++        if (Tcl_GetBooleanFromObj(interp, objPtr[1], &boolVal) != TCL_OK) {
+             return TCL_ERROR;
+ 	}
+ 
+-        expat->keepTextStart = bool;
++        expat->keepTextStart = boolVal;
+ 	break;
+ 
+ #ifndef TDOM_NO_SCHEMA

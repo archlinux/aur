@@ -1,7 +1,7 @@
 pkgbase = tdom
 	pkgdesc = A fast XML/DOM/XPath package for Tcl written in C
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tdom.org
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,9 @@ pkgbase = tdom
 	options = !lto
 	source = https://tdom.org/downloads/tdom-0.9.5-src.tgz
 	source = no-build-dir.patch
+	source = gcc-c23.patch
 	sha256sums = ce22e3f42da9f89718688bf413b82fbf079b40252ba4dd7f2a0e752232bb67e8
 	sha256sums = 71102943c38c6f250b92bcf49b525a43e288f21fbed4836faec7f8dc616d60d2
+	sha256sums = 400a9e9d1a533873330baaee1f50a53d91733b651d4594189ba253cdabc19d73
 
 pkgname = tdom
