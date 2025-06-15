@@ -1,8 +1,8 @@
 # Maintainer: robertfoster
 
 pkgname=overte-server-bin
-_date=2025.03.3
-pkgver="${_date}.b38237c"
+_date=2025.05.1
+pkgver="${_date}.53d2094"
 pkgrel=1
 pkgdesc="Overte platform, based on the High Fidelity Engine (server)"
 arch=('aarch64' 'x86_64')
@@ -41,5 +41,5 @@ package() {
 
 sha256sums=('503dfd4562efdbb01f5e714a89d9b23a675e32f9733552532750393be85ca0e3'
             '83b66df9d94878ca1de31e85a48e905501a7db202bee9950e6c2ab32b85b1461')
-sha256sums_aarch64=('fabf73fcfde6737a532733f5b24c75845a0769293cf3c16ec63ae71bed34c1a0')
-sha256sums_x86_64=('b12747e6bbec8293af95a8e88e129f10ef8499223c9f70a0a8ca24f0a21e714f')
+sha256sums_aarch64=('f24cad2dcfae85ebc826493cceb41dd9d59ce1a8db6770e1c1893905f057c0b9')
+sha256sums_x86_64=('84d5637a5531878ad4f99a99a6616f0698ea9b2b8c53f2880fbf9cde594d18a9')
