@@ -12,8 +12,8 @@ depends=('libopenmpt>=0.5.0')
 conflicts=('libmodplug')
 provides=('libmodplug')
 install='libopenmpt-modplug.install'
-source=("https://lib.openmpt.org/files/$pkgname/$pkgname-${_pkgver}.tar.gz")
-sha256sums=('ecce1a0eecfdb0b5824cab89c270dce59596295a2c17c2b043215ecf4d7c4ff7')
+source=("https://lib.openmpt.org/files/$pkgname/$pkgname-${_pkgver}.tar.gz" "cstdint.patch")
+sha256sums=('ecce1a0eecfdb0b5824cab89c270dce59596295a2c17c2b043215ecf4d7c4ff7' 'f940b0ef61feac3a5b63a6a475663d3064e8f8d60686677900781aaa307591f8')
 
 build() {
   cd $pkgbase-$_pkgver

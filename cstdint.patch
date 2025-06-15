@@ -1,0 +1,10 @@
+--- stdafx.h	2020-04-14 04:58:57.000000000 -0400
++++ stdafx-fix.h	2025-06-15 03:21:13.448140174 -0400
+@@ -62,6 +62,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <cstdint>
+ #ifdef HAVE_MALLOC_H
+ #include <malloc.h>
+ #endif
