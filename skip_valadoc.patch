@@ -1,0 +1,54 @@
+diff --git i/lib/powerprofiles/meson.build w/lib/powerprofiles/meson.build
+index 4a31afa..293872e 100644
+--- i/lib/powerprofiles/meson.build
++++ w/lib/powerprofiles/meson.build
+@@ -52,9 +52,10 @@ if get_option('lib')
+     vala_args: ['--vapi-comments'],
+     vala_header: meson.project_name() + '.h',
+     vala_vapi: meson.project_name() + '-' + api_version + '.vapi',
++    vala_gir: gir,
+     version: meson.project_version(),
+     install: true,
+-    install_dir: [true, true, true],
++    install_dir: [true, true, true, true],
+   )
+ 
+   pkgs = []
+@@ -62,17 +63,17 @@ if get_option('lib')
+     pkgs += ['--pkg=' + dep.name()]
+   endforeach
+ 
+-  gir_tgt = custom_target(
+-    gir,
+-    command: [find_program('python3'), files('gir.py'), meson.project_name(), gir]
+-    + pkgs
+-    + sources,
+-    input: sources,
+-    depends: lib,
+-    output: gir,
+-    install: true,
+-    install_dir: get_option('datadir') / 'gir-1.0',
+-  )
++  # gir_tgt = custom_target(
++  #   gir,
++  #   command: [find_program('python3'), files('gir.py'), meson.project_name(), gir]
++  #   + pkgs
++  #   + sources,
++  #   input: sources,
++  #   depends: lib,
++  #   output: gir,
++  #   install: true,
++  #   install_dir: get_option('datadir') / 'gir-1.0',
++  # )
+ 
+   custom_target(
+     typelib,
+@@ -84,7 +85,7 @@ if get_option('lib')
+     ],
+     input: lib,
+     output: typelib,
+-    depends: [lib, gir_tgt],
++    depends: [lib],
+     install: true,
+     install_dir: get_option('libdir') / 'girepository-1.0',
+   )
