@@ -1,0 +1,17 @@
+pkgbase = haskell-unix
+	pkgdesc = POSIX functionality (backport)
+	pkgver = 2.8.7.0
+	pkgrel = 1
+	url = https://github.com/haskell/unix
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = ghc
+	depends = haskell-base
+	depends = haskell-bytestring
+	depends = haskell-filepath>=1.4.100
+	depends = haskell-os-string
+	depends = haskell-time
+	source = https://hackage.haskell.org/packages/archive/unix/2.8.7.0/unix-2.8.7.0.tar.gz
+	sha256sums = cbdd879d5aaf0755eeeedc95e3c4adde74edb8dbb7164aa1297b0b84d916fb83
+
+pkgname = haskell-unix
