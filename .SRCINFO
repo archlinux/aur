@@ -1,12 +1,12 @@
 pkgbase = dcfldd
 	pkgdesc = DCFL (DoD Computer Forensics Lab) dd replacement with hashing
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://github.com/resurrecting-open-source-projects/dcfldd/
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = dcfldd-1.9.2.tar.gz::https://github.com/resurrecting-open-source-projects/dcfldd/archive/v1.9.2.tar.gz
-	sha256sums = 52468122e915273eaffde94cb0b962adaefe260b8af74e98e1282e2177f01194
+	source = dcfldd-1.9.3.tar.gz::https://github.com/resurrecting-open-source-projects/dcfldd/archive/v1.9.3.tar.gz
+	sha256sums = e5813e97bbc8f498f034f5e05178489c1be86de015e8da838de59f90f68491e7
 
 pkgname = dcfldd
