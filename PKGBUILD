@@ -59,6 +59,7 @@ optdepends=(
     'vapoursynth-plugin-wnnm'
     'vapoursynth-plugin-wwxd: Scene detection'
     'vapoursynth-plugin-znedi3'
+    'vapoursynth-plugin-zsmooth'
 )
 provides=(
     vapoursynth-plugin-vsaa
