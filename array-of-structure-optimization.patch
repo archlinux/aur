@@ -1,6 +1,6 @@
 --- a/clang/lib/AST/ExprConstant.cpp
 +++ b/clang/lib/AST/ExprConstant.cpp
-@@ -11416,6 +11416,8 @@ bool ArrayExprEvaluator::VisitCXXConstructExpr(const CXXConstructExpr *E,
+@@ -11862,6 +11862,8 @@ bool ArrayExprEvaluator::VisitCXXConstructExpr(const CXXConstructExpr *E,
    if (const ConstantArrayType *CAT = Info.Ctx.getAsConstantArrayType(Type)) {
      unsigned FinalSize = CAT->getSize().getZExtValue();
  
