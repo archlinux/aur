@@ -1,7 +1,7 @@
 pkgbase = kapitano
 	pkgdesc = Modern ClamAV front-end that uses gtk4/libadwaita
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://codeberg.org/zynequ/Kapitano
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = kapitano
 	depends = gtk4
 	depends = libadwaita
 	depends = python-gobject
+	depends = clamav
 	provides = kapitano
 	source = kapitano-1.1.tar.gz::https://codeberg.org/zynequ/Kapitano/archive/1.1.tar.gz
 	sha256sums = 541ff3e04df2b8f602dfd7789d9ee90530b299c170f79bbaab4c4e12a8023a94
