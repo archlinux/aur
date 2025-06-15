@@ -1,16 +1,20 @@
 pkgbase = gradia
 	pkgdesc = Make your screenshots ready for the world.
-	pkgver = 1.4.1
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/AlexanderVanhee/Gradia
 	arch = x86_64
 	license = GPL3
+	makedepends = patch
 	makedepends = meson
 	makedepends = blueprint-compiler
 	depends = python
 	depends = python-gobject
 	depends = python-pillow
-	source = gradia-1.4.1.tar.gz::https://github.com/AlexanderVanhee/Gradia/archive/refs/tags/v1.4.1.tar.gz
-	sha256sums = 3c8f7188ce9487f8fcb7f090f75b7b8eb390c53f51f3e3532ba2fc31755209aa
+	depends = python-pillow-avif-plugin
+	source = gradia-1.4.3.tar.gz::https://github.com/AlexanderVanhee/Gradia/archive/refs/tags/v1.4.3.tar.gz
+	source = pillow_avif.patch
+	sha256sums = 3633f62a38c05d40e9bfacf795b0f844e810f64569665fd1f6021fb24d3a8256
+	sha256sums = 5080f87f3b2f2b7360c6afebe333e7b8b09ef2017cc0f20b95d364df83bf3528
 
 pkgname = gradia
