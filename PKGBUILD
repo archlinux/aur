@@ -1,0 +1,23 @@
+# caelestia-meta
+
+# Maintainer: Soramane <soramane32 at gmail dot com>
+
+pkgname='caelestia-meta'
+pkgver=0.0.1
+pkgrel=1
+pkgdesc='A metapackage containing all dependencies for the Caelestia dotfiles'
+arch=('any')
+url='https://github.com/caelestia-dots/caelestia'
+license=('GPL-3.0-only')
+depends=('caelestia-cli' 'caelestia-shell'
+         'hyprland' 'xdg-desktop-portal-hyprland' 'xdg-desktop-portal-gtk' 'hyprpicker' 'hypridle' 'hyprlock'
+         'wl-clipboard' 'cliphist' 'bluez-utils' 'inotify-tools' 'app2unit' 'wireplumber' 'trash-cli' 'sway-audio-idle-inhibit'
+         'foot' 'fish' 'fastfetch' 'starship' 'btop' 'playerctl' 'departure-mono-font' 'jq' 'socat' 'imagemagick' 'curl'
+         'adw-gtk-theme' 'papirus-icon-theme')
+optdepends=('spotify: music player'
+            'vscode: code editor'
+            'zen-browser: web browser'
+            'todoist-appimage: todo manager'
+            'uwsm: uwsm session'
+            'gnome-keyring: keyring daemon'
+            'polkit-gnome: gnome polkit client')
