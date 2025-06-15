@@ -1,15 +1,15 @@
 # Maintainer: linfeng <2844126834@qq.com>
 pkgname=sticky-rs-git
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Image sticky note app that enables users to stick pictures to the desktop and have them always visible"
 arch=('any')
 url="https://github.com/FengZhongShaoNian/sticky-rs"
 license=('GPL2')
-depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator')
-makedepends=('nodejs' 'pnpm' 'rust' 'dpkg')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk')
+makedepends=('git' 'file' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'pnpm' 'nodejs' 'dpkg')
 provides=('sticky-rs')
-conflicts=('sticky-rs')
+conflicts=('sticky-rs-bin')
 options=('!strip' '!emptydirs')
 source=('git+https://github.com/FengZhongShaoNian/sticky-rs')
 sha256sums=('SKIP')
