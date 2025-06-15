@@ -1,6 +1,6 @@
 pkgbase = python-pyqtdarktheme-fork
 	pkgdesc = Flat dark theme for PySide and PyQt
-	pkgver = 2.3.2
+	pkgver = 2.3.4
 	pkgrel = 3
 	url = https://pypi.org/project/pyqtdarktheme-fork
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-pyqtdarktheme-fork
 	depends = python-darkdetect
 	provides = pyqtdarktheme
 	conflicts = python-pyqtdarktheme
-	source = https://files.pythonhosted.org/packages/source/p/pyqtdarktheme_fork/pyqtdarktheme_fork-2.3.2.tar.gz
-	sha256sums = 3ea94fed5df262d960378409357c63032639f749794d766f41a45ad8558b2523
+	source = https://files.pythonhosted.org/packages/source/p/pyqtdarktheme_fork/pyqtdarktheme_fork-2.3.4.tar.gz
+	sha256sums = 2a5fab9d2122e52f772a7088e87be1fc0af767346e5fa0b1333e6813ebb2116c
 
 pkgname = python-pyqtdarktheme-fork

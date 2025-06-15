@@ -1,6 +1,6 @@
 pkgname=python-pyqtdarktheme-fork
 _name=pyqtdarktheme_fork
-pkgver=2.3.2
+pkgver=2.3.4
 pkgrel=3
 pkgdesc='Flat dark theme for PySide and PyQt'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'poetry')
 provides=('pyqtdarktheme')
 conflicts=('python-pyqtdarktheme')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('3ea94fed5df262d960378409357c63032639f749794d766f41a45ad8558b2523')
+sha256sums=('2a5fab9d2122e52f772a7088e87be1fc0af767346e5fa0b1333e6813ebb2116c')
 
 
 build() {
