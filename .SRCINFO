@@ -1,0 +1,19 @@
+pkgbase = nmcurse-nhk-git
+	pkgdesc = Curses interface for NetworkManager, forked by nanoka
+	pkgver = 10.7cc91c1
+	pkgrel = 1
+	url = https://github.com/nhktmdzhg/nmcurse
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = ncurses
+	depends = networkmanager
+	provides = nmcurse
+	conflicts = nmcurse
+	source = nmcurse::git+https://github.com/nhktmdzhg/nmcurse.git
+	md5sums = SKIP
+
+pkgname = nmcurse-nhk-git
