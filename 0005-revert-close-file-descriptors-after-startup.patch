@@ -1,0 +1,43 @@
+From f997d17ed8de6ed57c840e1c39562524c15741d7 Mon Sep 17 00:00:00 2001
+From: Tiago de Paula <tiagodepalves@gmail.com>
+Date: Sun, 15 Jun 2025 01:13:10 -0300
+Subject: [PATCH] Revert "Close file descriptors after startup. Fixes #333186."
+
+This reverts commit 2bec7e4653f672a51ff4780d4ff68d73af026e77.
+---
+ esd.c | 12 ------------
+ 1 file changed, 12 deletions(-)
+
+diff --git a/esd.c b/esd.c
+index 666cf31..209aa51 100644
+--- a/esd.c
++++ b/esd.c
+@@ -632,9 +632,6 @@ int main ( int argc, char *argv[] )
+     char *hostname=NULL;
+     char *endptr;
+ 
+-    int fd0;
+-    int max_fds;
+-
+     /* from esd_config.c */
+     extern char esd_spawn_options[];
+     extern char esd_default_options[];
+@@ -836,15 +833,6 @@ int main ( int argc, char *argv[] )
+     /* cd to / */
+     chdir ("/");
+ 
+-    /* close all open file descriptors */
+-    max_fds = getdtablesize();
+-    for(i=0;i<max_fds;i++){
+-      close(i);
+-    }
+-    fd0 = open("/dev/null", O_RDWR);
+-    dup(0);
+-    dup(0);
+-
+     /* open the listening socket */
+   listen_socket = open_listen_socket(hostname, esd_port );
+   if ( listen_socket < 0 ) {
+-- 
+2.49.0
+

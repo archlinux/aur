@@ -3,8 +3,10 @@ Description=Enlightened Sound Daemon
 Documentation=man:esd(1)
 
 [Service]
+Environment=ESD_DEBUG=1
 ExecStart=/usr/bin/esd
 Restart=on-failure
+# esd opens FIFOs on /tmp
 PrivateTmp=false
 
 # Security options
