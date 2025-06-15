@@ -7,7 +7,7 @@ pkgdesc="C, C++ and Objective-C compiler - sourced from Debian sid"
 arch=(x86_64)
 options=(!strip)
 provides=("clang=17" clang17)
-depends=(patchelf libedit z3)
+depends=(libxml2-2.13 binutils patchelf libedit z3)
 url="https://www.llvm.org/"
 license=('Apache-2.0-LLVM-Exception')
 
@@ -46,8 +46,10 @@ prepare() {
 }
 
 build() {
+#  objdump -p /usr/lib/libxml2.so | grep SONAME
+
   patchelf --replace-needed libedit.so.2 libedit.so _pkg/usr/lib/libLLVM-17.so.1
-  patchelf --replace-needed libz3.so.4 libz3.so _pkg/usr/lib/libLLVM-17.so.1
+  patchelf --replace-needed libz3.so.4   libz3.so   _pkg/usr/lib/libLLVM-17.so.1
 }
 
 package() {
