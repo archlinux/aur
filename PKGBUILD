@@ -171,12 +171,14 @@
 
 
 # Kernel version
-_kernel_major=6.14
-_kernel_minor=10
+_kernel_major=6.15
+_kernel_minor=2
 # Clear Linux patches version
-_clr=6.14.8-1574
+_clr=6.15.1-1584
 # kernel_compiler_patch version
-_kernelcompilerpatch="20241018"
+_kernelcompilerpatch="20250612"
+# kernel_compiler_patch name
+_kernelcompilername="more-ISA-levels-and-uarches-for-kernel-6.15-rc1+.patch"
 # Source directory names
 _src_linux=linux-${_kernel_major}
 
@@ -259,6 +261,7 @@ _get_patches() {
 
 # Applies all patches
 _apply_patches() {
+    set -x
     # Patch with kernel version patches
     patch -Np1 -i ../patch-${_kernel_major}.${_kernel_minor} || true
 
@@ -281,7 +284,7 @@ _apply_patches() {
     # Patch with kernel_compiler_patch patches.
     # Do this before any defconfig invocations so we
     # have all of the extra selectable uarches ready and selectable
-    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_kernelcompilerpatch/more-ISA-levels-and-uarches-for-kernel-6.1.79+.patch"
+    patch -Np1 -i "$srcdir/kernel_compiler_patch-${_kernelcompilerpatch}/${_kernelcompilername}"
 }
 
 # Allows user to modify the kernel config
