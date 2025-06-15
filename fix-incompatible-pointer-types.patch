@@ -1,0 +1,11 @@
+--- a/ewmh.c
++++ b/ewmh.c
+@@ -273,7 +273,7 @@ clientmessage(XEvent *e) {
+ 
+ 	if (ev->message_type == atom[CloseWindow]) {
+ 		if ((c = getclient(ev->window, clients, ClientWindow)))
+-			killclient(c);
++			killclient(c->name);
+ 	}
+ 	else if (ev->message_type == atom[ActiveWindow]) {
+ 		if ((c = getclient(ev->window, clients, ClientWindow))) {

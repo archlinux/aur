@@ -1,11 +1,11 @@
-# Maintainer:  TDY <tdy@archlinux.info>
+# Contributor:  TDY <tdy@archlinux.info>
 
 pkgname=echinus-git
 pkgver=0.4.9.r35.g987e139
 pkgrel=1
 pkgdesc="A window manager for X in the spirit of dwm"
 arch=('i686' 'x86_64')
-url="http://plhk.ru/echinus"
+url="https://plhk.ru/"
 license=('MIT')
 depends=('libxft' 'libxrandr')
 makedepends=('git' 'pkgconfig')
@@ -13,15 +13,22 @@ optdepends=('ourico: complementary taskbar for echinus')
 provides=('echinus')
 conflicts=('echinus')
 install=echinus.install
-source=($pkgname::git://github.com/polachok/echinus.git
+source=($pkgname::git+https://github.com/polachok/echinus.git
+        fix-incompatible-pointer-types.patch
         echinus.desktop)
-md5sums=('SKIP'
-         '3dbc8f89200dcb8b3e44144602172c49')
+sha256sums=('SKIP'
+            'e31aa3b0a8804e98d9d066206a2ee861b7b806c6ed4b12e973f150d6c85cfefb'
+            '8e86f3550b66701fe2f481b556df05b0d06647b470f1adb8bfa50cd55df4bf9b')
 
 pkgver() {
   cd $pkgname
   git tag 0.4.9 5786ee16a2281ec3a782a99824e5ad15cda7ec77 || :
   git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $pkgname
+  patch -p1 < ../fix-incompatible-pointer-types.patch
 }
 
 build() {
