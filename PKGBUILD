@@ -8,7 +8,7 @@ _pkgname='fdpp'
 pkgname='fdpp'
 #pkgname+='-git'
 epoch=0
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc='64 bit FreeDOS++ for dosemu2'
 arch=(
@@ -47,9 +47,9 @@ _srcdir="${pkgname%-git}-${pkgver%.r*}"
 source=(
   "${_srcdir}.tar.gz::${url}/archive/${pkgver%%.r*}.tar.gz"
 )
-md5sums=('5040686eb72404df814ffb398a50c957')
-sha256sums=('63b7f837df0583a586140a94c6fa0fb5654dd1d0a06a1fe068ef52f12bef254c')
-b2sums=('bbab2006627fb24b0915a95a39979905d1591cfc37051414cc2d3aba73dc1c12d2e376302390abe07e63f733b6cc99318ba1591a02434efc6f134822fb3f813d')
+md5sums=('d92a3c518a2af00c2e0e4035ac71df59')
+sha256sums=('65fdf0819d490c8ba32fc706309f483f0c6547ff65c860efbb4323e4138896ed')
+b2sums=('a7ae68d5056ab364a80ab6a3454389a1fad5a049a738d9fab8aebe0497d366267e1848493d70e34200e6805ddbfd19b0c6bc0b56c8c43949f1ff95da35ed72b2')
 
 prepare() {
   set -u
@@ -82,8 +82,11 @@ pkgver() {
   git describe --long | sed -e 's:^v::g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
 }
 elif [ "${pkgver%.r*}" != "${pkgver}" ]; then
+  source=("${source[@]/${pkgver}/${pkgver%.r*}}")
 pkgver() {
-  echo "${pkgver%.r*}"
+  set -u
+  printf '%s\n' "${pkgver%.r*}"
+  set +u
 }
 fi
 
