@@ -1,6 +1,6 @@
 pkgbase = swengine-revanced
 	pkgdesc = Download or upload your wallpapers or use the ones downloaded from wallpaper engine with Sww
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/Shnimlz/Swengine
 	arch = x86_64
