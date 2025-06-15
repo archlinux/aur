@@ -1,9 +1,19 @@
 pkgbase = atapi-mimetypes
 	pkgdesc = Various Arch Linux customizations that I do :3
 	pkgver = 1
-	pkgrel = 4
+	pkgrel = 5
 	arch = any
 	source = x-atapi-mimetypes.xml
+	source = 51-dolphinbar.rules
+	source = 51-gamecube-adapter.rules
+	source = killsteam
+	source = steam-monitor
+	source = unfuck_bt
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = atapi-customizations
