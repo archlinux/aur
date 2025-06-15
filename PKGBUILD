@@ -1,12 +1,12 @@
 # Maintainer: Ivan Potiienko <contact@xxanqw.pp.ua>
 pkgname=justdd
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="JustDD - Simple graphical USB image writer for Linux and Windows ISOs"
 arch=('any')
 url="https://github.com/xxanqw/justdd"
 license=('GPL3')
-depends=('ntfs-3g' 'dosfstools' 'rsync' 'polkit')
+depends=('ntfs-3g' 'dosfstools' 'rsync' 'polkit' 'libcdio' 'ms-sys')
 makedepends=('git' 'python' 'python-uv')
 source=("$pkgname::git+$url.git")
 conflicts=("$pkgname-bin")
