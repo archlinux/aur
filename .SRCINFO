@@ -1,0 +1,10 @@
+pkgbase = hnt-git
+	pkgdesc = Hacker News Reader in Terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/BrokenC1oud/hnt/
+	license = GPL3
+	makedepends = cargo
+	source = hnt-git-0.1.0.tar.gz::https://static.crates.io/crates/hnt-git/hnt-git-0.1.0.crate
+
+pkgname = hnt-git
