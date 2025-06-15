@@ -1,7 +1,7 @@
 # Maintainer: hengtseChou <hankthedev@gmail.com>
 pkgname=aur-sync-vote
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Automates voting on installed and uninstalled AUR packages"
 arch=('any')
 url="https://github.com/hengtseChou/aur-sync-vote"
@@ -19,4 +19,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
