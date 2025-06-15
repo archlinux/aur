@@ -1,7 +1,7 @@
 pkgbase = treesheets-git
 	pkgdesc = A "hierarchical spreadsheet" as a replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases.
-	pkgver = r854.11ce76f
-	pkgrel = 2
+	pkgver = r1055.8b58c10
+	pkgrel = 1
 	url = https://strlen.com/treesheets/
 	arch = i686
 	arch = x86_64

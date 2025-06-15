@@ -5,8 +5,8 @@
 
 _pkgname=treesheets
 pkgname=$_pkgname-git
-pkgver=r854.11ce76f
-pkgrel=2
+pkgver=r1055.8b58c10
+pkgrel=1
 pkgdesc='A "hierarchical spreadsheet" as a replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases.'
 url="https://strlen.com/treesheets/"
 license=('Zlib')
@@ -33,7 +33,7 @@ pkgver() {
 prepare() {
   cd $_pkgname
 
-  patch --binary -p1 < ../myframe.patch
+  #patch --binary -p1 < ../myframe.patch
   find TS/images -type f ! -iname '*.png' -a ! -iname '*.svg' -delete
 }
 
