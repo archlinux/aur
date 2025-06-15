@@ -1,0 +1,26 @@
+From f0882b3fb3f7bdea9558f55078af7140959d263d Mon Sep 17 00:00:00 2001
+From: Tiago de Paula <tiagodepalves@gmail.com>
+Date: Sat, 14 Jun 2025 23:36:27 -0300
+Subject: [PATCH] fix: wrong micro version
+
+Current version is 0.2.41, not 0.2.39!
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 5645dce..17a59b7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,7 +3,7 @@ AC_INIT(esound, 0.2.41)
+ 
+ ESD_MAJOR_VERSION=0
+ ESD_MINOR_VERSION=2
+-ESD_MICRO_VERSION=39
++ESD_MICRO_VERSION=41
+ ESD_VERSION=$ESD_MAJOR_VERSION.$ESD_MINOR_VERSION.$ESD_MICRO_VERSION
+ 
+ AC_CANONICAL_TARGET([])
+-- 
+2.49.0
+
