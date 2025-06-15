@@ -3,7 +3,7 @@
 pkgname=doomtools-bin
 pkgver=2025.05.10.194013274
 _pkgdate=${pkgver%%.?????????}
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of command-line utilities for building projects or for other things related to Doom Engine games."
 arch=('any')
 url="https://mtrop.github.io/DoomTools/"
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
 	"fff26d6f9e88f9ab4427301acda57fca9088b6f0047c8e42aab9cd62ad8c038e"
-	"aaac007643388ee2bb5737f9c8bd1b36d2f17c54bda38c0757b74ad47425ac9e"
+	"dab435a5096090c2106875966bec76f357721b27542e9ed2a276df1bc608b673"
 	"e90aecc14f66eed27b8afe409de6f058a285f8eee84a8af207b0398b5450cf57"
 )
 
