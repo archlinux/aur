@@ -1,8 +1,24 @@
 [Unit]
 Description=Enlightened Sound Daemon
+Documentation=man:esd(1)
 
 [Service]
-ExecStart=/usr/bin/esd -nobeeps
+ExecStart=/usr/bin/esd
+Restart=on-failure
+PrivateTmp=false
+
+# Security options
+ProtectSystem=full
+ProtectHome=read-only
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+RestrictNamespaces=yes
+SystemCallArchitectures=native
 
 [Install]
 WantedBy=multi-user.target

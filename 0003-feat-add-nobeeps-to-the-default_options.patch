@@ -1,0 +1,26 @@
+From 3e6598906417856e1e3c0eb8712b590af4c3f0bb Mon Sep 17 00:00:00 2001
+From: Tiago de Paula <tiagodepalves@gmail.com>
+Date: Sat, 14 Jun 2025 22:36:23 -0300
+Subject: [PATCH] feat: add -nobeeps to the default_options
+
+---
+ esd.conf | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/esd.conf b/esd.conf
+index 1bc95c9..1865d7e 100644
+--- a/esd.conf
++++ b/esd.conf
+@@ -4,7 +4,7 @@
+ # you should start it from the session controller, not some random
+ # app inside.
+ auto_spawn=0
+-spawn_options=-terminate -nobeeps -as 2
++spawn_options=-terminate -as 2
+ spawn_wait_ms=100
+ # default options are used in spawned and non-spawned mode
+-default_options=
++default_options=-nobeeps
+-- 
+2.49.0
+
