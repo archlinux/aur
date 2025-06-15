@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=orca-slicer-git
-pkgver=2.3.1.r25068.00277ac
+pkgver=2.3.1.r25127.e13ec78
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
@@ -18,11 +18,9 @@ options=('!debug' '!emptydirs')
 provides=('orca-slicer')
 conflicts=('orca-slicer')
 source=($pkgname::git+https://github.com/SoftFever/OrcaSlicer.git
-        orca-slicer-wrapper.sh
-        https://github.com/Open-Cascade-SAS/OCCT/commit/7236e83dcc1e7284e66dc61e612154617ef715d6.patch)
+        orca-slicer-wrapper.sh)
 b2sums=('SKIP'
-        'ea635f7745795d535ddf8cf317b27986ae28c177ea3fd7764c3314f9ca152672d17af22541cd9f6efc08a04fd02b2bda502f867fd2dd6888c58cf9b5d7c6c2a4'
-        'cc7791841533e07787a4921b688fdd885782a67320936d445ad04102a68e8e044b5bf52a58d987d158ae522ae4f02a56a3525ccfd1831ef6a3b6459be14bd408')
+        'ea635f7745795d535ddf8cf317b27986ae28c177ea3fd7764c3314f9ca152672d17af22541cd9f6efc08a04fd02b2bda502f867fd2dd6888c58cf9b5d7c6c2a4')
 
 pkgver() {
   cd $pkgname
@@ -33,14 +31,11 @@ pkgver() {
 }
 
 prepare() {
+  cd $pkgname
   # C++20 disallows the use of the Point<T> syntax in the constructor
-  sed -i 's/explicit Point<T>(/explicit Point(/' $pkgname/src/clipper2/Clipper2Lib/include/clipper2/clipper.core.h
+  sed -i 's/explicit Point<T>(/explicit Point(/' src/clipper2/Clipper2Lib/include/clipper2/clipper.core.h
   # abuse FLATPAK IF statement to build against some system libs
-  sed -i 's/if(FLATPAK)/if(true)/' $pkgname/deps/CMakeLists.txt
-  # cherry pick an OCCT commit to make it build with system freetype
-  cat 7236e83dcc1e7284e66dc61e612154617ef715d6.patch >> $pkgname/deps/OCCT/0001-OCCT-fix.patch
-  # OSMesa got removed in mesa 25.1, replace it with gl
-  sed -i 's/OSMesa/OpenGL::GL/' $pkgname/src/slic3r/CMakeLists.txt
+  sed -i 's/if(FLATPAK)/if(true)/' deps/CMakeLists.txt
 }
 
 build() {
