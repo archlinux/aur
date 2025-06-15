@@ -2,7 +2,7 @@
 # Contributor: brent s. <bts[at]square-r00t[dot]net>
 # Contributor: Jochen Schalanda <jochen+aur (at) schalanda.name>
 pkgname=debianutils
-pkgver=5.22
+pkgver=5.23
 pkgrel=1
 pkgdesc="Miscellaneous utilities specific to Debian"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 makedepends=('po4a')
 depends=('run-parts')
 source=("https://salsa.debian.org/debian/$pkgname/-/archive/debian/$pkgver/$pkgname-debian-$pkgver.tar.bz2")
-sha512sums=('076b23eea601f5388fe1b0d329105f0b840694f9201c06e57c49032271286e16e4d6c6ab32be649cf69f43a02a9ae8b07e493d3cb9c45146a14e3e93985f2b5b')
+sha512sums=('d435f5280748362a546505418d41943c8c51d8ed359e96ebb851eec1c64c7375e9e14d361ab8f4ba81373f2654bb561556fae5eb440c7140398b7908500a6f74')
 
 build() {
   cd "${srcdir}/${pkgname}-debian-${pkgver}"
