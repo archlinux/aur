@@ -3,7 +3,7 @@
 _name='pymunk'
 pkgname=python-${_name}
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pymunk is a easy-to-use pythonic 2D physics library."
 arch=('any')
 url='http://www.pymunk.org/'
