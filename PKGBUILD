@@ -1,6 +1,6 @@
 # Maintainer: Kovács Bálint-Hunor <kovacsbalinthunor@protonmail.com>
 pkgname=nodash-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A modern terminal-based project launcher and manager for nvm node projects written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=()
 provides=('nodash')
 conflicts=('nodash')
 source=("https://github.com/MemerGamer/nodash/releases/download/v$pkgver/nodash-linux-v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('484ca9629a3cb9a88c6d2f3e0736d1d5ec8330fafabf5cf114969fe61e104522')
 
 package() {
     install -Dm755 "nodash-linux-v$pkgver" "$pkgdir/usr/bin/nodash"
