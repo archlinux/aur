@@ -1,4 +1,5 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
+# Contributor: Johannes Larsen - github.com/johslarsen
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: Morten Linderud <foxboron@archlinux.org>
 # Contributor: Sébastien Luttringer
@@ -7,8 +8,8 @@
 # Contributor: zer0def <zer0def@github>
 
 pkgname=salt
-pkgver=3007.1
-pkgrel=7
+pkgver=3007.4
+pkgrel=1
 pkgdesc='Portable, distributed, remote execution and configuration management system'
 arch=('any')
 url='https://saltproject.io/'
@@ -68,15 +69,13 @@ source=(
   has_crypt.patch
   salt-call
 )
-sha256sums=(
-  'b933ac4cb3e4b1118b46dada55c9cc6bdc6f0f94b4c92877aec44b25c6a28c9a'
-  'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('4fb7b6455949686517dc895a7c5a42d922e00fdae25da9549f737e2e2101f4af'
+            'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
+            '58996c1fcf6ca1b47e8ab7e9d51b79679abbe791ed180eafbad168fd5c5f5236'
+            'fd36d9c603e01d60b76b39e5ac6279d6e88ef3291a15afbb80d956bdf483930a'
+            'f9ab2f18fbf85c8a0ebba6aa88fe415f993ca377aaa0f3541b32d29f0d690c5a'
+            '556c2b7e31eab0cd2393dfb4a8a84275508621f301418d35488a6dd0ea86b5a3'
+            '00ec669399c737bd30683c8ac62965520ebbe3b9b3a50884004b923797ad6a72')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -107,7 +106,7 @@ package() {
   for _svc in salt-master.service salt-syndic.service salt-minion.service salt-api.service; do
     install -v -Dm644 pkg/common/$_svc "$pkgdir/usr/lib/systemd/system/$_svc"
   done
-  install -v -Dm644 pkg/common/salt.bash "$pkgdir/usr/share/bash-completion/completions/salt"
+  install -v -Dm644 pkg/rpm/salt.bash "$pkgdir/usr/share/bash-completion/completions/salt"
   install -v -Dm644 pkg/common/salt.zsh "$pkgdir/usr/share/zsh/site-functions/_salt"
   install -v -Dm644 -t "$pkgdir/usr/share/fish/vendor_completions.d" pkg/common/fish-completions/*
 }
