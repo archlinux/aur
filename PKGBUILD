@@ -2,7 +2,7 @@
 
 pkgname=python-cos-python-sdk-v5
 _pkgname=${pkgname/python-}
-pkgver=1.9.36
+pkgver=1.9.37
 pkgrel=1
 pkgdesc="腾讯云COSV5Python SDK"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python-requests'
          'python-pycryptodome')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tencentyun/cos-python-sdk-v5/archive/V${pkgver}.tar.gz")
-sha256sums=('0fdc6632637ca71ca9cc4ee36999e57d9d96d5ae797fdb014f7a69190ae1b7e8')
+sha256sums=('1004f96b06962d856101ee59a8bd89a7de86f2a2fdb5528c75f6d19ab721fb57')
 
 build() {
   cd $_pkgname-$pkgver
@@ -26,7 +26,6 @@ build() {
 
 package() {
   cd $_pkgname-$pkgver
-
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
