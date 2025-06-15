@@ -1,6 +1,6 @@
 pkgname=commitlint-go-git
 _pkgname=commitlint
-pkgver=.099a9cfc2d61768f7ee22fcfb50e451f423f72f5
+pkgver=main.0e81782467e3e6f5980e7bdb060693d6ad1d4d35
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/jurienhamaker/commitlint'
