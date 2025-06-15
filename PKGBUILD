@@ -5,7 +5,7 @@
 set -u
 pkgname='jwasm'
 #_pkgname='JWasm211as'
-pkgver='2.18'
+pkgver='2.19'
 pkgrel='1'
 pkgdesc='a free MASM-compatible assembler'
 arch=('i686' 'x86_64')
@@ -19,8 +19,15 @@ depends=('glibc')
 #_verwatch=("${url}/releases.atom" '\s\+<link rel="alternate" type="text/html" href=".*/'"${url##*/}"'/releases/tag/v*\([^"]\+\)"/>.*' 'f') # RSS
 _srcdir="${url##*/}-${pkgver}"
 source=("${_srcdir}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('d20f9fb8038cdd516f5c120f1f4036e6')
-sha256sums=('76e0df32059d17e4498767711f4011cb6e2675b79ab0c0fa8ca4050638cf32d0')
+md5sums=('01306d4cfd8ce84b38e777ccdd2692dc')
+sha256sums=('d2e21906a1b19f24bb8fd0c9ce485aa690993828a7bb046cda1d05c6d0923932')
+
+prepare() {
+  set -u
+  cd "${_srcdir}"
+  sed -E -e '/^CC =/ s:$: -std=gnu17:g' -i 'GccUnix.mak'
+  set +u
+}
 
 build() {
   set -u

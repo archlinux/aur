@@ -1,14 +1,14 @@
 pkgbase = jwasm
 	pkgdesc = a free MASM-compatible assembler
-	pkgver = 2.18
+	pkgver = 2.19
 	pkgrel = 1
 	url = https://github.com/Baron-von-Riedesel/JWasm
 	arch = i686
 	arch = x86_64
 	license = Watcom-1.0
 	depends = glibc
-	source = JWasm-2.18.tar.gz::https://github.com/Baron-von-Riedesel/JWasm/archive/refs/tags/v2.18.tar.gz
-	md5sums = d20f9fb8038cdd516f5c120f1f4036e6
-	sha256sums = 76e0df32059d17e4498767711f4011cb6e2675b79ab0c0fa8ca4050638cf32d0
+	source = JWasm-2.19.tar.gz::https://github.com/Baron-von-Riedesel/JWasm/archive/refs/tags/v2.19.tar.gz
+	md5sums = 01306d4cfd8ce84b38e777ccdd2692dc
+	sha256sums = d2e21906a1b19f24bb8fd0c9ce485aa690993828a7bb046cda1d05c6d0923932
 
 pkgname = jwasm
