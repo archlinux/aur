@@ -1,0 +1,88 @@
+From 11f8ba52acbb3ea87beaff1755e54183eb1a5fc8 Mon Sep 17 00:00:00 2001
+From: Stan Ionascu <779592+stanionascu@users.noreply.github.com>
+Date: Sun, 15 Jun 2025 14:54:25 +0100
+Subject: [PATCH] add support for gfx1103 (phoenix)
+
+---
+ CMakeLists.txt                                 | 2 +-
+ library/include/rocwmma/internal/config.hpp    | 8 +++++++-
+ library/include/rocwmma/internal/constants.hpp | 3 +++
+ 3 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index eced8d86..23b50c68 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -100,7 +100,7 @@ if (ADDRESS_SANITIZER_ENABLED)
+         TARGETS "gfx90a:xnack+;gfx942:xnack+" )
+ else()
+     rocm_check_target_ids(DEFAULT_GPU_TARGETS
+-        TARGETS "gfx908;gfx90a;gfx942;gfx1100;gfx1101;gfx1102;gfx1200;gfx1201" )
++        TARGETS "gfx908;gfx90a;gfx942;gfx1100;gfx1101;gfx1102;gfx1103;gfx1200;gfx1201" )
+ endif()
+ 
+ # Check if offload compression is supported
+diff --git a/library/include/rocwmma/internal/config.hpp b/library/include/rocwmma/internal/config.hpp
+index 08b112b5..d0c37c60 100644
+--- a/library/include/rocwmma/internal/config.hpp
++++ b/library/include/rocwmma/internal/config.hpp
+@@ -38,6 +38,7 @@
+ /// ROCWMMA_ARCH_GFX1100
+ /// ROCWMMA_ARCH_GFX1101
+ /// ROCWMMA_ARCH_GFX1102
++/// ROCWMMA_ARCH_GFX1103
+ /// ROCWMMA_ARCH_GFX1200
+ /// ROCWMMA_ARCH_GFX1201
+ ///
+@@ -66,6 +67,8 @@
+ #define ROCWMMA_ARCH_GFX1101 __gfx1101__
+ #elif defined(__gfx1102__) && ROCWMMA_DEVICE_COMPILE
+ #define ROCWMMA_ARCH_GFX1102 __gfx1102__
++#elif defined(__gfx1103__) && ROCWMMA_DEVICE_COMPILE
++#define ROCWMMA_ARCH_GFX1103 __gfx1103__
+ #elif defined(__gfx1200__) && ROCWMMA_DEVICE_COMPILE
+ #define ROCWMMA_ARCH_GFX1200 __gfx1200__
+ #elif defined(__gfx1201__) && ROCWMMA_DEVICE_COMPILE
+@@ -100,6 +103,9 @@ static_assert(0, "Unsupported architecture");
+ #if !defined(ROCWMMA_ARCH_GFX1102)
+ #define ROCWMMA_ARCH_GFX1102 0
+ #endif
++#if !defined(ROCWMMA_ARCH_GFX1103)
++#define ROCWMMA_ARCH_GFX1103 0
++#endif
+ #if !defined(ROCWMMA_ARCH_GFX1200)
+ #define ROCWMMA_ARCH_GFX1200 0
+ #endif
+@@ -130,7 +136,7 @@ static_assert(0, "Unsupported architecture");
+ #define ROCWMMA_BLOCK_DIM_32_SUPPORTED 1
+ #endif
+ 
+-#if ROCWMMA_ARCH_GFX1100 || ROCWMMA_ARCH_GFX1101 || ROCWMMA_ARCH_GFX1102
++#if ROCWMMA_ARCH_GFX1100 || ROCWMMA_ARCH_GFX1101 || ROCWMMA_ARCH_GFX1102 || ROCWMMA_ARCH_GFX1103
+ #define ROCWMMA_ARCH_GFX11 1
+ #define ROCWMMA_WAVE32_MODE 1
+ #define ROCWMMA_BLOCK_DIM_16_SUPPORTED 1
+diff --git a/library/include/rocwmma/internal/constants.hpp b/library/include/rocwmma/internal/constants.hpp
+index e8d2f873..f1a0d695 100644
+--- a/library/include/rocwmma/internal/constants.hpp
++++ b/library/include/rocwmma/internal/constants.hpp
+@@ -44,6 +44,7 @@ namespace rocwmma
+         static constexpr uint32_t AMDGCN_ARCH_ID_GFX1100 = 0x1100;
+         static constexpr uint32_t AMDGCN_ARCH_ID_GFX1101 = 0x1101;
+         static constexpr uint32_t AMDGCN_ARCH_ID_GFX1102 = 0x1102;
++        static constexpr uint32_t AMDGCN_ARCH_ID_GFX1103 = 0x1103;
+         static constexpr uint32_t AMDGCN_ARCH_ID_GFX1200 = 0x1200;
+         static constexpr uint32_t AMDGCN_ARCH_ID_GFX1201 = 0x1201;
+         static constexpr uint32_t AMDGCN_ARCH_ID_NONE    = 0x0;
+@@ -74,6 +75,8 @@ namespace rocwmma
+         static constexpr uint32_t AMDGCN_CURRENT_ARCH_ID = AMDGCN_ARCH_ID_GFX1101;
+ #elif ROCWMMA_ARCH_GFX1102
+         static constexpr uint32_t AMDGCN_CURRENT_ARCH_ID = AMDGCN_ARCH_ID_GFX1102;
++#elif ROCWMMA_ARCH_GFX1103
++        static constexpr uint32_t AMDGCN_CURRENT_ARCH_ID = AMDGCN_ARCH_ID_GFX1103;
+ #elif ROCWMMA_ARCH_GFX1200
+         static constexpr uint32_t AMDGCN_CURRENT_ARCH_ID = AMDGCN_ARCH_ID_GFX1200;
+ #elif ROCWMMA_ARCH_GFX1201
+-- 
+2.49.0
+

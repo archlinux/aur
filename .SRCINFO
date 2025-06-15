@@ -1,0 +1,21 @@
+pkgbase = rocwmma-gfx1103
+	pkgdesc = Library for accelerating mixed precision matrix multiplication
+	pkgver = 6.4.1
+	pkgrel = 1
+	url = https://rocm.docs.amd.com/projects/rocWMMA/en/latest/
+	arch = x86_64
+	license = MIT
+	makedepends = rocm-cmake
+	makedepends = doxygen
+	depends = rocm-core
+	depends = hip-runtime-amd
+	depends = rocblas
+	depends = openmp
+	provides = rocwmma
+	conflicts = rocwmma
+	source = rocwmma-gfx1103-6.4.1.tar.gz::https://github.com/ROCmSoftwarePlatform/rocWMMA/archive/rocm-6.4.1.tar.gz
+	source = 0001-add-support-for-gfx1103-phoenix.patch
+	sha256sums = 888e9794adff06ca1be811d80018e761b9a9cf84cb88dec9e51bc3a6db7a359a
+	sha256sums = 2b9e57a2b96e4f653b8660b5f7b14605a72705e745787682517bbd1ef6bfdbc5
+
+pkgname = rocwmma-gfx1103
