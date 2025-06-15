@@ -1,7 +1,7 @@
 # Maintainer: Antoine Büsch <antoine dot busch at gmail dot com>
 
 pkgname=sinuous
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A simple TUI to control local Sonos speakers"
 url="https://github.com/abusch/sinuous"
@@ -10,7 +10,7 @@ arch=("any")
 depends=()
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('76eea68511fe29ec365149973f7f466cbea9809fe90a9d0a8108e2edae300891')
+sha256sums=('b4d71e4d2ace1a1a9b924edbce6de3e6562a7ba18d4703d5451017f481568b13')
 
 prepare() {
 	cd "$pkgname-$pkgver"
