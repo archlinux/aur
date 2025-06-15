@@ -2,7 +2,7 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7 packages were based on
 pkgname=picoscope7
 pkgver=7.1.50_1r5777
-pkgrel=1
+pkgrel=2
 pkgdesc="PicoScope 7 Test and Measurment Stable"
 arch=('x86_64')
 url="https://www.picotech.com/downloads/linux"
@@ -10,7 +10,7 @@ license=('custom')
 groups=()
 depends=(ttf-roboto ps7_libpicoipp ps7_libpicocv desktop-file-utils which fuse2)
 optdepends=('ps7_libps2000: Support for PicoScope 2000 series'
-		'ps7_libps2000a: Support for PicoScope 2000a series'
+        'ps7_libps2000a: Support for PicoScope 2000a series'
         'ps7_libps3000: Support for PicoScope 3000 series'
         'ps7_libps3000a: Support for PicoScope 3000a series'
         'ps7_libps4000: Support for PicoScope 4000 series'
@@ -31,7 +31,7 @@ source=("https://labs.picotech.com/picoscope7/debian/pool/main/p/picoscope/picos
 md5sums=('2818196b204dd55ef4ef2b2b6d22daf6')
 
 package() {
-  tar -xf data.tar.xz -C "${pkgdir}"
+  tar -xf data.tar.* -C "${pkgdir}"
   chmod -R go-w $pkgdir
   chown -R root:root $pkgdir
 
@@ -39,7 +39,7 @@ package() {
   ln -s /opt/picoscope/bin/picoscope $pkgdir/usr/bin/picoscope
 
   mkdir -p $pkgdir/opt/picoscope/scripts
-  tar -xf control.tar.xz -C "${pkgdir}/opt/picoscope/scripts" ./postinst
+  tar -xf control.tar.* -C "${pkgdir}/opt/picoscope/scripts" ./postinst
   mv "${pkgdir}/opt/picoscope/scripts/postinst" "${pkgdir}/opt/picoscope/scripts/${pkgname}_postinst"
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/usr/share/doc/picoscope/copyright" 

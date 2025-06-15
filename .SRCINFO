@@ -1,7 +1,7 @@
 pkgbase = picoscope7
 	pkgdesc = PicoScope 7 Test and Measurment Stable
 	pkgver = 7.1.50_1r5777
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.picotech.com/downloads/linux
 	install = picoscope7.install
 	arch = x86_64
