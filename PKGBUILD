@@ -2,7 +2,7 @@
 # Maintainer: hyknn <hyknn@protonmail.com>
 pkgname=miru-bin
 pkgver=6.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Bittorrent streaming software for cats"
 arch=('x86_64')
 url="https://github.com/ThaUnknown/miru"
@@ -12,7 +12,7 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 _pkgname="miru"
 source_x86_64=(
-    "https://github.com/ThaUnknown/miru/releases/download/v${pkgver}/linux-Miru-${pkgver}.deb"
+    "https://github.com/ThaUnknown/miru/releases/download/v${pkgver}/linux-hayase-${pkgver}.deb"
     "${_pkgname}.desktop"
 )
 sha512sums_x86_64=(
