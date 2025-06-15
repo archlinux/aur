@@ -1,7 +1,7 @@
 pkgbase = esound
 	pkgdesc = Enlightened Sound Daemon
 	pkgver = 0.2.41
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.gnome.org/Archive/esound
 	arch = i686
 	arch = x86_64

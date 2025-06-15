@@ -8,7 +8,7 @@
 pkgname=esound
 pkgdesc='Enlightened Sound Daemon'
 pkgver=0.2.41
-pkgrel=4
+pkgrel=5
 url="https://gitlab.gnome.org/Archive/${pkgname}"
 arch=('i686' 'x86_64')
 license=('GPL-2.0-or-later AND LGPL-2.0-or-later')
