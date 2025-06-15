@@ -1,6 +1,6 @@
 # Maintainer: djugei <ddjugei@gmail.com>
 pkgname=deltaclient-git
-pkgver=r143.0aaff1f
+pkgver=r144.ec28e56
 pkgrel=1
 pkgdesc="Delta upgrades for archlinux"
 arch=(x86_64)
