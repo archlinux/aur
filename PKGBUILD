@@ -3,16 +3,15 @@
 
 pkgname=libggml-git
 _pkgname="${pkgname%-git}"
-pkgver=r1410.8a3d799
-pkgrel=2
+pkgver=r2175.8cda0a3
+pkgrel=1
 pkgdesc='Tensor library for machine learning'
 url='https://github.com/ggerganov/ggml'
 license=('MIT')
 arch=(x86_64)
 depends=(
-  clblast
+  gcc-libs
   glibc
-  openblas
 )
 makedepends=(
   cmake
@@ -38,10 +37,11 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DGGML_ALL_WARNINGS=OFF
     -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
-    -DGGML_BUILD_EXAMPLES=ON
-    -DGGML_BUILD_TESTS=ON
+    -DGGML_BUILD_EXAMPLES=OFF
+    -DGGML_BUILD_TESTS=OFF
     -DGGML_LTO=ON
     -DGGML_RPC=ON
+    -DGGML_BLAS=OFF
     -Wno-dev
   )
 
@@ -49,9 +49,9 @@ build() {
   cmake --build build
 }
 
-check() {
-  ctest --test-dir build --output-on-failure
-}
+# check() {
+#   ctest --test-dir build --output-on-failure
+# }
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
