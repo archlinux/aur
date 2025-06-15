@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Swengine
+Comment=Download and apply live wallpapers using Swww
+Exec=swengine
+Terminal=false
+Type=Application
+Categories=Development
+GenericName=Swengine
+Keywords=Wallpaper; swww; Live wallpaper
