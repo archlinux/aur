@@ -1,7 +1,7 @@
 # Maintainer: Vincent Bernardoff <vb@luminar.eu.org>
 pkgname=elp
-pkgver=20250513
-_pkgver=2025-05-13
+pkgver=20250529
+_pkgver=2025-05-29_1
 _otpver=27.1
 pkgrel=1
 epoch=
@@ -11,7 +11,7 @@ url=""
 license=('GPL')
 groups=()
 source=("https://github.com/WhatsApp/erlang-language-platform/releases/download/${_pkgver}/elp-linux-${arch}-unknown-linux-gnu-otp-${_otpver}.tar.gz")
-sha256sums=('66701911bc706559b2f1ac1781a67542ec0445b56471d26e19d55fddd4571c04')
+sha256sums=('6e29ec5ecc582ab81275da0fdddcfe6587ba4173b5dd659e887022a02c0b6e19')
 
 package() {
   install -D "$srcdir/elp" "$pkgdir/usr/bin/elp"
