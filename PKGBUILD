@@ -3,14 +3,14 @@
 
 pkgname='inetutils-syslogd'
 _pkgname='inetutils'
-pkgver='2.5'
+pkgver='2.6'
 pkgrel='1'
 pkgdesc='A small syslogd'
 arch=('i686' 'x86_64')
 url='http://www.gnu.org/software/inetutils/'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 groups=('base')
-depends=('readline' 'ncurses' 'pam')
+depends=('glibc' 'readline' 'ncurses' 'pam')
 options=('!emptydirs')
 provides=('logger')
 backup=('etc/syslog.conf')
@@ -20,10 +20,10 @@ source=(
   'syslog.conf'
   'inetutils-syslogd.service'
 )
-md5sums=('96526671eca6c2c531352d28dd6246fd'
+md5sums=('7b669605267c00d40a5b6b18b0f1f63e'
          '71d7027920dd7641653705de65fd0d97'
          'f528a4b680e878a13f745a38f9499e06')
-sha256sums=('fa043bbbc426eae1869070d2b6e29a98069615ac00681cdb92e20911d9292260'
+sha256sums=('ccaa256e0d646df7f285ff158a3291f37cd1fc8382f3774d22f7254127635da7'
             'a0fdd3eef46ac1a671c6a5743cd8a57213ea179c844f091eae37647f8246edde'
             '84086b9b3ce93db7af58d8a47cbd30e664dec83640e62b5145140b87554c82ba')
 
