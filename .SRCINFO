@@ -1,0 +1,25 @@
+pkgbase = libggml-hip-git
+	pkgdesc = Tensor library for machine learning (with AMD ROCm optimizations)
+	pkgver = r2175.8cda0a3
+	pkgrel = 1
+	url = https://github.com/ggerganov/ggml
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = rocm-hip-sdk
+	depends = gcc-libs
+	depends = glibc
+	depends = hip-runtime-amd
+	depends = hipblas
+	depends = openmp
+	depends = rocblas
+	provides = libggml
+	provides = libggml-hip
+	conflicts = libggml
+	conflicts = libggml-hip
+	options = lto
+	source = libggml-hip::git+https://github.com/ggerganov/ggml.git
+	sha256sums = SKIP
+
+pkgname = libggml-hip-git
