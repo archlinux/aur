@@ -1,0 +1,11 @@
+pkgbase = clivm
+	pkgdesc = CLI-based Linux virtualization management tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AruAVI/clivm
+	arch = any
+	license = MIT
+	source = clivm-1.0.0.tar.gz
+	sha256sums = 281f030c4a605807ba8ace945ba8df7f1bbe3ffce289df6b6245a0bdf5f2b775
+
+pkgname = clivm
