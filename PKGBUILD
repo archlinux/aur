@@ -1,7 +1,7 @@
 # Maintainer: Hadi Chokr <hadichokr@icloud.com>
 pkgname=kontainer-git
-pkgver=Beta.57.g6d59e05
-pkgrel=1
+pkgver=1.0.0.0.ga700cbc
+pkgrel=2
 pkgdesc="A KDE-style Qt GUI to manage Distrobox containers"
 arch=('any')
 url="https://invent.kde.org/silverhadch/k-box"
