@@ -18,6 +18,7 @@ depends=(
     'python-rich'
     'python-pyparsebluray-git'
     'python-pydantic'
+    'python-videotimestamps'
 )
 makedepends=(
     'git'
