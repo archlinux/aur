@@ -1,2 +1,2 @@
 #!/bin/sh
-exec authelia --config /etc/authelia/configuration.yml
+exec chpst -u authelia authelia --config /etc/authelia/configuration.yml

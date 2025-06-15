@@ -1,6 +1,6 @@
 pkgbase = authelia-runit
 	pkgdesc = Runit service script for authelia.
-	pkgver = 20250612
+	pkgver = 20250615
 	pkgrel = 1
 	url = https://github.com/authelia/authelia
 	arch = any
