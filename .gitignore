@@ -1,0 +1,5 @@
+src/
+pkg/
+*.log
+udev-hid-bpf/
+*.pkg.tar.zst

@@ -1,0 +1,27 @@
+pkgbase = udev-hid-bpf-git
+	pkgdesc = An automatic HID-BPF loader based on udev events written in rust.
+	pkgver = 1.0.1.20240515.r229.g382d2b0
+	pkgrel = 1
+	url = https://libevdev.pages.freedesktop.org/udev-hid-bpf/tutorial.html
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = rust
+	makedepends = meson
+	makedepends = git
+	makedepends = cmake
+	makedepends = clang
+	makedepends = libbpf
+	makedepends = bpf
+	makedepends = linux-headers
+	depends = systemd-libs
+	depends = libelf
+	depends = zlib
+	depends = glibc
+	depends = gcc-libs
+	provides = udev-hid-bpf
+	conflicts = udev-hid-bpf
+	options = !lto
+	source = git+https://gitlab.freedesktop.org/libevdev/udev-hid-bpf.git
+	b2sums = SKIP
+
+pkgname = udev-hid-bpf-git
