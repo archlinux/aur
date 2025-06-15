@@ -34,11 +34,11 @@ _opt_altcommand=0
 # 0 = use command. from freedos
 # 1 = use alternate version of command.com, ignored when using fdpp
 
-#_commit='#commit=f8d7ba65dd8a9bc311c2903647a8f7a26f7bf252'; # SOURCE_DATE_EPOCH="$(date +%s -d '2021-03-06 04:16')"
+#_commit='#commit=b63949630d5409ed9fa3039b1cc050d13b707bf3'; # SOURCE_DATE_EPOCH="$(date +%s -d '2021-03-06 04:16')"
 
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.2.0pre9.2.r511.gc694047e7
+pkgver=2.2.0pre9.2.r1482.g4daa04c8d
 pkgrel=1
 _pkgver="${pkgver%%[a-z]*}"
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
@@ -47,7 +47,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/dosemu2/dosemu2'
 license=('GPL-2.0-only')
 depends=('glibc' 'alsa-lib' 'libsearpc')
-depends+=('gcc-libs' 'glib2' 'bash' 'sdl2_ttf' 'libb64' 'libieee1284' 'libslirp' 'fontconfig' 'acl' 'json-c' 'libx11' 'jansson' 'readline' 'libcap' 'libxext' 'dj64')
+depends+=('gcc-libs' 'glib2' 'bash' 'libb64' 'libieee1284' 'libslirp' 'fontconfig' 'acl' 'json-c' 'libx11' 'jansson' 'readline' 'libcap' 'libxext' 'dj64')
 if [ "${_opt_Debug}" -ne 0 ]; then
   depends+=('gdb' 'binutils' 'sudo')
 fi
@@ -402,6 +402,7 @@ _gen_fd11() {
 
 prepare() {
   set -u
+
   mkdir -p 'sed16'
   unzip -d 'sed16' -q -o -LL 'sed16bin.zip'
   cd 'dosemu2'
