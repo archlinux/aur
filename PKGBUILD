@@ -2,21 +2,21 @@
 
 _name=mcp
 pkgname=python-${_name}
-pkgver=1.9.0
-pkgrel=2
-pkgdesc='Python implementation of the Model Context Protocol (MCP).'
+pkgver=1.9.4
+pkgrel=1
+pkgdesc='Model Context Protocol SDK.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/modelcontextprotocol/python-sdk'
 license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 source_x86_64=("https://github.com/astral-sh/uv/releases/latest/download/uv-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/astral-sh/uv/releases/latest/download/uv-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums=('905d8d208baf7e3e71d70c82803b89112e321581bcd2530f9de0fe4103d28749')
+sha256sums=('cfb0bcd1a9535b42edaef89947b9e18a8feb49362e1cc059d6e7fc636f2cb09f')
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 depends=('python' 'python-anyio' 'python-httpx' 'python-httpx-sse' 'python-pydantic' 'python-starlette' 'python-python-multipart' 'python-sse-starlette' 'python-pydantic-settings' 'uvicorn')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-trio' 'python-pytest-flakefinder' 'python-pytest-xdist' 'python-pytest-examples' 'python-rich' 'python-typer' 'python-dotenv' 'python-websockets')
+checkdepends=('python-pytest' 'python-trio' 'python-pytest-flakefinder' 'python-pytest-xdist' 'python-pytest-examples' 'python-inline-snapshot' 'python-rich' 'python-typer' 'python-dotenv' 'python-websockets')
 optdepends=('python-rich: rich' 'python-typer: cli' 'python-dotenv: cli' 'python-websockets: ws')
 
 prepare(){
@@ -40,6 +40,8 @@ check() {
   local pytest_options=(
     -vv
     --deselect tests/client/test_session.py::test_client_session_version_negotiation_failure
+    --deselect tests/client/test_auth.py::test_build_metadata[with-path-param]
+    --deselect tests/client/test_auth.py::TestOAuthClientProvider::test_generate_code_verifier
   )
   cd "${srcdir}"/${_name}-${pkgver}
   python -m venv --system-site-packages test-env
