@@ -2,7 +2,7 @@
 
 pkgname=(haskell-trial haskell-trial-tomland haskell-trial-optparse-applicative)
 pkgver=0.0.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Trial Data Structure"
 url="https://github.com/kowainik/trial"
 license=("MPL-2.0")
@@ -56,7 +56,6 @@ build_haskell-trial-tomland() {
     --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
     --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
     --ghc-option='-pie' \
-    --package-db="../trial/dist/package.conf.inplace" \
     ; # --verbose=3
 
   runhaskell Setup build
@@ -77,7 +76,6 @@ build_haskell-trial-optparse-applicative() {
     --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
     --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
     --ghc-option='-pie' \
-    --package-db="../trial/dist/package.conf.inplace" \
     ; # --verbose=1
 
   runhaskell Setup build
