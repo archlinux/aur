@@ -29,6 +29,7 @@ b2sums=('5b190071fd01c2ec32843c19a3a3338ccd51975c88c8d90343ea25153288b9e11258e1a
 prepare() {
   cd udev-hid-bpf
 
+  export RUSTUP_TOOLCHAIN=stable
   #CARGO_HOME="$srcdir/build/cargo-home" cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -43,4 +44,6 @@ build() {
 
 package() {
   meson install -C build --destdir "${pkgdir}"
+
+  install -Dt "${pkgdir}/usr/include/udev-hid-bpf" -m644 udev-hid-bpf/src/bpf/*.h
 }
