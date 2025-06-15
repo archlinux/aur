@@ -1,7 +1,7 @@
 pkgbase = haskell-filepath
-	pkgdesc = Library for manipulating FilePaths in a cross platform way.
+	pkgdesc = Library for manipulating FilePaths in a cross platform way. (backport)
 	pkgver = 1.5.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haskell/filepath
 	arch = x86_64
 	license = BSD-3-Clause

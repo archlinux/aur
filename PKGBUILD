@@ -3,8 +3,8 @@
 _hkgname=filepath
 pkgname=haskell-filepath
 pkgver=1.5.4.0
-pkgrel=1
-pkgdesc="Library for manipulating FilePaths in a cross platform way."
+pkgrel=2
+pkgdesc="Library for manipulating FilePaths in a cross platform way. (backport)"
 url="https://github.com/haskell/filepath"
 license=("BSD-3-Clause")
 arch=('x86_64')
