@@ -5,6 +5,6 @@
 !.shellcheckrc
 # actual package
 !PKGBUILD
-!esound.service
+!esound-*.service
 !*.patch
 !.SRCINFO

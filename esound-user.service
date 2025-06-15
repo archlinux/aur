@@ -1,0 +1,22 @@
+[Unit]
+Description=Enlightened Sound Daemon
+Documentation=man:esd(1)
+Wants=pipewire.service
+After=pipewire.service
+
+[Service]
+Environment=ESD_DEBUG=1
+ExecStart=/usr/bin/esd
+Restart=on-failure
+# esd opens FIFOs on /tmp
+PrivateTmp=false
+Slice=session.slice
+
+# Security options
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=default.target
