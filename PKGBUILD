@@ -7,7 +7,7 @@ arch=("x86_64")
 depends=("vlc" "ffmpeg" "swww")
 makedepends=("dotnet-sdk" "git")
 url="https://github.com/Shnimlz/Swengine"
-
+source=("swengine.desktop")
 
 prepare(){
     rm -rf swengine
@@ -27,5 +27,5 @@ package(){
     #binaries
     install -d -m 755 "$pkgdir/usr/lib/swengine" && cp -r dist/* "$pkgdir/usr/lib/swengine"
     #desktop entry
-   install -d -m 755 "$pkgdir/usr/share/applications" && cp swengine "$pkgdir/usr/share/applications"
+    install -Dm644 "$srcdir/swengine.desktop" "$pkgdir/usr/share/applications/swengine.desktop"    
 }
