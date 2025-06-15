@@ -1,0 +1,4 @@
+[python-matlabengine]
+source = "git"
+git = "https://github.com/mathworks/matlab-engine-for-python.git"
+prefix = "v"

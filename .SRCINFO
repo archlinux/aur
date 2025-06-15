@@ -1,18 +1,17 @@
 pkgbase = python-matlabengine
-	pkgdesc = A module to call MATLAB from Python
-	pkgver = 9.14.3
+	pkgdesc = A high-level language for numerical computation and visualization (Python bindings)
+	pkgver = 25.1.2
 	pkgrel = 1
-	url = https://github.com/mathworks/matlab-engine-for-python
-	arch = x86_64
+	url = https://www.mathworks.com/help/matlab/matlab-engine-for-python.html
+	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools>=42
 	makedepends = python-wheel
-	depends = matlab>=9.14
-	depends = python>=3.8
-	depends = python<3.11
-	source = https://github.com/mathworks/matlab-engine-for-python/archive/refs/tags/9.14.3.tar.gz
-	b2sums = 491f56fad8007a943b33b9daebcba4a61ca007d93151eaa65394439d4ca9ef1745d4b28e5a41b6dea858da36ecbdaba07b1a6ac0005ebc6373abdc06f3f7fa7e
+	depends = matlab-version=R2025a
+	depends = python>=3.9
+	source = matlab-engine-for-python-25.1.2.tar.gz::https://github.com/mathworks/matlab-engine-for-python/archive/refs/tags/25.1.2.tar.gz
+	b2sums = d28cb30e64a2eaee7a24793859d759eb6f59bad73e4b1e8fbfcb106de88659dc71861a60ebc30450834061a41a3672f14321b8b84eb1e97963d469aeb88627ad
 
 pkgname = python-matlabengine
