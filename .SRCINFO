@@ -1,6 +1,6 @@
 pkgbase = dtach-ng
 	pkgdesc = emulates the detach feature of screen
-	pkgver = 0.10
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/xPMo/dtach
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = dtach-ng
 	optdepends = ncurses: Support for non-VT100 terminals
 	provides = dtach
 	conflicts = dtach
-	source = https://github.com/xPMo/dtach/archive/v0.10.tar.gz
-	sha256sums = 06e386fd3ff3af17aa3b6a54f1357bc6d2554937c8e6f588019a12bfb2410cd1
+	source = https://github.com/xPMo/dtach/archive/v0.10.1.tar.gz
+	sha256sums = 6be1fda719029b8be12e256ef4f2fbc138ad38d3841e508378e467c95e7db77e
 
 pkgname = dtach-ng
-

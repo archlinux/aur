@@ -6,7 +6,7 @@
 # Contributor: Adam Vogt <vogt.adam@gmail.com>
 
 pkgname=dtach-ng
-pkgver=0.10
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="emulates the detach feature of screen"
 arch=("x86_64")
@@ -17,7 +17,7 @@ optdepends=('ncurses: Support for non-VT100 terminals')
 conflicts=('dtach')
 provides=('dtach')
 source=(https://github.com/xPMo/dtach/archive/v${pkgver}.tar.gz)
-sha256sums=('06e386fd3ff3af17aa3b6a54f1357bc6d2554937c8e6f588019a12bfb2410cd1')
+sha256sums=('6be1fda719029b8be12e256ef4f2fbc138ad38d3841e508378e467c95e7db77e')
 
 build() {
   cd ${pkgname%-ng}-$pkgver
