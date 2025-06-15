@@ -7,7 +7,7 @@
 # Contributor: SanskritFritz (gmail)
 
 pkgname=rofi-git
-pkgver=1.7.8.r1.g56fbb62b
+pkgver=1.7.9.1.r2.g4bcbe12c
 pkgrel=1
 pkgdesc='A window switcher, run dialog and dmenu replacement'
 arch=('x86_64')
@@ -39,7 +39,7 @@ depends=(
 	'xcb-util-wm'
 	'xcb-util-xrm'
 )
-makedepends=('git' 'meson')
+makedepends=('git' 'meson' 'wayland-protocols')
 checkdepends=('check')
 provides=("${pkgname/-git/}")
 conflicts=("${pkgname/-git/}")
