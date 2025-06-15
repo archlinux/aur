@@ -1,20 +1,20 @@
 # Maintainer: Ivan Potiienko <contact@xxanqw.pp.ua>
 pkgname=justdd-bin
 _realname=justdd
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="JustDD - Simple graphical USB image writer for Linux and Windows ISOs (pre-built binary)"
 arch=('any')
 url="https://github.com/xxanqw/justdd"
 license=('GPL3')
-depends=('ntfs-3g' 'dosfstools' 'rsync' 'polkit')
+depends=('ntfs-3g' 'dosfstools' 'rsync' 'polkit' 'libcdio' 'ms-sys')
 makedepends=('jq') # jq is needed to parse the GitHub API response
 provides=("${_realname}")
 conflicts=("${_realname}")
 options=('!strip')
 
 source=("$_realname-$pkgver-$pkgrel-$arch.pkg.tar.zst::$url/releases/download/v$pkgver-$pkgrel/$_realname-$pkgver-$pkgrel-any.pkg.tar.zst")
-sha256sums=('8a961a2ec21af2f5b8091e86c5e4ef53a0a1baf08f3cc31a34adc50603c728d0')
+sha256sums=('d2aa0cb81a230ee5a33a40641496e7e55644ac8e82e9c7a6b17315bb0e416f0d')
 
 pkgver() {
   curl -s "https://api.github.com/repos/xxanqw/justdd/releases/latest" | \
