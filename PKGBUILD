@@ -2,16 +2,14 @@
 
 pkgname=gridtracker2
 pkgver=2.250507.0
-pkgrel=2
+pkgrel=3
 _electronver=35
 pkgdesc="An Amateur Radio Companion"
 arch=('any')
 url="https://gridtracker.org"
 license=('BSD-3-Clause')
 makedepends=('npm')
-depends=('electron35' 'gtk3' 'libxss' 'nss' 'libnotify' 'libappindicator-gtk3' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
-conflicts=('gridtracker2')
-provides=('gridtracker2')
+depends=("electron${_electronver}" 'libxss' 'libappindicator-gtk3' 'libxtst' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 source=("https://gitlab.com/gridtracker.org/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
         "gridtracker2.desktop"
         "gridtracker2.sh")
