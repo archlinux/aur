@@ -1,5 +1,5 @@
 pkgbase = dotnet-core-8.0-bin
-	pkgver = 8.0.16.sdk410
+	pkgver = 8.0.17.sdk411
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -7,24 +7,24 @@ pkgbase = dotnet-core-8.0-bin
 	arch = aarch64
 	license = MIT
 	options = staticlibs
-	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/8.0.410/dotnet-sdk-8.0.410-linux-x64.tar.gz
-	sha512sums_x86_64 = 757879ef16bf8dc0677e0222ed2fd87b6126aa5ef6370120fb6ee8dfb42a194a796d105d388320cc623548a2eebbd349b1badf3e53631d9f059edeafea1b83bf
-	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/8.0.410/dotnet-sdk-8.0.410-linux-arm.tar.gz
-	sha512sums_armv7h = aae9c76dc346b162e7c0ba002d8978e946ebc11741567ede048806ebb09bfe90756d8c11476544d6ef21d6af2e9d96effd8b82272ec04540c87b25c57683065d
-	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/8.0.410/dotnet-sdk-8.0.410-linux-arm64.tar.gz
-	sha512sums_aarch64 = 124a07f83e868a9d838ff26f85fa6b43f854fa8d7fc898d787b83d5cd120f3b9675f908d271d983bd2dce845afff39cceaf5500e945ef43852e46e6ddb115693
+	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/8.0.411/dotnet-sdk-8.0.411-linux-x64.tar.gz
+	sha512sums_x86_64 = e7304c3798c3ad3278a23cfac7e3f873a760d6bfe0719eaafdf6a9666afeff8f2730e7c84f7ff597d34b5e26d1bccb08ecc6e23c7ef4376564c4ed568d6d2430
+	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/8.0.411/dotnet-sdk-8.0.411-linux-arm.tar.gz
+	sha512sums_armv7h = 60060d98f8dedb15b11b8fca709269a9d6b944a7871decc238cf7f588b78c12f73b7f68f21bfa1d7c247ab4ded5cbad4976d6ab8fbe59a4af298d53d0c037596
+	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/8.0.411/dotnet-sdk-8.0.411-linux-arm64.tar.gz
+	sha512sums_aarch64 = 7fd70c97e549e873ceefb62ed9fef317597fb300b0f95487858719a231e6d333430c7b70e02c8105c1ba679446f6056af0072d22c17368906d94491f4705136c
 
 pkgname = aspnet-runtime-8.0-bin
 	pkgdesc = The ASP.NET Core runtime (binary)
 	depends = dotnet-runtime-8.0-bin
-	provides = aspnet-runtime=8.0.16
+	provides = aspnet-runtime=8.0.17
 	provides = aspnet-runtime-8.0
-	conflicts = aspnet-runtime=8.0.16
+	conflicts = aspnet-runtime=8.0.17
 	conflicts = aspnet-runtime-8.0
 
 pkgname = dotnet-runtime-8.0-bin
 	pkgdesc = The .NET Core runtime (binary)
-	depends = dotnet-host>=8.0.16
+	depends = dotnet-host>=8.0.17
 	depends = gcc-libs
 	depends = glibc
 	depends = icu
@@ -32,9 +32,9 @@ pkgname = dotnet-runtime-8.0-bin
 	depends = zlib
 	depends = openssl
 	optdepends = lttng-ust: CoreCLR tracing
-	provides = dotnet-runtime=8.0.16
+	provides = dotnet-runtime=8.0.17
 	provides = dotnet-runtime-8.0
-	conflicts = dotnet-runtime=8.0.16
+	conflicts = dotnet-runtime=8.0.17
 	conflicts = dotnet-runtime-8.0
 
 pkgname = dotnet-sdk-8.0-bin
@@ -45,23 +45,23 @@ pkgname = dotnet-sdk-8.0-bin
 	depends = dotnet-targeting-pack-8.0-bin
 	depends = netstandard-targeting-pack
 	optdepends = aspnet-targeting-pack-bin: Build ASP.NET Core applications
-	provides = dotnet-sdk=8.0.16.sdk410
+	provides = dotnet-sdk=8.0.17.sdk411
 	provides = dotnet-sdk-8.0
-	conflicts = dotnet-sdk=8.0.16.sdk410
+	conflicts = dotnet-sdk=8.0.17.sdk411
 	conflicts = dotnet-sdk-8.0
 
 pkgname = dotnet-targeting-pack-8.0-bin
 	pkgdesc = The .NET Core targeting pack (binary)
 	depends = netstandard-targeting-pack
-	provides = dotnet-targeting-pack=8.0.16
+	provides = dotnet-targeting-pack=8.0.17
 	provides = dotnet-targeting-pack-8.0
-	conflicts = dotnet-targeting-pack=8.0.16
+	conflicts = dotnet-targeting-pack=8.0.17
 	conflicts = dotnet-targeting-pack-8.0
 
 pkgname = aspnet-targeting-pack-8.0-bin
 	pkgdesc = The ASP.NET Core targeting pack (binary)
 	depends = dotnet-targeting-pack-8.0-bin
-	provides = aspnet-targeting-pack=8.0.16
+	provides = aspnet-targeting-pack=8.0.17
 	provides = aspnet-targeting-pack-8.0
-	conflicts = aspnet-targeting-pack=8.0.16
+	conflicts = aspnet-targeting-pack=8.0.17
 	conflicts = aspnet-targeting-pack-8.0
