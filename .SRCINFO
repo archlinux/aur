@@ -53,6 +53,7 @@ pkgbase = vapoursynth-plugin-vsjetpack
 	optdepends = vapoursynth-plugin-wnnm
 	optdepends = vapoursynth-plugin-wwxd: Scene detection
 	optdepends = vapoursynth-plugin-znedi3
+	optdepends = vapoursynth-plugin-zsmooth
 	provides = vapoursynth-plugin-vsaa
 	provides = vapoursynth-plugin-vsdeband
 	provides = vapoursynth-plugin-vsdehalo
