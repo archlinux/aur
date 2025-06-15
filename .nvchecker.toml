@@ -1,0 +1,3 @@
+[ollama-gui-tk]
+source = "pypi"
+pypi="ollama_gui"
