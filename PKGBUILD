@@ -3,11 +3,11 @@
 
 _pkgbase=ryzen_smu
 pkgname=ryzen_smu-dkms-git
-pkgver=162.e61177d
+pkgver=181.9f9569f
 pkgrel=1
 pkgdesc="A Linux kernel driver that exposes access to the SMU (System Management Unit) for certain AMD Ryzen Processors"
 arch=('x86_64')
-url="https://gitlab.com/leogx9r/ryzen_smu"
+url="https://github.com/amkillam/ryzen_smu"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git')
@@ -17,13 +17,11 @@ install=$_pkgbase.install
 
 source=("$_pkgbase::git+$url.git"
         "dkms.conf"
-        "$_pkgbase.conf"
-        "rembrandt_phoenix_pm.patch")
+        "$_pkgbase.conf")
 
 sha256sums=('SKIP'
-            '0ced27963dac8e270221574d0c2b686bbbb012e3af8741188800f9cb6b7d8e63'
-            'a48f5c846ca5fd8f185f1317c8001c97f59ac432392d53b581802c7761b9360f'
-            '5dc79846385ff0fe8a67cc4145d272dfc82fd311d1a5eec7f591204cb97b2a24')
+            '88cc435409bd0483164a89f9f42ed8c6416db42f1a8592110cb4db94903a97f0'
+            'a48f5c846ca5fd8f185f1317c8001c97f59ac432392d53b581802c7761b9360f')
 
 pkgver() {
   cd "$srcdir/$_pkgbase"
@@ -32,11 +30,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgbase"
-  
-  # Add Rembrandt and Phoenix PM table support
-  # https://gitlab.com/leogx9r/ryzen_smu/-/merge_requests/12#b9c3a4741719467e41acac27f3d11fea3a6c02ff
-  patch -Np1 -i "$srcdir"/rembrandt_phoenix_pm.patch
-
   rm -rf scripts/ pics/ README.md
 }
 
