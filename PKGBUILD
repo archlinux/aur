@@ -1,7 +1,7 @@
 # Maintainer: Gergő Sályi <salyigergo94@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=multibg-wayland
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Set a different wallpaper for the background of each Sway or Hyprland or niri workspace'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -20,7 +20,7 @@ optdepends=(
 conflicts=('multibg-sway')
 provides=('multibg-sway')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('60b99e65123cf797ccee361169ea28242a8fba7f4cf0f27351ac2d4eaeaccf2e')
+sha256sums=('71076b3dc9e5c61ad62fbec24264354138aafe29a6e73f7f511e003a6b745aef')
 
 prepare() {
     cd "$pkgname-$pkgver"
