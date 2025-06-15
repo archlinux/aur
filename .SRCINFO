@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-vship-cuda-git
+	pkgdesc = Plugin for Vapoursynth: vship-cuda (GIT version)
+	pkgver = 3.0.0.13.g1ed2fb3
+	pkgrel = 1
+	url = https://github.com/Line-fr/Vship
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = vapoursynth
+	depends = cuda
+	provides = vapoursynth-plugin-vship-cuda
+	conflicts = vapoursynth-plugin-vship-cuda
+	source = vship-cuda::git+https://github.com/Line-fr/Vship.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-vship-cuda-git
