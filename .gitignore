@@ -6,4 +6,5 @@
 # actual package
 !PKGBUILD
 !esound.service
+!*.patch
 !.SRCINFO

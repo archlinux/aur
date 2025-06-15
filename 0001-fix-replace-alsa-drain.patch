@@ -1,0 +1,26 @@
+From 2dce6c6d371e06d5575463e633b95dd44a274836 Mon Sep 17 00:00:00 2001
+From: Tiago de Paula <tiagodepalves@gmail.com>
+Date: Sat, 14 Jun 2025 22:29:34 -0300
+Subject: [PATCH] fix: replace alsa drain
+
+Drop playback instead of waiting for drain to complete.
+---
+ audio_alsa09.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/audio_alsa09.c b/audio_alsa09.c
+index 534e3db..d9450e6 100644
+--- a/audio_alsa09.c
++++ b/audio_alsa09.c
+@@ -506,7 +506,7 @@ void esd_audio_flush(void)
+ 	}
+ 
+ 	if (alsa_playback_handle != NULL)
+-		snd_pcm_drain( alsa_playback_handle );
++		snd_pcm_drop( alsa_playback_handle );
+   
+ 	if (alsadbg) 
+ 		print_state();
+-- 
+2.49.0
+
