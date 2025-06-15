@@ -1,6 +1,6 @@
 pkgbase = zenmap
 	pkgdesc = Graphical Nmap frontend and results viewer
-	pkgver = 7.95
+	pkgver = 7.97
 	pkgrel = 1
 	url = https://github.com/nmap/nmap
 	arch = any
@@ -16,7 +16,10 @@ pkgbase = zenmap
 	depends = python-cairo
 	depends = python-gobject
 	optdepends = gksu: start zenmap as root
-	source = nmap-7.95.tar.bz2::https://nmap.org/dist/nmap-7.95.tar.bz2
+	source = nmap-7.97.tar.bz2::https://nmap.org/dist/nmap-7.97.tar.bz2
+	source = nmap-7.97.tar.bz2.asc::https://nmap.org/dist/sigs/nmap-7.97.tar.bz2.asc
+	validpgpkeys = 436D66AB9A798425FDA0E3F801AF9F036B9355D0
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = zenmap

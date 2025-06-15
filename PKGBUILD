@@ -8,7 +8,7 @@
 _gitname="nmap"
 _pkgname="zenmap"
 pkgname="$_pkgname"
-pkgver=7.95
+pkgver=7.97
 pkgrel=1
 pkgdesc="Graphical Nmap frontend and results viewer"
 url='https://github.com/nmap/nmap'
@@ -38,8 +38,17 @@ _source_main() {
 
   _pkgsrc="$_gitname-$_pkgver"
   _pkgext="tar.bz2"
-  source=("$_pkgsrc.$_pkgext"::"https://nmap.org/dist/$_pkgsrc.$_pkgext")
-  sha256sums=('SKIP')
+  source=(
+    "$_pkgsrc.$_pkgext"::"https://nmap.org/dist/$_pkgsrc.$_pkgext"
+    "$_pkgsrc.$_pkgext.asc"::"https://nmap.org/dist/sigs/$_pkgsrc.$_pkgext.asc"
+  )
+  sha256sums=(
+    'SKIP'
+    'SKIP'
+  )
+  validpgpkeys=(
+    '436D66AB9A798425FDA0E3F801AF9F036B9355D0' # Nmap Project Signing Key (http://www.insecure.org/)
+  )
 }
 
 pkgver() {
