@@ -1,0 +1,15 @@
+pkgbase = gimp-plugin-batcher-git
+	pkgdesc = Batch image processing plug-in for GIMP 3
+	pkgver = 1.1.1.r2.g30124d9
+	pkgrel = 1
+	epoch = 1
+	url = https://kamilburda.github.io/batcher/
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	depends = gimp>=3
+	depends = python
+	source = git+https://github.com/kamilburda/batcher.git
+	sha256sums = SKIP
+
+pkgname = gimp-plugin-batcher-git
