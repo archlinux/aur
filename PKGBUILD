@@ -2,7 +2,7 @@
 # Contributor: Asuka Minato <i at asukaminato dot eu dot org>
 
 pkgname=onscripter-yuri-bin
-pkgver=0.7.5beta5
+pkgver=0.7.6beta1
 pkgrel=1
 pkgdesc="An enhancement ONScripter project porting to many platforms, especially web."
 arch=(x86_64 aarch64 i686 armv7h)
@@ -15,10 +15,10 @@ source_x86_64=("https://github.com/YuriSizuku/OnscripterYuri/releases/download/v
 source_i686=("https://github.com/YuriSizuku/OnscripterYuri/releases/download/v${pkgver}/onsyuri_v${pkgver}_x86_linux")
 source_armv7h=("https://github.com/YuriSizuku/OnscripterYuri/releases/download/v${pkgver}/onsyuri_v${pkgver}_arm32_linux")
 source_aarch64=("https://github.com/YuriSizuku/OnscripterYuri/releases/download/v${pkgver}/onsyuri_v${pkgver}_arm64_linux")
-sha256sums_x86_64=('6f4a6487f8315fe669362b531a73bc6a098f7694e4e77d2cc38519c719ff8706')
-sha256sums_aarch64=('613d6b998cbeff57d8de945f6c5ea078577c4871ba60730112e662c152f73cb3')
-sha256sums_i686=('2bca3912e6dae53aed1432a61716fe2b1e291a6a1a858816cd7cacc856fca144')
-sha256sums_armv7h=('c52e975ea68363958b6ff7f3c0cd3743e3e6b2f8d7aad19c71f24f5308b58bec')
+sha256sums_x86_64=('73182210b06a67b8388c6f206f6eb90123e5c81763ca4466c9f44f6dc36893fd')
+sha256sums_aarch64=('20e86be256ae4f3d81282bda714f0a4686f36fd02575f48782a0008c7afb6f67')
+sha256sums_i686=('ab618e4c3d969d884de745746d42d23aacb04d9f9643840b519fd74fd7f44116')
+sha256sums_armv7h=('21995a15f70ae92cd2b13a4d54b8cdb1023a21e24a4c1da5566e8ea548df8357')
 
 package() {
 	find . -name "onsyuri*" -exec install -Dm755 {} $pkgdir/usr/bin/onsyuri \;
