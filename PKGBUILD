@@ -3,39 +3,51 @@
 
 set -u
 pkgname='wipefreespace'
-pkgver='2.6'
+pkgver='3.0'
 pkgrel='1'
 pkgdesc='Securely wipe the free space on an ext2/3/4,NTFS, XFS, ReiserFSv3, ReiserFSv4, FAT12/16/32, Minix, JFS and HFS+ partition or drive'
 arch=('i686' 'x86_64')
 url='https://sourceforge.net/projects/wipefreespace'
-license=('GPL')
-_verwatch=("${url}/rss" ".*<title>.*/${pkgname}-\([0-9\.]\+\)\.tar\.gz\].*" 'f')
+license=('GPL-2.0-only')
+depends=('glibc' 'libcap')
+optdepends=(
+  'e2fsprogs: ext2 ext3 ext4 support'
+  'ntfs3g: NTFS support'
+  'xfsprogs: xfs support'
+)
+#_verwatch=("${url}/rss" ".*<title>.*/${pkgname}-\([0-9\.]\+\)\.tar\.gz\].*" 'f')
+_srcdir="${pkgname}-${pkgver}"
 source=(
-  "https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+  "https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${_srcdir}.tar.gz"
   '0000-sysmacros.patch'
 )
-md5sums=('7e52f8f44ebca3d89af7148de87d5139'
-         'fb1e4e01526cdfa3f853e2b2b99b71f1')
-sha256sums=('3ede8c0d0f704896cbe2d5bfa9c913a45b2f13d15d5c8929fd09a761295647f3'
-            '500c4e1fa566be22e3b07e1bcf0a36b0f18d8f46ac9922e603e1a42edb2b7902')
+md5sums=('573f959d35a06fb5624e9116a862db9b'
+         '776e57109f3c2e9559e052982c1b048c')
+sha256sums=('6ff55ce6fca0613f730eb6cc6d9f3dd10e5de341005546167455aec1d91af4dc'
+            'b1c8b390417d1305d0b8aa5033a3a65628c1a1db4081762c4714db9b47901eae')
 
 prepare() {
   set -u
-  cd "${pkgbase}-${pkgver}"
-
-  # diff -pNau3 src/wfs_util.c{.orig,} > '0000-sysmacros.patch'
-  patch -Nbup0 -i "${srcdir}/0000-sysmacros.patch"
+  cd "${_srcdir}"
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  #diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
+  patch -Nbup1 -i "${srcdir}/0000-sysmacros.patch"
 
   set +u
 }
 
 build() {
   set -u
-  cd "${pkgbase}-${pkgver}"
+  cd "${_srcdir}"
   if [ ! -s 'Makefile' ]; then
-    CFLAGS="${CFLAGS} -Wno-unused-result" \
-    ./configure --prefix='/usr'
-    echo '#define HAVE_LINUX_LOOP_H 1' >> 'config.h'
+    export CFLAGS="${CFLAGS} -Wno-unused-result"
+    local _conf=( ##CONF
+      --disable-REISERFS
+      --disable-REISER4
+      --prefix='/usr'
+    )
+    ./configure "${_conf[@]}"
+    #echo '#define HAVE_LINUX_LOOP_H 1' >> 'config.h'
   fi
   make -s
   set +u
@@ -43,7 +55,7 @@ build() {
 
 package () {
   set -u
-  cd "${pkgbase}-${pkgver}"
+  cd "${_srcdir}"
   make -j1 DESTDIR="${pkgdir}" install
   set +u
 }
