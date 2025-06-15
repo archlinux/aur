@@ -2,8 +2,8 @@
 pkgbase=libastal-git
 pkgname=("libastal-git")
 _pkgname=libastal
-pkgver=r540.c5eba25
-pkgrel=2
+pkgver=r785.4e455bb
+pkgrel=1
 pkgdesc="Building blocks for building desktop shells."
 arch=("x86_64")
 license=(LGPL-2.1-only)
@@ -15,8 +15,9 @@ makedepends=(
 depends=("glib2" "glibc" "gtk3" "gtk-layer-shell" "gdk-pixbuf2" "wayland" "libastal-io")
 provides=(libastal libastal.so=3-64)
 groups=("libastal")
-source=("git+${url}.git")
-sha256sums=("SKIP")
+source=("git+${url}.git" "skip_valadoc.patch")
+sha256sums=('SKIP'
+            'ff21f00551107779bea48a7d545a7117d1db2ea533b82406d25bda76cbc37706')
 _rockname=astal-dev-1.rockspec
 
 pkgver(){
@@ -24,7 +25,10 @@ pkgver(){
   # git describe --long --tags --abbrev=7 | sed "s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
-
+prepare() {
+    cd astal
+    patch -Np1 -i ../skip_valadoc.patch
+}
 build() {
   cd astal/lib/astal/gtk3
   arch-meson build

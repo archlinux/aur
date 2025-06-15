@@ -1,0 +1,68 @@
+diff --git i/lib/astal/gtk3/src/meson.build w/lib/astal/gtk3/src/meson.build
+index 2587b10..4e5b3b0 100644
+--- i/lib/astal/gtk3/src/meson.build
++++ w/lib/astal/gtk3/src/meson.build
+@@ -91,9 +91,10 @@ lib = library(
+   vala_args: ['--vapi-comments', '--pkg', 'AstalInhibitManager'],
+   vala_header: meson.project_name() + '.h',
+   vala_vapi: meson.project_name() + '-' + api_version + '.vapi',
++  vala_gir: gir,
+   version: meson.project_version(),
+   install: true,
+-  install_dir: [true, true, true],
++  install_dir: [true, true, true, true],
+ )
+ 
+ pkgs = []
+@@ -101,24 +102,24 @@ foreach dep : pkgconfig_deps
+   pkgs += ['--pkg=' + dep.name()]
+ endforeach
+ 
+-gir_tgt = custom_target(
+-  gir,
+-  command: [
+-    find_program('python3'),
+-    girpy,
+-    meson.project_name(),
+-    gir + ':src/' + gir,
+-  ]
+-  + pkgs
+-  + vala_sources
+-  + [meson.project_source_root() / 'src' / 'vapi' / 'AstalInhibitManager.vapi'],
+-
+-  input: sources,
+-  depends: lib,
+-  output: gir,
+-  install: true,
+-  install_dir: get_option('datadir') / 'gir-1.0',
+-)
++# gir_tgt = custom_target(
++#   gir,
++#   command: [
++#     find_program('python3'),
++#     girpy,
++#     meson.project_name(),
++#     gir + ':src/' + gir,
++#   ]
++#   + pkgs
++#   + vala_sources
++#   + [meson.project_source_root() / 'src' / 'vapi' / 'AstalInhibitManager.vapi'],
++#
++#   input: sources,
++#   depends: lib,
++#   output: gir,
++#   install: true,
++#   install_dir: get_option('datadir') / 'gir-1.0',
++# )
+ 
+ custom_target(
+   typelib,
+@@ -130,7 +131,7 @@ custom_target(
+   ],
+   input: lib,
+   output: typelib,
+-  depends: [lib, gir_tgt],
++  depends: [lib],
+   install: true,
+   install_dir: libdir / 'girepository-1.0',
+ )

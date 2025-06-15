@@ -1,7 +1,7 @@
 pkgbase = libastal-git
 	pkgdesc = Building blocks for building desktop shells.
-	pkgver = r540.c5eba25
-	pkgrel = 2
+	pkgver = r785.4e455bb
+	pkgrel = 1
 	url = https://github.com/Aylur/astal
 	arch = x86_64
 	groups = libastal
@@ -22,6 +22,8 @@ pkgbase = libastal-git
 	provides = libastal
 	provides = libastal.so=3-64
 	source = git+https://github.com/Aylur/astal.git
+	source = skip_valadoc.patch
 	sha256sums = SKIP
+	sha256sums = ff21f00551107779bea48a7d545a7117d1db2ea533b82406d25bda76cbc37706
 
 pkgname = libastal-git
