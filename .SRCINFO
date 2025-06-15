@@ -1,0 +1,12 @@
+pkgbase = commitlint-go
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://github.com/jurienhamaker/commitlint
+	arch = i686
+	arch = x86_64
+	makedepends = go
+	depends = git
+	source = git+git://github.com/jurienhamaker/commitlint
+	sha1sums = SKIP
+
+pkgname = commitlint-go
