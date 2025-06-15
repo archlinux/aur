@@ -1,13 +1,13 @@
 pkgbase = cargo-autoinherit
 	pkgdesc = (Auto)DRY for your Rust dependencies
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mainmatter/cargo-autoinherit
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
-	license = Apache-2.0 AND MIT
+	license = Apache-2.0 OR MIT
 	makedepends = cargo
 	depends = gcc-libs
 	source = cargo-autoinherit-0.1.6.tar.gz::https://static.crates.io/crates/cargo-autoinherit/cargo-autoinherit-0.1.6.crate
