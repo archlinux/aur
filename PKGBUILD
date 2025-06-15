@@ -1,8 +1,8 @@
 pkgname=mcphost
 
-_fragment=tag=v0.12.1
+_fragment=tag=v0.12.4
 
-pkgver=0.12.1
+pkgver=0.12.4
 pkgrel=1
 pkgdesc='A CLI host application that enables Large Language Models (LLMs) to interact with external tools through the Model Context Protocol (MCP)'
 
@@ -15,18 +15,18 @@ makedepends=(git go)
 source=(
 	"git+$url.git#$_fragment"
 )
-sha256sums=('0fa20e3b454bcaf49bd80d26eb698d11d3ae604daf44ec43253e65cd424b477a')
+sha256sums=('d435a4d4d798bebfd562a7f2c6a62d20aabadf7f1da7e1648458b0f738e18f45')
 
 pkgver() {
-	git -C $pkgname describe --first-parent --tags | sed 's/^v//; s/-/+/g'
+	git -C "$pkgname" describe --first-parent --tags | sed 's/^v//; s/-/+/g'
 }
 
 prepare() {
-	go -C $pkgname mod vendor
+	go -C "$pkgname" mod vendor
 }
 
 build() {
-	cd $pkgname
+	cd "$pkgname"
 
 	export CGO_CPPFLAGS="$CPPFLAGS"
 	export CGO_CFLAGS="$CFLAGS"
@@ -46,8 +46,8 @@ build() {
 }
 
 package() {
-	cd $pkgname
+	cd "$pkgname"
 
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-	install -Dm755 -t "$pkgdir/usr/bin" $pkgname
+	install -Dm755 -t "$pkgdir/usr/bin" "$pkgname"
 }
