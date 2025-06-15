@@ -2,16 +2,16 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=jellyfin-tui
-pkgver=1.1.3
-pkgrel=1
-pkgdesc='A TUI client for Jellyfin'
+pkgver=1.2.0
+pkgrel=2
+pkgdesc='Music streaming TUI client for Jellyfin'
 arch=('x86_64')
 url="https://github.com/dhonus/$pkgname"
 license=('GPL-3.0-only')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2d83b5a94b77aee9bdb4dbf841b3efa9e773220ada74a3e877480a2aa3d72bce')
-depends=('openssl' 'mpv' 'gcc-libs' 'glibc')
-makedepends=('cargo')
+sha256sums=('817b8b67de30017743a5627d1d8c0ead4f0cd80e3fb7a13f43a175bf2188424a')
+depends=('openssl' 'mpv' 'gcc-libs' 'glibc' 'sqlite')
+makedepends=('cargo' 'pkgconf' 'sqlite')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -21,6 +21,10 @@ prepare() {
 build() {
   export CARGO_TARGET_DIR=target
   cd "$pkgname-$pkgver"
+
+  export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+  export PKG_CONFIG_ALLOW_CROSS=1
+
   cargo build --frozen --release --all-features
 }
 
