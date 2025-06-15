@@ -22,10 +22,9 @@ build() {
 
 
 check() {
-  cd "${srcdir}"/${_name}-${pkgver}
   local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-  cd build/lib.linux-$CARCH-cpython-$python_version
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version" python -m pymunk.tests
+  cd "${srcdir}"/${_name}-${pkgver}/build/lib.linux-$CARCH-cpython-$python_version
+  python -m pymunk.tests
 }
 
 package() {
