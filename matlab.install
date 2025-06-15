@@ -1,0 +1,8 @@
+post_install() {
+  # https://www.mathworks.com/help/matlab/ref/matlab_jenv.html
+  matlab_jenv -allusers system > /dev/null
+}
+
+post_upgrade() {
+  post_install
+}

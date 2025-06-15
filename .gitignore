@@ -1,11 +1,6 @@
-*.tar.gz
-*.tar.xz
-*.tar
-*.zip
-*.fik
-*.lic
-*.dat
-src/
-pkg/
-ml/
-*.png
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!*.install
