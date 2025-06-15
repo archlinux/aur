@@ -25,7 +25,7 @@ package (){
 		install -Dm644 $i "$pkgdir/usr/share/doc/$pkgname/$i"
 	done
 	cp -R docs "$pkgdir/usr/share/doc/$pkgname/"
-	install -dm744 "$pkgdir/usr/lib/gimp/3.0"
-	cp -R batcher "$pkgdir/usr/lib/gimp/3.0/plug-ins/"
+	install -dm744 "$pkgdir/usr/lib/gimp/3.0/plug-ins/"
+	cp -R batcher "$pkgdir/usr/lib/gimp/3.0/plug-ins/batcher"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
