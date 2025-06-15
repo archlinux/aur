@@ -1,9 +1,9 @@
-# Maintainer: xerus <27jf at pm dot me>
+# Maintainer: Pedro Lucas <pedrolucasinvestidor62023@gmail.com>
 
 pkgbasename=realm-studio
 pkgname="${pkgbasename}"-appimage
-pkgver=11.1.0
-pkgrel=1
+pkgver=20.0.0
+pkgrel=2
 pkgdesc="Graphical tool to open and edit local and synced Realm Databases."
 arch=('x86_64')
 url="https://github.com/realm/${pkgbasename}"
