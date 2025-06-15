@@ -1,49 +1,49 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Contributor: Christian Hesse <mail@eworm.de>
 
 pkgname=libetpan-git
-pkgver=1.4.1.r0.gc2b2d0f
+pkgver=1.9.4.r86.g5c9eb6b
 pkgrel=1
 pkgdesc='A portable middleware for email access - git checkout'
-arch=('i686' 'x86_64')
-url='http://www.etpan.org/libetpan.html'
-license=('custom:etpan')
-depends=('libsasl' 'curl' 'expat')
+arch=('x86_64')
+url='https://www.etpan.org/libetpan.html'
+license=('BSD-3-Clause AND BSD-3-Clause-Attribution AND BSD-4-Clause')
+depends=('gnutls' 'libsasl' 'zlib' 'glibc')
 makedepends=('git')
 provides=('libetpan')
 conflicts=('libetpan')
-source=('git://github.com/dinhviethoa/libetpan.git')
+source=('git+https://github.com/dinhviethoa/libetpan.git')
 sha256sums=('SKIP')
 
 pkgver() {
 	cd libetpan/
+	git describe --long --tags | sed 's/-/.r/;s/-/./g'
+}
 
-	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
-	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
-	fi
+prepare() {
+	cd libetpan/
+	NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
 	cd libetpan/
 
-	# generate automake files that are not included in the tarball
-	libtoolize --force --copy
-	aclocal -I m4
-	autoheader
-	autoconf
-	automake --add-missing --foreign --force --copy
-	#autoreconf -vfi
-
 	./configure --prefix=/usr \
 		--disable-static \
-		--disable-db
+		--disable-db \
+		--with-openssl=no \
+		--with-gnutls=yes \
+		--with-poll
+	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 	make
+}
+
+check() {
+	cd libetpan/
+	make check
 }
 
 package() {
 	cd libetpan/
-
-	make DESTDIR=${pkgdir} install
-	install -Dm644 COPYRIGHT ${pkgdir}/usr/share/licenses/libetpan/license.txt
+	make DESTDIR="${pkgdir}" install
+	install -Dm644 COPYRIGHT "${pkgdir}"/usr/share/licenses/${pkgname}/license.txt
 }
