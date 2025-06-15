@@ -1,0 +1,2 @@
+f /etc/hatch.yaml 0640 root hatch
+d /var/lib/hatch 0750 hatch hatch
