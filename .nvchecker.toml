@@ -1,4 +1,5 @@
 [physlock]
-source = "git"
-git = "https://github.com/muennich/physlock.git"
+source = "github"
+github = "muennich/physlock"
+use_max_tag = true
 prefix = "v"

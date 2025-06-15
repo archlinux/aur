@@ -1,34 +1,35 @@
-# Maintainer: Ivy Foster <iff@archlinux.org>
-# Reference: PKGBUILD(5)
+# Maintainer: marmis <tiagodepalves@gmail.com>
+# Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
+# Contributor: T.J. Townsend <blakkheim@archlinux.org>
+# Contributor: Jelle van der Waa <jelle@archlinux.org>
+# Contributor: Allan McRae <allan@archlinux.org>
+# Contributor: Ivy Foster <iff@archlinux.org>
 
 pkgname=physlock
+pkgdesc='Lightweight Linux console locking tool'
 pkgver=13
 pkgrel=5
-pkgdesc='Lightweight Linux console locking tool'
 url='https://github.com/muennich/physlock'
-license=(GPL2)
-
-depends=(pam)
+arch=('x86_64')
+license=('GPL-2.0-or-later')
+depends=('pam')
 optdepends=('xss-lock: lock screen on suspend or after inactivity')
-
-arch=(x86_64)
-# physlock.pam: see https://bugs.archlinux.org/index.php?do=details&task_id=61300
-source=(
-	"physlock-$pkgver.tar.gz::https://github.com/muennich/physlock/archive/v$pkgver.tar.gz"
-	physlock.pam
-)
 backup=(etc/pam.d/physlock)
-# sha256sums provided by packager; grains of salt advised
-sha256sums=(
-	9ae4716a1e916f141e47a01b439133ca382281ebdcbec1e53f85da6771774bd6
-	de66118684a2ecec18017dd96e50a489f30465510250c007ced16f81fb542ba5
-)
+source=("physlock-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+        "physlock.pam")
+b2sums=('a43f151c1660c38bd028f80742637a51d5108e6769161c88fb269ac03c827e49bd20e521b8face6aa6a71a8ab65ddf8662e81e8251b74c13388070ed04d4e13b'
+        'f3809a5ce453a00e4cfa445670425e5644e13723fa02539cf823134c2de942f263647eb08cb85867506148ebc6cd333921f93b7c283ff84ae0792c9b3333ec34')
 
 build() {
-	make PREFIX=/usr -C "physlock-$pkgver"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+
+    make PREFIX=/usr
 }
 
 package() {
-	install -D -m 644 physlock.pam "$pkgdir/etc/pam.d/physlock"
-	make PREFIX=/usr "DESTDIR=$pkgdir" -C "physlock-$pkgver" install
+    cd "${srcdir}/${pkgname}-${pkgver}"
+
+    make PREFIX=/usr "DESTDIR=$pkgdir" install
+
+    install -D -m 644 "${srcdir}"/physlock.pam "$pkgdir/etc/pam.d/physlock"
 }
