@@ -1,7 +1,7 @@
 pkgbase = haskell-trial
 	pkgdesc = Trial Data Structure
 	pkgver = 0.0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kowainik/trial
 	arch = x86_64
 	license = MPL2
@@ -13,11 +13,11 @@ pkgbase = haskell-trial
 	makedepends = haskell-hspec-hedgehog
 	makedepends = haskell-splitmix
 	makedepends = uusi
-	depends = ghc-libs
+	depends = haskell-base
 	depends = haskell-colourista
 	depends = haskell-dlist
-	source = https://github.com/kowainik/trial/archive/5f67d4ad805ec4efb4e53805ff728dc73cb503e8.tar.gz
-	sha256sums = 1d8760b4cbef4e29fd9895bfdbf1a6a4cf5a31a5fe3e46ee50119ef4912b7d07
+	source = https://github.com/kowainik/trial/archive/e86477e60649a99b8b9fed72dbe3cd566fde30ff.tar.gz
+	sha256sums = 2c7f9a4f72dcbfc6b90abc3bad33698c67573b60d2074562598c087ecf27cc1a
 
 pkgname = haskell-trial
 
