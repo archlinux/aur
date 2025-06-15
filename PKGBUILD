@@ -2,10 +2,10 @@
 
 pkgname=(haskell-trial haskell-trial-tomland haskell-trial-optparse-applicative)
 pkgver=0.0.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Trial Data Structure"
 url="https://github.com/kowainik/trial"
-license=("MPL2")
+license=("MPL-2.0")
 arch=('x86_64')
 depends=(haskell-base haskell-colourista haskell-dlist)
 makedepends=(cabal-install ghc
