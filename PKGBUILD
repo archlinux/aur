@@ -1,79 +1,82 @@
-# Maintainer: Amanoel Dawod <amoka at amanoel dot com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
+# Contributor: Amanoel Dawod <amoka at amanoel dot com>
 # Contributor: Elliott Saille <me+aur@esaille.me>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: unikum <unikum.pm@gmail.com>
 # Contributor: speed145a <jonathan@tagchapter.com>
 
-pkgname=firewalld-git
-pkgver=r3403.f3e5384a
+pkgbase=firewalld-git
+_pkgbase="${pkgbase%-git}"
+pkgname=('firewalld-git' 'firewalld-test-git')
+pkgver=r4006.d99076a5
 pkgrel=1
 epoch=1
-pkgdesc="Firewall daemon with D-Bus interface (from git)"
-arch=(any)
-url="https://firewalld.org/"
-license=(GPL2)
-depends=(
-  dbus-python
-  hicolor-icon-theme
-  nftables
-  python-gobject
-)
-makedepends=(
-  desktop-file-utils
-  docbook-xsl
-  git
-  glib2
-  intltool
-  libxslt
-  podman
-)
-optdepends=(
-  'iptables-nft: ebtables and iptables support'
-  'ipset: ipset support'
-  'libnotify: firewall panel applet support'
-  'nm-connection-editor: firewall panel applet support'
-  'python-capng: drop daemon capabilities'
-  'python-pyqt5: firewall panel applet support'
-)
-provides=('firewalld')
-conflicts=('firewalld')
-backup=(
-  etc/conf.d/firewalld
-  etc/firewalld/firewalld.conf
-)
-source=(
-  git+https://github.com/firewalld/firewalld.git
-  firewalld-sysconfigdir.patch
-)
+url="https://firewalld.org"
+arch=('any')
+license=('GPL-2.0-or-later')
+makedepends=('docbook-xsl' 'git' 'intltool' 'podman')
+source=("git+https://github.com/firewalld/firewalld.git"
+        'firewalld-sysconfigdir.patch'
+        'fix_gettext_macros_path.patch')
 sha256sums=('SKIP'
-            '37860bd444e67741cf4a7817eccc9bdbbf56e68cc9448bb54f44a44050b72045')
+            '3b2e00f67680c2e620804eb28620d7370b4096851bcb5f6fec22460a21941ad9'
+            '49f793aeaf2e87c834c734b37dc926c9579cc2ec0782e5fe297ee286df6c7ef6')
 
 pkgver() {
-  cd firewalld
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${_pkgbase}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd firewalld
-  patch -Np1 -i ../firewalld-sysconfigdir.patch
-  NOCONFIGURE=true ./autogen.sh
+	cd "${_pkgbase}"
+
+	# Use '/etc/conf.d' rather than '/etc/sysconfig'
+	patch -Np1 -i "${srcdir}/firewalld-sysconfigdir.patch"
+	# Fix gettext's macros path
+	patch -Np1 -i "${srcdir}/fix_gettext_macros_path.patch"
+
+	NOCONFIGURE=true ./autogen.sh
 }
 
 build() {
-  cd firewalld
-  ./configure \
-    --prefix=/usr \
-    --localstatedir=/var \
-    --sbindir=/usr/bin \
-    --sysconfdir=/etc \
-    --disable-schemas-compile \
-    --disable-sysconfig
-  make
+	cd "${_pkgbase}"
+	./configure \
+		--prefix=/usr \
+		--localstatedir=/var \
+		--sbindir=/usr/bin \
+		--sysconfdir=/etc \
+		--disable-schemas-compile \
+		--disable-sysconfig
+	make
 }
 
-package() {
-  make DESTDIR="${pkgdir}" -C firewalld install
-  export PYTHONHASHSEED=0
-  python -m compileall -d /usr/lib "$pkgdir/usr/lib"
-  python -O -m compileall -d /usr/lib "$pkgdir/usr/lib"
+package_firewalld-git() {
+	pkgdesc="Firewall daemon with D-Bus interface (git version)"
+	depends=('python-dbus' 'glib2' 'hicolor-icon-theme'
+		 'nftables' 'python-capng' 'python-gobject')
+	optdepends=('bash-completion: bash completion'
+	            'gtk3: firewall-config'
+		    'libnotify: firewall-applet'
+		    'networkmanager: NetworkManager support'
+		    'polkit: privileged actions'
+		    'python-pyqt6: firewall-applet')
+	provides=('firewalld')
+	conflicts=('firewalld')
+	backup=('etc/conf.d/firewalld'
+	        'etc/firewalld/firewalld.conf')
+
+	make DESTDIR="${pkgdir}" -C "${_pkgbase}" install
+	python -m compileall -d /usr/lib "${pkgdir}/usr/lib"
+	python -O -m compileall -d /usr/lib "${pkgdir}/usr/lib"
+
+	# Remove test suite
+	rm -rvf "${pkgdir}/usr/share/firewalld/testsuite/"
+}
+
+package_firewalld-test-git() {
+	pkgdesc="FirewallD test suite (git version)"
+	provides=('firewalld-test')
+	conflicts=('firewalld-test')
+
+	make DESTDIR="${pkgdir}" -C "${_pkgbase}/src/tests" install
 }

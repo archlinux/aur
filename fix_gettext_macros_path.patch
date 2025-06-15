@@ -1,0 +1,11 @@
+diff --git a/autogen.sh b/autogen.sh
+index 175dea58..0b25e0fe 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -14,5 +14,5 @@ ls po/*.po | sed -e 's/.po//' | sed -e 's/po\///' > po/LINGUAS
+ 
+ intltoolize --force --automake
+ 
+-autoreconf --force -v --install --symlink || exit 1
++autoreconf --force -v --install --symlink -I /usr/share/gettext/m4 || exit 1
+ cd $ORIGDIR || exit $?
