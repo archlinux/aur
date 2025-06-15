@@ -10,5 +10,6 @@ pkgbase = swengine-revanced
 	depends = ffmpeg
 	depends = swww
 	source = swengine.desktop
+	md5sums = 6dca3a767dd3c85369aaad5affae54d4
 
 pkgname = swengine-revanced
