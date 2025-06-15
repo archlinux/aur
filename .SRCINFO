@@ -1,0 +1,16 @@
+pkgbase = librewolf-extension-duckduckgo-privacy-essentials
+	pkgdesc = Actively protects your data in your current browser
+	pkgver = 2025.4.7
+	pkgrel = 1
+	url = https://duckduckgo.com/duckduckgo-help-pages/desktop/firefox
+	arch = any
+	groups = librewolf-addons
+	license = MPL-2.0
+	checkdepends = jq
+	depends = librewolf
+	noextract = jid1-ZAdIEUB7XOzOJw@jetpack.xpi
+	source = jid1-ZAdIEUB7XOzOJw@jetpack.xpi::https://addons.mozilla.org/firefox/downloads/file/4470003/duckduckgo_for_firefox-2025.4.7.xpi
+	sha256sums = 8380d403a5412a0fe93716c297c220242b5918939773667e50984c4d60506e63
+	b2sums = f949af74ac33ebf0000dfc6c38ea0abba6d8e15babc812cbf3ed3b4110153387e9b0fe65bdca5c8642809dd4f1106292d90e339b6dd1cf20194cec7b984c2d9f
+
+pkgname = librewolf-extension-duckduckgo-privacy-essentials
