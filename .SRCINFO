@@ -1,6 +1,6 @@
 pkgbase = qp-bin
 	pkgdesc = qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems.
-	pkgver = 5.87.0
+	pkgver = 5.88.0
 	pkgrel = 1
 	url = https://github.com/Zweih/qp
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = qp-bin
 	replaces = yaylog
 	replaces = yaylog-bin
 	replaces = yaylog-git
-	source_x86_64 = https://github.com/Zweih/qp/releases/download/v5.87.0/qp-v5.87.0-x86_64.tar.gz
-	sha256sums_x86_64 = 09d9f24e7268ea16ec9df22ef77b1642934d028debd7dab5088fb539b1f62e30
-	source_aarch64 = https://github.com/Zweih/qp/releases/download/v5.87.0/qp-v5.87.0-aarch64.tar.gz
-	sha256sums_aarch64 = 480b8d769346fd89315b891d3ef669be385e4ec6628bfedbf0cfd360da6ae53d
-	source_armv7h = https://github.com/Zweih/qp/releases/download/v5.87.0/qp-v5.87.0-armv7h.tar.gz
-	sha256sums_armv7h = e8c7758cd9aaddb7707beb4056eaff51baa2577cc708c8e6dc32324c84bea10a
+	source_x86_64 = https://github.com/Zweih/qp/releases/download/v5.88.0/qp-v5.88.0-x86_64.tar.gz
+	sha256sums_x86_64 = 4e149fa37b66c644f7c53d2ca6e8fd6cc0cb426e0cc0feb84adcb2cce0167b33
+	source_aarch64 = https://github.com/Zweih/qp/releases/download/v5.88.0/qp-v5.88.0-aarch64.tar.gz
+	sha256sums_aarch64 = 5ccd2a9ee4db572744ed2e35216b2a3ab26b861af7affa0bbb9f9b27222b20c8
+	source_armv7h = https://github.com/Zweih/qp/releases/download/v5.88.0/qp-v5.88.0-armv7h.tar.gz
+	sha256sums_armv7h = 8456cd85d76acabb6fdb2327a556b682d67413d8fb7b2592b9104c006d4ae4e9
 
 pkgname = qp-bin
