@@ -1,0 +1,41 @@
+From e1cebb5cffb7579ae05b8bb915f3f09b5cc3954f Mon Sep 17 00:00:00 2001
+From: Tiago de Paula <tiagodepalves@gmail.com>
+Date: Sat, 14 Jun 2025 22:32:06 -0300
+Subject: [PATCH] fix: missing declaration for 'clean_exit'
+
+By mpento <https://aur.archlinux.org/account/mpento>
+
+See https://aur.archlinux.org/packages/esound#comment-990764
+---
+ esd-server.h | 2 ++
+ esd.c        | 1 -
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/esd-server.h b/esd-server.h
+index 0d815dd..6034a9a 100644
+--- a/esd-server.h
++++ b/esd-server.h
+@@ -23,6 +23,8 @@
+ /*******************************************************************/
+ /* sound daemon data structures */
+ 
++void clean_exit( int signum );
++
+ /* the ESD_*'s are defined from the lsb for client format info, */
+ /* from the msb for server side info. it should all fit into an int */
+ 
+diff --git a/esd.c b/esd.c
+index d22a73f..666cf31 100644
+--- a/esd.c
++++ b/esd.c
+@@ -67,7 +67,6 @@ audio_read_t impl_esd_audio_read = esd_audio_read;
+ /* esd.c - prototypes */
+ void set_audio_buffer( void *buf, esd_format_t format, int magl, int magr,
+ 		int freq, int speed, int length, long offset );
+-void clean_exit( int signum );
+ void reset_signal( int signum );
+ void reset_daemon( int signum );
+ void reconnect_driver( int signum );
+-- 
+2.49.0
+

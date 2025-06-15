@@ -20,15 +20,18 @@ options=('!libtool')
 backup=('etc/esd.conf')
 source=("${pkgname}-${pkgver}.tar.bz2::${url}/-/archive/ESOUND_${pkgver//./_}/${pkgname}-ESOUND_${pkgver//./_}.tar.bz2"
         "esound.service"
-        "0001-fix-replace-alsa-drain.patch")
+        "0001-fix-replace-alsa-drain.patch"
+        "0002-fix-missing-declaration-for-clean_exit.patch")
 b2sums=('db1945ee0b5514bb2d5b98e295e71bcf368124c607c7bf3b34189e36d8212da13eed819cc7aa15bf7c876677b6a48a1d1afa1312c6ab9cfb675a33e452acb13d'
         '086e6787524f28ffc0f8007e1ce2743129ac59980020699f3985dd3a10468b338d5a1f70189634cca8c7cdcec722ed06761542f1effb9210e0423e94e6a5324f'
-        '3c9865c43e8df414e7e7cb6753d88a00dc5859f4ce6272a3e668b442b6d8d4764eaf8c1bef28b5da76ebf26f34b6b30a59fb404f61eb408f0f4889d6c49b8f41')
+        '3c9865c43e8df414e7e7cb6753d88a00dc5859f4ce6272a3e668b442b6d8d4764eaf8c1bef28b5da76ebf26f34b6b30a59fb404f61eb408f0f4889d6c49b8f41'
+        '8eecd762786fb864e80613d685d66979824600e0b8da0161fdef3a486f592bad1078f7b46afbb45bbd866e50682c6ddcfb0f30cf0d0155516955b4bf3f9b3259')
 
 prepare() {
   cd "${srcdir}/${pkgname}-ESOUND_${pkgver//./_}"
 
   patch -i "${srcdir}/0001-fix-replace-alsa-drain.patch"
+  patch -i "${srcdir}/0002-fix-missing-declaration-for-clean_exit.patch"
 
   autoreconf --install --force
 }
