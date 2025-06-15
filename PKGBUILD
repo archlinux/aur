@@ -4,7 +4,7 @@
 
 pkgname=rocblas-gfx1103
 pkgver=6.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Next generation BLAS implementation for ROCm platform'
 arch=('x86_64')
 url='https://rocblas.readthedocs.io/en/latest'
@@ -80,7 +80,7 @@ build() {
     -D CMAKE_TOOLCHAIN_FILE=toolchain-linux.cmake
     -D CMAKE_CXX_FLAGS="${CXXFLAGS} -fcf-protection=none"
     -D CMAKE_INSTALL_PREFIX=/opt/rocm
-    -D CMAKE_PREFIX_PATH=/opt/r:ocm/llvm/lib/cmake/llvm
+    -D CMAKE_PREFIX_PATH=/opt/rocm/llvm/lib/cmake/llvm
     -D amd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr
     -D BUILD_FILE_REORG_BACKWARD_COMPATIBILITY=OFF
     -D HIP_PLATFORM=amd

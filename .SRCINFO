@@ -1,7 +1,7 @@
 pkgbase = rocblas-gfx1103
 	pkgdesc = Next generation BLAS implementation for ROCm platform
 	pkgver = 6.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocblas.readthedocs.io/en/latest
 	arch = x86_64
 	license = MIT
