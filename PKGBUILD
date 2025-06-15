@@ -3,27 +3,28 @@
 pkgname=onscripter-yuri
 _gitname=OnscripterYuri
 pkgdesc="An enhancement ONScripter project porting to many platforms, especially web."
-pkgver=0.7.4
-pkgrel=3
+pkgver=0.7.5
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/YuriSizuku/OnscripterYuri"
-license=('GPL')
+license=('GPL-2.0-only')
 depends=('glibc'
          'gcc-libs'
          'sdl2'
          'sdl2_mixer'
          'sdl2_ttf'
          'sdl2_image'
-         'libjpeg-turbo'
+#         'libjpeg-turbo'
          'bzip2'
-         'lua53'
-         'fontconfig')
+         'lua'
+#         'fontconfig'
+)
 makedepends=("cmake")
 provides=("onsyuri")
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "ld-all-dynamic.patch")
-sha256sums=('5084b3d7318c43d23a13a9a4847959804de19a46f0d5f9121db98ab4838dcb8c'
-            '861d3d3729016d258056829940cce079393e83424c47ddadd4548377b7ae4b12')
+sha256sums=('64691cb456892868b0ecb7667b297f82db5d260b3070b41c57a7934be05eb3ef'
+            '63792b3d3b945960831379e7259a7403b0d29107506c49bcd406fd1012766965')
 
 prepare() {
   cd ${srcdir}/${_gitname}-${pkgver}
