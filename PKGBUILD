@@ -3,7 +3,7 @@
 pkgname=libopenmpt-modplug
 _pkgver=0.8.9.0-openmpt1
 pkgver=${_pkgver%-*}
-pkgrel=1
+pkgrel=2
 pkgdesc='A compat layer/bridge from libmodplug to libopenmpt'
 url='http://lib.openmpt.org/'
 license=('BSD')
