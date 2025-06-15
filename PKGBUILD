@@ -9,7 +9,7 @@ url="https://github.com/BrokenC1oud/hnt/"
 license=("GPL3")
 
 makedepends=("cargo")
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/hnt/hnt-$pkgver.crate")
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
