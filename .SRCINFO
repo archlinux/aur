@@ -1,7 +1,7 @@
 pkgbase = libopenmpt-modplug
 	pkgdesc = A compat layer/bridge from libmodplug to libopenmpt
 	pkgver = 0.8.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://lib.openmpt.org/
 	install = libopenmpt-modplug.install
 	arch = i686
