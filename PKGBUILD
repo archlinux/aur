@@ -2,7 +2,7 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7 packages were based on
 pkgname=ps7_libpicocv
 pkgver=1.1.40_beta2r340
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for Pico Technology PicoScope 7 Oscilloscope Software"
 arch=('x86_64')
 url="https://labs.picotech.com/picoscope7/debian/pool/main/libp/libpicocv/"
@@ -21,12 +21,12 @@ source=("https://labs.picotech.com/picoscope7/debian/pool/main/libp/libpicocv/li
 md5sums=('80205bb376be12bc64eb431f2dce4019')
 
 package() {
-  tar -xf data.tar.xz -C "${pkgdir}"
+  tar -xf data.tar.* -C "${pkgdir}"
   chmod -R go-w $pkgdir
   chown -R root:root $pkgdir
 
   mkdir -p $pkgdir/opt/picoscope/scripts
-  tar -xf control.tar.xz -C "${pkgdir}/opt/picoscope/scripts" ./postinst
+  tar -xf control.tar.* -C "${pkgdir}/opt/picoscope/scripts" ./postinst
   mv "${pkgdir}/opt/picoscope/scripts/postinst" "${pkgdir}/opt/picoscope/scripts/${pkgname}_postinst"
   
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/usr/share/doc/libpicocv/copyright" 
