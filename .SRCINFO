@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgdesc = Linux kernel with patches from Clear Linux which allow for higher performance.
-	pkgver = 6.14.10
+	pkgver = 6.15.2
 	pkgrel = 1
 	url = https://git.staropensource.de/JeremyStarTM/aur-linux-clear
 	arch = x86_64
@@ -18,20 +18,20 @@ pkgbase = linux-clear
 	makedepends = zstd
 	options = !strip
 	options = !debug
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.14.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.14.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.14.10.xz
-	source = cl-linux::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.14.8-1574
-	source = more-uarches-20241018.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20241018.tar.gz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.15.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.15.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.15.2.xz
+	source = cl-linux::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.15.1-1584
+	source = more-uarches-20250612.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20250612.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = E27E5D8A3403A2EF66873BBCDEA66FF797772CDC
 	validpgpkeys = AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109
-	sha256sums = a294b683e7b161bb0517bb32ec7ed1d2ea7603dfbabad135170ed12d00c47670
+	sha256sums = 7586962547803be7ecc4056efc927fb25214548722bd28171172f3599abb9764
 	sha256sums = SKIP
-	sha256sums = 6ed2cf0d734b872ff433726dc18da14a501bacd4ec4e9d16c95daf1d9fc5bfa5
+	sha256sums = 0ff99b5765590b019579a61aaff35b7bb3d56deb7013653c45b7a3fb189fe9e3
 	sha256sums = SKIP
-	sha256sums = b3fd8b1c5bbd39a577afcccf6f1119fdf83f6d72119f4c0811801bdd51d1bc61
+	sha256sums = 91adc6bf4b263480399d24a7640e11b0302d4b411910ee99eee2788b34bd297a
 
 pkgname = linux-clear
 	pkgdesc = Linux kernel with patches from Clear Linux which allow for higher performance. This package includes the kernel and compiled modules.

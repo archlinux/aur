@@ -620,8 +620,8 @@ validpgpkeys=(
   "E27E5D8A3403A2EF66873BBCDEA66FF797772CDC"  # Sasha Levin (sashal@kernel.org)
   "AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109"  # Ben Hutchings (benh@debian.org)
 )
-sha256sums=("a294b683e7b161bb0517bb32ec7ed1d2ea7603dfbabad135170ed12d00c47670"
+sha256sums=("7586962547803be7ecc4056efc927fb25214548722bd28171172f3599abb9764"
             "SKIP"
-            "6ed2cf0d734b872ff433726dc18da14a501bacd4ec4e9d16c95daf1d9fc5bfa5"
+            "0ff99b5765590b019579a61aaff35b7bb3d56deb7013653c45b7a3fb189fe9e3"
             "SKIP"
-            "b3fd8b1c5bbd39a577afcccf6f1119fdf83f6d72119f4c0811801bdd51d1bc61")
+            "91adc6bf4b263480399d24a7640e11b0302d4b411910ee99eee2788b34bd297a")
