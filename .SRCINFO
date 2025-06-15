@@ -1,0 +1,17 @@
+pkgbase = haskell-directory
+	pkgdesc = Platform-agnostic library for filesystem operations (backport)
+	pkgver = 1.3.8.5
+	pkgrel = 1
+	url = https://github.com/haskell/directory
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = ghc
+	depends = haskell-base
+	depends = haskell-filepath>=1.4.100
+	depends = haskell-unix>=2.8
+	depends = haskell-os-string
+	depends = haskell-time
+	source = https://hackage.haskell.org/packages/archive/directory/1.3.8.5/directory-1.3.8.5.tar.gz
+	sha256sums = e864ed54ddfc6e15d2eb02c87f4be8edd7719e1f9cea13e0f86909400b6ea768
+
+pkgname = haskell-directory
