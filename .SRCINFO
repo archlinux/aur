@@ -1,4 +1,4 @@
-pkgbase = atapi-customizations
+pkgbase = atapi-mimetypes
 	pkgdesc = Various Arch Linux customizations that I do :3
 	pkgver = 1
 	pkgrel = 4

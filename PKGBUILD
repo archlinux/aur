@@ -1,6 +1,7 @@
 # Maintainer: Sterophonick
 pkgname=atapi-customizations
 _pkgname='atapi-customizations'
+pkgbase=atapi-mimetypes
 pkgver=1
 pkgrel=4
 pkgdesc='Various Arch Linux customizations that I do :3'
