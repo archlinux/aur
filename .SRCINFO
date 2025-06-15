@@ -1,7 +1,7 @@
 pkgbase = libggml-vulkan-git
-	pkgdesc = Tensor library for machine learning
+	pkgdesc = Tensor library for machine learning (with Vulkan GPU optimizations)
 	pkgver = r2175.8cda0a3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggerganov/ggml
 	arch = x86_64
 	license = MIT
