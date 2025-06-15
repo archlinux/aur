@@ -4,6 +4,7 @@ pkgname=hnt-git
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Hacker News Reader in Terminal"
+arch=(x86_64)
 url="https://github.com/BrokenC1oud/hnt/"
 license=("GPL3")
 
