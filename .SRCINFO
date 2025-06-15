@@ -1,10 +1,10 @@
 pkgbase = haskell-extensions
 	pkgdesc = Parse Haskell Language Extensions
 	pkgver = 0.1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kowainik/extensions
 	arch = x86_64
-	license = MPL2
+	license = MPL-2.0
 	makedepends = ghc
 	makedepends = haskell-hedgehog
 	makedepends = haskell-hspec

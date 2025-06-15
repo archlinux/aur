@@ -3,13 +3,13 @@
 _hkgname=extensions
 pkgname=haskell-extensions
 pkgver=0.1.0.0
-pkgrel=1
+pkgrel=2
 #-- NOTE: 0.1.0.1 and later is incompatible with GHC 9.4.8.
 #-- See https://github.com/kowainik/extensions/issues/111
 
 pkgdesc="Parse Haskell Language Extensions"
 url="https://github.com/kowainik/extensions"
-license=("MPL2")
+license=("MPL-2.0")
 arch=('x86_64')
 depends=('ghc-libs' 'haskell-colourista' 'haskell-optparse-applicative')
 makedepends=(ghc haskell-hedgehog haskell-hspec haskell-hspec-hedgehog uusi)
