@@ -1,0 +1,19 @@
+pkgbase = check-symlinks-bin
+	pkgdesc = Check for broken symlinks
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/jmelahman/check-symlinks
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = check-symlinks
+	conflicts = check-symlinks
+	source_x86_64 = https://github.com/jmelahman/check-symlinks/releases/download/v0.5.1/check-symlinks_0.5.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = e3d2b7b777140c898e0ba145a290daafa9eb5efd906d6d1f589bef2b8b2da13b
+	source_i686 = https://github.com/jmelahman/check-symlinks/releases/download/v0.5.1/check-symlinks_0.5.1_linux_386.tar.gz
+	sha256sums_i686 = 5152466109a0ce1748417d5fe33727e53352076cafc15a357ec7de7144140db5
+	source_aarch64 = https://github.com/jmelahman/check-symlinks/releases/download/v0.5.1/check-symlinks_0.5.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 367ea6edf2a50ad42a2c2d26b892104b40774cab32b62400c7046c584765a7c9
+
+pkgname = check-symlinks-bin
