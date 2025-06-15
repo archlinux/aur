@@ -10,7 +10,7 @@ pkgname=(
   ppsspp-assets
 )
 pkgver=1.18.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
 url=https://www.ppsspp.org/
@@ -95,6 +95,8 @@ prepare() {
 # Fix build with sdl_ttf 2.24
   cd ../..
   git cherry-pick -n bd84c7bf7dcefc991aa2af14ca1f42f2c842c54b
+# Fix build with GCC 15
+  git -C ext/glslang cherry-pick -n e40c14a3e007fac0e4f2e4164fdf14d1712355bd
 }
 
 build() {

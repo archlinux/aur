@@ -1,7 +1,7 @@
 pkgbase = ppsspp
 	pkgdesc = A PSP emulator written in C++
 	pkgver = 1.18.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.ppsspp.org/
 	arch = x86_64
 	license = GPL-2.0-or-later
