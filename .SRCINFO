@@ -1,9 +1,9 @@
-pkgbase = atapi-mimetypes
-	pkgdesc = Various MIME types for my own personal use :3
+pkgbase = atapi-customizations
+	pkgdesc = Various Arch Linux customizations that I do :3
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 4
 	arch = any
 	source = x-atapi-mimetypes.xml
+	md5sums = SKIP
 
-pkgname = atapi-mimetypes
-
+pkgname = atapi-customizations

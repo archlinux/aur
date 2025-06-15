@@ -1,0 +1,3 @@
+# Wii Remotes and DolphinBar
+SUBSYSTEM=="hidraw*", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0306", TAG+="uaccess"
+SUBSYSTEM=="hidraw*", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0330", TAG+="uaccess"

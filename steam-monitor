@@ -1,0 +1,3 @@
+#!/bin/bash
+
+tail -f ~/.steam/steam/logs/console-linux.txt
