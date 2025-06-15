@@ -13,28 +13,22 @@ source=("clivm-${pkgver}.tar.gz")
 sha256sums=('b64e0d9284208c40f8d9130ae01e36b6d071fedfcc851e317c911aa1f858b0ef')
 
 build() {
-  # No build steps needed
-  return 0
+  # Create the subdirectory and move all extracted files there
+  mkdir -p "$srcdir/clivm-1.0.0"
+  mv "$srcdir"/* "$srcdir/clivm-1.0.0"/ 2>/dev/null || true
 }
 
 package() {
-  # Detect whether yay extracted inside a subfolder or not
-  if [ -d "$srcdir/clivm-1.0.0" ]; then
-    echo "Entering subdir clivm-1.0.0"
-    cd "$srcdir/clivm-1.0.0"
-  else
-    echo "Entering srcdir directly"
-    cd "$srcdir"
-  fi
+  cd "$srcdir/clivm-1.0.0"
 
-  # Create necessary directories in package
+  # Create directories in package
   install -dm755 "$pkgdir/usr/share/clivm/binaries"
   install -dm755 "$pkgdir/usr/share/clivm/installers"
 
-  # Copy binaries and installers
+  # Copy files into package
   cp -r binaries/* "$pkgdir/usr/share/clivm/binaries/"
   cp -r installers/* "$pkgdir/usr/share/clivm/installers/"
 
-  # Install the executable launcher
+  # Install executable launcher
   install -Dm755 clivm.py "$pkgdir/usr/bin/clivm"
 }
