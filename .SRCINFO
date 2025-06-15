@@ -1,6 +1,6 @@
 pkgbase = libastal-greetd-git
 	pkgdesc = IPC client for greetd
-	pkgver = r545.84c02e5
+	pkgver = r785.4e455bb
 	pkgrel = 1
 	url = https://github.com/Aylur/astal
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = libastal-greetd-git
 	provides = libastal-greet
 	provides = libastal-greet.so=0-64
 	source = git+https://github.com/Aylur/astal.git
+	source = skip_valadoc.patch
 	sha256sums = SKIP
+	sha256sums = d48b18f36a44a3f6102fb84edb2e9d4f3b3402d33a52cef7ba89587ce960ade3
 
 pkgname = libastal-greetd-git
