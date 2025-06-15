@@ -1,6 +1,6 @@
 pkgbase = cloud-nuke
 	pkgdesc = AWS cloud account cleaning tool
-	pkgver = 0.40.0
+	pkgver = 0.41.0
 	pkgrel = 1
 	url = https://github.com/gruntwork-io/cloud-nuke
 	install = cloud-nuke.install
@@ -10,7 +10,7 @@ pkgbase = cloud-nuke
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = cloud-nuke-0.40.0.tar.gz::https://github.com/gruntwork-io/cloud-nuke/archive/v0.40.0.tar.gz
-	sha512sums = bab6405d5a60cd37bec46d642969aba2901e4be285816d9457cdcd57a6062330cfcf541b4d9745053dd8a858ddb228e962acc1cde78a1dd0a3b2a26ddd41bcd1
+	source = cloud-nuke-0.41.0.tar.gz::https://github.com/gruntwork-io/cloud-nuke/archive/v0.41.0.tar.gz
+	sha512sums = d7aff1efd316e4731598b8a86da297965dffbbfb6fa6e48d5930ca3e7527f71a270e70251ebd45f885e90bb045ed9fbd9a950f452b4da84e88473a8de2718967
 
 pkgname = cloud-nuke
