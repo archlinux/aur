@@ -2,6 +2,7 @@ pkgbase = nmcurse-nhk-git
 	pkgdesc = Curses interface for NetworkManager, forked by nanoka
 	pkgver = latest
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/nhktmdzhg/nmcurse
 	arch = x86_64
 	arch = aarch64
