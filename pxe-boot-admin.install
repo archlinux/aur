@@ -98,12 +98,21 @@ _ensure_at_allow_user() {
     _msg "$APP_USER is already present in $at_allow_file."
   fi
 }
+# Helper function to create data folder in /opt/{$APP_NAME}
+_create_data_folder() {
+  if [ ! -d "/opt/${APP_NAME}" ]; then
+    mkdir -p "/opt/${APP_NAME}"
+    chown "${APP_USER}:${APP_GROUP}" "/opt/${APP_NAME}"
+    chmod 750 "/opt/${APP_NAME}"
+  fi
+}
 
 post_install() {
   _setup_user_group_and_perms
   _setup_certificates
   _check_environment_file_guidance
   _ensure_at_allow_user
+  _create_data_folder
 
   systemctl daemon-reload
   systemctl enable --now atd.service
