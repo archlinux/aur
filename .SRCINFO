@@ -1,0 +1,23 @@
+pkgbase = haskell-filepath
+	pkgdesc = Library for manipulating FilePaths in a cross platform way.
+	pkgver = 1.5.4.0
+	pkgrel = 1
+	url = https://github.com/haskell/filepath
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = ghc
+	makedepends = haskell-generic-random
+	makedepends = haskell-generic-deriving
+	makedepends = haskell-tasty
+	makedepends = haskell-tasty-quickcheck
+	makedepends = haskell-quickcheck-classes-base
+	depends = haskell-base
+	depends = haskell-bytestring
+	depends = haskell-deepseq
+	depends = haskell-exceptions
+	depends = haskell-os-string
+	depends = haskell-template-haskell
+	source = https://hackage.haskell.org/packages/archive/filepath/1.5.4.0/filepath-1.5.4.0.tar.gz
+	sha256sums = 54aa86c432f593273d7b9f607c5b5e0a1628c2674c6f4e3b5a54eb0c83db5caf
+
+pkgname = haskell-filepath
