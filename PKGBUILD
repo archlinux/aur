@@ -5,16 +5,16 @@
 
 pkgname=gtk3-patched-filechooser-icon-view
 pkgver=3.24.49
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
 url="https://github.com/Dudemanguy/gtk"
 depends=(
+  adwaita-fonts
   adwaita-icon-theme
   at-spi2-core
   cairo
-  cantarell-fonts
   dconf
   desktop-file-utils
   fribidi
@@ -48,6 +48,7 @@ depends=(
   wayland
 )
 makedepends=(
+  cantarell-fonts
   git
   glib2-devel
   gobject-introspection
@@ -119,7 +120,7 @@ package() {
 [Settings]
 gtk-icon-theme-name = Adwaita
 gtk-theme-name = Adwaita
-gtk-font-name = Cantarell 11
+gtk-font-name = Adwaita Sans 11
 END
 
   install -Dm644 gtk-query-immodules-3.0.hook -t "$pkgdir/usr/share/libalpm/hooks"
