@@ -84,6 +84,8 @@ pkgbase = matlab
 	optdepends = glibc-locales: listed in the original depends
 	optdepends = java-runtime-openjdk>=8: required for certain products and features
 	optdepends = libcups: printing support
+	optdepends = matlab-batch: start MATLAB non-interactively using a batch licensing token
+	optdepends = matlab-mpm: package manager
 	optdepends = perl
 	optdepends = python-matlabengine: Python bindings
 	optdepends = wayland: listed in the original depends

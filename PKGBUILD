@@ -3,89 +3,9 @@
 # Contributor: sukanka <su975853527[AT]gmail.com>
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
-declare -rAg _deps=(
-  # [antlr4-runtime]="libantlr4-runtime" # 4.9.1
-  [apr]="libapr-1" # 0.7.5
-  [apr-util]="libaprutil-1" # 0.6.1
-  # [avro-cpp]="libavrocpp" # 1.11.1
-  # [aws-sdk-cpp-core]="libaws-cpp-sdk-core libaws-cpp-sdk-transfer" # no
-  # [aws-sdk-cpp-s3]="libaws-cpp-sdk-s3" # no
-  # [cfitsio]="libcfitsio" # 9.4.1.0
-  # [cmark]="libcmark" # 0.30.2
-  [curl]="libcurl" # 4.8.0
-  # [dbus]="libdbus-1" # 3.34.0
-  # [expat]="libexpat" # 1.9.3
-  [freetype2]="libfreetype" # 6.18.3
-  # [gcptc]="libGctp" # 0.0.0
-  [giflib]="libgiflib" # 7.2.0
-  # [gmp4]="libgmp" # 3.4.1
-  # [hdf4]="libdf libmfhdf" # 0.0.0
-  # [hdf4-eos]="libhdfeos" # ? 0.0.0
-  # [hdf5]="libhdf5 libhdf5_hl" # 310.0.4
-  [hunspell]="libhunspell-1.7" # 0.0.1
-  # [icu74]="libicudata libicui18n libicuio libicutest libicutu libicuuc" # incompatible ABI
-  # [libaec]="libaec libsz" # 0.1.2 2.0.1
-  # [libarchive]="libarchive" # 13.7.7
-  # [libbsd]="libbsd" # 0.8.4
-  # [libgit2]="libgit2" # 1.9.0
-  # [libpng]="libpng16" # 16.44.0
-  [libsm]="libSM" # 6.0.1
-  [libssh2]="libssh2" # 1.0.1
-  [libtiff]="libtiff"
-  # [libunwind]="libunwind" # 8.0.1
-  # [libutf8proc2]=libutf8proc # 2.5.0
-  [libx11]="libX11 libX11-xcb" # 6.4.0 1.0.0
-  [libxau]="libXau" # 6.0.0
-  [libxcb]="libxcb-shm libxcb-xinerama libxcb libxcb-shape libxcb-sync libxcb-xkb libxcb-xfixes libxcb-randr libxcb-render"
-  [libxdmcp]="libXdmcp" # 6.0.0
-  [libxext]="libXext" # 6.4.0
-  [libxi]="libXi" # 6.1.0
-  [libxkbcommon]="libxkbcommon" # 0.0.0
-  [libxkbcommon-x11]="libxkbcommon-x11" # 0.0.0
-  [libxml2-legacy]="libxml2" # 2.13.4
-  [libxss]="libXss" # 1.0.0
-  [libxrender]="libXrender" # 1.3.0
-  [libxslt]="libxslt libexslt" # 1.1.42 0.8.23
-  # [minizip-ng]="libminizip-ng" # 4.0.4 incompatible ABI
-  # [mpfr1]="libmpfr" # 1.2.2
-  [nanomsg]="libnanomsg" # 6.0.1
-  # [onetbb]="libtbbmalloc libtbb" # 2.7 12.7
-  # [openscenegraph]="libosgDB libosgFX libosgGA libosgManipulator libosgParticle libosgShadow libosgSim libosg libosgTerrain libosgText libosgUtil libosgViewer libosgVolume libOpenThreads" # 3.4.0 3.3.0
-  # [poco]="libPocoCrypto libPocoFoundation libPocoJSON libPocoNet libPocoNetSSL libPocoUtil libPocoXML libPocoZip" # 94
-  # [podofo-0.9]="libpodofo" # 0.9.6
-  [polyclipping]="libpolyclipping" # no
-  # [portaudio]="libportaudio" # 2.0.0
-  # [protobuf]="libprotobuf3 libprotoc" # 3.21.9.0 do not remove
-  [qt5-base]="libQt5OpenGL libQt5Sql libQt5Test libQt5XcbQpa libQt5Core libQt5Gui libQt5Core libQt5PrintSupport libQt5Network libQt5Widgets libQt5DBus"
-  [qt5-gamepad]="libQt5Gamepad"
-  [qt5-svg]="libQt5Svg"
-  [qt5-websockets]="libQt5WebSockets"
-  [qt5-x11extras]="libQt5X11Extras"
-  [qt5-xmlpatterns]="libQt5Xml libQt5XmlPatterns"
-  # [re2]="libre2" # no
-  # [serf]="libserf-1" # 1.3.9 huh?
-  # [sundials]="libsundials_arkode libsundials_cvode libsundials_cvodes libsundials_ida libsundials_idas libsundials_nvecserial" # 4.7.0 5.7.0 5.7.0 5.7.0 4.7.0 5.7.0
-  # [sqlite]="libsqlite3" # 3.44.2
-  [subversion]="libsvn_client-1 libsvn_delta-1 libsvn_diff-1 libsvn_fs-1 libsvn_fs_fs-1 libsvn_fs_util-1 libsvn_fs_x-1 libsvn_ra-1 libsvn_ra_local-1 libsvn_ra_serf-1 libsvn_ra_svn-1 libsvn_repos-1 libsvn_subr-1 libsvn_wc-1"
-  # [systemd-libs]="libudev" # 0.13.0
-  # [tidy]="libtidy" # 5.8.0
-  [xalan-c]="libxalan-c libxalanMsg" # 112.0
-  [xcb-util]="libxcb-util" # 1.0.0
-  [xcb-util-image]="libxcb-image" # 0.0.0
-  [xcb-util-keysyms]="libxcb-keysyms" # 1.0.0
-  [xcb-util-renderutil]="libxcb-render-util" # 0.0.0
-  [xcb-util-wm]="libxcb-icccm" # 4.0.0
-  # [zstd]="libzstd.so" # 1.5.5
-
-  # https://www.antennahouse.com/free-trials
-  # https://origin2.cdn.componentsource.com/sites/default/files/resources/antenna-house/534141/xfo-module.html#IDATGPP
-  # [whatever]="libAHCGM libAHCommon libAHFontService libAHGraphicService libAHMathML libAHPDFLib libAHRasterizer libAHskia libAHSVG libOOXMLCreator libPDFCreator libPDFLinearizer libPDFRes libPDFToolPage libPSCreator libSVGCreator libXfoCommon libXfoEngine libXfoFont libXfoGraphic libXfoHyphen libXfoInterface libXfoRender libXfoText libXfoTrans libXPSCreator" # 7.4
-)
-_deps_exclude="giflib libxi libxss"
-
 _product="MATLAB"
 _name="$(echo "${_product}" | tr '[:upper:]' '[:lower:]' | tr ' ' '_' | tr -d '()')"
-pkgname="${_name}" # "matlab-${_name}"
+pkgname="${_name}"
 pkgver=R2025a.25.1.0.2943329
 _pkgver="${pkgver%%.*}"
 pkgrel=1
@@ -177,9 +97,6 @@ depends=(
 
   'sh'
 )
-for dep in "${!_deps[@]}"; do
-  [[ " $_deps_exclude " =~ " $dep " ]] || depends+=("$dep")
-done
 makedepends=('gendesk' 'inotify-tools' 'matlab-mpm') # "matlab-mpm-version>=${_pkgver}" 'patchelf'
 optdepends=(
   'glibc-locales: listed in the original depends'
@@ -187,6 +104,8 @@ optdepends=(
   # 'intel-oneapi-basekit'
   # 'intel-oneapi-compiler-shared-runtime'
   'libcups: printing support'
+  'matlab-batch: start MATLAB non-interactively using a batch licensing token'
+  'matlab-mpm: package manager'
   'perl'
   'python-matlabengine: Python bindings'
   'wayland: listed in the original depends'
@@ -194,12 +113,95 @@ optdepends=(
 provides=("${pkgname}-version=${_pkgver}")
 install="${pkgname}.install"
 
+declare -rAg _deps=(
+  # [antlr4-runtime]="libantlr4-runtime" # 4.9.1
+  [apr]="libapr-1" # 0.7.5
+  [apr-util]="libaprutil-1" # 0.6.1
+  # [avro-cpp]="libavrocpp" # 1.11.1
+  # [aws-sdk-cpp-core]="libaws-cpp-sdk-core libaws-cpp-sdk-transfer" # no
+  # [aws-sdk-cpp-s3]="libaws-cpp-sdk-s3" # no
+  # [cfitsio]="libcfitsio" # 9.4.1.0
+  # [cmark]="libcmark" # 0.30.2
+  [curl]="libcurl" # 4.8.0
+  # [dbus]="libdbus-1" # 3.34.0
+  # [expat]="libexpat" # 1.9.3
+  [freetype2]="libfreetype" # 6.18.3
+  # [gcptc]="libGctp" # 0.0.0
+  [giflib]="libgiflib" # 7.2.0
+  # [gmp4]="libgmp" # 3.4.1
+  # [hdf4]="libdf libmfhdf" # 0.0.0
+  # [hdf4-eos]="libhdfeos" # ? 0.0.0
+  # [hdf5]="libhdf5 libhdf5_hl" # 310.0.4
+  [hunspell]="libhunspell-1.7" # 0.0.1
+  # [icu74]="libicudata libicui18n libicuio libicutest libicutu libicuuc" # incompatible ABI
+  # [libaec]="libaec libsz" # 0.1.2 2.0.1
+  # [libarchive]="libarchive" # 13.7.7
+  # [libbsd]="libbsd" # 0.8.4
+  # [libgit2]="libgit2" # 1.9.0
+  # [libpng]="libpng16" # 16.44.0
+  [libsm]="libSM" # 6.0.1
+  [libssh2]="libssh2" # 1.0.1
+  [libtiff]="libtiff"
+  # [libunwind]="libunwind" # 8.0.1
+  # [libutf8proc2]=libutf8proc # 2.5.0
+  [libx11]="libX11 libX11-xcb" # 6.4.0 1.0.0
+  [libxau]="libXau" # 6.0.0
+  [libxcb]="libxcb-shm libxcb-xinerama libxcb libxcb-shape libxcb-sync libxcb-xkb libxcb-xfixes libxcb-randr libxcb-render"
+  [libxdmcp]="libXdmcp" # 6.0.0
+  [libxext]="libXext" # 6.4.0
+  [libxi]="libXi" # 6.1.0
+  [libxkbcommon]="libxkbcommon" # 0.0.0
+  [libxkbcommon-x11]="libxkbcommon-x11" # 0.0.0
+  [libxml2-legacy]="libxml2" # 2.13.4
+  [libxss]="libXss" # 1.0.0
+  [libxrender]="libXrender" # 1.3.0
+  [libxslt]="libxslt libexslt" # 1.1.42 0.8.23
+  # [minizip-ng]="libminizip-ng" # 4.0.4 incompatible ABI
+  # [mpfr1]="libmpfr" # 1.2.2
+  [nanomsg]="libnanomsg" # 6.0.1
+  # [onetbb]="libtbbmalloc libtbb" # 2.7 12.7
+  # [openscenegraph]="libosgDB libosgFX libosgGA libosgManipulator libosgParticle libosgShadow libosgSim libosg libosgTerrain libosgText libosgUtil libosgViewer libosgVolume libOpenThreads" # 3.4.0 3.3.0
+  # [poco]="libPocoCrypto libPocoFoundation libPocoJSON libPocoNet libPocoNetSSL libPocoUtil libPocoXML libPocoZip" # 94
+  # [podofo-0.9]="libpodofo" # 0.9.6
+  [polyclipping]="libpolyclipping" # no
+  # [portaudio]="libportaudio" # 2.0.0
+  # [protobuf]="libprotobuf3 libprotoc" # 3.21.9.0 do not remove
+  [qt5-base]="libQt5OpenGL libQt5Sql libQt5Test libQt5XcbQpa libQt5Core libQt5Gui libQt5Core libQt5PrintSupport libQt5Network libQt5Widgets libQt5DBus"
+  [qt5-gamepad]="libQt5Gamepad"
+  [qt5-svg]="libQt5Svg"
+  [qt5-websockets]="libQt5WebSockets"
+  [qt5-x11extras]="libQt5X11Extras"
+  [qt5-xmlpatterns]="libQt5Xml libQt5XmlPatterns"
+  # [re2]="libre2" # no
+  # [serf]="libserf-1" # 1.3.9 huh?
+  # [sundials]="libsundials_arkode libsundials_cvode libsundials_cvodes libsundials_ida libsundials_idas libsundials_nvecserial" # 4.7.0 5.7.0 5.7.0 5.7.0 4.7.0 5.7.0
+  # [sqlite]="libsqlite3" # 3.44.2
+  [subversion]="libsvn_client-1 libsvn_delta-1 libsvn_diff-1 libsvn_fs-1 libsvn_fs_fs-1 libsvn_fs_util-1 libsvn_fs_x-1 libsvn_ra-1 libsvn_ra_local-1 libsvn_ra_serf-1 libsvn_ra_svn-1 libsvn_repos-1 libsvn_subr-1 libsvn_wc-1"
+  # [systemd-libs]="libudev" # 0.13.0
+  # [tidy]="libtidy" # 5.8.0
+  [xalan-c]="libxalan-c libxalanMsg" # 112.0
+  [xcb-util]="libxcb-util" # 1.0.0
+  [xcb-util-image]="libxcb-image" # 0.0.0
+  [xcb-util-keysyms]="libxcb-keysyms" # 1.0.0
+  [xcb-util-renderutil]="libxcb-render-util" # 0.0.0
+  [xcb-util-wm]="libxcb-icccm" # 4.0.0
+  # [zstd]="libzstd.so" # 1.5.5
+
+  # https://www.antennahouse.com/free-trials
+  # https://origin2.cdn.componentsource.com/sites/default/files/resources/antenna-house/534141/xfo-module.html#IDATGPP
+  # [whatever]="libAHCGM libAHCommon libAHFontService libAHGraphicService libAHMathML libAHPDFLib libAHRasterizer libAHskia libAHSVG libOOXMLCreator libPDFCreator libPDFLinearizer libPDFRes libPDFToolPage libPSCreator libSVGCreator libXfoCommon libXfoEngine libXfoFont libXfoGraphic libXfoHyphen libXfoInterface libXfoRender libXfoText libXfoTrans libXPSCreator" # 7.4
+)
+_deps_exclude="giflib libxi libxss"
+for dep in "${!_deps[@]}"; do
+  [[ " $_deps_exclude " =~ " $dep " ]] || depends+=("$dep")
+done
+
 prepare() {
   cd "${srcdir}"
   rm -rf "download" "install"
+  mkdir -p "download" "install"
 
   echo "  -> Downloading archives using MPM. This will take a while..."
-  mkdir -p "download"
   (
     inotifywait -mrq -e create --format '%w%f' download | while read -r file; do
       relpath="${file#"${srcdir}/download"/}"
@@ -207,38 +209,43 @@ prepare() {
     done
   ) &
   watcher_pid=$!
+
   matlab-mpm download \
     --release="${_pkgver}" \
     --destination="${srcdir}/download" \
     --products="${_product// /_}" \
     --platforms="glnxa64" \
     --no-deps
+
   ret=$?
   kill "$watcher_pid" 2>/dev/null
   wait "$watcher_pid" 2>/dev/null || true
-  if [ ! -d "${srcdir}/download" ]; then
-    echo "  ==> ERROR: MPM download failed, the download directory is empty!"
+
+  if (( ret != 0 )) || [[ ! -d download ]]; then
+    echo "  ==> ERROR: MPM download failed or the download directory is empty!"
     exit 1
   fi
 
   echo "  -> Installing archives using MPM. This will take a while..."
-  mkdir -p "install"
-    (
+  (
     inotifywait -mrq -e create --format '%w%f' install | while read -r file; do
       relpath="${file#"${srcdir}/install"/}"
       printf "\r\033[K    -> Installing %s...\r" "$relpath"
     done
   ) &
   watcher_pid=$!
+
   matlab-mpm install \
     --source="${srcdir}/download" \
     --destination="${srcdir}/install" \
     --products="${_product// /_}" \
     --no-jre
+
   ret=$?
   kill "$watcher_pid" 2>/dev/null
   wait "$watcher_pid" 2>/dev/null || true
-  if [ ! -d "${srcdir}/install" ]; then
+
+  if (( ret != 0 )) || [[ ! -d install ]]; then
     echo "  ==> ERROR: MPM download failed, the install directory is empty!"
     exit 1
   fi
@@ -255,7 +262,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}"
-  echo "  -> Generating desktop files..."
+  echo "  -> Generating desktop file..."
   gendesk -f -n \
     --pkgname "${pkgname}" \
     --pkgdesc "${pkgdesc}" \
