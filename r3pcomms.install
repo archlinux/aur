@@ -1,15 +1,19 @@
 message_the_user() {
   echo "If not already done, you might want to add your user to the following groups:"
   echo 'usermod -a -G efusb $USER'
-  echo 'usermod -a -G uhid $USER'
   echo 'usermod -a -G uucp $USER'
-  echo 'usermod -a -G hidraw $USER'
   echo "This ensures proper device permissions for communication"
+  echo "You'll probably also want unpulug and plug in the usb connection to the device"
 }
+
 post_install() {
   message_the_user "$1"
 }
 
 post_upgrade() {
   message_the_user "$1"
+}
+
+post_remove() {
+ udevadm control --reload
 }

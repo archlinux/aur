@@ -2,3 +2,4 @@ src/
 pkg/
 r3pcomms/
 *.pkg.tar.zst
+*.log
