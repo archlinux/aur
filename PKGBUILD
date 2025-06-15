@@ -1,7 +1,7 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=libnick
-pkgver=2025.6.0
+pkgver=2025.6.1
 _maddyver=1.5.0
 pkgrel=1
 pkgdesc="A cross-platform base for native Nickvision applications"
@@ -12,7 +12,7 @@ makedepends=('boost' 'cmake')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "maddy-${_maddyver}.zip::https://github.com/progsource/maddy/releases/download/${_maddyver}/maddy-src.zip")
-sha256sums=('ef5715301d1b2e06c11640b86caecf7f8648e494c9f02753719e777e03e603e1'
+sha256sums=('424e747731e7dc0ecfa599b8be9781b6951d0ba13596a82fd885cb161b2fa9dc'
             'eae8990ab796185547ef06dbb752d0d7cbc38067b327a4c7e5141c280aa633fd')
 
 prepare() {
