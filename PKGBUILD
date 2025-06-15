@@ -33,6 +33,5 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    mkdir -p "$pkgdir"/usr/share/fish/vendor_completions.d
-    install -m 0644 ./completions/caelestia.fish "$pkgdir"/usr/share/fish/vendor_completions.d/caelestia.fish
+    install -Dm644 ./completions/caelestia.fish "$pkgdir"/usr/share/fish/vendor_completions.d/caelestia.fish
 }
