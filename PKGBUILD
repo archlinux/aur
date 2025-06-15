@@ -6,7 +6,7 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Line-fr/Vship'
 license=('MIT')
-depends=('vapoursynth')
+depends=('vapoursynth' 'hip-runtime-amd')
 makedepends=('git' 'make' 'clang')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -27,5 +27,4 @@ pkgver() {
 package(){
   cd "${_plug}"
   make PREFIX="/usr" DESTDIR="${pkgdir}" install
-
 }
