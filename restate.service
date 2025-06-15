@@ -1,0 +1,12 @@
+[Unit]
+Description=Restate server
+Documentation=https://docs.restate.dev/operate/configuration/server
+After=network.target
+
+[Service]
+Type=simple
+User=restate
+ExecStart=/usr/bin/restate-server -c /etc/restate.toml --base-dir /var/lib/restate
+
+[Install]
+WantedBy=multi-user.target

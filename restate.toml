@@ -1,0 +1,226 @@
+roles = [
+    "worker",
+    "admin",
+    "metadata-server",
+    "log-server",
+]
+cluster-name = "localcluster"
+auto-provision = true
+bind-address = "0.0.0.0:5122"
+advertised-address = "http://127.0.0.1:5122/"
+default-num-partitions = 24
+default-replication = 1
+shutdown-timeout = "1m"
+tracing-filter = "info"
+log-filter = "warn,restate=info"
+log-format = "pretty"
+log-disable-ansi-codes = false
+tokio-console-bind-address = "0.0.0.0:6669"
+no-proxy = []
+connect-timeout = "10s"
+disable-prometheus = false
+rocksdb-total-memory-size = "6.0 GiB"
+rocksdb-total-memtables-ratio = 0.5
+rocksdb-high-priority-bg-threads = 2
+rocksdb-write-stall-threshold = "3s"
+rocksdb-enable-stall-on-memory-limit = false
+rocksdb-perf-level = "enable-count"
+metadata-update-interval = "3s"
+initialization-timeout = "5m"
+disable-telemetry = false
+
+[metadata-client]
+type = "replicated"
+addresses = ["http://127.0.0.1:5122/"]
+connect-timeout = "3s"
+keep-alive-interval = "5s"
+keep-alive-timeout = "5s"
+
+[metadata-client.backoff-policy]
+type = "exponential"
+initial-interval = "250ms"
+factor = 2.0
+max-attempts = 10
+max-interval = "3s"
+
+[http-keep-alive-options]
+interval = "40s"
+timeout = "20s"
+
+[network-error-retry-policy]
+type = "exponential"
+initial-interval = "10ms"
+factor = 2.0
+max-attempts = 15
+max-interval = "5s"
+
+[worker]
+internal-queue-length = 1000
+cleanup-interval = "1h"
+max-command-batch-size = 32
+
+[worker.storage]
+rocksdb-disable-direct-io-for-reads = true
+rocksdb-disable-direct-io-for-flush-and-compactions = true
+rocksdb-disable-wal = true
+rocksdb-disable-statistics = false
+rocksdb-max-background-jobs = 12
+rocksdb-compaction-readahead-size = "1.9 MiB"
+rocksdb-statistics-level = "except-timers"
+rocksdb-log-level = "error"
+rocksdb-log-keep-file-num = 1
+rocksdb-log-max-file-size = "61.0 MiB"
+rocksdb-block-size = "64.0 KiB"
+num-partitions-to-share-memory-budget = 24
+rocksdb-memory-budget = "1.4 GiB"
+rocksdb-memory-ratio = 0.49000000953674316
+persist-lsn-interval = "1h"
+persist-lsn-threshold = 1000
+
+[worker.invoker]
+inactivity-timeout = "1m"
+abort-timeout = "1m"
+message-size-warning = "10.0 MiB"
+in-memory-queue-length-limit = 66049
+concurrent-invocations-limit = 100
+
+[worker.invoker.retry-policy]
+type = "exponential"
+initial-interval = "50ms"
+factor = 2.0
+max-interval = "10s"
+
+[worker.snapshots.object-store-retry-policy]
+type = "exponential"
+initial-interval = "100ms"
+factor = 2.0
+max-attempts = 10
+max-interval = "10s"
+
+[admin]
+bind-address = "0.0.0.0:9070"
+advertised-admin-endpoint = "http://127.0.0.1:9070/"
+heartbeat-interval = "1s 500ms"
+metadata-sync-interval = "10s"
+log-trim-check-interval = "1h"
+log-tail-update-interval = "5m"
+disable-web-ui = false
+
+[admin.query-engine]
+memory-size = "4.0 GiB"
+pgsql-bind-address = "0.0.0.0:9071"
+
+[ingress]
+bind-address = "0.0.0.0:8080"
+kafka-clusters = []
+experimental-feature-enable-separate-ingress-role = false
+advertised-ingress-endpoint = "http://127.0.0.1:8080/"
+
+[bifrost]
+default-provider = "local"
+seal-retry-interval = "2s"
+auto-recovery-interval = "3s"
+append-retry-min-interval = "10ms"
+append-retry-max-interval = "1s"
+record-cache-memory-size = "250.0 MiB"
+
+[bifrost.local]
+rocksdb-disable-direct-io-for-reads = true
+rocksdb-disable-direct-io-for-flush-and-compactions = true
+rocksdb-disable-wal = false
+rocksdb-disable-statistics = false
+rocksdb-max-background-jobs = 12
+rocksdb-compaction-readahead-size = "1.9 MiB"
+rocksdb-statistics-level = "except-timers"
+rocksdb-log-level = "error"
+rocksdb-log-keep-file-num = 1
+rocksdb-log-max-file-size = "61.0 MiB"
+rocksdb-block-size = "64.0 KiB"
+rocksdb-memory-budget = "1.4 GiB"
+rocksdb-memory-ratio = 0.5
+rocksdb-disable-wal-fsync = false
+writer-batch-commit-count = 5000
+writer-batch-commit-duration = "0s"
+
+[bifrost.replicated-loglet]
+maximum-inflight-records = 1000
+sequencer-inactivity-timeout = "15s"
+log-server-rpc-timeout = "2s"
+readahead-records = 100
+readahead-trigger-ratio = 0.5
+
+[bifrost.replicated-loglet.sequencer-retry-policy]
+type = "exponential"
+initial-interval = "250ms"
+factor = 2.0
+max-interval = "5s"
+
+[bifrost.replicated-loglet.log-server-retry-policy]
+type = "exponential"
+initial-interval = "250ms"
+factor = 2.0
+max-attempts = 3
+max-interval = "2s"
+
+[bifrost.read-retry-policy]
+type = "exponential"
+initial-interval = "50ms"
+factor = 2.0
+max-attempts = 50
+max-interval = "1s"
+
+[metadata-server]
+request-queue-length = 32
+rocksdb-memory-budget = "29.2 MiB"
+rocksdb-memory-ratio = 0.009999999776482582
+rocksdb-disable-direct-io-for-reads = true
+rocksdb-disable-direct-io-for-flush-and-compactions = true
+rocksdb-disable-wal = false
+rocksdb-disable-statistics = false
+rocksdb-max-background-jobs = 12
+rocksdb-compaction-readahead-size = "1.9 MiB"
+rocksdb-statistics-level = "except-timers"
+rocksdb-log-level = "error"
+rocksdb-log-keep-file-num = 1
+rocksdb-log-max-file-size = "61.0 MiB"
+rocksdb-block-size = "64.0 KiB"
+raft-election-tick = 20
+raft-heartbeat-tick = 2
+raft-tick-interval = "100ms"
+status-update-interval = "5s"
+
+[networking]
+connect-timeout = "3s"
+handshake-timeout = "3s"
+http2-keep-alive-interval = "5s"
+http2-keep-alive-timeout = "5s"
+http2-adaptive-window = true
+outbound-queue-length = 1000
+num-concurrent-connections = 3
+
+[networking.connect-retry-policy]
+type = "exponential"
+initial-interval = "250ms"
+factor = 2.0
+max-attempts = 10
+max-interval = "3s"
+
+[log-server]
+rocksdb-disable-direct-io-for-reads = true
+rocksdb-disable-direct-io-for-flush-and-compactions = true
+rocksdb-disable-wal = false
+rocksdb-disable-statistics = false
+rocksdb-max-background-jobs = 12
+rocksdb-compaction-readahead-size = "1.9 MiB"
+rocksdb-statistics-level = "except-timers"
+rocksdb-log-level = "error"
+rocksdb-log-keep-file-num = 1
+rocksdb-log-max-file-size = "61.0 MiB"
+rocksdb-block-size = "64.0 KiB"
+rocksdb-memory-budget = "1.4 GiB"
+rocksdb-memory-ratio = 0.5
+rocksdb-disable-wal-fsync = false
+rocksdb-max-sub-compactions = 0
+writer-batch-commit-count = 5000
+incoming-network-queue-length = 1000
+
