@@ -1,5 +1,5 @@
 pkgbase = gigaide
-	pkgdesc = GigaIDE Desktop на базе JB IDEA и PyCharm
+	pkgdesc = GigaIDE Desktop is fork JB IDEA and PyCharm
 	pkgver = 242.21829.142.2
 	pkgrel = 1
 	url = https://gitverse.ru/features/gigaide/
