@@ -7,8 +7,8 @@ pkgdesc="Finite Difference DSL for symbolic computation"
 arch=(any)
 url="https://github.com/${_base}codes/${_base}"
 license=(MIT)
-depends=(python-sympy python-psutil python-py-cpuinfo python-codepy python-click
-  python-multidict python-anytree python-cloudpickle)
+depends=(python-sympy python-psutil python-py-cpuinfo python-codepy 
+  python-multidict python-anytree python-cloudpickle python-packaging)
 makedepends=(python-build python-installer python-setuptools python-wheel openmp)
 # checkdepends=(python-pytest python-scipy python-nbval python-matplotlib python-mpi4py)
 optdepends=('python-mpi4py: for parallel support'
