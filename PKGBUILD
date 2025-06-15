@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=clang17-bin
 pkgver=17.0.6.22+b1
-pkgrel=1
+pkgrel=2
 pkgdesc="C, C++ and Objective-C compiler - sourced from Debian sid"
 arch=(x86_64)
 options=(!strip)

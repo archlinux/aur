@@ -1,7 +1,7 @@
 pkgbase = clang17-bin
 	pkgdesc = C, C++ and Objective-C compiler - sourced from Debian sid
 	pkgver = 17.0.6.22+b1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.llvm.org/
 	arch = x86_64
 	license = Apache-2.0-LLVM-Exception
