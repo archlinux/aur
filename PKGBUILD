@@ -7,14 +7,14 @@
 : ${_widgets:=gtk2}
 
 [[ "${_widgets::3}" == "gtk" ]] \
-  && : ${_cksum=d0d5ca3ab00ee74e74407c5cb4087a5af6a8f2e4f4e7c78adff62fb2e83a0b1f}
+  && : ${_cksum=26865cace53f0584595c5aba423ed418d755d4fcead89af0829b37faece78918}
 
 : ${_pkgtype:=-${_widgets}-bin}
 
 _pkgname="peazip"
 pkgname="$_pkgname${_pkgtype:?}"
-pkgver=10.4.0
-pkgrel=2
+pkgver=10.5.0
+pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets^^})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
