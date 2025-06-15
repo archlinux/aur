@@ -1,0 +1,30 @@
+pkgbase = pxe-boot-admin
+	pkgdesc = NextJS application for WUT SK, with Nginx reverse proxy and self-signed HTTPS.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Igor-Ochocki/PXEBootAdmin
+	install = pxe-boot-admin.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = nodejs>=18
+	depends = npm
+	depends = nginx
+	depends = openssl
+	depends = at
+	optdepends = certbot: for obtaining publicly trusted SSL certificates from the Let's Encrypt CA
+	optdepends = python-certbot-nginx: Nginx plugin for Certbot
+	backup = etc/nginx/conf.d/pxe-boot-admin.conf
+	backup = etc/pxe-boot-admin/environment.example
+	source = PXEBootAdmin::git+https://github.com/Igor-Ochocki/PXEBootAdmin.git#branch=main
+	source = pxe-boot-admin.nginx
+	source = pxe-boot-admin.service
+	source = pxe-boot-admin.install
+	source = pxe-boot-admin.env.example
+	sha256sums = SKIP
+	sha256sums = 746b2ed93da806516ebb4bf82dbceb94a9f19cf2cba41de4d76f16d64de6f336
+	sha256sums = ae4dd3fb82df432ffa561f8f696732780cd4c41f1edf69739d1dd4ec4b13684d
+	sha256sums = c13bcf0ee89e59ec2fbd7d515c72b3eff8dd2f4a08e564408f416b94c258321b
+	sha256sums = 9992887ad11bd513e6e4046498a76aea82e8bbed914ac1cac740209a0e580d4e
+
+pkgname = pxe-boot-admin

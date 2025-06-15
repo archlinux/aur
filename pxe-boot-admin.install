@@ -1,0 +1,178 @@
+# In your pxe-boot-admin.install file
+
+APP_NAME="pxe-boot-admin"
+APP_USER="pxebootadmin"
+APP_GROUP="pxebootadmin"
+APP_HOME="/opt/${APP_NAME}"
+CERT_DIR_BASE="/etc/ssl"
+CERT_DIR="${CERT_DIR_BASE}/certs/${APP_NAME}"
+KEY_DIR="${CERT_DIR_BASE}/private/${APP_NAME}"
+CERT_FILE="${CERT_DIR}/${APP_NAME}.pem"
+KEY_FILE="${KEY_DIR}/${APP_NAME}.key"
+ENV_CONFIG_DIR="/etc/${APP_NAME}"
+ENV_CONFIG_FILE="${ENV_CONFIG_DIR}/environment"
+ENV_CONFIG_EXAMPLE_FILE="${ENV_CONFIG_DIR}/environment.example"
+
+_msg() {
+  echo -e "\033[0;32m==>\033[0m \033[1m$1\033[0m"
+}
+
+_warn() {
+  echo -e "\033[0;33m==> WARNING:\033[0m \033[1m$1\033[0m"
+}
+
+# Shared function for creating user/group and setting initial permissions
+_setup_user_group_and_perms() {
+  _msg "Checking/Creating user '${APP_USER}' and group '${APP_GROUP}' for ${APP_NAME}..."
+  getent group "${APP_GROUP}" &>/dev/null || groupadd -r "${APP_GROUP}"
+  if ! getent passwd "${APP_USER}" &>/dev/null; then
+    useradd -r -g "${APP_GROUP}" -d "${APP_HOME}" -s /usr/bin/nologin "${APP_USER}"
+  fi
+
+  _msg "Setting ownership for application directory: ${APP_HOME}"
+  # Ensure base directory exists and is owned correctly before chowning recursively
+  mkdir -p "${APP_HOME}"
+  chown -R "${APP_USER}:${APP_GROUP}" "${APP_HOME}"
+}
+
+# Shared function for certificate setup
+_setup_certificates() {
+  _msg "Checking SSL certificate status for ${APP_NAME}..."
+  mkdir -p "${CERT_DIR}"
+  mkdir -p "${KEY_DIR}"
+  # Ensure base directories have correct general permissions
+  # (Usually set by openssl/nginx packages, but good to be defensive)
+  # chmod 755 "${CERT_DIR_BASE}" # Might be too broad
+  chmod 755 "${CERT_DIR_BASE}/certs"
+  chmod 700 "${CERT_DIR_BASE}/private" # private should be restrictive
+  chmod 755 "${CERT_DIR}"
+  chmod 700 "${KEY_DIR}"
+
+  if [ ! -f "${CERT_FILE}" ] || [ ! -f "${KEY_FILE}" ]; then
+    _msg "Generating self-signed SSL certificate for ${APP_NAME} (CN=localhost)..."
+    openssl req -x509 -nodes -newkey rsa:2048 -sha256 \
+      -days 3650 \
+      -keyout "${KEY_FILE}" \
+      -out "${CERT_FILE}" \
+      -subj "/C=PL/ST=Mazowieckie/L=Warsaw/O=${APP_NAME} (SelfSigned)/CN=localhost"
+    chmod 644 "${CERT_FILE}"
+    chmod 600 "${KEY_FILE}" # Restrict private key access
+    _msg "SSL Certificates generated."
+  else
+    _msg "SSL certificate files already exist. Skipping generation."
+  fi
+}
+
+# Shared function for environment file guidance
+_check_environment_file_guidance() {
+  mkdir -p "${ENV_CONFIG_DIR}"
+  # /etc/pxe-boot-admin directory itself owned by root
+  chown root:root "${ENV_CONFIG_DIR}"
+  chmod 750 "${ENV_CONFIG_DIR}" # Only root and members of root group can enter (or just root if 700)
+
+  if [ ! -f "${ENV_CONFIG_FILE}" ] && [ -f "${ENV_CONFIG_EXAMPLE_FILE}" ]; then
+    _warn "Environment configuration file ${ENV_CONFIG_FILE} not found."
+    _warn "A template has been installed at ${ENV_CONFIG_EXAMPLE_FILE}."
+    _warn "Please copy it to ${ENV_CONFIG_FILE}, fill in your secrets, and set permissions:"
+    _warn "  sudo cp ${ENV_CONFIG_EXAMPLE_FILE} ${ENV_CONFIG_FILE}"
+    _warn "  sudo chown ${APP_USER}:${APP_GROUP} ${ENV_CONFIG_FILE}" # App user needs to read it
+    _warn "  sudo chmod 640 ${ENV_CONFIG_FILE}"                     # Secure: user-read, group-read, no-other
+    _warn "  sudo nano ${ENV_CONFIG_FILE}"                          # Edit the file
+  elif [ ! -f "${ENV_CONFIG_FILE}" ]; then
+     _warn "Environment configuration file ${ENV_CONFIG_FILE} not found and no example was installed to copy."
+     _warn "Please create it at ${ENV_CONFIG_FILE} with your application secrets, then chown/chmod it appropriately (e.g., chown ${APP_USER}:${APP_GROUP} and chmod 640)."
+  fi
+}
+
+# Helper function to ensure APP_USER is in /etc/at.allow
+_ensure_at_allow_user() {
+  local at_allow_file="/etc/at.allow"
+  if [ ! -f "$at_allow_file" ]; then
+    touch "$at_allow_file"
+    chmod 644 "$at_allow_file"
+  fi
+  if ! grep -Fxq "$APP_USER" "$at_allow_file"; then
+    echo "$APP_USER" >> "$at_allow_file"
+    _msg "Added $APP_USER to $at_allow_file for at daemon access."
+  else
+    _msg "$APP_USER is already present in $at_allow_file."
+  fi
+}
+
+post_install() {
+  _setup_user_group_and_perms
+  _setup_certificates
+  _check_environment_file_guidance
+  _ensure_at_allow_user
+
+  systemctl daemon-reload
+  systemctl enable --now atd.service
+  systemctl start --now atd.service
+
+  _msg "To complete the setup, please:"
+  _msg "1. If you haven't already, populate ${ENV_CONFIG_FILE} with your secrets (ensure correct ownership and permissions as noted above)."
+  _msg "2. Enable and start the necessary services:"
+  _msg "   sudo systemctl enable --now nginx.service  (if not already running)"
+  _msg "   sudo systemctl enable --now ${APP_NAME}.service"
+  _msg "3. Ensure your firewall allows traffic on ports 80 (HTTP) and 443 (HTTPS)."
+
+  if command -v nginx > /dev/null; then
+    # Test nginx config after all setup is done.
+    if sudo -u "${APP_USER}" nginx -t &>/dev/null || nginx -t &>/dev/null; then # Try as app user or root
+      _msg "Nginx configuration test successful."
+    else
+      _warn "Nginx configuration test failed. Please review /etc/nginx/conf.d/${APP_NAME}.conf and Nginx logs after starting services."
+    fi
+  fi
+}
+
+post_upgrade() {
+  # Ensure user/group and permissions are still correct
+  _setup_user_group_and_perms
+  # Ensure certificates exist, or regenerate them if missing
+  _setup_certificates
+  _ensure_at_allow_user
+
+  systemctl daemon-reload
+  systemctl restart atd.service
+
+  if [ -f "${ENV_CONFIG_EXAMPLE_FILE}.pacnew" ]; then
+    _warn "A new version of the example environment file has been installed as ${ENV_CONFIG_EXAMPLE_FILE}.pacnew."
+    _warn "Please review it for any changes you might want to incorporate into your ${ENV_CONFIG_FILE}."
+  else
+    # Check env file guidance in case it was missed or the file was removed
+    _check_environment_file_guidance
+  fi
+
+  _msg "Package upgraded. You might need to restart the service:"
+  _msg "  sudo systemctl restart ${APP_NAME}.service"
+  _msg "If Nginx configuration was part of the upgrade (check .pacnew for nginx conf):"
+  _msg "  sudo systemctl reload nginx.service"
+}
+
+pre_remove() {
+  _msg "Stopping and disabling ${APP_NAME} service..."
+  systemctl stop "${APP_NAME}.service" || true
+  systemctl disable "${APP_NAME}.service" || true
+}
+
+post_remove() {
+  _msg "Removing user '${APP_USER}' and group '${APP_GROUP}'..."
+  # Only remove user if no other packages or files depend on it (tricky to check automatically)
+  # For simplicity, this script attempts removal. If it fails, admin might need to intervene.
+  userdel "${APP_USER}" || _warn "Could not remove user ${APP_USER} (may not exist or still in use by other files/processes)."
+  groupdel "${APP_GROUP}" || _warn "Could not remove group ${APP_GROUP} (may not exist or still in use by other users/files)."
+
+  _msg "Removing SSL certificates for ${APP_NAME}..."
+  rm -f "${KEY_FILE}" "${CERT_FILE}"
+  rmdir --ignore-fail-on-non-empty "${KEY_DIR}" || _warn "Could not remove dir ${KEY_DIR} or it was not empty. Manual check may be needed."
+  rmdir --ignore-fail-on-non-empty "${CERT_DIR}" || _warn "Could not remove dir ${CERT_DIR} or it was not empty. Manual check may be needed."
+
+  _msg "Nginx configuration for ${APP_NAME} has been removed."
+  _msg "You may want to manually reload Nginx if it was running: sudo systemctl reload nginx.service"
+  _msg "The application directory ${APP_HOME} is removed by pacman."
+  _msg "The environment configuration directory ${ENV_CONFIG_DIR} and its contents are NOT removed by this package."
+  _msg "You can remove it manually if desired: sudo rm -rf ${ENV_CONFIG_DIR}"
+
+  systemctl daemon-reload
+}

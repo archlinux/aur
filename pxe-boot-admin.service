@@ -1,0 +1,42 @@
+[Unit]
+Description=WUT SK Calendar Application
+After=network.target nginx.service
+# Ensures Nginx is started before or with this app.
+# If Nginx is managed independently, you might remove Requires and adjust After.
+Requires=nginx.service
+
+[Service]
+Type=simple
+User=pxebootadmin
+Group=pxebootadmin
+
+WorkingDirectory=/opt/pxe-boot-admin
+
+# Environment variables for the NextJS application
+Environment=NODE_ENV=production
+Environment=HOST=0.0.0.0
+Environment=PORT=3000   # Your APP_PORT, ensure this matches proxy_pass in Nginx
+
+# Load sensitive/user-specific variables from this file
+# The '-' prefix means the service will start even if the file is missing (though it might not function correctly)
+EnvironmentFile=-/etc/pxe-boot-admin/environment
+
+# The command to start your NextJS app
+ExecStart=/opt/pxe-boot-admin/node_modules/.bin/next start -H ${HOST} -p ${PORT}
+
+Restart=always
+RestartSec=10 # Restart service 10 seconds after it crashes
+
+# Standard output and error are sent to journald
+StandardOutput=journal
+StandardError=journal
+
+# Security hardening (optional but good practice)
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/pxe-boot-admin/data /var/spool/atd
+
+[Install]
+WantedBy=multi-user.target
