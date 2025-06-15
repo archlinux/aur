@@ -1,7 +1,7 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at gmail dot com>
 _pkgname="nmcurse"
 pkgname="$_pkgname-nhk-git"
-pkgver=10.7cc91c1
+pkgver=13.411bfb3
 pkgrel=1
 pkgdesc="Curses interface for NetworkManager, forked by nanoka"
 arch=(x86_64 aarch64)
