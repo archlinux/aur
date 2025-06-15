@@ -1,0 +1,39 @@
+diff -crB xdock-0.3.0/src/docks/xdcalendar.c xdock-0.3.0-upd/src/docks/xdcalendar.c
+*** xdock-0.3.0/src/docks/xdcalendar.c	2010-11-08 19:07:13.000000000 -0500
+--- xdock-0.3.0-upd/src/docks/xdcalendar.c	2025-01-12 10:22:33.899842430 -0500
+***************
+*** 5,10 ****
+--- 5,11 ----
+  #include <string.h>
+  #include <unistd.h>
+  #include <time.h>
++ #include <ctype.h>
+  
+  #define VERSION "0.1"
+  
+diff -crB xdock-0.3.0/src/docks/xdmemory.c xdock-0.3.0-upd/src/docks/xdmemory.c
+*** xdock-0.3.0/src/docks/xdmemory.c	2010-11-09 18:18:21.000000000 -0500
+--- xdock-0.3.0-upd/src/docks/xdmemory.c	2025-01-12 10:22:55.222508467 -0500
+***************
+*** 4,9 ****
+--- 4,10 ----
+  #include <stdlib.h>
+  #include <string.h>
+  #include <unistd.h>
++ #include <ctype.h>
+  
+  #define VERSION "0.1"
+  
+diff -crB xdock-0.3.0/src/lib/network.c xdock-0.3.0-upd/src/lib/network.c
+*** xdock-0.3.0/src/lib/network.c	2010-11-08 19:07:13.000000000 -0500
+--- xdock-0.3.0-upd/src/lib/network.c	2025-01-12 10:18:34.126462877 -0500
+***************
+*** 15,20 ****
+--- 15,21 ----
+  #include <stdarg.h>
+  #include <stdlib.h>
+  #include <errno.h>
++ #include <unistd.h>
+  
+  int net_connect(char* host, int port)
+  {
