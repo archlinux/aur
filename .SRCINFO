@@ -9,5 +9,6 @@ pkgbase = swengine-revanced
 	depends = vlc
 	depends = ffmpeg
 	depends = swww
+	source = swengine.desktop
 
 pkgname = swengine-revanced
