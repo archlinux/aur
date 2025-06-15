@@ -2,8 +2,8 @@
 # Contributor: Roman Kyrylych <roman@archlinux.org>
 # Contributor: Sarah Hay <sarah@archlinux.org>
 
-pkgbase=gpgme
-pkgname=(gpgme qgpgme-qt6 python-gpgme)
+pkgname=gpgme1
+_pkgname=gpgme
 pkgver=1.24.3
 pkgrel=2
 pkgdesc='C wrapper library for GnuPG'
@@ -13,29 +13,32 @@ license=(
   GPL-2.0-or-later
   LGPL-2.0-or-later
   LGPL-2.1-or-later
+  MIT
 )
+options+=('!emptydirs')
 makedepends=(
   'git'
   'gnupg'
   'libassuan'
   'libgpg-error'
-  'python'
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel'
-  'qt6-base'
-  'swig'
+)
+depends=(
+  'gcc-libs'
+  'glib2'
+  'glibc'
+  'libassuan'
+  'libgpg-error'
+  'gnupg>=2'
 )
 validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA'  # Werner Koch (dist signing 2020)
               'AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD') # Niibe Yutaka (GnuPG Release Key)
-source=("git+https://dev.gnupg.org/source/gpgme.git#tag=${pkgbase}-${pkgver}?signed"
+source=("git+https://dev.gnupg.org/source/gpgme.git#tag=${_pkgname}-${pkgver}?signed"
         '0025_debian_default_is_openpgp.diff')
 sha256sums=('630d7301a614bf22916cecdb78bbb34ea1dd724071a9ea9aee67aab06ba3dea1'
             'f8bdaba4732347067ce291ca2acd6096e7a02c162a760be3515e0c4cdac60d6f')
 
 prepare() {
-  cd ${pkgbase}
+  cd ${_pkgname}
 
   # Adapt testsuite to changed gnupg defaults in Debian
   patch -Np1 < ../0025_debian_default_is_openpgp.diff
@@ -45,28 +48,23 @@ prepare() {
 }
 
 build() {
-  cd ${pkgbase}
+  cd ${_pkgname}
 
   ./configure \
     --prefix=/usr \
     --disable-fd-passing \
     --disable-static \
-    --disable-gpgsm-test
+    --disable-gpgsm-test \
+    --disable-python \
+    --enable-languages=cpp
 
   # prevent excessive overlinking due to libtool
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
-
-  (
-    # use a PEP517 workflow to get a reproducible Python package
-    # NOTE: top_builddir is required so that the build takes place against local gpgme, not system gpgme
-    cd lang/python/
-    top_builddir="$srcdir/$pkgbase" python -m build --wheel --no-isolation
-  )
 }
 
 check() {
-  cd ${pkgbase}
+  cd ${_pkgname}
 
   # this test fails with gnupg (FS#66572)
   sed -i 's#"t-keylist-secret",##' tests/json/t-json.c
@@ -74,54 +72,26 @@ check() {
   make check
 }
 
-package_gpgme() {
-  depends=(
-    'gcc-libs'
-    'glib2'
-    'glibc'
-    'libassuan'
-    'libgpg-error'
-    'gnupg>=2'
-  )
-  options+=('!emptydirs')
-  provides=('libgpgme.so'
-            'libgpgmepp.so')
-  license+=(MIT)
+package() {
 
-  cd ${pkgbase}
+  cd ${_pkgname}
 
   make DESTDIR="${pkgdir}" install
 
-  # split qgpgme
-  rm -r "${pkgdir}"/usr/lib/{cmake/QGpgmeQt6/,libqgpgmeqt6.*}
-  rm -r "${pkgdir}"/usr/lib/python*
-  rm -r "${pkgdir}"/usr/include/qgpgme-qt6/
+  # remove everything but the header files and the libraries
+  # also remove all compilation helpers, as they fail anyway probably
+  rm -rf "$pkgdir/usr/bin"
+  rm -rf "$pkgdir/usr/lib/cmake"
+  rm -rf "$pkgdir/usr/lib/pkgconfig"
+  rm -rf "$pkgdir/usr/lib/"*.so
+  rm -rf "$pkgdir/usr/share"
+
+  # move include files out of the way
+  mkdir "$pkgdir/usr/include/gpgme1"
+  mv -vn "$pkgdir/usr/include/gpgme.h" "$pkgdir/usr/include/gpgme1/."
+  mv -vn "$pkgdir/usr/include/gpgme++" "$pkgdir/usr/include/gpgme1/."
+
+  # add a license
   install -vDm 644 LICENSES "$pkgdir/usr/share/licenses/$pkgname/MIT.txt"
 }
 
-package_qgpgme-qt6() {
-  pkgdesc="Qt6 bindings for GPGme"
-  depends=(
-    'gcc-libs'
-    'glibc'
-    'gpgme'
-    'libgpg-error'
-    'qt6-base'
-  )
-
-  cd ${pkgbase}/lang/qt
-
-  make DESTDIR="${pkgdir}" install
-}
-
-package_python-gpgme() {
-  pkgdesc="Python bindings for GPGme"
-  depends=(
-    'glibc'
-    'gpgme'
-    'python'
-  )
-
-  cd ${pkgbase}/lang/python
-  python -m installer --destdir="$pkgdir" dist/*.whl
-}
