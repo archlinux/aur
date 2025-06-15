@@ -125,6 +125,20 @@ post_install() {
   _msg "   sudo systemctl enable --now ${APP_NAME}.service"
   _msg "3. Ensure your firewall allows traffic on ports 80 (HTTP) and 443 (HTTPS)."
 
+  # Check if nginx.conf includes conf.d/*.conf
+  local nginx_conf="/etc/nginx/nginx.conf"
+  if [ -f "$nginx_conf" ]; then
+    if grep -q "include \/etc\/nginx\/conf.d\/\\*.conf;" "$nginx_conf"; then
+      _msg "nginx.conf is correctly set to include /etc/nginx/conf.d/*.conf."
+    else
+      _warn "nginx.conf does not include /etc/nginx/conf.d/*.conf in the http block."
+      _warn "Please ensure the following line is present inside the 'http' block in /etc/nginx/nginx.conf:"
+      _warn "  include /etc/nginx/conf.d/*.conf;"
+    fi
+  else
+    _warn "/etc/nginx/nginx.conf not found. Please ensure your nginx configuration includes /etc/nginx/conf.d/*.conf in the http block."
+  fi
+
   if command -v nginx > /dev/null; then
     # Test nginx config after all setup is done.
     if sudo -u "${APP_USER}" nginx -t &>/dev/null || nginx -t &>/dev/null; then # Try as app user or root

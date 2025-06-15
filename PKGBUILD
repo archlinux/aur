@@ -3,7 +3,7 @@
 
 pkgname=pxe-boot-admin
 _gitname=PXEBootAdmin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="NextJS application for WUT SK, with Nginx reverse proxy and self-signed HTTPS."
 arch=('x86_64')
@@ -42,7 +42,7 @@ source=(
 sha256sums=('SKIP'
             '746b2ed93da806516ebb4bf82dbceb94a9f19cf2cba41de4d76f16d64de6f336'
             'ae4dd3fb82df432ffa561f8f696732780cd4c41f1edf69739d1dd4ec4b13684d'
-            'c13bcf0ee89e59ec2fbd7d515c72b3eff8dd2f4a08e564408f416b94c258321b'
+            'f4774a281d2e41d327839a5eaa0a454db252aa52bddde954d32eb0d192cf709d'
             '9992887ad11bd513e6e4046498a76aea82e8bbed914ac1cac740209a0e580d4e')
 
 install="${pkgname}.install"
