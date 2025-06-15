@@ -1,12 +1,12 @@
 pkgbase = uvg266-git
 	pkgdesc = An open-source VVC encoder (git version)
-	pkgver = 0.8.1.r327.gcf31e829
+	pkgver = 0.8.1.r332.g391a5642
 	pkgrel = 1
 	url = https://github.com/ultravideo/uvg266/
 	arch = x86_64
 	license = BSD-3-Clause
-	makedepends = git
 	makedepends = cmake
+	makedepends = git
 	depends = glibc
 	provides = uvg266
 	conflicts = uvg266

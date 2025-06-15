@@ -1,14 +1,14 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=uvg266-git
-pkgver=0.8.1.r327.gcf31e829
+pkgver=0.8.1.r332.g391a5642
 pkgrel=1
 pkgdesc='An open-source VVC encoder (git version)'
 arch=('x86_64')
 url='https://github.com/ultravideo/uvg266/'
 license=('BSD-3-Clause')
 depends=('glibc')
-makedepends=('git' 'cmake')
+makedepends=('cmake' 'git')
 #checkdepends=('ffmpeg' 'python' 'vvc-vtm')
 provides=('uvg266')
 conflicts=('uvg266')
@@ -39,7 +39,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX:STRING='/usr' \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL='YES' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 #check() {
@@ -48,6 +48,6 @@ build() {
 #}
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     install -D -m644 uvg266/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
