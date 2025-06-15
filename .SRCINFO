@@ -1,11 +1,11 @@
 pkgbase = rcli
-	pkgdesc = Starter of styled cli for c++
-	pkgver = 2.0.22
+	pkgdesc = Library to parse user command-line input
+	pkgver = 2.0.23
 	pkgrel = 1
 	url = https://github.com/RickaPrincy/rcli
 	arch = x86_64
 	license = MIT
-	source = rcli@2.0.22.tar.gz::https://github.com/RickaPrincy/rcli/releases/download/v2.0.22/rcli@2.0.22.tar.gz
-	sha256sums = 3cc6ea193d5d674ca8d7b9f49423f4fee2942ca112806f331d8c93c4d0923086
+	source = rcli@2.0.23.tar.gz::https://github.com/RickaPrincy/rcli/releases/download/v2.0.23/rcli@2.0.23.tar.gz
+	sha256sums = bd430939e0a011e9a00e7f18097b20f6da208634900148038fa453804f9568d9
 
 pkgname = rcli
