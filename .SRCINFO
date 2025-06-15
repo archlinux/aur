@@ -1,7 +1,7 @@
 pkgbase = ps7_libps3000a
 	pkgdesc = Library for PicoScope 3000a series in PicoScope 7
 	pkgver = 2.1.150_6r7532
-	pkgrel = 1
+	pkgrel = 2
 	url = https://labs.picotech.com/picoscope7/debian/pool/main/libp/libps3000a/
 	install = ps7_libps3000a.install
 	arch = x86_64
