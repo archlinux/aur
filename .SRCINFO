@@ -1,20 +1,22 @@
 pkgbase = uvg266
 	pkgdesc = An open-source VVC encoder
 	pkgver = 0.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ultravideo/uvg266/
 	arch = x86_64
 	license = BSD-3-Clause
-	makedepends = git
 	makedepends = cmake
+	makedepends = git
 	depends = glibc
 	source = git+https://github.com/ultravideo/uvg266.git#tag=v0.8.1
 	source = git+https://github.com/ultravideo/greatest.git
 	source = 010-uvg266-tests-rename-vtm-decoder.patch
 	source = 020-uvg266-disable-uvg266-tests.patch
+	source = 030-uvg266-gcc15-fix.patch::https://github.com/ultravideo/uvg266/commit/bc6b9d9a14710c5dfa0d7a3b92983dbe6b1d7c5d.patch
 	sha256sums = f3a0de4b073e8fd8172d10617e640989928e0da8bec7727b35e41953fd85a40d
 	sha256sums = SKIP
 	sha256sums = 7e262c2e95a33c1098187a2bb113c01dedc033fd96ceeed87e7aca6d2c57f5df
 	sha256sums = c86cfb280a6217bfebb04581ac188bd5625003fcefdeb146b72fb9758a573aad
+	sha256sums = 195b6364621aaccb4345198c7a2f63240be51fb5c6ebad6b50608fb1fc6b414d
 
 pkgname = uvg266
