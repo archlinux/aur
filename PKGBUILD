@@ -2,8 +2,11 @@
 
 _hkgname=extensions
 pkgname=haskell-extensions
-pkgver=0.0.0.1
+pkgver=0.1.0.0
 pkgrel=1
+#-- NOTE: 0.1.0.1 and later is incompatible with GHC 9.4.8.
+#-- See https://github.com/kowainik/extensions/issues/111
+
 pkgdesc="Parse Haskell Language Extensions"
 url="https://github.com/kowainik/extensions"
 license=("MPL2")
@@ -11,14 +14,11 @@ arch=('x86_64')
 depends=('ghc-libs' 'haskell-colourista' 'haskell-optparse-applicative')
 makedepends=(ghc haskell-hedgehog haskell-hspec haskell-hspec-hedgehog uusi)
 source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz"
-        0001-Fix-overlapping-instances-error-on-GHC-9.0.2.patch
         )
-sha256sums=('d64cc9c0ea82ae8f2dbf0c08824f0a89d3e523105a235e788ef822ac779bb373'
-            'd7ed6ac8105bf36e23acc53a95e09b3a987b004b7f8f9b6f277f651fb73002ca')
+sha256sums=('ac1fb10ff40f500cec8de62426d056d5719b5e3efcdd2fb907934224048f9cac')
 
 prepare() {
   cd "$_hkgname-$pkgver"
-  patch -p1 -i "$srcdir/0001-Fix-overlapping-instances-error-on-GHC-9.0.2.patch"
 }
 
 build() {
