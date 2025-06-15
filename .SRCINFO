@@ -11,7 +11,6 @@ pkgbase = mihomo-git
 	makedepends = git
 	depends = glibc
 	provides = mihomo
-	conflicts = clash-meta
 	conflicts = mihomo
 	backup = etc/mihomo/config.yaml
 	source = git+https://github.com/MetaCubeX/mihomo.git#branch=Alpha
