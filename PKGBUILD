@@ -1,8 +1,9 @@
-#Maintainer: Noble Eugene <nobleeugene2005@gmail.com>
+#Maintainer: Shnimlz <shnimlz@proton.me>
+#Author Original: Noble Eugene <nobleeugene2005@gmail.com>
 pkgname="swengine-revanced"
-pkgver="0.6"
-pkgrel=1
-pkgdesc="Download and apply live wallpapers with swww"
+pkgver="0.2.7"
+pkgrel=2
+pkgdesc="Download or upload your wallpapers or use the ones downloaded from wallpaper engine with Sww"
 arch=("x86_64")
 depends=("vlc" "ffmpeg" "swww")
 makedepends=("dotnet-sdk" "git")
@@ -11,7 +12,6 @@ source=("swengine.desktop")
 
 prepare(){
     rm -rf swengine
-    #this is probably not the right way to do this
    git clone https://github.com/Shnimlz/Swengine.git swengine
 }
 build(){
@@ -20,12 +20,8 @@ build(){
 }
 package(){
     cd "$srcdir/swengine/"
-   # chmod +x ./dist/swengine
     chmod +x ./swengine
-    #starter script
     install -d -m 755 "$pkgdir/usr/bin" && cp swengine "$pkgdir/usr/bin"
-    #binaries
     install -d -m 755 "$pkgdir/usr/lib/swengine" && cp -r dist/* "$pkgdir/usr/lib/swengine"
-    #desktop entry
     install -Dm644 "$srcdir/swengine.desktop" "$pkgdir/usr/share/applications/swengine.desktop"    
 }
