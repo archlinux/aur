@@ -1,13 +1,14 @@
 pkgbase = haskell-directory-ospath-streaming
 	pkgdesc = Stream directory entries in constant memory in vanilla IO
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sergv/directory-ospath-streaming
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = ghc
 	depends = ghc-libs
 	depends = haskell-filepath>=1.4.100
+	depends = haskell-directory>=1.3.8
 	depends = haskell-unix>=2.8
 	depends = haskell-atomic-counter
 	depends = haskell-os-string

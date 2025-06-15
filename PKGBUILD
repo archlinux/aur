@@ -3,13 +3,14 @@
 _hkgname=directory-ospath-streaming
 pkgname=haskell-directory-ospath-streaming
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Stream directory entries in constant memory in vanilla IO"
 url="https://github.com/sergv/directory-ospath-streaming"
 license=("Apache-2.0")
 arch=('x86_64')
 depends=('ghc-libs'
          'haskell-filepath>=1.4.100'
+         'haskell-directory>=1.3.8'
          'haskell-unix>=2.8'
          'haskell-atomic-counter' 'haskell-os-string')
 #makedepends=('ghc' 'haskell-random' 'haskell-tasty' 'haskell-tasty-hunit')
@@ -29,7 +30,7 @@ build() {
 
   runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
     --prefix=/usr --docdir=/usr/share/doc/$pkgname --datasubdir=$pkgname \
-    `: --enable-tests see FIXME in check()` \
+    --enable-tests \
     --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
     --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
     --ghc-option='-pie' \
@@ -44,10 +45,7 @@ build() {
 
 check() {
   cd $_hkgname-$pkgver
-  echo 'FIXME: TESTS DISABLED'
-  #-- NOTE: tests aren't buildable without backport of `directory >= 1.3.8.0`
-  #-- (require module System.Directory.OsPath which was added in that version)
-  #runhaskell Setup test
+  runhaskell Setup test
 }
 
 package() {
