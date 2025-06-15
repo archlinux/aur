@@ -12,11 +12,13 @@ pkgbase = udev-hid-bpf
 	makedepends = clang
 	makedepends = libbpf
 	makedepends = bpf
+	makedepends = linux-headers
 	depends = systemd-libs
 	depends = libelf
 	depends = zlib
 	depends = glibc
 	depends = gcc-libs
+	conflicts = udef-hid-bpf-git
 	options = !lto
 	source = git+https://gitlab.freedesktop.org/libevdev/udev-hid-bpf.git#tag=2.1.0-20240704
 	b2sums = 5b190071fd01c2ec32843c19a3a3338ccd51975c88c8d90343ea25153288b9e11258e1a377db60ecf7269723cea87a22a2a8adb7b0ba64012da83c3a97347f98

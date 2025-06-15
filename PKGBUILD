@@ -21,7 +21,9 @@ makedepends=(
   clang
   libbpf
   bpf
+  linux-headers
 )
+conflicts=(udef-hid-bpf-git)
 options=(!lto)
 source=("git+https://gitlab.freedesktop.org/libevdev/udev-hid-bpf.git#tag=${pkgver}-${_pkgdate}")
 b2sums=('5b190071fd01c2ec32843c19a3a3338ccd51975c88c8d90343ea25153288b9e11258e1a377db60ecf7269723cea87a22a2a8adb7b0ba64012da83c3a97347f98')
@@ -36,6 +38,8 @@ prepare() {
 build() {
   local meson_options=(
     -D tests=disabled
+    -D vmlinux-h=provided
+    -D vmlinux-h-path=/usr/src/linux/vmlinux.h
   )
 
   arch-meson udev-hid-bpf build "${meson_options[@]}"
