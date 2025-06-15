@@ -16,9 +16,9 @@
 set -u
 _pkgname='cpdf'
 pkgname="${_pkgname}"
-pkgver='2.8'
+pkgver='2.8.1'
 pkgrel=1
-pkgdesc='Coherent Graphics ## to manipulate PDF files including merge, encrypt, decrypt, scale, crop, rotate, bookmarks, stamp, logos, page numbers'
+pkgdesc='manipulate PDF files including merge, encrypt, decrypt, scale, crop, rotate, bookmarks, stamp, logos, page numbers'
 arch=('x86_64' 'i686')
 url='http://community.coherentpdf.com'
 license=('AGPL-3.0-or-later')
@@ -54,8 +54,8 @@ else
   pkgdesc="${pkgdesc//##/cpdf}"
 fi
 unset _srcfile _srcdirname
-md5sums=('d79b6abd10bd4a231f1f91cdbefb3998')
-sha256sums=('c58896561e69c091b00fdc2ca751f461d5224f1041a574ca65985e4cba6049e1')
+md5sums=('45ba51aae6b5d3ea6cb421037f8f73bb')
+sha256sums=('bdd7caf1e5e55e65e4ece96eeeb3e5894c195ca5a9a274ddc27ac50a321d5c75')
 
 _pkgver_disabled() {
   set -u
