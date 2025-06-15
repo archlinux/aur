@@ -1,7 +1,7 @@
 pkgbase = trackerjacker
 	pkgdesc = Map and track WiFi networks and devices through raw 802.11 monitoring
-	pkgver = 1.9.0
-	pkgrel = 3
+	pkgver = 2.0.5
+	pkgrel = 1
 	url = https://github.com/calebmadrigal/trackerjacker
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = trackerjacker
 	depends = python-pyaml
 	depends = python-ruamel-yaml
 	depends = python-scapy
-	source = https://files.pythonhosted.org/packages/source/t/trackerjacker/trackerjacker-1.9.0.tar.gz
-	sha256sums = d11c984c85eb5c9ffec5d5ae74eaaa1bed273b827c9cb28511b3bab22d71f3fd
+	source = https://files.pythonhosted.org/packages/source/t/trackerjacker/trackerjacker-2.0.5.tar.gz
+	sha256sums = f8b2d0b86996ab253cd444ba0aa05aaf945fef53bd7246f991f2870bcb28891b
 
 pkgname = trackerjacker
