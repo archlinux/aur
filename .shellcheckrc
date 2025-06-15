@@ -1,0 +1,5 @@
+# See https://wiki.archlinux.org/title/PKGBUILD
+shell=bash
+disable=SC2034 # some variables will be used by makepkg
+disable=SC2154 # some variables are imported from makepkg
+disable=SC2164 # makepkg run with 'set -e'

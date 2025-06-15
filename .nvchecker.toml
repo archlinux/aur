@@ -1,0 +1,8 @@
+[esound]
+source = "gitlab"
+host = "gitlab.gnome.org"
+gitlab = "Archive/esound"
+use_max_tag = true
+include_regex = 'ESOUND_.*'
+from_pattern = '[\w_]+_(\d+)_(\d+)_(\d+)'
+to_pattern = '\1.\2.\3'
