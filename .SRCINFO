@@ -1,0 +1,19 @@
+pkgbase = haskell-atomic-counter
+	pkgdesc = Mutable counters that can be modified with atomic operatinos
+	pkgver = 0.1.2.3
+	pkgrel = 1
+	url = https://github.com/sergv/atomic-counter
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = ghc
+	makedepends = haskell-quickcheck
+	makedepends = haskell-async
+	makedepends = haskell-tasty
+	makedepends = haskell-tasty-quickcheck
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/atomic-counter/0.1.2.3/atomic-counter-0.1.2.3.tar.gz
+	source = Setup.hs
+	sha256sums = ce4b63391b3c0d426cbe32af89f483222602a5b43aa5379aa720bf6f45f4cf04
+	sha256sums = 5066653559d4d6134b022d66a634a17fdcf8db35d28b447e581fec284afa4689
+
+pkgname = haskell-atomic-counter
