@@ -11,6 +11,7 @@ pkgbase = ciyue
 	makedepends = fvm
 	depends = gtk3
 	depends = gstreamer
+	depends = gst-plugins-base
 	source = ciyue-1.16.0.tar.gz::https://github.com/mumu-lhl/Ciyue/archive/refs/tags/v1.16.0.tar.gz
 	source = ciyue.desktop
 	sha256sums = ab745421ac402bc370f263f4d215fb23f941ac3110c1a4398bd12023f3aaf23e
