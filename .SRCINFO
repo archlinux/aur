@@ -1,7 +1,7 @@
 pkgbase = libastal-battery-git
 	pkgdesc = DBus proxy library for upower daemon
-	pkgver = r580.d538d8e
-	pkgrel = 2
+	pkgver = r785.4e455bb
+	pkgrel = 1
 	url = https://github.com/Aylur/astal
 	arch = x86_64
 	groups = libastal
@@ -17,6 +17,8 @@ pkgbase = libastal-battery-git
 	provides = libastal-battery
 	provides = libastal-battery.so=0-64
 	source = git+https://github.com/Aylur/astal.git
+	source = skip_valadoc.patch
 	sha256sums = SKIP
+	sha256sums = dd91c54c081c16e253b05fd293f283f0bf9707973688eb2acf9e3df7fc6c85a8
 
 pkgname = libastal-battery-git
