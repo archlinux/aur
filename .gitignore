@@ -1,0 +1,10 @@
+# Build
+*.tar.gz
+*.tar.gz.path
+*.zst
+src/
+pkg/
+
+# IDE
+.idea/
+.vscode/

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=GigaIDE
+Icon=gigaide
+Comment=IDE на базе IDEA/PyCharm Community и еще 70 инструментов
+Exec=/usr/bin/gigaide %f
+Terminal=false
+Categories=Development;IDE
+StartupNotify=true

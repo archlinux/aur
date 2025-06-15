@@ -1,0 +1,16 @@
+pkgbase = gigaide
+	pkgdesc = GigaIDE Desktop на базе JB IDEA и PyCharm
+	pkgver = 242.21829.142.2
+	pkgrel = 1
+	url = https://gitverse.ru/features/gigaide/
+	arch = x86_64
+	license = apache-2.0
+	depends = giflib
+	depends = libxtst
+	depends = libxrender
+	source = https://gigaide.ru/downloadlast/gigaideCE-242.21829.142.2.tar.gz
+	source = gigaide.desktop
+	sha256sums = ceb470f0c753a5a2ac069ff2927145da2b1151f01e60aa9dba78be1c864f423d
+	sha256sums = 9722c9aec34fb35a2768fa2002cfdddfc0479b847f307ddfb27fab5b25bb2c11
+
+pkgname = gigaide
