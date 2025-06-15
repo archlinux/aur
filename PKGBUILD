@@ -20,5 +20,5 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -snf /opt/Apipost/apipost "${pkgdir}/usr/bin/apipost"
 }
-sha256sums_x86_64=('0cdb4cd6392ce6f80e99d4254651c865f1ec69290f7267cbaf09576d0c71b918')
-sha256sums_aarch64=('08a4ded9b89fa08ab4f77da7bea5e9696a0aba374fef54f649beb6bb162bcd81')
+sha256sums_x86_64=('c7018e4eb9c847cadec82491a21677d8f936feaf29c726e34514b70ac3b3a894')
+sha256sums_aarch64=('6bc172a14f045b4c02558ce29e789b7f8eaf13a4f8a68f7dcf288e0e360db59b')
