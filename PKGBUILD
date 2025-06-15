@@ -4,7 +4,7 @@
 
 pkgname='git-quick-stats'
 pkgver='2.6.1'
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple and efficient way to access various statistics in git repository'
 arch=('any')
 url="https://github.com/$pkgname/$pkgname"
@@ -12,8 +12,11 @@ license=('MIT')
 depends=(
   'bash'
   'coreutils'
+  'gawk'
   'git'
+  'grep'
   'ncurses'
+  'util-linux'
 )
 provides=('git-quick-stats')
 conflicts=('git-quick-stats')
