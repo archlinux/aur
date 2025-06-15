@@ -1,0 +1,12 @@
+pkgbase = neocash
+	pkgdesc = Modern shell with advanced features
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/ImVILLS/neocash
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/ImVILLS/neocash/archive/v1.0.1.tar.gz
+	sha256sums = 66649774162ae3c0757682ec3f10690abe4173e27ae593808b6e959eea9af661
+
+pkgname = neocash
