@@ -2,12 +2,12 @@
 
 ## options
 : ${_widgets=qt6}
-: ${_commit=e9bf73b38ee3ba542d4ed9943194e09339c9de91} # 10.4.0.r39
+: ${_commit=e5d94ad716ead526364512efb7b9e9e2de9a68a7} # 10.5.0
 
 _pkgname="peazip"
 pkgname="$_pkgname"
-pkgver=10.4.0
-pkgrel=3
+pkgver=10.5.0
+pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
