@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bury <alexandre.bury@gmail.com>
 
 pkgname=boxes-py-git
-pkgver=r1691.223b96f
+pkgver=r1947.2631b35
 pkgrel=1
 pkgdesc="Boxes.py - laser cutting boxes and more"
 arch=("x86_64")
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
     cd boxes
-    python -m build
+    python -m build --wheel --no-isolation
     python scripts/boxes2inkscape inkex
 }
 
