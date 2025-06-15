@@ -1,6 +1,6 @@
 pkgbase = hypseus-singe
 	pkgdesc = A drop-in replacement to daphne, to play laserdisc arcade games on a PC.
-	pkgver = 2.11.4
+	pkgver = 2.11.5
 	pkgrel = 1
 	url = https://github.com/DirtBagXon/hypseus-singe
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = hypseus-singe
 	conflicts = hypseus-singe-git
 	replaces = daphne
 	replaces = hypseus-singe-git
-	source = git+https://github.com/DirtBagXon/hypseus-singe.git#tag=fc34a26cd097b29aef8b1bebc1db786a28f0f6ae
-	sha256sums = c98a14aabb7587442b720545fc99a14575dd77c018dfac14f4bec340ac64e3e7
+	source = git+https://github.com/DirtBagXon/hypseus-singe.git#tag=64839aa9975f362f35686c8cec4041c477a8199c
+	sha256sums = baad573421a0f15fb0ab508a19c8d56b0ae4557c11780a85b4e73d5094b414ff
 
 pkgname = hypseus-singe
