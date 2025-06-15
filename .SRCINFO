@@ -1,6 +1,6 @@
 pkgbase = joomla
 	pkgdesc = a php Content Management System (CMS) which enables you to build websites and powerful online applications.
-	pkgver = 5.2.3
+	pkgver = 5.3.1
 	pkgrel = 1
 	url = https://www.joomla.org/
 	install = joomla.install
@@ -11,10 +11,10 @@ pkgbase = joomla
 	optdepends = php: Web server support
 	optdepends = mariadb: Database
 	optdepends = postgresql: Database
-	noextract = Joomla_5.2.3-Stable-Full_Package.tar.gz
+	noextract = Joomla_5.3.1-Stable-Full_Package.tar.gz
 	options = !strip
-	source = https://github.com/joomla/joomla-cms/releases/download/5.2.3/Joomla_5.2.3-Stable-Full_Package.tar.gz
-	md5sums = 9cf7b5303556eed6ea6a48bf460e0b54
-	sha256sums = 8fca93a0f3f1a8bbb1464bc276aad524d0cedf8d4f5437b1fd587df995791c00
+	source = https://github.com/joomla/joomla-cms/releases/download/5.3.1/Joomla_5.3.1-Stable-Full_Package.tar.gz
+	md5sums = 0fab75815576b8c4e7518251eb31ff64
+	sha256sums = 8ceb6f55c508e9f211b8b7d908cd2ff7c9c79788644e00c199306341b1f88623
 
 pkgname = joomla
