@@ -13,7 +13,7 @@ source=("clivm-${pkgver}.tar.gz")
 sha256sums=('281f030c4a605807ba8ace945ba8df7f1bbe3ffce289df6b6245a0bdf5f2b775')
 
 package() {
-  cd "$srcdir/clivm-${pkgver}"
+  cd "$srcdir"
 
   # Install binaries and installers under /usr/share/clivm/
   install -dm755 "$pkgdir/usr/share/clivm/binaries"
@@ -25,4 +25,5 @@ package() {
   # Install launcher to /usr/bin/clivm (executable)
   install -Dm755 clivm.py "$pkgdir/usr/bin/clivm"
 }
+
 
