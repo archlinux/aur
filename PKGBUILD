@@ -3,9 +3,12 @@
 # Contributor: SoulHarsh007 <admin@soulharsh007.dev>
 # Contributor: MedzikUser <nivua1fn@duck.com>
 
+## options
+: ${_use_sodeps:=false}
+
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=5.15.2
+pkgver=5.15.3
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -76,7 +79,7 @@ source=(
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
 )
 sha256sums=(
-  '3e3b3d3f579021c079712ab40636877fc84b3566d6db8727703607caee2f5338'
+  'df18dc458ce72cb3c9535fa3db06468045edd3d95cfa91a85f1d7229e568e62a'
   'SKIP'
 )
 
@@ -119,6 +122,37 @@ build() {
 }
 
 package() {
+  if [[ "${_use_sodeps::1}" == "t" ]]; then
+    depends+=(
+      'libavcodec.so'
+      'libavfilter.so'
+      'libavformat.so'
+      'libavutil.so'
+      'libcrypto.so'
+      'libgio-2.0.so'
+      'libglib-2.0.so'
+      'libgobject-2.0.so'
+      'libheif.so'
+      'libjemalloc.so'
+      'libjpeg.so'
+      'libjxl.so'
+      'libjxl_threads.so'
+      'liblz4.so'
+      'libopenal.so'
+      'libopenh264.so'
+      'libopus.so'
+      'libpipewire-0.3.so'
+      'libprotobuf-lite.so'
+      'libssl.so'
+      'libswresample.so'
+      'libswscale.so'
+      'libvpx.so'
+      'libxkbcommon.so'
+      'libxxhash.so'
+      'libz.so'
+    )
+  fi
+
   DESTDIR="$pkgdir" cmake --install build
 
   # remove unwanted files
