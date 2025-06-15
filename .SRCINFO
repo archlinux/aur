@@ -1,7 +1,7 @@
 pkgbase = ani-rss
 	pkgdesc = 自动追番、订阅、下载 蜜柑RSS动漫
 	pkgver = 2.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wushuo894/ani-rss
 	install = ani-rss.install
 	arch = any

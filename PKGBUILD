@@ -1,7 +1,7 @@
 # Maintainer: vcup <me@vcup.moe>
 pkgname=ani-rss
 pkgver=2.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="自动追番、订阅、下载 蜜柑RSS动漫"
 arch=('any')
 url="https://github.com/wushuo894/ani-rss"

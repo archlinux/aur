@@ -37,7 +37,7 @@ post_install() {
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-  migrate_from_v1
+  [ ! -f "/var/lib/${PKGNAME}/config/ani.json" ] && migrate_from_v1
   link_config
   link_log
 }
