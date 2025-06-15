@@ -11,6 +11,7 @@ pkgbase = hypseus-singe
 	depends = zlib
 	depends = sdl2
 	depends = sdl2_image
+	depends = sdl2_mixer
 	depends = sdl2_ttf
 	depends = libvorbis
 	conflicts = daphne
