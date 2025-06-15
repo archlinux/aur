@@ -1,0 +1,14 @@
+pkgbase = typer
+	pkgdesc = A simple and easy to use text editor written in Go
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/EnumeratedDev/Typer
+	arch = any
+	license = MIT
+	makedepends = sh
+	makedepends = which
+	makedepends = make
+	source = git+https://github.com/EnumeratedDev/Typer.git#tag=0.1.0
+	sha256sums = SKIP
+
+pkgname = typer
