@@ -28,7 +28,7 @@ _opt_build=0
 
 set -u
 pkgname='openmeetings'
-_pkgver='7.2.0'
+_pkgver='8.0.0'
 pkgver="${_pkgver//-/.}"
 pkgrel='1'
 #pkgdesc='Multi-Language Cross-Platform Customizable Web-Conferencing and Collaboration'
@@ -37,9 +37,9 @@ arch=('any')
 #url='https://code.google.com/p/openmeetings/'
 #url='https://github.com/apache/openmeetings/'
 url='http://openmeetings.apache.org/'
-license=('apache')
+license=('Apache-2.0')
 _minjv='11'
-depends=('libjpeg' 'lame' "java-environment-openjdk>=${_minjv}")
+depends=('bash' 'libjpeg' 'lame' "java-environment-openjdk>=${_minjv}")
 #depends+=('swftools') # removed in 5.0
 optdepends=('imagemagick' 'ghostscript' 'sox' 'libreoffice' 'ffmpeg' 'mysql' 'openmeetings-mysql-connector-java' 'docker' 'kurento-media-server' 'kms-elements')
 makedepends=('curl')
@@ -73,8 +73,8 @@ else
   noextract=("${_srzgz}")
 fi
 #_verwatch=("https://archive.apache.org/dist/${pkgname}/" "\([0-9\.]\+\)/" 'l')
-md5sums=('e86c460057ac59ee1b781f9503906a61')
-sha256sums=('deca7f222cf0bf5c56f2c7c5ee89cf76cb896925665a8db058f19bfaafc71aaa')
+md5sums=('32c2fca4fe15bad67121a9a1b7ce43a2')
+sha256sums=('144ee0804f9995b4764b41ce6debcc5e54b348e8f8a2bc1d2e27d15db089fcd1')
 
 #PKGEXT='.pkg.tar.gz'
 
