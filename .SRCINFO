@@ -1,7 +1,7 @@
 pkgbase = tinyprocess-git
 	pkgdesc = A minimal process manager in C for Linux (Still in early development)
-	pkgver = v0.0.2
-	pkgrel = 2
+	pkgver = r7.d342820
+	pkgrel = 1
 	url = https://github.com/washedparu/tinyprocess
 	arch = x86_64
 	license = MIT
