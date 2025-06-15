@@ -5,7 +5,7 @@ pkgname=gigaide
 pkgver=242.21829.142.2
 pkgrel=1
 
-pkgdesc="GigaIDE Desktop на базе JB IDEA и PyCharm"
+pkgdesc="GigaIDE Desktop is fork JB IDEA and PyCharm"
 arch=("x86_64")
 url="https://gitverse.ru/features/gigaide/"
 license=("apache-2.0")
