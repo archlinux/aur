@@ -7,11 +7,16 @@ import sys
 import time
 
 DISTROS = ["debian", "arch", "alpine", "gentoo", "ubuntu"]
-HOME_DIR = os.path.expanduser("~")
-BASE_PATH = os.path.join(HOME_DIR, "clivm")
+
+# Change base path to /usr/share/clivm, where package installs files
+BASE_PATH = "/usr/share/clivm"
 CLIVM_CHROOT = os.path.join(BASE_PATH, "binaries", "clivm-chroot")
 ARCH_CHROOT = os.path.join(BASE_PATH, "binaries", "arch-chroot")
 INSTALLERS_PATH = os.path.join(BASE_PATH, "installers")
+
+# Keep chroot user data under home directory, hidden
+HOME_DIR = os.path.expanduser("~")
+
 BRAILLE_FRAMES = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
 
 def bottom_message(stdscr, message):
