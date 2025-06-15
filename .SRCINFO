@@ -1,7 +1,7 @@
 pkgbase = openr2-git
 	pkgdesc = Library that implements the MFC/R2 and DTMF/R2 signalling over E1 lines
 	pkgver = r281.a0bf085
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.libopenr2.org/
 	arch = i686
 	arch = x86_64

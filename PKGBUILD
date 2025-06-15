@@ -4,12 +4,12 @@
 _pkgname=openr2
 pkgname=${_pkgname}-git
 pkgver=r281.a0bf085
-pkgrel=1
+pkgrel=2
 pkgdesc='Library that implements the MFC/R2 and DTMF/R2 signalling over E1 lines'
 arch=('i686' 'x86_64')
 url='http://www.libopenr2.org/'
 license=('GPL' 'LGPL')
-depends=('glibc') #dahdi only used for r2test (needs zaptel driver)
+depends=('glibc') # dahdi only used for r2test (needs zaptel driver)
 makedepends=('git' 'cmake')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -35,7 +35,10 @@ build() {
   cd build
   CFLAGS+=" -Wno-unused-const-variable -Wno-address"
   export CFLAGS
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -S .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
 }
 
