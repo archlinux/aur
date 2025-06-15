@@ -1,6 +1,6 @@
 pkgbase = libastal-network-git
 	pkgdesc = NetworkManager wrapper library.
-	pkgver = r250.2927230
+	pkgver = r786.ca3190d
 	pkgrel = 1
 	url = https://github.com/Aylur/astal
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = libastal-network-git
 	provides = libastal-network
 	provides = libastal-network.so=0-64
 	source = git+https://github.com/Aylur/astal.git
+	source = skip_valadoc.patch
 	sha256sums = SKIP
+	sha256sums = e6e4370c322dae49e0b7c3d9a07baea0e024c859bc4bfae15843ec2ff78d4cb1
 
 pkgname = libastal-network-git

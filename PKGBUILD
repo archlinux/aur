@@ -2,7 +2,7 @@
 
 pkgname=libastal-network-git
 _pkgname=network
-pkgver=r250.2927230
+pkgver=r786.ca3190d
 pkgrel=1
 provides=(astal-network libastal-network libastal-network.so=0-64)
 pkgdesc="NetworkManager wrapper library."
@@ -21,13 +21,19 @@ makedepends=(
   vala
 )
 groups=("libastal")
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+${url}.git" "skip_valadoc.patch")
+sha256sums=('SKIP'
+            'e6e4370c322dae49e0b7c3d9a07baea0e024c859bc4bfae15843ec2ff78d4cb1')
 
 pkgver() {
   cd astal
   #git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+    cd astal 
+    patch -Np1 -i ../skip_valadoc.patch
 }
 
 build() {
