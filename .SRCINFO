@@ -1,27 +1,5 @@
 pkgbase = sticky-rs-git
 	pkgdesc = Image sticky note app that enables users to stick pictures to the desktop and have them always visible
-	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://github.com/FengZhongShaoNian/sticky-rs
-	arch = any
-	license = GPL2
-	makedepends = nodejs
-	makedepends = pnpm
-	makedepends = rust
-	makedepends = dpkg
-	depends = webkit2gtk
-	depends = gtk3
-	depends = libayatana-appindicator
-	provides = sticky-rs
-	conflicts = sticky-rs
-	options = !strip
-	options = !emptydirs
-	source = git+https://github.com/FengZhongShaoNian/sticky-rs
-	sha256sums = SKIP
-
-pkgname = sticky-rs-git
-pkgbase = sticky-rs-git
-	pkgdesc = Image sticky note app that enables users to stick pictures to the desktop and have them always visible
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/FengZhongShaoNian/sticky-rs
