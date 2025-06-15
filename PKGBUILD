@@ -6,9 +6,10 @@ pkgver='0.0.2+2+gedb9e09'
 pkgrel='3'
 pkgdesc='X Window System font support for Pango'
 arch=('x86_64')
-url='http://www.pango.org/'
-license=('LGPL')
-depends=('pango')
+#url='http://www.pango.org/'
+url='https://gitlab.gnome.org/Archive/pangox-compat'
+license=('LGPL-2.0-only')
+depends=('glibc' 'glib2' 'pango' 'libx11')
 makedepends=('git')
 source=(
   "git+https://gitlab.gnome.org/Archive/pangox-compat.git"
@@ -39,6 +40,7 @@ build() {
   cd ${pkgname}
 
   if [ ! -s 'Makefile' ]; then
+    export CFLAGS="${CFLAGS} -Wno-error=incompatible-pointer-types -Wno-error=int-conversion -Wno-error=implicit-function-declaration"
     NOCONFIGURE=1 ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
       --disable-static
