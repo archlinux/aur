@@ -1,6 +1,6 @@
 pkgbase = fwupd-starlabs-git
 	pkgdesc = Simple daemon to allow session software to update firmware (StarLabs version)
-	pkgver = 1.8.2.r2661.gea83e19
+	pkgver = 1.8.2.r5231.g0e29c54
 	pkgrel = 1
 	url = https://github.com/StarLabsLtd/fwupd
 	arch = x86_64

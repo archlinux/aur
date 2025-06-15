@@ -11,7 +11,7 @@ pkgname=(
   $pkgbase
   ${_srcdir}-docs-git
 )
-pkgver=1.8.2.r2661.gea83e19
+pkgver=1.8.2.r5231.g0e29c54
 pkgrel=1
 pkgdesc="Simple daemon to allow session software to update firmware (StarLabs version)"
 arch=(x86_64)
@@ -88,7 +88,6 @@ build() {
   local meson_options=(
     -D docs=enabled
     -D efi_binary=false
-    -D launchd=disabled
     -D supported_build=enabled
     -D systemd_unit_user=fwupd
   )
@@ -147,7 +146,6 @@ package_fwupd-starlabs-git() {
   mv "${pkgdir}"/usr/share/man/man1/{,fwupd-}dbxtool.1
   # Remove msr module-load config as it is built-in
   rm "${pkgdir}"/usr/lib/modules-load.d/fwupd-msr.conf
-  rmdir "${pkgdir}"/usr/lib/modules-load.d
 
   _pick docs "${pkgdir}"/usr/share/doc/{,fwupd/}{libfwupdplugin,libfwupd}
 }
