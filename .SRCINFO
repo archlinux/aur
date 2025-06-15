@@ -1,0 +1,19 @@
+pkgbase = dazel
+	pkgdesc = Run Bazel in a Docker container via a seamless proxy
+	pkgver = 0.0.42
+	pkgrel = 1
+	url = https://github.com/nadirizr/dazel
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	provides = dazel
+	conflicts = dazel
+	source = https://files.pythonhosted.org/packages/source/d/dazel/dazel-0.0.42.tar.gz
+	source = https://raw.githubusercontent.com/nadirizr/dazel/refs/heads/master/LICENSE
+	sha256sums = 244efe192ec3a6e1680b62cadddbd8be3b4e77347114c1f381945fbeb1810ed4
+	sha256sums = 2ec5ab429a9186dc3b3e87dfec975b8f305ea312540306ef6591852c9cc97f62
+
+pkgname = dazel
