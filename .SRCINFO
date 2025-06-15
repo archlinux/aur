@@ -1,0 +1,14 @@
+pkgbase = tor-ctrl
+	pkgdesc = Tor control port command line tool
+	pkgver = 5.7
+	pkgrel = 1
+	url = https://github.com/adrelanos/tor-ctrl
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = pandoc
+	depends = bash
+	depends = safe-rm
+	source = https://github.com/adrelanos/tor-ctrl/archive/refs/tags/5.7-1.tar.gz
+	sha256sums = 801b72679c1ce14f90e36e53148d3345426f0071a921e8e2161422afe87286c3
+
+pkgname = tor-ctrl
