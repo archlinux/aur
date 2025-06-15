@@ -15,6 +15,9 @@ INSTALLERS_PATH = os.path.join(BASE_PATH, "installers")
 
 BRAILLE_FRAMES = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
 
+def get_distro_path(distro):
+    return os.path.expanduser(f"~/clivm/.{distro}")
+
 def bottom_message(stdscr, message):
     height, width = stdscr.getmaxyx()
     stdscr.move(height - 1, 0)
@@ -41,7 +44,7 @@ def show_spinner(message):
     sys.stdout.flush()
 
 def launch_chroot(distro):
-    path = os.path.join(BASE_PATH, f".{distro}")
+    path = get_distro_path(distro)
     if not os.path.isdir(path):
         input("\nPress Enter to return to launcher...")
         return
@@ -97,7 +100,7 @@ def run_installer(distro):
             pass
 
 def uninstall_distro(distro):
-    path = os.path.join(BASE_PATH, f".{distro}")
+    path = get_distro_path(distro)
     if not os.path.isdir(path):
         input(f"\n{distro} is not installed. Press Enter to continue...")
         return
@@ -133,7 +136,7 @@ def uninstall_distro(distro):
             pass
 
 def install_menu(stdscr):
-    missing = [d for d in DISTROS if not os.path.isdir(os.path.join(BASE_PATH, f".{d}"))]
+    missing = [d for d in DISTROS if not os.path.isdir(get_distro_path(d))]
     if not missing:
         bottom_message(stdscr, "All distros installed. Press any key to return.")
         stdscr.getch()
@@ -172,7 +175,7 @@ def install_menu(stdscr):
             break
 
 def uninstall_menu(stdscr):
-    installed = [d for d in DISTROS if os.path.isdir(os.path.join(BASE_PATH, f".{d}"))]
+    installed = [d for d in DISTROS if os.path.isdir(get_distro_path(d))]
     if not installed:
         bottom_message(stdscr, "No distros to uninstall. Press any key to return.")
         stdscr.getch()
@@ -237,7 +240,7 @@ def main(stdscr):
             if item in ["Install new distro", "Uninstall distro"]:
                 stdscr.addstr(y, 4, f"{marker} {item}")
             else:
-                path = os.path.join(BASE_PATH, f".{item}")
+                path = get_distro_path(item)
                 status = "(found)" if os.path.isdir(path) else "(missing)"
                 stdscr.addstr(y, 4, f"{marker} {item.capitalize():<8} {status}")
 
@@ -254,24 +257,18 @@ def main(stdscr):
         elif key in [curses.KEY_DOWN, ord('j')]:
             selected = (selected + 1) % len(menu)
         elif key in [10, 13]:
-            if menu[selected] == "Install new distro":
+            choice = menu[selected]
+            if choice == "Install new distro":
                 install_menu(stdscr)
-            elif menu[selected] == "Uninstall distro":
+            elif choice == "Uninstall distro":
                 uninstall_menu(stdscr)
             else:
-                distro = menu[selected]
-                path = os.path.join(BASE_PATH, f".{distro}")
-                if os.path.isdir(path):
-                    launch_chroot(distro)
-                else:
-                    bottom_message(stdscr, f"{distro} not installed.")
-                    stdscr.getch()
-        elif key in [27, ord('q')]:
+                launch_chroot(choice)
+        elif key in [ord('q'), 27]:
             break
 
 if __name__ == "__main__":
     try:
         curses.wrapper(main)
     except KeyboardInterrupt:
-        print("\nExiting launcher...")
-        sys.exit(0)
+        print("\nExiting clivm launcher...")
