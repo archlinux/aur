@@ -10,7 +10,7 @@ license=('MIT')
 depends=('debootstrap' 'arch-install-scripts' 'wget' 'git')
 makedepends=()
 source=("clivm-${pkgver}.tar.gz")
-sha256sums=('931c48e9b3924da7b7bcd1c492fd772a22e546f6f2a4f4797e1100bbcdab129e')
+sha256sums=('a409329d1b45c4ac82e24a3b6f9c11572bfa61c5df5bb23713b1caf719947881')
 
 package() {
   cd "$srcdir"   # <-- just $srcdir, no subdirectory
