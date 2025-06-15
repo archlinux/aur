@@ -2,30 +2,28 @@
 # Contributor: Nils Bars <nils@nbars.de>
 
 pkgname=cutecom
-pkgver=0.51.0
-pkgrel=5
+_pkgver=0.60.0-RC1
+pkgver=${_pkgver//-/_}
+pkgrel=1
 pkgdesc="A graphical serial terminal"
 arch=(i686 x86_64 aarch64)
 url="https://gitlab.com/cutecom/cutecom"
 license=(GPL-3.0-only)
-depends=(gcc-libs glibc hicolor-icon-theme qt5-base qt5-serialport)
-makedepends=(cmake patch)
-source=(${pkgname}-v${pkgver}.tar.gz::https://gitlab.com/cutecom/cutecom/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz
-        fix_qpainterpath.patch
+depends=(gcc-libs glibc hicolor-icon-theme 'qt6-base>=6.6' qt6-serialport)
+makedepends=('cmake>=3.5' patch)
+source=(${pkgname}-v${pkgver}.tar.gz::https://gitlab.com/cutecom/cutecom/-/archive/v${_pkgver}/${pkgname}-v${_pkgver}.tar.gz
         fix_lrzsz.patch)
-sha256sums=('4b2591daa983b31716091bd1602988b5a06a19c1a3402150826fc36233edbedd'
-            '9ac6861c60b7e68cc0daa58ff745fffbf5a99214b584d00e54574db41e4e7eca'
-            'e171370cd9e0f8ab1627b2456129cea9f3a98d39a518cbf46df4ed1dcca9d2cf')
+sha256sums=('955c385cbcfdc5035d445104b6488bb95de5a28403c5a5745ab7863f32bc3419'
+            '2a17cc4604c111e95115ad5e60199ae08cfd6e6c92e41181d971f410d828ec6e')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-v${pkgver}"
+  cd "${srcdir}/${pkgname}-v${_pkgver}"
 
-  patch -Np0 -i "${srcdir}/fix_qpainterpath.patch"
   patch -Np0 -i "${srcdir}/fix_lrzsz.patch"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-v${pkgver}"
+  cd "${srcdir}/${pkgname}-v${_pkgver}"
 
   mkdir build
   cd build
@@ -35,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-v${pkgver}"
+  cd "${srcdir}/${pkgname}-v${_pkgver}"
 
   install -Dm644 cutecom.desktop "${pkgdir}/usr/share/applications/cutecom.desktop"
   install -Dm644 images/cutecom.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/cutecom.svg"
