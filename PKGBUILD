@@ -4,7 +4,7 @@
 
 pkgname=prowlarr-develop
 _pkgname=Prowlarr
-pkgver=1.37.0.5076
+pkgver=2.0.0.5094
 pkgrel=1
 pkgdesc='Indexer manager/proxy for usenet and torrent users (develop branch)'
 arch=(x86_64 aarch64 armv7h)
@@ -12,12 +12,12 @@ url='https://prowlarr.com'
 license=('GPL-3.0-or-later')
 groups=(servarr-develop)
 depends=(
-  aspnet-runtime-6.0
+  aspnet-runtime-8.0
   gcc-libs
   glibc
   sqlite
 )
-makedepends=(dotnet-sdk-6.0 yarn)
+makedepends=(dotnet-sdk-8.0 yarn)
 optdepends=(
   'postgresql: postgresql database'
   'sabnzbd: usenet downloader'
@@ -52,7 +52,7 @@ source=(
   prowlarr.sysusers
   prowlarr.tmpfiles
 )
-sha256sums=('36f8c2afad749a62a7c95ef838ef33018373626f104dc2b630a0bc8fcf1c0c9d'
+sha256sums=('269c89106a6b2fb8656a8e7f6403b997cf34788ed501b6bed0ab0b3a0772b3db'
             '15b6ed4b78eafc6d0059c87d71945782f1600c57047562a0865fd1779f7ee293'
             '5aa5a7800453d13948430744ca9f32584bf64f09daadf534e6eb2f6c5c452b4c'
             'ee61f5621eae6ab932fb093a4f75a0ab11bf9e3ca829f0d34c25014f68aeff7d'
@@ -64,7 +64,7 @@ case ${CARCH} in
   armv7h) _CARCH='arm' ;;
 esac
 
-_framework='net6.0'
+_framework='net8.0'
 _runtime="linux-${_CARCH}"
 _output='_output'
 _artifacts="${_output}/${_framework}/${_runtime}/publish"
@@ -72,6 +72,9 @@ _branch='develop'
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
+
+  # Remove upstream dotnet version
+  rm global.json
 
   # Prepare backend
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
