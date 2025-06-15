@@ -8,13 +8,12 @@
 _name="gurobi"
 pkgname="matlab-${_name}"
 pkgver=12.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="State-of-the-art solver for mathematical programming (MATLAB bindings)"
 arch=('x86_64') # 'aarch64'
 url="https://www.gurobi.com/products/gurobi-optimizer"
 license=('custom:Gurobi EULA')
-depends=("${_name}>=${pkgver}") # 'matlab>=R2019a'
-optdepends=('matlab')
+depends=("${_name}>=${pkgver}" 'matlab-version>=R2019a')
 _pkgsrc="${_name}-${pkgver}"
 source=("${_name}_setup.m")
 # source_aarch64=("${_pkgsrc}-aarch64.tar.gz::https://packages.gurobi.com/${pkgver%.*}/${_name}${pkgver}_armlinux64.tar.gz")
