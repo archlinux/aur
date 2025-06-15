@@ -1,0 +1,4 @@
+[python-ppmpy]
+source = "github"
+github = "python-hydro/ppmpy"
+use_latest_release = "true"
