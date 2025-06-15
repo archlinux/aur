@@ -1,6 +1,6 @@
 pkgbase = celestia-qt5-git
 	pkgdesc = Real-time space simulation (git version with Qt5 and video capture)
-	pkgver = r7149.3c9edf58d
+	pkgver = r7228.814c49354
 	pkgrel = 1
 	url = https://celestiaproject.space
 	arch = x86_64

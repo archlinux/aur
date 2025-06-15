@@ -1,6 +1,6 @@
 # Maintainer: Sich <little_sich@tuta.io>
 pkgname=celestia-qt5-git
-pkgver=r7149.3c9edf58d
+pkgver=r7228.814c49354
 pkgrel=1
 pkgdesc="Real-time space simulation (git version with Qt5 and video capture)"
 arch=(x86_64)
@@ -11,9 +11,9 @@ makedepends=('git' 'cmake' 'make' 'boost' 'gperf')
 provides=('celestia')
 conflicts=('celestia')
 source=(git+https://github.com/CelestiaProject/Celestia.git
-		git+https://github.com/CelestiaProject/CelestiaContent.git)
+        git+https://github.com/CelestiaProject/CelestiaContent.git)
 sha512sums=('SKIP'
-			'SKIP')
+            'SKIP')
 
 pkgver() {
     cd "$srcdir/Celestia"
@@ -22,25 +22,25 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/Celestia"
-	git submodule update --init
+    git submodule update --init
 }
 
 build() {
-	cd "$srcdir/Celestia"
-	cmake -B build \
-		-DCMAKE_INSTALL_PREFIX=/usr \
+    cd "$srcdir/Celestia"
+    cmake -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr \
         -DENABLE_QT5=ON \
-		-DENABLE_FFMPEG=ON \
-		-Wno-dev
-	cd build && make
-	cd "$srcdir/CelestiaContent"
-	cmake -B build -DCMAKE_INSTALL_PREFIX=/usr
-	cd build && make
+        -DENABLE_FFMPEG=ON \
+        -Wno-dev
+    cd build && make
+    cd "$srcdir/CelestiaContent"
+    cmake -B build -DCMAKE_INSTALL_PREFIX=/usr
+    cd build && make
 }
 
 package() {
-	cd "$srcdir/Celestia/build"
-	make DESTDIR="${pkgdir}" install
-	cd "$srcdir/CelestiaContent/build"
-	make DESTDIR="${pkgdir}" install
+    cd "$srcdir/Celestia/build"
+    make DESTDIR="${pkgdir}" install
+    cd "$srcdir/CelestiaContent/build"
+    make DESTDIR="${pkgdir}" install
 }
