@@ -1,12 +1,11 @@
 pkgbase = tilix
 	pkgdesc = A tiling terminal emulator for Linux using GTK+ 3
 	pkgver = 1.9.6
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/gnunn1/tilix
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = ldc
-	makedepends = po4a
 	makedepends = meson
 	makedepends = appstream
 	depends = libx11

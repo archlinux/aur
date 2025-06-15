@@ -5,13 +5,13 @@
 
 pkgname=tilix
 pkgver=1.9.6
-pkgrel=8
+pkgrel=9
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64')
 url="https://github.com/gnunn1/tilix"
 license=('MPL-2.0')
 depends=('libx11' 'gtkd' 'vte3' 'dconf' 'gsettings-desktop-schemas' 'liblphobos' 'libunwind')
-makedepends=('ldc' 'po4a' 'meson' 'appstream')
+makedepends=('ldc' 'meson' 'appstream')
 optdepends=('python-nautilus: for "Open Tilix Here" support in nautilus'
             'libsecret: for the password manager')
 

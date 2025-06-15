@@ -9,3 +9,9 @@
 
 # packages
 *.pkg.tar.xz
+
+pkg
+src
+*.tar.gz
+*.pkg.tar.zst
+utils
