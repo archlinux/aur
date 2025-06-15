@@ -1,14 +1,14 @@
 pkgbase = db2-odbc-cli
 	pkgdesc = IBM Data Server Driver for ODBC and CLI
 	pkgver = 12.1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ibm.com/docs/en/db2/12.1?topic=installing-data-server-drivers-clients
 	arch = x86_64
 	license = custom:IBM IPLA
 	depends = gcc-libs
 	depends = glibc
 	depends = pam
-	depends = libxml2
+	depends = libxml2-legacy
 	depends = libxcrypt-compat
 	depends = krb5
 	source = linuxx64_odbc_cli-12.1.0.0.tar.gz::https://public.dhe.ibm.com/ibmdl/export/pub/software/data/db2/drivers/odbc_cli/v12.1.0/linuxx64_odbc_cli.tar.gz

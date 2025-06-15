@@ -3,7 +3,7 @@
 pkgname=db2-odbc-cli
 # Mentioned in clidriver/include/sql.h
 pkgver=12.1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='IBM Data Server Driver for ODBC and CLI'
 arch=('x86_64')
 url='https://www.ibm.com/docs/en/db2/12.1?topic=installing-data-server-drivers-clients'
@@ -14,7 +14,7 @@ license=('custom:IBM IPLA')
 #         awk '/Shared library:/ { gsub(/\[|\]/, ""); if (!seen[$NF]++) { print "/usr/lib/" $NF } }' |
 #         pacman -Qqo - |
 #         sort -u
-depends=('gcc-libs' 'glibc' 'pam' 'libxml2' 'libxcrypt-compat' 'krb5')
+depends=('gcc-libs' 'glibc' 'pam' 'libxml2-legacy' 'libxcrypt-compat' 'krb5')
 source=("linuxx64_odbc_cli-$pkgver.tar.gz::https://public.dhe.ibm.com/ibmdl/export/pub/software/data/db2/drivers/odbc_cli/v${pkgver%.0}/linuxx64_odbc_cli.tar.gz")
 sha256sums=('27cc46b5e7309bae9a13c1c3adc705f1c0d6916ed3e1ac162f2e95430262822d')
 
