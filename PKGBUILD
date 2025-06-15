@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=ng-log
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="API compatible maintained fork of google-glog application-level logging library"
 arch=(x86_64)
@@ -18,15 +18,8 @@ makedepends=(
 provides=(google-glog)
 conflicts=(google-glog)
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ng-log/ng-log/archive/refs/tags/v${pkgver}.tar.gz"
-"obsolete-glog-pc.patch::https://github.com/ng-log/ng-log/pull/8.patch")
-sha256sums=('5686d086d3891e342906797e99c785f9a54fe670cfedddb005597ef2891a9f09'
-            '1d67232253b5ea8d622073f470db0bb6777df0053686f08d044b4cb3259e7150')
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  patch -Np1 -i ../obsolete-glog-pc.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ng-log/ng-log/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('3647c3d7f55ded4bd1c7a69263fdc97b422cd1213485c763cbc0c35294bbeca7')
 
 build() {
   cd "${pkgname}-${pkgver}"
