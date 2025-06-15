@@ -2,7 +2,7 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=ps7b_libps5000
 pkgver=2.1.148_3r6156
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for PicoScope 5000 series in PicoScope 7 Beta"
 arch=('x86_64')
 url="https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps5000/"
@@ -21,12 +21,12 @@ source=("https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps5000
 md5sums=('7c857c0b083d98b977949f564c5a16a5')
 
 package() {
-  tar -xf data.tar.xz -C "${pkgdir}"
+  tar -xf data.tar.* -C "${pkgdir}"
   chmod -R go-w $pkgdir
   chown -R root:root $pkgdir
 
   mkdir -p $pkgdir/opt/picoscope/scripts
-  tar -xf control.tar.xz -C "${pkgdir}/opt/picoscope/scripts" ./postinst
+  tar -xf control.tar.* -C "${pkgdir}/opt/picoscope/scripts" ./postinst
   mv "${pkgdir}/opt/picoscope/scripts/postinst" "${pkgdir}/opt/picoscope/scripts/${pkgname}_postinst"
   
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/usr/share/doc/libps5000/copyright" 
