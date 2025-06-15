@@ -3,7 +3,7 @@
 
 pkgname=parabolic-qt
 _name="${pkgname%-qt}"
-pkgver=2025.5.5
+pkgver=2025.6.0
 pkgrel=1
 pkgdesc="Download web video and audio (Qt)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ provides=('tube-converter')
 conflicts=('tube-converter')
 replaces=('tube-converter')
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('7bc52e11df0e63bda40918ba0b305fcecece113c6443a8c7475a348b8454ceb6')
+sha256sums=('a2715fc437335fe633fc227fd2ab1da76eae098a7ab9dfc35ef7a53f4d6cf7d3')
 
 build() {
     cmake -B build -S "${_name^}-${pkgver}" \
