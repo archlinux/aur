@@ -1,14 +1,14 @@
 pkgbase = fish-lsp-git
 	pkgdesc = LSP implementation for the fish shell language
-	pkgver = r321.9e1ffad
-	pkgrel = 2
+	pkgver = r354.440de78
+	pkgrel = 1
 	url = https://github.com/ndonfris/fish-lsp/
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = yarn
 	depends = fish
-	depends = nodejs
+	depends = nodejs>=22.0.0
 	depends = python
 	provides = fish-lsp
 	conflicts = fish-lsp
