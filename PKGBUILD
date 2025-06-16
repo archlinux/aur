@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='vsd'
-pkgver='0.3.3'
+pkgver='0.4.0'
 pkgrel='1'
 pkgdesc='Download video streams served over HTTP from websites, HLS and DASH playlists'
 arch=('x86_64' 'aarch64')
@@ -13,13 +13,13 @@ optdepends=(
 )
 options=('!lto')
 source=(
-	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz::$url/archive/vsd-$pkgver.tar.gz"
 	"$pkgname-$pkgver-bento4.tar.gz::https://github.com/axiomatic-systems/Bento4/archive/v1.6.0-641.tar.gz"
 )
-b2sums=('f84f630b4b8eeefa495e6ca8652e7d7731d35b24a1797b16b806ee7789bf7c569b01c85f9d51771e1b155e179a572df08e9bf67c9559d33e41d6c5af4d267508'
+b2sums=('c536abe235ea5c4b9312e4878b62cedee625573d7da3428898f381f87bb3c7f3556a5fa6410cc2ff31d51213db3f92944cd232576002becadb9d56242b96bde7'
         '8bec91edcba170917de5941d94fecbc2028d4503651e7863b5c6a5d24bbe442b7a5d53644770d3221c28c5a9f2a2620c04e836f748660a808e27e157db93b117')
 
-_sourcedirectory="$pkgname-$pkgver"
+_sourcedirectory="$pkgname-vsd-$pkgver"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
