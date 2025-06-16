@@ -1,11 +1,11 @@
 pkgbase = ttf-jetbrainsmaplemono-nf-xx-xx
 	pkgdesc = JetBrains Maple Mono: The free and open-source font fused with JetBrains Mono & Maple Mono
-	pkgver = 1.2304.70_beta36
+	pkgver = 1.2304.73
 	pkgrel = 1
 	url = https://github.com/SpaceTimee/Fusion-JetBrainsMapleMono
 	arch = any
 	license = OFL
-	source = https://github.com/SpaceTimee/Fusion-JetBrainsMapleMono/releases/download/1.2304.70_beta36/JetBrainsMapleMono-NF-XX-XX.zip
-	sha256sums = b36550bf86ba538d2d6249b9d91c0d345fd4b1a32291ffc9ba15427e05ad3f1b
+	source = https://github.com/SpaceTimee/Fusion-JetBrainsMapleMono/releases/download/1.2304.73/JetBrainsMapleMono-NF-XX-XX.zip
+	sha256sums = 533c804b44a5379fd163eb55664f1be44b3ef04b578031c12684bffd8624353b
 
 pkgname = ttf-jetbrainsmaplemono-nf-xx-xx
