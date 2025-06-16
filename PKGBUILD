@@ -1,6 +1,6 @@
 # Maintainer: @JonasAlv
 pkgname=zap-rs
-pkgver=1.0.0
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Simple and minimal web wrapper for whatsapp web"
 arch=(x86_64)

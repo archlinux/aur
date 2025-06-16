@@ -1,6 +1,6 @@
 pkgbase = zap-rs
 	pkgdesc = Simple and minimal web wrapper for whatsapp web
-	pkgver = 1.0.0
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/JonasAlv/zap-rs
 	install = zap-rs.install
