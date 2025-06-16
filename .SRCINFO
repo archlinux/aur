@@ -1,16 +1,16 @@
 pkgbase = gosmee-bin
 	pkgdesc = gosmee - A webhook and https://smee.io forwarder
-	pkgver = 0.26.0
+	pkgver = 0.26.1
 	pkgrel = 1
 	url = https://github.com/chmouel/gosmee
 	license = Apache 2.0
 	conflicts = gosmee
 	provides = gosmee
 	arch = aarch64
-	source_aarch64 = https://github.com/chmouel/gosmee/releases/download/v0.26.0/gosmee_0.26.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = fabd726d8f01bf207d33e89d6b8bc1f0056b2dbde41fd3e1a7421a9ee7bf79cb
+	source_aarch64 = https://github.com/chmouel/gosmee/releases/download/v0.26.1/gosmee_0.26.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 45fbfba7681deedb99a58e929a761af9c422a186974914f5af423dda54a888b3
 	arch = x86_64
-	source_x86_64 = https://github.com/chmouel/gosmee/releases/download/v0.26.0/gosmee_0.26.0_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 14b6834aadc462920ac829a967ec982e528f6f47019adf79118cf0c6c2af901d
+	source_x86_64 = https://github.com/chmouel/gosmee/releases/download/v0.26.1/gosmee_0.26.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = e1d27d99e16635f7af09a7678807f883adc26c744c07a3f1b312aa7aa7b51e4b
 	
 pkgname = gosmee-bin
