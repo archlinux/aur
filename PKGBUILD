@@ -1,36 +1,41 @@
 # Maintainer: Vladimir Bauer <vbauerster at gmail dot com>
+
 pkgname=getparty
 pkgdesc='HTTP download manager with multi-parts'
 pkgver=1.24.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'aarch64')
-url='https://github.com/vbauerster/getparty'
+url="https://github.com/vbauerster/${pkgname}.git"
 license=('BSD-3-Clause')
+provides=("${pkgname}")
+conflicts=("${pkgname}-bin")
 depends=('glibc')
 makedepends=('git' 'go')
-
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('49c3c28860e31df1c9d5d8e138fc334ee6db32e4f1c6428b9710071ad9bcd15e')
+source=("${pkgname}::git+${url}#tag=v${pkgver}")
+b2sums=('7f045d20517d936188e110330044d0dbe5d6cc937e33fcb679af24597d199d665cff053d6c8a23a4301293bee7f12bc5623989f3d8adb2195f3eea831e9f9ace')
 
 build() {
-  local _commit _flags
-  _commit=$(bsdcat "v${pkgver}.tar.gz" | git get-tar-commit-id)
-  _flags=(
-    -X=main.version="$pkgver"
-    -X=main.commit="${_commit::7}"
+    local _commit _flags
+    _commit=$(git -C "${pkgname}" rev-parse --short "v${pkgver}")
+    _flags=(
     -linkmode=external
-  )
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
+    -X=main.version="${pkgver}"
+    -X=main.commit="${_commit}"
+    )
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
 
-  go build -C "${pkgname}-${pkgver}/cmd/${pkgname}" -ldflags="${_flags[*]}"
+    go build -C "${pkgname}/cmd/${pkgname}" -ldflags="${_flags[*]}"
+}
+
+check() {
+    go test -C "${pkgname}" ./...
 }
 
 package() {
-  local _srcdir="${pkgname}-${pkgver}"
-  install -Dm755 -t "${pkgdir}/usr/bin" "${_srcdir}/cmd/${pkgname}/${pkgname}"
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_srcdir}/LICENSE"
+    install -Dm755 -t "${pkgdir}/usr/bin" "${pkgname}/cmd/${pkgname}/${pkgname}"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgname}/LICENSE"
 }
