@@ -1,14 +1,12 @@
 pkgbase = gnome-printing
 	pkgdesc = Using Printing Devices with GNU/Linux
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.aamot.io//software/gnome-printing/
 	arch = x86_64
-	optdepends = SKIP
-	provides = SKIP
-	conflicts = SKIP
-	backup = SKIP
-	source = http://www.aamotinnovation.com/software/gnome-printing/gnome-printing-0.2.0.tar.xz
+	license = LicenseRef-None
+	depends = gtk3
+	source = https://www.aamotinnovation.com/software/gnome-printing/gnome-printing-0.2.0.tar.xz
 	sha256sums = 94199fcc89af81033d2859f3e8531b67ec05014260fcb365fd7ccc48a5d8001c
 
 pkgname = gnome-printing
