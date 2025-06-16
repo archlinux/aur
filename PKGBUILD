@@ -19,9 +19,10 @@ depends=(
   python-gobject
   python-tidalapi
   org.freedesktop.secrets
+  "python-pypresence>=4.3.0.r27.gd6709d3"
 )
 optdepends=(
-  'python-pypresence>=4.3.0.r27.gd6709d3: Discord Rich Presence support'
+  # 'python-pypresence>=4.3.0.r27.gd6709d3: Discord Rich Presence support'
 )
 makedepends=(
   blueprint-compiler
