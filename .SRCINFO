@@ -1,13 +1,13 @@
 pkgbase = asset-manager-studio
 	pkgdesc = Asset Manager Studio
-	pkgver = 0.0.27
+	pkgver = 0.0.30
 	pkgrel = 1
 	url = https://assetmanager.studio/
 	arch = x86_64
 	license = APACHE
 	provides = asset-manager-studio
 	conflicts = asset-manager-studio
-	source = https://assetmanager.studio/dl/0.0.27/asset-manager-studio_0.0.27_amd64.deb
-	sha256sums = a83fa30b4c3a36e3c541bc1931cb5ca3756864bf63b6c72f235d3a0796639fac
+	source = https://assetmanager.studio/dl/0.0.30/asset-manager-studio_0.0.30_amd64.deb
+	sha256sums = 37825bdec8fb950692e65d23df9632e25e48a8b3b0da29425c994a9334a4d9d0
 
 pkgname = asset-manager-studio
