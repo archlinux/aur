@@ -1,23 +1,23 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 pkgname=microsip
 pkgver=3.21.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source portable SIP softphone for Windows based on PJSIP stack"
 _repouser=post-factum
 _reponame=microsip
-_wrapperver=1.1
+_wrapperver=1.2
 arch=(x86_64)
-url="https://www.microsip.org/"
+url=https://www.microsip.org
 license=(GPL-2.0-or-later)
 
 source=("MicroSIP-Lite-${pkgver}.zip"::"https://www.microsip.org/downloads/?file=MicroSIP-Lite-${pkgver}.zip"
 		"${_reponame}-${_wrapperver}.tar.gz"::"https://codeberg.org/${_repouser}/${_reponame}/archive/v${_wrapperver}.tar.gz")
 
 sha256sums=('25f081cb0850d245d3fa79f3e7273404be26a1aadfe80e2229b7f072f84d5d7c'
-            '7ff13e1c93434f1350132aad1b708461ef84e2fe181cade419d0f25e5a9f3510')
+            'f1d2bd0fb7e017f477e1c7e191d0e4c8185e335d5a0e3fdfe8046c9e98a3a3e0')
 
 package() {
-	depends=(wine lib32-libpulse xorg-xdpyinfo)
+	depends=(wine libpulse)
 
 	install -Dt "${pkgdir}"/usr/share/licenses/${pkgname} -m0644 License.txt
 	install -Dt "${pkgdir}"/usr/share/doc/${pkgname} -m0644 MicroSIP.url
