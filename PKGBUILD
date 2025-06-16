@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=quarkdown
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 _jdkver=21
 pkgdesc='a Markdown based typesetting system'
 arch=(any)
@@ -16,7 +16,7 @@ optdepends=('puppeteer: generate PDF output')
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz"
         "$pkgname-$pkgver-$pkgrel.patch::https://github.com/iamgio/quarkdown/compare/v$pkgver...alerque:quarkdown:packageable.patch")
-sha256sums=('ec46a6eb35f80e7f34a62c55345c32b78d1a07758f12b89d73ec5bf2b090c4f2'
+sha256sums=('a7d5886baf4c683e58be17bb5256be489db9ad91a983c0e61e6366fce319ece6'
             'ed1f50bba78042db3ef0b7a686bbb3aaff7a4ddc1d4291d342cc7cfc0af0eb2e')
 
 prepare() {
