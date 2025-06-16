@@ -1,0 +1,46 @@
+From 0837165331607989b53b48c1067bcf96612a5873 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Tue, 24 Sep 2024 21:41:59 +0200
+Subject: [PATCH 1/1] fix detection of libheif >= 1.18.0
+
+https://github.com/strukturag/libheif/commit/cf0d89c6e0809427427583290547a7757428cf5a
+---
+ configure.ac | 25 +++++++------------------
+ 1 file changed, 7 insertions(+), 18 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 48c3c77..7c857bc 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1843,24 +1843,13 @@ can_export_heic=no
+ can_import_avif=no
+ can_export_avif=no
+ if test "x$have_libheif" = xyes; then
+-  can_import_heic=`$PKG_CONFIG --variable=builtin_h265_decoder libheif`
+-  can_export_heic=`$PKG_CONFIG --variable=builtin_h265_encoder libheif`
+-  if test "x$can_import_heic" = xyes; then
+-    MIME_TYPES="$MIME_TYPES;image/heif;image/heic"
+-  fi
+-  can_import_avif=`$PKG_CONFIG --variable=builtin_avif_decoder libheif`
+-  can_export_avif=`$PKG_CONFIG --variable=builtin_avif_encoder libheif`
+-  if test "x$can_import_avif" = xyes; then
+-    MIME_TYPES="$MIME_TYPES;image/avif"
+-  fi
+-
+-  if test "x$can_import_heic" != xyes && test "x$can_import_avif" != xyes; then
+-    have_libheif=no
+-    have_libheif_1_4_0=no
+-    warning_libheif=""
+-  else
+-    FILE_HEIF='file-heif$(EXEEXT)'
+-  fi
++  can_import_heic=yes
++  can_export_heic=yes
++  can_import_avif=yes
++  can_export_avif=yes
++  MIME_TYPES="$MIME_TYPES;image/heif;image/heic"
++  MIME_TYPES="$MIME_TYPES;image/avif"
++  FILE_HEIF='file-heif$(EXEEXT)'
+ fi
+ 
+ AC_SUBST(FILE_HEIF)

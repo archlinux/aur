@@ -1,0 +1,30 @@
+diff --git a/libgimpconfig/gimpconfig-serialize.c b/libgimpconfig/gimpconfig-serialize.c
+index 0df5bbcd02..f14ef3bbbe 100644
+--- a/libgimpconfig/gimpconfig-serialize.c
++++ b/libgimpconfig/gimpconfig-serialize.c
+@@ -367,10 +367,10 @@ gimp_config_serialize_value (const GValue *value,
+ {
+   if (G_VALUE_HOLDS_BOOLEAN (value))
+     {
+-      gboolean bool;
++      gboolean _bool;
+ 
+-      bool = g_value_get_boolean (value);
+-      g_string_append (str, bool ? "yes" : "no");
++      _bool = g_value_get_boolean (value);
++      g_string_append (str, _bool ? "yes" : "no");
+       return TRUE;
+     }
+ 
+diff --git a/plug-ins/selection-to-path/types.h b/plug-ins/selection-to-path/types.h
+index 9b040fa3a1..96f96f8651 100644
+--- a/plug-ins/selection-to-path/types.h
++++ b/plug-ins/selection-to-path/types.h
+@@ -20,7 +20,7 @@
+ #define TYPES_H
+ 
+-/* Booleans.  */
+-typedef enum { false = 0, true = 1 } boolean;
+-
+ /* The X11 library defines `FALSE' and `TRUE', and so we only want to
+    define them if necessary.  */
