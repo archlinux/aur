@@ -41,17 +41,14 @@ pkgver() {
 
 prepare() {
     cd $pkgname
-    git checkout main
 }
 
 build() {  
-  cd $pkgname
-  meson build -Dprefix=/usr
+  arch-meson $pkgname build
   ninja -C build
 }
 
 package() {
-  cd $pkgname
   DESTDIR="$pkgdir/" ninja -C build install
 }
 
