@@ -1,4 +1,4 @@
-# Maintainer: naetherm
+# Maintainer: Funami
 pkgname=asset-manager-studio
 pkgver=0.0.30
 pkgrel=1
