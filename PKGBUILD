@@ -1,8 +1,8 @@
 # Maintainer: DreamMaoMao <maoopzopaasnmakslpo@gmail.com>
 
 pkgname=maomaowm-git
-pkgver=r166.20bd984
-pkgrel=2
+pkgver=r517.6b2ef05
+pkgrel=1
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/maomaowm"
 arch=("x86_64")
@@ -45,11 +45,13 @@ prepare() {
 }
 
 build() {  
-  arch-meson $pkgname build 
+  cd $pkgname
+  meson build -Dprefix=/usr
   ninja -C build
 }
 
 package() {
+  cd $pkgname
   DESTDIR="$pkgdir/" ninja -C build install
 }
 
