@@ -2,52 +2,39 @@
 # Contributor: VirtualTam <virtualtam@flibidi.net>
 
 _pkgname=ganv
-pkgname="${_pkgname}-git"
-pkgver=1.6.0.r354.662bcbc
+pkgname=$_pkgname-git
+pkgver=1.8.2.r27.ga59bd3b
 pkgrel=1
-pkgdesc="An interactive Gtkmm canvas widget for graph-based interfaces (git version)"
-arch=('i686' 'x86_64')
-url="https://drobilla.net/software/ganv/"
-license=('GPL3')
-depends=('atk' 'cairo' 'fontconfig' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'glibmm'
-         'graphviz' 'gtk2' 'gtkmm' 'libfreetype.so' 'pango')
-makedepends=('git' 'python')
-provides=("$_pkgname" "$_pkgname=${pkgver//.r*/}" "lib${_pkgname}-${pkgver::1}.so")
-conflicts=("$_pkgname")
-source=("${_pkgname}::git+https://gitlab.com/drobilla/${_pkgname}.git"
-        'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
-sha256sums=('SKIP'
-            'SKIP')
-
-
-prepare() {
-  cd "$srcdir/${_pkgname}"
-
-  git submodule init
-  git config submodule.waflib.url "${srcdir}/autowaf"
-  git submodule update
-
-  # remove local call to ldconfig
-  sed -i "/ldconfig/d" wscript
-}
+pkgdesc='An interactive Gtkmm canvas widget for graph-based interfaces (git version)'
+arch=(x86_64)
+url='https://gitlab.com/drobilla/ganv'
+license=(GPL-3.0-or-later)
+depends=(cairo gcc-libs glib2 glibc graphviz 'gtk2>=2.10' 'gtkmm>=2.10' libsigc++ pango)
+makedepends=(git meson)
+provides=($_pkgname lib$_pkgname-${pkgver::1}.so)
+conflicts=($_pkgname)
+source=("$_pkgname::git+https://gitlab.com/drobilla/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${_pkgname}"
+  cd $_pkgname
+  local ver="$(grep -A 15 ^project meson.build | grep '^ *version:' | cut -d "'" -f 2)"
 
-  local ver=`grep "^GANV_VERSION" wscript | cut -d "'" -f 2`
-  echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/^release-//;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  )
 }
 
 build(){
-  cd "$srcdir/${_pkgname}"
-
-  python waf configure --prefix="/usr"
-  python waf build ${MAKEFLAGS}
+  arch-meson --reconfigure $_pkgname $_pkgname-build -D nls=disabled
+  meson compile -C $_pkgname-build
 }
 
 package() {
-  cd "$srcdir/${_pkgname}"
-
-  python waf install --destdir=${pkgdir}
-  install -vDm 644 AUTHORS NEWS README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  depends+=(libcairo.so libgdk-x11-2.0.so libglib-2.0.so libgobject-2.0.so
+    libgtk-x11-2.0.so libpango-1.0.so libpangocairo-1.0.so libsigc-2.0.so)
+  meson install -C $_pkgname-build --destdir=${pkgdir}
+  install -vDm 644 $_pkgname/{AUTHORS,NEWS,README.md} \
+    -t "$pkgdir"/usr/share/doc/$pkgname
 }

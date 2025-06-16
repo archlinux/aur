@@ -1,34 +1,42 @@
 pkgbase = ganv-git
 	pkgdesc = An interactive Gtkmm canvas widget for graph-based interfaces (git version)
-	pkgver = 1.6.0.r354.662bcbc
+	pkgver = 1.8.2.r27.ga59bd3b
 	pkgrel = 1
-	url = https://drobilla.net/software/ganv/
-	arch = i686
+	url = https://gitlab.com/drobilla/ganv
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = python
-	depends = atk
+	makedepends = meson
 	depends = cairo
-	depends = fontconfig
 	depends = gcc-libs
-	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc
-	depends = glibmm
 	depends = graphviz
-	depends = gtk2
-	depends = gtkmm
-	depends = libfreetype.so
+	depends = gtk2>=2.10
+	depends = gtkmm>=2.10
+	depends = libsigc++
 	depends = pango
 	provides = ganv
-	provides = ganv=1.6.0
 	provides = libganv-1.so
 	conflicts = ganv
 	source = ganv::git+https://gitlab.com/drobilla/ganv.git
-	source = autowaf::git+https://gitlab.com/drobilla/autowaf.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ganv-git
-
+	depends = cairo
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = graphviz
+	depends = gtk2>=2.10
+	depends = gtkmm>=2.10
+	depends = libsigc++
+	depends = pango
+	depends = libcairo.so
+	depends = libgdk-x11-2.0.so
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = libgtk-x11-2.0.so
+	depends = libpango-1.0.so
+	depends = libpangocairo-1.0.so
+	depends = libsigc-2.0.so
