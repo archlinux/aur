@@ -3,12 +3,12 @@
 pkgname=fulcrum-git
 _pkgname=${pkgname/-git/}
 pkgdesc='A fast & nimble SPV server for BCH, BTC, and LTC'
-pkgver=1.12.0.1.r0.g47448ef
+pkgver=1.12.0.1.r7.ga00f3e8
 pkgrel=1
 url='https://github.com/cculianu/Fulcrum'
 arch=('any')
 license=('GPL3')
-depends=('qt5-base'
+depends=('qt6-base'
          'rocksdb'
          'python'
          'miniupnpc'
