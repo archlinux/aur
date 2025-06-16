@@ -2,12 +2,12 @@
 # Co-Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=opendeck
 pkgver=v2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform desktop application that provides functionality for stream controller devices."
 arch=('x86_64')
 url="https://github.com/ninjadev64/OpenDeck"
 license=('GPL-3.0')
-makedepends=(git deno cargo dpkg hidapi)
+makedepends=(git deno-init cargo dpkg hidapi)
 depends=(libappindicator-gtk3 webkit2gtk-4.1)
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -25,7 +25,7 @@ prepare() {
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 	cd ..
 	export DENO_DIR="${srcdir}/deno-cache"
-	deno install
+	deno install || (echo "please run 'sudo deno upgrade' before installing the package again" && exit 0)
 }
 
 build() {
