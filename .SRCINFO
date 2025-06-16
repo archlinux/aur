@@ -1,0 +1,12 @@
+pkgbase = wlprobe
+	pkgdesc = wayland-info but intended for computers rather than humans
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/PolyMeilex/wlprobe
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	source = wlprobe-0.1.0.tar.gz::https://github.com/PolyMeilex/wlprobe/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = c537ffdcfafd8fb6c9e1fdd387158762cb58f980bedbfca72b65489f344d51b3
+
+pkgname = wlprobe
