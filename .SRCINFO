@@ -1,0 +1,15 @@
+pkgbase = archcraft-pkg
+	pkgdesc = archcraft-pkg Alternative realtime crafting header coop reactivable and file-timesnapshot package utility.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = bash
+	depends = zstd
+	depends = tar
+	depends = python
+	noextract = archcraft-pkg-src.tar.zst
+	source = archcraft-pkg-src.tar.zst::https://mirror.azccriminal.space/dist/archcraft-pkg.pkg.tar.zst
+	sha256sums = SKIP
+
+pkgname = archcraft-pkg
