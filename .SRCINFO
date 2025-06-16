@@ -1,8 +1,9 @@
 pkgbase = anytxt-bin
 	pkgdesc = Desktop search tool for file content.(Prebuilt version)
-	pkgver = 1.3.1482
+	pkgver = 1.3.2463
 	pkgrel = 1
 	url = https://anytxt.net.cn/
+	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-freeware
 	depends = gtk3
@@ -13,11 +14,13 @@ pkgbase = anytxt-bin
 	depends = qt5-declarative
 	depends = qt5-base
 	depends = libssh
-	provides = anytxt=1.3.1482
+	provides = anytxt=1.3.2463
 	conflicts = anytxt
-	source = anytxt-1.3.1482.deb::https://mirrors.sdu.edu.cn/spark-store//store/office/com.cbewin.anytxt/com.cbewin.anytxt_1.3.1482_amd64.deb
 	source = anytxt.sh
-	sha256sums = 0380b9e367c088f7cc6a372f151258513fe1acadfd6997659b6ac0f122e6cc4b
 	sha256sums = db1db4c15024a45337e7e7190046e6414184603321be058797422a54ed5fc85d
+	source_aarch64 = anytxt-1.3.2463-aarch64.rpm::https://versaweb.dl.sourceforge.net/project/anytxt/Anytxt_1.3.2463_Linux_arm_64.rpm
+	sha256sums_aarch64 = d0c431d3e82e9df968c03945db61981c6a797d29db3f4cca0e7cf161f4b31469
+	source_x86_64 = anytxt-1.3.2463-x86_64.rpm::https://versaweb.dl.sourceforge.net/project/anytxt/Anytxt_1.3.2463_Linux_X86_64.rpm
+	sha256sums_x86_64 = 1a608c42db8df72df1bf271f3dbadf14b1d07ac062aacc8c121c5b711cd7250f
 
 pkgname = anytxt-bin
