@@ -4,7 +4,7 @@ _basename="leptonica"
 _so="5"
 pkgname="${_basename}${_so}"
 pkgver=1.82.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Software that is broadly useful for image processing and image analysis applications (so-version ${_so})"
 arch=('i686' 'x86_64')
 url="https://www.leptonica.com"
@@ -23,10 +23,6 @@ prepare() {
     sed -e 's/liblept_/libleptonica_/g' \
         -e 's/liblept\./libleptonica\./g' \
         -i "{}" +
-
-  cd "src"
-  # shellcheck disable=SC2016
-  sed -i '/^[[:space:]]*pkginclude_HEADERS/ i pkgincludedir = $(includedir)/'"${pkgname}" Makefile.am
 }
 
 build() {
@@ -35,8 +31,8 @@ build() {
   ./configure \
     --prefix='/usr' \
     --program-suffix="${_so}" \
+    --includedir="/usr/include/${pkgname}" \
     --libdir="/usr/lib/${pkgname}"
-    # --includedir="/usr/include/${pkgname}" \
   make
 }
 

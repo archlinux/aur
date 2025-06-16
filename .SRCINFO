@@ -1,7 +1,7 @@
 pkgbase = leptonica5
 	pkgdesc = Software that is broadly useful for image processing and image analysis applications (so-version 5)
 	pkgver = 1.82.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.leptonica.com
 	arch = i686
 	arch = x86_64
