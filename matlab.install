@@ -1,6 +1,9 @@
 post_install() {
   # https://www.mathworks.com/help/matlab/ref/matlab_jenv.html
   matlab_jenv -allusers system > /dev/null
+
+  echo "  -> To start using MATLAB, you might need to activate it first, if you haven't already:"
+  echo "     \$ MathWorksProductAuthorizer"
 }
 
 post_upgrade() {

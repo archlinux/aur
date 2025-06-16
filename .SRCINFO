@@ -1,7 +1,7 @@
 pkgbase = matlab
 	pkgdesc = A high-level language for numerical computation and visualization
 	pkgver = R2025a.25.1.0.2943329
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.mathworks.com/products/matlab.html
 	install = matlab.install
@@ -10,6 +10,7 @@ pkgbase = matlab
 	makedepends = gendesk
 	makedepends = inotify-tools
 	makedepends = matlab-mpm>=2025.1
+	makedepends = patchelf
 	depends = alsa-lib
 	depends = ca-certificates
 	depends = gcc-libs
@@ -77,7 +78,6 @@ pkgbase = matlab
 	depends = libxslt
 	depends = xalan-c
 	depends = qt5-base
-	depends = curl
 	depends = qt5-gamepad
 	depends = libxkbcommon-x11
 	depends = xcb-util-image
@@ -88,7 +88,6 @@ pkgbase = matlab
 	optdepends = matlab-mpm: package manager
 	optdepends = perl
 	optdepends = python-matlabengine: Python bindings
-	optdepends = wayland: listed in the original depends
 	provides = matlab-version=R2025a
 
 pkgname = matlab

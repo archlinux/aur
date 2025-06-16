@@ -8,7 +8,7 @@ _name="$(echo "${_product}" | tr '[:upper:]' '[:lower:]' | tr ' ' '_' | tr -d '(
 pkgname="${_name}"
 pkgver=R2025a.25.1.0.2943329
 _pkgver="${pkgver%%.*}"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=('x86_64')
@@ -97,7 +97,7 @@ depends=(
 
   'sh'
 )
-makedepends=('gendesk' 'inotify-tools' 'matlab-mpm>=2025.1') # "matlab-mpm-version>=${_pkgver}" 'patchelf'
+makedepends=('gendesk' 'inotify-tools' 'matlab-mpm>=2025.1' 'patchelf') # "matlab-mpm-version>=${_pkgver}"
 optdepends=(
   'glibc-locales: listed in the original depends'
   'java-runtime-openjdk>=8: required for certain products and features' # https://www.mathworks.com/support/requirements/openjdk.html
@@ -108,7 +108,6 @@ optdepends=(
   'matlab-mpm: package manager'
   'perl'
   'python-matlabengine: Python bindings'
-  'wayland: listed in the original depends'
 )
 provides=("${pkgname}-version=${_pkgver}")
 install="${pkgname}.install"
@@ -122,7 +121,7 @@ declare -Ag _deps=(
   # [aws-sdk-cpp-s3]="libaws-cpp-sdk-s3" # no
   # [cfitsio]="libcfitsio" # 9.4.1.0
   # [cmark]="libcmark" # 0.30.2
-  [curl]="libcurl" # 4.8.0
+  # [curl]="libcurl" # 4.8.0 incompatible ABI
   # [dbus]="libdbus-1" # 3.34.0
   # [expat]="libexpat" # 1.9.3
   [freetype2]="libfreetype" # 6.18.3
@@ -269,14 +268,17 @@ prepare() {
     exit 1
   fi
   echo "  -> Install completed successfully."
-
   echo "  -> Ignore the above post-installation instructions (if any). They do not apply to you!"
+
+  _cleanup
+  trap - EXIT
 }
 
 pkgver() {
   cd "${srcdir}/install"
-  local rel=$(sed -n 's:.*<release>\(.*\)</release>.*:\1:p' VersionInfo.xml)
-  local ver=$(sed -n 's:.*<version>\(.*\)</version>.*:\1:p' VersionInfo.xml)
+  local rel ver
+  rel="$(sed -n 's:.*<release>\(.*\)</release>.*:\1:p' VersionInfo.xml)"
+  ver="$(sed -n 's:.*<version>\(.*\)</version>.*:\1:p' VersionInfo.xml)"
   echo "$rel.$ver"
 }
 
@@ -288,7 +290,7 @@ build() {
     --pkgdesc "${pkgdesc}" \
     --name "${_product}" \
     --comment 'Programming and numeric computing platform' \
-    --exec "${pkgname} -desktop" \
+    --exec "${pkgname} -desktop -useStartupFolderPref" \
     --icon "/opt/MATLAB/${_pkgver}/bin/glnxa64/cef_resources/matlab_icon.png" \
     --categories 'Development;Education;Science;Mathematics;IDE' \
     --mimetypes 'application/x-matlab-data;text/x-matlab'
@@ -297,12 +299,17 @@ build() {
   echo "  -> Removing unnecessary files..."
   rm -vf ./*.source # ldconfig complains about "not an ELF file - it has the wrong magic bytes at the start."
 
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/glibc/-/issues/19
+  # https://bbs.archlinux.org/viewtopic.php?pid=2225028#p2225028
+  echo "  -> Clearing executable stack to fix crashing issues..."
+  patchelf --clear-execstack "libmwfoundation_crash_handling.so"
+
   echo "  -> Removing bundled dependencies..."
   for dep in "${!_deps[@]}"; do
     echo "    -> Removing bundled ${dep} libraries..."
     for lib in ${_deps[$dep]}; do
-      rm -vf "$lib".so.*
-      rm -f  "$lib".so "$lib".rights
+      rm -vf "$lib.so"*
+      rm -f "$lib".rights
     done
   done
 
@@ -374,12 +381,16 @@ package() {
   echo "  -> Installing symlinks..."
   install -vd "${pkgdir}/usr/bin"
   cd "${pkgdir}/usr/bin"
-  for bin in matlab matlab_jenv mexext; do
-    ln -vsf "/opt/MATLAB/${_pkgver}/bin/$bin" "$bin"
+  for bin in matlab matlab_jenv; do
+    ln -vsf "/opt/MATLAB/${_pkgver}/bin/${bin}" "${bin}"
   done
-  # owned by miktex
-  for bin in mex; do
-    ln -vsf "/opt/MATLAB/${_pkgver}/bin/$bin" "${pkgname}-$bin"
+  # owned by miktex, ...
+  for bin in mex mexext; do
+    ln -vsf "/opt/MATLAB/${_pkgver}/bin/${bin}" "${pkgname}-${bin}"
+  done
+  for bin in MathWorksCrashReporter MathWorksLicenseDeactivation \
+             MathWorksProductAuthorizer MathWorksProductUninstaller; do
+    ln -vsf "/opt/MATLAB/${_pkgver}/bin/glnxa64/${bin}" "${bin}"
   done
 }
 
