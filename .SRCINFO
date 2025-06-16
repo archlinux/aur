@@ -1,11 +1,11 @@
 pkgbase = hailort
 	pkgdesc = Hailo AI accelerator runtime for Hailo AI PCIe devices
 	pkgver = 4.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hailo.ai/
 	arch = aarch64
 	arch = x86_64
-	license = GPL-2.0
+	license = MIT AND LGPL-2.1-only
 	makedepends = cmake
 	makedepends = gcc
 	depends = hailo-pci
