@@ -1,5 +1,5 @@
 pkgbase = zap-rs
-	pkgdesc = Simple and minimal web wrapper for WhatsApp Web
+	pkgdesc = Minimal wrapper for WhatsApp Web (Tauri)
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/JonasAlv/zap-rs
@@ -7,12 +7,13 @@ pkgbase = zap-rs
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	makedepends = cargo-tauri
 	makedepends = git
 	depends = webkit2gtk
 	depends = gtk3
-	depends = libayatana-appindicator
 	depends = libsoup
 	depends = openssl
+	depends = libayatana-appindicator
 	source = zap-rs::git+https://github.com/JonasAlv/zap-rs.git#tag=v0.1.0
 	sha256sums = SKIP
 
