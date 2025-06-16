@@ -1,6 +1,6 @@
 pkgname=mingw-w64-gmp
 pkgver=6.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free library for arbitrary precision arithmetic (mingw-w64)"
 arch=(any)
 url="http://gmplib.org"
@@ -14,6 +14,12 @@ sha256sums=('be5c908a7a836c3a9bd9d62aa58563c5e9e7fef94c43a7f42dbc35bb6d02733c'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd "${srcdir}/gmp-${pkgver}"
+  curl -L https://gitlab.archlinux.org/archlinux/packaging/packages/gmp/-/raw/main/gmp-gcc-15.patch | patch -p1
+  autoreconf -vif
+}
 
 build() {
   cd "${srcdir}/gmp-${pkgver}"
