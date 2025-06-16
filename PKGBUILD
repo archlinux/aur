@@ -1,16 +1,16 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoakanter@gmail.com>
 pkgname="scrapscript-git"
-pkgver=r377.03e0ac2
+pkgver=r428.467a577
 pkgrel=1
 pkgdesc="A functional, content-addressable programming language"
 arch=('any')
 url="https://github.com/tekknolagi/scrapscript"
 license=('MIT')
-depends=('python' 'bash')
-optdepends=('cosmocc: compiling scrap elf binaries')
-source=("git+$url.git" "scrap")
+depends=('python' 'bash' 'ape-loader-bin')
+makedepends=('cosmocc-bin')
+source=("git+$url.git")
 noextract=()
-sha256sums=('SKIP' '31d8d14556c3af454bb5032585bb57bf2ac1cd18d86536abd7a4ded68e6f0094')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/scrapscript"
@@ -22,12 +22,12 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/scrapscript"
-    ./build-com
+    ./util/build-com
     printf "%b" "\n\n------------------\nInstalled as \e[1;34mscrap\e[0m\n------------------\n\n"
 }
 
 package() {
-	install -Dm755 "$srcdir"/scrap "$pkgdir/usr/bin/scrap"
+	install -Dm755 "$srcdir"/scrapscript/scrapscript.com "$pkgdir/usr/bin/scrap"
     install -Dm755 "$srcdir"/scrapscript/scrapscript.com "$pkgdir/usr/lib/scrapscript/scrapscript.com"
     install -Dm755 "$srcdir"/scrapscript/scrapscript.py "$pkgdir/usr/lib/scrapscript/scrapscript.py"
     install -Dm644 "$srcdir"/scrapscript/README.md "$pkgdir/usr/share/doc/scrapscript"
