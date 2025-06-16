@@ -1,4 +1,4 @@
-# Maintainer: Mike Pento <mpento@darkforge.net>
+# Maintainer: Mike Pento <mjpento@gmail.com>
 
 pkgname=xdock
 pkgver=0.3.0
