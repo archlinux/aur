@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flclash-bin
 _pkgname=FlClash
-pkgver=0.8.85
+pkgver=0.8.86
 pkgrel=1
 pkgdesc="A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free."
 arch=(
@@ -16,13 +16,14 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     'libayatana-appindicator'
     'libkeybinder3'
+    'zenity'
 )
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('b4a2f7bbc8c2fb82b51d55fb2a5efd7b0e9c034f15bc76d96371f5497c964b00')
-sha256sums_x86_64=('909f35a2e7808e0e83fb2d460ead8f40604a2eebac6cdfaf81b926325e0958f8')
+sha256sums_aarch64=('6620867dd411578486a52fa7d5e1933e6686221c0e1ec061d75bfe69f7ef9cf7')
+sha256sums_x86_64=('c0cdbca73d95bf99e4be56bbf242869105da64dcc62e410af068051159b6044d')
 prepare() {
     sed -i -e "
       s/@appname@/${pkgname%-bin}/g
