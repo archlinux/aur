@@ -4,7 +4,7 @@ _pkgname=loopauditioneer
 _pkgname_orig=LoopAuditioneer
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.11.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Software for loop and cue handling in .wav files."
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/GrandOrgue/LoopAuditioneer/releases/download/v${pkgver}/LoopAuditioneer-${pkgver}.x86_64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('ee414eefd08abbcb2eb86b50228f4570408929de4e1ec0e89d43cd8b63f034a2')
+sha256sums_x86_64=('1ad5af06724a40b873b9d397151b8d6f3fcf6533dcfcdf5b963a8d686742ccde')
 
 prepare() {
     chmod +x "${_appimage}"
@@ -40,10 +40,11 @@ package() {
             "${pkgdir}/usr/share/applications/${_pkgname_orig}.desktop"
 
     # Icon images
-    install -dm755 "${pkgdir}/usr/share/"
+    install -dm775 "${pkgdir}/usr/share/"
     cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${_pkgname_orig}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 }
+
