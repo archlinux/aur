@@ -46,6 +46,7 @@ optdepends=(
 source=("https://github.com/Cudiph/cwcwm/archive/v$pkgver.tar.gz")
 md5sums=('94bbf56b66993fddd3f83a13442fe2b1')
 
+provides=('wayland-compositor')
 
 build() {
   cd "$_pkgname-$pkgver" || exit 1
