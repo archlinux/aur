@@ -1,7 +1,8 @@
-type		= bgprocess
-command		= /usr/bin/opendkim -x /etc/opendkim/opendkim.conf -u opendkim -f
-pid-file	= /run/opendkim/opendkim.pid
+type			= bgprocess
+command			= /usr/bin/opendkim -x /etc/opendkim/opendkim.conf -u opendkim -f
+pid-file		= /run/opendkim/opendkim.pid
 smooth-recovery	= true
-logfile		= /var/log/dinit/opendkim.log
-depends-on	= opendkim-pre
-run-as		= opendkim
+logfile			= /var/log/dinit/opendkim.log
+depends-on		= network.target
+depends-on		= opendkim-pre
+run-as			= opendkim
