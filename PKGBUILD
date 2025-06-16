@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vic-diary-bin
 _pkgname='维克日记'
-pkgver=1.0.0
+pkgver=1.0.1
 _electronversion=22
 pkgrel=1
 pkgdesc="Support markdown syntax input, WYSIWYG cross-platform diary software(Prebuilt version)"
@@ -16,11 +16,11 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_giteeurl}/releases/download/latest/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
+    "${pkgname%-bin}-${pkgver}.deb::${_giteeurl}/releases/download/latest/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/vo-soft/vic-diary-releases/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b28280b70ce8710dc949a0c67b51b0f99b4f8323d3c8c4bbbbbe032e6896c94f'
+sha256sums=('0a79eb405453c7adc1b7d873530ee9d6d1d1d3606ca75fd69e510800aed734ee'
             '9c2cde6ad2685c66d9fb8d476cff8646f499028c866b8c61c436a69f72e21ee1'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
@@ -31,6 +31,7 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
     sed -i -e "
         s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g
         s/Utility;Utility/Utility/g
