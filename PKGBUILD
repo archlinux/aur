@@ -1,7 +1,7 @@
 #Maintainer: Dråfølin <derg@drafolin.ch>
 
 pkgname=high-tide-git
-pkgver=0.1.7.r0.gc7d97b6
+pkgver=0.1.7.r14.gfb889e6
 pkgrel=1
 pkgdesc="Linux client for TIDAL streaming service"
 url="https://github.com/Nokse22/high-tide"
