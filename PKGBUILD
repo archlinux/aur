@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=assaultcube-reloaded
-pkgver=2.18.2 # renovate: datasource=github-tags depName=actf/acr
+pkgver=2.18.3 # renovate: datasource=github-tags depName=actf/acr
 pkgrel=1
 pkgdesc='AssaultCube Reloaded'
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ package() {
     "${pkgdir}/usr/bin/acreloaded-server"
 }
 
-sha256sums=('f003c6a2858bd9b83c3a488836e179fe02a672dac2cd74f21dc5ea3017fca7a0'
+sha256sums=('7f919e0b4aed4cf8b7129a69236e71bd1e583e8b349e890be7bc810471e042da'
             '95f1c263061604c46a8425020df5376e9ef182724077d744f9d2420e414ff6e3'
             '4943274e4d43174bd06bda86b8951bc86252e0d7c06abd7183e01388b4829805'
             'a1e3b84ed6130a01afb52abd894d8a9175b2a09b574cb24962c9866dc48f58d3'
