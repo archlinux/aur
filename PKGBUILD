@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-flycast
 pkgname=$_pkgname-git
-pkgver=2.4.r269.gcdef7f744
+pkgver=2.5.r19.gb10db5a
 pkgrel=1
 pkgdesc="Sega Dreamcast, NAOMI, NAOMI 2, Atomiswave and System SP core (fork of reicast)"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -39,7 +39,7 @@ b2sums=(
 
 pkgver() {
 	cd flycast
-	git describe --long --tags | sed 's/^v//i;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/^v//i;s/[^-]*-g/r&/;s/-/./g'
 }
 
 prepare() {
@@ -50,6 +50,7 @@ prepare() {
 	patch -Np1 < ../use-system-libs.patch
 	rm -r core/deps/libretro-common/include/libchdr
 	sed -i '/ccache/d' CMakeLists.txt
+	sed -i '1i #include <cstddef>' core/network/miniupnp.cpp
 }
 
 build() {
