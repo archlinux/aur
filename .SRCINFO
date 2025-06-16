@@ -1,7 +1,7 @@
 pkgbase = dcmtk18
 	pkgdesc = A collection of libraries and applications implementing large parts the DICOM standard (so-version 18)
 	pkgver = 3.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dicom.offis.de/dcmtk
 	arch = i686
 	arch = x86_64

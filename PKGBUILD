@@ -5,7 +5,7 @@ _so="18"
 pkgbase="${_basename}${_so}"
 pkgname=("${pkgbase}"{,-docs})
 pkgver=3.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of libraries and applications implementing large parts the DICOM standard (so-version ${_so})"
 arch=('i686' 'x86_64')
 url="https://dicom.offis.de/dcmtk"
@@ -18,10 +18,8 @@ sha256sums=('232076655503138debf2f624109f1799e539354f186ce4e04b27cf82a9d8720f')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  # shellcheck disable=SC2016
   find . -type f -name 'CMakeLists.txt' -exec \
-    sed -e 's|${CMAKE_INSTALL_INCLUDEDIR}/'"${_basename}|"'${CMAKE_INSTALL_INCLUDEDIR}/'"${pkgbase}|g" \
-        -e 's|CMAKE_INSTALL_FULL_|CMAKE_INSTALL_|g' \
+    sed -e 's|CMAKE_INSTALL_FULL_|CMAKE_INSTALL_|g' \
         -i "{}" +
         # -e 's|-${DCMTK_COMPLETE_PACKAGE_VERSION}||g" \
 
@@ -38,7 +36,7 @@ build() {
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
     -D CMAKE_INSTALL_DATADIR="share/${pkgbase}"
     -D CMAKE_INSTALL_DOCDIR="share/doc/${pkgbase}"
-    # -D CMAKE_INSTALL_INCLUDEDIR="include/${pkgbase}"
+    -D CMAKE_INSTALL_INCLUDEDIR="include/${pkgbase}"
     -D CMAKE_INSTALL_LIBDIR="lib/${pkgbase}"
     -D CMAKE_INSTALL_SYSCONFDIR="/etc/${pkgbase}"
     -D BUILD_SHARED_LIBS:BOOL=ON
