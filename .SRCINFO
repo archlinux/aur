@@ -1,0 +1,27 @@
+pkgbase = stm32cuben6
+	pkgdesc = Embedded software for STM32 F7 series
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-embedded-software/stm32cuben6.html
+	arch = any
+	license = LicenseRef-SLA0044
+	license = Apache-2.0
+	license = BSD-3-Clause
+	license = MIT
+	license = IJG
+	depends = bash
+	depends = perl
+	depends = python
+	optdepends = arm-none-eabi-gcc: ARM compiler
+	optdepends = arm-none-eabi-gdb: ARM GDB
+	optdepends = arm-none-eabi-newlib: ARM bare metal files
+	optdepends = arm-none-eabi-binutils: ARM binutils
+	optdepends = openocd: STM32F4 firmware flashing
+	optdepends = stlink: STM32 firmware programmer
+	options = !strip
+	source = STM32CubeN6-1.1.0.tar.gz::https://github.com/STMicroelectronics/STM32CubeN6/archive/refs/tags/v1.1.0.tar.gz
+	source = SLA0044.txt
+	sha256sums = 5548d1b54e945564976951ff3ae1ebe5e22d4f237372b055db718ffa0c5207c9
+	sha256sums = 55ba65f78747449aef987ef7f4bfe27bf6927c0acdcca5eb5acc77c16d2dcc2e
+
+pkgname = stm32cuben6
