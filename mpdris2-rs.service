@@ -4,9 +4,10 @@ Wants=mpd.service
 After=mpd.service
 
 [Service]
+Type=dbus
+BusName=org.mpris.MediaPlayer2.mpd
 Restart=on-failure
 ExecStart=/usr/bin/mpdris2-rs
-BusName=org.mpris.MediaPlayer2.mpd
 
 [Install]
 WantedBy=default.target
