@@ -1,6 +1,6 @@
 pkgbase = code-git
 	pkgdesc = OSS version of Visual Studio Code editor
-	pkgver = 1.102.0.r134325.g5547eb94df1
+	pkgver = 1.102.0.r134384.ga1d87f0f27f
 	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	arch = x86_64

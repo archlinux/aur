@@ -5,11 +5,9 @@
 _pkgname=code
 pkgname=code-git
 pkgdesc='OSS version of Visual Studio Code editor'
-pkgver=1.102.0.r134325.g5547eb94df1
+pkgver=1.102.0.r134384.ga1d87f0f27f
 pkgrel=1
 arch=('x86_64')
-_vscode_arch=x64 # https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/PKGBUILD
-_electron_arch=x64
 url='https://github.com/microsoft/vscode'
 license=('MIT')
 _electron=electron
@@ -35,7 +33,7 @@ pkgver() {
 prepare() {
   cd vscode
   # vsce-sign for extensions
-  pnpm add @vscode/vsce-sign @vscode/vsce-sign-linux-$_vscode_arch
+  pnpm add @vscode/vsce-sign @vscode/vsce-sign-linux-x64
   
   # electron version
   _electronver=$(npm pkg get devDependencies.electron)
@@ -93,19 +91,19 @@ build() {
   export XDG_CACHE_HOME="$srcdir" HOME="$srcdir"/home # Don't taint user dir
   _cache_dir="$XDG_CACHE_HOME"/electron/$(echo -n "https://github.com/electron/electron/releases/download/v${_electronver}" | sha256sum | cut -d ' ' -f 1)
   mkdir -p "$_cache_dir"
-  _zip="electron-v${_electronver}-linux-${_electron_arch}.zip"
+  _zip="electron-v${_electronver}-linux-x64.zip"
   bsdtar --format zip -cf "${_cache_dir}/${_zip}" /dev/null 2> /dev/null
   echo "$(sha256sum "$_cache_dir/$_zip" | cut -d " " -f 1) *$_zip" > build/checksums/electron.txt
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 
   npm install
-  npm run gulp vscode-linux-${_vscode_arch} #-min minify cause OOM
+  npm run gulp vscode-linux-x64 #-min minify cause OOM
 }
 
 package() {
   # Resource files
   install -dm755 "$pkgdir"/usr/lib/code
-  cp -r --reflink=auto --no-preserve=ownership VSCode-linux-${_vscode_arch}/resources/app/* "$pkgdir"/usr/lib/code/
+  cp -r --reflink=auto --no-preserve=ownership VSCode-linux-x64/resources/app/* "$pkgdir"/usr/lib/code/
   # system tools
   ln -svf /usr/bin/rg "$pkgdir"/usr/lib/code/node_modules/@vscode/ripgrep/bin/rg
   ln -svf /usr/bin/xdg-open "$pkgdir"/usr/lib/code/node_modules/open/xdg-open
@@ -127,6 +125,6 @@ package() {
   install -Dm644 vscode/resources/completions/zsh/_code "$pkgdir"/usr/share/zsh/site-functions/_code
   install -Dm644 vscode/resources/completions/zsh/_code-oss "$pkgdir"/usr/share/zsh/site-functions/_code-oss
   # License
-  install -Dm644 VSCode-linux-${_vscode_arch}/resources/app/LICENSE.txt "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm644 VSCode-linux-${_vscode_arch}/resources/app/ThirdPartyNotices.txt "$pkgdir"/usr/share/licenses/${pkgname}/ThirdPartyNotices.txt
+  install -Dm644 VSCode-linux-x64/resources/app/LICENSE.txt "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 VSCode-linux-x64/resources/app/ThirdPartyNotices.txt "$pkgdir"/usr/share/licenses/${pkgname}/ThirdPartyNotices.txt
 }
