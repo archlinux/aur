@@ -1,8 +1,8 @@
 # Maintainers: EnumDev <enumdev@enumerated.dev>
 
 pkgname=typer
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='A simple and easy to use text editor written in Go'
 arch=('any')
 url='https://github.com/EnumeratedDev/Typer'
