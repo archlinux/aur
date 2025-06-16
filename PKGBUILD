@@ -1,7 +1,7 @@
 pkgname=commitlint-go-git
 _pkgname=commitlint
 pkgdesc='A commit message linter for conventional commits written in go'
-pkgver=main.43214975f847216b608f1c301bbf7f614cda8bce
+pkgver=main.09c93b8aad964ec71a1eecf87191bae38a031402
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/jurienhamaker/commitlint'
