@@ -1,15 +1,29 @@
 # Maintainer: tuxxx <nzb_tuxxx@proton.me>
 
 pkgname=sparrow-wallet-git
-pkgver=2.2.2.r7.g8885e48
+pkgver=2.2.3.r1.g3aae26b
 _jdkver=22.0.2_9
 pkgrel=1
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy (git version)"
 arch=('x86_64')
 url="https://sparrowwallet.com/"
 license=('Apache-2.0')
-depends=('hicolor-icon-theme' 'alsa-lib' 'libxtst' 'libxrender' 'freetype2' 'libxcrypt-compat')
+depends=(
+    'alsa-lib'
+    'freetype2'
+    'hicolor-icon-theme'
+    'libxcrypt-compat'
+    'libxrender'
+    'libxtst'
+)
 makedepends=('git')
+optdepends=(
+    'bitbox-udev: udev rules for BitBox hardware wallets'
+    'keepkey-udev: udev rules for KeepKey hardware wallets'
+    'ledger-udev: udev rules for Ledger hardware wallets'
+    'python-ckcc-protocol: Python CLI and udev rules for Coldcard hardware wallets'
+    'trezor-udev: udev rules for Trezor hardware wallets'
+)
 provides=('sparrow-wallet')
 conflicts=('sparrow-wallet')
 source=(
@@ -77,8 +91,4 @@ EOF
 
     install -Dm644 "${srcdir}/MimeInfo.xml" \
         "${pkgdir}/usr/share/mime/packages/${pkgname%-git}.xml"
-
-    install -dm755 "${pkgdir}/usr/lib/udev/rules.d"
-    install -m644 "${srcdir}/sparrow/build/jpackage/Sparrow/lib/runtime/conf/udev"/*.rules \
-        "${pkgdir}/usr/lib/udev/rules.d/"
 }
