@@ -6,7 +6,7 @@ pkgname=(
   "duckdb"
   "python-duckdb"
 )
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="An in-process SQL OLAP database management system"
 arch=("x86_64" "aarch64")
@@ -29,7 +29,7 @@ makedepends=(
   "python-setuptools-scm"
 )
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/duckdb/duckdb/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('a270b5d233edf2ddc78224311c25c1f5cb7b5ff3704d251da55127680d08a5c03040d074143fc9c0b5aae2baab31f1cdf02ccecb07a3e87ef65d36393e2b1d82')
+b2sums=('324d678e0379e7a2d56022dfd3e4e2ecfec1962205131c44b8686736b17b61a80eb3183d3d6b4174d75c9f0f1ea757ac1caa03d75b3382fec59ff3a97a16a02a')
 
 prepare() {
   cmake \
@@ -46,7 +46,7 @@ build() {
 }
 
 package_duckdb() {
-  conflicts=("duckdb-git")
+  conflicts=("duckdb-bin" "duckdb-git")
   DESTDIR="$pkgdir" cmake --install build
 
   # sqlite wrapper
