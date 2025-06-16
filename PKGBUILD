@@ -3,7 +3,7 @@
 pkgname=tidal-dl-ng
 _pkgname=${pkgname//-/_}
 pkgver=0.25.6
-pkgrel=4
+pkgrel=5
 pkgdesc='A tool for downloading music and albums from TIDAL'
 arch=(any)
 url='https://pypi.org/project/tidal-dl-ng/'
@@ -23,8 +23,8 @@ depends=(
     'python-typer'
     'python-python-ffmpeg'
     'pyside6'
-    'python-pyqtdarktheme'
     'python-darkdetect'
+    'pyqtdarktheme'
 )
 makedepends=(
     'python-poetry-core'
