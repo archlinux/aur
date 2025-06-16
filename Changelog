@@ -1,9 +1,12 @@
 -------------------------------------------------------
  Changelog    : dns_tools
- Tags         : 4.2.0 ➙ 4.6.0
-              : 2025-05-21 ➙ 2025-06-15
+ Tags         : 4.3.0 ➙ 4.7.0, origin/master
+              : 2025-05-27 ➙ 2025-06-15
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-15   : 4.7.0, origin/master
+                update Docs/Changelog Docs/${my_name}.pdf
 
  2025-06-15   : 4.6.0
                 run_prog: Use non-blocking IO with the select() loop
@@ -23,7 +26,3 @@
  2025-05-27   : 4.3.0
                 Fix option parser for dns-prod-push --int-ext
  2025-05-21     update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-05-21   : 4.2.0
-                Use builtin types where possible. e.g. typing.List -> list
- 2025-05-19     update Docs/Changelog Docs/${my_name}.pdf
