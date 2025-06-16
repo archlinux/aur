@@ -1,4 +1,5 @@
 [cvector]
-source='regex'
-regex='Release.([0-9.]+)'
-url='https://cvector.sourceforge.net/'
+source = 'github'
+github = 'yayahjb/cvector'
+use_latest_release = true
+prefix = 'CVector-'
