@@ -3,7 +3,7 @@
 pkgname=plex-htpc
 pkgver=1.71.0.334
 _pkghash=aaf6bcca
-pkgrel=4
+pkgrel=1
 pkgdesc="Plex HTPC client for linux"
 arch=('x86_64')
 url='http://plex.tv'
