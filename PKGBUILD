@@ -19,6 +19,7 @@ depends=(
 )
 makedepends=(
     # https://github.com/toeverything/AFFiNE/blob/canary/docs/BUILDING.md#prerequisites
+    # Keep nodejs the first as we might replace it later.
     nodejs-lts-iron yarn
     # node gyp
     python
@@ -45,6 +46,11 @@ case "${CARCH}" in
     *)
         _arch="${CARCH}"
 esac
+
+# Allow using unsupported node.js versions
+if [[ -n "$NODEJS" ]]; then
+    makedepends[0]="$NODEJS"
+fi
 
 prepare() {
     cd "$_pkgname"
