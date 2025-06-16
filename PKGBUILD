@@ -1,8 +1,9 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 
 pkgname=buildifier
 pkgver=8.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool to format Bazel BUILD files'
 arch=('x86_64' 'aarch64')
 license=('Apache')

@@ -1,7 +1,7 @@
 pkgbase = buildifier
 	pkgdesc = A command line tool to format Bazel BUILD files
 	pkgver = 8.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bazelbuild/buildtools
 	arch = x86_64
 	arch = aarch64
