@@ -12,7 +12,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname/src-tauri"
-  cargo tauri build --release
+  cargo tauri build
 }
 
 package() {
