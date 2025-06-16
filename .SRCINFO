@@ -1,6 +1,6 @@
 pkgbase = electerm
 	pkgdesc = Terminal/ssh/telnet/serialport/sftp client.(Use system-wide electron)
-	pkgver = 1.91.8
+	pkgver = 1.91.16
 	pkgrel = 1
 	url = https://electerm.html5beta.com/
 	arch = aarch64
@@ -13,13 +13,12 @@ pkgbase = electerm
 	makedepends = python-setuptools
 	makedepends = curl
 	makedepends = git
-	makedepends = yarn
 	depends = electron30
 	depends = python
 	conflicts = electerm
-	source = electerm-1.91.8::git+https://github.com/electerm/electerm#tag=v1.91.8
+	source = electerm-1.91.16::git+https://github.com/electerm/electerm#tag=v1.91.16
 	source = electerm.sh
-	sha256sums = 8c022b60003b9f38c82247325fb28c2beba30f6392656a2dbb2d6db76130814b
+	sha256sums = e476a1fe1e91735acea6624947cac9476ba83a55002ced4eb1bcf7ce0670b93e
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = electerm
