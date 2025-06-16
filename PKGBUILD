@@ -6,7 +6,7 @@ _vlcver=3.0.21
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=19
+pkgrel=20
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ _libtheoraver=1.2
 _libupnpver=1.14
 _libvpxver=1.14
 _libxml2ver=2.14
-_livemediaver=2024.04.19
+_livemediaver=2025.05.24
 _mpg123ver=1.32.2
 _protobufver=31.1
 _srtver=1.5
@@ -177,6 +177,9 @@ prepare() {
   # Fix to build against libcaca 0.99.beta20 (kept as comment)
   #sed -i 's/cucul_/caca_/g' modules/video_output/caca.c
   #sed -i 's/CUCUL_COLOR/CACA/g' modules/video_output/caca.c
+
+  # live555: fix build with versions >= 2024.11.28
+  sed -i 's/char             event_/EventLoopWatchVariable event_/g' -i modules/access/live555.cpp 
 
   autoreconf -vf
 }
