@@ -1,6 +1,6 @@
 pkgbase = commitlint-go-git
 	pkgdesc = A commit message linter for conventional commits written in go
-	pkgver = main.8e1a241dd2004a9621e36cf2ce8465bc62b5680b
+	pkgver = main.5a3b7c074c0f88c7a5f1554d1986a01cef521c47
 	pkgrel = 1
 	url = https://github.com/jurienhamaker/commitlint
 	arch = i686
