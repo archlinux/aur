@@ -1,0 +1,23 @@
+pkgbase = rlm-license-generator-git
+	pkgdesc = The Ultimate Open Source WebChat Platform.(Use system-wide electron)
+	pkgver = r32.383358f
+	pkgrel = 1
+	url = https://github.com/redbullron/RLM-License-Generator
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron35
+	provides = rlm-license-generator=r32.383358f
+	conflicts = rlm-license-generator
+	source = rlm-license-generator.git::git+https://github.com/redbullron/RLM-License-Generator
+	source = rlm-license-generator.png
+	source = rlm-license-generator.sh
+	sha256sums = SKIP
+	sha256sums = bb9816e76041a1d0a4dc590a728fab02a2a9193e4d98e5a3676679351ed7831e
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = rlm-license-generator-git
