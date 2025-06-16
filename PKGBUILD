@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
-pkgver=2121.2
-pkgrel=2
+pkgver=2122
+pkgrel=1
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'graphviz' '
 options=(!lto)
 source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$pkgver.tar.xz")
 install=${pkgname}.install
-sha256sums=('d22386172c8c59f3d9fa44d5da577f6b6c5ee0cb393cea3b4dece98c06ca3447')
+sha256sums=('8cc07086784d8f349051ef1fb19643130fc63dddd7e6b920a5e1f485460b23bc')
 
 prepare() {
 	cd "$srcdir/$pkgname-unified-source-$pkgver"
@@ -22,12 +22,14 @@ prepare() {
 
 build() {
 	cd "$srcdir"
-	LDFLAGS="$LDFLAGS -fuse-ld=lld"
+	[[ $(grep -o sse4_2 /proc/cpuinfo | sed -n 1p) = sse4_2 ]] && local _SSE=ON && echo "SSE4.2 Enabled"
 	cmake -B build -S "$pkgname-unified-source-$pkgver" -G Ninja \
 	-DCMAKE_C_COMPILER=clang \
 	-DCMAKE_CXX_COMPILER=clang++ \
 	-DCMAKE_C_FLAGS="${CFLAGS} -flto=thin -DNDEBUG" \
 	-DCMAKE_CXX_FLAGS="${CXXFLAGS} -flto=thin -DNDEBUG" \
+	-DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -fuse-ld=lld" \
+	-DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -fuse-ld=lld" \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=None \
 	-DUSE_DISCORD_PRESENCE=ON \
@@ -50,6 +52,7 @@ build() {
 	-DCMAKE_INCLUDE_PATH="/usr/include/ffmpeg4.4" \
 	-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
 	-DENABLE_QT_TRANSLATION=ON \
+	-DENABLE_SSE42=$_SSE \
 	-Wno-dev
 
 	cmake --build build
