@@ -1,15 +1,16 @@
 pkgbase = loopauditioneer-appimage
 	pkgdesc = Software for loop and cue handling in .wav files.
-	pkgver = 0.11.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/GrandOrgue/LoopAuditioneer
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = zlib
 	depends = hicolor-icon-theme
-	noextract = loopauditioneer-appimage-0.11.0.AppImage
+	depends = glibc
+	noextract = loopauditioneer-appimage-0.12.1.AppImage
 	options = !strip
-	source_x86_64 = loopauditioneer-appimage-0.11.0.AppImage::https://github.com/GrandOrgue/LoopAuditioneer/releases/download/v0.11.0/LoopAuditioneer-0.11.0.x86_64.AppImage
-	sha256sums_x86_64 = ee414eefd08abbcb2eb86b50228f4570408929de4e1ec0e89d43cd8b63f034a2
+	source_x86_64 = loopauditioneer-appimage-0.12.1.AppImage::https://github.com/GrandOrgue/LoopAuditioneer/releases/download/v0.12.1/LoopAuditioneer-0.12.1.x86_64.AppImage
+	sha256sums_x86_64 = 1ad5af06724a40b873b9d397151b8d6f3fcf6533dcfcdf5b963a8d686742ccde
 
 pkgname = loopauditioneer-appimage
