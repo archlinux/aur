@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=alice-ai-app-bin
 _pkgname=Alice-AI-App
-pkgver=1.0.61
+pkgver=1.0.71
 _electronversion=30
 pkgrel=1
 pkgdesc="A smart desktop AI assistant application built with Vue.js, Vite, and Electron. Advanced memory system, function calling, MCP support and more.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/pmbstyle/Alice/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1b9c13b8a859b08df80855c5611061cf429ec5225e5c47471abd604f24b338eb'
+sha256sums=('98a84602abe0aee90f3d19e9806c06202fa9b0b5ac19df352add46e3abcb8e3d'
             '3e9927b4fcbf5507656ca5b5f90f71efb32fb5033321c0f6b9eeb69d50f4001a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
