@@ -1,23 +1,23 @@
 # Maintainer: Laura Demkowicz-Duffy <dev at demkowiczduffy.co.uk>
 # Contributor: Michael Bauer <michael@m-bauer.org>
 pkgname=radicle-cli
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Radicle command line interface"
 arch=('x86_64')
 url="https://radicle.xyz"
 license=('MIT' 'Apache-2.0')
 depends=('libusb' 'gcc-libs' 'openssh' 'git' 'glibc' 'zlib')
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'asciidoctor')
 
 _man_pages="rad-id rad-patch rad git-remote-rad radicle-node"
  
-_pkgver_commit=70f0cc35
+_pkgver_commit=6f25d73d
 _repoid=z3gqcJUoA1n9HaHKufZs5FCSGazv5
 
 source=("heartwood-$pkgver::git+https://seed.radicle.xyz/$_repoid.git#commit=$_pkgver_commit")
 
-sha512sums=('9e291eb0aae3013e63612d5847701d39eada352bf5cf48bc3e56ac098d29cf5f61ebe1cc20070493a7ded87a26edb6fb17ad31ea899dafaae5603835d08d8aad')
+sha512sums=('SKIP')
 
 prepare() {
 	cd "$srcdir/heartwood-$pkgver"
@@ -54,5 +54,5 @@ package() {
 	install -Dm0644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 	install -Dm0644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
 
-	install -Dm0644 systemd/radicle-node.service "$pkgdir/usr/lib/systemd/user/radicle-node.service"
+	install -Dm0644 systemd/system/radicle-node.service "$pkgdir/usr/lib/systemd/user/radicle-node.service"
 }

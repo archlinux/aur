@@ -1,20 +1,20 @@
 pkgbase = radicle-cli
 	pkgdesc = Radicle command line interface
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://radicle.xyz
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0
 	makedepends = cargo
-	makedepends = git
+	makedepends = asciidoctor
 	depends = libusb
 	depends = gcc-libs
 	depends = openssh
 	depends = git
 	depends = glibc
 	depends = zlib
-	source = heartwood-1.1.0::git+https://seed.radicle.xyz/z3gqcJUoA1n9HaHKufZs5FCSGazv5.git#commit=70f0cc35
-	sha512sums = 9e291eb0aae3013e63612d5847701d39eada352bf5cf48bc3e56ac098d29cf5f61ebe1cc20070493a7ded87a26edb6fb17ad31ea899dafaae5603835d08d8aad
+	source = heartwood-1.2.0::git+https://seed.radicle.xyz/z3gqcJUoA1n9HaHKufZs5FCSGazv5.git#commit=6f25d73d
+	sha512sums = SKIP
 
 pkgname = radicle-cli
