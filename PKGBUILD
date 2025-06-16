@@ -2,7 +2,7 @@
 _pkgname="cwcwm"
 pkgname="cwc"
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Extensible Wayland compositor with dynamic window management'
 arch=('x86_64')
 url="https://github.com/Cudiph/cwcwm"
