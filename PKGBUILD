@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <mumei6102@gmail.com>
 
 pkgname=qmplay2-git
-pkgver=25.06.11.r0.gf450a3fe
+pkgver=25.06.11.r7.g8f040733
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=('pulseaudio: PulseAudio support'
             'game_music_emu-kode54-git: Better chiptune support (less bugs in sound, AUR package)')
 conflicts=('qmplay2')
 provides=('qmplay2')
-makedepends=('ninja' 'clang' 'llvm' 'git' 'pkg-config' 'qt6-tools' 'cmake' 'fakeroot' 'shaderc')
+makedepends=('ninja' 'clang' 'llvm' 'lld' 'git' 'pkg-config' 'qt6-tools' 'cmake' 'fakeroot' 'shaderc')
 options=(!lto)
 source=(
     'git+https://github.com/zaps166/QMPlay2.git'
