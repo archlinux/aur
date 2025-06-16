@@ -9,7 +9,21 @@ pkgdesc="Desktop Bitcoin Wallet focused on security and privacy. Free and open s
 arch=('x86_64')
 url="https://sparrowwallet.com/"
 license=('Apache-2.0')
-depends=('hicolor-icon-theme' 'alsa-lib' 'libxtst' 'libxrender' 'freetype2' 'libxcrypt-compat')
+depends=(
+    'alsa-lib'
+    'freetype2'
+    'hicolor-icon-theme'
+    'libxcrypt-compat'
+    'libxrender'
+    'libxtst'
+)
+optdepends=(
+    'bitbox-udev: udev rules for BitBox hardware wallets'
+    'keepkey-udev: udev rules for KeepKey hardware wallets'
+    'ledger-udev: udev rules for Ledger hardware wallets'
+    'python-ckcc-protocol: Python CLI and udev rules for Coldcard hardware wallets'
+    'trezor-udev: udev rules for Trezor hardware wallets'
+)
 conflicts=('sparrow-wallet-git' 'sparrow-wallet-reproducible')
 source=(
     "https://github.com/sparrowwallet/sparrow/releases/download/${pkgver}/sparrowwallet-${pkgver}-${CARCH}.tar.gz"
