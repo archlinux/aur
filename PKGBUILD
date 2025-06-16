@@ -1,7 +1,7 @@
 # Maintainer: Myriade <myriademedieval@proton.me>
 pkgname=dong
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="A striking clock on your computer"
 arch=(x86_64)
 url="https://gitlab.com/TuTiuTe/dong"
