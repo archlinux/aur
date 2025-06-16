@@ -1,11 +1,11 @@
 # Maintainer: Xuanrui Qi <me@xuanruiqi.com>
 pkgname=newscheck
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Yet another Arch Linux news reader"
 url="https://github.com/xuanruiqi/newscheck"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xuanruiqi/newscheck/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('141868f2647650b7dcabf2d21823a6baff27421fdd7de8a62b061c3d6c4f0cb1')
+sha256sums=('da0aa7f9d04c894245b2ae8cd8f349fa2a83c7c8b9cda7e818bf48f8b563a28b')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('MIT')
 makedepends=('cargo' 'pandoc')
@@ -18,7 +18,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo build --frozen --features "${_features:-}" --release --target-dir target
+  cargo build --frozen --release --target-dir target
   pandoc man.md -s -t man -o man.1
 }
 

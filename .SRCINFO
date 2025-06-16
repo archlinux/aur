@@ -1,7 +1,7 @@
 pkgbase = newscheck
 	pkgdesc = Yet another Arch Linux news reader
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/xuanruiqi/newscheck
 	install = newscheck.install
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = newscheck
 	license = MIT
 	makedepends = cargo
 	makedepends = pandoc
-	source = newscheck-0.1.2.tar.gz::https://github.com/xuanruiqi/newscheck/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 141868f2647650b7dcabf2d21823a6baff27421fdd7de8a62b061c3d6c4f0cb1
+	source = newscheck-0.2.1.tar.gz::https://github.com/xuanruiqi/newscheck/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = da0aa7f9d04c894245b2ae8cd8f349fa2a83c7c8b9cda7e818bf48f8b563a28b
 
 pkgname = newscheck
