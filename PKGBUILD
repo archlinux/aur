@@ -20,10 +20,10 @@ source=(
     portfolio-performance-bin.svg::"https://raw.githubusercontent.com/portfolio-performance/portfolio/${pkgver}/portfolio-product/icons/logo.svg"
     portfolio-performance-bin.desktop)
 validpgpkeys=('E46E6F8FF02E4C83569084589239277F560C95AC')
-sha512sums=('f881d35f4979f29f43e76aa03ccc465b1b8f55ea1c5a8ee80fab7785eed17619eadb34ea6dbe1e0038300cdbbc19856e2d63af534ab083f026bf44dbb62a0d1c'
+sha256sums=('803f2d50eb2e71ed2ac410c1c8e75da0fa82a9490f7e019b6e701af922c99d55'
             'SKIP'
-            'a7aef110c3379ea40644c3acc8681abd2bda82522d90fc4777632883454055c63426f97dada8ca247e5fa20a9f5b462eead46d2c2bf16989d35cebd774d32162'
-            '29986cbce9bdb3ad385de9d0ca11c41cd640e3fd258b54768e7158cdcc9db303b760b535de3d48d31c888e37966b885c7a645b4a2b0bcc95751b584df4ad834d')
+            '61397bafed5a2954975294fdd04e69e0a2831fae22af88d32e854cd5837b93bf'
+            'e3829c92603b3edd8039959af91cf957d0287bb59c395e30c28f661d5fd0403d')
 
 package() {
     install -d "$pkgdir"/{opt,usr/bin,usr/share/pixmaps,usr/share/applications}
