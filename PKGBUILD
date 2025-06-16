@@ -3,7 +3,7 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=10.2.r193.g6e6334d4293
+pkgver=10.10.r0.g885446556ce
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('x86_64')
@@ -11,67 +11,78 @@ url='https://www.winehq.org/'
 license=('LGPL-2.1-or-later')
 depends=(
     'desktop-file-utils'
-    'fontconfig'      'lib32-fontconfig'
-    'freetype2'       'lib32-freetype2'
-    'gcc-libs'        'lib32-gcc-libs'
-    'gettext'         'lib32-gettext'
-    'libpcap'         'lib32-libpcap'
-    'libunwind'       'lib32-libunwind'
-    'libxcursor'      'lib32-libxcursor'
-    'libxkbcommon'    'lib32-libxkbcommon'
-    'libxi'           'lib32-libxi'
-    'libxrandr'       'lib32-libxrandr'
-    'wayland'         'lib32-wayland'
-)
-makedepends=('perl' 'mingw-w64-gcc'
+    'fontconfig'
+    'freetype2'
+    'gcc-libs'
+    'gettext'
+    'glib2'
+    'glibc'
+    'libpcap'
+    'libunwind'
+    'libx11'
+    'libxcursor'
+    'libxext'
+    'libxi'
+    'libxkbcommon'
+    'libxrandr'
+    'systemd-libs'
+    'wayland')
+makedepends=(
+    'alsa-lib'
+    'ffmpeg'
     'git'
-    'alsa-lib'              'lib32-alsa-lib'
-    'gnutls'                'lib32-gnutls'
-    'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
-    'libcups'               'lib32-libcups'
+    'gnutls'
+    'gst-plugins-base-libs'
+    'gstreamer'
+    'libcups'
     'libgphoto2'
-    'libpulse'              'lib32-libpulse'
-    'libxcomposite'         'lib32-libxcomposite'
-    'libxinerama'           'lib32-libxinerama'
-    'libxxf86vm'            'lib32-libxxf86vm'
-    'mesa'                  'lib32-mesa'
-    'mesa-libgl'            'lib32-mesa-libgl'
+    'libpulse'
+    'libusb'
+    'libxcomposite'
+    'libxinerama'
+    'libxxf86vm'
+    'mesa'
+    'mesa-libgl'
+    'mingw-w64-gcc'
     'opencl-headers'
-    'opencl-icd-loader'     'lib32-opencl-icd-loader'
-    'pcsclite'              'lib32-pcsclite'
+    'opencl-icd-loader'
+    'perl'
+    'pcsclite'
     'samba'
     'sane'
-    'sdl2'                  'lib32-sdl2'
+    'sdl2'
     'unixodbc'
-    'v4l-utils'             'lib32-v4l-utils'
+    'v4l-utils'
     'vulkan-headers'
-    'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
-)
+    'vulkan-icd-loader')
 optdepends=(
-    'alsa-lib'              'lib32-alsa-lib'
-    'alsa-plugins'          'lib32-alsa-plugins'
-    'cups'                  'lib32-libcups'
+    'alsa-lib'
+    'alsa-plugins'
+    'cups'
     'dosbox'
-    'gnutls'                'lib32-gnutls'
+    'ffmpeg'
+    'gnutls'
     'gst-plugins-bad'
-    'gst-plugins-base'      'lib32-gst-plugins-base'
-    'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
-    'gst-plugins-good'      'lib32-gst-plugins-good'
+    'gst-plugins-base'
+    'gst-plugins-base-libs'
+    'gst-plugins-good'
     'gst-plugins-ugly'
+    'gstreamer'
     'libgphoto2'
-    'libpulse'              'lib32-libpulse'
-    'libxcomposite'         'lib32-libxcomposite'
-    'libxinerama'           'lib32-libxinerama'
-    'opencl-icd-loader'     'lib32-opencl-icd-loader'
-    'pcsclite'              'lib32-pcsclite'
+    'libpulse'
+    'libusb'
+    'libxcomposite'
+    'libxinerama'
+    'opencl-icd-loader'
+    'pcsclite'
+    'perl'
     'samba'
     'sane'
-    'sdl2'                  'lib32-sdl2'
+    'sdl2'
     'unixodbc'
-    'v4l-utils'             'lib32-v4l-utils'
+    'v4l-utils'
     'wine-gecko'
-    'wine-mono'
-)
+    'wine-mono')
 options=('staticlibs' '!lto')
 install="${pkgname}.install"
 provides=("wine=${pkgver}" "bin32-wine=${pkgver}" "wine-wow64=${pkgver}")
@@ -85,8 +96,7 @@ sha256sums=('SKIP'
             '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4')
 
 prepare() {
-    rm -rf build-{32,64}
-    mkdir -p build-{32,64}
+    mkdir -p build
 }
 
 pkgver() {
@@ -101,50 +111,24 @@ build() {
     export CROSSCXXFLAGS="${CXXFLAGS/-Werror=format-security/} -g"
     export CROSSLDFLAGS="${LDFLAGS//-Wl,-z*([^[:space:]])/}"
     
-    # build wine 64-bit
-    # (according to the wine wiki, this 64-bit/32-bit building order is mandatory)
-    printf '%s\n' '  -> Building wine-64...'
-    cd build-64
+    cd build
     ../wine/configure \
         --prefix='/usr' \
         --libdir='/usr/lib' \
         --with-x \
         --with-wayland \
         --with-gstreamer \
-        --enable-win64
-    make
-    
-    # build wine 32-bit
-    printf '%s\n' '  -> Building wine-32...'
-    cd "${srcdir}/build-32"
-    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-    ../wine/configure \
-        --prefix='/usr' \
-        --libdir='/usr/lib' \
-        --with-x \
-        --with-wayland \
-        --with-gstreamer \
-        --with-wine64="${srcdir}/build-64"
+        --with-freetype \
+        --enable-archs="${CARCH},i386"
     make
 }
 
 package() {
-    # package wine 32-bit
-    # (according to the wine wiki, this reverse 32-bit/64-bit packaging order is important)
-    printf '%s\n' '  -> Packaging wine-32...'
-    cd build-32
-    make prefix="${pkgdir}/usr" \
-         libdir="${pkgdir}/usr/lib" \
-         dlldir="${pkgdir}/usr/lib/wine" \
-         install
-    
-    # package wine 64-bit
-    printf '%s\n' '  -> Packaging wine-64...'
-    cd "${srcdir}/build-64"
-    make prefix="${pkgdir}/usr" \
-         libdir="${pkgdir}/usr/lib" \
-         dlldir="${pkgdir}/usr/lib/wine" \
-         install
+    make -C build \
+        prefix="${pkgdir}/usr" \
+        libdir="${pkgdir}/usr/lib" \
+        dlldir="${pkgdir}/usr/lib/wine" \
+        install
     
     # font aliasing settings for win32 applications
     install -d -m755 "${pkgdir}/usr/share/fontconfig/conf.default"
