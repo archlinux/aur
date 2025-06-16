@@ -2,7 +2,7 @@
 # Contributor: Hermann Höhne <hoehermann@gmx.de>
 
 pkgname=purple-gowhatsapp
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="A libpurple/Pidgin plugin for WhatsApp Web, Powered by go-whatsapp"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ optdepends=("gdk-pixbuf2: Pictures", "opusfile: Sound")
 provides=("${pkgname}-git")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hoehermann/purple-gowhatsapp/archive/refs/tags/v${pkgver}.tar.gz" "purple-config.cmake")
-sha256sums=('878fcfcc714dc375f9e10c5b13543a5c45f344ce219e41766d2f5643da57ff39'
+sha256sums=('4db5702a59f569778631bc28f2a01d8112d4f6907369fa33f062ca97c53a0008'
             'acf2329cfb20ceea7aa0f58d15b52daffd408afeb5f1a3656ffd8e2260f7e67a')
 build() {
   cp purple-config.cmake "${srcdir}/${pkgname}-${pkgver}/scripts/purple-cmake"
