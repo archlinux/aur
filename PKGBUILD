@@ -1,6 +1,6 @@
 # Maintainer: vedant-asati03 <vedant.asati03@gmail.com>
 pkgname=aurras
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A high-end command line music player"
 arch=('any')
