@@ -20,7 +20,6 @@ pkgbase = caelestia-meta
 	depends = app2unit
 	depends = wireplumber
 	depends = trash-cli
-	depends = sway-audio-idle-inhibit
 	depends = foot
 	depends = fish
 	depends = fastfetch
