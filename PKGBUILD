@@ -6,7 +6,7 @@
 _release='2022'
 pkgname="labview-2022"
 pkgver="1"
-pkgrel=5
+pkgrel=6
 pkgdesc='A system-design platform and development environment for a visual programming language from National Instruments.'
 url="https://download.ni.com/support/softlib/labview/labview_development_system/2022%20Q3/Patches/f1/Linux/lv2022Q3_f1Patch_full-linux-mac.iso"
 arch=('x86_64')
@@ -91,6 +91,11 @@ package() {
  # cp -p "${srcdir}/labview" "${pkgdir}/opt/natinst/LabVIEW-2022-64/"
  # cp -rp "${srcdir}/vi.lib" "${pkgdir}/opt/natinst/LabVIEW-2022-64/"
  # cp -rp "${srcdir}/AppLibs" "${pkgdir}/opt/natinst/LabVIEW-2022-64/"
+ 
+ chmod -R +w "${srcdir}/utils"
+ chmod -R +w "${srcdir}/rpm"
+ chmod -R +w "${srcdir}/deb"
+
 }
 
 # vim:set et sw=2 sts=2:
