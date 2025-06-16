@@ -1,11 +1,11 @@
-# Maintainer: Steven Seifried <gitlab@canox.net>
+# Maintainer: Filippo Falezza <filippo.falezza at outlook dot com>
 # Contributor: Steven Seifried <gitlab@canox.net>
 _pkgname=tuxedo-drivers
 pkgname=tuxedo-drivers-xmg-dkms-git
-pkgver=4.12.2
+pkgver=v4.4.2.r229.g56f4215
 pkgrel=1
 pkgdesc="TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface"
-url="https://github.com/tuxedocomputers/tuxedo-drivers"
+url="https://github.com/effeffe/tuxedo-drivers-XMG"
 license=('GPL-2.0-or-later')
 arch=('x86_64')
 depends=('dkms')
@@ -28,26 +28,25 @@ provides=(
           'ite_8297'
           'ite_829x')
 conflicts=('tuxedo-keyboard-dkms' 'tuxedo-drivers-dkms' 'tuxedo-keyboard-ite-dkms')
-source=(
-  $pkgname-$pkgver.tar.gz::https://github.com/tuxedocomputers/tuxedo-drivers/archive/v${pkgver}.tar.gz
-  tuxedo_compatibility_check.patch
-  tuxedo_io.patch
+source=("${_pkgname%}-$pkgver"::git+https://github.com/effeffe/tuxedo-drivers-XMG.git
+#  tuxedo_compatibility_check.patch
+#  tuxedo_io.patch
 )
 sha256sums=(
-  '19171ee42d2c3d1773941f948ac7f8b74a76c902cd482ad5aa9106c17b6e6486'
-  'ef88dad138adedf52e6ec0cc406084194da2bb43b33e9abc96c3edb7738ac602'
-  'dec506a44a5f34fdab2f1d7222fc97210234be6fd034ca6532fa8f0f1ce84d14'
-)
-sha512sums=(
-  '39e08f2929c4bfaeb29faac35d6d177b58629a7fd2f92c3ee6f5872d49d530584752221e8ae3b3102f95fd16300b74ac721badf407895ec0738b6a4a0c6e4967'
   'SKIP'
-  'SKIP'
+#  'ef88dad138adedf52e6ec0cc406084194da2bb43b33e9abc96c3edb7738ac602'
+#  'dec506a44a5f34fdab2f1d7222fc97210234be6fd034ca6532fa8f0f1ce84d14'
 )
 
-prepare() {
-  patch -Np0 -i "${srcdir}"/tuxedo_compatibility_check.patch
-  patch -Np0 -i "${srcdir}"/tuxedo_io.patch
+pkgver() {
+  cd "${_pkgname%}-$pkgver"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
+#prepare() {
+#  patch -Np0 -i "${srcdir}"/tuxedo_compatibility_check.patch
+#  patch -Np0 -i "${srcdir}"/tuxedo_io.patch
+#}
 
 package() {
   mkdir -p "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
@@ -59,5 +58,7 @@ package() {
   cp -ar "${_pkgname%}-$pkgver"/src/* "$pkgdir/usr/src/${_pkgname%}-$pkgver/"
   install -Dm644 "${_pkgname%}-$pkgver"/99-z-tuxedo-systemd-fix.rules -t "$pkgdir/etc/udev/rules.d/"
   install -Dm644 "${_pkgname%}-$pkgver"/99-infinityflex-touchpanel-toggle.rules  -t "$pkgdir/etc/udev/rules.d/"
-  install -Dm644 "${_pkgname%}-$pkgver"/61-sensor-infinityflex.hwdb -t "$pkgdir/usr/lib/udev/hwdb.d"
+  install -Dm644 "${_pkgname%}-$pkgver"/61-sensor-tuxedo.hwdb -t "$pkgdir/usr/lib/udev/hwdb.d"
+  install -Dm644 "${_pkgname%}-$pkgver"/61-keyboard-tuxedo.hwdb -t "$pkgdir/usr/lib/udev/hwdb.d/"
 }
+
