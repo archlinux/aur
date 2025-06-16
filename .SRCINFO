@@ -19,6 +19,7 @@ pkgbase = high-tide-git
 	depends = python
 	depends = python-gobject
 	depends = python-tidalapi
+	depends = xdg-desktop-portal
 	optdepends = python-pypresence>=4.3.0.r27.gd6709d3: Discord Rich Presence support
 	provides = high-tide=0.1.7.r0.gc7d97b6
 	conflicts = high-tide

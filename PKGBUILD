@@ -21,6 +21,7 @@ depends=(
   python
   python-gobject
   python-tidalapi
+  xdg-desktop-portal
 )
 optdepends=(
   'python-pypresence>=4.3.0.r27.gd6709d3: Discord Rich Presence support'
