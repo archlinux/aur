@@ -19,6 +19,7 @@ makedepends=(
  "mariadb"
  "postgresql"
  "postgresql-libs"
+ "python-virtualenv-tools3"
 )
 depends=(
  "file"
@@ -88,6 +89,12 @@ package(){
  install -d "$pkgdir/usr/share/paperless" "$pkgdir/usr/bin"
  cp -R "$_pkgname"/* "$pkgdir/usr/share/paperless"
 
+ # venv
+ install -d "$pkgdir/usr/lib/paperless"
+ cp -R "$srcdir/venv"/* "$pkgdir/usr/lib/paperless"
+ (cd "$pkgdir/usr/lib/paperless"; virtualenv-tools --update-path /usr/lib/paperless)
+ find "$pkgdir/usr/lib/paperless" -type d -name "__pycache__" | xargs rm -rf
+
  # main executable
  cat << EOF > "$pkgdir/usr/bin/paperless-manage"
 #!/usr/bin/bash
@@ -95,12 +102,6 @@ package(){
 source /usr/lib/paperless/bin/activate
 exec /usr/share/paperless/src/manage.py \$@
 EOF
-
- # venv
- install -d "$pkgdir/usr/lib/paperless"
- cp -R "$srcdir/venv"/* "$pkgdir/usr/lib/paperless" 
- find "$pkgdir/usr/lib/paperless" -type f -exec sed -i "s|$srcdir/venv|/usr/lib/paperless|g" {} +
- find "$pkgdir/usr/lib/paperless" -type d -name "__pycache__" | xargs rm -rf
 
  # scheduler
  cat << EOF > "$pkgdir/usr/lib/paperless/scheduler"

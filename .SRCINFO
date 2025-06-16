@@ -12,6 +12,7 @@ pkgbase = paperless-ngx-venv
 	makedepends = mariadb
 	makedepends = postgresql
 	makedepends = postgresql-libs
+	makedepends = python-virtualenv-tools3
 	depends = file
 	depends = ghostscript
 	depends = gnupg
