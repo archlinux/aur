@@ -3,12 +3,18 @@
 # Based on PKGBUILD for https://aur.archlinux.org/packages/canon-pixma-mg2200-complete
 # That example shows how to add support for a scanner driver as well if desired.
 #
+#
+# You have to run `sudo ln -s /usr/lib/libxml2.so.16 /usr/lib/libxml2.so.2`
+# to get this to work. The drivers depend on an old libxml2
+# version, but it seems like the ABI incompat is not that
+# bad and it still works with the new version.
 
 pkgname=canon-tr8600-series
 pkgver=6.10
 pkgrel=1
 pkgdesc="Printer drivers for the Cannon 8620 series"
-url='https://www.usa.canon.com/internet/portal/us/home/support/details/printers/inkjet-multifunction/tr-series-inkjet/pixma-tr8620?tab=drivers_downloads'
+# url='https://www.usa.canon.com/internet/portal/us/home/support/details/printers/inkjet-multifunction/tr-series-inkjet/pixma-tr8620?tab=drivers_downloads'
+url='https://gdlp01.c-wss.com/gds/1/0100010921/01/cnijfilter2-source-6.10-1.tar.gz'
 arch=('x86_64')
 license=('custom')
 # N.B. this is an AUR package, so you'll need to manually install it
