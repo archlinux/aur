@@ -15,7 +15,7 @@ source=("${_pkgname}::git+https://github.com/baumea/fzf-vjour")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
+	cd "${_pkgname}"
 	(
 		set -o pipefail
 		git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
