@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=numara-bin
 _pkgname=Numara
-pkgver=6.0.3
+pkgver=6.0.4
 _electronversion=36
 pkgrel=1
 pkgdesc="Simple notepad calculator built on Electron, powered by Math.js.(Prebuilt version.Use system-wide electron)"
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
 sha256sums=('b944c7642b6a0ccf0c24e98d199d8bf4c8d556ebc7d87ddb9af98cab67b378b5'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('7a73a309015d72340cf9a17834bed78db10065bb46d9fdb25763f1084630bd9f')
-sha256sums_x86_64=('08083453e414919c2c38fa8d4626f5a1c9ff509be1aeaf1f044975895af251fa')
+sha256sums_aarch64=('c4ea2fccad71199fbf3ef492ebf498d19ae3d58af05c72e42dc6f0a842fc2761')
+sha256sums_x86_64=('d9143f3f86fe92d035f864fe55e1809907838979714584b7b877dfef935decdc')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
