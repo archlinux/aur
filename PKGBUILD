@@ -1,10 +1,10 @@
-# Maintainer: LightDot <lightdot -a-t- g m a i l>
+# Maintainer: LightDot <lightdot -a-t- server.si>
 
 pkgname=alpine
 pkgver=2.26
 pkgrel=3
 arch=('x86_64' 'i686' 'armv6h' 'armv6l' 'armv7h' 'armv7l' 'aarch64')
-pkgdesc="A free software email client, a rewrite of Pine which was a continuation of the venerable ELM."
+pkgdesc="A free software email and usenet client, a rewrite of Pine which was a continuation of the venerable ELM."
 url="https://alpineapp.email/"
 license=('APACHE')
 depends=('gettext' 'krb5' 'libldap' 'pam')
@@ -46,7 +46,7 @@ build() {
 	patch -p1 -i "${srcdir}/longurl-${pkgver}.patch"
 
 	# Configure Alpine
-	CFLAGS="-Wno-error=incompatible-pointer-types" \
+	CFLAGS="-Wno-error=incompatible-pointer-types -std=gnu17" \
 	LIBS+="-lpam -lkrb5 -lcrypto" ./configure --prefix=/usr \
 	--with-passfile=.alpine.passfile --without-tcl --disable-shared \
 	--with-system-pinerc=/etc/${pkgname}.d/pine.conf \
