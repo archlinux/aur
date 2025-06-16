@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : iwinfo
- Tags         : 3.4.2 ➙ 4.1.0
-              : 2024-12-31 ➙ 2025-05-21
+ Tags         : 3.5.0 ➙ 4.2.0
+              : 2025-02-25 ➙ 2025-06-16
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-16   : 4.2.0
+                Improve way we run external programs - handle larger output, better
+                exception managemen etc
+ 2025-05-21     update Docs/Changelog Docs/${my_name}.pdf
 
  2025-05-21   : 4.1.0
                 Use builtin types where possible. e.g. typing.List -> list
@@ -28,9 +33,3 @@
                 More checking of missing programs. Found by aur report from @simona
                 Add iwd as dependency to provide /usr/bin/iwctl
  2024-12-31     update Docs/Changelog.rst Docs/mkpkg.pdf for 3.4.2
-
- 2024-12-31   : 3.4.2
-                Git tags are now signed.
-                Update SPDX tags
-                Add git signing key to Arch Package
- 2024-07-12     update Docs/Changelog.rst Docs/iwinfo.pdf
