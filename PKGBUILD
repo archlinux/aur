@@ -8,8 +8,10 @@ arch=("any")
 url=https://github.com/microsoft/vscode
 license=('MIT')
 depends=(code electron)
-source=('https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh')
-sha256sums=('5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
+source=('https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh'
+PKGBUILD_native_modules)
+sha256sums=('5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1'
+            'e9b4caba426357c17ad964162a2cabd648442bbf806ec05a3a4c98175ef32bfe')
 
 package() {
   install -Dvm755 code.sh "${pkgdir}"/usr/bin/$pkgname
