@@ -1,0 +1,17 @@
+pkgbase = systemrescue-systemd-boot
+	pkgdesc = SystemRescue as systemd-boot loader entry
+	pkgver = 12.01
+	pkgrel = 1
+	url = https://www.system-rescue.org/
+	arch = x86_64
+	license = GPL
+	depends = systemd
+	noextract = systemrescue-12.01-amd64.iso
+	options = !debug
+	backup = boot/loader/entries/systemrescue.conf
+	source = https://fastly-cdn.system-rescue.org/releases/12.01/systemrescue-12.01-amd64.iso
+	source = systemrescue.conf
+	sha256sums = bee16490622c07fb628b8051acd0b2882b5b575dd7abd62e6c8df282b4fd0ed1
+	sha256sums = 83a8ed42eb5f31cab9e02823c8789394bbfba75872c1ed2d6575eb9f9cb7463f
+
+pkgname = systemrescue-systemd-boot
