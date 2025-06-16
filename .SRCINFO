@@ -1,13 +1,13 @@
 pkgbase = clrblk
 	pkgdesc = A simple utility to show and test pretty (and not so pretty) colors in the terminal.
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://gitlab.com/ashe.sterling/clrblk
 	arch = x86_64
 	license = WTFPL-2-or-later
 	makedepends = rust
 	makedepends = cargo
-	source = clrblk-v1.3.5.tar.gz::https://gitlab.com/ashe.sterling/clrblk/-/archive/v1.3.5/clrblk-v1.3.5.tar.gz
-	sha256sums = fede860a4b1b5529b773133fededdeb651ffc9ba27a0b0ef6be89da5b7d8d956
+	source = clrblk-v1.3.6.tar.gz::https://gitlab.com/ashe.sterling/clrblk/-/archive/v1.3.6/clrblk-v1.3.6.tar.gz
+	sha256sums = 858e720191fcf254402eb756f809d7718ffdb8b4c1deb5cd91cee415b31da6e6
 
 pkgname = clrblk
