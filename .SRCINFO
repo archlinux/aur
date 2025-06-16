@@ -1,6 +1,6 @@
 pkgbase = blackbox-terminal-git
 	pkgdesc = A beautiful GTK 4 terminal.
-	pkgver = 0.14.0.r66.gbb1ce17
+	pkgver = 0.14.0.r70.g2895855
 	pkgrel = 1
 	url = https://gitlab.gnome.org/raggesilver/blackbox
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = blackbox-terminal-git
 	makedepends = gi-docgen
 	depends = glib2
 	depends = libadwaita
-	depends = libpqmarble
 	depends = vte4
 	depends = json-glib
 	depends = libgee
