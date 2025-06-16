@@ -1,29 +1,30 @@
 # Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 # Contributor: Mathias Buhr <napcode@aparatus.de>
+# Contributor: Florian Hülsmann <fh@cbix.de>
 
 _name=OctaSine
 pkgname=${_name,,}
 pkgver=0.9.1
-pkgrel=1
-pkgdesc='A four-operator stereo FM synthesizer VST2 plugin'
+pkgrel=3
+pkgdesc='A four-operator stereo FM synthesizer CLAP/VST2 plugins'
 arch=(aarch64 x86_64)
 url='https://www.octasine.com/'
-license=(AGPL3)
+license=(AGPL-3.0-only)
 groups=(clap-plugins pro-audio vst-plugins)
-depends=(gcc-libs glibc libx11 libxcb xcb-util-wm)
-makedepends=(libglvnd libxcursor python rust)
+depends=(gcc-libs glibc libx11 libxcb libxcursor xcb-util-wm)
+makedepends=(libglvnd python rust)
 optdepends=(
   'clap-host: for loading the CLAP plugin'
   'vst-host: for loading the VST2 plugin'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/greatest-ape/$_name/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('b67fe619d799b4200956304edd3bc7f01952319fcb1a11c0109662eb23e24f75')
+options=(!lto) # https://github.com/greatest-ape/OctaSine/issues/203
 
 build() {
   cd $_name-$pkgver
-  cargo xtask bundle -p octasine --release --features "vst2"
-  cargo xtask bundle -p octasine --release --features "clap"
+  cargo xtask bundle -p octasine --release --features "clap,vst2"
 }
 
 check() {
