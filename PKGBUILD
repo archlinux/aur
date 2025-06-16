@@ -3,7 +3,7 @@
 _pkgname="azahar"
 pkgname="$_pkgname-appimage"
 
-pkgver=2121.2
+pkgver=2122
 
 pkgrel=1
 epoch=1
