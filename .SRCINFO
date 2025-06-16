@@ -9,6 +9,7 @@ pkgbase = hypseus-singe-git
 	makedepends = git
 	makedepends = cmake
 	depends = zlib
+	depends = libzip
 	depends = sdl2
 	depends = sdl2_image
 	depends = sdl2_mixer
