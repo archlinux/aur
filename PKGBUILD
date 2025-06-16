@@ -1,5 +1,5 @@
 # Maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
-# Maintainer: George Tsiamasiotis <gtsiam@windowslive.com>
+# Contributor: George Tsiamasiotis <gtsiam@windowslive.com>
 
 pkgname=topiary
 pkgver=0.6.1
