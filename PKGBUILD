@@ -3,7 +3,7 @@
 pkgbase=laser-magic
 _pkgname=laser_tool
 pkgver=0.1.26
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful, open-source tool designed for laser cutting and engraving, written in Rust"
 arch=('x86_64')
 url="https://lasermagic.ci-yow.com/"
