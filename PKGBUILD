@@ -76,7 +76,7 @@ prepare() {
         s/npm run/NODE_ENV=production npm run/g
     " -i bin/package.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    #NODE_ENV=development    npm install --leagcy-peer-deps
+    NODE_ENV=development    npm install --leagcy-peer-deps
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
