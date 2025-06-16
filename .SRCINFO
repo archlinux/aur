@@ -1,7 +1,7 @@
 pkgbase = owncloud-client-desktop-shell-integration-dolphin-git
 	pkgdesc = ownCloud Dolphin integration
 	pkgver = r21.f0e60f4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/owncloud/client-desktop-shell-integration-dolphin
 	arch = any
 	license = GPL-2.0
