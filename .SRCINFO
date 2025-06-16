@@ -1,6 +1,6 @@
 pkgbase = tess-bin
 	pkgdesc = A hackable, simple, rapid and beautiful terminal for the new era of technology.(Prebuilt version)
-	pkgver = 0.7.0_alpha.13
+	pkgver = 0.7.0_alpha.14
 	pkgrel = 1
 	url = https://tessapp.dev/discord
 	arch = i686
@@ -8,11 +8,11 @@ pkgbase = tess-bin
 	license = MPL-2.0
 	depends = webkit2gtk-4.1
 	depends = gtk3
-	provides = tess=0.7.0_alpha.13
+	provides = tess=0.7.0_alpha.14
 	conflicts = tess
-	source_i686 = tess-0.7.0_alpha.13-i686.deb::https://github.com/Squitch1/Tess/releases/download/0.7.0-alpha.13/tess_0.7.0.alpha.13-1_i386.deb
-	sha256sums_i686 = a0cb1a9fdb0fc3593f157b032af137bd984c706eb3c519ae0e8146d37b8d41bd
-	source_x86_64 = tess-0.7.0_alpha.13-x86_64.deb::https://github.com/Squitch1/Tess/releases/download/0.7.0-alpha.13/tess_0.7.0.alpha.13-1_amd64.deb
-	sha256sums_x86_64 = 1cf5b33fa3d2d0115e95773d01488967065fa8470bcb8cc677a3c0b36a1c3405
+	source_i686 = tess-0.7.0_alpha.14-i686.deb::https://github.com/Squitch1/Tess/releases/download/0.7.0-alpha.14/tess_0.7.0.alpha.14-1_i386.deb
+	sha256sums_i686 = ae4cdbfd6fa88a2cffcb9366dcb71069bca5b2dd24a45daf1cbb8635cf8b8eae
+	source_x86_64 = tess-0.7.0_alpha.14-x86_64.deb::https://github.com/Squitch1/Tess/releases/download/0.7.0-alpha.14/tess_0.7.0.alpha.14-1_amd64.deb
+	sha256sums_x86_64 = 1413fa2007b03d22b53917df3f26083f4f04ca3ffdfc7fbf56a27411695afd19
 
 pkgname = tess-bin
