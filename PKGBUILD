@@ -1,7 +1,7 @@
 # Maintainer: Dinamyc <dinamycdinamyc at gmail dot com>
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=oblivion-desktop-bin
-pkgver=2.97.6
+pkgver=2.97.10
 pkgrel=1
 pkgdesc="Unofficial Warp Client for Windows/Mac/Linux (Pre-compiled version)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver//_/-}-arm64.deb::${url}/releases/downl
 source=("https://raw.githubusercontent.com/bepass-org/${pkgname%-bin}/refs/tags/v${pkgver//_/-}/LICENSE.md")
 
 sha256sums=('1030cbd64a888ed7b945ba92fa9468fc3f29176e86f046f5cc620c68a6cfde64')
-sha256sums_x86_64=('ae475c561ae5ad0353ef3f48c91f39f7f56a38ff835c3dd4e92a993581168396')
-sha256sums_aarch64=('ad9a3a652aa358cbb40427fc206deb7cc2bcddb301333e0f9c5062ddc527bd8c')
+sha256sums_x86_64=('bff7278c30b940742b13b48f95609ff307c6057ce23d3d73e20897134af5cf7c')
+sha256sums_aarch64=('4a55c2dd75a78ac7916e3a805068eb31f913ad4809170fd4cd453350e97851eb')
 
 
 package() {
