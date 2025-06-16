@@ -1,14 +1,14 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 
 pkgname=ttf-amiri
-pkgver=1.002
+pkgver=1.003
 pkgrel=1
 pkgdesc="Amiri (أميري) is a body text Naskh typeface"
 arch=('any')
 url="http://www.amirifont.org/"
 license=('OFL-1.1')
 source=(https://github.com/aliftype/amiri/releases/download/$pkgver/Amiri-$pkgver.zip)
-sha256sums=('e39bea40fb64d77cb511a686d2506005b2e39a85166a4ebcf858111d416c14a5')
+sha256sums=('81af0aff7d2086d8af24cea7202f7546130997982534691373485cd96744d05e')
 
 package() {
   cd "$srcdir/Amiri-$pkgver"

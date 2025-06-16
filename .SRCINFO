@@ -1,11 +1,11 @@
 pkgbase = ttf-amiri
 	pkgdesc = Amiri (أميري) is a body text Naskh typeface
-	pkgver = 1.002
+	pkgver = 1.003
 	pkgrel = 1
 	url = http://www.amirifont.org/
 	arch = any
 	license = OFL-1.1
-	source = https://github.com/aliftype/amiri/releases/download/1.002/Amiri-1.002.zip
-	sha256sums = e39bea40fb64d77cb511a686d2506005b2e39a85166a4ebcf858111d416c14a5
+	source = https://github.com/aliftype/amiri/releases/download/1.003/Amiri-1.003.zip
+	sha256sums = 81af0aff7d2086d8af24cea7202f7546130997982534691373485cd96744d05e
 
 pkgname = ttf-amiri
