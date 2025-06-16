@@ -2,8 +2,10 @@
 
 _pkgname=glslang
 pkgname=mingw-w64-${_pkgname}
-pkgver=15.3.0
+pkgver=1.4.313.0
 pkgrel=1
+epoch=1
+_tag="vulkan-sdk-$pkgver"
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (mingw-w64)'
 arch=('any')
 url='https://github.com/KhronosGroup/glslang'
@@ -13,13 +15,13 @@ makedepends=('mingw-w64-cmake' 'python' 'ninja')
 optdepends=('mingw-w64-wine: runtime support')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(
-	"${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+	"${_pkgname}-${_tag}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz"
 	"$pkgname-fix-wrong-export.patch"
 )
-sha256sums=('c6c21fe1873c37e639a6a9ac72d857ab63a5be6893a589f34e09a6c757174201'
+sha256sums=('555ac780ccceca926fa25775834639ce6ffc744120bfb68fb8657dd4032d21ee'
             '773ced2829456e38dfc92e9b813005e1487c1c96ecd6d150d6edbfd02626876e')
 
-_srcdir="${_pkgname}-${pkgver}"
+_srcdir="${_pkgname}-${_tag}"
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 _flags=(
 	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
