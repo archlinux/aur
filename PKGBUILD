@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=apipost-bin
-pkgver=8.1.15
+pkgver=8.1.16
 pkgrel=1
 pkgdesc="Apipost = Postman + Swagger + Mock + Jmeter"
 arch=('x86_64' 'aarch64')
