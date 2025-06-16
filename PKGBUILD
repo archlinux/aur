@@ -2,7 +2,7 @@
 
 pkgname=calibre-bin
 pkgver=8.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official desktop version Calibre"
 arch=(x86_64)
 url="https://github.com/kovidgoyal/calibre"
@@ -21,6 +21,15 @@ source=(
 	share.tar.xz
 	$url/releases/download/v${pkgver}/calibre-${pkgver}-x86_64.txz
 )
+
+prepare() {
+    # don't want the sources symlinks in the final tarball
+    for src in "${source[@]##*/}"; do
+        if [[ -L "$srcdir/$src" ]]; then
+            rm "$srcdir/$src"
+        fi
+    done
+}
 
 # Checksums
 sha256sums=('c7aae61afba19c9cceed8bbafd2b39b5c4d6d683de0ccfc9c1fe2651857f757a'

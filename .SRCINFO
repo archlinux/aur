@@ -1,7 +1,7 @@
 pkgbase = calibre-bin
 	pkgdesc = Official desktop version Calibre
 	pkgver = 8.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kovidgoyal/calibre
 	arch = x86_64
 	license = GPL3
