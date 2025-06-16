@@ -1,6 +1,7 @@
 # Maintainer: Zaman Huseynli <zamanhuseynli23@gmail.com>
 # Backup contact: admin@azccriminal.space
 pkgname=archcraft-pkg
+url=https://azccriminal.space
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="archcraft-pkg Alternative realtime crafting header coop reactivable and file-timesnapshot package utility."
