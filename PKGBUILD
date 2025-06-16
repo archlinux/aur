@@ -24,9 +24,7 @@ depends=(python
          python-click
          python-loguru
          python-rich)
-optdepends=('gst-plugin-pipewire: required for Recorder Service'
-            'gst-plugins-good: required for Recorder Service'
-            'gst-plugins-ugly: required for Recorder Service'
+optdepends=('gpu-screen-recorder: required for Recorder Service'
             'networkmanager: required for Network Service'
             'dart-sass: SASS/SCSS compilation support'
             'upower: required for UPower Service'
