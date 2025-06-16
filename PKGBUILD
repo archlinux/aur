@@ -2,17 +2,21 @@
 pkgname=zap-rs
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Simple and minimal web wrapper for whatsapp web"
-arch=(x86_64)
+pkgdesc="Simple and minimal web wrapper for WhatsApp Web"
+arch=('x86_64')
 url="https://github.com/JonasAlv/zap-rs"
 license=('MIT')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
-options=('!strip' '!emptydirs')
-install=${pkgname}.install
-source_x86_64=("https://github.com/JonasAlv/zap-rs/releases/download/v0.1.0/zap-rs_0.1.0_amd64.deb")
-sha256sums_x86_64=('SKIP')
-package() {
-  # Extract package data
-  tar -xvf data.tar.gz -C "${pkgdir}"
+depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator' 'libsoup' 'openssl')
+makedepends=('rust' 'cargo' 'npm' 'yarn' 'git')
+source=("$pkgname::git+https://github.com/JonasAlv/zap-rs.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
+build() {
+  cd "$srcdir/$pkgname"
+  cargo build --release
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  install -Dm755 "target/release/zap-rs" "$pkgdir/usr/bin/zap-rs"
 }
