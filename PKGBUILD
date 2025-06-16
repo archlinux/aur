@@ -6,7 +6,7 @@ pkgver=b4879
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Intel SYCL GPU optimizations and F16)"
 arch=(x86_64 armv7h aarch64)
-url='https://github.com/ggerganov/llama.cpp'
+url='https://github.com/ggml-org/llama.cpp'
 license=('MIT')
 depends=(
   curl
@@ -26,7 +26,7 @@ makedepends=(
 optdepends=(python-pytorch)
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-options+=(lto)
+options+=(!lto !buildflags)
 source=(
   "git+${url}#tag=${pkgver}"
   "git+https://github.com/nomic-ai/kompute.git"
@@ -51,13 +51,9 @@ build() {
   local _cmake_options=(
     -B build
     -S "${_pkgname}"
-    -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DGGML_ALL_WARNINGS=OFF
     -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
-    -DBUILD_SHARED_LIBS=OFF
-    -DGGML_STATIC=ON
-    -DGGML_LTO=ON
     -DGGML_RPC=ON
     -DLLAMA_CURL=ON
     -DGGML_BLAS=ON
@@ -68,13 +64,12 @@ build() {
     -Wno-dev
   )
   cmake "${_cmake_options[@]}"
-  cmake --build build
+  cmake --build build --config Release -j
 }
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
   rm "${pkgdir}/usr/include/"ggml*
-  rm "${pkgdir}/usr/lib/"lib*.a
 
   install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
