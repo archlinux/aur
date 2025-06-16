@@ -1,0 +1,23 @@
+pkgbase = binvec-bin
+	pkgdesc = A simple application to convert raster graphics to vector graphics (pre-compiled)
+	pkgver = 1.9.9
+	pkgrel = 1
+	url = https://github.com/RouHim/binvec
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = MIT
+	provides = binvec
+	conflicts = binvec
+	options = !strip
+	source_x86_64 = binvec-1.9.9-x86_64-musl::https://github.com/RouHim/binvec/releases/download/1.9.9/binvec-x86_64-musl
+	sha256sums_x86_64 = 162a9991676ede8ed2843b6fc98dadbe027f8b981d226995bd4150f5153a865f
+	source_aarch64 = binvec-1.9.9-aarch64-musl::https://github.com/RouHim/binvec/releases/download/1.9.9/binvec-aarch64-musl
+	sha256sums_aarch64 = ebde59f8c7dc536cd5cac4c046f1e7856654403afe98c132c5315ea577312729
+	source_armv7h = binvec-1.9.9-armv7-musleabihf::https://github.com/RouHim/binvec/releases/download/1.9.9/binvec-armv7-musleabihf
+	sha256sums_armv7h = 8758f364715a2db54b6021ece683c6c15c9ac9b703009f4429a0a412e897b781
+	source_armv6h = binvec-1.9.9-arm-musleabihf::https://github.com/RouHim/binvec/releases/download/1.9.9/binvec-arm-musleabihf
+	sha256sums_armv6h = eeec3c7b6834fda3f1e95c79db910678054653e7202c2928e600d14e081dd84b
+
+pkgname = binvec-bin
