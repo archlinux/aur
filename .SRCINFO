@@ -1,6 +1,6 @@
 pkgbase = webtorrent-desktop-git
 	pkgdesc = Streaming torrent client.(Use system-wide electron)
-	pkgver = 0.24.0.r391.ge61501f
+	pkgver = 0.24.0.r397.g787e4c4
 	pkgrel = 1
 	url = https://webtorrent.io/desktop
 	arch = aarch64

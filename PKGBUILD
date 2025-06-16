@@ -2,7 +2,7 @@
 # Contributor: Danny Dutton <duttondj@vt.edu>
 pkgname=webtorrent-desktop-git
 _pkgname=WebTorrent
-pkgver=0.24.0.r391.ge61501f
+pkgver=0.24.0.r397.g787e4c4
 _electronversion=27
 _nodeversion=18
 pkgrel=1
@@ -61,6 +61,7 @@ prepare() {
         echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=32"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -75,7 +76,7 @@ prepare() {
         s/npm run/NODE_ENV=production npm run/g
     " -i bin/package.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install --leagcy-peer-deps
+    #NODE_ENV=development    npm install --leagcy-peer-deps
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
