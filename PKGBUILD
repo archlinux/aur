@@ -2,28 +2,20 @@
 
 _pkgname=renovate
 pkgname="${_pkgname}-git"
-pkgver=40.17.0.r0.g4e12e52
+pkgver=40.58.0.r0.g2197818
 pkgrel=1
 pkgdesc="Automated dependency updates (git-latest)"
 arch=('any')
-depends=('nodejs>=22.13.0')
-makedepends=('git' 'nvm')
+depends=('nodejs-lts-jod')
+makedepends=('git')
 provides=("${_pkgname}")
 url="https://github.com/renovatebot/renovate"
 license=('AGPL-3.0-only')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
-_nvm_install() {
-  export NVM_DIR="${srcdir}/.nvm"
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-  nvm install
-}
-
 build() {
   cd "${pkgname}"
-
-  _nvm_install
 
   corepack pnpm version --no-git-tag-version "$(git describe --abbrev=0 --tags)"
   corepack pnpm install --frozen-lockfile
