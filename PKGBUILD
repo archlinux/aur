@@ -20,6 +20,7 @@ depends=(
   python-tidalapi
   org.freedesktop.secrets
   "python-pypresence>=4.3.0.r27.gd6709d3"
+  xdg-desktop-portal
 )
 optdepends=(
   # 'python-pypresence>=4.3.0.r27.gd6709d3: Discord Rich Presence support'
