@@ -1,7 +1,7 @@
 # Maintainer: windx-foobar <bezalkogolnycoder at gmail dot com>
 
 pkgname='goto-ssh-bin'
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='A simple terminal SSH manager that provides you with an easy access to the list of your favorite SSH servers.'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 url='https://github.com/grafviktor/goto'
 source=("https://github.com/grafviktor/goto/releases/download/v${pkgver%b*}/goto-v${pkgver%b*}.zip"
   "https://raw.githubusercontent.com/grafviktor/goto/refs/heads/develop/LICENSE")
-b2sums=('2dd7a8d5ddba2199efc1030100c07491a6266ebdc3744c6d9c54cac5c452534b60dcdfe843f014df0a698adda60b9c4f2b3e49a5f78bc17ca5f0b3b174bd970e'
+b2sums=('aff4395881984fe10f9cd3ce986b0b7d517457353356cfff5bd36201d1848bf972b7f136dbb6aa1c1f0a9482f86952386e4de353b2c185ea926d6edca7bbe9c0'
   '5727b772a1c4851aabc85e184cbb043e555e7db727b8183aefba4082772b8ffad71748bf0709ea9d32933a8dc0db9a44ddeebf6b6ee5b5a65bb432ca61a57cd5')
 provides=('goto-ssh-bin' 'gg-ssh-bin')
 
