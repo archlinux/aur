@@ -5,7 +5,7 @@ _name=${pkgname#python-}
 pkgdesc="A Python library for making geographic flat-top hexagon grids"
 url="https://github.com/mrcagney/geohexgrid"
 
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 
 arch=("any")
@@ -14,7 +14,6 @@ license=("MIT")
 depends=(
     "python"
     "python-geopandas"
-    "python-rtree"
 )
 makedepends=(
     "python-build"
@@ -31,7 +30,7 @@ checkdepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=("330956d93e528fc933cd17680b48f3655112d102aff3bc2fed81f32f4180c326f0caa9396125f032734580a78e70643eedf5be24d7fe642bfe05a2f7fd1886f4")
+b2sums=("de945d3873b6c7095023fb774e5986b213ca9973a302ca23eb5ab03e65144d8bf829e9a1221997bb21621589fb97e5e98191806f2b37392ad00f543fdf5fddc4")
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
