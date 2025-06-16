@@ -2,7 +2,7 @@
 pkgname=hypr-wellbeing-bin
 _pkgname=hypr-wellbeing
 pkgver=0.0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="app usage logger for hyprland and niri"
 arch=('x86_64')
 url="https://github.com/DemonKingSwarn/hypr-wellbeing"
