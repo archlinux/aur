@@ -1,0 +1,22 @@
+pkgbase = notifica-task-git
+	pkgdesc = A lightweight desktop app that combines the power of quick note-taking with time awareness and task scheduling.(Use system-wide electron)
+	pkgver = 1.0.r1.g971d269
+	pkgrel = 1
+	url = https://notifica-task.lovable.app/
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = yarn
+	depends = electron30
+	provides = notifica-task=1.0
+	conflicts = notifica-task
+	source = notifica-task.git::git+https://github.com/Odisseu93/notifica-task
+	source = notifica-task.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = notifica-task-git
