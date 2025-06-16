@@ -1,15 +1,15 @@
 # Maintainer: vedant-asati03 <vedant.asati03@gmail.com>
 pkgname=aurras
-pkgver=1.1.1
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="A high-end command line music player with YouTube and Spotify integration"
+pkgdesc="A high-end command line music player"
 arch=('any')
 url="https://github.com/vedant-asati03/Aurras"
 license=('MIT')
-depends=('python>=3.12' 'python-pip' 'mpv')
+depends=('python>=3.12' 'python-pip' 'mpv' 'ffmpeg')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/a/aurras/aurras-${pkgver}.tar.gz")
-sha256sums=('d313100d3d5992d26eb8aa995604688b5a8b557e725956d85b4d72548b00a44e')
+sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
