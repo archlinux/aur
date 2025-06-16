@@ -1,6 +1,6 @@
 pkgbase = aurras
 	pkgdesc = A high-end command line music player
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/vedant-asati03/Aurras
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = aurras
 	depends = python-pip
 	depends = mpv
 	depends = ffmpeg
-	source = https://files.pythonhosted.org/packages/source/a/aurras/aurras-2.0.0.tar.gz
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/a/aurras/aurras-2.0.1.tar.gz
+	sha256sums = 69d6e2381b1db451b6df2b7524b5a6aa8bf29124020ea32d079b9c12e9193957
 
 pkgname = aurras
