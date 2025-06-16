@@ -1,0 +1,19 @@
+pkgbase = taskbookly-bin
+	pkgdesc = A simple task management and focus tool.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/TaskBookly/app
+	arch = x86_64
+	license = MIT
+	makedepends = fuse2
+	depends = electron36
+	provides = taskbookly=0.1.0
+	conflicts = taskbookly
+	source = taskbookly-0.1.0-x86_64.AppImage::https://github.com/TaskBookly/app/releases/download/v0.1.0/Taskbookly.AppImage
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/TaskBookly/app/v0.1.0/LICENSE
+	source = taskbookly.sh
+	sha256sums = b8fc1573a5cf1d33207f5269904f83e9c73dafacd85be266e25c5cd6e5f4591a
+	sha256sums = a296a4f015391191942ded981ffa6cb555b8c4187ceda46a5119087d49cdbd26
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = taskbookly-bin
