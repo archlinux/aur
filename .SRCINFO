@@ -1,7 +1,7 @@
 pkgbase = ixxat-socketcan-dkms
 	pkgdesc = DKMS SocketCAN driver for IXXAT USB-to-CAN v2
 	pkgver = 2.0.520
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.hms-networks.com/support/general-downloads
 	arch = i686
 	arch = x86_64

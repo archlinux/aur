@@ -1,0 +1,14 @@
+--- src/Makefile	2024-06-04 19:10:15.000000000 +0200
++++ src-patched/Makefile	2025-06-16 11:15:45.595480551 +0200
+@@ -1,8 +1,9 @@
+ mod-name += ix_usb_can
+-KERNEL_SRC          ?= /lib/modules/$(shell uname -r)/build
++KERNELRELEASE       ?= $(shell uname -r)
++KERNEL_SRC          ?= /lib/modules/${KERNELRELEASE}/build
+ MOD_DIR             := kernel/drivers/net/can/usb/ixxat_usb
+ SRC_DIR             := $(shell pwd)/$(MOD_DIR)
+-DEST_DIR            := /lib/modules/$(shell uname -r)/$(MOD_DIR)
++DEST_DIR            := /lib/modules/${KERNELRELEASE}/$(MOD_DIR)
+ 
+ #
+ # the Kernel Makefile is used !
