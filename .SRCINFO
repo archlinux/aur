@@ -1,0 +1,26 @@
+pkgbase = laser-magic-git
+	pkgdesc = A powerful, open-source tool designed for laser cutting and engraving, written in Rust. Development version.
+	pkgver = v0.1.22.r12.4b46807
+	pkgrel = 1
+	url = https://lasermagic.ci-yow.com/
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	source = laser_tool.git::git+https://gitlab.com/MadSquirrels/lasermagic/laser_tool
+	sha256sums = SKIP
+
+pkgname = laser-magic-cli-git
+	pkgdesc = A powerful, open-source tool designed for laser cutting and engraving, written in Rust. Development version. - CLI tool
+	depends = gtk3
+	depends = gcc-libs
+	depends = glibc
+	provides = laser-magic-cli
+	conflicts = laser-magic-cli
+
+pkgname = inkscape-laser-magic-git
+	pkgdesc = A powerful, open-source tool designed for laser cutting and engraving, written in Rust. Development version. - Inkscape plugin
+	depends = inkscape
+	depends = python
+	provides = inkscape-laser-magic
+	conflicts = inkscape-laser-magic
