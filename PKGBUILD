@@ -43,8 +43,8 @@ url='https://learn.microsoft.com/en-us/typography/?PID=164'
 license=('LicenseRef-ms-office-2024')
 optdepends=('ttf-ms-win11: Calibri Light, Gabriola, Segoe UI Semilight'
             'ttf-ms-win11-sea: Nirmala UI'
-            'ttf-ms-win11-zh-cn: Microsoft YaHei'
-            'ttf-ms-win11-zh-tw: Microsoft JhengHei'
+            'ttf-ms-win11-zh_cn: Microsoft YaHei'
+            'ttf-ms-win11-zh_tw: Microsoft JhengHei'
             'ttf-ms-win11-other: Gadugi')
 
 _fonts=(
