@@ -3,7 +3,7 @@
 
 pkgname=apulse
 pkgver=0.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc='PulseAudio emulation for ALSA'
 arch=('i686' 'x86_64')
 url='https://github.com/i-rinat/apulse'
@@ -12,12 +12,16 @@ depends=('alsa-lib' 'glib2')
 makedepends=('cmake')
 install=apulse.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+        '0001-cmake.patch'
         'asoundrc.sample')
 sha256sums=('9234ec4e10e408b9c01d5f4ea768ad1fc15494217c932db2c435202a9c7b5efd'
+            '01ef24275a389077a5c15d23a7fc43455e9107c9b660dabec6c6a9cf42cd1db0'
             'e851197ec9ebff528154210751cd6d5c426abfc2b1aa34343580407b1ea789a4')
 
 prepare() {
 	cd apulse-${pkgver}
+
+	patch -Np1 < ../0001-cmake.patch
 
 	mkdir -p build
 }

@@ -1,0 +1,44 @@
+From b162803925001dd9656d701a62d83b03e22ec366 Mon Sep 17 00:00:00 2001
+From: Alexey Sokolov <alexey@asokolov.org>
+Date: Thu, 17 Apr 2025 23:14:13 +0100
+Subject: [PATCH 1/2] Fix build with CMake 4
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e3e088b..35d0563 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ project(apulse)
+-cmake_minimum_required (VERSION 2.8)
++cmake_minimum_required (VERSION 2.8...4.0)
+ 
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -Wall -fPIC -fvisibility=hidden")
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror=implicit-function-declaration")
+
+From 5e25533c61a69037c03c9f8695beabd655d4c073 Mon Sep 17 00:00:00 2001
+From: Rinat Ibragimov <ibragimovrinat@mail.ru>
+Date: Sun, 18 May 2025 06:05:31 +0300
+Subject: [PATCH 2/2] cmake: move cmake_minimum_required() to the very top of
+ CMakeLists.txt
+
+Both documentation and CMake binary itself suggest calling
+cmake_minimum_required() before anything else.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 35d0563..942ec1a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,5 @@
+-project(apulse)
+ cmake_minimum_required (VERSION 2.8...4.0)
++project(apulse)
+ 
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -Wall -fPIC -fvisibility=hidden")
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror=implicit-function-declaration")
