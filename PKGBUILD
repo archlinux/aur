@@ -7,7 +7,7 @@
 # Contributor: Adrien Wu <adrien.sf.wu@gmail.com>
 
 pkgname="mailio"
-pkgver="0.25.1"
+pkgver="0.25.2"
 pkgrel="1"
 pkgdesc="A cross platform C++ library for MIME format and SMTP, POP3 and IMAP protocols."
 arch=("x86_64")
@@ -16,7 +16,7 @@ license=("BSD-2-Clause")
 depends=("gcc-libs" "glibc" "openssl")
 makedepends=("boost" "cmake" "doxygen")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("a6697694821fdbcc2b70470bba308609460c5c42caac44c799011843a0d064fb5c9377e04fdd30a100d556aeb8ef8ae2a1453fcdb019307785640e80932dd2db")
+sha512sums=("78590c52e5f7ca83eae767b95da3a5255b9e6772862ba43005352816875382e2405a88846999da506fa9ebc0da0ebb4f80a88bf75e9c04423df820bb9d0d59c4")
 
 _compile()
 {
