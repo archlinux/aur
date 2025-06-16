@@ -1,6 +1,6 @@
 pkgbase = kmonad-static
 	pkgdesc = An advanced keyboard manager - static binary version
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/kmonad/kmonad
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = kmonad-static
 	provides = kmonad
 	conflicts = kmonad
 	conflicts = kmonad-bin
-	source = https://github.com/kmonad/kmonad/releases/download/0.4.3/kmonad
-	source = https://github.com/kmonad/kmonad/archive/0.4.3.tar.gz
-	md5sums = 3e88c9e203d8b576ebe09214954214ae
-	md5sums = 5e9f54a9d63e0f736b6872d03981c3c8
+	source = https://github.com/kmonad/kmonad/releases/download/0.4.4/kmonad
+	source = https://github.com/kmonad/kmonad/archive/0.4.4.tar.gz
+	md5sums = c7808524001cb7083be270ccc48ef7bc
+	md5sums = 638608a766eceebcb3dfdedee62dd6af
 
 pkgname = kmonad-static
