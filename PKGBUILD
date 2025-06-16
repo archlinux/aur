@@ -2,7 +2,7 @@
 
 _electronver=35
 pkgname='siki'
-pkgver=0.35.1
+pkgver=0.35.2
 pkgrel=1
 pkgdesc='An Electrom-based application for browsing and posting to message boards'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "${pkgname}.sh"
 )
 noextract=("${_archive}-amd64.deb")
-sha512sums=('fe4e71f30c13b6405320f65142cf0ae718ec9ee022265a914b489e0acbedafe43c012a5743043366e8640775d20b4db98e75a5690681b5e9f0d6257554598d6c'
+sha512sums=('6b18e693cd96a36d66cbd9441e8f72483b4999d559093c90a536bfeb93e92a049fb52ed2343828a4fa5f288962e39d6d62a8633d22c18760ea93331cbc6333da'
             'd7548b3f81e5fbac18470c96a998fc73657c7d6a659d56b82a68291407c07ebe448dfc318f507b8ad6da831bc73d47336248484da7f05642875e994c7e42803e')
 
 prepare() {
