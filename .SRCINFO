@@ -1,6 +1,6 @@
 pkgbase = commitlint-go-git
 	pkgdesc = A lightweight, fast, and cross-platform CLI tool for linting Git commit messages.
-	pkgver = main.c93d142bdb9cb2c1f9076c0a648f9aafa5047432
+	pkgver = main.7eceeb1d8c528b072c200345948f4e5c47ca2339
 	pkgrel = 1
 	url = https://github.com/jurienhamaker/commitlint
 	arch = i686
