@@ -4,7 +4,7 @@ pkgname=fulcrum-git
 _pkgname=${pkgname/-git/}
 pkgdesc='A fast & nimble SPV server for BCH, BTC, and LTC'
 pkgver=1.12.0.1.r7.ga00f3e8
-pkgrel=1
+pkgrel=2
 url='https://github.com/cculianu/Fulcrum'
 arch=('any')
 license=('GPL3')
@@ -27,7 +27,7 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  qmake -makefile CONFIG+=recheck CONFIG+=release Fulcrum.pro
+  qmake6 -makefile CONFIG+=recheck CONFIG+=release Fulcrum.pro
 }
 
 build() {
