@@ -26,11 +26,9 @@ prepare() {
 
 build() {
  cd "${_pkgname}-${pkgver}"
- tar xvf gnome-printing-0.2.0.tar.xz
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}/" install
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 COPYING
+  cd "${srcdir}"
+  tar -xf "${srcdir}/${pkgname}-${pkgver}.tar.xz" -C "${pkgdir}"
 }
