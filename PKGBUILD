@@ -9,7 +9,7 @@
 
 pkgname=portmaster-stub-beta-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Privacy Suite and Firewall: Installer to download the current binaries (beta)'
 arch=('x86_64')
 url='https://safing.io/portmaster'
@@ -24,11 +24,26 @@ options=('!strip' '!emptydirs')
 source=("portmaster.desktop"
         "portmaster-autostart.desktop"
         "portmaster.service"
-        "portmaster-ui-start.sh")
-sha256sums=('f7b7026c4b4fe73b0401af0edec9c1458ad7d05267dbe7dfe0b7733b791c3b60'
+        "portmaster-ui-start.sh"
+
+        "icon-portmaster.svg"
+        "icon-portmaster-16.png"
+        "icon-portmaster-32.png"
+        "icon-portmaster-48.png"
+        "icon-portmaster-64.png"
+        "icon-portmaster-128.png")
+
+sha256sums=('f7b7026c4b4fe73b0401af0edec9c1458ad7d05267dbe7dfe0b7733b791c3b60' 
            '0a067b241267974ab3225e904ac362eba6b0a37cc3c4ae18e30c381ad2a47076'
            'cf595fe51bbeb3242aa1cdc844e932731fdff77671d2e2a9ce8d15acffd466a6'
-           '9e90c3b736bfedd89fee8bfed413187ac5996743015ab75fca359c47a71132a4')
+           '9e90c3b736bfedd89fee8bfed413187ac5996743015ab75fca359c47a71132a4'
+
+           'SKIP'
+           'SKIP'
+           'SKIP'
+           'SKIP'
+           'SKIP'
+           'SKIP')
 
 source_x86_64=("updatemgr::https://updates.safing.io/latest/linux_amd64/updatemgr/updatemgr")
 sha256sums_x86_64=('d831dc82891c12121769b6c568ed8bdc6fad44d4da5ac6e5905c0f1a11dcc559')
@@ -66,4 +81,12 @@ package() {
 
   # Remove temporary files after installation
   rm -rf "$srcdir/tmp_downloaded" "$srcdir/updatemgr"
+
+  # Install APP ICONS
+  ICON_NAME="portmaster"
+  for size in 16 32 48 64 128; do
+    install -Dm644 "$srcdir/icon-${ICON_NAME}-${size}.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/${ICON_NAME}.png"
+  done  
+  install -Dm644 "$srcdir/icon-${ICON_NAME}.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${ICON_NAME}.svg"  # Scalable icon  
+  install -Dm644 "$srcdir/icon-${ICON_NAME}-64.png" "$pkgdir/usr/share/pixmaps/${ICON_NAME}.png"                   # In pixmaps for maximum compatibility
 }
