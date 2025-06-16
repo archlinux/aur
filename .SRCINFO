@@ -1,0 +1,13 @@
+pkgbase = ftuibos
+	pkgdesc = The first fully TUI based operating system.
+	pkgver = r43.4464715
+	pkgrel = 1
+	url = https://github.com/averagebagelenjoyer/2BOS
+	arch = any
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = git+https://github.com/averagebagelenjoyer/2BOS
+	sha256sums = SKIP
+
+pkgname = ftuibos
