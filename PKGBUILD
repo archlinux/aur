@@ -1,6 +1,6 @@
 # Maintainer: AspirinZ <aspirin000@sjtu.edu.cn>
 pkgname=sjtu-canvas-helper
-pkgver=1.3.30
+pkgver=1.3.31
 pkgrel=1
 pkgdesc="Helping you use the SJTU course platform more quickly and easily"
 arch=('x86_64')
@@ -10,9 +10,9 @@ license=('MIT')
 source=("${pkgname}_${pkgver}_amd64.AppImage::https://github.com/Okabe-Rintarou-0/SJTU-Canvas-Helper/releases/download/app-v${pkgver}/${pkgname}_${pkgver}_amd64.AppImage"
   "${pkgname}.desktop"
   "LICENSE::https://raw.githubusercontent.com/Okabe-Rintarou-0/SJTU-Canvas-Helper/main/LICENSE")
-sha256sums=('8e18d29510c575513d574f13b642b61871a151363aff3b4ebe3690e8033f2ebf'
-'e7a0ae6af81be8039e3cff6079a4607a722af41012b8d24844583e07a9293065'
-'d78852e5fb84b91fa0dddd826ff37103d40f680a2a00d6725d7d3fbe0b68288c')
+sha256sums=('b8e3d97e58b341c6e0fc4bb1abe5116be0f3680e8a1d546f533ffa5c3393400f'
+            'e7a0ae6af81be8039e3cff6079a4607a722af41012b8d24844583e07a9293065'
+            'd78852e5fb84b91fa0dddd826ff37103d40f680a2a00d6725d7d3fbe0b68288c')
 prepare() {
   chmod +x "${pkgname}_${pkgver}_amd64.AppImage"
   ./${pkgname}_${pkgver}_amd64.AppImage --appimage-extract
