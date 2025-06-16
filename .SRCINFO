@@ -1,9 +1,10 @@
 pkgbase = pluginval
 	pkgdesc = Cross platform DAW plugin testing and validation tool
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tracktion/pluginval/
 	arch = x86_64
+	arch = aarch64
 	groups = pro-audio
 	license = GPL-3.0-only
 	makedepends = alsa-lib

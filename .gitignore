@@ -1,5 +1,4 @@
 pkg/
 src/
-pluginval-*.pkg.tar.*
-pluginval-*.tar.gz
-JUCE-*.tar.gz
+*.tar.*
+*.zip

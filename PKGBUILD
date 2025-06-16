@@ -1,10 +1,11 @@
-# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=pluginval
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross platform DAW plugin testing and validation tool'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url='https://github.com/Tracktion/pluginval/'
 license=(GPL-3.0-only)
 depends=(freetype2 glibc gcc-libs)
@@ -28,7 +29,8 @@ prepare() {
 
 build() {
   cmake \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None \
     -Wno-dev \
     -B $pkgname-$pkgver-build \
     -S $pkgname-$pkgver
@@ -37,7 +39,7 @@ build() {
 
 package() {
   depends+=(libfontconfig.so libfreetype.so)
-  install -vDm 755 $pkgname-$pkgver-build/${pkgname}_artefacts/Release/$pkgname \
+  install -vDm 755 $pkgname-$pkgver-build/${pkgname}_artefacts/None/$pkgname \
     -t "$pkgdir"/usr/bin
   # Docs
   cd $pkgname-$pkgver

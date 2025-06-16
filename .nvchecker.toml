@@ -1,0 +1,6 @@
+[pluginval]
+source = "github"
+github = "Tracktion/pluginval"
+use_max_tag = true
+include_regex = '^v\d+(\.\d+)+$'
+prefix = "v"
