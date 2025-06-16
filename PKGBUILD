@@ -2,15 +2,14 @@
 # Contributor:
 
 pkgname=check-symlinks
-pkgver=0.4.2
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Check for broken symlinks'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/jmelahman/check-symlinks'
 license=('MIT')
-depends=('gcc-libs')
-makedepends=('git' 'rust')
-_commit='20c9a595ead56fb701182ed31c8ce120f7c3c9bb'
+makedepends=('git' 'go')
+_commit='f75ca4368d56917e2a246fda2520b5d983ab992d'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
@@ -20,25 +19,16 @@ pkgver() {
   git describe --tags | sed 's/^v//'
 }
 
-prepare() {
-  cd "$pkgname" || exit
-
-  # download dependencies
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-}
-
 build() {
   cd "$pkgname" || exit
 
-  cargo build --frozen --release
+  CGO_ENABLED=1 go build -ldflags="-X main.version=v$pkgver -X main.commit=$_commit -s -w" -o "$pkgname"
 }
 
 package() {
   cd "$pkgname" || exit
 
-  # binary
-  install -vDm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
