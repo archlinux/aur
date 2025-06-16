@@ -1,0 +1,36 @@
+APP_NAME="internet-usage-monitor"
+
+# These variables are for informational messages.
+# The actual XDG paths will be determined by the user's environment when the scripts run.
+# We use common defaults here for the messages.
+_USER_HOME_FALLBACK="${HOME:-/home/$USER}" # A best guess if HOME isn't set during install script
+_XDG_CONFIG_HOME_FALLBACK="$_USER_HOME_FALLBACK/.config"
+_XDG_DATA_HOME_FALLBACK="$_USER_HOME_FALLBACK/.local/share"
+
+_USER_CONFIG_DIR="$_XDG_CONFIG_HOME_FALLBACK/$APP_NAME"
+_USER_DATA_DIR="$_XDG_DATA_HOME_FALLBACK/$APP_NAME"
+_DEFAULT_CONFIG_DIR="/usr/share/$APP_NAME"
+
+post_install() {
+  echo ">>> $APP_NAME has been installed."
+  echo ">>> Default configuration files are in $_DEFAULT_CONFIG_DIR."
+  echo ">>> To customize, copy them to your user configuration directory (usually $_USER_CONFIG_DIR):"
+  echo "    mkdir -p \"$_USER_CONFIG_DIR\""
+  echo "    cp \"$_DEFAULT_CONFIG_DIR/config.sh\" \"$_USER_CONFIG_DIR/\""
+  echo "    cp \"$_DEFAULT_CONFIG_DIR/conkyrc_internet\" \"$_USER_CONFIG_DIR/\""
+  echo ">>> The application will automatically create data directories (usually in $_USER_DATA_DIR) upon first run."
+  echo ">>> You may want to start the conky widget or the daemon manually, or set up autostart as described in the README."
+}
+
+post_upgrade() {
+  echo ">>> $APP_NAME has been upgraded."
+  echo ">>> If you have custom configurations in your user directory (e.g., $_USER_CONFIG_DIR), they have been preserved."
+  echo ">>> Check $_DEFAULT_CONFIG_DIR for any new default configuration options you might want to incorporate."
+}
+
+post_remove() {
+  echo ">>> $APP_NAME has been removed."
+  echo ">>> Your user-specific configuration files (e.g., in $_USER_CONFIG_DIR)"
+  echo ">>> and data files (e.g., in $_USER_DATA_DIR) have NOT been removed."
+  echo ">>> You can remove them manually if desired."
+}
