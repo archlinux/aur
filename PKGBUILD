@@ -2,7 +2,7 @@
 # Maintainer: Jurien Hamaker <whoami@jurien.dev>
 
 pkgname='commitlint-go-bin'
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A commit message linter for conventional commits written in go'
 url='https://github.com/jurienhamaker/commitlint'
@@ -12,11 +12,11 @@ provides=('commitlint')
 conflicts=('commitlint')
 depends=('git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jurienhamaker/commitlint/releases/download/v1.1.0/commitlint_Linux_arm64.tar.gz")
-sha256sums_aarch64=('7cf6ccbd6c119a1de202bf7f91a05669700bc3230a0f98f122506929dec7dcb4')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jurienhamaker/commitlint/releases/download/v1.1.1/commitlint_Linux_arm64.tar.gz")
+sha256sums_aarch64=('7141d744ea94cdc868b6c982fe7e954b1b2b42910d0a0d413c947d8cbaa478be')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jurienhamaker/commitlint/releases/download/v1.1.0/commitlint_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('f8959ad709947226d353da28cc52e61d58b8c35e43c80468f6714dcd312cf59b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jurienhamaker/commitlint/releases/download/v1.1.1/commitlint_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('437715c19aa1b767f5e73808f479121ce59c8b2659bc2bee05f62a7e1443f825')
 
 package() {
   # bin
