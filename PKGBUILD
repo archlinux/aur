@@ -1,7 +1,7 @@
 # Maintainer: Kendall G. <kgarner at duck dot com>
 
 pkgname=feishin-appimage
-pkgver=0.11.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Sonixd Rewrite"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip) # necessary otherwise the AppImage file in the package is trunc
 conflicts=("feishin-bin")
 _filename=Feishin-${pkgver//_/-}-linux-$CARCH.AppImage
 source=("${url}/releases/download/v${pkgver//_/-}/${_filename}")
-sha256sums=("25789697967908834585ef49c71891723645cecff06cf8b3aa8bcb525a98336c")
+sha256sums=("cbf6b90e98003573d7fe1ad49d76e1a3d2aa66669a7b3c574aade06a3fb8e3ad")
 pkgdesc="A modern self-hosted music player."
 INSTALL_PATH="/opt/${pkgname}/${_filename}"
 
@@ -34,8 +34,6 @@ package() {
   # install icons
   install -dm755 "${pkgdir}/usr/share/icons"
   cp -dpr --no-preserve=ownership "squashfs-root/usr/share/icons" "${pkgdir}/usr/share"
-  # In 0.4.0 the only image directory is 0x0, move it to the right one
-  mv "${pkgdir}/usr/share/icons/hicolor/0x0" "${pkgdir}/usr/share/icons/hicolor/512x512"
   chmod -R 755 "${pkgdir}/usr/share/icons"
   find "${pkgdir}/usr/share/icons" -type f -name "feishin.png" -exec chmod 644 {} \;
 
