@@ -2,7 +2,7 @@
 
 pkgname=maomaowm-git
 pkgver=r517.6b2ef05
-pkgrel=3
+pkgrel=3.1
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/maomaowm"
 arch=("x86_64")
