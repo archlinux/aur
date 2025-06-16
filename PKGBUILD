@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/JonasAlv/zap-rs"
 license=('MIT')
 depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator' 'libsoup' 'openssl')
-makedepends=('rust' 'cargo' 'npm' 'yarn' 'git')
+makedepends=('rust' 'cargo' 'git')
 source=("$pkgname::git+https://github.com/JonasAlv/zap-rs.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
