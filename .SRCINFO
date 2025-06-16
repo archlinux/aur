@@ -1,7 +1,7 @@
 pkgbase = karton-virt-git
 	pkgdesc = A libvirt-based Virtual Machine Manager for KDE.
-	pkgver = 28.b318dca
-	pkgrel = 2
+	pkgver = r30.fdfaef8
+	pkgrel = 1
 	url = https://invent.kde.org/sitter/karton
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -17,7 +17,11 @@ pkgbase = karton-virt-git
 	depends = qqc2-desktop-style
 	depends = vulkan-headers
 	depends = vulkan-tools
+	depends = virt-viewer
+	depends = libosinfo
 	provides = karton-virt
+	provides = karton
+	conflicts = karton
 	source = git+https://invent.kde.org/sitter/karton.git
 	sha256sums = SKIP
 
