@@ -2,7 +2,7 @@
 
 
 pkgname=garagejam
-pkgver=4.0.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="GarageJam is Free Software in development for musicians who want to compose, record and share original music to the Internet from the GNOME Desktop."
 arch=('x86_64')
@@ -10,8 +10,8 @@ url="https://wiki.gnome.org/Apps/GarageJam"
 license=(GPL3)
 depends=('libchamplain' 'geoclue' 'gst-plugins-base' 'gst-plugins-bad' 'geocode-glib' 'geocode-glib-2' 'gobject-introspection' 'gstreamer' 'libxml2' 'vorbis-tools' 'pango' 'gtk3')
 makedepends=('intltool' 'itstool' 'python')
-source=( http://www.garagejam.org/src/garagejam-4.0.0.tar.xz)
-sha256sums=('24fa1b126b1b2a39125a2f1a25ab58107047f373b13580d9c160f28e2e84009c')
+source=( http://www.garagejam.org/src/garagejam-5.0.0.tar.xz)
+sha256sums=('1c34d137b120535e13afccfb668dea1d6891dda131de47f1630ce4329c302f22')
 
 build() {
   cd $pkgname-$pkgver
