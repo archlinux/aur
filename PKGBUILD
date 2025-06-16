@@ -3,7 +3,7 @@
 pkgname="yd-go-git"
 _pkgname=${pkgname%-git}
 pkgrel=1
-pkgver=master.cfa24b6.r0.gcfa24b6
+pkgver=master.cfa24b6
 pkgdesc="Panel indicator for Yandex-disk CLI daemon (linux)"
 arch=('x86_64')
 url="https://github.com/slytomcat/${_pkgname}/"
@@ -34,7 +34,7 @@ prepare() {
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' 
 }
 
 build() {
