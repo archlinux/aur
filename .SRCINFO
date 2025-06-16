@@ -1,0 +1,21 @@
+pkgbase = ape-loader-bin
+	pkgdesc = APE loader for the cosmopolitan toolchain
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://justine.lol/cosmopolitan/index.html
+	arch = x86_64
+	arch = aarch64
+	arch = arm64
+	license = ISC
+	makedepends = sudo
+	optdepends = cosmocc-bin: Cosmpoiltan compiler (which this is meant to be used with)
+	noextract = ape
+	options = !strip
+	source_x86_64 = ape::https://cosmo.zip/pub/cosmos/bin/ape-x86_64.elf
+	sha512sums_x86_64 = 67da9d68cfa9b252a549bc7415b4f8cc6faaca76441ca980f95e71f8e63653de1ddcf43efa285ad352d90ab5c4fee66bd8eaf0bc0fb71ceb996c1c1cbddeb4b1
+	source_aarch64 = ape::https://cosmo.zip/pub/cosmos/bin/ape-x86_64.elf
+	sha512sums_aarch64 = 67da9d68cfa9b252a549bc7415b4f8cc6faaca76441ca980f95e71f8e63653de1ddcf43efa285ad352d90ab5c4fee66bd8eaf0bc0fb71ceb996c1c1cbddeb4b1
+	source_arm64 = ape::https://cosmo.zip/pub/cosmos/bin/ape-x86_64.elf
+	sha512sums_arm64 = 67da9d68cfa9b252a549bc7415b4f8cc6faaca76441ca980f95e71f8e63653de1ddcf43efa285ad352d90ab5c4fee66bd8eaf0bc0fb71ceb996c1c1cbddeb4b1
+
+pkgname = ape-loader-bin
