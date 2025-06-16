@@ -1,12 +1,12 @@
 pkgbase = ttf-lxgw-wenkai-lite
-	pkgver = 1.511
+	pkgver = 1.520
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwWenKai-Lite
 	arch = any
 	license = OFL-1.1
 	makedepends = fontconfig
-	source = lxgw-wenkai-lite-v1.511.tar.gz::https://github.com/lxgw/LxgwWenKai-Lite/releases/download/v1.511/lxgw-wenkai-lite-v1.511.tar.gz
-	sha256sums = 94963387b09b0e269a9fb89a97594f2e914e462ac624a537f90d742c2c0fb5fc
+	source = lxgw-wenkai-lite-v1.520.tar.gz::https://github.com/lxgw/LxgwWenKai-Lite/releases/download/v1.520/lxgw-wenkai-lite-v1.520.tar.gz
+	sha256sums = 157c097e6ecc1c8ff55c72f438d25064e6b360fc20d2af422ffde307bd5a8180
 
 pkgname = ttf-lxgw-wenkai-lite
 	pkgdesc = LXGW WenKai Lite / 霞鹜文楷轻便版 An open-source Chinese font derived from Fontworks' Klee One. 一款基于 FONTWORKS 出品字体 Klee One 改造的开源中文字体。
