@@ -97,7 +97,7 @@ depends=(
 
   'sh'
 )
-makedepends=('gendesk' 'inotify-tools' 'matlab-mpm') # "matlab-mpm-version>=${_pkgver}" 'patchelf'
+makedepends=('gendesk' 'inotify-tools' 'matlab-mpm>=2025.1') # "matlab-mpm-version>=${_pkgver}" 'patchelf'
 optdepends=(
   'glibc-locales: listed in the original depends'
   'java-runtime-openjdk>=8: required for certain products and features' # https://www.mathworks.com/support/requirements/openjdk.html
@@ -113,7 +113,7 @@ optdepends=(
 provides=("${pkgname}-version=${_pkgver}")
 install="${pkgname}.install"
 
-declare -rAg _deps=(
+declare -Ag _deps=(
   # [antlr4-runtime]="libantlr4-runtime" # 4.9.1
   [apr]="libapr-1" # 0.7.5
   [apr-util]="libaprutil-1" # 0.6.1
@@ -198,57 +198,77 @@ done
 
 prepare() {
   cd "${srcdir}"
-  rm -rf "download" "install"
-  mkdir -p "download" "install"
+  echo "  -> Cleaning old directories..."
+  rm -rf download install tmp
+  mkdir -p download install tmp
+
+  echo "  -> Starting log watcher..."
+  : > "tmp/mathworks_${USER}.log"
+  tail -n 0 -F "tmp/mathworks_${USER}.log" |
+    sed --unbuffered 's/^.*) */    -> /' &
+  tail_pid=$!
+
+  echo "  -> Starting download progress watcher..."
+  (
+    inotifywait -mrq -e create --format '%w%f' download |
+      while read -r f; do
+        printf "\r\033[K    -> Downloading %s...\r" "${f#download/}"
+      done
+  ) &
+  download_pid=$!
+
+  echo "  -> Starting install progress watcher..."
+  (
+    inotifywait -mrq -e create --format '%w%f' install |
+      while read -r f; do
+        printf "\r\033[K    -> Installing %s...\r" "${f#install/}"
+      done
+  ) &
+  install_pid=$!
+
+  _cleanup() {
+    echo "  -> Cleaning up background processes..."
+    kill "$tail_pid" "$download_pid" "$install_pid" 2>/dev/null
+    wait "$tail_pid" "$download_pid" "$install_pid" 2>/dev/null || true
+  }
+  trap _cleanup EXIT
 
   echo "  -> Downloading archives using MPM. This will take a while..."
-  (
-    inotifywait -mrq -e create --format '%w%f' download | while read -r file; do
-      relpath="${file#"${srcdir}/download"/}"
-      printf "\r\033[K    -> Downloading %s...\r" "$relpath"
-    done
-  ) &
-  watcher_pid=$!
-
-  matlab-mpm download \
+  TMPDIR="${srcdir}/tmp" matlab-mpm download \
     --release="${_pkgver}" \
     --destination="${srcdir}/download" \
     --products="${_product// /_}" \
     --platforms="glnxa64" \
     --no-deps
-
   ret=$?
-  kill "$watcher_pid" 2>/dev/null
-  wait "$watcher_pid" 2>/dev/null || true
 
-  if (( ret != 0 )) || [[ ! -d download ]]; then
-    echo "  ==> ERROR: MPM download failed or the download directory is empty!"
+  if (( ret != 0 )); then
+    echo "  ==> ERROR: MPM download failed with status $ret!"
     exit 1
   fi
+  if [[ ! -d download || -z $(ls -A download) ]]; then
+    echo "  ==> ERROR: MPM download succeeded but download directory is empty!"
+    exit 1
+  fi
+  echo "  -> Download completed successfully."
 
   echo "  -> Installing archives using MPM. This will take a while..."
-  (
-    inotifywait -mrq -e create --format '%w%f' install | while read -r file; do
-      relpath="${file#"${srcdir}/install"/}"
-      printf "\r\033[K    -> Installing %s...\r" "$relpath"
-    done
-  ) &
-  watcher_pid=$!
-
-  matlab-mpm install \
+  TMPDIR="${srcdir}/tmp" matlab-mpm install \
     --source="${srcdir}/download" \
     --destination="${srcdir}/install" \
     --products="${_product// /_}" \
     --no-jre
-
   ret=$?
-  kill "$watcher_pid" 2>/dev/null
-  wait "$watcher_pid" 2>/dev/null || true
 
-  if (( ret != 0 )) || [[ ! -d install ]]; then
-    echo "  ==> ERROR: MPM download failed, the install directory is empty!"
+  if (( ret != 0 )); then
+    echo "  ==> ERROR: MPM install failed with status $ret!"
     exit 1
   fi
+  if [[ ! -d install || -z $(ls -A install) ]]; then
+    echo "  ==> ERROR: MPM install succeeded but install directory is empty!"
+    exit 1
+  fi
+  echo "  -> Install completed successfully."
 
   echo "  -> Ignore the above post-installation instructions (if any). They do not apply to you!"
 }

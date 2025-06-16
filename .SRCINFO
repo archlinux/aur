@@ -9,7 +9,7 @@ pkgbase = matlab
 	license = custom:MATLAB EULA
 	makedepends = gendesk
 	makedepends = inotify-tools
-	makedepends = matlab-mpm
+	makedepends = matlab-mpm>=2025.1
 	depends = alsa-lib
 	depends = ca-certificates
 	depends = gcc-libs
