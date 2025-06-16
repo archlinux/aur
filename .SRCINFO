@@ -1,6 +1,6 @@
 pkgbase = commitlint-go-bin
-	pkgdesc = A commit message linter for conventional commits written in go
-	pkgver = 1.1.2
+	pkgdesc = A lightweight, fast, and cross-platform CLI tool for linting Git commit messages.
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/jurienhamaker/commitlint
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = commitlint-go-bin
 	conflicts = commitlint
 	provides = commitlint
 	arch = aarch64
-	source_aarch64 = https://github.com/jurienhamaker/commitlint/releases/download/v1.1.2/commitlint_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 534a1c5f976079ec0387e06a88c8a198a141202fb200645de2509c684dd1f7ad
+	source_aarch64 = https://github.com/jurienhamaker/commitlint/releases/download/v1.2.0/commitlint_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 4f574568e1e2aaecdca3d1e1cfcc162f2e7ab55e38696a491343930852adecfe
 	arch = x86_64
-	source_x86_64 = https://github.com/jurienhamaker/commitlint/releases/download/v1.1.2/commitlint_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 54f1601ab14ce1aed2f632f7132561c8ca75ee23a79e3764716eb6f5fefd7dd7
+	source_x86_64 = https://github.com/jurienhamaker/commitlint/releases/download/v1.2.0/commitlint_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 7be66ca0332f0e6c8a5cb5270733a1be3cc209cc39d64792090eb6055c8ba5f4
 	
 pkgname = commitlint-go-bin
