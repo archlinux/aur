@@ -1,7 +1,7 @@
 pkgname=commitlint-go-git
 _pkgname=commitlint
 pkgdesc='A lightweight, fast, and cross-platform CLI tool for linting Git commit messages. '
-pkgver=main.0ae50c2c448d20eb3a5a19748345e784c20bb90f
+pkgver=main.0520b44ef67fddc5c04e3ea14c2a8ad41bee3a3b
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/jurienhamaker/commitlint'
