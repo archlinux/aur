@@ -1,0 +1,22 @@
+pkgbase = libggml-cuda-f16-git
+	pkgdesc = Tensor library for machine learning (with NVIDIA CUDA optimizations and F16)
+	pkgver = r2175.8cda0a3
+	pkgrel = 1
+	url = https://github.com/ggerganov/ggml
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = cuda
+	depends = nvidia-utils
+	provides = libggml
+	provides = libggml-cuda-f16
+	conflicts = libggml
+	conflicts = libggml-cuda-f16
+	options = lto
+	source = libggml-cuda-f16::git+https://github.com/ggerganov/ggml.git
+	sha256sums = SKIP
+
+pkgname = libggml-cuda-f16-git
