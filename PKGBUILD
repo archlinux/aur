@@ -1,8 +1,9 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 
 pkgname=ibazel-bin
 pkgver=0.26.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for building Bazel targets when source files change.'
 arch=('x86_64' 'aarch64')
 license=('Apache')
