@@ -2,15 +2,15 @@
 
 _pkgname=opendmarc
 pkgname=${_pkgname}-dinit
-pkgver=1.0.0
+pkgver=20250613
 pkgrel=1
 pkgdesc="Free open source software implementation of the DMARC specification (dinit)"
 arch=('any')
 source=('opendmarc.service' 'opendmarc-pre.service')
 depends=('opendmarc')
 sha256sums=(
-	'8174e9373035d9c635b336158ec74c0abc622b5edacb52aac24222c2c5364ec2'
-	'395ba1e46d30248a2ce51f997e6b8dc803d9393f55c99b9eaf997f8797e830f8')
+	'251318f64c1413654e62171b59da3c6b9d6eeddadee0386ad1ff865498db388b'
+	'b18b602a552cc1222f274b6f7feebc53a71eb0c916b3b2dda4d40129a92bb7f0')
 
 package() {
 	install -Dm644 opendmarc.service "$pkgdir/etc/dinit.d/opendmarc"
