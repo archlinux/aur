@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.29.6
+pkgver=1.29.7
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -15,7 +15,6 @@ license=('MIT')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'scrcpy'
 )
 makedepends=(
     'gendesk'
@@ -29,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('d1aed8e1a7a0a1a0eb045a1eb101a921292e5e7db7161e82a7255766f20664c4'
+sha256sums=('69cde4fd86bf2d980de2872e6813f78eb51780ea05f09321f1b740796febf2dc'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
