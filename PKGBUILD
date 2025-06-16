@@ -3,7 +3,7 @@
 # Contributor: Jay Tauron <jytrn@protonmail.com>
 
 pkgname=s-bin
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=()
 options=('!strip' '!emptydirs')
 provides=("s")
 source=("${pkgname}_${pkgver}.zip::https://github.com/zquestz/s/releases/download/v${pkgver}/s-linux_amd64.zip")
-sha256sums=('15372a9e6b0f1f554af23e85984fb6a9bf4de5f552eec8f5bab6ababa9173e36')
+sha256sums=('8cfc3c30126f996fb34dd2bc63ba163fb4cbd5b7594b77d5b20fe818aefca4d0')
 
 package() {
 	cd "${srcdir}/s-linux_amd64"

@@ -1,6 +1,6 @@
 pkgbase = s-bin
 	pkgdesc = Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow.
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/zquestz/s
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = s-bin
 	provides = s
 	options = !strip
 	options = !emptydirs
-	source = s-bin_0.7.2.zip::https://github.com/zquestz/s/releases/download/v0.7.2/s-linux_amd64.zip
-	sha256sums = 15372a9e6b0f1f554af23e85984fb6a9bf4de5f552eec8f5bab6ababa9173e36
+	source = s-bin_0.7.3.zip::https://github.com/zquestz/s/releases/download/v0.7.3/s-linux_amd64.zip
+	sha256sums = 8cfc3c30126f996fb34dd2bc63ba163fb4cbd5b7594b77d5b20fe818aefca4d0
 
 pkgname = s-bin
