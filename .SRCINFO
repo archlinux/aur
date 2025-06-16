@@ -1,0 +1,15 @@
+pkgbase = plasma-potd-windows-spotlight
+	pkgdesc = POTD provider using Windows 11's Spotlight API for daily high-resolution wallpaper
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/liujed/${pkgname}
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kdeplasma-addons
+	source = git+https://github.com/liujed/plasma-potd-windows-spotlight#tag=v0.0.0?signed
+	validpgpkeys = B7505955F1CF93F83656A95D9A00B50131DEAC06
+	b2sums = d76c05491fa4008dddefb3d8a2abdc4e389598a6328dc32efae588c25d053657fe90e0c4c155596771a5a35f7cc36abfde377465ff9de2fd2b4e7bd5fe28f662
+
+pkgname = plasma-potd-windows-spotlight
