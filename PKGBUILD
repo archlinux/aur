@@ -5,7 +5,7 @@
 pkgname=stm32cuben6
 pkgver=1.1.0
 pkgrel=1
-pkgdesc="Embedded software for STM32 F7 series"
+pkgdesc="Embedded software for STM32 N6 series"
 arch=('any')
 url="http://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-embedded-software/stm32cuben6.html"
 license=(
