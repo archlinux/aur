@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : Arch-mkpkg
- Tags         : 6.2.2 ➙ 7.1.0
-              : 2024-12-31 ➙ 2025-06-14
+ Tags         : 6.2.3 ➙ 7.2.0
+              : 2024-12-31 ➙ 2025-06-16
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-16   : 7.2.0
+                run_prog: Fix one more possible hang. Add more exception checks that should
+                never happen.
+ 2025-06-14     update Docs/Changelogs Docs/mkpkg.pdf for 7.1.0
 
  2025-06-14   : 7.1.0
                 Fixed issue where build subprocesses that generate very large amounts
@@ -29,11 +34,3 @@
  2024-12-31   : 6.2.3
                 fix typo in PKGBUILD
                 update Docs/Changelog.rst Docs/mkpkg.pdf for 6.2.2
-
- 2024-12-31   : 6.2.2
-                Git tags are now signed.
-                Update python dep to 3.13
-                Small clean ups and linting.
-                PKGBUILD has info on how to activate verifying git signature once key is in
-                keyring
- 2024-12-19     update Docs/Changelog.rst Docs/mkpkg.pdf for 6.2.0
