@@ -1,7 +1,7 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=netbird-ui-bin
-pkgver=0.46.0
+pkgver=0.47.0
 pkgrel=1
 pkgdesc='Official GUI for the Netbird client'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
 )
 
 source=("https://github.com/netbirdio/netbird/releases/download/v${pkgver}/netbird-ui-linux_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('64187153ce655dab1b47d605e4d42d0ec54f39556f16c7ea5e44e846ea45e108')
+sha256sums=('c889b09470bb333aee1799f1d668963cbad86aef10bd9e25a19dbce9e6a2a6f3')
 
 package() {
 	install -Dm755 "netbird-ui" "$pkgdir/usr/bin/netbird-ui"
