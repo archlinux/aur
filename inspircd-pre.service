@@ -1,3 +1,3 @@
-type            = scripted
+type		= scripted
 command		= /usr/bin/install -dm0755 -o inspircd -g inspircd /run/inspircd
 after		= pseudofs
