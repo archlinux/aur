@@ -30,7 +30,7 @@ makedepends=(
   'cli11'
   'ninja'
   'cmake'
-  'pkgconf'
+  'git'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
