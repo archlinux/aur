@@ -3,7 +3,7 @@
 #
 pkgname=go4
 _Pkgname=Go4
-pkgver=6.4.0
+pkgver=6.4.1
 pkgrel=1
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('x86_64')
@@ -12,15 +12,13 @@ depends=('root' 'qt6-webengine' 'hdf5' 'cern-vdt')
 conflicts=('mbseventapi')
 url="https://www.gsi.de/en/work/research/experiment_electronics/data_processing/data_analysis/the_go4_home_page.htm"
 license=('GPL')
-source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz")
-sha256sums=('9a3c9ef0b2bc1317b2e3f858e6e4bab2d0b748fac98d80828ee8098b8b3d4463')
+#source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz")
+source=(https://github.com/gsi-ee/${pkgname}/archive/refs/tags/${pkgver}.tar.gz)
+sha256sums=('8ea4d03888afe5aa56cb7e6114b36206f6ad0e75aa6c497e1c63a81aea2c8672')
 
 prepare() {
 
   unset GO4SYS
-
-  # Fix error: conflicting types
-  sed -i '93s/()/(s_ve10_1 *)/' ${srcdir}/go4-${pkgver}/MbsAPI/f_evt.h
 
   #
   # Most files created at the end of CMakeLists.txt end up in weird locations.
