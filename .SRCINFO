@@ -1,6 +1,6 @@
 pkgbase = aurras
 	pkgdesc = A high-end command line music player
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/vedant-asati03/Aurras
 	arch = any
