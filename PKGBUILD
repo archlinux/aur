@@ -1,7 +1,7 @@
 # Maintainer: Antonio Leal <antonioleal@yahoo.com>
 pkgname=bbcsdl
-pkgver=1.41a
-pkgrel=2
+pkgver=1.41b
+pkgrel=1
 pkgdesc="BBC Basic Programming for Linux"
 arch=('x86_64')
 url="https://www.bbcbasic.co.uk/bbcsdl"
@@ -14,20 +14,20 @@ replaces=()
 backup=()
 options=(!debug)
 source=(
-  https://github.com/rtrussell/BBCSDL/archive/0a58eb114ac55ab98fec12ee84b6fd699cf0aebd/BBCSDL-0a58eb114ac55ab98fec12ee84b6fd699cf0aebd.tar.gz
+  https://github.com/rtrussell/BBCSDL/archive/3602d124be27164ed897555086a3f22ad03c38ab/BBCSDL-3602d124be27164ed897555086a3f22ad03c38ab.tar.gz
   https://www.bbcbasic.net/bbcsdl/bbclinux.zip
 )
 
 noextract=()
 sha256sums=(
-  a8c45f3a006265034cd3185035351540aad5e7819c39c4c39dd74b45274566ac
+  fd60fde44f3c6875673ed8b183eb04da2cbee61236a03804e1a4876eba802973
   335c55a1f039b4f10742a2186bcd5f58f8a70bf860eba5a5318839194cf96030
 )
 
 prepare() {
   cd ${srcdir}/
-  tar -xf BBCSDL-0a58eb114ac55ab98fec12ee84b6fd699cf0aebd.tar.gz -C ${srcdir}
-  mv BBCSDL-0a58eb114ac55ab98fec12ee84b6fd699cf0aebd ${pkgname}-${pkgver}
+  tar -xf BBCSDL-3602d124be27164ed897555086a3f22ad03c38ab.tar.gz -C ${srcdir}
+  mv BBCSDL-3602d124be27164ed897555086a3f22ad03c38ab ${pkgname}-${pkgver}
   unzip -f bbclinux.zip Box2D231.so bbc256x.png
   sed -e "s/..\/BBCSDL\/src\/bbdata_x86_64.nas/src\/bbdata_x86_64.nas/" -i ${srcdir}/${pkgname}-${pkgver}/console/linux/makefile
   cat << EOF > bbcsdl.desktop
