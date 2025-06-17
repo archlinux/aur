@@ -1,6 +1,6 @@
 # Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 pkgname=matterhorn-bin
-pkgver=90000.0.0
+pkgver=90000.1.0
 pkgrel=1
 pkgdesc="A terminal-based chat client for MatterMost"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('matterhorn')
 depends=('gmp' 'ncurses5-compat-libs' 'zlib')
 source=("https://github.com/matterhorn-chat/matterhorn/releases/download/${pkgver}/matterhorn-${pkgver}-ubuntu-22.04-jammy-$CARCH.tar.bz2"
 	"LICENSE::https://raw.githubusercontent.com/matterhorn-chat/matterhorn/master/LICENSE")
-sha1sums=('edf0e5e0a53d41ccc1ab4aa11076684a8da763a1'
+sha1sums=('36eace60bb459b4a6ebbc3226c8252295c9b9bf7'
 	'41bd788816973ea1340759da722bac169d6dc746')
 
 package() {
