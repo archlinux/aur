@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=SDV
 pkgname=python-${_base,,}
-pkgver=1.22.1
+pkgver=1.23.0
 pkgrel=1
 pkgdesc="Generate synthetic data for single table, multi table and sequential data"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(python-boto3 python-botocore python-cloudpickle python-graphviz
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('5f9fc1a8bd37c63ad9903a88d64815710e86075d6dd60c36ec31520afc83db748158a6962c33134b686fa6a59e98a3e4b74208010c4ce704f71b24b1626131d9')
+sha512sums=('a29e702274af155fb176199df12713c42cf581f9d8cb87adb25c575c061663cafd5037b91a8cbc8fb7dc8ef1856781aacb1916213a69977417227b950ac56c25')
 
 build() {
   cd ${_base}-${pkgver}
