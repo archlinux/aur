@@ -1,5 +1,5 @@
 pkgname=goenv
-pkgver=2.2.23
+pkgver=2.2.25
 pkgrel=1
 pkgdesc="Like pyenv and rbenv, but for Go."
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 	"go-build::https://github.com/go-nv/goenv/archive/master.tar.gz"
 )
-md5sums=('c6fb7e7187914544cb9b80eb3eb5c1f4'
-         'dbe276a5fb75b204c0a6bc623b857413')
+md5sums=('79b61713540c319bfd0146e927ec8179'
+         'ee9e45e85b9d00723c7719215dac30d5')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
