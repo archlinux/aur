@@ -28,7 +28,6 @@ depends=(
   'sndio'
 )
 optdepends=('libglvnd')
-makedepends=('dwarfs')
 options=('!strip')
 replaces=('rpcs3')
 provides=('rpcs3')
@@ -40,12 +39,13 @@ prepare()
 {
     cd "$srcdir"
 
-    dwarfsextract -i "$srcdir/rpcs3-v${_pkgver}_linux64.AppImage"
+    chmod +x "$srcdir/rpcs3-v${_pkgver}_linux64.AppImage"
+    "$srcdir/rpcs3-v${_pkgver}_linux64.AppImage" --appimage-extract
 }
 
 package()
 {
-    cd "${srcdir}"
+    cd "${srcdir}/AppDir"
 
     install -D -m755 'usr/bin/rpcs3' "$pkgdir/usr/bin/rpcs3"
     install -D -m644 'usr/share/applications/rpcs3.desktop' "$pkgdir/usr/share/applications/rpcs3.desktop"
