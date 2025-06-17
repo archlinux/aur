@@ -2,14 +2,15 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=reclaimed
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="disk space utilization & cleanup application (python tui)"
 arch=('any')
 url='https://github.com/taylorwilsdon/reclaimed'
 license=(MIT)
-depends=(python python-click python-rich python-black mypy python-hatch python-textual)
+depends=(python python-click python-rich python-psutil python-textual)
 makedepends=(
   python-build
+  python-setuptools
   python-installer
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/taylorwilsdon/reclaimed/archive/refs/tags/v${pkgver}.tar.gz")
