@@ -1,0 +1,22 @@
+pkgbase = python-dictleo-git
+	pkgdesc = Python library and CLI tool for dict.leo.org
+	pkgver = 0.0.0.31_16876e2
+	pkgrel = 1
+	epoch = 0
+	url = https://codeberg.org/Riedler/python-dictleo
+	arch = any
+	license = CC0-1.0
+	makedepends = git
+	makedepends = python
+	depends = python>=3
+	depends = python-requests
+	provides = python-dictleo
+	conflicts = python-dictleo
+	conflicts = leo-dict-cli
+	conflicts = python-leo
+	source = python-dictleo::git+https://codeberg.org/Riedler/python-dictleo.git
+	source = leo.sh
+	sha256sums = SKIP
+	sha256sums = 37ffc19f82bc55a4af62f550cc080e2d94a9e08d7c2e73f6b308ec2c4503bf42
+
+pkgname = python-dictleo-git
