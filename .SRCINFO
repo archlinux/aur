@@ -1,6 +1,6 @@
 pkgbase = danxi-git
 	pkgdesc = Maybe the best all-rounded service app for Fudan University students | 可能是复旦学生最好的第三方校园服务 APP
-	pkgver = 1.4.8.r5.ge2e5f72
+	pkgver = 1.4.8.r9.g880293e
 	pkgrel = 2
 	url = https://github.com/DanXi-Dev/DanXi
 	arch = x86_64

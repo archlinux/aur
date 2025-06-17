@@ -2,7 +2,7 @@
 
 pkgname=danxi-git
 _pkgname=${pkgname%-git}
-pkgver=1.4.8.r5.ge2e5f72
+pkgver=1.4.8.r9.g880293e
 pkgrel=2
 pkgdesc="Maybe the best all-rounded service app for Fudan University students | 可能是复旦学生最好的第三方校园服务 APP"
 url="https://github.com/DanXi-Dev/DanXi"
@@ -37,9 +37,10 @@ build() (
 package() {
 	cd DanXi
 
-	pushd build/linux/x64/release/bundle
-	install -Dm755 dan_xi -t "${pkgdir}/usr/lib/${_pkgname}/"
-	cp -a lib data "${pkgdir}/usr/lib/${_pkgname}/"
+	pushd build/linux/x64/release
+	install -Dm755 bundle/dan_xi -t "${pkgdir}/usr/lib/${_pkgname}/"
+	cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/lib/${_pkgname}" .
+	cmake -P cmake_install.cmake
 	popd
 
 	# Symlink
