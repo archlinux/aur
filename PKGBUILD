@@ -1,8 +1,9 @@
-# Maintainer: BryanLiang <liangrui.ch at gmail dot com>
+# Contributor: BryanLiang <liangrui.ch at gmail dot com>
+# Maintainer: tee < teeaur at duck dot com >
 
 _pkgname="qbittorrent-enhanced"
 pkgname="${_pkgname}"-appimage
-pkgver=5.0.3.10
+pkgver=5.1.0.11
 pkgrel=1
 pkgdesc="A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition)"
 arch=('x86_64')
@@ -13,13 +14,13 @@ depends=('fuse2' 'hicolor-icon-theme' 'zlib')
 provides=("qbittorrent")
 conflicts=("qbittorrent")
 
-source=("https://github.com/c0re100/qBittorrent-Enhanced-Edition/raw/refs/heads/v5_0_x/COPYING")
+source=("$url/raw/refs/heads/v5_0_x/COPYING")
 source_x86_64=(
     "${_pkgname}-${pkgver}.AppImage::${url}/releases/download/release-${pkgver}/qBittorrent-Enhanced-Edition-x86_64.AppImage"
 )
 
 sha256sums=('e675cd856f9817474455200ba7e6f5b7cc42d6598a5eecbbbdaa0e6fd304d6b7')
-sha256sums_x86_64=('67e64ce1ce373a343329b5cdb861ea0fb862913d8e639378f0a6fa80ab53d324')
+sha256sums_x86_64=('73f849a6a7c2ea77c995c7ea25ee76933e2a744e6f8547d8d509156c2febdcff')
 
 prepare () {
     chmod +x "${_pkgname}-${pkgver}.AppImage"
