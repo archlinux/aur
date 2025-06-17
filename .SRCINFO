@@ -1,13 +1,12 @@
 pkgbase = cwc-git
 	pkgdesc = Extensible Wayland compositor with dynamic window management
-	pkgver = r78.0df2936
+	pkgver = r154.3f3d615
 	pkgrel = 1
 	url = https://github.com/Cudiph/cwcwm
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = ldoc
-	makedepends = make
 	makedepends = meson
 	makedepends = ninja
 	makedepends = wayland-protocols
@@ -36,7 +35,9 @@ pkgbase = cwc-git
 	optdepends = waybar: Default bar
 	optdepends = xdg-desktop-portal-gtk: Default portal for file picker
 	optdepends = xdg-desktop-portal-wlr: Portal for screen sharing
+	provides = cwc
 	provides = wayland-compositor
+	conflicts = cwc
 	source = cwc::git+https://github.com/Cudiph/cwcwm.git
 	md5sums = SKIP
 

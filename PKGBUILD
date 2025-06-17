@@ -1,7 +1,7 @@
 # Maintainer: Dwi Asmoro Bangun <dwiaceromo@gmail.com>
 _pkgname=cwc
 pkgname="$_pkgname-git"
-pkgver=r78.0df2936
+pkgver=r154.3f3d615
 pkgrel=1
 pkgdesc='Extensible Wayland compositor with dynamic window management'
 arch=('x86_64')
@@ -28,7 +28,6 @@ depends=(
 makedepends=(
   'git'
   'ldoc'
-  'make'
   'meson'
   'ninja'
   'wayland-protocols'
@@ -44,7 +43,8 @@ optdepends=(
   'xdg-desktop-portal-gtk: Default portal for file picker'
   'xdg-desktop-portal-wlr: Portal for screen sharing'
 )
-provides=('wayland-compositor')
+provides=('cwc' 'wayland-compositor')
+conflicts=('cwc')
 source=("$_pkgname::git+$url.git")
 md5sums=('SKIP')
 
