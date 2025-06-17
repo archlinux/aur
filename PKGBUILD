@@ -1,8 +1,8 @@
 pkgname=llama-swap
 
-_fragment=tag=v125
+_fragment=tag=v126
 
-pkgver=125
+pkgver=126
 pkgrel=1
 pkgdesc='Model swapping for llama.cpp (or any local OpenAPI compatible server)'
 
@@ -10,25 +10,27 @@ arch=(x86_64)
 url="https://github.com/mostlygeek/$pkgname"
 license=('MIT')
 
-makedepends=(git go)
+makedepends=(git go pnpm)
 
 source=(
 	"git+$url.git#$_fragment"
 	llama-swap.service
 )
-sha256sums=('a0e9077e50a1f96e03335e63759221f59fd2e6e5ac6452153b9c86e39224f83e'
-            'b4546cefb0c4255e432c6bd95143ae19735068951945d233011b02caecc641ff')
+sha256sums=('df92d5549328c751bd6ae0a47273adb1c79183991a8da044d369a767ce128c3a'
+	'b4546cefb0c4255e432c6bd95143ae19735068951945d233011b02caecc641ff')
 
 pkgver() {
-	git -C $pkgname describe --first-parent --tags | sed 's/^v//; s/-/+/g'
+	git -C "$pkgname" describe --first-parent --tags | sed 's/^v//; s/-/+/g'
 }
 
 prepare() {
-	go -C $pkgname mod vendor
+	cd "$pkgname"
+	go mod vendor
+	pnpm -C ui install
 }
 
 build() {
-	cd $pkgname
+	cd "$pkgname"
 
 	export CGO_CPPFLAGS="$CPPFLAGS"
 	export CGO_CFLAGS="$CFLAGS"
@@ -49,11 +51,12 @@ build() {
 		"
 	)
 
+	pnpm -C ui build
 	go build "${BUILD_OPTS[@]}"
 }
 
 package() {
-	cd $pkgname
+	cd "$pkgname"
 
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
 	install -Dm644 -t "$pkgdir/etc/llama-swap" config.example.yaml
