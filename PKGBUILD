@@ -5,7 +5,7 @@ _name0=logfire
 pkgbase=python-${_name0}
 pkgname=(python-${_name1} python-${_name0})
 pkgver=3.21.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/pydantic/logfire'
 license=('MIT')
@@ -92,7 +92,6 @@ check() {
     -vv
     -n auto
     --dist=loadgroup
-    -p no:randomly
     # Test for Logfire developers
     --deselect tests/aaa_query_client/test_query_client.py
     # Remove tests that need Docker
