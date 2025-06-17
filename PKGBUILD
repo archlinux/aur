@@ -3,7 +3,7 @@
 pkgname=ciyue
 _srcname=Ciyue
 pkgver=1.16.0
-pkgrel=1
+pkgrel=3
 pkgdesc="A simple mdict dictionary with Android/Windows/Linux support"
 url="https://mumulhl.eu.org/${_srcname}"
 license=('MIT')
@@ -31,9 +31,10 @@ build() (
 package() {
 	cd "${_srcname}-${pkgver}/"
 
-	pushd build/linux/x64/release/bundle
-	install -Dm755 "${pkgname}" -t "${pkgdir}/usr/lib/${pkgname}/"
-	cp -a lib data "${pkgdir}/usr/lib/${pkgname}/"
+	pushd build/linux/x64/release
+	install -Dm755 "bundle/${pkgname}" -t "${pkgdir}/usr/lib/${pkgname}/"
+	cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/lib/${pkgname}" .
+        cmake -P cmake_install.cmake
 	popd
 
 	# Symlink

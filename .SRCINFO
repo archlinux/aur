@@ -1,7 +1,7 @@
 pkgbase = ciyue
 	pkgdesc = A simple mdict dictionary with Android/Windows/Linux support
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://mumulhl.eu.org/Ciyue
 	arch = x86_64
 	license = MIT
