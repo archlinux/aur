@@ -1,0 +1,16 @@
+pkgbase = python-mijia-api
+	pkgdesc = A Python API for Xiaomi Mijia
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://github.com/Do1e/mijia-api
+	arch = any
+	license = GPL-3.0
+	makedepends = python-poetry
+	depends = python>=3.9
+	depends = python-pillow>=11.0.0
+	depends = python-qrcode>=8.0
+	depends = python-requests>=2.32.3
+	source = python-mijia-api-1.4.5.tar.gz::https://files.pythonhosted.org/packages/94/f1/e9169d5b544459cefe6038898ae4953e5733925fb43bf20135e38c39ff1e/mijiaapi-1.4.5.tar.gz
+	sha256sums = 872efb565699de893944590538df60e3489093dbe3eb5b1b2dbbdf7cc61858f6
+
+pkgname = python-mijia-api
