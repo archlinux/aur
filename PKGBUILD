@@ -2,7 +2,7 @@
 # Contributor: xuhcc <xuhcc at cryptolab dot net>
 
 pkgname=mermaid-cli
-pkgver=11.4.2
+pkgver=11.4.3
 pkgrel=1
 pkgdesc='Generate images from from Mermaid files'
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(npm)
 _archive="$pkgname-$pkgver"
 source=("https://registry.npmjs.org/@mermaid-js/$pkgname/-/$_archive.tgz")
 noextract=("$_archive.tgz")
-sha256sums=('5a46e845cd6cd05ac9ba5172acdadbe3daa878d8af4a15213b374fa5de96f0de')
+sha256sums=('6731cfe5a2ae5cfe7824534026aaa9c615a6b13c3c3c129e8b8be2b73f256cec')
 
 package() {
 	# https://github.com/mermaid-js/mermaid-cli/blob/master/docs/already-installed-chromium.md
