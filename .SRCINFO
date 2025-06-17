@@ -1,6 +1,6 @@
 pkgbase = chawan-git
 	pkgdesc = Web browser for your terminal
-	pkgver = r3495.a3ef823e
+	pkgver = 0.2.0.r1.ge0392e2
 	pkgrel = 1
 	url = https://git.sr.ht/~bptato/chawan
 	arch = i686

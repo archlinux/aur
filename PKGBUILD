@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=chawan-git
-pkgver=r3495.a3ef823e
+pkgver=0.2.0.r1.ge0392e2
 pkgrel=1
 pkgdesc="Web browser for your terminal"
 arch=(i686 x86_64)
@@ -26,8 +26,7 @@ source=(${pkgname%-git}::git+$url)
 b2sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git -C ${pkgname%-git} describe --long --abbrev=7 --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
