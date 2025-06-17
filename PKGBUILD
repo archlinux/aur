@@ -3,7 +3,7 @@
 
 pkgname="lime3ds-appimage"
 pkgver=2119.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger, AppImage version"
 url="https://lime3ds.github.io/"
@@ -14,7 +14,7 @@ conflicts=('lime3ds-git' 'lime3ds')
 replaces=()
 depends=("ffmpeg"
          "sdl2")
-source=("https://github.com/Lime3DS/lime3DS-archive/releases/download/$pkgver/lime3ds-$pkgver-linux-appimage.tar.gz"
+source=("https://github.com/username227/lime3ds-appimage/releases/download/1/lime3ds-linux-appimage.tar.gz"
         "https://raw.githubusercontent.com/Lime3DS/lime3DS-archive/master/dist/lime3ds.desktop")
 b2sums=('3d25a864c6387d029f4b6d10e9cea3843eb4e6ce6217796a01f80498fb6aec5b5bbedcedc256072834c543087c5a68df5d33bc0c17f4acb9991b4b046c39cc54'
         '1dc8ad96f6efbcc638d8fa4cc2c203920f6a6930592a8532caa519a9cef3ff99378366b083e21ec96381461dd792d7a042bae949bb25aee6c13b030dfe636984')
