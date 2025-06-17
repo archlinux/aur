@@ -6,8 +6,8 @@
 # Contributor: Lorenzo Ferrillo <lorenzofer at live dot it>
 
 pkgname=lib32-x265
-pkgver=4.0
-pkgrel=6
+pkgver=4.1
+pkgrel=1
 epoch=1
 pkgdesc='Open Source H265/HEVC video encoder. 32bit libraries.'
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=('cmake' 'nasm' 'git')
 provides=('libx265.so')
 _tag=f0c1022b6be121a753ff02853fbe33da71988656
 source=("${pkgname#lib32-*}::git+${url}.git#tag=${pkgver}" "cstdint_missing.patch")
-sha256sums=('633998b9f17d335c24b3ac34eb446ac376971ce7323ef9befb86d134ee3e6453'
+sha256sums=('a6a10ca581c13d8f43713f198ac2164d02d44b6c70ca31ec54e6bdb59410cdf5'
             'd97c14a03f32672ba84880e40dc934027117bd1c6a331f3351e08466598767ac')
 
 prepare() {
