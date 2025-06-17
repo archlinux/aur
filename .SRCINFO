@@ -1,6 +1,6 @@
 pkgbase = prompt-booster-bin
 	pkgdesc = A comprehensive tool for optimizing LLM prompts with version control, A/B testing, and template management. Supports multiple AI providers.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.7.0
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = https://hexart.github.io/prompt-booster/
 	arch = aarch64
@@ -9,13 +9,13 @@ pkgbase = prompt-booster-bin
 	license = Apache-2.0
 	makedepends = fuse2
 	depends = electron36
-	provides = prompt-booster=0.7.0
+	provides = prompt-booster=0.7.5
 	conflicts = prompt-booster
 	source = prompt-booster.sh
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = prompt-booster-0.7.0-aarch64.AppImage::https://github.com/hexart/prompt-booster/releases/download/v0.7.0/Prompt-Booster-0.7.0-arm64.AppImage
-	sha256sums_aarch64 = b7e94b8e633fa2e056fccca0ec4b97d1efaf35d045a68498dbff8139ee0e5501
-	source_x86_64 = prompt-booster-0.7.0-x86_64.AppImage::https://github.com/hexart/prompt-booster/releases/download/v0.7.0/Prompt-Booster-0.7.0.AppImage
-	sha256sums_x86_64 = fd48fb8eb34d445fe16fc17b61a8db352d4952b4c4c16bf83d91bd90faf6af22
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+	source_aarch64 = prompt-booster-0.7.5-aarch64.AppImage::https://github.com/hexart/prompt-booster/releases/download/v0.7.5/Prompt-Booster-0.7.5-arm64.AppImage
+	sha256sums_aarch64 = f0b70ff7b6e0bcd1c3d7c6154370a7f266ed54b6734c5f02d51478fb1c2116dd
+	source_x86_64 = prompt-booster-0.7.5-x86_64.AppImage::https://github.com/hexart/prompt-booster/releases/download/v0.7.5/Prompt-Booster-0.7.5.AppImage
+	sha256sums_x86_64 = b9c85207a3a811164105f95bbe26573d41736e284f7de5518776caca4906fdfd
 
 pkgname = prompt-booster-bin

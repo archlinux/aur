@@ -2,7 +2,7 @@
 pkgname=prompt-booster-bin
 _pkgname='Prompt Booster'
 _zhsname='提示增强器'
-pkgver=0.7.0
+pkgver=0.7.5
 _electronversion=36
 pkgrel=1
 pkgdesc="A comprehensive tool for optimizing LLM prompts with version control, A/B testing, and template management. Supports multiple AI providers.(Prebuilt version.Use system-wide electron)"
@@ -27,9 +27,9 @@ makedepends=(
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}.AppImage")
-sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('b7e94b8e633fa2e056fccca0ec4b97d1efaf35d045a68498dbff8139ee0e5501')
-sha256sums_x86_64=('fd48fb8eb34d445fe16fc17b61a8db352d4952b4c4c16bf83d91bd90faf6af22')
+sha256sums=('f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums_aarch64=('f0b70ff7b6e0bcd1c3d7c6154370a7f266ed54b6734c5f02d51478fb1c2116dd')
+sha256sums_x86_64=('b9c85207a3a811164105f95bbe26573d41736e284f7de5518776caca4906fdfd')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
