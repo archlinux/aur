@@ -3,8 +3,8 @@
 # Contributor: Thomas Gläßle <t_glaessle@gmx.de>
 
 pkgname='git-quick-stats'
-pkgver='2.6.1'
-pkgrel=3
+pkgver='2.6.2'
+pkgrel=1
 pkgdesc='Simple and efficient way to access various statistics in git repository'
 arch=('any')
 url="https://github.com/$pkgname/$pkgname"
@@ -21,7 +21,7 @@ depends=(
 provides=('git-quick-stats')
 conflicts=('git-quick-stats')
 source=("$pkgname::git+$url#tag=$pkgver")
-sha256sums=('0de8268ec1cd613f40dc0e21d6a64b3e972713ba8866a96dfbd89d5d3d14b9cd')
+sha256sums=('0000138849aa488d1c13baabcea76a51e988a07dccefaef9c7e0541943f4452b')
 
 check() {
   cd "$srcdir/$pkgname"
