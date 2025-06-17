@@ -2,18 +2,19 @@
 
 pkgname=tunet-rust-git
 _pkgname=tunet-rust
-pkgver=0.9.5.r19.g7deb1b9
+pkgver=0.9.5.r41.gbf106d9
 pkgrel=1
 pkgdesc="A Tsinghua University network authentication client for Linux, written in Rust. 清华大学校园网 Rust 客户端"
 url="https://github.com/Berrysoft/tunet-rust"
 arch=('x86_64' 'aarch64')
 license=('MIT')
-depends=('openssl' 'freetype2' 'hicolor-icon-theme')
+depends=('openssl' 'freetype2' 'hicolor-icon-theme' 'qt6-base')
 makedepends=('git' 'cargo')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("git+${url}.git")
 sha512sums=('SKIP')
+options=('!lto')
 
 pkgver() {
 	cd "${_pkgname}/"
@@ -31,7 +32,7 @@ prepare() {
 
 build() {
 	cd "${_pkgname}/"
-	cargo build --frozen --release --all-features --workspace --exclude native
+	cargo build --frozen --release --workspace --exclude native
 }
 
 check() {
@@ -43,12 +44,8 @@ package() {
 	cd "${_pkgname}/"
 
 	# Binaries
-	pushd "target/release/"
-	for bin in tunet tunet-gui tunet-service; do
-		install -Dm755 "${bin}" -t "${pkgdir}/usr/bin/"
-	done
+	install -Dm755 target/release/tunet{,-{gui,service}} -t "${pkgdir}/usr/bin/"
 
-	popd
 	# Desktop file
 	install -Dm644 "tunet/tunet.desktop" -t "${pkgdir}/usr/share/applications/"
 
@@ -59,5 +56,5 @@ package() {
 	install -Dm644 "tunet-service/tunet@.service" -t "${pkgdir}/usr/lib/systemd/system/"
 
 	# License
-	install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
