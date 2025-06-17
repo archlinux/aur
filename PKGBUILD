@@ -2,7 +2,7 @@
 # Maintainer: Maas Lalani <maas@charm.sh>
 
 pkgname='vhs-bin'
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='A tool for recording terminal GIFs'
 url='https://charm.sh/'
@@ -12,17 +12,17 @@ provides=('vhs')
 conflicts=('vhs')
 depends=('ffmpeg' 'ttyd')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.9.0/vhs_0.9.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('d272dc1460d90c0ba1f69d9bfed0e29666272e76948fe905a713083a338ed08a')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.10.0/vhs_0.10.0_Linux_arm64.tar.gz")
+sha256sums_aarch64=('6d7300028d4641b9dc004a05cf411d40f1e12e560cc6fca985dd90504b6652a7')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.9.0/vhs_0.9.0_Linux_arm.tar.gz")
-sha256sums_armv7h=('1ad4b8f06cd1de508aad6f16016f274ec871ff92864fafa235cd67a245f775e1')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.10.0/vhs_0.10.0_Linux_arm.tar.gz")
+sha256sums_armv7h=('bd66934fd1fac2f5263e383576cd7190eecf7a89d9cc8e8b3cf81075e855cdfd')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.9.0/vhs_0.9.0_Linux_i386.tar.gz")
-sha256sums_i686=('ce482f117e4df171c438b232a2f3b186f4b0221bb3d5b1acb4ba24409003ac62')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.10.0/vhs_0.10.0_Linux_i386.tar.gz")
+sha256sums_i686=('8ca4a7cc02fe6632604ab554a36e70d0cd8096c9ad2b1b5ce61d07a3f7f3ca21')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.9.0/vhs_0.9.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('db0b38837489930513353dbf988a8d48e9750040dbb1cd6dd1a883c6fe213962')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.10.0/vhs_0.10.0_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('b552c3870aca101dcafe533cfef32dceb7b783400ad32642e728775c9f125407')
 
 package() {
   cd "${srcdir}/vhs_${pkgver}_Linux_${CARCH}"
