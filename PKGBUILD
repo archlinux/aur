@@ -83,7 +83,7 @@ md5sums=('63e10baa9a5dfce9165570e7c3897701'
          '8e5a1b177d5c74541facbfa98ff09e19'
 		 '20c7f661b6b8ce9bcbbd384fab2517a8'
 		 '1f25e46f2d826ba50078f4c61be4f13e'
-		 '35b55db84834d6cd58f157c239104641')
+		 '651328ad9af97cbfcbb59c268eb89e37')
 
 prepare() {
     cd "$srcdir/xref-any"

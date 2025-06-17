@@ -1,12 +1,27 @@
-From 28c3c12dce474eaf00fe5088c68b645db1fd857d Mon Sep 17 00:00:00 2001
+From 9b99858bba9441e5d6048006c2e092b0f64bb03e Mon Sep 17 00:00:00 2001
 From: Sergei Litvin <litvindev@gmail.com>
 Date: Tue, 17 Jun 2025 12:43:40 +0200
 Subject: [PATCH] Fix build for Mingw-w64
 
 ---
- xref-any/src/stdinc.h | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ env/emacs/xrefactory.el | 3 ++-
+ src/stdinc.h            | 3 +--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
+diff --git a/env/emacs/xrefactory.el b/env/emacs/xrefactory.el
+index 39a6db7..79e854e 100644
+--- a/env/emacs/xrefactory.el
++++ b/env/emacs/xrefactory.el
+@@ -93,7 +93,8 @@
+ ;; current platform identification (will be used in default settings)
+ 
+ (if (or (string-match "-nt" system-configuration) 
+-		(string-match "-win" system-configuration))
++		(string-match "-win" system-configuration)
++		(string-match "-mingw32" system-configuration))
+ 	(defvar xref-platform 'windows)
+   (defvar xref-platform 'unix)
+ )
 diff --git a/src/stdinc.h b/src/stdinc.h
 index e35b69e..0009d56 100644
 --- a/src/stdinc.h
