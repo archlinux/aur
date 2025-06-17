@@ -1,10 +1,10 @@
 pkgbase = mingw-w64-x265
 	pkgdesc = Open Source H265/HEVC video encoder (mingw-w64)
-	pkgver = 4.0
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://www.videolan.org/developers/x265.html
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = mingw-w64-cmake
 	makedepends = git
 	makedepends = nasm
@@ -13,9 +13,12 @@ pkgbase = mingw-w64-x265
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = x265::git+https://bitbucket.org/multicoreware/x265_git.git#tag=6318f223684118a2c71f67f3f4633a9e35046b00
+	options = !debug
+	source = x265::git+https://bitbucket.org/multicoreware/x265_git.git#tag=f21b135c3414ade4e22305d008bf07d23d0595fb
+	source = 0001-Fix-build-with-GCC-15.patch
 	source = mingw.patch
-	sha256sums = 633998b9f17d335c24b3ac34eb446ac376971ce7323ef9befb86d134ee3e6453
-	sha256sums = b1953c70b734b91e7916448c4636b70305c1d5bfaf86f17f94b769499635a191
+	b2sums = 26be1f78e43a93ddbec87003d26e302b0759913bd500c571a5bbdd73d62d787b81529729988743a146b955983483d1067e9934f61d915b3b6854ac6aae459191
+	b2sums = af2ee0460c0c2f6f36e4f124a9ac16610e3884001262a6f08043fa1de4a85e2b5fd4fb12c64b8c94cfb59c3031bb7a1324e307fa2049e3378e2add9a58f5bd9e
+	b2sums = ec8e763beb4f6fd93bd959b18b75b038b1cad2f137be488dffed383ea14b1e880e3830be09da32a67821b628f30fd120364052b0a02ff82a65ddebd68293f645
 
 pkgname = mingw-w64-x265
