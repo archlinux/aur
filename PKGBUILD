@@ -1,4 +1,4 @@
-# Maintainer: Dwi Asmoro Bangun <dwiaceromo@gmail.com>
+# Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
 _pkgname="cwcwm"
 pkgname="cwc"
 pkgver=0.1.0
