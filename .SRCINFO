@@ -1,0 +1,13 @@
+pkgbase = awsm-bin
+	pkgdesc = A fast command-line tool to manage your AWS profiles, sessions, and console access with ease
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/AleG03/awsm
+	arch = x86_64
+	license = MIT
+	provides = awsm
+	conflicts = awsm
+	source = awsm-bin-0.2.2.tar.gz::https://github.com/AleG03/awsm/releases/download/v0.2.2/awsm_0.2.2_linux_amd64.tar.gz
+	sha256sums = 421774763a44526341d6b62e281ab8f2a49e4bc0664423bb469bbbe54c1aea6c
+
+pkgname = awsm-bin
