@@ -11,6 +11,8 @@ depends=(
   dconf
   glib2
   gstreamer
+  gst-plugins-base
+  gst-plugins-good
   gtk4
   hicolor-icon-theme
   libadwaita
