@@ -1,24 +1,25 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 
 pkgbase=python-sphinx-asdf
-_pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}")
-pkgver=0.2.4
+_pname=${pkgbase#python-}
+_pyname=${_pname//-/_}
+pkgname=("python-${_pname}")
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Sphinx plugin for generating documentation from ASDF schemas"
 arch=('any')
 url="https://github.com/asdf-format/sphinx-asdf"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
-             'python-wheel'
              'python-build'
-             'python-installer')
+             'python-installer')  # wheel required by new setuptools
 checkdepends=('python-pytest'
+#             'python-pytest-xdist'
               'python-sphinx'
               'python-asdf'
               'python-mistune>=3')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('0576f9747ed956c10ad45e820454bf73531ad0d66840e29fc1c681d1b27e2913')
+sha256sums=('087f445c4e7cced5075b11e1e2cbde022fe796702930a5711cdbb26f22d3eb37')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -33,9 +34,10 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
-        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
-    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+#   ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+#       build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
+#   PYTHONPATH="build/lib" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+    PYTHONPATH="${PWD}" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package() {
@@ -44,7 +46,6 @@ package() {
              'python-mistune>=3'
              'python-packaging'
              'python-sphinx-astropy'
-             'python-sphinx-bootstrap-theme'
              'python-sphinx_rtd_theme'
              'python-toml')
     cd ${srcdir}/${_pyname}-${pkgver}
