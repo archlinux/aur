@@ -2,7 +2,7 @@
 pkgname=famistudio
 _pkgname=FamiStudio
 _NETver=8.0
-pkgver=4.3.3
+pkgver=4.4.1
 pkgrel=2
 epoch=
 pkgdesc="A very simple music editor for the Nintendo Entertainment System or Famicom"
@@ -25,10 +25,10 @@ source=("https://github.com/BleuBleu/${_pkgname}/archive/refs/tags/${pkgver}.tar
     "${pkgname}.desktop" "${_pkgname}.svg")
 noextract=()
 
-md5sums=('9f059ef3718503f27020f4875607f50f'
+md5sums=('14c51f655f570bbab21a98a72ba39236'
          '7cecbef97612ec8cf56a84e966382c87'
          'a1156aa440fcc359acc3d43dbfd2d6f9')
-sha256sums=('a157fe23041e5961b1d9533177f1dad0a9da131ed1ff4b77a0bf04c0403b9cda'
+sha256sums=('ed4001955345f10fae2c278313845f9c516cc774f18996ed75b7a6d6e5a0a0a0'
             '2c25b53b8a287ef5c29a1f32c32ad8cc56f093cb08f02cf0d09550a1bcd19537'
             'f8c86d1a851dd1321d3bf3ac3f704abc398d5297b620ef444d2eea0de5e58bf8')
 
@@ -88,7 +88,7 @@ package() {
     ln -s /usr/lib/libglfw.so $pkgdir/usr/share/${pkgname}/libglfw.so
     ln -s /usr/lib/librtmidi.so $pkgdir/usr/share/${pkgname}/librtmidi.so
 
-    echo -e "#!/bin/sh\n\nXDG_SESSION_TYPE="x11" dotnet /usr/share/${pkgname}/${_pkgname}.dll \$*" \
+    echo -e "#!/bin/sh\n\ndotnet /usr/share/${pkgname}/${_pkgname}.dll \$*" \
         > $pkgdir/usr/bin/${pkgname}
     chmod +x $pkgdir/usr/bin/${pkgname}
 }
