@@ -3,13 +3,13 @@
 pkgname=('vulkan-caps-viewer-x11' 'vulkan-caps-viewer-wayland')
 pkgbase=vulkan-caps-viewer
 pkgver=4.01
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
 arch=('x86_64' 'aarch64')
 url="https://vulkan.gpuinfo.org"
 license=('LGPL-3.0-or-later')
-depends=(
+makedepends=(
   'qt5-wayland'
   'qt5-x11extras'
   'vulkan-icd-loader'
