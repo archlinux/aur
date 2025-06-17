@@ -1,0 +1,18 @@
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Nautilus File Explorer
+Name[es]=Explorador de Archivos Nautilus
+Comment=File manager with system controls
+Comment[es]=Gestor de archivos con controles del sistema
+GenericName=File Manager
+GenericName[es]=Gestor de Archivos
+Icon=nautilus-file-explorer
+Exec=nautilus-explorer
+Terminal=false
+StartupNotify=true
+MimeType=inode/directory;
+Categories=System;FileManager;GTK;
+Keywords=folder;manager;explore;disk;filesystem;
+Keywords[es]=carpeta;gestor;explorar;disco;sistema;archivos;
