@@ -1,7 +1,7 @@
 pkgbase = portmaster-stub-beta-bin
 	pkgdesc = Privacy Suite and Firewall: Installer to download the current binaries (beta)
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://safing.io/portmaster
 	install = portmaster-stub-beta-bin.install
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = portmaster-stub-beta-bin
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk-4.1
+	optdepends = libappindicator-gtk3: for systray indicator
 	provides = portmaster
 	conflicts = portmaster-stub-bin
 	conflicts = portmaster
