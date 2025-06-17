@@ -1,6 +1,6 @@
 # Maintainer: maelstrom57 <melv.douc@gmail.com>
 pkgname=connect4-cli
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Terminal-based Connect 4 game written in Rust"
 arch=('x86_64')
