@@ -8,10 +8,10 @@ arch=('x86_64')
 url="https://github.com/skxxtz/sherlock"
 license=('custom:CC-BY-NC-4.0')
 depends=('gtk4' 'gtk4-layer-shell')
-makedepends=('cargo' 'rust')
+makedepends=()
 
 # Define sources per subpackage
-source=("https://github.com/skxxtz/sherlock/releases/download/v${pkgver}/sherlock-v${pkgver}-hotfix-${pkgrel}-bin-linux-x86_64.tar.gz")
+source=("https://github.com/skxxtz/sherlock/releases/download/v${pkgver}-hotfix-1/sherlock-v${pkgver}-hotfix-${pkgrel}-bin-linux-x86_64.tar.gz")
 sha256sums=('SKIP')
 
 # Prepare source for Git version
