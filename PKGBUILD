@@ -4,8 +4,8 @@
 # Contributor: Macxcool <macx coool at coolnet dot xyz>
 
 pkgname=openlp
-pkgver=3.1.5
-pkgrel=3
+pkgver=3.1.7
+pkgrel=1
 pkgdesc="Church presentation software."
 arch=('any')
 url='http://openlp.org/'
@@ -18,14 +18,14 @@ depends=('python>=3.10' 'python-pyqt5' 'phonon-qt5'
         'python-qtawesome' 'python-websockets' 'python-flask' 'python-flask-cors' 
         'python-waitress' 'python-qrcode' 'python-pymediainfo')
 
-optdepends=('libreoffice-fresh: Display impress presentations'
+optdepends=('libreoffice: Display impress presentations'
             'python-vlc: Multimedia playback'
             'python-mysql-connector: Use a mysql/mariadb database'
             'python-psycopg2: Use a postgresql database')
 install=openlp.install
 source=("https://gitlab.com/openlp/openlp/-/archive/${pkgver}/openlp-${pkgver}.tar.gz" "openlp.sh")
 
-sha256sums=('e85423198cd724083bcb9253f0b22639bc47900ef697002e75d8a18226b1542b'
+sha256sums=('8d1ef8113c90aa18860cd65d0468e9cd882b0104a59885b1016bff6923219540'
             '19c2f3c622585bf308efc259013fb5518feaf8cf14b51613e1e71778fcc2e8cf')
 
 package() {
