@@ -10,7 +10,7 @@ pkgbase = kmonad-static
 	conflicts = kmonad-bin
 	source = https://github.com/kmonad/kmonad/releases/download/0.4.4/kmonad
 	source = https://github.com/kmonad/kmonad/archive/0.4.4.tar.gz
-	md5sums = c7808524001cb7083be270ccc48ef7bc
+	md5sums = 3e88c9e203d8b576ebe09214954214ae
 	md5sums = 638608a766eceebcb3dfdedee62dd6af
 
 pkgname = kmonad-static
