@@ -5,8 +5,8 @@
 
 pkgname='soupault-bin'
 _pkgname="${pkgname/-bin}"
-pkgver=5.0.0
-pkgrel=3
+pkgver=5.1.0
+pkgrel=1
 pkgdesc='Static website generator based on HTML element tree rewriting (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/PataphysicalSociety/soupault'
