@@ -1,0 +1,17 @@
+pkgbase = iterable-cpp-git
+	pkgdesc = C++ library that provides a helper class to simplify custom iterator implementation.
+	pkgver = r6.b8cf2e2
+	pkgrel = 1
+	url = https://github.com/weqeqq/iterable-cpp
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	provides = iterable-cpp
+	conflicts = iterable-cpp
+	source = git+https://github.com/weqeqq/iterable-cpp.git
+	sha256sums = SKIP
+
+pkgname = iterable-cpp-git
