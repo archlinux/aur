@@ -4,8 +4,8 @@
 # Contributor: yochananmarqos
 
 pkgname=notepadnext
-pkgver=0.11
-pkgrel=2
+pkgver=0.12
+pkgrel=1
 pkgdesc="Cross-platform reimplementation of Notepad++"
 arch=('x86_64')
 url="https://github.com/dail8859/NotepadNext"
@@ -20,7 +20,7 @@ source=("$pkgname::git+$url#tag=v$pkgver"
     'git+https://gitlab.freedesktop.org/uchardet/uchardet.git/'
     'missing_stdlib_hdr.patch')
 
-sha256sums=('5e0062af581a0006ee3eece84ef71bef7e94de4e3b1c77539815ca8f2ae35622'
+sha256sums=('1ece102a395ac1c20da55bda35fa9aed3b96ff30410b7e93190e2fac28f9d5a4'
     'SKIP'
     'SKIP'
     'SKIP'

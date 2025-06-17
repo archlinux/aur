@@ -1,7 +1,7 @@
 pkgbase = notepadnext
 	pkgdesc = Cross-platform reimplementation of Notepad++
-	pkgver = 0.11
-	pkgrel = 2
+	pkgver = 0.12
+	pkgrel = 1
 	url = https://github.com/dail8859/NotepadNext
 	arch = x86_64
 	license = GPL-3.0-only
@@ -13,14 +13,14 @@ pkgbase = notepadnext
 	depends = qt6-5compat
 	depends = hicolor-icon-theme
 	depends = qt6-base
-	source = notepadnext::git+https://github.com/dail8859/NotepadNext#tag=v0.11
+	source = notepadnext::git+https://github.com/dail8859/NotepadNext#tag=v0.12
 	source = git+https://github.com/alex-spataru/QSimpleUpdater
 	source = git+https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System
 	source = git+https://github.com/editorconfig/editorconfig-core-qt
 	source = git+https://github.com/itay-grudev/SingleApplication
 	source = git+https://gitlab.freedesktop.org/uchardet/uchardet.git/
 	source = missing_stdlib_hdr.patch
-	sha256sums = 5e0062af581a0006ee3eece84ef71bef7e94de4e3b1c77539815ca8f2ae35622
+	sha256sums = 1ece102a395ac1c20da55bda35fa9aed3b96ff30410b7e93190e2fac28f9d5a4
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
