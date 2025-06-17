@@ -1,6 +1,6 @@
 pkgname=libelectron
-pkgver=2025.5
-pkgrel=4
+pkgver=2025.6
+pkgrel=1
 arch=("x86_64" "aarch64")
 url="https://gitlab.com/linuxbombay/libelectron/libelectron"
 license=('GPL')
