@@ -1,0 +1,19 @@
+pkgbase = mathsqt
+	pkgdesc = A comprehensive CLI math tool written in Python.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ThomasSimpDev/Mathsqt
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python-rich
+	depends = python-sympy
+	depends = python-numpy
+	depends = python-pyfiglet
+	source = git+https://github.com/ThomasSimpDev/Mathsqt.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = mathsqt
