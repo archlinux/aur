@@ -1,0 +1,17 @@
+pkgbase = deletor
+	pkgdesc = Manage and delete files efficiently with an interactive TUI and scriptable CLI.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/pashkov256/deletor
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	options = strip
+	options = buildflags
+	source = https://github.com/pashkov256/deletor/archive/refs/tags/v1.5.0/deletor-1.5.0.tar.gz
+	sha256sums = e4a2a2ca3a1fa420c1962c2d8dd1778a3fbd06dc9a468e6d5f76b9d26971bbeb
+
+pkgname = deletor

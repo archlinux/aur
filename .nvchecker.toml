@@ -1,0 +1,4 @@
+[deletor]
+source = "git"
+git = "https://github.com/pashkov256/deletor.git"
+prefix = "v"
