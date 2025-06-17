@@ -1,7 +1,7 @@
 pkgbase = mldonkey
 	pkgdesc = A multi-network P2P client
 	pkgver = 3.2.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ygrek/mldonkey
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -11,6 +11,7 @@ pkgbase = mldonkey
 	makedepends = ocaml4-camlp4
 	makedepends = ocaml4-lablgtk2
 	makedepends = ocaml4-num
+	makedepends = wget
 	depends = file
 	depends = gd
 	depends = hicolor-icon-theme
