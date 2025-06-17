@@ -1,0 +1,28 @@
+pkgbase = nautilus-file-explorer
+	pkgdesc = Explorador de archivos gráfico estilo Nautilus con controles de sistema
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Rodopqsi/nautilus-file-explorer
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = networkmanager
+	depends = pulseaudio
+	depends = pulseaudio-alsa
+	optdepends = xorg-xbacklight: Control de brillo con xbacklight
+	optdepends = brightnessctl: Control de brillo alternativo
+	optdepends = vlc: Reproductor multimedia
+	optdepends = gstreamer: Soporte multimedia integrado
+	optdepends = gst-plugins-base: Códecs básicos
+	optdepends = gst-plugins-good: Códecs adicionales
+	optdepends = gst-plugins-bad: Códecs menos comunes
+	optdepends = gst-libav: Soporte para formatos adicionales
+	source = git+https://github.com/Rodopqsi/nautilus-file-explorer.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = nautilus-file-explorer
