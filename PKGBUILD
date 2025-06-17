@@ -5,8 +5,8 @@
 
 pkgname=spotify-dev
 _pkgname=spotify
-pkgver=1.2.60.564
-_commit=gcc6305cb
+pkgver=1.2.63.394
+_commit=g126b0d89
 pkgrel=1
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=("${_pkgname}-Release::https://repository.spotify.com/dists/testing/Relea
 	"${_pkgname}-${CARCH}-Packages::https://repository.spotify.com/dists/testing/non-free/binary-amd64/Packages"
 	'LICENSE')
 sha512sums=('SKIP'
-	'3921aaf502783900cbe9ad9f7c93d9b1ac871a349e9e2fd5d94df05965ed5d3ae838e6398360aadcf73380ef598ee224918dab1da9753021a09f64e8fa87dbc3'
+	'571533058e96a1e6519d851413ca5528b159f195fb9f8f483799bde087ad24b75b770f529273b3167a81f4bfa1d842523a8c3d56b68d4a29fb51e83583cbd9a2'
 	'SKIP'
 	'2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615')
 
