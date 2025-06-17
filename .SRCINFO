@@ -1,4 +1,5 @@
 pkgbase = amiwm
+	pkgdesc = An X window manager that tries to mimic the Amiga Workbench screen.
 	pkgver = 0.22pl2
 	pkgrel = 1
 	url = http://www.lysator.liu.se/~marcus/amiwm.html

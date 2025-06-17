@@ -3,7 +3,7 @@
 pkgname=amiwm
 pkgver=0.22pl2
 pkgrel=1
-pkgdesc=""
+pkgdesc="An X window manager that tries to mimic the Amiga Workbench screen."
 arch=('i686' 'x86_64')
 url="http://www.lysator.liu.se/~marcus/amiwm.html"
 license=('amiwm')
