@@ -8,7 +8,7 @@ _name="$(echo "${_product}" | tr '[:upper:]' '[:lower:]' | tr ' ' '_' | tr -d '(
 pkgname="${_name}"
 pkgver=R2025a.25.1.0.2943329
 _pkgver="${pkgver%%.*}"
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
   # 'cairo'               # libcairo-gobject2              not linked, not referenced
                           # libcairo2
   # 'debianutils'         # debianutils                    not required on either Arch or RHEL
-  # 'fontconfig'          # libfontconfig1                 not linked, not referenced
+  'fontconfig'            # libfontconfig1
   # 'fribidi'             # libfribidi0                    not linked, not referenced
   'gcc-libs'              # libatomic1
   'gdk-pixbuf2'           # libgdk-pixbuf-2.0-0
@@ -43,7 +43,7 @@ depends=(
   # 'libtirpc'            # libtirpc3t64                   not linked, not referenced
   # 'libuhd'              # libuhd4.6.0-dpdk               not linked, not referenced
   'libxcomposite'         # libxcomposite1
-  'libxcrypt-compat'      # libcrypt1                      TODO
+  # 'libxcrypt-compat'    # libcrypt1                      linked by apr-util, subversion
   # 'libxcursor'          # libxcursor1                    not linked, not referenced
   'libxdamage'            # libxdamage1
   'libxfixes'             # libxfixes3
@@ -113,6 +113,7 @@ provides=("${pkgname}-version=${_pkgver}")
 install="${pkgname}.install"
 
 declare -Ag _deps=(
+  # [ahformatter]="libAHCGM libAHCommon libAHFontService libAHGraphicService libAHMathML libAHPDFLib libAHRasterizer libAHskia libAHSVG libOOXMLCreator libPDFCreator libPDFLinearizer libPDFRes libPDFToolPage libPSCreator libSVGCreator libXfoCommon libXfoEngine libXfoFont libXfoGraphic libXfoHyphen libXfoInterface libXfoRender libXfoText libXfoTrans libXPSCreator" # 7.4
   # [antlr4-runtime]="libantlr4-runtime" # 4.9.1
   [apr]="libapr-1" # 0.7.5
   [apr-util]="libaprutil-1" # 0.6.1
@@ -126,13 +127,13 @@ declare -Ag _deps=(
   # [expat]="libexpat" # 1.9.3
   [freetype2]="libfreetype" # 6.18.3
   # [gcptc]="libGctp" # 0.0.0
-  [giflib]="libgiflib" # 7.2.0
+  # [giflib]="libgif" # 7.2.0 called libgiflib?
   # [gmp4]="libgmp" # 3.4.1
   # [hdf4]="libdf libmfhdf" # 0.0.0
   # [hdf4-eos]="libhdfeos" # ? 0.0.0
   # [hdf5]="libhdf5 libhdf5_hl" # 310.0.4
   [hunspell]="libhunspell-1.7" # 0.0.1
-  # [icu74]="libicudata libicui18n libicuio libicutest libicutu libicuuc" # incompatible ABI
+  # [icu74]="libicudata libicui18n libicuio libicutest libicutu libicuuc" # incompatible ABI, required by ahformatter
   # [libaec]="libaec libsz" # 0.1.2 2.0.1
   # [libarchive]="libarchive" # 13.7.7
   # [libbsd]="libbsd" # 0.8.4
@@ -185,14 +186,19 @@ declare -Ag _deps=(
   [xcb-util-renderutil]="libxcb-render-util" # 0.0.0
   [xcb-util-wm]="libxcb-icccm" # 4.0.0
   # [zstd]="libzstd.so" # 1.5.5
-
-  # https://www.antennahouse.com/free-trials
-  # https://origin2.cdn.componentsource.com/sites/default/files/resources/antenna-house/534141/xfo-module.html#IDATGPP
-  # [whatever]="libAHCGM libAHCommon libAHFontService libAHGraphicService libAHMathML libAHPDFLib libAHRasterizer libAHskia libAHSVG libOOXMLCreator libPDFCreator libPDFLinearizer libPDFRes libPDFToolPage libPSCreator libSVGCreator libXfoCommon libXfoEngine libXfoFont libXfoGraphic libXfoHyphen libXfoInterface libXfoRender libXfoText libXfoTrans libXPSCreator" # 7.4
 )
-_deps_exclude="giflib libxi libxss"
+declare -Ag _deps_exclude=(
+  [libxau]=1
+  [libxi]=1
+  [libxss]=1
+  [libxdmcp]=1
+  [qt5-websockets]=1
+  [qt5-xmlpatterns]=1
+  [xcb-util]=1
+)
 for dep in "${!_deps[@]}"; do
-  [[ " $_deps_exclude " =~ " $dep " ]] || depends+=("$dep")
+  [[ -n ${_deps_exclude[$dep]} ]] && continue
+  depends+=("$dep")
 done
 
 prepare() {
