@@ -2,8 +2,8 @@
 # Contributor: j.r <j.r@jugendhacker.de>
 # Contributor: Matthew Murray <matt@mattmurr.xyz>
 pkgname=open-fprintd
-pkgver=0.6
-pkgrel=6
+pkgver=0.7
+pkgrel=1
 pkgdesc="Fprintd replacement which allows you to have your own backend as a standalone service"
 arch=(any)
 license=('GPL')
@@ -17,7 +17,7 @@ depends=(
 makedepends=(python-setuptools)
 url="https://github.com/uunicorn/${pkgname}"
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=('3254779b0199521b79b6933700355606')
+md5sums=('9275f88e9d9bbc8c30d8b98ace074fbe')
 
 build() {
   cd "${srcdir}/${pkgname}-$pkgver"
