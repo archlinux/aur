@@ -1,0 +1,19 @@
+pkgbase = ahformatter
+	pkgdesc = Proprietary publishing engine. Generate PDF from XML or HTML. Format with XSL-FO or CSS.
+	pkgver = 7.4.11.66458
+	pkgrel = 1
+	url = https://www.antennahouse.com/formatter-v7
+	install = ahformatter.install
+	arch = x86_64
+	license = custom:Antenna House EULA
+	depends = gcc-libs
+	depends = glibc
+	depends = icu74
+	depends = util-linux-libs
+	optdepends = java-runtime>=8: Java bindings
+	source = ahformatter.sh
+	sha256sums = 03a754c12c8d27555d390776a8ea0e6c6c635ae2b1187a6d0961f7c8a1ee46f1
+	source_x86_64 = local://AHFormatterV74-7.4E-MR10.x86_64.rpm.gz
+	sha256sums_x86_64 = SKIP
+
+pkgname = ahformatter
