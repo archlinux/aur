@@ -2,7 +2,7 @@
 
 pkgname="matrix-authentication-service"
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Authentication service for Matrix Synapse'
 arch=('x86_64')
 url="https://github.com/element-hq/$pkgname"
@@ -76,7 +76,7 @@ WantedBy=multi-user.target''' >systemd.service
     cd "$pkgname"
     install -vd "$pkgdir/etc/$pkgname"
     install -vd "$pkgdir/usr/share/$pkgname/frontend"
-    
+
     cp -R frontend/dist "$pkgdir/usr/share/$pkgname/frontend"
     cp -R policies templates translations "$pkgdir/usr/share/$pkgname"
     install -Dm755 -t "$pkgdir/usr/bin" target/release/mas-cli

@@ -1,7 +1,7 @@
 pkgbase = matrix-authentication-service
 	pkgdesc = Authentication service for Matrix Synapse
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/element-hq/matrix-authentication-service
 	arch = x86_64
 	license = AGPL-3.0-or-later
