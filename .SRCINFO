@@ -1,0 +1,13 @@
+pkgbase = kwin-scripts-krohnkite
+	pkgdesc = A dynamic tiling extension for KWin
+	pkgver = 0.9.9.1
+	pkgrel = 1
+	url = https://github.com/anametologin/krohnkite
+	arch = any
+	license = MIT
+	makedepends = typescript
+	source = https://github.com/anametologin/krohnkite/archive/0.9.9.1.tar.gz
+	sha256sums = 003f91d7a5ad0fdb1587144ab3d0a256c32c902e798ca1ee23d3cfb2123682a0
+
+pkgname = kwin-scripts-krohnkite
+	depends = kwin
