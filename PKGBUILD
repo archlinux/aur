@@ -1,17 +1,17 @@
 # Maintainer: Daniel Hillenbrand <codeworkx at bbqlinux dot org>
 
 _gitname=VectorChord
-pkgname=vectorchord-bin
-pkgver=0.4.2
+pkgname=vectorchord-immich-bin
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="VectorChord Scalable, fast, and disk-friendly vector search in Postgres, the successor of pgvecto.rs. "
+pkgdesc="VectorChord Scalable, fast, and disk-friendly vector search in Postgres, the successor of pgvecto.rs.version ncomptible with immich "
 arch=('x86_64')
 url="https://github.com/tensorchord/VectorChord"
 license=('AGPLv3')
 depends=('postgresql' 'pgvector')
 provides=("vectorchord")
 source=("${url}/releases/download/${pkgver}/postgresql-17-vchord_${pkgver}_${arch}-linux-gnu.zip")
-sha256sums=('d5b4001ed4db29e4ee68473b59677d30a09078608625c91aad03dd190ed53b43')
+sha256sums=('f44f132577db5cf926a1c1efdee947750a4d6718f77e9ba057e24446d643b7ed')
 
 
 
