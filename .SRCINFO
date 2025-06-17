@@ -1,0 +1,20 @@
+pkgbase = reclaimed
+	pkgdesc = disk space utilization & cleanup application (python tui)
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/taylorwilsdon/reclaimed
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-click
+	depends = python-rich
+	depends = python-black
+	depends = mypy
+	depends = python-hatch
+	depends = python-textual
+	source = reclaimed-0.2.6.tar.gz::https://github.com/taylorwilsdon/reclaimed/archive/refs/tags/v0.2.6.tar.gz
+	sha256sums = 33c98dadd37d22ce10f05764343dab58b513f781968b44fb39768cce47936289
+
+pkgname = reclaimed

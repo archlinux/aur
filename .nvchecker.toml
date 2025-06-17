@@ -1,0 +1,5 @@
+[reclaimed]
+source = 'github'
+github = 'taylorwilsdon/reclaimed'
+use_latest_release = true
+prefix = 'v'
