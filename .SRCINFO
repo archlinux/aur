@@ -1,7 +1,7 @@
 pkgbase = vectorchord-bin
 	pkgdesc = VectorChord Scalable, fast, and disk-friendly vector search in Postgres, the successor of pgvecto.rs.
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tensorchord/VectorChord
 	arch = x86_64
 	license = AGPLv3
