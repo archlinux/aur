@@ -13,10 +13,10 @@ conflicts=('commitlint')
 depends=('git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jurienhamaker/commitlint/releases/download/v1.5.0/commitlint_Linux_arm64.tar.gz")
-sha256sums_aarch64=('bb9134a7cd4964d111d61fca8ac4c18c8004613720ac2726dc92546306d76f52')
+sha256sums_aarch64=('a4bfb2c60bc96a06c87e271678d45c49c58ca42d4244b1edde16bb38522a07a0')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jurienhamaker/commitlint/releases/download/v1.5.0/commitlint_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('0ff3abb3b6d2d86d40a812295df17c0075018ec729fdd0973682a85f60090523')
+sha256sums_x86_64=('03ed2775507462adaa80d15c2416dc184d59b274fd177037c52ef655638a80dd')
 
 package() {
   # bin
