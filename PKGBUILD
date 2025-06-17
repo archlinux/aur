@@ -1,4 +1,4 @@
-# Maintainer: Vixi <anonymousfyf@gmail.com>
+# Maintainer: Vixi <vixi@snowsune.net>
 # Adapted from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
 
