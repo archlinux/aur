@@ -1,6 +1,6 @@
 # Maintainer: Maxr1998 <aur@maxr1998.de>
 pkgname=finamp
-pkgver=0.9.16_beta
+pkgver=0.9.18_beta
 pkgrel=1
 pkgdesc="An open source Jellyfin music player"
 arch=("x86_64" "aarch64")
@@ -9,7 +9,7 @@ license=('MPL-2.0')
 depends=('gtk3' 'pango')
 makedepends=('git' 'flutter-tool' 'flutter-target-linux' 'clang' 'cmake' 'ninja' 'xz')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver//_/-}.tar.gz")
-b2sums=('76cbea5d6af2373e5252b087dc7c097a680dd685314452bd057d2328566bf39d4fd5ad62be5657edf40ac54eeab3c0e662a5e87e029eac2191f74517a5a05440')
+b2sums=('c394e7650de775ce1be2b6bf8f4222dd4080457e48c7b49672567dd920132065581b7b940750a04a799e1bbcce4c98447da318d7a79a56e1f4eeeb016c1c440d')
 
 prepare() {
     cd "$pkgname-${pkgver//_/-}"
