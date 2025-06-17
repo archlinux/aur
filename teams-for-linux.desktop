@@ -3,7 +3,7 @@ Type=Application
 Name=Microsoft Teams for Linux
 Comment=Unofficial Microsoft Teams client for Linux.
 GenericName=Teams
-Exec=teams-for-linux %U
+Exec=teams-for-linux --gtk-version=3 %U
 Icon=teams-for-linux
 MimeType=x-scheme-handler/msteams;
 Categories=Network;Chat;InstantMessaging;Application;
