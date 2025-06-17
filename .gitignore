@@ -1,13 +1,4 @@
-src/
-pkg/
-Sunshine/
-build-deps/
-moonlight-common-c/
-enet/
-nanors/
-nv-codec-headers/
-Simple-Web-Server/
-TPCircularBuffer/
-Virtual-Gamepad-Emulation-Client/
-miniupnp/
-*.pkg.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
