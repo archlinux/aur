@@ -2,7 +2,7 @@
 
 
 pkgname=pigg-x86_64-unknown-linux-gnu
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 epoch=
 pkgdesc="A Graphical User Interface for interacting with local and remote Raspberry Pi and Pi Pico Hardware"
@@ -26,14 +26,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/andrewdavidmackenzie/pigg/releases/download/0.6.0/pigg-x86_64-unknown-linux-gnu.tar.xz")
+source=("https://github.com/andrewdavidmackenzie/pigg/releases/download/0.7.0/piggui-x86_64-unknown-linux-gnu.tar.xz")
 noextract=()
 options=('!lto')
-sha256sums=('304496b8814f03b4ec532d969d4e8a7b6788624aec60f3e432d62fbb34057d5e')
+sha256sums=('b18e88f9e06434d00aec32954b0cb7fbb4b1aa5e0e7bd6d97aab2203879606d4')
 validpgpkeys=()
 
 package() {
-	cd "$pkgname"
+	cd "piggui-x86_64-unknown-linux-gnu"
 	install -Dm755 "piggui" "$pkgdir/usr/bin/piggui"
-	install -Dm755 "piglet" "$pkgdir/usr/bin/piglet"
 }
