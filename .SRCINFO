@@ -1,11 +1,11 @@
 pkgbase = sview-git
 	pkgdesc = Stereoscopic 3D video player with OpenGL UI
-	pkgver = 23.02.r0.g301eccf5
+	pkgver = r1751.ad7cbddf
 	pkgrel = 1
-	url = http://www.sview.ru/en
-	arch = i686
+	url = https://github.com/gkv311/sview
 	arch = x86_64
-	license = custom
+	arch = i686
+	license = GPL-3.0-only AND MIT AND CC-BY-4.0
 	makedepends = git
 	depends = libconfig
 	depends = ffmpeg
@@ -19,7 +19,7 @@ pkgbase = sview-git
 	depends = ttf-droid
 	depends = gnu-free-fonts
 	optdepends = ttf-nanum
-	provides = sview=23.02.r0.g301eccf5
+	provides = sview=r1751.ad7cbddf
 	conflicts = sview
 	source = git+https://github.com/gkv311/sview.git
 	md5sums = SKIP
