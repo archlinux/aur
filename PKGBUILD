@@ -2,7 +2,7 @@
 
 pkgname=tunet-rust
 pkgver=0.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A Tsinghua University network authentication client for Linux, written in Rust. 清华大学校园网 Rust 客户端"
 url="https://github.com/Berrysoft/${pkgname}"
 arch=('x86_64' 'aarch64')
@@ -31,12 +31,8 @@ package() {
 	cd "${pkgname}-${pkgver}/"
 
 	# Binaries
-	pushd "target/release/"
-	for bin in tunet tunet-gui tunet-cui tunet-service; do
-		install -Dm755 "${bin}" -t "${pkgdir}/usr/bin/"
-	done
+	install -Dm755 target/release/tunet{,-{gui,cui,service}} -t "${pkgdir}/usr/bin/"
 
-	popd
 	# Desktop file
 	install -Dm644 "tunet/tunet.desktop" -t "${pkgdir}/usr/share/applications/"
 
