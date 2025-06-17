@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stremio-web-desktop-bin
 _pkgname='Stremio Web Desktop'
-pkgver=210
+pkgver=212
 _subver=1.0.0
 _electronversion=33
 pkgrel=1
@@ -25,8 +25,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${_subver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('97e8da4b490544bae9c8b5b2ba6e747581b1ccf9cc58041c5af10aa833f98e13'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('3beb0c76071514eeed2f0814c603f895e0bfe73e6729d27347a5a4dd713d075f'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
