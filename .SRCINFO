@@ -1,0 +1,17 @@
+pkgbase = discordo-launcher
+	pkgdesc = A simple CLI tool for managing multiple Discord accounts with discordo.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Reddiepoint/discordo-launcher
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = rust
+	makedepends = git
+	depends = org.freedesktop.secrets
+	depends = discordo
+	options = !debug
+	source = git+https://github.com/Reddiepoint/discordo-launcher.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = discordo-launcher
