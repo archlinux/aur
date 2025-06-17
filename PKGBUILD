@@ -3,7 +3,7 @@
 _name=fal-client
 pkgname=python-${_name}
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python client for fal.ai.'
 arch=('any')
 url='https://github.com/fal-ai/fal/tree/main/projects/fal_client'
@@ -20,6 +20,9 @@ build() {
 }
 
 check() {
+  local pytest_options=(
+    -vv
+  )
   cd "${srcdir}"/${_name//-/_}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
