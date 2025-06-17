@@ -1,0 +1,16 @@
+pkgbase = nmcurse-rs-git
+	pkgdesc = Curses interface for NetworkManager, rewritten in Rust with additional features
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/nhktmdzhg/nmcurse-rs
+	arch = any
+	license = MIT
+	makedepends = rust
+	depends = networkmanager
+	depends = ncurses
+	provides = nmcurse
+	conflicts = nmcurse
+	source = nmcurse::git+https://github.com/nhktmdzhg/nmcurse-rs.git
+	md5sums = SKIP
+
+pkgname = nmcurse-rs-git
