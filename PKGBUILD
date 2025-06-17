@@ -1,7 +1,7 @@
 #Maintainer: Shnimlz <shnimlz@proton.me>
 #Author Original: Noble Eugene <nobleeugene2005@gmail.com>
 pkgname="swengine-revanced"
-pkgver="2.0"
+pkgver="2.0.1"
 pkgrel=1
 pkgdesc="Download or upload your wallpapers or use the ones downloaded from wallpaper engine with Sww"
 arch=("x86_64")
