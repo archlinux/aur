@@ -1,0 +1,15 @@
+pkgbase = hashes
+	pkgdesc = Simple hash algorithm identification GUI using GTK4+Adwaita
+	pkgver = 1.1.2.r0.ge1b3a8b
+	pkgrel = 1
+	url = https://bgithub.xyz/zefr0x/hashes
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk4
+	depends = libadwaita
+	depends = python-name-that-hash
+	source = git+https://bgithub.xyz/zefr0x/hashes.git
+	sha512sums = SKIP
+
+pkgname = hashes
