@@ -4,21 +4,13 @@ _name1=logfire-api
 _name0=logfire
 pkgbase=python-${_name0}
 pkgname=(python-${_name1} python-${_name0})
-pkgver=3.16.0
+pkgver=3.21.0
 pkgrel=1
-arch=('x86_64' 'aarch64')
+arch=('any')
 url='https://github.com/pydantic/logfire'
 license=('MIT')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-source_x86_64=("https://download.docker.com/linux/static/stable/x86_64/docker-28.0.4.tgz"
-               "https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-28.0.4.tgz")
-source_aarch64=("https://download.docker.com/linux/static/stable/aarch64/docker-28.0.4.tgz"
-                "https://download.docker.com/linux/static/stable/aarch64/docker-rootless-extras-28.0.4.tgz")
-sha256sums=('42ed5077322e03c4e0ad43a17dcbb78d155fc6341c91c7a21a466202af4901d3')
-sha256sums_x86_64=('6b130fa5fb13516620d5ece0b63f63a495cede428bb2f9e24449022e9d72e0cb'
-                   '0d0c2680d924671df0ac33d53dd71f410dfb253fb4fa5e8a0a231951234781c9')
-sha256sums_aarch64=('d3291093e8ed576ed9e237b24dc4556a9ed21ff25d4c26578df612cb6fe0480f'
-                    'ce155e65690fc1cbbd3656495458d3ca004af2404a35d37953ea2123d6c4bbf6')
+sha256sums=('0c86cb7e627009494ce79edcf92fc19b2564eb2613ac9f956ab5d4ab108b4a97')
 depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-httpx'
@@ -38,6 +30,7 @@ checkdepends=('python-httpx'
               'python-attrs'
               'python-openai'
               'python-opentelemetry-instrumentation-aiohttp-client'
+              'python-opentelemetry-instrumentation-aiohttp-server'
               'python-opentelemetry-instrumentation-asgi'
               'python-opentelemetry-instrumentation-wsgi'
               'python-opentelemetry-instrumentation-fastapi'
@@ -70,7 +63,6 @@ checkdepends=('python-httpx'
               'python-anthropic'
               'python-sqlmodel'
               'python-celery'
-              'python-testcontainers'
               'python-mysql-connector'
               'python-pyarrow'
               'python-numpy'
@@ -84,7 +76,10 @@ checkdepends=('python-httpx'
               'python-greenlet'
               'python-pytest-xdist'
               'python-openai-agents'
-              'python-websockets')
+              'python-websockets'
+              'python-langchain'
+              'python-langchain-openai')
+              #'python-langgraph')
 
 build() {
   cd "${srcdir}"/${_name0//-/_}-${pkgver}
@@ -92,52 +87,29 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-run_docker_rootless(){
-  cp -rf docker-rootless-extras/* docker/
-  cd "${srcdir}"/docker
-  mkdir -p state
-  mkdir -p docker-data
-  (exec env PATH="${srcdir}"/docker:$PATH rootlesskit \
-      --state-dir="${srcdir}"/docker/state \
-      --net=vpnkit --mtu=1500 \
-      --slirp4netns-sandbox="auto" \
-      --slirp4netns-seccomp="auto" \
-      --disable-host-loopback --port-driver="builtin" \
-      --copy-up=/etc --copy-up=/run \
-      --propagation=rslave \
-      dockerd --iptables=$(pacman -Qs iptables &>/dev/null && echo true || echo false) --data-root "${srcdir}"/docker/docker-data &)
-  env PATH="${srcdir}"/docker:$PATH ./docker --context=default context create "rootless" --docker "host=unix://${XDG_RUNTIME_DIR}/docker.sock" --description "Rootless mode" > /dev/null | true
-  env PATH="${srcdir}"/docker:$PATH ./docker --context=default context use "rootless" > /dev/null | true
-}
-
-stop_docker_rootless(){
-  cd "${srcdir}"/docker
-  env PATH="${srcdir}"/docker:$PATH ./docker --context=default context rm -f "rootless" > /dev/null
-  pkill -f dockerd
-}
-
 check() {
   local pytest_options=(
     -vv
-    -p no:flaky
-    -p no:rerunfailures
+    -n auto
     --dist=loadgroup
-    # Failed ones
-    --deselect tests/otel_integrations/test_openai.py
-    --deselect tests/otel_integrations/test_openai_agents.py
-    --deselect tests/otel_integrations/test_openai_agents_mcp.py
+    -p no:randomly
     # Test for Logfire developers
     --deselect tests/aaa_query_client/test_query_client.py
+    # Remove tests that need Docker
+    --ignore tests/otel_integrations/test_celery.py
+    --ignore tests/otel_integrations/test_mysql.py
+    --ignore tests/otel_integrations/test_redis.py
+    # Deprecation fails
+    --deselect tests/test_tail_sampling.py::test_trace_sample_rate
+    --deselect tests/test_secret_scrubbing.py::test_scrubbing_deprecated_args
   )
-  run_docker_rootless
   cd "${srcdir}"/${_name0//-/_}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/pip install -U pydantic-ai-slim # Fix cercular dependency
-  test-env/bin/pip install -U openai # Wait until Arch maintainers update the package
+  test-env/bin/pip install -U langgraph # Waint until the package be available in AUR
   test-env/bin/python -m installer ${_name1}/dist/*.whl
   test-env/bin/python -m installer dist/*.whl
-  TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=${XDG_RUNTIME_DIR}/docker.sock DOCKER_HOST=unix:///${XDG_RUNTIME_DIR}/docker.sock test-env/bin/python -m pytest "${pytest_options[@]}" tests
-  stop_docker_rootless
+  test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
 package_python-logfire-api() {
@@ -154,6 +126,8 @@ package_python-logfire() {
               'python-opentelemetry-instrumentation-asgi: asgi'
               'python-opentelemetry-instrumentation-wsgi: wsgi'
               'python-opentelemetry-instrumentation-aiohttp-client: aiohttp'
+              'python-opentelemetry-instrumentation-aiohttp-client: aiohttp-client'
+              'python-opentelemetry-instrumentation-aiohttp-server: aiohttp-server'
               'python-opentelemetry-instrumentation-celery: celery'
               'python-opentelemetry-instrumentation-django: django'
               'python-opentelemetry-instrumentation-fastapi: fastapi'
