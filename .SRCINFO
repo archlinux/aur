@@ -1,0 +1,21 @@
+pkgbase = symphonie-git
+	pkgdesc = Your personal, lightweight music player for enjoying your local audio collection.(Use system-wide electron)
+	pkgver = linux.pre.release.1.0.13.r4.g8bafdce
+	pkgrel = 1
+	url = https://github.com/kprakesh1984/symphonie
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron28
+	provides = symphonie=linux.pre.release.1.0.13
+	conflicts = symphonie
+	source = symphonie.git::git+https://github.com/kprakesh1984/symphonie.git
+	source = symphonie.sh
+	sha256sums = SKIP
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+
+pkgname = symphonie-git
