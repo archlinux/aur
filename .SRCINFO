@@ -1,0 +1,24 @@
+pkgbase = ciliterm-git
+	pkgdesc = A modern cross-platform terminal emulator built with Electron and Vue3, featuring system monitoring, file browsing, network traffic visualization, and a 3D globe animation.(Use system-wide electron)
+	pkgver = 1.0.0.r0.g7ae4c8e
+	pkgrel = 1
+	url = https://github.com/ciliverse/ciliterm
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron36
+	depends = python
+	provides = ciliterm=1.0.0
+	conflicts = ciliterm
+	source = ciliterm.git::git+https://github.com/ciliverse/ciliterm.git
+	source = ciliterm.png
+	source = ciliterm.sh
+	sha256sums = SKIP
+	sha256sums = 77e5c2fcfe18141499282e4ea625fb0c854f382c84a574bbc0f0eeec6f83550a
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+
+pkgname = ciliterm-git
