@@ -1,7 +1,7 @@
 # Maintainer: Andre Smit <freevryheid@gmail.com>
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=duckdb-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="An in-process SQL OLAP database management system"
 # arch=("arm64" "x86_64")
@@ -14,8 +14,8 @@ conflicts=("duckdb" "duckdb-git")
 #        "libduckdb-linux-arm64-${pkgver}-${pkgrel}.zip::https://github.com/duckdb/duckdb/releases/download/v${pkgver}/libduckdb-linux-arm64.zip")
 #sha256sums_arm64=('04b394d4e2fa90fc135b3417a3fbadbb765de7cec01a80f179bf854f8ac702a3'
 #                    'dc7146d861712a3b5f75a08e4e220306db713133933246c5b2cc39274d188828')
-sha256sums_x86_64=('cfc686663dc81b23c58fa29d704ead78b38a611aae28369e9654925ab34a9e5b'
-                   'ec5fa6aa39d50627bc81fed4d924404d3fc36c9acb55d9b3ad60e2078b508cb7')
+sha256sums_x86_64=('a43e0156c9799496089dd265605113471df5a30a7db26e1c662484eb1d31fc08'
+                   'ac905cb0651c8601c34d0d7f635456a60764b3ff468f6c3ff2565fff9202ef3b')
 source_x86_64=("duckdb_cli-linux-amd64-${pkgver}-${pkgrel}.zip::https://github.com/duckdb/duckdb/releases/download/v${pkgver}/duckdb_cli-linux-amd64.zip"
         "libduckdb-linux-amd64-${pkgver}-${pkgrel}.zip::https://github.com/duckdb/duckdb/releases/download/v${pkgver}/libduckdb-linux-amd64.zip")
 package() {
