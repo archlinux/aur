@@ -1,6 +1,6 @@
 pkgbase = matrix-authentication-service
 	pkgdesc = Authentication service for Matrix Synapse
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/element-hq/matrix-authentication-service
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = matrix-authentication-service
 	provides = mas-cli
 	options = !lto
 	backup = etc/matrix-authentication-service/config.yaml
-	source = matrix-authentication-service::git+https://github.com/element-hq/matrix-authentication-service.git#tag=v0.16.0
-	sha256sums = 732cab2a792330fa0ca4d025ac551da9b2c5cc46f6f098c31def3294bfd7b9db
+	source = matrix-authentication-service::git+https://github.com/element-hq/matrix-authentication-service.git#tag=v0.17.0
+	sha256sums = 96a2f3b0d8ecda8d14442a2b08c76145969fcfddd1c0adc9ad3c4c1bd45a9652
 
 pkgname = matrix-authentication-service
