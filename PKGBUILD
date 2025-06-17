@@ -5,7 +5,7 @@
 # don't need to install Flutter or any build dependencies.
 #
 pkgname=cloudtolocalllm
-pkgver=3.5.11
+pkgver=3.5.12
 pkgrel=1
 pkgdesc="CloudToLocalLLM - Unified Flutter Architecture with Integrated System Tray and Local LLM Management (19MB package)"
 arch=('x86_64')
@@ -40,7 +40,7 @@ source=(
     "https://raw.githubusercontent.com/imrightguy/CloudToLocalLLM/master/dist/cloudtolocalllm-${pkgver}-x86_64.tar.gz"
 )
 sha256sums=(
-    '55cd176a2ac5ef37a9ec2dc91d2edaa0e18ac1b66613d939bc05b5f0561128d3'  # cloudtolocalllm-3.5.11-x86_64.tar.gz
+    '0e543ff728ec04f34159deda15ec53fbcb0cf46cf8ae72d87bab0d42055ac4ad  cloudtolocalllm-3.5.12-x86_64.tar.gz'  # cloudtolocalllm-3.5.11-x86_64.tar.gz
 )
 
 prepare() {
