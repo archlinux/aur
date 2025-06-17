@@ -2,7 +2,7 @@
 # Maintainer: Jurien Hamaker <whoami@jurien.dev>
 
 pkgname='commitlint-go-bin'
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='A lightweight, fast, and cross-platform CLI tool for linting Git commit messages.'
 url='https://github.com/jurienhamaker/commitlint'
@@ -12,11 +12,11 @@ provides=('commitlint')
 conflicts=('commitlint')
 depends=('git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jurienhamaker/commitlint/releases/download/v1.5.0/commitlint_Linux_arm64.tar.gz")
-sha256sums_aarch64=('a4bfb2c60bc96a06c87e271678d45c49c58ca42d4244b1edde16bb38522a07a0')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jurienhamaker/commitlint/releases/download/v1.6.0/commitlint_Linux_arm64.tar.gz")
+sha256sums_aarch64=('c0ac3bb14123fc087bb153e59938a980a022b277641ff8af6fc944e915a9e359')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jurienhamaker/commitlint/releases/download/v1.5.0/commitlint_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('03ed2775507462adaa80d15c2416dc184d59b274fd177037c52ef655638a80dd')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jurienhamaker/commitlint/releases/download/v1.6.0/commitlint_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('fd0561a3c20da53d1a152f8c14d2e6e5f762a146c5ba58f0b13e33f00ec6d4ef')
 
 package() {
   # bin
