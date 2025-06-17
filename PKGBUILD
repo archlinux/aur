@@ -3,10 +3,10 @@
 
 pkgname=void-git
 _pkgname=void
-pkgver=1.99.3.r2720.gda425ab0
+pkgver=1.99.3.r1.gda425ab
 pkgrel=1
 pkgdesc="The Cursor alternative AI code editor"
-url="https://voideditor.com/"
+url="https://github.com/voideditor/void"
 arch=('x86_64')
 license=("MIT")
 provides=('void')
@@ -25,17 +25,17 @@ optdepends=(
 makedepends=( nodejs-lts-iron # sync with .npmrc
   git npm python
   libarchive make pkgconf) # base base-devel
-source=("git+https://github.com/voideditor/void.git")
-sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd void
   printf "%s.r%s.g%s" $(awk 'match($0,/"version":\s*"([^"]+)"/,v) {print v[1]}' package.json) \
     $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare(){
-  cd "${_pkgname}"
+  rm -rf void
+  git clone --depth=1 ${url}.git void
+  cd void
   # Drop this patch for electron35+ at code 1.101, app.dock is for macOS
   sed -i '/app\.dock\.setMenu/i\// @ts-ignore' src/vs/platform/menubar/electron-main/menubar.ts
 }
