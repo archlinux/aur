@@ -5,7 +5,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=vocabsieve
 epoch=
-pkgver=0.12.4
+pkgver=0.12.5
 pkgrel=00
 pkgdesc='A simple, effective sentence mining tool.'
 arch=(any)

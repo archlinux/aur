@@ -1,6 +1,6 @@
 pkgbase = vocabsieve
 	pkgdesc = A simple, effective sentence mining tool.
-	pkgver = 0.12.4
+	pkgver = 0.12.5
 	pkgrel = 00
 	url = https://github.com/FreeLanguageTools/vocabsieve
 	arch = any
