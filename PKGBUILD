@@ -1,7 +1,7 @@
 #Maintainer: Dråfølin <derg@drafolin.ch>
 
 pkgname=high-tide-git
-pkgver=0.1.7.r14.gfb889e6
+pkgver=0.1.7.r18.g38f353c
 pkgrel=1
 pkgdesc="Linux client for TIDAL streaming service"
 url="https://github.com/Nokse22/high-tide"
@@ -13,6 +13,8 @@ depends=(
   dconf
   glib2
   gstreamer
+  gst-plugins-base
+  gst-plugins-good
   gtk4
   hicolor-icon-theme
   libadwaita
