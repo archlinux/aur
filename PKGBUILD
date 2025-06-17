@@ -18,7 +18,6 @@ arch=('i686' 'x86_64')
 url="https://github.com/rodlie/qtfm/releases"
 license=('GPL')
 depends=('qt5-base' 'desktop-file-utils' 'ffmpeg' 'hicolor-icon-theme' 'imagemagick')
-#depends=('qt5-base' 'desktop-file-utils' 'hicolor-icon-theme' 'imagemagick')
 provides=('qtfm')
 conflicts=('qtfm')
 source=('qtfm::git+https://github.com/rodlie/qtfm.git#branch=master')
@@ -39,7 +38,6 @@ build() {
   cd $_pkgname
   [[ -d build ]] || mkdir build
   cd build
-# CONFIG+=with_ffmpeg is currently broken due to deprecations
   qmake CONFIG+=with_ffmpeg CONFIG+=release CONFIG+=with_magick PREFIX=/usr ..
   make
 }
