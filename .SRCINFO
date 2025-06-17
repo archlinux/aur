@@ -1,7 +1,7 @@
 pkgbase = rofi-calc-git
 	pkgdesc = Do calculations in rofi
 	pkgver = r220.a613682
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/svenstaro/rofi-calc
 	arch = x86_64
 	license = MIT

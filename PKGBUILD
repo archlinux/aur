@@ -3,7 +3,7 @@
 pkgname=rofi-calc-git
 _pkgname=rofi-calc
 pkgver=r220.a613682
-pkgrel=1
+pkgrel=2
 pkgdesc='Do calculations in rofi'
 url='https://github.com/svenstaro/rofi-calc'
 arch=('x86_64')
@@ -25,14 +25,12 @@ pkgver()
 
 build()
 {
-    cd "$_pkgname"
-    arch-meson build
+    arch-meson "$_pkgname" build
     meson compile -C build
 }
 
 package()
 {
-    cd "$_pkgname"
     meson install -C build --destdir "$pkgdir" --no-rebuild
-    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -Dm 644 "$_pkgname/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
