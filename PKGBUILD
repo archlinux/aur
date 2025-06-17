@@ -2,12 +2,12 @@
 _pkgname=finamp
 pkgname=finamp-bin
 pkgver=0.9.18_beta
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source Jellyfin music player"
 arch=("x86_64")
 url="https://github.com/jmshrv/finamp"
 license=('MPL-2.0')
-depends=('gtk3' 'pango')
+depends=('gtk3' 'pango' 'libmpv.so')
 provides=('finamp')
 conflicts=('finamp')
 source=("$url/releases/download/${pkgver//_/-}/finamp-${pkgver//_/-}-linux-release.tar.gz")
