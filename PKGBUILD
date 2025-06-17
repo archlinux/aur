@@ -8,6 +8,7 @@ arch=('any')
 url='https://github.com/taylorwilsdon/reclaimed'
 license=(MIT)
 depends=(python python-click python-rich python-psutil python-textual)
+checkdepends=(python-pytest)
 makedepends=(
   python-build
   python-setuptools

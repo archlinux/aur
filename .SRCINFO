@@ -5,6 +5,7 @@ pkgbase = reclaimed
 	url = https://github.com/taylorwilsdon/reclaimed
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-setuptools
 	makedepends = python-installer
