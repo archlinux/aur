@@ -2,25 +2,17 @@
 pkgbase=opm-common
 pkgname=("${pkgbase}" python-"${pkgbase}")
 _dunever=2.10.0
-pkgver=2024.10
+pkgver=2025.04
 pkgrel=1
 pkgdesc="Open Porous Media Initiative shared infrastructure"
 arch=(x86_64)
 url="https://github.com/OPM/${pkgbase}"
 license=(GPL-3.0-or-later)
-makedepends=("dune-common>=${_dunever}" boost fmt10 cjson suitesparse texlive-basic doxygen graphviz
+makedepends=("dune-common>=${_dunever}" boost fmt cjson suitesparse texlive-basic doxygen graphviz
   pybind11 python-scikit-build python-setuptools-scm python-pytest-runner)
 options=(!emptydirs)
 source=(${pkgbase}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
-sha512sums=('4e9eaa455e1eb417deceae0f5da8c93c89f23ce72705c5ab7c152ee36382f8377b119035ef793f1f386e6e5b2e0c0aed549901816515292da175d876df6cab57')
-
-# prepare() {
-#   # I guess, patches are required if fmt>=11
-#   sed -i '57 a #include <fmt/ranges.h>' ${pkgbase}-release-${pkgver}-final/opm/input/eclipse/EclipseState/EclipseState.cpp
-#   sed -i '24 a #include <fmt/ranges.h>' ${pkgbase}-release-${pkgver}-final/opm/input/eclipse/EclipseState/Grid/FaceDir.cpp
-#   sed -i '37 a #include <fmt/ranges.h>' ${pkgbase}-release-${pkgver}-final/opm/input/eclipse/Schedule/Action/ASTNode.cpp
-#   sed -i '50 a #include <fmt/ranges.h>' ${pkgbase}-release-${pkgver}-final/opm/input/eclipse/Schedule/Well/WellKeywordHandlers.cpp
-# }
+sha512sums=('7eca3251b6e317f6fcaf078970892e64ca149426ae8c5b6369d9ef350977afe1dc6579a8e0962c57deb766542007ef28bfdcce7a55e3c4beee01900f0a7adb14')
 
 build() {
   cmake \

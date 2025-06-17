@@ -1,13 +1,13 @@
 pkgbase = opm-common
 	pkgdesc = Open Porous Media Initiative shared infrastructure
-	pkgver = 2024.10
+	pkgver = 2025.04
 	pkgrel = 1
 	url = https://github.com/OPM/opm-common
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = dune-common>=2.10.0
 	makedepends = boost
-	makedepends = fmt10
+	makedepends = fmt
 	makedepends = cjson
 	makedepends = suitesparse
 	makedepends = texlive-basic
@@ -18,8 +18,8 @@ pkgbase = opm-common
 	makedepends = python-setuptools-scm
 	makedepends = python-pytest-runner
 	options = !emptydirs
-	source = opm-common-release-2024.10-final.tar.gz::https://github.com/OPM/opm-common/archive/release/2024.10/final.tar.gz
-	sha512sums = 4e9eaa455e1eb417deceae0f5da8c93c89f23ce72705c5ab7c152ee36382f8377b119035ef793f1f386e6e5b2e0c0aed549901816515292da175d876df6cab57
+	source = opm-common-release-2025.04-final.tar.gz::https://github.com/OPM/opm-common/archive/release/2025.04/final.tar.gz
+	sha512sums = 7eca3251b6e317f6fcaf078970892e64ca149426ae8c5b6369d9ef350977afe1dc6579a8e0962c57deb766542007ef28bfdcce7a55e3c4beee01900f0a7adb14
 
 pkgname = opm-common
 	depends = dune-common>=2.10.0
@@ -41,5 +41,5 @@ pkgname = opm-common
 
 pkgname = python-opm-common
 	pkgdesc = Open Porous Media Initiative shared infrastructure (python bindings)
-	depends = opm-common>=2024.10
+	depends = opm-common>=2025.04
 	depends = python-numpy
