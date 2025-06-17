@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - New unit file controls : Preset, Disable, Reenable and Link
+- Portuguese Brazil translation strings
 - French translation strings
 Fix
 
