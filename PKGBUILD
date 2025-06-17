@@ -11,7 +11,7 @@ pkgver=0.10.42
 pkgrel=1
 makedepends=(python-build python-installer python-wheel python-cython-lint python-versioneer git python-packaging)
 
-depends=(python python-numpy python-wxpython python-opengl python-amulet-nbt python-pymctranslate python-minecraft-model-reader python-amulet-core python-lz4 python-amulet-leveldb python-pillow glibc hicolor-icon-theme python-platformdirs)
+depends=(python python-numpy1 python-wxpython python-opengl python-amulet-nbt python-pymctranslate python-minecraft-model-reader python-amulet-core python-lz4 python-amulet-leveldb python-pillow glibc hicolor-icon-theme python-platformdirs)
 
 source=(
 	amulet.desktop
@@ -19,7 +19,7 @@ source=(
 	"git+https://github.com/Amulet-Team/Amulet-Map-Editor.git#tag=${pkgver}"
 )
 
-sha256sums=('7953b5309ad3a3577898b3f2463202be7e7039674a94ee5e0f3c36ff23293c70'
+sha256sums=('51cf3f1afcae983c5c1a7bfc6cc41871e35e2d4d47b325d9935128aa7b2c56c3'
             'dcfa7b2bce1cf5b21b219171f727ce3b31cb1290bd28d2b1102cb693bc7629fe'
             'f897f741666a57addb74f4ae6f51a6f5b0a591ba4d2d90b101afd82d50e8a846')
 
