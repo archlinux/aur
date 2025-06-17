@@ -1,0 +1,13 @@
+pkgbase = connect4-cli
+	pkgdesc = Terminal-based Connect 4 game written in Rust
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/melvdouc-group/connect4-cli
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = connect4-cli-1.0.0.tar.gz::https://gitlab.com/melvdouc-group/connect4-cli/archive/v1.0.0/connect4-cli-v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = connect4-cli
