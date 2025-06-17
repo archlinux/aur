@@ -24,6 +24,7 @@ pkgbase = caelestia-shell-git
 	depends = qt6-declarative
 	depends = gcc-libs
 	depends = ttf-material-symbols-variable
+	depends = power-profiles-daemon
 	provides = caelestia-shell
 	conflicts = caelestia-shell
 	source = caelestia-shell-git::git+https://github.com/caelestia-dots/shell.git
