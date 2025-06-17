@@ -2,8 +2,8 @@
 
 pkgbase=nvidia-open-beta
 pkgname=('nvidia-open-beta' 'nvidia-open-beta-dkms')
-pkgver=575.57.08
-pkgrel=2
+pkgver=575.64
+pkgrel=1
 epoch=1
 pkgdesc='NVIDIA open kernel modules (beta version)'
 arch=('x86_64')
@@ -18,13 +18,13 @@ source=("https://github.com/NVIDIA/open-gpu-kernel-modules/archive/${pkgver}/nvi
         '140-nvidia-open-gcc-sls.patch'
         '150-nvidia-open-make-modeset-fbdev-default.patch'
         '160-nvidia-open-linux6.15-fix.patch')
-sha256sums=('53b5e65edd51ce3943075c7ed91e2db910f4c0f094ec2e560fb0cbf70fc460f2'
-            '53a3e837ce0fd703faaa9670699eb4643e7841a9494858a50fd92ff3e113cfcc'
+sha256sums=('a049ad3901c411260865421e41a1197d99b029b65607d415291fa312f21d2069'
+            'e3861a0f698f823420f43cfe982fdc2b27d733cdc18994307ee45247eab84d23'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
             '5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501'
             '4393d135782b55d014b4c30b4c6327dedb85543844f5c299e66eec7dbd5667ba'
             'b7cb5ba0e6348f8310421134ddc815e58c5bef87e74ae2dabb240582ff0619ca'
-            '46f9d80a5101a3610055a1231ec39319e3c89e69fdf6dda72f96d50e484af4d8')
+            '4510eecef976c79ee4626fa5dbeecd316d554b5344c0e73503a47b1506e1d0af')
 
 prepare() {
     patch -d "open-gpu-kernel-modules-${pkgver}" -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
@@ -32,7 +32,7 @@ prepare() {
     patch -d "open-gpu-kernel-modules-${pkgver}" -Np1 -i "${srcdir}/130-nvidia-open-reproducible-build.patch"
     patch -d "open-gpu-kernel-modules-${pkgver}" -Np1 -i "${srcdir}/140-nvidia-open-gcc-sls.patch"
     patch -d "open-gpu-kernel-modules-${pkgver}" -Np1 -i "${srcdir}/150-nvidia-open-make-modeset-fbdev-default.patch"
-    patch -d "open-gpu-kernel-modules-${pkgver}/kernel-open" -Np1 -i "${srcdir}/160-nvidia-open-linux6.15-fix.patch"
+    patch -d "open-gpu-kernel-modules-${pkgver}" -Np1 -i "${srcdir}/160-nvidia-open-linux6.15-fix.patch"
     
     [ -d dkms-src ] && rm -rf dkms-src
     cp -a "open-gpu-kernel-modules-${pkgver}/kernel-open" dkms-src
