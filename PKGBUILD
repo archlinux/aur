@@ -8,8 +8,8 @@ url="https://github.com/MelvDouc/$pkgname"
 license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
-source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f4a936bad57ec13b8383f42a28b82fa7162b3eb85d8c2c73a79d82b86a81de45')
+source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz") # Change to "v$pgkver" next release
+sha256sums=('f21b8ad4106659a6a957b7f35dd74f19f032deb5e064ad5ed4818297af271bc1')
 
 build() {
   cd "$pkgname-$pkgver"

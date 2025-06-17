@@ -7,7 +7,7 @@ pkgbase = connect4-cli
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = connect4-cli-v1.0.1.tar.gz::https://github.com/MelvDouc/connect4-cli/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = f4a936bad57ec13b8383f42a28b82fa7162b3eb85d8c2c73a79d82b86a81de45
+	source = connect4-cli-v1.0.1.tar.gz::https://github.com/MelvDouc/connect4-cli/archive/refs/tags/1.0.1.tar.gz
+	sha256sums = f21b8ad4106659a6a957b7f35dd74f19f032deb5e064ad5ed4818297af271bc1
 
 pkgname = connect4-cli
