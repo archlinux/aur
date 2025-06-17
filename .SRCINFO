@@ -1,0 +1,14 @@
+pkgbase = rust-background-picker
+	pkgdesc = A Rust crate for allowing a user to select a background from a directory tree
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://crates.io/crates/background_picker
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	source = rust-background-picker-0.1.0.tar.gz::https://crates.io/api/v1/crates/background-picker/0.1.0/download
+	sha256sums = ff3aac44fcff622653166e6b96dd1d1cb8233c0bc79f74b79a3c578fc0473257
+
+pkgname = rust-background-picker
