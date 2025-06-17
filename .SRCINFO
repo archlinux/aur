@@ -1,7 +1,7 @@
 pkgbase = code-electron-latest
 	pkgdesc = Run Code - OSS on latest stable Electron (no native modules)
 	pkgver = 1.101.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	arch = any
 	license = MIT
@@ -10,6 +10,6 @@ pkgbase = code-electron-latest
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh
 	source = PKGBUILD_native_modules
 	sha256sums = 5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1
-	sha256sums = e9b4caba426357c17ad964162a2cabd648442bbf806ec05a3a4c98175ef32bfe
+	sha256sums = d249045a01c3e89cc0c7c1cf7353ac1a54e9d5be507d47d6a8d6f909486506d8
 
 pkgname = code-electron-latest
