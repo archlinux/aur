@@ -1,16 +1,13 @@
 pkgbase = acli-bin
-	pkgdesc = Atlassian CLI - Official command line tool for Atlassian Cloud products
-	pkgver = 2.1.0
+	pkgdesc = Software to interact with Atlassian Cloud from the terminal
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://developer.atlassian.com/cloud/acli/
 	arch = x86_64
-	arch = aarch64
 	license = custom
 	provides = acli
 	conflicts = acli
-	source_x86_64 = https://acli.atlassian.com/linux/latest/acli_linux_amd64/acli
-	sha256sums_x86_64 = 742b121d8077036d8cf3d874cb94a363c1c9ca987d9b9afb703a4a0f5e82af8e
-	source_aarch64 = https://acli.atlassian.com/linux/latest/acli_linux_arm64/acli
-	sha256sums_aarch64 = 742b121d8077036d8cf3d874cb94a363c1c9ca987d9b9afb703a4a0f5e82af8e
+	source_x86_64 = https://acli.atlassian.com/linux/1.2.2-stable/acli_1.2.2-stable_linux_amd64.tar.gz
+	sha256sums_x86_64 = cbffc08726074c497b446e326a30394b2c3e78255b84cf242fcf13feb63c0eaa
 
 pkgname = acli-bin

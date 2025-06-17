@@ -1,21 +1,19 @@
 # Maintainer: futpib <futpib@gmail.com>
 
 pkgname=acli-bin
-pkgver=2.1.0
+pkgver=1.2.2
 pkgrel=1
-pkgdesc="Atlassian CLI - Official command line tool for Atlassian Cloud products"
-arch=('x86_64' 'aarch64')
+pkgdesc="Software to interact with Atlassian Cloud from the terminal"
+arch=('x86_64')
 url="https://developer.atlassian.com/cloud/acli/"
 license=('custom')
 provides=('acli')
 conflicts=('acli')
 
-source_x86_64=("https://acli.atlassian.com/linux/latest/acli_linux_amd64/acli")
-source_aarch64=("https://acli.atlassian.com/linux/latest/acli_linux_arm64/acli")
+source_x86_64=("https://acli.atlassian.com/linux/${pkgver}-stable/acli_${pkgver}-stable_linux_amd64.tar.gz")
 
-sha256sums_x86_64=('742b121d8077036d8cf3d874cb94a363c1c9ca987d9b9afb703a4a0f5e82af8e')
-sha256sums_aarch64=('742b121d8077036d8cf3d874cb94a363c1c9ca987d9b9afb703a4a0f5e82af8e')
+sha256sums_x86_64=('cbffc08726074c497b446e326a30394b2c3e78255b84cf242fcf13feb63c0eaa')
 
 package() {
-    install -Dm755 "acli" "$pkgdir/usr/bin/acli"
+    install -Dm755 "acli_${pkgver}-stable_linux_amd64/acli" "$pkgdir/usr/bin/acli"
 }
