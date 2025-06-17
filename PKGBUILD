@@ -4,8 +4,8 @@
 # Contributor: Dan Vratil
 
 pkgname=nvidia-beta
-pkgver=575.57.08
-pkgrel=2
+pkgver=575.64
+pkgrel=1
 pkgdesc="NVIDIA kernel module (beta version)"
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -18,9 +18,9 @@ _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         '110-nvidia-change-dkms-conf.patch'
         '140-nvidia-linux6.15-fix.patch')
-sha256sums=('d0a0f44a1e3e0ef3670be182e2a55285c46312bde6ac4991193fb03add52757b'
-            'eb2faac1e5075d17df0480e5065af3147a0b86773403c07cf73c19d1854cf93f'
-            '46f9d80a5101a3610055a1231ec39319e3c89e69fdf6dda72f96d50e484af4d8')
+sha256sums=('d23ce700dffb52c3780813633ace06f3b7337fdf668f9a61694fc1cd3a0832ae'
+            '67596bdfdd608783105de7cf6d314a7617255467c5f6586e7f404de0fabcd1fa'
+            'd9642cf160d5ccd8afc144969fbb7686876e515be67a6e5ef89a46b74e37f347')
 
 prepare() {
     # extract the source file
@@ -30,7 +30,7 @@ prepare() {
     ln -s kernel "${_pkg}/nvidia-${pkgver}"
     
     patch -d "$_pkg" -Np1 -i "${srcdir}/110-nvidia-change-dkms-conf.patch"
-    patch -d "${_pkg}/kernel" -Np1 -i "${srcdir}/140-nvidia-linux6.15-fix.patch"
+    patch -d "$_pkg" -Np1 -i "${srcdir}/140-nvidia-linux6.15-fix.patch"
 }
 
 build() {
