@@ -1,5 +1,5 @@
 post_install() {
-	python -c "import gradio"
+    python -c "import gradio"
 }
 
 post_upgrade() {
