@@ -4,12 +4,12 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Terminal-based Connect 4 game written in Rust"
 arch=('x86_64')
-url="https://gitlab.com/melvdouc-group/connect4-cli"
+url="https://github.com/MelvDouc/connect4-cli"
 license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/connect4-cli-v$pkgver.tar.gz")
-sha256sums=('SKIP')
+source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('f4a936bad57ec13b8383f42a28b82fa7162b3eb85d8c2c73a79d82b86a81de45')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -18,5 +18,5 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "target/release/connect4" "$pkgdir/usr/bin/connect4-cli"
+  install -Dm755 "target/release/connect4" "$HOME/.local/bin/$pkgname"
 }
