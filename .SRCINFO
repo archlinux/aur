@@ -1,6 +1,6 @@
 pkgbase = defguard-client
 	pkgdesc = WireGuard Desktop Client with Zero-Trust Multi-Factor Authentication
-	pkgver = 1.0.1
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/DefGuard/client
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = defguard-client
 	depends = pango
 	depends = webkit2gtk
 	depends = systemd-resolvconf
-	source_x86_64 = https://github.com/DefGuard/client/releases/download/v1.0.1/defguard-client_1.0.1_amd64.deb
-	sha256sums_x86_64 = 5f31bb9c984887b330f590efc14a3da462b65e8e25bd3c9b1b6d6f45d5fb9472
+	source_x86_64 = https://github.com/DefGuard/client/releases/download/v1.2.3/defguard-client_1.2.3_amd64.deb
+	sha256sums_x86_64 = e2a0a1ba3f0f099c61f85140dce978ca0db59c84590f393ca76b24e676f5402b
 
 pkgname = defguard-client
