@@ -13,4 +13,4 @@ pkgbase = sherlock-launcher
 	sha256sums = SKIP
 
 pkgname = sherlock-launcher-bin
-	conflicts = sherlock-launcher-git
+conflicts = sherlock-launcher-git
