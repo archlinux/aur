@@ -1,7 +1,7 @@
 # Maintainer: Simon Brüggen <aur@m3t0r.de>
 pkgname=kiri-moto-appimage
-pkgver=4.0.32
-pkgrel=2
+pkgver=4.1.9
+pkgrel=1
 pkgdesc="CAM suite generating G-code for CNC mills, routers, FDM printers, laser and water cutters, and more."
 arch=(x86_64)
 url="https://grid.space/"

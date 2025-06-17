@@ -1,7 +1,7 @@
 pkgbase = kiri-moto-appimage
 	pkgdesc = CAM suite generating G-code for CNC mills, routers, FDM printers, laser and water cutters, and more.
-	pkgver = 4.0.32
-	pkgrel = 2
+	pkgver = 4.1.9
+	pkgrel = 1
 	url = https://grid.space/
 	arch = x86_64
 	license = MIT
@@ -10,8 +10,8 @@ pkgbase = kiri-moto-appimage
 	depends = hicolor-icon-theme
 	provides = kiri-moto
 	options = !strip
-	source = https://github.com/GridSpace/grid-apps/releases/download/4.0.32/KiriMoto-linux-x86_64.AppImage
-	source = https://github.com/GridSpace/grid-apps/raw/refs/tags/4.0.32/license.md
+	source = https://github.com/GridSpace/grid-apps/releases/download/4.1.9/KiriMoto-linux-x86_64.AppImage
+	source = https://github.com/GridSpace/grid-apps/raw/refs/tags/4.1.9/license.md
 	sha256sums = 6d94d40a931831d57ba2b9f1aecc8dd703251aa4aa07a615c6ef566c8536c9ed
 	sha256sums = 192fd42ad203e43b1b870ae7e2c2fe2b2a7842ac93c530d61d54099408727c9b
 
