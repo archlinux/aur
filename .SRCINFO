@@ -1,6 +1,6 @@
 pkgbase = binvec-bin
 	pkgdesc = A simple application to convert raster graphics to vector graphics (pre-compiled)
-	pkgver = 1.9.19
+	pkgver = 1.9.20
 	pkgrel = 1
 	url = https://github.com/RouHim/binvec
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = binvec-bin
 	provides = binvec
 	conflicts = binvec
 	options = !strip
-	source_x86_64 = binvec-1.9.19-x86_64-musl::https://github.com/RouHim/binvec/releases/download/1.9.19/binvec-x86_64-musl
+	source_x86_64 = binvec-1.9.20-x86_64-musl::https://github.com/RouHim/binvec/releases/download/1.9.20/binvec-x86_64-musl
 	sha256sums_x86_64 = df599a382c4c750f47e5278153e785c549bb2b57585e66b20970169426689272
-	source_aarch64 = binvec-1.9.19-aarch64-musl::https://github.com/RouHim/binvec/releases/download/1.9.19/binvec-aarch64-musl
+	source_aarch64 = binvec-1.9.20-aarch64-musl::https://github.com/RouHim/binvec/releases/download/1.9.20/binvec-aarch64-musl
 	sha256sums_aarch64 = e1b3e2c807207552b64d48f102a27c5ea3d1c6a266ef254b1691df85b4739eee
-	source_armv7h = binvec-1.9.19-armv7-musleabihf::https://github.com/RouHim/binvec/releases/download/1.9.19/binvec-armv7-musleabihf
+	source_armv7h = binvec-1.9.20-armv7-musleabihf::https://github.com/RouHim/binvec/releases/download/1.9.20/binvec-armv7-musleabihf
 	sha256sums_armv7h = 5f7d558b640529e8288c1e6469b512550efb1a9f49ee66c845533cd1c4ce0cdb
-	source_armv6h = binvec-1.9.19-arm-musleabihf::https://github.com/RouHim/binvec/releases/download/1.9.19/binvec-arm-musleabihf
+	source_armv6h = binvec-1.9.20-arm-musleabihf::https://github.com/RouHim/binvec/releases/download/1.9.20/binvec-arm-musleabihf
 	sha256sums_armv6h = 72b0d33814ad7ef0b824df342b03cd68999eb8d93d33ce0f3bf5bd375f0d2889
 
 pkgname = binvec-bin
