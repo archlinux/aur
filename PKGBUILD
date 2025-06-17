@@ -16,6 +16,6 @@ sha256sums=('5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1'
 package() {
   install -Dvm755 code.sh "${pkgdir}"/usr/bin/$pkgname
   echo -e "#compdef ${pkgname}=code\n_$pkgname" | install -Dvm644 /dev/stdin "${pkgdir}"/usr/share/zsh/site-functions/_$pkgname
-  # todo:
-  #todo: sed desktop entries, alias shell completions
+  # todo: alias bash completion
+  # todo: sed desktop entries
 }
