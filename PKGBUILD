@@ -9,7 +9,12 @@ arch=('x86_64')
 url="https://github.com/xeyossr/anitr-cli"
 license=('GPL3')
 depends=('mpv')
-optdepends=('rofi: for --rofi mode')
+
+optdepends=(
+  'rofi: for --rofi mode (recommended for X11 users)'
+  'rofi-wayland: for --rofi mode (recommended for Wayland users)'
+)
+
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}::https://github.com/xeyossr/anitr-cli/releases/download/v${pkgver}/anitr-cli")
