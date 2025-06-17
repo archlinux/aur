@@ -2,14 +2,14 @@
 
 _name=gradio-client
 pkgname=python-${_name}
-pkgver=1.10.1
+pkgver=1.10.3
 pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=(any)
 url='https://github.com/gradio-app/gradio/tree/main/client/python'
 license=('Apache-2.0')
 source=("https://github.com/gradio-app/gradio/archive/refs/tags/${_name//-/_}@${pkgver}.tar.gz")
-sha256sums=('91a283b0441e4e64455fc6f153fc988f8a4e5cf47b569d66fd57d2ba0b32776b')
+sha256sums=('26ce9cc4b4464a7d18c35cce046208fb96efedeae4d637220eba47a049727e91')
 depends=('python' 'python-fsspec' 'python-httpx' 'python-huggingface-hub' 'python-packaging' 'python-typing_extensions' 'python-websockets')
 makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest-asyncio' 'python-pytest' 'python-pytest-xdist' 'python-pydub')
@@ -22,7 +22,6 @@ build() {
 check() {
   local pytest_options=(
     -vv
-    --override-ini="addopts="
     --deselect test/test_client.py # Need HF_TOKEN
   )
   cd "${srcdir}"/${_name//-client/}-${_name//-/_}-${pkgver}/${_name//gradio-/}/${pkgname//-gradio-client/}
