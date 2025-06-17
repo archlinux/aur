@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 2.2.0 ➙ 2.3.0
-              : 2025-05-01 ➙ 2025-05-21
+ Tags         : 2.2.1 ➙ 2.4.0
+              : 2025-05-03 ➙ 2025-06-17
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-17   : 2.4.0
+                New function run_prog() to run external command.
+ 2025-05-21     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
 
  2025-05-21   : 2.3.0
                 Use builtin types where possible. e.g. typing.List -> list
@@ -20,8 +24,3 @@
  2025-05-03   : 2.2.1
                 pytests: reorganize a little. tests are unchanged
  2025-05-01     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-05-01   : 2.2.0
-                PEP 561 type hints (module users using mypy etc get type hints)
-                Update status to Production/Stable
- 2025-04-30     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
