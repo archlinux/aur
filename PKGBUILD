@@ -4,10 +4,9 @@ pkgname=xrefactory
 pkgdesc="Professional refactoring tool for C/Java and Emacs"
 url="http://xrefactory.com"
 pkgver=1.6.10
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 license=(custom)
-depends=('glibc' 'gcc')
 source=(
     http://xrefactory.com/xrefactory/downloads/$pkgver/$pkgname-$pkgver-src.tgz
     0001-Fix-wrong-use-of-memset.patch
@@ -45,7 +44,8 @@ source=(
     0038-Update-bootstrap-macro.patch
     0039-Fix-include_next-directive.patch
     0040-Fix-parsing-initializer-list-for-arrays.patch
-    0041-Fix-workMemory-overflowed-over-borne-with-Linux-kern.patch)
+    0041-Fix-workMemory-overflowed-over-borne-with-Linux-kern.patch
+    0042-Fix-build-for-Mingw-w64.patch)
 md5sums=('63e10baa9a5dfce9165570e7c3897701'
          '4791f8a42e53a141ded3bd36e39b3a6d'
          'a00b17df920380afd6689369845acbc8'
@@ -82,7 +82,8 @@ md5sums=('63e10baa9a5dfce9165570e7c3897701'
          'e92ad6217bfa847f1ebc2aabe88bacf8'
          '8e5a1b177d5c74541facbfa98ff09e19'
 		 '20c7f661b6b8ce9bcbbd384fab2517a8'
-		 '1f25e46f2d826ba50078f4c61be4f13e')
+		 '1f25e46f2d826ba50078f4c61be4f13e'
+		 '35b55db84834d6cd58f157c239104641')
 
 prepare() {
     cd "$srcdir/xref-any"
@@ -122,14 +123,15 @@ prepare() {
 	patch --verbose -p1 -i "$srcdir/0039-Fix-include_next-directive.patch"
 	patch --verbose -p1 -i "$srcdir/0040-Fix-parsing-initializer-list-for-arrays.patch"
 	patch --verbose -p1 -i "$srcdir/0041-Fix-workMemory-overflowed-over-borne-with-Linux-kern.patch"
-    cd "$srcdir/xref-any/doc"
-    cat "INSTALL" "readme" "readme2" > README
+	patch --verbose -p1 -i "$srcdir/0042-Fix-build-for-Mingw-w64.patch"
 }
 
 build() {
     cd "$srcdir/byacc-1.9"
-    make
+	make clobber
+    make CFLAGS="-std=gnu89"
     cd "$srcdir/xref-any/src"
+	make clean
     make
 }
 
@@ -153,7 +155,6 @@ package() {
     cd "$srcdir/xref-any/doc"
     install -m 644 "xref.man" "$pkgdir/usr/share/man/man1/xref.1"
     install -m 644 "xrefrc.man" "$pkgdir/usr/share/man/man5/xrefrc.5"
-    install -m 644 "README" "$pkgdir/usr/share/xrefactory"
     install -m 644 "LICENSE" "$pkgdir/usr/share/licenses/xrefactory"
     cd "$srcdir/xref-any/doc/cexercise"
     install -m 644 "browsing.c" "completions.c" "ideCompileAndRun.c" "index.c" \

@@ -1,0 +1,30 @@
+From 28c3c12dce474eaf00fe5088c68b645db1fd857d Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Tue, 17 Jun 2025 12:43:40 +0200
+Subject: [PATCH] Fix build for Mingw-w64
+
+---
+ xref-any/src/stdinc.h | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/stdinc.h b/src/stdinc.h
+index e35b69e..0009d56 100644
+--- a/src/stdinc.h
++++ b/src/stdinc.h
+@@ -12,12 +12,11 @@
+ #ifdef __OS2__			/*SBD*/
+ #include <os2.h>		/*SBD*/
+ #else					/*SBD*/
+-#include <unistd.h>		/*SBD*/
+ #include <dirent.h>		/*SBD*/
+ #endif					/*SBD*/
+ #endif					/*SBD*/
+ 
+-
++#include <unistd.h>		/*SBD*/
+ #include <stdio.h>		/*SBD*/
+ #include <stdlib.h>		/*SBD*/
+ #include <ctype.h>		/*SBD*/
+-- 
+2.50.0.windows.1
+
