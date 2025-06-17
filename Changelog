@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 2.2.1 ➙ 2.4.0
+ Tags         : 2.2.2 ➙ 2.4.1
               : 2025-05-03 ➙ 2025-06-17
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-17   : 2.4.1
+                PEP-484 use builtin tuple instead of Tuple
+                update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
 
  2025-06-17   : 2.4.0
                 New function run_prog() to run external command.
@@ -20,7 +24,3 @@
  2025-05-03   : 2.2.2
                 Remove old test directory
                 update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-05-03   : 2.2.1
-                pytests: reorganize a little. tests are unchanged
- 2025-05-01     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
