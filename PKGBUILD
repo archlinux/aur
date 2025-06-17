@@ -5,7 +5,7 @@
 _pkgname=code
 pkgname=code-git
 pkgdesc='OSS version of Visual Studio Code editor'
-pkgver=1.102.0.r134384.ga1d87f0f27f
+pkgver=1.102.0.r1.g26fbb81
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
@@ -19,18 +19,20 @@ git npm pnpm python desktop-file-utils libarchive)
 conflicts=(code vscode)
 provides=(code vscode)
 options=(!strip) # for sign of ext
-source=(vscode::"git+https://github.com/microsoft/vscode.git"
-'https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/'{code.sh,code.mjs,clipath.patch,product_json.diff})
-sha256sums=('SKIP'{,,,,}) # should we have cksums ?
+# use depth=1
+source=('https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/'{code.sh,code.mjs,clipath.patch,product_json.diff})
+sha256sums=('SKIP'{,,,}) # should we have cksums ?
 
 pkgver() {
-  cd "${srcdir}/vscode"
+  cd vscode
   printf "%s.r%s.g%s" \
     $(awk 'match($0,/"version":\s*"([^"]+)"/,v) {print v[1]}' package.json) \
     $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare() {
+  rm -rf vscode
+  git clone --depth=1 ${url}.git vscode
   cd vscode
   # vsce-sign for extensions
   pnpm add @vscode/vsce-sign @vscode/vsce-sign-linux-x64
