@@ -2,16 +2,16 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 _base=FMPy
 pkgname=python-${_base,,}
-_gitcommit=dcff3e7193701a282b09293e4fdb1d4a8ce7419b
-pkgver=0.3.23
+_gitcommit=9ff00189086598b208e3736ad414af88b7ccc1d4
+pkgver=0.3.25
 pkgrel=1
 pkgdesc="Simulate Functional Mockup Units (FMUs) in Python"
 url="https://github.com/CATIA-Systems/${_base}"
 arch=(x86_64)
-license=(BSD-2-clause)
-depends=(python-attrs python-jinja python-lark-parser python-lxml python-msgpack python-numpy sundials) # rpclib
+license=(BSD-2-Clause)
+depends=(python-attrs python-jinja python-lark-parser python-lxml python-msgpack python-numpy jupyter-nbformat sundials) # rpclib
 makedepends=(python-build python-installer python-setuptools python-wheel python-requests cmake git)
-checkdepends=(python-pytest python-dask python-scipy python-plotly jupyter-nbformat)
+checkdepends=(python-pytest python-dask python-scipy python-plotly)
 optdepends=('python-matplotlib: for plot results'
   'python-kaleido: for SVG export'
   'jupyter-notebook: for simulate the FMU in jupyter'
@@ -21,7 +21,7 @@ optdepends=('python-matplotlib: for plot results'
 source=(git+${url}.git#commit=${_gitcommit}
   git+https://github.com/ludocode/mpack.git
   git+https://github.com/modelica/Reference-FMUs.git)
-sha512sums=('d23503f302290b9ce3c647807dcb3eba63a5de009a180e962c249d37779ea6866256bfd01ea44ee4960a8e5d0ebd4699de10769879ce81d75c088a690e19b77b'
+sha512sums=('67405c482c921bb8ce344a0642f37223e8b0dba8fba9027f705c8cff72e3ba9574ecaa55aaf85e0fed1d172701986b917a983f47dae037794fb059ff2d5cf5d2'
             'SKIP'
             'SKIP')
 
