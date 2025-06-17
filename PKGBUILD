@@ -4,23 +4,21 @@
 # Contributor: Daniel Micay <danielmicay [at] gmail [dot] com>
 # Contributor: MThinkCpp <mtc [dot] maintainer [at] outlook [dot] com>
 
-_oldver=14
+_oldver=18
 pkgbase="libc++${_oldver}"
 pkgname=("libc++${_oldver}" "libc++abi${_oldver}" "libc++experimental${_oldver}")
-pkgver=14.0.6
+pkgver=18.1.8
 pkgrel=1
 url="https://libcxx.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 arch=('x86_64')
 depends=('gcc-libs')
-makedepends=("clang${_oldver}" 'cmake' 'ninja' 'python' 'python-setuptools')
+makedepends=("clang${_oldver}" 'cmake' 'libunwind' 'ninja' 'python' 'python-setuptools')
 checkdepends=("llvm${_oldver}")
 options=(!lto)
-source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-project-$pkgver.src.tar.xz"{,.sig}
-        "0001-replace-pipes-quote-with-shlex-quote.patch")
-sha512sums=('6fc6eeb60fac698702d1aac495fc0161eb7216a1f8db2020af8fccec5837831f7cc20dc2a169bf4f0b5f520748280b4a86621f3697d622aa58faaa45dbfaad13'
-            'SKIP'
-            '8ce5abb6f2390f8bd4a8b4aed305f3b54d687054f62bf74e6d4096cdac2decbed06dbdd635f18f9c75d8c7674d5aaaa8ba88041dd67d1c3ed0da4b9b2e45ec46')
+source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-project-$pkgver.src.tar.xz"{,.sig})
+sha512sums=('25eeee9984c8b4d0fbc240df90f33cbb000d3b0414baff5c8982beafcc5e59e7ef18f6f85d95b3a5f60cb3d4cd4f877c80487b5768bc21bc833f107698ad93db'
+            'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
  
 prepare() {
@@ -52,9 +50,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr/lib/llvm${_oldver} \
     -DCMAKE_C_COMPILER=/usr/lib/llvm${_oldver}/bin/clang \
     -DCMAKE_CXX_COMPILER=/usr/lib/llvm${_oldver}/bin/clang++ \
-    -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi" \
+    -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
     -DLLVM_EXTERNAL_LIT="${srcdir}/llvm-project-${pkgver}.src/llvm/utils/lit/lit.py" \
-    -DLIBCXX_INSTALL_EXPERIMENTAL_LIBRARY=NO \
     ../llvm-project-$pkgver.src/runtimes
   ninja cxx cxxabi cxx_experimental
 }
