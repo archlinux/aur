@@ -18,6 +18,6 @@ pkgbase = zap-rs
 	options = !strip
 	options = !debug
 	source_x86_64 = https://github.com/JonasAlv/zap-rs/releases/download/v1.0.0/zap-rs_1.0.0_amd64.deb
-	sha256sums_x86_64 = ca85f11732765bed78f93f55397b4b4cbb76685088553dad612c5062e3ec651f
+	sha256sums_x86_64 = SKIP
 
 pkgname = zap-rs
