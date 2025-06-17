@@ -1,0 +1,21 @@
+pkgbase = chawan
+	pkgdesc = Web browser for your terminal
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://git.sr.ht/~bptato/chawan
+	arch = i686
+	arch = x86_64
+	license = Unlicense
+	makedepends = nim>=2.0.0
+	depends = brotli
+	depends = gcc-libs
+	depends = glibc
+	depends = libssh2
+	depends = openssl
+	depends = sh
+	options = !debug
+	source = chawan-0.2.0.tar.gz::https://git.sr.ht/~bptato/chawan/archive/v0.2.0.tar.gz
+	sha512sums = 717e67953192b4f17b78a496dc1a1b50e6dca098772797b4c456492be607540099b20de61983b9620c09cb5a718d2898d7fea6135672361dba3a4326344e5c4c
+	b2sums = 5a121145f54b56ed9615c4db87f94f8cf96a4d6386396f69b08e65fdb7f8d08a75a03bf2a504d84140a66688740da9d42919fb2c8083cc5680ea9da9a5e1e009
+
+pkgname = chawan
