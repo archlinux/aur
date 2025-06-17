@@ -9,7 +9,7 @@ depends=("vlc" "ffmpeg" "swww")
 makedepends=("dotnet-sdk" "git")
 url="https://github.com/Shnimlz/Swengine"
 source=("swengine.desktop")
-md5sums=("6dca3a767dd3c85369aaad5affae54d4")
+md5sums=("0cca1884db3254ff31059a181400e09b")
 
 prepare(){
     rm -rf swengine
