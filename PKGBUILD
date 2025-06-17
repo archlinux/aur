@@ -2,7 +2,7 @@
 
 pkgbase=nvidia-open-git
 pkgname=('nvidia-open-git' 'nvidia-open-dkms-git')
-pkgver=575.57.08.r0.g30e15d79d
+pkgver=575.64.r0.gfade1f7b2
 pkgrel=1
 pkgdesc='NVIDIA open kernel modules (git version)'
 arch=('x86_64')
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
             '5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501'
             '4393d135782b55d014b4c30b4c6327dedb85543844f5c299e66eec7dbd5667ba'
             'b7cb5ba0e6348f8310421134ddc815e58c5bef87e74ae2dabb240582ff0619ca'
-            '46f9d80a5101a3610055a1231ec39319e3c89e69fdf6dda72f96d50e484af4d8')
+            '4510eecef976c79ee4626fa5dbeecd316d554b5344c0e73503a47b1506e1d0af')
 
 prepare() {
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
@@ -31,7 +31,7 @@ prepare() {
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/130-nvidia-open-reproducible-build.patch"
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/140-nvidia-open-gcc-sls.patch"
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/150-nvidia-open-make-modeset-fbdev-default.patch"
-    patch -d open-gpu-kernel-modules/kernel-open -Np1 -i "${srcdir}/160-nvidia-open-linux6.15-fix.patch"
+    patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/160-nvidia-open-linux6.15-fix.patch"
     
     sed -i "s/__VERSION_STRING/${pkgver%%.r*}/" open-gpu-kernel-modules/kernel-open/dkms.conf
     
