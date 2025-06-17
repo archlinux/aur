@@ -6,10 +6,10 @@ pkgver=r48.72f4cf2
 pkgrel=2
 pkgdesc="A third-party CoolApk client written in Flutter | 使用 Flutter 开发的第三方酷安客户端"
 arch=('x86_64' 'aarch64')
-url="https://github.com/bggRGjQaUbCoE/${_pkgname}"
+url="https://github.com/Integral-Tech/${_pkgname}"
 license=('AGPL-3.0-or-later')
 depends=('gtk3')
-makedepends=('git' 'flutter-tool' 'flutter-target-linux' 'cmake')
+makedepends=('git' 'fvm' 'cmake')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
@@ -26,12 +26,15 @@ pkgver() {
 
 prepare() {
 	cd "${_pkgname}/"
-	flutter pub get --enforce-lockfile || flutter pub get
+	fvm install stable
+	fvm use stable
+	fvm flutter --disable-analytics
+	fvm flutter --no-version-check pub get
 }
 
 build() {
 	cd "${_pkgname}/"
-	flutter build linux --no-pub --release
+	fvm flutter build linux --no-pub --release
 }
 
 package() {
@@ -39,6 +42,10 @@ package() {
 
 	cd "${_pkgname}/"
 	install -Dm644 assets/icon/icon.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
+	for r in 16 24 32 48 64 128 256 512; do
+		install -dm755 "${pkgdir}/usr/share/icons/hicolor/${r}x${r}/apps/"
+		magick assets/icon/icon.png -resize "${r}x${r}" "${pkgdir}/usr/share/icons/hicolor/${r}x${r}/apps/${_pkgname}.png"
+	done
 
 	case "${CARCH}" in
 	"x86_64")
