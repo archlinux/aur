@@ -4,7 +4,7 @@
 pkgname=cassandra-cpp-driver
 _pkgname=cpp-driver
 pkgver=2.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="DataStax C/C++ Driver for Apache Cassandra"
 arch=(i686 x86_64)
 url="http://datastax.github.io/cpp-driver/"
@@ -15,7 +15,7 @@ source=("https://codeload.github.com/datastax/${_pkgname}/tar.gz/${pkgver}")
 
 build() {
 	cd "$_pkgname-$pkgver"
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DCMAKE_CXX_FLAGS="-Wno-error" .
+	cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DCMAKE_CXX_FLAGS="-Wno-error" .
 	make
 }
 
