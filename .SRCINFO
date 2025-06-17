@@ -1,6 +1,6 @@
 pkgbase = sysd-manager
 	pkgdesc = A systemd GUI to manage your Services, Timers, Sockets and other units. You can enable, disable, stop and start them. Also, you can view their config file and peak at their journal logs.
-	pkgver = 1.30.2
+	pkgver = 1.30.3
 	pkgrel = 1
 	url = https://github.com/plrigaux/sysd-manager
 	install = sysd-manager.install
@@ -15,7 +15,7 @@ pkgbase = sysd-manager
 	depends = systemd-libs
 	depends = gtksourceview5
 	depends = gettext
-	source = https://github.com/plrigaux/sysd-manager/archive/refs/tags/v1.30.2.tar.gz
-	sha256sums = c235654e7580852401299e96a0eb99790170a192007018c8049afbc3071077ed
+	source = https://github.com/plrigaux/sysd-manager/archive/refs/tags/v1.30.3.tar.gz
+	sha256sums = 23b61629affb0a41d47f9daee8dfa5157172a6514df5012d7b2c82eda336f1f3
 
 pkgname = sysd-manager
