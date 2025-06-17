@@ -1,6 +1,6 @@
 pkgbase = qtfm-git
 	pkgdesc = A lightweight file manager (git version)
-	pkgver = 2022.11.01
+	pkgver = 2025.05.17
 	pkgrel = 1
 	url = https://github.com/rodlie/qtfm/releases
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = qtfm-git
 	license = GPL
 	depends = qt5-base
 	depends = desktop-file-utils
+	depends = ffmpeg
 	depends = hicolor-icon-theme
 	depends = imagemagick
 	provides = qtfm
