@@ -2,7 +2,7 @@
 
 pkgname=xwayland-run
 pkgver=0.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Set of small utilities revolving around running Xwayland"
 arch=(any)
 url="https://gitlab.freedesktop.org/ofourdan/$pkgname"
@@ -20,8 +20,8 @@ optdepends=(
   'weston: Wayland compositor'
   'xorg-xwayland: X11 server'
 )
-provides=(wlheadless-run xwayland-run xwfb-run)
-conflicts=(wlheadless-run xwayland-run xwfb-run)
+provides=(wlheadless-run xwfb-run)
+conflicts=(wlheadless-run xwfb-run)
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha512sums=('280edfe833f8e298d48f3e35a7f0a35c2ab408eaaa7e5337464d9c55653cd3d2c4469431842338f4bd13ee545a5ea8092e26f45bebafd98f17eb4c4d5fef01ed')
