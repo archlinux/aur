@@ -1,25 +1,18 @@
 # Maintainer: JonasAlv
 pkgname=zap-rs
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Simple and minimal web wrapper for WhatsApp Web"
+pkgdesc="Simple web wrapper for whatsapp web"
 arch=('x86_64')
 url="https://github.com/JonasAlv/zap-rs"
 license=('MIT')
-depends=('webkit2gtk' 'gtk3' 'libsoup' 'glib2' 'pango' 'gdk-pixbuf2' 'cairo' 'desktop-file-utils' 'hicolor-icon-theme')
-install="$pkgname.install"
-source=("zap-rs_0.1.0_amd64.deb::${url}/releases/download/v${pkgver}/zap-rs_0.1.0_amd64.deb")
-sha256sums=('SKIP')
-
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
+options=('!strip' '!debug')
+install=${pkgname}.install
+source_x86_64=("${url}/releases/download/v${pkgver}/zap-rs_${pkgver}_amd64.deb")
+sha256sums_x86_64=('ca85f11732765bed78f93f55397b4b4cbb76685088553dad612c5062e3ec651f')
 package() {
-  bsdtar -xf "$srcdir/zap-rs_0.1.0_amd64.deb" -C "$srcdir"
-  cd "$srcdir"
-  if [[ -f data.tar.xz ]]; then
-    bsdtar -xf data.tar.xz -C "$pkgdir"
-  elif [[ -f data.tar.gz ]]; then
-    bsdtar -xf data.tar.gz -C "$pkgdir"
-  else
-    echo "No data.tar archive found"
-    return 1
-  fi
+  # Extract package data
+  tar -xvf data.tar.gz -C "${pkgdir}"
+
 }
