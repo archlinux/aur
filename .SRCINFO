@@ -1,12 +1,12 @@
 pkgbase = goanime
 	pkgdesc = A command-line tool to browse, play, and download anime.
-	pkgver = 1.1.0
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/alvarorichard/GoAnime
 	arch = x86_64
 	license = MIT
 	depends = mpv
-	source = goanime-linux::https://github.com/alvarorichard/GoAnime/releases/download/v1.1.0/goanime-linux
+	source = goanime-linux::https://github.com/alvarorichard/GoAnime/releases/download/v1.2/goanime-linux
 	sha256sums = SKIP
 
 pkgname = goanime
