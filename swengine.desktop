@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Swengine
+Icon=swengine
 Comment=Download and apply live wallpapers using Swww
 Exec=swengine
 Terminal=false

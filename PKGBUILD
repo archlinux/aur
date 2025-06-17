@@ -1,7 +1,7 @@
 #Maintainer: Shnimlz <shnimlz@proton.me>
 #Author Original: Noble Eugene <nobleeugene2005@gmail.com>
 pkgname="swengine-revanced"
-pkgver="0.10"
+pkgver="2.0"
 pkgrel=1
 pkgdesc="Download or upload your wallpapers or use the ones downloaded from wallpaper engine with Sww"
 arch=("x86_64")
@@ -24,5 +24,6 @@ package(){
     chmod +x ./swengine
     install -d -m 755 "$pkgdir/usr/bin" && cp swengine "$pkgdir/usr/bin"
     install -d -m 755 "$pkgdir/usr/lib/swengine" && cp -r dist/* "$pkgdir/usr/lib/swengine"
+    install -Dm644 "$srcdir/swengine/Assets/icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/swengine.png"
     install -Dm644 "$srcdir/swengine.desktop" "$pkgdir/usr/share/applications/swengine.desktop"    
 }
