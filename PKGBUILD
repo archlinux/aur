@@ -11,7 +11,7 @@ depends=('gtk4' 'gtk4-layer-shell')
 makedepends=()
 
 # Define sources per subpackage
-source=("https://github.com/skxxtz/sherlock/releases/download/v${pkgver}/sherlock-v${pkgver}-hotfix-1-bin-linux-x86_64.tar.gz")
+source=("https://github.com/skxxtz/sherlock/releases/download/v${pkgver}-hotfix-1/sherlock-v${pkgver}-${pkgrel}-bin-linux-x86_64.tar.gz")
 sha256sums=('SKIP')
 
 # Prepare source for Git version

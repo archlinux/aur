@@ -9,7 +9,7 @@ pkgbase = sherlock-launcher
 	makedepends = rust
 	depends = gtk4
 	depends = gtk4-layer-shell
-	source = https://github.com/skxxtz/sherlock/releases/download/v0.1.13-hotfix-1/sherlock-v0.1.13-2-bin-linux-x86_64.tar.gz
+	source = https://github.com/skxxtz/sherlock/releases/download/v0.1.13-hotfix1/sherlock-v0.1.13-2-bin-linux-x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = sherlock-launcher-bin
