@@ -1,15 +1,16 @@
 pkgbase = python-namex
 	pkgdesc = A simple utility to separate the implementation of your Python package and its public API.
-	pkgver = 0.0.9
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/fchollet/namex
 	arch = any
 	license = Apache-2.0
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/n/namex/namex-0.0.9.tar.gz
-	sha256sums = 8adfea9da5cea5be8f4e632349b4669e30172c7859e1fd97459fdf3b17469253
+	source = https://files.pythonhosted.org/packages/source/n/namex/namex-0.1.0.tar.gz
+	sha256sums = 117f03ccd302cc48e3f5c58a296838f6b89c83455ab8683a1e85f2a430aa4306
 
 pkgname = python-namex
