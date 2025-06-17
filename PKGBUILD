@@ -4,7 +4,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Terminal-based Connect 4 game written in Rust"
 arch=('x86_64')
-url="https://github.com/MelvDouc/connect4-cli"
+url="https://github.com/MelvDouc/$pkgname"
 license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
@@ -18,5 +18,5 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "target/release/connect4" "$HOME/.local/bin/$pkgname"
+  install -Dm755 "target/release/$pkgname" "$HOME/.local/bin/$pkgname"
 }
