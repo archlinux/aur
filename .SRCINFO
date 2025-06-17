@@ -1,0 +1,12 @@
+pkgbase = easy-btrfs
+	pkgdesc = A user-friendly Btrfs CLI tool for managing snapshots
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/gokhanaltun/easy-btrfs
+	arch = x86_64
+	license = MIT
+	depends = btrfs-progs
+	source = https://github.com/gokhanaltun/easy-btrfs/releases/download/v1.1.2/ebtrfs
+	sha256sums = e6ec4a65e1724e1dabde8bde5e2eed9754d80800a406e88df65029d48b6b7200
+
+pkgname = easy-btrfs
