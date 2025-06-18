@@ -7,8 +7,8 @@ arch=('x86_64')
 url="https://github.com/FLAS-Forum/timer"
 license=('MIT')
 depends=('gcc' 'glibc')
-makedepends=('rust' 'cargo')
-source=("git+https://github.com/FLAS-Forum/timer.git")
+makedepends=('rust' 'cargo' 'git')
+source=("git+https://github.com/FLAS-Forum/timer.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
