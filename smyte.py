@@ -10,25 +10,26 @@ from rich.align import Align
 from rich.style import Style
 from rich.live import Live
 
-# ========== Setup ==========
 console = Console()
 
-# Use absolute path to locate banner.txt
-ascii_file = "/usr/share/smyte/banner.txt"
-
+# Paths to look for banner.txt
+def load_ascii_banner():
+    paths = [
+        "/usr/share/smyte/banner.txt",  # Global install path (AUR)
+        os.path.join(os.path.dirname(os.path.realpath(__file__)), "banner.txt")  # Local path (dev)
+    ]
+    for path in paths:
+        if os.path.exists(path):
+            with open(path, "r") as f:
+                return f.read()
+    return "NETLOG"
 
 def format_bytes(size):
-    for unit in ['B','KB','MB','GB','TB']:
+    for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
         if size < 1024:
             return f"{size:.2f} {unit}"
         size /= 1024
     return f"{size:.2f} PB"
-
-def load_ascii_banner():
-    if os.path.exists(ascii_file):
-        with open(ascii_file, "r") as f:
-            return f.read()
-    return "NETLOG"
 
 def get_data_usage():
     counters = psutil.net_io_counters()
@@ -37,22 +38,12 @@ def get_data_usage():
 def build_ui(upload, download):
     banner = load_ascii_banner()
 
-    text = Text()
-    text.append(f"{banner}\n", style="bold magenta")
-    text.append("\n\n")
-
-    # Bigger and centered data values
     usage_text = Text()
     usage_text.append(f"📤 Uploaded:   {format_bytes(upload)}\n", style=Style(color="cyan", bold=True))
     usage_text.append(f"📥 Downloaded: {format_bytes(download)}\n", style=Style(color="green", bold=True))
-    
-    centered_usage = Align.center(usage_text, vertical="middle")
 
     full_panel = Panel(
-        Align.center(
-            Text(banner, style="bold magenta") + Text("\n\n") + usage_text,
-            vertical="middle"
-        ),
+        Align.center(Text(banner, style="bold magenta") + Text("\n\n") + usage_text),
         border_style="bold magenta",
         title="📶 Smyte - Data Usage Tracker",
         padding=(2, 10)
