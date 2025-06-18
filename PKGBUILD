@@ -1,6 +1,6 @@
 # Maintainer: Noa (coolreader18)
 pkgname=ndless-sdk-git
-pkgver=r528.6d6fcd2
+pkgver=r563.55547e4
 pkgrel=1
 pkgdesc="SDK for programs targeting Ndless on the TI-Nspire"
 arch=(x86_64)
