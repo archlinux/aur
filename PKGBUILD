@@ -2,7 +2,7 @@
 _pkgname=wenku
 pkgname="baidu${_pkgname}-bin"
 _zhsname='百度文库'
-pkgver=3.2.3
+pkgver=3.3.0
 _electronversion=22
 pkgrel=1
 pkgdesc="Baidu wenku Client.(Prebuilt version.Use system-wide electron)一款由百度发布的供网友在线分享文档的平台"
@@ -33,9 +33,12 @@ source=(
     "LICENSE.html::https://edu-wenku.bdimg.com/v1/pc/protocols/help24-new.htm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('70401d9b7b39f5c38ff9f73041a2e87f18619c9b5f565ef6176711a9d48023ce'
+sha256sums=('fde636e12c59b2ed55f05b9ca2642ed14d999facf02a40b9e06e2b27856619ce'
             'eb85aa9b3586dcd16b0f18b4b467b46b076688f9d1f723dea7f2eb92cd797ce7'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="strings ${srcdir}/tmp/${_zhsname}.exe  | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -54,6 +57,7 @@ prepare() {
     rm -rf "${srcdir}/tmp"
     install -Dm755 -d "${srcdir}/tmp"
     7z x -aoa "${srcdir}/${pkgname%-bin}-${pkgver}.exe" -o"${srcdir}/tmp"
+    _get_electron_version
     asar e "${srcdir}/tmp/resources/app.asar" "${srcdir}/app.asar.unpacked"
     cp "${srcdir}/tmp/winbuild/app.png" "${srcdir}/app.asar.unpacked/static/icons/icon.png"
 }
