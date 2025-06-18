@@ -10,9 +10,7 @@ pkgbase = smyte
 	depends = python-rich
 	depends = python-psutil
 	source = smyte.py
-	source = banner.txt
 	source = smyte.install
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

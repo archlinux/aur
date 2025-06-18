@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-import os
-import sys
 import time
 import psutil
 from rich.console import Console
@@ -12,6 +10,17 @@ from rich.live import Live
 
 console = Console()
 
+BANNER = r"""
+   ▄████████   ▄▄▄▄███▄▄▄▄   ▄██   ▄       ███        ▄████████ 
+  ███    ███ ▄██▀▀▀███▀▀▀██▄ ███   ██▄ ▀█████████▄   ███    ███ 
+  ███    █▀  ███   ███   ███ ███▄▄▄███    ▀███▀▀██   ███    █▀  
+  ███        ███   ███   ███ ▀▀▀▀▀▀███     ███   ▀  ▄███▄▄▄     
+▀███████████ ███   ███   ███ ▄██   ███     ███     ▀▀███▀▀▀     
+         ███ ███   ███   ███ ███   ███     ███       ███    █▄  
+   ▄█    ███ ███   ███   ███ ███   ███     ███       ███    ███ 
+ ▄████████▀   ▀█   ███   █▀   ▀█████▀     ▄████▀     ██████████ 
+"""
+
 def format_bytes(size):
     for unit in ['B','KB','MB','GB','TB']:
         if size < 1024:
@@ -19,43 +28,18 @@ def format_bytes(size):
         size /= 1024
     return f"{size:.2f} PB"
 
-def get_banner_path():
-    # Check for installed banner path
-    system_path = "/usr/share/smyte/banner.txt"
-    if os.path.exists(system_path):
-        return system_path
-    
-    # Fallback to local dev path
-    local_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "banner.txt")
-    if os.path.exists(local_path):
-        return local_path
-    
-    # Not found
-    return None
-
-def load_ascii_banner():
-    banner_path = get_banner_path()
-    if banner_path:
-        try:
-            with open(banner_path, "r") as f:
-                return f.read()
-        except:
-            pass
-    return "NETLOG"
-
 def get_data_usage():
     counters = psutil.net_io_counters()
     return counters.bytes_sent, counters.bytes_recv
 
 def build_ui(upload, download):
-    banner = load_ascii_banner()
     usage_text = Text()
     usage_text.append(f"📤 Uploaded:   {format_bytes(upload)}\n", style=Style(color="cyan", bold=True))
     usage_text.append(f"📥 Downloaded: {format_bytes(download)}\n", style=Style(color="green", bold=True))
 
     full_panel = Panel(
         Align.center(
-            Text(banner, style="bold magenta") + Text("\n\n") + usage_text,
+            Text(BANNER, style="bold magenta") + Text("\n\n") + usage_text,
             vertical="middle"
         ),
         border_style="bold magenta",
@@ -82,5 +66,5 @@ if __name__ == "__main__":
         import rich, psutil
         main()
     except ImportError:
-        print("Setting up virtual environment and installing dependencies...")
+        print("Installing dependencies...")
         os.system("python -m venv venv && source venv/bin/activate && pip install rich psutil && python smyte.py")
