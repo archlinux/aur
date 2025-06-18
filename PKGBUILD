@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RouHim/binvec/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1b01ee5e3d65ee79e6db9883dfa12399bcbf3b6b62e78bf2970ca378f9b656b2')
+sha256sums=('c33b552a4b186d433e45a2f75bbf5af59f5d0a26b75e56ac52e0ad84ee0627bc')
 
 build() {
   cd "$pkgname-$pkgver"
