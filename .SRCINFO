@@ -1,0 +1,16 @@
+pkgbase = smyte
+	pkgdesc = A ricer-style terminal tool that displays live network usage with ASCII art
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/yourusername/smyte
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-rich
+	depends = python-psutil
+	source = smyte.py
+	source = banner.txt
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = smyte
