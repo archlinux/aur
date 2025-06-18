@@ -12,4 +12,6 @@ sha256sums=('SKIP' 'SKIP' 'SKIP')
 package() {
     install -Dm755 "$srcdir/smyte.py" "$pkgdir/usr/bin/sy"
     install -Dm644 "$srcdir/banner.txt" "$pkgdir/usr/share/smyte/banner.txt"
+    install -Dm644 "${srcdir}/banner.txt" "${pkgdir}/usr/bin/banner.txt"
+
 }
