@@ -3,9 +3,9 @@
 # Contributor: FlyInWind <2518509078@qq.com>
 pkgname=ynote-desktop-bin
 _zhsname='有道云笔记'
-pkgver=8.1.30
+pkgver=8.1.41
 _electronversion=18
-_reldate='%2F2025%2F05%2F23%2F3d16244e'
+_reldate='%2F2025%2F06%2F16%2F453421a8'
 pkgrel=1
 pkgdesc="Netease Youdao Ynote for Linux.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -29,9 +29,12 @@ source=(
     "LICENSE.html::https://note.youdao.com/license.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d4996389dc79e304071527760902c3b63be92004a790da228088eaf238aa5cca'
+sha256sums=('b3595ff15ea8ae2cf88bd089803c1bc2225fd8cb9d0879630ee01daa90853b97'
             'a8aec47c7cc6e6d838d525c89b58a962d650c84b0ebec09ecfb8955381fe6460'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_zhsname}/${pkgname%-bin}" | grep -o 'Electron/[0-9.]+' | cut -d'/' -f2 | cut -d'.' -f1)"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -41,6 +44,7 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i -e "
         s/\"\/opt\/${_zhsname}\/${pkgname%-bin}\" --no-sandbox/${pkgname%-bin}/g
         s/\/opt\/${_zhsname}\/resources\/build\/icon.svg/${pkgname%-bin}/g
