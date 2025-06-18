@@ -2,14 +2,14 @@
 
 _name=openai-agents
 pkgname=python-${_name}
-pkgver=0.0.18
+pkgver=0.0.19
 pkgrel=1
 pkgdesc="OpenAI Agents SDK."
 arch=('any')
 url='https://github.com/openai/openai-agents-python'
 license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name/-/_}-$pkgver.tar.gz")
-sha256sums=('a8faf48c7fd9b6646f7afd83097d78f1575177482014b7d4d6d951b6f37dee51')
+sha256sums=('4090d683ef7257b3f6299f76e477ad51a970fd76de7c55df65f4bc5029580f2b')
 depends=('python' 'python-openai' 'python-pydantic' 'python-griffe' 'python-typing_extensions' 'python-requests' 'python-mcp')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-rich' 'python-playwright' 'python-inline-snapshot' 'python-pynput' 'python-sounddevice' 'python-textual' 'python-websockets' 'python-graphviz' 'python-fastapi' 'litellm')
