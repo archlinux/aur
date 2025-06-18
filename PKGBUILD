@@ -9,6 +9,7 @@ url="https://github.com/sorah/mairu"
 license=('Apache-2.0')
 depends=('openssl')
 makedepends=('rust' 'protobuf')
+options=(!lto)
 _tarball=mairu-$pkgver.tar.gz
 source=($_tarball::https://github.com/sorah/mairu/archive/v$pkgver.tar.gz)
 sha256sums=('5e6da78946dd74da63d6bced300e4d2b712740e66280e87aad6ffd957a9854f1')
