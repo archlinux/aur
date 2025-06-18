@@ -2,7 +2,7 @@
 
 pkgname=thunderbird-extension-import-export-tools-ng
 _pkgname=import-export-tools-ng
-pkgver=14.1.8
+pkgver=14.1.9
 pkgrel=1
 pkgdesc="Thunderbird extension that adds import and export functions for messages, folders and profiles."
 arch=('any')
@@ -10,7 +10,7 @@ url='https://addons.thunderbird.net/addon/importexporttools-ng/'
 license=('GPL-3.0-or-later')
 makedepends=('p7zip' 'jq')
 source=("${_pkgname}-${pkgver}"::"https://github.com/thunderbird/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('216a9187ef12762dcecce52711e5b6d1f86b24b6e18bec5cd2ba8f39bf31c13e')
+sha256sums=('bf793f1b7cf080ac99677134751d9ce218c76d4fea58ac94d951f9ded272bf3d')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
