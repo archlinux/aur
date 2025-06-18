@@ -1,7 +1,7 @@
 # Maintainer: Pang LAN <wopanglan@gmail.com>
 
 pkgname=opencommit
-pkgver=3.2.5
+pkgver=3.2.9
 pkgrel=1
 pkgdesc="Auto-generate impressive commits with AI in 1 second"
 arch=("any")
