@@ -1,4 +1,4 @@
-pkgbase = continuwuity-git
+pkgbase = continuwuity
 	pkgdesc = a very cool, featureful fork of conduit (rust matrix homeserver)
 	pkgver = 0.5.0_rc.5
 	pkgrel = 1
@@ -28,4 +28,4 @@ pkgbase = continuwuity-git
 	source = git+https://forgejo.ellis.link/continuwuation/continuwuity.git#tag=v0.5.0-rc.5
 	sha256sums = acb8425f369ac1229db6b98e7c3ff1ad4da1086ce29c4e458dc9d7b18ace3b3d
 
-pkgname = continuwuity-git
+pkgname = continuwuity

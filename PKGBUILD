@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 
-pkgname=continuwuity-git
+pkgname=continuwuity
 pkgdesc="a very cool, featureful fork of conduit (rust matrix homeserver)"
 url="https://forgejo.ellis.link/continuwuation/continuwuity"
 license=("Apache-2.0")
