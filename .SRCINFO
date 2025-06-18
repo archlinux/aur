@@ -1,6 +1,6 @@
 pkgbase = caelestia-meta
 	pkgdesc = A metapackage containing all dependencies for the Caelestia dotfiles
-	pkgver = 0.0.1
+	pkgver = r95.cdc5c69
 	pkgrel = 1
 	url = https://github.com/caelestia-dots/caelestia
 	arch = any
@@ -35,6 +35,7 @@ pkgbase = caelestia-meta
 	depends = papirus-icon-theme
 	depends = qt5ct
 	depends = qt6ct
+	depends = ttf-jetbrains-mono-nerd
 	optdepends = spotify: music player
 	optdepends = vscode: code editor
 	optdepends = zen-browser: web browser
