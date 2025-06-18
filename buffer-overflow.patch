@@ -1,0 +1,22 @@
+diff --git a/ras-events.c b/ras-events.c
+index 6692a31..c7ee801 100644
+--- a/ras-events.c
++++ b/ras-events.c
+@@ -859,6 +859,17 @@ static int add_event_handler(struct ras_events *ras, struct tep_handle *pevent,
+ 	}
+ 
+ 	do {
++		if (size > 0) {
++			page = realloc(page, page_size + size);
++                        if (!page) {
++				rc = -errno;
++				log(TERM, LOG_ERR,
++				    "Can't reallocate page to read %s:%s"
++				    " format\n", group, event);
++				close(fd);
++				return rc;
++                        }
++                }
+ 		rc = read(fd, page + size, page_size);
+ 		if (rc < 0) {
+ 			log(TERM, LOG_ERR, "Can't get arch page size\n");
