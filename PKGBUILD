@@ -1,6 +1,7 @@
 # Maintainer: PandaDEV <contact@pandadev.net> -> https://github.com/0pandadev
 
 pkgname=rclone-filen-git
+pkgver=1.70.0.filen.12
 pkgrel=1
 pkgdesc="rclone fork with support for filen.io (git version)"
 arch=(i686 x86_64 armv7h aarch64)
