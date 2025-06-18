@@ -26,7 +26,7 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/do
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 sha256sums_aarch64=('9f10df3315d002ce5d84bddf917d09f4065ae41ef399daf688b0307687dd5efb')
 sha256sums_x86_64=('1fb06241e30b5b3b05b9c5f4735e6d742af22ee774e30d951038909848d96e9f')
 prepare() {

@@ -11,7 +11,7 @@ pkgbase = notesnook-electron-bin
 	provides = notesnook=3.2.0
 	conflicts = notesnook
 	source = notesnook-electron.sh
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 	source_aarch64 = notesnook-electron-3.2.0-aarch64.AppImage::https://github.com/streetwriters/notesnook/releases/download/v3.2.0/notesnook_linux_arm64.AppImage
 	sha256sums_aarch64 = 9f10df3315d002ce5d84bddf917d09f4065ae41ef399daf688b0307687dd5efb
 	source_x86_64 = notesnook-electron-3.2.0-x86_64.AppImage::https://github.com/streetwriters/notesnook/releases/download/v3.2.0/notesnook_linux_x86_64.AppImage
