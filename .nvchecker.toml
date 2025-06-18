@@ -1,0 +1,4 @@
+[opencryptoki]
+source = "git"
+git = "https://github.com/opencryptoki/opencryptoki.git"
+prefix = "v"
