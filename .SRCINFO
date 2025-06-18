@@ -1,7 +1,7 @@
 pkgbase = pplink-bin
 	pkgdesc = Dedicated to direct interconnection across devices, networks, and platforms.(Prebuilt version.Use system-wide electron)帮助电脑、手机、平板等设备建立点到点的安全直连
 	pkgver = 15.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ppzhilian.com
 	arch = x86_64
 	license = LicenseRef-custom
@@ -16,6 +16,6 @@ pkgbase = pplink-bin
 	source = pplink.sh
 	sha256sums = c7c561ea3fbc7313f4c226d50f0738ea7bb81fb0e409c624b1e312151efa1f52
 	sha256sums = 6acc470ced558f0572421e8d554fe5f99abc45be5f390f52d170a1e5d51440bb
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = pplink-bin
