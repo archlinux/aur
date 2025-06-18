@@ -1,19 +1,22 @@
 pkgbase = ucm-desktop-bin
 	pkgdesc = A desktop app companion to the UCM CLI.(Prebuilt version)
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://unison-lang.org/
+	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
 	depends = ucm-bin
-	provides = ucm-desktop=1.0.0
+	provides = ucm-desktop=1.1.0
 	conflicts = ucm-desktop
-	source = ucm-desktop-1.0.0.rpm::https://github.com/unisonweb/ucm-desktop/releases/download/app-v1.0.0/UCM.Desktop-1.0.0-1.x86_64.rpm
-	source = LICENSE-1.0.0::https://raw.githubusercontent.com/unisonweb/ucm-desktop/app-v1.0.0/LICENSE
-	sha256sums = b481e4b15d560bb050771aacee4c226447eb7da0fa7c192a3791c3615a4c6152
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/unisonweb/ucm-desktop/v1.1.0/LICENSE
 	sha256sums = 1a6dcace03c9ae60da5594e77bff3207de150a7e1b257b43f3ba53b21a6b2b3a
+	source_aarch64 = ucm-desktop-1.1.0-aarch64.rpm::https://github.com/unisonweb/ucm-desktop/releases/download/v1.1.0/ucm-desktop-1.1.0-1.arm64.rpm
+	sha256sums_aarch64 = 0fc87c2ea4d2309610228f9eafbd338a96ac982aad4f8f515089977b44dd71fc
+	source_x86_64 = ucm-desktop-1.1.0-x86_64.rpm::https://github.com/unisonweb/ucm-desktop/releases/download/v1.1.0/ucm-desktop-1.1.0-1.x86_64.rpm
+	sha256sums_x86_64 = 891c01f60a82c2a974a7807831f9915fab5640be967b70be741463bc7ba5cecd
 
 pkgname = ucm-desktop-bin
