@@ -5,9 +5,9 @@ pkgdesc="a very cool, featureful fork of conduit (rust matrix homeserver)"
 url="https://forgejo.ellis.link/continuwuation/continuwuity"
 license=("Apache-2.0")
 arch=("x86_64")
-pkgver=0.5.0.5183.g4158c1cf
+pkgver=0.5.0.5236.g6e16a6ef
 pkgrel=1
-makedepends=("rust" "cargo" "git" "clang" "linux-api-headers" "linux-headers" "llvm" "libc++" "autoconf")
+makedepends=("gcc14" "rust" "cargo" "git" "clang" "linux-api-headers" "linux-headers" "llvm" "libc++" "autoconf")
 depends=("gcc-libs" "glibc" "liburing" "jemalloc")
 source=("git+https://forgejo.ellis.link/continuwuation/continuwuity.git")
 sha256sums=(SKIP)
@@ -22,6 +22,8 @@ function pkgver() {
 }
 
 function prepare() {
+	export CC=gcc-14
+	export CXX=g++-14
 	cd "${srcdir}/continuwuity"
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -29,6 +31,8 @@ function prepare() {
 }
 
 function build() {
+        export CC=gcc-14
+        export CXX=g++-14
 	cd "${srcdir}/continuwuity"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -36,6 +40,8 @@ function build() {
 }
 
 function check() {
+        export CC=gcc-14
+        export CXX=g++-14
 	cd "${srcdir}/continuwuity"
 	export RUSTUP_TOOLCHAIN=stable
 	cargo test --frozen --locked --all-features
