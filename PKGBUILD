@@ -1,5 +1,5 @@
 # Maintainer: Anton Schäfer <FLAS-Support@proton.me>
-pkgname=timer
+pkgname=flas-timer
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Ein einfacher CLI-Timer in Rust (z. B. 'timer 2m30s')"
