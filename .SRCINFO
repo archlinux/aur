@@ -1,0 +1,18 @@
+pkgbase = python-ecdysys
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://pypi.org/project/ecdysys
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-colorama
+	depends = python-toml
+	depends = pacman-contrib
+	provides = ecdysys
+	conflicts = ecdysys
+	source = https://files.pythonhosted.org/packages/py3/e/ecdysys/ecdysys-0.1.2-py3-none-any.whl
+	sha256sums = 8cadc64830b394eed0e79ae4ee3e5bea0b630ca2936c18865fb86e07a94a7968
+
+pkgname = python-ecdysys
