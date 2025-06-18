@@ -12,11 +12,12 @@ depends=('tk')
 makedepends=('git' 'python' 'python-build' 'python-pip')
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
-options=(!strip)
+# options=(!strip)
 install=$pkgname.install
 source=("${pkgname%-VCS}::git+https://github.com/HengXin666/BiLiBiLi_DanMu_Crawling.git#branch=main"
 "${_pkgname}.desktop"
 "${_pkgname}-config.json")
+backup=(opt/bilibili-danmu-crawling/_internal/config/config.json)
 # noextract=()
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
@@ -48,7 +49,7 @@ package() {
 	install -d "$pkgdir/etc/${_pkgname}"
 	cp -r ./dist/main/_internal "$pkgdir/opt/${_pkgname}"
 	install -dm755 "$pkgdir/opt/${_pkgname}/_internal/config"
-	install -Dm775 "$srcdir/${_pkgname}-config.json" "$pkgdir/opt/${_pkgname}/_internal/config/config.json"
+	install -Dm777 "$srcdir/${_pkgname}-config.json" "$pkgdir/opt/${_pkgname}/_internal/config/config.json"
 	install -dm777 "$pkgdir/opt/${_pkgname}/_internal/output"
 	install -Dm644 "$srcdir/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 	install -Dm755 ./dist/main/main "$pkgdir/opt/${_pkgname}/main"

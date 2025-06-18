@@ -13,7 +13,7 @@ pkgbase = bilibili-danmu-crawling-git
 	depends = tk
 	provides = bilibili-danmu-crawling-git
 	conflicts = bilibili-danmu-crawling-git
-	options = !strip
+	backup = opt/bilibili-danmu-crawling/_internal/config/config.json
 	source = bilibili-danmu-crawling-git::git+https://github.com/HengXin666/BiLiBiLi_DanMu_Crawling.git#branch=main
 	source = bilibili-danmu-crawling.desktop
 	source = bilibili-danmu-crawling-config.json
