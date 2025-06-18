@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('rust')
 depends=('dbus')
 source=(https://github.com/findus/dbusevents/archive/refs/tags/${pkgver}.tar.gz)
-md5sums=('61f289e0fcc0ac3e729eb97630255035')
+md5sums=('8f92ceebb861070dc626c1852322dd6f')
 install='btevents.install'
 validpgpkeys=('61FFD901BD7C555A8888B7D078F2B0F63DDC9CBC')
 
