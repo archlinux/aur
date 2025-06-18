@@ -64,7 +64,7 @@
      # symbolic links
 --- a/src/common/util/src/file_util.cpp
 +++ b/src/common/util/src/file_util.cpp
-@@ -435,9 +435,9 @@ ov::util::FilePath ov::util::get_compiled_plugin_path(const std::string& plugin)
+@@ -417,9 +417,9 @@ ov::util::FilePath ov::util::get_compiled_plugin_path(const std::string& plugin)
  
      // plugin can be found either:
  

@@ -6,9 +6,9 @@ pkgname=(
     'openvino-intel-gpu-plugin'
     'openvino-intel-npu-plugin'
     'python-openvino')
-pkgver=2025.1.0
-pkgrel=2
-_commit=6fec06580ab8f60d1518420d17a02e8057a74349
+pkgver=2025.2.0
+pkgrel=1
+_commit=c01cd93e24d1cd78bfbb401eed51c08fb93e0816
 pkgdesc='A toolkit for optimizing and deploying deep learning models'
 arch=('x86_64')
 url='https://docs.openvino.ai/'
@@ -57,10 +57,9 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#commit=${_commit}?s
         'git+https://github.com/herumi/xbyak_riscv.git'
         '010-openvino-change-install-paths.patch'
         '020-openvino-disable-werror.patch'
-        '030-openvino-level-zero-disable-werror.patch'
-        '040-openvino-protobuf23-fix.patch'
+        '030-openvino-protobuf23-fix.patch'
         '050-openvino-gcc15-fix.patch'::'https://github.com/openvinotoolkit/openvino/pull/30403/commits/29fb5d01e58b614f7eb2c3919f737f7f050e8051.patch')
-sha256sums=('77d84150070a734e68322d74c41d8e0cc304a30ae7173e77bacfdad25e640e04'
+sha256sums=('6c5b656ac8152ec66e766d050d615ea50bf80d7c848e9a779335c5016934c930'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -83,9 +82,8 @@ sha256sums=('77d84150070a734e68322d74c41d8e0cc304a30ae7173e77bacfdad25e640e04'
             'SKIP'
             'SKIP'
             'SKIP'
-            '633ecfd2c0a54c1ca6be268b1ef04b1fb91a69b8d4ddab7e86414b035bd975d5'
-            'a003b613d2c52dd7aeee4a40527aecd1b3b38ca2b69ed0a0660273e682f4b226'
-            'f7893f1a68555471646c4b7593c16330068c04587dc8cf140a1a3817527d377a'
+            '71dd9bbf87c455f9c31de05b90d87a59f0fbb982d67ef72592095c901981e27a'
+            'd5ff4b19ca9daf2b052650d2d7f60297239091c68e57fd7d5637508be0ef0e52'
             'bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce'
             'e384d59631b5c5f69ecfb9589dc053995c901d03d738e2e3da8b5a59bcd34272')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
@@ -129,15 +127,8 @@ prepare() {
     
     patch -d openvino -Np1 -i "${srcdir}/010-openvino-change-install-paths.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-disable-werror.patch"
-    patch -d openvino/thirdparty/level_zero/level-zero -Np1 -i "${srcdir}/030-openvino-level-zero-disable-werror.patch"
-    patch -d openvino -Np1 -i "${srcdir}/040-openvino-protobuf23-fix.patch"
-    
-    # fix build with gcc 15
-    # https://github.com/openvinotoolkit/openvino/pull/30403
-    # https://github.com/openvinotoolkit/openvino/commit/c240db5ed317fdc94532dc55d356f18306ded996
+    patch -d openvino -Np1 -i "${srcdir}/030-openvino-protobuf23-fix.patch"
     patch -d openvino -Np1 -i "${srcdir}/050-openvino-gcc15-fix.patch"
-    git -C openvino cherry-pick --no-commit 53d26c22163d527778739c1d7042aaba617cd3be
-    git -C openvino cherry-pick --no-commit c240db5ed317fdc94532dc55d356f18306ded996
     
     install -d -m755 {benchmark_app,licenses}
     install -d -m755 intel-gpu-plugin/usr/lib/openvino
@@ -283,7 +274,7 @@ package_python-openvino() {
     rm "${pkgdir}${_site_pkgs}/requirements.txt"
     
     export WHEEL_VERSION="$pkgver"
-    python openvino/src/bindings/python/wheel/setup.py dist_info -o "${pkgdir}${_site_pkgs}"
+    python openvino/setup.py dist_info -o "${pkgdir}${_site_pkgs}"
     
     install -D -m644 licenses/* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

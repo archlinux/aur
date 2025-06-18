@@ -1,7 +1,7 @@
 pkgbase = openvino
 	pkgdesc = A toolkit for optimizing and deploying deep learning models
-	pkgver = 2025.1.0
-	pkgrel = 2
+	pkgver = 2025.2.0
+	pkgrel = 1
 	url = https://docs.openvino.ai/
 	arch = x86_64
 	license = Apache-2.0
@@ -24,7 +24,7 @@ pkgbase = openvino
 	makedepends = python-wheel
 	makedepends = snappy
 	options = !emptydirs
-	source = git+https://github.com/openvinotoolkit/openvino.git#commit=6fec06580ab8f60d1518420d17a02e8057a74349?signed
+	source = git+https://github.com/openvinotoolkit/openvino.git#commit=c01cd93e24d1cd78bfbb401eed51c08fb93e0816?signed
 	source = oneDNN-openvinotoolkit::git+https://github.com/openvinotoolkit/oneDNN.git
 	source = git+https://github.com/herumi/xbyak.git
 	source = git+https://github.com/madler/zlib.git
@@ -49,11 +49,10 @@ pkgbase = openvino
 	source = git+https://github.com/herumi/xbyak_riscv.git
 	source = 010-openvino-change-install-paths.patch
 	source = 020-openvino-disable-werror.patch
-	source = 030-openvino-level-zero-disable-werror.patch
-	source = 040-openvino-protobuf23-fix.patch
+	source = 030-openvino-protobuf23-fix.patch
 	source = 050-openvino-gcc15-fix.patch::https://github.com/openvinotoolkit/openvino/pull/30403/commits/29fb5d01e58b614f7eb2c3919f737f7f050e8051.patch
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
-	sha256sums = 77d84150070a734e68322d74c41d8e0cc304a30ae7173e77bacfdad25e640e04
+	sha256sums = 6c5b656ac8152ec66e766d050d615ea50bf80d7c848e9a779335c5016934c930
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -76,9 +75,8 @@ pkgbase = openvino
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 633ecfd2c0a54c1ca6be268b1ef04b1fb91a69b8d4ddab7e86414b035bd975d5
-	sha256sums = a003b613d2c52dd7aeee4a40527aecd1b3b38ca2b69ed0a0660273e682f4b226
-	sha256sums = f7893f1a68555471646c4b7593c16330068c04587dc8cf140a1a3817527d377a
+	sha256sums = 71dd9bbf87c455f9c31de05b90d87a59f0fbb982d67ef72592095c901981e27a
+	sha256sums = d5ff4b19ca9daf2b052650d2d7f60297239091c68e57fd7d5637508be0ef0e52
 	sha256sums = bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce
 	sha256sums = e384d59631b5c5f69ecfb9589dc053995c901d03d738e2e3da8b5a59bcd34272
 
@@ -102,7 +100,7 @@ pkgname = openvino-intel-gpu-plugin
 	depends = intel-compute-runtime
 	depends = ocl-icd
 	depends = onetbb
-	depends = openvino=2025.1.0
+	depends = openvino=2025.2.0
 	depends = pugixml
 
 pkgname = openvino-intel-npu-plugin
@@ -113,14 +111,14 @@ pkgname = openvino-intel-npu-plugin
 	depends = intel-npu-driver
 	depends = onetbb
 	depends = opencv
-	depends = openvino=2025.1.0
+	depends = openvino=2025.2.0
 	depends = pugixml
 
 pkgname = python-openvino
 	pkgdesc = Python bindings for OpenVINO
 	depends = gcc-libs
 	depends = glibc
-	depends = openvino=2025.1.0
+	depends = openvino=2025.2.0
 	depends = python
 	depends = python-numpy
 	depends = python-openvino-telemetry
