@@ -7,8 +7,8 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.1.1
-_electronversion=31
+pkgver=3.2.0
+_electronversion=34
 _nodeversion=23
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Use system-wide electron)"
@@ -37,9 +37,9 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('36c37f3f16e4fd5224f88f12734e918e2b98a5c1b7c2c0d23d0df61b7e824262'
+sha256sums=('86fed7a7d1428c6b4ef6df051de4576f979329fefd44b344b1073bd6168ca096'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
