@@ -47,7 +47,6 @@ depends=(aurorae
          libqaccessibilityclient-qt6
          libx11
          libxcb
-         libxcvt
          libxi
          libxkbcommon
          libxkbcommon-x11
@@ -67,7 +66,6 @@ depends=(aurorae
          xcb-util-wm)
 makedepends=(extra-cmake-modules
              kdoctools
-             kwayland
              plasma-wayland-protocols
              python
              wayland-protocols)
