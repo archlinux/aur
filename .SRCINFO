@@ -5,6 +5,7 @@ pkgbase = rqlite-bin
 	url = https://github.com/rqlite/rqlite
 	arch = x86_64
 	license = MIT
+	depends = glibc
 	provides = rqbench
 	provides = rqlite
 	provides = rqlited

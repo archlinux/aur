@@ -15,6 +15,7 @@ license=('MIT')
 
 provides=('rqbench' 'rqlite' 'rqlited')
 conflicts=("${_pkgname}" "${_pkgname}-git")
+depends=('glibc')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
