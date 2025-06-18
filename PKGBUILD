@@ -3,7 +3,7 @@
 # Contributor: Moses Narrow <moe_narrow@use.startmail.com>
 
 pkgname="pterodactyl-panel"
-pkgver=1.11.10
+pkgver=1.11.11
 pkgrel=2
 pkgdesc="An open-source game server management panel"
 url="https://pterodactyl.io/"
