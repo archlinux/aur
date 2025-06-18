@@ -3,8 +3,8 @@
 # Contributor: TrialnError <autumn-wind@web.de>
 pkgname=coolterm-bin
 _pkgname=CoolTerm
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="Simple GUI serial port terminal application (no terminal emulation).Prebuilt version."
 arch=(
 	'aarch64'
@@ -29,10 +29,10 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${url}/${_pkgname}Raspberr
 source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${url}/${_pkgname}Linux32Bit.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/${_pkgname}Linux64Bit.zip")
 sha256sums=('7256543ea2a5270331c93ddc474347dffc5cbe30e7073770bd23fee3350a7e8d')
-sha256sums_aarch64=('a1d809cb6b47bfd675615c99ebd532320cc13147b56a5125643e99c6ecf0b102')
-sha256sums_armv7h=('848656ad8b79c8df9616a2fe91a9ad991240b120173bbfab7c1907977b61fa11')
-sha256sums_i686=('d51567f3dff99424c50e39dedd6e81e8140dc09a427e15ab5268b971fc4aeca8')
-sha256sums_x86_64=('e6c52224b3c6a7d017a1811657e84060202171c218fe6526de57995e02c0d5b3')
+sha256sums_aarch64=('a01efbd5be7c1af24170f453078c4c6ab18aed889c4fb94e511a9135510130bb')
+sha256sums_armv7h=('3934557c0a6fb62e1eeb56bb4b8b385db8471079e005a7106714ac57fe8fa861')
+sha256sums_i686=('b79470c4528d9168228ea96544054c81af512f9261fbd4bcffb039528e48beca')
+sha256sums_x86_64=('33375a6c354e40d2ba5d0b2ee2e1d07c50ac5451000f6451d4bddaa93bbe3f13')
 prepare() {
 	sed -i -e "
 		s/@appname@/${pkgname%-bin}/g
