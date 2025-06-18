@@ -2,7 +2,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname="tqm"
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="CLI tool to manage your torrent client queues. Primary focus is on removing torrents that meet specific criteria."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -20,7 +20,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/autobrr/tqm/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=('8a85a0b0a4b9fd5a8497539f501e46248fd5daea9333a40c2dc81c750cd173a1a009ba88671d26b402d177e877e7fd7d543eccbc15d9c2dea819be3e210f2471')
+sha512sums=('d25ff4ac41ffff642b73daaf85e4845dbc73bb879b52a20a4b0098f68292cbabc55baa9de72f00a65eb4c2c5c5d89fe2ed9c7d057aaccd4062cf3e9bb736a1e5')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -34,7 +34,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
-  go build -o tqm ./cmd/tqm
+  go build -ldflags "-s -w -X github.com/autobrr/tqm/pkg/runtime.Version=${pkgver}" -o tqm ./cmd/tqm
 }
 
 package() {
