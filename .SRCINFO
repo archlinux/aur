@@ -1,5 +1,5 @@
 pkgbase = sticky-markdown-note-git
-	pkgdesc = The Ultimate Open Source WebChat Platform.(Use system-wide electron)
+	pkgdesc = Minimal sticky-style markdown notes with preview & hotkeys. Electron-based.(Use system-wide electron)
 	pkgver = 1.4.0.r2.gb1fc5c9
 	pkgrel = 1
 	url = https://github.com/seongmini/sticky-markdown-note
