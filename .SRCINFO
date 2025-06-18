@@ -1,14 +1,14 @@
 pkgbase = ms-edit-desktop
 	pkgdesc = Desktop entry for Microsoft Edit
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/microsoft/edit
 	arch = any
 	license = MIT
-	depends = ms-edit
+	depends = msedit
 	source = https://raw.githubusercontent.com/microsoft/edit/c44eb4297f3d734e3e94c877d5676b3e553107d9/assets/edit.svg
-	source = ms-edit.desktop
+	source = msedit.desktop
 	sha256sums = e56f9fc9cebea8b147fb12bf0dfc65656a3c2c5b23c9f7e5b65534dec8d6e9d8
-	sha256sums = afca7c2501eb7044a30babe097ecde3c045db1f3e57404cfbcd8aeef58a55ce4
+	sha256sums = 2660d6be7e5963ea8a0250c3157826c5a6136a4100d16c124b6155f8d4251fbc
 
 pkgname = ms-edit-desktop
