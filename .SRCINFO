@@ -26,6 +26,7 @@ pkgname = zoom-system-qt
 	depends = ocl-icd
 	depends = mpg123
 	depends = vivaldi-ffmpeg-codecs
+	depends = libxtst
 	depends = quazip-qt5
 	depends = qt5-base
 	depends = qt5-graphicaleffects

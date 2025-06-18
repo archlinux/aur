@@ -36,7 +36,8 @@ build() {
   done
   mkdir -p Qt/lib # for ZoomWebviewHost
   ln -sf /usr/lib/libquazip1-qt5.so libquazip.so
-  #libdvf=libpng+libjpeg+glew+zlib+? onednn~libmkldll? libclDNN~openvino?
+  # dlopen-ed libs are hard to replace.
+  # libdvf=libpng+libjpeg+glew+zlib+? onednn~libmkldll? libclDNN~openvino?
 
   cd cef #Updating CEF(https://cef-builds.spotifycdn.com/index.html) seems impossible. ABI?
   mv locales/en-US.pak .;rm -r locales/*;mv en-US.pak locales # for ZoomWebviewHost
@@ -48,7 +49,7 @@ build() {
 }
 
 package_zoom-system-qt() {
-  depends=(ocl-icd mpg123 vivaldi-ffmpeg-codecs
+  depends=(ocl-icd mpg123 vivaldi-ffmpeg-codecs libxtst
   quazip-qt5 qt5-{base,graphicaleffects,quickcontrols,quickcontrols2,svg,declarative})
   provides=(zoom)
   conflicts=(zoom)
