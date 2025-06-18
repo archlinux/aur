@@ -1,7 +1,7 @@
 pkgbase = clash-verge-rev
 	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri
-	pkgver = 2.3.0
-	pkgrel = 2
+	pkgver = 2.3.1
+	pkgrel = 1
 	url = https://github.com/clash-verge-rev/clash-verge-rev
 	arch = x86_64
 	arch = i686
@@ -16,9 +16,9 @@ pkgbase = clash-verge-rev
 	depends = clash-meta
 	provides = clash-verge
 	conflicts = clash-verge
-	source = clash-verge-rev-2.3.0.tar.gz::https://github.com/clash-verge-rev/clash-verge-rev/archive/refs/tags/v2.3.0.tar.gz
+	source = clash-verge-rev-2.3.1.tar.gz::https://github.com/clash-verge-rev/clash-verge-rev/archive/refs/tags/v2.3.1.tar.gz
 	source = clash-verge-service.tar.gz::https://github.com/clash-verge-rev/clash-verge-service/archive/refs/tags/x86_64-unknown-linux-gnu.tar.gz
-	sha512sums = da6f0fa24f70b4abba14e92534896cce9910395eae842134f8cc7f43b3b069b302398155e580221e91b25008c5bac713629c5756705f7510acff6a9992dc20dd
+	sha512sums = d94fd4332293c37631b88a53c4212316d4a69c1806a33369adeca319f6a4a86f09abe84f214d17ad210bc29cb59a2f0eec0405d4dda438c7128b79aa1f2ff358
 	sha512sums = 53973fd6a38e4268898bc6eb7665fba0f8fdcdf6d57917e1fd873304157512c2845a803a1c6825cd97390bdb01fe37fa0e30f292e3116c0d29e579d508cfa84b
 
 pkgname = clash-verge-rev
