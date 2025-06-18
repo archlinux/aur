@@ -4,7 +4,7 @@
 pkgname=kwin-decoration-sierra-breeze-enhanced-git
 _gitname=SierraBreezeEnhanced
 pkgver=r255.e15da98
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of BreezeEnhanced to make it (arguably) more minimalistic and informative (git version)"
 arch=('x86_64')
 url="https://github.com/kupiqu/SierraBreezeEnhanced"
@@ -28,6 +28,7 @@ build() {
             -DCMAKE_BUILD_TYPE=Release \
             -DKDE_INSTALL_LIBDIR=lib \
             -DBUILD_TESTING=OFF \
+            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
             -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 
 }

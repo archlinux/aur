@@ -1,7 +1,7 @@
 pkgbase = kwin-decoration-sierra-breeze-enhanced-git
 	pkgdesc = A fork of BreezeEnhanced to make it (arguably) more minimalistic and informative (git version)
 	pkgver = r255.e15da98
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kupiqu/SierraBreezeEnhanced
 	arch = x86_64
 	license = GPL3
