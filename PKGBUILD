@@ -3,7 +3,7 @@
 # Maintainer: Your Name <your_email@example.com>
 pkgname=json-formatter-gui
 pkgver=0.1.0       # Match your application's version
-pkgrel=1           # Package release number, increment for PKGBUILD changes
+pkgrel=2           # Package release number, increment for PKGBUILD changes
 pkgdesc="A cross-platform desktop application for formatting JSON and executing JQ queries."
 arch=('x86_64')    # Specify architectures. For Rust, 'aarch64' also common.
 url="https://github.com/k161196/json-formatter-gui" # Your project's repository URL
