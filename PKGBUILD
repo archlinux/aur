@@ -2,7 +2,7 @@
 # Maintainer: coolapso <coolapso@coolapso.tech>
 
 pkgname='convcommitlint-bin'
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A simple, opinionated, yet usable linter for conventional commits, written in Go.'
 url='https://github.com/coolapso/convcommitlint'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('convcommitlint')
 conflicts=('convcommitlint')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/convcommitlint/releases/download/v0.1.1/convcommitlint_0.1.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('487049423538d16a55ad4b18f2db95fae958e58b9ff34bce00c798c9dac98c8c')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/convcommitlint/releases/download/v0.2.0/convcommitlint_0.2.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('71d99ecd54ce961f26955e045f9a6af60de90226b2e7cda98889807c09815b6c')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/coolapso/convcommitlint/releases/download/v0.1.1/convcommitlint_0.1.1_linux_386.tar.gz")
-sha256sums_i686=('dd41e3311c73589fca03e4a7df07a4d048b0eb190e17e5154399f841a6557c0d')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/coolapso/convcommitlint/releases/download/v0.2.0/convcommitlint_0.2.0_linux_386.tar.gz")
+sha256sums_i686=('581cfd0ead588d1303db8af0a4295250df900ffd285b25c3f684f2c495cddaa3')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/convcommitlint/releases/download/v0.1.1/convcommitlint_0.1.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('f28596923fa6745b1989b41e6f34cc4dcb6ce3133fa281fdf84e17461fbe85c4')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/convcommitlint/releases/download/v0.2.0/convcommitlint_0.2.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('dcf42ad9f875dca287b3935a6ae29016cca29a666dbfb9877db146b24a4c58ed')
 
 package() {
   install -Dm755 "./convcommitlint" "${pkgdir}/usr/bin/convcommitlint"
