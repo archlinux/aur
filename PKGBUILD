@@ -3,13 +3,13 @@
 # Maintainer: Soramane <soramane32 at gmail dot com>
 
 pkgname='caelestia-shell-git'
-pkgver=r681.2f9179d
+pkgver=r709.605c6f9
 pkgrel=1
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64')
 url='https://github.com/caelestia-dots/shell'
 license=('GPL-3.0-only')
-depends=('caelestia-cli' 'quickshell' 'ddcutil' 'brightnessctl' 'app2unit' 'cava' 'networkmanager' 'bluez-utils' 'lm_sensors' 'fish' 'curl' 'aubio' 'libpipewire' 'glibc' 'qt6-declarative' 'gcc-libs' 'ttf-material-symbols-variable' 'power-profiles-daemon')
+depends=('caelestia-cli' 'quickshell' 'ddcutil' 'brightnessctl' 'app2unit' 'cava' 'networkmanager' 'bluez-utils' 'lm_sensors' 'fish' 'curl' 'aubio' 'libpipewire' 'glibc' 'qt6-declarative' 'gcc-libs' 'ttf-material-symbols-variable' 'power-profiles-daemon' 'ttf-jetbrains-mono-nerd')
 makedepends=('git' 'gcc')
 provides=('caelestia-shell')
 conflicts=('caelestia-shell')
