@@ -55,7 +55,7 @@ prepare() {
 build() {
 	cd "$srcdir"/ndless/ndless-sdk
 	pushd toolchain
-	unset CFLAGS CPPFLAGS
+	unset CFLAGS CPPFLAGS CXXFLAGS
 	echo -e "\033[1mBuilding Ndless C toolchain, expect this to take a while\033[0m"
 	sleep 2
 	./build_toolchain.sh
