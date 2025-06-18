@@ -1,14 +1,14 @@
 pkgbase = finkyo-bin
 	pkgdesc = file server
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/quantulr/finkyo
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = finkyo-0.4.3-x86_64::https://github.com/quantulr/finkyo/releases/download/v0.4.3/finkyo-linux-amd64
-	sha512sums_x86_64 = a2ef029fcb10e28cb47cb9033c294c94698288e71a970d71c430cf5ad690876208edb95cf332dd27a10dacf9c05be7318cf87ac884bfb1b6c688386143e33671
-	source_aarch64 = finkyo-0.4.3-aarch64::https://github.com/quantulr/finkyo/releases/download/v0.4.3/finkyo-linux-aarch64
-	sha512sums_aarch64 = 9657fde30e4b2488896a0908611c2a0f2185517d544d2eec166afab3ed39fa1824bfd7d41c0f182c33e7fa61f6afdfdb1d383822ed732541ccd215c47cbbee76
+	source_x86_64 = finkyo-0.4.4-x86_64::https://github.com/quantulr/finkyo/releases/download/v0.4.4/finkyo-linux-amd64
+	sha512sums_x86_64 = e8cf77dc740fad2d4ca96345c18c36b5c1b9e15369289a86f0c94fc3342594fd232fdf304073c2ec899a0244b7b043548d9e5a81fee16ae17c355f2a01e4b7ae
+	source_aarch64 = finkyo-0.4.4-aarch64::https://github.com/quantulr/finkyo/releases/download/v0.4.4/finkyo-linux-aarch64
+	sha512sums_aarch64 = b39e575801cebdf989867f35aa87e789be9f033d24332afa5c174aabd59903f801fd2831489f0cc370794e23fbbb367be26ef1e8c1d42269f72da599c448f9c6
 
 pkgname = finkyo-bin
