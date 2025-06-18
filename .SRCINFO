@@ -11,6 +11,7 @@ pkgbase = ndless-sdk-git
 	makedepends = binutils
 	makedepends = boost
 	makedepends = wget
+	makedepends = python3
 	depends = gmp
 	depends = mpfr
 	depends = libmpc
