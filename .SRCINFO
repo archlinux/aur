@@ -1,6 +1,6 @@
 pkgbase = kio-onedrive-git
 	pkgdesc = KIO Slave to access Microsoft OneDrive
-	pkgver = 0.0.5.r0.g444dc99
+	pkgver = 0.0.8.r1.g88d91c1
 	pkgrel = 1
 	url = https://invent.kde.org/bernardogn/kio-onedrive
 	arch = x86_64
