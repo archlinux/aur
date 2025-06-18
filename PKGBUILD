@@ -4,13 +4,13 @@ _name1=logfire-api
 _name0=logfire
 pkgbase=python-${_name0}
 pkgname=(python-${_name1} python-${_name0})
-pkgver=3.21.0
-pkgrel=2
+pkgver=3.21.1
+pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/logfire'
 license=('MIT')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0c86cb7e627009494ce79edcf92fc19b2564eb2613ac9f956ab5d4ab108b4a97')
+sha256sums=('c6dd5f7d9f9d5d820ceb0dbb375d1618f184cfb19c147b80f2bb83e9dafdcebe')
 depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-httpx'
@@ -92,15 +92,13 @@ check() {
     -vv
     -n auto
     --dist=loadgroup
+    -W default::langchain_core._api.deprecation.LangChainDeprecationWarning
     # Test for Logfire developers
     --deselect tests/aaa_query_client/test_query_client.py
     # Remove tests that need Docker
     --ignore tests/otel_integrations/test_celery.py
     --ignore tests/otel_integrations/test_mysql.py
     --ignore tests/otel_integrations/test_redis.py
-    # Deprecation fails
-    --deselect tests/test_tail_sampling.py::test_trace_sample_rate
-    --deselect tests/test_secret_scrubbing.py::test_scrubbing_deprecated_args
   )
   cd "${srcdir}"/${_name0//-/_}-${pkgver}
   python -m venv --system-site-packages test-env
