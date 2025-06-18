@@ -1,12 +1,12 @@
 # Maintainer: coldBug <coldbug@e.mail.de>
 pkgname=typst-languagetool-lsp-git
-pkgver=0.93.da31aeb
+pkgver=0.96.9273d4e
 pkgrel=1
 pkgdesc="Spellcheck typst files with LanguageTool and VSCodium."
 url="https://github.com/antonWetzel/typst-languagetool"
 license=("MIT")
 arch=("x86_64")
-makedepends=(cargo)
+makedepends=("cargo" "maven")
 provides=("typst-languagetool-lsp")
 conflicts=("typst-languagetool-lsp")
 source=("$pkgname::git+https://github.com/antonWetzel/typst-languagetool/")
