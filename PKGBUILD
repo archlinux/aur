@@ -2,7 +2,7 @@
 pkgname=cloudhub-bin
 _pkgname=CloudHub
 _zhsname='云之家'
-pkgver=4.5.4
+pkgver=4.5.5
 _electronversion=12
 pkgrel=1
 pkgdesc="The desktop client of CloudHub.(Prebuilt version.Use system-wide electron)云之家桌面端"
@@ -18,7 +18,6 @@ depends=(
     "electron${_electronversion}"
     'nodejs'
     'gtk2'
-    'java-runtime'
 )
 makedepends=(
     'asar'
@@ -30,12 +29,15 @@ source=(
     "LICENSE-${pkgver}.html::${url}/public/agreement/client-agreement.html"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://res.yunzhijia.com/mixed/cloudhubx/linux_arm64/${_pkgname}_arm64_${pkgver}_2505152055.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://res.yunzhijia.com/mixed/cloudhubx/linux_x64/${_pkgname}_x64_${pkgver}_2505152053.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://res.yunzhijia.com/mixed/cloudhubx/linux_arm64/${_pkgname}_arm64_${pkgver}_2506131114.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://res.yunzhijia.com/mixed/cloudhubx/linux_x64/${_pkgname}_x64_${pkgver}_2506131112.rpm")
 sha256sums=('c4088260f72395d24a8ba49eaaa78620895489107af496c7d00976f8c8825dae'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('e1fea5c3706d162c86aa18cea9b2e209b8833e27b2fe0d48f0f720e2ab03190f')
-sha256sums_x86_64=('cca4bbbb0e3cb2a8655075a0346d058bdfda20b456191fc4345d220ddd81ddf7')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums_aarch64=('fd11513d3d021769eb26dcfea1bd6e0f28f3cd03f1c2090551261247408ff304')
+sha256sums_x86_64=('1aecd02abcc29fffba48341a43723ca4af5f8dc4eac0a0ecef6dc54dfd8ee40d')
+_get_electron_version() {
+    _electronversion="strings ${srcdir}/opt/${_zhsname}/${_pkgname}  | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -44,6 +46,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     sed -i -e "
         s/\"\/opt\/${_zhsname}\/${_pkgname}\"/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
