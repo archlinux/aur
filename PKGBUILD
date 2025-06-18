@@ -2,7 +2,7 @@
 
 pkgbase=td-system-tools
 pkgname=td-system-tools
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 groups=()
 pkgdesc="Tools for Basic System Management"
@@ -27,7 +27,7 @@ checkdepends=(
 optdepends=()
 options=('!debug')
 source=("${pkgname#td-}-${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e37f144f501b39978b2a59d1534bcf8cbc7967f3fcf80d096dd419a049e7e66a')
+sha256sums=('cc78552548c7a957b5b740996a5454342296b5336fea237a7b2bd970d977ad61')
 
 build() {
     export CFLAGS+=" ${CPPFLAGS}"
