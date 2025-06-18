@@ -4,8 +4,8 @@
 #
 pkgname=hyprpwmenu
 _origpkgname=hyprpwmenu
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.2.6
+pkgrel=1
 pkgdesc="A modern powermenu for Hyprland."
 arch=("x86_64")
 url='https://pypi.org/project/hyprpwmenu/'
@@ -24,8 +24,8 @@ makedepends=(
   "python-setuptools"
   "python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/63/85/e720530cce8819adabb0d08f98073b8abdf47b63adcdf37372fe77d63402/hyprpwmenu-0.2.4.tar.gz")
-sha256sums=("74f5fbb0266c54f9216a51e2ec121b69b8af6a5b387923e1f451d36043dfac7e")
+source=("https://files.pythonhosted.org/packages/83/ab/d1066b8fb298dc772b4685f5dbc8b052f14e047d626921c5f08b0ddbc1da/hyprpwmenu-0.2.6.tar.gz")
+sha256sums=("2141688ce96eac307941bcff42165903b10276deccab954f1f3055e201787b03")
 package() {
   cd "${_origpkgname}-${pkgver}" || exit
   python -m build --wheel --no-isolation
