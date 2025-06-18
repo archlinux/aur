@@ -50,9 +50,6 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${reponame}"
-  export CFLAGS
-  # compile with gcc10, https://gcc.gnu.org/gcc-10/porting_to.html
-  CFLAGS+=' -fcommon'
   autoreconf -fiv
   ./configure \
     --prefix=/usr \
