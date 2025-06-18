@@ -3,7 +3,7 @@
 pkgname=nameinator
 _pkgname=NAMEinator
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source DNS benchmark utility - successor of namebench'
 arch=('x86_64')
 url='https://github.com/mwiora/NAMEinator'
@@ -25,5 +25,9 @@ build() {
 
 package() {
   cd ${_pkgname}-${pkgver}
-  install -Dm755 ${_pkgname} "${pkgdir}"/usr/bin/${pkgname}
+  install -dm755 "${pkgdir}"/usr/lib/${pkgname} "${pkgdir}"/usr/bin/
+  install -Dm755 ${_pkgname} "${pkgdir}"/usr/lib/${pkgname}/${pkgname}
+  cp -ar datasrc "${pkgdir}"/usr/lib/${pkgname}/
+
+  ln -s /usr/lib/${pkgname}/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }

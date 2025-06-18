@@ -1,7 +1,7 @@
 pkgbase = nameinator
 	pkgdesc = Open-source DNS benchmark utility - successor of namebench
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mwiora/NAMEinator
 	arch = x86_64
 	license = Apache
@@ -12,4 +12,3 @@ pkgbase = nameinator
 	b2sums = 78e6172f08a2be4dec3df0e3cc369b603d00340a6657403fd854f908d8f60e059b3775ce6802731527680e3e2c5817bbb7bb189307ddae34bea8dc092ed7ef6c
 
 pkgname = nameinator
-
