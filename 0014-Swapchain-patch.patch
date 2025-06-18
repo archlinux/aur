@@ -1,4 +1,4 @@
-From 2806ebd53a683017cc11d0810e4ba515f0ee0650 Mon Sep 17 00:00:00 2001
+From 7154ec4750e1a92a8b3b77bcd3f75650ffbba0be Mon Sep 17 00:00:00 2001
 From: Etaash Mathamsetty
  <45927311+Etaash-mathamsetty@users.noreply.github.com>
 Date: Tue, 27 May 2025 14:14:56 -0400
@@ -10,7 +10,7 @@ cc: mesa-stable
  1 file changed, 21 insertions(+), 18 deletions(-)
 
 diff --git a/src/vulkan/wsi/wsi_common_wayland.c b/src/vulkan/wsi/wsi_common_wayland.c
-index bfd94a190b439..6f728c7c7f887 100644
+index dd15d03846b0a..5feefc89da86e 100644
 --- a/src/vulkan/wsi/wsi_common_wayland.c
 +++ b/src/vulkan/wsi/wsi_common_wayland.c
 @@ -184,9 +184,6 @@ struct wsi_wl_surface {
@@ -40,7 +40,7 @@ index bfd94a190b439..6f728c7c7f887 100644
                                                          image_desc,
                                                          WP_COLOR_MANAGER_V1_RENDER_INTENT_PERCEPTUAL);
     wp_image_description_v1_destroy(image_desc);
-@@ -1997,9 +1995,6 @@ wsi_wl_surface_destroy(VkIcdSurfaceBase *icd_surface, VkInstance _instance,
+@@ -2046,9 +2044,6 @@ wsi_wl_surface_destroy(VkIcdSurfaceBase *icd_surface, VkInstance _instance,
     struct wsi_wl_surface *wsi_wl_surface =
        wl_container_of((VkIcdSurfaceWayland *)icd_surface, wsi_wl_surface, base);
  
@@ -50,7 +50,7 @@ index bfd94a190b439..6f728c7c7f887 100644
     if (wsi_wl_surface->wl_dmabuf_feedback) {
        zwp_linux_dmabuf_feedback_v1_destroy(wsi_wl_surface->wl_dmabuf_feedback);
        dmabuf_feedback_fini(&wsi_wl_surface->dmabuf_feedback);
-@@ -2263,15 +2258,6 @@ static VkResult wsi_wl_surface_init(struct wsi_wl_surface *wsi_wl_surface,
+@@ -2312,15 +2307,6 @@ static VkResult wsi_wl_surface_init(struct wsi_wl_surface *wsi_wl_surface,
                                   wsi_wl_surface->display->queue);
     }
  
@@ -66,7 +66,7 @@ index bfd94a190b439..6f728c7c7f887 100644
     return VK_SUCCESS;
  
  fail:
-@@ -2896,11 +2882,11 @@ wsi_wl_swapchain_queue_present(struct wsi_swapchain *wsi_chain,
+@@ -2988,11 +2974,11 @@ wsi_wl_swapchain_queue_present(struct wsi_swapchain *wsi_chain,
        /* Incremented by signal in base queue_present. */
        uint64_t acquire_point = image->base.explicit_sync[WSI_ES_ACQUIRE].timeline;
        uint64_t release_point = image->base.explicit_sync[WSI_ES_RELEASE].timeline;
@@ -80,7 +80,7 @@ index bfd94a190b439..6f728c7c7f887 100644
                                                          image->wl_syncobj_timeline[WSI_ES_RELEASE],
                                                          (uint32_t)(release_point >> 32),
                                                          (uint32_t)(release_point & 0xffffffff));
-@@ -3243,6 +3229,8 @@ wsi_wl_swapchain_chain_free(struct wsi_wl_swapchain *chain,
+@@ -3335,6 +3321,8 @@ wsi_wl_swapchain_chain_free(struct wsi_wl_swapchain *chain,
        wl_callback_destroy(chain->frame);
     if (chain->tearing_control)
        wp_tearing_control_v1_destroy(chain->tearing_control);
@@ -89,7 +89,7 @@ index bfd94a190b439..6f728c7c7f887 100644
     if (needs_color_surface(wsi_wl_surface->display, chain->color.colorspace) &&
         wsi_wl_surface->color.color_surface) {
        wsi_wl_surface_remove_color_refcount(wsi_wl_surface);
-@@ -3360,6 +3348,10 @@ wsi_wl_surface_create_swapchain(VkIcdSurfaceBase *icd_surface,
+@@ -3452,6 +3440,10 @@ wsi_wl_surface_create_swapchain(VkIcdSurfaceBase *icd_surface,
           wp_commit_timer_v1_destroy(old_chain->commit_timer);
           old_chain->commit_timer = NULL;
        }
@@ -100,7 +100,7 @@ index bfd94a190b439..6f728c7c7f887 100644
     }
  
     /* Take ownership of the wsi_wl_surface */
-@@ -3408,6 +3400,17 @@ wsi_wl_surface_create_swapchain(VkIcdSurfaceBase *icd_surface,
+@@ -3500,6 +3492,17 @@ wsi_wl_surface_create_swapchain(VkIcdSurfaceBase *icd_surface,
                                                            WP_TEARING_CONTROL_V1_PRESENTATION_HINT_ASYNC);
     }
  
@@ -122,7 +122,7 @@ index bfd94a190b439..6f728c7c7f887 100644
 GitLab
 
 
-From cdd09539c94bb248f3ff9dec6973d6404d4acbed Mon Sep 17 00:00:00 2001
+From 9c7b53543b08a43a288d86eae8dc481163f3519f Mon Sep 17 00:00:00 2001
 From: Etaash Mathamsetty
  <45927311+Etaash-mathamsetty@users.noreply.github.com>
 Date: Tue, 27 May 2025 15:01:29 -0400
@@ -135,7 +135,7 @@ cc: mesa-stable
  1 file changed, 23 insertions(+), 22 deletions(-)
 
 diff --git a/src/vulkan/wsi/wsi_common_wayland.c b/src/vulkan/wsi/wsi_common_wayland.c
-index 6f728c7c7f887..463e449cabe72 100644
+index 5feefc89da86e..02d5313188a15 100644
 --- a/src/vulkan/wsi/wsi_common_wayland.c
 +++ b/src/vulkan/wsi/wsi_common_wayland.c
 @@ -187,8 +187,6 @@ struct wsi_wl_surface {
@@ -209,7 +209,7 @@ index 6f728c7c7f887..463e449cabe72 100644
     }
  
     struct wayland_hdr_metadata wayland_hdr_metadata = {
-@@ -2001,9 +2002,6 @@ wsi_wl_surface_destroy(VkIcdSurfaceBase *icd_surface, VkInstance _instance,
+@@ -2050,9 +2051,6 @@ wsi_wl_surface_destroy(VkIcdSurfaceBase *icd_surface, VkInstance _instance,
        dmabuf_feedback_fini(&wsi_wl_surface->pending_dmabuf_feedback);
     }
  
@@ -219,7 +219,7 @@ index 6f728c7c7f887..463e449cabe72 100644
     loader_wayland_surface_destroy(&wsi_wl_surface->wayland_surface);
  
     if (wsi_wl_surface->display)
-@@ -3231,10 +3229,8 @@ wsi_wl_swapchain_chain_free(struct wsi_wl_swapchain *chain,
+@@ -3323,10 +3321,8 @@ wsi_wl_swapchain_chain_free(struct wsi_wl_swapchain *chain,
        wp_tearing_control_v1_destroy(chain->tearing_control);
     if (chain->wl_syncobj_surface)
        wp_linux_drm_syncobj_surface_v1_destroy(chain->wl_syncobj_surface);
@@ -232,7 +232,7 @@ index 6f728c7c7f887..463e449cabe72 100644
  
     /* Only unregister if we are the non-retired swapchain, or
      * we are a retired swapchain and memory allocation failed,
-@@ -3352,6 +3348,11 @@ wsi_wl_surface_create_swapchain(VkIcdSurfaceBase *icd_surface,
+@@ -3444,6 +3440,11 @@ wsi_wl_surface_create_swapchain(VkIcdSurfaceBase *icd_surface,
           wp_linux_drm_syncobj_surface_v1_destroy(old_chain->wl_syncobj_surface);
           old_chain->wl_syncobj_surface = NULL;
        }

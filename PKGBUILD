@@ -3,7 +3,7 @@
 
 pkgname=mesa-fp8-git
 pkgdesc="Semi-reguraly updated mainline mesa with fp8 hacks"
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 arch=('x86_64')
 makedepends=(
@@ -114,7 +114,7 @@ sha256sums=('SKIP'
             '1a3afb0da12c05c6c13487ce9a38e24fec7f81f93ee9de5e6da71c5e440b951c'
             '5f0fb8a45e0cd17c9ed2ce9ffaeb8a2683f04a571986a5f46f81e89b0b612f9e'
             'b96e41a0accfbdb3622906e536dc010081a38a957d804181d56b472126083b67'
-            'd3cee4b72710b124822310010b9ba31169cfdb8a4a626db0e9d1da79d43bb55c'
+            '5d32608ee4018326dc8218c65afbd92a4a2d1f0104dedbd234a274adb13a6f0f'
             '39278fbbf5fb4f646ce651690877f89d1c5811a3d4acb27700c1cb3cdb78fd3b'
             '3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b'
             '5267fca4496028628a95160fc423a33e8b2e6af8a5302579e322e4b520293cae'
