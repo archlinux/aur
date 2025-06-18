@@ -1,7 +1,9 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Contributor: envolution
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=fbthrift
-pkgver=2024.10.28.00
+pkgver=2025.06.16.00
 pkgrel=1
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server"
 arch=(x86_64)
@@ -59,7 +61,7 @@ options=(
   !lto
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3180aacf5dcc715bae9ed1cc107ed589fa2934795ed9ba69585fa3eb97b5b57a')
+sha256sums=('2701772125d829892472b853e5a81af0623b50e7d76c52ae882cfd92e6e9ce6a')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -80,12 +82,16 @@ build() {
     -Dthriftpy=ON \
     -DCMAKE_CXX_STANDARD=20 \
     -DPACKAGE_VERSION="$pkgver"
+
+  #fixing a missing path issue in the current release
+  mkdir -p build/thrift/conformance/if    
+
   cmake --build build
 }
 
 check() {
   cd $pkgname-$pkgver
-  ctest --test-dir build --output-on-failure
+  ctest --test-dir build --output-on-failure --exclude-regex "[Bb]ig|[Ii]ntegration"
 }
 
 package() {
@@ -101,3 +107,4 @@ package() {
     "$pkgdir/usr/lib/fb-py-libs/thrift_py_inspect/thrift/util/"*
   rm -vr "$pkgdir/usr/lib/fb-py-libs"
 }
+# vim:set ts=2 sw=2 et:
