@@ -1,0 +1,15 @@
+pkgbase = timer
+	pkgdesc = Ein einfacher CLI-Timer in Rust (z. B. 'timer 2m30s')
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/FLAS-Forum/timer
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc
+	depends = glibc
+	source = timer-1.0.0::git+file:///home/anton/timer-git/flas-timer/flas-timer
+	sha256sums = SKIP
+
+pkgname = timer
