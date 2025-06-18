@@ -1,11 +1,12 @@
 pkgbase = zoom-system-qt
-	pkgver = 6.4.13.2309
+	pkgver = 6.5.0.2465
 	pkgrel = 1
 	url = https://zoom.us/
 	arch = x86_64
 	license = LicenseRef-zoom
 	makedepends = patchelf
 	makedepends = binutils
+	makedepends = vivaldi-ffmpeg-codecs
 	optdepends = qt5-wayland: zoomus.conf xwayland=false
 	optdepends = qt5-webengine: SSO login
 	optdepends = xdg-desktop-portal-impl: Screen sharing,etc... for Wayland
@@ -15,18 +16,16 @@ pkgbase = zoom-system-qt
 	optdepends = qt5-imageformats: Unused?
 	optdepends = qt5-remoteobjects: Unused?
 	optdepends = zoom-system-qt-cef: zoomus.conf disableCef=false
-	provides = zoom
-	conflicts = zoom
 	options = !strip
 	options = emptydirs
-	source = zoom-origin-6.4.13.2309.pkg.tar.xz::https://zoom.us/client/6.4.13.2309/zoom_x86_64.pkg.tar.xz
-	b2sums = 19aeebe65e639838a7afff244c9fc92a7d63dc8e105b334c904bdef071e66b924b167515ca804dfd0c9e80fdd1de99a6d7410a39488669d2c5e39fb180094f0b
+	source = zoom-origin-6.5.0.2465.pkg.tar.xz::https://zoom.us/client/6.5.0.2465/zoom_x86_64.pkg.tar.xz
+	b2sums = 13ab9a32598986012c9954edd36e2786d36be0debe41e4e85b482b84ed237232535853eda7b7676ebc714619c0ab75f15d38671777efbb8c765f21e00236ae57
 
 pkgname = zoom-system-qt
 	pkgdesc = Zoom Workspace client on system runtime
 	depends = ocl-icd
-	depends = ffmpeg
 	depends = mpg123
+	depends = vivaldi-ffmpeg-codecs
 	depends = quazip-qt5
 	depends = qt5-base
 	depends = qt5-graphicaleffects
@@ -34,6 +33,8 @@ pkgname = zoom-system-qt
 	depends = qt5-quickcontrols2
 	depends = qt5-svg
 	depends = qt5-declarative
+	provides = zoom
+	conflicts = zoom
 
 pkgname = zoom-system-qt-cef
 	pkgdesc = Webview for zoom-system-qt

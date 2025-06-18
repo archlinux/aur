@@ -7,52 +7,56 @@
 
 pkgbase=zoom-system-qt
 pkgname=(${pkgbase}{,-cef} )
-pkgver=6.4.13.2309
+pkgver=6.5.0.2465
 pkgrel=1
 arch=('x86_64')
 license=('LicenseRef-zoom')
 url="https://zoom.us/"
-makedepends=(patchelf binutils)
+makedepends=(patchelf binutils vivaldi-ffmpeg-codecs)
 optdepends=('qt5-wayland: zoomus.conf xwayland=false'
-	'qt5-webengine: SSO login'
-	'xdg-desktop-portal-impl: Screen sharing,etc... for Wayland'
-	'qt5-'{3d,x11extras,multimedia,imageformats,remoteobjects}': Unused?'
-	${pkgbase}-cef': zoomus.conf disableCef=false')
+  'qt5-webengine: SSO login'
+  'xdg-desktop-portal-impl: Screen sharing,etc... for Wayland'
+  'qt5-'{3d,x11extras,multimedia,imageformats,remoteobjects}': Unused?'
+  ${pkgbase}-cef': zoomus.conf disableCef=false')
 options=(!strip emptydirs)
-provides=(zoom)
-conflicts=(zoom)
 source=("zoom-origin-${pkgver}.pkg.tar.xz::${url}client/${pkgver}/zoom_x86_64.pkg.tar.xz")
-b2sums=('19aeebe65e639838a7afff244c9fc92a7d63dc8e105b334c904bdef071e66b924b167515ca804dfd0c9e80fdd1de99a6d7410a39488669d2c5e39fb180094f0b')
+b2sums=('13ab9a32598986012c9954edd36e2786d36be0debe41e4e85b482b84ed237232535853eda7b7676ebc714619c0ab75f15d38671777efbb8c765f21e00236ae57')
 
 build() {	
-	ln -sf /usr/share/pixmaps/Zoom.png usr/share/pixmaps/*-zoom.png
-	cd opt/zoom
-	#Remove Qt5 symbol ver and insecure RPATH
-	for b in zoom zopen Zoom{Launcher,WebviewHost} aomhost libaomagent.so
-		do patchelf --remove-rpath $b $(nm -D "$b"|grep @Qt_5|sed 's/@Qt_5.*//;s/^\s*U/--clear-symbol-version/'|tr '\n' ' ')
-	done
-	#Replace bundled libs
-	rm -r lib{OpenCL,av*,mpg123,swresample}.so* translations Qt qt.conf
-	mkdir -p Qt/lib # for ZoomWebviewHost
-	ln -sf /usr/lib/libquazip1-qt5.so libquazip.so
-	#libdvf=libpng+libjpeg+glew+zlib+? onednn~libmkldll? libclDNN~openvino?
+  ln -sf /usr/share/pixmaps/Zoom.png usr/share/pixmaps/*-zoom.png
+  cd opt/zoom
+  #Remove Qt5 symbol ver and insecure RPATH
+  for b in zoom zopen Zoom{Launcher,WebviewHost} aomhost libaomagent.so
+    do patchelf --remove-rpath $b $(nm -D "$b"|grep @Qt_5|sed 's/@Qt_5.*//;s/^\s*U/--clear-symbol-version/'|tr '\n' ' ')
+  done
+  #Replace bundled libs
+  rm -r lib{OpenCL,mpg123}.so* translations Qt qt.conf
+  for f in libav{codec,format,util}* libswresample*
+    do ln -svf /opt/vivaldi/libffmpeg.so* $f
+  done
+  mkdir -p Qt/lib # for ZoomWebviewHost
+  ln -sf /usr/lib/libquazip1-qt5.so libquazip.so
+  #libdvf=libpng+libjpeg+glew+zlib+? onednn~libmkldll? libclDNN~openvino?
 
-	cd cef #Updating CEF(https://cef-builds.spotifycdn.com/index.html) seems impossible. ABI?
-	mv locales/en-US.pak .;rm -r locales/*;mv en-US.pak locales # for ZoomWebviewHost
-	ln -sf /opt/vivaldi/libffmpeg.so.7.4 libffmpeg.so*
-	rm -r libsqlite3.so*
-	for f in chrome-sandbox *.{pak,dat,json} lib{EGL,GLESv2,vulkan,vk_swiftshader}.so*
-		do ln -sf {/usr/lib/chromium/,}$f
-	done
+  cd cef #Updating CEF(https://cef-builds.spotifycdn.com/index.html) seems impossible. ABI?
+  mv locales/en-US.pak .;rm -r locales/*;mv en-US.pak locales # for ZoomWebviewHost
+  ln -sf /opt/vivaldi/libffmpeg.so.7.4 libffmpeg.so*
+  rm -r libsqlite3.so*
+  for f in chrome-sandbox *.{pak,dat,json} lib{EGL,GLESv2,vulkan,vk_swiftshader}.so*
+    do ln -sf {/usr/lib/chromium/,}$f
+  done
 }
 
 package_zoom-system-qt() {
-  depends=(ocl-icd ffmpeg mpg123
+  depends=(ocl-icd mpg123 vivaldi-ffmpeg-codecs
   quazip-qt5 qt5-{base,graphicaleffects,quickcontrols,quickcontrols2,svg,declarative})
+  provides=(zoom)
+  conflicts=(zoom)
   pkgdesc="Zoom Workspace client on system runtime"
   mv opt usr "$pkgdir" # breaks --repackage
   mv "$pkgdir"/opt/zoom/{ZoomWebviewHost,cef} .
-  
+
+  echo This is no longer depending on large ffmpeg package now !
 }
 
 package_zoom-system-qt-cef(){
