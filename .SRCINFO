@@ -1,13 +1,13 @@
 pkgbase = better-commits
 	pkgdesc = A CLI for creating better commits following the conventional commit guidelines.
-	pkgver = 1.16.1
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://github.com/Everduin94/better-commits
 	arch = any
 	license = MIT
 	makedepends = npm
-	noextract = better-commits-1.16.1.tgz
-	source = https://registry.npmjs.org/better-commits/-/better-commits-1.16.1.tgz
-	sha256sums = a73708a98619acc9d51b668316522e27f16916fa800ca06ca7982a3083abd6a1
+	noextract = better-commits-1.17.0.tgz
+	source = https://registry.npmjs.org/better-commits/-/better-commits-1.17.0.tgz
+	sha256sums = 6dc587c09d78a24097ccd5d19cdaeb523ec05bf4f1edd19e008923b88e890f7b
 
 pkgname = better-commits
