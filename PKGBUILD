@@ -9,3 +9,7 @@ depends=('python' 'python-rich' 'python-psutil')
 install=smyte.install
 source=("smyte.py" "banner.txt" "smyte.install")
 sha256sums=('SKIP' 'SKIP' 'SKIP')
+package() {
+    install -Dm755 "$srcdir/smyte.py" "$pkgdir/usr/bin/sy"
+    install -Dm644 "$srcdir/banner.txt" "$pkgdir/usr/share/smyte/banner.txt"
+}

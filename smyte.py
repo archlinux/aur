@@ -14,8 +14,8 @@ from rich.live import Live
 console = Console()
 
 # Use absolute path to locate banner.txt
-script_dir = os.path.dirname(os.path.realpath(__file__))
-ascii_file = os.path.join(script_dir, "banner.txt")
+ascii_file = "/usr/share/smyte/banner.txt"
+
 
 def format_bytes(size):
     for unit in ['B','KB','MB','GB','TB']:
