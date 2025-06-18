@@ -1,0 +1,32 @@
+--- a/vmmon-only/linux/driver.c
++++ b/vmmon-only/linux/driver.c
+@@ -346,7 +346,7 @@
+ 
+    Log("Module %s: unloaded\n", vmmon_miscdev.name);
+ 
+-   del_timer_sync(&tscTimer);
++   timer_delete_sync(&tscTimer);
+ 
+    Vmx86_CleanupHVIOBitmap();
+    Task_Terminate();
+--- a/vmmon-only/linux/hostif.c
++++ b/vmmon-only/linux/hostif.c
+@@ -1995,7 +1995,7 @@
+ void
+ HostIF_CleanupUptime(void)
+ {
+-   del_timer_sync(&uptimeState.timer);
++   timer_delete_sync(&uptimeState.timer);
+ }
+ 
+ 
+--- a/vmmon-only/Makefile.kernel
++++ b/vmmon-only/Makefile.kernel
+@@ -21,7 +21,7 @@
+ CC_OPTS += -DVMMON -DVMCORE
+ 
+ INCLUDE := -I$(SRCROOT)/include -I$(SRCROOT)/include/x86 -I$(SRCROOT)/common -I$(SRCROOT)/linux
+-EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE)
++ccflags-y := $(CC_OPTS) $(INCLUDE)
+ 
+ obj-m += $(DRIVER).o

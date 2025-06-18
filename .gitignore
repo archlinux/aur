@@ -1,0 +1,15 @@
+# Ignore everything
+*
+
+# ...but
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.patch
+!config
+!configure-initscript.sh
+!dkms.conf.in
+!efi-patches.txt
+!Makefile
+!unlocker.py
+!vmware-*

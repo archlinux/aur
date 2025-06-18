@@ -1,0 +1,194 @@
+--- a/vmmon/Makefile
++++ b/vmmon/Makefile
+@@ -43,7 +43,11 @@
+ endif
+ 
+ 
++ifdef KVERSION
++VM_UNAME = $(KVERSION)
++else
+ VM_UNAME = $(shell uname -r)
++endif
+ 
+ # Header directory for the running kernel
+ ifdef LINUXINCLUDE
+--- a/vmmon/common/task.c
++++ b/vmmon/common/task.c
+@@ -544,7 +544,7 @@
+  *-----------------------------------------------------------------------------
+  */
+ 
+-Selector
++static Selector
+ TaskGetFlatWriteableDataSegment(void)
+ {
+    DTR hostGDTR;
+--- a/vmmon/common/vmx86.c
++++ b/vmmon/common/vmx86.c
+@@ -53,7 +53,11 @@
+ #include "x86svm.h"
+ #include "x86cpuid_asm.h"
+ #if defined(__linux__)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 8, 0)
+ #include <asm/timex.h>
++#else
++#include <linux/timex.h>
++#endif
+ #endif
+ #include "perfctr.h"
+ #include "x86vtinstr.h"
+@@ -699,7 +699,7 @@
+  *-----------------------------------------------------------------------------
+  */
+ 
+-void
++static void
+ Vmx86FreeVMDriver(VMDriver *vm)
+ {
+    Vmx86_Free(vm->ptRootMpns);
+@@ -732,7 +732,7 @@
+  *-----------------------------------------------------------------------------
+  */
+ 
+-VMDriver *
++static VMDriver *
+ Vmx86AllocVMDriver(uint32 numVCPUs)
+ {
+    VMDriver *vm = Vmx86_Calloc(1, sizeof *vm, TRUE);
+--- a/vmmon/include/pgtbl.h
++++ b/vmmon/include/pgtbl.h
+@@ -91,7 +91,11 @@
+          } else {
+             pte_t *pte;
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,5,0)
++            pte = pte_offset_kernel(pmd, addr);
++#else
+             pte = pte_offset_map(pmd, addr);
++#endif
+             if (pte_present(*pte) == 0) {
+                pte_unmap(pte);
+                return INVALID_MPN;
+--- a/vmmon/linux/hostif.c
++++ b/vmmon/linux/hostif.c
+@@ -2940,7 +2944,7 @@
+  *-----------------------------------------------------------------------------
+  */
+ 
+-Bool
++static Bool
+ HostIFCheckTrackedMPN(VMDriver *vm, // IN: The VM instance
+                       MPN mpn)      // IN: The MPN
+ {
+@@ -3060,7 +3064,7 @@
+  *----------------------------------------------------------------------
+  */
+ 
+-int
++static int
+ HostIFWritePhysicalWork(MA ma,             // MA to be written to
+                         VA64 addr,         // src data to write
+                         Bool kernelBuffer, // is the buffer in kernel space?
+@@ -3219,7 +3223,7 @@
+  *----------------------------------------------------------------------
+  */
+ 
+-int
++static int
+ HostIFStartTimer(Bool rateChanged,  //IN: Did rate change?
+                  unsigned int rate) //IN: current clock rate
+ {
+From 4c2a103fd2d71f2084f1fe7ceacb816b9832ffa2 Mon Sep 17 00:00:00 2001
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Sun, 22 Oct 2023 23:24:05 +0200
+Subject: [PATCH] vmmon: use get_user_pages to get page PFN
+
+As a side effect of mainline commit 0d940a9b270b ("mm/pgtable: allow
+pte_offset_map[_lock]() to fail") in 6.5-rc1, __pte_offset_map(), called by
+pte_offset_map(), is no longer exported. WMware developers decided to hack
+around this by replacing pte_offset_map() by pte_offset_kernel() which does
+not seem to be a good idea and apparently may trigger warn checks in RCU
+code on some systems as mentioned in the discussion on issue #223.
+Therefore let's use the same solution as we had for 17.0.2 and older
+versions as it does not show these problems.
+
+Based on an upstream IRC discussion and the hva_to_pfn_*() family of
+functions in KVM code, what PgtblVa2MPNLocked() does seems to be an
+incomplete and partial open coded logic of get_user_pages() and as it is
+only used to get PFN from a virtual address, it can be easily implemented
+using get_user_pages() family.
+
+Without knowledge what exactly are the PFNs used for in VMware, it is hard
+to guess the right flags, these seem to work and have been tested by
+multiple users over last few weeks.
+
+We could likely use get_user_pages() also on older kernels and it might be
+actually cleaner and more reliable as existing open coded implementation
+does not seem to handle some corner cases but without knowledge of VMware
+internals, it will be safer to stick to existing code where possible.
+---
+ vmmon-only/include/pgtbl.h | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/vmmon-only/include/pgtbl.h b/vmmon-only/include/pgtbl.h
+index 3f43c62..7eaa49a 100644
+--- a/vmmon-only/include/pgtbl.h
++++ b/vmmon-only/include/pgtbl.h
+@@ -25,6 +25,7 @@
+ #include "compat_pgtable.h"
+ #include "compat_spinlock.h"
+ #include "compat_page.h"
++#include "compat_version.h"
+ 
+ 
+ /*
+@@ -45,6 +46,7 @@
+  *-----------------------------------------------------------------------------
+  */
+ 
++#if COMPAT_LINUX_VERSION_CHECK_LT(6, 5, 0) // only used by PgtblVa2MPN() below
+ static INLINE MPN
+ PgtblVa2MPNLocked(struct mm_struct *mm, // IN: Mm structure of a process
+                   VA addr)              // IN: Address in the virtual address
+@@ -110,6 +112,7 @@ PgtblVa2MPNLocked(struct mm_struct *mm, // IN: Mm structure of a process
+    }
+    return mpn;
+ }
++#endif
+ 
+ 
+ /*
+@@ -129,6 +132,8 @@ PgtblVa2MPNLocked(struct mm_struct *mm, // IN: Mm structure of a process
+  *-----------------------------------------------------------------------------
+  */
+ 
++#if COMPAT_LINUX_VERSION_CHECK_LT(6, 5, 0)
++
+ static INLINE MPN
+ PgtblVa2MPN(VA addr)  // IN
+ {
+@@ -143,4 +148,24 @@ PgtblVa2MPN(VA addr)  // IN
+    return mpn;
+ }
+ 
++#else /* COMPAT_LINUX_VERSION_CHECK_LT(6, 5, 0) */
++
++static INLINE MPN
++PgtblVa2MPN(VA addr)  // IN
++{
++   struct page *page;
++   int npages;
++   MPN mpn;
++
++   npages = get_user_pages_unlocked(addr, 1, &page, FOLL_HWPOISON);
++   if (npages != 1)
++	   return INVALID_MPN;
++   mpn = page_to_pfn(page);
++   put_page(page);
++
++   return mpn;
++}
++
++#endif /* COMPAT_LINUX_VERSION_CHECK_LT(6, 5, 0) */
++
+ #endif /* __PGTBL_H__ */

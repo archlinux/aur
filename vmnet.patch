@@ -1,0 +1,185 @@
+--- a/vmnet/Makefile
++++ b/vmnet/Makefile
+@@ -43,7 +43,11 @@
+ endif
+ 
+ 
++ifdef KVERSION
++VM_UNAME = $(KVERSION)
++else
+ VM_UNAME = $(shell uname -r)
++endif
+ 
+ # Header directory for the running kernel
+ ifdef LINUXINCLUDE
+--- a/vmnet/bridge.c
++++ b/vmnet/bridge.c
+@@ -26,6 +26,9 @@
+ #include <linux/slab.h>
+ #include <linux/poll.h>
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 4, 10)
++#include <net/gso.h>
++#endif
+ #include <linux/netdevice.h>
+ #include <linux/etherdevice.h>
+ #include <linux/mm.h>
+@@ -1405,7 +1405,7 @@
+  *----------------------------------------------------------------------
+  */
+ 
+-void
++static void
+ VNetBridgeSendLargePacket(struct sk_buff *skb,        // IN: packet to split
+                           VNetBridge *bridge)         // IN: bridge
+ {
+--- a/vmnet/driver.c
++++ b/vmnet/driver.c
+@@ -51,18 +51,6 @@
+ #include "vmnetInt.h"
+ 
+ /*
+- * Initialization and creation routines from other files.
+- * Putting them here reduces the need for so many header files.
+- */
+-
+-extern int VNetUserIf_Create(VNetPort **ret);
+-extern int VNetNetIf_Create(char *devName, VNetPort **ret, int hubNum);
+-extern int VNetBridge_Create(char *devName, uint32 flags, VNetJack *hubJack,
+-                             VNetPort **ret);
+-extern int VNetUserListener_Create(uint32 classMask, VNetJack *hubJack, VNetPort **ret);
+-
+-
+-/*
+  *  Structure for cycle detection of host interfaces.  This
+  *  struct is only used by VNetCycleDetectIf().
+  */
+@@ -279,7 +279,7 @@
+ /*
+  *----------------------------------------------------------------------
+  *
+- * init_module --
++ * LinuxDriverInit --
+  *
+  *      linux module entry point. Called by /sbin/insmod command.
+  *      Initializes module and Registers this driver for a
+@@ -295,8 +283,8 @@
+  *----------------------------------------------------------------------
+  */
+ 
+-int
+-init_module(void)
++static int
++LinuxDriverInit(void)
+ {
+    int retval;
+ 
+@@ -358,7 +358,7 @@
+ /*
+  *----------------------------------------------------------------------
+  *
+- * cleanup_module --
++ * LinuxDriverExit --
+  *
+  *      Called by /sbin/rmmod.  Unregisters this driver for a
+  *      vnet major #, and deinitializes the modules.  The 64-bit
+@@ -374,8 +362,8 @@
+  *----------------------------------------------------------------------
+  */
+ 
+-void
+-cleanup_module(void)
++static void
++LinuxDriverExit(void)
+ {
+    unregister_chrdev(VNET_MAJOR_NUMBER, "vmnet");
+    VNetProtoUnregister();
+@@ -1701,3 +1701,5 @@
+  * by default (i.e., neither mkinitrd nor modprobe will accept it).
+  */
+ MODULE_INFO(supported, "external");
++module_init(LinuxDriverInit);
++module_exit(LinuxDriverExit);
+--- a/vmnet/userif.c
++++ b/vmnet/userif.c
+Fixing VMWare Player on Linux when using DHCP addresses: https://www.nikhef.nl/~janjust/vmnet/
+@@ -998,6 +998,9 @@
+    userIf = (VNetUserIF *)port->jack.private;
+    hubJack = port->jack.peer;
+ 
++   /* never send link down events */
++   if (!linkUp) return 0;
++
+    if (port->jack.state == FALSE || hubJack == NULL) {
+       return -EINVAL;
+    }
+--- a/vmnet/vnetInt.h
++++ b/vmnet/vnetInt.h
+@@ -219,6 +219,14 @@
+ extern void VNetProc_Cleanup(void);
+ 
+ 
++int VNetNetIf_Create(char *devName, VNetPort **ret, int hubNum);
++int VNetUserIf_Create(VNetPort **ret);
++int VNetBridge_Create(const char *devName, uint32 flags, VNetJack *hubJack,
++                      VNetPort **ret);
++int VNetUserListener_Create(uint32 classMask, VNetJack *hubJack,
++                            VNetPort **port);
++
++
+ /*
+  *----------------------------------------------------------------------
+  *
+--- a/vmnet/vnetUserListener.c
+--- b/vmnet/vnetUserListener.c
+@@ -42,10 +42,12 @@
+ 
+ struct VNetUserListener_EventNode {
+    VNetUserListener_EventNode *nextEvent;
+-   VNet_EventHeader event;
++   union {
++       VNet_EventHeader header;
++       VNet_LinkStateEvent lse;
++   } event;
+ };
+ 
+-#define EVENT_NODE_HEADER_SIZE offsetof(struct VNetUserListener_EventNode, event)
+ 
+ typedef struct VNetUserListener {
+    VNetPort port;                          /* base port/jack */
+@@ -220,7 +222,7 @@
+    VNetUserListener_EventNode *t;
+ 
+    /* allocate and initialize event node */
+-   t = kmalloc(EVENT_NODE_HEADER_SIZE + e->size, GFP_ATOMIC);
++   t = kmalloc(sizeof *t, GFP_ATOMIC);
+    if (t == NULL) {
+       LOG(0, (KERN_DEBUG "VNetUserListenerEventHandler, out of memory\n"));
+       return;
+@@ -299,7 +301,7 @@
+    spin_unlock(&userListener->lock);
+ 
+    /* return data and free event */
+-   n = t->event.size;
++   n = t->event.header.size;
+    if (count < n) {
+       n = count;
+    }
+--- a/vmnet-only/vmnetInt.h
++++ b/vmnet-only/vmnetInt.h
+@@ -41,8 +41,13 @@
+     compat_skb_set_network_header(skb, sizeof (struct ethhdr)),  \
+     dev_queue_xmit(skb)                                   \
+   )
+-#define dev_lock_list()    read_lock(&dev_base_lock)
+-#define dev_unlock_list()  read_unlock(&dev_base_lock)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 9, 0)
++#   define dev_lock_list()    rcu_read_lock()
++#   define dev_unlock_list()  rcu_read_unlock()
++#else
++#   define dev_lock_list()    read_lock(&dev_base_lock)
++#   define dev_unlock_list()  read_unlock(&dev_base_lock)
++#endif
+ 
+ 
+ extern struct proto vmnet_proto;
