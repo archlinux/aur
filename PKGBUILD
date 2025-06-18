@@ -3,7 +3,7 @@
 
 pkgname=napcatqq-git
 _pkgname=NapCatQQ
-pkgver=r4167.f576cd94
+pkgver=r4168.2c76102f
 pkgrel=1
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64'
@@ -11,7 +11,7 @@ arch=('x86_64'
       'loong64')
 url="https://github.com/NapNeko/NapCatQQ"
 license=('GPL2')
-depends=('linuxqq' 'xorg-server-xvfb')
+depends=('linuxqq' 'xorg-server-xvfb' 'execstack')
 makedepends=('git' 'npm' 'jq')
 options=('!strip')
 conflicts=('napcatqq'
@@ -38,6 +38,8 @@ build() {
     npm i && cd napcat.webui && npm i && cd .. || exit 1
     npm run build:shell && npm run depend  || exit 1
     rm dist/package-lock.json
+    # 动态库 GNU_STACK 段为 RWE 触发了 W^X 所以临时禁用掉
+    execstack -c dist/moehoo/MoeHoo.linux.x64.node
 }
 
 package() {
