@@ -11,10 +11,13 @@ from rich.live import Live
 
 console = Console()
 
-# Fixed path to banner
-script_dir = os.path.dirname(os.path.realpath(__file__))
-ascii_file = "/usr/share/smyte/banner.txt"
+# ✅ Dynamically detect banner path
+def get_banner_path():
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    share_dir = "/usr/share/smyte/banner.txt"
+    fallback = os.path.join(script_dir, "banner.txt")
 
+    return share_dir if os.path.exists(share_dir) else fallback
 
 def format_bytes(size):
     for unit in ['B','KB','MB','GB','TB']:
@@ -24,10 +27,12 @@ def format_bytes(size):
     return f"{size:.2f} PB"
 
 def load_ascii_banner():
-    if os.path.exists(ascii_file):
-        with open(ascii_file, "r") as f:
+    banner_path = get_banner_path()
+    try:
+        with open(banner_path, "r") as f:
             return f.read()
-    return "NETLOG"
+    except FileNotFoundError:
+        return "NETLOG"
 
 def get_data_usage():
     counters = psutil.net_io_counters()
@@ -35,12 +40,16 @@ def get_data_usage():
 
 def build_ui(upload, download):
     banner = load_ascii_banner()
+
     usage_text = Text()
     usage_text.append(f"📤 Uploaded:   {format_bytes(upload)}\n", style=Style(color="cyan", bold=True))
     usage_text.append(f"📥 Downloaded: {format_bytes(download)}\n", style=Style(color="green", bold=True))
-
+    
     full_panel = Panel(
-        Align.center(Text(banner, style="bold magenta") + Text("\n\n") + usage_text, vertical="middle"),
+        Align.center(
+            Text(banner, style="bold magenta") + Text("\n\n") + usage_text,
+            vertical="middle"
+        ),
         border_style="bold magenta",
         title="📶 Smyte - Data Usage Tracker",
         padding=(2, 10)
@@ -61,9 +70,4 @@ def main():
         console.print("\n[red bold]❌ Exiting Smyte...[/]")
 
 if __name__ == "__main__":
-    try:
-        import rich, psutil
-        main()
-    except ImportError:
-        print("Installing dependencies...")
-        os.system("pip install rich psutil && python3 " + __file__)
+    main()
