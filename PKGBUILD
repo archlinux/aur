@@ -8,7 +8,7 @@ url="https://deguco.net/software"
 license=('MIT')
 depends=()
 makedepends=('go')
-source=("git+http://git-pub.deguco.net/degumail.git#commit=5f66f2c641ed18521a84208701dcf19c813949af")
+source=("git+http://git-pub.deguco.net/degumail.git#commit=0f4dc3c8d85cde821e1cb76b9fb2dd1cbb175197")
 sha256sums=('SKIP')
 
 build() {
