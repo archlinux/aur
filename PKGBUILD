@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=planify
 _app_id="io.github.alainm23.$pkgname"
-pkgver=4.12.0
-pkgrel=2
+pkgver=4.12.2
+pkgrel=1
 pkgdesc="Task manager with Todoist and Nextcloud support"
 arch=('x86_64')
 url="https://github.com/alainm23/planify"
@@ -24,22 +24,15 @@ makedepends=(
 )
 conflicts=('elementary-planner')
 source=("git+https://github.com/alainm23/planify.git#tag=$pkgver"
-        'quick-add.patch'
-        'use-static-cast.patch')
-sha256sums=('919b6352ffccc526db0874dbba110eed77a0789936e3a6a6434221a13ec3dfe7'
-            '7dbb298442c04502521835581acc454d3a3085b81161ca0bfb3d04e5f01c69a2'
-            'aa668bee34405c56c941680bac172567bf94bc46fe807d90d001149360804400')
+        'quick-add.patch')
+sha256sums=('adfa9d5f317d7f899906c45cf59c89835c5b6dd01d0592abd67ba6dbad649c97'
+            '7dbb298442c04502521835581acc454d3a3085b81161ca0bfb3d04e5f01c69a2')
 
 prepare() {
   cd "$pkgname"
 
   # Adjust Quick Add command
   patch -Np1 -i ../quick-add.patch
-
-  # use static cast from EventControllerKey to ShortcutController
-  # https://github.com/alainm23/planify/issues/1551
-  # https://github.com/alainm23/planify/pull/1552
-  patch -Np1 -i ../use-static-cast.patch
 }
 
 build() {
