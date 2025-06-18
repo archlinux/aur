@@ -4,8 +4,8 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook-git
 _pkgname=Notesnook
-pkgver=3.1.0.beta.3.beta.r6.gd35c0be
-_electronversion=31
+pkgver=3.2.0.r1.gbe1a8bf
+_electronversion=34
 _nodeversion=23
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Use system-wide electron)"
@@ -37,7 +37,7 @@ source=(
 )
 sha256sums=('SKIP'
             'efc8a6cea79ed0203dcbadf17632b5341952a49704f99e3ea0ddc573b06748f4'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -51,15 +51,15 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    cd "${srcdir}/${pkgname//-/.}"
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname//-/.}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
