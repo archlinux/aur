@@ -8,7 +8,7 @@
 readonly _pkgname="bench"
 
 pkgname="frappe-bench"
-pkgver="5.25.4"
+pkgver="5.25.5"
 pkgrel="1"
 pkgdesc="CLI to manage multi-tenant deployments for Frappe apps."
 arch=("any")
@@ -20,7 +20,7 @@ optdepends=("mariadb: Database"
     "nginx: HTTP server")
 provides=("bench")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("15820149350e46d2199de151233a0066db84c3e94d275e62b3f9e48d63396019f12e8c0ed8efc7c271440c48b2bd6b2f2a7879b07c40eb5a049833e4b6b354d3")
+sha512sums=("9495581b146652179a158de807f84db2e24824d1c3f3942717fd7fc12cf7acc86dce81a1474d10aa4f357954002ffe6d9caa6ad7d6beb2f77661d1d994d7567d")
 
 build()
 {
