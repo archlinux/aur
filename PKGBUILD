@@ -1,14 +1,15 @@
 # Maintainer: ImVILLS <ваш@email.com>
 pkgname=neocash
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Modern shell with advanced features"
 arch=('x86_64')
 url="https://github.com/ImVILLS/neocash"
 license=('MIT')
+depends=('rust' 'git')
 makedepends=('cargo')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('66649774162ae3c0757682ec3f10690abe4173e27ae593808b6e959eea9af661')
+sha256sums=('SKIP')
 
 build() {
   cd "$pkgname-$pkgver"
