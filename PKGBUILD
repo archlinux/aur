@@ -1,10 +1,12 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
-# Maintainer: László Várady <laszlo.varady93@gmail.com>
+# Contributor: envolution
+# Contributor: László Várady <laszlo.varady93@gmail.com>
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 # Contributor: Daichi Shinozaki <dsdseg at gmail dot com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=wangle
-pkgver=2024.10.28.00
+pkgver=2025.06.16.00
 pkgrel=1
 pkgdesc="C++ networking library providing client/server abstractions for building services"
 arch=(x86_64)
@@ -29,7 +31,7 @@ makedepends=(
 checkdepends=(expat)
 provides=(libwangle.so)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5e85324a00f5472b0fa0e627beff460ec9a81381f59d3e2c0bf284d843cc69eb')
+sha256sums=('d37bbd68796228617614561155d6996e9ce0cade1ccce1e5de6671f8362e0234')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -65,3 +67,4 @@ package() {
   rm -vr "$pkgdir/usr/include/wangle/ssl/test/certs"
   rm -vr "$pkgdir/usr/include/wangle/util/test"
 }
+# vim:set ts=2 sw=2 et:
