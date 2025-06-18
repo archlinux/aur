@@ -1,6 +1,6 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT m>e
 pkgname=zwave-js-server
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Websocket server wrapper around Home Assistant's Z-Wave JS."
 arch=('any')
@@ -13,7 +13,7 @@ source=("https://registry.npmjs.org/@zwave-js/server/-/server-$pkgver.tgz"
         "zwave-js-server@.service"
         "zwave-device.conf.example")
 noextract=("server-$pkgver.tgz")
-sha256sums=('d1c3dbc586e3832760fc0b4814138c92bfd26b618f2e8866747828e6452040c3'
+sha256sums=('a1c1efee802adf2a96c662241d4c26556ef779cdb5ea53a4e34eb155ec52bf32'
             'ea0eed4794de59152a99178cf8800dc8dd2660f5bb034087571767ae0c04e243'
             '5c2162ebea47c41af8355345f4ed5d8fdc47d4d98a0919904cbb9d5c6ffe4f76')
 
