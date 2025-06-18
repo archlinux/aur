@@ -1,0 +1,4 @@
+[ferroxide]
+source = "git"
+git = "https://github.com/acheong08/ferroxide/"
+prefix = "v"

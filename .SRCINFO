@@ -1,0 +1,13 @@
+pkgbase = ferroxide
+	pkgdesc = Hard fork of Hydroxide; a third-party, open-source ProtonMail CardDAV, IMAP and SMTP bridge
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/acheong08/ferroxide
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	conflicts = ferroxide-git
+	source = ferroxide-0.5.0.tag.gz::https://github.com/acheong08/ferroxide/archive/refs/tags/v0.5.0.tar.gz
+	sha512sums = 884a5f3117ca35de9b2970469e1fcc3f13aacbfbc0a59a9ec30f148e74c3adb7c4c3bedbdbccbcd78227baeea28a7a1ca515fd52a54281a44178757b31528b81
+
+pkgname = ferroxide
