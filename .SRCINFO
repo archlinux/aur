@@ -9,6 +9,7 @@ pkgbase = assaultcube-reloaded
 	depends = curl
 	depends = libgl
 	depends = libvorbis
+	depends = libx11
 	depends = openal
 	depends = sdl12-compat
 	depends = sdl_image

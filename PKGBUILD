@@ -7,7 +7,7 @@ pkgdesc='AssaultCube Reloaded'
 arch=('i686' 'x86_64')
 url='http://acr.victorz.ca'
 license=('Zlib')
-depends=('curl' 'libgl' 'libvorbis' 'openal' 'sdl12-compat' 'sdl_image' 'zlib')
+depends=('curl' 'libgl' 'libvorbis' 'libx11' 'openal' 'sdl12-compat' 'sdl_image' 'zlib')
 source=("https://github.com/actf/acr/archive/v${pkgver}.tar.gz"
   'acreloaded'
   'acreloaded-server'
