@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -177,7 +177,7 @@ if (DEFINED GPU_ARCHS)
+@@ -183,7 +183,7 @@ if (DEFINED GPU_ARCHS)
    message(STATUS "GPU_ARCHS defined as ${GPU_ARCHS}. Generating CUDA code for SM ${GPU_ARCHS}")
    separate_arguments(GPU_ARCHS)
    foreach(SM IN LISTS GPU_ARCHS)

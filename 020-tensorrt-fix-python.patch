@@ -1,6 +1,6 @@
 --- a/python/CMakeLists.txt
 +++ b/python/CMakeLists.txt
-@@ -307,7 +307,7 @@ set(CMAKE_CXX_STANDARD ${CPP_STANDARD})
+@@ -309,7 +309,7 @@ set(CMAKE_CXX_STANDARD ${CPP_STANDARD})
  
  if(NOT MSVC)
      # This allows us to use TRT libs shipped with standalone wheels.
@@ -9,7 +9,7 @@
  endif()
  
  # -------- PATHS --------
-@@ -371,8 +371,8 @@ if(MSVC)
+@@ -373,8 +373,8 @@ if(MSVC)
  else()
      find_path(
          PY_INCLUDE Python.h
@@ -22,32 +22,32 @@
  endif()
 --- a/python/build.sh
 +++ b/python/build.sh
-@@ -35,15 +35,17 @@ cmake .. -DCMAKE_BUILD_TYPE=Release \
+@@ -35,16 +35,18 @@ cmake .. -DCMAKE_BUILD_TYPE=Release \
           -DEXT_PATH=${EXT_PATH} \
           -DCUDA_INCLUDE_DIRS=${CUDA_ROOT}/include \
           -DTENSORRT_ROOT=${ROOT_PATH} \
 -         -DTENSORRT_MODULE=${TENSORRT_MODULE} \
--         -DTENSORRT_LIBPATH=${TRT_LIBPATH}
--make -j12
 +         -DTENSORRT_MODULE=tensorrt \
-+         -DTENSORRT_LIBPATH=${TRT_LIBPATH} \
+          -DTENSORRT_LIBPATH=${TRT_LIBPATH} \
 +         -DCMAKE_SKIP_RPATH=YES \
-+         -G 'Unix Makefiles'
++         -G 'Unix Makefiles' \
+          -DTRT_ONNXPARSER_NAME=nvonnxparser
+-make -j12
 +cmake --build .
  
  # Generate wheel
--TRT_MAJOR=$(awk '/^\#define NV_TENSORRT_MAJOR/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
--TRT_MINOR=$(awk '/^\#define NV_TENSORRT_MINOR/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
--TRT_PATCH=$(awk '/^\#define NV_TENSORRT_PATCH/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
--TRT_BUILD=$(awk '/^\#define NV_TENSORRT_BUILD/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
-+TRT_MAJOR=$(awk '/^#define NV_TENSORRT_MAJOR/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
-+TRT_MINOR=$(awk '/^#define NV_TENSORRT_MINOR/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
-+TRT_PATCH=$(awk '/^#define NV_TENSORRT_PATCH/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
-+TRT_BUILD=$(awk '/^#define NV_TENSORRT_BUILD/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
+-TRT_MAJOR=$(awk '/^\#define TRT_MAJOR_ENTERPRISE/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
+-TRT_MINOR=$(awk '/^\#define TRT_MINOR_ENTERPRISE/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
+-TRT_PATCH=$(awk '/^\#define TRT_PATCH_ENTERPRISE/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
+-TRT_BUILD=$(awk '/^\#define TRT_BUILD_ENTERPRISE/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
++TRT_MAJOR=$(awk '/^#define TRT_MAJOR_ENTERPRISE/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
++TRT_MINOR=$(awk '/^#define TRT_MINOR_ENTERPRISE/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
++TRT_PATCH=$(awk '/^#define TRT_PATCH_ENTERPRISE/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
++TRT_BUILD=$(awk '/^#define TRT_BUILD_ENTERPRISE/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
  TRT_VERSION=${TRT_MAJOR}.${TRT_MINOR}.${TRT_PATCH}.${TRT_BUILD}
  TRT_MAJMINPATCH=${TRT_MAJOR}.${TRT_MINOR}.${TRT_PATCH}
  
-@@ -51,10 +53,10 @@ echo "Generating python ${PYTHON_MAJOR_VERSION}.${PYTHON_MINOR_VERSION} bindings
+@@ -52,10 +54,10 @@ echo "Generating python ${PYTHON_MAJOR_VERSION}.${PYTHON_MINOR_VERSION} bindings
  
  expand_vars_cp () {
      test -f ${1} || (echo "ERROR: File: ${1} does not exist!" && exit 1); \
@@ -59,10 +59,10 @@
 +        -e "s|##TENSORRT_MAJMINPATCH##|${TRT_MAJMINPATCH}|g" \
 +        -e "s|##TENSORRT_PYTHON_VERSION##|${TRT_MAJMINPATCH}|g" \
 +        -e "s|##TENSORRT_MODULE##|${TENSORRT_MODULE}|g" \
+         -e "s/##TENSORRT_PLUGIN_DISABLED##/false/g" \
          ${1} > ${2}
  }
- 
-@@ -66,6 +68,6 @@ popd
+@@ -68,6 +70,6 @@ popd
  cp tensorrt/tensorrt.so bindings_wheel/tensorrt/tensorrt.so
  
  pushd ${WHEEL_OUTPUT_DIR}/bindings_wheel

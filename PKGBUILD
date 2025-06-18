@@ -1,13 +1,15 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgbase=tensorrt
-pkgname=('tensorrt' 'python-tensorrt')
-pkgver=10.10.0.31
+pkgname=(
+    'tensorrt'
+    'python-tensorrt')
+pkgver=10.11.0.33
 _cudaver=12.9
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
-_onnx_graphsurgeon_ver=0.5.7
-_polygraphy_ver=0.49.20
+_onnx_graphsurgeon_ver=0.5.8
+_polygraphy_ver=0.49.22
 _tensorflow_quantization_ver=0.2.0
 pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
@@ -22,11 +24,11 @@ makedepends=(
     'python'
     'python-build'
     'python-installer'
-    'python-onnx'
+    #'python-onnx'
     'python-setuptools'
     'python-wheel')
 source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/${pkgver%.*}/tars/TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.tar.gz"
-        "git+https://github.com/NVIDIA/TensorRT.git#tag=v${pkgver%.*}"
+        "git+https://github.com/NVIDIA/TensorRT.git#tag=v$(sed -E 's/\.[0-9]+\.[0-9]+$//' <<< "$pkgver")"
         'protobuf-protocolbuffers'::'git+https://github.com/protocolbuffers/protobuf.git'
         'cub-nvlabs'::'git+https://github.com/NVlabs/cub.git'
         'git+https://github.com/onnx/onnx-tensorrt.git'
@@ -39,8 +41,8 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         '030-tensorrt-fix-gpu-archs-list.patch'
         'TensorRT-LICENSE-AGREEMENT.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('690387fcf1dfe5ef8c4bc14a23d6360999145743471d806c2edbf998a64a0cd6'
-            'e119fe3c2c0636a4e82fa317d10220492327d03cb5ad61b6fb9637401741b907'
+sha256sums=('7d9bcccf1b92d38c0f91bd47ad1fd516f2cfb71f655e70ed8f182eaa9842a617'
+            '0c8efec753459a5a949dc9aba6109959b4c18ce63b5799d5c3f0a47ec60c1cb3'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -49,8 +51,8 @@ sha256sums=('690387fcf1dfe5ef8c4bc14a23d6360999145743471d806c2edbf998a64a0cd6'
             'SKIP'
             'dddd73664306d7d895a95e1cf18925b31b52785e468727e4635b45edae5166f9'
             'ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f'
-            'c2763950e5464f6051aaca700f670348e487479b702e88e9500a8f55069f1e96'
-            '901f4d365a15adf741262cdf9c4e8a07e73ae70854bd2fc90b1b80d0cb4d3fdf'
+            'dd82dc516a4537dab53b08b2a0cec6ea9616351f7db941f5e28cbb53548b73e6'
+            'a2673c754f0f667ca5687998ddc87ba2a6b24863b87ce6aea64c3fb68b011456'
             '64907f271b91655a28f3c9f3555a3c645b23d878f41063192a9d2a67f752205a')
 
 prepare() {
@@ -84,13 +86,17 @@ prepare() {
 }
 
 build() {
+    # using default cuda gpu architectures defined by upstream
+    # NOTE: cannot set all supported cuda gpu architectures with GPU_ARCHS cmake option due to:
+    # https://github.com/NVIDIA/cccl/issues/4967
+    # (cccl is included in the cuda package)
+    
     export CXXFLAGS+=' -ffat-lto-objects'
     cmake -B build -S TensorRT \
         -G 'Unix Makefiles' \
         -DBUILD_SAMPLES:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DGPU_ARCHS:STRING='50 52 53 60 61 62 70 72 75 80 86 87 89 90 100 101 120' \
         -DONNX_BUILD_PYTHON:BOOL='ON' \
         -DPROTOBUF_VERSION:STRING="$_protobuf_ver" \
         -DTRT_LIB_DIR:STRING="${srcdir}/TensorRT-${pkgver}/lib" \
@@ -114,8 +120,10 @@ build() {
     ./build.sh
     
     # python tools
+    # python-onnx (for onnx-graphsurgeon) currently gives an undefined symbol error with the following import used by the build system:
+    # >>> from onnx.onnx_cpp2py_export import ONNX_ML
     local _dir
-    for _dir in onnx-graphsurgeon Polygraphy tensorflow-quantization
+    for _dir in Polygraphy tensorflow-quantization #onnx-graphsurgeon
     do
         cd "${srcdir}/TensorRT/tools/${_dir}"
         python -m build --wheel --no-isolation
@@ -142,7 +150,6 @@ package_tensorrt() {
     install -D -m644 TensorRT-LICENSE-AGREEMENT.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m644 "TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
 }
-
 package_python-tensorrt() {
     pkgdesc+=' (python bindings and tools)'
     license+=('LicenseRef-Custom')
@@ -155,19 +162,20 @@ package_python-tensorrt() {
     optdepends=(
         'python-colored: for onnx_graphsurgeon and polygraphy python modules'
         'python-ml-dtypes: for onnx_graphsurgeon python module'
-        'python-onnx: for onnx_graphsurgeon python module'
+        #'python-onnx: for onnx_graphsurgeon python module'
         'python-onnxruntime: for onnx_graphsurgeon python module'
         'python-protobuf: for polygraphy python modules'
         'python-tensorflow-cuda: for polygraphy and tensorflow-quantization python modules'
         'python-tf2onnx: for tensorflow-quantization python module')
-    provides=("python-onnx-graphsurgeon=${_onnx_graphsurgeon_ver}"
-              "python-polygraphy=${_polygraphy_ver}"
-              "python-tensorflow-quantization=${_tensorflow_quantization_ver}")
+    provides=(
+        #"python-onnx-graphsurgeon=${_onnx_graphsurgeon_ver}"
+        "python-polygraphy=${_polygraphy_ver}"
+        "python-tensorflow-quantization=${_tensorflow_quantization_ver}")
     
     python -m installer --destdir="$pkgdir" TensorRT/python/build/bindings_wheel/dist/*.whl
     
     local _dir
-    for _dir in onnx-graphsurgeon Polygraphy tensorflow-quantization
+    for _dir in Polygraphy tensorflow-quantization #onnx-graphsurgeon
     do
         python -m installer --destdir="$pkgdir" "TensorRT/tools/${_dir}/dist"/*.whl
     done
