@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import os
-import sys
 import time
 import psutil
 from rich.console import Console
@@ -12,24 +11,22 @@ from rich.live import Live
 
 console = Console()
 
-# Paths to look for banner.txt
-def load_ascii_banner():
-    paths = [
-        "/usr/share/smyte/banner.txt",  # Global install path (AUR)
-        os.path.join(os.path.dirname(os.path.realpath(__file__)), "banner.txt")  # Local path (dev)
-    ]
-    for path in paths:
-        if os.path.exists(path):
-            with open(path, "r") as f:
-                return f.read()
-    return "NETLOG"
+# Fixed path to banner
+script_dir = os.path.dirname(os.path.realpath(__file__))
+ascii_file = os.path.join(script_dir, "banner.txt")
 
 def format_bytes(size):
-    for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
+    for unit in ['B','KB','MB','GB','TB']:
         if size < 1024:
             return f"{size:.2f} {unit}"
         size /= 1024
     return f"{size:.2f} PB"
+
+def load_ascii_banner():
+    if os.path.exists(ascii_file):
+        with open(ascii_file, "r") as f:
+            return f.read()
+    return "NETLOG"
 
 def get_data_usage():
     counters = psutil.net_io_counters()
@@ -37,13 +34,12 @@ def get_data_usage():
 
 def build_ui(upload, download):
     banner = load_ascii_banner()
-
     usage_text = Text()
     usage_text.append(f"📤 Uploaded:   {format_bytes(upload)}\n", style=Style(color="cyan", bold=True))
     usage_text.append(f"📥 Downloaded: {format_bytes(download)}\n", style=Style(color="green", bold=True))
 
     full_panel = Panel(
-        Align.center(Text(banner, style="bold magenta") + Text("\n\n") + usage_text),
+        Align.center(Text(banner, style="bold magenta") + Text("\n\n") + usage_text, vertical="middle"),
         border_style="bold magenta",
         title="📶 Smyte - Data Usage Tracker",
         padding=(2, 10)
@@ -68,5 +64,5 @@ if __name__ == "__main__":
         import rich, psutil
         main()
     except ImportError:
-        print("Setting up virtual environment and installing dependencies...")
-        os.system("python -m venv venv && source venv/bin/activate && pip install rich psutil && python smyte.py")
+        print("Installing dependencies...")
+        os.system("pip install rich psutil && python3 " + __file__)
