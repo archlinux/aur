@@ -3,9 +3,9 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-x11
-pkgver=6.3.90
+pkgver=6.4.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=1
 pkgdesc='An easy to use, but flexible, X Window Manager'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -47,6 +47,7 @@ depends=(aurorae
          libqaccessibilityclient-qt6
          libx11
          libxcb
+         libxcvt
          libxi
          libxkbcommon
          libxkbcommon-x11
@@ -66,24 +67,19 @@ depends=(aurorae
          xcb-util-wm)
 makedepends=(extra-cmake-modules
              kdoctools
+             kwayland
              plasma-wayland-protocols
              python
              wayland-protocols)
 groups=(plasma)
-source=(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig}
-        dependencies.patch)
-sha256sums=('7c09abb3149e23d52dc88b72a92888d43d5792dd4b60c50e922656f3ebcbccf9'
-            'SKIP'
-            'cb81e55523bc5a55f4d861a917057a6234f36fa63d0d3907d4a0f8a58189db53')
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('76d7c018eb6ee657292c892ab9ce74098290eee07c3fdfa9d7c531497d8e5b77'
+            'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '90A968ACA84537CC27B99EAF2C8DF587A6D4AAC1'  # Nicolas Fella <nicolas.fella@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
-
-prepare() {
-  patch -d $pkgname-$pkgver -p1 < dependencies.patch
-}
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
