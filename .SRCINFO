@@ -1,6 +1,6 @@
 pkgbase = libc++18
 	pkgver = 18.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libcxx.llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
@@ -22,5 +22,3 @@ pkgbase = libc++18
 pkgname = libc++18
 
 pkgname = libc++abi18
-
-pkgname = libc++experimental18

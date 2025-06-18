@@ -6,9 +6,9 @@
 
 _oldver=18
 pkgbase="libc++${_oldver}"
-pkgname=("libc++${_oldver}" "libc++abi${_oldver}" "libc++experimental${_oldver}")
+pkgname=("libc++${_oldver}" "libc++abi${_oldver}")
 pkgver=18.1.8
-pkgrel=1
+pkgrel=2
 url="https://libcxx.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 arch=('x86_64')
@@ -50,6 +50,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr/lib/llvm${_oldver} \
     -DCMAKE_C_COMPILER=/usr/lib/llvm${_oldver}/bin/clang \
     -DCMAKE_CXX_COMPILER=/usr/lib/llvm${_oldver}/bin/clang++ \
+    -DCMAKE_C_FLAGS=-fPIC \
+    -DCMAKE_CXX_FLAGS=-fPIC \
     -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
     -DLLVM_EXTERNAL_LIT="${srcdir}/llvm-project-${pkgver}.src/llvm/utils/lit/lit.py" \
     ../llvm-project-$pkgver.src/runtimes
@@ -82,15 +84,5 @@ _package_libc++abi() {
   install -Dm0644 llvm-project-$pkgver.src/libcxxabi/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
  
-_package_libc++experimental() {
-  depends=("libc++${_oldver}=$pkgver-$pkgrel")
-  pkgdesc='LLVM C++ experimental library.'
-  
-  install -Dm0644 -t "$pkgdir"/usr/lib/llvm${_oldver}/lib/ build/lib/libc++experimental.a
-  install -Dm0644 llvm-project-$pkgver.src/libcxx/CREDITS.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/CREDITS
-  install -Dm0644 llvm-project-$pkgver.src/libcxx/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
-}
-
 eval "package_libc++${_oldver} () { _package_libc++; }"
 eval "package_libc++abi${_oldver} () { _package_libc++abi; }"
-eval "package_libc++experimental${_oldver} () { _package_libc++experimental; }"
