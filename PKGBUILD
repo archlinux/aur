@@ -2,7 +2,7 @@
 pkgname=flomo-bin
 _pkgname=Flomo
 _zhsname='浮墨笔记'
-pkgver=5.25.53
+pkgver=5.25.62
 _electronversion=32
 pkgrel=1
 pkgdesc="A new generation of cloud knowledge base for personal note-taking and knowledge creation, team collaboration and knowledge accumulation.(Prebuilt version.Use system-wide electron)新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀"
@@ -26,9 +26,12 @@ source=(
     "LICENSE.html::https://help.flomoapp.com/legal/"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('db30f0a6f655a7c2f0dd24aec1d6668e0af7b795b00d5814bbaed423d2d755ed'
-            '66c22dec921f9311757579326de8134eed05d1c02f0fd451da8ca5b5e657703c'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('22fc909049818630bc092da08471b31fd5f276c09f5350e9f6e5dcc4e4e85ed4'
+            '7508831687e1d9431d22b02fc49166e142f79497f6a938563d3b4f7d8a54c8ee'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="strings ${srcdir}/tmp/${pkgname%-bin}.exe  | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -47,6 +50,7 @@ prepare() {
     7z x -aoa "${srcdir}/${pkgname%-bin}-${pkgver}.exe"
     install -Dm755 -d "${srcdir}/tmp"
     7z x -aoa "${srcdir}/\$PLUGINSDIR/app-64.7z" -o"${srcdir}/tmp"
+    _get_electron_version
     asar e "${srcdir}/tmp/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked" -type f -name "*.gz" -exec rm -rf {} +
     sed -i -e "
