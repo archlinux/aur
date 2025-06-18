@@ -33,4 +33,6 @@ package() {
   cd "$srcdir/OpenModelica"
   make install -C build DESTDIR="${pkgdir}"
   rm -r "${pkgdir}"/usr/share/zmq
+  rm -r "${pkgdir}"/usr/share/cminpack
+  rm -r "${pkgdir}"/usr/include/cminpack-1
 }
