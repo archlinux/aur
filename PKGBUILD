@@ -1,7 +1,7 @@
 # Maintainer: cvnb <narendrabharathi@gmail.com>
 pkgname=gerbil-scheme-git
 _pkgname=gerbil
-pkgver=v0.18.1_142_g6771e034
+pkgver=v0.18.1_163_ge55e0806a
 pkgrel=1
 pkgdesc="Gerbil is an opinionated dialect of Scheme designed for Systems Programming, with a state of the art macro and module system on top of the Gambit runtime."
 arch=(x86_64 i686 aarch64)
