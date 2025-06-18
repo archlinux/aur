@@ -2,7 +2,7 @@
 
 pkgname=azuredatastudio-bin
 _pkgname=azuredatastudio
-pkgver=1.51.1
+pkgver=1.52.0
 pkgrel=1
 pkgdesc="A data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW. (official prebuilt version)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('azuredatastudio')
 options=('staticlibs')
 source=("$pkgname-$pkgver.tar.gz::https://azuredatastudio-update.azurewebsites.net/$pkgver/linux-x64/stable"
         "${_pkgname}.desktop")
-sha256sums=('2402861b292d370e2c66d0a2b995a1aca03ac6911e268363f783ab254134ba7c'
+sha256sums=('6ddb60dec0aecce68cdad2fcb4727fb8d3b96f4ad35395054c58f77ca8dbff6c'
             'ff4b8d7d1648e7552017c103308aef2d291509a73b7b4ed6083501ea55a1b541')
 
 package() {
