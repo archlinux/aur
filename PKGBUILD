@@ -1,6 +1,6 @@
 # Maintainer: Thomas hitthomas28@gmail.com
 pkgname=mathsqt
-pkgver=1.0.0  # Must match git tag
+pkgver=1.0.1 
 pkgrel=1
 pkgdesc="A comprehensive CLI math tool written in Python."
 arch=('any')
