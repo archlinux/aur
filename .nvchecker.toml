@@ -1,0 +1,4 @@
+[discord-chat-exporter]
+source = "git"
+git = "https://github.com/Tyrrrz/DiscordChatExporter.git"
+prefix = "v"

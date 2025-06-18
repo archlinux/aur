@@ -1,0 +1,25 @@
+--- a/DiscordChatExporter.Gui/Services/SettingsService.cs
++++ b/DiscordChatExporter.Gui/Services/SettingsService.cs
+@@ -13,10 +13,21 @@
+ [ObservableObject]
+ public partial class SettingsService()
+     : SettingsBase(
+-        Path.Combine(AppContext.BaseDirectory, "Settings.dat"),
++        GetSettingsPath(),
+         SerializerContext.Default
+     )
+ {
++    private static string GetSettingsPath()
++    {
++        var configDir = Environment.GetEnvironmentVariable("XDG_CONFIG_HOME");
++        if (string.IsNullOrEmpty(configDir))
++            configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".config");
++        
++        configDir = Path.Combine(configDir, "DiscordChatExporter");
++        Directory.CreateDirectory(configDir);
++        return Path.Combine(configDir, "Settings.dat");
++    }
++
+     [ObservableProperty]
+     public partial bool IsUkraineSupportMessageEnabled { get; set; } = true;
+ 
