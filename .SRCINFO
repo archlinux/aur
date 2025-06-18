@@ -1,14 +1,15 @@
 pkgbase = linuxdeploy-appimage
 	pkgdesc = AppDir creation and maintenance tool.
-	pkgver = 1.alpha.20240109.1
+	pkgver = 1.alpha.20250213.2
 	pkgrel = 1
 	url = https://github.com/linuxdeploy/linuxdeploy
 	arch = x86_64
 	license = MIT
+	depends = fuse2
 	provides = linuxdeploy
 	conflicts = linuxdeploy
 	options = !strip
-	source = linuxdeploy-1-alpha-20240109-1.AppImage::https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20240109-1/linuxdeploy-x86_64.AppImage
-	sha256sums = c86d6540f1df31061f02f539a2d3445f8d7f85cc3994eee1e74cd1ac97b76df0
+	source = https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20250213-2/linuxdeploy-x86_64.AppImage
+	sha256sums = 4648f278ab3ef31f819e67c30d50f462640e5365a77637d7e6f2ad9fd0b4522a
 
 pkgname = linuxdeploy-appimage
