@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/pterodactyl/panel/releases/
         "pterodactyl-queue.service"
         "pterodactyl-scheduler.service"
         "pterodactyl-scheduler.timer")
-b2sums=('3bfcb8fb2d723681fbefc22bfcf5ae2167b516b5d8459a3f883e09cc184fa1cab9685a3af8ee5b9ddd7975e10e8fb97b89ab426ba15310fde5537dde2a448266'
+b2sums=('63d33ad6942a57638f0bd55ab3430c501c70491ef0b48f96cd8f6bfabc136464afa131ef4ddb149d486ff2c1b42f95c44b72ba3f37aa038e499b654e5482b915'
         'c59cd8370e4360538038fa2a6daac10c327407c3c2e71b1d9b60b107c2f69ab5377f22d4d8e00c7e0cdc9c882aa0ae663531f4ee12e39cc58e20ef66d5e4d48e'
         '38fa485a2d71cb9e7b5d181ded53bc9e228628cafb854ca9bd7087895b42af78b735c636840e3f2f74abdad03fa4682cc81d5b34972498ddbaf41a6f784469a2'
         '8924479c22eaff27483d0d85ec2c2385193d754adac6b655e0ef986bec1ab871c4a269f511b8f4a2b98b5f89ee45d0ed300ce1f632a2d33a2e0260e8e4a66ad7')
