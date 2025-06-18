@@ -1,0 +1,18 @@
+pkgbase = yanix-launcher-git
+	pkgdesc = Yandere Simulator Launcher For Linux
+	pkgver = v0.7
+	pkgrel = 1
+	url = https://nikoyandere.github.io
+	arch = x86_64
+	license = NLV2
+	makedepends = git
+	depends = python-pyqt5
+	depends = python-pyqtwebengine
+	depends = python-pywebview
+	depends = python-requests
+	depends = wine
+	optdepends = python-pypresence
+	source = yanix-launcher::git+https://github.com/NikoYandere/yanix-launcher.git
+	sha256sums = SKIP
+
+pkgname = yanix-launcher-git
