@@ -14,11 +14,12 @@ pkgname='cnrdrvcups-lb'
 # https://gdlp01.c-wss.com/gds/8/0100007658/40/linux-UFRII-drv-v590-m17n-03.tar.gz
 # https://gdlp01.c-wss.com/gds/8/0100007658/41/linux-UFRII-drv-v600-m17n-00.tar.gz
 # https://gdlp01.c-wss.com/gds/8/0100007658/45/linux-UFRII-drv-v610-m17n-01.tar.gz
-_pkgver='6.10';  _dl='8/0100007658/45';_suffix1='m17n';_suffix2='01'
+# https://gdlp01.c-wss.com/gds/8/0100007658/46/linux-UFRII-drv-v610-m17n-03.tar.gz
+_pkgver='6.10';  _dl='8/0100007658/46';_suffix1='m17n';_suffix2='03'
 
 pkgver="${_pkgver}.1.${_suffix2}"
 epoch=1
-pkgrel=2
+pkgrel=0.1
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64' 'aarch64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
@@ -44,9 +45,9 @@ options=(emptydirs !strip !libtool !debug)
 source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz"
                 replace_incorrect_int_with_char.patch
 )
-md5sums=('ce4483bddf5a1a0ac3bc1fd8d742ca73'
+md5sums=('defb53172d1ca959a96754467ce180d9'
          '8bc26ff46bf5877b5800b77685d5d917')
-sha512sums=('8d993c2f37ee6103db46b4dccce7ca4378b1f0af854d586462a10b23d9faf80d9a8657ea108e4aa8e43a77caf3d3007e3dffb912bfa06b4a642eb73d173bf796'
+sha512sums=('1aafd4da3da109ea5d84b7c040446793e8e46515b8c3b6068d3cc74fb6d594c2093ab69e76b6dbacf27ac41db1f7142faaa0e455f2331c04baee1b28ebdf6028'
             '1d118eeee1ce069b59db00cba5b534986ccbd1da3a9c4a4ba6892be4a478c2dac4bd83dae1b2dd28f0e58a145609c60940cd661fee87d025a12f856e161b1f65')
 
 
