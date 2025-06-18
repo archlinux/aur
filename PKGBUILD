@@ -14,12 +14,13 @@ depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-base' 'qt6-multimedia' 'ffmpeg' 'libfd
 makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'ninja' 'boost')
 conflicts=('lime3ds-appimage' 'lime3ds-git')
 options=('!lto')
-source=("https://github.com/Lime3DS/lime3DS-archive/releases/download/$pkgver/$pkgname-unified-source-$pkgver.tar.xz"
+source=("https://github.com/username227/lime3ds/releases/download/1/lime3ds-unified-source-2119.1.tar.xz"
 		"https://github.com/username227/mcl/archive/refs/tags/mcl.tar.gz"
 		"robin-map_fix.patch")
 md5sums=('60aeb81bb0825594cfed33dbc29dd4a8'
          '1a982655170c2235680d1a670a407586'
          '6e30462371800f21c53904f101f5d46d')
+
 
 prepare() {
 	patch $srcdir/$pkgname-unified-source-$pkgver/CMakeLists.txt robin-map_fix.patch
