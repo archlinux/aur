@@ -1,16 +1,13 @@
 pkgbase = flas-timer
-	pkgdesc = Ein einfacher CLI-Timer in Rust (z. B. 'timer 2m30s')
+	pkgdesc = Timer application from FLAS Forum
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/FLAS-Forum/timer
 	arch = x86_64
 	license = MIT
-	makedepends = rust
 	makedepends = cargo
-	makedepends = git
-	depends = gcc
 	depends = glibc
-	source = flas-timer::git+https://github.com/FLAS-Forum/timer.git#tag=v1.0.0
+	source = git+https://github.com/FLAS-Forum/timer.git
 	sha256sums = SKIP
 
 pkgname = flas-timer
