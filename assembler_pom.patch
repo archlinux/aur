@@ -1,5 +1,5 @@
---- pom.xml	2025-04-13 20:50:15.000000000 +0100
-+++ pom2.xml	2025-04-13 22:25:50.815491147 +0100
+--- pom.xml	2025-06-18 21:53:27.000000000 +0100
++++ pom-MODIFIED.xml	2025-06-18 23:41:25.678331045 +0100
 @@ -47,19 +47,6 @@
          <artifactId>download-maven-plugin</artifactId>
          <executions>
@@ -40,7 +40,7 @@
          </executions>
        </plugin>
  
-@@ -111,20 +85,6 @@
+@@ -110,21 +84,6 @@
          <artifactId>maven-assembly-plugin</artifactId>
          <executions>
            <execution>
@@ -50,8 +50,9 @@
 -              <goal>single</goal>
 -            </goals>
 -            <configuration>
+-              <attach>false</attach>
 -              <appendAssemblyId>false</appendAssemblyId>
--              <finalName>jd-gui-duo-windows</finalName>
+-              <finalName>jd-gui-duo-windows-${project.version}</finalName>
 -              <descriptors>
 -                <descriptor>assembly-windows.xml</descriptor>
 -              </descriptors>
@@ -61,7 +62,7 @@
              <id>assemble-linux</id>
              <phase>package</phase>
              <goals>
-@@ -138,74 +98,11 @@
+@@ -139,21 +98,6 @@
                </descriptors>
              </configuration>
            </execution>
@@ -72,8 +73,9 @@
 -              <goal>single</goal>
 -            </goals>
 -            <configuration>
+-              <attach>false</attach>
 -              <appendAssemblyId>false</appendAssemblyId>
--              <finalName>jd-gui-duo-macos</finalName>
+-              <finalName>jd-gui-duo-macos-${project.version}</finalName>
 -              <descriptors>
 -                <descriptor>assembly-macos.xml</descriptor>
 -              </descriptors>
@@ -81,58 +83,4 @@
 -          </execution>
          </executions>
        </plugin>
-     </plugins>
-   </build>
- 
--  <profiles>
--    <profile>
--      <id>windows</id>
--      <activation>
--        <os>
--          <family>Windows</family>
--        </os>
--      </activation>
--      <build>
--        <plugins>
--          <plugin>
--            <groupId>com.akathist.maven.plugins.launch4j</groupId>
--            <artifactId>launch4j-maven-plugin</artifactId>
--            <executions>
--              <execution>
--                <id>l4j-clui</id>
--                <phase>prepare-package</phase>
--                <goals>
--                  <goal>launch4j</goal>
--                </goals>
--                <configuration>
--                  <headerType>gui</headerType>
--                  <outfile>${project.build.directory}/windows/jd-gui-duo-${project.version}.exe</outfile>
--                  <jar>${project.build.directory}/lib/jd-gui-duo-app-${project.version}.jar</jar>
--                  <classPath>
--                    <mainClass>${main.class}</mainClass>
--                    <addDependencies>false</addDependencies>
--                  </classPath>
--                  <jre>
--                    <path>jre</path>
--                    <opts>
--                      <opt>-ea</opt>
--                      <opt>--add-opens java.base/java.net=ALL-UNNAMED</opt>
--                      <opt>--add-opens java.desktop/javax.swing.text=ALL-UNNAMED</opt>
--                      <opt>--add-opens java.desktop/javax.swing.plaf.basic=ALL-UNNAMED</opt>
--                      <opt>--add-opens java.prefs/java.util.prefs=ALL-UNNAMED</opt>
--                      <opt>--add-opens java.base/java.lang.ref=ALL-UNNAMED</opt>
--                    </opts>
--                  </jre>
--                  <icon>${project.parent.basedir}/src/launch4j/resources/images/jd-gui.ico</icon>
--                </configuration>
--              </execution>
--            </executions>
--          </plugin>
--        </plugins>
--      </build>
--    </profile>
--  </profiles>
--
-   <dependencies>
-     <dependency>
-       <groupId>com.github.nbauma109</groupId>
+       <plugin>
