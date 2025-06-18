@@ -1,8 +1,8 @@
 # Maintainer: Enbeon <actuallyenbeon at gmail dot com>
 _pkgname=jd-gui-duo
 pkgname=jd-gui-duo-bin
-pkgver=2.0.90
-pkgrel=2
+pkgver=2.0.92
+pkgrel=1
 pkgdesc="Binary release of jd-gui-duo, a 2-in-1 JAVA decompiler based on JD-CORE v0 and v1"
 arch=('any')
 url="https://github.com/nbauma109/$_pkgname"
@@ -11,12 +11,12 @@ depends=('java-runtime>=21')
 provides=("jd-gui-duo")
 conflicts=("jd-gui-duo")
 source=(
-	"$pkgname-$pkgver.zip::https://github.com/nbauma109/$_pkgname/releases/download/$pkgver/$_pkgname-linux-$pkgver.zip"
+	"$pkgname-$pkgver.zip::https://github.com/nbauma109/$_pkgname/releases/download/$pkgver/$_pkgname-linux-$pkgver.tar.xz"
 	"jd-gui-duo"
 	"jd-gui-duo.desktop"
 	"jd_icon_128.png"
 )
-sha256sums=('7ed9a70bf9450110316412ebca293f15bc35814525054bca3546a3dd3fbc5214'
+sha256sums=('421e298fb9bebe7a6e599be451cc8fcb3f06c009a6dab9d195509bb62e0451dd'
             '9d175e28662dd1ad701f76d5aa7f7752543453f156615b96787e641252ce60e4'
             'd40a09c9c228b55dcb54823b878cd180521386a11abffed478ce89439fd4e184'
             '62c763642af8cbfd1e00dc8763dcc92a66eefc7aceaa4069d29909bfc197240a')
