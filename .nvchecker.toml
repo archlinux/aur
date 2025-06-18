@@ -1,0 +1,4 @@
+[jpeg-quantsmooth]
+source = 'github'
+github = 'ilyakurdyukov/jpeg-quantsmooth'
+use_latest_release = true

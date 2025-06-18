@@ -1,4 +1,6 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: envolution
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 _pkgauthor=ilyakurdyukov
 pkgname=jpeg-quantsmooth
@@ -8,7 +10,7 @@ pkgrel=1
 pkgdesc="JPEG artifacts removal based on quantization coefficients"
 arch=('x86_64' 'i686')
 url="https://github.com/${_pkgauthor}/${pkgname}"
-license=('LGPL-2.1')
+license=('LGPL-2.1-only')
 
 provides=("${_pkgbin}")
 makedepends=('gcc' 'make' 'libjpeg-turbo')
@@ -42,3 +44,4 @@ package() {
 
 	install -Dm644 "${_pkgbin}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgbin}.1.gz"
 }
+# vim:set ts=2 sw=2 et:
