@@ -1,7 +1,7 @@
 pkgbase = plasma-meta
 	pkgdesc = Meta package to install KDE Plasma
 	pkgver = 6.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://kde.org/plasma-desktop/
 	arch = any
 	license = None
@@ -64,6 +64,7 @@ pkgbase = plasma-meta
 	optdepends = flatpak-kcm: Manage Flatpak applications from systemsettings
 	optdepends = kgamma: Adjust gamma settings on X
 	optdepends = kwin-x11: X11 window manager
+	optdepends = plasma-x11-session: Plasma X11 session
 	optdepends = plymouth-kcm: Configure Plymouth from systemsettings
 	optdepends = plasma-sdk: Development tools
 	optdepends = wacomtablet: Drawing tablet settings on X

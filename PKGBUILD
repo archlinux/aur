@@ -3,7 +3,7 @@
 
 pkgname=plasma-meta
 pkgver=6.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
 license=(None)
@@ -68,6 +68,7 @@ optdepends=('breeze-grub: Breeze theme for GRUB'
             'flatpak-kcm: Manage Flatpak applications from systemsettings'
             'kgamma: Adjust gamma settings on X'
             'kwin-x11: X11 window manager'
+            'plasma-x11-session: Plasma X11 session'
             'plymouth-kcm: Configure Plymouth from systemsettings'
             'plasma-sdk: Development tools'
             'wacomtablet: Drawing tablet settings on X')
