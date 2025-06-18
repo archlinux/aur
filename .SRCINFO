@@ -1,6 +1,6 @@
 pkgbase = asncounter
 	pkgdesc = Count the number of hits (HTTP, packets, etc) per autonomous system number (ASN) and related network blocks.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://gitlab.com/anarcat/asncounter
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = asncounter
 	optdepends = python-netaddr: for aggregating results
 	optdepends = python-scapy: for collecting from scapy
 	optdepends = python-prometheus_client: for output data in prometheus format
-	source = asncounter-0.3.0.tar.gz::https://gitlab.com/anarcat/asncounter/-/archive/0.3.0/asncounter-0.3.0.tar.gz
-	sha512sums = 2bbcff4d0934dffc498d88a33c7470a667e054e00acafe636e77d4e0a66ac23b7383f2b10f461f2243bf1a0d3711857aa5aa7032de3b0d0e35e1bae5631e3080
-	b2sums = 34c4408950f6043d70d27c33603fd6c40b1fd889448fc95f15f706936fcb500ba0359e37d2137744301fa69c33abe12668698ba8a11684f0af6bbb3ea2bd75d3
+	source = asncounter-0.4.0.tar.gz::https://gitlab.com/anarcat/asncounter/-/archive/0.4.0/asncounter-0.4.0.tar.gz
+	sha512sums = 00ff64c20dd060bc2d86aa52d1ffdd87a3d936d26f062a493f251385199cd9d2d7a32da60f7290abfbc1332a6a56473757c66abaad4a93716b9168c4dd881d2d
+	b2sums = f9da66855b86af6f19d8c39991b79fe60133f8d14c30fc5d83a1bc7b8f7f6107a56f35b5981708f64f13cd5b68b956522b93eec9e2e68615d9a65d730d4dc464
 
 pkgname = asncounter
