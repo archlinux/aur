@@ -1,0 +1,13 @@
+pkgbase = lastf
+	pkgdesc = Better last command interface with structured output.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = python
+	makedepends = python-virtualenv
+	makedepends = clang
+	source = https://github.com/xeyossr/lastf/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = lastf
