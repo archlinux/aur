@@ -1,7 +1,7 @@
 # Maintainer: Mercas <me@smj.im>
 
 pkgname=anytype-alpha
-pkgver=0.46.11
+pkgver=0.47.3
 _tag="-alpha" # -alpha, -beta or leave blank
 pkgrel=1
 pkgdesc="The everything app for those who celebrate trust & autonomy"
@@ -16,7 +16,7 @@ conflicts=('anytype-bin'
 options=('!strip' '!debug')
 source=("https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}${_tag}/anytype_${pkgver}${_tag}_amd64.deb"
   "anytype.sh")
-sha256sums=('3cb53b93ea180fcc18922edec33067d1cb996daad1d388a897747a52dd644800'
+sha256sums=('795709cefe84d0bbc6edcec6900288958adb0851e3a19efc4094413c2272d608'
             '8688c3f1f2b7e43b1f033549dd8018b7d2d2a9523e4d12995bce43d768e17c3a')
 
 package() {
