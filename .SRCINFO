@@ -1,6 +1,6 @@
 pkgbase = dbgate-git
 	pkgdesc = Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.Use system-wide electron.
-	pkgver = 6.2.1.r0.gb40b5f0
+	pkgver = 6.5.1.r0.ga10fe69
 	pkgrel = 1
 	url = https://dbgate.org/
 	arch = aarch64
@@ -11,16 +11,15 @@ pkgbase = dbgate-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = curl
 	makedepends = yarn
+	makedepends = python
 	depends = electron30
-	provides = dbgate=6.2.1
+	provides = dbgate=6.5.1
 	conflicts = dbgate
 	source = dbgate.git::git+https://github.com/dbgate/dbgate.git
 	source = dbgate.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = dbgate-git
