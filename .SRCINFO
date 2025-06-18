@@ -10,7 +10,7 @@ pkgbase = flas-timer
 	makedepends = git
 	depends = gcc
 	depends = glibc
-	source = git+https://github.com/FLAS-Forum/timer.git#tag=v1.0.0
+	source = flas-timer::git+https://github.com/FLAS-Forum/timer.git#tag=v1.0.0
 	sha256sums = SKIP
 
 pkgname = flas-timer
