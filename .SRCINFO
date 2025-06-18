@@ -1,7 +1,7 @@
 pkgbase = hyprpwmenu
 	pkgdesc = A modern powermenu for Hyprland.
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/hyprpwmenu/
 	arch = x86_64
 	license = None
@@ -14,6 +14,7 @@ pkgbase = hyprpwmenu
 	depends = confz
 	depends = pygobject
 	depends = python-rich
+	depends = ttf-hack-nerd
 	source = https://files.pythonhosted.org/packages/63/85/e720530cce8819adabb0d08f98073b8abdf47b63adcdf37372fe77d63402/hyprpwmenu-0.2.4.tar.gz
 	sha256sums = 74f5fbb0266c54f9216a51e2ec121b69b8af6a5b387923e1f451d36043dfac7e
 

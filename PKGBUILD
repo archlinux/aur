@@ -5,7 +5,7 @@
 pkgname=hyprpwmenu
 _origpkgname=hyprpwmenu
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern powermenu for Hyprland."
 arch=("x86_64")
 url='https://pypi.org/project/hyprpwmenu/'
@@ -15,6 +15,7 @@ depends=(
   "confz"
   "pygobject"
   "python-rich"
+  "ttf-hack-nerd"
 )
 makedepends=(
   "python-build"
