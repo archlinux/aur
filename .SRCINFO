@@ -1,0 +1,30 @@
+pkgbase = flat-manager
+	pkgdesc = Manager for flatpak repositories
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/flatpak/flat-manager/
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = postgresql-libs
+	depends = ostree
+	depends = python
+	depends = python-aiohttp
+	depends = python-tenacity
+	depends = python-gobject
+	depends = glib2
+	options = !lto
+	backup = etc/flat-manager/config.json
+	source = git+https://github.com/flatpak/flat-manager#tag=0.4.5
+	source = flat-manager.service
+	source = flat-manager.sysusers
+	source = flat-manager.tmpfiles
+	sha256sums = a6b6b1a25f6eabfe8661b39e6e06f6f0a488a464204df2988888851c3fd44de3
+	sha256sums = 630c7ccac0fd9db5b30edeea92799ec78c594fffca912cb599f0e6a4915df693
+	sha256sums = c59636eaa8ae5862b1bd215a8e288bd32ecf141d0eccba097f9ad2105e4612df
+	sha256sums = bd3133ded534df7f351ae2a5db5dde674499271dc0a720f59d46a5649327c6ce
+
+pkgname = flat-manager

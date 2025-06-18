@@ -1,0 +1,2 @@
+d /run/flat-manager 0755 flat-manager flat-manager
+d /var/lib/flat-manager 0755 flat-manager flat-manager

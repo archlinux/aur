@@ -1,0 +1,12 @@
+[Unit]
+Description=Flat Manager
+
+[Service]
+ExecStart=/usr/bin/flat-manager
+WorkingDirectory=/var/lib/flat-manager
+Environment=REPO_CONFIG=/etc/flat-manager/config.json
+User=flat-manager
+
+[Install]
+WantedBy=multi-user.target
+
