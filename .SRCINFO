@@ -1,10 +1,10 @@
 pkgbase = hyprpwmenu
 	pkgdesc = A modern powermenu for Hyprland.
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/hyprpwmenu/
 	arch = x86_64
-	license = None
+	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
