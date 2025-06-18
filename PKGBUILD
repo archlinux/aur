@@ -3,7 +3,7 @@
 pkgname=fabric-ai-bin
 _pkgname=fabric
 _commit=7079c9c
-pkgver=1.4.185
+pkgver=1.4.210
 pkgrel=1
 pkgdesc="open-source framework for augmenting humans using AI (binary release)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgve
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64")
 
 sha256sums=('42b554b17b8fd7ae4d6bc488f0857ae91d9179f04db3da466c2fc5425686f4f9')
-sha256sums_x86_64=('880309ae9925204eed092bbe7adebdaf79272964b59ce5b5affb315fce3baa2d')
-sha256sums_aarch64=('e75050c50deef0d5a234801f26fa882815a38d96363f4c8e9104c727bd51f968')
+sha256sums_x86_64=('927e517d0ab1f618acf3c49f96c93ed9ff787daef32247820af8a833c160a285')
+sha256sums_aarch64=('67182c038fbdd6a711c826e66a4d1c2f17a8e35af8d40256823b2440d03f8831')
 
 noextract=("${source[@]##*/}")
 
