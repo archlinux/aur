@@ -1,9 +1,11 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
-# Maintainer: László Várady <laszlo.varady93@gmail.com>
+# Contributor: envolution
+# Contributor: László Várady <laszlo.varady93@gmail.com>
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=fizz
-pkgver=2024.10.28.00
+pkgver=2025.06.16.00
 pkgrel=1
 pkgdesc="C++14 implementation of the TLS-1.3 standard"
 arch=(x86_64)
@@ -33,7 +35,7 @@ provides=(
   libfizz_test_support.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b78fc01145beb72188cefb4ab82b87d04e0ab7f712f99d49e80c8a14264ae6b9')
+sha256sums=('f84c4a956befd943580b7086cebea3fe73e9b39da2b0866f32545d2ad2db008e')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -64,8 +66,9 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
   # Remove empty directories to avoid namcap warnings
-  rm -vr "$pkgdir/usr/include/fizz/tool/test"
-  rm -vr "$pkgdir/usr/include/fizz/util/test"
+  rm -vfr "$pkgdir/usr/include/fizz/tool/test"
+  rm -vfr "$pkgdir/usr/include/fizz/util/test"
 
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
+# vim:set ts=2 sw=2 et:
