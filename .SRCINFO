@@ -1,6 +1,6 @@
 pkgbase = opencommit
 	pkgdesc = Auto-generate impressive commits with AI in 1 second
-	pkgver = 3.2.2
+	pkgver = 3.2.9
 	pkgrel = 1
 	url = https://github.com/di-sukharev/opencommit
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = opencommit
 	provides = opencommit
 	conflicts = opencommit
 	options = !strip
-	source = https://registry.npmjs.org/opencommit/-/opencommit-3.2.2.tgz
+	source = https://registry.npmjs.org/opencommit/-/opencommit-3.2.9.tgz
 	sha256sums = 665ff2fc2dd5c6320a62d535b26293bbf078fc94ef638ec9cdd4c9a0b00cd220
 
 pkgname = opencommit
