@@ -2,7 +2,7 @@
 pkgname=xterminal-bin
 _pkgname=XTerminal
 _aarch64_ver=2.12.9
-_x86_64_ver=3.14.1
+_x86_64_ver=3.15.0
 case "${CARCH}" in
     aarch64)
         pkgver="${_aarch64_ver}"
@@ -25,6 +25,7 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'java-runtime'
+    'python'
 )
 makedepends=(
     'asar'
@@ -36,9 +37,12 @@ source=(
 source_aarch64=("${pkgname%-bin}-${_aarch64_ver}-aarch64.rpm::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${_aarch64_ver}-linux-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${_x86_64_ver}-x86_64.rpm::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${_x86_64_ver}-linux-x86_64.rpm")
 sha256sums=('8d08a959e0086a206ef3454cc0fc323454c73609cd764f102d8d2d076dafa0af'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 sha256sums_aarch64=('e715f44ab759f2d1cd6bce72bdb5172cad825d4c0e48613133a351da35375e08')
-sha256sums_x86_64=('ff304fe9b32c7f0c7386019846b7f9bda85544e029dbd84b9d7908b775359360')
+sha256sums_x86_64=('ef00985dfff4ff0cd68b5579ba7c7daad1294b9f468594a55406a5dc49c21642')
+_get_electron_version() {
+    _electronversion="strings ${srcdir}/opt/${_pkgname}/${pkgname%-bin}  | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -47,6 +51,7 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} \;
