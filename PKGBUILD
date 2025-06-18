@@ -1,4 +1,5 @@
-# Maintainer: Pang LAN <wopanglan@gmail.com>
+# Maintainer: Fredrik Magnusson <fredrikmagnusson3@gmail.com>
+# Contributor: Pang LAN <wopanglan@gmail.com>
 
 pkgname=opencommit
 pkgver=3.2.9
