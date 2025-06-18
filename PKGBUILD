@@ -1,7 +1,7 @@
 # Maintainer: thepsauce <thepsauce at fensterchef dot org>
 
 pkgname=fensterchef
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc='Tiling window manager for X11'
 arch=(any)
@@ -20,5 +20,5 @@ build() {
 
 package() {
     cd "$srcdir/fensterchef"
-    PREFIX=$pkgdir ./make install
+    PREFIX="$pkgdir" ./make install
 }
