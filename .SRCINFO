@@ -1,6 +1,8 @@
 pkgbase = deltatouch-git
+	pkgdesc = Delta Chat client using Lomiri UI toolkit
 	pkgver = r522.ae53cb2
 	pkgrel = 1
+	url = https://codeberg.org/lk108/deltatouch
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
