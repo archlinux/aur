@@ -3,7 +3,7 @@
 
 _pkgname=oxen-electron-wallet
 pkgname=${_pkgname}-bin
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="Oxen electron GUI wallet"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${_pkgname}")
 _deb="${_pkgname}-${pkgver}-linux.deb"
 source=("${_deb}::https://github.com/oxen-io/oxen-electron-gui-wallet/releases/download/v${pkgver}/${_deb}"
         "LICENSE::https://raw.githubusercontent.com/oxen-io/oxen-electron-gui-wallet/v${pkgver}/LICENSE")
-sha256sums=('1e80b8abe8aae32d8cd7b796efe6a01c8065a9ea67a610c598f2baab047bc62d'
+sha256sums=('e2163bdd83988a41c79280fb05bc67273dcf7475e5ca2cbf3e03048169b7fe2d'
             '4530452ff67e07ffa59aa19c11befd5a815be2b6037483ab659f00077be4a130')
 
 package() {
