@@ -17,7 +17,7 @@
 # Contributor: Supdrewin <supdrewin at gmail dot com>
 
 pkgbase=mesa-amdonly-gaming-git
-pkgver=25.1.0_devel.203440.f26cf5633dd.d41d8cd
+pkgver=25.2.0_devel.207057.b4b65822203.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 pkgname=(
   'amdonly-gaming-vulkan-mesa-layers-git'
@@ -65,6 +65,7 @@ makedepends=(
   'python-mako'
   'python-ply'
   'python-yaml'
+  'python-setuptools'
   'rust-bindgen'
   'wayland-protocols'
   'xorgproto'
@@ -129,11 +130,10 @@ build() {
     -D egl=enabled
     -D gallium-drivers=radeonsi
     -D gallium-extra-hud=true
-    -D gallium-nine=false
     -D gallium-rusticl=true
     -D gallium-va=enabled
     -D gallium-vdpau=enabled
-    -D gallium-xa=disabled
+    -D gallium-mediafoundation=disabled
     -D gbm=enabled
     -D gles1=disabled
     -D gles2=enabled
