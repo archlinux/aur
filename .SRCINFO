@@ -11,6 +11,6 @@ pkgbase = opencommit
 	conflicts = opencommit
 	options = !strip
 	source = https://registry.npmjs.org/opencommit/-/opencommit-3.2.9.tgz
-	sha256sums = 665ff2fc2dd5c6320a62d535b26293bbf078fc94ef638ec9cdd4c9a0b00cd220
+	sha256sums = 44b819d029ad9136899bf8ef979000d5d2e65ad6eb273764ca29dcb23ca6ece5
 
 pkgname = opencommit

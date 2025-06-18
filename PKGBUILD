@@ -13,7 +13,7 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 options=('!strip')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('6b0b965714340ae3425ce2621753cbe6aea96d04f3f00a067ad4abf51ea35077')
+sha256sums=('44b819d029ad9136899bf8ef979000d5d2e65ad6eb273764ca29dcb23ca6ece5')
 
 prepare() {
     tar -xzf "$pkgname-$pkgver.tgz"
