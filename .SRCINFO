@@ -1,6 +1,6 @@
 pkgbase = degumail
 	pkgdesc = Minimalist mail client written in Go using stdlib
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://deguco.net/software
 	arch = x86_64
