@@ -1,0 +1,12 @@
+diff -Naur a/source/common/stats/thread_local_store.h b/source/common/stats/thread_local_store.h
+--- a/source/common/stats/thread_local_store.h	2025-05-07 15:06:00.000000000 -0400
++++ b/source/common/stats/thread_local_store.h	2025-06-17 18:46:38.045090723 -0400
+@@ -425,7 +425,7 @@
+     // scope->central_cache_, the analysis system cannot understand that the
+     // scope's parent_.lock_ is held, so we assert that here.
+     const CentralCacheEntrySharedPtr& centralCacheLockHeld() const
+-        ABSL_EXCLUSIVE_LOCKS_REQUIRED(parent_.lock_) {
++        ABSL_EXCLUSIVE_LOCKS_REQUIRED(parent_.lock_) ABSL_NO_THREAD_SAFETY_ANALYSIS {
+       return central_cache_;
+     }
+ 
