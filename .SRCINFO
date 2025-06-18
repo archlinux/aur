@@ -20,6 +20,7 @@ pkgbase = ndless-sdk-git
 	provides = ndless-sdk
 	conflicts = ndless-sdk
 	options = !strip
+	options = !lto
 	source = ndless::git+https://github.com/ndless-nspire/Ndless
 	source = ndless.patch
 	source = ndless-env.sh
