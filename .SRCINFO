@@ -3,15 +3,12 @@ pkgbase = smyte
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/smyte
-	install = smyte.install
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-rich
 	depends = python-psutil
 	source = smyte.py
-	source = smyte.install
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = smyte

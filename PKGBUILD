@@ -6,9 +6,8 @@ arch=('any')
 url="https://aur.archlinux.org/packages/smyte"
 license=('MIT')
 depends=('python' 'python-rich' 'python-psutil')
-install=smyte.install
-source=("smyte.py" "smyte.install")
-sha256sums=('SKIP' 'SKIP')
+source=("smyte.py")
+sha256sums=('SKIP')
 
 package() {
     install -Dm755 "$srcdir/smyte.py" "$pkgdir/usr/bin/sy"

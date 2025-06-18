@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import time
 import psutil
+import os
 from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
@@ -22,7 +23,7 @@ BANNER = r"""
 """
 
 def format_bytes(size):
-    for unit in ['B','KB','MB','GB','TB']:
+    for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
         if size < 1024:
             return f"{size:.2f} {unit}"
         size /= 1024
