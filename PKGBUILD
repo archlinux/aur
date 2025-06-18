@@ -1,8 +1,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=scipy-stubs
 pkgname=python-${_base}
-pkgdesc="Missing complement to Python"
-pkgver=1.15.3.0
+pkgdesc="Type annotations for SciPy"
+pkgver=1.16.0.0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/jorenham/${_base}"
@@ -11,7 +11,7 @@ depends=(python-optype)
 makedepends=(python-build python-installer python-hatchling)
 optdepends=('python-scipy: for SciPy support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('ba7de61bd65f01f559991fe6e0422ea8b65e4d04e03d430f76e51809fd787a1a4bd79c7552c79b9a6a576b0b6d83b7c172ebe22b09e30fb005b4ea548be38c06')
+sha512sums=('554aee0ef6f64b35c2da2fcd1df3abda921645158a545ef9f6c4ce82a2b88771addaed5932131b9a4b8613f8f10f794867b364cc20dc66a4044d206de5ff0976')
 
 build() {
   cd ${_base}-${pkgver}
