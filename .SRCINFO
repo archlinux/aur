@@ -1,6 +1,6 @@
 pkgbase = qp-git
 	pkgdesc = qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems.
-	pkgver = 5.91.0.r3.g6cb6a58
+	pkgver = 5.91.2.r5.g9cefbbb
 	pkgrel = 1
 	url = https://github.com/Zweih/qp
 	arch = any
