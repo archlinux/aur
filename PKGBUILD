@@ -6,13 +6,13 @@
 
 pkgname=opencryptoki
 pkgver=3.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PKCS11 implementation for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/opencryptoki/opencryptoki"
 license=('CPL')
 depends=('openssl' 'trousers')
-makedepends=('expect')
+makedepends=('expect' 'jq')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/opencryptoki/opencryptoki/archive/v${pkgver}.tar.gz"
         opencryptoki.sysusers.conf
         opencryptoki.tmpfiles.conf)
