@@ -1,0 +1,7 @@
+post_install() {
+  echo ""
+  echo "✅ Smyte is installed!"
+  echo "🚀 Run it using: sy"
+  echo "📦 Thanks for using Smyte!"
+  echo ""
+}

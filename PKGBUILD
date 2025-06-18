@@ -6,6 +6,7 @@ arch=('any')
 url="https://aur.archlinux.org/packages/smyte"
 license=('MIT')
 depends=('python' 'python-rich' 'python-psutil')
+install=smyte.install
 source=("smyte.py" "banner.txt")
 md5sums=('SKIP' 'SKIP')
 package() {
