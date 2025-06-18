@@ -1,0 +1,13 @@
+pkgbase = wargames-terminal
+	pkgdesc = Terminal fonts from WarGames movie
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://mw.rat.bz/wgterm/
+	arch = any
+	license = CC-BY-NC-SA-4.0
+	source = otf-wargames-terminal-1.0.zip::https://mw.rat.bz/wgterm/WarGames%20Terminal%20Fonts.zip
+	b2sums = 45bd63b01da7e6447199d34893f69692e1163cb278da83633986bf997471ba47a477717d952cf27afa330e9f089a9b04dc49f7d0ae4bff233ddc8b1ab3edfd88
+
+pkgname = otf-wargames-terminal
+
+pkgname = ttf-wargames-terminal
