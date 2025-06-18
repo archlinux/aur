@@ -1,0 +1,20 @@
+pkgbase = python-coqpit-config
+	pkgdesc = Simple, light-weight config management through python data-classes (fork of coqpit)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/idiap/coqui-ai-coqpit
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-coqpit
+	conflicts = python-coqpit
+	replaces = python-coqpit
+	source = https://files.pythonhosted.org/packages/9e/4c/e444f35f5c7c3bbfc6cc231a749c6afcd6da20d2630bba75ccd9e070b84d/coqpit_config-0.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-coqpit-config
