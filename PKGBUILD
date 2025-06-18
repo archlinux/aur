@@ -51,8 +51,6 @@ pkgver() {
 build() {
   cd "${srcdir}/${reponame}"
   export CFLAGS
-  # support to chase DNSSEC signature chains
-  CFLAGS+=' -DDIG_SIGCHASE'
   # compile with gcc10, https://gcc.gnu.org/gcc-10/porting_to.html
   CFLAGS+=' -fcommon'
   autoreconf -fiv
