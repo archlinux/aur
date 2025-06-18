@@ -1,10 +1,12 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
-# Maintainer: László Várady <laszlo.varady93@gmail.com>
+# Contributor: envolution
+# Contributor: László Várady <laszlo.varady93@gmail.com>
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=proxygen
-pkgver=2024.10.28.00
+pkgver=2025.06.16.00
 pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
 arch=(x86_64)
@@ -42,7 +44,7 @@ provides=(
   libproxygenhttpserver.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d84fb64c35afc6672a458805a8d988098717fdc2be9d0cb88337588c78f515e8')
+sha256sums=('0d3fca76e727fc435ca6154487ad33f99a1593cc78175b2d78d3c1bf806c3cc8')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -94,3 +96,4 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
+# vim:set ts=2 sw=2 et:
