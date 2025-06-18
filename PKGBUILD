@@ -1,7 +1,7 @@
 # Maintainer: RouHim
 
 pkgname=binvec-bin
-pkgver=1.9.21
+pkgver=1.9.24
 pkgrel=1
 pkgdesc="A simple application to convert raster graphics to vector graphics (pre-compiled)"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h')
@@ -13,25 +13,25 @@ depends=()
 options=('!strip')
 
 # Map Arch Linux architectures to Rust build targets
-source_x86_64=("binvec-${pkgver}-x86_64-musl::https://github.com/RouHim/binvec/releases/download/${pkgver}/binvec-x86_64-musl")
-source_aarch64=("binvec-${pkgver}-aarch64-musl::https://github.com/RouHim/binvec/releases/download/${pkgver}/binvec-aarch64-musl")
-source_armv7h=("binvec-${pkgver}-armv7-musleabihf::https://github.com/RouHim/binvec/releases/download/${pkgver}/binvec-armv7-musleabihf")
-source_armv6h=("binvec-${pkgver}-arm-musleabihf::https://github.com/RouHim/binvec/releases/download/${pkgver}/binvec-arm-musleabihf")
+source_x86_64=("binvec-${pkgver}-x86_64-unknown-linux-gnu::https://github.com/RouHim/binvec/releases/download/${pkgver}/binvec-x86_64-unknown-linux-gnu")
+source_aarch64=("binvec-${pkgver}-aarch64-unknown-linux-gnu::https://github.com/RouHim/binvec/releases/download/${pkgver}/binvec-aarch64-unknown-linux-gnu")
+source_armv7h=("binvec-${pkgver}-armv7-unknown-linux-gnueabihf::https://github.com/RouHim/binvec/releases/download/${pkgver}/binvec-armv7-unknown-linux-gnueabihf")
+source_armv6h=("binvec-${pkgver}-arm-unknown-linux-gnueabihf::https://github.com/RouHim/binvec/releases/download/${pkgver}/binvec-arm-unknown-linux-gnueabihf")
 
-sha256sums_x86_64=('7dde559acc44c281123ce39ff40c573887cfda00fb395fcf8404930e3946c7aa')
-sha256sums_aarch64=('536223331f0fe5aebe2ee2f27b72eb06427d22d1766ef858909a3ea0ea4224b3')
-sha256sums_armv7h=('9f159337e10c49178f25532f743015914310af661e29058ddece9c7c24af166f')
-sha256sums_armv6h=('3def121a5a743a7e5ec091da9b641405bca09a9dd717f3f7ba37df141108e860')
+sha256sums_x86_64=('3109abe381213773e00134bf362ef2d8b0a593a3a2602601d8a055c6d25718b5')
+sha256sums_aarch64=('3109abe381213773e00134bf362ef2d8b0a593a3a2602601d8a055c6d25718b5')
+sha256sums_armv7h=('3109abe381213773e00134bf362ef2d8b0a593a3a2602601d8a055c6d25718b5')
+sha256sums_armv6h=('3109abe381213773e00134bf362ef2d8b0a593a3a2602601d8a055c6d25718b5')
 
 package() {
   # Install binary
-  install -Dm755 "binvec-${pkgver}-${CARCH}-musl" "${pkgdir}/usr/bin/binvec"
+  install -Dm755 "binvec-${pkgver}-${CARCH}-unknown-linux-gnu" "${pkgdir}/usr/bin/binvec"
 
   # Special case for armv7h and armv6h which use different naming
   if [ "${CARCH}" = "armv7h" ]; then
-    install -Dm755 "binvec-${pkgver}-armv7-musleabihf" "${pkgdir}/usr/bin/binvec"
+    install -Dm755 "binvec-${pkgver}-armv7-unknown-linux-gnueabihf" "${pkgdir}/usr/bin/binvec"
   elif [ "${CARCH}" = "armv6h" ]; then
-    install -Dm755 "binvec-${pkgver}-arm-musleabihf" "${pkgdir}/usr/bin/binvec"
+    install -Dm755 "binvec-${pkgver}-arm-unknown-linux-gnueabihf" "${pkgdir}/usr/bin/binvec"
   fi
 
   # Create documentation directory
