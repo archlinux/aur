@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=sanoid
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Policy-driven snapshot management (sanoid), dataset sending/receiving (syncoid) and snapshot searching (findoid) tools for ZFS."
 arch=('any')
@@ -26,7 +26,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/jimsalterjrs/sanoid/archive/v$pkgver.tar.gz"
 )
 
-sha256sums=('a997552e3c5f9fc8407fd20fa1adc99fc37a1f61547f738114c96a1ea1658fe2')
+sha256sums=('1d8735a271a34ec87ea46313a66f6f20bd38b583886924574d3c1f72ea173620')
 
 prepare() {
   # Change /usr/sbin to /usr/bin
