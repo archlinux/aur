@@ -1,10 +1,11 @@
-# Maintainer: Ivan Batrakov <blackfan321 at disroot dot org>
+# Maintainer: Cryolitia <cryolitia at gmail dot com>
+# Contributor: Ivan Batrakov <blackfan321 at disroot dot org>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor:	Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-pinyin
 _pkg=pypinyin
-pkgver=0.50.0
+pkgver=0.54.0
 pkgrel=1
 pkgdesc="Chinese to Pinyin library"
 arch=('any')
@@ -12,9 +13,8 @@ url='https://github.com/mozillazg/python-pinyin'
 license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-changelog=CHANGELOG.rst
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('72e77c4b9b78bad102aca5fefccebdb23439b02717c626039be14a78643980fb')
+sha256sums=('9ab0d07ff51d191529e22134a60e109d0526d80b7a80afa73da4c89521610958')
 
 build() {
 	cd "$_pkg-$pkgver"
