@@ -1,4 +1,4 @@
-pkgbase = polyglot-git
+pkgbase = polyglot-translate-git
 	pkgdesc = Translate text to multiple languages simultaneously (latest git)
 	pkgver = r9.ab8f2f5
 	pkgrel = 1
@@ -11,6 +11,6 @@ pkgbase = polyglot-git
 	provides = polyglot
 	conflicts = polyglot
 	source = git+https://github.com/specious/polyglot.git
-	sha1sums = SKIP
+	sha256sums = SKIP
 
-pkgname = polyglot-git
+pkgname = polyglot-translate-git

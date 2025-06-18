@@ -1,7 +1,8 @@
-# Maintainer: Ildar Sagdejev <specious@gmail.com>
+# Contributor: Ildar Sagdejev <specious@gmail.com>
+# Maintainer: tee < teeaur at duck dot com >
 
 _pkgname=polyglot
-pkgname="${_pkgname}-git"
+pkgname="${_pkgname}-translate-git"
 pkgver=r9.ab8f2f5
 pkgrel=1
 pkgdesc='Translate text to multiple languages simultaneously (latest git)'
@@ -13,7 +14,7 @@ makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+${url}.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
