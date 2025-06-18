@@ -1,6 +1,6 @@
 pkgbase = euterpe
 	pkgdesc = Self-hosted music streaming server with RESTful API and Web interface
-	pkgver = 1.5.4
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/ironsmile/euterpe
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = euterpe
 	makedepends = go
 	depends = taglib
 	depends = icu
-	source = euterpe-1.5.4.tar.gz::https://github.com/ironsmile/euterpe/archive/v1.5.4.tar.gz
-	sha256sums = 941b7a5f99460cea23beb024bcc2e7315fe4a79563f8c750dcdf733465487eff
+	source = euterpe-1.6.1.tar.gz::https://github.com/ironsmile/euterpe/archive/v1.6.1.tar.gz
+	sha256sums = ec42effdf89f56433d12a3b07ee954ce2966bc592655e5bd8720d21d174a2062
 
 pkgname = euterpe

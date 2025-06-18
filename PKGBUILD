@@ -1,7 +1,7 @@
 # Maintainer: Yigit Sever <yigit at yigitsever dot com>
 
 pkgname=euterpe
-pkgver=1.5.4
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Self-hosted music streaming server with RESTful API and Web interface'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('taglib' 'icu')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('941b7a5f99460cea23beb024bcc2e7315fe4a79563f8c750dcdf733465487eff')
+sha256sums=('ec42effdf89f56433d12a3b07ee954ce2966bc592655e5bd8720d21d174a2062')
 
 prepare(){
   cd "$pkgname-$pkgver"
