@@ -4,7 +4,9 @@ while read -r line; do
 	if [[ "$line" == 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
 		read -r pkgbase < "/${line}"
 		rm -f "/boot/vmlinuz-${pkgbase}"
+		rm -f "/boot/vmlinux-${pkgbase}"
 		rm -f "/boot/initramfs-${pkgbase}.img"
+		rm -f "/boot/initramfs-${pkgbase}-fallback.img"
 
 		# detect if the ESP directory is /boot or /efi
 		efi_dirpath="/boot/EFI/Linux"

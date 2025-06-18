@@ -16,9 +16,12 @@ while read -r line; do
 			efi_dirpath="/efi/EFI/Linux"
 		fi
 
+		# ensure the Linux directory inside EFI exists
+		mkdir -p "${efi_dirpath}"
+
 		dracut "${args[@]}" --kver "$kver" --uefi "${efi_dirpath}/${pkgbase}.efi"
 		#dracut --no-hostonly --no-hostonly-cmdline "${args[@]}" "/boot/initramfs-${pkgbase}-fallback.img" --kver "$kver"
-		
+
 		sbctl sign -s -o  "${efi_dirpath}/${pkgbase}.efi"  "${efi_dirpath}/${pkgbase}.efi"
 
 		if [ -f "${efi_dirpath}/${pkgbase}-fallback.efi" ]; then
