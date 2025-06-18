@@ -9,9 +9,13 @@ from rich.text import Text
 from rich.align import Align
 from rich.style import Style
 from rich.live import Live
+
 # ========== Setup ==========
 console = Console()
-ascii_file = "banner.txt"
+
+# Use absolute path to locate banner.txt
+script_dir = os.path.dirname(os.path.realpath(__file__))
+ascii_file = os.path.join(script_dir, "banner.txt")
 
 def format_bytes(size):
     for unit in ['B','KB','MB','GB','TB']:
@@ -56,7 +60,6 @@ def build_ui(upload, download):
 
     return full_panel
 
-
 def main():
     try:
         with Live(console=console, refresh_per_second=1):
@@ -75,4 +78,4 @@ if __name__ == "__main__":
         main()
     except ImportError:
         print("Setting up virtual environment and installing dependencies...")
-        os.system("python -m venv venv && source venv/bin/activate && pip install rich psutil && python netlog.py")
+        os.system("python -m venv venv && source venv/bin/activate && pip install rich psutil && python smyte.py")
