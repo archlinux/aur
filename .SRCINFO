@@ -1,0 +1,22 @@
+pkgbase = sticky-markdown-note-git
+	pkgdesc = The Ultimate Open Source WebChat Platform.(Use system-wide electron)
+	pkgver = 1.4.0.r2.gb1fc5c9
+	pkgrel = 1
+	url = https://github.com/seongmini/sticky-markdown-note
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = icoutils
+	depends = electron29
+	provides = sticky-markdown-note=1.4.0
+	conflicts = sticky-markdown-note
+	source = sticky-markdown-note.git::git+https://github.com/seongmini/sticky-markdown-note
+	source = sticky-markdown-note.sh
+	sha256sums = SKIP
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+
+pkgname = sticky-markdown-note-git
