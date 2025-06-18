@@ -8,15 +8,15 @@ url="https://github.com/FLAS-Forum/timer"
 license=('MIT')
 depends=('gcc' 'glibc')
 makedepends=('rust' 'cargo')
-source=("$pkgname-$pkgver"::"git+file://$PWD")
+source=("git+https://github.com/FLAS-Forum/timer.git")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/timer"
   cargo build --release
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/timer"
   install -Dm755 target/release/timer "$pkgdir/usr/bin/timer"
 }
