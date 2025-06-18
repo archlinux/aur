@@ -1,3 +1,3 @@
 #!/bin/sh
 cd /opt/rimsort
-./RimSort $@
+QT_QPA_PLATFORMTHEME=xdgdesktopportal ./RimSort $@
