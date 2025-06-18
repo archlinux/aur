@@ -13,9 +13,9 @@ pkgbase = nerd-fonts-sf-mono
 	makedepends = parallel
 	provides = nerd-fonts-sf-mono
 	conflicts = nerd-fonts-sf-mono
-	source = SF-Mono-14.dmg::https://developer.apple.com/design/downloads/SF-Mono.dmg
+	source = SF-Mono-15.dmg::https://developer.apple.com/design/downloads/SF-Mono.dmg
 	source = font-patcher-3.4.0::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FontPatcher.zip
 	sha256sums = 6d4a0b78e3aacd06f913f642cead1c7db4af34ed48856d7171a2e0b55d9a7945
-	sha256sums = 902ed7195c298a23441a62f3f0a7a188577ff393f0eb7ef91b6861ddeacb20a3
+	sha256sums = a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760
 
 pkgname = nerd-fonts-sf-mono
