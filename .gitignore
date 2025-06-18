@@ -1,0 +1,5 @@
+bilibili-danmu-crawling*
+pkg
+src
+!*.install
+!*.desktop

@@ -1,0 +1,28 @@
+function func_write_log()
+{
+    var_str=$1
+    var_color=$2
+    if [ "x${var_str}" == "x" ];then
+        var_str=""
+    else
+        var_str="${var_str}"
+    fi
+    if [ "${var_color}" == "g" ];then #green
+        var_str="\n\033[32m${var_str}\033[0m"
+    elif [ "${var_color}" == "y" ];then #yellow
+        var_str="\033[33m${var_str}\033[0m"
+    elif [ "${var_color}" == "r" ];then #red
+        var_str="\033[1;41;33m${var_str}\033[0m"
+    else
+        var_str="\033[37m${var_str}\033[0m"
+    fi
+    echo -e "${var_str}"
+}
+
+## arg 1:  the new package version
+post_install() {
+	func_write_log "软件配置目录：/etc/bilibili-danmu-crawling" "g"
+	func_write_log "软件输出目录：/opt/bilibili-danmu-crawling/_internal/output" "y"
+	func_write_log "请自行将其链接至用户目录" "y"
+	func_write_log "软件输出目录与配置文件目录均为775权限，您设备上的任意用户均可访问/修改" "g"
+}
