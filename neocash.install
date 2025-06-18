@@ -1,0 +1,29 @@
+# neocash.install
+
+# Вызывается после установки или обновления пакета
+post_install() {
+  echo ">>> Добавляем /usr/bin/neocash в /etc/shells..."
+  # Проверяем, существует ли уже эта строка, чтобы избежать дубликатов
+  if ! grep -q "^/usr/bin/neocash$" /etc/shells; then
+    echo "/usr/bin/neocash" >> /etc/shells
+    echo ">>> /usr/bin/neocash успешно добавлен в /etc/shells."
+  else
+    echo ">>> /usr/bin/neocash уже присутствует в /etc/shells. Пропускаем."
+  fi
+  echo ">>> Теперь вы можете установить neocash как основную оболочку с помощью команды:"
+  echo ">>>   chsh -s /usr/bin/neocash"
+  echo ">>> Затем выйдите из системы и снова войдите, чтобы изменения вступили в силу."
+}
+
+# Вызывается после обновления пакета
+post_upgrade() {
+  post_install # Для простоты, при обновлении делаем то же, что и при установке
+}
+
+# Вызывается перед удалением пакета
+pre_remove() {
+  echo ">>> Удаляем /usr/bin/neocash из /etc/shells..."
+  # Удаляем строку с путем к оболочке из /etc/shells
+  sed -i '\_usr/bin/neocash_d' /etc/shells
+  echo ">>> /usr/bin/neocash успешно удален из /etc/shells."
+}

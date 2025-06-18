@@ -1,8 +1,14 @@
 pkgbase = neocash
 	pkgdesc = Modern shell with advanced features
 	pkgver = 1.0.2
+<<<<<<< HEAD
 	pkgrel = 1
 	url = https://github.com/ImVILLS/neocash
+=======
+	pkgrel = 2
+	url = https://github.com/ImVILLS/neocash
+	install = neocash.install
+>>>>>>> 5dae60d (Fresh AUR submission without subdirectories)
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
