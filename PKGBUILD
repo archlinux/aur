@@ -3,7 +3,7 @@
 # Contributor: Jonathan Liu <net147@gmail.com>
 
 pkgname=pg_activity
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="Top-like application for PostgreSQL server activity monitoring"
 arch=(any)
@@ -29,7 +29,7 @@ checkdepends=(
   python-pytest-postgresql
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('85a12345427cdfd5b80d6ece7e357f4fc104ea9d7a1623b92972ed8fcd5f1bf4')
+sha256sums=('6d6f5c8104566cdd8485911e61742d9609075718b3754075085598be58ba5625')
 
 _archive="$pkgname-$pkgver"
 
