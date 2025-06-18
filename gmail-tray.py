@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 from calendar import c
+import re
 import gi
 import subprocess
 import signal
 import threading
 import fcntl
 import json
+import os
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('AppIndicator3', '0.1')
@@ -22,14 +24,34 @@ def already_running():
     except OSError:
         return True
 
+def verify_configs():
+    config_path = os.path.expanduser("~/.config/gmail-tray")
+    config_file = os.path.join(config_path, "gmail-tray-configs.json")
+    if not os.path.exists(config_file):
+        print("Configuration file not found. Creating a new one...")
+        os.makedirs(os.path.dirname(config_file), exist_ok=True)
+        # copies the default config file to the user's home directory
+        default_config = "/usr/share/gmail-tray/gmail-tray-configs.json"
+        if os.path.exists(default_config):
+            print("Copying default configuration file...")
+            with open(default_config, "r") as src, open(config_file, "w") as dst:
+                dst.write(src.read())
+            print("Default configuration file copied.")
+            return config_file
+        else:
+            print("Default configuration file not found. Please create it manually.")
+            exit(1)
+    else:
+        print("Configuration file found.")
+        return config_file
 
 
 class GenericTrayApp:
-    def __init__(self):
+    def __init__(self, config_file):
         self.prev_unread = 0
         # get the variables from the gmail-tray-configs.json file
         try:
-            with open("/usr/bin/gmail-tray-configs.json", "r") as f:
+            with open(config_file, "r") as f:
                 configs = json.load(f)
                 self.url = configs["url"]
                 self.icon = configs["icon"]
@@ -138,13 +160,14 @@ class GenericTrayApp:
         Gtk.main_quit()
 
 
-def main():
+def main(config_file):
     signal.signal(signal.SIGINT, signal.SIG_DFL)
-    _ = GenericTrayApp()
+    _ = GenericTrayApp(config_file)
     Gtk.main()
 
 if __name__ == "__main__":
+    config_file = verify_configs()
     if already_running():
         print("Gmail Tray is already running.")
     else:
-        main()
+        main(config_file)

@@ -20,5 +20,6 @@ package() {
   install -Dm644 "$srcdir/gmail-tray.desktop" "$pkgdir/usr/share/applications/gmail-tray.desktop"
   install -Dm644 "$srcdir/gmail-tray.service" "$pkgdir/usr/lib/systemd/user/gmail-tray.service"
   install -Dm644 "$srcdir/gmail.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/gmail-tray.png"
-  install -Dm644 "$srcdir/gmail-tray-configs.json" "$pkgdir/usr/bin/gmail-tray-configs.json"
+  install -Dm644 "$srcdir/gmail-tray-configs.json" "$pkgdir/usr/share/gmail-tray/gmail-tray-configs.json"
+#  install -Dm644 "$srcdir/gmail-tray-configs.json" "$pkgdir"
 }

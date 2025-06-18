@@ -10,11 +10,9 @@ Also, you must set it (fetchmail) up first for it to wirk
 
 ## Build from Source
 
-> cd gmail-tray/src
+> cd gmail-tray
 
 > makepkg -fsirc
-
-Or, if you have the tar file:
 
 > sudo pacman -U gmail-tray-1.0-1-any.pkg.tar.zst
 
@@ -42,14 +40,18 @@ Or, if you have the tar file:
 > sudo pacman -Rns gmail-tray
 
 Customizations  
-It's a simple python script (eventually I will remake it in rust),
+The user config file is in ~/.config/gmail-tray/gmail-tray-configs.json
 
-So you if you build it from source, you could just add, remove and modify any functions and parameters easily.
+There, you can change:
 
-You can increase or decrease the check interval, change the icon, and you can also change the browser and the flags used
+*   The checking interval to run fetchmail,
+*   The browser used to open gmail (to the one you like most),
+*   The flags used to open the browser
 
 ```
- (like --new-tab, --safe-mode (to use without extensions and make it lighter), ...)
+ (like --new-tab, --safe-mode (to use without extensions and make it lighter), ...),
 ```
 
-But then you you have to rebuild from source for it to work.
+*   The path to the gmail-tray icon (to another icon perhaps),
+*   The app's title,
+*   And even the link to open (if you, for some reason, want to open an alternative page instead of gmail)

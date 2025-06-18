@@ -1,8 +1,8 @@
 {
     "url": "https://mail.google.com",
     "icon": "/usr/share/icons/hicolor/48x48/apps/gmail-tray.png",
-    "title": "Gmail",
+    "title": "Gmail-Tray",
     "interval": 30,
     "browser": "firefox",
-    "flags": ["--ProfileManager", "--new-window", "--safe-mode"]
+    "flags": ["--ProfileManager", "--new-tab"]
 }
