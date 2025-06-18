@@ -1,6 +1,6 @@
 pkgbase = klassy
 	pkgdesc = Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop.
-	pkgver = 6.3.breeze6.3.5
+	pkgver = 6.4.breeze6.4.0
 	pkgrel = 1
 	url = https://github.com/paulmcauley/klassy
 	arch = x86_64
@@ -33,8 +33,8 @@ pkgbase = klassy
 	depends = qt6-svg
 	depends = xdg-utils
 	replaces = classik
-	source = klassy-6.3.breeze6.3.5.tar.gz::https://github.com/paulmcauley/klassy/archive/refs/tags/6.3.breeze6.3.5.tar.gz
-	sha256sums = 51a2229bf58325b0a45e01d84039197caad964b8237b238de7fbcae30b188807
+	source = klassy-6.4.breeze6.4.0.tar.gz::https://github.com/paulmcauley/klassy/archive/refs/tags/6.4.breeze6.4.0.tar.gz
+	sha256sums = 77c757b5edef9808a84fe50f9277369ecafc38fba8d7cda11eb448c0c170a3ff
 
 pkgname = klassy
 
