@@ -1,13 +1,13 @@
 pkgbase = oxker
 	pkgdesc = A simple TUI to view & control Docker containers
-	pkgver = 0.10.3
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://github.com/mrjackwills/oxker
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = oxker-0.10.3.tar.gz::https://github.com/mrjackwills/oxker/archive/v0.10.3.tar.gz
-	sha256sums = 6d27d6e9dfbe38270560751f932cd72659b73d4891117042aa21eba800f2ad9e
+	source = oxker-0.10.4.tar.gz::https://github.com/mrjackwills/oxker/archive/v0.10.4.tar.gz
+	sha256sums = 97c124e29b8ee3e92162c23f34aca78f585fed1a49727d865f06d5c02348805c
 
 pkgname = oxker
