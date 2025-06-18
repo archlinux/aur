@@ -1,6 +1,6 @@
 pkgbase = cloudtolocalllm
 	pkgdesc = CloudToLocalLLM - Unified Flutter Architecture with Integrated System Tray and Local LLM Management (19MB package)
-	pkgver = 3.5.15
+	pkgver = 3.5.16
 	pkgrel = 1
 	url = https://github.com/imrightguy/CloudToLocalLLM
 	install = cloudtolocalllm.install
@@ -23,7 +23,7 @@ pkgbase = cloudtolocalllm
 	optdepends = chromium: Alternative web browser for authentication
 	provides = cloudtolocalllm
 	conflicts = cloudtolocalllm-git
-	source = https://raw.githubusercontent.com/imrightguy/CloudToLocalLLM/master/dist/cloudtolocalllm-3.5.15-x86_64.tar.gz
-	sha256sums = ee920c207966f396566a1e9c5cdd382653e2249842f3868f2a9aa6b945d39501
+	source = https://raw.githubusercontent.com/imrightguy/CloudToLocalLLM/master/dist/cloudtolocalllm-3.5.16-x86_64.tar.gz
+	sha256sums = d08ae5ccaecf7a207448d97215b5be7b6d24ef6ea6853f1422298d7b7d8120ed
 
 pkgname = cloudtolocalllm
