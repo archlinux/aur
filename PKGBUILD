@@ -47,6 +47,7 @@ prepare() {
 	git config submodule.zlib.url "$srcdir/zlib"
 	git config submodule.freetype2.url "$srcdir/freetype2"
 	git config submodule."ndless-sdk/tools/luna".url "$srcdir/luna"
+	git -c protocol.file.allow=always submodule update
 	git clean -f
 	patch --forward --strip=1 --input="$srcdir"/ndless.patch
 }
@@ -59,7 +60,6 @@ build() {
 	sleep 2
 	./build_toolchain.sh
 	popd
-	git submodule init && git submodule update
 	export PATH="$PWD/toolchain/install/bin:$PWD/bin:$PATH"
 	make
 }
