@@ -16,7 +16,6 @@ pkgbase = monitoring-plugins
 	makedepends = rpcbind
 	makedepends = smbclient
 	makedepends = openssh
-	makedepends = inetutils
 	makedepends = postfix
 	makedepends = perl-net-snmp
 	makedepends = curl
