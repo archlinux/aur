@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=adehabitatLT
-_pkgver=0.3.28
+_pkgver=0.3.29
 pkgname=r-${_pkgname,,}
-pkgver=0.3.28
+pkgver=0.3.29
 pkgrel=1
 pkgdesc='Analysis of Animal Movements'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   r-tkrplot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6c213b6d81f622327a15a6751f670b40c6f15d3d20f9e2613a445cb393883dc2')
+sha256sums=('b3372525414b4582f2dbc18401d5af633c1d69236df38ca4e178984efe9bdb69')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
