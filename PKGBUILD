@@ -2,7 +2,7 @@
 
 _pkgname=kio-onedrive
 pkgname=${_pkgname}-git
-pkgver=0.0.5.r0.g444dc99
+pkgver=0.0.8.r1.g88d91c1
 pkgrel=1
 arch=(x86_64)
 pkgdesc="KIO Slave to access Microsoft OneDrive"
