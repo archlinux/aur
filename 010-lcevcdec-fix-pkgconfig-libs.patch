@@ -1,0 +1,9 @@
+--- a/cmake/templates/lcevc_dec.pc.in
++++ b/cmake/templates/lcevc_dec.pc.in
+@@ -5,5 +5,5 @@ includedir=${prefix}/include
+ Name: lcevc_dec
+ Description: LCEVC Decoder SDK
+ Version: @GIT_SHORT_VERSION@
+-Libs: -L"${libdir}" @PC_EXTRA_LIBS@ -llcevc_dec_utility -llcevc_dec_api_utility -llcevc_dec_api -llcevc_dec_core -llcevc_dec_core_sequencing
++Libs: -L"${libdir}" @PC_EXTRA_LIBS@ -llcevc_dec_api_utility -llcevc_dec_api -llcevc_dec_core -llcevc_dec_core_sequencing
+ Cflags: -I"${includedir}"
