@@ -3,7 +3,7 @@
 
 pkgname=devpod-bin
 pkgver=0.6.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Codespaces but open-source, client-only, and unopinionated - unofficial package"
 arch=('x86_64')
 url="https://github.com/loft-sh/devpod"
@@ -22,7 +22,7 @@ depends=(
     'glibc'
     'libayatana-appindicator'
 )
-conflicts=('devpod')
+conflicts=('devpod' 'devpod-cli-bin')
 options=('!strip')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/loft-sh/devpod/releases/download/v${pkgver}/DevPod_linux_x86_64.tar.gz"

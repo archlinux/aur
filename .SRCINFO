@@ -1,7 +1,7 @@
 pkgbase = devpod-bin
 	pkgdesc = Codespaces but open-source, client-only, and unopinionated - unofficial package
 	pkgver = 0.6.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/loft-sh/devpod
 	arch = x86_64
 	license = MPL-2.0
@@ -19,6 +19,7 @@ pkgbase = devpod-bin
 	provides = devpod
 	provides = devpod-cli
 	conflicts = devpod
+	conflicts = devpod-cli-bin
 	options = !strip
 	source = devpod-bin-0.6.15.tar.gz::https://github.com/loft-sh/devpod/releases/download/v0.6.15/DevPod_linux_x86_64.tar.gz
 	sha256sums = 6c5bd63326f92a45707604970d70f6a8cc2c5ffffe703e0903a0c3ded4c042ab
