@@ -4,32 +4,32 @@
 #
 pkgname=hyprpwmenu
 _origpkgname=hyprpwmenu
-pkgver=0.2.0
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A modern powermenu for Hyprland."
 arch=("x86_64")
 url='https://pypi.org/project/hyprpwmenu/'
 license=("None")
 depends=(
-	"python"
-	"python-click"
-	"confz"
-	"python-pyqt6"
+  "python"
+  "confz"
+  "pygobject"
+  "python-rich"
 )
 makedepends=(
-	"python-build"
-	"python-installer"
-	"python-wheel"
-	"python-setuptools"
-	"python-hatchling"
+  "python-build"
+  "python-installer"
+  "python-wheel"
+  "python-setuptools"
+  "python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/fa/56/1d52c8b33de97f0fbcdb86f3c322d5bbd0ab695cf1e7a4c937dfbd224c63/hyprpwmenu-0.2.0.tar.gz")
-sha256sums=("165a067e428c82e339af8c5309d67090a022b0d4c069266d24b353194f93bf9f")
+source=("https://files.pythonhosted.org/packages/63/85/e720530cce8819adabb0d08f98073b8abdf47b63adcdf37372fe77d63402/hyprpwmenu-0.2.4.tar.gz")
+sha256sums=("74f5fbb0266c54f9216a51e2ec121b69b8af6a5b387923e1f451d36043dfac7e")
 package() {
-	cd "${_origpkgname}-${pkgver}" || exit
-	python -m build --wheel --no-isolation
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${_origpkgname}-${pkgver}" || exit
+  python -m build --wheel --no-isolation
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
