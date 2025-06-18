@@ -1,0 +1,14 @@
+pkgbase = deltatouch-git
+	pkgver = r522.ae53cb2
+	pkgrel = 1
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = lomiri-ui-toolkit
+	depends = quirc
+	provides = deltatouch
+	conflicts = deltatouch
+	source = git+https://codeberg.org/d2weber/deltatouch.git#commit=ae53cb21d1a835aa9be88cb36c8a438b6731cb4b
+	sha256sums = SKIP
+
+pkgname = deltatouch-git
