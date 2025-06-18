@@ -1,0 +1,24 @@
+pkgbase = python-pretty_midi
+	pkgdesc = Python functions and classes for handling MIDI data conveniently.
+	pkgver = 0.2.10
+	pkgrel = 2
+	url = https://pypi.org/project/pretty_midi
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-six
+	depends = python-mido
+	provides = pretty_midi
+	provides = python-pretty_midi
+	conflicts = pretty_midi
+	conflicts = python-pretty_midi
+	options = !strip
+	source = pretty_midi-0.2.10.tar.gz::https://files.pythonhosted.org/packages/source/p/pretty_midi/pretty_midi-0.2.10.tar.gz
+	sha256sums = ea6e192f94044674e833336ea1f415318ddf28e320302ac7b109edff0d4534bd
+
+pkgname = python-pretty_midi
