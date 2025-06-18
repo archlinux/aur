@@ -1,4 +1,4 @@
-pkgbase = phonon-qt5-gstreamer
+pkgbase = phonon-gstreamer
 	pkgdesc = Phonon GStreamer backend for Qt5
 	pkgver = 4.10.0
 	pkgrel = 4
