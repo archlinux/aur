@@ -1,0 +1,13 @@
+pkgbase = tcpulse
+	pkgdesc = A TCP/UDP load generator that provides fine-grained, flow-level control in Go
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/yuuki/tcpulse
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	source = git::git+https://github.com/yuuki/tcpulse#commit=39ebe8cade928f36d4bd938089f0dc550600c129
+	sha256sums = SKIP
+
+pkgname = tcpulse
