@@ -2,14 +2,14 @@
 # Contributor:
 
 pkgname=check-symlinks
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Check for broken symlinks'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jmelahman/check-symlinks'
 license=('MIT')
 makedepends=('git' 'go')
-_commit='f75ca4368d56917e2a246fda2520b5d983ab992d'
+_commit='d17e840991f46d1b5dc8691090fd4d6fdf3f3cf8'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
