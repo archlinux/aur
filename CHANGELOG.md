@@ -4,15 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.30.0] - 2025-06-17
+## [1.30.1] - 2025-06-18
 
 ### Added
 - New unit file controls : Preset, Disable, Reenable and Link
 - Portuguese Brazil translation strings
 - French translation strings
-Fix
-
-- Translation texts
+- Translators Credits
 
 ## [1.29.2] - 2025-06-13
 Fix
