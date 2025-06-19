@@ -1,6 +1,6 @@
 pkgbase = naemon-livestatus
 	pkgdesc = Naemon - Livestatus Eventbroker Module
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://www.naemon.io/documentation/usersguide/livestatus.html
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = naemon-livestatus
 	depends = icu
 	depends = naemon
 	backup = etc/naemon/livestatus.cfg
-	source = naemon-livestatus-git::git+https://github.com/naemon/naemon-livestatus.git#commit=bb5d67d6a9110706ab3b5d5da36369fddfcd1417
+	source = naemon-livestatus-git::git+https://github.com/naemon/naemon-livestatus.git#commit=73d41450ec878209aa01066d49be812eba7fabe6
 	sha512sums = SKIP
 
 pkgname = naemon-livestatus

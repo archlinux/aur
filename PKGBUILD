@@ -1,16 +1,17 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Immae <ismael.bouya@normalesup.org>
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname='naemon-livestatus'
 pkgdesc="Naemon - Livestatus Eventbroker Module"
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.naemon.io/documentation/usersguide/livestatus.html"
 license=('GPL2')
 depends=('icu' 'naemon')
 makedepends=('git')
-source=("naemon-livestatus-git::git+https://github.com/naemon/naemon-livestatus.git#commit=bb5d67d6a9110706ab3b5d5da36369fddfcd1417")
+source=("naemon-livestatus-git::git+https://github.com/naemon/naemon-livestatus.git#commit=73d41450ec878209aa01066d49be812eba7fabe6")
 sha512sums=('SKIP')
 backup=('etc/naemon/livestatus.cfg')
 
