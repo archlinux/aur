@@ -1,9 +1,10 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Immae <ismael.bouya@normalesup.org>
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=naemon
-pkgver=1.4.3
-_commit=c082729159ba188cc86b1b1298022811c24caa0c
+pkgver=1.4.4
+_commit=1e854668f5153aa465cecd95335338411f6aaf02
 pkgrel=1
 pkgdesc="Network Application and Event Monitor"
 arch=('i686' 'x86_64')
