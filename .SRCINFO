@@ -1,0 +1,17 @@
+pkgbase = bellybutton
+	pkgdesc = CLI grammar checker for Bash, JS, Python, Go, and Rust
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/SW-philip/bellybutton
+	arch = any
+	license = MIT
+	depends = bash
+	depends = shellcheck
+	depends = eslint
+	depends = ruff
+	depends = golangci-lint
+	depends = cargo
+	source = bellybutton-1.0.0.tar.gz::https://github.com/SW-philip/bellybutton/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 383168669229bff9c9fbc8605d154b578a60b0f67e41efa98dee8cc3d60559eb
+
+pkgname = bellybutton
