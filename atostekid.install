@@ -8,18 +8,20 @@ ca_label_ehoito="Atostek ID Local CA"
 ca_install_dir="/usr/share/${pkgname}/certs"
 
 # colors
-all_off="$(tput sgr0)"
-bold="${all_off}$(tput bold)"
-blue="${bold}$(tput setaf 4)"
-red="${bold}$(tput setaf 1)"
-yellow="${bold}$(tput setaf 3)"
+if command -v tput; then
+    all_off="$(tput sgr0)"
+    bold="${all_off}$(tput bold)"
+    blue="${bold}$(tput setaf 4)"
+    red="${bold}$(tput setaf 1)"
+    yellow="${bold}$(tput setaf 3)"
+fi
 
 note() {
-    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+    printf "${blue-}==>${yellow-} NOTE:${bold-} ${1}${all_off-}\n"
 }
 
 warn() {
-    printf "${red}==> WARN:${bold} $1${all_off}\n"
+    printf "${red-}==> WARN:${bold-} ${1}${all_off-}\n"
 }
 
 install_ca() {
