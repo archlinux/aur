@@ -1,7 +1,7 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=kh-melonmix-bin
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of MelonDS, focused on remastering Kingdom Hearts: 358/2 Days and Re:coded"
 arch=(x86_64)
 url="https://github.com/vitor251093/KHMelonMix"
@@ -24,6 +24,9 @@ mkdir -p $pkgdir/opt/Kingdom\ Hearts\ Melon\ Mix
 mkdir -p $pkgdir/usr/bin
 mkdir -p $pkgdir/usr/share/applications
 mkdir -p $pkgdir/usr/share/icons/hicolor/256x256/apps
+
+# removing the DELETE_ME file that comes with the upstream package because (at least for this) it's really not needed
+rm $srcdir/roms/DELETE_ME
 
 # move everything (and I mean EVERYTHING) to $pkgdir/opt/Kingdom Hearts Melon Mix
 cd $srcdir
@@ -68,9 +71,8 @@ echo "[Desktop Entry]
 	Icon=kh-melonmix-coded
 	Categories=Game;" >>"$pkgdir/usr/share/applications/kh-melonmix-recoded.desktop"
 
-# and finally installing the icon I took from SteamGridDB & the rest of them from the github
+# and finally installing the icon I took from the github
 cp $srcdir/melon_256x256.png $pkgdir/usr/share/icons/hicolor/256x256/apps/kh-melonmix.png
 cp $srcdir/khCodedMM.png $pkgdir/usr/share/icons/hicolor/256x256/apps/kh-melonmix-coded.png
 cp $srcdir/khDaysMM.png $pkgdir/usr/share/icons/hicolor/256x256/apps/kh-melonmix-days.png
 }
-
