@@ -3,7 +3,7 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 pkgname=eden
 pkgver=0.0.2
-pkgrel=8
+pkgrel=9
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://eden-emulator.github.io/
@@ -135,9 +135,4 @@ package() {
 	do
 		install -Dm644 $file "$pkgdir/usr/share/licenses/$pkgname/$file"
 	done
-	mv "$pkgdir/usr/share/applications/org.yuzu_emu.yuzu.desktop" "$pkgdir/usr/share/applications/org.eden_emu.eden.desktop"
-	mv "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.yuzu_emu.eden.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.eden_emu.eden.svg"
-	mv "$pkgdir/usr/share/metainfo/org.yuzu_emu.yuzu.metainfo.xml" "$pkgdir/usr/share/metainfo/org.eden_emu.eden.metainfo.xml"
-	mv "$pkgdir/usr/share/mime/packages/org.yuzu_emu.yuzu.xml" "$pkgdir/usr/share/mime/packages/org.eden_emu.eden.xml"
-	sed -i 's/yuzu/eden/g' "$pkgdir/usr/share/mime/packages/org.eden_emu.eden.xml"
 }
