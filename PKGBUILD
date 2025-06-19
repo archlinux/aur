@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-posthog
 _name=posthog-python
-pkgver=5.1.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Integrate PostHog into any python application."
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   'python-openai: OpenAI SDK support'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6fa2985d5059e6d386e1dc3fc987e2d1954ae224ef086d76a982d6937babd6f5')
+sha256sums=('12114819f566293c7602a5bab5ee6aa4d9d4fba5357447ad91f99a8833773193')
 
 prepare() {
   cd "$_name-$pkgver"
