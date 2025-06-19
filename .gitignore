@@ -3,6 +3,7 @@
 
 !/.gitignore
 !/.SRCINFO
+!/LICENSE
 !/PKGBUILD
 
 !/fix_cmake_module_path.patch
