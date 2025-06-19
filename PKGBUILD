@@ -1,7 +1,7 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Shadow Of The Wyrm by Julian Day - Development branch."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://www.shadowofthewyrm.org/"
 license=('MIT')
 groups=()
 depends=('sdl2' 'sdl2_mixer' 'sdl2_image' 'xerces-c' 'zlib' 'ncurses' 'lua51' 'boost' 'gtest')
-makedepends=('premake' 'git' 'unzip')
+makedepends=('premake' 'git')
 checkdepends=()
 provides=(sotw)
 conflicts=(sotw)
@@ -76,8 +76,7 @@ package() {
   install -D ${srcdir}/shadow-of-the-wyrm/sotw/shadowofthewyrmtext_blank.ini "${pkgdir}/usr/share/sotw/shadowofthewyrmtext_blank.ini"
   install -D ${srcdir}/shadow-of-the-wyrm/sotw/shadowofthewyrmtext_en.ini "${pkgdir}/usr/share/sotw/shadowofthewyrmtext_en.ini"
   install -D ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini "${pkgdir}/usr/share/sotw/swyrm.ini"
-  # cp -R ${srcdir}/shadow-of-the-wyrm/sotw/assets ${pkgdir}/usr/share/sotw/assets
-  unzip -d ${pkgdir}/usr/share/sotw ${srcdir}/ShadowOfTheWyrm-assets.zip
+  cp -R ${srcdir}/assets ${pkgdir}/usr/share/sotw/assets
   cp -R ${srcdir}/shadow-of-the-wyrm/sotw/data ${pkgdir}/usr/share/sotw/data
   cp -R ${srcdir}/shadow-of-the-wyrm/sotw/docs ${pkgdir}/usr/share/sotw/docs
   cp -R ${srcdir}/shadow-of-the-wyrm/sotw/licenses ${pkgdir}/usr/share/sotw/licenses
