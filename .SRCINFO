@@ -1,6 +1,6 @@
 pkgbase = python-qiskit-qasm3-import
 	pkgdesc = Importer from OpenQASM 3 to Qiskit's QuantumCircuit
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-qasm3-import
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-qiskit-qasm3-import
 	makedepends = python-wheel
 	depends = python-openqasm3
 	depends = python-qiskit
-	source = qiskit-qasm3-import-0.5.1.tar.gz::https://github.com/Qiskit/qiskit-qasm3-import/archive/refs/tags/v0.5.1.tar.gz
-	b2sums = 3ff57dac3bacdd15aeec72010252f811b99a42efd0243bfd28c2fcc9c481c34a67426065f6f0d1e981172c7ff8b203b8a42ccb46a8eec668c5c8d5dde3854d49
+	source = qiskit-qasm3-import-0.6.0.tar.gz::https://github.com/Qiskit/qiskit-qasm3-import/archive/refs/tags/v0.6.0.tar.gz
+	b2sums = be426173c8e3641d4460bba88e37b4f32b04b10291c1fbc1347d013675eb80068204c9e1cbf86e9f7bcba08450c8be0125fcc97ab2c5b5ad0be00f3d4d126d08
 
 pkgname = python-qiskit-qasm3-import
