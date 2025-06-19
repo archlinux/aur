@@ -3,7 +3,7 @@
 # Contributor: Sebastian Wieland <wieland.s[at]online[dot]de>
 _pkgname=nextcloud
 pkgname=${_pkgname}-client-appimage-daily
-pkgver=20250618
+pkgver=20250619
 _appimgname=linux-${pkgver##*.}
 pkgrel=1
 epoch=1
@@ -19,7 +19,7 @@ makedepends=('p7zip' 'curl')
 noextract=("$_appimgname.AppImage")
 options=('!strip')
 source=(${_pkgname}-${pkgver}.AppImage::${url}/${_appimgname}.AppImage)
-sha256sums=('47d128821293969382912e4e33a8a2279d8dafd654bc270e5f643b1bdace4f58')
+sha256sums=('7a0839067d1b8d90c87358ae52bd2c508d6847d3ddee058bb5192bfa2f4f31b2')
 
 prepare() {
     cd "${srcdir}"
