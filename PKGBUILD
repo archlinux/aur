@@ -2,7 +2,7 @@
 
 pkgname=helmfile-bin
 pkgdesc="Helmfile is a declarative spec for deploying helm charts."
-pkgver=0.167.0 # renovate: datasource=github-tags depName=helmfile/helmfile
+pkgver=1.1.2 # renovate: datasource=github-tags depName=helmfile/helmfile
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/helmfile/helmfile"
@@ -13,8 +13,8 @@ provides=('helmfile')
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/helmfile_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/helmfile_${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('4e897ef1dbbbe1ab802a2b9bb7b51bc3ded5ad3fdd0ac94d4e8967eb9e266bfe')
-sha256sums_aarch64=('7899790f0ba9605cf751ce71d0f4778e3ae0f6ccc8b3f44df05345fe49b7d76b')
+sha256sums_x86_64=('172bcc08a7ba48e6f7c2ac496b407ee56a99f4431b84a58f9d484dcf58862566')
+sha256sums_aarch64=('9a7ef45f38c24c4a3e56973da1bd7e13d3d106fb6f15624910be754f4d74c980')
 
 noextract=("$pkgname-$pkgver.tar.gz")
 
