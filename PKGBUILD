@@ -1,7 +1,7 @@
-# Maintainer: lantw44 (at) gmail (dot) com
+# Contributor: lantw44 (at) gmail (dot) com
 
 pkgname=guile-zlib
-pkgver=0.1.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Guile bindings for zlib'
 arch=('x86_64' 'i686' 'armv7h')
@@ -9,7 +9,7 @@ url='https://notabug.org/guile-zlib/guile-zlib'
 license=('GPL3')
 depends=('guile' 'zlib')
 source=("${pkgname}-${pkgver}.tar.gz::https://notabug.org/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('25c726b570a06d21bc6fd7ec6093f377c749ce2efdd1d1516ac1b595f3f94ee9')
+sha256sums=('6f6cca4b32ca79f3f4627cdb7ea68569a3cc38be60468991e2b5c085783e38c1')
 
 build() {
 	cd "${srcdir}/${pkgname}"
