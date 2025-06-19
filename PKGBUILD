@@ -4,11 +4,11 @@
 pkgname=python-click-extra
 _name=${pkgname#python-}
 pkgver=5.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Drop-in replacement for Click to make user-friendly and colorful CLI.'
 url='https://github.com/kdeldycke/click-extra'
 makedepends=(uv)
-depends=(python python-boltons python-click 'python-cloup>=3.0.5' python-commentjson python-extra-platforms python-mergedeep python-yaml python-requests python-tabulate python-xmltodict python-wcmatch)
+depends=(python python-boltons python-click 'python-cloup>=3.0.5' python-extra-platforms python-mergedeep python-yaml python-requests python-tabulate python-xmltodict python-wcmatch)
 #checkdepends=(python-pytest python-pytest-cov python-pytest-httpserver python-pytest-randomly python-pytest-cases)
 license=('GPL2')
 arch=('any')

@@ -1,7 +1,7 @@
 pkgbase = python-click-extra
 	pkgdesc = Drop-in replacement for Click to make user-friendly and colorful CLI.
 	pkgver = 5.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kdeldycke/click-extra
 	arch = any
 	license = GPL2
@@ -10,7 +10,6 @@ pkgbase = python-click-extra
 	depends = python-boltons
 	depends = python-click
 	depends = python-cloup>=3.0.5
-	depends = python-commentjson
 	depends = python-extra-platforms
 	depends = python-mergedeep
 	depends = python-yaml
