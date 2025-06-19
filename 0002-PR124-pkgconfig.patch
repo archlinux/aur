@@ -1,0 +1,49 @@
+From 121b4b664fd7b98546bb45adc4d45ee8a3043295 Mon Sep 17 00:00:00 2001
+From: Cole Mickens <cole.mickens@gmail.com>
+Date: Sun, 6 Dec 2020 17:20:20 -0800
+Subject: [PATCH] cmake: output cpptoml.pc for pkg-config discoverability
+
+---
+ CMakeLists.txt | 7 +++++++
+ cpptoml.pc.in  | 7 +++++++
+ 2 files changed, 14 insertions(+)
+ create mode 100644 cpptoml.pc.in
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4ec25cc..2ca8b58 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -43,6 +43,11 @@ target_include_directories(cpptoml INTERFACE
+   $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+   $<INSTALL_INTERFACE:include>)
+ 
++configure_file(
++  "${PROJECT_SOURCE_DIR}/cpptoml.pc.in"
++  "${PROJECT_SOURCE_DIR}/cpptoml.pc"
++  @ONLY)
++
+ if (LIBDL_LIBRARY)
+   target_link_libraries(cpptoml INTERFACE ${LIBDL_LIBRARY})
+ endif()
+@@ -87,6 +92,8 @@ install(FILES
+           ${CMAKE_CURRENT_BINARY_DIR}/cpptoml/cpptomlConfig.cmake
+         DESTINATION
+           lib/cmake/cpptoml)
++install(FILES "${PROJECT_SOURCE_DIR}/cpptoml.pc"
++        DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+ 
+ export(EXPORT cpptoml-exports
+        FILE ${CMAKE_CURRENT_BINARY_DIR}/cpptoml/cpptomlTargets.cmake)
+diff --git a/cpptoml.pc.in b/cpptoml.pc.in
+new file mode 100644
+index 0000000..c73b75b
+--- /dev/null
++++ b/cpptoml.pc.in
+@@ -0,0 +1,7 @@
++prefix=@CMAKE_INSTALL_PREFIX@
++includedir=${prefix}/include
++
++Name: cpptoml
++Description: A header-only library for parsing TOML
++Version: @cpptoml_VERSION@
++Cflags: -I${includedir}
