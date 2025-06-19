@@ -3,7 +3,7 @@
 
 _gemname=factory_bot
 pkgname=ruby-$_gemname
-pkgver=6.5.1
+pkgver=6.5.4
 pkgrel=1
 pkgdesc='A library for setting up Ruby objects as test data.'
 arch=(any)
@@ -13,7 +13,7 @@ options=(!emptydirs)
 depends=(ruby ruby-activesupport)
 makedepends=(ruby-rake)
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('4ee819d7ede1b248951fe11bb6f033f73f72da689e5c8dbda50b7fa26bfde5b0ab0bb8b6a2b06f2f6548ce8bd6b4a565946073d98c93c9d552cd91e6fe6dcc5b')
+sha512sums=('32f25c281f07a8cd0481af84bb8fabfe77cbc196f31fa1bb9cf6be4135ed47218ce4bdcab8d72a32390d01bb45a9e456f04195ca0f06b71aa9e7b77827cf9a72')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
