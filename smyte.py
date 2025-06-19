@@ -84,6 +84,18 @@ def main():
         with Live(console=console, refresh_per_second=1):
             while True:
                 curr_sent, curr_recv = get_data_usage()
+
+                # Auto reset if current is somehow less than stored
+                if curr_sent < start_sent or curr_recv < start_recv:
+                    start_sent = curr_sent
+                    start_recv = curr_recv
+                    with open(TRACK_FILE, "w") as f:
+                        json.dump({
+                            "date": str(date.today()),
+                            "start_sent": start_sent,
+                            "start_recv": start_recv
+                        }, f)
+
                 upload = max(0, curr_sent - start_sent)
                 download = max(0, curr_recv - start_recv)
                 panel = build_ui(upload, download)
@@ -92,6 +104,7 @@ def main():
                 time.sleep(1)
     except KeyboardInterrupt:
         console.print("\n[red bold]❌ Exiting Smyte...[/]")
+
 
 if __name__ == "__main__":
     try:
