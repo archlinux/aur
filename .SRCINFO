@@ -1,7 +1,7 @@
 pkgbase = libastal-powerprofiles-git
 	pkgdesc = Library and cli to control upowerd powerprofiles
-	pkgver = r785.4e455bb
-	pkgrel = 1
+	pkgver = r786.ca3190d
+	pkgrel = 2
 	url = https://github.com/Aylur/astal
 	arch = x86_64
 	groups = libastal
@@ -17,8 +17,6 @@ pkgbase = libastal-powerprofiles-git
 	provides = libastal-power-profiles
 	provides = libastal-power-profiles.so=0-64
 	source = git+https://github.com/Aylur/astal.git
-	source = skip_valadoc.patch
 	sha256sums = SKIP
-	sha256sums = 9b1927662393f1bc6aeae81bb4d48a60ac0180b7ebd5f9d7a489db3621895be3
 
 pkgname = libastal-powerprofiles-git
