@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : Arch-mkpkg
- Tags         : 6.2.3 ➙ 7.2.0
-              : 2024-12-31 ➙ 2025-06-16
+ Tags         : 6.2.4 ➙ 7.4.0
+              : 2024-12-31 ➙ 2025-06-19
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-19   : 7.4.0
+                Keep internal copy of run_prog in sync with pyconcurrent
+                   For subprocess stdin add .flush() on the file object before closing
+ 2025-06-16     update Docs/Changelogs Docs/mkpkg.pdf for 7.2.0
 
  2025-06-16   : 7.2.0
                 run_prog: Fix one more possible hang. Add more exception checks that should
@@ -30,7 +35,3 @@
  2024-12-31   : 6.2.4
                 Add git signing key to Arch Package
                 update Docs/Changelog.rst Docs/mkpkg.pdf for 6.2.3
-
- 2024-12-31   : 6.2.3
-                fix typo in PKGBUILD
-                update Docs/Changelog.rst Docs/mkpkg.pdf for 6.2.2
