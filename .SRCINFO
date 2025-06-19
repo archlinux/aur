@@ -1,7 +1,7 @@
 pkgbase = trojita-git
 	pkgdesc = A fast QT IMAP e-mail client
 	pkgver = 0.7.r735.g701e3c63
-	pkgrel = 2
+	pkgrel = 3
 	url = http://trojita.flaska.net
 	arch = i686
 	arch = x86_64
@@ -23,6 +23,6 @@ pkgbase = trojita-git
 	source = git+https://invent.kde.org/pim/trojita.git
 	source = trojita-qgpgme5.patch
 	md5sums = SKIP
-	md5sums = 18c5e0061400e3180969b7edf2128a6e
+	md5sums = 8439d6c1546e5a3a624f023cc1a473e3
 
 pkgname = trojita-git

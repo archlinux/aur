@@ -2,7 +2,7 @@
 
 pkgname=trojita-git
 pkgver=0.7.r735.g701e3c63
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast QT IMAP e-mail client"
 arch=(i686 x86_64)
 url="http://trojita.flaska.net"
@@ -16,7 +16,7 @@ makedepends=('git' 'cmake' 'boost')
 source=('git+https://invent.kde.org/pim/trojita.git'
         'trojita-qgpgme5.patch')
 md5sums=('SKIP'
-         '18c5e0061400e3180969b7edf2128a6e')
+         '8439d6c1546e5a3a624f023cc1a473e3')
 
 pkgver() {
   cd "$srcdir/trojita"
