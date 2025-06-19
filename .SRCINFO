@@ -1,39 +1,21 @@
 pkgbase = veilid-git
 	pkgdesc = Veilid headless node
-	pkgver = 0.2.5.r13.g7d1b789
+	pkgver = 0.4.7.r13.g24a0987
 	pkgrel = 1
 	url = https://veilid.com
 	arch = x86_64
-	license = MPL2
+	license = MPL-2.0
 	makedepends = git
 	makedepends = cargo
-	makedepends = protobuf
-	provides = veilid=0.2.5
+	depends = gcc-libs
+	depends = glibc
+	provides = veilid=0.4.7
 	conflicts = veilid
+	options = !lto
 	source = git+https://gitlab.com/veilid/veilid.git
-	source = git+https://gitlab.com/veilid/cursive.git
-	source = git+https://gitlab.com/veilid/cursive-buffered-backend.git
-	source = git+https://gitlab.com/veilid/cursive-flexi-logger-view.git
-	source = git+https://gitlab.com/veilid/keyring-manager.git
-	source = git+https://gitlab.com/veilid/keyvaluedb.git
-	source = git+https://gitlab.com/veilid/libmdns.git
-	source = git+https://gitlab.com/veilid/mdns.git
-	source = git+https://gitlab.com/veilid/hashlink.git
-	source = git+https://gitlab.com/veilid/rust-igd.git
-	source = veilid-server.service
 	source = veilid-server.tmpfiles
 	source = veilid-server.sysusers
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = e914039d3eab0b94b90b14ee8593fec1992cda4f1870024f7d884098bd43c3ae
 	sha256sums = 4cf75923480b952ba991c56869dce559e500fe3571a343c03a83a790d3a4c73f
 	sha256sums = 2ce72c2aa7799f39d1b6dca3173b12943c551dad615cf4ec21cc03e10890c8e1
 
