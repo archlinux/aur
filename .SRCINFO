@@ -1,5 +1,6 @@
 pkgbase = python-ecdysys
-	pkgver = 0.1.2
+	pkgdesc = Python CLI to update your system packages
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://pypi.org/project/ecdysys
 	arch = any
@@ -10,9 +11,13 @@ pkgbase = python-ecdysys
 	depends = python-colorama
 	depends = python-toml
 	depends = pacman-contrib
+	optdepends = pacman-contrib: pacman support
+	optdepends = yay: aur support with yay
+	optdepends = paru: aur support with paru
+	optdepends = flatpak: flatpak support
 	provides = ecdysys
 	conflicts = ecdysys
-	source = https://files.pythonhosted.org/packages/py3/e/ecdysys/ecdysys-0.1.2-py3-none-any.whl
-	sha256sums = 8cadc64830b394eed0e79ae4ee3e5bea0b630ca2936c18865fb86e07a94a7968
+	source = https://files.pythonhosted.org/packages/py3/e/ecdysys/ecdysys-0.1.4-py3-none-any.whl
+	sha256sums = e014ce08ddade98ad3b6a92ce245ebbe9721efbeb19c193a6237b7f47c246210
 
 pkgname = python-ecdysys
