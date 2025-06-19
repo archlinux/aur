@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Linglong is the container application toolkit of deepin.'
 arch=($CARCH)
@@ -16,7 +16,7 @@ conflicts=(
   linglong
 )
 replaces=(linglong-git)
-_qt=qt5
+_qt=qt6
 depends=(
   sh
   curl
@@ -43,19 +43,26 @@ makedepends=(
   tl-expected
 )
 optdepends=(
+  "linyaps-box: 玲珑（Linglong） is the container application toolkit of deepin."
+  "linyaps-installer: 玲珑（Linglong）linyaps-web-store-installer is a package installer for the Linyaps Web store."
   "linglong-pica: deb package to Linglong package tool."
+  "linglong-tools: A command line helper for linglong."
   "ll-killer-go: 玲珑杀手 Go: 玲珑应用快速构建系统"
 )
 install=${pkgname}.install
 source=(
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+  "${pkgname}::git+${url}.git#tag=${pkgver}"
   "${pkgname}.install"
 )
-sha256sums=('3d7813d17aa6a7c6cb2961203a335c76385936e0ae2ce7dad7a0bb88301a6d0c'
-            '2ede7bc18aad4065a5c3f4552af1dde0b029099d572670b118a1453bf3d75f66')
+sha256sums=('3bf8024b8643f65f38dd792c88aaeebeb4a40c2551b55b2ace3a2f0dbca011a8'
+            '08e41ba735bf4285a089e3c86515bd9aee4f8fb3a78b1c06ec74fd1e3959efc3')
+
+prepare() {
+  git -C "${srcdir}/${pkgname}" clean -dfx
+}
 
 build() {
-  cd "${srcdir}"/${pkgname}-${pkgver}/
+  cd "${srcdir}"/${pkgname}/
   # see：https://wiki.archlinux.org/title/CMake_package_guidelines
   cmake -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -69,10 +76,10 @@ build() {
 }
 
 # check() {
-#   cd "${srcdir}"/${pkgname}-${pkgver}/
+#   cd "${srcdir}"/${pkgname}/
 #   ctest --test-dir build --output-on-failure
 # }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}-${pkgver}/build install
+  DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
 }
