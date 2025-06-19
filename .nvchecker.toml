@@ -1,0 +1,5 @@
+[discord-chat-exporter-cli-bin]
+source = "github"
+github = "Tyrrrz/DiscordChatExporter"
+use_latest_release = true
+prefix = "v"
