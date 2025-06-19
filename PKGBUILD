@@ -1,7 +1,7 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=hurrycurry-server
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=7
 pkgdesc="A game about cooking (server)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,33 +14,38 @@ source=("hurrycurry-$pkgver.tar.gz::https://codeberg.org/hurrycurry/hurrycurry/a
         "hurrycurry.yaml"
         "tmpfiles.conf"
         "sysusers.conf")
-sha256sums=('c1ec7679441bce07d9223a7eaa210446892c5b8e4d936062991b0c22a66867af'
+sha256sums=('c9876b38411e2af85ff90b4dc5b566f28b7e0ad5fb90180ff54c48e074dace88'
             '2e10c8882ef4847586f03ac5feb469294c1b2304928f8df41db12a1d84569eb7'
             'dec75b020f3a0bfc5c22f0fa013fe03d06feab608f9d4a42fb46d05dbed56844'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
             '47c6bd933fc96d08322d78a14c7932707b1dd1be2c1bb6eda2d212973f96aac9'
             'bbb29eff6b62d4530b04c0a964a88229212fea165f97a1c4674c53fae9fb4fe4')
 
+
+rust_chost() {
+	sed -e "s/-pc-linux/-unknown-linux/" -e "s/armv7l-/armv7-/" <<< "$CHOST"
+}
+
 prepare() {
     cd "hurrycurry"
     rustup default nightly
-    cargo +nightly fetch --locked --target "$CHOST"
+    cargo +nightly fetch --locked --target "$(rust_chost)"
 }
 build() {
     cd "hurrycurry"
-    cargo build --frozen --release --target "$CHOST" --bin hurrycurry-server
-    cargo build --frozen --release --target "$CHOST" --bin hurrycurry-replaytool
-    cargo build --frozen --release --target "$CHOST" --bin hurrycurry-registry
-    cargo build --frozen --release --target "$CHOST" --bin hurrycurry-discover
+    cargo build --frozen --release --target "$(rust_chost)" --bin hurrycurry-server
+    cargo build --frozen --release --target "$(rust_chost)" --bin hurrycurry-replaytool
+    cargo build --frozen --release --target "$(rust_chost)" --bin hurrycurry-registry
+    cargo build --frozen --release --target "$(rust_chost)" --bin hurrycurry-discover
     make -C data all
     # make -C test-client # TODO currently broken
     make -C data recipes/default.svg
 }
 package() {
-    install -Dm755 hurrycurry/target/$CHOST/release/hurrycurry-server "$pkgdir/usr/bin/hurrycurry-server"
-    install -Dm755 hurrycurry/target/$CHOST/release/hurrycurry-replaytool "$pkgdir/usr/bin/hurrycurry-replaytool"
-    install -Dm755 hurrycurry/target/$CHOST/release/hurrycurry-registry "$pkgdir/usr/bin/hurrycurry-registry"
-    install -Dm755 hurrycurry/target/$CHOST/release/hurrycurry-discover "$pkgdir/usr/bin/hurrycurry-discover"
+    install -Dm755 hurrycurry/target/"$(rust_chost)"/release/hurrycurry-server "$pkgdir/usr/bin/hurrycurry-server"
+    install -Dm755 hurrycurry/target/"$(rust_chost)"/release/hurrycurry-replaytool "$pkgdir/usr/bin/hurrycurry-replaytool"
+    install -Dm755 hurrycurry/target/"$(rust_chost)"/release/hurrycurry-registry "$pkgdir/usr/bin/hurrycurry-registry"
+    install -Dm755 hurrycurry/target/"$(rust_chost)"/release/hurrycurry-discover "$pkgdir/usr/bin/hurrycurry-discover"
     install -Dm644 hurrycurry.service "$pkgdir/usr/lib/systemd/system/hurrycurry.service"
     install -Dm644 hurrycurry-registry.service "$pkgdir/usr/lib/systemd/system/hurrycurry-registry.service"
     install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/hurrycurry.conf"
