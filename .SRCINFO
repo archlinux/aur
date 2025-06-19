@@ -1,11 +1,12 @@
 pkgbase = gmlghd
 	pkgdesc = The gemlog http daemon
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~shtrophic/gmlghd
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-or-later
+	checkdepends = fish
 	makedepends = git
 	makedepends = meson
 	makedepends = scdoc

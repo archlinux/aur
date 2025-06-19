@@ -4,12 +4,13 @@ pkgname=gmlghd
 pkgver=1.5
 _ctkcommit=7791114
 _foocgicommit=9575997
-pkgrel=1
+pkgrel=2
 pkgdesc='The gemlog http daemon'
 arch=(x86_64 aarch64)
 url='https://git.sr.ht/~shtrophic/gmlghd'
 license=('AGPL-3.0-or-later')
 makedepends=(git meson scdoc linux-api-headers)
+checkdepends=(fish)
 depends=(
     glibc
     confuse
