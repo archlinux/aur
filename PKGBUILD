@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=neanes-bin
 _pkgname=Neanes
-pkgver=0.4.100
+pkgver=0.4.101
 _electronversion=36
 pkgrel=1
 pkgdesc="A free and open source scorewriter for notating Byzantine chant in Byzantine notation.(Prebuilt version.Use system-wide electron)"
@@ -21,8 +21,12 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('71d0a9abcf19f98dd1182f7646e37bd47c7aa708b1aac28a9e4ad859a80124c5'
+sha256sums=('a588707399b217954ca0a7f2a7e12e881da24c49794c01af3ee4c33aaae91c5f'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/squashfs-root/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -35,6 +39,7 @@ prepare() {
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
