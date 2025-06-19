@@ -1,20 +1,20 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
-pkgver=1.2.13
-_webkitver=017930ebf915121f8f593bef61cbbca82d78132d #https://github.com/oven-sh/bun/blob/main/cmake/tools/SetupWebKit.cmake#L5
-pkgrel=1
+pkgver=1.2.16
+_webkitver=014cad89f528483e3fc431ff5ca6e2095d92e7bd #https://github.com/oven-sh/bun/blob/main/cmake/tools/SetupWebKit.cmake#L5
+pkgrel=2
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a smaller and faster binary depending on your CPU."
 arch=(x86_64)
 url="https://github.com/oven-sh/bun"
 license=('GPL')
 #depends=(c-ares libarchive libuv mimalloc tcc zlib zstd)
 makedepends=(
-	ccache clang cmake git go icu libdeflate libiconv libtool lld llvm ninja nodejs mold pkgconf python ruby ruby-getoptlong rust unzip yarn
+	ccache clang19 cmake git go icu libdeflate libiconv libtool lld19 llvm19 ninja nodejs mold pkgconf python ruby ruby-getoptlong rust unzip yarn
 )
 conflicts=(bun-bin bun-git)
 source=(bun::git+$url.git#tag=bun-v$pkgver
         brotliFlag.patch)
-b2sums=('25a4843c8a4e4811d530dad6bd8785af7226331c3b130fd9d1f5e9901761bf8362d0c52a74c8d0e177a0ddc37694d4f14c75170984f76d46493c605958f2243e'
+b2sums=('73a058f9500c4a535722627a1ae089dc5c76fa9d2067f96304b56b910391a90fd271e3e28a5014c5e7fe38a289bded4dce1c1c2584c2a5dc36d48db205df0949'
         'ba86bf7d8ff3c6b0aa1b26a2eaf7d0ca480ff42fde59b75f3290de3f197a07ec8fd926c96287436e29d5dedb9632ffe9e1f8d44ebfa7f9df804874bc889afc2d')
 options=(ccache lto)
 
@@ -52,6 +52,7 @@ build() {
 
   rm -vf build/CMakeCache.txt
   cd bun
+  CC="/usr/lib/llvm19/bin/clang" CXX="/usr/lib/llvm19/bin/clang++" \
   CXXFLAGS="-Wno-unused-result ${CXXFLAGS}" yarn dlx bun ./scripts/build.mjs -GNinja -B $srcdir/build -S $srcdir/bun -Wno-dev -DCMAKE_BUILD_TYPE=Release -DUSE_STATIC_LIBATOMIC=OFF \
         -DENABLE_CCACHE=ON -DENABLE_LTO=ON -DUSE_STATIC_SQLITE=OFF -DWEBKIT_LOCAL=ON -DWEBKIT_PATH=$srcdir/WebKit/WebKitBuild/Release/output  -j$_j -DCMAKE_POLICY_VERSION_MINIMUM=3.5 #\  -DLLVM_VERSION=19.1.7
 }
@@ -71,12 +72,12 @@ build_webkit(){
   # Adapted from https://github.com/oven-sh/WebKit/blob/main/Dockerfile#L109
 
   export DEFAULT_CFLAGS="-mno-omit-leaf-frame-pointer -g -fno-omit-frame-pointer -ffunction-sections -fdata-sections -faddrsig -fno-unwind-tables -fno-asynchronous-unwind-tables -DU_STATIC_IMPLEMENTATION=1 -DNDEBUG=1 "
-  export LTO_FLAG="-flto=full -fwhole-program-vtables -fforce-emit-vtables "
+  export LTO_FLAG="" #"-flto=full -fwhole-program-vtables -fforce-emit-vtables "
 
   export CFLAGS="${DEFAULT_CFLAGS} $CFLAGS $LTO_FLAG "
   export CXXFLAGS="${DEFAULT_CFLAGS} $CXXFLAGS $LTO_FLAG -fno-c++-static-destructors "
 
-  CMAKE_LINKER_TYPE="mold" CC="clang" CXX="clang++" cmake \
+  CMAKE_LINKER_TYPE="mold" CC="/usr/lib/llvm19/bin/clang" CXX="/usr/lib/llvm19/bin/clang++" cmake \
       -S . \
       -B ./WebKitBuild/Release \
       -Wno-dev \
@@ -91,7 +92,7 @@ build_webkit(){
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
       -DALLOW_LINE_AND_COLUMN_NUMBER_IN_BUILTINS=ON \
       -DENABLE_REMOTE_INSPECTOR=ON \
-      -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=mold" \
+      -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" \
       -GNinja
 
             # -DCMAKE_AR="/usr/lib/llvm18/bin/llvm-ar" \
