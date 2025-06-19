@@ -4,7 +4,7 @@
 _name=cursor
 pkgbase="${_name}-electron"
 pkgname=("$pkgbase"{,-latest})
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://www.cursor.com"
@@ -16,14 +16,14 @@ makedepends=('desktop-file-utils')
 optdepends=('code: use extensions at code-oss ?')
 provides=("${_name}"{,-bin})
 conflicts=("${_name}"{,-bin})
-_commit=979ba33804ac150108481c14e0b5cb970bda3266
-_code=1.100.3-1
+_commit=e86fcc937643bc6385aebd982c1c66012c98caec
+_code=1.101.0-1
 source=("https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/${_code}/code.sh")
 source_aarch64=("https://downloads.cursor.com/production/${_commit}/linux/arm64/Cursor-${pkgver}-aarch64.AppImage")
 source_x86_64=("https://downloads.cursor.com/production/${_commit}/linux/x64/Cursor-${pkgver}-x86_64.AppImage")
 sha512sums=('937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37')
-sha512sums_aarch64=('0b390b810e21fd8e1c5c89ec6e82e30433ba19a177af86b715fae239a307fcbeb5489dea885a9958cc7db01db065e81f0c7ca7e03521e19a62270cb71dfc3a39')
-sha512sums_x86_64=('0604893f6f8f9ac15d93cb109876916a11bff790110315354da0efdaf0ac51a385fd4f6e027da27e50b08bedb572c805b29a2b27352ada1028a54f3d5bc3047b')
+sha512sums_aarch64=('26a96bf594042f230a0197ee5fb07b5ac12eedde52a67cde88608f08fe14984fc9fc6811b644b0def8a2afef402016156707511619a92c360706160a42e55c89')
+sha512sums_x86_64=('86ca588558b08e30187d32963a07b68a79ad0e762845f20066b044cd82ebee4839466c92b7464cf59593054e2221eca4580566c08914a6ad102fd4e4e62a6ddc')
 options=(!strip) # for ext?
 prepare() { # Create cp -r friendly layout with FHS
   _api='https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest'

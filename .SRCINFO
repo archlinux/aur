@@ -1,5 +1,5 @@
 pkgbase = cursor-electron
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://www.cursor.com
 	arch = aarch64
@@ -17,12 +17,12 @@ pkgbase = cursor-electron
 	conflicts = cursor
 	conflicts = cursor-bin
 	options = !strip
-	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/1.100.3-1/code.sh
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/1.101.0-1/code.sh
 	sha512sums = 937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37
-	source_aarch64 = https://downloads.cursor.com/production/979ba33804ac150108481c14e0b5cb970bda3266/linux/arm64/Cursor-1.1.3-aarch64.AppImage
-	sha512sums_aarch64 = 0b390b810e21fd8e1c5c89ec6e82e30433ba19a177af86b715fae239a307fcbeb5489dea885a9958cc7db01db065e81f0c7ca7e03521e19a62270cb71dfc3a39
-	source_x86_64 = https://downloads.cursor.com/production/979ba33804ac150108481c14e0b5cb970bda3266/linux/x64/Cursor-1.1.3-x86_64.AppImage
-	sha512sums_x86_64 = 0604893f6f8f9ac15d93cb109876916a11bff790110315354da0efdaf0ac51a385fd4f6e027da27e50b08bedb572c805b29a2b27352ada1028a54f3d5bc3047b
+	source_aarch64 = https://downloads.cursor.com/production/e86fcc937643bc6385aebd982c1c66012c98caec/linux/arm64/Cursor-1.1.4-aarch64.AppImage
+	sha512sums_aarch64 = 26a96bf594042f230a0197ee5fb07b5ac12eedde52a67cde88608f08fe14984fc9fc6811b644b0def8a2afef402016156707511619a92c360706160a42e55c89
+	source_x86_64 = https://downloads.cursor.com/production/e86fcc937643bc6385aebd982c1c66012c98caec/linux/x64/Cursor-1.1.4-x86_64.AppImage
+	sha512sums_x86_64 = 86ca588558b08e30187d32963a07b68a79ad0e762845f20066b044cd82ebee4839466c92b7464cf59593054e2221eca4580566c08914a6ad102fd4e4e62a6ddc
 
 pkgname = cursor-electron
 	pkgdesc = AI Code Editor on system electron
