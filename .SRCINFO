@@ -1,6 +1,6 @@
 pkgbase = rqlite-bin
 	pkgdesc = A lightweight, distributed relational database, which uses SQLite as its storage engine
-	pkgver = 8.38.0
+	pkgver = 8.38.1
 	pkgrel = 1
 	url = https://github.com/rqlite/rqlite
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = rqlite-bin
 	provides = rqlited
 	conflicts = rqlite
 	conflicts = rqlite-git
-	source = LICENSE-8.38.0::https://raw.githubusercontent.com/rqlite/rqlite/v8.38.0/LICENSE
-	source = README-8.38.0.md::https://raw.githubusercontent.com/rqlite/rqlite/v8.38.0/README.md
+	source = LICENSE-8.38.1::https://raw.githubusercontent.com/rqlite/rqlite/v8.38.1/LICENSE
+	source = README-8.38.1.md::https://raw.githubusercontent.com/rqlite/rqlite/v8.38.1/README.md
 	sha256sums = 8d629d1b758f9c3615bf75e9a7f1032b45eebd5973c577eb1e9f109c383d53f8
 	sha256sums = ff8458e7ad3b311c8f033327342c5305e3ed1102c1535adfc06834e1a52f8d6d
-	source_x86_64 = https://github.com/rqlite/rqlite/releases/download/v8.38.0/rqlite-v8.38.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = 32e9682512db0c880cfe8b207052107dcf46ec1a09207d8f8e161f28cd4df2ee
+	source_x86_64 = https://github.com/rqlite/rqlite/releases/download/v8.38.1/rqlite-v8.38.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = c761bb4de3a8ace764d0d6a4655177aa66e9c9d3b5e78a7aabcfc39cd8325f67
 
 pkgname = rqlite-bin
