@@ -1,7 +1,7 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Shadow Of The Wyrm by Julian Day - Development branch."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://www.shadowofthewyrm.org/"
 license=('MIT')
 groups=()
 depends=('sdl2' 'sdl2_mixer' 'sdl2_image' 'xerces-c' 'zlib' 'ncurses' 'lua51' 'boost' 'gtest')
-makedepends=('premake' 'git')
+makedepends=('premake' 'git' 'unzip')
 checkdepends=()
 provides=(sotw)
 conflicts=(sotw)
@@ -18,9 +18,9 @@ backup=()
 options=()
 install=post.install
 changelog=
-source=('git+https://github.com/prolog/shadow-of-the-wyrm.git')
+source=('git+https://github.com/prolog/shadow-of-the-wyrm.git' 'https://www.shadowofthewyrm.org/assets/ShadowOfTheWyrm-assets.zip')
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP' '2c1c58b6a7e741c716cf126db920308a')
 validpgpkeys=()
 
 build() {
@@ -32,7 +32,7 @@ build() {
 
 package() {
 # Create launch script
-    echo "!#/bin/bash" > ${srcdir}/shadow-of-the-wyrm/sotw.sh
+    echo "#!/bin/bash" > ${srcdir}/shadow-of-the-wyrm/sotw.sh
     echo "cd /usr/share/sotw" >> ${srcdir}/shadow-of-the-wyrm/sotw.sh
     echo "./sotw" >> ${srcdir}/shadow-of-the-wyrm/sotw.sh
     chmod +x ${srcdir}/shadow-of-the-wyrm/sotw.sh
@@ -76,7 +76,8 @@ package() {
   install -D ${srcdir}/shadow-of-the-wyrm/sotw/shadowofthewyrmtext_blank.ini "${pkgdir}/usr/share/sotw/shadowofthewyrmtext_blank.ini"
   install -D ${srcdir}/shadow-of-the-wyrm/sotw/shadowofthewyrmtext_en.ini "${pkgdir}/usr/share/sotw/shadowofthewyrmtext_en.ini"
   install -D ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini "${pkgdir}/usr/share/sotw/swyrm.ini"
-  cp -R ${srcdir}/shadow-of-the-wyrm/sotw/assets ${pkgdir}/usr/share/sotw/assets
+  # cp -R ${srcdir}/shadow-of-the-wyrm/sotw/assets ${pkgdir}/usr/share/sotw/assets
+  unzip -d ${pkgdir}/usr/share/sotw ${srcdir}/ShadowOfTheWyrm-assets.zip
   cp -R ${srcdir}/shadow-of-the-wyrm/sotw/data ${pkgdir}/usr/share/sotw/data
   cp -R ${srcdir}/shadow-of-the-wyrm/sotw/docs ${pkgdir}/usr/share/sotw/docs
   cp -R ${srcdir}/shadow-of-the-wyrm/sotw/licenses ${pkgdir}/usr/share/sotw/licenses
