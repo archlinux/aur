@@ -1,7 +1,7 @@
 pkgbase = chimera
 	pkgdesc = Configure and manage games in Steam
-	pkgver = 0.24.6
-	pkgrel = 2
+	pkgver = 0.24.8
+	pkgrel = 1
 	url = https://github.com/chimeraos/chimera
 	arch = any
 	license = MIT
@@ -61,7 +61,7 @@ pkgbase = chimera
 	provides = steam-buddy
 	conflicts = steam-tweaks
 	conflicts = steam-buddy
-	source = chimera-0.24.6.tar.gz::https://github.com/chimeraos/chimera/archive/0.24.6.tar.gz
-	b2sums = 1497c9bddd352c6228c83f7e96ca42b83eb97408f853c04b297f73843bc39d5cb4accd9e24f2a4816927423912cf273fc4e6da024a39bbcaa17393009dd85dc4
+	source = chimera-0.24.8.tar.gz::https://github.com/chimeraos/chimera/archive/0.24.8.tar.gz
+	b2sums = 9add3e5e9a59b40478bffefafe6171097675cc09c998e2d950d51283ba6d5917eea8b4abf33e2edbdd587bb77c88cce5cd6e63b59daef138a367fe542ab1cae4
 
 pkgname = chimera
