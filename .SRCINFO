@@ -1,6 +1,6 @@
 pkgbase = xlings
 	pkgdesc = A Developer's Toolkit for Programming Learning, Development, and Tutorial Creation
-	pkgver = 0.0.2
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/d2learn/xlings
 	arch = x86_64

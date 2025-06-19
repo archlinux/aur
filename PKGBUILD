@@ -1,6 +1,6 @@
 # Maintainer: sunrisepeak <speakshen@163.com>
 pkgname=xlings
-pkgver=0.0.2
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A Developer's Toolkit for Programming Learning, Development, and Tutorial Creation"
 arch=('x86_64')
@@ -20,6 +20,8 @@ package() {
   # Install all files to /usr/share/xlings
   install -d "$pkgdir/usr/share/$pkgname"
   cp -r . "$pkgdir/usr/share/$pkgname"
+
+  chmod 766 "$pkgdir/usr/share/$pkgname/config/xlings.json"
 
   # Set permissions for files
   # find "$pkgdir/usr/share/$pkgname" -type f -exec chmod 644 {} +
