@@ -1,0 +1,13 @@
+pkgbase = nodejs-bindings
+	pkgdesc = Helper module for loading your native module's .node file
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/TooTallNate/node-bindings
+	arch = any
+	license = MIT
+	makedepends = npm
+	noextract = bindings-.tgz
+	source = bindings-1.5.0.tgz::https://registry.npmjs.org/bindings/-/bindings-1.5.0.tgz
+	sha256sums = d77781178c5bd89a91b1f6c5556acd511b1b5927eb13e2ad8189cac29eeb0907
+
+pkgname = nodejs-bindings
