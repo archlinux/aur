@@ -1,7 +1,7 @@
 pkgbase = neocash
 	pkgdesc = Modern shell with advanced features
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/ImVILLS/neocash
 	install = neocash.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = neocash
 	makedepends = cargo
 	depends = rust
 	depends = git
-	source = https://github.com/ImVILLS/neocash/archive/v1.0.2.tar.gz
+	source = https://github.com/ImVILLS/neocash/archive/v1.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = neocash
