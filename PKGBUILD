@@ -2,7 +2,7 @@
 
 pkgname=fensterchef
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiling window manager for X11'
 arch=(any)
 url=https://github.com/fensterchef/fensterchef

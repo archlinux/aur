@@ -1,7 +1,7 @@
 pkgbase = fensterchef
 	pkgdesc = Tiling window manager for X11
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fensterchef/fensterchef
 	arch = any
 	license = MIT
