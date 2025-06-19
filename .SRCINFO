@@ -1,0 +1,22 @@
+pkgbase = python-textual-serve
+	pkgdesc = Development tools for working with Textual
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/Textualize/textual-serve
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-aiohttp
+	checkdepends = python-pytest-asyncio
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python-textual
+	depends = python-rich
+	depends = python-jinja
+	depends = python-aiohttp-jinja2
+	depends = python-aiohttp
+	source = textual-serve-1.1.2.tar.gz::https://github.com/Textualize/textual-serve/archive/v1.1.2.tar.gz
+	sha512sums = d933cdd5aca3fe1e4f3bc8b5156b1f75d0ce3107184422fcd110a1bd9f4d0163e4f40e09452ae55dd688f5d3f14ef58425d46232a6dfea01bce27759995a9cf6
+
+pkgname = python-textual-serve

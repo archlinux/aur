@@ -1,0 +1,5 @@
+[python-textual-serve]
+source = 'github'
+github = 'Textualize/textual-serve'
+use_latest_release = true
+prefix = 'v'
