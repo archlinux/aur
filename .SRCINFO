@@ -1,6 +1,6 @@
 pkgbase = xmrig-cuda
 	pkgdesc = NVIDIA CUDA plugin for XMRig miner.
-	pkgver = 6.22.0
+	pkgver = 6.22.1
 	pkgrel = 1
 	url = https://github.com/xmrig/xmrig-cuda
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = xmrig-cuda
 	depends = xmrig>=6.17.0
 	depends = cuda>=12.5
 	optdepends = monero: wallet
-	source = https://github.com/xmrig/xmrig-cuda/archive/v6.22.0.tar.gz
+	source = https://github.com/xmrig/xmrig-cuda/archive/v6.22.1.tar.gz
 	source = fix-compile.patch
-	sha256sums = 77c541a0e73764bd9a25f9f296ec03aa22492f79b89831d95be4c6265ba54ae6
+	sha256sums = 0fb1312f000a172fc84191bc260005a801043c61c450db20c08848bda34ce11d
 	sha256sums = 0f9b42a4eaa9ced9417443dff1ac95574e807a17a2072b9d7e726fe7977997ee
 
 pkgname = xmrig-cuda
