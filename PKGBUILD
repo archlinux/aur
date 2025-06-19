@@ -2,17 +2,17 @@
 
 _name=google-genai
 pkgname=python-${_name}
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
 url='https://github.com/googleapis/python-genai'
 license=('Apache-2.0')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d6f67868e28543d0e12ff7321c7cb55e03f3abb1aadd70b793725bce07a0e5a1')
-depends=('python' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pydantic' 'python-requests' 'python-websockets' 'python-typing_extensions')
+sha256sums=('df4b3e5fbc589628655d0064442cd25282432e5791583fad7ec500784b29acb0')
+depends=('python' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pydantic' 'python-requests' 'python-tenacity' 'python-websockets' 'python-typing_extensions')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-twine' 'python-packaging' 'python-pkginfo')
-checkdepends=('python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-cov' 'python-certifi' 'python-mcp')
+checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-cov' 'python-mcp')
 optdepends=('python-aiohttp: aiohttp')
 
 build() {
@@ -72,11 +72,6 @@ check() {
     --deselect google/genai/tests/models/test_generate_content_from_apikey.py
     --deselect google/genai/tests/files/test_download.py
     --deselect google/genai/tests/tunings/test_end_to_end.py
-    # Failed tests
-    --deselect google/genai/tests/client/test_client_initialization.py::test_vertexai_apikey_from_env_both_api_keys
-    --deselect google/genai/tests/client/test_client_initialization.py::test_vertexai_apikey_combo2
-    --deselect google/genai/tests/client/test_client_initialization.py::test_vertexai_apikey_from_env_gemini_api_key_with_google_api_key_empty
-    --deselect google/genai/tests/client/test_client_initialization.py::test_vertexai_apikey_combo1
   )
   cd "${srcdir}"/${pkgname//google-/}-${pkgver}
   python -m venv --system-site-packages test-env
