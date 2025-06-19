@@ -21,7 +21,7 @@ makedepends=(
   'libicns'
   'optipng'
 )
-optdepens=(
+optdepends=(
   'noto-fonts: prevent missing font error'
   'ttf-caladea: prevent missing font error'
 )
