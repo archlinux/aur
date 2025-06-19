@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=taskbookly-bin
 _pkgname=Taskbookly
-pkgver=0.1.0
+pkgver=0.1.1
 _electronversion=36
 pkgrel=1
 pkgdesc="A simple task management and focus tool.(Prebuilt version.Use system-wide electron)"
@@ -21,9 +21,13 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/TaskBookly/app/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b8fc1573a5cf1d33207f5269904f83e9c73dafacd85be266e25c5cd6e5f4591a'
+sha256sums=('154ea394dd88a3925b2740183a63af271c363a3c5863b24491ba306b26194ceb'
             'a296a4f015391191942ded981ffa6cb555b8c4187ceda46a5119087d49cdbd26'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -36,6 +40,7 @@ prepare() {
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} +
 }
