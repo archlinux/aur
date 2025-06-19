@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
-pkgver=2.1.8+46+gbe4cb8e
+pkgver=2.1.9
 pkgrel=1
 pkgdesc="An exceptional GUI frontend for the modern GnuPG (gpg)"
 arch=('x86_64')
@@ -11,6 +11,7 @@ depends=(
   'gpgme'
   'gtest'
   'hicolor-icon-theme'
+  'icu'
   'libarchive'
   'openssl'
   'qt6-base'
@@ -22,29 +23,32 @@ makedepends=(
   'qt6-tools'
   'vulkan-headers'
 )
-_commit=be4cb8e0f9ab4cd1e41979de8809b04211c116f3
-source=("git+https://github.com/saturneric/GpgFrontend#commit=${_commit}"
-        'git+https://github.com/bricke/Qt-AES.git'
+source=("git+https://github.com/saturneric/GpgFrontend#tag=v$pkgver"
         'git+https://github.com/qt/qttranslations.git'
         'git+https://git.bktus.com/GpgFrontend/Modules.git'
+        'git+https://git.bktus.com/GpgFrontend/gpgme.git'
+        'git+https://git.bktus.com/GpgFrontend/libassuan.git'
+        'git+https://git.bktus.com/GpgFrontend/libgpg-error.git'
+        'git+https://github.com/openssl/openssl.git'
         'git+https://git.bktus.com/GpgFrontend/vmime.git')
-sha256sums=('b0f9fe08e7bd86277676d9d3010bfcc6f54500ce0acd8f3ff8a22aeefb0da86a'
+sha256sums=('1fcaf3bf63c87df8d2efda3fe882f3a9622d199e7944eeb7493bdd83273cdfad'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
 
-pkgver() {
-  cd GpgFrontend
-  git describe --tags --exclude nightly --abbrev=7 | sed 's/^v//;s/-/+/g'
-}
-
 prepare() {
   cd GpgFrontend
   git submodule init
-  git config submodule.third_party/qt-aes.url "$srcdir/Qt-AES"
   git config submodule.third_party/qttranslations.url "$srcdir/qttranslations"
   git config submodule.modules.url "$srcdir/Modules"
+  git config submodule.third_party/gpgme.url "$srcdir/gpgme"
+  git config submodule.third_party/libassuan.url "$srcdir/libassuan"
+  git config submodule.third_party/libgpg-error.url "$srcdir/libgpg-error"
+  git config submodule.third_party/openssl.url "$srcdir/openssl"
   git -c protocol.file.allow=always submodule update
 
   pushd modules

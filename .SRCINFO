@@ -1,6 +1,6 @@
 pkgbase = gpgfrontend
 	pkgdesc = An exceptional GUI frontend for the modern GnuPG (gpg)
-	pkgver = 2.1.8+46+gbe4cb8e
+	pkgver = 2.1.9
 	pkgrel = 1
 	url = https://gpgfrontend.bktus.com
 	arch = x86_64
@@ -13,15 +13,22 @@ pkgbase = gpgfrontend
 	depends = gpgme
 	depends = gtest
 	depends = hicolor-icon-theme
+	depends = icu
 	depends = libarchive
 	depends = openssl
 	depends = qt6-base
-	source = git+https://github.com/saturneric/GpgFrontend#commit=be4cb8e0f9ab4cd1e41979de8809b04211c116f3
-	source = git+https://github.com/bricke/Qt-AES.git
+	source = git+https://github.com/saturneric/GpgFrontend#tag=v2.1.9
 	source = git+https://github.com/qt/qttranslations.git
 	source = git+https://git.bktus.com/GpgFrontend/Modules.git
+	source = git+https://git.bktus.com/GpgFrontend/gpgme.git
+	source = git+https://git.bktus.com/GpgFrontend/libassuan.git
+	source = git+https://git.bktus.com/GpgFrontend/libgpg-error.git
+	source = git+https://github.com/openssl/openssl.git
 	source = git+https://git.bktus.com/GpgFrontend/vmime.git
-	sha256sums = b0f9fe08e7bd86277676d9d3010bfcc6f54500ce0acd8f3ff8a22aeefb0da86a
+	sha256sums = 1fcaf3bf63c87df8d2efda3fe882f3a9622d199e7944eeb7493bdd83273cdfad
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
