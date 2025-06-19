@@ -17,7 +17,6 @@ sha256sums=(SKIP)
 options=('staticlibs')
 
 _builddir="widgie"
-_makeflags="FEATURE_WAYLAND=shared FEATURE_X11=shared PREFIX=/usr"
 
 pkgver() {
     cd "$_builddir"
@@ -26,15 +25,16 @@ pkgver() {
 
 build() {
     cd "$_builddir"
-    make -j$(nproc) $_makeflags
+    ./configure --prefix=/usr --enable-release
+    make -j$(nproc)
 }
 
 check() {
     cd "$_builddir"
-    make $_makeflags check
+    make check
 }
 
 package() {
     cd "$_builddir"
-    make $_makeflags DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install
 }
