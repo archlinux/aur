@@ -1,0 +1,20 @@
+pkgbase = mechsim
+	pkgdesc = Mechanical keyboard sound simulator
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/cjlangan/mechsim
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkgconf
+	makedepends = libevdev
+	makedepends = libinput
+	makedepends = libsndfile
+	depends = json-c
+	depends = libpulse
+	depends = systemd
+	source = https://github.com/cjlangan/mechsim/releases/download/v1.1.0/mechsim-1.1.0.tar.gz
+	sha256sums = d811e170c9d4bdafe6ba1d8159a3a90ec4768e7f6edc188387e39840c97e1235
+
+pkgname = mechsim
