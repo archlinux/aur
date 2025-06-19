@@ -7,8 +7,8 @@ pkgrel=1
 arch=(any)
 url="https://github.com/${_base}/${_base}"
 license=(BSD-3-Clause)
-depends=(python-lxml python-matplotlib sundials)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+depends=(python-lxml python-matplotlib python-setuptools sundials)
+makedepends=(python-build python-installer python-wheel)
 # checkdepends=(python-pytest)
 optdepends=('python-sympy: for formats.sympy support'
   'python-scipy: for data log viewer support'
