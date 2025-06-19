@@ -9,8 +9,9 @@ pkgdesc='The main cli for the Caelestia dotfiles'
 arch=('any')
 url='https://github.com/caelestia-dots/cli'
 license=('GPL-3.0-only')
-depends=('caelestia-shell' 'python' 'python-pillow' 'python-materialyoucolor' 'libnotify' 'swappy' 'grim' 'dart-sass'
+depends=('python' 'python-pillow' 'python-materialyoucolor' 'libnotify' 'swappy' 'grim' 'dart-sass'
          'app2unit' 'wl-clipboard' 'slurp' 'wl-screenrec' 'glib2' 'libpulse' 'cliphist' 'fuzzel')
+optdepends=('caelestia-shell: shell control and screenshot function')
 makedepends=('git' 'python-build' 'python-installer' 'python-hatch' 'python-hatch-vcs')
 provides=('caelestia-cli')
 conflicts=('caelestia-cli')
