@@ -1,7 +1,7 @@
 # Maintainer: atopheim <atopheim@protonmail.com>
 pkgname=hotspeech
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Voice recording and transcription tool with hotkey support and web interface"
 arch=('any')
 url="https://github.com/atopheim/hotspeech"
