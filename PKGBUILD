@@ -8,7 +8,7 @@ arch=(any)
 url=https://github.com/FrancescoCeruti/QDigitalMeter
 license=(LGPL-2.1-or-later)
 depends=(python python-qtpy)
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-poetry-core)
 source=("$_name-$pkgver.tar.gz::https://github.com/FrancescoCeruti/$_name/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('03210a19d6353d2853245e58993f9473d5b702777a440d5424e0e239432cb751')
 
