@@ -20,9 +20,8 @@ pkgbase = discord-chat-exporter
 
 pkgname = discord-chat-exporter-core
 	pkgdesc = Exports Discord chat logs to a file - Core
-	replaces = discord-chat-exporter-cli<=2.43.3-1
 
 pkgname = discord-chat-exporter-gui
 	pkgdesc = Exports Discord chat logs to a file - GUI
 	depends = dotnet-runtime-9.0
-	depends = discord-chat-exporter-core
+	depends = discord-chat-exporter-core=2.46-1

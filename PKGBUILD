@@ -76,8 +76,8 @@ build() {
   cp -a build-core/* build-cli/
   cp -a build-core/* build-gui/
 
-  dotnet publish "${dotnet_publish_options[@]}" --output build-cli  "${_Name}.Cli"
-  dotnet publish "${dotnet_publish_options[@]}" --output build-gui  "${_Name}.Gui"
+  dotnet publish "${dotnet_publish_options[@]}" --output build-cli "${_Name}.Cli"
+  dotnet publish "${dotnet_publish_options[@]}" --output build-gui "${_Name}.Gui"
 
   find build-core -type f | while read -r f; do
     rel="${f#build-core/}"
@@ -87,7 +87,6 @@ build() {
 
 package_discord-chat-exporter-core() {
   pkgdesc+=" - Core"
-  replaces=("${pkgbase}-cli<=2.43.3-1")
 
   cd "${srcdir}/${_pkgsrc}"
   install -vd "${pkgdir}/usr/lib/${pkgbase}"
@@ -100,7 +99,7 @@ package_discord-chat-exporter-core() {
 
 # package_discord-chat-exporter-cli() {
 #   pkgdesc+=" - CLI"
-#   depends+=("${pkgbase}-core")
+#   depends+=("${pkgbase}-core=${pkgver}-${pkgrel}")
 # 
 #   cd "${srcdir}/${_pkgsrc}"
 #   install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/${pkgbase}"
@@ -110,7 +109,7 @@ package_discord-chat-exporter-core() {
 
 package_discord-chat-exporter-gui() {
   pkgdesc+=" - GUI"
-  depends+=("${pkgbase}-core")
+  depends+=("${pkgbase}-core=${pkgver}-${pkgrel}")
 
   cd "${srcdir}"
   install -vDm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
