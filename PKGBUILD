@@ -8,7 +8,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.7.1
-pkgrel=2
+pkgrel=3
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -67,7 +67,9 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         87773.patch
         glog-0.7.patch
         pytorch-rocm-jit.patch
-        fix_cmake_prefix_path.patch)
+        fix_cmake_prefix_path.patch
+        0001-Add-cmake-varaible-USE_ROCM_CK.patch
+        )
 b2sums=('7b4eb8ef062393429f17cd617b28e1a1699fdd1099b5e84f333605092df251ee4b807fd40553bf56e11cc5b69dbafc5a4594c0ac5d14e0dd88bd11a5d2ecee71'
         'SKIP'
         'SKIP'
@@ -111,7 +113,8 @@ b2sums=('7b4eb8ef062393429f17cd617b28e1a1699fdd1099b5e84f333605092df251ee4b807fd
         '0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18'
         '20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e'
         'e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe'
-        '12e2f94b25d8c473f064223b120c339245fce931c835b88aa66236899909745700e59dd787474588292798a0333e321150cc00d4eb2b5530b324ad2fb143a626')
+        '12e2f94b25d8c473f064223b120c339245fce931c835b88aa66236899909745700e59dd787474588292798a0333e321150cc00d4eb2b5530b324ad2fb143a626'
+        '24924808c32105eac1dd29c3dc4e0267e166d5d4d125244bbaba10f109794bc1dbecea752943c9a72b4908d234aa98957e8066490604071d3ceb6fe387c53df3')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -179,6 +182,13 @@ prepare() {
   # Fix building against glog 0.7
   patch -p1 -i "${srcdir}/glog-0.7.patch"
 
+  # https://src.fedoraproject.org/rpms/python-torch/blob/rawhide/f/0001-Add-cmake-varaible-USE_ROCM_CK.patch
+  # Disable composable kernels as not all AMD GPUs are supported.
+  patch -p1 -i "${srcdir}/0001-Add-cmake-varaible-USE_ROCM_CK.patch"
+
+  # Don't clone nccl but use system package
+  sed -Ei '/[[:space:]]*checkout_nccl\(\)$/d' tools/build_pytorch_libs.py
+
   cd third_party/XNNPACK
   git cherry-pick -X theirs --no-commit 5f23827e66cca435fa400b6e221892ac95af0079
   cd ../..
@@ -206,7 +216,9 @@ _prepare() {
   export USE_GLOG=ON
   export USE_VULKAN=ON
   export USE_OBSERVERS=ON
+  export USE_MAGMA=ON
   # export USE_SYSTEM_LIBS=ON  # experimental, not all libs present in repos
+  export USE_NCCL=ON
   export USE_SYSTEM_NCCL=ON
   export USE_SYSTEM_PYBIND11=ON
   export USE_SYSTEM_EIGEN_INSTALL=ON
@@ -232,11 +244,11 @@ _prepare() {
 
   export ROCM_PATH=/opt/rocm
   export HIP_ROOT_DIR=/opt/rocm
+  export USE_ROCM_CK=OFF
 
-  # Looking into enabling more architectures, see e.g. rocBLAS
+  # List GPU targets:
   # https://github.com/ROCm/rocBLAS/blob/9c8a7dfeb3d0a808321541567447b5c1d17cd070/CMakeLists.txt#L114
-  # This list is from .ci/docker/libtorch/build.sh
-  export PYTORCH_ROCM_ARCH="gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx942;gfx1102"
+  export PYTORCH_ROCM_ARCH="gfx900;gfx906:xnack-;gfx908:xnack-;gfx90a;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102;gfx1151;gfx1200;gfx1201"
 
   # 1. Compile source code for supported GPU archs in parallel
   # 2. Use --offload-comress to reduce the size of the generated binaries.

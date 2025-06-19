@@ -1,7 +1,7 @@
 pkgbase = python-pytorch
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
 	pkgver = 2.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pytorch.org
 	arch = x86_64
 	license = BSD
@@ -99,6 +99,7 @@ pkgbase = python-pytorch
 	source = glog-0.7.patch
 	source = pytorch-rocm-jit.patch
 	source = fix_cmake_prefix_path.patch
+	source = 0001-Add-cmake-varaible-USE_ROCM_CK.patch
 	b2sums = 7b4eb8ef062393429f17cd617b28e1a1699fdd1099b5e84f333605092df251ee4b807fd40553bf56e11cc5b69dbafc5a4594c0ac5d14e0dd88bd11a5d2ecee71
 	b2sums = SKIP
 	b2sums = SKIP
@@ -143,6 +144,7 @@ pkgbase = python-pytorch
 	b2sums = 20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e
 	b2sums = e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe
 	b2sums = 12e2f94b25d8c473f064223b120c339245fce931c835b88aa66236899909745700e59dd787474588292798a0333e321150cc00d4eb2b5530b324ad2fb143a626
+	b2sums = 24924808c32105eac1dd29c3dc4e0267e166d5d4d125244bbaba10f109794bc1dbecea752943c9a72b4908d234aa98957e8066490604071d3ceb6fe387c53df3
 
 pkgname = python-pytorch
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
