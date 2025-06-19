@@ -6,7 +6,7 @@ pkgrel=3.1
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/maomaowm"
 arch=("x86_64")
-license=("MIT")
+license=("GPL-3.0")
 depends=(
   glibc
   'wayland>=1.23.1'
