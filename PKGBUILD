@@ -1,6 +1,6 @@
 # Maintainer: <telecommuter@deguco.net>
 pkgname=degumail
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Minimalist mail client written in Go using stdlib"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://deguco.net/software"
 license=('MIT')
 depends=()
 makedepends=('go')
-source=("git+http://git-pub.deguco.net/degumail.git#commit=eb2e0791d8dfe93f7315cb693e3bd16871fd9435")
+source=("git+http://git-pub.deguco.net/degumail.git#commit=b81acc7361e3ab786ae25f0643f8c514efdb88de")
 sha256sums=('SKIP')
 
 build() {
