@@ -1,0 +1,20 @@
+pkgbase = mihomo-alpha-git
+	pkgdesc = Mihomo Kernel by MetaCubeX, formerly known as Clash.Meta
+	pkgver = r3340.c60750d
+	pkgrel = 1
+	url = https://github.com/MetaCubeX/mihomo
+	install = mihomo-alpha.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = mihomo-alpha
+	backup = etc/mihomo-alpha/config.yaml
+	source = git+https://github.com/MetaCubeX/mihomo.git#branch=Alpha
+	source = mihomo-alpha.service
+	sha256sums = SKIP
+	sha256sums = b1d3f6a50cc3e0c6d56e2a778cb966d415de7f48a3d9ccad73aa9aa8009d243c
+
+pkgname = mihomo-alpha-git
