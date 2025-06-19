@@ -1,6 +1,6 @@
 pkgbase = tempesta
 	pkgdesc = The fastest and lightest bookmark manager CLI written in Rust
-	pkgver = 0.0.79
+	pkgver = 0.0.80
 	pkgrel = 1
 	url = https://github.com/x71c9/tempesta
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tempesta
 	license = MIT
 	makedepends = rust
 	depends = glibc
-	source = tempesta-0.0.79.tar.gz::https://codeload.github.com/x71c9/tempesta/tar.gz/refs/tags/v0.0.79
-	sha256sums = 90d7486f704cc258ad62b7662132b629576c35e0d5b907b8fe9af0f31357e701
+	source = tempesta-0.0.80.tar.gz::https://codeload.github.com/x71c9/tempesta/tar.gz/refs/tags/v0.0.80
+	sha256sums = 29158bfda6428873cf5ecb1f313af82beb06362581c4279294c86020e788b3bc
 
 pkgname = tempesta
