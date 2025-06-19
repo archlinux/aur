@@ -1,15 +1,15 @@
 pkgbase = gitlab-agent
 	pkgdesc = GitLab agentk, kas daemons
-	pkgver = 18.0.1
+	pkgver = 18.1.0
 	pkgrel = 1
 	url = https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	backup = etc/gitlab-agent/config.yml
-	source = https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/archive/v18.0.1/gitlab-agent-v18.0.1.tar.gz
+	backup = etc/gitlab-kas/config.yml
+	source = https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/archive/v18.1.0/gitlab-agent-v18.1.0.tar.gz
 	source = gitlab-kas.service
-	sha256sums = 365bc797ad37d5f94130e6c2d6d193d25837a78a410a503872862d7b4d13ed89
+	sha256sums = b70d5c9c873b51d87ba7555996b43989665ac71a050475e0fa4d37c009d85937
 	sha256sums = f0a39b60b799a3be043de9574451656e416e924d7f0e5441ca5db5440465c84c
 
 pkgname = gitlab-agent
