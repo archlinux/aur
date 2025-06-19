@@ -6,18 +6,18 @@
 # Contributor: Martin Corley <Martin.Corley@ed.ac.uk>
 
 pkgname=psychopy
-pkgver=2024.2.5
+pkgver=2025.1.1
 pkgrel=1
 pkgdesc="Free software for creating psychology, economics, neuroscience, psycholinguistics, behavioural experiments."
 arch=('any')
 url="http://www.psychopy.org"
 license=('GPL3')
-makedepends=(python-build python-installer python-pdm-backend python-tomlkit python-six)
+makedepends=(python-build python-installer python-pdm-backend python-tomlkit python-six python-polib)
 depends=(python-distro)
 
 optdepends=('python-seaborn: For nice graphs')
 source=("https://github.com/psychopy/psychopy/archive/${pkgver}.tar.gz")
-sha512sums=('bdd1e1814081f23322ca0b49a73cbd705f1d51c654d6fc769cbb5adcff4309095643848dadb6ecf6976a6be97cf2c82b71716845bad6876f8367ed37aaae2585')
+sha512sums=('7bae62b926c8e5e0e840964eb8a6ffe84a1ce5bbe579d1c15484013226df78f2ddb1779f96a8f9deba7b600f932740d23225c1aa87bfb28931426c92674a27f1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -34,7 +34,7 @@ build() {
 
 package() {
   # These packages come from setup.cfg
-  depends+=(python python-packaging python-requests python-cryptography python-numpy python-scipy python-matplotlib python-pandas python-pillow python-glfw python-pygame python-opengl python-pyo python-soundfile python-bidi python-arabic-reshaper python-json-tricks python-xlrd python-openpyxl python-pyserial python-gevent python-msgpack python-msgpack-numpy python-psutil python-pytables python-pyzmq python-ujson python-moviepy python-gitlab python-gitpython python-astunparse python-esprima python-freetype-py python-jedi python-psychtoolbox python-pyglet python-wxpython python-vlc python-pyparallel python-xlib python-pyqt5 python-javascripthon python-questplus pypi-search python-xmlschema python-yaml)
+  depends+=(python python-packaging python-requests python-cryptography python-numpy python-scipy python-matplotlib python-pandas python-pillow python-glfw python-pygame python-opengl python-soundfile python-bidi python-arabic-reshaper python-json-tricks python-xlrd python-openpyxl python-pyserial python-gevent python-msgpack python-msgpack-numpy python-psutil python-pytables python-pyzmq python-ujson python-moviepy python-gitlab python-gitpython python-astunparse python-esprima python-freetype-py python-jedi python-psychtoolbox python-pyglet python-wxpython python-vlc python-pyparallel python-xlib python-pyqt5 python-javascripthon python-questplus python-xmlschema python-yaml)
 
   # for webview support, optdep of wxwidgets-gtk3
   depends+=(webkit2gtk-4.1)
