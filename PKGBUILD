@@ -1,7 +1,7 @@
 # Maintainer: ImVILLS <ваш@email.com>
 pkgname=neocash
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Modern shell with advanced features"
 arch=('x86_64')
 url="https://github.com/ImVILLS/neocash"
