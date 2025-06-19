@@ -1,6 +1,6 @@
 # Maintainer: w568w <w568w at outlook dot com>
 pkgname=sciter-js-sdk-bin
-pkgver=5.0.3.12
+pkgver=6.0.1.10
 pkgrel=1
 pkgdesc="The SDK of an embeddable HTML/CSS/JavaScript engine for modern UI development (Prebuilt binaries and libraries)"
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
