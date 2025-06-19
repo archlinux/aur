@@ -53,7 +53,6 @@ prepare() { # Create cp -r friendly layout with FHS
 }
 _desc="AI Code Editor on "
 package_cursor-electron-latest(){
-  replaces=(cursor-extracted) # workaround
   depends+=(electron)
   pkgdesc="${_desc}latest stable electron"
   cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
@@ -63,6 +62,7 @@ package_cursor-electron-latest(){
 package_cursor-electron(){
   _electron=electron$(rg --no-messages -N -o -r '$1' '"electron": *"[^\d]*(\d+)' squashfs-root/usr/lib/cursor/package.json)
   echo $_electron
+  replaces=(cursor-extracted) # workaround
   depends+=($_electron)
   pkgdesc="${_desc}system electron"
   cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
