@@ -13,9 +13,7 @@ from rich.live import Live
 
 console = Console()
 
-CONFIG_DIR = os.path.expanduser("~/.config/smyte")
-USAGE_FILE = os.path.join(CONFIG_DIR, "usage.json")
-
+CONFIG_PATH = os.path.expanduser("~/.config/smyte/usage.json")
 BANNER = r"""
    ▄████████   ▄▄▄▄███▄▄▄▄   ▄██   ▄       ███        ▄████████ 
   ███    ███ ▄██▀▀▀███▀▀▀██▄ ███   ██▄ ▀█████████▄   ███    ███ 
@@ -34,57 +32,56 @@ def format_bytes(size):
         size /= 1024
     return f"{size:.2f} PB"
 
-def save_today_baseline():
-    curr = psutil.net_io_counters()
-    data = {
-        "date": datetime.now().strftime("%Y-%m-%d"),
-        "start_sent": curr.bytes_sent,
-        "start_recv": curr.bytes_recv
-    }
-    os.makedirs(CONFIG_DIR, exist_ok=True)
-    with open(USAGE_FILE, "w") as f:
-        json.dump(data, f)
-    return data["start_sent"], data["start_recv"]
+def get_data_usage():
+    counters = psutil.net_io_counters()
+    return counters.bytes_sent, counters.bytes_recv
 
-def load_start_data():
-    if not os.path.exists(USAGE_FILE):
-        return save_today_baseline()
-    
-    with open(USAGE_FILE, "r") as f:
-        try:
-            data = json.load(f)
-        except json.JSONDecodeError:
-            return save_today_baseline()
+def load_or_reset_usage():
+    now = datetime.now().strftime('%Y-%m-%d')
+    if not os.path.exists(CONFIG_PATH):
+        os.makedirs(os.path.dirname(CONFIG_PATH), exist_ok=True)
+        sent, recv = get_data_usage()
+        with open(CONFIG_PATH, 'w') as f:
+            json.dump({'date': now, 'start_sent': sent, 'start_recv': recv}, f)
+        return sent, recv
 
-    today = datetime.now().strftime("%Y-%m-%d")
-    if data.get("date") != today:
-        return save_today_baseline()
+    with open(CONFIG_PATH, 'r') as f:
+        data = json.load(f)
 
-    return data.get("start_sent", 0), data.get("start_recv", 0)
+    if data.get("date") != now:
+        sent, recv = get_data_usage()
+        data = {'date': now, 'start_sent': sent, 'start_recv': recv}
+        with open(CONFIG_PATH, 'w') as f:
+            json.dump(data, f)
+        return sent, recv
+
+    return data['start_sent'], data['start_recv']
 
 def build_ui(upload, download):
     usage_text = Text()
     usage_text.append(f"📤 Uploaded:   {format_bytes(upload)}\n", style=Style(color="cyan", bold=True))
     usage_text.append(f"📥 Downloaded: {format_bytes(download)}\n", style=Style(color="green", bold=True))
 
-    panel = Panel(
-        Align.center(Text(BANNER, style="bold magenta") + Text("\n\n") + usage_text, vertical="middle"),
+    full_panel = Panel(
+        Align.center(
+            Text(BANNER, style="bold magenta") + Text("\n\n") + usage_text,
+            vertical="middle"
+        ),
         border_style="bold magenta",
         title="📶 Smyte - Data Usage Tracker",
         padding=(2, 10)
     )
-    return panel
+    return full_panel
 
 def main():
-    start_sent, start_recv = load_start_data()
-
+    start_sent, start_recv = load_or_reset_usage()
     try:
         with Live(console=console, refresh_per_second=1):
             while True:
-                counters = psutil.net_io_counters()
-                uploaded = counters.bytes_sent - start_sent
-                downloaded = counters.bytes_recv - start_recv
-                panel = build_ui(uploaded, downloaded)
+                sent, recv = get_data_usage()
+                upload = max(0, sent - start_sent)
+                download = max(0, recv - start_recv)
+                panel = build_ui(upload, download)
                 console.clear()
                 console.print(panel)
                 time.sleep(1)
@@ -92,9 +89,4 @@ def main():
         console.print("\n[red bold]❌ Exiting Smyte...[/]")
 
 if __name__ == "__main__":
-    try:
-        import rich, psutil
-        main()
-    except ImportError:
-        print("Installing dependencies...")
-        os.system("python -m venv venv && source venv/bin/activate && pip install rich psutil && python smyte.py")
+    main()
