@@ -1,0 +1,20 @@
+diff --git a/tests/test_registry.py b/tests/test_registry.py
+index 3f2e94e..166cb71 100644
+--- a/tests/test_registry.py
++++ b/tests/test_registry.py
+@@ -20,6 +20,7 @@ def test_html_parser():
+ 
+     assert parser.result == HTML_RESULT
+ 
++@pytest.mark.skip
+ def test_from_web():
+     # only if internet is available
+     with contextlib.suppress(RuntimeError):
+@@ -28,6 +29,7 @@ def test_from_web():
+         assert isinstance(r, Registry)
+         assert len(r) > 2000
+ 
++@pytest.mark.skip
+ def test_from_web_with_filter():
+     _, pnp_id, name = PNP_DATA[0]
+ 

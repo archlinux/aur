@@ -1,0 +1,21 @@
+pkgbase = python-pyedid
+	pkgdesc = Library to parse extended display identification data (EDID)
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/dd4e/pyedid
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	source = pyedid-1.0.3.tar.gz::https://github.com/dd4e/pyedid/archive/refs/tags/v1.0.3.tar.gz
+	source = disable-network-tests.patch
+	sha512sums = 680c3e614508995f2872ed6a4054bd7ae8b79276b4b8b3c70ec6ef66d56168d8972b15e9885a62779e0cdb5c41a1ba52cc508d6f5a96aa38285dbcb529166895
+	sha512sums = 8fd8bca8041fd41af617a826f98bbbd52fcd8251ed67176599073579e0c27dbf3be400ee4c238b44cd238ecb15f1cb24984dd3b50fdfec31aed26ee83fd6ae6a
+
+pkgname = python-pyedid
