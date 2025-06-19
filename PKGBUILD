@@ -4,7 +4,7 @@
 _name=aiomax
 pkgname=python-$_name-git
 
-pkgver=git
+pkgver=2.4.0.r5.g2bbf5b1
 
 pkgrel=1
 pkgdesc="The asynchronous library for Max"
@@ -16,6 +16,11 @@ makedepends=(python-build python-installer python-wheel python-setuptools)
 source=("git+$url.git")
 sha256sums=('SKIP')
 conflicts=(python-aiomax)
+
+pkgver() {
+  cd "$_name"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
     cd $_name
