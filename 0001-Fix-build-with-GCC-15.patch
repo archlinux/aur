@@ -1,0 +1,109 @@
+From 9cab48c259ed160d96e7972a12b6110e378ac109 Mon Sep 17 00:00:00 2001
+From: piernov <piernov@piernov.org>
+Date: Thu, 19 Jun 2025 16:52:58 +0200
+Subject: [PATCH] Fix build with GCC 15
+
+---
+ .../hal/facilities/i_event_rate_noise_filter_module.h          | 1 +
+ .../include/metavision/hal/facilities/i_hw_identification.h    | 1 +
+ hal_psee_plugins/include/devices/common/evk2_system_control.h  | 1 +
+ hal_psee_plugins/include/devices/common/system_control.h       | 1 +
+ hal_psee_plugins/include/devices/gen31/gen31_sensor_if_ctrl.h  | 1 +
+ hal_psee_plugins/include/devices/imx636/imx636_bias.h          | 3 ++-
+ hal_psee_plugins/include/devices/utils/device_system_id.h      | 1 +
+ 7 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/hal/cpp/include/metavision/hal/facilities/i_event_rate_noise_filter_module.h b/hal/cpp/include/metavision/hal/facilities/i_event_rate_noise_filter_module.h
+index a331570..2b52513 100644
+--- a/hal/cpp/include/metavision/hal/facilities/i_event_rate_noise_filter_module.h
++++ b/hal/cpp/include/metavision/hal/facilities/i_event_rate_noise_filter_module.h
+@@ -12,6 +12,7 @@
+ #ifndef METAVISION_HAL_I_EVENT_RATE_NOISE_FILTER_MODULE_H
+ #define METAVISION_HAL_I_EVENT_RATE_NOISE_FILTER_MODULE_H
+ 
++#include <cstdint>
+ #include <string>
+ 
+ #include "metavision/hal/facilities/i_registrable_facility.h"
+diff --git a/hal/cpp/include/metavision/hal/facilities/i_hw_identification.h b/hal/cpp/include/metavision/hal/facilities/i_hw_identification.h
+index 81e938d..5ae1abe 100644
+--- a/hal/cpp/include/metavision/hal/facilities/i_hw_identification.h
++++ b/hal/cpp/include/metavision/hal/facilities/i_hw_identification.h
+@@ -12,6 +12,7 @@
+ #ifndef METAVISION_HAL_I_HW_IDENTIFICATION_H
+ #define METAVISION_HAL_I_HW_IDENTIFICATION_H
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ #include <map>
+diff --git a/hal_psee_plugins/include/devices/common/evk2_system_control.h b/hal_psee_plugins/include/devices/common/evk2_system_control.h
+index 0d0dbab..632f26c 100644
+--- a/hal_psee_plugins/include/devices/common/evk2_system_control.h
++++ b/hal_psee_plugins/include/devices/common/evk2_system_control.h
+@@ -12,6 +12,7 @@
+ #ifndef METAVISION_HAL_EVK2_SYSTEM_CONTROL_H
+ #define METAVISION_HAL_EVK2_SYSTEM_CONTROL_H
+ 
++#include <cstdint>
+ #include <string>
+ #include <memory>
+ 
+diff --git a/hal_psee_plugins/include/devices/common/system_control.h b/hal_psee_plugins/include/devices/common/system_control.h
+index d45e4ba..4dd6168 100644
+--- a/hal_psee_plugins/include/devices/common/system_control.h
++++ b/hal_psee_plugins/include/devices/common/system_control.h
+@@ -12,6 +12,7 @@
+ #ifndef METAVISION_HAL_SYSTEM_CONTROL_H
+ #define METAVISION_HAL_SYSTEM_CONTROL_H
+ 
++#include <cstdint>
+ #include <string>
+ #include <memory>
+ 
+diff --git a/hal_psee_plugins/include/devices/gen31/gen31_sensor_if_ctrl.h b/hal_psee_plugins/include/devices/gen31/gen31_sensor_if_ctrl.h
+index 6e3beeb..0685e34 100644
+--- a/hal_psee_plugins/include/devices/gen31/gen31_sensor_if_ctrl.h
++++ b/hal_psee_plugins/include/devices/gen31/gen31_sensor_if_ctrl.h
+@@ -12,6 +12,7 @@
+ #ifndef METAVISION_HAL_GEN31_SENSOR_IF_CONTROL_H
+ #define METAVISION_HAL_GEN31_SENSOR_IF_CONTROL_H
+ 
++#include <cstdint>
+ #include <string>
+ #include <memory>
+ 
+diff --git a/hal_psee_plugins/include/devices/imx636/imx636_bias.h b/hal_psee_plugins/include/devices/imx636/imx636_bias.h
+index d3fc5ff..445767d 100644
+--- a/hal_psee_plugins/include/devices/imx636/imx636_bias.h
++++ b/hal_psee_plugins/include/devices/imx636/imx636_bias.h
+@@ -12,6 +12,7 @@
+ #ifndef METAVISION_HAL_IMX636_BIASES_H
+ #define METAVISION_HAL_IMX636_BIASES_H
+ 
++#include <cstdint>
+ #include <string>
+ #include <map>
+ 
+@@ -50,4 +51,4 @@ private:
+ 
+ } // namespace Metavision
+ 
+-#endif // METAVISION_HAL_IMX636_BIASES_H
+\ No newline at end of file
++#endif // METAVISION_HAL_IMX636_BIASES_H
+diff --git a/hal_psee_plugins/include/devices/utils/device_system_id.h b/hal_psee_plugins/include/devices/utils/device_system_id.h
+index e60a457..8eb6542 100644
+--- a/hal_psee_plugins/include/devices/utils/device_system_id.h
++++ b/hal_psee_plugins/include/devices/utils/device_system_id.h
+@@ -12,6 +12,7 @@
+ #ifndef METAVISION_HAL_DEVICE_SYSTEM_ID_H
+ #define METAVISION_HAL_DEVICE_SYSTEM_ID_H
+ 
++#include <cstdint>
+ #include <map>
+ #include <vector>
+ #include <string>
+-- 
+2.49.0
+
