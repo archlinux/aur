@@ -1,7 +1,7 @@
 # Maintainer: Robert Manner <rmanni@gmail.com>
 
 pkgname=widgie-git
-pkgver=0.2.1.1.ge72fbed
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="A lightweight widget library for applications which do not need a splashscreen."
 arch=('x86_64' 'aarch64')
