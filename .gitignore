@@ -3,6 +3,7 @@
 
 !/.gitignore
 !/.SRCINFO
+!/LICENSE
 !/PKGBUILD
 
 !/undeclared_uint8_t.patch
