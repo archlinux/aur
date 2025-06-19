@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/dd4e/pyedid"
 license=(MIT)
 depends=(python python-requests)
-makedepends=(git python-build python-installer python-wheel 'python-setuptools')
+makedepends=(git python-build python-installer python-wheel python-setuptools)
 checkdepends=(python-pytest)
 source=(
   "${_pyname}-${pkgver}.tar.gz::https://github.com/dd4e/pyedid/archive/refs/tags/v${pkgver}.tar.gz"
