@@ -1,54 +1,126 @@
-# Maintainer: Jean-Francis Roy <jeanfrancisroy _AT_ gmail _DOT_ com>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Jean-Francis Roy <jeanfrancisroy _AT_ gmail _DOT_ com>
 # Contributor: Giuseppe Borzi <gborzi _AT_ ieee _DOT_ org>
-pkgname=openblas-git
-_pkgname=OpenBLAS
-pkgver=0.2.9.rc1.r679.ga96a4cb
+
+pkgbase=openblas-git
+pkgname=('openblas-git' 'openblas64-git' 'blas-openblas-git' 'blas64-openblas-git')
+pkgver=0.3.30.r3.g4e6da5ed3
 pkgrel=1
-pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD "
+pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD"
 arch=('i686' 'x86_64')
-url="http://www.openblas.net/"
-license=('BSD')
+url="https://www.openmathlib.org/OpenBLAS/"
+license=('BSD-3-Clause')
 depends=('gcc-libs')
-makedepends=('perl' 'gcc-fortran' 'git')
-provides=('blas=3.5.0' 'openblas')
-conflicts=('blas' 'openblas')
-options=(!makeflags !emptydirs)
-source=($_pkgname::git+https://github.com/xianyi/OpenBLAS.git)
-md5sums=('SKIP')
+makedepends=('git' 'cmake' 'gcc-fortran' 'perl')
+provides=("openblas=$pkgver")
+conflicts=('openblas')
+source=("git+https://github.com/OpenMathLib/OpenBLAS.git")
+sha256sums=('SKIP')
+
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "OpenBLAS"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "OpenBLAS"
 
-  unset CFLAGS
-  unset CXXFLAGS
-  NPROC=`grep "physical id" /proc/cpuinfo|sort|uniq|wc -l`
-  NCORE4PROC=`grep "cores" /proc/cpuinfo|sort|tail -n 1|sed -e 's/cpu cores.*: //'`
-  let NCORE=NPROC*NCORE4PROC
-  make USE_OPENMP=1 NO_LAPACK=1 NUM_THREADS=$NCORE LIBPREFIX=libblas \
-    MAJOR_VERSION=3 NO_CBLAS=1 NO_AFFINITY=1
+  # Setting FC manually to avoid picking up f95 and breaking the cmake build
+  # https://github.com/xianyi/OpenBLAS/issues/4072#issuecomment-1576388332
+
+  # Setting ASM flags for CET support.  Setting FFLAGS for CET support.
+  # Remove ` -Wformat -Werror=format-security` not supported by gcc-fortran.
+
+  ASMFLAGS="$CFLAGS" \
+  FFLAGS="${CFLAGS/ -Wformat -Werror=format-security/}" \
+  FC="gfortran" \
+  cmake -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_INSTALL_LIBDIR="lib" \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_TESTING=OFF \
+    -DDYNAMIC_ARCH=ON \
+    -DNUM_THREADS=64 \
+    -DTARGET=CORE2 \
+    -DUSE_OPENMP=1
+  cmake --build "_build"
+
+  ASMFLAGS="$CFLAGS" \
+  FFLAGS="${CFLAGS/ -Wformat -Werror=format-security/}" \
+  FC="gfortran" \
+  cmake -B "_build64" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_INSTALL_LIBDIR="lib" \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_TESTING=OFF \
+    -DDYNAMIC_ARCH=ON \
+    -DINTERFACE64=1 \
+    -DNUM_THREADS=64 \
+    -DTARGET=CORE2 \
+    -DUSE_OPENMP=1
+  cmake --build "_build64"
 }
 
-package() {
-  cd "$srcdir/$_pkgname"
+check() {
+  cd "OpenBLAS"
 
-  NPROC=`grep "physical id" /proc/cpuinfo|sort|uniq|wc -l`
-  NCORE4PROC=` grep "cores" /proc/cpuinfo|sort|tail -n 1|sed -e 's/cpu cores.*: //'`
-  let NCORE=NPROC*NCORE4PROC
-  make PREFIX="$pkgdir/usr" NUM_THREADS=$NCORE LIBPREFIX=libblas \
-    MAJOR_VERSION=3 install
-  rm -f "$pkgdir/usr/include/cblas.h" "$pkgdir"/usr/include/lapacke*
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  cd "$pkgdir/usr/lib/"
-  ln -sf libblas_*-r$pkgver.a libblas.a
-  ln -sf libblas_*-r$pkgver.so libblas.so
-  ln -sf libblas_*-r$pkgver.so libblas.so.3
-  sed -i -e "s%$pkgdir%%" "$pkgdir/usr/lib/cmake/openblas/OpenBLASConfig.cmake"
+  #cmake --build "_build" --target test
+  #cmake --build "_build64" --target test
 }
 
-# vim:set ts=2 sw=2 et:
+package_openblas-git() {
+  cd "OpenBLAS"
+
+  DESTDIR="$pkgdir" cmake --install "_build"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/openblas"
+}
+
+package_openblas64-git() {
+  pkgdesc+=" (64-bit integers)"
+
+  cd "OpenBLAS"
+
+  DESTDIR="$pkgdir" cmake --install "_build64"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/openblas64"
+
+  cd "$pkgdir/usr/lib"
+  ln -s "libopenblas_64.so" "libopenblas64_.so"  # Needed by julia
+}
+
+package_blas-openblas-git() {
+  pkgdesc+=" (Provides BLAS/CBLAS/LAPACK/LAPACKE system-wide)"
+  depends=('openblas-git')
+  provides=('blas' 'cblas' 'lapack' 'lapacke' "openblas-lapack=$pkgver")
+  conflicts=('blas' 'cblas' 'lapack' 'lapacke' 'openblas-lapack')
+  replaces=('openblas-lapack')
+
+  mkdir -p "$pkgdir/usr/lib/pkgconfig"
+  cd "$pkgdir/usr/lib"
+  for _lib in blas cblas lapack lapacke; do
+    ln -s "libopenblas.so" "lib${_lib}.so"
+    ln -s "libopenblas.so" "lib${_lib}.so.3"
+    ln -s "openblas.pc" "$pkgdir/usr/lib/pkgconfig/${_lib}.pc"
+  done
+}
+
+package_blas64-openblas-git() {
+  pkgdesc+=" (64-bit integers, provides BLAS/CBLAS/LAPACK/LAPACKE system-wide)"
+  depends=('openblas64-git')
+  provides=('blas64' 'cblas64' 'lapack64' 'lapacke64')
+  conflicts=('blas64' 'cblas64' 'lapack64' 'lapacke64')
+
+  mkdir -p "$pkgdir/usr/lib/pkgconfig"
+  cd "$pkgdir/usr/lib"
+  for _lib in blas64 cblas64 lapack64 lapacke64; do
+    ln -s "libopenblas_64.so" "lib${_lib}.so"
+    ln -s "libopenblas_64.so" "lib${_lib}.so.3"
+    ln -s "openblas64.pc" "$pkgdir/usr/lib/pkgconfig/${_lib}.pc"
+  done
+}
