@@ -6,7 +6,7 @@
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet
 pkgver=4.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
 url="http://www.mudlet.org"
@@ -30,6 +30,8 @@ build() {
     export WITH_UPDATER=NO
     export WITH_VARIABLE_SPLASH_SCREEN=NO
     export XDG_DATA_DIRS=/usr/share
+    export CFLAGS="$CFLAGS -std=gnu17"
+
 
     qmake-qt5 PREFIX=/usr
     make
