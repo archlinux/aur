@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Lutris Gamepad UI
+Comment=A simple, TV-friendly, gamepad-navigable frontend for the Lutris game launcher on Linux.
+Exec=/usr/bin/lutris-gamepad-ui
+Terminal=false
+Type=Application
+Icon=lutris-gamepad-ui
