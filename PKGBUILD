@@ -2,8 +2,8 @@
 
 pkgname=libastal-notifd-git
 _pkgname=notifd
-pkgver=r785.4e455bb
-pkgrel=1
+pkgver=r786.ca3190d
+pkgrel=2
 provides=(astal-notifd libastal-notifd libastal-notifd.so=0-64)
 pkgdesc="A notification daemon library and cli tool "
 arch=(x86_64)
@@ -22,21 +22,14 @@ makedepends=(
   vala
 )
 groups=("libastal")
-source=("git+${url}.git" "skip_valadoc.patch")
-sha256sums=('SKIP'
-            '1408c0a81a6b3cba336db1e2ef864838f9310462eca94adf5cf68c64527974d3')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd astal
   #git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
-
-prepare() {
-    cd astal 
-    patch -Np1 -i ../skip_valadoc.patch
-}
-
 
 build() {
   cd astal/lib/$_pkgname
