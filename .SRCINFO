@@ -1,7 +1,7 @@
 pkgbase = libastal-io-git
 	pkgdesc = IO library for libastal
-	pkgver = r785.4e455bb
-	pkgrel = 1
+	pkgver = r786.ca3190d
+	pkgrel = 2
 	url = https://github.com/Aylur/astal
 	arch = x86_64
 	groups = libastal
@@ -16,8 +16,6 @@ pkgbase = libastal-io-git
 	provides = libastal-io
 	provides = libastal-io.so=0-64
 	source = git+https://github.com/Aylur/astal.git
-	source = skip_valadoc.patch
 	sha256sums = SKIP
-	sha256sums = f7210f38c29528fbe6e8dd7a162956e4d94e26fcb5b769fbbade26abd9d0e1eb
 
 pkgname = libastal-io-git

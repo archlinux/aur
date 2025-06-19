@@ -2,8 +2,8 @@
 
 pkgname=libastal-io-git
 _pkgname=io
-pkgver=r785.4e455bb
-pkgrel=1
+pkgver=r786.ca3190d
+pkgrel=2
 provides=(astal-io libastal-io libastal-io.so=0-64)
 pkgdesc="IO library for libastal"
 arch=(x86_64)
@@ -20,19 +20,13 @@ makedepends=(
   vala
 )
 groups=("libastal")
-source=("git+${url}.git" "skip_valadoc.patch")
-sha256sums=('SKIP'
-            'f7210f38c29528fbe6e8dd7a162956e4d94e26fcb5b769fbbade26abd9d0e1eb')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd astal
   #git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
-prepare() {
-    cd astal
-    patch -Np1 -i ../skip_valadoc.patch
 }
 
 build() {
