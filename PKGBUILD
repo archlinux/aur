@@ -16,7 +16,7 @@
 
 pkgname=hnefatafl-copenhagen
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Copenhagen Hnefatafl client."
 url="https://hnefatafl.org"
 license=("MIT OR Apache-2.0")
@@ -30,7 +30,7 @@ sha256sums=("c2e6d1edaa9e4b85cee4c1406e95e20d0d1655bc3d766295dc2821aa34eca20c")
 
 build() {
     tar -xvzf v2.0.3.tar.gz
-    cd "$hnefatafl-$pkgver"
+    cd "hnefatafl-$pkgver"
     cargo build --release --example hnefatafl-client --no-default-features
 
     pandoc\
@@ -44,7 +44,7 @@ build() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "hnefatafl-$pkgver"
     install -Dm755 "target/release/examples/hnefatafl-client" -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
@@ -62,6 +62,6 @@ package() {
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "hnefatafl-$pkgver"
     .githooks/pre-commit
 }
