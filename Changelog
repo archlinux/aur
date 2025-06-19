@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 2.2.3 ➙ 2.5.0
-              : 2025-05-19 ➙ 2025-06-19
+ Tags         : 2.3.0 ➙ 2.6.0
+              : 2025-05-21 ➙ 2025-06-19
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-19   : 2.6.0
+                run_prog: When writing to subprocess stdin, add a flush() before we close
+                the file object
+                update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
 
  2025-06-19   : 2.5.0
                 run_prog: make stdin nonblock as well
@@ -20,7 +25,3 @@
  2025-05-21   : 2.3.0
                 Use builtin types where possible. e.g. typing.List -> list
  2025-05-19     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-05-19   : 2.2.3
-                Arch PKGBUILD: move pytest dependency from makedepends to checkdepends.
- 2025-05-03     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
