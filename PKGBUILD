@@ -5,35 +5,27 @@ pkgdesc='GitLab agentk, kas daemons'
 url="https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent"
 license=(MIT)
 arch=(x86_64)
-makedepends=(go)
-backup=("etc/gitlab-kas/config.yml")
-source=("https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/archive/v$pkgver/gitlab-agent-v$pkgver.tar.gz"
+makedepends=('go' 'git')
+backup=("etc/gitlab-kas/config.yaml")
+#source=("https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/archive/v$pkgver/gitlab-agent-v$pkgver.tar.gz"
+source=("git+https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent.git/#tag=v$pkgver"
         "gitlab-kas.service")
-sha256sums=('b70d5c9c873b51d87ba7555996b43989665ac71a050475e0fa4d37c009d85937'
+sha256sums=('51e3acf4292ff65f612892741879cd2cb6ccad540198c3c2ea1c2c604294a667'
             'f0a39b60b799a3be043de9574451656e416e924d7f0e5441ca5db5440465c84c')
 
 build() {
-  cd "$srcdir/gitlab-agent-v$pkgver"
+  cd "$srcdir/gitlab-agent"
 
   export GOPATH="$srcdir"
   export CGO_ENABLED=0
-
-  for i in kas agentk autoflow; do
-    go build \
-        -trimpath \
-        -buildmode=exe \
-        -mod=readonly \
-        -modcacherw \
-        -ldflags "-extldflags \"$LDFLAGS\"" \
-        -o "bin/$i" ./cmd/$i
-  done
+  make kas agentk
 }
 
 package() {
-  cd "$srcdir/gitlab-agent-v$pkgver"
+  cd "$srcdir/gitlab-agent"
 
-  for i in kas agentk autoflow; do
-    install -Dm0755 -t "$pkgdir/usr/bin/" "bin/$i"
+  for i in kas agentk; do
+    install -Dm0755 -t "$pkgdir/usr/bin/" "tmp/$i"
   done
 
   install -Dm0644 -t "$pkgdir/usr/lib/systemd/system/" "../gitlab-kas.service"
