@@ -1,7 +1,7 @@
 pkgname="atostekid"
 
 # colors
-if command -v tput; then
+if command -v tput >/dev/null 2>&1; then
     all_off="$(tput sgr0)"
     bold="${all_off}$(tput bold)"
     blue="${bold}$(tput setaf 4)"
