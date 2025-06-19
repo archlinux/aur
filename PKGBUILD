@@ -2,7 +2,7 @@
 
 _gemname=snaky_hash
 pkgname=ruby-$_gemname
-pkgver=2.0.1
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='A Hashie::Mash joint to improve #snake_life for everyone'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('ruby-hashie' 'ruby-version_gem')
 makedepends=('ruby-rdoc')
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('1ac87ec157fcfe7a460e821e0cd48ae1e6f5e3e082ab520f03f31a9259dbdc31')
+sha256sums=('25a3d299566e8153fb02fa23fd9a9358845950f7a523ddbbe1fa1e0d79a6d456')
 options=(!emptydirs)
 
 package() {
