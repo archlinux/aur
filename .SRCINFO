@@ -1,6 +1,6 @@
 pkgbase = python-textual-dev
 	pkgdesc = Development tools for working with Textual
-	pkgver = 1.7.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/Textualize/textual-dev
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-textual-dev
 	depends = python-click
 	depends = python-msgpack
 	depends = python-typing_extensions
-	source = textual-dev-1.7.1.tar.gz::https://github.com/Textualize/textual-dev/archive/v1.7.1.tar.gz
-	sha512sums = 421076c1e512d65f0fcb02f7f2889ed5c81ebff5abe59488f6cfe236f9ea24b3203a6cb42b837718bd8d457f9bdb1afaed5d5a87f50b2f6bd5e23fe39a29a91d
+	source = textual-dev-1.7.0.tar.gz::https://github.com/Textualize/textual-dev/archive/v1.7.0.tar.gz
+	sha512sums = a3c2e14a3305620bfedc5a3d5f39844b107881ac2cbd39657f9e60f442e4dafbb8da5cb9d605e7033c1ad5e1766ae5a0c8de5c95127cc90ae4ded19dcc5cc2a3
 
 pkgname = python-textual-dev
