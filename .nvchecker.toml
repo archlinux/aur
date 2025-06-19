@@ -1,0 +1,5 @@
+[neonmodem-bin]
+source = "github"
+github = "mrusme/neonmodem"
+use_latest_release = true
+prefix = "v"
