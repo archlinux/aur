@@ -1,0 +1,19 @@
+pkgbase = perl-msoffice-word-surgeon
+	pkgdesc = tamper with the guts of Microsoft docx documents, with regexes
+	pkgver = 2.11
+	pkgrel = 1
+	url = https://metacpan.org/pod/MsOffice::Word::Surgeon
+	arch = any
+	license = Artistic-2.0
+	depends = perl-archive-zip
+	depends = perl-carp-object
+	depends = perl-match-simple
+	depends = perl-moose
+	depends = perl-moosex-strictconstructor
+	depends = perl-namespace-clean
+	depends = perl-xml-libxml
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DA/DAMI/MsOffice-Word-Surgeon-2.11.tar.gz
+	sha512sums = d6f733ffa6022db885e76621737dde73b4d6ccf8f8bd5857caff23b76952f831e5d9fe6e369dde52ce6470c45c14b6e7b96cbe2bf08292732bc32d5295ae66ae
+
+pkgname = perl-msoffice-word-surgeon
