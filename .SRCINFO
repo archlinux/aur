@@ -1,7 +1,7 @@
 pkgbase = netbird-ui
 	pkgdesc = Official GUI for the Netbird client
 	pkgver = 0.47.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://netbird.io
 	arch = i686
 	arch = pentium4

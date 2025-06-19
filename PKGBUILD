@@ -1,8 +1,9 @@
 # Maintainer: tarball <bootctl@gmail.com>
+# Contributor: Brody <archfan at brodix dot de>
 
 pkgname=netbird-ui
 pkgver=0.47.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Official GUI for the Netbird client'
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
@@ -67,6 +68,6 @@ package() {
   install -Dm644 build/netbird.desktop \
     "$pkgdir/usr/share/applications/netbird.desktop"
 
-  install -Dm644 assets/netbird.ico \
-    "$pkgdir/usr/share/icons/netbird.ico"
+  install -Dm644 assets/netbird.png \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/netbird.png"
 }
