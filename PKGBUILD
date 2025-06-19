@@ -5,17 +5,17 @@
 
 pkgname=ruby-kramdown-rfc2629
 _name="${pkgname#ruby-}"
-pkgver=1.7.27
+pkgver=1.7.29
 pkgrel=1
 pkgdesc='An XML2RFC (RFC799x) backend for Thomas Leitner'"'"'s kramdown markdown parser.'
 arch=(any)
 url='http://github.com/cabo/kramdown-rfc2629'
 license=('MIT')
-depends=('ruby' 'ruby-base64' 'ruby-certified' 'ruby-differ' 'ruby-json_pure' 'ruby-kramdown' 'ruby-kramdown-parser-gfm' 'ruby-net-http-persistent' 'ruby-unicode-blocks' 'ruby-unicode-name' 'ruby-unicode-scripts')
+depends=('ruby' 'ruby-base64' 'ruby-certified' 'ruby-differ' 'ruby-json_pure' 'ruby-kramdown' 'ruby-kramdown-parser-gfm' 'ruby-net-http-persistent' 'ruby-ostruct' 'ruby-unicode-blocks' 'ruby-unicode-name' 'ruby-unicode-scripts')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_name}-${pkgver}.gem")
 noextract=("${_name}-${pkgver}.gem")
-sha256sums=(54ef78da39c52751c2ad61ef23b05fb68ca2c6f93f011f592453823509ca9a15)
+sha256sums=(9d111cc75008ef93e89651698484d75d1ebdca477409ee97fb2e191f18c984f0)
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"

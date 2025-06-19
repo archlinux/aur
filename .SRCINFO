@@ -1,6 +1,6 @@
 pkgbase = ruby-kramdown-rfc2629
 	pkgdesc = An XML2RFC (RFC799x) backend for Thomas Leitner's kramdown markdown parser.
-	pkgver = 1.7.27
+	pkgver = 1.7.29
 	pkgrel = 1
 	url = http://github.com/cabo/kramdown-rfc2629
 	arch = any
@@ -13,12 +13,13 @@ pkgbase = ruby-kramdown-rfc2629
 	depends = ruby-kramdown
 	depends = ruby-kramdown-parser-gfm
 	depends = ruby-net-http-persistent
+	depends = ruby-ostruct
 	depends = ruby-unicode-blocks
 	depends = ruby-unicode-name
 	depends = ruby-unicode-scripts
-	noextract = kramdown-rfc2629-1.7.27.gem
+	noextract = kramdown-rfc2629-1.7.29.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/kramdown-rfc2629-1.7.27.gem
-	sha256sums = 54ef78da39c52751c2ad61ef23b05fb68ca2c6f93f011f592453823509ca9a15
+	source = https://rubygems.org/downloads/kramdown-rfc2629-1.7.29.gem
+	sha256sums = 9d111cc75008ef93e89651698484d75d1ebdca477409ee97fb2e191f18c984f0
 
 pkgname = ruby-kramdown-rfc2629
