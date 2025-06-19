@@ -1,20 +1,18 @@
 pkgbase = opengigabyte
-	pkgdesc = Entirely open source drivers and utilities for Gigabyte Laptops on GNU/Linux.
+	pkgdesc = Kernel driver for Gigabyte devices (DKMS-variant)
 	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/blmhemu/opengigabyte
 	arch = any
 	license = GPL2
-	source = https://github.com/blmhemu/opengigabyte/archive/v0.0.2.tar.gz
-	md5sums = 3dd0c361f23eae3974abdf0b8af12adc
-
-pkgname = opengigabyte-driver-dkms
-	pkgdesc = Kernel driver for Gigabyte devices (DKMS-variant)
-	install = opengigabyte-driver-dkms.install
 	depends = dkms
 	depends = udev
 	depends = linux-headers
+	source = https://github.com/blmhemu/opengigabyte/archive/v0.0.2.tar.gz
+	install = opengigabyte-driver-dkms.install
+	md5sums = 3dd0c361f23eae3974abdf0b8af12adc
 
-pkgname = opengigabyte-meta
-	pkgdesc = Meta package for installing all required opengigabyte packages.
-	depends = opengigabyte-driver-dkms
+pkgname = opengigabyte
+
+
+
