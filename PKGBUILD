@@ -5,8 +5,8 @@
 # Contributor: Jacob Alexander      haata at kiibohd dot com
 
 pkgname="python-apt"
-pkgver=2.9.9
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Python interface to libapt-pkg"
 arch=('x86_64')
 _url="https://salsa.debian.org/apt-team/${pkgname}/-/archive"
@@ -17,9 +17,11 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-distu
 conflicts=()
 options=(!emptydirs)
 source=(
-  "${_url}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+#  "${_url}/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+https://deb.debian.org/debian/pool/main/p/python-apt/python-apt_3.0.0.tar.xz
+)
 sha512sums=(
-  ff3c4f46b39f057ae5ef0902d67884f34d3c3deee899b2e19933cd84a2be6e7a326f1dd37aa0fe3531ff4e485cda96d19e6d15a05ecc2c65e486df712621c64c
+  7c8a3ee8197a45f1611da1c49d693a723daf220a5c3eff02e3715479099447e9da7639fa4bfd03c4877a7f436f029c8aee6c58e1eb77e7ad850bc6409bc551e7
   )
 
 build() {
