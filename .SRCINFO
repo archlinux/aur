@@ -1,7 +1,7 @@
 pkgbase = libastal-mpris-git
 	pkgdesc = Library and cli tool for controlling media players
-	pkgver = r785.4e455bb
-	pkgrel = 1
+	pkgver = r786.ca3190d
+	pkgrel = 2
 	url = https://github.com/Aylur/astal
 	arch = x86_64
 	groups = libastal
@@ -17,8 +17,6 @@ pkgbase = libastal-mpris-git
 	provides = libastal-mpris
 	provides = libastal-mpris.so=0-64
 	source = git+https://github.com/Aylur/astal.git
-	source = skip_valadoc.patch
 	sha256sums = SKIP
-	sha256sums = d140115561953b67894d27ce0b1581c7618109b8c9bebf6622aab547c6ed126a
 
 pkgname = libastal-mpris-git

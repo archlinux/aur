@@ -2,8 +2,8 @@
 
 pkgname=libastal-mpris-git
 _pkgname=mpris
-pkgver=r785.4e455bb
-pkgrel=1
+pkgver=r786.ca3190d
+pkgrel=2
 provides=(astal-mpris libastal-mpris libastal-mpris.so=0-64)
 pkgdesc="Library and cli tool for controlling media players"
 arch=(x86_64)
@@ -21,21 +21,14 @@ makedepends=(
   vala
 )
 groups=("libastal")
-source=("git+${url}.git" "skip_valadoc.patch")
-sha256sums=('SKIP'
-            'd140115561953b67894d27ce0b1581c7618109b8c9bebf6622aab547c6ed126a')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd astal
   #git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
-
-prepare() {
-    cd astal 
-    patch -Np1 -i ../skip_valadoc.patch
-}
-
 
 build() {
   cd astal/lib/$_pkgname
