@@ -5,7 +5,7 @@
 
 pkgname=oidcwarden-web
 _pkgname=vaultwarden-web
-pkgver=2025.5.1
+pkgver=2025.6.0
 pkgrel=1
 pkgdesc='Bitwarden web vault with the patches to make it work with oidcwarden'
 arch=(any)
@@ -21,12 +21,13 @@ makedepends=(
 install=$pkgname.install
 #source=("$pkgname::git+$url#tag=v$pkgver-$pkgrel")
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}-${pkgrel}.tar.gz)
-sha512sums=('8a98f3f5e52268e06afbba78dda09f6b64cdd90b83908f0606b52896d27b8a51424dc07e9876bbd52c5cab4f2897c5348ed8d81d35b0d0c3e48bb7f032fe9cf3')
-b2sums=('fdcb16a3405d7068e11a8657f07164e1b924109e39cd1231bb54e96dd6b54181a3f6f3cad069f1cd7e1c8744afa03c84c87f0ba567d8b1a9ae04fe36750c92a7')
+sha512sums=('af592bb98810cc216476503cbfdf8873d1daa777287dec1effac2352f776af9295139ad1720005717050549139f21954b6bbace9dc6227e0bfae6beed66e4f9a')
+b2sums=('f35316b732e8b6f8f767085f1aee2f5f458e5a6271eb0eb986b10f8b27555b732146aef849399e00b665f433a3ec3ef1f368b14450d27751de4ac3bac2280ec7')
 
 prepare() {
   cd oidc_web_vault-${pkgver}-${pkgrel}
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+  npm install
   npm ci
 #  uncomment to build version with SSO override instead of button
   patch -Np1 -i ./patches/oidc_override.patch
