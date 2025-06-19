@@ -1,0 +1,16 @@
+diff --git a/src/libs/utils/plaintextedit/plaintextedit.cpp b/src/libs/utils/plaintextedit/plaintextedit.cpp
+index 833bf702..816831ee 100644
+--- a/src/libs/utils/plaintextedit/plaintextedit.cpp
++++ b/src/libs/utils/plaintextedit/plaintextedit.cpp
+@@ -1138,6 +1138,11 @@ void PlainTextEditPrivate::adjustScrollbars()
+     }
+     if (!centerOnScroll)
+         vmax -= qMax(0, viewport()->height());
++    else
++    {
++        QFontMetrics fm(doc->defaultFont());
++        vmax -=  fm.height();
++    }
+     QSizeF documentSize = documentLayout->documentSize();
+     vbar()->setRange(0, qMax(0, vmax));
+     vbar()->setPageStep(viewport()->height());
