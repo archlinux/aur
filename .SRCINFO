@@ -1,6 +1,6 @@
 pkgbase = marimo
 	pkgdesc = A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps
-	pkgver = 0.13.14
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://marimo.io/
 	arch = any
@@ -12,7 +12,6 @@ pkgbase = marimo
 	depends = python-click>=8.0
 	depends = python-click<9
 	depends = python-jedi>=0.18.0
-	depends = python-loro>=1.5.0
 	depends = python-markdown>=3.4
 	depends = python-markdown<4
 	depends = python-pymdown-extensions>=10.11.2
@@ -24,12 +23,11 @@ pkgbase = marimo
 	depends = uvicorn>=0.22.0
 	depends = python-starlette>=0.26.1
 	depends = python-websockets>=10.0.0
-	depends = python-pycrdt>=0.11.0
+	depends = python-loro>=1.5.0
 	depends = python-docutils>=0.16.0
 	depends = python-psutil>=5.0
 	depends = python-itsdangerous>=2.0.0
 	depends = python-narwhals>=1.12.0
-	depends = ruff
 	depends = python-packaging
 	optdepends = jupyter-nbformat: Export as IPYNB
 	optdepends = python-altair: Plotting in datasource viewer
@@ -37,8 +35,9 @@ pkgbase = marimo
 	optdepends = python-openai: AI features
 	optdepends = python-polars: SQL output back in Python
 	optdepends = python-sqlglot: SQL cells parsing
+	optdepends = ruff: Formatting
 	options = !debug
-	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.13.14.tar.gz
-	sha256sums = af03fd03837793963c5ca296f287190d4feecd5f34bc5d9449e015ffb17cdcbf
+	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.14.0.tar.gz
+	sha256sums = 41346a7a15498a0417b7fda010ac558ec67d97e4a0d12107ec60b1ecb40c6669
 
 pkgname = marimo
