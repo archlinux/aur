@@ -1,0 +1,13 @@
+pkgbase = urusai
+	pkgdesc = Go implementation of noisy HTTP/DNS traffic generator
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/calpa/urusai
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.22
+	depends = glibc
+	source = urusai-1.0.3.tar.gz::https://github.com/calpa/urusai/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = ef10d71fef3bc3ee85613cacdbb748f29e0f800f920225ecb062ca28182dccc8
+
+pkgname = urusai
