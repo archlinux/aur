@@ -13,12 +13,12 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/hmy-agsv1-fork-enessmr-git"
   cd ..
-  mv hmy-agsv1-fork-enessmr-git dotfiles
-  cd "dotfiles"
+  mv hmy-agsv1-fork-enessmr-git ~/dotfiles
+  cd "~/dotfiles"
   cat pkgver.txt
 }
 
 package() {
-  cd "$srcdir/dotfiles"
+  cd "~/dotfiles"
   ./install.sh
 }
