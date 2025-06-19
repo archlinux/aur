@@ -1,7 +1,7 @@
 pkgbase = wolfboa
 	pkgdesc = Wolfenstein: Blade of Agony game powered by the GZDoom.
 	pkgver = c31.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/wolfboa
 	arch = x86_64
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = wolfboa
 	depends = aria2
 	depends = unzip
 	depends = yad
-	source = https://gitlab.com/linuxbombay/wolfboa/wolfboa/-/archive/1.0.1/wolfboa-1.0.1.tar.bz2
+	source = https://gitlab.com/linuxbombay/wolfboa/wolfboa/-/archive/1.0.1.2/wolfboa-1.0.1.2.tar.bz2
 	source = https://gitlab.com/linuxbombay/wolfboa/game-files/c31.1.1/-/raw/main/boa_c31.1.1.zip
-	sha256sums = 07a80889ed12a9bda92959c935476aac6b630194cc85c196e5771da00fcc63d5
+	sha256sums = 7ee42be55d2359125d62bf2c910745b333e0ffdbb740bd182fdad8ce4692fdf0
 	sha256sums = 32e3b9aeaa9d970fed253ec5a830db9ee5cfe51612ffa1831b7e804427dcc68e
 
 pkgname = wolfboa
