@@ -2,7 +2,7 @@
 # Contributor: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
 pkgver=2.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="An exceptional GUI frontend for the modern GnuPG (gpg)"
 arch=('x86_64')
 url="https://gpgfrontend.bktus.com"
@@ -31,7 +31,7 @@ source=("git+https://github.com/saturneric/GpgFrontend#tag=v$pkgver"
         'git+https://git.bktus.com/GpgFrontend/libgpg-error.git'
         'git+https://github.com/openssl/openssl.git'
         'git+https://git.bktus.com/GpgFrontend/vmime.git')
-sha256sums=('1fcaf3bf63c87df8d2efda3fe882f3a9622d199e7944eeb7493bdd83273cdfad'
+sha256sums=('2348f6cbb93d7fb089424a5fdabbf71e035ed4fe0773df9739ea37ef699e0202'
             'SKIP'
             'SKIP'
             'SKIP'
