@@ -219,6 +219,7 @@ Module: fastapi
     open_webui/utils/oauth.py
     open_webui/utils/security_headers.py
     open_webui/utils/telemetry/instrumentors.py
+    open_webui/utils/telemetry/metrics.py
     open_webui/utils/telemetry/setup.py
     open_webui/utils/tools.py
 Module: fastapi.openapi.docs
@@ -385,6 +386,7 @@ Module: open_webui.models.chats
     open_webui/models/users.py
     open_webui/routers/chats.py
     open_webui/routers/folders.py
+    open_webui/routers/ollama.py
     open_webui/routers/users.py
     open_webui/routers/utils.py
     open_webui/socket/main.py
@@ -525,6 +527,7 @@ Module: open_webui.env
     open_webui/utils/plugin.py
     open_webui/utils/task.py
     open_webui/utils/telemetry/instrumentors.py
+    open_webui/utils/telemetry/metrics.py
     open_webui/utils/telemetry/setup.py
     open_webui/utils/tools.py
     open_webui/utils/webhook.py
@@ -877,6 +880,7 @@ Module: pytz
 Module: opentelemetry
   Imported in:
     open_webui/utils/auth.py
+    open_webui/utils/telemetry/metrics.py
     open_webui/utils/telemetry/setup.py
 Module: fastapi.security
   Imported in:
@@ -935,16 +939,32 @@ Module: open_webui.utils.telemetry.constants
 Module: opentelemetry.semconv.trace
   Imported in:
     open_webui/utils/telemetry/constants.py
-Module: opentelemetry.exporter.otlp.proto.grpc.trace_exporter
+Module: opentelemetry.exporter.otlp.proto.grpc.metric_exporter
   Imported in:
-    open_webui/utils/telemetry/setup.py
+    open_webui/utils/telemetry/metrics.py
+Module: opentelemetry.sdk.metrics
+  Imported in:
+    open_webui/utils/telemetry/metrics.py
+Module: opentelemetry.sdk.metrics.view
+  Imported in:
+    open_webui/utils/telemetry/metrics.py
+Module: opentelemetry.sdk.metrics.export
+  Imported in:
+    open_webui/utils/telemetry/metrics.py
 Module: opentelemetry.sdk.resources
+  Imported in:
+    open_webui/utils/telemetry/metrics.py
+    open_webui/utils/telemetry/setup.py
+Module: opentelemetry.exporter.otlp.proto.grpc.trace_exporter
   Imported in:
     open_webui/utils/telemetry/setup.py
 Module: open_webui.utils.telemetry.exporters
   Imported in:
     open_webui/utils/telemetry/setup.py
 Module: open_webui.utils.telemetry.instrumentors
+  Imported in:
+    open_webui/utils/telemetry/setup.py
+Module: open_webui.utils.telemetry.metrics
   Imported in:
     open_webui/utils/telemetry/setup.py
 Module: open_webui.models.channels

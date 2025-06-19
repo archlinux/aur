@@ -105,11 +105,11 @@ pkgbase = open-webui-no-venv
 	conflicts = open-webui
 	options = !strip
 	options = !debug
-	source = git+https://github.com/open-webui/open-webui#commit=63256136ef8322210c01c2bb322097d1ccfb8c6f
+	source = git+https://github.com/open-webui/open-webui#commit=b5f4c85bb196c16a775802907aedd87366f58b0f
 	source = build-only-backend.patch
 	source = open-webui.service
 	source = open-webui.conf
-	b2sums = 197188de264c5a03b3e602f4a97b1d56d5650ecbbc82ccd38e8b881ad502c007b07c55e45c509ebfa9dc902017c419e4916dd0b9b1d6aa9d1a8471e68e1e63d7
+	b2sums = f57cc1fd728be856411771332ed5be1a5bcdb65095b70a7ce40d169c5d5d1b617fd34ae823782a18332e79078e9e7c963fdb72fd02aa474613d4422d7ff543a7
 	b2sums = 36ee27927719cd6cf761a62cd89404129326595f9cde35555f5fe5e2a616bac55346eba2a2882dd883f0d6b1a77e6da64c22521f7a7a18ca0d0b2eeac4781814
 	b2sums = f5dd97d4809160f3cc183a8c86ad5ead33163ba009fde2bb92935f766b6688f86bedecff9f1c805393d7e77736dd481d3da1d22cef6941a22bb0ef3856aee484
 	b2sums = 9e9935cec52386c2397d53a02adf0befd82d9f6e7b95997abe75c156f7d2c0e29e67c9fe550da7e42c54faf97800de7501226b4ee6305530c5ced286dfed86a3
