@@ -7,20 +7,21 @@ pkgdesc="Practice writing Japanese letters, learn their meanings and related wor
 arch=('x86_64')
 license=('GPL3')
 url="https://github.com/syt0r/Kanji-Dojo"
-makedepends=('gradle' 'dpkg')
+makedepends=('jdk17-openjdk' 'dpkg')
 options=('!strip' '!debug')
 source=("git+https://github.com/syt0r/Kanji-Dojo")
 sha256sums=('SKIP')
 
 build() {
 	# build for linux
-        source /etc/profile
+        JAVA_HOME=/usr/lib/jvm/java-17-openjdk/
+	PATH=$PATH:/usr/lib/jvm/java-17-openjdk/bin
 	cd Kanji-Dojo
-	./gradlew core:packageDistributionForCurrentOS
+	./gradlew desktopApp:packageDistributionForCurrentOS
 }
 package() {
 	# extract deb
-	dpkg-deb -x "Kanji-Dojo/core/build/compose/binaries/main/deb/kanji-dojo_${pkgver}-${pkgrel}_amd64.deb" kanji-dojo/
+	dpkg-deb -x "Kanji-Dojo/desktopApp/build/compose/binaries/main/deb/kanji-dojo_${pkgver}-${pkgrel}_amd64.deb" kanji-dojo/
 
 	# move to correct directories
 	mkdir -p "${pkgdir}/opt"
