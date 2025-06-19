@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=remindr-bin
 _pkgname=Remindr
-pkgver=2.2.4
+pkgver=2.2.5
 _electronversion=36
 pkgrel=1
 pkgdesc="Keep track of what you need to get done.(Prebuilt version.Use system-wide electron)"
@@ -21,8 +21,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('68816aa63a5cc5d26be9bdf4cb0e4b8f94530358e95de54f7f04d8f80337e75d'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('9bd719d5a686f65573b5170211d5e40a9bfd4256b32fa03b4e2c6190bcfc0760'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
