@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="The SDK of an embeddable HTML/CSS/JavaScript engine for modern UI development (Prebuilt binaries and libraries)"
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
 url="https://sciter.com/"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=(
     'gtk3' 'glu' 'webkit2gtk'
 )
