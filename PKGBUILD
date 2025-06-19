@@ -1,5 +1,5 @@
 pkgname=atar
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="The fastest and lightest bookmark manager CLI written in Rust"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ depends=('glibc')
 makedepends=('rust')
 
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/x71c9/$pkgname/tar.gz/refs/tags/v$pkgver")
-sha256sums=("30657e8ee188266939bf012dea74e339648235a7df62b04a2fbe9520feae24fd")
+sha256sums=("eca469cbbdaa2c2b714e2dcc3d506312eabdcdb91267a8c251ce501c9f5e7bfb")
 
 prepare() {
   cd "$pkgname-$pkgver"
