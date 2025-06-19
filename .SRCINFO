@@ -1,6 +1,6 @@
 pkgbase = python-praktikum
 	pkgdesc = Tools for the beginners' lab courses in physics at RWTH Aachen University
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://pypi.org/project/praktikum/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-praktikum
 	depends = python-scipy
 	depends = python-matplotlib
 	depends = python-uncertainties
-	source = https://files.pythonhosted.org/packages/source/p/praktikum/praktikum-2.7.0.tar.gz
-	sha512sums = 3eef43146dd2e4539191a267469960a8aa61913052d367afc25a67c9f3c7a484fce767b43f61cd49c1bc359eb3c544f0c9a88ad416ec09adf07e0408c2362624
+	source = https://files.pythonhosted.org/packages/source/p/praktikum/praktikum-2.7.1.tar.gz
+	sha512sums = 7d48f0bb51f30c6863409ae053f002028ce206033ac1433ecc2c1d5c7d67329192489080a141caf097824886f8b84943522382161c3d765c29b46717f578d8e8
 
 pkgname = python-praktikum
