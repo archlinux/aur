@@ -1,6 +1,6 @@
 pkgbase = rash-bin
 	pkgdesc = Declarative shell scripting using Rust native bindings
-	pkgver = 2.14.2
+	pkgver = 2.15.0
 	pkgrel = 1
 	url = https://rash-sh.github.io
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rash-bin
 	depends = gcc-libs
 	provides = rash
 	conflicts = rash
-	source = https://github.com/rash-sh/rash/releases/download/v2.14.2/rash-2.14.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = f97c664844050ab4b4d31b1dd13356240cd51ab6b8bf7e7b1ad1a58fd9fe62bf
+	source = https://github.com/rash-sh/rash/releases/download/v2.15.0/rash-2.15.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 9dcfa05e748c97afeae4ea76f4c46f82987517f14c0f52eb4f82c38b7d171e90
 
 pkgname = rash-bin
