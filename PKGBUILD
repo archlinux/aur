@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="supabase"
-pkgver=2.24.3
+pkgver=2.26.9
 pkgrel=1
 pkgdesc="CLI for Supabase, an open source Firebase alternative"
 arch=('aarch64' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('go')
 # checkdepends=('docker')
 _pkgsrc="cli-${pkgver}"
 source=("${pkgname}-${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('95e13e5aacbbff24421bac2287464a8fa021041a04a9f0a24addb1e47ebd5aebd6615ed13a430dca72aab9fd3776c104c3b31a3656802333b78ebcdf7904e55c')
+b2sums=('bbfa6404b3218c581b2da08f98ffed918b95c83aeea8c9d1a562448fc94f2d961d61c4a3bbda31e21570de2fcfde37767066bc85977e4adb8d2966c9cd1003fe')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
