@@ -1,12 +1,11 @@
-diff '--color=auto' --unified --recursive --text vrc-get-gui-v1.0.1/vrc-get-gui/Tauri.toml vrc-get-gui-v1.0.1-patched/vrc-get-gui/Tauri.toml
---- vrc-get-gui-v1.0.1/vrc-get-gui/Tauri.toml	2025-02-05 20:41:16.000000000 +0900
-+++ vrc-get-gui-v1.0.1-patched/vrc-get-gui/Tauri.toml	2025-02-06 17:13:51.843869407 +0900
+--- vrc-get-gui-v1.1.0/vrc-get-gui/Tauri.toml	2025-06-19 16:36:53.000000000 +0900
++++ vrc-get-gui-v1.1.0-patched/vrc-get-gui/Tauri.toml	2025-06-19 19:48:08.945667820 +0900
 @@ -34,8 +34,6 @@
  resources = []
  publisher = "anatawa12"
  
 -createUpdaterArtifacts = "v1Compatible"  # remove if ci # we do not generate updater artifacts in CI
 -
- [bundle.linux.deb]
- desktopTemplate = "alcom.desktop"
- 
+ [[bundle.fileAssociations]]
+ # note: for macOS we directory use info.plist for registering file association.
+ description = "ALCOM Project Template"
