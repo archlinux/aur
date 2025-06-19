@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20250523.43a191c3a
+pkgver=20250618.6bef3578f
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=(x86_64 armv7h aarch64)
@@ -37,6 +37,11 @@ prepare() {
 	rm -fr thirdparty/*
 	cp -a ../extract ../thirdparty-* thirdparty
 	rename thirdparty- '' thirdparty/*
+
+	# Should be in Arch mujs package.
+	mkdir thirdparty/mujs
+	cd thirdparty/mujs
+	curl -O https://cgit.ghostscript.com/cgi-bin/cgit.cgi/mujs.git/plain/regexp.h
 }
 
 build() {
