@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-import time
-import psutil
 import os
+import time
 import json
-from datetime import datetime
+import psutil
+from datetime import date
 from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
@@ -12,7 +12,6 @@ from rich.style import Style
 from rich.live import Live
 
 console = Console()
-DATA_FILE = os.path.expanduser("~/.smyte_data.json")
 
 BANNER = r"""
    ▄████████   ▄▄▄▄███▄▄▄▄   ▄██   ▄       ███        ▄████████ 
@@ -25,6 +24,8 @@ BANNER = r"""
  ▄████████▀   ▀█   ███   █▀   ▀█████▀     ▄████▀     ██████████ 
 """
 
+TRACK_FILE = os.path.expanduser("~/.smyte_usage.json")
+
 def format_bytes(size):
     for unit in ['B','KB','MB','GB','TB']:
         if size < 1024:
@@ -36,22 +37,26 @@ def get_data_usage():
     counters = psutil.net_io_counters()
     return counters.bytes_sent, counters.bytes_recv
 
-def load_or_reset_data():
-    today = datetime.now().strftime("%Y-%m-%d")
-    if os.path.exists(DATA_FILE):
-        with open(DATA_FILE, "r") as f:
-            data = json.load(f)
-        if data.get("date") != today:
-            # New day → reset
-            data = {"date": today, "sent": get_data_usage()[0], "recv": get_data_usage()[1]}
-            with open(DATA_FILE, "w") as f:
-                json.dump(data, f)
-    else:
-        # First run
-        data = {"date": today, "sent": get_data_usage()[0], "recv": get_data_usage()[1]}
-        with open(DATA_FILE, "w") as f:
-            json.dump(data, f)
-    return data["sent"], data["recv"]
+def load_usage_data():
+    if os.path.exists(TRACK_FILE):
+        with open(TRACK_FILE, "r") as f:
+            try:
+                data = json.load(f)
+                if data.get("date") != str(date.today()):
+                    raise Exception("New day")
+                return data
+            except:
+                pass
+
+    sent, recv = get_data_usage()
+    data = {
+        "date": str(date.today()),
+        "start_sent": sent,
+        "start_recv": recv
+    }
+    with open(TRACK_FILE, "w") as f:
+        json.dump(data, f)
+    return data
 
 def build_ui(upload, download):
     usage_text = Text()
@@ -67,15 +72,21 @@ def build_ui(upload, download):
         title="📶 Smyte - Data Usage Tracker",
         padding=(2, 10)
     )
+
     return full_panel
 
 def main():
-    base_sent, base_recv = load_or_reset_data()
     try:
+        usage_data = load_usage_data()
+        start_sent = usage_data["start_sent"]
+        start_recv = usage_data["start_recv"]
+
         with Live(console=console, refresh_per_second=1):
             while True:
                 curr_sent, curr_recv = get_data_usage()
-                panel = build_ui(curr_sent - base_sent, curr_recv - base_recv)
+                upload = max(0, curr_sent - start_sent)
+                download = max(0, curr_recv - start_recv)
+                panel = build_ui(upload, download)
                 console.clear()
                 console.print(panel)
                 time.sleep(1)
