@@ -1,6 +1,6 @@
 # Maintainer: PoDiax <pd@pdx.ovh>
 pkgname=7d2d-modlauncher-bin
-pkgver=5.3.0.0
+pkgver=5.4.0.0
 pkgrel=1
 pkgdesc="7 Days to Die Mod Launcher for Linux"
 arch=('x86_64')
