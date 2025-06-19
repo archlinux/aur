@@ -1,15 +1,15 @@
 # Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=gmlghd
-pkgver=1.4
-_ctkcommit=01bc54e
+pkgver=1.5
+_ctkcommit=7791114
 _foocgicommit=9575997
 pkgrel=1
 pkgdesc='The gemlog http daemon'
 arch=(x86_64 aarch64)
 url='https://git.sr.ht/~shtrophic/gmlghd'
 license=('AGPL-3.0-or-later')
-makedepends=(git meson)
+makedepends=(git meson scdoc linux-api-headers)
 depends=(
     glibc
     confuse
@@ -35,9 +35,9 @@ source=(
 	"$pkgname.service"
 )
 validpgpkeys=(10F1CC925057D456798EBF9C1B3EB6FE2D338B4A)
-sha256sums=('a1d5d95343abc42686ce9e67cda4ea7a1cc0d7b3542a298836f0b22ad5d1cd35'
+sha256sums=('166ddd36a4215280f01bf15b1a87d8ee0b2af6a08b8336157a6979e9ba4b01af'
             'SKIP'
-            '66fcfa7737b612382cb03985adbaab915b301fa4fe4bd5e42f77f2fe8befc501'
+            'f80656e2ee8e43515dcb82cef094f08761b2f4d63fc7e0146da457d51056368e'
             '8343f9e563ccfc33f3cc1e60e48580b56315d056e4f4592a7fb8efb4da169300'
             'a73c3d9a9798c307b70be4e764cb7023dd7a0ab4a21c906e72663a7cb45ebaf2'
             '99fe77ece238d533bba8e849c4b830d534e8ccc193cf9e291af257f60180823d'
@@ -55,6 +55,10 @@ prepare() {
 build() {
 	arch-meson "$pkgname-$pkgver" builddir
 	meson compile -C builddir
+}
+
+check() {
+	meson test -C builddir --print-errorlog
 }
 
 package() {
