@@ -3,13 +3,14 @@
 # Maintainer: Soramane <soramane32 at gmail dot com>
 
 pkgname='caelestia-cli-git'
-pkgver=r196.0ccf16d
+pkgver=r219.09aac14
 pkgrel=1
 pkgdesc='The main cli for the Caelestia dotfiles'
 arch=('any')
 url='https://github.com/caelestia-dots/cli'
 license=('GPL-3.0-only')
-depends=('python' 'python-pillow' 'python-materialyoucolor' 'libnotify' 'wayfreeze' 'swappy' 'grim' 'dart-sass' 'app2unit' 'wl-clipboard' 'slurp' 'wl-screenrec' 'glib2' 'libpulse' 'cliphist' 'fuzzel')
+depends=('caelestia-shell' 'python' 'python-pillow' 'python-materialyoucolor' 'libnotify' 'swappy' 'grim' 'dart-sass'
+         'app2unit' 'wl-clipboard' 'slurp' 'wl-screenrec' 'glib2' 'libpulse' 'cliphist' 'fuzzel')
 makedepends=('git' 'python-build' 'python-installer' 'python-hatch' 'python-hatch-vcs')
 provides=('caelestia-cli')
 conflicts=('caelestia-cli')
