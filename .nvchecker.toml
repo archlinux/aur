@@ -1,0 +1,4 @@
+[wakey]
+source = "git"
+git = "https://github.com/jonathanruiz/wakey.git"
+prefix = "v"
