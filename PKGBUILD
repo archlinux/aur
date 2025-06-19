@@ -33,8 +33,7 @@ prepare() {
   cd "${srcdir}/sanoid-${pkgver}"
   sed -i 's|/usr/sbin|/usr/bin|g' \
     "packages/debian/sanoid.timer" \
-    "packages/debian/sanoid.service" \
-    "packages/debian/sanoid-prune.service"
+    "packages/debian/sanoid.service"
 }
 
 package() {
@@ -56,5 +55,4 @@ package() {
   # systemd
   install -D -m 644 "packages/debian/sanoid.timer" "${pkgdir}/usr/lib/systemd/system/sanoid.timer"
   install -D -m 644 "packages/debian/sanoid.service" "${pkgdir}/usr/lib/systemd/system/sanoid.service"
-  install -D -m 644 "packages/debian/sanoid-prune.service" "${pkgdir}/usr/lib/systemd/system/sanoid-prune.service"
 }
