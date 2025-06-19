@@ -1,0 +1,14 @@
+pkgbase = smyte
+	pkgdesc = A ricer-style bandwidth/network monitor. Run it using 'sy'.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/smyte
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-rich
+	depends = python-psutil
+	source = smyte.py
+	sha256sums = SKIP
+
+pkgname = smyte
