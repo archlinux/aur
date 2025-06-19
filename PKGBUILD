@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-machxo2-nightly
-pkgver=20250618_nextpnr_0.8_31_g5275c14a
+pkgver=20250619_nextpnr_0.8_34_g311a1a71
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - for machxo2"
@@ -26,7 +26,7 @@ conflicts=(
 replaces=()
 provides=("nextpnr-machxo2=$(cut -d _ -f 3 <<< "${pkgver}")")
 source=(
-	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=5275c14a"
+	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=311a1a71"
 )
 sha256sums=(
 	"SKIP"
