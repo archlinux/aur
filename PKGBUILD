@@ -2,7 +2,7 @@
 
 pkgname=audirvana-origin
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Audirvana Origin audio player"
 arch=('x86_64')
 url="https://audirvana.com/"
