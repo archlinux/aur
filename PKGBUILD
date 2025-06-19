@@ -5,7 +5,7 @@
 pkgname=mupdf-git
 _pkgname=mupdf
 pkgver=20250618.6bef3578f
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=(x86_64 armv7h aarch64)
 url=https://mupdf.com/
@@ -17,11 +17,13 @@ source=(git+https://github.com/ArtifexSoftware/mupdf.git
         git+https://github.com/ArtifexSoftware/extract.git
         git+https://github.com/ArtifexSoftware/thirdparty-freeglut.git
         git+https://github.com/ArtifexSoftware/thirdparty-lcms2.git#branch=lcms2mt
+	https://cgit.ghostscript.com/cgi-bin/cgit.cgi/mujs.git/plain/regexp.h
         desktop)
 sha256sums=(SKIP
             SKIP
             SKIP
             SKIP
+            d8db1f6daadf0ab92a806d1e5f2ddc2289767f18cd862b8978bae6a19b82ea0a
             ccff66979249bd4ab4ba8918660f194eb90eb0ae231b16e36a6cecdcf471883f)
 
 conflicts=(${_pkgname}{,-gl,-tools})
@@ -38,10 +40,9 @@ prepare() {
 	cp -a ../extract ../thirdparty-* thirdparty
 	rename thirdparty- '' thirdparty/*
 
-	# Should be in Arch mujs package.
+	# Should be in mujs package.
 	mkdir thirdparty/mujs
-	cd thirdparty/mujs
-	curl -O https://cgit.ghostscript.com/cgi-bin/cgit.cgi/mujs.git/plain/regexp.h
+	cp ../regexp.h thirdparty/mujs
 }
 
 build() {
