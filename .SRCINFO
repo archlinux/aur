@@ -1,6 +1,6 @@
 pkgbase = mock
 	pkgdesc = A simple chroot build environment manager for building RPMs
-	pkgver = 6.2
+	pkgver = 6.3
 	pkgrel = 1.1
 	url = https://github.com/rpm-software-management/mock
 	install = mock.install
@@ -27,10 +27,10 @@ pkgbase = mock
 	backup = etc/mock/logging.ini
 	backup = etc/mock/hermetic-build.cfg
 	backup = etc/mock/site-defaults.cfg
-	source = https://github.com/rpm-software-management/mock/archive/mock-6.2-1.tar.gz
+	source = https://github.com/rpm-software-management/mock/archive/mock-6.3-1.tar.gz
 	source = mock.sysusers
 	source = mock.tmpfiles
-	sha256sums = 6dcef0c0def89b82f54a18ee0e898e037f8d9571d9c4d1ad36404a10e5262a60
+	sha256sums = eb9a7bf809d94a2c6b3b1b300c69e4dab18328176047166cb510951732622ace
 	sha256sums = f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651
 	sha256sums = a32ef4b3a19490280d3e8fcdebe9dd3348636a97e214850ce6cfc6bffa56a5d3
 
