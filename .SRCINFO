@@ -1,7 +1,7 @@
 pkgbase = hotspeech
 	pkgdesc = Voice recording and transcription tool with hotkey support and web interface
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atopheim/hotspeech
 	install = hotspeech.install
 	arch = any
