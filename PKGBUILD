@@ -1,6 +1,6 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 pkgname=zmusic-git
-pkgver=1.1.14.r5.g4cc05f7
+pkgver=1.1.14.r15.g323d29e
 pkgrel=1
 pkgdesc="GZDoom's music system as a standalone library (git version)"
 arch=('x86_64' 'aarch64')
