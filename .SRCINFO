@@ -1,6 +1,6 @@
 pkgbase = ruby-excon
 	pkgdesc = Usable, fast, simple HTTP 1.1 for Ruby
-	pkgver = 1.2.5
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/excon/excon
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = ruby-excon
 	makedepends = git
 	makedepends = rubygems
 	makedepends = ruby-rdoc
-	depends = ruby
+	depends = ruby-logger
 	options = !emptydirs
-	source = ruby-excon::git+https://github.com/excon/excon#tag=v1.2.5
-	b2sums = a447df66dba39cca6d28078325994aa7bd476d98ec2833a259b8cd155e4fb89e069f1b62129135b360b003af636b3f7c4e3ca87b1078432d5741e20814615acb
+	source = ruby-excon::git+https://github.com/excon/excon#tag=v1.2.7
+	b2sums = 6e85b4d8137500be05bc7d59841937c1c7e6bb1b1802df1613528de1d7aa1aabf2b6d195f4bd7bb3ea091787254af73a861649d81394e73d95582102153ba92f
 
 pkgname = ruby-excon

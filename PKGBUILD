@@ -5,17 +5,17 @@
 
 pkgname=ruby-excon
 _gemname="${pkgname#ruby-}"
-pkgver=1.2.5
+pkgver=1.2.7
 pkgrel=1
 pkgdesc='Usable, fast, simple HTTP 1.1 for Ruby'
 arch=('any')
 url='https://github.com/excon/excon'
 license=('MIT')
-depends=('ruby')
+depends=('ruby-logger')
 makedepends=('git' 'rubygems' 'ruby-rdoc')
 options=('!emptydirs')
 source=("$pkgname::git+$url#tag=v$pkgver")
-b2sums=('a447df66dba39cca6d28078325994aa7bd476d98ec2833a259b8cd155e4fb89e069f1b62129135b360b003af636b3f7c4e3ca87b1078432d5741e20814615acb')
+b2sums=('6e85b4d8137500be05bc7d59841937c1c7e6bb1b1802df1613528de1d7aa1aabf2b6d195f4bd7bb3ea091787254af73a861649d81394e73d95582102153ba92f')
 
 pkgver() {
   cd "$pkgname"
