@@ -9,7 +9,7 @@ pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64')
 url='https://github.com/caelestia-dots/shell'
 license=('GPL-3.0-only')
-depends=('caelestia-cli' 'quickshell-git>=0.1.0.r5.gea0387f-1' 'ddcutil' 'brightnessctl' 'app2unit' 'cava' 'networkmanager' 'bluez-utils'
+depends=('caelestia-cli' 'quickshell-git' 'ddcutil' 'brightnessctl' 'app2unit' 'cava' 'networkmanager' 'bluez-utils'
          'lm_sensors' 'fish' 'curl' 'aubio' 'libpipewire' 'glibc' 'qt6-declarative' 'gcc-libs' 'ttf-material-symbols-variable' 'power-profiles-daemon'
          'ttf-jetbrains-mono-nerd' 'grim' 'swappy')
 makedepends=('git' 'gcc')
