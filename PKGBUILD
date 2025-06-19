@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  install -Dm755 build/Kontainer "$pkgdir/usr/bin/Kontainer"
-  install -Dm644 "$srcdir/kontainer/org.kde.Kontainer.desktop" \
+  install -Dm755 build/kontainer "$pkgdir/usr/bin/kontainer"
+  install -Dm644 "$srcdir/kontainer/org.kde.kontainer.desktop" \
     "$pkgdir/usr/share/applications/kontainer.desktop"
 }
