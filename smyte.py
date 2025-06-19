@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-import time
-import psutil
 import os
+import time
 import json
+import psutil
 from datetime import datetime
 from rich.console import Console
 from rich.panel import Panel
@@ -14,7 +14,7 @@ from rich.live import Live
 console = Console()
 
 CONFIG_DIR = os.path.expanduser("~/.config/smyte")
-DATA_FILE = os.path.join(CONFIG_DIR, "usage.json")
+USAGE_FILE = os.path.join(CONFIG_DIR, "usage.json")
 
 BANNER = r"""
    ▄████████   ▄▄▄▄███▄▄▄▄   ▄██   ▄       ███        ▄████████ 
@@ -34,57 +34,57 @@ def format_bytes(size):
         size /= 1024
     return f"{size:.2f} PB"
 
-def load_start_data():
-    if not os.path.exists(DATA_FILE):
-        return save_today_baseline()
-    
-    with open(DATA_FILE, "r") as f:
-        data = json.load(f)
-    
-    if data.get("date") != datetime.now().strftime("%Y-%m-%d"):
-        return save_today_baseline()
-    
+def save_today_baseline():
+    curr = psutil.net_io_counters()
+    data = {
+        "date": datetime.now().strftime("%Y-%m-%d"),
+        "start_sent": curr.bytes_sent,
+        "start_recv": curr.bytes_recv
+    }
+    os.makedirs(CONFIG_DIR, exist_ok=True)
+    with open(USAGE_FILE, "w") as f:
+        json.dump(data, f)
     return data["start_sent"], data["start_recv"]
 
-def save_today_baseline():
-    sent = psutil.net_io_counters().bytes_sent
-    recv = psutil.net_io_counters().bytes_recv
-    os.makedirs(CONFIG_DIR, exist_ok=True)
-    with open(DATA_FILE, "w") as f:
-        json.dump({
-            "date": datetime.now().strftime("%Y-%m-%d"),
-            "start_sent": sent,
-            "start_recv": recv
-        }, f)
-    return sent, recv
+def load_start_data():
+    if not os.path.exists(USAGE_FILE):
+        return save_today_baseline()
+    
+    with open(USAGE_FILE, "r") as f:
+        try:
+            data = json.load(f)
+        except json.JSONDecodeError:
+            return save_today_baseline()
 
-def get_data_usage(start_sent, start_recv):
-    current = psutil.net_io_counters()
-    upload = max(0, current.bytes_sent - start_sent)
-    download = max(0, current.bytes_recv - start_recv)
-    return upload, download
+    today = datetime.now().strftime("%Y-%m-%d")
+    if data.get("date") != today:
+        return save_today_baseline()
+
+    return data.get("start_sent", 0), data.get("start_recv", 0)
 
 def build_ui(upload, download):
     usage_text = Text()
     usage_text.append(f"📤 Uploaded:   {format_bytes(upload)}\n", style=Style(color="cyan", bold=True))
     usage_text.append(f"📥 Downloaded: {format_bytes(download)}\n", style=Style(color="green", bold=True))
 
-    full_panel = Panel(
+    panel = Panel(
         Align.center(Text(BANNER, style="bold magenta") + Text("\n\n") + usage_text, vertical="middle"),
         border_style="bold magenta",
         title="📶 Smyte - Data Usage Tracker",
         padding=(2, 10)
     )
-
-    return full_panel
+    return panel
 
 def main():
     start_sent, start_recv = load_start_data()
+
     try:
         with Live(console=console, refresh_per_second=1):
             while True:
-                upload, download = get_data_usage(start_sent, start_recv)
-                panel = build_ui(upload, download)
+                counters = psutil.net_io_counters()
+                uploaded = counters.bytes_sent - start_sent
+                downloaded = counters.bytes_recv - start_recv
+                panel = build_ui(uploaded, downloaded)
                 console.clear()
                 console.print(panel)
                 time.sleep(1)
