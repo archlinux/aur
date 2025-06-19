@@ -3,14 +3,14 @@
 _basename="dcmtk"
 _so="18"
 pkgbase="${_basename}${_so}"
-pkgname=("${pkgbase}"{,-docs})
+pkgname=("${pkgbase}"{,-docs,-libs})
 pkgver=3.6.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of libraries and applications implementing large parts the DICOM standard (so-version ${_so})"
 arch=('i686' 'x86_64')
 url="https://dicom.offis.de/dcmtk"
 license=('BSD-3-Clause')
-makedepends=('cmake>=3' 'doxygen' 'libpng' 'libtiff' 'libxml2' 'openjpeg2'
+makedepends=('cmake>=3' 'doxygen' 'libpng' 'libtiff' 'libxml2' # 'openjpeg2'
              'openssl' 'zlib')
 _pkgsrc="${_basename}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://dicom.offis.de/download/${_basename}/${_basename}${pkgver//./}/${_pkgsrc}.tar.gz")
@@ -26,7 +26,7 @@ prepare() {
 }
 
 build() {
-  export CXXFLAGS+=" -Wno-error=template-body"
+  export CXXFLAGS+=" -Wno-template-body"
   local cmake_options=(
     -G 'Unix Makefiles'
     -B "${_pkgsrc}/build"
@@ -49,16 +49,8 @@ build() {
 }
 
 package_dcmtk18() {
-  depends=('gcc-libs' 'glibc' 'libpng' 'libtiff' 'libxml2' 'openjpeg2'
-           'openssl' 'zlib')
-  provides=('libcmr.so' 'libdcmdata.so' 'libdcmdsig.so' 'libdcmect.so'
-            'libdcmfg.so' 'libdcmimage.so' 'libdcmimgle.so' 'libdcmiod.so'
-            'libdcmjpeg.so' 'libdcmjpls.so' 'libdcmnet.so' 'libdcmpmap.so'
-            'libdcmpstat.so' 'libdcmqrdb.so' 'libdcmrt.so' 'libdcmseg.so'
-            'libdcmsr.so' 'libdcmtkcharls.so' 'libdcmtls.so' 'libdcmtract.so'
-            'libdcmwlm.so' 'libdcmxml.so' 'libi2d.so' 'libijg12.so'
-            'libijg16.so' 'libijg8.so' 'liboficonv.so' 'liboflog.so'
-            'libofstd.so')
+  depends=("${pkgbase}-libs=${pkgver}-${pkgrel}" 'gcc-libs' 'glibc' 'libxml2'
+           'zlib')
 
   cd "${srcdir}"
   DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
@@ -69,17 +61,14 @@ package_dcmtk18() {
   cd "${pkgdir}"
   find . -type f -empty -exec rm -v {} \;
 
-  cd "${pkgdir}/usr/bin"
-  for file in *; do
+  cd "usr"
+  find "lib" -type f,l -name 'lib*.so*' -delete
+
+  for file in bin/*; do
     mv "${file}" "${file}${_so}"
   done
 
-  cd "${pkgdir}/usr/lib/${pkgbase}"
-  for lib in *.so.*; do
-    ln -sf "/usr/lib/${pkgbase}/${lib}" "${pkgdir}/usr/lib/${lib}"
-  done
-
-  cd "${pkgdir}/usr/share"
+  cd "share"
   rm -rf "doc"
 
   cd "man/man1"
@@ -103,4 +92,30 @@ package_dcmtk18-docs() {
 
   cd "share"
   rm -rf "${pkgbase}" "licenses" "man"
+}
+
+package_dcmtk18-libs() {
+  pkgdesc+=" (runtime libraries)"
+  depends=('gcc-libs' 'glibc' 'libpng' 'libtiff' 'libxml2' # 'openjpeg2'
+           'openssl' 'zlib')
+  provides=('libcmr.so' 'libdcmdata.so' 'libdcmdsig.so' 'libdcmect.so'
+            'libdcmfg.so' 'libdcmimage.so' 'libdcmimgle.so' 'libdcmiod.so'
+            'libdcmjpeg.so' 'libdcmjpls.so' 'libdcmnet.so' 'libdcmpmap.so'
+            'libdcmpstat.so' 'libdcmqrdb.so' 'libdcmrt.so' 'libdcmseg.so'
+            'libdcmsr.so' 'libdcmtkcharls.so' 'libdcmtls.so' 'libdcmtract.so'
+            'libdcmwlm.so' 'libdcmxml.so' 'libi2d.so' 'libijg12.so'
+            'libijg16.so' 'libijg8.so' 'liboficonv.so' 'liboflog.so'
+            'libofstd.so')
+  options+=('!emptydirs')
+
+  cd "${srcdir}"
+  DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
+
+  cd "${pkgdir}"
+  find . -type f,l ! -name 'lib*.so*' -delete
+
+  cd "usr/lib/${pkgbase}"
+  for lib in lib*.so.*; do
+    ln -sf "/usr/lib/${pkgbase}/${lib}" "${pkgdir}/usr/lib/${lib}"
+  done
 }

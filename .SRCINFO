@@ -1,7 +1,7 @@
 pkgbase = dcmtk18
 	pkgdesc = A collection of libraries and applications implementing large parts the DICOM standard (so-version 18)
 	pkgver = 3.6.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dicom.offis.de/dcmtk
 	arch = i686
 	arch = x86_64
@@ -11,19 +11,29 @@ pkgbase = dcmtk18
 	makedepends = libpng
 	makedepends = libtiff
 	makedepends = libxml2
-	makedepends = openjpeg2
 	makedepends = openssl
 	makedepends = zlib
 	source = dcmtk-3.6.8.tar.gz::https://dicom.offis.de/download/dcmtk/dcmtk368/dcmtk-3.6.8.tar.gz
 	sha256sums = 232076655503138debf2f624109f1799e539354f186ce4e04b27cf82a9d8720f
 
 pkgname = dcmtk18
+	depends = dcmtk18-libs=3.6.8-3
+	depends = gcc-libs
+	depends = glibc
+	depends = libxml2
+	depends = zlib
+
+pkgname = dcmtk18-docs
+	pkgdesc = A collection of libraries and applications implementing large parts the DICOM standard (so-version 18) (documentation)
+	arch = any
+
+pkgname = dcmtk18-libs
+	pkgdesc = A collection of libraries and applications implementing large parts the DICOM standard (so-version 18) (runtime libraries)
 	depends = gcc-libs
 	depends = glibc
 	depends = libpng
 	depends = libtiff
 	depends = libxml2
-	depends = openjpeg2
 	depends = openssl
 	depends = zlib
 	provides = libcmr.so
@@ -55,7 +65,4 @@ pkgname = dcmtk18
 	provides = liboficonv.so
 	provides = liboflog.so
 	provides = libofstd.so
-
-pkgname = dcmtk18-docs
-	pkgdesc = A collection of libraries and applications implementing large parts the DICOM standard (so-version 18) (documentation)
-	arch = any
+	options = !emptydirs
