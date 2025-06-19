@@ -1,7 +1,21 @@
 # Maintainer: David Campbell <dcampbell24@gmail.com>
 
+# Zero-Clause BSD
+# ===============
+
+# Permission to use, copy, modify, and/or distribute this software for
+# any purpose with or without fee is hereby granted.
+
+# THE SOFTWARE IS PROVIDED “AS IS” AND THE AUTHOR DISCLAIMS ALL
+# WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
+# OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE
+# FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY
+# DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN
+# AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
+# OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
 pkgname=hnefatafl-copenhagen
-pkgver=1.2.1
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client."
 url="https://hnefatafl.org"
@@ -11,13 +25,13 @@ provides=("hnefatafl-copenhagen")
 conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib")
 makedepends=("base-devel" "clang" "llvm" "mold" "pandoc" "rustup")
-source=("https://github.com/dcampbell24/hnefatafl-copenhagen/archive/refs/tags/v1.2.1.tar.gz")
-sha256sums=("224f05477fe1c44423bf250f49cbfd0481b72fa91b6e3e36bb1ebc065c78d0ec")
+source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v2.0.3.tar.gz")
+sha256sums=("c2e6d1edaa9e4b85cee4c1406e95e20d0d1655bc3d766295dc2821aa34eca20c")
 
 build() {
-    tar -xvzf v1.2.1.tar.gz
+    tar -xvzf v2.0.3.tar.gz
     cd "$pkgname-$pkgver"
-    cargo build --release --bin hnefatafl-client --no-default-features --features client,sound,timer,www
+    cargo build --release --example hnefatafl-client --no-default-features
 
     pandoc\
         --variable=title:hnefatafl-client\
@@ -31,7 +45,7 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm755 "target/release/hnefatafl-client" -t "$pkgdir/usr/bin"
+    install -Dm755 "target/release/examples/hnefatafl-client" -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     install -Dm644 "icons/king_16x16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/org.hnefatafl.hnefatafl_client.png"
