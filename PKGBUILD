@@ -3,7 +3,7 @@
 
 _gemname=version_gem
 pkgname=ruby-$_gemname
-pkgver=1.1.6
+pkgver=1.1.8
 pkgrel=1
 pkgdesc='Enhance that VERSION! Sugar for boring Version modules.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('ruby')
 makedepends=('ruby-rdoc')
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('b989cf19880ee18907083ba9bb6fdbe40826bd698fbd7cdfab7345a2550bf203')
+sha256sums=('a964767ecbe36551b9ff2e59099548c27569f2f7f94bdb09f609d76393a8e008')
 options=(!emptydirs)
 
 package() {
