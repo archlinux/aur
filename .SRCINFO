@@ -1,0 +1,14 @@
+pkgbase = perl-carp-object
+	pkgdesc = a replacement for Carp or Carp::Clan, object-oriented
+	pkgver = 1.02
+	pkgrel = 1
+	url = https://metacpan.org/pod/Carp::Object
+	arch = any
+	license = Artistic-2.0
+	depends = perl-clone
+	depends = perl-devel-stacktrace
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DA/DAMI/Carp-Object-1.02.tar.gz
+	sha512sums = 2ca7f1769ecca8ca7244ba17f670f50cbf403ebbe9328e33ccdc48335898ebb5afcaf69c5eac991f218ade8c34818d868dd93b395e812b471059c2e481b90b0f
+
+pkgname = perl-carp-object
