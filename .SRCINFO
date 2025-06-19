@@ -1,0 +1,25 @@
+pkgbase = python-bitwarden-sdk
+	pkgdesc = Python client for the Bitwarden SDK
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/bitwarden/sdk-sm
+	arch = any
+	license = custom:Bitwarden-SDK
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-maturin
+	makedepends = rust
+	makedepends = cargo
+	depends = python
+	depends = python-requests
+	options = !lto
+	source = https://files.pythonhosted.org/packages/dd/03/11934ae9d668283895286872a7af3de25d324ec9ac86da5a56ac9dc48544/bitwarden_sdk-1.0.0.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/bitwarden/sdk-sm/tags/python-v1.0.0/LICENSE
+	source = fix-license.patch
+	sha256sums = 846bc84ebc29ba326211e6552e628cd7d000a986ef35552ffda9d10bde913e21
+	sha256sums = bdc13b9edca6f4b4241e5a3091bf1f99c2bb1dd925f30db2bbeebf32a01dc10f
+	sha256sums = e8a56ca2d5b5f6c0646ea36457f36deeefabc70669c5853dbd6058242dd21113
+
+pkgname = python-bitwarden-sdk

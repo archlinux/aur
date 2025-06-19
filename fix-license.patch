@@ -1,0 +1,12 @@
+--- pyproject.toml 2025-06-19 10:57:25.622324204 +0200
++++ pyproject.toml 2025-06-19 10:57:45.475361311 +0200
+@@ -23,7 +23,8 @@
+ bindings = "pyo3"
+ compatibility = "2_28"
+ include = [
+-  { path = "bitwarden_sdk/*.py", format = ["sdist", "wheel"] }
++  { path = "bitwarden_sdk/*.py", format = ["sdist", "wheel"] },
++  { path = "LICENSE", format = ["sdist", "wheel"] }
+ ]
+ python-packages = ["bitwarden_sdk"]
+ manifest-path = "crates/bitwarden-py/Cargo.toml"
