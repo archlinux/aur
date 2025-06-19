@@ -41,3 +41,4 @@ pkgname = cursor-electron-latest
 	depends = hicolor-icon-theme
 	depends = libxkbfile
 	depends = electron
+	replaces = cursor-extracted

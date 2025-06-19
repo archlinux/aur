@@ -11,7 +11,7 @@ url="https://www.cursor.com"
 license=('LicenseRef-Cursor')
 _electron=electron34 # for --printsrcinfo
 depends=('ripgrep' 'xdg-utils' # electron* is added at package()
-		'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
+  'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 makedepends=('desktop-file-utils')
 optdepends=('code: use extensions at code-oss ?')
 provides=("${_name}"{,-bin})
@@ -53,18 +53,19 @@ prepare() { # Create cp -r friendly layout with FHS
 }
 _desc="AI Code Editor on "
 package_cursor-electron-latest(){
-	depends+=(electron)
-	pkgdesc="${_desc}latest stable electron"
-	cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
-	install -Dm755 run.sh "${pkgdir}/usr/bin/cursor"
+  replaces=(cursor-extracted) # workaround
+  depends+=(electron)
+  pkgdesc="${_desc}latest stable electron"
+  cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
+  install -Dm755 run.sh "${pkgdir}/usr/bin/cursor"
 }
 
 package_cursor-electron(){
-	_electron=electron$(rg --no-messages -N -o -r '$1' '"electron": *"[^\d]*(\d+)' squashfs-root/usr/lib/cursor/package.json)
-	echo $_electron
-	depends+=($_electron)
-	pkgdesc="${_desc}system electron"
-	cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
-	sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
-	install -Dm755 run-safe.sh "${pkgdir}/usr/bin/cursor"
+  _electron=electron$(rg --no-messages -N -o -r '$1' '"electron": *"[^\d]*(\d+)' squashfs-root/usr/lib/cursor/package.json)
+  echo $_electron
+  depends+=($_electron)
+  pkgdesc="${_desc}system electron"
+  cp -r --reflink=auto squashfs-root/usr "${pkgdir}/usr"
+  sed "s|name=electron|name=${_electron}|" run.sh > run-safe.sh
+  install -Dm755 run-safe.sh "${pkgdir}/usr/bin/cursor"
 }
