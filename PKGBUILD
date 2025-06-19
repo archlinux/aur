@@ -4,7 +4,7 @@
 
 pkgname="paperless-ngx-venv"
 _pkgname="paperless-ngx"
-pkgver=2.16.3
+pkgver=2.17.1
 pkgrel=1
 pkgdesc="paperless-ngx: scan, index and archive all your physical documents"
 url="https://docs.paperless-ngx.com/"
@@ -53,7 +53,7 @@ source=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkg
         "paperless-scheduler.service"
         "paperless-task-queue.service"
 	"paperless-webserver.service")
-b2sums=('58f9bd40ad85fc04a5dfb6fa540c75d2cd8276f828dd144643189f5d2d1ea65ea2524369695bf1228a13155ec0388601b97fa85ab15308ffb8cbca1e74ac94e5'
+b2sums=('b96aa9ca4fd8aba37dbd0d16b35891e792dac3b2731befec536ef3cd7724275fbb760ff5815abea876a938eafbd7293d10cd9675a48b78bba26d09bba870e9e5'
         'a182b37e6d885094e41ff90b82f4685c1a1ae20f0b03cf1478b072e3161875df7a1ea3d2410a0a5791df5fd911430d216bf1be67a996a943e74f7d65df98f76d'
         '747a8b8774fa48073e58b9b3ba55b28ca505b193cf180467b1bcbbe3a2c44931a198f355163b377219299c8b43f0a74550e241f835d9941c594fe318ae5235cd'
         '586ad775e26aef216716c33d8951e00044a7f6866167d27dceab39d51b4fd46527693dfe4e085dc20d2e9193679122ad2b9ac8a1c03a98df747af15ecca24ca2'
