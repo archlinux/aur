@@ -4,12 +4,12 @@ pkgbase=tensorrt
 pkgname=(
     'tensorrt'
     'python-tensorrt')
-pkgver=10.11.0.33
+pkgver=10.12.0.36
 _cudaver=12.9
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
 _onnx_graphsurgeon_ver=0.5.8
-_polygraphy_ver=0.49.22
+_polygraphy_ver=0.49.24
 _tensorflow_quantization_ver=0.2.0
 pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
@@ -28,7 +28,7 @@ makedepends=(
     'python-setuptools'
     'python-wheel')
 source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/${pkgver%.*}/tars/TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.tar.gz"
-        "git+https://github.com/NVIDIA/TensorRT.git#tag=v$(sed -E 's/\.[0-9]+\.[0-9]+$//' <<< "$pkgver")"
+        "git+https://github.com/NVIDIA/TensorRT.git#tag=v${pkgver%.*}"
         'protobuf-protocolbuffers'::'git+https://github.com/protocolbuffers/protobuf.git'
         'cub-nvlabs'::'git+https://github.com/NVlabs/cub.git'
         'git+https://github.com/onnx/onnx-tensorrt.git'
@@ -38,11 +38,10 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         "https://github.com/google/protobuf/releases/download/v${_protobuf_ver}/protobuf-cpp-${_protobuf_ver}.tar.gz"
         '010-tensorrt-use-local-protobuf-sources.patch'
         '020-tensorrt-fix-python.patch'
-        '030-tensorrt-fix-gpu-archs-list.patch'
         'TensorRT-LICENSE-AGREEMENT.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('7d9bcccf1b92d38c0f91bd47ad1fd516f2cfb71f655e70ed8f182eaa9842a617'
-            '0c8efec753459a5a949dc9aba6109959b4c18ce63b5799d5c3f0a47ec60c1cb3'
+sha256sums=('26ac05cc6ad7a5642f9b7431174aa6ce36ba3fafc3fb606afc587bce32ef110d'
+            '271e1daed294e78ba736c09e86fdd14e552acc409857467e5abc087c95e200f8'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -51,8 +50,7 @@ sha256sums=('7d9bcccf1b92d38c0f91bd47ad1fd516f2cfb71f655e70ed8f182eaa9842a617'
             'SKIP'
             'dddd73664306d7d895a95e1cf18925b31b52785e468727e4635b45edae5166f9'
             'ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f'
-            'dd82dc516a4537dab53b08b2a0cec6ea9616351f7db941f5e28cbb53548b73e6'
-            'a2673c754f0f667ca5687998ddc87ba2a6b24863b87ce6aea64c3fb68b011456'
+            '4cef8fe3b326f44fc5413ddb85ae92db77bb1a303e4ed5a6d1c94396cc163788'
             '64907f271b91655a28f3c9f3555a3c645b23d878f41063192a9d2a67f752205a')
 
 prepare() {
@@ -82,7 +80,6 @@ prepare() {
 
     patch -d TensorRT -Np1 -i "${srcdir}/010-tensorrt-use-local-protobuf-sources.patch"
     patch -d TensorRT -Np1 -i "${srcdir}/020-tensorrt-fix-python.patch"
-    patch -d TensorRT -Np1 -i "${srcdir}/030-tensorrt-fix-gpu-archs-list.patch"
 }
 
 build() {
