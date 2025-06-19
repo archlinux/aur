@@ -14,6 +14,7 @@ sha256sums=('SKIP')
 
 build() {
 	# build for linux
+        source /etc/profile
 	cd Kanji-Dojo
 	./gradlew core:packageDistributionForCurrentOS
 }
