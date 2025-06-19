@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f21b8ad4106659a6a957b7f35dd74f19f032deb5e064ad5ed4818297af271bc1')
+sha256sums=('94720efabca2359c472b5643b151f6ec566a5bf51497e02daf3ecda32032b98a')
 
 build() {
   cd "$pkgname-$pkgver"
