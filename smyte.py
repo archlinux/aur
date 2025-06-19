@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-import os
 import time
-import json
 import psutil
-from datetime import date
+import os
+import json
+from datetime import datetime
 from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
@@ -12,6 +12,9 @@ from rich.style import Style
 from rich.live import Live
 
 console = Console()
+
+CONFIG_DIR = os.path.expanduser("~/.config/smyte")
+DATA_FILE = os.path.join(CONFIG_DIR, "usage.json")
 
 BANNER = r"""
    ▄████████   ▄▄▄▄███▄▄▄▄   ▄██   ▄       ███        ▄████████ 
@@ -24,8 +27,6 @@ BANNER = r"""
  ▄████████▀   ▀█   ███   █▀   ▀█████▀     ▄████▀     ██████████ 
 """
 
-TRACK_FILE = os.path.expanduser("~/.smyte_usage.json")
-
 def format_bytes(size):
     for unit in ['B','KB','MB','GB','TB']:
         if size < 1024:
@@ -33,30 +34,35 @@ def format_bytes(size):
         size /= 1024
     return f"{size:.2f} PB"
 
-def get_data_usage():
-    counters = psutil.net_io_counters()
-    return counters.bytes_sent, counters.bytes_recv
+def load_start_data():
+    if not os.path.exists(DATA_FILE):
+        return save_today_baseline()
+    
+    with open(DATA_FILE, "r") as f:
+        data = json.load(f)
+    
+    if data.get("date") != datetime.now().strftime("%Y-%m-%d"):
+        return save_today_baseline()
+    
+    return data["start_sent"], data["start_recv"]
 
-def load_usage_data():
-    if os.path.exists(TRACK_FILE):
-        with open(TRACK_FILE, "r") as f:
-            try:
-                data = json.load(f)
-                if data.get("date") != str(date.today()):
-                    raise Exception("New day")
-                return data
-            except:
-                pass
+def save_today_baseline():
+    sent = psutil.net_io_counters().bytes_sent
+    recv = psutil.net_io_counters().bytes_recv
+    os.makedirs(CONFIG_DIR, exist_ok=True)
+    with open(DATA_FILE, "w") as f:
+        json.dump({
+            "date": datetime.now().strftime("%Y-%m-%d"),
+            "start_sent": sent,
+            "start_recv": recv
+        }, f)
+    return sent, recv
 
-    sent, recv = get_data_usage()
-    data = {
-        "date": str(date.today()),
-        "start_sent": sent,
-        "start_recv": recv
-    }
-    with open(TRACK_FILE, "w") as f:
-        json.dump(data, f)
-    return data
+def get_data_usage(start_sent, start_recv):
+    current = psutil.net_io_counters()
+    upload = max(0, current.bytes_sent - start_sent)
+    download = max(0, current.bytes_recv - start_recv)
+    return upload, download
 
 def build_ui(upload, download):
     usage_text = Text()
@@ -64,10 +70,7 @@ def build_ui(upload, download):
     usage_text.append(f"📥 Downloaded: {format_bytes(download)}\n", style=Style(color="green", bold=True))
 
     full_panel = Panel(
-        Align.center(
-            Text(BANNER, style="bold magenta") + Text("\n\n") + usage_text,
-            vertical="middle"
-        ),
+        Align.center(Text(BANNER, style="bold magenta") + Text("\n\n") + usage_text, vertical="middle"),
         border_style="bold magenta",
         title="📶 Smyte - Data Usage Tracker",
         padding=(2, 10)
@@ -76,40 +79,17 @@ def build_ui(upload, download):
     return full_panel
 
 def main():
+    start_sent, start_recv = load_start_data()
     try:
-        usage_data = load_usage_data()
-        start_sent = usage_data["start_sent"]
-        start_recv = usage_data["start_recv"]
-
         with Live(console=console, refresh_per_second=1):
             while True:
-                curr_sent, curr_recv = get_data_usage()
-
-                # DEBUG: Print baseline vs current
-                console.log(f"start_sent: {start_sent}, curr_sent: {curr_sent}")
-                console.log(f"start_recv: {start_recv}, curr_recv: {curr_recv}")
-
-                # Auto reset if current is less than stored
-                if curr_sent < start_sent or curr_recv < start_recv:
-                    start_sent = curr_sent
-                    start_recv = curr_recv
-                    with open(TRACK_FILE, "w") as f:
-                        json.dump({
-                            "date": str(date.today()),
-                            "start_sent": start_sent,
-                            "start_recv": start_recv
-                        }, f)
-                    console.log("💾 Auto-reset baseline due to reset or reboot")
-
-                upload = max(0, curr_sent - start_sent)
-                download = max(0, curr_recv - start_recv)
+                upload, download = get_data_usage(start_sent, start_recv)
                 panel = build_ui(upload, download)
                 console.clear()
                 console.print(panel)
                 time.sleep(1)
     except KeyboardInterrupt:
         console.print("\n[red bold]❌ Exiting Smyte...[/]")
-
 
 if __name__ == "__main__":
     try:
