@@ -1,14 +1,16 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=sonyheadphonesclient-bluetooth-bin
 pkgver=1.3.17
-pkgrel=2
+pkgrel=3
 pkgdesc="A fork of Plutoberth's SonyHeadphonesClient by mos9527, now updated with support for Sony's newer Bluetooth/TWS devices"
 arch=("x86_64")
 url="https://github.com/mos9527/SonyHeadphonesClient"
 license=('MIT')
 depends=("glfw" "unzip" "gcc-libs" "libglvnd" "glibc" "dbus" "bluez-libs"  "dbus")
-source=("$pkgname-$pkgver::$url/releases/download/$pkgver/SonyHeadphonesClient-linux-x64")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver::$url/releases/download/$pkgver/SonyHeadphonesClient-linux-x64"
+	"MIT::https://raw.githubusercontent.com/mos9527/SonyHeadphonesClient/refs/heads/master/LICENSE")
+sha256sums=(SKIP
+	SKIP)
 package() {
 	mv $pkgname-$pkgver sonyheadphonesclient-bluetooth
 	mkdir -p "$pkgdir/usr/bin/"
@@ -24,4 +26,7 @@ package() {
 	Categories=Utility;
 	Type=Application
 	Icon=audio-headphones" >>"$pkgdir/usr/share/applications/sonyheadphonesclient-bluetooth.desktop"
+	mkdir -p $pkgdir/usr/share/licenses/$pkgname
+	cp MIT $pkgdir/usr/share/licenses/$pkgname
+
 }
