@@ -3,59 +3,27 @@
 
 pkgname=rustowl-bin
 pkgver=0.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Visualize Ownership and Lifetimes in Rust'
 url='https://github.com/cordx56/rustowl'
 license=('MPL-2.0')
-makedepends=('rustup')
+makedepends=()
 depends=()
-conflicts=('rustowl-git')
-arch=('any')
-source=("https://github.com/cordx56/rustowl/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fa120643aeb48061eb32a7c993dabff88aa4e9d0b32f8ab0f3289b3fb2cf5744')
-
-prepare() {
-    cd rustowl-${pkgver}
-    export RUSTC_BOOTSTRAP=1
-    export RUSTUP_TOOLCHAIN=stable
-    rustup component add rust-src rustc-dev llvm-tools
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
-
-build() {
-    cd rustowl-${pkgver}
-    export CARGO_TARGET_DIR=target
-    export RUSTC_BOOTSTRAP=1
-    export RUSTUP_TOOLCHAIN=stable
-    export RUSTOWL_RUNTIME_DIRS=/opt/rustowl
-    cargo build --frozen --release --all-features --target $(rustc --print=host-tuple)
-}
-
-check() {
-    cd rustowl-${pkgver}
-    export RUSTC_BOOTSTRAP=1
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
-}
+conflicts=('rustowl-git' 'rustowl')
+arch=('x86_64' 'aarch64')
+source_aarch64=("https://github.com/cordx56/rustowl/releases/download/v${pkgver}/rustowl-aarch64-unknown-linux-gnu.tar.gz")
+source_x86_64=("https://github.com/cordx56/rustowl/releases/download/v${pkgver}/rustowl-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('a75ab50c1678c5cd33f8d5a693c602d60824a865de5aebc3e4775a7987a40838')
+sha256sums_aarch64=('3cd4c8ed6b63c91c1bf56fe7127df288a3491853751845f95dd2c0a486f2589f')
 
 package() {
-    cd rustowl-${pkgver}
-    find target -type d | grep -E 'rustowl-build-time-out$' | xargs -I % cp -r % ./
-    mkdir sysroot
-    ACTIVE_TOOLCHAIN="$(rustup show active-toolchain | awk '{ print $1 }')"
-    cp -r "$(rustc --print=sysroot)" sysroot/$ACTIVE_TOOLCHAIN
-    find sysroot -type f | grep -v -E '\.(rlib|so|dylib|dll)$' | xargs rm -rf
-    find sysroot -depth -type d -empty -exec rm -rf {} \;
-    install -d -m 755 "$pkgdir/opt/rustowl"
-    cp -a sysroot/ "$pkgdir/opt/rustowl/"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/$(rustc --print=host-tuple)/release/rustowl"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/$(rustc --print=host-tuple)/release/rustowlc"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "rustowl"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "rustowlc"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/rustowl/LICENSE"
-    install -Dm644 rustowl-build-time-out/man/rustowl.1 "$pkgdir/usr/share/man/man1/rustowl.1"
-    install -Dm644 "rustowl-build-time-out/completions/rustowl.bash" "${pkgdir}/usr/share/bash-completion/completions/rustowl"
-    install -Dm644 "rustowl-build-time-out/completions/_rustowl" "${pkgdir}/usr/share/zsh/site-functions/_rustowl"
-    install -Dm644 "rustowl-build-time-out/completions/rustowl.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/rustowl.fish"
-    install -Dm644 "rustowl-build-time-out/completions/rustowl.elv" "${pkgdir}/usr/share/elvish/completions/rustowl.elv"
-    install -Dm644 "rustowl-build-time-out/completions/_rustowl.ps1" "${pkgdir}/usr/share/powershell/Modules/Rustowl/_rustowl.ps1"
+    install -Dm644 man/rustowl.1 "$pkgdir/usr/share/man/man1/rustowl.1"
+    install -Dm644 "completions/rustowl.bash" "${pkgdir}/usr/share/bash-completion/completions/rustowl"
+    install -Dm644 "completions/_rustowl" "${pkgdir}/usr/share/zsh/site-functions/_rustowl"
+    install -Dm644 "completions/rustowl.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/rustowl.fish"
+    install -Dm644 "completions/rustowl.elv" "${pkgdir}/usr/share/elvish/completions/rustowl.elv"
+    install -Dm644 "completions/_rustowl.ps1" "${pkgdir}/usr/share/powershell/Modules/Rustowl/_rustowl.ps1"
 }
-
