@@ -25,6 +25,12 @@ is_update_from() {
     esac
 }
 
+check_pcscd_status() {
+    if ! systemctl --quiet is-active pcscd.socket 2>/dev/null; then
+        note "${pkgname} requires that the PC/SC Smart Card Daemon systemd socket (pcscd.socket) is active. Please ensure it is started before launching ${pkgname}."
+    fi
+}
+
 # Remove certs that were installed to system trust store and filesystem in
 # previous versions of this package. These are not needed anymore.
 deprecate_certificates() {
@@ -54,9 +60,7 @@ deprecate_certificates() {
 }
 
 post_install() {
-    if ! systemctl --quiet is-active pcscd.socket 2>/dev/null; then
-        note "${pkgname} requires that the PC/SC Smart Card Daemon systemd socket (pcscd.socket) is active. Please ensure it is started before launching ${pkgname}."
-    fi
+    check_pcscd_status
     note "Many features of ${pkgname} require user configuration. Please review the official documentation in /usr/share/doc/atostekid/. You may also wish to check the Arch Wiki: https://wiki.archlinux.org/title/Special:Search?search=${pkgname}"
 }
 
@@ -66,4 +70,6 @@ post_upgrade() {
     if is_update_from ${old_version} 4.3.1.0-2; then
         deprecate_certificates
     fi
+
+    check_pcscd_status
 }
