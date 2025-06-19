@@ -1,0 +1,20 @@
+pkgbase = libsock-git
+	pkgdesc = Minimal C++ socket library
+	pkgver = r18.6c75a10
+	pkgrel = 1
+	url = https://github.com/littleblack111/libsock
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	provides = libsock=18
+	provides = libsock.so
+	conflicts = libsock
+	options = !debug
+	source = libsock::git+https://github.com/littleblack111/libsock.git
+	sha256sums = SKIP
+
+pkgname = libsock-git
