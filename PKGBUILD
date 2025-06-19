@@ -1,124 +1,83 @@
-# Maintainer: xiota / aur.chaotic.cx
-# Contributor: necklace <ns@nsz.no>
+# Maintainer:
 
-# options
-: ${_build_git:=true}
+## options
+: ${_install_path=usr/lib}
 
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
-# basic info
 _pkgname="avaloniailspy"
-pkgname="$_pkgname${_pkgtype:-}"
+pkgname="$_pkgname-git"
 pkgver=7.2rc.r10.gbc00df4
-pkgrel=2
+pkgrel=3
 pkgdesc="Avalonia-based .NET Decompiler (port of ILSpy)"
 url="https://github.com/icsharpcode/AvaloniaILSpy"
 license=('MIT' 'LGPL-2.1-only' 'MS-PL')
 arch=("any")
 
-# main package
-_main_package() {
-  depends=(
-    'dotnet-runtime'
-  )
-  makedepends=(
-    'dotnet-sdk'
-    'gendesk'
-    'git'
-    'libicns'
-    'optipng'
-  )
+depends=(
+  'dotnet-runtime'
+)
+makedepends=(
+  'dotnet-sdk'
+  'git'
+  'libicns'
+  'optipng'
+)
+optdepens=(
+  'noto-fonts: prevent missing font error'
+  'ttf-caladea: prevent missing font error'
+)
 
-  if [ "${_build_git::1}" != "t" ] ; then
-    _main_stable
-  else
-    _main_git
-  fi
-}
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
-# stable package
-_main_stable() {
-  _pkgver="$(echo "${pkgver:?}" | sed -E 's@^(.*)(rc)@\1-\2@')"
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git#tag=v${_pkgver%%.r*}")
-  sha256sums+=('SKIP')
+_pkgsrc="$_pkgname"
+source=("$_pkgname"::"git+$url.git")
+sha256sums=('SKIP')
 
-  pkgver() {
-    echo "${_pkgver:?}" | sed -E 's/-(rc)/\1/;s/-/./g;s/\.r.*$//'
-  }
-}
-
-# git package
-_main_git() {
-  provides=("$_pkgname")
-  conflicts=("$_pkgname")
-
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgname"::"git+$url.git")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags | sed -E 's/^v//;s/-(rc)/\1/;s/([^-]*-g)/r\1/;s/-/./g'
-  }
-}
-
-# common functions
-_install_path="usr/lib/$_pkgname"
-
-prepare() {
-  cat <<EOF > "$_pkgname.sh"
-#!/usr/bin/env sh
-exec "/$_install_path/ILSpy" "\$@"
-EOF
-
-  local _gendesk_options=(
-    -q -f -n
-    --pkgname="$_pkgname"
-    --pkgdesc="$pkgdesc"
-    --name="AvaloniaILSpy"
-    --exec="$_pkgname %u"
-    --icon="$_pkgname"
-    --terminal=false
-    --categories="Development"
-    --startupnotify=true
-  )
-
-  gendesk "${_gendesk_options[@]}"
-
-  icns2png -x "$_pkgsrc/ILSpy/ILSpy.icns"
-  optipng ILSpy_256x256x32.png
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags | sed -E 's/^v//;s/-(rc)/\1/;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
+  icns2png -x "$_pkgsrc/ILSpy/ILSpy.icns"
+  optipng ILSpy_256x256x32.png
+
   cd "$_pkgsrc"
   dotnet tool restore
   dotnet cake
 }
 
 package() {
-  install -dm755 "$pkgdir/$_install_path"
-  cp --reflink=auto -r "$_pkgsrc/artifacts/linux-x64"/* "$pkgdir/$_install_path/"
-  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
-
-  # script
-  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
+  install -dm755 "$pkgdir/$_install_path/$_pkgname"
+  cp -r "$_pkgsrc/artifacts/linux-x64"/* "$pkgdir/$_install_path/$_pkgname/"
 
   # icon
-  install -Dm644 "ILSpy_256x256x32.png" \
-    "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm644 "ILSpy_256x256x32.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
-  # .desktop
-  install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+  # launcher
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+[Desktop Entry]
+Type=Application
+Name=AvaloniaILSpy
+Comment=$pkgdesc
+Exec=$_pkgname %u
+Icon=$_pkgname
+Terminal=false
+StartupNotify=true
+Categories=Development;
+END
+
+  # script
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
+#!/usr/bin/env sh
+exec "/$_install_path/$_pkgname/ILSpy" "\$@"
+END
 
   # licenses
-  install -Dm644 "$_pkgsrc/doc/license.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.MIT"
-  install -Dm644 "$_pkgsrc/doc/LGPL.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.LGPL-2.1"
-  install -Dm644 "$_pkgsrc/doc/MS-PL.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.MS-PL"
-}
+  install -Dm644 "$_pkgsrc/doc/license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.MIT"
+  install -Dm644 "$_pkgsrc/doc/LGPL.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.LGPL-2.1"
+  install -Dm644 "$_pkgsrc/doc/MS-PL.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.MS-PL"
 
-# execute
-_main_package
+  # permissions
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
+}

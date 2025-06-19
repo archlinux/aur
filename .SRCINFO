@@ -1,14 +1,13 @@
 pkgbase = avaloniailspy-git
 	pkgdesc = Avalonia-based .NET Decompiler (port of ILSpy)
 	pkgver = 7.2rc.r10.gbc00df4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/icsharpcode/AvaloniaILSpy
 	arch = any
 	license = MIT
 	license = LGPL-2.1-only
 	license = MS-PL
 	makedepends = dotnet-sdk
-	makedepends = gendesk
 	makedepends = git
 	makedepends = libicns
 	makedepends = optipng
