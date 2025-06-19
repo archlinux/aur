@@ -12,6 +12,6 @@ pkgbase = hhd-ui
 	optdepends = hhd: a version of Handheld Daemon to connect to (also works over the network).
 	conflicts = hhd-ui
 	source = git+https://github.com/hhd-dev/hhd-ui.git#tag=v3.3.7
-	sha512sums = c76a677a7e7ef20cab4bffc256a1bf5c726c151cafd3ebb9f8db44148d36bbab0ec9b1a72aaba1195b37a023bde66e58c7d28bebcbd516f60b669c9c38b516e9
+	sha512sums = 0adbaec8d818c070bd345334cdd7e8c98b71f13b157ede626a6ea3ac4c75927a4954a24a1c7e07a31b6dcf183d74a205d5994129bbab2b59f24763bf0d8a7a15
 
 pkgname = hhd-ui
