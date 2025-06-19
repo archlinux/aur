@@ -2,6 +2,7 @@
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
 _commit="24229ff9f592315118410fc5c6e59e9b4fa3f58b"
+_ssh_agent_rs_commit="802b94ccf2e00ac33a3863300d0769f02b62d807"
 pkgname="pam_rssh"
 pkgver="1.1.0"
 pkgrel="2"
@@ -19,9 +20,11 @@ makedepends=(
 )
 source=(
   "${pkgname}::git+https://github.com/z4yx/pam_rssh.git#commit=${_commit}"
+  "ssh-agent.rs::git+https://github.com/z4yx/ssh-agent.rs.git#commit=${_ssh_agent_rs_commit}"
   "cargo-update-time.diff"
 )
 sha256sums=(
+  "SKIP"
   "SKIP"
   "SKIP"
 )
@@ -29,6 +32,7 @@ sha256sums=(
 prepare() {
   cd "${srcdir}/${pkgname}"
   git submodule init
+  git config submodule.dep/ssh-agent.rs.url "${srcdir}/ssh-agent.rs"
   git -c protocol.file.allow=always submodule update
   export RUSTUP_TOOLCHAIN=stable
   git apply < "${srcdir}/cargo-update-time.diff"
