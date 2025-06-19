@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=3.5.4
+pkgver=3.5.5
 _electronversion=36
 _nodeversion=24
 pkgrel=1
@@ -24,9 +24,9 @@ source=(
     "electron-builder.yml"
     "${pkgname}.sh"
 )
-sha256sums=('7e988629d01e7917372ff0316864ca2de0c44e2da05990c29bed8ec1dcc50be5'
+sha256sums=('33920b46c8ff493d4d855d512fbb230788f9e2f2a4bc140033a9ccd731a244b7'
             'be2680fcb083b9a45ebc2bea0a192e158707ad88336444c4c94d5d0fcdfdde6b'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -59,19 +59,15 @@ prepare() {
         echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        } >> .npmrc
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+        echo 'registry=https://registry.npmmirror.com' >> .npmrc
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} + 
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i -e "
         2i\import { fileURLToPath } from \"node:url\";
         10i\const __dirname = path.dirname(fileURLToPath(import.meta.url));
     " rspack.config.ts
-    NODE_ENV=development    npm install --leagcy-peer-deps
+    NODE_ENV=development    npm install
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
