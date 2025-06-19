@@ -3,7 +3,7 @@
 # Contributor: Jni <jni.viens at protonmail dot com>
 
 pkgname="bitrise"
-pkgver=2.31.2
+pkgver=2.31.3
 pkgrel=1
 pkgdesc="Run your bitrise.io automations offline"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('envman: manage Environment Variable collections'
 install="${pkgname}.install"
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4896a2f86f84f2a86e7461b5c62939a126a48c7e4431abedf4eace4b48e4da85')
+sha256sums=('bf97c16707897cab16b14719ed0fab6243925d2e66bf1a1878f1f12e16b30868')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
