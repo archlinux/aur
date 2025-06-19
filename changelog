@@ -1,3 +1,11 @@
+Version 2.3.0
+-------------
+  * New and updated translations
+  * Feature: Negative values of visible position rectangle corners are substracted from page widht/height
+  * Fix: The default property file is not required in the batch mode
+  * Thanks all the contributors!
+
+
 Version 2.2.1 + 2.2.2
 -------------
   * Custom OpenPdf build replaced by the official one which should contain all the previous customizations
