@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 pkgname=gomi
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Rm alternative written in Go"
 arch=('x86_64' 'i686' 'pentium4')
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(go)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('3609f2640fe44fec1870508d8c4c5e457f5aa98cca680e38cf4a5f72b5d3a7b0abdbee788d1c9f97d90c696cdcd6d27f7e81734f12f83720ff0c16f62b05d2db')
+sha512sums=('f7eeea46a053ded18b8c394b621067338d981a0835c74b63f538afe1440c32b8d87ac9761c3eb83f8b1b38b7351cc92f8c204da5415226f99865e81a28ac11fa')
 
 prepare() {
   cd ${pkgname}-${pkgver}
