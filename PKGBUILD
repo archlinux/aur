@@ -2,7 +2,7 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=mdbook-epub
-pkgver=0.4.44
+pkgver=0.4.48
 pkgrel=1
 pkgdesc="An experimental mdbook backend for creating EPUB documents."
 url="https://github.com/Michael-F-Bryan/mdbook-epub"
@@ -11,8 +11,8 @@ license=(MPL-2.0)
 depends=(gcc-libs glibc)
 makedepends=(rust cargo)
 options=(!lto)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('643326695c025c7ca1279ff512c27c5f3eb81880ba87b1a661e18a4d289b905c')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('3c135eaf37f9c2bfb694a34ffefe2aaf80aa6b09968bcaee7ef428221025fa7a')
 
 build() {
   cd mdbook-epub-$pkgver
