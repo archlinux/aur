@@ -1,6 +1,6 @@
 pkgbase = atar
 	pkgdesc = The fastest and lightest bookmark manager CLI written in Rust
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/x71c9/atar
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = atar
 	license = MIT
 	makedepends = rust
 	depends = glibc
-	source = atar-0.1.6.tar.gz::https://codeload.github.com/x71c9/atar/tar.gz/refs/tags/v0.1.6
-	sha256sums = eca469cbbdaa2c2b714e2dcc3d506312eabdcdb91267a8c251ce501c9f5e7bfb
+	source = atar-0.1.7.tar.gz::https://codeload.github.com/x71c9/atar/tar.gz/refs/tags/v0.1.7
+	sha256sums = d8febda447fa8222a0a4dd68fea84b1234cf7963719b1856e34111f1ca67cecc
 
 pkgname = atar
