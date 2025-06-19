@@ -10,7 +10,7 @@ license=('MIT')
 depends=(
   'json-c'
   'libpulse'
-  'systemd'  # for libudev.so
+  'systemd-libs'
 )
 
 makedepends=(
