@@ -44,7 +44,7 @@ package() {
 [Desktop Entry]
 Type=Application
 Name=Kanji Dojo
-GenericName=$pkgdesc
+GenericName=Kanji practice
 Comment=$pkgdesc
 TryExec=$_pkgname
 Exec=$_pkgname
@@ -52,7 +52,7 @@ Icon=$_pkgname
 Terminal=false
 StartupNotify=true
 StartupWMClass=$_pkgname
-Categories=Game;Emulator;
+Categories=Game;
 END
 
   # permissions
