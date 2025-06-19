@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pixelflasher
-pkgver=8.0.2.1
+pkgver=8.0.3.1
 pkgrel=1
 pkgdesc="Pixel phone flashing GUI utility with features."
 arch=('any')
@@ -36,7 +36,7 @@ options=('!strip')
 source=("PixelFlasher-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'git+https://android.googlesource.com/platform/system/update_engine.git'
         'PixelFlasher.desktop')
-sha256sums=('da7cd47e5415ba6672f7039e048558d6d404396a7e9e177b4eb116ea74841973'
+sha256sums=('d4d775fc716f60fd47f3bc04a935cc3c69dd4fbd814ca7255b8e967f735ac065'
             'SKIP'
             'dff526833836b7123c99d2321f06975c34fe0abd21a02ef9dde4da3328a21129')
 
@@ -57,7 +57,7 @@ package() {
   install -Dm755 bin/* -t "$pkgdir/opt/$pkgname/bin/"
   rm "$pkgdir/opt/$pkgname/bin"/7z{.dll,.exe}
 
-  for f in *.py *.json *.pem; do
+  for f in *.py *.json *.pem *.crt; do
     install -m644 "${f}" -t "$pkgdir/opt/$pkgname/"
   done
 
