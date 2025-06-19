@@ -6,8 +6,8 @@ pkgname=python-$_name-git
 
 pkgver=2.4.0.r5.g2bbf5b1
 
-pkgrel=1
-pkgdesc="The asynchronous library for Max"
+pkgrel=2
+pkgdesc="The asynchronous library for Max (newest git version)"
 arch=('any')
 url="https://github.com/dpnspn/aiomax"
 license=('MIT')
