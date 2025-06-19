@@ -1,6 +1,5 @@
-rom-properties/
-src/
-pkg/
-*.tar.zst
-*.tar.gz
+*
 
+!.SRCINFO
+!PKGBUILD
+!rom-properties-git.install

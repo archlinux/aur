@@ -1,24 +1,24 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 
 pkgname=rom-properties-git
-pkgver=2.2.1.r243.gd8dd8cf
+pkgver=2.5.1.r167.g19e5037
 pkgrel=1
 pkgdesc='This shell extension adds a few nice features to file browsers for managing video game ROM and disc images.'
 arch=('x86_64')
 url='https://github.com/GerbilSoft/rom-properties'
-license=('GPL2')
-depends=('curl' 'zlib' 'libpng' 'libjpeg-turbo' 'nettle' 'tinyxml2' 'libseccomp')
+license=('GPL-2.0-or-later')
+depends=('curl' 'fmt' 'gcc-libs' 'glibc' 'libjpeg-turbo' 'libseccomp' 'nettle' 'pugixml' 'zlib')
 optdepends=('zstd' 'lz4' 'lzo')
-makedepends=('cmake' 'pkgconf' 'gettext')
+makedepends=('cmake' 'gettext' 'git' 'glib2-devel' 'lz4' 'lzo' 'pkgconf' 'zstd')
 replaces=('rom-properties')
 conflicts=('rom-properties')
 source=(
-  "git+$url"
+  "git+https://github.com/GerbilSoft/rom-properties.git"
   "rom-properties-git.install"
 )
 sha256sums=(
   'SKIP'
-  'SKIP')
+  '07ad7da027ed9c4d82166fb5663b5fbbc5298a11423cbaec90ef76f425296b1b')
 install=rom-properties-git.install
 
 pkgver() {
@@ -28,7 +28,16 @@ pkgver() {
 
 build() {
   mkdir -p build && cd build
-  cmake $srcdir/${pkgname%%-git} -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib/${pkgname%%-git} -DCMAKE_BUILD_TYPE=Release -DSPLIT_DEBUG=OFF
+
+  cmake "../rom-properties" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_CXX_FLAGS="-Wno-stringop-overread" \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_INSTALL_LIBEXECDIR="lib/rom-properties" \
+    -DENABLE_LTO=ON \
+    -DSPLIT_DEBUG=OFF \
+    -DUSE_INTERNAL_PNG=ON
+
   make
 }
 
@@ -37,4 +46,3 @@ package() {
 
   make DESTDIR="$pkgdir" install
 }
-# vim:set ts=2 sw=2 et:
