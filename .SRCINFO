@@ -1,6 +1,6 @@
 pkgbase = caelestia-shell-git
 	pkgdesc = The desktop shell for the Caelestia dotfiles
-	pkgver = r714.b0a0b6d
+	pkgver = r716.44fefc1
 	pkgrel = 1
 	url = https://github.com/caelestia-dots/shell
 	arch = x86_64
@@ -26,6 +26,8 @@ pkgbase = caelestia-shell-git
 	depends = ttf-material-symbols-variable
 	depends = power-profiles-daemon
 	depends = ttf-jetbrains-mono-nerd
+	depends = grim
+	depends = swappy
 	provides = caelestia-shell
 	conflicts = caelestia-shell
 	source = caelestia-shell-git::git+https://github.com/caelestia-dots/shell.git
