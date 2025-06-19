@@ -1,7 +1,7 @@
 pkgbase = pyazo-cli
 	pkgdesc = Pyazo screenshot hosting command line interface
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyazo-screenshot/cli
 	arch = any
 	license = BSD
