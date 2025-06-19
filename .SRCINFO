@@ -8,7 +8,7 @@ pkgbase = swengine-revanced
 	makedepends = git
 	depends = vlc
 	depends = ffmpeg
-	depends = swww
+	depends = swww-git
 	source = swengine.desktop
 	md5sums = 0cca1884db3254ff31059a181400e09b
 
