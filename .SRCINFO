@@ -1,6 +1,6 @@
 pkgbase = kanji-dojo
 	pkgdesc = Practice writing Japanese letters, learn their meanings and related words
-	pkgver = 2.1.7
+	pkgver = 2.1.8
 	pkgrel = 1
 	url = https://github.com/syt0r/Kanji-Dojo
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer Sunny brainworms2002 at gmail.com
 
 pkgname=kanji-dojo
-pkgver=2.1.7
+pkgver=2.1.8
 pkgrel=1
 pkgdesc="Practice writing Japanese letters, learn their meanings and related words"
 arch=('x86_64')
