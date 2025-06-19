@@ -1,5 +1,5 @@
 pkgname=mkdev
-pkgver=3.2.2
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Save your boilerplate instead of writing it."
 arch=('x86_64')
@@ -22,6 +22,8 @@ package() {
 
     install -Dm755 "target/release/mk" "$pkgdir/usr/bin/mk"
 
-    MANPAGE=true target/release/mk > mk.1
-    install -Dm644 mk.1 "$pkgdir/usr/share/man/man1/mk.1"
+    MANPAGE=true target/release/mk
+    for manfile in mkdev-man/*.1; do
+        install -Dm644 "$manfile" "$pkgdir/usr/share/man/man1/$(basename "$manfile")"
+    done
 }
