@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CircStats
-_pkgver=0.2-6
+_pkgver=0.2-7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=8
+pkgrel=1
 pkgdesc="Circular Statistics, from \"Topics in Circular Statistics\" (2001)"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d298b902e4d55adbff7ac7781ff0fde9')
-b2sums=('23964ab1febbe7022c0337933233fe4c32d8baee778e2e6cae0349b91423156be949727d7f2c4956677d049af6ca873febc84d9d4c78d04e77d4e8efe18b9e23')
+md5sums=('ca23b34c08046d6d7e918a0178628ac9')
+b2sums=('64925f7f1669eee96d9c06355265f9ed8e442452c458ede368bf36455d3d87ab2255181d8504189ef3c9ffcb17437f5ec8712c09eea68dc8a36267c0c6387878')
 
 build() {
   mkdir build
