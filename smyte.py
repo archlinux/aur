@@ -85,7 +85,11 @@ def main():
             while True:
                 curr_sent, curr_recv = get_data_usage()
 
-                # Auto reset if current is somehow less than stored
+                # DEBUG: Print baseline vs current
+                console.log(f"start_sent: {start_sent}, curr_sent: {curr_sent}")
+                console.log(f"start_recv: {start_recv}, curr_recv: {curr_recv}")
+
+                # Auto reset if current is less than stored
                 if curr_sent < start_sent or curr_recv < start_recv:
                     start_sent = curr_sent
                     start_recv = curr_recv
@@ -95,6 +99,7 @@ def main():
                             "start_sent": start_sent,
                             "start_recv": start_recv
                         }, f)
+                    console.log("💾 Auto-reset baseline due to reset or reboot")
 
                 upload = max(0, curr_sent - start_sent)
                 download = max(0, curr_recv - start_recv)
