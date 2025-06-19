@@ -1,7 +1,7 @@
 pkgbase = zen-browser-bin
 	pkgdesc = Performance oriented Firefox-based web browser
 	pkgver = 1.13.2b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zen-browser/desktop
 	arch = x86_64
 	arch = aarch64
@@ -28,9 +28,9 @@ pkgbase = zen-browser-bin
 	sha256sums = 642bcde5b15fddb712d10ed53299781108a265432237ab27a96c5c5c489718db
 	sha256sums = a6371aa853b095d1c223f955e97a390b905abe5bcba38bbddd17408dd46fec94
 	sha256sums = e23b98b331bc47bf57f8646e97c4854cefd53fd047b9141a0e87ef07f9e19173
-	source_x86_64 = zen-browser-1.13.2b-2-x86_64.tar.xz::https://github.com/zen-browser-auto/www-temp/releases/download/1.13.2b/zen.linux-x86_64.tar.xz
+	source_x86_64 = zen-browser-1.13.2b-3-x86_64.tar.xz::https://github.com/zen-browser/desktop/releases/download/1.13.2b/zen.linux-x86_64.tar.xz
 	sha256sums_x86_64 = 18e0ffa99b1d088825751b0e47f1f1a3e981d0aee2bad2adf576148fdfba4e07
-	source_aarch64 = zen-browser-1.13.2b-2-aarch64.tar.xz::https://github.com/zen-browser-auto/www-temp/releases/download/1.13.2b/zen.linux-aarch64.tar.xz
+	source_aarch64 = zen-browser-1.13.2b-3-aarch64.tar.xz::https://github.com/zen-browser/desktop/releases/download/1.13.2b/zen.linux-aarch64.tar.xz
 	sha256sums_aarch64 = 38d3c076d4407517f8324b2fe9a5cf6adda270dd9267f8067996338aa0d65584
 
 pkgname = zen-browser-bin
