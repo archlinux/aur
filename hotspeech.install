@@ -1,0 +1,37 @@
+post_install() {
+    echo ""
+    echo "==> Hotspeech has been installed successfully!"
+    echo ""
+    echo "==> Next steps:"
+    echo "    1. Create your configuration directory:"
+    echo "       mkdir -p ~/.config/hotspeech"
+    echo ""
+    echo "    2. Copy the example configuration:"
+    echo "       cp /usr/share/hotspeech/config.toml.example ~/.config/hotspeech/config.toml"
+    echo ""
+    echo "    3. Edit the configuration with your OpenAI API key:"
+    echo "       nano ~/.config/hotspeech/config.toml"
+    echo ""
+    echo "    4. Start the daemon:"
+    echo "       hotspeech daemon"
+    echo ""
+    echo "    5. Access the web interface at:"
+    echo "       http://localhost:8081"
+    echo ""
+    echo "==> Optional: Enable systemd user service:"
+    echo "    systemctl --user enable hotspeech.service"
+    echo "    systemctl --user start hotspeech.service"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    if systemctl --user is-active hotspeech.service >/dev/null 2>&1; then
+        echo "==> Stopping hotspeech service..."
+        systemctl --user stop hotspeech.service
+        systemctl --user disable hotspeech.service
+    fi
+} 

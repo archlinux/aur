@@ -1,0 +1,22 @@
+[Desktop Entry]
+Name=Hotspeech
+Comment=Voice recording and transcription tool
+Exec=hotspeech daemon
+Icon=audio-input-microphone
+Terminal=true
+Type=Application
+Categories=AudioVideo;Audio;Recorder;
+Keywords=voice;recording;transcription;whisper;speech-to-text;
+StartupNotify=true
+
+[Desktop Action StartRecording]
+Name=Start Recording
+Exec=hotspeech record
+Icon=media-record
+
+[Desktop Action StopRecording]
+Name=Stop Recording
+Exec=hotspeech stop
+Icon=media-playback-stop
+
+Actions=StartRecording;StopRecording; 

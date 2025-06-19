@@ -1,0 +1,15 @@
+[Unit]
+Description=Hotspeech Voice Recording and Transcription Service
+After=graphical-session.target pulseaudio.service
+Wants=pulseaudio.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hotspeech daemon
+Restart=on-failure
+RestartSec=5
+Environment=DISPLAY=:0
+Environment=XDG_RUNTIME_DIR=%i
+
+[Install]
+WantedBy=default.target 
