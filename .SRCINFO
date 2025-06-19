@@ -1,6 +1,6 @@
 pkgbase = mail-deduplicate
 	pkgdesc = An utility to deduplicate mails from a set of boxes.
-	pkgver = 7.6.1
+	pkgver = 7.6.2
 	pkgrel = 1
 	url = https://kdeldycke.github.io/mail-deduplicate/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = mail-deduplicate
 	provides = maildir-deduplicate
 	conflicts = maildir-deduplicate
 	replaces = maildir-deduplicate
-	source = https://files.pythonhosted.org/packages/source/m/mail-deduplicate/mail_deduplicate-7.6.1.tar.gz
-	sha256sums = 48b9c955045838c342cb5c5f57ca1a8456e6d597a72464237a86d6aff8d3ad42
+	source = https://files.pythonhosted.org/packages/source/m/mail-deduplicate/mail_deduplicate-7.6.2.tar.gz
+	sha256sums = 20368c6e048be51368eeaf73ba2cccaa3396009e77c8766d2f137dd6e1d2a48f
 
 pkgname = mail-deduplicate
