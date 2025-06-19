@@ -6,10 +6,17 @@
 # https://gyroflow.xyz
 # https://github.com/gyroflow/gyroflow
 
+## options
+: ${_install_path:=opt}
+
+: ${RUSTUP_TOOLCHAIN=stable}
+: ${CARGO_TARGET_DIR=target}
+export CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
+
 _pkgname="gyroflow"
 pkgname="$_pkgname-git"
-pkgver=1.6.0.r71.g52fcd02
-pkgrel=2
+pkgver=1.6.1.r10.g83356d0
+pkgrel=1
 pkgdesc="Video stabilization using gyroscope data"
 url="https://github.com/gyroflow/gyroflow"
 license=("GPL-3.0-or-later")
@@ -42,7 +49,7 @@ options=('!lto')
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
@@ -51,14 +58,8 @@ pkgver() {
 }
 
 prepare() (
-  [ ! -e "$_pkgsrc/.cargo/config.toml" ] \
-    && [ -e "$_pkgsrc/.cargo/config" ] \
-    && mv "$_pkgsrc/.cargo/config" "$_pkgsrc/.cargo/config.toml"
-
-  export RUSTUP_TOOLCHAIN=stable
-
   cd "$_pkgsrc"
-  cargo fetch --target "${CARCH}-unknown-linux-gnu"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 )
 
 build() (
@@ -69,29 +70,22 @@ build() (
   export OPENCV_LINK_PATHS="/usr"
   export OPENCV_LINK_LIBS="opencv_core,opencv_calib3d,opencv_features2d,opencv_imgproc,opencv_video,opencv_flann,opencv_dnn"
 
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-
   cd "$_pkgsrc"
   cargo build --frozen --release --all-features
 )
 
 package() {
   # program files
-  install -Dm755 "$_pkgsrc/target/release/$_pkgname" "$pkgdir/opt/$_pkgname/$_pkgname"
-  install -Dm755 "$_pkgsrc/target/release/libmdk.so.0" -t "$pkgdir/opt/$_pkgname/"
+  install -Dm755 "$_pkgsrc/$CARGO_TARGET_DIR/release/$_pkgname" "$pkgdir/$_install_path/$_pkgname/$_pkgname"
+  install -Dm755 "$_pkgsrc/$CARGO_TARGET_DIR/release/libmdk.so.0" -t "$pkgdir/$_install_path/$_pkgname/"
 
   # camera presets
-  cp -a "$_pkgsrc/resources/camera_presets" "$pkgdir/opt/$_pkgname"
+  cp -a "$_pkgsrc/resources/camera_presets" "$pkgdir/$_install_path/$_pkgname"
 
-  # scripts
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
-#!/usr/bin/env sh
-export LD_LIBRARY_PATH="/opt/$_pkgname"
-exec /opt/$_pkgname/$_pkgname
-END
+  # icon
+  install -Dm644 "$_pkgsrc/resources/icon.svg" "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
 
-  # desktop file
+  # launcher
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Type=Application
@@ -105,8 +99,12 @@ Categories=Graphics;Photography;AudioVideo;
 MimeType=video/mp4;video/mpeg;
 END
 
-  # icon
-  install -Dm644 "$_pkgsrc/resources/icon.svg" "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
+  # script
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
+#!/usr/bin/env sh
+export LD_LIBRARY_PATH="/$_install_path/$_pkgname"
+exec "/$_install_path/$_pkgname/$_pkgname" "\$@"
+END
 
   # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
