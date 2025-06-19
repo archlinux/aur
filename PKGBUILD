@@ -16,7 +16,7 @@
 
 pkgname=hnefatafl-copenhagen
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Copenhagen Hnefatafl client."
 url="https://hnefatafl.org"
 license=("MIT OR Apache-2.0")
@@ -30,7 +30,7 @@ sha256sums=("c2e6d1edaa9e4b85cee4c1406e95e20d0d1655bc3d766295dc2821aa34eca20c")
 
 build() {
     tar -xvzf v2.0.3.tar.gz
-    cd "$pkgname-$pkgver"
+    cd "$hnefatafl-$pkgver"
     cargo build --release --example hnefatafl-client --no-default-features
 
     pandoc\
