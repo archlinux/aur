@@ -6,60 +6,128 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Corey Richardson <corey@octayn.net>
 
-_pkgname=krita
-pkgname=${_pkgname}-qt6-git
-pkgver=6.0.0.prealpha.r64036.f1e19ad
+_pkgname="krita"
+pkgname="$_pkgname-qt6-git"
+pkgver=6.0.0.prealpha.r598.g79b3845
 pkgrel=1
-pkgdesc='A full-featured free digital painting studio. Git version.'
-arch=('x86_64')
-url='https://krita.org'
+pkgdesc="Edit and paint images"
+url='https://invent.kde.org/graphics/krita'
 license=('GPL-3.0-only')
+arch=('x86_64')
 
 depends=(
-	exiv2 ffmpeg fftw fontconfig freetype2 fribidi gcc-libs giflib glibc gsl
-	harfbuzz imath kcompletion kconfig kcoreaddons kcrash kguiaddons ki18n
-	kitemviews kitemmodels kwidgetsaddons kwindowsystem lcms2 libjpeg-turbo
-	libkdcraw libpng libtiff libunibreak libwebp mlt opencolorio openexr
-	openjpeg2 qt6-base qt6-svg quazip-qt6 zlib
+  'exiv2'
+  'fftw'
+  'fontconfig'
+  'freetype2'
+  'fribidi'
+  'gcc-libs'
+  'giflib'
+  'glibc'
+  'gsl'
+  'harfbuzz'
+  'imath'
+  'kcolorscheme'
+  'kcompletion'
+  'kconfig'
+  'kcoreaddons'
+  'kguiaddons'
+  'ki18n'
+  'kitemmodels'
+  'kitemviews'
+  'kwidgetsaddons'
+  'kwindowsystem'
+  'lcms2'
+  'libjpeg-turbo'
+  'libkdcraw'
+  'libpng'
+  'libtiff'
+  'libunibreak'
+  'libwebp'
+  'mlt'
+  'opencolorio'
+  'openexr'
+  'openjpeg2'
+  'qt6-base'
+  'qt6-svg'
+  'quazip-qt6'
+  'sdl2'
+  'zlib'
 )
 makedepends=(
-	git boost eigen extra-cmake-modules immer kdoctools kseexpr-qt6 lager libheif
-	libjxl libmypaint poppler-qt6 python-pyqt6 qt6-tools sip xsimd zug
+  'boost'
+  'eigen'
+  'extra-cmake-modules'
+  'git'
+  'immer'
+  'kdoctools'
+  'kseexpr-qt6' # aur/kseexpr-qt6-git
+  'lager'
+  'libheif'
+  'libjxl'
+  'libmypaint'
+  'ninja'
+  'poppler-qt6'
+  'python-pyqt6'
+  'qt6-tools'
+  'sip'
+  'vulkan-headers'
+  'xsimd'
+  'zug'
 )
 optdepends=(
-	'poppler-qt6: PDF filter'
-	'python-pyqt6: for the Python plugins'
-	'python-legacy-cgi: for the Python plugins'
-	'libheif: HEIF filter'
-	'kseexpr-qt6: SeExpr generator layer'
-	'kimageformats: PSD support'
-	'libmypaint: support for MyPaint brushes'
-	'krita-plugin-gmic: GMic plugin'
-	'libjxl: JPEG-XL filter'
+  'kimageformats: PSD support'
+  'krita-plugin-gmic: GMic plugin'
+  'kseexpr-qt6: SeExpr generator layer'
+  'libheif: HEIF filter'
+  'libjxl: JPEG-XL filter'
+  'libmypaint: support for MyPaint brushes'
+  'poppler-qt6: PDF filter'
+  'python-legacy-cgi: for the Python plugins'
+  'python-pyqt6: for the Python plugins'
 )
-provides=("${_pkgname}=${pkgver}")
-conflicts=(calligra-krita krita-il10n krita)
 
-source=("git+https://invent.kde.org/graphics/${_pkgname}.git"
-"wayland.patch")
-sha512sums=('SKIP'
-            '36cc693d93dffc04e8aa894eaff37b5f29f059e98c08c5a433042ba1568f500958f2720b7fe27a284720c8ee794240c98144d4d51c53ec5ead5aaa0750f70e93')
+provides=("$_pkgname=${pkgver%.g*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd ${_pkgname}
-	printf "6.0.0.prealpha.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  cd "$_pkgsrc"
+  local _file _hash _ver _rev _commit
+  _file="CMakeLists.txt"
+  read -r _hash _ver < <(
+    NL=$(awk '/set.*KRITA_VERSION_STRING.*"[6789]/{n=NR}END{print n}' "$_file")
+
+    git blame -L "$NL,+1" -- "$_file" \
+      | awk '{print $1" "$NF }' \
+      | sed -E -e 's&-&.&g;s&[^0-9\.a-z\ ]&&g'
+  )
+  _rev=$(git rev-list --count --cherry-pick "$_hash"...HEAD)
+  _commit=$(git rev-parse --short=7 HEAD)
+
+  printf "%s.r%s.g%s" "${_ver:?}" "${_rev:?}" "${_commit:?}"
 }
 
 build() {
-	patch -Np1 -i $srcdir/wayland.patch -d ${_pkgname}
-	cmake -B build -S ${_pkgname} \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DBUILD_TESTING=OFF \
-		-DBUILD_WITH_QT6=ON
-	cmake --build build --clean-first
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_INSTALL_LIBDIR='lib'
+    -DBUILD_WITH_QT6=ON
+    -DBUILD_TESTING=$CHECKFUNC
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-	DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
