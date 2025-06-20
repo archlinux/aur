@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: goelzma
 pkgname=sprec-git
 _pkgname=sprec
 pkgdesc="Speech recognition tool using Vosk"
