@@ -1,9 +1,11 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Contributor: envolution
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=fb303
-pkgver=2024.10.28.00
+pkgver=2025.06.16.00
 pkgrel=1
-pkgdesc="A core set of thrift functions that provide a common mechanism for querying stats and other information from a service"
+pkgdesc="thrift functions that provide a mechanism for querying information from a service"
 arch=(x86_64)
 url="https://github.com/facebook/fb303"
 license=(Apache-2.0)
@@ -27,14 +29,17 @@ provides=(
   libfb303_thrift_cpp.so
 )
 options=(!lto)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('522f4ba3eb8781c72eeb62896606be72d85753321bbe495903f3b8eed9c19253')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+pass-thrift-include-to-python.patch::https://patch-diff.githubusercontent.com/raw/facebook/fb303/pull/68.patch)
+sha256sums=('d2e23b45fa7cc2460733b934945276ecc57b6a2af35f01e8cdf2d78628401551'
+            '89ccb751f778b43d1eb4804eee1c041a5f9d8626d82034564300ee2bd4e731d9')
 
 prepare() {
   cd $pkgname-$pkgver
   # Use system CMake config instead of bundled module
   sed -i 's/find_package(Glog MODULE REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
     CMakeLists.txt
+  patch -Np1 -i ../pass-thrift-include-to-python.patch
 }
 
 build() {
@@ -45,6 +50,7 @@ build() {
     -Wno-dev \
     -DBUILD_SHARED_LIBS=ON \
     -DPYTHON_EXTENSIONS=ON \
+    -DThrift_INCLUDE_DIR=/usr/include \
     -DPACKAGE_VERSION="$pkgver"
   cmake --build build
 }
@@ -59,7 +65,8 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
   # Remove empty dirs to silence namcap warnings
-  rm -vr "$pkgdir/usr/include/fb303/test"
-  rm -vr "$pkgdir/usr/include/fb303/thrift/clients"
-  rm -vr "$pkgdir/usr/include/fb303/thrift/services"
+  rm -vfr "$pkgdir/usr/include/fb303/test"
+  rm -vfr "$pkgdir/usr/include/fb303/thrift/clients"
+  rm -vfr "$pkgdir/usr/include/fb303/thrift/services"
 }
+# vim:set ts=2 sw=2 et:
