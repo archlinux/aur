@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=p4merge-bin
-pkgver=24.2
+pkgver=25.2
 pkgrel=1
 pkgdesc='Perforce three-way merging and side-by-side file comparison tool'
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('p4merge')
 source=("https://www.perforce.com/downloads/perforce/r$pkgver/bin.linux26x86_64/p4v.tgz"
         "p4admin.desktop"
         "p4merge.desktop")
-sha256sums=('67cf025655c503ffb63575ca8f4b502e509fce1fc52e9d942640b81c38791845'
+sha256sums=('3822deb566d8a1ae00859218bca371ad110c86a81a21757a0a50cc1881b140e5'
             'SKIP'
             'SKIP')
 
