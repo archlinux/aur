@@ -20,3 +20,5 @@ package() {
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
     ln -s "../../../lib/node_modules/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
+
+# vim: set ts=4 sw=4 sts=4 et:
