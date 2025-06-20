@@ -1,0 +1,11 @@
+--- a/Coro/State.xs	2025-06-21 01:46:38.224822652 +0200
++++ b/Coro/State.xs	2025-06-21 01:46:43.984042087 +0200
+@@ -4573,7 +4573,7 @@
+ NV
+ time ()
+ 	CODE:
+-        RETVAL = nvtime (aTHX);
++        RETVAL = nvtime ();
+ 	OUTPUT:
+         RETVAL
+ 
