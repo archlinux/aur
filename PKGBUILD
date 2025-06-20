@@ -27,7 +27,7 @@ md5sums=('a81eb5ac992280c2b16226301ace398a'
 
 package() {
   install -d ${pkgdir}/opt/lzc-client-desktop/
-  tar --no-same-owner -xf lzc-client-desktop_${_pkgver}.tar.zst -C ${pkgdir}/opt/lzc-client-desktop
+  tar --no-same-owner --no-same-permissions -xf lzc-client-desktop_${_pkgver}.tar.zst -C ${pkgdir}/opt/lzc-client-desktop
 
   # fix desktop file
   install -Dm755 ${srcdir}/lzc-client-desktop ${pkgdir}/usr/bin/lzc-client-desktop
