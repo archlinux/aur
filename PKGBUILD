@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-gguf
 _pkgname=gguf
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="for writing binary files in the GGUF (GGML Universal File) format."
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
   python-setuptools
   python-poetry)
 source=("https://files.pythonhosted.org/packages/source/g/gguf/gguf-${pkgver}.tar.gz")
-sha256sums=('e3f88278e6f6778e0348fbc97313a4a2f8af63b08fe25dc381251d9c611dae03')
+sha256sums=('36ad71aad900a3e75fc94ebe96ea6029f03a4e44be7627ef7ad3d03e8c7bcb53')
 
 build() {
   cd $_pkgname-$pkgver
