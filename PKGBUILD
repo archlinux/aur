@@ -14,7 +14,6 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/colorsearch"
-    # Versiyonu git tag'dan al, yoksa 1.0.0 default
     git describe --tags --abbrev=0 2>/dev/null || echo "1.0.0"
 }
 
