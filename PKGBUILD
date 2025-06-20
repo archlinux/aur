@@ -1,7 +1,7 @@
 # Maintainer: PoDiax <pd@pdx.ovh>
 pkgname=openstarbound
 pkgver=0.1.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenStarbound Client (requires original Starbound game assets)"
 arch=('x86_64')
 url="https://github.com/OpenStarbound/OpenStarbound"
