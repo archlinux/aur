@@ -2,9 +2,9 @@
 
 pkgname=fauxdacious-plugins-git
 _pkgname=fauxdacious-plugins
-pkgver=4.5devel1.r659
-pkgrel=2
-pkgdesc="Plugins for Fauxdacious Mediaplayer (git version)"
+pkgver=4.5.r659
+pkgrel=3
+pkgdesc="Plugins for the Fauxdacious Mediaplayer (git version)"
 arch=('x86_64')
 url="https://wildstar84.wordpress.com/fauxdacious/"
 license=('BSD' 'custom')
@@ -24,9 +24,9 @@ pkgver() {
 	cd "${pkgname}"
 	# get the version out of the configure.ac file and add commit count
 	_versionDash=$(grep AC_INIT configure.ac | sed -E "s/.*\[(.*)\], \[(.*)\].*/\2/")
-	_version=${_versionDash//-/}
+	_versionBase=${_versionDash%%-*}
 	_commits=$(git rev-list --count HEAD)
-	echo "${_version}.r${_commits}"
+	echo "${_versionBase}.r${_commits}"
 }
 
 prepare() {
