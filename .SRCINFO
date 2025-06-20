@@ -1,6 +1,6 @@
 pkgbase = zsh-zce-git
 	pkgdesc = zsh EasyMotion/ace-jump-mode
-	pkgver = 0.6.16.r0.gcf4354f
+	pkgver = r21.ee71bfa
 	pkgrel = 1
 	url = https://github.com/hchbaw/zce.zsh
 	arch = x86_64
