@@ -1,6 +1,6 @@
 pkgbase = battered
 	pkgdesc = Regularly polls battery levels and reacts to crossing configurable thresholds.
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/t4k1t/battered
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = battered
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = battered-0.8.0.tar.gz::https://github.com/t4k1t/battered/archive/refs/tags/v0.8.0.tar.gz
-	b2sums = fbcb61d9353e400fcff2335beee6a36871c51d811758c6f457ae6d92679044561994e0214fa122b71976541138b0221608dbd42d09c9f6bdfcde78be2ca7a8db
+	source = battered-0.8.1.tar.gz::https://github.com/t4k1t/battered/archive/refs/tags/v0.8.1.tar.gz
+	b2sums = 058d9b542734bbc3e19685aecd28cdec1cd142b02f19b0db7e84439f95283fdf5b9ad678685f43c92e8e1a9236637a6b43dad8970f14767fd4812a30515c5f43
 
 pkgname = battered
