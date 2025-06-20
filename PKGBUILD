@@ -1,7 +1,7 @@
 # Maintainer: George Tsiamasiotis <gtsiam@windowslive.com>
 
 pkgname=ghdl
-pkgver=5.0.1
+pkgver=5.1.1
 pkgrel=1
 arch=('x86_64')
 pkgdesc='VHDL 2008/93/87 simulator - mcode backend'
@@ -18,8 +18,7 @@ checkdepends=(
 
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/ghdl/ghdl/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=(
-	'a4cef27312a158c28498eeb62a470007354755b267adb62005a04b66143a1f92')
+sha256sums=('00cd58ec8f25e2532465aabc8705f43071f20dc1d13e03fd9dc235523186fca9')
 
 build() {
 	cd "$pkgname-$pkgver"
