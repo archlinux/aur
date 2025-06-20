@@ -10,7 +10,7 @@ pkgbase = ncx
 	makedepends = make
 	options = !strip
 	options = !emptydirs
-	source = ncx::git+https://gitlab.com/nathanchere/ncx.git
+	source = ncx::git+https://gitlab.com/nathanchere/ncx.git#tag=v2.0.4a
 	sha256sums = SKIP
 
 pkgname = ncx

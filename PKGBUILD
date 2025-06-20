@@ -1,6 +1,7 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=ncx
-pkgver=0.0.0
+appname=ncx
+pkgver=2.0.4a
 pkgrel=1
 pkgdesc="CLI tool for system management and configuration"
 arch=('x86_64')
@@ -8,33 +9,27 @@ url="https://gitlab.com/nathanchere/ncx"
 license=('Apache-2.0')
 depends=()
 makedepends=('go' 'git' 'make')
-source=("git+https://gitlab.com/nathanchere/ncx.git")
+source=("${appname}::git+https://gitlab.com/nathanchere/ncx.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 options=('!strip' '!emptydirs')
 
-pkgver() {
-	cd "$srcdir/$pkgname"
-	make build
-	./bin/ncx version | sed 's/^v//'
-}
-
 prepare() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$appname"
 	make setup
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$appname"
 	make build
 }
 
 check() {
-	cd "$srcdir/$pkgname/src"
-	go test ./...
+	cd "$srcdir/$appname/src"
+	make testci
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$appname"
 	
 	install -Dm755 bin/ncx "$pkgdir/usr/bin/ncx"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
