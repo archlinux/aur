@@ -1,0 +1,17 @@
+pkgbase = godots-bin
+	pkgdesc = A hub for managing your Godot versions and projects.
+	pkgver = 1.3.stable
+	pkgrel = 1
+	url = https://github.com/MakovWait/godots
+	arch = x86_64
+	license = MIT
+	provides = godots
+	options = !strip
+	source = https://github.com/MakovWait/godots/releases/download/v1.3.stable/LinuxX11.zip
+	source = https://raw.githubusercontent.com/MakovWait/godots/refs/tags/v1.3.stable/LICENSE
+	source = https://raw.githubusercontent.com/MakovWait/godots/refs/tags/v1.3.stable/icon.svg
+	sha256sums = 141d4d7244691fdedae7994d45b2f4610d1604190fbbb61f93ffccc284f8d29f
+	sha256sums = 76b8e9aacad7b9b2fd0c699065186191f8705d8f1892ee36873c56f904f073ef
+	sha256sums = eb84abebbcbed00e25d5c7b82162fc461d6968c0c9e07b8913faf5525f693295
+
+pkgname = godots-bin
