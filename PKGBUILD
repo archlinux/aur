@@ -8,6 +8,7 @@ pkgdesc="Hard fork of Hydroxide; a third-party, open-source ProtonMail CardDAV, 
 arch=('x86_64')
 makedepends=('git' 'go')
 conflicts=('ferroxide')
+provides=('ferroxide')
 url="https://github.com/acheong08/ferroxide"
 license=('MIT')
 source=('git+https://github.com/acheong08/ferroxide')
