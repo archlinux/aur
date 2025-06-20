@@ -1,7 +1,7 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=hare-git
 _pkgname=hare
-pkgver=r3759.ea9b3d0e
+pkgver=r4277.50346bce
 pkgrel=1
 license=("MPL2")
 pkgdesc="The Hare systems programming language"
@@ -65,5 +65,5 @@ package() {
 }
 
 sha256sums=('SKIP'
-            '9c339eeb042ce00641cea4eed5403ca204d6f4f9cd5f709be286a252db47a034'
-            'c82db335b70c03d3d656128fbb0be2cc552219b3e7c93b15d1e6afd1b0e9ba7e')
+            '9ddf2334ace2073d83babfe0eb33dd440e318b75f6b5e9ced6a54824455a75b2'
+            'f329421c6335123ed03d5b5e3d717d45aacd6621ddc81c5e3b257012fce2d17b')

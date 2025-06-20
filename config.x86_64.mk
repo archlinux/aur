@@ -4,9 +4,9 @@ PREFIX = /usr
 BINDIR = $(PREFIX)/bin
 MANDIR = $(PREFIX)/share/man
 SRCDIR = $(PREFIX)/src
-
-# Where to install the stdlib tree
 STDLIB = $(SRCDIR)/hare/stdlib
+LIBEXECDIR = $(PREFIX)/lib
+TOOLDIR = $(LIBEXECDIR)/hare
 
 # Default HAREPATH
 HAREPATH = $(SRCDIR)/hare/stdlib:$(SRCDIR)/hare/third-party
