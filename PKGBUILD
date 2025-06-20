@@ -12,12 +12,8 @@ depends=('gtk3')
 makedepends=('git' 'fvm' 'clang' 'cmake' 'ninja' 'imagemagick')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=(
-	"git+${url}.git"
-	"${_pkgname}.desktop"
-)
-sha256sums=('SKIP'
-            '9d527cc7aaa8a4c4bc2ac80b88fb358aec2256eb503580e352c88671fa8653eb')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}/"
@@ -38,9 +34,9 @@ build() {
 }
 
 package() {
-	install -Dm644 "${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
-
 	cd "${_pkgname}/"
+	install -Dm644 "packaging/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+
 	install -Dm644 assets/icon/icon.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
 	for r in 16 24 32 48 64 128 256 512; do
 		install -dm755 "${pkgdir}/usr/share/icons/hicolor/${r}x${r}/apps/"
