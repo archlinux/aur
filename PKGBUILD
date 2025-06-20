@@ -4,7 +4,7 @@
 pkgname=opencommit
 pkgver=3.2.9
 pkgrel=1
-pkgdesc='Auto-generate impressive commits with AI in 1 second'
+pkgdesc='Auto-generate meaningful commits with AI in a second'
 arch=('any')
 url="https://github.com/di-sukharev/$pkgname"
 license=('MIT')
