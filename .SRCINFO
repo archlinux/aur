@@ -1,0 +1,17 @@
+pkgbase = swaycons
+	pkgdesc = Window Icons in Sway with Nerd Fonts
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/allie-wake-up/swaycons
+	arch = x64_64
+	license = MIT
+	makedepends = cargo
+	depends = sway
+	depends = ttf-font-nerd
+	depends = gcc-libs
+	depends = glibc
+	provides = swaycons
+	source = swaycons-0.3.1.tar.gz::https://github.com/allie-wake-up/swaycons/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 7693cbd5c06db25de3f67d3782089f9baade4b50d7312ed5cb93171e8f6a22d0
+
+pkgname = swaycons
