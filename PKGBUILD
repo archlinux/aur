@@ -2,22 +2,28 @@
 
 pkgname=popart
 pkgver=2019.07.15
-pkgrel=6
+pkgrel=7
 pkgdesc="Full-feature software for haplotype network reconstruction. https://doi.org/10.1111/2041-210X.12410"
 arch=('x86_64')
 url="https://popart.maths.otago.ac.nz/"
 license=('LGPL')
-depends=('lpsolve' 'qt5-base' 'hicolor-icon-theme' 'marble-common')
+depends=('lpsolve' 'qt6-base' 'hicolor-icon-theme' 'marble-common')
 makedepends=('git' 'gendesk' 'suitesparse')
-source=("git+https://github.com/jessicawleigh/popart-current.git")
-md5sums=('SKIP')
+source=("git+https://github.com/jessicawleigh/popart-current.git"
+	"5to6.patch::https://github.com/jessicawleigh/popart-current/pull/18.patch")
+md5sums=('SKIP'
+         'bc4a0bdf908a2dfa43a719ca94084048')
 pkgver(){
   cd $srcdir/${pkgname}-current
   printf $(TZ=UTC git log --no-walk --pretty="%cd" --decorate=full --date=format-local:%Y.%m.%d | head -n 1)
 }
+prepare() {
+  cd $srcdir/${pkgname}-current
+  patch -p1 < $srcdir/5to6.patch
+}
 build() {
   cd $srcdir/${pkgname}-current
-  qmake -makefile LPSOLVEDIR=/usr/bin/lp_solve MARBLEDIR=/usr/bin/marble popart.pro
+  qmake6 -makefile LPSOLVEDIR=/usr/bin/lp_solve MARBLEDIR=/usr/bin/marble popart.pro
   make
   gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec="$pkgname" --icon="$pkgname.png"
 }
