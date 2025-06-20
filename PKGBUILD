@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-nvapi-mingw-git
-pkgver=0.8.0.r124.g1e39a9d
+pkgver=0.9.0.r8.g5fa4b3c
 pkgrel=1
 pkgdesc='Alternative NVAPI implementation on top of DXVK'
 arch=('x86_64')
@@ -43,8 +43,8 @@ prepare() {
     local march="${flags["-march"]:-nocona}"
     local mtune="${flags["-mtune"]:-core-avx2}"
 
-    CFLAGS="-O3 -march=$march -mtune=$mtune -pipe"
-    CXXFLAGS="-O3 -march=$march -mtune=$mtune -pipe"
+    CFLAGS="-O3 -march=$march -mtune=$mtune -pipe -mprefer-avx128"
+    CXXFLAGS="-O3 -march=$march -mtune=$mtune -pipe -mprefer-avx128"
     LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # These flags are taken from Proton

@@ -1,6 +1,6 @@
 pkgbase = dxvk-nvapi-mingw-git
 	pkgdesc = Alternative NVAPI implementation on top of DXVK
-	pkgver = 0.8.0.r124.g1e39a9d
+	pkgver = 0.9.0.r8.g5fa4b3c
 	pkgrel = 1
 	url = https://github.com/jp7677/dxvk-nvapi
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dxvk-nvapi-mingw-git
 	makedepends = git
 	makedepends = mingw-w64-gcc
 	provides = dxvk-nvapi
-	provides = dxvk-nvapi=0.8.0.r124.g1e39a9d
+	provides = dxvk-nvapi=0.9.0.r8.g5fa4b3c
 	conflicts = dxvk-nvapi
 	options = !lto
 	options = !staticlibs
