@@ -2,7 +2,6 @@
 pkgname=jan-bin
 _pkgname=Jan
 pkgver=0.6.1
-_electronversion=30
 pkgrel=1
 pkgdesc="An open source alternative to ChatGPT that runs 100% offline on your computer. Multiple engine support (llama.cpp, TensorRT-LLM).(Prebuilt version)"
 arch=('x86_64')
