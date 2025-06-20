@@ -1,0 +1,8 @@
+post_install() {
+  echo ">>> TTYnote installed successfully!"
+  echo ">>> Run it using: ttynote"
+}
+
+post_remove() {
+  echo ">>> TTYnote has been removed."
+}
