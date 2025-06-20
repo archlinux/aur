@@ -1,6 +1,6 @@
 pkgbase = gigabyte-laptop-wmi-dkms-git
 	pkgdesc = Linux kernel module for Gigabyte laptops to interact with the embedded controller.
-	pkgver = r113.e4279c2
+	pkgver = 0.1.0.r0.ge4279c2
 	pkgrel = 1
 	url = https://github.com/tangalbert919/gigabyte-laptop-wmi
 	arch = any
