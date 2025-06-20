@@ -1,20 +1,20 @@
 pkgbase = polar-bin
 	pkgdesc = One-click Bitcoin Lightning networks for local app development & testing.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.2.0
-	pkgrel = 2
+	pkgver = 3.3.0
+	pkgrel = 1
 	url = https://lightningpolar.com/
 	arch = x86_64
 	license = MIT
 	depends = electron13
 	depends = docker
 	depends = docker-compose
-	provides = polar=3.2.0
+	provides = polar=3.3.0
 	conflicts = polar
-	source = polar-3.2.0.rpm::https://github.com/jamaljsr/polar/releases/download/v3.2.0/polar-linux-x86_64-v3.2.0.rpm
-	source = LICENSE-3.2.0::https://raw.githubusercontent.com/jamaljsr/polar/v3.2.0/LICENSE
+	source = polar-3.3.0.rpm::https://github.com/jamaljsr/polar/releases/download/v3.3.0/polar-linux-x86_64-v3.3.0.rpm
+	source = LICENSE-3.3.0::https://raw.githubusercontent.com/jamaljsr/polar/v3.3.0/LICENSE
 	source = polar.sh
-	sha256sums = 34f9527f8ee821842e8cbb6273f8fbaa8637bbbec8e3d628f9be34c7df6d3e0b
+	sha256sums = 366074149e9918e9bbc3a195e4f3c784cd77261f51684d2bfc9d75b4b5cf8d51
 	sha256sums = 971e947b52af09847d493b326953f2cbc91669441eab0d5e74eac38b8e162904
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = polar-bin
