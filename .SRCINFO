@@ -1,19 +1,19 @@
 pkgbase = godots-git
 	pkgdesc = A hub for managing your Godot versions and projects.
-	pkgver = 1.3.stable.r6.gc152061
-	pkgrel = 3
+	pkgver = 1.3.stable.r7.5d80ab9
+	pkgrel = 1
 	url = https://github.com/MakovWait/godots
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = godot=4.3
+	makedepends = godot=4.4.1
 	provides = godots
 	conflicts = godots
 	conflicts = godots-bin
 	options = !strip
 	source = git+https://github.com/MakovWait/godots.git
-	source = https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
+	source = https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_export_templates.tpz
 	sha256sums = SKIP
-	sha256sums = f5f10dbaf56a7908349e64b94ea8c2c93c2cc11fb1014c9565b68a2bb437b922
+	sha256sums = 7a8d14ade489fd4d22f178193021fe8a876a9e51068ed4dde26dac3ae4c59a88
 
 pkgname = godots-git

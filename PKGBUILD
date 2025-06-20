@@ -1,7 +1,8 @@
-# Maintainer: DragonWoven
+# Maintainer: Novadragon <me@novadragon.space>
+# Contributor: DragonWoven
 pkgname="godots-git"
-pkgver=1.3.stable.r6.gc152061
-pkgrel=3
+pkgver=1.3.stable.r34.g5d80ab9
+pkgrel=1
 pkgdesc="A hub for managing your Godot versions and projects."
 url="https://github.com/MakovWait/godots"
 license=("MIT")
@@ -10,11 +11,11 @@ provides=('godots')
 conflicts=('godots' 'godots-bin')
 replaces=()
 depends=()
-source=("git+https://github.com/MakovWait/godots.git" "https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz")
-makedepends=('git' 'godot=4.3')
+source=("git+https://github.com/MakovWait/godots.git" "https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_export_templates.tpz")
+makedepends=('git' 'godot=4.4.1')
 b2sums=()
 options=("!strip")
-sha256sums=('SKIP' 'f5f10dbaf56a7908349e64b94ea8c2c93c2cc11fb1014c9565b68a2bb437b922')
+sha256sums=('SKIP' '7a8d14ade489fd4d22f178193021fe8a876a9e51068ed4dde26dac3ae4c59a88')
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
