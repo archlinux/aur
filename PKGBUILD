@@ -2,12 +2,12 @@
 _pkgname=antares
 pkgname="${_pkgname}-sql-bin"
 _appname=Antares
-pkgver=0.7.34
+pkgver=0.7.35
 _electronversion=30
-pkgrel=2
+pkgrel=1
 pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX.(Prebuilt version.Use system-wide electron)"
 arch=(
-    'aarch64'
+#    'aarch64'
     'armv7h'
     'x86_64'
 )
@@ -19,7 +19,7 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux_arm64.deb")
+#source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux_arm64.deb")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux_armv7l.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux_amd64.deb")
 source=(
@@ -27,10 +27,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7b960bb0bed7d2228b6a8a879558c97906cc041ab14ab1d1089959902f386613'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('30d2a9f6723c9348338e9b5f366fa514ad379df68c2047576682e490e5211cc8')
-sha256sums_armv7h=('56c29188d0571c0ac5ce057153c839d0098091bac5aa7e3653469a601b573990')
-sha256sums_x86_64=('91f9dce9842521741eba22562e956b03236290bd63a290cd5ae7164f5272c13b')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums_armv7h=('03d96bb65c0db72f080a3d74a8f5b5dc66a2ed80a00da2c5a220c81ad9a5793d')
+sha256sums_x86_64=('8939618d216d598f84e824ccab3779776513e13fc6f64ef23706354e0e178278')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_appname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -40,6 +43,7 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${_appname}\/${_pkgname}/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
