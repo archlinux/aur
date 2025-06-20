@@ -1,8 +1,8 @@
 # Maintainer: Sterophonick
 pkgname=nocashgba-debugger
 _pkgname='nocashgba-debugger'
-pkgver=3.05
-pkgrel=2
+pkgver=3.06
+pkgrel=1
 pkgdesc='Game Boy Advance / Nintendo DS debugger and emulator'
 arch=(x86_64 i686)
 depends=('wine' 'winetricks')
@@ -11,7 +11,7 @@ source=(https://problemkaputt.de/no\$gba.zip
         nocashgba-debugger
         nocashgba-debugger.desktop
         nocashgba-debugger.png)
-md5sums=('660df5b0ba4af13958babd48a796f1da'
+md5sums=('13bd8fdf3cf1de6273b047e090c91a5c'
          'SKIP'
          'SKIP'
          'SKIP')
