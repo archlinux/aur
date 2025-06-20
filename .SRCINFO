@@ -1,0 +1,14 @@
+pkgbase = opencode
+	pkgdesc = A CLI that writes your git commit messages for you with Google Gemini AI
+	pkgver = 0.0.53
+	pkgrel = 1
+	url = https://github.com/tfkhdyt/geminicommit
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	depends = git
+	source = https://github.com/opencode-ai/opencode/archive/refs/tags/v0.0.53.tar.gz
+	sha256sums = 53e23c62284a50c38fd664de441b6db540fa5c944358fffd319f548ee504cb84
+
+pkgname = opencode
