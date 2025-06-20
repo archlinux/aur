@@ -1,0 +1,5 @@
+[python-kaleido-bin]
+source = "github"
+github = "plotly/Kaleido"
+use_latest_release = "true"
+prefix = "v"

@@ -1,10 +1,9 @@
 pkgbase = python-kaleido-bin
 	pkgdesc = Static image export for web-based visualization libraries with zero dependencies
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/plotly/Kaleido
-	arch = x86_64
-	arch = aarch64
+	arch = any
 	license = MIT
 	makedepends = python-installer
 	depends = python-plotly
@@ -12,9 +11,7 @@ pkgbase = python-kaleido-bin
 	provides = python-kaleido
 	conflicts = python-kaleido
 	options = !strip
-	source_x86_64 = https://github.com/plotly/Kaleido/releases/download/v0.2.1/kaleido-0.2.1-py2.py3-none-manylinux1_x86_64.whl
-	sha256sums_x86_64 = aa21cf1bf1c78f8fa50a9f7d45e1003c387bd3d6fe0a767cfbbf344b95bdc3a8
-	source_aarch64 = https://github.com/plotly/Kaleido/releases/download/v0.2.1/kaleido-0.2.1-py2.py3-none-manylinux2014_aarch64.whl
-	sha256sums_aarch64 = 845819844c8082c9469d9c17e42621fbf85c2b237ef8a86ec8a8527f98b6512a
+	source = https://github.com/plotly/Kaleido/releases/download/v1.0.0/kaleido-1.0.0-py3-none-any.whl
+	sha512sums = c927b22f6566cd0fc5951f962ce8b1e3e603d86c2f7ea641e7a6a1e04ccee6294371537e6703179570400edeeb728e0f7e9c92a2d418b79abdd7a0619073e112
 
 pkgname = python-kaleido-bin
