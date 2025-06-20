@@ -4,13 +4,13 @@
 pkgname=opencommit
 pkgver=3.2.9
 pkgrel=1
-pkgdesc="Auto-generate impressive commits with AI in 1 second"
-arch=("any")
-url="https://github.com/di-sukharev/opencommit"
+pkgdesc='Auto-generate impressive commits with AI in 1 second'
+arch=('any')
+url="https://github.com/di-sukharev/$pkgname"
 license=('MIT')
 depends=('nodejs')
-makedepends=("npm")
 options=('!strip')
+makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 sha256sums=('44b819d029ad9136899bf8ef979000d5d2e65ad6eb273764ca29dcb23ca6ece5')
 
