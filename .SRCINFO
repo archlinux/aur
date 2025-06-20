@@ -1,0 +1,19 @@
+pkgbase = iw4x-launcher-git
+	pkgdesc = iw4x updater & launcher
+	pkgver = 0.10.10.r0.g799a8eb
+	pkgrel = 1
+	url = https://github.com/iw4x/launcher
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = git
+	depends = openssl
+	depends = perl
+	provides = iw4x-launcher
+	options = !lto
+	source = iw4x-launcher::git+https://github.com/iw4x/launcher.git
+	sha256sums = SKIP
+
+pkgname = iw4x-launcher-git
