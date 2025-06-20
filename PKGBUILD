@@ -2,7 +2,7 @@
 pkgname=heartlib-git
 _pkgname='heartlib'
 pkgver=2a40da6
-pkgrel=2
+pkgrel=3
 pkgdesc='Comprehensive API for Nintendo GBA inspired by HAMLib and HELlib. Requires devkitARM'
 url='https://github.com/Sterophonick/HeartLib'
 arch=(x86_64 i686 aarch64)
@@ -20,23 +20,32 @@ prepare() {
   fi
 }
 
-package() {
+pkgver() {
+  cd "$srcdir/HeartLib"
+  git describe --tags --long --always | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
-  mkdir -p $pkgdir/opt/devkitpro/libheart/include
-  mkdir -p $pkgdir/opt/devkitpro/libheart/lib
-  mkdir -p $pkgdir/opt/devkitpro/examples
-
-  cd HeartLib
+build() {
+  cd "$srcdir/HeartLib"
   mkdir -p build
   make
-
-  cp libheart.a $pkgdir/opt/devkitpro/libheart/lib
-  cp LICENSE $pkgdir/opt/devkitpro/libheart
-  cp APLIB-LICENSE $pkgdir/opt/devkitpro/libheart
-  cp GBFS-LICENSE $pkgdir/opt/devkitpro/libheart
-  cp LIBGBA-LICENSE $pkgdir/opt/devkitpro/libheart
-  cp RUMBLE-LICENSE $pkgdir/opt/devkitpro/libheart
-  cp include/* $pkgdir/opt/devkitpro/libheart/include
-
-  cp -r samples $pkgdir/opt/devkitpro/examples/libheart-samples
 }
+
+package() {
+  cd "$srcdir/HeartLib"
+
+  mkdir -p $pkgdir/opt/devkitpro/examples
+
+  install -Dm666 libheart.a $pkgdir/opt/devkitpro/libheart/libheart.a
+  install -Dm666 LICENSE $pkgdir/opt/devkitpro/libheart
+  install -Dm666 APLIB-LICENSE $pkgdir/opt/devkitpro/libheart
+  install -Dm666 GBFS-LICENSE $pkgdir/opt/devkitpro/libheart
+  install -Dm666 LIBGBA-LICENSE $pkgdir/opt/devkitpro/libheart
+  install -Dm666 RUMBLE-LICENSE $pkgdir/opt/devkitpro/libheart
+
+  cp -r include $pkgdir/opt/devkitpro/libheart/include
+  cp -r samples $pkgdir/opt/devkitpro/examples/libheart-samples
+
+  chmod -R 666 $pkgdir/opt/devkitpro/libheart/include
+  chmod -R 666 $pkgdir/opt/devkitpro/examples/libheart-samples
+  }

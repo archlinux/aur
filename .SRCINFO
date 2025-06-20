@@ -1,7 +1,7 @@
 pkgbase = heartlib-git
 	pkgdesc = Comprehensive API for Nintendo GBA inspired by HAMLib and HELlib. Requires devkitARM
 	pkgver = 2a40da6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Sterophonick/HeartLib
 	arch = x86_64
 	arch = i686
