@@ -1,34 +1,56 @@
-# Maintainer: Nep_Nep <nepnep91 at child dot pizza>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Nep_Nep <nepnep91 at child dot pizza>
 # Contributor: Tim Paik <timpaik@163.com>
-_extname=quick-settings-tweaks
-_uuid=$_extname@qwreey
-pkgname=gnome-shell-extension-$_extname-git
-pkgver=r235.a9bd1ae
+pkgname=gnome-shell-extension-quick-settings-tweaks-git
+_uuid=quick-settings-tweaks@qwreey
+pkgver=2.1.stable.r13.ga733088
 pkgrel=1
-pkgdesc="A Gnome 43+ extension which allows you to customize the new Quick Settings Panel to your liking!"
+pkgdesc="A GNOME extension which allows you to customize the new Quick Settings Panel to your liking"
 arch=('any')
 url="https://github.com/qwreey75/quick-settings-tweaks"
-license=('GPL3')
+license=('LGPL-3.0-or-later')
 depends=('gnome-shell')
-makedepends=('git')
+makedepends=(
+  'git'
+  'npm'
+)
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" "gnome-shell-extensions-quick-settings-tweaks-git")
-source=('git+https://github.com/qwreey75/quick-settings-tweaks.git')
-sha256sums=('SKIP')
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/qwreey75/quick-settings-tweaks.git'
+        'gnome48.patch')
+sha256sums=('SKIP'
+            '1904d8bd44e89d4eae0686ad74f2ee49e135cd40f83efcaf998e0534c4d260cd')
 
 pkgver() {
-  cd "$srcdir/$_extname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd quick-settings-tweaks
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd quick-settings-tweaks
+
+  # Fix compatibility issues with GNOME 48
+  # https://github.com/qwreey/quick-settings-tweaks/issues/197
+  # https://github.com/qwreey/quick-settings-tweaks/pull/204
+  patch -Np1 -i ../gnome48.patch
 }
 
 build() {
-  cd "$srcdir/$_extname"
-  ./install.sh build
+  cd quick-settings-tweaks
+  export npm_config_cache="$srcdir/npm_cache"
+  npm install
+  TARGET=release ./install.sh create-release
 }
 
 package() {
-  cd "$srcdir/$_extname"
-  install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
-  bsdtar xvf "dist/$_uuid.shell-extension.zip" -C "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
-  chown root:root -R "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+  cd quick-settings-tweaks
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
+  bsdtar xvf "target/${_uuid}.shell-extension.zip" -C \
+    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}" --no-same-owner
+
+  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share"
+
+  install -Dm644 schemas/org.gnome.shell.extensions.quick-settings-tweaks.gschema.xml -t \
+    "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
 }

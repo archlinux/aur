@@ -1,4 +1,10 @@
-src
-pkg
-quick-settings-tweaks
-gnome-shell-extension-*
+# Ignore everything
+/*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!LICENSE
+!gnome48.patch
