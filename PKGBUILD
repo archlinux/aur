@@ -24,13 +24,13 @@ if command -v git > /dev/null; then
     fi
 else
     # We are probably inside a clean chroot environment, use fixed version info instead
-    _git_branch="branch=zfs-2.3.3-staging"
-    _staging_ver="2.3.3"
-    _base_ver="2.3.2"
+    _git_branch="branch=zfs-2.3.4-staging"
+    _staging_ver="2.3.4"
+    _base_ver="2.3.3"
 fi
 
 pkgname=${_pkgname}-dkms-staging-git
-pkgver=2.3.2.r105.g3cfd49e408
+pkgver=2.3.3.r0.g1af41fd203
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
