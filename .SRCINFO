@@ -1,7 +1,7 @@
 pkgbase = watchman
 	pkgdesc = Watches files and records, or triggers actions, when they change
 	pkgver = 2025.06.16.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/facebook/watchman
 	arch = x86_64
 	license = MIT
@@ -14,11 +14,11 @@ pkgbase = watchman
 	makedepends = python-setuptools
 	makedepends = rust
 	depends = boost-libs
-	depends = edencommon>=2025.06.02.00
-	depends = fb303>=2025.06.02.00
-	depends = fbthrift>=2025.06.02.00
+	depends = edencommon=2025.06.16.00
+	depends = fb303=2025.06.16.00
+	depends = fbthrift=2025.06.16.00
 	depends = fmt
-	depends = folly>=2025.06.02.00
+	depends = folly=2025.06.16.00
 	depends = gcc-libs
 	depends = glibc
 	depends = google-glog

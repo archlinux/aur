@@ -8,18 +8,18 @@
 
 pkgname=watchman
 pkgver=2025.06.16.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Watches files and records, or triggers actions, when they change"
 url="https://github.com/facebook/watchman"
 arch=(x86_64)
 license=(MIT)
 depends=(
   boost-libs
-  'edencommon>=2025.06.02.00'
-  'fb303>=2025.06.02.00'
-  'fbthrift>=2025.06.02.00'
+  "edencommon=$pkgver"
+  "fb303=$pkgver"
+  "fbthrift=$pkgver"
   fmt
-  'folly>=2025.06.02.00'
+  "folly=$pkgver"
   gcc-libs
   glibc
   google-glog
@@ -92,6 +92,9 @@ package() {
   install -vDm644 -t "$pkgdir/usr/lib/systemd/user" \
     "$srcdir/watchman.service" \
     "$srcdir/watchman.socket"
+  #cmake install does not catch these shared libs
+  install -vDm644 build/lib*.so \
+    -t "$pkgdir/usr/lib"
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 # vim:set ts=2 sw=2 et:
