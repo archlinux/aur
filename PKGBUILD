@@ -2,13 +2,14 @@
 
 pkgname=mmsg-git
 pkgver=r22.7dc0500
-pkgrel=1
+pkgrel=1.1
 pkgdesc="ipc client for maomaowm"
 arch=('x86_64')
 url="https://github.com/DreamMaoMao/mmsg"
 license=('MIT')
 depends=(
   glibc
+  cjson
   'wayland>=1.23.1'
 )
 makedepends=('git' 'make' 'wayland-protocols')
