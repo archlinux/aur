@@ -1,5 +1,5 @@
 pkgbase = opencode
-	pkgdesc = A CLI that writes your git commit messages for you with Google Gemini AI
+	pkgdesc = A powerful AI coding agent. Built for the terminal.
 	pkgver = 0.0.53
 	pkgrel = 1
 	url = https://github.com/tfkhdyt/geminicommit

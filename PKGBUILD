@@ -3,7 +3,7 @@
 pkgname=opencode
 pkgver=0.0.53
 pkgrel=1
-pkgdesc='A CLI that writes your git commit messages for you with Google Gemini AI'
+pkgdesc='A powerful AI coding agent. Built for the terminal.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/tfkhdyt/geminicommit'
 license=('GPL3')
