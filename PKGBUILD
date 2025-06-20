@@ -2,32 +2,39 @@
 
 pkgname='python-evaluate'
 _pkgname=${pkgname#python-}
-pkgver=0.4.3
-pkgrel=2
+pkgver=0.4.4
+pkgrel=1
 pkgdesc='HuggigFace library for easily evaluating machine learning models and datasets'
 arch=('any')
-url='https://github.com/huggingface/evaluate/'
+url='https://github.com/huggingface/evaluate'
 license=('Apache-2.0')
-depends=('python-datasets>=2.0.0'
+depends=('python-datasets'
          'python-dill'
-         'python-fsspec>=2021.05.0'
+         'python-fsspec'
          'python-huggingface-hub'
          'python-multiprocess'
-         'python-numpy>=1.17'
+         'python-numpy'
+         'python-packaging'
          'python-pandas'
-         'python-requests>=2.19.0'
-         'python-scipy>=1.7.1'
-         'python-tqdm>=4.62.1'
+         'python-requests'
+         'python-scipy'
+         'python-tqdm'
          'python-xxhash')
-makedepends=('python-installer' 'python-packaging' 'python-setuptools')
-optdepends=('python-transformers')
 groups=('huggingface')
-source=("evaluate-${pkgver}.tar.gz::https://github.com/huggingface/evaluate/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('af193874d5fdd3c4321e1b740e3f67232fac950d357dfd9034337e8c17a5d09e')
+makedepends=('python-build' 'python-installer' 'python-packaging' 'python-setuptools')
+optdepends=(
+    'python-transformers: Transformers library support'
+)
+source=("evaluate-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('ce7e01669f22c1e6348dd99b0de43c0e886bf36e591e036f708d623a0ad2731d')
 
 build() {
-    cd $srcdir/evaluate-$pkgver
-    python setup.py bdist_wheel
+  python -m build -nw "${_pkgname}-${pkgver}"
+}
+
+check() {
+  export PYTHONPATH="${srcdir}/${_pkgname}-${pkgver}/src"
+  python -c 'import evaluate'
 }
 
 package() {
