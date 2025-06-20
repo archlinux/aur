@@ -1,3 +1,5 @@
 src/*
 pkg/*
+gigabyte-laptop-wmi-dkms-git/*
+*.tar
 *.tar.*
