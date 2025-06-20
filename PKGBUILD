@@ -4,14 +4,14 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1975.970812e3
+pkgver=r1976.11981f5f
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/ksh93/ksh/'
 license=('EPL')
-depends=('glibc')
-makedepends=('git')
+depends=('libmd')
+makedepends=('git' 'linux-api-headers')
 conflicts=('ksh' 'ksh93')
 provides=('ksh' 'ksh93')
 install='ksh93.install'
@@ -55,8 +55,7 @@ build() {
 		# Obtain the number of CPU cores.
 		local -i cores=$(bin/package host cpu)
 		# Create a temporary directory to use for PGO
-		local tmpdir="${PWD}/pgotmp-$SRANDOM"
-		mkdir "$tmpdir"
+		local tmpdir=$(mktemp -d)
 		# Build with profiling flags set (-fno-unroll-loops increases overall
 		# performance slightly according to my results from shbench).
 		local generation_flags="-fprofile-dir=\"${tmpdir}\" -fprofile-generate=\"${tmpdir}\" -fno-unroll-loops"
