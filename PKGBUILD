@@ -2,7 +2,7 @@
 
 _pkgname=klassy
 pkgname=klassy-bin
-pkgver=6.3.breeze6.3.5
+pkgver=6.4.breeze6.4.0
 pkgrel=1
 pkgdesc="Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop."
 arch=(x86_64)
