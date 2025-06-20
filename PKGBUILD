@@ -1,5 +1,5 @@
 pkgname=ruffle-bin
-pkgver=2025.05.18
+pkgver=2025.06.19
 pkgrel=1
 pkgdesc="Unnofficial Ruffle bin package that supplies binaries for Linux x64, i368 and Arm64"
 arch=('x86_64' 'aarch64' 'i386' 'pentium4' 'i686')
@@ -10,20 +10,16 @@ makedepends=('unzip')
 conflicts=(ruffle-git)
 sha256sums=('7670a14a3a9ffd2a231abd9232f09c817b6312b60049175324ec4d374dffc6b8'
             'f5c8c21286d89f26c4f101e317641df02bf1af0529b6ca0897f9cebc3d654d7a')
-sha256sums_x86_64=('f3a9f355d5478687a88448485af09ab2aabffceda09af945c6f56780cd1cb934')
-sha256sums_aarch64=('08ea19b0264450bb33bdc3adc6d207d833d3f8c58899af794ed6a6b32e95b78d')
-sha256sums_i386=('1bf47079d6fba36d48406ec6599b3508e0ddcae542824bd902e0217b5e1d9a9b')
-sha256sums_pentium4=('1bf47079d6fba36d48406ec6599b3508e0ddcae542824bd902e0217b5e1d9a9b')
-sha256sums_i686=('1bf47079d6fba36d48406ec6599b3508e0ddcae542824bd902e0217b5e1d9a9b')
+sha256sums_x86_64=('1ff64a79645d0454417f86f8b5fd23ca4e6c0b5929f8f796b6bf2a34ee96ee77')
+sha256sums_aarch64=('d4c72bdeee1927adeb78674a62aebdd6fffdea744b783cac0ac33f01229ae015')
+sha256sums_i386=('141549b0944a2e58d8bfafe4ec43be73a58a1a4c0ee5b9d5f68de4aa3a4d02df')
+sha256sums_pentium4=('141549b0944a2e58d8bfafe4ec43be73a58a1a4c0ee5b9d5f68de4aa3a4d02df')
+sha256sums_i686=('141549b0944a2e58d8bfafe4ec43be73a58a1a4c0ee5b9d5f68de4aa3a4d02df')
 source=("ruffle.desktop" "ruffle.svg")
 source_x86_64=("ruffle-$pkgver-x64.tar.xz::https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-x64.tar.xz")
-
 source_i386=("ruffle-$pkgver-i686.tar.xz::https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-i686.tar.xz")
-
 source_pentium4=("ruffle-$pkgver-i686.tar.xz::https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-i686.tar.xz")
-
 source_i686=("ruffle-$pkgver-i686.tar.xz::https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-i686.tar.xz")
-
 source_aarch64=("ruffle-$pkgver-arm64.tar.xz::https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-arm64.tar.xz")
 
 package() {
