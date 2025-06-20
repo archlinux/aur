@@ -19,7 +19,8 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-    install -Dm755 "target/release/time-rs-cli" "$pkgdir/usr/bin/time-rs-cli"
+
+    install -Dm755 "target/release/time-rs-cli" "$pkgdir/usr/bin/timer"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
