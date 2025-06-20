@@ -1,0 +1,19 @@
+pkgbase = hare-update-git
+	pkgdesc = hare-update is a tool which assists in migrating a Hare codebases
+	pkgver = r68.3a70a47
+	pkgrel = 1
+	url = https://harelang.org
+	arch = x86_64
+	arch = aarch64
+	license = EUPL
+	makedepends = scdoc
+	makedepends = git
+	depends = qbe-git
+	depends = harec-git
+	depends = hare-git
+	provides = hare-update
+	conflicts = hare-update
+	source = hare-update::git+https://git.sr.ht/~sircmpwn/hare-update
+	sha256sums = SKIP
+
+pkgname = hare-update-git
