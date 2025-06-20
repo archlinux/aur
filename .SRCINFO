@@ -1,6 +1,6 @@
 pkgbase = subfinder
 	pkgdesc = A subdomain discovery tool that discovers valid subdomains for websites
-	pkgver = 2.7.1
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/subfinder
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = subfinder
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = subfinder-2.7.1.tar.gz::https://github.com/projectdiscovery/subfinder/archive/v2.7.1.tar.gz
-	b2sums = fffa45d8236aa8577b983faa8b7e6d5579e4a1cda67c8538935e31b3dc6c4d1e27bba8661016b65c3328a974fc51f653d9470c896f9020356288ed5a6bd58333
+	source = subfinder-2.8.0.tar.gz::https://github.com/projectdiscovery/subfinder/archive/v2.8.0.tar.gz
+	b2sums = 5a3ffe06360ba4e3d6f64234b6484940b308dc5daa9b3a287dedd0c5dcbf7dbdbddbf705b157ccb8e07e3ada04ac767d843874aa4fda7ba21478be0730e21862
 
 pkgname = subfinder
