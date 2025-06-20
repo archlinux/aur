@@ -1,0 +1,12 @@
+pkgbase = vosk-model-en-us-lgraph
+	pkgdesc = Big US English model with dynamic graph for Vosk speech recognition
+	pkgver = 0.22
+	pkgrel = 1
+	url = https://alphacephei.com/vosk/
+	arch = any
+	license = Apache
+	depends = unzip
+	source = https://alphacephei.com/kaldi/models/vosk-model-en-us-0.22-lgraph.zip
+	sha256sums = d9838b4aaa82a75c4a17f5aca300eaca129aaab2a7cbf951bafbb500eb9c4334
+
+pkgname = vosk-model-en-us-lgraph
