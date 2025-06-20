@@ -2,7 +2,6 @@
 # Maintainer: Xiaoxu Guo <ftiasch0@gmail.com>
 # Maintainer: László Várady <laszlo.varady93@gmail.com>
 # Contributor: envolution
-# Contributor: envolution
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 
