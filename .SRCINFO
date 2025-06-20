@@ -5,13 +5,14 @@ pkgbase = tailwindcss-cli
 	url = https://tailwindcss.com
 	arch = any
 	license = MIT
+	makedepends = npm
 	depends = nodejs
 	depends = gcc-libs
 	depends = glibc
 	provides = tailwindcss
 	noextract = cli-4.1.10.tgz
 	source = https://registry.npmjs.org/@tailwindcss/cli/-/cli-4.1.10.tgz
-	source = LICENSE
+	source = https://raw.githubusercontent.com/tailwindlabs/tailwindcss/refs/tags/v4.1.10/LICENSE
 	sha256sums = 2d51660c111755aa2e0c795cb2ff26e5f43a426114bb7683c2d6f1152f16fec1
 	sha256sums = 60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985
 

@@ -1,18 +1,18 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=tailwindcss-cli
-pkgver=4.1.10
+pkgver=4.1.10 # datasource=npm depName=@tailwindcss/cli
 pkgrel=1
 pkgdesc='A utility-first CSS framework for rapidly building custom user interfaces.'
 arch=("any")
 url='https://tailwindcss.com'
 license=('MIT')
 depends=("nodejs" "gcc-libs" "glibc")
-builddepends=("npm")
+makedepends=("npm")
 provides=('tailwindcss')
 
 source=("https://registry.npmjs.org/@tailwindcss/cli/-/cli-${pkgver}.tgz"
-        "LICENSE")
+        "https://raw.githubusercontent.com/tailwindlabs/tailwindcss/refs/tags/v${pkgver}/LICENSE")
 
 noextract=("cli-${pkgver}.tgz")
 
