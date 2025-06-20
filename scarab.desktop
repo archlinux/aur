@@ -4,4 +4,4 @@ Name=Scarab
 Comment=Hollow Knight mod manager
 Exec=/usr/bin/scarab
 Icon=/usr/share/icons/scarab.ico
-Categories=Utilities;Games;
+Categories=Game;Utility;

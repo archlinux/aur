@@ -3,7 +3,7 @@
 _pkgname=Scarab
 pkgname=scarab
 pkgver=2.6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hollow Knight mod manager"
 arch=(x86_64 i686)
 url="https://github.com/fifty-six/Scarab"
