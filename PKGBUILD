@@ -1,7 +1,7 @@
 # Maintainer: Sylvain POULAIN <sylvain.poulain at giscan dot com>
 pkgname=python-segment-geospatial
 _pkgname=segment-geospatial
-pkgver=0.12.4
+pkgver=0.12.6
 pkgrel=1
 pkgdesc="A Python package for segmenting geospatial data with the Segment Anything Model (SAM)"
 arch=('any')
