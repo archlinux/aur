@@ -1,5 +1,5 @@
 pkgbase = vosk-model-en-us
-	pkgdesc = Small English model for Vosk speech recognition
+	pkgdesc = English model for Vosk speech recognition
 	pkgver = 0.22
 	pkgrel = 1
 	url = https://alphacephei.com/vosk/

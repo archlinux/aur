@@ -3,7 +3,7 @@
 pkgname=vosk-model-en-us
 pkgver=0.22
 pkgrel=1
-pkgdesc="Small English model for Vosk speech recognition"
+pkgdesc="English model for Vosk speech recognition"
 arch=('any')
 url="https://alphacephei.com/vosk/"
 license=('Apache')
