@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=work-log-ify-git
 _pkgname=WorkLogIfy
-pkgver=1.39.1.r0.g0abf2c4
+pkgver=1.39.8.r0.g3852613
 _electronversion=34
 _nodeversion=22
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
@@ -80,6 +80,7 @@ build() {
     NODE_ENV=production     npx tsc --noEmit
     NODE_ENV=production     npx vite build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config=electron-builder.json5"
+    rm -rf "${srcdir}/${pkgname%-git}.git/release/linux-"*/resources/app.asar.unpacked/node_modules/active-win/lib/{macos.*,windows*,binding/napi-6-darwin*}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"

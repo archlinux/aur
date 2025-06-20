@@ -1,6 +1,6 @@
 pkgbase = work-log-ify-git
 	pkgdesc = Track your work.Spend less time on what's required, more time on what's important.(Use system-wide electron)
-	pkgver = 1.39.1.r0.g0abf2c4
+	pkgver = 1.39.8.r0.g3852613
 	pkgrel = 1
 	url = https://github.com/dmitrijs/WorkLogIfy
 	arch = any
@@ -11,11 +11,11 @@ pkgbase = work-log-ify-git
 	makedepends = gendesk
 	makedepends = curl
 	depends = electron34
-	provides = work-log-ify=1.39.1
+	provides = work-log-ify=1.39.8
 	conflicts = work-log-ify
 	source = work-log-ify.git::git+https://github.com/dmitrijs/WorkLogIfy.git
 	source = work-log-ify.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = work-log-ify-git
