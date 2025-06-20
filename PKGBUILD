@@ -2,8 +2,8 @@
 pkgname=agbplay-git
 _pkgname='agbplay-git'
 pkgbase=agbplay
-pkgver=5f86264
-pkgrel=2
+pkgver=c1c9e39
+pkgrel=1
 pkgdesc='Music player for the most common GBA sound format'
 url='https://github.com/ipatix/agbplay'
 arch=(x86_64 i686 aarch64)
@@ -16,6 +16,11 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP')
 license=('gplv3')
+
+pkgver() {
+  cd "$srcdir/agbplay"
+  git describe --tags --long --always | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
   mkdir -p $pkgdir/usr/bin
