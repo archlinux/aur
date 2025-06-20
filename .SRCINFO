@@ -1,0 +1,22 @@
+pkgbase = samrewritten-legacy-git
+	pkgdesc = Steam Achievement Manager (legacy version compatible with non-Snap Steam)
+	pkgver = r266.02fea42
+	pkgrel = 1
+	url = https://github.com/PaulCombal/SamRewritten-legacy
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = gcc>=9.0
+	depends = steam
+	depends = yajl
+	depends = gtkmm3
+	depends = glibc
+	depends = curl
+	optdepends = zenity: error messages with style
+	optdepends = valgrind: for automated dev script
+	optdepends = massif-visualizer: for automated dev script
+	source = SamRewritten-legacy::git+https://github.com/PaulCombal/SamRewritten-legacy.git
+	md5sums = SKIP
+
+pkgname = samrewritten-legacy-git
