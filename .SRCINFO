@@ -1,12 +1,13 @@
 pkgbase = python-segment-anything-py
 	pkgdesc = An unofficial Python package for Meta AI's Segment Anything Model
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/opengeos/segment-anything
 	arch = any
 	license = Apache Software License 2.0
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-build
 	depends = python
 	depends = python-pytorch
 	depends = python-torchvision
