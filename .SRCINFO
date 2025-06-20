@@ -1,0 +1,13 @@
+pkgbase = time-rs-cli
+	pkgdesc = A minimal Catppuccin-themed terminal countdown timer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ryu-ryuk/yoru-timer-cli
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	source = time-rs-cli::git+https://github.com/ryu-ryuk/yoru-timer-cli
+	sha256sums = SKIP
+
+pkgname = time-rs-cli
