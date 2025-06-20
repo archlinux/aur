@@ -1,0 +1,4 @@
+[zmate]
+source = "git"
+git = "https://github.com/ziinaio/zmate.git"
+prefix = "v"
