@@ -9,21 +9,18 @@ arch=('x86_64')
 url="https://github.com/andrew-ld/lutris-gamepad-ui"
 license=('GPL3')
 depends=('electron36' 'lutris')
-makedepends=('npm')
+makedepends=('npm' 'git')
 source=("git+https://github.com/andrew-ld/lutris-gamepad-ui" "lutris-gamepad-ui.sh" "lutris-gamepad-ui.desktop")
 sha256sums=('SKIP' '1e374eb7dc521f1944d7523d96c634c24bac0968478b18baad8173ee5d5d5c83' 'fbb78ffe31da8ed401574e11b10ded372967fb70bec835a06de16ab7f99b9a3f')
 
 pkgver() {
     cd "$_pkgname"
-    _tag=$(git tag -l --sort -v:refname | head -n1)
-    _rev=$(git rev-list --count "${_tag}"..HEAD)
-    _hash=$(git rev-parse --short HEAD)
-    printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd "$_pkgname"
-    npm install
+    npm install --cache "${srcdir}/npm-cache"
     npm run build:vite
 }
 
@@ -35,5 +32,5 @@ package() {
     install -vDm644 "$_pkgname/electron.js" "$pkgdir/usr/lib/$_pkgname/electron.js"
     install -vDm644 "$_pkgname/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 
-    cp -rp "$_pkgname/dist/" "$pkgdir/usr/lib/$_pkgname/" 
+    cp -rp "$_pkgname/dist/" "$pkgdir/usr/lib/$_pkgname/"
 }

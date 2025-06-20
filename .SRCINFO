@@ -6,6 +6,7 @@ pkgbase = lutris-gamepad-ui-git
 	arch = x86_64
 	license = GPL3
 	makedepends = npm
+	makedepends = git
 	depends = electron36
 	depends = lutris
 	source = git+https://github.com/andrew-ld/lutris-gamepad-ui
