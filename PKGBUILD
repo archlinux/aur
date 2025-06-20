@@ -1,13 +1,14 @@
 # Maintainer: Marcel Campello <marcel.campello@prafrentex.com.br>
 
 pkgname=plasma-meta-slim
-pkgver=6.3
+pkgver=6.4
 pkgrel=1
 pkgdesc='Meta package to install KDE Plasma (slim selection)'
 arch=(any)
 license=(None)
 url='https://kde.org/plasma-desktop/'
-depends=(bluedevil
+depends=(aurorae
+         bluedevil
          breeze-gtk
          drkonqi
          kde-gtk-config
@@ -31,6 +32,7 @@ depends=(bluedevil
          plasma-thunderbolt
          plasma-vault
          plasma-workspace-wallpapers
+         power-profiles-daemon
          powerdevil
          print-manager
          sddm-kcm
