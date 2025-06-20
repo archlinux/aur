@@ -1,7 +1,7 @@
 pkgbase = radegast-ng
 	pkgdesc = Lightweight client for connecting to Second Life and OpenSim worlds
-	pkgver = 2.45
-	pkgrel = 399
+	pkgver = 2.47
+	pkgrel = 441
 	url = http://radegast.life
 	arch = i686
 	arch = x86_64
