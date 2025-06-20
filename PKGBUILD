@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-git
-pkgver=5.92.1.r0.g618d4be
+pkgver=5.93.0.r0.gbeabb42
 pkgrel=1
 pkgdesc="qp - query packages. A CLI utility for querying installed packages across multiple package ecosystems."
 arch=("any")
