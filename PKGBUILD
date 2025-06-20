@@ -5,7 +5,7 @@
 
 _gemname=asciidoctor-diagram-plantuml
 pkgname=ruby-$_gemname
-pkgver=1.2025.2
+pkgver=1.2025.3
 pkgrel=1
 pkgdesc='PlantUML JAR files wrapped in a Ruby gem'
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('eae7fb3775e785fc8a42cc877afdcd176d49da93')
+sha1sums=('0d13f830af19fdad076b500920e4a5e0d324852d')
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
