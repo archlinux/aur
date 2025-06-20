@@ -1,0 +1,13 @@
+pkgbase = ssmsh
+	pkgdesc = Interactive shell for the AWS Parameter Store
+	pkgver = 1.4.9
+	pkgrel = 1
+	url = https://github.com/bwhaley/ssmsh
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	options = !debug
+	source = ssmsh-1.4.9.tar.gz::https://github.com/bwhaley/ssmsh/archive/v1.4.9.tar.gz
+	b2sums = cd2d736960a98322c14a0b8d11d60f5234755fd5cc074dc75e66e7e4dd11470686707df25aa9be37b8bccc0fc2e7b78f48c860456b3c6fc5167f53c3ec9af3a9
+
+pkgname = ssmsh
