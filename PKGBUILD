@@ -2,7 +2,7 @@
 pkgname=ncx-git
 appname=ncx
 pkgver=2.0.4a_4_g7f0316a
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for system management and configuration"
 arch=('x86_64')
 url="https://gitlab.com/nathanchere/ncx"
