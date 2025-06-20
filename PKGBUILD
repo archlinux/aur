@@ -2,18 +2,18 @@
 # Contributor: Jonathan Chasteen <jonathan.chasteen at live dot com>
 
 pkgname=ltfs
-pkgver=2.4.6.2
-_pkgver2=10513
+pkgver=2.4.7.1
+_pkgver2=10515
 pkgrel=1
 pkgdesc='Linear Tape File System'
 arch=('x86_64' 'i686')
 url='https://github.com/LinearTapeFileSystem/ltfs'
 license=('BSD')
-depends=('fuse' 'icu' 'libxml2' 'net-snmp')
+depends=('fuse' 'icu' 'libxml2' 'net-snmp' 'python-pyxattr')
 makedepends=('patch' 'gcc' 'pkg-config' 'make' 'fakeroot')
 backup=('etc/ltfs.conf.local')
 source=("https://github.com/LinearTapeFileSystem/ltfs/archive/refs/tags/v${pkgver}-${_pkgver2}.tar.gz")
-sha256sums=('3ea9b210507f6bb2c9cd8f9d92f0c2ee321e24241dc5a402e557409a71531c91')
+sha256sums=('6b4f8421882c3904ab66b670b51c309d8a7983a1440b1d5871b575634792ae99')
 
 build() {
 	cd "${srcdir}/ltfs-${pkgver}-${_pkgver2}"
