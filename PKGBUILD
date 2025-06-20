@@ -2,7 +2,7 @@
 
 pkgname=maomaowm-git
 pkgver=r517.6b2ef05
-pkgrel=3.1
+pkgrel=3.2
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/maomaowm"
 arch=("x86_64")
@@ -15,6 +15,7 @@ depends=(
   pixman
   libxkbcommon
   pcre2
+  cjson
   'wlroots-0.19-mao-git'
 )
 

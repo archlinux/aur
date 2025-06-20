@@ -1,7 +1,7 @@
 pkgbase = maomaowm-git
 	pkgdesc = A Wayland compositor with smooth animation
 	pkgver = r517.6b2ef05
-	pkgrel = 3.1
+	pkgrel = 3.2
 	url = https://github.com/DreamMaoMao/maomaowm
 	arch = x86_64
 	license = GPL-3.0
@@ -19,6 +19,7 @@ pkgbase = maomaowm-git
 	depends = pixman
 	depends = libxkbcommon
 	depends = pcre2
+	depends = cjson
 	depends = wlroots-0.19-mao-git
 	provides = maomaowm
 	provides = wayland-compositor
