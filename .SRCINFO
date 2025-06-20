@@ -1,0 +1,27 @@
+pkgbase = openlist-bin
+	pkgdesc = A new AList Fork to Anti Trust Crisis
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/OpenListTeam/OpenList
+	install = openlist.install
+	arch = aarch64
+	arch = x86_64
+	license = AGPL-3.0-only
+	optdepends = aria2: download by aria2.
+	provides = openlist
+	options = !debug
+	backup = etc/openlist/config.json
+	source = openlist.service
+	source = config.json
+	source = openlist.sysusers
+	source = openlist.tmpfiles
+	sha256sums = 4bc1ccc08f17f5c9ce0fe7fc600ea9d5e1b034d52a776244c627bc13a3fa401d
+	sha256sums = 9259caae294aebb88e0e25f83074e090f3581556c05548544739edf88c028537
+	sha256sums = fe9c68aa8a6a27477049c839cb5818ba3ddbd88c6813dd2eacea73da70807905
+	sha256sums = e4f341a876f43b551b67b730aa93dc3a8d2e5f6863ca234852a4389aa64c0aca
+	source_aarch64 = openlist-4.0.0-aarch64.tar.gz::https://github.com/OpenListTeam/OpenList/releases/download/v4.0.0/openlist-linux-arm64.tar.gz
+	sha256sums_aarch64 = 200c96e446ba34129732315b442921ed1a34ad741702816c927a4928d87d443f
+	source_x86_64 = openlist-4.0.0-x86_64.tar.gz::https://github.com/OpenListTeam/OpenList/releases/download/v4.0.0/openlist-linux-amd64.tar.gz
+	sha256sums_x86_64 = 6bf5cab6bdbed4432f277665f1ea53e6ae648cc0d0a8865fd0f6a59d46857728
+
+pkgname = openlist-bin
