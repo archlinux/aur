@@ -7,7 +7,7 @@ pkgdesc="Python CLI to update your system packages"
 arch=(any)
 url="https://pypi.org/project/ecdysys"
 license=('MIT')
-depends=(python-colorama python-toml)
+depends=(python-colorama python-toml python-yaspin)
 makedepends=(python-installer)
 optdepends=(
 	'pacman-contrib: pacman support'

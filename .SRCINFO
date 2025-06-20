@@ -8,6 +8,7 @@ pkgbase = python-ecdysys
 	makedepends = python-installer
 	depends = python-colorama
 	depends = python-toml
+	depends = python-yaspin
 	optdepends = pacman-contrib: pacman support
 	optdepends = yay: aur support with yay
 	optdepends = paru: aur support with paru
