@@ -1,7 +1,7 @@
 pkgbase = wangle
 	pkgdesc = C++ networking library providing client/server abstractions for building services
 	pkgver = 2025.06.16.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/facebook/wangle
 	arch = x86_64
 	license = Apache-2.0
