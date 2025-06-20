@@ -3,11 +3,11 @@ pkgname=agbplay-git
 _pkgname='agbplay-git'
 pkgbase=agbplay
 pkgver=c1c9e39
-pkgrel=2
+pkgrel=3
 pkgdesc='Music player for the most common GBA sound format'
 url='https://github.com/ipatix/agbplay'
 arch=(x86_64 i686 aarch64)
-depends=(boost portaudio ncurses5-compat-libs libsndfile jsoncpp)
+depends=(fmt libzip zlib boost portaudio ncurses qt6-base)
 makedepends=(base-devel)
 source=(git+https://github.com/ipatix/agbplay
         agbplay-gui.desktop
