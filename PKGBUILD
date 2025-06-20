@@ -1,11 +1,13 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: envolution
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Xuanrui Qi <me@xuanruiqi.com>
 # Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: José Luis Lafuente <jl@lafuente.me>
 # Contributor: Michael Louis Thaler <michael.louis.thaler@gmail.com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=watchman
-pkgver=2024.10.28.00
+pkgver=2025.06.16.00
 pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change"
 url="https://github.com/facebook/watchman"
@@ -13,11 +15,11 @@ arch=(x86_64)
 license=(MIT)
 depends=(
   boost-libs
-  edencommon
-  fb303
-  fbthrift
+  'edencommon>=2025.06.02.00'
+  'fb303>=2025.06.02.00'
+  'fbthrift>=2025.06.02.00'
   fmt
-  folly
+  'folly>=2025.06.02.00'
   gcc-libs
   glibc
   google-glog
@@ -29,10 +31,10 @@ depends=(
 makedepends=(
   boost
   cmake
-  cpptoml
-  fizz
+  cpptoml-git
+  'fizz>=2025.06.02.00'
   gtest
-  mvfst
+  'mvfst>=2025.06.02.00'
   python-setuptools
   rust
 )
@@ -45,14 +47,12 @@ source=(
   "watchman.service"
   "watchman.socket"
 )
-sha256sums=(
-  'a34c511ad9d2713328371f1aa663ba98ef5acdd934ce13ef6336da3548f855a5'
-  'd40feab6aa7dc6522c648660e88642fdf721ee1f9d80c23f6891a6381067a38b'
-  '3ebc93cb91ec9b9603969e222fd3ffd9baa4a1d07a7b3bd7aabf956ec2e177c8'
-  'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'
-  '5b4b032b68d87d648e268c5c08b4d56993d5c1a661e3925b39f54bdef2dfbc42'
-  '853457ad70492fec9d7d020b9e067e2aec2ca419c0a5cddd5d93c5fab354c87a'
-)
+sha256sums=('621398f2d87005d720e0b178433fa9ed32a19b1ac4c7a6daa7b9f95ba872adb1'
+            'd40feab6aa7dc6522c648660e88642fdf721ee1f9d80c23f6891a6381067a38b'
+            '3ebc93cb91ec9b9603969e222fd3ffd9baa4a1d07a7b3bd7aabf956ec2e177c8'
+            'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'
+            '5b4b032b68d87d648e268c5c08b4d56993d5c1a661e3925b39f54bdef2dfbc42'
+            '853457ad70492fec9d7d020b9e067e2aec2ca419c0a5cddd5d93c5fab354c87a')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -74,33 +74,14 @@ build() {
     -DWATCHMAN_STATE_DIR=/var/run/watchman \
     -DUSE_SYS_PYTHON=ON \
     -DENABLE_EDEN_SUPPORT=ON \
-    -DWATCHMAN_VERSION_OVERRIDE=$pkgver
+    -DWATCHMAN_VERSION_OVERRIDE=$pkgver \
+    -DCMAKE_CXX_FLAGS="-include variant -include cstdint"
   cmake --build build
 }
 
 check() {
   cd $pkgname-$pkgver
-  local skipped_tests=(
-    # Skip failing tests - not sure why they fail
-    bser_js::watchman.node.bser.test_bser.BserTestCase.runTest
-    test_py::watchman.integration.test_capabilities.TestCapabilitiesCliJson.test_full_capability_set
-    test_py::watchman.integration.test_capabilities.TestCapabilitiesUnixBser2.test_full_capability_set
-    test_py::watchman.integration.test_capabilities.TestCapabilitiesUnixJson.test_full_capability_set
-    test_py::watchman.integration.test_fishy
-    test_py::watchman.integration.test_force_recrawl
-    test_py::watchman.integration.test_scm.TestScmUnixBser2.test_scmHg
-    test_py::watchman.integration.test_scm.TestScmUnixJson.test_scmHg
-    test_py::watchman.integration.test_since.TestSinceUnixJson.test_sinceRelativeRoot
-    test_py::watchman.integration.test_subscribe.TestSubscribeUnixBser2.test_drop_state
-    test_py::watchman.integration.test_trigger.TestTriggerUnixBser2.test_legacyTrigger
-    test_py::watchman.integration.test_trigger.TestTriggerUnixJson.test_legacyTrigger
-
-    # Skip long-running tests
-    test_py::watchman.integration.test_local_saved_state
-    test_py::watchman.integration.test_sock_perms.TestSockPerms
-  )
-  local skipped_tests_pattern="${skipped_tests[0]}$(printf "|%s" "${skipped_tests[@]:1}")"
-  ctest --test-dir build --output-on-failure -E "$skipped_tests_pattern"
+  ctest --test-dir build --output-on-failure --exclude-regex "[Bb]ig|[Ii]ntegration"
 }
 
 package() {
@@ -113,3 +94,4 @@ package() {
     "$srcdir/watchman.socket"
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
+# vim:set ts=2 sw=2 et:
