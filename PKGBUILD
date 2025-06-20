@@ -3,7 +3,7 @@
 # Co-Maintainer: Aethar <elliott.ashby88@gmail.com>
 pkgname=yt-x-git
 _pkgname=yt-x
-pkgver=v0.4.5.r3.4a6754e
+pkgver=v0.4.5.r4.fb5f39a
 pkgrel=1
 pkgdesc="Browse youtube from your terminal"
 arch=(any)

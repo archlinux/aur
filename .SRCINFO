@@ -1,6 +1,6 @@
 pkgbase = yt-x-git
 	pkgdesc = Browse youtube from your terminal
-	pkgver = v0.4.5.r3.4a6754e
+	pkgver = v0.4.5.r4.fb5f39a
 	pkgrel = 1
 	url = https://github.com/Benexl/yt-x
 	arch = any
