@@ -1,12 +1,12 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Maintainer: Xiaoxu Guo <ftiasch0@gmail.com>
 # Maintainer: László Várady <laszlo.varady93@gmail.com>
+# Contributor: envolution
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
-# Contributor: evolution
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=folly
-pkgver=2025.06.02.00
+pkgver=2025.06.16.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -56,15 +56,18 @@ source=(
   "fix-cmake-find-glog.patch"
   "fix-setup-py-for-python-extensions.patch"
 )
-sha256sums=('db59cb09e04505e1d54c895497cac173b075eb8914505fa2a8749fbadea5cec4'
+sha256sums=('92d4e7c4f5f395745c586ec6b3b4832d7b6228f0ad6e0a10cb7830ab51a9b394'
             'c4b66347a9db6ddedb516e2a778a7a37e26a4280ce2c0c9fdbac11d8c8190c55'
             'a4701d37451bec6063ce5b5efc29f67ac6cc030fda699dac56d81e6064c0d7b5')
 
 prepare() {
   cd $pkgname
-# todo: convert this to a sed command as they likely won't fix this any time soon
+  # this causes cmake installtion issues with executor_api.h not being generated
+  git revert --no-edit d136fac18aa1dfb07779d8e40b4ffe367b8f7c1a
+
+  # todo: convert this to a sed command as they likely won't fix this any time soon
   patch --forward --strip=1 --input="$srcdir/fix-cmake-find-glog.patch"
-# possibly not needed due to cmake add_definition...LOG_USE_GLOG_EXPORT below
+  # possibly not needed due to cmake add_definition...LOG_USE_GLOG_EXPORT below
   patch --forward --strip=1 --input="$srcdir/fix-setup-py-for-python-extensions.patch"
 
   # Remove test with compilation error
@@ -88,6 +91,7 @@ target_link_libraries(folly_python_cpp PRIVATE Python3::Python)' folly/CMakeList
 
   # Set Python extensions version
   sed -i "s/version=.*/version=\"$pkgver\",/" folly/python/setup.py
+
 }
 
 build() {
@@ -119,19 +123,19 @@ check() {
 
     # Skip failing tests - not sure why they fail
     io_async_ssl_session_test.SSLSessionTest.BasicTest
-	  io_async_ssl_session_test.SSLSessionTest.NullSessionResumptionTest
-	  expected_coroutines_test.Expected.CoroutineSuccess
-	  expected_coroutines_test.Expected.CoroutineFailure
-	  expected_coroutines_test.Expected.CoroutineAwaitUnexpected
-	  expected_coroutines_test.Expected.CoroutineReturnUnexpected
-	  expected_coroutines_test.Expected.CoroutineReturnsVoid
-	  expected_coroutines_test.Expected.CoroutineReturnsVoidThrows
-	  expected_coroutines_test.Expected.CoroutineReturnsVoidError
-	  expected_coroutines_test.Expected.VoidCoroutineAwaitsError
-	  expected_coroutines_test.Expected.CoroutineException
-	  expected_coroutines_test.Expected.CoroutineCleanedUp
-	  optional_coroutines_test.Optional.CoroutineSuccess
-	  singleton_thread_local_test.SingletonThreadLocalDeathTest.Overload
+    io_async_ssl_session_test.SSLSessionTest.NullSessionResumptionTest
+    expected_coroutines_test.Expected.CoroutineSuccess
+    expected_coroutines_test.Expected.CoroutineFailure
+    expected_coroutines_test.Expected.CoroutineAwaitUnexpected
+    expected_coroutines_test.Expected.CoroutineReturnUnexpected
+    expected_coroutines_test.Expected.CoroutineReturnsVoid
+    expected_coroutines_test.Expected.CoroutineReturnsVoidThrows
+    expected_coroutines_test.Expected.CoroutineReturnsVoidError
+    expected_coroutines_test.Expected.VoidCoroutineAwaitsError
+    expected_coroutines_test.Expected.CoroutineException
+    expected_coroutines_test.Expected.CoroutineCleanedUp
+    optional_coroutines_test.Optional.CoroutineSuccess
+    singleton_thread_local_test.SingletonThreadLocalDeathTest.Overload
   )
   local skipped_tests_pattern="${skipped_tests[0]}$(printf '|%s' "${skipped_tests[@]:1}")"
   ctest --test-dir build --output-on-failure -E "$skipped_tests_pattern"
