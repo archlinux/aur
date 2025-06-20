@@ -1,7 +1,7 @@
 pkgbase = opencommit
-	pkgdesc = Auto-generate impressive commits with AI in 1 second
+	pkgdesc = Auto-generate meaningful commits with AI in a second
 	pkgver = 3.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/di-sukharev/opencommit
 	arch = any
 	license = MIT

@@ -3,7 +3,7 @@
 
 pkgname=opencommit
 pkgver=3.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Auto-generate meaningful commits with AI in a second'
 arch=('any')
 url="https://github.com/di-sukharev/$pkgname"
