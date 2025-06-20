@@ -4,7 +4,7 @@ pkgbase=python-s3path
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="A pathlib extension for AWS S3 Service"
 arch=('any')
@@ -22,7 +22,7 @@ checkdepends=('python-pytest'
               'python-moto')   # only pass for moto>=5; requests <- smart_open
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "${pkgver}-conftest.py::https://github.com/liormizr/s3path/raw/${pkgver}/tests/conftest.py")
-md5sums=('541feaff8ee7205eed814d5bddb6f9a9'
+md5sums=('95a5f1f41b4870d8e810c26d63e3fd37'
          'ecf19dfe89edde8462b7887ef823dbaf')
 
 prepare() {
