@@ -13,6 +13,7 @@ pkgbase = fenrir
 	depends = python
 	depends = python-pyudev
 	depends = python-daemonize
+	depends = python-dbus
 	depends = python-evdev
 	depends = python-dbus
 	depends = python-pyperclip
