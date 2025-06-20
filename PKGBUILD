@@ -1,5 +1,4 @@
-# Maintainer: You <name at domain dot com>
-# Contributor: Someone Else <email>
+# Maintainer: ryu-ryuk <114721240+ryu-ryuk@users.noreply.github.com>
 
 pkgname=time-rs-cli
 pkgver=0.1.0
