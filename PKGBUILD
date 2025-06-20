@@ -2,7 +2,7 @@
 # Backup contact: admin@azccriminal.space
 pkgname=colorsearch
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Search files by name and dominant color in images and videos"
 arch=('x86_64')
 url="https://github.com/Zamanhuseyinli/colorsearch"

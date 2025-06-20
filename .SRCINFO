@@ -1,7 +1,7 @@
 pkgbase = colorsearch
 	pkgdesc = Search files by name and dominant color in images and videos
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zamanhuseyinli/colorsearch
 	arch = x86_64
 	license = GPL3
