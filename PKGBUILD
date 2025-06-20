@@ -6,9 +6,10 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 _pkgname=transmission
+parent_pkgname=transmission3-cli
 pkgname=transmission3-cli-noupnp
 pkgver=3.00
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.transmissionbt.com/"
 pkgdesc='Fast, easy, and free BitTorrent client (CLI tools, daemon and web client)'
@@ -80,8 +81,8 @@ package() {
     "$pkgdir/usr/lib/systemd/system/transmission.service"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/transmission-cli/COPYING"
 
-  install -Dm644 "$srcdir/transmission3-cli.sysusers" \
+  install -Dm644 "$srcdir/$parent_pkgname.sysusers" \
     "$pkgdir/usr/lib/sysusers.d/transmission.conf"
-  install -Dm644 "$srcdir/transmission3-cli.tmpfiles" \
+  install -Dm644 "$srcdir/$parent_pkgname.tmpfiles" \
     "$pkgdir/usr/lib/tmpfiles.d/transmission.conf"
 }
