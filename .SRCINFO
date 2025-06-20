@@ -7,9 +7,7 @@ pkgbase = opencommit
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	provides = opencommit
-	conflicts = opencommit
-	options = !strip
+	noextract = opencommit-3.2.9.tgz
 	source = https://registry.npmjs.org/opencommit/-/opencommit-3.2.9.tgz
 	sha256sums = 44b819d029ad9136899bf8ef979000d5d2e65ad6eb273764ca29dcb23ca6ece5
 

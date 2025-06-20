@@ -9,22 +9,14 @@ arch=('any')
 url="https://github.com/di-sukharev/$pkgname"
 license=('MIT')
 depends=('nodejs')
-options=('!strip')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
+noextract=("$pkgname-$pkgver.tgz")
 sha256sums=('44b819d029ad9136899bf8ef979000d5d2e65ad6eb273764ca29dcb23ca6ece5')
 
-prepare() {
-    tar -xzf "$pkgname-$pkgver.tgz"
-}
-
 package() {
-    npm install -g --production --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/package"
+    npm install -g --omit=dev --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
 
-    # Non-deterministic race in npm gives 777 permissions to random directories.
-    # See https://github.com/npm/npm/issues/9359 for details.
-    find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
-    
-    install -dpm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -sf "../../../lib/node_modules/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+    ln -s "../../../lib/node_modules/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
