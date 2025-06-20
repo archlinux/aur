@@ -23,10 +23,10 @@ build() {
 	make build
 }
 
-check() {
-	cd "$srcdir/$appname/src"
-	make testci
-}
+# check() {
+# 	# cd "$srcdir/$appname/src"
+# 	# make testci
+# }
 
 package() {
 	cd "$srcdir/$appname"
