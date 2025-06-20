@@ -4,11 +4,11 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="A terminal-based text editor written in C"
 arch=('x86_64')
-source=("https://github.com/selfAnnihilator/ttynote/archive/refs/tags/v${pkgver}.tar.gz")
+url="https://github.com/selfAnnihilator/ttynote"
 license=('MIT')
 depends=()
 makedepends=('gcc')
-source=("ttynote.c" "Makefile" "ttynote.install")
+source=("https://github.com/selfAnnihilator/ttynote/archive/refs/tags/v${pkgver}.tar.gz")
 install=ttynote.install
 md5sums=('SKIP' 'SKIP' 'SKIP')
 
