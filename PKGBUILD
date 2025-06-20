@@ -5,7 +5,7 @@
 
 pkgname=dia-git
 _pkgname=dia
-pkgver=6883.78c75625d
+pkgver=6902.66765f64c
 pkgrel=1
 pkgdesc="A GTK+ based diagram creation program"
 arch=('x86_64')
@@ -30,7 +30,7 @@ prepare() {
 }
 
 build() {
-  arch-meson -Ddoc=enabled build ${_pkgname}
+  arch-meson -Ddoc=enabled -Dtests=false build ${_pkgname}
   ninja -C build
 }
 
