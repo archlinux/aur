@@ -2,7 +2,7 @@
 
 _pyname=gwcs
 pkgname=python-${_pyname}-doc
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Documentation for Python GWCS module"
 arch=('any')
@@ -12,12 +12,13 @@ makedepends=("python-${_pyname}=${pkgver}"
              'python-sphinx-astropy'
              'python-sphinx-asdf'
              'python-sphinx-copybutton'
-             'python-pydata-sphinx-theme'
-             'python-setuptools'
+             'python-sphinx-furo'
+             'python-sphinx-tabs'
+#            'python-setuptools'
              'python-matplotlib'
              'graphviz')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('9b1eccc27f34d5baff90da9c9e16db59')
+md5sums=('1861faed3f52d39d9c43cd77fc73e5e1')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/docs
