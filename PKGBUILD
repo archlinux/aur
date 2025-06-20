@@ -15,8 +15,8 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 pkgname=hnefatafl-copenhagen
-pkgver=2.0.3
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client."
 url="https://hnefatafl.org"
 license=("MIT OR Apache-2.0")
@@ -25,11 +25,11 @@ provides=("hnefatafl-copenhagen")
 conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib")
 makedepends=("base-devel" "clang" "llvm" "mold" "pandoc" "rustup")
-source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v2.0.3.tar.gz")
-sha256sums=("c2e6d1edaa9e4b85cee4c1406e95e20d0d1655bc3d766295dc2821aa34eca20c")
+source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v2.1.0.tar.gz")
+sha256sums=("a6b69c7f08264a64f0cfd7fb88f3935cbbb3d41d85c8a8ad6055061148b6337b")
 
 build() {
-    tar -xvzf v2.0.3.tar.gz
+    tar -xvzf v2.1.0.tar.gz
     cd "hnefatafl-$pkgver"
     cargo build --release --example hnefatafl-client --no-default-features
 
