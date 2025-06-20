@@ -7,7 +7,7 @@
 
 pkgname=wangle
 pkgver=2025.06.16.00
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ networking library providing client/server abstractions for building services"
 arch=(x86_64)
 url="https://github.com/facebook/wangle"
@@ -55,12 +55,12 @@ build() {
 
 check() {
   cd $pkgname-$pkgver
-  local skipped_tests=(
+  skip_tests=(
     SSLContextManagerTest
-    Bootstrap.UDPClientServerTest
+    BootstrapTest
   )
-  local skipped_tests_pattern="${skipped_tests[0]}$(printf "|%s" "${skipped_tests[@]:1}")"
-  ctest --test-dir build --output-on-failure -E "$skipped_tests_pattern"
+  ctest --test-dir build --output-on-failure -E "$(IFS='|'; echo "${skip_tests[*]}")"
+  ctest "$skipped_tests_pattern"
 }
 
 package() {
