@@ -7,10 +7,10 @@ pkgbase = watchman
 	license = MIT
 	makedepends = boost
 	makedepends = cmake
-	makedepends = cpptoml-git
-	makedepends = fizz>=2025.06.02.00
+	makedepends = cpptoml
+	makedepends = fizz=2025.06.16.00
 	makedepends = gtest
-	makedepends = mvfst>=2025.06.02.00
+	makedepends = mvfst=2025.06.16.00
 	makedepends = python-setuptools
 	makedepends = rust
 	depends = boost-libs

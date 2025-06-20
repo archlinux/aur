@@ -31,10 +31,10 @@ depends=(
 makedepends=(
   boost
   cmake
-  cpptoml-git
-  'fizz>=2025.06.02.00'
+  cpptoml
+  "fizz=$pkgver"
   gtest
-  'mvfst>=2025.06.02.00'
+  "mvfst=$pkgver"
   python-setuptools
   rust
 )
