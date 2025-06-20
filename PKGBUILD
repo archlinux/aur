@@ -1,11 +1,11 @@
 #Maintainer: Shnimlz <shnimlz@proton.me>
 #Author Original: Noble Eugene <nobleeugene2005@gmail.com>
 pkgname="swengine-revanced"
-pkgver="2.2.0b"
+pkgver="2.2.1a"
 pkgrel=1
 pkgdesc="Download or upload your wallpapers or use the ones downloaded from wallpaper engine with Sww"
 arch=("x86_64")
-depends=("vlc" "ffmpeg" "swww-git")
+depends=("vlc" "ffmpeg" "swww-git" "mpvpaper-git" "wlroots-git")
 makedepends=("dotnet-sdk" "git")
 url="https://github.com/Shnimlz/Swengine"
 source=("swengine.desktop")
