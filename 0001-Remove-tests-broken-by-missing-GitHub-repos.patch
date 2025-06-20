@@ -1,0 +1,122 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Fri, 20 Jun 2025 08:40:02 +0200
+Subject: [PATCH] Remove tests broken by missing GitHub repos
+
+---
+ tests/integration/meson.build                 |  3 --
+ .../wrap-test/libswiftdemangle.wrap           |  4 --
+ .../wrap-test/libswiftdemangle2.wrap          |  5 ---
+ .../integration/wrap-test/rustc-demangle.wrap |  4 --
+ tests/integration/wrap-tester.cpp             | 37 +------------------
+ 5 files changed, 2 insertions(+), 51 deletions(-)
+ delete mode 100644 tests/integration/wrap-test/libswiftdemangle.wrap
+ delete mode 100644 tests/integration/wrap-test/libswiftdemangle2.wrap
+ delete mode 100644 tests/integration/wrap-test/rustc-demangle.wrap
+
+diff --git a/tests/integration/meson.build b/tests/integration/meson.build
+index 28e48ff0b6e0..a9aae5dc0c44 100644
+--- a/tests/integration/meson.build
++++ b/tests/integration/meson.build
+@@ -37,13 +37,10 @@ wrap_tester = executable(
+ )
+ 
+ wrap_files = files(
+-    'wrap-test/libswiftdemangle.wrap',
+-    'wrap-test/libswiftdemangle2.wrap',
+     'wrap-test/miniz.wrap',
+     'wrap-test/pango.wrap',
+     'wrap-test/pidgin.wrap',
+     'wrap-test/rubberband.wrap',
+-    'wrap-test/rustc-demangle.wrap',
+     'wrap-test/sqlite.wrap',
+     'wrap-test/turtle.wrap',
+     'wrap-test/turtle2.wrap',
+diff --git a/tests/integration/wrap-test/libswiftdemangle.wrap b/tests/integration/wrap-test/libswiftdemangle.wrap
+deleted file mode 100644
+index 6c7c07d1a794..000000000000
+--- a/tests/integration/wrap-test/libswiftdemangle.wrap
++++ /dev/null
+@@ -1,4 +0,0 @@
+-[wrap-git]
+-url = https://github.com/JCWasmx86/libswiftdemangle
+-revision = e96565e27f95865830626f5d8a081b69cfe5ea11
+-depth = 1
+diff --git a/tests/integration/wrap-test/libswiftdemangle2.wrap b/tests/integration/wrap-test/libswiftdemangle2.wrap
+deleted file mode 100644
+index f12d0b2eee74..000000000000
+--- a/tests/integration/wrap-test/libswiftdemangle2.wrap
++++ /dev/null
+@@ -1,5 +0,0 @@
+-[wrap-git]
+-directory = libswiftdemangle2
+-url = https://github.com/JCWasmx86/libswiftdemangle
+-revision = main
+-depth = 1
+diff --git a/tests/integration/wrap-test/rustc-demangle.wrap b/tests/integration/wrap-test/rustc-demangle.wrap
+deleted file mode 100644
+index 863110fb8d1e..000000000000
+--- a/tests/integration/wrap-test/rustc-demangle.wrap
++++ /dev/null
+@@ -1,4 +0,0 @@
+-[wrap-git]
+-url = https://github.com/JCWasmx86/rustc-demangle
+-revision = head
+-clone-recursive = true
+diff --git a/tests/integration/wrap-tester.cpp b/tests/integration/wrap-tester.cpp
+index 391f658d6b5a..d75861311d33 100644
+--- a/tests/integration/wrap-tester.cpp
++++ b/tests/integration/wrap-tester.cpp
+@@ -16,25 +16,6 @@ std::shared_ptr<WrapFile> parseWrapWrapper(const std::filesystem::path &path) {
+   return wrap;
+ }
+ 
+-void checkLibswiftDemangle(const std::filesystem::path &path) {
+-  const auto gitRefPath = path / "libswiftdemangle/.git/refs/heads/main";
+-  auto parent = gitRefPath;
+-  for (int i = 0; i < 10; i++) {
+-    std::cerr << "Checking if " << parent.generic_string()
+-              << " exists: " << std::filesystem::exists(parent) << std::endl;
+-    parent = std::filesystem::absolute(parent.parent_path());
+-  }
+-  assert(!std::filesystem::exists(gitRefPath));
+-  assert(std::filesystem::exists(gitRefPath.parent_path()));
+-}
+-
+-void checkLibswiftDemangle2(const std::filesystem::path &path) {
+-  const auto gitRefPath = path / "libswiftdemangle2/.git/refs/heads/main";
+-  assert(std::filesystem::exists(gitRefPath));
+-  const auto contents = readFile(gitRefPath);
+-  assert(contents.contains("e96565e27f95865830626f5d8a081b69cfe5ea11"));
+-}
+-
+ void checkMiniz(const std::filesystem::path &path) {
+   const auto basePath = path / "miniz-3.0.1";
+   assert(std::filesystem::exists(basePath));
+@@ -105,24 +86,10 @@ int main(int /*argc*/, char **argv) {
+     std::filesystem::remove_all(outputPath);
+   }
+   std::filesystem::create_directory(outputPath);
+-  auto wrap = parseWrapWrapper(wrapDir / "libswiftdemangle.wrap");
+-  auto outputDir = outputPath / "libswiftdemangle.wrap";
++  auto wrap = parseWrapWrapper(wrapDir / "miniz.wrap");
++  auto outputDir = outputPath / "miniz.wrap";
+   auto res = wrap->serializedWrap->setupDirectory(outputDir, packagefilesPath);
+   assert(res);
+-  checkLibswiftDemangle(outputDir);
+-  wrap = parseWrapWrapper(wrapDir / "libswiftdemangle2.wrap");
+-  outputDir = outputPath / "libswiftdemangle2.wrap";
+-  res = wrap->serializedWrap->setupDirectory(outputDir, packagefilesPath);
+-  assert(res);
+-  checkLibswiftDemangle2(outputDir);
+-  wrap = parseWrapWrapper(wrapDir / "rustc-demangle.wrap");
+-  outputDir = outputPath / "rustc-demangle.wrap";
+-  res = wrap->serializedWrap->setupDirectory(outputDir, packagefilesPath);
+-  assert(res);
+-  wrap = parseWrapWrapper(wrapDir / "miniz.wrap");
+-  outputDir = outputPath / "miniz.wrap";
+-  res = wrap->serializedWrap->setupDirectory(outputDir, packagefilesPath);
+-  assert(res);
+   checkMiniz(outputDir);
+   wrap = parseWrapWrapper(wrapDir / "turtle.wrap");
+   outputDir = outputPath / "turtle.wrap";
