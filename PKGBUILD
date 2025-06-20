@@ -5,9 +5,9 @@
 pkgname=gpgme-1
 _pkgname=gpgme
 pkgver=1.24.3
-pkgrel=3
+pkgrel=4
 pkgdesc='C wrapper library for GnuPG - 1.x'
-arch=('x86_64')
+arch=('x86_64' 'pentium4' 'i686' 'i486')
 url='https://www.gnupg.org/related_software/gpgme/'
 license=(
   GPL-2.0-or-later

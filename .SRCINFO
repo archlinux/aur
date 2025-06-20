@@ -1,9 +1,12 @@
 pkgbase = gpgme-1
 	pkgdesc = C wrapper library for GnuPG - 1.x
 	pkgver = 1.24.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gnupg.org/related_software/gpgme/
 	arch = x86_64
+	arch = pentium4
+	arch = i686
+	arch = i486
 	license = GPL-2.0-or-later
 	license = LGPL-2.0-or-later
 	license = LGPL-2.1-or-later
