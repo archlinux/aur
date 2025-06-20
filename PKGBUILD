@@ -2,7 +2,7 @@
 
 pkgname=plasma-weather-plus
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='plasma天气插件'
 arch=('any')
@@ -13,6 +13,7 @@ source=(git+${url}.git)
 sha512sums=(SKIP)
 package() {
     cd "${srcdir}/weather-widget-plus"
+    sh translations/po/build.sh
     install -m755 -d "${pkgdir}/usr/share/plasma/plasmoids/weather.widget.plus"
     cp -r weather.widget.plus/* ${pkgdir}/usr/share/plasma/plasmoids/weather.widget.plus/
 }
