@@ -4,7 +4,7 @@
 
 pkgname=semgrep-bin
 _name=semgrep
-pkgver=1.124.0
+pkgver=1.126.0
 pkgrel=1
 pkgdesc="Lightweight static analysis for many languages. Find bug variants with patterns that look like source code."
 arch=(x86_64)
@@ -22,8 +22,8 @@ depends=(
 optdepends=('jsonnet: experimental jsonnet support')
 provides=('semgrep')
 options=('!strip')
-source=("https://files.pythonhosted.org/packages/4f/b7/dc955ca4974ead125c1a96a22e0db61e2b20864b4d9ddddf74066fa1c173/semgrep-1.124.0-cp39.cp310.cp311.py39.py310.py311-none-musllinux_1_0_x86_64.manylinux2014_x86_64.whl")
-sha256sums=('3c8dd1ef2b269c02d86d98a518b407e7ee0f0802dffed5ba9aaf7d1706f033f2')
+source=("https://files.pythonhosted.org/packages/c9/64/e94ef74cbaafea07b3d3d06b67cd40dd2f1d1be309ed0db23a9605c028b4/semgrep-1.126.0-cp39.cp310.cp311.py39.py310.py311-none-musllinux_1_0_x86_64.manylinux2014_x86_64.whl")
+sha256sums=('dbf19a85b8bcaf650d213d7b709e95b629f91bed8adbef5a8d4e77b1e09507bd')
 
 package() {
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps semgrep-${pkgver}-cp39.cp310.cp311.py39.py310.py311-none-musllinux_1_0_x86_64.manylinux2014_x86_64.whl
