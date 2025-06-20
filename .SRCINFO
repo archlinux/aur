@@ -11,7 +11,7 @@ pkgbase = opencv-busto
 	depends = gtk3
 	depends = opencv
 	depends = python
-	source = opencv-busto-1.0.0.tar.gz
+	source = opencv-busto-1.0.0.tar.gz::https://github.com/chrissolanilla/opencv-python-zoom/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = opencv-busto
