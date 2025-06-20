@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=vkd3d-proton-mingw-git
-pkgver=2.14.1.r108.g5d08667d
+pkgver=2.14.1.r300.g59e50c87
 pkgrel=1
 pkgdesc='Fork of VKD3D. Development branches for Protons Direct3D 12 implementation'
 arch=('x86_64')
@@ -43,8 +43,8 @@ prepare() {
     local march="${flags["-march"]:-nocona}"
     local mtune="${flags["-mtune"]:-core-avx2}"
 
-    CFLAGS="-O3 -march=$march -mtune=$mtune -pipe"
-    CXXFLAGS="-O3 -march=$march -mtune=$mtune -pipe"
+    CFLAGS="-O3 -march=$march -mtune=$mtune -pipe -mprefer-avx128"
+    CXXFLAGS="-O3 -march=$march -mtune=$mtune -pipe -mprefer-avx128"
     LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # These flags are taken from Proton
