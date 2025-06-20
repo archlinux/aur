@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 _pkgname=LocalAI
 pkgname=local-ai
-pkgver=2.29.0 # renovate: datasource=github-tags depName=mudler/LocalAI
+pkgver=3.0.0 # renovate: datasource=github-tags depName=mudler/LocalAI
 pkgrel=1
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with OPENBlas CPU optimizations)"
 arch=('x86_64')
