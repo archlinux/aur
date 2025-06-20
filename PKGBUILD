@@ -3,7 +3,7 @@
 
 pkgname=python-accelerate
 _pkgname=${pkgname#python-}
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='A simple way to train and use PyTorch models with multi-GPU, TPU, mixed-precision'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
     'python-torchao: Architecture optimization in PyTorch'
 )
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/huggingface/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f17bc9b3dcab61bedd331257854c910c2ed84810480b4673316957074de3a0d2')
+sha256sums=('f69d2b455a53f47fa188fa278b245780b26e70b12c0601ab20db2d6fc980bf74')
 
 build() {
     cd $_pkgname-$pkgver
