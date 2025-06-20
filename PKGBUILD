@@ -2,8 +2,8 @@
 # Contributor: Steve Engledow <steve@engledow.me>
 
 pkgname=amazon-workspaces-bin
-pkgver=2024.8.5130
-pkgrel=3
+pkgver=2025.0.5219
+pkgrel=1
 _aptdist=focal
 pkgdesc='Amazon Workspace Client'
 arch=('x86_64')
@@ -33,8 +33,8 @@ source=(
     workspacesclient-wrapper
 )
 
-sha256sums=('880157ef0361b696b34e5ad0957252bc3fd91b8b7a3b992623901fd3880120ca'
-            'b86729bff47a50f07005b6d3df8449bb594d07ef5fc07cb928b3982763bfb164'
+sha256sums=('181c4a10a9a745b67769c063c0c67355db9f71d63aab14ab46699e68898d32ec'
+            'dcecbe5b5286c898fdac801768a55679e70058f9647ad25e38d14805ab1694ad'
             'fb7640c4d5dbb507d6443462eabf1384dd65f069b33a9abc4a599d41ac6d0fb6'
             '27c7e51d9434e4cf85d898179ab1b0477b9c695e3461a7403da4e2c37857474f')
 
@@ -55,9 +55,11 @@ prepare() {
 
     sed -i -e 's/Exec=workspacesclient/Exec=workspacesclient-wrapper/' ${srcdir}/usr/share/applications/com.amazon.workspacesclient.desktop
 
-    # Remove the vendored-in libgio-2.0.so.0, so the system one is used
+    # Remove a couple of vendored-in libraries, so the system ones are used
     # The vendored-in version has libselinux.so.1 linked, which doesn't exist natively on Arch
     rm ${srcdir}/usr/lib/${arch}-linux-gnu/workspacesclient/dcv/libgio-2.0.so.0
+    rm ${srcdir}/usr/lib/${arch}-linux-gnu/workspacesclient/dcv/libglib-2.0.so.0
+    rm ${srcdir}/usr/lib/${arch}-linux-gnu/workspacesclient/dcv/libgobject-2.0.so.0
 
     # The below preparation steps are adapted from the .deb
     export LD_LIBRARY_PATH=${srcdir}/usr/lib/${arch}-linux-gnu/workspacesclient/dcv:$LD_LIBRARY_PATH
