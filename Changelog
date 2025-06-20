@@ -1,11 +1,15 @@
 -------------------------------------------------------
  Changelog    : dns_tools
- Tags         : 4.3.0 ➙ 4.7.0, origin/master
-              : 2025-05-27 ➙ 2025-06-15
+ Tags         : 4.4.1 ➙ 4.8.0
+              : 2025-06-08 ➙ 2025-06-20
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2025-06-15   : 4.7.0, origin/master
+ 2025-06-20   : 4.8.0
+                Pull local copy of latest run_prog from pycocurrent
+ 2025-06-16     update Docs/Changelog Docs/${my_name}.pdf
+
+ 2025-06-15   : 4.7.0
                 update Docs/Changelog Docs/${my_name}.pdf
 
  2025-06-15   : 4.6.0
@@ -22,7 +26,3 @@
                 bug: dns-prod-push int-ext option defaulted off instead of both
                 Improved code which runs external programs.
  2025-05-27     update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-05-27   : 4.3.0
-                Fix option parser for dns-prod-push --int-ext
- 2025-05-21     update Docs/Changelog Docs/${my_name}.pdf
