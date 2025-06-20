@@ -1,14 +1,14 @@
 # Maintainer: claymorwan <claymorwan@fembois.dev>
 pkgname=python-ecdysys
 _name=${pkgname#python-}
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Python CLI to update your system packages"
 arch=(any)
 url="https://pypi.org/project/ecdysys"
 license=('MIT')
-depends=(python-colorama python-toml pacman-contrib)
-makedepends=(python-build python-installer python-wheel)
+depends=(python-colorama python-toml)
+makedepends=(python-installer)
 optdepends=(
 	'pacman-contrib: pacman support'
 	'yay: aur support with yay'
@@ -18,7 +18,7 @@ optdepends=(
 provides=($_name)
 conflicts=($_name)
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('e014ce08ddade98ad3b6a92ce245ebbe9721efbeb19c193a6237b7f47c246210')
+sha256sums=('fb17b9c52a1c8f68befdfb74d3c954fa5a27aba717fdd41d6cf76c70fde7fde0')
 
 package() {
 	cd $srcdir
