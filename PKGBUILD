@@ -25,12 +25,12 @@ build() {
 }
 
 package() {
-    install -vDm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
     install -vDm644 -t "$pkgdir/usr/share/applications" "$srcdir/$_pkgname.desktop"
     install -vDm755 "lutris-gamepad-ui.sh" "$pkgdir/usr/bin/$_pkgname"
 
-    install -vDm644 "$_pkgname/electron.js" "$pkgdir/usr/lib/$_pkgname/electron.js"
     install -vDm644 "$_pkgname/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
+    install -vDm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 
+    install -vDm644 "$_pkgname/electron.js" "$pkgdir/usr/lib/$_pkgname/electron.js"
     cp -rp "$_pkgname/dist/" "$pkgdir/usr/lib/$_pkgname/"
 }
