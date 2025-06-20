@@ -2,7 +2,7 @@
 _pkgbase=local-ai
 _pkgname=LocalAI
 pkgname="${_pkgbase}-hipblas"
-pkgver=2.29.0 # renovate: datasource=github-tags depName=mudler/LocalAI
+pkgver=3.0.0 # renovate: datasource=github-tags depName=mudler/LocalAI
 pkgrel=1
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first ((with AMD ROCm optimizations)"
 arch=('x86_64')
