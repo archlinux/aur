@@ -6,7 +6,6 @@ pkgrel=1
 license=("EUPL")
 pkgdesc="hare-update is a tool which assists in migrating a Hare codebases"
 makedepends=(
-	"scdoc"
 	"git"
 )
 
