@@ -2,7 +2,7 @@
 pkgname=jan-bin
 _pkgname=Jan
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source alternative to ChatGPT that runs 100% offline on your computer. Multiple engine support (llama.cpp, TensorRT-LLM).(Prebuilt version)"
 arch=('x86_64')
 url="https://jan.ai/"
@@ -32,8 +32,6 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/"{"${_pkgname}",cortex-server} -t "${pkgdir}/usr/bin"
-    ln -sf "/usr/bin/bun" "${pkgdir}/usr/bin/bun"
-    ln -sf "/usr/bin/uv" "${pkgdir}/usr/bin/uv"
     cp -Pr --no-preserve=ownership "${srcdir}/usr/lib" "${pkgdir}/usr"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     _icon_sizes=(32x32 128x128 256x256@2)
