@@ -32,7 +32,7 @@ build() {
 
 check() {
 	cd "$srcdir/$appname/src"
-	go test -tags='!integration' ./...
+	make testci
 }
 
 package() {
