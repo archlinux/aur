@@ -3,8 +3,8 @@
 # Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
 
 pkgname=albert
-pkgver=0.28.0
-pkgrel=2
+pkgver=0.28.2
+pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/albertlauncher"
@@ -60,4 +60,4 @@ package() {
   install -Dm644 "$srcdir/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=('98f5180708c803f76c1ed851f8cfb8f0b3ca6edb8447698643cf12b746ab0872455212a8a1b16a97ef0fbed47113d0c0f07178d56e01c76db28e869e747bbad1')
+sha512sums=('75b942216bd99677897d2d309db8fc833c6ef7a1998038f480f0fb71952d0d28eb9292bcb855c7590d9d06ca9d7f94649aa39b1bce664aa534604c9b810d0b85')
