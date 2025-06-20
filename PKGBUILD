@@ -1,7 +1,7 @@
 _pkgbase=gigabyte-laptop-wmi
 pkgname=${_pkgbase}-dkms-git
 pkgver=0.1.0.r0.ge4279c2
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux kernel module for Gigabyte laptops to interact with the embedded controller."
 url="https://github.com/tangalbert919/gigabyte-laptop-wmi"
 arch=('any')
@@ -36,6 +36,6 @@ package() {
   for i in $(ls -1 *.c *.h | xargs); do
     install -Dm644 $i "${install_dir}/"
   done
-
+  install -Dm644 aorus-laptop.conf "${pkgdir}/etc/modules-load.d/aorus-laptop.conf"
 
 }
