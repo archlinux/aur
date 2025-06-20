@@ -1,0 +1,21 @@
+pkgbase = mterm-bin
+	pkgdesc = An electron terminal with a big vision. Written with react, typescript, vite and more.(Prebuilt version. use system-wide electron)
+	pkgver = 1.0.34_beta
+	pkgrel = 1
+	url = https://mterm.io/
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = electron28
+	depends = 7zip
+	depends = python
+	depends = nodejs
+	provides = mterm=1.0.34_beta
+	conflicts = mterm
+	options = !strip
+	options = !emptydirs
+	source = mterm-1.0.34_beta.deb::https://github.com/mterm-io/mterm/releases/download/v1.0.34-beta/mterm_1.0.34-beta_amd64.deb
+	source = mterm.sh
+	sha256sums = 7fc5e0d5d9c6063c26e794dcdb386df8d3aa952014053a81853696508fac38e6
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+
+pkgname = mterm-bin
