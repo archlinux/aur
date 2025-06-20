@@ -1,7 +1,7 @@
 pkgbase = remindr-bin
 	pkgdesc = Keep track of what you need to get done.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mrdavidrios.github.io/remindr
 	arch = x86_64
 	license = GPL-3.0-only
@@ -11,7 +11,7 @@ pkgbase = remindr-bin
 	conflicts = remindr
 	source = remindr-2.2.5.deb::https://github.com/MrDavidRios/remindr/releases/download/v2.2.5/Remindr-2.2.5-linux-amd64.deb
 	source = remindr.sh
-	sha256sums = 9bd719d5a686f65573b5170211d5e40a9bfd4256b32fa03b4e2c6190bcfc0760
+	sha256sums = face6aea0e8e66dae01d1d9e1e320b94d04045ef571f89511135d2ddda0a6d26
 	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = remindr-bin

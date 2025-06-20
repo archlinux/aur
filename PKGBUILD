@@ -3,7 +3,7 @@ pkgname=remindr-bin
 _pkgname=Remindr
 pkgver=2.2.5
 _electronversion=36
-pkgrel=1
+pkgrel=2
 pkgdesc="Keep track of what you need to get done.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://mrdavidrios.github.io/remindr"
@@ -21,8 +21,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9bd719d5a686f65573b5170211d5e40a9bfd4256b32fa03b4e2c6190bcfc0760'
+sha256sums=('face6aea0e8e66dae01d1d9e1e320b94d04045ef571f89511135d2ddda0a6d26'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -32,6 +36,7 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
