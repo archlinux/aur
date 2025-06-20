@@ -29,13 +29,7 @@ package_uutils-coreutils-selinux() {
   conflicts=(uutils-coreutils)
   cd coreutils-$pkgver
   make install USE=selinux PROFILE=release MULTICALL=y \
-    DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROG_PREFIX=uu- 
-  # for $PATH exporting
-  #_uu=./target/release/coreutils
-  #install -d "$pkgdir"/usr/lib/uu-coreutils
-  #for f in $("$_uu" --list)
-  #  do ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/lib/uu-coreutils/"$f"
-  #done
+    DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROG_PREFIX=uu-
 }
 
 # Don't build twice
@@ -47,13 +41,14 @@ package_coreutils-uutils-selinux(){
 
   install -d "$pkgdir"/usr/{bin,share/{man/man1,zsh/site-functions,fish/vendor_completions.d}}
   cd "$pkgdir"/usr
-  for f in $("$srcdir"/coreutils-$pkgver/target/release/coreutils --list|grep -v -E '^(kill|more|uptime|hostname)$'); do
+  for f in $("$srcdir"/coreutils-$pkgver/target/release/coreutils --list|grep -v -E '^(kill|more|uptime|hostname|\[)$'); do
     ln -sf /usr/bin/uu-coreutils bin/"$f"
     ln -s /usr/share/man/man1/uu-"$f".1.gz share/man/man1/"$f".1.gz
     # Conflicting with Extra/bash-completion: https://github.com/scop/bash-completion/discussions/1386
     echo -e "#compdef ${f}=uu-${f}\n_${f}" > share/zsh/site-functions/_$f
     echo "complete -c ${f} -w uu-${f}" > share/fish/vendor_completions.d/${f}.fish
   done
+  ln -s /usr/bin/uu-coreutils bin/\[
   # Dynamic libstdbuf may supported: https://github.com/uutils/coreutils/issues/6591
   install -Dm644 "$srcdir"/coreutils-$pkgver/target/release/deps/liblibstdbuf.so lib/coreutils/libstdbuf.so
 }
