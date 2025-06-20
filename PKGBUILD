@@ -2,7 +2,7 @@
 _deb_base_name=outline
 pkgname=outline-client-appimage-git
 pkgver=1.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks."
 arch=(x86_64)
 conflicts=('outline-client-appimage' 'outline-client-appimage-wayland' 'outline-client-appimage-git')
@@ -23,6 +23,4 @@ options=('!strip')
 package() {
     ar x "${_deb_base_name}.deb"
     tar -xf data.tar.xz -C "${pkgdir}"
-
-    rm control.tar.xz data.tar.xz "${_deb_base_name}.deb"
 }

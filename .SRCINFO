@@ -1,7 +1,7 @@
 pkgbase = outline-client-appimage-git
 	pkgdesc = The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks.
 	pkgver = 1.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getoutline.org
 	arch = x86_64
 	license = Apache License 2.0
