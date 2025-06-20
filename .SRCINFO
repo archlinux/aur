@@ -8,7 +8,7 @@ pkgbase = openstarbound
 	depends = glibc
 	source = openstarbound-0.1.11.1.zip::https://github.com/OpenStarbound/OpenStarbound/releases/download/v0.1.11.1/OpenStarbound-Linux-Clang-Client.zip
 	source = starbound.png
-	sha256sums = 8f4178ae96a7278006371bb8f8861e8119f354726ac87a6a1e5d6a263d45af35
+	sha256sums = b9adabae043060e4f881ae17dacf889272eae4ec243e771c63a6dc79b6bbc206
 	sha256sums = c9c86ce8ee065e3a96e25778eb1212bf559affeef61c51f0ec4b2cad76ec9193
 
 pkgname = openstarbound
