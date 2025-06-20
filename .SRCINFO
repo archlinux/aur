@@ -1,7 +1,7 @@
 pkgbase = ncx
 	pkgdesc = CLI tool for system management and configuration
 	pkgver = 2.0.4a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/nathanchere/ncx
 	arch = x86_64
 	license = Apache-2.0
@@ -11,6 +11,6 @@ pkgbase = ncx
 	options = !strip
 	options = !emptydirs
 	source = ncx::git+https://gitlab.com/nathanchere/ncx.git#tag=v2.0.4a
-	sha256sums = SKIP
+	sha256sums = e4dc1372a94faa939a9eee414290ff2e284acc2579a4c32d63da67c51a6b7a25
 
 pkgname = ncx
