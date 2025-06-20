@@ -1,17 +1,18 @@
 pkgbase = libdbus-minimal
 	pkgdesc = DBus library
-	pkgver = 1.14.10
-	pkgrel = 2
+	pkgver = 1.16.2
+	pkgrel = 1
 	url = https://wiki.freedesktop.org/www/Software/dbus/
 	arch = x86_64
 	license = AFL-2.1 OR GPL-2.0-or-later
+	makedepends = meson
 	provides = libdbus
 	provides = libdbus-1.so
 	conflicts = libdbus
-	source = https://dbus.freedesktop.org/releases/dbus/dbus-1.14.10.tar.xz
-	source = https://dbus.freedesktop.org/releases/dbus/dbus-1.14.10.tar.xz.asc
+	source = https://dbus.freedesktop.org/releases/dbus/dbus-1.16.2.tar.xz
+	source = https://dbus.freedesktop.org/releases/dbus/dbus-1.16.2.tar.xz.asc
 	validpgpkeys = DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90
-	sha256sums = ba1f21d2bd9d339da2d4aa8780c09df32fea87998b73da24f49ab9df1e36a50f
+	sha256sums = 0ba2a1a4b16afe7bceb2c07e9ce99a8c2c3508e5dec290dbb643384bd6beb7e2
 	sha256sums = SKIP
 
 pkgname = libdbus-minimal

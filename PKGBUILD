@@ -3,96 +3,70 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Link Dupont <link@subpop.net>
 pkgname=libdbus-minimal
-pkgver=1.14.10
-pkgrel=2
+pkgver=1.16.2
+pkgrel=1
 pkgdesc="DBus library"
 arch=('x86_64')
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 license=('AFL-2.1 OR GPL-2.0-or-later')
+makedepends=('meson')
 provides=('libdbus' 'libdbus-1.so')
 conflicts=('libdbus')
 source=("https://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.xz"{,.asc})
-sha256sums=('ba1f21d2bd9d339da2d4aa8780c09df32fea87998b73da24f49ab9df1e36a50f'
+sha256sums=('0ba2a1a4b16afe7bceb2c07e9ce99a8c2c3508e5dec290dbb643384bd6beb7e2'
             'SKIP')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
 build() {
   cd "$srcdir/dbus-$pkgver"
-  ./configure \
-      --prefix=/usr \
-      --sysconfdir=/etc \
-      --localstatedir=/var \
-      --runstatedir=/run \
-      --libexecdir=/usr/lib/dbus-1.0 \
-      --enable-option-checking \
-      --enable-shared \
-      --enable-ld-version-script \
-      --disable-silent-rules \
-      --disable-maintainer-mode \
-      --disable-developer \
-      --disable-debug \
-      --disable-dependency-tracking \
-      --disable-largefile \
-      --disable-static \
-      --disable-fast-install \
-      --disable-libtool-lock \
-      --disable-ansi \
-      --disable-verbose-mode \
-      --disable-asserts \
-      --disable-checks \
-      --disable-xml-docs \
-      --disable-doxygen-docs \
-      --disable-ducktype-docs \
-      --disable-selinux \
-      --disable-apparmor \
-      --disable-libaudit \
-      --disable-inotify \
-      --disable-kqueue \
-      --disable-console-owner-file \
-      --disable-launchd \
-      --disable-systemd \
-      --disable-traditional-activation \
-      --disable-embedded-tests \
-      --disable-modular-tests \
-      --disable-tests \
-      --disable-installed-tests \
-      --disable-code-coverage \
-      --disable-epoll \
-      --disable-x11-autolaunch \
-      --disable-compile-warnings \
-      --disable-Werror \
-      --disable-qt-help \
-      --disable-relocation \
-      --disable-stats \
-      --disable-user-session \
-      --with-pic \
-      --with-gnu-ld \
-      --without-aix-soname \
-      --without-sysroot \
-      --without-session-socket-dir \
-      --without-test-socket-dir \
-      --without-system-pid-file \
-      --without-system-socket \
-      --without-console-auth-dir \
-      --without-console-owner-file \
-      --without-launchd-agent-dir \
-      --without-dbus-user \
-      --without-test-user \
-      --without-dbus-daemondir \
-      --without-gcov \
-      --without-valgrind \
-      --without-x \
-      --without-qchdir \
-      --without-systemdsystemunitdir \
-      --without-systemduserunitdir \
-      --without-dbus-test-dir \
-      --without-dbus-session-bus-listen-address \
-      --without-dbus-session-bus-connect-address
-  make
+  arch-meson . build \
+    -D apparmor=disabled \
+    -D asserts=false \
+    -D checks=false \
+    -D dbus_daemondir= \
+    -D dbus_user= \
+    -D dbus_session_bus_connect_address= \
+    -D dbus_session_bus_listen_address= \
+    -D doxygen_docs=disabled \
+    -D ducktype_docs=disabled \
+    -D intrusive_tests=false \
+    -D epoll=disabled \
+    -D inotify=disabled \
+    -D installed_tests=false \
+    -D kqueue=disabled \
+    -D launchd=disabled \
+    -D launchd_agent_dir= \
+    -D libaudit=disabled \
+    -D message_bus=false \
+    -D modular_tests=disabled \
+    -D qch_dir= \
+    -D qt_help=disabled \
+    -D relocation=disabled \
+    -D runtime_dir= \
+    -D selinux=disabled \
+    -D session_socket_dir= \
+    -D solaris_console_owner_file= \
+    -D stats=false \
+    -D system_pid_file= \
+    -D system_socket= \
+    -D systemd_system_unitdir= \
+    -D systemd_user_unitdir= \
+    -D systemd=disabled \
+    -D test_socket_dir= \
+    -D test_user= \
+    -D tools=false \
+    -D traditional_activation=false \
+    -D user_session=false \
+    -D valgrind=disabled \
+    -D verbose_mode=false \
+    -D x11_autolaunch=disabled \
+    -D xml_docs=disabled \
+    -D windows_output_debug_string=false
+  meson compile -C build
 }
 
 package() {
   cd "$srcdir/dbus-$pkgver"
-  make -C dbus DESTDIR="$pkgdir" install
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/libdbus/COPYING"
+  meson install -C build --destdir "$pkgdir"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" COPYING LICENSES/AFL-2.1.txt
 }
