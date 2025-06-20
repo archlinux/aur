@@ -80,8 +80,8 @@ package() {
     "$pkgdir/usr/lib/systemd/system/transmission.service"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/transmission-cli/COPYING"
 
-  install -Dm644 "$srcdir/$pkgname.sysusers" \
+  install -Dm644 "$srcdir/transmission3-cli.sysusers" \
     "$pkgdir/usr/lib/sysusers.d/transmission.conf"
-  install -Dm644 "$srcdir/$pkgname.tmpfiles" \
+  install -Dm644 "$srcdir/transmission3-cli.tmpfiles" \
     "$pkgdir/usr/lib/tmpfiles.d/transmission.conf"
 }
