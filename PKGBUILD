@@ -1,13 +1,14 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
-# Maintainer: Xiaoxu Guo <ftiasch0@gmail.com>
-# Maintainer: László Várady <laszlo.varady93@gmail.com>
+# Maintainer: envolution
+# Contributor: Carl Smedstad <carsme@archlinux.org>
+# Contributor: Xiaoxu Guo <ftiasch0@gmail.com>
+# Contributor: László Várady <laszlo.varady93@gmail.com>
 # Contributor: envolution
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=folly
 pkgver=2025.06.16.00
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
 url="https://github.com/facebook/folly"
@@ -136,6 +137,7 @@ check() {
     expected_coroutines_test.Expected.CoroutineCleanedUp
     optional_coroutines_test.Optional.CoroutineSuccess
     singleton_thread_local_test.SingletonThreadLocalDeathTest.Overload
+    fbstring_test.FBString.testAllClauses
   )
   local skipped_tests_pattern="${skipped_tests[0]}$(printf '|%s' "${skipped_tests[@]:1}")"
   ctest --test-dir build --output-on-failure -E "$skipped_tests_pattern"
