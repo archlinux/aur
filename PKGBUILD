@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://chrisoft.org/QMidiPlayer/'
 license=('GPLv3')
 depends=(
-    'qt5-base' 'qt5-quickcontrols'
+    'qt6-base'
     'rtmidi' 'fluidsynth'
     'freetype2' 'zlib' 'libjpeg-turbo' 'libpng'
     'glfw' 'glew' 'openal' 'devil'
@@ -32,7 +32,7 @@ sha256sums=(
 build () {
 	cp -r ${srcdir}/SMELT-d57232938d0c538922154e9223bf994e78c6b069/* ${srcdir}/QMidiPlayer-${pkgver}/visualization/SMELT
     cd ${srcdir}/QMidiPlayer-${pkgver}
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=ON -DCMAKE_INSTALL_LIBDIR=lib .
     make -j`nproc`
 }
 
