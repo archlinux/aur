@@ -1,0 +1,56 @@
+post_install() {
+    # Create rust-socksd user and group
+    if ! getent passwd rust-socksd &>/dev/null; then
+        useradd -r -s /usr/bin/nologin -d /var/lib/rust-socksd -c "rust-socksd User" rust-socksd
+    fi
+    if ! getent group rust-socksd &>/dev/null; then
+        groupadd -r rust-socksd
+    fi
+
+    # Set ownership and permissions
+    mkdir -p /var/lib/rust-socksd
+    mkdir -p /var/log/rust-socksd
+    chown -R rust-socksd:rust-socksd /var/lib/rust-socksd
+    chmod 750 /var/lib/rust-socksd
+    chown -R rust-socksd:rust-socksd /var/log/rust-socksd
+    chmod 750 /var/log/rust-socksd
+    chown root:rust-socksd /etc/rust-socksd/config.yml
+    chmod 640 /etc/rust-socksd/config.yml
+    chown root:rust-socksd /etc/rust-socksd/users.yml
+    chmod 660 /etc/rust-socksd/users.yml
+
+    # Enable the service
+    systemctl daemon-reload
+    systemctl enable rust-socksd.service
+
+    echo "rust-socksd has been installed successfully."
+    echo "Edit /etc/rust-socksd/config.yml to configure the server."
+    echo "Start the service with: systemctl start rust-socksd"
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+
+    echo "rust-socksd has been upgraded."
+    echo "Restart the service with: systemctl restart rust-socksd"
+}
+
+pre_remove() {
+    systemctl stop rust-socksd.service &>/dev/null || true
+    systemctl disable rust-socksd.service &>/dev/null || true
+}
+
+post_remove() {
+    systemctl daemon-reload
+
+    # Remove user and group
+    getent passwd rust-socksd &>/dev/null && userdel rust-socksd
+    getent group rust-socksd &>/dev/null && groupdel rust-socksd
+
+    # Remove directories (but preserve configuration)
+    rm -rf /var/log/rust-socksd
+    rm -rf /var/lib/rust-socksd
+
+    echo "rust-socksd has been removed."
+    echo "Configuration files in /etc/rust-socksd have been preserved."
+}
