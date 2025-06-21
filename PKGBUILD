@@ -9,7 +9,7 @@ url="https://github.com/selectel/terraform-provider-selectel"
 license=('MPL-2.0')
 
 pkgver="6.5.0"
-pkgrel="1"
+pkgrel="2"
 
 arch=('x86_64')
 depends=('glibc')
@@ -39,5 +39,5 @@ check(){
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	install -Dm555 $pkgname "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm555 $pkgname "${pkgdir}/usr/share/terraform/plugins/registry.terraform.io/selectel/selectel/${pkgver}/linux_amd64"
 }
