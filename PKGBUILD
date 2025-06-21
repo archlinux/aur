@@ -51,7 +51,7 @@ package() {
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Install install.sh to /opt/internet-usage-monitor
-  install -Dm755 "$srcdir/install.sh" "$pkgdir/opt/internet-usage-monitor/install.sh"
+  install -Dm755 "../install.sh" "$pkgdir/opt/internet-usage-monitor/install.sh"
   
   # Install README (optional, but good practice)
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
