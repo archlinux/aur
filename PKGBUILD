@@ -2,16 +2,16 @@
 
 pkgname=stormfetch
 pkgver=6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple linux fetch program written in go and bash'
 arch=('any')
-url='https://git.enumerated.dev/EnumDev/stormfetch'
+url='https://github.com/EnumeratedDev/stormfetch'
 license=('MIT')
 
 makedepends=('libx11' 'go' 'make')
 depends=('bash' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libglvnd')
 
-source=("git+https://git.enumerated.dev/EnumDev/stormfetch#tag=${pkgver}")
+source=("git+https://github.com/EnumeratedDev/stormfetch.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
 build() {
@@ -23,5 +23,5 @@ package() {
 	cd "$srcdir/stormfetch"
 	make DESTDIR="$pkgdir" PREFIX=/usr SYSCONFDIR=/etc install
 	
-	install -Dm644 "$srcdir/stormfetch/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
