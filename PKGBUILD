@@ -2,7 +2,7 @@
 _pkgname="krohnkite"
 pkgname="kwin-scripts-krohnkite"
 pkgver=0.9.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic tiling extension for KWin"
 url="https://github.com/anametologin/krohnkite"
 license=('MIT')
@@ -11,14 +11,13 @@ arch=('any')
 makedepends=(
   'typescript'
 )
-_pkgsrc="anametologin.krohnkite"
 source=("https://github.com/anametologin/krohnkite/archive/$pkgver.tar.gz")
 sha256sums=('003f91d7a5ad0fdb1587144ab3d0a256c32c902e798ca1ee23d3cfb2123682a0')
 
 
 build() {
   mkdir -p pkg
-  cd "$_pkgsrc"
+  cd "$_pkgname-$pkgver"
 
   # krohnkite.js
   tsc
@@ -47,5 +46,5 @@ package() {
   install -dm755 "$pkgdir/usr/share/kwin/scripts/$_pkgname"
   cp -ra "pkg/." "$pkgdir/usr/share/kwin/scripts/$_pkgname/"
 
-  install -Dm644 "$srcdir/$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$srcdir/$_pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
