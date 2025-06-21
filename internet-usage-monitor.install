@@ -13,7 +13,19 @@ _DEFAULT_CONFIG_DIR="/usr/share/$APP_NAME"
 
 post_install() {
   echo ">>> $APP_NAME has been installed."
-  /opt/internet-usage-monitor/install.sh
+  # Determine the installing user (prefer SUDO_USER, fallback to logname)
+  user="${SUDO_USER:-$(logname 2>/dev/null)}"
+  if [ -n "$user" ] && [ "$user" != "root" ]; then
+    user_home=$(eval echo "~$user")
+    desktop_dir="$user_home/Desktop/Internet-usage-monitor"
+    mkdir -p "$desktop_dir"
+    cp /usr/share/internet-usage-monitor-git/desktop_scripts/*.sh "$desktop_dir/"
+    chown -R "$user":"$user" "$desktop_dir"
+    echo ">>> install.sh and uninstall.sh have been copied to $desktop_dir."
+    echo ">>> You can run install.sh from your Desktop to configure the app interactively."
+  else
+    echo ">>> Could not determine installing user. Scripts are available at /usr/share/internet-usage-monitor-git/desktop_scripts/."
+  fi
   echo "The uninstall script is located at /opt/internet-usage-monitor/uninstall.sh"
   echo ">>> Default configuration files are in $_DEFAULT_CONFIG_DIR."
   echo ">>> To customize, copy them to your user configuration directory (usually $_USER_CONFIG_DIR):"
