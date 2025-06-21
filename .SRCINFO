@@ -1,0 +1,22 @@
+pkgbase = claudia
+	pkgdesc = A powerful GUI app and Toolkit for Claude Code
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/getAsterisk/claudia
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = bun-bin
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = xdo
+	depends = claude-code
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = sqlite
+	source = git+https://github.com/getAsterisk/claudia.git
+	sha256sums = SKIP
+
+pkgname = claudia
