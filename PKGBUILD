@@ -18,8 +18,8 @@ optdepends=('glfw: to use system GLFW libraries'
             'java-runtime=8: support for Minecraft versions < 1.17'
             'flite: minecraft voice narration'
 )
-source=("https://github.com/ElyPrismLauncher/ElyPrismLauncher/releases/download/${pkgver}/ElyPrismLauncher-ArchLinux-x86_64-${pkgver}.pkg.tar")
-noextract=("ElyPrismLauncher-ArchLinux-x86_64-${pkgver}.pkg.tar")
+source=("https://github.com/ElyPrismLauncher/ElyPrismLauncher/releases/download/${pkgver}/ElyPrismLauncher-ArchLinux-x86_64-${pkgver}.pkg.tar.zst")
+noextract=("ElyPrismLauncher-ArchLinux-x86_64-${pkgver}.pkg.tar.zst")
 sha256sums=('SKIP')
 
 pkgver()
@@ -31,7 +31,7 @@ package()
 {
 	mkdir ${pkgdir}/usr
 	cd ${pkgdir}/usr
-	tar -xvf ${srcdir}/ElyPrismLauncher-ArchLinux-x86_64-${pkgver}.pkg.tar --strip-components=1
+	tar -xvf ${srcdir}/ElyPrismLauncher-ArchLinux-x86_64-${pkgver}.pkg.tar.zst --strip-components=1
 	mv "${pkgdir}/usr/share/mime/packages/modrinth-mrpack-mime.xml" \
 		"${pkgdir}/usr/share/mime/packages/elyprismlauncher-modrinth-mrpack-mime.xml"
 }
