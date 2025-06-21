@@ -3,8 +3,8 @@
 # Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.2.2.r1229.71a449799
-pkgrel=3
+pkgver=3.2.2.r1241.9bfd5008d
+pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
 url="https://github.com/arch1t3cht/Aegisub"
@@ -119,9 +119,11 @@ prepare() {
 
   # Disabling LTO because it seems to lead to crashing aegisub scripts for some people
   # (https://aur.archlinux.org/packages/aegisub-arch1t3cht-git#comment-911741)
+  # Force building bestsource from source as newer versions are not compatible
   arch-meson --buildtype="${BUILDTYPE}" \
     -D b_lto=false \
     -D default_audio_output="${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT}" \
+    --force-fallback-for=bestsource \
     -D bestsource:default_library=static ${MESON_FLAGS} \
     build
 }
