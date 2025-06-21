@@ -2,7 +2,7 @@
 
 PKGEXT=.pkg.tar
 pkgname=elyprismlauncher-bin
-pkgver=9.4 # upstream doesn't use a trailing .0 for releases.
+pkgver=9.5 # upstream doesn't use a trailing .0 for releases.
 pkgrel=1
 pkgdesc="Prism Launcher fork with integrated support for Ely.by accounts (binary version)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver()
 {
-	printf $(git ls-remote --tags https://github.com/ElyPrismLauncher/ElyPrismLauncher.git | sed 's/.*[/:]//' | tail -n 1) 
+	printf $(git ls-remote --tags https://github.com/ElyPrismLauncher/ElyPrismLauncher.git | sed 's/.*[/:]//' | tail -n 1) && printf "\n" 
 }
 
 package()
