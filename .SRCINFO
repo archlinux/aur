@@ -1,0 +1,17 @@
+pkgbase = terraform-provider-selectel
+	pkgdesc = Terraform Selectel Provider
+	pkgver = 6.5.0
+	pkgrel = 1
+	url = https://github.com/selectel/terraform-provider-selectel
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = go>=1.23.0
+	makedepends = make>=4.0.0
+	makedepends = git
+	depends = glibc
+	optdepends = terraform: tool for building infrastructure
+	optdepends = terraform-provider-openstack: additional capabilities
+	source = terraform-provider-selectel-6.5.0.tar.gz::https://github.com/selectel/terraform-provider-selectel/archive/refs/tags/v6.5.0.tar.gz
+	sha256sums = 9ecd2e1df29387e77c0f4d75a5db73b397b0b4958f5caef3ef47e954fa5f621d
+
+pkgname = terraform-provider-selectel
