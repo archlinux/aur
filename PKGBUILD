@@ -3,7 +3,7 @@
 
 pkgname=openmsx
 pkgver=20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
 url="http://openmsx.org/"
@@ -16,6 +16,10 @@ conflicts=("openmsx-git")
 source=("https://github.com/openMSX/openMSX/releases/download/RELEASE_${pkgver//./_}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('baa9eb5e84a7b3114a8a62d969197455')
 
+prepare() {
+    cd $pkgname-$pkgver
+    patch -Np1 -i ../../fix_view_operator.patch
+}
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
