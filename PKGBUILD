@@ -9,7 +9,6 @@ url="https://github.com/DreamMaoMao/mmsg"
 license=('MIT')
 depends=(
   glibc
-  cjson
   'wayland>=1.23.1'
 )
 makedepends=('git' 'make' 'wayland-protocols')
