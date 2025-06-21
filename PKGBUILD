@@ -18,7 +18,7 @@ md5sums=('baa9eb5e84a7b3114a8a62d969197455' '10e084d0a4f067f254a7d753eaf241f0')
 
 prepare() {
     cd $pkgname-$pkgver
-    patch -Np1 -i ../fix_view_operator.patch
+    patch -Np1 -i ../../fix_view_operator.patch
 }
 
 build() {
