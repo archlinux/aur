@@ -1,7 +1,7 @@
 pkgbase = python-sparklines
 	pkgdesc = Text-based sparkline command line mimicking those of Edward Tufte
 	pkgver = 0.6.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/deeplook/sparklines
 	changelog = python-sparklines.changelog
 	arch = any
