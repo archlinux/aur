@@ -1,8 +1,8 @@
 # Maintainer: Stuart Cardall <developer__at__it-offshore.co.uk>
 pkgname=arch-sign-modules
 _pkgname=Arch-SKM
-pkgver=0.7.7
-pkgrel=2
+pkgver=0.7.8
+pkgrel=1
 pkgdesc="Signed (In Tree & Out of Tree) Kernel Modules for linux linux-lts linux-hardened linux-zen linux-rt + AUR kernels"
 arch=(any)
 url="https://github.com/itoffshore/Arch-SKM"
