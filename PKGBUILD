@@ -4,7 +4,7 @@
 pkgname=fortune-mod-mlp
 _gitname=ponysay
 _gitrepo=https://github.com/erkin/ponysay.git
-pkgver=3.0.3.5.g87a0d79b
+pkgver=3.0.3.36.g00b8c84d
 pkgrel=1
 pkgdesc="Fortune quotes from My Little Pony Friendship is Magic. Quotes come from ponysay."
 arch=('any')
