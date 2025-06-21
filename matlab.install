@@ -4,6 +4,8 @@ post_install() {
 
   echo "  -> To start using MATLAB, you might need to activate it first, if you haven't already:"
   echo "     \$ MathWorksProductAuthorizer"
+  echo "  -> After activation, launch MATLAB and wait for it to crash. Then run:"
+  echo "     # patchelf --clear-execstack ~/.MathWorks/ServiceHost/-mw_shared_installs/v*/bin/glnxa64/libmwfoundation_crash_handling.so"
 }
 
 post_upgrade() {
