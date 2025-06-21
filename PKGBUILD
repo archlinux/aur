@@ -15,7 +15,6 @@ depends=(
   pixman
   libxkbcommon
   pcre2
-  cjson
   'wlroots-0.19-mao-git'
 )
 

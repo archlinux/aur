@@ -19,7 +19,6 @@ pkgbase = maomaowm-git
 	depends = pixman
 	depends = libxkbcommon
 	depends = pcre2
-	depends = cjson
 	depends = wlroots-0.19-mao-git
 	provides = maomaowm
 	provides = wayland-compositor
