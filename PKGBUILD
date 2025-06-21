@@ -14,7 +14,7 @@ conflicts=('borked3ds')
 replaces=()
 depends=("sdl2")
 source=("https://github.com/Borked3DS/Borked3DS/releases/download/v$pkgver/borked3ds-v$pkgver-linux-appimage-gcc-24.04.tar.xz"
-        "https://raw.githubusercontent.com/Borked3DS/Borked3DS/refs/heads/master/dist/borked3ds.desktop")
+        "https://raw.githubusercontent.com/Borked3DS/Borked3DS/refs/tags/v$pkgver/dist/borked3ds.desktop")
 b2sums=('ded3d6dfd734d2a619583325ed1a478d18b2df891d6b0d39b29b05e0c9da6bf2113cac5c29ec681208f02644f9d11e79cb9a900e067058c51e0489f5ae740a06'
         '5e64925cea01bf83d5b2fff47fc9bd0198a8fd4dee49becfb88f22ef1f9778eb571006d198e4cf2ca8888cfcf57d3f682fd7efee7c82c06695fcc7e2dd3b65bb')
 options=("!strip")
