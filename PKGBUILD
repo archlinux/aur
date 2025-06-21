@@ -1,7 +1,7 @@
 # Maintainer: Mark Pendlebury <mark@example.com>
 
 pkgname=eleviewr
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A lightweight image viewer for Wayland/Hyprland"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo' 'rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/markpendlebury/EleViewr/archive/v$pkgver.tar.gz")
-sha256sums=('11f9c94156200abfeff3605540e68e1d4474f6cd73df54d2147859a39cf0df48')
+sha256sums=('f07f7458fbb1768355b75b392ea84123d934c52ea526a8338116bb41f6f88eb8')
 
 prepare() {
     cd "$srcdir/EleViewr-$pkgver"
