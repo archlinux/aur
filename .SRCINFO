@@ -1,0 +1,17 @@
+pkgbase = prismlauncher-cracked-git
+	pkgdesc = A cracked and modified version of PrismLauncher patched for Java 8 compatibility and development use
+	pkgver = 9.4.r5.g061218725
+	pkgrel = 1
+	url = https://github.com/Diegiwg/PrismLauncher-Cracked
+	arch = x86_64
+	license = GPL
+	makedepends = java-environment-common
+	depends = jdk8-openjdk
+	depends = cmake
+	depends = qt5-tools
+	depends = git
+	options = !strip
+	source = git+https://github.com/Diegiwg/PrismLauncher-Cracked#branch=develop
+	md5sums = SKIP
+
+pkgname = prismlauncher-cracked-git
