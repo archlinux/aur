@@ -4,7 +4,7 @@
 pkgname=fluffychat-localflutter
 _pkgname=fluffychat
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Chat with your friends, be careful about your flutter environment"
 arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
@@ -22,16 +22,19 @@ conflicts=("$_pkgname")
 source=(
   "fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v${pkgver}.zip"
   "notification.patch"
+  "xdp_selector.patch"
 )
 options+=(!lto)
 sha256sums=(
   '1da34d13b757cb203fd5e48b4b6502a629399e241cd013fa9df003249a9d8518'
   '8952c37fa0389b33c2d9cb057af9f579d05bd18f61e279e3a0209de0a8b961cf'
+  '681e2f4f48725b09de0778287add52bcca68f0e731ebaeb54dc28b9343a6298e'
 )
 
 prepare() {
   cd ${_pkgname}-$pkgver
   patch -Np1 -i "$srcdir/notification.patch"
+  patch -Np1 -i "$srcdir/xdp_selector.patch"
 }
 
 # Check the fluffer environment yourself

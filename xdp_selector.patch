@@ -1,0 +1,104 @@
+From d65a27abc81e537e14afbcd76b9a11648a3682ee Mon Sep 17 00:00:00 2001
+From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
+Date: Sat, 21 Jun 2025 20:50:47 +0900
+Subject: [PATCH] feat: support xdp selector for linux
+
+just a patch ready now.. no need to do pr
+---
+ lib/utils/file_selector.dart | 34 ++++++++++------------------------
+ pubspec.lock                 | 11 ++++++-----
+ pubspec.yaml                 |  5 ++++-
+ 3 files changed, 20 insertions(+), 30 deletions(-)
+
+diff --git a/lib/utils/file_selector.dart b/lib/utils/file_selector.dart
+index fd35891af9..2e09b492f3 100644
+--- a/lib/utils/file_selector.dart
++++ b/lib/utils/file_selector.dart
+@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
+ import 'package:file_picker/file_picker.dart';
+ import 'package:file_selector/file_selector.dart';
+ 
+-import 'package:fluffychat/utils/platform_infos.dart';
+ import 'package:fluffychat/widgets/app_lock.dart';
+ import 'package:fluffychat/widgets/future_loading_dialog.dart';
+ 
+@@ -13,31 +12,18 @@ Future<List<XFile>> selectFiles(
+   FileSelectorType type = FileSelectorType.any,
+   bool allowMultiple = false,
+ }) async {
+-  if (!PlatformInfos.isLinux) {
+-    final result = await AppLock.of(context).pauseWhile(
+-      showFutureLoadingDialog(
+-        context: context,
+-        future: () => FilePicker.platform.pickFiles(
+-          compressionQuality: 0,
+-          allowMultiple: allowMultiple,
+-          type: type.filePickerType,
+-          allowedExtensions: type.extensions,
+-        ),
++  final result = await AppLock.of(context).pauseWhile(
++    showFutureLoadingDialog(
++      context: context,
++      future: () => FilePicker.platform.pickFiles(
++        compressionQuality: 0,
++        allowMultiple: allowMultiple,
++        type: type.filePickerType,
++        allowedExtensions: type.extensions,
+       ),
+-    );
+-    return result.result?.xFiles ?? [];
+-  }
+-
+-  if (allowMultiple) {
+-    return await AppLock.of(context).pauseWhile(
+-      openFiles(confirmButtonText: title, acceptedTypeGroups: type.groups),
+-    );
+-  }
+-  final file = await AppLock.of(context).pauseWhile(
+-    openFile(confirmButtonText: title, acceptedTypeGroups: type.groups),
++    ),
+   );
+-  if (file == null) return [];
+-  return [file];
++  return result.result?.xFiles ?? [];
+ }
+ 
+ enum FileSelectorType {
+diff --git a/pubspec.lock b/pubspec.lock
+index 3567b97bb2..643bc2c54c 100644
+--- a/pubspec.lock
++++ b/pubspec.lock
+@@ -393,11 +393,12 @@ packages:
+   file_picker:
+     dependency: "direct main"
+     description:
+-      name: file_picker
+-      sha256: ab13ae8ef5580a411c458d6207b6774a6c237d77ac37011b13994879f68a8810
+-      url: "https://pub.dev"
+-    source: hosted
+-    version: "8.3.7"
++      path: "."
++      ref: xdppicker
++      resolved-ref: f93532b02539cc30068c4f164d49c3c3c9c4c1a9
++      url: "https://github.com/Decodetalkers/flutter_file_picker"
++    source: git
++    version: "10.2.0"
+   file_selector:
+     dependency: "direct main"
+     description:
+diff --git a/pubspec.yaml b/pubspec.yaml
+index ee092c7b6d..60936e647d 100644
+--- a/pubspec.yaml
++++ b/pubspec.yaml
+@@ -25,7 +25,10 @@ dependencies:
+   emoji_picker_flutter: ^3.1.0
+   emojis: ^0.9.9
+   #fcm_shared_isolate: ^0.2.0
+-  file_picker: ^8.1.2
++  file_picker:
++    git:
++      url: https://github.com/Decodetalkers/flutter_file_picker
++      ref: xdppicker
+   file_selector: ^1.0.3
+   flutter:
+     sdk: flutter
