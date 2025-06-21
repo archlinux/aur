@@ -1,14 +1,15 @@
-From d65a27abc81e537e14afbcd76b9a11648a3682ee Mon Sep 17 00:00:00 2001
+From ca6155dea2b05a19165de8115174bcb126b78a81 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Sat, 21 Jun 2025 20:50:47 +0900
 Subject: [PATCH] feat: support xdp selector for linux
 
 just a patch ready now.. no need to do pr
 ---
- lib/utils/file_selector.dart | 34 ++++++++++------------------------
- pubspec.lock                 | 11 ++++++-----
- pubspec.yaml                 |  5 ++++-
- 3 files changed, 20 insertions(+), 30 deletions(-)
+ lib/utils/file_selector.dart                  | 34 ++++++-------------
+ .../matrix_file_extension.dart                |  6 ++--
+ pubspec.lock                                  | 11 +++---
+ pubspec.yaml                                  |  5 ++-
+ 4 files changed, 22 insertions(+), 34 deletions(-)
 
 diff --git a/lib/utils/file_selector.dart b/lib/utils/file_selector.dart
 index fd35891af9..2e09b492f3 100644
@@ -64,8 +65,34 @@ index fd35891af9..2e09b492f3 100644
  }
  
  enum FileSelectorType {
+diff --git a/lib/utils/matrix_sdk_extensions/matrix_file_extension.dart b/lib/utils/matrix_sdk_extensions/matrix_file_extension.dart
+index 01b2d85e41..4400f6af57 100644
+--- a/lib/utils/matrix_sdk_extensions/matrix_file_extension.dart
++++ b/lib/utils/matrix_sdk_extensions/matrix_file_extension.dart
+@@ -3,7 +3,6 @@ import 'dart:io';
+ import 'package:flutter/material.dart';
+ 
+ import 'package:file_picker/file_picker.dart';
+-import 'package:file_selector/file_selector.dart';
+ import 'package:matrix/matrix.dart';
+ import 'package:share_plus/share_plus.dart';
+ import 'package:universal_html/html.dart' as html;
+@@ -21,11 +20,10 @@ extension MatrixFileExtension on MatrixFile {
+     }
+ 
+     final downloadPath = !PlatformInfos.isMobile
+-        ? (await getSaveLocation(
+-            suggestedName: name,
++        ? (await FilePicker.platform.saveFile(
++            fileName: name,
+             confirmButtonText: L10n.of(context).saveFile,
+           ))
+-            ?.path
+         : await FilePicker.platform.saveFile(
+             dialogTitle: L10n.of(context).saveFile,
+             fileName: name,
 diff --git a/pubspec.lock b/pubspec.lock
-index 3567b97bb2..643bc2c54c 100644
+index 3567b97bb2..cff932aba5 100644
 --- a/pubspec.lock
 +++ b/pubspec.lock
 @@ -393,11 +393,12 @@ packages:
@@ -79,7 +106,7 @@ index 3567b97bb2..643bc2c54c 100644
 -    version: "8.3.7"
 +      path: "."
 +      ref: xdppicker
-+      resolved-ref: f93532b02539cc30068c4f164d49c3c3c9c4c1a9
++      resolved-ref: e7ae7cebc5ba4ffbfeedb190859a0f443bb0f079
 +      url: "https://github.com/Decodetalkers/flutter_file_picker"
 +    source: git
 +    version: "10.2.0"
