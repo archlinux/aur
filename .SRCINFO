@@ -1,7 +1,7 @@
 pkgbase = mmsg-git
 	pkgdesc = ipc client for maomaowm
 	pkgver = r22.7dc0500
-	pkgrel = 1.1
+	pkgrel = 1.2
 	url = https://github.com/DreamMaoMao/mmsg
 	arch = x86_64
 	license = MIT
