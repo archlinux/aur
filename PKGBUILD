@@ -1,19 +1,17 @@
-# Maintainer: Jack Random <jack (at) random.to>
-# Contributor: FadeMind <fademind@gmail.com>
+# Maintainer: Serhii Starovoitov <drommer.94@gmail.com>
 
-_pkgname=breeze
-pkgname=yakuake-skin-${_pkgname}
-pkgver=1.0
-pkgrel=5
-pkgdesc="A Breeze skin for Yakuake (KF5)"
+pkgname=yakuake-skin-breeze
+pkgver=2025.06.22
+pkgrel=1
+pkgdesc="Modified Breeze Skin by Andreas Kainz for matching Plasma 6.4 color schemes"
 arch=('any')
-url="https://opendesktop.org/content/show.php?content=167519"
-license=('GPL')
+url="https://store.kde.org/p/2297897"
+license=('GPLv2-or-later')
 depends=('yakuake')
-source=("${_pkgname}.tar.gz::https://opendesktop.org/CONTENT/content-files/167519-breezeV1.0.tar.gz")
-sha256sums=('d07a6769e5432faa704313bc81f2ec040276d34317f121641a2aeb548b937976')
+source=("${pkgname}.tar.gz")
+sha256sums=('ebb187a85d71a2d21f040e0cbae1eb0e77d2f6243d2664cfde9d833be3e1c0e5')
 
 package() {
-    cd ${srcdir}
-    find breezeV1.0/* -type f -exec install -Dm644 '{}' "${pkgdir}/usr/share/apps/yakuake/skins/{}" \;
-}  
+  install -dm755 "${pkgdir}/usr/share/yakuake/skins"
+  cp -a "${pkgname}/breeze-"{dark,light,twilight}{,-rb} "${pkgdir}/usr/share/yakuake/skins"
+}
