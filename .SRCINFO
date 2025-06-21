@@ -1,0 +1,16 @@
+pkgbase = restree-git
+	pkgdesc = Simple CLI tool to recursively build .http file in a given directory
+	pkgver = r33.e322d46
+	pkgrel = 1
+	url = https://github.com/kamil-koziol/restree
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = go
+	provides = restree
+	conflicts = restree
+	options = !debug
+	source = git+https://github.com/kamil-koziol/restree
+	sha256sums = SKIP
+
+pkgname = restree-git
