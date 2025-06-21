@@ -21,7 +21,6 @@ build() {
     aclocal -I m4
     echo "AC_CONFIG_MACRO_DIRS([m4])" >> configure.ac
     echo 'ACLOCAL_AMFLAGS="-Im4"' >> Makefile.am 
-#    libtoolize --force --copy
     autoupdate --force
     autoreconf --force --install
 
