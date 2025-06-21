@@ -1,6 +1,6 @@
 pkgbase = xtrkcad-hg
 	pkgdesc = CAD program for designing model railroad layouts.
-	pkgver = r5254
+	pkgver = r5987
 	pkgrel = 1
 	url = http://www.xtrkcad.org/
 	arch = x86_64
