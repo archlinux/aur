@@ -3,8 +3,8 @@
 _pkgbase=blksnap
 _pkgname=veeam${_pkgbase}
 pkgname=${_pkgname}-dkms
-pkgver=6.3.1.1016
-pkgrel=2
+pkgver=6.3.2.1207
+pkgrel=1
 pkgdesc="Veeam Agent for Linux kernel modules (DKMS)"
 arch=('x86_64')
 url="https://repository.veeam.com/backup/linux/agent"
@@ -13,13 +13,13 @@ depends=('dkms')
 conflicts=("${_pkgbase}")
 source=("${url}/rpm/el/9/x86_64/blksnap-${pkgver}-1.noarch.rpm"
         'dkms.conf'
-        'kernel-6.14.patch')
-sha256sums=('9763e46d56fd5058714cf5a56881c5774e61823e1579dff2b6d80743fbc27194'
+        'kernel-6.15.patch')
+sha256sums=('bb97964683d1e9e3a5ea311e763feca748ce7aec8c405a4ee9082d9915c5b596'
   '21a182149740160df2d3475fad4142a08d8fc850e0234d32922472f7e4aa66fc'
-  '0ac5759016d528ade7f5f78f6f76c0f4858d1f1c24a571f52eb9dfce0bfd97f1')
+  'a2b87570a72e1f965414825ef4256f0721f57b1dd430f4410bb9dcc8029ac930')
 
 prepare() {
-  patch -d "${srcdir}/usr/src/${_pkgbase}-${pkgver}" -p1 -i "${srcdir}/kernel-6.14.patch"
+  patch -d "${srcdir}/usr/src/${_pkgbase}-${pkgver}" -p1 -i "${srcdir}/kernel-6.15.patch"
 }
 
 package() {
