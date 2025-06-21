@@ -1,20 +1,19 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=cloudreve
-_tag=88409cc1f0a0a55b7ea8f0aee15e82876260b2d8
 arch=('x86_64')
 backup=("etc/cloudreve/config.ini")
-pkgver=3.8.3
-pkgrel=1
+pkgver=4.0.0
+pkgrel=2
 pkgdesc="Self-hosted file management and sharing system, supports multiple storage providers"
 url=https://github.com/cloudreve/Cloudreve
 license=("GPL-3.0-only")
 #depends=("")
-source=("git+https://github.com/cloudreve/Cloudreve.git#tag=${_tag}" "cloudreve.service" "config.ini")
+source=("git+https://github.com/cloudreve/Cloudreve.git#tag=${pkgver}" "cloudreve.service" "config.ini")
 makedepends=("go" "git" "goreleaser" "yarn" "zip")
-sha256sums=('SKIP'
-            'fa15c67beb6a9c47c11062f8bd168d5a078dea5944e72a0234eb7568eddcd91e'
-            '28e397ff097c4abd38d9d23dcdf963df8401c31040b56d076ed3f3f2e83c155a')
+sha256sums=('b639c6779ccad05013d1f2b39aa0da4c6032b8beeef3f783d28391003cdba8af'
+            '5e78a6bc0624c39ca1fb5e7733ffa8472d41540dab2e009871504c82469d0384'
+            '3145bf311d7ae94a1f00a8c78df08240fa95668d1a8eb3981ffd7fca3b70535a')
 provides=("cloudreve")
 
 function prepare(){
@@ -40,4 +39,3 @@ function package(){
 	mkdir -p "${pkgdir}/usr/lib/cloudreve"
 	echo 'd	/var/lib/cloudreve	0700	cloudreve	cloudreve	-' >"${pkgdir}/usr/lib/tmpfiles.d/cloudreve.conf"
 }
-

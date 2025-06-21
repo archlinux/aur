@@ -8,7 +8,7 @@ User=cloudreve
 Restart=on-faliure
 RestartSec=3
 ExecStartPre=cp /usr/lib/cloudreve/cloudreve /var/lib/cloudreve/cr
-ExecStart=/var/lib/cloudreve/cr -c /etc/cloudreve/config.ini
+ExecStart=/var/lib/cloudreve/cr
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_BIND_SERVICE
 WorkingDirectory=/var/lib/cloudreve
@@ -25,7 +25,7 @@ MemoryDenyWriteExecute=true
 ProtectClock=true
 RestrictRealtime=true
 PrivateDevices=true
-PrivateTmp=true
+PrivateTmp=disconnected
 ProtectHostname=true
 
 [Install]
