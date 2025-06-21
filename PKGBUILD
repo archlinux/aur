@@ -2,7 +2,7 @@
 pkgname=notekeeper
 _pkgname=note-keeper
 _script=note.bash
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='A tiny bash script for taking and organizing simple text notes.'
 arch=('any')
@@ -10,8 +10,8 @@ url="https://github.com/dcchambers/note-keeper"
 license=('MIT')
 depends=('bash')
 provides=('note')
-source=("${url}/releases/download/v${pkgver}/${pkgname}.tar.gz")
-sha256sums=('5d2006b904d7bfae573019111d9f417087cd7956ce6f98353b5ceee1ad7344cb')
+source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('7d5111c90c0c565f7608f9075cd7ebe51bd987eb388a2ea2cd8156cfa8b03571')
 
 package() {
   install -Dm755 ${_script} "$pkgdir"/usr/bin/note
