@@ -1,7 +1,7 @@
 # Maintainer: Stefanos Mitropoulos stefmitropoulos@gmail.com
 _pkgname="blueblack"
 pkgname="${_pkgname}-git"
-pkgver=1.0.3.r2.ge0a681a3
+pkgver=1.0.6.r1.g09e3a713
 pkgrel=1
 pkgdesc="Automatically switch between light/dark mode"
 arch=('any')
@@ -15,6 +15,7 @@ depends=(
   'python-requests>=2.31.0'
   'python-xdg-base-dirs'
   'python-jsonschema>=4.21.1'
+  'python-astral>=3.2'
 )
 
 makedepends=(python-build python-installer python-wheel git python-poetry)
