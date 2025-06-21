@@ -1,6 +1,6 @@
 pkgname=tp_smapi-dkms
 pkgver=0.44
-pkgrel=1
+pkgrel=2
 pkgdesc="DKMS controlled modules for ThinkPad's SMAPI functionality"
 arch=(any)
 url="http://www.thinkwiki.org/wiki/Tp_smapi"
@@ -10,14 +10,18 @@ conflicts=('tp_smapi')
 provides=("tp_smapi=${pkgver}")
 options=(!strip)
 source=("https://github.com/linux-thinkpad/tp_smapi/releases/download/tp-smapi%2F${pkgver}/tp_smapi-${pkgver}.tgz"
-        'dkms.conf')
+        'dkms.conf'
+        'PR_71.patch')
 sha256sums=('cccff96e8994bfc9dfe2bec071c4dfb6baf060f988bc338bbab95e639fd4c126'
-            '43aa280c078fc5ba0ee229b9c71238e215313315711f3d3caae7b9bd0ab24dbe')
+            '60ee6aa01ae41d1c8f7945394d1bf976f03dc76dcfef064f4890458638fa80d1'
+            '78127017644e0642ecf16d52f43ea2800cedf85e767ee8ff5dbac5236a91ba3a')
 
 prepare() {
   cd tp_smapi-${pkgver}
   msg2 "Patching dkms.conf"
   sed -ri 's/^(PACKAGE_VERSION=).*/\1'${pkgver}'/g' "${srcdir}"/dkms.conf
+  msg2 "Patching tp_smapi for 6.15+ support"
+  patch -p1 < ../PR_71.patch
 }
 
 package() {
