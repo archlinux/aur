@@ -13,7 +13,7 @@ optdepends=('pacman-contrib'
             'mousepad: default gui editor')
 install="$pkgname.install"
 source=($pkgname-$pkgver.tar.gz::https://github.com/itoffshore/$_pkgname/archive/$pkgver.tar.gz)
-md5sums=('433868ede326c2de4bb381de5a66e312')
+md5sums=('aa4b49852f27d6ada0db60886aba6e7b')
 
 package() {
   cd $_pkgname-$pkgver
