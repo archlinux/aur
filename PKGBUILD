@@ -10,7 +10,7 @@
 
 pkgname=mozillavpn
 pkgver=2.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 arch=('x86_64')
 url="https://vpn.mozilla.org"
@@ -34,6 +34,7 @@ depends=(
   'qt6-svg'
   'qt6-websockets'
   'wireguard-tools'
+  'org.freedesktop.secrets'
 )
 makedepends=(
   'clang'
@@ -46,7 +47,7 @@ makedepends=(
   'rust'
 )
 optdepends=(
-    'qt6-wayland: for Wayland support'
+  'qt6-wayland: for Wayland support'
 )
 
 install=mozillavpn.install
@@ -82,11 +83,11 @@ build() {
   _cargo_env
 
   local _cmake_options=(
-      -B build
-      -S "$_pkgsrc"
-      -DCMAKE_BUILD_TYPE=Release
-      -DCMAKE_INSTALL_PREFIX='/usr'
-      -Wno-dev
+    -B build
+    -S "$_pkgsrc"
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -Wno-dev
   )
 
   cmake "${_cmake_options[@]}"
