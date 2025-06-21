@@ -13,8 +13,8 @@ optdepends=('python' 'jack-audio-connection-kit')
 install=${pkgname}.install
 provides=("openmsx")
 conflicts=("openmsx-git")
-source=("https://github.com/openMSX/openMSX/releases/download/RELEASE_${pkgver//./_}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('baa9eb5e84a7b3114a8a62d969197455')
+source=("https://github.com/openMSX/openMSX/releases/download/RELEASE_${pkgver//./_}/${pkgname}-${pkgver}.tar.gz" "fix_view_operator.patch")
+md5sums=('baa9eb5e84a7b3114a8a62d969197455' '10e084d0a4f067f254a7d753eaf241f0')
 
 prepare() {
     cd $pkgname-$pkgver
