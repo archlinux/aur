@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=gallery-dl-git
-pkgver=1.29.5.r0.g87f02ac
+pkgver=1.29.7.r170.gb0d7de3
 pkgrel=1
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites (git)'
 arch=(any)
@@ -19,7 +19,8 @@ optdepends=('ffmpeg: Pixiv Ugoira conversion'
             'python-yaml: YAML configuration file support'
             'python-toml: TOML configuration file support for Python<3.11'
             'python-secretstorage: GNOME keyring passwords for --cookies-from-browser'
-            'python-psycopg: PostgreSQL support')
+            'python-psycopg: PostgreSQL support'
+            'python-truststore: Support using system certificates')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+"${url}".git)
