@@ -1,7 +1,7 @@
 # Maintainer: termuellinator
 
 pkgname=lug-helper
-pkgver=3.11
+pkgver=4.0
 pkgrel=1
 epoch=1
 pkgdesc="Star Citizen's Linux Users Group Helper Script"
@@ -17,7 +17,7 @@ source=(
     'lug-helper.desktop'
 )
 sha256sums=(
-    '2131f1a8d1869ba8757a0a5b318736eb251ca4a7cd664b6362959c6361cfcd43'
+    '3ebf5954ea79c1af1c23f9277d826f367f2710bd23c5bd5a5939d4d05556ea5f'
     'c3cedb70924c42a47ac9ff7e6455403432c41e3320bee752e6158330158f62a0'
 )
 
@@ -26,7 +26,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/lug-helper.sh" "$pkgdir/usr/bin/lug-helper"
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/lug-logo.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/lug-logo.png"
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/rsi-launcher.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/rsi-launcher.png"
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/lib/lutris-starcitizen.json" "$pkgdir/usr/share/lug-helper/lutris-starcitizen.json"
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/lib/sc-launch.sh" "$pkgdir/usr/share/lug-helper/sc-launch.sh"
     install -Dm755 "${srcdir}/lug-helper.desktop" "$pkgdir/usr/share/applications/lug-helper.desktop"
 }
