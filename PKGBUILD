@@ -3,7 +3,7 @@
 _pkgauthor=x-motemen
 _pkgname=gore
 pkgname=${_pkgname}-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Yet another Go REPL that works nicely'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -15,8 +15,8 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('0896caf34b396719df2f545b838851f8b3dab13853e0afaa162fd5960ff07783')
-sha256sums_aarch64=('146a9e99e26e8e2e28e7a3b07c5ff3a7120f385722bb4b9530afc82d1128c8c0')
+sha256sums_x86_64=('ddd5c1681a4639c6ada0b1e07646de9391b60b042127f6c9edc81ce5134131a0')
+sha256sums_aarch64=('6d3d4104f1c1a4e1e87f0e1c1895160b16092fdec56bb2e365d24b936184ae5a')
 
 package() {
   cd "${srcdir}/$(ls -d */ | head -n 1)/" || exit
