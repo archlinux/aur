@@ -1,0 +1,14 @@
+pkgbase = rpc-git
+	pkgdesc = Cross-platform command-line utility for managing prompt templates.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/devgabrielsborges/replica
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	source = git+https://github.com/devgabrielsborges/replica.git#commit=9a4e0dcf388cedb8aa2cf88a03f50a1c1598ec6f
+	sha256sums = SKIP
+
+pkgname = rpc-git
