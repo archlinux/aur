@@ -3,12 +3,12 @@
 _base=netgen
 pkgname=${_base}-nogui
 pkgver=6.2.2504
-pkgrel=1
+pkgrel=2
 pkgdesc="Netgen mesh generator"
 arch=(i686 x86_64)
 url="https://github.com/NGSolve/${_base}"
 license=(LGPL-2.1-only)
-depends=(metis opencascade openmpi python-mpi4py)
+depends=(metis opencascade openmpi python-mpi4py cgns)
 makedepends=(cmake pybind11 git) # python-pybind11-stubgen
 # checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
@@ -31,7 +31,7 @@ build() {
     -DPREFER_SYSTEM_PYBIND11=ON \
     -DTRACE_MEMORY=OFF \
     -DUSE_CCACHE=OFF \
-    -DUSE_CGNS=OFF \
+    -DUSE_CGNS=ON \
     -DUSE_GEOM2D=ON \
     -DUSE_GUI=OFF \
     -DUSE_INTERFACE=ON \
