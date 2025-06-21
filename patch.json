@@ -177,13 +177,13 @@
 				}
 			]
 		},
-		"ms-azuretools.vscode-docker": {
+		"ms-azuretools.vscode-containers": {
 			"onFileOpen": [
 				{
 					"pathGlob": "{**/dockerfile,**/Dockerfile,**/docker-compose.yml,**/docker-compose.*.yml}",
 					"important": true,
 					"whenNotInstalled": [
-						"ms-azuretools.vscode-containers"
+						"ms-azuretools.vscode-docker"
 					]
 				},
 				{
@@ -192,13 +192,13 @@
 					],
 					"important": true,
 					"whenNotInstalled": [
-						"ms-azuretools.vscode-containers"
+						"ms-azuretools.vscode-docker"
 					]
 				},
 				{
 					"pathGlob": "{**/*.cs,**/project.json,**/global.json,**/*.csproj,**/*.cshtml,**/*.sln,**/appsettings.json,**/*.py,**/*.ipynb,**/*.js,**/*.ts,**/package.json}",
 					"whenNotInstalled": [
-						"ms-azuretools.vscode-containers"
+						"ms-azuretools.vscode-docker"
 					]
 				}
 			]
