@@ -1,0 +1,21 @@
+# Maintainer: Juliette Cordor <me@cordor.dev>
+pkgname="udev-steelseries-arctis"
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Udev rules for SteelSeries Arctis series headsets"
+makedepends=('python3')
+arch=('any')
+license=('Unlicense')
+makedepends=('python')
+source=('devices.py')
+sha256sums=('dfb9cc6aa34fc105500a8c567c5b8e0f3daedcca5b5595a378888b0fb5933678')
+
+build() {
+    cd "$srcdir"
+
+    python3 devices.py
+}
+
+package() {
+    install -Dm644 71-steelseries-arctis.rules -t "$pkgdir/usr/lib/udev/rules.d"
+}
