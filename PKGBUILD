@@ -1,11 +1,11 @@
 # Maintainer: Pixel
 
 pkgname=walrs
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="Generate colorscheme from image"
 arch=('x86_64' 'aarch64')
-url="https://github.com/Pixel2175/walrs"
+url="https://pixelll.is-a.dev/tools/walrs"
 license=('GPL3')
 depends=('gcc-libs')
 source=("https://pixelll.is-a.dev/static/walrs/walrs-${pkgver}.tar.gz")
