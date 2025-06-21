@@ -1,0 +1,15 @@
+pkgbase = python-webgui-jupyter-widgets-bin
+	pkgdesc = Jupyter widgets library for webgui js visualization library
+	pkgver = 0.2.37
+	pkgrel = 1
+	url = https://webgui-jupyter-widgets.github.io
+	arch = any
+	license = LGPL-2.0-or-later
+	makedepends = python-installer
+	depends = python-ipywidgets
+	provides = python-webgui-jupyter-widgets=0.2.37
+	conflicts = python-webgui-jupyter-widgets
+	source = https://pypi.org/packages/py2.py3/w/webgui-jupyter-widgets/webgui_jupyter_widgets-0.2.37-py2.py3-none-any.whl
+	sha512sums = bc5f81069674865011cc0b131e77d2300cccd99692c40c651df6ff9c05f46bc8ba0fd7003c29c73b8fa4796675a36e112b088edcbb15f1215e81c29c38a03d8a
+
+pkgname = python-webgui-jupyter-widgets-bin

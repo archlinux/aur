@@ -1,0 +1,3 @@
+[python-webgui-jupyter-widgets-bin]
+source = "pypi"
+pypi = "webgui-jupyter-widgets"
