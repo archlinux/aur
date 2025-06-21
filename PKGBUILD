@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RouHim/binvec/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('96fae6531cb43e175291e78396778bd81cd13cdb1ae73260f6bf202fd56dd25b')
+sha256sums=('478ee8abdb279bdead85e21597d298e5c732a4681cb80eef535ba248a9253d3b')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -21,11 +21,11 @@ package() {
   cd "$pkgname-$pkgver"
 
   # Install binary
-  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "${startdir}/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   # Install desktop file
-  install -Dm644 ".desktop/binvec.desktop" "$pkgdir/usr/share/applications/binvec.desktop"
+  install -Dm644 "${startdir}/.desktop/binvec.desktop" "${pkgdir}/usr/share/applications/binvec.desktop"
 
   # Install icon
-  install -Dm644 "icon.png" "$pkgdir/usr/share/pixmaps/binvec.png"
+  install -Dm644 "${startdir}/.desktop/icon.png" "${pkgdir}/usr/share/pixmaps/binvec.png"
 }
