@@ -1,6 +1,6 @@
 pkgbase = blueblack-git
 	pkgdesc = Automatically switch between light/dark mode
-	pkgver = 1.0.3.r2.ge0a681a3
+	pkgver = 1.0.6.r1.g09e3a713
 	pkgrel = 1
 	url = https://github.com/smitropoulos/blueblack
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = blueblack-git
 	depends = python-requests>=2.31.0
 	depends = python-xdg-base-dirs
 	depends = python-jsonschema>=4.21.1
+	depends = python-astral>=3.2
 	provides = blueblack
 	conflicts = blueblack
 	source = blueblack::git+https://github.com/smitropoulos/blueblack.git
