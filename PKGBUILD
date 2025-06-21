@@ -39,13 +39,13 @@ package() {
   cd "$_pkgname_src"
 
   # Install scripts to /usr/bin
-  install -Dm755 "src/internet_monitor.sh" "$pkgdir/usr/bin/internet_monitor.sh"
-  install -Dm755 "src/conky_usage_helper.sh" "$pkgdir/usr/bin/conky_usage_helper.sh"
-  install -Dm755 "src/internet_monitor_daemon.sh" "$pkgdir/usr/bin/internet_monitor_daemon.sh"
+  install -Dm755 "internet_monitor.sh" "$pkgdir/usr/bin/internet_monitor.sh"
+  install -Dm755 "conky_usage_helper.sh" "$pkgdir/usr/bin/conky_usage_helper.sh"
+  install -Dm755 "internet_monitor_daemon.sh" "$pkgdir/usr/bin/internet_monitor_daemon.sh"
 
   # Install default config and conkyrc to /usr/share/pkgname
-  install -Dm644 "config/config.sh" "$pkgdir/usr/share/$pkgname/config.sh"
-  install -Dm644 "config/conkyrc_internet" "$pkgdir/usr/share/$pkgname/conkyrc_internet"
+  install -Dm644 "config.sh" "$pkgdir/usr/share/$pkgname/config.sh"
+  install -Dm644 "conkyrc_internet" "$pkgdir/usr/share/$pkgname/conkyrc_internet"
   
   # Install license
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
