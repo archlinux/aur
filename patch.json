@@ -501,7 +501,8 @@
 			"languageModelCapabilities",
 			"languageModelDataPart",
 			"chatStatusItem",
-			"taskProblemMatcherStatus"
+			"taskProblemMatcherStatus",
+			"contribLanguageModelToolSets"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",

@@ -1,13 +1,14 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=code-features-insiders
-pkgver=1.100.2
+pkgver=1.101.0
 pkgrel=1
 pkgdesc='Unblock some features in Code OSS, including features in VSCode Insiders'
 arch=('any')
 url='https://github.com/microsoft/vscode'
 license=('unknown')
 depends=('code' 'python' 'org.freedesktop.secrets')
-optdepends=('icu69: for MS-vsliveshare.vsliveshare extension to work')
+optdepends=('icu69: for MS-vsliveshare.vsliveshare extension to work'
+            'pacman-contrib: update checksums in local AUR package')
 provides=('code-features')
 conflicts=('code-features')
 install="${pkgname}.install"
@@ -17,7 +18,7 @@ source=("${pkgname}.hook"
         'update.py')
 md5sums=('a270718448070ecda3050b7569510105'
          '9ed6f3972479ab6d3d053e7c47ead55a'
-         'd851c024c83154a0378288c629312fb4'
+         '312619d04bed09ba34c5a53a1aba1854'
          '6923dcf184f1aa4948839c844d531581')
 
 package() {
