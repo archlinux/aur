@@ -1,0 +1,20 @@
+pkgbase = python-amulet_pybind11_extensions
+	pkgdesc = Some useful extensions to pybind11
+	pkgver = 1.0.0.1
+	pkgrel = 1
+	url = https://github.com/Amulet-Team/Amulet-pybind11-extensions
+	arch = any
+	license = LicenseRef-Amulet-Team-License
+	makedepends = python-setuptools
+	makedepends = git
+	makedepends = python-wheel
+	makedepends = python-amulet-compiler-version
+	makedepends = python-packaging
+	makedepends = python-versioneer
+	depends = python
+	depends = pybind11
+	depends = python-black
+	source = git+https://github.com/Amulet-Team/Amulet-pybind11-extensions.git#tag=1.0.0.1
+	md5sums = 8b8c2664dffbca9f8326f1298535fe46
+
+pkgname = python-amulet_pybind11_extensions
