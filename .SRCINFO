@@ -9,7 +9,6 @@ pkgbase = mmsg-git
 	makedepends = make
 	makedepends = wayland-protocols
 	depends = glibc
-	depends = cjson
 	depends = wayland>=1.23.1
 	provides = mmsg-git
 	conflicts = mmsg-git
