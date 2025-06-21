@@ -6,7 +6,7 @@ pkgbase = k3sup
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = go>=1.22
+	makedepends = go>=1.24
 	depends = glibc
 	depends = openssh
 	source = k3sup-0.13.9.tar.gz::https://github.com/alexellis/k3sup/archive/0.13.9.tar.gz
