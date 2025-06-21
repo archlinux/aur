@@ -1,0 +1,41 @@
+--- Makefile.orig	2024-08-27 04:55:21.000000000 +0200
++++ Makefile	2025-06-20 19:03:30.136513216 +0200
+@@ -30,18 +30,18 @@
+ RM = rm -f
+ 
+ # flags
+-CFLAGS = $(DEFINES) $(TFLAG) $(CDEBUG) -c -Wall
++CFLAGS += $(DEFINES) $(TFLAG) $(CDEBUG) -c -Wall
+ GZIPFLAGS = -9
+ INSTALLBINFLAGS = -m 755
+ INSTALLDATAFLAGS = -m 644
+-LDFLAGS = $(LDEBUG)
++LDFLAGS += $(LDEBUG)
+ LNFLAGS = -sf
+ RMRECURFLAGS = -rf
+ 
+ # directories
+ BINDIR = /usr/bin
+ LIBDIR = lib
+-MANDIR = /usr/man/man1
++MANDIR = /usr/share/man/man1
+ 
+ # filenames
+ FROMDOS = fromdos
+@@ -70,12 +70,12 @@
+ 	$(RM) $(FROMDOS) $(TODOS)
+ 
+ install: installman
+-	$(INSTALL) $(INSTALLBINFLAGS) $(FROMDOS) $(BINDIR)
+-	($(CD) $(BINDIR) ; $(LN) $(LNFLAGS) fromdos todos)
++	$(INSTALL) -Dm755 $(FROMDOS) -t $(DESTDIR)$(BINDIR)
++	($(CD) $(DESTDIR)$(BINDIR) ; $(LN) $(LNFLAGS) fromdos todos)
+ 
+ installman: $(FROMDOSMAN)
+-	$(INSTALL) $(INSTALLDATAFLAGS) $(FROMDOSMAN) $(MANDIR)
+-	($(CD) $(MANDIR) ; $(LN) $(LNFLAGS) fromdos.1 todos.1)
++	$(INSTALL) -Dm644 $(FROMDOSMAN) -t $(DESTDIR)$(MANDIR)
++	($(CD) $(DESTDIR)$(MANDIR) ; $(LN) $(LNFLAGS) fromdos.1 todos.1)
+ 
+ 
+ # real rules

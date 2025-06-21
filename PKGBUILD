@@ -1,25 +1,28 @@
-# Maintainer: Steffen Weber <-boenki-gmx-de->
+# Maintainer: a821 at mail de
+# Contributor: Steffen Weber <-boenki-gmx-de->
 # Contributor: Nick Smallbone <nick.smallbone@gmail.com>
 
 pkgname=tofrodos
-pkgver=1.7.13
-pkgrel=3
+pkgver=1.8.3
+pkgrel=1
 arch=('x86_64')
 pkgdesc="Convert ASCII files between the MS-DOS/Windows format and the UNIX format"
-url="https://www.thefreecountry.com/tofrodos/index.shtml"
-license=('GPL2')
+url="https://www.thefreecountry.com/tofrodos/"
+license=('GPL-2.0-only')
 depends=('glibc')
-source=(https://fossies.org/linux/misc/$pkgname-$pkgver.tar.gz)
-md5sums=('c4c5e6668a13a01bfb5ce562753a808f')
+source=("https://www.thefreecountry.com/tofrodos/tofrodos-$pkgver.zip"
+        "Makefile.patch")
+sha512sums=('aa80675a1277ee7575c0469be868825bffb5f938ceddb99d9c21b93b7e46793d754285f2cf6b8c8e5020c0c0596de3981f15fb2731b59539c78f82308f3644fa'
+            '815eda271724b19800a010a189feb55696f3170e6df29cfddd81f4a9502b35fb758fe33983e5df65bb0799393c60566ea58d6c647bed0b86a402db088cfc4848')
+
+prepare() {
+  patch src/Makefile < Makefile.patch
+}
 
 build() {
-  export CFLAGS+=" -c -Wall"
-  cd "$pkgname/src"
-  make -e
+  make -C src
 }
 
 package() {
-  cd "$pkgname/src"
-  install -d "$pkgdir"/usr/{bin,share/man/man1}
-  make BINDIR="$pkgdir/usr/bin" MANDIR="$pkgdir/usr/share/man/man1" install
+  make -C src DESTDIR="$pkgdir" install
 }
