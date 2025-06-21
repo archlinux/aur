@@ -3,7 +3,7 @@
 
 pkgname=freedownloadmanager
 pkgver=6.28.0.6294
-pkgrel=2
+pkgrel=3
 pkgdesc="FDM is a powerful modern download accelerator and organizer."
 arch=('x86_64')
 url="https://www.freedownloadmanager.org/"
@@ -26,6 +26,11 @@ package() {
         './usr/share/applications/freedownloadmanager.desktop'
     sed -i 's/\/opt\/freedownloadmanager\/fdm/\/usr\/bin\/fdm/g' \
         './usr/share/applications/freedownloadmanager.desktop'
+
+    # Application Icon
+    install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+    ln -sv "/opt/$pkgname/icon.png" \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
 
     # Add StartupWMClass
     sed -i '/^Exec=/a StartupWMClass=fdm' \
