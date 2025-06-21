@@ -1,4 +1,5 @@
-# Maintainer: meanlint <meanlint@outlook.com>
+# Maintainer: VCalV
+# Contributor: meanlint <meanlint@outlook.com>
 # Contributor: username227 <gfrank227 at gmail dot com>
 # Based on "citra-appimage" pkg made by AlphaJack as a base
 
@@ -13,18 +14,29 @@ provides=("borked3ds")
 conflicts=('borked3ds')
 replaces=()
 depends=("sdl2")
-source=("https://github.com/Borked3DS/Borked3DS/releases/download/v$pkgver/borked3ds-v$pkgver-linux-appimage-gcc-24.04.tar.xz"
-        "https://raw.githubusercontent.com/Borked3DS/Borked3DS/refs/tags/v$pkgver/dist/borked3ds.desktop")
-b2sums=('ded3d6dfd734d2a619583325ed1a478d18b2df891d6b0d39b29b05e0c9da6bf2113cac5c29ec681208f02644f9d11e79cb9a900e067058c51e0489f5ae740a06'
-        '5e64925cea01bf83d5b2fff47fc9bd0198a8fd4dee49becfb88f22ef1f9778eb571006d198e4cf2ca8888cfcf57d3f682fd7efee7c82c06695fcc7e2dd3b65bb')
+source=("https://github.com/Borked3DS/Borked3DS/releases/download/v$pkgver/borked3ds-v$pkgver-linux-appimage-gcc-24.04.tar.xz")
+b2sums=('ded3d6dfd734d2a619583325ed1a478d18b2df891d6b0d39b29b05e0c9da6bf2113cac5c29ec681208f02644f9d11e79cb9a900e067058c51e0489f5ae740a06')
 options=("!strip")
+
+prepare(){
+ cd "borked3ds-v$pkgver-linux-appimage-gcc-24.04"
+ ./borked3ds.AppImage --appimage-extract 'usr/share/icons/hicolor/scalable/*'
+ ./borked3ds.AppImage --appimage-extract 'usr/share/applications/*'
+ chmod -R a-x+rX squashfs-root/usr
+}
 
 package(){
  cd "borked3ds-v$pkgver-linux-appimage-gcc-24.04"
- install -D -m 755 "borked3ds.AppImage"       "$pkgdir/usr/bin/borked3ds"
- install -D -m 755 "borked3ds-room.AppImage"  "$pkgdir/usr/bin/borked3ds-room"
- install -D -m 755 "borked3ds.AppImage"    "$pkgdir/usr/bin/borked3ds"
- install -D -m 755 "scripting/borked3ds.py"    -t "$pkgdir/usr/bin"
- install -D -m 644 "dist/borked3ds.png"        -t "$pkgdir/usr/share/pixmaps"
- install -D -m 644 "$srcdir/borked3ds.desktop" -t "$pkgdir/usr/share/applications"
+ install -dm755 "${pkgdir}/usr/bin"
+
+ for cmd in borked3ds borked3ds-room; do
+  install -D -m 755 -t "${pkgdir}/opt/${pkgname}/" "${cmd}.AppImage"
+  ln -s "/opt/${pkgname}/${cmd}.AppImage" "${pkgdir}/usr/bin/${cmd}"
+  
+ done;
+
+ install -D -m 755 "scripting/borked3ds.py"    -t "$pkgdir/opt/${pkgname}/"
+ install -D -m 755 "license.txt"    -t "$pkgdir/usr/share/licenses/$pkg"
+ install -D -m 755 -t "$pkgdir/usr/share/docs/$pkg" *.md
+ cp -a squashfs-root/* "$pkgdir/"
 }
