@@ -25,6 +25,8 @@ source=("${_pkgname_src}::git+${url}.git#branch=main") # Source from main branch
 # pkgname is internet-usage-monitor-git, but the source repo is internet-usage-monitor.
 sha256sums=('SKIP') # For VCS sources, or provide checksum for tarball
 
+install=internet-usage-monitor.install
+
 prepare() {
   # This is where you would apply patches or run sed commands if the scripts
   # were not modified directly in the source repo before packaging.
@@ -51,7 +53,7 @@ package() {
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Install install.sh to /opt/internet-usage-monitor
-  install -Dm755 "../install.sh" "$pkgdir/opt/internet-usage-monitor/install.sh"
+  install -Dm755 "install.sh" "$pkgdir/opt/internet-usage-monitor/install.sh"
   
   # Install README (optional, but good practice)
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
