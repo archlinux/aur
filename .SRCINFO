@@ -1,0 +1,26 @@
+pkgbase = hyprland-gamescope-switcher
+	pkgdesc = Seamless session switcher between Hyprland and Gamescope for Arch Linux gaming
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Ripplingsnake12/hyprland-gamescope-switcher
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = hyprland
+	depends = wofi
+	depends = sddm
+	depends = uwsm
+	depends = gamescope
+	depends = gamescope-session-git
+	depends = gamescope-session-steam-git
+	depends = steam
+	depends = mangohud
+	depends = bash
+	depends = systemd
+	depends = dbus
+	optdepends = mako: for notifications
+	optdepends = dunst: alternative notification daemon
+	source = hyprland-gamescope-switcher-1.0.0.tar.gz::https://github.com/Ripplingsnake12/hyprland-gamescope-switcher/archive/v1.0.0.tar.gz
+	sha256sums = 696b02699a4d910afaabf0e68a8766bb328071ebd5c1b6612e81d19e0aef71db
+
+pkgname = hyprland-gamescope-switcher
