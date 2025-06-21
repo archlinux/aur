@@ -2,7 +2,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=mingw-w64-headers-msvcrt
-pkgver=12.0.0
+pkgver=13.0.0
 pkgrel=1
 pkgdesc="MinGW-w64 headers for Windows (with MSVCRT as default C runtime library)"
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('mingw-w64-headers')
 options=('!strip' '!libtool' '!emptydirs')
 validpgpkeys=('CAF5641F74F7DFBA88AE205693BDB53CD4EBC740') # JonY <jon_y@users.sourceforge.net>
 source=(https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v${pkgver}.tar.bz2{,.sig})
-sha512sums=('949b2bfab8763ab10ec4e9fdfdaf5361517a4ab787fb98ab419b38d02694061c2e821ebbf6e2e4b39d92bdf17419d116daa8e63afd9e01d11592f39df4da69d7'
+sha512sums=('39a22bd92465f571df1d90ac80b88dc6846998f71e4b7db79d1c9aa6e04cb3e41b632990a7238fc2c384ea67e4a77d103230db2c0d741869340d24ea79b6dda8'
             'SKIP')
 
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
