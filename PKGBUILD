@@ -38,7 +38,7 @@ _name133=${_name1}-turn-detector
 pkgbase=python-${_name0}
 pkgname=(python-${_name0} python-${_name11} python-${_name12} python-${_name13} python-${_name14} python-${_name15} python-${_name16} python-${_name17} python-${_name18} python-${_name19} python-${_name110} python-${_name111} python-${_name112} python-${_name113} python-${_name114} python-${_name115} python-${_name116} python-${_name117} python-${_name118} python-${_name119} python-${_name120} python-${_name121} python-${_name122} python-${_name123} python-${_name124} python-${_name125} python-${_name126} python-${_name127} python-${_name128} python-${_name129} python-${_name130} python-${_name131} python-${_name132} python-${_name133})
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A powerful framework for building realtime voice AI agents 🤖🎙️📹.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/livekit/agents'
@@ -81,17 +81,14 @@ check() {
     --deselect tests/test_vad.py
     --deselect tests/test_connection_pool.py
     --deselect tests/test_ipc.py
-    # Need Deepgram API key
-    --deselect tests/test_audio_decoder.py::test_decode_and_transcribe
     # Need API's
+    --deselect tests/test_audio_decoder.py::test_decode_and_transcribe
     --deselect tests/test_stt.py::test_recognize
     --deselect tests/test_stt.py::test_stream
-    # Need toxiproxy
     --deselect tests/test_tts.py::test_tts_synthesize
     --deselect tests/test_tts.py::test_tts_synthesize_timeout
     --deselect tests/test_tts.py::test_tts_stream
     --deselect tests/test_tts.py::test_tts_stream_timeout
-
   )
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
   python -m venv --system-site-packages test-env

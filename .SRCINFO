@@ -1,7 +1,7 @@
 pkgbase = python-livekit-agents
 	pkgdesc = A powerful framework for building realtime voice AI agents 🤖🎙️📹.
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/livekit/agents
 	arch = x86_64
 	arch = aarch64
