@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-posthog
 _name=posthog-python
-pkgver=5.3.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="Integrate PostHog into any python application."
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   'python-openai: OpenAI SDK support'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('12114819f566293c7602a5bab5ee6aa4d9d4fba5357447ad91f99a8833773193')
+sha256sums=('fe30c303961cc109d17bd64235f581aef99e5df12c7b21ae3b4bedecbe4ca874')
 
 prepare() {
   cd "$_name-$pkgver"
@@ -56,8 +56,8 @@ build() {
 check() {
   cd "$_name-$pkgver"
 
-  # Disable tests requiring network access
-  PYTHONPATH=. pytest -k 'not test_request'
+  # Disable tests requiring network access and API key
+  PYTHONPATH=. pytest -k 'not test_feature_flags or test_request'
 }
 
 package() {
