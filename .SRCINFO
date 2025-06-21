@@ -1,0 +1,19 @@
+pkgbase = python-handmark
+	pkgdesc = Transforms handwritten images into Markdown files using Azure AI
+	pkgver = 0.3.2.1
+	pkgrel = 1
+	url = https://github.com/devgabrielsborges/handmark
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.10
+	depends = python-pip
+	source = python-handmark-0.3.2.1.tar.gz::https://github.com/devgabrielsborges/handmark/releases/download/v.0.3.2.1/handmark-0.3.2.1.tar.gz
+	sha256sums = 0578dbf77e178726c58654fcea8f696918d49922c556fb380f43003d1bcdad2e
+
+pkgname = python-handmark
