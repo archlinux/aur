@@ -1,7 +1,7 @@
 # Maintainer: Qiu Wenbo <qiuwenbo@gnome.org>
 
 pkgname=kas
-pkgver=4.7
+pkgver=4.8.1
 pkgrel=1
 pkgdesc="Setup tool for bitbake based projects "
 arch=(any)
@@ -17,7 +17,7 @@ depends=('python'
 optdepends=('libnewt: text based ui of menu plugin')
 makedepends=('python-setuptools')
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz)
-sha512sums=('1f708c701ce92f624a76dcbe6eede16f53abae7a0f2a008b374dfa03f792e60081263cea76a8b604201aab1312a262468caf50f5ff5ca9e38c59aed4451ff5f5')
+sha512sums=('6c6fd2df1a79711405ee1e902d20503fdb584a2c2d89322e43a89594787b7b2b2931ee2670495a9f0d9428f3e368661e772d8ebfbd9364d2ee37ec97d5f6c268')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
