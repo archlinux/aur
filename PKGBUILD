@@ -5,63 +5,61 @@ _pkgname="shijima-qt"
 
 pkgname='shijima-qt-bin'
 pkgver='0.1.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Cross-platform shimeji simulation Desktop pets on any device.'
 arch=(x86_64 aarch64)
 url='https://github.com/pixelomer/Shijima-Qt'
 license=('GPL-3.0-only')
 depends=(
-  'qt6-base'
-  'qt6-multimedia'
+	'qt6-base'
+	'qt6-multimedia'
 )
 makedepends=('imagemagick')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=("!strip" "!debug")
 source=(
-  "$_pkgname.ico::https://raw.githubusercontent.com/pixelomer/Shijima-Qt/refs/heads/main/$_pkgname.ico"
-  "LICENSE::$url/blob/main/LICENSE"
+	"$_pkgname.ico::https://raw.githubusercontent.com/pixelomer/Shijima-Qt/refs/heads/main/$_pkgname.ico"
+	"LICENSE::$url/blob/main/LICENSE"
 )
 source_x86_64=("$_pkgname.zip::$url/releases/download/v$pkgver/release-linux-x86_64.zip")
 source_aarch64=("$_pkgname.zip::$url/releases/download/v$pkgver/release-linux-arm64.zip")
 
 sha256sums=('a142a1a0802c5209a9fc306781c48a8e96b9c2dab5b6f50a9c7080d634c3c188'
-            'SKIP')
+	'SKIP')
 sha256sums_x86_64=('dec313e5180ce11eb397158ed8c5f92af5921a3f72cc8352002a9d877bc34403')
 sha256sums_aarch64=('dec313e5180ce11eb397158ed8c5f92af5921a3f72cc8352002a9d877bc34403')
 
 build() {
-  cd "$srcdir"
+	cd "$srcdir"
 
-  # Convert image
+	# Convert image
 	magick "$_pkgname.ico" "$_pkgname.png"
 }
 
 package() {
-  cd "$srcdir"
-  install -d "$pkgdir/usr/bin/"
-  install -d "$pkgdir/opt/$_pkgname"
+	cd "$srcdir"
+	install -d "$pkgdir/usr/bin/"
+	install -d "$pkgdir/opt/$_pkgname"
 
-  install -Dm755 "Shijima-Qt.AppImage" "$pkgdir/opt/$_pkgname/Shijima-Qt-x86_64.AppImage"
-  install -Dm755 "$_pkgname" "$pkgdir/opt/$_pkgname/$_pkgname"
-  install -Dm755 "libunarr.so.1" "$pkgdir/opt/$_pkgname/libunarr.so.1"
+	install -Dm755 "$_pkgname" "$pkgdir/opt/$_pkgname/$_pkgname"
+	install -Dm755 "libunarr.so.1" "$pkgdir/opt/$_pkgname/libunarr.so.1"
 
-  ln -s "/opt/$_pkgname/Shijima-Qt-x86_64.AppImage" "$pkgdir/usr/bin/$_pkgname"
-  
-  # Icon
-  install -D "$_pkgname.png" "$pkgdir/usr/share/icons/$_pkgname.png"
+	ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
-  # Licences
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-  cd licenses
+	# Icon
+	install -D "$_pkgname.png" "$pkgdir/usr/share/icons/$_pkgname.png"
+
+	# Licences
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	cd licenses
 	for _file in *; do
 		if [ -f "$_file" ]; then
 			install -Dm644 $_file "$pkgdir/usr/share/licenses/$_pkgname/$_file"
 		fi
 	done
 
-
-  install -Dm0644 /dev/stdin $pkgdir/usr/share/applications/$_pkgname.desktop << EOF
+	install -Dm0644 /dev/stdin $pkgdir/usr/share/applications/$_pkgname.desktop <<EOF
 [Desktop Entry]
 Name=Shijima-Qt
 Exec=$_pkgname
