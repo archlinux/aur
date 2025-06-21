@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ChessPilot
+Comment=Chess automation GUI
+Exec=/usr/bin/chesspilot
+Icon=chesspilot
+Terminal=false
+Categories=Game;BoardGame;
+StartupNotify=true

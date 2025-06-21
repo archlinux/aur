@@ -1,0 +1,22 @@
+pkgbase = chesspilot
+	pkgdesc = A fully offline chess autoplayer and position evaluator powered by ONNX and Stockfish
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/OTAKUWeBer/ChessPilot
+	arch = x86_64
+	license = MIT
+	depends = stockfish
+	depends = tk
+	noextract = ChessPilot-1.0.0-linux-x86_64
+	options = !strip
+	options = !debug
+	source = https://github.com/OTAKUWeBer/ChessPilot/releases/download/v1.0.0/ChessPilot-1.0.0-linux-x86_64
+	source = chesspilot.desktop
+	source = logo.png
+	source = LICENSE
+	sha256sums = 489b9a35147492f8dafa68d3694e7fc6dca15d7017b842ce040ae7b98362d065
+	sha256sums = SKIP
+	sha256sums = c2e01d78d57c43b272bc765ce96074719fbd86ffbb7f5c07530b48cfaf278653
+	sha256sums = abd5c13a78e8a7ab78960805c9230d653155f1ef84413d3182d3aa56d0b09eda
+
+pkgname = chesspilot
