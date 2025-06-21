@@ -1,7 +1,7 @@
 pkgbase = sddm-minesddm-theme-git
 	pkgdesc = A Minecraft themed SDDM.
-	pkgver = v1.1.0.r10.g428ca3f
-	pkgrel = 3
+	pkgver = v1.2.1.r0.g9771dae
+	pkgrel = 1
 	url = https://github.com/Davi-S/sddm-theme-minesddm
 	arch = any
 	license = AGPL-3.0-only
