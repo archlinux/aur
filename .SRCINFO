@@ -1,7 +1,7 @@
 pkgbase = walrs-git
 	pkgdesc = Generate colorscheme from image
-	pkgver = 1.1.5
-	pkgrel = 2
+	pkgver = 1.1.6
+	pkgrel = 1
 	url = https://pixelll.is-a.dev/tools/walrs
 	arch = x86_64
 	arch = aarch64
