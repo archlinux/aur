@@ -1,7 +1,7 @@
 pkgbase = tp_smapi-dkms
 	pkgdesc = DKMS controlled modules for ThinkPad's SMAPI functionality
 	pkgver = 0.44
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.thinkwiki.org/wiki/Tp_smapi
 	arch = any
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = tp_smapi-dkms
 	source = dkms.conf
 	source = PR_71.patch
 	sha256sums = cccff96e8994bfc9dfe2bec071c4dfb6baf060f988bc338bbab95e639fd4c126
-	sha256sums = 60ee6aa01ae41d1c8f7945394d1bf976f03dc76dcfef064f4890458638fa80d1
+	sha256sums = e5874442a51bc1cb0c90c6e9289ebe4b1cccf4ea60716c823d0beaa5ce1b361b
 	sha256sums = 78127017644e0642ecf16d52f43ea2800cedf85e767ee8ff5dbac5236a91ba3a
 
 pkgname = tp_smapi-dkms
