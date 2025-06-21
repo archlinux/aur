@@ -1,9 +1,10 @@
-# Maintainer: Fredrik Magnusson <fredrikmagnusson3@gmail.com>
+# Maintainer: AlphaLynx <alphalynx@protonmail.com>
+# Contributor: Fredrik Magnusson <fredrikmagnusson3@gmail.com>
 # Contributor: Pang LAN <wopanglan@gmail.com>
 
 pkgname=opencommit
 pkgver=3.2.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Auto-generate meaningful commits with AI in a second'
 arch=('any')
 url="https://github.com/di-sukharev/$pkgname"
