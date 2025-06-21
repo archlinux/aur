@@ -8,6 +8,7 @@ pkgbase = netgen-nogui
 	license = LGPL-2.1-only
 	makedepends = cmake
 	makedepends = pybind11
+	makedepends = git
 	depends = metis
 	depends = opencascade
 	depends = openmpi
