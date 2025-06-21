@@ -5,7 +5,7 @@
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
 pkgname=termius-deb
 _pkgname=Termius
-pkgver=9.7.2
+pkgver=9.22.1
 pkgrel=1
 pkgdesc='Desktop SSH Client (deb release)'
 arch=('x86_64')
