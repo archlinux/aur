@@ -1,6 +1,6 @@
 pkgbase = aurup
 	pkgdesc = The simplify finding and installing packages AUR helper
-	pkgver = 1.71
+	pkgver = 1.72
 	pkgrel = 1
 	url = https://github.com/nellowint/aurup
 	arch = x86_64
