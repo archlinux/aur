@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-inter
 	pkgdesc = Inter Font, patched with the Nerd Fonts Patcher
 	pkgver = 4.1_3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rsms/inter/
 	arch = any
 	license = custom:OFL
@@ -14,6 +14,6 @@ pkgbase = nerd-fonts-inter
 	source = https://github.com/rsms/inter/releases/download/v4.1/Inter-4.1.zip
 	source = font-patcher-3.4.0::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FontPatcher.zip
 	sha256sums = 9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e
-	sha256sums = 902ed7195c298a23441a62f3f0a7a188577ff393f0eb7ef91b6861ddeacb20a3
+	sha256sums = a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760
 
 pkgname = nerd-fonts-inter
