@@ -1,7 +1,8 @@
 
-0.5.0: Sixth release:
+0.6.0: Seventh release:
 
-- dropped Python 2 support
-- replaced Travis build with GitHub build action
-- removed minified pytest code
-- added a fix regarding regex for Python 3.12
+- move from setup.py and setup.cfg to pyproject.toml
+- add workflow for test releases on test.pypi.org
+- various updates in github workflow files
+- add type annotations
+- drop support for Python 3.8
