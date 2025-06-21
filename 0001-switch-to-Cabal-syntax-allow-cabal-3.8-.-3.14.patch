@@ -1,0 +1,167 @@
+From d4d3d8d60c451327555a8425f52100f1bdc295b3 Mon Sep 17 00:00:00 2001
+From: Max Ulidtko <ulidtko@gmail.com>
+Date: Tue, 17 Jun 2025 19:41:15 +0200
+Subject: [PATCH] switch to Cabal-syntax & allow cabal [3.8 .. 3.14)
+
+* Cabal-syntax is a smaller package than Cabal; reduce dependency footprint.
+
+* Using Cabal-syntax requires Cabal >= 3.8.
+
+* In addition to GHC version checks (which guard case arms' RHS's), also guard
+  the LHS patterns, which may not exist depending on Cabal-syntax version.
+
+In all configurations, the entire case is exhaustive, and -Werror=incomplete-patterns
+(in extensions.cabal) guards that.
+
+* cleanup: drop SymbolicPath #if's for old Cabal < 3.6.
+
+* fix: RequiredTypeArguments added in cabal-syntax 3.10.
+
+See upstream issue https://github.com/kowainik/extensions/issues/111
+and rejected PR https://github.com/kowainik/extensions/pull/112
+
+Rebased on top of v0.1.0.3.
+---
+ extensions.cabal        | 12 ++---------
+ src/Extensions/Cabal.hs | 48 +++++++++++++++++++++--------------------
+ 2 files changed, 27 insertions(+), 33 deletions(-)
+
+diff --git a/extensions.cabal b/extensions.cabal
+index b8a4b76..ac2b90f 100644
+--- a/extensions.cabal
++++ b/extensions.cabal
+@@ -85,16 +85,8 @@ library
+                          Extensions.Types
+ 
+   build-depends:       bytestring >= 0.10 && < 0.13
+-                       -- We need to pin a single major version of
+-                       -- Cabal here because the main reason we use
+-                       -- Cabal is for its list of extensions.  Later
+-                       -- versions have strictly more extensions, and
+-                       -- we'll have missing patterns if we try to
+-                       -- support more than one major version.  If
+-                       -- this causes problems in practice let's
+-                       -- revisit this decision and come up with
+-                       -- another approach.
+-                     , Cabal ^>= 3.14
++                     -- NOTE: check Extensions.Cabal when bumping
++                     , Cabal-syntax >= 3.8 && < 3.14
+                      , containers >= 0.6 && < 0.8
+                      , directory ^>= 1.3
+                      , filepath >= 1.4 && < 1.6
+diff --git a/src/Extensions/Cabal.hs b/src/Extensions/Cabal.hs
+index a0d1292..2f99826 100644
+--- a/src/Extensions/Cabal.hs
++++ b/src/Extensions/Cabal.hs
+@@ -41,9 +41,7 @@ import Distribution.Types.GenericPackageDescription (GenericPackageDescription (
+ import Distribution.Types.Library (Library (..))
+ import Distribution.Types.TestSuite (TestSuite (..))
+ import Distribution.Types.TestSuiteInterface (TestSuiteInterface (..))
+-#if MIN_VERSION_Cabal(3,6,0)
+ import Distribution.Utils.Path (getSymbolicPath)
+-#endif
+ import GHC.LanguageExtensions.Type (Extension (..))
+ import System.Directory (doesFileExist)
+ import System.FilePath ((<.>), (</>))
+@@ -117,14 +115,14 @@ extractCabalExtensions GenericPackageDescription{..} = mconcat
+     foreignToExtensions = condTreeToExtensions (const []) foreignLibBuildInfo
+ 
+     exeToExtensions :: CondTree var deps Executable -> IO (Map FilePath ParsedExtensions)
+-    exeToExtensions = condTreeToExtensions (\Executable{..} -> [getSymbolicPath modulePath]) buildInfo
++    exeToExtensions = condTreeToExtensions (\Executable{..} -> [modulePath]) buildInfo
+ 
+     testToExtensions :: CondTree var deps TestSuite -> IO (Map FilePath ParsedExtensions)
+     testToExtensions = condTreeToExtensions testMainPath testBuildInfo
+       where
+         testMainPath :: TestSuite -> [FilePath]
+         testMainPath TestSuite{..} = case testInterface of
+-            TestSuiteExeV10 _ path -> [getSymbolicPath path]
++            TestSuiteExeV10 _ path -> [path]
+             TestSuiteLibV09 _ m    -> [toModulePath m]
+             TestSuiteUnsupported _ -> []
+ 
+@@ -133,7 +131,7 @@ extractCabalExtensions GenericPackageDescription{..} = mconcat
+       where
+         benchMainPath :: Benchmark -> [FilePath]
+         benchMainPath Benchmark{..} = case benchmarkInterface of
+-            BenchmarkExeV10 _ path -> [getSymbolicPath path]
++            BenchmarkExeV10 _ path -> [path]
+             BenchmarkUnsupported _ -> []
+ 
+ condTreeToExtensions
+@@ -147,11 +145,7 @@ condTreeToExtensions
+ condTreeToExtensions extractModules extractBuildInfo condTree = do
+     let comp = condTreeData condTree
+     let buildInfo = extractBuildInfo comp
+-#if MIN_VERSION_Cabal(3,6,0)
+-    let srcDirs = getSymbolicPath <$> hsSourceDirs buildInfo
+-#else
+-    let srcDirs = hsSourceDirs buildInfo
+-#endif
++    let srcDirs = getSymbolicPath <$> hsSourceDirs buildInfo :: [FilePath]
+     let modules = extractModules comp ++
+             map toModulePath (otherModules buildInfo ++ autogenModules buildInfo)
+     let (safeExts, parsedExtensionsAll) = partitionEithers $ mapMaybe cabalToGhcExtension $ defaultExtensions buildInfo
+@@ -386,38 +380,46 @@ toGhcExtension = \case
+     Cabal.AlternativeLayoutRuleTransitional -> Nothing
+     Cabal.RelaxedLayout                     -> Nothing
+ #endif
+-#if __GLASGOW_HASKELL__ >= 906
++#if MIN_VERSION_Cabal_syntax(3,10,0)
++# if __GLASGOW_HASKELL__ >= 906
+     Cabal.DeepSubsumption                   -> Just DeepSubsumption
+     Cabal.TypeData                          -> Just TypeData
+-#else
++# else
+     Cabal.DeepSubsumption                   -> Nothing
+     Cabal.TypeData                          -> Nothing
++# endif
++# if __GLASGOW_HASKELL__ >= 910
++    Cabal.RequiredTypeArguments             -> Just RequiredTypeArguments
++# else
++    Cabal.RequiredTypeArguments             -> Nothing
++# endif
+ #endif
+-#if __GLASGOW_HASKELL__ >= 908
++#if MIN_VERSION_Cabal_syntax(3,12,0)
++# if __GLASGOW_HASKELL__ >= 908
+     Cabal.TypeAbstractions                  -> Just TypeAbstractions
+-#else
++# else
+     Cabal.TypeAbstractions                  -> Nothing
+-#endif
+-#if __GLASGOW_HASKELL__ >= 910
+-    Cabal.RequiredTypeArguments             -> Just RequiredTypeArguments
++# endif
++# if __GLASGOW_HASKELL__ >= 910
+     Cabal.ExtendedLiterals                  -> Just ExtendedLiterals
+     Cabal.ListTuplePuns                     -> Just ListTuplePuns
+-#else
+-    Cabal.RequiredTypeArguments             -> Nothing
++# else
+     Cabal.ExtendedLiterals                  -> Nothing
+     Cabal.ListTuplePuns                     -> Nothing
++# endif
+ #endif
+-#if __GLASGOW_HASKELL__ >= 912
++#if MIN_VERSION_Cabal_syntax(3,14,0)
++# if __GLASGOW_HASKELL__ >= 912
+     -- This branch cannot be satisfied yet but we're including it so
+-    -- we don't forget to enable RequiredTypeArguments when it
+-    -- becomes available.
++    -- we don't forget to enable these when they become available.
+     Cabal.NamedDefaults                     -> Just NamedDefaults
+     Cabal.MultilineStrings                  -> Just MultilineStrings
+     Cabal.OrPatterns                        -> Just OrPatterns
+-#else
++# else
+     Cabal.NamedDefaults                     -> Nothing
+     Cabal.MultilineStrings                  -> Nothing
+     Cabal.OrPatterns                        -> Nothing
++# endif
+ #endif
+     -- GHC extensions, parsed by both Cabal and GHC, but don't have an Extension constructor
+     Cabal.Safe                              -> Nothing
+-- 
+2.49.0
+
