@@ -1,6 +1,6 @@
 # Maintainer: Devitzer <defecthorizon@icloud.com>
 pkgname=cobalt-lang-bin
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A minimal, fast interpreted programming language. (prebuilt binaries)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc')
 conflicts=('cobalt-lang')
 provides=('cobalt-lang')
 source=("https://github.com/cobalt-lang/cobalt-lang/releases/download/v$pkgver/cobalt-v$pkgver-linux-x86_64.tar.xz")
-sha256sums=('0dff055dafd897b0e13aa72600a1518a8fb557ef31f0cb7f68e9c916f38f8f27')
+sha256sums=('42fef1038dde9c6568f6428b02b3679dee0558b6960d0140c7b6cc1e18cfe276')
 
 package() {
 	install -Dm755 cobalt -t "$pkgdir/usr/bin/"
