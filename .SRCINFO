@@ -1,6 +1,6 @@
 pkgbase = python-livekit-agents
 	pkgdesc = A powerful framework for building realtime voice AI agents 🤖🎙️📹.
-	pkgver = 1.1.0
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/livekit/agents
 	arch = x86_64
@@ -17,8 +17,10 @@ pkgbase = python-livekit-agents
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.1.0.tar.gz
-	sha256sums = a8649c85d221fae15b8b1b3e6777953757272dc56987369a0cdb6c6c94f0186e
+	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.1.2.tar.gz
+	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.1.2/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
+	sha256sums = 3d74e5e5cd1218ea95ff9ed96dd2c7bd64371652581dae43741a485a878a17ed
+	sha256sums = 6b99cbfd39246b6706f98ec13c7c50c6b299181f2474fa05cbc8046acc274396
 
 pkgname = python-livekit-agents
 	pkgdesc = A powerful framework for building realtime voice AI agents.
