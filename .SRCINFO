@@ -1,13 +1,19 @@
 pkgbase = python-amulet-leveldb
 	pkgdesc = A Cython wrapper for Mojang's modified LevelDB library.
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Amulet-Team/Amulet-LevelDB
 	arch = any
 	license = LicenseRef-Amulet-Team-License
+	makedepends = python-portalocker
+	makedepends = python-leveldb
 	makedepends = python-setuptools
 	makedepends = git
 	makedepends = python-versioneer
+	makedepends = cython
+	makedepends = gcc-libs
+	makedepends = glibc
+	makedepends = zlib
 	depends = python
 	depends = python-portalocker
 	depends = python-leveldb
@@ -16,6 +22,6 @@ pkgbase = python-amulet-leveldb
 	depends = glibc
 	depends = zlib
 	source = git+https://github.com/Amulet-Team/Amulet-LevelDB.git#tag=1.0.2
-	md5sums = SKIP
+	md5sums = b98472043b8d09a496da782b222cfe5b
 
 pkgname = python-amulet-leveldb
