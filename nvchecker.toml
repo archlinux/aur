@@ -1,0 +1,4 @@
+[helix-ghost]
+source = "github"
+github = "rahji/helix-ghost"
+use_latest_release = true
