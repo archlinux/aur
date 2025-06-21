@@ -1,0 +1,13 @@
+pkgbase = sturmflut-git
+	pkgdesc = A FAST (80+ Gbit/s) pixelflut client with full IPv6 and animation support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TobleMiner/sturmflut
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = imagemagick
+	source = git+https://github.com/TobleMiner/sturmflut.git
+	sha256sums = SKIP
+
+pkgname = sturmflut-git
