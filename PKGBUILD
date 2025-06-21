@@ -3,7 +3,7 @@
 
 pkgname=sqliteodbc
 pkgver=0.99991
-pkgrel=1
+pkgrel=2
 pkgdesc="ODBC driver for SQLite"
 arch=('i686' 'x86_64' 'aarch64')
 depends=('unixodbc' 'sqlite' 'libxml2')
@@ -18,19 +18,24 @@ build() {
     # Autotools are from 2003. We have to autoreconf.
     rm aclocal.m4
     mv configure.in configure.ac
-    aclocal
-    libtoolize --force
+    aclocal -I m4
+    echo "AC_CONFIG_MACRO_DIRS([m4])" >> configure.ac
+    echo 'ACLOCAL_AMFLAGS="-Im4"' >> Makefile.am 
+#    libtoolize --force --copy
     autoupdate --force
     autoreconf --force --install
 
+    export CFLAGS+=" -std=c17 -Wall -Wno-error=implicit-function-declaration"
+
     ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
-    make -j1
+    make -j$(nproc)
 }
 
 package() {
     cd "$srcdir/${pkgname}-$pkgver"
     install -d "${pkgdir}/usr/lib"
     make -j1 DESTDIR="${pkgdir}/" install
+    libtool --finish /usr/lib
     install -D -m644 license.terms "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 md5sums=('f828ce0248b752a7bc9a7f0661a90171')
