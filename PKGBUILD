@@ -1,11 +1,11 @@
 # Maintainer: Benjamin Demetz <demetzbenjamin23@gmail.com>
 
 pkgname=tooka-git
-pkgver=1.0.0
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A rule-based automatic file sorter"
 arch=('i686' 'x86_64' 'aarch64' 'riscv64')
-url="https://github.com/benji377/tooka"
+url="https://github.com/tooka-org/cli"
 license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cargo' 'jq')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   # Fetch latest release tag from GitHub API
   local latest_tag
-  latest_tag=$(curl -s "https://api.github.com/repos/Benji377/tooka/releases/latest" | jq -r .tag_name)
+  latest_tag=$(curl -s "https://api.github.com/repos/tooka-org/cli/releases/latest" | jq -r .tag_name)
 
   if [[ -n "$latest_tag" && "$latest_tag" != "null" ]]; then
     # Strip leading 'v' if present
@@ -44,7 +44,7 @@ build() {
   cd "$srcdir/$pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build -p tooka-cli --frozen --release
+  cargo build --frozen --release
 }
 
 
