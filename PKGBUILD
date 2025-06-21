@@ -2,18 +2,18 @@
 
 pkgname=pineapple-midi-player
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple SoundFont MIDI Player'
 arch=('x86_64' 'aarch64')
 url='https://github.com/BLumia/pineapple-midi-player/'
 license=('MIT')
 depends=(
-    'qt5-svg'
+    'qt6-svg'
     'portaudio'
 )
 makedepends=(
     'git'
-    'qt5-tools'
+    'qt6-tools'
     'cmake'
 )
 optdepends=(
