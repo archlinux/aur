@@ -1,11 +1,11 @@
 pkgbase = xtrkcad
 	pkgdesc = CAD program for designing model railroad layouts.
-	pkgver = 5.3.0
+	pkgver = 5.3.1
 	pkgrel = 1
 	url = http://xtrkcad-fork.sourceforge.net
 	arch = x86_64
 	license = GPL2
-	source = https://downloads.sourceforge.net/project/xtrkcad-fork/XTrackCad/Version%205.3.0/xtrkcad-setup-5.3.0GA-1.x86_64.sh
-	sha256sums = 938291eaa2dca75cd763092cef4b8c5557d22ba909b931b975d5fd1305769646
+	source = https://downloads.sourceforge.net/project/xtrkcad-fork/XTrackCad/Version%205.3.1%20Beta1/xtrkcad-setup-5.3.1Beta1-1.x86_64.sh
+	md5sums = c535d5a638d33291b4c7d317e566f2b5
 
 pkgname = xtrkcad

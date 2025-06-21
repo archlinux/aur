@@ -1,15 +1,16 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=xtrkcad
-pkgver=5.3.0
+pkgver=5.3.1
 pkgrel=1
 pkgdesc="CAD program for designing model railroad layouts."
 url="http://xtrkcad-fork.sourceforge.net"
 arch=('x86_64')
 license=('GPL2')
 
-_srcname="xtrkcad-setup-${pkgver}GA-1.${arch}.sh"
-source=("https://downloads.sourceforge.net/project/xtrkcad-fork/XTrackCad/Version%20${pkgver}/${_srcname}")
-sha256sums=('938291eaa2dca75cd763092cef4b8c5557d22ba909b931b975d5fd1305769646')
+_postfix="Beta1-1"
+_srcname="xtrkcad-setup-${pkgver}${_postfix}.${arch}.sh"
+source=("https://downloads.sourceforge.net/project/xtrkcad-fork/XTrackCad/Version%20${pkgver}%20Beta1/xtrkcad-setup-${pkgver}Beta1-1.${arch}.sh")
+md5sums=('c535d5a638d33291b4c7d317e566f2b5')
 
 build() {
 	chmod 0777 "${_srcname}"
@@ -19,4 +20,7 @@ build() {
 
 package() {
 	cp -r "./usr" "${pkgdir}"
+	cd ${pkgdir}/usr/
+	mv ./bin/xtrkcad-beta ./bin/xtrkcad
+	mv ./share/xtrkcad-beta ./share/xtrkcad
 }
