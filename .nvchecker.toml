@@ -1,0 +1,4 @@
+[borked3ds-appimage]
+source = "git"
+git = "https://github.com/Borked3DS/Borked3DS.git"
+prefix = "v"
