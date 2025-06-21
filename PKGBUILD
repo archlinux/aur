@@ -1,4 +1,4 @@
-# Maintainer: Cerff_gursheel cerff_gur_sheel@disroot.org
+# Maintainer: Cerff_gursheel cerff_gur_sheel at disroot.org
 pkgname=prismlauncher-cracked-git
 pkgver=9.4.r5.g061218725
 pkgrel=1
@@ -12,6 +12,7 @@ source=("git+$url#branch=develop")
 options=(!strip)
 _gitname=PrismLauncher-Cracked
 md5sums=('SKIP')
+conflicts=('prismlauncher')
 
 prepare() {
   cd "$srcdir/$_gitname"
