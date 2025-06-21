@@ -1,4 +1,4 @@
-pkgbase = walrs
+pkgbase = walrs-git
 	pkgdesc = Generate colorscheme from image
 	pkgver = 1.1.5
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = walrs
 	source = git+https://github.com/Pixel2175/walrs.git
 	sha256sums = SKIP
 
-pkgname = walrs
+pkgname = walrs-git
