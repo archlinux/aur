@@ -1,13 +1,13 @@
 pkgbase = eleviewr
 	pkgdesc = A lightweight image viewer for Wayland/Hyprland
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/markpendlebury/EleViewr
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = rust
-	source = eleviewr-0.4.0.tar.gz::https://github.com/markpendlebury/EleViewr/archive/v0.4.0.tar.gz
-	sha256sums = f07f7458fbb1768355b75b392ea84123d934c52ea526a8338116bb41f6f88eb8
+	source = eleviewr-0.5.0.tar.gz::https://github.com/markpendlebury/EleViewr/archive/v0.5.0.tar.gz
+	sha256sums = 15f3af30c4bc6ec5ee36b7098bff947e0247e99ad3cf2826bd1a5663b47153f2
 
 pkgname = eleviewr
