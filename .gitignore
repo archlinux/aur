@@ -1,0 +1,16 @@
+# Ignore build artifacts
+pkg/
+src/
+
+# Ignore makepkg output
+*.tar.zst
+*.tar.gz
+*.pkg.tar.*
+*.log
+*.sig
+*.part
+
+# Backup/editor junk
+*~
+.*.swp
+.DS_Store
