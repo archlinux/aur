@@ -7,21 +7,19 @@ url="https://www.amuletmc.com/"
 license=(LicenseRef-none MIT)
 
 arch=(any)
-pkgver=0.10.42
+pkgver=0.10.43
 pkgrel=1
 makedepends=(python-build python-installer python-wheel python-cython-lint python-versioneer git python-packaging)
 
-depends=(python python-numpy1 python-wxpython python-opengl python-amulet-nbt python-pymctranslate python-minecraft-model-reader python-amulet-core python-lz4 python-amulet-leveldb python-pillow glibc hicolor-icon-theme python-platformdirs)
+depends=(python python-numpy python-wxpython python-opengl python-amulet-nbt python-pymctranslate python-minecraft-model-reader python-amulet-core python-lz4 python-amulet-leveldb python-pillow glibc hicolor-icon-theme python-platformdirs)
 
 source=(
 	amulet.desktop
-	icon.png
 	"git+https://github.com/Amulet-Team/Amulet-Map-Editor.git#tag=${pkgver}"
 )
 
-sha256sums=('51cf3f1afcae983c5c1a7bfc6cc41871e35e2d4d47b325d9935128aa7b2c56c3'
-            'dcfa7b2bce1cf5b21b219171f727ce3b31cb1290bd28d2b1102cb693bc7629fe'
-            'f897f741666a57addb74f4ae6f51a6f5b0a591ba4d2d90b101afd82d50e8a846')
+sha256sums=('724383fa0a28be2ab92785365b7a3695aae5ee7849fc7841b492da73ce60c829'
+            '41376eb161b6d8b09affac7f5fcd3382131822735e69da8f00adfda273a132ad')
 
 function prepare() {
 	sed -i 's/versioneer-518/versioneer/g' "${srcdir}/Amulet-Map-Editor/pyproject.toml"
@@ -34,8 +32,9 @@ function build() {
 }
 
 function package() {
-	install -Dm755 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/amulet.png"
+	install -Dm755 "${srcdir}/Amulet-Map-Editor/amulet_map_editor/api/image/logo/amulet_logo.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/amulet.png"
 	install -Dm644 "${srcdir}/amulet.desktop" "${pkgdir}/usr/share/applications/amulet.desktop"
 	cd "${srcdir}/Amulet-Map-Editor"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
+	rm -rf "${pkgdir}/usr/bin/amulet_map_editor_no_console"
 }
