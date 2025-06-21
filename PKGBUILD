@@ -1,7 +1,7 @@
 # Maintainer: kj_sh604 <406hs_jk@proton.me> 
 
 pkgname=seamonkey-bin
-pkgver=2.53.20
+pkgver=2.53.21
 pkgrel=1
 pkgdesc="SeaMonkey internet suite (binary version)"
 arch=('x86_64')
@@ -51,7 +51,7 @@ optdepends=(
 source=("https://archive.seamonkey-project.org/releases/$pkgver/linux-x86_64/en-US/seamonkey-$pkgver.en-US.linux-x86_64.tar.bz2")
 conflicts=('seamonkey')
 provides=('seamonkey')
-sha256sums=('d02d1e9409a2c3b864c6f6e96436da17aafef5cd75131e08c9e93f2e5276638c')
+sha256sums=('19e819428dbec28e63ca197444d80e8456f106a462254521009f7ae85dae5c16')
 
 package() {
     cd "$srcdir/seamonkey"
