@@ -2,7 +2,7 @@
 
 pkgname=youtui
 pkgver=0.0.25
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple TUI YouTube Music player written in Rust aiming to implement an Artist->Albums workflow for searching for music, and using discoverability principles for navigation."
 url="https://github.com/nick42d/youtui"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -31,4 +31,13 @@ build() {
 package() {
   cd $pkgname-$pkgver
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+
+  mkdir -p "$pkgdir/usr/share/zsh/site-functions"
+  target/release/$pkgname --generate-completions zsh > "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+
+  mkdir -p "$pkgdir/usr/share/bash-completion/completions"
+  target/release/$pkgname --generate-completions bash > "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+
+  mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d"
+  target/release/$pkgname --generate-completions fish > "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
 }
