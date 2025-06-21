@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/alexellis/k3sup'
 license=('MIT')
 depends=('glibc' 'openssh')
-makedepends=('git' 'go>=1.22')
+makedepends=('git' 'go>=1.24')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alexellis/k3sup/archive/${pkgver}.tar.gz")
 sha256sums=('4764f787f55fae4dab9527c5d829fc70a522e1c2b7f7a23cde6df1096fefbc31')
 _commit=('a1700f64dcffd249890b13cf6d97f4c120a53e08')
