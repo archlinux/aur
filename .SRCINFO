@@ -1,0 +1,15 @@
+pkgbase = python-amulet-compiler-version
+	pkgdesc = A tiny library to allow dependencies to require the same compiler
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/Amulet-Team/Amulet-Compiler-Version
+	arch = any
+	license = LicenseRef-Amulet-Team-License
+	makedepends = python-setuptools
+	makedepends = git
+	makedepends = python-wheel
+	depends = python
+	source = git+https://github.com/Amulet-Team/Amulet-Compiler-Version.git#tag=3.0.0
+	md5sums = 800ecc9747df95f65954b3ed1e298a96
+
+pkgname = python-amulet-compiler-version
