@@ -13,12 +13,12 @@ source=("git+https://github.com/Pixel2175/walrs.git")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/walrs"
   cargo build --release
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/walrs"
   install -Dm755 target/release/walrs "$pkgdir/usr/bin/walrs"
   install -Dm644 walrs.1 "$pkgdir/usr/share/man/man1/walrs.1"
 
