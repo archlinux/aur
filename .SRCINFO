@@ -1,6 +1,6 @@
 pkgbase = mmg
 	pkgdesc = Anisotropic tetrahedral remesher and moving mesh generator
-	pkgver = 5.7.2
+	pkgver = 5.8.0
 	pkgrel = 1
 	url = http://www.mmgtools.org/
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = mmg
 	provides = mmg3d
 	conflicts = mmg3d
 	replaces = mmg3d
-	source = mmg-5.7.2.tar.gz::https://github.com/MmgTools/mmg/archive/v5.7.2.tar.gz
-	sha256sums = 4c396dd44aec69e0a171a04f857e28aad2e0bbfb733b48b6d81a2c6868e86840
+	source = mmg-5.8.0.tar.gz::https://github.com/MmgTools/mmg/archive/v5.8.0.tar.gz
+	sha256sums = 686eaab84de79c072f3aedf26cd11ced44c84b435d51ce34e016ad203172922f
 
 pkgname = mmg
