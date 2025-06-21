@@ -12,9 +12,10 @@ pkgbase = python-amulet-nbt
 	makedepends = python-setuptools
 	makedepends = python-versioneer
 	makedepends = python-wheel
+	makedepends = python-amulet-zlib
 	depends = python
 	depends = python-mutf8
-	depends = python-numpy1
+	depends = python-numpy
 	source = git+https://github.com/Amulet-Team/Amulet-NBT.git#tag=2.1.4
 	sha256sums = SKIP
 

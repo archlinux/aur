@@ -10,8 +10,8 @@ pkgdesc='A Python and Cython library for reading and writing binary NBT and stri
 arch=('x86_64')
 url="https://github.com/Amulet-Team/$_name"
 license=('LicenseRef-Amulet-Team-1.0.0')
-depends=('python' 'python-mutf8' 'python-numpy1')
-makedepends=('cython' 'git' 'python-build' 'python-installer' 'python-setuptools' 'python-versioneer' 'python-wheel')
+depends=('python' 'python-mutf8' 'python-numpy')
+makedepends=('cython' 'git' 'python-build' 'python-installer' 'python-setuptools' 'python-versioneer' 'python-wheel' 'python-amulet-zlib')
 # tests directory isn't in pypi sdist
 # github tarball has unstable hash due to https://github.com/Amulet-Team/Amulet-NBT/blob/61cb6fe0c614b95ee75868ff85677284e2b3cb74/amulet_nbt/_version.py#L27
 source=("git+$url.git#tag=${pkgver}")
