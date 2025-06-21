@@ -9,7 +9,7 @@ pkgver() {
   # Generates a version like 0.0.r<commit_count>.<short_hash>
   printf "0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=1
+pkgrel=3
 pkgdesc="Monitors internet usage in real-time via Conky with desktop notifications (git version)"
 arch=('any')
 provides=("internet-usage-monitor=${pkgver}")
@@ -49,6 +49,9 @@ package() {
   
   # Install license
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Install install.sh to /opt/internet-usage-monitor
+  install -Dm755 "$srcdir/install.sh" "$pkgdir/opt/internet-usage-monitor/install.sh"
   
   # Install README (optional, but good practice)
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"

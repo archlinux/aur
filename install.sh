@@ -54,7 +54,8 @@ detect_distro() {
 
 # Function to install packages based on distribution
 install_packages() {
-    local distro=$(detect_distro)
+    local distro
+    distro=$(detect_distro)
     
     print_status "$BLUE" "$INFO" "Detected distribution: $distro"
     
@@ -187,7 +188,8 @@ detect_existing_installation() {
 
 # Function to backup existing installation
 backup_existing_installation() {
-    local backup_dir="$HOME/.internet_monitor_install_backup_$(date +%Y%m%d_%H%M%S)"
+    local backup_dir
+    backup_dir="$HOME/.internet_monitor_install_backup_$(date +%Y%m%d_%H%M%S)"
     local files_to_backup=(
         "$HOME/internet_monitor.sh"
         "$HOME/internet_monitor_daemon.sh"

@@ -13,6 +13,8 @@ _DEFAULT_CONFIG_DIR="/usr/share/$APP_NAME"
 
 post_install() {
   echo ">>> $APP_NAME has been installed."
+  /opt/internet-usage-monitor/install.sh
+  echo "The uninstall script is located at /opt/internet-usage-monitor/uninstall.sh"
   echo ">>> Default configuration files are in $_DEFAULT_CONFIG_DIR."
   echo ">>> To customize, copy them to your user configuration directory (usually $_USER_CONFIG_DIR):"
   echo "    mkdir -p \"$_USER_CONFIG_DIR\""

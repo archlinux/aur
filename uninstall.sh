@@ -155,7 +155,7 @@ remove_files() {
     set +e # Temporarily disable exit on error for file removal
     for file in "${files_to_remove[@]}"; do
         if [ -f "$file" ]; then
-            if rm -f "$file" 2>/dev/null; then
+            if sudo rm -f "$file" 2>/dev/null; then
                 print_status "$GREEN" "$CHECK" "Removed: $file"
                 ((removed_count++))
             else
