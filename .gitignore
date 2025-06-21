@@ -1,0 +1,5 @@
+hare-update*
+hare-update/
+pkg/
+src/
+*.tar.gz

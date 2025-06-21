@@ -1,0 +1,15 @@
+pkgbase = hare-update
+	pkgdesc = hare-update is a tool which assists in migrating a Hare codebases
+	pkgver = 0.25.2.0
+	pkgrel = 1
+	url = https://harelang.org
+	arch = x86_64
+	arch = aarch64
+	license = EUPL
+	depends = hare
+	provides = hare-update
+	conflicts = hare-update
+	source = https://git.sr.ht/~sircmpwn/hare-update/archive/0.25.2.0.tar.gz
+	sha256sums = 48ca5aba4b36c07145976c1f3d9d3ac8b79a29f0bdfdac6de57bd138ed1d407c
+
+pkgname = hare-update
