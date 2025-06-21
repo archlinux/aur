@@ -2,14 +2,14 @@
 
 _name=livekit-api
 pkgname=python-${_name}
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Python Server API for LiveKit.'
 arch=('any')
 url='https://github.com/livekit/python-sdks/tree/main/livekit-api'
 license=('Apache-2.0')
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('5a6726a24761af046bdb4ae32b572d28df728a0e6824805d86783fa94c59574f')
+sha256sums=('24ffd1f0a92fd91f1d9977034e317951259d0ec9d053c6315c1562ba699d4cc8')
 depends=('python>=3.9' 'python-pyjwt' 'python-aiohttp' 'python-protobuf' 'python-livekit-protocol')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
