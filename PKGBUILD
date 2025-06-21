@@ -3,7 +3,7 @@
 pkgbase=rime-wanxiang
 pkgname=(rime-wanxiang-base)
 pkgver=8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="万象拼音：带声调的拼音词库，万象拼音系列方案基础版，可扩展全拼、双拼、中英混输、语言模型"
 arch=(any)
 license=('CC-BY-4.0')
@@ -66,7 +66,7 @@ package_rime-wanxiang-base() {
     done
 
     for _d in en_dicts jm_dicts lua opencc; do
-        find $_d -type f -exec install -Dm664 {} "${pkgdir}"/usr/share/rime-data/{} \;
+        find $_d -type f ! -name "librime.lua" -exec install -Dm664 {} "${pkgdir}"/usr/share/rime-data/{} \;
     done
 }
 
