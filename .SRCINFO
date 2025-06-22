@@ -1,6 +1,6 @@
 pkgbase = w_scan2
 	pkgdesc = w_scan fork (Small channel scan tool for vdr)
-	pkgver = 1.0.15
+	pkgver = 1.0.17
 	pkgrel = 1
 	url = https://github.com/stefantalpalaru/w_scan2
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = w_scan2
 	license = GPL2
 	depends = gcc-libs
 	depends = glibc
-	source = w_scan2-1.0.15.tar.gz::https://github.com/stefantalpalaru/w_scan2/archive/1.0.15.tar.gz
-	sha256sums = 0bc18f11bd20ac191ea34cc963e7f506d2a0d46768245ccd4d389ef2e0a208cc
+	source = w_scan2-1.0.17.tar.gz::https://github.com/stefantalpalaru/w_scan2/archive/1.0.17.tar.gz
+	sha256sums = 0abf68dc7247eb3a5a3327604f888f18243c57f4abd04d011c1502abdee37ddf
 
 pkgname = w_scan2
