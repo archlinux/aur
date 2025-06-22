@@ -19,13 +19,19 @@ makedepends=('git'
 )
 optdepends=('libxml2-legacy')
 source=("${pkgname}::git+https://github.com/wrb2012/BodySlide-and-Outfit-Studio.git"
+	'git+https://github.com/ousnius/nifly.git'
 	'BodySlide.desktop'
 	'OutfitStudio.desktop'
 )
 sha256sums=('SKIP'
 	'SKIP'
 	'SKIP'
+	'SKIP'
 )
+
+prepare() {
+	cp -rf nifly ${pkgname}/lib/
+}
 
 build() {
 	cd ${pkgname}

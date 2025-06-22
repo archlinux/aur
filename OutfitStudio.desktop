@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Outfit Studio
-Exec=env WX_OUTFITSTUDIO_DATA_DIR=/usr/share/BodySlide /usr/bin/OutfitStudio %U
+Exec=env WX_OUTFITSTUDIO_DATA_DIR=/usr/share/bodyslide /usr/bin/OutfitStudio %U
 Terminal=false
 Type=Application
 Icon=OutfitStudio
