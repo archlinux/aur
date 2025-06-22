@@ -2,7 +2,7 @@
 
 pkgname=sunshine-beta-bin
 _pkgname=sunshine-beta-bin
-pkgver=2025.615.34501
+pkgver=2025.621.211911
 _gittag=v$pkgver
 pkgrel=1
 pkgdesc="A self-hosted game stream host for Moonlight"
@@ -13,35 +13,39 @@ source=(
 )
 arch=('x86_64')
 license=('GPL3')
-depends=('avahi'
-         'boost-libs'
-         'curl'
-         'libayatana-appindicator'
-         'libevdev'
-         'libmfx'
-         'libnotify'
-         'libpulse'
-         'libva'
-         'libvdpau'
-         'libx11'
-         'libxcb'
-         'libxfixes'
-         'libxrandr'
-         'libxtst'
-         'miniupnpc'
-         'numactl'
-         'openssl'
-         'opus'
-         'udev')
-optdepends=('cuda: NvFBC capture support'
-            'libcap'
-            'libdrm')
-conflicts=(sunshine sunshine-git sunshine-bin)
+depends=(
+    'avahi'
+    'curl'
+    'libayatana-appindicator'
+    'libcap'
+    'libdrm'
+    'libevdev'
+    'libmfx'
+    'libnotify'
+    'libpulse'
+    'libva'
+    'libx11'
+    'libxcb'
+    'libxfixes'
+    'libxrandr'
+    'libxtst'
+    'miniupnpc'
+    'numactl'
+    'openssl'
+    'opus'
+    'udev'
+)
+optdepends=(
+    'cuda: Nvidia GPU encoding support'
+    'libva-mesa-driver: AMD GPU encoding support'
+    'xorg-server-xvfb: Virtual X server for headless testing'
+)
+conflicts=('sunshine' 'sunshine-git' 'sunshine-bin')
 replaces=('sunshine-bin')
 makedepends=('patchelf')
 provides=('sunshine-bin')
 sha256sums=('SKIP'
-        '733594073f27c818f89ae1b065943384806811f02048376b76f64ce9c8768229')
+    '733594073f27c818f89ae1b065943384806811f02048376b76f64ce9c8768229')
 
 prepare() {
     sed -i "s/@PROJECT_NAME@/$_pkgname/g" "$_pkgname-$pkgver.desktop"
@@ -49,13 +53,14 @@ prepare() {
     sed -i "s/@PROJECT_VERSION@/$_gittag/g" "$_pkgname-$pkgver.desktop"
 
     patchelf \
-    --replace-needed libminiupnpc.so.1{7,8} \
-    --replace-needed libboost_locale.so.1.8{3,6}.0 \
-    --replace-needed libboost_log.so.1.8{3,6}.0 \
-    --replace-needed libboost_filesystem.so.1.8{3,6}.0 \
-    --replace-needed libboost_program_options.so.1.8{3,6}.0 \
-    --replace-needed libboost_thread.so.1.8{3,6}.0 \
+    --replace-needed libminiupnpc.so.1{8,9} \
+    --replace-needed libicuuc.so.7{5,6} \
     "usr/bin/sunshine"
+    # --replace-needed libboost_locale.so.1.8{3,6}.0 \
+    # --replace-needed libboost_log.so.1.8{3,6}.0 \
+    # --replace-needed libboost_filesystem.so.1.8{3,6}.0 \
+    # --replace-needed libboost_program_options.so.1.8{3,6}.0 \
+    # --replace-needed libboost_thread.so.1.8{3,6}.0 \
 }
 
 package() {
