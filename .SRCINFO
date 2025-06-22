@@ -1,6 +1,6 @@
 pkgbase = amazingurho-git
 	pkgdesc = Eat all the shrimp as fast as you can in this rhythmic maze game
-	pkgver = r188.d2ed3f9
+	pkgver = r194.36da873
 	pkgrel = 1
 	url = https://gitlab.com/luckeyproductions/games/amazingurho
 	arch = x86_64

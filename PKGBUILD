@@ -2,7 +2,7 @@
 
 _pkgname=amazingurho
 pkgname=${_pkgname}-git
-pkgver=r188.d2ed3f9
+pkgver=r194.36da873
 pkgrel=1
 pkgdesc='Eat all the shrimp as fast as you can in this rhythmic maze game'
 arch=('x86_64')
