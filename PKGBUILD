@@ -55,7 +55,7 @@ package_nvidia-525xx-settings() {
 
 package_libxnvctrl-525xx() {
   depends=('libxext')
-  pkgdesc='NVIDIA NV-CONTROL X extension'
+  pkgdesc='NVIDIA NV-CONTROL X extension, 525 branch'
   conflicts=('libxnvctrl')
   provides=("libxnvctrl=${pkgver}" 'libXNVCtrl.so')
 

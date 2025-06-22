@@ -29,7 +29,7 @@ pkgname = nvidia-525xx-settings
 	conflicts = nvidia-settings
 
 pkgname = libxnvctrl-525xx
-	pkgdesc = NVIDIA NV-CONTROL X extension
+	pkgdesc = NVIDIA NV-CONTROL X extension, 525 branch
 	depends = libxext
 	provides = libxnvctrl=525.147.05
 	provides = libXNVCtrl.so
