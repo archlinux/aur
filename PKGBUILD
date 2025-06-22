@@ -1,6 +1,5 @@
 # Maintainer: Yatharth Jain <yatharth3194@gmail.com>
 
-_tag=cb55a809a5ec8ef636cf2d234d92d8ce35123dc6 # Replace with the actual tag if needed
 _sourceName="bgclicker"
 
 pkgname=bgclicker-git
