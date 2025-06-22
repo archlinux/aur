@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=sphinx-last-updated-by-git
 pkgname=python-${_base}
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="Get the last updated time for each Sphinx page from Git"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python-sphinx git)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-cov)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('193b704a850464d929f82cf88e871e4fe23a0df56dd1487326d559d983631b304ee64d17e8e2ade01583c2ec39f577a0616f5e7730b8beda8cb8ae62d221ed91')
+sha512sums=('fba70cec6381c0eb910ff794c9b8c961444cf252293b0bb55d1483c85296f2751a453c858869da91c77d4e412b0c89ba1c11925647d08789e97c0483ea715e00')
 
 build() {
   cd ${_base}-${pkgver}
