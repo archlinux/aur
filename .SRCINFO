@@ -1,7 +1,7 @@
 pkgbase = vdr-text2skin
 	pkgdesc = VDR Text2Skin Plugin
 	pkgver = 1.3.4_11_g8f7954d
-	pkgrel = 13
+	pkgrel = 14
 	url = https://github.com/vdr-projects/vdr-plugin-text2skin
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = vdr-text2skin
 	license = GPL2
 	makedepends = git
 	depends = graphicsmagick
-	depends = vdr-api=6
+	depends = vdr-api=8
 	backup = etc/vdr/conf.avail/50-text2skin.conf
 	source = git+https://github.com/vdr-projects/vdr-plugin-text2skin.git#commit=8f7954da2488ced734c30e7c2704b92a44e6e1ad
 	md5sums = SKIP
