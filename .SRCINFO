@@ -1,6 +1,7 @@
 pkgbase = ttf-pt-public-pack
-	pkgver = 22.09
+	pkgver = 2024.09.02
 	pkgrel = 1
+	epoch = 1
 	url = https://www.paratype.ru
 	arch = any
 	license = custom:OFL
@@ -8,42 +9,42 @@ pkgbase = ttf-pt-public-pack
 	sha256sums = SKIP
 
 pkgname = ttf-pt-astra-sans
-	pkgdesc = ParaType font based on PT Sans family, metric-compatible with Times New Roman
+	pkgdesc = A sans-serif font designed to be metrically equivalent to Times New Roman
 	provides = ttf-font
 	provides = ttf-pt-astra-sans
 	conflicts = ttf-pt-astra-sans
 	conflicts = ttf-astra-sans
 
 pkgname = ttf-pt-astra-serif
-	pkgdesc = ParaType font based on PT Serif family, metric-compatible with Times New Roman
+	pkgdesc = A serif font designed to be metrically equivalent to Times New Roman
 	provides = ttf-font
 	provides = ttf-pt-astra-serif
 	conflicts = ttf-pt-astra-serif
 	conflicts = ttf-astra-serif
 
-pkgname = ttf-pt-sans
-	pkgdesc = PT Sans is a ParaType family font for universal use
-	provides = ttf-font
-	provides = ttf-pt-sans
-	conflicts = ttf-pt-sans
-	conflicts = ttf-paratype
-
-pkgname = ttf-pt-serif
-	pkgdesc = PT Serif is a ParaType family font designed for universal use together with PT Sans
-	provides = ttf-font
-	provides = ttf-pt-serif
-	conflicts = ttf-pt-serif
-	conflicts = ttf-paratype
-
 pkgname = ttf-pt-mono
-	pkgdesc = PT Mono is a monospaced font of the ParaType PT Project series
+	pkgdesc = A monospace font for use in forms, tables, worksheets and other scenarios where equal character widths are advantageous
 	provides = ttf-font
 	provides = ttf-pt-mono
 	conflicts = ttf-pt-mono
 	conflicts = ttf-paratype
 
 pkgname = ttf-pt-root_ui
-	pkgdesc = PT Root UI is a modern uniwidth sans serif whose individual character widths are constant across all weights (ParaType family)
+	pkgdesc = A sans-serif typeface designed specifically for user interfaces and web design
 	provides = ttf-font
 	provides = ttf-pt-root-ui
 	conflicts = ttf-pt-root-ui
+
+pkgname = ttf-pt-sans
+	pkgdesc = A humanist sans-serif font inspired by the mid-20th century types suitable for applications and website
+	provides = ttf-font
+	provides = ttf-pt-sans
+	conflicts = ttf-pt-sans
+	conflicts = ttf-paratype
+
+pkgname = ttf-pt-serif
+	pkgdesc = A transitional serif typeface with humanistic terminals designed for use together with PT Sans
+	provides = ttf-font
+	provides = ttf-pt-serif
+	conflicts = ttf-pt-serif
+	conflicts = ttf-paratype
