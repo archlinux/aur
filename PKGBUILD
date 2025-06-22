@@ -6,8 +6,8 @@
 
 _pkgname=stellarium
 pkgname=${_pkgname}-lite
-pkgver=25.1
-pkgrel=3
+pkgver=25.2
+pkgrel=1
 pkgdesc="Stellarium without GPS and Telescope Control support (no gpsd and libindi dependencies)"
 arch=(x86_64)
 url="https://${_pkgname}.org"
@@ -17,15 +17,12 @@ depends=(nlopt libpng libglvnd freetype2 openssl 'calcmysky>=0.3'
 makedepends=(cmake ninja mesa qt6-tools)
 optdepends=('man-db: manual pages for stellarium')
 conflicts=(${_pkgname})
-_patches=(bbcd60ae52b6f1395ef2390a2d2ba9d0f98db548.diff
-          a27f10f55cdd0bcdbe74071e5b020e0297b8c57a.diff)
+_patches=()
 source=(https://github.com/Stellarium/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz{,.asc}
         ${_patches[@]/#/https://github.com/Stellarium/stellarium/commit/})
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF') # Alexander Wolf <alex.v.wolf@gmail.com>
-sha256sums=('2ecbc90f0bc7f1355e4d6497db2adc9119000d88eb18a3b4257ce249c4bea2f0'
-            'SKIP'
-            '1797a4a633a39d989ea7e688dd600a19655ba1d798b74972f9f85e6452152cfd'
-            'ae9d9b45ad0dca479d5cd1a5d8b07680fa8798a2da7b01d343bf714023f5e19c')
+sha256sums=('afb43e95438aef5509afd6ba197daf30b52607cac16888332d9810ba12209486'
+            'SKIP')
 
 prepare() {
     cd ${_pkgname}-${pkgver}
@@ -40,7 +37,6 @@ build() {
     -S ${_pkgname}-${pkgver} \
     -B build \
     -G Ninja \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_C_COMPILER=gcc \
