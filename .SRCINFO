@@ -1,7 +1,7 @@
 pkgbase = discord-chat-exporter
 	pkgdesc = Exports Discord chat logs to a file
 	pkgver = 2.46
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tyrrrz/DiscordChatExporter
 	arch = aarch64
 	arch = armv7h
@@ -21,7 +21,12 @@ pkgbase = discord-chat-exporter
 pkgname = discord-chat-exporter-core
 	pkgdesc = Exports Discord chat logs to a file - Core
 
+pkgname = discord-chat-exporter-cli
+	pkgdesc = Exports Discord chat logs to a file - CLI
+	depends = dotnet-runtime-9.0
+	depends = discord-chat-exporter-core=2.46-2
+
 pkgname = discord-chat-exporter-gui
 	pkgdesc = Exports Discord chat logs to a file - GUI
 	depends = dotnet-runtime-9.0
-	depends = discord-chat-exporter-core=2.46-1
+	depends = discord-chat-exporter-core=2.46-2

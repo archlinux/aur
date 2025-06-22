@@ -3,9 +3,9 @@
 _sdk=9.0
 _Name="DiscordChatExporter"
 pkgbase="discord-chat-exporter"
-pkgname=("${pkgbase}-"{core,gui}) # cli,
+pkgname=("${pkgbase}-"{core,cli,gui})
 pkgver=2.46
-pkgrel=1
+pkgrel=2
 pkgdesc="Exports Discord chat logs to a file"
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/Tyrrrz/${_Name}"
@@ -97,15 +97,15 @@ package_discord-chat-exporter-core() {
   install -vDm644 "favicon.png" "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
 }
 
-# package_discord-chat-exporter-cli() {
-#   pkgdesc+=" - CLI"
-#   depends+=("${pkgbase}-core=${pkgver}-${pkgrel}")
-# 
-#   cd "${srcdir}/${_pkgsrc}"
-#   install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/${pkgbase}"
-#   cp -vaP build-cli/* "${pkgdir}/usr/lib/${pkgbase}/"
-#   ln -vsf "/usr/lib/${pkgbase}/${_Name}.Cli" "${pkgdir}/usr/bin/${pkgname}"
-# }
+package_discord-chat-exporter-cli() {
+  pkgdesc+=" - CLI"
+  depends+=("${pkgbase}-core=${pkgver}-${pkgrel}")
+
+  cd "${srcdir}/${_pkgsrc}"
+  install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/${pkgbase}"
+  cp -vaP build-cli/* "${pkgdir}/usr/lib/${pkgbase}/"
+  ln -vsf "/usr/lib/${pkgbase}/${_Name}.Cli" "${pkgdir}/usr/bin/${pkgname}"
+}
 
 package_discord-chat-exporter-gui() {
   pkgdesc+=" - GUI"
