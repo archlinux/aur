@@ -1,0 +1,25 @@
+pkgbase = xlibre-input-evdev
+	pkgdesc = XLibre evdev input driver
+	pkgver = 2.11.0.1
+	pkgrel = 1
+	url = https://github.com/X11Libre/xf86-input-evdev
+	arch = aarch64
+	arch = x86_64
+	groups = xlibre-drivers
+	license = HPND-sell-variant AND MIT
+	makedepends = xlibre-server-devel
+	makedepends = xorgproto
+	makedepends = X-ABI-XINPUT_VERSION=26.0
+	depends = glibc
+	depends = libevdev>=0.4
+	depends = mtdev
+	depends = systemd-libs
+	provides = xf86-input-evdev
+	conflicts = xf86-input-evdev
+	conflicts = xorg-server<21.1.1
+	conflicts = X-ABI-XINPUT_VERSION<26
+	conflicts = X-ABI-XINPUT_VERSION>=27
+	source = xf86-input-evdev-xlibre-xf86-input-evdev-2.11.0.1.tar.gz::https://github.com/X11Libre/xf86-input-evdev/archive/refs/tags/xlibre-xf86-input-evdev-2.11.0.1.tar.gz
+	b2sums = 339e23ec883fc5870dd9c6b5e60330e09c7a898aa079892e338bc140f8c5f71f9139114d5986483a55e4ec1ce2f03f74d9cb4c170d11c0471069685545b62585
+
+pkgname = xlibre-input-evdev
