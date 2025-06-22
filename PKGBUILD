@@ -156,7 +156,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler and hardened Kernel by CachyOS with other patches and improvements'
-pkgrel=2
+pkgrel=1
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgver}-${_pkgsuffix}"
 arch=('x86_64')
@@ -177,7 +177,7 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=575.57.08
+_nv_ver=575.64
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
@@ -206,7 +206,7 @@ fi
 # ZFS support
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=92f430b00f42964b63aee373fbf6598a20f6c0cc")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=725d591cf34aca2a4b1f19f2a733def2c8c8dc41")
 fi
 
 # NVIDIA pre-build module support
