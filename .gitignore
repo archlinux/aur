@@ -1,10 +1,5 @@
-*.tar.*
-*.orig
-*.rej
-*.swp
-*.part
-src
-pkg
-dbxcli*
-README.md
-LICENSE
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml

@@ -1,0 +1,5 @@
+[dbxcli-bin]
+source = "github"
+github = "dropbox/dbxcli"
+use_latest_release = true
+prefix = "v"
