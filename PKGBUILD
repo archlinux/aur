@@ -1,3 +1,4 @@
+# Maintainer: Marcel B <mr.arsikoff@gmail.com>
 pkgname="sddm-silent-theme"
 _upstream_name="SilentSDDM"
 pkgdesc="Highly customizable SDDM theme"
