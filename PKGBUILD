@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Juan Tascon <juan at horlux dot org>
 pkgname=wtfutil-bin
-pkgver=0.43.0
+pkgver=0.44.0
 pkgrel=1
 pkgdesc="Personal information dashboard for your terminal"
 arch=('x86_64' 'aarch64' 'armv6h')
@@ -13,9 +13,9 @@ conflicts=("${pkgname%-bin}")
 source_x86_64=("https://github.com/wtfutil/wtf/releases/download/v$pkgver/wtf_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/wtfutil/wtf/releases/download/v$pkgver/wtf_${pkgver}_linux_arm64.tar.gz")
 source_armv6h=("https://github.com/wtfutil/wtf/releases/download/v$pkgver/wtf_${pkgver}_linux_armv6.tar.gz")
-sha256sums_x86_64=('7734c22eb4bbe40b5b47e20d60d550673f418030bca27db81471bc86eb577c7f')
-sha256sums_aarch64=('22fff35b0617be775aeb57bb643dee3155ef838a5e0f7997794a83c48884412e')
-sha256sums_armv6h=('46b18c87ed3f0b012b6209e5188e037be090e0a2b19fd2caf658ed0bb47dd04b')
+sha256sums_x86_64=('fd76e16d304e2e59931587881b0adc2b7a0bca0a8f5564acc7ef58a76079269f')
+sha256sums_aarch64=('460b28ea26ba79e803548eda9ae09b809a24f36a856980e5f19c9a0eef53b260')
+sha256sums_armv6h=('104e674593bc38405b086612889ae1da1fb0da6a8613098164c2b1c4ca6f13ae')
 
 package() {
   cd $(find . -name "wtf_$pkgver_*" -type d | sed 1q)

@@ -1,0 +1,4 @@
+[wtfutil-bin]
+source = "git"
+git = "https://github.com/wtfutil/wtf.git"
+prefix = "v"
