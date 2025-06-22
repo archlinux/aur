@@ -1,5 +1,5 @@
 pkgbase = ttf-pt-astra-fact
-	pkgdesc = ParaType font based on Fact family, metric-compatible with Verdana
+	pkgdesc = A sans-serif font designed to be metrically equivalent to Verdana
 	pkgver = 1.001
 	pkgrel = 1
 	url = https://www.paratype.ru

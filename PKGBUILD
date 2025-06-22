@@ -1,9 +1,9 @@
-# Maintainer: Drommer <drommer@github.com>
+# Maintainer: Serhii Starovoitov <drommer.94@gmail.com>
 
 pkgname=ttf-pt-astra-fact
 pkgver=1.001
 pkgrel=1
-pkgdesc='ParaType font based on Fact family, metric-compatible with Verdana'
+pkgdesc='A sans-serif font designed to be metrically equivalent to Verdana'
 arch=('any')
 url='https://www.paratype.ru'
 license=('custom:OFL')
