@@ -1,9 +1,16 @@
 -------------------------------------------------------
  Changelog    : iwinfo
- Tags         : 3.5.0 ➙ 4.2.0
-              : 2025-02-25 ➙ 2025-06-16
+ Tags         : 4.0.0 ➙ 4.4.0
+              : 2025-05-18 ➙ 2025-06-22
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-22   : 4.4.0
+                Put run_cmd in its own file
+
+ 2025-06-22   : 4.3.0
+                run_prog: sync our copy with latest from pyconcurrent
+ 2025-06-16     update Docs/Changelog Docs/${my_name}.pdf
 
  2025-06-16   : 4.2.0
                 Improve way we run external programs - handle larger output, better
@@ -24,12 +31,3 @@
                   The known host file will first be looked for in the directory
                   *./etc/iwinfo/* and then */etc/iwinfo/*.
  2025-02-25     update Docs/Changelog.rst Docs/iwinfo.pdf
-
- 2025-02-25   : 3.5.1
-                Fix typo in PKGBUILD from 3.5.0
-                update Docs/Changelog.rst Docs/iwinfo.pdf
-
- 2025-02-25   : 3.5.0
-                More checking of missing programs. Found by aur report from @simona
-                Add iwd as dependency to provide /usr/bin/iwctl
- 2024-12-31     update Docs/Changelog.rst Docs/mkpkg.pdf for 3.4.2
