@@ -4,7 +4,7 @@ _gitname="GoZen"
 _godot_version="4.4.1"
 
 pkgname=gozen-git
-pkgver=0
+pkgver=1
 pkgrel=1
 pkgdesc="A minimalistic video editor (git)"
 arch=('x86_64')
@@ -98,6 +98,8 @@ build() {
 
 	# Make a different desktop file for the -git build.
 	sed -i 's/^Name=GoZen$/Name=GoZen-git/' gozen.desktop
+	sed -i "s/^Exec=gozen$/Exec=${pkgname}/" gozen.desktop
+	sed -i "s/^Icon=gozen$/Icon=${pkgname}/" gozen.desktop
 }
 
 package() {
