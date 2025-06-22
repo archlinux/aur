@@ -1,0 +1,18 @@
+pkgbase = caps-lock-indicator-git
+	pkgdesc = Caps Lock applet for COSMIC desktop
+	pkgver = r4.8f93ea6
+	pkgrel = 1
+	url = https://github.com/technobaboo/caps-lock-indicator
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = cosmic-applets
+	provides = caps-lock-indicator
+	conflicts = caps-lock-indicator
+	source = git+https://github.com/technobaboo/caps-lock-indicator.git
+	sha256sums = SKIP
+
+pkgname = caps-lock-indicator-git
