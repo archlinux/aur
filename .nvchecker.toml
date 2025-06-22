@@ -1,0 +1,5 @@
+[xlibre-server]
+source = "git"
+git = "https://github.com/x11libre/xserver.git"
+include_regex = "xlibre-xserver-.*"
+prefix = "xlibre-xserver-"
