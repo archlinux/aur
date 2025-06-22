@@ -11,8 +11,8 @@ pkgbase = groundcoverify-git
 	depends = python
 	provides = groundcoverify
 	source = git+https://gitlab.com/bmwinger/groundcoverify
-	source = default_config_location.patch
+	source = groundcoverify.sh
 	sha1sums = SKIP
-	sha1sums = 269bfa832c49c014e507145285a496cc7e0bba9d
+	sha1sums = 2a8af3cdff334e5fbf1b9c658709e2ce088c62a0
 
 pkgname = groundcoverify-git
