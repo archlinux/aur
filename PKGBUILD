@@ -1,4 +1,4 @@
-# Maintainer: wackbyte <wackbyte@protonmail.com>
+# Maintainer: wackbyte <im@purring.fyi>
 
 _pkgname=hare-toml
 pkgname=hare-toml-git
