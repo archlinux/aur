@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-undelete
 pkgver=2.3.1_pre1
-_vdrapi=6
-pkgrel=14
+_vdrapi=8
+pkgrel=15
 pkgdesc="allows to undelete accidentally deleted VDR recordings"
 url="http://phivdr.dyndns.org/vdr/vdr-undelete/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
