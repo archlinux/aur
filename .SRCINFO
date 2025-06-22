@@ -1,0 +1,15 @@
+pkgbase = altrady-appimage
+	pkgdesc = Altrady Crypto Trading Terminal
+	pkgver = 4.7.0
+	pkgrel = 1
+	url = https://www.altrady.com
+	arch = x86_64
+	license = custom:Unlicense
+	depends = zlib
+	depends = fuse2
+	noextract = altrady-appimage-4.7.0.AppImage
+	options = !strip
+	source_x86_64 = altrady-appimage-4.7.0.AppImage::https://cdn.altrady.com/Altrady-4.7.0.AppImage
+	sha256sums_x86_64 = cf34eea17c372d71facc2f671ea99ac20f7723620f505c75f92b4e3f30184dcf
+
+pkgname = altrady-appimage
