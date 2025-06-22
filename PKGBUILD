@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=imagineer
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Accessible image processing and conversion from the terminal"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'nasm')
 replaces=('sic-image-cli')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('a28abb9d4ba4e13b24cb1a982c99a44ad6dfc082c9127b2b3e1eef58ca5271ac6ad8c1d1e570a20f528d65c2f96a3dab92d2cf9cb668ad22639df569043a1814')
+sha512sums=('26f9ee651a6c514a4fc47473a831e6c73e3266e95e060ce9498b72817d9ad5dcb4bdfb9267a5de0ac52f526a421a7161c9eaa7e62526dfc65b93ffee9c964492')
 options=('!lto')
 
 prepare() {
@@ -33,10 +33,10 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm 755 "target/release/ig" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm 644 "$pkgname.bash" "${pkgdir}/usr/share/bash-completion/completions/$pkgname"
-  install -Dm 644 "$pkgname.fish" -t "${pkgdir}/usr/share/fish/completions"
-  install -Dm 644 "_$pkgname" -t "${pkgdir}/usr/share/zsh/site-functions"
+  install -Dm 644 "ig.bash" "${pkgdir}/usr/share/bash-completion/completions/$pkgname"
+  install -Dm 644 "ig.fish" "${pkgdir}/usr/share/fish/completions/$pkgname.fish"
+  install -Dm 644 "_ig" "${pkgdir}/usr/share/zsh/site-functions/_$pkgname"
 }
