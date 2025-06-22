@@ -1,6 +1,6 @@
 # Maintainer: Michael Langer <laminarlade at t-online DOT de>
 pkgname=gradia
-pkgver=1.4.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Make your screenshots ready for the world."
 arch=('x86_64')
@@ -21,10 +21,8 @@ source=(
     "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
     'pillow_avif.patch'
 )
-sha256sums=(
-    '3633f62a38c05d40e9bfacf795b0f844e810f64569665fd1f6021fb24d3a8256'
-    '5080f87f3b2f2b7360c6afebe333e7b8b09ef2017cc0f20b95d364df83bf3528'
-)
+sha256sums=('c152acf17c0fc03a5c6f8530b5b0e927c4f4a365fed58ac840b1b22417868917'
+            '5080f87f3b2f2b7360c6afebe333e7b8b09ef2017cc0f20b95d364df83bf3528')
 
 prepare() {
   mv Gradia-$pkgver $pkgname-$pkgver
