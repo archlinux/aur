@@ -3,7 +3,7 @@
 pkgname=hasktags-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=0.73.0.rXX.gXXXXXXX
-pkgrel=1
+pkgrel=2
 pkgdesc='Produces ctags "tags" and etags "TAGS" files for Haskell programs'
 arch=('i686' 'x86_64')
 url="https://github.com/MarcWeber/${_pkgname}"
@@ -11,7 +11,7 @@ license=('BSD-3-Clause')
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 depends=('gmp')
-makedepends=('git' 'cabal-install')
+makedepends=('git' 'cabal-install' 'ghc')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
