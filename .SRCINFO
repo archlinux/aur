@@ -1,12 +1,12 @@
 pkgbase = opgui
 	pkgdesc = An USB programmer for various devices, including PIC, dsPIC, AVR microcontrollers, and various kinds of serial eeproms
-	pkgver = 0.12.3
+	pkgver = 0.12.4
 	pkgrel = 1
 	url = http://openprog.altervista.org
 	arch = x86_64
 	license = LGPL-2.0-or-later
 	depends = gtk3
-	source = https://downloads.sourceforge.net/project/openprogrammer/OPGUI/opgui_0.12.3.tar.gz
-	sha512sums = d61748dc3ad0ffeb0efb2626582fe31a9d3b918bcd0a5b5593fa380f556435016f7953f3b32d50fd0b48aba44d1e9ac60153e2a8a7e4ba3a0125691f84fe5b2b
+	source = https://downloads.sourceforge.net/project/openprogrammer/OPGUI/opgui_0.12.4.tar.gz
+	sha512sums = 8b8014a7213e64983c46354f83e41c166bced0e5bbeda82ebb9c05e1b5eb81c88b24f87076a53d77aa924ac56606d92b3404b870846c02f64a865d854bc0641a
 
 pkgname = opgui
