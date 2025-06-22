@@ -1,8 +1,8 @@
 pkgbase = wonderlab-appimage-feature
 	pkgdesc = The next generation cross-platform Minecraft launcher. (feature branch)
-	pkgver = 2.0.0.0614
+	pkgver = 2.0.0.0622
 	pkgrel = 1
-	url = https://github.com/Blessing-Studio/WonderLab.Override
+	url = https://github.com/Lunova-Studio/WonderLab.Override
 	arch = x86_64
 	arch = aarch64
 	license = AGPL3
@@ -13,9 +13,9 @@ pkgbase = wonderlab-appimage-feature
 	conflicts = wonderlab-git
 	conflicts = wonderlab-appimage
 	options = !strip
-	source_x86_64 = wonderlab-x86_64.AppImage::https://github.com/Blessing-Studio/WonderLab.Override/releases/download/v2.0.0.0614/WonderLab.linux-x64.AppImage
-	sha512sums_x86_64 = SKIP
-	source_aarch64 = wonderlab-x86_64.AppImage::https://github.com/Blessing-Studio/WonderLab.Override/releases/download/v2.0.0.0614/WonderLab.linux-arm64.AppImage
-	sha512sums_aarch64 = SKIP
+	source_x86_64 = wonderlab-x86_64.AppImage::https://github.com/Lunova-Studio/WonderLab.Override/releases/download/v2.0.0.0622/WonderLab.linux.x64.AppImage
+	sha256sums_x86_64 = 26660a7cfdc95aa8f6b86cb2a4222d3b5d6cfaf70d74c318039b216bbcb5368a
+	source_aarch64 = wonderlab-x86_64.AppImage::https://github.com/Lunova-Studio/WonderLab.Override/releases/download/v2.0.0.0622/WonderLab.linux.arm64.AppImage
+	sha256sums_aarch64 = a3f07c289808af2515f18093cb88f4459ff2b4db8e2c59a269a5a0d5a3b14a7a
 
 pkgname = wonderlab-appimage-feature
