@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=VoidEditor
+GenericName=AI Code Editor
+Comment=An open source Cursor alternative. Write code with the best AI tools, use any model, and retain full control over your data.
+Exec=/usr/bin/void
+Icon=voideditor
+Type=Application
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=VoidEditor

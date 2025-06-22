@@ -1,0 +1,5 @@
+*
+!.gitignore
+!PKGBUILD
+!VoidEditor.desktop
+!.SRCINFO
