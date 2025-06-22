@@ -3,7 +3,7 @@
 
 pkgname=aicommits
 pkgver=1.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A CLI that writes your git commit messages for you with AI"
 arch=('any')
 url="https://github.com/Nutlope/$pkgname"
@@ -15,7 +15,7 @@ sha256sums=('b74cf25eb31eb7098d01f482cd64a87e2f59d7efa11f5273fbb353f35e850c5d')
 
 package() {
     npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
-    install -Dm644 "package/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 "package/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: set ts=4 sw=4 sts=4 et:
