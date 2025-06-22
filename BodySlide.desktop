@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=BodySlide
+Exec=env WX_BODYSLIDE_DATA_DIR=/usr/share/BodySlide /usr/bin/BodySlide %U
+Terminal=false
+Type=Application
+Icon=BodySlide
+StartupWMClass=BodySlide
+Comment=A tool to convert, create, and customize outfits and bodies for Bethesda games.
+Categories=Graphics;

@@ -1,0 +1,23 @@
+pkgbase = BodySlide
+	pkgdesc = BodySlide and Outfit Studio, a tool to convert, create, and customize outfits and bodies for Bethesda games.
+	pkgver = 5.7.0
+	pkgrel = 2
+	url = https://github.com/ousnius/BodySlide-and-Outfit-Studio
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = gcc
+	makedepends = glew
+	makedepends = directx-headers
+	makedepends = fbx-sdk
+	makedepends = xdg-utils
+	depends = wxwidgets-gtk3
+	optdepends = libxml2-legacy
+	source = BodySlide::git+https://github.com/wrb2012/BodySlide-and-Outfit-Studio.git
+	source = BodySlide.desktop
+	source = OutfitStudio.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = BodySlide

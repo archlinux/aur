@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Outfit Studio
+Exec=env WX_OUTFITSTUDIO_DATA_DIR=/usr/share/BodySlide /usr/bin/OutfitStudio %U
+Terminal=false
+Type=Application
+Icon=OutfitStudio
+StartupWMClass=OutfitStudio
+Comment=A tool to convert, create, and customize outfits and bodies for Bethesda games.
+Categories=Graphics;
