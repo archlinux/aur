@@ -1,7 +1,7 @@
 # Maintainer: busyo <pkgbuilds at qq694253220@gmail.com>
 
 pkgname=mhy-warp-bin
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="米游抽卡记录查询软件"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("${_appimage}::${url}/releases/download/${pkgver}/${_appimage}"
         )
 
 sha256sums=(
-  'c71a8becbd0598fe4f70d5881ee901016a992b6b93c382f699d5bfa0cf9d6a1b'
+  '3bc53d57a799b85e3c9c1d22598401358accad2e1c9f271880b2914884575642'
   '144b04954b03aa475d6f770c05fc0f56ec239e27b10b386765f8a2211c40984c'
   'cc4ed7c1e32113dacafb016d60041359c41b87268d0736312915257a6021e59a'
   '9d23d1b4c7debed98693f4747b64b5cf374b0cba656d0ab831c946e3bd5aee80'
