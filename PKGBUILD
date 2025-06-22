@@ -2,7 +2,7 @@
 pkgbase=libnetceiver
 pkgname=($pkgbase $pkgbase-tools)
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Library and tools to access the REEL NetCeiver'
 url='https://github.com/vdr-projects/libnetceiver'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
