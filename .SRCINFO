@@ -9,7 +9,7 @@ pkgbase = cin-appimage
 	conflicts = cin
 	options = !strip
     url = https://www.cinelerra-gg.org/
-    source_x86_64 = https://cinelerra-gg.org/download/images/CinGG-20241231-x86_64.AppImage
+    source_x86_64 = https://cinelerra-gg.org/download/images/CinGG-20250430-x86_64.AppImage
 	shas256sums_x86_64 = '6665f7109718b2f06976a4e6e8f7a11c0bde7727454def8f7ebbd6003861e1ff'
 
 pkgname = cin-appimage
