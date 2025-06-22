@@ -1,0 +1,21 @@
+pkgbase = python-betterspy
+	pkgdesc = Show sparsity patterns of sparse matrices
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/nschloe/betterspy
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = python-pytest
+	checkdepends = python-imageio
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-matplotlib
+	depends = python-scipy
+	depends = python-pypng
+	optdepends = python-networkx: for creation of graphs
+	source = betterspy-0.1.6.tar.gz::https://github.com/nschloe/betterspy/archive/v0.1.6.tar.gz
+	sha512sums = 322045cdf95a260ef55c478aa9c20b75a2294b8e8843d7cc76de969de4e597ea1a5f45b61b661b901a5f35a4f83f7bc1e3b350d4f8a49ae7bfb827d23d76aa8a
+
+pkgname = python-betterspy
