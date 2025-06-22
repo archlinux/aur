@@ -2,7 +2,7 @@
 
 _pkgname=opensaucer
 pkgname=${_pkgname}-git
-pkgver=r303.5224854
+pkgver=r304.a0dcf28
 pkgrel=1
 pkgdesc='Vehicular soccer'
 arch=('x86_64')
