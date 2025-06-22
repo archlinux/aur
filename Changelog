@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : Arch-mkpkg
- Tags         : 6.2.4 ➙ 7.4.0
-              : 2024-12-31 ➙ 2025-06-19
+ Tags         : 7.0.0 ➙ 7.5.0
+              : 2025-05-22 ➙ 2025-06-22
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-22   : 7.5.0
+                Sync local copy of run_prog with latest from pyconcurrent
+ 2025-06-19     update Docs/Changelogs Docs/mkpkg.pdf for 7.4.0
 
  2025-06-19   : 7.4.0
                 Keep internal copy of run_prog in sync with pyconcurrent
@@ -31,7 +35,3 @@
                 Improved handling of split packages.
                   Now checks every packages for any being missing or out of date.
  2024-12-31     update Docs/Changelog.rst Docs/mkpkg.pdf for 6.2.4
-
- 2024-12-31   : 6.2.4
-                Add git signing key to Arch Package
-                update Docs/Changelog.rst Docs/mkpkg.pdf for 6.2.3
