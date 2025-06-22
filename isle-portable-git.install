@@ -1,0 +1,15 @@
+post_install() {
+	printf "%s\n" "$(cat << EOF
+
+LEGO Island will not run without game files.
+
+Run the config app "lego-isle-config" and set disk/media path
+to your game files location before running the game.
+
+EOF
+)"
+}
+
+post_upgrade() {
+	post_install
+}

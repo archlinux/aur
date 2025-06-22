@@ -1,11 +1,14 @@
 pkgbase = isle-portable-git
 	pkgdesc = Portable version of LEGO Island based on decompilation effort
 	pkgver = r2091.3678c97e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/isledecomp/isle-portable
+	install = isle-portable-git.install
 	arch = x86_64
 	license = custom:Proprietary
+	makedepends = cmake
 	makedepends = git
+	makedepends = imagemagick
 	makedepends = python
 	depends = mesa
 	depends = qt6-base
@@ -13,6 +16,8 @@ pkgbase = isle-portable-git
 	provides = isle-portable
 	conflicts = isle-portable
 	source = isle-portable::git+https://github.com/isledecomp/isle-portable.git
+	source = isleportable.desktop
 	sha256sums = SKIP
+	sha256sums = 9205cb2248c1ba5bcaf57e9a053f50e649afe8dea7d6d13b6a95bb7f1bc4d371
 
 pkgname = isle-portable-git

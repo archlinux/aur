@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Lego Island
+Comment=LEGO-themed open-world adventure game
+Exec=lego-isle
+Icon=legoisle
+Categories=Game;AdventureGame;ActionGame;KidsGame;
