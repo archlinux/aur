@@ -1,14 +1,14 @@
-# Maintainer: drommer <drommer.94@yahoo.com>
-# Contributor: evorster <evorster@gmail.com>
+# Maintainer: evorster <evorster@gmail.com>
 # Contributor: osch <oliver@luced.de>
+# Contributor: Serhii Starovoitov <drommer.94@gmail.com>
 
 pkgname=audacity-3.1-wxgtk2
 pkgver=3.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Free, open source multi-track audio editor and recorder (installed to /opt)"
 arch=('x86_64')
 url="https://audacityteam.org"
-license=('GPL2' 'CCPL')
+license=('GPL-3.0-or-later')
 groups=('pro-audio')
 depends=('libmad' 'libid3tag' 'gtk2' 'glib2' 'soundtouch' 'ffmpeg' 'vamp-plugin-sdk'
 'portsmf' 'portmidi' 'twolame' 'suil' 'lilv' 'lv2' 'serd' 'sord' 'sratom' 'python'
@@ -42,10 +42,11 @@ build() {
   export CXX=/usr/bin/g++-12
   export CFLAGS+=" -DNDEBUG"
   export CXXFLAGS+=" -DNDEBUG"
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
   cmake -G "Unix Makefiles" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/audacity-3.1 \
+        -DCMAKE_INSTALL_PREFIX=/opt/audacity-wxgtk2 \
         -DAUDACITY_BUILD_LEVEL=2 \
         -Daudacity_has_networking=off \
         -Daudacity_lib_preference=system \
@@ -64,26 +65,26 @@ package() {
   cd "audacity-Audacity-${pkgver}"/build
   make DESTDIR="${pkgdir}" install
 
-  mv -f ${pkgdir}/opt/audacity-3.1/lib/audacity/* -t ${pkgdir}/opt/audacity-3.1/lib
-  mv -f ${pkgdir}/opt/audacity-3.1/share/audacity/* -t ${pkgdir}/opt/audacity-3.1/share
+  mv -f ${pkgdir}/opt/audacity-wxgtk2/lib/audacity/* -t ${pkgdir}/opt/audacity-wxgtk2/lib
+  mv -f ${pkgdir}/opt/audacity-wxgtk2/share/audacity/* -t ${pkgdir}/opt/audacity-wxgtk2/share
 
-  install -Dm755 ${pkgdir}/opt/audacity-3.1/audacity ${pkgdir}/usr/bin/audacity-3.1
-  install -Dm644 ${pkgdir}/opt/audacity-3.1/share/applications/audacity.desktop ${pkgdir}/usr/share/applications/audacity-3.1.desktop
-  install -Dm644 ${pkgdir}/opt/audacity-3.1/share/doc/audacity/* -t ${pkgdir}/usr/share/doc/audacity-3.1
-  install -Dm644 ${pkgdir}/opt/audacity-3.1/share/icons/hicolor/scalable/apps/audacity.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/audacity-3.1.svg
-  install -Dm644 ${pkgdir}/opt/audacity-3.1/share/man/man1/audacity.1 ${pkgdir}/usr/share/man/man1/audacity-3.1.1
+  install -Dm755 ${pkgdir}/opt/audacity-wxgtk2/audacity ${pkgdir}/usr/bin/audacity-wxgtk2
+  install -Dm644 ${pkgdir}/opt/audacity-wxgtk2/share/applications/audacity.desktop ${pkgdir}/usr/share/applications/audacity-wxgtk2.desktop
+  install -Dm644 ${pkgdir}/opt/audacity-wxgtk2/share/doc/audacity/* -t ${pkgdir}/usr/share/doc/audacity-wxgtk2
+  install -Dm644 ${pkgdir}/opt/audacity-wxgtk2/share/icons/hicolor/scalable/apps/audacity.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/audacity-wxgtk2.svg
+  install -Dm644 ${pkgdir}/opt/audacity-wxgtk2/share/man/man1/audacity.1 ${pkgdir}/usr/share/man/man1/audacity-wxgtk2.1
 
   for res in 16 22 24 32 48; do
-    install -Dm644 ${pkgdir}/opt/audacity-3.1/share/icons/hicolor/${res}x${res}/audacity.png ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/audacity-3.1.png
+    install -Dm644 ${pkgdir}/opt/audacity-wxgtk2/share/icons/hicolor/${res}x${res}/audacity.png ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/audacity-wxgtk2.png
   done
 
-  sed -i 's|\${0%/\*}|/opt/audacity-3.1|g' ${pkgdir}/usr/bin/audacity-3.1
-  sed -i 's|lib/audacity|lib|' ${pkgdir}/usr/bin/audacity-3.1
-  sed -i 's|share/audacity|share|' ${pkgdir}/usr/bin/audacity-3.1
-  sed -i 's|audacity|audacity-3.1|g' ${pkgdir}/usr/share/applications/audacity-3.1.desktop
+  sed -i -e 's|\${0%/\*}|/opt/audacity-wxgtk2|g' \
+         -e 's|lib/audacity|lib|' \
+         -e 's|share/audacity|share|' ${pkgdir}/usr/bin/audacity-wxgtk2
+  sed -i 's|audacity|audacity-wxgtk2|g' ${pkgdir}/usr/share/applications/audacity-wxgtk2.desktop
 
-  rm -rf ${pkgdir}/opt/audacity-3.1/{audacity,lib/audacity,share/{applications,audacity,doc,icons,man,metainfo,mime,pixmaps}}
+  rm -rf ${pkgdir}/opt/audacity-wxgtk2/{audacity,lib/audacity,share/{applications,audacity,doc,icons,man,metainfo,mime,pixmaps}}
 
-  # Uncomment next line if you want to use two different versions of Audacity simultaneously with separate settings
-  #mkdir -p -m 777 "${pkgdir}/opt/audacity-3.1/bin/Portable Settings"
+  # Uncomment next line if you want to use two different versions of Audacity simultaneously with separate settings (unsafe)
+  #mkdir -p -m 777 "${pkgdir}/opt/audacity-wxgtk2/bin/Portable Settings"
 }
