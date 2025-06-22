@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=gpu-screen-recorder
-pkgver=r1115.d0a620a
+pkgver=r1122.1b957d5
 pkgrel=1
 pkgdesc='A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux'
 arch=('x86_64')
@@ -16,10 +16,10 @@ optdepends=(
     'libva-mesa-driver: Required to record your screen on AMD'
     'libva-intel-driver: Required to record your screen on Intel G45 and HD Graphics family'
     'intel-media-driver: Required to record your screen on Intel Broadwell or later iGPUs or Intel Arc'
-    'linux-firmware: Required to record your screen on Intel Skylake or later iGPUs'
+    'linux-firmware-intel: Required to record your screen on Intel Skylake or later iGPUs'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.${pkgver}.tar.gz")
-sha512sums=('71599a0ba696cf4d3b7fc068a8c3c7b0ff0172ec1b1ea2ab7eea07c1b1bfd9fa3c232f75fa7fe6452b3b68b5f9682fbd556525cd775fdce0deadaa9727c6d434')
+sha512sums=('4ac563c8b8c0abdb9124450c936453e122b704e649d16f2dee4c972b0b1f85a8b98e8d95a94409009bed9e50a97ef9d2312e58383b995b3ff3e29b71f40962c6')
 install="${pkgname}.install" # setcap cap_sys_admin (gsr-kms-server)
 
 build() {
