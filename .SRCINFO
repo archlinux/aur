@@ -1,15 +1,14 @@
 pkgbase = stopwatch
 	pkgdesc = Timing app written in Tcl/Tk
 	pkgver = 3.5
-	pkgrel = 8
-	url = http://expect.sourceforge.net/stopwatch/
+	pkgrel = 9
+	url = https://wiki.tcl-lang.org/page/stopwatch
 	arch = any
-	license = custom
+	license = LicenseRef-stopwatch
 	depends = tk
-	source = stopwatch-3.5.tar.gz::http://expect.sourceforge.net/stopwatch/stopwatch.tar.gz
+	source = stopwatch-3.5.tar.gz::http://deb.debian.org/debian/pool/main/s/stopwatch/stopwatch_3.5.orig.tar.gz
 	source = LICENSE
-	sha256sums = f3f56dccd00f669a5f0a4b1f6507ab78e0d1ad18305b760baab34edc68b3ef4e
-	sha256sums = 599c44b010ac89d1b263b7cc783b816db8e7f47073484c42336b2d7f2d2ad8eb
+	sha512sums = f22cbd8e16d7d24c4b32191c5eb413e65d49207aaf6917eb3748e7aa55091b2f7ff8b03ab7954e1ee96a775c72443e6dfd5834311e5933a303f4e16b4c299ef2
+	sha512sums = b0ca44c7e860f3cf79034d47185b305f3afc63d0d047c1c62d5a75f04941ff953538c6a4063a2c365b945910cf35519dcfb11ffd76ab7ef15d26dc30baf42e05
 
 pkgname = stopwatch
-
