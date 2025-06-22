@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-notification-configurator-git
+	pkgdesc = Advanced GNOME notification capabilities including rate limiting, custom color theming per application, and notification positioning
+	pkgver = r22.896266e
+	pkgrel = 1
+	url = https://github.com/ExposedCat/gnome-notification-configurator
+	arch = any
+	license = LGPL-3.0-or-later
+	makedepends = git
+	makedepends = npm
+	depends = gnome-shell
+	provides = gnome-shell-extension-notification-configurator
+	conflicts = gnome-shell-extension-notification-configurator
+	source = git+https://github.com/ExposedCat/gnome-notification-configurator.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-notification-configurator-git
