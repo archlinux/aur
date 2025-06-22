@@ -1,6 +1,6 @@
 pkgbase = tunet-rust
 	pkgdesc = A Tsinghua University network authentication client for Linux, written in Rust. 清华大学校园网 Rust 客户端
-	pkgver = 0.10.3
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://github.com/Berrysoft/tunet-rust
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tunet-rust
 	depends = hicolor-icon-theme
 	depends = qt6-base
 	options = !lto
-	source = tunet-rust-0.10.3.tar.gz::https://github.com/Berrysoft/tunet-rust/archive/refs/tags/v0.10.3.tar.gz
-	sha256sums = 3807d3765ee69de044aa46c475f858b61c5e59357ac16188414cb313f636ac32
+	source = tunet-rust-0.10.4.tar.gz::https://github.com/Berrysoft/tunet-rust/archive/refs/tags/v0.10.4.tar.gz
+	sha256sums = 2596df70e8e48290a72edfd222faeeefc7d6b044bb36e152b1b469ad24bc267e
 
 pkgname = tunet-rust
