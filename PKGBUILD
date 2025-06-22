@@ -1,4 +1,3 @@
-# Maintainer: Your Name <your@email.com>
 pkgname=container2wasm-git
 pkgver=v0.8.2.r14.gb8f9f4a
 pkgrel=1
