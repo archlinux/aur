@@ -2,7 +2,7 @@
 pkgbase=python-ci_watson
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="CI helper for STScI Jenkins"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=('python-setuptools-scm'
              'python-colorama')  # wheel required by new setuptools
 checkdepends=('python-pytest-astropy-header') # crds already in makedepends
 source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz")
-md5sums=('d50f39589b33f767790cc3bf1979dea4')
+md5sums=('ee5eb6ee629bcb3824f684f15cca23ec')
 
 get_pyinfo() {
     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \

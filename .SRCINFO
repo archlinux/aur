@@ -1,6 +1,6 @@
 pkgbase = python-ci_watson
 	pkgdesc = CI helper for STScI Jenkins
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://ci_watson.readthedocs.io
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = python-ci_watson
 	makedepends = python-pytest
 	makedepends = python-readchar
 	makedepends = python-colorama
-	source = https://github.com/spacetelescope/ci_watson/archive/0.9.0.tar.gz
-	md5sums = d50f39589b33f767790cc3bf1979dea4
+	source = https://github.com/spacetelescope/ci_watson/archive/0.10.0.tar.gz
+	md5sums = ee5eb6ee629bcb3824f684f15cca23ec
 
 pkgname = python-ci_watson
 	depends = python>=3.9
