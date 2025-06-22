@@ -1,6 +1,6 @@
 pkgbase = an-anime-game-launcher-bwrap
 	pkgdesc = A Launcher for a specific anime game with auto-patching, discord rpc and time tracking
-	pkgver = 3.14.1
+	pkgver = 3.14.3
 	pkgrel = 1
 	url = https://github.com/an-anime-team/an-anime-game-launcher
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = an-anime-game-launcher-bwrap
 	source = portable-config
 	source = start.sh
 	sha256sums = SKIP
-	sha256sums = 6a4eab21264da3cb6db6c0c058fba494042e864d6341246c1ff061c4bb582e92
-	sha256sums = c4efe09cb144042a073a7cc83de416dd78c19941687253d25e34a1cbe90a1a77
+	sha256sums = 4acf6359feeeb0b191cdad9534f2ff8af9b5dcfc0835b65002799bc4ca919017
+	sha256sums = f2bc03c3d06aac59d568381fe0babf13dc9aa4ab99a0bb04b696918475561ccd
 
 pkgname = an-anime-game-launcher-bwrap
