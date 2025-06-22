@@ -3,7 +3,7 @@
 
 pkgname=chalice
 pkgver=1.32.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python Serverless Microframework for AWS.'
 arch=('any')
 url='https://github.com/aws/chalice'
@@ -31,7 +31,7 @@ check() {
   cd "${srcdir}"/${pkgname}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest "${pytest_options[@]}" tests
+  CHALICE_TEST_EXTENDED_PACKAGING=true test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
 package() {
