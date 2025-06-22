@@ -1,8 +1,8 @@
 pkgname="sddm-silent-theme"
 _upstream_name="SilentSDDM"
-description="Highly customizable SDDM theme"
+pkgdesc="Highly customizable SDDM theme"
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 depends=('sddm' 'qt6-svg' 'qt6-virtualkeyboard' 'qt6-multimedia-ffmpeg' 'redhat-fonts')
 url='https://github.com/uiriansan/SilentSDDM'
