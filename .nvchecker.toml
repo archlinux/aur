@@ -1,0 +1,4 @@
+[auricle]
+source = 'github'
+github = 'envolution/auricle'
+use_latest_release = true

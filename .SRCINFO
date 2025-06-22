@@ -1,0 +1,20 @@
+pkgbase = auricle
+	pkgdesc = terminal interface for browsing AUR package metadata with GIT exploration
+	pkgver = 0.0.1.1
+	pkgrel = 1
+	url = https://github.com/envolution/auricle
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = pyalpm
+	depends = python
+	depends = python-textual
+	depends = python-rich
+	depends = python-pygit2
+	depends = python-appdirs
+	source = auricle-0.0.1.1.tar.gz::https://github.com/envolution/auricle/archive/refs/tags/0.0.1.1.tar.gz
+	sha256sums = ee99844ba4c16a25e7fa7bb0d31a8adecd540120aad97c3f146e8cd57d9230d9
+
+pkgname = auricle
