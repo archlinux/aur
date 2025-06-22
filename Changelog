@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : dns_tools
- Tags         : 4.4.1 ➙ 4.8.0
-              : 2025-06-08 ➙ 2025-06-20
+ Tags         : 4.5.0 ➙ 4.9.0
+              : 2025-06-10 ➙ 2025-06-22
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-22   : 4.9.0
+                run_prog: Sync local copy with latest from pycocurrent
+ 2025-06-20     update Docs/Changelog Docs/${my_name}.pdf
 
  2025-06-20   : 4.8.0
                 Pull local copy of latest run_prog from pycocurrent
@@ -20,9 +24,3 @@
                 Enhance run_prog to pass env.
                 pytest now uses the run_prog from src via a symlink
  2025-06-08     update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-06-08   : 4.4.1
-                remove debug
-                bug: dns-prod-push int-ext option defaulted off instead of both
-                Improved code which runs external programs.
- 2025-05-27     update Docs/Changelog Docs/${my_name}.pdf
