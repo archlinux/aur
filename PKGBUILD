@@ -4,7 +4,7 @@
 pkgname=hlint-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=3.8.r68.g7dfba720
-pkgrel=3
+pkgrel=4
 pkgdesc='Haskell source code suggestions'
 arch=('i686' 'x86_64')
 url="https://github.com/ndmitchell/${_pkgname}"
@@ -12,7 +12,7 @@ license=('BSD-3-Clause')
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 depends=('gmp')
-makedepends=('git' 'cabal-install')
+makedepends=('git' 'cabal-install' 'ghc')
 optdepends=('haskell-apply-refact: automatically apply suggested refactorings')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
