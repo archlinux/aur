@@ -1,14 +1,15 @@
 pkgbase = textcompare
 	pkgdesc = A simple desktop app to compare old and new text
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/josephmawa/TextCompare
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = meson
 	depends = gjs
+	depends = gtksourceview5
 	depends = libadwaita
-	source = TextCompare-0.1.3.tar.gz::https://github.com/josephmawa/TextCompare/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = 914638394e38f960e6b256398175b4a68445ba94b4a7ea49d79921bcb2d3782e
+	source = TextCompare-0.1.4.tar.gz::https://github.com/josephmawa/TextCompare/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 28eb869cff4cfda5d5849e26ee2a3698bc4f7b8a9e9f0ec55b613d3e842ffc53
 
 pkgname = textcompare
