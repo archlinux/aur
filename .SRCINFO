@@ -1,5 +1,6 @@
 pkgbase = atar
-	pkgver = 0.1.20
+	pkgdesc = Ephemeral Terraform runner: applies on start, auto-destroys on exit or failure.
+	pkgver = 0.1.22
 	pkgrel = 1
 	url = https://github.com/x71c9/atar
 	arch = x86_64
@@ -7,7 +8,7 @@ pkgbase = atar
 	license = MIT
 	makedepends = rust
 	depends = glibc
-	source = atar-0.1.20.tar.gz::https://codeload.github.com/x71c9/atar/tar.gz/refs/tags/v0.1.20
-	sha256sums = 855e7bd0b48d65759e1e6c5bb71241011f8d4682c1862855f9a7b5af68e75670
+	source = atar-0.1.22.tar.gz::https://codeload.github.com/x71c9/atar/tar.gz/refs/tags/v0.1.22
+	sha256sums = 6b60d9288063d28e306aa2fb40f9e5af6af6e750cee4839d8df1a73bd51ce6e6
 
 pkgname = atar
