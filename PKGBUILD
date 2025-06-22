@@ -2,8 +2,8 @@
 
 _pkgname=hare-toml
 pkgname=hare-toml-git
-pkgver=0.1.2.r4.gef9afe0
-pkgrel=2
+pkgver=0.2.0.r1.gad5daee
+pkgrel=1
 pkgdesc='TOML implementation for Hare'
 arch=('any')
 url="https://codeberg.org/lunacb/${_pkgname}"
