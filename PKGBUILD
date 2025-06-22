@@ -8,11 +8,7 @@ arch=('any')
 url="https://github.com/Nutlope/$pkgname"
 license=('MIT')
 depends=('nodejs')
-makedepends=(
-  'jq'
-  'npm'
-)
-
+makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 sha256sums=('b74cf25eb31eb7098d01f482cd64a87e2f59d7efa11f5273fbb353f35e850c5d')
 
