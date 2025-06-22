@@ -4,8 +4,8 @@
 pkgname=vdr-dvbapi
 pkgver=2.2.6
 epoch=1
-_vdrapi=6
-pkgrel=6
+_vdrapi=8
+pkgrel=7
 pkgdesc="A bridge between VDR and OScam."
 url="https://github.com/manio/vdr-plugin-dvbapi"
 arch=('x86_64' 'i686')
