@@ -1,0 +1,16 @@
+pkgbase = docker-sriov-plugin-git
+	pkgdesc = Docker networking plugin for SRIOV and passthrough interfaces
+	pkgver = 0.6.r16.gb8d6f3f
+	pkgrel = 1
+	url = https://github.com/Mellanox/docker-sriov-plugin
+	arch = x86_64
+	arch = i686
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	source = docker-sriov-plugin-git::git+https://github.com/Mellanox/docker-sriov-plugin.git
+	source = mr-26.patch::https://patch-diff.githubusercontent.com/raw/Mellanox/docker-sriov-plugin/pull/26.patch
+	sha256sums = SKIP
+	sha256sums = b6c2db906bd94b8f45a18cee36ecce09db9b4641727823af94e35f0a14fe247e
+
+pkgname = docker-sriov-plugin-git

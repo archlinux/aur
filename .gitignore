@@ -1,0 +1,5 @@
+/src
+/pkg
+/docker-sriov-plugin-git
+*.patch
+*pkg.tar*
