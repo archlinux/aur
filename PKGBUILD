@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-systeminfo
 pkgver=0.1.5
-_vdrapi=6
-pkgrel=7
+_vdrapi=8
+pkgrel=8
 pkgdesc="displays system informations like CPU type and speed, disk and swap space etc."
 url='https://github.com/FireFlyVDR/vdr-plugin-systeminfo'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
