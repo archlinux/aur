@@ -3,7 +3,6 @@
 ## options
 : ${_widgets:=qt6}
 
-## basic info
 _pkgname="lazpaint"
 pkgname="$_pkgname-git"
 pkgver=7.3.r6.ge227806
@@ -21,13 +20,14 @@ case "${_widgets::1}" in
     depends=("${_widgets}pas")
     ;;
 esac
+
 makedepends=(
   'git'
   'lazarus'
   'xmlstarlet'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname=${pkgver%%.g*}")
 conflicts=("$_pkgname")
 
 options=('!strip' '!debug')
@@ -103,9 +103,9 @@ package() {
 
   # resources
   install -dm755 "$pkgdir/usr/share/$_pkgname/scripts"
-  cp --reflink=auto -a "$_release"/bin/i18n "$pkgdir/usr/share/$_pkgname/"
-  cp --reflink=auto -a "$_release"/bin/models "$pkgdir/usr/share/$_pkgname/"
-  cp --reflink=auto -a "$_resources"/scripts/{lazpaint,*.py} "$pkgdir/usr/share/$_pkgname/scripts/"
+  cp -r "$_release"/bin/i18n "$pkgdir/usr/share/$_pkgname/"
+  cp -r "$_release"/bin/models "$pkgdir/usr/share/$_pkgname/"
+  cp -r "$_resources"/scripts/{lazpaint,*.py} "$pkgdir/usr/share/$_pkgname/scripts/"
 
   # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"

@@ -9,7 +9,7 @@ pkgbase = lazpaint-git
 	makedepends = lazarus
 	makedepends = xmlstarlet
 	depends = qt6pas
-	provides = lazpaint=7.3
+	provides = lazpaint=7.3.r6
 	conflicts = lazpaint
 	options = !strip
 	options = !debug
