@@ -1,6 +1,6 @@
 pkgbase = deltatouch-git
 	pkgdesc = Delta Chat client using Lomiri UI toolkit
-	pkgver = r522.ae53cb2
+	pkgver = r524.e4f3924
 	pkgrel = 1
 	url = https://codeberg.org/lk108/deltatouch
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = deltatouch-git
 	depends = libdeltachat
 	provides = deltatouch
 	conflicts = deltatouch
-	source = git+https://codeberg.org/d2weber/deltatouch.git#commit=ae53cb21d1a835aa9be88cb36c8a438b6731cb4b
+	source = git+https://codeberg.org/lk108/deltatouch.git#commit=e4f39241844c4b8ecd1fb396fd9ab01111a2aa55
 	sha256sums = SKIP
 
 pkgname = deltatouch-git
