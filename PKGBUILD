@@ -2,13 +2,13 @@
 # Contributor: Manuel Reimer <manuel.reimer@gmx.de>
 
 pkgname=w_scan_cpp
-pkgver=20231015
+pkgver=20250615
 pkgrel=1
 
 # These are versions of dependencies used by w_scan_cpp
-_wirbelscan_version=2023.10.15
-_satip_gitver=65ee6589445dc0958acb2f4f4e0501c91875fdef
-_vdr_gitver=5f136032a2cf9ce979c3ec81556a9c3164820baf
+_wirbelscan_version=2024.09.15
+_satip_gitver=18b4cc1d4442251f7b6f0e9911af492d1556a399
+_vdr_gitver=591085812def02a827624a4cffc2cc3a2b984f8e
 
 pkgdesc="A dtv channel scanner based on VDR. Successor of w_scan"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -21,10 +21,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/wirbel-at-vdr-portal/w_scan
         "git://git.tvdr.de/vdr.git#commit=$_vdr_gitver"
         "vdr-plugin-satip-wirbel::git+https://github.com/wirbel-at-vdr-portal/vdr-plugin-satip.git#commit=$_satip_gitver"
        )
-sha256sums=('5a68eb2340a478f3cbd5d064ede0eba06593c4349aa924d04b70579de4080c45'
-            '5079bc93cd09edab2dc2f077d70af42c13306c688d52365b1e7c0e1781771596'
-            'SKIP'
-            'SKIP')
+sha256sums=('e8c1134f5f80d74c15b74624aa653aa41f1fbc9fec2c676e1d90a8e2ba46d91d'
+            '5f56dfdb64029c4efbee391eb7cdb45ad308f78e3b9078d0756d0fbf1dbdeb6c'
+            '58c8becb877e143ed1887eac2e8bab70dd9f447cccfd298b5389ac4b6745595c'
+            '96cffd30738d8986cec521430a03f9970c61471b38fc0c962bafd94a306f5f17')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
