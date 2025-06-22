@@ -2,7 +2,7 @@
 # Contributor: DragonWoven
 pkgname="godots-git"
 pkgver=1.3.stable.r34.g5d80ab9
-pkgrel=1
+pkgrel=2
 pkgdesc="A hub for managing your Godot versions and projects."
 url="https://github.com/MakovWait/godots"
 license=("MIT")
@@ -10,7 +10,7 @@ arch=("x86_64")
 provides=('godots')
 conflicts=('godots' 'godots-bin')
 replaces=()
-depends=()
+depends=('unzip')
 source=("git+https://github.com/MakovWait/godots.git" "https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_export_templates.tpz")
 makedepends=('git' 'godot=4.4.1')
 b2sums=()
