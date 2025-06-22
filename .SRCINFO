@@ -1,6 +1,6 @@
 pkgbase = alcom
 	pkgdesc = A fast open-source alternative of VRChat Creator Companion (VCC)
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/vrc-get/vrc-get
 	arch = x86_64
@@ -26,9 +26,9 @@ pkgbase = alcom
 	depends = webkit2gtk-4.1
 	optdepends = unityhub: Used to open created projects and migrate projects from older versions of Unity.
 	options = !lto
-	source = alcom-1.1.0.tar.gz::https://github.com/vrc-get/vrc-get/archive/refs/tags/gui-v1.1.0.tar.gz
+	source = alcom-1.1.1.tar.gz::https://github.com/vrc-get/vrc-get/archive/refs/tags/gui-v1.1.1.tar.gz
 	source = build.patch
-	sha256sums = 1bcf7a64559804b8b9a6fd66e5f417e9301e97255a184c8b82dbe29421acd341
-	sha256sums = cae2001f2bc3fbf264bead10c978f494575c6653b92c976a1e4287193c0acd21
+	sha256sums = c0c6515082a1cecf3221188d4123f9abfbef11bbe2ef512bea3edd5a53459dd2
+	sha256sums = fabfed075eb88687885c26cb7d3f56dca5040a1f3652f3fc594eea804eaced32
 
 pkgname = alcom
