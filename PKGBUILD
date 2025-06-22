@@ -1,4 +1,5 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: AlphaLynx <alphalynx@protonmail.com>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=aicommits
 pkgver=1.11.0
