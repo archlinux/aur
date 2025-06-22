@@ -1,0 +1,26 @@
+pkgbase = xlibre-video-amdgpu
+	pkgdesc = XLibre amdgpu video driver
+	pkgver = 23.0.0.1
+	pkgrel = 1
+	url = https://github.com/X11Libre/xf86-video-amdgpu
+	arch = aarch64
+	arch = x86_64
+	groups = xlibre-drivers
+	license = MIT
+	makedepends = systemd
+	makedepends = xlibre-server-devel
+	makedepends = xorgproto
+	makedepends = X-ABI-VIDEODRV_VERSION=28.0
+	depends = glibc
+	depends = libdrm>=2.4.121
+	depends = mesa
+	depends = systemd-libs
+	provides = xf86-video-amdgpu
+	conflicts = xf86-video-amdgpu
+	conflicts = xorg-server<1.20.0
+	conflicts = X-ABI-VIDEODRV_VERSION<28
+	conflicts = X-ABI-VIDEODRV_VERSION>=29
+	source = xf86-video-amdgpu-xlibre-xf86-video-amdgpu-23.0.0.1.tar.gz::https://github.com/X11Libre/xf86-video-amdgpu/archive/refs/tags/xlibre-xf86-video-amdgpu-23.0.0.1.tar.gz
+	b2sums = bbfb405c507081c4b827057a6d55bc6cc97d6cae8a00ca313164ef55cebb0e917c079155dc021dafcdb0aa89ce1a05f0a9529ec2cc9ef4362bbaf36edc08e7a9
+
+pkgname = xlibre-video-amdgpu
