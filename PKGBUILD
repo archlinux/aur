@@ -5,14 +5,14 @@
 
 pkgname='perl-finance-quote'
 pkgver='1.65'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Get stock and mutual fund quotes from various exchanges"
 arch=('any')
 license=('Artistic-1.0-Perl'
          'GPL-2.0-only')
 options=('!emptydirs')
 depends=('perl-date-manip>=0' 'perl-date-range>=0' 'perl-date-simple>=0' 'perl-datetime>=0' 'perl-datetime-format-iso8601>=0' 'perl-datetime-format-strptime>=0' 'perl-html-parser>=0' 'perl-html-tableextract>=0' 'perl-html-tokeparser-simple>=0' 'perl-html-tree>=0' 'perl-html-treebuilder-xpath>=0' 'perl-http-cookiejar>=0' 'perl-http-cookies>=0' 'perl-http-message>=0' 'perl-io-string>=0' 'perl-json>=0' 'perl-json-parse' 'perl-lwp-protocol-https>=0' 'perl-mozilla-ca>=0' 'perl-readonly>=0' 'perl-spreadsheet-xlsx>=0' 'perl-string-util>=0' 'perl-text-template>=0' 'perl-try-tiny>=0' 'perl-web-scraper>=0' 'perl-xml-libxml>=0' 'perl-libwww>=0' 'perl>=5.10.1')
-checkdepends=('perl-test-kwalitee>=0' 'perl-test-perl-critic>=0' 'perl-test-pod>=0' 'perl-test-pod-coverage>=1.00')
+checkdepends=('perl-test-kwalitee>=0' 'perl-test-perl-critic>=0' 'perl-test-pod>=0' 'perl-test-pod-coverage>=1.00' 'perl-clone-choose>=0')
 url='https://metacpan.org/release/Finance-Quote'
 source=("http://search.cpan.org/CPAN/authors/id/B/BP/BPSCHUCK/Finance-Quote-${pkgver}.tar.gz")
 sha512sums=('3817367779dc783cef4d8c2ff52f002f7b88407307c9da568d757fbba19ad2425abcd44f955c9d66fefa800e28b83322b03cbce57f6912af64f5b2d62a98027b')
