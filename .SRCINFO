@@ -1,7 +1,7 @@
 pkgbase = vdr-epgborder
 	pkgdesc = Blocks EPG storage starting from a set border channel number
 	pkgver = 1.0.0
-	pkgrel = 13
+	pkgrel = 14
 	url = https://github.com/M-Reimer/vdr-plugin-epgborder
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = vdr-epgborder
 	arch = armv6h
 	arch = armv7h
 	license = GPL3
-	depends = vdr-api=6
+	depends = vdr-api=8
 	depends = gcc-libs
 	backup = etc/vdr/conf.avail/50-epgborder.conf
 	source = vdr-epgborder-1.0.0.tar.gz::https://github.com/M-Reimer/vdr-plugin-epgborder/archive/1.0.0.tar.gz
