@@ -1,0 +1,18 @@
+pkgbase = manif
+	pkgdesc = A small C++11 header-only library for Lie theory.
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/artivis/manif
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = pybind11
+	makedepends = python
+	depends = eigen
+	depends = tl-optional
+	source = https://github.com/artivis/manif/archive/0.0.5.tar.gz
+	sha256sums = 246a781c54a5c57179d48096faca0d108944e120f69d8fd7fb69e3cb4a0a67fb
+
+pkgname = manif
