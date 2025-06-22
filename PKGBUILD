@@ -2,7 +2,7 @@
 
 pkgname=c001apk-flutter-git
 _pkgname=${pkgname%-git}
-pkgver=r52.affd15e
+pkgver=r97.882fd7a
 pkgrel=1
 pkgdesc="A third-party CoolApk client written in Flutter | 使用 Flutter 开发的第三方酷安客户端"
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ url="https://github.com/Integral-Tech/${_pkgname}"
 license=('AGPL-3.0-or-later')
 depends=('gtk3')
 makedepends=('git' 'fvm' 'clang' 'cmake' 'ninja' 'imagemagick')
+optdepends=('kdialog: support for native dialogs in Plasma')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+${url}.git")
