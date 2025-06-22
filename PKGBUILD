@@ -1,7 +1,7 @@
 # shellcheck disable=SC2034,SC2148,SC2128,SC2154,SC2164
 # Maintainer: javalsai <javalsai@proton.me>
 pkgname=lidm-bin
-pkgver=0.2.2
+pkgver=1.0.0
 pkgrel=1
 depends=('pam')
 pkgdesc="A fully colorful customizable TUI display manager made in C. (release binary)"
@@ -16,10 +16,10 @@ source=(
     "lidm.1::https://raw.githubusercontent.com/javalsai/lidm/v$pkgver/assets/man/lidm.1"
     "lidm-config.5::https://raw.githubusercontent.com/javalsai/lidm/v$pkgver/assets/man/lidm-config.5"
 )
-sha256sums=('be2307be9bef7b3ef294fb0e8178040e2d8ccff6b8efb7546514da8b0f69c179'
-            '68662430a6d262b35cc54d9f0e164ed935b7f7f4497a87cc94946c558bbe8a91'
-            'a6807a55ff72ec5a5678583156b3efd0d367f0bcb79854094132771f0cb86bce'
-            '3adaae60f79dff1cef2b2aba7dcea04196cd49816759ad36afb9f7331ac9c3e4')
+sha256sums=('77e8aeeb8dd751620a63220fa6e419d9066b1b35d79e12ce5449a5a1acb24252'
+            'a8d29e220c23b48b5cd3aac0c0e395e90a9d6c9ca9c9c35a45ad6f3df5f55542'
+            '7f2fb91f55088be1a9b1c93ecf5d6c1e437f369b56df2eacc9d10b00c93c39f8'
+            '5dbe088ce29c95a400080190560d4308c10519a953e83d2d5020dfdf47dd830f')
 
 package() {
     install -Dm755 lidm "${pkgdir}/usr/bin/lidm"
