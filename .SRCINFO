@@ -1,0 +1,27 @@
+pkgbase = ltfs-git
+	pkgdesc = Linear Tape File System
+	pkgver = 2.4.3.0.10450.r125.gadb3722
+	pkgrel = 1
+	url = https://github.com/LinearTapeFileSystem/ltfs
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = patch
+	makedepends = gcc
+	makedepends = pkg-config
+	makedepends = make
+	makedepends = fakeroot
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = git
+	depends = fuse
+	depends = icu
+	depends = libxml2
+	depends = net-snmp
+	depends = python-pyxattr
+	backup = etc/ltfs.conf.local
+	source = ltfs-git::git+https://github.com/LinearTapeFileSystem/ltfs.git
+	sha256sums = SKIP
+
+pkgname = ltfs-git
