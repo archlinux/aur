@@ -23,8 +23,4 @@ package() {
     "$srcdir/$pkgname-$pkgver.tgz"
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/package/LICENSE"
-
-  # npm gives ownership of ALL FILES to build user
-  # https://bugs.archlinux.org/task/63396
-  chown -R root:root "$pkgdir"
 }
