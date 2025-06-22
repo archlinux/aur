@@ -1,33 +1,28 @@
 pkgbase = nps
-	pkgdesc = a lightweight, high-performance, powerful intranet penetration proxy server, with a powerful web management terminal.
-	pkgver = 0.26.10
+	pkgdesc = A lightweight, high-performance intranet penetration proxy with web UI
+	pkgver = 0.29.24
 	pkgrel = 1
-	url = https://github.com/ehang-io/nps
+	url = https://github.com/djylb/nps
 	install = .INSTALL
 	arch = x86_64
 	arch = i686
-	arch = aarch64
-	arch = armv7h
 	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	makedepends = go
 	depends = glibc
-	source = nps.service
+	source = nps-0.29.24.tar.gz::https://github.com/djylb/nps/archive/refs/tags/v0.29.24.tar.gz
 	source = npc.service
-	source = nps-0.26.10.tar.gz::https://github.com/ehang-io/nps/archive/v0.26.10.tar.gz
-	md5sums = a31b25cbee5112bb6518eb30ed99c9c8
-	md5sums = 6935c6c06f971d8116282f799c4ac9f4
-	md5sums = dfaf0dee8741a58e345e200c215938cb
+	source = nps.service
+	sha256sums = 7b488fc6ccb37a184674101d822f1e90f208c5da64e96365fe78a8065cfbc65c
+	sha256sums = c668c61dc1d61f87c75430277c4962e71860ab066d3acaaab578b811b781b33e
+	sha256sums = da9a34b86e9d9f42c0fb57f23b887de89d9de0d7c6a0f6fb34d6741755d35237
 
 pkgname = nps
-	backup = etc/nps/.conf
-	backup = etc/nps/clients.json
-	backup = etc/nps/hosts.json
-	backup = etc/nps/multi_account.conf
-	backup = etc/nps/server.key
-	backup = etc/nps/server.pem
-	backup = etc/nps/tasks.json
+	backup = etc/nps/conf/nps.conf
 
 pkgname = npc
-	backup = etc/nps/.conf
-
+	backup = etc/nps/conf/npc.conf
+	backup = etc/nps/conf/multi_account.conf

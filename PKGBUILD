@@ -1,39 +1,40 @@
-# Maintainer: yjun <jerrysteve1101@gmail.com>
+# Maintainer: D-Jy <duan@d-jy.net>
 
 pkgbase='nps'
 pkgname=('nps' 'npc')
-pkgver=0.26.10
+pkgver=0.29.24
 pkgrel=1
-pkgdesc="a lightweight, high-performance, powerful intranet penetration proxy server, with a powerful web management terminal. "
-arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'arm')
-url="https://github.com/ehang-io/nps"
+pkgdesc="A lightweight, high-performance intranet penetration proxy with web UI"
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/djylb/nps"
 license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 install='.INSTALL'
-source=('nps.service' 
-        'npc.service' 
-        "${pkgname}-${pkgver}.tar.gz::https://github.com/ehang-io/nps/archive/v${pkgver}.tar.gz")
-md5sums=('a31b25cbee5112bb6518eb30ed99c9c8'
-         '6935c6c06f971d8116282f799c4ac9f4'
-         'dfaf0dee8741a58e345e200c215938cb')
+source=(
+  "${pkgbase}-${pkgver}.tar.gz::https://github.com/djylb/nps/archive/refs/tags/v${pkgver}.tar.gz"
+  "npc.service"
+  "nps.service"
+)
+sha256sums=('7b488fc6ccb37a184674101d822f1e90f208c5da64e96365fe78a8065cfbc65c'
+            'c668c61dc1d61f87c75430277c4962e71860ab066d3acaaab578b811b781b33e'
+            'da9a34b86e9d9f42c0fb57f23b887de89d9de0d7c6a0f6fb34d6741755d35237')
 
 prepare() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-
+  cd ${srcdir}/${pkgbase}-${pkgver}
   mkdir -p build
 }
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgbase}-${pkgver}
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  go build -o build ./cmd/npc/npc.go
-  go build -o build ./cmd/nps/nps.go
+  go build -o build/npc ./cmd/npc/npc.go
+  go build -o build/nps ./cmd/nps/nps.go
 }
 
 packaging() {
@@ -42,7 +43,7 @@ packaging() {
 
   for conf in $2
   do
-	install -Dm644 conf/$(basename "$conf") -t ${pkgdir}/etc/${pkgbase}/
+    install -Dm644 conf/$(basename "$conf") -t ${pkgdir}/etc/${pkgbase}/conf/
   done
 }
 
@@ -50,29 +51,27 @@ package_npc() {
   cd ${srcdir}/${pkgbase}-${pkgver}
 
   _name=`echo ${FUNCNAME} | cut -d _ -f 2`
-  
-  backup=("etc/nps/${_name}.conf")
-  
-  packaging "${_name}" "${backup[*]}"
 
+  backup=(
+    "etc/${pkgbase}/conf/npc.conf"
+    "etc/${pkgbase}/conf/multi_account.conf"
+  )
+
+  packaging "${_name}" "${backup[*]}"
 }
 
 package_nps() {
   cd ${srcdir}/${pkgbase}-${pkgver}
 
   _name=`echo ${FUNCNAME} | cut -d _ -f 2`
-  
-  backup=("etc/${pkgbase}/${_name}.conf"
-  		  "etc/${pkgbase}/clients.json"
-		  "etc/${pkgbase}/hosts.json"
-		  "etc/${pkgbase}/multi_account.conf"
-		  "etc/${pkgbase}/server.key"
-		  "etc/${pkgbase}/server.pem"
-		  "etc/${pkgbase}/tasks.json")
+
+  backup=(
+    "etc/${pkgbase}/conf/nps.conf"
+  )
 
   packaging "$_name" "${backup[*]}"
 
-  find web -type f -exec install -Dm644 {} ${pkgdir}/etc/${pkgbase}/{} \;
-  
-}	
-# vim:set sw=2 ts=2 et:
+  install -d "${pkgdir}/etc/${pkgbase}/web/views" "${pkgdir}/etc/${pkgbase}/web/static"
+  find web/views  -type f -exec install -Dm644 {} "${pkgdir}/etc/${pkgbase}/{}" \;
+  find web/static -type f -exec install -Dm644 {} "${pkgdir}/etc/${pkgbase}/{}" \;
+}

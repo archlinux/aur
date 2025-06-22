@@ -1,11 +1,13 @@
 post_install() {
-    echo ""
-    echo "config files in /etc/nps/conf has moved to /etc/nps"
-    echo ""
+  echo ""
+  echo "Installation complete."
+  echo "Configuration files are located in /etc/nps/conf"
+  echo ""
 }
 
 post_upgrade() {
-    echo ""
-    echo "config files in /etc/nps/conf has moved to /etc/nps"
-    echo ""
+  echo ""
+  echo "Upgrade complete."
+  echo "Configuration files are located in /etc/nps/conf"
+  echo ""
 }

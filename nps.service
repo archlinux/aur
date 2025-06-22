@@ -1,9 +1,13 @@
 [Unit]
 Description=Nps Server Service
+ConditionFileIsExecutable=/usr/bin/nps
 After=network.target
 
 [Service]
 Type=simple
+LimitNOFILE=65536
+StartLimitInterval=5
+StartLimitBurst=10
 Restart=always
 RestartSec=120
 ExecStart=/usr/bin/nps service
