@@ -1,0 +1,19 @@
+pkgbase = navegadorpytech
+	pkgdesc = Um Navegador simples,seguro,leve e privado usando python e desenvolvido usando 100% tecnologias de codigo aberto!
+	pkgver = 0.0.1
+	pkgrel = 2
+	url = https://github.com/pedrodev2025/Navegador-B-sico-E-Leve-Com-Python-.git
+	install = navegadorpytech.install
+	arch = any
+	license = GPL3
+	depends = python3
+	depends = python-pip
+	depends = base
+	source = 0.0.1.tar.gz::https://github.com/pedrodev2025/Navegador-B-sico-E-Leve-Com-Python-/archive/refs/tags/0.0.1.tar.gz
+	source = navegadorpytechicon.png::https://github.com/pedrodev2025/Navegador-B-sico-E-Leve-Com-Python-/releases/download/0.0.1/navegadorpytechicon.png
+	source = navegadorpytechdesktop.desktop
+	sha256sums = fa30878df649617873dfa568657905d32cf802663e0bbd32289591a8b9e2074c
+	sha256sums = b1c86afae39358e3299ca6ed5d456d0cb5f90407cc26d7beda20506bb5d67af0
+	sha256sums = a84cfe4290cae99589f1d8bc7c10de91f691a6f2d7c406ad657b6059435816e9
+
+pkgname = navegadorpytech

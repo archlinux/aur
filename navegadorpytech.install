@@ -1,0 +1,54 @@
+# post_install: Executado após a instalação do pacote.
+post_install() {
+  echo "--- INICIANDO post_install para $pkgname ---"
+  set -ex
+
+  echo "Verificando se /opt/navegadorpytech existe..."
+  mkdir -p /opt/navegadorpytech || { echo "Erro: Não foi possível criar /opt/navegadorpytech. Verifique permissões."; exit 1; }
+  echo "/opt/navegadorpytech criado/verificado."
+
+  echo "Criando ambiente virtual Python em /opt/navegadorpytech/venv..."
+  /usr/bin/python3 -m venv /opt/navegadorpytech/venv || { echo "Erro: Falha ao criar venv. Verifique se python3 e python3-venv estão instalados e acessíveis."; exit 1; }
+  echo "Venv criado em /opt/navegadorpytech/venv."
+
+  echo "Verificando o executável python no venv..."
+  if [ ! -f /opt/navegadorpytech/venv/bin/python ]; then
+      echo "Erro: O executável python não foi encontrado em /opt/navegadorpytech/venv/bin/python após a criação do venv."
+      exit 1
+  fi
+  echo "Executável python no venv encontrado."
+
+  echo "Atualizando pip, setuptools e wheel no venv..."
+  /opt/navegadorpytech/venv/bin/pip install --upgrade pip setuptools wheel || { echo "Erro: Falha ao atualizar pip/setuptools/wheel no venv."; exit 1; }
+  echo "pip e ferramentas básicas atualizadas."
+
+  echo "Instalando dependências (PyQt5, PyQtWebEngine, PyQt5-sip) no venv..."
+  /opt/navegadorpytech/venv/bin/pip install PyQt5 PyQtWebEngine PyQt5-sip || { echo "Erro: Falha ao instalar dependências PyQt no venv."; exit 1; }
+  echo "Dependências PyQt instaladas."
+
+  echo "Ambiente virtual e dependências instaladas com sucesso."
+  /usr/bin/update-desktop-database -q || true
+  echo "--- FIM post_install ---"
+}
+
+# post_upgrade: Executado após a atualização do pacote.
+post_upgrade() {
+  post_install "$1"
+}
+
+# pre_remove: Executado antes da remoção do pacote.
+pre_remove() {
+  exec 1>/tmp/navegadorpytech_preremove.log 2>&1
+  echo "--- INICIANDO pre_remove para $pkgname ---"
+  set -ex
+  echo "Removendo ambiente virtual Python em /opt/navegadorpytech/venv..."
+  rm -rf /opt/navegadorpytech/venv || true
+  echo "Ambiente virtual removido (ou não existia)."
+  /usr/bin/update-desktop-database -q || true
+  echo "--- FIM pre_remove ---"
+}
+
+# post_remove: Executado após a remoção do pacote.
+post_remove() {
+  /usr/bin/update-desktop-database -q || true
+}
