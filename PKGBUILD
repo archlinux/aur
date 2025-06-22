@@ -1,9 +1,9 @@
-# Maintainer: Yauheni Kirylau <actionless dot loveless AT gmail.com>
+# Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
 # shellcheck disable=SC2034,SC2154
 
 pkgname=sleepcount
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc="just as a simple 'sleep' CLI util but with options for countdown and HH:MM:SS target time"
 arch=('any')
 url="https://github.com/actionless/sleepcount"
@@ -11,7 +11,7 @@ license=('GPL3')
 source=(
 	"$pkgname-$pkgver.tar.gz"::https://github.com/actionless/sleepcount/archive/"$pkgver".tar.gz
 )
-md5sums=('4eab4032d7ebc424e4220dfb08cb643b')
+md5sums=('8601c73d592d9115b7b3cab889b2968e')
 depends=(
 	'python'
 )
@@ -30,6 +30,9 @@ provides=('sleepcount')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}" || exit 2
+	if test -d ./dist ; then
+		rm -r ./dist
+	fi
 	/usr/bin/python3 -m build --wheel --no-isolation
 }
 
