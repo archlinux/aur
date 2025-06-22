@@ -4,7 +4,7 @@
 # Thanks to Fabio Lolix for the patch.
 
 pkgname=applewin-git
-pkgver=1.30.14.1.r1810.gec0bd64f
+pkgver=1.30.14.1.r1851.g8e879ee8
 pkgrel=1
 pkgdesc="AppleWin Linux port by Audetto - GIT version"
 arch=('x86_64')
@@ -47,7 +47,7 @@ prepare() {
   git submodule set-url source/frontends/sdl/imgui/imgui_club "${srcdir}/imgui_club"
   git submodule set-url source/frontends/sdl/imgui/imgui-filebrowser "${srcdir}/imgui-filebrowser"
   git -c protocol.file.allow=always submodule update
-
+  
   mkdir build
 }
 
