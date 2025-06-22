@@ -4,8 +4,8 @@ _gitname="GoZen"
 _godot_version="4.4.1"
 
 pkgname=gozen-git
-pkgver=1
-pkgrel=1
+pkgver=0
+pkgrel=2
 pkgdesc="A minimalistic video editor (git)"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
