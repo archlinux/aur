@@ -1,3 +1,8 @@
+### v1.6.0
+
+NOTE: Change upstream from https://github.com/damien-lemoal/zonefs-tools to https://github.com/westerndigitalcorporation/zonefs-tools.git
+This release removes the build dependency on autoconf-archive and significantly improves the test suite.
+
 ### v1.5.2
  
 This release improves configuration and build.

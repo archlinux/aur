@@ -1,14 +1,14 @@
 pkgbase = zonefs-tools
 	pkgdesc = This project provides the mkzonefs command line utility which allows formatting zoned block devices for use withe the zonefs file system.
-	pkgver = 1.5.2
+	pkgver = 1.6.0
 	pkgrel = 1
-	url = https://github.com/damien-lemoal/zonefs-tools
+	url = https://github.com/westerndigitalcorporation/zonefs-tools.git
 	changelog = zonefs-tools.changelog
 	arch = x86_64
 	license = GPL
 	depends = glibc
 	depends = util-linux-libs
-	source = zonefs-tools-1.5.2.tar.gz::https://github.com/damien-lemoal/zonefs-tools/archive/refs/tags/v1.5.2.tar.gz
-	md5sums = e8521029e243f9a475bc645cfd40e234
+	source = zonefs-tools-1.6.0.tar.gz::https://github.com/westerndigitalcorporation/zonefs-tools/archive/refs/tags/v1.6.0.tar.gz
+	md5sums = c534246d8cec32a54fb3f490189306a2
 
 pkgname = zonefs-tools

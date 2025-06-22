@@ -1,14 +1,14 @@
 # Maintainer: tomwei7 <tomwei7g@gmail.com>
 pkgname=zonefs-tools
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="This project provides the mkzonefs command line utility which allows formatting zoned block devices for use withe the zonefs file system."
 arch=("x86_64")
-url="https://github.com/damien-lemoal/zonefs-tools"
+url="https://github.com/westerndigitalcorporation/zonefs-tools.git"
 license=("GPL")
 changelog=$pkgname.changelog
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/damien-lemoal/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=("e8521029e243f9a475bc645cfd40e234")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/westerndigitalcorporation/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+md5sums=("c534246d8cec32a54fb3f490189306a2")
 depends=("glibc" "util-linux-libs")
 
 build() {
