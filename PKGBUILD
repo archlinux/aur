@@ -1,21 +1,27 @@
-# Maintainer: cmach_socket <cmach_socket@outlook.com>
-pkgname=kazumi-bin
-pkgver=1.5.4
-pkgrel=1
+# Maintainer: PaloMiku <palomiku@outlook.com>
 
-pkgdesc='基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕。'
+pkgname=kazumi-bin
+_pkgname=${pkgname%-bin}
+pkgver=1.7.3
+pkgrel=1
+pkgdesc="从Kazumi仓库tar.gz文件构建，基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕。"
 arch=('x86_64')
 url='https://github.com/Predidit/Kazumi'
-license=('GPL3')
-
-source_x86_64=("$pkgname-$pkgver.deb::https://github.com/Predidit/Kazumi/releases/download/$pkgver/Kazumi_linux_${pkgver}_amd64.deb")
-sha256sums_x86_64=('159fe4819228e84348ab591b3396661f98423720d53f49e24f7a7774179d34e6')
+license=('GPL-3.0-or-later')
 depends=('libayatana-appindicator' 'xdg-user-dirs' 'webkit2gtk-4.1')
-options=(!debug)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Predidit/Kazumi/releases/download/${pkgver}/Kazumi_linux_${pkgver}_amd64.tar.gz"
+	"https://raw.githubusercontent.com/Predidit/Kazumi/refs/tags/${pkgver}/assets/linux/io.github.Predidit.Kazumi.desktop")
+sha256sums=('25086003002caf5897135709059859d1b14d53f15dce8e7179b322c8095eb919'
+            '2024035bbf80ee51f17f4ea0c4799b0763e06c7ad8ac49ef8efc8d860bc65f43')
 
 package() {
-    bsdtar -xf "$srcdir/data.tar.zst" -C "$pkgdir/"
+    install -d "${pkgdir}/opt/Kazumi" "${pkgdir}/usr/bin"
+    cp -a "${_pkgname}" data lib "${pkgdir}/opt/Kazumi/"
+    ln -s "/opt/Kazumi/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-    install -d "${pkgdir}/usr/bin"
-    ln -s /opt/Kazumi/kazumi  "${pkgdir}/usr/bin/"
+    local _app_id="io.github.Predidit.Kazumi"
+    install -Dm644 "${_app_id}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 data/flutter_assets/assets/images/logo/logo_linux.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_app_id}.png"
 }
