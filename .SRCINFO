@@ -1,7 +1,7 @@
 pkgbase = sway-scroll-stable
 	pkgdesc = Fork of the sway Wayland compositor with a scrolling layout like PaperWM or niri (stable version)
-	pkgver = 1.11
-	pkgrel = 2
+	pkgver = 1.11.1
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/dawsers/scroll
 	install = sway-scroll-stable.install
@@ -47,7 +47,7 @@ pkgbase = sway-scroll-stable
 	conflicts = sway-scroll-git
 	backup = etc/scroll/config
 	backup = etc/scroll/config.d/50-systemd-user.conf
-	source = git+https://github.com/dawsers/scroll.git#tag=1.11
+	source = git+https://github.com/dawsers/scroll.git#tag=1.11.1
 	source = 50-systemd-user.conf
 	source = scroll-portals.conf
 	source = remove_git_version_format.patch
