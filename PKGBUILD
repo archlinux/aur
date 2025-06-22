@@ -1,7 +1,7 @@
 # Maintainer: jensb <aur-jensb AT mailbox PUNKT org>
 
 pkgname='spicetify-marketplace-bin'
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=2
 pkgdesc='Spicetify app that integrates a marketplace for extensions, themes and snippets'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git')
 source=("spicetify-marketplace-v${pkgver}.zip::https://github.com/spicetify/spicetify-marketplace/releases/download/v${pkgver}/marketplace.zip"
 		"color-v${pkgver}.ini::https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/color.ini"
 		"LICENSE-v${pkgver}::https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/LICENSE")
-sha256sums=('de5df4c056303e9bf2f43b6d877f3456b0f987fa34d6d22fef53b33a379c1a58'
+sha256sums=('ff63565fdb398b5ea98def015b2b9b1d2acbf4e10c4a5c13ed402ea0790d56cd'
             '802c83f4f822eb254f60ef34ea8c53ea9d97889b9e886ac532e42953b9548fb2'
             '49ecb1c6db038200e2f9e8549d99d1966dcfa5b4bc3d0aea3e89b2f3a305a6da')
 install=spicetify-marketplace-bin.install
