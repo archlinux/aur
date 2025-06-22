@@ -3,10 +3,10 @@
 pkgname=stellarium-qt5-bin
 _pkgname=stellarium
 _pkgname2=${_pkgname^}
-pkgver=25.1
+pkgver=25.2
 _pkgtag=v$pkgver
 pkgrel=1
-pkgdesc="Software which renders realistic skies in real time with OpenGL (Qt5 version)"
+pkgdesc="Software which renders realistic skies in real time with OpenGL - Binary (Qt5)"
 arch=('x86_64')
 url="https://${_pkgname}.org/"
 license=('GPL2')
@@ -26,8 +26,8 @@ source=(
     "$_pkgname.bash"
 )
 sha256sums=(
-    '6416bf180dde883f86d90790795a00975bf245bfeab5f76ed6ed908e475e22be'
-    '371415cdd551cda09ca73db9f1f7e6345ed63c3b10ae2896ff960ca3ed370e2b'
+    '059470007eade281c556bc3ac7476858d299c41e0b9fd3df1272c8c13883f5c8'
+    '1e726d103213fa85c49e2d5a7cd575ab2682560a7a03b6285477c4ce98169d3b'
     'cc8903384ef8b8349dda202be45c3f68542dc74d40c4a1c266a5e057e96323ff'
 )
 
