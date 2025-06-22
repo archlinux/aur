@@ -5,7 +5,7 @@
 
 pkgname=cronet
 pkgver=137.0.7151.119
-pkgrel=1
+pkgrel=2
 _manual_clone=0
 # The following error occures on Abseil 20250512.0:
 # Protoc has returned non-zero status: -4

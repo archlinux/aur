@@ -1,13 +1,12 @@
---- base/logging.h	2024-02-15 14:10:48.799441080 +0100
-+++ base/logging.h	2024-02-15 14:14:20.024719767 +0100
-@@ -419,9 +419,7 @@
- // always fire if they fail.
+--- base/logging.h	2025-06-16 23:26:50.000000000 +0200
++++ base/logging.h	2025-06-21 15:10:12.638024686 +0200
+@@ -428,8 +428,7 @@
  // FATAL is always enabled and required to be resolved in compile time for
  // LOG(FATAL) to be properly understood as [[noreturn]].
--#define LOG_IS_ON(severity)                                     \
+ #define LOG_IS_ON(severity)                                     \
 -  (::logging::LOGGING_##severity == ::logging::LOGGING_FATAL || \
 -   ::logging::ShouldCreateLogMessage(::logging::LOGGING_##severity))
-+#define LOG_IS_ON(severity) false
++  (::logging::LOGGING_##severity == ::logging::LOGGING_FATAL)
 
  // Define a default ENABLED_VLOG_LEVEL if it is not defined. The macros allows
  // code to enable vlog level at build time without the need of --vmodule
