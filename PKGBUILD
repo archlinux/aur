@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="uncover"
-pkgver=1.0.10
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Quickly discover exposed hosts on the internet using multiple search engines"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 _pkgsrc="${url##*/}"
 source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}")
-b2sums=('05b8c8d7374d3e8c80c6a531825aeee75fe322ec5fe531a32c272484dbe84542063c118b9d180d66d6076aec4e2cad4b2b42b6b62d958468ba911e98babe58b1')
+b2sums=('3acfa050ff3a6f3ce3757f46a66ff361147ef06f05b44a4a9a44311431480702aa38d8af0d95054a9f408c5336e8dfa9f3e52fbb17231488f3393cc8a6561090')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
