@@ -1,30 +1,28 @@
-# Maintainer: Thomas P. <tpxp@live.fr>
+# Contributor: Thomas P. <tpxp@live.fr>
+# Maintainer: tee < teeaur at duck dot com >
 pkgname=tomboy-ng-bin
-pkgver=0.33
-_srcrel=0
+pkgver=0.42
 pkgrel=1
-pkgdesc="A complete rewriting of the Tomboy note taking app. GTK2 version"
+pkgdesc="A complete rewriting of the Tomboy note taking app. QT6 version"
 arch=('x86_64')
-license=('GPL-3.0')
-url="https://wiki.gnome.org/Apps/Tomboy/tomboy-ng"
-depends=(gtk2 libcanberra)
+license=('MIT')
+url="https://wiki.gnome.org/Apps/Tomboy"
+depends=(qt6pas pango libnotify hicolor-icon-theme)
 makedepends=()
 optdepends=()
+conflicts=("tomboy-ng")
+provides=("tomboy-ng")
+replaces=("tomboy-ng")
 source=(
-	"https://github.com/tomboy-notes/tomboy-ng/releases/download/v${pkgver}/tomboy-ng_${pkgver}-${_srcrel}_amd64.deb"
+  "https://github.com/tomboy-notes/tomboy-ng/releases/download/v${pkgver}/tomboy-ng-${pkgver}-1-Qt6-x86_64.pkg.tar.zst"
 )
-sha512sums=(
-	094b6937a15f8e94bb57b2b02c8980f29386eea9f2f64040fb2a0370448378288d489327ec4728da5d094ea739c0fc5f3dd61fe88c3546d0fa6b197cdf3817fa
-)
+#  "https://github.com/tomboy-notes/tomboy-ng/releases/download/v${pkgver}/tomboy-ng_${pkgver}-${_srcrel}_amd64.deb"
+sha256sums=('967b72b31687cab7af758f25379756c60d3e0a8cdb32c1d7edbe4a1d1beda16f')
 
 package() {
-	_src="$srcdir/$pkgname"
-	mkdir -p "$_src"
-	cd $_src
-	tar xf "$srcdir/data.tar.xz"
 
 	mkdir -p "$pkgdir/usr/share"
-	for dir in man applications icons; do
+	for dir in man applications icons locale tomboy-ng; do
 		cp -r "usr/share/$dir" "$pkgdir/usr/share"
 	done
 
