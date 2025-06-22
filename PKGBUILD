@@ -2,10 +2,10 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-softhddevice
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 epoch=1
-_vdrapi=6
+_vdrapi=8
 pkgdesc="software and GPU emulated HD output device plugin for VDR"
 url="https://github.com/ua0lnj/vdr-plugin-softhddevice"
 arch=('x86_64' 'i686')
@@ -19,7 +19,7 @@ _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ua0lnj/vdr-plugin-softhddevice/archive/v$pkgver.tar.gz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('5cf76ac1eeeeed9cd8caf6d26432f428b1ad0f75b22ab0eff9c2f822c399a68e'
+sha256sums=('950abfb9576b4c2b8943feb10c0197056191968bcb14310f82cd9b77eb9adc89'
             '889d4c19770a926f8aa6a014ff8219800a7a74c464ef0b12dcef6bb8db93e719')
 
 prepare() {
