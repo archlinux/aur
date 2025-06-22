@@ -2,7 +2,7 @@
 
 _pkgname=wasted
 pkgname=${_pkgname}-git
-pkgver=r611.8dd4efc
+pkgver=r717.8ae0070
 pkgrel=1
 pkgdesc='Wasted is a derby-destruction video game with playful visuals'
 arch=('x86_64')
@@ -31,7 +31,7 @@ build() {
   cd "${srcdir}/wasted-code"
   mkdir -p cmake_build
   cd cmake_build
-  cmake -DSTK_INSTALL_DATA_DIR:STRING=share/wasted ..
+  cmake -DUSE_WIIUSE=OFF -DSTK_INSTALL_DATA_DIR:STRING=share/wasted ..
   make
 }
 
