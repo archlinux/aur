@@ -1,0 +1,21 @@
+pkgbase = xlibre-video-voodoo
+	pkgdesc = XLibre 3dfx Voodoo1/Voodoo2 2D video driver
+	pkgver = 1.2.6.1
+	pkgrel = 1
+	url = https://github.com/X11Libre/xf86-video-voodoo
+	arch = aarch64
+	arch = x86_64
+	groups = xlibre-drivers
+	license = MIT
+	makedepends = xlibre-server-devel
+	makedepends = X-ABI-VIDEODRV_VERSION=28.0
+	depends = glibc
+	provides = xf86-video-voodoo
+	conflicts = xf86-video-voodoo
+	conflicts = xorg-server<21.1.1
+	conflicts = X-ABI-VIDEODRV_VERSION<28
+	conflicts = X-ABI-VIDEODRV_VERSION>=29
+	source = xf86-video-voodoo-xlibre-xf86-video-voodoo-1.2.6.1.tar.gz::https://github.com/X11Libre/xf86-video-voodoo/archive/refs/tags/xlibre-xf86-video-voodoo-1.2.6.1.tar.gz
+	b2sums = 9d55bda5f2380567bd8064eef2fc9022556f4cab928bfc0164f90aebf17636a5ed5e2052d692c0e99375405218e60ce6e8947b1f396cecf1203e92bea7582119
+
+pkgname = xlibre-video-voodoo
