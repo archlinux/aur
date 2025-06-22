@@ -8,7 +8,7 @@ _pkgver_x86_64="$_typora_ver"
 _pkgver_aarch64="$_typora_ver"
 _plugin_ver=1.14.11
 pkgver=${_typora_ver}+plugin+${_plugin_ver}
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimal markdown editor and reader. with obgnail/typora_plugin plugin."
 arch=('x86_64' 'aarch64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -32,7 +32,7 @@ _urlbase="https://download.typora.io/linux/typora_"
 source_x86_64=("${_urlbase}${_pkgver_x86_64}_amd64.deb")
 source_aarch64=("${_urlbase}${_pkgver_aarch64}_arm64.deb")
 sha512sums=(
-    'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04'
+    'c9d4299b4bca42ed0c89b6394e5c4090fa5671ec1a46da0dda076cd7ce046f3e01580de98cdd0d0e98c8e09fff0c8c3e150fe9e39817dc79732b2bc74480959b'
     '45a3330ddd1d410fd3fae0a6a2a181b72bb71b9a64fa051d947ee7ed99291160f9cc8d31db1172f89896753d22d1be3ea8704587643983a4f5636a0f475f86c6')
 sha512sums_x86_64=('dc08b3077388a9168854da0306b32d3153bda6df25c6aa21c061adc6cc8447a42e4368ddcc5ec24cb8b5906cb5342d096ff8efa550e8cd2eeed3683c3fcfb466')
 sha512sums_aarch64=('8fe1e248820516b3a6067e71aa3f811d59b7f95658674d6d3777fff4886c80b9404fca737465176b3e38c7623d85221e16f060ec2bbfbf764a17d9142c60ef5e')
