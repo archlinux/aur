@@ -1,4 +1,4 @@
-# Maintainer: wackbyte <wackbyte@protonmail.com>
+# Maintainer: wackbyte <im@purring.fyi>
 
 pkgname=ttf-renogare-soft
 pkgver=1.0
