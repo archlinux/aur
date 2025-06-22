@@ -1,0 +1,13 @@
+pkgbase = ttf-jetbrains-mono-nf
+	pkgdesc = JetBrains Mono nerd font
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	license = OFL
+	makedepends = unzip
+	depends = fontconfig
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip
+	sha256sums = 76f05ff3ace48a464a6ca57977998784ff7bdbb65a6d915d7e401cd3927c493c
+
+pkgname = ttf-jetbrains-mono-nf
