@@ -7,10 +7,9 @@
 ## options
 : ${_widgets=qt6}
 
-## basic info
 _pkgname="cudatext"
 pkgname="$_pkgname-git"
-pkgver=1.220.0.3.r13.g612b8d0
+pkgver=1.224.0.0.r29.gd3d3fb0
 pkgrel=1
 pkgdesc="Text editor written in Free Pascal with Lazarus (${_widgets^})"
 url="https://github.com/Alexey-T/CudaText"
@@ -108,7 +107,7 @@ pkgver() {
 }
 
 prepare() {
-  magick "$_pkgsrc/app/cudatext_fullsize.ico[0]" "$_pkgname.png"
+  magick "$_pkgsrc/app/cudatext.ico[0]" "$_pkgname.png"
 
   cat > "$_pkgname.desktop" << END
 [Desktop Entry]
@@ -124,7 +123,7 @@ END
   # modify compiler options
   for i in ${_packets[@]}; do
     xmlstarlet edit --inplace --delete '//Other' "$i"
-    sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value="-O3 -Sa -CX -XX -k'\''--sort-common --as-needed -z relro -z now'\''"/></Other>\n\1&' \
+    sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value="-O3 -Sa -CX -XX -k--sort-common -k--as-needed -k-z -krelro -k-z -know"/></Other>\n\1&' \
       -i "$i"
   done
 }
@@ -157,7 +156,7 @@ package() (
   # share
   for i in data py settings_default; do
     install -dm755 "$pkgdir/usr/share/$_pkgname/$i"
-    cp --reflink=auto -a "$_pkgsrc/app/$i"/* "$pkgdir/usr/share/$_pkgname/$i/"
+    cp -r "$_pkgsrc/app/$i"/* "$pkgdir/usr/share/$_pkgname/$i/"
   done
 
   # permissions
