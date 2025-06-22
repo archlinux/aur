@@ -2,8 +2,9 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname=python-pymilter
-pkgver=1.0.6
-pkgrel=2
+_commit="20751ea7060741a2ce16e762daae87220f0e8a76"
+pkgver="1.0.6.${_commit:0:7}"
+pkgrel=1
 pkgdesc="Python bindings for libmilter API"
 arch=('x86_64')
 url="https://github.com/sdgathman/${pkgname##*-}"
@@ -14,15 +15,20 @@ makedepends=('libmilter'
              'python-installer'
              'python-setuptools'
              'python-wheel')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgname##*-}-${pkgver}.tar.gz")
-sha512sums=('e93e09865916c0770a956cf04f4c4db7dd645b5eda5b7f033c7cd3953d91d06f0ee3eaf30ef0cdcf718fe6cbd3c79a4eab582f22c2f90ffeb09f9590d1d482be')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_commit}.tar.gz")
+sha512sums=('25fd5fe682fd13087d58b71dbd61b2c964a1d3880f514705691ec649ac76789ef291586bc98b6317a3e5ab2585453e8c914b11fc65543ea3ef2e27cbd36f9885')
+
+prepare() {
+  cd "${srcdir}"
+  mv "${pkgname##*-}-${_commit}" "${pkgname}-${pkgver}"
+}
 
 build() {
-  cd "${pkgname##*-}-${pkgname##*-}-${pkgver}" 
+  cd "${pkgname}-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${pkgname##*-}-${pkgname##*-}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 }
