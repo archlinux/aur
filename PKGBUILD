@@ -1,14 +1,14 @@
-# Maintainer: Drommer <drommer@github.com>
+# Maintainer: Serhii Starovoitov <drommer.94@gmail.com>
 
 pkgname=ttf-xo-fonts
-pkgver=23.10
+pkgver=1.1
 pkgrel=1
+epoch=1
 pkgdesc='XO by MyOffice provide metric-compatible fonts with Microsoft to display documents without distortion and violation of the structure'
 arch=('any')
 url='https://myoffice.ru'
 license=('custom')
 provides=('ttf-font' 'ttf-xo-caliburn' 'ttf-xo-courser' 'ttf-xo-oriel' 'ttf-xo-symbol' 'ttf-xo-tahion' 'ttf-xo-thames' 'ttf-xo-trebizond' 'ttf-xo-verbena' 'ttf-xo-windy')
-conflicts=('ttf-xo-caliburn' 'ttf-xo-courser' 'ttf-xo-oriel' 'ttf-xo-oriel-condensed' 'ttf-xo-symbol' 'ttf-xo-symbol-mac' 'ttf-xo-tahion' 'ttf-xo-thames' 'ttf-xo-windy')
 source=("https://myoffice.ru/files/fonts/MyOffice_XO_Fonts_1.1.zip"
         "license.txt")
 sha256sums=('9152219ce09626511f824be105f512e687604f0311c130f234c67bd1a7395fe9'
