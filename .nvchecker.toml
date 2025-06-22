@@ -1,0 +1,4 @@
+[pipeline-gtk]
+source = "git"
+git = "https://gitlab.com/schmiddi-on-mobile/pipeline.git"
+prefix = "v"
