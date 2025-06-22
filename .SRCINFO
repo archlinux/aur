@@ -1,0 +1,22 @@
+pkgbase = container2wasm-git
+	pkgdesc = Convert OCI container images to WASM modules (c2w binary)
+	pkgver = v0.8.2.r14.gb8f9f4a
+	pkgrel = 1
+	url = https://github.com/container2wasm/container2wasm
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	makedepends = make
+	depends = buildah
+	depends = skopeo
+	optdepends = wasmtime: Recommended WASM runtime
+	optdepends = wasmer: Alternative WASM runtime
+	optdepends = wamr-git: Alternative WASM runtime (from AUR)
+	provides = container2wasm
+	conflicts = container2wasm
+	source = git+https://github.com/container2wasm/container2wasm.git
+	sha256sums = SKIP
+
+pkgname = container2wasm-git
