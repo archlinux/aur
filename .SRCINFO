@@ -1,0 +1,19 @@
+pkgbase = dssat-csm-os-git
+	pkgdesc = The Cropping System Model (CSM) from the Decision Support System for Agrotechnology Transfer (DSSAT)
+	pkgver = v4.8.5.17.r0.g1b2e4ce4
+	pkgrel = 1
+	url = https://github.com/DSSAT/dssat-csm-os
+	arch = x86_64
+	license = custom
+	makedepends = gcc-fortran
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	depends = netcdf-fortran
+	depends = libjpeg-turbo
+	provides = dssat-csm-os
+	conflicts = dssat-csm-os
+	source = git+https://github.com/DSSAT/dssat-csm-os.git
+	sha256sums = SKIP
+
+pkgname = dssat-csm-os-git
