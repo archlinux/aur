@@ -11,8 +11,8 @@
 
 pkgname=prismlauncher-bwrap
 pkgver=9.4
-pkgrel=2
-provides=(prismlauncher)
+pkgrel=3
+provides=(prismlauncher prismlauncher-portable)
 conflicts=(prismlauncher)
 pkgdesc="Minecraft launcher with ability to manage multiple instances. Sandboxed by portable."
 arch=(x86_64)
@@ -39,51 +39,61 @@ depends=(
   openal
   flite
 )
-makedepends=(cmake extra-cmake-modules git jdk17-openjdk scdoc ghc-filesystem gamemode desktop-file-utils)
+makedepends=(cmake3 extra-cmake-modules git jdk17-openjdk scdoc ghc-filesystem gamemode desktop-file-utils)
 optdepends=('visualvm: Profiling support')
-source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/$pkgver/PrismLauncher-$pkgver.tar.gz"
+source=("git+https://github.com/PrismLauncher/PrismLauncher#tag=${pkgver}"
         {lionshead,batch,mdi}.license
         portable-config
         start.sh)
-b2sums=('57bb4391e8b84265e42b08545bb0cf64046915fca2a80a7f40923f6abf605d9bdd7efefae40694cb5118451346ed4cf8b9d77291b6ebc5b82ec1bb1fbafc16fc'
-        'be4289832af95b1cd6e721dc16b84a034533de9718d9b43a49bd08dd6fe4e28eaa15228bfb311867b18fddbda1c9fc4c91f04c6d5c1a3bcc39aaa5161425e3ba'
-        '356248a6b86f06d260e0920b49d34034f79f9bc504c7fdc1849d929d2ff9b169e693a8269a2c0b34656b3802970d9b8be41a92b35177eaa3c4ccc89a702f5c9d'
-        'b35c447cd9223e096a2bb75e0741a7d0a3a1606af54c957e4f276f4e6861a9b3f06ae1d646137e8d2f24ba2238c9967c76eff8cc631a68d7e48e376056982cc6'
-        'e996cbba63dec2f49b5fcf35c9b78a2ca367c08cda6240847b6b6c1ff71b8fdff5734581e887021c08ee3a44f66e9f81b4a6cade3f3ac6e8f60ab1c70b766772'
+b2sums=('30988cbda54c393e25589d898418d0c468a9cab765a3dc108cae1ceea97d91603e8358c245eae44ff23b155289ec4fede95ca888793dd6de58874d2de817b7cd'
+        'e7427b8289a8b524da96f884c327bce0fce25df6643b49bcca11cb7b38ab44bee8ad7418d159279074ff205ddd5d7beb922b32c743fd1504928dbd1cceada586'
+        '093912695909a4d78c0d3e1faef3f393c1f2183ce0728d9faed65fcd3eac55da160b91bd95be9e935a738a4fdad7b592e73a9a09d5ed5e904b03a810e53e4942'
+        '6bec000f725457b2d559a610b8b6a7c4c77b3b60510d089243463b32797254549ed1def83df562294664b7ddbc2b5b6edaae432c66b49cb7dd35aaaf174acec9'
+        'd7fbe68f3f6963cd30296496f10cc808da06d942abbeca6e7c9095b4f7cc7da891b157b1ae578d2daa8def9c2fe25fb455285f749f2414acde0bb8e833c3bdae'
         '417edca8819febc409431dee12ccb1d9466a274ce28d8bde554e6f28bfe352372ee0d88c5b53ebf95c9d13d0f91e9ff3b363980687fb04d0adf010fa0f8a4e26')
 
-build() {
-  cd PrismLauncher-$pkgver
+function prepare() {
+	cd PrismLauncher
+	git submodule init
+	git submodule update --init --recursive --depth 1
+}
 
-  export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
+function build() {
+	cd PrismLauncher
+	export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
 
-  cmake -DCMAKE_BUILD_TYPE= \
-    -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DLauncher_BUILD_PLATFORM="archlinux" \
-    -DLauncher_QT_VERSION_MAJOR="6" \
-    -DLauncher_ENABLE_JAVA_DOWNLOADER=OFF \
-    -Bbuild -S.
-  cmake --build build
+	cmake3 -DCMAKE_BUILD_TYPE= \
+		-DCMAKE_INSTALL_PREFIX="/usr" \
+		-DLauncher_BUILD_PLATFORM="archlinux" \
+		-DLauncher_QT_VERSION_MAJOR="6" \
+		-DLauncher_ENABLE_JAVA_DOWNLOADER=OFF \
+		-Bbuild -S.
+	cmake3 --build build
 }
 
 check() {
-  cd PrismLauncher-$pkgver/build
-  ctest .
+	cd PrismLauncher/build
+	ctest .
 }
 
 package() {
-  # licenses
-  install -Dm644 lionshead.license -t "$pkgdir"/usr/share/licenses/$pkgname/
-  install -Dm644 batch.license -t "$pkgdir"/usr/share/licenses/$pkgname/
-  install -Dm644 mdi.license -t "$pkgdir"/usr/share/licenses/$pkgname/
-
-  cd PrismLauncher-$pkgver/build
-  DESTDIR="$pkgdir" cmake --install .
-  install -Dm755 "${srcdir}/start.sh" "${pkgdir}/usr/bin/prismlauncher-bwrap"
-  install -Dm755 "${srcdir}/portable-config" "${pkgdir}/usr/lib/portable/info/org.prismlauncher.PrismLauncher/config"
-  desktop-file-edit --set-key=Exec --set-value='/usr/bin/prismlauncher-bwrap %U' \
-    "${pkgdir}/usr/share/applications/org.prismlauncher.PrismLauncher.desktop"
-  install -d "${pkgdir}/usr/lib/prismlauncher-bwrap/prismlauncher"
-  mv "${pkgdir}/usr/bin/prismlauncher" "${pkgdir}/usr/lib/prismlauncher-bwrap/prismlauncher"
-  ln -srf "${pkgdir}/usr/bin/prismlauncher-bwrap" "${pkgdir}/usr/bin/prismlauncher"
+	# licenses
+	install -Dm644 lionshead.license -t "$pkgdir"/usr/share/licenses/$pkgname/
+	install -Dm644 batch.license -t "$pkgdir"/usr/share/licenses/$pkgname/
+	install -Dm644 mdi.license -t "$pkgdir"/usr/share/licenses/$pkgname/
+	cd PrismLauncher/build
+	DESTDIR="$pkgdir" cmake3 --install .
+	install -Dm755 \
+		"${srcdir}/start.sh" \
+		"${pkgdir}/usr/bin/prismlauncher-bwrap"
+	install -Dm755 \
+		"${srcdir}/portable-config" \
+		"${pkgdir}/usr/lib/portable/info/org.prismlauncher.PrismLauncher/config"
+	desktop-file-edit \
+		--set-key=Exec \
+		--set-value='env _portableConfig=org.prismlauncher.PrismLauncher portable -- %U' \
+		"${pkgdir}/usr/share/applications/org.prismlauncher.PrismLauncher.desktop"
+	install -d "${pkgdir}/usr/lib/prismlauncher-bwrap/prismlauncher"
+	mv "${pkgdir}/usr/bin/prismlauncher" "${pkgdir}/usr/lib/prismlauncher-bwrap/prismlauncher"
+	ln -srf "${pkgdir}/usr/bin/prismlauncher-bwrap" "${pkgdir}/usr/bin/prismlauncher"
 }
