@@ -1,0 +1,5 @@
+[xlibre-video-fbdev]
+source = "git"
+git = "https://github.com/x11libre/xf86-video-fbdev.git"
+include_regex = "xlibre-xf86-video-fbdev-.*"
+prefix = "xlibre-xf86-video-fbdev-"

@@ -1,0 +1,21 @@
+pkgbase = xlibre-video-fbdev
+	pkgdesc = XLibre framebuffer video driver
+	pkgver = 0.5.1.1
+	pkgrel = 1
+	url = https://github.com/X11Libre/xf86-video-fbdev
+	arch = aarch64
+	arch = x86_64
+	groups = xlibre-drivers
+	license = MIT
+	makedepends = xlibre-server-devel
+	makedepends = X-ABI-VIDEODRV_VERSION=28.0
+	depends = glibc
+	provides = xf86-video-fbdev
+	conflicts = xf86-video-fbdev
+	conflicts = xorg-server<1.20.0
+	conflicts = X-ABI-VIDEODRV_VERSION<28
+	conflicts = X-ABI-VIDEODRV_VERSION>=29
+	source = xf86-video-fbdev-xlibre-xf86-video-fbdev-0.5.1.1.tar.gz::https://github.com/X11Libre/xf86-video-fbdev/archive/refs/tags/xlibre-xf86-video-fbdev-0.5.1.1.tar.gz
+	b2sums = dccf9a08e4c690eb82bfa6d8ed98468dacc832945b7b006f4cf0dab2c5ee315529fd47b35fbb7d0a73c0509e492866bd6b2422fc40cff425a4f3bf09b3c17ad3
+
+pkgname = xlibre-video-fbdev
