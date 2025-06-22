@@ -1,7 +1,7 @@
-*.bz2
-*.tar
-*.xz
+*.gz
+*.zst
 *~
 
-pkg
-src
+/.idea/
+/pkg/
+/src/
