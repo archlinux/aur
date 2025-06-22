@@ -1,8 +1,8 @@
 # Maintainer: wackbyte <im@purring.fyi>
 
 pkgname=otf-renogare
-pkgver=1.0
-pkgrel=2
+pkgver=20170428
+pkgrel=1
 pkgdesc='A clean and elegant sans serif font created by Deepak Dogra'
 arch=('any')
 license=('custom')
