@@ -1,0 +1,13 @@
+[Unit]
+Description=Docker SR-IOV plugin
+After=network.target
+Before=docker.service
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/docker-sriov-plugin
+TimeoutStartSec=300
+
+[Install]
+WantedBy=multi-user.target
