@@ -1,7 +1,7 @@
 pkgbase = bitrix24
 	pkgdesc = Bitrix24 unified workspace app (CRM, comms, tasks, and more)
-	pkgver = 17.0.17.84
-	pkgrel = 2
+	pkgver = 17.1.10.86
+	pkgrel = 1
 	url = https://www.bitrix24.com/apps/desktop.php
 	arch = x86_64
 	depends = gtk3
@@ -12,6 +12,6 @@ pkgbase = bitrix24
 	depends = libx11
 	depends = glibc
 	source = https://dl.bitrix24.com/b24/bitrix24_desktop.deb
-	sha256sums = 49f773b0aadedf43e30137e050d406e0bdb9a2965fbdf6441eb2382fe57e230a
+	sha256sums = e6f5c907e91d9af83e83bb774af8a7e8283e6ab21f2743ac7912104544dfee34
 
 pkgname = bitrix24

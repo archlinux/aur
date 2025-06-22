@@ -3,14 +3,14 @@
 # Maintainer: Evandro Begati <evandroalb at gmail dot com>
 
 pkgname=bitrix24
-pkgver=17.0.17.84
-pkgrel=2
+pkgver=17.1.10.86
+pkgrel=1
 pkgdesc="Bitrix24 unified workspace app (CRM, comms, tasks, and more)"
 arch=("x86_64")
 url="https://www.bitrix24.com/apps/desktop.php"
 license=("custom")
 source=("bitrix24_desktop-${pkgver}.deb::https://dl.bitrix24.com/b24/bitrix24_desktop.deb")
-sha256sums=("49f773b0aadedf43e30137e050d406e0bdb9a2965fbdf6441eb2382fe57e230a")
+sha256sums=("e6f5c907e91d9af83e83bb774af8a7e8283e6ab21f2743ac7912104544dfee34")
 
 depends=(gtk3 libxss libappindicator-gtk3 nss alsa-lib libx11 glibc)
 
