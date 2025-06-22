@@ -56,7 +56,7 @@ package_nvidia-510xx-settings() {
 
 package_libxnvctrl-510xx() {
   depends=('libxext')
-  pkgdesc='NVIDIA NV-CONTROL X extension'
+  pkgdesc='NVIDIA NV-CONTROL X extension, 510 branch'
   provides=('libxnvctrl' 'libXNVCtrl.so')
   conflicts=('libxnvctrl')
 
