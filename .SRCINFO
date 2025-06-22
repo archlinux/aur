@@ -1,0 +1,16 @@
+pkgbase = bgclicker-git
+	pkgdesc = A simple Python application with a GUI for performing background mouse clicks and keyboard inputs.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Venom120/bgclicker
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = tk
+	depends = python-keyboard
+	depends = xdotool
+	source = git+https://github.com/Venom120/bgclicker.git
+	sha256sums = SKIP
+
+pkgname = bgclicker-git
