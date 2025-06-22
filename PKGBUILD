@@ -6,10 +6,10 @@ pkgname='python-wassima-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname/-/.}"
-pkgver=1.2.1.r0.g806c26c
-pkgrel=2
+pkgver=2.0.0.r0.ge45e965
+pkgrel=1
 pkgdesc='Say goodbye to certifi. Embrace your system root CAs — retrieve them with ease and comfort (latest commit)'
-arch=('aarch64' 'x86_64')
+arch=('any')
 url='https://github.com/jawah/wassima'
 license=('MIT')  # SPDX-License-Identifier: MIT
 makedepends=(
@@ -17,15 +17,9 @@ makedepends=(
   'python-build'
   'python-hatchling'
   'python-installer'
-  'python-maturin'
   'python-wheel'
 )
-depends=(
-  'gcc-libs'
-  'glibc'
-  'python>=3.7'
-  'python-certifi'
-)
+depends=('python>=3.7')
 source=("git+$url.git")
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
@@ -52,7 +46,7 @@ package() {
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
     LICENSE
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
-    {CHANGELOG,README,SECURITY}.md
+    {CHANGELOG,README,SECURITY}.md NOTICE
 }
 
 # eof
