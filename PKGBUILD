@@ -2,8 +2,8 @@
 
 _pkgname="local-ai"
 pkgname="${_pkgname}-bin"
-pkgver=2.29.0
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first"
 arch=('aarch64' 'x86_64')
 url="https://localai.io"
@@ -26,10 +26,10 @@ sha256sums=('8e530e32d96d02c01192c987e8bffaf0bb67db34bf999fccdfa8d0777789233b'
             'bd420ec530cbfdb7f29b309e3c0c8cd72de6346b7c8e9882e917a071c65b344c'
             '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
             '90e042d0f5885b63a6aa4db7f87d6b931956f6c9b022407593466f61f6973312'
-            '213af40972cf692e5bfc12e16db38f25437d90b9cb1c7872bba7d1786fabc704'
+            '96d2ba974c9c6d21ac1e0cf72c0b203a25a6455309f78ad38048a927c4bb1f4d'
             '56bef7ba54ae4e4477b9effe34b6e6cadc1b0bcfaacc5be503096a1ce0a9d391')
-sha256sums_aarch64=('c8cb345061bb58b587ecec26fa88e54d72cdd56dda98b939fe27e465caf466f0')
-sha256sums_x86_64=('a0710a5e05b477fe193f58e076e1049f8b4a94ddc9838ef1977730b4754e46d7')
+sha256sums_aarch64=('6d0c8a1cbb99fd32cf41e30e4cd5a24c86a1518889f4bc239837aa9026ca1c77')
+sha256sums_x86_64=('d1019f6b1ba0267ac81b69283d13c5170b706bf503e72eb68b3a2ed0e97490cd')
 
 package() {
   cd "${srcdir}"
