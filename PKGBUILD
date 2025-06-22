@@ -2,7 +2,7 @@
 
 _pkgname="uncover"
 pkgname="${_pkgname}-bin"
-pkgver=1.0.10
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Quickly discover exposed hosts on the internet using multiple search engines"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -15,10 +15,10 @@ source_aarch64=("${_pkgsrc}-aarch64.zip::${url}/releases/download/v${pkgver}/${_
 source_armv7h=("${_pkgsrc}-armv7h.zip::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_arm.zip")
 source_i686=("${_pkgsrc}-i686.zip::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_386.zip")
 source_x86_64=("${_pkgsrc}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_amd64.zip")
-sha256sums_aarch64=('cadce302bf6f913a9416fcb5bc14ff8f8c7aaaecac2f2ff8bdd62e0ed5d23df0')
-sha256sums_armv7h=('c434284737b8066133a49a111f477b99be4e4881bfb0c1f7b19055c979f65ef8')
-sha256sums_i686=('b7db168b960f48af8abf3df76729e7f1074f15ac6f659e2ed83552a25faceca4')
-sha256sums_x86_64=('88d88cdd16a515fb0ef0fd0ed3d12217faeaf796f7da11a44fe77cf6dacaa9fd')
+sha256sums_aarch64=('5f2f8e239f5f9f1f9e36edf7aee1b017d11190d760920eb033eaf1306b24219f')
+sha256sums_armv7h=('e6eee1e1ee58097baf7e8046708b69036eb47594efcae0b87eb4deec972519d5')
+sha256sums_i686=('a5b89feabe11a150520fd9a301a79d540f0b0a8d09a372d8dd5a4e06062d9d0a')
+sha256sums_x86_64=('06592f3800564dc26211d72b7e495b26cb79899a34110c3e6f8d9ce659a351c6')
 
 package() {
   cd "${srcdir}"
