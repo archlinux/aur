@@ -1,7 +1,7 @@
 pkgbase = audio-recorder
 	pkgdesc = Audio Recorder Application
 	pkgver = 3.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/~audio-recorder
 	arch = x86_64
 	license = GPL-3.0-or-later

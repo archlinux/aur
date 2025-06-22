@@ -4,7 +4,7 @@
  
 pkgname=audio-recorder
 pkgver=3.3.4
-pkgrel=2
+pkgrel=3
 _ubuntucodename=jammy
 pkgdesc="Audio Recorder Application"
 arch=('x86_64')
@@ -22,6 +22,10 @@ md5sums=('d7ca6db99f948af922773d1fee68dc1f')
 
 build() {
   cd "${srcdir}/trunk"
+
+  # Workaround to compile with gcc >= 15
+  export CFLAGS+=" -std=gnu17"
+
   ./configure --prefix=/usr
   make
 }
