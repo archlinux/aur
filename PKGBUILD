@@ -2,9 +2,8 @@
 # Contributor: Kaio "yaakushi" Augusto <kaioaugusto dot 8 at gmail dot com>
 # Contributor: matthias.lisin
 # Contributor: Bruno Inec <bruno at inec dot fr>
-
 pkgname=wtfutil
-pkgver=0.43.0
+pkgver=0.44.0
 pkgrel=1
 pkgdesc="Personal information dashboard for your terminal"
 arch=('x86_64' 'aarch64' 'armv6h')
@@ -13,7 +12,7 @@ license=('MPL-2.0')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wtfutil/wtf/archive/v$pkgver.tar.gz")
-sha256sums=('bb48e38e479b26e0b956b163e4804e99cd49545214090c2fdf99e54382b3d651')
+sha256sums=('cadf8183be4b84256c50ed64a1a401890016885e305d2816b4293f8494463c14')
 
 prepare() {
   cd "wtf-$pkgver"
@@ -41,5 +40,5 @@ package() {
   cd "wtf-$pkgver"
   install -Dm755 "bin/$pkgname" -t "$pkgdir/usr/bin/"
   install -Dm644 {README,CHANGELOG}.md -t "$pkgdir/usr/share/doc/$pkgname/"
-  cp -r _sample_configs "$pkgdir/usr/share/doc/$pkgname/sample_configs/"
+  cp -r _sample_configs "$pkgdir/usr/share/doc/$pkgname/"
 }
