@@ -1,7 +1,7 @@
 pkgname=atar
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
-pkgdesc="The fastest and lightest bookmark manager CLI written in Rust"
+pkgdesc="Ephemeral Terraform runner that applies a configuration on start, displays output variables, and automatically destroys all resources on exit or failure."
 arch=('x86_64' 'aarch64')
 url="https://github.com/x71c9/atar"
 license=('MIT')
@@ -9,7 +9,7 @@ depends=('glibc')
 makedepends=('rust')
 
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/x71c9/$pkgname/tar.gz/refs/tags/v$pkgver")
-sha256sums=("0aa0b4ae12202cfb8e6807257b7b8299870e55ab91be8fe5823c5c1e68392106")
+sha256sums=("17ced2fca549e5b822be219d69f65f9ba105cbbf1308e5ae5424831958387f8f")
 
 prepare() {
   cd "$pkgname-$pkgver"
