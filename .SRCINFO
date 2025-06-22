@@ -1,12 +1,12 @@
 pkgbase = tile-molestor
 	pkgdesc = Multi-format graphics editor for ROM hacking
 	pkgver = 0.19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.romhacking.net/utilities/991/
 	arch = any
 	makedepends = p7zip
 	depends = jre17-openjdk
-	noextract = %5B991%5DTM019.7z
+	noextract = [115]TM019.7z
 	source = https://romhacking.it/upload/tools/[115]TM019.7z
 	source = tile-molestor
 	source = tile-molestor.desktop

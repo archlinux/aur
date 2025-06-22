@@ -2,7 +2,7 @@
 pkgname=tile-molestor
 _pkgname='tile-molestor'
 pkgver=0.19
-pkgrel=2
+pkgrel=3
 pkgdesc='Multi-format graphics editor for ROM hacking'
 url='https://www.romhacking.net/utilities/991/'
 arch=(any)
@@ -16,11 +16,11 @@ md5sums=('759ced6b3d483ec256cd5fd2f74d4ac5'
          'SKIP'
          'SKIP'
          'SKIP')
-noextract=("%5B991%5DTM019.7z")
+noextract=("[115]TM019.7z")
 
 prepare() {
   mkdir -p molestor
-  7z x %5B991%5DTM019.7z -aou -omolestor
+  7z x [115]TM019.7z -aou -omolestor
 }
 
 package() {
