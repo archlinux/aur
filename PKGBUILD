@@ -4,8 +4,8 @@
 _pkgauthor=laktak
 _pkgname=zfind
 pkgname=${_pkgname}-bin
-pkgver=0.4.6
-pkgrel=3
+pkgver=0.4.7
+pkgrel=1
 pkgdesc="Search for files (even inside tar/zip/7z/rar) using a SQL-WHERE filter"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
@@ -20,10 +20,10 @@ source_x86_64=("${_pkgname}_${pkgver}_x86_64.tar.gz::${url}/releases/download/v$
 source_arm64=("${_pkgname}_${pkgver}_arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.tar.gz")
 source_riscv64=("${_pkgname}_${pkgver}_riscv64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-riscv64.tar.gz")
 sha256sums=('f7ebb783a3ebbfd8d9871f0e1b69729c153e66c0d61a715ce58675021cffa748'
-            'c2131f6b289465447c365067a472faae36a9929a0355bda0398961b28d01318e')
-sha256sums_x86_64=('312940b532de1660e3fa35bcd47a61ce6e2fb95cc78b1028f4d104f90da6b3de')
-sha256sums_arm64=('47c3e54a33dd760e9e19a30b19b1b11a0dcb5649b09ab59fc3f6756884a7ccc6')
-sha256sums_riscv64=('eaf20f081eda78cc788279462dce25a7ef0aa55e0e9fb7eba841584d73ad3021')
+            '3b2bb02267ae086d6f1e74d9f5ed81015a5c19cb149ea3f0ee779bb465ef7d70')
+sha256sums_x86_64=('fb016f67fda4be03ca781f4092aa8274fd72b6dbbe3491562b77cb6ecac53757')
+sha256sums_arm64=('57092153d61aa02a2da169eafc8002e9e3f212d25d0b2bed4e92e81d76e37184')
+sha256sums_riscv64=('0d4a7135f07a3837095649a5e821016811b785f7245949ecc99323fd15609d9e')
 
 build() {
 	cd "${srcdir}/" || exit
