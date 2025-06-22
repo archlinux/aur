@@ -30,7 +30,7 @@ prepare() {
   cd ${_base}-${pkgver}
   git submodule init
   git submodule set-url scipy/_lib/array_api_compat "${srcdir}"/array-api-compat
-  git submodule set-url scipy/_lib/boost_math "${srcdir}"/math
+  git submodule set-url subprojects/boost_math/math "${srcdir}"/math
   git submodule set-url scipy/_lib/cobyqa "${srcdir}"/cobyqa
   git submodule set-url scipy/_lib/pocketfft "${srcdir}"/pocketfft
   git submodule set-url scipy/_lib/unuran "${srcdir}"/unuran
