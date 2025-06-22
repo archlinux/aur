@@ -1,0 +1,47 @@
+diff -ura Waybar-0.12.0/include/modules/cava.hpp Waybar-0.12.0.new/include/modules/cava.hpp
+--- Waybar-0.12.0/include/modules/cava.hpp	2025-02-21 09:04:59.000000000 +0100
++++ Waybar-0.12.0.new/include/modules/cava.hpp	2025-06-22 08:56:38.070021901 +0200
+@@ -5,7 +5,16 @@
+ 
+ namespace cava {
+ extern "C" {
++// Need sdl_glsl output feature to be enabled on libcava
++#ifndef SDL_GLSL
++#define SDL_GLSL
++#endif
++
+ #include <cava/common.h>
++
++#ifdef SDL_GLSL
++#undef SDL_GLSL
++#endif
+ }
+ }  // namespace cava
+ 
+diff -ura Waybar-0.12.0/meson.build Waybar-0.12.0.new/meson.build
+--- Waybar-0.12.0/meson.build	2025-02-21 09:04:59.000000000 +0100
++++ Waybar-0.12.0.new/meson.build	2025-06-21 11:05:09.960065375 +0200
+@@ -482,7 +482,7 @@
+ endif
+ 
+ cava = dependency('cava',
+-                  version : '>=0.10.3',
++                  version : '>=0.10.4',
+                   required: get_option('cava'),
+                   fallback : ['cava', 'cava_dep'],
+                   not_found_message: 'cava is not found. Building waybar without cava')
+diff -ura Waybar-0.12.0/subprojects/cava.wrap Waybar-0.12.0.new/subprojects/cava.wrap
+--- Waybar-0.12.0/subprojects/cava.wrap	2025-02-21 09:04:59.000000000 +0100
++++ Waybar-0.12.0.new/subprojects/cava.wrap	2025-06-21 11:00:54.966724298 +0200
+@@ -1,7 +1,7 @@
+ [wrap-file]
+-directory = cava-0.10.3
+-source_url = https://github.com/LukashonakV/cava/archive/0.10.3.tar.gz
+-source_filename = cava-0.10.3.tar.gz
+-source_hash = aab0a4ed3f999e8461ad9de63ef8a77f28b6b2011f7dd0c69ba81819d442f6f9
++directory = cava-0.10.4
++source_url = https://github.com/LukashonakV/cava/archive/0.10.4.tar.gz
++source_filename = cava-0.10.4.tar.gz
++source_hash =7bc1c1f9535f2bcc5cd2ae8a2434a2e3a05f5670b1c96316df304137ffc65756
+ [provide]
+ cava = cava_dep
