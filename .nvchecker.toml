@@ -1,0 +1,5 @@
+[ampl-asl]
+source = "github"
+github = "ampl/asl"
+use_latest_release = "true"
+prefix = "v"

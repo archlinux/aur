@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-pkgname=ampl-asl
-_gitcommit=ae937db9bd1169ec2c4cb8d75196f67cdcb8041b
-pkgver=20241122
+_base=asl
+pkgname=ampl-${_base}
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="AMPL Solver Library"
 arch=(x86_64)
@@ -9,12 +9,12 @@ url="https://github.com/${pkgname/-//}"
 license=(BSD-3-Clause)
 depends=(openmp)
 makedepends=(cmake git)
-source=("git+${url}#commit=${_gitcommit}")
-sha512sums=('e750e5f38c3f13dfe7a56c4be62ab7dc0bdba451263fb8ad3a92be60ab7e81bfa3e8c2c6e8abbf259b80bbe86f284e946cc15470fb6f84114b485b1b00db1d62')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('0510794489dd9e8404c4b5240ffabbca5a1a6112678c80443421f040893edbd23925b3c8fa7e3e4a9e41aeb2d7555fa747aa2070e7b1bd31da177c7aa8969211')
 
 build() {
   cmake \
-    -S asl \
+    -S ${_base}-${pkgver} \
     -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -25,5 +25,5 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --build build --target install
-  install -Dm 644 asl/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 ${_base}-${pkgver}/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
