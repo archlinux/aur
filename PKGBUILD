@@ -9,7 +9,7 @@ depends=(delta-plugin python)
 makedepends=(git)
 provides=(groundcoverify)
 source=('git+https://gitlab.com/bmwinger/groundcoverify' 'groundcoverify.sh')
-sha1sums=('SKIP' '2a8af3cdff334e5fbf1b9c658709e2ce088c62a0')
+sha1sums=('SKIP' '6293100b6b96e13bdff4d6f436838486408d04c8')
 
 pkgver() {
   cd "${srcdir}/groundcoverify"

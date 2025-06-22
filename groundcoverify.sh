@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-ARGS="${*}"
 PREV_DIR=$(pwd)
 RUN_DIR=${HOME}/.config/openmw
 OUT_DIR=${HOME}/.local/share/openmw/data

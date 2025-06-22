@@ -13,6 +13,6 @@ pkgbase = groundcoverify-git
 	source = git+https://gitlab.com/bmwinger/groundcoverify
 	source = groundcoverify.sh
 	sha1sums = SKIP
-	sha1sums = 2a8af3cdff334e5fbf1b9c658709e2ce088c62a0
+	sha1sums = 6293100b6b96e13bdff4d6f436838486408d04c8
 
 pkgname = groundcoverify-git
