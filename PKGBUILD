@@ -2,7 +2,7 @@
 
 _pkgname=dry
 pkgname=${_pkgname}-git
-pkgver=r274.fbce0a3
+pkgver=r293.f9235c2
 pkgrel=1
 pkgdesc='Dry – a bare bones fork of Urho3D – is a FOSS cross-platform 2D and 3D game engine implemented in C++'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('xorg-server')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-makedepends=('git' 'cmake' 'bash')
+makedepends=('git' 'cmake3' 'bash')
 sha512sums=('SKIP')
 source=("${pkgname}::git+${url}.git")
 OPTIONS=(!strip)
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  ./script/cmake_generic.sh ./ -D VIDEO_WAYLAND=OFF -D DRY_SAMPLES=0
+  DRY_CMAKE=3 ./script/cmake_generic.sh ./ -D VIDEO_WAYLAND=OFF -D DRY_SAMPLES=0
   make
 }
 

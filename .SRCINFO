@@ -1,12 +1,12 @@
 pkgbase = dry-git
 	pkgdesc = Dry – a bare bones fork of Urho3D – is a FOSS cross-platform 2D and 3D game engine implemented in C++
-	pkgver = r274.fbce0a3
+	pkgver = r293.f9235c2
 	pkgrel = 1
 	url = https://gitlab.com/luckeyproductions/dry
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = cmake
+	makedepends = cmake3
 	makedepends = bash
 	depends = xorg-server
 	provides = dry
