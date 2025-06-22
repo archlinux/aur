@@ -217,168 +217,222 @@ backup_existing_installation() {
     fi
 }
 
+# Helper function for sub-section separators
+section_separator() {
+    echo -e "${BLUE}--------------------------------------------------${NC}\n"
+}
+
 # Function to copy files
 install_files() {
     print_status "$BLUE" "$INFO" "Installing files..."
-    
-    # Check if files exist
+
+    # Check if local files exist
+    local use_system_files=0
     local required_files=("src/internet_monitor.sh" "src/conky_usage_helper.sh" "config/conkyrc_internet" "config/config.sh")
-    
     for file in "${required_files[@]}"; do
         if [ ! -f "$file" ]; then
-            print_status "$RED" "$CROSS" "Required file not found: $file"
-            print_status "$YELLOW" "$WARNING" "Make sure you're running this script from the project directory."
-            exit 1
+            use_system_files=1
+            break
         fi
     done
-    
-    # Detect existing installation
-    if detect_existing_installation; then
-        print_status "$YELLOW" "$WARNING" "Existing installation detected!"
-        echo
-        echo "Installation options:"
-        echo "1) Update existing installation (recommended)"
-        echo "2) Fresh install (will backup current installation)"
-        echo "3) Cancel installation"
-        echo
-        read -p "Choose an option (1-3): " install_choice
+
+    if [ $use_system_files -eq 0 ]; then
+        print_status "$GREEN" "$CHECK" "Using local project files for installation."
+        # Check if files exist
+        local required_files=("src/internet_monitor.sh" "src/conky_usage_helper.sh" "config/conkyrc_internet" "config/config.sh")
         
-        case $install_choice in
-            1)
-                print_status "$BLUE" "$INFO" "Updating existing installation..."
-                backup_existing_installation
-                print_status "$GREEN" "$CHECK" "Ready to proceed with update..."
-                ;;
-            2)
-                print_status "$BLUE" "$INFO" "Performing fresh installation..."
-                backup_existing_installation
-                print_status "$GREEN" "$CHECK" "Ready to proceed with fresh install..."
-                ;;
-            3)
-                print_status "$BLUE" "$INFO" "Installation cancelled."
-                exit 0
-                ;;
-            *)
-                print_status "$YELLOW" "$WARNING" "Invalid choice. Defaulting to update..."
-                backup_existing_installation
-                print_status "$GREEN" "$CHECK" "Ready to proceed with update..."
-                ;;
-        esac
-    else
-        print_status "$GREEN" "$CHECK" "No existing installation found. Proceeding with fresh install."
-    fi
-    
-    # Make scripts executable
-    print_status "$BLUE" "$INFO" "Setting script permissions..."
-    local exec_files=(
-        "src/internet_monitor.sh"
-        "src/conky_usage_helper.sh"
-        "src/internet_monitor_daemon.sh"
-        "install.sh"  # Make itself executable too if not already
-        "uninstall.sh"
-    )
-    local chmod_errors=0
-    for exec_file in "${exec_files[@]}"; do
-        if [ -f "$exec_file" ]; then
-            chmod +x "$exec_file"
-            print_status "$GREEN" "$CHECK" "Made $exec_file executable"
+        for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+                print_status "$RED" "$CROSS" "Required file not found: $file"
+                print_status "$YELLOW" "$WARNING" "Make sure you're running this script from the project directory."
+                exit 1
+            fi
+        done
+        
+        # Detect existing installation
+        if detect_existing_installation; then
+            print_status "$YELLOW" "$WARNING" "Existing installation detected!"
+            echo
+            echo "Installation options:"
+            echo "1) Update existing installation (recommended)"
+            echo "2) Fresh install (will backup current installation)"
+            echo "3) Cancel installation"
+            echo
+            read -p "Choose an option (1-3): " install_choice
+            
+            case $install_choice in
+                1)
+                    print_status "$BLUE" "$INFO" "Updating existing installation..."
+                    backup_existing_installation
+                    print_status "$GREEN" "$CHECK" "Ready to proceed with update..."
+                    ;;
+                2)
+                    print_status "$BLUE" "$INFO" "Performing fresh installation..."
+                    backup_existing_installation
+                    print_status "$GREEN" "$CHECK" "Ready to proceed with fresh install..."
+                    ;;
+                3)
+                    print_status "$BLUE" "$INFO" "Installation cancelled."
+                    exit 0
+                    ;;
+                *)
+                    print_status "$YELLOW" "$WARNING" "Invalid choice. Defaulting to update..."
+                    backup_existing_installation
+                    print_status "$GREEN" "$CHECK" "Ready to proceed with update..."
+                    ;;
+            esac
         else
-            print_status "$YELLOW" "$WARNING" "File not found for chmod: $exec_file (This might be okay if not all scripts are present in all contexts)"
-            ((chmod_errors++))
-        fi
-    done
-    if [ $chmod_errors -eq 0 ]; then
-        print_status "$GREEN" "$CHECK" "All script permissions set successfully"
-    else
-        print_status "$YELLOW" "$WARNING" "Some files not found during chmod, check paths if this is unexpected."
-    fi
-    
-    # Stop running processes before updating
-    if detect_existing_installation; then
-        print_status "$BLUE" "$INFO" "Stopping running processes for update..."
-        
-        # Check and stop daemon processes
-        if pgrep -f "internet_monitor_daemon.sh" > /dev/null; then
-            print_status "$YELLOW" "$WARNING" "Found running daemon processes, stopping..."
-            pkill -f "internet_monitor_daemon.sh" 2>/dev/null || true
-            sleep 1
-            print_status "$GREEN" "$CHECK" "Daemon processes stopped"
-        else
-            print_status "$BLUE" "$INFO" "No daemon processes found"
+            print_status "$GREEN" "$CHECK" "No existing installation found. Proceeding with fresh install."
         fi
         
-        # Check and stop Conky processes
-        if pgrep -f "conky.*.conkyrc_internet" > /dev/null; then
-            print_status "$YELLOW" "$WARNING" "Found running Conky widget, stopping..."
-            pkill -f "conky.*.conkyrc_internet" 2>/dev/null || true
-            sleep 1
-            print_status "$GREEN" "$CHECK" "Conky widget stopped"
-        else
-            print_status "$BLUE" "$INFO" "No Conky widget found"
-        fi
-        
-        # Force remove any PID files
-        if [ -f "/tmp/internet_monitor_daemon.pid" ]; then
-            rm -f "/tmp/internet_monitor_daemon.pid"
-            print_status "$GREEN" "$CHECK" "Removed daemon PID file"
-        fi
-        
-        print_status "$GREEN" "$CHECK" "System ready for update"
-    fi
-    
-    # Copy files to home directory
-    print_status "$BLUE" "$INFO" "Copying updated scripts..."
-    cp src/internet_monitor.sh "$HOME/"
-    print_status "$GREEN" "$CHECK" "Updated internet_monitor.sh"
-    
-    cp src/conky_usage_helper.sh "$HOME/"
-    print_status "$GREEN" "$CHECK" "Updated conky_usage_helper.sh"
-    
-    cp src/internet_monitor_daemon.sh "$HOME/"
-    print_status "$GREEN" "$CHECK" "Updated internet_monitor_daemon.sh"
-    
-    cp config/conkyrc_internet "$HOME/.conkyrc_internet"
-    print_status "$GREEN" "$CHECK" "Updated Conky configuration"
-    
-    # Handle config file specially for updates
-    if [ -f "$HOME/config.sh" ] && [ "$install_choice" = "2" ]; then
-        # Only ask about config during fresh install
-        print_status "$YELLOW" "$WARNING" "Found existing config.sh"
-        echo
-        read -p "Do you want to keep your existing configuration? (Y/n): " -n 1 -r
-        echo
-        if [[ $REPLY =~ ^[Nn]$ ]]; then
-            cp config/config.sh "$HOME/"
-            print_status "$GREEN" "$CHECK" "Updated configuration file"
-        else
-            print_status "$BLUE" "$INFO" "Kept existing configuration"
-        fi
-    else
-        # During update or fresh install without existing config, always copy
-        cp config/config.sh "$HOME/"
-        print_status "$GREEN" "$CHECK" "Installed configuration file"
-    fi
-    
-    # Only prompt to restore backup during fresh install
-    if [ "$install_choice" = "2" ]; then
-        local backup_dir
-        backup_dir=$(find "$HOME" -maxdepth 1 -type d -name ".internet_monitor_backup_*" | sort | tail -n 1)
-        if [ -n "$backup_dir" ]; then
-            print_status "$YELLOW" "$WARNING" "Found backup directory: $backup_dir"
-            read -p "Restore previous usage data and logs from backup? (Y/n): " REPLY
-            local response_char="${REPLY:0:1}"
-            if [[ ! "$response_char" =~ ^[Nn]$ ]]; then
-                cp -r "$backup_dir/usage_data" "$HOME/" 2>/dev/null || true
-                cp -r "$backup_dir/logs" "$HOME/" 2>/dev/null || true
-                print_status "$GREEN" "$CHECK" "Restored usage data and logs from backup."
+        # Make scripts executable
+        print_status "$BLUE" "$INFO" "Setting script permissions..."
+        local exec_files=(
+            "src/internet_monitor.sh"
+            "src/conky_usage_helper.sh"
+            "src/internet_monitor_daemon.sh"
+            "install.sh"
+            "uninstall.sh"
+        )
+        local chmod_errors=0
+        for exec_file in "${exec_files[@]}"; do
+            if [ -f "$exec_file" ]; then
+                chmod +x "$exec_file"
+                print_status "$GREEN" "$CHECK" "Made $exec_file executable"
             else
-                print_status "$BLUE" "$INFO" "Skipped restoring usage data and logs."
+                print_status "$YELLOW" "$WARNING" "File not found for chmod: $exec_file (This might be okay if not all scripts are present in all contexts)"
+                ((chmod_errors++))
+            fi
+        done
+        if [ $chmod_errors -eq 0 ]; then
+            print_status "$GREEN" "$CHECK" "All script permissions set successfully"
+        else
+            print_status "$YELLOW" "$WARNING" "Some files not found during chmod, check paths if this is unexpected."
+        fi
+        
+        # Stop running processes before updating
+        if detect_existing_installation; then
+            print_status "$BLUE" "$INFO" "Stopping running processes for update..."
+            
+            # Check and stop daemon processes
+            if pgrep -f "internet_monitor_daemon.sh" > /dev/null; then
+                print_status "$YELLOW" "$WARNING" "Found running daemon processes, stopping..."
+                pkill -f "internet_monitor_daemon.sh" 2>/dev/null || true
+                sleep 1
+                print_status "$GREEN" "$CHECK" "Daemon processes stopped"
+            else
+                print_status "$BLUE" "$INFO" "No daemon processes found"
+            fi
+            
+            # Check and stop Conky processes
+            if pgrep -f "conky.*.conkyrc_internet" > /dev/null; then
+                print_status "$YELLOW" "$WARNING" "Found running Conky widget, stopping..."
+                pkill -f "conky.*.conkyrc_internet" 2>/dev/null || true
+                sleep 1
+                print_status "$GREEN" "$CHECK" "Conky widget stopped"
+            else
+                print_status "$BLUE" "$INFO" "No Conky widget found"
+            fi
+            
+            # Force remove any PID files
+            if [ -f "/tmp/internet_monitor_daemon.pid" ]; then
+                rm -f "/tmp/internet_monitor_daemon.pid"
+                print_status "$GREEN" "$CHECK" "Removed daemon PID file"
+            fi
+            
+            print_status "$GREEN" "$CHECK" "System ready for update"
+        fi
+        
+        # Copy files to home directory
+        print_status "$BLUE" "$INFO" "Copying updated scripts..."
+        cp src/internet_monitor.sh "$HOME/"
+        print_status "$GREEN" "$CHECK" "Updated internet_monitor.sh"
+        
+        cp src/conky_usage_helper.sh "$HOME/"
+        print_status "$GREEN" "$CHECK" "Updated conky_usage_helper.sh"
+        
+        cp src/internet_monitor_daemon.sh "$HOME/"
+        print_status "$GREEN" "$CHECK" "Updated internet_monitor_daemon.sh"
+        
+        cp config/conkyrc_internet "$HOME/.conkyrc_internet"
+        print_status "$GREEN" "$CHECK" "Updated Conky configuration"
+        
+        # Handle config file specially for updates
+        if [ -f "$HOME/config.sh" ] && [ "$install_choice" = "2" ]; then
+            print_status "$YELLOW" "$WARNING" "Found existing config.sh"
+            echo
+            read -p "Do you want to keep your existing configuration? (Y/n): " -n 1 -r
+            echo
+            if [[ $REPLY =~ ^[Nn]$ ]]; then
+                cp config/config.sh "$HOME/"
+                print_status "$GREEN" "$CHECK" "Updated configuration file"
+            else
+                print_status "$BLUE" "$INFO" "Kept existing configuration"
+            fi
+        else
+            cp config/config.sh "$HOME/"
+            print_status "$GREEN" "$CHECK" "Installed configuration file"
+        fi
+        
+        # Only prompt to restore backup during fresh install
+        if [ "$install_choice" = "2" ]; then
+            local backup_dir
+            backup_dir=$(find "$HOME" -maxdepth 1 -type d -name ".internet_monitor_backup_*" | sort | tail -n 1)
+            if [ -n "$backup_dir" ]; then
+                print_status "$YELLOW" "$WARNING" "Found backup directory: $backup_dir"
+                read -p "Restore previous usage data and logs from backup? (Y/n): " REPLY
+                local response_char="${REPLY:0:1}"
+                if [[ ! "$response_char" =~ ^[Nn]$ ]]; then
+                    cp -r "$backup_dir/usage_data" "$HOME/" 2>/dev/null || true
+                    cp -r "$backup_dir/logs" "$HOME/" 2>/dev/null || true
+                    print_status "$GREEN" "$CHECK" "Restored usage data and logs from backup."
+                else
+                    print_status "$BLUE" "$INFO" "Skipped restoring usage data and logs."
+                fi
             fi
         fi
-    fi
 
-    print_status "$GREEN" "$CHECK" "Files installed/updated successfully"
-    echo
+        print_status "$GREEN" "$CHECK" "Files installed/updated successfully"
+        echo
+    else
+        print_status "$YELLOW" "$WARNING" "Local project files not found. Using system-installed files."
+        # Use system-installed files
+        if [ -f "/usr/bin/internet_monitor.sh" ]; then
+            cp /usr/bin/internet_monitor.sh "$HOME/"
+            print_status "$GREEN" "$CHECK" "Copied system internet_monitor.sh to home directory."
+        else
+            print_status "$RED" "$CROSS" "System internet_monitor.sh not found! Aborting."
+            exit 1
+        fi
+        if [ -f "/usr/bin/conky_usage_helper.sh" ]; then
+            cp /usr/bin/conky_usage_helper.sh "$HOME/"
+            print_status "$GREEN" "$CHECK" "Copied system conky_usage_helper.sh to home directory."
+        else
+            print_status "$RED" "$CROSS" "System conky_usage_helper.sh not found! Aborting."
+            exit 1
+        fi
+        if [ -f "/usr/bin/internet_monitor_daemon.sh" ]; then
+            cp /usr/bin/internet_monitor_daemon.sh "$HOME/"
+            print_status "$GREEN" "$CHECK" "Copied system internet_monitor_daemon.sh to home directory."
+        else
+            print_status "$RED" "$CROSS" "System internet_monitor_daemon.sh not found! Aborting."
+            exit 1
+        fi
+        if [ -f "/usr/share/internet-usage-monitor-git/config.sh" ]; then
+            cp /usr/share/internet-usage-monitor-git/config.sh "$HOME/"
+            print_status "$GREEN" "$CHECK" "Copied system config.sh to home directory."
+        else
+            print_status "$RED" "$CROSS" "System config.sh not found! Aborting."
+            exit 1
+        fi
+        if [ -f "/usr/share/internet-usage-monitor-git/conkyrc_internet" ]; then
+            cp /usr/share/internet-usage-monitor-git/conkyrc_internet "$HOME/.conkyrc_internet"
+            print_status "$GREEN" "$CHECK" "Copied system conkyrc_internet to home directory."
+        else
+            print_status "$RED" "$CROSS" "System conkyrc_internet not found! Aborting."
+            exit 1
+        fi
+    fi
 }
 
 # Function to test installation

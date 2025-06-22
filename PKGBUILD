@@ -2,14 +2,8 @@
 
 pkgname=internet-usage-monitor-git
 _pkgname_src=internet-usage-monitor # This is the actual directory name of the source code
-pkgver=0.0.0.r0.dev # Placeholder static pkgver
-
-pkgver() {
-  cd "$_pkgname_src"
-  # Generates a version like 0.0.r<commit_count>.<short_hash>
-  printf "0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-pkgrel=3
+pkgver=0.0.1
+pkgrel=1
 pkgdesc="Monitors internet usage in real-time via Conky with desktop notifications (git version)"
 arch=('any')
 provides=("internet-usage-monitor=${pkgver}")
@@ -24,8 +18,6 @@ source=("${_pkgname_src}::git+${url}.git#branch=main") # Source from main branch
 # Note: The source array uses _pkgname_src for the directory, which is correct.
 # pkgname is internet-usage-monitor-git, but the source repo is internet-usage-monitor.
 sha256sums=('SKIP') # For VCS sources, or provide checksum for tarball
-
-install=internet-usage-monitor.install
 
 prepare() {
   # This is where you would apply patches or run sed commands if the scripts
@@ -52,9 +44,8 @@ package() {
   # Install license
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # Install install.sh and uninstall.sh to a shared location for user access
-  install -Dm755 "install.sh" "$pkgdir/usr/share/$pkgname/desktop_scripts/install.sh"
-  install -Dm755 "uninstall.sh" "$pkgdir/usr/share/$pkgname/desktop_scripts/uninstall.sh"
+  # Install install.sh to /opt/internet-usage-monitor
+  install -Dm755 "$srcdir/install.sh" "$pkgdir/opt/internet-usage-monitor/install.sh"
   
   # Install README (optional, but good practice)
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
