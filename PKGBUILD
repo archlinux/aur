@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=jdtextedit
-pkgver=11.2
+pkgver=11.3
 pkgrel=1
 pkgdesc="An advanced text editor"
 arch=("any")
@@ -21,7 +21,7 @@ depends=("python"
     "python-lxml")
 makedepends=("python-setuptools" "python-pip" "python-wheel" "qt5-tools" "python-sphinx" "python-sphinx_rtd_theme")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/JakobDev/jdTextEdit/archive/${pkgver}.tar.gz" "distribution.json")
-sha256sums=("fc66fa2058de33d3d0c1a0c0b6fe7e94a2572e11ac02165e15bee6c03e1206eb" "c0f33924bce00130cd94a64e65b633f2d633482e648388e91159eac33b712c13")
+sha256sums=("631fdcaedbfc84d2e5d7a33ca20bac361bfb24de44b0ea75ba7adb7045a346dc" "c0f33924bce00130cd94a64e65b633f2d633482e648388e91159eac33b712c13")
 
 package() {
     mv distribution.json "jdtextedit"
