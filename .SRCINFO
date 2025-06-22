@@ -1,7 +1,7 @@
 pkgbase = ziggy-git
 	pkgdesc = A data serialization language for expressing clear API messages, config files, etc.
 	pkgver = 0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/kristoff-it/ziggy/tree/main
 	arch = any
 	license = MIT
