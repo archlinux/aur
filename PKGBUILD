@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=orca-slicer-git
-pkgver=2.3.1.r25127.e13ec78
+pkgver=2.3.1.r25150.88fb818
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
@@ -32,8 +32,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  # C++20 disallows the use of the Point<T> syntax in the constructor
-  sed -i 's/explicit Point<T>(/explicit Point(/' src/clipper2/Clipper2Lib/include/clipper2/clipper.core.h
+
   # abuse FLATPAK IF statement to build against some system libs
   sed -i 's/if(FLATPAK)/if(true)/' deps/CMakeLists.txt
 }
