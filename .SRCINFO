@@ -1,7 +1,7 @@
 pkgbase = oxen-electron-wallet
 	pkgdesc = Oxen electron GUI wallet
 	pkgver = 1.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oxen-io/oxen-electron-gui-wallet
 	arch = x86_64
 	license = BSD-3-Clause
@@ -10,10 +10,10 @@ pkgbase = oxen-electron-wallet
 	makedepends = nvm
 	depends = oxen-core
 	depends = electron4
-	source = oxen-electron-gui-wallet-1.8.4.tar.gz::https://github.com/oxen-io/oxen-electron-gui-wallet/archive/v1.8.4.tar.gz
+	source = oxen-electron-gui-wallet-1.8.4-70fa36c.tar.gz::https://api.github.com/repos/oxen-io/oxen-electron-gui-wallet/tarball/70fa36c3a82ef18d92a59dbd22f3544341e64541
 	source = oxen-electron-wallet.desktop
 	source = oxen-electron-wallet.sh
-	sha512sums = a1e15314309193402a12d4dba72cce1563696fcc02db8c7ecc32555ecf5e32072c78e4861024e231532372a65fdcc11a95af36d3c5669144737b7246465d7b8a
+	sha512sums = c1fafb0d88ed08c61a45ed1b51787a60630c5590f4b15ed63e2ae42a284050d01761ae74d378469249392b3c27f39846b1337cfab21921bc5e42a0cf4f592f01
 	sha512sums = 6296267d0b4d05c9f805cd03366ee87da956212755af4fedd6117ab42792ba6036842f184cb91e60e0e522f9d8e857cd5ad941c10aa62d6c850d3c0da41387b8
 	sha512sums = fe65eb02d62a3e8ef404514cd911d3d94bf361b8231767551444c40004aea48ac56e4a5f234b1f819c0b5f7066619f1158c2749d23b60999a7c4e57b41903605
 
