@@ -1,18 +1,20 @@
 pkgbase = transgui-git
 	pkgdesc = Feature-rich client for Transmission Remote (Qt6)
-	pkgver = 5.18.0.r90.g25df397
-	pkgrel = 2
-	url = https://github.com/transmission-remote-gui/transgui
+	pkgver = 5.18.8.r1.ga704302
+	pkgrel = 1
+	url = https://github.com/lighterowl/transgui
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = lazarus
 	depends = qt6pas
-	provides = transgui=5.18.0
+	provides = transgui=5.18.8.r1
 	conflicts = transgui
 	conflicts = transgui-gtk
 	conflicts = transgui-qt
-	source = transgui::git+https://github.com/transmission-remote-gui/transgui.git
+	options = !strip
+	options = !debug
+	source = lighterowl.transgui::git+https://github.com/lighterowl/transgui.git#branch=develop
 	sha256sums = SKIP
 
 pkgname = transgui-git
