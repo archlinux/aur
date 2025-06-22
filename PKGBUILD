@@ -15,7 +15,7 @@ options=('staticlibs')
 validpgpkeys=(
   '2DEC330151BB9F7DAD8B0BDCFC32CEECA534A9C6' # Felix von Leitner <felix@fefe.de>
 )
-source=("https://www.fefe.de/dietlibc/dietlibc-$pkgver.tar.xz"{,.sig})
+source=("http://www.fefe.de/dietlibc/dietlibc-$pkgver.tar.xz"{,.sig})
 sha256sums=('5aa5599039ae58bba7b4a1566fc453485cd1a155a20b313e15cd1bd0e19c0beb'
             'SKIP')
 
