@@ -7,7 +7,7 @@
 
 pkgname=folly
 pkgver=2025.06.16.00
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
 url="https://github.com/facebook/folly"
@@ -107,7 +107,7 @@ build() {
     -DPYTHON_EXTENSIONS=ON \
     -DPACKAGE_VERSION="$pkgver" \
     -DCMAKE_CXX_FLAGS="-mpopcnt -mbmi -mbmi2 -ltbb" \
-    -DPYTHON_PACKAGE_INSTALL_DIR=$(python3 -c "import sysconfig; print(sysconfig.get_paths()['purelib'])") \
+    -DPYTHON_PACKAGE_INSTALL_DIR=$pkgdir/usr \
     -DCMAKE_CXX_STANDARD=20 \
     -Wno-dev
   cmake --build build
