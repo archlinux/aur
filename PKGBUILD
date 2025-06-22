@@ -5,7 +5,7 @@
 _pkgname=fchat
 
 pkgname="${_pkgname}"-horizon-appimage
-pkgver=1.32.0
+pkgver=1.32.1
 pkgrel=1
 pkgdesc="An Opinionated F-Chat Fork (previously f-chat rising)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source_x86_64=("${_appimage}::https://github.com/Fchat-Horizon/Horizon/releases/
                "https://raw.githubusercontent.com/Fchat-Horizon/Horizon/v${pkgver}/LICENSE"
               )
 noextract=("${_appimage}")
-sha256sums_x86_64=('fb7faf7bea93ec37744376b055344b93edf50609cea403fbcd3c6c2f851ba0cb'
+sha256sums_x86_64=('b6cc4029e26e4f532fb9a6010eadc2c2f8f98e86292999415efe97d5ed9d5ebe'
                    'SKIP')
 
 prepare() {
