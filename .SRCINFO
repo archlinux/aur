@@ -1,7 +1,7 @@
 pkgbase = vlang
 	pkgdesc = Simple, fast, safe, compiled language for developing maintainable software
-	pkgver = 0.4.10
-	pkgrel = 3
+	pkgver = 0.4.11
+	pkgrel = 1
 	url = https://vlang.io
 	arch = x86_64
 	arch = aarch64
@@ -13,11 +13,11 @@ pkgbase = vlang
 	optdepends = freetype2: Needed for graphics support
 	optdepends = openssl: Needed for http support
 	conflicts = v
-	source = v-0.4.10.zip::https://github.com/vlang/v/archive/488434b73f849da10b7413c6adc332a6ca9737a8.zip
-	source = vc-0.4.10.zip::https://github.com/vlang/vc/archive/27942c7ab5a12b9253eb69eaf3a58699bcdd5189.zip
-	sha256sums = 3a581422c9ce3e920b5f06c3338550295640ac0f0a7ed65011324823a615e190
-	sha256sums = bd2c0515a81e71f511ed62ce9ae90378c368d236bee086262fb10b7366cf85fa
-	sha512sums = 4dd8c43c6779ac175a20d21588245d646d4bb06710ee1513202fba8fea11e462cc85acb369c04b3bb2ab8ce70070cbd529cb9495b61b88cb3dfbdc93798f00a5
-	sha512sums = af8aa7280e93010f10966e99be7879e26afdf7a54ae5013f171953be941357f68b1142a01d11d6d156547f454e7c1e03e0e13fab6121aeb12ed27dcb8371a480
+	source = v-0.4.11.zip::https://github.com/vlang/v/archive/b9e5757236a948c71cdac5ba913a9d42f1349963.zip
+	source = vc-0.4.11.zip::https://github.com/vlang/vc/archive/30f2d6ee52d8e1e7f5653454262bf32f297607da.zip
+	sha256sums = 5a496eafa7879f77d19dd133ca4c16350e7be347a67ee580637a4e9df1bba824
+	sha256sums = ab88148f24e9e5330e2f486d2396a72506693510b66a29e032b5aa798511e24f
+	sha512sums = 7622cc8a5dda3ca904458b5b2e8538011557d74cfc6f1d0ee7c28732969ad86c97763578fa310e0487f37973879acaa5b160106683c3320c0a79d7f775c48fc4
+	sha512sums = 191bd970747e2fe31656476ab9ee6157a1f0afc8e9f35f4b0b36db7d8938bf7f31ea65ee3b193d24889dd9998d3b802865ce3ce08968b08a755e8933647bd4aa
 
 pkgname = vlang
