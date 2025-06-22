@@ -1,7 +1,7 @@
 # Maintainer: PoDiax <pd@pdx.ovh>
 pkgname=openstarbound
-pkgver=0.1.11.1
-pkgrel=2
+pkgver=0.1.12
+pkgrel=1
 pkgdesc="OpenStarbound Client (requires original Starbound game assets)"
 arch=('x86_64')
 url="https://github.com/OpenStarbound/OpenStarbound"
@@ -11,7 +11,7 @@ source=(
   "$pkgname-$pkgver.zip::https://github.com/OpenStarbound/OpenStarbound/releases/download/v$pkgver/OpenStarbound-Linux-Clang-Client.zip"
   "starbound.png"
 )
-sha256sums=('b9adabae043060e4f881ae17dacf889272eae4ec243e771c63a6dc79b6bbc206'
+sha256sums=('ee338d9cc9d8fcb060075fb3afab703a8fa329c38004f381134f5464893438cc'
 'c9c86ce8ee065e3a96e25778eb1212bf559affeef61c51f0ec4b2cad76ec9193'
 )
 
