@@ -1,13 +1,14 @@
 pkgbase = pandoc-static-git
 	pkgdesc = Conversion between markup formats (static build, dynamic Lua support)
 	pkgver = 3.6.4.r8.g68bb4ae58
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pandoc.org
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = cabal-install
+	makedepends = ghc
 	depends = gmp
 	depends = zlib
 	optdepends = texlive-core: for pdf output

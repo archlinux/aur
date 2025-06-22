@@ -9,7 +9,7 @@ shopt -s extglob
 pkgname=pandoc-static-git
 _pkgname_old=(pandoc-cli pandoc)
 pkgver=3.6.4.r8.g68bb4ae58
-pkgrel=1
+pkgrel=2
 pkgdesc='Conversion between markup formats (static build, dynamic Lua support)'
 arch=('i686' 'x86_64')
 url='https://pandoc.org'
@@ -17,7 +17,7 @@ license=('GPL-2.0-or-later')
 provides=("${_pkgname_old[@]/%/=${pkgver%%*([a-z]).r*}}")
 conflicts=("${_pkgname_old[@]}")
 depends=('gmp' 'zlib')
-makedepends=('git' 'cabal-install')
+makedepends=('git' 'cabal-install' 'ghc')
 optdepends=('texlive-core: for pdf output')
 _url=https://github.com/jgm/pandoc
 source=("$pkgname::git+$_url.git")
