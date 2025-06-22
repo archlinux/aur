@@ -2,13 +2,13 @@
 # Contributor: Tyler Anderson <unlimitedbacon@gmail.com>
 
 pkgname=stl-thumb-git
-pkgver=212.73a456a
+pkgver=238.6f4dd55
 pkgrel=1
 license=('MIT')
 pkgdesc="A fast lightweight thumbnail generator for STL files"
-url='https://github.com/rowanfr/stl-thumb.git'
-source=("${pkgname}::git+https://github.com/rowanfr/stl-thumb.git#branch=master")
-depends=('libgl')
+url="https://github.com/unlimitedbacon/stl-thumb.git"
+source=("${pkgname}::git+https://github.com/unlimitedbacon/stl-thumb.git")
+depends=("libgl")
 makedepends=("rust" "git")
 provides=("stl-thumb")
 conflicts=("stl-thumb")
@@ -23,12 +23,10 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname}"
 
-    git checkout master
-    git pull origin master
 	# Remove cargo config
 	# This file has gcc paths specifically for building on Debian/ARM
 	# Removing it allows this package to build on Arch Linux Arm
-	rm .cargo/config
+	rm .cargo/config.toml
 
 	cargo build --release
 }

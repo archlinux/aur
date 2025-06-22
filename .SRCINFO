@@ -1,8 +1,8 @@
 pkgbase = stl-thumb-git
 	pkgdesc = A fast lightweight thumbnail generator for STL files
-	pkgver = 212.73a456a
+	pkgver = 238.6f4dd55
 	pkgrel = 1
-	url = https://github.com/rowanfr/stl-thumb.git
+	url = https://github.com/unlimitedbacon/stl-thumb.git
 	arch = i386
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = stl-thumb-git
 	depends = libgl
 	provides = stl-thumb
 	conflicts = stl-thumb
-	source = stl-thumb-git::git+https://github.com/rowanfr/stl-thumb.git#branch=master
+	source = stl-thumb-git::git+https://github.com/unlimitedbacon/stl-thumb.git
 	sha256sums = SKIP
 
 pkgname = stl-thumb-git
