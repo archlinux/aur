@@ -16,7 +16,7 @@
 -  // Please re-add these lines after updating the linux build files
 -  // If the user explicitly requests to disable the header bar, switch back to 
 -  // using a traditional title bar
-+  // Do not use csd header bar unless using GNOME or GTK_CSD=1
++  // Do not use csd header bar unless using GNOME
 +  gboolean use_header_bar = FALSE;
 +
 +  const gchar *desktop = g_getenv("XDG_CURRENT_DESKTOP");
