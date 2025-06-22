@@ -14,24 +14,24 @@ source=("$pkgname::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$pkgname"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
-	./autogen.sh
-	LDFLAGS="${LDFLAGS-} -licuuc -licui18n" ./configure \
-		--prefix=/usr \
-		--sbindir=/usr/bin \
-		--sysconfdir=/etc \
-		--localstatedir=/var \
-		--enable-fast
+    cd "${srcdir}/${pkgname}"
+    ./autogen.sh
+    LDFLAGS="${LDFLAGS-} -licuuc -licui18n" ./configure \
+        --prefix=/usr \
+        --sbindir=/usr/bin \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --enable-fast
 
-	make
+    make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
-	make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${pkgname}"
+    make DESTDIR="${pkgdir}" install
 }
