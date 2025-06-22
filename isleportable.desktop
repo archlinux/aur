@@ -6,3 +6,7 @@ Comment=LEGO-themed open-world adventure game
 Exec=lego-isle
 Icon=legoisle
 Categories=Game;AdventureGame;ActionGame;KidsGame;
+
+[Desktop Action Settings]
+Name=Settings
+Exec=lego-isle-config

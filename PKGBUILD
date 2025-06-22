@@ -1,7 +1,7 @@
 # Maintainer: Danct12 <WkdGdVkzUXhNa0JrYVhOeWIyOTBMbTl5WndvPQo=>
 pkgname=isle-portable-git
 pkgver=r2091.3678c97e
-pkgrel=2
+pkgrel=3
 pkgdesc="Portable version of LEGO Island based on decompilation effort"
 arch=(x86_64)
 url="https://github.com/isledecomp/isle-portable"
@@ -16,7 +16,7 @@ source=(
     'isleportable.desktop'
 )
 sha256sums=('SKIP'
-            '9205cb2248c1ba5bcaf57e9a053f50e649afe8dea7d6d13b6a95bb7f1bc4d371')
+            '5f22d947b5298407a1f320b01feff40994c32a5f3494ab31d0044eb2e1b7a98d')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
