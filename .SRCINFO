@@ -1,7 +1,7 @@
 pkgbase = dietlibc
 	pkgdesc = a libc optimized for small size
 	pkgver = 0.35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.fefe.de/dietlibc/
 	arch = i686
 	arch = x86_64

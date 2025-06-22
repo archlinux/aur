@@ -6,7 +6,7 @@
 
 pkgname=dietlibc
 pkgver=0.35
-pkgrel=1
+pkgrel=2
 pkgdesc="a libc optimized for small size"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://www.fefe.de/dietlibc/"
@@ -21,7 +21,7 @@ sha256sums=('5aa5599039ae58bba7b4a1566fc453485cd1a155a20b313e15cd1bd0e19c0beb'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make
+  make CFLAGS='-std=gnu17'
 }
 
 package() {
