@@ -10,6 +10,7 @@ license=('GPL')
 groups=()
 depends=(
 	vscodium
+	pyalpm
 	python-toml
 )
 makedepends=(
