@@ -1,0 +1,22 @@
+pkgbase = neural-amp-modeler-ui-git
+	pkgdesc = GUI for Neural Amp Modeler LV2 plugin
+	pkgver = r45.d34a9a6
+	pkgrel = 1
+	url = https://github.com/brummer10/neural-amp-modeler-ui
+	arch = x86_64
+	groups = pro-audio
+	license = 0BSD
+	makedepends = git
+	makedepends = lv2
+	depends = cairo
+	depends = glibc
+	depends = libx11
+	depends = neural-amp-modeler-lv2
+	provides = neural-amp-modeler-ui
+	conflicts = neural-amp-modeler-ui
+	source = git+https://github.com/brummer10/neural-amp-modeler-ui
+	source = git+https://github.com/brummer10/libxputty.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = neural-amp-modeler-ui-git
