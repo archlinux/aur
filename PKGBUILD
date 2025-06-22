@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-svdrpservice
 pkgver=1.0.0
-_vdrapi=6
-pkgrel=27
+_vdrapi=8
+pkgrel=28
 pkgdesc="Offers SVDRP connections as a service to other plugins"
 url="https://github.com/vdr-projects/vdr-plugin-svdrpservice"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
