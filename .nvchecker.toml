@@ -1,0 +1,4 @@
+[startup-configuration]
+source = "git"
+git = "https://github.com/ellieplayswow/startup-configuration.git"
+prefix = "v"
