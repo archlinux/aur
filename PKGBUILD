@@ -3,7 +3,7 @@
 # Contributor: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=firefox-esr-extension-bitwarden
-pkgver=2025.3.2
+pkgver=2025.5.0
 pkgrel=1
 pkgdesc='Bitwarden browser extension for Firefox ESR'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('firefox-esr')
 groups=('firefox-esr-addons')
 makedepends=('nodejs' 'npm' 'unzip' 'zip' 'jq')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/clients/archive/refs/tags/browser-v${pkgver}.tar.gz")
-b2sums=('0b14794ae2c44ead90a0db928a080a134b52e2a49eb01bb4a8203ec6c743faa644ee1a0f6de33879d696603a33a339b38f98981ef3945176db3071a7d6885b4f')
+b2sums=('0de37c8474cf94b647e9534560ee96adf7e6678bc867c3594b550d30398eea22f07beb1a22b8044f4b79ca0184b32738e5e9317b6d80874cfadda63f34a79906')
 
 srcpath="clients-browser-v${pkgver}/apps/browser"
 
