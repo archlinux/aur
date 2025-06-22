@@ -1,5 +1,5 @@
 pkgbase = xlibre-server-git
-	pkgver = 21.1.13.r3009.942b0e96c
+	pkgver = 25.0.0.0.r0.40dc3b641
 	pkgrel = 1
 	url = https://github.com/x11libre/xserver
 	arch = aarch64
@@ -79,10 +79,10 @@ pkgname = xlibre-server-git
 	depends = pixman>=0.27.2
 	depends = sh
 	depends = systemd-libs>=209
-	depends = xf86-input-libinput-xlibre
-	depends = xlibre-server-common-git=21.1.13.r3009.942b0e96c-1
-	provides = xlibre-server=21.1.13
-	provides = xorg-server=21.1.13
+	depends = xlibre-input-libinput
+	depends = xlibre-server-common-git=25.0.0.0.r0.40dc3b641-1
+	provides = xlibre-server=25.0.0.0
+	provides = xorg-server=25.0.0.0
 	provides = X-ABI-VIDEODRV_VERSION=28.0
 	provides = X-ABI-XINPUT_VERSION=26.0
 	provides = X-ABI-EXTENSION_VERSION=11.0
@@ -117,10 +117,10 @@ pkgname = xlibre-server-bootstrap-git
 	depends = pixman>=0.27.2
 	depends = sh
 	depends = systemd-libs>=209
-	depends = xlibre-server-common-git=21.1.13.r3009.942b0e96c-1
-	provides = xlibre-server=21.1.13
-	provides = xorg-server=21.1.13
-	provides = xlibre-server-bootstrap=21.1.13
+	depends = xlibre-server-common-git=25.0.0.0.r0.40dc3b641-1
+	provides = xlibre-server=25.0.0.0
+	provides = xorg-server=25.0.0.0
+	provides = xlibre-server-bootstrap=25.0.0.0
 	provides = x-server
 	provides = X-ABI-VIDEODRV_VERSION=28.0
 	provides = X-ABI-XINPUT_VERSION=26.0
@@ -141,8 +141,8 @@ pkgname = xlibre-server-common-git
 	depends = xkeyboard-config
 	depends = xorg-setxkbmap
 	depends = xorg-xkbcomp
-	provides = xlibre-server-common=21.1.13
-	provides = xorg-server-common=21.1.13
+	provides = xlibre-server-common=25.0.0.0
+	provides = xorg-server-common=25.0.0.0
 	conflicts = xlibre-server-common
 	conflicts = xorg-server-common
 
@@ -154,8 +154,8 @@ pkgname = xlibre-server-devel-git
 	depends = pixman>=0.27.2
 	depends = xorgproto>=7.0.31
 	depends = xorg-util-macros
-	provides = xlibre-server-devel=21.1.13
-	provides = xorg-server-devel=21.1.13
+	provides = xlibre-server-devel=25.0.0.0
+	provides = xorg-server-devel=25.0.0.0
 	conflicts = xlibre-server-devel
 	conflicts = xorg-server-devel
 
@@ -179,9 +179,9 @@ pkgname = xlibre-server-xephyr-git
 	depends = xcb-util-keysyms
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
-	depends = xlibre-server-common-git=21.1.13.r3009.942b0e96c-1
-	provides = xlibre-server-xephyr=21.1.13
-	provides = xorg-server-xephyr=21.1.13
+	depends = xlibre-server-common-git=25.0.0.0.r0.40dc3b641-1
+	provides = xlibre-server-xephyr=25.0.0.0
+	provides = xorg-server-xephyr=25.0.0.0
 	conflicts = xlibre-server-xephyr
 	conflicts = xorg-server-xephyr
 
@@ -198,9 +198,9 @@ pkgname = xlibre-server-xnest-git
 	depends = nettle
 	depends = pixman>=0.27.2
 	depends = systemd-libs>=209
-	depends = xlibre-server-common-git=21.1.13.r3009.942b0e96c-1
-	provides = xlibre-server-xnest=21.1.13
-	provides = xorg-server-xnest=21.1.13
+	depends = xlibre-server-common-git=25.0.0.0.r0.40dc3b641-1
+	provides = xlibre-server-xnest=25.0.0.0
+	provides = xorg-server-xnest=25.0.0.0
 	conflicts = xlibre-server-xnest
 	conflicts = xorg-server-xnest
 
@@ -219,9 +219,9 @@ pkgname = xlibre-server-xvfb-git
 	depends = pixman
 	depends = sh
 	depends = systemd-libs>=209
-	depends = xlibre-server-common-git=21.1.13.r3009.942b0e96c-1
+	depends = xlibre-server-common-git=25.0.0.0.r0.40dc3b641-1
 	depends = xorg-xauth
-	provides = xlibre-server-xvfb=21.1.13
-	provides = xorg-server-xvfb=21.1.13
+	provides = xlibre-server-xvfb=25.0.0.0
+	provides = xorg-server-xvfb=25.0.0.0
 	conflicts = xlibre-server-xvfb
 	conflicts = xorg-server-xvfb

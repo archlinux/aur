@@ -4,7 +4,7 @@ _pkgbase="xlibre-server"
 _pkgname=("${_pkgbase}"{,-bootstrap,-common,-devel,-xephyr,-xnest,-xvfb})
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgname[@]/%/-git}")
-pkgver=21.1.13.r3009.942b0e96c
+pkgver=25.0.0.0.r0.40dc3b641
 pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://github.com/x11libre/xserver"
@@ -31,14 +31,11 @@ b2sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${_pkgsrc}"
-
-  local tag=$(git tag -l 'xorg-server-*' --sort=-v:refname | head -n1)
-  local ver=${tag#xorg-server-}
-
-  local rev=$(git rev-list --count "$tag"..HEAD)
-
-  local hash=$(git rev-parse --short HEAD)
-
+  local tag ver rev hash
+  tag="$(git tag -l "xlibre-xserver-*" --sort=-v:refname | head -n1)"
+  ver="${tag#xlibre-xserver-}"
+  rev="$(git rev-list --count "$tag"..HEAD)"
+  hash="$(git rev-parse --short HEAD)"
   printf "%s.r%s.%s" "$ver" "$rev" "$hash"
 }
 
@@ -46,9 +43,9 @@ build() {
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, modules fail to load with undefined symbol.
   # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
-  export CFLAGS=${CFLAGS/-fno-plt}
-  export CXXFLAGS=${CXXFLAGS/-fno-plt}
-  export LDFLAGS=${LDFLAGS/-Wl,-z,now}
+  export CFLAGS="${CFLAGS/-fno-plt}"
+  export CXXFLAGS="${CXXFLAGS/-fno-plt}"
+  export LDFLAGS="${LDFLAGS/-Wl,-z,now}"
   local meson_options=(
     "${_pkgsrc}"
     "${_pkgsrc}/build"
@@ -78,8 +75,8 @@ package_xlibre-server-git() {
   depends=('dbus' 'glibc' 'libdrm' 'libepoxy' 'libgl' 'libpciaccess' 'libtirpc'
            'libunwind' 'libxau' 'libxcvt' 'libxdmcp' 'libxfont2'
            'libxshmfence>=1.1' 'nettle' 'pixman>=0.27.2' 'sh'
-           'systemd-libs>=209' 'xf86-input-libinput-xlibre'
-           "xlibre-server-common-git=${pkgver}-${pkgrel}") # FS#52949
+           'systemd-libs>=209' 'xlibre-input-libinput'
+           "${_pkgbase}-common-git=${pkgver}-${pkgrel}") # FS#52949
   # see xlibre-server*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xlibre-server-devel pkg
   provides=({xlibre,xorg}"-server=${pkgver%%.r*}" 'X-ABI-VIDEODRV_VERSION=28.0' 'X-ABI-XINPUT_VERSION=26.0' 'X-ABI-EXTENSION_VERSION=11.0' 'x-server')
