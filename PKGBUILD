@@ -3,7 +3,7 @@
 # Contributor: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=pacman-hook-kernel-install
-pkgver=0.14.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Pacman hooks for kernel-install."
 url='https://man.archlinux.org/man/kernel-install.8'
