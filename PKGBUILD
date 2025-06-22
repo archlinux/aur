@@ -3,37 +3,33 @@
 # Contributor: Lubomir Krajcovic <lubomir.krajcovic(AT)gmail(DOT)com>
 # Contributor: Vladimir Kutyavin <vlkut(AT)bk(DOT)ru>
 pkgname=xtables-addons-dkms
+_pkgname="${pkgname%-*}"
 pkgver=3.28
-pkgrel=1
+pkgrel=2
 pkgdesc='DKMS for additional extensions for Xtables packet filter present in the Linux kernel'
 arch=('x86_64' 'aarch64')
 license=('GPL2')
-url="https://inai.de/projects/xtables-addons/"
+url="https://inai.de/projects/${_pkgname}/"
 depends=('dkms')
 optdepends=('perl-text-csv-xs: required for building GeoIP database'
             'perl-net-cidr-lite: required for building GeoIP database'
             'wget: required for building GeoIP database'
             'unzip: required for building GeoIP database')
-conflicts=(xtables-addons xtables-addons-git xtables-addons-multikernel)
-replaces=(xtables-addons xtables-addons-git xtables-addons-multikernel)
-source=(https://inai.de/files/${pkgname%-dkms}/${pkgname%-dkms}-${pkgver}.tar.xz
+conflicts=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-multikernel")
+replaces=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-multikernel")
+source=("https://inai.de/files/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"
         dkms.conf)
 sha256sums=('3dfeddda6f7dbc686c5fb9232e8b57dfa9fd275f3ec45a1572466afefb17fa92'
-            '87546f6d100a33271086d3bc990a2a1e4de83e25fb4a048774c520f4c36729e6')
+            '5e131d43ce1b282ada4b02599d2c203a01e2444817f5835bd11ba55578e49111')
 
 prepare() {
-    cd "xtables-addons-${pkgver}"
+    cd "${_pkgname}-${pkgver}"
 
     # disable install-exec-hook (avoids useless calling of depmod -a at 'make install' stage)
     sed -i 's/^install-exec-hook:$/dont-run:/' Makefile.am
     # disable building of xt_ECHO (it's an example module, and it breaks the build)
     sed -i 's/^build_ECHO=.*$/build_ECHO=n/' mconfig
-}
 
-build() {
-    cd "xtables-addons-${pkgver}"
-
-    # build userspace parts
     autoreconf -fvi
     ./configure \
         --prefix=/usr \
@@ -46,25 +42,26 @@ build() {
         --libexecdir=/usr/lib/xtables \
         --with-xtlibdir=/usr/lib/xtables \
         --without-kbuild
+}
+
+build() {
+    cd "${_pkgname}-${pkgver}"
     make
 }
 
 check() {
-    cd "xtables-addons-${pkgver}"
+    cd "${_pkgname}-${pkgver}"
     make check
 }
 
 package() {
-    cd "xtables-addons-${pkgver}"
+    cd "${_pkgname}-${pkgver}"
 
     # prepare dkms build tree
-    dkmsDst="${pkgdir}/usr/src/xtables-addons-${pkgver}"
-    mkdir -p "${dkmsDst}/"
-    cp -R . "${dkmsDst}/"
-
-    # prepare dkms config
-    cp "${srcdir}/dkms.conf" "${dkmsDst}/"
-    sed -i -e "s/@VERSION@/${pkgver}/" "${dkmsDst}/dkms.conf"
+    dkmsDst="${pkgdir}/usr/src/${_pkgname}-${pkgver}"
+    install -Dm644 -t "${dkmsDst}" "${srcdir}/dkms.conf"
+    sed -i -e "s/@_PKGNAME/${_pkgname}/" -e "s/@PKGVER@/${pkgver}/" "${dkmsDst}/dkms.conf"
+    cp -r . "${dkmsDst}"
 
     make DESTDIR="${pkgdir}" install
 }
