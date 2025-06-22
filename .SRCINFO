@@ -1,0 +1,24 @@
+pkgbase = maixvision-bin
+	pkgdesc = MaixVision development environment for Sipeed Maix series AIoT boards
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://www.sipeed.com/maixvision
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libutil-linux
+	depends = libsecret
+	source = https://cdn.sipeed.com/maixvision/1.2.2/maixvision_1.2.2_amd64.deb
+	source = maixvision.desktop
+	source = maixvision.png
+	sha256sums = a807e1d946862bb3972562ed25ba46dd236b7f04dd78e23bf419f3425626465d
+	sha256sums = 2b36fd1a1c3640900ad6fd47e6125c800fce8f00652be773dcd53f7c530535ce
+	sha256sums = c2f483122d4c799b877e1e24426e592fdd90b5c545fe1be4e43aac32120568b7
+
+pkgname = maixvision-bin

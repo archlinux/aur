@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MaixVision
+Exec=/opt/MaixVision/maixvision %U
+Terminal=false
+Type=Application
+Icon=maixvision
+StartupWMClass=MaixVision
+Comment=MaixVision
+Categories=Utility;
