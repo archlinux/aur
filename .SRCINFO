@@ -1,5 +1,5 @@
 pkgbase = transgui-git
-	pkgdesc = Feature-rich client for Transmission Remote (Qt6)
+	pkgdesc = Transmission BitTorrent client (Qt6)
 	pkgver = 5.18.8.r1.ga704302
 	pkgrel = 1
 	url = https://github.com/lighterowl/transgui
