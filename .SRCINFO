@@ -1,7 +1,7 @@
 pkgbase = librewolf-kde-appmenu
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom. KDE-appmenu applied
-	pkgver = 121.0
-	pkgrel = 1
+	pkgver = 139.0
+	pkgrel = 2
 	url = https://librewolf.net/
 	install = librewolf.install
 	arch = x86_64
@@ -48,7 +48,7 @@ pkgbase = librewolf-kde-appmenu
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = librewolf=121.0
+	provides = librewolf=139.0
 	conflicts = librewolf
 	options = !debug
 	options = !emptydirs
@@ -57,7 +57,7 @@ pkgbase = librewolf-kde-appmenu
 	options = !strip
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/121.0-1/librewolf-121.0-1.source.tar.gz
+	source = https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/139.0-2/librewolf-139.0-2.source.tar.gz
 	source = librewolf.desktop
 	source = default192x192.png
 	source = 0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch

@@ -3,8 +3,8 @@
 
 pkgname=librewolf-kde-appmenu
 _pkgname=librewolf
-pkgver=121.0
-pkgrel=1
+pkgver=139.0
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom. KDE-appmenu applied"
 url="https://librewolf.net/"
 arch=(x86_64 aarch64)
