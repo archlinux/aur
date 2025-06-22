@@ -17,7 +17,7 @@ if [[ ! -f $TYPORA_PLUGIN_CONFIG_HOME/settings.user.toml ]]; then
   cp /usr/share/typora/resources/plugin/global/settings/settings.user.toml $TYPORA_PLUGIN_CONFIG_HOME/
 fi
 
-if [[ ! -f $TYPORA_PLUGIN_CONFIG_HOME/custom_plugin.default.toml ]]; then
+if [[ ! -f $TYPORA_PLUGIN_CONFIG_HOME/custom_plugin.user.toml ]]; then
   cp /usr/share/typora/resources/plugin/global/settings/custom_plugin.user.toml $TYPORA_PLUGIN_CONFIG_HOME/
 fi
 
