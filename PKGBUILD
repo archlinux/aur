@@ -1,6 +1,6 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
-pkgname=BodySlide
+pkgname=bodyslide
 pkgver=5.7.0
 pkgrel=2
 pkgdesc='BodySlide and Outfit Studio, a tool to convert, create, and customize outfits and bodies for Bethesda games.'
