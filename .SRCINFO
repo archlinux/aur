@@ -1,6 +1,6 @@
 pkgbase = lemmy
 	pkgdesc = A link aggregator for the fediverse
-	pkgver = 0.19.11
+	pkgver = 0.19.12
 	pkgrel = 1
 	url = https://join-lemmy.org
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = lemmy
 	optdepends = pict-rs: for image hosting backend
 	options = !lto
 	backup = etc/lemmy/lemmy.hjson
-	source = lemmy::git+https://github.com/LemmyNet/lemmy.git#commit=5a46011287095700ec734422a5495c3265467c6b
+	source = lemmy::git+https://github.com/LemmyNet/lemmy.git#commit=fe72c0feeb7844cedf698df624a8010b7fb3a724
 	source = git+https://github.com/LemmyNet/lemmy-translations.git
 	source = systemd.service
 	source = sysusers.conf
