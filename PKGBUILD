@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-wirbelscan
 pkgver=2024.09.15
-pkgrel=2
-_vdrapi=6
+pkgrel=3
+_vdrapi=8
 pkgdesc="Performs a channel scans for DVB-T, DVB-C and DVB-S"
 url="https://www.gen2vdr.de/wirbel/wirbelscan/index2.html"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
