@@ -1,7 +1,7 @@
 pkgbase = rustdesk-bin
 	pkgdesc = Yet another remote desktop software, written in Rust. Works out of the box, no configuration required.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rustdesk/rustdesk
 	install = rustdesk-bin.install
 	arch = x86_64
