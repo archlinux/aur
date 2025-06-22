@@ -1,43 +1,40 @@
 # Maintainer: Kyle Laker <kyle+aur@laker.email>
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 pkgname=chalice
-pkgver=1.29.0
+pkgver=1.32.0
 pkgrel=1
-pkgdesc="Python Serverless Microframework for AWS"
-arch=("any")
-url="https://github.com/aws/chalice"
-license=("Apache")
-depends=(\
-    "python"
-    "python-click"
-    "python-botocore"
-    "python-mypy_extensions"
-    "python-six"
-    "python-pip"
-    "python-jmespath"
-    "python-yaml"
-    "python-inquirer"
-    "python-wheel"
-    "python-setuptools"
-)
-makedepends=("python-setuptools" "mypy")
-optdepends=('python-watchdog: server auto-reload support'
-            'aws-cdk: AWS CDK support')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/aws/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('a3d39a9f425911b47aa94f6702c22d4216a06d4a12a03a3c6286e9909ce774c2d7fdddce9a7a45bdf9a36090a6ac0f64e26f90b42daa1323c1bcf5b6cc30b8e3')
-
-prepare() {
-    cd "${srcdir}/$pkgname-$pkgver"
-    # Fix the tests getting included in the package
-    sed -i' ' -e "s/'tests'/'tests*'/" setup.py
-}
+pkgdesc='Python Serverless Microframework for AWS.'
+arch=('any')
+url='https://github.com/aws/chalice'
+license=('Apache-2.0')
+depends=('python' 'python-click' 'python-botocore' 'python-six' 'python-pip' 'python-jmespath' 'python-pyyaml' 'python-inquirer' 'python-wheel' 'python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-pytest' 'python-boto3' 'python-hypothesis' 'python-websocket-client' 'python-pytest-cov' 'python-requests')
+optdepends=('python-watchdog: event-file-poller' 'python-aws-cdk.aws-iam: cdk' 'python-aws-cdk.aws-s3-assets: cdk' 'python-aws-cdk.cloudformation-include: cdk' 'python-aws-cdk.core: cdk' 'python-aws-cdk-lib')
+provides=(python-chalice)
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('f4d86905b01c1e9e4855e8e38ff167210a2057a78688fa50a58cbdc68f0a9229')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py build
+    cd "${srcdir}"/${pkgname}-${pkgver}
+   python -m build --wheel --no-isolation
+}
+
+check() {
+  local pytest_options=(
+    -vv
+    # Need AWS API
+    --deselect tests/aws/test_features.py
+    --deselect tests/aws/test_websockets.py::test_websocket_redployment_does_not_lose_messages
+  )
+  cd "${srcdir}"/${pkgname}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py install --skip-build --root="${pkgdir}" --optimize=1
+    cd "${srcdir}"/${pkgname}-${pkgver}
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
