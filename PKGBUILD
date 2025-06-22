@@ -1,15 +1,15 @@
 # Maintainer: Josh Holmer <jholmer.in@gmail.com>
 
 pkgname=vapoursynth-plugin-mlrt-ext-models-artcnn
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: mlrt (external models for ArtCNN)"
 arch=('any')
 url='https://github.com/Artoriuz/ArtCNN'
 license=('MIT')
 depends=('vapoursynth' 'vapoursynth-plugin-mlrt')
-source=("https://github.com/Artoriuz/ArtCNN/archive/refs/tags/v1.3.0.zip")
-sha256sums=('7ba1066e53fbc8fdb8afc3b30b7b1ed75357483beb6e8c9bfdb0387984a94470')
+source=("https://github.com/Artoriuz/ArtCNN/archive/refs/tags/v1.3.1.zip")
+sha256sums=('ce19e113578d3820812b01c606abc7a6fc15dd450e12c3cfe3b812c8d8ff4a21')
 
 package() {
   cd "ArtCNN-${pkgver}"
