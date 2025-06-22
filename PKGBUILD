@@ -1,6 +1,6 @@
 # Maintainer: Rankyn Bass <rankyn@proton.me>
 pkgname=xivlauncher-rb
-pkgver=1.1.2.3
+pkgver=1.1.2.4
 pkgrel=1
 epoch=2
 pkgdesc="Custom launcher for Final Fantasy XIV Online with RB Patches!"
