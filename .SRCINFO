@@ -1,6 +1,6 @@
 pkgbase = maptool
 	pkgdesc = An open source virtual tabletop program
-	pkgver = 1.17.0
+	pkgver = 1.17.1
 	pkgrel = 1
 	url = https://rptools.net/tools/maptool
 	install = maptool.install
@@ -12,9 +12,9 @@ pkgbase = maptool
 	makedepends = gradle
 	makedepends = xdg-utils
 	makedepends = rpm-tools
-	source = git+https://github.com/RPTools/maptool.git#tag=1.17.0
+	source = git+https://github.com/RPTools/maptool.git#tag=1.17.1
 	source = maptool.sh
-	sha256sums = f3bba89ea3c4fc36b966a4b805dce7c760f32d1bf3db0705c39882a491798059
+	sha256sums = 96246607d73291fd6c575fc867bf4c5cc08b6e30d4813db57d2537153292fd5c
 	sha256sums = 16720b6f986f79eed2a9517433a6c0880c2b80f0d7c8611fb1359c85d1b372bc
 
 pkgname = maptool
