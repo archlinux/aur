@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-numpy-quaternion
-pkgver=2024.0.8
+pkgver=2024.0.9
 pkgrel=1
 pkgdesc="Add built-in support for quaternions to NumPy"
 url="https://quaternion.readthedocs.io/"
@@ -31,7 +31,7 @@ source=(
   "git+https://github.com/moble/quaternion.git#tag=v$pkgver"
 )
 sha256sums=(
-  '5d23661b769e2ccb41fee55503f9b6e7f89b7af71a59250d0ee2400e4fcc8f83'
+  'ab3016c1c46737dd705cb11cff82a37641d1eccc566a092b4d74cbda31e1fe2e'
 )
 
 build() {
