@@ -2,7 +2,7 @@
 _pkgname=notesnook
 pkgname="${_pkgname}-electron-bin"
 _appname=Notesnook
-pkgver=3.2.0
+pkgver=3.2.2
 _electronversion=34
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Prebuilt version.Use system-wide electron)"
@@ -27,8 +27,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
-sha256sums_aarch64=('9f10df3315d002ce5d84bddf917d09f4065ae41ef399daf688b0307687dd5efb')
-sha256sums_x86_64=('1fb06241e30b5b3b05b9c5f4735e6d742af22ee774e30d951038909848d96e9f')
+sha256sums_aarch64=('79d586d378def4ba5844cea23ab51c910c678cc8aea622cc8ce95e40d30824e0')
+sha256sums_x86_64=('0ae3a65bd9034e533dfee4c52acb8d49f91827a38d2368d9e32b62296fc722c1')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/squashfs-root/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -41,7 +45,11 @@ prepare() {
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g;s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g" -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    _get_electron_version
+    sed -i -e "
+        s/AppRun --no-sandbox/${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+    " -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
     sed -i -e "
         s/dirname(process.execPath), \"..\", \"Resources\"/dirname(\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\')/g
