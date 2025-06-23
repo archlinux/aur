@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atlassify-git
 _pkgname=Atlassify
-pkgver=1.18.0.r5.gabdd321
+pkgver=1.19.0.r2.g33cc54f
 _electronversion=36
-_nodeversion=22
+_nodeversion=24
 pkgrel=1
 pkgdesc="Atlassian notifications on your menu bar.(Use system-wide electron)"
 arch=('any')
@@ -29,7 +29,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
@@ -66,16 +66,17 @@ prepare() {
         #echo 'build_from_source=true'
         echo 'link-workspace-packages=true'
         echo 'fetch-retry-maxtimeout=10000'
-        echo "cache-dir="${srcdir}"/.pnpm_cache"
-        echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "cache-dir=${srcdir}/.pnpm_cache"
+        echo "store-dir=${srcdir}/.pnpm_store"
+        echo "virtual-store-dir=${srcdir}/.pnpm_store"
         echo "shamefully-hoist=true"
         echo "virtual-store-dir-max-length=80"
+        echo "node-linker=hoisted"
+        echo "network-concurrency=32"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
         echo 'registry=https://registry.npmmirror.com'
-        echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-        echo 'node-mirror=https://registry.npmmirror.com/-/binary/node/'
         echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
         echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
