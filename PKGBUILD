@@ -1,11 +1,12 @@
 # Maintainer: Jonathan Neidel <aur@jneidel.com>
 # Contributor: willemw <willemw12@gmail.com>
 # Contributor: gnomeye <gnomeye at gmail dot com>
+# Contributor: Antoine Lubineau <antoine@lubignon.info>
 
 _srcname=ts
 pkgname=task-spooler
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Queue up tasks from the shell for batch execution"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://viric.name/soft/ts/"
@@ -25,7 +26,7 @@ prepare() {
 }
 
 build() {
-  make -C $_srcname-$pkgver
+  make CFLAGS="-ansi" -C $_srcname-$pkgver
 }
 
 package() {
