@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vis-launcher-bin
 _pkgname=VI-Software-Launcher
-pkgver=2.1.6
+pkgver=2.1.7
 _electronversion=33
 pkgrel=1
 pkgdesc="Modded Minecraft launcher for servers on the VI Software Platform.(Prebuilt version.Use system-wide electron)"
@@ -23,10 +23,11 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-setup-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('172156098e4b31fb26e8aa866871ee54f419d225c9734e2e257bd0c0b001df48'
+sha256sums=('adf3a897ec4f3d61803662bd5dd30a04b572445656f3ad9047cc0f48c90f2d6b'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
-    _electronversion="strings ${srcdir}/squashfs-root/${pkgname%-bin}  | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1"
+    _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
 }
 prepare() {
     sed -i -e "

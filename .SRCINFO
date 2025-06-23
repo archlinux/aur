@@ -1,6 +1,6 @@
 pkgbase = vis-launcher-bin
 	pkgdesc = Modded Minecraft launcher for servers on the VI Software Platform.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.1.6
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = https://visoftware.dev/launcher
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = vis-launcher-bin
 	makedepends = asar
 	depends = electron33
 	depends = java-runtime
-	provides = vis-launcher=2.1.6
+	provides = vis-launcher=2.1.7
 	conflicts = vis-launcher
-	source = vis-launcher-2.1.6-x86_64.AppImage::https://github.com/VI-Software/vis-launcher/releases/download/v2.1.6/VI-Software-Launcher-setup-2.1.6.AppImage
+	source = vis-launcher-2.1.7-x86_64.AppImage::https://github.com/VI-Software/vis-launcher/releases/download/v2.1.7/VI-Software-Launcher-setup-2.1.7.AppImage
 	source = vis-launcher.sh
-	sha256sums = 172156098e4b31fb26e8aa866871ee54f419d225c9734e2e257bd0c0b001df48
+	sha256sums = adf3a897ec4f3d61803662bd5dd30a04b572445656f3ad9047cc0f48c90f2d6b
 	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = vis-launcher-bin
