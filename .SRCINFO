@@ -1,12 +1,12 @@
 pkgbase = guacamole-auth-totp-bin
 	pkgdesc = The totp authentication extension for Guacamole Client
-	pkgver = 1.5.5
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://guacamole.apache.org/
 	arch = any
 	license = GPL3
 	depends = guacamole-client
-	source = https://archive.apache.org/dist/guacamole/1.5.5/binary/guacamole-auth-totp-1.5.5.tar.gz
-	md5sums = f60e6108e0b16f9e2c80206559b7a692
+	source = https://archive.apache.org/dist/guacamole/1.6.0/binary/guacamole-auth-totp-1.6.0.tar.gz
+	md5sums = 03184247ea42c0861d894c9a3dd9b919
 
 pkgname = guacamole-auth-totp-bin
