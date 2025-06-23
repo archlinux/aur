@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dopamine
 _pkgname=Dopamine
-pkgver=3.0.0_preview.38
+pkgver=3.0.0_preview.39
 _electronversion=26
 _nodeversion=20
 pkgrel=2
@@ -23,8 +23,8 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver//_/-}"
     "${pkgname}.sh"
 )
-sha256sums=('0756a8d085fd4488bafd7bfffb143e99cc1e68b219318e6079ec11b4bbe11eec'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('55c86767391b86d333700d215ea597e176ff1eb7885e6e27c9357483bb9f566e'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -48,7 +48,7 @@ prepare() {
         echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
-        echo "maxsockets=10"
+        echo "maxsockets=32"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
