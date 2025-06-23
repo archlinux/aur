@@ -1,7 +1,7 @@
 # Maintainer: Zacharias Knudsen <zachasme@gmail.com>
 pkgname=gog-unreal-tournament-goty
-pkgver=469d
-pkgrel=2
+pkgver=469e_rc8
+pkgrel=1
 pkgdesc="Unreal Tournament (99): Game of the Year Edition. GOG Version."
 arch=('x86_64')
 url="https://www.gog.com/forum/general/delisting_unreal_games_unreal_tournament_2004_ut_goty_unreal_2_the_awakening_special_edition/post1"
@@ -50,12 +50,12 @@ depends=('mpg123' 'openal' 'sdl2' 'libxmp')
 optdepends=('wxwidgets-gtk3: wxWidgets-based launcher')
 makedepends=('innoextract' 'imagemagick')
 source=("setup_ut_goty.exe::gogdownloader://unreal_tournament_goty/en1installer0"
-        "patch-${pkgver}.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver}/OldUnreal-UTPatch${pkgver}-Linux-amd64.tar.bz2"
+        "patch-${pkgver}.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver/_/-}/OldUnreal-UTPatch${pkgver%_*}-Linux-amd64.tar.bz2"
         "gog-unreal-tournament-goty.desktop"
         "fallback_dlagent.sh")
 noextract=("patch-${pkgver}.tar.bz2")
 sha256sums=("4cc257d54d97659c5062f2bf186d0a8c6959561d11e42d8fcf2eac07f1926803"
-            "6a81b35ae6a4c0dfce2f8fb152af16129776735aeb34dfc391f7c8daf0d51a3b"
+            "551e0b75bd8b56a3bfea421920d2f29dd6b17f5ab3981d7126bcd91c06a8394d"
             "2d40b8b7ea8434e11e27db9c07c0c8fb3aab28013fd3d80a6425e506ef2433ed"
             "518a904603b3971eb516d0c5198031345dd2d3b5e6d87d12e02dccfe169a9505")
 
@@ -86,8 +86,7 @@ prepare() {
   # Remove prebuilt libraries in favor of arch/AUR packages
   rm \
     "unreal/System64/libmpg123.so" \
-    "unreal/System64/libopenal.so.1" \
-    "unreal/System64/libSDL2-2.0.so.0" \
+    "unreal/System64/libSDL2_ttf-2.0.so.0" \
     "unreal/System64/libxmp.so.4"
 
   # To put extra content (extra levels/mods) into the game
