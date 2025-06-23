@@ -43,7 +43,7 @@ build() {
     --enable-protocol=file \
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,libopus,flac,pcm_u8,pcm_s16le,pcm_s24le,pcm_s32le,pcm_f32le,mp3,pcm_mulaw,pcm_alaw,aac,h264 \
-    --enable-parser=vorbis,flac,aac,opus,mov \
+    --enable-parser=vorbis,flac,mp3,aac,opus,mov \
     --enable-libopus \
     --prefix="${srcdir}"/release \
     --enable-pic --enable-asm --enable-lto # https://www.ffmpeg.org/platform.html#toc-Advanced-linking-configuration
