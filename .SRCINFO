@@ -1,17 +1,17 @@
 pkgbase = touchosc-bin
 	pkgdesc = Modular control surface
-	pkgver = 1.3.9.226
+	pkgver = 1.4.3.234
 	pkgrel = 1
 	url = http://hexler.net
 	arch = x86_64
 	arch = armv7l
 	arch = aarch64
 	license = custom:TouchOSC
-	source_x86_64 = https://hexler.net/pub/touchosc/touchosc-1.3.9.226-linux-x64.deb
-	sha256sums_x86_64 = 9b2c9bed58b1120fbdf6be47e86d0646eb26f2e941c36975fef829148fbcbc04
-	source_armv7l = https://hexler.net/pub/touchosc/touchosc-1.3.9.226-linux-armhf.deb
-	sha256sums_armv7l = d3317e3e7e188f7bc219430d639f9363789402ee3237f7692fddbaa198d67e84
-	source_aarch64 = https://hexler.net/pub/touchosc/touchosc-1.3.9.226-linux-arm64.deb
-	sha256sums_aarch64 = 2cc4ce6a1980eb5b92320b34c0134ccc38d3ed25942f905de6bd5f81c483599a
+	source_x86_64 = https://hexler.net/pub/touchosc/touchosc-1.4.3.234-linux-x64.deb
+	sha256sums_x86_64 = d0ff834d1f2ed5227317cb771e6d530bf37d2846cbb6fe1e645647f6c290d65c
+	source_armv7l = https://hexler.net/pub/touchosc/touchosc-1.4.3.234-linux-armhf.deb
+	sha256sums_armv7l = 0ed9d6649f8580a8f07db67415cb625ad38034f83603f93882a4ba97f2457ba4
+	source_aarch64 = https://hexler.net/pub/touchosc/touchosc-1.4.3.234-linux-arm64.deb
+	sha256sums_aarch64 = c9e0e573dc8cf0dde07c24730018a396b00efc9076d2059a87a96aa6e717d664
 
 pkgname = touchosc-bin
