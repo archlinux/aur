@@ -1,5 +1,5 @@
 pkgname=python-androguard
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=2
 pkgdesc="Python framework for Android application analysis."
 arch=("any")
@@ -9,7 +9,7 @@ depends=("python" "python-setuptools" "ipython" "python-networkx" "python-pygmen
 makedepends=("python-build" "python-installer" "python-wheel" "python-poetry")
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/androguard/androguard/archive/v${pkgver}.tar.gz")
-md5sums=('ab8cd11580d4bd2824ae4ba244351439')
+md5sums=('900af7a8c4acda9205e3dceac0f3bedf')
 
 build() {
     cd androguard-$pkgver

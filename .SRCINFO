@@ -1,6 +1,6 @@
 pkgbase = python-androguard
 	pkgdesc = Python framework for Android application analysis.
-	pkgver = 4.1.2
+	pkgver = 4.1.3
 	pkgrel = 2
 	url = https://github.com/androguard/androguard/
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-androguard
 	depends = python-click
 	depends = python-pydot
 	options = !emptydirs
-	source = python-androguard-4.1.2.tar.gz::https://github.com/androguard/androguard/archive/v4.1.2.tar.gz
-	md5sums = ab8cd11580d4bd2824ae4ba244351439
+	source = python-androguard-4.1.3.tar.gz::https://github.com/androguard/androguard/archive/v4.1.3.tar.gz
+	md5sums = 900af7a8c4acda9205e3dceac0f3bedf
 
 pkgname = python-androguard
