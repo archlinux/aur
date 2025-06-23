@@ -2,12 +2,12 @@
 _pkgbase=r8126
 pkgname=r8126-dkms
 pkgver=10.015.00
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel module for Realtek RTL8126"
 arch=('x86_64')
 url='https://www.realtek.com/Download/List?cate_id=584'
 license=('GPL-2.0-or-later')
-depends=('dkms' 'linux-firmware')
+depends=('dkms' 'linux-firmware-realtek')
 optdepends=('linux-headers: Build the module for Arch kernel'
             'linux-lts-headers: Build the module for LTS Arch kernel')
 conflicts=("${_pkgbase}")
