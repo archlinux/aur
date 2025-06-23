@@ -1,7 +1,7 @@
 pkgbase = mac-fdisk
-	pkgdesc = Mac/PowerMac disk partitioning utility (ported from the Gentoo ebuild)
+	pkgdesc = Apple II/Mac disk partitioning utility (ported from the Gentoo ebuild)
 	pkgver = 0.1p18
-	pkgrel = 1
+	pkgrel = 2
 	url = ftp://ftp.mklinux.apple.com/pub/Other_Tools/
 	arch = i686
 	arch = x86_64

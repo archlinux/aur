@@ -1,0 +1,5 @@
+*.zst
+pkg
+src
+mac-fdisk-0.1p18.tar.gz
+mac-fdisk_0.1-18.diff.gz

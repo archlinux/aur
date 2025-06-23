@@ -1,8 +1,8 @@
 # Maintainer: Scott Alfter <scott@alfter.us>
 pkgname=mac-fdisk
 pkgver=0.1p18
-pkgrel=1
-pkgdesc="Mac/PowerMac disk partitioning utility (ported from the Gentoo ebuild)"
+pkgrel=2
+pkgdesc="Apple II/Mac disk partitioning utility (ported from the Gentoo ebuild)"
 arch=("i686" "x86_64")
 url="ftp://ftp.mklinux.apple.com/pub/Other_Tools/"
 license=("GPL-2")
