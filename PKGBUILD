@@ -1,7 +1,7 @@
 pkgname=flandre-grub-theme-git
 pkgdesc='Flandre scarlet GRUB2 theme'
-pkgver=r4.e02b06a
-pkgrel=3
+pkgver=r4.39394ec
+pkgrel=4
 
 url=https://git.jamjar.ws/strat/flandre_grub
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 optdepends=()
 makedepends=('git')
-provides=('flandre-grub-theme=r4.e02b06a')
+provides=('flandre-grub-theme=r4.39394ec')
 source=("git+${url}.git")
 sha512sums=(SKIP)
 
