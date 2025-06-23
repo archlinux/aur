@@ -42,7 +42,7 @@ build() {
     --enable-av{format,codec,util} --enable-swresample \
     --enable-protocol=file \
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
-    --enable-decoder=vorbis,libopus,flac,pcm_u8,pcm_s16le,pcm_s24le,pcm_s32le,pcm_f32le,mp3,pcm_mulaw,pcm_alaw,aac,h264 \
+    --enable-decoder=vorbis,libopus,flac,pcm_s16le,pcm_s24le,mp3,aac,h264 \
     --enable-parser=vorbis,flac,mp3,aac,opus,mov \
     --enable-libopus \
     --prefix="${srcdir}"/release \
