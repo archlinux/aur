@@ -1,0 +1,13 @@
+pkgbase = amneziavpn-bin
+	pkgdesc = Amnezia VPN Client
+	pkgver = 4.8.7.2
+	pkgrel = 1
+	url = https://github.com/amnezia-vpn/amnezia-client
+	install = amneziavpn.install
+	arch = x86_64
+	license = GPL-3.0-only
+	options = !debug
+	source = AmneziaVPN.tar.zip::https://github.com/amnezia-vpn/amnezia-client/releases/download/4.8.7.2/AmneziaVPN_.tar.zip
+	sha256sums = ce8261783b7760d3c51d085fe275ae7cb173fb4251a015f268387a9aeca77f6b
+
+pkgname = amneziavpn-bin

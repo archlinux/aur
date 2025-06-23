@@ -1,0 +1,16 @@
+_srvname=AmneziaVPN.service
+
+post_install() {
+	sudo systemctl enable --now $_srvname 
+}
+
+post_upgrade() {
+	sudo systemctl daemon-reload
+	if systemctl is-active --quiet $_srvname; then
+		sudo systemctl restart $_srvname
+	fi
+}
+
+pre_remove() {
+	sudo systemctl disable --now $_srvname
+}
