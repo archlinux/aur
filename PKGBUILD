@@ -3,7 +3,7 @@
 # Contributor: jgottula <justin@jgottula.com>
 
 pkgname=vdo
-pkgver=8.3.0.73
+pkgver=8.3.1.1
 pkgrel=1
 pkgdesc='Userspace tools for managing VDO volumes'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/dm-vdo/vdo"
 license=('GPL-2.0-or-later')
 depends=('device-mapper')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dm-vdo/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('865aa89ddb9196f69a566d7e6727ecde1e47501b90d6756ae9144a2b2e0b9723')
+sha256sums=('96ab08581e04847c92947e029c58146d8269052dfdcd687518cd26c77376638d')
 
 build() {
   cd "$pkgname-$pkgver"
