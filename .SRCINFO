@@ -1,19 +1,20 @@
 pkgbase = 10play
 	pkgdesc = Unofficial 10 Play desktop app.
-	pkgver = 1.0.2.aurpatch
-	pkgrel = 2
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/10play
 	arch = x86_64
 	arch = arm7h
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
+	depends = libelectron-electron-meta
 	depends = libelectron>=2025.1
 	depends = nss
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/10play/application/-/archive/1.0.2.aurpatch/application-1.0.2.aurpatch.tar.bz2
-	sha256sums = d04047f407187b2573f559b0efe26e7fdf0a861b813d7f78a56fdafda2f0b929
+	source = https://gitlab.com/linuxbombay/10play/application/-/archive/1.0.3/application-1.0.3.tar.bz2
+	sha256sums = af78b4de76a65de5ab88d00fdef84dc787353815928ef98166926bfdba209dc6
 
 pkgname = 10play
