@@ -1,8 +1,8 @@
 # Maintainer: MalikHw47 <help.malicorporation@gmail.com>
 pkgname=gdsync-bin
-pkgver=3.1
+pkgver=3.0.1
 pkgrel=1
-pkgdesc="A cul tool for syncing Geometry Dash save data between PC and Android devices by MalikHw47"
+pkgdesc="A PyQt6-based tool for syncing Geometry Dash save data between PC and Android devices"
 arch=('x86_64')
 url="https://github.com/MalikHw/gdsync"
 license=('custom')
