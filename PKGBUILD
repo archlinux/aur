@@ -9,7 +9,7 @@ pkgname=(
   libpeas136-docs
 )
 pkgver=1.36.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject Plugin System version 1.36.0 with working pythonloader when used together with with python-gobject350"
 url="https://wiki.gnome.org/Projects/Libpeas"
 arch=(x86_64)
@@ -32,14 +32,13 @@ makedepends=(
   luajit
   meson
   python
-  python-gobject
+  python-gobject350
   python-setuptools
   vala
 )
 checkdepends=(xorg-server-xvfb)
 source=("git+https://gitlab.gnome.org/GNOME/libpeas.git#tag=libpeas-$pkgver")
 b2sums=('8845366ccd5c0244a6ed1b28d5b44590496d260db0da47bc0ac87b2063c1063ee92541bc7f4eb056bb2c52d1299febedf517e90b9dc8765a0f3f9f954430e691')
-conflicts=("libpeas")
 
 prepare() {
   cd libpeas
@@ -68,9 +67,10 @@ _pick() {
 package_libpeas136() {
   depends=(
     'lua51-lgi'
-    'python-gobject'
+    'python-gobject350'
   )
   provides=(libpeas)
+  conflicts=(libpeas)
 
   meson install -C build --destdir "$pkgdir"
 
@@ -84,13 +84,15 @@ package_libpeas136() {
 
 package_libpeas136-demos() {
   pkgdesc+=" (demo applications)"
+  provides=(libpeas-demos)
+  conflicts=(libpeas-demos)
   depends=(
     glib2
     glibc
     gtk3
     libgirepository
-    libpeas
-    python-gobject
+    libpeas136
+    python-gobject350
   )
   mv demo/* "$pkgdir"
 }
@@ -98,6 +100,8 @@ package_libpeas136-demos() {
 package_libpeas136-docs() {
   pkgdesc+=" (documentation)"
   depends=()
+  provides=(libpeas-docs)
+  conflicts=(libpeas-docs)
   mv docs/* "$pkgdir"
 }
 
