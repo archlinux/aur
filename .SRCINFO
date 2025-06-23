@@ -1,0 +1,24 @@
+pkgbase = mbake-git
+	pkgdesc = A Python-based Makefile formatter and linter
+	pkgver = 1.2.1.r1.g2655ad9
+	pkgrel = 1
+	url = https://github.com/EbodShojaei/bake
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-rich
+	depends = python-tomli
+	depends = python-typer
+	provides = mbake=1.2.1.r1.g2655ad9
+	provides = python-mbake=1.2.1.r1.g2655ad9
+	conflicts = mbake
+	conflicts = python-mbake
+	source = git+https://github.com/EbodShojaei/bake.git
+	sha256sums = SKIP
+
+pkgname = mbake-git
