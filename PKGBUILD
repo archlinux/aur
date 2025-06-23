@@ -1,7 +1,7 @@
 # Maintainer: pusi77 <pusineriandrea+gmail+com>
 
 pkgname=awsm-bin
-pkgver=0.2.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A fast command-line tool to manage your AWS profiles, sessions, and console access with ease'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=('awsm')
 conflicts=('awsm')
 source=("$pkgname-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('b45be829af341a96c1e427d301ddb83b9936989866462765dfcee58604e42688')
+sha256sums=('8f577dd1c3eb9178c272bb3e1b5d44c9fd351a6c976d8224ae07a16200f933e9')
 
 package() {
   install -Dm755 ${pkgname%-bin} "$pkgdir"/usr/bin/${pkgname%-bin}
