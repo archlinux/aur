@@ -19,7 +19,7 @@ pkgbase = ue4-docker
 	depends = python-termcolor
 	depends = docker
 	optdepends = nvidia-container-toolkit: for GPU support in Linux containers
-	optdepends = python-ue4cli: for additional UE4 command-line tools
+	optdepends = ue4cli-git: for additional UE4 command-line tools
 	source = ue4-docker-0.0.116.tar.gz::https://github.com/adamrehn/ue4-docker/archive/refs/tags/v0.0.116.tar.gz
 	sha256sums = e28aa5791b3900910fc18699c392627801421e46aedc18246d5f32ba1599803f
 

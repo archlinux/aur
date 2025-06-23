@@ -25,7 +25,7 @@ makedepends=(
 )
 optdepends=(
     'nvidia-container-toolkit: for GPU support in Linux containers'
-    'python-ue4cli: for additional UE4 command-line tools'
+    'ue4cli-git: for additional UE4 command-line tools'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adamrehn/ue4-docker/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('e28aa5791b3900910fc18699c392627801421e46aedc18246d5f32ba1599803f')
