@@ -17,9 +17,18 @@ license=('custom')
 depends=()
 provides=("${pkgname%-git}" "linux-firmware")
 options=(!strip)
-conflicts=(linux-firmware)
-install=
-noextract=()
+conflicts=(
+	'linux-firmware-broadcom'
+	'linux-firmware-cirrus'
+	'linux-firmware-intel'
+	'linux-firmware-mediatek'
+	'linux-firmware-other'
+	'linux-firmware-qcom'
+	'linux-firmware-realtek'
+)
+depends=('linux-firmware-whence') # ensure license files are installed
+provides=("${pkgname%-git}")
+options=()
 source=("firmware::git+${url}.git")
 md5sums=('SKIP')
 
