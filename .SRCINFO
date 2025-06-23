@@ -1,0 +1,16 @@
+pkgbase = gekkfetch-git
+	pkgdesc = Minimalist system info tool written in C (latest git version)
+	pkgver = r6.2d05bce
+	pkgrel = 1
+	url = https://github.com/gekklee/gekkfetch
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	provides = gekkfetch
+	conflicts = gekkfetch
+	source = git+https://github.com/gekklee/gekkfetch.git
+	md5sums = SKIP
+
+pkgname = gekkfetch-git
