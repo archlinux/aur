@@ -1,0 +1,25 @@
+pkgbase = ue4cli-git
+	pkgdesc = Command-line interface for Unreal Engine 4
+	pkgver = r147.fed71c1
+	pkgrel = 1
+	url = https://github.com/adamrehn/ue4cli
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-twine
+	depends = python>=3.5
+	depends = python-setuptools>=38.6.0
+	depends = python-wheel>=0.31.0
+	optdepends = unreal-engine: for full functionality
+	optdepends = conan: for conan-ue4cli integration
+	optdepends = docker: for containerized builds
+	provides = ue4cli=r147.fed71c1
+	conflicts = ue4cli
+	source = ue4cli-git::git+https://github.com/adamrehn/ue4cli.git
+	sha256sums = SKIP
+
+pkgname = ue4cli-git
