@@ -1,0 +1,16 @@
+pkgbase = hare-wayland
+	pkgdesc = Native Hare Wayland bindings
+	pkgver = 0.25.2.0
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/hare-wayland
+	arch = any
+	license = MPL-2.0
+	makedepends = hare-xml
+	makedepends = pkgconf
+	makedepends = wayland
+	makedepends = wayland-protocols
+	depends = hare
+	source = hare-wayland-0.25.2.0.tar.gz::https://git.sr.ht/~sircmpwn/hare-wayland/archive/0.25.2.0.tar.gz
+	b2sums = bd2976bfb276b047b14946fe0820d7a0d8c610a2dbdd6492040a1e07fdfee7d5c76f7028bd35c82fab254a6f303b93a712a1dce0ea4546c2ac1b1f21e896540c
+
+pkgname = hare-wayland
