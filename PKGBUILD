@@ -5,8 +5,8 @@
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 
 pkgname=seadrive-gui
-pkgver=3.0.14
-pkgrel=3
+pkgver=3.0.15
+pkgrel=1
 pkgdesc="GUI part of seadrive"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
