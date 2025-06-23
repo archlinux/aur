@@ -7,12 +7,13 @@
 
 pkgbase=zoom-system-qt
 pkgname=(${pkgbase}{,-cef} )
-pkgver=6.5.0.2465
+pkgver=6.5.1.2550
 pkgrel=1
 arch=('x86_64')
 license=('LicenseRef-zoom')
 url="https://zoom.us/"
-makedepends=(patchelf binutils vivaldi-ffmpeg-codecs)
+depends=(vivaldi-ffmpeg-codecs)
+makedepends=(patchelf binutils)
 optdepends=('qt5-wayland: zoomus.conf xwayland=false'
   'qt5-webengine: SSO login'
   'xdg-desktop-portal-impl: Screen sharing,etc... for Wayland'
@@ -20,7 +21,7 @@ optdepends=('qt5-wayland: zoomus.conf xwayland=false'
   ${pkgbase}-cef': zoomus.conf disableCef=false')
 options=(!strip emptydirs)
 source=("zoom-origin-${pkgver}.pkg.tar.xz::${url}client/${pkgver}/zoom_x86_64.pkg.tar.xz")
-b2sums=('13ab9a32598986012c9954edd36e2786d36be0debe41e4e85b482b84ed237232535853eda7b7676ebc714619c0ab75f15d38671777efbb8c765f21e00236ae57')
+b2sums=('e22e5ba3f9af26a63a1ffe76e04ed3250894c55679edc5aecbb71fbf1a212e61757e773ff533d869de0bccce747d926887aa997553cf0d12bf0e843e8c9b19e8')
 
 build() {	
   ln -sf /usr/share/pixmaps/Zoom.png usr/share/pixmaps/*-zoom.png
@@ -49,20 +50,18 @@ build() {
 }
 
 package_zoom-system-qt() {
-  depends=(ocl-icd mpg123 vivaldi-ffmpeg-codecs libxtst
+  depends+=(ocl-icd mpg123 libxtst
   quazip-qt5 qt5-{base,graphicaleffects,quickcontrols,quickcontrols2,svg,declarative})
   provides=(zoom)
   conflicts=(zoom)
   pkgdesc="Zoom Workspace client on system runtime"
   mv opt usr "$pkgdir" # breaks --repackage
   mv "$pkgdir"/opt/zoom/{ZoomWebviewHost,cef} .
-
-  echo This is no longer depending on large ffmpeg package now !
 }
 
 package_zoom-system-qt-cef(){
   pkgdesc="Webview for zoom-system-qt"
-  depends=(${pkgbase} chromium sqlite vivaldi-ffmpeg-codecs )
+  depends+=(${pkgbase} chromium sqlite)
   optdepends=(vulkan-driver)
   install -d "$pkgdir"/opt/zoom
   mv ZoomWebviewHost cef "$pkgdir"/opt/zoom
