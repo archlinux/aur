@@ -1,17 +1,16 @@
 # Maintainer:
 # Contributor: 2xsaiko <aur@dblsaiko.net>
 
+: ${_use_kwin_x11:=true}
+
 _pkgname="kwin-effect-rounded-corners"
-pkgname="$_pkgname-git"
-pkgver=0.7.1.r13.g2fbe011
+pkgbase="$_pkgname-git"
+pkgver=0.7.2.r48.g284647c
 pkgrel=1
 pkgdesc="Rounds the corners of your windows"
 url="https://github.com/matinlotfali/KDE-Rounded-Corners"
 license=("GPL-3.0-only")
 arch=('x86_64')
-
-provides=("$_pkgname=${pkgver%%.r*}")
-conflicts=("$_pkgname")
 
 depends=(
   'kwin'
@@ -22,6 +21,10 @@ makedepends=(
   'git'
   'ninja'
 )
+
+if [[ "${_use_kwin_x11::1}" == "t" ]]; then
+  depends+=('kwin-x11')
+fi
 
 _pkgsrc="kde-rounded-corners"
 source=("$_pkgsrc"::"git+$url.git")
@@ -48,8 +51,46 @@ build() {
 
   cmake "${_cmake_options[@]}"
   cmake --build build
+
+  DESTDIR="fakeinstall" cmake --install build
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+_package_wayland() {
+  pkgdesc+=" (wayland)"
+  depends=('kwin')
+  optdepends=("$_pkgname-x11-git: for X11 support")
+
+  provides=("$_pkgname=${pkgver%%.g*}")
+  conflicts=("$_pkgname")
+
+  cp -a fakeinstall/* "$pkgdir/"
+  rm -rf "$pkgdir/usr/lib/qt6/plugins/kwin-x11/"
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
+
+_package_x11() {
+  pkgdesc+=" (x11)"
+  depends=(
+    'kwin-x11'
+    "$_pkgname=${pkgver%%.g*}"
+  )
+
+  provides=("$_pkgname-x11=${pkgver%%.g*}")
+  conflicts=("$_pkgname-x11")
+
+  cp -a fakeinstall/usr/lib/qt6/plugins/kwin-x11/* "$pkgdir/"
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
+}
+
+pkgname=("$_pkgname-git")
+[[ "${_use_kwin_x11::1}" == "t" ]] && pkgname+=("$_pkgname-x11-git")
+
+for i in "${pkgname[@]}"; do
+  if [[ "$i" =~ -x11 ]]; then
+    eval "package_$i()
+      $(declare -f _package_x11 | tail +2)"
+  else
+    eval "package_$i()
+      $(declare -f _package_wayland | tail +2)"
+  fi
+done
