@@ -1,22 +1,23 @@
 # Maintainer: Manuel Schmitzberger <ms@ms-sw.at>
 
 pkgname=vmutils
-pkgver=1.76.1
-pkgrel=2
+pkgver=1.119.0
+pkgrel=1
 pkgdesc="Victoria Metrics utils"
 arch=('x86_64')
-url="https://victoriametrics.github.io"
-license=('Apache')
+url="https://docs.victoriametrics.com/victoriametrics/"
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 backup=('etc/default/victoriametrics')
-source=("https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v$pkgver/vmutils-amd64-v$pkgver.tar.gz")
-sha256sums=('f35f247cf670d6a633f665b58e1cfb052af48018ba4d25ee812ceb1ebbe697e1')
+source=("https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v$pkgver/vmutils-linux-amd64-v$pkgver.tar.gz")
+sha256sums=('2d3c8ba0bbb944f2b52ef59f5bbaf509899aa934f0d90a4cd5905a3a4a076a79')
 
 build() {
   # rename binaries
   mv "${srcdir}"/vmagent-prod "${srcdir}"/vmagent
   mv "${srcdir}"/vmalert-prod "${srcdir}"/vmalert
+  mv "${srcdir}"/vmalert-tool-prod "${srcdir}"/vmalert-tool
   mv "${srcdir}"/vmauth-prod "${srcdir}"/vmauth
   mv "${srcdir}"/vmbackup-prod "${srcdir}"/vmbackup
   mv "${srcdir}"/vmctl-prod "${srcdir}"/vmctl
@@ -26,6 +27,7 @@ build() {
 package() {
   install -Dm 755 "${srcdir}/"vmagent -t "${pkgdir}"/usr/bin/
   install -Dm 755 "${srcdir}/"vmalert -t "${pkgdir}"/usr/bin/
+  install -Dm 755 "${srcdir}/"vmalert-tool -t "${pkgdir}"/usr/bin/
   install -Dm 755 "${srcdir}/"vmauth -t "${pkgdir}"/usr/bin/
   install -Dm 755 "${srcdir}/"vmbackup -t "${pkgdir}"/usr/bin/
   install -Dm 755 "${srcdir}/"vmctl -t "${pkgdir}"/usr/bin/
