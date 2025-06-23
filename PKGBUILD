@@ -3,12 +3,21 @@
 pkgname=kazumi
 _srcname=Kazumi
 pkgver=1.7.3
-pkgrel=1
+pkgrel=3
 pkgdesc="基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕"
 url="https://github.com/Predidit/Kazumi"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
-depends=('gtk3' 'libayatana-appindicator' 'webkit2gtk-4.1' 'mpv')
+depends=(
+	'gtk3'
+	'webkit2gtk-4.1'
+	'libayatana-appindicator'
+	'alsa-lib'
+	'libvdpau'
+	'libpulse'
+	'libxss'
+	'libarchive'
+)
 makedepends=('clang' 'cmake' 'ninja' 'fvm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('db53a8ce44ee526f6b67b19ef663a5c2efcd717884028b5260eeb7a7ed90527b')
@@ -32,11 +41,8 @@ package() {
 	pushd build/linux/x64/release
 	install -Dm755 "bundle/${pkgname}" -t "${pkgdir}/usr/lib/${pkgname}/"
 	cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/lib/${pkgname}" .
-        cmake -P cmake_install.cmake
+	cmake -P cmake_install.cmake
 	popd
-
-	# Use system-provided libmpv
-	rm "${pkgdir}/usr/lib/${pkgname}/lib/libmpv.so.2"
 
 	install -dm755 "${pkgdir}/usr/bin"
 	ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
