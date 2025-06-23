@@ -3,7 +3,7 @@
 pkgbase=void-bin
 pkgname=(void{,-electron-latest}-bin)
 pkgdesc="The open-source Cursor alternative."
-pkgver=1.99.30039
+pkgver=1.99.30040
 pkgrel=1
 arch=('x86_64')
 options=('!strip')
@@ -15,7 +15,7 @@ libx11 libxcb libxcomposite libxdamage libxext libxfixes libxkbcommon libxrandr 
 optdepends=('electron: /usr/share/void/void-latestron')
 source=("https://github.com/voideditor/binaries/releases/download/${pkgver}/void_${pkgver}_amd64.deb"
 "https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
-sha256sums=('895694974fb4f613d158b473faeeb38bfe4ecc86537043931291aa46a4c79c06'
+sha256sums=('362663ab8b51d30fad894b10f097d8a4c2467fe1c4e9c03ddd32c64a7d21ae8f'
             '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
 
 build() {
