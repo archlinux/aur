@@ -2,7 +2,7 @@
 # Contributor: Valerio Pizzi (pival81) <pival81@yahoo.com>
 pkgname=museeks
 _pkgname=Museeks
-pkgver=0.21.1
+pkgver=0.22.0
 _nodeversion=23
 pkgrel=1
 pkgdesc="🎵 A simple, clean and cross-platform music player."
@@ -24,7 +24,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=${pkgver}"
 )
-sha256sums=('29da551a8b6f21a5a3a777c1ddd99123d3a3b0033b0352acadb22917978f1e71')
+sha256sums=('2499e66f0598c483d7faa06f6abc33508c5a256796a194f51eb7534b291e3638')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -32,8 +32,8 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname}-${pkgver}"
 	export CARGO_HOME="${srcdir}/.cargo"
 	HOME="${srcdir}/.electron-gyp"
 	if [ -f bunfig.toml ]; then
