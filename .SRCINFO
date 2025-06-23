@@ -1,0 +1,18 @@
+pkgbase = danser-bin
+	pkgdesc = Dancing visualizer of osu! maps and custom osu! client written in Go.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/Wieku/danser-go
+	arch = x86_64
+	license = GPL3
+	depends = libyuv
+	depends = ffmpeg
+	depends = gtk3
+	conflicts = danser-git
+	conflicts = danser
+	source = https://github.com/Wieku/danser-go/releases/download/0.11.0/danser-0.11.0-linux.zip
+	source = https://raw.githubusercontent.com/Wieku/danser-go/refs/heads/master/LICENSE
+	sha256sums = c3184ceb84b20e8e9c9a2709113efc29b8bdf2f866949834d7fb8e799618a67e
+	sha256sums = 5c4704f4d20364d99017de927389eaae10b87f9e6163bf79e652821dbbaaae69
+
+pkgname = danser-bin
