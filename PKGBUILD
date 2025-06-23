@@ -1,20 +1,22 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='certspotter'
-pkgver='0.20.0'
+pkgver='0.20.1'
 pkgrel='1'
 pkgdesc='Certificate Transparency Log Monitor'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/SSLMate/$pkgname"
 license=('MPL-2.0')
-makedepends=('go>=1.24' 'lowdown')
+makedepends=('go>=1.24.4' 'lowdown')
 install="$pkgname.install"
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+	"$pkgname-$pkgver-fix-fmt-typos.diff::$url/commit/187aed078c2e8c583a04b33035a89479155d30b5.diff"
 	"$pkgname-$pkgver.service::https://salsa.debian.org/go-team/packages/$pkgname/-/raw/debian/0.18.0-1/debian/service"
 	"$pkgname-$pkgver.sysusers::https://salsa.debian.org/go-team/packages/$pkgname/-/raw/debian/0.18.0-1/debian/sysusers"
 	"$pkgname.tmpfiles"
 )
-b2sums=('db1d199836904fb68467b07b10b5c4a5f6cd2297ee40d37b423e1aa59e14468785d0b5599a56da6e5b7fb4425806a013280ff062cf7735c69a78744b6d810809'
+b2sums=('7adfd5a704d41c1b2a39a9a3b4ee9ed91e748c93741b9cd368e8974eb2f42208381d9b3435dcc85a55243c1d421e15bb643e5cb5388556995a1b74fb391b12b7'
+        '53a3b5dcc57c4005833977c9d7f471f02a260d7be2ba47cee96136acfc8ad8929bcdb45d76fd04f02792e06927f3571f846206e1da42f2d3880252b8220b4a7f'
         '5f2ac07e92376e73ae84a9811a9977716bb2750ecd8b0298e2b2f838e2633e8fce1c0f89ddedd3d17c65582527fe369ea50a93f5379b482cb45069f47d075a89'
         'b323decea9386a49c57227f9c5b11435e0d742a30037296b9b352b00e4b18cdd1a3da1a087d56783c484f2bd30152372b828790754d226ba534ff884861f0618'
         'b04bdf259018bc04f4f9b8b5482af4ff19edc55eb5c6fd30f694b29b8b83b83db9bb0a3561669ac5c7f3a4c63b9454d5a4e3ffe10e5fd5026b7adcd6af46fe09')
@@ -26,6 +28,10 @@ _gopath="$pkgname-$pkgver-gopath"
 prepare() {
 	mkdir -p "$srcdir/$_bindir/"
 	mkdir -p "$srcdir/$_gopath/"
+
+	# Fix fmt typos (https://github.com/SSLMate/certspotter/pull/109)
+	cd "$srcdir/$_sourcedirectory/"
+	patch --forward -p1 < "$srcdir/$pkgname-$pkgver-fix-fmt-typos.diff"
 }
 
 build() {
