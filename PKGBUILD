@@ -2,7 +2,7 @@
 pkgname=chromium-ffmpeg-codecs-git
 _ver=7.1 # 7.2 does not work yet
 pkgver=${_ver}.c136
-pkgrel=1
+pkgrel=2
 pkgdesc='Additional codecs for Chromiums (non vendored ffmpeg)'
 arch=('x86_64')
 url="https://git.ffmpeg.org/ffmpeg"
@@ -52,7 +52,7 @@ build() {
   make install
 
   cd ../release
-  gcc -shared ${LDFLAGS//--as-needed/--no-as-needed} \
+  gcc $LTOFLAGS -shared ${LDFLAGS//--as-needed/--no-as-needed} \
     -Wl,--whole-archive \
       lib/lib{avcodec,avformat,avutil,swresample}.a \
     -Wl,--no-whole-archive \
