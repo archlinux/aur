@@ -9,10 +9,10 @@ _base_name='neural-amp-modeler-ui'
 
 pkgname="${_base_name}-lv2"
 pkgver='r45.d34a9a6'
-pkgrel=1
-pkgdesc='GUI for Neural Amp Modeler LV2 plugin'
+pkgrel=2
+pkgdesc='Neural Amp Modeler LV2 plugin with GUI'
 arch=('x86_64')
-url="${_base_url}/${pkgname}"
+url="${_base_url}/${_base_name}"
 license=('0BSD' 'GPL-3.0-only' 'BSD-3-Clause' 'MIT')
 groups=('pro-audio' 'lv2-plugins')
 depends=('cairo' 'glibc' 'gcc-libs' 'libx11')

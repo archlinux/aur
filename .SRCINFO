@@ -1,8 +1,8 @@
 pkgbase = neural-amp-modeler-ui-lv2
-	pkgdesc = GUI for Neural Amp Modeler LV2 plugin
+	pkgdesc = Neural Amp Modeler LV2 plugin with GUI
 	pkgver = r45.d34a9a6
-	pkgrel = 1
-	url = https://github.com/brummer10/neural-amp-modeler-ui-lv2
+	pkgrel = 2
+	url = https://github.com/brummer10/neural-amp-modeler-ui
 	arch = x86_64
 	groups = pro-audio
 	groups = lv2-plugins
