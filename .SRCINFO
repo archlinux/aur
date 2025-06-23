@@ -5,16 +5,14 @@ pkgbase = python-yara-git
 	url = https://github.com/VirusTotal/yara-python
 	arch = i686
 	arch = x86_64
-	license = Apache
-	makedepends = git
-	makedepends = yara
+	license = Apache-2.0
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = python-yara-git::git+https://github.com/VirusTotal/yara-python
-	sha512sums = SKIP
-
-pkgname = python-yara-git
+	makedepends = git
 	depends = python
 	depends = yara
 	provides = python-yara
 	conflicts = python-yara
+	source = git+https://github.com/VirusTotal/yara-python.git
+	sha512sums = SKIP
+
+pkgname = python-yara-git
