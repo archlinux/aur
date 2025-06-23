@@ -2,7 +2,7 @@
 
 pkgname=firefox-i3-workspaces
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox addon to restore windows to correct i3 workspaces"
 arch=('any')
 url="https://github.com/yurikhan/firefox-i3-workspaces/"
@@ -19,12 +19,12 @@ sha256sums=('b0aac902a66790328f37a7429334b42c9a95412485d24791ed2c8181d22ff68c'
             '8f87055d80f1227c0cc9093187ef1cdb6876153b0330354925b58637aa5e374d')
 
 prepare() {
-  jaq -i '.path = "/usr/lib/i3_workspaces.py"' "${srcdir}/i3_workspaces.json"
+  jaq -i '.path = "/usr/lib/firefox_i3_workspaces.py"' "${srcdir}/i3_workspaces.json"
 }
 
 package() {
   install -Dm444 ${srcdir}/i3_workspaces.xpi ${pkgdir}/usr/lib/firefox/browser/extensions/i3_workspaces.xpi
-  install -Dm755 ${srcdir}/i3_workspaces.py ${pkgdir}/usr/lib/i3_workspaces.py
+  install -Dm755 ${srcdir}/i3_workspaces.py ${pkgdir}/usr/lib/firefox_i3_workspaces.py
   install -Dm444 ${srcdir}/i3_workspaces.json ${pkgdir}/usr/lib/mozilla/native-messaging-hosts/i3_workspaces.json
 }
 

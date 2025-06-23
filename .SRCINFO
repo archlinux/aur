@@ -1,7 +1,7 @@
 pkgbase = firefox-i3-workspaces
 	pkgdesc = Firefox addon to restore windows to correct i3 workspaces
 	pkgver = 0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yurikhan/firefox-i3-workspaces/
 	arch = any
 	license = GPL-3.0-only
