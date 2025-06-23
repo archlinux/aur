@@ -1,14 +1,14 @@
 pkgbase = govix-calc
 	pkgdesc = Govix Calc – A dual-panel calculator built with PySide6
-	pkgver = 1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/Kingcat5503/govix-calc
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	depends = python-pyside6
-	source = govix-calc-1.0.tar.gz::https://github.com/Kingcat5503/govix-calc/archive/refs/tags/v1.0.tar.gz
+	depends = pyside6
+	source = govix-calc-1.1.1.tar.gz::https://github.com/Kingcat5503/govix-calc/archive/refs/tags/v1.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = govix-calc
