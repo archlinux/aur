@@ -3,7 +3,7 @@
 name=ixxat-socketcan
 pkgname="${name}-dkms"
 pkgver=2.0.520
-pkgrel=3
+pkgrel=4
 pkgdesc="DKMS SocketCAN driver for IXXAT USB-to-CAN v2"
 arch=("i686" "x86_64")
 url="https://www.hms-networks.com/support/general-downloads"
@@ -30,5 +30,5 @@ prepare() {
 package() {
   dkmsdir="${pkgdir}/usr/src/${name}-${pkgver}/"
   install -d "${dkmsdir}"
-  cp -a "${srcdir}/${name}-${pkgver}" "${dkmsdir}"
+  cp -a "${srcdir}/${name}-${pkgver}/." "${dkmsdir}"
 }
