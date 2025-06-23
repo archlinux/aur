@@ -2,7 +2,7 @@
 pkgname="sddm-silent-theme-git"
 _upstream_name="SilentSDDM"
 pkgdesc="Highly customizable SDDM theme (git version)"
-pkgver=0.9.1
+pkgver=r20250622.g296c611
 pkgrel=1
 arch=('any')
 depends=('sddm' 'qt6-svg' 'qt6-virtualkeyboard' 'qt6-multimedia-ffmpeg' 'redhat-fonts')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_upstream_name"
-    printf '%s.r%s.g%s\n' "$pkgver" "$(git log -1 --date=format:%Y%m%d --pretty=format:%cd)" "$(git rev-parse --short HEAD)"
+    printf 'r%s.g%s\n' "$(git log -1 --date=format:%Y%m%d --pretty=format:%cd)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
