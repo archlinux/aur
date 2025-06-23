@@ -1,0 +1,17 @@
+pkgbase = cherryctl-bin
+	pkgdesc = Cherry Servers CLI for managing cloud infrastructure (binary release)
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/cherryservers/cherryctl
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	depends = glibc
+	provides = cherryctl
+	conflicts = cherryctl
+	source_x86_64 = cherryctl-0.6.0-x86_64::https://github.com/cherryservers/cherryctl/releases/download/v0.6.0/cherryctl-linux-amd64
+	sha256sums_x86_64 = 4941439df3116b736555682922dcb2ba8c1c88dd222829125835d974df9afbab
+	source_aarch64 = cherryctl-0.6.0-aarch64::https://github.com/cherryservers/cherryctl/releases/download/v0.6.0/cherryctl-linux-arm64
+	sha256sums_aarch64 = bad81e745ed1eae4a9034bf73d6ad8a08242775236f6f3f240ad2da3ef375031
+
+pkgname = cherryctl-bin
