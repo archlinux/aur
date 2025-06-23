@@ -1,8 +1,9 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Conrad Hoffmann <ch@bitfehler.net>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: Armin Preiml <apreiml@strohwolke.at>
 
 pkgname=hare
-pkgver=0.24.2
+pkgver=0.25.2
 pkgrel=1
 pkgdesc='The Hare programming language'
 arch=('x86_64' 'aarch64')
@@ -11,7 +12,7 @@ license=('MPL-2.0 AND GPL-3.0-only')
 depends=('qbe' 'harec')
 makedepends=('scdoc')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/${pkgname}/archive/${pkgver}.tar.gz")
-b2sums=('2dbb83448efe85c36be50ebfbe9c8c567ac7a8c420253f242aa911e815fbf41ff4fbe0e36d22b5654b74441cc73bbaac9de5b9cdb06f9f687813babe2bf359c0')
+b2sums=('626b098a4a65c1a8760dc75317dd856f03915d564800beaa6c8708726bfd602c291d5e449139922293a3af087fa7ed2e9076e76e2e2731cab5908256d00894b5')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
