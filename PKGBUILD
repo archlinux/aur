@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 url="https://icculus.org/openbox/2/docker/"
 license=('GPL')
 depends=('glibc' 'glib2' 'libx11')
+options+=('!debug')
 source=("https://icculus.org/openbox/2/docker/docker-$pkgver.tar.gz")
 md5sums=('349320bebd43babb8b43e11c7aae0293')
 

@@ -9,6 +9,7 @@ pkgbase = docker-tray
 	depends = glibc
 	depends = glib2
 	depends = libx11
+	options = !debug
 	source = https://icculus.org/openbox/2/docker/docker-1.5.tar.gz
 	md5sums = 349320bebd43babb8b43e11c7aae0293
 
