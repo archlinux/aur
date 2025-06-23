@@ -1,0 +1,4 @@
+[aurdex]
+source = 'github'
+github = 'envolution/aurdex'
+use_latest_release = true
