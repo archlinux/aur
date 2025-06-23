@@ -2,7 +2,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-mach64
-pkgver=6.9.7
+pkgver=6.10.0
 pkgrel=1
 pkgdesc="X.org mach64 video driver"
 arch=(i686 x86_64)
@@ -16,7 +16,7 @@ optdepends=('mach64-dri: DRI1 support from community repo'
 groups=('xorg-drivers')
 options=('!emptydirs' '!libtool')
 source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('50d78abffa7c8227e6f187976f23a244ae2095e97f08de275529b70fba9481ba')
+sha256sums=('d6b96b47a27cd2dc6dea612f5dc51fcc1a8561d5ad1d48d04ec2d47751222724')
 
 build() {
   cd ${pkgname}-${pkgver}

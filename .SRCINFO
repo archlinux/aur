@@ -1,6 +1,6 @@
 pkgbase = xf86-video-mach64
 	pkgdesc = X.org mach64 video driver
-	pkgver = 6.9.7
+	pkgver = 6.10.0
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = xf86-video-mach64
 	conflicts = X-ABI-VIDEODRV_VERSION>=26
 	options = !emptydirs
 	options = !libtool
-	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-mach64-6.9.7.tar.xz
-	sha256sums = 50d78abffa7c8227e6f187976f23a244ae2095e97f08de275529b70fba9481ba
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-mach64-6.10.0.tar.xz
+	sha256sums = d6b96b47a27cd2dc6dea612f5dc51fcc1a8561d5ad1d48d04ec2d47751222724
 
 pkgname = xf86-video-mach64
