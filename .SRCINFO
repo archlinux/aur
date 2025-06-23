@@ -1,0 +1,26 @@
+pkgbase = 12to11-git
+	pkgdesc = Tool for running Wayland applications on an X server
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://git.linuxping.win/12to11/12to11
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = imake
+	makedepends = gawk
+	depends = wayland
+	depends = pixman
+	depends = libx11
+	depends = libxi
+	depends = libxkbfile
+	depends = libglvnd
+	depends = libxi
+	depends = libxrandr
+	depends = libxcb
+	depends = libdrm
+	depends = libxshmfence
+	depends = libxpresent
+	source = git+https://git.linuxping.win/12to11/12to11.git
+	sha256sums = SKIP
+
+pkgname = 12to11-git
