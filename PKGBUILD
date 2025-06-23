@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=witsy
 _pkgname=Witsy
-pkgver=2.8.2
+pkgver=2.9.0
 _electronversion=32
 _nodeversion=22
 pkgrel=1
@@ -24,8 +24,8 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('c458b542982a09fade4dad0715735e9cd39cc0890ca5a448d602902aa3791333'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('5e959d1656a550b530565afe22b19e6137d81fadbd945993d9511a35da26a0ef'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -55,6 +55,7 @@ prepare() {
         echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=32"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
