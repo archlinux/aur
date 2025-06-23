@@ -1,19 +1,21 @@
-pkgbase = qgpgme-qt5
+pkgbase = qgpgme1-qt5
 	pkgdesc = Qt5 bindings for GPGme
-	pkgver = 2.0.0
+	pkgver = 1.24.3
 	pkgrel = 1
 	url = https://gnupg.org/software/gpgme/index.html
 	arch = x86_64
-	license = GPL-2.0-or-later
-	makedepends = cmake
-	makedepends = git
-	depends = gcc-libs
-	depends = glibc
-	depends = gpgmepp
+	license = LGPL
+	makedepends = gnupg
+	makedepends = libgpg-error
+	makedepends = swig
+	depends = gpgme-1
 	depends = qt5-base
-	source = git+https://dev.gnupg.org/source/gpgmeqt#tag=gpgmeqt-2.0.0
+	conflicts = qgpgme-qt5
+	source = https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.24.3.tar.bz2
+	source = https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.24.3.tar.bz2.sig
 	validpgpkeys = 6DAA6E64A76D2840571B4902528897B826403ADA
 	validpgpkeys = AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD
-	sha256sums = d48db1e5c6cb36eeff4379169a9a7558da8e134a5ce6b88409ecbc70e3183afc
+	sha256sums = bfc17f5bd1b178c8649fdd918956d277080f33df006a2dc40acdecdce68c50dd
+	sha256sums = SKIP
 
-pkgname = qgpgme-qt5
+pkgname = qgpgme1-qt5
