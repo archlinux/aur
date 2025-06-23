@@ -1,7 +1,7 @@
 # Maintainer: Julian Pollinger <julian@pollinger.dev>
 pkgname=glpk-cut-log
 pkgdesc="A patched version of GLPK for cvc5"
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 _glpkver=4.52
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=()
 makedepends=('bash' 'automake' 'autoconf' 'libtool' 'patch')
 source=("$url/archive/refs/tags/cvc5-$pkgver.tar.gz" "https://ftp.gnu.org/gnu/glpk/glpk-$_glpkver.tar.gz")
-sha256sums=('7877b1f89f8b6a6bcc643d9ab1c60535911f6a30e32233eafa9db8a3eae5e34e'
+sha256sums=('8747e449bdbb2264ccf7404fdf960977057a18de7f70c5e3b738847210e4065a'
             '9a5dab356268b4f177c33e00ddf8164496dc2434e83bd1114147024df983a3bb')
 conflicts=('glpk')
 provides=("glpk=$pkgver")
@@ -22,6 +22,8 @@ prepare() {
 }
 
 build() {
+  export CFLAGS="$CFLAGS -std=c11"
+
   cd "$srcdir/glpk-$_glpkver"
 
   libtoolize

@@ -1,6 +1,6 @@
 pkgbase = glpk-cut-log
 	pkgdesc = A patched version of GLPK for cvc5
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/cvc5/cvc5
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = glpk-cut-log
 	makedepends = autoconf
 	makedepends = libtool
 	makedepends = patch
-	provides = glpk=1.2.0
+	provides = glpk=1.3.0
 	conflicts = glpk
-	source = https://github.com/cvc5/cvc5/archive/refs/tags/cvc5-1.2.0.tar.gz
+	source = https://github.com/cvc5/cvc5/archive/refs/tags/cvc5-1.3.0.tar.gz
 	source = https://ftp.gnu.org/gnu/glpk/glpk-4.52.tar.gz
-	sha256sums = 7877b1f89f8b6a6bcc643d9ab1c60535911f6a30e32233eafa9db8a3eae5e34e
+	sha256sums = 8747e449bdbb2264ccf7404fdf960977057a18de7f70c5e3b738847210e4065a
 	sha256sums = 9a5dab356268b4f177c33e00ddf8164496dc2434e83bd1114147024df983a3bb
 
 pkgname = glpk-cut-log
