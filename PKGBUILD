@@ -1,19 +1,19 @@
 pkgname=9now
 _pkgname=9Now
-pkgver=1.0.2.aurpatch
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Unofficial 9 Now desktop application."
 arch=('x86_64' 'arm7h' 'aarch64')
 url="https://gitlab.com/linuxbombay/9now"
 license=('GPL')
-depends=('libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
+depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('a1db2cdcb7d80132cdc795314d393a19d8d9337302374563252ba58a14172460')
+sha256sums=('619b4750a59016dd6fdcffc760fc89b467cbc522cb11d410cfe19c54e909c96f')
 
 package() {
     cd "$srcdir/application-$pkgver"
-    chmod +x $pkgname.sh
+    chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/application-$pkgver"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
@@ -22,8 +22,8 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
-    ln -s "/opt/$_pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    ln -s /usr/bin/libelectronmeta "$pkgdir/opt/$_pkgname/electron"
+    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
     install -Dm644 "$srcdir/application-$pkgver/$pkgname.desktop" \
