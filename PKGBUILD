@@ -2,7 +2,7 @@
 # Maintainer: skewb1k <skewb1kunix@gmail.com>
 
 pkgname='upfile-bin'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A CLI tool to manage and sync shared configuration files across projects.'
 url='https://github.com/skewb1k/upfile'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('upfile')
 conflicts=('upfile')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.0/upfile_Linux_arm64.tar.gz")
-sha256sums_aarch64=('3005684a125f8daef61117eb5ca6a2d6a73a6050e21a826ff7d644eff09cc7c5')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.1/upfile_Linux_arm64.tar.gz")
+sha256sums_aarch64=('04e0863f267fa3159a1480ed5b115c887d2a67aabb5b159ca24b5a9d48c5a88d')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.0/upfile_Linux_i386.tar.gz")
-sha256sums_i686=('820f856a4a7ac4d03a14dddf34207c08c6f170468e29255fd67cb3a38ed7b032')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.1/upfile_Linux_i386.tar.gz")
+sha256sums_i686=('f6c9eb4f769309502dd660e8053b745978582f360f79f30aaf6fd0133e174165')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.0/upfile_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('81d3727015bb7e27960edb487a251db343a435af6c34e78d86df186edb3c6bef')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.1/upfile_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('cef046da1c5c93360688d631641a3044dad1428de1cc73a214371db5ff8e4a72')
 
 package() {
   # bin
