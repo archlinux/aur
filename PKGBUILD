@@ -1,7 +1,7 @@
 # Maintainer: Jeff_WuYo <62562200+Jeff-WuYo@users.noreply.github.com>
 # Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=qt6gtk2
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc='GTK+2.0 integration plugins for Qt6'
 arch=('any')
@@ -12,12 +12,12 @@ conflicts=($pkgname-git)
 depends=(qt6-base gtk2 libx11)
 source=("${pkgname}-$pkgver.tar.gz::${url}/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         "${pkgname}.hook")
-sha256sums=('367e428a1df497f93ce9fe177d1e7fabd2bf3f1cf7b7273a875e5364df5d92e9'
+sha256sums=('6d777f2c3b0bd0bcbc0c2d5afc748e266c208475478f8be65f9c032410a022e2'
             '9c60620868ce7dc469985cdde56332e28ce9f60dd13d6dfa516e8d1ef94c7673')
 
 build() {
   cd $pkgname-$pkgver
-  /usr/lib/qt6/bin/qmake PREFIX=/usr
+  /usr/lib/qt6/bin/qmake6 PREFIX=/usr
   make
 }
 
