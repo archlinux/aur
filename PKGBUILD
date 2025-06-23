@@ -3,7 +3,7 @@
 pkgname=hasktags-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=0.73.0.rXX.gXXXXXXX
-pkgrel=3
+pkgrel=4
 pkgdesc='Produces ctags "tags" and etags "TAGS" files for Haskell programs'
 arch=('i686' 'x86_64')
 url="https://github.com/MarcWeber/${_pkgname}"
@@ -13,21 +13,27 @@ conflicts=("$_pkgname")
 depends=('gmp')
 makedepends=('git' 'cabal-install' 'ghc')
 source=("$pkgname::git+$url.git")
-source+=("${pkgname}-PR102.patch::$url/pull/102.patch")
+prs=(
+  102 # Fix tuple patterns
+)
+for pr in "${prs[@]}"; do
+    source+=("${pkgname}-PR$pr.patch::$url/pull/$pr.patch")
+done
 sha256sums=('SKIP'
             'c4b27d612cb1de0b62e24ba07d7056200b8a130e8c4e462a30ff73b631d8c3b1')
 
 pkgver() {
   cd "$pkgname"
-  git describe --tags --long \
+  git describe --long --tags --dirty=-PR"$(export IFS=+; echo "${prs[*]}")" \
     | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$pkgname"
 
-  # PR 102: Fix tuple patterns
-  git apply ../"$pkgname"-PR102.patch
+  for pr in "${prs[@]}"; do
+    git apply "../${pkgname}-PR$pr.patch"
+  done
 
   cabal update
   cabal configure --prefix=/usr --docdir=/usr/share/doc/"$pkgname" \
