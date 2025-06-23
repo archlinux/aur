@@ -1,0 +1,13 @@
+pkgbase = hare-http
+	pkgdesc = HTTP support for Hare
+	pkgver = 0.25.2.0
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/hare-http
+	arch = any
+	license = MPL-2.0
+	depends = hare
+	depends = hare-ev
+	source = hare-http-0.25.2.0.tar.gz::https://git.sr.ht/~sircmpwn/hare-http/archive/0.25.2.0.tar.gz
+	b2sums = fab598499f7ad029730a888a52415c305484160f7edc2fb5bd6b3406d1361a37a6180dbdf3aa5651417acb4c194382608d393764c31445320bec63060d3a36de
+
+pkgname = hare-http
