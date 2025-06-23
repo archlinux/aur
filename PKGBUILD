@@ -2,7 +2,7 @@
 # Contributor: Black_Codec <orso.f.regna@gmail.com>
 
 pkgname=guacamole-auth-jdbc-bin
-pkgver=1.5.5
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Apache Guacamole is a clientless remote desktop gateway. Database authentication extension for jdbc."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('guacamole-client')
 source=("https://archive.apache.org/dist/guacamole/${pkgver}/binary/guacamole-auth-jdbc-${pkgver}.tar.gz")
 install=guacamole-auth.install
 
-md5sums=('9b8d0cfc6daa09349454ba0c68c150ad')
+md5sums=('dc30cf7aa99bb7346ed7e526b85935a7')
 
 package() {
   cd "${srcdir}/guacamole-auth-jdbc-${pkgver}"
