@@ -1,0 +1,19 @@
+pkgbase = firefox-i3-workspaces
+	pkgdesc = Firefox addon to restore windows to correct i3 workspaces
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://github.com/yurikhan/firefox-i3-workspaces/
+	arch = any
+	license = GPL-3.0-only
+	makedepends = jaq
+	depends = firefox
+	depends = python
+	depends = python-i3ipc
+	source = i3_workspaces.xpi::https://github.com/yurikhan/firefox-i3-workspaces//releases/download/0.10/i3_workspaces-0.10.xpi
+	source = https://github.com/yurikhan/firefox-i3-workspaces//releases/download/0.10/i3_workspaces.py
+	source = https://github.com/yurikhan/firefox-i3-workspaces//releases/download/0.10/i3_workspaces.json
+	sha256sums = b0aac902a66790328f37a7429334b42c9a95412485d24791ed2c8181d22ff68c
+	sha256sums = c974ff55cb4e74dc69edb397176b634362a6531151bca3f688fb226121f8028a
+	sha256sums = 8f87055d80f1227c0cc9093187ef1cdb6876153b0330354925b58637aa5e374d
+
+pkgname = firefox-i3-workspaces
