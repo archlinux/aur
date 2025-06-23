@@ -1,19 +1,19 @@
 pkgbase = algermusicplayer-bin
 	pkgdesc = An music player based on Electron, TypeScript, and Vue 3.(Prebuilt version.Use system-wide electron)支持网易云音乐
-	pkgver = 4.7.1
+	pkgver = 4.8.0
 	pkgrel = 1
 	url = http://mc.alger.fun/
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
-	depends = electron36
-	provides = algermusicplayer=4.7.1
+	depends = electron35
+	provides = algermusicplayer=4.8.0
 	conflicts = algermusicplayer
 	source = algermusicplayer.sh
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = algermusicplayer-4.7.1-aarch64.deb::https://github.com/algerkong/AlgerMusicPlayer/releases/download/v4.7.1/AlgerMusicPlayer-4.7.1-linux-arm64.deb
-	sha256sums_aarch64 = 6af24cd7ea80b442c3270b6713aa7759f84b1e71002215578602ec901e3e9434
-	source_x86_64 = algermusicplayer-4.7.1-x86_64.deb::https://github.com/algerkong/AlgerMusicPlayer/releases/download/v4.7.1/AlgerMusicPlayer-4.7.1-linux-amd64.deb
-	sha256sums_x86_64 = 7b09c8dd5928bd98f1cb1e0c6d00c660e3415c0f2b2625ca060b895267c79802
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+	source_aarch64 = algermusicplayer-4.8.0-aarch64.deb::https://github.com/algerkong/AlgerMusicPlayer/releases/download/v4.8.0/AlgerMusicPlayer-4.8.0-linux-arm64.deb
+	sha256sums_aarch64 = d3567379580df87bcbfb41210e40ad5b2e04e806c29332ac43619ff5ef59d64f
+	source_x86_64 = algermusicplayer-4.8.0-x86_64.deb::https://github.com/algerkong/AlgerMusicPlayer/releases/download/v4.8.0/AlgerMusicPlayer-4.8.0-linux-amd64.deb
+	sha256sums_x86_64 = 18116b8eb4ee7e8ad795ba16a28a84db1506edc42ba1f03723cc82ecae27e73d
 
 pkgname = algermusicplayer-bin

@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=algermusicplayer-bin
 _pkgname=AlgerMusicPlayer
-pkgver=4.7.1
-_electronversion=36
+pkgver=4.8.0
+_electronversion=35
 pkgrel=1
 pkgdesc="An music player based on Electron, TypeScript, and Vue 3.(Prebuilt version.Use system-wide electron)支持网易云音乐"
 arch=(
@@ -20,9 +20,13 @@ depends=(
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
-sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('6af24cd7ea80b442c3270b6713aa7759f84b1e71002215578602ec901e3e9434')
-sha256sums_x86_64=('7b09c8dd5928bd98f1cb1e0c6d00c660e3415c0f2b2625ca060b895267c79802')
+sha256sums=('f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums_aarch64=('d3567379580df87bcbfb41210e40ad5b2e04e806c29332ac43619ff5ef59d64f')
+sha256sums_x86_64=('18116b8eb4ee7e8ad795ba16a28a84db1506edc42ba1f03723cc82ecae27e73d')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -32,6 +36,7 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
         s/Categories=Audio;/Categories=AudioVideo;/g
