@@ -12,13 +12,13 @@ provides=('upfile')
 conflicts=('upfile')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.1/upfile_Linux_arm64.tar.gz")
-sha256sums_aarch64=('04e0863f267fa3159a1480ed5b115c887d2a67aabb5b159ca24b5a9d48c5a88d')
+sha256sums_aarch64=('b6b0699f31fdf3bcf0e193b84d6ba73a60a82f9204c64044852596dc0a7ba88d')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.1/upfile_Linux_i386.tar.gz")
-sha256sums_i686=('f6c9eb4f769309502dd660e8053b745978582f360f79f30aaf6fd0133e174165')
+sha256sums_i686=('bad0ec2ec77f548e96a1518ba18bef8f47097fe5bb64c3f2dc547408a7fc9fb9')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.1/upfile_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('cef046da1c5c93360688d631641a3044dad1428de1cc73a214371db5ff8e4a72')
+sha256sums_x86_64=('60226e2ed0a98a93521cc461eb1438ef5775c785c872bbfc49ebb64e916b6859')
 
 package() {
   # bin
@@ -26,12 +26,4 @@ package() {
 
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/upfile/LICENSE"
-
-  # completions
-  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
-  mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
-  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
-  ./upfile completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/upfile"
-  ./upfile completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_upfile"
-  ./upfile completion fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/upfile.fish"
 }
