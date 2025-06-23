@@ -1,0 +1,12 @@
+pkgbase = hare-toml
+	pkgdesc = TOML implementation for Hare
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://codeberg.org/lunacb/hare-toml
+	arch = any
+	license = MIT
+	depends = hare
+	source = hare-toml-0.2.0.tar.gz::https://codeberg.org/lunacb/hare-toml/archive/v0.2.0.tar.gz
+	b2sums = d9866946893926e95f4437251b0556fafd6b6f4d420f561481d3f57fb6f0b8b76846c985e5b0aba1d466d16173f327469fcd102e70fad855a8a4bd0fb65211e0
+
+pkgname = hare-toml
