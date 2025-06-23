@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 install=amneziavpn.install
 #depends=('')
 options=(!debug)
-source=("AmneziaVPN.tar.zip::$url/releases/download/$pkgver/AmneziaVPN_$pkgver_linux_x64.tar.zip")
+source=("AmneziaVPN.tar.zip::$url/releases/download/$pkgver/AmneziaVPN_${pkgver}_linux_x64.tar.zip")
 sha256sums=('ce8261783b7760d3c51d085fe275ae7cb173fb4251a015f268387a9aeca77f6b')
 
 # Signature '\x37\x7A\xBC\xAF\x27\x1C' version '\x00\x04'
