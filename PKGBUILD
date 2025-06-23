@@ -3,7 +3,7 @@
 _binname="spotify_player"
 _pkgname="${_binname//_/-}"
 pkgname="${_pkgname}-bin"
-pkgver=0.20.5
+pkgver=0.20.6
 pkgrel=1
 pkgdesc="A Spotify player in the terminal with full feature parity"
 arch=('aarch64' 'x86_64')
@@ -17,10 +17,10 @@ source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
         "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname//-/_}-aarch64-unknown-linux-gnu.tar.gz")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname//-/_}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('32155e3707db4a385b1e7ed4da9526ad7840c9a8bb7c6704f1244403ac92a547'
+sha256sums=('4d5d70971c132150195e51175447934e2044671ea014a9f4122ffa7f1d659a63'
             'e72a19894db78d4bb02cb1eff86920cddabd23b56d03f2f20850e07452db86d5')
-sha256sums_aarch64=('145caae9679f4c11e6966cec168fddf3feab69e017bc4a80856aaffa6f18a583')
-sha256sums_x86_64=('a661f533bd70d071e184d80809066bedfa15ed3cf33f011cae891cf4081ae64d')
+sha256sums_aarch64=('e624d6d600177f84695560504fcecf53de4ba2b53a1cf8428c6194636f5c17ed')
+sha256sums_x86_64=('9e0afbf73aedf75c0a8a36516c9f8d9a14fe00408280f7a825602593cdf3f0ea')
 
 package() {
   cd "${srcdir}"
