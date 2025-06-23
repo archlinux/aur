@@ -1,6 +1,6 @@
 pkgbase = frappe-bench
 	pkgdesc = CLI to manage multi-tenant deployments for Frappe apps.
-	pkgver = 5.25.5
+	pkgver = 5.25.6
 	pkgrel = 1
 	url = https://github.com/frappe/bench
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = frappe-bench
 	optdepends = mariadb: Database
 	optdepends = nginx: HTTP server
 	provides = bench
-	source = frappe-bench-v5.25.5.tar.gz::https://github.com/frappe/bench/archive/refs/tags/v5.25.5.tar.gz
-	sha512sums = 9495581b146652179a158de807f84db2e24824d1c3f3942717fd7fc12cf7acc86dce81a1474d10aa4f357954002ffe6d9caa6ad7d6beb2f77661d1d994d7567d
+	source = frappe-bench-v5.25.6.tar.gz::https://github.com/frappe/bench/archive/refs/tags/v5.25.6.tar.gz
+	sha512sums = f4174b585f4a80c368bcdfeed8282aabc8d3dfe7931155f06c6bb25457fe7da0ef4156ba1f5df2638039e64f0a00a9ab4df05ea43a1297206240f786ef33fcc8
 
 pkgname = frappe-bench
