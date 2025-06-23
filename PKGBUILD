@@ -2,8 +2,8 @@
 
 _plug=vsmuxtools
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.1.0.1.g1f1d8cf
-pkgrel=2
+pkgver=0.2.1.3.gecc1984
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-muxtools'
@@ -20,6 +20,7 @@ makedepends=(
     'python-wheel'
     'python-installer'
     'python-setuptools'
+    'python-hatchling'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
