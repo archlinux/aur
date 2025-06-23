@@ -32,7 +32,8 @@ check() {
 }
 
 package_python-mfusepy() {
-    depends=('python>=3.9' 'fuse2' 'fuse3')
+    depends=('python>=3.9')
+    optdepends=('fuse2' 'fuse3')
 #   optdepends=('python-mfuse-doc: Documentation for mfusepy')
     cd ${srcdir}/${_pyname}-${pkgver}
 

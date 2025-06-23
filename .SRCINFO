@@ -14,5 +14,5 @@ pkgbase = python-mfusepy
 
 pkgname = python-mfusepy
 	depends = python>=3.9
-	depends = fuse2
-	depends = fuse3
+	optdepends = fuse2
+	optdepends = fuse3
