@@ -8,15 +8,13 @@
 
 # Maintainer: Jesse R Codling <codling@umich.edu>
 pkgname=armbian-firmware-git
-pkgver=20230716.125181c
-pkgrel=3
+pkgver=20250524.50bdc75
+pkgrel=1
 pkgdesc="Armbian-Specific Linux Firmware Files, useful for some SBCs"
 arch=(any)
 url="https://github.com/armbian/firmware"
 license=('custom')
-depends=()
-provides=("${pkgname%-git}" "linux-firmware")
-options=(!strip)
+options=(!strip staticlibs libtool)
 conflicts=(
 	'linux-firmware-broadcom'
 	'linux-firmware-cirrus'
@@ -28,7 +26,6 @@ conflicts=(
 )
 depends=('linux-firmware-whence') # ensure license files are installed
 provides=("${pkgname%-git}")
-options=()
 source=("firmware::git+${url}.git")
 md5sums=('SKIP')
 

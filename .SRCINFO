@@ -1,7 +1,7 @@
 pkgbase = armbian-firmware-git
 	pkgdesc = Armbian-Specific Linux Firmware Files, useful for some SBCs
-	pkgver = 20230716.125181c
-	pkgrel = 3
+	pkgver = 20250524.50bdc75
+	pkgrel = 1
 	url = https://github.com/armbian/firmware
 	arch = any
 	license = custom
@@ -14,6 +14,9 @@ pkgbase = armbian-firmware-git
 	conflicts = linux-firmware-other
 	conflicts = linux-firmware-qcom
 	conflicts = linux-firmware-realtek
+	options = !strip
+	options = staticlibs
+	options = libtool
 	source = firmware::git+https://github.com/armbian/firmware.git
 	md5sums = SKIP
 
