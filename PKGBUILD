@@ -2,7 +2,7 @@
 # Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi-git
-pkgver=4.0.0.r5.g3746515f
+pkgver=4.0.3.r15.g3c19c693
 pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
@@ -32,6 +32,7 @@ depends=(
 optdepends=(
   'lilypond: Music engraving (recommended)'
   'python-pygame: MIDI playback (alternate engine)'
+  'portmidi: MIDI playback'
   'hyphen-lang: hyphenation patterns for desired languages'
   'python-pycups: Printing to a local CUPS server'
 )
