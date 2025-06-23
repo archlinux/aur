@@ -86,11 +86,7 @@ pkgname=("$_pkgname-git")
 [[ "${_use_kwin_x11::1}" == "t" ]] && pkgname+=("$_pkgname-x11-git")
 
 for i in "${pkgname[@]}"; do
-  if [[ "$i" =~ -x11 ]]; then
-    eval "package_$i()
-      $(declare -f _package_x11 | tail +2)"
-  else
-    eval "package_$i()
-      $(declare -f _package_wayland | tail +2)"
-  fi
+  [[ "$i" =~ -x11 ]] && _ws="x11" || _ws="wayland"
+  eval "package_$i()
+    $(declare -f _package_${_ws} | tail +2)"
 done
