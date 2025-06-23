@@ -1,0 +1,20 @@
+pkgbase = ledger-live-electron36-git
+	pkgdesc = Maintain your Ledger devices (git on thatonecalculator fork, security/upgrade-eol-electron branch)
+	pkgver = r39697.g997b5c8831
+	pkgrel = 1
+	url = https://github.com/ThatOneCalculator/ledger-live
+	arch = x86_64
+	license = MIT
+	makedepends = node-gyp
+	makedepends = pnpm
+	makedepends = nvm
+	depends = ledger-udev
+	depends = electron36
+	provides = ledger-live
+	conflicts = ledger-live
+	source = ledger-live-electron36-git::git+https://github.com/ThatOneCalculator/ledger-live#branch=security/upgrade-eol-electron
+	source = ledger-live-desktop.sh
+	sha512sums = SKIP
+	sha512sums = 70effe952d7007e79e43523f5e8d868228eedb5049465c2ebea017f9c8b0b25f82e0c6f56cef59e40479d29149969cde8e7098edf8a0cad7b23a9a123e5f0755
+
+pkgname = ledger-live-electron36-git
