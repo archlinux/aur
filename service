@@ -1,0 +1,14 @@
+[Unit]
+Description=VictoriaLogs
+Documentation=https://docs.victoriametrics.com/victorialogs/
+After=network.target
+Requires=network.target
+
+[Service]
+User=victorialogs
+Group=victorialogs
+EnvironmentFile=/etc/default/victorialogs
+ExecStart=/usr/bin/victorialogs $ARGS
+
+[Install]
+WantedBy=multi-user.target
