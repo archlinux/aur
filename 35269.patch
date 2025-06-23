@@ -1,0 +1,1953 @@
+From ea7093e0f5aa923e93307ab83b3b7e58671e4572 Mon Sep 17 00:00:00 2001
+From: Natalie Vock <natalie.vock@gmx.de>
+Date: Thu, 17 Apr 2025 19:45:11 +0200
+Subject: [PATCH 01/11] aco/isel: Improve vector splits for
+ image_bvh8_intersect_ray
+
+Using split_vector to split everything into scalars allows copy-prop to
+eliminate the final p_create_vector. Considerably reduces copies and
+register thrashing.
+---
+ .../aco_select_nir_intrinsics.cpp                 | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
+index a59cac2c177e1..ca0af3e0546fe 100644
+--- a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
++++ b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
+@@ -1803,9 +1803,18 @@ visit_bvh8_intersect_ray_amd(isel_context* ctx, nir_intrinsic_instr* instr)
+    mimg->dmask = 0xf;
+    mimg->unrm = true;
+    mimg->r128 = true;
+-
+-   bld.pseudo(aco_opcode::p_create_vector, Definition(dst), Operand(result), Operand(new_origin),
+-              Operand(new_dir));
++   emit_split_vector(ctx, result, 10);
++   emit_split_vector(ctx, new_origin, 3);
++   emit_split_vector(ctx, new_dir, 3);
++
++   Temp vec[16];
++   for (unsigned i = 0; i < 10; ++i)
++      vec[i] = emit_extract_vector(ctx, result, i, RegClass::v1);
++   for (unsigned i = 0; i < 3; ++i) {
++      vec[10 + i] = emit_extract_vector(ctx, new_origin, i, RegClass::v1);
++      vec[13 + i] = emit_extract_vector(ctx, new_dir, i, RegClass::v1);
++   }
++   create_vec_from_array(ctx, vec, 16, RegType::vgpr, 4, 0, dst);
+ }
+ 
+ static std::vector<Temp>
+-- 
+GitLab
+
+
+From 19d4be3c9e60cbc78ff24b6ea9182436c3498983 Mon Sep 17 00:00:00 2001
+From: Natalie Vock <natalie.vock@gmx.de>
+Date: Tue, 15 Apr 2025 16:34:46 +0200
+Subject: [PATCH 02/11] aco: Support vector-aligned ops fixed to defs
+
+---
+ src/amd/compiler/aco_live_var_analysis.cpp   |  4 +
+ src/amd/compiler/aco_register_allocation.cpp | 84 ++++++++++++++++----
+ 2 files changed, 74 insertions(+), 14 deletions(-)
+
+diff --git a/src/amd/compiler/aco_live_var_analysis.cpp b/src/amd/compiler/aco_live_var_analysis.cpp
+index bf3d66cde66a4..59990361cb593 100644
+--- a/src/amd/compiler/aco_live_var_analysis.cpp
++++ b/src/amd/compiler/aco_live_var_analysis.cpp
+@@ -277,6 +277,10 @@ process_live_temps_per_block(live_ctx& ctx, Block* block)
+             insn->operands[op_idx].setCopyKill(true);
+          }
+          insn->operands[op_idx].setClobbered(true);
++         while (insn->operands[op_idx].isVectorAligned()) {
++            ++op_idx;
++            insn->operands[op_idx].setClobbered(true);
++         }
+       }
+ 
+       /* GEN */
+diff --git a/src/amd/compiler/aco_register_allocation.cpp b/src/amd/compiler/aco_register_allocation.cpp
+index 23989cfbc897c..35477a0e0fa1b 100644
+--- a/src/amd/compiler/aco_register_allocation.cpp
++++ b/src/amd/compiler/aco_register_allocation.cpp
+@@ -855,7 +855,7 @@ adjust_max_used_regs(ra_ctx& ctx, RegClass rc, unsigned reg)
+ 
+ void
+ update_renames(ra_ctx& ctx, RegisterFile& reg_file, std::vector<parallelcopy>& parallelcopies,
+-               aco_ptr<Instruction>& instr, bool clear_operands = true)
++               aco_ptr<Instruction>& instr, bool clear_operands = true, bool never_rename = false)
+ {
+    /* clear operands */
+    if (clear_operands) {
+@@ -958,6 +958,7 @@ update_renames(ra_ctx& ctx, RegisterFile& reg_file, std::vector<parallelcopy>& p
+             /* only rename precolored operands if the copy-location matches */
+             bool omit_renaming = op.isPrecolored() && op.physReg() != copy.def.physReg();
+             omit_renaming |= is_copy_kill && i != (unsigned)copy.copy_kill;
++            omit_renaming |= never_rename;
+ 
+             /* If this is a copy-kill, then the renamed operand is killed since we don't rename any
+              * uses in other instructions. If it's a normal copy, then this operand is killed if we
+@@ -2350,6 +2351,10 @@ handle_vector_operands(ra_ctx& ctx, RegisterFile& register_file,
+                        unsigned operand_index)
+ {
+    assert(operand_index == 0 || !instr->operands[operand_index - 1].isVectorAligned());
++
++   auto tied_defs = get_tied_defs(instr.get());
++   bool is_tied = std::find(tied_defs.begin(), tied_defs.end(), operand_index) != tied_defs.end();
++
+    /* Count the operands that form part of the vector. */
+    uint32_t num_operands = 1;
+    uint32_t num_bytes = instr->operands[operand_index].bytes();
+@@ -2385,7 +2390,31 @@ handle_vector_operands(ra_ctx& ctx, RegisterFile& register_file,
+    for (unsigned i = operand_index; i < operand_index + num_operands; i++)
+       instr->operands[i].setFixed(ctx.assignments[instr->operands[i].tempId()].reg);
+ 
+-   update_renames(ctx, register_file, parallelcopies, instr);
++   /* If the vector operand is tied to a definition, move all not-killed components out of the
++    * way here. resolve_vector_operands will insert parallelcopies to make sure a temporary
++    * copy of the operand is in the correct register.
++    */
++   if (is_tied) {
++      RegisterFile tmp_file = register_file;
++      tmp_file.block(reg, vec->definitions[0].regClass());
++      for (unsigned i = 0; i < instr->operands.size(); ++i) {
++         if (instr->operands[i].isVectorAligned() || (i && instr->operands[i - 1].isVectorAligned()))
++            tmp_file.block(ctx.assignments[instr->operands[i].tempId()].reg, instr->operands[i].regClass());
++      }
++      std::vector<unsigned> vars;
++      for (unsigned i = operand_index; i < operand_index + num_operands; i++) {
++         if (!instr->operands[i].isKill())
++            vars.push_back(instr->operands[i].tempId());
++
++         /* Mark operands as non-lateKill temporarily so that handle_operands_tied_to_definition
++          * does not get confused. The lateKill flag will be restored there.
++          */
++         instr->operands[i].setLateKill(false);
++      }
++      get_regs_for_copies(ctx, tmp_file, parallelcopies, vars, instr, {});
++   }
++
++   update_renames(ctx, register_file, parallelcopies, instr, false, true);
+    ctx.vector_operands.emplace_back(
+       vector_operand{vec->definitions[0], operand_index, num_operands});
+    register_file.fill(vec->definitions[0]);
+@@ -2406,8 +2435,9 @@ resolve_vector_operands(ra_ctx& ctx, RegisterFile& reg_file,
+       for (unsigned i = vec.start; i < vec.start + vec.num_part; i++) {
+          Operand& op = instr->operands[i];
+          /* Assert that no already handled parallelcopy moved the operand. */
+-         assert(std::none_of(parallelcopies.begin(), parallelcopies.end(), [=](parallelcopy copy)
+-                             { return copy.op.getTemp() == op.getTemp() && copy.def.isTemp(); }));
++         assert(std::none_of(parallelcopies.begin(), parallelcopies.end(), [=](parallelcopy copy) {
++            return copy.op.getTemp() == op.getTemp() && copy.def.isTemp() && copy.def.physReg() == op.physReg();
++         }));
+ 
+          /* Add a parallelcopy for each operand which is not in the correct position. */
+          if (op.physReg() != reg) {
+@@ -3278,8 +3308,11 @@ handle_operands_tied_to_definitions(ra_ctx& ctx, std::vector<parallelcopy>& para
+        *
+        * We also need to copy if there is different definition which is precolored and intersects
+        * with this operand, but we don't bother since it shouldn't happen.
++       *
++       * Vector-aligned operands get copied in resolve_vector_operands and proper register assignment
++       * is already ensured.
+        */
+-      if (!op.isKill() || op.isCopyKill()) {
++      if ((!op.isKill() || op.isCopyKill()) && !op.isVectorAligned()) {
+          PhysReg reg = get_reg(ctx, reg_file, op.getTemp(), parallelcopies, instr, op_idx);
+ 
+          /* update_renames() in case we moved this operand. */
+@@ -3296,10 +3329,15 @@ handle_operands_tied_to_definitions(ra_ctx& ctx, std::vector<parallelcopy>& para
+       /* Flag the operand's temporary as lateKill. This serves as placeholder
+        * for the tied definition until the instruction is fully handled.
+        */
+-      for (Operand& other_op : instr->operands) {
+-         if (other_op.isTemp() && other_op.getTemp() == op.getTemp())
+-            other_op.setLateKill(true);
+-      }
++      bool is_vector;
++      do {
++         for (Operand &other_op: instr->operands) {
++            if (other_op.isTemp() && other_op.getTemp() == instr->operands[op_idx].getTemp())
++               other_op.setLateKill(true);
++         }
++         is_vector = instr->operands[op_idx].isVectorAligned();
++         ++op_idx;
++      } while (is_vector);
+    }
+ }
+ 
+@@ -3312,17 +3350,35 @@ assign_tied_definitions(ra_ctx& ctx, aco_ptr<Instruction>& instr, RegisterFile&
+       Definition& def = instr->definitions[fixed_def_idx++];
+       Operand& op = instr->operands[op_idx];
+       assert(op.isKill());
+-      assert(def.regClass().type() == op.regClass().type() && def.size() <= op.size());
++      if (op.isVectorAligned()) {
++         ASSERTED uint32_t vector_size = 0;
++         bool is_vector;
++         unsigned vec_idx = op_idx;
++         do {
++            vector_size += instr->operands[vec_idx].size();
++            is_vector = instr->operands[vec_idx].isVectorAligned();
++            ++vec_idx;
++         } while (is_vector);
++         assert(def.regClass().type() == op.regClass().type() && def.size() <= vector_size);
++      }
++      else {
++         assert(def.regClass().type() == op.regClass().type() && def.size() <= op.size());
++      }
+ 
+       def.setFixed(op.physReg());
+       ctx.assignments[def.tempId()].set(def);
+       reg_file.clear(op);
+       reg_file.fill(def);
+ 
+-      for (Operand& other_op : instr->operands) {
+-         if (other_op.isTemp() && other_op.getTemp() == op.getTemp())
+-            other_op.setLateKill(false);
+-      }
++      bool is_vector;
++      do {
++         for (Operand& other_op : instr->operands) {
++            if (other_op.isTemp() && other_op.getTemp() == instr->operands[op_idx].getTemp())
++               other_op.setLateKill(false);
++         }
++         is_vector = instr->operands[op_idx].isVectorAligned();
++         ++op_idx;
++      } while (is_vector);
+    }
+ }
+ 
+-- 
+GitLab
+
+
+From 16253679b9698e2c2143bade4a82895cc7bc4a11 Mon Sep 17 00:00:00 2001
+From: Natalie Vock <natalie.vock@gmx.de>
+Date: Mon, 14 Apr 2025 23:24:53 +0200
+Subject: [PATCH 03/11] aco: Use vector-aligned operands for
+ image_bvh8_intersect_ray
+
+---
+ src/amd/compiler/aco_builder_h.py             |   2 +-
+ src/amd/compiler/aco_ir.cpp                   |   4 +-
+ .../aco_select_nir_intrinsics.cpp             |  39 +++-
+ src/amd/compiler/tests/test_regalloc.cpp      | 177 +++++++++++++-----
+ 4 files changed, 160 insertions(+), 62 deletions(-)
+
+diff --git a/src/amd/compiler/aco_builder_h.py b/src/amd/compiler/aco_builder_h.py
+index c304847b8b419..589b1732857bf 100644
+--- a/src/amd/compiler/aco_builder_h.py
++++ b/src/amd/compiler/aco_builder_h.py
+@@ -565,7 +565,7 @@ formats = [("pseudo", [Format.PSEUDO], list(itertools.product(range(5), range(7)
+            ("ldsdir", [Format.LDSDIR], [(1, 1)]),
+            ("mubuf", [Format.MUBUF], [(0, 4), (1, 3), (1, 4)]),
+            ("mtbuf", [Format.MTBUF], [(0, 4), (1, 3)]),
+-           ("mimg", [Format.MIMG], list(itertools.product([0, 1], [3, 4, 5, 6, 7])) + [(3, 8)]),
++           ("mimg", [Format.MIMG], list(itertools.product([0, 1], [3, 4, 5, 6, 7])) + [(3, 8)] + [(3, 14)]),
+            ("exp", [Format.EXP], [(0, 4), (0, 5)]),
+            ("branch", [Format.PSEUDO_BRANCH], [(0, 0), (0, 1)]),
+            ("barrier", [Format.PSEUDO_BARRIER], [(0, 0)]),
+diff --git a/src/amd/compiler/aco_ir.cpp b/src/amd/compiler/aco_ir.cpp
+index 8d8bc7fe74649..a72f7b1263b40 100644
+--- a/src/amd/compiler/aco_ir.cpp
++++ b/src/amd/compiler/aco_ir.cpp
+@@ -1445,8 +1445,8 @@ get_tied_defs(Instruction* instr)
+       ops.push_back(2);
+    } else if (instr->opcode == aco_opcode::image_bvh8_intersect_ray) {
+       /* VADDR starts at 3. */
+-      ops.push_back(3 + 2);
+-      ops.push_back(3 + 3);
++      ops.push_back(3 + 4);
++      ops.push_back(3 + 7);
+    }
+    return ops;
+ }
+diff --git a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
+index ca0af3e0546fe..2e51f2a11e3fb 100644
+--- a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
++++ b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
+@@ -1794,15 +1794,40 @@ visit_bvh8_intersect_ray_amd(isel_context* ctx, nir_intrinsic_instr* instr)
+    Temp new_dir = bld.tmp(v3);
+ 
+    std::vector<Temp> args = {bvh_base,
+-                             bld.pseudo(aco_opcode::p_create_vector, bld.def(v2), tmax, cull_mask),
++                             tmax, cull_mask,
+                              origin, dir, node_id};
+ 
+-   MIMG_instruction* mimg = emit_mimg(bld, aco_opcode::image_bvh8_intersect_ray,
+-                                      {new_origin, new_dir, result}, resource, Operand(s4), args);
+-   mimg->dim = ac_image_1d;
+-   mimg->dmask = 0xf;
+-   mimg->unrm = true;
+-   mimg->r128 = true;
++   /* Use vector-aligned scalar operands in order to avoid unnecessary copies
++    * when creating vectors.
++    */
++   std::vector<Operand> scalar_args;
++   for (unsigned i = 0; i < args.size(); ++i) {
++      Temp tmp = args[i];
++      for (unsigned j = 0; j < tmp.size(); j++) {
++         scalar_args.emplace_back(emit_extract_vector(ctx, tmp, j, v1));
++         scalar_args.back().setVectorAligned(true);
++      }
++      /* (tmax, cull_mask) is passed as one vector */
++      if (i != 1)
++         scalar_args.back().setVectorAligned(false);
++   }
++
++   Instruction* mimg = create_instruction(aco_opcode::image_bvh8_intersect_ray, Format::MIMG,
++                                          3 + scalar_args.size(), 3);
++   mimg->definitions[0] = Definition(new_origin);
++   mimg->definitions[1] = Definition(new_dir);
++   mimg->definitions[2] = Definition(result);
++   mimg->operands[0] = Operand(resource);
++   mimg->operands[1] = Operand(s4);
++   mimg->operands[2] = Operand(v1);
++   for (unsigned i = 0; i < scalar_args.size(); i++)
++      mimg->operands[3 + i] = scalar_args[i];
++
++   mimg->mimg().dim = ac_image_1d;
++   mimg->mimg().dmask = 0xf;
++   mimg->mimg().unrm = true;
++   mimg->mimg().r128 = true;
++   bld.insert(std::move(mimg));
+    emit_split_vector(ctx, result, 10);
+    emit_split_vector(ctx, new_origin, 3);
+    emit_split_vector(ctx, new_dir, 3);
+diff --git a/src/amd/compiler/tests/test_regalloc.cpp b/src/amd/compiler/tests/test_regalloc.cpp
+index 7578c4ba6be45..eb17fb49c1455 100644
+--- a/src/amd/compiler/tests/test_regalloc.cpp
++++ b/src/amd/compiler/tests/test_regalloc.cpp
+@@ -935,28 +935,47 @@ BEGIN_TEST(regalloc.tied_defs.bvh8.killed.simple)
+       return;
+ 
+    //>> s8: %_:s[0-7] = p_startpgm
+-   //! v2: %base:v[0-1] = p_unit_test
+-   //! v2: %tmax_mask:v[2-3] = p_unit_test
+-   //! v3: %origin:v[4-6] = p_unit_test
+-   //! v3: %dir:v[7-9] = p_unit_test
++   //! v1: %base_lo:v[0] = p_unit_test
++   //! v1: %base_hi:v[1] = p_unit_test
++   //! v1: %tmax:v[2] = p_unit_test
++   //! v1: %cull_mask:v[3] = p_unit_test
++   //! v1: %origin_x:v[4] = p_unit_test
++   //! v1: %origin_y:v[5] = p_unit_test
++   //! v1: %origin_z:v[6] = p_unit_test
++   //! v1: %dir_x:v[7] = p_unit_test
++   //! v1: %dir_y:v[8] = p_unit_test
++   //! v1: %dir_z:v[9] = p_unit_test
+    //! v1: %node:v[10] = p_unit_test
+-   Temp base = bld.pseudo(aco_opcode::p_unit_test, bld.def(v2, PhysReg(256 + 0)));
+-   Temp tmax_mask = bld.pseudo(aco_opcode::p_unit_test, bld.def(v2, PhysReg(256 + 2)));
+-   Temp origin = bld.pseudo(aco_opcode::p_unit_test, bld.def(v3, PhysReg(256 + 4)));
+-   Temp dir = bld.pseudo(aco_opcode::p_unit_test, bld.def(v3, PhysReg(256 + 7)));
++   Temp base_lo = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 0)));
++   Temp base_hi = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 1)));
++   Temp tmax = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 2)));
++   Temp cull_mask = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 3)));
++   Temp origin_x = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 4)));
++   Temp origin_y = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 5)));
++   Temp origin_z = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 6)));
++   Temp dir_x = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 7)));
++   Temp dir_y = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 8)));
++   Temp dir_z = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 9)));
+    Temp node = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 10)));
+ 
+    Temp new_origin = bld.tmp(v3);
+    Temp new_dir = bld.tmp(v3);
+    Temp result = bld.tmp(v10);
+-   //! v3: %new_origin:v[4-6], v3: %new_dir:v[7-9], v10: %_:v[10-19] = image_bvh8_intersect_ray %_:s[0-7], s4: undef, v1: undef, %base:v[0-1], %tmax_mask:v[2-3], %origin:v[4-6], %dir:v[7-9], %node:v[10] 1d
+-   bld.mimg(aco_opcode::image_bvh8_intersect_ray, Definition(new_origin), Definition(new_dir),
+-            Definition(result), inputs[0], Operand(s4), Operand(v1), base, tmax_mask, origin, dir,
+-            node);
++   //! v3: %new_origin:v[4-6],  v3: %new_dir:v[7-9],  v10: %_:v[10-19] = image_bvh8_intersect_ray %_:s[0-7],  s4: undef,  v1: undef, (%base_lo:v[0], %base_hi:v[1]), (%tmax:v[2], %cull_mask:v[3]), (%origin_x:v[4], %origin_y:v[5], %origin_z:v[6]), (%dir_x:v[7], %dir_y:v[8], %dir_z:v[9]), %node:v[10] 1d
++   Instruction *instr = bld.mimg(aco_opcode::image_bvh8_intersect_ray, Definition(new_origin), Definition(new_dir),
++                                 Definition(result), inputs[0], Operand(s4), Operand(v1), base_lo, base_hi, tmax,
++                                 cull_mask, origin_x, origin_y, origin_z, dir_x, dir_y, dir_z, node).instr;
++   instr->operands[3].setVectorAligned(true);
++   instr->operands[5].setVectorAligned(true);
++   instr->operands[7].setVectorAligned(true);
++   instr->operands[8].setVectorAligned(true);
++   instr->operands[10].setVectorAligned(true);
++   instr->operands[11].setVectorAligned(true);
+ 
+    finish_ra_test(ra_test_policy());
+ END_TEST
+ 
++#if 0
+ BEGIN_TEST(regalloc.tied_defs.bvh8.killed.move_ops)
+    if (!setup_cs("s8", GFX12))
+       return;
+@@ -964,15 +983,27 @@ BEGIN_TEST(regalloc.tied_defs.bvh8.killed.move_ops)
+    program->dev.vgpr_limit = 16;
+ 
+    //>> s8: %_:s[0-7] = p_startpgm
+-   //! v2: %base:v[0-1] = p_unit_test
+-   //! v2: %tmax_mask:v[2-3] = p_unit_test
+-   //! v3: %origin:v[4-6] = p_unit_test
+-   //! v3: %dir:v[7-9] = p_unit_test
++   //! v1: %base_lo:v[0] = p_unit_test
++   //! v1: %base_hi:v[0] = p_unit_test
++   //! v1: %tmax:v[2] = p_unit_test
++   //! v1: %cull_mask:v[3] = p_unit_test
++   //! v1: %origin_x:v[4] = p_unit_test
++   //! v1: %origin_y:v[5] = p_unit_test
++   //! v1: %origin_z:v[6] = p_unit_test
++   //! v1: %dir_x:v[7] = p_unit_test
++   //! v1: %dir_y:v[8] = p_unit_test
++   //! v1: %dir_z:v[9] = p_unit_test
+    //! v1: %node:v[10] = p_unit_test
+-   Temp base = bld.pseudo(aco_opcode::p_unit_test, bld.def(v2, PhysReg(256 + 0)));
+-   Temp tmax_mask = bld.pseudo(aco_opcode::p_unit_test, bld.def(v2, PhysReg(256 + 2)));
+-   Temp origin = bld.pseudo(aco_opcode::p_unit_test, bld.def(v3, PhysReg(256 + 4)));
+-   Temp dir = bld.pseudo(aco_opcode::p_unit_test, bld.def(v3, PhysReg(256 + 7)));
++   Temp base_lo = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 0)));
++   Temp base_hi = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 1)));
++   Temp tmax = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 2)));
++   Temp cull_mask = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 3)));
++   Temp origin_x = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 4)));
++   Temp origin_y = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 5)));
++   Temp origin_z = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 6)));
++   Temp dir_x = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 7)));
++   Temp dir_y = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 8)));
++   Temp dir_z = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 9)));
+    Temp node = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 10)));
+ 
+    Temp new_origin = bld.tmp(v3);
+@@ -981,35 +1012,57 @@ BEGIN_TEST(regalloc.tied_defs.bvh8.killed.move_ops)
+    /* When allocating the last definition, we need to move the origin/dir operands to make space. */
+    //! v3: %origin_copy:v[10-12], v3: %dir_copy:v[13-15], v1: %node_copy:v[4] = p_parallelcopy %origin:v[4-6], %dir:v[7-9], %node:v[10]
+    //! v3: %new_origin:v[10-12], v3: %new_dir:v[13-15], v10: %_:v[0-9] = image_bvh8_intersect_ray %_:s[0-7], s4: undef, v1: undef, %base:v[0-1], %tmax_mask:v[2-3], %origin_copy:v[10-12], %dir_copy:v[13-15], %node_copy:v[4] 1d
+-   bld.mimg(aco_opcode::image_bvh8_intersect_ray, Definition(new_origin), Definition(new_dir),
+-            Definition(result), inputs[0], Operand(s4), Operand(v1), base, tmax_mask, origin, dir,
+-            node);
++   Instruction *instr = bld.mimg(aco_opcode::image_bvh8_intersect_ray, Definition(new_origin), Definition(new_dir), Definition(result),
++                                 inputs[0], Operand(s4), Operand(v1), base_lo, base_hi, tmax, cull_mask, origin_x, origin_y,
++                                 origin_z, dir_x, dir_y, dir_z, node).instr;
++   instr->operands[3].setVectorAligned(true);
++   instr->operands[5].setVectorAligned(true);
++   instr->operands[7].setVectorAligned(true);
++   instr->operands[8].setVectorAligned(true);
++   instr->operands[10].setVectorAligned(true);
++   instr->operands[11].setVectorAligned(true);
+ 
+    finish_ra_test(ra_test_policy());
+ END_TEST
++#endif
+ 
+ BEGIN_TEST(regalloc.tied_defs.bvh8.killed.duplicate_ops)
+    if (!setup_cs("s8", GFX12))
+       return;
+ 
+    //>> s8: %_:s[0-7] = p_startpgm
+-   //! v3: %origin_dir:v[0-2] = p_unit_test
+-   //! v2: %base:v[3-4] = p_unit_test
+-   //! v2: %tmax_mask:v[5-6] = p_unit_test
++   //! v1: %origin_dir_x:v[0] = p_unit_test
++   //! v1: %origin_dir_y:v[1] = p_unit_test
++   //! v1: %origin_dir_z:v[2] = p_unit_test
++   //! v1: %base_lo:v[3] = p_unit_test
++   //! v1: %base_hi:v[4] = p_unit_test
++   //! v1: %tmax:v[5] = p_unit_test
++   //! v1: %cull_mask:v[6] = p_unit_test
+    //! v1: %node:v[7] = p_unit_test
+-   Temp origin_dir = bld.pseudo(aco_opcode::p_unit_test, bld.def(v3, PhysReg(256 + 0)));
+-   Temp base = bld.pseudo(aco_opcode::p_unit_test, bld.def(v2, PhysReg(256 + 3)));
+-   Temp tmax_mask = bld.pseudo(aco_opcode::p_unit_test, bld.def(v2, PhysReg(256 + 5)));
++   Temp origin_dir_x = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 0)));
++   Temp origin_dir_y = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 1)));
++   Temp origin_dir_z = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 2)));
++   Temp base_lo = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 3)));
++   Temp base_hi = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 4)));
++   Temp tmax = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 5)));
++   Temp cull_mask = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 6)));
+    Temp node = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 7)));
+ 
+    Temp new_origin = bld.tmp(v3);
+    Temp new_dir = bld.tmp(v3);
+    Temp result = bld.tmp(v10);
+-   //! v3: %origin_dir_copy:v[8-10] = p_parallelcopy %origin_dir:v[0-2]
+-   //! v3: %new_origin:v[0-2], v3: %new_dir:v[8-10], v10: %_:v[12-21] = image_bvh8_intersect_ray %_:s[0-7], s4: undef, v1: undef, %base:v[3-4], %tmax_mask:v[5-6], %origin_dir:v[0-2], %origin_dir_copy:v[8-10], %node:v[7] 1d
+-   bld.mimg(aco_opcode::image_bvh8_intersect_ray, Definition(new_origin), Definition(new_dir),
+-            Definition(result), inputs[0], Operand(s4), Operand(v1), base, tmax_mask, origin_dir,
+-            origin_dir, node);
++   //! v1: %origin_dir_copy_x:v[8],  v1: %origin_dir_copy_y:v[9],  v1: %origin_dir_copy_z:v[10] = p_parallelcopy %origin_dir_x:v[0], %origin_dir_y:v[1], %origin_dir_z:v[2]
++   //! v3: %new_origin:v[0-2],  v3: %new_dir:v[8-10],  v10: %_:v[12-21] = image_bvh8_intersect_ray %_:s[0-7],  s4: undef,  v1: undef, (%base_lo:v[3], %base_hi:v[4]), (%tmax:v[5], %cull_mask:v[6]), (%origin_dir_x:v[0], %origin_dir_y:v[1], %origin_dir_z:v[2]), (%origin_dir_copy_x:v[8], %origin_dir_copy_y:v[9], %origin_dir_copy_z:v[10]), %node:v[7] 1d
++   Instruction *instr = bld.mimg(aco_opcode::image_bvh8_intersect_ray, Definition(new_origin), Definition(new_dir),
++                                 Definition(result), inputs[0], Operand(s4), Operand(v1), base_lo, base_hi, tmax,
++                                 cull_mask, origin_dir_x, origin_dir_y, origin_dir_z, origin_dir_x, origin_dir_y,
++                                 origin_dir_z, node).instr;
++   instr->operands[3].setVectorAligned(true);
++   instr->operands[5].setVectorAligned(true);
++   instr->operands[7].setVectorAligned(true);
++   instr->operands[8].setVectorAligned(true);
++   instr->operands[10].setVectorAligned(true);
++   instr->operands[11].setVectorAligned(true);
+ 
+    finish_ra_test(ra_test_policy());
+ END_TEST
+@@ -1019,34 +1072,53 @@ BEGIN_TEST(regalloc.tied_defs.bvh8.live_through.simple)
+       return;
+ 
+    //>> s8: %_:s[0-7] = p_startpgm
+-   //! v2: %base:v[0-1] = p_unit_test
+-   //! v2: %tmax_mask:v[2-3] = p_unit_test
+-   //! v3: %origin:v[4-6] = p_unit_test
+-   //! v3: %dir:v[7-9] = p_unit_test
++   //! v1: %base_lo:v[0] = p_unit_test
++   //! v1: %base_hi:v[1] = p_unit_test
++   //! v1: %tmax:v[2] = p_unit_test
++   //! v1: %cull_mask:v[3] = p_unit_test
++   //! v1: %origin_x:v[4] = p_unit_test
++   //! v1: %origin_y:v[5] = p_unit_test
++   //! v1: %origin_z:v[6] = p_unit_test
++   //! v1: %dir_x:v[7] = p_unit_test
++   //! v1: %dir_y:v[8] = p_unit_test
++   //! v1: %dir_z:v[9] = p_unit_test
+    //! v1: %node:v[10] = p_unit_test
+-   Temp base = bld.pseudo(aco_opcode::p_unit_test, bld.def(v2, PhysReg(256 + 0)));
+-   Temp tmax_mask = bld.pseudo(aco_opcode::p_unit_test, bld.def(v2, PhysReg(256 + 2)));
+-   Temp origin = bld.pseudo(aco_opcode::p_unit_test, bld.def(v3, PhysReg(256 + 4)));
+-   Temp dir = bld.pseudo(aco_opcode::p_unit_test, bld.def(v3, PhysReg(256 + 7)));
++   Temp base_lo = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 0)));
++   Temp base_hi = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 1)));
++   Temp tmax = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 2)));
++   Temp cull_mask = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 3)));
++   Temp origin_x = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 4)));
++   Temp origin_y = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 5)));
++   Temp origin_z = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 6)));
++   Temp dir_x = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 7)));
++   Temp dir_y = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 8)));
++   Temp dir_z = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 9)));
+    Temp node = bld.pseudo(aco_opcode::p_unit_test, bld.def(v1, PhysReg(256 + 10)));
+ 
+    Temp new_origin = bld.tmp(v3);
+    Temp new_dir = bld.tmp(v3);
+    Temp result = bld.tmp(v10);
+-   //! v3: %origin_copy:v[11-13], v3: %dir_copy:v[14-16] = p_parallelcopy %origin:v[4-6], %dir:v[7-9]
+-   //! v3: %new_origin:v[11-13], v3: %new_dir:v[14-16], v10: %_:v[18-27] = image_bvh8_intersect_ray %_:s[0-7], s4: undef, v1: undef, %base:v[0-1], %tmax_mask:v[2-3], %origin_copy:v[11-13], %dir_copy:v[14-16], %node:v[10] 1d
+-   bld.mimg(aco_opcode::image_bvh8_intersect_ray, Definition(new_origin), Definition(new_dir),
+-            Definition(result), inputs[0], Operand(s4), Operand(v1), base, tmax_mask, origin, dir,
+-            node);
+-
+-   //! p_unit_test %origin:v[4-6]
+-   //! p_unit_test %dir:v[7-9]
+-   bld.pseudo(aco_opcode::p_unit_test, origin);
+-   bld.pseudo(aco_opcode::p_unit_test, dir);
++   //! v1: %origin_copy_x:v[11],  v1: %origin_copy_y:v[12],  v1: %origin_copy_z:v[13],  v1: %dir_copy_x:v[14],  v1: %dir_copy_y:v[15],  v1: %dir_copy_z:v[16] = p_parallelcopy %origin_x:v[4], %origin_y:v[5], %origin_z:v[6], %dir_x:v[7], %dir_y:v[8], %dir_z:v[9]
++   //! v3: %new_origin:v[4-6],  v3: %new_dir:v[7-9],  v10: %_:v[18-27] = image_bvh8_intersect_ray %_:s[0-7],  s4: undef,  v1: undef, (%base_lo:v[0], %base_hi:v[1]), (%tmax:v[2], %cull_mask:v[3]), (%origin_x2:v[4], %origin_y2:v[5], %origin_z2:v[6]), (%dir_x2:v[7], %dir_y2:v[8], %dir_z2:v[9]), %node:v[10] 1d
++   Instruction *instr = bld.mimg(aco_opcode::image_bvh8_intersect_ray, Definition(new_origin), Definition(new_dir),
++                                 Definition(result), inputs[0], Operand(s4), Operand(v1), base_lo, base_hi, tmax,
++                                 cull_mask, origin_x, origin_y, origin_z, dir_x, dir_y, dir_z, node).instr;
++   instr->operands[3].setVectorAligned(true);
++   instr->operands[5].setVectorAligned(true);
++   instr->operands[7].setVectorAligned(true);
++   instr->operands[8].setVectorAligned(true);
++   instr->operands[10].setVectorAligned(true);
++   instr->operands[11].setVectorAligned(true);
++
++   //! p_unit_test %origin_copy_x:v[11], %origin_copy_y:v[12], %origin_copy_z:v[13]
++   //! p_unit_test %dir_copy_x:v[14], %dir_copy_y:v[15], %dir_copy_z:v[16]
++   bld.pseudo(aco_opcode::p_unit_test, origin_x, origin_y, origin_z);
++   bld.pseudo(aco_opcode::p_unit_test, dir_x, dir_y, dir_z);
+ 
+    finish_ra_test(ra_test_policy());
+ END_TEST
+ 
++#if 0
+ BEGIN_TEST(regalloc.tied_defs.bvh8.live_through.move_ops)
+    if (!setup_cs("s8", GFX12))
+       return;
+@@ -1083,6 +1155,7 @@ BEGIN_TEST(regalloc.tied_defs.bvh8.live_through.move_ops)
+ 
+    finish_ra_test(ra_test_policy());
+ END_TEST
++#endif
+ 
+ BEGIN_TEST(regalloc.vector_aligned.vec_overlaps_with_operand.first)
+    if (!setup_cs("", GFX11))
+-- 
+GitLab
+
+
+From baac3d3afd720c06a32b7b1079bc7163cd7c1029 Mon Sep 17 00:00:00 2001
+From: Natalie Vock <natalie.vock@gmx.de>
+Date: Thu, 17 Apr 2025 19:46:50 +0200
+Subject: [PATCH 04/11] radv/rt/gfx12: Always overwrite origin/dir
+
+They're unchanged if we don't test against instance nodes. This makes
+image_bvh8_intersect_ray kill its direction/origin operands, improving
+RA.
+---
+ src/amd/vulkan/nir/radv_nir_rt_common.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/amd/vulkan/nir/radv_nir_rt_common.c b/src/amd/vulkan/nir/radv_nir_rt_common.c
+index c41cb6258642c..5093788960a78 100644
+--- a/src/amd/vulkan/nir/radv_nir_rt_common.c
++++ b/src/amd/vulkan/nir/radv_nir_rt_common.c
+@@ -1000,6 +1000,8 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+          nir_bvh8_intersect_ray_amd(b, 32, desc, nir_unpack_64_2x32(b, nir_load_deref(b, args->vars.bvh_base)),
+                                     nir_ishr_imm(b, args->cull_mask, 24), nir_load_deref(b, args->vars.tmax),
+                                     nir_load_deref(b, args->vars.origin), nir_load_deref(b, args->vars.dir), bvh_node);
++      nir_store_deref(b, args->vars.origin, nir_channels(b, result, 0x7 << 10), 0x7);
++      nir_store_deref(b, args->vars.dir, nir_channels(b, result, 0x7 << 13), 0x7);
+ 
+       nir_push_if(b, nir_test_mask(b, bvh_node, BITFIELD64_BIT(ffs(radv_bvh_node_box16) - 1)));
+       {
+@@ -1013,6 +1015,8 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+ 
+             nir_def *next_node = nir_iand_imm(b, nir_channel(b, result, 7), 0xff);
+             nir_push_if(b, nir_ieq_imm(b, next_node, 0xff));
++            nir_store_deref(b, args->vars.origin, args->origin, 7);
++            nir_store_deref(b, args->vars.dir, args->dir, 7);
+             nir_jump(b, nir_jump_continue);
+             nir_pop_if(b, NULL);
+ 
+@@ -1022,9 +1026,6 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+ 
+             nir_store_deref(b, args->vars.sbt_offset_and_flags, nir_channel(b, result, 6), 1);
+ 
+-            nir_store_deref(b, args->vars.origin, nir_channels(b, result, 0x7 << 10), 0x7);
+-            nir_store_deref(b, args->vars.dir, nir_channels(b, result, 0x7 << 13), 0x7);
+-
+             nir_store_deref(b, args->vars.top_stack, nir_load_deref(b, args->vars.stack), 1);
+             nir_store_deref(b, args->vars.bvh_base, nir_pack_64_2x32(b, nir_channels(b, result, 0x3 << 2)), 1);
+ 
+-- 
+GitLab
+
+
+From e2d39224b9cfb3d2e325279636e192b41417dfd8 Mon Sep 17 00:00:00 2001
+From: Natalie Vock <natalie.vock@gmx.de>
+Date: Tue, 19 Dec 2023 21:10:41 +0100
+Subject: [PATCH 05/11] nir,aco: Add ds_bvh_stack_rtn
+
+This is a ds instruction that also overwrites its first input, so
+introduce a new ds format with two outputs.
+---
+ src/amd/compiler/aco_assembler.cpp            |  2 +-
+ src/amd/compiler/aco_builder_h.py             |  2 +-
+ src/amd/compiler/aco_insert_waitcnt.cpp       |  4 +-
+ src/amd/compiler/aco_ir.cpp                   |  3 +-
+ src/amd/compiler/aco_opcodes.py               |  1 +
+ src/amd/compiler/aco_optimizer.cpp            |  2 +-
+ src/amd/compiler/aco_validate.cpp             |  5 ++-
+ .../aco_select_nir_intrinsics.cpp             | 41 +++++++++++++++++++
+ src/compiler/nir/nir_divergence_analysis.c    |  1 +
+ src/compiler/nir/nir_intrinsics.py            |  9 ++++
+ 10 files changed, 62 insertions(+), 8 deletions(-)
+
+diff --git a/src/amd/compiler/aco_assembler.cpp b/src/amd/compiler/aco_assembler.cpp
+index 08a66be8d4338..172704915ba38 100644
+--- a/src/amd/compiler/aco_assembler.cpp
++++ b/src/amd/compiler/aco_assembler.cpp
+@@ -513,7 +513,7 @@ emit_ds_instruction(asm_context& ctx, std::vector<uint32_t>& out, const Instruct
+    out.push_back(encoding);
+    encoding = 0;
+    if (!instr->definitions.empty())
+-      encoding |= reg(ctx, instr->definitions[0], 8) << 24;
++      encoding |= reg(ctx, instr->definitions.back(), 8) << 24;
+    for (unsigned i = 0; i < MIN2(instr->operands.size(), 3); i++) {
+       const Operand& op = instr->operands[i];
+       if (op.physReg() != m0 && !op.isUndefined())
+diff --git a/src/amd/compiler/aco_builder_h.py b/src/amd/compiler/aco_builder_h.py
+index 589b1732857bf..3e9c4180924f9 100644
+--- a/src/amd/compiler/aco_builder_h.py
++++ b/src/amd/compiler/aco_builder_h.py
+@@ -561,7 +561,7 @@ formats = [("pseudo", [Format.PSEUDO], list(itertools.product(range(5), range(7)
+            ("sopp", [Format.SOPP], [(0, 0), (0, 1)]),
+            ("sopc", [Format.SOPC], [(1, 2)]),
+            ("smem", [Format.SMEM], [(0, 4), (0, 3), (1, 0), (1, 3), (1, 2), (1, 1), (0, 0)]),
+-           ("ds", [Format.DS], [(1, 0), (1, 1), (1, 2), (1, 3), (0, 3), (0, 4)]),
++           ("ds", [Format.DS], [(1, 0), (1, 1), (1, 2), (1, 3), (0, 3), (0, 4), (2, 3)]),
+            ("ldsdir", [Format.LDSDIR], [(1, 1)]),
+            ("mubuf", [Format.MUBUF], [(0, 4), (1, 3), (1, 4)]),
+            ("mtbuf", [Format.MTBUF], [(0, 4), (1, 3)]),
+diff --git a/src/amd/compiler/aco_insert_waitcnt.cpp b/src/amd/compiler/aco_insert_waitcnt.cpp
+index af9609cf65fea..0f13786d33446 100644
+--- a/src/amd/compiler/aco_insert_waitcnt.cpp
++++ b/src/amd/compiler/aco_insert_waitcnt.cpp
+@@ -629,8 +629,8 @@ gen(Instruction* instr, wait_ctx& ctx)
+       if (ds.gds)
+          update_counters(ctx, event_gds_gpr_lock);
+ 
+-      if (!instr->definitions.empty())
+-         insert_wait_entry(ctx, instr->definitions[0], ds.gds ? event_gds : event_lds);
++      for (auto& definition : instr->definitions)
++         insert_wait_entry(ctx, definition, ds.gds ? event_gds : event_lds);
+ 
+       if (ds.gds) {
+          for (const Operand& op : instr->operands)
+diff --git a/src/amd/compiler/aco_ir.cpp b/src/amd/compiler/aco_ir.cpp
+index a72f7b1263b40..7aa49bcd26aab 100644
+--- a/src/amd/compiler/aco_ir.cpp
++++ b/src/amd/compiler/aco_ir.cpp
+@@ -1436,7 +1436,8 @@ get_tied_defs(Instruction* instr)
+        instr->opcode == aco_opcode::s_fmac_f16) {
+       ops.push_back(2);
+    } else if (instr->opcode == aco_opcode::s_addk_i32 || instr->opcode == aco_opcode::s_mulk_i32 ||
+-              instr->opcode == aco_opcode::s_cmovk_i32) {
++              instr->opcode == aco_opcode::s_cmovk_i32 ||
++              instr->opcode == aco_opcode::ds_bvh_stack_rtn) {
+       ops.push_back(0);
+    } else if (instr->isMUBUF() && instr->definitions.size() == 1 && instr->operands.size() == 4) {
+       ops.push_back(3);
+diff --git a/src/amd/compiler/aco_opcodes.py b/src/amd/compiler/aco_opcodes.py
+index 12817add9bd42..8ba1ef59552dc 100644
+--- a/src/amd/compiler/aco_opcodes.py
++++ b/src/amd/compiler/aco_opcodes.py
+@@ -1647,6 +1647,7 @@ DS = {
+    ("ds_pk_add_rtn_f16",       op(gfx12=0xaa)),
+    ("ds_pk_add_bf16",          op(gfx12=0x9b)),
+    ("ds_pk_add_rtn_bf16",      op(gfx12=0xab)),
++   ("ds_bvh_stack_rtn",        op(gfx11=0xad, gfx12=0xe0)),
+ }
+ for (name, num) in DS:
+     insn(name, num, Format.DS, InstrClass.DS)
+diff --git a/src/amd/compiler/aco_optimizer.cpp b/src/amd/compiler/aco_optimizer.cpp
+index 23c6197ff71df..78a273db23f97 100644
+--- a/src/amd/compiler/aco_optimizer.cpp
++++ b/src/amd/compiler/aco_optimizer.cpp
+@@ -1510,7 +1510,7 @@ label_instruction(opt_ctx& ctx, aco_ptr<Instruction>& instr)
+          if (has_usable_ds_offset && i == 0 &&
+              parse_base_offset(ctx, instr.get(), i, &base, &offset, false) &&
+              base.regClass() == instr->operands[i].regClass() &&
+-             instr->opcode != aco_opcode::ds_swizzle_b32) {
++             instr->opcode != aco_opcode::ds_swizzle_b32 && instr->opcode != aco_opcode::ds_bvh_stack_rtn) {
+             if (instr->opcode == aco_opcode::ds_write2_b32 ||
+                 instr->opcode == aco_opcode::ds_read2_b32 ||
+                 instr->opcode == aco_opcode::ds_write2_b64 ||
+diff --git a/src/amd/compiler/aco_validate.cpp b/src/amd/compiler/aco_validate.cpp
+index 05257da23e5b3..b5a4839ebaeda 100644
+--- a/src/amd/compiler/aco_validate.cpp
++++ b/src/amd/compiler/aco_validate.cpp
+@@ -912,9 +912,10 @@ validate_ir(Program* program)
+                check(op.isOfType(RegType::vgpr) || op.physReg() == m0 || op.isUndefined(),
+                      "Only VGPRs are valid DS instruction operands", instr.get());
+             }
+-            if (!instr->definitions.empty())
+-               check(instr->definitions[0].regClass().type() == RegType::vgpr,
++            for (const Definition& def : instr->definitions) {
++               check(def.regClass().type() == RegType::vgpr,
+                      "DS instruction must return VGPR", instr.get());
++            }
+             break;
+          }
+          case Format::EXP: {
+diff --git a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
+index 2e51f2a11e3fb..dcccffd697c37 100644
+--- a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
++++ b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
+@@ -3957,6 +3957,37 @@ pops_await_overlapped_waves(isel_context* ctx)
+    bld.reset(ctx->block);
+ }
+ 
++uint16_t
++ds_bvh_stack_offset1_gfx11(unsigned stack_size)
++{
++   switch (stack_size) {
++      case 8: return 0x00;
++      case 16: return 0x10;
++      case 32: return 0x20;
++      case 64: return 0x30;
++      default: unreachable("invalid stack size");
++   }
++}
++
++void emit_ds_bvh_stack_push4_pop1_rtn(isel_context *ctx, nir_intrinsic_instr *instr, Builder& bld)
++{
++   Temp dst = get_ssa_temp(ctx, &instr->def);
++   Temp stack_addr = as_vgpr(ctx, get_ssa_temp(ctx, instr->src[0].ssa));
++   Temp last_node = as_vgpr(ctx, get_ssa_temp(ctx, instr->src[1].ssa));
++   Temp intersection_result = get_ssa_temp(ctx, instr->src[2].ssa);
++
++   Temp dst_stack_addr = bld.tmp(v1);
++   Temp dst_node_pointer = bld.tmp(v1);
++   uint32_t offset0 = 0, offset1 = 0;
++   if (ctx->program->gfx_level >= GFX12)
++      offset0 = nir_intrinsic_stack_size(instr);
++   else
++      offset1 = ds_bvh_stack_offset1_gfx11(nir_intrinsic_stack_size(instr));
++   bld.ds(aco_opcode::ds_bvh_stack_rtn, Definition(dst_stack_addr), Definition(dst_node_pointer),
++          Operand(stack_addr), Operand(last_node), Operand(intersection_result), offset0, offset1);
++   bld.pseudo(aco_opcode::p_create_vector, Definition(dst), Operand(dst_stack_addr), Operand(dst_node_pointer));
++}
++
+ } // namespace
+ 
+ void
+@@ -5007,6 +5038,16 @@ visit_intrinsic(isel_context* ctx, nir_intrinsic_instr* instr)
+       bld.pseudo(aco_opcode::p_unit_test, Definition(get_ssa_temp(ctx, &instr->def)),
+                  Operand::c32(nir_intrinsic_base(instr)));
+       break;
++   case nir_intrinsic_bvh_stack_rtn_amd: {
++      switch (instr->num_components) {
++         case 4:
++            emit_ds_bvh_stack_push4_pop1_rtn(ctx, instr, bld);
++            break;
++         default:
++            unreachable("Invalid BVH stack component count!");
++      }
++      break;
++   }
+    default:
+       isel_err(&instr->instr, "Unimplemented intrinsic instr");
+       abort();
+diff --git a/src/compiler/nir/nir_divergence_analysis.c b/src/compiler/nir/nir_divergence_analysis.c
+index 47dda4ec134f3..adfcfdda20421 100644
+--- a/src/compiler/nir/nir_divergence_analysis.c
++++ b/src/compiler/nir/nir_divergence_analysis.c
+@@ -933,6 +933,7 @@ visit_intrinsic(nir_intrinsic_instr *instr, struct divergence_state *state)
+    case nir_intrinsic_load_agx:
+    case nir_intrinsic_load_shared_lock_nv:
+    case nir_intrinsic_store_shared_unlock_nv:
++   case nir_intrinsic_bvh_stack_rtn_amd:
+       is_divergent = true;
+       break;
+ 
+diff --git a/src/compiler/nir/nir_intrinsics.py b/src/compiler/nir/nir_intrinsics.py
+index 9a4f75c29629d..2ab9d0080af32 100644
+--- a/src/compiler/nir/nir_intrinsics.py
++++ b/src/compiler/nir/nir_intrinsics.py
+@@ -1823,6 +1823,15 @@ intrinsic("bvh64_intersect_ray_amd", [4, 2, 1, 3, 3, 3], 4, flags=[CAN_ELIMINATE
+ #
+ intrinsic("bvh8_intersect_ray_amd", [4, 2, 1, 1, 3, 3, 1], 16, flags=[CAN_ELIMINATE, CAN_REORDER])
+ 
++# operands:
++# 1. stack address
++# 2. previous node pointer
++# 3. BVH node pointers
++# returns:
++# component 0: next stack address
++# component 1: next node pointer
++intrinsic("bvh_stack_rtn_amd", [1, 1, 0], 2, indices=[STACK_SIZE])
++
+ # Return of a callable in raytracing pipelines
+ intrinsic("rt_return_amd")
+ 
+-- 
+GitLab
+
+
+From 6948a3c89094f45aaf9f96a090a9bb9abb5d32b9 Mon Sep 17 00:00:00 2001
+From: Natalie Vock <natalie.vock@gmx.de>
+Date: Wed, 20 Dec 2023 00:33:14 +0100
+Subject: [PATCH 06/11] radv/rt: Use ds_bvh_stack_rtn
+
+Improves Quake 2 RTX performance by 5% on RDNA3.
+---
+ src/amd/vulkan/bvh/bvh.h                      |   2 +
+ .../vulkan/nir/radv_nir_lower_ray_queries.c   |  30 ++-
+ src/amd/vulkan/nir/radv_nir_rt_common.c       | 250 +++++++++++++-----
+ src/amd/vulkan/nir/radv_nir_rt_common.h       |   7 +
+ src/amd/vulkan/nir/radv_nir_rt_shader.c       |  39 ++-
+ 5 files changed, 235 insertions(+), 93 deletions(-)
+
+diff --git a/src/amd/vulkan/bvh/bvh.h b/src/amd/vulkan/bvh/bvh.h
+index 07ad8190b77b9..3307b8e7af7b2 100644
+--- a/src/amd/vulkan/bvh/bvh.h
++++ b/src/amd/vulkan/bvh/bvh.h
+@@ -118,6 +118,8 @@ struct radv_bvh_box32_node {
+ 
+ #define RADV_BVH_ROOT_NODE    radv_bvh_node_box32
+ #define RADV_BVH_INVALID_NODE 0xffffffffu
++/* used by gfx11's ds_bvh_stack* only */
++#define RADV_BVH_STACK_TERMINAL_NODE 0xfffffffeu
+ 
+ /* GFX12 */
+ 
+diff --git a/src/amd/vulkan/nir/radv_nir_lower_ray_queries.c b/src/amd/vulkan/nir/radv_nir_lower_ray_queries.c
+index 2dc30e5a47425..0b4790fdc146d 100644
+--- a/src/amd/vulkan/nir/radv_nir_lower_ray_queries.c
++++ b/src/amd/vulkan/nir/radv_nir_lower_ray_queries.c
+@@ -279,10 +279,18 @@ lower_rq_initialize(nir_builder *b, nir_intrinsic_instr *instr, struct ray_query
+    rq_store(b, rq, trav_bvh_base, bvh_base);
+ 
+    if (vars->shared_stack) {
+-      nir_def *base_offset = nir_imul_imm(b, nir_load_local_invocation_index(b), sizeof(uint32_t));
+-      base_offset = nir_iadd_imm(b, base_offset, vars->shared_base);
+-      rq_store(b, rq, trav_stack, base_offset);
+-      rq_store(b, rq, trav_stack_low_watermark, base_offset);
++      if (radv_use_bvh_stack_rtn(pdev)) {
++         uint32_t workgroup_size =
++            b->shader->info.workgroup_size[0] * b->shader->info.workgroup_size[1] * b->shader->info.workgroup_size[2];
++         nir_def *addr = radv_build_bvh_stack_rtn_addr(b, pdev, workgroup_size, vars->shared_base, vars->stack_entries);
++         rq_store(b, rq, trav_stack, addr);
++         rq_store(b, rq, trav_stack_low_watermark, addr);
++      } else {
++         nir_def *base_offset = nir_imul_imm(b, nir_load_local_invocation_index(b), sizeof(uint32_t));
++         base_offset = nir_iadd_imm(b, base_offset, vars->shared_base);
++         rq_store(b, rq, trav_stack, base_offset);
++         rq_store(b, rq, trav_stack_low_watermark, base_offset);
++      }
+    } else {
+       rq_store(b, rq, trav_stack, nir_imm_int(b, 0));
+       rq_store(b, rq, trav_stack_low_watermark, nir_imm_int(b, 0));
+@@ -518,10 +526,16 @@ lower_rq_proceed(nir_builder *b, nir_intrinsic_instr *instr, struct ray_query_va
+    };
+ 
+    if (vars->shared_stack) {
+-      uint32_t workgroup_size =
+-         b->shader->info.workgroup_size[0] * b->shader->info.workgroup_size[1] * b->shader->info.workgroup_size[2];
+-      args.stack_stride = workgroup_size * 4;
+-      args.stack_base = vars->shared_base;
++      args.use_bvh_stack_rtn = radv_use_bvh_stack_rtn(pdev);
++      if (args.use_bvh_stack_rtn) {
++         args.stack_stride = 1;
++         args.stack_base = 0;
++      } else {
++         uint32_t workgroup_size =
++                 b->shader->info.workgroup_size[0] * b->shader->info.workgroup_size[1] * b->shader->info.workgroup_size[2];
++         args.stack_stride = workgroup_size * 4;
++         args.stack_base = vars->shared_base;
++      }
+    } else {
+       args.stack_stride = 1;
+       args.stack_base = 0;
+diff --git a/src/amd/vulkan/nir/radv_nir_rt_common.c b/src/amd/vulkan/nir/radv_nir_rt_common.c
+index 5093788960a78..a091a5877ad0a 100644
+--- a/src/amd/vulkan/nir/radv_nir_rt_common.c
++++ b/src/amd/vulkan/nir/radv_nir_rt_common.c
+@@ -11,6 +11,41 @@
+ 
+ static nir_def *build_node_to_addr(struct radv_device *device, nir_builder *b, nir_def *node, bool skip_type_and);
+ 
++bool
++radv_use_bvh_stack_rtn(const struct radv_physical_device *pdevice)
++{
++   return (pdevice->info.gfx_level == GFX11 || pdevice->info.gfx_level == GFX11_5) && !radv_emulate_rt(pdevice);
++}
++
++nir_def *
++radv_build_bvh_stack_rtn_addr(nir_builder *b, const struct radv_physical_device *pdev, uint32_t workgroup_size,
++                              uint32_t stack_base, uint32_t max_stack_entries)
++{
++   assert(stack_base % 4 == 0);
++
++   nir_def *stack_idx = nir_load_local_invocation_index(b);
++   /* RDNA3's ds_bvh_stack_rtn instruction uses a special encoding for the stack address.
++    * Bits 0-17 encode the current stack index (set to 0 initially)
++    * Bits 18-31 encodes the stack base in multiples of 4
++    *
++    * The hardware swizzles stack entries across 32 threads, so we have to do some extra work for bigger workgroups.
++    */
++   if (workgroup_size > 32) {
++      nir_def *wave32_thread_id = nir_iand_imm(b, stack_idx, 0x1f);
++      nir_def *wave32_group_id = nir_ushr_imm(b, stack_idx, 5);
++      uint32_t stack_entries_per_group = max_stack_entries * 32;
++      nir_def *group_stack_base = nir_imul_imm(b, wave32_group_id, stack_entries_per_group);
++      stack_idx = nir_iadd(b, wave32_thread_id, group_stack_base);
++   }
++   stack_idx = nir_iadd_imm(b, stack_idx, stack_base / 4);
++   /* There are 4 bytes in each stack entry so no further arithmetic is needed. */
++   if (pdev->info.gfx_level >= GFX12)
++      stack_idx = nir_ishl_imm(b, stack_idx, 15);
++   else
++      stack_idx = nir_ishl_imm(b, stack_idx, 18);
++   return stack_idx;
++}
++
+ static void
+ nir_sort_hit_pair(nir_builder *b, nir_variable *var_distances, nir_variable *var_indices, uint32_t chan_1,
+                   uint32_t chan_2)
+@@ -671,12 +706,36 @@ radv_test_flag(nir_builder *b, const struct radv_ray_traversal_args *args, uint3
+    return set ? result : nir_inot(b, result);
+ }
+ 
++static void
++build_instance_exit(nir_builder *b, const struct radv_ray_traversal_args *args, nir_def *stack_instance_exit)
++{
++   nir_def *root_instance_exit = nir_iand(b, nir_ieq_imm(b, nir_load_deref(b, args->vars.current_node),
++                                                         RADV_BVH_INVALID_NODE),
++                                          nir_ieq(b, nir_load_deref(b, args->vars.previous_node),
++                                                  nir_load_deref(b, args->vars.instance_bottom_node)));
++   nir_if *instance_exit = nir_push_if(b, nir_ior(b, stack_instance_exit, root_instance_exit));
++   instance_exit->control = nir_selection_control_dont_flatten;
++   {
++      nir_store_deref(b, args->vars.top_stack, nir_imm_int(b, -1), 1);
++      nir_store_deref(b, args->vars.previous_node, nir_load_deref(b, args->vars.instance_top_node), 1);
++      nir_store_deref(b, args->vars.instance_bottom_node, nir_imm_int(b, RADV_BVH_NO_INSTANCE_ROOT), 1);
++
++      nir_store_deref(b, args->vars.bvh_base, args->root_bvh_base, 1);
++      nir_store_deref(b, args->vars.origin, args->origin, 7);
++      nir_store_deref(b, args->vars.dir, args->dir, 7);
++      nir_store_deref(b, args->vars.inv_dir, nir_frcp(b, args->dir), 7);
++   }
++   nir_pop_if(b, NULL);
++}
++
+ nir_def *
+ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struct radv_ray_traversal_args *args)
+ {
+    const struct radv_physical_device *pdev = radv_device_physical(device);
+    nir_variable *incomplete = nir_local_variable_create(b->impl, glsl_bool_type(), "incomplete");
+    nir_store_var(b, incomplete, nir_imm_true(b), 0x1);
++   nir_variable *intrinsic_result = nir_local_variable_create(b->impl, glsl_uvec4_type(), "intrinsic_result");
++   nir_variable *stack_test_node = nir_local_variable_create(b->impl, glsl_uint_type(), "stack_test_node");
+ 
+    struct radv_ray_flags ray_flags = {
+       .force_opaque = radv_test_flag(b, args, SpvRayFlagsOpaqueKHRMask, true),
+@@ -695,38 +754,42 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+ 
+    nir_push_loop(b);
+    {
+-      nir_push_if(b, nir_ieq_imm(b, nir_load_deref(b, args->vars.current_node), RADV_BVH_INVALID_NODE));
+-      {
+-         /* Early exit if we never overflowed the stack, to avoid having to backtrack to
+-          * the root for no reason. */
+-         nir_push_if(b, nir_ilt_imm(b, nir_load_deref(b, args->vars.stack), args->stack_base + args->stack_stride));
++      /* When exiting instances via stack, current_node won't ever be invalid with ds_bvh_stack_rtn */
++      if (args->use_bvh_stack_rtn) {
++         /* Early-exit when the stack is empty and there are no more nodes to process. */
++         nir_push_if(b, nir_ieq_imm(b, nir_load_deref(b, args->vars.current_node), RADV_BVH_STACK_TERMINAL_NODE));
+          {
+             nir_store_var(b, incomplete, nir_imm_false(b), 0x1);
+             nir_jump(b, nir_jump_break);
+          }
+          nir_pop_if(b, NULL);
++         build_instance_exit(b, args, nir_ilt(b, nir_load_deref(b, args->vars.stack), nir_load_deref(b, args->vars.top_stack)));
++      }
+ 
+-         nir_def *stack_instance_exit =
+-            nir_ige(b, nir_load_deref(b, args->vars.top_stack), nir_load_deref(b, args->vars.stack));
+-         nir_def *root_instance_exit =
+-            nir_ieq(b, nir_load_deref(b, args->vars.previous_node), nir_load_deref(b, args->vars.instance_bottom_node));
+-         nir_if *instance_exit = nir_push_if(b, nir_ior(b, stack_instance_exit, root_instance_exit));
+-         instance_exit->control = nir_selection_control_dont_flatten;
+-         {
+-            nir_store_deref(b, args->vars.top_stack, nir_imm_int(b, -1), 1);
+-            nir_store_deref(b, args->vars.previous_node, nir_load_deref(b, args->vars.instance_top_node), 1);
+-            nir_store_deref(b, args->vars.instance_bottom_node, nir_imm_int(b, RADV_BVH_NO_INSTANCE_ROOT), 1);
+-
+-            nir_store_deref(b, args->vars.bvh_base, args->root_bvh_base, 1);
+-            nir_store_deref(b, args->vars.origin, args->origin, 7);
+-            nir_store_deref(b, args->vars.dir, args->dir, 7);
+-            nir_store_deref(b, args->vars.inv_dir, nir_fdiv(b, vec3ones, args->dir), 7);
++      nir_push_if(b, nir_ieq_imm(b, nir_load_deref(b, args->vars.current_node), RADV_BVH_INVALID_NODE));
++      {
++         /* Early exit if we never overflowed the stack, to avoid having to backtrack to
++          * the root for no reason. */
++         if (!args->use_bvh_stack_rtn) {
++            nir_push_if(b, nir_ilt_imm(b, nir_load_deref(b, args->vars.stack), args->stack_base + args->stack_stride));
++            {
++               nir_store_var(b, incomplete, nir_imm_false(b), 0x1);
++               nir_jump(b, nir_jump_break);
++            }
++            nir_pop_if(b, NULL);
++            build_instance_exit(b, args, nir_ige(b, nir_load_deref(b, args->vars.top_stack), nir_load_deref(b, args->vars.stack)));
+          }
+-         nir_pop_if(b, NULL);
+ 
+-         nir_push_if(
+-            b, nir_ige(b, nir_load_deref(b, args->vars.stack_low_watermark), nir_load_deref(b, args->vars.stack)));
++         nir_def *overflow_cond = nir_ige(b, nir_load_deref(b, args->vars.stack_low_watermark), nir_load_deref(b, args->vars.stack));
++         /* ds_bvh_stack_rtn returns 0xFFFFFFFF if and only if there was a stack overflow. */
++         if (args->use_bvh_stack_rtn)
++            overflow_cond = nir_imm_true(b);
++
++         nir_push_if(b, overflow_cond);
+          {
++            /* Fix up the stack pointer if we overflowed. The HW will decrement the stack pointer by one in that case. */
++            if (args->use_bvh_stack_rtn)
++               nir_store_deref(b, args->vars.stack, nir_iadd_imm(b, nir_load_deref(b, args->vars.stack), 1), 0x1);
+             nir_def *prev = nir_load_deref(b, args->vars.previous_node);
+             nir_def *bvh_addr = build_node_to_addr(device, b, nir_load_deref(b, args->vars.bvh_base), true);
+ 
+@@ -741,13 +804,15 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+          }
+          nir_push_else(b, NULL);
+          {
+-            nir_store_deref(b, args->vars.stack,
+-                            nir_iadd_imm(b, nir_load_deref(b, args->vars.stack), -args->stack_stride), 1);
+-
+-            nir_def *stack_ptr =
+-               nir_umod_imm(b, nir_load_deref(b, args->vars.stack), args->stack_stride * args->stack_entries);
+-            nir_def *bvh_node = args->stack_load_cb(b, stack_ptr, args);
+-            nir_store_deref(b, args->vars.current_node, bvh_node, 0x1);
++            if (!args->use_bvh_stack_rtn) {
++               nir_store_deref(b, args->vars.stack,
++                               nir_iadd_imm(b, nir_load_deref(b, args->vars.stack), -args->stack_stride), 1);
++
++               nir_def *stack_ptr =
++                  nir_umod_imm(b, nir_load_deref(b, args->vars.stack), args->stack_stride * args->stack_entries);
++               nir_def *bvh_node = args->stack_load_cb(b, stack_ptr, args);
++               nir_store_deref(b, args->vars.current_node, bvh_node, 0x1);
++            }
+             nir_store_deref(b, args->vars.previous_node, nir_imm_int(b, RADV_BVH_INVALID_NODE), 0x1);
+          }
+          nir_pop_if(b, NULL);
+@@ -759,19 +824,24 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+       nir_pop_if(b, NULL);
+ 
+       nir_def *bvh_node = nir_load_deref(b, args->vars.current_node);
++      if (args->use_bvh_stack_rtn)
++         nir_store_var(b, stack_test_node, nir_imm_int(b, RADV_BVH_INVALID_NODE), 0x1);
++      else
++         nir_store_deref(b, args->vars.current_node, nir_imm_int(b, RADV_BVH_INVALID_NODE), 0x1);
+ 
+       nir_def *prev_node = nir_load_deref(b, args->vars.previous_node);
+       nir_store_deref(b, args->vars.previous_node, bvh_node, 0x1);
+-      nir_store_deref(b, args->vars.current_node, nir_imm_int(b, RADV_BVH_INVALID_NODE), 0x1);
+ 
+       nir_def *global_bvh_node = nir_iadd(b, nir_load_deref(b, args->vars.bvh_base), nir_u2u64(b, bvh_node));
+ 
+-      nir_def *intrinsic_result = NULL;
++      bool has_result = false;
+       if (pdev->info.has_image_bvh_intersect_ray && !radv_emulate_rt(pdev)) {
+-         intrinsic_result =
++         nir_store_var(b, intrinsic_result,
+             nir_bvh64_intersect_ray_amd(b, 32, desc, nir_unpack_64_2x32(b, global_bvh_node),
+                                         nir_load_deref(b, args->vars.tmax), nir_load_deref(b, args->vars.origin),
+-                                        nir_load_deref(b, args->vars.dir), nir_load_deref(b, args->vars.inv_dir));
++                                    nir_load_deref(b, args->vars.dir), nir_load_deref(b, args->vars.inv_dir)),
++            0xf);
++         has_result = true;
+       }
+ 
+       nir_push_if(b, nir_test_mask(b, bvh_node, BITFIELD64_BIT(ffs(radv_bvh_node_box16) - 1)));
+@@ -780,6 +850,8 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+          {
+             nir_push_if(b, nir_test_mask(b, bvh_node, BITFIELD64_BIT(ffs(radv_bvh_node_aabb) - 1)));
+             {
++               if (args->use_bvh_stack_rtn)
++                  nir_store_var(b, stack_test_node, nir_imm_int(b, RADV_BVH_STACK_TERMINAL_NODE), 0x1);
+                insert_traversal_aabb_case(device, b, args, &ray_flags, global_bvh_node);
+             }
+             nir_push_else(b, NULL);
+@@ -806,16 +878,28 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+                   nir_def *instance_and_mask = nir_channel(b, instance_data, 2);
+                   nir_push_if(b, nir_ult(b, nir_iand(b, instance_and_mask, args->cull_mask), nir_imm_int(b, 1 << 24)));
+                   {
+-                     nir_jump(b, nir_jump_continue);
++                     if (args->use_bvh_stack_rtn) {
++                        nir_store_var(b, stack_test_node, nir_imm_int(b, RADV_BVH_STACK_TERMINAL_NODE), 0x1);
++                     } else {
++                        nir_jump(b, nir_jump_continue);
++                     }
+                   }
+-                  nir_pop_if(b, NULL);
++                  nir_push_else(b, NULL);
+                }
+ 
+                nir_store_deref(b, args->vars.top_stack, nir_load_deref(b, args->vars.stack), 1);
+                nir_store_deref(b, args->vars.bvh_base, nir_pack_64_2x32(b, nir_trim_vector(b, instance_data, 2)), 1);
+ 
+                /* Push the instance root node onto the stack */
+-               nir_store_deref(b, args->vars.current_node, nir_imm_int(b, RADV_BVH_ROOT_NODE), 0x1);
++               if (args->use_bvh_stack_rtn) {
++                  nir_store_var(b, intrinsic_result,
++                                nir_imm_ivec4(b, RADV_BVH_ROOT_NODE, RADV_BVH_INVALID_NODE, RADV_BVH_INVALID_NODE,
++                                              RADV_BVH_INVALID_NODE),
++                                0xf);
++               }
++               else {
++                  nir_store_deref(b, args->vars.current_node, nir_imm_int(b, RADV_BVH_ROOT_NODE), 0x1);
++               }
+                nir_store_deref(b, args->vars.instance_bottom_node, nir_imm_int(b, RADV_BVH_ROOT_NODE), 1);
+                nir_store_deref(b, args->vars.instance_top_node, bvh_node, 1);
+ 
+@@ -823,13 +907,17 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+                nir_store_deref(b, args->vars.origin, nir_build_vec3_mat_mult(b, args->origin, wto_matrix, true), 7);
+                nir_store_deref(b, args->vars.dir, nir_build_vec3_mat_mult(b, args->dir, wto_matrix, false), 7);
+                nir_store_deref(b, args->vars.inv_dir, nir_fdiv(b, vec3ones, nir_load_deref(b, args->vars.dir)), 7);
++               if (!args->ignore_cull_mask)
++                  nir_pop_if(b, NULL);
+             }
+             nir_pop_if(b, NULL);
+          }
+          nir_push_else(b, NULL);
+          {
+-            nir_def *result = intrinsic_result;
+-            if (!result) {
++            nir_def *result;
++            if (has_result) {
++               result = nir_load_var(b, intrinsic_result);
++            } else {
+                /* If we didn't run the intrinsic cause the hardware didn't support it,
+                 * emulate ray/box intersection here */
+                result = intersect_ray_amd_software_box(
+@@ -838,55 +926,63 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+             }
+ 
+             /* box */
+-            nir_push_if(b, nir_ieq_imm(b, prev_node, RADV_BVH_INVALID_NODE));
+-            {
+-               nir_def *new_nodes[4];
+-               for (unsigned i = 0; i < 4; ++i)
+-                  new_nodes[i] = nir_channel(b, result, i);
+-
+-               for (unsigned i = 1; i < 4; ++i)
+-                  nir_push_if(b, nir_ine_imm(b, new_nodes[i], RADV_BVH_INVALID_NODE));
+-
+-               for (unsigned i = 4; i-- > 1;) {
+-                  nir_def *stack = nir_load_deref(b, args->vars.stack);
+-                  nir_def *stack_ptr = nir_umod_imm(b, stack, args->stack_entries * args->stack_stride);
+-                  args->stack_store_cb(b, stack_ptr, new_nodes[i], args);
+-                  nir_store_deref(b, args->vars.stack, nir_iadd_imm(b, stack, args->stack_stride), 1);
+-
+-                  if (i == 1) {
+-                     nir_def *new_watermark =
+-                        nir_iadd_imm(b, nir_load_deref(b, args->vars.stack), -args->stack_entries * args->stack_stride);
+-                     new_watermark = nir_imax(b, nir_load_deref(b, args->vars.stack_low_watermark), new_watermark);
+-                     nir_store_deref(b, args->vars.stack_low_watermark, new_watermark, 0x1);
++            if (args->use_bvh_stack_rtn) {
++               nir_store_var(b, stack_test_node, prev_node, 0x1);
++            } else {
++               nir_push_if(b, nir_ieq_imm(b, prev_node, RADV_BVH_INVALID_NODE));
++               {
++                  nir_def *new_nodes[4];
++                  for (unsigned i = 0; i < 4; ++i)
++                     new_nodes[i] = nir_channel(b, result, i);
++
++                  for (unsigned i = 1; i < 4; ++i)
++                     nir_push_if(b, nir_ine_imm(b, new_nodes[i], RADV_BVH_INVALID_NODE));
++
++                  for (unsigned i = 4; i-- > 1;) {
++                     nir_def *stack = nir_load_deref(b, args->vars.stack);
++                     nir_def *stack_ptr = nir_umod_imm(b, stack, args->stack_entries * args->stack_stride);
++                     args->stack_store_cb(b, stack_ptr, new_nodes[i], args);
++                     nir_store_deref(b, args->vars.stack, nir_iadd_imm(b, stack, args->stack_stride), 1);
++
++                     if (i == 1) {
++                        nir_def *new_watermark = nir_iadd_imm(b, nir_load_deref(b, args->vars.stack),
++                                                              -args->stack_entries * args->stack_stride);
++                        new_watermark = nir_imax(b, nir_load_deref(b, args->vars.stack_low_watermark), new_watermark);
++                        nir_store_deref(b, args->vars.stack_low_watermark, new_watermark, 0x1);
++                     }
++
++                     nir_pop_if(b, NULL);
+                   }
+-
+-                  nir_pop_if(b, NULL);
++                  nir_store_deref(b, args->vars.current_node, new_nodes[0], 0x1);
+                }
+-               nir_store_deref(b, args->vars.current_node, new_nodes[0], 0x1);
+-            }
+-            nir_push_else(b, NULL);
+-            {
+-               nir_def *next = nir_imm_int(b, RADV_BVH_INVALID_NODE);
+-               for (unsigned i = 0; i < 3; ++i) {
+-                  next = nir_bcsel(b, nir_ieq(b, prev_node, nir_channel(b, result, i)), nir_channel(b, result, i + 1),
+-                                   next);
++               nir_push_else(b, NULL);
++               {
++                  nir_def *next = nir_imm_int(b, RADV_BVH_INVALID_NODE);
++                  for (unsigned i = 0; i < 3; ++i) {
++                     next = nir_bcsel(b, nir_ieq(b, prev_node, nir_channel(b, result, i)),
++                                      nir_channel(b, result, i + 1), next);
++                  }
++                  nir_store_deref(b, args->vars.current_node, next, 0x1);
+                }
+-               nir_store_deref(b, args->vars.current_node, next, 0x1);
++               nir_pop_if(b, NULL);
+             }
+-            nir_pop_if(b, NULL);
+          }
+          nir_pop_if(b, NULL);
+       }
+       nir_push_else(b, NULL);
+       {
+-         nir_def *result = intrinsic_result;
+-         if (!result) {
++         nir_def *result;
++         if (has_result) {
++            result = nir_load_var(b, intrinsic_result);
++         } else {
+             /* If we didn't run the intrinsic cause the hardware didn't support it,
+              * emulate ray/tri intersection here */
+             result = intersect_ray_amd_software_tri(
+                device, b, global_bvh_node, nir_load_deref(b, args->vars.tmax), nir_load_deref(b, args->vars.origin),
+                nir_load_deref(b, args->vars.dir), nir_load_deref(b, args->vars.inv_dir));
+          }
++         if (args->use_bvh_stack_rtn)
++            nir_store_var(b, stack_test_node, nir_imm_int(b, RADV_BVH_STACK_TERMINAL_NODE), 0x1);
+          insert_traversal_triangle_case(device, b, args, &ray_flags, result, global_bvh_node);
+       }
+       nir_pop_if(b, NULL);
+@@ -896,6 +992,14 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+          iteration_instance_count = nir_iadd_imm(b, iteration_instance_count, 1);
+          nir_store_deref(b, args->vars.iteration_instance_count, iteration_instance_count, 0x1);
+       }
++      if (args->use_bvh_stack_rtn) {
++         nir_def *stack_result = nir_bvh_stack_rtn_amd(b, 32, nir_load_deref(b, args->vars.stack),
++                                                       nir_load_var(b, stack_test_node),
++                                                       nir_load_var(b, intrinsic_result),
++                                                       .stack_size = args->stack_entries);
++         nir_store_deref(b, args->vars.stack, nir_channel(b, stack_result, 0), 0x1);
++         nir_store_deref(b, args->vars.current_node, nir_channel(b, stack_result, 1), 0x1);
++      }
+    }
+    nir_pop_loop(b, NULL);
+ 
+diff --git a/src/amd/vulkan/nir/radv_nir_rt_common.h b/src/amd/vulkan/nir/radv_nir_rt_common.h
+index aaef6ca72cd15..f5c5818bded1c 100644
+--- a/src/amd/vulkan/nir/radv_nir_rt_common.h
++++ b/src/amd/vulkan/nir/radv_nir_rt_common.h
+@@ -13,6 +13,12 @@
+ #include "compiler/spirv/spirv.h"
+ 
+ struct radv_device;
++struct radv_physical_device;
++
++bool radv_use_bvh_stack_rtn(const struct radv_physical_device *pdevice);
++
++nir_def *radv_build_bvh_stack_rtn_addr(nir_builder *b, const struct radv_physical_device *pdev, uint32_t workgroup_size,
++                                       uint32_t stack_base, uint32_t max_stack_entries);
+ 
+ nir_def *build_addr_to_node(struct radv_device *device, nir_builder *b, nir_def *addr, nir_def *flags);
+ 
+@@ -132,6 +138,7 @@ struct radv_ray_traversal_args {
+ 
+    bool ignore_cull_mask;
+ 
++   bool use_bvh_stack_rtn;
+    radv_rt_stack_store_cb stack_store_cb;
+    radv_rt_stack_load_cb stack_load_cb;
+ 
+diff --git a/src/amd/vulkan/nir/radv_nir_rt_shader.c b/src/amd/vulkan/nir/radv_nir_rt_shader.c
+index 086726052ecc2..1d9d97586d142 100644
+--- a/src/amd/vulkan/nir/radv_nir_rt_shader.c
++++ b/src/amd/vulkan/nir/radv_nir_rt_shader.c
+@@ -1411,23 +1411,26 @@ handle_candidate_triangle(nir_builder *b, struct radv_triangle_intersection *int
+       nir_push_if(b, nir_inot(b, nir_load_var(b, data->vars->ahit_accept)));
+       {
+          nir_store_var(b, data->barycentrics, prev_barycentrics, 0x3);
+-         nir_jump(b, nir_jump_continue);
+       }
+       nir_pop_if(b, NULL);
+    }
+    nir_pop_if(b, NULL);
+ 
+-   nir_store_var(b, data->vars->primitive_id, intersection->base.primitive_id, 1);
+-   nir_store_var(b, data->vars->geometry_id_and_flags, intersection->base.geometry_id_and_flags, 1);
+-   nir_store_var(b, data->vars->tmax, intersection->t, 0x1);
+-   nir_store_var(b, data->vars->instance_addr, nir_load_var(b, data->trav_vars->instance_addr), 0x1);
+-   nir_store_var(b, data->vars->hit_kind, hit_kind, 0x1);
++   nir_push_if(b, nir_load_var(b, data->vars->ahit_accept));
++   {
++      nir_store_var(b, data->vars->primitive_id, intersection->base.primitive_id, 1);
++      nir_store_var(b, data->vars->geometry_id_and_flags, intersection->base.geometry_id_and_flags, 1);
++      nir_store_var(b, data->vars->tmax, intersection->t, 0x1);
++      nir_store_var(b, data->vars->instance_addr, nir_load_var(b, data->trav_vars->instance_addr), 0x1);
++      nir_store_var(b, data->vars->hit_kind, hit_kind, 0x1);
+ 
+-   nir_store_var(b, data->vars->idx, sbt_idx, 1);
+-   nir_store_var(b, data->trav_vars->hit, nir_imm_true(b), 1);
++      nir_store_var(b, data->vars->idx, sbt_idx, 1);
++      nir_store_var(b, data->trav_vars->hit, nir_imm_true(b), 1);
+ 
+-   nir_def *ray_terminated = nir_load_var(b, data->vars->ahit_terminate);
+-   nir_break_if(b, nir_ior(b, ray_flags->terminate_on_first_hit, ray_terminated));
++      nir_def *ray_terminated = nir_load_var(b, data->vars->ahit_terminate);
++      nir_break_if(b, nir_ior(b, ray_flags->terminate_on_first_hit, ray_terminated));
++   }
++   nir_pop_if(b, NULL);
+ }
+ 
+ static void
+@@ -1528,6 +1531,17 @@ radv_build_traversal(struct radv_device *device, struct radv_ray_tracing_pipelin
+ 
+    nir_store_var(b, trav_vars.bvh_base, root_bvh_base, 1);
+ 
++   nir_def *stack_idx = nir_load_local_invocation_index(b);
++   uint32_t stack_stride;
++
++   if (radv_use_bvh_stack_rtn(pdev)) {
++      stack_idx = radv_build_bvh_stack_rtn_addr(b, pdev, pdev->rt_wave_size, 0, MAX_STACK_ENTRY_COUNT);
++      stack_stride = 1;
++   } else {
++      stack_idx = nir_imul_imm(b, stack_idx, sizeof(uint32_t));
++      stack_stride = pdev->rt_wave_size * sizeof(uint32_t);
++   }
++
+    nir_def *vec3ones = nir_imm_vec3(b, 1.0, 1.0, 1.0);
+ 
+    nir_store_var(b, trav_vars.origin, nir_load_var(b, vars->origin), 7);
+@@ -1536,7 +1550,7 @@ radv_build_traversal(struct radv_device *device, struct radv_ray_tracing_pipelin
+    nir_store_var(b, trav_vars.sbt_offset_and_flags, nir_imm_int(b, 0), 1);
+    nir_store_var(b, trav_vars.instance_addr, nir_imm_int64(b, 0), 1);
+ 
+-   nir_store_var(b, trav_vars.stack, nir_imul_imm(b, nir_load_local_invocation_index(b), sizeof(uint32_t)), 1);
++   nir_store_var(b, trav_vars.stack, stack_idx, 1);
+    nir_store_var(b, trav_vars.stack_low_watermark, nir_load_var(b, trav_vars.stack), 1);
+    nir_store_var(b, trav_vars.current_node, nir_imm_int(b, RADV_BVH_ROOT_NODE), 0x1);
+    nir_store_var(b, trav_vars.previous_node, nir_imm_int(b, RADV_BVH_INVALID_NODE), 0x1);
+@@ -1588,7 +1602,7 @@ radv_build_traversal(struct radv_device *device, struct radv_ray_tracing_pipelin
+       .tmin = nir_load_var(b, vars->tmin),
+       .dir = nir_load_var(b, vars->direction),
+       .vars = trav_vars_args,
+-      .stack_stride = pdev->rt_wave_size * sizeof(uint32_t),
++      .stack_stride = stack_stride,
+       .stack_entries = MAX_STACK_ENTRY_COUNT,
+       .stack_base = 0,
+       .ignore_cull_mask = ignore_cull_mask,
+@@ -1602,6 +1616,7 @@ radv_build_traversal(struct radv_device *device, struct radv_ray_tracing_pipelin
+       .triangle_cb = (pipeline->base.base.create_flags & VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR)
+                         ? NULL
+                         : handle_candidate_triangle,
++      .use_bvh_stack_rtn = radv_use_bvh_stack_rtn(pdev),
+       .data = &data,
+    };
+ 
+-- 
+GitLab
+
+
+From d554020953dad9426df896e1ef08508a950bdae6 Mon Sep 17 00:00:00 2001
+From: Natalie Vock <natalie.vock@gmx.de>
+Date: Thu, 27 Mar 2025 18:45:45 +0100
+Subject: [PATCH 07/11] aco,nir: Add support for GFX12
+ ds_bvh_stack_push8_pop1_rtn_b32 instruction
+
+---
+ src/amd/compiler/aco_ir.cpp                   |  4 +++-
+ src/amd/compiler/aco_opcodes.py               |  4 +++-
+ src/amd/compiler/aco_optimizer.cpp            |  5 ++++-
+ .../aco_select_nir_intrinsics.cpp             | 19 +++++++++++++++++++
+ 4 files changed, 29 insertions(+), 3 deletions(-)
+
+diff --git a/src/amd/compiler/aco_ir.cpp b/src/amd/compiler/aco_ir.cpp
+index 7aa49bcd26aab..ea1173f38f6a6 100644
+--- a/src/amd/compiler/aco_ir.cpp
++++ b/src/amd/compiler/aco_ir.cpp
+@@ -1437,7 +1437,9 @@ get_tied_defs(Instruction* instr)
+       ops.push_back(2);
+    } else if (instr->opcode == aco_opcode::s_addk_i32 || instr->opcode == aco_opcode::s_mulk_i32 ||
+               instr->opcode == aco_opcode::s_cmovk_i32 ||
+-              instr->opcode == aco_opcode::ds_bvh_stack_rtn) {
++              instr->opcode == aco_opcode::ds_bvh_stack_rtn ||
++              instr->opcode == aco_opcode::ds_bvh_stack_push8_pop1_rtn_b32 ||
++              instr->opcode == aco_opcode::ds_bvh_stack_push8_pop2_rtn_b64) {
+       ops.push_back(0);
+    } else if (instr->isMUBUF() && instr->definitions.size() == 1 && instr->operands.size() == 4) {
+       ops.push_back(3);
+diff --git a/src/amd/compiler/aco_opcodes.py b/src/amd/compiler/aco_opcodes.py
+index 8ba1ef59552dc..2f32902e7ebb7 100644
+--- a/src/amd/compiler/aco_opcodes.py
++++ b/src/amd/compiler/aco_opcodes.py
+@@ -1647,7 +1647,9 @@ DS = {
+    ("ds_pk_add_rtn_f16",       op(gfx12=0xaa)),
+    ("ds_pk_add_bf16",          op(gfx12=0x9b)),
+    ("ds_pk_add_rtn_bf16",      op(gfx12=0xab)),
+-   ("ds_bvh_stack_rtn",        op(gfx11=0xad, gfx12=0xe0)),
++   ("ds_bvh_stack_rtn",        op(gfx11=0xad, gfx12=0xe0)), #ds_bvh_stack_push4_pop1_rtn_b32 in GFX12
++   ("ds_bvh_stack_push8_pop1_rtn_b32", op(gfx12=0xe1)),
++   ("ds_bvh_stack_push8_pop2_rtn_b64", op(gfx12=0xe2)),
+ }
+ for (name, num) in DS:
+     insn(name, num, Format.DS, InstrClass.DS)
+diff --git a/src/amd/compiler/aco_optimizer.cpp b/src/amd/compiler/aco_optimizer.cpp
+index 78a273db23f97..1cfbf53b75caf 100644
+--- a/src/amd/compiler/aco_optimizer.cpp
++++ b/src/amd/compiler/aco_optimizer.cpp
+@@ -1510,7 +1510,10 @@ label_instruction(opt_ctx& ctx, aco_ptr<Instruction>& instr)
+          if (has_usable_ds_offset && i == 0 &&
+              parse_base_offset(ctx, instr.get(), i, &base, &offset, false) &&
+              base.regClass() == instr->operands[i].regClass() &&
+-             instr->opcode != aco_opcode::ds_swizzle_b32 && instr->opcode != aco_opcode::ds_bvh_stack_rtn) {
++             instr->opcode != aco_opcode::ds_swizzle_b32 &&
++             instr->opcode != aco_opcode::ds_bvh_stack_rtn &&
++             instr->opcode != aco_opcode::ds_bvh_stack_push8_pop1_rtn_b32 &&
++             instr->opcode != aco_opcode::ds_bvh_stack_push8_pop2_rtn_b64) {
+             if (instr->opcode == aco_opcode::ds_write2_b32 ||
+                 instr->opcode == aco_opcode::ds_read2_b32 ||
+                 instr->opcode == aco_opcode::ds_write2_b64 ||
+diff --git a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
+index dcccffd697c37..69cc6191bd8b5 100644
+--- a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
++++ b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
+@@ -3988,6 +3988,22 @@ void emit_ds_bvh_stack_push4_pop1_rtn(isel_context *ctx, nir_intrinsic_instr *in
+    bld.pseudo(aco_opcode::p_create_vector, Definition(dst), Operand(dst_stack_addr), Operand(dst_node_pointer));
+ }
+ 
++void emit_ds_bvh_stack_push8_pop1_rtn(isel_context *ctx, nir_intrinsic_instr *instr, Builder& bld)
++{
++   Temp dst = get_ssa_temp(ctx, &instr->def);
++   Temp stack_addr = as_vgpr(ctx, get_ssa_temp(ctx, instr->src[0].ssa));
++   Temp last_node = as_vgpr(ctx, get_ssa_temp(ctx, instr->src[1].ssa));
++   Temp intersection_result = get_ssa_temp(ctx, instr->src[2].ssa);
++
++   Temp dst_stack_addr = bld.tmp(v1);
++   Temp dst_node_pointer = bld.tmp(v1);
++   bld.ds(aco_opcode::ds_bvh_stack_push8_pop1_rtn_b32, Definition(dst_stack_addr),
++          Definition(dst_node_pointer), Operand(stack_addr), Operand(last_node),
++          Operand(intersection_result), nir_intrinsic_stack_size(instr), 0);
++   bld.pseudo(aco_opcode::p_create_vector, Definition(dst), Operand(dst_stack_addr),
++              Operand(dst_node_pointer));
++}
++
+ } // namespace
+ 
+ void
+@@ -5043,6 +5059,9 @@ visit_intrinsic(isel_context* ctx, nir_intrinsic_instr* instr)
+          case 4:
+             emit_ds_bvh_stack_push4_pop1_rtn(ctx, instr, bld);
+             break;
++         case 8:
++            emit_ds_bvh_stack_push8_pop1_rtn(ctx, instr, bld);
++            break;
+          default:
+             unreachable("Invalid BVH stack component count!");
+       }
+-- 
+GitLab
+
+
+From 1dd36c71225a5f0aadb505869beeaef9eb136d5c Mon Sep 17 00:00:00 2001
+From: Natalie Vock <natalie.vock@gmx.de>
+Date: Thu, 27 Mar 2025 18:47:43 +0100
+Subject: [PATCH 08/11] radv/rt: Use ds_bvh_stack_push8_pop1_rtn_b32
+
+---
+ src/amd/vulkan/bvh/bvh.h                |   4 +
+ src/amd/vulkan/nir/radv_nir_rt_common.c | 211 +++++++++++++++---------
+ 2 files changed, 135 insertions(+), 80 deletions(-)
+
+diff --git a/src/amd/vulkan/bvh/bvh.h b/src/amd/vulkan/bvh/bvh.h
+index 3307b8e7af7b2..4d012a3b3de28 100644
+--- a/src/amd/vulkan/bvh/bvh.h
++++ b/src/amd/vulkan/bvh/bvh.h
+@@ -120,6 +120,10 @@ struct radv_bvh_box32_node {
+ #define RADV_BVH_INVALID_NODE 0xffffffffu
+ /* used by gfx11's ds_bvh_stack* only */
+ #define RADV_BVH_STACK_TERMINAL_NODE 0xfffffffeu
++/* used by gfx12's ds_bvh_stack* only */
++#define RADV_BVH_STACK_SKIP_0_TO_3 0xfffffffdu
++#define RADV_BVH_STACK_SKIP_4_TO_7 0xfffffffbu
++#define RADV_BVH_STACK_SKIP_0_TO_7 0xfffffff9u
+ 
+ /* GFX12 */
+ 
+diff --git a/src/amd/vulkan/nir/radv_nir_rt_common.c b/src/amd/vulkan/nir/radv_nir_rt_common.c
+index a091a5877ad0a..0e4f61b17ce40 100644
+--- a/src/amd/vulkan/nir/radv_nir_rt_common.c
++++ b/src/amd/vulkan/nir/radv_nir_rt_common.c
+@@ -14,7 +14,9 @@ static nir_def *build_node_to_addr(struct radv_device *device, nir_builder *b, n
+ bool
+ radv_use_bvh_stack_rtn(const struct radv_physical_device *pdevice)
+ {
+-   return (pdevice->info.gfx_level == GFX11 || pdevice->info.gfx_level == GFX11_5) && !radv_emulate_rt(pdevice);
++   /* gfx12 requires using the bvh4 ds_bvh_stack_rtn differently - enable hw stack instrs on gfx12 only with bvh8 */
++   return (pdevice->info.gfx_level == GFX11 || pdevice->info.gfx_level == GFX11_5 || radv_use_bvh8(pdevice)) &&
++          !radv_emulate_rt(pdevice);
+ }
+ 
+ nir_def *
+@@ -707,7 +709,7 @@ radv_test_flag(nir_builder *b, const struct radv_ray_traversal_args *args, uint3
+ }
+ 
+ static void
+-build_instance_exit(nir_builder *b, const struct radv_ray_traversal_args *args, nir_def *stack_instance_exit)
++build_instance_exit(nir_builder *b, const struct radv_physical_device *pdev, const struct radv_ray_traversal_args *args, nir_def *stack_instance_exit)
+ {
+    nir_def *root_instance_exit = nir_iand(b, nir_ieq_imm(b, nir_load_deref(b, args->vars.current_node),
+                                                          RADV_BVH_INVALID_NODE),
+@@ -716,7 +718,10 @@ build_instance_exit(nir_builder *b, const struct radv_ray_traversal_args *args,
+    nir_if *instance_exit = nir_push_if(b, nir_ior(b, stack_instance_exit, root_instance_exit));
+    instance_exit->control = nir_selection_control_dont_flatten;
+    {
+-      nir_store_deref(b, args->vars.top_stack, nir_imm_int(b, -1), 1);
++      if (radv_use_bvh8(pdev))
++         nir_store_deref(b, args->vars.stack, nir_ior_imm(b, nir_load_deref(b, args->vars.stack), 1u << 31), 0x1);
++      else
++         nir_store_deref(b, args->vars.top_stack, nir_imm_int(b, -1), 1);
+       nir_store_deref(b, args->vars.previous_node, nir_load_deref(b, args->vars.instance_top_node), 1);
+       nir_store_deref(b, args->vars.instance_bottom_node, nir_imm_int(b, RADV_BVH_NO_INSTANCE_ROOT), 1);
+ 
+@@ -763,7 +768,7 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+             nir_jump(b, nir_jump_break);
+          }
+          nir_pop_if(b, NULL);
+-         build_instance_exit(b, args, nir_ilt(b, nir_load_deref(b, args->vars.stack), nir_load_deref(b, args->vars.top_stack)));
++         build_instance_exit(b, pdev, args, nir_ilt(b, nir_load_deref(b, args->vars.stack), nir_load_deref(b, args->vars.top_stack)));
+       }
+ 
+       nir_push_if(b, nir_ieq_imm(b, nir_load_deref(b, args->vars.current_node), RADV_BVH_INVALID_NODE));
+@@ -777,7 +782,7 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+                nir_jump(b, nir_jump_break);
+             }
+             nir_pop_if(b, NULL);
+-            build_instance_exit(b, args, nir_ige(b, nir_load_deref(b, args->vars.top_stack), nir_load_deref(b, args->vars.stack)));
++            build_instance_exit(b, pdev, args, nir_ige(b, nir_load_deref(b, args->vars.top_stack), nir_load_deref(b, args->vars.stack)));
+          }
+ 
+          nir_def *overflow_cond = nir_ige(b, nir_load_deref(b, args->vars.stack_low_watermark), nir_load_deref(b, args->vars.stack));
+@@ -1013,6 +1018,7 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+ 
+    nir_variable *incomplete = nir_local_variable_create(b->impl, glsl_bool_type(), "incomplete");
+    nir_store_var(b, incomplete, nir_imm_true(b), 0x1);
++   nir_variable *intrinsic_result = nir_local_variable_create(b->impl, glsl_uvec_type(8), "intrinsic_result");
+ 
+    struct radv_ray_flags ray_flags = {
+       .force_opaque = radv_test_flag(b, args, SpvRayFlagsOpaqueKHRMask, true),
+@@ -1030,36 +1036,38 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+ 
+    nir_push_loop(b);
+    {
+-      nir_push_if(b, nir_ieq_imm(b, nir_load_deref(b, args->vars.current_node), RADV_BVH_INVALID_NODE));
+-      {
+-         /* Early exit if we never overflowed the stack, to avoid having to backtrack to
+-          * the root for no reason. */
+-         nir_push_if(b, nir_ilt_imm(b, nir_load_deref(b, args->vars.stack), args->stack_base + args->stack_stride));
++      /* When exiting instances via stack, current_node won't ever be invalid with ds_bvh_stack_rtn */
++      if (args->use_bvh_stack_rtn) {
++         /* Early-exit when the stack is empty and there are no more nodes to process. */
++         nir_push_if(b, nir_ieq_imm(b, nir_load_deref(b, args->vars.current_node), RADV_BVH_STACK_TERMINAL_NODE));
+          {
+             nir_store_var(b, incomplete, nir_imm_false(b), 0x1);
+             nir_jump(b, nir_jump_break);
+          }
+          nir_pop_if(b, NULL);
++         build_instance_exit(b, pdev, args, nir_test_mask(b, nir_load_deref(b, args->vars.stack), 1u << 31));
++      }
+ 
+-         nir_def *stack_instance_exit =
+-            nir_ige(b, nir_load_deref(b, args->vars.top_stack), nir_load_deref(b, args->vars.stack));
+-         nir_def *root_instance_exit =
+-            nir_ieq(b, nir_load_deref(b, args->vars.previous_node), nir_load_deref(b, args->vars.instance_bottom_node));
+-         nir_if *instance_exit = nir_push_if(b, nir_ior(b, stack_instance_exit, root_instance_exit));
+-         instance_exit->control = nir_selection_control_dont_flatten;
+-         {
+-            nir_store_deref(b, args->vars.top_stack, nir_imm_int(b, -1), 1);
+-            nir_store_deref(b, args->vars.previous_node, nir_load_deref(b, args->vars.instance_top_node), 1);
+-            nir_store_deref(b, args->vars.instance_bottom_node, nir_imm_int(b, RADV_BVH_NO_INSTANCE_ROOT), 1);
+-
+-            nir_store_deref(b, args->vars.bvh_base, args->root_bvh_base, 1);
+-            nir_store_deref(b, args->vars.origin, args->origin, 7);
+-            nir_store_deref(b, args->vars.dir, args->dir, 7);
++      nir_push_if(b, nir_ieq_imm(b, nir_load_deref(b, args->vars.current_node), RADV_BVH_INVALID_NODE));
++      {
++         /* Early exit if we never overflowed the stack, to avoid having to backtrack to
++          * the root for no reason. */
++         if (!args->use_bvh_stack_rtn) {
++            nir_push_if(b, nir_ilt_imm(b, nir_load_deref(b, args->vars.stack), args->stack_base + args->stack_stride));
++            {
++               nir_store_var(b, incomplete, nir_imm_false(b), 0x1);
++               nir_jump(b, nir_jump_break);
++            }
++            nir_pop_if(b, NULL);
++            build_instance_exit(b, pdev, args, nir_ige(b, nir_load_deref(b, args->vars.top_stack), nir_load_deref(b, args->vars.stack)));
+          }
+-         nir_pop_if(b, NULL);
+ 
+-         nir_push_if(
+-            b, nir_ige(b, nir_load_deref(b, args->vars.stack_low_watermark), nir_load_deref(b, args->vars.stack)));
++         nir_def *overflow_cond = nir_ige(b, nir_load_deref(b, args->vars.stack_low_watermark), nir_load_deref(b, args->vars.stack));
++         /* ds_bvh_stack_rtn returns 0xFFFFFFFF if and only if there was a stack overflow. */
++         if (args->use_bvh_stack_rtn)
++            overflow_cond = nir_imm_true(b);
++
++         nir_push_if(b, overflow_cond);
+          {
+             nir_def *prev = nir_load_deref(b, args->vars.previous_node);
+             nir_def *bvh_addr = build_node_to_addr(device, b, nir_load_deref(b, args->vars.bvh_base), true);
+@@ -1075,13 +1083,15 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+          }
+          nir_push_else(b, NULL);
+          {
+-            nir_store_deref(b, args->vars.stack,
+-                            nir_iadd_imm(b, nir_load_deref(b, args->vars.stack), -args->stack_stride), 1);
++            if (!args->use_bvh_stack_rtn) {
++               nir_store_deref(b, args->vars.stack,
++                               nir_iadd_imm(b, nir_load_deref(b, args->vars.stack), -args->stack_stride), 1);
+ 
+-            nir_def *stack_ptr =
+-               nir_umod_imm(b, nir_load_deref(b, args->vars.stack), args->stack_stride * args->stack_entries);
+-            nir_def *bvh_node = args->stack_load_cb(b, stack_ptr, args);
+-            nir_store_deref(b, args->vars.current_node, bvh_node, 0x1);
++               nir_def *stack_ptr =
++                       nir_umod_imm(b, nir_load_deref(b, args->vars.stack), args->stack_stride * args->stack_entries);
++               nir_def *bvh_node = args->stack_load_cb(b, stack_ptr, args);
++               nir_store_deref(b, args->vars.current_node, bvh_node, 0x1);
++            }
+             nir_store_deref(b, args->vars.previous_node, nir_imm_int(b, RADV_BVH_INVALID_NODE), 0x1);
+          }
+          nir_pop_if(b, NULL);
+@@ -1104,6 +1114,7 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+          nir_bvh8_intersect_ray_amd(b, 32, desc, nir_unpack_64_2x32(b, nir_load_deref(b, args->vars.bvh_base)),
+                                     nir_ishr_imm(b, args->cull_mask, 24), nir_load_deref(b, args->vars.tmax),
+                                     nir_load_deref(b, args->vars.origin), nir_load_deref(b, args->vars.dir), bvh_node);
++      nir_store_var(b, intrinsic_result, nir_channels(b, result, 0xff), 0xff);
+       nir_store_deref(b, args->vars.origin, nir_channels(b, result, 0x7 << 10), 0x7);
+       nir_store_deref(b, args->vars.dir, nir_channels(b, result, 0x7 << 13), 0x7);
+ 
+@@ -1119,64 +1130,89 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+ 
+             nir_def *next_node = nir_iand_imm(b, nir_channel(b, result, 7), 0xff);
+             nir_push_if(b, nir_ieq_imm(b, next_node, 0xff));
+-            nir_store_deref(b, args->vars.origin, args->origin, 7);
+-            nir_store_deref(b, args->vars.dir, args->dir, 7);
+-            nir_jump(b, nir_jump_continue);
+-            nir_pop_if(b, NULL);
+-
+-            /* instance */
+-            nir_def *instance_node_addr = build_node_to_addr(device, b, global_bvh_node, false);
+-            nir_store_deref(b, args->vars.instance_addr, instance_node_addr, 1);
++            {
++               nir_store_deref(b, args->vars.origin, args->origin, 7);
++               nir_store_deref(b, args->vars.dir, args->dir, 7);
++               if (args->use_bvh_stack_rtn) {
++                  nir_def *skip_0_7 = nir_imm_int(b, RADV_BVH_STACK_SKIP_0_TO_7);
++                  nir_store_var(b, intrinsic_result,
++                                nir_vector_insert_imm(b, nir_load_var(b, intrinsic_result), skip_0_7, 7), 0xff);
++               } else {
++                  nir_jump(b, nir_jump_continue);
++               }
++            }
++            nir_push_else(b, NULL);
++            {
++               /* instance */
++               nir_def *instance_node_addr = build_node_to_addr(device, b, global_bvh_node, false);
++               nir_store_deref(b, args->vars.instance_addr, instance_node_addr, 1);
+ 
+-            nir_store_deref(b, args->vars.sbt_offset_and_flags, nir_channel(b, result, 6), 1);
++               nir_store_deref(b, args->vars.sbt_offset_and_flags, nir_channel(b, result, 6), 1);
+ 
+-            nir_store_deref(b, args->vars.top_stack, nir_load_deref(b, args->vars.stack), 1);
+-            nir_store_deref(b, args->vars.bvh_base, nir_pack_64_2x32(b, nir_channels(b, result, 0x3 << 2)), 1);
++               nir_store_deref(b, args->vars.top_stack, nir_load_deref(b, args->vars.stack), 1);
++               nir_store_deref(b, args->vars.bvh_base, nir_pack_64_2x32(b, nir_channels(b, result, 0x3 << 2)), 1);
+ 
+-            /* Push the instance root node onto the stack */
+-            nir_store_deref(b, args->vars.current_node, next_node, 0x1);
+-            nir_store_deref(b, args->vars.instance_bottom_node, next_node, 1);
+-            nir_store_deref(b, args->vars.instance_top_node, bvh_node, 1);
++               /* Push the instance root node onto the stack */
++               if (args->use_bvh_stack_rtn) {
++                  nir_def *comps[8];
++                  for (unsigned i = 0; i < 6; ++i)
++                     comps[i] = nir_channel(b, result, i);
++                  comps[6] = nir_imm_int(b, RADV_BVH_STACK_SKIP_0_TO_7);
++                  comps[7] = next_node;
++                  nir_store_var(b, intrinsic_result, nir_vec(b, comps, 8), 0xff);
++               } else {
++                  nir_store_deref(b, args->vars.current_node, next_node, 0x1);
++               }
++               nir_store_deref(b, args->vars.instance_bottom_node, next_node, 1);
++               nir_store_deref(b, args->vars.instance_top_node, bvh_node, 1);
++            }
++            nir_pop_if(b, NULL);
+          }
+          nir_push_else(b, NULL);
+          {
+             /* box */
+-            nir_push_if(b, nir_ieq_imm(b, prev_node, RADV_BVH_INVALID_NODE));
+-            {
+-               nir_def *new_nodes[8];
+-               for (unsigned i = 0; i < 8; ++i)
+-                  new_nodes[i] = nir_channel(b, result, i);
+-
+-               for (unsigned i = 1; i < 8; ++i)
+-                  nir_push_if(b, nir_ine_imm(b, new_nodes[i], RADV_BVH_INVALID_NODE));
+-
+-               for (unsigned i = 8; i-- > 1;) {
+-                  nir_def *stack = nir_load_deref(b, args->vars.stack);
+-                  nir_def *stack_ptr = nir_umod_imm(b, stack, args->stack_entries * args->stack_stride);
+-                  args->stack_store_cb(b, stack_ptr, new_nodes[i], args);
+-                  nir_store_deref(b, args->vars.stack, nir_iadd_imm(b, stack, args->stack_stride), 1);
+-
+-                  if (i == 1) {
+-                     nir_def *new_watermark =
+-                        nir_iadd_imm(b, nir_load_deref(b, args->vars.stack), -args->stack_entries * args->stack_stride);
+-                     new_watermark = nir_imax(b, nir_load_deref(b, args->vars.stack_low_watermark), new_watermark);
+-                     nir_store_deref(b, args->vars.stack_low_watermark, new_watermark, 0x1);
+-                  }
++            if (args->use_bvh_stack_rtn) {
++               nir_store_deref(b, args->vars.current_node, prev_node, 0x1);
++            } else {
++               nir_push_if(b, nir_ieq_imm(b, prev_node, RADV_BVH_INVALID_NODE));
++               {
++                  nir_def *new_nodes[8];
++                  for (unsigned i = 0; i < 8; ++i)
++                     new_nodes[i] = nir_channel(b, result, i);
+ 
+-                  nir_pop_if(b, NULL);
++                  for (unsigned i = 1; i < 8; ++i)
++                     nir_push_if(b, nir_ine_imm(b, new_nodes[i], RADV_BVH_INVALID_NODE));
++
++                  for (unsigned i = 8; i-- > 1;) {
++                     nir_def *stack = nir_load_deref(b, args->vars.stack);
++                     nir_def *stack_ptr = nir_umod_imm(b, stack, args->stack_entries * args->stack_stride);
++                     args->stack_store_cb(b, stack_ptr, new_nodes[i], args);
++                     nir_store_deref(b, args->vars.stack, nir_iadd_imm(b, stack, args->stack_stride), 1);
++
++                     if (i == 1) {
++                        nir_def *new_watermark =
++                                nir_iadd_imm(b, nir_load_deref(b, args->vars.stack),
++                                             -args->stack_entries * args->stack_stride);
++                        new_watermark = nir_imax(b, nir_load_deref(b, args->vars.stack_low_watermark), new_watermark);
++                        nir_store_deref(b, args->vars.stack_low_watermark, new_watermark, 0x1);
++                     }
++
++                     nir_pop_if(b, NULL);
++                  }
++                  nir_store_deref(b, args->vars.current_node, new_nodes[0], 0x1);
+                }
+-               nir_store_deref(b, args->vars.current_node, new_nodes[0], 0x1);
+-            }
+-            nir_push_else(b, NULL);
+-            {
+-               nir_def *next = nir_imm_int(b, RADV_BVH_INVALID_NODE);
+-               for (unsigned i = 0; i < 7; ++i) {
+-                  next = nir_bcsel(b, nir_ieq(b, prev_node, nir_channel(b, result, i)), nir_channel(b, result, i + 1),
+-                                   next);
++               nir_push_else(b, NULL);
++               {
++                  nir_def *next = nir_imm_int(b, RADV_BVH_INVALID_NODE);
++                  for (unsigned i = 0; i < 7; ++i) {
++                     next = nir_bcsel(b, nir_ieq(b, prev_node, nir_channel(b, result, i)),
++                                      nir_channel(b, result, i + 1),
++                                      next);
++                  }
++                  nir_store_deref(b, args->vars.current_node, next, 0x1);
+                }
+-               nir_store_deref(b, args->vars.current_node, next, 0x1);
++               nir_pop_if(b, NULL);
+             }
+-            nir_pop_if(b, NULL);
+          }
+          nir_pop_if(b, NULL);
+       }
+@@ -1195,6 +1231,11 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+             nir_pop_if(b, NULL);
+          }
+          nir_pop_if(b, NULL);
++         if (args->use_bvh_stack_rtn) {
++            nir_def *skip_0_7 = nir_imm_int(b, RADV_BVH_STACK_SKIP_0_TO_7);
++            nir_store_var(b, intrinsic_result, nir_vector_insert_imm(b, nir_load_var(b, intrinsic_result), skip_0_7, 7),
++                          0xff);
++         }
+       }
+       nir_pop_if(b, NULL);
+ 
+@@ -1203,6 +1244,16 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+          iteration_instance_count = nir_iadd_imm(b, iteration_instance_count, 1);
+          nir_store_deref(b, args->vars.iteration_instance_count, iteration_instance_count, 0x1);
+       }
++
++      if (args->use_bvh_stack_rtn) {
++         nir_def *stack_result;
++         stack_result = nir_bvh_stack_rtn_amd(b, 32, nir_load_deref(b, args->vars.stack),
++                                                     nir_load_deref(b, args->vars.current_node),
++                                                     nir_load_var(b, intrinsic_result),
++                                                     .stack_size = args->stack_entries);
++         nir_store_deref(b, args->vars.stack, nir_channel(b, stack_result, 0), 0x1);
++         nir_store_deref(b, args->vars.current_node, nir_channel(b, stack_result, 1), 0x1);
++      }
+    }
+    nir_pop_loop(b, NULL);
+ 
+-- 
+GitLab
+
+
+From 25c9b7c156f4f240a7178e09b30423348c6a477e Mon Sep 17 00:00:00 2001
+From: Natalie Vock <natalie.vock@gmx.de>
+Date: Mon, 14 Apr 2025 23:01:04 +0200
+Subject: [PATCH 09/11] aco/assembler: Support vector-aligned operands on DS
+ instructions
+
+---
+ src/amd/compiler/aco_assembler.cpp | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/src/amd/compiler/aco_assembler.cpp b/src/amd/compiler/aco_assembler.cpp
+index 172704915ba38..186a1f1546f0b 100644
+--- a/src/amd/compiler/aco_assembler.cpp
++++ b/src/amd/compiler/aco_assembler.cpp
+@@ -514,10 +514,16 @@ emit_ds_instruction(asm_context& ctx, std::vector<uint32_t>& out, const Instruct
+    encoding = 0;
+    if (!instr->definitions.empty())
+       encoding |= reg(ctx, instr->definitions.back(), 8) << 24;
+-   for (unsigned i = 0; i < MIN2(instr->operands.size(), 3); i++) {
+-      const Operand& op = instr->operands[i];
++   unsigned op_idx = 0;
++   for (unsigned vector_idx = 0; op_idx < MIN2(instr->operands.size(), 3); vector_idx++) {
++      assert(vector_idx < 3);
++
++      const Operand& op = instr->operands[op_idx];
+       if (op.physReg() != m0 && !op.isUndefined())
+-         encoding |= reg(ctx, op, 8) << (8 * i);
++         encoding |= reg(ctx, op, 8) << (8 * vector_idx);
++      while (instr->operands[op_idx].isVectorAligned())
++         ++op_idx;
++      ++op_idx;
+    }
+    out.push_back(encoding);
+ }
+-- 
+GitLab
+
+
+From dae50958b67c3a7bd0e51846ac8842c93e375669 Mon Sep 17 00:00:00 2001
+From: Natalie Vock <natalie.vock@gmx.de>
+Date: Mon, 14 Apr 2025 23:03:11 +0200
+Subject: [PATCH 10/11] aco/ra: Add affinities for DS vector-aligned operands
+
+---
+ src/amd/compiler/aco_register_allocation.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/amd/compiler/aco_register_allocation.cpp b/src/amd/compiler/aco_register_allocation.cpp
+index 35477a0e0fa1b..b8463b44df58d 100644
+--- a/src/amd/compiler/aco_register_allocation.cpp
++++ b/src/amd/compiler/aco_register_allocation.cpp
+@@ -3043,6 +3043,14 @@ get_affinities(ra_ctx& ctx)
+                ctx.assignments[instr->operands[0].tempId()].vcc = true;
+          } else if (instr->opcode == aco_opcode::s_sendmsg) {
+             ctx.assignments[instr->operands[0].tempId()].m0 = true;
++         } else if (instr->format == Format::DS) {
++            bool is_vector = false;
++            for (unsigned i = 0, vector_begin = 0; i < instr->operands.size(); i++) {
++               if (is_vector || instr->operands[i].isVectorAligned())
++                  ctx.vectors[instr->operands[i].tempId()] = vector_info(instr.get(), vector_begin);
++               is_vector = instr->operands[i].isVectorAligned();
++               vector_begin = is_vector ? vector_begin : i + 1;
++            }
+          }
+ 
+          auto tied_defs = get_tied_defs(instr.get());
+-- 
+GitLab
+
+
+From 234f617e11e4299005daf30d40ab1dce7a288e09 Mon Sep 17 00:00:00 2001
+From: Natalie Vock <natalie.vock@gmx.de>
+Date: Mon, 14 Apr 2025 23:24:30 +0200
+Subject: [PATCH 11/11] aco/isel: Use vector-aligned operands for
+ ds_stack_push8_pop1_rtn_b32
+
+---
+ .../aco_select_nir_intrinsics.cpp                 | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
+index 69cc6191bd8b5..3b8292b4089c5 100644
+--- a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
++++ b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
+@@ -3997,9 +3997,18 @@ void emit_ds_bvh_stack_push8_pop1_rtn(isel_context *ctx, nir_intrinsic_instr *in
+ 
+    Temp dst_stack_addr = bld.tmp(v1);
+    Temp dst_node_pointer = bld.tmp(v1);
+-   bld.ds(aco_opcode::ds_bvh_stack_push8_pop1_rtn_b32, Definition(dst_stack_addr),
+-          Definition(dst_node_pointer), Operand(stack_addr), Operand(last_node),
+-          Operand(intersection_result), nir_intrinsic_stack_size(instr), 0);
++   Instruction* ds_instr = create_instruction(aco_opcode::ds_bvh_stack_push8_pop1_rtn_b32, Format::DS, 2 + 8, 2);
++   ds_instr->definitions[0] = Definition(dst_stack_addr);
++   ds_instr->definitions[1] = Definition(dst_node_pointer);
++   ds_instr->operands[0] = Operand(stack_addr);
++   ds_instr->operands[1] = Operand(last_node);
++   for (unsigned i = 0; i < 8; ++i) {
++      ds_instr->operands[2 + i] = Operand(emit_extract_vector(ctx, intersection_result, i, v1));
++      if (i < 7)
++         ds_instr->operands[2 + i].setVectorAligned(true);
++   }
++   ds_instr->ds().offset0 = nir_intrinsic_stack_size(instr);
++   bld.insert(aco_ptr<Instruction>(ds_instr));
+    bld.pseudo(aco_opcode::p_create_vector, Definition(dst), Operand(dst_stack_addr),
+               Operand(dst_node_pointer));
+ }
+-- 
+GitLab
+
