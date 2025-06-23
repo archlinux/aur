@@ -8,12 +8,12 @@ pkgbase = upfile-bin
 	provides = upfile
 	arch = aarch64
 	source_aarch64 = https://github.com/skewb1k/upfile/releases/download/v1.0.1/upfile_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 8cf15891379aaec927731e70d28045452a207a797953963d6d87dbbf811bc986
+	sha256sums_aarch64 = af7a41c72e5197df540ae77d2062865cfe8a0bb4d16f0cb23ee630ca657815f3
 	arch = i686
 	source_i686 = https://github.com/skewb1k/upfile/releases/download/v1.0.1/upfile_Linux_i386.tar.gz
-	sha256sums_i686 = 50ddf8b079fbc9df7cdaafa1975b201be32d2ef4e6bd39fbd35073667ea97dd3
+	sha256sums_i686 = 00a1f3f9096e220f0691e408be480d8ce7a744abf065ea5ecbca950c3e2553d3
 	arch = x86_64
 	source_x86_64 = https://github.com/skewb1k/upfile/releases/download/v1.0.1/upfile_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = cb22b0bacaeebc72e831175a2ee803c4fbcf1f4ba405305778cdfcec7285c8a4
+	sha256sums_x86_64 = 2c56cebc32ec0ae62acb7acb3097aab431396c222e0540c90586f2dcda44b4bc
 	
 pkgname = upfile-bin
