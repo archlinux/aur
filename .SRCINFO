@@ -5,7 +5,15 @@ pkgbase = armbian-firmware-git
 	url = https://github.com/armbian/firmware
 	arch = any
 	license = custom
+	depends = linux-firmware-whence
 	provides = armbian-firmware
+	conflicts = linux-firmware-broadcom
+	conflicts = linux-firmware-cirrus
+	conflicts = linux-firmware-intel
+	conflicts = linux-firmware-mediatek
+	conflicts = linux-firmware-other
+	conflicts = linux-firmware-qcom
+	conflicts = linux-firmware-realtek
 	source = firmware::git+https://github.com/armbian/firmware.git
 	md5sums = SKIP
 
