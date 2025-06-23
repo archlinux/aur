@@ -16,6 +16,7 @@ url="https://github.com/armbian/firmware"
 license=('custom')
 options=(!strip staticlibs libtool)
 conflicts=(
+	'linux-firmware-atheros'
 	'linux-firmware-broadcom'
 	'linux-firmware-cirrus'
 	'linux-firmware-intel'
@@ -23,6 +24,7 @@ conflicts=(
 	'linux-firmware-other'
 	'linux-firmware-qcom'
 	'linux-firmware-realtek'
+	'radxa-firmware'
 )
 depends=('linux-firmware-whence') # ensure license files are installed
 provides=("${pkgname%-git}")
