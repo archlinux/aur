@@ -1,18 +1,18 @@
 pkgbase = netron-bin
 	pkgdesc = Visualizer for neural network, deep learning and machine learning models.(Prebuilt version,use system-wide electron)
-	pkgver = 8.3.9
+	pkgver = 8.4.0
 	pkgrel = 1
 	url = https://netron.app/
 	arch = x86_64
 	license = MIT
 	depends = electron36
-	provides = netron=8.3.9
+	provides = netron=8.4.0
 	conflicts = netron
-	source = netron-8.3.9-x86_64.AppImage::https://github.com/lutzroeder/netron/releases/download/v8.3.9/Netron-8.3.9.AppImage
-	source = LICENSE-8.3.9::https://raw.githubusercontent.com/lutzroeder/netron/v8.3.9/LICENSE
+	source = netron-8.4.0-x86_64.AppImage::https://github.com/lutzroeder/netron/releases/download/v8.4.0/Netron-8.4.0.AppImage
+	source = LICENSE-8.4.0::https://raw.githubusercontent.com/lutzroeder/netron/v8.4.0/LICENSE
 	source = netron.sh
-	sha256sums = 2d0891d3c8468bcafcfa289d7b98f64e4e12cf38c5eb60614483869705e98824
+	sha256sums = 5dd76d241b8ed41f1a49e5e4c09ac059a6d43cf2d883a80cca4846b770791de0
 	sha256sums = 535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = netron-bin
