@@ -1,6 +1,6 @@
 pkgbase = screamingfrogseospider
 	pkgdesc = spiders websites’ links, images, CSS, script and apps from an SEO perspective.
-	pkgver = 22.0
+	pkgver = 22.1
 	pkgrel = 1
 	url = https://www.screamingfrog.co.uk/seo-spider/
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = screamingfrogseospider
 	makedepends = tar
 	depends = java-runtime-openjdk>=17
 	depends = ttf-font
-	source = screamingfrogseospider_22.0_all.deb::https://download.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_22.0_all.deb?noredirect
+	source = screamingfrogseospider_22.1_all.deb::https://download.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_22.1_all.deb?noredirect
 	source = LICENSE
 	source = screamingfrogseospider
-	b2sums = 33e848daa1212feafebaf30fb4017db9a16ace54528866b560d68afd0af3332016072bc72ca00a9acc7e1915cde58b6a06d669c7000d0e68db2188e2b4642d95
+	b2sums = 7460a1df0aa1716bb9f237e74771e37a537d0e6e969b66a98dc5221fcf2e14fc902261d2866fdc0d978c634e7f3922d029ed23f0805353492e2e0051c5c88096
 	b2sums = 6cde786ef5e5bf0e2d1cb9403eb9bbe6923731e22263e1cd2b3c3f0258d6efb4151eba5b59ee9e87894d17af75f1f72509bd389d1425a9fcab37ba51d9b50cd7
 	b2sums = 1c22167625276543fc356023f1ced343c8efb1ee8267587e6ba2a8a1c6fe6d3f7e0d4c40a048cb51c7131733d49ed4eb7eaececcfb54f1a124ca01bef8549ca4
 
