@@ -1,6 +1,6 @@
 pkgbase = python-did
 	pkgdesc = What did you do last week, month, year?
-	pkgver = 0.21
+	pkgver = 0.22
 	pkgrel = 1
 	url = https://github.com/psss/did
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-did
 	depends = python
 	provides = python-did
 	conflicts = python-did
-	source = did-0.21.tar.gz::https://github.com/psss/did/archive/refs/tags/0.21.tar.gz
-	sha256sums = 6b4f59bf77abb5469c2979a1ac7ca09d948d91d63a0ec2e98e3965968a08abb8
+	source = did-0.22.tar.gz::https://github.com/psss/did/archive/refs/tags/0.22.tar.gz
+	sha256sums = a0ab60b7d6f162810ce227bf5d21b1e891c0f4f016ecc236c6bca74983051182
 
 pkgname = python-did

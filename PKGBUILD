@@ -2,7 +2,7 @@
 
 _name=did
 pkgname="python-${_name}"
-pkgver=0.21
+pkgver=0.22
 pkgrel=1
 pkgdesc='What did you do last week, month, year?'
 arch=('any')
@@ -13,7 +13,7 @@ provides=("python-${_name}")
 conflicts=("python-${_name}")
 depends=('python')
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('6b4f59bf77abb5469c2979a1ac7ca09d948d91d63a0ec2e98e3965968a08abb8')
+sha256sums=(a0ab60b7d6f162810ce227bf5d21b1e891c0f4f016ecc236c6bca74983051182)
 
 package() {
 	cd "${srcdir}/${_name}-${pkgver}"
