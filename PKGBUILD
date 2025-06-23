@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deepchat-git
 _pkgname=DeepChat
-pkgver=0.0.16.r525.g3f2f979
+pkgver=0.0.16.r891.g97e9f61
 _electronversion=35
 _nodeversion=22.15.0
 pkgrel=1
@@ -14,11 +14,6 @@ provides=("${pkgname%-git}=${pkgver%.r*}")
 conflicts=("${pkgname%-git}")
 depends=(
     "electron${_electronversion}"
-    'nodejs'
-    'python'
-    'python-typing_extensions'
-    'python-setuptools'
-    'python-packaging'
 )
 makedepends=(
     'npm'
@@ -32,7 +27,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -68,7 +63,7 @@ prepare() {
         echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
-        echo "maxsockets=10"
+        echo "maxsockets=32"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
