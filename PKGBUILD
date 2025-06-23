@@ -1,7 +1,7 @@
 # Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 
 pkgname=hare-json
-pkgver=0.24.2
+pkgver=0.25.2.0
 pkgrel=1
 pkgdesc='JSON support for Hare'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://git.sr.ht/~sircmpwn/hare-json'
 license=('MPL-2.0')
 depends=('hare')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/${pkgname}/archive/${pkgver}.tar.gz")
-b2sums=('5c82ceaf96ac8f01c14c718203888d354cefa17e7de862f28ddcb675a199fdaf802076abb67ec31ac299090fda3392cc527290bfa1eb7b1f745a5d8a7891b648')
+b2sums=('e73a1fb77beb50588ec038e1ad8bf98ba56ded06ee0183d1bd2b5e5231e705ba2eaced21d7683baad99e7a77032962cedc4a07c3af78f275f2eb364685dbe952')
 
 check() {
   cd "$pkgname-$pkgver"
