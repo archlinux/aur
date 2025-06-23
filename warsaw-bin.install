@@ -11,6 +11,11 @@ post_install() {
         echo -e "\e[34;1m==>\e[39;1m Sicredi: https://www.sicredi.com.br/diagnostico/html/modulo/index.html \e[0m"
     fi
 
+
+    if systemctl is-enabled warsaw.service 1>/dev/null; then
+        systemctl disable --now warsaw.service
+    fi
+
     execstack -s /usr/local/bin/warsaw/core
     chattr +i /usr/local/bin/warsaw/core
     chattr +a /usr/local/bin/warsaw/
@@ -20,6 +25,7 @@ post_install() {
 
 pre_upgrade() {
     if systemctl is-active warsaw.service 1>/dev/null; then
+        systemctl disable --now warsaw.service
         chattr -i /usr/local/bin/warsaw/core
         chattr -a /usr/local/bin/warsaw/
     fi
@@ -31,18 +37,17 @@ post_upgrade() {
         chattr +i /usr/local/bin/warsaw/core
         chattr +a /usr/local/bin/warsaw/
 
-        systemctl daemon-reload
-        systemctl restart warsaw.service
+        systemctl enable --now warsaw.service
     fi
 }
 
 pre_remove() {
-    chattr -i /usr/local/bin/warsaw/core
-    chattr -a /usr/local/bin/warsaw/
-
     if systemctl is-enabled warsaw.service 1>/dev/null; then
         systemctl disable --now warsaw.service
     fi
+
+    chattr -i /usr/local/bin/warsaw/core
+    chattr -a /usr/local/bin/warsaw/
 }
 
 post_remove() {
