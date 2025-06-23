@@ -1,7 +1,7 @@
 # Maintainer: Pauls Nartišs <paulsnar@paulsnar.lv>
 pkgname=victorialogs-bin
 pkgver=1.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scalable logging solution designed to be fast and highly efficient"
 arch=('x86_64')
 url="https://docs.victoriametrics.com/victorialogs/"
@@ -29,7 +29,7 @@ sha256sums_aarch64=(
 package(){
   install -Dm755 "${srcdir}/victoria-logs-prod" "${pkgdir}/usr/bin/victorialogs"
   install -Dm755 "${srcdir}/vlogscli-prod" "${pkgdir}/usr/bin/vlogscli"
-  install -Dm640 "${srcdir}/service" "${pkgdir}/usr/lib/systemd/system/victorialogs.service"
+  install -Dm644 "${srcdir}/service" "${pkgdir}/usr/lib/systemd/system/victorialogs.service"
   install -Dm640 "${srcdir}/default" "${pkgdir}/etc/default/victorialogs"
   install -Dm644 "${srcdir}/sysusers" "${pkgdir}/usr/lib/sysusers.d/victorialogs.conf"
   install -Dm644 "${srcdir}/tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/victorialogs.conf"

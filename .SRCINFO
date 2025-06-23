@@ -1,10 +1,10 @@
 pkgbase = victorialogs-bin
-	pkgdesc = Fast, cost-effective and scalable time series database
+	pkgdesc = Scalable logging solution designed to be fast and highly efficient
 	pkgver = 1.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.victoriametrics.com/victorialogs/
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	backup = etc/default/victorialogs
 	source = service
 	source = sysusers
