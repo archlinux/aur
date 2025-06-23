@@ -1,15 +1,15 @@
 pkgname=stingray
 _pkgname=Stingray
-pkgver=1.0.4.aurpatch
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="Custom client for a private Jellyfin server."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/stingray"
 license=('GPL')
-depends=('libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git' 'playerctl')
+depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git' 'playerctl')
 makedepends=('unzip')
 source=("https://gitlab.com/linuxbombay/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('df334b1215c6c5cb8d04c21c4ddcf2a9c8fadb0ca860dd00e89d170c1e249c6c')
+sha256sums=('509ff68752561ebbfb057fe8f6dfa08d42cd54116f215c2a6e595041d98a3622')
 
 
 package() {
@@ -24,7 +24,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
+    ln -s /usr/bin/libelectronmeta "$pkgdir/opt/$_pkgname/electron"
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry

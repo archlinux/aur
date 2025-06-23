@@ -1,19 +1,20 @@
 pkgbase = stingray
 	pkgdesc = Custom client for a private Jellyfin server.
-	pkgver = 1.0.4.aurpatch
-	pkgrel = 2
+	pkgver = 1.0.5
+	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/stingray
 	arch = x86_64
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
+	depends = libelectron-electron-meta
 	depends = libelectron>=2025.1
 	depends = nss
 	depends = gtk3
 	depends = libxss
 	depends = git
 	depends = playerctl
-	source = https://gitlab.com/linuxbombay/stingray/-/archive/1.0.4.aurpatch/stingray-1.0.4.aurpatch.tar.bz2
-	sha256sums = df334b1215c6c5cb8d04c21c4ddcf2a9c8fadb0ca860dd00e89d170c1e249c6c
+	source = https://gitlab.com/linuxbombay/stingray/-/archive/1.0.5/stingray-1.0.5.tar.bz2
+	sha256sums = 509ff68752561ebbfb057fe8f6dfa08d42cd54116f215c2a6e595041d98a3622
 
 pkgname = stingray
