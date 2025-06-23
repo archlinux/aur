@@ -12,13 +12,13 @@ provides=('upfile')
 conflicts=('upfile')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.1/upfile_Linux_arm64.tar.gz")
-sha256sums_aarch64=('af7a41c72e5197df540ae77d2062865cfe8a0bb4d16f0cb23ee630ca657815f3')
+sha256sums_aarch64=('f7ed33a173df7458576095c7c5c26e32c31317c4949ce79a3b6268a455d35aef')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.1/upfile_Linux_i386.tar.gz")
-sha256sums_i686=('00a1f3f9096e220f0691e408be480d8ce7a744abf065ea5ecbca950c3e2553d3')
+sha256sums_i686=('d99d749549680fc12fe2b5830f115d56ce5fb00af4a806300f7705bfda75908e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.1/upfile_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('2c56cebc32ec0ae62acb7acb3097aab431396c222e0540c90586f2dcda44b4bc')
+sha256sums_x86_64=('5864e0d811b6612dae3a7d4a8c7547fa7d9dc160c367976bafa09cfa51f751df')
 
 package() {
   # bin
