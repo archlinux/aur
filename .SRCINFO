@@ -1,0 +1,16 @@
+pkgbase = winkey-bin
+	pkgdesc = A lightweight Electron app to generates TOTP codes for two-factor authentication.It's clean, simple, and designed to keep your accounts secure without fuss.(Prebuilt version,use system-wide electron)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/BeastCodZ/WinKey
+	arch = x86_64
+	license = ISC
+	depends = electron32
+	provides = winkey=2.0.0
+	conflicts = winkey
+	source = winkey-2.0.0.pacman::https://github.com/BeastCodZ/WinKey/releases/download/Update/WinKey-2.0.0.pacman
+	source = winkey.sh
+	sha256sums = a5dc916204086729bc40950dbca1723d80035d1606730d0a7e7ed1d9239049e8
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+
+pkgname = winkey-bin
