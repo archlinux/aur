@@ -1,7 +1,7 @@
 # Maintainer: Pixel
 
 pkgname=walrs-git
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="Generate colorscheme from image"
 arch=('x86_64' 'aarch64')
