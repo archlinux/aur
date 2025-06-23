@@ -3,17 +3,18 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@gmail.com>
 
 pkgname=nco
-pkgver=5.3.3
+pkgver=5.3.4
 pkgrel=1
 pkgdesc="netCDF Operators allow users to manipulate and analyse data stored in NetCDF files"
 url="http://nco.sourceforge.net/"
 license=('BSD-3-Clause')
 arch=('x86_64')
 
+# N.B., ccr is currently not needed as all its filters are now integrated into netcdf-c:
+# https://github.com/Unidata/netcdf-c/issues/3121
 depends=(
   'bash'
   'cblas'
-  'ccr'
   'curl'
   'glibc'
   'gcc-libs'
@@ -32,8 +33,8 @@ source=(
   'use_antlr2.patch'
 )
 sha256sums=(
-  '73082e9144215bb723b662b55f752e684a7308aa9813481e4fbd8a61265a762b'
-  '762e7d1857efed1abf4950d747b84e83f55b4557a1c63d839f9b6addb15fc7c0'
+  'd25f28280edcaeb0c4019d6616c911b561008f072d0969188760ca030dda2a62'
+  'ef4fbec224f47342c9cfaf0c02299b217a5e494d21f48ab79b998886a59c63f7'
 )
 
 prepare() {
@@ -45,8 +46,7 @@ build() {
   cd nco
   ./configure \
     --prefix=/usr \
-    --with-hdf5-plugin-path=/usr/lib/hdf5/plugin \
-    --enable-ccr
+    --with-hdf5-plugin-path=/usr/lib/hdf5/plugin
   make
 }
 
