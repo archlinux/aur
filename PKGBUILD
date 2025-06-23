@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vilauncher-bin
 _pkgname=VILauncher
-pkgver=1
+pkgver=1.1
 _electronversion=33
 pkgrel=1
 pkgdesc="A custom Minecraft launcher, developed with modern technologies that offers a smooth and user-friendly experience to start your favorite game.(Prebuilt version.Use system-wide electron)"
@@ -18,11 +18,15 @@ makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.0.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6eba4f116e37006a97c61e3d837dce872705f9fe01a23779043754f5a6a86c04'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('3d8a5978faf8e17ed49f4fa70919efb02841ff72764b92aefbc2ee8c5815d66c'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -31,8 +35,11 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Utility/Game/g
