@@ -10,7 +10,7 @@ arch=(any)
 url="https://${_base}.github.io"
 license=(BSD-4-Clause)
 depends=(python-joblib python-lxml python-nibabel python-scipy python-pandas python-scikit-learn python-packaging)
-makedepends=(python-build python-installer python-hatchling python-wheel)
+makedepends=(python-build python-installer python-hatch-vcs python-wheel)
 optdepends=('python-matplotlib: for general plotting'
   'python-plotly: for surface plotting'
   'python-kaleido: required if using plotly')
