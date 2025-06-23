@@ -2,14 +2,14 @@
 pkgname=gdsync-bin
 pkgver=3.1
 pkgrel=1
-pkgdesc="A cool tool for syncing Geometry Dash save data between PC and Android devices"
+pkgdesc="A PyQt6-based tool for syncing Geometry Dash save data between PC and Android devices"
 arch=('x86_64')
 url="https://github.com/MalikHw/gdsync"
-license=('MIT')
+license=('custom')
 depends=('android-tools')
 provides=('gdsync')
 conflicts=('gdsync')
-source=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/GDSync-linux"
+source=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/gdsync-linux"
         "${pkgname}-${pkgver}.desktop::${url}/releases/download/v${pkgver}/gdsync.desktop"
         "${pkgname}-${pkgver}.png::${url}/releases/download/v${pkgver}/icon.png")
 sha256sums=('SKIP'
