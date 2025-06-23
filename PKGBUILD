@@ -1,4 +1,5 @@
-# Maintainer: MareDevi <maredevi at foxmail dot com>
+# Maintainer: Archisman Panigrahi <apandada1 at gmail dot com>
+# Previous maintainer: MareDevi <maredevi at foxmail dot com>
 
 pkgname=readest-deb
 pkgver=0.9.60
