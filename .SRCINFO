@@ -1,0 +1,16 @@
+pkgbase = hare-sqlite-git
+	pkgdesc = SQLite support for Hare
+	pkgver = r19.2792eeb
+	pkgrel = 1
+	url = https://git.sr.ht/~blainsmith/hare-sqlite
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = hare
+	depends = sqlite
+	provides = hare-sqlite=r19.2792eeb
+	conflicts = hare-sqlite
+	source = git+https://git.sr.ht/~blainsmith/hare-sqlite
+	md5sums = SKIP
+
+pkgname = hare-sqlite-git
