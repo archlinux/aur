@@ -1,13 +1,13 @@
 pkgbase = walrs
 	pkgdesc = Generate colorscheme from image
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://pixelll.is-a.dev/tools/walrs
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	depends = gcc-libs
-	source = https://pixelll.is-a.dev/static/walrs/walrs-1.1.6.tar.gz
+	source = https://pixelll.is-a.dev/static/walrs/walrs-1.1.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = walrs
