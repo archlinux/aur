@@ -3,7 +3,7 @@
 
 _pkgname=libpoly
 pkgname=$_pkgname-git
-pkgver=0.1.13.r4.g862d7cb
+pkgver=0.2.0.r0.gd4c917c
 pkgrel=1
 pkgdesc='C library for manipulating polynomials'
 arch=('x86_64')
@@ -18,12 +18,13 @@ conflicts=('libpoly')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed 's/v//' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags $(git rev-list --tags --max-count=1) | sed 's/v//' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "$_pkgname/build"
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  export CFLAGS=""
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -Wno-dev
   make
 }
 
