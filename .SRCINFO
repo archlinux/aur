@@ -1,8 +1,8 @@
 pkgbase = python-did-git
-	pkgdesc = What did you do last week, month, year? Patched version for a proper github comments
-	pkgver = 0.21.1.r584.d585e98
+	pkgdesc = What did you do last week, month, year?
+	pkgver = 0.22.1.r759.64dfd8db
 	pkgrel = 1
-	url = https://github.com/Felixoid/did
+	url = https://github.com/psss/did
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
@@ -10,7 +10,7 @@ pkgbase = python-did-git
 	depends = python
 	provides = python-did
 	conflicts = python-did
-	source = did::git+https://github.com/Felixoid/did.git
+	source = did::git+https://github.com/psss/did.git
 	sha256sums = SKIP
 
 pkgname = python-did-git

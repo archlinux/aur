@@ -2,11 +2,11 @@
 
 _name=did
 pkgname="python-${_name}-git"
-pkgver=0.21.1.r584.d585e98
+pkgver=0.22.1.r759.64dfd8db
 pkgrel=1
-pkgdesc='What did you do last week, month, year? Patched version for a proper github comments'
+pkgdesc='What did you do last week, month, year?'
 arch=('any')
-url="https://github.com/Felixoid/did"
+url="https://github.com/psss/did"
 makedepends=('python-setuptools' 'git')
 license=('GPL2')
 provides=("python-${_name}")
