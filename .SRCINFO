@@ -1,6 +1,6 @@
 pkgbase = python-pudb-git
 	pkgdesc = A full-screen, console-based Python debugger
-	pkgver = 2025.1.r2.gcd7b90c
+	pkgver = 2025.1.r7.g341c3c0
 	pkgrel = 1
 	url = https://documen.tician.de/pudb/
 	arch = any
@@ -16,7 +16,6 @@ pkgbase = python-pudb-git
 	depends = python-pygments
 	depends = python-urwid
 	depends = python-urwid_readline
-	depends = python-typing_extensions
 	optdepends = bpython: bpython shell
 	optdepends = ptpython: shell based on prompt_toolkit
 	optdepends = ipython: shell embedding IPython

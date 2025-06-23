@@ -3,7 +3,7 @@
 
 pkgname=python-pudb-git
 _pkgname=pudb
-pkgver=2025.1.r2.gcd7b90c
+pkgver=2025.1.r7.g341c3c0
 pkgrel=1
 pkgdesc="A full-screen, console-based Python debugger"
 url="https://documen.tician.de/pudb/"
@@ -18,10 +18,6 @@ depends=(
   'python-pygments'
   'python-urwid'
   'python-urwid_readline'
-
-  # needs to be added to urwid; temporary until that package is fixed
-  # https://gitlab.archlinux.org/archlinux/packaging/packages/python-urwid/-/issues/2
-  'python-typing_extensions'
 )
 makedepends=(
   'git'
