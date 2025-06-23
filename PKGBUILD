@@ -1,0 +1,77 @@
+
+pkgname=chromium-ffmpeg-codecs-git
+_ver=7.1 # 7.2 does not work yet
+pkgver=${_ver}.c136
+pkgrel=1
+pkgdesc='Additional codecs for Chromiums (non vendored ffmpeg)'
+arch=('x86_64')
+url="https://git.ffmpeg.org/ffmpeg"
+license=('GPL-3.0-or-later')
+# Avoid conflicting by manual clone
+source=(https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch)
+sha256sums=('f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
+depends=(glibc zlib
+  opus
+)
+makedepends=(gcc pkgconf diffutils git
+  nasm patch
+)
+conflicts=( opera-{,developer-,beta-}ffmpeg-codecs{,-bin} vivaldi-{,snapshot-}ffmpeg-codecs)
+provides=("${conflicts[@]}")
+
+prepare() {
+  rm -rf ffmpeg
+  git clone --depth=1 --branch release/$_ver ${url}.git
+  cd ffmpeg
+  patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
+}
+
+build() {
+  cd ffmpeg
+  # See https://github.com/chromium/chromium/blob/main/ and build subset of
+  #  allowed_demuxers at media/filters/ffmpeg_glue.cc webm is subset of matroska
+  #  kAllowedAudioCodecs at media/ffmpeg/ffmpeg_common.cc
+  #  GetAllowedVideoDecoders at media/ffmpeg/ffmpeg_common.cc
+  #  Allowed parser?
+  # They are kept for long time. So $pkgname should be usable for any Chromiums...
+
+  ./configure \
+    --enable-gpl \
+    --disable-{all,autodetect,programs,doc,iconv} \
+    --enable-static --disable-shared \
+    --enable-av{format,codec,util} --enable-swresample \
+    --enable-protocol=file \
+    --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
+    --enable-decoder=vorbis,libopus,flac,pcm_u8,pcm_s16le,pcm_s24le,pcm_s32le,pcm_f32le,mp3,pcm_mulaw,pcm_alaw,aac,h264 \
+    --enable-parser=vorbis,flac,aac,opus \
+    --enable-libopus \
+    --prefix="${srcdir}"/release \
+    --enable-pic --enable-asm --enable-lto # https://www.ffmpeg.org/platform.html#toc-Advanced-linking-configuration
+
+  make $MAKEFLAGS
+  make install
+
+  cd ../release
+  gcc -shared ${LDFLAGS//--as-needed/--no-as-needed} \
+    -Wl,--whole-archive \
+      lib/lib{avcodec,avformat,avutil,swresample}.a \
+    -Wl,--no-whole-archive \
+    -lpthread $(pkgconf --libs zlib opus) \
+    -Wl,--no-as-needed -Wl,-Bsymbolic \
+    -o libffmpeg.so
+}
+
+package(){
+  _name=chromium-ffmpeg
+  install -Dm644 release/libffmpeg.so "${pkgdir}/usr/lib/${_name}/libffmpeg.so"
+  for p in "${pkgdir}"/usr/lib/opera{,-developer,-beta}/lib_extra
+  do
+    install -d "$p"
+    ln -svf /usr/lib/${_name}/libffmpeg.so "$p"/libffmpeg.so
+  done
+  install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
+  for n in 7.4 7.5 7.6 7.7 7.8 7.9 8.0; do
+    ln -svf /usr/lib/${_name}/libffmpeg.so "$pkgdir"/opt/vivaldi/libffmpeg.so.$n
+    ln -svf /usr/lib/${_name}/libffmpeg.so "$pkgdir"/opt/vivaldi-snapshot/libffmpeg.so.$n
+  done
+}
