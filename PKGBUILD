@@ -1,7 +1,7 @@
 # Maintainer: Joan Figueras <ffigue at gmail dot com>
 
 pkgname=guacamole-auth-header-bin
-pkgver=1.5.5
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="The HTTP header authentication extension for Guacamole Client"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('guacamole-client')
 source=("https://archive.apache.org/dist/guacamole/${pkgver}/binary/guacamole-auth-header-${pkgver}.tar.gz")
 
-md5sums=('c7372ad439a4abb4e1a915954831a050')
+md5sums=('9a0a02d340f44e67c830caa3bb4cb3dd')
 
 package() {
   cd "${srcdir}/guacamole-auth-header-${pkgver}"
