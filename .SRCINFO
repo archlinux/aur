@@ -1,0 +1,13 @@
+pkgbase = kh-melonmix-extras
+	pkgdesc = this contains all of the extras for Kingdom Hearts Melon Mix, such as cutscenes or audio packs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Brionical27/KHMelonMix-Extras
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = git-lfs
+	depends = kh-melonmix-bin
+	provides = kh-melonmix-extras
+
+pkgname = kh-melonmix-extras
