@@ -2,16 +2,16 @@
 # Contributor: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 _projectname='graphics'
 pkgname="ocaml-$_projectname"
-pkgver='5.1.2'
-pkgrel='3'
+pkgver='5.2.0'
+pkgrel='1'
 pkgdesc='OCaml graphics library'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml/$_projectname"
 license=('LGPL-2.1-only WITH OCaml-LGPL-linking-exception')
-depends=('ocaml>=4.09.0' 'ocaml-compiler-libs' 'dune>=2.1.0' 'libx11' 'pkgconf')
+depends=('ocaml>=4.09.0' 'ocaml-compiler-libs' 'dune>=2.7.0' 'libx11' 'libxft' 'pkgconf')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('b9b75a87a1aaa584a5cae32b8d502fb8ecfb02bd7f887845cfaa3cebae93586fb8aa7bb97a8ed51d5dbee0a469c25528187a8e38a9ac4a29b09680c84c531a1f')
+b2sums=('c4b8d02967593fd3ad3723e8756b0c0684f71525b7876ef595e87270a0c0404461b7d2220b39e509b80f7d6f1c37135bf981d9129d0ea42d8a6a2075abc5ef2b')
 
 _sourcedirectory="$_projectname-$pkgver"
 
