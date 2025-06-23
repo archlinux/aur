@@ -1,0 +1,29 @@
+pkgbase = ue4-docker-git
+	pkgdesc = Windows and Linux containers for Unreal Engine (git version)
+	pkgver = 0.0.116.r0.gabcdef0
+	pkgrel = 1
+	url = https://github.com/adamrehn/ue4-docker
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools>=61
+	depends = python>=3.8
+	depends = python-colorama
+	depends = python-docker>=6.1.0
+	depends = python-humanfriendly
+	depends = python-jinja>=2.11.3
+	depends = python-packaging>=19.1
+	depends = python-psutil
+	depends = python-termcolor
+	depends = docker
+	optdepends = nvidia-container-toolkit: for GPU support in Linux containers
+	optdepends = ue4cli-git: for additional UE4 command-line tools
+	provides = ue4-docker=0.0.116.r0.gabcdef0
+	conflicts = ue4-docker
+	source = ue4-docker-git::git+https://github.com/adamrehn/ue4-docker.git#branch=master
+	sha256sums = SKIP
+
+pkgname = ue4-docker-git
