@@ -1,0 +1,13 @@
+pkgbase = tidytask
+	pkgdesc = A simple CLI tool for managing your to-do list
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/tm-craggs/tidytask
+	arch = x86_64
+	license = GPLv3
+	makedepends = sqlite
+	makedepends = go
+	source = tidytask-1.0.1.tar.gz::https://github.com/tm-craggs/tidytask/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 1d557bea7d4a71ddf9c004217acffee800bede4bdfc137829d96bc32ed46bd96
+
+pkgname = tidytask
