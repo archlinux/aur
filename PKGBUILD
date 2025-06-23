@@ -4,7 +4,7 @@ _gitname="GoZen"
 _godot_version="4.4.1"
 
 pkgname=gozen-git
-pkgver=0
+pkgver=20250623.r150.ge481a06
 pkgrel=2
 pkgdesc="A minimalistic video editor (git)"
 arch=('x86_64')
@@ -120,9 +120,8 @@ package() {
 	# Create a symlink.
 	install -d "${pkgdir}/usr/bin"
 	ln -s "/opt/${pkgname}/GoZen.x86_64" "${pkgdir}/usr/bin/${pkgname}"
-	
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 MANUAL.md "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.md"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "MANUAL.md" "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.md"
 	install -Dm644 "gozen.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -Dm644 "assets/gozen_icon.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
 	install -Dm644 "assets/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
