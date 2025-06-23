@@ -2,7 +2,7 @@
 _appname="youtube music for desktop"
 pkgname="${_appname// /-}-bin"
 _pkgname=YouTube-Music-for-Desktop
-pkgver=0.17.3
+pkgver=0.17.5
 _electronversion=33
 pkgrel=1
 pkgdesc="Unofficial Youtube Music Desktop App, with LastFM support.(Prebuilt version.Use system-wide electron)"
@@ -29,8 +29,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
-sha256sums_aarch64=('409c1a6e13bc6b2ff4d5f1c6b308cb265bf083c068e9d3c3d0fa3b4f10a1f043')
-sha256sums_x86_64=('8c5e26d80ef0e5895509c86b80461baebf067bff549265db632b05326a8c456e')
+sha256sums_aarch64=('f31fb588f6d5c55596fabf450b385bd646b8e7d1dd9d5eb0372e2a2e55024b5a')
+sha256sums_x86_64=('6659771590972efb50dad0f8e71d09714fb06e77cd9131180ae36216b562b68f')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/squashfs-root/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
