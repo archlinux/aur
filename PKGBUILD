@@ -3,7 +3,7 @@
 pkgname=danser-bin
 url="https://github.com/Wieku/danser-go"
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dancing visualizer of osu! maps and custom osu! client written in Go."
 arch=('x86_64')
 license=('GPL3')
