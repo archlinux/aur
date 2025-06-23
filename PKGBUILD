@@ -4,7 +4,7 @@
 pkgname=pdf2htmlex
 _p2hname=pdf2htmlEX
 pkgver=0.18.8.rc1
-pkgrel=2
+pkgrel=3
 _popplerver=0.89.0
 _popplerurl="https://poppler.freedesktop.org/poppler"
 _popplerdataver=0.4.9
@@ -62,17 +62,17 @@ prepare() {
 build() {
 	cd "$_p2hname-$pkgver/poppler/build/"
 	# ignore the commented flags using grep
-	cmake $(grep -v "^#" ${srcdir}/popplerFlags) ..
+	cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 $(grep -v "^#" ${srcdir}/popplerFlags) ..
 	make
 	cd ../../
 
 	cd "fontforge/build/"
-	cmake $(grep -v "^#" ${srcdir}/fontforgeFlags) ..
+	cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 $(grep -v "^#" ${srcdir}/fontforgeFlags) ..
 	make
 	cd ../../
 
 	cd "pdf2htmlEX/build/"
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
+	cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
 
