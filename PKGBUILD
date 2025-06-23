@@ -3,7 +3,7 @@
 pkgname=wlroots-0.19-mao-git
 pkgver=0.19.0
 pkgrel=1
-pkgdesc='Modular Wayland compositor library (0.19.0 version)'
+pkgdesc='Modular Wayland compositor library (0.19.0 version with fixed patch)'
 arch=(x86_64)
 url=https://github.com/DreamMaoMao/wlroots
 license=(MIT)
