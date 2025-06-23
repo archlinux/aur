@@ -2,21 +2,29 @@
 
 pkgname=python-lazrs
 pkgdesc="Python bindings for laz-rs (LAZ compression)"
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 url='https://github.com/laz-rs/laz-rs-python'
 arch=('x86_64')
 license=('MIT')
 
-depends=('gcc-libs' 'glibc' 'python')
-makedepends=('python-build' 'python-installer' 'python-maturin')
+depends=(
+  'gcc-libs'
+  'glibc'
+  'python'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-maturin'
+)
 
 _pypi=lazrs
 source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  'ccdb0fcde74e6c6377badbd895a5ee5d2bb23c3c3d04c45486033c12ae1685e3'
+  '53191b351c1d9fa45f74471698384bf42bde14599309645fb9d4c353f0fb7f24'
 )
 
 build() {
@@ -26,6 +34,7 @@ build() {
 
 check() {
   cd "$_pypi-$pkgver"
+  rm -rf test-env
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer "dist/$_pypi-$pkgver-"*.whl
   test-env/bin/python -c 'import lazrs'
