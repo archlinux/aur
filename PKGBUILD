@@ -2,7 +2,7 @@
 _appname="youtube music for desktop"
 pkgname="${_appname// /-}-bin"
 _pkgname=YouTube-Music-for-Desktop
-pkgver=0.17.0
+pkgver=0.17.3
 _electronversion=33
 pkgrel=1
 pkgdesc="Unofficial Youtube Music Desktop App, with LastFM support.(Prebuilt version.Use system-wide electron)"
@@ -28,9 +28,13 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('bd4f4ed7c5b135bc4b0fdbca0fedf943635cdb1a548002cb2dcfb9ac9bb55524')
-sha256sums_x86_64=('d511917e1750cd6856ee29a952000bf52d1be92846b9da9526d8243b984bc26f')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums_aarch64=('409c1a6e13bc6b2ff4d5f1c6b308cb265bf083c068e9d3c3d0fa3b4f10a1f043')
+sha256sums_x86_64=('8c5e26d80ef0e5895509c86b80461baebf067bff549265db632b05326a8c456e')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/squashfs-root/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -43,6 +47,7 @@ prepare() {
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/bufferutil/prebuilds/"{darwin-*,win32-*}
     rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/utf-8-validate/prebuilds/"{darwin-*,win32-*}
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
