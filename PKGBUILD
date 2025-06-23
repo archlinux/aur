@@ -3,8 +3,8 @@
 # Maintainer: Denis Proskurin <dpvpro [AT] gmail [dot.] com>
 
 pkgname=dms
-pkgver=1.7.1
-pkgrel=3
+pkgver=1.7.2
+pkgrel=1
 pkgdesc="UPnP DLNA Digital Media Server"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/anacrolix/dms/"
@@ -12,13 +12,13 @@ license=(BSD)
 depends=(glibc)
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/anacrolix/dms/archive/v${pkgver}.tar.gz")
-sha256sums=('dfcec174db95d8115be61d318896ab11fddd4ab1d93fd9d2b2c75012af95f793')
+sha256sums=('696f49409e4b079ca76ed0b836134f5d34558027ca1346b4d224353151def0d9')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # I comment export local GOPATH. It will be used common GOPATH for modcache.
-  # Use "go clean -modcache" for cleaning 
+  # Use "go clean -modcache" for cleaning local modules
   # export GOPATH="$SRCDEST/go-modules"
 
   go build \
