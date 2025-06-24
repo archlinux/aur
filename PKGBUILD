@@ -37,7 +37,7 @@ build() {
 
   ./configure \
     --enable-gpl \
-    --disable-{all,autodetect,programs,doc,iconv} \
+    --disable-{all,autodetect,programs,doc,iconv,network} \
     --enable-static --disable-shared \
     --enable-av{format,codec,util} --enable-swresample \
     --enable-protocol=file \
@@ -46,7 +46,7 @@ build() {
     --enable-parser=vorbis,flac,mp3,aac,opus,mov \
     --enable-libopus \
     --prefix="${srcdir}"/release \
-    --enable-pic --enable-asm --enable-lto # https://www.ffmpeg.org/platform.html#toc-Advanced-linking-configuration
+    --enable-{pic,asm,lto} # https://www.ffmpeg.org/platform.html#toc-Advanced-linking-configuration
 
   make $MAKEFLAGS
   make install
