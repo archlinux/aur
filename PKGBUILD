@@ -1,15 +1,15 @@
 pkgname=bluesky
 _pkgname=Bluesky
-pkgver=1.0.3.aurpatch
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Unofficial bluesky desktop application"
 arch=('x86_64' 'aarch64')
-url=https://gitlab.com/linuxbombay/bluesky
+url="https://gitlab.com/linuxbombay/bluesky"
 license=('GPL')
-depends=('libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
+depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('06893f338e1d7aa44d0d784a8ae283229b3c668f31d9dd1f731717fd7d84972a')
+sha256sums=('ae58bfc64ed679ac2ec01c86d04a96242399ad905f95e64bb41b5e50f73b9cb7')
 
 package() {
     cd "$srcdir/application-$pkgver"
@@ -22,7 +22,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
+    ln -s /usr/bin/libelectronmeta "$pkgdir/opt/$_pkgname/electron"
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
