@@ -1,0 +1,12 @@
+--- src/rmm-25.06.00/cpp/CMakeLists.txt	2025-06-05 23:28:03.000000000 +0800
++++ src/rmm-25.06.00/cpp/CMakeLists.txt.new	2025-06-22 19:57:43.644181004 +0800
+@@ -78,7 +78,7 @@
+ create_logger_macros(RMM "rmm::default_logger()" include/rmm)
+ 
+-include(cmake/thirdparty/get_cccl.cmake)
+-include(cmake/thirdparty/get_nvtx.cmake)
++find_package(nvtx3 REQUIRED)
++find_package(cccl REQUIRED)
+ 
+ # ##################################################################################################
+ # * library targets --------------------------------------------------------------------------------
