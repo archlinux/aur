@@ -7,9 +7,9 @@ _projectname=electron
 _major=37
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_subver='0.0-beta.9'
+_subver='0.0'
 _pkgver="${_major}.${_subver}"
-pkgver="${_pkgver/-}"
+pkgver="${_pkgver}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
 arch=(
@@ -45,23 +45,23 @@ noextract=(
     "${_pkgname}-${pkgver}-${CARCH}.zip"
 )
 source_aarch64=(
-    "${_pkgname}-chromedriver-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/chromedriver-v${_pkgver//_/-}-linux-arm64.zip"
-    "${_pkgname}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-arm64.zip"
+    "${_pkgname}-chromedriver-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-arm64.zip"
+    "${_pkgname}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-arm64.zip"
 )
 source_armv7h=(
-    "${_pkgname}-chromedriver-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/chromedriver-v${_pkgver//_/-}-linux-armv7l.zip"
-    "${_pkgname}-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-armv7l.zip"
+    "${_pkgname}-chromedriver-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-armv7l.zip"
+    "${_pkgname}-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-armv7l.zip"
 )
 source_x86_64=(
-    "${_pkgname}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/chromedriver-v${_pkgver//_/-}-linux-x64.zip"
-    "${_pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-x64.zip"
+    "${_pkgname}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-x64.zip"
+    "${_pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-x64.zip"
 )
-sha256sums_aarch64=('d49f374db9b625d53111164027c5b2fa5c97b22e7671a1729da5ef62ffd28403'
-                    '260aa8c024425697c41f6a72e5111b1c2d120cc6eba57fe58ba31d4cf2c65fde')
-sha256sums_armv7h=('366a35af09253a552447a210f938c50cb7ad31711a9e6f16b5b85bdbfccf2a8c'
-                   '95053a7f9f479649eabeb49777b668b4f8cffe743bf66cf04c0a04cbd331a7f4')
-sha256sums_x86_64=('6282227c9500145ade656179bbfa930a99e857ca50ac7d8a74a895540b30883d'
-                   '8081c2d9d2aeb8edecef86b0ecf9ef52795435da070c6a6c32a464f3f4d2ce43')
+sha256sums_aarch64=('e6f25dfe9ce839355be9a42db99ceede8004e52dbfd9bd0f885afffbc3f37854'
+                    '1d5a400caad300ba68e4f93a817bff9c9abc2e26af6ca8fe7026b80538f537eb')
+sha256sums_armv7h=('2906088bc7a6dc0eff790da9467ffc2e0a4b888703c273946c71811bc43fcedd'
+                   '3b735d2847c84336fafb9db0708ca07624e986fcdb2677155368dcf74e0800bb')
+sha256sums_x86_64=('36cd19b4b51105b6cdd48b0bb1e54ee90f00143e589b2d3deb88222502690529'
+                   'ea9640d96ef709feeea32c138c7ea52ad63091265fa28468d7b52b4fe6dc4bd4')
 prepare() {
     install -Dm755 -d "${srcdir}/${_pkgname}"
     bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
