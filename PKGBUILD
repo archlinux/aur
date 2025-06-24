@@ -74,5 +74,5 @@ package(){
     ln -sf /usr/lib/${_name}/libffmpeg.so "$pkgdir"/opt/vivaldi/libffmpeg.so.$n
     ln -sf /usr/lib/${_name}/libffmpeg.so "$pkgdir"/opt/vivaldi-snapshot/libffmpeg.so.$n
   done
-  echo Warning: 'opera-* needs to replace /usr/lib/libffmpeg.so directly instead of using lib_extra by unknown reason (dlopen-ed?)'.
+  echo Warning: 'opera-* needs to replace /usr/lib/opera/libffmpeg.so directly instead of using opera/lib_extra'.
 }
