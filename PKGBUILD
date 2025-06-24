@@ -4,7 +4,7 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn
-pkgver=2025.6
+pkgver=2025.7
 pkgrel=1
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop"
@@ -35,7 +35,7 @@ source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
         'no-rpm.diff'
         'no-publish.diff'
         "$pkgname.sh")
-sha256sums=('f6597965886681b842c6522706ff69547c4cd27752afa62bc75fadea13c9e23c'
+sha256sums=('62b2a243d5fd6ca73dd20d25b59cd066322133a007298e6bb2ac222e6c81710d'
             'SKIP'
             'SKIP'
             '5773f4ea5b7e0db8340e0614d1b027237cb827a5db135ee633d491c271a7e499'
@@ -81,10 +81,11 @@ prepare() {
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   pushd "desktop/packages/$pkgname"
-  echo "Installing JavaScript dependencies..."
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
+
+  echo "Installing JavaScript dependencies..."
   npm ci --no-audit --no-fund
   popd
 }
