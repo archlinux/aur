@@ -6,6 +6,7 @@ pkgbase = xdelta
 	arch = x86_64
 	arch = i686
 	license = GPL-2.0-or-later
+	makedepends = gcc14
 	depends = glib
 	depends = zlib
 	options = !libtool
