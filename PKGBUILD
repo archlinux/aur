@@ -2,7 +2,7 @@
 
 pkgname=high-tide
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux client for TIDAL streaming service"
 url="https://github.com/Nokse22/high-tide"
 arch=(any)
@@ -16,6 +16,7 @@ depends=(
   gtk4
   hicolor-icon-theme
   libadwaita
+  libportal
   libsecret
   python
   python-gobject

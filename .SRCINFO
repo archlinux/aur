@@ -1,7 +1,7 @@
 pkgbase = high-tide
 	pkgdesc = Linux client for TIDAL streaming service
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nokse22/high-tide
 	arch = any
 	license = GPL-3.0-or-later
@@ -15,6 +15,7 @@ pkgbase = high-tide
 	depends = gtk4
 	depends = hicolor-icon-theme
 	depends = libadwaita
+	depends = libportal
 	depends = libsecret
 	depends = python
 	depends = python-gobject
