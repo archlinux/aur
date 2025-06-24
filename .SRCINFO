@@ -1,7 +1,7 @@
 pkgbase = ffnightman-git
 	pkgdesc = Siemens filesystem extractor.
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/siemens-mobile-hacks/ffnightman
 	arch = any
 	license = MIT
