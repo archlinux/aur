@@ -1,7 +1,7 @@
 # Maintainer: Emil Edholm <bobby @ verypublic.org>
 
 pkgname=mcap-cli-bin
-pkgver=0.0.38
+pkgver=0.0.53
 pkgrel=1
 pkgdesc='MCAP is a modular container format and logging library for pub/sub messages with arbitrary message serialization.'
 arch=('x86_64')
@@ -12,15 +12,14 @@ optdepends=()
 conflicts=('mcap-cli')
 provides=('mcap-cli')
 
-source=("${pkgname}-${pkgver}-x86_64::https://github.com/foxglove/mcap/releases/download/releases%2Fmcap-cli%2Fv${pkgver}/mcap-linux-amd64")
-sha512sums=('9d21361ce3ad8cacb1433f9140f0ae26afdd1fe71b04baca0b8a6ff57806dc108bcd76f3292f108b8a8f4b33a905b6b28eb7c5cd875ddce384badc6bd270c74b')
+source=("${pkgname}-${pkgver}-${arch}::https://github.com/foxglove/mcap/releases/download/releases%2Fmcap-cli%2Fv${pkgver}/mcap-linux-amd64")
+sha256sums=('0698e4f4d28a05d887acf9c19dd0518a921d0ec5c18b9b66108998306517c24d')
 
 #prepare() {
 #}
 
 package() {
-    cd "${srcdir}"
-
-    mkdir -p "${pkgdir}/usr/bin"
-    install -D -m755 ${pkgname}-${pkgver}-x86_64 ${pkgdir}/usr/bin/mcap-cli
+  cd "$srcdir"
+  mkdir -p "$pkgdir/usr/bin"
+  install -D -m755 "$pkgname-$pkgver-${arch}" "$pkgdir"/usr/bin/mcap
 }
