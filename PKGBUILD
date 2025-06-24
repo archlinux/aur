@@ -3,8 +3,8 @@
 
 _pkgname=cvrx
 pkgname=${_pkgname}-appimage
-pkgver=1.0.5
-pkgrel=1
+pkgver=1.0.6
+pkgrel=2
 pkgdesc='A standalone companion app for ChilloutVR that expands the user experience! (binary AppImage version)'
 arch=('x86_64')
 url='https://github.com/AstroDogeDX/CVRX'
