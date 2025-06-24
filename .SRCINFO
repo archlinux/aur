@@ -1,6 +1,6 @@
 pkgbase = python-amulet-compiler-target
 	pkgdesc = A token library to pin compile-time requirements
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/Amulet-Team/Amulet-Compiler-Target
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-amulet-compiler-target
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	source = git+https://github.com/Amulet-Team/Amulet-Compiler-Target.git#tag=1.0
-	md5sums = 83b02b55e3831dd6e738857e1fca7a23
+	source = git+https://github.com/Amulet-Team/Amulet-Compiler-Target.git#tag=2.0
+	md5sums = 85c55ed1c7f26ac0f4c0fba47f1e42e2
 
 pkgname = python-amulet-compiler-target
