@@ -1,0 +1,12 @@
+--- src/cudf-25.06.00/python/cudf/CMakeLists.txt	2025-06-06 01:31:26.000000000 +0800
++++ src/cudf-25.06.00/python/cudf/CMakeLists.txt.new	2025-06-23 12:25:51.176559778 +0800
+@@ -25,6 +25,9 @@
+ )
+ 
+ find_package(cudf "${RAPIDS_VERSION}" REQUIRED)
++find_package(rmm REQUIRED)
++find_package(nvtx3 REQUIRED)
++find_package(rapids_logger REQUIRED)
+ 
+ include(rapids-cython-core)
+ rapids_cython_init()
