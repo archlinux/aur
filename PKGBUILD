@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chaterm-git
 _pkgname=Chaterm
-pkgver=0.0.5.r5.ga2d44a4
-_electronversion=28
+pkgver=0.0.10.r0.g15cc21f
+_electronversion=30
 _nodeversion=22
 pkgrel=1
 pkgdesc="A terminal tool with AI Agent, makes you no need to learn complicated regular expressions, Perl and Python, switches and Linux commands, SQL syntax can easily manage thousands of devices!(Use system-wide electron)"
