@@ -8,7 +8,9 @@ post_install() {
 }
 
 post_remove() {
+  sv stop nordlayerd
   rm -f /run/runit/service/nordlayerd
   rm -fr /etc/runit/sv/nordlayerd
+  rm -f /run/nordlayer/nordlayer.sock
 }
 
