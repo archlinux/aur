@@ -6,9 +6,9 @@ url="https://github.com/elespike/mdit_plain"
 license=(MIT)
 arch=(any)
 pkgver=r2.218934e
-pkgrel=1
-makedepends=(python-setuptools python-versioneer git)
-depends=(python python-portalocker python-leveldb)
+pkgrel=2
+makedepends=(python-build python-installer python-wheel python-setuptools git)
+depends=(python)
 source=(
 	"git+https://github.com/elespike/mdit_plain.git"
 )
@@ -16,7 +16,6 @@ md5sums=(
 	"SKIP"
 )
 provides=(python-mdlt_plain)
-conflicts=(python-mdlt_plain)
 
 function pkgver() {
 	cd "${srcdir}/mdit_plain"
