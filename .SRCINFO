@@ -1,0 +1,14 @@
+pkgbase = python-nvtx
+	pkgdesc = Python NVTX - Python code annotation library
+	pkgver = 0.2.12
+	pkgrel = 1
+	url = https://github.com/NVIDIA/NVTX
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	depends = python
+	depends = cython
+	source = https://files.pythonhosted.org/packages/source/n/nvtx/nvtx-0.2.12.tar.gz
+	sha256sums = b871fae9b80b004e624b5755291799794287016fa6a0c8fd0fb3255393ae3bc8
+
+pkgname = python-nvtx
