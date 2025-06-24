@@ -3,7 +3,7 @@
 
 pkgname=awsm-bin
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast command-line tool to manage your AWS profiles, sessions, and console access with ease'
 arch=('x86_64')
 url="https://github.com/AleG03/awsm"
