@@ -1,7 +1,7 @@
 # Maintainer: Kirill Zhumarin <kirill.zhumarin@gmail.com>
 pkgname=libffshit-git
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Siemens filesystem library.'
 arch=(any)
 url='https://github.com/siemens-mobile-hacks/libffshit'
