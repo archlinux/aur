@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=directlabels
-_pkgver=2025.5.20
+_pkgver=2025.6.24
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e162f73ef19826b83318f2cc138611b4')
-b2sums=('6ea83870728c844878eb73d744a5013eb0d998d685a817fb44d53a92921773e9eff3285d5b48183670ce51663570ca52ef2a69c907854b29c50705e7a0d18e49')
+md5sums=('17ba0a577d63b0372fc1f9f9ea4b72fa')
+b2sums=('8a3cde14235de9fa4c17c373f39e27f88cf945f6df61746fe5aa8d792aadf8e6cb7f3ad0e1636b11556e8bf9ef73909d03fa020ede6bb39c15f38e52ccd96bd5')
 
 build() {
   mkdir build
