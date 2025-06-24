@@ -2,7 +2,7 @@
 _appname=ooniprobe
 pkgname="${_appname}-desktop-bin"
 _pkgname=OONI-Probe
-pkgver=3.9.9
+pkgver=3.10.0
 _electronversion=12
 pkgrel=1
 pkgdesc="The next generation OONI Probe desktop app.(Prebuilt version.Use system-wide electron)"
@@ -19,13 +19,17 @@ makedepends=(
     'asar'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/ooni/probe-desktop/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e8ad248ce620b60bb0fe01e367b3b8818e62bb9da6c707658cb0b70a630900b2'
+sha256sums=('232076368ecb2064ca3aceabd8dce1dc0f5f14a78f8725714e39fad1385f08db'
             '1fc3f6a8bf2909bfaad6d6f4825c8e8b6dfed17e3b5270a9fd060d6de7938f8d'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -34,10 +38,11 @@ prepare() {
         s/@cfgdirname@/${_pkgname//-/ }/g
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed -i "s/path.dirname(appPath)/\'\/usr\/lib\/${pkgname%-bin}\'/g" "${srcdir}/app.asar.unpacked/main/utils/paths.js"
