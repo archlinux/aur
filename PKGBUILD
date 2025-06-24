@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=oba-live-tool-git
-pkgver=1.5.7.r0.g2a2e760
+pkgver=1.5.9.r0.g6c9ec63
 _electronversion=36
 _nodeversion=22
 pkgrel=1
