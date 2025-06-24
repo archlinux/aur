@@ -1,5 +1,5 @@
 # Maintainer: pusi77 <pusineriandrea+gmail+com>
-# Contributor pusi77-robot <pusineriandrea+gmail+com>
+# Contributor: pusi77-robot <pusineriandrea+gmail+com>
 
 pkgname=awsm-bin
 pkgver=1.1.2
