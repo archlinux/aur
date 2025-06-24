@@ -1,0 +1,13 @@
+--- tools.c     2025/06/18 08:44:47     5.17
++++ tools.c     2025/06/23 09:17:48
+@@ -1585,6 +1585,8 @@
+ bool cPoller::Poll(int TimeoutMs)
+ {
+   if (numFileHandles) {
+-     if (poll(pfd, numFileHandles, max(TimeoutMs, 3)) != 0) // can't let it be 0, otherwise poll() returns immediately, even if no file descriptors are ready
++     if (TimeoutMs == 0)
++        TimeoutMs = 1; // can't let it be 0, otherwise poll() returns immediately, even if no file descriptors are ready
++     if (poll(pfd, numFileHandles, TimeoutMs) != 0)
+         return true; // returns true even in case of an error, to let the caller
+                      // access the file and thus see the error code
+      }
