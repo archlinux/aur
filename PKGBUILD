@@ -1,13 +1,13 @@
 # Maintainer: Larry Oates <leafman12345@gmail.com>
 pkgname=doomfire-wallpaper
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="DOOM-style animated fire wallpaper for Hyprpaper"
 arch=('x86_64')
 url="https://github.com/Leafmun-certii/doom_fire_wallpaper"
 giturl="https://github.com/Leafmun-certii/doom_fire_wallpaper"
 license=('0BSD')
-depends=('hyprpaper' 'grim' 'rust' 'cargo')
+depends=('hyprpaper' 'grim')
 makedepends=('git' 'cargo')
 source=("doom_fire_wallpaper::git+$giturl")
 md5sums=('SKIP')
@@ -23,10 +23,5 @@ package() {
   install -Dm755 "target/release/doom-fire-wallpaper" "$pkgdir/usr/bin/doom-fire-wallpaper"
   install -Dm755 "dfpaper" "$pkgdir/usr/bin/dfpaper"
   install -Dm644 "README.MD" "$pkgdir/usr/share/doc/doomfire-wallpaper/README.MD"
-  install -Dm644 LICENSE \"$pkgdir/usr/share/licenses/$pkgname/LICENSE\"
-}
-
-post_install() {
-  echo "==> To finish setup, run: dfpaper setup"
-  echo "==> This will create a config.toml a and systemd service then start the wallpaper service"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
