@@ -1,24 +1,3 @@
---- a/browser/base/content/browser.js
-+++ b/browser/base/content/browser.js
-@@ -6466,11 +6466,18 @@ function onViewToolbarsPopupShowing(aEve
-   MozXULElement.insertFTLIfNeeded("browser/toolbarContextMenu.ftl");
-   let firstMenuItem = aInsertPoint || popup.firstElementChild;
-   let toolbarNodes = gNavToolbox.querySelectorAll("toolbar");
-+
-+  let shellShowingMenubar = document.documentElement.getAttribute("shellshowingmenubar") == "true";
-+
-   for (let toolbar of toolbarNodes) {
-     if (!toolbar.hasAttribute("toolbarname")) {
-       continue;
-     }
- 
-+    if (shellShowingMenubar && toolbar.id == "toolbar-menubar") {
-+      continue;
-+    }
-+
-     if (toolbar.id == "PersonalToolbar") {
-       let menu = BookmarkingUI.buildBookmarksToolbarSubmenu(toolbar);
-       popup.insertBefore(menu, firstMenuItem);
 --- a/browser/components/places/content/places.xhtml
 +++ b/browser/components/places/content/places.xhtml
 @@ -186,7 +186,7 @@
@@ -182,7 +161,7 @@
 +            return NS_ERROR_FAILURE; \
 +        } \
 +    } \
-+    for (uint32_t i = 0; i < mozilla::ArrayLength(k##symbol##Symbols); ++i) { \
++    for (uint32_t i = 0; i < std::size(k##symbol##Symbols); ++i) { \
 +        *k##symbol##Symbols[i].function = \
 +            PR_FindFunctionSymbol(g##symbol, k##symbol##Symbols[i].functionName); \
 +        if (!*k##symbol##Symbols[i].function) { \
@@ -2344,7 +2323,7 @@
 +
 +    uint32_t keyNameLength = keyName.Length();
 +    const char* keyNameStr = keyName.get();
-+    for (uint16_t i = 0; i < ArrayLength(gKeyCodes); ++i) {
++    for (uint16_t i = 0; i < std::size(gKeyCodes); ++i) {
 +        if (keyNameLength == gKeyCodes[i].strlength &&
 +            !nsCRT::strcmp(gKeyCodes[i].str, keyNameStr)) {
 +            keyCode = gKeyCodes[i].keycode;
@@ -2422,7 +2401,7 @@
 +    }
 +
 +    // misc other things
-+    for (uint32_t i = 0; i < ArrayLength(gKeyPairs); ++i) {
++    for (uint32_t i = 0; i < std::size(gKeyPairs); ++i) {
 +        if (gKeyPairs[i].DOMKeyCode == keyCode) {
 +            return gKeyPairs[i].GDKKeyval;
 +        }
@@ -3945,7 +3924,7 @@
 +#endif /* __nsMenuSeparator_h__ */
 --- /dev/null
 +++ b/widget/gtk/nsNativeMenuDocListener.cpp
-@@ -0,0 +1,347 @@
+@@ -0,0 +1,346 @@
 +/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 +/* vim:expandtab:shiftwidth=4:tabstop=4:
 + */
@@ -4065,8 +4044,7 @@
 +}
 +
 +void
-+nsNativeMenuDocListener::ContentRemoved(nsIContent *aChild,
-+                                        nsIContent *aPreviousSibling)
++nsNativeMenuDocListener::ContentWillBeRemoved(nsIContent* aChild, const BatchRemovalState*)
 +{
 +    nsIContent* container = aChild->GetParent();
 +    if (!container) {
@@ -5183,7 +5161,7 @@
      "ColorScheme.h",
 --- /dev/null
 +++ b/widget/nsINativeMenuService.h
-@@ -0,0 +1,39 @@
+@@ -0,0 +1,38 @@
 +/* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 +/* This Source Code Form is subject to the terms of the Mozilla Public
 + * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5212,7 +5190,7 @@
 +
 +class nsINativeMenuService : public nsISupports {
 + public:
-+  NS_DECLARE_STATIC_IID_ACCESSOR(NS_INATIVEMENUSERVICE_IID)
++  NS_INLINE_DECL_STATIC_IID(NS_INATIVEMENUSERVICE_IID)
 +  // Given a top-level window widget and a menu bar DOM node, sets up native
 +  // menus. Once created, native menus are controlled via the DOM, including
 +  // destruction.
@@ -5220,7 +5198,6 @@
 +                                 mozilla::dom::Element* aMenuBarNode) = 0;
 +};
 +
-+NS_DEFINE_STATIC_IID_ACCESSOR(nsINativeMenuService, NS_INATIVEMENUSERVICE_IID)
 +
 +#endif  // nsINativeMenuService_h_
 --- a/widget/nsWidgetsCID.h

@@ -4,12 +4,15 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
+_SCCACHE=${_SCCACHE:-}
+
+_ff_dev=${_ff_dev:-}
 _ff_displayname=FirefoxESR
 _ff_theme=official
 
 _pkgname=firefox-esr
 pkgname=firefox-esr-globalmenu
-pkgver=128.11.0
+pkgver=140.0
 pkgrel=1
 _ff_srcname="firefox-$pkgver"
 pkgdesc="Fast, Private & Safe Web Browser, Extended Support Release. (with appmenu patch)"
@@ -27,6 +30,7 @@ depends=(
 	libxss
 	libxt
 	mime-types
+	nspr
 	nss
 	ttf-font)
 makedepends=(
@@ -34,7 +38,6 @@ makedepends=(
 	clang
 	diffutils
 	imake
-	inetutils
 	jack
 	lld
 	llvm
@@ -63,10 +66,13 @@ options=(
 	!makeflags)
 source=(
 	"https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"{,.asc}
+	"firefox.desktop::https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/140.0-1/firefox.desktop?ref_type=tags"
+	"org.mozilla.firefox.metainfo.xml::https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/140.0-1/org.mozilla.firefox.metainfo.xml?ref_type=tags"
+	"0001-Install-under-remoting-name.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/140.0-1/0001-Install-under-remoting-name.patch" # Make different channels installable in parallel
 	"unity-menubar.patch")
 validpgpkeys=(
 	# Mozilla Software Releases <release@mozilla.com>
-	# https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
+	# https://blog.mozilla.org/security/2025/04/01/updated-gpg-key-for-signing-firefox-releases-2/
 	'14F26682D0916CDD81E37B6D61B7B526D98F0353')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -92,6 +98,12 @@ prepare() {
 
 	echo -n "$_google_api_key" >google-api-key
 
+	cat >browser/branding/$_ff_theme/configure.sh <<-END
+		MOZ_APP_DISPLAYNAME=$_ff_displayname
+		#MOZ_APP_PROFILE="mozilla/$_pkgname"
+		MOZ_APP_REMOTINGNAME=$_pkgname
+	END
+
 	cat >../mozconfig <<-END
 		ac_add_options --enable-application=browser
 		mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
@@ -103,7 +115,6 @@ prepare() {
 		ac_add_options --enable-rust-simd
 		ac_add_options --enable-linker=lld
 		ac_add_options --disable-install-strip
-		ac_add_options --disable-elf-hack
 		ac_add_options --disable-bootstrap
 		ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
@@ -112,9 +123,6 @@ prepare() {
 		ac_add_options --enable-update-channel=esr
 		ac_add_options --with-distribution-id=org.archlinux
 		ac_add_options --with-app-name=$_pkgname
-		export MOZILLA_OFFICIAL=1
-		export MOZ_APP_REMOTINGNAME=$_pkgname
-		export MOZ_APP_PROFILE="mozilla/$_pkgname"
 
 		# Keys
 		ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
@@ -141,6 +149,11 @@ if [[ -n $_SCCACHE ]]; then
 	echo 'ac_add_options --with-ccache=sccache' >> ../mozconfig
 fi
 
+if [[ -n $_ff_dev ]]; then
+	echo 'export MOZ_DEV_EDITION=1' >> ../mozconfig
+	echo 'MOZ_DEV_EDITION=1' >> browser/branding/$_ff_theme/configure.sh
+fi
+
 if [[ $_ff_theme == 'official' ]]; then
 	echo 'ac_add_options --enable-official-branding' >> ../mozconfig
 fi
@@ -149,12 +162,15 @@ fi
 build() {
 	cd "$_ff_srcname"
 
-	export RUSTUP_TOOLCHAIN=1.78
+	export RUSTUP_TOOLCHAIN=1.82
 	export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
 	export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
 	export MOZ_NOSPAM=1
 	MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
 	export MOZ_BUILD_DATE
+
+	# Work around https://bugzilla.mozilla.org/show_bug.cgi?id=1969383
+	export RUST_MIN_STACK=16777216
 
 	# malloc_usable_size is used in various parts of the codebase
 	CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
@@ -242,13 +258,8 @@ package() {
 
 	install -Dvm644 browser/branding/$_ff_theme/content/about-logo.svg \
 		"$pkgdir/usr/share/icons/hicolor/scalable/apps/$desktopid.svg"
-	install -Dvm644 taskcluster/docker/firefox-flatpak/firefox-symbolic.svg \
+	install -Dvm644 devtools/client/themes/images/browsers/firefox.svg \
 		"$pkgdir/usr/share/icons/hicolor/symbolic/apps/$desktopid-symbolic.svg"
-
-	# Use system certificates
-	if [[ -e $nssckbi ]]; then
-		ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
-	fi
 
 	# Search Providers
 	install -Dvm644 /dev/stdin \
@@ -266,10 +277,11 @@ package() {
 
 	# Metainfo
 	install -Dvm644 /dev/stdin "$pkgdir/usr/share/metainfo/$desktopid.metainfo.xml" < <(\
-		VERSION=$pkgver DATE=$(date +%Y-%m-%d) envsubst < <(\
-			sed -e "s|org.mozilla.firefox|$desktopid|g" \
-				-e "s|<name>Firefox</name>|<name>$_ff_displayname</name>|" \
-				taskcluster/docker/firefox-flatpak/org.mozilla.firefox.appdata.xml.in)\
+		sed -e "s|org.mozilla.firefox|$desktopid|g" \
+			-e "s|firefox.desktop|$desktopid.desktop|" \
+			-e "s|<name>Firefox</name>|<name>$_ff_displayname</name>|" \
+			-e "s|<binary>firefox</binary>|<binary>$_pkgname</binary>|" \
+			"${srcdir}/org.mozilla.firefox.metainfo.xml"\
 	)
 
 	# Install a launcher for set necessary environment variable
@@ -283,11 +295,11 @@ package() {
 
 	# Desktop
 	install -Dvm755 /dev/stdin "$pkgdir/usr/share/applications/$desktopid.desktop" < <(\
-		sed -e "/^Name.*=/s|Firefox|$_ff_displayname|g" \
-			-e "s|Exec=firefox|Exec=/usr/bin/$_pkgname|g" \
-			-e "s|Icon=org\.mozilla\.firefox|Icon=$desktopid|g" \
-			-e "s|StartupWMClass=firefox|StartupWMClass=$_pkgname|" \
-			taskcluster/docker/firefox-flatpak/org.mozilla.firefox.desktop\
+		sed -e "/^Name.*=/s|Firefox.*|$_ff_displayname|g" \
+			-e "/^Exec=/s|=[^ ]* |=/usr/bin/$_pkgname |g" \
+			-e "s|Icon=.*\$|Icon=$desktopid|" \
+			-e "s|StartupWMClass=.*\$|StartupWMClass=$_pkgname|" \
+			"${srcdir}/firefox.desktop"\
 	)
 
 	# Replace duplicate binary with link
@@ -295,8 +307,11 @@ package() {
 	ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 }
 
-sha1sums=('bc256cbf8480d440751a1263732186ec503ca8c6'
+sha1sums=('59b0a8ddaca40e5fa833948ee4c05a93991a0b40'
           'SKIP'
-          '68ab2ba970bed5a147043d0bd2ac21b68f766fb1')
+          'fd476d7629735558091bf95aa75df967f5182bee'
+          '7e6e0e586eca89591ab2f32f4d76cb6ccd59f57c'
+          '6f25eb98ee8905d88a7e480018b2d80bd27bad76'
+          '52d2c2d3b48c1daf6cbd3d50bd525d3c959df359')
 
 # vim:set sw=2 sts=-1 et:

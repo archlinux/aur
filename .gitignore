@@ -5,3 +5,5 @@
 !PKGBUILD
 !*.install
 !*.patch
+!*.desktop
+!*.xml

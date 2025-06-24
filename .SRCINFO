@@ -1,6 +1,6 @@
 pkgbase = firefox-esr-globalmenu
 	pkgdesc = Fast, Private & Safe Web Browser, Extended Support Release. (with appmenu patch)
-	pkgver = 128.11.0
+	pkgver = 140.0
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/enterprise/
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = firefox-esr-globalmenu
 	makedepends = clang
 	makedepends = diffutils
 	makedepends = imake
-	makedepends = inetutils
 	makedepends = jack
 	makedepends = lld
 	makedepends = llvm
@@ -34,6 +33,7 @@ pkgbase = firefox-esr-globalmenu
 	depends = libxss
 	depends = libxt
 	depends = mime-types
+	depends = nspr
 	depends = nss
 	depends = ttf-font
 	optdepends = hunspell-en_US: Spell checking, American English
@@ -41,17 +41,23 @@ pkgbase = firefox-esr-globalmenu
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox-esr=128.11.0
+	provides = firefox-esr=140.0
 	conflicts = firefox-esr
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
-	source = https://archive.mozilla.org/pub/firefox/releases/128.11.0esr/source/firefox-128.11.0esr.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/128.11.0esr/source/firefox-128.11.0esr.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/140.0esr/source/firefox-140.0esr.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/140.0esr/source/firefox-140.0esr.source.tar.xz.asc
+	source = firefox.desktop::https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/140.0-1/firefox.desktop?ref_type=tags
+	source = org.mozilla.firefox.metainfo.xml::https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/140.0-1/org.mozilla.firefox.metainfo.xml?ref_type=tags
+	source = 0001-Install-under-remoting-name.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/140.0-1/0001-Install-under-remoting-name.patch
 	source = unity-menubar.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha1sums = bc256cbf8480d440751a1263732186ec503ca8c6
+	sha1sums = 59b0a8ddaca40e5fa833948ee4c05a93991a0b40
 	sha1sums = SKIP
-	sha1sums = 68ab2ba970bed5a147043d0bd2ac21b68f766fb1
+	sha1sums = fd476d7629735558091bf95aa75df967f5182bee
+	sha1sums = 7e6e0e586eca89591ab2f32f4d76cb6ccd59f57c
+	sha1sums = 6f25eb98ee8905d88a7e480018b2d80bd27bad76
+	sha1sums = 52d2c2d3b48c1daf6cbd3d50bd525d3c959df359
 
 pkgname = firefox-esr-globalmenu
