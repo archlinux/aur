@@ -1,7 +1,7 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 _pkgname=i3-auto-layout
 pkgname="${_pkgname}-bin"
-pkgver=0.3.17
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Automatic, optimal tiling for i3wm "
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("https://github.com/pando85/i3-auto-layout/releases/download/v${pkgver}/i3-auto-layout-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
-sha256sums=('7996b9d0ad57dca8756f993bfc9b5366d7b1ed4e0a40b59160d281a4d38d5324')
+sha256sums=('acc915b9feb2fbc310c743146e366214be595f3ea9a6c511fa352799e2d1ba92')
 
 package() {
 	install -Dm755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
