@@ -18,11 +18,11 @@ sha256sums=('SKIP'
 
 package() {
     # Install the binary
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/gdsongextractor"
+     install -Dm755 "/GDSongExtractor-linux" "/usr/bin/gdsongextractor"
     
     # Install desktop file
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}.desktop" "${pkgdir}/usr/share/applications/gdsongextractor.desktop"
+    install -Dm644 "/gdsongextractor.desktop" "/usr/share/applications/gdsongextractor.desktop"
     
     # Install icon
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/gdsongextractor.png"
+    install -Dm644 "/gdsongextractor.png" "/usr/share/pixmaps/gdsongextractor.png"
 }
