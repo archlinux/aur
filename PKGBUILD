@@ -11,10 +11,6 @@ conflicts=('clip-transfer')
 source=("https://github.com/Evr5/ClipTransfer/releases/download/v1.0.0/clip-transfer-linux.tar.gz")
 sha256sums=('9d7dde4c3f7b273fda90e78fcd85494516762d64d963884992ac71f90908286b')
 
-build() {
-  make
-}
-
 package() {
   install -Dm755 "clip-transfer" "$pkgdir/usr/bin/clip-transfer"
 
