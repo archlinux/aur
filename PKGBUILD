@@ -2,8 +2,8 @@
 
 pkgname=scenefx0.4
 _pkgname=scenefx
-pkgver="0.4"
-pkgrel=1
+pkgver="0.4.1"
+pkgrel=2
 license=("MIT")
 pkgdesc="A drop-in replacement for the wlroots scene API that allows wayland compositors to render surfaces with eye-candy effects"
 url="https://github.com/wlrfx/scenefx"
@@ -22,7 +22,7 @@ makedepends=(
 	"ninja"
 	"wayland-protocols"
 )
-provides=("libscenefx-${pkgver}.so")
+provides=("libscenefx-0.4.so")
 conflicts=("scenefx-git" "scenefx")
 replaces=("${_pkgname}")
 options=("!debug")
