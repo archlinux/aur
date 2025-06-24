@@ -48,7 +48,7 @@ makedepends=(clang
              python-requests
              qt5-base
              rsync
-             rustup
+             rust
              rust-bindgen
              wget
              yarn)
@@ -437,9 +437,6 @@ prepare() {
   sed -i "s|@ELECTRON@|${pkgname}|" electron-launcher.sh
   sed -i "s|@ELECTRON@|${pkgname}|" electron.desktop
   sed -i "s|@ELECTRON_NAME@|Electron ${_major_ver}|" electron.desktop
-
-  rustup toolchain update --profile minimal 1.86.0
-  rustup default 1.86.0
 
   cp -r chromium-mirror_third_party_depot_tools depot_tools
   export PATH+=":$PWD/depot_tools" DEPOT_TOOLS_UPDATE=0
