@@ -1,7 +1,7 @@
 # Maintainer: Kirill Zhumarin <kirill.zhumarin@gmail.com>
 pkgname=ffnightman-git
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Siemens filesystem extractor.'
 arch=(any)
 url='https://github.com/siemens-mobile-hacks/ffnightman'
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-	DESTDIR="$pkgdir" cmake  --prefix /usr --install build
+	DESTDIR="$pkgdir" cmake --install build --prefix /usr
 }
 
 pkgver() {
