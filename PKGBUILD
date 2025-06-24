@@ -13,11 +13,11 @@
 : ${_ver_clang=}
 : ${RUSTUP_TOOLCHAIN:=stable}
 
-: ${_commit:=3446dfa7b84757f4600e22c9989c5bf5ba6d96ba}
+: ${_commit:=fcfc71a7cac7b300f8325404767887a45adb031d}
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.27.0
+pkgver=11.28.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -449,12 +449,6 @@ END
 
   # Replace duplicate binary
   ln -sf "$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
-
-  # Use system certificates
-  local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
-  if [[ -e "$nssckbi" ]]; then
-    ln -sf "/usr/lib/libnssckbi.so" "$nssckbi"
-  fi
 
   # desktop file
   install -Dm644 ../$_pkgname.desktop \
