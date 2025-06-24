@@ -2,7 +2,7 @@
 
 pkgname=ontodev-robot
 pkgver=1.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="ROBOT is an OBO Tool"
 url="http://robot.obolibrary.org/"
 arch=("any")

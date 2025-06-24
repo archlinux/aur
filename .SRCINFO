@@ -1,7 +1,7 @@
 pkgbase = ontodev-robot
 	pkgdesc = ROBOT is an OBO Tool
 	pkgver = 1.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://robot.obolibrary.org/
 	arch = any
 	license = BSD3
