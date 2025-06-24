@@ -1,4 +1,5 @@
-# Maintainer: Emil Edholm <bobby @ verypublic.org>
+# Maintainer: Greg Smith <gasmith at gmail dot com>
+# Contributor: Emil Edholm <bobby @ verypublic.org>
 
 pkgname=mcap-cli-bin
 pkgver=0.0.53
