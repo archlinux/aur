@@ -1,7 +1,8 @@
 
 pkgname=opera-ffmpeg-vivaldi-symlink
 pkgver=136.0.7103.113
-pkgrel=1
+pkgrel=2
+_viva=7.4
 pkgdesc='Proprietary codecs for Opera and vivaldi-snapshot'
 arch=('x86_64')
 url='https://chromium.googlesource.com/chromium/third_party/ffmpeg'
@@ -13,9 +14,9 @@ package() {
   for p in "${pkgdir}"/usr/lib/opera{,-developer,-beta}/lib_extra
   do
     install -d "$p"
-    ln -sf /opt/vivaldi/libffmpeg.so* "$p"/libffmpeg.so
+    ln -sf /opt/vivaldi/libffmpeg.so.$_viva "$p"/libffmpeg.so
   done
   install -d "$pkgdir/opt/vivaldi-snapshot"
-  ln -sf /opt/vivaldi/libffmpeg.so* "$pkgdir"/opt/vivaldi-snapshot/libffmpeg.so.7.5
+  ln -svf /opt/vivaldi/libffmpeg.so.$_viva "$pkgdir"/opt/vivaldi-snapshot/libffmpeg.so.7.5
   echo Warning: 'opera-* needs to replace /usr/lib/libffmpeg.so directly instead of using lib_extra by unknown reason (dlopen-ed?)'.
 }
