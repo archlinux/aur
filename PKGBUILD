@@ -58,6 +58,7 @@ depends=(aurorae
          qt6-sensors
          qt6-svg
          qt6-tools
+         qt6-wayland
          systemd-libs
          wayland
          xcb-util-cursor
