@@ -13,6 +13,6 @@ pkgbase = doomfire-wallpaper
 	depends = rust
 	depends = cargo
 	source = doomfire-wallpaper::https://github.com/Leafmun-certii/doom_fire_wallpaper
-	md5sums = b2
+	md5sums = SKIP
 
 pkgname = doomfire-wallpaper

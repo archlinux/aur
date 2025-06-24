@@ -10,7 +10,7 @@ license=('0BSD')
 depends=('hyprpaper' 'grim' 'rust' 'cargo')
 makedepends=('git' 'cargo')
 source=("$pkgname::$giturl")
-md5sums=('b2')
+md5sums=('SKIP')
 install=doomfire-wallpaper.install
 
 build() {
