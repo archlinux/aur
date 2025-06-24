@@ -18,7 +18,6 @@ pkgbase = millennium
 	depends = steam
 	options = !debug
 	source = git+https://github.com/SteamClientHomebrew/Millennium.git
-	validpgpkeys = D4A49B8AB39D704F
 	sha256sums = SKIP
 	depends_x86_64 = python-i686-bin
 
