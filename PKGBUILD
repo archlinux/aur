@@ -1,5 +1,6 @@
 # Maintainer: sripwoud <me@sripwoud.xyz>
-_pkgname=trezord-runit
+_binname=trezord
+_pkgname="${_binname}-runit"
 pkgname="${_pkgname}-git"
 pkgdesc="Runit service for Trezor Communication Daemon (aka Trezor Bridge)"
 url="https://codeberg.org/sripwoud/${_pkgname}"
@@ -21,5 +22,5 @@ pkgver() {
 
 package() {
     cd "${_pkgname}"
-    install -Dm755 "run" "${pkgdir}/etc/runit/sv/${_pkgname}/run"
+    install -Dm755 "run" "${pkgdir}/etc/runit/sv/${_binname}/run"
 }
