@@ -2,7 +2,7 @@
 # Maintainer: skewb1k <skewb1kunix@gmail.com>
 
 pkgname='upfile-bin'
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='A CLI tool to manage and sync shared configuration files across projects.'
 url='https://github.com/skewb1k/upfile'
@@ -11,19 +11,25 @@ license=('MIT')
 provides=('upfile')
 conflicts=('upfile')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.1/upfile_Linux_arm64.tar.gz")
-sha256sums_aarch64=('f7ed33a173df7458576095c7c5c26e32c31317c4949ce79a3b6268a455d35aef')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.2/upfile_Linux_arm64.tar.gz")
+sha256sums_aarch64=('689612bfcfccc18a65cb9b7ff9922c36bee7a1a76783af54b4596dc228e89ccf')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.1/upfile_Linux_i386.tar.gz")
-sha256sums_i686=('d99d749549680fc12fe2b5830f115d56ce5fb00af4a806300f7705bfda75908e')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.2/upfile_Linux_i386.tar.gz")
+sha256sums_i686=('615226b88b7a47ba034950720e198b52bed02d2279f593b8db010c52d4e8276f')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.1/upfile_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('5864e0d811b6612dae3a7d4a8c7547fa7d9dc160c367976bafa09cfa51f751df')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/skewb1k/upfile/releases/download/v1.0.2/upfile_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('a1f0b602a47fa8528903a1f4237f82d43e9f32900254102b7beae08685f22017')
 
 package() {
   # bin
   install -Dm755 "./upfile" "${pkgdir}/usr/bin/upfile"
-
+  # completions
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+  mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "./completions/upfile.bash" "${pkgdir}/usr/share/bash-completion/completions/upfile"
+  install -Dm644 "./completions/upfile.zsh" "${pkgdir}/usr/share/zsh/site-functions/_upfile"
+  install -Dm644 "./completions/upfile.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/upfile.fish"
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/upfile/LICENSE"
 }
