@@ -3,14 +3,14 @@
 
 pkgname='treegrep-bin'
 _pkgname="${pkgname/-bin}"
-pkgver=0.1.4
-pkgrel=1
+pkgver=1.0.0
+pkgrel=0
 pkgdesc='Frontend for ripgrep that presents results in a tree format (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/4imothy/treegrep'
 license=('CC-BY-4.0')  # SPDX-License-Identifier: CC-BY-4.0
 provides=('tgrep' 'treegrep')
-conflicts=('tgrep' 'treegrep')
+conflicts=("${provides[@]}")
 _rawurl='https://raw.githubusercontent.com/4imothy/treegrep/main'
 _license="$_rawurl/LICENSE"
 _linux='unknown-linux-musl'
@@ -18,48 +18,42 @@ _readme="$_rawurl/README.md"
 _releases='https://github.com/4imothy/treegrep/releases/download'
 source_aarch64=(
   "$_pkgname-aarch64-$pkgver.tar.gz::$_releases/$pkgver/treegrep-aarch64-$_linux.tar.gz"
-  "$_license"
-  "$_readme"
+  "$_license" "$_readme"
 )
 source_x86_64=(
   "$_pkgname-x86_64-$pkgver.tar.gz::$_releases/$pkgver/treegrep-x86_64-$_linux.tar.gz"
-  "$_license"
-  "$_readme"
+  "$_license" "$_readme"
 )
 
 package() {
-  # Be more verbose if standard output is a TTY
-  test -t 1 && _v='v' || _v=''
-
-  install "-${_v}Dm0644" "LICENSE"   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install "-${_v}Dm0644" "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0644 "LICENSE"   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm0644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 
   cd "$_pkgname-$CARCH-$_linux"
 
-  install "-${_v}Dm0755" tgrep "$pkgdir/usr/bin/tgrep"
+  install -vDm0755 tgrep "$pkgdir/usr/bin/tgrep"
 
   # Bash
-  install "-${_v}Dm0644" completions/tgrep.bash \
+  install -vDm0644 completions/tgrep.bash \
     "$pkgdir/usr/share/bash-completion/completions/tgrep"
   # Fish
-  install "-${_v}Dm0644" completions/tgrep.fish \
+  install -vDm0644 completions/tgrep.fish \
     "$pkgdir/usr/share/fish/vendor_completions.d/tgrep.fish"
   # Zsh
-  install "-${_v}Dm0644" completions/_tgrep \
+  install -vDm0644 completions/_tgrep \
     "$pkgdir/usr/share/zsh/site-functions/_tgrep"
-
-  # FIXME: Does anyone know the proper location for Elvish completions?
   # Elvish
-  install "-${_v}Dm0644" completions/tgrep.elv \
+  # FIXME: Does anyone know the proper location for Elvish completions?
+  install -vDm0644 completions/tgrep.elv \
     "$pkgdir/usr/share/elvish/lib/completions-tgrep.elv"
 }
 
 sha256sums_aarch64=(
-  '6bd698445c65bed8a841df1a7f6aa14fb87877428aafc0e26ba0ace1e8ec5128'
+  '0b44847b274eac3a6551d3853f1034b6ce51c794f137ade45dd1b6bf54febd09'
   'SKIP' 'SKIP'  # Skip to my Lou!
 )
 sha256sums_x86_64=(
-  'c5fb0329612e8d46c9fca3492f56774d6d11f0bed193476fbdd27f68dea606b2'
+  '664178a26003d7ffcdff42807faf6d55e62162f5b3a4ab233c82614931ca4c78'
   'SKIP' 'SKIP'  # Skip to my Lou!
 )
 
