@@ -1,0 +1,4 @@
+[rdm]
+source = "git"
+git = "https://github.com/Rikaisan/rdm.git"
+prefix = "v"
