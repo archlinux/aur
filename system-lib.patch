@@ -1,0 +1,54 @@
+--- src/cudf-25.06.00/cpp/CMakeLists.txt	2025-06-06 01:31:26.000000000 +0800
++++ src/cudf-25.06.00/cpp/CMakeLists.txt.new	2025-06-22 23:44:51.583901087 +0800
+@@ -293,22 +293,22 @@
+ include(cmake/thirdparty/get_jitify.cmake)
+ 
+ # find NVTX
+-include(cmake/thirdparty/get_nvtx.cmake)
++find_package(nvtx3 REQUIRED)
+ 
+ # find nvCOMP
+ include(cmake/thirdparty/get_nvcomp.cmake)
+ 
+ # find CCCL before rmm so that we get cudf's patched version of CCCL
+-include(cmake/thirdparty/get_cccl.cmake)
++find_package(cccl REQUIRED)
+ 
+ # find rmm
+-include(cmake/thirdparty/get_rmm.cmake)
++find_package(rmm REQUIRED)
+ 
+ # find flatbuffers
+ include(cmake/thirdparty/get_flatbuffers.cmake)
+ 
+ # find dlpack
+-include(cmake/thirdparty/get_dlpack.cmake)
++find_package(dlpack REQUIRED)
+ 
+ # find cuCollections, should come after including CCCL
+ include(cmake/thirdparty/get_cucollections.cmake)
+@@ -322,14 +322,11 @@
+ include(cmake/Modules/JitifyPreprocessKernels.cmake)
+ 
+ # find KvikIO
+-include(cmake/thirdparty/get_kvikio.cmake)
++find_package(kvikio REQUIRED)
+ 
+ # find nanoarrow
+ include(cmake/thirdparty/get_nanoarrow.cmake)
+ 
+-# find thread_pool
+-include(cmake/thirdparty/get_thread_pool.cmake)
+-
+ # find zstd
+ include(cmake/thirdparty/get_zstd.cmake)
+ 
+@@ -997,7 +994,7 @@
+ # Specify the target module library dependencies
+ target_link_libraries(
+   cudf
+-  PUBLIC CCCL::CCCL rapids_logger::rapids_logger rmm::rmm $<BUILD_LOCAL_INTERFACE:BS::thread_pool>
++  PUBLIC CCCL::CCCL rapids_logger::rapids_logger rmm::rmm
+   PRIVATE $<BUILD_LOCAL_INTERFACE:nvtx3::nvtx3-cpp> cuco::cuco ZLIB::ZLIB nvcomp::nvcomp
+           kvikio::kvikio nanoarrow zstd
+ )
