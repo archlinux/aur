@@ -1,0 +1,15 @@
+pkgbase = python-rapids-build-backend
+	pkgdesc = RAPIDS-specific wrapper around PEP 517 build backends
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/rapidsai/rapids-build-backend
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	depends = python
+	depends = python-packaging
+	depends = python-rapids-dependency-file-generator
+	source = https://github.com/rapidsai/rapids-build-backend/archive/refs/tags/v0.3.4.tar.gz
+	sha256sums = 2342301ea6634c1e6c1989641693c0f48f0dbc92ec40e3c703cf3e75d233ff55
+
+pkgname = python-rapids-build-backend
