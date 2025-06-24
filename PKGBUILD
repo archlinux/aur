@@ -1,5 +1,5 @@
 pkgname=clip-transfer-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Lightweight LAN clipboard/text sharing tool with automatic server/client detection"
 arch=('x86_64')
