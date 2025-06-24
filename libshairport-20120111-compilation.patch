@@ -1,0 +1,12 @@
+diff -rauN libshairport-20120111/src/hairtunes.c libshairport-20120111-compilation-patches/src/hairtunes.c
+--- libshairport-20120111/src/hairtunes.c	2012-01-11 02:00:52.000000000 +0100
++++ libshairport-20120111-compilation-patches/src/hairtunes.c	2025-06-24 18:23:30.965692710 +0200
+@@ -897,7 +897,7 @@
+ 
+ #define NUM_CHANNELS 2
+ 
+-static void handle_broken_fifo() {
++static void handle_broken_fifo(int sig) {
+     close(pipe_handle);
+     pipe_handle = -1;
+ }

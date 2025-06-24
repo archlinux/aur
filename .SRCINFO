@@ -1,13 +1,15 @@
 pkgbase = libshairport
 	pkgdesc = emulates an AirPort Express
 	pkgver = 1.2.1.20121215
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/amejia1/libshairport
 	arch = x86_64
 	license = GPL
 	depends = openssl
 	depends = libao
-	source = libshairport-1.2.1.20121215.tar.gz::https://github.com/amejia1/libshairport/tarball/16395d8
-	sha256sums = 98b73313d0a8f2abcb32e11f4fd4b422777a495cd62dbe881d5061b91959d1d5
+	source = libshairport-1.2.1.20121215.tar.xz::https://archlinux32.andreasbaumann.cc/other/arch/libshairport-20120111.tar.xz
+	source = libshairport-20120111-compilation.patch
+	sha256sums = 89a4ff9da535a85c8ab35c25fcb0f24f2b6d9a01b32ec6c4bb2ce55ccb88aef0
+	sha256sums = cdcf127fd6f317bf487a3aad2c7e1164e14b37fd5fb4d0b9d508317a969b29f7
 
 pkgname = libshairport
