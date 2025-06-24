@@ -16,6 +16,7 @@ md5sums=(
 	"SKIP"
 )
 provides=(python-mdlt_plain)
+conflicts=(python-mdlt_plain)
 
 function pkgver() {
 	cd "${srcdir}/mdit_plain"
