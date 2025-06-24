@@ -11,7 +11,12 @@ pkgdesc='Binary file delta generator'
 arch=('x86_64' 'i686')
 url="http://sourceforge.net/projects/xdelta/"
 license=('GPL-2.0-or-later')
-depends=('glib' 'zlib')
+depends=(
+  'bash'
+  'glib'
+  'glibc'
+  'zlib'
+)
 makedepends=('gcc14')
 options=('!libtool')
 source=("https://github.com/bbidulock/xdelta/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
