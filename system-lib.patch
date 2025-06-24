@@ -1,0 +1,23 @@
+--- src/cuvs-25.06.00/cpp/CMakeLists.txt	2025-06-06 04:15:39.000000000 +0800
++++ src/cuvs-25.06.00/cpp/CMakeLists.txt.new	2025-06-23 22:14:37.845548173 +0800
+@@ -175,13 +175,16 @@
+ if(NOT BUILD_CPU_ONLY)
+   # We must find CCCL ourselves before raft so that we get the right version.
+   include(${rapids-cmake-dir}/cpm/cccl.cmake)
+-  rapids_cpm_cccl(BUILD_EXPORT_SET cuvs-exports INSTALL_EXPORT_SET cuvs-exports)
+-  include(cmake/thirdparty/get_raft.cmake)
+-  include(cmake/thirdparty/get_cutlass.cmake)
++  find_package(CCCL REQUIRED)
++  find_package(NvidiaCutlass REQUIRED)
++  find_package(rapids_logger REQUIRED)
++  find_package(rmm REQUIRED)
++  find_package(nvtx3 REQUIRED)
++  find_package(raft REQUIRED)
+ endif()
+ 
+ if(BUILD_C_LIBRARY)
+-  include(cmake/thirdparty/get_dlpack.cmake)
++  find_package(dlpack REQUIRED)
+ endif()
+ 
+ if(BUILD_TESTS OR BUILD_C_TESTS)
