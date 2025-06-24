@@ -1,11 +1,13 @@
 pkgbase = qdl-git
 	pkgdesc = Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code
-	pkgver = r98.b18bca7
+	pkgver = r185.2204f90
 	pkgrel = 1
 	url = https://github.com/linux-msm/qdl
-	arch = armv7h
 	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7l
+	arch = aarch64
 	license = BSD3
 	makedepends = git
 	depends = libxml2
@@ -14,6 +16,6 @@ pkgbase = qdl-git
 	provides = qdl
 	conflicts = qdl
 	source = git+https://github.com/linux-msm/qdl.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = qdl-git
