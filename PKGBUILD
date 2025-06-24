@@ -38,15 +38,15 @@ package() {
     # These libraries are not needed because they can be satisfied with system and AUR packages
     rm -rf "${pkgdir}/usr/lib/atostekid"
     # Install PKCS #11 module configuration file
-    install -D -m 644 atostek-id.module "${pkgdir}/usr/share/p11-kit/modules/atostek-id.module"
+    install -D -m 644 atostek-id.module -t "${pkgdir}/usr/share/p11-kit/modules/"
     # Install Atostek ID's PKCS #11 module to the proper location
-    install -D -m 644 "${pkgdir}/usr/lib/Atostek-ID-PKCS11.so" "${pkgdir}/usr/lib/pkcs11/Atostek-ID-PKCS11.so"
+    install -D -m 644 "${pkgdir}/usr/lib/Atostek-ID-PKCS11.so" -t "${pkgdir}/usr/lib/pkcs11/"
     rm "${pkgdir}/usr/lib/Atostek-ID-PKCS11.so"
     # Handle license and documentation files
-    install -D -m 644 "${pkgdir}/usr/share/doc/atostekid/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
-    install -m 644 "${pkgdir}"/usr/share/doc/atostekid/license_{en,fi,sv}.rtf "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -D -m 644 "${pkgdir}/usr/share/doc/atostekid/copyright" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -m 644 "${pkgdir}"/usr/share/doc/atostekid/license_{en,fi,sv}.rtf -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     rm "${pkgdir}"/usr/share/doc/atostekid/{*.Debian,copyright,license_{en,fi,sv}.rtf}
     # Install desktop and icon files
-    install -D -m 644 com.atostek.atostekid.desktop "${pkgdir}/usr/share/applications/com.atostek.atostekid.desktop"
-    install -D -m 644 com.atostek.atostekid.png "${pkgdir}/usr/share/pixmaps/com.atostek.atostekid.png"
+    install -D -m 644 com.atostek.atostekid.desktop -t "${pkgdir}/usr/share/applications/"
+    install -D -m 644 com.atostek.atostekid.png -t "${pkgdir}/usr/share/pixmaps/"
 }
