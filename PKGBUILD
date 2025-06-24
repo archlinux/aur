@@ -4,7 +4,7 @@
 pkgname=python-skidl
 _name=${pkgname#python-}
 pkgver=2.0.1
-pkgrel=1
+pkgrel=5
 pkgdesc="A Python package for textually describing electronic circuit schematics."
 arch=(any)
 url="https://pypi.org/project/skidl"
@@ -12,7 +12,7 @@ license=('MIT')
 groups=()
 _py_deps=(
   deprecation
-  future
+#  future
   graphviz
   pygame
   # AUR

@@ -1,7 +1,7 @@
 pkgbase = python-skidl
 	pkgdesc = A Python package for textually describing electronic circuit schematics.
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 5
 	url = https://pypi.org/project/skidl
 	arch = any
 	license = MIT
@@ -12,7 +12,6 @@ pkgbase = python-skidl
 	depends = bash
 	depends = python
 	depends = python-deprecation
-	depends = python-future
 	depends = python-graphviz
 	depends = python-pygame
 	depends = python-kinet2pcb
