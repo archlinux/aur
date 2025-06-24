@@ -1,6 +1,6 @@
 pkgbase = python-manifold3d
 	pkgdesc = Geometry library for topological robustness
-	pkgver = 3.0.1
+	pkgver = 3.1.1
 	pkgrel = 2
 	url = https://github.com/elalish/manifold
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = python-manifold3d
 	makedepends = python-wheel
 	depends = python
 	depends = python-scikit-build-core
-	depends = nanobind<=2.2.0
-	source = https://github.com/elalish/manifold/releases/download/v3.0.1/manifold-3.0.1.tar.gz
-	sha256sums = a691f4aaf5745c2ced9969cbaeab139d972b37a07f689707667adc44ded9b595
+	depends = nanobind
+	source = https://github.com/elalish/manifold/releases/download/v3.1.1/manifold-3.1.1.tar.gz
+	sha256sums = 5d5fcf22f2fc6c367a17226d83ced260ea61ec59e28c265cfe39a73dc6c4d1da
 
 pkgname = python-manifold3d
