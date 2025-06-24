@@ -4,7 +4,7 @@
 pkgname='treegrep-bin'
 _pkgname="${pkgname/-bin}"
 pkgver=1.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Frontend for ripgrep that presents results in a tree format (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/4imothy/treegrep'
