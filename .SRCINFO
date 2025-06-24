@@ -1,0 +1,16 @@
+pkgbase = paws-lv2-git
+	pkgdesc = A few niche audio effects and synthesizers
+	pkgver = r1
+	pkgrel = 1
+	url = https://zynskey.nekoweb.org/paws
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = lv2
+	depends = lv2
+	source = git+https://codeberg.org/zynskeyfolf/paws-lv2
+	sha256sums = SKIP
+
+pkgname = paws-lv2-git
