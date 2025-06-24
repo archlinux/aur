@@ -18,7 +18,7 @@ prepare() {
 }
 
 build() {
-	cmake -B build -S libffshit -DCMAKE_BUILD_TYPE=Release
+	cmake -B build -S libffshit -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build build -j$(nproc)
 }
 
