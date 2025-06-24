@@ -1,0 +1,13 @@
+pkgbase = nvcomp
+	pkgdesc = NVIDIA nvCOMP is a high-speed data compression and decompression library optimized for NVIDIA GPUs.
+	pkgver = 4.2.0.11
+	pkgrel = 1
+	url = https://developer.nvidia.com/nvcomp
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = cuda
+	source = https://developer.download.nvidia.com/compute/nvcomp/redist/nvcomp/linux-x86_64/nvcomp-linux-x86_64-4.2.0.11_cuda12-archive.tar.xz
+	sha256sums = 0e235903b08f0173835b204e9fa90208660c33eb6a986ec178bb05ea891d5119
+
+pkgname = nvcomp
