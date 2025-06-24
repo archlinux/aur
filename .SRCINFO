@@ -1,0 +1,14 @@
+pkgbase = trexio
+	pkgdesc = TREX I/O library
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = https://github.com/TREX-CoE/trexio
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = gcc-fortran
+	depends = glibc
+	depends = hdf5
+	source = https://github.com/TREX-CoE/trexio/releases/download/v2.6.1/trexio-2.6.1.tar.gz
+	sha256sums = c3694ec1528632a386a2af89199c75d70ecd45bfcc2ca1d4ccccbfa1308ad5fa
+
+pkgname = trexio

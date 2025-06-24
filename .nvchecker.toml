@@ -1,0 +1,5 @@
+[trexio]
+source = "github"
+github = "TREX-CoE/trexio"
+use_latest_release = true
+prefix = "v"
