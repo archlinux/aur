@@ -15,27 +15,27 @@ options=(!debug)
 install=millennium.install
 
 prepare() {
-    cd "millennium"
+    cd "Millennium"
     echo -e "\e[1m\e[92m==>\e[0m \e[1mCloning submodules...\e[0m"
     git submodule update --init --recursive
 }
 
 pkgver() {
-    cd "millennium"
+    cd "Millennium"
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     export NODE_NO_WARNINGS=1
-    cd "$srcdir/millennium"
+    cd "$srcdir/Millennium"
 
     echo -e "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium core assets...\e[0m"
 
-    cd assets
-    npm install @steambrew/api --silent
-    npm install --silent
-    npm run build
-    cd ..
+    cd sdk && pnpm install && pnpm run build && cd ..
+    cd assets && pnpm install && npm run build && cd ..
+
+    mkdir -p ./shims/build/
+    cp -r ./sdk/typescript-packages/loader/build/* ./shims/build/
 
     echo -e "\e[1m\e[92m==>\e[0m \e[1mBootstrapping VCPKG...\e[0m"
 
@@ -49,15 +49,9 @@ build() {
 }
 
 package() {
-    cd "$srcdir/millennium"
-    mkdir -p "$pkgdir/usr/share/millennium/assets/.millennium/Dist"
+    cd "$srcdir/Millennium"
 
-    cp -r ./assets/.millennium/Dist/index.js "$pkgdir/usr/share/millennium/assets/.millennium/Dist/index.js"
-    cp -r ./assets/core "$pkgdir/usr/share/millennium/assets/core"
-    cp -r ./assets/pipx "$pkgdir/usr/share/millennium/assets/pipx"
-    cp -r ./assets/requirements.txt "$pkgdir/usr/share/millennium/assets/requirements.txt"
-    cp -r ./assets/plugin.json "$pkgdir/usr/share/millennium/assets/plugin.json"
-    
+    bash ./scripts/ci/posix/mk-assets.sh "$pkgdir/usr/share/millennium/assets"
     mkdir -p "$pkgdir/usr/lib/millennium"
 
     install -Dm755 build/libmillennium_x86.so "$pkgdir/usr/lib/millennium/libmillennium_x86.so"
