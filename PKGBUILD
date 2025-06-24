@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=axonops-workbench-bin
 _pkgname=AxonOps.Workbench
-pkgver=0.9.29
+pkgver=0.9.30
 _electronversion=31
 pkgrel=1
 pkgdesc="A desktop application built for Cassandra DB developers and DBAs.(Prebuilt version.Use system-wide electron)"
@@ -26,8 +26,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
-sha256sums_aarch64=('cc65f95a10f11e75d7fd99be0b3ccd636f62212c92339a1902f0487e0133347e')
-sha256sums_x86_64=('8b34e8ce29642aea0f15abf0a1402d0dbaa790fd1d1c5db88acc5be13e56ded1')
+sha256sums_aarch64=('bdd74e4dc8f283b150f2af6404495f60e53c5a7b81ecb7c76e8b5092f10e9b85')
+sha256sums_x86_64=('8b713aee27b116f6b941d3a5930dadc726b5dae290bd04855a534eb57b87156d')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${_pkgname//./ }/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
