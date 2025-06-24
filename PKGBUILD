@@ -19,7 +19,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/doom_fire_wallpaper"
   install -Dm755 "target/release/doom-fire-wallpaper" "$pkgdir/usr/bin/doom-fire-wallpaper"
   install -Dm755 "dfpaper" "$pkgdir/usr/bin/dfpaper"
   install -Dm644 "README.MD" "$pkgdir/usr/share/doc/doomfire-wallpaper/README.MD"
