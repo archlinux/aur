@@ -1,29 +1,29 @@
 pkgname=abciview
 _pkgname=ABCiview
-pkgver=1.0.2.aurpatch
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Unofficial ABC iview desktop application."
 arch=('x86_64' 'arm7h' 'aarch64')
 url="https://gitlab.com/linuxbombay/abciview"
 license=('GPL')
-depends=('libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
+depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('24cae17fc4d705768eec362501b3361c8fa577e5d696d867a9c80a4d1190ce12')
+sha256sums=('73e151ee84166db7b585b3e78ad457690dcce6101de9e514b7ec5e42b72addb6')
 
 package() {
     cd "$srcdir/application-$pkgver"
-    chmod +x $pkgname.sh
+    chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/application-$pkgver"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
-    cp -r "$pkgdir/opt/$_pkgname/$pkgname.svg" "$pkgdir/usr/share/pixmaps"  
+    cp -r "$srcdir/application-$pkgver/$pkgname.svg" "$pkgdir/usr/share/pixmaps"  
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
-    ln -s "/opt/$_pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    ln -s /usr/bin/libelectronmeta "$pkgdir/opt/$_pkgname/electron"
+    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin"
 
     # Desktop Entry
     install -Dm644 "$srcdir/application-$pkgver/$pkgname.desktop" \
