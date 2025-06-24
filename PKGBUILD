@@ -1,28 +1,29 @@
 # Maintainer: MalikHw47 <help.malicorporation@gmail.com>
 pkgname=hwytvidgrabber-bin
-pkgver=1.3
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="A smol YouTube video downloader by MalikHw47 (Lightweight af)"
 arch=('x86_64')
-url="https://github.com/MalikHw/HwYtVidGrabber"
+url="https://github.com/MalikHw47/HwYtVidGrabber"
 license=('MIT')
 depends=('ffmpeg')
 provides=('hwytvidgrabber')
 conflicts=('hwytvidgrabber')
-source=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/HwYtVidGrabber-Linux"
-        "${pkgname}-${pkgver}.desktop::${url}/releases/download/v${pkgver}/hwytvidgrabber.desktop"
-        "${pkgname}-${pkgver}.png::${url}/releases/download/v${pkgver}/icon.png")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+source=("HwYtVidGrabber-Linux-${pkgver}::${url}/releases/download/1.5.2/HwYtVidGrabber-Linux"
+        "hwytvidgrabber.desktop::${url}/releases/download/1.5.2/hwytvidgrabber.desktop"
+        "hwytvidgrabber.png::${url}/releases/download/1.5.2/icon.png")
+sha256sums=('ae2c862f813ceaf805e418b13e22c0eeee1e4a8183bc6c8a834a71af11be6a44'
+            '6ad7354ba78532169bb3edc13d6c2d59945bcb5f4e9cf3759f485bc5e99b3867'
+            '15b461eb068f1fd54222122fac891c72f647b28e8af56a3bd28c152754b39e40')
+noextract=('HwYtVidGrabber-Linux-${pkgver}')
 
 package() {
     # Install the binary
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/HwYtVidGrabber"
+    install -Dm755 "${srcdir}/HwYtVidGrabber-Linux-${pkgver}" "${pkgdir}/usr/bin/HwYtVidGrabber"
     
     # Install desktop file
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}.desktop" "${pkgdir}/usr/share/applications/hwytvidgrabber.desktop"
+    install -Dm644 "${srcdir}/hwytvidgrabber.desktop" "${pkgdir}/usr/share/applications/hwytvidgrabber.desktop"
     
     # Install icon
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/hwytvidgrabber.png"
+    install -Dm644 "${srcdir}/hwytvidgrabber.png" "${pkgdir}/usr/share/pixmaps/hwytvidgrabber.png"
 }
