@@ -1,0 +1,4 @@
+post_install() {
+  echo "==> To finish setup, run: dfpaper setup"
+  echo "==> This will create your config and systemd user service."
+}
