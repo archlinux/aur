@@ -1,0 +1,23 @@
+pkgbase = hyprcap-git
+	pkgdesc = A utility to easily capture screenshots and recordings in Hyprland
+	pkgver = 1.0.1.r1.14493cf
+	pkgrel = 1
+	url = https://github.com/alonso-herreros/hyprcap
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = hyprland
+	depends = bash
+	depends = grim
+	depends = wf-recorder
+	depends = jq
+	depends = libnotify
+	depends = slurp
+	depends = hyprpicker
+	depends = wl-clipboard
+	provides = hyprcap
+	conflicts = hyprcap
+	source = hyprcap::git+https://github.com/alonso-herreros/hyprcap
+	sha256sums = SKIP
+
+pkgname = hyprcap-git
