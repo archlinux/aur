@@ -4,7 +4,7 @@
 
 _pkgname=flet
 pkgname=python-${_pkgname}
-pkgver=0.28.3
+pkgver=0.69.0
 pkgrel=1
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
@@ -28,6 +28,7 @@ makedepends=(
 	'python-build'
 	'python-installer'
 	'python-wheel'
+	'python-setuptools'
 	'go'
 	'fvm'
 	'git'
@@ -39,11 +40,11 @@ arch=('x86_64')
 source=(
 	"${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}-dev/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	'flet-linux.patch')
-sha256sums=('1f30d471e7aa3570d39a3731b015b62923710f83f1a49382e5af3930e8b6ed1e'
+sha256sums=('87f633c18090706f935a210aa80c05c1532406b7cf953787411d82a8a84bef08'
             'e252e4eec325886d76dfc54c90604ea81ec0d6791b7e22bb93f63cec6378c50c')
 
 _srcdir="${_pkgname}-${pkgver}"
-_engine_version=3.32.0
+_engine_version=3.32.4
 
 prepare() {
 	cd "${_srcdir}"
@@ -53,6 +54,8 @@ prepare() {
 
 build() {
 	export FVM_CACHE_PATH="$SRCDEST/fvm-cache"
+	export CXX='clang++'
+	export CXXFLAGS+=' -Wno-error=nontrivial-memcall'
 
 	cd "${_srcdir}"
 
