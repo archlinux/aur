@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=meru-git
 _pkgname=meru
-pkgver=3.2.0.r0.g9a5763d
+pkgver=3.9.0.r0.g3ca7c13
 _electronversion=36
 _nodeversion=24
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
@@ -40,6 +40,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname%-git}.git"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -48,8 +49,12 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}"  --pkgdesc="${pkgdesc}"  --categories="Network;Office" --name="${_pkgname}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname%-git}.git"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}"  \
+        --pkgdesc="${pkgdesc}"  \
+        --categories="Network;Office" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -68,19 +73,20 @@ prepare() {
             echo 'registry = "https://registry.npmmirror.com"'
         } >> bunfig.toml
     fi
+    sed -i "/build\:linux/a\		\"build\:local\"\: \"electron-builder --linux dir -c.electronDist=\${electronDist}\"\," package.json
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    bun install --frozen-lockfile
+    bun install
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     bun run build:js
-    NODE_ENV=production     bun exec "electron-builder --linux dir -c.electronDist=${electronDist}"
+    bun run build:js
+    bun run build:local
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
