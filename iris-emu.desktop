@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Iris
+Comment=Experimental PlayStation 2 Emulator
+Exec=iris-emu
+Icon=iris-emu
+Type=Application
+Categories=Game;Emulator;
