@@ -1,50 +1,58 @@
 # Maintainer: Pedro Lucas <pedrolucasinvestidor62023@gmail.com>
 pkgname=navegadorpytech
-pkgver=0.0.1
-pkgrel=2
-pkgdesc="Um Navegador simples,seguro,leve e privado usando python e desenvolvido usando 100% tecnologias de codigo aberto!"
+pkgver=0.0.2
+pkgrel=3
+pkgdesc="Um Navegador simples, seguro, leve e privado usando python e desenvolvido usando 100% tecnologias de codigo aberto!"
 arch=('any')
-url="https://github.com/pedrodev2025/Navegador-B-sico-E-Leve-Com-Python-.git"
-license=('GPL3')
-install="$pkgname.install"
-depends=('python3' 'python-pip' 'base')
+url="https://github.com/pedrodev2025/Navegador-B-sico-E-Leve-Com-Python-"
+license=('GPL-3.0-or-later') # Licença SPDX oficial para GPLv3
+install="$pkgname.install" # <--- Importante: Garante que o script .install seja executado
+
+depends=('python' 'python-pip' 'base') # Dependências mínimas para venv e pip
 makedepends=()
-# ADICIONE AQUI os arquivos do ícone e do desktop à lista de sources.
-# Eles estarão no mesmo diretório do PKGBUILD.
+
+# O tarball contém navegador.py, e o ícone/desktop estão no mesmo diretório do PKGBUILD.
 source=(
-  "0.0.1.tar.gz::https://github.com/pedrodev2025/Navegador-B-sico-E-Leve-Com-Python-/archive/refs/tags/0.0.1.tar.gz"
-  "navegadorpytechicon.png::https://github.com/pedrodev2025/Navegador-B-sico-E-Leve-Com-Python-/releases/download/0.0.1/navegadorpytechicon.png"       # Adicionado!
-  "navegadorpytechdesktop.desktop" # Adicionado!
+  "0.0.2.tar.gz::https://github.com/pedrodev2025/Navegador-B-sico-E-Leve-Com-Python-/archive/refs/tags/0.0.2.tar.gz"
+  "navegadorpytechicon.png::https://github.com/pedrodev2025/Navegador-B-sico-E-Leve-Com-Python-/releases/download/0.0.1/navegadorpytechicon.png"       # Adicionado aqui, pois está local e precisa ir para $srcdir
+  "navegadorpytechdesktop.desktop" # Adicionado aqui, pois está local e precisa ir para $srcdir
 )
-# Atualize o sha256sums para incluir os novos arquivos (por enquanto, 'SKIP')
-sha256sums=('fa30878df649617873dfa568657905d32cf802663e0bbd32289591a8b9e2074c'
-            'b1c86afae39358e3299ca6ed5d456d0cb5f90407cc26d7beda20506bb5d67af0'
-            'a84cfe4290cae99589f1d8bc7c10de91f691a6f2d7c406ad657b6059435816e9')
+# GERE ESSES CHECKSUMS COM `updpkgsums` após salvar este PKGBUILD e ter todos os arquivos.
+# Por enquanto, use 'SKIP'.
+sha256sums=('SKIP' # para 0.0.1.tar.gz
+            'SKIP' # para navegadorpytechicon.png
+            'SKIP') # para navegadorpytechdesktop.desktop
 
 build() {
-  echo "Não tem build, ignore essa mensagem"
+  echo "Não há fase de build separada para este pacote Python."
 }
 
 package() {
-  set -ex # Mantenha o debug
+  set -ex # Ativa o modo de depuração e saída em caso de erro na fase package()
 
-  mkdir -p "$pkgdir/opt/navegadorpytech/venv" # O venv será criado aqui pelo post_install
+  # O nome da pasta descompactada do tarball
+  _extracted_dir="Navegador-B-sico-E-Leve-Com-Python--$pkgver"
 
-  # O navegador.py vai para /opt/navegadorpytech/
-  install -Dm755 "$srcdir/Navegador-B-sico-E-Leve-Com-Python--0.0.1/navegador.py" "$pkgdir/opt/navegadorpytech/navegador.py"
+  # Cria o diretório de instalação em /opt/
+  mkdir -p "$pkgdir/opt/$pkgname" # Padroniza para /opt/navegadorpytech/
+  mkdir -p "$pkgdir/opt/$pkgname/venv" # Cria a pasta do venv no pacote
 
-  # Ícone e Desktop File
+  # Copia o script principal navegador.py do diretório descompactado do tarball
+  install -Dm755 "$srcdir/${_extracted_dir}/navegador.py" "$pkgdir/opt/$pkgname/navegador.py"
+
+  # Instala o ícone
   mkdir -p "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
-  install -Dm644 "$srcdir/navegadorpytechicon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/navegadorpytechicon.png"
+  install -m644 "$srcdir/navegadorpytechicon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png" # Renomeia para pkgname.png por convenção
 
+  # Instala o desktop file
   mkdir -p "$pkgdir/usr/share/applications/"
-  install -Dm644 "$srcdir/navegadorpytechdesktop.desktop" "$pkgdir/usr/share/applications/navegadorpytechdesktop.desktop"
+  install -m644 "$srcdir/navegadorpytechdesktop.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop" # Renomeia para pkgname.desktop por convenção
 
-  # Script Wrapper em /usr/bin - VAI APONTAR PARA A PASTA CORRETA /opt/navegadorpytech/
+  # Cria o script wrapper em /usr/bin/
   mkdir -p "$pkgdir/usr/bin/"
-  cat > "$pkgdir/usr/bin/navegadorpytech" << 'EOF'
+  cat > "$pkgdir/usr/bin/$pkgname" << 'EOF'
 #!/bin/bash
-/opt/navegadorpytech/venv/bin/python /opt/navegadorpytech/navegador.py "$@" # <-- AQUI A CORREÇÃO FINAL DOS CAMINHOS
+/opt/navegadorpytech/venv/bin/python /opt/navegadorpytech/navegador.py "$@"
 EOF
-  chmod +x "$pkgdir/usr/bin/navegadorpytech"
+  chmod +x "$pkgdir/usr/bin/$pkgname"
 }
