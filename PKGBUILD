@@ -1,6 +1,6 @@
 # Maintainer: ricalditodepollo <richarclarinet at gmail dot com>
 pkgname=balatro-multiplayer-launcher
-pkgver=1.0.3
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Launcher for Balatro Multiplayer Mod"
 arch=('x86_64')
