@@ -4,7 +4,7 @@
 pkgname='treegrep-bin'
 _pkgname="${pkgname/-bin}"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Frontend for ripgrep that presents results in a tree format (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/4imothy/treegrep'
@@ -12,9 +12,9 @@ license=('CC-BY-4.0')  # SPDX-License-Identifier: CC-BY-4.0
 provides=('tgrep' 'treegrep')
 conflicts=("${provides[@]}")
 _rawurl='https://raw.githubusercontent.com/4imothy/treegrep/main'
-_license="$_rawurl/LICENSE"
+_license="LICENSE-$pkgver::$_rawurl/LICENSE"
 _linux='unknown-linux-musl'
-_readme="$_rawurl/README.md"
+_readme="README-$pkgver.md::$_rawurl/README.md"
 _releases='https://github.com/4imothy/treegrep/releases/download'
 source_aarch64=(
   "$_pkgname-aarch64-$pkgver.tar.gz::$_releases/$pkgver/treegrep-aarch64-$_linux.tar.gz"
@@ -26,12 +26,12 @@ source_x86_64=(
 )
 
 package() {
-  install -vDm0644 "LICENSE"   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -vDm0644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0644 "README-$pkgver.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0644 "LICENSE-$pkgver"   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   cd "$_pkgname-$CARCH-$_linux"
 
-  install -vDm0755 tgrep "$pkgdir/usr/bin/tgrep"
+  install -vDm0755 -t "$pkgdir/usr/bin/" tgrep
 
   # Bash
   install -vDm0644 completions/tgrep.bash \
