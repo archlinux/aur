@@ -1,4 +1,4 @@
-pkgname=clip-transfer
+pkgname=clip-transfer-bin
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Lightweight LAN clipboard/text sharing tool with automatic server/client detection"
