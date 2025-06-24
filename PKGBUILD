@@ -5,7 +5,7 @@
 _pkgname=code
 pkgname=code-git
 pkgdesc='OSS version of Visual Studio Code editor'
-pkgver=1.102.0.r1.g26fbb81
+pkgver=1.102.0.r1.gc6e8ac1
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
@@ -14,8 +14,8 @@ _electron=electron
 depends=( $_electron ripgrep xdg-utils
 libsecret libxkbfile )
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=( nodejs-lts-iron # see .nvmrc
-git npm pnpm python desktop-file-utils libarchive)
+makedepends=( nodejs-lts-jod # see .nvmrc
+git npm python desktop-file-utils libarchive curl)
 conflicts=(code vscode)
 provides=(code vscode)
 options=(!strip) # for sign of ext
@@ -34,8 +34,6 @@ prepare() {
   rm -rf vscode
   git clone --depth=1 ${url}.git vscode
   cd vscode
-  # vsce-sign for extensions
-  pnpm add @vscode/vsce-sign @vscode/vsce-sign-linux-x64
   
   # electron version
   _electronver=$(npm pkg get devDependencies.electron)
@@ -52,7 +50,7 @@ prepare() {
   patch -p0 -i ../product_json.diff # https://github.com/Microsoft/vscode/issues/31168 for details.
 
   # Set the commit and build date
-  sed -e "s/@COMMIT@/$(git rev-parse HEAD)/" -e "s/@DATE@/$(date -u -Is | sed 's/\+00:00/Z/')/" -i product.json
+  sed -e "s/@COMMIT@/$(git rev-parse HEAD)/" -i product.json
 
   # Appdata and desktop file
   sed -i 's|/usr/share/@@NAME@@/@@NAME@@|@@NAME@@|g
@@ -94,8 +92,10 @@ build() {
   _cache_dir="$XDG_CACHE_HOME"/electron/$(echo -n "https://github.com/electron/electron/releases/download/v${_electronver}" | sha256sum | cut -d ' ' -f 1)
   mkdir -p "$_cache_dir"
   _zip="electron-v${_electronver}-linux-x64.zip"
-  bsdtar --format zip -cf "${_cache_dir}/${_zip}" /dev/null 2> /dev/null
-  echo "$(sha256sum "$_cache_dir/$_zip" | cut -d " " -f 1) *$_zip" > build/checksums/electron.txt
+  # cd "/usr/lib/$_electron" && zip -r "$_cache_dir/$_zip" . && cd - # broken
+  # bsdtar --format zip -cf "${_cache_dir}/${_zip}" /dev/null 2> /dev/null # broken
+  # echo "$(sha256sum "$_cache_dir/$_zip" | cut -d " " -f 1) *$_zip" > build/checksums/electron.txt # broken
+  curl -L https://github.com/electron/electron/releases/download/v${_electronver}/SHASUMS256.txt -o build/checksums/electron.txt
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 
   npm install
