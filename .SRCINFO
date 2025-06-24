@@ -11,6 +11,6 @@ pkgbase = cvrx-appimage
 	conflicts = cvrx
 	options = !strip
 	source = https://github.com/Malthbern/CVRX-Linux/releases/download/v1.0.5/cvrx-1.0.5.AppImage
-	sha256sums = 3a9807e1ec66a4305bb853d071756185d5388027b34cabdab55f487eaa40e8a0
+	sha256sums = 0f5b144e747e269fb5f021cd194807949945a4034bf7f95a352dcb1bf29f45f4
 
 pkgname = cvrx-appimage

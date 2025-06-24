@@ -15,7 +15,7 @@ conflicts=("${_pkgname}")
 options=(!strip)
 _appimage="${_pkgname}-${pkgver}.AppImage"
 source=("https://github.com/Malthbern/CVRX-Linux/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('3a9807e1ec66a4305bb853d071756185d5388027b34cabdab55f487eaa40e8a0')
+sha256sums=('0f5b144e747e269fb5f021cd194807949945a4034bf7f95a352dcb1bf29f45f4')
 
 prepare() {
     # Copying AppImage in case $SRCDEST is mounted with noexec
