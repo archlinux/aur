@@ -6,6 +6,8 @@ pkgbase = libffshit-git
 	arch = any
 	license = MIT
 	makedepends = cmake
+	depends = spdlog
+	depends = fmt
 	source = git+https://github.com/siemens-mobile-hacks/libffshit
 	sha256sums = SKIP
 
