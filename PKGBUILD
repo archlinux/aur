@@ -1,12 +1,12 @@
 # Maintainer: Kimiblock Moe
 pkgname=colortest-git
-pkgver=r4.a068b31
+pkgver=r8.4589873
 pkgrel=1
 epoch=
-pkgdesc=""
+pkgdesc="None"
 arch=('x86_64')
 url="https://invent.kde.org/zamundaaa/colortest"
-license=(unknown)
+license=(BSD-3-Clause AND CC0-1.0 AND FSFAP AND GPL-2.0-or-later)
 provides=(colortest)
 groups=()
 options=()
@@ -16,7 +16,7 @@ makedepends+=(git cmake extra-cmake-modules)
 source=(
 	git+"https://invent.kde.org/zamundaaa/colortest.git"
 )
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 function pkgver() {
 	cd "${srcdir}/colortest"
@@ -38,4 +38,6 @@ function build() {
 
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
+	install -d "${pkgdir}/usr/share/licenses"
+	cp -r "${srcdir}/colortest/LICENSES" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
