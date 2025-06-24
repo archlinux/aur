@@ -1,0 +1,14 @@
+pkgbase = proton-shim
+	pkgdesc = Easily run programs and scripts inside Steam game prefixes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/Wisher/ProtonShim
+	arch = any
+	license = MIT
+	depends = bash
+	optdepends = steam: required for default proton installations
+	optdepends = proton-ge-custom-bin: optional proton variant support
+	source = proton-shim-1.0.0.tar.gz::https://gitlab.com/api/v4/projects/71058782/packages/generic/release/1.0.0/proton-shim-1.0.0.tar.gz
+	sha256sums = c8f6495446f76c98c84239ce8bd63eaa7f15d6404685d8b1bf693bb98c15d637
+
+pkgname = proton-shim
