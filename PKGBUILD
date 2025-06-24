@@ -10,7 +10,7 @@ install="${_pkgname}.install"
 license=('AGPL-3.0-only')
 makedepends=('git')
 pkgrel=3
-pkgver="r7.f9565f4"
+pkgver="r10.b3e35ec"
 sha256sums=('SKIP')
 source=("git+${url}.git")
 

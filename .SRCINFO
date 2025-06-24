@@ -1,6 +1,6 @@
 pkgbase = trezord-runit-git
 	pkgdesc = Runit service for Trezor Communication Daemon (aka Trezor Bridge)
-	pkgver = r7.f9565f4
+	pkgver = r10.b3e35ec
 	pkgrel = 3
 	url = https://codeberg.org/sripwoud/trezord-runit
 	install = trezord-runit.install

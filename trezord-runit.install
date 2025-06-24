@@ -8,6 +8,7 @@ post_install() {
 }
 
 post_remove() {
+  sv stop trezord
   rm -f /run/runit/service/trezord
   rm -fr /etc/runit/sv/trezord
 }
