@@ -1,6 +1,6 @@
 # Maintainer: Awkee <xiaoyu0720@gmail.com>
 pkgname='libwaybar_cffi_lyrics'
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="a cffi module for waybar to get lyrics from various music providers"
 _destdir=$HOME/.config/waybar/cffi
@@ -10,7 +10,7 @@ license=("GPL-3.0-or-later")
 
 url="https://github.com/switchToLinux/libwaybar_cffi_lyrics"
 source_x86_64=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz")
-sha256sums_x86_64=('44b0407b3bc0af75ff2ee923a55e0e9deb48fc31fdea3f99d4d30fd9ce73b90a')
+sha256sums_x86_64=('b71a2845d520507afe52af69c59badb41ef23ba71f9075ec1929e14e648c75b2')
 
 makedepends=("meson" "git" "ninja")
 depends=("gtk3" "libepoxy" "sdbus-cpp" "libcurl-gnutls" "glm")
