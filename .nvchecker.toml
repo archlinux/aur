@@ -1,0 +1,4 @@
+[python-flake8-import-order]
+source = "github"
+github = "PyCQA/flake8-import-order"
+use_latest_release = "true"
