@@ -1,0 +1,12 @@
+pkgbase = bs-thread-pool
+	pkgdesc = BS::thread_pool: a fast, lightweight, modern, and easy-to-use C++17 / C++20 / C++23 thread pool library
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/bshoshany/thread-pool
+	arch = any
+	license = MIT
+	depends = gcc-libs
+	source = https://github.com/bshoshany/thread-pool/archive/refs/tags/v4.1.0.tar.gz
+	sha256sums = be7abecbc420bb87919eeef729b13ff7c29d5ce547bdae284923296c695415bd
+
+pkgname = bs-thread-pool
