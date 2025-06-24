@@ -1,6 +1,6 @@
 pkgbase = python-p115client
 	pkgdesc = Python 115 webdisk client.
-	pkgver = 0.0.5.11.9
+	pkgver = 0.0.5.11.9.1
 	pkgrel = 1
 	url = https://pypi.org/project/p115client
 	arch = any
@@ -45,7 +45,7 @@ pkgbase = python-p115client
 	conflicts = python-p115client
 	options = !strip
 	options = !debug
-	source = p115client-0.0.5.11.9.tar.gz::https://files.pythonhosted.org/packages/source/p/p115client/p115client-0.0.5.11.9.tar.gz
-	sha256sums = f482d300e0812a9520ce6cd473a34339cf392d6dc43970400ac282b0d2e3bd8b
+	source = p115client-0.0.5.11.9.1.tar.gz::https://files.pythonhosted.org/packages/source/p/p115client/p115client-0.0.5.11.9.1.tar.gz
+	sha256sums = 13467fae797ec25e73a0574109ca7b7c04c805d105ffdc4f3021d3501cf94919
 
 pkgname = python-p115client
