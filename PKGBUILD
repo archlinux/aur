@@ -2,7 +2,7 @@
 pkgname=chromium-ffmpeg-codecs-git
 _ver=7.1 # 7.2 does not work yet
 pkgver=${_ver}.c136
-pkgrel=2
+pkgrel=3
 pkgdesc='Additional codecs for Chromiums (non vendored ffmpeg)'
 arch=('x86_64')
 url="https://git.ffmpeg.org/ffmpeg"
@@ -67,11 +67,12 @@ package(){
   for p in "${pkgdir}"/usr/lib/opera{,-developer,-beta}/lib_extra
   do
     install -d "$p"
-    ln -svf /usr/lib/${_name}/libffmpeg.so "$p"/libffmpeg.so
+    ln -sf /usr/lib/${_name}/libffmpeg.so "$p"/libffmpeg.so
   done
   install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
   for n in 7.4 7.5 7.6 7.7 7.8 7.9 8.0; do
-    ln -svf /usr/lib/${_name}/libffmpeg.so "$pkgdir"/opt/vivaldi/libffmpeg.so.$n
-    ln -svf /usr/lib/${_name}/libffmpeg.so "$pkgdir"/opt/vivaldi-snapshot/libffmpeg.so.$n
+    ln -sf /usr/lib/${_name}/libffmpeg.so "$pkgdir"/opt/vivaldi/libffmpeg.so.$n
+    ln -sf /usr/lib/${_name}/libffmpeg.so "$pkgdir"/opt/vivaldi-snapshot/libffmpeg.so.$n
   done
+  echo Warning: 'opera-*' needs to replace /usr/lib/libffmpeg.so directly instead of using lib_extra by unknown reason.
 }
