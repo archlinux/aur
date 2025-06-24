@@ -1,0 +1,12 @@
+post_install() {
+	echo "Autoinstall start..."
+	bash /usr/share/zsh-komander/install.sh
+}
+
+post_update() {
+	post_install
+}
+
+post_remove() {
+	echo "Komander is removed..."
+}
