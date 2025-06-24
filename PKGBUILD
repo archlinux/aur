@@ -1,5 +1,5 @@
 pkgname=pipac
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Maintain Arch linux system packages based on package lists (declarative package management)."
 arch=('any')
