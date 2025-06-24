@@ -1,28 +1,20 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# The following guidelines are specific to BZR, GIT, HG and SVN packages.
-# Other VCS sources are not natively supported by makepkg yet.
-
 # Maintainer: Jesse R Codling <codling@umich.edu>
 _pkgname=radxa-firmware
 pkgname=$_pkgname-git
-pkgver=0.2.21.r2.104ed72
+pkgver=0.2.22.r0.e84f1d9
 pkgrel=1
 pkgdesc="Supplemental firmwares for Radxa boards"
 arch=(any)
 url="https://github.com/radxa-pkg/radxa-firmware/"
 license=('custom')
 groups=()
-depends=()
+depends=('linux-firmware-whence')
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
-options=()
+options=(!strip)
 install=
 source=("$_pkgname::git+https://github.com/radxa-pkg/radxa-firmware.git")
 noextract=()
@@ -64,7 +56,7 @@ prepare() {
 package() {
 	mkdir -p "${pkgdir}/usr/lib/"
 
-	cp -dr "$srcdir/${_pkgname}/firmware/" "${pkgdir}/usr/lib/"
+	cp -a "$srcdir/${_pkgname}/firmware/" "${pkgdir}/usr/lib/"
 
 
 }
