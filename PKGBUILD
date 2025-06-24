@@ -1,13 +1,13 @@
 # Maintainer: Petr Spacek <pspacek@isc.org>
 pkgname=dnscap-git
-pkgver=v1.12.0.r19.46b5870
+pkgver=v2.4.0.r1.dd36d11
 pkgrel=1
 pkgdesc="Network capture utility designed specifically for DNS traffic"
 arch=(x86_64)
 url="https://www.dns-oarc.net/tools/dnscap"
 license=('ISC')
-depends=(ldns libpcap libyaml openssl zlib)
-makedepends=(git perl-yaml)
+depends=(glibc ldns libpcap lz4 openssl perl-yaml xz zlib zstd)
+makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/DNS-OARC/dnscap.git')
