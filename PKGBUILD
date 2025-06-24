@@ -1,7 +1,7 @@
 # Maintainer: Larry Oates <leafman12345@gmail.com>
 pkgname=doomfire-wallpaper
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="DOOM-style animated fire wallpaper for Hyprpaper"
 arch=('x86_64')
 url="https://github.com/Leafmun-certii/doom_fire_wallpaper"
@@ -9,12 +9,12 @@ giturl="https://github.com/Leafmun-certii/doom_fire_wallpaper"
 license=('0BSD')
 depends=('hyprpaper' 'grim' 'rust' 'cargo')
 makedepends=('git' 'cargo')
-source=("$pkgname::$giturl")
+source=("doom_fire_wallpaper::git+$giturl")
 md5sums=('SKIP')
 install=doomfire-wallpaper.install
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/doom_fire_wallpaper"
   cargo build --release --locked --bin doom-fire-wallpaper
 }
 
