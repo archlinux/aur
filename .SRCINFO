@@ -1,0 +1,15 @@
+pkgbase = nordlayerd-runit-git
+	pkgdesc = Runit service script for Nordlayer
+	pkgver = r1.31d3d08
+	pkgrel = 1
+	url = https://codeberg.org/sripwoud/nordlayerd-runit
+	install = nordlayerd-runit.install
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = git
+	depends = runit
+	depends = nordlayer
+	source = git+https://codeberg.org/sripwoud/nordlayerd-runit.git
+	sha256sums = SKIP
+
+pkgname = nordlayerd-runit-git
