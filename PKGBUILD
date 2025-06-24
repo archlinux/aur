@@ -6,7 +6,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=proxygen
-pkgver=2025.06.16.00
+pkgver=2025.06.23.00
 pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
 arch=(x86_64)
@@ -44,7 +44,7 @@ provides=(
   libproxygenhttpserver.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0d3fca76e727fc435ca6154487ad33f99a1593cc78175b2d78d3c1bf806c3cc8')
+sha256sums=('8bf67f46b831f9e5a7f633201500dbdd3a763a7798c6aa2a1f7edbaf0dfcb95f')
 
 prepare() {
   cd $pkgname-$pkgver
