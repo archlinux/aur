@@ -3,7 +3,7 @@
 pkgname=llama.cpp-vulkan
 _pkgname=${pkgname%%-vulkan}
 pkgver=b5747
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
@@ -12,7 +12,7 @@ depends=(
   curl
   gcc-libs
   glibc
-  libggml-vulkan
+  ggml-vulkan
   python
   python-numpy
   python-sentencepiece
