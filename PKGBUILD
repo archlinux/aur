@@ -1,6 +1,6 @@
 # Maintainer: Christos Paloukas <christos@paloukas.com>
 pkgname=k6-studio-bin
-_pkgver=1.3.0
+_pkgver=1.4.0
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="Desktop application to help generate k6 test scripts (binary release)"
@@ -29,7 +29,7 @@ optdepends=(
     'lsb-release: for providing Linux Standard Base distribution information (suggested by original package)'
 )
 source=("https://github.com/grafana/k6-studio/releases/download/v${_pkgver}/k6-studio_${_pkgver}_amd64.deb")
-sha256sums=('9e2ba2b464d2572ee1d35f161428114d4bc47ebc6d16d84a524327a55e5a6b8b')
+sha256sums=('a0850e06d1cad414f423ea426246c735c257fc3c768ef146fff6b54ab72b98e2')
 
 prepare() {
     cd "$srcdir"
