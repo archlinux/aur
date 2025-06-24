@@ -1,0 +1,4 @@
+[epson-thermal-printer-driver]
+source = "regex"
+url = 'https://download.ebz.epson.net/dsc/du/02/DriverDownloadInfo.do?LG2=EN&CN2=US&CTI=205&PRN=Software&OSC=LX'
+regex = 'tmx-cups-src-ImpactReceipt-(.*)_pck_e.zip'
