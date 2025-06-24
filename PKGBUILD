@@ -6,7 +6,7 @@ pkgdesc='Siemens filesystem extractor.'
 arch=(any)
 url='https://github.com/siemens-mobile-hacks/ffnightman'
 license=(MIT)
-depends=(libffshit-git)
+depends=(libffshit-git spdlog fmt)
 makedepends=(cmake)
 source=(git+https://github.com/siemens-mobile-hacks/ffnightman)
 sha256sums=('SKIP')
@@ -28,9 +28,5 @@ package() {
 
 pkgver() {
 	cd "ffnightman"
-	cmake_version=$(cat CMakeLists.txt | grep 'project(' -i | grep -P 'VERSION[ ]*[.0-9]*' -o | head -n1 | awk '{ print $2 }')
-	if [[ $cmake_version = "" ]]; then
-		cmake_version="0.0.1"
-	fi
-	echo $cmake_version
+	cat CMakeLists.txt | grep 'project(' -i | grep -P 'VERSION[ ]*[.0-9]*' -o | head -n1 | awk '{ print $2 }'
 }

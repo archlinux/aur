@@ -7,6 +7,8 @@ pkgbase = ffnightman-git
 	license = MIT
 	makedepends = cmake
 	depends = libffshit-git
+	depends = spdlog
+	depends = fmt
 	source = git+https://github.com/siemens-mobile-hacks/ffnightman
 	sha256sums = SKIP
 
