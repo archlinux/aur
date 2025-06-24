@@ -58,7 +58,7 @@ build() {
     -Wl,--no-whole-archive \
     -lpthread $(pkgconf --libs zlib opus) \
     -Wl,--no-as-needed -Wl,-Bsymbolic \
-    -o libffmpeg.so
+    -Wl,-soname,libffmpeg.so -o libffmpeg.so
 }
 
 package(){
