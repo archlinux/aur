@@ -2,8 +2,8 @@
 
 _pkgname="redot-mono"
 pkgname="$_pkgname-bin"
-_pkgver=4.3.1-rc.1
-pkgver=4.3.1_rc.1
+_pkgver=4.4-alpha.2
+pkgver=4.4_alpha.2
 pkgrel=1
 pkgdesc="A multi-platform 2D and 3D game engine"
 url="https://www.redotengine.org/"
@@ -62,10 +62,10 @@ source_i686=("https://github.com/Redot-Engine/redot-engine/releases/download/red
 source_armv7h=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}_mono_linux_arm32.zip")
 source_aarch64=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}_mono_linux_arm64.zip")
 
-sha512sums_x86_64=('61dd3e7e38cc998c79d6df5e49581dec9b124deedfb5cd94a6313725478515b63c36983743a49fef41fd848376ed2eb927875072448cd98b68202bd1946cf654')
-sha512sums_i686=('b935100c6ce93ea5a8ff0e3d73d13acd80e0f24867b09f461197cf30603de99311fc3197e8432e1e1f52c58d179b5f3a8e06b0c6bb6c282f6281c5400b658186')
-sha512sums_armv7h=('d2786985b3cc7c6b38fd0349a6fe1d466a33c77a0fbf69cb3f2969e523ac9f2be0834b577f385c7b4996a29667f8b91fc5a2e3cbb023d1f029681b4a62378184')
-sha512sums_aarch64=('7585d37e9aa52aafa103e2806c987b8f1c4c724e3c63ae07e7363514ee541ddd96f3e0a3813d99ea4183434680b60d7bedd7bc1079d8c8c19666676947b3b2f3')
+sha256sums_x86_64=('100c43c2ae9fa01875c19868c3f3e78ebf754151df3c2175b7d3eea73922a8ae')
+sha256sums_i686=('f259a4c8e520e5c6611958a148939a8d1a2d8376d3e696ca4283b58f1cc6e8e7')
+sha256sums_armv7h=('0dc6589aa28a9a55df484977036a17bdb94a5bb59d534664df84c66707d70dce')
+sha256sums_aarch64=('dc822562194597cb5fa97d1e879148680feaf4cc06583957705d795f98d068c0')
 
 package()
 {
