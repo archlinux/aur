@@ -9,9 +9,9 @@ license=('MIT')
 depends=()
 provides=('gdsongextractor')
 conflicts=('gdsongextractor')
-source=("GDSongExtractor-linux::https://github.com/MalikHw/GDSongExtractor/releases/download/v1.0.2/GDSongExtractor-linux"
-        "gdsongextractor.desktop::https://github.com/MalikHw/GDSongExtractor/releases/download/v1.0.2/gdsongextractor.desktop"
-        "gdsongextractor.png::https://github.com/MalikHw/GDSongExtractor/releases/download/v1.0.2/icon.png")
+source=("GDSongExtractor-linux::https://github.com/MalikHw/GDSongExtractor/releases/latest/download/GDSongExtractor-linux"
+        "gdsongextractor.desktop::https://github.com/MalikHw/GDSongExtractor/releases/latest/download/gdsongextractor.desktop"
+        "gdsongextractor.png::https://github.com/MalikHw/GDSongExtractor/releases/latest/download/icon.png")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
