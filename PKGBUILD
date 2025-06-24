@@ -1,7 +1,7 @@
 # Maintainer: Syaddad Ali Sulaiman Hakim <contact@mail.sadad.rest>
 pkgname=upnote-appimage
 _pkgname=UpNote
-pkgver=9.11.12
+pkgver=9.11.13
 pkgrel=1
 pkgdesc="Cross-platform note-taking application"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('upnote')
 options=('!strip')
 source=("${_pkgname}-${pkgver}.AppImage::https://download.getupnote.com/app/UpNote.AppImage"
         "upnote.desktop")
-sha256sums=('99a625e1f22631c8fe3eff90fdaf09e4c0d2c9a4097f26f4106d06ad00a5c58a'
+sha256sums=('63ad9e35de5ada9af733294b1dd9f9cd6bc7404bacdd98e2a038e6fa45f072b8'
             '430e558daaf1a5eeaa65a3e2d1fc1841072d4dda9cb6d30504285efb3ae88f1e')
 
 package() {
