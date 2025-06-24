@@ -1,6 +1,9 @@
 post_install() {
 	echo "Autoinstall start..."
-	bash /usr/share/zsh-komander/install.sh
+	echo "Change shell..."
+	chsh -s zsh
+	echo "Create zsh-komander..."
+	mv "/usr/share/zsh-komander/zsh-komander.zsh" "$HOME/.zshrc"
 }
 
 post_update() {
