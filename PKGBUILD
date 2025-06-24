@@ -8,6 +8,7 @@
 ## links
 # https://www.gnu.org/software/gnuzilla/
 # https://git.savannah.gnu.org/cgit/gnuzilla.git
+# https://git.savannah.gnu.org/gitweb/?p=gnuzilla.git
 
 ## options
 : ${_build_save_source:=true}
@@ -17,17 +18,17 @@
 : ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=true}
 
-: ${_ver_clang=17}
-: ${RUSTUP_TOOLCHAIN:=1.77.2}
+: ${_ver_clang=}
+: ${RUSTUP_TOOLCHAIN:=stable}
 
 # set to download only one language; en-US does not work
-: ${_lang:=}
+: ${_lang=}
 
 ## update
-_icver="115.18.0"
-_commit="dc99e15355412bc9b11b34d3fe5729bed1c251de"
-_icsum="400d9708accf038af69ea991cec4357c5ff7188e62152f8993053736746b2a62"
-_ffsum="2a79174f743caa1bffcc6f4e95e4642b0f36ab24cfa94e4dca0663e0d45c344c"
+_icver="128.12.0"
+_commit="7286181cbff5c4b98ed9246366a85ae1fbc8f54d"
+_icsum="1f6d7577828c0c2eedcb4d761b6b7e7fbaa8d300f1ef866a761247991ee8a622"
+_ffsum="2bedeb86c6cb16cd3fce88d42ae4e245bafe2c6e9221ba8e445b8e02e89d973f"
 
 if [ -n "$_srcinfo" ]; then
   : ${_lang:=en-US}
@@ -51,7 +52,7 @@ license=('MPL-2.0')
 arch=('x86_64')
 
 depends=(
-  dbus-glib
+  dbus
   ffmpeg
   gtk3
   libevent
@@ -86,7 +87,6 @@ makedepends=(
   nodejs
   python
   python-setuptools
-  rustup
   unzip
   wasi-libc
   wasi-libc++
@@ -94,7 +94,7 @@ makedepends=(
   yasm
   zip
 
-  ## _makeicecat
+  ## makeicecat
   git
   m4
   python-jsonschema
@@ -119,7 +119,7 @@ if [[ "${_build_pgo::1}" == "t" ]]; then
     makedepends+=(
       weston
       xorg-xwayland
-      wlheadless-run # AUR
+      wlheadless-run # aur/xwayland-run
     )
   fi
 fi
@@ -137,19 +137,16 @@ noextract=("firefox-${pkgver}esr.source.tar.xz")
 _source_icecat() {
   _pkgsrc="$_pkgname-$pkgver"
   _pkgsrc_gnuzilla="gnuzilla-$_commit"
-  _pkgsrc_firefox="firefox-${pkgver}"
+  _pkgsrc_firefox="firefox-$pkgver"
   _pkgext="tar.gz"
   source=(
-    "https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/$_pkgsrc_gnuzilla.$_pkgext"
-    "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"{,.asc}
+    "$_pkgsrc_gnuzilla.$_pkgext"::"https://cgit.git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-$_commit.$_pkgext"
+    "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"
   )
   sha256sums=(
     "$_icsum"
     "$_ffsum"
-    'SKIP'
   )
-
-  validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
   _languages=(
     ach af an ar ast az be bg bn br bs ca ca-valencia cak cs cy da de dsb
@@ -170,47 +167,10 @@ _source_icecat() {
   done
 }
 
-_source_patches() {
-  local _url_aur="https://aur.archlinux.org/cgit/aur.git/plain"
-  local _url_arch="https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw"
-
-  local _patch_commit_1="24a6ea8"
-  source+=(
-    "18d19413472f-$_patch_commit_1.patch"::"$_url_aur/18d19413472f.patch?h=firefox-esr&id=$_patch_commit_1"
-    "b1cc62489fae-$_patch_commit_1.patch"::"$_url_aur/b1cc62489fae.patch?h=firefox-esr&id=$_patch_commit_1"
-  )
-  sha256sums+=(
-    '3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18'
-    'f66a944fa8804c16b1f7bd9b42b18bfc2552a891adc148085f4b91685e8db117'
-  )
-
-  local _patch_commit_2="3d03cbfb37298c494be59bb34e3da365f10c00a3"
-  source+=(
-    "patch-python3.12-bug1831512-${_patch_commit_2::7}.patch"::"$_url_aur/patch-python3.12-bug1831512.patch?h=firedragon&id=$_patch_commit_2"
-    "patch-python3.12-bug1860051-${_patch_commit_2::7}.patch"::"$_url_aur/patch-python3.12-bug1860051.patch?h=firedragon&id=$_patch_commit_2"
-    "patch-python3.12-bug1866829-${_patch_commit_2::7}.patch"::"$_url_aur/patch-python3.12-bug1866829.patch?h=firedragon&id=$_patch_commit_2"
-    "patch-python3.12-bug1874280-${_patch_commit_2::7}.patch"::"$_url_aur/patch-python3.12-bug1874280.patch?h=firedragon&id=$_patch_commit_2"
-  )
-  sha256sums+=(
-    '9516c36c145d365c3b65153d83a5b3b0dd8a319b5c30d47a390070892bd431b3'
-    '168d16a027a81c311c58f9302858244dfa5517f0a95a8d3df1abbf9b93b9d455'
-    'df27ed1e0da5b192224978dc2a593a97e18e6e22062c611fc32b277500324e62'
-    'cf1c69fd3338fd8f5e482f55b669160b08dfb021f2348b620f0a85dd9dee8150'
-  )
-
-  local _patch_commit_3=d2127a9424507a38cff13cce49403214a8190bed
-  source+=(
-    "0004-Bug-1912663-${_patch_commit_3::7}.patch"::"$_url_arch/$_patch_commit_3/0004-Bug-1912663-Fix-some-build-issues-with-cbindgen-0.27.patch"
-  )
-  sha256sums+=(
-    'dd2aba1c02c21b89ceed0713a6aa0241365fe79b1e3a4d21cdcd7231db6fab5e'
-  )
-}
-
 _source_icecat
-_source_patches
 
 _make_icecat() {
+  # restore icecat tarball, if exists
   if [ "${_build_repatch::1}" != "t" ] && [ -e "$SRCDEST/$_pkgsrc.tar.zst" ]; then
     echo "Restoring previously patched sources..."
     rm -rf "$srcdir/$_pkgsrc"
@@ -221,11 +181,11 @@ _make_icecat() {
   pushd "$_pkgsrc_gnuzilla"
 
   # clean output in case there is already an old build
-  mkdir output || rm -rf output/*
-  mkdir output/l10n
+  mkdir -p output || rm -rf output/*
+  mkdir -p output/l10n
 
   echo "Preparing Firefox ESR..."
-  # cp --reflink=auto -f "$srcdir/firefox-${pkgver}esr.source.tar.xz"{,.asc} "$_pkgsrc_gnuzilla"/output/
+  #cp -f "$srcdir/firefox-${pkgver}esr.source.tar.xz"{,.asc} "$_pkgsrc_gnuzilla"/output/
 
   bsdtar xf "$srcdir/firefox-${pkgver}esr.source.tar.xz"
   mv "$_pkgsrc_firefox" "$srcdir/$_pkgsrc_gnuzilla/output/$_pkgsrc"
@@ -242,20 +202,25 @@ _make_icecat() {
     rm -rf "output/l10n/$_locale"/.hg*
   done
 
+  mv output/l10n "output/$_pkgsrc/"
+
   echo "Patching sources..."
 
-  # don't make source tarball
+  # don't reset output folder (already done)
+  sed -e '/^prepare_env$/d' -i makeicecat
+
+  # don't make source tarball (done later)
   sed '/^finalize_sourceball$/d' -i makeicecat
 
-  # don't redownload or reextract firefox
+  # don't redownload or reextract firefox (already done)
   sed \
     -e '/^fetch_source$/d' \
     -e '/^verify_sources$/d' \
     -e '/^extract_sources$/d' \
     -i makeicecat
 
-  # don't redownload languages
-  sed -E -e '/DEVEL/s&^(\s*)!.*continue$&\1continue&' -i makeicecat
+  # don't redownload languages (already done)
+  sed '/^fetch_l10n$/d' -i makeicecat
 
   # remove unwanted language data
   for i in data/files-to-append/l10n/*; do
@@ -267,9 +232,11 @@ _make_icecat() {
 
   # produce icecat sources
   cd output
-  bash ../makeicecat
+  source ../makeicecat
+
   popd
 
+  # save icecat tarball
   if [[ "${_build_save_source::1}" == "t" ]]; then
     echo "Saving patched sources..."
     [ -e "$SRCDEST/$_pkgsrc.tar.zst" ] && rm -rf "$SRCDEST/$_pkgsrc.tar.zst"
@@ -279,10 +246,9 @@ _make_icecat() {
   fi
 }
 
-prepare() {
+_prepare_icecat() (
   cat > icecat.desktop << END
 [Desktop Entry]
-Version=1.0
 Name=IceCat
 GenericName=Web Browser
 Comment=Browse the World Wide Web
@@ -317,17 +283,16 @@ END
   cd "$_pkgsrc"
 
   # clear forced startup pages
-  sed -E 's&^\s*pref\("startup\.homepage.*$&&' -i "browser/branding/official/pref/icecat-branding.js"
+  sed -E -e 's&^\s*pref\("startup\.homepage.*$&&' -i "browser/branding/official/pref/icecat-branding.js"
 
-  # disable extensions, otherwise profiling freezes
-  cp "browser/app/Makefile.in" "$srcdir/Makefile.in"
-  sed -E -e '/^\t.*\/extensions\/gnu\/\*.*$/d' -i "browser/app/Makefile.in"
+  # calculate core availability
+  local _mem _nproc _cores
+  _mem=$(cat /proc/meminfo | grep MemFree | grep -Eom1 '[0-9]+')
+  _nproc=$(nproc)
+  _cores=$((_mem / (1024 * 1024) < _nproc ? _mem / (1024 * 1024) - 1 : _nproc - 1))
+  _cores=$((_cores < 1 ? 1 : _cores))
 
-  cp "browser/installer/package-manifest.in" "$srcdir/package-manifest.in"
-  sed -E -e '/^.*\/browser\/extensions\/.*$/d' -i "browser/installer/package-manifest.in"
-
-  cp "browser/installer/allowed-dupes.mn" "$srcdir/allowed-dupes.mn"
-  sed -E -e '/^browser\/extensions\/.*$/d' -i "browser/installer/allowed-dupes.mn"
+  printf '\nFree RAM: %s\nCores: %s\nUsing: %s\n\n' "$((_mem / (1024 * 1024)))" "$_nproc" "$_cores"
 
   # configure
   cat > ../mozconfig << END
@@ -335,6 +300,7 @@ ac_add_options --enable-application=browser
 ac_add_options --disable-artifact-builds
 
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
+mk_add_options MOZ_PARALLEL_BUILD=${_cores:-4}
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
@@ -366,6 +332,8 @@ ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --with-system-webp
 ac_add_options --with-system-zlib
+ac_add_options --enable-system-ffi
+ac_add_options --enable-system-pixman
 
 # Features
 ac_add_options --enable-alsa
@@ -405,29 +373,17 @@ ac_add_options OPT_LEVEL="3"
 ac_add_options RUSTC_OPT_LEVEL="3"
 
 # Other
-export AR=llvm-ar${_ver_clang:+-$_ver_clang}
 export CC=clang${_ver_clang:+-$_ver_clang}
 export CXX=clang++${_ver_clang:+-$_ver_clang}
+export AR=llvm-ar${_ver_clang:+-$_ver_clang}
 export NM=llvm-nm${_ver_clang:+-$_ver_clang}
 export RANLIB=llvm-ranlib${_ver_clang:+-$_ver_clang}
 END
-
-  local src _patches
-  _patches=(
-    ${source[@]}
-  )
-  for src in "${_patches[@]}"; do
-    src="${src%%::*}"
-    src="${src%.zst}"
-    if [[ $src == *.patch ]]; then
-      printf '\nApplying patch: %s\n' "$src"
-      patch -Np1 -F100 -i "${srcdir:?}/$src"
-      echo
-    fi
-  done
-}
+)
 
 build() (
+  _run_if_exists _prepare_icecat
+
   cd "$_pkgsrc"
 
   export PATH LD_LIBRARY_PATH RUSTUP_TOOLCHAIN
@@ -435,7 +391,7 @@ build() (
   LD_LIBRARY_PATH="/usr/lib/llvm${_ver_clang:-}/lib"
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
-  [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
+  [ ! -d "$XDG_RUNTIME_DIR" ] && mkdir -pm700 "${XDG_RUNTIME_DIR:?}"
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -445,6 +401,10 @@ build() (
   # malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+
+  # Breaks compilation since https://bugzilla.mozilla.org/show_bug.cgi?id=1896066
+  CFLAGS="${CFLAGS/-fexceptions/}"
+  CXXFLAGS="${CXXFLAGS/-fexceptions/}"
 
   # LTO/PGO needs more open files
   ulimit -n 4096
@@ -456,7 +416,7 @@ build() (
     _pkgver_prof=$(
       cd "${SRCDEST:-$startdir}"
       for i in *.profdata; do [ -f "$i" ] && echo "$i"; done \
-        | sort -rV | head -1 | sed -E 's&^[^0-9]+-([0-9\.]+)-merged.profdata&\1&'
+        | sort -rV | head -1 | sed -E -e 's&^[^0-9]+-([0-9\.]+)-merged.profdata&\1&'
     )
 
     # new profile for new major version
@@ -486,12 +446,22 @@ build() (
 
       if [[ -s "$_old_jarlog" ]]; then
         echo "Restoring old jar log."
-        cp --reflink=auto -f "$_old_jarlog" jarlog
+        cp -f "$_old_jarlog" jarlog
       fi
     fi
 
     # Make new profile
     if [[ "${_build_pgo_reuse::1}" != "t" ]] || [[ ! -s merged.profdata ]]; then
+      # disable extensions, otherwise profiling freezes
+      cp "browser/app/Makefile.in" "$srcdir/Makefile.in"
+      sed -E -e '/^\t.*\/extensions\/gnu\/\*.*$/d' -i "browser/app/Makefile.in"
+
+      cp "browser/installer/package-manifest.in" "$srcdir/package-manifest.in"
+      sed -E -e '/^.*\/browser\/extensions\/.*$/d' -i "browser/installer/package-manifest.in"
+
+      cp "browser/installer/allowed-dupes.mn" "$srcdir/allowed-dupes.mn"
+      sed -E -e '/^browser\/extensions\/.*$/d' -i "browser/installer/allowed-dupes.mn"
+
       echo "Building instrumented browser..."
       cat > .mozconfig ../mozconfig - << END
 ac_add_options --enable-profile-generate=cross
@@ -525,6 +495,11 @@ END
 
       echo "Removing instrumented browser..."
       ./mach clobber
+
+      # reenable extensions
+      cp "$srcdir/Makefile.in" "browser/app/Makefile.in"
+      cp "$srcdir/package-manifest.in" "browser/installer/package-manifest.in"
+      cp "$srcdir/allowed-dupes.mn" "browser/installer/allowed-dupes.mn"
     fi
 
     echo "Building optimized browser..."
@@ -538,7 +513,7 @@ ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 END
 
       # save profdata for reuse
-      cp --reflink=auto -f merged.profdata "$_old_profdata"
+      cp -f merged.profdata "$_old_profdata"
     else
       echo "Profile data not found."
     fi
@@ -550,15 +525,10 @@ ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
 
       # save jarlog for reuse
-      cp --reflink=auto -f jarlog "$_old_jarlog"
+      cp -f jarlog "$_old_jarlog"
     else
       echo "Jar log not found."
     fi
-
-    # reenable extensions
-    cp "$srcdir/Makefile.in" "browser/app/Makefile.in"
-    cp "$srcdir/package-manifest.in" "browser/installer/package-manifest.in"
-    cp "$srcdir/allowed-dupes.mn" "browser/installer/allowed-dupes.mn"
 
     ./mach build
   else
@@ -626,12 +596,6 @@ END
   # Replace duplicate binary
   ln -sf "/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 
-  # Use system certificates
-  local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
-  if [[ -e "$nssckbi" ]]; then
-    ln -sf "/usr/lib/libnssckbi.so" "$nssckbi"
-  fi
-
   # desktop file
   install -Dm644 ../$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
@@ -642,4 +606,10 @@ END
     install -Dm644 browser/branding/$theme/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
+}
+
+_run_if_exists() {
+  if declare -F "$1" > /dev/null; then
+    eval "$1"
+  fi
 }
