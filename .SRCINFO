@@ -1,7 +1,7 @@
 pkgbase = xdg-desktop-portal-git
 	pkgdesc = Desktop integration portals for sandboxed apps
 	pkgver = 1.20.1.r29.g522236e4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flatpak/xdg-desktop-portal
 	arch = x86_64
 	license = LGPL

@@ -5,7 +5,7 @@
 pkgname=xdg-desktop-portal-git
 _pkgname="${pkgname%-git}"
 pkgver=1.20.1.r29.g522236e4
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/${_pkgname}"
 arch=(x86_64)
