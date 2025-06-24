@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=141.0a1+20250602.1+h5d1f6b7f3ffb
+pkgver=142.0a1+20250624.1+hd06391b8fd49
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
@@ -295,12 +295,6 @@ END
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -srfv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/lib/$pkgname/firefox-bin"
-
-  # Use system certificates
-  local nssckbi="$pkgdir/usr/lib/$pkgname/libnssckbi.so"
-  if [[ -e $nssckbi ]]; then
-    ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
-  fi
 
   local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$pkgname.search-provider.ini"
   install -Dvm644 /dev/stdin "$sprovider" <<END
