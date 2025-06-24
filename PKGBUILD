@@ -4,7 +4,7 @@
 
 pkgname=xdg-desktop-portal-git
 _pkgname="${pkgname%-git}"
-pkgver=1.18.1.r115.gb1a3d1e
+pkgver=1.20.1.r29.g522236e4
 pkgrel=1
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/${_pkgname}"
@@ -33,6 +33,8 @@ makedepends=(
   python-sphinx-furo
   python-sphinxext-opengraph
   xmlto
+  glib2-devel
+  umockdev
 )
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
