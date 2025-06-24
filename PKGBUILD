@@ -6,7 +6,7 @@
 
 pkgname=xdelta
 pkgver=1.1.4
-pkgrel=7
+pkgrel=8
 pkgdesc='Binary file delta generator'
 arch=('x86_64' 'i686')
 url="http://sourceforge.net/projects/xdelta/"
