@@ -1,0 +1,11 @@
+--- /home/crl/code/aur/rapidsai/cuml/src/cuml-25.06.00/cpp/src/common/cumlHandle.hpp	2025-06-06 20:44:48.000000000 +0800
++++ /home/crl/code/aur/rapidsai/cuml/src/cuml-25.06.00/cpp/src/common/cumlHandle.hpp.new	2025-06-23 23:46:39.159852263 +0800
+@@ -16,6 +16,8 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
++
+ #include <cuml/cuml_api.h>
+ 
+ #include <raft/core/handle.hpp>

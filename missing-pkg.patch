@@ -1,0 +1,25 @@
+--- src/cuml-25.06.00/python/cuml/CMakeLists.txt	2025-06-06 20:44:48.000000000 +0800
++++ src/cuml-25.06.00/python/cuml/CMakeLists.txt.new	2025-06-23 23:53:45.773210336 +0800
+@@ -31,7 +31,7 @@
+ ################################################################################
+ # - User Options  --------------------------------------------------------------
+ option(CUML_UNIVERSAL "Build all cuML Python components." ON)
+-option(SINGLEGPU "Disable all mnmg components and comms libraries" OFF)
++option(SINGLEGPU "Disable all mnmg components and comms libraries" ON)
+ option(USE_LIBCUML_WHEEL "Use libcuml wheel to provide some dependencies" OFF)
+ 
+ # todo: use CMAKE_MESSAGE_CONTEXT for prefix for logging.
+@@ -71,6 +71,13 @@
+ 
+ include(${CUML_CPP_SRC}/cmake/thirdparty/get_treelite.cmake)
+ 
++find_package(CCCL REQUIRED)
++find_package(rapids_logger REQUIRED)
++find_package(nvtx3 REQUIRED)
++find_package(NvidiaCutlass REQUIRED)
++find_package(rmm REQUIRED)
++find_package(raft REQUIRED)
++find_package(cuvs REQUIRED)
+ # --- libcuml --- #
+ find_package(cuml "${RAPIDS_VERSION}" REQUIRED)
+ 
