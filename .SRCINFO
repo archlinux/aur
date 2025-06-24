@@ -1,0 +1,23 @@
+pkgbase = claude-monitor-git
+	pkgdesc = A real-time terminal monitoring tool for Claude AI token usage
+	pkgver = r72.f25fe16
+	pkgrel = 1
+	url = https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.8
+	depends = python-pytz
+	depends = python-rich
+	provides = claude-monitor
+	conflicts = claude-monitor
+	source = git+https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor.git
+	source = fix-missing-dependency.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = claude-monitor-git

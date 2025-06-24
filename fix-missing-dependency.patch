@@ -1,0 +1,16 @@
+--- a/claude_monitor.py
++++ b/claude_monitor.py
+@@ -10,7 +10,12 @@ from datetime import datetime, timedelta
+ import pytz
+ 
+ from usage_analyzer.api import analyze_usage
+-from check_dependency import test_node, test_npx
++
++# Stub functions for missing check_dependency module
++def test_node():
++    return True
++def test_npx():
++    return True
+ 
+ # All internal calculations use UTC, display timezone is configurable
+ UTC_TZ = pytz.UTC
