@@ -1,6 +1,6 @@
 # Maintainer: MalikHw47 <help.malicorporation@gmail.com>
 pkgname=gdsongextractor-bin
-pkgver=1.0.0  # Replace with your actual version
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A cool-ahh tool for exporting Geometry Dash custom songs with metadata"
 arch=('x86_64')
