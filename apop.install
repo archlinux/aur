@@ -6,3 +6,7 @@ post_install() {
 	echo "Create catalog scripts..."
 	mkdir" /usr/share/app-opener/scripts"
 }
+
+post_update() {
+	post_install
+}
