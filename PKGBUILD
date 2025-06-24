@@ -2,7 +2,7 @@
 
 pkgname=python-ccxt
 _pkgname=${pkgname:7}
-pkgver=4.4.77
+pkgver=4.4.90
 pkgrel=1
 pkgdesc="A cryptocurrency trading library with support for more than 100 exchanges"
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python python-certifi python-requests python-cryptography python-aiohttp python-aiodns python-yarl)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('9dee605054be8cd4b12d8640018c32dbe48e351bb3869080a357a4bd6026e436')
+sha256sums=('f1cc6c7eaa820cdf6b05fa5416b419d44900c89f9cc20915b41d38a9a7fb10dd')
 
 prepare() {
   cd ${srcdir}/${_pkgname}-${pkgver}
