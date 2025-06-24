@@ -1,0 +1,14 @@
+pkgbase = python-lncur
+	pkgdesc = Python CLI to update your system packages
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://pypi.org/project/lncur
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	provides = lncur
+	conflicts = lncur
+	source = https://files.pythonhosted.org/packages/py3/l/lncur/lncur-1.0.3-py3-none-any.whl
+	sha256sums = b2eb96c1ad170ebc57ad0b9de4fdda7f39f61425e7e60ca8f9d10892f6d1beb0
+
+pkgname = python-lncur
