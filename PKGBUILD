@@ -2,15 +2,16 @@
 pkgname=gdsongextractor-bin
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="A cool-ahh tool for exporting Geometry Dash custom songs with metadata"
+pkgdesc="A cool-ahh tool for exporting and managing Geometry Dash custom songs with metadata"
 arch=('x86_64')
 url="https://github.com/MalikHw/GDSongExtractor"
 license=('MIT')
+depends=()
 provides=('gdsongextractor')
 conflicts=('gdsongextractor')
-source=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/GDSongExtractor-linux"
-        "${pkgname}-${pkgver}.desktop::${url}/releases/download/v${pkgver}/gdsongextractor.desktop"
-        "${pkgname}-${pkgver}.png::${url}/releases/download/v${pkgver}/icon.png")
+source=("GDSongExtractor-linux::https://github.com/MalikHw/GDSongExtractor/releases/download//GDSongExtractor-linux"
+        "gdsongextractor.desktop::https://github.com/MalikHw/GDSongExtractor/releases/download//gdsongextractor.desktop"
+        "gdsongextractor.png::https://github.com/MalikHw/GDSongExtractor/releases/download//icon.png")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
