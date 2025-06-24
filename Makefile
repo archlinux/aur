@@ -13,7 +13,7 @@ update:
 	echo "Update to $$pkgver"
 
 clean:
-	@rm -rf src/ pkg/ *.pkg.tar.zst
+	@rm -rf src/ pkg/ *.pkg.tar.zst *.tar.gz .history/ LICENSE-*
 
 test:
 	@rm -rf *.pkg.tar.zst
