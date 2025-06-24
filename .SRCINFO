@@ -1,7 +1,7 @@
 pkgbase = kwin-x11
 	pkgdesc = An easy to use, but flexible, X Window Manager
 	pkgver = 6.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
@@ -59,7 +59,6 @@ pkgbase = kwin-x11
 	depends = qt6-sensors
 	depends = qt6-svg
 	depends = qt6-tools
-	depends = qt6-wayland
 	depends = systemd-libs
 	depends = wayland
 	depends = xcb-util-cursor

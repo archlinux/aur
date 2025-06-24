@@ -5,7 +5,7 @@
 pkgname=kwin-x11
 pkgver=6.4.1
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy to use, but flexible, X Window Manager'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -58,7 +58,6 @@ depends=(aurorae
          qt6-sensors
          qt6-svg
          qt6-tools
-         qt6-wayland
          systemd-libs
          wayland
          xcb-util-cursor
