@@ -12,6 +12,7 @@ pkgbase = python-mdit_plain-git
 	depends = python-portalocker
 	depends = python-leveldb
 	provides = python-mdlt_plain
+	conflicts = python-mdlt_plain
 	source = git+https://github.com/elespike/mdit_plain.git
 	md5sums = SKIP
 
