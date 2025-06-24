@@ -22,7 +22,7 @@ changelog=
 source=("https://github.com/tosuapp/${pkgname}/releases/download/v${pkgver}/${pkgname}-linux-v${pkgver}.zip"
 	"tosu-bin.sh"        
 )
-sha256sums=("bc8c2431dda7776afbed8774c85e5f589e9480ebfe1247eb3e105ce7e3b9ebfd"
+sha256sums=("05af616a08391852e2c33710470c50556e6cf5d6a78be8f06e3529695d06a115"
 	"16e77f6a192094be77ce1ecc9322e7296b57532851672d15f07bc82132cdfc21"
 )
 validpgpkeys=()
