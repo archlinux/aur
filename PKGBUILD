@@ -1,4 +1,4 @@
-# Maintainer: wackbyte <wackbyte@protonmail.com>
+# Maintainer: wackbyte <im@purring.fyi>
 
 pkgname=foreman
 pkgver=1.6.4
