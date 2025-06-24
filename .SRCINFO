@@ -1,7 +1,8 @@
 pkgbase = python-vcd
 	pkgdesc = Video Content Description (VCD) library
 	pkgver = 6.0.3
-	pkgrel = 1
+	pkgrel = 2
+	url = http://vcd.vicomtech.org/
 	arch = any
 	license = custom:MIT License
 	makedepends = python-build
