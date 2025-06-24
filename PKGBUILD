@@ -1,12 +1,13 @@
 # Maintainer: pusi77 <pusineriandrea+gmail+com>
+# Contributor pusi77-robot <pusineriandrea+gmail+com>
 
 pkgname=awsm-bin
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast command-line tool to manage your AWS profiles, sessions, and console access with ease'
 arch=('x86_64')
 url="https://github.com/AleG03/awsm"
-license=('MIT')
+license=('BSL-1.1')
 provides=('awsm')
 conflicts=('awsm')
 source=("$pkgname-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
