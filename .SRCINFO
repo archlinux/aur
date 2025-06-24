@@ -1,6 +1,6 @@
 pkgbase = crunchyroll
 	pkgdesc = Unnofficial CrunchyRoll desktop application
-	pkgver = 1.0.9.aurpatch
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/crunchyroll
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = crunchyroll
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/crunchyroll/application/-/archive/1.0.9.aurpatch/application-1.0.9.aurpatch.tar.bz2
-	sha256sums = 9a519ac57ced6d1c9836742b9240afa60adf544268df4cf510f0ecfa0dc2e4c2
+	source = https://gitlab.com/linuxbombay/crunchyroll/application/-/archive/1.0.10/application-1.0.10.tar.bz2
+	sha256sums = 16a4758bd669606f5aca91788c0d755bfbbae70b0c60aec4c8ab798db080fe25
 
 pkgname = crunchyroll
