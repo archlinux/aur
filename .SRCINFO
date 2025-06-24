@@ -1,0 +1,13 @@
+pkgbase = box
+	pkgdesc = Create a box around incoming text
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/AlphaLynx0/box
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = box-0.2.0.tar.gz::https://github.com/AlphaLynx0/box/archive/refs/tags/v0.2.0.tar.gz
+	b2sums = 69255f34e0d792aa1211afa37cd3532bf47066bc0b11126c707987cac342e42e191bdb884875b362e28800b4283c366387a56554e8bcd03678ef9a13cc69d00c
+
+pkgname = box

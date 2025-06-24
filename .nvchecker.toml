@@ -1,0 +1,5 @@
+[box]
+source = "github"
+github = "AlphaLynx0/box"
+use_max_tag = true
+prefix = "v"
