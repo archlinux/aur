@@ -8,6 +8,7 @@ url="https://github.com/amnezia-vpn/amnezia-client"
 license=('GPL-3.0-only')
 install=amneziavpn.install
 #depends=('')
+makedepends=(p7zip)
 options=(!debug)
 source=("AmneziaVPN.tar.zip::$url/releases/download/$pkgver/AmneziaVPN_${pkgver}_linux_x64.tar.zip")
 sha256sums=('ce8261783b7760d3c51d085fe275ae7cb173fb4251a015f268387a9aeca77f6b')
