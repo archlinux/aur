@@ -1,0 +1,19 @@
+pkgbase = ninja-noemacs-git
+	pkgdesc = Small build system with a focus on speed - now without emacs!! ~ designed specially for overzealous vimmers, FSF expatriates, fanatically frugal sysadmins, and the like.
+	pkgver = 1.13.0.r0.g65641253
+	pkgrel = 1
+	epoch = 2
+	url = https://ninja-build.org/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
+	makedepends = re2c
+	depends = gcc-libs
+	provides = ninja
+	conflicts = ninja
+	source = git+https://github.com/ninja-build/ninja.git
+	md5sums = SKIP
+
+pkgname = ninja-noemacs-git
