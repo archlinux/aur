@@ -2,7 +2,7 @@
 
 _pkgname=nomnatong-fonts
 pkgname="${_pkgname}"
-pkgver=5.13
+pkgver=5.15
 pkgrel=1
 pkgdesc="Vietnamese Nôm Preservation Foundations vietnamese Hán-Nôm script fonts"
 arch=('any')
@@ -13,9 +13,9 @@ source=("https://github.com/nomfoundation/font/raw/refs/heads/master/LICENSE"
         "https://github.com/nomfoundation/font/releases/download/v${pkgver}/NomNaTong-Regular.otf"
         "https://github.com/nomfoundation/font/releases/download/v${pkgver}/NomNaTong-Regular.ttf")
 sha256sums=('5a96128ab441fd6df1ca8aa48a7223dfa3c4bd2c001262712373698bb24e8e72'
-            'fed75ff06b7287a744afa160bccbb7f1c07c0b67b209e6f37db36aeb1fb54b76'
-            '8275dad23809fae38bd66f9727c2f7bb0947b79d51a936c896a1a7a0246500ee'
-            'c7e833daa78d7721ae19c780283c8341638db9100380a4b6fb338ec9ed7ea144'
+            'e3e1da4fc51eeb93176954bba1210c74f89f7aad9b0247bc4587efa7483a00c4'
+            '482c3c2121e8d929340d938c82a93a489bd1b70aa7adb0141d00d04a9362f483'
+            '988d50866c2bc56f1af1316d25db78dc916d7b23a27d66b03d2764714828f1f3'
            )
 
 package() {
