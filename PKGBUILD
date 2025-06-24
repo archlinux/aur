@@ -1,7 +1,7 @@
 # Maintainer: Kirill Zhumarin <kirill.zhumarin@gmail.com>
 pkgname=libffshit-git
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Siemens filesystem library.'
 arch=(any)
 url='https://github.com/siemens-mobile-hacks/libffshit'
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-	DESTDIR="$pkgdir" cmake --install --prefix /usr build
+	DESTDIR="$pkgdir" cmake --install build --prefix /usr
 }
 
 pkgver() {
