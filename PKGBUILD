@@ -2,7 +2,7 @@
 # Original PKGBUILD: GreyXor <greyxor@protonmail.com>
 
 pkgname=framework-system
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 arch=('x86_64')
 pkgdesc='Tool to interact with the framework system'
@@ -21,7 +21,7 @@ makedepends=(
 )
 OPTIONS=(!lto)
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('fbdc282a544283cec776d4ee997cdd776d2d42849870dbbd8986365cdc987bce8aa06866485771a6e93acb13d14886a015c459971b1cd593aeb6a25802056250')
+b2sums=('fba7e52267a441aa8bf74f9262107588d78f649c516e93cc2ef7cf5f4df0abfa1eb3e2c922a32035844d477ef0d2d19dc768eebf487930cec9419b7561478628')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

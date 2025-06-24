@@ -1,6 +1,6 @@
 pkgbase = framework-system
 	pkgdesc = Tool to interact with the framework system
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/FrameworkComputer/framework-system
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = framework-system
 	depends = gcc-libs
 	depends = glibc
 	depends = systemd-libs
-	source = https://github.com/FrameworkComputer/framework-system/archive/refs/tags/v0.4.2.tar.gz
-	b2sums = fbdc282a544283cec776d4ee997cdd776d2d42849870dbbd8986365cdc987bce8aa06866485771a6e93acb13d14886a015c459971b1cd593aeb6a25802056250
+	source = https://github.com/FrameworkComputer/framework-system/archive/refs/tags/v0.4.3.tar.gz
+	b2sums = fba7e52267a441aa8bf74f9262107588d78f649c516e93cc2ef7cf5f4df0abfa1eb3e2c922a32035844d477ef0d2d19dc768eebf487930cec9419b7561478628
 
 pkgname = framework-system
