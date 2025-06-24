@@ -1,8 +1,8 @@
 pkgbase = opera-ffmpeg-vivaldi-symlink
-	pkgdesc = Proprietary codecs for Opera
+	pkgdesc = Proprietary codecs for Opera and vivaldi-snapshot
 	pkgver = 136.0.7103.113
-	pkgrel = 2
-	url = https://ffmpeg.org/
+	pkgrel = 1
+	url = https://chromium.googlesource.com/chromium/third_party/ffmpeg
 	arch = x86_64
 	license = LGPL2.1
 	depends = vivaldi-ffmpeg-codecs
