@@ -5,7 +5,7 @@
 
 _pkgname=iniparser
 pkgname=iniparser-git
-pkgver=4.2.4
+pkgver=4.2.6
 pkgrel=1
 epoch=1
 pkgdesc='A free stand-alone ini file parsing library written in portable ANSI C'
@@ -24,7 +24,9 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -DCMAKE_INSTALL_PREFIX=/usr "$_pkgname"
+  cmake -B build -S "$_pkgname" \
+   -DCMAKE_INSTALL_PREFIX=/usr \
+   -DBUILD_STATIC_LIBS=false
   cmake --build build
 }
 
