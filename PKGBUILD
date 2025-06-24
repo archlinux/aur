@@ -1,4 +1,4 @@
-# Maintainer: wackbyte <wackbyte@protonmail.com>
+# Maintainer: wackbyte <im@purring.fyi>
 
 _pkgname=asphalt
 pkgname=asphalt-bin
