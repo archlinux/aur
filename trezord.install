@@ -1,8 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 
 post_install() {
   echo "To activate the service so that is starts automatically on boot, symlink it with:"
   echo "  ln -s /etc/runit/sv/trezord /run/runit/service"
   echo "Or to start it manually once now:"
   echo "  sudo sv start trezord"
+}
+
+post_remove() {
+  rm -f /run/runit/service/trezord
+  rm -fr /etc/runit/sv/trezord
 }
