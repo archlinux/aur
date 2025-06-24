@@ -1,7 +1,7 @@
 pkgbase = folly
 	pkgdesc = An open-source C++ library developed and used at Facebook
-	pkgver = 2025.06.16.00
-	pkgrel = 3
+	pkgver = 2025.06.23.00
+	pkgrel = 1
 	url = https://github.com/facebook/folly
 	arch = x86_64
 	license = Apache-2.0
@@ -38,10 +38,10 @@ pkgbase = folly
 	provides = libfolly_test_util.so
 	provides = libfollybenchmark.so
 	options = !lto
-	source = git+https://github.com/facebook/folly.git#tag=v2025.06.16.00
+	source = git+https://github.com/facebook/folly.git#tag=v2025.06.23.00
 	source = fix-cmake-find-glog.patch
 	source = fix-setup-py-for-python-extensions.patch
-	sha256sums = 92d4e7c4f5f395745c586ec6b3b4832d7b6228f0ad6e0a10cb7830ab51a9b394
+	sha256sums = e6e9071fcdd511fec6c14262def2f396fec690d1a8df31c5ec8fac1465bde20c
 	sha256sums = c4b66347a9db6ddedb516e2a778a7a37e26a4280ce2c0c9fdbac11d8c8190c55
 	sha256sums = a4701d37451bec6063ce5b5efc29f67ac6cc030fda699dac56d81e6064c0d7b5
 

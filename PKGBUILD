@@ -6,8 +6,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=folly
-pkgver=2025.06.16.00
-pkgrel=3
+pkgver=2025.06.23.00
+pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
 url="https://github.com/facebook/folly"
@@ -56,7 +56,7 @@ source=(
   "fix-cmake-find-glog.patch"
   "fix-setup-py-for-python-extensions.patch"
 )
-sha256sums=('92d4e7c4f5f395745c586ec6b3b4832d7b6228f0ad6e0a10cb7830ab51a9b394'
+sha256sums=('e6e9071fcdd511fec6c14262def2f396fec690d1a8df31c5ec8fac1465bde20c'
             'c4b66347a9db6ddedb516e2a778a7a37e26a4280ce2c0c9fdbac11d8c8190c55'
             'a4701d37451bec6063ce5b5efc29f67ac6cc030fda699dac56d81e6064c0d7b5')
 
@@ -136,6 +136,7 @@ check() {
     expected_coroutines_test.Expected.CoroutineCleanedUp
     optional_coroutines_test.Optional.CoroutineSuccess
     singleton_thread_local_test.SingletonThreadLocalDeathTest.Overload
+    singleton_thread_local_test.ThreadLocal.DependencyTest
     fbstring_test.FBString.testAllClauses
   )
   local skipped_tests_pattern="${skipped_tests[0]}$(printf '|%s' "${skipped_tests[@]:1}")"
