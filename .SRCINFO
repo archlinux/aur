@@ -1,7 +1,7 @@
 pkgbase = xivlauncher-bin
 	pkgdesc = Custom Launcher for Final Fantasy XIV Online - github binary artifact wrapper
 	pkgver = 1.2.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/goatcorp/XIVLauncher.Core
 	arch = x86_64
 	license = GPL
@@ -14,10 +14,9 @@ pkgbase = xivlauncher-bin
 	provides = xivlauncher=1.2.0
 	conflicts = xivlauncher
 	conflicts = xivlauncher-git
-	conflicts = xivlauncher-rb
 	options = !strip
 	options = !debug
-	source = XIVLauncher.Core-1.2.0.0.tar.gz::https://github.com/goatcorp/XIVLauncher.Core/releases/download/1.2.0/XIVLauncher.Core.tar.gz
+	source = XIVLauncher.Core-1.2.0.1.tar.gz::https://github.com/goatcorp/XIVLauncher.Core/releases/download/1.2.0/XIVLauncher.Core.tar.gz
 	source = 512.png::https://raw.githubusercontent.com/goatcorp/XIVLauncher.Core/main/misc/linux_distrib/512.png
 	source = XIVLauncher.desktop
 	source = xivlauncher-core

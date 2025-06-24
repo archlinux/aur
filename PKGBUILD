@@ -1,7 +1,7 @@
 # Maintainer: Robert Baker <reiichi001@gmail.com>
 pkgname=xivlauncher-bin
 pkgver=1.2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online - github binary artifact wrapper"
 arch=('x86_64')
 url='https://github.com/goatcorp/XIVLauncher.Core'
@@ -19,7 +19,6 @@ provides=("xivlauncher=${pkgver}")
 conflicts=(
 	"xivlauncher"
         "xivlauncher-git"
-	"xivlauncher-rb"
 )
 source=(
     "XIVLauncher.Core-$pkgver.$pkgrel.tar.gz::https://github.com/goatcorp/XIVLauncher.Core/releases/download/${pkgver}/XIVLauncher.Core.tar.gz"
