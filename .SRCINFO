@@ -1,7 +1,7 @@
 pkgbase = foxtelgo
 	pkgdesc = Unnofficial FoxtelGo desktop application
 	pkgver = 1.0.15
-	pkgrel = 2
+	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/foxtelgo
 	arch = x86_64
 	license = GPL
