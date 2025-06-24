@@ -4,7 +4,7 @@
 
 pkgname=albert-git
 _pkgname=${pkgname%-git}
-pkgver=0.27.8.r37.g4e90e6e
+pkgver=0.29.0.r0.g4a74f3b
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
@@ -21,6 +21,7 @@ source=("git+${url}/${_pkgname}.git"
 	"git+${url}/i18n.git"
 	"git+https://github.com/QtCommunity/QHotkey.git"
 	"git+https://github.com/QtCommunity/QNotification.git"
+	"git+${url}/${_pkgname}-plugin-application.git"
 	"git+${url}/${_pkgname}-plugin-applications.git"
 	"git+${url}/${_pkgname}-plugin-bluetooth.git"
 	"git+${url}/${_pkgname}-plugin-caffeine.git"
@@ -81,6 +82,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -96,6 +98,7 @@ prepare() {
 	git config submodule.i18n.url "${srcdir}/i18n/"
 	git config submodule.lib/QHotkey.url "${srcdir}/QHotkey/"
 	git config submodule.lib/QNotification.url "${srcdir}/QNotification/"
+	git config submodule.plugins/application.url "${srcdir}/${_pkgname}-plugin-application/"
 	git config submodule.plugins/applications.url "${srcdir}/${_pkgname}-plugin-applications/"
 	git config submodule.plugins/bluetooth.url "${srcdir}/${_pkgname}-plugin-bluetooth/"
 	git config submodule.plugins/caffeine.url "${srcdir}/${_pkgname}-plugin-caffeine/"
