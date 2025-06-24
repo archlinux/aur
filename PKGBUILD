@@ -25,6 +25,7 @@ package() {
     rm -r docs
     rm -rf .github
     rm -r fonts # not used by the theme from that directory. satisfied by redhat-fonts
+    rm -f "./*.nix"
     mkdir -p "$pkgdir/usr/share/sddm/themes/silent"
     cp -r ./* "$pkgdir/usr/share/sddm/themes/silent"
     find "$pkgdir/usr/share/sddm/themes/silent" -type d -exec chmod 755 {} +
