@@ -23,7 +23,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/usr/bin/libelectronmeta" "$pkgdir/opt/$_pkgname/electron"
+    ln -s "/usr/bin/electroncastlab" "$pkgdir/opt/$_pkgname/electron"
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
