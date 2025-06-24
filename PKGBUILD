@@ -60,7 +60,7 @@ package_libcuml() {
 }
 
 package_python-cuml() {
-    depends+=('python' 'python-pylibraft' 'python-cuvs' 'python-treelite')
+    depends+=('python' 'python-pylibraft' 'python-cuvs' 'python-treelite' 'libcuml')
     cd "$srcdir/$pkgbase-$pkgver/python/cuml"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
