@@ -2,7 +2,7 @@
 
 _name=livekit
 pkgname=python-${_name}
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Python Real-time SDK for LiveKit."
 arch=('x86_64' 'aarch64')
@@ -13,17 +13,17 @@ source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${
         "https://github.com/livekit/python-sdks/raw/refs/tags/rtc-v${pkgver}/livekit-rtc/tests/test_echo_capture.wav"
         "https://github.com/livekit/python-sdks/raw/refs/tags/rtc-v${pkgver}/livekit-rtc/tests/test_echo_render.wav"
         "https://github.com/livekit/python-sdks/raw/refs/tags/rtc-v${pkgver}/livekit-rtc/tests/test_processed.wav"
-        "https://raw.githubusercontent.com/livekit/rust-sdks/refs/tags/rust-sdks/livekit-ffi@0.12.27/livekit-ffi/include/livekit_ffi.h")
-source_x86_64=("https://github.com/livekit/rust-sdks/releases/download/rust-sdks/livekit-ffi@0.12.27/ffi-linux-x86_64.zip")
-source_aarch64=("https://github.com/livekit/rust-sdks/releases/download/rust-sdks/livekit-ffi@0.12.27/ffi-linux-arm64.zip")
-sha256sums=('09614f6ab70a52b39ec2b0c68f8ae66d5a36de61189cd61b7ce30ef3ac53eb88'
+        "https://raw.githubusercontent.com/livekit/rust-sdks/refs/tags/rust-sdks/livekit-ffi@0.12.28/livekit-ffi/include/livekit_ffi.h")
+source_x86_64=("https://github.com/livekit/rust-sdks/releases/download/rust-sdks/livekit-ffi@0.12.28/ffi-linux-x86_64.zip")
+source_aarch64=("https://github.com/livekit/rust-sdks/releases/download/rust-sdks/livekit-ffi@0.12.28/ffi-linux-arm64.zip")
+sha256sums=('f3a38f6e67067b0807c79acd00e6877214aeaeb5628f84e44543103f7848ef90'
             'ac5cba8b2477ab55c9bc5f95faffcd3d9b9ad4e6a01d79308fbe6eeef733ce80'
             '90626c2c532dfb8313ae52501a9500f1c90235570aab8ff1367e7f91fb697a7e'
             'cf50f57f00fa941ab612c57c24a28811b93c878d3c98edcb4a8f21508aa8e566'
             '8a48eb2f6a2143b4bc6adfe306983637f628fffc9d550c60b4ebcecd506d6245'
             '43c1a94e3ed4a699e64571d8f4e241919322a1d3655a1a9be53f111cf209b245')
-sha256sums_x86_64=('01253f1056ae20b54e028abf5ffa0b1b21a6f275ff8510418713ddfed0b79de9')
-sha256sums_aarch64=('6b479a4427a16c25ca8242c3970a7f7d6458dbfb74bed664ee77995f027a4e62')
+sha256sums_x86_64=('42b9c890aa620671119eb5efeec2a2fd6f625b50a8eca471c2224872d4d140a1')
+sha256sums_aarch64=('33aaeab689d6b6781628e5b3de41da99635c95d02ac23071ef3e31468437b51c')
 depends=('python' 'python-protobuf' 'python-aiofiles' 'python-numpy')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-requests' 'unzip')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-matplotlib' 'python-pydantic')
