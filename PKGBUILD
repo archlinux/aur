@@ -1,7 +1,7 @@
 # Maintainer: Popolon <popolon@popolon.org>
 
 pkgname=mathmod
-pkgver=12.0
+pkgver=12.1
 pkgrel=1
 pkgdesc="modelisation and manipulation of mathematics objects"
 arch=('x86_64' 'armv7h' 'aarch64' 'riscv32' 'riscv64' 'loong64' 'powerpc' 'powerpc64le' 'powerpc64')
@@ -10,7 +10,7 @@ license=('GPLv2')
 depends=('qt5-base')
 source=(https://github.com/parisolab/${pkgname}/archive/${pkgver}.tar.gz
         MathMod.desktop)
-sha256sums=('5758423f87ec71da9afe86e250127f62d74d44a6a3131b6da99c9d830eafb300'
+sha256sums=('13e99550a1982f7d06a3c82e46defa6221505682647488ba91b8e3d60698a443'
             '6c001dae8ae8c1f6a4aaef7bf2d098a058c1e944dbf01642ea9792926b7204e9')
 
 prepare() {
