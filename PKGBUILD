@@ -1,4 +1,5 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Max Harmathy <harmathy@alumni.tum.de>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor:  kfgz <kfgz at interia pl>
 # Contributor: Allan McRae <allan at archlinux dot org>
 # Contributor: Tom Newsom <Jeepster at gmx dot co dot uk>
