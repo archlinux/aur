@@ -20,6 +20,7 @@ pkgbase = maomaowm-git
 	depends = libxkbcommon
 	depends = pcre2
 	depends = wlroots-0.19-mao-git
+	depends = scenefx-git
 	provides = maomaowm
 	provides = wayland-compositor
 	conflicts = maomaowm

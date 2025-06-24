@@ -16,6 +16,7 @@ depends=(
   libxkbcommon
   pcre2
   'wlroots-0.19-mao-git'
+  'scenefx-git'
 )
 
 makedepends=(
