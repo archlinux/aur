@@ -2,13 +2,13 @@
 
 pkgname=muon-meson
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="meson implementation in C"
 arch=(x86_64)
 url="https://muon.build"
 license=(GPL3)
 source=("$url/releases/v$pkgver/muon-v$pkgver.tar.gz")
-sha256sums=('d657422d4a102b4c7b77317a67a3f816d02f1c2967432b027c7e9f076ffe7079')
+sha256sums=('452dfb9ab59ce79a721fcfc2853032b2761826abf3b348d8744ea802ac75e04f')
 depends=(pkgconf curl libarchive)
 makedepends=(ninja python-yaml scdoc)
 checkdepends=(git)
