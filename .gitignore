@@ -3,3 +3,4 @@ wox-bin-*
 *.pkg.tar.zst
 src/
 pkg/
+.history/
