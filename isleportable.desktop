@@ -7,6 +7,7 @@ Exec=lego-isle
 Icon=legoisle
 Categories=Game;AdventureGame;ActionGame;KidsGame;
 StartupWMClass=lego-isle
+Actions=Settings;
 
 [Desktop Action Settings]
 Name=Settings

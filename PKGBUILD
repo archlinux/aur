@@ -1,14 +1,14 @@
 # Maintainer: Danct12 <WkdGdVkzUXhNa0JrYVhOeWIyOTBMbTl5WndvPQo=>
 pkgname=isle-portable-git
-pkgver=r2105.19fee553
+pkgver=r2115.822a6a33
 pkgrel=1
 pkgdesc="Portable version of LEGO Island based on decompilation effort"
-arch=(x86_64)
+arch=(x86_64 armv7h aarch64)
 url="https://github.com/isledecomp/isle-portable"
 license=('custom:Proprietary')
 install="$pkgname.install"
 depends=('iniparser' 'mesa' 'qt6-base' 'sdl3')
-makedepends=('cmake' 'git' 'imagemagick' 'python')
+makedepends=('cmake' 'git' 'python')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
@@ -16,7 +16,7 @@ source=(
     'isleportable.desktop'
 )
 sha256sums=('SKIP'
-            'b6f1c0f986c04b0da5dfbd42f8c999e6d0cc0709d9e79867ea8597845cc64f2f')
+            '4f6c79a77b2cf4d2464db71ca95048289ca3e188d575d8dd84849635b299fd9e')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
@@ -47,8 +47,7 @@ package() {
     mv "$pkgdir"/usr/bin/{config,lego-isle-config}
 
     # Create desktop entry
-    magick "${pkgname%-git}"/ISLE/res/isle.bmp legoisle.png
-    install -Dm644 legoisle.png \
+    install -Dm644 "${pkgname%-git}"/CONFIG/res/lego1.png \
         "$pkgdir"/usr/share/icons/hicolor/32x32/apps/legoisle.png
     install -Dm644 "$srcdir"/isleportable.desktop \
         "$pkgdir"/usr/share/applications/isleportable.desktop
