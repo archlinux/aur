@@ -1,14 +1,16 @@
 pkgbase = python-pytest-flakefinder
 	pkgdesc = Runs tests multiple times to expose flakiness.
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dropbox/pytest-flakefinder
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.5
+	depends = python
 	depends = python-pytest
 	source = https://files.pythonhosted.org/packages/source/p/pytest-flakefinder/pytest-flakefinder-1.1.0.tar.gz
 	sha256sums = e2412a1920bdb8e7908783b20b3d57e9dad590cc39a93e8596ffdd493b403e0e
