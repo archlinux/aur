@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Shane Stone <shanewstone gmail>
 pkgname=python-miniflux
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Python client for Miniflux API."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-requests')
 makedepends=('python-build' 'python-setuptools' 'python-installer' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/miniflux/python-client/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('96421ace662ba8dbbc9b682178af4d7930fa1e6d6a1ce0e4f5857796db22b53db747bce2f19b3930027d36c5c8f5dcc28a05661bf5418fe2cbd9f33ff1955be0')
+sha512sums=('c9ae73d9efe74331587e18673c527d8364abe3b28c77b8cd5dcace952c65149610b45423d89aac1d8f7c92a61f39a1a59eb314f1f19ebf3f8ea07e1577877cd7')
 
 build() {
 
