@@ -2,16 +2,17 @@
 # Contributor: pusi77-robot <pusineriandrea+gmail+com>
 
 pkgname=awsm-bin
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
+source_x86_64=("https://github.com/AleG03/awsm/releases/download/v${pkgver}/awsm_${pkgver}_linux_amd64.tar.gz")
+source_aarch64=("https://github.com/AleG03/awsm/releases/download/v${pkgver}/awsm_${pkgver}_linux_arm64.tar.gz")
 pkgdesc='A fast command-line tool to manage your AWS profiles, sessions, and console access with ease'
 arch=('x86_64')
 url="https://github.com/AleG03/awsm"
 license=('BSL-1.1')
 provides=('awsm')
 conflicts=('awsm')
-source=("https://github.com/AleG03/awsm/releases/download/v${pkgver}/awsm_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('380a58bdfeb860f51d493dc41d6793ecef4696df4bf12e647b4e3c0188ba0d7c')
+sha256sums_x86_64=('af0381a108bf342ea0e8f9226bf05928fd596b25630b1216c267e6af5df400b1')
 
 package() {
   install -Dm755 ${pkgname%-bin} "$pkgdir"/usr/bin/${pkgname%-bin}
