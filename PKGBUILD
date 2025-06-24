@@ -2,7 +2,7 @@
 pkgname="sddm-silent-theme-git"
 _upstream_name="SilentSDDM"
 pkgdesc="Highly customizable SDDM theme (git version)"
-pkgver=r20250622.g296c611
+pkgver=r20250623.gbf6544d
 pkgrel=1
 arch=('any')
 depends=('sddm' 'qt6-svg' 'qt6-virtualkeyboard' 'qt6-multimedia-ffmpeg' 'redhat-fonts')
@@ -21,10 +21,10 @@ pkgver() {
 
 package() {
     cd "$_upstream_name"
-    rm ./*.sh
+    rm install.sh
     rm -r docs
     rm -rf .github
-    rm -r fonts # not used by the theme from that directory
+    rm -r fonts # not used by the theme from that directory. satisfied by redhat-fonts
     mkdir -p "$pkgdir/usr/share/sddm/themes/silent"
     cp -r ./* "$pkgdir/usr/share/sddm/themes/silent"
     find "$pkgdir/usr/share/sddm/themes/silent" -type d -exec chmod 755 {} +
