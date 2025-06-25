@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wcc
 pkgver=0.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc='The Witchcraft Compiler Collection'
 url=https://github.com/endrazine/wcc
 arch=(i686 x86_64)
@@ -36,6 +36,6 @@ package () {
 	cd "${pkgname}-${pkgver}"
 	mkdir -p "${pkgdir}/usr/bin"
 	make DESTDIR="${pkgdir}/" install
-
+	install -Dm755 -t "${pkgdir}/usr/bin" bin/*
 	install -Dm644 -t "${pkgdir}/usr/share/man/man1" doc/manpages/*.1
 }
