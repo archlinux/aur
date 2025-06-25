@@ -17,7 +17,6 @@ source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgnam
 
 build() {
     cd "$_pkgname-$pkgver"
-    pwd
     python -m build --wheel --no-isolation
 }
 package() {
