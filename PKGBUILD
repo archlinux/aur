@@ -1,6 +1,6 @@
 # Maintainer: timasoft <tima.klester@gmail.com>
 # Contributors: Youda008 and LtdJorge
-pkgname=openrgb-cppSDK-git
+pkgname=openrgb-cppsdk-git
 pkgver=1.0.r0
 pkgrel=1
 pkgdesc="C++ client/SDK for OpenRGB"
