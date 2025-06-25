@@ -56,7 +56,7 @@ build() {
   make install
 
   cd ../release
-  g++ $LTOFLAGS -shared $LDFLAGS -Wl,--no-as-needed  \
+  gcc $LTOFLAGS -shared $LDFLAGS -Wl,--no-as-needed  \
     -Wl,--whole-archive \
       lib/lib{avcodec,avformat,avutil,swresample}.a \
     -Wl,--no-whole-archive \
