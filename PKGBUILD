@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=novelwriter-bin
 _pkgname=novelWriter
-pkgver=2.7.1
-_pyver=3.13
+pkgver=2.7.2
+_pyver=3.15
 pkgrel=1
 pkgdesc="A markdown-like document editor for writing novels.(Prebuilt version)"
 arch=('x86_64')
@@ -16,11 +16,12 @@ depends=(
     'python-setuptools'
     'python-pyenchant'
     'python-importlib-metadata'
+    'python-pyqt6'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_all.deb"
 )
-sha256sums=('3fa61560b1de7742df3ba377d69ee7822cb9375712a5e39a292a16e4dc0fb107')
+sha256sums=('8a515de9526a6fce0462f2f3e3ec94dfba7b3d7073e57c6ad2bbfbf74f1e0ffd')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
 }
