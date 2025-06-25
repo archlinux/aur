@@ -1,6 +1,6 @@
 pkgbase = corosync-nosystemd-git
 	pkgdesc = Cluster engine for nodal communication systems with additional features for implementing high availability within applications. Without systemd dependency/ support, latest git checkout.
-	pkgver = 3.1.9.r20.g919d67de
+	pkgver = 3.1.9.r23.g7a0ba95b
 	pkgrel = 1
 	url = http://www.corosync.org/
 	arch = i686
