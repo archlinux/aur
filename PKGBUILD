@@ -1,18 +1,23 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 pkgname=python-pretty-errors
+_pkgname=pretty_errors
 pkgver=1.2.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Prettifies Python exception output to make it legible."
 arch=(any)
 url="https://github.com/onelivesleft/PrettyErrors/"
 license=(MIT)
 depends=('python' 'python-colorama')
-makedepends=("python-pip")
+makedepends=('python-pip' 'python-build' 'python-installer' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 build() {
-  pip install --no-deps --target="pretty-errors" pretty-errors==1.2.25
+  cd "$_pkgname-$pkgver"
+  python -m build --wheel --no-isolation
 }
 package() {
-  sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
-  mkdir -p $pkgdir/"$sitepackages"
-  cp -r $srcdir/pretty-errors/* $pkgdir/"$sitepackages"
+  cd "$srcdir/$_pkgname-$pkgver"
+  pwd
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+sha256sums=('a16ba5c752c87c263bf92f8b4b58624e3b1e29271a9391f564f12b86e93c6755')
