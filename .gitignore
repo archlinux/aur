@@ -1,0 +1,4 @@
+src/*
+pkg/*
+LaTeXML/*
+*.pkg.tar.zst
