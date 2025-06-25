@@ -6,7 +6,7 @@
 _pkgname='ov'
 pkgname="${_pkgname}-git"
 pkgver=0.42.0.r0.gfc39e14
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Feature-rich terminal-based text pager (built from latest git commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
