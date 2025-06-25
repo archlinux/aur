@@ -1,29 +1,26 @@
 # Maintainer: suliman altassan <suliman.p2019@gmail.com>
+# Maintainer:  skepr <skeprcontact@gmail.com>
+
+# makepkg --printsrcinfo > .SRCINFO
 
 pkgname=alif
-pkgver=3.0.32
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="The Alif Arabic Programming Language - لغة البرمجة العربية ألف"
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.aliflang.org/"
 license=('GPL3')
 depends=('boost')
-optdepends=('webui: to use web browsers as UI')
-source=("$pkgname-$pkgver"::"git+https://github.com/alifcommunity/compiler.git")
+source=("$pkgname-$pkgver"::"git+https://github.com/alifcommunity/Alif.git#branch=Alif5.0")
 md5sums=('SKIP')
-
-prepare() {
-    cd $srcdir/$pkgname-$pkgver
-    git reset a483c1ba39658a9bba47d8378b096d4fd78b40a0
-}
+makedepends=('make' 'gcc')
 
 build() {
-    cd $srcdir/$pkgname-$pkgver
-    cmake . . -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/local
+    cd "$srcdir/$pkgname-$pkgver/linuxBuild"
+    make
     make
 }
 
 package() {
-    cd $srcdir/$pkgname-$pkgver
-    make install
+    install -Dm755 "$srcdir/$pkgname-$pkgver/linuxBuild/build/alif" "$pkgdir/usr/bin/alif"
 }
