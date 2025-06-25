@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-notification-configurator-git
 _uuid=notification-configurator@exposedcat
-pkgver=r22.896266e
+pkgver=1.1.6.r0.gcf7057b
 pkgrel=1
 pkgdesc="Advanced GNOME notification capabilities including rate limiting, custom color theming per application, and notification positioning"
 arch=('any')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd gnome-notification-configurator
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
