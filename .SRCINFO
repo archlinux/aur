@@ -1,0 +1,20 @@
+pkgbase = chkufsd-bin
+	pkgdesc = Combined utility for checking and fixing NTFS / HFS+ file systems
+	pkgver = r279255.b1403
+	pkgrel = 1
+	url = https://www.paragon-software.com/technologies/ufsd.html
+	arch = i686
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	provides = chkufsd
+	provides = chkntfs
+	provides = chkhfs
+	conflicts = chkufsd
+	conflicts = chkntfs
+	conflicts = chkhfs
+	source = https://archive.org/download/tools_202401/tools.zip
+	source = https://www.gnu.org/licenses/lgpl-3.0.txt
+	sha256sums = 94835f5762de29febcbe88b3735eafe17adb1997b6b484f6b39c7a14476a936c
+	sha256sums = e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118
+
+pkgname = chkufsd-bin
