@@ -1,6 +1,9 @@
-# Maintainer: Julia DeMille <me@jdemille.com>
+# Maintainer: FloofyPlasma <aur@floofyplasma.com>
+# Contributor: Julia DeMille <me@jdemille.com>
 pkgname=libobjc2
-pkgver=2.1
+pkgver=2.2.1+r1375.8c4b6e9
+_majorver=${pkgver%%.*}
+_commit=8c4b6e9d3dfc2f16396da304da0b35a9321de19a
 pkgrel=1
 pkgdesc="Objective-C runtime library intended for use with Clang."
 arch=("x86_64" "i686" "aarch64")
@@ -11,11 +14,9 @@ makedepends=(cmake clang git)
 provides=(libobjc2)
 conflicts=(libobjc2)
 source=(
-    "$pkgname::git+${url}.git#tag=v$pkgver"
-    "fix_eh_trampoline.patch::${url}/commit/365e53632e8be41e49f21ee47a63e41be424a237.patch"
+    "$pkgname::git+${url}.git#commit=${_commit}"
 )
-b2sums=('SKIP'
-        '51c42a36f14ad1470f2c65e1c18a3dce93f4360a0081cf6ce8d4b559f839e942b401e9f61cfe1733aebeb5f3341f89d4ea6e25d7e6e27cbd5a527de5edf38baa')
+b2sums=('SKIP')
 
 cmake_gen() {
     if hash ninja 2>/dev/null; then
@@ -28,14 +29,13 @@ cmake_gen() {
 prepare() {
     cd "$pkgname"
     git submodule update --init --recursive
-    git apply "$srcdir/fix_eh_trampoline.patch"
 }
 
 build() {
     cmake -B build -S "$pkgname" -G"$(cmake_gen)" -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -Wno-dev \
         -DCMAKE_C_COMPILER=clang -DCMAKE_OBJC_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
-        -DCMAKE_OBJCXX_COMPILER=clang++ -DTESTS=NO # Tests don't build right.
+        -DCMAKE_OBJCXX_COMPILER=clang++ -DTESTS=NO \  # Tests don't build right.
     cmake --build build
 }
 
