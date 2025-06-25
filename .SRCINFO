@@ -1,6 +1,6 @@
 pkgbase = hwytvidgrabber-bin
 	pkgdesc = A smol YouTube video downloader by MalikHw47 (Lightweight af)
-	pkgver = 1.5.3
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://github.com/MalikHw/HwYtVidGrabber
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = hwytvidgrabber-bin
 	depends = ffmpeg
 	provides = hwytvidgrabber
 	conflicts = hwytvidgrabber
-	noextract = HwYtVidGrabber-Linux-1.5.3
-	source = HwYtVidGrabber-Linux-1.5.3::https://github.com/MalikHw/HwYtVidGrabber/releases/download/1.5.3/HwYtVidGrabber-Linux
-	source = hwytvidgrabber.desktop::https://github.com/MalikHw/HwYtVidGrabber/releases/download/1.5.3/hwytvidgrabber.desktop
-	source = hwytvidgrabber.png::https://github.com/MalikHw/HwYtVidGrabber/releases/download/1.5.3/icon.png
-	sha256sums = 7f43b410a4d8bf697ce332ff3cde55f2bb7cbac4da56db175d758d8cf9147fb5
+	noextract = HwYtVidGrabber-Linux-1.5.4
+	source = HwYtVidGrabber-Linux-1.5.4::https://github.com/MalikHw/HwYtVidGrabber/releases/latest/download/HwYtVidGrabber-Linux
+	source = hwytvidgrabber.desktop::https://github.com/MalikHw/HwYtVidGrabber/releases/latest/download/hwytvidgrabber.desktop
+	source = hwytvidgrabber.png::https://github.com/MalikHw/HwYtVidGrabber/releases/latest/download/icon.png
+	sha256sums = 227ad18c1788ae91736dc8243b16a646557a8df988cb9b9c9648e1a2a8c1b954
 	sha256sums = 9df2fa7d8bc10298f1eed8c2258b21612d26f63b1b44e625938de2c644012077
 	sha256sums = 15b461eb068f1fd54222122fac891c72f647b28e8af56a3bd28c152754b39e40
 
