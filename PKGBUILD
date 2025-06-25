@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=apipost-bin
-pkgver=8.1.16
+pkgver=8.1.17
 pkgrel=1
 pkgdesc="Apipost = Postman + Swagger + Mock + Jmeter"
 arch=('x86_64' 'aarch64')
@@ -20,5 +20,5 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -snf /opt/Apipost/apipost "${pkgdir}/usr/bin/apipost"
 }
-sha256sums_x86_64=('c7018e4eb9c847cadec82491a21677d8f936feaf29c726e34514b70ac3b3a894')
-sha256sums_aarch64=('6bc172a14f045b4c02558ce29e789b7f8eaf13a4f8a68f7dcf288e0e360db59b')
+sha256sums_x86_64=('8fa06c846734703465ccabe299dc8a71956a9a44020ccb4f962fcf6fcfd31f44')
+sha256sums_aarch64=('18ac0d5ea43e193dfebd2d1d3c13adebc7cd9d2c9840a90a8f60ff466d1f01e5')
