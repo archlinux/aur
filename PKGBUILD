@@ -1,5 +1,5 @@
 pkgname=psflib-git
-pkgver=r48.77dfb4a
+pkgver=r49.87f070c
 pkgrel=1
 pkgdesc="A small C library for reading Portable Sound Format files"
 arch=(i686 x86_64)
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   make CFLAGS="$CFLAGS -fPIC -c"
-  "${CC-cc}" "$CFLAGS" -shared -lz -o libpsflib.so *.o
+  "${CC-cc}" $CFLAGS -shared -lz -o libpsflib.so *.o
 }
 
 package() {

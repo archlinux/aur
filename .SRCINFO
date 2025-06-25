@@ -1,6 +1,6 @@
 pkgbase = psflib-git
 	pkgdesc = A small C library for reading Portable Sound Format files
-	pkgver = r48.77dfb4a
+	pkgver = r49.87f070c
 	pkgrel = 1
 	url = https://bitbucket.org/losnoco/psflib
 	arch = i686
