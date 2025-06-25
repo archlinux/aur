@@ -5,7 +5,7 @@
 
 _pkgname='ov'
 pkgname="${_pkgname}-git"
-pkgver=0.40.1.r15.g99b6d52
+pkgver=0.42.0.r0.gfc39e14
 pkgrel=1
 epoch=1
 pkgdesc='Feature-rich terminal-based text pager (built from latest git commit)'
@@ -18,7 +18,6 @@ depends=('glibc')
 makedepends=('git' 'go')
 source=("git+$url.git")
 install="$pkgname.install"
-options=('lto')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -43,16 +42,8 @@ build() {
   _ver=$(git describe --tags --abbrev=0 --always | sed 's/^v//g')
   _rev=$(git rev-parse --verify --short HEAD)
 
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
   case "Z${CARCH:-unknown}" in
-    'Zx86_64' )
-      # RFC-0023: https://rfc.archlinux.page/0023-pack-relative-relocs/
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;&  # fall through
-    'Zaarch64' )
+    'Zx86_64' | 'Zaarch64' )
       # Fix “ELF file lacks GNU_PROPERTY_X86_FEATURE_1_SHSTK.”
       export LDFLAGS="$LDFLAGS -Wl,-z,shstk"
     ;;
@@ -69,8 +60,7 @@ build() {
     -trimpath \
     -ldflags="-linkmode=external -X main.Version=$_ver -X main.Revision=$_rev" \
     -mod=readonly -modcacherw \
-    -o build \
-      .
+    -o build .
 
   for _shell in bash fish zsh; do
     build/ov --completion "$_shell" > "build/_completion.$_shell"
@@ -91,7 +81,7 @@ package() {
   install -vDm0755 -t "$pkgdir/usr/bin" \
     build/ov
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
-    ./*.yaml README.md ov.plugin.zsh
+    ./*.md ./*.yaml ov.plugin.zsh
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
 
