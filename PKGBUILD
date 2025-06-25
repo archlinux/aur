@@ -3,7 +3,7 @@
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
-pkgver=1.6.3.r231.23571860
+pkgver=1.7.0.0.r21.c82daddb
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -50,13 +50,15 @@ _arch_git_url=${_arch_svntogit}/${_arch_commit}/trunk/
 source=(
   'git+https://github.com/evilsocket/opensnitch.git'
   "fix-systemd-service.patch"
-  "${_arch_git_url}remove-debian-path.patch"
+  "remove-debian-path.patch"
+  "use-system-python-packages.patch"
   "${_arch_git_url}fix-setup.py.patch"
   "${_arch_git_url}tmpfiles.conf"
 )
 sha256sums=('SKIP'
             '9c3b312492c8127ca5e766cc5d6a8f8abcc5212be0d012e9f91c0258db4e9970'
-            '4485913927e77c2edf46afcec9c2fbd6b1b6c8139d43d3b587b39ae2afdde398'
+            'd88cfe1acce3389ab577958048e5b642fc3b34d12f2f2f69123113bfe49d0099'
+            '812824386d1ef72effd10c193d4fcbe371bf987a072cea77f9bc45bd526dc36e'
             'e77d2f6a6ada2761a987828e00c7725dee0c06bdb8793ae414d0df7fb1eb44a7'
             '09bd2cda97f74033617fd31efce8eba68eac03b29ea6d0f55aba2cef18824a72')
 
@@ -87,6 +89,9 @@ prepare() {
   # TODO file an upstream bug
   # remove Debian-specific path from sys.path
   patch -p1 -i "$srcdir/remove-debian-path.patch"
+
+  # use system python packages
+  patch -p1 -i "$srcdir/use-system-python-packages.patch"
 
   # other fixes
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")

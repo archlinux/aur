@@ -1,0 +1,14 @@
+diff --git a/ui/Makefile b/ui/Makefile
+index 51ea1758..4eb84a72 100644
+--- a/ui/Makefile
++++ b/ui/Makefile
+@@ -10,9 +10,6 @@ opensnitch/resources_rc.py: translations deps
+ translations:
+ 	@cd i18n ; make
+ 	
+-deps:
+-	@pip3 install -r requirements.txt
+-
+ clean:
+ 	@rm -rf *.pyc
+ 	@rm -rf opensnitch/resources_rc.py
