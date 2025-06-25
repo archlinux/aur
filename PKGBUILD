@@ -10,13 +10,14 @@ pkgname='mkpkg'
 pkgdesc='Tool to rebuild packages based on dependency triggers'
 _gitname='Arch-mkpkg'
 
-pkgver=7.5.0
+pkgver=7.6.0
 pkgrel=1
 url="https://github.com/gene-git/Arch-mkpkg"
 
 arch=(any)
 license=(MIT)
 depends=('python>=3.13' 'pyalpm' 'python-pydantic' 'python-tomli-w' 'python-pyelftools')
+optdepends=('pyconcurrent')
 
 # To build docs uncommont sphinx/texlive
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync'

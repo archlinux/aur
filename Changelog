@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : Arch-mkpkg
- Tags         : 7.0.0 ➙ 7.5.0
-              : 2025-05-22 ➙ 2025-06-22
+ Tags         : 7.1.0 ➙ 7.6.0
+              : 2025-06-14 ➙ 2025-06-25
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-25   : 7.6.0
+                Use pyconcurrent.run_prog when available otherwise local copy.
+                Fix typo
+ 2025-06-22     update Docs/Changelogs Docs/mkpkg.pdf for 7.5.0
 
  2025-06-22   : 7.5.0
                 Sync local copy of run_prog with latest from pyconcurrent
@@ -27,11 +32,3 @@
                 Symptom is that the build hangs waiting for IO to get unblocked.
                 Fixed by enhancing run_prog() to use non-blocking I/O.
  2025-05-22     update Docs/Changelogs Docs/mkpkg.pdf for 7.0.0
-
- 2025-05-22   : 7.0.0
-                Immproved code
-                  PEP-8, PEP-257, PEP-484 and PEP-561
-                  Refactor & clean up
-                Improved handling of split packages.
-                  Now checks every packages for any being missing or out of date.
- 2024-12-31     update Docs/Changelog.rst Docs/mkpkg.pdf for 6.2.4
