@@ -13,6 +13,6 @@ pkgbase = scarab
 	source = Scarab-2.6.0.0.tar.gz::https://github.com/fifty-six/Scarab/archive/v2.6.0.0.tar.gz
 	source = scarab.desktop
 	sha1sums = 501f82c3561e3ab849ed08352c08ce4a31fbadf0
-	sha1sums = 8ff187bcb309790529ef723de39ba1b9fc0a449d
+	sha1sums = 4b2c206295d35e3a75207a7d4d97b02b3d45554a
 
 pkgname = scarab

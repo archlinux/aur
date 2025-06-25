@@ -17,7 +17,7 @@ options=(!strip)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/fifty-six/Scarab/archive/v$pkgver.tar.gz"
         "scarab.desktop")
 sha1sums=('501f82c3561e3ab849ed08352c08ce4a31fbadf0'
-          '8ff187bcb309790529ef723de39ba1b9fc0a449d')
+          '4b2c206295d35e3a75207a7d4d97b02b3d45554a')
 
 build() {
     cd "$_pkgname-$pkgver"
