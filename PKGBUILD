@@ -1,8 +1,8 @@
 pkgname=mcphost
 
-_fragment=tag=v0.16.0
+_fragment=tag=v0.16.1
 
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc='A CLI host application that enables Large Language Models (LLMs) to interact with external tools through the Model Context Protocol (MCP)'
 
@@ -15,7 +15,7 @@ makedepends=(git go)
 source=(
 	"git+$url.git#$_fragment"
 )
-sha256sums=('fdfeda28ff98f850e875d0e2bca77318bc7b2c9dedef31197c60af470e32f4ce')
+sha256sums=('c826ab50c4dc1521acb45255330d2302220d7b1fa424b24acbf43788c29fa197')
 
 pkgver() {
 	git -C "$pkgname" describe --first-parent --tags | sed 's/^v//; s/-/+/g'
