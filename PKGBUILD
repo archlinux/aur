@@ -14,17 +14,12 @@ install="1password.install"
 source=(
     "https://downloads.1password.com/linux/tar/beta/${CARCH}/${_tar}"
     "https://downloads.1password.com/linux/tar/beta/${CARCH}/${_tar}.sig"
-    "https://downloads.1password.com/linux/keys/1password.asc::1password_signing_key.asc"
 )
 sha256sums=('4cc56ab985593f1246c67eef130852b03e5e79b33ef71a2f74107fe7fcb6ca07'
             'f2214b4df0dd9e24d5c1ffa2c029dfea5b9966827b01872375e04af07ed6a520'
-            'f39e7dd9dedc581ced85732832f217e0de5860a3b80279b5af4bc7c6d8157bae'
 )
 validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 
-prepare() {
-    gpg --import "${srcdir}/1password_signing_key.asc"
-}
 
 
 package() {
