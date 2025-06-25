@@ -1,8 +1,8 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgbase=web-eid
 pkgname=("web-eid-native" "web-eid-firefox" "web-eid-chrome")
-pkgver=2.6.0.654
-_rls_tag=v2.6.0
+pkgver=2.7.0.660
+_rls_tag=v2.7.0
 _ext_ver=2.2.1
 pkgrel=1
 arch=('x86_64')
@@ -42,8 +42,7 @@ build() {
              -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
              -DCMAKE_INSTALL_PREFIX="/usr" \
              -DCMAKE_INSTALL_LIBDIR="lib" \
-             -DCMAKE_INSTALL_SYSCONFDIR="/etc" \
-             -DQT_DIR="/usr/lib/cmake/Qt6"
+             -DCMAKE_INSTALL_SYSCONFDIR="/etc"
     cmake --build . --config Release
 }
 
