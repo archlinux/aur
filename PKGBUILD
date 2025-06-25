@@ -20,13 +20,13 @@
 unset _pkgtype
 [[ "${_build_debugfast::1}" == "t" ]] && _pkgtype+="-debugfast"
 [[ "${_build_level::1}" == "2" ]] && _pkgtype+="-x64v2"
-[[ "${_build_level::1}" == "3" ]] && _pkgtype+="-avx"
+[[ "${_build_level::1}" == "3" ]] && _pkgtype+="-x64v3"
 [[ "${_build_level::1}" == "4" ]] && _pkgtype+="-x64v4"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 _pkgname="dolphin-emu"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2506.r98.g5064b61
+pkgver=2506.r155.g43aa7e9
 pkgrel=1
 pkgdesc='A Gamecube and Wii emulator'
 url="https://github.com/dolphin-emu/dolphin"
@@ -40,6 +40,7 @@ depends=(
   'ffmpeg'
   'hidapi'
   'libevdev'
+  'libfmt.so'
   'libgl'
   'liblzma.so'
   'libpulse'
@@ -56,7 +57,7 @@ depends=(
   'pugixml'
   'qt6-base'
   'qt6-svg'
-  'sdl2'
+  'sdl3'
   'zstd'
 )
 makedepends=(
@@ -119,7 +120,7 @@ _source_dolphin() {
     'e-dant.watcher'::'git+https://github.com/e-dant/watcher.git'::'Externals/watcher/watcher'
     'epezent.implot'::'git+https://github.com/epezent/implot.git'::'Externals/implot/implot'
     'facebook.zstd'::'git+https://github.com/facebook/zstd.git'::'Externals/zstd/zstd'
-    'fmtlib.fmt'::'git+https://github.com/fmtlib/fmt.git'::'Externals/fmt/fmt'
+    #'fmtlib.fmt'::'git+https://github.com/fmtlib/fmt.git'::'Externals/fmt/fmt'
     #'google.googletest'::'git+https://github.com/google/googletest.git'::'Externals/gtest'
     'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'::'Externals/VulkanMemoryAllocator'
     #'khronosgroup.spirv-cross'::'git+https://github.com/KhronosGroup/SPIRV-Cross.git'::'Externals/spirv_cross/SPIRV-Cross'
@@ -204,7 +205,7 @@ END
     -DUSE_SANITIZERS=OFF # cubeb
 
     -DUSE_SYSTEM_ENET=OFF
-    -DUSE_SYSTEM_FMT=OFF
+    -DUSE_SYSTEM_FMT=ON
     -DUSE_SYSTEM_LIBMGBA=OFF
     -DUSE_SYSTEM_XXHASH=OFF
     -Wno-dev
