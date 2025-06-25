@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r69665.aab0f3c23f4
+pkgver=r69937.536f8c395ce
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=(autoconf-archive automake cmake git nasm ninja tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
   "git+$url"
-  "git+https://github.com/microsoft/vcpkg.git#commit=89dc8be6dbcf18482a5a1bf86a2f4615c939b0fb" # 2025-06-02 (vcpkg.json:builtin-baseline)
+  "git+https://github.com/microsoft/vcpkg.git#commit=2d1eb6affae7b2ef01c0312514d7218113dd5d25" # 2025-06-25 (vcpkg.json:builtin-baseline)
   "ladybird.desktop"
   "hb-fc-whole-archive.patch"
 )
