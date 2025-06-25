@@ -1,4 +1,4 @@
-pkgbase = rbackup-bin
+pkgbase = rbackup
 	pkgdesc = Fast, cross-platform and incremental backup tool written in Rust
 	pkgver = 0.2.6
 	pkgrel = 1
@@ -7,7 +7,7 @@ pkgbase = rbackup-bin
 	license = MIT
 	provides = rbackup
 	conflicts = rbackup
-	source = rbackup-bin-0.2.6.tar.gz::https://github.com/umpire274/rbackup/releases/download/v0.2.6/rbackup-0.2.6-x86_64-unknown-linux-gnu.tar.gz
+	source = rbackup-0.2.6.tar.gz::https://github.com/umpire274/rbackup/releases/download/v0.2.6/rbackup-0.2.6-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = cc09bd7e87e08ebb5e7043c225b79682444cdeb24b9c944158f22f8b47aa7651
 
-pkgname = rbackup-bin
+pkgname = rbackup
