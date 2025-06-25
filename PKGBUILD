@@ -2,24 +2,26 @@
 pkgname=chromium-ffmpeg-codecs-git
 _ver=7.1 # 7.2 does not work yet
 pkgver=${_ver}.c136
-pkgrel=4
+pkgrel=5
 _so=libffmpeg.so
 pkgdesc="Additional codecs for Chromiums (non vendored ${_so})"
 arch=('x86_64')
 url="https://git.ffmpeg.org/ffmpeg"
 license=('GPL-3.0-or-later')
 # Avoid conflicting by manual clone
-source=(https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch)
-sha256sums=('f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
+source=(https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
+${pkgname}.hook.in)
+sha256sums=('f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
+            'ba93ab3476f04385ec9666d970a665b7ed26d6e908b3b93549848fe76c255ccb')
 depends=(glibc zlib
   opus
 )
-makedepends=(gcc pkgconf diffutils git
-  nasm patch
+makedepends=(gcc pkgconf diffutils nasm git
+  patch
+  sed
 )
 conflicts=(vivaldi-{,snapshot-}ffmpeg-codecs)
 provides=("${conflicts[@]}" opera{,-developer,-beta}-ffmpeg-codecs{,-bin})
-optdepends=(opera{,-developer,-beta}': NoExtract=usr/lib/opera*/libffmpeg.so at pacman.conf')
 
 prepare() {
   rm -rf ffmpeg
@@ -54,18 +56,19 @@ build() {
   make install
 
   cd ../release
-  gcc $LTOFLAGS -shared ${LDFLAGS//--as-needed/--no-as-needed} \
+  g++ $LTOFLAGS -shared $LDFLAGS -Wl,--no-as-needed  \
     -Wl,--whole-archive \
       lib/lib{avcodec,avformat,avutil,swresample}.a \
     -Wl,--no-whole-archive \
     -lpthread $(pkgconf --libs zlib opus) \
-    -Wl,--no-as-needed -Wl,-Bsymbolic \
-    -Wl,-soname,$_so -o $_so
+    -Wl,-Bsymbolic \
+    -o $_so
 }
 
 package(){
   _name=chromium-ffmpeg
   install -Dm644 release/$_so "${pkgdir}"/usr/lib/$_so
+  # lib_extra does not work withut NoExtract-ing
   #for p in "${pkgdir}"/usr/lib/opera{,-developer,-beta}/lib_extra
   #do
   #  install -d "$p"
@@ -76,5 +79,8 @@ package(){
     ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.$n
     ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi-snapshot/${_so}.$n
   done
-  echo Warning: You need to add NoExtract=usr/lib/opera\*/${_so} since lib_extra does not work.
+  install -d "$pkgdir"/usr/share/libalpm/hooks
+  for _op in opera{,-developer,-beta}; do
+    sed "s/@OPERA@/${_op}/g" ${pkgname}.hook.in > "$pkgdir"/usr/share/libalpm/hooks/${pkgname}-${_op}.hook
+  done
 }
