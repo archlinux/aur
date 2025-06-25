@@ -1,4 +1,4 @@
-pkgname=rbackup-bin
+pkgname=rbackup
 pkgver=0.2.6
 pkgrel=1
 pkgdesc="Fast, cross-platform and incremental backup tool written in Rust"
