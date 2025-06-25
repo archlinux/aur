@@ -1,7 +1,7 @@
 # Maintainer: otreblan <otreblain@gmail.com>
 
 pkgname=glsl_analyzer
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Language server for GLSL (autocomplete, goto-definition, formatter, and more)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('zig')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e8505d71ff5be023766c951b7c540c65db6b0ec6815caecb845f4a79678740bf')
+sha256sums=('4430846143ef071c19f372a1dbd0f31ff8d2bf290d3d769dd5379e459febd0fe')
 
 prepare() {
 	cd "$pkgname-$pkgver"
