@@ -1,0 +1,43 @@
+diff --git a/src/log.c b/src/log.c
+index e6a3c8a..6bc6a49 100644
+--- a/src/log.c
++++ b/src/log.c
+@@ -95,6 +95,20 @@ INITIALIZER(logger_init)
+ 	atexit(logger_deinit);
+ }
+ 
++static void fprint_func(enum loglevel level, const char *fmt, ...)
++{
++	va_list ap;
++
++	va_start(ap, fmt);
++	print_func(level, fmt, ap);
++	va_end(ap);
++}
++
++static void vprint_func(enum loglevel level, const char *fmt, va_list ap)
++{
++	print_func(level, fmt, ap);
++}
++
+ void logger(enum loglevel level, const char *fmt, ...)
+ {
+ 	va_list ap;
+@@ -136,7 +150,7 @@ void logger(enum loglevel level, const char *fmt, ...)
+ 		}
+ 		if (level <= print_level) {
+ 			// skip the timestamp and log level string
+-			print_func(level, fs+23, ap);
++			vprint_func(level, fs+23, ap);
+ 		}
+ 	} else {
+ 		vprintf(fs, ap);
+@@ -168,7 +182,7 @@ void logger_dump_hex(enum loglevel level, const void* buf, unsigned int len)
+ 			fflush(stderr);
+ 		}
+ 		if (level <= print_level) {
+-			print_func(level, "%s", fs);
++			fprint_func(level, "%s", fs);
+ 		}
+ 	} else {
+ 		printf("%s", fs);
