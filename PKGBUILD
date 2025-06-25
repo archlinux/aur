@@ -140,7 +140,7 @@ _source_icecat() {
   _pkgsrc_firefox="firefox-$pkgver"
   _pkgext="tar.gz"
   source=(
-    "$_pkgsrc_gnuzilla.$_pkgext"::"https://cgit.git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-$_commit.$_pkgext"
+    "gnuzilla-$pkgver-${_commit::7}.$_pkgext"::"https://cgit.git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-$_commit.$_pkgext"
     "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"
   )
   sha256sums=(
@@ -239,8 +239,7 @@ _make_icecat() {
   # save icecat tarball
   if [[ "${_build_save_source::1}" == "t" ]]; then
     echo "Saving patched sources..."
-    rm -rf "$SRCDEST/$_pkgsrc.tar.zst"
-    mv "$_pkgsrc_gnuzilla/output/$_pkgsrc" "$srcdir/"
+    mv -f "$_pkgsrc_gnuzilla/output/$_pkgsrc" "$srcdir/"
     bsdtar -a -cf "$_pkgsrc.tar.zst" --options zstd:compression-level=9 "$_pkgsrc"
     cp -rf "$_pkgsrc.tar.zst" "$SRCDEST/"
   fi
@@ -414,7 +413,7 @@ build() (
     # find previous profile file...
     local _old_profdata _old_jarlog _pkgver_old tmp_old tmp_new
     _pkgver_prof=$(
-      cd "${SRCDEST:-$startdir}"
+      cd "$SRCDEST"
       for i in *.profdata; do [ -f "$i" ] && echo "$i"; done \
         | sort -rV | head -1 | sed -E -e 's&^[^0-9]+-([0-9\.]+)-merged.profdata&\1&'
     )
@@ -434,8 +433,8 @@ build() (
       _pkgver_prof="$pkgver"
     fi
 
-    local _old_profdata="${SRCDEST:-$startdir}/$_pkgname-$_pkgver_prof-merged.profdata"
-    local _old_jarlog="${SRCDEST:-$startdir}/$_pkgname-$_pkgver_prof-jarlog"
+    local _old_profdata="$SRCDEST/$_pkgname-$_pkgver_prof-merged.profdata"
+    local _old_jarlog="$SRCDEST/$_pkgname-$_pkgver_prof-jarlog"
 
     # Restore old profile
     if [[ "${_build_pgo_reuse::1}" == "t" ]]; then
