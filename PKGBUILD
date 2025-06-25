@@ -1,8 +1,8 @@
 pkgname=ipmiview
-pkgver=2.22.0
-pkgrel=3
-_pkgdate=241017
-_downloadID=832
+pkgver=2.23.0
+pkgrel=1
+_pkgdate=250519
+_downloadID=960
 pkgdesc="Supermicro IPMI tool"
 makedepends=('tar')
 depends=("glibc" "java-runtime")
@@ -25,7 +25,7 @@ source=(
     'ipmiview.png'
     )
 
-sha512sums=('b9e698443095ecaf018caee4a9a4bda2341a3c8eb7e8136d201a9351564222bdd2373524cd16492c1a0264882e961f128de8fd9121c130a302a28d4effcbac7f'
+sha512sums=('b673f62a852024da336db18c4f50996415351856897caa3c44df3bff6487d334d7a43b48025a39939e32213c48f2c725265627463743c5810bd1eae123da4a4a'
             '82f6d4a9f6ff031f0c7e7ab78a550ea76b8e297df62aaa9837a37fe4f0b4a8b4dfa4aae59c0edc9ee2f0b7e249548ba4f5f50a44e0682a7f7b6f098163a17879'
             'd1fb8e68ca057e3b2bc1c6e51cda226443c729db5166363d637a536afc07aab285ba46f9da5f656837e2423685a0ae421789a4768acee5ac8185ecb04318fc81')
 
