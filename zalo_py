@@ -8,14 +8,14 @@ app_path = "/opt/zalo"
 electron22_path = "/usr/bin/electron22"
 
 # Paths to your Zalo application and icon
-app_floder = os.path.join(app_path, "app")
+app_asar = os.path.join(app_path, "app.asar")
 icon_path = os.path.join(app_path, "icon.png")
 
 # Start the Zalo application
-process = subprocess.Popen([electron22_path, app_floder])
+process = subprocess.Popen([electron22_path, app_asar])
 
 def option1():
-    os.system(f'{electron22_path} {app_floder}')
+    os.system(f'{electron22_path} {app_asar}')
 
 def exit_action(icon, item):
     process.kill()
@@ -35,3 +35,4 @@ icon = Icon("Custom Tray Icon", image, "Zalo", menu)
 
 # Run the icon
 icon.run()
+
