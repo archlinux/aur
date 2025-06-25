@@ -2,12 +2,12 @@
 # Contributor: Andrea Feletto <andrea@andreafeletto.com>
 # Contributor: Daurnimator <daurnimator@archlinux.org>
 
-: ${_branch:=next-wlroots}
+: ${_branch:=0.3.x}
 : ${_ver_wlr:=0.19}
 
 _pkgname="river"
 pkgname="$_pkgname-git"
-pkgver=0.3.9.r7.gee1e36c
+pkgver=0.3.10.r1.ged85b44
 pkgrel=1
 pkgdesc="A dynamic tiling wayland compositor"
 url='https://codeberg.org/river/river'
@@ -51,12 +51,8 @@ prepare() {
 
 pkgver() {
   cd "$_pkgsrc"
-  local _tag=$(git tag | sort -rV | head -1)
-  local _version"=${_tag#v}"
-  local _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
-  local _hash=$(git rev-parse --short=7 HEAD)
-
-  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 _zig_options() {
