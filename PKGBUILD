@@ -2,7 +2,7 @@
 
 pkgname=python-alist
 _name=${pkgname//-/_}
-pkgver=0.0.13.10
+pkgver=0.0.13.11.1
 pkgrel=1
 epoch=
 pkgdesc="Python wrapper for alist."
@@ -44,7 +44,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('2ddca0ba565d7f293701e1119a7674f894333546c0501270c0c38a36b7d5d483')
+sha256sums=('54d639aa42a8e90c8fa8af594dee728323c262a7734dcf60258354d2cc76e761')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
