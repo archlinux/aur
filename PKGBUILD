@@ -21,6 +21,5 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
-  pwd
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
