@@ -1,7 +1,7 @@
 # Maintainer: ricalditodepollo <richarclarinet at gmail dot com>
 pkgname=balatro-multiplayer-launcher
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Launcher for Balatro Multiplayer Mod"
 arch=('x86_64')
 url="https://github.com/Balatro-Multiplayer/Balatro-Multiplayer-Launcher/"
@@ -32,7 +32,7 @@ source=(
 
 )
 sha256sums=(
-  "52dd0300a8020c6cd6bc65feb5637dbdd878571954a81344ec431d82a07cb6fc" #AppImage
+  "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5" #AppImage
   "eb906bf72e79c5e481993617a76f33713cd22002bcc64d7fd956a70b4833ad59" #.desktop
 )
 
