@@ -1,0 +1,18 @@
+pkgbase = escribe-chanchi
+	pkgdesc = Markdown editor with templates system, advance search, emojis, and more
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/sapoclay/escribe-chanchi
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-webview
+	depends = cmark
+	source = https://github.com/sapoclay/escribe-chanchi/archive/refs/tags/1.6_Versión.tar.gz
+	source = escribe-chanchi.desktop
+	md5sums = 06302a2ab798c860884badb1234184e6
+	md5sums = e2b1e888740f98eb07bf9ee3866b9614
+
+pkgname = escribe-chanchi
