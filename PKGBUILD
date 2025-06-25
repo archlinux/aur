@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=ggVennDiagram
-_pkgver=1.5.2
+_pkgver=1.5.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('25718bbd19e6bf11b4dea69609664d64')
-b2sums=('dad9a840703a87b479075655f264f8b4a2cb6b87502111c173437a47f21b47157cf1dcee922f1f924e06bbc76707cda3cd8a6017cb39f8e60abe6889844553db')
+md5sums=('1f26918b54bd12612f5786f11b46832f')
+b2sums=('ab3b5fe65dc69ac1d204a2e1883a922b3e36a50217e08c0c4c4efb283f31e39d95e1a93bb351ff1226b6969c76e3c17d2c2eafc25c824f738b38b6185ab3386c')
 
 build() {
   mkdir build
