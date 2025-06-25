@@ -22,7 +22,7 @@ sha256sums_x86_64=('881c67e68f2d37547d768e11504d76075e3ac45fd0a7f70f4a376f39ef9a
 sha256sums_i686=('0f3c7601e579ad8d0258715951941cb6e2b6e20a08566c10bae163fbaa784c97')
 
 package() {
-	install -Dv "alda-$pkgver-$CARCH" "$pkgdir/usr/bin/alda"
-	install -Dv "alda-player-$pkgver" "$pkgdir/usr/bin/alda-player"
+	install -Dv "alda-$pkgver-$CARCH" "$pkgdir/usr/bin/"
+	install -Dv "alda-player-$pkgver" "$pkgdir/usr/bin/"
 	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
