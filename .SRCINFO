@@ -1,0 +1,15 @@
+pkgbase = utiliti
+	pkgdesc = utiLITI – The LITIENGINE Game Editor
+	pkgver = 0.10.7
+	pkgrel = 1
+	url = https://github.com/iamllcoolray/utiliti-aur-package
+	arch = x86_64
+	license = MIT
+	depends = java-runtime
+	options = !strip
+	source = local://litiengine-linux.zip
+	source = utiLITI.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = utiliti

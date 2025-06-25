@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=utiLITI
+Comment=Game Editor for the LITIENGINE
+Exec=utiliti
+Icon=utiliti
+Terminal=false
+Type=Application
+Categories=Development;Game;
