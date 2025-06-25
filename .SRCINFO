@@ -1,10 +1,9 @@
 pkgbase = matlab
 	pkgdesc = A high-level language for numerical computation and visualization
 	pkgver = R2025a.25.1.0.2943329
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://www.mathworks.com/products/matlab.html
-	install = matlab.install
 	arch = x86_64
 	license = custom:MATLAB EULA
 	makedepends = gendesk
@@ -89,8 +88,13 @@ pkgbase = matlab
 	depends = qt5-gamepad
 	depends = libxkbcommon-x11
 	depends = xcb-util-image
+	source = matlab_jenv.hook
+	sha256sums = 396187ed4f1a516327fbce96140114983a17d6e64988f0c5d95d036353c0fe51
+
+pkgname = matlab
+	install = matlab.install
 	optdepends = glibc-locales: listed in the original depends
-	optdepends = java-runtime-openjdk>=8: required for certain products and features
+	optdepends = java-matlab: required for certain products and features
 	optdepends = libcups: printing support
 	optdepends = matlab-batch: start MATLAB non-interactively using a batch licensing token
 	optdepends = matlab-mpm: package manager
@@ -99,4 +103,9 @@ pkgbase = matlab
 	optdepends = python-matlabengine: Python bindings
 	provides = matlab-version=R2025a
 
-pkgname = matlab
+pkgname = java-matlab
+	pkgdesc = A high-level language for numerical computation and visualization (Java components)
+	depends = java-environment-openjdk<=21
+	depends = java-environment-openjdk>=8
+	depends = matlab=1:R2025a.25.1.0.2943329-5
+	provides = java-matlab-version=R2025a

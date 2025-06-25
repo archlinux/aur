@@ -5,10 +5,11 @@
 
 _product="MATLAB"
 _name="$(echo "${_product}" | tr '[:upper:]' '[:lower:]' | tr ' ' '_' | tr -d '()')"
-pkgname="${_name}"
+pkgbase="${_name}"
+pkgname=({,java-}"${pkgbase}")
 pkgver=R2025a.25.1.0.2943329
 _pkgver="$(sed -E 's/^(R20[0-9]{2}[ab]).*/\1/' <<< "${pkgver}")"
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=('x86_64')
@@ -98,20 +99,8 @@ depends=(
   'sh'
 )
 makedepends=('gendesk' 'inotify-tools' 'matlab-mpm>=2025.1') # "matlab-mpm-version>=${_pkgver}" 'patchelf'
-optdepends=(
-  'glibc-locales: listed in the original depends'
-  'java-runtime-openjdk>=8: required for certain products and features' # https://www.mathworks.com/support/requirements/openjdk.html
-  # 'intel-oneapi-basekit'
-  # 'intel-oneapi-compiler-shared-runtime'
-  'libcups: printing support'
-  'matlab-batch: start MATLAB non-interactively using a batch licensing token'
-  'matlab-mpm: package manager'
-  'patchelf: clear the executable stack after the install'
-  'perl'
-  'python-matlabengine: Python bindings'
-)
-provides=("${pkgname}-version=${_pkgver}")
-install="${pkgname}.install"
+source=("${pkgbase}_jenv.hook")
+sha256sums=('396187ed4f1a516327fbce96140114983a17d6e64988f0c5d95d036353c0fe51')
 
 declare -Ag _deps=(
   # replace depends
@@ -277,8 +266,8 @@ done
 prepare() {
   cd "${srcdir}"
   echo "  -> Cleaning old directories..."
-  rm -rf download install tmp
-  mkdir -p download install tmp
+  rm -rf download install install-java tmp
+  mkdir -p download install install-java tmp
 
   echo "  -> Starting log watcher..."
   : > "tmp/mathworks_${USER}.log"
@@ -365,14 +354,18 @@ build() {
   cd "${srcdir}"
   echo "  -> Generating desktop file..."
   gendesk -f -n \
-    --pkgname "${pkgname}" \
+    --pkgname "${pkgbase}" \
     --pkgdesc "${pkgdesc}" \
     --name "${_product}" \
     --comment 'Programming and numeric computing platform' \
-    --exec "${pkgname} -desktop -useStartupFolderPref" \
+    --exec "${pkgbase} -desktop -useStartupFolderPref" \
     --icon "/opt/MATLAB/${_pkgver}/bin/glnxa64/cef_resources/matlab_icon.png" \
     --categories 'Development;Education;Science;Mathematics;IDE' \
     --mimetypes 'application/x-matlab-data;text/x-matlab'
+
+  cd "${srcdir}/install"
+  echo "  -> Separating Java components..."
+  mv "java" "${srcdir}/install-java/java"
 
   cd "${srcdir}/install/bin/glnxa64"
   echo "  -> Removing unnecessary files..."
@@ -441,7 +434,22 @@ build() {
   # done
 }
 
-package() {
+package_matlab() {
+  optdepends=(
+    'glibc-locales: listed in the original depends'
+    "java-${pkgbase}: required for certain products and features"
+    # 'intel-oneapi-basekit'
+    # 'intel-oneapi-compiler-shared-runtime'
+    'libcups: printing support'
+    'matlab-batch: start MATLAB non-interactively using a batch licensing token'
+    'matlab-mpm: package manager'
+    'patchelf: clear the executable stack after the install'
+    'perl'
+    'python-matlabengine: Python bindings'
+  )
+  provides=("${pkgname}-version=${_pkgver}")
+  install="${pkgname}.install"
+
   cd "${srcdir}"
   echo "  -> Moving files from \$srcdir/ to \$pkgdir/ directly to save space..."
   # install -vdm755 "${pkgdir}/opt/MATLAB/${_pkgver}"
@@ -450,12 +458,12 @@ package() {
   mv install/* "${pkgdir}/opt/MATLAB/${_pkgver}"
 
   echo "  -> Installing desktop file..."
-  install -vDm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -vDm644 "${pkgbase}.desktop" "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
 
   echo "  -> Installing license..."
-  install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -vd "${pkgdir}/usr/share/licenses/${pkgbase}"
   ln -vsf "/opt/MATLAB/${_pkgver}/license_agreement.txt" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+    "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE.txt"
 
   echo "  -> Installing symlinks..."
   install -vd "${pkgdir}/usr/bin"
@@ -465,12 +473,29 @@ package() {
   done
   # owned by miktex, ...
   for bin in mex mexext; do
-    ln -vsf "/opt/MATLAB/${_pkgver}/bin/${bin}" "${pkgname}-${bin}"
+    ln -vsf "/opt/MATLAB/${_pkgver}/bin/${bin}" "${pkgbase}-${bin}"
   done
   for bin in MathWorksCrashReporter MathWorksLicenseDeactivation \
              MathWorksProductAuthorizer MathWorksProductUninstaller; do
     ln -vsf "/opt/MATLAB/${_pkgver}/bin/glnxa64/${bin}" "${bin}"
   done
+}
+
+package_java-matlab() {
+  pkgdesc+=" (Java components)"
+  # https://www.mathworks.com/support/requirements/openjdk.html
+  depends=('java-environment-openjdk<=21' 'java-environment-openjdk>=8' "${pkgbase}=${epoch}:${pkgver}-${pkgrel}")
+  provides=("${pkgname}-version=${_pkgver}")
+
+  cd "${srcdir}"
+  echo "  -> Moving files from \$srcdir/ to \$pkgdir/ directly to save space..."
+  # install -vdm755 "${pkgdir}/opt/MATLAB/${_pkgver}"
+  install -vdm755 "${pkgdir}/opt/MATLAB"
+  install -vdm777 "${pkgdir}/opt/MATLAB/${_pkgver}" # :(
+  mv install-java/* "${pkgdir}/opt/MATLAB/${_pkgver}"
+
+  echo "  -> Installing Java environment hook..."
+  install -vDm644 "${pkgbase}_jenv.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgbase}_jenv.hook"
 }
 
 # echo "  -> Modifying MPM input settings..."
