@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Escribe Chanchi
+Comment=Markdown editor with templates system, advance search, emojis, and more
+Comment[es]=Editor Markdown con sistema de plantillas, busqueda avanzada, y más
+Exec=escribe-chanchi
+Icon=escribe-chanchi
+Terminal=false
+Type=Application
+Categories=Office;
