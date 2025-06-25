@@ -1,6 +1,6 @@
 # Maintainer: mapleafgo <mapleafgo@163.com>
 pkgname=mqttx-appimage
-pkgver=1.11.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="A Powerful and All-in-One MQTT 5.0 client toolbox for Desktop, CLI and WebSocket."
 arch=('x86_64' 'aarch64')
@@ -26,5 +26,5 @@ package() {
 	install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/mqttx.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/mqttx.png"
 	install -dm755 "${pkgdir}/usr/bin" && ln -sf "${_install_path}/AppRun" "${pkgdir}/usr/bin/mqttx"
 }
-sha256sums_x86_64=('aeace1e30869f0d69e41bf7c98a4eefa12f745740110e2a0bc92b02e1ceefa18')
-sha256sums_aarch64=('8114748051ea20f5cead2cada844408bb9ac7ebad85e6db13fce09cbe521aca8')
+sha256sums_x86_64=('4c7cdd0beb6f9cc1f9b814f0af8ac990cbbd182630c7e27204e1155b4475c6d6')
+sha256sums_aarch64=('d7c82b91ca9ce28159df5f96a0db07e71141d66d99271feca76c7c84affaff97')
