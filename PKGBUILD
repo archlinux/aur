@@ -2,7 +2,7 @@
 
 pkgname='adaptivecpp'
 pkgver=25.02.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A modern, community-driven platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors.'
 arch=('x86_64')
 url='https://github.com/AdaptiveCpp/AdaptiveCpp'
@@ -22,7 +22,6 @@ depends=(
     'nvidia-utils'
     'ocl-icd'
     'python'
-    'spirv-tools'
 )
 makedepends=(
     'boost'
@@ -46,6 +45,7 @@ build() {
         -DCUDAToolkit_ROOT=/opt/cuda \
         -DROCM_PATH=/opt/rocm \
         -DACPP_COMPILER_FEATURE_PROFILE=full \
+        -DACPP_EXPERIMENTAL_LLVM=ON \
         -DWITH_CUDA_BACKEND=ON \
         -DWITH_ROCM_BACKEND=ON \
         -DWITH_LEVEL_ZERO_BACKEND=ON \
