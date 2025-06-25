@@ -2,8 +2,9 @@
 pkgname=chromium-ffmpeg-codecs-git
 _ver=7.1 # 7.2 does not work yet
 pkgver=${_ver}.c136
-pkgrel=3
-pkgdesc='Additional codecs for Chromiums (non vendored ffmpeg)'
+pkgrel=4
+_so=libffmpeg.so
+pkgdesc="Additional codecs for Chromiums (non vendored ${_so})"
 arch=('x86_64')
 url="https://git.ffmpeg.org/ffmpeg"
 license=('GPL-3.0-or-later')
@@ -16,8 +17,9 @@ depends=(glibc zlib
 makedepends=(gcc pkgconf diffutils git
   nasm patch
 )
-conflicts=( opera-{,developer-,beta-}ffmpeg-codecs{,-bin} vivaldi-{,snapshot-}ffmpeg-codecs)
-provides=("${conflicts[@]}")
+conflicts=(vivaldi-{,snapshot-}ffmpeg-codecs)
+provides=("${conflicts[@]}" opera{-,-developer,-beta}ffmpeg-codecs{,-bin})
+optdepends=(opera{-,-developer,-beta}': NoExtract=usr/lib/opera*/libffmpeg.so at pacman.conf')
 
 prepare() {
   rm -rf ffmpeg
@@ -58,21 +60,21 @@ build() {
     -Wl,--no-whole-archive \
     -lpthread $(pkgconf --libs zlib opus) \
     -Wl,--no-as-needed -Wl,-Bsymbolic \
-    -Wl,-soname,libffmpeg.so -o libffmpeg.so
+    -Wl,-soname,$_so -o $_so
 }
 
 package(){
   _name=chromium-ffmpeg
-  install -Dm644 release/libffmpeg.so "${pkgdir}/usr/lib/${_name}/libffmpeg.so"
-  for p in "${pkgdir}"/usr/lib/opera{,-developer,-beta}/lib_extra
-  do
-    install -d "$p"
-    ln -sf /usr/lib/${_name}/libffmpeg.so "$p"/libffmpeg.so
-  done
+  install -Dm644 release/$_so "${pkgdir}"/usr/lib/$_so
+  #for p in "${pkgdir}"/usr/lib/opera{,-developer,-beta}/lib_extra
+  #do
+  #  install -d "$p"
+  #  ln -sf /usr/lib/$_so "$p"/$_so
+  #done
   install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
   for n in 7.4 7.5 7.6 7.7 7.8 7.9 8.0; do
-    ln -sf /usr/lib/${_name}/libffmpeg.so "$pkgdir"/opt/vivaldi/libffmpeg.so.$n
-    ln -sf /usr/lib/${_name}/libffmpeg.so "$pkgdir"/opt/vivaldi-snapshot/libffmpeg.so.$n
+    ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.$n
+    ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi-snapshot/${_so}.$n
   done
-  echo Warning: 'opera-* needs to replace /usr/lib/opera/libffmpeg.so directly instead of using opera/lib_extra'.
+  echo Warning: You need to add NoExtract=usr/lib/opera\*/${_so} since lib_extra does not work.
 }
