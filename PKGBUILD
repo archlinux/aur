@@ -2,7 +2,7 @@
 
 pkgname=xmlmind-xmleditor
 _pkgname=xxe
-pkgver=10.9.0
+pkgver=10.11.0
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="IDE for editing XML files"
@@ -22,8 +22,8 @@ source=("https://www.xmlmind.com/xmleditor/_download/xxe-perso-${_pkgver}.zip"
         "authvalue.sh"
         "xmltool.1"
         "icon64x64.png")
-sha256sums=('df066c9f799ae55ffb82b8f45c3ab822041d74b46f01c220f0df677b8089ea4a'
-            '8b56ac921cab31c4b48877128ff85fed1ea0cc393d078ec1273a5ae03ceceb42'
+sha256sums=('a8e5ddc2b4c3305d34a14df4c10135af778e6ea89d8801e685502e99c202d56a'
+            '4a68cb7c7224b8f74e637d2fd0d5abf2ad24fcc5bbbeedfc7b7d43935c872eef'
             '72d24d6216f0fe5515edb50c38566d3f1f3ce134634a0da04fbb32ac3a216452'
             '3f04f7b1ecb934a96f15ed75e0593e545d7f820a95705710b39a2916377c57fa'
             '40fd7e5f73eaf9f05adabd29715f3dc2d78f4eeddb9440bdd3aece1341308a01'
