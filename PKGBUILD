@@ -2,18 +2,21 @@
 # Contributor: sp1rit <sp1ritCS@protonmail.com>
 
 : ${CARGO_HOME:=$SRCDEST/cargo-home}
-: ${RUSTUP_TOOLCHAIN:=stable}
 : ${CARGO_TARGET_DIR:=target}
-
+: ${RUSTUP_TOOLCHAIN:=stable}
 export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
-_pkgname=czkawka
+_pkgname="czkawka"
 pkgname="$_pkgname-git"
-pkgver=7.0.0.r4.g2a32a52
-pkgrel=2
+pkgver=9.0.0.r6.g2be42d9
+pkgrel=1
 pkgdesc="Multi-functional app to find duplicates, similar images, and empty folders"
 url="https://github.com/qarmin/czkawka"
-license=('MIT')
+license=(
+  'CC-BY-4.0'    # icons
+  'GPL-3.0-only' # krokiet
+  'MIT'          # cli, core, krokiet
+)
 arch=('x86_64')
 
 depends=(
@@ -26,10 +29,10 @@ makedepends=(
 )
 
 provides=(
-  "czkawka=${pkgver%%.r*}"
-  "czkawka-cli=${pkgver%%.r*}"
-  "czkawka-gui=${pkgver%%.r*}"
-  "krokiet=${pkgver%%.r*}"
+  "czkawka=${pkgver%%.g*}"
+  "czkawka-cli=${pkgver%%.g*}"
+  "czkawka-gui=${pkgver%%.g*}"
+  "krokiet=${pkgver%%.g*}"
 )
 conflicts=(
   "czkawka"
@@ -43,6 +46,8 @@ source=("$_pkgname"::"git+$url.git")
 sha256sums=("SKIP")
 
 prepare() {
+  sed -E -e 's&#(lto = "thin")&\1\ncodegen-units = 16&' -i "$_pkgsrc/Cargo.toml"
+
   cd "$_pkgsrc"
   cargo update
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -82,11 +87,22 @@ package() {
   # symlink
   ln -sf "czkawka_gui" "$pkgdir/usr/bin/czkawka"
 
+  # icon
+  install -Dm644 data/icons/com.github.qarmin.czkawka-symbolic.svg "$pkgdir/usr/share/pixmaps/com.github.qarmin.czkawka.svg"
+
   # launcher
   install -Dm644 data/com.github.qarmin.czkawka.desktop -t "$pkgdir/usr/share/applications/"
 
   # license
-  for i in czkawka_cli czkawka_core czkawka_gui krokiet; do
-    install -Dm644 "$i/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.$i"
+  local licenses=(
+    'LICENSE_CC_BY_4_ICONS'::'icons-LICENSE.CC-BY-4.0'
+    'czkawka_cli/LICENSE_MIT'::'czkawka_cli-LICENSE.MIT'
+    'czkawka_core/LICENSE_MIT'::'czkawka_core-LICENSE.MIT'
+    'czkawka_gui/LICENSE_MIT_APP_CODE'::'czkawka_gui-LICENSE'
+    'krokiet/LICENSE_GPL_APP'::'krokiet-LICENSE.GPL-3.0-only'
+    'krokiet/LICENSE_MIT_CODE'::'krokiet-LICENSE.MIT'
+  )
+  for i in "${licenses[@]}"; do
+    install -Dm644 "${i%%::*}" "$pkgdir/usr/share/licenses/$pkgname/${i##*::}"
   done
 }
