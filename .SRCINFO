@@ -1,22 +1,22 @@
 pkgbase = atmos-weather-bin
 	pkgdesc = A lightweight weather app for receiving alerts and forecasts in the US.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.2.1
-	pkgrel = 2
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://atticuscornett.github.io/AtmosWeather/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron29
-	provides = atmos-weather=2.2.1
+	depends = electron36
+	provides = atmos-weather=3.0.0
 	conflicts = atmos-weather
 	source = atmos-weather.sh
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = atmos-weather-2.2.1-aarch64.deb::https://github.com/atticuscornett/AtmosWeather/releases/download/v2.2.1/atmos-weather_2.2.1_arm64.deb
-	sha256sums_aarch64 = 3ab3a1a1871ddb40792e4f13d062222dd2972fc820e2d90ca4d8aef6b9c54fd7
-	source_armv7h = atmos-weather-2.2.1-armv7h.deb::https://github.com/atticuscornett/AtmosWeather/releases/download/v2.2.1/atmos-weather_2.2.1_armv7l.deb
-	sha256sums_armv7h = b4cd82811fd0dd84e0cb63d63419da3562bfb52d8267af837faaa35929795c41
-	source_x86_64 = atmos-weather-2.2.1-x86_64.deb::https://github.com/atticuscornett/AtmosWeather/releases/download/v2.2.1/atmos-weather_2.2.1_amd64.deb
-	sha256sums_x86_64 = 6f047db3f1ea36915e7bef21060b4403797eb8e200a4ea7dffc4b87c0a00100c
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+	source_aarch64 = atmos-weather-3.0.0-aarch64.deb::https://github.com/atticuscornett/AtmosWeather/releases/download/v3.0.0/atmos-weather_3.0.0_arm64.deb
+	sha256sums_aarch64 = 7d40a37d9fad08ca107afecb228930ff461644609f6b35de48fef0c3ae8ffa8c
+	source_armv7h = atmos-weather-3.0.0-armv7h.deb::https://github.com/atticuscornett/AtmosWeather/releases/download/v3.0.0/atmos-weather_3.0.0_armv7l.deb
+	sha256sums_armv7h = 06dfaf35c65989e1361932ac54fc18af15c5948c478b8f2198dbccdbf43a8fc1
+	source_x86_64 = atmos-weather-3.0.0-x86_64.deb::https://github.com/atticuscornett/AtmosWeather/releases/download/v3.0.0/atmos-weather_3.0.0_amd64.deb
+	sha256sums_x86_64 = 22107fe39b7a2fe5d56fcb657ce1831ea0f3781f1a1a7836f97a78fe4c46c8d9
 
 pkgname = atmos-weather-bin
