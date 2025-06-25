@@ -1,7 +1,7 @@
-# Maintainer: morpheusthewhite <zffromGerace@hotmail.it>
+# Maintainer: strat <strat@jamjar.ws>
 
 pkgname=spicetify-themes-git
-pkgver=r404.4f10f4f
+pkgver=r509.3effbbe
 pkgrel=1
 pkgdesc="A community-driven collection of themes for spicetify"
 arch=('any')
@@ -10,27 +10,26 @@ license=('MIT')
 groups=()
 depends=('spicetify-cli')
 makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("spicetify-themes")
+conflicts=("spicetify-themes")
 replaces=()
 backup=()
 options=()
 install=spicetify-themes-git.install
-source=("$pkgname"::"git+https://github.com/spicetify/spicetify-themes")
+source=("git+$url")
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    ( set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+    cd "$srcdir/spicetify-themes"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    mkdir -p "${pkgdir}"/usr/share/spicetify-cli/Extensions
+    mkdir -p "${pkgdir}"/opt/spicetify-cli/Themes
 
-    cp -R "$srcdir/${pkgname}" "${pkgdir}"/usr/share/spicetify-cli/Themes
-    rm -r "${pkgdir}"/usr/share/spicetify-cli/Themes/README.md "${pkgdir}"/usr/share/spicetify-cli/Themes/LICENSE
+    cd "$srcdir/spicetify-themes"
+    # i cant find and elegant solution for this considering some directorys are also not suppost to be copied
+    cp -r Blackout Blossom BurntSienna Default Dreary Dribbblish Flow Matte Nightlight Onepunch SharkBlue Sleek StarryNight text Turntable Ziro "${pkgdir}"/opt/spicetify-cli/Themes
+    find $pkgdir -name '*.png' -delete
 }

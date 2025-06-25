@@ -1,15 +1,5 @@
 post_install(){
-    # generate config file
-    spicetify
-
-    spicetify backup apply enable-devtool
-
     echo "Themes have been installed and can now be applied"
-    echo "To use Dribbblish you need to follow this instructions"
-    echo "-> https://github.com/morpheusthewhite/spicetify-themes/blob/master/Dribbblish/README.md"
-
-    ## Dribbblish theme installation
-    #spicetify config current_theme Dribbblish color_scheme base
-    #spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
+    echo "You may need to reapply themes since the theme directory has changed"
 }
 
