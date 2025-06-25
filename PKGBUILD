@@ -2,8 +2,9 @@
 # Contributor: Valerio Pizzi (pival81) <pival81@yahoo.com>
 pkgname=museeks
 _pkgname=Museeks
-pkgver=0.22.0
-_nodeversion=23
+_flatpakname="io.${pkgname}.app"
+pkgver=0.22.1
+_nodeversion=24
 pkgrel=1
 pkgdesc="🎵 A simple, clean and cross-platform music player."
 arch=('any')
@@ -24,7 +25,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=${pkgver}"
 )
-sha256sums=('2499e66f0598c483d7faa06f6abc33508c5a256796a194f51eb7534b291e3638')
+sha256sums=('3cc4813911edfc99d02e0d5724005e51e6b48acba529f012bbbe6bb39a096998')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -56,11 +57,13 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	sed -i 's/"dmg", "nsis", "appimage", "deb", "rpm"/"deb"/g' src-tauri/tauri.conf.json
 	bun tauri build
+	sed -i "s/${_flatpakname}/${pkgname}/g" src-tauri/release/flatpak.metainfo.xml
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_"*/data/usr/bin/"${pkgname}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_"*/data/usr/lib/"${_pkgname}"/icons/icon.png \
-        -t "${pkgdir}/usr/lib/${_pkgname}/icons"
+	install -Dm755 -d "${pkgdir}/usr/lib/${_pkgname}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_"*/data/usr/lib/"${_pkgname}"/{icons,migrations} \
+        "${pkgdir}/usr/lib/${_pkgname}"
 	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_"*/data/usr/share/applications/"${_pkgname}".desktop \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	_icon_sizes=(32x32 128x128 256x256@2)
@@ -68,5 +71,6 @@ package() {
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_"*/data/usr/share/icons/hicolor/"${_icons}"/apps/"${pkgname}".png \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/release/flatpak.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname}.metainfo.xml"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
