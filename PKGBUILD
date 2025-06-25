@@ -1,24 +1,29 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
-pkgname=jira-cli
-pkgver=1.5.1
+pkgname=jira-cli-git
+pkgver=1.6.0.r12.gadab79f
 pkgrel=1
-pkgdesc="Feature-rich interactive Jira command line."
+pkgdesc="Feature-rich interactive Jira command line (git version)"
 arch=(x86_64)
 url="https://github.com/ankitpokhrel/jira-cli"
 license=('MIT')
 
-makedepends=("go")
+makedepends=("go" "git")
 
-conflicts=('jira-cli-bin' 'go-jira' 'go-jira-bin')
-provides=('jira')
+conflicts=('jira-cli' 'jira-cli-bin' 'go-jira' 'go-jira-bin')
+provides=('jira-cli' 'jira')
 
-source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}::git+${url}.git")
 
-sha256sums=('726d793f1863f075ee4446b31f9ff692fa10b66b09ee2bc1d2471f7f94315c85')
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "${srcdir}/${pkgname}"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}/cmd/jira"
+	cd "${srcdir}/${pkgname}/cmd/jira"
 	go build \
 		-trimpath \
 		-buildmode=pie \
@@ -32,7 +37,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}"
 	install -Dm 644 -t ${pkgdir}/usr/share/licenses/${pkgname} LICENSE
 	cd cmd/jira
 	./jira man --generate --output ${pkgdir}/usr/share/man/man7/
