@@ -2,7 +2,7 @@
 
 _pkgname=lutris-gamepad-ui
 pkgname=$_pkgname-git
-pkgver=0.1.2.r10.g59a283e
+pkgver=0.1.3.r24.g2f3e28c
 pkgrel=1
 pkgdesc="A simple, TV-friendly, gamepad-navigable frontend for Lutris"
 arch=('x86_64')
@@ -22,6 +22,7 @@ build() {
     cd "$_pkgname"
     npm install --cache "${srcdir}/npm-cache"
     npm run build:vite
+    npm prune --omit=dev
 }
 
 package() {
@@ -32,5 +33,7 @@ package() {
     install -vDm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 
     install -vDm644 "$_pkgname/electron.js" "$pkgdir/usr/lib/$_pkgname/electron.js"
-    cp -rp "$_pkgname/dist/" "$pkgdir/usr/lib/$_pkgname/"
+
+    cp -rp "$_pkgname/dist" "$pkgdir/usr/lib/$_pkgname/dist"
+    cp -rp "$_pkgname/node_modules" "$pkgdir/usr/lib/$_pkgname/node_modules"
 }
