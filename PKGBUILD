@@ -18,7 +18,7 @@ makedepends=(gcc pkgconf diffutils git
   nasm patch
 )
 conflicts=(vivaldi-{,snapshot-}ffmpeg-codecs)
-provides=("${conflicts[@]}" opera{-,-developer,-beta}ffmpeg-codecs{,-bin})
+provides=("${conflicts[@]}" opera{,-developer,-beta}-ffmpeg-codecs{,-bin})
 optdepends=(opera{,-developer,-beta}': NoExtract=usr/lib/opera*/libffmpeg.so at pacman.conf')
 
 prepare() {
