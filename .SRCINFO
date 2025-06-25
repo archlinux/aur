@@ -1,24 +1,18 @@
 pkgbase = opera-ffmpeg-vivaldi-symlink
-	pkgdesc = Proprietary codecs for Opera and vivaldi-snapshot
+	pkgdesc = Add codecs to Operas and vivaldi-snapshot
 	pkgver = 136.0.7103.113
-	pkgrel = 2
+	pkgrel = 3
 	url = https://chromium.googlesource.com/chromium/third_party/ffmpeg
 	arch = x86_64
 	license = LGPL2.1
 	depends = vivaldi-ffmpeg-codecs
+	provides = vivaldi-snapshot-ffmpeg-codecs
 	provides = opera-ffmpeg-codecs
 	provides = opera-ffmpeg-codecs-bin
 	provides = opera-developer-ffmpeg-codecs
 	provides = opera-developer-ffmpeg-codecs-bin
 	provides = opera-beta-ffmpeg-codecs
 	provides = opera-beta-ffmpeg-codecs-bin
-	provides = vivaldi-snapshot-ffmpeg-codecs
-	conflicts = opera-ffmpeg-codecs
-	conflicts = opera-ffmpeg-codecs-bin
-	conflicts = opera-developer-ffmpeg-codecs
-	conflicts = opera-developer-ffmpeg-codecs-bin
-	conflicts = opera-beta-ffmpeg-codecs
-	conflicts = opera-beta-ffmpeg-codecs-bin
 	conflicts = vivaldi-snapshot-ffmpeg-codecs
 
 pkgname = opera-ffmpeg-vivaldi-symlink
