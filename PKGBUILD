@@ -7,7 +7,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="mpd-discord-rpc"
 pkgname="$_pkgname"
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Displays metadata of currently playing song from MPD in Discord using Rich Presence"
 url="https://github.com/JakeStanger/mpd-discord-rpc"
@@ -27,7 +27,7 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('6090fb616aebc88b894afaa2e8fd98762e3344ceacce041bde2959eb0bfb2574')
+sha256sums=('f352309d850213a28b7e9814077b54210478d2b82ca74a9fad3370ee30b00f5d')
 
 build() {
   cd "$_pkgsrc"
