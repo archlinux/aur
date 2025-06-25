@@ -3,12 +3,12 @@
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
 pkgver=0.9.1
-pkgrel=1
+pkgrel=3
 epoch=2
-pkgdesc="CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage"
-arch=('x86_64')
+pkgdesc="Unlocking the Unlimited Possibilities of Cloud Storage"
+arch=('x86_64' 'aarch64')
 url="https://github.com/cloud-fs/cloud-fs.github.io"
-license=('LicenseRef-Commercial')
+license=('LicenseRef-scancode-commercial-license')
 provides=(${pkgbase%-bin} ${pkgname} ${pkgname}2)
 conflicts=(${pkgbase%-bin} ${pkgname} ${pkgname}2)
 replaces=()
@@ -26,7 +26,7 @@ optdepends=('docker: Pack, ship and run any application as a lightweight contain
     'clouddrive-decrypt: clouddrive-decrypt is a standalone tool designed to demo how to decrypt files encrypted by CloudDrive2.'
     'rclone-browser: Simple cross-platform GUI for rclone')
 backup=()
-options=('!strip' '!debug' '!lto')
+options=('!strip' '!debug' '!lto' 'emptydirs')
 install=${pkgname}.install
 source=(
     "LICENSE.html::https://raw.githubusercontent.com/cloud-fs/cloud-fs.github.io/gh-pages/eula.html"
