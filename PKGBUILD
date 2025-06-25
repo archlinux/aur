@@ -6,7 +6,7 @@
 
 _pkgname="xone"
 pkgname="xone-dkms"
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Modern Linux driver for Xbox One and Xbox Series X|S controllers'
 url="https://github.com/dlundqvist/xone"
@@ -25,7 +25,7 @@ optdepends=(
 
 _pkgsrc="dlundqvist.xone"
 source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
-sha256sums=('adda6860c86f8a1f16b7d614ad296210ccc17e400701d4e864179e935ebb9ea1')
+sha256sums=('e7391cb24072e4bd886bb35d9150a5eb0657a315870e5e88135dac5a443b0b8e')
 
 package() {
   # set module version
