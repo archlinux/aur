@@ -1,7 +1,8 @@
 
 pkgname=opera-ffmpeg-vivaldi-symlink
-pkgver=136.0.7103.113
-pkgrel=3
+_ff=7.1.x
+pkgver=136.1.ffmpeg$_ff
+pkgrel=1
 _viva=7.4
 pkgdesc='Add codecs to Operas and vivaldi-snapshot'
 arch=('x86_64')
