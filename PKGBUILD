@@ -210,7 +210,7 @@ _make_icecat() {
   sed -e '/^prepare_env$/d' -i makeicecat
 
   # don't make source tarball (done later)
-  sed '/^finalize_sourceball$/d' -i makeicecat
+  sed -e '/^finalize_sourceball$/d' -i makeicecat
 
   # don't redownload or reextract firefox (already done)
   sed \
@@ -220,7 +220,7 @@ _make_icecat() {
     -i makeicecat
 
   # don't redownload languages (already done)
-  sed '/^fetch_l10n$/d' -i makeicecat
+  sed -e '/^fetch_l10n$/d' -i makeicecat
 
   # remove unwanted language data
   for i in data/files-to-append/l10n/*; do
@@ -239,10 +239,10 @@ _make_icecat() {
   # save icecat tarball
   if [[ "${_build_save_source::1}" == "t" ]]; then
     echo "Saving patched sources..."
-    [ -e "$SRCDEST/$_pkgsrc.tar.zst" ] && rm -rf "$SRCDEST/$_pkgsrc.tar.zst"
+    rm -rf "$SRCDEST/$_pkgsrc.tar.zst"
     mv "$_pkgsrc_gnuzilla/output/$_pkgsrc" "$srcdir/"
     bsdtar -a -cf "$_pkgsrc.tar.zst" --options zstd:compression-level=9 "$_pkgsrc"
-    cp --reflink=auto -rf "$_pkgsrc.tar.zst" "$SRCDEST/"
+    cp -rf "$_pkgsrc.tar.zst" "$SRCDEST/"
   fi
 }
 
@@ -441,7 +441,7 @@ build() (
     if [[ "${_build_pgo_reuse::1}" == "t" ]]; then
       if [[ -s "$_old_profdata" ]]; then
         echo "Restoring old profile data."
-        cp --reflink=auto -f "$_old_profdata" merged.profdata
+        cp -f "$_old_profdata" merged.profdata
       fi
 
       if [[ -s "$_old_jarlog" ]]; then
