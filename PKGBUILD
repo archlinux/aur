@@ -3,7 +3,7 @@
 _gitname="plutosvg"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
-pkgver=0.0.7+9.r134.20250609.b9d3ead
+pkgver=0.0.7+10.r135.20250618.789067a
 pkgrel=1
 pkgdesc="A compact and efficient SVG rendering library written in C."
 arch=(
