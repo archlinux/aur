@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggnewscale
-_pkgver=0.5.1
+_pkgver=0.5.2
 pkgname=r-${_pkgname,,}
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Multiple Fill and Colour Scales in 'ggplot2'"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cd50179f406bb2f009e85cdde72899a176181bdecfb41dfca4de3d74af026e92')
+sha256sums=('d765754060ea00a07c0fe9bb3e82e1f8b6acd18e2cbef084218c720a916358c8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
