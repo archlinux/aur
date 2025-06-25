@@ -1,8 +1,8 @@
-pkgbase = openrgb-cppSDK-git
+pkgbase = openrgb-cppsdk-git
 	pkgdesc = C++ client/SDK for OpenRGB
 	pkgver = 1.0.r0
 	pkgrel = 1
-	url = https://github.com/Youda008/OpenRGB-cppSDK
+	url = https://github.com/Youda008/OpenRGB-cppSDK.git
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -13,4 +13,4 @@ pkgbase = openrgb-cppSDK-git
 	source = git+https://github.com/Youda008/OpenRGB-cppSDK.git
 	sha256sums = SKIP
 
-pkgname = openrgb-cppSDK-git
+pkgname = openrgb-cppsdk-git
