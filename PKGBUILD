@@ -20,8 +20,8 @@ makedepends=(gcc pkgconf diffutils nasm git
   patch
   sed
 )
-conflicts=(vivaldi-{,snapshot-}ffmpeg-codecs)
-provides=("${conflicts[@]}" opera{,-developer,-beta}-ffmpeg-codecs{,-bin})
+conflicts=(vivaldi-{,snapshot-}ffmpeg-codecs opera{,-developer,-beta}-ffmpeg-codecs{,-bin})
+provides=("${conflicts[@]}")
 
 prepare() {
   rm -rf ffmpeg
