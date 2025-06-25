@@ -1,0 +1,21 @@
+--- src/wcc/wcc.c.orig	2025-06-25 13:43:33.276248754 +0300
++++ src/wcc/wcc.c	2025-06-25 13:44:13.684004031 +0300
+@@ -1968,6 +1968,8 @@
+ 	return 0;
+ }
+ 
++static int analyze_data(ctx_t *ctx, msec_t *s);
++
+ static unsigned int process_data(ctx_t *ctx)
+ {
+ 	msec_t *t = 0;
+@@ -4271,6 +4273,9 @@
+ 	return 0;
+ }
+ 
++static void analyze_problematic_values(ctx_t *ctx);
++static void scan_all_data_sections(ctx_t *ctx);
++
+ /**
+ * Main routine
+ */

@@ -1,20 +1,28 @@
---- src/wsh/Makefile.orig	2022-05-14 21:18:27.497138742 +0300
-+++ src/wsh/Makefile	2022-05-14 21:25:29.500992409 +0300
-@@ -7,21 +7,20 @@
+--- src/wsh/Makefile.orig	2025-06-22 21:35:34.000000000 +0300
++++ src/wsh/Makefile	2025-06-25 14:26:09.445625580 +0300
+@@ -7,10 +7,12 @@
  # This file is licensed under MIT License.
  #
  
--OBJLIB := ./lua/src/liblua.a ./openlibm/libopenlibm.a
+-OBJLIB := ./lua/src/liblua.a ./openlibm/libopenlibm.a ./librustdemangle/target/release/librust_demangle.a
 +PKG_CFLAGS := $(shell pkg-config --cflags lua53)
 +PKG_LIBS := $(shell pkg-config --libs lua53) -llinenoise
-+
-+OBJLIB := $(PKG_LIBS)
  
- #CFLAGS := -rdynamic -W -Wall -Wextra -O0 -mpreferred-stack-boundary=12 -mstackrealign -ggdb -g3 -Wno-unused-but-set-variable -Wno-unused-parameter -I./include -rdynamic -I../../include/ -I./luajit-2.0/src/ -Wl,-E -Wl,-z,now
- #OBJLIB := ./luajit-2.0/src/libluajit.a ./openlibm/libopenlibm.a 
+-CFLAGS := -rdynamic -W -Wall -Wextra -O0 -ggdb -g3 -Wno-unused-but-set-variable -Wno-unused-parameter -I./include -rdynamic -I../../include/ -I./luajit-2.0/src/ -Wl,-E -Wl,-z,now
+-#OBJLIB := ./luajit-2.0/src/libluajit.a ./openlibm/libopenlibm.a 
++OBJLIB := $(PKG_LIBS) librustdemangle/target/release/librust_demangle.a
++
++#CFLAGS := -rdynamic -W -Wall -Wextra -O0 -ggdb -g3 -Wno-unused-but-set-variable -Wno-unused-parameter -I./include -rdynamic -I../../include/ -I./luajit-2.0/src/ -Wl,-E -Wl,-z,now
+ 
+ unamem := $(shell uname -m)
+ 
+@@ -24,20 +26,14 @@
+ WLINK	=
+ endif
  
 +all: override CFLAGS += $(PKG_CFLAGS) -fpie -fPIC
  all::
+ 	cd librustdemangle && cargo build --release
 -	cd openlibm && make CFLAGS="-fpie -fPIC"
 -	cd lua && make linux CFLAGS="-fpie -fPIC"
 -	$(CC) $(CFLAGS) wsh.c -o wsh.o -c -fpie -fPIC -ldl -lreadline
@@ -23,11 +31,24 @@
 -	$(CC) $(CFLAGS) linenoise/linenoise.c -o linenoise.o -c -fpie -fPIC
 -	$(CC) $(CFLAGS) wsh.o helper.o linenoise.o -shared -fPIC -o libwitch.so
 -	ar cr libwitch.a wsh.o helper.o linenoise.o
--	$(CC) $(CFLAGS) wsh.o helper.o linenoise.o wshmain.o -o wsh -Wl,-T -Wl,script.lds -liberty $(OBJLIB) -ldl
 +	$(CC) $(CFLAGS) wsh.c -o wsh.o -c
 +	$(CC) $(CFLAGS) wshmain.c -o wshmain.o -c
 +	$(CC) $(CFLAGS) helper.c -o helper.o -c
-+	$(CC) $(CFLAGS) wsh.o helper.o wshmain.o -o wsh -Wl,-T -Wl,script.lds -liberty $(OBJLIB) -ldl $(LDFLAGS) -Wl,--as-needed,--no-undefined
- 
+ 	$(CC) $(CFLAGS) elfloader64.c -o elfloader64.o -c
+-	$(CC) $(CFLAGS) ../wld/wld.o elfloader64.o wsh.o helper.o linenoise.o wshmain.o -o wsh $(WLINK) -liberty $(OBJLIB) -ldl
+-	$(CC) $(CFLAGS) ../wld/wld.o elfloader64.o wsh.o helper.o linenoise.o wshmain.o -o wsh-static-`uname -m` $(WLINK) -liberty $(OBJLIB) -static
+-	$(CC) $(CFLAGS) ../wld/wld.o elfloader64.o wsh.o helper.o linenoise.o wshmain.o -o wsh-`uname -m` $(WLINK) -liberty $(OBJLIB) -ldl -Wl,-rpath=/tmp/wsh/`uname -m`/,-rpath=/tmp/wsh/,-rpath=.
++	$(CC) $(CFLAGS) ../wld/wld.o elfloader64.o wsh.o helper.o wshmain.o -o wsh $(WLINK) -liberty $(OBJLIB) -ldl
+ 	cp wsh libwsh.so
+ 	../wld/wld -l libwsh.so
  	cp wsh ../../bin/
- 
+@@ -60,7 +56,8 @@
+ 	mkdir -p $(DESTDIR)/usr/share/wcc/
+ 	cp -r ./scripts $(DESTDIR)/usr/share/wcc/
+ 	cp wsh $(DESTDIR)/usr/bin/wsh || :
+-	cp libwsh.so $(DESTDIR)/lib/x86_64-linux-gnu/  || :
++	mkdir -p $(DESTDIR)/usr/lib/
++	cp libwsh.so $(DESTDIR)/usr/lib/  || :
+ uninstall::
+ 	rm -rf $(DESTDIR)/usr/share/wcc/
+ 	rm -f $(DESTDIR)/usr/bin/wsh

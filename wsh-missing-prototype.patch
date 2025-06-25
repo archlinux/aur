@@ -1,0 +1,11 @@
+--- src/wsh/wsh.c.orig	2025-06-25 13:50:07.680810814 +0300
++++ src/wsh/wsh.c	2025-06-25 13:50:13.223009713 +0300
+@@ -2311,7 +2311,7 @@
+ {
+ 	unsigned long int *arg[10] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+ 	unsigned int i = 0;
+-	void *(*f) () = 0;
++	void *(*f) (int, int, int, int, int, int, int, int) = 0;
+ 	void *ret = 0;
+ 	int callerrno = 0;
+ 	int argnum = 0;
