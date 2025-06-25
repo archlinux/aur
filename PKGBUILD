@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fastdownloader-bin
 _pkgname=FastDownloader
-pkgver=0.6.4
+pkgver=0.7.0
 _electronversion=31
 pkgrel=1
 pkgdesc="A fast video/audio downloader in electron.js.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('da9e845589b840f2f76bc0a1d59f18e387693af9fba4b342358e893b9ad51922'
+sha256sums=('4c56aa1e77ad8cec77d78c3a7dc9f807916df6d15eedfde6a77f335dfd99488e'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
