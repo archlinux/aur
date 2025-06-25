@@ -1,6 +1,6 @@
 pkgbase = python-lmstudio
 	pkgdesc = LM Studio Python SDK
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/lmstudio-ai/lmstudio-python
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-lmstudio
 	depends = python-httpx-ws>=0.7.0
 	depends = python-msgspec>=0.19.0
 	depends = python-anyio>=4.8.0
-	source = python-lmstudio-1.3.1.tar.gz::https://files.pythonhosted.org/packages/source/l/lmstudio/lmstudio-1.3.1.tar.gz
-	sha512sums = 6851c99321bc6f332fbae4455b0571c6a858b9d9857f4abf86d0b55858f4876c98677b7c6219040d91a889f2cd25f21ddf6507c3abef575b33a58e66226d6641
+	source = python-lmstudio-1.3.2.tar.gz::https://files.pythonhosted.org/packages/source/l/lmstudio/lmstudio-1.3.2.tar.gz
+	sha512sums = 2a60c694940aa50b2eef48118c3aeb29deb8513a63f7bca5880a45758d52bb91f74a5d28ba71c7611e29859622075c44b54c5378af0eb7dcba4838cee277a403
 
 pkgname = python-lmstudio
