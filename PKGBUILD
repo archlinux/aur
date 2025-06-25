@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/mzivic7/$pkgname"
 license=('GPL')
 depends=()
-makedepends=('python>=3.11' 'python-pipenv' 'git')
+makedepends=('python>=3.11' 'uv' 'git')
 optdepends=('xclip: clipboard support on X11'
             'wl-clipboard: clipboard support on Wayland'
             'aspell: spellchecking'
@@ -23,14 +23,12 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
-	export PIPENV_VENV_IN_PROJECT=1
-	pipenv install --dev
+	uv sync --all-groups
 }
 
 build() {
 	cd "$pkgname"
-	export PIPENV_VENV_IN_PROJECT=1
-	pipenv run python build.py --build
+	uv run build.py
 }
 
 package() {
