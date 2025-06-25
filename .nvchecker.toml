@@ -1,0 +1,4 @@
+[crcpp]
+source = "git"
+git = "https://github.com/d-bahr/CRCpp.git"
+prefix = "release-"
