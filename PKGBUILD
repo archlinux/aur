@@ -4,8 +4,8 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=137.0.7151.119
-pkgrel=2
+pkgver=138.0.7204.49
+pkgrel=1
 _manual_clone=0
 # The following error occures on Abseil 20250512.0:
 # Protoc has returned non-zero status: -4
@@ -20,7 +20,6 @@ depends=('nss' 'libffi')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'rust' 'rust-bindgen' 'git')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver-lite.tar.xz
-        disable-clang-fextend-variable-liveness.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         abseil-fix-missing-algorithm.patch
@@ -30,9 +29,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-numeric_limits.patch
         fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch)
-sha256sums=('515ee24f24a24a68ec2a4ddbe58e460097769771039e3364ac89e6681fd4cae1'
-            '2d98a7a6a553fb5c17c4bfe36f011410f377afa12a6a818ba36543dc9a258f4a'
-            'cc8a71a312e9314743c289b7b8fddcc80350a31445d335f726bb2e68edf916d1'
+sha256sums=('bcbc0f25cdebfb1b485ef9941689435957c9795d25ea2a414ac0315b8eef608f'
+            'bafb04282db0ae19d4e42e022fdccfafb424f18406e5b893475dc18bf4bd8f9e'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             SKIP
             SKIP
@@ -184,7 +182,6 @@ prepare() {
     tools/generate_shim_headers/generate_shim_headers.py
 
   # Upstream fixes
-  patch -Np1 -i ../disable-clang-fextend-variable-liveness.patch
 
   if (( _system_clang )); then
     # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
@@ -267,6 +264,7 @@ build() {
     'is_official_build=true' # implies is_cfi=true on x86_64
     'symbol_level=0' # sufficient for backtraces on x86(_64)
     'treat_warnings_as_errors=false'
+    'fatal_linker_warnings=false'
     'disable_fieldtrial_testing_config=true'
     'use_sysroot=false'
     'use_system_libffi=true'
