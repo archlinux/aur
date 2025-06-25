@@ -14,7 +14,7 @@ pkgbase = chromium-ffmpeg-codecs-git
 	depends = glibc
 	depends = zlib
 	depends = opus
-	optdepends = opera-: NoExtract=usr/lib/opera*/libffmpeg.so at pacman.conf
+	optdepends = opera: NoExtract=usr/lib/opera*/libffmpeg.so at pacman.conf
 	optdepends = opera-developer: NoExtract=usr/lib/opera*/libffmpeg.so at pacman.conf
 	optdepends = opera-beta: NoExtract=usr/lib/opera*/libffmpeg.so at pacman.conf
 	provides = vivaldi-ffmpeg-codecs
