@@ -8,7 +8,7 @@
 
 _pkgname=discover
 pkgname=discover-snap
-pkgver=6.4.0
+pkgver=6.4.1
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE and Plasma resources management GUI (with snap backend enabled)'
@@ -58,7 +58,7 @@ optdepends=('flatpak: Flatpak packages support'
             'fwupd: firmware update support'
             'packagekit-qt6: to manage packages from Arch Linux repositories (not recommended, use at your own risk)')
 source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz)
-sha256sums=('09fb1d63aa6ec3ad56e606f48b6e10d59eeb37d9b527e54a211b4a79d6e52242')
+sha256sums=('f34cea438a8a0ae0bb6fd13e4164d49c7a2a9857e204300ccc276f2d5f898230')
 
 build() {
   cmake -B build -S $_pkgname-$pkgver \

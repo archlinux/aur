@@ -1,6 +1,6 @@
 pkgbase = discover-snap
 	pkgdesc = KDE and Plasma resources management GUI
-	pkgver = 6.4.0
+	pkgver = 6.4.1
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -47,11 +47,10 @@ pkgbase = discover-snap
 	depends = fwupd: firmware update support
 	provides = discover
 	conflicts = discover
-	source = https://download.kde.org/stable/plasma/6.4.0/discover-6.4.0.tar.xz
+	source = https://download.kde.org/stable/plasma/6.4.1/discover-6.4.1.tar.xz
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 2a18caed673493cbeb840aa166626d4283272c97578af0bf67e8887b672cf3d8
-
+	sha256sums = f34cea438a8a0ae0bb6fd13e4164d49c7a2a9857e204300ccc276f2d5f898230
 pkgname = discover-snap
