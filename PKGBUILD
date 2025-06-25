@@ -1,3 +1,4 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: lantw44 (at) gmail (dot) com
 
 pkgname=guile-zlib
@@ -20,7 +21,7 @@ build() {
 
 check() {
 	cd "${srcdir}/${pkgname}"
-	make check
+	LANG=C.UTF-8 make check
 }
 
 package() {
