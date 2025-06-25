@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fastdownloader-bin
 _pkgname=FastDownloader
-pkgver=0.6.2
+pkgver=0.6.4
 _electronversion=31
 pkgrel=1
 pkgdesc="A fast video/audio downloader in electron.js.(Prebuilt version.Use system-wide electron)"
@@ -19,8 +19,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6a40bc5d12affd165cc375ff1fd5d20cddc3d454164b8272e7ca7a66999ae1ae'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('da9e845589b840f2f76bc0a1d59f18e387693af9fba4b342358e893b9ad51922'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -29,6 +33,7 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     ln -sf "/usr/bin/ffmpeg" "${srcdir}/opt/${_pkgname}/resources/ffmpeg_linux"
     ln -sf "/usr/bin/yt-dlp" "${srcdir}/opt/${_pkgname}/resources/yt-dlp_linux"
