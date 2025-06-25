@@ -20,6 +20,5 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  mkdir -p "${pkgdir}/usr/bin"
-  cp -p target/release/${pkgname} "${pkgdir}/usr/bin"
+  install -Dm0755 -t "${pkgdir}/usr/bin" "target/release/${pkgname}"
 }
