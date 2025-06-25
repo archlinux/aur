@@ -1,0 +1,4 @@
+[libe57format]
+source = "git"
+git = "https://github.com/asmaloney/libE57Format.git"
+prefix = "v"

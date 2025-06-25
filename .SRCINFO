@@ -1,0 +1,16 @@
+pkgbase = libe57format
+	pkgdesc = Library for reading & writing the E57 file format
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/asmaloney/libE57Format
+	arch = x86_64
+	license = BSL-1.0
+	makedepends = cmake>=3.15
+	depends = gcc-libs
+	depends = glibc
+	depends = xerces-c
+	provides = libE57Format.so
+	source = libE57Format-3.2.0.tar.gz::https://github.com/asmaloney/libE57Format/archive/refs/tags/v3.2.0.tar.gz
+	b2sums = 076566028701727a746d246908e0b20871fdbb0e4832ec6e57738b0ab4172d3cf179172103de5569cfdab555c70a8cd79a82d70a68d52942e0d51619a5e38091
+
+pkgname = libe57format
