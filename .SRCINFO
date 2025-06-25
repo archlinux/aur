@@ -1,8 +1,8 @@
 pkgbase = zed-cn
-	pkgdesc = zed-loc (Zed 汉化) https://github.com/TC999/zed-loc
+	pkgdesc = zed-loc (Zed 汉化) github-TC999/zed-loc
 	pkgver = 0.191.8
-	pkgrel = 1
-	url = https://github.com/TC999/zed-loc2
+	pkgrel = 3
+	url = https://github.com/TC999/zed-loc
 	arch = x86_64
 	license = custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."
 	provides = zed-cn

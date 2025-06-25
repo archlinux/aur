@@ -1,7 +1,7 @@
 # Maintainer: li0shang <li0shang@163.com>
 pkgname="zed-cn"
 pkgver=0.191.8
-pkgrel=2
+pkgrel=3
 pkgdesc=" zed-loc (Zed 汉化) github-TC999/zed-loc"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -11,16 +11,10 @@ conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TC999/zed-loc/releases/download/v$pkgver/zed-linux-x86_64.tar.gz")
 sha512sums=('SKIP')
 
-package() {
-    bsdtar -xf zed-linux-x86_64.tar.gz -C "$pkgdir/"
-    install -m=775 $pkgname "${pkgdir}/opt"
-}
-
 # 解压源码包
 prepare() {
   tar -xzf "$pkgname-$pkgver.tar.gz"
 }
-
 
 # 安装到 /opt
 package() {
