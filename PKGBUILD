@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/stikundra-murtsi/app-opener"
 license=('custom:NAUPL')
 depends=('bash')
-install="apop.install"
+
 source=(
 	"app-opener.sh"
 	"list.sh"
@@ -32,4 +32,18 @@ package() {
 	install -Dm644 "${srcdir}/remove.sh" "$pkgdir/usr/share/${pkgname}/remove.sh"
 	install -Dm644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "${srcdir}/README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
+
+	mkdir -p "$pkgdir/usr/share/${pkgname}"
+	mkdir -p "$pkgdir/usr/share/${pkgname}/apps"
+	mkdir -p "$pkgdir/usr/share/${pkgname}/scripts"
+	mkdir -p "$pkgdir/usr/bin"
+
+	install -Dm755 "${srcdir}/app-opener.sh" "$pkgdir/usr/share/${pkgname}/app-opener.sh"
+	install -Dm755 "${srcdir}/list.sh" "$pkgdir/usr/share/${pkgname}/list.sh"
+	install -Dm755 "${srcdir}/recovery.sh" "$pkgdir/usr/share/${pkgname}/recovery.sh"
+	install -Dm755 "${srcdir}/remove.sh" "$pkgdir/usr/share/${pkgname}/remove.sh"
+	install -Dm644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
+
+	ln -sf "/usr/share/${pkgname}/app-opener.sh" "$pkgdir/usr/bin/app"
 }
