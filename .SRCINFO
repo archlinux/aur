@@ -1,17 +1,17 @@
 pkgbase = openmarch-bin
 	pkgdesc = A free and open source drill-writing app built on web frameworks.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = http://openmarch.com/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = fuse2
 	depends = electron29
-	provides = openmarch=0.0.9
+	provides = openmarch=0.0.10
 	conflicts = openmarch
-	source = openmarch-0.0.9-x86_64.AppImage::https://github.com/OpenMarch/OpenMarch/releases/download/v0.0.9/OpenMarch_0.0.9-linux_x86_64.AppImage
+	source = openmarch-0.0.10-x86_64.AppImage::https://github.com/OpenMarch/OpenMarch/releases/download/v0.0.10/OpenMarch_0.0.10-linux_x86_64.AppImage
 	source = openmarch.sh
-	sha256sums = 367561a3553fd9533139e44c33ca6eb10e66961e409f161565f12e3cbd6653d0
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = d1d12a8b51d584474155d6cde1b07fc611076b20f338ce892b6c8eb292abedc5
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = openmarch-bin
