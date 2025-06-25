@@ -2,7 +2,7 @@
 
 pkgname=garnet-bin
 _pkgname=${pkgname/-bin/}
-pkgver=1.0.72
+pkgver=1.0.73 # datasource=github-releases depName=microsoft/garnet
 pkgrel=1
 pkgdesc='A high-performance cache-store from Microsoft Research'
 url='https://microsoft.github.io/garnet'
@@ -16,10 +16,10 @@ depends=("dotnet-runtime-9.0" "gcc-libs" "glibc" "libaio")
 source=(
 	"garnet-${pkgver}.tar.xz::https://github.com/microsoft/${_pkgname}/releases/download/v${pkgver}/linux-x64-based.tar.xz"
 	"garnet-server.service::https://aur.archlinux.org/cgit/aur.git/plain/garnet-server.service?h=garnet" # jiri.pospisil's service
-	"https://raw.githubusercontent.com/microsoft/garnet/refs/heads/main/LICENSE"
+	"https://raw.githubusercontent.com/microsoft/garnet/refs/tags/v${pkgver}/LICENSE"
 )
 
-sha256sums=('27cc0da0801e3165380399e9f91a80d4c4588744a209f64238a9184579e45b07'
+sha256sums=('d3c2a7a895700208627502a9932f20f80a62aed063a663c5df4a1d0ad6ab1d17'
             '0c16f0124c3c962e4fac1241cc1b1d86f61600758a4ff3846cd00a580e76cfdf'
             'c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383')
 
