@@ -1,7 +1,7 @@
 diff --git a/mozphab/sentry.py b/mozphab/sentry.py
 --- a/mozphab/sentry.py
 +++ b/mozphab/sentry.py
-@@ -1,25 +1,25 @@
+@@ -1,26 +1,25 @@
  # This Source Code Form is subject to the terms of the Mozilla Public
  # License, v. 2.0. If a copy of the MPL was not distributed with this
  # file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -18,25 +18,26 @@ diff --git a/mozphab/sentry.py b/mozphab/sentry.py
 -from pkg_resources import get_distribution
  from sentry_sdk.integrations.logging import LoggingIntegration
  
++from .environment import MOZPHAB_VERSION
  from .exceptions import CommandError
  
  
  def init_sentry():
 -    distribution = get_distribution("MozPhab")
-+    version = importlib.metadata.version("MozPhab")
- 
+-
      sentry_logging = LoggingIntegration(
          level=logging.INFO,
          event_level=None,
          # The default event_level is logging.ERROR, which will report any
-@@ -30,11 +30,11 @@
+         # "logging.error(...)" call to Sentry.  However, we respond to
+@@ -30,11 +29,11 @@
      sentry_sdk.init(
          dsn=(
              "https://f2dcfa028ddb4540b5d64a855d480909@o1069899.ingest.sentry.io/6250015"
          ),
          integrations=[sentry_logging],
 -        release=distribution.version,
-+        release=version,
++        release=MOZPHAB_VERSION,
      )
  
  
