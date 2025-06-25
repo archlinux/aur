@@ -9,21 +9,27 @@ license=('MIT')
 depends=('ffmpeg')
 provides=('hwytvidgrabber')
 conflicts=('hwytvidgrabber')
-source=("HwYtVidGrabber-Linux-${pkgver}::${url}/releases/latest/download/HwYtVidGrabber-Linux"
-        "hwytvidgrabber.desktop::${url}/releases/latest/download/hwytvidgrabber.desktop"
-        "hwytvidgrabber.png::${url}/releases/latest/download/icon.png")
-sha256sums=('3bae6b46acdfca1fd12195e2543bca0bdccbcb83d18d94cae828d23a018f62ee'
-            '6ad7354ba78532169bb3edc13d6c2d59945bcb5f4e9cf3759f485bc5e99b3867'
+source=("HwYtVidGrabber-Linux-${pkgver}::${url}/releases/download/1.5.3/HwYtVidGrabber-Linux"
+        "hwytvidgrabber.desktop::${url}/releases/download/1.5.3/hwytvidgrabber.desktop"
+        "hwytvidgrabber.png::${url}/releases/download/1.5.3/icon.png")
+sha256sums=('7f43b410a4d8bf697ce332ff3cde55f2bb7cbac4da56db175d758d8cf9147fb5'
+            '9df2fa7d8bc10298f1eed8c2258b21612d26f63b1b44e625938de2c644012077'
             '15b461eb068f1fd54222122fac891c72f647b28e8af56a3bd28c152754b39e40')
 noextract=('HwYtVidGrabber-Linux-${pkgver}')
 
 package() {
-    # Install the binary
-    install -Dm755 "${srcdir}/HwYtVidGrabber-Linux-${pkgver}" "${pkgdir}/usr/bin/HwYtVidGrabber"
+    # Install the binary with executable permissions
+    install -Dm755 "${srcdir}/HwYtVidGrabber-Linux-${pkgver}" "${pkgdir}/usr/bin/hwytvidgrabber"
+    
+    # Create a symlink for the original name too
+    ln -sf hwytvidgrabber "${pkgdir}/usr/bin/HwYtVidGrabber"
     
     # Install desktop file
     install -Dm644 "${srcdir}/hwytvidgrabber.desktop" "${pkgdir}/usr/share/applications/hwytvidgrabber.desktop"
     
     # Install icon
     install -Dm644 "${srcdir}/hwytvidgrabber.png" "${pkgdir}/usr/share/pixmaps/hwytvidgrabber.png"
+    
+    # Also install icon in hicolor theme for better integration
+    install -Dm644 "${srcdir}/hwytvidgrabber.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/hwytvidgrabber.png"
 }
