@@ -1,6 +1,6 @@
 pkgbase = python-rocket-fft-git
 	pkgdesc = Rocket-FFT extends Numba by scipy.fft and numpy.fft
-	pkgver = 0.2.5
+	pkgver = v0.2.5.r13.b707c76
 	pkgrel = 1
 	url = https://github.com/styfenschaer/rocket-fft
 	arch = any
