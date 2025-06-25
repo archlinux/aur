@@ -1,0 +1,4 @@
+[lstr]
+source = "git"
+git = "https://github.com/bgreenwell/lstr.git"
+prefix = "v"

@@ -1,0 +1,21 @@
+pkgbase = lstr
+	pkgdesc = A fast, minimalist directory tree viewer, written in Rust.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/bgreenwell/lstr
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = libgit2
+	options = strip
+	options = lto
+	source = https://github.com/bgreenwell/lstr/archive/refs/tags/v0.2.1/lstr-0.2.1.tar.gz
+	sha256sums = 9a59c59e3b4a0a1537f165a4818daa7cf1ee3feb689eaf8c495f70f280c3e547
+
+pkgname = lstr
