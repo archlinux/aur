@@ -1,16 +1,15 @@
 pkgbase = ms-edit
 	pkgdesc = A simple editor for simple needs (Microsoft Edit)
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/microsoft/edit
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = git
 	makedepends = cargo-nightly
-	provides = ms-edit
-	conflicts = ms-edit
-	source = ms-edit::git+https://github.com/microsoft/edit.git#tag=v1.0.0
-	sha256sums = 8e2b415c6c680e1298c935ee0bc536357fd0b83ab0d58270e9c8810f1d88fb55
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/microsoft/edit/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = e4ba6ff1bfecfeff2492306f5850c714bf50ffdb3cc3bb5be3aa987289f240fe
 
 pkgname = ms-edit
