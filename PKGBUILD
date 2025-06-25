@@ -1,20 +1,35 @@
-# Maintainer: Frank Bearoff fbearoff at gmail dot com
+# Maintainer: Roc Gwei <roc dot gui at foxmail dot com>
 
 pkgname=marksman-bin
-pkgver=2024_10_07
+pkgver=20241218
+_relver="${pkgver:0:4}-${pkgver:4:2}-${pkgver:6:2}"
 pkgrel=1
-pkgdesc='Markdown LSP server providing completion, cross-references, diagnostics, and more'
-arch=('x86_64')
-url="https://github.com/artempyanykh/${pkgname%-bin}"
+pkgdesc="Write Markdown with code assist and intelligence in the comfort of your favourite editor. (binary release)"
+arch=('x86_64' 'aarch64')
+url="https://github.com/artempyanykh/marksman"
+source_x86_64=("https://github.com/artempyanykh/marksman/releases/download/${_relver}/marksman-linux-x64")
+source_aarch64=("https://github.com/artempyanykh/marksman/releases/download/${_relver}/marksman-linux-arm64")
 license=('MIT')
-depends=()
-source=("${pkgname}-${pkgver}::${url}/releases/download/${pkgver//_/-}/${pkgname%-bin}-linux-x64"
-	"https://raw.githubusercontent.com/artempyanykh/marksman/main/LICENSE")
-sha256sums=('d210784345ed269f8fe9b758bf91e36f4f83651b0a43d6d4302fe36cf3a87621'
-	'f48413df41ebe5a5f77f997f1f8a0cf5236f24c6878a16e0073da81642aabf04')
 options=('!strip')
+conflicts=('marksman')
+provides=('marksman')
+sha256sums_x86_64=('b9cb666c643dfd9b699811fdfc445ed4c56be65c1d878c21d46847f0d7b0e475')
+sha256sums_aarch64=('b8d6972a56f3f9b7bbbf7c77ef8998e3b66fa82fb03c01398e224144486c9e73')
+
 package() {
-	rm -f ${pkgdir}/usr/bin/marksman
-	install -Dm755 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
+  cd "${srcdir}/"
+
+  case "$CARCH" in
+    x86_64)
+      install -Dm755 "marksman-linux-x64" "${pkgdir}/usr/bin/marksman"
+      ;;
+    aarch64)
+      install -Dm755 "marksman-linux-arm64" "${pkgdir}/usr/bin/marksman"
+      ;;
+    *)
+      echo "Unsupported architecture: $CARCH"
+      return 1
+      ;;
+  esac
 }
+
