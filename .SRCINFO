@@ -1,0 +1,13 @@
+pkgbase = plymouth-theme-dervedro-cat-git
+	pkgdesc = A lovely sleepy cat plymouth theme. Fork by derVedro.
+	pkgver = r22.4b5dc0c
+	pkgrel = 1
+	url = https://github.com/derVedro/PlymouthTheme-Cat
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = plymouth
+	source = git+https://github.com/derVedro/PlymouthTheme-Cat.git
+	md5sums = SKIP
+
+pkgname = plymouth-theme-dervedro-cat-git
