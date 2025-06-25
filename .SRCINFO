@@ -12,7 +12,7 @@ pkgbase = hwytvidgrabber-bin
 	source = HwYtVidGrabber-Linux-1.5.3::https://github.com/MalikHw/HwYtVidGrabber/releases/latest/download/HwYtVidGrabber-Linux
 	source = hwytvidgrabber.desktop::https://github.com/MalikHw/HwYtVidGrabber/releases/latest/download/hwytvidgrabber.desktop
 	source = hwytvidgrabber.png::https://github.com/MalikHw/HwYtVidGrabber/releases/latest/download/icon.png
-	sha256sums = e1ccba79250f6a679486d1c81a771341fd9ad1054b7e1fced4dbe20013d82dd2
+	sha256sums = 3bae6b46acdfca1fd12195e2543bca0bdccbcb83d18d94cae828d23a018f62ee
 	sha256sums = 6ad7354ba78532169bb3edc13d6c2d59945bcb5f4e9cf3759f485bc5e99b3867
 	sha256sums = 15b461eb068f1fd54222122fac891c72f647b28e8af56a3bd28c152754b39e40
 
