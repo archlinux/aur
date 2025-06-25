@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggfun
-_pkgver=0.1.8
+_pkgver=0.1.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('07cd5ec8e7f77106c98209796b535eeb')
-b2sums=('fa57cc2caab7a8728b1cc22413a2f9a22542ff89f550dd57740a19fce2d0f6a160d1b9e74855b0c5758d888be113a4f8fa7a3d8748ca4ce5e72006bd57ec9019')
+md5sums=('e0ec2a01a77eb0cb764d7e97c0917a06')
+b2sums=('32876b56b0a4df2c46ec632ab4fc6f527ad7e04ac007fd4882b9c25f4dbb7a8ed289c5f816fca46b8918190a71a97b64287517c6d759898dc070309e2948d9f3')
 
 build() {
   mkdir build
