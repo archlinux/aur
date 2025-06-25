@@ -3,7 +3,7 @@
 _pkgname=lstr
 pkgname=${_pkgname}-git
 _gitname=lstr
-pkgver=0.2.0.r45.cd41bc2
+pkgver=0.2.1.r77.584fc33
 pkgrel=1
 pkgdesc='A fast, minimalist directory tree viewer, written in Rust.'
 url='https://github.com/bgreenwell/lstr'
