@@ -1,11 +1,13 @@
 # Maintainer: bemxio <bemxiov at protonmail dot com>
 
-pkgname=fastvideods-encoder-git
-pkgdesc="Encoder for the FastVideoDS format"
+_pkgname=fastvideods-encoder
+pkgname="${_pkgname}-git"
+
+pkgdesc="Encoder for the FastVideoDS format (git version)"
 
 pkgver=r2.1a25c4f
-pkgrel=4
-epoch=1 # required because of the changed version numbering scheme
+pkgrel=5
+epoch=1
 
 arch=(i686 x86_64)
 
@@ -15,10 +17,11 @@ url="https://github.com/Gericom/FastVideoDSEncoder"
 depends=(dotnet-runtime-6.0 ffmpeg5.1)
 makedepends=(git dotnet-sdk)
 
-provides=(fastvideods-encoder)
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 
-source=("git+https://github.com/Gericom/FastVideoDSEncoder.git" "fix-library-path.patch")
-md5sums=("SKIP" "594a84df360613bbd562f4b77c743850")
+source=("git+${url}.git")
+md5sums=(SKIP)
 
 pkgver() {
   	# move to the source directory
@@ -32,8 +35,8 @@ prepare() {
 	# move to the source directory
 	cd FastVideoDSEncoder
 
-	# apply the patch
-	patch --forward --strip 1 --input ../fix-library-path.patch
+	# fix the FFmpeg library path
+	sed -i "s|ffmpeg.RootPath = .*|ffmpeg.RootPath = \"/usr/lib\";|" FastVideoDSEncoder/FFMpegDecoder.cs
 }
 
 build() {
@@ -41,23 +44,29 @@ build() {
 	cd FastVideoDSEncoder
 
 	# build the project
-	dotnet build FastVideoDS.sln --property:Configuration=Release --output Build/
+	dotnet publish FastVideoDS.sln --configuration Release --output Build/
 }
 
 package() {
-	# move to the source directory
-	cd FastVideoDSEncoder
+	# move to the build directory
+	cd FastVideoDSEncoder/Build
 
-	# make the required directories
-	mkdir -p "${pkgdir}/usr/share/fastvideods-encoder/"
-	mkdir -p "${pkgdir}/usr/bin/"
+	# copy the binaries to the package directory
+	find . -type f \
+		-path './x64/*' -prune -or \
+		-exec install -Dm644 {} "${pkgdir}/usr/share/${_pkgname}/{}" \;
 
-	# copy the build files to the package directory
-	find Build/* -type f -exec install -Dm644 {} "${pkgdir}/usr/share/fastvideods-encoder/" \;
+	# create the directory for symlinks
+	mkdir -p "${pkgdir}/usr/bin"
 
-	# make the program executable
-	chmod +x "${pkgdir}/usr/share/fastvideods-encoder/FastVideoDSEncoder"
+	# set correct permissions for the executables
+	chmod +x "${pkgdir}/usr/share/${_pkgname}/FastVideoDSEncoder"
+	chmod +x "${pkgdir}/usr/share/${_pkgname}/FastVideoDSInfo"
 
-	# make a symlink to the executable
-	ln -s /usr/share/fastvideods-encoder/FastVideoDSEncoder "${pkgdir}/usr/bin/fastvideods-encoder"
+	# create a symlink to the executables
+	ln -s "/usr/share/${_pkgname}/FastVideoDSEncoder" "${pkgdir}/usr/bin/FastVideoDSEncoder"
+	ln -s "/usr/share/${_pkgname}/FastVideoDSInfo" "${pkgdir}/usr/bin/FastVideoDSInfo"
+
+	# copy the readme file
+	install -Dm644 ../readme.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
