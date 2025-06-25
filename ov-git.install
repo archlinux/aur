@@ -14,9 +14,9 @@ post_install() {
 »    /usr/share/doc/ov-git/ov.yaml
 »    /usr/share/doc/ov-git/ov-less.yaml
 »
-»  Please consult the README:
+»  Official documentation portal:
 »
-»    /usr/share/doc/ov-git/README.md
+»    https://noborus.github.io/ov/
 __EOT__
 }
 
