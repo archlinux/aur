@@ -1,7 +1,7 @@
 pkgbase = qtkeychain
 	pkgdesc = Provides support for secure credentials storage
 	pkgver = 0.15.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/frankosterfeld/qtkeychain
 	arch = x86_64
 	license = BSD-3-Clause
