@@ -1,7 +1,7 @@
 # Maintainer: claymorwan <claymorwan@fembois.dev>
 pkgname=python-ecdysys
 _name=${pkgname#python-}
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Python CLI to update your system packages"
 arch=(any)
@@ -18,7 +18,7 @@ optdepends=(
 provides=($_name)
 conflicts=($_name)
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('fb17b9c52a1c8f68befdfb74d3c954fa5a27aba717fdd41d6cf76c70fde7fde0')
+sha256sums=('905ed2327403a2879a07a9dcca4be598142869d827f50cbbb87669426087ab5f')
 
 package() {
 	cd $srcdir
