@@ -1,0 +1,13 @@
+pkgbase = yt-snip
+	pkgdesc = Fast YouTube video/audio downloader and trimmer - a yt-dlp wrapper
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/melqtx/yt-snip
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = gcc
+	depends = yt-dlp
+	depends = ffmpeg
+
+pkgname = yt-snip
