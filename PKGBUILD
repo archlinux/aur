@@ -2,15 +2,17 @@
 pkgname=endcord-lite
 pkgver=0.9.0
 pkgrel=1
-pkgdesc="Feature rich Discord TUI client. Lite version without media support."
+pkgdesc="Feature rich Discord TUI client. Lite version without ASCII media support."
 arch=('any')
 url="https://github.com/mzivic7/endcord"
 license=('GPL')
 depends=()
-makedepends=('python>=3.11' 'python-pipenv' 'git')
+makedepends=('python>=3.11' 'uv' 'git')
 optdepends=('xclip: clipboard support on X11'
             'wl-clipboard: clipboard support on Wayland'
-            'aspell: spellchecking')
+            'aspell: spellchecking'
+            'yt-dlp: youtube support'
+            'mpv: youtube in native player')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -21,14 +23,12 @@ pkgver() {
 
 prepare() {
 	cd "endcord"
-	export PIPENV_VENV_IN_PROJECT=1
-	pipenv install
+	uv sync --all-groups
 }
 
 build() {
 	cd "endcord"
-	export PIPENV_VENV_IN_PROJECT=1
-	pipenv run python build.py --build --lite
+	uv run build.py --lite
 }
 
 package() {
