@@ -1,8 +1,9 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="shot-scraper"
-pkgver=1.4
-pkgrel=2
+_pkgname="shot_scraper"
+pkgver=1.8
+pkgrel=1
 pkgdesc="A command-line utility for taking automated screenshots of websites"
 url="https://shot-scraper.datasette.io/"
 license=("Apache-2.0")
@@ -15,8 +16,8 @@ makedepends=("python-build"
              "python-wheel"
              "python-setuptools")
 options=("!strip")
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('b6d8378968e147b88d740a35afd5fb222660e2aa44d498304bbd589a23c749fbb30fc010e47d654d1bdfe16ffeca68f8b01e4e4becadc9c1c3e392f5ce96dee1')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+b2sums=('aff1fac347a0bbfdc0d8bc47016315bfad98e35ebef81461aa8b8fab27a6dcfb54bf9281a4562460d945f52054b884e7eafcc3af72fde3283a6ba9f5e64e7418')
 
 build(){
  cd "$pkgname-$pkgver"

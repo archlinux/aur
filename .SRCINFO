@@ -1,7 +1,7 @@
 pkgbase = shot-scraper
 	pkgdesc = A command-line utility for taking automated screenshots of websites
-	pkgver = 1.4
-	pkgrel = 2
+	pkgver = 1.8
+	pkgrel = 1
 	url = https://shot-scraper.datasette.io/
 	arch = any
 	license = Apache-2.0
@@ -13,7 +13,7 @@ pkgbase = shot-scraper
 	depends = python-click-default-group
 	depends = python-playwright
 	options = !strip
-	source = https://files.pythonhosted.org/packages/source/s/shot-scraper/shot-scraper-1.4.tar.gz
-	b2sums = b6d8378968e147b88d740a35afd5fb222660e2aa44d498304bbd589a23c749fbb30fc010e47d654d1bdfe16ffeca68f8b01e4e4becadc9c1c3e392f5ce96dee1
+	source = https://files.pythonhosted.org/packages/source/s/shot_scraper/shot_scraper-1.8.tar.gz
+	b2sums = aff1fac347a0bbfdc0d8bc47016315bfad98e35ebef81461aa8b8fab27a6dcfb54bf9281a4562460d945f52054b884e7eafcc3af72fde3283a6ba9f5e64e7418
 
 pkgname = shot-scraper
