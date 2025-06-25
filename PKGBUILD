@@ -2,7 +2,7 @@
 
 pkgname=spicetify-themes-git
 pkgver=r509.3effbbe
-pkgrel=1
+pkgrel=2
 pkgdesc="A community-driven collection of themes for spicetify"
 arch=('any')
 url="https://github.com/spicetify/spicetify-themes"
@@ -26,10 +26,13 @@ pkgver() {
 }
 
 package() {
-    mkdir -p "${pkgdir}"/opt/spicetify-cli/Themes
+    mkdir -p "$pkgdir/opt/spicetify-cli"
+    cp -r --no-preserve=ownership "$srcdir/spicetify-themes" "$pkgdir/opt/spicetify-cli/Themes"
 
-    cd "$srcdir/spicetify-themes"
-    # i cant find and elegant solution for this considering some directorys are also not suppost to be copied
-    cp -r Blackout Blossom BurntSienna Default Dreary Dribbblish Flow Matte Nightlight Onepunch SharkBlue Sleek StarryNight text Turntable Ziro "${pkgdir}"/opt/spicetify-cli/Themes
-    find $pkgdir -name '*.png' -delete
+    echo "Removing useless files at top level..."
+    find "$pkgdir/opt/spicetify-cli/Themes" -maxdepth 1 \( -name ".*" -o -name "_*" -o -type f \) -exec rm -rfv {} +
+    echo "Removing useless files in each theme..."
+    find "$pkgdir/opt/spicetify-cli/Themes" -mindepth 2 ! -regex '.*\(\.css\|\.ini\|\.js\|\.woff2\|\.svg\)' -type f -exec rm -fv {} +
+    echo "Pruning empty directories..."
+    find "$pkgdir/opt/spicetify-cli/Themes" -type d -empty -exec rm -rfv {} +
 }

@@ -1,7 +1,7 @@
 pkgbase = spicetify-themes-git
 	pkgdesc = A community-driven collection of themes for spicetify
 	pkgver = r509.3effbbe
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spicetify/spicetify-themes
 	install = spicetify-themes-git.install
 	arch = any
