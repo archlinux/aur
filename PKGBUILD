@@ -9,20 +9,20 @@ _name0=pydantic-ai
 _name00=clai
 pkgbase=python-${_name0}
 pkgname=(python-${_name5} python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0} python-${_name00})
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
 license=('MIT')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bd35f3b11ac282e74205575373fbd82205e27253fac267352ef0bff7370364d6')
+sha256sums=('b35a6c7fde75ac61482461f3c3e6a5590ca6c17c044a1c037ad51a62b59a8982')
 depends=('python')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-recording' 'python-diff-cover' 'python-pytest-xdist' 'deno')
 
 prepare(){
   cd "${srcdir}"/${_name0}-${pkgver}
-  sed -i 's/config=//g' ${_name5}/${_name5}/schema.py
+  sed -i "s/target_version='py39'/target_version='py311'/g" tests/test_examples.py
 }
 
 build() {
@@ -43,17 +43,11 @@ check() {
     --dist=loadgroup
     -W ignore::pytest.PytestRemovedIn9Warning
     -W ignore::pydantic.PydanticDeprecatedSince211
-    -W ignore::ResourceWarning
     -W ignore::pytest.PytestUnraisableExceptionWarning
-    # Failed tests
-    --deselect tests/models/test_google.py
-    --deselect tests/models/test_mistral.py::test_mistral_model_thinking_part
-    --deselect tests/models/test_openai.py::test_request_simple_success
-    --deselect tests/models/test_mistral.py::test_image_as_binary_content_tool_response
     --deselect tests/models/test_model_names.py::test_known_model_names
-    --deselect tests/test_mcp.py::test_tool_returning_audio_resource
-    --deselect tests/test_settings.py::test_stop_settings
-    -k "not fallback_model_failure.py and not mcp_client_sampling.py"
+    --deselect tests/models/test_google.py::test_google_model_stream
+    --deselect tests/models/test_google.py::test_google_model_iter_stream
+    --deselect tests/models/test_google.py::test_google_model_thinking_part_iter
   )
   cd "${srcdir}"/${_name0}-${pkgver}
   python -m venv --system-site-packages test-env
@@ -61,12 +55,12 @@ check() {
   test-env/bin/python -m installer ${_name5}/dist/*.whl
   test-env/bin/python -m installer ${_name0//-ai/_}${_name4}/dist/*.whl
   test-env/bin/python -m installer ${_name0//-/_}_${_name3}/dist/*.whl
-  test-env/bin/python -m installer ${_name0//-ai/_}${_name2}/dist/*.whl
   rm -rf test-env/bin/pai
+  test-env/bin/python -m installer ${_name0//-ai/_}${_name2}/dist/*.whl
   test-env/bin/python -m installer ${_name1}/dist/*.whl
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m installer ${_name00}/dist/*.whl
-  env PATH="${srcdir}":$PATH test-env/bin/python -m pytest "${pytest_options[@]}" tests
+  test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
 package_python-fasta2a() {
