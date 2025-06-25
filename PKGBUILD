@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ubports-installer-bin
-pkgver=0.11.0
+pkgver=0.11.1
 _electronversion=33
 pkgrel=1
 pkgdesc="A simple tool to install Ubuntu Touch on UBports devices.(Prebuilt version.Use system-wide electron)"
@@ -19,8 +19,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9e7a4916c6168d573e2b77e3366d61d4188761bf16fd9db01532cd419706dca3'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('372b22fded4264f184bc1388ccc1436e7e0298e67d1c99a2f9e2aeff51d30020'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}.bin" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -30,6 +34,7 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     rm -rf "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/7zip-bin/"{mac,linux/{arm*,ia32}}
     ln -sf "/usr/bin/7za" "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/x64/7za"
