@@ -1,12 +1,12 @@
 pkgname=llama-swap
 
-_fragment=tag=v131
+_fragment=tag=v132
 
-pkgver=131
+pkgver=132
 pkgrel=1
 pkgdesc='Model swapping for llama.cpp (or any local OpenAPI compatible server)'
 
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://github.com/mostlygeek/$pkgname"
 license=('MIT')
 
@@ -16,7 +16,7 @@ source=(
 	"git+$url.git#$_fragment"
 	llama-swap.service
 )
-sha256sums=('e174de7fa8ca543c49ab4853a8881abe8b09f360c72400d0a1f7aaf22649a506'
+sha256sums=('44c26faf79d09e39239e71f19999e066c1e819d2740d756bb27d50ab0011130f'
             'b4546cefb0c4255e432c6bd95143ae19735068951945d233011b02caecc641ff')
 
 pkgver() {
