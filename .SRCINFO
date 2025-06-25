@@ -1,6 +1,6 @@
 pkgbase = colanode-git
 	pkgdesc = Open-source and local-first Slack and Notion alternative that puts you in control of your data.(Use system-wide electron)
-	pkgver = 0.2.3.r0.gdad68da
+	pkgver = 0.2.4.r0.g1fd2cb0
 	pkgrel = 1
 	url = https://colanode.com/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = colanode-git
 	makedepends = git
 	makedepends = curl
 	makedepends = gendesk
-	depends = electron36
-	provides = colanode=0.2.3
+	depends = electron37
+	provides = colanode=0.2.4
 	conflicts = colanode
 	source = colanode.git::git+https://github.com/colanode/colanode.git
 	source = colanode.sh

@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=colanode-git
 _pkgname=Colanode
-pkgver=0.2.3.r0.gdad68da
-_electronversion=36
+pkgver=0.2.4.r0.g1fd2cb0
+_electronversion=37
 _nodeversion=22
 pkgrel=1
 pkgdesc="Open-source and local-first Slack and Notion alternative that puts you in control of your data.(Use system-wide electron)"
@@ -41,7 +41,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    cd "${srcdir}/${pkgname//-/.}/apps/desktop"
+    cd "${srcdir}/${pkgname//-/.}"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -71,13 +71,23 @@ prepare() {
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
+        echo apps/desktop packages/{client,core,crdt,ui} | xargs -n 1 cp .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
+    NODE_ENV=development    npm install
+    cd "${srcdir}/${pkgname//-/.}/apps/desktop"
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm add -D ts-node js-base64 yjs
     NODE_ENV=development    npm install
     NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
+    cd "${srcdir}/${pkgname//-/.}/packages/client"
+    NODE_ENV=development    npm install
+    cd "${srcdir}/${pkgname//-/.}/packages/core"
+    NODE_ENV=development    npm install
+    cd "${srcdir}/${pkgname//-/.}/packages/crdt"
+    NODE_ENV=development    npm install
+    cd "${srcdir}/${pkgname//-/.}/packages/ui"
+    NODE_ENV=development    npm install
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}/apps/desktop"
@@ -95,8 +105,8 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/apps/desktop/out/${_pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/apps/desktop/out/${_pkgname}-linux-"*/resources/assets -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/apps/desktop/out/${_pkgname}-linux-"*/resources/assets "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/assets/images/${pkgname%-git}-logo-black-512.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/apps/desktop/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
