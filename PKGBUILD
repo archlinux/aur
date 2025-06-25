@@ -6,7 +6,7 @@
 _pkgname="kwin-effect-rounded-corners"
 pkgbase="$_pkgname-git"
 pkgver=0.7.2.r48.g284647c
-pkgrel=1
+pkgrel=2
 pkgdesc="Rounds the corners of your windows"
 url="https://github.com/matinlotfali/KDE-Rounded-Corners"
 license=("GPL-3.0-only")
@@ -78,7 +78,8 @@ _package_x11() {
   provides=("$_pkgname-x11=${pkgver%%.g*}")
   conflicts=("$_pkgname-x11")
 
-  cp -a fakeinstall/usr/lib/qt6/plugins/kwin-x11/* "$pkgdir/"
+  mkdir -pm755 "$pkgdir/usr/lib/qt6/plugins/kwin-x11/"
+  cp -a fakeinstall/usr/lib/qt6/plugins/kwin-x11/* "$pkgdir/usr/lib/qt6/plugins/kwin-x11/"
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
 
