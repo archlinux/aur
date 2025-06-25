@@ -2,8 +2,8 @@
 
 _gemname='dry-monads'
 pkgname="ruby-${_gemname}"
-pkgver=1.8.3
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc='Common monads for Ruby'
 arch=('any')
 url="https://github.com/dry-rb/${_gemname}"
@@ -31,8 +31,8 @@ optdepends=(
 )
 options=('!emptydirs')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('603e15dfe196db5af2ba5e54c264a6363fbc109aafba3cd14f27ce841f48f6b257dd7e79e72d8887f1458cd1b51138d670021117bb5cbc9086928437add506ad')
-b2sums=('2201fef174119732a1b28cea6cb6d61e12c5538b40470537e61733a4a47dd04df35a84b0bb0ab404dd6460fddb538f03c9a482337afdf44c60bbbb5ed6acdbc5')
+sha512sums=('c1a4223b613173c75707fa7788e71c5be7653a17348eb358b71f1c6f8551ff283e668dfd244159388cd9af43febbef52f825dbc64a0d33900cb7b3747e2fe253')
+b2sums=('f666de965bbe2226da4658edb388a5ff528dfdaae25f3deba113ac20401b483df52c1b5006f78ebe29413b8b1489e128e62861c32743fe8c9388f2ba41eeb414')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
