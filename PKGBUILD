@@ -9,11 +9,13 @@ pkgdesc='A serial port logger'
 arch=('x86_64')
 #url='http://ttylog.sourceforge.net/'
 url='https://github.com/rocasa/ttylog'
-license=('GPL2')
+license=('GPL-2.0-only')
+depends=('glibc')
 makedepends=('cmake')
-_verwatch=("${url}/releases.atom" '\s\+<title>\([0-9\.]\+\)</title>.*' 'f') # RSS
+#_verwatch=("${url}/releases.atom" '\s\+<title>\([0-9\.]\+\)</title>.*' 'f') # RSS
 # https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rocasa/ttylog/archive/${pkgver}.tar.gz")
+md5sums=('1af983d72ad55914bfac691302a178a3')
 sha256sums=('5a063a57fff0239a511f1964efc8aa9cedf099f9e2cd9c33e33ea8dc8149015d')
 
 prepare() {
@@ -29,11 +31,11 @@ build() {
   if [ ! -d 'build' ]; then
     mkdir 'build'
     cd 'build'
-    cmake -D CMAKE_INSTALL_PREFIX='/usr' '..'
+    cmake -D CMAKE_INSTALL_PREFIX='/usr' '..' -DCMAKE_POLICY_VERSION_MINIMUM='3.5'
   else
     cd 'build'
   fi
-  make -j1 # no speed benefit
+  nice -n1 make -j1 # no speed benefit
   set +u
 }
 
