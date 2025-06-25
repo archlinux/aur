@@ -1,7 +1,7 @@
 pkgbase = python-livekit-agents
 	pkgdesc = A powerful framework for building realtime voice AI agents 🤖🎙️📹.
-	pkgver = 1.1.2
-	pkgrel = 2
+	pkgver = 1.1.4
+	pkgrel = 1
 	url = https://github.com/livekit/agents
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = python-livekit-agents
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-jiwer
+	checkdepends = python-tiktoken
 	checkdepends = python-nltk
 	checkdepends = nltk-data
 	checkdepends = python-docstring-parser
@@ -17,9 +18,9 @@ pkgbase = python-livekit-agents
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.1.2.tar.gz
-	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.1.2/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
-	sha256sums = 3d74e5e5cd1218ea95ff9ed96dd2c7bd64371652581dae43741a485a878a17ed
+	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.1.4.tar.gz
+	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.1.4/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
+	sha256sums = 86ef2954c5421269405b1e863917dff0e099245e8c12d9f5a70a4c9228cc8583
 	sha256sums = 6b99cbfd39246b6706f98ec13c7c50c6b299181f2474fa05cbc8046acc274396
 
 pkgname = python-livekit-agents
@@ -77,6 +78,9 @@ pkgname = python-livekit-agents
 	optdepends = python-livekit-plugins-baseten: baseten
 	optdepends = python-livekit-plugins-langchain: langchain
 	optdepends = python-livekit-plugins-sarvam: sarvam
+	optdepends = python-livekit-plugins-spitch: spitch
+	optdepends = python-livekit-plugins-inworld: inworld
+	optdepends = python-livekit-plugins-hedra: hedra
 
 pkgname = python-livekit-plugins-anthropic
 	pkgdesc = Agent Framework plugin for services from Anthropic.
@@ -205,6 +209,12 @@ pkgname = python-livekit-plugins-hume
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-hume
 	depends = python
 	depends = python-aiohttp
+	depends = python-livekit-agents
+
+pkgname = python-livekit-plugins-inworld
+	pkgdesc = Agent Framework plugin for voice synthesis with Inworld's API.
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-inworld
+	depends = python
 	depends = python-livekit-agents
 
 pkgname = python-livekit-plugins-langchain

@@ -19,40 +19,41 @@ _name114=${_name1}-google
 _name115=${_name1}-groq
 _name116=${_name1}-hedra
 _name117=${_name1}-hume
-_name118=${_name1}-langchain
-_name119=${_name1}-lmnt
-_name120=${_name1}-minimal
-_name121=${_name1}-neuphonic
-_name122=${_name1}-nltk
-_name123=${_name1}-openai
-_name124=${_name1}-playai
-_name125=${_name1}-resemble
-_name126=${_name1}-rime
-_name127=${_name1}-sarvam
-_name128=${_name1}-silero
-_name129=${_name1}-speechify
-_name130=${_name1}-speechmatics
-_name131=${_name1}-spitch
-_name132=${_name1}-tavus
-_name133=${_name1}-turn-detector
+_name118=${_name1}-inworld
+_name119=${_name1}-langchain
+_name120=${_name1}-lmnt
+_name121=${_name1}-minimal
+_name122=${_name1}-neuphonic
+_name123=${_name1}-nltk
+_name124=${_name1}-openai
+_name125=${_name1}-playai
+_name126=${_name1}-resemble
+_name127=${_name1}-rime
+_name128=${_name1}-sarvam
+_name129=${_name1}-silero
+_name130=${_name1}-speechify
+_name131=${_name1}-speechmatics
+_name132=${_name1}-spitch
+_name133=${_name1}-tavus
+_name134=${_name1}-turn-detector
 pkgbase=python-${_name0}
-pkgname=(python-${_name0} python-${_name11} python-${_name12} python-${_name13} python-${_name14} python-${_name15} python-${_name16} python-${_name17} python-${_name18} python-${_name19} python-${_name110} python-${_name111} python-${_name112} python-${_name113} python-${_name114} python-${_name115} python-${_name116} python-${_name117} python-${_name118} python-${_name119} python-${_name120} python-${_name121} python-${_name122} python-${_name123} python-${_name124} python-${_name125} python-${_name126} python-${_name127} python-${_name128} python-${_name129} python-${_name130} python-${_name131} python-${_name132} python-${_name133})
-pkgver=1.1.2
-pkgrel=2
+pkgname=(python-${_name0} python-${_name11} python-${_name12} python-${_name13} python-${_name14} python-${_name15} python-${_name16} python-${_name17} python-${_name18} python-${_name19} python-${_name110} python-${_name111} python-${_name112} python-${_name113} python-${_name114} python-${_name115} python-${_name116} python-${_name117} python-${_name118} python-${_name119} python-${_name120} python-${_name121} python-${_name122} python-${_name123} python-${_name124} python-${_name125} python-${_name126} python-${_name127} python-${_name128} python-${_name129} python-${_name130} python-${_name131} python-${_name132} python-${_name133} python-${_name134})
+pkgver=1.1.4
+pkgrel=1
 pkgdesc='A powerful framework for building realtime voice AI agents 🤖🎙️📹.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/livekit/agents'
 license=('Apache-2.0')
 source=("${url}/archive/refs/tags/${_name0}@${pkgver}.tar.gz"
-        "${url}/raw/refs/tags/${_name0}@${pkgver}/${_name1}/${_name128}/${_name128//-//}/resources/silero_vad.onnx")
-sha256sums=('3d74e5e5cd1218ea95ff9ed96dd2c7bd64371652581dae43741a485a878a17ed'
+        "${url}/raw/refs/tags/${_name0}@${pkgver}/${_name1}/${_name129}/${_name129//-//}/resources/silero_vad.onnx")
+sha256sums=('86ef2954c5421269405b1e863917dff0e099245e8c12d9f5a70a4c9228cc8583'
             '6b99cbfd39246b6706f98ec13c7c50c6b299181f2474fa05cbc8046acc274396')
 depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-jiwer' 'python-nltk' 'nltk-data' 'python-docstring-parser')
+checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-jiwer' 'python-tiktoken' 'python-nltk' 'nltk-data' 'python-docstring-parser')
 
 prepare(){
-  cp -f "${srcdir}"/silero_vad.onnx "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}/${_name1}/${_name128}/${_name128//-//}/resources/silero_vad.onnx
+  cp -f "${srcdir}"/silero_vad.onnx "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}/${_name1}/${_name129}/${_name129//-//}/resources/silero_vad.onnx
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
   sed -i 's/# //g' tests/utils.py
   sed -i 's/resample if not None/# resample if not None/g' tests/utils.py
@@ -138,7 +139,10 @@ package_python-livekit-agents() {
               'python-livekit-plugins-lmnt: lmnt'
               'python-livekit-plugins-baseten: baseten'
               'python-livekit-plugins-langchain: langchain'
-              'python-livekit-plugins-sarvam: sarvam')
+              'python-livekit-plugins-sarvam: sarvam'
+              'python-livekit-plugins-spitch: spitch'
+              'python-livekit-plugins-inworld: inworld'
+              'python-livekit-plugins-hedra: hedra')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
   python -m installer --destdir="$pkgdir" ${_name0}/dist/*.whl
 }
@@ -279,12 +283,20 @@ package_python-livekit-plugins-hume() {
   python -m installer --destdir="$pkgdir" ${_name1}/${_name117}/dist/*.whl
 }
 
+package_python-livekit-plugins-inworld() {
+  pkgdesc="Agent Framework plugin for voice synthesis with Inworld's API."
+  url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-inworld'
+  depends+=('python-livekit-agents')
+  cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name118}/dist/*.whl
+}
+
 package_python-livekit-plugins-langchain() {
   pkgdesc='LangChain/LangGraph plugin for LiveKit agents.'
   url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-langchain'
   depends+=('python-livekit-agents' 'python-langchain-core' 'python-langgraph')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/${_name118}/dist/*.whl
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name119}/dist/*.whl
 }
 
 package_python-livekit-plugins-lmnt() {
@@ -292,7 +304,7 @@ package_python-livekit-plugins-lmnt() {
   url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-lmnt'
   depends+=('python-livekit-agents')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/${_name119}/dist/*.whl
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name120}/dist/*.whl
 }
 
 package_python-livekit-plugins-minimal() {
@@ -300,7 +312,7 @@ package_python-livekit-plugins-minimal() {
   url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-minimal'
   depends+=('python-livekit-agents')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/${_name120}/dist/*.whl
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name121}/dist/*.whl
 }
 
 package_python-livekit-plugins-neuphonic() {
@@ -308,7 +320,7 @@ package_python-livekit-plugins-neuphonic() {
   url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-neuphonic'
   depends+=('python-livekit-agents')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/${_name121}/dist/*.whl
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name122}/dist/*.whl
 }
 
 package_python-livekit-plugins-nltk() {
@@ -316,7 +328,7 @@ package_python-livekit-plugins-nltk() {
   url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-nltk'
   depends+=('python-livekit-agents' 'python-nltk')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/${_name122}/dist/*.whl
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name123}/dist/*.whl
 }
 
 package_python-livekit-plugins-openai() {
@@ -325,7 +337,7 @@ package_python-livekit-plugins-openai() {
   depends+=('python-livekit-agents' 'python-av' 'python-numpy' 'python-pillow' 'python-openai' 'python-websockets')
   optdepends=('python-google-auth: vertex')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/${_name123}/dist/*.whl
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name124}/dist/*.whl
 }
 
 package_python-livekit-plugins-playai() {
@@ -333,7 +345,7 @@ package_python-livekit-plugins-playai() {
   url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-playai'
   depends+=('python-livekit-agents' 'python-av' 'python-numpy' 'python-pyht' 'python-aiohttp' 'python-livekit')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/${_name124}/dist/*.whl
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name125}/dist/*.whl
 }
 
 package_python-livekit-plugins-resemble() {
@@ -341,7 +353,7 @@ package_python-livekit-plugins-resemble() {
   url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-resemble'
   depends+=('python-livekit-agents')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/${_name125}/dist/*.whl
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name126}/dist/*.whl
 }
 
 package_python-livekit-plugins-rime() {
@@ -349,7 +361,7 @@ package_python-livekit-plugins-rime() {
   url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-rime'
   depends+=('python-livekit-agents' 'python-av' 'python-numpy')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/${_name126}/dist/*.whl
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name127}/dist/*.whl
 }
 
 package_python-livekit-plugins-sarvam() {
@@ -357,7 +369,7 @@ package_python-livekit-plugins-sarvam() {
   url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-sarvam'
   depends+=('python-livekit-agents' 'python-av' 'python-numpy')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/${_name127}/dist/*.whl
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name128}/dist/*.whl
 }
 
 package_python-livekit-plugins-silero() {
@@ -365,7 +377,7 @@ package_python-livekit-plugins-silero() {
   url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-silero'
   depends+=('python-livekit-agents' 'python-onnxruntime' 'python-numpy')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/${_name128}/dist/*.whl
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name129}/dist/*.whl
 }
 
 package_python-livekit-plugins-speechify() {
@@ -373,7 +385,7 @@ package_python-livekit-plugins-speechify() {
   url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-speechify'
   depends+=('python-livekit-agents' 'python-av' 'python-numpy')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/${_name129}/dist/*.whl
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name130}/dist/*.whl
 }
 
 package_python-livekit-plugins-speechmatics() {
@@ -381,7 +393,7 @@ package_python-livekit-plugins-speechmatics() {
   url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-speechmatics'
   depends+=('python-livekit-agents')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/${_name130}/dist/*.whl
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name131}/dist/*.whl
 }
 
 package_python-livekit-plugins-spitch() {
@@ -389,7 +401,7 @@ package_python-livekit-plugins-spitch() {
   url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-spitch'
   depends+=('python-livekit-agents' 'python-av' 'python-numpy' 'python-spitch')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/${_name131}/dist/*.whl
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name132}/dist/*.whl
 }
 
 package_python-livekit-plugins-tavus() {
@@ -397,7 +409,7 @@ package_python-livekit-plugins-tavus() {
   url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-tavus'
   depends+=('python-livekit-agents')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/${_name132}/dist/*.whl
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name133}/dist/*.whl
 }
 
 package_python-livekit-plugins-turn-detector() {
@@ -405,5 +417,5 @@ package_python-livekit-plugins-turn-detector() {
   url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-turn-detector'
   depends+=('python-livekit-agents' 'python-transformers' 'python-numpy' 'python-onnxruntime' 'python-jinja')
   cd "${srcdir}"/${_name0//livekit-/}-${_name0}-${pkgver}
-  python -m installer --destdir="$pkgdir" ${_name1}/${_name133}/dist/*.whl
+  python -m installer --destdir="$pkgdir" ${_name1}/${_name134}/dist/*.whl
 }
