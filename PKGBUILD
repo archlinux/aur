@@ -9,8 +9,8 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=963c63ff06ccfb40c6d3893d4209423c3d77d003
-_bcr_commit=939cf674f6e24fb677df5b465878e8d8e0714789
+_mozc_commit=6a2e6e292efe4c2048e0c86b0818a4897c4aa5b7
+_bcr_commit=a796af29defe24d7bc21454b05bfb9a1f872efd3
 _dict_to_mozc_commit=4b3e854b52726f44a5e7fafb5555acc63391389a
 _branch=fcitx
 # Sudachi Dictionary
@@ -28,7 +28,7 @@ _wil_commit=fc5dbf5
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.31.5851.102
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
@@ -58,8 +58,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
         fcitx5-mozc-conf.patch
         )
 
-sha512sums=('80522df8e014e4381c04bb50189b78a23892308642c1e4fa16d78e94715acfbfd063f72f02de752d43acab27fb43acff3e44968871319e7948aef2d66543a319'
-            'f00deeb1daf274ceaaed55fc5382ba387a14da12ea3ff4451c96244b4e0bdf497f09b1bd24b775ac73b868b64082a666f8141a03651da2b068e9c9b271d69775'
+sha512sums=('02eb7c17d4f5621b6b9624299cfc0eabe79f5680ba4fc57a388693a2acc6e15013ca295322920865a1e9775e7942a6ebad8f2763be740857a222a343f0c0c135'
+            'f9f54e34d91855682865a63fd02977e655d0a8aec134aa4f1f363837034a4761c3cd327c8714f5ed601de510a40cdcb015ed29adaedbcf6f4e4241dc42394bc0'
             '5629f4976ec8ca7a041f06543d976f4806df394f3c2d02eec8bfbf5161539b069dd2a0a4fd3d2d478383602ea181ced4d704aa514124fcedbc5710c40d52fbb2'
             'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
             '48cd60ccec0f9a5f262c8f8865bcc794c023fc8a421a071c179922e5176ecbe83e554430de30c70efee2d47c0b3defec687ba89d66124d372798d0394fe3c767'
@@ -76,7 +76,7 @@ sha512sums=('80522df8e014e4381c04bb50189b78a23892308642c1e4fa16d78e94715acfbfd06
             '44b228264547c4628599b5888bd177dc3ddb845094a0acebcd3d7d7665e2cda8861f7210f80f0f40531f46581f565aab3489a6a2ff3aa75c058d552b23ea8d6e'
             '5f3aa91974d7ef5633a013effb7acf729cec7d096b4740ceb9915fe7df10e2e45d0d76ffc2d36f1e16d322e7b3974653601a79b6ada05371de8fc7e80af14644'
             '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4'
-            '178fbcf2878734c1fca84408e0203293be7ad890572296ab842b78b4b4c0ae85c9f7300d9defb1f8c5cc5c4de549ad91760051b2cb32ecd078c938b0fd46ef5d')
+            '6fac1f6803939f736f4d571ba30da9218130f2d965d2fc22ce4c1c7f8d822ac64db44abced373ccb5cade18a20c7a5679324c8b7e30507005a6bd1f874108350')
 
 pkgver() {
   cd "${srcdir}/mozc" || exit

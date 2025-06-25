@@ -55,13 +55,13 @@ index 0000000000..f62e68ea0b
 +# Group Name
 +Name=デフォルト
 +# Layout
-+Default Layout=jp-kana86
++Default Layout=jp
 +# Default Input Method
 +DefaultIM=mozc
 +
 +[Groups/0/Items/0]
 +# Name
-+Name=keyboard-jp-kana86
++Name=keyboard-jp
 +# Layout
 +Layout=
 +
