@@ -1,0 +1,19 @@
+pkgbase = cosmic-ext-applet-minimon-git
+	pkgdesc = A COSMIC applet for displaying CPU/Memory/Network/Disk/GPU usage in the Panel or Dock..
+	pkgver = 0.6.0.r3.g78d77c3
+	pkgrel = 1
+	url = https://github.com/cosmic-utils/minimon-applet
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = cosmic-applets
+	depends = libxkbcommon
+	provides = minimon-applet
+	conflicts = cosmic-ext-applet-minimon
+	conflicts = minimon-applet-for-cosmic
+	source = git+https://github.com/cosmic-utils/minimon-applet.git
+	sha256sums = SKIP
+
+pkgname = cosmic-ext-applet-minimon-git
