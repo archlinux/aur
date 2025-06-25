@@ -1,6 +1,6 @@
 pkgbase = openrgb-cppsdk-git
 	pkgdesc = C++ client/SDK for OpenRGB
-	pkgver = 1.0.r0
+	pkgver = v1.0.r9.g9b6ec59
 	pkgrel = 1
 	url = https://github.com/Youda008/OpenRGB-cppSDK.git
 	arch = x86_64

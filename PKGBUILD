@@ -1,7 +1,7 @@
 # Maintainer: timasoft <tima.klester@gmail.com>
 # Contributors: Youda008 and LtdJorge
 pkgname=openrgb-cppsdk-git
-pkgver=1.0.r0
+pkgver=v1.0.r9.g9b6ec59
 pkgrel=1
 pkgdesc="C++ client/SDK for OpenRGB"
 url="https://github.com/Youda008/OpenRGB-cppSDK.git"
@@ -13,6 +13,14 @@ makedepends=('git' 'cmake' 'base-devel')
 optdepends=('openrgb')
 source=("git+${url}")
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/OpenRGB-cppSDK"
+    ( set -o pipefail
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
+}
 
 prepare() {
   cd "${srcdir}/OpenRGB-cppSDK"
