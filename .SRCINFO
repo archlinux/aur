@@ -1,7 +1,7 @@
 pkgbase = balatro-multiplayer-launcher
 	pkgdesc = Launcher for Balatro Multiplayer Mod
 	pkgver = 1.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Balatro-Multiplayer/Balatro-Multiplayer-Launcher/
 	arch = x86_64
 	license = 
@@ -25,7 +25,7 @@ pkgbase = balatro-multiplayer-launcher
 	options = !debug
 	source = https://github.com/Balatro-Multiplayer/Balatro-Multiplayer-Launcher/releases/download/v1.0.6/balatro-multiplayer-launcher.AppImage
 	source = balatro-multiplayer-launcher.desktop
-	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+	sha256sums = 52dd0300a8020c6cd6bc65feb5637dbdd878571954a81344ec431d82a07cb6fc
 	sha256sums = eb906bf72e79c5e481993617a76f33713cd22002bcc64d7fd956a70b4833ad59
 
 pkgname = balatro-multiplayer-launcher
