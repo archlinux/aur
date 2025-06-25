@@ -9,13 +9,13 @@ _region=us
 _pkgname=sm64ex
 pkgname=$_pkgname-redrawn-git
 pkgver=r646.58
-pkgrel=2
+pkgrel=3
 pkgdesc='Super Mario 64 PC port (sm64ex fork) with the redrawn texture pack and HD Mario'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/sm64pc/sm64ex'
 license=('reverse-engineered and unlicensed')
 depends=('sdl2')
-makedepends=('audiofile' 'git' 'python')
+makedepends=('audiofile' 'git' 'python' 'unrar')
 provides=($_pkgname)
 conflicts=($_pkgname)
 
