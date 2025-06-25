@@ -1,5 +1,7 @@
-# Maintainer: fossdd <fossdd@pwned.life>
+# Maintainer: envolution
+# Contributor: fossdd <fossdd@pwned.life>
 # Contributor: Rodney van den Velden <rodney@dfagaming.nl>
+# shellcheck shell=bash disable=SC2034,SC2154
 #
 # Update procedure: if the checksum changed, bump $pkgver to $(date +%Y%m%d)
 #
@@ -9,23 +11,23 @@
 
 pkgname='osu'
 pkgver='20250521'
-pkgrel=1
+pkgrel=2
 pkgdesc='A free-to-win rhythm game'
 _terms_commit='b8a98fb740ed8251958f16d719138e96afa6e299'
 arch=('i686' 'x86_64')
 url='https://osu.ppy.sh'
 license=('custom')
-depends=('wine' 'winetricks' 'lib32-gnutls' 'lib32-libxcomposite' 'lib32-gst-plugins-base-libs')
-makedepends=('icoutils')
+depends=('lib32-gnutls' 'lib32-libxcomposite' 'lib32-gst-plugins-base-libs')
+makedepends=('icoutils' 'umu-launcher')
 optdepends=('pipewire-pulse: low-latency audio backend')
 source=("${pkgname}-installer-${pkgver}.exe::https://m1.ppy.sh/r/osu!install.exe"
         "${pkgname}-terms-${_terms_commit}.md::https://raw.githubusercontent.com/ppy/osu-wiki/${_terms_commit}/wiki/Legal/Terms/en.md"
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "${pkgname}.xml")
-sha256sums=('aef7bb541d1c2dccd7d49d32eeaabf035bf503a6f4c24f5f0a5edc0f52cdc162'
+sha256sums=('bbb2c72707dcdc136947c4414dc45e12f3539cfab10315d98ca9668031fef920'
             '0fc6b18923db85b82fa5da1cb40ccc8c0ffcaf65ee7e325af8969baa150a9fd2'
-            'e02f43b256575f2f1ae54ce3383246350a6a60acc966f02a3c896521b6632822'
+            'ee31a0fb2de10e39db6eb84a5b9ad9f33513e2cf079c06a2a3fa4602d9acb068'
             '3d98f5811539d652bf6378c2c76bff7b6d5ac82e6322942bb287ff9082f1715b'
             '030fb176a43f6cc3306c48123bbdeea6643ef4d0014f369b2bb16d5772feb076')
 
@@ -43,3 +45,4 @@ package() {
 	install -D -m 644 'osu-stable.png' "${pkgdir}/usr/share/icons/hicolor/256x256/apps/osu-stable.png"
 	install -D -m 644 'osu-importable.png' "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes/application-x-osu-importable.png"
 }
+# vim:set ts=2 sw=2 et:
