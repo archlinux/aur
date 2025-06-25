@@ -8,8 +8,8 @@
 _region=us
 _pkgname=sm64ex
 pkgname=$_pkgname-redrawn-git
-pkgver=r513.58
-pkgrel=4
+pkgver=r646.58
+pkgrel=2
 pkgdesc='Super Mario 64 PC port (sm64ex fork) with the redrawn texture pack and HD Mario'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/sm64pc/sm64ex'
@@ -22,7 +22,7 @@ conflicts=($_pkgname)
 source=(
   'git+https://github.com/sm64pc/sm64ex.git'
   'git+https://github.com/TechieAndroid/sm64redrawn'
-  'https://www.sm64pc.info/forum/download/file.php?id=3' # HD Mario
+  'hd-mario.rar' # HD Mario
   "$_pkgname.desktop"
   "$_pkgname.svg"
   "$_pkgname.sh"
