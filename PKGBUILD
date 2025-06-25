@@ -9,7 +9,7 @@ pkgbase="${_name}"
 pkgname=({,java-}"${pkgbase}")
 pkgver=R2025a.25.1.0.2943329
 _pkgver="$(sed -E 's/^(R20[0-9]{2}[ab]).*/\1/' <<< "${pkgver}")"
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=('x86_64')
@@ -486,6 +486,7 @@ package_java-matlab() {
   # https://www.mathworks.com/support/requirements/openjdk.html
   depends=('java-environment-openjdk<=21' 'java-environment-openjdk>=8' "${pkgbase}=${epoch}:${pkgver}-${pkgrel}")
   provides=("${pkgname}-version=${_pkgver}")
+  install="${pkgname}.install"
 
   cd "${srcdir}"
   echo "  -> Moving files from \$srcdir/ to \$pkgdir/ directly to save space..."

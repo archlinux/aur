@@ -1,7 +1,7 @@
 pkgbase = matlab
 	pkgdesc = A high-level language for numerical computation and visualization
 	pkgver = R2025a.25.1.0.2943329
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 1
 	url = https://www.mathworks.com/products/matlab.html
 	arch = x86_64
@@ -105,7 +105,8 @@ pkgname = matlab
 
 pkgname = java-matlab
 	pkgdesc = A high-level language for numerical computation and visualization (Java components)
+	install = java-matlab.install
 	depends = java-environment-openjdk<=21
 	depends = java-environment-openjdk>=8
-	depends = matlab=1:R2025a.25.1.0.2943329-5
+	depends = matlab=1:R2025a.25.1.0.2943329-6
 	provides = java-matlab-version=R2025a
