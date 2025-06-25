@@ -1,6 +1,6 @@
 pkgbase = equinox-git
 	pkgdesc = An open-source runtime for Roblox on Linux
-	pkgver = 0.1.6
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://equinoxhq.github.io
 	arch = i686

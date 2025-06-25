@@ -1,6 +1,6 @@
 # Maintainer: Trayambak Rai <xtrayambak at disroot dot org>
 pkgname=equinox-git
-pkgver=0.1.6
+pkgver=0.1.8
 pkgrel=1
 epoch=
 pkgdesc="An open-source runtime for Roblox on Linux"
