@@ -1,5 +1,6 @@
 # Maintainer: timasoft <tima.klester@gmail.com>
-# Contributors: Youda008 and LtdJorge
+# Contributors: Youda008
+# Contributors: LtdJorge
 pkgname=openrgb-cppsdk-git
 pkgver=v1.0.r9.g9b6ec59
 pkgrel=1
