@@ -1,0 +1,41 @@
+https://github.com/freebsd/freebsd-ports/commit/121e40d73e58
+https://github.com/winft/como/issues/29
+
+--- a/como/render/wayland/platform.h
++++ b/como/render/wayland/platform.h
+@@ -246,16 +246,6 @@ class platform (public)
+         locked++;
+     }
+ 
+-    void unlock()
+-    {
+-        assert(locked > 0);
+-        locked--;
+-
+-        if (!locked) {
+-            this->addRepaintFull();
+-        }
+-    }
+-
+     std::unique_ptr<scene_t> create_scene()
+     {
+         auto setup_hooks = [&, this](auto scene) -> decltype(scene) {
+--- a/como/render/wayland/xwl_platform.h
++++ b/como/render/wayland/xwl_platform.h
+@@ -259,16 +259,6 @@ class xwl_platform (public)
+         locked++;
+     }
+ 
+-    void unlock()
+-    {
+-        assert(locked > 0);
+-        locked--;
+-
+-        if (!locked) {
+-            this->addRepaintFull();
+-        }
+-    }
+-
+     std::unique_ptr<scene_t> create_scene()
+     {
+         if (is_sw_compositing()) {

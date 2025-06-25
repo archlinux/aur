@@ -1,0 +1,2313 @@
+From 7ad1bc1d9b7bba2d13454ef2847a91e2d9fc991e Mon Sep 17 00:00:00 2001
+From: Jesper Schmitz Mouridsen <jesper@schmitz.computer>
+Date: Wed, 18 Jun 2025 23:12:11 +0200
+Subject: [PATCH] Kdecoration2 ->KDecoration3  Added a naive null check for
+ transient  Added the nextStateChanged handler (not sure if correct)  Added
+ deco->create call to init the state  Run time tested X11 not wayland
+
+Remove FreeBSD specific patches.
+---
+ CMakeLists.txt                                |   2 +-
+ como/input/device_redirect.h                  |   4 +-
+ como/render/deco_shadow.h                     |  18 +--
+ como/render/effect/interface/effect_window.h  |   4 +-
+ como/render/effect/window_impl.h              |   2 +-
+ como/render/effects.cpp                       |   2 +-
+ como/render/effects.h                         |   2 +-
+ como/render/gl/shadow.h                       |   2 +-
+ como/render/shadow.h                          |  10 +-
+ como/win/CMakeLists.txt                       |   4 +-
+ como/win/dbus/appmenu.h                       |   4 +-
+ como/win/deco.h                               |   4 +-
+ como/win/deco/bridge.h                        |  48 ++++----
+ como/win/deco/client_impl.h                   |  53 +++++----
+ como/win/deco/palette.cpp                     |   6 +-
+ como/win/deco/palette.h                       |   4 +-
+ como/win/deco/renderer.h                      |  14 +--
+ como/win/deco/settings.h                      | 104 +++++++++---------
+ como/win/geo.h                                |   2 +-
+ como/win/setup.h                              |   2 +-
+ como/win/structs.h                            |   4 +-
+ como/win/transient.h                          |   2 +-
+ como/win/wayland/internal_window.h            |   4 +-
+ como/win/wayland/window.h                     |   8 +-
+ como/win/x11/deco.h                           |  12 +-
+ como/win/x11/geo.h                            |   4 +-
+ como/win/x11/input.h                          |   2 +-
+ plugins/effects/blur/CMakeLists.txt           |   2 +-
+ plugins/effects/blur/blur.cpp                 |   4 +-
+ .../kdecorations/aurorae/src/CMakeLists.txt   |   8 +-
+ plugins/kdecorations/aurorae/src/aurorae.cpp  |  90 +++++++--------
+ plugins/kdecorations/aurorae/src/aurorae.h    |  18 +--
+ plugins/kdecorations/aurorae/src/aurorae.json |   2 +-
+ .../kdecorations/aurorae/src/auroraeshared.h  |   2 +-
+ .../aurorae/src/config/CMakeLists.txt         |   2 +-
+ .../aurorae/src/config/auroraeconfig.cpp      |   6 +-
+ .../aurorae/src/decorationoptions.cpp         |  62 +++++------
+ .../aurorae/src/decorationoptions.h           |  12 +-
+ .../aurorae/src/lib/auroraetheme.cpp          |  46 ++++----
+ .../aurorae/src/lib/auroraetheme.h            |   6 +-
+ plugins/qpa/integration.cpp                   |   2 +-
+ plugins/qpa/integration.h                     |   4 +-
+ tests/integration/decoration_input.cpp        |   6 +-
+ .../fakes/org.kde.kdecoration2/CMakeLists.txt |   4 +-
+ .../fakedecoration_with_shadows.cpp           |   8 +-
+ .../fakedecoration_with_shadows.json          |   2 +-
+ tests/integration/maximize.cpp                |  12 +-
+ .../no_crash_aurorae_destroy_deco.cpp         |   4 +-
+ .../integration/no_crash_cancel_animation.cpp |   2 +-
+ tests/integration/no_crash_empty_deco.cpp     |   2 +-
+ tests/integration/no_crash_glxgears.cpp       |   2 +-
+ tests/integration/no_crash_no_border.cpp      |   4 +-
+ tests/integration/opengl_shadow.cpp           |   6 +-
+ tests/integration/qpainter_shadow.cpp         |   4 +-
+ tests/integration/quick_tiling.cpp            |   8 +-
+ tests/integration/struts.cpp                  |   2 +-
+ tests/integration/xdg-shell_window.cpp        |   6 +-
+ 57 files changed, 339 insertions(+), 326 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 661999bd60..2039a8767d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -127,7 +127,7 @@ set_package_properties(Plasma PROPERTIES
+     TYPE RUNTIME
+ )
+ 
+-find_package(KDecoration2 ${KDE_PLASMA_VERSION}
++find_package(KDecoration3 ${KDE_PLASMA_VERSION}
+   CONFIG REQUIRED
+ )
+ 
+diff --git a/como/input/device_redirect.h b/como/input/device_redirect.h
+index a89c6c3b5e..72c3ebdb2c 100644
+--- a/como/input/device_redirect.h
++++ b/como/input/device_redirect.h
+@@ -8,7 +8,7 @@
+ */
+ #pragma once
+ 
+-#include <KDecoration2/Private/DecoratedClientPrivate>
++#include <KDecoration3/Private/DecoratedWindowPrivate>
+ #include <QWindow>
+ #include <optional>
+ 
+@@ -38,7 +38,7 @@ struct device_redirect_focus {
+     QWindow* internal_window{nullptr};
+ 
+     struct {
+-        KDecoration2::DecoratedClientPrivate* client{nullptr};
++        KDecoration3::DecoratedWindowPrivate* client{nullptr};
+ 
+         // TODO(romangg): Make this unnecessary. Reuse instead the normal focus window.
+         std::optional<Window> window;
+diff --git a/como/render/deco_shadow.h b/como/render/deco_shadow.h
+index 99fb9469a7..58491c9823 100644
+--- a/como/render/deco_shadow.h
++++ b/como/render/deco_shadow.h
+@@ -11,29 +11,29 @@
+ #include <como/win/deco.h>
+ #include <como/win/scene.h>
+ 
+-#include <KDecoration2/Decoration>
+-#include <KDecoration2/DecorationShadow>
++#include <KDecoration3/Decoration>
++#include <KDecoration3/DecorationShadow>
+ 
+ namespace como::render
+ {
+ 
+ template<typename Shadow>
+-bool update_deco_shadow(Shadow& impl, KDecoration2::Decoration* decoration)
++bool update_deco_shadow(Shadow& impl, KDecoration3::Decoration* decoration)
+ {
+     if (!std::visit(overload{[&](auto&& ref_win) {
+                         if (impl.m_decorationShadow) {
+                             // disconnect previous connections
+                             QObject::disconnect(
+                                 impl.m_decorationShadow.get(),
+-                                &KDecoration2::DecorationShadow::innerShadowRectChanged,
++                                &KDecoration3::DecorationShadow::innerShadowRectChanged,
+                                 ref_win->qobject.get(),
+                                 nullptr);
+                             QObject::disconnect(impl.m_decorationShadow.get(),
+-                                                &KDecoration2::DecorationShadow::shadowChanged,
++                                                &KDecoration3::DecorationShadow::shadowChanged,
+                                                 ref_win->qobject.get(),
+                                                 nullptr);
+                             QObject::disconnect(impl.m_decorationShadow.get(),
+-                                                &KDecoration2::DecorationShadow::paddingChanged,
++                                                &KDecoration3::DecorationShadow::paddingChanged,
+                                                 ref_win->qobject.get(),
+                                                 nullptr);
+                         }
+@@ -47,15 +47,15 @@ bool update_deco_shadow(Shadow& impl, KDecoration2::Decoration* decoration)
+                         auto update_shadow = [ref_win]() { win::update_shadow(ref_win); };
+ 
+                         QObject::connect(impl.m_decorationShadow.get(),
+-                                         &KDecoration2::DecorationShadow::innerShadowRectChanged,
++                                         &KDecoration3::DecorationShadow::innerShadowRectChanged,
+                                          ref_win->qobject.get(),
+                                          update_shadow);
+                         QObject::connect(impl.m_decorationShadow.get(),
+-                                         &KDecoration2::DecorationShadow::shadowChanged,
++                                         &KDecoration3::DecorationShadow::shadowChanged,
+                                          ref_win->qobject.get(),
+                                          update_shadow);
+                         QObject::connect(impl.m_decorationShadow.get(),
+-                                         &KDecoration2::DecorationShadow::paddingChanged,
++                                         &KDecoration3::DecorationShadow::paddingChanged,
+                                          ref_win->qobject.get(),
+                                          update_shadow);
+                         return true;
+diff --git a/como/render/effect/interface/effect_window.h b/como/render/effect/interface/effect_window.h
+index 91e57e42f7..206313cbb6 100644
+--- a/como/render/effect/interface/effect_window.h
++++ b/como/render/effect/interface/effect_window.h
+@@ -14,7 +14,7 @@
+ #include <QObject>
+ #include <QWindow>
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+ class Decoration;
+ }
+@@ -436,7 +436,7 @@ class COMO_EXPORT EffectWindow : public QObject
+      * Returns the decoration
+      * @since 5.25
+      */
+-    virtual KDecoration2::Decoration* decoration() const = 0;
++    virtual KDecoration3::Decoration* decoration() const = 0;
+     virtual QByteArray readProperty(long atom, long type, int format) const = 0;
+     virtual void deleteProperty(long atom) const = 0;
+ 
+diff --git a/como/render/effect/window_impl.h b/como/render/effect/window_impl.h
+index 6b48263b5e..08f519d13a 100644
+--- a/como/render/effect/window_impl.h
++++ b/como/render/effect/window_impl.h
+@@ -677,7 +677,7 @@ class effects_window_impl : public EffectWindow
+                           *window.ref_win);
+     }
+ 
+-    KDecoration2::Decoration* decoration() const override
++    KDecoration3::Decoration* decoration() const override
+     {
+         return std::visit(overload{[](auto&& ref_win) { return win::decoration(ref_win); }},
+                           *window.ref_win);
+diff --git a/como/render/effects.cpp b/como/render/effects.cpp
+index e0654aaa93..dbe0218922 100644
+--- a/como/render/effects.cpp
++++ b/como/render/effects.cpp
+@@ -22,7 +22,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ #include <como/render/gl/interface/framebuffer.h>
+ #include <como/render/gl/interface/platform.h>
+ 
+-#include <KDecoration2/DecorationSettings>
++#include <KDecoration3/DecorationSettings>
+ 
+ namespace como::render
+ {
+diff --git a/como/render/effects.h b/como/render/effects.h
+index 178ce3c560..1b45e71f9f 100644
+--- a/como/render/effects.h
++++ b/como/render/effects.h
+@@ -981,7 +981,7 @@ class effects_handler_impl : public effects_handler_wrap
+             // TODO: this could become per window and be derived from the actual position in the
+             // deco
+             auto deco_settings = get_space().deco->settings();
+-            auto close_enum = KDecoration2::DecorationButtonType::Close;
++            auto close_enum = KDecoration3::DecorationButtonType::Close;
+             return deco_settings && deco_settings->decorationButtonsLeft().contains(close_enum)
+                 ? Qt::TopLeftCorner
+                 : Qt::TopRightCorner;
+diff --git a/como/render/gl/shadow.h b/como/render/gl/shadow.h
+index 61181ce862..dffcd6ea5a 100644
+--- a/como/render/gl/shadow.h
++++ b/como/render/gl/shadow.h
+@@ -81,7 +81,7 @@ class DecorationShadowTextureCache
+         QSharedPointer<GLTexture> texture;
+         QVector<Shadow*> shadows;
+     };
+-    QHash<KDecoration2::DecorationShadow*, Data> m_cache;
++    QHash<KDecoration3::DecorationShadow*, Data> m_cache;
+ };
+ 
+ template<typename Window, typename Scene>
+diff --git a/como/render/shadow.h b/como/render/shadow.h
+index 9eee5f07fe..10c7066e9f 100644
+--- a/como/render/shadow.h
++++ b/como/render/shadow.h
+@@ -15,7 +15,7 @@
+ 
+ #include <como/render/effect/interface/window_quad.h>
+ 
+-#include <KDecoration2/DecorationShadow>
++#include <KDecoration3/DecorationShadow>
+ #include <QObject>
+ #include <QPixmap>
+ #include <functional>
+@@ -110,7 +110,7 @@ class shadow : public QObject
+         return m_decorationShadow->shadow();
+     }
+ 
+-    std::weak_ptr<KDecoration2::DecorationShadow> decorationShadow() const
++    std::weak_ptr<KDecoration3::DecorationShadow> decorationShadow() const
+     {
+         return m_decorationShadow;
+     }
+@@ -267,7 +267,7 @@ class shadow : public QObject
+     int m_leftOffset;
+ 
+     // Decoration based shadows
+-    std::shared_ptr<KDecoration2::DecorationShadow> m_decorationShadow;
++    std::shared_ptr<KDecoration3::DecorationShadow> m_decorationShadow;
+ 
+     Window* window;
+ 
+@@ -290,7 +290,7 @@ class shadow : public QObject
+         return m_shadowElements[static_cast<size_t>(element)];
+     }
+ 
+-    QSize elementSize(shadow_element element) const
++    QSizeF elementSize(shadow_element element) const
+     {
+         if (m_decorationShadow) {
+             switch (element) {
+@@ -311,7 +311,7 @@ class shadow : public QObject
+             case shadow_element::top_left:
+                 return m_decorationShadow->topLeftGeometry().size();
+             default:
+-                return QSize();
++                return QSizeF();
+             }
+         } else {
+             return m_shadowElements[enum_index(element)].size();
+diff --git a/como/win/CMakeLists.txt b/como/win/CMakeLists.txt
+index 8808cf091e..db496271c6 100644
+--- a/como/win/CMakeLists.txt
++++ b/como/win/CMakeLists.txt
+@@ -7,8 +7,8 @@ add_library(win SHARED)
+ 
+ target_link_libraries(win
+   PUBLIC
+-    KDecoration2::KDecoration
+-    KDecoration2::KDecoration2Private
++    KDecoration3::KDecoration
++    KDecoration3::KDecoration3Private
+     KF6::ColorScheme
+     KF6::ConfigCore
+     KF6::ConfigGui
+diff --git a/como/win/dbus/appmenu.h b/como/win/dbus/appmenu.h
+index 560bfc0f0e..6210d7fad0 100644
+--- a/como/win/dbus/appmenu.h
++++ b/como/win/dbus/appmenu.h
+@@ -11,7 +11,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ #include <como/win/appmenu.h>
+ 
+-#include <KDecoration2/DecorationSettings>
++#include <KDecoration3/DecorationSettings>
+ #include <QObject>
+ #include <functional>
+ #include <memory>
+@@ -52,7 +52,7 @@ appmenu_callbacks create_appmenu_callbacks(Space const& space)
+     callbacks.show_request = [&space](appmenu_address const& addr, int action_id) {
+         if (auto deco_settings = space.deco->settings()) {
+             // Ignore request when user has not configured appmenu title bar button.
+-            auto menu_enum = KDecoration2::DecorationButtonType::ApplicationMenu;
++            auto menu_enum = KDecoration3::DecorationButtonType::ApplicationMenu;
+             auto const& lbtn = deco_settings->decorationButtonsLeft();
+             auto const& rbtn = deco_settings->decorationButtonsRight();
+             if (!lbtn.contains(menu_enum) && !rbtn.contains(menu_enum)) {
+diff --git a/como/win/deco.h b/como/win/deco.h
+index e89ad0f35a..41f38a6fe7 100644
+--- a/como/win/deco.h
++++ b/como/win/deco.h
+@@ -7,14 +7,14 @@
+ 
+ #include "structs.h"
+ 
+-#include <KDecoration2/Decoration>
++#include <KDecoration3/Decoration>
+ #include <QObject>
+ 
+ namespace como::win
+ {
+ 
+ template<typename Win>
+-KDecoration2::Decoration* decoration(Win* win)
++KDecoration3::Decoration* decoration(Win* win)
+ {
+     if (win->control) {
+         return win->control->deco.decoration;
+diff --git a/como/win/deco/bridge.h b/como/win/deco/bridge.h
+index 2d8857c043..7c7960ac51 100644
+--- a/como/win/deco/bridge.h
++++ b/como/win/deco/bridge.h
+@@ -16,24 +16,23 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ #include <como/win/deco.h>
+ 
+-#include <KDecoration2/DecoratedClient>
+-#include <KDecoration2/Decoration>
+-#include <KDecoration2/DecorationSettings>
+-#include <KDecoration2/Private/DecorationBridge>
++#include <KDecoration3/DecoratedWindow>
++#include <KDecoration3/Decoration>
++#include <KDecoration3/Private/DecorationBridge>
+ #include <KPluginFactory>
+ #include <KPluginMetaData>
+ #include <QMetaProperty>
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+-class DecorationSettings;
++class DecorataionSettings;
+ }
+ 
+ namespace como::win::deco
+ {
+ 
+ static const QString s_aurorae = QStringLiteral("org.kde.kwin.aurorae");
+-static const QString s_pluginName = QStringLiteral("org.kde.kdecoration2");
++static const QString s_pluginName = QStringLiteral("org.kde.kdecoration3");
+ 
+ #if HAVE_BREEZE_DECO
+ static const QString s_defaultPlugin = QStringLiteral(BREEZE_KDECORATION_PLUGIN_ID);
+@@ -42,7 +41,7 @@ static const QString s_defaultPlugin = s_aurorae;
+ #endif
+ 
+ template<typename Space>
+-class bridge : public KDecoration2::DecorationBridge
++class bridge : public KDecoration3::DecorationBridge
+ {
+ public:
+     bridge(Space& space)
+@@ -69,7 +68,7 @@ class bridge : public KDecoration2::DecorationBridge
+             return;
+         }
+         m_plugin = readPlugin();
+-        m_settings = std::make_shared<KDecoration2::DecorationSettings>(this);
++        m_settings = std::make_shared<KDecoration3::DecorationSettings>(this);
+         initPlugin();
+         if (!m_factory) {
+             if (m_plugin != s_defaultPlugin) {
+@@ -86,7 +85,7 @@ class bridge : public KDecoration2::DecorationBridge
+     }
+ 
+     template<typename Win>
+-    KDecoration2::Decoration* createDecoration(deco::window<Win>* window)
++    KDecoration3::Decoration* createDecoration(deco::window<Win>* window)
+     {
+         if (m_noPlugin) {
+             return nullptr;
+@@ -99,28 +98,33 @@ class bridge : public KDecoration2::DecorationBridge
+         if (!m_theme.isEmpty()) {
+             args.insert(QStringLiteral("theme"), m_theme);
+         }
+-        auto deco = m_factory->create<KDecoration2::Decoration>(window, QVariantList{args});
++        auto deco = m_factory->create<KDecoration3::Decoration>(window, QVariantList{args});
++        connect(deco, &KDecoration3::Decoration::nextStateChanged, this, [this,deco](auto state) {
++                deco->apply(state->clone());
++        });
++
+         deco->setSettings(m_settings);
++	deco->create();
+         deco->init();
+         return deco;
+     }
+ 
+-    std::unique_ptr<KDecoration2::DecoratedClientPrivate>
+-    createClient(KDecoration2::DecoratedClient* client,
+-                 KDecoration2::Decoration* decoration) override
++    std::unique_ptr<KDecoration3::DecoratedWindowPrivate>
++    createClient(KDecoration3::DecoratedWindow* client,
++                 KDecoration3::Decoration* decoration) override
+     {
+         using window_t = typename Space::window_t;
+ 
+         return std::visit(
+-            overload{[&](auto win) -> std::unique_ptr<KDecoration2::DecoratedClientPrivate> {
++            overload{[&](auto win) -> std::unique_ptr<KDecoration3::DecoratedWindowPrivate> {
+                 using win_t = std::remove_pointer_t<decltype(win)>;
+                 return std::make_unique<client_impl<win_t>>(win, client, decoration);
+             }},
+             static_cast<window<window_t>*>(decoration->parent())->win);
+     }
+ 
+-    std::unique_ptr<KDecoration2::DecorationSettingsPrivate>
+-    settings(KDecoration2::DecorationSettings* parent) override
++    std::unique_ptr<KDecoration3::DecorationSettingsPrivate>
++    settings(KDecoration3::DecorationSettings* parent) override
+     {
+         return std::make_unique<deco::settings<Space>>(space, parent);
+     }
+@@ -181,7 +185,7 @@ class bridge : public KDecoration2::DecorationBridge
+         }
+     }
+ 
+-    std::shared_ptr<KDecoration2::DecorationSettings> const& settings() const
++    std::shared_ptr<KDecoration3::DecorationSettings> const& settings() const
+     {
+         return m_settings;
+     }
+@@ -302,11 +306,11 @@ class bridge : public KDecoration2::DecorationBridge
+ 
+     static QString settingsProperty(const QVariant& variant)
+     {
+-        if (QLatin1String(variant.typeName()) == QLatin1String("KDecoration2::BorderSize")) {
++        if (QLatin1String(variant.typeName()) == QLatin1String("KDecoration3::BorderSize")) {
+             return QString::number(variant.toInt());
+         } else if (QLatin1String(variant.typeName())
+-                   == QLatin1String("QVector<KDecoration2::DecorationButtonType>")) {
+-            const auto& b = variant.value<QVector<KDecoration2::DecorationButtonType>>();
++                   == QLatin1String("QVector<KDecoration3::DecorationButtonType>")) {
++            const auto& b = variant.value<QVector<KDecoration3::DecorationButtonType>>();
+             QString buffer;
+             for (auto it = b.begin(); it != b.end(); ++it) {
+                 if (it != b.begin()) {
+@@ -325,7 +329,7 @@ class bridge : public KDecoration2::DecorationBridge
+     QString m_plugin;
+     QString m_defaultTheme;
+     QString m_theme;
+-    std::shared_ptr<KDecoration2::DecorationSettings> m_settings;
++    std::shared_ptr<KDecoration3::DecorationSettings> m_settings;
+     bool m_noPlugin{false};
+     Space& space;
+ };
+diff --git a/como/win/deco/client_impl.h b/como/win/deco/client_impl.h
+index c1181b5c0e..ddad10a462 100644
+--- a/como/win/deco/client_impl.h
++++ b/como/win/deco/client_impl.h
+@@ -14,7 +14,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ #include <como/win/window_operation.h>
+ #include <como/win/window_qobject.h>
+ 
+-#include <KDecoration2/Private/DecoratedClientPrivate>
++#include <KDecoration3/Private/DecoratedWindowPrivate>
+ #include <QDeadlineTimer>
+ #include <QObject>
+ #include <QStyle>
+@@ -25,15 +25,15 @@ namespace como::win::deco
+ {
+ 
+ template<typename Window>
+-class client_impl : public KDecoration2::ApplicationMenuEnabledDecoratedClientPrivate
++class client_impl : public KDecoration3::DecoratedWindowPrivate
+ {
+ public:
+     using renderer_t = deco::renderer<client_impl>;
+ 
+     client_impl(Window* window,
+-                KDecoration2::DecoratedClient* decoratedClient,
+-                KDecoration2::Decoration* decoration)
+-        : ApplicationMenuEnabledDecoratedClientPrivate(decoratedClient, decoration)
++                KDecoration3::DecoratedWindow* decoratedClient,
++                KDecoration3::Decoration* decoration)
++        : DecoratedWindowPrivate(decoratedClient, decoration)
+         , qobject{std::make_unique<client_impl_qobject>()}
+         , m_client(window)
+         , m_clientSize(win::frame_to_client_size(window, window->geo.size()))
+@@ -74,11 +74,11 @@ class client_impl : public KDecoration2::ApplicationMenuEnabledDecoratedClientPr
+         QObject::connect(window->qobject.get(),
+                          &window_qobject::keepAboveChanged,
+                          decoratedClient,
+-                         &KDecoration2::DecoratedClient::keepAboveChanged);
++                         &KDecoration3::DecoratedWindow::keepAboveChanged);
+         QObject::connect(window->qobject.get(),
+                          &window_qobject::keepBelowChanged,
+                          decoratedClient,
+-                         &KDecoration2::DecoratedClient::keepBelowChanged);
++                         &KDecoration3::DecoratedWindow::keepBelowChanged);
+ 
+         auto comp_qobject = m_client->space.base.mod.render->qobject.get();
+         using comp_qobject_t = std::remove_pointer_t<decltype(comp_qobject)>;
+@@ -105,29 +105,29 @@ class client_impl : public KDecoration2::ApplicationMenuEnabledDecoratedClientPr
+         QObject::connect(window->qobject.get(),
+                          &window_qobject::closeableChanged,
+                          decoratedClient,
+-                         &KDecoration2::DecoratedClient::closeableChanged);
++                         &KDecoration3::DecoratedWindow::closeableChanged);
+         QObject::connect(window->qobject.get(),
+                          &window_qobject::minimizeableChanged,
+                          decoratedClient,
+-                         &KDecoration2::DecoratedClient::minimizeableChanged);
++                         &KDecoration3::DecoratedWindow::minimizeableChanged);
+         QObject::connect(window->qobject.get(),
+                          &window_qobject::maximizeableChanged,
+                          decoratedClient,
+-                         &KDecoration2::DecoratedClient::maximizeableChanged);
++                         &KDecoration3::DecoratedWindow::maximizeableChanged);
+ 
+         QObject::connect(window->qobject.get(),
+                          &window_qobject::paletteChanged,
+                          decoratedClient,
+-                         &KDecoration2::DecoratedClient::paletteChanged);
++                         &KDecoration3::DecoratedWindow::paletteChanged);
+ 
+         QObject::connect(window->qobject.get(),
+                          &window_qobject::hasApplicationMenuChanged,
+                          decoratedClient,
+-                         &KDecoration2::DecoratedClient::hasApplicationMenuChanged);
++                         &KDecoration3::DecoratedWindow::hasApplicationMenuChanged);
+         QObject::connect(window->qobject.get(),
+                          &window_qobject::applicationMenuActiveChanged,
+                          decoratedClient,
+-                         &KDecoration2::DecoratedClient::applicationMenuActiveChanged);
++                         &KDecoration3::DecoratedWindow::applicationMenuActiveChanged);
+ 
+         m_toolTipWakeUp.setSingleShot(true);
+         QObject::connect(&m_toolTipWakeUp, &QTimer::timeout, qobject.get(), [this]() {
+@@ -146,21 +146,30 @@ class client_impl : public KDecoration2::ApplicationMenuEnabledDecoratedClientPr
+             requestHideToolTip();
+         }
+     }
+-
+     QString caption() const override
+     {
+         return win::caption(m_client);
+     }
+ 
+-    WId decorationId() const override
++    WId winId() const 
+     {
+         return m_client->frameId();
+     }
+ 
+-    int height() const override
++    qreal height() const override
+     {
+         return m_clientSize.height();
+     }
++qreal scale() const override
++{
++    return 1.0;
++}
++
++qreal nextScale() const override
++{
++	return 1.0;
++}
++
+ 
+     QIcon icon() const override
+     {
+@@ -247,7 +256,7 @@ class client_impl : public KDecoration2::ApplicationMenuEnabledDecoratedClientPr
+         return m_client->control->palette.q_palette();
+     }
+ 
+-    QColor color(KDecoration2::ColorGroup group, KDecoration2::ColorRole role) const override
++    QColor color(KDecoration3::ColorGroup group, KDecoration3::ColorRole role) const override
+     {
+         auto dp = m_client->control->palette.current;
+         if (dp) {
+@@ -262,17 +271,17 @@ class client_impl : public KDecoration2::ApplicationMenuEnabledDecoratedClientPr
+         return m_client->providesContextHelp();
+     }
+ 
+-    QSize size() const override
++    QSizeF size() const override
+     {
+         return m_clientSize;
+     }
+ 
+-    int width() const override
++    qreal width() const override
+     {
+         return m_clientSize.width();
+     }
+ 
+-    WId windowId() const override
++    WId windowId() const 
+     {
+         if constexpr (requires(decltype(m_client) win) { win->xcb_windows; }) {
+             return m_client->xcb_windows.client;
+@@ -452,9 +461,9 @@ class client_impl : public KDecoration2::ApplicationMenuEnabledDecoratedClientPr
+         return m_renderer->move_data();
+     }
+ 
+-    KDecoration2::DecoratedClient* decoratedClient()
++    KDecoration3::DecoratedWindow* decoratedClient()
+     {
+-        return KDecoration2::DecoratedClientPrivate::client();
++        return KDecoration3::DecoratedWindowPrivate::window();
+     }
+ 
+     std::unique_ptr<client_impl_qobject> qobject;
+diff --git a/como/win/deco/palette.cpp b/como/win/deco/palette.cpp
+index 132760bf6f..612bc08ca0 100644
+--- a/como/win/deco/palette.cpp
++++ b/como/win/deco/palette.cpp
+@@ -41,10 +41,10 @@ bool palette::isValid() const
+     return true;
+ }
+ 
+-QColor palette::color(KDecoration2::ColorGroup group, KDecoration2::ColorRole role) const
++QColor palette::color(KDecoration3::ColorGroup group, KDecoration3::ColorRole role) const
+ {
+-    using KDecoration2::ColorGroup;
+-    using KDecoration2::ColorRole;
++    using KDecoration3::ColorGroup;
++    using KDecoration3::ColorRole;
+ 
+     if (m_legacyColors.has_value()) {
+         switch (role) {
+diff --git a/como/win/deco/palette.h b/como/win/deco/palette.h
+index edd8efbd4b..8c1bcd38ca 100644
+--- a/como/win/deco/palette.h
++++ b/como/win/deco/palette.h
+@@ -11,7 +11,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ #include <KColorScheme>
+ #include <KConfigWatcher>
+-#include <KDecoration2/DecorationSettings>
++#include <KDecoration3/DecorationSettings>
+ #include <KSharedConfig>
+ #include <QFileSystemWatcher>
+ #include <QPalette>
+@@ -29,7 +29,7 @@ class COMO_EXPORT palette : public QObject
+ 
+     bool isValid() const;
+ 
+-    QColor color(KDecoration2::ColorGroup group, KDecoration2::ColorRole role) const;
++    QColor color(KDecoration3::ColorGroup group, KDecoration3::ColorRole role) const;
+     QPalette get_qt_palette() const;
+ 
+ Q_SIGNALS:
+diff --git a/como/win/deco/renderer.h b/como/win/deco/renderer.h
+index 25fe3dee75..8c7c114085 100644
+--- a/como/win/deco/renderer.h
++++ b/como/win/deco/renderer.h
+@@ -10,8 +10,8 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ #include "como_export.h"
+ #include <como/win/damage.h>
+ 
+-#include <KDecoration2/DecoratedClient>
+-#include <KDecoration2/Decoration>
++#include <KDecoration3/DecoratedWindow>
++#include <KDecoration3/Decoration>
+ #include <QObject>
+ #include <QPainter>
+ #include <QRegion>
+@@ -41,7 +41,7 @@ struct render_window {
+     std::function<int()> bit_depth;
+     std::function<void(QRect&, QRect&, QRect&, QRect&)> layout_rects;
+ 
+-    KDecoration2::Decoration* deco;
++    KDecoration3::Decoration* deco;
+     xcb_window_t frame_id{XCB_WINDOW_NONE};
+ };
+ 
+@@ -150,7 +150,7 @@ class renderer
+ 
+         auto markImageSizesDirty = [this] { injector->image_size_dirty = true; };
+         QObject::connect(client->decoration(),
+-                         &KDecoration2::Decoration::damaged,
++                         &KDecoration3::Decoration::damaged,
+                          injector->qobject.get(),
+                          [this](auto const& rect) {
+                              if (!m_client) {
+@@ -173,15 +173,15 @@ class renderer
+                              markImageSizesDirty();
+                          });
+         QObject::connect(client->decoration(),
+-                         &KDecoration2::Decoration::bordersChanged,
++                         &KDecoration3::Decoration::bordersChanged,
+                          injector->qobject.get(),
+                          markImageSizesDirty);
+         QObject::connect(client->decoratedClient(),
+-                         &KDecoration2::DecoratedClient::widthChanged,
++                         &KDecoration3::DecoratedWindow::widthChanged,
+                          injector->qobject.get(),
+                          markImageSizesDirty);
+         QObject::connect(client->decoratedClient(),
+-                         &KDecoration2::DecoratedClient::heightChanged,
++                         &KDecoration3::DecoratedWindow::heightChanged,
+                          injector->qobject.get(),
+                          markImageSizesDirty);
+     }
+diff --git a/como/win/deco/settings.h b/como/win/deco/settings.h
+index eda4490e2b..9086ad068a 100644
+--- a/como/win/deco/settings.h
++++ b/como/win/deco/settings.h
+@@ -10,7 +10,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ #include <como/win/space_qobject.h>
+ 
+ #include <KConfigGroup>
+-#include <KDecoration2/Private/DecorationSettingsPrivate>
++#include <KDecoration3/Private/DecorationSettingsPrivate>
+ #include <QFontDatabase>
+ #include <QObject>
+ 
+@@ -18,13 +18,13 @@ namespace como::win::deco
+ {
+ 
+ template<typename Space>
+-class settings : public QObject, public KDecoration2::DecorationSettingsPrivate
++class settings : public QObject, public KDecoration3::DecorationSettingsPrivate
+ {
+ public:
+-    settings(Space& space, KDecoration2::DecorationSettings* parent)
++    settings(Space& space, KDecoration3::DecorationSettings* parent)
+         : QObject()
+         , DecorationSettingsPrivate(parent)
+-        , m_borderSize(KDecoration2::BorderSize::Normal)
++        , m_borderSize(KDecoration3::BorderSize::Normal)
+         , space{space}
+     {
+         initButtons();
+@@ -36,7 +36,7 @@ class settings : public QObject, public KDecoration2::DecorationSettingsPrivate
+         auto c = connect(comp_qobject,
+                          &comp_qobject_t::compositingToggled,
+                          parent,
+-                         &KDecoration2::DecorationSettings::alphaChannelSupportedChanged);
++                         &KDecoration3::DecorationSettings::alphaChannelSupportedChanged);
+         connect(space.subspace_manager->qobject.get(),
+                 &decltype(space.subspace_manager->qobject)::element_type::countChanged,
+                 this,
+@@ -73,17 +73,17 @@ class settings : public QObject, public KDecoration2::DecorationSettingsPrivate
+         return m_closeDoubleClickMenu;
+     }
+ 
+-    KDecoration2::BorderSize borderSize() const override
++    KDecoration3::BorderSize borderSize() const override
+     {
+         return m_borderSize;
+     }
+ 
+-    QVector<KDecoration2::DecorationButtonType> decorationButtonsLeft() const override
++    QVector<KDecoration3::DecorationButtonType> decorationButtonsLeft() const override
+     {
+         return m_leftButtons;
+     }
+ 
+-    QVector<KDecoration2::DecorationButtonType> decorationButtonsRight() const override
++    QVector<KDecoration3::DecorationButtonType> decorationButtonsRight() const override
+     {
+         return m_rightButtons;
+     }
+@@ -94,28 +94,28 @@ class settings : public QObject, public KDecoration2::DecorationSettingsPrivate
+     }
+ 
+ private:
+-    QHash<KDecoration2::DecorationButtonType, QChar> s_buttonNames;
++    QHash<KDecoration3::DecorationButtonType, QChar> s_buttonNames;
+     void initButtons()
+     {
+         if (!s_buttonNames.isEmpty()) {
+             return;
+         }
+-        s_buttonNames[KDecoration2::DecorationButtonType::Menu] = QChar('M');
+-        s_buttonNames[KDecoration2::DecorationButtonType::ApplicationMenu] = QChar('N');
+-        s_buttonNames[KDecoration2::DecorationButtonType::OnAllDesktops] = QChar('S');
+-        s_buttonNames[KDecoration2::DecorationButtonType::ContextHelp] = QChar('H');
+-        s_buttonNames[KDecoration2::DecorationButtonType::Minimize] = QChar('I');
+-        s_buttonNames[KDecoration2::DecorationButtonType::Maximize] = QChar('A');
+-        s_buttonNames[KDecoration2::DecorationButtonType::Close] = QChar('X');
+-        s_buttonNames[KDecoration2::DecorationButtonType::KeepAbove] = QChar('F');
+-        s_buttonNames[KDecoration2::DecorationButtonType::KeepBelow] = QChar('B');
+-        s_buttonNames[KDecoration2::DecorationButtonType::Shade] = QChar('L');
+-        s_buttonNames[KDecoration2::DecorationButtonType::Spacer] = QChar('_');
++        s_buttonNames[KDecoration3::DecorationButtonType::Menu] = QChar('M');
++        s_buttonNames[KDecoration3::DecorationButtonType::ApplicationMenu] = QChar('N');
++        s_buttonNames[KDecoration3::DecorationButtonType::OnAllDesktops] = QChar('S');
++        s_buttonNames[KDecoration3::DecorationButtonType::ContextHelp] = QChar('H');
++        s_buttonNames[KDecoration3::DecorationButtonType::Minimize] = QChar('I');
++        s_buttonNames[KDecoration3::DecorationButtonType::Maximize] = QChar('A');
++        s_buttonNames[KDecoration3::DecorationButtonType::Close] = QChar('X');
++        s_buttonNames[KDecoration3::DecorationButtonType::KeepAbove] = QChar('F');
++        s_buttonNames[KDecoration3::DecorationButtonType::KeepBelow] = QChar('B');
++        s_buttonNames[KDecoration3::DecorationButtonType::Shade] = QChar('L');
++        s_buttonNames[KDecoration3::DecorationButtonType::Spacer] = QChar('_');
+     }
+ 
+-    QString buttonsToString(QVector<KDecoration2::DecorationButtonType> const& buttons) const
++    QString buttonsToString(QVector<KDecoration3::DecorationButtonType> const& buttons) const
+     {
+-        auto buttonToString = [this](KDecoration2::DecorationButtonType button) -> QChar {
++        auto buttonToString = [this](KDecoration3::DecorationButtonType button) -> QChar {
+             const auto it = s_buttonNames.constFind(button);
+             if (it != s_buttonNames.constEnd()) {
+                 return it.value();
+@@ -129,36 +129,36 @@ class settings : public QObject, public KDecoration2::DecorationSettingsPrivate
+         return ret;
+     }
+ 
+-    KDecoration2::BorderSize stringToSize(QString const& name)
++    KDecoration3::BorderSize stringToSize(QString const& name)
+     {
+-        static const QMap<QString, KDecoration2::BorderSize> s_sizes
+-            = QMap<QString, KDecoration2::BorderSize>(
+-                {{QStringLiteral("None"), KDecoration2::BorderSize::None},
+-                 {QStringLiteral("NoSides"), KDecoration2::BorderSize::NoSides},
+-                 {QStringLiteral("Tiny"), KDecoration2::BorderSize::Tiny},
+-                 {QStringLiteral("Normal"), KDecoration2::BorderSize::Normal},
+-                 {QStringLiteral("Large"), KDecoration2::BorderSize::Large},
+-                 {QStringLiteral("VeryLarge"), KDecoration2::BorderSize::VeryLarge},
+-                 {QStringLiteral("Huge"), KDecoration2::BorderSize::Huge},
+-                 {QStringLiteral("VeryHuge"), KDecoration2::BorderSize::VeryHuge},
+-                 {QStringLiteral("Oversized"), KDecoration2::BorderSize::Oversized}});
++        static const QMap<QString, KDecoration3::BorderSize> s_sizes
++            = QMap<QString, KDecoration3::BorderSize>(
++                {{QStringLiteral("None"), KDecoration3::BorderSize::None},
++                 {QStringLiteral("NoSides"), KDecoration3::BorderSize::NoSides},
++                 {QStringLiteral("Tiny"), KDecoration3::BorderSize::Tiny},
++                 {QStringLiteral("Normal"), KDecoration3::BorderSize::Normal},
++                 {QStringLiteral("Large"), KDecoration3::BorderSize::Large},
++                 {QStringLiteral("VeryLarge"), KDecoration3::BorderSize::VeryLarge},
++                 {QStringLiteral("Huge"), KDecoration3::BorderSize::Huge},
++                 {QStringLiteral("VeryHuge"), KDecoration3::BorderSize::VeryHuge},
++                 {QStringLiteral("Oversized"), KDecoration3::BorderSize::Oversized}});
+         auto it = s_sizes.constFind(name);
+         if (it == s_sizes.constEnd()) {
+             // non sense values are interpreted just like normal
+-            return KDecoration2::BorderSize::Normal;
++            return KDecoration3::BorderSize::Normal;
+         }
+         return it.value();
+     }
+ 
+     void readSettings()
+     {
+-        KConfigGroup config = space.base.config.main->group(QStringLiteral("org.kde.kdecoration2"));
++        KConfigGroup config = space.base.config.main->group(QStringLiteral("org.kde.kdecoration3"));
+         const auto& left
+             = readDecorationButtons(config,
+                                     "ButtonsOnLeft",
+-                                    QVector<KDecoration2::DecorationButtonType>(
+-                                        {KDecoration2::DecorationButtonType::Menu,
+-                                         KDecoration2::DecorationButtonType::OnAllDesktops}));
++                                    QVector<KDecoration3::DecorationButtonType>(
++                                        {KDecoration3::DecorationButtonType::Menu,
++                                         KDecoration3::DecorationButtonType::OnAllDesktops}));
+         if (left != m_leftButtons) {
+             m_leftButtons = left;
+             Q_EMIT decorationSettings() -> decorationButtonsLeftChanged(m_leftButtons);
+@@ -166,18 +166,18 @@ class settings : public QObject, public KDecoration2::DecorationSettingsPrivate
+         const auto& right
+             = readDecorationButtons(config,
+                                     "ButtonsOnRight",
+-                                    QVector<KDecoration2::DecorationButtonType>(
+-                                        {KDecoration2::DecorationButtonType::ContextHelp,
+-                                         KDecoration2::DecorationButtonType::Minimize,
+-                                         KDecoration2::DecorationButtonType::Maximize,
+-                                         KDecoration2::DecorationButtonType::Close}));
++                                    QVector<KDecoration3::DecorationButtonType>(
++                                        {KDecoration3::DecorationButtonType::ContextHelp,
++                                         KDecoration3::DecorationButtonType::Minimize,
++                                         KDecoration3::DecorationButtonType::Maximize,
++                                         KDecoration3::DecorationButtonType::Close}));
+         if (right != m_rightButtons) {
+             m_rightButtons = right;
+             Q_EMIT decorationSettings() -> decorationButtonsRightChanged(m_rightButtons);
+         }
+         space.appmenu->setViewEnabled(
+-            left.contains(KDecoration2::DecorationButtonType::ApplicationMenu)
+-            || right.contains(KDecoration2::DecorationButtonType::ApplicationMenu));
++            left.contains(KDecoration3::DecorationButtonType::ApplicationMenu)
++            || right.contains(KDecoration3::DecorationButtonType::ApplicationMenu));
+         const bool close = config.readEntry("CloseOnDoubleClickOnMenu", false);
+         if (close != m_closeDoubleClickMenu) {
+             m_closeDoubleClickMenu = close;
+@@ -205,13 +205,13 @@ class settings : public QObject, public KDecoration2::DecorationSettingsPrivate
+         Q_EMIT decorationSettings() -> reconfigured();
+     }
+ 
+-    QVector<KDecoration2::DecorationButtonType>
++    QVector<KDecoration3::DecorationButtonType>
+     readDecorationButtons(KConfigGroup const& config,
+                           char const* key,
+-                          QVector<KDecoration2::DecorationButtonType> const& defaultValue) const
++                          QVector<KDecoration3::DecorationButtonType> const& defaultValue) const
+     {
+         auto buttonsFromString = [this](auto const& buttons) {
+-            QVector<KDecoration2::DecorationButtonType> ret;
++            QVector<KDecoration3::DecorationButtonType> ret;
+             for (auto it = buttons.begin(); it != buttons.end(); ++it) {
+                 for (auto it2 = s_buttonNames.constBegin(); it2 != s_buttonNames.constEnd();
+                      ++it2) {
+@@ -225,9 +225,9 @@ class settings : public QObject, public KDecoration2::DecorationSettingsPrivate
+         return buttonsFromString(config.readEntry(key, buttonsToString(defaultValue)));
+     }
+ 
+-    QVector<KDecoration2::DecorationButtonType> m_leftButtons;
+-    QVector<KDecoration2::DecorationButtonType> m_rightButtons;
+-    KDecoration2::BorderSize m_borderSize;
++    QVector<KDecoration3::DecorationButtonType> m_leftButtons;
++    QVector<KDecoration3::DecorationButtonType> m_rightButtons;
++    KDecoration3::BorderSize m_borderSize;
+     bool m_autoBorderSize = true;
+     bool m_closeDoubleClickMenu = false;
+     QFont m_font;
+diff --git a/como/win/geo.h b/como/win/geo.h
+index 779e7f307e..459c5e0bb5 100644
+--- a/como/win/geo.h
++++ b/como/win/geo.h
+@@ -157,7 +157,7 @@ QSize frame_size(Win* win)
+  * of the window.
+  */
+ template<typename Win>
+-QRect input_geometry(Win* win)
++QRectF input_geometry(Win* win)
+ {
+     if (auto deco = decoration(win)) {
+         return win->geo.frame + deco->resizeOnlyBorders();
+diff --git a/como/win/setup.h b/como/win/setup.h
+index 7eb440e9b6..6ff5561867 100644
+--- a/como/win/setup.h
++++ b/como/win/setup.h
+@@ -11,7 +11,7 @@
+ #include "placement.h"
+ #include "screen.h"
+ 
+-#include <KDecoration2/Decoration>
++#include <KDecoration3/Decoration>
+ 
+ namespace como::win
+ {
+diff --git a/como/win/structs.h b/como/win/structs.h
+index 3e1a9db784..e00e1c16bb 100644
+--- a/como/win/structs.h
++++ b/como/win/structs.h
+@@ -10,7 +10,7 @@
+ #include "deco/palette.h"
+ #include "types.h"
+ 
+-#include <KDecoration2/Decoration>
++#include <KDecoration3/Decoration>
+ 
+ #include <QElapsedTimer>
+ #include <QPoint>
+@@ -52,7 +52,7 @@ struct deco_impl {
+     QMetaObject::Connection client_destroy;
+ 
+     deco::window<VarWin>* window{nullptr};
+-    KDecoration2::Decoration* decoration{nullptr};
++    KDecoration3::Decoration* decoration{nullptr};
+     deco::client_impl<RefWin>* client{nullptr};
+ 
+     struct {
+diff --git a/como/win/transient.h b/como/win/transient.h
+index 57758e8253..9a90f1d9c2 100644
+--- a/como/win/transient.h
++++ b/como/win/transient.h
+@@ -72,7 +72,7 @@ auto get_transient_family(Win* win)
+ template<typename Win>
+ auto lead_of_annexed_transient(Win* win) -> decltype(win->transient->lead())
+ {
+-    if (win && win->transient->annexed) {
++    if (win && win->transient && win->transient->annexed) {
+         return lead_of_annexed_transient(win->transient->lead());
+     }
+     return win;
+diff --git a/como/win/wayland/internal_window.h b/como/win/wayland/internal_window.h
+index 99889f344a..cd072a613d 100644
+--- a/como/win/wayland/internal_window.h
++++ b/como/win/wayland/internal_window.h
+@@ -691,11 +691,11 @@ class internal_window
+         if (decoration) {
+             QMetaObject::invokeMethod(decoration, "update", Qt::QueuedConnection);
+             QObject::connect(decoration,
+-                             &KDecoration2::Decoration::shadowChanged,
++                             &KDecoration3::Decoration::shadowChanged,
+                              this->qobject.get(),
+                              [this] { win::update_shadow(this); });
+             QObject::connect(decoration,
+-                             &KDecoration2::Decoration::bordersChanged,
++                             &KDecoration3::Decoration::bordersChanged,
+                              this->qobject.get(),
+                              [this]() {
+                                  win::geometry_updates_blocker blocker(this);
+diff --git a/como/win/wayland/window.h b/como/win/wayland/window.h
+index 63140cab07..fed527d111 100644
+--- a/como/win/wayland/window.h
++++ b/como/win/wayland/window.h
+@@ -717,11 +717,11 @@ class window
+             if (decoration) {
+                 QMetaObject::invokeMethod(decoration, "update", Qt::QueuedConnection);
+                 QObject::connect(decoration,
+-                                 &KDecoration2::Decoration::shadowChanged,
++                                 &KDecoration3::Decoration::shadowChanged,
+                                  this->qobject.get(),
+                                  [this] { update_shadow(this); });
+                 QObject::connect(decoration,
+-                                 &KDecoration2::Decoration::bordersChanged,
++                                 &KDecoration3::Decoration::bordersChanged,
+                                  this->qobject.get(),
+                                  [this]() {
+                                      geometry_updates_blocker geo_blocker(this);
+@@ -1320,10 +1320,10 @@ class window
+                                 | rules::type::position | rules::type::size);
+ 
+         // Update decoration borders.
+-        if (auto deco = decoration(this); deco && deco->client()
++        if (auto deco = decoration(this); deco && deco->window()
+             && !(space.options->qobject->borderlessMaximizedWindows()
+                  && mode == maximize_mode::full)) {
+-            auto const deco_client = win::decoration(this)->client();
++            auto const deco_client = win::decoration(this)->window();
+             if ((mode & maximize_mode::vertical) != (old_mode & maximize_mode::vertical)) {
+                 Q_EMIT deco_client->maximizedVerticallyChanged(
+                     flags(mode & maximize_mode::vertical));
+diff --git a/como/win/x11/deco.h b/como/win/x11/deco.h
+index 820f87fea6..4b95c7c6e2 100644
+--- a/como/win/x11/deco.h
++++ b/como/win/x11/deco.h
+@@ -14,7 +14,7 @@
+ #include <como/win/scene.h>
+ #include <como/win/x11/net/geo.h>
+ 
+-#include <KDecoration2/DecoratedClient>
++#include <KDecoration3/DecoratedWindow>
+ 
+ namespace como::win::x11
+ {
+@@ -78,16 +78,16 @@ void create_decoration(Win* win)
+         QMetaObject::invokeMethod(decoration, "update", Qt::QueuedConnection);
+ 
+         QObject::connect(decoration,
+-                         &KDecoration2::Decoration::shadowChanged,
++                         &KDecoration3::Decoration::shadowChanged,
+                          win->qobject.get(),
+                          [win] { win::update_shadow(win); });
+         QObject::connect(decoration,
+-                         &KDecoration2::Decoration::resizeOnlyBordersChanged,
++                         &KDecoration3::Decoration::resizeOnlyBordersChanged,
+                          win->qobject.get(),
+                          [win] { update_input_window(win, win->geo.frame); });
+ 
+         QObject::connect(
+-            decoration, &KDecoration2::Decoration::bordersChanged, win->qobject.get(), [win]() {
++            decoration, &KDecoration3::Decoration::bordersChanged, win->qobject.get(), [win]() {
+                 set_frame_extents(win);
+ 
+                 update_server_geometry(win, win->geo.frame);
+@@ -97,11 +97,11 @@ void create_decoration(Win* win)
+             });
+ 
+         QObject::connect(win->control->deco.client->decoratedClient(),
+-                         &KDecoration2::DecoratedClient::widthChanged,
++                         &KDecoration3::DecoratedWindow::widthChanged,
+                          win->qobject.get(),
+                          [win] { update_input_window(win, win->geo.frame); });
+         QObject::connect(win->control->deco.client->decoratedClient(),
+-                         &KDecoration2::DecoratedClient::heightChanged,
++                         &KDecoration3::DecoratedWindow::heightChanged,
+                          win->qobject.get(),
+                          [win] { update_input_window(win, win->geo.frame); });
+     }
+diff --git a/como/win/x11/geo.h b/como/win/x11/geo.h
+index 432cb58450..c19f18278e 100644
+--- a/como/win/x11/geo.h
++++ b/como/win/x11/geo.h
+@@ -288,10 +288,10 @@ void do_set_maximize_mode(Win& win, win::maximize_mode mode)
+                           | rules::type::position | rules::type::size);
+ 
+     // Update decoration borders.
+-    if (auto deco = decoration(&win); deco && deco->client()
++    if (auto deco = decoration(&win); deco && deco->window()
+         && !(win.space.options->qobject->borderlessMaximizedWindows()
+              && mode == maximize_mode::full)) {
+-        auto const deco_client = decoration(&win)->client();
++        auto const deco_client = decoration(&win)->window();
+ 
+         if ((mode & maximize_mode::vertical) != (old_mode & maximize_mode::vertical)) {
+             Q_EMIT deco_client->maximizedVerticallyChanged(flags(mode & maximize_mode::vertical));
+diff --git a/como/win/x11/input.h b/como/win/x11/input.h
+index 6dc3fc0fcd..417a921982 100644
+--- a/como/win/x11/input.h
++++ b/como/win/x11/input.h
+@@ -51,7 +51,7 @@ void update_input_window(Win* win, QRect const& frame_geo)
+                              -top,
+                              win::decoration(win)->size().width() + left + right,
+                              win::decoration(win)->size().height() + top + bottom);
+-            region = region.subtracted(win::decoration(win)->rect());
++            region = region.subtracted(win::decoration(win)->rect().toRect());
+         }
+     }
+ 
+diff --git a/plugins/effects/blur/CMakeLists.txt b/plugins/effects/blur/CMakeLists.txt
+index bd627aeeaa..4025c65ecc 100644
+--- a/plugins/effects/blur/CMakeLists.txt
++++ b/plugins/effects/blur/CMakeLists.txt
+@@ -18,7 +18,7 @@ kconfig_add_kcfg_files(blur_SOURCES
+ 
+ kwin_add_builtin_effect(blur ${blur_SOURCES})
+ target_link_libraries(blur PRIVATE
+-  KDecoration2::KDecoration
++  KDecoration3::KDecoration
+   KF6::ConfigGui
+   render
+ )
+diff --git a/plugins/effects/blur/blur.cpp b/plugins/effects/blur/blur.cpp
+index 3fdb765d9d..a0d25e9327 100644
+--- a/plugins/effects/blur/blur.cpp
++++ b/plugins/effects/blur/blur.cpp
+@@ -28,7 +28,7 @@
+ #include <KConfigGroup>
+ #include <KSharedConfig>
+ 
+-#include <KDecoration2/Decoration>
++#include <KDecoration3/Decoration>
+ 
+ namespace como
+ {
+@@ -293,7 +293,7 @@ QRegion BlurEffect::deco_blur_region(EffectWindow const* win) const
+         return QRegion();
+     }
+ 
+-    auto const decorationRegion = QRegion(win->decoration()->rect()) - win->contentsRect();
++    auto const decorationRegion = QRegion(win->decoration()->rect().toRect()) - win->contentsRect();
+ 
+     // We return only blurred regions that belong to decoration region.
+     return decorationRegion.intersected(win->decoration()->blurRegion());
+diff --git a/plugins/kdecorations/aurorae/src/CMakeLists.txt b/plugins/kdecorations/aurorae/src/CMakeLists.txt
+index 020cb481ad..5929252fee 100644
+--- a/plugins/kdecorations/aurorae/src/CMakeLists.txt
++++ b/plugins/kdecorations/aurorae/src/CMakeLists.txt
+@@ -18,7 +18,7 @@ set(kwin5_aurorae_PART_SRCS
+ 
+ add_library(kwin5_aurorae MODULE ${kwin5_aurorae_PART_SRCS})
+ set_target_properties(kwin5_aurorae PROPERTIES
+-    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/org.kde.kdecoration2/"
++    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/org.kde.kdecoration3/"
+     LIBRARY_OUTPUT_NAME "org.kde.kwin.aurorae"
+ )
+ 
+@@ -27,7 +27,7 @@ target_compile_definitions(kwin5_aurorae PRIVATE
+ )
+ 
+ target_link_libraries(kwin5_aurorae
+-  KDecoration2::KDecoration
++  KDecoration3::KDecoration
+   KF6::ConfigGui
+   KF6::I18n
+   KF6::Package
+@@ -35,7 +35,7 @@ target_link_libraries(kwin5_aurorae
+   render
+ )
+ 
+-install(TARGETS kwin5_aurorae DESTINATION ${KDE_INSTALL_PLUGINDIR}/org.kde.kdecoration2)
++install(TARGETS kwin5_aurorae DESTINATION ${KDE_INSTALL_PLUGINDIR}/org.kde.kdecoration3)
+ 
+ set(decoration_plugin_SRCS
+     colorhelper.cpp
+@@ -49,7 +49,7 @@ target_compile_definitions(decorationplugin PRIVATE
+     -DTRANSLATION_DOMAIN=\"kwin\"
+ )
+ target_link_libraries(decorationplugin
+-  KDecoration2::KDecoration
++  KDecoration3::KDecoration
+   KF6::KCMUtils
+   Qt::Quick
+ )
+diff --git a/plugins/kdecorations/aurorae/src/aurorae.cpp b/plugins/kdecorations/aurorae/src/aurorae.cpp
+index 5e0a2bf30a..9c2adfab6a 100644
+--- a/plugins/kdecorations/aurorae/src/aurorae.cpp
++++ b/plugins/kdecorations/aurorae/src/aurorae.cpp
+@@ -21,10 +21,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include <como/render/effect/interface/effects_handler.h>
+ #include <como/render/effect/interface/offscreen_quick_view.h>
+ 
+-// KDecoration2
+-#include <KDecoration2/DecoratedClient>
+-#include <KDecoration2/DecorationSettings>
+-#include <KDecoration2/DecorationShadow>
++// KDecoration3
++#include <KDecoration3/DecoratedWindow>
++#include <KDecoration3/DecorationSettings>
++#include <KDecoration3/DecorationShadow>
+ // KDE
+ #include <KConfigGroup>
+ #include <KConfigLoader>
+@@ -231,13 +231,13 @@ void Helper::init()
+     m_engine->importPlugin(pluginPath, "org.kde.kwin.decoration", nullptr);
+     qmlRegisterType<como::Borders>("org.kde.kwin.decoration", 0, 1, "Borders");
+ 
+-    qmlRegisterAnonymousType<KDecoration2::Decoration>("org.kde.kwin.decoration", 0);
+-    qmlRegisterAnonymousType<KDecoration2::DecoratedClient>("org.kde.kwin.decoration", 0);
+-    qRegisterMetaType<KDecoration2::BorderSize>();
++    qmlRegisterAnonymousType<KDecoration3::Decoration>("org.kde.kwin.decoration", 0);
++    qmlRegisterAnonymousType<KDecoration3::DecoratedWindow>("org.kde.kwin.decoration", 0);
++    qRegisterMetaType<KDecoration3::BorderSize>();
+ }
+ 
+ Decoration::Decoration(QObject* parent, const QVariantList& args)
+-    : KDecoration2::Decoration(parent, args)
++    : KDecoration3::Decoration(parent, args)
+     , m_item(nullptr)
+     , m_borders(nullptr)
+     , m_maximizedBorders(nullptr)
+@@ -246,6 +246,7 @@ Decoration::Decoration(QObject* parent, const QVariantList& args)
+     , m_themeName(s_defaultTheme)
+     , m_view(nullptr)
+ {
++	new KDecoration3::DecorationState();
+     m_themeName = findTheme(args);
+     Helper::instance().ref();
+ }
+@@ -263,7 +264,7 @@ bool Decoration::init()
+                                                          settings().get());
+     auto s = settings();
+     connect(
+-        s.get(), &KDecoration2::DecorationSettings::reconfigured, this, &Decoration::configChanged);
++        s.get(), &KDecoration3::DecorationSettings::reconfigured, this, &Decoration::configChanged);
+ 
+     m_qmlContext = new QQmlContext(Helper::instance().rootContext(), this);
+     m_qmlContext->setContextProperty(QStringLiteral("decoration"), this);
+@@ -282,15 +283,15 @@ bool Decoration::init()
+         theme->loadTheme(themeName, config);
+         theme->setBorderSize(s->borderSize());
+         connect(s.get(),
+-                &KDecoration2::DecorationSettings::borderSizeChanged,
++                &KDecoration3::DecorationSettings::borderSizeChanged,
+                 theme,
+                 &AuroraeTheme::setBorderSize);
+         auto readButtonSize = [this, theme] {
+             const KSharedConfigPtr conf = KSharedConfig::openConfig(QStringLiteral("auroraerc"));
+             const KConfigGroup themeGroup(conf, m_themeName.mid(16));
+-            theme->setButtonSize(static_cast<KDecoration2::BorderSize>(
++            theme->setButtonSize(static_cast<KDecoration3::BorderSize>(
+                 (themeGroup.readEntry<int>("ButtonSize",
+-                                           int(KDecoration2::BorderSize::Normal) - s_indexMapper)
++                                           int(KDecoration3::BorderSize::Normal) - s_indexMapper)
+                  + s_indexMapper)));
+         };
+         connect(this, &Decoration::configChanged, theme, readButtonSize);
+@@ -365,37 +366,36 @@ bool Decoration::init()
+                 &Decoration::updateExtendedBorders);
+     }
+ 
+-    auto decorationClient = client();
+-    connect(decorationClient,
+-            &KDecoration2::DecoratedClient::maximizedChanged,
++    connect(window(),
++            &KDecoration3::DecoratedWindow::maximizedChanged,
+             this,
+             &Decoration::updateBorders);
+-    connect(decorationClient,
+-            &KDecoration2::DecoratedClient::shadedChanged,
++    connect(window(),
++            &KDecoration3::DecoratedWindow::shadedChanged,
+             this,
+             &Decoration::updateBorders);
+     updateBorders();
+     if (m_view) {
+         auto resizeWindow = [this] {
+-            QRect rect(QPoint(0, 0), size());
+-            if (m_padding && !client()->isMaximized()) {
++            QRectF rect(QPoint(0.0, 0.0), size());
++            if (m_padding && !window()->isMaximized()) {
+                 rect = rect.adjusted(
+                     -m_padding->left(), -m_padding->top(), m_padding->right(), m_padding->bottom());
+             }
+-            m_view->setGeometry(rect);
++            m_view->setGeometry(rect.toRect());
+             updateBlur();
+         };
+         connect(this, &Decoration::bordersChanged, this, resizeWindow);
+-        connect(client(), &KDecoration2::DecoratedClient::widthChanged, this, resizeWindow);
+-        connect(client(), &KDecoration2::DecoratedClient::heightChanged, this, resizeWindow);
+-        connect(client(), &KDecoration2::DecoratedClient::maximizedChanged, this, resizeWindow);
+-        connect(client(), &KDecoration2::DecoratedClient::shadedChanged, this, resizeWindow);
++        connect(window(), &KDecoration3::DecoratedWindow::widthChanged, this, resizeWindow);
++        connect(window(), &KDecoration3::DecoratedWindow::heightChanged, this, resizeWindow);
++        connect(window(), &KDecoration3::DecoratedWindow::maximizedChanged, this, resizeWindow);
++        connect(window(), &KDecoration3::DecoratedWindow::shadedChanged, this, resizeWindow);
+         resizeWindow();
+         updateBuffer();
+     } else {
+         // create a dummy shadow for the configuration interface
+         if (m_padding) {
+-            auto s = std::make_shared<KDecoration2::DecorationShadow>();
++            auto s = std::make_shared<KDecoration3::DecorationShadow>();
+             s->setPadding(*m_padding);
+             s->setInnerShadowRect(QRect(m_padding->left(), m_padding->top(), 1, 1));
+             setShadow(s);
+@@ -421,7 +421,7 @@ void Decoration::setupBorders(QQuickItem* item)
+ void Decoration::updateBorders()
+ {
+     como::Borders* b = m_borders;
+-    if (client()->isMaximized() && m_maximizedBorders) {
++    if (window()->isMaximized() && m_maximizedBorders) {
+         b = m_maximizedBorders;
+     }
+     if (!b) {
+@@ -432,7 +432,7 @@ void Decoration::updateBorders()
+     updateExtendedBorders();
+ }
+ 
+-void Decoration::paint(QPainter* painter, const QRect& repaintRegion)
++void Decoration::paint(QPainter* painter, const QRectF& repaintRegion)
+ {
+     Q_UNUSED(repaintRegion)
+     if (!m_view) {
+@@ -458,7 +458,7 @@ void Decoration::updateShadow()
+     if (m_padding
+         && (m_padding->left() > 0 || m_padding->top() > 0 || m_padding->right() > 0
+             || m_padding->bottom() > 0)
+-        && !client()->isMaximized()) {
++        && !window()->isMaximized()) {
+         if (!oldShadow) {
+             updateShadow = true;
+         } else {
+@@ -505,7 +505,7 @@ void Decoration::updateShadow()
+             updateShadow = (oldShadow->shadow() != img);
+         }
+         if (updateShadow) {
+-            auto s = std::make_shared<KDecoration2::DecorationShadow>();
++            auto s = std::make_shared<KDecoration3::DecorationShadow>();
+             s->setShadow(img);
+             s->setPadding(*m_padding);
+             s->setInnerShadowRect(
+@@ -528,7 +528,7 @@ void Decoration::hoverEnterEvent(QHoverEvent* event)
+         event->setAccepted(false);
+         m_view->forwardMouseEvent(event);
+     }
+-    KDecoration2::Decoration::hoverEnterEvent(event);
++    KDecoration3::Decoration::hoverEnterEvent(event);
+ }
+ 
+ void Decoration::hoverLeaveEvent(QHoverEvent* event)
+@@ -536,7 +536,7 @@ void Decoration::hoverLeaveEvent(QHoverEvent* event)
+     if (m_view) {
+         m_view->forwardMouseEvent(event);
+     }
+-    KDecoration2::Decoration::hoverLeaveEvent(event);
++    KDecoration3::Decoration::hoverLeaveEvent(event);
+ }
+ 
+ void Decoration::hoverMoveEvent(QHoverEvent* event)
+@@ -554,7 +554,7 @@ void Decoration::hoverMoveEvent(QHoverEvent* event)
+         m_view->forwardMouseEvent(&cloneEvent);
+         event->setAccepted(cloneEvent.isAccepted());
+     }
+-    KDecoration2::Decoration::hoverMoveEvent(event);
++    KDecoration3::Decoration::hoverMoveEvent(event);
+ }
+ 
+ void Decoration::mouseMoveEvent(QMouseEvent* event)
+@@ -562,7 +562,7 @@ void Decoration::mouseMoveEvent(QMouseEvent* event)
+     if (m_view) {
+         m_view->forwardMouseEvent(event);
+     }
+-    KDecoration2::Decoration::mouseMoveEvent(event);
++    KDecoration3::Decoration::mouseMoveEvent(event);
+ }
+ 
+ void Decoration::mousePressEvent(QMouseEvent* event)
+@@ -570,7 +570,7 @@ void Decoration::mousePressEvent(QMouseEvent* event)
+     if (m_view) {
+         m_view->forwardMouseEvent(event);
+     }
+-    KDecoration2::Decoration::mousePressEvent(event);
++    KDecoration3::Decoration::mousePressEvent(event);
+ }
+ 
+ void Decoration::mouseReleaseEvent(QMouseEvent* event)
+@@ -578,7 +578,7 @@ void Decoration::mouseReleaseEvent(QMouseEvent* event)
+     if (m_view) {
+         m_view->forwardMouseEvent(event);
+     }
+-    KDecoration2::Decoration::mouseReleaseEvent(event);
++    KDecoration3::Decoration::mouseReleaseEvent(event);
+ }
+ 
+ void Decoration::installTitleItem(QQuickItem* item)
+@@ -607,17 +607,17 @@ void Decoration::updateExtendedBorders()
+     int extRight = m_extendedBorders->right();
+     int extBottom = m_extendedBorders->bottom();
+ 
+-    if (settings()->borderSize() == KDecoration2::BorderSize::None) {
+-        if (!client()->isMaximizedHorizontally()) {
++    if (settings()->borderSize() == KDecoration3::BorderSize::None) {
++        if (!window()->isMaximizedHorizontally()) {
+             extLeft = std::max(m_extendedBorders->left(), extSize);
+             extRight = std::max(m_extendedBorders->right(), extSize);
+         }
+-        if (!client()->isMaximizedVertically()) {
++        if (!window()->isMaximizedVertically()) {
+             extBottom = std::max(m_extendedBorders->bottom(), extSize);
+         }
+ 
+-    } else if (settings()->borderSize() == KDecoration2::BorderSize::NoSides
+-               && !client()->isMaximizedHorizontally()) {
++    } else if (settings()->borderSize() == KDecoration3::BorderSize::NoSides
++               && !window()->isMaximizedHorizontally()) {
+         extLeft = std::max(m_extendedBorders->left(), extSize);
+         extRight = std::max(m_extendedBorders->right(), extSize);
+     }
+@@ -633,7 +633,7 @@ void Decoration::updateBlur()
+ 
+     QRegion mask;
+ 
+-    if (client() && client()->isMaximized()) {
++    if (window() && window()->isMaximized()) {
+         mask = QRect(0, 0, m_item->width(), m_item->height());
+     } else {
+         const QVariant maskProperty = m_item->property("decorationMask");
+@@ -663,7 +663,7 @@ void Decoration::updateBuffer()
+     if (m_padding
+         && (m_padding->left() > 0 || m_padding->top() > 0 || m_padding->right() > 0
+             || m_padding->bottom() > 0)
+-        && !client()->isMaximized()) {
++        && !window()->isMaximized()) {
+         m_contentRect = m_contentRect.adjusted(
+             m_padding->left(), m_padding->top(), -m_padding->right(), -m_padding->bottom());
+     }
+@@ -678,7 +678,7 @@ QQuickItem* Decoration::item() const
+ }
+ 
+ ThemeProvider::ThemeProvider(QObject* parent, const KPluginMetaData& data)
+-    : KDecoration2::DecorationThemeProvider(parent)
++    : KDecoration3::DecorationThemeProvider(parent)
+     , m_data(data)
+ {
+     init();
+@@ -695,7 +695,7 @@ void ThemeProvider::findAllQmlThemes()
+     const auto offers = KPackage::PackageLoader::self()->findPackages(
+         QStringLiteral("KWin/Decoration"), s_qmlPackageFolder);
+     for (const auto& offer : offers) {
+-        KDecoration2::DecorationThemeMetaData data;
++        KDecoration3::DecorationThemeMetaData data;
+         data.setPluginId(m_data.pluginId());
+         data.setThemeName(offer.pluginId());
+         data.setVisibleName(offer.name());
+@@ -738,7 +738,7 @@ void ThemeProvider::findAllSvgThemes()
+             name = packageName;
+         }
+ 
+-        KDecoration2::DecorationThemeMetaData data;
++        KDecoration3::DecorationThemeMetaData data;
+         data.setPluginId(m_data.pluginId());
+         data.setThemeName(QLatin1String("__aurorae__svg__") + packageName);
+         data.setVisibleName(name);
+diff --git a/plugins/kdecorations/aurorae/src/aurorae.h b/plugins/kdecorations/aurorae/src/aurorae.h
+index b3dbc92fee..d2bc39a316 100644
+--- a/plugins/kdecorations/aurorae/src/aurorae.h
++++ b/plugins/kdecorations/aurorae/src/aurorae.h
+@@ -15,9 +15,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #ifndef AURORAE_H
+ #define AURORAE_H
+ 
+-#include <KDecoration2/DecoratedClient>
+-#include <KDecoration2/Decoration>
+-#include <KDecoration2/DecorationThemeProvider>
++#include <KDecoration3/DecoratedWindow>
++#include <KDecoration3/Decoration>
++#include <KDecoration3/DecorationThemeProvider>
+ #include <KPluginMetaData>
+ #include <QElapsedTimer>
+ #include <QQuickItem>
+@@ -38,16 +38,16 @@ class OffscreenQuickView;
+ namespace Aurorae
+ {
+ 
+-class Decoration : public KDecoration2::Decoration
++class Decoration : public KDecoration3::Decoration
+ {
+     Q_OBJECT
+-    Q_PROPERTY(KDecoration2::DecoratedClient* client READ client CONSTANT)
++    Q_PROPERTY(KDecoration3::DecoratedWindow* client READ window CONSTANT)
+     Q_PROPERTY(QQuickItem* item READ item)
+ public:
+     explicit Decoration(QObject* parent = nullptr, const QVariantList& args = QVariantList());
+     ~Decoration() override;
+ 
+-    void paint(QPainter* painter, const QRect& repaintRegion) override;
++    void paint(QPainter* painter, const QRectF& repaintRegion) override;
+ 
+     Q_INVOKABLE QVariant readConfig(const QString& key, const QVariant& defaultValue = QVariant());
+ 
+@@ -92,13 +92,13 @@ public Q_SLOTS:
+     std::unique_ptr<como::OffscreenQuickView> m_view;
+ };
+ 
+-class ThemeProvider : public KDecoration2::DecorationThemeProvider
++class ThemeProvider : public KDecoration3::DecorationThemeProvider
+ {
+     Q_OBJECT
+ public:
+     explicit ThemeProvider(QObject* parent, const KPluginMetaData& data);
+ 
+-    QList<KDecoration2::DecorationThemeMetaData> themes() const override
++    QList<KDecoration3::DecorationThemeMetaData> themes() const override
+     {
+         return m_themes;
+     }
+@@ -108,7 +108,7 @@ class ThemeProvider : public KDecoration2::DecorationThemeProvider
+     void findAllQmlThemes();
+     void findAllSvgThemes();
+     bool hasConfiguration(const QString& theme);
+-    QList<KDecoration2::DecorationThemeMetaData> m_themes;
++    QList<KDecoration3::DecorationThemeMetaData> m_themes;
+     const KPluginMetaData m_data;
+ };
+ 
+diff --git a/plugins/kdecorations/aurorae/src/aurorae.json b/plugins/kdecorations/aurorae/src/aurorae.json
+index 8840dbe59f..3857e1a82f 100644
+--- a/plugins/kdecorations/aurorae/src/aurorae.json
++++ b/plugins/kdecorations/aurorae/src/aurorae.json
+@@ -1,5 +1,5 @@
+ {
+-    "org.kde.kdecoration2": {
++    "org.kde.kdecoration3": {
+         "KNewStuff": "aurorae.knsrc",
+         "defaultTheme": "kwin4_decoration_qml_plastik",
+         "themeListKeyword": "themes",
+diff --git a/plugins/kdecorations/aurorae/src/auroraeshared.h b/plugins/kdecorations/aurorae/src/auroraeshared.h
+index c80eef01e2..f2b7e8175b 100644
+--- a/plugins/kdecorations/aurorae/src/auroraeshared.h
++++ b/plugins/kdecorations/aurorae/src/auroraeshared.h
+@@ -13,7 +13,7 @@ namespace Aurorae
+ {
+ 
+ /*
+- * KDecoration2::BorderSize doesn't map to the indices used for the Aurorae SVG Button Sizes.
++ * KDecoration3::BorderSize doesn't map to the indices used for the Aurorae SVG Button Sizes.
+  * BorderSize defines None and NoSideBorder as index 0 and 1. These do not make sense for Button
+  * Size, thus we need to perform a mapping between the enum value and the config value.
+  */
+diff --git a/plugins/kdecorations/aurorae/src/config/CMakeLists.txt b/plugins/kdecorations/aurorae/src/config/CMakeLists.txt
+index 2d3808f9d0..ed25f1cca6 100644
+--- a/plugins/kdecorations/aurorae/src/config/CMakeLists.txt
++++ b/plugins/kdecorations/aurorae/src/config/CMakeLists.txt
+@@ -7,7 +7,7 @@ target_link_libraries(kcm_auroraedecoration
+     KF6::ConfigGui
+     KF6::KCMUtils
+     KF6::I18n
+-    KDecoration2::KDecoration
++    KDecoration3::KDecoration
+     Qt::DBus
+     Qt::UiTools
+     Qt::Widgets
+diff --git a/plugins/kdecorations/aurorae/src/config/auroraeconfig.cpp b/plugins/kdecorations/aurorae/src/config/auroraeconfig.cpp
+index d945ce12b3..dcd0ecc347 100644
+--- a/plugins/kdecorations/aurorae/src/config/auroraeconfig.cpp
++++ b/plugins/kdecorations/aurorae/src/config/auroraeconfig.cpp
+@@ -6,7 +6,7 @@
+ 
+ #include "auroraeconfig.h"
+ #include "auroraeshared.h"
+-#include <KDecoration2/DecorationButton>
++#include <KDecoration3/DecorationButton>
+ #include <KLocalizedString>
+ #include <KLocalizedTranslator>
+ #include <KPluginFactory>
+@@ -29,7 +29,7 @@ ConfigurationModule::ConfigurationModule(QObject* parent,
+                                          const QVariantList& args)
+     : KCModule(parent, data)
+     , m_theme(findTheme(args))
+-    , m_buttonSize(int(KDecoration2::BorderSize::Normal) - s_indexMapper)
++    , m_buttonSize(int(KDecoration3::BorderSize::Normal) - s_indexMapper)
+ {
+     init();
+ }
+@@ -71,7 +71,7 @@ void ConfigurationModule::initSvg()
+     skel->setCurrentGroup(m_theme.mid(16));
+     skel->addItemInt(QStringLiteral("ButtonSize"),
+                      m_buttonSize,
+-                     int(KDecoration2::BorderSize::Normal) - s_indexMapper,
++                     int(KDecoration3::BorderSize::Normal) - s_indexMapper,
+                      QStringLiteral("ButtonSize"));
+     addConfig(skel, form);
+ }
+diff --git a/plugins/kdecorations/aurorae/src/decorationoptions.cpp b/plugins/kdecorations/aurorae/src/decorationoptions.cpp
+index b15d6be7fb..f3800a3cf4 100644
+--- a/plugins/kdecorations/aurorae/src/decorationoptions.cpp
++++ b/plugins/kdecorations/aurorae/src/decorationoptions.cpp
+@@ -13,8 +13,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ #include "decorationoptions.h"
+ #include <KConfigGroup>
+-#include <KDecoration2/DecoratedClient>
+-#include <KDecoration2/DecorationSettings>
++#include <KDecoration3/DecoratedWindow>
++#include <KDecoration3/DecorationSettings>
+ #include <KSharedConfig>
+ #include <QGuiApplication>
+ #include <QStyleHints>
+@@ -109,28 +109,28 @@ QFont DecorationOptions::titleFont() const
+     return m_decoration ? m_decoration->settings()->font() : QFont();
+ }
+ 
+-static int decorationButton(KDecoration2::DecorationButtonType type)
++static int decorationButton(KDecoration3::DecorationButtonType type)
+ {
+     switch (type) {
+-    case KDecoration2::DecorationButtonType::Menu:
++    case KDecoration3::DecorationButtonType::Menu:
+         return DecorationOptions::DecorationButtonMenu;
+-    case KDecoration2::DecorationButtonType::ApplicationMenu:
++    case KDecoration3::DecorationButtonType::ApplicationMenu:
+         return DecorationOptions::DecorationButtonApplicationMenu;
+-    case KDecoration2::DecorationButtonType::OnAllDesktops:
++    case KDecoration3::DecorationButtonType::OnAllDesktops:
+         return DecorationOptions::DecorationButtonOnAllDesktops;
+-    case KDecoration2::DecorationButtonType::Minimize:
++    case KDecoration3::DecorationButtonType::Minimize:
+         return DecorationOptions::DecorationButtonMinimize;
+-    case KDecoration2::DecorationButtonType::Maximize:
++    case KDecoration3::DecorationButtonType::Maximize:
+         return DecorationOptions::DecorationButtonMaximizeRestore;
+-    case KDecoration2::DecorationButtonType::Close:
++    case KDecoration3::DecorationButtonType::Close:
+         return DecorationOptions::DecorationButtonClose;
+-    case KDecoration2::DecorationButtonType::ContextHelp:
++    case KDecoration3::DecorationButtonType::ContextHelp:
+         return DecorationOptions::DecorationButtonQuickHelp;
+-    case KDecoration2::DecorationButtonType::Shade:
++    case KDecoration3::DecorationButtonType::Shade:
+         return DecorationOptions::DecorationButtonShade;
+-    case KDecoration2::DecorationButtonType::KeepBelow:
++    case KDecoration3::DecorationButtonType::KeepBelow:
+         return DecorationOptions::DecorationButtonKeepBelow;
+-    case KDecoration2::DecorationButtonType::KeepAbove:
++    case KDecoration3::DecorationButtonType::KeepAbove:
+         return DecorationOptions::DecorationButtonKeepAbove;
+     default:
+         return DecorationOptions::DecorationButtonNone;
+@@ -161,44 +161,44 @@ QList<int> DecorationOptions::titleButtonsRight() const
+     return ret;
+ }
+ 
+-KDecoration2::Decoration* DecorationOptions::decoration() const
++KDecoration3::Decoration* DecorationOptions::decoration() const
+ {
+     return m_decoration;
+ }
+ 
+-void DecorationOptions::setDecoration(KDecoration2::Decoration* decoration)
++void DecorationOptions::setDecoration(KDecoration3::Decoration* decoration)
+ {
+     if (m_decoration == decoration) {
+         return;
+     }
+     if (m_decoration) {
+         // disconnect from existing decoration
+-        disconnect(m_decoration->client(),
+-                   &KDecoration2::DecoratedClient::activeChanged,
++        disconnect(m_decoration->window(),
++                   &KDecoration3::DecoratedWindow::activeChanged,
+                    this,
+                    &DecorationOptions::slotActiveChanged);
+         auto s = m_decoration->settings();
+         disconnect(s.get(),
+-                   &KDecoration2::DecorationSettings::fontChanged,
++                   &KDecoration3::DecorationSettings::fontChanged,
+                    this,
+                    &DecorationOptions::fontChanged);
+         disconnect(s.get(),
+-                   &KDecoration2::DecorationSettings::decorationButtonsLeftChanged,
++                   &KDecoration3::DecorationSettings::decorationButtonsLeftChanged,
+                    this,
+                    &DecorationOptions::titleButtonsChanged);
+         disconnect(s.get(),
+-                   &KDecoration2::DecorationSettings::decorationButtonsRightChanged,
++                   &KDecoration3::DecorationSettings::decorationButtonsRightChanged,
+                    this,
+                    &DecorationOptions::titleButtonsChanged);
+         disconnect(m_paletteConnection);
+     }
+     m_decoration = decoration;
+-    connect(m_decoration->client(),
+-            &KDecoration2::DecoratedClient::activeChanged,
++    connect(m_decoration->window(),
++            &KDecoration3::DecoratedWindow::activeChanged,
+             this,
+             &DecorationOptions::slotActiveChanged);
+-    m_paletteConnection = connect(m_decoration->client(),
+-                                  &KDecoration2::DecoratedClient::paletteChanged,
++    m_paletteConnection = connect(m_decoration->window(),
++                                  &KDecoration3::DecoratedWindow::paletteChanged,
+                                   this,
+                                   [this](const QPalette& pal) {
+                                       m_colors.update(pal);
+@@ -206,15 +206,15 @@ void DecorationOptions::setDecoration(KDecoration2::Decoration* decoration)
+                                   });
+     auto s = m_decoration->settings();
+     connect(s.get(),
+-            &KDecoration2::DecorationSettings::fontChanged,
++            &KDecoration3::DecorationSettings::fontChanged,
+             this,
+             &DecorationOptions::fontChanged);
+     connect(s.get(),
+-            &KDecoration2::DecorationSettings::decorationButtonsLeftChanged,
++            &KDecoration3::DecorationSettings::decorationButtonsLeftChanged,
+             this,
+             &DecorationOptions::titleButtonsChanged);
+     connect(s.get(),
+-            &KDecoration2::DecorationSettings::decorationButtonsRightChanged,
++            &KDecoration3::DecorationSettings::decorationButtonsRightChanged,
+             this,
+             &DecorationOptions::titleButtonsChanged);
+     Q_EMIT decorationChanged();
+@@ -225,10 +225,10 @@ void DecorationOptions::slotActiveChanged()
+     if (!m_decoration) {
+         return;
+     }
+-    if (m_active == m_decoration->client()->isActive()) {
++    if (m_active == m_decoration->window()->isActive()) {
+         return;
+     }
+-    m_active = m_decoration->client()->isActive();
++    m_active = m_decoration->window()->isActive();
+     Q_EMIT colorsChanged();
+     Q_EMIT fontChanged();
+ }
+@@ -303,9 +303,9 @@ void Borders::setTitle(int value)
+     setTop(value);
+ }
+ 
+-Borders::operator QMargins() const
++Borders::operator QMarginsF() const
+ {
+-    return QMargins(m_left, m_top, m_right, m_bottom);
++    return QMarginsF(m_left, m_top, m_right, m_bottom);
+ }
+ 
+ } // namespace
+diff --git a/plugins/kdecorations/aurorae/src/decorationoptions.h b/plugins/kdecorations/aurorae/src/decorationoptions.h
+index 31cd2ff58b..342e581e08 100644
+--- a/plugins/kdecorations/aurorae/src/decorationoptions.h
++++ b/plugins/kdecorations/aurorae/src/decorationoptions.h
+@@ -14,7 +14,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #ifndef KWIN_DECORATION_OPTIONS_H
+ #define KWIN_DECORATION_OPTIONS_H
+ 
+-#include <KDecoration2/Decoration>
++#include <KDecoration3/Decoration>
+ 
+ #include <QColor>
+ #include <QFont>
+@@ -149,7 +149,7 @@ class DecorationOptions : public QObject
+      * Best pass the decoration object available as a context property to this property.
+      */
+     Q_PROPERTY(
+-        KDecoration2::Decoration* deco READ decoration WRITE setDecoration NOTIFY decorationChanged)
++        KDecoration3::Decoration* deco READ decoration WRITE setDecoration NOTIFY decorationChanged)
+     /**
+      * The color for the titlebar depending on the decoration's active state.
+      */
+@@ -241,8 +241,8 @@ class DecorationOptions : public QObject
+     QFont titleFont() const;
+     QList<int> titleButtonsLeft() const;
+     QList<int> titleButtonsRight() const;
+-    KDecoration2::Decoration* decoration() const;
+-    void setDecoration(KDecoration2::Decoration* decoration);
++    KDecoration3::Decoration* decoration() const;
++    void setDecoration(KDecoration3::Decoration* decoration);
+ 
+     int mousePressAndHoldInterval() const;
+ 
+@@ -257,7 +257,7 @@ private Q_SLOTS:
+ 
+ private:
+     bool m_active;
+-    KDecoration2::Decoration* m_decoration;
++    KDecoration3::Decoration* m_decoration;
+     ColorSettings m_colors;
+     QMetaObject::Connection m_paletteConnection;
+ };
+@@ -282,7 +282,7 @@ class Borders : public QObject
+     void setTop(int top);
+     void setBottom(int bottom);
+ 
+-    operator QMargins() const;
++    operator QMarginsF() const;
+ 
+ public Q_SLOTS:
+     /**
+diff --git a/plugins/kdecorations/aurorae/src/lib/auroraetheme.cpp b/plugins/kdecorations/aurorae/src/lib/auroraetheme.cpp
+index 83c7c9349f..fc97d38319 100644
+--- a/plugins/kdecorations/aurorae/src/lib/auroraetheme.cpp
++++ b/plugins/kdecorations/aurorae/src/lib/auroraetheme.cpp
+@@ -34,16 +34,16 @@ class AuroraeThemePrivate
+     Aurorae::ThemeConfig themeConfig;
+     QHash<AuroraeButtonType, QString> pathes;
+     bool activeCompositing;
+-    KDecoration2::BorderSize borderSize;
+-    KDecoration2::BorderSize buttonSize;
++    KDecoration3::BorderSize borderSize;
++    KDecoration3::BorderSize buttonSize;
+     QString dragMimeType;
+     QString decorationPath;
+ };
+ 
+ AuroraeThemePrivate::AuroraeThemePrivate()
+     : activeCompositing(true)
+-    , borderSize(KDecoration2::BorderSize::Normal)
+-    , buttonSize(KDecoration2::BorderSize::Normal)
++    , borderSize(KDecoration3::BorderSize::Normal)
++    , buttonSize(KDecoration3::BorderSize::Normal)
+ {
+ }
+ 
+@@ -205,32 +205,32 @@ void AuroraeTheme::borders(int& left, int& top, int& right, int& bottom, bool ma
+         int minMargin;
+         int maxMargin;
+         switch (d->borderSize) {
+-        case KDecoration2::BorderSize::NoSides:
+-        case KDecoration2::BorderSize::Tiny:
++        case KDecoration3::BorderSize::NoSides:
++        case KDecoration3::BorderSize::Tiny:
+             minMargin = 1;
+             maxMargin = 4;
+             break;
+-        case KDecoration2::BorderSize::Normal:
++        case KDecoration3::BorderSize::Normal:
+             minMargin = 4;
+             maxMargin = 6;
+             break;
+-        case KDecoration2::BorderSize::Large:
++        case KDecoration3::BorderSize::Large:
+             minMargin = 6;
+             maxMargin = 8;
+             break;
+-        case KDecoration2::BorderSize::VeryLarge:
++        case KDecoration3::BorderSize::VeryLarge:
+             minMargin = 8;
+             maxMargin = 12;
+             break;
+-        case KDecoration2::BorderSize::Huge:
++        case KDecoration3::BorderSize::Huge:
+             minMargin = 12;
+             maxMargin = 20;
+             break;
+-        case KDecoration2::BorderSize::VeryHuge:
++        case KDecoration3::BorderSize::VeryHuge:
+             minMargin = 23;
+             maxMargin = 30;
+             break;
+-        case KDecoration2::BorderSize::Oversized:
++        case KDecoration3::BorderSize::Oversized:
+             minMargin = 36;
+             maxMargin = 48;
+             break;
+@@ -243,11 +243,11 @@ void AuroraeTheme::borders(int& left, int& top, int& right, int& bottom, bool ma
+         right = qBound(minMargin, d->themeConfig.borderRight(), maxMargin);
+         bottom = qBound(minMargin, d->themeConfig.borderBottom(), maxMargin);
+ 
+-        if (d->borderSize == KDecoration2::BorderSize::None) {
++        if (d->borderSize == KDecoration3::BorderSize::None) {
+             left = 0;
+             right = 0;
+             bottom = 0;
+-        } else if (d->borderSize == KDecoration2::BorderSize::NoSides) {
++        } else if (d->borderSize == KDecoration3::BorderSize::NoSides) {
+             left = 0;
+             right = 0;
+         }
+@@ -449,7 +449,7 @@ void AuroraeTheme::setCompositingActive(bool active)
+     d->activeCompositing = active;
+ }
+ 
+-void AuroraeTheme::setBorderSize(KDecoration2::BorderSize size)
++void AuroraeTheme::setBorderSize(KDecoration3::BorderSize size)
+ {
+     if (d->borderSize == size) {
+         return;
+@@ -458,7 +458,7 @@ void AuroraeTheme::setBorderSize(KDecoration2::BorderSize size)
+     Q_EMIT borderSizesChanged();
+ }
+ 
+-void AuroraeTheme::setButtonSize(KDecoration2::BorderSize size)
++void AuroraeTheme::setButtonSize(KDecoration3::BorderSize size)
+ {
+     if (d->buttonSize == size) {
+         return;
+@@ -480,19 +480,19 @@ const QString& AuroraeTheme::tabDragMimeType() const
+ qreal AuroraeTheme::buttonSizeFactor() const
+ {
+     switch (d->buttonSize) {
+-    case KDecoration2::BorderSize::Tiny:
++    case KDecoration3::BorderSize::Tiny:
+         return 0.8;
+-    case KDecoration2::BorderSize::Large:
++    case KDecoration3::BorderSize::Large:
+         return 1.2;
+-    case KDecoration2::BorderSize::VeryLarge:
++    case KDecoration3::BorderSize::VeryLarge:
+         return 1.4;
+-    case KDecoration2::BorderSize::Huge:
++    case KDecoration3::BorderSize::Huge:
+         return 1.6;
+-    case KDecoration2::BorderSize::VeryHuge:
++    case KDecoration3::BorderSize::VeryHuge:
+         return 1.8;
+-    case KDecoration2::BorderSize::Oversized:
++    case KDecoration3::BorderSize::Oversized:
+         return 2.0;
+-    case KDecoration2::BorderSize::Normal: // fall through
++    case KDecoration3::BorderSize::Normal: // fall through
+     default:
+         return 1.0;
+     }
+diff --git a/plugins/kdecorations/aurorae/src/lib/auroraetheme.h b/plugins/kdecorations/aurorae/src/lib/auroraetheme.h
+index 8e69bf672a..d5b382a997 100644
+--- a/plugins/kdecorations/aurorae/src/lib/auroraetheme.h
++++ b/plugins/kdecorations/aurorae/src/lib/auroraetheme.h
+@@ -15,7 +15,7 @@
+ 
+ #include <QLoggingCategory>
+ 
+-#include <KDecoration2/DecorationButton>
++#include <KDecoration3/DecorationButton>
+ 
+ Q_DECLARE_LOGGING_CATEGORY(AURORAE)
+ 
+@@ -168,13 +168,13 @@ class /*LIBAURORAE_EXPORT*/ AuroraeTheme : public QObject
+      * @returns true if the theme contains a FrameSvg for specified button.
+      */
+     bool hasButton(AuroraeButtonType button) const;
+-    void setBorderSize(KDecoration2::BorderSize size);
++    void setBorderSize(KDecoration3::BorderSize size);
+     /**
+      * Sets the size of the buttons.
+      * The available sizes are identical to border sizes, therefore BorderSize is used.
+      * @param size The buttons size
+      */
+-    void setButtonSize(KDecoration2::BorderSize size);
++    void setButtonSize(KDecoration3::BorderSize size);
+     qreal buttonSizeFactor() const;
+ 
+     DecorationPosition decorationPosition() const;
+diff --git a/plugins/qpa/integration.cpp b/plugins/qpa/integration.cpp
+index 41e64f21af..c529159f13 100644
+--- a/plugins/qpa/integration.cpp
++++ b/plugins/qpa/integration.cpp
+@@ -43,7 +43,7 @@ Integration::Integration()
+     , QPlatformIntegration()
+     , m_fontDb(new QGenericUnixFontDatabase())
+     , m_nativeInterface(new QPlatformNativeInterface())
+-    , m_services(new QGenericUnixServices())
++    , m_services(new QDesktopUnixServices())
+ {
+ }
+ 
+diff --git a/plugins/qpa/integration.h b/plugins/qpa/integration.h
+index 76508b2118..b3830ed2f7 100644
+--- a/plugins/qpa/integration.h
++++ b/plugins/qpa/integration.h
+@@ -11,7 +11,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ #include <QHash>
+ #include <QObject>
+-#include <QtGui/private/qgenericunixservices_p.h>
++#include <QtGui/private/qdesktopunixservices_p.h>
+ #include <qpa/qplatformintegration.h>
+ 
+ namespace como
+@@ -62,7 +62,7 @@ class Integration : public QObject, public QPlatformIntegration
+     QScopedPointer<QPlatformNativeInterface> m_nativeInterface;
+     placeholder_screen* m_dummyScreen{nullptr};
+     QHash<como::base::output*, Screen*> m_screens;
+-    QScopedPointer<QGenericUnixServices> m_services;
++    QScopedPointer<QDesktopUnixServices> m_services;
+ };
+ 
+ }
+diff --git a/tests/integration/decoration_input.cpp b/tests/integration/decoration_input.cpp
+index d41b870d2a..459db54381 100644
+--- a/tests/integration/decoration_input.cpp
++++ b/tests/integration/decoration_input.cpp
+@@ -6,8 +6,8 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ #include "lib/setup.h"
+ 
+-#include <KDecoration2/Decoration>
+-#include <KDecoration2/DecorationSettings>
++#include <KDecoration3/Decoration>
++#include <KDecoration3/DecorationSettings>
+ #include <Wrapland/Client/compositor.h>
+ #include <Wrapland/Client/connection_thread.h>
+ #include <Wrapland/Client/keyboard.h>
+@@ -310,7 +310,7 @@ TEST_CASE("decoration input", "[input],[win]")
+         // TODO: Test input position with different border sizes.
+         // TODO: We should test with the fake decoration to have a fixed test environment.
+         auto const hasBorders = setup.base->mod.space->deco->settings()->borderSize()
+-            != KDecoration2::BorderSize::None;
++            != KDecoration3::BorderSize::None;
+         auto deviation = [hasBorders] { return hasBorders ? -1 : 0; };
+ 
+         MOTION(QPoint(c->geo.frame.x(), 0));
+diff --git a/tests/integration/fakes/org.kde.kdecoration2/CMakeLists.txt b/tests/integration/fakes/org.kde.kdecoration2/CMakeLists.txt
+index f179d57466..719ac190a3 100644
+--- a/tests/integration/fakes/org.kde.kdecoration2/CMakeLists.txt
++++ b/tests/integration/fakes/org.kde.kdecoration2/CMakeLists.txt
+@@ -8,13 +8,13 @@
+ add_library(org.kde.test.fakedecowithshadows MODULE fakedecoration_with_shadows.cpp)
+ set_target_properties(org.kde.test.fakedecowithshadows PROPERTIES
+     PREFIX ""
+-    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/fakes/org.kde.kdecoration2")
++    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/fakes/org.kde.kdecoration3")
+ target_link_libraries(org.kde.test.fakedecowithshadows
+     PUBLIC
+         Qt::Core
+         Qt::Gui
+     PRIVATE
+-        KDecoration2::KDecoration
++        KDecoration3::KDecoration
+         KF6::CoreAddons
+ )
+ 
+diff --git a/tests/integration/fakes/org.kde.kdecoration2/fakedecoration_with_shadows.cpp b/tests/integration/fakes/org.kde.kdecoration2/fakedecoration_with_shadows.cpp
+index e1295db3c3..66b8d1ad1d 100644
+--- a/tests/integration/fakes/org.kde.kdecoration2/fakedecoration_with_shadows.cpp
++++ b/tests/integration/fakes/org.kde.kdecoration2/fakedecoration_with_shadows.cpp
+@@ -6,10 +6,10 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ #include <QPainter>
+ 
+-#include <KDecoration2/Decoration>
++#include <KDecoration3/Decoration>
+ #include <KPluginFactory>
+ 
+-class FakeDecoWithShadows : public KDecoration2::Decoration
++class FakeDecoWithShadows : public KDecoration3::Decoration
+ {
+     Q_OBJECT
+ 
+@@ -23,7 +23,7 @@ class FakeDecoWithShadows : public KDecoration2::Decoration
+     {
+     }
+ 
+-    void paint(QPainter* painter, const QRect& repaintRegion) override
++    void paint(QPainter* painter, const QRectF& repaintRegion) override
+     {
+         Q_UNUSED(painter)
+         Q_UNUSED(repaintRegion)
+@@ -45,7 +45,7 @@ public Q_SLOTS:
+                                shadowSize + offsetLeft,
+                                shadowSize + offsetTop);
+ 
+-        auto decoShadow = std::make_shared<KDecoration2::DecorationShadow>();
++        auto decoShadow = std::make_shared<KDecoration3::DecorationShadow>();
+         decoShadow->setPadding(padding);
+         decoShadow->setInnerShadowRect(QRect(shadowRect.center(), QSize(1, 1)));
+         decoShadow->setShadow(shadowTexture);
+diff --git a/tests/integration/fakes/org.kde.kdecoration2/fakedecoration_with_shadows.json b/tests/integration/fakes/org.kde.kdecoration2/fakedecoration_with_shadows.json
+index 1eec4b8453..16041b58ef 100644
+--- a/tests/integration/fakes/org.kde.kdecoration2/fakedecoration_with_shadows.json
++++ b/tests/integration/fakes/org.kde.kdecoration2/fakedecoration_with_shadows.json
+@@ -1,5 +1,5 @@
+ {
+-    "org.kde.kdecoration2": {
++    "org.kde.kdecoration3": {
+         "blur": false
+     }
+ }
+diff --git a/tests/integration/maximize.cpp b/tests/integration/maximize.cpp
+index a7cb656a30..f92037f8f1 100644
+--- a/tests/integration/maximize.cpp
++++ b/tests/integration/maximize.cpp
+@@ -6,9 +6,9 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ #include "lib/setup.h"
+ 
+-#include <KDecoration2/DecoratedClient>
+-#include <KDecoration2/Decoration>
+-#include <KDecoration2/DecorationSettings>
++#include <KDecoration3/DecoratedWindow>
++#include <KDecoration3/Decoration>
++#include <KDecoration3/DecorationSettings>
+ #include <Wrapland/Client/compositor.h>
+ #include <Wrapland/Client/plasmashell.h>
+ #include <Wrapland/Client/shm_pool.h>
+@@ -65,13 +65,13 @@ TEST_CASE("maximize", "[win]")
+         // When there are no borders, there is no change to them when maximizing.
+         // TODO: we should test both cases with fixed fake decoration for autotests.
+         auto const hasBorders = setup.base->mod.space->deco->settings()->borderSize()
+-            != KDecoration2::BorderSize::None;
++            != KDecoration3::BorderSize::None;
+ 
+         // now maximize
+-        QSignalSpy bordersChangedSpy(decoration, &KDecoration2::Decoration::bordersChanged);
++        QSignalSpy bordersChangedSpy(decoration, &KDecoration3::Decoration::bordersChanged);
+         QVERIFY(bordersChangedSpy.isValid());
+         QSignalSpy maximizedChangedSpy(decoration->client(),
+-                                       &KDecoration2::DecoratedClient::maximizedChanged);
++                                       &KDecoration3::DecoratedWindow::maximizedChanged);
+         QVERIFY(maximizedChangedSpy.isValid());
+         QSignalSpy geometryShapeChangedSpy(client->qobject.get(),
+                                            &win::window_qobject::frame_geometry_changed);
+diff --git a/tests/integration/no_crash_aurorae_destroy_deco.cpp b/tests/integration/no_crash_aurorae_destroy_deco.cpp
+index 0fe8425ea0..cbd9f99d9a 100644
+--- a/tests/integration/no_crash_aurorae_destroy_deco.cpp
++++ b/tests/integration/no_crash_aurorae_destroy_deco.cpp
+@@ -6,7 +6,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ #include "lib/setup.h"
+ 
+-#include <KDecoration2/Decoration>
++#include <KDecoration3/Decoration>
+ #include <QQuickItem>
+ #include <linux/input.h>
+ 
+@@ -23,7 +23,7 @@ TEST_CASE("no crash aurorae destroy deco", "[win],[xwl]")
+     test::setup setup("debug-console", base::operation_mode::xwayland);
+ 
+     auto config = app()->base->config.main;
+-    config->group(QStringLiteral("org.kde.kdecoration2"))
++    config->group(QStringLiteral("org.kde.kdecoration3"))
+         .writeEntry("library", "org.kde.kwin.aurorae");
+     config->sync();
+ 
+diff --git a/tests/integration/no_crash_cancel_animation.cpp b/tests/integration/no_crash_cancel_animation.cpp
+index 1c7d764a59..18fd689aa3 100644
+--- a/tests/integration/no_crash_cancel_animation.cpp
++++ b/tests/integration/no_crash_cancel_animation.cpp
+@@ -6,7 +6,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ #include "lib/setup.h"
+ 
+-#include <KDecoration2/Decoration>
++#include <KDecoration3/Decoration>
+ #include <Wrapland/Client/compositor.h>
+ #include <Wrapland/Client/connection_thread.h>
+ #include <Wrapland/Client/shm_pool.h>
+diff --git a/tests/integration/no_crash_empty_deco.cpp b/tests/integration/no_crash_empty_deco.cpp
+index 4dcade6bdb..8e107e7547 100644
+--- a/tests/integration/no_crash_empty_deco.cpp
++++ b/tests/integration/no_crash_empty_deco.cpp
+@@ -6,7 +6,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ #include "lib/setup.h"
+ 
+-#include <KDecoration2/Decoration>
++#include <KDecoration3/Decoration>
+ #include <linux/input.h>
+ 
+ namespace como::detail::test
+diff --git a/tests/integration/no_crash_glxgears.cpp b/tests/integration/no_crash_glxgears.cpp
+index be617999b9..6134c6579d 100644
+--- a/tests/integration/no_crash_glxgears.cpp
++++ b/tests/integration/no_crash_glxgears.cpp
+@@ -6,7 +6,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ #include "lib/setup.h"
+ 
+-#include <KDecoration2/Decoration>
++#include <KDecoration3/Decoration>
+ 
+ namespace como::detail::test
+ {
+diff --git a/tests/integration/no_crash_no_border.cpp b/tests/integration/no_crash_no_border.cpp
+index d9f32f9714..f544cf7c74 100644
+--- a/tests/integration/no_crash_no_border.cpp
++++ b/tests/integration/no_crash_no_border.cpp
+@@ -6,7 +6,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ #include "lib/setup.h"
+ 
+-#include <KDecoration2/Decoration>
++#include <KDecoration3/Decoration>
+ #include <Wrapland/Client/surface.h>
+ #include <Wrapland/Client/xdgdecoration.h>
+ #include <linux/input.h>
+@@ -24,7 +24,7 @@ TEST_CASE("no crash no border", "[win]")
+     test::setup setup("no-crash-no-border");
+ 
+     auto config = setup.base->config.main;
+-    config->group(QStringLiteral("org.kde.kdecoration2")).writeEntry("NoPlugin", true);
++    config->group(QStringLiteral("org.kde.kdecoration3")).writeEntry("NoPlugin", true);
+     config->sync();
+ 
+     setup.start();
+diff --git a/tests/integration/opengl_shadow.cpp b/tests/integration/opengl_shadow.cpp
+index 382104c5e9..3c26f0e2e3 100644
+--- a/tests/integration/opengl_shadow.cpp
++++ b/tests/integration/opengl_shadow.cpp
+@@ -6,8 +6,8 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ #include "lib/setup.h"
+ 
+-#include <KDecoration2/Decoration>
+-#include <KDecoration2/DecorationShadow>
++#include <KDecoration3/Decoration>
++#include <KDecoration3/DecorationShadow>
+ #include <QByteArray>
+ #include <QDir>
+ #include <QVector>
+@@ -104,7 +104,7 @@ TEST_CASE("opengl shadow", "[render]")
+         QDir(QCoreApplication::applicationDirPath()).absoluteFilePath("fakes"));
+ 
+     // Change decoration theme.
+-    auto group = setup.base->config.main->group(QStringLiteral("org.kde.kdecoration2"));
++    auto group = setup.base->config.main->group(QStringLiteral("org.kde.kdecoration3"));
+     group.writeEntry("library", "org.kde.test.fakedecowithshadows");
+     group.sync();
+     win::space_reconfigure(*setup.base->mod.space);
+diff --git a/tests/integration/qpainter_shadow.cpp b/tests/integration/qpainter_shadow.cpp
+index 4adb58c3ad..6a93999f86 100644
+--- a/tests/integration/qpainter_shadow.cpp
++++ b/tests/integration/qpainter_shadow.cpp
+@@ -6,8 +6,8 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ #include "lib/setup.h"
+ 
+-#include <KDecoration2/Decoration>
+-#include <KDecoration2/DecorationShadow>
++#include <KDecoration3/Decoration>
++#include <KDecoration3/DecorationShadow>
+ #include <QByteArray>
+ #include <QDir>
+ #include <QImage>
+diff --git a/tests/integration/quick_tiling.cpp b/tests/integration/quick_tiling.cpp
+index 264f2ecac3..01f3358986 100644
+--- a/tests/integration/quick_tiling.cpp
++++ b/tests/integration/quick_tiling.cpp
+@@ -6,9 +6,9 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ #include "lib/setup.h"
+ 
+-#include <KDecoration2/DecoratedClient>
+-#include <KDecoration2/Decoration>
+-#include <KDecoration2/DecorationSettings>
++#include <KDecoration3/DecoratedWindow>
++#include <KDecoration3/Decoration>
++#include <KDecoration3/DecorationSettings>
+ #include <QDBusConnection>
+ #include <QDBusMessage>
+ #include <QDBusPendingCall>
+@@ -502,7 +502,7 @@ TEST_CASE("quick tiling", "[win]")
+         // When there are no borders, there is no change to them when quick-tiling.
+         // TODO: we should test both cases with fixed fake decoration for autotests.
+         auto const hasBorders = setup.base->mod.space->deco->settings()->borderSize()
+-            != KDecoration2::BorderSize::None;
++            != KDecoration3::BorderSize::None;
+ 
+         QCOMPARE(quickTileChangedSpy.count(), 1);
+         REQUIRE(c->control->quicktiling == test_data.expected_mode);
+diff --git a/tests/integration/struts.cpp b/tests/integration/struts.cpp
+index 70ef1e0cfe..b23f627b19 100644
+--- a/tests/integration/struts.cpp
++++ b/tests/integration/struts.cpp
+@@ -6,7 +6,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ #include "lib/setup.h"
+ 
+-#include <KDecoration2/Decoration>
++#include <KDecoration3/Decoration>
+ #include <Wrapland/Client/compositor.h>
+ #include <Wrapland/Client/plasmashell.h>
+ #include <Wrapland/Client/surface.h>
+diff --git a/tests/integration/xdg-shell_window.cpp b/tests/integration/xdg-shell_window.cpp
+index a09e61c396..9aaeb7efab 100644
+--- a/tests/integration/xdg-shell_window.cpp
++++ b/tests/integration/xdg-shell_window.cpp
+@@ -7,9 +7,9 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ #include "lib/setup.h"
+ 
+-#include <KDecoration2/DecoratedClient>
+-#include <KDecoration2/Decoration>
+-#include <KDecoration2/DecorationSettings>
++#include <KDecoration3/DecoratedWindow>
++#include <KDecoration3/Decoration>
++#include <KDecoration3/DecorationSettings>
+ #include <QDBusConnection>
+ #include <Wrapland/Client/appmenu.h>
+ #include <Wrapland/Client/compositor.h>

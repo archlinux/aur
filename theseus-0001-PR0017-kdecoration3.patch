@@ -1,0 +1,1300 @@
+From 01030427325c5fd04f9bd3d92f8148dd062dc5da Mon Sep 17 00:00:00 2001
+From: Jesper Schmitz Mouridsen <jesper@schmitz.computer>
+Date: Wed, 18 Jun 2025 23:15:01 +0200
+Subject: [PATCH] KDecoration2 -> KDecoration3
+
+---
+ CHANGELOG.md                                  |  2 +-
+ CMakeLists.txt                                |  4 +-
+ kcms/decoration/CMakeLists.txt                |  4 +-
+ .../declarative-plugin/CMakeLists.txt         |  4 +-
+ .../declarative-plugin/buttonsmodel.cpp       |  4 +-
+ .../declarative-plugin/buttonsmodel.h         |  4 +-
+ .../declarative-plugin/previewbridge.cpp      | 16 ++--
+ .../declarative-plugin/previewbridge.h        | 20 ++---
+ .../declarative-plugin/previewbutton.cpp      | 15 ++--
+ .../declarative-plugin/previewbutton.h        | 24 +++---
+ .../declarative-plugin/previewclient.cpp      | 54 +++++++-------
+ .../declarative-plugin/previewclient.h        | 30 +++++---
+ .../declarative-plugin/previewitem.cpp        | 45 +++++------
+ .../declarative-plugin/previewitem.h          | 26 +++----
+ .../declarative-plugin/previewsettings.cpp    |  4 +-
+ .../declarative-plugin/previewsettings.h      | 12 +--
+ kcms/decoration/declarative-plugin/types.h    |  8 +-
+ kcms/decoration/decorationmodel.cpp           | 26 +++----
+ kcms/decoration/decorationmodel.h             |  6 +-
+ kcms/decoration/kcm.cpp                       | 20 ++---
+ kcms/decoration/kcm.h                         | 12 +--
+ .../decoration/kwin-applywindowdecoration.cpp | 14 ++--
+ kcms/decoration/utils.cpp                     | 74 +++++++++----------
+ kcms/decoration/utils.h                       | 10 +--
+ 24 files changed, 224 insertions(+), 214 deletions(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 185bfddf61..73dfbf7ea3 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -2696,7 +2696,7 @@ All notable changes to Theseus' Ship will be documented in this file.
+ * **debug:** split up console along windowing systems ([e72a542](https://gitlab.com/kwinft/kwinft/commit/e72a542f3a2e5d26bf13781fa0f8a788ddfb7e90))
+ * **deco:** deprecate loading with the "button" keyword ([4a93627](https://gitlab.com/kwinft/kwinft/commit/4a93627aa3d58dd6f904b5d99edb1fe9f1f678a2))
+ * **deco:** improve decorationpalette.cpp code ([25b0fb2](https://gitlab.com/kwinft/kwinft/commit/25b0fb2c2b2aed29c784dcb096eaed9b41f7da8e))
+-* **deco:** port to new KDecoration2::DecorationThemeProvider class ([2d9277a](https://gitlab.com/kwinft/kwinft/commit/2d9277aa47f7c5a783cf65f7fbc13ed9e87e9abe))
++* **deco:** port to new KDecoration3::DecorationThemeProvider class ([2d9277a](https://gitlab.com/kwinft/kwinft/commit/2d9277aa47f7c5a783cf65f7fbc13ed9e87e9abe))
+ * **deco:** remove manual lnf default handling ([cd93d9e](https://gitlab.com/kwinft/kwinft/commit/cd93d9ed2e4034016162c6dbb1f4c07b4660aa3a))
+ * define base output type in backend ([2534948](https://gitlab.com/kwinft/kwinft/commit/253494822f3c5ed3c5ffdfd7cc184f03f7d36d33))
+ * define DPMS mode outside of output class ([92ceb15](https://gitlab.com/kwinft/kwinft/commit/92ceb151d49951c7f1f770542fe07d6c9d37afc6))
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2e0f34bf39..ee2e2ddfed 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -57,7 +57,7 @@ set_package_properties(KF6Kirigami PROPERTIES
+     TYPE RUNTIME
+ )
+ 
+-find_package(Plasma ${CMAKE_PROJECT_VERSION_MAJOR}.${CMAKE_PROJECT_VERSION_MINOR}
++find_package(Plasma ${CMAKE_PROJECT_VERSION_MAJOR}
+   CONFIG
+ )
+ set_package_properties(Plasma PROPERTIES
+@@ -66,7 +66,7 @@ set_package_properties(Plasma PROPERTIES
+     TYPE RUNTIME
+ )
+ 
+-find_package(KDecoration2 ${CMAKE_PROJECT_VERSION_MAJOR}.${CMAKE_PROJECT_VERSION_MINOR}
++find_package(KDecoration3 ${CMAKE_PROJECT_VERSION_MAJOR}
+   CONFIG REQUIRED
+ )
+ 
+diff --git a/kcms/decoration/CMakeLists.txt b/kcms/decoration/CMakeLists.txt
+index 90004db7f9..32323170b3 100644
+--- a/kcms/decoration/CMakeLists.txt
++++ b/kcms/decoration/CMakeLists.txt
+@@ -27,7 +27,7 @@ kconfig_add_kcfg_files(kcmkwindecoration_SRCS kwindecorationsettings.kcfgc GENER
+ kcmutils_add_qml_kcm(kcm_kwindecoration SOURCES ${kcmkwindecoration_SRCS})
+ 
+ target_link_libraries(kcm_kwindecoration
+-  KDecoration2::KDecoration
++  KDecoration3::KDecoration
+   KF6::I18n
+   KF6::KCMUtils
+   Qt::DBus
+@@ -45,7 +45,7 @@ kconfig_add_kcfg_files(kwin-applywindowdecoration_SRCS kwindecorationsettings.kc
+ add_executable(kwin-applywindowdecoration ${kwin-applywindowdecoration_SRCS})
+ 
+ target_link_libraries(kwin-applywindowdecoration
+-  KDecoration2::KDecoration
++  KDecoration3::KDecoration
+   KF6::I18n
+   KF6::KCMUtils
+   Qt::DBus
+diff --git a/kcms/decoration/declarative-plugin/CMakeLists.txt b/kcms/decoration/declarative-plugin/CMakeLists.txt
+index 77506c7df3..91b911dd9d 100644
+--- a/kcms/decoration/declarative-plugin/CMakeLists.txt
++++ b/kcms/decoration/declarative-plugin/CMakeLists.txt
+@@ -15,8 +15,8 @@ target_sources(kdecorationprivatedeclarative PRIVATE
+ 
+ target_link_libraries(kdecorationprivatedeclarative PRIVATE
+   como::win
+-  KDecoration2::KDecoration
+-  KDecoration2::KDecoration2Private
++  KDecoration3::KDecoration
++  KDecoration3::KDecoration3Private
+   KF6::CoreAddons
+   KF6::I18n
+   KF6::KCMUtils
+diff --git a/kcms/decoration/declarative-plugin/buttonsmodel.cpp b/kcms/decoration/declarative-plugin/buttonsmodel.cpp
+index cdda0628bc..fbf09cd003 100644
+--- a/kcms/decoration/declarative-plugin/buttonsmodel.cpp
++++ b/kcms/decoration/declarative-plugin/buttonsmodel.cpp
+@@ -9,7 +9,7 @@
+ 
+ #include <QFontDatabase>
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+ 
+ namespace Preview
+@@ -139,7 +139,7 @@ void ButtonsModel::add(DecorationButtonType type)
+ void ButtonsModel::add(int index, int type)
+ {
+     beginInsertRows(QModelIndex(), index, index);
+-    m_buttons.insert(index, KDecoration2::DecorationButtonType(type));
++    m_buttons.insert(index, KDecoration3::DecorationButtonType(type));
+     endInsertRows();
+ }
+ 
+diff --git a/kcms/decoration/declarative-plugin/buttonsmodel.h b/kcms/decoration/declarative-plugin/buttonsmodel.h
+index 7bfbd9afe5..da099adb8d 100644
+--- a/kcms/decoration/declarative-plugin/buttonsmodel.h
++++ b/kcms/decoration/declarative-plugin/buttonsmodel.h
+@@ -6,12 +6,12 @@
+ #ifndef KDECOARTIONS_PREVIEW_BUTTONS_MODEL_H
+ #define KDECOARTIONS_PREVIEW_BUTTONS_MODEL_H
+ 
+-#include <KDecoration2/DecorationButton>
++#include <KDecoration3/DecorationButton>
+ #include <QAbstractListModel>
+ 
+ #include <QQmlEngine>
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+ 
+ namespace Preview
+diff --git a/kcms/decoration/declarative-plugin/previewbridge.cpp b/kcms/decoration/declarative-plugin/previewbridge.cpp
+index ef97c45565..62156ab47b 100644
+--- a/kcms/decoration/declarative-plugin/previewbridge.cpp
++++ b/kcms/decoration/declarative-plugin/previewbridge.cpp
+@@ -8,8 +8,8 @@
+ #include "previewitem.h"
+ #include "previewsettings.h"
+ 
+-#include <KDecoration2/DecoratedClient>
+-#include <KDecoration2/Decoration>
++#include <KDecoration3/DecoratedWindow>
++#include <KDecoration3/Decoration>
+ 
+ #include <KCModule>
+ #include <KCMultiDialog>
+@@ -26,7 +26,7 @@
+ #include <QVBoxLayout>
+ #include <QWindow>
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+ namespace Preview
+ {
+@@ -45,7 +45,7 @@ PreviewBridge::PreviewBridge(QObject* parent)
+ 
+ PreviewBridge::~PreviewBridge() = default;
+ 
+-std::unique_ptr<DecoratedClientPrivate> PreviewBridge::createClient(DecoratedClient* client,
++std::unique_ptr<DecoratedWindowPrivate> PreviewBridge::createClient(DecoratedWindow* client,
+                                                                     Decoration* decoration)
+ {
+     auto ptr = std::unique_ptr<PreviewClient>(new PreviewClient(client, decoration));
+@@ -156,17 +156,17 @@ Decoration* PreviewBridge::createDecoration(QObject* parent)
+     if (!m_theme.isNull()) {
+         args.insert(QStringLiteral("theme"), m_theme);
+     }
+-    return m_factory->create<KDecoration2::Decoration>(parent, QVariantList({args}));
++    return m_factory->create<KDecoration3::Decoration>(parent, QVariantList({args}));
+ }
+ 
+-DecorationButton* PreviewBridge::createButton(KDecoration2::Decoration* decoration,
+-                                              KDecoration2::DecorationButtonType type,
++DecorationButton* PreviewBridge::createButton(KDecoration3::Decoration* decoration,
++                                              KDecoration3::DecorationButtonType type,
+                                               QObject* parent)
+ {
+     if (!m_valid) {
+         return nullptr;
+     }
+-    return m_factory->create<KDecoration2::DecorationButton>(
++    return m_factory->create<KDecoration3::DecorationButton>(
+         parent, QVariantList({QVariant::fromValue(type), QVariant::fromValue(decoration)}));
+ }
+ 
+diff --git a/kcms/decoration/declarative-plugin/previewbridge.h b/kcms/decoration/declarative-plugin/previewbridge.h
+index b2bd3743e2..8bc105725c 100644
+--- a/kcms/decoration/declarative-plugin/previewbridge.h
++++ b/kcms/decoration/declarative-plugin/previewbridge.h
+@@ -6,8 +6,8 @@
+ #ifndef KDECOARTIONS_PREVIEW_BRIDGE_H
+ #define KDECOARTIONS_PREVIEW_BRIDGE_H
+ 
+-#include <KDecoration2/DecorationButton>
+-#include <KDecoration2/Private/DecorationBridge>
++#include <KDecoration3/DecorationButton>
++#include <KDecoration3/Private/DecorationBridge>
+ #include <KPluginFactory>
+ 
+ #include <QList>
+@@ -15,7 +15,7 @@
+ #include <QQmlEngine>
+ #include <QQuickItem>
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+ namespace Preview
+ {
+@@ -24,7 +24,7 @@ class PreviewClient;
+ class PreviewItem;
+ class PreviewSettings;
+ 
+-class PreviewBridge : public KDecoration2::DecorationBridge
++class PreviewBridge : public KDecoration3::DecorationBridge
+ {
+     Q_OBJECT
+     QML_ANONYMOUS
+@@ -37,7 +37,7 @@ class PreviewBridge : public KDecoration2::DecorationBridge
+ public:
+     explicit PreviewBridge(QObject* parent = nullptr);
+     ~PreviewBridge() override;
+-    std::unique_ptr<DecoratedClientPrivate> createClient(DecoratedClient* client,
++    std::unique_ptr<DecoratedWindowPrivate> createClient(DecoratedWindow* client,
+                                                          Decoration* decoration) override;
+     std::unique_ptr<DecorationSettingsPrivate> settings(DecorationSettings* parent) override;
+ 
+@@ -61,9 +61,9 @@ class PreviewBridge : public KDecoration2::DecorationBridge
+     QString theme() const;
+     bool isValid() const;
+ 
+-    KDecoration2::Decoration* createDecoration(QObject* parent = nullptr);
+-    KDecoration2::DecorationButton* createButton(KDecoration2::Decoration* decoration,
+-                                                 KDecoration2::DecorationButtonType type,
++    KDecoration3::Decoration* createDecoration(QObject* parent = nullptr);
++    KDecoration3::DecorationButton* createButton(KDecoration3::Decoration* decoration,
++                                                 KDecoration3::DecorationButtonType type,
+                                                  QObject* parent = nullptr);
+ 
+ public Q_SLOTS:
+@@ -97,7 +97,7 @@ class BridgeItem : public QObject
+     Q_PROPERTY(
+         QString kcmoduleName READ kcmoduleName WRITE setKcmoduleName NOTIFY kcmoduleNameChanged)
+     Q_PROPERTY(bool valid READ isValid NOTIFY validChanged)
+-    Q_PROPERTY(KDecoration2::Preview::PreviewBridge* bridge READ bridge CONSTANT)
++    Q_PROPERTY(KDecoration3::Preview::PreviewBridge* bridge READ bridge CONSTANT)
+ 
+ public:
+     explicit BridgeItem(QObject* parent = nullptr);
+@@ -150,6 +150,6 @@ class BridgeItem : public QObject
+ }
+ }
+ 
+-Q_DECLARE_METATYPE(KDecoration2::Preview::PreviewBridge*)
++Q_DECLARE_METATYPE(KDecoration3::Preview::PreviewBridge*)
+ 
+ #endif
+diff --git a/kcms/decoration/declarative-plugin/previewbutton.cpp b/kcms/decoration/declarative-plugin/previewbutton.cpp
+index cb7f2f607f..e13044fe51 100644
+--- a/kcms/decoration/declarative-plugin/previewbutton.cpp
++++ b/kcms/decoration/declarative-plugin/previewbutton.cpp
+@@ -8,11 +8,11 @@
+ #include "previewclient.h"
+ #include "previewsettings.h"
+ 
+-#include <KDecoration2/Decoration>
++#include <KDecoration3/Decoration>
+ 
+ #include <QPainter>
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+ 
+ namespace Preview
+@@ -27,10 +27,10 @@ PreviewButtonItem::~PreviewButtonItem() = default;
+ 
+ void PreviewButtonItem::setType(int type)
+ {
+-    setType(KDecoration2::DecorationButtonType(type));
++    setType(KDecoration3::DecorationButtonType(type));
+ }
+ 
+-void PreviewButtonItem::setType(KDecoration2::DecorationButtonType type)
++void PreviewButtonItem::setType(KDecoration3::DecorationButtonType type)
+ {
+     if (m_type == type) {
+         return;
+@@ -39,7 +39,7 @@ void PreviewButtonItem::setType(KDecoration2::DecorationButtonType type)
+     Q_EMIT typeChanged();
+ }
+ 
+-KDecoration2::DecorationButtonType PreviewButtonItem::type() const
++KDecoration3::DecorationButtonType PreviewButtonItem::type() const
+ {
+     return m_type;
+ }
+@@ -85,7 +85,7 @@ void PreviewButtonItem::componentComplete()
+ 
+ void PreviewButtonItem::createButton()
+ {
+-    if (m_type == KDecoration2::DecorationButtonType::Custom || m_decoration || !m_settings
++    if (m_type == KDecoration3::DecorationButtonType::Custom || m_decoration || !m_settings
+         || !m_bridge) {
+         return;
+     }
+@@ -99,6 +99,7 @@ void PreviewButtonItem::createButton()
+     client->setActive(false);
+     client->setProvidesContextHelp(true);
+     m_decoration->setSettings(m_settings->settings());
++    m_decoration->create();
+     m_decoration->init();
+     m_button = m_bridge->createButton(m_decoration, m_type);
+     connect(this, &PreviewButtonItem::widthChanged, this, &PreviewButtonItem::syncGeometry);
+@@ -121,7 +122,7 @@ void PreviewButtonItem::paint(QPainter* painter)
+     }
+ 
+     const QRect rect(0, 0, width(), height());
+-    if (type() == KDecoration2::DecorationButtonType::Spacer) {
++    if (type() == KDecoration3::DecorationButtonType::Spacer) {
+         static const QIcon icon = QIcon::fromTheme(QStringLiteral("distribute-horizontal"));
+         icon.paint(painter, rect);
+     } else {
+diff --git a/kcms/decoration/declarative-plugin/previewbutton.h b/kcms/decoration/declarative-plugin/previewbutton.h
+index f17c9f837a..e8a6c0d598 100644
+--- a/kcms/decoration/declarative-plugin/previewbutton.h
++++ b/kcms/decoration/declarative-plugin/previewbutton.h
+@@ -6,12 +6,12 @@
+ #ifndef KDECOARTIONS_PREVIEW_BUTTON_ITEM_H
+ #define KDECOARTIONS_PREVIEW_BUTTON_ITEM_H
+ 
+-#include <KDecoration2/DecorationButton>
++#include <KDecoration3/DecorationButton>
+ #include <QColor>
+ #include <QPointer>
+ #include <QQuickPaintedItem>
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+ class Decoration;
+ 
+@@ -24,9 +24,9 @@ class PreviewButtonItem : public QQuickPaintedItem
+ {
+     Q_OBJECT
+     QML_NAMED_ELEMENT(Button)
+-    Q_PROPERTY(KDecoration2::Preview::PreviewBridge* bridge READ bridge WRITE setBridge NOTIFY
++    Q_PROPERTY(KDecoration3::Preview::PreviewBridge* bridge READ bridge WRITE setBridge NOTIFY
+                    bridgeChanged)
+-    Q_PROPERTY(KDecoration2::Preview::Settings* settings READ settings WRITE setSettings NOTIFY
++    Q_PROPERTY(KDecoration3::Preview::Settings* settings READ settings WRITE setSettings NOTIFY
+                    settingsChanged)
+     Q_PROPERTY(int type READ typeAsInt WRITE setType NOTIFY typeChanged)
+     Q_PROPERTY(QColor color READ color WRITE setColor)
+@@ -42,9 +42,9 @@ class PreviewButtonItem : public QQuickPaintedItem
+     Settings* settings() const;
+     void setSettings(Settings* settings);
+ 
+-    KDecoration2::DecorationButtonType type() const;
++    KDecoration3::DecorationButtonType type() const;
+     int typeAsInt() const;
+-    void setType(KDecoration2::DecorationButtonType type);
++    void setType(KDecoration3::DecorationButtonType type);
+     void setType(int type);
+ 
+     const QColor& color() const
+@@ -65,14 +65,14 @@ class PreviewButtonItem : public QQuickPaintedItem
+     void createButton();
+     void syncGeometry();
+     QColor m_color;
+-    QPointer<KDecoration2::Preview::PreviewBridge> m_bridge;
+-    QPointer<KDecoration2::Preview::Settings> m_settings;
+-    KDecoration2::Decoration* m_decoration = nullptr;
+-    KDecoration2::DecorationButton* m_button = nullptr;
+-    KDecoration2::DecorationButtonType m_type = KDecoration2::DecorationButtonType::Custom;
++    QPointer<KDecoration3::Preview::PreviewBridge> m_bridge;
++    QPointer<KDecoration3::Preview::Settings> m_settings;
++    KDecoration3::Decoration* m_decoration = nullptr;
++    KDecoration3::DecorationButton* m_button = nullptr;
++    KDecoration3::DecorationButtonType m_type = KDecoration3::DecorationButtonType::Custom;
+ };
+ 
+ } // Preview
+-} // KDecoration2
++} // KDecoration3
+ 
+ #endif
+diff --git a/kcms/decoration/declarative-plugin/previewclient.cpp b/kcms/decoration/declarative-plugin/previewclient.cpp
+index 30fd728de7..88f4b3b39c 100644
+--- a/kcms/decoration/declarative-plugin/previewclient.cpp
++++ b/kcms/decoration/declarative-plugin/previewclient.cpp
+@@ -4,22 +4,22 @@
+     SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only
+ */
+ #include "previewclient.h"
+-#include <KDecoration2/DecoratedClient>
+-#include <KDecoration2/Decoration>
++#include <KDecoration3/DecoratedWindow>
++#include <KDecoration3/Decoration>
+ 
+ #include <QCoreApplication>
+ #include <QDebug>
+ #include <QEvent>
+ #include <QModelIndex>
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+ namespace Preview
+ {
+ 
+-PreviewClient::PreviewClient(DecoratedClient* c, Decoration* decoration)
++PreviewClient::PreviewClient(DecoratedWindow* c, Decoration* decoration)
+     : QObject(decoration)
+-    , ApplicationMenuEnabledDecoratedClientPrivate(c, decoration)
++    , DecoratedWindowPrivate(c, decoration)
+     , m_icon(QIcon::fromTheme(QStringLiteral("start-here-kde")))
+     , m_iconName(m_icon.name())
+     , m_palette(QStringLiteral("kdeglobals"))
+@@ -43,33 +43,33 @@ PreviewClient::PreviewClient(DecoratedClient* c, Decoration* decoration)
+     , m_bordersRightEdge(false)
+     , m_bordersBottomEdge(false)
+ {
+-    connect(this, &PreviewClient::captionChanged, c, &DecoratedClient::captionChanged);
+-    connect(this, &PreviewClient::activeChanged, c, &DecoratedClient::activeChanged);
+-    connect(this, &PreviewClient::closeableChanged, c, &DecoratedClient::closeableChanged);
+-    connect(this, &PreviewClient::keepAboveChanged, c, &DecoratedClient::keepAboveChanged);
+-    connect(this, &PreviewClient::keepBelowChanged, c, &DecoratedClient::keepBelowChanged);
+-    connect(this, &PreviewClient::maximizableChanged, c, &DecoratedClient::maximizeableChanged);
+-    connect(this, &PreviewClient::maximizedChanged, c, &DecoratedClient::maximizedChanged);
++    connect(this, &PreviewClient::captionChanged, c, &DecoratedWindow::captionChanged);
++    connect(this, &PreviewClient::activeChanged, c, &DecoratedWindow::activeChanged);
++    connect(this, &PreviewClient::closeableChanged, c, &DecoratedWindow::closeableChanged);
++    connect(this, &PreviewClient::keepAboveChanged, c, &DecoratedWindow::keepAboveChanged);
++    connect(this, &PreviewClient::keepBelowChanged, c, &DecoratedWindow::keepBelowChanged);
++    connect(this, &PreviewClient::maximizableChanged, c, &DecoratedWindow::maximizeableChanged);
++    connect(this, &PreviewClient::maximizedChanged, c, &DecoratedWindow::maximizedChanged);
+     connect(this,
+             &PreviewClient::maximizedVerticallyChanged,
+             c,
+-            &DecoratedClient::maximizedVerticallyChanged);
++            &DecoratedWindow::maximizedVerticallyChanged);
+     connect(this,
+             &PreviewClient::maximizedHorizontallyChanged,
+             c,
+-            &DecoratedClient::maximizedHorizontallyChanged);
+-    connect(this, &PreviewClient::minimizableChanged, c, &DecoratedClient::minimizeableChanged);
+-    connect(this, &PreviewClient::movableChanged, c, &DecoratedClient::moveableChanged);
+-    connect(this, &PreviewClient::onAllDesktopsChanged, c, &DecoratedClient::onAllDesktopsChanged);
+-    connect(this, &PreviewClient::resizableChanged, c, &DecoratedClient::resizeableChanged);
++            &DecoratedWindow::maximizedHorizontallyChanged);
++    connect(this, &PreviewClient::minimizableChanged, c, &DecoratedWindow::minimizeableChanged);
++    connect(this, &PreviewClient::movableChanged, c, &DecoratedWindow::moveableChanged);
++    connect(this, &PreviewClient::onAllDesktopsChanged, c, &DecoratedWindow::onAllDesktopsChanged);
++    connect(this, &PreviewClient::resizableChanged, c, &DecoratedWindow::resizeableChanged);
+     connect(this,
+             &PreviewClient::providesContextHelpChanged,
+             c,
+-            &DecoratedClient::providesContextHelpChanged);
+-    connect(this, &PreviewClient::widthChanged, c, &DecoratedClient::widthChanged);
+-    connect(this, &PreviewClient::heightChanged, c, &DecoratedClient::heightChanged);
+-    connect(this, &PreviewClient::iconChanged, c, &DecoratedClient::iconChanged);
+-    connect(this, &PreviewClient::paletteChanged, c, &DecoratedClient::paletteChanged);
++            &DecoratedWindow::providesContextHelpChanged);
++    connect(this, &PreviewClient::widthChanged, c, &DecoratedWindow::widthChanged);
++    connect(this, &PreviewClient::heightChanged, c, &DecoratedWindow::heightChanged);
++    connect(this, &PreviewClient::iconChanged, c, &DecoratedWindow::iconChanged);
++    connect(this, &PreviewClient::paletteChanged, c, &DecoratedWindow::paletteChanged);
+     connect(this, &PreviewClient::maximizedVerticallyChanged, this, [this]() {
+         Q_EMIT maximizedChanged(isMaximized());
+     });
+@@ -104,17 +104,17 @@ void PreviewClient::setIcon(const QIcon& pixmap)
+     Q_EMIT iconChanged(m_icon);
+ }
+ 
+-int PreviewClient::width() const
++qreal PreviewClient::width() const
+ {
+     return m_width;
+ }
+ 
+-int PreviewClient::height() const
++qreal PreviewClient::height() const
+ {
+     return m_height;
+ }
+ 
+-QSize PreviewClient::size() const
++QSizeF PreviewClient::size() const
+ {
+     return QSize(m_width, m_height);
+ }
+@@ -415,6 +415,6 @@ SETTER2(setProvidesContextHelp, providesContextHelp)
+ #undef SETTER
+ 
+ } // namespace Preview
+-} // namespace KDecoration2
++} // namespace KDecoration3
+ 
+ #include "moc_previewclient.cpp"
+diff --git a/kcms/decoration/declarative-plugin/previewclient.h b/kcms/decoration/declarative-plugin/previewclient.h
+index 8332fd881b..66f9b3a77e 100644
+--- a/kcms/decoration/declarative-plugin/previewclient.h
++++ b/kcms/decoration/declarative-plugin/previewclient.h
+@@ -8,22 +8,22 @@
+ 
+ #include <como/win/deco/palette.h>
+ 
+-#include <KDecoration2/Private/DecoratedClientPrivate>
++#include <KDecoration3/Private/DecoratedWindowPrivate>
+ #include <QObject>
+ #include <QPalette>
+ #include <QQmlEngine>
+ 
+ class QAbstractItemModel;
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+ namespace Preview
+ {
+-class PreviewClient : public QObject, public ApplicationMenuEnabledDecoratedClientPrivate
++class PreviewClient : public QObject, public DecoratedWindowPrivate
+ {
+     Q_OBJECT
+     QML_ANONYMOUS
+-    Q_PROPERTY(KDecoration2::Decoration* decoration READ decoration CONSTANT)
++    Q_PROPERTY(KDecoration3::Decoration* decoration READ decoration CONSTANT)
+     Q_PROPERTY(QString caption READ caption WRITE setCaption NOTIFY captionChanged)
+     Q_PROPERTY(QIcon icon READ icon WRITE setIcon NOTIFY iconChanged)
+     Q_PROPERTY(QString iconName READ iconName WRITE setIconName NOTIFY iconNameChanged)
+@@ -55,12 +55,12 @@ class PreviewClient : public QObject, public ApplicationMenuEnabledDecoratedClie
+     Q_PROPERTY(bool bordersBottomEdge READ bordersBottomEdge WRITE setBordersBottomEdge NOTIFY
+                    bordersBottomEdgeChanged)
+ public:
+-    explicit PreviewClient(DecoratedClient* client, Decoration* decoration);
++    explicit PreviewClient(DecoratedWindow* client, Decoration* decoration);
+     ~PreviewClient() override;
+ 
+     QString caption() const override;
+-    WId decorationId() const override;
+-    WId windowId() const override;
++    WId decorationId() const;
++    WId windowId() const;
+     QString windowClass() const override;
+     QIcon icon() const override;
+     bool isActive() const override;
+@@ -76,7 +76,15 @@ class PreviewClient : public QObject, public ApplicationMenuEnabledDecoratedClie
+     bool isMoveable() const override;
+     bool isOnAllDesktops() const override;
+     bool isResizeable() const override;
++qreal scale() const override
++{
++    return 1;
++}
+ 
++qreal nextScale() const override
++{
++    return 1;
++}
+     // Deprecated
+     bool isShadeable() const override
+     {
+@@ -89,9 +97,9 @@ class PreviewClient : public QObject, public ApplicationMenuEnabledDecoratedClie
+ 
+     bool providesContextHelp() const override;
+ 
+-    int width() const override;
+-    int height() const override;
+-    QSize size() const override;
++    qreal width() const override;
++    qreal height() const override;
++    QSizeF size() const override;
+     QPalette palette() const override;
+     QColor color(ColorGroup group, ColorRole role) const override;
+     Qt::Edges adjacentScreenEdges() const override;
+@@ -208,6 +216,6 @@ class PreviewClient : public QObject, public ApplicationMenuEnabledDecoratedClie
+ };
+ 
+ } // namespace Preview
+-} // namespace KDecoration2
++} // namespace KDecoration3
+ 
+ #endif
+diff --git a/kcms/decoration/declarative-plugin/previewitem.cpp b/kcms/decoration/declarative-plugin/previewitem.cpp
+index f1d37bdd8a..0fb3531723 100644
+--- a/kcms/decoration/declarative-plugin/previewitem.cpp
++++ b/kcms/decoration/declarative-plugin/previewitem.cpp
+@@ -7,10 +7,10 @@
+ #include "previewbridge.h"
+ #include "previewclient.h"
+ #include "previewsettings.h"
+-#include <KDecoration2/DecoratedClient>
+-#include <KDecoration2/Decoration>
+-#include <KDecoration2/DecorationSettings>
+-#include <KDecoration2/DecorationShadow>
++#include <KDecoration3/DecoratedWindow>
++#include <KDecoration3/Decoration>
++#include <KDecoration3/DecorationSettings>
++#include <KDecoration3/DecorationShadow>
+ #include <QCoreApplication>
+ #include <QCursor>
+ #include <QPainter>
+@@ -21,7 +21,7 @@
+ 
+ #include <QDebug>
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+ namespace Preview
+ {
+@@ -55,6 +55,7 @@ void PreviewItem::componentComplete()
+     createDecoration();
+     if (m_decoration) {
+         m_decoration->setSettings(m_settings->settings());
++        m_decoration->create();
+         m_decoration->init();
+         syncSize();
+     }
+@@ -151,21 +152,21 @@ void PreviewItem::paintShadow(QPainter* painter,
+     const QRect outerRect(-paddingLeft, -paddingTop, width(), height());
+     const QRect shadowRect(shadowPixmap.rect());
+ 
+-    const QSize topLeftSize(shadow->topLeftGeometry().size());
+-    QRect topLeftTarget(QPoint(outerRect.x(), outerRect.y()), topLeftSize);
++    const QSizeF topLeftSize(shadow->topLeftGeometry().size());
++    QRectF topLeftTarget(QPoint(outerRect.x(), outerRect.y()), topLeftSize);
+ 
+-    const QSize topRightSize(shadow->topRightGeometry().size());
+-    QRect topRightTarget(
++    const QSizeF topRightSize(shadow->topRightGeometry().size());
++    QRectF topRightTarget(
+         QPoint(outerRect.x() + outerRect.width() - topRightSize.width(), outerRect.y()),
+         topRightSize);
+ 
+-    const QSize bottomRightSize(shadow->bottomRightGeometry().size());
+-    QRect bottomRightTarget(QPoint(outerRect.x() + outerRect.width() - bottomRightSize.width(),
++    const QSizeF bottomRightSize(shadow->bottomRightGeometry().size());
++    QRectF bottomRightTarget(QPoint(outerRect.x() + outerRect.width() - bottomRightSize.width(),
+                                    outerRect.y() + outerRect.height() - bottomRightSize.height()),
+                             bottomRightSize);
+ 
+-    const QSize bottomLeftSize(shadow->bottomLeftGeometry().size());
+-    QRect bottomLeftTarget(
++    const QSizeF bottomLeftSize(shadow->bottomLeftGeometry().size());
++    QRectF bottomLeftTarget(
+         QPoint(outerRect.x(), outerRect.y() + outerRect.height() - bottomLeftSize.height()),
+         bottomLeftSize);
+ 
+@@ -214,30 +215,30 @@ void PreviewItem::paintShadow(QPainter* painter,
+ 
+     painter->translate(paddingLeft, paddingTop);
+ 
+-    painter->drawImage(topLeftTarget, shadowPixmap, QRect(QPoint(0, 0), topLeftTarget.size()));
++    painter->drawImage(topLeftTarget, shadowPixmap, QRectF(QPoint(0, 0), topLeftTarget.size()));
+ 
+     painter->drawImage(
+         topRightTarget,
+         shadowPixmap,
+-        QRect(QPoint(shadowRect.width() - topRightTarget.width(), 0), topRightTarget.size()));
++        QRectF(QPoint(shadowRect.width() - topRightTarget.width(), 0), topRightTarget.size()));
+ 
+     painter->drawImage(bottomRightTarget,
+                        shadowPixmap,
+-                       QRect(QPoint(shadowRect.width() - bottomRightTarget.width(),
++                       QRectF(QPoint(shadowRect.width() - bottomRightTarget.width(),
+                                     shadowRect.height() - bottomRightTarget.height()),
+                              bottomRightTarget.size()));
+ 
+     painter->drawImage(
+         bottomLeftTarget,
+         shadowPixmap,
+-        QRect(QPoint(0, shadowRect.height() - bottomLeftTarget.height()), bottomLeftTarget.size()));
++        QRectF(QPoint(0, shadowRect.height() - bottomLeftTarget.height()), bottomLeftTarget.size()));
+ 
+     if (drawTop) {
+-        QRect topTarget(topLeftTarget.x() + topLeftTarget.width(),
++        QRectF topTarget(topLeftTarget.x() + topLeftTarget.width(),
+                         topLeftTarget.y(),
+                         topRightTarget.x() - topLeftTarget.x() - topLeftTarget.width(),
+                         topRightTarget.height());
+-        QRect topSource(shadow->topGeometry());
++        QRectF topSource(shadow->topGeometry());
+         topSource.setHeight(topTarget.height());
+         topSource.moveTop(shadowRect.top());
+         painter->drawImage(topTarget, shadowPixmap, topSource);
+@@ -248,7 +249,7 @@ void PreviewItem::paintShadow(QPainter* painter,
+                           topRightTarget.y() + topRightTarget.height(),
+                           topRightTarget.width(),
+                           bottomRightTarget.y() - topRightTarget.y() - topRightTarget.height());
+-        QRect rightSource(shadow->rightGeometry());
++        QRectF rightSource(shadow->rightGeometry());
+         rightSource.setWidth(rightTarget.width());
+         rightSource.moveRight(shadowRect.right());
+         painter->drawImage(rightTarget, shadowPixmap, rightSource);
+@@ -259,7 +260,7 @@ void PreviewItem::paintShadow(QPainter* painter,
+                            bottomLeftTarget.y(),
+                            bottomRightTarget.x() - bottomLeftTarget.x() - bottomLeftTarget.width(),
+                            bottomRightTarget.height());
+-        QRect bottomSource(shadow->bottomGeometry());
++        QRectF bottomSource(shadow->bottomGeometry());
+         bottomSource.setHeight(bottomTarget.height());
+         bottomSource.moveBottom(shadowRect.bottom());
+         painter->drawImage(bottomTarget, shadowPixmap, bottomSource);
+@@ -270,7 +271,7 @@ void PreviewItem::paintShadow(QPainter* painter,
+                          topLeftTarget.y() + topLeftTarget.height(),
+                          topLeftTarget.width(),
+                          bottomLeftTarget.y() - topLeftTarget.y() - topLeftTarget.height());
+-        QRect leftSource(shadow->leftGeometry());
++        QRectF leftSource(shadow->leftGeometry());
+         leftSource.setWidth(leftTarget.width());
+         leftSource.moveLeft(shadowRect.left());
+         painter->drawImage(leftTarget, shadowPixmap, leftSource);
+diff --git a/kcms/decoration/declarative-plugin/previewitem.h b/kcms/decoration/declarative-plugin/previewitem.h
+index 67f3f22d67..291c75f494 100644
+--- a/kcms/decoration/declarative-plugin/previewitem.h
++++ b/kcms/decoration/declarative-plugin/previewitem.h
+@@ -9,7 +9,7 @@
+ #include <QPointer>
+ #include <QQuickPaintedItem>
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+ class Decoration;
+ class DecorationShadow;
+@@ -24,13 +24,13 @@ class Settings;
+ class PreviewItem : public QQuickPaintedItem
+ {
+     Q_OBJECT
+-    Q_PROPERTY(KDecoration2::Decoration* decoration READ decoration NOTIFY decorationChanged)
+-    Q_PROPERTY(KDecoration2::Preview::PreviewBridge* bridge READ bridge WRITE setBridge NOTIFY
++    Q_PROPERTY(KDecoration3::Decoration* decoration READ decoration NOTIFY decorationChanged)
++    Q_PROPERTY(KDecoration3::Preview::PreviewBridge* bridge READ bridge WRITE setBridge NOTIFY
+                    bridgeChanged)
+-    Q_PROPERTY(KDecoration2::Preview::Settings* settings READ settings WRITE setSettings NOTIFY
++    Q_PROPERTY(KDecoration3::Preview::Settings* settings READ settings WRITE setSettings NOTIFY
+                    settingsChanged)
+-    Q_PROPERTY(KDecoration2::Preview::PreviewClient* client READ client)
+-    Q_PROPERTY(KDecoration2::DecorationShadow* shadow READ shadow NOTIFY shadowChanged)
++    Q_PROPERTY(KDecoration3::Preview::PreviewClient* client READ client)
++    Q_PROPERTY(KDecoration3::DecorationShadow* shadow READ shadow NOTIFY shadowChanged)
+     Q_PROPERTY(QColor windowColor READ windowColor WRITE setWindowColor NOTIFY windowColorChanged)
+     Q_PROPERTY(bool drawBackground READ isDrawingBackground WRITE setDrawingBackground NOTIFY
+                    drawingBackgroundChanged)
+@@ -39,8 +39,8 @@ class PreviewItem : public QQuickPaintedItem
+     ~PreviewItem() override;
+     void paint(QPainter* painter) override;
+ 
+-    KDecoration2::Decoration* decoration() const;
+-    void setDecoration(KDecoration2::Decoration* deco);
++    KDecoration3::Decoration* decoration() const;
++    void setDecoration(KDecoration3::Decoration* deco);
+ 
+     QColor windowColor() const;
+     void setWindowColor(const QColor& color);
+@@ -58,7 +58,7 @@ class PreviewItem : public QQuickPaintedItem
+     DecorationShadow* shadow() const;
+ 
+ Q_SIGNALS:
+-    void decorationChanged(KDecoration2::Decoration* deco);
++    void decorationChanged(KDecoration3::Decoration* deco);
+     void windowColorChanged(const QColor& color);
+     void drawingBackgroundChanged(bool);
+     void bridgeChanged();
+@@ -88,12 +88,12 @@ class PreviewItem : public QQuickPaintedItem
+     Decoration* m_decoration;
+     QColor m_windowColor;
+     bool m_drawBackground = true;
+-    QPointer<KDecoration2::Preview::PreviewBridge> m_bridge;
+-    QPointer<KDecoration2::Preview::Settings> m_settings;
+-    QPointer<KDecoration2::Preview::PreviewClient> m_client;
++    QPointer<KDecoration3::Preview::PreviewBridge> m_bridge;
++    QPointer<KDecoration3::Preview::Settings> m_settings;
++    QPointer<KDecoration3::Preview::PreviewClient> m_client;
+ };
+ 
+ } // Preview
+-} // KDecoration2
++} // KDecoration3
+ 
+ #endif
+diff --git a/kcms/decoration/declarative-plugin/previewsettings.cpp b/kcms/decoration/declarative-plugin/previewsettings.cpp
+index 5a0ec4da5e..0dd2750c1e 100644
+--- a/kcms/decoration/declarative-plugin/previewsettings.cpp
++++ b/kcms/decoration/declarative-plugin/previewsettings.cpp
+@@ -11,7 +11,7 @@
+ 
+ #include <QFontDatabase>
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+ 
+ namespace Preview
+@@ -243,7 +243,7 @@ void Settings::createSettings()
+     if (m_bridge.isNull()) {
+         m_settings.reset();
+     } else {
+-        m_settings = std::make_shared<KDecoration2::DecorationSettings>(m_bridge.get());
++        m_settings = std::make_shared<KDecoration3::DecorationSettings>(m_bridge.get());
+         m_previewSettings = m_bridge->lastCreatedSettings();
+         m_previewSettings->setBorderSizesIndex(m_borderSize);
+         connect(this,
+diff --git a/kcms/decoration/declarative-plugin/previewsettings.h b/kcms/decoration/declarative-plugin/previewsettings.h
+index 519ffc0aa6..7a1ebeb47a 100644
+--- a/kcms/decoration/declarative-plugin/previewsettings.h
++++ b/kcms/decoration/declarative-plugin/previewsettings.h
+@@ -6,14 +6,14 @@
+ #ifndef KDECOARTIONS_PREVIEW_SETTINGS_H
+ #define KDECOARTIONS_PREVIEW_SETTINGS_H
+ 
+-#include <KDecoration2/DecorationSettings>
+-#include <KDecoration2/Private/DecorationSettingsPrivate>
++#include <KDecoration3/DecorationSettings>
++#include <KDecoration3/Private/DecorationSettingsPrivate>
+ #include <QAbstractListModel>
+ #include <QObject>
+ #include <QPointer>
+ #include <QQmlEngine>
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+ 
+ namespace Preview
+@@ -123,10 +123,10 @@ class Settings : public QObject
+ {
+     Q_OBJECT
+     QML_ELEMENT
+-    Q_PROPERTY(KDecoration2::Preview::PreviewBridge* bridge READ bridge WRITE setBridge NOTIFY
++    Q_PROPERTY(KDecoration3::Preview::PreviewBridge* bridge READ bridge WRITE setBridge NOTIFY
+                    bridgeChanged)
+     Q_PROPERTY(
+-        KDecoration2::DecorationSettings* settings READ settingsPointer NOTIFY settingsChanged)
++        KDecoration3::DecorationSettings* settings READ settingsPointer NOTIFY settingsChanged)
+     Q_PROPERTY(int borderSizesIndex READ borderSizesIndex WRITE setBorderSizesIndex NOTIFY
+                    borderSizesIndexChanged)
+ public:
+@@ -152,7 +152,7 @@ class Settings : public QObject
+ private:
+     void createSettings();
+     QPointer<PreviewBridge> m_bridge;
+-    std::shared_ptr<KDecoration2::DecorationSettings> m_settings;
++    std::shared_ptr<KDecoration3::DecorationSettings> m_settings;
+     PreviewSettings* m_previewSettings = nullptr;
+     int m_borderSize = 3;
+ };
+diff --git a/kcms/decoration/declarative-plugin/types.h b/kcms/decoration/declarative-plugin/types.h
+index ee5b6bac80..8e8c2529b6 100644
+--- a/kcms/decoration/declarative-plugin/types.h
++++ b/kcms/decoration/declarative-plugin/types.h
+@@ -7,17 +7,17 @@
+ 
+ #include <QQmlEngine>
+ 
+-#include <KDecoration2/Decoration>
+-#include <KDecoration2/DecorationShadow>
++#include <KDecoration3/Decoration>
++#include <KDecoration3/DecorationShadow>
+ 
+ struct DecorationForeign {
+     Q_GADGET
+     QML_ANONYMOUS
+-    QML_FOREIGN(KDecoration2::Decoration)
++    QML_FOREIGN(KDecoration3::Decoration)
+ };
+ 
+ struct DecorationShadowForeign {
+     Q_GADGET
+     QML_ANONYMOUS
+-    QML_FOREIGN(KDecoration2::DecorationShadow)
++    QML_FOREIGN(KDecoration3::DecorationShadow)
+ };
+diff --git a/kcms/decoration/decorationmodel.cpp b/kcms/decoration/decorationmodel.cpp
+index 8034c357ea..2de2de425c 100644
+--- a/kcms/decoration/decorationmodel.cpp
++++ b/kcms/decoration/decorationmodel.cpp
+@@ -4,17 +4,17 @@
+     SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only
+ */
+ #include "decorationmodel.h"
+-// KDecoration2
+-#include <KDecoration2/Decoration>
+-#include <KDecoration2/DecorationSettings>
+-#include <KDecoration2/DecorationThemeProvider>
++// KDecoration3
++#include <KDecoration3/Decoration>
++#include <KDecoration3/DecorationSettings>
++#include <KDecoration3/DecorationThemeProvider>
+ // KDE
+ #include <KPluginFactory>
+ #include <KPluginMetaData>
+ // Qt
+ #include <QDebug>
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+ 
+ namespace Configuration
+@@ -42,7 +42,7 @@ QVariant DecorationsModel::data(const QModelIndex& index, int role) const
+         || index.row() >= int(m_plugins.size())) {
+         return QVariant();
+     }
+-    const KDecoration2::DecorationThemeMetaData& d = m_plugins.at(index.row());
++    const KDecoration3::DecorationThemeMetaData& d = m_plugins.at(index.row());
+     switch (role) {
+     case Qt::DisplayRole:
+         return d.visibleName();
+@@ -81,11 +81,11 @@ static bool isThemeEngine(const QVariantMap& decoSettingsMap)
+     return it.value().toBool();
+ }
+ 
+-static KDecoration2::BorderSize recommendedBorderSize(const QVariantMap& decoSettingsMap)
++static KDecoration3::BorderSize recommendedBorderSize(const QVariantMap& decoSettingsMap)
+ {
+     auto it = decoSettingsMap.find(QStringLiteral("recommendedBorderSize"));
+     if (it == decoSettingsMap.end()) {
+-        return KDecoration2::BorderSize::Normal;
++        return KDecoration3::BorderSize::Normal;
+     }
+     return Utils::stringToBorderSize(it.value().toString());
+ }
+@@ -114,9 +114,9 @@ void DecorationsModel::init()
+     m_plugins.clear();
+     const auto plugins = KPluginMetaData::findPlugins(s_pluginName);
+     for (const auto& info : plugins) {
+-        QScopedPointer<KDecoration2::DecorationThemeProvider> themeFinder(
+-            KPluginFactory::instantiatePlugin<KDecoration2::DecorationThemeProvider>(info).plugin);
+-        KDecoration2::DecorationThemeMetaData data;
++        QScopedPointer<KDecoration3::DecorationThemeProvider> themeFinder(
++            KPluginFactory::instantiatePlugin<KDecoration3::DecorationThemeProvider>(info).plugin);
++        KDecoration3::DecorationThemeMetaData data;
+         const auto decoSettingsMap
+             = info.rawData().value("org.kde.kdecoration2").toObject().toVariantMap();
+         if (themeFinder) {
+@@ -131,7 +131,7 @@ void DecorationsModel::init()
+                     continue;
+                 }
+                 const auto themesList = themeFinder->themes();
+-                for (const KDecoration2::DecorationThemeMetaData& data : themesList) {
++                for (const KDecoration3::DecorationThemeMetaData& data : themesList) {
+                     m_plugins.emplace_back(data);
+                 }
+ 
+@@ -162,7 +162,7 @@ QModelIndex DecorationsModel::findDecoration(const QString& pluginName,
+ {
+     auto it = std::find_if(m_plugins.cbegin(),
+                            m_plugins.cend(),
+-                           [pluginName, themeName](const KDecoration2::DecorationThemeMetaData& d) {
++                           [pluginName, themeName](const KDecoration3::DecorationThemeMetaData& d) {
+                                return d.pluginId() == pluginName && d.themeName() == themeName;
+                            });
+     if (it == m_plugins.cend()) {
+diff --git a/kcms/decoration/decorationmodel.h b/kcms/decoration/decorationmodel.h
+index e885f8e240..d0389bd222 100644
+--- a/kcms/decoration/decorationmodel.h
++++ b/kcms/decoration/decorationmodel.h
+@@ -8,10 +8,10 @@
+ 
+ #include "utils.h"
+ 
+-#include <KDecoration2/DecorationThemeProvider>
++#include <KDecoration3/DecorationThemeProvider>
+ #include <QAbstractListModel>
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+ 
+ namespace Configuration
+@@ -49,7 +49,7 @@ public Q_SLOTS:
+     void init();
+ 
+ private:
+-    std::vector<KDecoration2::DecorationThemeMetaData> m_plugins;
++    std::vector<KDecoration3::DecorationThemeMetaData> m_plugins;
+     QStringList m_knsProviders;
+ };
+ 
+diff --git a/kcms/decoration/kcm.cpp b/kcms/decoration/kcm.cpp
+index 0fcdb4f826..77bbc76949 100644
+--- a/kcms/decoration/kcm.cpp
++++ b/kcms/decoration/kcm.cpp
+@@ -28,20 +28,20 @@ K_PLUGIN_FACTORY_WITH_JSON(KCMKWinDecorationFactory,
+                            registerPlugin<KCMKWinDecoration>();
+                            registerPlugin<KWinDecorationData>();)
+ 
+-Q_DECLARE_METATYPE(KDecoration2::BorderSize)
++Q_DECLARE_METATYPE(KDecoration3::BorderSize)
+ 
+ namespace
+ {
+-const KDecoration2::BorderSize s_defaultRecommendedBorderSize = KDecoration2::BorderSize::Normal;
++const KDecoration3::BorderSize s_defaultRecommendedBorderSize = KDecoration3::BorderSize::Normal;
+ }
+ 
+ KCMKWinDecoration::KCMKWinDecoration(QObject* parent, const KPluginMetaData& metaData)
+     : KQuickManagedConfigModule(parent, metaData)
+-    , m_themesModel(new KDecoration2::Configuration::DecorationsModel(this))
++    , m_themesModel(new KDecoration3::Configuration::DecorationsModel(this))
+     , m_proxyThemesModel(new QSortFilterProxyModel(this))
+-    , m_leftButtonsModel(new KDecoration2::Preview::ButtonsModel(DecorationButtonsList(), this))
+-    , m_rightButtonsModel(new KDecoration2::Preview::ButtonsModel(DecorationButtonsList(), this))
+-    , m_availableButtonsModel(new KDecoration2::Preview::ButtonsModel(this))
++    , m_leftButtonsModel(new KDecoration3::Preview::ButtonsModel(DecorationButtonsList(), this))
++    , m_rightButtonsModel(new KDecoration3::Preview::ButtonsModel(DecorationButtonsList(), this))
++    , m_availableButtonsModel(new KDecoration3::Preview::ButtonsModel(this))
+     , m_data(new KWinDecorationData(this))
+ {
+     setButtons(Apply | Default | Help);
+@@ -245,7 +245,7 @@ int KCMKWinDecoration::borderSize() const
+ 
+ int KCMKWinDecoration::recommendedBorderSize() const
+ {
+-    typedef KDecoration2::Configuration::DecorationsModel::DecorationRole DecoRole;
++    typedef KDecoration3::Configuration::DecorationsModel::DecorationRole DecoRole;
+     const QModelIndex proxyIndex = m_proxyThemesModel->index(theme(), 0);
+     if (proxyIndex.isValid()) {
+         const QModelIndex index = m_proxyThemesModel->mapToSource(proxyIndex);
+@@ -274,7 +274,7 @@ void KCMKWinDecoration::setBorderSize(int index)
+     }
+ }
+ 
+-void KCMKWinDecoration::setBorderSize(KDecoration2::BorderSize size)
++void KCMKWinDecoration::setBorderSize(KDecoration3::BorderSize size)
+ {
+     settings()->setBorderSize(Utils::borderSizeToString(size));
+ }
+@@ -285,11 +285,11 @@ void KCMKWinDecoration::setTheme(int index)
+     if (dataIndex.isValid()) {
+         settings()->setTheme(
+             m_proxyThemesModel
+-                ->data(dataIndex, KDecoration2::Configuration::DecorationsModel::ThemeNameRole)
++                ->data(dataIndex, KDecoration3::Configuration::DecorationsModel::ThemeNameRole)
+                 .toString());
+         settings()->setPluginName(
+             m_proxyThemesModel
+-                ->data(dataIndex, KDecoration2::Configuration::DecorationsModel::PluginNameRole)
++                ->data(dataIndex, KDecoration3::Configuration::DecorationsModel::PluginNameRole)
+                 .toString());
+         Q_EMIT themeChanged();
+     }
+diff --git a/kcms/decoration/kcm.h b/kcms/decoration/kcm.h
+index f6059c6db3..aa6b42414b 100644
+--- a/kcms/decoration/kcm.h
++++ b/kcms/decoration/kcm.h
+@@ -13,7 +13,7 @@
+ #include <QAbstractListModel>
+ #include <QSortFilterProxyModel>
+ 
+-namespace KDecoration2
++namespace KDecoration3
+ {
+ enum class BorderSize;
+ 
+@@ -60,7 +60,7 @@ class KCMKWinDecoration : public KQuickManagedConfigModule
+ 
+     void setBorderIndex(int index);
+     void setBorderSize(int index);
+-    void setBorderSize(KDecoration2::BorderSize size);
++    void setBorderSize(KDecoration3::BorderSize size);
+     void setTheme(int index);
+ 
+ Q_SIGNALS:
+@@ -84,12 +84,12 @@ private Q_SLOTS:
+     int borderSizeIndexFromString(const QString& size) const;
+     QString borderSizeIndexToString(int index) const;
+ 
+-    KDecoration2::Configuration::DecorationsModel* m_themesModel;
++    KDecoration3::Configuration::DecorationsModel* m_themesModel;
+     QSortFilterProxyModel* m_proxyThemesModel;
+ 
+-    KDecoration2::Preview::ButtonsModel* m_leftButtonsModel;
+-    KDecoration2::Preview::ButtonsModel* m_rightButtonsModel;
+-    KDecoration2::Preview::ButtonsModel* m_availableButtonsModel;
++    KDecoration3::Preview::ButtonsModel* m_leftButtonsModel;
++    KDecoration3::Preview::ButtonsModel* m_rightButtonsModel;
++    KDecoration3::Preview::ButtonsModel* m_availableButtonsModel;
+ 
+     int m_borderSizeIndex = -1;
+     KWinDecorationData* m_data;
+diff --git a/kcms/decoration/kwin-applywindowdecoration.cpp b/kcms/decoration/kwin-applywindowdecoration.cpp
+index 6300a8abc3..9f2fa81b8b 100644
+--- a/kcms/decoration/kwin-applywindowdecoration.cpp
++++ b/kcms/decoration/kwin-applywindowdecoration.cpp
+@@ -43,8 +43,8 @@ int main(int argc, char** argv)
+         i18n("Show all the themes available on the system (and which is the current theme)")));
+     parser->process(app);
+ 
+-    KDecoration2::Configuration::DecorationsModel* model
+-        = new KDecoration2::Configuration::DecorationsModel(&app);
++    KDecoration3::Configuration::DecorationsModel* model
++        = new KDecoration3::Configuration::DecorationsModel(&app);
+     model->init();
+     KWinDecorationSettings* settings = new KWinDecorationSettings(&app);
+     QTextStream ts(stdout);
+@@ -108,7 +108,7 @@ int main(int argc, char** argv)
+                 const QString themeName
+                     = model
+                           ->data(model->index(i),
+-                                 KDecoration2::Configuration::DecorationsModel::ThemeNameRole)
++                                 KDecoration3::Configuration::DecorationsModel::ThemeNameRole)
+                           .toString();
+                 if (requestedTheme == themeName) {
+                     index = i;
+@@ -120,12 +120,12 @@ int main(int argc, char** argv)
+                 settings->setTheme(
+                     model
+                         ->data(model->index(index),
+-                               KDecoration2::Configuration::DecorationsModel::ThemeNameRole)
++                               KDecoration3::Configuration::DecorationsModel::ThemeNameRole)
+                         .toString());
+                 settings->setPluginName(
+                     model
+                         ->data(model->index(index),
+-                               KDecoration2::Configuration::DecorationsModel::PluginNameRole)
++                               KDecoration3::Configuration::DecorationsModel::PluginNameRole)
+                         .toString());
+                 if (settings->save()) {
+                     // Send a signal to all kwin instances
+@@ -138,7 +138,7 @@ int main(int argc, char** argv)
+                         "Successfully applied the cursor theme %1 to your current Plasma session",
+                         model
+                             ->data(model->index(index),
+-                                   KDecoration2::Configuration::DecorationsModel::ThemeNameRole)
++                                   KDecoration3::Configuration::DecorationsModel::ThemeNameRole)
+                             .toString())
+                        << Qt::endl;
+                 } else {
+@@ -165,7 +165,7 @@ int main(int argc, char** argv)
+             const QString themeName
+                 = model
+                       ->data(model->index(i),
+-                             KDecoration2::Configuration::DecorationsModel::ThemeNameRole)
++                             KDecoration3::Configuration::DecorationsModel::ThemeNameRole)
+                       .toString();
+             if (settings->theme() == themeName) {
+                 ts << QStringLiteral(
+diff --git a/kcms/decoration/utils.cpp b/kcms/decoration/utils.cpp
+index 9f6af818e6..a62297a0e3 100644
+--- a/kcms/decoration/utils.cpp
++++ b/kcms/decoration/utils.cpp
+@@ -11,39 +11,39 @@
+ 
+ namespace
+ {
+-const QMap<QString, KDecoration2::BorderSize> s_borderSizes{
+-    {QStringLiteral("None"), KDecoration2::BorderSize::None},
+-    {QStringLiteral("NoSides"), KDecoration2::BorderSize::NoSides},
+-    {QStringLiteral("Tiny"), KDecoration2::BorderSize::Tiny},
+-    {QStringLiteral("Normal"), KDecoration2::BorderSize::Normal},
+-    {QStringLiteral("Large"), KDecoration2::BorderSize::Large},
+-    {QStringLiteral("VeryLarge"), KDecoration2::BorderSize::VeryLarge},
+-    {QStringLiteral("Huge"), KDecoration2::BorderSize::Huge},
+-    {QStringLiteral("VeryHuge"), KDecoration2::BorderSize::VeryHuge},
+-    {QStringLiteral("Oversized"), KDecoration2::BorderSize::Oversized}};
+-const QMap<KDecoration2::BorderSize, QString> s_borderSizeNames{
+-    {KDecoration2::BorderSize::None, i18n("No Window Borders")},
+-    {KDecoration2::BorderSize::NoSides, i18n("No Side Window Borders")},
+-    {KDecoration2::BorderSize::Tiny, i18n("Tiny Window Borders")},
+-    {KDecoration2::BorderSize::Normal, i18n("Normal Window Borders")},
+-    {KDecoration2::BorderSize::Large, i18n("Large Window Borders")},
+-    {KDecoration2::BorderSize::VeryLarge, i18n("Very Large Window Borders")},
+-    {KDecoration2::BorderSize::Huge, i18n("Huge Window Borders")},
+-    {KDecoration2::BorderSize::VeryHuge, i18n("Very Huge Window Borders")},
+-    {KDecoration2::BorderSize::Oversized, i18n("Oversized Window Borders")}};
++const QMap<QString, KDecoration3::BorderSize> s_borderSizes{
++    {QStringLiteral("None"), KDecoration3::BorderSize::None},
++    {QStringLiteral("NoSides"), KDecoration3::BorderSize::NoSides},
++    {QStringLiteral("Tiny"), KDecoration3::BorderSize::Tiny},
++    {QStringLiteral("Normal"), KDecoration3::BorderSize::Normal},
++    {QStringLiteral("Large"), KDecoration3::BorderSize::Large},
++    {QStringLiteral("VeryLarge"), KDecoration3::BorderSize::VeryLarge},
++    {QStringLiteral("Huge"), KDecoration3::BorderSize::Huge},
++    {QStringLiteral("VeryHuge"), KDecoration3::BorderSize::VeryHuge},
++    {QStringLiteral("Oversized"), KDecoration3::BorderSize::Oversized}};
++const QMap<KDecoration3::BorderSize, QString> s_borderSizeNames{
++    {KDecoration3::BorderSize::None, i18n("No Window Borders")},
++    {KDecoration3::BorderSize::NoSides, i18n("No Side Window Borders")},
++    {KDecoration3::BorderSize::Tiny, i18n("Tiny Window Borders")},
++    {KDecoration3::BorderSize::Normal, i18n("Normal Window Borders")},
++    {KDecoration3::BorderSize::Large, i18n("Large Window Borders")},
++    {KDecoration3::BorderSize::VeryLarge, i18n("Very Large Window Borders")},
++    {KDecoration3::BorderSize::Huge, i18n("Huge Window Borders")},
++    {KDecoration3::BorderSize::VeryHuge, i18n("Very Huge Window Borders")},
++    {KDecoration3::BorderSize::Oversized, i18n("Oversized Window Borders")}};
+ 
+-const QHash<KDecoration2::DecorationButtonType, QChar> s_buttonNames{
+-    {KDecoration2::DecorationButtonType::Menu, QChar('M')},
+-    {KDecoration2::DecorationButtonType::ApplicationMenu, QChar('N')},
+-    {KDecoration2::DecorationButtonType::OnAllDesktops, QChar('S')},
+-    {KDecoration2::DecorationButtonType::ContextHelp, QChar('H')},
+-    {KDecoration2::DecorationButtonType::Minimize, QChar('I')},
+-    {KDecoration2::DecorationButtonType::Maximize, QChar('A')},
+-    {KDecoration2::DecorationButtonType::Close, QChar('X')},
+-    {KDecoration2::DecorationButtonType::KeepAbove, QChar('F')},
+-    {KDecoration2::DecorationButtonType::KeepBelow, QChar('B')},
+-    {KDecoration2::DecorationButtonType::Shade, QChar('L')},
+-    {KDecoration2::DecorationButtonType::Spacer, QChar('_')},
++const QHash<KDecoration3::DecorationButtonType, QChar> s_buttonNames{
++    {KDecoration3::DecorationButtonType::Menu, QChar('M')},
++    {KDecoration3::DecorationButtonType::ApplicationMenu, QChar('N')},
++    {KDecoration3::DecorationButtonType::OnAllDesktops, QChar('S')},
++    {KDecoration3::DecorationButtonType::ContextHelp, QChar('H')},
++    {KDecoration3::DecorationButtonType::Minimize, QChar('I')},
++    {KDecoration3::DecorationButtonType::Maximize, QChar('A')},
++    {KDecoration3::DecorationButtonType::Close, QChar('X')},
++    {KDecoration3::DecorationButtonType::KeepAbove, QChar('F')},
++    {KDecoration3::DecorationButtonType::KeepBelow, QChar('B')},
++    {KDecoration3::DecorationButtonType::Shade, QChar('L')},
++    {KDecoration3::DecorationButtonType::Spacer, QChar('_')},
+ };
+ }
+ 
+@@ -52,7 +52,7 @@ namespace Utils
+ 
+ QString buttonsToString(const DecorationButtonsList& buttons)
+ {
+-    auto buttonToString = [](KDecoration2::DecorationButtonType button) -> QChar {
++    auto buttonToString = [](KDecoration3::DecorationButtonType button) -> QChar {
+         const auto it = s_buttonNames.constFind(button);
+         if (it != s_buttonNames.constEnd()) {
+             return it.value();
+@@ -86,22 +86,22 @@ DecorationButtonsList readDecorationButtons(const KConfigGroup& config,
+     return buttonsFromString(config.readEntry(key, buttonsToString(defaultValue)));
+ }
+ 
+-KDecoration2::BorderSize stringToBorderSize(const QString& name)
++KDecoration3::BorderSize stringToBorderSize(const QString& name)
+ {
+     auto it = s_borderSizes.constFind(name);
+     if (it == s_borderSizes.constEnd()) {
+         // non sense values are interpreted just like normal
+-        return KDecoration2::BorderSize::Normal;
++        return KDecoration3::BorderSize::Normal;
+     }
+     return it.value();
+ }
+ 
+-QString borderSizeToString(KDecoration2::BorderSize size)
++QString borderSizeToString(KDecoration3::BorderSize size)
+ {
+     return s_borderSizes.key(size);
+ }
+ 
+-const QMap<KDecoration2::BorderSize, QString>& getBorderSizeNames()
++const QMap<KDecoration3::BorderSize, QString>& getBorderSizeNames()
+ {
+     return s_borderSizeNames;
+ }
+diff --git a/kcms/decoration/utils.h b/kcms/decoration/utils.h
+index 45a537c300..4b60c87af6 100644
+--- a/kcms/decoration/utils.h
++++ b/kcms/decoration/utils.h
+@@ -6,12 +6,12 @@
+ 
+ #pragma once
+ 
+-#include <KDecoration2/DecorationButton>
++#include <KDecoration3/DecorationButton>
+ #include <KSharedConfig>
+ 
+ #include <QVector>
+ 
+-using DecorationButtonsList = QVector<KDecoration2::DecorationButtonType>;
++using DecorationButtonsList = QVector<KDecoration3::DecorationButtonType>;
+ 
+ namespace Utils
+ {
+@@ -22,9 +22,9 @@ DecorationButtonsList readDecorationButtons(const KConfigGroup& config,
+                                             const QString& key,
+                                             const DecorationButtonsList& defaultValue);
+ 
+-KDecoration2::BorderSize stringToBorderSize(const QString& name);
+-QString borderSizeToString(KDecoration2::BorderSize size);
++KDecoration3::BorderSize stringToBorderSize(const QString& name);
++QString borderSizeToString(KDecoration3::BorderSize size);
+ 
+-const QMap<KDecoration2::BorderSize, QString>& getBorderSizeNames();
++const QMap<KDecoration3::BorderSize, QString>& getBorderSizeNames();
+ 
+ }
