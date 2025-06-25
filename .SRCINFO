@@ -33,6 +33,7 @@ pkgbase = wlroots-0.19-mao-git
 	optdepends = xorg-xwayland: enable X11 support
 	provides = libwlroots-0.19.so
 	conflicts = wlroots-0.19-git
+	conflicts = wlroots0.19
 	options = debug
 	source = wlroots-0.19-mao-git::git+https://github.com/DreamMaoMao/wlroots
 	b2sums = SKIP

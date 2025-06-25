@@ -41,7 +41,7 @@ optdepends=(
 )
 provides=("libwlroots-0.19.so")
 source=("${pkgname}::git+${url}")
-conflicts=("wlroots-0.19-git")
+conflicts=("wlroots-0.19-git" "wlroots0.19")
 b2sums=('SKIP')
 _builddir="build"
 
