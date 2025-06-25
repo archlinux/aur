@@ -1,6 +1,6 @@
 pkgbase = alda-bin
 	pkgdesc = A music programming language for musicians
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/alda-lang/alda
 	arch = i686
@@ -9,13 +9,13 @@ pkgbase = alda-bin
 	depends = java-runtime>=8
 	provides = alda
 	conflicts = alda
-	source = alda-player-2.3.1::https://alda-releases.nyc3.digitaloceanspaces.com/2.3.1/player/non-windows/alda-player
+	source = alda-player-2.3.2::https://alda-releases.nyc3.digitaloceanspaces.com/2.3.2/player/non-windows/alda-player
 	source = LICENSE
-	sha256sums = 5f080e89d4239cc0a55cf212d493f3b1527a73bbd7c011c101f50f5f758bf2e5
+	sha256sums = 69456f09b584042f80929d97ceb1945e730d9c75c6b993e880af05b54e3ee802
 	sha256sums = f05036abc9c2bf11abecbdd874e9a4cbac8e0f6274afdf56c5cf8395238d1dc8
-	source_i686 = alda-2.3.1-i686::https://alda-releases.nyc3.digitaloceanspaces.com/2.3.1/client/linux-386/alda
-	sha256sums_i686 = 93dbb71ca157dac619a63b476f194d0546c075c40e31ae2b72ca3e75aede1231
-	source_x86_64 = alda-2.3.1-x86_64::https://alda-releases.nyc3.digitaloceanspaces.com/2.3.1/client/linux-amd64/alda
-	sha256sums_x86_64 = 9b877770b82a5a618cc3448ce09fbb9ef57fcad4a807ba1b3038890a1df26e84
+	source_i686 = alda-2.3.2-i686::https://alda-releases.nyc3.digitaloceanspaces.com/2.3.2/client/linux-386/alda
+	sha256sums_i686 = 0f3c7601e579ad8d0258715951941cb6e2b6e20a08566c10bae163fbaa784c97
+	source_x86_64 = alda-2.3.2-x86_64::https://alda-releases.nyc3.digitaloceanspaces.com/2.3.2/client/linux-amd64/alda
+	sha256sums_x86_64 = 881c67e68f2d37547d768e11504d76075e3ac45fd0a7f70f4a376f39ef9ad4cb
 
 pkgname = alda-bin
