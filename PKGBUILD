@@ -2,7 +2,7 @@
 # Contributor: Nicolas Stalder <n+archlinux@stalder.io>
 # Contributor: Shi Liang <shiliang2008@msn.com>
 pkgname=caddy-naiveproxy
-pkgver=2.8.4
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Caddy web server"
 arch=('any')
