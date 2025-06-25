@@ -1,6 +1,6 @@
 pkgbase = rime-wanxiang
 	pkgdesc = 万象拼音：带声调的拼音词库，万象拼音系列方案基础版，可扩展全拼、双拼、中英混输、语言模型
-	pkgver = 8.1.4
+	pkgver = 8.2
 	pkgrel = 1
 	url = https://github.com/amzxyz/rime_wanxiang
 	arch = any
@@ -9,15 +9,15 @@ pkgbase = rime-wanxiang
 	makedepends = rime-prelude
 	makedepends = rime-essay
 	makedepends = sed
-	source = 8.1.4.zip::https://github.com/amzxyz/rime_wanxiang/releases/download/v8.1.4/rime-wanxiang-base.zip
-	b2sums = 02c494d755adcc52f08ee11aa7d414f668d193312aa848f7c639c4bf20123b0381e718ad7fe3b38255a9377ef7882e429d88fd1ef45243e35e9bc961f41e2d89
+	source = 8.2.zip::https://github.com/amzxyz/rime_wanxiang/releases/download/v8.2/rime-wanxiang-base.zip
+	b2sums = 7045bb6be0da32b8c07e5d5091e5d5795ea1dab92994b682d745ac7a34768e385357a35e363c3019d517ea572526c56ad1c69f33a625a22e80d99424d21d5118
 
 pkgname = rime-wanxiang-base
 	pkgdesc = 万象拼音基础版基础文件
 	depends = lua
 	depends = librime
 	depends = rime-wanxiang-gram-zh-hans
-	depends = rime-wanxiang-dict-cn=8.1.4
+	depends = rime-wanxiang-dict-cn=8.2
 	optdepends = libnotify: notification support in lua scripts
 
 pkgname = rime-wanxiang-pinyin
