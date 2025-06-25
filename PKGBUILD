@@ -3,10 +3,11 @@
 : ${CARGO_HOME:=$SRCDEST/cargo-home}
 : ${CARGO_TARGET_DIR:=target}
 : ${RUSTUP_TOOLCHAIN:=stable}
+export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="mpd-discord-rpc"
 pkgname="$_pkgname-git"
-pkgver=1.7.3.r33.gc688f3b
+pkgver=1.8.1.r1.ga5c3361
 pkgrel=1
 pkgdesc="Displays metadata of currently playing song from MPD in Discord using Rich Presence"
 url="https://github.com/JakeStanger/mpd-discord-rpc"
@@ -37,8 +38,6 @@ pkgver() {
 }
 
 build() {
-  export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
-
   cd "$_pkgsrc"
   cargo build --release --locked --target-dir target
 }
