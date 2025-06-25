@@ -127,7 +127,7 @@ package_llvm19() {
   local _binary
   for _binary in "$pkgdir"/usr/lib/llvm19/bin/*; do
     local _basename=${_binary##*/}
-    ln -s "../lib/llvm19/bin/$_basename" "$pkgdir/usr/bin/$_basename-18"
+    ln -s "../lib/llvm19/bin/$_basename" "$pkgdir/usr/bin/$_basename-19"
   done
 
   install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
