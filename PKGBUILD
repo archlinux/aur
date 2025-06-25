@@ -25,7 +25,7 @@ pkgver() {
 
 prepare() {
   cd clients || exit
-  npm install
+  npm ci
 }
 
 build() {
