@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=PyCharm Community Edition
+Comment=The IDE for Pure Python Development.
+Exec=pycharm-community-edition %u
+Icon=pycharm-community-edition
+Terminal=false
+StartupNotify=true
+StartupWMClass=jetbrains-pycharm-ce
+Type=Application
+Categories=Development;IDE;Python;

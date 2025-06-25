@@ -1,0 +1,8 @@
+src/
+pkg/
+*.pkg.tar.zst
+*.tar.gz
+LICENSE*
+fsnotifier*
+.history/
+.vscode/
