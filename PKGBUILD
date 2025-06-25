@@ -1,7 +1,7 @@
 # Maintainer: Stikkot
 pkgname=app-opener
 pkgver=v1
-pkgrel=1
+pkgrel=4
 pkgdesc="Complex for open applications and start scripts..."
 arch=('any')
 url="https://github.com/stikundra-murtsi/app-opener"
