@@ -1,6 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=libsbml
-pkgver=5.20.4
+pkgver=5.20.5
 pkgrel=1
 pkgdesc="XML-based description language for computational models in systems biology"
 url="https://github.com/sbmlteam/libsbml"
@@ -10,11 +10,18 @@ depends=('libxml2')
 optdepends=('bzip2' 'python' 'perl' 'ruby' 'java-runtime') # 'octave' 'mono'
 makedepends=('cmake' 'swig' 'python' 'perl' 'ruby' 'java-environment') # 'octave', 'mono'
 options=('!libtool')
-source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('02c225d3513e1f5d6e3c0168456f568e67f006eddaab82f09b4bdf0d53d2050e')
+source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
+  fix-gcc15.patch::https://github.com/tim-gromeyer/html2md/commit/b77a8a8516dc4112a9c7f16bc7af04fcca7bda65.patch)
+sha256sums=('21c88c753a4a031f157a033de3810488b86f003e684c6ca7aa3d6e26e7e0acfc'
+            'aa23cb077e1bd98ba87a9dfc89fd3b837d8819ba466ed93e8ba306de5f31b3a4')
+
+prepare() {
+  cd $pkgname-$pkgver/src/sbml/html2md
+  patch -p2 < "$srcdir"/fix-gcc15.patch
+}
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   ./autogen.sh
 
   mkdir -p "$srcdir"/build-$pkgver && cd "$srcdir"/build-$pkgver
@@ -38,7 +45,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/build-$pkgver
+  cd build-$pkgver
   DESTDIR="$pkgdir" cmake -DCMAKE_INSTALL_PREFIX=/usr -P cmake_install.cmake
 
   rm "$pkgdir"/usr/share/cmake/Modules/Find{ZLIB,LIBXML,BZ2}.cmake
