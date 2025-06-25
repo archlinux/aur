@@ -6,8 +6,13 @@ pkgbase = python-hijridate
 	arch = any
 	license = MIT
 	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-hatchling
 	depends = python-hatch-fancy-pypi-readme
+	source = https://files.pythonhosted.org/packages/source/h/hijridate/hijridate-2.5.0.tar.gz
+	sha256sums = b47f0b2e5333d5d898c6f3472f5cee4a3f045c82d69c073c7a026f5a7aec5821
 
 pkgname = python-hijridate
