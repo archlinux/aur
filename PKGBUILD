@@ -1,8 +1,8 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
-pkgname=python-cgen
-_pkgname=cgen
-pkgver=2020.1
-pkgrel=5
+_name=cgen
+pkgname=python-$_name
+pkgver=2025.1
+pkgrel=1
 pkgdesc="A C/C++ source generation from an AST"
 arch=('any')
 url="https://github.com/inducer/cgen"
@@ -10,20 +10,20 @@ license=('MIT')
 depends=('python-pytools')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
-source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('3d7309225294b989a4759a9362a5cb8487ac69d97ef3a49e850905fa1c8d852f')
+source=($_name-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
+sha256sums=('c456dba68c4b69e28ec0f6bf88a746b09fd2d7fc4f29c5479a256800dfe4fb33')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py build
+  cd $_name-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd $_name-$pkgver
   python -m pytest
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --skip-build --optimize=1
+  cd $_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
