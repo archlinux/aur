@@ -21,27 +21,13 @@
 : ${_ver_clang=}
 : ${RUSTUP_TOOLCHAIN:=stable}
 
-# set to download only one language; en-US does not work
-: ${_lang=}
-
 ## update
 _icver="128.12.0"
 _commit="7286181cbff5c4b98ed9246366a85ae1fbc8f54d"
 _icsum="1f6d7577828c0c2eedcb4d761b6b7e7fbaa8d300f1ef866a761247991ee8a622"
 _ffsum="2bedeb86c6cb16cd3fce88d42ae4e245bafe2c6e9221ba8e445b8e02e89d973f"
 
-if [ -n "$_srcinfo" ]; then
-  : ${_lang:=en-US}
-fi
-
-## remove partial downloads
-# server cannot resume
-(
-  cd "$SRCDEST"
-  rm -f *.part
-)
-
-## basic info
+## package
 _pkgname="icecat"
 pkgname="$_pkgname"
 pkgver="$_icver"
@@ -147,24 +133,6 @@ _source_icecat() {
     "$_icsum"
     "$_ffsum"
   )
-
-  _languages=(
-    ach af an ar ast az be bg bn br bs ca ca-valencia cak cs cy da de dsb
-    el en-CA en-GB eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fur fy-NL
-    ga-IE gd gl gn gu-IN he hi-IN hr hsb hu hy-AM ia id is it ja ja-JP-mac
-    ka kab kk km kn ko lij lt lv mk mr ms my nb-NO ne-NP nl nn-NO oc
-    pa-IN pl pt-BR pt-PT rm ro ru sc sco si sk sl son sq sr sv-SE szl
-    ta te tg th tl tr trs uk ur uz vi xh zh-CN zh-TW
-  )
-
-  [ -n "$_lang" ] && _languages=("$_lang")
-
-  for _locale in "${_languages[@]}"; do
-    [ "$_locale" = "en-US" ] && continue
-    source+=("l10n-central-$pkgver-$pkgrel-$_locale.zip"::"https://hg.mozilla.org/l10n-central/$_locale/archive/tip.zip")
-    sha256sums+=('SKIP')
-    noextract+=("l10n-central-$pkgver-$pkgrel-$_locale.zip")
-  done
 }
 
 _source_icecat
@@ -194,16 +162,6 @@ _make_icecat() {
   local L10N_PREFS_DIR="browser/chrome/browser/preferences"
   local L10N_DTD_FILE="advanced-scripts.dtd"
 
-  for _locale in "${_languages[@]}"; do
-    mkdir -p "output/l10n/$_locale"
-    bsdtar -C "output/l10n/$_locale" --strip-components 1 -xf "$srcdir/l10n-central-$pkgver-$pkgrel-$_locale.zip"
-    mkdir -p "output/l10n/$_locale/$L10N_PREFS_DIR"
-    touch "output/l10n/$_locale/$L10N_PREFS_DIR/$L10N_DTD_FILE"
-    rm -rf "output/l10n/$_locale"/.hg*
-  done
-
-  mv output/l10n "output/$_pkgsrc/"
-
   echo "Patching sources..."
 
   # don't reset output folder (already done)
@@ -218,17 +176,6 @@ _make_icecat() {
     -e '/^verify_sources$/d' \
     -e '/^extract_sources$/d' \
     -i makeicecat
-
-  # don't redownload languages (already done)
-  sed -e '/^fetch_l10n$/d' -i makeicecat
-
-  # remove unwanted language data
-  for i in data/files-to-append/l10n/*; do
-    for j in "${_languages[@]}"; do
-      [ "$j" = "${i##*/}" ] && continue
-    done
-    rm -rf "$i"
-  done
 
   # produce icecat sources
   cd output
