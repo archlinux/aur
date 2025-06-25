@@ -1,6 +1,6 @@
 pkgname=vio2sf-git
 pkgver=r41.1d68801
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for decoding Nintendo DS Sound Format files"
 arch=(i686 x86_64)
 url='https://bitbucket.org/losnoco/vio2sf'
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname/src/vio2sf"
   make CFLAGS="$CFLAGS -c -fPIC" CXXFLAGS="$CXXFLAGS -c -fPIC"
-  "${CXX-c++}" "$CFLAGS" -Wl,-Bsymbolic -shared -lz -o libvio2sf.so desmume/*.o
+  "${CXX-c++}" $CFLAGS -Wl,-Bsymbolic -shared -lz -o libvio2sf.so desmume/*.o
 }
 
 package() {

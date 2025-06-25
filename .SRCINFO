@@ -1,7 +1,7 @@
 pkgbase = vio2sf-git
 	pkgdesc = Library for decoding Nintendo DS Sound Format files
 	pkgver = r41.1d68801
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/losnoco/vio2sf
 	arch = i686
 	arch = x86_64
