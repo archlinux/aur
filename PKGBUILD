@@ -1,38 +1,33 @@
-# Maintainer: Zen <dev@pyl.onl>
-pkgname=python-ugrd-git
-pkgver=1.27.1.r16.g29d8516
-pkgrel=6
-pkgdesc="Python based initramfs generator with TOML defintions"
-arch=('x86_64')
-url="https://github.com/desultory/ugrd"
-license=('GPL2')
-makedepends=(git python-build python-installer python-wheel python-setuptools)
-depends=(python-zenlib-git python-pycpio-git pax-utils)
-provides=(python-ugrd)
-conflicts=(python-ugrd)
-source=("git+https://github.com/desultory/ugrd")
-# https://wiki.gentoo.org/wiki/User:Zen_desu
-# gpg  --keyserver 'hkps://keys.openpgp.org' --recv-keys 7751D62F9F9A0454B86871CE64FA651BB8850B48
-#validpgpkeys=('7751D62F9F9A0454B86871CE64FA651BB8850B48')
-sha256sums=(SKIP) 
-backup=(etc/ugrd/config.toml)
-_name=${pkgname#python-};
-_name=${_name%-git}
+# Maintainer: AlphaLynx <alphalynx@protonmail.com>
+# Contributor: Zen <dev@pyl.onl>
 
-pkgver() {
-    cd $_name
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+pkgname=ugrd
+pkgver=2.0.0
+pkgrel=1
+pkgdesc='Minimalistic POSIX initramfs generator, designed for encrypted systems'
+arch=('any')
+url="https://github.com/desultory/$pkgname"
+license=('GPL-2.0-only')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+depends=('bc' 'pax-utils' 'python' 'python-pycpio' 'python-zenlib')
+optdepends=('python-zstandard: zstd cpio compression')
+provides=('initramfs')
+backup=("etc/$pkgname/config.toml")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+b2sums=('1275ca182c10bf2fb4aaad8e819af1142bfee2c98bb1c054a4e9edd2b8a19cb32aa22eceab7cb024006708b4414b442e692d3fd6ab42c56cdbff9bd739e21765')
 
 build() {
-    cd $_name
+    cd "$pkgname-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd $_name
+    cd "$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm0644 examples/example.toml "$pkgdir/etc/ugrd/config.toml"
-    install -Dm0644 completion/ugrd "$pkgdir/usr/share/bash-completion/completions/ugrd"
-    install -Dm0644 completion/_ugrd "$pkgdir/usr/share/zsh/site-functions/_ugrd"
+    install -Dm644 examples/example.toml "$pkgdir/etc/$pkgname/config.toml"
+    install -Dm644 completion/ugrd "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+    install -Dm644 completion/_ugrd "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+    install -Dm644 hooks/alpm/91-ugrd.hook "$pkgdir/usr/share/libalpm/hooks/91-$pkgname.hook"
 }
+
+# vim: set ts=4 sw=4 sts=4 et:

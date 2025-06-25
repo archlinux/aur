@@ -1,0 +1,4 @@
+[ugrd]
+source = "github"
+github = "desultory/ugrd"
+use_latest_release = true
