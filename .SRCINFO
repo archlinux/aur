@@ -1,7 +1,7 @@
 pkgbase = gitnuro-bin
 	pkgdesc = A FOSS Git multiplatform client for newbies and pros
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JetpackDuba/Gitnuro
 	arch = x86_64
 	arch = aarch64
@@ -18,9 +18,9 @@ pkgbase = gitnuro-bin
 	sha256sums = c881f04e9af5eb3ec865656c91880748d503a0ce929d2a09e0a571629e43c240
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = bb1c63a772d78a429b6fb24a644a6331efd79eb5ed3238fefdfbc51a5701aa69
-	source_x86_64 = gitnuro-bin-x86_64-1.5.0.jar::https://github.com/JetpackDuba/Gitnuro/releases/download/v1.5.0/Gitnuro-linux-x86_64-1.5.0-1.5.0.jar
+	source_x86_64 = gitnuro-bin-x86_64-1.5.0.jar::https://github.com/JetpackDuba/Gitnuro/releases/download/v1.5.0/Gitnuro-linux-x86_64-1.5.0.jar
 	sha256sums_x86_64 = 128063c3df0ee603b6c133b7e0a32215eb5eaf261aa590bcdcc51f22ac6d6e64
-	source_aarch64 = gitnuro-bin-aarch64-1.5.0.jar::https://github.com/JetpackDuba/Gitnuro/releases/download/v1.5.0/Gitnuro-linux-arm_aarch64-1.5.0-1.5.0.jar
+	source_aarch64 = gitnuro-bin-aarch64-1.5.0.jar::https://github.com/JetpackDuba/Gitnuro/releases/download/v1.5.0/Gitnuro-linux-arm_aarch64-1.5.0.jar
 	sha256sums_aarch64 = a009826a9bbdc454b52cc6ac8f6d6adfd43fe328cb87a319c7bf6d0bc62395e7
 
 pkgname = gitnuro-bin
