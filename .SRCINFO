@@ -1,7 +1,7 @@
 pkgbase = yara-x
 	pkgdesc = A pure Rust implementation of YARA
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VirusTotal/yara-x
 	arch = any
 	license = BSD-3-Clause
