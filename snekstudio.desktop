@@ -2,7 +2,7 @@
 Name=SnekStudio
 GenericName=VTuber Software
 Comment=Open-source VTuber software
-Exec=/usr/share/snekstudio/snekstudio
+Exec=/usr/bin/snekstudio
 Path=/usr/share/snekstudio
 Icon=/usr/share/pixmaps/snekstudio.png
 Terminal=false
