@@ -3,7 +3,7 @@ pkgname="sddm-silent-theme"
 _upstream_name="SilentSDDM"
 pkgdesc="Highly customizable SDDM theme"
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 depends=('sddm' 'qt6-svg' 'qt6-virtualkeyboard' 'qt6-multimedia-ffmpeg' 'redhat-fonts')
 url='https://github.com/uiriansan/SilentSDDM'
@@ -15,7 +15,8 @@ backup=('usr/share/sddm/themes/silent/metadata.desktop')
 package() {
     cd "$_upstream_name-1.0" # author decided to use x.x for this release
     rm install.sh
-    rm -r docs
+    # docs/ contains the screenshot for the theme
+    # rm -r docs
     rm -rf .github
     rm -r fonts # not used by the theme from that directory. satisfied by redhat-fonts
     rm -f ./*.nix
