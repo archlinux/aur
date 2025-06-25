@@ -9,5 +9,7 @@ pkgbase = yt-snip
 	makedepends = gcc
 	depends = yt-dlp
 	depends = ffmpeg
+	source = yt-snip-1.0.0.tar.gz::https://github.com/melqtx/yt-snip/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = yt-snip
