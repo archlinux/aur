@@ -1,6 +1,6 @@
 pkgbase = sddm-silent-theme-git
 	pkgdesc = Highly customizable SDDM theme (git version)
-	pkgver = r20250622.g296c611
+	pkgver = r20250623.gbf6544d
 	pkgrel = 2
 	url = https://github.com/uiriansan/SilentSDDM
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = sddm-silent-theme-git
 	depends = redhat-fonts
 	provides = sddm-silent-theme
 	conflicts = sddm-silent-theme
+	backup = usr/share/sddm/themes/silent/metadata.desktop
 	source = git+https://github.com/uiriansan/SilentSDDM.git
 	sha256sums = SKIP
 
