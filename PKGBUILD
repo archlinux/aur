@@ -1,10 +1,11 @@
-# Maintainer: graysky <therealgraysky AT proton DOT me>
+# Maintainer: Heyian <heyian404 AT on DOT me>
+# Contributor: graysky <therealgraysky AT proton DOT me>
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname=profile-sync-daemon-git
 _pkgname=${pkgname/-git/}
-_branch=fuse-overlayfs
-pkgver=r738.6c925e4
+_branch=master
+pkgver=r751.cd8c2a3
 pkgrel=1
 pkgdesc="Symlinks and syncs browser profile dirs to RAM"
 arch=('any')
