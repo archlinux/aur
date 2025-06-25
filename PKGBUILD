@@ -2,16 +2,16 @@
 pkgname=sonarlint-ls-bin
 arch=('x86_64')
 url=https://github.com/SonarSource/sonarlint-language-server
-pkgver=3.24.0
+pkgver=3.25.0
 pkgrel=1
-_vscodeVersion=4.24.0
-_vscodeBuild=77775
+_vscodeVersion=4.25.0
+_vscodeBuild=77833
 pkgdesc="SonarLint language server (used by SonarLint VSCode)"
 license=('LGPLv3')
 depends=('java-runtime>=17')
 conflicts=('sonarlint-ls')
 source=("https://github.com/SonarSource/sonarlint-vscode/releases/download/${_vscodeVersion}%2B${_vscodeBuild}/sonarlint-vscode-${_vscodeVersion}.vsix" 'sonarlint-ls')
-sha256sums=('64e4260b2e4918b38eaaa88e3adeebcf4c400b478e6e13b4294cfe05bf79b4b6' 'b951d9b6f1e1f9f70430776d958487b385cc8290c0a48335d938b3128e1a80c4')
+sha256sums=('75d2c6cc458a16df53567f7de0421811ff1254394c9c9123a9ce842d71bbbe40' 'b951d9b6f1e1f9f70430776d958487b385cc8290c0a48335d938b3128e1a80c4')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
