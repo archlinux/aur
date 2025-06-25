@@ -1,7 +1,7 @@
 # Maintainer: noodle <silentnoodle@cock.li>
 pkgname=passbolt-cli
 _pkgname=go-passbolt-cli
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Passbolt CLI tool'
 arch=('x86_64')
@@ -9,17 +9,17 @@ url="https://passbolt.com"
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/passbolt/$_pkgname/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('15c7c0141ae1fd9cb304dd4c1747c8c2f1fe2c9555f04f69d31f3c3ec9547686')
+sha256sums=('4e88aa088b68a7101ca89a97184eb5427aa9b70d52df077f7d56c2ff3672fe06')
 
-prepare(){
+prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
   mkdir -p build/
   mkdir -p completion
   mkdir -p man/
-  go run . completion bash > completion/bash
-  go run . completion zsh > completion/zsh
-  go run . completion fish > completion/fish
-  go run . completion powershell > completion/powershell
+  go run . completion bash >completion/bash
+  go run . completion zsh >completion/zsh
+  go run . completion fish >completion/fish
+  go run . completion powershell >completion/powershell
   go run . gendoc --type man
 }
 
@@ -29,8 +29,8 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build .
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go build -ldflags "-linkmode=external -X=main.version=${pkgver} -X=main.date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" -o build .
 }
 
 package() {
