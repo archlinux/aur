@@ -1,0 +1,12 @@
+pkgbase = fractal-udev
+	pkgdesc = Udev rules for Fractal devices (Adjust Pro Hub, Scape); Non-official, custom for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://support.fractal-design.com
+	arch = any
+	license = MIT
+	depends = udev
+	source = 71-fractal.rules
+	b2sums = SKIP
+
+pkgname = fractal-udev
