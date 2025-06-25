@@ -3,12 +3,12 @@
 
 pkgname=python-pycifrw
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CIF/STAR file support for Python'
 arch=(any)
 url=https://github.com/jamesrhester/pycifrw
 license=(Python-2.0)
-depends=(python)
+depends=(python python-prettytable python-ply python-numpy)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 _name=${pkgname#python-}
 source=(https://github.com/jamesrhester/${_name}/archive/v${pkgver}/${_name}-${pkgver}.tar.gz)
