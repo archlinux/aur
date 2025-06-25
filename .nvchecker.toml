@@ -1,0 +1,5 @@
+[wcc]
+source = "github"
+github = "endrazine/wcc"
+use_max_tag = true
+prefix = "v"
