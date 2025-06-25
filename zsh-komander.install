@@ -1,15 +1,4 @@
 post_install() {
-	echo "Autoinstall start..."
-	echo "Change shell..."
-	chsh -s zsh
-	echo "Create zsh-komander..."
-	mv "/usr/share/zsh-komander/zsh-komander.zsh" "$HOME/.zshrc"
-}
-
-post_update() {
-	post_install
-}
-
-post_remove() {
-	echo "Komander is removed..."
+	echo "(ru) Для остальной настройки zsh-comander надо ввести команду konamder-setup..."
+	echo "(en) For the rest of the zsh-comander configuration, you need to enter the command konamder-setup..."
 }
