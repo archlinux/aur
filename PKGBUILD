@@ -4,8 +4,8 @@
 
 pkgname=python-httpx-sse
 _name=${pkgname#python-}
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Consume Server-Sent Event (SSE) messages with HTTPX"
 arch=(any)
 url="https://github.com/florimondmanca/httpx-sse"
@@ -27,7 +27,7 @@ checkdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('3c0a5eb3ddb855e99d3e5c8c86c524bbc5dbca71225769c6a19ee9456ebd8c52')
+sha256sums=('a7d814a63a5bcfceb739ef59fd96a26a38941a70306d0ceb99811b0d2fe5fa6e')
 
 _archive="$_name-$pkgver"
 
