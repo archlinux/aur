@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=BodySlide
-Exec=env WX_BODYSLIDE_DATA_DIR=/usr/share/bodyslide /usr/bin/BodySlide %U
+Exec=/usr/bin/bodyslide %U
 Terminal=false
 Type=Application
 Icon=BodySlide

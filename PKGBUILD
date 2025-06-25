@@ -9,13 +9,14 @@ arch=('x86_64')
 url="https://github.com/ousnius/BodySlide-and-Outfit-Studio"
 license=('GPL-3.0-only')
 keywords=('bethesda')
-depends=('wxwidgets-gtk3')
-makedepends=('git'
-	'gcc'
+depends=('wxwidgets-gtk3'
 	'glew'
+)
+makedepends=('cmake'
+	'git'
+	'gcc'
 	'directx-headers'
 	'fbx-sdk'
-	'xdg-utils'
 )
 optdepends=('libxml2-legacy')
 source=("${pkgname}::git+https://github.com/wrb2012/BodySlide-and-Outfit-Studio.git"
@@ -40,8 +41,8 @@ build() {
 }
 
 package() {
-	install -Dm755 ${pkgname}/build/BodySlide ${pkgdir}/usr/bin/BodySlide
-	install -Dm755 ${pkgname}/build/OutfitStudio ${pkgdir}/usr/bin/OutfitStudio
+	install -Dm755 ${pkgname}/build/BodySlide ${pkgdir}/usr/bin/${pkgname}
+	install -Dm755 ${pkgname}/build/OutfitStudio ${pkgdir}/usr/bin/outfitstudio
 	install -Dm644 BodySlide.desktop ${pkgdir}/usr/share/applications/BodySlide.desktop
 	install -Dm644 OutfitStudio.desktop ${pkgdir}/usr/share/applications/OutfitStudio.desktop
 	install -Dm777 ${pkgname}/Config.xml ${pkgdir}/usr/share/${pkgname}/Config.xml
@@ -49,6 +50,10 @@ package() {
         install -Dm777 ${pkgname}/OutfitStudio.xml ${pkgdir}/usr/share/${pkgname}/OutfitStudio.xml
 	cp -r ${pkgname}/res ${pkgdir}/usr/share/${pkgname}/
 	cp -r ${pkgname}/lang ${pkgdir}/usr/share/${pkgname}/
+	pushd ${pkgdir}/usr/share/
+	ln -s ${pkgname} outfitstudio
+	chmod 777 ${pkgname}
+	popd
 
 	install -Dm644 ${pkgname}/res/images/BodySlide.png ${pkgdir}/usr/share/icons/HighContrast/256x256/apps/BodySlide.png
 	install -Dm644 ${pkgname}/res/images/OutfitStudio.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/OutfitStudio.png
