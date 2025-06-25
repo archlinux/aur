@@ -3,7 +3,7 @@
 # Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
 
 pkgname=albert
-pkgver=0.29.1
+pkgver=0.29.2
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
@@ -59,4 +59,4 @@ package() {
   install -Dm644 "$srcdir/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=('93d26c4fd6dfbaf0089ae2d8a42282243df8cf95215e67c148b4da9d6c602b809fce9b1d29e9b780b89f5d5fa3b88a3d264cf5ceed746dd51707a3dfe5a5cdef')
+sha512sums=('013cf4af952e3e24b80ce370222c981c8e345d03a8a89bdbde5a21cc4aca605c4321c218ce5202efafc4d61199be57393e080fcb01a405aaa75b35ee6c9e9fe9')
