@@ -5,12 +5,11 @@ pkgdesc="fasttext with wheels and no external dependency, but only the predict m
 url="https://github.com/searxng/fasttext-predict"
 provides=("python-fasttext-predict")
 conflicts=("python-fasttext" "python-fasttest-git" "python-fasttext-predict")
-pkgver=0.9.2.1.r0.g0807442
-pkgrel=3
+pkgver=0.9.2.3.r1.g93501d1
+pkgrel=1
 arch=("x86_64")
 license=("MIT")
-makedepends=("git" "python-setuptools")
-depends=("pybind11")
+makedepends=("git" "python-setuptools" "pybind11")
 source=("${pkgname}::git+$url.git")
 b2sums=("SKIP")
 
