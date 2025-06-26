@@ -1,7 +1,7 @@
 # Maintainer: Lukas Pöschl <lukas@smart-ies.de>
 
 pkgbase=linux-morphius
-pkgver=6.12.8
+pkgver=6.15.3
 pkgrel=1
 pkgdesc='Linux-morphius'
 _srctag=v${pkgver%.*}-${pkgver##*.}
