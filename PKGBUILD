@@ -1,14 +1,15 @@
-# Maintainer: Keiran keiran0@proton.me
+# Maintainer: Keiran <keiran0@proton.me>
+# Made possible by: Gurov <https://github.com/Gur0v>
 pkgname=archium
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
-pkgdesc="Archium is a wrapper for AUR helpers such as YAY and Paru"
+pkgdesc="Fast & Easy Package Management for Arch Linux"
 arch=('x86_64')
-url="https://github.com/q4ow/archium"
+url="https://github.com/keircn/archium"
 license=('GPL')
 depends=('git' 'readline' 'ncurses')
 makedepends=('gcc' 'make')
-source=("git+https://github.com/q4ow/archium.git#tag=v${pkgver}")
+source=("git+https://github.com/keircn/archium.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {

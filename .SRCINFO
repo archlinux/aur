@@ -1,8 +1,8 @@
 pkgbase = archium
-	pkgdesc = Archium is a wrapper for AUR helpers such as YAY and Paru
-	pkgver = 1.6.0
+	pkgdesc = Fast & Easy Package Management for Arch Linux
+	pkgver = 1.6.1
 	pkgrel = 1
-	url = https://github.com/q4ow/archium
+	url = https://github.com/keircn/archium
 	arch = x86_64
 	license = GPL
 	makedepends = gcc
@@ -10,7 +10,7 @@ pkgbase = archium
 	depends = git
 	depends = readline
 	depends = ncurses
-	source = git+https://github.com/q4ow/archium.git#tag=v1.6.0
+	source = git+https://github.com/keircn/archium.git#tag=v1.6.1
 	sha256sums = SKIP
 
 pkgname = archium
