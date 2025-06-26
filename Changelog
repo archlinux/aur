@@ -1,9 +1,18 @@
 -------------------------------------------------------
  Changelog    : dns_tools
- Tags         : 4.5.0 ➙ 4.9.0
-              : 2025-06-10 ➙ 2025-06-22
+ Tags         : 4.7.0 ➙ 4.10.1
+              : 2025-06-15 ➙ 2025-06-26
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-26   : 4.10.1
+                update arch PKGBUILD
+                update Docs/Changelog Docs/${my_name}.pdf
+
+ 2025-06-26   : 4.10.0
+                Use run_prog from pyconcurrent if available otherwise use local copy.
+                Sync local copy of run_prog from pyconcurrent
+ 2025-06-22     update Docs/Changelog Docs/${my_name}.pdf
 
  2025-06-22   : 4.9.0
                 run_prog: Sync local copy with latest from pycocurrent
@@ -15,12 +24,3 @@
 
  2025-06-15   : 4.7.0
                 update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-06-15   : 4.6.0
-                run_prog: Use non-blocking IO with the select() loop
- 2025-06-10     update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-06-10   : 4.5.0
-                Enhance run_prog to pass env.
-                pytest now uses the run_prog from src via a symlink
- 2025-06-08     update Docs/Changelog Docs/${my_name}.pdf

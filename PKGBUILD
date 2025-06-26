@@ -10,13 +10,15 @@ pkgname='dns_tools'
 pkgdesc='DNS Tools for managing DNSSEC aka easy dnssec'
 _gitname='dns_tools'
 
-pkgver=4.9.0
+pkgver=4.10.1
 pkgrel=1
 url="https://github.com/gene-git/dns_tools"
 
 arch=(any)
 license=(MIT)
 depends=('python>=3.13' 'ldns' 'lockmgr')
+optdepends=('pyconcurrent')
+
 # To build docs uncommont sphinx/texlive
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync'
             #'python-sphinx' 'texlive-latexextra' # Docs
