@@ -1,5 +1,5 @@
 pkgbase = python-pydantic-ai
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/pydantic/pydantic-ai
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = python-pydantic-ai
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/pydantic/pydantic-ai/archive/refs/tags/v0.3.3.tar.gz
-	sha256sums = b35a6c7fde75ac61482461f3c3e6a5590ca6c17c044a1c037ad51a62b59a8982
+	source = https://github.com/pydantic/pydantic-ai/archive/refs/tags/v0.3.4.tar.gz
+	sha256sums = 94fddc4b784d4556938b7c82ee6641bcc803131707a6733068b3ffacd18708c0
 
 pkgname = python-fasta2a
 	pkgdesc = Convert an AI Agent into a A2A server! ✨
