@@ -1,0 +1,21 @@
+pkgbase = python-dicopp
+	pkgdesc = Direct Connect ++ client
+	pkgver = 1.0.45
+	pkgrel = 0
+	url = https://github.com/colin-i/dico
+	arch = any
+	license = 0BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = gtk4
+	depends = python-appdirs
+	depends = python-psutil
+	depends = python-gobject
+	depends = python-requests
+	depends = eiskaltdcpp-daemon
+	source = https://files.pythonhosted.org/packages/source/d/dicopp/dicopp-1.0.45.tar.gz
+	sha256sums = 2f1de9364c9051dc2f66352bde11fe250328cd0a763150b0c7261975e6d42bb9
+
+pkgname = python-dicopp
