@@ -1,6 +1,6 @@
 pkgbase = maretf-bin
 	pkgdesc = A work in progress command-line utility to work with VTF files.
-	pkgver = 0.6.1
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/craftablescience/MareTF
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = maretf-bin
 	depends = gcc-libs
 	provides = maretf
 	conflicts = maretf
-	source = https://github.com/craftablescience/MareTF/releases/download/v0.6.1/MareTF-Linux-Standalone-gcc-release.zip
-	source = https://github.com/craftablescience/MareTF/archive/refs/tags/v0.6.1.tar.gz
-	sha256sums = 7c499dc213244bd4a1837c57f7c900e3def405f0fa79625b6d6102878f4dbb32
-	sha256sums = ea45d88c1d4ef5c971595e5a380858b7172cc1c40e6f130bc3624e72df8ab380
+	source = https://github.com/craftablescience/MareTF/releases/download/v0.6.3/MareTF-Linux-Standalone-gcc-release.zip
+	source = https://github.com/craftablescience/MareTF/archive/refs/tags/v0.6.3.tar.gz
+	sha256sums = 97ba77db86995286304818b3f73a6074e0fa0fd49d1045dde9839f93fa9d4401
+	sha256sums = a34ff954dff356873ba47887bb816df7d5fd435c516d0c6e82137231199060ef
 
 pkgname = maretf-bin
