@@ -1,7 +1,7 @@
 pkgbase = sxwm
 	pkgdesc = Tiling window managers don't have to be difficult
 	pkgver = 1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/uint23/sxwm
 	arch = i686
 	arch = x86_64
