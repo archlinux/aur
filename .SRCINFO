@@ -1,7 +1,7 @@
 pkgbase = pineflash
 	pkgdesc = A tool to flash ironos to the pinecil soldering iron and possibly other pine64 devices in the future
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Spagett1/PineFlash
 	arch = x86_64
 	license = GPL-2.0-or-later

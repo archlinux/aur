@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=pineflash
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to flash ironos to the pinecil soldering iron and possibly other pine64 devices in the future"
 arch=('x86_64')
 url="https://github.com/Spagett1/PineFlash"
@@ -29,4 +29,8 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	install -Dm755 target/release/${pkgname} "$pkgdir/usr/bin/${pkgname}"
+	install -Dm644 assets/Pineflash.desktop "$pkgdir/usr/share/applications/pineflash.desktop"
+	install -Dm644 assets/pine64logo.png "$pkgdir/usr/share/pixmaps/pine64logo.png"
+	sed -i 10d "$pkgdir/usr/share/applications/pineflash.desktop"
+	echo "TryExec=pineflash" >> "$pkgdir/usr/share/applications/pineflash.desktop"
 }
