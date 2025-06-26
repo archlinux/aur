@@ -1,6 +1,6 @@
 # Maintainer: Arnaud Gissinger <agissing@student.42.fr>
 pkgname=rofi-notion
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Quickly create new Notion pages for your databases with rofi as GUI."
 arch=('any')
