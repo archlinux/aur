@@ -7,10 +7,8 @@ url="https://github.com/iamllcoolray/utiliti-aur-package"
 license=('MIT')
 depends=('java-runtime')
 options=(!strip)
-# Tell makepkg to copy your local zip instead of downloading
-DLAGENTS=('local::/bin/cp')
 source=(
-  "local://litiengine-linux.zip"
+  "https://github.com/iamllcoolray/utiliti-aur-package/releases/download/v$pkgver/litiengine-linux.zip"
   "utiLITI.desktop"
 )
 sha256sums=('SKIP' 'SKIP')
