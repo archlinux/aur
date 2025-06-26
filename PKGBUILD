@@ -1,7 +1,7 @@
 # Maintainer: t4k1t <t4k1t plus aur at protonmail dot com>
 
 pkgname=battered
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Regularly polls battery levels and reacts to crossing configurable thresholds."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/t4k1t/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('058d9b542734bbc3e19685aecd28cdec1cd142b02f19b0db7e84439f95283fdf5b9ad678685f43c92e8e1a9236637a6b43dad8970f14767fd4812a30515c5f43')
+b2sums=('5f2dcfb83f1e8e6d458a69c573122b373fa809faf4c0571f2744374c185fc9dda567b46b3894b950ea8aeb4158695b5f94d2e69ab7ab7faafe3f0dd323e93905')
 options=(!lto)
 
 build() {
@@ -22,12 +22,14 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm755 "target/release/battered" "$pkgdir/usr/bin/battered"
+  install -Dm755 "target/release/battered" "${pkgdir}/usr/bin/battered"
 
   # Documentation
-  install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "docs/man/${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
+  install -Dm644 "docs/man/${pkgname}.5.gz" "${pkgdir}/usr/share/man/man5/${pkgname}.5.gz"
 
   # systemd unit
-  install -Dm644 "examples/battered.service" "$pkgdir/usr/lib/systemd/user/battered.service"
+  install -Dm644 "examples/battered.service" "${pkgdir}/usr/lib/systemd/user/battered.service"
 }
