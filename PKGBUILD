@@ -10,7 +10,7 @@ _name00=clai
 pkgbase=python-${_name0}
 pkgname=(python-${_name5} python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0} python-${_name00})
 pkgver=0.3.4
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
 license=('MIT')
@@ -30,6 +30,7 @@ prepare(){
 
 build() {
   cd "${srcdir}"/${_name0}-${pkgver}
+  git tag -d v${pkgver}
   git tag v${pkgver}
   python -m build --wheel --no-isolation ${_name5}
   python -m build --wheel --no-isolation ${_name0//-ai/_}${_name4}
