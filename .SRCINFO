@@ -1,14 +1,14 @@
 pkgbase = osu
 	pkgdesc = A free-to-win rhythm game
 	pkgver = 20250521
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osu.ppy.sh
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	makedepends = icoutils
-	makedepends = umu-launcher
 	depends = lib32-gnutls
+	depends = umu-launcher
 	depends = lib32-libxcomposite
 	depends = lib32-gst-plugins-base-libs
 	optdepends = pipewire-pulse: low-latency audio backend

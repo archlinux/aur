@@ -11,14 +11,14 @@
 
 pkgname='osu'
 pkgver='20250521'
-pkgrel=2
+pkgrel=3
 pkgdesc='A free-to-win rhythm game'
 _terms_commit='b8a98fb740ed8251958f16d719138e96afa6e299'
 arch=('i686' 'x86_64')
 url='https://osu.ppy.sh'
-license=('custom')
-depends=('lib32-gnutls' 'lib32-libxcomposite' 'lib32-gst-plugins-base-libs')
-makedepends=('icoutils' 'umu-launcher')
+license=('LicenseRef-custom')
+depends=('lib32-gnutls' 'umu-launcher' 'lib32-libxcomposite' 'lib32-gst-plugins-base-libs')
+makedepends=('icoutils')
 optdepends=('pipewire-pulse: low-latency audio backend')
 source=("${pkgname}-installer-${pkgver}.exe::https://m1.ppy.sh/r/osu!install.exe"
         "${pkgname}-terms-${_terms_commit}.md::https://raw.githubusercontent.com/ppy/osu-wiki/${_terms_commit}/wiki/Legal/Terms/en.md"
@@ -44,5 +44,8 @@ package() {
 	install -D -m 644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/sh.ppy.osu.stable.desktop"
 	install -D -m 644 'osu-stable.png' "${pkgdir}/usr/share/icons/hicolor/256x256/apps/osu-stable.png"
 	install -D -m 644 'osu-importable.png' "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes/application-x-osu-importable.png"
+	# Add copyright notice as a text file
+	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+	echo "https://osu.ppy.sh/legal/en/Copyright" > "${pkgdir}/usr/share/licenses/${pkgname}/copyright"  
 }
 # vim:set ts=2 sw=2 et:
