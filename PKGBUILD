@@ -1,17 +1,18 @@
-# Maintainer: Gleb Buzin <qufiwefefwoyn@gmail.com>
+# Contributor: Gleb Buzin <qufiwefefwoyn@gmail.com>
 # Contributor: Vlad Frolov <frolvlad@gmail.com>
+# Contributor: tee < teeaur at duck dot com >
 
 pkgname=jql
-pkgver=7.1.2
+pkgver=8.0.7
 pkgrel=1
 pkgdesc="A JSON Query Language CLI tool"
 url="https://github.com/yamafaktory/jql"
 depends=('gcc-libs')
 makedepends=('cargo')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('MIT')
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/yamafaktory/jql/archive/jql-v${pkgver}.tar.gz)
-sha512sums=('41b9c83c6397868f4be969677a8125a3d0c1214b975618cfe6b9bf9e01caf15dd86fcfac55adf80111bbc3d1cf68755e7765d94223479adee4684fa162033f53')
+source=("$url/archive/jql-v${pkgver}.tar.gz")
+sha512sums=('a9b2d7f1eb42f1912832838bdfeeeef1786595caf6622c4b8baac522f59d546d2c55a4c5b87f45a30c7c2e0b59c4f9ef1c1db1b92d9d2799ce4ca6c2ba64cb4f')
 
 build() {
   cd "${pkgname}-${pkgname}-v${pkgver}"
@@ -25,9 +26,7 @@ check() {
 
 package() {
   cd "${pkgname}-${pkgname}-v${pkgver}"
-  install -Dm755 \
-    "target/release/jql" \
-    -t "${pkgdir}/usr/bin"
+  install -Dm755 "target/release/jql" -t "${pkgdir}/usr/bin"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 LICENSE-MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
