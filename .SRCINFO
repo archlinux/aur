@@ -10,6 +10,6 @@ pkgbase = sink-switch
 	depends = pipewire
 	depends = pulseaudio-utils
 	source = https://github.com/KanishkMishra143/sink-switch/archive/refs/tags/v1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 2a23c2f5ba15bec207f9d67052fba57f2aa5d1ecad0b64f160c8aa68874c2232
 
 pkgname = sink-switch
