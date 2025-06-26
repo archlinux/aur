@@ -1,12 +1,13 @@
 pkgbase = cuckoo-chrome
 	pkgdesc = A tool to make managing linux installations on chromebooks easier.
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pl-luk/cuckoo
 	arch = x86_64
 	license = GPL3
 	depends = python3
 	depends = python-configobj
+	depends = python-cryptography
 	depends = openssl
 	depends = vboot-utils
 	backup = etc/cuckoo.ini
