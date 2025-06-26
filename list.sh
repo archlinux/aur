@@ -2,7 +2,7 @@
 
 # Переменные
 app=$1
-p=$2
+p="$HOME/.app-opener/"
 
 # Приложения
 applist() {

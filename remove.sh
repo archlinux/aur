@@ -3,8 +3,8 @@
 t="$1"
 app="$2"
 p="$3"
-rmapp=$p"apps/"$app
-rmscr=$p"scripts/"$app
+rmapp="$HOME/.app-opener/apps/"$app
+rmscr="$HOME/.app-opener/scripts/"$app
 
 # Функция удаления
 remv() {

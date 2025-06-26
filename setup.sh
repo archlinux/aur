@@ -6,7 +6,7 @@ p="$2"
 n1="$3"
 n2="$4"
 papop="$5"
-error="Для подсказки используй app setup help"
+error="For a hint use command - app setup help"
 
 # Установка -с
 create() {
