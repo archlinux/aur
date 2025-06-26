@@ -1,9 +1,9 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_pkgauthor=q4ow
+_pkgauthor=keircn
 _pkgname=archium
 pkgname=${_pkgname}-bin
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Archium is a wrapper for AUR helpers such as YAY and Paru"
 arch=('x86_64')
@@ -13,14 +13,14 @@ license=('MIT')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('glibc' 'ncurses' 'readline')
+depends=('glibc' 'readline')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}::${_urlraw}/README.md")
-source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'defba236d8cddf26c5db400f888b1970f78cda39f7edf36b8ffc9d0374fdfb21')
-sha256sums_x86_64=('b45c395e42282e631572885d3939f38864f78726c9a333e895580583f7e32aa3')
+            '9f78d02891b02dea0f2c9b989bcec678286239b2125fbd690999f57f66162d9d')
+sha256sums_x86_64=('c577e787f6d6848763473489c3acb218549950452b1de284a0d0967e0f8ec3a1')
 
 
 prepare() {
