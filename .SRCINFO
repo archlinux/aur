@@ -1,10 +1,11 @@
 pkgbase = faugus-launcher
 	pkgdesc = A simple and lightweight app for running Windows games using UMU-Launcher
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Faugus/faugus-launcher
 	arch = any
 	license = MIT
+	makedepends = meson
 	depends = python
 	depends = python-gobject
 	depends = python-requests
