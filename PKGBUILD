@@ -1,7 +1,7 @@
 # Maintainer: Wereii <aur+me@wereii.cz>
 
 pkgname=fractal-udev
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Udev rules for Fractal devices (Adjust Pro Hub, Scape); Non-official, custom for Arch Linux"
 arch=(any)
