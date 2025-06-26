@@ -1,4 +1,5 @@
-
+# Maintainer: Daniel Hufschläger <daniel at hufschlaeger dot net>
+#
 pkgname=tasky-git
 pkgver=1.0.0
 pkgrel=1
