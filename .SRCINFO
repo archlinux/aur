@@ -1,6 +1,6 @@
 pkgbase = kaf-cli
 	pkgdesc = 把txt文本转成epub与mobi电子书的命令行工具
-	pkgver = v1.3.11
+	pkgver = v1.3.13
 	pkgrel = 1
 	url = https://github.com/ystyle/kaf-cli
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = kaf-cli
 	arch = loong64
 	license = MulanPSL
 	optdepends = kindlegen: 在x86_64上用于生成标准的mobi格式
-	source_x86_64 = https://github.com/ystyle/TmdTextEpub/releases/download/v1.3.11/kaf-cli_v1.3.11_linux_amd64.zip
-	sha512sums_x86_64 = 2ced630dc9c4a915a0b716e0e8c7158de77f9523feeb5f9bc7b2eb8c010a2407853731217c24c3cb08b3743d39acfeba1cede08b4cb564f7a6f3cbb627386cbc
-	source_aarch64 = https://github.com/ystyle/TmdTextEpub/releases/download/v1.3.11/kaf-cli_v1.3.11_linux_arm64.zip
-	sha512sums_aarch64 = 5c14c91a1b3f98e0e9264a7ea0f553e18019b527d49f0a19446c52e5840ddebdd1b0412904ad531f2455206d37c3ff7a6417286480dd5228caad1424564631a1
-	source_loong64 = https://github.com/ystyle/TmdTextEpub/releases/download/v1.3.11/kaf-cli_v1.3.11_linux_loong64.zip
-	sha512sums_loong64 = 90166f8b3c55691db43ff553cb277e7c9719b78afa2ed863e919ced946e142a09a1334ef322ac5abce48158e2efbdaf06138769792eda1daa2c723008f4ebf85
+	source_x86_64 = https://github.com/ystyle/TmdTextEpub/releases/download/v1.3.13/kaf-cli_v1.3.13_linux_amd64.zip
+	sha512sums_x86_64 = b9a00de2501e25e1cb44de80851f6ca6f13f405f0fbc413e57e70e52f42084bf6cb5a97d5e94afee841876cdae23640d6d34a8269939c0ef7522a14eeb1c6a48
+	source_aarch64 = https://github.com/ystyle/TmdTextEpub/releases/download/v1.3.13/kaf-cli_v1.3.13_linux_arm64.zip
+	sha512sums_aarch64 = 32a954f06348d20f92855efd23ab00a2493e31cfed36b64933d342ef510da4ae25d2734e01f44c50650bb624cb861262652e03a1a58484492157c91672cf4cf6
+	source_loong64 = https://github.com/ystyle/TmdTextEpub/releases/download/v1.3.13/kaf-cli_v1.3.13_linux_loong64.zip
+	sha512sums_loong64 = 57e1629220dff909e86ebd1ba8976f81c947d8e03f5cb292a3a3ec66ff0f81effd0b15d8e2c6b6010b687faceca84a9e2028758b5f86ba06748aac29469fb749
 
 pkgname = kaf-cli
