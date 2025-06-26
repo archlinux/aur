@@ -7,7 +7,7 @@
 
 pkgname=firefox-esr-bin
 _pkgname=${pkgname/-bin/}
-pkgver=128.12.0
+pkgver=140.0
 pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org - Extended Support Release'
 url='http://www.mozilla.org/en-US/firefox/organizations/'
@@ -18,13 +18,13 @@ provides=(firefox=${pkgver})
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
 
-sha512sums=('a50bfebff9c17ef93ba36c5858d6d4cbfdab225f546ef70078ec398d64d63154e8720564eab7783c76a230e6e6562750107c2e5dec2cd5bb4ec6da01263e49b1'
+sha512sums=('2fcc6f719973360d72fd93d8038d86e399dc51f2d473380aa42eb9ff61e61275f6379ed5d4b02ebd7f1a5e55d43853d1d4259ac5cb8afafc7aa102ea758350dd'
             'c585f6e8ac7abfc96ad4571940b6f0dcc3f7331a18a518b4fe5d19b45e4c2d96c394524ea5c115c8fdd256c9229ea2fabeb1fc04ca7102f1626fd20728aef47d'
             'ab2fa2e08c7a65ac0bfe169a4b579e54b038bddabf838cd3df5ab341bd77be7c101092d0123598944d2174ab3a8fbc70dfbd692b2944016efdb7a69216a74428'
             '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308')
-[[ "$CARCH" == "i686" ]] && sha512sums[0]='06c128f8d20bedb00ad2402bcb94abb7c7d7ccc4c330e13c6b48c7eb76f4abb6cef408c4d96db3873d73577c3b59e85aef82e22d4e2d8cf7d72dc55793b098d5'
+[[ "$CARCH" == "i686" ]] && sha512sums[0]='8a4bd54fac20cd6e39cea34a5813e27737061f6d9ccbca8294a381e061cc6cfbd39d54aef02f65acde1595b40595b8005246c86f7f42a9546b2d900c1288b63a'
 
-source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/linux-$CARCH/en-US/firefox-${pkgver}esr.tar.bz2
+source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/linux-$CARCH/en-US/firefox-${pkgver}esr.tar.xz
         $_pkgname.desktop 
         $_pkgname-safe.desktop
         policies.json)
