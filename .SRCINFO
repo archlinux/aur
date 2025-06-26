@@ -1,0 +1,33 @@
+pkgbase = openexr3.2
+	pkgdesc = A high dynamic-range image file format library (version 3.2)
+	pkgver = 3.2.4
+	pkgrel = 1
+	url = https://www.openexr.com
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake>=3.12
+	makedepends = libdeflate
+	depends = gcc-libs
+	depends = glibc
+	depends = imath
+	options = !emptydirs
+	source = openexr-3.2.4.tar.gz::https://github.com/openexr/openexr/archive/refs/tags/v3.2.4.tar.gz
+	sha512sums = ecc3d8b206bda5e5897ac9cd797a8432b76981de10d49cbb107af2b4108c22186de0dda25a9a43b07e18d641ef71508445d95f659a4ca932e029d48ee029a492
+
+pkgname = openexr3.2
+	depends = gcc-libs
+	depends = glibc
+	depends = imath
+	depends = openexr3.2-libs=3.2.4-1
+
+pkgname = openexr3.2-libs
+	pkgdesc = A high dynamic-range image file format library (version 3.2) (runtime libraries)
+	depends = gcc-libs
+	depends = glibc
+	depends = imath
+	depends = libdeflate
+	provides = libIex-3_2.so
+	provides = libIlmThread-3_2.so
+	provides = libOpenEXR-3_2.so
+	provides = libOpenEXRCore-3_2.so
+	provides = libOpenEXRUtil-3_2.so
