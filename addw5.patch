@@ -1,0 +1,22 @@
+From bf1adb7ab6b8ee9dad7afc081afa7366b30ddf39 Mon Sep 17 00:00:00 2001
+From: Tim Crawford <tcrawford@system76.com>
+Date: Fri, 13 Jun 2025 10:24:01 -0600
+Subject: [PATCH] Add addw5
+
+Signed-off-by: Tim Crawford <tcrawford@system76.com>
+---
+ src/extension.ts | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/extension.ts b/src/extension.ts
+index c950156..8d081d4 100644
+--- a/src/extension.ts
++++ b/src/extension.ts
+@@ -58,6 +58,7 @@ const DISCRETE_EXTERNAL_DISPLAY_MODELS = [
+     "addw2",
+     "addw3",
+     "addw4",
++    "addw5",
+     "bonw15",
+     "bonw15-b",
+     "bonw16",
