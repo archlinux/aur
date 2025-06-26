@@ -1,0 +1,13 @@
+pkgbase = yin-git
+	pkgdesc = Efficient wayland wallpaper daemon for images, gifs and videos
+	pkgver = 0.1
+	pkgrel = 1
+	arch = x86_64
+	makedepends = zig-bin
+	depends = ffmpeg
+	depends = giflib
+	depends = wayland
+	source = git+https://www.github.com/eugenenoble2005/yin.git
+	sha256sums = SKIP
+
+pkgname = yin-git
