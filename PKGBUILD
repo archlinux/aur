@@ -6,7 +6,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=fopnu
-pkgver=1.67+1
+pkgver=1.68+1
 _pkgver=${pkgver/+/-}
 pkgrel=1
 pkgdesc='A new and powerful P2P File Sharing System'
@@ -19,8 +19,8 @@ source=('LICENSE')
 source_i686=("https://download2.fopnu.com/download/fopnu-${_pkgver}.i686.manualinstall.tar.gz")
 source_x86_64=("https://download2.fopnu.com/download/fopnu-${_pkgver}.x86_64.manualinstall.tar.gz")
 sha256sums=('0bc342f6415aa54c3d313af6a45152cb005024c7167d4fd0c71bfa004a2f8e4f')
-sha256sums_x86_64=('3bcc267fefe6a08665c597eaa337ed584001411d2a3dbc38d5eac2c5f995dcc7')
-sha256sums_i686=('e1f8fa13a44f85e6f09ec088cc94578dd2ba52a955dfa00fd2861364fe700146')
+sha256sums_x86_64=('abe9c8d2ce33bbaf8bafca5d13247cff33a4ab950bc9d62dd9b9edbf3c9a959a')
+sha256sums_i686=('e7f06d2363671c9a513684e0c9e7139bafcc1c15924a5c62dbce8ec85aebe3ec')
 
 package() {
   cd "$pkgname-${_pkgver}.${CARCH}.manualinstall"
