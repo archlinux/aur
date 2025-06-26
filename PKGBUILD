@@ -8,7 +8,8 @@ license=('GPL3')
 depends=('python-gobject' 'gtk4' 'libadwaita' 'python-paramiko' 'python-keyring' 'python-rich' 'python-pyyaml')
 source=(
 	"systemd-pilot.desktop"
-	"git+https://github.com/mfat/systemd-pilot.git")
+	"git+https://github.com/mfat/systemd-pilot.git"
+	)
 md5sums=('SKIP' 'SKIP')
 
 prepare() {
