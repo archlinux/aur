@@ -1,0 +1,21 @@
+pkgbase = zsh-komander
+	pkgdesc = Minimalistic zsh-theme...
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://github.com/stikundra-murtsi/zsh-komander
+	install = zsh-komander.install
+	arch = any
+	license = custom:NAUPL
+	depends = zsh
+	source = zsh-komander.zsh
+	source = zsh-komander.install
+	source = zsh-komander-setup.sh
+	source = LICENSE
+	source = README.md
+	sha256sums = 8daffcb80162ffd2e2608fdc9316c7dfe1c1503069b32312485eb1cd6d7058fa
+	sha256sums = 815f92dbccdd84a3767dc68f22c620886018f0b1e4b307c27ac29dd3a530e0c7
+	sha256sums = c8cb02b83d4576324b19a906fe4929dd7ecea295add07575bd04a88c1efd929f
+	sha256sums = 75d0d33f190772597e1e5775c0ae7ed6a456189a8bf7d93dc8dd6d361a750915
+	sha256sums = 281903190d85124423fec6d9dd607e5cab16528bf885795d36f22b9021ccad1f
+
+pkgname = zsh-komander
