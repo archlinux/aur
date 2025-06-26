@@ -14,12 +14,12 @@ source=("https://github.com/assembler-0/AVC.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/AVC"
+    cd "$srcdir"/*
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/AVC"
+    cd "$srcdir"/*
     
     # Build with optimizations
     make clean || true
@@ -27,14 +27,14 @@ build() {
 }
 
 check() {
-    cd "$srcdir/AVC"
+    cd "$srcdir"/*
     
     # Basic functionality test
     make test || true
 }
 
 package() {
-    cd "$srcdir/AVC"
+    cd "$srcdir"/*
     
     # Install binary
     install -Dm755 "bin/avc" "$pkgdir/usr/bin/avc"
