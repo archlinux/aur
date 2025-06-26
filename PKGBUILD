@@ -27,14 +27,10 @@ prepare() {
 build() {
   cd ${_origname}_${_mainver}
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch}-static && pushd build-${_arch}-static
-    ${_arch}-cmake -DBUILD_SHARED_LIBS=OFF ..
-    make
-    popd
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake ..
-    make
-    popd
+    ${_arch}-cmake -DBUILD_SHARED_LIBS=OFF -B build-${_arch}-static .
+    make -C build-${_arch}-static
+    ${_arch}-cmake -B build-${_arch} .
+    make -C build-${_arch}
   done
 }
 
