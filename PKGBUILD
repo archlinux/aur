@@ -4,7 +4,7 @@
 
 # Maintainer: Azat Khuzhin <a3at.mail@gmail.com>
 pkgname=chdig-latest-bin
-pkgver=0.4.0.32.g0d80c8c.1
+pkgver=25.6.1.1
 pkgrel=1
 pkgdesc="Dig into ClickHouse with TUI interface (compiled binaries for upstream)"
 arch=('x86_64')
