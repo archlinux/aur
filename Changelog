@@ -1,9 +1,21 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 2.3.0 ➙ 2.6.0
-              : 2025-05-21 ➙ 2025-06-19
+ Tags         : 2.5.0 ➙ 2.9.0
+              : 2025-06-19 ➙ 2025-06-26
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-26   : 2.9.0
+                run_prog: Make sure iolists are updated before calling select()
+ 2025-06-22     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
+
+ 2025-06-22   : 2.8.0
+                run_prog - make internal helper class internal so not included in API ref
+                update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
+
+ 2025-06-22   : 2.7.0
+                run_prog: refactor code. Protect against one possible deadlock
+ 2025-06-19     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
 
  2025-06-19   : 2.6.0
                 run_prog: When writing to subprocess stdin, add a flush() before we close
@@ -13,15 +25,3 @@
  2025-06-19   : 2.5.0
                 run_prog: make stdin nonblock as well
  2025-06-17     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-06-17   : 2.4.1
-                PEP-484 use builtin tuple instead of Tuple
-                update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-06-17   : 2.4.0
-                New function run_prog() to run external command.
- 2025-05-21     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-05-21   : 2.3.0
-                Use builtin types where possible. e.g. typing.List -> list
- 2025-05-19     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
