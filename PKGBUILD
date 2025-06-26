@@ -7,10 +7,10 @@ arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/assembler-0/AVC"
 license=('GPL3')
 depends=('openssl' 'zlib' 'libdeflate' 'libblake3')
-makedepends=('git' 'gcc' 'make' 'cmake' 'libblake3')
+makedepends=('git' 'gcc' 'make' 'cmake' )
 provides=('avc')
 conflicts=('avc')
-source=("git+https://github.com/assembler-0/AVC.git")
+source=("https://github.com/assembler-0/AVC.git")
 sha256sums=('SKIP')
 
 pkgver() {

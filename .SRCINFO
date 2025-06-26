@@ -17,7 +17,7 @@ pkgbase = avc
 	depends = libblake3
 	provides = avc
 	conflicts = avc
-	source = git+https://github.com/assembler-0/AVC.git
+	source = https://github.com/assembler-0/AVC.git
 	sha256sums = SKIP
 
 pkgname = avc
