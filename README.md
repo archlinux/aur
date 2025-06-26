@@ -418,37 +418,39 @@ CLI Configuration Help:
     ngpt --cli-config get OPTION          - Get the current value of OPTION
     ngpt --cli-config get                 - Show all CLI configuration settings
     ngpt --cli-config unset OPTION        - Remove OPTION from configuration
-    ngpt --cli-config list                - List all available options
+    ngpt --cli-config list                - List all available options with types and defaults
 
   Available options:
     General options (all modes):
-      config-index - int (default: 0) [exclusive with: provider]
-      log - str 
-      max_tokens - int 
-      no-stream - bool (default: False) [exclusive with: prettify, stream-prettify]
-      preprompt - str 
-      prettify - bool (default: False) [exclusive with: no-stream, stream-prettify]
-      provider - str  [exclusive with: config-index]
-      renderer - str (default: auto)
-      stream-prettify - bool (default: False) [exclusive with: no-stream, prettify]
-      temperature - float (default: 0.7)
-      top_p - float (default: 1.0)
-      web-search - bool (default: False)
+      config-index - Type: int (default: 0)
+      log - Type: str (default: None)
+      max_tokens - Type: int (default: None)
+      no-stream - Type: bool (default: False)
+      preprompt - Type: str (default: None)
+      prettify - Type: bool (default: False)
+      provider - Type: str (default: None)
+      renderer - Type: str (default: auto)
+      stream-prettify - Type: bool (default: True)
+      temperature - Type: float (default: 0.7)
+      top_p - Type: float (default: 1.0)
+      web-search - Type: bool (default: False)
 
-    Options for Code generation mode:
-      language - str (default: python)
+    Code mode options (-c/--code):
+      language - Type: str (default: python)
 
-    Options for Git commit message mode:
-      analyses-chunk-size - int (default: 200)
-      chunk-size - int (default: 200)
-      diff - str 
-      max-msg-lines - int (default: 20)
-      max-recursion-depth - int (default: 3)
-      rec-chunk - bool (default: False)
+    Interactive mode options (-i/--interactive):
+      interactive-multiline - Type: bool (default: False)
+
+    Git commit message options (-g/--gitcommsg):
+      analyses-chunk-size - Type: int (default: 200)
+      chunk-size - Type: int (default: 200)
+      diff - Type: str (default: None)
+      max-msg-lines - Type: int (default: 20)
+      max-recursion-depth - Type: int (default: 3)
+      rec-chunk - Type: bool (default: False)
 
   Example usage:
     ngpt --cli-config set language java        - Set default language to java for code generation
-    ngpt --cli-config set provider Gemini      - Set Gemini as your default provider
     ngpt --cli-config set temperature 0.9      - Set default temperature to 0.9
     ngpt --cli-config set no-stream true       - Disable streaming by default
     ngpt --cli-config set recursive-chunk true - Enable recursive chunking for git commit messages
