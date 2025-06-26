@@ -2,7 +2,7 @@
 
 pkgname=sxwm
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Tiling window managers don't have to be difficult"
 arch=('i686' 'x86_64')
 url="https://github.com/uint23/sxwm"
@@ -21,5 +21,9 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	install -Dm755 sxwm "$pkgdir/usr/bin/sxwm"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-#	install -Dm644 default_sxwmrc "$pkgdir/usr/share/doc/sxwm/sxwmrc"
+	install -Dm644 default_sxwmrc "$pkgdir/usr/share/doc/$pkgname/sxwmrc"
+}
+
+post_install() {
+	echo "==> NOTE: The example config is located at /usr/share/doc/sxwm/sxwmrc"
 }
