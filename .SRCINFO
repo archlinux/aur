@@ -1,0 +1,12 @@
+pkgbase = microfetch
+	pkgdesc = A minimal and fast system information fetching tool written in Python
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/VeryEpicKebap/microfetch
+	arch = any
+	license = MIT
+	depends = python
+	source = git+https://github.com/VeryEpicKebap/microfetch.git
+	sha256sums = SKIP
+
+pkgname = microfetch
