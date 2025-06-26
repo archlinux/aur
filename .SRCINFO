@@ -1,13 +1,14 @@
 pkgbase = gradia
 	pkgdesc = Make your screenshots ready for the world.
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AlexanderVanhee/Gradia
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = patch
 	makedepends = meson
 	makedepends = blueprint-compiler
+	depends = gtk4
 	depends = python
 	depends = python-gobject
 	depends = python-pillow
