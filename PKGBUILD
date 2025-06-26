@@ -4,8 +4,8 @@ pkgname=deno-canary-bin
 _pkgname=deno
 pkgrel=1
 pkgdesc='A secure runtime for JavaScript and TypeScript, Canary build'
-pkgver=2.3.7.f7817964
-arch=('x86_64')   # canary is not provided for aarch64
+pkgver=2.3.7.ec32c6e5
+arch=('x86_64' 'aarch64')
 url='https://dl.deno.land/'
 provides=('deno')
 conflicts=('deno')
@@ -14,7 +14,7 @@ makedepends=('curl' 'unzip')
 
 source=(
   'https://dl.deno.land/release-latest.txt'
-  'https://dl.deno.land/canary-latest.txt'
+  "canary-latest.txt::https://dl.deno.land/canary-$arch-unknown-linux-gnu-latest.txt"
   'https://github.com/denoland/deno/raw/refs/heads/main/LICENSE.md'
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP')
@@ -28,7 +28,8 @@ pkgver() {
 prepare() {
   hash=$(cat canary-latest.txt)
   echo "hash=$hash"
-  curl -o deno.zip "https://dl.deno.land/canary/$hash/deno-x86_64-unknown-linux-gnu.zip"
+  curl -o deno.zip "https://dl.deno.land/canary/$hash/deno-$arch-unknown-linux-gnu.zip"
+  unzip deno.zip
 }
 
 package() {
