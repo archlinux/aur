@@ -9,7 +9,7 @@
 _name=cyaron
 pkgname=python-${_name}
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Random Olympic-informatics test data generator"
 url="https://github.com/luogu-dev/cyaron"
 license=('LGPL3')
@@ -34,7 +34,7 @@ build() {
 
 check(){
     cd ${srcdir}/${_name}-$pkgver
-    pytest
+    python -m unittest
 }
 
 package() {
