@@ -1,8 +1,4 @@
 
-0.6.0: Seventh release:
+0.7.0: Eighth release:
 
-- move from setup.py and setup.cfg to pyproject.toml
-- add workflow for test releases on test.pypi.org
-- various updates in github workflow files
-- add type annotations
-- drop support for Python 3.8
+- Changed license from GPL to MIT starting with version 0.7.0

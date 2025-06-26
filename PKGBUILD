@@ -5,12 +5,12 @@
 
 _pkgname=sparklines
 pkgname="python-$_pkgname"
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Text-based sparkline command line mimicking those of Edward Tufte'
 arch=('any')
 url="https://github.com/deeplook/$_pkgname"
-license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
+license=('MIT')  # SPDX-License-Identifier: MIT
 depends=(
   'python'
   'python-termcolor'
@@ -24,7 +24,7 @@ source=(
   "https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
 )
 sha256sums=(
-  '479a63a5b868034a609e2703f70a7219ca254195a42e5c3583814d3d250bc571'
+  'efd2ff5126dac53ea4212c1e225f286beaf1907b35204465b65010db2eec4b2a'
 )
 provides=("$pkgname" "$_pkgname")
 conflicts=("$_pkgname")
@@ -43,6 +43,8 @@ package() {
 
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     CONTRIBUTORS.txt README.rst
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    LICENSE.txt
 }
 
 # eof
