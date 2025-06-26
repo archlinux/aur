@@ -6,7 +6,7 @@
 # Maintainer: João Freitas <joaj.freitas at gmail dot com>
 pkgname=plotjuggler
 pkgver='3.10.1'
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
@@ -17,15 +17,15 @@ depends=(binutils qt5-base qt5-multimedia qt5-svg qt5-websockets qt5-x11extras a
 makedepends=(cmake clang)
 
 _dir="PlotJuggler-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz" "plotjuggler3.10.0-1.patch" "plotjuggler3.10.0-2.patch" "plotjuggler3.10.0-3.patch")
 noextract=()
-sha256sums=('10a461a577336853b321c193e7218fea4f64ca8b46490f91ab47e90d0a950b03')
+sha512sums=('10a461a577336853b321c193e7218fea4f64ca8b46490f91ab47e90d0a950b03', '3def147257a550e51b1c1414ceb2fc6887d112542d2246145c9d9351ff34aa29' '902b178c962ea7f4dbb212e879e38c1e7b9b94203018886f717ff24ec8948f51', 'b6719067e89288c59bec7a54c63e565e8951f81e3671c29ef579912fea0271ee')
 validpgpkeys=()
 
 prepare() {
-    patch -d PlotJuggler-$pkgver -Np1 -i "../../plotjuggler3.10.0-1.patch"
-    patch -d PlotJuggler-$pkgver -Np1 -i "../../plotjuggler3.10.0-2.patch"
-    patch -d PlotJuggler-$pkgver -Np1 -i "../../plotjuggler3.10.0-3.patch"
+    patch -d PlotJuggler-$pkgver -Np1 -i "$srcdir/plotjuggler3.10.0-1.patch"
+    patch -d PlotJuggler-$pkgver -Np1 -i "$srcdir/plotjuggler3.10.0-2.patch"
+    patch -d PlotJuggler-$pkgver -Np1 -i "$srcdir/plotjuggler3.10.0-3.patch"
     cd "${srcdir}/PlotJuggler-${pkgver}"
 }
 
@@ -42,3 +42,7 @@ package() {
         cd ${srcdir}/build
 	make DESTDIR=${pkgdir} install
 }
+sha512sums=('fa669f80362976a3d3db57e6bf9e285483c671bf9fcd6a780502fec508e39fc2960d515c8fbe48d905eaa13864539a1c3fbe166f8addac48cd860b0c599a460a'
+            'b625fd2725d316244ee6f35af9559a04e9c486d27a377a49c39c204ced194a13ac656782637824f9375449a2bc11e9f1f5d7fefb3a8e41a3232369c2a60af5ec'
+            '6e4d954b93435dcd19e06e3f328818569864810e409b877889c27ea86840c02e451a9a80c81ddb18af7d20e440f593ba8561fb0a7c3b14ebebcf6ca5060fa252'
+            'eaf3143ac69c6ad311e1d4289de5c48a6e7cf721870ae279c8fff7c6f9a573fcdbc62eaacca1bbff7db97a00dbac59ead9c2baf68c8c8671708595784571d9da')
