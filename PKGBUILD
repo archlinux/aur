@@ -18,7 +18,7 @@ pkgname=(
   java-openjfx-src
 )
 _java_ver=23
-_tag='25+21'
+_tag='25+22'
 pkgver=${_tag//+/.}
 pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
@@ -60,7 +60,7 @@ source=(
   gradle.properties
   "${pkgbase}-flags.patch"
 )
-b2sums=('440b9f242153dd1cc0041e20ec9102764d87ab2ad9982b33f4e0ca03772caa1070c236e09e1557aa4893ff17e7ccc1130bd249ee0c6bba22965cbaf77552d557'
+b2sums=('8d9c89bd4092d2c290934a8634d9b8fde6476d1c18795c0891d55f777de4fc44c3463bad9fd3fee86e97953a43e922597094703b0bf4f492366cfeff3fb86d8c'
         '0c023ef99e7ee600710c54dad0ad59070620595109ca42c5057fa2ab74ef6d244631745f5cd4c1bea9c0321ee69f1e1efaab820ff124ad1d4f453121e77fd14f'
         '5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3')
 
