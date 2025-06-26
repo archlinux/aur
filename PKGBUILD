@@ -8,7 +8,7 @@
 # Note: source array can be synced with an Electron release after updating $pkgver with:
 # bash -c 'source PKGBUILD; _update_sources'
 
-pkgver=36.5.0
+pkgver=36.6.0
 _gcc_patches=136-2
 pkgrel=1
 _major_ver=${pkgver%%.*}
@@ -73,7 +73,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         use-system-libraries-in-node.patch
         makepkg-source-roller.py
         # BEGIN managed sources
-        chromium-mirror::git+https://github.com/chromium/chromium.git#tag=136.0.7103.168
+        chromium-mirror::git+https://github.com/chromium/chromium.git#tag=136.0.7103.177
         chromium-mirror_third_party_nan::git+https://github.com/nodejs/nan.git#commit=e14bdcd1f72d62bca1d541b66da43130384ec213
         chromium-mirror_third_party_electron_node::git+https://github.com/nodejs/node.git#tag=v22.16.0
         chromium-mirror_third_party_engflow-reclient-configs::git+https://github.com/EngFlow/reclient-configs.git#commit=955335c30a752e9ef7bff375baab5e0819b6c00d
@@ -104,7 +104,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         chromium-mirror_third_party_crc32c_src::git+https://chromium.googlesource.com/external/github.com/google/crc32c.git#commit=d3d60ac6e0f16780bcfcc825385e1d338801a558
         chromium-mirror_third_party_cros_system_api::git+https://chromium.googlesource.com/chromiumos/platform2/system_api.git#commit=62ab80355a8194e051bd1d93a5c09093c7645a32
         chromium-mirror_third_party_depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#commit=f40ddcd8d51626fb7be3ab3c418b3f3be801623f
-        chromium-mirror_third_party_devtools-frontend_src::git+https://chromium.googlesource.com/devtools/devtools-frontend.git#commit=8120d26bae945ff0954b7a6abc08f0decdc4b775
+        chromium-mirror_third_party_devtools-frontend_src::git+https://chromium.googlesource.com/devtools/devtools-frontend.git#commit=cb82c1525a5b3d277d427b908a21a87489bec532
         chromium-mirror_third_party_dom_distiller_js_dist::git+https://chromium.googlesource.com/chromium/dom-distiller/dist.git#commit=199de96b345ada7c6e7e6ba3d2fa7a6911b8767d
         chromium-mirror_third_party_eigen3_src::git+https://chromium.googlesource.com/external/gitlab.com/libeigen/eigen.git#commit=464c1d097891a1462ab28bf8bb763c1683883892
         chromium-mirror_third_party_farmhash_src::git+https://chromium.googlesource.com/external/github.com/google/farmhash.git#commit=816a4ae622e964763ca0862d9dbd19324a1eaf45
@@ -204,7 +204,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         chromium-mirror_third_party_xdg-utils::git+https://chromium.googlesource.com/chromium/deps/xdg-utils.git#commit=cb54d9db2e535ee4ef13cc91b65a1e2741a94a44
         chromium-mirror_third_party_xnnpack_src::git+https://chromium.googlesource.com/external/github.com/google/XNNPACK.git#commit=d6fc3be20b0d3e3742157fa26c5359babaa8bc8b
         chromium-mirror_third_party_zstd_src::git+https://chromium.googlesource.com/external/github.com/facebook/zstd.git#commit=ef2bf5781112a4cd6b62ac1817f7842bbdc7ea8f
-        chromium-mirror_v8::git+https://chromium.googlesource.com/v8/v8.git#commit=5b6eec8d9bf009d2263d784714e6bfa1777dbc7d
+        chromium-mirror_v8::git+https://chromium.googlesource.com/v8/v8.git#commit=b0a55a7dad7f536cce1f9aaddba89894c8533946
         chromium-mirror_third_party_angle_third_party_glmark2_src::git+https://chromium.googlesource.com/external/github.com/glmark2/glmark2.git#commit=6edcf02205fd1e8979dc3f3964257a81959b80c8
         chromium-mirror_third_party_angle_third_party_rapidjson_src::git+https://chromium.googlesource.com/external/github.com/Tencent/rapidjson.git#commit=781a4e667d84aeedbeb8184b7b62425ea66ec59f
         chromium-mirror_third_party_angle_third_party_VK-GL-CTS_src::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/VK-GL-CTS.git#commit=b6bb4bab7b4a36bc95566e00cb8f01051089afc3
@@ -228,7 +228,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         chromium-mirror_third_party_openscreen_src_third_party_tinycbor_src::git+https://chromium.googlesource.com/external/github.com/intel/tinycbor.git#commit=d393c16f3eb30d0c47e6f9d92db62272f0ec4dc7
         # END managed sources
         )
-sha256sums=('79724cb5a0c89be2580e2da8fcd31f01cbf9078785569171cc6c4de556956715'
+sha256sums=('805930b5ee3739e8aa7608c093b011242a63fff795f12ffeae77cc4871787034'
             '7226c0ff3ecde0d66207295d28c9ca9c2063508d97d0d406a1cae9aae71187f5'
             '32f0080282fc0b2795a342bf17fcb3db4028c5d02619c7e304222230ba99d5fe'
             'cc8a71a312e9314743c289b7b8fddcc80350a31445d335f726bb2e68edf916d1'
@@ -239,7 +239,7 @@ sha256sums=('79724cb5a0c89be2580e2da8fcd31f01cbf9078785569171cc6c4de556956715'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             '991e54f4490cdbb5e52c9a4a4f6e0e32f2fc95979f18a4736016d065da229c2e'
             'b0a024a71833bc1c96adbc796d31da24bb4a3e6d189e031fa8ac23d918f33ea0'
-            'b9f682a0ecdd7fedac124a85c59d5d5f9c07213b2397a4cfa92fe203cf0de653'
+            '50acf8710ac1407d373981befaf00c2d38e79f508de6562653ed6744688d3d1f'
             '0b7a546ee6913c49519c10c293ac530ff381641a8a465fa2e184d6dbe0fb784d'
             '90ace676b75cd5df7a237b7465403704294c4ed2c2943b703e60ab370ce60bf5'
             '3522166c3ca75316a172b7cc4fe12bba9367e30fed16df8193ede2e236dca8c5'
@@ -270,7 +270,7 @@ sha256sums=('79724cb5a0c89be2580e2da8fcd31f01cbf9078785569171cc6c4de556956715'
             '6ae7ae01b3c23f8bf7657a59427aac6f3216e041ebdb983b82c002a949bdb071'
             '6e56fd8b45e54a085b6c46a67961fc0e2109089f7ce624e7e8f4eb1b36fe63f1'
             '88778bc8d90ef9b4f436679f681ef9002e2e6cb64f9d8f4562efc8798ed0f7e6'
-            'dc616437aa59a6610468223aae1e004070be79fcc82341d05a85076c4b7afa10'
+            '69c79b17a75e40e8b6f8b220c2d83792ec78ee0445d8dbdbe089db86e5807739'
             '47f3f3d044cc0658274833022db1e7695964b1da8f37cb905882d15457212fba'
             '4422862769bf5afee6463b62045df15b613b332c490e78f5bddab88c974d68dd'
             '6258126c4c354ccacd0ec5f9f82c6970d576359c7aba86e44277b459d1645325'
@@ -370,7 +370,7 @@ sha256sums=('79724cb5a0c89be2580e2da8fcd31f01cbf9078785569171cc6c4de556956715'
             '910bc5d9e7523ccd09506bafe3fac586db5106d8cc72d77e8457fdf8b43c225e'
             'b0e7545470d30686bb5a248e8b48b4066544367f1f22a6e02685ba614b582218'
             '32aee2beba75da192c537f69b32187067fbdff66e171b4c5eb2a9a28615b68fd'
-            '5ef0d994afa325eb2ccb88f53201386adb66818024c53dfda769c25684ac0fa8'
+            'a7e29d6ad01575754460344313bca9f3029740e355bba97a330a205ccede2f25'
             '4dfc3a5c54acbdafd4c7ab2826756ac2e69521350ab7f8b80b7ad374ce7ac84f'
             '716cc81139f11a2b438802d37f245f885fc9a0c69ef429a11b156145c903a932'
             '9c4a74e0ece586eb28d3c61a959563a421d0fb23604bf82a9f888a5d6ab921f1'
