@@ -1,26 +1,26 @@
 _pkgname=imgui
 pkgname=imgui-full
 # On each update, keep up to date with latest sha in https://github.com/microsoft/vcpkg/commits/master/ports/imgui
-_vcpkg_sha=16601c6e7ee15aeccac771185916cd6f6fe1ba50
+_vcpkg_sha=b02e341c927f16d991edbd915d8ea43eac52096c
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=1.91.6
-pkgrel=1
+pkgver=1.91.9
+pkgrel=0
 pkgdesc="Bloat-free Graphical User interface for C++"
 license=('MIT')
 arch=('x86_64')
 url="https://github.com/ocornut/imgui"
 depends=('gcc-libs')
-makedepends=('cmake')
+makedepends=('cmake' 'glu' 'freeglut' 'sdl3' 'glfw' 'vulkan-headers')
 source=("$_pkgname-$pkgver.tar.gz::https://codeload.github.com/ocornut/imgui/tar.gz/v${pkgver}"
-        "CMakeLists.v${pkgver}-${pkgrel}.txt::https://raw.githubusercontent.com/microsoft/vcpkg/${_vcpkg_sha}/ports/imgui/CMakeLists.txt"
-        "imgui-config.v${pkgver}-${pkgrel}.cmake.in::https://raw.githubusercontent.com/microsoft/vcpkg/${_vcpkg_sha}/ports/imgui/imgui-config.cmake.in")
-sha256sums=('c5fbc5dcab1d46064001c3b84d7a88812985cde7e0e9ced03f5677bec1ba502a'
-            '469172229e8a2e6ddb00105c4a764fa452ab143d21edd0b30cea589bf0b75191'
-            '2a441c1709b0ec7c0de1f403944ba5b8d8c059c02adcea9f8550bf33303eb7bb')
+  "CMakeLists.v${pkgver}-${pkgrel}.txt::https://raw.githubusercontent.com/microsoft/vcpkg/${_vcpkg_sha}/ports/imgui/CMakeLists.txt"
+  "imgui-config.v${pkgver}-${pkgrel}.cmake.in::https://raw.githubusercontent.com/microsoft/vcpkg/${_vcpkg_sha}/ports/imgui/imgui-config.cmake.in")
+sha256sums=('3872a5f90df78fced023c1945f4466b654fd74573370b77b17742149763a7a7c'
+  '257e81df093db871165b6ad2f072a613fb84de69e3e45d21d09036a9c840624b'
+  '5da843cca9f52801645959f6318ebcb867837b1523924dc535d9f418abb19ae8')
 
-prepare () {
-  cp CMakeLists.v${pkgver}-${pkgrel}.txt        ${_pkgname}-${pkgver}/CMakeLists.txt
+prepare() {
+  cp CMakeLists.v${pkgver}-${pkgrel}.txt ${_pkgname}-${pkgver}/CMakeLists.txt
   cp imgui-config.v${pkgver}-${pkgrel}.cmake.in ${_pkgname}-${pkgver}/imgui-config.cmake.in
 }
 
@@ -31,8 +31,8 @@ build() {
     -DBUILD_SHARED_LIBS=ON \
     -DIMGUI_BUILD_GLFW_BINDING=ON \
     -DIMGUI_BUILD_GLUT_BINDING=ON \
-    -DIMGUI_BUILD_SDL2_BINDING=ON \
-    -DIMGUI_BUILD_SDL2_RENDERER_BINDING=ON \
+    -DIMGUI_BUILD_SDL3_BINDING=ON \
+    -DIMGUI_BUILD_SDL3_RENDERER_BINDING=ON \
     -DIMGUI_BUILD_VULKAN_BINDING=ON \
     -DIMGUI_BUILD_OPENGL2_BINDING=ON \
     -DIMGUI_BUILD_OPENGL3_BINDING=ON \
