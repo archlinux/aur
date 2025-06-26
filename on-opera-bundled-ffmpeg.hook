@@ -1,0 +1,8 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = opera-ffmpeg-vivaldi-symlink
+
+[Action]
+When = PreTransaction
+Exec = /usr/bin/bash -c "chmod a+r /usr/lib/opera{,-beta,-developer}/libffmpeg.so 2> /dev/null||:"
