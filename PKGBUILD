@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/uttamkn/mangaplace"
 license=('MIT')
 source=("${pkgname}-${pkgver}.zip::https://github.com/uttamkn/mangaplace/releases/download/v${pkgver}/mangaplace-${pkgver}.zip")
-sha256sums=('4e49c4bbca8809810763227b9809a256cdb0907b3fc981316145d78d2cbb4fcf')
+sha256sums=('840a066b5dd38ed9868fe1b5df6fd21a88233fc4025c2bcf0e727884a09f0eed')
 
 package() {
   install -Dm755 "$srcdir/$pkgname" "${pkgdir}/usr/bin/${pkgname}"
