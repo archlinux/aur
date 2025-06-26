@@ -27,6 +27,7 @@ prepare() {
 	cd "${srcdir}/" || exit
 
 	mv "release/${_pkgname}" ./
+	rm -rf "release"
 }
 
 package() {
