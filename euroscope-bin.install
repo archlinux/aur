@@ -13,6 +13,10 @@ post_install() {
   echo "Proper error handling will be added in the future, but for now in such case"
   echo "you should run the following command to install the necessary dependencies:"
   echo "WINEPREFIX=\$ES_PREFIX WINEARCH=win32 winetricks --unattended --force iertutil msls31 msxml6 urlmon vcrun2022 wininet"
+  echo
+  echo "You may place your custom files for font or that need to be under Program Files/Euroscope/"
+  echo "into ~/.config/euroscope/override/{font,es} -- files in them will be automatically copied to the wineprefix"
+  echo "at every update."
 }
 
 post_upgrade() {

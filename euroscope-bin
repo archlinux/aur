@@ -3,29 +3,55 @@ unset WINEPREFIX
 
 progName="euroscope"
 export WINEPREFIX="$HOME/.local/share/wineprefixes/$progName"
-export WINEARCH="win32"
-currentVersion="2"
+export INSTALL="/usr/share/euroscope-bin/EuroScope/"
+export ES_PATH="$WINEPREFIX/drive_c/Program Files (x86)"
+export CONFIG="$HOME/.config/euroscope"
+currentVersion="4"
 
 install_deps() {
-  notify-send --app-name=EuroScope --icon=euroscope "Installing Dependencies" "It may take a few minutes."
-  winetricks --unattended --force iertutil msls31 msxml6 urlmon vcrun2022 wininet
-  cp "/usr/share/$progName/EuroScope.ttf" "$WINEPREFIX/drive_c/windows/Fonts/"
+  if [ ! -d "$CONFIG" ] ; then
+    mkdir -p "$CONFIG"
+    cd "$CONFIG"
+    mkdir -p override
+    cd override
+    mkdir es
+    mkdir font
+  fi
+
+  if [ -z "$TEST" ] ; then
+    wine wineboot -u
+    notify-send --app-name=EuroScope --icon=euroscope "Installing Dependencies" "It may take a few minutes."
+    winetricks --unattended --force iertutil msls31 msxml6 urlmon vcrun2022 wininet
+  fi
+
+  cp -r "$INSTALL" "$ES_PATH"
   echo "$currentVersion" > "$WINEPREFIX/.installed"
+
+  mkdir -p override
+  if [ -e "$CONFIG/override/font/EuroScope.ttf" ] ; then
+    cp "$CONFIG/override/font/EuroScope.ttf" "$WINEPREFIX/drive_c/windows/Fonts/";
+  else
+    cp "/usr/share/$progName/EuroScope.ttf" "$WINEPREFIX/drive_c/windows/Fonts/";
+  fi
+
+  if [ -z "$( ls -A "$CONFIG"/override/es/ )" ]; then
+    echo "Empty -- skipping override ES files"; 
+  else    
+    cp -r "$CONFIG"/override/es/* "$ES_PATH/EuroScope/"
+  fi
 }
 
-if [ ! -d $WINEPREFIX ] ; then
-  mkdir -p $WINEPREFIX
-  wine wineboot -u
+if [ ! -z "$TEST" ] ; then
   install_deps
 fi
 
-if ! grep -q $currentVersion "$WINEPREFIX/.installed"; then
-  wine wineboot -u
+if [ ! -d "$WINEPREFIX" ] ; then
+  mkdir -p "$WINEPREFIX"
   install_deps
 fi
 
-if [ ! -d "$HOME/.config/euroscope" ] ; then
-  mkdir -p "$HOME/.config/euroscope"
+if ! grep -q $currentVersion "$WINEPREFIX/.installed" ; then
+  install_deps
 fi
 
-cd "$HOME/.config/euroscope" && WINEDEBUG=-all wine "/usr/share/euroscope-bin/EuroScope/EuroScope.exe" "$@"
+cd "$CONFIG" && WINEDEBUG=-all wine "$ES_PATH/EuroScope/EuroScope.exe" "$@"
