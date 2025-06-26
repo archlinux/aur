@@ -10,7 +10,7 @@ pkgname='iwinfo'
 pkgdesc='Provide wifi information about capabilities and network(s)'
 _gitname='iwinfo'
 
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 url="https://github.com/gene-git/iwinfo"
 

@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : iwinfo
- Tags         : 4.0.0 ➙ 4.4.0
-              : 2025-05-18 ➙ 2025-06-22
+ Tags         : 4.1.0 ➙ 4.5.0
+              : 2025-05-21 ➙ 2025-06-26
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-26   : 4.5.0
+                Update local copy of latest run_prog() from pyconcurrent
+ 2025-06-22     update Docs/Changelog Docs/${my_name}.pdf
 
  2025-06-22   : 4.4.0
                 Put run_cmd in its own file
@@ -20,14 +24,3 @@
  2025-05-21   : 4.1.0
                 Use builtin types where possible. e.g. typing.List -> list
  2025-05-18     update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-05-18   : 4.0.0
-                Code now complies with: PEP-8, PEP-257, PEP-484 and PEP-561
-                Code Refactor & clean ups.
-                Wireless "host" database file name.
-                  Preferred name is now known-hosts.toml, which aligns better with its
-                  purpose and format.
-                  The previous names will continue to work just fine as well.
-                  The known host file will first be looked for in the directory
-                  *./etc/iwinfo/* and then */etc/iwinfo/*.
- 2025-02-25     update Docs/Changelog.rst Docs/iwinfo.pdf
