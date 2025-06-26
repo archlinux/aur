@@ -2,7 +2,7 @@
 
 pkgname=sxwm
 pkgver=1.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Tiling window managers don't have to be difficult"
 arch=('i686' 'x86_64')
 url="https://github.com/uint23/sxwm"
@@ -25,5 +25,5 @@ package() {
 }
 
 post_install() {
-	echo "==> NOTE: The example config is located at /usr/share/doc/sxwm/sxwmrc"
+	msg2 "==> NOTE: The example config is located at /usr/share/doc/sxwm/sxwmrc"
 }
