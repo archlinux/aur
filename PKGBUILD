@@ -3,7 +3,7 @@
 _name=Nero-umu
 _QTver=Qt6
 pkgname=nero-umu
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='A fast and efficient umu manager, just as the Romans designed.'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
             'winetricks: Fallback for Proton runners without embedded protonfixes'
 )
 source=("git+https://github.com/SeongGino/Nero-umu#tag=v${pkgver}")
-md5sums=('3d730572f454e87e702a930aabb019ed')
+md5sums=('cb245400f4874f5a174e162b314868c6')
 
 prepare() {
   cd "$srcdir/$_name"
