@@ -27,8 +27,6 @@ sha256sums=('b7f8243511c9349c12fadffd6bdb38895d44b1bb6811ffda63c15ca4f759a52a'
 
 package() {
 	mkdir -p "$pkgdir/usr/share/${pkgname}"
-	mkdir -p "$pkgdir/usr/share/${pkgname}/apps"
-	mkdir -p "$pkgdir/usr/share/${pkgname}/scripts"
 	mkdir -p "$pkgdir/usr/bin"
 
 	install -Dm755 "${srcdir}/app-opener.sh" "$pkgdir/usr/share/${pkgname}/app-opener.sh"
