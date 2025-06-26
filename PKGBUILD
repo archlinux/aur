@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/onelivesleft/PrettyErrors/"
 license=(MIT)
 depends=('python' 'python-colorama')
-makedepends=('python-pip' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 build() {
   cd "$_pkgname-$pkgver"

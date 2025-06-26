@@ -5,7 +5,6 @@ pkgbase = python-pretty-errors
 	url = https://github.com/onelivesleft/PrettyErrors/
 	arch = any
 	license = MIT
-	makedepends = python-pip
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
