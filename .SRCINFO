@@ -1,0 +1,11 @@
+pkgbase = utmt-cli-bin
+	pkgdesc = The most complete tool for modding, decompiling and unpacking Undertale (and other GameMaker games!)
+	pkgver = 0.8.2.0
+	pkgrel = 1
+	url = https://github.com/UnderminersTeam/UndertaleModTool
+	arch = x86_64
+	license = GPL3
+	source_x86_64 = https://github.com/UnderminersTeam/UndertaleModTool/releases/download/0.8.2.0/UTMT_CLI_v0.8.2.0-Ubuntu.zip
+	sha256sums_x86_64 = 0f25d1f44232afe4195fd11bd948ac50520f8907b75adbd2f37bd22ff1ed73f8
+
+pkgname = utmt-cli-bin
