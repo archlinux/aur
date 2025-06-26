@@ -15,12 +15,20 @@ if [[ -f $config ]]; then
 
 		export "$key"="$value"
 	done < "$config"
+else
+	app recovery
 fi
+
+mkdir -p "$HOME/.app-opener/apps" "$HOME/.app-opener/scripts"
+
+if [[ -z "$com" ]]; then
+	echo "$error"
+	exit 1
 
 case $com in
 	# Отсек приложений
 	open)
-		$p"apps/$app"
+		"$HOME/.app-opener/apps/$app"
 		;;
 	# Установка приложений/скриптов
 	setup)
@@ -36,7 +44,7 @@ case $com in
 		;;
 	# Отсек скриптов
 	start)
-		$p"scripts/"$app
+		"$HOME/.app-opener/scripts/"$app
 		;;
 	# Редактор скриптов
 	edit)
@@ -54,7 +62,7 @@ case $com in
 		fi
 		;;
 	recovery)
-		$p"recovery.sh" "$p"
+		$p"recovery.sh" "$HOME/.app-opener/"
 		;;
 	# Помощь
 	help)
