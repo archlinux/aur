@@ -17,9 +17,9 @@ pkgname=(
   'pipewire-x11-bell-git'
   'pipewire-zeroconf-git'
 )
-pkgver=1.3.82.r13326.62035963a
+pkgver=1.5.0.r13799.9a6f8d31d
 pkgrel=1
-pkgdesc='Low-latency audio/video router and processor (GIT version)'
+pkgdesc='Low-latency audio/video router and processor. (GIT version)'
 arch=('x86_64')
 url='https://pipewire.org'
 license=('MIT')
@@ -65,6 +65,7 @@ makedepends=(
   'webrtc-audio-processing-1'
   'chrpath'
   'libebur128'
+  'fftw'
 )
 checkdepends=(
   'desktop-file-utils'
@@ -103,6 +104,7 @@ build() {
     -D rlimits-install=false \
     -D session-managers=[] \
     -D bluez5-codec-lc3plus=disabled \
+    -D bluez5-codec-ldac-dec=disabled \
     -D volume=enabled \
     -D selinux=disabled \
     -D snap=disabled \
@@ -141,6 +143,7 @@ package_pipewire-git() {
     'readline' 'libreadline.so'
     'vulkan-icd-loader' 'libvulkan.so'
     'libdrm'
+    'ffmpeg' 'libavcodec.so' 'libavutil.so' 'libswscale.so'
   )
   optdepends=(
     'pipewire-alsa-git: ALSA support'
@@ -185,6 +188,7 @@ package_pipewire-git() {
   _pick libs "usr/lib/pipewire-${_api_ver}/libpipewire-module-adapter.so"
   _pick libs "usr/lib/pipewire-${_api_ver}/libpipewire-module-session-manager.so"
   _pick libs "usr/lib/pipewire-${_api_ver}/libpipewire-module-rt.so"
+  _pick libs "usr/lib/spa-${_spa_ver}/libspa.so"
   _pick libs "usr/lib/spa-${_spa_ver}/support"
   _pick libs "usr/lib/pkgconfig/libpipewire-${_api_ver}.pc"
   _pick libs "usr/lib/pkgconfig/libspa-${_spa_ver}.pc"
@@ -278,6 +282,7 @@ package_pipewire-git() {
   _pick jack "usr/lib/pipewire-${_api_ver}/libpipewire-module-netjack2-driver.so"
   _pick jack "usr/lib/pipewire-${_api_ver}/libpipewire-module-netjack2-manager.so"
   _pick jack usr/lib/pkgconfig/jack.pc
+  _pick jack usr/lib/pkgconfig/jackserver.pc
   _pick jack usr/share/man/man1/pw-jack.1
   _pick jack usr/share/man/man5/pipewire-jack.conf.5
   _pick jack usr/share/man/man7/libpipewire-module-netjack2-driver.7
@@ -342,10 +347,12 @@ package_pipewire-git() {
   _pick zeroconf "usr/lib/pipewire-${_api_ver}/libpipewire-module-raop-discover.so"
   _pick zeroconf "usr/lib/pipewire-${_api_ver}/libpipewire-module-raop-sink.so"
   _pick zeroconf "usr/lib/pipewire-${_api_ver}/libpipewire-module-rtp-session.so"
+  _pick zeroconf "usr/lib/pipewire-${_api_ver}/libpipewire-module-snapcast-discover.so"
   _pick zeroconf usr/share/man/man7/libpipewire-module-zeroconf-discover.7
   _pick zeroconf usr/share/man/man7/libpipewire-module-raop-discover.7
   _pick zeroconf usr/share/man/man7/libpipewire-module-raop-sink.7
   _pick zeroconf usr/share/man/man7/libpipewire-module-rtp-session.7
+  _pick zeroconf usr/share/man/man7/libpipewire-module-snapcast-discover.7
 
   _pick v4l2 usr/bin/pw-v4l2
   _pick v4l2 "usr/lib/pipewire-${_api_ver}/v4l2"
@@ -453,7 +460,7 @@ package_pipewire-audio-git() {
     'glib2' 'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
     'alsa-card-profiles'
     'alsa-lib' 'libasound.so'
-    'ffmpeg' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
+    'ffmpeg' 'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libavfilter.so'
     'bluez-libs' 'libbluetooth.so'
     'dbus' 'libdbus-1.so'
     'libfdk-aac' 'libfdk-aac.so'
@@ -466,8 +473,9 @@ package_pipewire-audio-git() {
     'sbc' 'libsbc.so'
     'libsndfile' 'libsndfile.so'
     'libusb' 'libusb-1.0.so'
-    'webrtc-audio-processing-1' 'libwebrtc_audio_processing.so'
+    'webrtc-audio-processing-1' 'libwebrtc-audio-processing-1.so'
     'libebur128' # libebur128.so
+    'fftw' 'libfftw3f.so'
   )
   provides=("pipewire-audio=${pkgver}")
   conflicts=(
@@ -630,6 +638,7 @@ package_pipewire-pulse-git() {
     'glib2' 'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
     'libpulse' 'libpulse.so'
     'systemd-libs' 'libsystemd.so'
+    'dconf'
   )
   backup=(
     'usr/share/pipewire/pipewire-pulse.conf'
@@ -694,7 +703,7 @@ package_pipewire-v4l2-git() {
     "libpipewire=${pkgver}" "libpipewire-${_api_ver}.so"
     'pipewire-session-manager'
     'glibc' # libc.so
-    'systemd-libs' 'libudev.so'
+    'systemd-libs' 'libsystemd.so' 'libudev.so'
     'sh'
   )
   provides=("pipewire-v4l2=${pkgver}")
@@ -753,6 +762,7 @@ package_pipewire-zeroconf-git() {
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-raop-discover.so"
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-raop-sink.so"
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-rtp-session.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-snapcast-discover.so"
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
