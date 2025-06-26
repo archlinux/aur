@@ -29,7 +29,7 @@ _avx=avx
 source=("https://github.com/RobRich999/Chromium_Clang/releases/download/v${pkgver}-r${_tag}-linux64-deb-${_avx}/chromium-browser-${_channel}_${pkgver}-1_amd64.deb"
 	"chromium-browser-$_channel.sh")
 sha256sums=('583b4814af88f0f6c51c380ca28f59801720f7929034e9efec28b37d2ce52b8f'
-            '9AAC2B59BA2BA8CA0259A8F9D12AB49EB0B431F434888C046EE4A4293A5C1B6B')
+            'AEAF8460F84DE2B6658C721FFF2166B187FA5FD2E19771830938008E02F484D1')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"

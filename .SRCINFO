@@ -23,6 +23,6 @@ pkgbase = chromium-clang-avx-bin
 	source = https://github.com/RobRich999/Chromium_Clang/releases/download/v139.0.7226.0-r1470985-linux64-deb-avx/chromium-browser-unstable_139.0.7226.0-1_amd64.deb
 	source = chromium-browser-unstable.sh
 	sha256sums = 583b4814af88f0f6c51c380ca28f59801720f7929034e9efec28b37d2ce52b8f
-	sha256sums = 9AAC2B59BA2BA8CA0259A8F9D12AB49EB0B431F434888C046EE4A4293A5C1B6B
+	sha256sums = AEAF8460F84DE2B6658C721FFF2166B187FA5FD2E19771830938008E02F484D1
 
 pkgname = chromium-clang-avx-bin
