@@ -12,8 +12,8 @@ license=('GPL-3.0-or-later')
 source=(https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 {off,on}-opera-bundled-ffmpeg.hook)
 sha256sums=('f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
-            '08bf8603cb7b1dfe69ca28b4843c29cc96fd1faf01b37f123f2194ac33ff47a4'
-            '530e7a0c919c1cd9ae703b3c28a013556d93eb98f4968127581111ad7830aa3e')
+            '115d5f0ab1ca99d8a8acd800999f40b3a2bfa2aae8d6004569ece6f190b4baf6'
+            'e0e3059693a850f74e8228e009ab75d4a432d61398458544fc7247a043ae58b6')
 depends=(glibc zlib opus)
 makedepends=(gcc pkgconf diffutils nasm git
   patch
