@@ -33,7 +33,7 @@ build() {
 
 	# Core
 	mkdir -p build
-	make TARGET_DIR=build FULL_VERSION="${pkgver}" build
+	make TARGET_DIR=build build
 
 	# Man page
 	txt2man -t "${_pkgname}" -v "${pkgname}" -r "${pkgver}" help.txt > ${_binname}.1
