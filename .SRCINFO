@@ -1,0 +1,16 @@
+pkgbase = chromium-ectool
+	pkgdesc = Query and send commands to ChromiumOS EC from userspace.
+	pkgver = R100
+	pkgrel = 1
+	url = https://chromium.googlesource.com/chromiumos/platform/ec
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = make
+	makedepends = gcc
+	depends = libftdi
+	depends = libusb
+	noextract = release-R100-14526.B-main.tar.gz
+	source = https://chromium.googlesource.com/chromiumos/platform/ec/+archive/refs/heads/release-R100-14526.B-main.tar.gz
+	sha256sums = b78106a4d96247e11f396ce7a1b3f63acab6c8fbf9e4595d4ca2ce2879448457
+
+pkgname = chromium-ectool
