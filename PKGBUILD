@@ -2,7 +2,7 @@
 # Maintainer: icyleaf <icyleaf.cn at gmail dot com>
 
 pkgname='hypr-input-switcher-bin'
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Smart input method switcher for Hyprland'
 url='https://github.com/icyleaf/hypr-input-switcher'
@@ -13,11 +13,11 @@ conflicts=('hypr-input-switcher')
 depends=('fcitx5' 'hyprland')
 optdepends=('fcitx5-rime: Chinese input support' 'fcitx5-mozc: Japanese input support' 'fcitx5-hangul: Korean input support' 'dunst: Desktop notifications')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/icyleaf/hypr-input-switcher/releases/download/0.1.2/hypr-input-switcher_Linux_arm64.tar.gz")
-sha256sums_aarch64=('b07e4764bd8bd60067606e8618d0d612f5e5337aee1f1d04bd4945d3025ee1e7')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/icyleaf/hypr-input-switcher/releases/download/0.2.0/hypr-input-switcher_Linux_arm64.tar.gz")
+sha256sums_aarch64=('00367fec0715f79c68a17ab8145dfd937df430a133867ca90e15d30972868141')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/icyleaf/hypr-input-switcher/releases/download/0.1.2/hypr-input-switcher_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('fd8a8391e7546c4663997a15c328494885e911281ca2cfc9d4cf035273b3e084')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/icyleaf/hypr-input-switcher/releases/download/0.2.0/hypr-input-switcher_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('112748b3b28aee8cf39f13a54cf3cbe403cd64a56e43bd59de70b11d5377b860')
 
 package() {
   install -Dm755 "./hypr-input-switcher" "${pkgdir}/usr/bin/hypr-input-switcher"
