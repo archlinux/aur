@@ -1,17 +1,18 @@
 pkgbase = alda
 	pkgdesc = A music programming language for musicians
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/alda-lang/alda
 	arch = x86_64
-	license = EPL
+	license = EPL-2.0
 	makedepends = go
 	makedepends = gradle
-	depends = bash
 	depends = java-runtime>=8
-	source = alda-release-2.3.1.tar.gz::https://github.com/alda-lang/alda/archive/refs/tags/release-2.3.1.tar.gz
+	provides = alda
+	conflicts = alda-bin
+	source = alda-release-2.3.2.tar.gz::https://codeload.github.com/alda-lang/alda/tar.gz/refs/tags/release-2.3.2
 	source = alda-player
-	sha256sums = 8136f4fe1c74344ad8b27d23329e23620fdea76fe8892565ff308bda3ceac8cd
-	sha256sums = 29550c5c69f95d6eba1155e3b45430e205e8a2502f597c8c36b7b5b5a126f900
+	b2sums = 88d28b89c73a9919dee035b4f95a6b0f390a8f72676e68f58e60174eec331f14450190f89d1a1fb1ac84fc830f6585b5aa4a3788f6f95dfba8e4654c10107554
+	b2sums = 763038e3d3a541654ef53ef762702a98145206c31d1b7b5ef1366bd7ee9b520e5b682ea347f96de21ec4285929b0b0a7a588e765f77c15298095b38f753a6c4b
 
 pkgname = alda
