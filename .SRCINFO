@@ -1,7 +1,7 @@
 pkgbase = doomfire-wallpaper
 	pkgdesc = DOOM-style animated fire wallpaper for Hyprpaper
 	pkgver = 1.0.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/Leafmun-certii/doom_fire_wallpaper
 	install = doomfire-wallpaper.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = doomfire-wallpaper
 	makedepends = cargo
 	depends = hyprpaper
 	depends = grim
-	source = doom_fire_wallpaper::git+https://github.com/Leafmun-certii/doom_fire_wallpaper
+	source = doom_fire_wallpaper::git+https://github.com/Leafmun-certii/doom_fire_wallpaper.git
 	md5sums = SKIP
 
 pkgname = doomfire-wallpaper
