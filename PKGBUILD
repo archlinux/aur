@@ -1,8 +1,8 @@
-# Maintainer: workonfire <kolucki62@gmail.com>
+# Maintainer: qexat <contact@qexat.com>
 
 _pkgname=babi
 pkgname=$_pkgname-git
-pkgver=v1.6.0.r4.g5c92ecb
+pkgver=v1.6.1.r7.ge199e92
 pkgrel=1
 pkgdesc="A text editor, eventually..."
 arch=('any')

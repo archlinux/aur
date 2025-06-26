@@ -1,6 +1,6 @@
 pkgbase = babi-git
 pkgdesc = A text editor, eventually...
-pkgver = v1.6.0.r4.g5c92ecb
+pkgver = v1.6.1.r7.ge199e92
 pkgrel = 1
 url = https://github.com/asottile/babi
 arch = any
