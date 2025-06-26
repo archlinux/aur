@@ -1,7 +1,7 @@
 pkgbase = python-mistralai
 	pkgdesc = You can use the Mistral Python client to interact with the Mistral AI API.
 	pkgver = 1.8.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mistralai/client-python
 	arch = any
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = python-mistralai
 	depends = python-eval-type-backport
 	depends = python-dateutil
 	depends = python-typing_inspect
+	depends = python-httpx
 	optdepends = python-google-auth: gcp
 	optdepends = python-requests: gcp
 	optdepends = python-mcp: agents
