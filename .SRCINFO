@@ -1,9 +1,8 @@
 pkgbase = app-opener
 	pkgdesc = Complex for open applications and start scripts...
 	pkgver = v1
-	pkgrel = 1
+	pkgrel = 5
 	url = https://github.com/stikundra-murtsi/app-opener
-	install = apop.install
 	arch = any
 	license = custom:NAUPL
 	depends = bash
