@@ -2,14 +2,14 @@
 
 pkgname=fvwm3-git
 _pkgname=fvwm3
-pkgver=1.1.2.r11.gbf1950045
+pkgver=1.1.3.r7.g600017546
 pkgrel=1
 pkgdesc="A powerful ICCCM2 compliant multiple virtual desktop window manager for X11"
 arch=('i686' 'x86_64')
 url="http://www.fvwm.org"
 license=('GPL')
 depends=('fribidi' 'libxpm' 'librsvg' 'libxrandr' 'libevent' 'libxcursor')
-makedepends=('git' 'go' 'libxslt' 'asciidoctor' 'xtrans' 'meson')
+makedepends=('git' 'go' 'libxslt' 'asciidoctor' 'xtrans' 'meson' 'cmake' 'libxkbcommon')
 optdepends=('perl-tk: for ClickToFocus support'
             'perl-x11-protocol: for ClickToFocus support'
             'python: for fvwm-menu-desktop')
