@@ -1,0 +1,25 @@
+pkgbase = baidunetdisk-portable
+	pkgdesc = Baidu Netdisk sandboxed by portable
+	pkgver = 4.17.7
+	pkgrel = 1
+	url = https://pan.baidu.com
+	arch = x86_64
+	license = LicenseRef-custom
+	makedepends = desktop-file-utils
+	depends = portable
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = gtk3
+	depends = nss
+	provides = baidunetdisk
+	conflicts = baidunetdisk
+	options = !strip
+	source = baidunetdisk-wrapper.sh
+	source = portable-config
+	sha256sums = b6a97f823fd8891669ff879385beeb009632bd4c120ee95a409d7ac648f9b149
+	sha256sums = 9c26d81f9ce25c35f138da3e726b88447e754b3279766de419a9c672a148c10a
+	source_x86_64 = baidunetdisk-portable-4.17.7.deb::http://wppkg.baidupcs.com/issue/netdisk/Linuxguanjia/4.17.7/baidunetdisk_4.17.7_amd64.deb
+	sha256sums_x86_64 = 50ec18f05626a13f57ef034630416d481682bc1018539f33397d5c71bc653b3d
+
+pkgname = baidunetdisk-portable
