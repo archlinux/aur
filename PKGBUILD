@@ -3,7 +3,7 @@
 pkgbase=python-drizzle
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A package for combining dithered images into a single image"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ checkdepends=('python-pytest'
               'python-gwcs')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/spacetelescope/drizzle/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('4687eec4287c161a161bc08512919692')
+md5sums=('f6770a3b9c68e264ab3738f2d2e01cce')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
