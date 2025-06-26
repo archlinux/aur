@@ -1,6 +1,6 @@
 pkgbase = intel-graphics-compiler-bin
 	pkgdesc = Intel Graphics Compiler for OpenCL (pre-compiled binaries)
-	pkgver = 2.10.8
+	pkgver = 2.12.5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/intel/intel-graphics-compiler/
@@ -16,19 +16,19 @@ pkgbase = intel-graphics-compiler-bin
 	provides = intel-opencl-clang
 	conflicts = intel-graphics-compiler
 	conflicts = intel-opencl-clang
-	noextract = intel-igc-core-2_2.10.8+18926_amd64.deb
-	noextract = intel-igc-opencl-2_2.10.8+18926_amd64.deb
-	noextract = intel-igc-opencl-devel_2.10.8+18926_amd64.deb
+	noextract = intel-igc-core-2_2.12.5+19302_amd64.deb
+	noextract = intel-igc-opencl-2_2.12.5+19302_amd64.deb
+	noextract = intel-igc-opencl-devel_2.12.5+19302_amd64.deb
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/v2.10.8/intel-igc-core-2_2.10.8+18926_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/v2.10.8/intel-igc-opencl-2_2.10.8+18926_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/v2.10.8/intel-igc-opencl-devel_2.10.8+18926_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/v2.12.5/intel-igc-core-2_2.12.5+19302_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/v2.12.5/intel-igc-opencl-2_2.12.5+19302_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/v2.12.5/intel-igc-opencl-devel_2.12.5+19302_amd64.deb
 	source = git+https://github.com/intel/opencl-clang.git#commit=58242977b4092cf5eb94a10dd144691c12c87001
 	source = LICENSE
-	sha256sums = 85bb185f5c9f0700321c6ce9362a4aa85b6cdf02f74a7b8685424d0be024fb0e
-	sha256sums = 21e5ee9f0b5798335d82a88f98e80bccd9539380782e60893d6d050eb801d322
-	sha256sums = 99c68e77aa2e9f27b98173abd88df3fbe6cb68138c8af55eae43b417dea791cb
+	sha256sums = 6f3531c3dc2de7a895b990fe6661d61ff6aad2afe68d1f2069965ee7e7af08d0
+	sha256sums = 888d5958f344d267387194926276c8fc06fd28debdf575b2fd8a6bf37e80875c
+	sha256sums = e924467408f58c381fc01645dde881d37872f837c88035e4ad3ddb3a77d34aee
 	sha256sums = cc4961a1701dc241d9a3c8c7f0d9a1ab8302f6f70b3df036e73313c32bf551f2
 	sha256sums = 72d9ed65b0068110b0dcef7e2b52cd32d90ceaeb743b7b6fb8ad07265f230716
 
