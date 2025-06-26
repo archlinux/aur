@@ -1,10 +1,10 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 pkgname=lightning-image-viewer-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast and lightweight desktop image viewer'
 arch=(x86_64)
-url='https://yaak.app/'
+url='https://github.com/shatsky/lightning-image-viewer/'
 license=(GPL-3.0-only)
 depends=(
 	# As reported by namcap
