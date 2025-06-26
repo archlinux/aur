@@ -1,6 +1,6 @@
 pkgbase = ledger-live-electron36-git
 	pkgdesc = Maintain your Ledger devices (git on thatonecalculator fork, security/upgrade-eol-electron branch)
-	pkgver = r39814.gd6734a7dba
+	pkgver = r39815.g66fe7773cf
 	pkgrel = 1
 	url = https://github.com/ThatOneCalculator/ledger-live
 	arch = x86_64
