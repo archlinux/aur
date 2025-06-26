@@ -1,6 +1,6 @@
 pkgbase = python-pydantic-ai
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pydantic/pydantic-ai
 	arch = any
 	license = MIT
@@ -21,6 +21,7 @@ pkgbase = python-pydantic-ai
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = git
 	depends = python
 	source = https://github.com/pydantic/pydantic-ai/archive/refs/tags/v0.3.4.tar.gz
 	sha256sums = 94fddc4b784d4556938b7c82ee6641bcc803131707a6733068b3ffacd18708c0

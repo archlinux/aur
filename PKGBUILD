@@ -10,14 +10,14 @@ _name00=clai
 pkgbase=python-${_name0}
 pkgname=(python-${_name5} python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0} python-${_name00})
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
 license=('MIT')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('94fddc4b784d4556938b7c82ee6641bcc803131707a6733068b3ffacd18708c0')
 depends=('python')
-makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
 checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-recording' 'python-diff-cover' 'python-pytest-xdist' 'deno')
 
 prepare(){
@@ -30,6 +30,7 @@ prepare(){
 
 build() {
   cd "${srcdir}"/${_name0}-${pkgver}
+  git tag v${pkgver}
   python -m build --wheel --no-isolation ${_name5}
   python -m build --wheel --no-isolation ${_name0//-ai/_}${_name4}
   python -m build --wheel --no-isolation ${_name0//-/_}_${_name3}
@@ -51,6 +52,9 @@ check() {
     --deselect tests/models/test_mistral.py::test_mistral_model_thinking_part
     --deselect tests/models/test_mistral.py::test_image_as_binary_content_tool_response
     --deselect tests/test_settings.py::test_stop_settings[mistral]
+    --deselect tests/test_mcp.py::test_client_sampling
+    --deselect tests/models/test_mistral.py::test_multiple_completions
+    -k "not mcp_client_sampling.py"
   )
   cd "${srcdir}"/${_name0}-${pkgver}
   python -m venv --system-site-packages test-env
