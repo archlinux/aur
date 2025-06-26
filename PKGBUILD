@@ -21,7 +21,7 @@ prepare() {
   local sh
 
   for sh in bash fish zsh; do
-    ./wormhole-rs completion $sh | sed 's/magic-wormhole-cli/wormhole-rs/g' >comp.$sh
+    ./wormhole-rs completion $sh >comp.$sh
   done
 }
 
