@@ -15,7 +15,6 @@ conflicts=('python-pretty-errors')
 md5sums=('SKIP')
 
 pkgver() {
-  #pwd
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
