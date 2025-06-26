@@ -1,7 +1,7 @@
 # Maintainer: Marco Julian Solanki <aur@solanki.mozmail.com>
 
 pkgname='adaptivecpp-git'
-pkgver=24.06.0.r168.gba3fb96
+pkgver=25.02.0.r82.g0107b78
 pkgrel=1
 pkgdesc='A modern, community-driven platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors.'
 arch=('x86_64')
@@ -18,10 +18,10 @@ depends=(
     'hip-runtime-amd'
     'level-zero-loader'
     'llvm-libs'
+    'numactl'
     'nvidia-utils'
     'ocl-icd'
     'python'
-    'spirv-tools'
 )
 makedepends=(
     'boost'
@@ -29,6 +29,7 @@ makedepends=(
     'doxygen'
     'git'
     'level-zero-headers'
+    'lld'
     'llvm'
     'openmp'
     'rocm-llvm'
@@ -46,7 +47,10 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_SKIP_INSTALL_RPATH=YES \
+        -DCUDAToolkit_ROOT=/opt/cuda \
+        -DROCM_PATH=/opt/rocm \
         -DACPP_COMPILER_FEATURE_PROFILE=full \
+        -DACPP_EXPERIMENTAL_LLVM=ON \
         -DWITH_CUDA_BACKEND=ON \
         -DWITH_ROCM_BACKEND=ON \
         -DWITH_LEVEL_ZERO_BACKEND=ON \
