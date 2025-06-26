@@ -1,6 +1,6 @@
 pkgbase = freedict-tools
 	pkgdesc = Tools to compile the FreeDict dictionaries
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	epoch = 1
 	url = https://freedict.org/
@@ -34,7 +34,7 @@ pkgbase = freedict-tools
 	depends = sed
 	depends = make
 	depends = coreutils
-	source = freedict-tools-0.6.0.tar.gz::https://github.com/freedict/tools/archive/refs/tags/0.6.0.tar.gz
-	sha512sums = e525a767b5468e16270838ff4e6e6773af9a062a50b6b0c01b9f4bbc06ecc33ac3c1ae5d5cb133041abba24214289e22f9c1a38fd585b2b936491663380c6aff
+	source = freedict-tools-0.7.0.tar.gz::https://github.com/freedict/tools/archive/refs/tags/0.7.0.tar.gz
+	sha512sums = 343afa2c7b7afc72696788d3e1a346b929bf7787785a1ec8e224d04a7510aba0f1a08ba62bd535d343c6dd6a3a661dd898754cb7171007be1033cf28a991c684
 
 pkgname = freedict-tools

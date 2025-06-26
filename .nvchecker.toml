@@ -1,0 +1,3 @@
+[freedict-tools]
+source = 'git'
+git = 'https://github.com/freedict/tools.git'
