@@ -6,7 +6,9 @@ arch=('x86_64')
 url="https://github.com/mfat/systemd-pilot"
 license=('GPL3')
 depends=('python-gobject' 'gtk4' 'libadwaita' 'python-paramiko' 'python-keyring' 'python-rich' 'python-pyyaml')
-source=("git+https://github.com/mfat/systemd-pilot.git")
+source=(
+	"systemd-pilot.desktop"
+	"git+https://github.com/mfat/systemd-pilot.git")
 md5sums=('SKIP')
 
 prepare() {
