@@ -1,0 +1,16 @@
+pkgbase = python-zenlib
+	pkgdesc = Useful python decorators and utilities
+	pkgver = 3.1.5
+	pkgrel = 1
+	url = https://github.com/desultory/zenlib
+	arch = any
+	license = GPL-2.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = python-zenlib-3.1.5::https://github.com/desultory/zenlib/archive/refs/tags/3.1.5.tar.gz
+	b2sums = 900cc0dbdb087d0d294027747eed046dee452ac7dd15cb572ff769e148e07478a5030f8412fdbebcf89db17c6e06df5368fe28ff1df983723e068b9005cba6ce
+
+pkgname = python-zenlib
