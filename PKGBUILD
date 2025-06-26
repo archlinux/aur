@@ -2,8 +2,8 @@
 
 _name=groq
 pkgname=python-${_name}
-pkgver=0.28.0
-_groq_groqapi_spec=ea5b03626ef6c5d62792b87e2bef9acff936112791abe056db5d0a7a66ba39d7
+pkgver=0.29.0
+_groq_groqapi_spec=1cdb4a5cd72775ee5627d03ec76df2a4d1dc5d2de4a5352ff76e0e4a228fd1a3
 pkgrel=1
 pkgdesc='The official Python library for the groq API.'
 arch=('any')
@@ -11,11 +11,12 @@ url='https://github.com/groq/groq-python'
 license=('Apache-2.0')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "https://storage.googleapis.com/stainless-sdk-openapi-specs/groqcloud/groqcloud-${_groq_groqapi_spec}.yml")
-sha256sums=('a041adfb72c822d5e7e21e7804f1440690d76db16f74a1b1b95ff68e23125ef8'
-            'ea5b03626ef6c5d62792b87e2bef9acff936112791abe056db5d0a7a66ba39d7')
+sha256sums=('0683d8e8bb6941bf9b790eae0c5dd121b6b19698c12813a6438b3717d432c64a'
+            '1cdb4a5cd72775ee5627d03ec76df2a4d1dc5d2de4a5352ff76e0e4a228fd1a3')
 depends=('python' 'python-httpx' 'python-pydantic' 'python-typing_extensions' 'python-anyio' 'python-distro' 'python-sniffio')
 makedepends=('python-hatchling' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-respx' 'python-pytest' 'python-pytest-asyncio' 'python-time-machine' 'python-dirty-equals' 'python-rich' 'python-nest-asyncio' 'npm' 'nodejs-lts-jod')
+checkdepends=('python-respx' 'python-pytest' 'python-pytest-asyncio' 'python-time-machine' 'python-dirty-equals' 'python-rich' 'python-nest-asyncio' 'python-pytest-xdist' 'python-aiohttp' 'python-httpx-aiohttp' 'npm' 'nodejs-lts-jod')
+optdepends=('python-aiohttp: aiohttp' 'python-httpx-aiohttp: aiohttp')
 
 build() {
   cd "${srcdir}"/${_name}-python-${pkgver}
@@ -26,7 +27,6 @@ check() {
   export DEFER_PYDANTIC_BUILD=false
   local pytest_options=(
     -vv
-    -k "not test_copy_build_request"
   )
   cd "${srcdir}"/${_name}-python-${pkgver}
   trap 'pkill "npm exec prism"' EXIT
