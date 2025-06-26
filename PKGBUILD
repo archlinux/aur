@@ -11,7 +11,7 @@ source=(
 	"systemd-pilot.desktop"
 	"git+https://github.com/mfat/systemd-pilot.git"
 	)
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   cd "$srcdir/systemd-pilot"
