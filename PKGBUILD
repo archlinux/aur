@@ -9,7 +9,7 @@ license=('0BSD')
 depends=('hyprpaper' 'grim')
 makedepends=('git' 'cargo')
 install=doomfire-wallpaper.install
-source=("doom_fire_wallpaper::git+$giturl")
+source=("doom_fire_wallpaper::git+https://github.com/Leafmun-certii/doom_fire_wallpaper.git")
 md5sums=('SKIP')
 
 build() {
