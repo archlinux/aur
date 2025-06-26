@@ -4,10 +4,10 @@
 
 # Maintainer: Azat Khuzhin <a3at.mail@gmail.com>
 pkgname=chdig-git
-pkgver=0.4.0.r31.g0bf05ba
+pkgver=25.6.1.r0.g754f2c2
 pkgrel=1
 pkgdesc="Dig into ClickHouse with TUI interface (compile from upstream)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 depends=('bash')
 makedepends=('git' 'rust')
 conflicts=("chdig")
