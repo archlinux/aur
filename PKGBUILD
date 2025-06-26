@@ -9,7 +9,7 @@ depends=('python-gobject' 'gtk4' 'libadwaita' 'python-paramiko' 'python-keyring'
 source=(
 	"systemd-pilot.desktop"
 	"git+https://github.com/mfat/systemd-pilot.git")
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
 
 prepare() {
   cd "$srcdir/systemd-pilot"
