@@ -31,7 +31,7 @@ _ffsum="2bedeb86c6cb16cd3fce88d42ae4e245bafe2c6e9221ba8e445b8e02e89d973f"
 _pkgname="icecat"
 pkgname="$_pkgname"
 pkgver="$_icver"
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU version of the Firefox ESR browser"
 url="https://git.savannah.gnu.org/cgit/gnuzilla.git"
 license=('MPL-2.0')
@@ -51,7 +51,6 @@ depends=(
   mime-types
   nspr
   nss
-  pipewire
   ttf-font
   zlib
 )
@@ -251,6 +250,7 @@ mk_add_options MOZ_PARALLEL_BUILD=${_cores:-4}
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
+ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-wasm-simd
 ac_add_options --enable-linker=lld
@@ -288,8 +288,6 @@ ac_add_options --enable-av1
 ac_add_options --enable-jack
 ac_add_options --enable-jxl
 ac_add_options --enable-proxy-bypass-protection
-ac_add_options --enable-pulseaudio
-ac_add_options --enable-raw
 ac_add_options --enable-sandbox
 ac_add_options --enable-unverified-updates
 ac_add_options --enable-webrtc
@@ -311,12 +309,6 @@ ac_add_options --disable-debug-js-modules
 ac_add_options --enable-strip
 ac_add_options --enable-install-strip
 export STRIP_FLAGS="--strip-debug --strip-unneeded"
-
-# Optimization
-ac_add_options --enable-optimize=-O3
-ac_add_options --enable-lto=cross,full
-ac_add_options OPT_LEVEL="3"
-ac_add_options RUSTC_OPT_LEVEL="3"
 
 # Other
 export CC=clang${_ver_clang:+-$_ver_clang}
@@ -410,6 +402,7 @@ build() (
 
       echo "Building instrumented browser..."
       cat > .mozconfig ../mozconfig - << END
+ac_add_options --enable-lto=cross,full
 ac_add_options --enable-profile-generate=cross
 export MOZ_ENABLE_FULL_SYMBOLS=1
 END
