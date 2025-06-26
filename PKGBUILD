@@ -16,7 +16,6 @@ build() {
 }
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
-  pwd
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
