@@ -16,7 +16,6 @@ sha256sums=('839c0bdafbecbcb999e519a6fc32edbd37d9f010a205ccc34d71aa25ece1a768'
 
 
 build() {
-  pwd
   cd "$srcdir/$pkgname-$pkgver"
 
   # These variables are used in the Makefile to create the file directories.
