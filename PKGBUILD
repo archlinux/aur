@@ -2,8 +2,8 @@
 # mockitt 墨刀中文版
 
 pkgname=mockitt-cn
-pkgver=1.5.2
-pkgrel=3
+pkgver=1.5.4
+pkgrel=1
 arch=('x86_64')
 provides=("mockitt")
 conflicts=("mockitt")
@@ -27,7 +27,7 @@ source=(
 source_x86_64=("${pkgname}-${pkgver}.deb::https://cdn-release.modao.cc/desktop/prod-${pkgver}/linux/modao-linux-x64-${pkgver}.deb")
 sha256sums=('845ceda2ba76e8dde171e28cf4347591785195fd63f8e1eef3c7b978ecba580a'
             '2cbf3af6aaa6ecc240a719795f00af5f18bf11f21b35a9e381b9fb1f7ec1887c')
-sha256sums_x86_64=('9ee164dd351ba1e4722d2554621608dc46245fbbda3cd5d75b0799f0d0ab9812')
+sha256sums_x86_64=('a8f192a2bc8a2e48248edf92d61190ef1d170e87bfa813ce09fc367f4b468459')
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz" --numeric-owner -C ${pkgdir}
