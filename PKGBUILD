@@ -22,5 +22,5 @@ package() {
   install -Dm755 src/main.py "$pkgdir/usr/bin/systemd-pilot"
   install -Dm644 io.github.mfat.systemdpilot.metainfo.xml "$pkgdir/usr/share/metainfo/io.github.mfat.systemdpilot.metainfo.xml"
   install -Dm644 "$srcdir/systemd-pilot.desktop" "$pkgdir/usr/share/applications/systemd-pilot.desktop"
-  install -Dm644 "$srcdir/io.github.mfat.systemdpilot.png" "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.mfat.systemdpilot.png"
+  install -Dm644 "$srcdir/io.github.mfat.systemdpilot.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/io.github.mfat.systemdpilot.png"
 }
