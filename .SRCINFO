@@ -1,7 +1,8 @@
 pkgbase = mdcx-git
 	pkgdesc = Movie metadata scraper
-	pkgver = 120240924.r177.b35ef5b
+	pkgver = r195.2135104
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/sqzw-x/mdcx
 	arch = i686
 	arch = pentium4

@@ -2,7 +2,8 @@
 
 _pkgname=mdcx
 pkgname="${_pkgname}-git"
-pkgver=120240924.r177.b35ef5b
+epoch=1
+pkgver=r195.2135104
 pkgrel=1
 pkgdesc="Movie metadata scraper"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -20,7 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${_pkgname}"
-    printf "%s.r%s.%s" "$(awk '/version = /{print $3}' config.ini.default)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
