@@ -1,6 +1,6 @@
 pkgbase = readest
 	pkgdesc = Modern, feature-rich ebook reader designed for avid readers offering seamless cross-platform access, powerful tools, and an intuitive interface
-	pkgver = 0.9.60
+	pkgver = 0.9.61
 	pkgrel = 1
 	url = https://github.com/readest/readest
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = readest
 	conflicts = readest-deb
 	conflicts = readest-git
 	options = !lto
-	source = git+https://github.com/readest/readest.git#tag=v0.9.60
+	source = git+https://github.com/readest/readest.git#tag=v0.9.61
 	sha256sums = SKIP
 
 pkgname = readest
