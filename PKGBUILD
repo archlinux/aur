@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mapplots
-_pkgver=1.5.2
+_pkgver=1.5.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Data Visualisation on Maps"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-shapefiles
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d376f1fa68dd004de1fa49bf1146e465')
-b2sums=('bd796d85ec69f5569fc2a4515b00c596738e988fb70eef5d93ae9aa1aaf30a6881232f58e6df30a1b40f06af1c350db8416578d97ce54f67f25d22973d30774c')
+md5sums=('1348db65b899f74a73abb26c1f824211')
+b2sums=('d2fd110848c34ac84f1768d835a6ab823d8b499a8f965ea011063ec3ae2925d8f02fd966a243a032741d0f0b11027d8ca4c35e8939d3bbbc561e9f812d1f85ad')
 
 build() {
   mkdir build
