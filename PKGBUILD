@@ -1,8 +1,8 @@
 
 pkgname=chromium-ffmpeg-codecs-git
 _ver=7.1
-pkgver=${_ver}.c136
-pkgrel=6
+pkgver=${_ver}.m136_119
+pkgrel=1
 _so=libffmpeg.so
 pkgdesc="Add codecs to some Chromium-s (non vendored ${_so})"
 arch=('x86_64')
@@ -10,19 +10,20 @@ url="https://git.ffmpeg.org/ffmpeg"
 license=('GPL-3.0-or-later')
 # Avoid conflicting by manual clone
 source=(https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
-${pkgname}.hook.in)
+{off,on}-opera-bundled-ffmpeg.hook)
 sha256sums=('f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
-            'ba93ab3476f04385ec9666d970a665b7ed26d6e908b3b93549848fe76c255ccb')
+            '08bf8603cb7b1dfe69ca28b4843c29cc96fd1faf01b37f123f2194ac33ff47a4'
+            '530e7a0c919c1cd9ae703b3c28a013556d93eb98f4968127581111ad7830aa3e')
 depends=(glibc zlib opus)
 makedepends=(gcc pkgconf diffutils nasm git
   patch
   sed
 )
-conflicts=(vivaldi-{,snapshot-}ffmpeg-codecs opera{,-developer,-beta}-ffmpeg-codecs{,-bin})
+conflicts=(vivaldi-ffmpeg-codecs opera{,-developer,-beta}-ffmpeg-codecs{,-bin})
 provides=("${conflicts[@]}")
 
 prepare() {
-  echo You need main branch for M138/vivaldi-snapshot. Please about and switch branch if needed.
+  echo You need main branch for M138.
   rm -rf ffmpeg
   git clone --depth=1 ${url}.git --branch release/$_ver 
   cd ffmpeg
@@ -67,19 +68,16 @@ build() {
 package(){
   _name=chromium-ffmpeg
   install -Dm644 release/$_so "${pkgdir}"/usr/lib/$_so
-  # lib_extra does not work withut NoExtract-ing
-  #for p in "${pkgdir}"/usr/lib/opera{,-developer,-beta}/lib_extra
-  #do
-  #  install -d "$p"
-  #  ln -sf /usr/lib/$_so "$p"/$_so
-  #done
-  install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
-  for n in 7.4 7.5 7.6 7.7 7.8 7.9 8.0; do
+  for p in "${pkgdir}"/usr/lib/opera{,-developer,-beta}/lib_extra
+  do
+    install -d "$p"
+    ln -sf /usr/lib/$_so "$p"/$_so
+  done
+  install -d "${pkgdir}"/opt/vivaldi #{,-snapshot}
+  for n in 7.4 7.5 7.6; do
     ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.$n
-    ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi-snapshot/${_so}.$n
+    #ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi-snapshot/${_so}.$n
   done
-  install -d "$pkgdir"/usr/share/libalpm/hooks
-  for _op in opera{,-developer,-beta}; do
-    sed "s/@OPERA@/${_op}/g" ${pkgname}.hook.in > "$pkgdir"/usr/share/libalpm/hooks/${pkgname}-${_op}.hook
-  done
+  # block strange preload
+  install -Dm644 {off,on}-opera-bundled-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
