@@ -1,16 +1,17 @@
 # Maintainer: Lev Sauliak levizorri@protonmail.com
+# Maintainer: Elias Dev elias.devis@protonmail.com
 # Contributor: 
 
 pkgname=tray-tui
-pkgver=0.2.0
-pkgrel=1
+pkgver=0.2.1
+pkgrel=2
 pkgdesc="System tray in your terminal"
 arch=('x86_64')
 url="https://github.com/Levizor/tray-tui"
 license=('MIT')
 makedepends=('cargo')
 source=("https://github.com/Levizor/tray-tui/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('0b15b535543448c7657df0ae4f7be90d255b68869261d3bfb8388c27a9341f7f')
+sha256sums=('862d5c15b906ea31ac94e1ff95f211c888bf319193af4fd0810ec97cd85522f6')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
