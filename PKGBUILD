@@ -1,13 +1,13 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=z-library-bwrap
-pkgver=2.4.1
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="Your gateway to knowledge and culture. Sandboxed by portable and uses system electron"
 arch=(x86_64 aarch64)
 url="https://go-to-library.sk/"
 license=('LicenseRef-unknown')
-makedepends=(desktop-file-utils)
+makedepends=(desktop-file-utils tar)
 depends=(electron bash hicolor-icon-theme portable)
 source=(
 	"https://s3proxy.cdn-zlib.sk/te_public_files/soft/linux/zlibrary-setup-latest.deb"
@@ -17,6 +17,11 @@ sha256sums=('SKIP'
             'SKIP')
 provides=(z-library)
 conflicts=(z-library)
+
+function pkgver() {
+        tar -xf control.tar.gz ./control
+        cat control | grep 'Version: ' | sed 's|Version: ||g'
+}
 
 function package() {
 	install -Dm755 portable-config \
