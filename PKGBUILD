@@ -402,7 +402,6 @@ build() (
 
       echo "Building instrumented browser..."
       cat > .mozconfig ../mozconfig - << END
-ac_add_options --enable-lto=cross,full
 ac_add_options --enable-profile-generate=cross
 export MOZ_ENABLE_FULL_SYMBOLS=1
 END
@@ -447,6 +446,7 @@ END
     if [[ -s merged.profdata ]]; then
       stat -c "Profile data found (%s bytes)" merged.profdata
       cat >> .mozconfig - << END
+ac_add_options --enable-lto=cross,full
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 END
