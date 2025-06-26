@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=mdcx
-pkgver=daily_release
+pkgver=120240924
 pkgrel=1
 pkgdesc="Movie metadata scraper"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -13,7 +13,7 @@ makedepends=("python39")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.png")
-sha256sums=('40120c2ddd0a00cf098e2a7b8f365352836d9a189d9f18d1137e96fe3f04545f'
+sha256sums=('cadde35d727ecb18f19465f6991554824ec55d05cbff361a07ecfe000b72a873'
             '90a66bc7a210b3f3d574a5050e27114aa1fc4d60479d359424d57b20b1526f23'
             'bd10755b15288986c03168ba8dd13d9f762fa128ded082d14b036d0934e9f05d')
 
