@@ -5,14 +5,12 @@ pkgbase = alda-bin
 	url = https://github.com/alda-lang/alda
 	arch = i686
 	arch = x86_64
-	license = custom:EPL2
+	license = EPL-2.0
 	depends = java-runtime>=8
 	provides = alda
 	conflicts = alda
 	source = alda-player-2.3.2::https://alda-releases.nyc3.digitaloceanspaces.com/2.3.2/player/non-windows/alda-player
-	source = LICENSE
 	sha256sums = 69456f09b584042f80929d97ceb1945e730d9c75c6b993e880af05b54e3ee802
-	sha256sums = f05036abc9c2bf11abecbdd874e9a4cbac8e0f6274afdf56c5cf8395238d1dc8
 	source_i686 = alda-2.3.2-i686::https://alda-releases.nyc3.digitaloceanspaces.com/2.3.2/client/linux-386/alda
 	sha256sums_i686 = 0f3c7601e579ad8d0258715951941cb6e2b6e20a08566c10bae163fbaa784c97
 	source_x86_64 = alda-2.3.2-x86_64::https://alda-releases.nyc3.digitaloceanspaces.com/2.3.2/client/linux-amd64/alda
