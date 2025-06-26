@@ -4,14 +4,14 @@ _pkgname=berry
 pkgname=berry-git
 _pkgver=e5bcb3
 pkgver=r345.fb375bf
-pkgrel=1
+pkgrel=2
 pkgdesc="A healthy, bite-sized window manager written over the XLib Library"
 url="https://github.com/JLErvin/berry"
 arch=('x86_64')
 provides=('berry')
 conflicts=('berry')
 license=('MIT')
-makedepends=('gcc' 'make')
+makedepends=('gcc' 'make' 'git')
 depends=('libx11' 'libxft' 'libxinerama')
 source=(
 	"git+https://github.com/JLErvin/berry.git"
