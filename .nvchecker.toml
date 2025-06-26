@@ -1,0 +1,4 @@
+[python-milvus-lite-bin]
+source = "git"
+git = "https://github.com/milvus-io/milvus-lite.git"
+prefix = "v"

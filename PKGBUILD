@@ -3,7 +3,7 @@
 _pkgname=milvus-lite
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}-bin"
-pkgver=2.4.12
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A lightweight version of Milvus wrapped with Python."
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ depends=("python-tqdm")
 makedepends=('python-installer')
 source_x86_64=("https://files.pythonhosted.org/packages/py3/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}-py3-none-manylinux2014_x86_64.whl")
 source_aarch64=("https://files.pythonhosted.org/packages/py3/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}-py3-none-manylinux2014_aarch64.whl")
-sha256sums_x86_64=('334037ebbab60243b5d8b43d54ca2f835d81d48c3cda0c6a462605e588deb05d')
-sha256sums_aarch64=('a0f3a5ddbfd19f4a6b842b2fd3445693c796cde272b701a1646a94c1ac45d3d7')
+b2sums_x86_64=('15fb95359a718f940ec8a0362a25a0f6bccd25c640aa351c5b94652ac3ca011a3fc974fd28d1654a581d2b73dc3c6eb50282ae6d38c1740ff3ade5e1b3ad0749')
+b2sums_aarch64=('a11a00e23190056feda96c7dba7c2d7fb3024be80f8744d2c5be9d42b6a606b9153a99dc1bcfa645ca7af299fc2396eb619cad62ad19992adc99718dfd4e1a3a')
 noextract=("${_pipname}-${pkgver}"-py3-none-manylinux2014_{x86_64,aarch64}.whl)
 
 package() {
