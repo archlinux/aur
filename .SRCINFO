@@ -1,0 +1,15 @@
+pkgbase = sink-switch
+	pkgdesc = Simple audio sink switcher for PulseAudio/PipeWire
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/KanishkMishra143/sink-switch
+	arch = any
+	license = MIT
+	depends = bash
+	depends = libnotify
+	depends = pipewire
+	depends = pulseaudio-utils
+	source = https://github.com/KanishkMishra143/sink-switch/archive/refs/tags/v1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = sink-switch
