@@ -2,7 +2,7 @@
 pkgname=chromium-ffmpeg-codecs-git
 _ver=7.1 # 7.2 does not work yet
 pkgver=${_ver}.c136
-pkgrel=5
+pkgrel=6
 _so=libffmpeg.so
 pkgdesc="Add codecs to some Chromium-s (non vendored ${_so})"
 arch=('x86_64')
@@ -43,7 +43,7 @@ build() {
     --enable-gpl \
     --disable-{all,autodetect,programs,doc,iconv,network} \
     --enable-static --disable-shared \
-    --enable-av{format,codec,util} --enable-swresample \
+    --enable-av{format,codec,util} \
     --enable-protocol=file \
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,libopus,flac,pcm_s16le,pcm_s24le,mp3,aac,h264 \
@@ -58,7 +58,7 @@ build() {
   cd ../release
   gcc $LTOFLAGS -shared $LDFLAGS -Wl,--no-as-needed  \
     -Wl,--whole-archive \
-      lib/lib{avcodec,avformat,avutil,swresample}.a \
+      lib/lib{avcodec,avformat,avutil}.a \
     -Wl,--no-whole-archive \
     -lpthread $(pkgconf --libs zlib opus) \
     -Wl,-Bsymbolic \

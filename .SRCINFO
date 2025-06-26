@@ -1,7 +1,7 @@
 pkgbase = chromium-ffmpeg-codecs-git
 	pkgdesc = Add codecs to some Chromium-s (non vendored libffmpeg.so)
 	pkgver = 7.1.c136
-	pkgrel = 5
+	pkgrel = 6
 	url = https://git.ffmpeg.org/ffmpeg
 	arch = x86_64
 	license = GPL-3.0-or-later
