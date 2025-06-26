@@ -1,6 +1,6 @@
 pkgbase = readest-deb
 	pkgdesc = Modern, feature-rich ebook reader designed for avid readers offering seamless cross-platform access, powerful tools, and an intuitive interface
-	pkgver = 0.9.60
+	pkgver = 0.9.61
 	pkgrel = 1
 	url = https://github.com/readest/readest
 	install = readest-deb.install
@@ -23,7 +23,7 @@ pkgbase = readest-deb
 	conflicts = readest
 	conflicts = readest-git
 	conflicts = readest-bin
-	source = https://github.com/readest/readest/releases/download/v0.9.60/Readest_0.9.60_amd64.deb
-	sha256sums = ab2f272c0d038070fc0d59efcad58f8de85d98478401495365c4cabe31cf2276
+	source = https://github.com/readest/readest/releases/download/v0.9.61/Readest_0.9.61_amd64.deb
+	sha256sums = sha256:01642b6688f2cf27fe2614b3a1ec5d56832ed30008e4063354ed19ee9ddd9301
 
 pkgname = readest-deb
