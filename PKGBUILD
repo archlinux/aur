@@ -2,7 +2,7 @@
 
 pkgname=cosu-trainer-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="Change various parameters of an osu! map easily"
 arch=(x86_64)
@@ -14,7 +14,7 @@ install="$_pkgname.install"
 source=("https://github.com/hwsmm/cosutrainer/releases/download/$pkgver/cosu-trainer-bin.tar.zst"
         "$_pkgname.desktop::https://raw.githubusercontent.com/hwsmm/cosutrainer/700306f4f97cbfe895b23f1955409f9c4be8f5b7/docs/cosu-trainer.desktop"
         "$_pkgname.png::https://raw.githubusercontent.com/hwsmm/cosutrainer/700306f4f97cbfe895b23f1955409f9c4be8f5b7/docs/cosutrainer.png")
-sha256sums=("b12b858bfa918ae1746d9f71fee32d5579ab1ffc840bbeda6ce66c33aa796c7f"
+sha256sums=("62cbce151f1d7793fd27f3c77e2f760e28e62b004b418f074d766f4c1f730d24"
             "8cded7c0156155f0afe57062f7d7c522cb1a13f4829c4b0680e3f02deaf10c3a"
             "e0c20261b51c196c8eeab2a9622650a803e71144b91395f9a239521bd44acdba")
 
