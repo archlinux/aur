@@ -1,6 +1,6 @@
 
 pkgname=chromium-ffmpeg-codecs-git
-_ver=7.1 # 7.2 does not work yet
+_ver=7.1
 pkgver=${_ver}.c136
 pkgrel=6
 _so=libffmpeg.so
@@ -13,9 +13,7 @@ source=(https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/m
 ${pkgname}.hook.in)
 sha256sums=('f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
             'ba93ab3476f04385ec9666d970a665b7ed26d6e908b3b93549848fe76c255ccb')
-depends=(glibc zlib
-  opus
-)
+depends=(glibc zlib opus)
 makedepends=(gcc pkgconf diffutils nasm git
   patch
   sed
@@ -24,8 +22,9 @@ conflicts=(vivaldi-{,snapshot-}ffmpeg-codecs opera{,-developer,-beta}-ffmpeg-cod
 provides=("${conflicts[@]}")
 
 prepare() {
+  echo You need main branch for M138/vivaldi-snapshot. Please about and switch branch if needed.
   rm -rf ffmpeg
-  git clone --depth=1 --branch release/$_ver ${url}.git
+  git clone --depth=1 ${url}.git --branch release/$_ver 
   cd ffmpeg
   patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
 }
@@ -60,7 +59,7 @@ build() {
     -Wl,--whole-archive \
       lib/lib{avcodec,avformat,avutil}.a \
     -Wl,--no-whole-archive \
-    -lpthread $(pkgconf --libs zlib opus) \
+    $(pkgconf --libs zlib opus) \
     -Wl,-Bsymbolic \
     -o $_so
 }
