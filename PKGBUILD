@@ -17,8 +17,8 @@ sha256sums=('f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
 depends=(glibc zlib opus)
 makedepends=(gcc pkgconf diffutils nasm git
   patch
-  sed
 )
+optdepends=(electron{28..36}': NoExtract=usr/lib/electron*/libffmpeg.so')
 conflicts=(vivaldi-ffmpeg-codecs opera{,-developer,-beta}-ffmpeg-codecs{,-bin})
 provides=("${conflicts[@]}")
 
