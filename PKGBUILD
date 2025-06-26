@@ -15,7 +15,12 @@ makedepends=('curl' 'unzip')
 source=(
   'https://dl.deno.land/release-latest.txt'
   "canary-latest.txt::https://dl.deno.land/canary-$arch-unknown-linux-gnu-latest.txt"
-  'https://github.com/denoland/deno/raw/refs/heads/main/LICENSE.md'
+  'https://raw.githubusercontent.com/denoland/deno/refs/heads/main/LICENSE.md'
+)
+noextract=(
+  "release-latest.txt"
+  "canary-latest.txt"
+  "LICENSE.md"
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
