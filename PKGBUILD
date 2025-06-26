@@ -5,16 +5,14 @@
 
 pkgname=plasma6-wallpapers-wallpaper-engine-git
 pkgver=0.5.4.r102.ged58dd8
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine"
 arch=('x86_64')
 url="https://github.com/catsout/wallpaper-engine-kde-plugin"
 license=('GPL-2.0-only')
-depends=("plasma5support" "gst-libav" "python-websockets" "qt6-declarative"
-         "qt6-websockets" "qt6-webchannel" "vulkan-driver" "libplasma"
-         "kpackage" "qt6-5compat" "qt6-webengine" "qt6-multimedia"
-         "plasma-workspace" "kdeclarative" "glfw")
-makedepends=("vulkan-headers" "extra-cmake-modules" "git" "cmake" "mpv")
+depends=("gcc-libs" "glibc" "kcmutils" "kirigami" "libglvnd" "libplasma"
+         "lz4" "qt6-base" "vulkan-icd-loader")
+makedepends=("cmake" "extra-cmake-modules" "git" "mpv" "ninja" "vulkan-headers")
 optdepends=("mpv: alternative video backend")
 provides=("plasma6-wallpapers-wallpaper-engine")
 conflicts=("plasma6-wallpapers-wallpaper-engine")
@@ -45,7 +43,7 @@ prepare(){
         grep submodule .gitmodules | sed 's/\[submodule "//;s/"\]//' | while read -r module
         do
             repo=$(basename "${module}")
-            git config "submodule.${module}.url" "${srcdir}/${repo}"
+            git config "submodule.${module}.url" "file://${srcdir}/${repo}"
         done
         git -c protocol.file.allow=always submodule update
     done
@@ -61,27 +59,18 @@ pkgver(){
     git describe --tags --long | sed 's/v//;s/-/.r/;s/-/./g'
 }
 build(){
-    echo "Building main program..."
-    cmake -B build -S "${srcdir}/${pkgname}" \
+    cmake -B build -S "${srcdir}/${pkgname}" -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=None \
         -DQT_MAJOR_VERSION=6 \
         -DBUILD_QML=ON \
         -DUSE_PLASMAPKG=OFF
     cmake --build build
-
-    echo "Building sceneviewer..."
-    cmake -B build-sceneviewer -S "${srcdir}/${pkgname}/src/backend_scene/standalone_view" \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=None \
-        -DQT_MAJOR_VERSION=6 \
-        -DBUILD_QML=ON
-    cmake --build build-sceneviewer
 }
 package(){
+    depends+=("kdeclarative" "plasma-workspace" "plasma5support"
+              "python" "python-websockets" "qt6-5compat"
+              "qt6-declarative" "qt6-multimedia" "qt6-webchannel"
+              "qt6-webengine" "qt6-websockets" "gst-libav")
     DESTDIR="${pkgdir}" cmake --install build
-    install -Dm755 build-sceneviewer/sceneviewer \
-        "${pkgdir}/usr/bin/sceneviewer"
-    install -Dm755 build-sceneviewer/sceneviewer-qml \
-        "${pkgdir}/usr/bin/sceneviewer-qml"
 }
