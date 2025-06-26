@@ -2,7 +2,7 @@
 
 pkgname=faugus-launcher-git
 pkgver=r659.764c6b7
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and lightweight app for running Windows games using UMU-Launcher"
 arch=('any')
 url="https://github.com/Faugus/faugus-launcher"
@@ -13,6 +13,8 @@ provides=('faugus-launcher')
 conflicts=('faugus-launcher')
 source=("git+https://github.com/Faugus/faugus-launcher.git")
 sha256sums=('SKIP')
+
+makedepends=(meson)
 
 build() {
     cd "faugus-launcher"
