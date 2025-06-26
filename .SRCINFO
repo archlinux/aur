@@ -1,0 +1,47 @@
+pkgbase = openvdb10
+	pkgdesc = A large suite of tools for the efficient storage and manipulation of sparse volumetric data discretized on three-dimensional grids (so-version 10)
+	pkgver = 10.1.0
+	pkgrel = 1
+	url = https://github.com/AcademySoftwareFoundation/openvdb
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = blosc>=1.17
+	makedepends = boost>=1.73
+	makedepends = cmake>=3.18
+	makedepends = jemalloc
+	makedepends = mesa
+	makedepends = glfw
+	makedepends = glu
+	depends = gcc-libs
+	depends = glibc
+	depends = imath
+	depends = onetbb>=2020.2
+	depends = log4cplus>=1.1.2
+	options = !emptydirs
+	source = openvdb-10.1.0.tar.gz::https://github.com/AcademySoftwareFoundation/openvdb/archive/refs/tags/v10.1.0.tar.gz
+	source = openvdb10_boost_static_assert.patch
+	sha512sums = b1f36fb53ed9fcc65a59a764bb79b7bd0f8469649a70051023f9a8f5d2692f6c32a53c62fc78b7ab57ebda7dedea7b32450b62d90107119f5a30179a660536aa
+	sha512sums = a9060e8c4906be8293a70e38b885815901ff6c9e160220389727e5108d7d622beffd01b4c6ce54dc459abe0c2271ea7a085c5d6d6563e8a4a61f61092ed0458a
+
+pkgname = openvdb10
+	depends = gcc-libs
+	depends = glibc
+	depends = imath
+	depends = onetbb>=2020.2
+	depends = log4cplus>=1.1.2
+	depends = openvdb10-libs=10.1.0-1
+	depends = jemalloc
+	optdepends = glfw: for tools
+	optdepends = glu: for tools
+
+pkgname = openvdb10-libs
+	pkgdesc = A large suite of tools for the efficient storage and manipulation of sparse volumetric data discretized on three-dimensional grids (so-version 10) (runtime libraries)
+	depends = gcc-libs
+	depends = glibc
+	depends = imath
+	depends = onetbb>=2020.2
+	depends = log4cplus>=1.1.2
+	depends = blosc>=1.17
+	depends = boost-libs>=1.73
+	depends = zlib>=1.2.7
+	provides = libopenvdb.so
