@@ -1,5 +1,5 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
-pkgname=lightning-image-viewer
+pkgname=lightning-image-viewer-bin
 pkgver=0.2.0
 pkgrel=1
 pkgdesc='Fast and lightweight desktop image viewer'
