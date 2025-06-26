@@ -2,7 +2,7 @@
 
 pkgname=internet-usage-monitor-git
 _pkgname_src=internet-usage-monitor # This is the actual directory name of the source code
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Monitors internet usage in real-time via Conky with desktop notifications (git version)"
 arch=('any')
@@ -54,4 +54,7 @@ package() {
   # Install .install script if created
   # install -Dm644 "../${pkgname}.install" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook" # Incorrect for .install
   # Correct way for .install is just to have it alongside PKGBUILD, makepkg handles it.
+
+  # Symlink for easy setup access
+  ln -s /usr/share/$pkgname/desktop_scripts/install.sh "$pkgdir/usr/bin/internet-usage-monitor-setup"
 }

@@ -47,6 +47,18 @@ makepkg -si
 - Configuration follows XDG standards (see Configuration section below).
 - Easier updates and uninstallation.
 
+**After installing this package, you must run the setup script to finish configuration:**
+
+- Open a terminal and run:
+
+    internet-usage-monitor-setup
+
+  or, if that does not work:
+
+    bash /usr/share/internet-usage-monitor-git/desktop_scripts/install.sh
+
+This step is required to complete the installation and start the widget.
+
 ### 2. Manual Installation (Other Linux Distributions / Advanced Users)
 
 If you are not on an Arch-based system, or prefer a manual installation into your home directory:
