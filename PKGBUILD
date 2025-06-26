@@ -1,7 +1,9 @@
-# Maintainer: FuzzyCheese
+# Maintainer: envolution
+# Contributor: FuzzyCheese
+# shellcheck shell=bash disable=SC2034,SC2154
 pkgname=wfview
-pkgver=2.10
-pkgrel=2
+pkgver=2.11
+pkgrel=1
 pkgdesc="Interface for Icom transceivers"
 arch=('i686' 'x86_64')
 url="https://wfview.org/"
@@ -10,9 +12,9 @@ depends=('qt5-serialport' 'qt5-multimedia' 'qcustomplot' 'eigen' 'qt5-gamepad' '
 
 provides=('wfview')
 source=("https://gitlab.com/eliggett/wfview/-/archive/v$pkgver/wfview-v$pkgver.tar.gz")
-md5sums=(fc3e829798a7b795e0350e3d62793e87)
+md5sums=('cbd4c4fec0a6bf922ccdc71e4a2ebe88')
 
-prepare(){
+prepare() {
   sed -i '/^linux:QMAKE_POST_LINK += echo; echo; echo "Run install.sh as root from the build directory to install."; echo; echo;$/s/^/#/' ${srcdir}/wfview-v$pkgver/wfview.pro
 }
 
@@ -22,7 +24,7 @@ build() {
   mkdir -p build
   cd build
   qmake ../wfview/wfview.pro PREFIX=/usr
-  make 
+  make
 }
 
 package() {
@@ -32,3 +34,4 @@ package() {
   mkdir -p "$pkgdir/usr/share/wfview/stylesheets/qdarkstyle"
   cp -rv "${srcdir}/wfview/qdarkstyle" -t "$pkgdir/usr/share/wfview/stylesheets"
 }
+# vim:set ts=2 sw=2 et:

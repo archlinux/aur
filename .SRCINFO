@@ -1,6 +1,6 @@
 pkgbase = wfview
-	pkgdesc = Open Source interface for Icom and Kenwood transceivers
-	pkgver = 2.10
+	pkgdesc = Interface for Icom transceivers
+	pkgver = 2.11
 	pkgrel = 1
 	url = https://wfview.org/
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = wfview
 	depends = hidapi
 	depends = portaudio
 	provides = wfview
-	source = https://gitlab.com/eliggett/wfview/
-	md5sums = fc3e829798a7b795e0350e3d62793e87
+	source = https://gitlab.com/eliggett/wfview/-/archive/v2.11/wfview-v2.11.tar.gz
+	md5sums = cbd4c4fec0a6bf922ccdc71e4a2ebe88
 
 pkgname = wfview
