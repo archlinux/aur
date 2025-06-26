@@ -5,7 +5,7 @@ pkgbase = mangaplace
 	url = https://github.com/uttamkn/mangaplace
 	arch = x86_64
 	license = MIT
-	source = mangaplace::https://github.com/uttamkn/mangaplace/releases/download/v0.3.1/mangaplace
+	source = mangaplace-0.3.1.zip::https://github.com/uttamkn/mangaplace/releases/download/v0.3.1/mangaplace-0.3.1.zip
 	sha256sums = acbee05b211c05051bc8310037cb0ccc536d975c7a4250afa31a4c05b35cc10c
 
 pkgname = mangaplace
