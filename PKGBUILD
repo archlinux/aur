@@ -5,7 +5,7 @@
 
 pkgname="borked3ds-appimage"
 pkgver=2025.03.11
-pkgrel=3
+pkgrel=4
 pkgdesc='An experimental Nintendo 3DS Emulator based off of Citra.'
 url='https://github.com/Borked3DS/Borked3DS'
 license=("GPL-2.0-only")
@@ -40,8 +40,8 @@ package(){
  done;
 
  install -D -m 755 "scripting/borked3ds.py"    -t "$pkgdir/opt/${pkgname}/"
- install -D -m 755 "license.txt"    -t "$pkgdir/usr/share/licenses/$pkg"
- install -D -m 755 -t "$pkgdir/usr/share/docs/$pkg" *.md
+ install -D -m 755 "license.txt"    -t "$pkgdir/usr/share/licenses/$pkgname"
+ install -D -m 755 -t "$pkgdir/usr/share/docs/$pkgname" *.md
  install -D -m 644 "dist/borked3ds.png"        -t "$pkgdir/usr/share/pixmaps"
 
  cp -a squashfs-root/* "$pkgdir/"
