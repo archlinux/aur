@@ -3,3 +3,4 @@
 !.gitignore
 !PKGBUILD
 !gupax.desktop
+!.nvchecker.toml

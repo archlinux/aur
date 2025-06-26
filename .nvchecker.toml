@@ -1,0 +1,4 @@
+[gupax]
+source = "git"
+git = "https://github.com/hinto-janai/gupax.git"
+prefix = "v"
