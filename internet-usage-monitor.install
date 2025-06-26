@@ -21,12 +21,20 @@ post_install() {
     mkdir -p "$desktop_dir"
     cp /usr/share/internet-usage-monitor-git/desktop_scripts/*.sh "$desktop_dir/"
     chown -R "$user":"$user" "$desktop_dir"
-    echo ">>> install.sh and uninstall.sh have been copied to $desktop_dir."
-    echo ">>> You can run install.sh from your Desktop to configure the app interactively."
+    echo ">>> [Internet Usage Monitor] install.sh and uninstall.sh have been copied to:"
+    echo "    $desktop_dir"
+    echo ">>> To finish setup and start the widget, run:"
+    echo "    bash \"$desktop_dir/install.sh\""
+    # Optional: desktop notification
+    if command -v sudo -u "$user" notify-send >/dev/null 2>&1; then
+      sudo -u "$user" notify-send "Internet Usage Monitor" "Run install.sh from your Desktop to finish setup!"
+    fi
   else
-    echo ">>> Could not determine installing user. Scripts are available at /usr/share/internet-usage-monitor-git/desktop_scripts/."
+    echo ">>> Could not determine installing user. Scripts are available at:"
+    echo "    /usr/share/internet-usage-monitor-git/desktop_scripts/"
+    echo ">>> To finish setup, run install.sh from there."
   fi
-  echo "The uninstall script is located at /opt/internet-usage-monitor/uninstall.sh"
+  echo "The uninstall script is located at /usr/share/internet-usage-monitor-git/desktop_scripts/uninstall.sh"
   echo ">>> Default configuration files are in $_DEFAULT_CONFIG_DIR."
   echo ">>> To customize, copy them to your user configuration directory (usually $_USER_CONFIG_DIR):"
   echo "    mkdir -p \"$_USER_CONFIG_DIR\""
