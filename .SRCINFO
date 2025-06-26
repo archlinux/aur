@@ -1,12 +1,12 @@
 pkgbase = wickedengine-editor
 	pkgdesc = 3D engine with modern graphics
-	pkgver = 0.71.727
+	pkgver = 0.71.787
 	pkgrel = 1
 	url = https://wickedengine.net/
 	arch = any
 	license = MIT
 	depends = sdl2
-	source = https://github.com/turanszkij/WickedEngine/releases/download/v0.71.727/Editor.Linux.zip
+	source = https://github.com/turanszkij/WickedEngine/releases/download/v0.71.787/Editor.Linux.zip
 	sha256sums = 424df7ac52de8435a1060e82693926b1590148ffb4efb3d2be5f5330aee0dc97
 
 pkgname = wickedengine-editor

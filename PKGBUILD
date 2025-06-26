@@ -1,7 +1,8 @@
 # Maintainer: Debucquoy Anthony (tonitch) <d.tonitch@gmail.com>
+
 pkgname=wickedengine-editor
 _pkgname=WickedEngine
-pkgver=0.71.727
+pkgver=0.71.787
 pkgrel=1
 pkgdesc="3D engine with modern graphics "
 arch=('any')
