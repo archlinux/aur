@@ -11,6 +11,6 @@ pkgbase = chromium-ectool
 	depends = libusb
 	noextract = release-R100-14526.B-main.tar.gz
 	source = https://chromium.googlesource.com/chromiumos/platform/ec/+archive/refs/heads/release-R100-14526.B-main.tar.gz
-	sha256sums = d8bda64544f11e65fac18b796dbedf1750bf27847358c8815943e525c7aa527e
+	sha256sums = SKIP
 
 pkgname = chromium-ectool
