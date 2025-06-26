@@ -1,0 +1,23 @@
+pkgbase = avc
+	pkgdesc = Archive Version Control - High-performance VCS with Git compatibility
+	pkgver = r1.0.3.1
+	pkgrel = 1
+	url = https://github.com/assembler-0/AVC
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	depends = openssl
+	depends = zlib
+	depends = libdeflate
+	depends = blake3
+	provides = avc
+	conflicts = avc
+	source = git+https://github.com/assembler-0/AVC.git
+	sha256sums = SKIP
+
+pkgname = avc
