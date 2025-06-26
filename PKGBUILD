@@ -1,8 +1,8 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 
 pkgname=kwin-effects-forceblur-git
-pkgver=r22.f93eeffb1
-pkgrel=1
+pkgver=r366.5feff4aac
+pkgrel=2
 pkgdesc="KWin Blur effect fork with window class force blur feature (Wayland & X11)"
 arch=(x86_64)
 url="https://github.com/taj-ny/kwin-effects-forceblur"
