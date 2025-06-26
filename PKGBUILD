@@ -10,7 +10,7 @@
 # Contributor: Jomar Milan <jomarm@jomarm.com>
 
 pkgname=aseprite
-pkgver=1.3.14.2
+pkgver=1.3.14.3
 _skiaver=m124
 _skiahash=08a5439a6b
 pkgrel=1
@@ -40,10 +40,13 @@ makedepends=(# "Meta" dependencies
              # Fuck it, compiling with GCC>=13 is broken and I'm not gonna write a patch to fix it
              clang
              )
-source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
+source=(# "https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
+		# tag your releases properly >:(
+		  "https://github.com/aseprite/aseprite/releases/download/v1.3.14.2/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
         "skia-$_skiaver.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/$_skiaver-$_skiahash.tar.gz"
         # forgive me, I couldn't figure out linker errors.
+        # update commit with skia
         skia-$_skiaver-icu::git+https://chromium.googlesource.com/chromium/deps/icu.git#commit=a0718d4f121727e30b8d52c7a189ebf5ab52421f
 		aseprite-strings::git+https://github.com/aseprite/strings.git#commit=5660117490fe3eaf57774023b8152d42e828165f
         desktop.patch
@@ -61,7 +64,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz"
            "aseprite-skia-$_skiaver-flutter.tar.gz") # Don't extract Aseprite or skia sources at the root
-sha256sums=('191ca47bc1b483a529ac9dc4826f53b9363bdd46feaa1f3638acac20096fed40'
+sha256sums=('3144f0a2bb1a37875855d9a61db13622d8a28a5cb5d4622b8349499323f3847c'
             'c2a567d6b8bb933a92615cbdee0de268d02c3a06863337ee8822eedab9ed66ba'
             'b52f179a687ef2f91a52b696ab6581f4a37df5e88cb22040fa1ec6567cf0ebb1'
             'ad46a79be08d94809fe007f39a0708e15012cb85bed9fb467e6b9a6d1c4853f8'
