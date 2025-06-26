@@ -13,7 +13,7 @@ depends=('libftdi' 'libusb')
 makedepends=('make' 'gcc')
 source=("https://chromium.googlesource.com/chromiumos/platform/ec/+archive/refs/heads/${_google_version}.tar.gz")
 noextract=("${_google_version}.tar.gz")
-sha256sums=('b78106a4d96247e11f396ce7a1b3f63acab6c8fbf9e4595d4ca2ce2879448457')
+sha256sums=('d8bda64544f11e65fac18b796dbedf1750bf27847358c8815943e525c7aa527e')
 
 prepare() {
 	mkdir -p "$pkgname-$pkgver"
