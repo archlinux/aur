@@ -1,6 +1,6 @@
 pkgbase = boxunbox
 	pkgdesc = A Rust-based alternative to GNU stow
-	pkgver = 0.1.26
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/dablenparty/boxunbox
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = boxunbox
 	makedepends = cargo
 	provides = unbox
 	conflicts = boxunbox-git
-	source = boxunbox-0.1.26.tar.gz::https://github.com/dablenparty/boxunbox/archive/v0.1.26.tar.gz
-	sha256sums = 8732f168387d47b54975859bbafbb066393526f8c6f717fd3451f32ab0b122cc
+	source = boxunbox-0.2.0.tar.gz::https://github.com/dablenparty/boxunbox/archive/v0.2.0.tar.gz
+	sha256sums = b495a0a1a7f9d9ca859d4afaa271e06afabb6fc09af62588d569f695440e6056
 
 pkgname = boxunbox
