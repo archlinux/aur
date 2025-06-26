@@ -12,6 +12,7 @@ pkgbase = systemd-pilot
 	depends = python-keyring
 	depends = python-rich
 	depends = python-pyyaml
+	source = io.github.mfat.systemdpilot.png
 	source = systemd-pilot.desktop
 	source = git+https://github.com/mfat/systemd-pilot.git
 	md5sums = SKIP

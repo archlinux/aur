@@ -7,6 +7,7 @@ url="https://github.com/mfat/systemd-pilot"
 license=('GPL3')
 depends=('python-gobject' 'gtk4' 'libadwaita' 'python-paramiko' 'python-keyring' 'python-rich' 'python-pyyaml')
 source=(
+	"io.github.mfat.systemdpilot.png"
 	"systemd-pilot.desktop"
 	"git+https://github.com/mfat/systemd-pilot.git"
 	)
