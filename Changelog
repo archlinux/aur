@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : Arch-mkpkg
- Tags         : 7.1.0 ➙ 7.6.0
-              : 2025-06-14 ➙ 2025-06-25
+ Tags         : 7.2.0 ➙ 7.7.0
+              : 2025-06-16 ➙ 2025-06-26
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-06-26   : 7.7.0
+                run_prog: sync local copy with latest from pyconcurrent
+ 2025-06-25     update Docs/Changelogs Docs/mkpkg.pdf for 7.6.0
 
  2025-06-25   : 7.6.0
                 Use pyconcurrent.run_prog when available otherwise local copy.
@@ -23,12 +27,3 @@
                 run_prog: Fix one more possible hang. Add more exception checks that should
                 never happen.
  2025-06-14     update Docs/Changelogs Docs/mkpkg.pdf for 7.1.0
-
- 2025-06-14   : 7.1.0
-                Fixed issue where build subprocesses that generate very large amounts
-                of data on stdout/stderr could occasionally lead to blocked IO when data
-                exceeded python
-                IO.DEFAULT_BUFFER_SIZE.
-                Symptom is that the build hangs waiting for IO to get unblocked.
-                Fixed by enhancing run_prog() to use non-blocking I/O.
- 2025-05-22     update Docs/Changelogs Docs/mkpkg.pdf for 7.0.0
