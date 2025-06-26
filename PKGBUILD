@@ -3,7 +3,7 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 _pkgname=eden
 pkgname=$_pkgname-git
-pkgver=0.0.2.r74.g6b46aca
+pkgver=0.0.2.r96.g2e6a289
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 provides=('eden')
 conflicts=('eden')
 depends=('enet' 'fmt' 'opus' 'libusb' 'libva' 'qt6-webengine' 'brotli' 'speexdsp' 'hicolor-icon-theme' 'qt6-base' 'zydis' 'sdl2' 'gcc-libs' 'lz4' 'zlib' 'openssl' 'zstd' 'glibc' 'boost-libs' 'libvdpau' 'libx11' 'libdrm')
-makedepends=('git' 'cmake' 'nlohmann-json' 'vulkan-headers' 'vulkan-utility-libraries' 'clang' 'llvm' 'gamemode' 'renderdoc' 'lld' 'ninja' 'boost' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen')
+makedepends=('git' 'cmake' 'wireless_tools' 'nlohmann-json' 'vulkan-headers' 'vulkan-utility-libraries' 'clang' 'llvm' 'gamemode' 'renderdoc' 'lld' 'ninja' 'boost' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen')
 optdepends=('gamemode: Gamemoded support')
 options=('!debug' 'lto')
 source=("git+https://git.eden-emu.dev/eden-emu/eden.git"
