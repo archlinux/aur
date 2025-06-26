@@ -2,7 +2,7 @@
 
 pkgname=thinkfan-tui
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal-based Linux application for fan control and temperature monitoring on ThinkPad laptops."
 url="https://github.com/karjonas/thinkfan-tui"
 license=('MIT')
@@ -15,7 +15,7 @@ sha256sums=('03bdb58fecce2ca574645b80d53e3e0ce80323506a1207ef95c67d259ff72ade')
 prepare() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --offline --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
