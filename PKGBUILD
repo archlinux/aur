@@ -2,8 +2,8 @@
 pkgname="sddm-silent-theme-git"
 _upstream_name="SilentSDDM"
 pkgdesc="Highly customizable SDDM theme (git version)"
-pkgver=r20250623.gbf6544d
-pkgrel=3
+pkgver=r20250625.ge2567b2
+pkgrel=1
 arch=('any')
 depends=('sddm' 'qt6-svg' 'qt6-virtualkeyboard' 'qt6-multimedia-ffmpeg' 'redhat-fonts')
 makedepends=('git')
