@@ -1,7 +1,7 @@
 pkgbase = mcomix
 	pkgdesc = GTK comic book viewer
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/p/mcomix/wiki/Home/
 	arch = any
 	license = GPL-2.0-or-later
@@ -21,6 +21,8 @@ pkgbase = mcomix
 	optdepends = unrar: for rar compressed comics
 	optdepends = unzip: for zip compressed comics
 	source = https://downloads.sourceforge.net/project/mcomix/MComix-3.1.0/mcomix-3.1.0.tar.gz
+	source = 0001-Move-multiprocessing-initialization-out-of-functions.patch
 	sha256sums = f9286eba7ffbc3ce9528135a9939823c425f3bbe9f74a639f8706fcc28b4c427
+	sha256sums = 28981cb58be8de3d81bc6178a7f4c830bcf670d15a3e837e61fed32fddfbc6ed
 
 pkgname = mcomix
