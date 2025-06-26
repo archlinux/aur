@@ -1,26 +1,33 @@
 pkgname=systemd-pilot
+_app_id=io.github.mfat.systemdpilot
 pkgver=3.0
 pkgrel=1
-pkgdesc="GTK desktop app to manage systemd services"
-arch=('x86_64')
+pkgdesc="Desktop application for managing systemd services"
+arch=('any')
 url="https://github.com/mfat/systemd-pilot"
-license=('GPL3')
-depends=('python-gobject' 'gtk4' 'libadwaita' 'python-paramiko' 'python-keyring' 'python-rich' 'python-pyyaml')
-source=(
-	"io.github.mfat.systemdpilot.png"
-	"systemd-pilot.desktop"
-	"git+https://github.com/mfat/systemd-pilot.git"
-	)
-md5sums=('SKIP' 'SKIP' 'SKIP')
+license=('GPL-3.0-or-later')
+depends=(
+  'gtk3'
+  'gtksourceview4'
+  'python-gobject'
+  'python-keyring'
+  'python-paramiko'
+  'python-rich'
+)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('bc36692ead79abb18577d7c5a64da5f2985a66e9fedd6e7f0a10cfcf1a4728ea')
 
 prepare() {
-  cd "$srcdir/systemd-pilot"
+  cd "$pkgname-$pkgver"
+  # Setzt StartupWMClass im .desktop-File
+  desktop-file-edit --set-key=StartupWMClass --set-value="$pkgname" \
+    "data/${_app_id}.desktop"
 }
 
 package() {
-  cd "$srcdir/systemd-pilot"
-  install -Dm755 src/main.py "$pkgdir/usr/bin/systemd-pilot"
-  install -Dm644 io.github.mfat.systemdpilot.metainfo.xml "$pkgdir/usr/share/metainfo/io.github.mfat.systemdpilot.metainfo.xml"
-  install -Dm644 "$srcdir/systemd-pilot.desktop" "$pkgdir/usr/share/applications/systemd-pilot.desktop"
-  install -Dm644 "$srcdir/io.github.mfat.systemdpilot.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/io.github.mfat.systemdpilot.png"
+  cd "$pkgname-$pkgver"
+  install -Dm755 src/main.py "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
+  install -Dm644 systemd-pilot.png "$pkgdir/usr/share/pixmaps/${_app_id}.png"
+  install -Dm644 "data/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
 }
