@@ -2,7 +2,7 @@
 # Maintainer: Randy Fay <randy.fay@ddev.com>
 
 pkgname='ddev-test-bin'
-pkgver=1.23.70
+pkgver=1.23.71
 pkgrel=1
 pkgdesc='DDEV: a local web development environment'
 url='https://github.com/ddev/ddev'
@@ -13,16 +13,16 @@ conflicts=('ddev')
 depends=('docker' 'mkcert')
 optdepends=('bash-completion: subcommand completion support')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ddev-test/ddev/releases/download/v1.23.70/ddev_linux-arm64.v1.23.70.tar.gz")
-sha256sums_aarch64=('4814684017172bac7fa05d46b80a1f721bbf9d05001e8e7fd66b366921841e54')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ddev-test/ddev/releases/download/v1.23.71/ddev_linux-arm64.v1.23.71.tar.gz")
+sha256sums_aarch64=('2fe8dc56c26a5f14ebeb42501beb4a659db6840f7ea1f90f671131f6702e6d9e')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ddev-test/ddev/releases/download/v1.23.70/ddev_linux-amd64.v1.23.70.tar.gz")
-sha256sums_x86_64=('320e001894d772952426344115d913c8bbcfec09ac3cabf213f9b8cc0fd69262')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ddev-test/ddev/releases/download/v1.23.71/ddev_linux-amd64.v1.23.71.tar.gz")
+sha256sums_x86_64=('d472e6ac2058dbe0bd98360e9ccb19806236c694aa298eed5dd99043fee442cc')
 
 package() {
   # bin
   install -Dm755 "./ddev" "${pkgdir}/usr/bin/ddev"
-  install -Dm755 "./ddev_hostname" "${pkgdir}/usr/bin/ddev_hostname"
+  install -Dm755 "./ddev-hostname" "${pkgdir}/usr/bin/ddev-hostname"
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/ddev/LICENSE"
 
   # completions
