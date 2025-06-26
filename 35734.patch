@@ -1,0 +1,1075 @@
+From 3942a0b1af37ae3820a64afbd0438450e7120199 Mon Sep 17 00:00:00 2001
+From: Konstantin Seurer <konstantin.seurer@gmail.com>
+Date: Sat, 31 May 2025 09:54:41 +0200
+Subject: [PATCH 1/8] radv: Add and use RADV_OFFSET_UNUSED
+
+This deduplicates the logic to figure out what needs to be written.
+---
+ src/amd/vulkan/radv_acceleration_structure.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/src/amd/vulkan/radv_acceleration_structure.c b/src/amd/vulkan/radv_acceleration_structure.c
+index 4a76a4a15e2f4..d4e5daf3f2cf4 100644
+--- a/src/amd/vulkan/radv_acceleration_structure.c
++++ b/src/amd/vulkan/radv_acceleration_structure.c
+@@ -48,6 +48,8 @@ static const uint32_t leaf_spv[] = {
+ #include "bvh/radv_leaf.spv.h"
+ };
+ 
++#define RADV_OFFSET_UNUSED 0xffffffff
++
+ struct acceleration_structure_layout {
+    uint32_t geometry_info_offset;
+    uint32_t primitive_base_indices_offset;
+@@ -124,11 +126,15 @@ radv_get_acceleration_structure_layout(struct radv_device *device,
+    if (device->rra_trace.accel_structs) {
+       accel_struct->geometry_info_offset = offset;
+       offset += sizeof(struct radv_accel_struct_geometry_info) * state->build_info->geometryCount;
++   } else {
++      accel_struct->geometry_info_offset = RADV_OFFSET_UNUSED;
+    }
+ 
+    if (device->vk.enabled_features.rayTracingPositionFetch && geometry_type == VK_GEOMETRY_TYPE_TRIANGLES_KHR) {
+       accel_struct->primitive_base_indices_offset = offset;
+       offset += sizeof(uint32_t) * state->build_info->geometryCount;
++   } else {
++      accel_struct->primitive_base_indices_offset = RADV_OFFSET_UNUSED;
+    }
+ 
+    /* On GFX12, we need additional space for leaf node offsets since they do not have the same
+@@ -670,7 +676,7 @@ radv_init_header(VkCommandBuffer commandBuffer, const struct vk_acceleration_str
+    radv_update_memory_cp(cmd_buffer, vk_acceleration_structure_get_va(dst) + base, (const char *)&header + base,
+                          sizeof(header) - base);
+ 
+-   if (device->rra_trace.accel_structs) {
++   if (layout.geometry_info_offset != RADV_OFFSET_UNUSED) {
+       uint64_t geometry_infos_size = state->build_info->geometryCount * sizeof(struct radv_accel_struct_geometry_info);
+ 
+       struct radv_accel_struct_geometry_info *geometry_infos = malloc(geometry_infos_size);
+@@ -691,8 +697,7 @@ radv_init_header(VkCommandBuffer commandBuffer, const struct vk_acceleration_str
+       free(geometry_infos);
+    }
+ 
+-   VkGeometryTypeKHR geometry_type = vk_get_as_geometry_type(state->build_info);
+-   if (device->vk.enabled_features.rayTracingPositionFetch && geometry_type == VK_GEOMETRY_TYPE_TRIANGLES_KHR) {
++   if (layout.primitive_base_indices_offset != RADV_OFFSET_UNUSED) {
+       uint32_t base_indices_size = sizeof(uint32_t) * state->build_info->geometryCount;
+       uint32_t *base_indices = malloc(base_indices_size);
+       if (!base_indices) {
+-- 
+GitLab
+
+
+From 5de247e1eaa04da7f17444c246cb31711e22eba4 Mon Sep 17 00:00:00 2001
+From: Konstantin Seurer <konstantin.seurer@gmail.com>
+Date: Sat, 31 May 2025 10:26:58 +0200
+Subject: [PATCH 2/8] radv: Only write leaf node offsets when required
+
+They are only used for serialization and position fetch which makes them
+unnecessary most of the times.
+---
+ src/amd/vulkan/bvh/build_interface.h         |  9 ++++---
+ src/amd/vulkan/bvh/encode_gfx12.comp         | 12 +++++----
+ src/amd/vulkan/radv_acceleration_structure.c | 27 +++++++++++++++++---
+ 3 files changed, 35 insertions(+), 13 deletions(-)
+
+diff --git a/src/amd/vulkan/bvh/build_interface.h b/src/amd/vulkan/bvh/build_interface.h
+index 77149b1cd15a1..d5993b308a0a4 100644
+--- a/src/amd/vulkan/bvh/build_interface.h
++++ b/src/amd/vulkan/bvh/build_interface.h
+@@ -18,10 +18,11 @@
+ #define VOID_REF  uint64_t
+ #endif
+ 
+-#define RADV_BUILD_FLAG_COMPACT         (1u << (VK_BUILD_FLAG_COUNT + 0))
+-#define RADV_BUILD_FLAG_BVH8            (1u << (VK_BUILD_FLAG_COUNT + 1))
+-#define RADV_BUILD_FLAG_UPDATE_IN_PLACE (1u << (VK_BUILD_FLAG_COUNT + 2))
+-#define RADV_BUILD_FLAG_NO_INFS         (1u << (VK_BUILD_FLAG_COUNT + 3))
++#define RADV_BUILD_FLAG_COMPACT                 (1u << (VK_BUILD_FLAG_COUNT + 0))
++#define RADV_BUILD_FLAG_BVH8                    (1u << (VK_BUILD_FLAG_COUNT + 1))
++#define RADV_BUILD_FLAG_UPDATE_IN_PLACE         (1u << (VK_BUILD_FLAG_COUNT + 2))
++#define RADV_BUILD_FLAG_NO_INFS                 (1u << (VK_BUILD_FLAG_COUNT + 3))
++#define RADV_BUILD_FLAG_WRITE_LEAF_NODE_OFFSETS (1u << (VK_BUILD_FLAG_COUNT + 4))
+ 
+ #define RADV_COPY_MODE_COPY        0
+ #define RADV_COPY_MODE_SERIALIZE   1
+diff --git a/src/amd/vulkan/bvh/encode_gfx12.comp b/src/amd/vulkan/bvh/encode_gfx12.comp
+index 805b662e6fd18..eaf7ff081387f 100644
+--- a/src/amd/vulkan/bvh/encode_gfx12.comp
++++ b/src/amd/vulkan/bvh/encode_gfx12.comp
+@@ -193,11 +193,13 @@ encode_gfx12(uint32_t ir_leaf_node_size, REF(vk_ir_box_node) intermediate_intern
+          if (type == vk_ir_node_internal) {
+             encoded_type = 5;
+          } else {
+-            /* Write leaf node offset. */
+-            uint32_t leaf_index = offset / ir_leaf_node_size;
+-            REF(uint32_t) child_dst_offset = REF(uint32_t)(args.output_base + args.leaf_node_offsets_offset);
+-            child_dst_offset = INDEX(uint32_t, child_dst_offset, leaf_index);
+-            DEREF(child_dst_offset) = dst_offset;
++            if (VK_BUILD_FLAG(RADV_BUILD_FLAG_WRITE_LEAF_NODE_OFFSETS)) {
++               /* Write leaf node offset. */
++               uint32_t leaf_index = offset / ir_leaf_node_size;
++               REF(uint32_t) child_dst_offset = REF(uint32_t)(args.output_base + args.leaf_node_offsets_offset);
++               child_dst_offset = INDEX(uint32_t, child_dst_offset, leaf_index);
++               DEREF(child_dst_offset) = dst_offset;
++            }
+ 
+             VOID_REF dst_leaf_addr = args.output_base + args.output_bvh_offset + dst_offset;
+ 
+diff --git a/src/amd/vulkan/radv_acceleration_structure.c b/src/amd/vulkan/radv_acceleration_structure.c
+index d4e5daf3f2cf4..8a0204bb33c59 100644
+--- a/src/amd/vulkan/radv_acceleration_structure.c
++++ b/src/amd/vulkan/radv_acceleration_structure.c
+@@ -68,7 +68,8 @@ struct update_scratch_layout {
+ };
+ 
+ enum radv_encode_key_bits {
+-   RADV_ENCODE_KEY_COMPACT = 1,
++   RADV_ENCODE_KEY_COMPACT = (1 << 0),
++   RADV_ENCODE_KEY_WRITE_LEAF_NODE_OFFSETS = (1 << 1),
+ };
+ 
+ static void
+@@ -409,9 +410,23 @@ radv_get_build_config(VkDevice _device, struct vk_acceleration_structure_build_s
+    struct radv_physical_device *pdev = radv_device_physical(device);
+ 
+    uint32_t encode_key = 0;
+-   if (radv_use_bvh8(pdev))
++   if (radv_use_bvh8(pdev)) {
+       encode_key |= RADV_ENCODE_KEY_COMPACT;
+ 
++      /*
++       * Leaf nodes are not written in the order provided by the application when BVH8 encoding is used.
++       * The proper order leaf nodes is used...
++       *    1. When fetching vertex positions for triangles.
++       *    2. When applying/writing BLAS pointers during TLAS deserialization/serialization. The type
++       *       compared to VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR to handle the
++       *       VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR case when the application queries the
++       *       acceleration structure size.
++       */
++      if ((state->build_info->flags & VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_KHR) ||
++          state->build_info->type != VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR)
++         encode_key |= RADV_ENCODE_KEY_WRITE_LEAF_NODE_OFFSETS;
++   }
++
+    if (state->build_info->flags & VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR)
+       encode_key |= RADV_ENCODE_KEY_COMPACT;
+ 
+@@ -482,6 +497,8 @@ radv_build_flags(VkCommandBuffer commandBuffer, uint32_t key)
+    /* gfx11 box intersection tests can return garbage with infs and non-standard box sorting */
+    if (pdev->info.gfx_level == GFX11)
+       flags |= RADV_BUILD_FLAG_NO_INFS;
++   if (key & RADV_ENCODE_KEY_WRITE_LEAF_NODE_OFFSETS)
++      flags |= RADV_BUILD_FLAG_WRITE_LEAF_NODE_OFFSETS;
+ 
+    return flags;
+ }
+@@ -500,8 +517,10 @@ static VkResult
+ radv_encode_bind_pipeline_gfx12(VkCommandBuffer commandBuffer,
+                                 const struct vk_acceleration_structure_build_state *state)
+ {
+-   radv_bvh_build_bind_pipeline(commandBuffer, RADV_META_OBJECT_KEY_BVH_ENCODE, encode_gfx12_spv,
+-                                sizeof(encode_gfx12_spv), sizeof(struct encode_gfx12_args), 0);
++   radv_bvh_build_bind_pipeline(
++      commandBuffer, RADV_META_OBJECT_KEY_BVH_ENCODE, encode_gfx12_spv, sizeof(encode_gfx12_spv),
++      sizeof(struct encode_gfx12_args),
++      radv_build_flags(commandBuffer, state->config->encode_key[0]) & RADV_BUILD_FLAG_WRITE_LEAF_NODE_OFFSETS);
+ 
+    return VK_SUCCESS;
+ }
+-- 
+GitLab
+
+
+From 9a5d0d7357873ad5417b9d89d89f5f79fbe8161a Mon Sep 17 00:00:00 2001
+From: Konstantin Seurer <konstantin.seurer@gmail.com>
+Date: Thu, 5 Jun 2025 08:30:36 +0200
+Subject: [PATCH 3/8] radv/bvh: Fix flush in bit_writer_skip_to
+
+If temp is not cleared, the next flushed dword will contain data from
+the previous one.
+---
+ src/amd/vulkan/bvh/encode.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/amd/vulkan/bvh/encode.h b/src/amd/vulkan/bvh/encode.h
+index 25abeb2ac8d91..80e2f669eac44 100644
+--- a/src/amd/vulkan/bvh/encode.h
++++ b/src/amd/vulkan/bvh/encode.h
+@@ -103,6 +103,7 @@ bit_writer_skip_to(inout bit_writer writer, uint32_t target)
+    if (writer.count > 0) {
+       REF(uint32_t) dst = REF(uint32_t)(writer.addr + writer.offset);
+       DEREF(dst) = writer.temp;
++      writer.temp = 0;
+    }
+ 
+    writer.count = target % 32;
+-- 
+GitLab
+
+
+From b43a1748064a6831e0bc9c7833cbe71be82ce3ea Mon Sep 17 00:00:00 2001
+From: Konstantin Seurer <konstantin.seurer@gmail.com>
+Date: Thu, 5 Jun 2025 08:32:36 +0200
+Subject: [PATCH 4/8] radv/bvh: Use a fixed indices midpoint on GFX12
+
+This saves a vouple of loads inside the update shader.
+---
+ src/amd/vulkan/bvh/encode.h          | 12 ++++++++----
+ src/amd/vulkan/bvh/update_gfx12.comp | 19 ++++---------------
+ 2 files changed, 12 insertions(+), 19 deletions(-)
+
+diff --git a/src/amd/vulkan/bvh/encode.h b/src/amd/vulkan/bvh/encode.h
+index 80e2f669eac44..625525ae07a52 100644
+--- a/src/amd/vulkan/bvh/encode.h
++++ b/src/amd/vulkan/bvh/encode.h
+@@ -125,6 +125,8 @@ bit_writer_finish(inout bit_writer writer)
+    writer.total_count = 0;
+ }
+ 
++#define RADV_GFX12_UPDATABLE_PRIMITIVE_NODE_INDICES_OFFSET (align(RADV_GFX12_PRIMITIVE_NODE_HEADER_SIZE, 32) / 8 + 9 * 4)
++
+ void
+ radv_encode_triangle_gfx12(VOID_REF dst, vk_ir_triangle_node src)
+ {
+@@ -141,8 +143,7 @@ radv_encode_triangle_gfx12(VOID_REF dst, vk_ir_triangle_node src)
+    bit_writer_write(child_writer, 0, 1);  /* vertex_type */
+    bit_writer_write(child_writer, 28, 5); /* primitive_index_base_bits */
+    bit_writer_write(child_writer, 28, 5); /* primitive_index_bits */
+-   /* header + 9 floats + geometry_id */
+-   bit_writer_write(child_writer, RADV_GFX12_PRIMITIVE_NODE_HEADER_SIZE + 9 * 32 + 28, 10);
++   bit_writer_write(child_writer, RADV_GFX12_UPDATABLE_PRIMITIVE_NODE_INDICES_OFFSET * 8 + 32, 10);
+ 
+    bit_writer_write(child_writer, floatBitsToUint(src.coords[0][0]), 32);
+    bit_writer_write(child_writer, floatBitsToUint(src.coords[0][1]), 32);
+@@ -154,6 +155,8 @@ radv_encode_triangle_gfx12(VOID_REF dst, vk_ir_triangle_node src)
+    bit_writer_write(child_writer, floatBitsToUint(src.coords[2][1]), 32);
+    bit_writer_write(child_writer, floatBitsToUint(src.coords[2][2]), 32);
+ 
++   bit_writer_write(child_writer, 0, 64 - RADV_GFX12_PRIMITIVE_NODE_HEADER_SIZE + 4);
++
+    bit_writer_write(child_writer, src.geometry_id_and_flags & 0xfffffff, 28);
+    bit_writer_write(child_writer, src.triangle_id, 28);
+ 
+@@ -192,8 +195,7 @@ radv_encode_aabb_gfx12(VOID_REF dst, vk_ir_aabb_node src)
+    bit_writer_write(child_writer, 0, 1);  /* vertex_type */
+    bit_writer_write(child_writer, 28, 5); /* primitive_index_base_bits */
+    bit_writer_write(child_writer, 28, 5); /* primitive_index_bits */
+-   /* header + 6 floats + geometry_id */
+-   bit_writer_write(child_writer, RADV_GFX12_PRIMITIVE_NODE_HEADER_SIZE + 6 * 32 + 28, 10);
++   bit_writer_write(child_writer, RADV_GFX12_UPDATABLE_PRIMITIVE_NODE_INDICES_OFFSET * 8 + 32, 10);
+ 
+    bit_writer_write(child_writer, floatBitsToUint(src.base.aabb.min.x), 32);
+    bit_writer_write(child_writer, floatBitsToUint(src.base.aabb.min.y), 32);
+@@ -202,6 +204,8 @@ radv_encode_aabb_gfx12(VOID_REF dst, vk_ir_aabb_node src)
+    bit_writer_write(child_writer, floatBitsToUint(src.base.aabb.max.y), 32);
+    bit_writer_write(child_writer, floatBitsToUint(src.base.aabb.max.z), 32);
+ 
++   bit_writer_skip_to(child_writer, RADV_GFX12_UPDATABLE_PRIMITIVE_NODE_INDICES_OFFSET * 8 + 4);
++
+    bit_writer_write(child_writer, src.geometry_id_and_flags & 0xfffffff, 28);
+    bit_writer_write(child_writer, src.primitive_id, 28);
+ 
+diff --git a/src/amd/vulkan/bvh/update_gfx12.comp b/src/amd/vulkan/bvh/update_gfx12.comp
+index 8cbc930ab4352..32da58fca6890 100644
+--- a/src/amd/vulkan/bvh/update_gfx12.comp
++++ b/src/amd/vulkan/bvh/update_gfx12.comp
+@@ -33,18 +33,6 @@ layout(push_constant) uniform CONSTS
+    update_gfx12_args args;
+ };
+ 
+-uint32_t
+-read_bits(VOID_REF data, uint32_t start, uint32_t count)
+-{
+-   uint32_t shift = start % 32;
+-   uint32_t lower = DEREF(INDEX(uint32_t, data, start / 32)) >> shift;
+-   uint32_t upper = 0;
+-   if (shift != 0 && shift + count > 32)
+-      upper = DEREF(INDEX(uint32_t, data, start / 32 + 1)) << (32 - shift);
+-   uint32_t total = lower | upper;
+-   return count != 32 ? total & ((1u << count) - 1u) : total;
+-}
+-
+ void
+ main()
+ {
+@@ -109,9 +97,10 @@ main()
+ 
+       if (is_leaf) {
+          VOID_REF src_leaf_node = OFFSET(src_bvh, child_offset);
+-         uint32_t indices_midpoint = read_bits(src_leaf_node, 42, 10);
+-         uint32_t geometry_index = read_bits(src_leaf_node, indices_midpoint - 28, 28);
+-         uint32_t primitive_index = read_bits(src_leaf_node, indices_midpoint, 28);
++         uint32_t geometry_index =
++            DEREF(REF(uint32_t)(src_leaf_node + RADV_GFX12_UPDATABLE_PRIMITIVE_NODE_INDICES_OFFSET)) >> 4;
++         uint32_t primitive_index =
++            DEREF(REF(uint32_t)(src_leaf_node + RADV_GFX12_UPDATABLE_PRIMITIVE_NODE_INDICES_OFFSET + 4)) & 0xfffffff;
+ 
+          vk_bvh_geometry_data geom_data = DEREF(INDEX(vk_bvh_geometry_data, args.geom_data, geometry_index));
+ 
+-- 
+GitLab
+
+
+From 86858fdd56bf4f2142dc5b49122002f68f177cf5 Mon Sep 17 00:00:00 2001
+From: Konstantin Seurer <konstantin.seurer@gmail.com>
+Date: Fri, 6 Jun 2025 08:31:38 +0200
+Subject: [PATCH 5/8] radv/bvh: Update leaf nodes before refitting
+
+This should reduce latency between refitting nodes and their parent
+nodes.
+---
+ src/amd/vulkan/bvh/update_gfx12.comp | 70 +++++++++++++++-------------
+ 1 file changed, 38 insertions(+), 32 deletions(-)
+
+diff --git a/src/amd/vulkan/bvh/update_gfx12.comp b/src/amd/vulkan/bvh/update_gfx12.comp
+index 32da58fca6890..4c2890b65dcc9 100644
+--- a/src/amd/vulkan/bvh/update_gfx12.comp
++++ b/src/amd/vulkan/bvh/update_gfx12.comp
+@@ -81,6 +81,27 @@ main()
+       child_offset += SIZEOF(radv_gfx12_box_node) * child_index;
+    }
+ 
++   vk_aabb bounds;
++   bounds.min = vec3(INFINITY);
++   bounds.max = vec3(-INFINITY);
++   if (is_leaf) {
++      VOID_REF src_leaf_node = OFFSET(src_bvh, child_offset);
++      uint32_t geometry_index =
++         DEREF(REF(uint32_t)(src_leaf_node + RADV_GFX12_UPDATABLE_PRIMITIVE_NODE_INDICES_OFFSET)) >> 4;
++      uint32_t primitive_index =
++         DEREF(REF(uint32_t)(src_leaf_node + RADV_GFX12_UPDATABLE_PRIMITIVE_NODE_INDICES_OFFSET + 4)) & 0xfffffff;
++
++      vk_bvh_geometry_data geom_data = DEREF(INDEX(vk_bvh_geometry_data, args.geom_data, geometry_index));
++
++      VOID_REF dst_leaf_node = OFFSET(dst_bvh, child_offset);
++      if (geom_data.geometry_type == VK_GEOMETRY_TYPE_TRIANGLES_KHR) {
++         radv_build_triangle(bounds, dst_leaf_node, geom_data, primitive_index, true);
++      } else {
++         VOID_REF src_ptr = OFFSET(geom_data.data, primitive_index * geom_data.stride);
++         radv_build_aabb(bounds, src_ptr, dst_leaf_node, geometry_index, primitive_index, true);
++      }
++   }
++
+    uint32_t child_index = (child_offset - internal_nodes_offset) / SIZEOF(radv_gfx12_box_node);
+ 
+    bool is_ready = is_leaf_or_invalid;
+@@ -91,27 +112,7 @@ main()
+       if (radv_ballot(cluster, is_ready) != 0xff)
+          continue;
+ 
+-      vk_aabb bounds;
+-      bounds.min = vec3(INFINITY);
+-      bounds.max = vec3(-INFINITY);
+-
+-      if (is_leaf) {
+-         VOID_REF src_leaf_node = OFFSET(src_bvh, child_offset);
+-         uint32_t geometry_index =
+-            DEREF(REF(uint32_t)(src_leaf_node + RADV_GFX12_UPDATABLE_PRIMITIVE_NODE_INDICES_OFFSET)) >> 4;
+-         uint32_t primitive_index =
+-            DEREF(REF(uint32_t)(src_leaf_node + RADV_GFX12_UPDATABLE_PRIMITIVE_NODE_INDICES_OFFSET + 4)) & 0xfffffff;
+-
+-         vk_bvh_geometry_data geom_data = DEREF(INDEX(vk_bvh_geometry_data, args.geom_data, geometry_index));
+-
+-         VOID_REF dst_leaf_node = OFFSET(dst_bvh, child_offset);
+-         if (geom_data.geometry_type == VK_GEOMETRY_TYPE_TRIANGLES_KHR) {
+-            radv_build_triangle(bounds, dst_leaf_node, geom_data, primitive_index, true);
+-         } else {
+-            VOID_REF src_ptr = OFFSET(geom_data.data, primitive_index * geom_data.stride);
+-            radv_build_aabb(bounds, src_ptr, dst_leaf_node, geometry_index, primitive_index, true);
+-         }
+-      } else if (is_valid) {
++      if (!is_leaf_or_invalid) {
+          bounds = DEREF(INDEX(vk_aabb, args.bounds, child_index));
+       }
+ 
+@@ -123,13 +124,20 @@ main()
+       total_bounds.max.y = subgroupClusteredMax(bounds.max.y, 8);
+       total_bounds.max.z = subgroupClusteredMax(bounds.max.z, 8);
+ 
+-      if (!is_root_node) {
+-         DEREF(INDEX(vk_aabb, args.bounds, node_index - 1)) = total_bounds;
++      if (cluster.invocation_index == 0) {
++         if (is_root_node) {
++            DEREF(args.dst).aabb = total_bounds;
++         } else {
++            DEREF(INDEX(vk_aabb, args.bounds, node_index - 1)) = total_bounds;
++
++            memoryBarrier(gl_ScopeDevice, gl_StorageSemanticsBuffer,
++                          gl_SemanticsAcquireRelease | gl_SemanticsMakeAvailable | gl_SemanticsMakeVisible);
+ 
+-         memoryBarrier(gl_ScopeDevice, gl_StorageSemanticsBuffer,
+-                       gl_SemanticsAcquireRelease | gl_SemanticsMakeAvailable | gl_SemanticsMakeVisible);
++            DEREF(INDEX(uint32_t, args.internal_ready_count, node_index - 1)) = 1;
+ 
+-         DEREF(INDEX(uint32_t, args.internal_ready_count, node_index - 1)) = 1;
++            memoryBarrier(gl_ScopeDevice, gl_StorageSemanticsBuffer,
++                          gl_SemanticsAcquireRelease | gl_SemanticsMakeAvailable | gl_SemanticsMakeVisible);
++         }
+       }
+ 
+       vec3 origin = total_bounds.min;
+@@ -139,6 +147,10 @@ main()
+       uvec3 extent_exponents = floatBitsToUint(extent) >> 23;
+ 
+       if (cluster.invocation_index == 0) {
++         if (!VK_BUILD_FLAG(RADV_BUILD_FLAG_UPDATE_IN_PLACE)) {
++            DEREF(dst_node).primitive_base_id = src_node.primitive_base_id;
++            DEREF(dst_node).internal_base_id = src_node.internal_base_id;
++         }
+          DEREF(dst_node).origin = origin;
+          DEREF(dst_node).child_count_exponents = extent_exponents.x | (extent_exponents.y << 8) |
+                                                  (extent_exponents.z << 16) | (valid_child_count_minus_one << 28);
+@@ -170,12 +182,6 @@ main()
+          DEREF(dst_node).children[cluster.invocation_index] = null_child;
+       }
+ 
+-      if (is_root_node)
+-         DEREF(args.dst).aabb = total_bounds;
+-
+-      /* Make changes to internal_ready_count available to the other invocations. */
+-      memoryBarrier(gl_ScopeDevice, gl_StorageSemanticsBuffer,
+-                    gl_SemanticsAcquireRelease | gl_SemanticsMakeAvailable | gl_SemanticsMakeVisible);
+       break;
+    }
+ }
+-- 
+GitLab
+
+
+From fe46f07812c0790754c995504d6fc2d9115c258a Mon Sep 17 00:00:00 2001
+From: Konstantin Seurer <konstantin.seurer@gmail.com>
+Date: Tue, 10 Jun 2025 14:05:22 +0200
+Subject: [PATCH 6/8] radv/bvh: Specialize the update shader for
+ geometryCount==1
+
+The geometry data can be loaded from push constants in that case.
+---
+ src/amd/vulkan/bvh/build_interface.h         |  3 +++
+ src/amd/vulkan/bvh/update_gfx12.comp         | 13 ++++++++++---
+ src/amd/vulkan/radv_acceleration_structure.c | 17 +++++++++++++----
+ 3 files changed, 26 insertions(+), 7 deletions(-)
+
+diff --git a/src/amd/vulkan/bvh/build_interface.h b/src/amd/vulkan/bvh/build_interface.h
+index d5993b308a0a4..a49476d720392 100644
+--- a/src/amd/vulkan/bvh/build_interface.h
++++ b/src/amd/vulkan/bvh/build_interface.h
+@@ -23,6 +23,7 @@
+ #define RADV_BUILD_FLAG_UPDATE_IN_PLACE         (1u << (VK_BUILD_FLAG_COUNT + 2))
+ #define RADV_BUILD_FLAG_NO_INFS                 (1u << (VK_BUILD_FLAG_COUNT + 3))
+ #define RADV_BUILD_FLAG_WRITE_LEAF_NODE_OFFSETS (1u << (VK_BUILD_FLAG_COUNT + 4))
++#define RADV_BUILD_FLAG_UPDATE_SINGLE_GEOMETRY  (1u << (VK_BUILD_FLAG_COUNT + 5))
+ 
+ #define RADV_COPY_MODE_COPY        0
+ #define RADV_COPY_MODE_SERIALIZE   1
+@@ -78,6 +79,8 @@ struct update_gfx12_args {
+    REF(vk_aabb) bounds;
+    REF(uint32_t) internal_ready_count;
+    uint32_t leaf_node_count;
++
++   vk_bvh_geometry_data geom_data0;
+ };
+ 
+ #endif /* BUILD_INTERFACE_H */
+diff --git a/src/amd/vulkan/bvh/update_gfx12.comp b/src/amd/vulkan/bvh/update_gfx12.comp
+index 4c2890b65dcc9..72f8358f115b1 100644
+--- a/src/amd/vulkan/bvh/update_gfx12.comp
++++ b/src/amd/vulkan/bvh/update_gfx12.comp
+@@ -86,12 +86,19 @@ main()
+    bounds.max = vec3(-INFINITY);
+    if (is_leaf) {
+       VOID_REF src_leaf_node = OFFSET(src_bvh, child_offset);
+-      uint32_t geometry_index =
+-         DEREF(REF(uint32_t)(src_leaf_node + RADV_GFX12_UPDATABLE_PRIMITIVE_NODE_INDICES_OFFSET)) >> 4;
++
++      uint32_t geometry_index = 0;
++      if (!VK_BUILD_FLAG(RADV_BUILD_FLAG_UPDATE_SINGLE_GEOMETRY))
++         geometry_index = DEREF(REF(uint32_t)(src_leaf_node + RADV_GFX12_UPDATABLE_PRIMITIVE_NODE_INDICES_OFFSET)) >> 4;
++
+       uint32_t primitive_index =
+          DEREF(REF(uint32_t)(src_leaf_node + RADV_GFX12_UPDATABLE_PRIMITIVE_NODE_INDICES_OFFSET + 4)) & 0xfffffff;
+ 
+-      vk_bvh_geometry_data geom_data = DEREF(INDEX(vk_bvh_geometry_data, args.geom_data, geometry_index));
++      vk_bvh_geometry_data geom_data;
++      if (VK_BUILD_FLAG(RADV_BUILD_FLAG_UPDATE_SINGLE_GEOMETRY))
++         geom_data = args.geom_data0;
++      else
++         geom_data = DEREF(INDEX(vk_bvh_geometry_data, args.geom_data, geometry_index));
+ 
+       VOID_REF dst_leaf_node = OFFSET(dst_bvh, child_offset);
+       if (geom_data.geometry_type == VK_GEOMETRY_TYPE_TRIANGLES_KHR) {
+diff --git a/src/amd/vulkan/radv_acceleration_structure.c b/src/amd/vulkan/radv_acceleration_structure.c
+index 8a0204bb33c59..5309d6388c533 100644
+--- a/src/amd/vulkan/radv_acceleration_structure.c
++++ b/src/amd/vulkan/radv_acceleration_structure.c
+@@ -437,6 +437,9 @@ radv_get_build_config(VkDevice _device, struct vk_acceleration_structure_build_s
+    if (state->build_info->srcAccelerationStructure == state->build_info->dstAccelerationStructure)
+       update_key |= RADV_BUILD_FLAG_UPDATE_IN_PLACE;
+ 
++   if (state->build_info->geometryCount == 1)
++      update_key |= RADV_BUILD_FLAG_UPDATE_SINGLE_GEOMETRY;
++
+    state->config.update_key[0] = update_key;
+ }
+ 
+@@ -520,7 +523,7 @@ radv_encode_bind_pipeline_gfx12(VkCommandBuffer commandBuffer,
+    radv_bvh_build_bind_pipeline(
+       commandBuffer, RADV_META_OBJECT_KEY_BVH_ENCODE, encode_gfx12_spv, sizeof(encode_gfx12_spv),
+       sizeof(struct encode_gfx12_args),
+-      radv_build_flags(commandBuffer, state->config->encode_key[0]) & RADV_BUILD_FLAG_WRITE_LEAF_NODE_OFFSETS);
++      radv_build_flags(commandBuffer, state->config.encode_key[0]) & RADV_BUILD_FLAG_WRITE_LEAF_NODE_OFFSETS);
+ 
+    return VK_SUCCESS;
+ }
+@@ -753,7 +756,8 @@ radv_init_update_scratch(VkCommandBuffer commandBuffer, const struct vk_accelera
+    radv_fill_memory(cmd_buffer, scratch + layout.internal_ready_count_offset,
+                     layout.size - layout.internal_ready_count_offset, 0x0, RADV_COPY_FLAGS_DEVICE_LOCAL);
+ 
+-   if (radv_use_bvh8(pdev)) {
++   /* geometryCount == 1 passes the data as push constant. */
++   if (radv_use_bvh8(pdev) && !(state->config.update_key[0] & RADV_BUILD_FLAG_UPDATE_SINGLE_GEOMETRY)) {
+       uint32_t data_size = sizeof(struct vk_bvh_geometry_data) * state->build_info->geometryCount;
+       struct vk_bvh_geometry_data *data = malloc(data_size);
+       if (!data) {
+@@ -797,8 +801,7 @@ radv_update_bind_pipeline(VkCommandBuffer commandBuffer, const struct vk_acceler
+    if (radv_device_physical(device)->info.cp_sdma_ge_use_system_memory_scope)
+       cmd_buffer->state.flush_bits |= RADV_CMD_FLAG_INV_L2;
+ 
+-   bool in_place = state->config.update_key[0] & RADV_BUILD_FLAG_UPDATE_IN_PLACE;
+-   uint32_t flags = in_place ? RADV_BUILD_FLAG_UPDATE_IN_PLACE : 0;
++   uint32_t flags = state->config.update_key[0];
+ 
+    if (radv_use_bvh8(pdev)) {
+       radv_bvh_build_bind_pipeline(commandBuffer, RADV_META_OBJECT_KEY_BVH_UPDATE, update_gfx12_spv,
+@@ -899,6 +902,12 @@ radv_update_as_gfx12(VkCommandBuffer commandBuffer, const struct vk_acceleration
+       .leaf_node_count = state->leaf_node_count,
+    };
+ 
++   if (state->config.update_key[0] & RADV_BUILD_FLAG_UPDATE_SINGLE_GEOMETRY) {
++      const VkAccelerationStructureGeometryKHR *geom =
++         state->build_info->pGeometries ? &state->build_info->pGeometries[0] : state->build_info->ppGeometries[0];
++      update_consts.geom_data0 = vk_fill_geometry_data(state->build_info->type, 0, 0, geom, state->build_range_infos);
++   }
++
+    radv_bvh_build_set_args(commandBuffer, &update_consts, sizeof(update_consts));
+ 
+    struct radv_dispatch_info dispatch = {
+-- 
+GitLab
+
+
+From db8303d72894d567b268e4893f04a0ab3fd28182 Mon Sep 17 00:00:00 2001
+From: Konstantin Seurer <konstantin.seurer@gmail.com>
+Date: Fri, 2 May 2025 14:52:02 +0200
+Subject: [PATCH 7/8] radv/rra/gfx12: Handle compressed primitive nodes
+
+---
+ src/amd/vulkan/radv_rra_gfx12.c | 47 ++++++++++++++++++++++++---------
+ 1 file changed, 34 insertions(+), 13 deletions(-)
+
+diff --git a/src/amd/vulkan/radv_rra_gfx12.c b/src/amd/vulkan/radv_rra_gfx12.c
+index 4cad241a38b89..a0114462881e9 100644
+--- a/src/amd/vulkan/radv_rra_gfx12.c
++++ b/src/amd/vulkan/radv_rra_gfx12.c
+@@ -37,19 +37,27 @@ rra_validate_node_gfx12(struct hash_table_u64 *accel_struct_vas, uint8_t *data,
+ }
+ 
+ static uint32_t
+-get_geometry_id(const void *node, uint32_t node_type)
++get_geometry_id(const void *node, uint32_t triangle_index)
+ {
+-   if (node_type == radv_bvh_node_instance)
+-      return 0;
++   uint32_t geometry_index_base_bits = BITSET_EXTRACT(node, 20, 4) * 2;
++   uint32_t geometry_index_bits = BITSET_EXTRACT(node, 24, 4) * 2;
+ 
+    uint32_t indices_midpoint = BITSET_EXTRACT(node, 42, 10);
+-   return BITSET_EXTRACT(node, indices_midpoint - 28, 28);
++   uint32_t geometry_id_base =
++      BITSET_EXTRACT(node, indices_midpoint - geometry_index_base_bits, geometry_index_base_bits);
++
++   if (triangle_index == 0)
++      return geometry_id_base;
++
++   return (geometry_id_base & ~BITFIELD64_MASK(geometry_index_bits)) |
++          BITSET_EXTRACT(node, indices_midpoint - geometry_index_base_bits - geometry_index_bits * triangle_index,
++                         geometry_index_bits);
+ }
+ 
+ void
+ rra_gather_bvh_info_gfx12(const uint8_t *bvh, uint32_t node_id, struct rra_bvh_info *dst)
+ {
+-   uint32_t node_type = node_id & 7;
++   uint32_t node_type = node_id & 0xf;
+ 
+    switch (node_type) {
+    case radv_bvh_node_box32:
+@@ -63,11 +71,12 @@ rra_gather_bvh_info_gfx12(const uint8_t *bvh, uint32_t node_id, struct rra_bvh_i
+       dst->leaf_nodes_size += sizeof(struct radv_gfx12_primitive_node);
+       break;
+    default:
+-      unreachable("Invalid node type");
++      if (node_type >= radv_bvh_node_triangle + 4 && !(node_type & 0x8))
++         unreachable("Invalid node type");
+       break;
+    }
+ 
+-   const void *node = bvh + ((node_id & (~7u)) << 3);
++   const void *node = bvh + ((node_id & (~0xf)) << 3);
+    if (node_type == radv_bvh_node_box32) {
+       const struct radv_gfx12_box_node *src = node;
+ 
+@@ -90,8 +99,16 @@ rra_gather_bvh_info_gfx12(const uint8_t *bvh, uint32_t node_id, struct rra_bvh_i
+ 
+          rra_gather_bvh_info_gfx12(bvh, child_id, dst);
+       }
++   } else if (node_type == radv_bvh_node_instance) {
++      dst->geometry_infos[0].primitive_count++;
+    } else {
+-      dst->geometry_infos[get_geometry_id(node, node_type)].primitive_count++;
++      uint32_t pair_index = (node_type & 0x3) | ((node_type & 0x8) >> 1);
++
++      if (BITSET_EXTRACT(node, 1024 - 29 * (pair_index + 1) + 17, 12))
++         dst->geometry_infos[get_geometry_id(node, pair_index * 2 + 0)].primitive_count++;
++
++      if (BITSET_EXTRACT(node, 1024 - 29 * (pair_index + 1) + 3, 12))
++         dst->geometry_infos[get_geometry_id(node, pair_index * 2 + 1)].primitive_count++;
+    }
+ }
+ 
+@@ -114,7 +131,7 @@ rra_transcode_box8_node(struct rra_transcoding_context *ctx, const struct radv_g
+       uint32_t child_type = (src->children[i].dword2 >> 24) & 0xf;
+       if (child_type == radv_bvh_node_box32)
+          internal_child_count++;
+-      else
++      else if (child_type == radv_bvh_node_triangle || child_type == radv_bvh_node_instance)
+          leaf_child_count++;
+    }
+ 
+@@ -141,19 +158,23 @@ rra_transcode_box8_node(struct rra_transcoding_context *ctx, const struct radv_g
+          child_id = primitive_id | child_type;
+          primitive_id += (child_size * RADV_GFX12_BVH_NODE_SIZE) >> 3;
+          child_dst_offset = dst_leaf_offset;
+-         dst_leaf_offset += RADV_GFX12_BVH_NODE_SIZE;
++         if (child_type == radv_bvh_node_triangle || child_type == radv_bvh_node_instance)
++            dst_leaf_offset += RADV_GFX12_BVH_NODE_SIZE;
+       }
+ 
+-      rra_transcode_node_gfx12(ctx, radv_bvh_node_box32 | (dst_offset >> 3), child_id, child_dst_offset);
++      if (child_type == radv_bvh_node_triangle || child_type == radv_bvh_node_instance ||
++          child_type == radv_bvh_node_box32)
++         rra_transcode_node_gfx12(ctx, radv_bvh_node_box32 | (dst_offset >> 3), child_id, child_dst_offset);
+ 
+-      dst->children[i].dword2 = (dst->children[i].dword2 & 0x0fffffff) | (1 << 28);
++      if (child_type == radv_bvh_node_instance)
++         dst->children[i].dword2 = (dst->children[i].dword2 & 0x0fffffff) | (1 << 28);
+    }
+ }
+ 
+ void
+ rra_transcode_node_gfx12(struct rra_transcoding_context *ctx, uint32_t parent_id, uint32_t src_id, uint32_t dst_offset)
+ {
+-   uint32_t node_type = src_id & 7;
++   uint32_t node_type = src_id & 0xf;
+    uint32_t src_offset = (src_id & (~7u)) << 3;
+ 
+    const void *src_child_node = ctx->src + src_offset;
+-- 
+GitLab
+
+
+From fc61f0304670f4a8a33153acbf5a655dc32f0b7b Mon Sep 17 00:00:00 2001
+From: Konstantin Seurer <konstantin.seurer@gmail.com>
+Date: Mon, 7 Apr 2025 22:19:42 +0200
+Subject: [PATCH 8/8] radv: Emit compressed primitive nodes on GFX12
+
+Emits two triangles per node whenever possible. The nir code will
+revisit the triangle node to handle the second triangle only if both
+triangles are interescted by the ray.
+---
+ src/amd/vulkan/bvh/build_interface.h          |  1 +
+ src/amd/vulkan/bvh/encode.h                   | 64 +++++++++++++++++++
+ src/amd/vulkan/bvh/encode_gfx12.comp          | 43 ++++++++++++-
+ .../vulkan/nir/radv_nir_lower_ray_queries.c   |  4 ++
+ src/amd/vulkan/nir/radv_nir_rt_common.c       | 38 ++++++++---
+ src/amd/vulkan/nir/radv_nir_rt_common.h       |  3 +
+ src/amd/vulkan/nir/radv_nir_rt_shader.c       |  5 ++
+ src/amd/vulkan/radv_acceleration_structure.c  | 17 +++--
+ 8 files changed, 160 insertions(+), 15 deletions(-)
+
+diff --git a/src/amd/vulkan/bvh/build_interface.h b/src/amd/vulkan/bvh/build_interface.h
+index a49476d720392..22e76c3f1814b 100644
+--- a/src/amd/vulkan/bvh/build_interface.h
++++ b/src/amd/vulkan/bvh/build_interface.h
+@@ -24,6 +24,7 @@
+ #define RADV_BUILD_FLAG_NO_INFS                 (1u << (VK_BUILD_FLAG_COUNT + 3))
+ #define RADV_BUILD_FLAG_WRITE_LEAF_NODE_OFFSETS (1u << (VK_BUILD_FLAG_COUNT + 4))
+ #define RADV_BUILD_FLAG_UPDATE_SINGLE_GEOMETRY  (1u << (VK_BUILD_FLAG_COUNT + 5))
++#define RADV_BUILD_FLAG_PAIR_COMPRESS_TRIANGLES (1u << (VK_BUILD_FLAG_COUNT + 6))
+ 
+ #define RADV_COPY_MODE_COPY        0
+ #define RADV_COPY_MODE_SERIALIZE   1
+diff --git a/src/amd/vulkan/bvh/encode.h b/src/amd/vulkan/bvh/encode.h
+index 625525ae07a52..eec16291c31b7 100644
+--- a/src/amd/vulkan/bvh/encode.h
++++ b/src/amd/vulkan/bvh/encode.h
+@@ -179,6 +179,70 @@ radv_encode_triangle_gfx12(VOID_REF dst, vk_ir_triangle_node src)
+    bit_writer_finish(child_writer);
+ }
+ 
++void
++radv_encode_triangle_gfx12(VOID_REF dst, vk_ir_triangle_node src0, vk_ir_triangle_node src1)
++{
++   bit_writer child_writer;
++   bit_writer_init(child_writer, dst);
++
++   bit_writer_write(child_writer, 31, 5); /* x_vertex_bits_minus_one */
++   bit_writer_write(child_writer, 31, 5); /* y_vertex_bits_minus_one */
++   bit_writer_write(child_writer, 31, 5); /* z_vertex_bits_minus_one */
++   bit_writer_write(child_writer, 0, 5);  /* trailing_zero_bits */
++   bit_writer_write(child_writer, 14, 4); /* geometry_index_base_bits_div_2 */
++   bit_writer_write(child_writer, 14, 4); /* geometry_index_bits_div_2 */
++   bit_writer_write(child_writer, 0, 3);  /* triangle_pair_count_minus_one */
++   bit_writer_write(child_writer, 0, 1);  /* vertex_type */
++   bit_writer_write(child_writer, 28, 5); /* primitive_index_base_bits */
++   bit_writer_write(child_writer, 28, 5); /* primitive_index_bits */
++   /* header + (9 floats + geometry_id) * 2 triangles */
++   bit_writer_write(child_writer, RADV_GFX12_PRIMITIVE_NODE_HEADER_SIZE + 2 * 9 * 32 + 2 * 28, 10);
++
++   bit_writer_write(child_writer, floatBitsToUint(src0.coords[0][0]), 32);
++   bit_writer_write(child_writer, floatBitsToUint(src0.coords[0][1]), 32);
++   bit_writer_write(child_writer, floatBitsToUint(src0.coords[0][2]), 32);
++   bit_writer_write(child_writer, floatBitsToUint(src0.coords[1][0]), 32);
++   bit_writer_write(child_writer, floatBitsToUint(src0.coords[1][1]), 32);
++   bit_writer_write(child_writer, floatBitsToUint(src0.coords[1][2]), 32);
++   bit_writer_write(child_writer, floatBitsToUint(src0.coords[2][0]), 32);
++   bit_writer_write(child_writer, floatBitsToUint(src0.coords[2][1]), 32);
++   bit_writer_write(child_writer, floatBitsToUint(src0.coords[2][2]), 32);
++
++   bit_writer_write(child_writer, floatBitsToUint(src1.coords[0][0]), 32);
++   bit_writer_write(child_writer, floatBitsToUint(src1.coords[0][1]), 32);
++   bit_writer_write(child_writer, floatBitsToUint(src1.coords[0][2]), 32);
++   bit_writer_write(child_writer, floatBitsToUint(src1.coords[1][0]), 32);
++   bit_writer_write(child_writer, floatBitsToUint(src1.coords[1][1]), 32);
++   bit_writer_write(child_writer, floatBitsToUint(src1.coords[1][2]), 32);
++   bit_writer_write(child_writer, floatBitsToUint(src1.coords[2][0]), 32);
++   bit_writer_write(child_writer, floatBitsToUint(src1.coords[2][1]), 32);
++   bit_writer_write(child_writer, floatBitsToUint(src1.coords[2][2]), 32);
++
++   bit_writer_write(child_writer, src1.geometry_id_and_flags & 0xfffffff, 28);
++   bit_writer_write(child_writer, src0.geometry_id_and_flags & 0xfffffff, 28);
++   bit_writer_write(child_writer, src0.triangle_id, 28);
++   bit_writer_write(child_writer, src1.triangle_id, 28);
++
++   bit_writer_skip_to(child_writer, 32 * 32 - RADV_GFX12_PRIMITIVE_NODE_PAIR_DESC_SIZE);
++
++   uint32_t opaque0 = (src0.geometry_id_and_flags & VK_GEOMETRY_OPAQUE) != 0 ? 1 : 0;
++   uint32_t opaque1 = (src1.geometry_id_and_flags & VK_GEOMETRY_OPAQUE) != 0 ? 1 : 0;
++
++   bit_writer_write(child_writer, 1, 1);       /* prim_range_stop */
++   bit_writer_write(child_writer, 0, 1);       /* tri1_double_sided */
++   bit_writer_write(child_writer, opaque1, 1); /* tri1_opaque */
++   bit_writer_write(child_writer, 3, 4);       /* tri1_v0_index */
++   bit_writer_write(child_writer, 4, 4);       /* tri1_v1_index */
++   bit_writer_write(child_writer, 5, 4);       /* tri1_v2_index */
++   bit_writer_write(child_writer, 0, 1);       /* tri0_double_sided */
++   bit_writer_write(child_writer, opaque0, 1); /* tri0_opaque */
++   bit_writer_write(child_writer, 0, 4);       /* tri0_v0_index */
++   bit_writer_write(child_writer, 1, 4);       /* tri0_v1_index */
++   bit_writer_write(child_writer, 2, 4);       /* tri0_v2_index */
++
++   bit_writer_finish(child_writer);
++}
++
+ void
+ radv_encode_aabb_gfx12(VOID_REF dst, vk_ir_aabb_node src)
+ {
+diff --git a/src/amd/vulkan/bvh/encode_gfx12.comp b/src/amd/vulkan/bvh/encode_gfx12.comp
+index eaf7ff081387f..639587baefe63 100644
+--- a/src/amd/vulkan/bvh/encode_gfx12.comp
++++ b/src/amd/vulkan/bvh/encode_gfx12.comp
+@@ -81,6 +81,8 @@ encode_gfx12(uint32_t ir_leaf_node_size, REF(vk_ir_box_node) intermediate_intern
+       if (cluster.invocation_index < 2)
+          child = src.children[cluster.invocation_index];
+ 
++      uint32_t second_child = RADV_BVH_INVALID_NODE;
++
+       while (true) {
+          uint32_t valid_children = radv_ballot(cluster, child != RADV_BVH_INVALID_NODE);
+          if ((valid_children & 0x80) != 0 || valid_children == 0)
+@@ -110,12 +112,30 @@ encode_gfx12(uint32_t ir_leaf_node_size, REF(vk_ir_box_node) intermediate_intern
+             if (left == RADV_BVH_INVALID_NODE) {
+                left = right;
+                right = RADV_BVH_INVALID_NODE;
++            } else if (right != RADV_BVH_INVALID_NODE && ir_id_to_type(left) == vk_ir_node_triangle &&
++                       ir_id_to_type(right) == vk_ir_node_triangle &&
++                       VK_BUILD_FLAG(RADV_BUILD_FLAG_PAIR_COMPRESS_TRIANGLES)) {
++               second_child = right;
++               right = RADV_BVH_INVALID_NODE;
+             }
+ 
+             child = left;
+          }
+          right = radv_read_invocation(cluster, collapse_index, right);
+ 
++         if (VK_BUILD_FLAG(RADV_BUILD_FLAG_PAIR_COMPRESS_TRIANGLES)) {
++            bool is_valid_triangle = child != RADV_BVH_INVALID_NODE && ir_id_to_type(child) == vk_ir_node_triangle;
++            uint32_t right_pair_mask =
++               radv_ballot(cluster, is_valid_triangle && second_child == RADV_BVH_INVALID_NODE &&
++                                       right != RADV_BVH_INVALID_NODE && ir_id_to_type(right) == vk_ir_node_triangle);
++
++            if (right_pair_mask != 0) {
++               if (cluster.invocation_index == findLSB(right_pair_mask))
++                  second_child = right;
++               continue;
++            }
++         }
++
+          if (cluster.invocation_index == findMSB(valid_children) + 1)
+             child = right;
+       }
+@@ -201,12 +221,25 @@ encode_gfx12(uint32_t ir_leaf_node_size, REF(vk_ir_box_node) intermediate_intern
+                DEREF(child_dst_offset) = dst_offset;
+             }
+ 
++            if (VK_BUILD_FLAG(RADV_BUILD_FLAG_WRITE_LEAF_NODE_OFFSETS) && second_child != RADV_BVH_INVALID_NODE) {
++               uint32_t leaf_index = ir_id_to_offset(second_child) / ir_leaf_node_size;
++               REF(uint32_t) child_dst_offset = REF(uint32_t)(args.output_base + args.leaf_node_offsets_offset);
++               child_dst_offset = INDEX(uint32_t, child_dst_offset, leaf_index);
++               DEREF(child_dst_offset) = dst_offset;
++            }
++
+             VOID_REF dst_leaf_addr = args.output_base + args.output_bvh_offset + dst_offset;
+ 
+             switch (args.geometry_type) {
+             case VK_GEOMETRY_TYPE_TRIANGLES_KHR: {
+-               vk_ir_triangle_node src_node = DEREF(REF(vk_ir_triangle_node)(OFFSET(args.intermediate_bvh, offset)));
+-               radv_encode_triangle_gfx12(dst_leaf_addr, src_node);
++               vk_ir_triangle_node src_node0 = DEREF(REF(vk_ir_triangle_node)(OFFSET(args.intermediate_bvh, offset)));
++               if (VK_BUILD_FLAG(RADV_BUILD_FLAG_PAIR_COMPRESS_TRIANGLES) && second_child != RADV_BVH_INVALID_NODE) {
++                  vk_ir_triangle_node src_node1 =
++                     DEREF(REF(vk_ir_triangle_node)(OFFSET(args.intermediate_bvh, ir_id_to_offset(second_child))));
++                  radv_encode_triangle_gfx12(dst_leaf_addr, src_node0, src_node1);
++               } else {
++                  radv_encode_triangle_gfx12(dst_leaf_addr, src_node0);
++               }
+                break;
+             }
+             case VK_GEOMETRY_TYPE_AABBS_KHR: {
+@@ -229,6 +262,12 @@ encode_gfx12(uint32_t ir_leaf_node_size, REF(vk_ir_box_node) intermediate_intern
+          }
+ 
+          vk_aabb child_aabb = DEREF(REF(vk_ir_node) OFFSET(args.intermediate_bvh, offset)).aabb;
++         if (second_child != RADV_BVH_INVALID_NODE) {
++            vk_aabb second_child_aabb =
++               DEREF(REF(vk_ir_node) OFFSET(args.intermediate_bvh, ir_id_to_offset(second_child))).aabb;
++            child_aabb.min = min(child_aabb.min, second_child_aabb.min);
++            child_aabb.max = max(child_aabb.max, second_child_aabb.max);
++         }
+ 
+          radv_gfx12_box_child box_child;
+          /* TODO: subtree flags culling */
+diff --git a/src/amd/vulkan/nir/radv_nir_lower_ray_queries.c b/src/amd/vulkan/nir/radv_nir_lower_ray_queries.c
+index 2dc30e5a47425..c46cbdc3c678a 100644
+--- a/src/amd/vulkan/nir/radv_nir_lower_ray_queries.c
++++ b/src/amd/vulkan/nir/radv_nir_lower_ray_queries.c
+@@ -79,6 +79,7 @@ enum radv_ray_query_field {
+    radv_ray_query_trav_previous_node,
+    radv_ray_query_trav_instance_top_node,
+    radv_ray_query_trav_instance_bottom_node,
++   radv_ray_query_trav_second_iteration,
+    radv_ray_query_stack,
+    radv_ray_query_field_count,
+ };
+@@ -115,6 +116,7 @@ radv_get_ray_query_type()
+    FIELD(trav_previous_node, glsl_uint_type());
+    FIELD(trav_instance_top_node, glsl_uint_type());
+    FIELD(trav_instance_bottom_node, glsl_uint_type());
++   FIELD(trav_second_iteration, glsl_bool_type());
+    FIELD(stack, glsl_array_type(glsl_uint_type(), MAX_SCRATCH_STACK_ENTRY_COUNT, 0));
+ 
+ #undef FIELD
+@@ -292,6 +294,7 @@ lower_rq_initialize(nir_builder *b, nir_intrinsic_instr *instr, struct ray_query
+    rq_store(b, rq, trav_previous_node, nir_imm_int(b, RADV_BVH_INVALID_NODE));
+    rq_store(b, rq, trav_instance_top_node, nir_imm_int(b, RADV_BVH_INVALID_NODE));
+    rq_store(b, rq, trav_instance_bottom_node, nir_imm_int(b, RADV_BVH_NO_INSTANCE_ROOT));
++   rq_store(b, rq, trav_second_iteration, nir_imm_false(b));
+ 
+    rq_store(b, rq, trav_top_stack, nir_imm_int(b, -1));
+ 
+@@ -491,6 +494,7 @@ lower_rq_proceed(nir_builder *b, nir_intrinsic_instr *instr, struct ray_query_va
+       .previous_node = rq_deref(b, rq, trav_previous_node),
+       .instance_top_node = rq_deref(b, rq, trav_instance_top_node),
+       .instance_bottom_node = rq_deref(b, rq, trav_instance_bottom_node),
++      .second_iteration = rq_deref(b, rq, trav_second_iteration),
+       .instance_addr = isec_deref(b, candidate, instance_addr),
+       .sbt_offset_and_flags = isec_deref(b, candidate, sbt_offset_and_flags),
+    };
+diff --git a/src/amd/vulkan/nir/radv_nir_rt_common.c b/src/amd/vulkan/nir/radv_nir_rt_common.c
+index c41cb6258642c..f5bc2f35ed312 100644
+--- a/src/amd/vulkan/nir/radv_nir_rt_common.c
++++ b/src/amd/vulkan/nir/radv_nir_rt_common.c
+@@ -575,23 +575,43 @@ insert_traversal_triangle_case(struct radv_device *device, nir_builder *b, const
+ static void
+ insert_traversal_triangle_case_gfx12(struct radv_device *device, nir_builder *b,
+                                      const struct radv_ray_traversal_args *args, const struct radv_ray_flags *ray_flags,
+-                                     nir_def *result, nir_def *bvh_node)
++                                     nir_def *result, nir_def *global_bvh_node, nir_def *bvh_node)
+ {
+    if (!args->triangle_cb)
+       return;
+ 
++   nir_def *t[2] = {
++      nir_channel(b, result, 0),
++      nir_channel(b, result, 4),
++   };
++   nir_def *triangle0_first = nir_flt(b, t[0], t[1]);
++
++   nir_def *second_t = nir_bcsel(b, triangle0_first, t[1], t[0]);
++   nir_def *second_iteration = nir_load_deref(b, args->vars.second_iteration);
++   nir_def *revisit = nir_iand(b, nir_inot(b, second_iteration), nir_flt(b, second_t, nir_load_deref(b, args->vars.tmax)));
++   nir_def *next_node = nir_bcsel(b, revisit, bvh_node, nir_imm_int(b, RADV_BVH_INVALID_NODE));
++   nir_store_deref(b, args->vars.current_node, next_node, 0x1);
++   nir_store_deref(b, args->vars.second_iteration, revisit, 0x1);
++
++   nir_def *triangle0 = nir_ixor(b, triangle0_first, second_iteration);
++
+    struct radv_triangle_intersection intersection;
+-   intersection.t = nir_channel(b, result, 0);
++   intersection.t = nir_bcsel(b, triangle0, t[0], t[1]);
+ 
+    nir_push_if(b, nir_iand(b, nir_flt(b, intersection.t, nir_load_deref(b, args->vars.tmax)),
+                            nir_flt(b, args->tmin, intersection.t)));
+    {
+-      intersection.frontface = nir_inot(b, nir_test_mask(b, nir_channel(b, result, 3), 1));
+-      intersection.base.node_addr = build_node_to_addr(device, b, bvh_node, false);
+-      intersection.base.primitive_id = nir_ishr_imm(b, nir_channel(b, result, 3), 1);
+-      intersection.base.geometry_id_and_flags = nir_ishr_imm(b, nir_channel(b, result, 8), 2);
+-      intersection.base.opaque = nir_inot(b, nir_test_mask(b, nir_channel(b, result, 2), 1u << 31));
+-      intersection.barycentrics = nir_fabs(b, nir_channels(b, result, 0x3 << 1));
++      nir_def *dword1 = nir_bcsel(b, triangle0, nir_channel(b, result, 1), nir_channel(b, result, 5));
++      nir_def *dword2 = nir_bcsel(b, triangle0, nir_channel(b, result, 2), nir_channel(b, result, 6));
++      nir_def *dword3 = nir_bcsel(b, triangle0, nir_channel(b, result, 3), nir_channel(b, result, 7));
++
++      intersection.frontface = nir_inot(b, nir_test_mask(b, dword3, 1));
++      intersection.base.node_addr = build_node_to_addr(device, b, global_bvh_node, false);
++      intersection.base.primitive_id = nir_ishr_imm(b, dword3, 1);
++      intersection.base.geometry_id_and_flags =
++         nir_ishr_imm(b, nir_bcsel(b, triangle0, nir_channel(b, result, 8), nir_channel(b, result, 9)), 2);
++      intersection.base.opaque = nir_inot(b, nir_test_mask(b, dword2, 1u << 31));
++      intersection.barycentrics = nir_fabs(b, nir_vec2(b, dword1, dword2));
+ 
+       nir_push_if(b, nir_bcsel(b, intersection.base.opaque, ray_flags->no_cull_opaque, ray_flags->no_cull_no_opaque));
+       {
+@@ -1086,7 +1106,7 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+          nir_push_else(b, NULL);
+          {
+             nir_push_if(b, ray_flags.no_skip_triangles);
+-            insert_traversal_triangle_case_gfx12(device, b, args, &ray_flags, result, global_bvh_node);
++            insert_traversal_triangle_case_gfx12(device, b, args, &ray_flags, result, global_bvh_node, bvh_node);
+             nir_pop_if(b, NULL);
+          }
+          nir_pop_if(b, NULL);
+diff --git a/src/amd/vulkan/nir/radv_nir_rt_common.h b/src/amd/vulkan/nir/radv_nir_rt_common.h
+index aaef6ca72cd15..e3efb46bc4115 100644
+--- a/src/amd/vulkan/nir/radv_nir_rt_common.h
++++ b/src/amd/vulkan/nir/radv_nir_rt_common.h
+@@ -103,6 +103,9 @@ struct radv_ray_traversal_vars {
+    nir_deref_instr *instance_top_node;
+    nir_deref_instr *instance_bottom_node;
+ 
++   /* Whether the current iteration revisits the last triangle node to handle the second triangle. */
++   nir_deref_instr *second_iteration;
++
+    /* Information about the current instance used for culling. */
+    nir_deref_instr *instance_addr;
+    nir_deref_instr *sbt_offset_and_flags;
+diff --git a/src/amd/vulkan/nir/radv_nir_rt_shader.c b/src/amd/vulkan/nir/radv_nir_rt_shader.c
+index 086726052ecc2..7fa8e183213f2 100644
+--- a/src/amd/vulkan/nir/radv_nir_rt_shader.c
++++ b/src/amd/vulkan/nir/radv_nir_rt_shader.c
+@@ -1223,6 +1223,7 @@ struct rt_traversal_vars {
+    nir_variable *previous_node;
+    nir_variable *instance_top_node;
+    nir_variable *instance_bottom_node;
++   nir_variable *second_iteration;
+ };
+ 
+ static struct rt_traversal_vars
+@@ -1248,6 +1249,8 @@ init_traversal_vars(nir_builder *b)
+    ret.instance_top_node = nir_variable_create(b->shader, nir_var_shader_temp, glsl_uint_type(), "instance_top_node");
+    ret.instance_bottom_node =
+       nir_variable_create(b->shader, nir_var_shader_temp, glsl_uint_type(), "instance_bottom_node");
++   ret.second_iteration =
++      nir_variable_create(b->shader, nir_var_shader_temp, glsl_bool_type(), "second_iteration");
+    return ret;
+ }
+ 
+@@ -1542,6 +1545,7 @@ radv_build_traversal(struct radv_device *device, struct radv_ray_tracing_pipelin
+    nir_store_var(b, trav_vars.previous_node, nir_imm_int(b, RADV_BVH_INVALID_NODE), 0x1);
+    nir_store_var(b, trav_vars.instance_top_node, nir_imm_int(b, RADV_BVH_INVALID_NODE), 0x1);
+    nir_store_var(b, trav_vars.instance_bottom_node, nir_imm_int(b, RADV_BVH_NO_INSTANCE_ROOT), 0x1);
++   nir_store_var(b, trav_vars.second_iteration, nir_imm_false(b), 0x1);
+ 
+    nir_store_var(b, trav_vars.top_stack, nir_imm_int(b, -1), 1);
+ 
+@@ -1558,6 +1562,7 @@ radv_build_traversal(struct radv_device *device, struct radv_ray_tracing_pipelin
+       .previous_node = nir_build_deref_var(b, trav_vars.previous_node),
+       .instance_top_node = nir_build_deref_var(b, trav_vars.instance_top_node),
+       .instance_bottom_node = nir_build_deref_var(b, trav_vars.instance_bottom_node),
++      .second_iteration = nir_build_deref_var(b, trav_vars.second_iteration),
+       .instance_addr = nir_build_deref_var(b, trav_vars.instance_addr),
+       .sbt_offset_and_flags = nir_build_deref_var(b, trav_vars.sbt_offset_and_flags),
+    };
+diff --git a/src/amd/vulkan/radv_acceleration_structure.c b/src/amd/vulkan/radv_acceleration_structure.c
+index 5309d6388c533..1ae3a419af30f 100644
+--- a/src/amd/vulkan/radv_acceleration_structure.c
++++ b/src/amd/vulkan/radv_acceleration_structure.c
+@@ -70,6 +70,7 @@ struct update_scratch_layout {
+ enum radv_encode_key_bits {
+    RADV_ENCODE_KEY_COMPACT = (1 << 0),
+    RADV_ENCODE_KEY_WRITE_LEAF_NODE_OFFSETS = (1 << 1),
++   RADV_ENCODE_KEY_PAIR_COMPRESS_GFX12 = (1 << 2),
+ };
+ 
+ static void
+@@ -425,6 +426,12 @@ radv_get_build_config(VkDevice _device, struct vk_acceleration_structure_build_s
+       if ((state->build_info->flags & VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_KHR) ||
+           state->build_info->type != VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR)
+          encode_key |= RADV_ENCODE_KEY_WRITE_LEAF_NODE_OFFSETS;
++
++      VkGeometryTypeKHR geometry_type = vk_get_as_geometry_type(state->build_info);
++      if (!(state->build_info->flags & (VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR |
++                                        VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_KHR)) &&
++          geometry_type == VK_GEOMETRY_TYPE_TRIANGLES_KHR)
++         encode_key |= RADV_ENCODE_KEY_PAIR_COMPRESS_GFX12;
+    }
+ 
+    if (state->build_info->flags & VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR)
+@@ -502,6 +509,8 @@ radv_build_flags(VkCommandBuffer commandBuffer, uint32_t key)
+       flags |= RADV_BUILD_FLAG_NO_INFS;
+    if (key & RADV_ENCODE_KEY_WRITE_LEAF_NODE_OFFSETS)
+       flags |= RADV_BUILD_FLAG_WRITE_LEAF_NODE_OFFSETS;
++   if (key & RADV_ENCODE_KEY_PAIR_COMPRESS_GFX12)
++      flags |= RADV_BUILD_FLAG_PAIR_COMPRESS_TRIANGLES;
+ 
+    return flags;
+ }
+@@ -520,10 +529,10 @@ static VkResult
+ radv_encode_bind_pipeline_gfx12(VkCommandBuffer commandBuffer,
+                                 const struct vk_acceleration_structure_build_state *state)
+ {
+-   radv_bvh_build_bind_pipeline(
+-      commandBuffer, RADV_META_OBJECT_KEY_BVH_ENCODE, encode_gfx12_spv, sizeof(encode_gfx12_spv),
+-      sizeof(struct encode_gfx12_args),
+-      radv_build_flags(commandBuffer, state->config.encode_key[0]) & RADV_BUILD_FLAG_WRITE_LEAF_NODE_OFFSETS);
++   radv_bvh_build_bind_pipeline(commandBuffer, RADV_META_OBJECT_KEY_BVH_ENCODE, encode_gfx12_spv,
++                                sizeof(encode_gfx12_spv), sizeof(struct encode_gfx12_args),
++                                radv_build_flags(commandBuffer, state->config.encode_key[0]) &
++                                   (RADV_BUILD_FLAG_WRITE_LEAF_NODE_OFFSETS | RADV_BUILD_FLAG_PAIR_COMPRESS_TRIANGLES));
+ 
+    return VK_SUCCESS;
+ }
+-- 
+GitLab
+

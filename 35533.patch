@@ -1,4 +1,4 @@
-From af49e8fb5a6092f8ab0024931e816ff121155006 Mon Sep 17 00:00:00 2001
+From 69193926ba7bdc63fcb5f7ed3f6b62331daf7eb3 Mon Sep 17 00:00:00 2001
 From: Konstantin Seurer <konstantin.seurer@gmail.com>
 Date: Sat, 14 Jun 2025 12:22:06 +0200
 Subject: [PATCH] radv: Optimize ray tracing position fetch
@@ -28,13 +28,13 @@ SALU: 529828 -> 529808 (-0.00%); split: -0.01%, +0.00%
  src/amd/vulkan/nir/radv_nir_rt_common.c       | 52 +++----------------
  src/amd/vulkan/nir/radv_nir_rt_common.h       |  3 +-
  src/amd/vulkan/nir/radv_nir_rt_shader.c       | 42 +++++++++++----
- src/amd/vulkan/radv_acceleration_structure.c  | 29 -----------
+ src/amd/vulkan/radv_acceleration_structure.c  | 28 ----------
  src/amd/vulkan/radv_pipeline_rt.c             | 23 +++++---
  src/amd/vulkan/radv_pipeline_rt.h             |  1 +
  src/amd/vulkan/radv_shader.h                  |  2 +-
  src/amd/vulkan/radv_shader_args.c             |  1 +
  src/compiler/nir/nir_intrinsics.py            | 11 ++--
- 14 files changed, 73 insertions(+), 116 deletions(-)
+ 14 files changed, 73 insertions(+), 115 deletions(-)
 
 diff --git a/src/amd/common/ac_shader_args.h b/src/amd/common/ac_shader_args.h
 index 97ac63772335a..4ae518da4c8d4 100644
@@ -402,7 +402,7 @@ index 086726052ecc2..89651e8f3e9b8 100644
        radv_store_arg(&b, args, traversal_info, args->ac.rt.instance_addr, nir_load_var(&b, vars.instance_addr));
        radv_store_arg(&b, args, traversal_info, args->ac.rt.geometry_id_and_flags,
 diff --git a/src/amd/vulkan/radv_acceleration_structure.c b/src/amd/vulkan/radv_acceleration_structure.c
-index 36b02bc20a1a5..ca3d029f2cc82 100644
+index 4a76a4a15e2f4..51b9c26b4e791 100644
 --- a/src/amd/vulkan/radv_acceleration_structure.c
 +++ b/src/amd/vulkan/radv_acceleration_structure.c
 @@ -50,7 +50,6 @@ static const uint32_t leaf_spv[] = {
@@ -413,35 +413,34 @@ index 36b02bc20a1a5..ca3d029f2cc82 100644
     uint32_t leaf_node_offsets_offset;
     uint32_t bvh_offset;
     uint32_t leaf_nodes_offset;
-@@ -126,11 +125,6 @@ radv_get_acceleration_structure_layout(struct radv_device *device, uint32_t leaf
-       offset += sizeof(struct radv_accel_struct_geometry_info) * build_info->geometryCount;
+@@ -126,11 +125,6 @@ radv_get_acceleration_structure_layout(struct radv_device *device,
+       offset += sizeof(struct radv_accel_struct_geometry_info) * state->build_info->geometryCount;
     }
  
 -   if (device->vk.enabled_features.rayTracingPositionFetch && geometry_type == VK_GEOMETRY_TYPE_TRIANGLES_KHR) {
 -      accel_struct->primitive_base_indices_offset = offset;
--      offset += sizeof(uint32_t) * build_info->geometryCount;
+-      offset += sizeof(uint32_t) * state->build_info->geometryCount;
 -   }
 -
     /* On GFX12, we need additional space for leaf node offsets since they do not have the same
      * order as the application provided data.
      */
-@@ -662,8 +656,6 @@ radv_init_header(VkCommandBuffer commandBuffer, const VkAccelerationStructureBui
-    header.build_flags = build_info->flags;
-    header.geometry_type = vk_get_as_geometry_type(build_info);
-    header.geometry_count = build_info->geometryCount;
+@@ -665,7 +659,6 @@ radv_init_header(VkCommandBuffer commandBuffer, const struct vk_acceleration_str
+    header.build_flags = state->build_info->flags;
+    header.geometry_type = vk_get_as_geometry_type(state->build_info);
+    header.geometry_count = state->build_info->geometryCount;
 -   header.primitive_base_indices_offset = layout.primitive_base_indices_offset;
--
+ 
     radv_update_memory_cp(cmd_buffer, vk_acceleration_structure_get_va(dst) + base, (const char *)&header + base,
                           sizeof(header) - base);
- 
-@@ -687,27 +679,6 @@ radv_init_header(VkCommandBuffer commandBuffer, const VkAccelerationStructureBui
+@@ -690,27 +683,6 @@ radv_init_header(VkCommandBuffer commandBuffer, const struct vk_acceleration_str
  
        free(geometry_infos);
     }
 -
--   VkGeometryTypeKHR geometry_type = vk_get_as_geometry_type(build_info);
+-   VkGeometryTypeKHR geometry_type = vk_get_as_geometry_type(state->build_info);
 -   if (device->vk.enabled_features.rayTracingPositionFetch && geometry_type == VK_GEOMETRY_TYPE_TRIANGLES_KHR) {
--      uint32_t base_indices_size = sizeof(uint32_t) * build_info->geometryCount;
+-      uint32_t base_indices_size = sizeof(uint32_t) * state->build_info->geometryCount;
 -      uint32_t *base_indices = malloc(base_indices_size);
 -      if (!base_indices) {
 -         vk_command_buffer_set_error(&cmd_buffer->vk, VK_ERROR_OUT_OF_HOST_MEMORY);
@@ -449,9 +448,9 @@ index 36b02bc20a1a5..ca3d029f2cc82 100644
 -      }
 -
 -      uint32_t base_index = 0;
--      for (uint32_t i = 0; i < build_info->geometryCount; i++) {
+-      for (uint32_t i = 0; i < state->build_info->geometryCount; i++) {
 -         base_indices[i] = base_index;
--         base_index += build_range_infos[i].primitiveCount;
+-         base_index += state->build_range_infos[i].primitiveCount;
 -      }
 -
 -      radv_CmdUpdateBuffer(commandBuffer, vk_buffer_to_handle(dst->buffer),
@@ -463,10 +462,10 @@ index 36b02bc20a1a5..ca3d029f2cc82 100644
  
  static void
 diff --git a/src/amd/vulkan/radv_pipeline_rt.c b/src/amd/vulkan/radv_pipeline_rt.c
-index e906494f827dd..ba9a1de312074 100644
+index 597b2ffd49cb0..d5586836c11b9 100644
 --- a/src/amd/vulkan/radv_pipeline_rt.c
 +++ b/src/amd/vulkan/radv_pipeline_rt.c
-@@ -363,7 +363,7 @@ radv_rt_nir_to_asm(struct radv_device *device, struct vk_pipeline_cache *cache,
+@@ -364,7 +364,7 @@ radv_rt_nir_to_asm(struct radv_device *device, struct vk_pipeline_cache *cache,
                     struct radv_ray_tracing_stage_info *stage_info,
                     const struct radv_ray_tracing_stage_info *traversal_stage_info,
                     struct radv_serialized_shader_arena_block *replay_block, bool skip_shaders_cache,
@@ -475,7 +474,7 @@ index e906494f827dd..ba9a1de312074 100644
  {
     struct radv_physical_device *pdev = radv_device_physical(device);
     struct radv_instance *instance = radv_physical_device_instance(pdev);
-@@ -425,7 +425,7 @@ radv_rt_nir_to_asm(struct radv_device *device, struct vk_pipeline_cache *cache,
+@@ -426,7 +426,7 @@ radv_rt_nir_to_asm(struct radv_device *device, struct vk_pipeline_cache *cache,
        struct radv_shader_stage temp_stage = *stage;
        temp_stage.nir = shaders[i];
        radv_nir_lower_rt_abi(temp_stage.nir, pCreateInfo, &temp_stage.args, &stage->info, stack_size, i > 0, device,
@@ -484,7 +483,7 @@ index e906494f827dd..ba9a1de312074 100644
  
        /* Info might be out-of-date after inlining in radv_nir_lower_rt_abi(). */
        nir_shader_gather_info(temp_stage.nir, nir_shader_get_entrypoint(temp_stage.nir));
-@@ -544,6 +544,9 @@ radv_gather_ray_tracing_stage_info(nir_shader *nir)
+@@ -547,6 +547,9 @@ radv_gather_ray_tracing_stage_info(nir_shader *nir)
              continue;
  
           nir_intrinsic_instr *intr = nir_instr_as_intrinsic(instr);
@@ -494,7 +493,7 @@ index e906494f827dd..ba9a1de312074 100644
           if (intr->intrinsic != nir_intrinsic_trace_ray)
              continue;
  
-@@ -629,10 +632,13 @@ radv_rt_compile_shaders(struct radv_device *device, struct vk_pipeline_cache *ca
+@@ -632,10 +635,13 @@ radv_rt_compile_shaders(struct radv_device *device, struct vk_pipeline_cache *ca
     }
  
     bool has_callable = false;
@@ -508,7 +507,7 @@ index e906494f827dd..ba9a1de312074 100644
        monolithic &= rt_stages[i].info.can_inline;
  
        if (i >= pCreateInfo->stageCount)
-@@ -688,9 +694,9 @@ radv_rt_compile_shaders(struct radv_device *device, struct vk_pipeline_cache *ca
+@@ -691,9 +697,9 @@ radv_rt_compile_shaders(struct radv_device *device, struct vk_pipeline_cache *ca
  
           bool monolithic_raygen = monolithic && stage->stage == MESA_SHADER_RAYGEN;
  
@@ -521,7 +520,7 @@ index e906494f827dd..ba9a1de312074 100644
           if (result != VK_SUCCESS)
              goto cleanup;
  
-@@ -717,6 +723,7 @@ radv_rt_compile_shaders(struct radv_device *device, struct vk_pipeline_cache *ca
+@@ -720,6 +726,7 @@ radv_rt_compile_shaders(struct radv_device *device, struct vk_pipeline_cache *ca
     struct radv_ray_tracing_stage_info traversal_info = {
        .set_flags = 0xFFFFFFFF,
        .unset_flags = 0xFFFFFFFF,
@@ -529,7 +528,7 @@ index e906494f827dd..ba9a1de312074 100644
     };
  
     memset(traversal_info.unused_args, 0xFF, sizeof(traversal_info.unused_args));
-@@ -747,9 +754,9 @@ radv_rt_compile_shaders(struct radv_device *device, struct vk_pipeline_cache *ca
+@@ -750,9 +757,9 @@ radv_rt_compile_shaders(struct radv_device *device, struct vk_pipeline_cache *ca
        .key = stage_keys[MESA_SHADER_INTERSECTION],
     };
     radv_shader_layout_init(pipeline_layout, MESA_SHADER_INTERSECTION, &traversal_stage.layout);
@@ -555,10 +554,10 @@ index ad40801169d93..18bd2b3edb617 100644
     BITSET_DECLARE(unused_args, AC_MAX_ARGS);
  
 diff --git a/src/amd/vulkan/radv_shader.h b/src/amd/vulkan/radv_shader.h
-index 4905c72c63d70..c02f60e064eab 100644
+index d74bb9d60b7c6..fa51e5ba9b806 100644
 --- a/src/amd/vulkan/radv_shader.h
 +++ b/src/amd/vulkan/radv_shader.h
-@@ -526,7 +526,7 @@ struct radv_ray_tracing_stage_info;
+@@ -527,7 +527,7 @@ struct radv_ray_tracing_stage_info;
  void radv_nir_lower_rt_abi(nir_shader *shader, const VkRayTracingPipelineCreateInfoKHR *pCreateInfo,
                             const struct radv_shader_args *args, const struct radv_shader_info *info,
                             uint32_t *stack_size, bool resume_shader, struct radv_device *device,
@@ -568,7 +567,7 @@ index 4905c72c63d70..c02f60e064eab 100644
  
  void radv_gather_unused_args(struct radv_ray_tracing_stage_info *info, nir_shader *nir);
 diff --git a/src/amd/vulkan/radv_shader_args.c b/src/amd/vulkan/radv_shader_args.c
-index 3a609eb56b3b8..ba121f3093122 100644
+index a8ce3c09f81f4..a63e5c67c6820 100644
 --- a/src/amd/vulkan/radv_shader_args.c
 +++ b/src/amd/vulkan/radv_shader_args.c
 @@ -350,6 +350,7 @@ radv_declare_rt_shader_args(enum amd_gfx_level gfx_level, struct radv_shader_arg
@@ -580,10 +579,10 @@ index 3a609eb56b3b8..ba121f3093122 100644
     ac_add_arg(&args->ac, AC_ARG_VGPR, 1, AC_ARG_INT, &args->ac.rt.geometry_id_and_flags);
     ac_add_arg(&args->ac, AC_ARG_VGPR, 1, AC_ARG_INT, &args->ac.rt.hit_kind);
 diff --git a/src/compiler/nir/nir_intrinsics.py b/src/compiler/nir/nir_intrinsics.py
-index f1ae876e321a3..48ecbf66c13db 100644
+index e88f6390f9c4d..59b3b90c5e62e 100644
 --- a/src/compiler/nir/nir_intrinsics.py
 +++ b/src/compiler/nir/nir_intrinsics.py
-@@ -1845,11 +1845,12 @@ system_value("cull_mask_and_flags_amd", 1)
+@@ -1852,11 +1852,12 @@ system_value("cull_mask_and_flags_amd", 1)
  
  #   0. SBT Index
  #   1. Ray Tmax

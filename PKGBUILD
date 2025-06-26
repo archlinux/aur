@@ -3,7 +3,7 @@
 
 pkgname=mesa-fsr4-git
 pkgdesc="Mesa branch with VK_EXT_shader_float8 and VK_NV_cooperative_matrix2 for radv"
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 arch=('x86_64')
 makedepends=(
@@ -86,13 +86,13 @@ source=(
     'LICENSE'
 	'34918.patch'
 	'35269.patch'
-	#'35445.patch'
+	'35445.patch'
+	'35533.patch'
+	'35734.patch'
 )
 sha256sums=('SKIP'
             '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2'
-            '5d32608ee4018326dc8218c65afbd92a4a2d1f0104dedbd234a274adb13a6f0f'
-            '3b8986e521254e4d85046286871aaaf6503e14ef40ff51df86cdd2efcd2c4f83'
-            # '988fad71a42575d101464ebff14c278e1fb3f9788046bef2445a5e1647e74760'
+
             '39278fbbf5fb4f646ce651690877f89d1c5811a3d4acb27700c1cb3cdb78fd3b'
             '3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b'
             '5267fca4496028628a95160fc423a33e8b2e6af8a5302579e322e4b520293cae'
