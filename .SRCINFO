@@ -1,0 +1,23 @@
+pkgbase = tasky-git
+	pkgdesc = A sleek, powerful CLI task management tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shahriaarrr/Tasky
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = go
+	provides = tasky-git
+	conflicts = tasky-git
+	options = !lto
+	source = tasky-git::git+https://github.com/shahriaarrr/Tasky.git
+	md5sums = SKIP
+
+pkgname = tasky-git
