@@ -1,0 +1,4 @@
+[nextcloud-app-ocsms]
+source = "git"
+git = "https://github.com/nextcloud/ocsms.git"
+prefix = "v"
