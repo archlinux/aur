@@ -2,7 +2,7 @@
 
 pkgname=unpack-install-jammer
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Extract files from install-jammer installers"
 arch=('any')
 url="https://github.com/lod/unpack-install-jammer"
@@ -26,6 +26,6 @@ sha512sums=(074d9cde890db77a578fefe7f822e50c089edf4621ac04cfeb86c2f9410c79639334
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm555 extract.pl "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm444 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm444 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm444 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm444 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
