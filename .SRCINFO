@@ -1,7 +1,7 @@
 pkgbase = floorp
 	pkgdesc = Firefox-based web browser focused on performance and customizability
 	pkgver = 11.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Floorp-Projects/Floorp
 	arch = x86_64
 	license = MPL-2.0
@@ -45,7 +45,6 @@ pkgbase = floorp
 	depends = mime-types
 	depends = nspr
 	depends = nss
-	depends = pipewire
 	depends = ttf-font
 	depends = zlib
 	optdepends = hunspell-dictionary: Spell checking

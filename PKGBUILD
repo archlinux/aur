@@ -18,7 +18,7 @@
 _pkgname="floorp"
 pkgname="$_pkgname"
 pkgver=11.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 arch=('x86_64')
@@ -38,7 +38,6 @@ depends=(
   mime-types
   nspr
   nss
-  pipewire
   ttf-font
   zlib
 )
@@ -153,12 +152,12 @@ prepare() {
   cat > ../mozconfig << END
 ac_add_options --enable-application=browser
 ac_add_options --disable-artifact-builds
-
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
+ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-wasm-simd
 ac_add_options --enable-linker=lld
@@ -202,8 +201,6 @@ ac_add_options --enable-eme=widevine
 ac_add_options --enable-jack
 ac_add_options --enable-jxl
 ac_add_options --enable-proxy-bypass-protection
-ac_add_options --enable-pulseaudio
-ac_add_options --enable-raw
 ac_add_options --enable-sandbox
 ac_add_options --enable-unverified-updates
 ac_add_options --enable-webrtc
@@ -225,12 +222,6 @@ ac_add_options --disable-debug-js-modules
 ac_add_options --enable-strip
 ac_add_options --enable-install-strip
 export STRIP_FLAGS="--strip-debug --strip-unneeded"
-
-# Optimization
-ac_add_options --enable-optimize
-ac_add_options --enable-lto=cross,full
-ac_add_options OPT_LEVEL="2"
-ac_add_options RUSTC_OPT_LEVEL="2"
 
 # Other
 export AR=llvm-ar${_ver_clang:+-$_ver_clang}
@@ -362,6 +353,7 @@ END
     if [[ -s merged.profdata ]]; then
       stat -c "Profile data found (%s bytes)" merged.profdata
       cat >> .mozconfig - << END
+ac_add_options --enable-lto=cross,full
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 END
