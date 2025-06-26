@@ -2,7 +2,7 @@
 # Contributor: workonfire <kolucki62@gmail.com>
 
 pkgname=babi
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A text editor, eventually..."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-build')
 provides=('babi')
 conflicts=('babi' 'babi-git')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('ae18d95e227a7f8a52613aac909522f0f0ea0fa217a944f9df1c3d09e6bc9a9d')
+sha256sums=('9cbdf046eaab517bd34e37b8a944fcb1ff1a0dff6339aac6371e4551ff455d05')
 
 build() {
 	cd "${pkgname}-${pkgver}"
