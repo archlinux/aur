@@ -1,7 +1,7 @@
 # Maintainer: Stephen Erisman <aur at serisman dot com>
 
 pkgname='garage-bin'
-pkgver='1.1.0'
+pkgver='1.2.0'
 pkgrel='1'
 pkgdesc='Garage, an S3-compatible distributed object store for self-hosted deployments. Pre-compiled.'
 url="https://garagehq.deuxfleurs.fr"
@@ -16,10 +16,10 @@ source_i686=("${url}/_releases/v${pkgver}/i686-unknown-linux-musl/garage")
 source_aarch64=("${url}/_releases/v${pkgver}/aarch64-unknown-linux-musl/garage")
 source_armv7h=("${url}/_releases/v${pkgver}/armv6l-unknown-linux-musleabihf/garage")
 
-sha256sums_x86_64=('b21a39ea5845193deed95187d1ed5598ac50ea63f60f678a20ed786fda0db70d')
-sha256sums_i686=('f88d650287107c1812ef050a5b389efb8295b1b31026b760b8df20efdc6ccbfc')
-sha256sums_aarch64=('9ceb52e3c5f14b75db0f0d4958c7f31cd5738fe62e320dbb233608ce9e78f2c6')
-sha256sums_armv7h=('18bb74f9d47ca6f42dbc97c32fb130f41abcfb765d3e79d99e0a672f7cb8ca0d')
+sha256sums_x86_64=('bd2a3a7c875bf042a4e14e528bf714071021f94642db29bd3f53dff5947b3c4a')
+sha256sums_i686=('2c4ebffaaa734746c318552ac280109f0306ff57d2b8358ed2fd4710b561bb8b')
+sha256sums_aarch64=('3be0b307c30e5c29f1b665bd817e023b08ec33cfbd0c3c7eeda8e874c9dbcf89')
+sha256sums_armv7h=('17cdd460ddac3ceda0c0eab4f54d59dc0f3a707dd8fb21a9afa451098ff1b7a1')
 
 source=("garage.toml.example"
         "garage.service"
