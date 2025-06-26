@@ -1,0 +1,19 @@
+pkgbase = deno-canary-bin
+	pkgdesc = A secure runtime for JavaScript and TypeScript, Canary build
+	pkgver = 2.3.7.f7817964
+	pkgrel = 1
+	url = https://dl.deno.land/
+	arch = x86_64
+	license = MIT
+	makedepends = curl
+	makedepends = unzip
+	provides = deno
+	conflicts = deno
+	source = https://dl.deno.land/release-latest.txt
+	source = https://dl.deno.land/canary-latest.txt
+	source = https://github.com/denoland/deno/raw/refs/heads/main/LICENSE.md
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = deno-canary-bin
