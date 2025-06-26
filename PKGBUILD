@@ -8,13 +8,11 @@ arch=('any')
 url="https://github.com/Faugus/faugus-launcher"
 license=('MIT')
 depends=('python' 'python-gobject' 'python-requests' 'python-pillow' 'python-filelock' 'python-vdf' 'python-psutil' 'umu-launcher' 'imagemagick' 'icoextract' 'libayatana-appindicator')
-makedepends=('git')
+makedepends=('git' 'meson')
 provides=('faugus-launcher')
 conflicts=('faugus-launcher')
 source=("git+https://github.com/Faugus/faugus-launcher.git")
 sha256sums=('SKIP')
-
-makedepends=(meson)
 
 build() {
     cd "faugus-launcher"
