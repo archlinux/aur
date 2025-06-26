@@ -4,3 +4,4 @@
 !PKGBUILD
 !gupax.desktop
 !.nvchecker.toml
+!package.patch

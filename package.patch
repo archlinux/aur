@@ -1,0 +1,85 @@
+diff -ura gupax/src/helper.rs gupax.new/src/helper.rs
+--- gupax/src/helper.rs	2025-06-25 23:59:04.762050365 -0700
++++ gupax.new/src/helper.rs	2025-06-26 11:06:02.477078329 -0700
+@@ -441,6 +441,7 @@
+         helper: &Arc<Mutex<Self>>,
+         state: &crate::disk::P2pool,
+         path: &std::path::PathBuf,
++        api_path: &std::path::PathBuf,
+         backup_hosts: Option<Vec<crate::Node>>,
+     ) {
+         info!("P2Pool | Attempting to restart...");
+@@ -450,6 +451,7 @@
+         let helper = Arc::clone(helper);
+         let state = state.clone();
+         let path = path.clone();
++        let api_path = api_path.clone();
+         // This thread lives to wait, start p2pool then die.
+         thread::spawn(move || {
+             while lock2!(helper, p2pool).is_alive() {
+@@ -458,7 +460,7 @@
+             }
+             // Ok, process is not alive, start the new one!
+             info!("P2Pool | Old process seems dead, starting new one!");
+-            Self::start_p2pool(&helper, &state, &path, backup_hosts);
++            Self::start_p2pool(&helper, &state, &path, &api_path, backup_hosts);
+         });
+         info!("P2Pool | Restart ... OK");
+     }
+@@ -470,12 +472,13 @@
+         helper: &Arc<Mutex<Self>>,
+         state: &crate::disk::P2pool,
+         path: &std::path::PathBuf,
++        api_path: &std::path::PathBuf,
+         backup_hosts: Option<Vec<crate::Node>>,
+     ) {
+         lock2!(helper, p2pool).state = ProcessState::Middle;
+ 
+         let (args, api_path_local, api_path_network, api_path_pool) =
+-            Self::build_p2pool_args_and_mutate_img(helper, state, path, backup_hosts);
++            Self::build_p2pool_args_and_mutate_img(helper, state, path, api_path, backup_hosts);
+ 
+         // Print arguments & user settings to console
+         crate::disk::print_dash(&format!(
+@@ -527,12 +530,12 @@
+         helper: &Arc<Mutex<Self>>,
+         state: &crate::disk::P2pool,
+         path: &std::path::PathBuf,
++        api_path: &std::path::PathBuf,
+         backup_hosts: Option<Vec<crate::Node>>,
+     ) -> (Vec<String>, PathBuf, PathBuf, PathBuf) {
+         let mut args = Vec::with_capacity(500);
+         let path = path.clone();
+-        let mut api_path = path;
+-        api_path.pop();
++        let mut api_path = api_path.clone();
+ 
+         // [Simple]
+         if state.simple {
+diff -ura gupax/src/main.rs gupax.new/src/main.rs
+--- gupax/src/main.rs	2025-06-25 23:59:04.762050365 -0700
++++ gupax.new/src/main.rs	2025-06-26 11:07:16.132354395 -0700
+@@ -1042,6 +1042,7 @@
+                 &app.helper,
+                 &app.state.p2pool,
+                 &app.state.gupax.absolute_p2pool_path,
++                &app.gupax_p2pool_api_path,
+                 backup_hosts,
+             );
+         }
+@@ -2217,6 +2218,7 @@
+                                             &self.helper,
+                                             &self.state.p2pool,
+                                             &self.state.gupax.absolute_p2pool_path,
++                                            &self.gupax_p2pool_api_path,
+                                             self.gather_backup_hosts(),
+                                         );
+                                     }
+@@ -2272,6 +2274,7 @@
+                                             &self.helper,
+                                             &self.state.p2pool,
+                                             &self.state.gupax.absolute_p2pool_path,
++                                            &self.gupax_p2pool_api_path,
+                                             self.gather_backup_hosts(),
+                                         );
+                                     }
