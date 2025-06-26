@@ -36,7 +36,6 @@ build() {
 }
 
 package() {
-  set -x
   install -Dv alda-player -t "$pkgdir/usr/bin/"
 
   cd "$pkgname"-release-"$pkgver"

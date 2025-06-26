@@ -13,6 +13,6 @@ pkgbase = alda
 	source = alda-release-2.3.2.tar.gz::https://codeload.github.com/alda-lang/alda/tar.gz/refs/tags/release-2.3.2
 	source = alda-player
 	b2sums = 88d28b89c73a9919dee035b4f95a6b0f390a8f72676e68f58e60174eec331f14450190f89d1a1fb1ac84fc830f6585b5aa4a3788f6f95dfba8e4654c10107554
-	b2sums = 763038e3d3a541654ef53ef762702a98145206c31d1b7b5ef1366bd7ee9b520e5b682ea347f96de21ec4285929b0b0a7a588e765f77c15298095b38f753a6c4b
+	b2sums = 5d6bdd39c1178fd5504a308d95606a82bae781159128e3c5d79c989a253871b36f92123410479d8734df2dbf335ccab2f194d99503fddb76f9e86bb0ed8acee4
 
 pkgname = alda
