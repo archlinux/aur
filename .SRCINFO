@@ -1,6 +1,6 @@
 pkgbase = pepv-git
 	pkgdesc = Pacman local packages viewer
-	pkgver = r5.b10b323a2
+	pkgver = r25.6490b5687
 	pkgrel = 1
 	url = https://github.com/EXtremeExploit/pepv
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = pepv-git
 	makedepends = cmake
 	makedepends = imagemagick
 	depends = gtk3
+	depends = libalpm.so
 	provides = pepv
 	conflicts = pepv
 	source = pepv::git+https://github.com/EXtremeExploit/pepv.git

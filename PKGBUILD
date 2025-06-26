@@ -2,7 +2,7 @@
 
 _pkgname="pepv"
 pkgname="$_pkgname-git"
-pkgver=r5.b10b323a2
+pkgver=r25.6490b5687
 pkgrel=1
 pkgdesc="Pacman local packages viewer"
 arch=('x86_64')
@@ -13,7 +13,10 @@ makedepends=(
     cmake
     imagemagick
     )
-depends=(gtk3)
+depends=(
+    gtk3
+    libalpm.so
+)
 provides=('pepv')
 conflicts=('pepv')
 source=(
