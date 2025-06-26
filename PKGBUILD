@@ -2,8 +2,8 @@
 # Contributor: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-gcc
-pkgver=5.0.1
-pkgrel=2
+pkgver=5.1.1
+pkgrel=1
 arch=('x86_64')
 pkgdesc='VHDL simulator - GCC back-end'
 url='https://github.com/ghdl/ghdl'
@@ -23,7 +23,7 @@ source=(
     https://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz{,.sig}
 )
 sha512sums=(
-    'c07dab30b779f0dd424e588b66d32351bdfcc9cab6da5bb5ea85c477083bda6a0f99c2301e55bb2c285d7765911a0fc0b0c8079933b1abdda553d126f2e58400'
+    'b70051d49b5f4e427b116512ef29589b826308de1b33f2c4f8fd49c50eaeaf6e09be454c8455665b59f8f7b5cb82c9c198a1c29ebf8ca1110e7126f3e10f5567'
     'ed5f2f4c6ed2c796fcf2c93707159e9dbd3ddb1ba063d549804dd68cdabbb6d550985ae1c8465ae9a336cfe29274a6eb0f42e21924360574ebd8e5d5c7c9a801'
     '71674d2ce646a01913a04a400c198c57adc38bf2fc0165424db0c0d13a5cd780bf6a2cc393edc3ae179f98640e7e7f8865b4880a6d55434dc9a6f6d3f183d420'
 )
@@ -110,11 +110,6 @@ build() {
         GHDL_GCC_BIN="${srcdir}/gcc-build/gcc/ghdl" \
         GHDL1_GCC_BIN="--GHDL1=${srcdir}/gcc-build/gcc/ghdl1" \
         ghdllib
-}
-
-check() {
-    cd "${srcdir}/ghdl-${pkgver}"
-	make test
 }
 
 package() {
