@@ -1,6 +1,6 @@
 pkgbase = aevol
 	pkgdesc = an open-source digital genetics platform that captures the evolutionary process
-	pkgver = 9.1
+	pkgver = 9.2
 	pkgrel = 1
 	url = https://www.aevol.fr/
 	arch = x86_64
@@ -9,18 +9,18 @@ pkgbase = aevol
 	makedepends = cmake
 	makedepends = git
 	makedepends = python
+	makedepends = clang
 	depends = boost-libs
 	depends = glibc
 	depends = gcc-libs
 	depends = zlib
+	depends = openmp
 	depends = libx11
-	source = aevol-v9.1::git+https://gitlab.inria.fr/aevol/aevol.git#tag=v9.1
+	source = aevol-9.2::git+https://gitlab.inria.fr/aevol/aevol.git#tag=9.2
 	source = https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz
 	source = googletest::git+https://github.com/google/googletest.git#tag=v1.14.0
-	source = cmake_min_version.patch
-	sha256sums = 18d4c057f354d6eac891be0d89970daa8e4c4ccb891a6854a28c52193877e0b9
+	sha256sums = 7bab8df6c87e21763047f7248f26ebece295ab4e3db91ffa27f4279b39344c93
 	sha256sums = 8c4b26bf4b422252e13f332bc5e388ec0ab5c3443d24399acb675e68278d341f
 	sha256sums = e5f89b43d9cc0916723695c8503430fdd5cc25e8bd50881dbd242cef468a0533
-	sha256sums = ec3d1f64d5340d179787d71b551572c745b4923c2766283c7527073143bc4fa1
 
 pkgname = aevol
