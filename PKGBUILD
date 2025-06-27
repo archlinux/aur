@@ -4,7 +4,7 @@
 pkgname=python-pycpio
 _name=${pkgname#python-}
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library for CPIO manipulation'
 arch=('any')
 url="https://github.com/desultory/$_name"

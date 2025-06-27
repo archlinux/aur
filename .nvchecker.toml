@@ -1,4 +1,4 @@
-[pycpio]
+[python-pycpio]
 source = "github"
 github = "desultory/pycpio"
 use_latest_release = true
