@@ -4,7 +4,7 @@
 # Contributor: Maximilian Knespel <mxmlnknp at gmail dot com>
 
 pkgname=ratarmount
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=2
 pkgdesc="Mount tar files via fusepy. Supports Recursive Mounting, Compressed Files, Read-Only Bind Mounting, Union Mounting and Write Overlays. A fast random access alternative to archivemount."
 arch=(any)
@@ -14,6 +14,7 @@ license=('MIT')
 depends=(
     'python>=3.9'
     # AUR packages
+    'python-mfusepy'
     'python-rapidgzip'
     'python-indexed-gzip'
     'python-xz'
@@ -25,6 +26,8 @@ depends=(
 )
 
 optdepends=(
+    'python-py7zr: Support for password-protected 7z archives.'
+    'python-ext4: Support for EXT4 images.'
     'python-pyfatfs: Support for FAT12, 16, 32 images.'
     'python-fsspec: Support for remote files.'
     'python-aiohttp: Support for http:// via fsspec.'
@@ -43,7 +46,7 @@ makedepends=(
 
 _pkg_ext='.tar.gz'
 source=("${pkgname}-${pkgver}${_pkg_ext}::${url}/archive/refs/tags/v${pkgver}${_pkg_ext}")
-b2sums=('5cdd6179a4a3c76af25339a2de10674fe236f543fe9a7d5c70310934b9163de9d8433e565b8a28017ddee202f8226c58e286ffbb2c4c66b3377c7a5ee2fce0d7')
+b2sums=('df8312de607998005b0e3b99bd2f7bd2f5b2952eca6aed94d1e25ea483a2b8644670cf25cb49456459c3ef2842fa5fa931b953f2c5b39c191e70fa78985dbc3a')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}/core"
