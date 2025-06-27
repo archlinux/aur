@@ -1,11 +1,12 @@
 pkgbase = vision-browser
 	pkgdesc = Vision browser is antidetect browser
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://browser.vision/
 	arch = x86_64
 	license = Proprietary
 	makedepends = binutils
+	depends = xdotool
 	depends = webkit2gtk-4.1
 	optdepends = gnome-terminal
 	noextract = vision-browser-3.3.2.deb

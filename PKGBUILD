@@ -2,7 +2,7 @@ _pkgname=vision-browser
 
 pkgname="${_pkgname}"
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Vision browser is antidetect browser"
 arch=('x86_64')
 url="https://browser.vision/"
