@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <mumei6102@gmail.com>
 
 pkgname=qmplay2-git
-pkgver=25.06.11.r7.g8f040733
+pkgver=25.06.27.r0.gf9b03bd7
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
