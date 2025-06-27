@@ -1,0 +1,45 @@
+From 96bf0494b19059fafc0cd99a25943af1ff7d1414 Mon Sep 17 00:00:00 2001
+From: Daniel Gustaw <gustaw.daniel@gmail.com>
+Date: Tue, 10 Sep 2024 11:50:32 +0400
+Subject: [PATCH 2/3] fixed: arrays to stack must be passed as a "sequence"
+ type such as list or tuple. (#31)
+
+https://stackoverflow.com/a/75050894
+docker compose syntax updated to 2.0 (without "-")
+
+---------
+
+Co-authored-by: Daniel Gustaw <daniel@Daniels-MacBook-Air.local>
+---
+ jumpcutter/clip.py | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/jumpcutter/clip.py b/jumpcutter/clip.py
+index bbcc7f3..bd80453 100644
+--- a/jumpcutter/clip.py
++++ b/jumpcutter/clip.py
+@@ -3,7 +3,7 @@
+ import numpy as np
+ 
+ from moviepy.audio.io.AudioFileClip import AudioFileClip
+-from moviepy.editor import VideoFileClip, concatenate_videoclips
++from moviepy.editor import concatenate_videoclips
+ from moviepy.video.fx.all import speedx
+ from moviepy.video.io.VideoFileClip import VideoFileClip
+ from tqdm import tqdm
+@@ -84,8 +84,10 @@ class Audio:
+     def __init__(self, audio: AudioFileClip) -> None:
+         self.audio = audio
+         self.fps = audio.fps
+-
+-        self.signal = self.audio.to_soundarray()
++        # Extract the audio as a list of samples
++        audio_samples = list(audio.iter_frames())
++        # Convert the list of samples to a NumPy array
++        self.signal = np.array(audio_samples)
+         if len(self.signal.shape) == 1:
+             self.signal = self.signal.reshape(-1, 1)
+ 
+-- 
+2.50.0
+

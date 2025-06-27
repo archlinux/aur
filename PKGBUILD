@@ -3,21 +3,34 @@
 _pkgname=jumpcutter
 pkgname="python-${_pkgname}"
 
-pkgdesc="Jumpcut silent parts of your videos automagically"
+pkgdesc="Automatically jump-cut silent parts of your videos using Python"
 
 pkgver=0.1.6
-pkgrel=3
+pkgrel=4
 
 arch=(any)
 
 url="https://github.com/emkademy/${_pkgname}"
 license=(MIT)
 
-depends=("python-moviepy<2.0.0" python-tqdm)
+depends=(python-moviepy python-numpy python-tqdm)
 makedepends=(python-build python-installer python-wheel python-poetry-core)
 
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=(375c45a6fa9e6a8aec0594699ccf8722)
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz" 
+		0001-add-type-annotations.patch
+		0002-fix-arrays-to-stack-must-be-passed-as-a-sequence.patch
+		0003-migrate-from-moviepy-v1.x-to-v2.x.patch)
+md5sums=(375c45a6fa9e6a8aec0594699ccf8722 4f79e95ef8cd94cfd9c2790da9051aeb 26946f68a6a7b5ccf61bef1a8a9935d5 2f87703685722c86656256e5bde8c2fc)
+
+prepare() {
+	# move to the source directory
+	cd "${_pkgname}-${pkgver}"
+
+	# apply neccessary patches
+	patch -p1 -i ../0001-add-type-annotations.patch
+	patch -p1 -i ../0002-fix-arrays-to-stack-must-be-passed-as-a-sequence.patch
+	patch -p1 -i ../0003-migrate-from-moviepy-v1.x-to-v2.x.patch
+}
 
 build() {
 	# move to the source directory
