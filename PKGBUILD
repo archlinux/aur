@@ -2,7 +2,7 @@
 _pkgname=notesnook
 pkgname="${_pkgname}-electron-bin"
 _appname=Notesnook
-pkgver=3.2.2
+pkgver=3.2.3
 _electronversion=34
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Prebuilt version.Use system-wide electron)"
@@ -27,8 +27,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
-sha256sums_aarch64=('79d586d378def4ba5844cea23ab51c910c678cc8aea622cc8ce95e40d30824e0')
-sha256sums_x86_64=('0ae3a65bd9034e533dfee4c52acb8d49f91827a38d2368d9e32b62296fc722c1')
+sha256sums_aarch64=('ba9e8c9cb2c3c9f5be6741a9161c25e32a83fdeb9c65df9a641b32fe9aa7f3e3')
+sha256sums_x86_64=('ed704bf882ce858d3439b39875bf0d0b65736d8194375bb0e4b89d83e677a686')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/squashfs-root/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
