@@ -11,7 +11,7 @@ depends=('abseil-cpp' 'ada' 'ffmpeg' 'glib2' 'hicolor-icon-theme' 'hunspell' 'kc
          'libdispatch' 'libxcomposite' 'libxdamage' 'libxrandr' 'libxtst' 'lz4' 'minizip'
          'openal' 'openh264' 'openssl' 'pipewire' 'protobuf' 'qt6-imageformats' 'qt6-svg'
          'qt6-wayland' 'rnnoise' 'xxhash'
-         # Ayugram reverted that change https://github.com/telegramdesktop/tdesktop/commit/960761ef37fb7db57c40df6211164ae002f1063a
+         # Ayugram reverted that change https://github.com/AyuGram/AyuGramDesktop/commit/10272ee0cf266f5d6c25259e4ac2e8341c952688
          'jemalloc')
 makedepends=('boost' 'cmake' 'glib2-devel' 'gobject-introspection' 'gperf' 'libtg_owt'
              'microsoft-gsl' 'ninja' 'python' 'range-v3' 'tl-expected')
