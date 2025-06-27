@@ -2,7 +2,7 @@
 
 pkgname=microfetch
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal and fast system information fetching tool written in Python"
 arch=('any')
 url="https://github.com/VeryEpicKebap/microfetch"
