@@ -4,9 +4,9 @@
 
 pkgbase=linux-fsync-nobara-bin
 pkgname=${pkgbase}
-pkgver=6.15.2
+pkgver=6.15.4
 pkgrel=1
-build_id=9150195
+build_id=9222128
 fedora=42
 extras=200.nobara.fc${fedora}
 printf -v l_build_id %08d%s ${build_id}
@@ -24,19 +24,15 @@ provides=(VIRTUALBOX-GUEST-MODULES
           NTFS3-MODULE)
 source=("https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-core-${pkgver}-${extras}.x86_64.rpm"
         "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-${pkgver}-${extras}.x86_64.rpm"
-        #"https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-core-${pkgver}-${extras}.x86_64.rpm"
-        #"https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-extra-${pkgver}-${extras}.x86_64.rpm"
-        #"https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-internal-${pkgver}-${extras}.x86_64.rpm"
         "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-devel-${pkgver}-${extras}.x86_64.rpm")
-#        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-uki-virt-${pkgver}-${extras}.x86_64.rpm")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('33893aec83e128c1e2422a320f14eb86e7efa9bd4dfa8b4aa6f10e93230214a7'
-            'a1c696fc69432a1ef2cffa59af5c0ebe8e5232af7d1cc80b1f3738f0f5c58eb6'
-            '5a22e9c317d1a1ed8a432470cec54ce861ac36f9be1a4ddfa1c4f4f2480a7b70')
+sha256sums=('3d7f77d59418a1a5fd2496d0add0bc8dea59f67a3a020ae030eb94cd47cc91a6'
+            '72dc78405b1a75a7ee7f24be87244cab3354c3b66dfdf61ce5faf2ff4ab2bb44'
+            '8054ff6286fe91366a67abf2227552d8a7a36a14375d20c701235868e10dd85b')
 
 package() {
 
