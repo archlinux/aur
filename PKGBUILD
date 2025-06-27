@@ -1,10 +1,10 @@
 # Maintainer: Guoyi <kuoi@bioarchlinux.org>
 
 _pkgname=mediation
-_pkgver=4.5.0
+_pkgver=4.5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=2
+pkgrel=1
 pkgdesc='Causal Mediation Analysis'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,8 +24,8 @@ optdepends=(
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d41765c66464d7f13babf7b2761f48b9')
-b2sums=('6dd455dcdb77b8c22e01caf70c78c94a4de30348b78cd7d3db6710c065537e6d8caeeebae7608322c13ff799cb41ca6dff4474a17f78f3b36f0d124f3dc1b847')
+md5sums=('769ce1efccdde1bfaf31ca4a07a606cc')
+b2sums=('20790f853716d8c7bbea378c4782260e573d50b4b4cca1318f969606bfb60bfd9f807a1a374cf1be40a6264d63e6f1f20ff3328ff5e5506cf08e452ffb283c2b')
 
 build() {
   mkdir build
