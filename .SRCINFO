@@ -1,7 +1,7 @@
 pkgbase = marco-git
 	pkgdesc = Marco Window Manager, the Window Manager of MATE
 	pkgver = git_mainline
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL-2.0
 	makedepends = glib2>=2.58.0
@@ -14,7 +14,7 @@ pkgbase = marco-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = git
-	depends = xorg
+	depends = xorg-server
 	optdepends = mate-desktop
 	optdepends = lightdm
 	source = git+https://github.com/mate-desktop/marco.git
