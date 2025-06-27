@@ -1,0 +1,4 @@
+opscripts/
+src/
+pkg/
+*.pkg.tar.zst
