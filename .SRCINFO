@@ -1,21 +1,11 @@
 pkgbase = gemini
-	pkgdesc = Audio player with wallpaper changer.
-	pkgver = 1.15
+	pkgdesc = Gemini CLI: A command-line AI workflow tool by Google
+	pkgver = 0.1.5
 	pkgrel = 1
-	url = https://github.com/blooser/gemini
-	arch = x86_64
-	license = MIT
-	makedepends = cmake
-	depends = mpv
-	depends = youtube-dl
-	depends = qt5-base
-	depends = qt5-declarative
-	depends = qt5-quickcontrols
-	depends = qt5-quickcontrols2
-	depends = qt5-graphicaleffects
-	depends = python
-	source = https://github.com/blooser/gemini/archive/v1.15.tar.gz
-	md5sums = 273ba7465dfacec19e28961f84bfdbea
+	url = https://github.com/google-gemini/gemini-cli
+	arch = any
+	license = Apache
+	depends = nodejs
+	depends = npm
 
 pkgname = gemini
-
