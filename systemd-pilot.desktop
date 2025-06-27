@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Systemd Pilot
-GenericName=Systemd Service Manager
-Comment=GTK desktop app to manage systemd services
-Exec=systemd-pilot
-Icon=io.github.mfat.systemdpilot
-Terminal=false
-Categories=System;Utility;
