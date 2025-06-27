@@ -1,6 +1,6 @@
 # Maintainer: Phillip MacNaughton <wisheralpha@gmail.com>
 pkgname='proton-shim'
-pkgver='1.1.0'
+pkgver='2.2.0'
 pkgrel=1
 epoch=
 pkgdesc="Easily run programs and scripts inside Steam game prefixes"
@@ -23,7 +23,7 @@ options=()
 source=(
     "$pkgname-$pkgver.tar.gz::https://gitlab.com/api/v4/projects/71058782/packages/generic/release/$pkgver/$pkgname-$pkgver.tar.gz"
 )
-sha256sums=('cd1801897e8ab240f4fb22fff725701c7a8e43010935280df02788d6fdb3e5ba')
+sha256sums=('0c2f73f0fee17b5ec0b1d30e479d8adb57c5228171d7c28316330717d746202e')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
