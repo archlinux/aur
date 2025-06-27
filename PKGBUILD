@@ -3,7 +3,7 @@
 pkgname=museeks
 _pkgname=Museeks
 _flatpakname="io.${pkgname}.app"
-pkgver=0.22.1
+pkgver=0.22.2
 _nodeversion=24
 pkgrel=1
 pkgdesc="🎵 A simple, clean and cross-platform music player."
@@ -25,7 +25,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=${pkgver}"
 )
-sha256sums=('3cc4813911edfc99d02e0d5724005e51e6b48acba529f012bbbe6bb39a096998')
+sha256sums=('c44c810622db42bc4b56f0263c3a9e479c427387e411b87d03918bf21a9f1bfe')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
