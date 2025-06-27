@@ -1,7 +1,7 @@
 pkgbase = chromium-ffmpeg-codecs-git
-	pkgdesc = Add codecs to some Chromium-s (non vendored libffmpeg.so)
-	pkgver = 7.1.m136_119
-	pkgrel = 2
+	pkgdesc = Add codecs to Chromium M138+? (non vendored libffmpeg.so)
+	pkgver = 7.2.r119684.g670089304a
+	pkgrel = 1
 	url = https://git.ffmpeg.org/ffmpeg
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -14,34 +14,12 @@ pkgbase = chromium-ffmpeg-codecs-git
 	depends = glibc
 	depends = zlib
 	depends = opus
-	optdepends = electron28: NoExtract=usr/lib/electron*/libffmpeg.so
-	optdepends = electron29: NoExtract=usr/lib/electron*/libffmpeg.so
-	optdepends = electron30: NoExtract=usr/lib/electron*/libffmpeg.so
-	optdepends = electron31: NoExtract=usr/lib/electron*/libffmpeg.so
-	optdepends = electron32: NoExtract=usr/lib/electron*/libffmpeg.so
-	optdepends = electron33: NoExtract=usr/lib/electron*/libffmpeg.so
-	optdepends = electron34: NoExtract=usr/lib/electron*/libffmpeg.so
-	optdepends = electron35: NoExtract=usr/lib/electron*/libffmpeg.so
-	optdepends = electron36: NoExtract=usr/lib/electron*/libffmpeg.so
-	provides = vivaldi-ffmpeg-codecs
-	provides = opera-ffmpeg-codecs
-	provides = opera-ffmpeg-codecs-bin
-	provides = opera-developer-ffmpeg-codecs
-	provides = opera-developer-ffmpeg-codecs-bin
-	provides = opera-beta-ffmpeg-codecs
-	provides = opera-beta-ffmpeg-codecs-bin
-	conflicts = vivaldi-ffmpeg-codecs
-	conflicts = opera-ffmpeg-codecs
-	conflicts = opera-ffmpeg-codecs-bin
-	conflicts = opera-developer-ffmpeg-codecs
-	conflicts = opera-developer-ffmpeg-codecs-bin
-	conflicts = opera-beta-ffmpeg-codecs
-	conflicts = opera-beta-ffmpeg-codecs-bin
+	optdepends = chromium-ffmpeg-codecs: for old Chromiums
+	provides = vivaldi-snapshot-ffmpeg-codecs
+	conflicts = vivaldi-snapshot-ffmpeg-codecs
+	source = git+https://git.ffmpeg.org/ffmpeg.git
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
-	source = off-opera-bundled-ffmpeg.hook
-	source = on-opera-bundled-ffmpeg.hook
+	sha256sums = SKIP
 	sha256sums = f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40
-	sha256sums = 115d5f0ab1ca99d8a8acd800999f40b3a2bfa2aae8d6004569ece6f190b4baf6
-	sha256sums = e0e3059693a850f74e8228e009ab75d4a432d61398458544fc7247a043ae58b6
 
 pkgname = chromium-ffmpeg-codecs-git
