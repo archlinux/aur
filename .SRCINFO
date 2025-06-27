@@ -1,0 +1,31 @@
+pkgbase = voice2json-git
+	pkgdesc = Command-line tools for speech and intent recognition on Linux
+	pkgver = 2.1.r12.g03996c9
+	pkgrel = 1
+	url = https://github.com/synesthesiam/voice2json
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python>=3.7
+	depends = python-setuptools
+	depends = python-wheel
+	depends = python-pip
+	depends = python-aiohttp
+	depends = python-yaml
+	depends = python-tqdm
+	depends = python-pydash
+	depends = python-networkx
+	depends = python-aiofiles
+	depends = python-jsonlines
+	provides = voice2json
+	conflicts = voice2json
+	source = voice2json::git+https://github.com/synesthesiam/voice2json.git
+	source = fix-requirements.patch
+	source = add-setup-py.patch
+	md5sums = SKIP
+	md5sums = 7890a0912c84ccc1959395d87d9cce81
+	md5sums = 9a031ae4e98b0414fc4ff914e36e0aaa
+
+pkgname = voice2json-git

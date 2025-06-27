@@ -1,0 +1,7 @@
+# Build artifacts
+src/
+pkg/
+voice2json/
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.pkg.tar.gz
