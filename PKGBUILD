@@ -4,8 +4,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=write_stylus
-pkgver=jan.2025
-pkgrel=5
+pkgver=jul.2025
+pkgrel=1
 pkgdesc="Write(orignal name) - A word processor for handwriting"
 arch=(i686 x86_64)
 url="http://www.styluslabs.com/"
@@ -19,7 +19,7 @@ source=(
   git+https://github.com/styluslabs/ulib.git
   git+https://github.com/styluslabs/usvg.git
   git+https://github.com/styluslabs/ugui.git)
-sha256sums=('777e69bd58215ae52504a9d6b4ea892f14a7bb2eed63e3e21ccf9c5d68e831e9'
+sha256sums=('f0749381323ba2794a22a227c10689a58d213a8b7da76232a03928cdfc1b8be4'
             '637c47c1843860a16f1ca87e2df5d72b4396ff23cefacf6244de95cdac23de6e'
             'SKIP'
             'SKIP'

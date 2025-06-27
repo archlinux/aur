@@ -1,7 +1,6 @@
 [write_stylus]
-source="github"
-github="styluslabs/Write"
-use_max_tag=true
-from_pattern="-"
-to_pattern="."
-
+source = "github"
+github = "styluslabs/Write"
+use_max_tag = true
+from_pattern = "-"
+to_pattern = "."
