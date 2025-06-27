@@ -5,14 +5,14 @@
 pkgname=niripwmenu
 _origpkgname=niripwmenu
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern powermenu for Niri Scrollable-Tiling Wayland compositor."
 arch=("x86_64")
 url='https://pypi.org/project/niripwmenu/'
 license=("MIT")
 depends=(
   "confz"
-  "python-pygobject"
+  "python-gobject"
   "python-pygobject-stubs"
   "python-rich"
   "gtk4-layer-shell"
