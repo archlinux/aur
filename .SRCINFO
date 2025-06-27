@@ -1,14 +1,17 @@
 pkgbase = nordvpn-gui
 	pkgdesc = GUI for NordVPN
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nordvpn.com
+	install = daemon_restart.install
 	arch = x86_64
 	license = Proprietary
 	depends = nordvpn
 	depends = gtk3
 	options = !debug
 	source = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn-gui/nordvpn-gui_2.0.0_amd64.deb
+	source = daemon_restart.install
 	sha256sums = fc602c4eca3c3eca81b546f5fdf14efec6e8614b80d4c94bc85432f6a7dfbe06
+	sha256sums = b3bc3b4519769cc9c78258b16eb44765ddd8168951997d8bafdc7b8fcb73d868
 
 pkgname = nordvpn-gui

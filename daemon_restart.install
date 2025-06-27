@@ -1,0 +1,7 @@
+postinstall(){
+systemctl restart nordvpnd.service
+}
+
+postupdate() {
+systemctl restart nordvpnd.service
+}
