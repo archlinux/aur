@@ -3,7 +3,7 @@ _pkgname=shoreline
 pkgname=${_pkgname}-git
 
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A very fast (200+ Gbit/s) pixelflut server written in C with full IPv6 support"
 
 arch=('any')
@@ -11,7 +11,6 @@ url="https://github.com/TobleMiner/${_pkgname}"
 license=('MIT')
 depends=(
     'sdl2-compat'
-    'libpthread-stubs'
     'libvncserver'
     'numactl'
     'freetype2'
