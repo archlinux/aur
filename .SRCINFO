@@ -1,6 +1,6 @@
 pkgbase = qlementine-icons
 	pkgdesc = Modern icon set for desktop Qt applications
-	pkgver = 1.8.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/oclero/qlementine-icons
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = qlementine-icons
 	makedepends = qt6-base
 	makedepends = qt6-svg
 	options = !lto
-	source = qlementine-icons-1.8.1.tar.gz::https://github.com/oclero/qlementine-icons/archive/refs/tags/v1.8.1.tar.gz
-	sha256sums = 81f4e98364cae0a07205a89d4bb218d1e6774c887a2692ee0104a82c8e2988cd
+	source = qlementine-icons-1.10.0.tar.gz::https://github.com/oclero/qlementine-icons/archive/refs/tags/v1.10.0.tar.gz
+	sha256sums = 8816601c448fd70bad2316e39f19c7648fb0a1f4aa8478d0ccb1c74ec1bc8e22
 
 pkgname = qlementine-icons
