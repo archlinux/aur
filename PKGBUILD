@@ -1,74 +1,59 @@
-# vim:set ft=sh:
+# vim:set ft=sh ts=2 sw=2 et:
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
+# Contributor: Oech3
 
-pkgname=vivaldi-snapshot-ffmpeg-codecs
-pkgver=138.0.7204.15
+_browser=vivaldi-snapshot
+pkgname=${_browser}-ffmpeg-codecs
+pkgver=138.0.7204.55
 _vivaldi_major_version=7.5
-pkgrel=1
-pkgdesc="additional support for proprietary codecs for vivaldi-snapshot"
+_commit=dcdd0fa51b65a0b1688ff6b8f0cc81908f09ded2
+#_commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${pkgver}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
+pkgrel=2
+pkgdesc="additional support for proprietary codecs for ${_browser}"
 arch=('x86_64')
-url="https://ffmpeg.org/"
-license=('LGPL2.1')
-depends=('glibc')
-makedepends=(
-  'gn' 'ninja' 'python' 'nss' 'libva' 'libxkbcommon'
-)
-source=(
-  "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
-)
-sha512sums=('b3633e1921ab94da962b93a5140ad0a1d686b6b9a71d06fab699b5430910d875aaf14782ee431878710b30fa9b8737d2d50d5ee3e4e82be673899469ec540f63')
+url='https://chromium.googlesource.com/chromium/third_party/ffmpeg'
+license=('GPL-3.0-or-later')
+depends=(glibc zlib opus)
+makedepends=(gcc pkgconf diffutils nasm git)
+source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}")
+sha256sums=('8708023dc5aec3ebd5e05677b3f44d7676e287bfc755937bcd6356876e8415e6')
 
-#prepare() {
-  #cd "$srcdir/chromium-$pkgver"
-#}
-
-_build_flags=(
-  'is_component_build=false'
-  'is_component_ffmpeg=true'
-  'use_sysroot=false'
-  'use_gtk=false'
-  'use_qt5=false'
-  'use_qt6=false'
-  'use_glib=false'
-  'use_cups=false'
-  'use_pangocairo=false'
-)
-
-_ffmpeg_build_flags=(
-  "ffmpeg_branding=\"ChromeOS\""
-  "proprietary_codecs=true"
-  "enable_platform_hevc=true"
-  "enable_platform_ac3_eac3_audio=true"
-  "enable_platform_mpeg_h_audio=true"
-  "enable_platform_dolby_vision=true"
-  "enable_mse_mpeg2ts_stream_parser=true"
-)
 build() {
-  cd "$srcdir/chromium-$pkgver"
+  cd chromium-ffmpeg
+  # See https://github.com/chromium/chromium/blob/${_pkgver} and build subset of
+  #  allowed_demuxers at media/filters/ffmpeg_glue.cc webm is subset of matroska
+  #  kAllowedAudioCodecs at media/ffmpeg/ffmpeg_common.cc
+  #  GetAllowedVideoDecoders at media/ffmpeg/ffmpeg_common.cc
+  #  Allowed parser?
+  ./configure \
+    --enable-gpl \
+    --disable-{all,autodetect,programs,doc,iconv,network} \
+    --enable-static --disable-shared \
+    --enable-av{format,codec,util} \
+    --enable-protocol=file \
+    --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
+    --enable-decoder=vorbis,libopus,flac,pcm_s16le,pcm_s24le,mp3,aac,h264 \
+    --enable-parser=vorbis,flac,mp3,aac,opus,mov \
+    --enable-libopus --extra-cflags=-I/usr/include/opus \
+    --extra-cflags="$LTOFLAGS" \
+    --prefix="${srcdir}"/release \
+    --enable-{pic,asm} # https://www.ffmpeg.org/platform.html#toc-Advanced-linking-configuration
 
-  # chromium clang and rust
-  python tools/clang/scripts/update.py
-  python tools/rust/update_rust.py
+  make
+  make install
 
-  export PATH="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin:$PATH"
-
-  export CC="clang"
-  export CXX="clang++"
-
-  gn gen -v \
-    --fail-on-unused-args \
-    --args="${_build_flags[*]} ${_ffmpeg_build_flags[*]}" \
-    --script-executable=/usr/bin/python \
-    out/ffmpegso
-
-  ninja -C out/ffmpegso libffmpeg.so
+  cd ../release
+  # pthread may static
+  gcc $LTOFLAGS -shared $LDFLAGS -Wl,--no-as-needed \
+    -Wl,--whole-archive \
+      lib/lib{avcodec,avformat,avutil}.a \
+    -Wl,--no-whole-archive \
+    -lpthread $(pkgconf --libs zlib opus) \
+    -Wl,-Bsymbolic \
+    -o libffmpeg.so
 }
 
-package() {
-  cd "$srcdir/chromium-$pkgver"
-
-  install -Dm644 out/ffmpegso/libffmpeg.so \
-    "$pkgdir/opt/vivaldi-snapshot/libffmpeg.so.$_vivaldi_major_version"
+package(){
+  install -Dm644 release/libffmpeg.so \
+    "$pkgdir/opt/${_browser}/libffmpeg.so.$_vivaldi_major_version"
 }
-
-# vim:set ts=2 sw=2 et:
