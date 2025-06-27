@@ -9,7 +9,7 @@ pkgname=(
     ${_pkgname}-session
     sessionexec
 )
-pkgver=0.6.6
+pkgver=0.6.11
 pkgrel=1
 pkgdesc='A greeter with addition functionalities'
 url="https://github.com/neroreflex/$_pkgname"
@@ -23,10 +23,10 @@ source=(
     "${_pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
 )
 b2sums=(
-    '486e08fb2806feeb0925a6f9d58de6656a3aa52c957296355199f48b48fdefe4f57bd295e8a663856e0b0b7165a764dcad4099c959a83af24d5b32cd26bb311e' # ${_pkgname}-${pkgver}.tar.gz
+    '78072c4f879ec2aaa68b45b0ca6850fa0097fe733f64a6724a651c1d0378dddba79065695c2b79327c4cd40e88620af6b7989eebf7e15c44426fe55273c1016e' # ${_pkgname}-${pkgver}.tar.gz
 )
 sha256sums=(
-    '2de7f6243c701365ce7b98d6acc6a72e5e315189546c579342d9c2a5a3d308b0' # ${_pkgname}-${pkgver}.tar.gz
+    'd7aa434f2af8d8e79e08ccadc91b272240bbb75a33cf4902d52fdf134dcffc55' # ${_pkgname}-${pkgver}.tar.gz
 )
 
 prepare() {
