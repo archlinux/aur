@@ -1,7 +1,7 @@
 pkgbase = python-jdatetime
 	pkgdesc = Jalali calendar binding for Python based on Python`s datetime module
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/slashmili/python-jalali
 	arch = any
 	license = Python

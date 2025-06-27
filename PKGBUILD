@@ -5,7 +5,7 @@
 pkgname=python-jdatetime
 _name=jdatetime
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Jalali calendar binding for Python based on Python`s datetime module'
 arch=('any')
 url=https://github.com/slashmili/python-jalali
