@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=wfview
 pkgver=2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Interface for Icom transceivers"
 arch=('i686' 'x86_64')
 url="https://wfview.org/"
@@ -16,6 +16,7 @@ md5sums=('cbd4c4fec0a6bf922ccdc71e4a2ebe88')
 
 prepare() {
   sed -i '/^linux:QMAKE_POST_LINK += echo; echo; echo "Run install.sh as root from the build directory to install."; echo; echo;$/s/^/#/' ${srcdir}/wfview-v$pkgver/wfview.pro
+  echo "linux:LIBS += -lqcustomplot" >> ${srcdir}/wfview-v$pkgver/wfview.pro
 }
 
 build() {
