@@ -1,0 +1,148 @@
+#!/bin/bash
+
+# Обработка аргументов командной строки
+CLEARMODE=false
+EXCLUDE=()
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -c|--clear)
+            CLEARMODE=true
+            shift
+            ;;
+        -e|--exclude)
+            shift
+            # Разделяем переданную строку исключений по запятым или пробелам
+            IFS=', ' read -ra EXCLUDE <<< "$1"
+            shift
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
+
+# Попытка загрузить конфигурационный файл
+if [ -f "lstart.conf" ]; then
+    source lstart.conf
+    # Если clearmode указан в конфиге, он переопределяет командную строку
+    if [ "$conf_clearmode" = "true" ]; then
+        CLEARMODE=true
+    fi
+fi
+
+# Если аргументов недостаточно, используем значения из конфига
+if [ $# -lt 2 ]; then
+    if [ -z "$conf_listen" ] || [ -z "$conf_command" ]; then
+        echo "Usage: $0 [options] <directory> <command> [args...]"
+        echo "Options:"
+        echo "  -c, --clear          Clear screen before each run"
+        echo "  -e, --exclude ITEMS  Exclude files/directories (comma or space separated)"
+        echo ""
+        echo "Or create lstart.conf with variables:"
+        echo "  conf_listen=\"directory\""
+        echo "  conf_command=\"command to run\""
+        echo "  conf_exclude=(array of excluded items)"
+        echo "  conf_clearmode=true/false"
+		echo
+		echo
+		echo "Example:"
+		echo "$0 -c -e \"main,bin\" . \"gcc -o main main.c; ./main\""
+        exit 1
+    else
+        listen="$conf_listen"
+        command="$conf_command"
+        # Объединяем исключения из конфига и командной строки
+        if [ ${#conf_exclude[@]} -gt 0 ]; then
+            EXCLUDE=("${conf_exclude[@]}" "${EXCLUDE[@]}")
+        fi
+    fi
+else
+    listen="$1"
+    shift
+    command="$@"
+fi
+
+PID=""
+CURRENT_HASH=""
+
+# Функция для вычисления хеша директории с исключениями
+calculate_hash () {
+    local exclude_pattern=""
+    if [ ${#EXCLUDE[@]} -gt 0 ]; then
+        for item in "${EXCLUDE[@]}"; do
+            exclude_pattern="$exclude_pattern -not -path \"*/$item\" -not -name \"$item\""
+        done
+        eval "find \"$listen\" -type f $exclude_pattern -exec md5sum {} + 2>/dev/null" | awk '{print $1}' | sort | md5sum | awk '{print $1}'
+    else
+        find "$listen" -type f -exec md5sum {} + 2>/dev/null | awk '{print $1}' | sort | md5sum | awk '{print $1}'
+    fi
+}
+
+# Функция запуска команды
+run_command () {
+    if $CLEARMODE; then
+        clear
+    fi
+    stop_command
+
+    if ! $CLEARMODE; then
+        echo "Running: $command"
+    fi
+
+    eval "$command" &
+    PID=$!
+}
+
+# Функция остановки команды
+stop_command() {
+    if [ -n "$PID" ]; then
+        if ! $CLEARMODE; then
+            echo "Stopping process $PID"
+        fi
+        # Получаем всю цепочку процессов
+        PIDS=$(pstree -p $PID 2>/dev/null | grep -o '([0-9]\+)' | grep -o '[0-9]\+')
+        
+        if [ -n "$PIDS" ]; then
+            # Сначала мягкий SIGTERM
+            kill -TERM $PIDS 2>/dev/null
+            
+            # Проверяем какие процессы остались
+            REMAINING=""
+            for P in $PIDS; do
+                if ps -p $P > /dev/null; then
+                    REMAINING="$REMAINING $P"
+                fi
+            done
+            
+            # Если остались процессы - жесткий SIGKILL
+            if [ -n "$REMAINING" ]; then
+                kill -KILL $REMAINING 2>/dev/null
+                wait $REMAINING 2>/dev/null
+            fi
+        fi
+        
+        PID=""
+    fi
+}
+
+# Обработка сигналов для корректного завершения
+trap 'stop_command; exit' SIGINT SIGTERM
+
+# Первый запуск
+CURRENT_HASH=$(calculate_hash)
+run_command
+
+# Основной цикл
+while true; do
+    sleep 1
+    NEW_HASH=$(calculate_hash)
+    
+    if [ "$NEW_HASH" != "$CURRENT_HASH" ]; then
+        if ! $CLEARMODE; then
+            echo "Detected changes in $listen"
+        fi
+        CURRENT_HASH="$NEW_HASH"
+        run_command
+    fi
+done
