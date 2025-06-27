@@ -2,7 +2,7 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=eleventy
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="A simpler static site generator. An alternative to Jekyll. Transforms a directory of templates (of varying types) into HTML"
 arch=('any')
