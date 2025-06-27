@@ -1,6 +1,6 @@
 pkgbase = dataflare-appimage
 	pkgdesc = Easily manage your Table, view Data, write SQL and run Query.
-	pkgver = 1.2.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://dataflare.app/
 	arch = x86_64
@@ -21,6 +21,6 @@ pkgbase = dataflare-appimage
 	source_x86_64 = Dataflare-x86_64.AppImage::https://assets.dataflare.app/release/linux/x86_64/Dataflare.AppImage
 	sha256sums_x86_64 = ef883e2c01ef2dcf410b44e05e40fdb06530784a0210993ae3d0e2995db50d69
 	source_aarch64 = Dataflare-aarch64.AppImage::https://assets.dataflare.app/release/linux/aarch64/Dataflare.AppImage
-	sha256sums_aarch64 = cc5ac4ee95f51fdb0863d9e97c16c2abf6e442dab3568cf0664e7f734e9640f2
+	sha256sums_aarch64 = 65d60fb1edca57a398172c72f20eee505881b77957e5f5acbdce8b597455b424
 
 pkgname = dataflare-appimage
