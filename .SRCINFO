@@ -1,0 +1,16 @@
+pkgbase = vision-browser
+	pkgdesc = Vision browser is antidetect browser
+	pkgver = 3.3.2
+	pkgrel = 1
+	url = https://browser.vision/
+	arch = x86_64
+	license = Proprietary
+	makedepends = binutils
+	depends = webkit2gtk-4.1
+	optdepends = gnome-terminal
+	noextract = vision-browser-3.3.2.deb
+	options = !strip
+	source_x86_64 = vision-browser-3.3.2.deb::https://vision-releases.s3.eu-north-1.amazonaws.com/v3.3.2/linux-deb/vision_3.3.2_amd64.deb
+	sha256sums_x86_64 = 918bca757447b6846ccca4bb4f8647294019193e2cbe89d15ad72e7b00ab041e
+
+pkgname = vision-browser
