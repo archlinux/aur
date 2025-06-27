@@ -1,7 +1,7 @@
 pkgbase = python-exchange_calendars
 	pkgdesc = Calendars for various securities exchanges
 	pkgver = 4.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gerrymanoim/exchange_calendars
 	arch = any
 	license = APACHE

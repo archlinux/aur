@@ -4,7 +4,7 @@
 pkgname=python-exchange_calendars
 _pkgname=exchange_calendars
 pkgver=4.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Calendars for various securities exchanges"
 arch=('any')
 depends=('python-numpy' 'python-pandas' 'python-dateutil' 'python-pytz' 'python-pyluach' 'python-toolz' 'python-korean_lunar_calendar' 'python')
