@@ -1,17 +1,17 @@
 # Maintainer: zaps166 <mumei6102@gmail.com>
 
 pkgname=qmplay2
-pkgver=25.06.11
+pkgver=25.06.27
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/zaps166/QMPlay2'
 license=('LGPL')
 depends=('qt6-base' 'qt6-svg' 'qt6-declarative' 'qt6-5compat' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'alsa-lib' 'libcdio' 'taglib' 'libcddb' 'libpulse' 'libgme' 'libsidplayfp' 'pipewire' 'rubberband')
-makedepends=('ninja' 'clang' 'llvm' 'pkg-config' 'qt6-tools' 'cmake' 'fakeroot' 'patch')
+makedepends=('ninja' 'clang' 'llvm' 'lld' 'pkg-config' 'qt6-tools' 'cmake' 'fakeroot' 'patch')
 options=(!lto)
 source=("https://github.com/zaps166/QMPlay2/releases/download/${pkgver}/QMPlay2-src-${pkgver}.tar.xz")
-sha256sums=(0dda6bc8c05d256b293bf3b5da20058b05e9844693292b2d175cc3b289f86eac)
+sha256sums=(285bbf1ed08bc65459b2eb9fadfe03f21be696c7818d4777c43579d45834bd6e)
 
 prepare()
 {
