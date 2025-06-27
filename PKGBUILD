@@ -3,8 +3,8 @@
 # Credits to Alexander Kobel <a-kobel@a-kobel.de>
 
 pkgname=pfusp-bin
-pkgver=2.2.1
-pkgvernodots=221
+pkgver=2.2.2
+pkgvernodots=222
 pkgrel=1
 pkgdesc='Fujitsu SP series Image Scanner Driver for SANE'
 url='http://imagescanner.fujitsu.com/global/dl/'
@@ -12,7 +12,7 @@ arch=('x86_64')
 license=('custom')
 depends=('sane')
 
-source=("http://origin.pfultd.com/downloads/IMAGE/driver/ubuntu/${pkgvernodots}/pfusp-ubuntu_${pkgver}_amd64.deb"        
+source=("https://origin.pfultd.com/downloads/IMAGE/driver/ubuntu/${pkgvernodots}/pfusp-ubuntu_${pkgver}_amd64.deb"        
         pfusp.pdf::"http://origin.pfultd.com/downloads/IMAGE/driver/ubuntu/${pkgvernodots}/P2U3-0210-04ENZ0.pdf"
         60-pfusp.rules
         pfusp
@@ -20,7 +20,7 @@ source=("http://origin.pfultd.com/downloads/IMAGE/driver/ubuntu/${pkgvernodots}/
         pfuspscanbutton.service
         simple-scan.conf
         consumablessettings.xml)
-sha256sums=('710fce8085df82c75c3ec8bb8ef9138c61a0c2cd229143180664f426d4bbfabf'
+sha256sums=('0c87c7e005d01ec3740818970538828f48eef0d445cc43eb64a95039cbd9869c'
             'a0b76dfae6f8e7bb9f5aaab8469e883187a1d6d812bfab42fe3158ba91c297d1'
             '1a385519132a6a6935956d6dc150e75dcba1bdfd8b4137547aa9f5c1bf2bada0'            
             'df13d759a010d83058e934c86c86cd5491c3f4ff9a46f79aae07822b2bb37a4a'
