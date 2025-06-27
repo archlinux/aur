@@ -1,17 +1,17 @@
 pkgbase = tika-server
 	pkgdesc = Detects and extracts metadata and text from over a thousand different file types, such as PPT, XLS, and PDF. (server)
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://tika-server.apache.org
 	arch = any
 	license = Apache-2.0
 	depends = java-runtime-headless
-	noextract = tika-server-3.1.0.jar
+	noextract = tika-server-3.2.0.jar
 	backup = etc/default/tika-server
-	source = tika-server-3.1.0.jar::https://dlcdn.apache.org/tika/3.1.0/tika-server-standard-3.1.0.jar
+	source = tika-server-3.2.0.jar::https://dlcdn.apache.org/tika/3.2.0/tika-server-standard-3.2.0.jar
 	source = tika-server.env
 	source = tika-server.service
-	sha256sums = 9e975f14abc005c5bec38494493b6abcfa5496d73b285fb78c3b3d6a4ae157a6
+	sha256sums = 60cc16fc933ee47f94e9f4a56e8d6f9554e0caf14facf896d9727b1e834224c1
 	sha256sums = de1829782fc698b1be42fdb850ea3d9dd1d750bf37d4ab98a8ed5d43157cdeac
 	sha256sums = 00ad2023fe47bb77b78c4be364973c21ef8961a51cfa8b4f5ef910ee32542837
 
