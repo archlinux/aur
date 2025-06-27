@@ -1,0 +1,18 @@
+pkgbase = pinesam-bin
+	pkgdesc = UI for Pinecil V2 - control it over BLE from your PC or your mobile.
+	pkgver = 2.2.16
+	pkgrel = 1
+	url = https://github.com/builder555/PineSAM/
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = bluez
+	provides = pinesam
+	conflicts = pinesam
+	source = https://github.com/builder555/PineSAM//releases/download/v2.2.16/PineSAM-Ubuntu-x64-v2.2.16.zip
+	source = https://github.com/builder555/PineSAM//archive/refs/tags/v2.2.16.tar.gz
+	sha256sums = 69e9c291becd3c6596cc0c0ef609ba2bbcf6d1d2f394ddb8096992a554e18df3
+	sha256sums = a63b711d8793124d38c40f455ae6c4f126d69cc1ddf32395677f91c4e0784840
+
+pkgname = pinesam-bin
