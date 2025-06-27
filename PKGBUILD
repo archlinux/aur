@@ -1,7 +1,7 @@
 # Maintainer: Sich <little_sich@tuta.io>
 # Contributor: Protesilaos Stavrou <info@protesilaos.com>, archjo
 pkgname=ubuntu-mate-icon-themes
-pkgver=23.04.1
+pkgver=24.10.0
 pkgrel=1
 pkgdesc='The official icon themes for Ubuntu MATE'
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=('ubuntu-mate-themes: GTK2, GTK3, Unity and Metacity themes from Ubun
             'mate-icon-theme: MATE default icon theme')
 groups=('mate-extra')
 source=("https://mirrors.edge.kernel.org/ubuntu/pool/universe/u/ubuntu-mate-artwork/${pkgname}_${pkgver}_all.deb")
-sha512sums=('61a213e9fdd09fda58a54d51bf48cb357ac5dd937e5691bab539e8406b6b3c268b8536a509c2b36aad5c8f20c5fb5d3a7a6c25b2cb3bc641979b6de61d1b2600')
+sha1sums=('56d359838e6c4f56f32513ed31bc30ba42de760f')
 
 package() {
     tar xf data.tar.zst
