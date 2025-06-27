@@ -1,8 +1,8 @@
 pkgbase = wdisplays-persistent
 	pkgdesc = GUI display configurator for wlroots compositors (with kanshi config saving)
 	pkgver = 1.1.1
-	pkgrel = 2
-	url = https://github.com/petertheprocess/wdisplays
+	pkgrel = 3
+	url = https://github.com/zipproth/wdisplays
 	install = wdisplays-persistent.install
 	arch = x86_64
 	license = GPL3
@@ -15,11 +15,9 @@ pkgbase = wdisplays-persistent
 	provides = wdisplays
 	conflicts = wdisplays
 	replaces = wdisplays
-	source = wdisplays-d5f0e48443c8aac4357cd411b03f143f23df30ac.tar.gz::https://github.com/petertheprocess/wdisplays/archive/d5f0e48443c8aac4357cd411b03f143f23df30ac.tar.gz
+	source = wdisplays-402b3fc6689de28abed518425a0a41526890c185.tar.gz::https://github.com/zipproth/wdisplays/archive/402b3fc6689de28abed518425a0a41526890c185.tar.gz
 	source = outputs_noop.patch
-	source = kanshi_output_names.patch
-	sha512sums = 48e1d6addfae876b3f205eb114a0d79a90c9e41dccaca499ee53bab05f8d32efbd4b13c013ab23f7999ee7bc61621e52c25bd12b03d670172ffb9bbca45f0716
-	sha512sums = SKIP
+	sha512sums = f7dc95782d4cecd36651ba296bf0869bbddb1dc61f626f74a6b98cdf20d52177cfc61f8e9fb3fb89fc35aa2cb23ef457ba7b3cff6b74f340650926a8004d3c88
 	sha512sums = SKIP
 
 pkgname = wdisplays-persistent

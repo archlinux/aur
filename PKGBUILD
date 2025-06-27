@@ -2,9 +2,9 @@
 
 pkgname=wdisplays-persistent
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI display configurator for wlroots compositors (with kanshi config saving)"
-url="https://github.com/petertheprocess/wdisplays"
+url="https://github.com/zipproth/wdisplays"
 license=(GPL3)
 arch=(x86_64)
 install=wdisplays-persistent.install
@@ -21,20 +21,17 @@ replaces=('wdisplays')
 makedepends=(
   meson
 )
-_commit="d5f0e48443c8aac4357cd411b03f143f23df30ac"
+_commit="402b3fc6689de28abed518425a0a41526890c185"
 source=(
   "wdisplays-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "outputs_noop.patch"
-  "kanshi_output_names.patch"
 )
-sha512sums=('48e1d6addfae876b3f205eb114a0d79a90c9e41dccaca499ee53bab05f8d32efbd4b13c013ab23f7999ee7bc61621e52c25bd12b03d670172ffb9bbca45f0716'
-            'SKIP'
+sha512sums=('f7dc95782d4cecd36651ba296bf0869bbddb1dc61f626f74a6b98cdf20d52177cfc61f8e9fb3fb89fc35aa2cb23ef457ba7b3cff6b74f340650926a8004d3c88'
             'SKIP')
 
 prepare() {
   cd "wdisplays-$_commit"
   patch -Np1 -i ../outputs_noop.patch
-  patch -Np1 -i ../kanshi_output_names.patch
 }
 
 build() {
