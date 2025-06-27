@@ -1,20 +1,25 @@
-# Maintainer: Karim Vergnes <me@thesola.io>
-
-_ipu_ver=ipu6
-pkgname=intel-ipu6-camera-hal-git
-_pkgname=ipu6-camera-hal
-pkgver=r87.113ca90
+pkgname=intel-ipu7-camera-hal-git
+_pkgname=ipu7-camera-hal
+pkgver=r34.e1a960c
 pkgrel=1
-pkgdesc="Intel IPU6 camera HAL (Tiger Lake)"
+pkgdesc="Intel IPU7 camera HAL"
 arch=('x86_64')
-url="https://github.com/intel/ipu6-camera-hal"
+url="https://github.com/intel/ipu7-camera-hal"
 license=('unknown')
-depends=('intel-ipu6-dkms-git' 'intel-ipu6-camera-bin')
-makedepends=('git' 'cmake')
-provides=(ipu6-camera-hal)
-conflicts=(intel-ipu6ep-camera-hal-git)
-source=("git+${url}.git")
-sha256sums=('SKIP')
+depends=('intel-ipu7-dkms-git' 'intel-ipu7-camera-bin')
+makedepends=('git' 'cmake' 'jsoncpp')
+provides=(ipu7-camera-hal)
+source=("git+${url}.git" "patch-cmake35-xedrm.diff")
+sha256sums=('SKIP'
+    '90dda7f4f25a21b55ca306cd63a1061012ae6aa84f4f6175903991ca8a0801ca')
+
+prepare() {
+    cd "${srcdir}/${_pkgname}"
+    patch -p1 <"${srcdir}/patch-cmake35-xedrm.diff"
+
+    mkdir -p "$srcdir/$_pkgname/include/drm/"
+    cp "/usr/lib/modules/$(uname -r)/build/include/uapi/drm/xe_drm.h" "$srcdir/$_pkgname/include/drm/"
+}
 
 pkgver() {
     cd $_pkgname
@@ -22,27 +27,25 @@ pkgver() {
 }
 
 build() {
-    cmake -B build -S "$_pkgname"       \
-        -DCMAKE_BUILD_TYPE=Release      \
-        -DIPU_VER=$_ipu_ver             \
-        -DENABLE_VIRTUAL_IPU_PIPE=OFF   \
-        -DUSE_PG_LITE_PIPE=ON           \
-        -DUSE_STATIC_GRAPH=OFF          \
-        -DCMAKE_INSTALL_PREFIX="/usr"   \
-        -DLIBGCSS_FOUND=ON              \
-        -DLIBGCSS_LIBRARY_DIRS="/usr/lib/ipu_tgl" \
-        -DLIBGCSS_INCLUDE_DIRS="/usr/include/ipu_tgl/ia_camera" \
-        -DIA_IMAGING_FOUND=ON           \
-        -DIA_IMAGING_LIBRARY_DIRS="/usr/lib/ipu_tgl" \
-        -DIA_IMAGING_INCLUDE_DIRS="/usr/include/ipu_tgl/ia_imaging" \
-        -DLIBIPU_FOUND=ON               \
-        -DLIBIPU_LIBRARY_DIRS="/usr/lib/ipu_tgl" \
-        -DLIBIPU_INCLUDE_DIRS="/usr/include/ipu_tgl"
-    cmake --build build
+    cd "$srcdir/$_pkgname" || return 1
+
+    cmake -B "./build" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DBUILD_CAMHAL_ADAPTOR=ON \
+        -DBUILD_CAMHAL_PLUGIN=ON \
+        -DIPU_VERSIONS="ipu7x;ipu75xa" \
+        -DUSE_STATIC_GRAPH=ON \
+        -DUSE_STATIC_GRAPH_AUTOGEN=ON
+    cd ./build || return 1
+
+    make -j"$(nproc)"
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
-    mkdir -p "$pkgdir/etc/ld.so.conf.d"
-    echo "/usr/lib/ipu_tgl" > "$pkgdir/etc/ld.so.conf.d/intel-ipu6-camera-bin-tgl.conf"
+    cd "$srcdir/$_pkgname/build" || return 1
+    # DESTDIR="$pkgdir" cmake --install build
+    make install DESTDIR="$pkgdir"
 }

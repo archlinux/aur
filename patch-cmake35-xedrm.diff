@@ -1,0 +1,40 @@
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7c49ff8..c3d5103 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,7 +14,7 @@
+ #  limitations under the License.
+ #
+ 
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.5)
+ 
+ project(libcamhal)
+ 
+diff --git a/src/platformdata/JsonParserBase.h b/src/platformdata/JsonParserBase.h
+index c1d7d22..9f947cc 100644
+--- a/src/platformdata/JsonParserBase.h
++++ b/src/platformdata/JsonParserBase.h
+@@ -16,7 +16,7 @@
+ 
+ #pragma once
+ 
+-#include <jsoncpp/json/json.h>
++#include <json/json.h>
+ 
+ #include "src/iutils/Utils.h"
+ 
+diff --git a/src/platformdata/gc/HalStream.h b/src/platformdata/gc/HalStream.h
+index 2be7818..3205011 100644
+--- a/src/platformdata/gc/HalStream.h
++++ b/src/platformdata/gc/HalStream.h
+@@ -16,6 +16,8 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
++
+ namespace icamera {
+ 
+ // Temporary solution
