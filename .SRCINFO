@@ -5,7 +5,6 @@ pkgbase = python-exchange_calendars
 	url = https://github.com/gerrymanoim/exchange_calendars
 	arch = any
 	license = APACHE
-	makedepends = python-pip
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
