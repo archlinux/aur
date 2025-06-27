@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=devkitty
 _pkgname=Devkitty
-pkgver=2.12.4
+pkgver=2.12.5
 _electronversion=33
 _nodeversion=22
 pkgrel=3
@@ -25,8 +25,8 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('b05a7f7ecf4b008dbc0267150231b43432ef3fdb3ee93296fc8d779328c314f5'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('91000bd83462e524708aed2e34a99bc0f9f80ae78ee97ac90ed1c71b2a85d010'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
