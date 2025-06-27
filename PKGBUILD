@@ -5,7 +5,7 @@ pkgbase=corefreq-git
 pkgname=(corefreq-client-git corefreq-server-git corefreq-dkms-git)
 _gitname=CoreFreq
 _pkgbase=${pkgbase%-*}
-pkgver=2.0.5.r8.gc2e28ed
+pkgver=2.0.7.r20.gdeb3da7
 pkgrel=1
 pkgdesc="A CPU monitoring software with BIOS like functionalities"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(git+"${url}.git#branch=master"
         'honor-archlinux-compiler-flags.patch')
 b2sums=('SKIP'
         '6975aef86f4cb483bfa63cc1d3949bbb82ea7182596741db2a1be9f5886d15273798f50b65ff266ad5eb17267a7a1e26f78b26fed9c62ff366716d82bf4c0b30'
-        '03396a2b3789908b863600da41e4ef7e598ecb54882a16c9154b0d55235646a68d7b11aac0c8f182503a92224cc95641801fab10682465af9e84639598dfc6f6')
+        'a2adeb075993472552803805b9fb644a0c09104a8fc979be552638a186a7cc886dfc12db8b3de82b1b579627992b58f150b6a85467f185d4ed9e1dc0fdb4f3cd')
 
 pkgver() {
   cd "${_gitname}"
@@ -32,7 +32,7 @@ prepare(){
 
 build() {
   cd "${_gitname}"
-  make prepare corefreqd corefreq-cli -j
+  make corefreqd corefreq-cli -j
 }
 
 package_corefreq-dkms-git() {
