@@ -10,9 +10,6 @@
 : ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=false}
 
-: ${_ver_clang=}
-: ${RUSTUP_TOOLCHAIN:=stable}
-
 : ${_commit:=fcfc71a7cac7b300f8325404767887a45adb031d}
 
 _pkgname="floorp"
@@ -30,7 +27,6 @@ depends=(
   gtk3
   libevent
   libjpeg
-  libpulse
   libvpx.so
   libwebp.so
   libxss
@@ -42,18 +38,17 @@ depends=(
   zlib
 )
 makedepends=(
-  "clang${_ver_clang:-}"
-  "lld${_ver_clang:-}"
-  "llvm${_ver_clang:-}"
-  "wasi-compiler-rt${_ver_clang:-}"
   cargo
   cbindgen
+  clang
   diffutils
   dump_syms
   git
   imake
   inetutils
   jack
+  lld
+  llvm
   mercurial
   mesa
   nasm
@@ -61,6 +56,7 @@ makedepends=(
   python
   python-setuptools
   unzip
+  wasi-compiler-rt
   wasi-libc
   wasi-libc++
   wasi-libc++abi
@@ -148,6 +144,8 @@ prepare() {
   # prepare api keys
   cp "floorp/apis"/api-*-key ./
 
+
+
   # configure
   cat > ../mozconfig << END
 ac_add_options --enable-application=browser
@@ -224,11 +222,11 @@ ac_add_options --enable-install-strip
 export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
 # Other
-export AR=llvm-ar${_ver_clang:+-$_ver_clang}
-export CC=clang${_ver_clang:+-$_ver_clang}
-export CXX=clang++${_ver_clang:+-$_ver_clang}
-export NM=llvm-nm${_ver_clang:+-$_ver_clang}
-export RANLIB=llvm-ranlib${_ver_clang:+-$_ver_clang}
+export AR=llvm-ar
+export CC=clang
+export CXX=clang++
+export NM=llvm-nm
+export RANLIB=llvm-ranlib
 END
 
   local src
@@ -245,10 +243,6 @@ END
 
 build() (
   cd "$_pkgsrc"
-
-  export PATH="/usr/lib/llvm${_ver_clang:-}/bin:$PATH"
-  export LD_LIBRARY_PATH=/usr/lib/llvm${_ver_clang:-}/lib
-  export RUSTUP_TOOLCHAIN
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
   [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
@@ -317,7 +311,7 @@ build() (
 ac_add_options --enable-profile-generate=cross
 export MOZ_ENABLE_FULL_SYMBOLS=1
 END
-      ./mach build
+      ./mach build --priority normal
 
       echo "Profiling instrumented browser..."
       ./mach package
