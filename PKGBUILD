@@ -18,8 +18,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('bc36692ead79abb18577d7c5a64da5f2985a66e9fedd6e7f0a10cfcf1a4728ea')
 
 prepare() {
+  export PAGER=cat
   cd "$pkgname-$pkgver"
-  # Setzt StartupWMClass im .desktop-File
   desktop-file-edit --set-key=StartupWMClass --set-value="$pkgname" \
     "data/${_app_id}.desktop"
 }
