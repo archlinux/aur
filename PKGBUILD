@@ -7,7 +7,7 @@ pkgdesc="A prompt theme engine for any shell."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JanDeDobbeleer/oh-my-posh"
 license=('MIT')
-makedepends=('curl' 'grep' 'sed' 'unzip')
+makedepends=('curl')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 sha256sums=('f515a5a7bb2999f1e3a89b3dd6b1f7b8c22335af0447c5da4f7a1b5e17cb3b5e'
@@ -22,7 +22,7 @@ source=(
 source_x86_64=("posh-linux-amd64-${sha256sums_x86_64}::https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v$pkgver/posh-linux-amd64")
 source_armv7h=("posh-linux-arm-${sha256sums_armv7h}::https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v$pkgver/posh-linux-arm")
 source_aarch64=("posh-linux-arm64-${sha256sums_aarch64}::https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v$pkgver/posh-linux-arm64")
-noextract=('themes.zip')
+noextract=("themes-${sha256sums[0]}.zip")
 
 pkgver() {
     curl --silent -L "https://api.github.com/repos/JanDeDobbeleer/oh-my-posh/releases/latest" | # Get latest release from GitHub api
@@ -42,6 +42,7 @@ package() {
     fi
 
     mkdir -p "${pkgdir}/usr/share/oh-my-posh/themes"
-    unzip "${srcdir}/themes-${sha256sums}.zip" -d "${pkgdir}/usr/share/oh-my-posh/themes"
+    bsdtar -xf "${srcdir}/themes-${sha256sums[0]}.zip" -C "${pkgdir}/usr/share/oh-my-posh/themes"
     find "${pkgdir}/usr/share/oh-my-posh/themes/" -type f -exec chmod 644 {} +
 }
+
