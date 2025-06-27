@@ -1,15 +1,13 @@
 pkgbase = pega-texto-git
 	pkgdesc = A runtime engine for Parsing Expression Grammars (PEG) in C
-	pkgver = r43.4271673
+	pkgver = r161.4a59b9a
 	pkgrel = 1
 	url = https://github.com/gilzoide/pega-texto
-	arch = i686
-	arch = x86_64
-	license = LGPL3
+	arch = any
+	license = Unlicense
 	makedepends = git
 	makedepends = cmake
-	source = pega-texto-git::git://github.com/gilzoide/pega-texto.git
+	source = pega-texto-git::git+https://github.com/gilzoide/pega-texto.git
 	md5sums = SKIP
 
 pkgname = pega-texto-git
-

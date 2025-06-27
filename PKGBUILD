@@ -1,34 +1,26 @@
-# Maintainer: gilzoide <gilzoide at gmail dot com>
+# Contributor: gilzoide <gilzoide at gmail dot com>
 
 pkgname=pega-texto-git
-pkgver=r43.4271673
+pkgver=r161.4a59b9a
 pkgrel=1
 pkgdesc="A runtime engine for Parsing Expression Grammars (PEG) in C"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/gilzoide/pega-texto"
-license=("LGPL3")
-depends=()
+license=('Unlicense')
 makedepends=('git' 'cmake')
-source=("$pkgname"::'git://github.com/gilzoide/pega-texto.git')
+source=("$pkgname"::"git+$url.git")
 md5sums=('SKIP')
 
-# Make pkg version as last commit date
 pkgver() {
 	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-# Build with cmake
-# Change `CMAKE_BUILD_TYPE` to "Debug" for debug builds
 build() {
-	cd "$pkgname"
-	mkdir -p build
-	cd build
-	cmake .. -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DCMAKE_BUILD_TYPE=Release
-	make
+	cmake -B build -S "$pkgname" -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release
+	cmake --build build
 }
 
 package() {
-	cd "$pkgname/build"
-	make install
+	DESTDIR="$pkgdir" cmake --install build
 }
