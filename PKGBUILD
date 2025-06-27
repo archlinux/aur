@@ -1,7 +1,7 @@
 # Maintainer: Do1e <https://aur.archlinux.org/account/Do1e>
 
 pkgname=python-mijia-api
-pkgver=1.5.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A Python API for Xiaomi Mijia"
 arch=('any')
@@ -15,8 +15,8 @@ depends=(
 )
 makedepends=(python-poetry)
 
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/25/46/94ff538af0578215d9c8806f8441dd9b49d95cb7de5a7f2502e9dacf638e/mijiaapi-1.5.0.tar.gz")
-sha256sums=('282c7b523e491fb61e762140eeea2f4b3af997dccede4689bd2a4397ce92ec18')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/4e/d2/6025f03126b1911c85e17d47d8ac12d8e4fd686f9467b48ead92210f02d2/mijiaapi-2.0.0.tar.gz")
+sha256sums=('63fcc346166354e6c98dada36933a6df03581743b998e57c140c57c0adcde9a2')
 
 build() {
   cd "mijiaapi-$pkgver"
