@@ -18,9 +18,6 @@
 : ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=true}
 
-: ${_ver_clang=}
-: ${RUSTUP_TOOLCHAIN:=stable}
-
 ## update
 _icver="128.12.0"
 _commit="7286181cbff5c4b98ed9246366a85ae1fbc8f54d"
@@ -43,7 +40,6 @@ depends=(
   gtk3
   libevent
   libjpeg
-  libpulse
   libvpx.so
   libwebp.so
   libxss
@@ -55,17 +51,16 @@ depends=(
   zlib
 )
 makedepends=(
-  "clang${_ver_clang:-}"
-  "lld${_ver_clang:-}"
-  "llvm${_ver_clang:-}"
-  "wasi-compiler-rt${_ver_clang:-}"
   cargo
   cbindgen
+  clang
   diffutils
   dump_syms
   imake
   inetutils
   jack
+  lld
+  llvm
   mercurial
   mesa
   nasm
@@ -73,6 +68,7 @@ makedepends=(
   python
   python-setuptools
   unzip
+  wasi-compiler-rt
   wasi-libc
   wasi-libc++
   wasi-libc++abi
@@ -136,7 +132,7 @@ _source_icecat() {
 
 _source_icecat
 
-_make_icecat() {
+_make_icecat() (
   # restore icecat tarball, if exists
   if [ "${_build_repatch::1}" != "t" ] && [ -e "$SRCDEST/$_pkgsrc.tar.zst" ]; then
     echo "Restoring previously patched sources..."
@@ -178,8 +174,7 @@ _make_icecat() {
 
   # produce icecat sources
   cd output
-  source ../makeicecat
-
+  ../makeicecat
   popd
 
   # save icecat tarball
@@ -189,7 +184,7 @@ _make_icecat() {
     bsdtar -a -cf "$_pkgsrc.tar.zst" --options zstd:compression-level=9 "$_pkgsrc"
     cp -rf "$_pkgsrc.tar.zst" "$SRCDEST/"
   fi
-}
+)
 
 _prepare_icecat() (
   cat > icecat.desktop << END
@@ -311,11 +306,11 @@ ac_add_options --enable-install-strip
 export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
 # Other
-export CC=clang${_ver_clang:+-$_ver_clang}
-export CXX=clang++${_ver_clang:+-$_ver_clang}
-export AR=llvm-ar${_ver_clang:+-$_ver_clang}
-export NM=llvm-nm${_ver_clang:+-$_ver_clang}
-export RANLIB=llvm-ranlib${_ver_clang:+-$_ver_clang}
+export CC=clang
+export CXX=clang++
+export AR=llvm-ar
+export NM=llvm-nm
+export RANLIB=llvm-ranlib
 END
 )
 
@@ -323,10 +318,6 @@ build() (
   _run_if_exists _prepare_icecat
 
   cd "$_pkgsrc"
-
-  export PATH LD_LIBRARY_PATH RUSTUP_TOOLCHAIN
-  PATH="/usr/lib/llvm${_ver_clang:-}/bin:$PATH"
-  LD_LIBRARY_PATH="/usr/lib/llvm${_ver_clang:-}/lib"
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
   [ ! -d "$XDG_RUNTIME_DIR" ] && mkdir -pm700 "${XDG_RUNTIME_DIR:?}"
@@ -405,7 +396,7 @@ build() (
 ac_add_options --enable-profile-generate=cross
 export MOZ_ENABLE_FULL_SYMBOLS=1
 END
-      ./mach build
+      ./mach build --priority normal
 
       echo "Profiling instrumented browser..."
       ./mach package
@@ -469,12 +460,12 @@ END
       echo "Jar log not found."
     fi
 
-    ./mach build
+    ./mach build --priority normal
   else
     echo "Building browser..."
     cat > .mozconfig ../mozconfig
 
-    ./mach build
+    ./mach build --priority normal
   fi
 )
 
