@@ -1,0 +1,4 @@
+[kingfisher-bin]
+source = "git"
+git = "https://github.com/mongodb/kingfisher.git"
+prefix = "v"
