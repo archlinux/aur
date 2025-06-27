@@ -1,8 +1,9 @@
-# Maintainer: matt kasun <matt  at netmaker.io>
+# Maintainer: Brian Thompson <brianrobt at pm.me>
+# Contributor: matt kasun <matt  at netmaker.io>
 
 pkgname=nmctl
 _name=netmaker
-pkgver=0.90.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="cli to control netmaker, a platform for modern, blazing fast wg virtual networks"
 arch=(x86_64)
@@ -11,7 +12,7 @@ license=('Apache')
 depends=(glibc)
 makedepends=(go)
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fcc9cba1f1d5cc4a59a2401412fc55083d13eaeb958913b7c5a7acadfa958b44')
+sha256sums=('e741eddcb9e266cb0de7bf52b847055551061f6e5484836822501ffbd2283a77')
 
 
 build() {
