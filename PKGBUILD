@@ -1,4 +1,4 @@
-# Maintainer: Kai <kai@example.com>
+# Maintainer: Mineplack <mineplack@gmail.com>
 pkgname=mineplacktodo
 pkgver=1.0.0
 pkgrel=1
