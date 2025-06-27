@@ -1,7 +1,7 @@
 pkgbase = python-mcp
 	pkgdesc = Model Context Protocol SDK.
-	pkgver = 1.10.0
-	pkgrel = 4
+	pkgver = 1.10.1
+	pkgrel = 1
 	url = https://github.com/modelcontextprotocol/python-sdk
 	arch = any
 	license = MIT
@@ -39,7 +39,7 @@ pkgbase = python-mcp
 	optdepends = python-typer: cli
 	optdepends = python-dotenv: cli
 	optdepends = python-websockets: ws
-	source = https://github.com/modelcontextprotocol/python-sdk/archive/refs/tags/v1.10.0.tar.gz
-	sha256sums = 205470d15bb2bc95dcb932f9bd3f125a15aa566baa154dfff7fc423d72c58a93
+	source = mcp-1.10.1::git+https://github.com/modelcontextprotocol/python-sdk.git#tag=v1.10.1
+	sha256sums = SKIP
 
 pkgname = python-mcp
