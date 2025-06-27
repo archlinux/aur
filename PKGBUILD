@@ -2,8 +2,8 @@
 
 pkgname=python-lzallright
 _name=${pkgname#python-}
-pkgver=0.2.5
-pkgrel=2
+pkgver=0.2.6
+pkgrel=1
 pkgdesc="Python bindings for the LZ library (LZO data compression algorithm)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vlaci/lzallright"
@@ -12,7 +12,7 @@ depends=('python>=3.8')
 makedepends=(python-{build,installer,wheel} rust)
 checkdepends=('python-pytest>=8')
 source=("https://github.com/vlaci/lzallright/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('667632e6755e125ce379f271a6c11c1380f5791d847f77328f83ca64e96fb938')
+sha256sums=('ff3f07fac7fbe9723d44fc8b4203ea876b50c9c95f957a77b0100ec1ceaa6f11')
 options=(!lto)
 
 build() {
