@@ -2,4 +2,6 @@
 !.editorconfig
 !.gitignore
 !.SRCINFO
+!*.install
+!*.patch
 !PKGBUILD

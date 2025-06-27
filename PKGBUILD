@@ -1,40 +1,54 @@
-# Maintainer: arti
-# Maintainer: redtide <redtid3@gmail.com>
-# Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
+# Maintainer: Stefan Zipproth <s.zipproth@ditana.org>
 
-pkgname=wdisplays
+pkgname=wdisplays-persistent
 pkgver=1.1.1
 pkgrel=1
-pkgdesc="GUI display configurator for wlroots compositors"
-url="https://github.com/artizirk/wdisplays"
+pkgdesc="GUI display configurator for wlroots compositors (with kanshi config saving)"
+url="https://github.com/petertheprocess/wdisplays"
 license=(GPL3)
 arch=(x86_64)
+install=wdisplays-persistent.install
 depends=(
   gtk3
   libepoxy
   wayland
   wayland-protocols
+  kanshi
 )
+provides=('wdisplays')
+conflicts=('wdisplays')
+replaces=('wdisplays')
 makedepends=(
   meson
 )
+_commit="d5f0e48443c8aac4357cd411b03f143f23df30ac"
 source=(
-  $pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz
+  "wdisplays-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
+  "outputs_noop.patch"
 )
-sha512sums=(
-  '46923592e9fbb5c06c3549c198aedbafd8e0b5a6a82bc11d9d0b4cb0860070000cce18e0aa109932a4e4bee34d9f235660d2ea9d485a8fce146a2755ef62f81d'
-)
-b2sums=(
-  'a294719c3b8e91642d53e22aaac40c3ddd9a24e2eaef8e8b412905e9a4ef4be7984c0d0c087661d975ec518304020d1f84fc7a6ac4f62f1a5708c73878646818'
-)
+sha512sums=('48e1d6addfae876b3f205eb114a0d79a90c9e41dccaca499ee53bab05f8d32efbd4b13c013ab23f7999ee7bc61621e52c25bd12b03d670172ffb9bbca45f0716'
+            'SKIP')
+
+prepare() {
+  cd "wdisplays-$_commit"
+  patch -Np1 -i ../outputs_noop.patch
+}
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "wdisplays-$_commit"
   arch-meson "$srcdir/build"
   ninja -C "$srcdir/build"
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "wdisplays-$_commit"
   DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
+
+  # Create empty kanshi config file for new users
+  # For this package, the config file is typically exclusively updated by wdisplays,
+  # unlike the usual kanshi workflow where users manually write the config.
+  # wdisplays will not create/write to the config if the file doesn't exist initially,
+  # and kanshi fails to start without an existing config file. Users still need to add
+  # kanshi to their compositor's autostart configuration.
+  install -Dm644 /dev/null "$pkgdir/etc/skel/.config/kanshi/config"
 }
