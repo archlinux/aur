@@ -1,12 +1,13 @@
 pkgbase = boxes-py-git
 	pkgdesc = Boxes.py - laser cutting boxes and more
-	pkgver = r1947.2631b35
+	pkgver = r1953.745db81
 	pkgrel = 1
 	url = https://github.com/florianfesti/boxes
 	arch = x86_64
 	license = GPL3
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	depends = python
 	depends = python-affine
 	depends = python-shapely

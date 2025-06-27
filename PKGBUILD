@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bury <alexandre.bury@gmail.com>
 
 pkgname=boxes-py-git
-pkgver=r1947.2631b35
+pkgver=r1953.745db81
 pkgrel=1
 pkgdesc="Boxes.py - laser cutting boxes and more"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=('python' 'python-affine' 'python-shapely' 'python-markdown' 'python-qrc
 optdepends=(
     'pstoedit: to export to DXG, gcode or PLT.'
     'python-inkex: for the inkscape extension.')
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer' 'python-setuptools')
 source=("git+https://github.com/florianfesti/boxes")
 b2sums=("SKIP")
 
