@@ -1,6 +1,6 @@
 pkgbase = waybar-module-music-git
 	pkgdesc = A Waybar module to show & control the current MPRIS media players state
-	pkgver = 0.1.0_r127.1e11bad
+	pkgver = 0.1.1_r134.692ea08
 	pkgrel = 1
 	url = https://github.com/Andeskjerf/waybar-module-music
 	arch = x86_64
@@ -11,9 +11,7 @@ pkgbase = waybar-module-music-git
 	optdepends = waybar: for integration with Waybar
 	provides = waybar-module-music
 	conflicts = waybar-module-music
-	options = strip
-	options = !debug
-	source = waybar-module-music-git::git+ssh://git@github.com/Andeskjerf/waybar-module-music.git
+	source = waybar-module-music-git::git+https://github.com/Andeskjerf/waybar-module-music.git
 	sha256sums = SKIP
 
 pkgname = waybar-module-music-git

@@ -1,5 +1,5 @@
 pkgname=waybar-module-music-git
-pkgver=0.1.0_r127.1e11bad
+pkgver=0.1.1_r134.692ea08
 pkgrel=1
 pkgdesc='A Waybar module to show & control the current MPRIS media players state'
 arch=('x86_64')
@@ -8,11 +8,10 @@ license=('GPL3')
 depends=('dbus')
 makedepends=('rust' 'git')
 optdepends=('waybar: for integration with Waybar')
-source=("${pkgname}::git+ssh://git@github.com/Andeskjerf/waybar-module-music.git")
+source=("${pkgname}::git+https://github.com/Andeskjerf/waybar-module-music.git")
 sha256sums=('SKIP')
 provides=('waybar-module-music')
 conflicts=('waybar-module-music')
-options=(strip !debug)
 
 pkgver() {
   cd ${pkgname}
@@ -22,17 +21,17 @@ pkgver() {
 
 prepare() {
   cd ${pkgname}
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd ${pkgname}
-  cargo build --release --locked --offline
+  cargo build --frozen --release --all-features
 }
 
 check() {
   cd ${pkgname}
-  cargo test --locked --offline
+  cargo test --frozen --offline
 }
 
 package() {
