@@ -1,7 +1,7 @@
 # Maintainer: vcup <me@vcup.moe>
 pkgname=opscripts
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="scripts"
 arch=('any')
 url="https://github.com/vcup/opscripts"
@@ -15,7 +15,9 @@ backup=('etc/opscripts/'{'mdns-ifonly.ifnames','append-routes-when-dev.nuon'})
 source=('opscripts::git+https://github.com/vcup/opscripts')
 sha512sums=('SKIP')
 package() {
+  mkdir -p "${pkgdir}/usr/lib/systemd/system"
   cp -r "${srcdir}/opscripts/files/"* "${pkgdir}/"
+  cp "${srcdir}/opscripts/systemd/"* "${pkgdir}/usr/lib/systemd/system"
 }
 
 
