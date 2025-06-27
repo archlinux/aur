@@ -3,7 +3,7 @@
 
 pkgname=openmohaa-git
 _pkgname="${pkgname/-git/}"
-pkgver=0.81.1.r485.g301625d
+pkgver=0.81.1.r503.gbe43b16
 pkgrel=1
 pkgdesc="Open re-implementation of Medal of Honor: Allied Assault "
 arch=('i686' 'x86_64')
