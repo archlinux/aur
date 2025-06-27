@@ -2,22 +2,28 @@
 
 _pkgname="mx-samba-config"
 pkgname="$_pkgname-git"
-pkgver=23.12.02.r0.g1a7c781
+pkgver=24.4.r1.gce56e6d
 pkgrel=1
 pkgdesc="Samba configuration tool designed to work with the usershare system"
 url="https://github.com/MX-Linux/mx-samba-config"
-license=('LGPL3')
+license=('GPL-3.0-or-later') # LICENSE file is LGPL-3.0-only, but headers have GPL-3.0-or-later; GPL > LGPL.
 arch=('x86_64')
 
-depends=()
+depends=(
+  'qt6-base'
+)
 makedepends=(
   'cmake'
   'git'
-  'qt5-base'
+)
+optdepends=(
+  'smb.conf: samba configuration'
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
+
+options=('emptydirs')
 
 install="$_pkgname.install"
 
@@ -37,32 +43,31 @@ sha256sums=(
 
 pkgver() {
   cd "$_pkgsrc"
-
-  local _regex='^mx-samba-config \(([0-9\.]+)\).*$'
-  local _file='debian/changelog'
-
-  local _line=$(grep -Esm1 "$_regex" "$_file")
-  local _line_num=$(grep -Ensm1 "$_regex" "$_file" | cut -d':' -f1)
-
-  local _version=$(sed -E "s@$_regex@\1@" <<< "$_line")
-
-  local _commit=$(git blame -L $_line_num,$_line_num -- "$_file" | awk '{print $1;}')
-
-  local _revision=$(git rev-list --count $_commit..HEAD)
-  local _hash=$(git rev-parse --short HEAD)
-
-  printf "%s.r%s.g%s" "$_version" "$_revision" "$_hash"
+  local _file _regex _hash _ver _rev _commit
+  _file="debian/changelog"
+  _regex='mx-samba-config \(([0-9\.]+)\)'
+  read -r _hash _ver < <(
+    NL=$(awk '/^'"${_regex}"'.*$/ { print NR; exit }' "$_file")
+    git blame -L "$NL,+1" -- "$_file" \
+      | sed -E -e 's&^([0-9a-f]+).*'"${_regex}"'.*$&\1 \2&'
+  )
+  _rev=$(git rev-list --count --cherry-pick "$_hash"...HEAD)
+  _commit=$(git rev-parse --short=7 HEAD)
+  printf "%s.r%s.g%s" "${_ver:?}" "${_rev:?}" "${_commit:?}"
 }
 
 prepare() {
   # update version.h, see debian/rules
   head -n1 "$_pkgsrc/debian/changelog" \
     | sed -e "s/.*(\([^(]*\)).*/const QString VERSION {\"\1\"};/" \
-    > "$_pkgsrc/version.h"
+      > "$_pkgsrc/version.h"
 
   # fix service name
   sed -E 's&\b(systemctl is-enabled) smbd\b&\1 smb&' \
     -i "$_pkgsrc/mainwindow.cpp"
+
+  # update for qt6
+  sed -E 's&Qt5&Qt6&g' -i "$_pkgsrc/CMakeLists.txt"
 }
 
 build() {
@@ -82,7 +87,6 @@ build() {
 package() {
   depends+=(
     'hicolor-icon-theme'
-    'qt5-base'
     'samba'
   )
 
@@ -107,7 +111,7 @@ package() {
   # polkit
   install -Dm644 "$_pkgsrc/actions/"*.policy -t "$pkgdir/usr/share/polkit-1/actions"
 
-  # sysusers
+  # config files
   install -Dm644 "$_pkgname.sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
 
   # empty share folder
