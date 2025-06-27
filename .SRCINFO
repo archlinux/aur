@@ -1,7 +1,7 @@
 pkgbase = systemd-pilot
 	pkgdesc = Desktop application for managing systemd services
 	pkgver = 3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mfat/systemd-pilot
 	arch = any
 	license = GPL-3.0-or-later

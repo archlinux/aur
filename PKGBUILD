@@ -1,7 +1,7 @@
 pkgname=systemd-pilot
 _app_id=io.github.mfat.systemdpilot
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop application for managing systemd services"
 arch=('any')
 url="https://github.com/mfat/systemd-pilot"
