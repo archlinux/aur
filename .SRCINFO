@@ -1,6 +1,6 @@
 pkgbase = waystt-bin
 	pkgdesc = Speech-to-text tool for Wayland (binary)
-	pkgver = 0.1.3
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/sevos/waystt
 	arch = x86_64
@@ -10,11 +10,9 @@ pkgbase = waystt-bin
 	depends = alsa-lib
 	depends = openssl
 	depends = pipewire
-	depends = ydotool
-	depends = wtype
 	provides = waystt
 	conflicts = waystt
-	source = waystt-linux-x86_64::https://github.com/sevos/waystt/releases/download/v0.1.3/waystt-linux-x86_64
-	sha256sums = 949f15064c952e8f0327cc9c6c83e20be7c656aac2ed9969638fe251fa312033
+	source = waystt-linux-x86_64::https://github.com/sevos/waystt/releases/download/v0.2.1/waystt-linux-x86_64
+	sha256sums = 0ededf4f153c04f2a8eba26a5994cd0c4d33da041a3d902ee9210c16db9e8d7f
 
 pkgname = waystt-bin
