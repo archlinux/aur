@@ -1,0 +1,11 @@
+--- oprofile-1.4.0/libperf_events/operf_stats.cpp
++++ oprofile-1.4.0/libperf_events/operf_stats.cpp
+@@ -179,7 +179,7 @@ static string create_stats_dir(string const & cur_sampledir)
+ 	if (rc && (errno != EEXIST)) {
+ 		cerr << "Error trying to create stats dir. " << endl;
+ 		perror("mkdir failed with");
+-		return NULL;
++		return "";
+ 	}
+ 	return stats_dir;
+ }

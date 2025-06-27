@@ -1,9 +1,13 @@
 pkgbase = oprofile
 	pkgdesc = System-wide profiler for Linux systems
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://oprofile.sourceforge.net
 	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
 	license = GPL
 	depends = popt
 	depends = gcc-libs
@@ -12,8 +16,13 @@ pkgbase = oprofile
 	options = staticlibs
 	source = https://downloads.sourceforge.net/sourceforge/oprofile/oprofile-1.4.0.tar.gz
 	source = oprofile.sysusers
+	source = config-implicit.patch
+	source = musl.patch
+	source = gcc12.patch
 	sha1sums = d4d7634372d18de821b33650ad0ff7392e94c6e3
 	sha1sums = efcd625073759b69f95cf74dbb4c2839e03af017
+	sha1sums = 96deeb49c0d7eaef5901933be61415422b149f50
+	sha1sums = 58c85b57e2958c770fc70069c689cddd8e7f73a1
+	sha1sums = 7616a6b9d4a5106f2412ae56c69692b7b682d02a
 
 pkgname = oprofile
-
