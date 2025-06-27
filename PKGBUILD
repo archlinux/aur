@@ -7,7 +7,7 @@ pkgdesc="Boxes.py - laser cutting boxes and more"
 arch=("x86_64")
 url="https://github.com/florianfesti/boxes"
 license=('GPL3')
-depends=('python' 'python-affine' 'python-shapely' 'python-markdown' 'python-qrcode')
+depends=('python' 'python-affine' 'numpy' 'python-shapely' 'python-markdown' 'python-qrcode')
 optdepends=(
     'pstoedit: to export to DXG, gcode or PLT.'
     'python-inkex: for the inkscape extension.')
