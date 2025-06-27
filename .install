@@ -1,0 +1,12 @@
+pre_install () {return 0}
+post_install () {
+  netbeans --install /tmp/netbeans-color-codes-preview/*.nbm
+  rm -rf /tmp/netbeans-color-codes-preview
+}
+pre_upgrade () {return 0}
+post_upgrade () {
+  netbeans --install /tmp/netbeans-color-codes-preview/*.nbm
+  rm -rf /tmp/netbeans-color-codes-preview
+}
+pre_remove () {return 0}
+post_remove () {return 0}
