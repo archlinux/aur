@@ -3,7 +3,7 @@
 
 _name=middleclickclose
 pkgname=gnome-shell-extension-$_name-git
-pkgver=master
+pkgver=git
 pkgrel=1
 pkgdesc='Close windows with a button click when in overview mode'
 arch=(any)
