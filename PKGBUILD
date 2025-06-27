@@ -6,7 +6,8 @@
 
 pkgname=osu-lazer-tachyon-bin
 _pkgname=${pkgname%-bin}
-pkgver=2025.616.0
+pkgver=2025.625.0
+_pkgtag=$pkgver-tachyon
 pkgrel=1
 pkgdesc="Tachyon pre-release channel of the future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=(x86_64)
@@ -22,7 +23,7 @@ provides=(osu-lazer)
 conflicts=(osu-lazer)
 options=(!strip !debug)
 source=(
-  "$_pkgname-$pkgver.AppImage::https://github.com/ppy/osu/releases/download/$pkgver-tachyon/osu.AppImage"
+  "$_pkgname-$pkgver.AppImage::https://github.com/ppy/osu/releases/download/$_pkgtag/osu.AppImage"
   "icon.png"
   "https://raw.githubusercontent.com/ppy/osu-resources/master/LICENCE.md"
   "osu-lazer.desktop"
@@ -30,12 +31,12 @@ source=(
   "osu-lazer"
 )
 noextract=("osu.AppImage")
-sha256sums=('2bc8f2aaab38501653674433a7d5fef788fb6ff1ef6f312403093fd8c47568d7'
+sha256sums=('ceed00d1bccab16ad9e71afee2c1bca8e8c8c02d2a6d7ec91255dc48e1d54134'
             '30cf4df3fd76006b08a0bcb6a325fb2fdcf6a4371f77001da3c38cbce871bd51'
             '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
             'e08a76a780960fffbd63fed26df21f0e7846d9bc8b366bfdbb54b07bf543113e'
             '44e9e6a85c43086644f427b62d6d8b265c0e2ac1b5091d8ff0c626c58a91836d'
-            'baeea5b234e65707a4e6a563eacac89063bf20047d64125cd1f26c3c52aae957')
+            'e75aea8215ff567f6c1381dfd022fe8433b3cca502a864a124c0ca912bdb0488')
 package() {
   cd "$srcdir"
 
