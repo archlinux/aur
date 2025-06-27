@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ferrum-bin
 _pkgname=Ferrum
-pkgver=0.19.7
+pkgver=0.19.8
 _electronversion=28
 pkgrel=1
 pkgdesc="Music library app.(Prebuilt version.Use system-wide electron)"
@@ -17,8 +17,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cb847aa1a599091556f1fce95dbf86f1a0a869ba07b71c6e732cd425ad27da7d'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('f0f5175c5a2e32e479235167a268969efad0905fdffea2146d935cae5c608323'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -27,6 +31,7 @@ prepare() {
         s/@cfgdirname@/space.kasper.${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${_pkgname}\///g
         s/Audio/AudioVideo/g
