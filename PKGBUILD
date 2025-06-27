@@ -8,7 +8,7 @@
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=11.28.0-1
+_pkgver=11.28.0-2
 
 pkgname=firedragon
 _pkgname=FireDragon
@@ -25,14 +25,12 @@ depends=(dbus
   gtk3
   libevent
   libjpeg
-  libpulse
   libvpx
   libwebp
   libxss
   libxt
   mime-types
   nss
-  pipewire
   ttf-font
   zlib)
 makedepends=(cbindgen
@@ -80,7 +78,7 @@ backup=("usr/lib/${pkgname}/${pkgname}.cfg"
 source=(https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v${_pkgver}/downloads/firedragon-v${_pkgver}.source.tar.zst
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop)
-sha256sums=('38e4b32e73a529df45e1285f5d1976e3f5adfbd702b916b36951bd49ef6c1f26'
+sha256sums=('b4a99bd5e8625ee249d92c3232b6898f11ec628fa6df2473d97f45b8b59ef367'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
 
@@ -165,8 +163,6 @@ ac_add_options --enable-eme=widevine
 ac_add_options --enable-jack
 ac_add_options --enable-jxl
 ac_add_options --enable-proxy-bypass-protection
-ac_add_options --enable-pulseaudio
-ac_add_options --enable-raw
 ac_add_options --enable-sandbox
 ac_add_options --enable-strip
 
