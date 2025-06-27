@@ -1,14 +1,14 @@
 pkgname=erigon-bin
 pkgdesc='Ethereum implementation on the efficiency frontier. Binary distribution'
-pkgver=3.0.9
+pkgver=3.0.10
 pkgrel=1
 url='https://github.com/erigontech/erigon'
 provides=('erigon')
 conflicts=('erigon')
 arch=('x86_64')
 license=('GPL3')
-source=("https://github.com/erigontech/erigon/releases/download/v3.0.9/erigon_v3.0.9_linux_amd64.tar.gz")
-b2sums=('6829c5502ef1251820ff3b0941ff2121499c69612f73c4d76c55bdf3bbaae96b8f13a280ef6a3108b9f645c8657fe06aac367e83c028ae10993b6062bb37c83e')
+source=("https://github.com/erigontech/erigon/releases/download/v3.0.10/erigon_v3.0.10_linux_amd64.tar.gz")
+b2sums=('0b4b669d39529a3c73383bd630def5b16f1ee24c7141198058c982e39993c210904ad78638d6c756fd8b0f766a7d764df87c22feecca423c3c232143d8e3d71d')
 
 package() {
     install -Dm755 erigon "${pkgdir}"/usr/bin/erigon
