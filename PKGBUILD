@@ -1,6 +1,6 @@
 pkgname=marco-git
 pkgver=git_mainline
-pkgrel=2
+pkgrel=3
 pkgdesc='Marco Window Manager, the Window Manager of MATE'
 source=('git+https://github.com/mate-desktop/marco.git')
 provides=('marco')
