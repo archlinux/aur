@@ -4,7 +4,7 @@ _pkgname=Dopamine
 pkgver=3.0.0_preview.39
 _electronversion=26
 _nodeversion=20
-pkgrel=2
+pkgrel=3
 pkgdesc="The audio player that keeps it simple.Binary version.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/digimezzo/dopamine"
@@ -75,7 +75,7 @@ package() {
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/icons/${_icons}.png" \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

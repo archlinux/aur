@@ -1,7 +1,7 @@
 pkgbase = dopamine
 	pkgdesc = The audio player that keeps it simple.Binary version.(Use system-wide electron)
 	pkgver = 3.0.0_preview.39
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/digimezzo/dopamine
 	arch = any
 	license = GPL-3.0-only
