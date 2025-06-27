@@ -1,0 +1,15 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=chromium-ffmpeg-codecs
+Target=opera
+Target=opera-beta
+Target=opera-developer
+Target=electron36
+Target=electron35
+Target=electron34
+
+[Action]
+When=PostTransaction
+Exec=/usr/bin/bash -c 'chmod a-r /usr/lib/{opera{,-beta,-developer},electron{34..36}}/libffmpeg.so 2>/dev/null||:'
