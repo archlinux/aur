@@ -1,7 +1,7 @@
 # Maintainer: Alessandro Bernardello <aleberna at erine dot eu>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=tattoy
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Text-based terminal compositor"
 url="https://github.com/tattoy-org/tattoy"
@@ -9,8 +9,8 @@ license=('MIT')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 makedepends=(cargo)
 depends=('glibc' 'gcc-libs' 'dbus' 'libxcb')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tattoy-org/tattoy/archive/refs/tags/v0.1.1.tar.gz")
-b2sums=('3e5dc63983d98f571868d346f62c9c6a591625bcdefcffb4081ff097f021529ad90069cb6e457ca867fc697847dec8d81312e9f37dfb113a07a1c7d2fd88e7f8')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/tattoy-org/tattoy/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('c53a479af866ae7d00fa0099e495bffafa7bc234bc9bff0df0f97c4869a007f1025b4e8c48e1af64a04ff3d4a21cd138da93feb2bd513421d6f349e1c150afa3')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
@@ -25,7 +25,7 @@ build() {
     cargo build --frozen --release --all-features --manifest-path "$srcdir/$pkgname-$pkgver/Cargo.toml"
 }
 
-# checks fail in v0.1.1
+# checks fail in v0.1.3
 #check() {
 #    cd "$srcdir/$pkgname-$pkgver"
 #    export RUSTUP_TOOLCHAIN=stable
