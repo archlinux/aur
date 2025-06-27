@@ -1,7 +1,7 @@
 pkgbase = cpptools-debug-bin
 	pkgdesc = Debug adapter extraced from vscode-cpptools
-	pkgver = 1.25.3
-	pkgrel = 2
+	pkgver = 1.26.3
+	pkgrel = 1
 	url = https://github.com/Microsoft/vscode-cpptools
 	arch = x86_64
 	arch = armv7h
@@ -9,11 +9,11 @@ pkgbase = cpptools-debug-bin
 	license = LicenseRef-custom
 	provides = cpptools-debug
 	conflicts = cpptools-debug
-	source_x86_64 = cpptools-debug-bin-1.25.3-2-x86_64.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.25.3/cpptools-linux-x64.vsix
-	b2sums_x86_64 = 21a438b753946fc9f00f12c2ead5aca02d7541e3e1d989a2655707801d8c3a603f5574b802fc060919ebe1b98be9badefa391a06f2f566c6e746948d903610fa
-	source_armv7h = cpptools-debug-bin-1.25.3-2-armv7h.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.25.3/cpptools-linux-arm32.vsix
-	b2sums_armv7h = 64e6c35e69fdc8b00cfac19309a0ef368f0d01995b5108d6f428f390ccf599f61f39d07a6ca1c79d9a28a1de957c7ec265ad537987a229fa66eeb4234cfa093a
-	source_aarch64 = cpptools-debug-bin-1.25.3-2-aarch64.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.25.3/cpptools-linux-arm64.vsix
-	b2sums_aarch64 = 9375d433f9f69559d1642f6749659b9705dd0da76f8eecb908f162ff12e5120d6e33825861ae40779c71bda1f0c203cd334aef10a2df4a0ae66d17198b7f3208
+	source_x86_64 = cpptools-debug-bin-1.26.3-1-x86_64.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.26.3/cpptools-linux-x64.vsix
+	b2sums_x86_64 = 0aedc6efce20f35286db8dd8d20d1876774c6e488b003be81d4a3c78618590ec4a7bf593fdd5f3cf781dd18cf75b408a557df2e576f968291ac753fae21f4518
+	source_armv7h = cpptools-debug-bin-1.26.3-1-armv7h.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.26.3/cpptools-linux-arm32.vsix
+	b2sums_armv7h = 1072e36d31a1bf5be5a9779292098b1c8528d25dd8dd12981792eded21f7a810a4ea5c74262884cfc491179976e8e190ac76ca7038ad23ac1b9e5e3c4011f1d1
+	source_aarch64 = cpptools-debug-bin-1.26.3-1-aarch64.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.26.3/cpptools-linux-arm64.vsix
+	b2sums_aarch64 = defc17e8ed2f9b366b5f85821bf92f1043805c904dff51af947c17fd34b7d5bf528479d7452b745cd055912797fb66b0acb9a720ca64bc4e4fe85f34902ac9f8
 
 pkgname = cpptools-debug-bin
