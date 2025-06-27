@@ -1,7 +1,7 @@
 pkgbase = autosuspend
 	pkgdesc = A daemon to suspend and wake up a system based on configurable checks
-	pkgver = 7.2.0
-	pkgrel = 2
+	pkgver = 8.0.0
+	pkgrel = 1
 	url = https://github.com/languitar/autosuspend
 	arch = any
 	license = GPL-2.0-only
@@ -24,13 +24,14 @@ pkgbase = autosuspend
 	optdepends = python-icalendar: iCalendar checks
 	optdepends = python-dateutil: iCalendar checks
 	optdepends = python-tzlocal: iCalendar checks
+	optdepends = python-tzdata: iCalendar checks
 	optdepends = python-requests-file: file:// URL support
 	optdepends = python-jsonpath-ng: JSONPath checks
 	optdepends = iputils: ping check
 	optdepends = xprintidle: X server idle time check
 	backup = etc/autosuspend.conf
 	backup = etc/autosuspend-logging.conf
-	source = autosuspend-7.2.0.tar.gz::https://github.com/languitar/autosuspend/archive/v7.2.0.tar.gz
-	sha256sums = de804e9b9f4b4a6251fa4869d05458e284d95bedd3581592f6714ac3fa846afc
+	source = autosuspend-8.0.0.tar.gz::https://github.com/languitar/autosuspend/archive/v8.0.0.tar.gz
+	sha256sums = 0371ccf24d76bd06291fe22862193144a63948a79378d5628e212897cd0301ce
 
 pkgname = autosuspend
