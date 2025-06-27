@@ -4,7 +4,7 @@
 pkgname=python-zenlib
 _name=${pkgname#python-}
 pkgver=3.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Useful python decorators and utilities'
 arch=('any')
 url="https://github.com/desultory/$_name"

@@ -1,4 +1,4 @@
-[zenlib]
+[python-zenlib]
 source = "github"
 github = "desultory/zenlib"
 use_latest_release = true
