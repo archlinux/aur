@@ -8,8 +8,8 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="yazi"
 pkgname="$_pkgname-git"
-pkgver=25.4.8.r39.gea90b04
-pkgrel=1
+pkgver=25.5.31.r36.g8ef28ec
+pkgrel=2
 pkgdesc="Blazing fast terminal file manager written in Rust, based on async I/O"
 url="https://github.com/sxyazi/yazi"
 arch=('x86_64' 'aarch64')
@@ -25,14 +25,15 @@ makedepends=(
   'git'
 )
 optdepends=(
+  '7zip: for archive preview'
   'chafa: for previewing images'
   'fd: for file searching'
   'ffmpeg: for video thumbnails'
   'fzf: for directory jumping'
   'imagemagick: for previewing fonts'
   'jq: for JSON preview'
-  'p7zip: for archive preview'
   'poppler: for PDF preview'
+  'resvg: for SVG preview'
   'ripgrep: for file content searching'
   'zoxide: for directory jumping'
 )
@@ -52,16 +53,21 @@ pkgver() {
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-prepare() {
+prepare() (
   cd "$_pkgsrc"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
+
+  # compile faster, maybe
+  shopt -s globstar
+  sed -E -e 's&^(codegen-units) = [0-9]+$&\1 = 16&' \
+    -i **/Cargo.toml
+)
 
 build() {
   export RUSTONIG_SYSTEM_LIBONIG=1
 
   cd "$_pkgsrc"
-  VERGEN_GIT_SHA="Arch Linux" YAZI_GEN_COMPLETIONS=true cargo build --release --frozen --no-default-features
+  YAZI_GEN_COMPLETIONS=true cargo build --release --frozen --no-default-features
   YAZI_GEN_COMPLETIONS=true cargo build --release -p "$_pkgname-cli"
 }
 
