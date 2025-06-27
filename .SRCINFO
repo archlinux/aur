@@ -17,6 +17,7 @@ pkgbase = openmodelica
 	depends = qt6-svg
 	depends = qt6-tools
 	depends = qt6-5compat
+	provides = openmodelica-omc
 	options = !lto
 	source = openmodelica::git+https://github.com/OpenModelica/OpenModelica.git#tag=v1.25.1
 	sha256sums = SKIP
