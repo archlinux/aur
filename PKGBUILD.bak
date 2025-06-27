@@ -9,8 +9,6 @@ source=("git+https://github.com/junichi11/netbeans-color-codes-preview.git#tag=v
 depends=('netbeans>=12')
 makedepends=('jdk17-openjdk' 'maven')
 install='.install'
-provides=('nbm-color-codes-preview')
-conflicts=('netbeans-plugin-color-codes-preview-bin')
 
 build () {
   cd "$srcdir/netbeans-color-codes-preview"
