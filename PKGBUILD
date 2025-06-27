@@ -3,7 +3,7 @@
 _name=mcp
 pkgname=python-${_name}
 pkgver=1.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Model Context Protocol SDK.'
 arch=('any')
 url='https://github.com/modelcontextprotocol/python-sdk'
@@ -23,9 +23,9 @@ prepare(){
 
 build() {
   cd "${srcdir}"/${pkgname//mcp/sdk}-${pkgver}
-  git tag -d v${pkgver}
   git tag v${pkgver}
   python -m build --wheel --no-isolation
+  git tag -d v${pkgver}
 }
 
 check() {
