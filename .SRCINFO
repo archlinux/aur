@@ -6,10 +6,10 @@ pkgbase = rofi-pass-wayland-git
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
+	depends = rofi
 	depends = pass
 	depends = wtype
 	depends = wl-clipboard
-	depends = rofi-wayland
 	optdepends = qrencode: qrcode functionality
 	optdepends = pass-otp: one time passwords generation
 	provides = rofi-pass-wayland=2.1.3
