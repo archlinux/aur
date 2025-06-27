@@ -1,7 +1,7 @@
 # Maintainer: Anirudh Konduru <anirudhmkonduru@gmail.com>
 
 _npmname=@sourcegraph/amp
-_npmver=0.0.1751003630-g1719c7 # renovate: datasource=npm depName=@sourcegraph/amp
+_npmver=0.0.1751011366-g7ac144 # renovate: datasource=npm depName=@sourcegraph/amp
 _basename=amp
 pkgname=sourcegraph-amp # All lowercase
 pkgver=${_npmver//-/_}
@@ -15,7 +15,7 @@ makedepends=('npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_basename-$_npmver.tgz)
 noextract=($_basename-$_npmver.tgz)
-sha1sums=('d7390ba0f3d222007ff8480e43d49b4ef6e33ccd')
+sha1sums=('cb4a395ea0cc9f8fb245c09f2b715fecfd68c939')
 
 package() {
   cd "$srcdir"
