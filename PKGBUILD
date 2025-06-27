@@ -2,22 +2,22 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=('vulkan-caps-viewer-x11' 'vulkan-caps-viewer-wayland')
 pkgbase=vulkan-caps-viewer
-pkgver=4.01
-pkgrel=2
+pkgver=4.02
+pkgrel=1
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
 arch=('x86_64' 'aarch64')
 url="https://vulkan.gpuinfo.org"
 license=('LGPL-3.0-or-later')
 makedepends=(
+  'git'
   'qt5-wayland'
   'qt5-x11extras'
   'vulkan-icd-loader'
 )
-makedepends=('git')
 source=("git+https://github.com/SaschaWillems/VulkanCapsViewer.git#tag=$pkgver"
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git')
-sha256sums=('2f5ad623547283f353a940bbbad53694fce4e6ca723256c74671f11417520ad3'
+sha256sums=('d8819dc325c804e3a36575e028240228211ccf21eaf0035506969e6c1ee1cad5'
             'SKIP')
 
 prepare() {
