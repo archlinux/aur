@@ -1,14 +1,13 @@
 # Maintainer: strat <strat@jamjar.ws>
 
 pkgname=spicetify-themes-git
-pkgver=r509.3effbbe
-pkgrel=2
+pkgver=r511.82e14ab
+pkgrel=1
 pkgdesc="A community-driven collection of themes for spicetify"
 arch=('any')
 url="https://github.com/spicetify/spicetify-themes"
 license=('MIT')
 groups=()
-depends=('spicetify-cli')
 makedepends=('git')
 provides=("spicetify-themes")
 conflicts=("spicetify-themes")
@@ -26,6 +25,8 @@ pkgver() {
 }
 
 package() {
+    depends=('spicetify-cli')
+
     mkdir -p "$pkgdir/opt/spicetify-cli"
     cp -r --no-preserve=ownership "$srcdir/spicetify-themes" "$pkgdir/opt/spicetify-cli/Themes"
 
