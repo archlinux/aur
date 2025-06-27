@@ -1,12 +1,12 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=pineflash-bin
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to flash ironos to the pinecil soldering iron and possibly other pine64 devices in the future"
 arch=('x86_64')
 url="https://github.com/Spagett1/PineFlash"
 license=('GPL-2.0-or-later')
-depends=('glibc' 'libusb' 'curl' 'bzip2' 'systemd-libs' 'gcc-libs')
+depends=('glibc' 'libusb' 'curl' 'bzip2' 'systemd-libs' 'gcc-libs' 'blisp')
 provides=("${pkgname::-4}")
 conflicts=("${pkgname::-4}")
 source=("$url/releases/download/${pkgver}/${pkgname::-4}-${pkgver}-1-x86_64.pkg.tar.zst")
