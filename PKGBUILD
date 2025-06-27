@@ -1,7 +1,7 @@
 # Maintainer: Myriade <myriademedieval@proton.me>
 pkgname=dong
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A striking clock on your computer"
 arch=(x86_64)
 url="https://gitlab.com/TuTiuTe/dong"
@@ -17,7 +17,7 @@ provides=(dong)
 conflicts=(dong)
 source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
 noextract=()
-sha256sums=('fa46d5d42b2baa33aca0cb7cf656b9af30db76442d97a05f555f29e8a0325af4')
+sha256sums=('45f397f0340cf773b0af7263fcb551740ab6ad3f53b3d4263c87b5ebf76c3c92')
 options=(!lto !debug)
 
 prepare() {
