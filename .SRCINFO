@@ -1,0 +1,18 @@
+pkgbase = quickenv-bin
+	pkgdesc = An unintrusive environment manager
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/untitaker/quickenv
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = quickenv
+	conflicts = quickenv
+	source_x86_64 = https://github.com/untitaker/quickenv/releases/download/0.4.4/quickenv-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = aa1a9b517d4a1ecb64fc9e45b59cbd6ec05a8ef8a533872316f2c6c1dba53d25
+	source_aarch64 = https://github.com/untitaker/quickenv/releases/download/0.4.4/quickenv-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 4c7d3aede027328f2f7a90a68c491bb5c33a03a7bd0849c0f2943fc011b10f40
+
+pkgname = quickenv-bin
