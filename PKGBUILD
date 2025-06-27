@@ -2,12 +2,12 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Syboxez Blank <@Syboxez:matrix.org>
 
-_pkgtype="-git"
+: ${_pkgtype=-git}
 
 _gitname="gtk"
 _pkgname="gtk4"
 pkgbase="$_pkgname${_pkgtype:-}"
-pkgver=4.16.3.r424.ge37f9ba
+pkgver=4.19.2.r6.g12605ba
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit"
 url="https://gitlab.gnome.org/GNOME/gtk"
@@ -32,6 +32,7 @@ depends=(
   libepoxy
   libjpeg
   libpng
+  librsvg
   libtiff
   libx11
   libxcursor
