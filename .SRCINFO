@@ -1,6 +1,6 @@
 pkgbase = r-nondetects
 	pkgdesc = Non-detects in qPCR data
-	pkgver = 2.37.1
+	pkgver = 2.38.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/nondetects
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-nondetects
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/nondetects_2.37.1.tar.gz
-	sha256sums = e40e722c9cc6436308bfbd5a2b0c90cde2deca65b962fa3b7d59ebacfd82c577
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/nondetects_2.38.1.tar.gz
+	sha256sums = 7db6d67fcf5731c0c31741dd7133f40917ee29e73e78452657f8491bbd685fa6
 
 pkgname = r-nondetects
