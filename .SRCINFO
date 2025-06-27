@@ -1,6 +1,6 @@
 pkgbase = vcvrack-dbrack-sequencer
 	pkgdesc = dbRack sequencer VCV Rack modules
-	pkgver = 2.6.2
+	pkgver = 2.6.3
 	pkgrel = 1
 	url = https://github.com/docb/dbRackSequencer
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = vcvrack-dbrack-sequencer
 	makedepends = zstd
 	depends = gcc-libs
 	depends = vcvrack
-	source = git+https://github.com/docb/dbRackSequencer#tag=v2.6.2
-	sha256sums = 1519e3a74e7611429b05bf16f2d3b46ca179d6968bcaaf58e911554dcd129928
+	source = git+https://github.com/docb/dbRackSequencer#tag=v2.6.3
+	sha256sums = 210f3b08fa8cec451f88986fc22bd0d210d7fe5b6144233e56e920e6421a8423
 
 pkgname = vcvrack-dbrack-sequencer
