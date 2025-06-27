@@ -1,7 +1,7 @@
 pkgbase = openarc-git
 	pkgdesc = Open source implementation of the ARC email authentication system
 	pkgver = 1.2.1.r5.gff912ac
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/flowerysong/OpenARC
 	arch = x86_64
 	license = BSD-2-Clause
@@ -30,7 +30,7 @@ pkgbase = openarc-git
 	source = openarc.tmpfiles
 	sha256sums = SKIP
 	sha256sums = d438b4a2e0ab5b247938213da7e8062fa5865e750e4f89d41471311edc163022
-	sha256sums = 31c399c0e3a69bb845b033ab5c0ad92d44cacb0fd58e0113cd1901e75900515e
+	sha256sums = f651c71b6401094c97245d64ad0ade7bf153c1ddfd377bdc4ea4e1bb687e5dee
 	sha256sums = a27619fe3bbea2a0fd7c555851089722b1d67818bc014d1dce20620b5eb4bbc5
 
 pkgname = openarc-git
