@@ -14,6 +14,7 @@ pkgbase = lact-git
 	depends = gtk4
 	depends = hwdata
 	depends = vulkan-tools
+	depends = ocl-icd
 	provides = lact
 	conflicts = lact
 	conflicts = lact-libadwaita
