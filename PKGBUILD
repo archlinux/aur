@@ -13,7 +13,9 @@ depends=(
   osu-mime
 )
 provides=(osu-tachyon)
-conflicts=(osu-tachyon)
+conflicts=(
+  osu-lazer
+  osu-tachyon)
 options=(!strip !debug)
 source=(
   "$_pkgname-$pkgver.AppImage::https://github.com/ppy/osu/releases/download/$pkgver-tachyon/osu.AppImage"
