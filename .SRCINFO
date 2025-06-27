@@ -1,0 +1,13 @@
+pkgbase = lstart
+	pkgdesc = Utility to restart anything by monitoring directory changes
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/lumetas/lstart
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	source = lstart
+	sha256sums = SKIP
+
+pkgname = lstart
