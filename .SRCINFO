@@ -1,6 +1,6 @@
 pkgbase = ooniprobe-desktop
 	pkgdesc = The next generation OONI Probe desktop app
-	pkgver = 3.9.9
+	pkgver = 3.10.0
 	pkgrel = 1
 	url = https://ooni.org
 	arch = x86_64
@@ -11,11 +11,13 @@ pkgbase = ooniprobe-desktop
 	depends = gtk3
 	depends = nss
 	conflicts = ooniprobe
-	source = ooniprobe-desktop-3.9.9.tar.gz::https://github.com/ooni/probe-desktop/archive/refs/tags/v3.9.9.tar.gz
-	source = ooniprobe-3.24.0-linux-amd64::https://github.com/ooni/probe-cli/releases/download/v3.24.0/ooniprobe-linux-amd64
+	source = ooniprobe-desktop-3.10.0.tar.gz::https://github.com/ooni/probe-desktop/archive/refs/tags/v3.10.0.tar.gz
+	source = ooniprobe-3.26.0-linux-amd64::https://github.com/ooni/probe-cli/releases/download/v3.26.0/ooniprobe-linux-amd64
 	source = ooniprobe-desktop.desktop
-	sha256sums = cfa5171a5606bf3ee7f5dd76cd9d8c512eb94049fc774216fd8fda84f855a33e
-	sha256sums = 09f47b7c5624bd40f72c84afcb0ff044fec8886c0be0549d937acab8222a3495
+	source = drop-fsevents.patch
+	sha256sums = 4446563d217b487f76f3e082b64b90b5a227b16b5d9b73b9d32a1fe3ae504e22
+	sha256sums = 758db091ad0ff8a32a55b04d1c673c865c7a6583599c09b6fea33c6ad3c30d06
 	sha256sums = 77f39a9c8d017b391f61686ac38131a9e31435635de4b72d0f20930165404915
+	sha256sums = b869d595b6e6100373031c951d976c147050dea02e5683f341711a35f3ffba10
 
 pkgname = ooniprobe-desktop

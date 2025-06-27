@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ooniprobe-desktop
-pkgver=3.9.9
+pkgver=3.10.0
 pkgrel=1
-_cliver=3.24.0
+_cliver=3.26.0
 _nodeversion=18
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
@@ -20,10 +20,12 @@ makedepends=(
 conflicts=("${pkgname%-desktop}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-desktop/archive/refs/tags/v$pkgver.tar.gz"
         "${pkgname%-desktop}-${_cliver}-linux-amd64::https://github.com/ooni/probe-cli/releases/download/v${_cliver}/${pkgname%-desktop}-linux-amd64"
-        "$pkgname.desktop")
-sha256sums=('cfa5171a5606bf3ee7f5dd76cd9d8c512eb94049fc774216fd8fda84f855a33e'
-            '09f47b7c5624bd40f72c84afcb0ff044fec8886c0be0549d937acab8222a3495'
-            '77f39a9c8d017b391f61686ac38131a9e31435635de4b72d0f20930165404915')
+        "$pkgname.desktop"
+        'drop-fsevents.patch')
+sha256sums=('4446563d217b487f76f3e082b64b90b5a227b16b5d9b73b9d32a1fe3ae504e22'
+            '758db091ad0ff8a32a55b04d1c673c865c7a6583599c09b6fea33c6ad3c30d06'
+            '77f39a9c8d017b391f61686ac38131a9e31435635de4b72d0f20930165404915'
+            'b869d595b6e6100373031c951d976c147050dea02e5683f341711a35f3ffba10')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
@@ -38,10 +40,15 @@ _ensure_local_nvm() {
 
 prepare() {
   cd "${pkgname#ooni}-$pkgver"
+
+  # fsevents only for Mac
+  patch -Np1 -i ../drop-fsevents.patch
+
+
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
-  yarn install --frozen-lockfile
+  yarn install
 
   # Place files
   mkdir -p build/probe-cli/linux_amd64

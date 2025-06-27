@@ -8,3 +8,4 @@
 !.nvchecker.toml
 !LICENSE
 !ooniprobe-desktop.desktop
+!drop-fsevents.patch

@@ -1,0 +1,14 @@
+diff --unified --recursive --text a/package.json b/package.json
+--- a/package.json	2025-06-23 10:29:20.000000000 -0600
++++ b/package.json	2025-06-27 11:32:54.025331322 -0600
+@@ -239,8 +239,7 @@
+     "shell-quote": "1.7.3",
+     "immer": "9.0.6",
+     "minimist": "1.2.6",
+-    "loader-utils": "1.4.2",
+-    "fsevents": "1.2.11"
++    "loader-utils": "1.4.2"
+   },
+   "optionalDependencies": {
+     "fsevents": "2.3.2"
+
