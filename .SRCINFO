@@ -1,0 +1,22 @@
+pkgbase = niripwmenu
+	pkgdesc = A modern powermenu for Niri Scrollable-Tiling Wayland compositor.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://pypi.org/project/niripwmenu/
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	depends = confz
+	depends = python-pygobject
+	depends = python-pygobject-stubs
+	depends = python-rich
+	depends = gtk4-layer-shell
+	depends = gtk4
+	source = https://files.pythonhosted.org/packages/ee/06/aa004e35792a605c8127b2b16465bb72de71d50f5e6ff1d2e1385f7254d1/niripwmenu-0.1.2.tar.gz
+	sha256sums = f854a46842881fbc4757ff5b9ba334a6e9ae0b2c024e15ac21f8c91aa1e5ec5c
+
+pkgname = niripwmenu
