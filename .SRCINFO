@@ -1,6 +1,6 @@
 pkgbase = lvce-bin
 	pkgdesc = VS Code inspired text editor that mostly runs in a webworker.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.54.0
+	pkgver = 0.54.1
 	pkgrel = 1
 	url = https://lvce-editor.github.io/lvce-editor
 	arch = aarch64
@@ -8,8 +8,7 @@ pkgbase = lvce-bin
 	arch = x86_64
 	license = MIT
 	depends = electron37
-	depends = nodejs
-	provides = lvce=0.54.0
+	provides = lvce=0.54.1
 	conflicts = lvce
 	options = !strip
 	options = !emptydirs
@@ -17,11 +16,11 @@ pkgbase = lvce-bin
 	source = lvce.sh
 	sha256sums = ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc
 	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
-	source_aarch64 = lvce-0.54.0-aarch64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.54.0/lvce-v0.54.0_arm64.deb
-	sha256sums_aarch64 = 9707fa150659a40d1fffdf9f00e54b7a9be2dd555674a9f06df130ed74dd756f
-	source_armv7h = lvce-0.54.0-armv7h.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.54.0/lvce-v0.54.0_armhf.deb
-	sha256sums_armv7h = 2c7afeac04f68ae8287eebb7707efff239e58ce3f922d412d1f344770637d1d5
-	source_x86_64 = lvce-0.54.0-x86_64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.54.0/lvce-v0.54.0_amd64.deb
-	sha256sums_x86_64 = bcbe7519a99ac637b1bfc6c60a926d91cb6d1782732caeb30a91bc795f65a5b5
+	source_aarch64 = lvce-0.54.1-aarch64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.54.1/lvce-v0.54.1_arm64.deb
+	sha256sums_aarch64 = e414d5639ccfa8a922a916874381091fcd41852e10a486323911253c1a24740c
+	source_armv7h = lvce-0.54.1-armv7h.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.54.1/lvce-v0.54.1_armhf.deb
+	sha256sums_armv7h = c08eda608ad226a5832397a21a94b2dec7b61717ff879337acca90d51d80cecb
+	source_x86_64 = lvce-0.54.1-x86_64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.54.1/lvce-v0.54.1_amd64.deb
+	sha256sums_x86_64 = fc28a2a265ea7455975da2aa07dbc71cbd7bdd85f836fe535c3848c2e9e70e97
 
 pkgname = lvce-bin
