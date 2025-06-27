@@ -1,6 +1,6 @@
 pkgbase = r-rgl
 	pkgdesc = 3D Visualization Using OpenGL
-	pkgver = 1.3.18
+	pkgver = 1.3.24
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rgl
 	arch = x86_64
@@ -46,7 +46,7 @@ pkgbase = r-rgl
 	optdepends = r-v8
 	optdepends = r-waldo
 	optdepends = r-webshot2
-	source = https://cran.r-project.org/src/contrib/rgl_1.3.18.tar.gz
-	sha256sums = 2aba41b8a1592f25447d3555dbcb38244ed33bd9265517650258c552ad116263
+	source = https://cran.r-project.org/src/contrib/rgl_1.3.24.tar.gz
+	sha256sums = 9f580a97c56eaf28344da83a2309e35cd665fa77ba07a324d9c4789bdc03ee49
 
 pkgname = r-rgl
