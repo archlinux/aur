@@ -1,5 +1,6 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=sonyheadphonesclient-bluetooth-bin
+_pkgname=sonyheadphonesclient-bluetooth
 pkgver=1.3.17
 pkgrel=4
 pkgdesc="A fork of Plutoberth's SonyHeadphonesClient by mos9527, now updated with support for Sony's newer Bluetooth/TWS devices"
@@ -12,10 +13,10 @@ source=("$pkgname-$pkgver::$url/releases/download/$pkgver/SonyHeadphonesClient-l
 sha256sums=(SKIP
 	SKIP)
 package() {
-	mv $pkgname-$pkgver $srcdir/$pkgname
-	chmod +x $srcdir/$pkgname
+	mv $pkgname-$pkgver $srcdir/$_pkgname
+	chmod +x $srcdir/$_pkgname
 	mkdir -p "$pkgdir/usr/bin/"
-	cp $srcdir/$pkgname $pkgdir/usr/bin
+	cp $srcdir/$_pkgname $pkgdir/usr/bin
 
 	mkdir -p "$pkgdir/usr/share/applications/"
 	echo "[Desktop Entry]
