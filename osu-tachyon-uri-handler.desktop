@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+NoDisplay=true
+Name=osu!tachyon - uri handler
+MimeType=x-scheme-handler/osu;
+Icon=/usr/share/pixmaps/osu-tachyon.png
+Comment=Open source free-to-win rhythm game, Unstable Branch
+Exec=/usr/bin/osu-tachyon %u
+Categories=Game;

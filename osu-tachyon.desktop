@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=osu!tachyon
+MimeType=application/x-osu-skin-archive;application/x-osu-replay;application/x-osu-beatmap-archive;
+Icon=/usr/share/pixmaps/osu-tachyon.png
+Comment=Open source free-to-win rhythm game, Unstable Branch
+Exec=/usr/bin/osu-tachyon
+Categories=Game;

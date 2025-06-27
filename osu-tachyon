@@ -1,0 +1,2 @@
+#!/bin/sh
+env OSU_EXTERNAL_UPDATE_PROVIDER=1 /opt/osu-tachyon/osu.AppImage "$@"
