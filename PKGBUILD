@@ -1,7 +1,7 @@
 # Maintainer: PS2Comrade <your-email@example.com>
 
 pkgname=microfetch
-pkgver=0.5
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A minimal and fast system information fetching tool written in Python"
 arch=('any')
