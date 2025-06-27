@@ -2,32 +2,34 @@
 pkgname=sonyheadphonesclient-bluetooth-bin
 _pkgname=sonyheadphonesclient-bluetooth
 pkgver=1.3.17
-pkgrel=4
-pkgdesc="A fork of Plutoberth's SonyHeadphonesClient by mos9527, now updated with support for Sony's newer Bluetooth/TWS devices"
+pkgrel=5
+pkgdesc="A fork of SonyHeadphonesClient with support for Sony Bluetooth/TWS/XM5+ devices"
 arch=("x86_64")
 url="https://github.com/mos9527/SonyHeadphonesClient"
 license=('MIT')
 depends=("glfw" "unzip" "gcc-libs" "libglvnd" "glibc" "dbus" "bluez-libs"  "dbus")
-source=("$pkgname-$pkgver::$url/releases/download/$pkgver/SonyHeadphonesClient-linux-x64"
-	"MIT::https://raw.githubusercontent.com/mos9527/SonyHeadphonesClient/refs/heads/master/LICENSE")
-sha256sums=(SKIP
-	SKIP)
+source=(
+  "$pkgname-$pkgver.x64"::"$url/releases/download/$pkgver/SonyHeadphonesClient-linux-x64"
+  "LICENSE-$pkgver"::"$url/raw/refs/tags/$pkgver/LICENSE"
+)
+sha256sums=(
+  '1347765accb405b674d89374c481566d2aefb12032348de2d34ee9e1256f53c4'
+  '0b3db3e11db69b6d0de551cb7d9a56cc65be7f8fd912bcf6bae61ba57df36c34'
+)
+
 package() {
-	mv $pkgname-$pkgver $srcdir/$_pkgname
-	chmod +x $srcdir/$_pkgname
-	mkdir -p "$pkgdir/usr/bin/"
-	cp $srcdir/$_pkgname $pkgdir/usr/bin
+  install -Dm755 "$pkgname-$pkgver.x64" "$pkgdir/usr/bin/$_pkgname"
 
-	mkdir -p "$pkgdir/usr/share/applications/"
-	echo "[Desktop Entry]
-	Name=Sony Headphones Client
-	GenericName=[XM5+] A Linux client recreating the functionality of the Sony Headphones app
-	Exec=sonyheadphonesclient-bluetooth
-	Terminal=false
-	Categories=Utility;
-	Type=Application
-	Icon=audio-headphones" >>"$pkgdir/usr/share/applications/sonyheadphonesclient-bluetooth.desktop"
-	mkdir -p $pkgdir/usr/share/licenses/$pkgname
-	cp MIT $pkgdir/usr/share/licenses/$pkgname
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/sonyheadphonesclient-bluetooth.desktop" << END
+[Desktop Entry]
+Name=Sony Headphones Client [XM5+]
+Comment=[XM5+] A Linux client recreating the functionality of the Sony Headphones app
+Exec=$_pkgname
+Terminal=false
+Categories=Utility;
+Type=Application
+Icon=audio-headphones
+END
 
+  install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
