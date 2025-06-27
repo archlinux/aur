@@ -12,3 +12,17 @@ pkgbase = ubuntu-mate-icon-themes
 	sha512sums = 61a213e9fdd09fda58a54d51bf48cb357ac5dd937e5691bab539e8406b6b3c268b8536a509c2b36aad5c8f20c5fb5d3a7a6c25b2cb3bc641979b6de61d1b2600
 
 pkgname = ubuntu-mate-icon-themes
+pkgbase = ubuntu-mate-icon-themes
+	pkgdesc = The official icon themes for Ubuntu MATE
+	pkgver = 24.10.0
+	pkgrel = 1
+	url = https://launchpad.net/ubuntu-mate/
+	arch = any
+	groups = mate-extra
+	license = GPL3
+	optdepends = ubuntu-mate-themes: GTK2, GTK3, Unity and Metacity themes from Ubuntu MATE
+	optdepends = mate-icon-theme: MATE default icon theme
+	source = https://mirrors.edge.kernel.org/ubuntu/pool/universe/u/ubuntu-mate-artwork/ubuntu-mate-icon-themes_24.10.0_all.deb
+	sha1sums = 56d359838e6c4f56f32513ed31bc30ba42de760f
+
+pkgname = ubuntu-mate-icon-themes
