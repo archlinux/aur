@@ -1,6 +1,6 @@
 pkgbase = dwarftherapist
 	pkgdesc = Heavily modified version of the original Dwarf Therapist.
-	pkgver = 42.1.14
+	pkgver = 42.1.15
 	pkgrel = 1
 	url = https://github.com/Dwarf-Therapist/Dwarf-Therapist
 	install = dwarftherapist.install
@@ -14,8 +14,8 @@ pkgbase = dwarftherapist
 	depends = libcap
 	depends = qt5-base
 	depends = qt5-declarative
-	source = dwarftherapist-42.1.14.tar.gz::https://github.com/Dwarf-Therapist/Dwarf-Therapist/archive/v42.1.14.tar.gz
-	md5sums = 9bddba0cd064c637b5b50ae029ff3183
-	sha256sums = 9875bc6f80445d6c14cee72f89586805031357c797f41e1b6346e4d510d483b6
+	source = dwarftherapist-42.1.15.tar.gz::https://github.com/Dwarf-Therapist/Dwarf-Therapist/archive/v42.1.15.tar.gz
+	md5sums = 5a538b754d566d83418ab9a39426813c
+	sha256sums = f69813c2f0483f3036eabcd2f6e06a66ca68bdcc699ebe84dd4d02b0c4ff4bad
 
 pkgname = dwarftherapist
