@@ -6,7 +6,7 @@
 
 pkgname=bvi
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A display-oriented editor for binary files operate like 'vi' editor"
 url="https://bvi.sourceforge.net"
 arch=(i686 x86_64)
@@ -18,7 +18,7 @@ md5sums=(d96d4320a148945d3e564f2e5c6af981)
 build ()
 {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr --mandir=/usr/share/man
+  CFLAGS=-std=gnu17 ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
 
