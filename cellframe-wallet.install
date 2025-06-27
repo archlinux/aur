@@ -1,3 +1,12 @@
+pre_upgrade() {
+    if [ "$(vercmp "$2" "4.0.60")" -le 0 ]; then
+        echo "Removing old symlinks or binaries for upgrade..."
+        rm -f /usr/bin/cellframe-wallet 2>/dev/null || true
+        rm -f /usr/share/applications/CellframeWallet.desktop 2>/dev/null || true
+    fi
+}
+
+
 post_install() {
     if [ -d /opt/cellframe-node/var/lib/wallet/ ]; then
         chmod -R a+rw /opt/cellframe-node/var/lib/wallet/

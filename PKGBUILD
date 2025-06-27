@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname="cellframe-wallet"
-pkgver=4.0.56
+pkgver=4.0.70
 pkgrel=1
 pkgdesc="Official Cellframe Wallet"
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ depends=(qt6-declarative qt6-base qt6-svg qt6-5compat)
 makedepends=(git cmake libxslt)
 optdepends=('cellframe-node: Support for local node management')
 options=(!debug)
-source=("git+https://gitlab.demlabs.net/cellframe/${pkgname}.git#commit=cb597a225f3a34947df495275f658f748fca2d05"
+source=("git+https://gitlab.demlabs.net/cellframe/${pkgname}.git#commit=34cd880df66518edb9d40fa91c43f47e712dcfd8"
         "$pkgname-tmpfiles.conf")
 md5sums=('SKIP'
          '8744d1d0af5e1456bfce710a4c36af64')
@@ -28,26 +28,10 @@ build() {
 	cmake --build build
 }
 
-_gen_desktop_file() {
-	cat > "$pkgdir/usr/share/applications/CellframeWallet.desktop" <<EOF
-[Desktop Entry]
-Name=Cellframe Wallet
-Exec=/usr/bin/cellframe-wallet
-Icon=CellframeWallet
-Type=Application
-Terminal=false
-Categories=Network;Utility;
-StartupWMClass=net.cellframe.cellframe-wallet
-Name[ru_RU]=Cellframe wallet
-EOF
-}
-
 package() {
-	install -d "$pkgdir/usr/share/applications"
-	install -Dm755 "$srcdir/$pkgname/build/Cellframe-Wallet" "$pkgdir/usr/bin/cellframe-wallet"
+	install -Dm755 "$srcdir/$pkgname/build/Cellframe-Wallet" "$pkgdir/usr/local/bin/Cellframe-Wallet"
 	install -Dm644 "$srcdir/$pkgname/os/debian/share/CellframeWallet.png" "$pkgdir/usr/share/pixmaps/CellframeWallet.png"
+	install -Dm644 "$srcdir/$pkgname/os/debian/share/CellFrameWallet.desktop" "$pkgdir/usr/share/applications/CellFrameWallet.desktop"
 	install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$srcdir/$pkgname-tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-
-	_gen_desktop_file
 }
