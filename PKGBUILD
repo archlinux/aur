@@ -6,7 +6,7 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=mapnik-git
-pkgver=4.1.0.r0.g203d6f0
+pkgver=4.1.1.r0.gbb6aaa0
 pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
@@ -23,18 +23,18 @@ depends=('boost-libs'
          'libtiff'
          'libwebp'
          'libxml2'
-         'mapbox-geometry.hpp'
-         'mapbox-polylabel'
-         'mapbox-variant'
          'postgresql-libs'
          'proj'
-         'protozero'
-         'sparsehash'
          'sqlite'
          'ttf-dejavu')
 makedepends=('boost'
              'cmake'
-             'git')
+             'git'
+             'mapbox-geometry.hpp'
+             'mapbox-polylabel'
+             'mapbox-variant'
+             'protozero'
+             'sparsehash')
 conflicts=('mapnik')
 options=(staticlibs)
 provides=('mapnik')
@@ -85,7 +85,10 @@ build() {
 }
 
 check() {
-  ctest --output-on-failure --test-dir build
+  ctest \
+    --output-on-failure \
+    --parallel \
+    --test-dir build
 }
 
 package(){
