@@ -11,4 +11,4 @@ pkgbase = nginx-mod-vts
 	sha256sums = 828dc1e6ef46f3d329f4857de12d302cd11c8a4d5dc4b0948326b1c00a54b12f
 
 pkgname = nginx-mod-vts
-	depends = nginx=
+	depends = nginx

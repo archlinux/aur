@@ -30,9 +30,14 @@ build() {
 }
 
 package() {
-	local _nginx_version=$(nginx -v 2>&1)
-	_nginx_version=${_nginx_version/* nginx\/}
-	depends+=("nginx=${_nginx_version}")
+	if [[ "$BUILDTOOL" == devtools ]]; then
+		local nginx_dep="nginx=$(nginx -v 2>&1 | sed 's|.*/||')"
+		# this is added to PKGINFO data
+		depends+=($nginx_dep)
+	else
+		# this is added to SRCINFO data
+		depends+=(nginx)
+	fi
 
   install -Dm0644 "$srcdir"/nginx-module-vts-$pkgver/LICENSE \
                   "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
