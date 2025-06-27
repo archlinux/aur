@@ -1,30 +1,45 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="nudge-bin"
-_appname=Nudge
-pkgver=0.4
+pkgname=nudge-bin
+_pkgname=Nudge
+pkgver=0.6.1
+_electronversion=31
 pkgrel=1
-pkgdesc="An electron-powered application focused on personal health"
-arch=('any')
+pkgdesc="An electron-powered application focused on personal health.(Prebuilt version.Use system-wide electron)"
+arch=('x86_64')
 url="https://github.com/aasmart/Nudge"
-license=('custom')
-options=()
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
-depends=('mesa' 'libxcomposite' 'alsa-lib' 'libdrm' 'dbus' 'nspr' 'gcc-libs' 'libxcb' 'gtk3' 'libxrandr' 'glibc' 'cairo' 'libxext' \
-    'glib2' 'nss' 'libcups' 'libxdamage' 'at-spi2-core' 'libx11' 'libxfixes' 'libxkbcommon' 'pango' 'expat')
-makedepends=('npm' 'electron' 'gendesk')
-source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('81a65a4df587f7cfa05779c03c5a761f0de20ccb5b466fb19b1c78fae8a4b4dc')
-build() {
-    cd "${srcdir}/${_appname}-${pkgver}"
-    npm install
-    chmod +x ./node_modules/.bin/electron-forge
-    npm run package
+license=('ISC')
+conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
+depends=(
+    "electron${_electronversion}"
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('b6c2e916150e5a1fd18f6ee957a76dfab28f6b281033adb9470f700d83d7dc2c'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/${_appname}-${pkgver}/out/${_appname}-linux-x64/"* "${pkgdir}/opt/${pkgname%-bin}"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/resources/app/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    gendesk -f -n --icon "${pkgname%-bin}" --categories "Utility" --name "${_appname}" --exec "/opt/${pkgname%-bin}/${_appname} %U"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
