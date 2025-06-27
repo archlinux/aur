@@ -7,8 +7,8 @@
 # Contributor: heavysink <winstonwu91 at gmail>
 pkgname=wine-valve
 epoch=5
-pkgver=8.0.5
-_pkgver='8.0-5'
+pkgver=9.0.3
+_pkgver='9.0-3'
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (Valve version)'
 arch=('i686' 'x86_64')
@@ -111,10 +111,13 @@ prepare() {
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
     patch -p1 < ../futex.patch
     ./dlls/winevulkan/make_vulkan
+    ./tools/make_specfiles
 
     # Doesn't compile without remove these flags as of 4.10
-    export CFLAGS="${CFLAGS/-fno-plt/} -ffat-lto-objects"
-    export LDFLAGS="${LDFLAGS/,-z,now/}"
+    # std=gnu17 is required for gcc-15
+    export CFLAGS="${CFLAGS/-fno-plt/} -ffat-lto-objects -std=gnu17"
+    export CROSSCFLAGS="-std=gnu17"
+    export LDFLAGS="${LDFLAGS/-Wl,-z,now/}"
 
     # Get rid of old build dirs
     rm -rf $srcdir/$pkgname-{32,64}-build
@@ -189,7 +192,7 @@ package() {
   x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/x86_64-windows/*.dll
 }
 
-sha256sums=('7af74248820bdfbda65e2daa0b7a946f2fdeb60a02f994eff7ffdb0993c94c2e'
+sha256sums=('df33e623a864cfd9a48a51dd2979d5dc25a03266729faa35f09388be2fb61523'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
             '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
             '7c73a0fd35d8905d5d0fc33f5cf1558f77b4d70e544c92034ffe41a9d50d8c40')
