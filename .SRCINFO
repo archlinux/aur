@@ -1,0 +1,12 @@
+pkgbase = shoreline-git
+	pkgdesc = A very fast (200+ Gbit/s) pixelflut server written in C with full IPv6 support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TobleMiner/shoreline
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/TobleMiner/shoreline.git
+	sha256sums = SKIP
+
+pkgname = shoreline-git
