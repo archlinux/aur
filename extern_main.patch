@@ -1,0 +1,21 @@
+diff --color -ura --color src/colobot-colobot-gold-0.2.2-alpha/src/app/main.cpp src/colobot-colobot-gold-0.2.2-alpha/src/app/main.cpp
+--- src/colobot-colobot-gold-0.2.2-alpha/src/app/main.cpp	2025-06-27 15:19:06.038120594 +0200
++++ src/colobot-colobot-gold-0.2.2-alpha/src/app/main.cpp	2025-06-27 15:21:36.402122590 +0200
+@@ -102,8 +102,10 @@
+ */
+ 
+ //! Entry point to the program
++#ifdef main
+ extern "C"
+ {
++#endif
+ 
+ int main(int argc, char *argv[])
+ {
+@@ -203,4 +205,6 @@
+     return code;
+ }
+ 
++#ifdef main
+ } // extern "C"
++#endif
