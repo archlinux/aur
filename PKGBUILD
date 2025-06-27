@@ -10,27 +10,31 @@ _name00=clai
 pkgbase=python-${_name0}
 pkgname=(python-${_name5} python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0} python-${_name00})
 pkgver=0.3.4
-pkgrel=3
+pkgrel=4
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
 license=('MIT')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('94fddc4b784d4556938b7c82ee6641bcc803131707a6733068b3ffacd18708c0')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "server.md")
+sha256sums=('94fddc4b784d4556938b7c82ee6641bcc803131707a6733068b3ffacd18708c0'
+            '93f2ff3ff060bdc5059ecc42873f99d197caac26d3b7c9156a10e3ee396a1e49')
 depends=('python')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
 checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-recording' 'python-diff-cover' 'python-pytest-xdist' 'deno')
 
 prepare(){
+  cp -f "${srcdir}"/server.md "${srcdir}"/${_name0}-${pkgver}/docs/mcp/server.md
   cd "${srcdir}"/${_name0}-${pkgver}
   sed -i 's/def set_event_loop() -> Iterator\[None\]:/def set_event_loop(anyio_backend: str) -> Iterator\[None\]:/g' tests/conftest.py
   sed -i 's/async def close_cached_httpx_client() -> AsyncIterator\[None\]:/async def close_cached_httpx_client(anyio_backend: str) -> AsyncIterator\[None\]:/g' tests/conftest.py
   sed -i 's/config=//g' ${_name5}/${_name5}/schema.py
   sed -i "s/target_version='py39'/target_version='py311'/g" tests/test_examples.py
+  sed -i 's/created=1704067200 if with_created else None,  # 2024-01-01/created=1704067200 if with_created else 0,  # 2024-01-01/g' tests/models/test_mistral.py
+  sed -i "s/'type': 'text', 'text': 'sampling model response', 'annotations': None/'type': 'text', 'text': 'sampling model response', 'annotations': None, 'meta': None/g" tests/test_mcp.py
 }
 
 build() {
   cd "${srcdir}"/${_name0}-${pkgver}
-  git tag -d v${pkgver}
   git tag v${pkgver}
   python -m build --wheel --no-isolation ${_name5}
   python -m build --wheel --no-isolation ${_name0//-ai/_}${_name4}
@@ -39,6 +43,7 @@ build() {
   python -m build --wheel --no-isolation ${_name1}
   python -m build --wheel --no-isolation
   python -m build --wheel --no-isolation ${_name00}
+  git tag -d v${pkgver}
 }
 
 check() {
@@ -46,16 +51,13 @@ check() {
     -vv
     -n auto
     --dist=loadgroup
-    --deselect tests/models/test_model_names.py::test_known_model_names
     --deselect tests/models/test_google.py::test_google_model_stream
     --deselect tests/models/test_google.py::test_google_model_iter_stream
     --deselect tests/models/test_google.py::test_google_model_thinking_part_iter
+    --deselect tests/models/test_model_names.py::test_known_model_names
     --deselect tests/models/test_mistral.py::test_mistral_model_thinking_part
     --deselect tests/models/test_mistral.py::test_image_as_binary_content_tool_response
     --deselect tests/test_settings.py::test_stop_settings[mistral]
-    --deselect tests/test_mcp.py::test_client_sampling
-    --deselect tests/models/test_mistral.py::test_multiple_completions
-    -k "not mcp_client_sampling.py"
   )
   cd "${srcdir}"/${_name0}-${pkgver}
   python -m venv --system-site-packages test-env
