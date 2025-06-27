@@ -6,7 +6,7 @@ pkgbase = degumail
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = git+http://git-pub.deguco.net/degumail.git#commit=8db3381334a1b9e65e716446d5915c0c1b771321
+	source = git+https://codeberg.org/deguco/degumail.git#commit=8db3381334a1b9e65e716446d5915c0c1b771321
 	sha256sums = SKIP
 
 pkgname = degumail
