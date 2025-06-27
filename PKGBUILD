@@ -6,7 +6,7 @@
 
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
-pkgver=3.12.0
+pkgver=3.12.1
 pkgrel=1
 pkgdesc="An email, contacts and calendar server"
 arch=('x86_64' 'armv6h' 'armv7h')
@@ -19,7 +19,6 @@ makedepends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
              'zlib' 'openssl')
 checkdepends=('cunit')
 source=("https://github.com/cyrusimap/cyrus-imapd/releases/download/${pkgbase}-${pkgver}/${pkgbase}-${pkgver}.tar.gz"{,.sig}
-        "zoneinfo-db-incompatible-types.patch"
         "https://src.fedoraproject.org/rpms/cyrus-imapd/raw/4176c0e5983b3d19752f2db3860c33bafa7c259b/f/patch-cyrus-remove-always-inline-for-buf-len"
         "managesieve-libcap-dependency.patch"
         "libcyrus-imap-sieve-dependency.patch::https://github.com/cyrusimap/cyrus-imapd/pull/4996.diff"
@@ -28,9 +27,8 @@ source=("https://github.com/cyrusimap/cyrus-imapd/releases/download/${pkgbase}-$
         "cyrus-imapd.sysusers.conf"
         "cyrus-imapd.tmpfiles.conf")
 validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0')
-sha512sums=('d66c8f1b5ad72ce9dca15a574366800284b8859c0ddec61cb10d0dfd362e3eb96faab52155d45ca04132df7fe054aba88152db59031aec227a319efbad7d13a6'
+sha512sums=('ec2727eb0567ebf978ff4db9e9086bc01fdc2739b6e06cad73cf74f9af990c30a70130aa2474d822d8ca078e1012a60179101de90845bf40f7a9b47a8b5e4d92'
             'SKIP'
-            '1d45ee604c0a398bd666bb35cd25d1b4c834d59462b2ff146e1c845afbc403c6fba5481d67dffc5c686369603b2eaba4c5d7ff5427b1843fcc70319eb9550b2f'
             '575db085359af83605e89972ab20e2e1f62e67418242f954f4ed5e60d29acf66dfea07f41537327688857eddb0b310b5ee6361155a7588299d5adbaea487307a'
             '281110cc226b110cf9825cf8c3b213400a7e8a7754e40631240d3f5d424472b1e496c477c57333b94ede3b4b1acb8a99fb33fa334464aec548019849b4b2ac5c'
             '09f5a1c7710676c387509e6ad30dd83b9032febaa639a97b563dbdfcdd231aab3c0f88af9ffed8098908e3494bec5fbe4803c848e0e372bd555729b14d1bab65'
@@ -41,8 +39,6 @@ sha512sums=('d66c8f1b5ad72ce9dca15a574366800284b8859c0ddec61cb10d0dfd362e3eb96fa
 
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
-
-  patch -Np1 < "${srcdir}/zoneinfo-db-incompatible-types.patch"
 
   # https://bugzilla.redhat.com/show_bug.cgi?id=2223951
   patch -Np1 < "${srcdir}/patch-cyrus-remove-always-inline-for-buf-len"
