@@ -1,17 +1,17 @@
 # Maintainer: gfrank227 [at] gmail [dot] com
 pkgname=nordvpn-gui
-pkgver=1.0.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 arch=('x86_64')
 pkgdesc='GUI for NordVPN'
 url='https://nordvpn.com'
 license=('Proprietary')
 depends=('nordvpn' 'gtk3')
 options=('!debug')
-source=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn-gui/nordvpn-gui_1.0.0_amd64.deb")
-sha256sums=('25303dac58d53a48314aab371761c5112d0670ac8b967219afc0e7813ac76b14')
+source=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn-gui/nordvpn-gui_${pkgver}_amd64.deb")
+sha256sums=('fc602c4eca3c3eca81b546f5fdf14efec6e8614b80d4c94bc85432f6a7dfbe06')
 prepare() {
-	ar xv nordvpn-gui_1.0.0_amd64.deb
+	ar xv nordvpn-gui_${pkgver}_amd64.deb
 	tar -xvzf data.tar.gz
 }
 package() {
