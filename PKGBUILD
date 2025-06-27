@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=duckling-bin
 _pkgname=Duckling
-pkgver=0.0.46
+pkgver=0.0.48
 pkgrel=1
 pkgdesc="A fast viewer for CSV/Parquet files and databases such as DuckDB, SQLite, PostgreSQL, MySQL, Clickhouse, etc.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/l1xnan/duckling/v${pkgver}/LICENSE"
 )
-sha256sums=('ca9c6e77d124ab85bdff4e38a8ff290c1c2af591b972e6598025d832adf84a8f'
+sha256sums=('41e972687a869d7b53b7a70f27934065ec43bb1ed4471902806a34e895237c20'
             'a57ebfdf4a7893bc2ba09a6f572c55a9f4052bebe8e6f33940df766ef61a1bcd')
 prepare() {
     sed -i "s/Categories=/Categories=Development;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
