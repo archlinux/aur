@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Copyright (c) 2024-2025 Jim Philip, with Reserved Package Name "vencord-hook"
 # Copyright (c) 2022-2025 Vendicated and Vencord contributors, with Reserved Project Name "Vencord"
 
