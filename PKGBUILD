@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leafview-bin
 _pkgname=LeafView
-pkgver=3.7.0
+pkgver=3.7.1
 _electronversion=37
-pkgrel=2
+pkgrel=1
 pkgdesc="A minimalist image viewer based on Leaflet.js and Electron.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/sprout2000/leafview"
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/sprout2000/leafview/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7f244d4a41a5fdeb6675803fd0afc82f1ec328bab9df42586384fbbd7dbe28fb'
+sha256sums=('30871cbc1232bed7470fbb3fb3ab7f16230f2e6059266d664aa529f9e877bfc4'
             'e20a981e48a83690985362aa066edec95e13a4bd30d76b170b3bd5a4132f6ee4'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
