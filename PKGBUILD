@@ -2,7 +2,7 @@
 pkgname=chromium-ffmpeg-codecs-git
 _ver=7.1
 pkgver=${_ver}.m136_119
-pkgrel=1
+pkgrel=2
 _so=libffmpeg.so
 pkgdesc="Add codecs to some Chromium-s (non vendored ${_so})"
 arch=('x86_64')
@@ -38,7 +38,6 @@ build() {
   #  GetAllowedVideoDecoders at media/ffmpeg/ffmpeg_common.cc
   #  Allowed parser?
   # They are kept for long time. So $pkgname should be usable for any Chromiums...
-
   ./configure \
     --enable-gpl \
     --disable-{all,autodetect,programs,doc,iconv,network} \
@@ -49,10 +48,11 @@ build() {
     --enable-decoder=vorbis,libopus,flac,pcm_s16le,pcm_s24le,mp3,aac,h264 \
     --enable-parser=vorbis,flac,mp3,aac,opus,mov \
     --enable-libopus \
+    --extra-cflags="${LTOFLAGS}" \
     --prefix="${srcdir}"/release \
-    --enable-{pic,asm,lto} # https://www.ffmpeg.org/platform.html#toc-Advanced-linking-configuration
+    --enable-{pic,asm,hardcoded-tables} # https://www.ffmpeg.org/platform.html#toc-Advanced-linking-configuration
 
-  make $MAKEFLAGS
+  make
   make install
 
   cd ../release
@@ -68,16 +68,17 @@ build() {
 package(){
   _name=chromium-ffmpeg
   install -Dm644 release/$_so "${pkgdir}"/usr/lib/$_so
-  for p in "${pkgdir}"/usr/lib/opera{,-developer,-beta}/lib_extra
-  do
-    install -d "$p"
-    ln -sf /usr/lib/$_so "$p"/$_so
-  done
+  # Opera has strange LD_PRELOAD
+  #for p in "${pkgdir}"/usr/lib/opera{,-developer,-beta}/lib_extra
+  #do
+  #  install -d "$p"
+  #  ln -sf /usr/lib/$_so "$p"/$_so
+  #done
   install -d "${pkgdir}"/opt/vivaldi #{,-snapshot}
   for n in 7.4 7.5 7.6; do
     ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.$n
     #ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi-snapshot/${_so}.$n
   done
-  # block strange preload
+  # block LD_PRELOAD
   install -Dm644 {off,on}-opera-bundled-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
