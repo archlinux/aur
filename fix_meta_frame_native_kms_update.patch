@@ -1,0 +1,19 @@
+--- a/src/backends/native/meta-onscreen-native.c
++++ b/src/backends/native/meta-onscreen-native.c
+@@ -1640,9 +1640,13 @@ maybe_post_next_frame (CoglOnscreen *onscreen)
+   power_save_mode = meta_monitor_manager_get_power_save_mode (monitor_manager);
+   if (power_save_mode != META_POWER_SAVE_ON)
+     {
+-      meta_renderer_native_queue_power_save_page_flip (renderer_native,
+-                                                       onscreen);
+-      return;
++      frame_native = meta_frame_native_from_frame (onscreen_native->next_frame);
++      if (!meta_frame_native_has_kms_update (frame_native))
++        {
++          meta_renderer_native_queue_power_save_page_flip (renderer_native,
++                                                           onscreen);
++          return;
++        }
+     }
+ 
+   frame = g_steal_pointer (&onscreen_native->next_frame);
