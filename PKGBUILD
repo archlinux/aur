@@ -5,7 +5,7 @@
 _pkgname=wlroots
 pkgname=$_pkgname-nogpu
 pkgver=0.18.2
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='Modular Wayland compositor library. without GPU support'
 url='https://gitlab.freedesktop.org/wlroots/wlroots'
@@ -39,6 +39,7 @@ optdepends=(
 provides=(
     "libwlroots-${pkgver%.*}.so"
     "wlroots"
+    "wlroots0.18"
 )
 conflicts=("wlroots")
 source=(
