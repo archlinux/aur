@@ -4,7 +4,7 @@
 _pkgname="klevernotes"
 pkgname="$_pkgname"
 pkgver=1.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A convergent markdown note taking application"
 url="https://invent.kde.org/office/klevernotes"
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
@@ -19,6 +19,8 @@ depends=(
   'kiconthemes'
   'kio'
   'kirigami'
+  'kirigami-addons'
+  'kitemmodels'
   'qt6-base'
   'qt6-declarative'
   'qt6-webchannel'
@@ -28,6 +30,11 @@ makedepends=(
   'cmake'
   'extra-cmake-modules'
   'ninja'
+)
+checkdepends=(
+  'weston'
+  'wlheadless-run' # aur/xwayland-run
+  'xorg-xwayland'
 )
 
 _pkgsrc="$_pkgname-v$pkgver"
@@ -42,12 +49,21 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=$CHECKFUNC
     -Wno-dev
   )
 
   cmake "${_cmake_options[@]}"
   cmake --build build
+}
+
+check() {
+  local _headless_run=(
+    wlheadless-run
+    -c weston --width=1920 --height=1080
+  )
+
+  env "${_headless_run[@]}" -- ctest --test-dir build --rerun-failed --output-on-failure
 }
 
 package() {
