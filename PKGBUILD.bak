@@ -10,7 +10,7 @@ makedepends=(
 'meson' 'ninja' 'git' # Normal makedepends
 )
 depends=(
-'xorg' # Normal depends
+'xorg-server' # Normal depends
 )
 optdepends=(
 'mate-desktop' 'lightdm' # Normal optdepends
