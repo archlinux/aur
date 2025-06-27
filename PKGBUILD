@@ -2,7 +2,7 @@
 # Description: Terminal üzerinden Türkçe anime izleme aracı
 
 pkgname=anitr-cli
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Terminal üzerinden Türkçe anime izleme aracı"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('GPL3')
 depends=('mpv')
 
 optdepends=(
-  'rofi: for --rofi mode (recommended for X11 users)'
-  'rofi-wayland: for --rofi mode (recommended for Wayland users)'
+    'rofi: for --rofi mode (recommended for X11 users)'
+    'rofi-wayland: for --rofi mode (recommended for Wayland users)'
 )
 
 provides=("${pkgname}")
@@ -22,5 +22,5 @@ noextract=("${pkgname}-${pkgver}")
 sha256sums=('SKIP')
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
 }
