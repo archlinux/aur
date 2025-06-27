@@ -1,6 +1,6 @@
 pkgbase = r-extdist
 	pkgdesc = Extending the Range of Functions for Probability Distributions
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ExtDist
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-extdist
 	optdepends = r-utils
 	optdepends = r-vgam
 	optdepends = r-xtable
-	source = https://cran.r-project.org/src/contrib/ExtDist_0.7-2.tar.gz
-	sha256sums = d5e95a029cfa1288c3451dffff8222f21e77d77a128c29967cdd0a7db4ac2a73
+	source = https://cran.r-project.org/src/contrib/ExtDist_0.7-3.tar.gz
+	sha256sums = 123e964e6d03b58aab519ebbf53cc05d002ec6b663544170346abefceb690690
 
 pkgname = r-extdist
