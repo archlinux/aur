@@ -11,7 +11,3 @@ This script modifies the printer driver from the POS58 model to the **POS80** mo
 ## How to Use
 
 Please refer to the original project's instructions for building and installing, keeping in mind the driver change for POS80.# zijiang-pos80-aur-driver
-# zijiang-pos80-aur-driver
-# zijiang-pos80-aur-driver
-# zijiang-pos80-aur-driver
-# zijiang-pos80-aur-driver
