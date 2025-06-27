@@ -2,7 +2,7 @@
 
 pkgname=wdisplays-persistent
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI display configurator for wlroots compositors (with kanshi config saving)"
 url="https://github.com/petertheprocess/wdisplays"
 license=(GPL3)
@@ -25,13 +25,16 @@ _commit="d5f0e48443c8aac4357cd411b03f143f23df30ac"
 source=(
   "wdisplays-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "outputs_noop.patch"
+  "kanshi_output_names.patch"
 )
 sha512sums=('48e1d6addfae876b3f205eb114a0d79a90c9e41dccaca499ee53bab05f8d32efbd4b13c013ab23f7999ee7bc61621e52c25bd12b03d670172ffb9bbca45f0716'
+            'SKIP'
             'SKIP')
 
 prepare() {
   cd "wdisplays-$_commit"
   patch -Np1 -i ../outputs_noop.patch
+  patch -Np1 -i ../kanshi_output_names.patch
 }
 
 build() {
