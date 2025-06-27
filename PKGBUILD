@@ -119,17 +119,17 @@ package_python-awkward() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-package_python-awkward-docs() {
-  pkgdesc+=" - documentation"
+# package_python-awkward-docs() {
+#   pkgdesc+=" - documentation"
 
-  cd $pkgbase
+#   cd $pkgbase
 
-  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
-  install -vDm 644 README.md -t "$pkgdir"/usr/share/$pkgbase/README.md
+#   install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+#   install -vDm 644 README.md -t "$pkgdir"/usr/share/$pkgbase/README.md
 
-  python -m installer --destdir=tmp-install dist/*.whl
-  python -m installer --destdir=tmp-install awkward-cpp/dist/*.whl
-  install -d "$pkgdir"/usr/share/doc/$pkgbase
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  PYTHONPATH="$PWD/tmp-install/$site_packages" sphinx-build "$PWD"/docs "$pkgdir"/usr/share/doc/$pkgbase
-}
+#   python -m installer --destdir=tmp-install dist/*.whl
+#   python -m installer --destdir=tmp-install awkward-cpp/dist/*.whl
+#   install -d "$pkgdir"/usr/share/doc/$pkgbase
+#   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+#   PYTHONPATH="$PWD/tmp-install/$site_packages" sphinx-build "$PWD"/docs "$pkgdir"/usr/share/doc/$pkgbase
+# }
