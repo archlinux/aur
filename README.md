@@ -244,44 +244,21 @@ For more examples and detailed usage, visit the [CLI Usage Guide](https://nazdri
 ```console
 ❯ ngpt -h
 
-usage: ngpt [-h] [-v] [--config [CONFIG]] [--config-index CONFIG_INDEX] [--provider PROVIDER] [--remove] [--show-config]
-            [--all] [--list-models] [--list-renderers] [--cli-config [COMMAND ...]] [--role-config [ACTION ...]]
-            [--api-key API_KEY] [--base-url BASE_URL] [--model MODEL] [--web-search] [--pipe]
+usage: ngpt [-h] [-v] [--api-key API_KEY] [--base-url BASE_URL] [--model MODEL] [--web-search] [--pipe]
             [--temperature TEMPERATURE] [--top_p TOP_P] [--max_tokens MAX_TOKENS] [--log [FILE]]
-            [--preprompt PREPROMPT | --role ROLE] [--no-stream | --prettify | --stream-prettify]
+            [--preprompt PREPROMPT | --role ROLE] [--config [CONFIG]] [--config-index CONFIG_INDEX]
+            [--provider PROVIDER] [--remove] [--show-config] [--all] [--list-models] [--list-renderers]
+            [--cli-config [COMMAND ...]] [--role-config [ACTION ...]] [--no-stream | --prettify | --stream-prettify]
             [--renderer {auto,rich,glow}] [--language LANGUAGE] [--rec-chunk] [--diff [FILE]] [--chunk-size CHUNK_SIZE]
             [--analyses-chunk-size ANALYSES_CHUNK_SIZE] [--max-msg-lines MAX_MSG_LINES]
-            [--max-recursion-depth MAX_RECURSION_DEPTH] [--humanize] [--multiline] [-i | -s | -c | -t | -r | -g]
-            [prompt]
+            [--max-recursion-depth MAX_RECURSION_DEPTH] [--humanize] [-i | -s | -c | -t | -r | -g]
 
 nGPT - Interact with AI language models via OpenAI-compatible APIs
 
-positional arguments::
-
-[PROMPT]                            The prompt to send
-
-options::
+Global Options::
 
 -h, --help                          show this help message and exit
 -v, --version                       Show version information and exit
-
-Configuration Options::
-
---config [CONFIG]                   Path to a custom config file or, if no value provided, enter interactive
-                                    configuration mode to create a new config
---config-index CONFIG_INDEX         Index of the configuration to use or edit (default: 0)
---provider PROVIDER                 Provider name to identify the configuration to use
---remove                            Remove the configuration at the specified index (requires --config and
-                                    --config-index or --provider)
---show-config                       Show the current configuration(s) and exit
---all                               Show details for all configurations (requires --show-config)
---list-models                       List all available models for the current configuration and exit
---list-renderers                    Show available markdown renderers for use with --prettify
---cli-config [COMMAND ...]          Manage CLI configuration (set, get, unset, list, help)
---role-config [ACTION ...]          Manage custom roles (help, create, show, edit, list, remove) [role_name]
-
-Global Options::
-
 --api-key API_KEY                   API key for the service
 --base-url BASE_URL                 Base URL for the API
 --model MODEL                       Model to use
@@ -300,6 +277,21 @@ Global Options::
                                     --preprompt)
 --renderer {auto,rich,glow}         Select which markdown renderer to use with --prettify or --stream-prettify
                                     (auto, rich, or glow)
+
+Configuration Options::
+
+--config [CONFIG]                   Path to a custom config file or, if no value provided, enter interactive
+                                    configuration mode to create a new config
+--config-index CONFIG_INDEX         Index of the configuration to use or edit (default: 0)
+--provider PROVIDER                 Provider name to identify the configuration to use
+--remove                            Remove the configuration at the specified index (requires --config and
+                                    --config-index or --provider)
+--show-config                       Show the current configuration(s) and exit
+--all                               Show details for all configurations (requires --show-config)
+--list-models                       List all available models for the current configuration and exit
+--list-renderers                    Show available markdown renderers for use with --prettify
+--cli-config [COMMAND ...]          Manage CLI configuration (set, get, unset, list, help)
+--role-config [ACTION ...]          Manage custom roles (help, create, show, edit, list, remove) [role_name]
 
 Output Display Options (mutually exclusive)::
 
@@ -327,10 +319,6 @@ Rewrite Mode Options::
 
 --humanize                          Transform AI-generated text into human-like content that passes AI detection
                                     tools
-
-Interactive Mode Options::
-
---multiline                         Enable multiline text input with the "ml" command in interactive mode
 
 Modes (mutually exclusive)::
 
@@ -437,9 +425,6 @@ CLI Configuration Help:
 
     Code mode options (-c/--code):
       language - Type: str (default: python)
-
-    Interactive mode options (-i/--interactive):
-      interactive-multiline - Type: bool (default: False)
 
     Git commit message options (-g/--gitcommsg):
       analyses-chunk-size - Type: int (default: 200)
