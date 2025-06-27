@@ -2,7 +2,7 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
-pkgver=1.4.5
+pkgver=1.4.6
 _electron=electron35
 pkgrel=1
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
@@ -29,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('54251631a32857c69a232d23c4479f3a1d6af7bde7497c9c24a470fcd47bcc37'
+sha256sums=('a184f313d2fe6dcd916dc4d63995f8de02f58b68e6de5c969cb2e99936b8ab8e'
     '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
 
 prepare() {
@@ -56,7 +56,7 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export TMPDIR=${srcdir}
     export npm_config_nodedir=/usr
-    yarn install
+    ELECTRON_SKIP_BINARY_DOWNLOAD=1 yarn install
     export NODE_ENV=production
     yarn run build:unpack
 }
