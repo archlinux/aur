@@ -1,0 +1,14 @@
+pkgbase = pos80-driver
+	pkgdesc = Driver for the POS80 thermal printer
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.zijiang.com/
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = cups
+	makedepends = unzip
+	source = linux-driver.zip::http://www.zjiang.com/asset/upload/14920711742402.zip
+	sha256sums = 8faed310839377a479b62c1285ab3d9601270428e0b362ecd2e7cced02c24d92
+
+pkgname = pos80-driver
