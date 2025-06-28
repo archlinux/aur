@@ -1,7 +1,13 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 8d28c09..bc72155 100644
+index 8d28c09..d400713 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
+ 
+ CMAKE_POLICY(
+     SET CMP0048 NEW
 @@ -39,7 +39,7 @@ SET(P7ZIP_INCLUDE_PATH   "${P7ZIP_SOURCE_DIR}"
  
  
