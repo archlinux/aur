@@ -11,17 +11,31 @@ source=("teamspeak-client-${pkgver}.tar.gz::https://files.teamspeak-services.com
 sha256sums=('de334fbf7b90d91ced475a785d034b520e4856bbd6fdd71db6a5dd88624a552b')
 
 package() {
+    # Installiere den Client in /opt
     install -d "${pkgdir}/opt/teamspeak6"
-    cp -r "${srcdir}/teamspeak-client"/* "${pkgdir}/opt/teamspeak6"
-
-    # Make main binary executable
+    cp -r "${srcdir}/"* "${pkgdir}/opt/teamspeak6"
     chmod +x "${pkgdir}/opt/teamspeak6/TeamSpeak"
+    chmod +x "${pkgdir}/opt/teamspeak6/hotkey_helper" || true
 
-    # Create symlink for easier launch
+    # Symlink für einfache Ausführung
     install -d "${pkgdir}/usr/bin"
     ln -s /opt/teamspeak6/TeamSpeak "${pkgdir}/usr/bin/teamspeak6"
 
-    # Desktop integration
-    install -Dm644 "${srcdir}/teamspeak-client/teamspeak-client.desktop" "${pkgdir}/usr/share/applications/teamspeak6.desktop"
-    install -Dm644 "${srcdir}/teamspeak-client/logo-256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/teamspeak6.png"
+    # Desktop-Datei direkt erzeugen
+    install -d "${pkgdir}/usr/share/applications"
+    cat > "${pkgdir}/usr/share/applications/teamspeak6.desktop" <<EOF
+[Desktop Entry]
+Name=TeamSpeak 6
+Comment=Next generation TeamSpeak client
+Exec=teamspeak6
+Icon=teamspeak6
+Terminal=false
+Type=Application
+Categories=Network;Chat;VoiceChat;
+EOF
+
+    # Icons in verschiedenen Größen installieren
+    install -Dm644 "${srcdir}/logo-48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/teamspeak6.png"
+    install -Dm644 "${srcdir}/logo-128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/teamspeak6.png"
+    install -Dm644 "${srcdir}/logo-256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/teamspeak6.png"
 }
