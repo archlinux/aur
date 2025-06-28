@@ -1,7 +1,7 @@
 pkgbase = python-pywal16-git
 	pkgdesc = Generate and change color-schemes on the fly (fork that uses 16 colors)
 	pkgver = r1317.62c3c02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eylles/pywal16
 	arch = any
 	license = MIT
@@ -37,7 +37,7 @@ pkgbase = python-pywal16-git
 	conflicts = pywal
 	conflicts = python-pywal
 	conflicts = python-pywal16
-	source = python-pywal16-git::git+https://github.com/eylles/pywal16
+	source = pywal16::git+https://github.com/eylles/pywal16
 	b2sums = SKIP
 
 pkgname = python-pywal16-git

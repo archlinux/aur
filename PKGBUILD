@@ -3,9 +3,10 @@
 # Contributor: Kamil Bączkowski <me@kavela.ch>
 
 _gitname=pywal16
+_pkgname=python-pywal16
 pkgname=python-${_gitname}-git
 pkgver=r1317.62c3c02
-pkgrel=1
+pkgrel=2
 pkgdesc='Generate and change color-schemes on the fly (fork that uses 16 colors)'
 arch=('any')
 url="https://github.com/eylles/${_gitname}"
@@ -52,28 +53,28 @@ conflicts=(
   'python-pywal'
   'python-pywal16'
 )
-source=(${pkgname}::git+${url})
+source=(${_gitname}::git+${url})
 b2sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
 prepare() {
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/${_gitname}"
   echo "removing support for the discontinued schemer2 which has no license..."
   rm -v 'pywal/backends/schemer2.py'
 }
 
 build() {
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/${_gitname}"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/${_gitname}"
   export PYTHONHASHSEED=0
   python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
 
