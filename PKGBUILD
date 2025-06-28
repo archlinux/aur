@@ -14,7 +14,12 @@ b2sums=('69255f34e0d792aa1211afa37cd3532bf47066bc0b11126c707987cac342e42e191bdb8
 
 build() {
     cd "$pkgname-$pkgver"
-    go build
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build -o box .
 }
 
 package() {
