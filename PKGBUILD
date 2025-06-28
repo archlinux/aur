@@ -2,7 +2,7 @@
 pkgname=chromium-ffmpeg-codecs
 _ffver=7.1.1
 pkgver=${_ffver}.m136_119
-pkgrel=1
+pkgrel=2
 _so=libffmpeg.so
 pkgdesc="Add codecs to some Chromium-s (non vendored ${_so})"
 arch=('x86_64')
@@ -45,7 +45,7 @@ build() {
     --enable-av{format,codec,util} \
     --enable-protocol=file \
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
-    --enable-decoder=vorbis,libopus,flac,pcm_s16le,pcm_s24le,mp3,aac,h264 \
+    --enable-decoder=vorbis,libopus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=vorbis,flac,mp3,aac,opus,mov \
     --enable-libopus \
     --extra-cflags="$LTOFLAGS" \
@@ -56,10 +56,9 @@ build() {
   make install
 
   cd ../release
-  gcc $LTOFLAGS -shared $LDFLAGS -Wl,--no-as-needed  \
-    -Wl,--whole-archive \
-      lib/lib{avcodec,avformat,avutil}.a \
-    -Wl,--no-whole-archive \
+  gcc $LTOFLAGS -shared $LDFLAGS -Wl,--no-as-needed \
+    -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
+    -Wl,--no-whole-archive lib/libavutil.a -Wl,-u,avutil_version \
     $(pkgconf --libs zlib opus) \
     -Wl,-Bsymbolic \
     -o $_so
