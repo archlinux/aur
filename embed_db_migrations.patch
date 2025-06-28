@@ -1,0 +1,56 @@
+From 4a0519f01b5af1161d4430f134febd275dfacb64 Mon Sep 17 00:00:00 2001
+From: potatoattack <lvl70nub@gmail.com>
+Date: Sat, 28 Jun 2025 17:17:32 +1000
+Subject: [PATCH] fix: embed db migrations
+
+---
+ db/migrations/migrations.go |  6 ++++++
+ internal/db/psql/psql.go    | 11 +++--------
+ 2 files changed, 9 insertions(+), 8 deletions(-)
+ create mode 100644 db/migrations/migrations.go
+
+diff --git a/db/migrations/migrations.go b/db/migrations/migrations.go
+new file mode 100644
+index 0000000..381665a
+--- /dev/null
++++ b/db/migrations/migrations.go
+@@ -0,0 +1,6 @@
++package migrations
++
++import "embed"
++
++//go:embed *.sql
++var Files embed.FS
+diff --git a/internal/db/psql/psql.go b/internal/db/psql/psql.go
+index 0a917b5..3d288c0 100644
+--- a/internal/db/psql/psql.go
++++ b/internal/db/psql/psql.go
+@@ -5,10 +5,9 @@ import (
+ 	"context"
+ 	"database/sql"
+ 	"fmt"
+-	"path/filepath"
+-	"runtime"
+ 	"time"
+ 
++	"github.com/gabehf/koito/db/migrations"
+ 	"github.com/gabehf/koito/internal/cfg"
+ 	"github.com/gabehf/koito/internal/db"
+ 	"github.com/gabehf/koito/internal/repository"
+@@ -54,13 +53,9 @@ func New() (*Psql, error) {
+ 		return nil, fmt.Errorf("psql.New: failed to open db for migrations: %w", err)
+ 	}
+ 
+-	_, filename, _, ok := runtime.Caller(0)
+-	if !ok {
+-		return nil, fmt.Errorf("psql.New: unable to get caller info")
+-	}
+-	migrationsPath := filepath.Join(filepath.Dir(filename), "..", "..", "..", "db", "migrations")
++	goose.SetBaseFS(migrations.Files)
+ 
+-	if err := goose.Up(sqlDB, migrationsPath); err != nil {
++	if err := goose.Up(sqlDB, "."); err != nil {
+ 		return nil, fmt.Errorf("psql.New: goose failed: %w", err)
+ 	}
+ 	_ = sqlDB.Close()
+
