@@ -1,6 +1,6 @@
 pkgbase = google-tsunami-security-scanner-git
 	pkgdesc = A general purpose network security scanner with an extensible plugin system for detecting high severity vulnerabilities with high confidence
-	pkgver = r275.b92e9dc
+	pkgver = r315.b81570c
 	pkgrel = 1
 	url = https://github.com/google/tsunami-security-scanner
 	arch = any
