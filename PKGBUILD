@@ -6,16 +6,16 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A modern graphical package manager for Arch Linux with pacman and AUR support"
 arch=('x86_64')
-url="https://github.com/artym/arch-app-center"
+url="https://github.com/Artym227/Arch-App-Center"
 license=('MIT')
 depends=('electron' 'pacman' 'yay')
 makedepends=('npm' 'nodejs' 'typescript')
 # Use GitHub source for AUR
-source=("git+https://github.com/artym/arch-app-center.git")
+source=("git+https://github.com/Artym227/Arch-App-Center.git")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/arch-app-center"
+  cd "$srcdir/Arch-App-Center"
   # Install npm dependencies
   npm install
   # Build TypeScript to JavaScript
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/arch-app-center"
+  cd "$srcdir/Arch-App-Center"
   
   # Create necessary directories
   install -dm755 "$pkgdir/usr/lib/$pkgname"

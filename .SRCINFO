@@ -2,7 +2,7 @@ pkgbase = arch-app-center
 	pkgdesc = A modern graphical package manager for Arch Linux with pacman and AUR support
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/artym/arch-app-center
+	url = https://github.com/Artym227/Arch-App-Center
 	arch = x86_64
 	license = MIT
 	makedepends = npm
@@ -11,7 +11,7 @@ pkgbase = arch-app-center
 	depends = electron
 	depends = pacman
 	depends = yay
-	source = git+https://github.com/artym/arch-app-center.git
+	source = git+https://github.com/Artym227/Arch-App-Center.git
 	sha256sums = SKIP
 
 pkgname = arch-app-center
