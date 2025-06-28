@@ -1,6 +1,6 @@
 pkgname=netbeans-plugin-color-codes-preview
 pkgver=0.13.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A NetBenas Plugin made you can get color preview of CSS'
 arch=('any')
 license=('Apache-2.0')
