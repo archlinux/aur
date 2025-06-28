@@ -4,13 +4,13 @@
 _target=mips64-elf
 pkgname=${_target}-binutils
 pkgver=2.44
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 url="http://www.gnu.org/software/binutils/"
 arch=('x86_64')
 license=('GPL')
 depends=('libelf')
-source=("ftp://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz")
+source=("http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz")
 sha256sums=('ce2017e059d63e67ddb9240e9d4ec49c2893605035cd60e92ad53177f4377237')
 
 prepare() {
