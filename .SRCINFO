@@ -1,5 +1,6 @@
 pkgbase = fortunafetch
-	pkgdesc = THE BEST FETCH IN THE WORLD OF ALL EXISTING. 100% FASTER THAN FASTFETCH AND NEOFETCH. PROVEN BY SCIENTISTS. pkgver = 1.0
+	pkgdesc = THE BEST FETCH IN THE WORLD OF ALL EXISTING. 100% FASTER THAN FASTFETCH AND NEOFETCH. PROVEN BY SCIENTISTS.
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/alexskid/fortunafetch
 	arch = any
