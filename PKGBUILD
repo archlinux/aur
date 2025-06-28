@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tagcloud
-_pkgver=0.6
+_pkgver=0.7.0
 pkgname=r-${_pkgname,,}
-pkgver=0.6
-pkgrel=4
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='Tag Clouds'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-knitr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('94db4eb51471d3ffbc91704337645e5b418c613fad5d9369a7f2229b0480f913')
+sha256sums=('2c067ac327944e230f605feb396e05481c142e2a0688b540dd04e2c1cedb8f29')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
