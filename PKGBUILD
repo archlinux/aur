@@ -15,7 +15,6 @@ url='https://github.com/Crandel/ollama-amd-igpu'
 license=(MIT)
 options=('!lto')
 conflicts=('ollama')
-provides=("ollama=${pkgver%%.r*}")
 makedepends=(cmake ninja git go hipblas cuda clblast)
 source=(ollama::git+$url#branch=amd-igpu
         ollama-ld.conf
