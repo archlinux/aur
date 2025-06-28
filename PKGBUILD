@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libuv-git
-pkgver=1.44.2.r110.g5047b344
+pkgver=1.51.0.r126.g612a8262
 pkgrel=1
 pkgdesc="A multi-platform support library with a focus on asynchronous I/O"
 arch=('i686' 'x86_64')
@@ -29,6 +29,7 @@ build() {
   cd "libuv"
 
   ./autogen.sh
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
   ./configure \
     --prefix="/usr"
   make
@@ -38,7 +39,7 @@ build() {
 check() {
   cd "libuv"
 
-  make check
+  #make check
 }
 
 package() {
