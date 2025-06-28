@@ -94,7 +94,11 @@ build() {
   set -u
   cd "${_srcdir}"
   if [ -s 'configure.meson' ] && [ "${_opt_meson}" -ne 0 ]; then
-    ./configure.meson --prefix '/usr' 'build'
+    if grep -qe '-- ' 'configure.meson'; then
+      ./configure.meson -b 'build' -- --prefix '/usr'
+    else
+      ./configure.meson --prefix '/usr' 'build'
+    fi
     meson compile --verbose -C 'build'
   else
     bash -e -u configure
