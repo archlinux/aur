@@ -7,16 +7,10 @@ pkgdesc="Add codecs to Chromium M138+ (non vendored ${_so})"
 arch=('x86_64')
 url="https://git.ffmpeg.org/ffmpeg"
 license=('GPL-2.0-or-later')
-source=(
-https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
-)
+source=(https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch)
 sha256sums=('f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
 depends=(glibc)
-makedepends=(gcc pkgconf diffutils nasm git
-  patch
-  sed
-)
-optdepends=(chromium-ffmpeg-codecs': for Chromium M136-')
+makedepends=(gcc diffutils nasm git patch sed)
 conflicts=(vivaldi-snapshot-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 
@@ -25,7 +19,7 @@ prepare() {
   git clone --depth=1 ${url}
   cd ffmpeg
   patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
-  # Use native opus not in allowed_demuxers
+  # Use native opus decoder not in kAllowedAudioCodecs
   sed -i '/^ *\.p\.name *=.*/c\.p.name="libopus",' libavcodec/opus/dec.c
 }
 
