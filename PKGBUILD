@@ -7,9 +7,9 @@
 _pkgname='convertall'
 pkgname=${_pkgname}
 _pkgreponame='ConvertAll'
-_tag='v1.0.1'
+_tag='v1.0.2'
 pkgver="${_tag/v/}"
-pkgrel=3
+pkgrel=1
 pkgdesc='Convert between units.'
 url='https://github.com/doug-101/ConvertAll'
 arch=('x86_64')
@@ -20,10 +20,11 @@ depends=(
 	'gst-plugins-base-libs')
 makedepends=('fvm' 'git' 'patchelf' 'cmake' 'ninja' 'clang')
 source=("git+${url}.git#tag=${_tag}")
-sha256sums=('22cd74809e42e20b4fd9c3cacced9024a80ad1235553e9b18b81b5f44ef1f6c3')
+sha256sums=('7851fa79178731fd1affad0167772409780f719b8f8dcdc3ce0e6a9136465941')
 
 _srcdir="${_pkgreponame}"
-_engine_version=3.19.6
+#_engine_version=3.19.6
+_engine_version=3.32.5
 
 build() {
 	export FVM_CACHE_PATH="$SRCDEST/fvm-cache"
