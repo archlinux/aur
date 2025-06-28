@@ -44,6 +44,7 @@
 - 🎭 **System Prompts**: Customize model behavior with custom system prompts
 - 🤖 **Custom Roles**: Create and use reusable AI roles for specialized tasks
 - 📃 **Conversation Logging**: Save your conversations to text files for later reference
+- 💾 **Session Management**: Save, load, and list interactive chat sessions.
 - 🔌 **Modular Architecture**: Well-structured codebase with clean separation of concerns
 - 🔄 **Provider Switching**: Easily switch between different LLM providers with a single parameter
 - 🚀 **Performance Optimized**: Fast response times and minimal resource usage
@@ -101,6 +102,13 @@ python -m ngpt "Tell me about quantum computing"
 
 # Start an interactive chat session with conversation memory
 ngpt -i
+# Inside interactive mode, you can use commands like:
+# help     - Show help menu
+# save     - Save the current session
+# load     - Load a previous session
+# sessions - List saved sessions
+# clear    - Clear the conversation
+# exit     - Exit the session
 
 # Return response without streaming
 ngpt --no-stream "Tell me about quantum computing"
