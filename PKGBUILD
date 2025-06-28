@@ -1,37 +1,34 @@
-# Maintainer: Mateusz Kaczanowski <kaczanowski.mateusz@gmail.com>
+# Contributor: Mateusz Kaczanowski <kaczanowski.mateusz@gmail.com>
+
 pkgname='packer-post-processor-flasher-git'
 provides=('packer-post-processor-flasher')
-pkgver=4.d40a32d
+pkgver=r8.7856deb
 pkgrel=1
 pkgdesc="Packer plugin to dump image on physical device"
-arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
+arch=('x86_64')
 url="https://github.com/mkaczanowski/packer-post-processor-flasher"
-license=('APACHE')
+license=('Apache-2.0')
 depends=('glibc' 'multipath-tools')
-makedepends=('go')
-optdepends=()
-conflicts=()
-backup=()
-options=()
-source=("git://github.com/mkaczanowski/packer-post-processor-flasher.git")
+makedepends=('git' 'go')
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "packer-post-processor-flasher"
-    echo $(git rev-list --count master).$(git rev-parse --short master)
+  cd "packer-post-processor-flasher"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  export GOPATH="${srcdir}"
-
-  cd "${srcdir}/packer-post-processor-flasher"
-  go install \
-    -gcflags "all=-trimpath=${PWD}" \
-    -asmflags "all=-trimpath=${PWD}" \
-    -ldflags "-extldflags ${LDFLAGS}" \
-    ./...
+  cd "packer-post-processor-flasher"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build
 }
 
 package() {
-  install -Dm755 bin/packer-post-processor-flasher "${pkgdir}/usr/bin/packer-post-processor-flasher"
+  cd "packer-post-processor-flasher"
+  install -Dm755 packer-post-processor-flasher "${pkgdir}/usr/bin/packer-post-processor-flasher"
 }
