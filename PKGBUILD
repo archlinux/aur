@@ -1,6 +1,6 @@
 # Maintainer: Mineplack <mineplack@gmail.com>
 pkgname=mineplacktodo
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Mineplack ToDo app"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('go' 'git')
 source=("https://github.com/wizardstream/MineplackToDo/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5d3fa356a679c4f1ac4f1e697f750a7acaa4de2ce376146a60f0aa3dca468fc7') # Replace with actual checksum for production
+sha256sums=('00c417af47c756e1d3a53e8124604a7e3e8b5f14c01ac3a1cd17e255596136fe')
 
 build() {
   cd "${srcdir}/MineplackToDo-${pkgver}"
