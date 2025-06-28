@@ -1,0 +1,11 @@
+pkgbase = fortunafetch
+	pkgdesc = Fancy ASCII system info fetch script like neofetch
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://example.com
+	arch = any
+	license = MIT
+	source = fortunafetch
+	md5sums = SKIP
+
+pkgname = fortunafetch
