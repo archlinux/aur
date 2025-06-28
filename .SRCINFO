@@ -1,7 +1,7 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.19.r136.g703f805
-	pkgrel = 2
+	pkgver = 0.5.19.r153.g35990f4
+	pkgrel = 1
 	url = https://lutris.net
 	arch = any
 	license = GPL-3.0-or-later
@@ -50,7 +50,6 @@ pkgbase = lutris-git
 	optdepends = lib32-vkd3d: DirectX 12 support
 	optdepends = lib32-vulkan-icd-loader: Vulkan support
 	optdepends = libayatana-appindicator: tray icon support
-	optdepends = linux-steam-integration: start Steam with LSI
 	optdepends = mangohud: Display the games' FPS + other information
 	optdepends = python-evdev: Controller support
 	optdepends = python-pefile: Extract icons from Windows executables
