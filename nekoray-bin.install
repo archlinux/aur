@@ -1,0 +1,19 @@
+post_install() {
+cat >/usr/share/applications/nekoray.desktop<<-END
+[Desktop Entry]
+Name=nekoray
+Comment=Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
+Exec=sh -c "PATH=/opt/nekoray:$PATH /opt/nekoray/nekoray -appdata"
+Icon=/opt/nekoray/nekobox.png
+Terminal=false
+Type=Application
+Categories=Network;Application;
+END
+}
+
+pre_remove() {
+  rm -rf /opt/nekoray/config/
+}
+post_remove() {
+  rm -f /usr/share/applications/nekoray.desktop
+}

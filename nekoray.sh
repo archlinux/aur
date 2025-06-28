@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/usr/lib/nekoray/nekobox -- -appdata
+PATH=/opt/nekoray:$PATH /opt/nekoray/nekoray -appdata
