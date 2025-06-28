@@ -1,0 +1,19 @@
+pkgbase = python-fasttext-numpy2
+	pkgdesc = fasttext with one line changed to support numpy 2
+	pkgver = 0.10.4
+	pkgrel = 1
+	url = https://github.com/simon-ging/fasttext-numpy2
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = pybind11
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-pytorch
+	provides = python-fasttext-numpy2
+	conflicts = python-fasttext
+	options = !debug
+	source = python-fasttext-numpy2-git::git+https://github.com/simon-ging/fasttext-numpy2.git#commit=baf99646904e34cd2277e63dc0f1be5621c49b73
+	sha256sums = SKIP
+
+pkgname = python-fasttext-numpy2
