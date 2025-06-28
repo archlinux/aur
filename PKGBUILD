@@ -4,23 +4,22 @@ pkgbase=python-ewah-bool-utils
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="EWAH Bool Array utils for yt"
 arch=('i686' 'x86_64')
 url="https://ewah-bool-utils.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools'
-             'cython>=3.0'
-             'python-wheel'
+             'cython>=3.1.1'
              'python-build'
              'python-installer'
              'python-numpy'
-             'python-sphinx')
+             'python-sphinx')  # wheel required by new setuptools
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix-title-underline.patch')
-md5sums=('838b7aec61a271a862d51c6630d588a8'
+md5sums=('f9d607818db03ffa606377501cc5807c'
          '7c4351256659c6fe4d7d369e3ff57398')
 
 get_pyver() {
@@ -47,7 +46,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
     mv {_,}${_pyname}
 }
 
