@@ -48,7 +48,6 @@ build() {
 	  -DCMAKE_INSTALL_SBINDIR:PATH=bin \
 	  -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib/aws-lc \
 	  -DCMAKE_INSTALL_INCLUDEDIR:PATH=/usr/include/aws-lc \
-	  -DCMAKE_PROGRAM_PREFIX=aws-lc- \
 	  -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
     ninja -C build -j $(nproc)
