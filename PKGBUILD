@@ -10,7 +10,7 @@ depends=('python' 'python-requests>=2.31.0' 'python-rich>=10.0.0' 'python-prompt
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 options=(!debug)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nazdridoy/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('319eab45897aec5ecd7a07f6b076598b2039a127b4016c7418364d31ef561ecc')
+sha256sums=('1df6820d6082ef1df73e43066ab8085541da5d0567a65daec0e67b3dc43ee321')
 
 build() {
   cd "$pkgname-$pkgver"
