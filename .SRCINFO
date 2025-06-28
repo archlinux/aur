@@ -1,6 +1,6 @@
 pkgbase = sticky-rs-git
 	pkgdesc = Image sticky note app that enables users to stick pictures to the desktop and have them always visible
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/FengZhongShaoNian/sticky-rs
 	arch = any
