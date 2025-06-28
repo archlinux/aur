@@ -1,7 +1,7 @@
 pkgbase = routekit
 	pkgdesc = A tool for managing and visualizing network routes
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.5
+	pkgrel = 1
 	url = https://github.com/Hanashiko/routekit
 	arch = any
 	license = MIT
@@ -13,8 +13,8 @@ pkgbase = routekit
 	source = routekit
 	source = LICENSE
 	source = README.md
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 464745d3b028ea08ffc281787e9a56508bb2f06c33dc2dc179c2f7ba3cc13ebc
+	sha256sums = 97ad9eb02154bcf1ea19abb6b529506eb0b20df9f0aefb8b11b87af1b2c4f884
+	sha256sums = b4a40a6ef5338b4d2fb6b5c305100ce42d3ec7c9c73e95988077c14a6962f996
 
 pkgname = routekit

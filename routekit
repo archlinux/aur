@@ -91,7 +91,7 @@ class RouteKit:
         return f"\n{Colors.BOLD}{Colors.CYAN}{line}{Colors.ENDC}\n{Colors.BOLD}{Colors.HEADER}{title:^80}{Colors.ENDC}\n{Colors.BOLD}{Colors.CYAN}{line}{Colors.ENDC}"
     
     def show_routes(self, table: str = "main") -> None:
-        print(self.format_table_header(f" Routing Table: ({table}) "))
+        print(self.format_table_header(f"🛣️  Routing Table: ({table}) "))
         
         cmd = ["ip", "route", "show"]
         if table != "main":
@@ -99,11 +99,11 @@ class RouteKit:
             
         success, output = self.run_command(cmd)
         if not success:
-            print(f"{Colors.FAIL}Error: {output}{Colors.ENDC}")
+            print(f"{Colors.FAIL}❌ Error: {output}{Colors.ENDC}")
             return
         
         if not output:
-            print(f"{Colors.WARNING}No routes found in table '{table}'.{Colors.ENDC}")
+            print(f"{Colors.WARNING}⚠️  No routes found in table '{table}'.{Colors.ENDC}")
             return
         
         print(f"\n{Colors.BOLD}{Colors.BLUE}{'Destination':<20} {'Gateway':<15} {'Interface':<10} {'Metric':<8} {'Scope':<10} {'Proto':<10}{Colors.ENDC}")
@@ -121,6 +121,132 @@ class RouteKit:
                       f"{route.metric:<8} "
                       f"{route.scope:<10} "
                       f"{route.proto:<10}")
+                
+    def show_rules(self) -> None:
+        print(self.format_table_header("📋 Routing Rules"))
+        
+        success, output = self.run_command(["ip", "rule", "show"])
+        if not success:
+            print(f"{Colors.FAIL}❌ Error: {output}{Colors.ENDC}")
+            return
+        if not output:
+            print(f"{Colors.WARNING}⚠️  No routing rules found.{Colors.ENDC}")
+            return
+        
+        print(f"\n{Colors.BOLD}{Colors.BLUE}{'Priority':<10} {'Rule':<50} {'Table':<10}{Colors.ENDC}")
+        print(f"{Colors.BLUE}{'-' * 10} {'-' * 50} {'-' * 10}{Colors.ENDC}")
+        
+        for line in output.split('\n'):
+            if ":" in line:
+                parts = line.split(":", 1)
+                priority = parts[0].strip()
+                rule_parts = parts[1].split()
+                
+                rule_text = ' '.join(rule_parts[:-2] if len(rule_parts) > 2 else rule_parts)
+                table = rule_parts[-1] if rule_parts and rule_parts[-2] == "lookup" else ""
+                
+                print(f"{Colors.GREEN}{priority:<10}{Colors.ENDC} "
+                      f"{Colors.CYAN}{rule_text:<50}{Colors.ENDC} "
+                      f"{Colors.WARNING}{table:<10}{Colors.ENDC}")
+                
+    def route_get(self, destination: str) -> None:
+        print(self.format_table_header(f"🎯 Route for {destination} "))
+        
+        success, output = self.run_command(["ip", "route", "get", destination])
+        if not success:
+            print(f"{Colors.FAIL}❌ Error: {output}{Colors.ENDC}")
+            return
+        
+        lines = output.split('\n')
+        for line in lines:
+            if line.strip():
+                formatted_line = line
+                keywords = ["via", "dev", "src", "uid", "cache"]
+                for keyword in keywords:
+                    formatted_line = re.sub(
+                        f'\\b{keyword}\\b',
+                        f'{Colors.BOLD}{Colors.BLUE}{keyword}{Colors.ENDC}',
+                        formatted_line
+                    )
+                    
+                ip_pattern = r'\b(?:\d{1,3}\.){3}\d{1,3}\b'
+                formatted_line = re.sub(
+                    ip_pattern,
+                    lambda m: f'{Colors.GREEN}{m.group()}{Colors.ENDC}',
+                    formatted_line
+                )
+                
+                print(f"  {formatted_line}")
+                
+    def add_route(self, args: List[str]):
+        if not self.is_root:
+            print(f"{Colors.FAIL}❌ Error: This command requires root privileges.{Colors.ENDC}")
+            return
+        
+        cmd = ["ip", "route", "add"] + args
+        print(f"{Colors.CYAN}🔧 Executing command: {' '.join(cmd)}{Colors.ENDC}")
+        
+        success, output = self.run_command(cmd)
+        if success:
+            print(f"{Colors.GREEN}✅ Route added successfully.{Colors.ENDC}")
+        else:
+            print(f"{Colors.FAIL}❌ Error adding route: {output}{Colors.ENDC}")
+            
+    def delete_route(self, args: List[str]):
+        if not self.is_root:
+            print(f"{Colors.FAIL}❌ Error: This command requires root privileges.{Colors.ENDC}")
+            return
+        
+        cmd = ["ip", "route", "del"] + args
+        print(f"{Colors.CYAN}🔧 Executing command: {' '.join(cmd)}{Colors.ENDC}")
+        
+        success, output = self.run_command(cmd)
+        if success:
+            print(f"{Colors.GREEN}✅ Route deleted successfully.{Colors.ENDC}")
+        else:
+            print(f"{Colors.FAIL}❌ Error deleting route: {output}{Colors.ENDC}")
+                
+    def show_interfaces(self):
+        print(self.format_table_header("🌐 Network Interfaces"))
+        
+        success, output = self.run_command(["ip", "link", "show"])
+        if not success:
+            print(f"{Colors.FAIL}❌ Error: {output}{Colors.ENDC}")
+            return
+        
+        interfaces = []
+        current_interface = None
+        
+        for line in output.split("\n"):
+            if re.match(r'^\d+:', line):
+                if current_interface:
+                    interfaces.append(current_interface)
+                parts = line.split()
+                name = parts[1].rstrip(':')
+                state = "UP" if "UP" in line else "DOWN"
+                current_interface = {
+                    'name': name,
+                    'state': state,
+                    'addresses': []
+                }
+            elif current_interface and "inet" in line:
+                addr_match = re.search(r'inet (\S+)', line)
+                if addr_match:
+                    current_interface["addresses"].append(addr_match.group(1))
+        
+        if current_interface:
+            interfaces.append(current_interface)
+            
+        print(f"\n{Colors.BOLD}{Colors.BLUE}{'Interface':<15} {'State':<8} {'IP Address':<20}{Colors.ENDC}")
+        print(f"{Colors.BLUE}{'-' * 15} {'-' * 8} {'-' * 20}{Colors.ENDC}")
+        
+        for iface in interfaces:
+            state_color = Colors.GREEN if iface["state"] == "UP" else Colors.FAIL
+            addr_text = ", ".join(iface["addresses"]) if iface["addresses"] else "N/A"
+            
+            print(f"{Colors.CYAN}{iface['name']:<15}{Colors.ENDC} "
+                  f"{state_color}{iface['state']:<8}{Colors.ENDC} "
+                  f"{Colors.GREEN}{addr_text:<20}{Colors.ENDC}")
         
 def main():
     parser = argparse.ArgumentParser(
@@ -130,7 +256,11 @@ def main():
 Examples:
 routekit show  # Show routing table
 routekit show table local  # Show local routing table
-
+routekit rules  # Show routing rules
+routekit get 8.8.8.8  # Get route for a specific destination
+routekit add default via 192.168.1.1 dev wlan0  # Add a route
+routekit del default  # Delete a route
+routekit interfaces  # Show network interfaces
         """
     )
     
@@ -139,6 +269,19 @@ routekit show table local  # Show local routing table
     show_parser = subparsers.add_parser('show', help="Show routing table")
     show_parser.add_argument('table', nargs='?', default='main', help="Specify routing table (default: main)")
     show_parser.add_argument('table_name', nargs='?', help="Name of the routing table to show")
+    
+    subparsers.add_parser('rules', help="Show routing rules")
+    
+    get_parser = subparsers.add_parser('get', help='Get route for a specific destination')
+    get_parser.add_argument('destination', help='Destination IP address or network')
+    
+    add_parser = subparsers.add_parser('add', help='Add a route')
+    add_parser.add_argument('route_args', nargs='+', help='Route parameters')
+    
+    del_parser = subparsers.add_parser('del', help='Delete a route')
+    del_parser.add_argument('route_args', nargs='+', help='Route parameters to delete')
+    
+    subparsers.add_parser('interfaces', help='Show network interfaces')
     
     args = parser.parse_args()
     
@@ -155,11 +298,27 @@ routekit show table local  # Show local routing table
             elif hasattr(args, 'table') and args.table != 'main':
                 table = args.table
             routekit.show_routes(table)
+            
+        elif args.command == 'rules':
+            routekit.show_rules()
+            
+        elif args.command == 'get':
+            routekit.route_get(args.destination)
+            
+        elif args.command == "add":
+            routekit.add_route(args.route_args)
+            
+        elif args.command == "del":
+            routekit.delete_route(args.route_args)
+            
+        elif args.command == 'interfaces':
+            routekit.show_interfaces()
+            
     except KeyboardInterrupt:
-        print(f"\n{Colors.WARNING}Operation cancelled by user.{Colors.ENDC}")
+        print(f"\n{Colors.WARNING}⚠️  Operation cancelled by user.{Colors.ENDC}")
         sys.exit(1)
     except Exception as e:
-        print(f"{Colors.FAIL}Error: {e}{Colors.ENDC}")
+        print(f"{Colors.FAIL}❌ Unexpected error: {e}{Colors.ENDC}")
         sys.exit(1)
         
 if __name__ == "__main__":
