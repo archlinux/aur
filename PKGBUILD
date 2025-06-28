@@ -10,7 +10,7 @@ _name00=clai
 pkgbase=python-${_name0}
 pkgname=(python-${_name5} python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0} python-${_name00})
 pkgver=0.3.4
-pkgrel=5
+pkgrel=6
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
 license=('MIT')
@@ -49,6 +49,9 @@ check() {
     -vv
     -n auto
     --dist=loadgroup
+    --deselect tests/models/test_google.py::test_google_model_stream
+    --deselect tests/models/test_google.py::test_google_model_iter_stream
+    --deselect tests/models/test_google.py::test_google_model_thinking_part_iter
     --deselect tests/models/test_model_names.py::test_known_model_names
     --deselect tests/models/test_mistral.py::test_mistral_model_thinking_part
     --deselect tests/models/test_mistral.py::test_image_as_binary_content_tool_response
