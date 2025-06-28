@@ -8,6 +8,7 @@ pkgbase = openapoc-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = base-devel
+	makedepends = boost
 	depends = libvorbis
 	depends = sdl2
 	depends = libunwind
