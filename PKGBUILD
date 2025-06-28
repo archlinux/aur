@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=quarkdown
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 _jdkver=21
 pkgdesc='a Markdown based typesetting system'
@@ -15,7 +15,7 @@ makedepends=(gradle
 optdepends=('puppeteer: generate PDF output')
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('40f2c3e3bcbcaacd8aa681e0903faab30b464d684fa59b227ebf37016d7fe54b')
+sha256sums=('4db99571fa752033e1c622de5e1e50b94cdf5b17b9a0597fc51482a2a270bbb9')
 
 build() {
 	export JAVA_HOME="/usr/lib/jvm/java-$_jdkver-openjdk"
