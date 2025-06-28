@@ -1,4 +1,5 @@
 # Maintainer: ebbo
+
 pkgname=teamspeak6
 pkgver=6.0.0_beta2
 pkgrel=1
