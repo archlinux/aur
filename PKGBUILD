@@ -15,10 +15,10 @@ options=('!strip')
 # Source code archive for desktop files and icons
 source=("binvec-${pkgver}.tar.gz::https://github.com/RouHim/binvec/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('21e496c4a281416fd1d3e713c5ddf3e4e6ff8656429c7549cad662b7b454d9ec')
-sha256sums_x86_64=('397efe60e73e1597d59efa519290cd71b07e7f955c8c8303926f6ea902594bdd')
-sha256sums_aarch64=('397efe60e73e1597d59efa519290cd71b07e7f955c8c8303926f6ea902594bdd')
-sha256sums_armv7h=('397efe60e73e1597d59efa519290cd71b07e7f955c8c8303926f6ea902594bdd')
-sha256sums_armv6h=('397efe60e73e1597d59efa519290cd71b07e7f955c8c8303926f6ea902594bdd')
+sha256sums_x86_64=('a6acec26916e321d0591209cac58576f9e1f390c1fb489b64047031c517d1c7c')
+sha256sums_aarch64=('a6acec26916e321d0591209cac58576f9e1f390c1fb489b64047031c517d1c7c')
+sha256sums_armv7h=('a6acec26916e321d0591209cac58576f9e1f390c1fb489b64047031c517d1c7c')
+sha256sums_armv6h=('a6acec26916e321d0591209cac58576f9e1f390c1fb489b64047031c517d1c7c')
 
 # Map Arch Linux architectures to Rust build targets
 source_x86_64=("binvec-${pkgver}-x86_64-unknown-linux-gnu::https://github.com/RouHim/binvec/releases/download/${pkgver}/binvec-x86_64-unknown-linux-gnu")
