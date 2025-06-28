@@ -4,7 +4,7 @@
 _slug=not-things
 _name=not-things-vcv
 pkgname=vcvrack-not-things
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='not-things VCV Rack modules'
 arch=(aarch64 x86_64)
@@ -14,7 +14,7 @@ groups=(pro-audio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(git nlohmann-json simde zstd)
 source=("git+https://github.com/not-things-modular/$_name#tag=v$pkgver")
-sha256sums=('dcae02bb711fe431937b06c244581747aa1fa0f2fc42cd61428bf48c18c2ef62')
+sha256sums=('272d41edd4e62bdfa3d47a43af87419fcc690bb9ce0fa00940938dada6731ce2')
 
 prepare() {
   cd $_name
