@@ -10,13 +10,13 @@ _name00=clai
 pkgbase=python-${_name0}
 pkgname=(python-${_name5} python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0} python-${_name00})
 pkgver=0.3.4
-pkgrel=4
+pkgrel=5
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
 license=('MIT')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${_name0}-${pkgver}::git+${url}.git#tag=v${pkgver}"
         "server.md")
-sha256sums=('94fddc4b784d4556938b7c82ee6641bcc803131707a6733068b3ffacd18708c0'
+sha256sums=('ea6d289e1b429806ab054ead30c50e36db720fcb36d2abeadb76f1b6bf7785f5'
             '93f2ff3ff060bdc5059ecc42873f99d197caac26d3b7c9156a10e3ee396a1e49')
 depends=('python')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
@@ -35,7 +35,6 @@ prepare(){
 
 build() {
   cd "${srcdir}"/${_name0}-${pkgver}
-  git tag v${pkgver}
   python -m build --wheel --no-isolation ${_name5}
   python -m build --wheel --no-isolation ${_name0//-ai/_}${_name4}
   python -m build --wheel --no-isolation ${_name0//-/_}_${_name3}
@@ -43,7 +42,6 @@ build() {
   python -m build --wheel --no-isolation ${_name1}
   python -m build --wheel --no-isolation
   python -m build --wheel --no-isolation ${_name00}
-  git tag -d v${pkgver}
 }
 
 check() {
@@ -51,9 +49,6 @@ check() {
     -vv
     -n auto
     --dist=loadgroup
-    --deselect tests/models/test_google.py::test_google_model_stream
-    --deselect tests/models/test_google.py::test_google_model_iter_stream
-    --deselect tests/models/test_google.py::test_google_model_thinking_part_iter
     --deselect tests/models/test_model_names.py::test_known_model_names
     --deselect tests/models/test_mistral.py::test_mistral_model_thinking_part
     --deselect tests/models/test_mistral.py::test_image_as_binary_content_tool_response
