@@ -2,7 +2,7 @@
 
 pkgname=box
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Create a box around incoming text'
 arch=('x86_64')
 url="https://github.com/AlphaLynx0/$pkgname"

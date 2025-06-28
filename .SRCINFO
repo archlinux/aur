@@ -1,7 +1,7 @@
 pkgbase = box
 	pkgdesc = Create a box around incoming text
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AlphaLynx0/box
 	arch = x86_64
 	license = MIT
