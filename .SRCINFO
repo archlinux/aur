@@ -1,6 +1,6 @@
 pkgbase = ags-hyprpanel-git
 	pkgdesc = A Bar/Panel for Hyprland with extensive customizability
-	pkgver = r407.006e954
+	pkgver = r606.d489592
 	pkgrel = 1
 	url = https://hyprpanel.com/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = ags-hyprpanel-git
 	makedepends = meson
 	makedepends = unzip
 	makedepends = git
+	makedepends = npm
 	depends = wireplumber
 	depends = libgtop
 	depends = bluez

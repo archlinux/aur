@@ -1,7 +1,7 @@
 # Maintainer: cat_nm
 # Maintainer: jaskir
 pkgname=ags-hyprpanel-git
-pkgver=r407.006e954
+pkgver=r606.d489592
 pkgrel=1
 pkgdesc="A Bar/Panel for Hyprland with extensive customizability"
 arch=('x86_64')
@@ -28,6 +28,7 @@ makedepends=(
     'meson'
     'unzip'
     'git'
+    'npm'
 )
 optdepends=(
     'python: GPU usage tracking (NVidia only)'
@@ -53,9 +54,15 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
+prepare() {
+    cd "$srcdir/HyprPanel"
+
+    npm install
+}
+
 build() {
     cd "$srcdir/HyprPanel"
-    arch-meson --reconfigure build
+    arch-meson build
     meson compile -C build
 }
 
