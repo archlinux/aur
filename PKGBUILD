@@ -1,6 +1,6 @@
 pkgbase=qbittorrent-enhanced-ua
 pkgname=(qbittorrent-enhanced-ua qbittorrent-enhanced-ua-nox)
-pkgver=5.1.0.11
+pkgver=5.1.1.10
 pkgrel=1
 pkgdesc='An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (Enhanced Edition with original user-agent)'
 arch=('x86_64')
@@ -28,12 +28,12 @@ _tag="release-${pkgver}"
 _snapshot="${_repo}-${_tag}"
 
 source=("${url}/archive/${_tag}/${_snapshot}.tar.gz")
-sha256sums=('2642aec0e960bb7b8af92d7233ff3d7e32e07ba4cfcd16697873dd1b3f93d378')
+sha256sums=('ce2b96811a4f12ad6dde21a458d506dad947c221dd8ff560778dbb62089c4262')
 
 prepare() {
     cd "${_snapshot}"
-    sed -e 's|"qBittorrent Enhanced/"|"qBittorrent/"|' -i 'src/base/bittorrent/sessionimpl.cpp'
-    sed -e 's|^#define QBT_VERSION_BUILD .\+|#define QBT_VERSION_BUILD 0|' -i 'src/base/version.h.in'
+    sed -e '/USER_AGENT =/s/ Enhanced//' -i 'src/base/bittorrent/sessionimpl.cpp'
+    sed -e '/^#define QBT_VERSION_BUILD/s/[[:digit:]]\+/0/' -i 'src/base/version.h.in'
 }
 
 build() {
