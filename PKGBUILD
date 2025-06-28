@@ -1,6 +1,6 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=dataflare-bin
-pkgver=1.2.0 # from https://twitter.com/DataflareApp
+pkgver=2.1.0 # from https://twitter.com/DataflareApp
 pkgrel=1
 pkgdesc="Easily manage your Table, view Data, write SQL and run Query."
 arch=(x86_64 aarch64)
@@ -12,17 +12,20 @@ depends=(krb5
 	gdk-pixbuf2
 	gtk3
 	glibc
-	libsoup
 	gcc-libs
-	webkit2gtk
+	webkit2gtk-4.1
 	glib2
+	fontconfig
+	zlib
+	openssl
+	libsoup3
 )
 provides=(dataflare)
 conflicts=(dataflare)
 source_x86_64=("Dataflare-x86_64.AppImage::https://assets.dataflare.app/release/linux/x86_64/Dataflare.AppImage")
 source_aarch64=("Dataflare-aarch64.AppImage::https://assets.dataflare.app/release/linux/aarch64/Dataflare.AppImage")
-sha256sums_x86_64=('1e4e13e15e939718abfe23598afc0585440717b5bdc972977336e39985e6b41c')
-sha256sums_aarch64=('42464654a608398949af2b08d20fcf4138189dd4c893e7766872f79a2d467e1f')
+sha256sums_x86_64=('ef883e2c01ef2dcf410b44e05e40fdb06530784a0210993ae3d0e2995db50d69')
+sha256sums_aarch64=('65d60fb1edca57a398172c72f20eee505881b77957e5f5acbdce8b597455b424')
 
 prepare() {
 	chmod +x ./*.AppImage
