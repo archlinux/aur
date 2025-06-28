@@ -6,13 +6,11 @@ _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M138+ (non vendored ${_so})"
 arch=('x86_64')
 url="https://git.ffmpeg.org/ffmpeg"
-license=('GPL-3.0-or-later')
-
-source=('git+https://git.ffmpeg.org/ffmpeg.git'
+license=('GPL2+')
+source=(
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 )
-sha256sums=('SKIP'
-'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
+sha256sums=('f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
 depends=(glibc zlib)
 makedepends=(gcc pkgconf diffutils nasm git
   patch
@@ -23,6 +21,8 @@ conflicts=(vivaldi-snapshot-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 
 prepare() {
+  rm -rf ffmpeg
+  git clone --depth=1 ${url}
   cd ffmpeg
   patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
   # Use native opus not in allowed_demuxers
@@ -43,7 +43,7 @@ build() {
     --enable-av{format,codec,util} \
     --enable-protocol=file \
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
-    --enable-decoder=vorbis,opus,flac,pcm_s16le,pcm_s24le,mp3,aac,h264 \
+    --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=vorbis,flac,mp3,aac,opus,mov \
     --enable-swresample \
     --extra-cflags="${LTOFLAGS}" \
