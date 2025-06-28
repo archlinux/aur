@@ -1,0 +1,33 @@
+--- /dev/null
++++ b/pyproject.toml
+@@ -0,0 +1,29 @@
++[build-system]
++requires = ["setuptools>=45", "wheel"]
++build-backend = "setuptools.build_meta"
++
++[tool.setuptools.packages.find]
++include = ["voice2json*"]
++
++[project]
++name = "voice2json"
++version = "2.1.0"
++description = "Command-line tools for speech and intent recognition on Linux"
++requires-python = ">=3.8"
++dependencies = [
++    "aioconsole==0.2.0",
++    "aiofiles==0.5.0",
++    "aiohttp==3.7.4",
++    "jsonlines==1.2.0",
++    "networkx==2.4",
++    "pydash==4.7.6",
++    "pyyaml!=6.0.0,!=5.4.0,!=5.4.1",
++    "rhasspy-asr-kaldi~=0.6.0",
++    "rhasspy-nlu~=0.3.0",
++    "rhasspy-silence~=0.4.0",
++    "tqdm~=4.45.0",
++    "legacy-cgi",
++    "num2words"
++]
++
++[project.scripts]
++voice2json = "voice2json.__main__:main"

@@ -8,7 +8,8 @@ repos:
       files: PKGBUILD
     - id: makepkg
       name: makepkg
-      entry: makepkg --printsrcinfo > .SRCINFO
+      entry: sh -c 'makepkg --printsrcinfo > .SRCINFO'
       language: system
       files: PKGBUILD
+      pass_filenames: false
 
