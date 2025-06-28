@@ -1,7 +1,7 @@
 # Maintainer: MojArch
 
 pkgname=opera-developer
-pkgver=121.0.5566.0
+pkgver=121.0.5572.0
 pkgrel=1
 pkgdesc='A fast and secure web browser and Internet suite - developer stream'
 arch=('x86_64')
@@ -20,17 +20,18 @@ depends=(
     'shared-mime-info' 
     'hicolor-icon-theme'
     'upower'
+    'chromium-ffmpeg-codecs'
 )
-optdepends=(
-    'opera-developer-ffmpeg-codecs-bin: additional support for proprietary codecs'
-)
+#optdepends=(
+#    'opera-developer-ffmpeg-codecs-bin: additional support for proprietary codecs'
+#)
 source=(
     "https://get.geo.opera.com/pub/${pkgname}/${pkgver}/linux/${pkgname}_${pkgver}_amd64.deb"
     "opera"  
     "default"  
 )
 sha256sums=(
-    '7f1455b7511a9297abd047365317d85bc003e6054523fca40cb2b06c8b4f5694'
+    '3fe02f0631fd4214a31ade3ab2282dad693d20cd3d21f27ac3939c4119a88540'
     '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'  
     '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'  
 )
