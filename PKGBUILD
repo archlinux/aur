@@ -12,13 +12,11 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 )
 sha256sums=('SKIP'
-            'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
-depends=(glibc zlib
-# opus # use native opus instead of libopus
-)
+'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
+depends=(glibc zlib)
 makedepends=(gcc pkgconf diffutils nasm git
   patch
-  
+  sed
 )
 optdepends=(chromium-ffmpeg-codecs': for Chromium M136-')
 conflicts=(vivaldi-snapshot-ffmpeg-codecs)
@@ -27,19 +25,16 @@ provides=("${conflicts[@]}")
 prepare() {
   cd ffmpeg
   patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
+  # Use native opus not in allowed_demuxers
+  sed -i '/^ *\.p\.name *=.*/c\.p.name="libopus",' libavcodec/opus/dec.c
 }
 
 build() {
   cd ffmpeg
-  # https://github.com/chromium/chromium/blob/main/ Build subset of
+  # See https://github.com/chromium/chromium/blob/main/ Build subset of
   #  allowed_demuxers at media/filters/ffmpeg_glue.cc webm is subset of matroska
-  #  kAllowedAudioCodecs at media/ffmpeg/ffmpeg_common.cc
-  # native opus is not allowed by Chromium. But it works by unknown reason.
-  # swresample is used by native opus
-  #sed -i '/^ *\.p\.name *=.*/c\.p.name="libopus",' libavcodec/opus/dec.c ?
-  #  GetAllowedVideoDecoders at media/ffmpeg/ffmpeg_common.cc
+  #  kAllowedAudioCodecs and GetAllowedVideoDecoders at media/ffmpeg/ffmpeg_common.cc
   #  Allowed parser?
-
 
   ./configure \
     --enable-gpl \
@@ -54,13 +49,12 @@ build() {
     --extra-cflags="${LTOFLAGS}" \
     --prefix="${srcdir}"/release \
     --enable-{pic,asm,hardcoded-tables} # https://www.ffmpeg.org/platform.html#toc-Advanced-linking-configuration
-  make
   make install
 
   cd ../release
   gcc $LTOFLAGS -shared $LDFLAGS -Wl,--no-as-needed  \
     -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
-    -Wl,--no-whole-archive lib/lib{avutil,swresample}.a \
+    -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avutil_version \
     -lm $(pkgconf --libs zlib) \
     -Wl,-Bsymbolic \
     -o $_so
