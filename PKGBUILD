@@ -7,7 +7,7 @@
 
 pkgname=akkoma
 pkgver=3.15.2
-pkgrel=2
+pkgrel=3
 _erlangver=26.0.2
 _elixirver=1.15.4
 pkgdesc='faster-paced fork of Pleroma'
@@ -77,7 +77,17 @@ package() {
     mkdir -p "$pkgdir/opt/akkoma" "$pkgdir/usr/bin"
     cp -r "$pkgname/release"/* "$pkgdir/opt/akkoma"
     chmod 0750 "$pkgdir/opt/akkoma"
-    ln -s /opt/akkoma/bin/pleroma_ctl "$pkgdir/usr/bin/pleroma_ctl"
+    cat << EOF > "$pkgdir/usr/bin/akkoma-ctl"
+#!/usr/bin/bash
+
+if [ \$USER != akkoma ]; then
+    echo "must be run as akkoma user" 1>&2
+    exit 1
+fi
+
+cd /opt/akkoma && exec bin/pleroma_ctl \$@
+EOF
+    chmod +x "$pkgdir/usr/bin/akkoma-ctl"
 }
 
 
