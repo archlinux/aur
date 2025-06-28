@@ -1,7 +1,7 @@
 
 pkgname=chromium-ffmpeg-codecs-git
 pkgver=7.2.r119684.g670089304a
-pkgrel=2
+pkgrel=3
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M138+ (non vendored ${_so})"
 arch=('x86_64')
@@ -62,7 +62,7 @@ build() {
     -Wl,--whole-archive \
       lib/lib{avcodec,avformat,avutil}.a \
     -Wl,--no-whole-archive lib/libswresample.a \
-    $(pkgconf --libs zlib) \
+    -lm $(pkgconf --libs zlib) \
     -Wl,-Bsymbolic \
     -o $_so
 }
