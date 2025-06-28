@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=restfulr
-_pkgver=0.0.15
+_pkgver=0.0.16
 pkgname=r-${_pkgname,,}
-pkgver=0.0.15
+pkgver=0.0.16
 pkgrel=1
 pkgdesc='R Interface to RESTful Web Services'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
   r-runit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('40ff8f1fb2987af2223e1a855bb1680c5ce2143fbce7ebc42f1edb291f80e692')
+sha256sums=('574fd11a3f23f494ff8e94ce84d767f49d3399600d617ad26fb71b8332e93725')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
