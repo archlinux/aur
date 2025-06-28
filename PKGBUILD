@@ -3,7 +3,7 @@
 
 pkgname=vrpn
 pkgver=7.35
-pkgrel=1
+pkgrel=2
 _pkg=${pkgname}
 
 pkgdesc='Virtual Reality Peripheral Network library and tools'
@@ -27,6 +27,7 @@ build(){
   mkdir -p build && cd build
 
   cmake .. \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_INSTALL_PREFIX=/usr/ \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_TESTING=OFF \
@@ -69,10 +70,10 @@ build(){
     -DVRPN_USE_TRIVISIOCOLIBRI=OFF \
     -DVRPN_USE_USDIGITAL=OFF \
     -DVRPN_USE_VIEWPOINT=OFF \
-    -DVRPN_USE_WIIUSE=OFF 
+    -DVRPN_USE_WIIUSE=OFF
 #    -DOVR_ROOT_DIR=/usr/include/ovr-$(pkg-config --modversion libovr)/ \
 #    -DVRPN_USE_OVR=OFF \
-  
+
   make
 }
 
