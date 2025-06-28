@@ -28,7 +28,7 @@ _wil_commit=fc5dbf5
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.31.5851.102
-pkgrel=3
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
@@ -76,7 +76,7 @@ sha512sums=('cb99ba5cd3b5c5c727c6e7ec09cf062e1f16416bfe0d2f7403ab227c6e0f5a85514
             '44b228264547c4628599b5888bd177dc3ddb845094a0acebcd3d7d7665e2cda8861f7210f80f0f40531f46581f565aab3489a6a2ff3aa75c058d552b23ea8d6e'
             '5f3aa91974d7ef5633a013effb7acf729cec7d096b4740ceb9915fe7df10e2e45d0d76ffc2d36f1e16d322e7b3974653601a79b6ada05371de8fc7e80af14644'
             '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4'
-            '6fac1f6803939f736f4d571ba30da9218130f2d965d2fc22ce4c1c7f8d822ac64db44abced373ccb5cade18a20c7a5679324c8b7e30507005a6bd1f874108350')
+            '4f29c9d10f4e5f0a828f6e27d2fd3e740581b07392c6dd878cb8b6ee027625e3443c994d97ec9779cefb201776b0a95c0e0bc75c03697aa0d397b9028ed1841d')
 
 pkgver() {
   cd "${srcdir}/mozc" || exit
@@ -247,6 +247,7 @@ package_fcitx5-mozc-with-jp-dict() {
   install -D -m 644 unix/fcitx5/fcitx5/conf/waylandim.conf      "$pkgdir/usr/share/fcitx5-mozc/fcitx5/conf/waylandim.conf"
   install -D -m 644 unix/fcitx5/fcitx5/conf/xim.conf            "$pkgdir/usr/share/fcitx5-mozc/fcitx5/conf/xim.conf"
   install -D -m 644 unix/fcitx5/fcitx5/conf/mozc.conf           "$pkgdir/usr/share/fcitx5-mozc/fcitx5/conf/mozc.conf"
+  install -D -m 644 unix/fcitx5/fcitx5/conf/classicui.conf      "$pkgdir/usr/share/fcitx5-mozc/fcitx5/conf/classicui.conf"
 }
 
 package_ibus-mozc-with-jp-dict() {

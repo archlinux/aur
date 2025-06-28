@@ -74,3 +74,44 @@ index 0000000000..f62e68ea0b
 +[GroupOrder]
 +0=デフォルト
 +
+diff --git a/src/unix/fcitx5/fcitx5/conf/classicui.conf b/src/unix/fcitx5/fcitx5/conf/classicui.conf
+new file mode 100644
+index 000000000..ccb01743d
+--- /dev/null
++++ b/src/unix/fcitx5/fcitx5/conf/classicui.conf
+@@ -0,0 +1,35 @@
++# 候補ウィンドウを縦にする
++Vertical Candidate List=True
++# マウスホイールを使用して前または次のページに移動する
++WheelForPaging=True
++# フォント
++Font="Sans 10"
++# メニューフォント
++MenuFont="Sans 10"
++# トレイフォント
++TrayFont="Sans Bold 10"
++# トレイラベルのアウトライン色
++TrayOutlineColor=#000000
++# トレイラベルのテキスト色
++TrayTextColor=#ffffff
++# テキストアイコンを優先する
++PreferTextIcon=False
++# アイコンにレイアウト名を表示する
++ShowLayoutNameInIcon=True
++# 入力メソッドの言語を使用してテキストを表示する
++UseInputMethodLanguageToDisplayText=True
++# テーマ
++Theme=plasma
++# ダークテーマ
++DarkTheme=plasma
++# システムのライト/ダーク配色に従う
++UseDarkTheme=True
++# テーマとデスクトップでサポートされている場合は、システムのアクセントカラーに従う
++UseAccentColor=True
++# X11 で Per Screen DPI を使用する
++PerScreenDPI=False
++# フォント DPI を Wayland で強制する
++ForceWaylandDPI=0
++# Wayland で分数スケールを有効にする
++EnableFractionalScale=True
++
