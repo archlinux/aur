@@ -1,4 +1,4 @@
-pkgname=brooklynn-git
+pkgname=brooklynn
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Brooklynn - A minimal tiling window manager"

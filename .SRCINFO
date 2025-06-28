@@ -1,4 +1,4 @@
-pkgbase = brooklynn-git
+pkgbase = brooklynn
 	pkgdesc = Brooklynn - A minimal tiling window manager
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = brooklynn-git
 	source = git+https://github.com/FedGuy699/Brooklynn.git
 	md5sums = SKIP
 
-pkgname = brooklynn-git
+pkgname = brooklynn
