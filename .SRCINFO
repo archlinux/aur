@@ -1,7 +1,7 @@
 pkgbase = lsr-iouring-git
 	pkgdesc = ls but with io_uring
 	pkgver = 1.0.0.r1.g0c4dc41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tangled.sh/@rockorager.dev/lsr
 	arch = x86_64
 	license = MIT

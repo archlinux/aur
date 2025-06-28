@@ -1,9 +1,8 @@
 # Maintainer: c4 
 pkgname=lsr-iouring-git
 _pkgname=lsr
-_zig_cache=$(zig env | jq .global_cache_dir | tr -d '"')
 pkgver=1.0.0.r1.g0c4dc41
-pkgrel=1
+pkgrel=2
 pkgdesc="ls but with io_uring"
 arch=('x86_64')
 url="https://tangled.sh/@rockorager.dev/lsr"
@@ -21,9 +20,15 @@ sha256sums=('SKIP')
 prepare() {
   cd "$_pkgsrc"
   # PACKAGING.md -> build.zig.zon
-  for i in $(grep '\.url' build.zig.zon | sed -E 's&^.* = "(\S+)".*$&\1&'); do
-    zig fetch --global-cache-dir "$_zig_cache" "$i"
-  done
+
+  # fetch to host system $( zig env | jq .global_cache_dir | tr -d '"' ) or the default "$HOME/.cache/zig"
+# ln -s $( zig env | jq .global_cache_dir | tr -d '"' ) "$srcdir/zig-global-cache"
+#  for i in $(grep '\.url' build.zig.zon | sed -E 's&^.* = "(\S+)".*$&\1&'); do
+#    zig fetch --global-cache-dir $( zig env | jq .global_cache_dir | tr -d '"' ) "$i"
+#  done
+
+  export ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-global-cache/"
+  zig build --fetch
 }
 
 pkgver() {
@@ -41,8 +46,8 @@ build() {
     --summary all
     --prefix /usr
     --search-prefix /usr
-    --global-cache-dir "$_zig_cache"
-    --system "$_zig_cache""/p"
+    --global-cache-dir "$srcdir/zig-global-cache"
+    --system "$srcdir/zig-global-cache/p"
     -Dtarget=native-native-gnu
     -Dcpu=native
     -Doptimize=ReleaseSmall
