@@ -1,7 +1,7 @@
 # Maintainer: Erik Reider <erik.reider@protonmail.com>
 pkgname="swayfx-git"
 pkgver=r7069.03a07969
-pkgrel=3
+pkgrel=4
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
 makedepends=(
@@ -61,7 +61,6 @@ sha512sums=(
 	"SKIP")
 provides=("sway" "swayfx" "wayland-compositor")
 conflicts=("sway" "swayfx" "swayfx-git")
-options=(debug)
 install=sway.install
 
 pkgver() {
