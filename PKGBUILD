@@ -2,7 +2,7 @@
 # Contributor: Zen <dev@pyl.onl>
 
 pkgname=ugrd
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Minimalistic POSIX initramfs generator, designed for encrypted systems'
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('python-zstandard: zstd cpio compression')
 provides=('initramfs')
 backup=("etc/$pkgname/config.toml")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('1275ca182c10bf2fb4aaad8e819af1142bfee2c98bb1c054a4e9edd2b8a19cb32aa22eceab7cb024006708b4414b442e692d3fd6ab42c56cdbff9bd739e21765')
+b2sums=('2a4644b31dbf7496ba6aec0c01508731a89fcf242cdc85a9a65b52d4d2a826bebf67828b1fd34a8e00186cc9556b2fee3aa8f4d37ad88635c109764b7d4a1a11')
 
 build() {
     cd "$pkgname-$pkgver"
