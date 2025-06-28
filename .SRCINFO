@@ -1,6 +1,6 @@
 pkgbase = sticky-rs-bin
 	pkgdesc = Image sticky note app that enables users to stick pictures to the desktop and have them always visible
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/FengZhongShaoNian/sticky-rs
 	install = sticky-rs-bin.install
@@ -18,7 +18,7 @@ pkgbase = sticky-rs-bin
 	conflicts = sticky-rs-git
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/FengZhongShaoNian/sticky-rs/releases/download/v2.0.0/sticky-rs_2.0.0_amd64.deb
-	sha256sums_x86_64 = 21bcab070f1c1e6495ad48bfc887698a9b8257a110bb7342b64c5f1dba4db1c9
+	source_x86_64 = https://github.com/FengZhongShaoNian/sticky-rs/releases/download/v2.0.1/sticky-rs_2.0.1_amd64.deb
+	sha256sums_x86_64 = 150d79b50a6f5555b5744b45b7f3b1c057d1b1517de6e08c5a2012b7fca09070
 
 pkgname = sticky-rs-bin
