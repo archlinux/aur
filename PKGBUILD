@@ -1,9 +1,11 @@
 # Maintainer:
 # Contributor: Olaf Bauer <hydro@freenet.de>
 
+: ${_commit=}
+
 _pkgname='dtv-scan-tables'
 pkgname="$_pkgname-git"
-pkgver=r1303.7098bdd
+pkgver=r1309.caca23f
 pkgrel=1
 pkgdesc="Digital TV scan tables"
 url="https://git.linuxtv.org/dtv-scan-tables.git"
@@ -19,7 +21,7 @@ provides=('dtv-scan-tables')
 conflicts=('dtv-scan-tables')
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url")
+source=("$_pkgsrc"::"git+$url${_commit:+#commit=$_commit}")
 sha256sums=('SKIP')
 
 pkgver() {

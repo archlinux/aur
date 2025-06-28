@@ -1,6 +1,6 @@
 pkgbase = dtv-scan-tables-git
 	pkgdesc = Digital TV scan tables
-	pkgver = r1303.7098bdd
+	pkgver = r1309.caca23f
 	pkgrel = 1
 	url = https://git.linuxtv.org/dtv-scan-tables.git
 	arch = any
