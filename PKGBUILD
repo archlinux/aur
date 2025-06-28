@@ -3,7 +3,7 @@
 pkgname=gentoo-sources
 pkgver=6.15
 pkgrel=0
-pkgdesc="Gentoo-patched linux kernel sources installed to /usr/src/linux-6.15"
+pkgdesc="🌊 Linux kernel sources with gentoo patches installed to /usr/src/linux-6.15 🌊"
 arch=('any')
 url="https://wiki.gentoo.org/wiki/Kernel"
 license=('GPL2')

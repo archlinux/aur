@@ -1,5 +1,5 @@
 pkgbase = gentoo-sources
-	pkgdesc = Gentoo-patched linux kernel sources installed to /usr/src/linux-6.15
+	pkgdesc = 🌊 Linux kernel sources with gentoo patches installed to /usr/src/linux-6.15 🌊
 	pkgver = 6.15
 	pkgrel = 0
 	url = https://wiki.gentoo.org/wiki/Kernel
