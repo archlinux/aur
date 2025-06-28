@@ -1,0 +1,27 @@
+pkgbase = fdu-connect-git
+	pkgdesc = Go client for FDU EasyConnect (Forked from zju-connect)
+	pkgver = 0.1.0.r2.g0246386
+	pkgrel = 1
+	url = https://github.com/AkiraSalvare/fdu-connect
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = armv7h
+	arch = armv6h
+	arch = riscv64
+	arch = mips64el
+	arch = mipsel
+	arch = ppc64le
+	license = AGPL-3.0-only
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = fdu-connect
+	conflicts = fdu-connect
+	backup = etc/fdu-connect/config.toml
+	source = git+https://github.com/AkiraSalvare/fdu-connect.git#branch=main
+	source = fdu-connect.service
+	sha256sums = SKIP
+	sha256sums = 1c970554b5c531f18a60ad1a432324b83be8dc55f8df1a187ec3edaf66ce37ec
+
+pkgname = fdu-connect-git
