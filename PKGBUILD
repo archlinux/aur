@@ -3,14 +3,31 @@
 
 _pkgname=ananicy-cpp
 pkgname=ananicy-cpp-git
-pkgver=1.1.0.r5.gddbb795
+pkgver=1.1.1.r17.g7fb9ed8
 pkgrel=1
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
 arch=(x86_64 i386 armv7h)
 url="https://gitlab.com/ananicy-cpp/ananicy-cpp.git"
-license=('GPL3')
-depends=(fmt systemd libelf zlib libbpf)
-makedepends=(cmake ninja clang git nlohmann-json bpf)
+license=('GPL-3.0-or-later')
+depends=(
+  gcc-libs
+  glibc
+  libbpf
+  libelf
+  libfmt.so
+  libspdlog.so
+  systemd
+  systemd-libs
+  zlib
+)
+makedepends=(
+  bpf
+  clang
+  cmake
+  git
+  ninja
+  nlohmann-json
+)
 optdepends=("ananicy-rules-git: community rules"
             "ananicy-rules: Rules based for ananicy-cpp")
 source=("${_pkgname}::git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git")
@@ -27,24 +44,17 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  _cpuCount=$(grep -c -w ^processor /proc/cpuinfo)
-
-  export CFLAGS="${CFLAGS}"
-  export CXXFLAGS="${CXXFLAGS}"
-  export LDFLAGS="${LDFLAGS}"
-
-  # disable system spdlog
   cmake -S . -Bbuild \
         -GNinja \
-        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DUSE_EXTERNAL_SPDLOG=OFF \
+        -DUSE_EXTERNAL_SPDLOG=ON \
         -DUSE_EXTERNAL_JSON=ON \
-        -DUSE_BPF_PROC_IMPL=ON \
-        -DBPF_BUILD_LIBBPF=OFF \
-        -DUSE_EXTERNAL_FMTLIB=ON
+        -DUSE_EXTERNAL_FMTLIB=ON \
+        -DENABLE_SYSTEMD=ON \
+        -DUSE_BPF_PROC_IMPL=ON
 
-  cmake --build build --target ananicy-cpp --parallel $_cpuCount
+  cmake --build build --target ananicy-cpp
 }
 
 package() {
