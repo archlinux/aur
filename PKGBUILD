@@ -6,14 +6,14 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-pure-git
-pkgver=10.10.r96.g73b75afe551
-pkgrel=1
+pkgver=10.11.r0.gcad35b3c811
+pkgrel=2
 source=(
   "git+https://gitlab.winehq.org/wine/wine.git"
   "git+https://gitlab.winehq.org/wine/wine-staging.git"
   30-win32-aliases.conf
   wine-binfmt.conf
-  ntsync-10.10-staging.patch
+  ntsync-10.11-staging.patch
   7064.patch
   winex11.drv-Recognize-the-keyboard-in-a-locale-indep.patch
   0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch
@@ -32,7 +32,7 @@ sha256sums=(
   'SKIP'
   '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
   '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
-  '23d38008039f1992bc0a8600733940ba39fdf4541e38763516b64e83e168b4b8'
+  'fd08ab9ff881d66148fff96ae4761c0dcbf97b0d62bf90f89e7c536302c3830d'
   'a7e69169f2869a71e6eed3fe01116629ea889c26d6a7c80b48945d88d9a2a09c'
   '5f1065a4a404ee424fd80baf2c4f66f1ada83a088d56bc57e99260a2444ee006'
   '13c94740b1030818c41c8745928c8d4125386066e794a7ddcd0b2f48a09ccd60'
@@ -97,7 +97,7 @@ optdepends=(
   wine-gecko
   wine-mono
 )
-provides=("wine-staging" "wine" 'wine-wow64')
+provides=("wine-staging" "wine" "wine-wow64" "wine=${pkgver%.r*}")
 conflicts=("wine")
 makedepends=(${makedepends[@]} ${depends[@]})
 install=wine.install
@@ -113,13 +113,11 @@ prepare() {
 
   cd wine
 
-  # apply wine-staging patchset (no Esync to prevent conflicts with NTSync)
-  ../wine-staging/staging/patchinstall.py --backend=git-apply --all \
-    -W server-Signal_Thread \
-    -W eventfd_synchronization
+  # apply wine-staging patchset
+  ../wine-staging/staging/patchinstall.py --backend=git-apply --all
 
-  # NTSync for Wine 10.10
-  patch -Np1 -i "${srcdir}/ntsync-10.10-staging.patch"
+  # NTSync for Wine 10.11
+  patch -Np1 -i "${srcdir}/ntsync-10.11-staging.patch"
 
   # Use native Visual C++ DLLs, fix Windows product version
   patch -Np1 -i "${srcdir}/0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch"

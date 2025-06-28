@@ -1,0 +1,3663 @@
+diff --git a/configure.ac b/configure.ac
+index d5810a10fb8..a0358882ad8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -680,6 +680,7 @@ AC_CHECK_HEADERS(\
+ 	linux/input.h \
+ 	linux/ioctl.h \
+ 	linux/major.h \
++	linux/ntsync.h \
+ 	linux/param.h \
+ 	linux/seccomp.h \
+ 	linux/serial.h \
+diff --git a/dlls/ntdll/unix/server.c b/dlls/ntdll/unix/server.c
+index 87bdf3a6641..b1ea654ef45 100644
+--- a/dlls/ntdll/unix/server.c
++++ b/dlls/ntdll/unix/server.c
+@@ -124,7 +124,7 @@ sigset_t server_block_set;  /* signals to block during server calls */
+ static int fd_socket = -1;  /* socket to exchange file descriptors with the server */
+ static int initial_cwd = -1;
+ static pid_t server_pid;
+-static pthread_mutex_t fd_cache_mutex = PTHREAD_MUTEX_INITIALIZER;
++pthread_mutex_t fd_cache_mutex = PTHREAD_MUTEX_INITIALIZER;
+ 
+ /* atomically exchange a 64-bit value */
+ static inline LONG64 interlocked_xchg64( LONG64 *dest, LONG64 val )
+@@ -838,6 +838,21 @@ unsigned int server_wait( const union select_op *select_op, data_size_t size, UI
+ }
+ 
+ 
++/* helper function to perform a server-side wait on an internal handle without
++ * using the fast synchronization path */
++unsigned int server_wait_for_object( HANDLE handle, BOOL alertable, const LARGE_INTEGER *timeout )
++{
++    union select_op select_op;
++    UINT flags = SELECT_INTERRUPTIBLE;
++
++    if (alertable) flags |= SELECT_ALERTABLE;
++
++    select_op.wait.op = SELECT_WAIT;
++    select_op.wait.handles[0] = wine_server_obj_handle( handle );
++    return server_wait( &select_op, offsetof( union select_op, wait.handles[1] ), flags, timeout );
++}
++
++
+ /***********************************************************************
+  *              NtContinue  (NTDLL.@)
+  */
+@@ -981,7 +996,7 @@ void wine_server_send_fd( int fd )
+  *
+  * Receive a file descriptor passed from the server.
+  */
+-static int receive_fd( obj_handle_t *handle )
++int wine_server_receive_fd( obj_handle_t *handle )
+ {
+     struct iovec vec;
+     struct msghdr msghdr;
+@@ -1176,7 +1191,7 @@ int server_get_unix_fd( HANDLE handle, unsigned int wanted_access, int *unix_fd,
+                 if (type) *type = reply->type;
+                 if (options) *options = reply->options;
+                 access = reply->access;
+-                if ((fd = receive_fd( &fd_handle )) != -1)
++                if ((fd = wine_server_receive_fd( &fd_handle )) != -1)
+                 {
+                     assert( wine_server_ptr_handle(fd_handle) == handle );
+                     *needs_close = (!reply->cacheable ||
+@@ -1613,6 +1628,7 @@ size_t server_init_process(void)
+ {
+     const char *arch = getenv( "WINEARCH" );
+     const char *env_socket = getenv( "WINESERVERSOCKET" );
++    struct ntdll_thread_data *data = ntdll_get_thread_data();
+     obj_handle_t version;
+     unsigned int i;
+     int ret, reply_pipe;
+@@ -1652,7 +1668,7 @@ size_t server_init_process(void)
+     pthread_sigmask( SIG_BLOCK, &server_block_set, NULL );
+ 
+     /* receive the first thread request fd on the main socket */
+-    ntdll_get_thread_data()->request_fd = receive_fd( &version );
++    data->request_fd = wine_server_receive_fd( &version );
+ 
+ #ifdef SO_PASSCRED
+     /* now that we hopefully received the server_pid, disable SO_PASSCRED */
+@@ -1687,16 +1703,29 @@ size_t server_init_process(void)
+         req->unix_pid    = getpid();
+         req->unix_tid    = get_unix_tid();
+         req->reply_fd    = reply_pipe;
+-        req->wait_fd     = ntdll_get_thread_data()->wait_fd[1];
++        req->wait_fd     = data->wait_fd[1];
+         req->debug_level = (TRACE_ON(server) != 0);
+         wine_server_set_reply( req, supported_machines, sizeof(supported_machines) );
+-        ret = wine_server_call( req );
+-        pid               = reply->pid;
+-        tid               = reply->tid;
+-        peb->SessionId    = reply->session_id;
+-        info_size         = reply->info_size;
+-        server_start_time = reply->server_start;
+-        supported_machines_count = wine_server_reply_size( reply ) / sizeof(*supported_machines);
++        if (!(ret = wine_server_call( req )))
++        {
++            obj_handle_t handle;
++            pid               = reply->pid;
++            tid               = reply->tid;
++            peb->SessionId    = reply->session_id;
++            info_size         = reply->info_size;
++            server_start_time = reply->server_start;
++            supported_machines_count = wine_server_reply_size( reply ) / sizeof(*supported_machines);
++            if (reply->inproc_device)
++            {
++                inproc_device_fd = wine_server_receive_fd( &handle );
++                assert( handle == reply->inproc_device );
++            }
++            if (reply->alert_handle)
++            {
++                data->alert_fd = wine_server_receive_fd( &handle );
++                assert( handle == reply->alert_handle );
++            }
++        }
+     }
+     SERVER_END_REQ;
+     close( reply_pipe );
+@@ -1787,25 +1816,39 @@ void server_init_process_done(void)
+  *
+  * Send an init thread request.
+  */
+-void server_init_thread( void *entry_point, BOOL *suspend )
++void server_init_thread( struct ntdll_thread_data *data, BOOL *suspend )
+ {
++    sigset_t sigset;
+     void *teb;
+     int reply_pipe = init_thread_pipe();
+ 
+     /* always send the native TEB */
+     if (!(teb = NtCurrentTeb64())) teb = NtCurrentTeb();
+ 
++    /* We need to use fd_cache_mutex here to protect against races with
++     * other threads trying to receive fds for the fd cache,
++     * and we need to use an uninterrupted section to prevent reentrancy. */
++    server_enter_uninterrupted_section( &fd_cache_mutex, &sigset );
++
+     SERVER_START_REQ( init_thread )
+     {
+         req->unix_tid  = get_unix_tid();
+         req->teb       = wine_server_client_ptr( teb );
+-        req->entry     = wine_server_client_ptr( entry_point );
++        req->entry     = wine_server_client_ptr( data->start );
+         req->reply_fd  = reply_pipe;
+         req->wait_fd   = ntdll_get_thread_data()->wait_fd[1];
+-        wine_server_call( req );
++        if (!wine_server_call( req ) && reply->alert_handle)
++        {
++            obj_handle_t handle;
++            data->alert_fd = wine_server_receive_fd( &handle );
++            assert( handle == reply->alert_handle );
++        }
+         *suspend = reply->suspend;
+     }
+     SERVER_END_REQ;
++
++    server_leave_uninterrupted_section( &fd_cache_mutex, &sigset );
++
+     close( reply_pipe );
+ }
+ 
+@@ -1868,12 +1911,17 @@ NTSTATUS WINAPI NtDuplicateObject( HANDLE source_process, HANDLE source, HANDLE
+         return result.dup_handle.status;
+     }
+ 
++    /* hold fd_cache_mutex to prevent the fd from being added again between the
++     * call to remove_fd_from_cache and close_handle */
+     server_enter_uninterrupted_section( &fd_cache_mutex, &sigset );
+ 
+     /* always remove the cached fd; if the server request fails we'll just
+      * retrieve it again */
+     if (options & DUPLICATE_CLOSE_SOURCE)
++    {
+         fd = remove_fd_from_cache( source );
++        close_inproc_sync( source );
++    }
+ 
+     SERVER_START_REQ( dup_handle )
+     {
+@@ -1939,11 +1987,14 @@ NTSTATUS WINAPI NtClose( HANDLE handle )
+     if (HandleToLong( handle ) >= ~5 && HandleToLong( handle ) <= ~0)
+         return STATUS_SUCCESS;
+ 
++    /* hold fd_cache_mutex to prevent the fd from being added again between the
++     * call to remove_fd_from_cache and close_handle */
+     server_enter_uninterrupted_section( &fd_cache_mutex, &sigset );
+ 
+     /* always remove the cached fd; if the server request fails we'll just
+      * retrieve it again */
+     fd = remove_fd_from_cache( handle );
++    close_inproc_sync( handle );
+ 
+     SERVER_START_REQ( close_handle )
+     {
+diff --git a/dlls/ntdll/unix/sync.c b/dlls/ntdll/unix/sync.c
+index 3ad06e1f720..e4e54767c11 100644
+--- a/dlls/ntdll/unix/sync.c
++++ b/dlls/ntdll/unix/sync.c
+@@ -30,9 +30,11 @@
+ #include <assert.h>
+ #include <errno.h>
+ #include <fcntl.h>
++#include <inttypes.h>
+ #include <limits.h>
+ #include <signal.h>
+ #include <sys/types.h>
++#include <sys/ioctl.h>
+ #include <sys/mman.h>
+ #ifdef HAVE_SYS_SYSCALL_H
+ #include <sys/syscall.h>
+@@ -48,6 +50,7 @@
+ #endif
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdint.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <time.h>
+@@ -57,6 +60,9 @@
+ #ifdef HAVE_KQUEUE
+ # include <sys/event.h>
+ #endif
++#ifdef HAVE_LINUX_NTSYNC_H
++# include <linux/ntsync.h>
++#endif
+ 
+ #include "ntstatus.h"
+ #define WIN32_NO_STATUS
+@@ -70,13 +76,16 @@
+ WINE_DEFAULT_DEBUG_CHANNEL(sync);
+ 
+ HANDLE keyed_event = 0;
++int inproc_device_fd = -1;
+ 
+ static const char *debugstr_timeout( const LARGE_INTEGER *timeout )
+ {
+     if (!timeout) return "(infinite)";
+-    return wine_dbgstr_longlong( timeout->QuadPart );
++    return wine_dbg_sprintf( "%lld.%07ld", (long long)(timeout->QuadPart / TICKSPERSEC),
++                             (long)(timeout->QuadPart % TICKSPERSEC) );
+ }
+ 
++
+ /* return a monotonic time counter, in Win32 ticks */
+ static inline ULONGLONG monotonic_counter(void)
+ {
+@@ -300,6 +309,664 @@ static unsigned int validate_open_object_attributes( const OBJECT_ATTRIBUTES *at
+     return STATUS_SUCCESS;
+ }
+ 
++#ifdef NTSYNC_IOC_EVENT_READ
++
++static NTSTATUS linux_release_semaphore_obj( int obj, ULONG count, ULONG *prev_count )
++{
++    if (ioctl( obj, NTSYNC_IOC_SEM_RELEASE, &count ) < 0)
++    {
++        if (errno == EOVERFLOW) return STATUS_SEMAPHORE_LIMIT_EXCEEDED;
++        return errno_to_status( errno );
++    }
++    if (prev_count) *prev_count = count;
++    return STATUS_SUCCESS;
++}
++
++static NTSTATUS linux_query_semaphore_obj( int obj, SEMAPHORE_BASIC_INFORMATION *info )
++{
++    struct ntsync_sem_args args = {0};
++    if (ioctl( obj, NTSYNC_IOC_SEM_READ, &args ) < 0) return errno_to_status( errno );
++    info->CurrentCount = args.count;
++    info->MaximumCount = args.max;
++    return STATUS_SUCCESS;
++}
++
++static NTSTATUS linux_set_event_obj( int obj, LONG *prev_state )
++{
++    __u32 prev;
++    if (ioctl( obj, NTSYNC_IOC_EVENT_SET, &prev ) < 0) return errno_to_status( errno );
++    if (prev_state) *prev_state = prev;
++    return STATUS_SUCCESS;
++}
++
++static NTSTATUS linux_reset_event_obj( int obj, LONG *prev_state )
++{
++    __u32 prev;
++    if (ioctl( obj, NTSYNC_IOC_EVENT_RESET, &prev ) < 0) return errno_to_status( errno );
++    if (prev_state) *prev_state = prev;
++    return STATUS_SUCCESS;
++}
++
++static NTSTATUS linux_pulse_event_obj( int obj, LONG *prev_state )
++{
++    __u32 prev;
++    if (ioctl( obj, NTSYNC_IOC_EVENT_PULSE, &prev ) < 0) return errno_to_status( errno );
++    if (prev_state) *prev_state = prev;
++    return STATUS_SUCCESS;
++}
++
++static NTSTATUS linux_query_event_obj( int obj, enum inproc_sync_type type, EVENT_BASIC_INFORMATION *info )
++{
++    struct ntsync_event_args args = {0};
++    if (ioctl( obj, NTSYNC_IOC_EVENT_READ, &args ) < 0) return errno_to_status( errno );
++    info->EventType = args.manual ? NotificationEvent : SynchronizationEvent;
++    info->EventState = args.signaled;
++    return STATUS_SUCCESS;
++}
++
++static NTSTATUS linux_release_mutex_obj( int obj, LONG *prev_count )
++{
++    struct ntsync_mutex_args args = {.owner = GetCurrentThreadId()};
++    if (ioctl( obj, NTSYNC_IOC_MUTEX_UNLOCK, &args ) < 0)
++    {
++        if (errno == EOVERFLOW) return STATUS_MUTANT_LIMIT_EXCEEDED;
++        if (errno == EPERM) return STATUS_MUTANT_NOT_OWNED;
++        return errno_to_status( errno );
++    }
++    if (prev_count) *prev_count = 1 - args.count;
++    return STATUS_SUCCESS;
++}
++
++static NTSTATUS linux_query_mutex_obj( int obj, MUTANT_BASIC_INFORMATION *info )
++{
++    struct ntsync_mutex_args args = {0};
++    if (ioctl( obj, NTSYNC_IOC_MUTEX_READ, &args ) < 0)
++    {
++        if (errno == EOWNERDEAD)
++        {
++            info->AbandonedState = TRUE;
++            info->OwnedByCaller = FALSE;
++            info->CurrentCount = 1;
++            return STATUS_SUCCESS;
++        }
++        return errno_to_status( errno );
++    }
++    info->AbandonedState = FALSE;
++    info->OwnedByCaller = (args.owner == GetCurrentThreadId());
++    info->CurrentCount = 1 - args.count;
++    return STATUS_SUCCESS;
++}
++
++static NTSTATUS linux_wait_objs( int device, const DWORD count, const int *objs,
++                                 BOOLEAN wait_any, BOOLEAN alertable, const LARGE_INTEGER *timeout )
++{
++    struct ntsync_wait_args args = {0};
++    unsigned long request;
++    struct timespec now;
++    int ret;
++
++    if (!timeout || timeout->QuadPart == TIMEOUT_INFINITE)
++    {
++        args.timeout = ~(__u64)0;
++    }
++    else if (timeout->QuadPart <= 0)
++    {
++        clock_gettime( CLOCK_MONOTONIC, &now );
++        args.timeout = (now.tv_sec * NSECPERSEC) + now.tv_nsec + (-timeout->QuadPart * 100);
++    }
++    else
++    {
++        args.timeout = (timeout->QuadPart * 100) - (SECS_1601_TO_1970 * NSECPERSEC);
++        args.flags |= NTSYNC_WAIT_REALTIME;
++    }
++
++    args.objs = (uintptr_t)objs;
++    args.count = count;
++    args.owner = GetCurrentThreadId();
++    args.index = ~0u;
++
++    if (alertable) args.alert = ntdll_get_thread_data()->alert_fd;
++
++    if (wait_any || count == 1) request = NTSYNC_IOC_WAIT_ANY;
++    else request = NTSYNC_IOC_WAIT_ALL;
++
++    do { ret = ioctl( device, request, &args ); }
++    while (ret < 0 && errno == EINTR);
++
++    if (!ret)
++    {
++        if (args.index == count)
++        {
++            static const LARGE_INTEGER timeout;
++
++            ret = server_wait( NULL, 0, SELECT_INTERRUPTIBLE | SELECT_ALERTABLE, &timeout );
++            assert( ret == STATUS_USER_APC );
++            return ret;
++        }
++
++        return wait_any ? args.index : 0;
++    }
++    if (errno == EOWNERDEAD) return STATUS_ABANDONED + (wait_any ? args.index : 0);
++    if (errno == ETIMEDOUT) return STATUS_TIMEOUT;
++    return errno_to_status( errno );
++}
++
++#else /* NTSYNC_IOC_EVENT_READ */
++
++static NTSTATUS linux_release_semaphore_obj( int obj, ULONG count, ULONG *prev_count )
++{
++    return STATUS_NOT_IMPLEMENTED;
++}
++
++static NTSTATUS linux_query_semaphore_obj( int obj, SEMAPHORE_BASIC_INFORMATION *info )
++{
++    return STATUS_NOT_IMPLEMENTED;
++}
++
++static NTSTATUS linux_set_event_obj( int obj, LONG *prev_state )
++{
++    return STATUS_NOT_IMPLEMENTED;
++}
++
++static NTSTATUS linux_reset_event_obj( int obj, LONG *prev_state )
++{
++    return STATUS_NOT_IMPLEMENTED;
++}
++
++static NTSTATUS linux_pulse_event_obj( int obj, LONG *prev_state )
++{
++    return STATUS_NOT_IMPLEMENTED;
++}
++
++static NTSTATUS linux_query_event_obj( int obj, enum inproc_sync_type type, EVENT_BASIC_INFORMATION *info )
++{
++    return STATUS_NOT_IMPLEMENTED;
++}
++
++static NTSTATUS linux_release_mutex_obj( int obj, LONG *prev_count )
++{
++    return STATUS_NOT_IMPLEMENTED;
++}
++
++static NTSTATUS linux_query_mutex_obj( int obj, MUTANT_BASIC_INFORMATION *info )
++{
++    return STATUS_NOT_IMPLEMENTED;
++}
++
++static NTSTATUS linux_wait_objs( int device, const DWORD count, const int *objs,
++                                 BOOLEAN wait_any, BOOLEAN alertable, const LARGE_INTEGER *timeout )
++{
++    return STATUS_NOT_IMPLEMENTED;
++}
++
++#endif /* NTSYNC_IOC_EVENT_READ */
++
++/* It's possible for synchronization primitives to remain alive even after being
++ * closed, because a thread is still waiting on them. It's rare in practice, and
++ * documented as being undefined behaviour by Microsoft, but it works, and some
++ * applications rely on it. This means we need to refcount handles, and defer
++ * deleting them on the server side until the refcount reaches zero. We do this
++ * by having each client process hold a handle to the in-process synchronization
++ * object, as well as a private refcount. When the client refcount reaches zero,
++ * it closes the handle; when all handles are closed, the server deletes the
++ * in-process synchronization object.
++ *
++ * We also need this for signal-and-wait. The signal and wait operations aren't
++ * atomic, but we can't perform the signal and then return STATUS_INVALID_HANDLE
++ * for the wait—we need to either do both operations or neither. That means we
++ * need to grab references to both objects, and prevent them from being
++ * destroyed before we're done with them.
++ *
++ * We want lookup of objects from the cache to be very fast; ideally, it should
++ * be lock-free. We achieve this by using atomic modifications to "refcount",
++ * and guaranteeing that all other fields are valid and correct *as long as*
++ * refcount is nonzero, and we store the entire structure in memory which will
++ * never be freed.
++ *
++ * This means that acquiring the object can't use a simple atomic increment; it
++ * has to use a compare-and-swap loop to ensure that it doesn't try to increment
++ * an object with a zero refcount. That's still leagues better than a real lock,
++ * though, and release can be a single atomic decrement.
++ *
++ * It also means that threads modifying the cache need to take a lock, to
++ * prevent other threads from writing to it concurrently.
++ *
++ * It's possible for an object currently in use (by a waiter) to be closed and
++ * the same handle immediately reallocated to a different object. This should be
++ * a very rare situation, and in that case we simply don't cache the handle.
++ */
++struct inproc_sync
++{
++    LONG refcount;
++    int fd;
++    unsigned int access;
++    unsigned int type : 2;
++    unsigned int queue : 1;
++    unsigned int internal : 1;
++    unsigned int closed : 1;
++};
++
++#define INPROC_SYNC_CACHE_BLOCK_SIZE  (65536 / sizeof(struct inproc_sync))
++#define INPROC_SYNC_CACHE_ENTRIES     128
++
++static struct inproc_sync *inproc_sync_cache[INPROC_SYNC_CACHE_ENTRIES];
++static struct inproc_sync inproc_sync_cache_initial_block[INPROC_SYNC_CACHE_BLOCK_SIZE];
++
++static inline unsigned int inproc_sync_handle_to_index( HANDLE handle, unsigned int *entry )
++{
++    unsigned int idx = (wine_server_obj_handle(handle) >> 2) - 1;
++    *entry = idx / INPROC_SYNC_CACHE_BLOCK_SIZE;
++    return idx % INPROC_SYNC_CACHE_BLOCK_SIZE;
++}
++
++static struct inproc_sync *cache_inproc_sync( HANDLE handle, struct inproc_sync *sync )
++{
++    unsigned int entry, idx = inproc_sync_handle_to_index( handle, &entry );
++    struct inproc_sync *cache;
++    int refcount;
++
++    /* don't cache pseudo-handles; waiting on them is pointless anyway */
++    if ((ULONG)(ULONG_PTR)handle > 0xfffffffa) return sync;
++
++    if (entry >= INPROC_SYNC_CACHE_ENTRIES)
++    {
++        FIXME( "too many allocated handles, not caching %p\n", handle );
++        return sync;
++    }
++
++    if (!inproc_sync_cache[entry])  /* do we need to allocate a new block of entries? */
++    {
++        if (!entry) inproc_sync_cache[0] = inproc_sync_cache_initial_block;
++        else
++        {
++            static const size_t size = INPROC_SYNC_CACHE_BLOCK_SIZE * sizeof(struct inproc_sync);
++            void *ptr = anon_mmap_alloc( size, PROT_READ | PROT_WRITE );
++            if (ptr == MAP_FAILED) return sync;
++            if (InterlockedCompareExchangePointer( (void **)&inproc_sync_cache[entry], ptr, NULL ))
++                munmap( ptr, size ); /* someone beat us to it */
++        }
++    }
++
++    cache = &inproc_sync_cache[entry][idx];
++
++    if (InterlockedCompareExchange( &cache->refcount, 0, 0 ))
++    {
++        /* The handle is currently being used for another object (i.e. it was
++         * closed and then reused, but some thread is waiting on the old handle
++         * or otherwise simultaneously using the old object). We can't cache
++         * this object until the old one is completely destroyed. */
++        return sync;
++    }
++
++    cache->fd = sync->fd;
++    cache->access = sync->access;
++    cache->type = sync->type;
++    cache->queue = sync->queue;
++    cache->internal = sync->internal;
++    cache->closed = sync->closed;
++    /* Make sure we set the other members before the refcount; this store needs
++     * release semantics [paired with the load in get_cached_inproc_sync()].
++     * Set the refcount to 2 (one for the handle, one for the caller). */
++    refcount = InterlockedExchange( &cache->refcount, 2 );
++    assert( !refcount );
++
++    assert( sync->refcount == 1 );
++    memset( sync, 0, sizeof(*sync) );
++
++    return cache;
++}
++
++/* returns the previous value */
++static inline LONG interlocked_inc_if_nonzero( LONG *dest )
++{
++    LONG val, tmp;
++    for (val = *dest;; val = tmp)
++    {
++        if (!val || (tmp = InterlockedCompareExchange( dest, val + 1, val )) == val)
++            break;
++    }
++    return val;
++}
++
++static void release_inproc_sync( struct inproc_sync *sync )
++{
++    /* save the fd now; as soon as the refcount hits 0 we cannot
++     * access the cache anymore */
++    int fd = sync->fd;
++    LONG refcount = InterlockedDecrement( &sync->refcount );
++
++    assert( refcount >= 0 );
++    if (!refcount) close( fd );
++}
++
++static struct inproc_sync *get_cached_inproc_sync( HANDLE handle )
++{
++    unsigned int entry, idx = inproc_sync_handle_to_index( handle, &entry );
++    struct inproc_sync *cache;
++
++    if (entry >= INPROC_SYNC_CACHE_ENTRIES || !inproc_sync_cache[entry]) return NULL;
++
++    cache = &inproc_sync_cache[entry][idx];
++
++    /* this load needs acquire semantics [paired with the store in
++     * cache_inproc_sync()] */
++    if (!interlocked_inc_if_nonzero( &cache->refcount )) return NULL;
++
++    if (cache->closed)
++    {
++        /* The object is still being used, but "handle" has been closed. The
++         * handle value might have been reused for another object in the
++         * meantime, in which case we have to report that valid object, so
++         * force the caller to check the server. */
++        release_inproc_sync( cache );
++        return NULL;
++    }
++
++    return cache;
++}
++
++/* returns a pointer to a cache entry; if the object could not be cached,
++ * returns "cache" instead, which should be allocated on stack */
++static NTSTATUS get_inproc_sync( HANDLE handle, enum inproc_sync_type desired_type, ACCESS_MASK desired_access,
++                                 struct inproc_sync *cache, struct inproc_sync **out )
++{
++    struct inproc_sync *sync;
++    sigset_t sigset;
++    NTSTATUS ret;
++
++    /* try to find it in the cache already */
++    if ((sync = get_cached_inproc_sync( handle ))) goto done;
++
++    /* We need to use fd_cache_mutex here to protect against races with
++     * other threads trying to receive fds for the fd cache,
++     * and we need to use an uninterrupted section to prevent reentrancy.
++     * We also need fd_cache_mutex to protect against the same race with
++     * NtClose, that is, to prevent the object from being cached again between
++     * close_inproc_sync() and close_handle. */
++    server_enter_uninterrupted_section( &fd_cache_mutex, &sigset );
++
++    if ((sync = get_cached_inproc_sync( handle )))
++    {
++        server_leave_uninterrupted_section( &fd_cache_mutex, &sigset );
++        goto done;
++    }
++
++    /* try to retrieve it from the server */
++    SERVER_START_REQ( get_inproc_sync_fd )
++    {
++        req->handle = wine_server_obj_handle( handle );
++        if (!(ret = wine_server_call( req )))
++        {
++            obj_handle_t fd_handle;
++            sync = cache;
++            sync->refcount = 1;
++            sync->fd = wine_server_receive_fd( &fd_handle );
++            assert( wine_server_ptr_handle(fd_handle) == handle );
++            sync->access = reply->access;
++            sync->type = reply->type;
++            sync->queue = reply->queue;
++            sync->internal = reply->internal;
++            sync->closed = 0;
++        }
++    }
++    SERVER_END_REQ;
++
++    if (!ret) sync = cache_inproc_sync( handle, sync );
++    server_leave_uninterrupted_section( &fd_cache_mutex, &sigset );
++
++    if (ret) return ret;
++done:
++    if (desired_type != INPROC_SYNC_UNKNOWN && desired_type != sync->type)
++    {
++        release_inproc_sync( sync );
++        return STATUS_OBJECT_TYPE_MISMATCH;
++    }
++    if ((sync->access & desired_access) != desired_access)
++    {
++        release_inproc_sync( sync );
++        return STATUS_ACCESS_DENIED;
++    }
++
++    *out = sync;
++    return STATUS_SUCCESS;
++}
++
++extern unsigned int check_signal_access( struct inproc_sync *sync )
++{
++    if (sync->internal) return STATUS_OBJECT_TYPE_MISMATCH;
++
++    switch (sync->type)
++    {
++    case INPROC_SYNC_EVENT:
++        if (!(sync->access & EVENT_MODIFY_STATE)) return STATUS_ACCESS_DENIED;
++        return STATUS_SUCCESS;
++    case INPROC_SYNC_MUTEX:
++        if (!(sync->access & SYNCHRONIZE)) return STATUS_ACCESS_DENIED;
++        return STATUS_SUCCESS;
++    case INPROC_SYNC_SEMAPHORE:
++        if (!(sync->access & SEMAPHORE_MODIFY_STATE)) return STATUS_ACCESS_DENIED;
++        return STATUS_SUCCESS;
++    }
++
++    assert( 0 );
++    return STATUS_OBJECT_TYPE_MISMATCH;
++}
++
++static void select_queue(void)
++{
++    SERVER_START_REQ( select_inproc_queue )
++    {
++        req->select = 1;
++        wine_server_call( req );
++    }
++    SERVER_END_REQ;
++}
++
++static void unselect_queue( BOOL signaled )
++{
++    SERVER_START_REQ( select_inproc_queue )
++    {
++        req->signaled = signaled;
++        wine_server_call( req );
++    }
++    SERVER_END_REQ;
++}
++
++/* caller must hold fd_cache_mutex */
++void close_inproc_sync( HANDLE handle )
++{
++    struct inproc_sync *cache;
++
++    if (inproc_device_fd < 0) return;
++    if ((cache = get_cached_inproc_sync( handle )))
++    {
++        cache->closed = 1;
++        /* once for the reference we just grabbed, and once for the handle */
++        release_inproc_sync( cache );
++        release_inproc_sync( cache );
++    }
++}
++
++static NTSTATUS inproc_release_semaphore( HANDLE handle, ULONG count, ULONG *prev_count )
++{
++    struct inproc_sync cache, *sync;
++    NTSTATUS ret;
++
++    if (inproc_device_fd < 0) return STATUS_NOT_IMPLEMENTED;
++    if ((ret = get_inproc_sync( handle, INPROC_SYNC_SEMAPHORE, SEMAPHORE_MODIFY_STATE, &cache, &sync ))) return ret;
++    ret = linux_release_semaphore_obj( sync->fd, count, prev_count );
++    release_inproc_sync( sync );
++    return ret;
++}
++
++static NTSTATUS inproc_query_semaphore( HANDLE handle, SEMAPHORE_BASIC_INFORMATION *info )
++{
++    struct inproc_sync cache, *sync;
++    NTSTATUS ret;
++
++    if (inproc_device_fd < 0) return STATUS_NOT_IMPLEMENTED;
++    if ((ret = get_inproc_sync( handle, INPROC_SYNC_SEMAPHORE, SEMAPHORE_QUERY_STATE, &cache, &sync ))) return ret;
++    ret = linux_query_semaphore_obj( sync->fd, info );
++    release_inproc_sync( sync );
++    return ret;
++}
++
++static NTSTATUS inproc_set_event( HANDLE handle, LONG *prev_state )
++{
++    struct inproc_sync cache, *sync;
++    NTSTATUS ret;
++
++    if (inproc_device_fd < 0) return STATUS_NOT_IMPLEMENTED;
++    if ((ret = get_inproc_sync( handle, INPROC_SYNC_EVENT, EVENT_MODIFY_STATE, &cache, &sync ))) return ret;
++    ret = linux_set_event_obj( sync->fd, prev_state );
++    release_inproc_sync( sync );
++    return ret;
++}
++
++static NTSTATUS inproc_reset_event( HANDLE handle, LONG *prev_state )
++{
++    struct inproc_sync cache, *sync;
++    NTSTATUS ret;
++
++    if (inproc_device_fd < 0) return STATUS_NOT_IMPLEMENTED;
++    if ((ret = get_inproc_sync( handle, INPROC_SYNC_EVENT, EVENT_MODIFY_STATE, &cache, &sync ))) return ret;
++    ret = linux_reset_event_obj( sync->fd, prev_state );
++    release_inproc_sync( sync );
++    return ret;
++}
++
++static NTSTATUS inproc_pulse_event( HANDLE handle, LONG *prev_state )
++{
++    struct inproc_sync cache, *sync;
++    NTSTATUS ret;
++
++    if (inproc_device_fd < 0) return STATUS_NOT_IMPLEMENTED;
++    if ((ret = get_inproc_sync( handle, INPROC_SYNC_EVENT, EVENT_MODIFY_STATE, &cache, &sync ))) return ret;
++    ret = linux_pulse_event_obj( sync->fd, prev_state );
++    release_inproc_sync( sync );
++    return ret;
++}
++
++static NTSTATUS inproc_query_event( HANDLE handle, EVENT_BASIC_INFORMATION *info )
++{
++    struct inproc_sync cache, *sync;
++    NTSTATUS ret;
++
++    if (inproc_device_fd < 0) return STATUS_NOT_IMPLEMENTED;
++    if ((ret = get_inproc_sync( handle, INPROC_SYNC_EVENT, EVENT_QUERY_STATE, &cache, &sync ))) return ret;
++    ret = linux_query_event_obj( sync->fd, sync->type, info );
++    release_inproc_sync( sync );
++    return ret;
++}
++
++static NTSTATUS inproc_release_mutex( HANDLE handle, LONG *prev_count )
++{
++    struct inproc_sync cache, *sync;
++    NTSTATUS ret;
++
++    if (inproc_device_fd < 0) return STATUS_NOT_IMPLEMENTED;
++    if ((ret = get_inproc_sync( handle, INPROC_SYNC_MUTEX, 0, &cache, &sync ))) return ret;
++    ret = linux_release_mutex_obj( sync->fd, prev_count );
++    release_inproc_sync( sync );
++    return ret;
++}
++
++static NTSTATUS inproc_query_mutex( HANDLE handle, MUTANT_BASIC_INFORMATION *info )
++{
++    struct inproc_sync cache, *sync;
++    NTSTATUS ret;
++
++    if (inproc_device_fd < 0) return STATUS_NOT_IMPLEMENTED;
++    if ((ret = get_inproc_sync( handle, INPROC_SYNC_MUTEX, MUTANT_QUERY_STATE, &cache, &sync ))) return ret;
++    ret = linux_query_mutex_obj( sync->fd, info );
++    release_inproc_sync( sync );
++    return ret;
++}
++
++static NTSTATUS inproc_wait( DWORD count, const HANDLE *handles, BOOLEAN wait_any,
++                             BOOLEAN alertable, const LARGE_INTEGER *timeout )
++{
++    struct inproc_sync *syncs[64], cache[ARRAY_SIZE(syncs)];
++    int objs[ARRAY_SIZE(syncs)];
++    HANDLE queue = NULL;
++    NTSTATUS ret;
++
++    if (inproc_device_fd < 0) return STATUS_NOT_IMPLEMENTED;
++
++    assert( count <= ARRAY_SIZE(syncs) );
++    for (int i = 0; i < count; ++i)
++    {
++        if ((ret = get_inproc_sync( handles[i], INPROC_SYNC_UNKNOWN, SYNCHRONIZE, cache + i, &syncs[i] )))
++        {
++            while (i--) release_inproc_sync( syncs[i] );
++            return ret;
++        }
++        if (syncs[i]->queue) queue = handles[i];
++        objs[i] = syncs[i]->fd;
++    }
++
++    /* It's common to wait on the message queue alone. Some applications wait
++     * on it in fast paths, with a zero timeout. Since we take two server calls
++     * instead of one when going through inproc_wait(), and since we only need
++     * to go through that path if we're waiting on other objects, just delegate
++     * to the server if we're only waiting on the message queue. */
++    if (count == 1 && queue)
++    {
++        release_inproc_sync( syncs[0] );
++        return server_wait_for_object( handles[0], alertable, timeout );
++    }
++
++    if (queue) select_queue();
++    ret = linux_wait_objs( inproc_device_fd, count, objs, wait_any, alertable, timeout );
++    if (queue) unselect_queue( ret < count && handles[ret] == queue );
++
++    while (count--) release_inproc_sync( syncs[count] );
++    return ret;
++}
++
++static NTSTATUS inproc_signal_and_wait( HANDLE signal, HANDLE wait,
++                                        BOOLEAN alertable, const LARGE_INTEGER *timeout )
++{
++    struct inproc_sync cache[2], *signal_sync, *wait_sync;
++    HANDLE queue = NULL;
++    NTSTATUS ret;
++
++    if (inproc_device_fd < 0) return STATUS_NOT_IMPLEMENTED;
++
++    if ((ret = get_inproc_sync( signal, INPROC_SYNC_UNKNOWN, 0, cache + 0, &signal_sync ))) return ret;
++    if ((ret = check_signal_access( signal_sync )))
++    {
++        release_inproc_sync( signal_sync );
++        return ret;
++    }
++
++    if ((ret = get_inproc_sync( wait, INPROC_SYNC_UNKNOWN, SYNCHRONIZE, cache + 1, &wait_sync )))
++    {
++        release_inproc_sync( signal_sync );
++        return ret;
++    }
++    if (wait_sync->queue) queue = wait;
++
++    switch (signal_sync->type)
++    {
++    case INPROC_SYNC_EVENT:     ret = linux_set_event_obj( signal_sync->fd, NULL ); break;
++    case INPROC_SYNC_MUTEX:     ret = linux_release_mutex_obj( signal_sync->fd, NULL ); break;
++    case INPROC_SYNC_SEMAPHORE: ret = linux_release_semaphore_obj( signal_sync->fd, 1, NULL ); break;
++    default: assert( 0 ); break;
++    }
++
++    if (!ret)
++    {
++        if (queue) select_queue();
++        ret = linux_wait_objs( inproc_device_fd, 1, &wait_sync->fd, TRUE, alertable, timeout );
++        if (queue) unselect_queue( !ret );
++    }
++
++    release_inproc_sync( signal_sync );
++    release_inproc_sync( wait_sync );
++    return ret;
++}
++
+ 
+ /******************************************************************************
+  *              NtCreateSemaphore (NTDLL.@)
+@@ -311,6 +978,9 @@ NTSTATUS WINAPI NtCreateSemaphore( HANDLE *handle, ACCESS_MASK access, const OBJ
+     data_size_t len;
+     struct object_attributes *objattr;
+ 
++    TRACE( "access %#x, name %s, initial %d, max %d\n", access,
++           attr ? debugstr_us(attr->ObjectName) : "(null)", initial, max );
++
+     *handle = 0;
+     if (max <= 0 || initial < 0 || initial > max) return STATUS_INVALID_PARAMETER;
+     if ((ret = alloc_object_attributes( attr, &objattr, &len ))) return ret;
+@@ -338,6 +1008,8 @@ NTSTATUS WINAPI NtOpenSemaphore( HANDLE *handle, ACCESS_MASK access, const OBJEC
+ {
+     unsigned int ret;
+ 
++    TRACE( "access %#x, name %s\n", access, attr ? debugstr_us(attr->ObjectName) : "(null)" );
++
+     *handle = 0;
+     if ((ret = validate_open_object_attributes( attr ))) return ret;
+ 
+@@ -375,6 +1047,12 @@ NTSTATUS WINAPI NtQuerySemaphore( HANDLE handle, SEMAPHORE_INFORMATION_CLASS cla
+ 
+     if (len != sizeof(SEMAPHORE_BASIC_INFORMATION)) return STATUS_INFO_LENGTH_MISMATCH;
+ 
++    if ((ret = inproc_query_semaphore( handle, out )) != STATUS_NOT_IMPLEMENTED)
++    {
++        if (!ret && ret_len) *ret_len = sizeof(SEMAPHORE_BASIC_INFORMATION);
++        return ret;
++    }
++
+     SERVER_START_REQ( query_semaphore )
+     {
+         req->handle = wine_server_obj_handle( handle );
+@@ -397,6 +1075,11 @@ NTSTATUS WINAPI NtReleaseSemaphore( HANDLE handle, ULONG count, ULONG *previous
+ {
+     unsigned int ret;
+ 
++    TRACE( "handle %p, count %u, prev_count %p\n", handle, count, previous );
++
++    if ((ret = inproc_release_semaphore( handle, count, previous )) != STATUS_NOT_IMPLEMENTED)
++        return ret;
++
+     SERVER_START_REQ( release_semaphore )
+     {
+         req->handle = wine_server_obj_handle( handle );
+@@ -421,6 +1104,9 @@ NTSTATUS WINAPI NtCreateEvent( HANDLE *handle, ACCESS_MASK access, const OBJECT_
+     data_size_t len;
+     struct object_attributes *objattr;
+ 
++    TRACE( "access %#x, name %s, type %u, state %u\n", access,
++           attr ? debugstr_us(attr->ObjectName) : "(null)", type, state );
++
+     *handle = 0;
+     if (type != NotificationEvent && type != SynchronizationEvent) return STATUS_INVALID_PARAMETER;
+     if ((ret = alloc_object_attributes( attr, &objattr, &len ))) return ret;
+@@ -448,6 +1134,8 @@ NTSTATUS WINAPI NtOpenEvent( HANDLE *handle, ACCESS_MASK access, const OBJECT_AT
+ {
+     unsigned int ret;
+ 
++    TRACE( "access %#x, name %s\n", access, attr ? debugstr_us(attr->ObjectName) : "(null)" );
++
+     *handle = 0;
+     if ((ret = validate_open_object_attributes( attr ))) return ret;
+ 
+@@ -473,6 +1161,11 @@ NTSTATUS WINAPI NtSetEvent( HANDLE handle, LONG *prev_state )
+ {
+     unsigned int ret;
+ 
++    TRACE( "handle %p, prev_state %p\n", handle, prev_state );
++
++    if ((ret = inproc_set_event( handle, prev_state )) != STATUS_NOT_IMPLEMENTED)
++        return ret;
++
+     SERVER_START_REQ( event_op )
+     {
+         req->handle = wine_server_obj_handle( handle );
+@@ -492,6 +1185,11 @@ NTSTATUS WINAPI NtResetEvent( HANDLE handle, LONG *prev_state )
+ {
+     unsigned int ret;
+ 
++    TRACE( "handle %p, prev_state %p\n", handle, prev_state );
++
++    if ((ret = inproc_reset_event( handle, prev_state )) != STATUS_NOT_IMPLEMENTED)
++        return ret;
++
+     SERVER_START_REQ( event_op )
+     {
+         req->handle = wine_server_obj_handle( handle );
+@@ -521,6 +1219,11 @@ NTSTATUS WINAPI NtPulseEvent( HANDLE handle, LONG *prev_state )
+ {
+     unsigned int ret;
+ 
++    TRACE( "handle %p, prev_state %p\n", handle, prev_state );
++
++    if ((ret = inproc_pulse_event( handle, prev_state )) != STATUS_NOT_IMPLEMENTED)
++        return ret;
++
+     SERVER_START_REQ( event_op )
+     {
+         req->handle = wine_server_obj_handle( handle );
+@@ -552,6 +1255,12 @@ NTSTATUS WINAPI NtQueryEvent( HANDLE handle, EVENT_INFORMATION_CLASS class,
+ 
+     if (len != sizeof(EVENT_BASIC_INFORMATION)) return STATUS_INFO_LENGTH_MISMATCH;
+ 
++    if ((ret = inproc_query_event( handle, out )) != STATUS_NOT_IMPLEMENTED)
++    {
++        if (!ret && ret_len) *ret_len = sizeof(EVENT_BASIC_INFORMATION);
++        return ret;
++    }
++
+     SERVER_START_REQ( query_event )
+     {
+         req->handle = wine_server_obj_handle( handle );
+@@ -577,6 +1286,9 @@ NTSTATUS WINAPI NtCreateMutant( HANDLE *handle, ACCESS_MASK access, const OBJECT
+     data_size_t len;
+     struct object_attributes *objattr;
+ 
++    TRACE( "access %#x, name %s, owned %u\n", access,
++           attr ? debugstr_us(attr->ObjectName) : "(null)", owned );
++
+     *handle = 0;
+     if ((ret = alloc_object_attributes( attr, &objattr, &len ))) return ret;
+ 
+@@ -602,6 +1314,8 @@ NTSTATUS WINAPI NtOpenMutant( HANDLE *handle, ACCESS_MASK access, const OBJECT_A
+ {
+     unsigned int ret;
+ 
++    TRACE( "access %#x, name %s\n", access, attr ? debugstr_us(attr->ObjectName) : "(null)" );
++
+     *handle = 0;
+     if ((ret = validate_open_object_attributes( attr ))) return ret;
+ 
+@@ -627,6 +1341,11 @@ NTSTATUS WINAPI NtReleaseMutant( HANDLE handle, LONG *prev_count )
+ {
+     unsigned int ret;
+ 
++    TRACE( "handle %p, prev_count %p\n", handle, prev_count );
++
++    if ((ret = inproc_release_mutex( handle, prev_count )) != STATUS_NOT_IMPLEMENTED)
++        return ret;
++
+     SERVER_START_REQ( release_mutex )
+     {
+         req->handle = wine_server_obj_handle( handle );
+@@ -657,6 +1376,12 @@ NTSTATUS WINAPI NtQueryMutant( HANDLE handle, MUTANT_INFORMATION_CLASS class,
+ 
+     if (len != sizeof(MUTANT_BASIC_INFORMATION)) return STATUS_INFO_LENGTH_MISMATCH;
+ 
++    if ((ret = inproc_query_mutex( handle, out )) != STATUS_NOT_IMPLEMENTED)
++    {
++        if (!ret && ret_len) *ret_len = sizeof(MUTANT_BASIC_INFORMATION);
++        return ret;
++    }
++
+     SERVER_START_REQ( query_mutex )
+     {
+         req->handle = wine_server_obj_handle( handle );
+@@ -1426,6 +2151,9 @@ NTSTATUS WINAPI NtCreateTimer( HANDLE *handle, ACCESS_MASK access, const OBJECT_
+     data_size_t len;
+     struct object_attributes *objattr;
+ 
++    TRACE( "access %#x, name %s, type %u\n", access,
++           attr ? debugstr_us(attr->ObjectName) : "(null)", type );
++
+     *handle = 0;
+     if (type != NotificationTimer && type != SynchronizationTimer) return STATUS_INVALID_PARAMETER;
+     if ((ret = alloc_object_attributes( attr, &objattr, &len ))) return ret;
+@@ -1453,6 +2181,8 @@ NTSTATUS WINAPI NtOpenTimer( HANDLE *handle, ACCESS_MASK access, const OBJECT_AT
+ {
+     unsigned int ret;
+ 
++    TRACE( "access %#x, name %s\n", access, attr ? debugstr_us(attr->ObjectName) : "(null)" );
++
+     *handle = 0;
+     if ((ret = validate_open_object_attributes( attr ))) return ret;
+ 
+@@ -1506,6 +2236,8 @@ NTSTATUS WINAPI NtCancelTimer( HANDLE handle, BOOLEAN *state )
+ {
+     unsigned int ret;
+ 
++    TRACE( "handle %p, state %p\n", handle, state );
++
+     SERVER_START_REQ( cancel_timer )
+     {
+         req->handle = wine_server_obj_handle( handle );
+@@ -1574,13 +2306,29 @@ NTSTATUS WINAPI NtWaitForMultipleObjects( DWORD count, const HANDLE *handles, BO
+ {
+     union select_op select_op;
+     UINT i, flags = SELECT_INTERRUPTIBLE;
++    unsigned int ret;
+ 
+     if (!count || count > MAXIMUM_WAIT_OBJECTS) return STATUS_INVALID_PARAMETER_1;
+ 
++    if (TRACE_ON(sync))
++    {
++        TRACE( "wait_any %u, alertable %u, handles {%p", wait_any, alertable, handles[0] );
++        for (i = 1; i < count; i++) TRACE( ", %p", handles[i] );
++        TRACE( "}, timeout %s\n", debugstr_timeout(timeout) );
++    }
++
++    if ((ret = inproc_wait( count, handles, wait_any, alertable, timeout )) != STATUS_NOT_IMPLEMENTED)
++    {
++        TRACE( "-> %#x\n", ret );
++        return ret;
++    }
++
+     if (alertable) flags |= SELECT_ALERTABLE;
+     select_op.wait.op = wait_any ? SELECT_WAIT : SELECT_WAIT_ALL;
+     for (i = 0; i < count; i++) select_op.wait.handles[i] = wine_server_obj_handle( handles[i] );
+-    return server_wait( &select_op, offsetof( union select_op, wait.handles[count] ), flags, timeout );
++    ret = server_wait( &select_op, offsetof( union select_op, wait.handles[count] ), flags, timeout );
++    TRACE( "-> %#x\n", ret );
++    return ret;
+ }
+ 
+ 
+@@ -1601,9 +2349,15 @@ NTSTATUS WINAPI NtSignalAndWaitForSingleObject( HANDLE signal, HANDLE wait,
+ {
+     union select_op select_op;
+     UINT flags = SELECT_INTERRUPTIBLE;
++    NTSTATUS ret;
++
++    TRACE( "signal %p, wait %p, alertable %u, timeout %s\n", signal, wait, alertable, debugstr_timeout(timeout) );
+ 
+     if (!signal) return STATUS_INVALID_HANDLE;
+ 
++    if ((ret = inproc_signal_and_wait( signal, wait, alertable, timeout )) != STATUS_NOT_IMPLEMENTED)
++        return ret;
++
+     if (alertable) flags |= SELECT_ALERTABLE;
+     select_op.signal_and_wait.op = SELECT_SIGNAL_AND_WAIT;
+     select_op.signal_and_wait.wait = wine_server_obj_handle( wait );
+@@ -1846,6 +2600,9 @@ NTSTATUS WINAPI NtCreateKeyedEvent( HANDLE *handle, ACCESS_MASK access,
+     data_size_t len;
+     struct object_attributes *objattr;
+ 
++    TRACE( "access %#x, name %s, flags %#x\n", access,
++           attr ? debugstr_us(attr->ObjectName) : "(null)", flags );
++
+     *handle = 0;
+     if ((ret = alloc_object_attributes( attr, &objattr, &len ))) return ret;
+ 
+@@ -1870,6 +2627,8 @@ NTSTATUS WINAPI NtOpenKeyedEvent( HANDLE *handle, ACCESS_MASK access, const OBJE
+ {
+     unsigned int ret;
+ 
++    TRACE( "access %#x, name %s\n", access, attr ? debugstr_us(attr->ObjectName) : "(null)" );
++
+     *handle = 0;
+     if ((ret = validate_open_object_attributes( attr ))) return ret;
+ 
+@@ -1896,6 +2655,8 @@ NTSTATUS WINAPI NtWaitForKeyedEvent( HANDLE handle, const void *key,
+     union select_op select_op;
+     UINT flags = SELECT_INTERRUPTIBLE;
+ 
++    TRACE( "handle %p, key %p, alertable %u, timeout %s\n", handle, key, alertable, debugstr_timeout(timeout) );
++
+     if (!handle) handle = keyed_event;
+     if ((ULONG_PTR)key & 1) return STATUS_INVALID_PARAMETER_1;
+     if (alertable) flags |= SELECT_ALERTABLE;
+@@ -1915,6 +2676,8 @@ NTSTATUS WINAPI NtReleaseKeyedEvent( HANDLE handle, const void *key,
+     union select_op select_op;
+     UINT flags = SELECT_INTERRUPTIBLE;
+ 
++    TRACE( "handle %p, key %p, alertable %u, timeout %s\n", handle, key, alertable, debugstr_timeout(timeout) );
++
+     if (!handle) handle = keyed_event;
+     if ((ULONG_PTR)key & 1) return STATUS_INVALID_PARAMETER_1;
+     if (alertable) flags |= SELECT_ALERTABLE;
+@@ -2059,7 +2822,7 @@ NTSTATUS WINAPI NtRemoveIoCompletion( HANDLE handle, ULONG_PTR *key, ULONG_PTR *
+     }
+     SERVER_END_REQ;
+     if (status != STATUS_PENDING) return status;
+-    if (!timeout || timeout->QuadPart) status = NtWaitForSingleObject( wait_handle, FALSE, timeout );
++    if (!timeout || timeout->QuadPart) status = server_wait_for_object( wait_handle, FALSE, timeout );
+     else                               status = STATUS_TIMEOUT;
+     if (status != WAIT_OBJECT_0) return status;
+ 
+@@ -2123,7 +2886,7 @@ NTSTATUS WINAPI NtRemoveIoCompletionEx( HANDLE handle, FILE_IO_COMPLETION_INFORM
+         assert( status == STATUS_USER_APC );
+         goto done;
+     }
+-    if (!timeout || timeout->QuadPart) status = NtWaitForSingleObject( wait_handle, alertable, timeout );
++    if (!timeout || timeout->QuadPart) status = server_wait_for_object( wait_handle, alertable, timeout );
+     else                               status = STATUS_TIMEOUT;
+     if (status != WAIT_OBJECT_0) goto done;
+ 
+diff --git a/dlls/ntdll/unix/thread.c b/dlls/ntdll/unix/thread.c
+index ce6683e075f..e21f125b015 100644
+--- a/dlls/ntdll/unix/thread.c
++++ b/dlls/ntdll/unix/thread.c
+@@ -1104,6 +1104,7 @@ static void contexts_from_server( CONTEXT *context, struct context_data server_c
+  */
+ static DECLSPEC_NORETURN void pthread_exit_wrapper( int status )
+ {
++    close( ntdll_get_thread_data()->alert_fd );
+     close( ntdll_get_thread_data()->wait_fd[0] );
+     close( ntdll_get_thread_data()->wait_fd[1] );
+     close( ntdll_get_thread_data()->reply_fd );
+@@ -1126,7 +1127,7 @@ static void start_thread( TEB *teb )
+     thread_data->syscall_trace = TRACE_ON(syscall);
+     thread_data->pthread_id = pthread_self();
+     pthread_setspecific( teb_key, teb );
+-    server_init_thread( thread_data->start, &suspend );
++    server_init_thread( thread_data, &suspend );
+     signal_start_thread( thread_data->start, thread_data->param, suspend, teb );
+ }
+ 
+diff --git a/dlls/ntdll/unix/unix_private.h b/dlls/ntdll/unix/unix_private.h
+index d420bc89819..3414e5534a2 100644
+--- a/dlls/ntdll/unix/unix_private.h
++++ b/dlls/ntdll/unix/unix_private.h
+@@ -108,6 +108,7 @@ struct ntdll_thread_data
+     int                       request_fd;    /* fd for sending server requests */
+     int                       reply_fd;      /* fd for receiving server replies */
+     int                       wait_fd[2];    /* fd for sleeping server requests */
++    int                       alert_fd;      /* fd for user apc alerts */
+     BOOL                      allow_writes;  /* ThreadAllowWrites flags */
+     pthread_t                 pthread_id;    /* pthread thread id */
+     void                     *kernel_stack;  /* stack for thread startup and kernel syscalls */
+@@ -198,8 +199,10 @@ extern unsigned int supported_machines_count;
+ extern USHORT supported_machines[8];
+ extern BOOL process_exiting;
+ extern HANDLE keyed_event;
++extern int inproc_device_fd;
+ extern timeout_t server_start_time;
+ extern sigset_t server_block_set;
++extern pthread_mutex_t fd_cache_mutex;
+ extern struct _KUSER_SHARED_DATA *user_shared_data;
+ #ifdef __i386__
+ extern struct ldt_copy __wine_ldt_copy;
+@@ -229,15 +232,17 @@ extern unsigned int server_select( const union select_op *select_op, data_size_t
+                                    timeout_t abs_timeout, struct context_data *context, struct user_apc *user_apc );
+ extern unsigned int server_wait( const union select_op *select_op, data_size_t size, UINT flags,
+                                  const LARGE_INTEGER *timeout );
++extern unsigned int server_wait_for_object( HANDLE handle, BOOL alertable, const LARGE_INTEGER *timeout );
+ extern unsigned int server_queue_process_apc( HANDLE process, const union apc_call *call,
+                                               union apc_result *result );
+ extern int server_get_unix_fd( HANDLE handle, unsigned int wanted_access, int *unix_fd,
+                                int *needs_close, enum server_fd_type *type, unsigned int *options );
+ extern void wine_server_send_fd( int fd );
++extern int wine_server_receive_fd( obj_handle_t *handle );
+ extern void process_exit_wrapper( int status ) DECLSPEC_NORETURN;
+ extern size_t server_init_process(void);
+ extern void server_init_process_done(void);
+-extern void server_init_thread( void *entry_point, BOOL *suspend );
++extern void server_init_thread( struct ntdll_thread_data *data, BOOL *suspend );
+ extern int server_pipe( int fd[2] );
+ 
+ extern void fpux_to_fpu( I386_FLOATING_SAVE_AREA *fpu, const XSAVE_FORMAT *fpux );
+@@ -388,6 +393,8 @@ extern NTSTATUS wow64_wine_spawnvp( void *args );
+ 
+ extern void dbg_init(void);
+ 
++extern void close_inproc_sync( HANDLE handle );
++
+ extern NTSTATUS call_user_apc_dispatcher( CONTEXT *context_ptr, ULONG_PTR arg1, ULONG_PTR arg2, ULONG_PTR arg3,
+                                           PNTAPCFUNC func, NTSTATUS status );
+ extern NTSTATUS call_user_exception_dispatcher( EXCEPTION_RECORD *rec, CONTEXT *context );
+@@ -396,6 +403,7 @@ extern void call_raise_user_exception_dispatcher(void);
+ #define IMAGE_DLLCHARACTERISTICS_PREFER_NATIVE 0x0010 /* Wine extension */
+ 
+ #define TICKSPERSEC 10000000
++#define NSECPERSEC 1000000000
+ #define SECS_1601_TO_1970  ((369 * 365 + 89) * (ULONGLONG)86400)
+ 
+ static inline ULONGLONG ticks_from_time_t( time_t time )
+@@ -467,7 +475,7 @@ static inline struct async_data server_async( HANDLE handle, struct async_fileio
+ 
+ static inline NTSTATUS wait_async( HANDLE handle, BOOL alertable )
+ {
+-    return NtWaitForSingleObject( handle, alertable, NULL );
++    return server_wait_for_object( handle, alertable, NULL );
+ }
+ 
+ static inline BOOL in_wow64_call(void)
+diff --git a/dlls/ntdll/unix/virtual.c b/dlls/ntdll/unix/virtual.c
+index 26ee944832a..9d0714db2ae 100644
+--- a/dlls/ntdll/unix/virtual.c
++++ b/dlls/ntdll/unix/virtual.c
+@@ -4036,6 +4036,7 @@ static TEB *init_teb( void *ptr, BOOL is_wow )
+     thread_data->reply_fd   = -1;
+     thread_data->wait_fd[0] = -1;
+     thread_data->wait_fd[1] = -1;
++    thread_data->alert_fd   = -1;
+     list_add_head( &teb_list, &thread_data->entry );
+     return teb;
+ }
+diff --git a/server/Makefile.in b/server/Makefile.in
+index 6e4e68d6ebf..57250fd0332 100644
+--- a/server/Makefile.in
++++ b/server/Makefile.in
+@@ -16,6 +16,7 @@ SOURCES = \
+ 	file.c \
+ 	handle.c \
+ 	hook.c \
++	inproc_sync.c \
+ 	mach.c \
+ 	mailslot.c \
+ 	main.c \
+diff --git a/server/async.c b/server/async.c
+index 1ed241dcb65..e743db193f6 100644
+--- a/server/async.c
++++ b/server/async.c
+@@ -79,7 +79,7 @@ static const struct object_ops async_ops =
+     remove_queue,              /* remove_queue */
+     async_signaled,            /* signaled */
+     async_satisfied,           /* satisfied */
+-    no_signal,                 /* signal */
++    NULL,                      /* signal */
+     no_get_fd,                 /* get_fd */
+     default_get_sync,          /* get_sync */
+     default_map_access,        /* map_access */
+@@ -696,13 +696,13 @@ static const struct object_ops iosb_ops =
+     sizeof(struct iosb),      /* size */
+     &no_type,                 /* type */
+     iosb_dump,                /* dump */
+-    no_add_queue,             /* add_queue */
++    NULL,                     /* add_queue */
+     NULL,                     /* remove_queue */
+     NULL,                     /* signaled */
+     NULL,                     /* satisfied */
+-    no_signal,                /* signal */
++    NULL,                     /* signal */
+     no_get_fd,                /* get_fd */
+-    default_get_sync,         /* get_sync */
++    no_get_sync,              /* get_sync */
+     default_map_access,       /* map_access */
+     default_get_sd,           /* get_sd */
+     default_set_sd,           /* set_sd */
+diff --git a/server/atom.c b/server/atom.c
+index f3b0d1abffb..975016e2ba7 100644
+--- a/server/atom.c
++++ b/server/atom.c
+@@ -75,13 +75,13 @@ static const struct object_ops atom_table_ops =
+     sizeof(struct atom_table),    /* size */
+     &no_type,                     /* type */
+     atom_table_dump,              /* dump */
+-    no_add_queue,                 /* add_queue */
++    NULL,                         /* add_queue */
+     NULL,                         /* remove_queue */
+     NULL,                         /* signaled */
+     NULL,                         /* satisfied */
+-    no_signal,                    /* signal */
++    NULL,                         /* signal */
+     no_get_fd,                    /* get_fd */
+-    default_get_sync,             /* get_sync */
++    no_get_sync,                  /* get_sync */
+     default_map_access,           /* map_access */
+     default_get_sd,               /* get_sd */
+     default_set_sd,               /* set_sd */
+diff --git a/server/change.c b/server/change.c
+index be3251a1eef..469c5078991 100644
+--- a/server/change.c
++++ b/server/change.c
+@@ -113,7 +113,7 @@ static const struct object_ops dir_ops =
+     NULL,                     /* remove_queue */
+     NULL,                     /* signaled */
+     NULL,                     /* satisfied */
+-    no_signal,                /* signal */
++    NULL,                     /* signal */
+     dir_get_fd,               /* get_fd */
+     default_fd_get_sync,      /* get_sync */
+     default_map_access,       /* map_access */
+diff --git a/server/clipboard.c b/server/clipboard.c
+index 59a50354b48..9395b324c58 100644
+--- a/server/clipboard.c
++++ b/server/clipboard.c
+@@ -73,13 +73,13 @@ static const struct object_ops clipboard_ops =
+     sizeof(struct clipboard),     /* size */
+     &no_type,                     /* type */
+     clipboard_dump,               /* dump */
+-    no_add_queue,                 /* add_queue */
++    NULL,                         /* add_queue */
+     NULL,                         /* remove_queue */
+     NULL,                         /* signaled */
+     NULL,                         /* satisfied */
+-    no_signal,                    /* signal */
++    NULL,                         /* signal */
+     no_get_fd,                    /* get_fd */
+-    default_get_sync,             /* get_sync */
++    no_get_sync,                  /* get_sync */
+     default_map_access,           /* map_access */
+     default_get_sd,               /* get_sd */
+     default_set_sd,               /* set_sd */
+diff --git a/server/completion.c b/server/completion.c
+index a2028a89823..3180222b14b 100644
+--- a/server/completion.c
++++ b/server/completion.c
+@@ -73,7 +73,7 @@ struct completion_wait
+ struct completion
+ {
+     struct object       obj;
+-    struct event_sync  *sync;
++    struct object      *sync;
+     struct list         queue;
+     struct list         wait_queue;
+     unsigned int        depth;
+@@ -93,7 +93,7 @@ static const struct object_ops completion_wait_ops =
+     remove_queue,                   /* remove_queue */
+     completion_wait_signaled,       /* signaled */
+     completion_wait_satisfied,      /* satisfied */
+-    no_signal,                      /* signal */
++    NULL,                           /* signal */
+     no_get_fd,                      /* get_fd */
+     default_get_sync,               /* get_sync */
+     default_map_access,             /* map_access */
+@@ -168,7 +168,7 @@ static const struct object_ops completion_ops =
+     NULL,                      /* remove_queue */
+     NULL,                      /* signaled */
+     NULL,                      /* satisfied */
+-    no_signal,                 /* signal */
++    NULL,                      /* signal */
+     no_get_fd,                 /* get_fd */
+     completion_get_sync,       /* get_sync */
+     default_map_access,        /* map_access */
+diff --git a/server/console.c b/server/console.c
+index 8f01311892f..140a357c9d3 100644
+--- a/server/console.c
++++ b/server/console.c
+@@ -53,7 +53,7 @@ struct history_line
+ struct console
+ {
+     struct object                obj;           /* object header */
+-    struct event_sync           *sync;          /* sync object for wait/signal */
++    struct object               *sync;          /* sync object for wait/signal */
+     struct thread               *renderer;      /* console renderer thread */
+     struct screen_buffer        *active;        /* active screen buffer */
+     struct console_server       *server;        /* console server object */
+@@ -84,7 +84,7 @@ static const struct object_ops console_ops =
+     NULL,                             /* remove_queue */
+     NULL,                             /* signaled */
+     NULL,                             /* satisfied */
+-    no_signal,                        /* signal */
++    NULL,                             /* signal */
+     console_get_fd,                   /* get_fd */
+     console_get_sync,                 /* get_sync */
+     default_map_access,               /* map_access */
+@@ -134,7 +134,7 @@ struct console_host_ioctl
+ struct console_server
+ {
+     struct object         obj;            /* object header */
+-    struct event_sync    *sync;           /* sync object for wait/signal */
++    struct object        *sync;           /* sync object for wait/signal */
+     struct fd            *fd;             /* pseudo-fd for ioctls */
+     struct console       *console;        /* attached console */
+     struct list           queue;          /* ioctl queue */
+@@ -163,7 +163,7 @@ static const struct object_ops console_server_ops =
+     NULL,                             /* remove_queue */
+     NULL,                             /* signaled */
+     NULL,                             /* satisfied */
+-    no_signal,                        /* signal */
++    NULL,                             /* signal */
+     console_server_get_fd,            /* get_fd */
+     console_server_get_sync,          /* get_sync */
+     default_map_access,               /* map_access */
+@@ -210,7 +210,7 @@ struct font_info
+ struct screen_buffer
+ {
+     struct object         obj;           /* object header */
+-    struct event_sync    *sync;          /* sync object for wait/signal */
++    struct object        *sync;          /* sync object for wait/signal */
+     struct list           entry;         /* entry in list of all screen buffers */
+     struct console       *input;         /* associated console input */
+     unsigned int          id;            /* buffer id */
+@@ -234,7 +234,7 @@ static const struct object_ops screen_buffer_ops =
+     NULL,                             /* remove_queue */
+     NULL,                             /* signaled */
+     NULL,                             /* satisfied */
+-    no_signal,                        /* signal */
++    NULL,                             /* signal */
+     screen_buffer_get_fd,             /* get_fd */
+     screen_buffer_get_sync,           /* get_sync */
+     default_map_access,               /* map_access */
+@@ -280,13 +280,13 @@ static const struct object_ops console_device_ops =
+     sizeof(struct object),            /* size */
+     &device_type,                     /* type */
+     console_device_dump,              /* dump */
+-    no_add_queue,                     /* add_queue */
++    NULL,                             /* add_queue */
+     NULL,                             /* remove_queue */
+     NULL,                             /* signaled */
+-    no_satisfied,                     /* satisfied */
+-    no_signal,                        /* signal */
++    NULL,                             /* satisfied */
++    NULL,                             /* signal */
+     no_get_fd,                        /* get_fd */
+-    default_get_sync,                 /* get_sync */
++    no_get_sync,                      /* get_sync */
+     default_map_access,               /* map_access */
+     default_get_sd,                   /* get_sd */
+     default_set_sd,                   /* set_sd */
+@@ -303,7 +303,7 @@ static const struct object_ops console_device_ops =
+ struct console_input
+ {
+     struct object         obj;         /* object header */
+-    struct event_sync    *sync;        /* sync object for wait/signal */
++    struct object        *sync;        /* sync object for wait/signal */
+     struct fd            *fd;          /* pseudo-fd */
+     struct list           entry;       /* entry in console->inputs */
+     struct console       *console;     /* associated console at creation time */
+@@ -325,7 +325,7 @@ static const struct object_ops console_input_ops =
+     NULL,                             /* remove_queue */
+     NULL,                             /* signaled */
+     NULL,                             /* satisfied */
+-    no_signal,                        /* signal */
++    NULL,                             /* signal */
+     console_input_get_fd,             /* get_fd */
+     console_input_get_sync,           /* get_sync */
+     default_map_access,               /* map_access */
+@@ -364,7 +364,7 @@ static const struct fd_ops console_input_fd_ops =
+ struct console_output
+ {
+     struct object         obj;         /* object header */
+-    struct event_sync    *sync;        /* sync object for wait/signal */
++    struct object        *sync;        /* sync object for wait/signal */
+     struct fd            *fd;          /* pseudo-fd */
+     struct list           entry;       /* entry in console->outputs */
+     struct console       *console;     /* associated console at creation time */
+@@ -386,7 +386,7 @@ static const struct object_ops console_output_ops =
+     NULL,                             /* remove_queue */
+     NULL,                             /* signaled */
+     NULL,                             /* satisfied */
+-    no_signal,                        /* signal */
++    NULL,                             /* signal */
+     console_output_get_fd,            /* get_fd */
+     console_output_get_sync,          /* get_sync */
+     default_map_access,               /* map_access */
+@@ -441,13 +441,13 @@ static const struct object_ops console_connection_ops =
+     sizeof(struct console_connection),/* size */
+     &device_type,                     /* type */
+     console_connection_dump,          /* dump */
+-    no_add_queue,                     /* add_queue */
++    NULL,                             /* add_queue */
+     NULL,                             /* remove_queue */
+     NULL,                             /* signaled */
+-    no_satisfied,                     /* satisfied */
+-    no_signal,                        /* signal */
++    NULL,                             /* satisfied */
++    NULL,                             /* signal */
+     console_connection_get_fd,        /* get_fd */
+-    default_get_sync,                 /* get_sync */
++    no_get_sync,                      /* get_sync */
+     default_map_access,               /* map_access */
+     default_get_sd,                   /* get_sd */
+     default_set_sd,                   /* set_sd */
+@@ -646,7 +646,7 @@ static struct object *create_screen_buffer( struct console *console )
+     }
+ 
+     if (!(screen_buffer = alloc_object( &screen_buffer_ops ))) return NULL;
+-    screen_buffer->sync  = (struct event_sync *)grab_object( console->sync );
++    screen_buffer->sync  = grab_object( console->sync );
+     screen_buffer->id    = ++console->last_id;
+     screen_buffer->input = console;
+     init_async_queue( &screen_buffer->ioctl_q );
+@@ -1350,7 +1350,7 @@ static struct object *console_device_lookup_name( struct object *obj, struct uni
+ 
+         name->len = 0;
+         if (!(console_input = alloc_object( &console_input_ops ))) return NULL;
+-        console_input->sync = (struct event_sync *)grab_object( current->process->console->sync );
++        console_input->sync = grab_object( current->process->console->sync );
+         console_input->fd = alloc_pseudo_fd( &console_input_fd_ops, &console_input->obj,
+                                              FILE_SYNCHRONOUS_IO_NONALERT );
+         if (!console_input->fd)
+@@ -1375,7 +1375,7 @@ static struct object *console_device_lookup_name( struct object *obj, struct uni
+ 
+         name->len = 0;
+         if (!(console_output = alloc_object( &console_output_ops ))) return NULL;
+-        console_output->sync = (struct event_sync *)grab_object( current->process->console->sync );
++        console_output->sync = grab_object( current->process->console->sync );
+         console_output->fd = alloc_pseudo_fd( &console_output_fd_ops, &console_output->obj,
+                                              FILE_SYNCHRONOUS_IO_NONALERT );
+         if (!console_output->fd)
+diff --git a/server/debugger.c b/server/debugger.c
+index 2956ee17b8e..7c48355408b 100644
+--- a/server/debugger.c
++++ b/server/debugger.c
+@@ -43,7 +43,7 @@ enum debug_event_state { EVENT_QUEUED, EVENT_SENT, EVENT_DELAYED, EVENT_CONTINUE
+ struct debug_event
+ {
+     struct object          obj;       /* object header */
+-    struct event_sync     *sync;      /* sync object for wait/signal */
++    struct object         *sync;      /* sync object for wait/signal */
+     struct list            entry;     /* entry in event queue */
+     struct thread         *sender;    /* thread which sent this event */
+     struct file           *file;      /* file object for events that need one */
+@@ -70,7 +70,7 @@ struct type_descr debug_obj_type =
+ struct debug_obj
+ {
+     struct object        obj;         /* object header */
+-    struct event_sync   *sync;       /* sync object for wait/signal */
++    struct object       *sync;       /* sync object for wait/signal */
+     struct list          event_queue; /* pending events queue */
+     unsigned int         flags;       /* debug flags */
+ };
+@@ -89,7 +89,7 @@ static const struct object_ops debug_event_ops =
+     NULL,                          /* remove_queue */
+     NULL,                          /* signaled */
+     NULL,                          /* satisfied */
+-    no_signal,                     /* signal */
++    NULL,                          /* signal */
+     no_get_fd,                     /* get_fd */
+     debug_event_get_sync,          /* get_sync */
+     default_map_access,            /* map_access */
+@@ -118,7 +118,7 @@ static const struct object_ops debug_obj_ops =
+     NULL,                          /* remove_queue */
+     NULL,                          /* signaled */
+     NULL,                          /* satisfied */
+-    no_signal,                     /* signal */
++    NULL,                          /* signal */
+     no_get_fd,                     /* get_fd */
+     debug_obj_get_sync,            /* get_sync */
+     default_map_access,            /* map_access */
+diff --git a/server/device.c b/server/device.c
+index f4b3f19028b..ddd66c10b6c 100644
+--- a/server/device.c
++++ b/server/device.c
+@@ -63,13 +63,13 @@ static const struct object_ops irp_call_ops =
+     sizeof(struct irp_call),          /* size */
+     &no_type,                         /* type */
+     irp_call_dump,                    /* dump */
+-    no_add_queue,                     /* add_queue */
++    NULL,                             /* add_queue */
+     NULL,                             /* remove_queue */
+     NULL,                             /* signaled */
+     NULL,                             /* satisfied */
+-    no_signal,                        /* signal */
++    NULL,                             /* signal */
+     no_get_fd,                        /* get_fd */
+-    default_get_sync,                 /* get_sync */
++    no_get_sync,                      /* get_sync */
+     default_map_access,               /* map_access */
+     default_get_sd,                   /* get_sd */
+     default_set_sd,                   /* set_sd */
+@@ -89,7 +89,7 @@ static const struct object_ops irp_call_ops =
+ struct device_manager
+ {
+     struct object          obj;            /* object header */
+-    struct event_sync     *sync;           /* sync object for wait/signal */
++    struct object         *sync;           /* sync object for wait/signal */
+     struct list            devices;        /* list of devices */
+     struct list            requests;       /* list of pending irps across all devices */
+     struct irp_call       *current_call;   /* call currently executed on client side */
+@@ -109,7 +109,7 @@ static const struct object_ops device_manager_ops =
+     NULL,                             /* remove_queue */
+     NULL,                             /* signaled */
+     NULL,                             /* satisfied */
+-    no_signal,                        /* signal */
++    NULL,                             /* signal */
+     no_get_fd,                        /* get_fd */
+     device_manager_get_sync,          /* get_sync */
+     default_map_access,               /* map_access */
+@@ -163,13 +163,13 @@ static const struct object_ops device_ops =
+     sizeof(struct device),            /* size */
+     &device_type,                     /* type */
+     device_dump,                      /* dump */
+-    no_add_queue,                     /* add_queue */
++    NULL,                             /* add_queue */
+     NULL,                             /* remove_queue */
+     NULL,                             /* signaled */
+-    no_satisfied,                     /* satisfied */
+-    no_signal,                        /* signal */
++    NULL,                             /* satisfied */
++    NULL,                             /* signal */
+     no_get_fd,                        /* get_fd */
+-    default_get_sync,                 /* get_sync */
++    no_get_sync,                      /* get_sync */
+     default_map_access,               /* map_access */
+     default_get_sd,                   /* get_sd */
+     default_set_sd,                   /* set_sd */
+@@ -220,7 +220,7 @@ static const struct object_ops device_file_ops =
+     NULL,                             /* remove_queue */
+     NULL,                             /* signaled */
+     NULL,                             /* satisfied */
+-    no_signal,                        /* signal */
++    NULL,                             /* signal */
+     device_file_get_fd,               /* get_fd */
+     default_fd_get_sync,              /* get_sync */
+     default_map_access,               /* map_access */
+diff --git a/server/directory.c b/server/directory.c
+index c56c216d6d5..9a0c0148f99 100644
+--- a/server/directory.c
++++ b/server/directory.c
+@@ -66,13 +66,13 @@ static const struct object_ops object_type_ops =
+     sizeof(struct object_type),   /* size */
+     &objtype_type,                /* type */
+     object_type_dump,             /* dump */
+-    no_add_queue,                 /* add_queue */
++    NULL,                         /* add_queue */
+     NULL,                         /* remove_queue */
+     NULL,                         /* signaled */
+     NULL,                         /* satisfied */
+-    no_signal,                    /* signal */
++    NULL,                         /* signal */
+     no_get_fd,                    /* get_fd */
+-    default_get_sync,             /* get_sync */
++    no_get_sync,                  /* get_sync */
+     default_map_access,           /* map_access */
+     default_get_sd,               /* get_sd */
+     default_set_sd,               /* set_sd */
+@@ -117,13 +117,13 @@ static const struct object_ops directory_ops =
+     sizeof(struct directory),     /* size */
+     &directory_type,              /* type */
+     directory_dump,               /* dump */
+-    no_add_queue,                 /* add_queue */
++    NULL,                         /* add_queue */
+     NULL,                         /* remove_queue */
+     NULL,                         /* signaled */
+     NULL,                         /* satisfied */
+-    no_signal,                    /* signal */
++    NULL,                         /* signal */
+     no_get_fd,                    /* get_fd */
+-    default_get_sync,             /* get_sync */
++    no_get_sync,                  /* get_sync */
+     default_map_access,           /* map_access */
+     default_get_sd,               /* get_sd */
+     default_set_sd,               /* set_sd */
+diff --git a/server/event.c b/server/event.c
+index c69554fc657..82e3ebb382d 100644
+--- a/server/event.c
++++ b/server/event.c
+@@ -48,6 +48,7 @@ struct type_descr event_type =
+         STANDARD_RIGHTS_EXECUTE | SYNCHRONIZE,
+         EVENT_ALL_ACCESS
+     },
++    EVENT_MODIFY_STATE,                   /* signal access */
+ };
+ 
+ struct event_sync
+@@ -60,7 +61,7 @@ struct event_sync
+ static void event_sync_dump( struct object *obj, int verbose );
+ static int event_sync_signaled( struct object *obj, struct wait_queue_entry *entry );
+ static void event_sync_satisfied( struct object *obj, struct wait_queue_entry *entry );
+-static int event_sync_signal( struct object *obj, unsigned int access );
++static int event_sync_signal( struct object *obj, int signal );
+ 
+ static const struct object_ops event_sync_ops =
+ {
+@@ -87,15 +88,17 @@ static const struct object_ops event_sync_ops =
+     no_destroy                 /* destroy */
+ };
+ 
+-struct event_sync *create_event_sync( int manual, int signaled )
++struct object *create_event_sync( int manual, int signaled )
+ {
+     struct event_sync *event;
+ 
++    if (get_inproc_device_fd() >= 0) return create_inproc_event_sync( manual, signaled );
++
+     if (!(event = alloc_object( &event_sync_ops ))) return NULL;
+     event->manual   = manual;
+     event->signaled = signaled;
+ 
+-    return event;
++    return &event->obj;
+ }
+ 
+ static void event_sync_dump( struct object *obj, int verbose )
+@@ -113,44 +116,33 @@ static int event_sync_signaled( struct object *obj, struct wait_queue_entry *ent
+     return event->signaled;
+ }
+ 
+-void signal_sync( struct event_sync *event )
+-{
+-    event->signaled = 1;
+-    /* wake up all waiters if manual reset, a single one otherwise */
+-    wake_up( &event->obj, !event->manual );
+-}
+-
+-void reset_sync( struct event_sync *event )
+-{
+-    event->signaled = 0;
+-}
+-
+ static void event_sync_satisfied( struct object *obj, struct wait_queue_entry *entry )
+ {
+     struct event_sync *event = (struct event_sync *)obj;
+     assert( obj->ops == &event_sync_ops );
+     /* Reset if it's an auto-reset event */
+-    if (!event->manual) reset_sync( event );
++    if (!event->manual) event->signaled = 0;
+ }
+ 
+-static int event_sync_signal( struct object *obj, unsigned int access )
++static int event_sync_signal( struct object *obj, int signal )
+ {
+     struct event_sync *event = (struct event_sync *)obj;
+     assert( obj->ops == &event_sync_ops );
+-    signal_sync( event );
++
++    /* wake up all waiters if manual reset, a single one otherwise */
++    if ((event->signaled = !!signal)) wake_up( &event->obj, !event->manual );
+     return 1;
+ }
+ 
+ struct event
+ {
+     struct object      obj;             /* object header */
+-    struct event_sync *sync;            /* event sync object */
++    struct object     *sync;            /* event sync object */
+     struct list        kernel_object;   /* list of kernel object pointers */
+ };
+ 
+ static void event_dump( struct object *obj, int verbose );
+ static struct object *event_get_sync( struct object *obj );
+-static int event_signal( struct object *obj, unsigned int access);
+ static struct list *event_get_kernel_obj_list( struct object *obj );
+ static void event_destroy( struct object *obj );
+ 
+@@ -163,7 +155,7 @@ static const struct object_ops event_ops =
+     NULL,                      /* remove_queue */
+     NULL,                      /* signaled */
+     NULL,                      /* satisfied */
+-    event_signal,              /* signal */
++    NULL,                      /* signal */
+     no_get_fd,                 /* get_fd */
+     event_get_sync,            /* get_sync */
+     default_map_access,        /* map_access */
+@@ -201,6 +193,7 @@ struct keyed_event
+ 
+ static void keyed_event_dump( struct object *obj, int verbose );
+ static int keyed_event_signaled( struct object *obj, struct wait_queue_entry *entry );
++static void keyed_event_satisfied( struct object *obj, struct wait_queue_entry *entry );
+ 
+ static const struct object_ops keyed_event_ops =
+ {
+@@ -210,8 +203,8 @@ static const struct object_ops keyed_event_ops =
+     add_queue,                   /* add_queue */
+     remove_queue,                /* remove_queue */
+     keyed_event_signaled,        /* signaled */
+-    no_satisfied,                /* satisfied */
+-    no_signal,                   /* signal */
++    keyed_event_satisfied,       /* satisfied */
++    NULL,                        /* signal */
+     no_get_fd,                   /* get_fd */
+     default_get_sync,            /* get_sync */
+     default_map_access,          /* map_access */
+@@ -271,7 +264,7 @@ static void event_dump( struct object *obj, int verbose )
+ {
+     struct event *event = (struct event *)obj;
+     assert( obj->ops == &event_ops );
+-    event->sync->obj.ops->dump( &event->sync->obj, verbose );
++    event->sync->ops->dump( event->sync, verbose );
+ }
+ 
+ static struct object *event_get_sync( struct object *obj )
+@@ -281,20 +274,6 @@ static struct object *event_get_sync( struct object *obj )
+     return grab_object( event->sync );
+ }
+ 
+-static int event_signal( struct object *obj, unsigned int access )
+-{
+-    struct event *event = (struct event *)obj;
+-    assert( obj->ops == &event_ops );
+-
+-    if (!(access & EVENT_MODIFY_STATE))
+-    {
+-        set_error( STATUS_ACCESS_DENIED );
+-        return 0;
+-    }
+-    set_event( event );
+-    return 1;
+-}
+-
+ static struct list *event_get_kernel_obj_list( struct object *obj )
+ {
+     struct event *event = (struct event *)obj;
+@@ -362,6 +341,11 @@ static int keyed_event_signaled( struct object *obj, struct wait_queue_entry *en
+     return 0;
+ }
+ 
++static void keyed_event_satisfied( struct object *obj, struct wait_queue_entry *entry )
++{
++    assert( obj->ops == &keyed_event_ops );
++}
++
+ /* create an event */
+ DECL_HANDLER(create_event)
+ {
+@@ -399,11 +383,14 @@ DECL_HANDLER(open_event)
+ /* do an event operation */
+ DECL_HANDLER(event_op)
+ {
++    struct event_sync *sync;
+     struct event *event;
+ 
+     if (!(event = get_event_obj( current->process, req->handle, EVENT_MODIFY_STATE ))) return;
++    sync = (struct event_sync *)event->sync;
++    assert( event->sync->ops == &event_sync_ops );
+ 
+-    reply->state = event->sync->signaled;
++    reply->state = sync->signaled;
+     switch(req->op)
+     {
+     case PULSE_EVENT:
+@@ -426,12 +413,15 @@ DECL_HANDLER(event_op)
+ /* return details about the event */
+ DECL_HANDLER(query_event)
+ {
++    struct event_sync *sync;
+     struct event *event;
+ 
+     if (!(event = get_event_obj( current->process, req->handle, EVENT_QUERY_STATE ))) return;
++    sync = (struct event_sync *)event->sync;
++    assert( event->sync->ops == &event_sync_ops );
+ 
+-    reply->manual_reset = event->sync->manual;
+-    reply->state = event->sync->signaled;
++    reply->manual_reset = sync->manual;
++    reply->state = sync->signaled;
+ 
+     release_object( event );
+ }
+diff --git a/server/fd.c b/server/fd.c
+index b07dca6f3a4..43ff80d2e18 100644
+--- a/server/fd.c
++++ b/server/fd.c
+@@ -134,7 +134,7 @@ struct fd
+ {
+     struct object        obj;         /* object header */
+     const struct fd_ops *fd_ops;      /* file descriptor operations */
+-    struct event_sync   *sync;        /* sync object for wait/signal */
++    struct object       *sync;        /* sync object for wait/signal */
+     struct inode        *inode;       /* inode that this fd belongs to */
+     struct list          inode_entry; /* entry in inode fd list */
+     struct closed_fd    *closed;      /* structure to store the unix fd at destroy time */
+@@ -174,7 +174,7 @@ static const struct object_ops fd_ops =
+     NULL,                     /* remove_queue */
+     NULL,                     /* signaled */
+     NULL,                     /* satisfied */
+-    no_signal,                /* signal */
++    NULL,                     /* signal */
+     no_get_fd,                /* get_fd */
+     fd_get_sync,              /* get_sync */
+     default_map_access,       /* map_access */
+@@ -212,13 +212,13 @@ static const struct object_ops device_ops =
+     sizeof(struct device),    /* size */
+     &no_type,                 /* type */
+     device_dump,              /* dump */
+-    no_add_queue,             /* add_queue */
++    NULL,                     /* add_queue */
+     NULL,                     /* remove_queue */
+     NULL,                     /* signaled */
+     NULL,                     /* satisfied */
+-    no_signal,                /* signal */
++    NULL,                     /* signal */
+     no_get_fd,                /* get_fd */
+-    default_get_sync,         /* get_sync */
++    no_get_sync,              /* get_sync */
+     default_map_access,       /* map_access */
+     default_get_sd,           /* get_sd */
+     default_set_sd,           /* set_sd */
+@@ -253,13 +253,13 @@ static const struct object_ops inode_ops =
+     sizeof(struct inode),     /* size */
+     &no_type,                 /* type */
+     inode_dump,               /* dump */
+-    no_add_queue,             /* add_queue */
++    NULL,                     /* add_queue */
+     NULL,                     /* remove_queue */
+     NULL,                     /* signaled */
+     NULL,                     /* satisfied */
+-    no_signal,                /* signal */
++    NULL,                     /* signal */
+     no_get_fd,                /* get_fd */
+-    default_get_sync,         /* get_sync */
++    no_get_sync,              /* get_sync */
+     default_map_access,       /* map_access */
+     default_get_sd,           /* get_sd */
+     default_set_sd,           /* set_sd */
+@@ -278,7 +278,7 @@ static const struct object_ops inode_ops =
+ struct file_lock
+ {
+     struct object       obj;         /* object header */
+-    struct event_sync  *sync;        /* sync object for wait/signal */
++    struct object      *sync;        /* sync object for wait/signal */
+     struct fd          *fd;          /* fd owning this lock */
+     struct list         fd_entry;    /* entry in list of locks on a given fd */
+     struct list         inode_entry; /* entry in inode list of locks */
+@@ -302,7 +302,7 @@ static const struct object_ops file_lock_ops =
+     NULL,                       /* remove_queue */
+     NULL,                       /* signaled */
+     NULL,                       /* satisfied */
+-    no_signal,                  /* signal */
++    NULL,                       /* signal */
+     no_get_fd,                  /* get_fd */
+     file_lock_get_sync,         /* get_sync */
+     default_map_access,         /* map_access */
+diff --git a/server/file.c b/server/file.c
+index 654b082aa40..f9c9a0a7d2b 100644
+--- a/server/file.c
++++ b/server/file.c
+@@ -124,7 +124,7 @@ static const struct object_ops file_ops =
+     NULL,                         /* remove_queue */
+     NULL,                         /* signaled */
+     NULL,                         /* satisfied */
+-    no_signal,                    /* signal */
++    NULL,                         /* signal */
+     file_get_fd,                  /* get_fd */
+     default_fd_get_sync,          /* get_sync */
+     default_map_access,           /* map_access */
+diff --git a/server/handle.c b/server/handle.c
+index e4e843f4e39..f6a8ce5bd4b 100644
+--- a/server/handle.c
++++ b/server/handle.c
+@@ -123,13 +123,13 @@ static const struct object_ops handle_table_ops =
+     sizeof(struct handle_table),     /* size */
+     &no_type,                        /* type */
+     handle_table_dump,               /* dump */
+-    no_add_queue,                    /* add_queue */
++    NULL,                            /* add_queue */
+     NULL,                            /* remove_queue */
+     NULL,                            /* signaled */
+     NULL,                            /* satisfied */
+-    no_signal,                       /* signal */
++    NULL,                            /* signal */
+     no_get_fd,                       /* get_fd */
+-    default_get_sync,                /* get_sync */
++    no_get_sync,                     /* get_sync */
+     default_map_access,              /* map_access */
+     default_get_sd,                  /* get_sd */
+     default_set_sd,                  /* set_sd */
+diff --git a/server/hook.c b/server/hook.c
+index 7ba1f3ea9bf..c72438bbb1e 100644
+--- a/server/hook.c
++++ b/server/hook.c
+@@ -78,13 +78,13 @@ static const struct object_ops hook_table_ops =
+     sizeof(struct hook_table),    /* size */
+     &no_type,                     /* type */
+     hook_table_dump,              /* dump */
+-    no_add_queue,                 /* add_queue */
++    NULL,                         /* add_queue */
+     NULL,                         /* remove_queue */
+     NULL,                         /* signaled */
+     NULL,                         /* satisfied */
+-    no_signal,                    /* signal */
++    NULL,                         /* signal */
+     no_get_fd,                    /* get_fd */
+-    default_get_sync,             /* get_sync */
++    no_get_sync,                  /* get_sync */
+     default_map_access,           /* map_access */
+     default_get_sd,               /* get_sd */
+     default_set_sd,               /* set_sd */
+diff --git a/server/inproc_sync.c b/server/inproc_sync.c
+new file mode 100644
+index 00000000000..d7cc71e23b7
+--- /dev/null
++++ b/server/inproc_sync.c
+@@ -0,0 +1,252 @@
++/*
++ * In-process synchronization primitives
++ *
++ * Copyright (C) 2021-2022 Elizabeth Figura for CodeWeavers
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
++ */
++
++#include "config.h"
++
++#include <assert.h>
++#include <stdint.h>
++#include <stdio.h>
++
++#include "ntstatus.h"
++#define WIN32_NO_STATUS
++#include "winternl.h"
++
++#include "file.h"
++#include "handle.h"
++#include "request.h"
++#include "thread.h"
++#include "user.h"
++
++#ifdef HAVE_LINUX_NTSYNC_H
++# include <linux/ntsync.h>
++#endif
++
++#ifdef NTSYNC_IOC_EVENT_READ
++
++#include <fcntl.h>
++#include <sys/ioctl.h>
++#include <sys/stat.h>
++#include <unistd.h>
++
++int get_inproc_device_fd(void)
++{
++    static int fd = -2;
++    if (fd == -2) fd = open( "/dev/ntsync", O_CLOEXEC | O_RDONLY );
++    return fd;
++}
++
++struct inproc_sync
++{
++    struct object          obj;  /* object header */
++    enum inproc_sync_type  type;
++    int                    fd;
++    struct list            entry;
++};
++
++static struct list inproc_mutexes = LIST_INIT( inproc_mutexes );
++
++static void inproc_sync_dump( struct object *obj, int verbose );
++static int inproc_sync_signal( struct object *obj, int signal );
++static void inproc_sync_destroy( struct object *obj );
++
++static const struct object_ops inproc_sync_ops =
++{
++    sizeof(struct inproc_sync), /* size */
++    &no_type,                   /* type */
++    inproc_sync_dump,           /* dump */
++    NULL,                       /* add_queue */
++    NULL,                       /* remove_queue */
++    NULL,                       /* signaled */
++    NULL,                       /* satisfied */
++    inproc_sync_signal,         /* signal */
++    no_get_fd,                  /* get_fd */
++    default_get_sync,           /* get_sync */
++    default_map_access,         /* map_access */
++    default_get_sd,             /* get_sd */
++    default_set_sd,             /* set_sd */
++    default_get_full_name,      /* get_full_name */
++    no_lookup_name,             /* lookup_name */
++    directory_link_name,        /* link_name */
++    default_unlink_name,        /* unlink_name */
++    no_open_file,               /* open_file */
++    no_kernel_obj_list,         /* get_kernel_obj_list */
++    no_close_handle,            /* close_handle */
++    inproc_sync_destroy,        /* destroy */
++};
++
++struct object *create_inproc_event_sync( int manual, int signaled )
++{
++    struct ntsync_event_args args = {.signaled = signaled, .manual = manual};
++    struct inproc_sync *event;
++
++    if (!(event = alloc_object( &inproc_sync_ops ))) return NULL;
++    event->type = INPROC_SYNC_EVENT;
++    event->fd = ioctl( get_inproc_device_fd(), NTSYNC_IOC_CREATE_EVENT, &args );
++    list_init( &event->entry );
++
++    return &event->obj;
++}
++
++struct object *create_inproc_semaphore_sync( unsigned int initial, unsigned int max )
++{
++    struct ntsync_sem_args args = {.count = initial, .max = max};
++    struct inproc_sync *sem;
++
++    if (!(sem = alloc_object( &inproc_sync_ops ))) return NULL;
++    sem->type = INPROC_SYNC_SEMAPHORE;
++    sem->fd = ioctl( get_inproc_device_fd(), NTSYNC_IOC_CREATE_SEM, &args );
++    list_init( &sem->entry );
++    return &sem->obj;
++}
++
++struct object *create_inproc_mutex_sync( thread_id_t owner, unsigned int count )
++{
++    struct ntsync_mutex_args args = {.owner = owner, .count = count};
++    struct inproc_sync *mutex;
++
++    if (!(mutex = alloc_object( &inproc_sync_ops ))) return NULL;
++    mutex->type = INPROC_SYNC_MUTEX;
++    mutex->fd = ioctl( get_inproc_device_fd(), NTSYNC_IOC_CREATE_MUTEX, &args );
++    list_add_tail( &inproc_mutexes, &mutex->entry );
++    return &mutex->obj;
++}
++
++static void inproc_sync_dump( struct object *obj, int verbose )
++{
++    struct inproc_sync *sync = (struct inproc_sync *)obj;
++    assert( obj->ops == &inproc_sync_ops );
++    fprintf( stderr, "Inproc sync type=%d, fd=%d\n", sync->type, sync->fd );
++}
++
++static int inproc_sync_signal( struct object *obj, int signal )
++{
++    struct inproc_sync *sync = (struct inproc_sync *)obj;
++    __u32 count;
++
++    assert( obj->ops == &inproc_sync_ops );
++    assert( sync->type == INPROC_SYNC_EVENT );
++    assert( signal == 0 || signal == 1 );
++
++    if (signal)
++    {
++        if (debug_level) fprintf( stderr, "set_inproc_event %d\n", sync->fd );
++        ioctl( sync->fd, NTSYNC_IOC_EVENT_SET, &count );
++    }
++    else
++    {
++        if (debug_level) fprintf( stderr, "reset_inproc_event %d\n", sync->fd );
++        ioctl( sync->fd, NTSYNC_IOC_EVENT_RESET, &count );
++    }
++
++    return 1;
++}
++
++static void inproc_sync_destroy( struct object *obj )
++{
++    struct inproc_sync *sync = (struct inproc_sync *)obj;
++    assert( obj->ops == &inproc_sync_ops );
++    list_remove( &sync->entry );
++    close( sync->fd );
++}
++
++void abandon_inproc_mutexes( thread_id_t tid )
++{
++    struct inproc_sync *mutex;
++
++    LIST_FOR_EACH_ENTRY( mutex, &inproc_mutexes, struct inproc_sync, entry )
++        ioctl( mutex->fd, NTSYNC_IOC_MUTEX_KILL, &tid );
++}
++
++int get_inproc_sync_fd( struct object *obj, unsigned char *type )
++{
++    struct object *sync;
++    int fd = -1;
++
++    if (obj != (struct object *)current->queue) sync = get_obj_sync( obj );
++    else sync = thread_queue_inproc_sync( current );
++    if (!sync) return -1;
++
++    if (sync->ops == &inproc_sync_ops)
++    {
++        struct inproc_sync *inproc = (struct inproc_sync *)sync;
++        *type = inproc->type;
++        fd = inproc->fd;
++    }
++
++    release_object( sync );
++    return fd;
++}
++
++#else /* NTSYNC_IOC_EVENT_READ */
++
++int get_inproc_device_fd(void)
++{
++    return -1;
++}
++
++struct object *create_inproc_event_sync( int manual, int signaled )
++{
++    return NULL;
++}
++
++struct object *create_inproc_semaphore_sync( unsigned int initial, unsigned int max )
++{
++    return NULL;
++}
++
++struct object *create_inproc_mutex_sync( thread_id_t owner, unsigned int count )
++{
++    return NULL;
++}
++
++void abandon_inproc_mutexes( thread_id_t tid )
++{
++}
++
++int get_inproc_sync_fd( struct object *obj, unsigned char *type )
++{
++    return -1;
++}
++
++#endif /* NTSYNC_IOC_EVENT_READ */
++
++DECL_HANDLER(get_inproc_sync_fd)
++{
++    struct object *obj;
++    int fd;
++
++    if (!(obj = get_handle_obj( current->process, req->handle, 0, NULL ))) return;
++
++    reply->queue = obj == (struct object *)current->queue;
++    reply->access = get_handle_access( current->process, req->handle );
++    reply->internal = check_signal_access( obj, reply->access ) == STATUS_OBJECT_TYPE_MISMATCH;
++
++    if ((fd = get_inproc_sync_fd( obj, &reply->type )) < 0) set_error( STATUS_NOT_IMPLEMENTED );
++    else send_client_fd( current->process, fd, req->handle );
++
++    release_object( obj );
++}
++
++DECL_HANDLER(select_inproc_queue)
++{
++    if (!thread_queue_select( current, req->select )) return;
++    if (req->select) check_thread_queue_idle( current );
++    if (req->signaled) thread_queue_satisfied( current );
++}
+diff --git a/server/mailslot.c b/server/mailslot.c
+index 430566d044d..8cc7c437001 100644
+--- a/server/mailslot.c
++++ b/server/mailslot.c
+@@ -83,7 +83,7 @@ static const struct object_ops mailslot_ops =
+     NULL,                      /* remove_queue */
+     NULL,                      /* signaled */
+     NULL,                      /* satisfied */
+-    no_signal,                 /* signal */
++    NULL,                      /* signal */
+     mailslot_get_fd,           /* get_fd */
+     default_fd_get_sync,       /* get_sync */
+     mailslot_map_access,       /* map_access */
+@@ -141,13 +141,13 @@ static const struct object_ops mail_writer_ops =
+     sizeof(struct mail_writer), /* size */
+     &file_type,                 /* type */
+     mail_writer_dump,           /* dump */
+-    no_add_queue,               /* add_queue */
++    NULL,                       /* add_queue */
+     NULL,                       /* remove_queue */
+     NULL,                       /* signaled */
+     NULL,                       /* satisfied */
+-    no_signal,                  /* signal */
++    NULL,                       /* signal */
+     mail_writer_get_fd,         /* get_fd */
+-    default_get_sync,           /* get_sync */
++    no_get_sync,                /* get_sync */
+     mail_writer_map_access,     /* map_access */
+     default_get_sd,             /* get_sd */
+     default_set_sd,             /* set_sd */
+@@ -207,13 +207,13 @@ static const struct object_ops mailslot_device_ops =
+     sizeof(struct mailslot_device), /* size */
+     &device_type,                   /* type */
+     mailslot_device_dump,           /* dump */
+-    no_add_queue,                   /* add_queue */
++    NULL,                           /* add_queue */
+     NULL,                           /* remove_queue */
+     NULL,                           /* signaled */
+-    no_satisfied,                   /* satisfied */
+-    no_signal,                      /* signal */
++    NULL,                           /* satisfied */
++    NULL,                           /* signal */
+     no_get_fd,                      /* get_fd */
+-    default_get_sync,               /* get_sync */
++    no_get_sync,                    /* get_sync */
+     default_map_access,             /* map_access */
+     default_get_sd,                 /* get_sd */
+     default_set_sd,                 /* set_sd */
+@@ -242,7 +242,7 @@ static const struct object_ops mailslot_device_file_ops =
+     NULL,                                   /* remove_queue */
+     NULL,                                   /* signaled */
+     NULL,                                   /* satisfied */
+-    no_signal,                              /* signal */
++    NULL,                                   /* signal */
+     mailslot_device_file_get_fd,            /* get_fd */
+     default_fd_get_sync,                    /* get_sync */
+     default_map_access,                     /* map_access */
+diff --git a/server/mapping.c b/server/mapping.c
+index c3f57b6394c..1aa00c62b8a 100644
+--- a/server/mapping.c
++++ b/server/mapping.c
+@@ -64,13 +64,13 @@ static const struct object_ops ranges_ops =
+     sizeof(struct ranges),     /* size */
+     &no_type,                  /* type */
+     ranges_dump,               /* dump */
+-    no_add_queue,              /* add_queue */
++    NULL,                      /* add_queue */
+     NULL,                      /* remove_queue */
+     NULL,                      /* signaled */
+     NULL,                      /* satisfied */
+-    no_signal,                 /* signal */
++    NULL,                      /* signal */
+     no_get_fd,                 /* get_fd */
+-    default_get_sync,          /* get_sync */
++    no_get_sync,               /* get_sync */
+     default_map_access,        /* map_access */
+     default_get_sd,            /* get_sd */
+     default_set_sd,            /* set_sd */
+@@ -101,13 +101,13 @@ static const struct object_ops shared_map_ops =
+     sizeof(struct shared_map), /* size */
+     &no_type,                  /* type */
+     shared_map_dump,           /* dump */
+-    no_add_queue,              /* add_queue */
++    NULL,                      /* add_queue */
+     NULL,                      /* remove_queue */
+     NULL,                      /* signaled */
+     NULL,                      /* satisfied */
+-    no_signal,                 /* signal */
++    NULL,                      /* signal */
+     no_get_fd,                 /* get_fd */
+-    default_get_sync,          /* get_sync */
++    no_get_sync,               /* get_sync */
+     default_map_access,        /* map_access */
+     default_get_sd,            /* get_sd */
+     default_set_sd,            /* set_sd */
+@@ -175,13 +175,13 @@ static const struct object_ops mapping_ops =
+     sizeof(struct mapping),      /* size */
+     &mapping_type,               /* type */
+     mapping_dump,                /* dump */
+-    no_add_queue,                /* add_queue */
++    NULL,                        /* add_queue */
+     NULL,                        /* remove_queue */
+     NULL,                        /* signaled */
+     NULL,                        /* satisfied */
+-    no_signal,                   /* signal */
++    NULL,                        /* signal */
+     mapping_get_fd,              /* get_fd */
+-    default_get_sync,            /* get_sync */
++    no_get_sync,                 /* get_sync */
+     default_map_access,          /* map_access */
+     default_get_sd,              /* get_sd */
+     default_set_sd,              /* set_sd */
+diff --git a/server/mutex.c b/server/mutex.c
+index 573fcda1083..4c21ea3bcf2 100644
+--- a/server/mutex.c
++++ b/server/mutex.c
+@@ -48,6 +48,7 @@ struct type_descr mutex_type =
+         STANDARD_RIGHTS_EXECUTE | SYNCHRONIZE,
+         MUTANT_ALL_ACCESS
+     },
++    SYNCHRONIZE,                          /* signal access */
+ };
+ 
+ struct mutex_sync
+@@ -62,6 +63,7 @@ struct mutex_sync
+ static void mutex_sync_dump( struct object *obj, int verbose );
+ static int mutex_sync_signaled( struct object *obj, struct wait_queue_entry *entry );
+ static void mutex_sync_satisfied( struct object *obj, struct wait_queue_entry *entry );
++static int mutex_sync_signal( struct object *obj, int signal );
+ static void mutex_sync_destroy( struct object *obj );
+ 
+ static const struct object_ops mutex_sync_ops =
+@@ -73,7 +75,7 @@ static const struct object_ops mutex_sync_ops =
+     remove_queue,              /* remove_queue */
+     mutex_sync_signaled,       /* signaled */
+     mutex_sync_satisfied,      /* satisfied */
+-    no_signal,                 /* signal */
++    mutex_sync_signal,         /* signal */
+     no_get_fd,                 /* get_fd */
+     default_get_sync,          /* get_sync */
+     default_map_access,        /* map_access */
+@@ -152,28 +154,36 @@ static void mutex_sync_satisfied( struct object *obj, struct wait_queue_entry *e
+     mutex->abandoned = 0;
+ }
+ 
+-static struct mutex_sync *create_mutex_sync( int owned )
++static int mutex_sync_signal( struct object *obj, int signal )
++{
++    struct mutex_sync *mutex = (struct mutex_sync *)obj;
++    assert( obj->ops == &mutex_sync_ops );
++    return do_release( mutex, current, 1 );
++}
++
++static struct object *create_mutex_sync( int owned )
+ {
+     struct mutex_sync *mutex;
+ 
++    if (get_inproc_device_fd() >= 0) return create_inproc_mutex_sync( owned ? current->id : 0, owned ? 1 : 0 );
++
+     if (!(mutex = alloc_object( &mutex_sync_ops ))) return NULL;
+     mutex->count = 0;
+     mutex->owner = NULL;
+     mutex->abandoned = 0;
+     if (owned) do_grab( mutex, current );
+ 
+-    return mutex;
++    return &mutex->obj;
+ }
+ 
+ struct mutex
+ {
+     struct object       obj;             /* object header */
+-    struct mutex_sync  *sync;            /* mutex sync object */
++    struct object      *sync;            /* mutex sync object */
+ };
+ 
+ static void mutex_dump( struct object *obj, int verbose );
+ static struct object *mutex_get_sync( struct object *obj );
+-static int mutex_signal( struct object *obj, unsigned int access );
+ static void mutex_destroy( struct object *obj );
+ 
+ static const struct object_ops mutex_ops =
+@@ -185,7 +195,7 @@ static const struct object_ops mutex_ops =
+     NULL,                      /* remove_queue */
+     NULL,                      /* signaled */
+     NULL,                      /* satisfied */
+-    mutex_signal,              /* signal */
++    NULL,                      /* signal */
+     no_get_fd,                 /* get_fd */
+     mutex_get_sync,            /* get_sync */
+     default_map_access,        /* map_access */
+@@ -234,13 +244,15 @@ void abandon_mutexes( struct thread *thread )
+         mutex->abandoned = 1;
+         do_release( mutex, thread, mutex->count );
+     }
++
++    abandon_inproc_mutexes( thread->id );
+ }
+ 
+ static void mutex_dump( struct object *obj, int verbose )
+ {
+     struct mutex *mutex = (struct mutex *)obj;
+     assert( obj->ops == &mutex_ops );
+-    mutex->sync->obj.ops->dump( &mutex->sync->obj, verbose );
++    mutex->sync->ops->dump( mutex->sync, verbose );
+ }
+ 
+ static struct object *mutex_get_sync( struct object *obj )
+@@ -250,19 +262,6 @@ static struct object *mutex_get_sync( struct object *obj )
+     return grab_object( mutex->sync );
+ }
+ 
+-static int mutex_signal( struct object *obj, unsigned int access )
+-{
+-    struct mutex *mutex = (struct mutex *)obj;
+-    assert( obj->ops == &mutex_ops );
+-
+-    if (!(access & SYNCHRONIZE))
+-    {
+-        set_error( STATUS_ACCESS_DENIED );
+-        return 0;
+-    }
+-    return do_release( mutex->sync, current, 1 );
+-}
+-
+ static void mutex_destroy( struct object *obj )
+ {
+     struct mutex *mutex = (struct mutex *)obj;
+@@ -311,8 +310,11 @@ DECL_HANDLER(release_mutex)
+     if ((mutex = (struct mutex *)get_handle_obj( current->process, req->handle,
+                                                  0, &mutex_ops )))
+     {
+-        reply->prev_count = mutex->sync->count;
+-        do_release( mutex->sync, current, 1 );
++        struct mutex_sync *sync = (struct mutex_sync *)mutex->sync;
++        assert( mutex->sync->ops == &mutex_sync_ops );
++
++        reply->prev_count = sync->count;
++        do_release( sync, current, 1 );
+         release_object( mutex );
+     }
+ }
+@@ -325,9 +327,12 @@ DECL_HANDLER(query_mutex)
+     if ((mutex = (struct mutex *)get_handle_obj( current->process, req->handle,
+                                                  MUTANT_QUERY_STATE, &mutex_ops )))
+     {
+-        reply->count = mutex->sync->count;
+-        reply->owned = (mutex->sync->owner == current);
+-        reply->abandoned = mutex->sync->abandoned;
++        struct mutex_sync *sync = (struct mutex_sync *)mutex->sync;
++        assert( mutex->sync->ops == &mutex_sync_ops );
++
++        reply->count = sync->count;
++        reply->owned = (sync->owner == current);
++        reply->abandoned = sync->abandoned;
+ 
+         release_object( mutex );
+     }
+diff --git a/server/named_pipe.c b/server/named_pipe.c
+index e67b25bac5d..1a9bac3eb85 100644
+--- a/server/named_pipe.c
++++ b/server/named_pipe.c
+@@ -116,13 +116,13 @@ static const struct object_ops named_pipe_ops =
+     sizeof(struct named_pipe),    /* size */
+     &no_type,                     /* type */
+     named_pipe_dump,              /* dump */
+-    no_add_queue,                 /* add_queue */
++    NULL,                         /* add_queue */
+     NULL,                         /* remove_queue */
+     NULL,                         /* signaled */
+     NULL,                         /* satisfied */
+-    no_signal,                    /* signal */
++    NULL,                         /* signal */
+     no_get_fd,                    /* get_fd */
+-    default_get_sync,             /* get_sync */
++    no_get_sync,                  /* get_sync */
+     named_pipe_map_access,        /* map_access */
+     default_get_sd,               /* get_sd */
+     default_set_sd,               /* set_sd */
+@@ -169,7 +169,7 @@ static const struct object_ops pipe_server_ops =
+     NULL,                         /* remove_queue */
+     NULL,                         /* signaled */
+     NULL,                         /* satisfied */
+-    no_signal,                    /* signal */
++    NULL,                         /* signal */
+     pipe_end_get_fd,              /* get_fd */
+     default_fd_get_sync,          /* get_sync */
+     default_map_access,           /* map_access */
+@@ -214,7 +214,7 @@ static const struct object_ops pipe_client_ops =
+     NULL,                         /* remove_queue */
+     NULL,                         /* signaled */
+     NULL,                         /* satisfied */
+-    no_signal,                    /* signal */
++    NULL,                         /* signal */
+     pipe_end_get_fd,              /* get_fd */
+     default_fd_get_sync,          /* get_sync */
+     default_map_access,           /* map_access */
+@@ -259,13 +259,13 @@ static const struct object_ops named_pipe_device_ops =
+     sizeof(struct named_pipe_device), /* size */
+     &device_type,                     /* type */
+     named_pipe_device_dump,           /* dump */
+-    no_add_queue,                     /* add_queue */
++    NULL,                             /* add_queue */
+     NULL,                             /* remove_queue */
+     NULL,                             /* signaled */
+-    no_satisfied,                     /* satisfied */
+-    no_signal,                        /* signal */
++    NULL,                             /* satisfied */
++    NULL,                             /* signal */
+     no_get_fd,                        /* get_fd */
+-    default_get_sync,                 /* get_sync */
++    no_get_sync,                      /* get_sync */
+     default_map_access,               /* map_access */
+     default_get_sd,                   /* get_sd */
+     default_set_sd,                   /* set_sd */
+@@ -295,7 +295,7 @@ static const struct object_ops named_pipe_device_file_ops =
+     NULL,                                    /* remove_queue */
+     NULL,                                    /* signaled */
+     NULL,                                    /* satisfied */
+-    no_signal,                               /* signal */
++    NULL,                                    /* signal */
+     named_pipe_device_file_get_fd,           /* get_fd */
+     default_fd_get_sync,                     /* get_sync */
+     default_map_access,                      /* map_access */
+@@ -346,7 +346,7 @@ static const struct object_ops named_pipe_dir_ops =
+     NULL,                                    /* remove_queue */
+     NULL,                                    /* signaled */
+     NULL,                                    /* satisfied */
+-    no_signal,                               /* signal */
++    NULL,                                    /* signal */
+     named_pipe_dir_get_fd,                   /* get_fd */
+     default_fd_get_sync,                     /* get_sync */
+     default_map_access,                      /* map_access */
+diff --git a/server/object.c b/server/object.c
+index 700b3497de3..5e4e0277ccd 100644
+--- a/server/object.c
++++ b/server/object.c
+@@ -105,13 +105,13 @@ static const struct object_ops apc_reserve_ops =
+     sizeof(struct reserve),     /* size */
+     &apc_reserve_type,          /* type */
+     dump_reserve,               /* dump */
+-    no_add_queue,               /* add_queue */
++    NULL,                       /* add_queue */
+     NULL,                       /* remove_queue */
+     NULL,                       /* signaled */
+-    no_satisfied,               /* satisfied */
+-    no_signal,                  /* signal */
++    NULL,                       /* satisfied */
++    NULL,                       /* signal */
+     no_get_fd,                  /* get_fd */
+-    default_get_sync,           /* get_sync */
++    no_get_sync,                /* get_sync */
+     default_map_access,         /* map_access */
+     default_get_sd,             /* get_sd */
+     default_set_sd,             /* set_sd */
+@@ -130,13 +130,13 @@ static const struct object_ops completion_reserve_ops =
+     sizeof(struct reserve),    /* size */
+     &completion_reserve_type,  /* type */
+     dump_reserve,              /* dump */
+-    no_add_queue,              /* add_queue */
++    NULL,                      /* add_queue */
+     NULL,                      /* remove_queue */
+     NULL,                      /* signaled */
+-    no_satisfied,              /* satisfied */
+-    no_signal,                 /* signal */
++    NULL,                      /* satisfied */
++    NULL,                      /* signal */
+     no_get_fd,                 /* get_fd */
+-    default_get_sync,          /* get_sync */
++    no_get_sync,               /* get_sync */
+     default_map_access,        /* map_access */
+     default_get_sd,            /* get_sd */
+     default_set_sd,            /* set_sd */
+@@ -620,22 +620,6 @@ struct namespace *create_namespace( unsigned int hash_size )
+ 
+ /* functions for unimplemented/default object operations */
+ 
+-int no_add_queue( struct object *obj, struct wait_queue_entry *entry )
+-{
+-    set_error( STATUS_OBJECT_TYPE_MISMATCH );
+-    return 0;
+-}
+-
+-void no_satisfied( struct object *obj, struct wait_queue_entry *entry )
+-{
+-}
+-
+-int no_signal( struct object *obj, unsigned int access )
+-{
+-    set_error( STATUS_OBJECT_TYPE_MISMATCH );
+-    return 0;
+-}
+-
+ struct fd *no_get_fd( struct object *obj )
+ {
+     set_error( STATUS_OBJECT_TYPE_MISMATCH );
+@@ -647,6 +631,11 @@ struct object *default_get_sync( struct object *obj )
+     return grab_object( obj );
+ }
+ 
++struct object *no_get_sync( struct object *obj )
++{
++    return NULL;
++}
++
+ unsigned int default_map_access( struct object *obj, unsigned int access )
+ {
+     return map_access( access, &obj->ops->type->mapping );
+diff --git a/server/object.h b/server/object.h
+index 0261eebb76c..ea27850a15d 100644
+--- a/server/object.h
++++ b/server/object.h
+@@ -56,6 +56,7 @@ struct type_descr
+     struct unicode_str name;          /* type name */
+     unsigned int       valid_access;  /* mask for valid access bits */
+     struct generic_map mapping;       /* generic access mapping */
++    unsigned int       signal_access; /* mask for valid signal access */
+     unsigned int       index;         /* index in global array of types */
+     unsigned int       obj_count;     /* count of objects of this type */
+     unsigned int       handle_count;  /* count of handles of this type */
+@@ -80,8 +81,8 @@ struct object_ops
+     int  (*signaled)(struct object *,struct wait_queue_entry *);
+     /* wait satisfied */
+     void (*satisfied)(struct object *,struct wait_queue_entry *);
+-    /* signal an object */
+-    int  (*signal)(struct object *, unsigned int);
++    /* signal/reset an object */
++    int  (*signal)(struct object *,int);
+     /* return an fd object that can be used to read/write from the object */
+     struct fd *(*get_fd)(struct object *);
+     /* return a sync that can be used to wait/signal the object */
+@@ -168,11 +169,9 @@ extern void release_object( void *obj );
+ extern struct object *find_object( const struct namespace *namespace, const struct unicode_str *name,
+                                    unsigned int attributes );
+ extern struct object *find_object_index( const struct namespace *namespace, unsigned int index );
+-extern int no_add_queue( struct object *obj, struct wait_queue_entry *entry );
+-extern void no_satisfied( struct object *obj, struct wait_queue_entry *entry );
+-extern int no_signal( struct object *obj, unsigned int access );
+ extern struct fd *no_get_fd( struct object *obj );
+ extern struct object *default_get_sync( struct object *obj );
++extern struct object *no_get_sync( struct object *obj );
+ static inline struct object *get_obj_sync( struct object *obj ) { return obj->ops->get_sync( obj ); }
+ extern unsigned int default_map_access( struct object *obj, unsigned int access );
+ extern struct security_descriptor *default_get_sd( struct object *obj );
+@@ -218,13 +217,12 @@ static inline void *mem_append( void *ptr, const void *src, data_size_t len )
+ 
+ /* event functions */
+ 
+-struct event_sync;
+ struct event;
+ struct keyed_event;
+ 
+-extern struct event_sync *create_event_sync( int manual, int signaled );
+-extern void signal_sync( struct event_sync *sync );
+-extern void reset_sync( struct event_sync *sync );
++extern struct object *create_event_sync( int manual, int signaled );
++extern void signal_sync( struct object *sync );
++extern void reset_sync( struct object *sync );
+ 
+ extern struct event *create_event( struct object *root, const struct unicode_str *name,
+                                    unsigned int attr, int manual_reset, int initial_state,
+@@ -240,6 +238,15 @@ extern void reset_event( struct event *event );
+ 
+ extern void abandon_mutexes( struct thread *thread );
+ 
++/* in-process synchronization functions */
++
++extern int get_inproc_device_fd(void);
++extern struct object *create_inproc_event_sync( int manual, int signaled );
++extern struct object *create_inproc_semaphore_sync( unsigned int initial, unsigned int max );
++extern struct object *create_inproc_mutex_sync( thread_id_t owner, unsigned int count );
++extern void abandon_inproc_mutexes( thread_id_t owner );
++extern int get_inproc_sync_fd( struct object *obj, unsigned char *type );
++
+ /* serial functions */
+ 
+ int get_serial_async_timeout(struct object *obj, int type, int count);
+diff --git a/server/process.c b/server/process.c
+index 9b3b0b8fc6c..5b9541baedb 100644
+--- a/server/process.c
++++ b/server/process.c
+@@ -107,7 +107,7 @@ static const struct object_ops process_ops =
+     NULL,                        /* remove_queue */
+     NULL,                        /* signaled */
+     NULL,                        /* satisfied */
+-    no_signal,                   /* signal */
++    NULL,                        /* signal */
+     no_get_fd,                   /* get_fd */
+     process_get_sync,            /* get_sync */
+     process_map_access,          /* map_access */
+@@ -140,7 +140,7 @@ static const struct fd_ops process_fd_ops =
+ struct startup_info
+ {
+     struct object               obj;            /* object header */
+-    struct event_sync          *sync;           /* sync object for wait/signal */
++    struct object              *sync;           /* sync object for wait/signal */
+     struct process             *process;        /* created process */
+     data_size_t                 info_size;      /* size of startup info */
+     data_size_t                 data_size;      /* size of whole startup data */
+@@ -160,7 +160,7 @@ static const struct object_ops startup_info_ops =
+     NULL,                          /* remove_queue */
+     NULL,                          /* signaled */
+     NULL,                          /* satisfied */
+-    no_signal,                     /* signal */
++    NULL,                          /* signal */
+     no_get_fd,                     /* get_fd */
+     startup_info_get_sync,         /* get_sync */
+     default_map_access,            /* map_access */
+@@ -200,7 +200,7 @@ static void job_destroy( struct object *obj );
+ struct job
+ {
+     struct object        obj;               /* object header */
+-    struct event_sync   *sync;              /* sync object for wait/signal */
++    struct object       *sync;              /* sync object for wait/signal */
+     struct list          process_list;      /* list of processes */
+     int                  num_processes;     /* count of running processes */
+     int                  total_processes;   /* count of processes which have been assigned */
+@@ -222,7 +222,7 @@ static const struct object_ops job_ops =
+     NULL,                          /* remove_queue */
+     NULL,                          /* signaled */
+     NULL,                          /* satisfied */
+-    no_signal,                     /* signal */
++    NULL,                          /* signal */
+     no_get_fd,                     /* get_fd */
+     job_get_sync,                  /* get_sync */
+     default_map_access,            /* map_access */
+diff --git a/server/process.h b/server/process.h
+index d9b78004afa..39229ee80d2 100644
+--- a/server/process.h
++++ b/server/process.h
+@@ -36,7 +36,7 @@ enum startup_state { STARTUP_IN_PROGRESS, STARTUP_DONE, STARTUP_ABORTED };
+ struct process
+ {
+     struct object        obj;             /* object header */
+-    struct event_sync   *sync;            /* sync object for wait/signal */
++    struct object       *sync;            /* sync object for wait/signal */
+     struct list          entry;           /* entry in system-wide process list */
+     process_id_t         parent_id;       /* parent process id (at the time of creation) */
+     struct list          thread_list;     /* thread list */
+diff --git a/server/protocol.def b/server/protocol.def
+index 5c63f94ff4c..a3145d40a8b 100644
+--- a/server/protocol.def
++++ b/server/protocol.def
+@@ -1121,6 +1121,8 @@ struct obj_locator
+     thread_id_t  tid;          /* thread id of the new thread */
+     timeout_t    server_start; /* server start time */
+     unsigned int session_id;   /* process session id */
++    obj_handle_t inproc_device;/* inproc device fd in flight with this handle */
++    obj_handle_t alert_handle; /* alert fd is in flight with this handle */
+     data_size_t  info_size;    /* total size of startup info */
+     VARARG(machines,ushorts);  /* array of supported machines */
+ @END
+@@ -1135,6 +1137,7 @@ struct obj_locator
+     client_ptr_t entry;        /* entry point (in thread address space) */
+ @REPLY
+     int          suspend;      /* is thread suspended? */
++    obj_handle_t alert_handle; /* alert fd is in flight with this handle */
+ @END
+ 
+ 
+@@ -4136,3 +4139,29 @@ struct handle_info
+ @REPLY
+     int enable;                /* previous state of auto-repeat enable */
+ @END
++
++
++enum inproc_sync_type
++{
++    INPROC_SYNC_UNKNOWN = 0,
++    INPROC_SYNC_EVENT = 1,
++    INPROC_SYNC_MUTEX = 2,
++    INPROC_SYNC_SEMAPHORE = 3,
++};
++
++/* Get the in-process synchronization fd associated with the waitable handle */
++@REQ(get_inproc_sync_fd)
++    obj_handle_t handle;        /* handle to the object */
++@REPLY
++    unsigned char type;         /* inproc sync type */
++    unsigned char queue;        /* sync is a message queue sync */
++    unsigned char internal;     /* sync is an internal event sync */
++    unsigned int access;        /* handle access rights */
++@END
++
++
++/* Begin/end a client-side wait on a message queue */
++@REQ(select_inproc_queue)
++    int          select;          /* 1: begin waiting, 0: end waiting */
++    int          signaled;        /* was the queue signaled? */
++@END
+diff --git a/server/queue.c b/server/queue.c
+index 18fe5bee82d..300ae2fe61e 100644
+--- a/server/queue.c
++++ b/server/queue.c
+@@ -116,6 +116,7 @@ struct msg_queue
+ {
+     struct object          obj;             /* object header */
+     struct fd             *fd;              /* optional file descriptor to poll */
++    struct object         *inproc_sync;     /* inproc sync for client-side waits */
+     int                    signaled;        /* queue is signaled from fd POLLIN or masks */
+     int                    paint_count;     /* pending paint messages count */
+     int                    hotkey_count;    /* pending hotkey messages count */
+@@ -169,7 +170,7 @@ static const struct object_ops msg_queue_ops =
+     msg_queue_remove_queue,    /* remove_queue */
+     msg_queue_signaled,        /* signaled */
+     msg_queue_satisfied,       /* satisfied */
+-    no_signal,                 /* signal */
++    NULL,                      /* signal */
+     no_get_fd,                 /* get_fd */
+     default_get_sync,          /* get_sync */
+     default_map_access,        /* map_access */
+@@ -203,13 +204,13 @@ static const struct object_ops thread_input_ops =
+     sizeof(struct thread_input),  /* size */
+     &no_type,                     /* type */
+     thread_input_dump,            /* dump */
+-    no_add_queue,                 /* add_queue */
++    NULL,                         /* add_queue */
+     NULL,                         /* remove_queue */
+     NULL,                         /* signaled */
+     NULL,                         /* satisfied */
+-    no_signal,                    /* signal */
++    NULL,                         /* signal */
+     no_get_fd,                    /* get_fd */
+-    default_get_sync,             /* get_sync */
++    no_get_sync,                  /* get_sync */
+     default_map_access,           /* map_access */
+     default_get_sd,               /* get_sd */
+     default_set_sd,               /* set_sd */
+@@ -307,6 +308,7 @@ static struct msg_queue *create_msg_queue( struct thread *thread, struct thread_
+     if ((queue = alloc_object( &msg_queue_ops )))
+     {
+         queue->fd              = NULL;
++        queue->inproc_sync     = NULL;
+         queue->signaled        = 0;
+         queue->paint_count     = 0;
+         queue->hotkey_count    = 0;
+@@ -327,11 +329,8 @@ static struct msg_queue *create_msg_queue( struct thread *thread, struct thread_
+         list_init( &queue->expired_timers );
+         for (i = 0; i < NB_MSG_KINDS; i++) list_init( &queue->msg_list[i] );
+ 
+-        if (!(queue->shared = alloc_shared_object()))
+-        {
+-            release_object( queue );
+-            return NULL;
+-        }
++        if (get_inproc_device_fd() >= 0 && !(queue->inproc_sync = create_inproc_event_sync( 1, 0 ))) goto error;
++        if (!(queue->shared = alloc_shared_object())) goto error;
+ 
+         SHARED_WRITE_BEGIN( queue->shared, queue_shm_t )
+         {
+@@ -353,6 +352,10 @@ static struct msg_queue *create_msg_queue( struct thread *thread, struct thread_
+     }
+     if (new_input) release_object( new_input );
+     return queue;
++
++error:
++    release_object( queue );
++    return NULL;
+ }
+ 
+ /* free the message queue of a thread at thread exit */
+@@ -716,11 +719,13 @@ static void signal_queue_sync( struct msg_queue *queue )
+     if (queue->signaled) return;
+     queue->signaled = 1;
+     wake_up( &queue->obj, 0 );
++    if (queue->inproc_sync) signal_sync( queue->inproc_sync );
+ }
+ 
+ static void reset_queue_sync( struct msg_queue *queue )
+ {
+     queue->signaled = 0;
++    if (queue->inproc_sync) reset_sync( queue->inproc_sync );
+ }
+ 
+ /* check the queue status */
+@@ -1363,6 +1368,16 @@ static void msg_queue_satisfied( struct object *obj, struct wait_queue_entry *en
+     reset_queue_sync( queue );
+ }
+ 
++int thread_queue_select( struct thread *thread, int select )
++{
++    return msg_queue_select( thread->queue, select );
++}
++
++void thread_queue_satisfied( struct thread *thread )
++{
++    msg_queue_satisfied( &thread->queue->obj, NULL );
++}
++
+ static void msg_queue_destroy( struct object *obj )
+ {
+     struct msg_queue *queue = (struct msg_queue *)obj;
+@@ -1406,6 +1421,7 @@ static void msg_queue_destroy( struct object *obj )
+     if (queue->hooks) release_object( queue->hooks );
+     if (queue->fd) release_object( queue->fd );
+     if (queue->shared) free_shared_object( queue->shared );
++    if (queue->inproc_sync) release_object( queue->inproc_sync );
+ }
+ 
+ static void msg_queue_poll_event( struct fd *fd, int event )
+@@ -1495,6 +1511,12 @@ int init_thread_queue( struct thread *thread )
+     return (create_msg_queue( thread, NULL ) != NULL);
+ }
+ 
++struct object *thread_queue_inproc_sync( struct thread *thread )
++{
++    if (!thread->queue) return NULL;
++    return grab_object( thread->queue->inproc_sync );
++}
++
+ /* attach two thread input data structures */
+ int attach_thread_input( struct thread *thread_from, struct thread *thread_to )
+ {
+diff --git a/server/registry.c b/server/registry.c
+index e459783caa7..377944b136b 100644
+--- a/server/registry.c
++++ b/server/registry.c
+@@ -177,13 +177,13 @@ static const struct object_ops key_ops =
+     sizeof(struct key),      /* size */
+     &key_type,               /* type */
+     key_dump,                /* dump */
+-    no_add_queue,            /* add_queue */
++    NULL,                    /* add_queue */
+     NULL,                    /* remove_queue */
+     NULL,                    /* signaled */
+     NULL,                    /* satisfied */
+-    no_signal,               /* signal */
++    NULL,                    /* signal */
+     no_get_fd,               /* get_fd */
+-    default_get_sync,        /* get_sync */
++    no_get_sync,             /* get_sync */
+     key_map_access,          /* map_access */
+     key_get_sd,              /* get_sd */
+     default_set_sd,          /* set_sd */
+diff --git a/server/request.c b/server/request.c
+index 835ea30cec3..92f5b427402 100644
+--- a/server/request.c
++++ b/server/request.c
+@@ -86,13 +86,13 @@ static const struct object_ops master_socket_ops =
+     sizeof(struct master_socket),  /* size */
+     &no_type,                      /* type */
+     master_socket_dump,            /* dump */
+-    no_add_queue,                  /* add_queue */
++    NULL,                          /* add_queue */
+     NULL,                          /* remove_queue */
+     NULL,                          /* signaled */
+     NULL,                          /* satisfied */
+-    no_signal,                     /* signal */
++    NULL,                          /* signal */
+     no_get_fd,                     /* get_fd */
+-    default_get_sync,              /* get_sync */
++    no_get_sync,                   /* get_sync */
+     default_map_access,            /* map_access */
+     default_get_sd,                /* get_sd */
+     default_set_sd,                /* set_sd */
+diff --git a/server/semaphore.c b/server/semaphore.c
+index 4b31bfe806c..8a350c67603 100644
+--- a/server/semaphore.c
++++ b/server/semaphore.c
+@@ -48,6 +48,7 @@ struct type_descr semaphore_type =
+         STANDARD_RIGHTS_EXECUTE | SYNCHRONIZE,
+         SEMAPHORE_ALL_ACCESS
+     },
++    SEMAPHORE_MODIFY_STATE,                       /* signal access */
+ };
+ 
+ struct semaphore_sync
+@@ -60,6 +61,7 @@ struct semaphore_sync
+ static void semaphore_sync_dump( struct object *obj, int verbose );
+ static int semaphore_sync_signaled( struct object *obj, struct wait_queue_entry *entry );
+ static void semaphore_sync_satisfied( struct object *obj, struct wait_queue_entry *entry );
++static int semaphore_sync_signal( struct object *obj, int signal );
+ 
+ static const struct object_ops semaphore_sync_ops =
+ {
+@@ -70,7 +72,7 @@ static const struct object_ops semaphore_sync_ops =
+     remove_queue,                  /* remove_queue */
+     semaphore_sync_signaled,       /* signaled */
+     semaphore_sync_satisfied,      /* satisfied */
+-    no_signal,                     /* signal */
++    semaphore_sync_signal,         /* signal */
+     no_get_fd,                     /* get_fd */
+     default_get_sync,              /* get_sync */
+     default_map_access,            /* map_access */
+@@ -130,25 +132,33 @@ static void semaphore_sync_satisfied( struct object *obj, struct wait_queue_entr
+     sem->count--;
+ }
+ 
+-static struct semaphore_sync *create_semaphore_sync( unsigned int initial, unsigned int max )
++static int semaphore_sync_signal( struct object *obj, int signal )
++{
++    struct semaphore_sync *sem = (struct semaphore_sync *)obj;
++    assert( obj->ops == &semaphore_sync_ops );
++    return release_semaphore( sem, 1, NULL );
++}
++
++static struct object *create_semaphore_sync( unsigned int initial, unsigned int max )
+ {
+     struct semaphore_sync *sem;
+ 
++    if (get_inproc_device_fd() >= 0) return create_inproc_semaphore_sync( initial, max );
++
+     if (!(sem = alloc_object( &semaphore_sync_ops ))) return NULL;
+     sem->count = initial;
+     sem->max   = max;
+-    return sem;
++    return &sem->obj;
+ }
+ 
+ struct semaphore
+ {
+     struct object          obj;    /* object header */
+-    struct semaphore_sync *sync;   /* semaphore sync object */
++    struct object         *sync;   /* semaphore sync object */
+ };
+ 
+ static void semaphore_dump( struct object *obj, int verbose );
+ static struct object *semaphore_get_sync( struct object *obj );
+-static int semaphore_signal( struct object *obj, unsigned int access );
+ static void semaphore_destroy( struct object *obj );
+ 
+ static const struct object_ops semaphore_ops =
+@@ -160,7 +170,7 @@ static const struct object_ops semaphore_ops =
+     NULL,                          /* remove_queue */
+     NULL,                          /* signaled */
+     NULL,                          /* satisfied */
+-    semaphore_signal,              /* signal */
++    NULL,                          /* signal */
+     no_get_fd,                     /* get_fd */
+     semaphore_get_sync,            /* get_sync */
+     default_map_access,            /* map_access */
+@@ -208,7 +218,7 @@ static void semaphore_dump( struct object *obj, int verbose )
+ {
+     struct semaphore *sem = (struct semaphore *)obj;
+     assert( obj->ops == &semaphore_ops );
+-    sem->sync->obj.ops->dump( &sem->sync->obj, verbose );
++    sem->sync->ops->dump( sem->sync, verbose );
+ }
+ 
+ static struct object *semaphore_get_sync( struct object *obj )
+@@ -218,19 +228,6 @@ static struct object *semaphore_get_sync( struct object *obj )
+     return grab_object( sem->sync );
+ }
+ 
+-static int semaphore_signal( struct object *obj, unsigned int access )
+-{
+-    struct semaphore *sem = (struct semaphore *)obj;
+-    assert( obj->ops == &semaphore_ops );
+-
+-    if (!(access & SEMAPHORE_MODIFY_STATE))
+-    {
+-        set_error( STATUS_ACCESS_DENIED );
+-        return 0;
+-    }
+-    return release_semaphore( sem->sync, 1, NULL );
+-}
+-
+ static void semaphore_destroy( struct object *obj )
+ {
+     struct semaphore *sem = (struct semaphore *)obj;
+@@ -279,7 +276,10 @@ DECL_HANDLER(release_semaphore)
+     if ((sem = (struct semaphore *)get_handle_obj( current->process, req->handle,
+                                                    SEMAPHORE_MODIFY_STATE, &semaphore_ops )))
+     {
+-        release_semaphore( sem->sync, req->count, &reply->prev_count );
++        struct semaphore_sync *sync = (struct semaphore_sync *)sem->sync;
++        assert( sem->sync->ops == &semaphore_sync_ops );
++
++        release_semaphore( sync, req->count, &reply->prev_count );
+         release_object( sem );
+     }
+ }
+@@ -292,8 +292,11 @@ DECL_HANDLER(query_semaphore)
+     if ((sem = (struct semaphore *)get_handle_obj( current->process, req->handle,
+                                                    SEMAPHORE_QUERY_STATE, &semaphore_ops )))
+     {
+-        reply->current = sem->sync->count;
+-        reply->max = sem->sync->max;
++        struct semaphore_sync *sync = (struct semaphore_sync *)sem->sync;
++        assert( sem->sync->ops == &semaphore_sync_ops );
++
++        reply->current = sync->count;
++        reply->max = sync->max;
+         release_object( sem );
+     }
+ }
+diff --git a/server/serial.c b/server/serial.c
+index 66cb4aabfbc..40150080ce1 100644
+--- a/server/serial.c
++++ b/server/serial.c
+@@ -92,7 +92,7 @@ static const struct object_ops serial_ops =
+     NULL,                         /* remove_queue */
+     NULL,                         /* signaled */
+     NULL,                         /* satisfied */
+-    no_signal,                    /* signal */
++    NULL,                         /* signal */
+     serial_get_fd,                /* get_fd */
+     default_fd_get_sync,          /* get_sync */
+     default_map_access,           /* map_access */
+diff --git a/server/signal.c b/server/signal.c
+index 078951af6e4..1e72a46079b 100644
+--- a/server/signal.c
++++ b/server/signal.c
+@@ -59,13 +59,13 @@ static const struct object_ops handler_ops =
+     sizeof(struct handler),   /* size */
+     &no_type,                 /* type */
+     handler_dump,             /* dump */
+-    no_add_queue,             /* add_queue */
++    NULL,                     /* add_queue */
+     NULL,                     /* remove_queue */
+     NULL,                     /* signaled */
+     NULL,                     /* satisfied */
+-    no_signal,                /* signal */
++    NULL,                     /* signal */
+     no_get_fd,                /* get_fd */
+-    default_get_sync,         /* get_sync */
++    no_get_sync,              /* get_sync */
+     default_map_access,       /* map_access */
+     default_get_sd,           /* get_sd */
+     default_set_sd,           /* set_sd */
+diff --git a/server/sock.c b/server/sock.c
+index 1748cf4130b..2cf1c317f56 100644
+--- a/server/sock.c
++++ b/server/sock.c
+@@ -492,7 +492,7 @@ static const struct object_ops sock_ops =
+     NULL,                         /* remove_queue */
+     NULL,                         /* signaled */
+     NULL,                         /* satisfied */
+-    no_signal,                    /* signal */
++    NULL,                         /* signal */
+     sock_get_fd,                  /* get_fd */
+     default_fd_get_sync,          /* get_sync */
+     default_map_access,           /* map_access */
+@@ -3881,13 +3881,13 @@ static const struct object_ops ifchange_ops =
+     sizeof(struct ifchange), /* size */
+     &no_type,                /* type */
+     ifchange_dump,           /* dump */
+-    no_add_queue,            /* add_queue */
++    NULL,                    /* add_queue */
+     NULL,                    /* remove_queue */
+     NULL,                    /* signaled */
+-    no_satisfied,            /* satisfied */
+-    no_signal,               /* signal */
++    NULL,                    /* satisfied */
++    NULL,                    /* signal */
+     ifchange_get_fd,         /* get_fd */
+-    default_get_sync,        /* get_sync */
++    no_get_sync,             /* get_sync */
+     default_map_access,      /* map_access */
+     default_get_sd,          /* get_sd */
+     default_set_sd,          /* set_sd */
+@@ -4103,13 +4103,13 @@ static const struct object_ops socket_device_ops =
+     sizeof(struct object),      /* size */
+     &device_type,               /* type */
+     socket_device_dump,         /* dump */
+-    no_add_queue,               /* add_queue */
++    NULL,                       /* add_queue */
+     NULL,                       /* remove_queue */
+     NULL,                       /* signaled */
+-    no_satisfied,               /* satisfied */
+-    no_signal,                  /* signal */
++    NULL,                       /* satisfied */
++    NULL,                       /* signal */
+     no_get_fd,                  /* get_fd */
+-    default_get_sync,           /* get_sync */
++    no_get_sync,                /* get_sync */
+     default_map_access,         /* map_access */
+     default_get_sd,             /* get_sd */
+     default_set_sd,             /* set_sd */
+diff --git a/server/symlink.c b/server/symlink.c
+index 238dcfad1c7..fd991f21fd2 100644
+--- a/server/symlink.c
++++ b/server/symlink.c
+@@ -68,13 +68,13 @@ static const struct object_ops symlink_ops =
+     sizeof(struct symlink),       /* size */
+     &symlink_type,                /* type */
+     symlink_dump,                 /* dump */
+-    no_add_queue,                 /* add_queue */
++    NULL,                         /* add_queue */
+     NULL,                         /* remove_queue */
+     NULL,                         /* signaled */
+     NULL,                         /* satisfied */
+-    no_signal,                    /* signal */
++    NULL,                         /* signal */
+     no_get_fd,                    /* get_fd */
+-    default_get_sync,             /* get_sync */
++    no_get_sync,                  /* get_sync */
+     default_map_access,           /* map_access */
+     default_get_sd,               /* get_sd */
+     default_set_sd,               /* set_sd */
+diff --git a/server/thread.c b/server/thread.c
+index b3b971548bc..57539f4cfc5 100644
+--- a/server/thread.c
++++ b/server/thread.c
+@@ -85,7 +85,7 @@ struct thread_wait
+ struct thread_apc
+ {
+     struct object       obj;      /* object header */
+-    struct event_sync  *sync;     /* sync object for wait/signal */
++    struct object      *sync;     /* sync object for wait/signal */
+     struct list         entry;    /* queue linked list */
+     struct thread      *caller;   /* thread that queued this apc */
+     struct object      *owner;    /* object that queued this apc */
+@@ -108,7 +108,7 @@ static const struct object_ops thread_apc_ops =
+     NULL,                       /* remove_queue */
+     NULL,                       /* signaled */
+     NULL,                       /* satisfied */
+-    no_signal,                  /* signal */
++    NULL,                       /* signal */
+     no_get_fd,                  /* get_fd */
+     thread_apc_get_sync,        /* get_sync */
+     default_map_access,         /* map_access */
+@@ -130,7 +130,7 @@ static const struct object_ops thread_apc_ops =
+ struct context
+ {
+     struct object           obj;        /* object header */
+-    struct event_sync      *sync;       /* sync object for wait/signal */
++    struct object          *sync;       /* sync object for wait/signal */
+     unsigned int            status;     /* status of the context */
+     struct context_data     regs[2];    /* context data */
+ };
+@@ -153,7 +153,7 @@ static const struct object_ops context_ops =
+     NULL,                       /* remove_queue */
+     NULL,                       /* signaled */
+     NULL,                       /* satisfied */
+-    no_signal,                  /* signal */
++    NULL,                       /* signal */
+     no_get_fd,                  /* get_fd */
+     context_get_sync,           /* get_sync */
+     default_map_access,         /* map_access */
+@@ -203,7 +203,7 @@ static const struct object_ops thread_ops =
+     NULL,                       /* remove_queue */
+     NULL,                       /* signaled */
+     NULL,                       /* satisfied */
+-    no_signal,                  /* signal */
++    NULL,                       /* signal */
+     no_get_fd,                  /* get_fd */
+     thread_get_sync,            /* get_sync */
+     thread_map_access,          /* map_access */
+@@ -396,6 +396,7 @@ static inline void init_thread_structure( struct thread *thread )
+     int i;
+ 
+     thread->sync            = NULL;
++    thread->alert_sync      = NULL;
+     thread->unix_pid        = -1;  /* not known yet */
+     thread->unix_tid        = -1;  /* not known yet */
+     thread->context         = NULL;
+@@ -551,6 +552,7 @@ struct thread *create_thread( int fd, struct process *process, const struct secu
+     }
+     if (!(thread->request_fd = create_anonymous_fd( &thread_fd_ops, fd, &thread->obj, 0 ))) goto error;
+     if (!(thread->sync = create_event_sync( 1, 0 ))) goto error;
++    if (get_inproc_device_fd() >= 0 && !(thread->alert_sync = create_inproc_event_sync( 1, 0 ))) goto error;
+ 
+     if (process->desktop)
+     {
+@@ -646,6 +648,7 @@ static void destroy_thread( struct object *obj )
+     if (thread->exit_poll) remove_timeout_user( thread->exit_poll );
+     if (thread->id) free_ptid( thread->id );
+     if (thread->token) release_object( thread->token );
++    if (thread->alert_sync) release_object( thread->alert_sync );
+     if (thread->sync) release_object( thread->sync );
+ }
+ 
+@@ -1001,8 +1004,15 @@ static void object_sync_remove_queue( struct object *obj, struct wait_queue_entr
+ 
+ static int object_sync_add_queue( struct object *obj, struct wait_queue_entry *entry )
+ {
+-    struct object *sync = get_obj_sync( obj );
+-    int ret = sync->ops->add_queue( sync, entry );
++    struct object *sync;
++    int ret;
++
++    if (!(sync = get_obj_sync( obj )))
++    {
++        set_error( STATUS_OBJECT_TYPE_MISMATCH );
++        return 0;
++    }
++    ret = sync->ops->add_queue( sync, entry );
+     release_object( sync );
+     return ret;
+ }
+@@ -1015,6 +1025,26 @@ static int object_sync_signaled( struct object *obj, struct wait_queue_entry *en
+     return ret;
+ }
+ 
++void signal_sync( struct object *obj )
++{
++    assert( obj->ops->signal );
++    obj->ops->signal( obj, 1 );
++}
++
++void reset_sync( struct object *obj )
++{
++    assert( obj->ops->signal );
++    obj->ops->signal( obj, 0 );
++}
++
++static int object_sync_signal( struct object *obj )
++{
++    struct object *sync = get_obj_sync( obj );
++    int ret = sync->ops->signal( sync, -1 );
++    release_object( sync );
++    return ret;
++}
++
+ /* finish waiting */
+ static unsigned int end_wait( struct thread *thread, unsigned int status )
+ {
+@@ -1244,6 +1274,14 @@ static void thread_timeout( void *ptr )
+     wake_thread( thread );
+ }
+ 
++/* check if an event flag, a semaphore or a mutex can be signaled */
++unsigned int check_signal_access( struct object *obj, unsigned int access )
++{
++    if (!obj->ops->type->signal_access) return STATUS_OBJECT_TYPE_MISMATCH;
++    if (!(access & obj->ops->type->signal_access)) return STATUS_ACCESS_DENIED;
++    return STATUS_SUCCESS;
++}
++
+ /* try signaling an event flag, a semaphore or a mutex */
+ static int signal_object( obj_handle_t handle )
+ {
+@@ -1253,7 +1291,9 @@ static int signal_object( obj_handle_t handle )
+     obj = get_handle_obj( current->process, handle, 0, NULL );
+     if (obj)
+     {
+-        ret = obj->ops->signal( obj, get_handle_access( current->process, handle ));
++        unsigned int status, access = get_handle_access( current->process, handle );
++        if ((status = check_signal_access( obj, access ))) set_error( status );
++        else ret = object_sync_signal( obj );
+         release_object( obj );
+     }
+     return ret;
+@@ -1428,7 +1468,11 @@ static int queue_apc( struct process *process, struct thread *thread, struct thr
+     grab_object( apc );
+     list_add_tail( queue, &apc->entry );
+     if (!list_prev( queue, &apc->entry ))  /* first one */
++    {
++        if (apc->call.type == APC_USER && thread->alert_sync)
++            signal_sync( thread->alert_sync );
+         wake_thread( thread );
++    }
+ 
+     return 1;
+ }
+@@ -1460,6 +1504,8 @@ void thread_cancel_apc( struct thread *thread, struct object *owner, enum apc_ty
+         apc->executed = 1;
+         signal_sync( apc->sync );
+         release_object( apc );
++        if (list_empty( &thread->user_apc ) && thread->alert_sync)
++            reset_sync( thread->alert_sync );
+         return;
+     }
+ }
+@@ -1474,6 +1520,8 @@ static struct thread_apc *thread_dequeue_apc( struct thread *thread, int system
+     {
+         apc = LIST_ENTRY( ptr, struct thread_apc, entry );
+         list_remove( ptr );
++        if (list_empty( &thread->user_apc ) && thread->alert_sync)
++            reset_sync( thread->alert_sync );
+     }
+     return apc;
+ }
+@@ -1721,6 +1769,8 @@ static int init_thread( struct thread *thread, int reply_fd, int wait_fd )
+ DECL_HANDLER(init_first_thread)
+ {
+     struct process *process = current->process;
++    unsigned char type;
++    int fd;
+ 
+     if (!init_thread( current, req->reply_fd, req->wait_fd )) return;
+ 
+@@ -1743,11 +1793,25 @@ DECL_HANDLER(init_first_thread)
+     reply->server_start = server_start_time;
+     set_reply_data( supported_machines,
+                     min( supported_machines_count * sizeof(unsigned short), get_reply_max_size() ));
++
++    if ((fd = get_inproc_device_fd()) >= 0)
++    {
++        reply->inproc_device = get_process_id( process ) | 1;
++        send_client_fd( process, fd, reply->inproc_device );
++    }
++    if (current->alert_sync && (fd = get_inproc_sync_fd( current->alert_sync, &type )) >= 0)
++    {
++        reply->alert_handle = get_thread_id( current ) | 1;
++        send_client_fd( process, fd, reply->alert_handle );
++    }
+ }
+ 
+ /* initialize a new thread */
+ DECL_HANDLER(init_thread)
+ {
++    unsigned char type;
++    int fd;
++
+     if (!init_thread( current, req->reply_fd, req->wait_fd )) return;
+ 
+     if (!is_valid_address(req->teb))
+@@ -1767,6 +1831,12 @@ DECL_HANDLER(init_thread)
+     set_thread_affinity( current, current->affinity );
+ 
+     reply->suspend = (current->suspend || current->process->suspend || current->context != NULL);
++
++    if (current->alert_sync && (fd = get_inproc_sync_fd( current->alert_sync, &type )) >= 0)
++    {
++        reply->alert_handle = get_thread_id( current ) | 1;
++        send_client_fd( current->process, fd, reply->alert_handle );
++    }
+ }
+ 
+ /* terminate a thread */
+diff --git a/server/thread.h b/server/thread.h
+index d87f84603ef..f09cbdf0af8 100644
+--- a/server/thread.h
++++ b/server/thread.h
+@@ -50,7 +50,8 @@ struct inflight_fd
+ struct thread
+ {
+     struct object          obj;           /* object header */
+-    struct event_sync     *sync;          /* sync object for wait/signal */
++    struct object         *sync;          /* sync object for wait/signal */
++    struct object         *alert_sync;    /* thread alert sync */
+     struct list            entry;         /* entry in system-wide thread list */
+     struct list            proc_entry;    /* entry in per-process thread list */
+     struct list            desktop_entry; /* entry in per-desktop thread list */
+@@ -116,6 +117,7 @@ extern void set_wait_status( struct wait_queue_entry *entry, int status );
+ extern void stop_thread( struct thread *thread );
+ extern int wake_thread( struct thread *thread );
+ extern int wake_thread_queue_entry( struct wait_queue_entry *entry );
++extern unsigned int check_signal_access( struct object *obj, unsigned int access );
+ extern int add_queue( struct object *obj, struct wait_queue_entry *entry );
+ extern void remove_queue( struct object *obj, struct wait_queue_entry *entry );
+ extern void kill_thread( struct thread *thread, int violent_death );
+diff --git a/server/timer.c b/server/timer.c
+index 6357569ccba..d093b22843e 100644
+--- a/server/timer.c
++++ b/server/timer.c
+@@ -53,7 +53,7 @@ struct type_descr timer_type =
+ struct timer
+ {
+     struct object        obj;       /* object header */
+-    struct event_sync   *sync;      /* sync object for wait/signal */
++    struct object       *sync;      /* sync object for wait/signal */
+     int                  manual;    /* manual reset */
+     int                  signaled;  /* current signaled state */
+     unsigned int         period;    /* timer period in ms */
+@@ -77,7 +77,7 @@ static const struct object_ops timer_ops =
+     NULL,                      /* remove_queue */
+     NULL,                      /* signaled */
+     NULL,                      /* satisfied */
+-    no_signal,                 /* signal */
++    NULL,                      /* signal */
+     no_get_fd,                 /* get_fd */
+     timer_get_sync,            /* get_sync */
+     default_map_access,        /* map_access */
+diff --git a/server/token.c b/server/token.c
+index 5ce7298211e..c7d93e90a44 100644
+--- a/server/token.c
++++ b/server/token.c
+@@ -142,13 +142,13 @@ static const struct object_ops token_ops =
+     sizeof(struct token),      /* size */
+     &token_type,               /* type */
+     token_dump,                /* dump */
+-    no_add_queue,              /* add_queue */
++    NULL,                      /* add_queue */
+     NULL,                      /* remove_queue */
+     NULL,                      /* signaled */
+     NULL,                      /* satisfied */
+-    no_signal,                 /* signal */
++    NULL,                      /* signal */
+     no_get_fd,                 /* get_fd */
+-    default_get_sync,          /* get_sync */
++    no_get_sync,               /* get_sync */
+     default_map_access,        /* map_access */
+     default_get_sd,            /* get_sd */
+     token_set_sd,              /* set_sd */
+diff --git a/server/user.h b/server/user.h
+index ee0042b8755..281306b6348 100644
+--- a/server/user.h
++++ b/server/user.h
+@@ -119,7 +119,10 @@ extern void add_queue_hook_count( struct thread *thread, unsigned int index, int
+ extern void inc_queue_paint_count( struct thread *thread, int incr );
+ extern void queue_cleanup_window( struct thread *thread, user_handle_t win );
+ extern int init_thread_queue( struct thread *thread );
++extern int thread_queue_select( struct thread *thread, int select );
++extern void thread_queue_satisfied( struct thread *thread );
+ extern void check_thread_queue_idle( struct thread *thread );
++extern struct object *thread_queue_inproc_sync( struct thread *thread );
+ extern int attach_thread_input( struct thread *thread_from, struct thread *thread_to );
+ extern void detach_thread_input( struct thread *thread_from );
+ extern void set_clip_rectangle( struct desktop *desktop, const struct rectangle *rect,
+diff --git a/server/window.c b/server/window.c
+index 0729534ad6c..4339cde8e62 100644
+--- a/server/window.c
++++ b/server/window.c
+@@ -105,13 +105,13 @@ static const struct object_ops window_ops =
+     sizeof(struct window),    /* size */
+     &no_type,                 /* type */
+     window_dump,              /* dump */
+-    no_add_queue,             /* add_queue */
++    NULL,                     /* add_queue */
+     NULL,                     /* remove_queue */
+     NULL,                     /* signaled */
+     NULL,                     /* satisfied */
+-    no_signal,                /* signal */
++    NULL,                     /* signal */
+     no_get_fd,                /* get_fd */
+-    default_get_sync,         /* get_sync */
++    no_get_sync,              /* get_sync */
+     default_map_access,       /* map_access */
+     default_get_sd,           /* get_sd */
+     default_set_sd,           /* set_sd */
+diff --git a/server/winstation.c b/server/winstation.c
+index bb5596f9a03..704a07bd330 100644
+--- a/server/winstation.c
++++ b/server/winstation.c
+@@ -73,13 +73,13 @@ static const struct object_ops winstation_ops =
+     sizeof(struct winstation),    /* size */
+     &winstation_type,             /* type */
+     winstation_dump,              /* dump */
+-    no_add_queue,                 /* add_queue */
++    NULL,                         /* add_queue */
+     NULL,                         /* remove_queue */
+     NULL,                         /* signaled */
+     NULL,                         /* satisfied */
+-    no_signal,                    /* signal */
++    NULL,                         /* signal */
+     no_get_fd,                    /* get_fd */
+-    default_get_sync,             /* get_sync */
++    no_get_sync,                  /* get_sync */
+     default_map_access,           /* map_access */
+     default_get_sd,               /* get_sd */
+     default_set_sd,               /* set_sd */
+@@ -114,13 +114,13 @@ static const struct object_ops desktop_ops =
+     sizeof(struct desktop),       /* size */
+     &desktop_type,                /* type */
+     desktop_dump,                 /* dump */
+-    no_add_queue,                 /* add_queue */
++    NULL,                         /* add_queue */
+     NULL,                         /* remove_queue */
+     NULL,                         /* signaled */
+     NULL,                         /* satisfied */
+-    no_signal,                    /* signal */
++    NULL,                         /* signal */
+     no_get_fd,                    /* get_fd */
+-    default_get_sync,             /* get_sync */
++    no_get_sync,                  /* get_sync */
+     default_map_access,           /* map_access */
+     default_get_sd,               /* get_sd */
+     default_set_sd,               /* set_sd */
