@@ -1,7 +1,7 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
-pkgver=1.8.0
-pkgrel=3
+pkgver=1.8.4
+pkgrel=1
 epoch=
 pkgdesc="Shadow Of The Wyrm by Julian Day - Development branch."
 arch=('x86_64')
@@ -25,9 +25,9 @@ validpgpkeys=()
 
 build() {
  	cd shadow-of-the-wyrm
+ 	cp -R ../assets ./
 	premake5 --lua_include=/usr/include/lua5.1 --lua_link=lua5.1 gmake
-	make config=release
-	#make config=debug 
+	make -j 10 config=release
 }
 
 package() {
@@ -63,11 +63,10 @@ package() {
     # Set score file location.
     sed -i '49s|.*|scorefile_dir=/var/sotw|' ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini
     # Set disallow score for narrative mode and console commands.
-    sed -i '630s|.*|_disallow_score_on_exploration=1|' ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini
+    sed -i '636s|.*|_disallow_score_on_exploration=1|' ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini
 
 # Do the actual packaging
   install -D -m644 ${srcdir}/shadow-of-the-wyrm/LICENSE "${pkgdir}/usr/share/licenses/sotw/LICENSE"
-  # install -d -m777 ${srcdir}/shadow-of-the-wyrm/sotw "${pkgdir}/usr/share/sotw"
   install -d ${srcdir}/shadow-of-the-wyrm/sotw "${pkgdir}/usr/share/sotw"
   install -D ${srcdir}/shadow-of-the-wyrm/sotw/sotw "${pkgdir}/usr/share/sotw/sotw"
   install -D ${srcdir}/shadow-of-the-wyrm/sotw/howdoi.txt "${pkgdir}/usr/share/sotw/howdoi.txt"
@@ -76,7 +75,7 @@ package() {
   install -D ${srcdir}/shadow-of-the-wyrm/sotw/shadowofthewyrmtext_blank.ini "${pkgdir}/usr/share/sotw/shadowofthewyrmtext_blank.ini"
   install -D ${srcdir}/shadow-of-the-wyrm/sotw/shadowofthewyrmtext_en.ini "${pkgdir}/usr/share/sotw/shadowofthewyrmtext_en.ini"
   install -D ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini "${pkgdir}/usr/share/sotw/swyrm.ini"
-  cp -R ${srcdir}/assets ${pkgdir}/usr/share/sotw/assets
+  cp -R ${srcdir}/shadow-of-the-wyrm/assets ${pkgdir}/usr/share/sotw/assets
   cp -R ${srcdir}/shadow-of-the-wyrm/sotw/data ${pkgdir}/usr/share/sotw/data
   cp -R ${srcdir}/shadow-of-the-wyrm/sotw/docs ${pkgdir}/usr/share/sotw/docs
   cp -R ${srcdir}/shadow-of-the-wyrm/sotw/licenses ${pkgdir}/usr/share/sotw/licenses
