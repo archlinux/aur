@@ -20,7 +20,7 @@ source=(
   "embed_db_migrations.patch"
 )
 sha256sums=('0ac5a73a31b966e53c828b62917806656003e3e0c6c8cdffa300f89f6bc6ff1e'
-            '4c55ced36786308592bd1262f9e173f175e1d9762d61a18af0bdd9e54d629e98'
+            '512c7911ef7d04561ddc0ccc70d240617be60cdedbfab3bfd43b2ee80d1d43bb'
             'e001fae2ecb86bfc5425f4ca2a1c4bcee7522a63406cc1e218a901770197474d'
             'da9bef896db9cf62e0c6f14b784bceae561a54fcc9f9c3ca9a7d897597c716ee')
 
