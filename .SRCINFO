@@ -1,6 +1,6 @@
 pkgbase = plantuml-native-bin
 	pkgdesc = Generate diagrams from textual description. (native image version)
-	pkgver = 1.2025.3
+	pkgver = 1.2025.4
 	pkgrel = 1
 	url = https://github.com/plantuml/plantuml
 	arch = x86_64
@@ -13,11 +13,9 @@ pkgbase = plantuml-native-bin
 	depends = libxrender
 	depends = libxtst
 	depends = zlib
-	provides = plantuml
-	conflicts = plantuml
 	options = !debug
 	options = !strip
-	source = https://github.com/plantuml/plantuml/releases/download/v1.2025.3-native/plantuml-full-linux-amd64-1.2025.3.zip
-	sha256sums = 176cb51de0b035bcdf0bf72c7f263444fd42e1bbfeeb5c4fd462fa9831a67f11
+	source = https://github.com/plantuml/plantuml/releases/download/v1.2025.4-native/plantuml-full-linux-amd64-1.2025.4.zip
+	sha256sums = e74a7320d3db213eb17073d852a977a13e1942cabd340dbff01a48cb6c05d887
 
 pkgname = plantuml-native-bin

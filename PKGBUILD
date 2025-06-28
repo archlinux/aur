@@ -1,7 +1,7 @@
 # Maintainer: BryanLiang <liangrui.ch at gmail dot com>
 
 pkgname=plantuml-native-bin
-pkgver=1.2025.3
+pkgver=1.2025.4
 pkgrel=1
 pkgdesc='Generate diagrams from textual description. (native image version)'
 arch=('x86_64')
@@ -17,11 +17,9 @@ depends=(
     libxtst
     zlib
 )
-provides=('plantuml')
-conflicts=('plantuml')
 options=(!debug !strip)
 source=("${url}/releases/download/v${pkgver}-native/plantuml-full-linux-amd64-${pkgver}.zip")
-sha256sums=('176cb51de0b035bcdf0bf72c7f263444fd42e1bbfeeb5c4fd462fa9831a67f11')
+sha256sums=('e74a7320d3db213eb17073d852a977a13e1942cabd340dbff01a48cb6c05d887')
 
 package() {
     install -dm755 "${pkgdir}/usr/lib/plantuml-native"
@@ -30,5 +28,5 @@ package() {
 
     install -dm755 "${pkgdir}/usr/bin"
 
-    ln -sf /usr/lib/plantuml-native/plantuml-full "${pkgdir}/usr/bin/plantuml"
+    ln -sf /usr/lib/plantuml-native/plantuml-full "${pkgdir}/usr/bin/plantuml-native"
 }
