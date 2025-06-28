@@ -9,6 +9,7 @@
   <a href="https://aur.archlinux.org/packages/ngpt"><img alt="AUR Version" src="https://img.shields.io/aur/version/ngpt"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
   <a href="https://nazdridoy.github.io/ngpt/"><img src="https://img.shields.io/badge/docs-available-brightgreen.svg" alt="Documentation"></a>
+  <a href="https://deepwiki.com/nazdridoy/ngpt"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki [DOCS]"></a>
 </p>
 
 <p align="center">
