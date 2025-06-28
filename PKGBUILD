@@ -1,24 +1,24 @@
-# Maintainer: Adrià Arrufat A <swiftscythe@gmail.com>
+# Maintainer: dax
+# Maintainer: adam
 
-pkgname=opencode
-pkgver=0.0.53
+pkgname='opencode'
+pkgver=0.1.159
+options=('!debug' '!strip')
 pkgrel=1
-pkgdesc='A powerful AI coding agent. Built for the terminal.'
-arch=('x86_64' 'aarch64')
-url='https://github.com/opencode-ai/${pkgname}'
+pkgdesc='The AI coding agent built for the terminal.'
+url='https://github.com/sst/opencode'
+arch=('aarch64' 'x86_64')
 license=('MIT')
-makedepends=('go')
-source=("https://github.com/opencode-ai/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('53e23c62284a50c38fd664de441b6db540fa5c944358fffd319f548ee504cb84')
+provides=('opencode')
+conflicts=('opencode')
+depends=('fzf' 'ripgrep')
 
+source_aarch64=("${pkgname}_${pkgver}_aarch64.zip::https://github.com/sst/opencode/releases/download/v0.1.159/opencode-linux-arm64.zip")
+sha256sums_aarch64=('3f3d4a18d45edbcab519842a2ae7f3476b894761c3c01b845e650ce947c33b7d')
 
-build() {
-    cd ${pkgname}-${pkgver}
-    go build
-}
+source_x86_64=("${pkgname}_${pkgver}_x86_64.zip::https://github.com/sst/opencode/releases/download/v0.1.159/opencode-linux-x64.zip")
+sha256sums_x86_64=('306a4c2d476f3fff63bd7b8e6ecc1efa4e49fbbab371bb016e48fef464c9541c')
 
 package() {
-    cd ${pkgname}-${pkgver}
-    install -Dm755 opencode "${pkgdir}/usr/bin/opencode"
-    install -D LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm755 ./opencode "${pkgdir}/usr/bin/opencode"
 }
