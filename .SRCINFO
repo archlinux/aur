@@ -1,7 +1,7 @@
 pkgbase = organicmaps
 	pkgdesc = Organic Maps: Offline Hike, Bike, Trails and Navigation
-	pkgver = 2025.06.12_3
-	pkgrel = 3
+	pkgver = 2025.06.26_3
+	pkgrel = 1
 	url = https://organicmaps.app
 	arch = x86_64
 	license = Apache
