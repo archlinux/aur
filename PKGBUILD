@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="A transparent proxy RULE manager written in go inspired by cgproxy."
 arch=(x86_64)
 url="https://github.com/black-desk/cgtproxy"
-license=(GPL-3.0-only)
+license=(GPL-3.0-or-later)
 depends=(gcc-libs glibc)
 makedepends=(go git)
 source=("git+https://github.com/black-desk/cgtproxy#tag=v$pkgver")
