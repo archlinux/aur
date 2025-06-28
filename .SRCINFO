@@ -1,0 +1,12 @@
+pkgbase = katifetch
+	pkgdesc = Highly customizable system info tool, easier to configure than Neofetch or Fastfetch
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/ximimoments/katifetch
+	arch = any
+	license = MIT
+	depends = bash
+	source = katifetch-1.2.tar.gz::https://github.com/ximimoments/katifetch/archive/refs/tags/1.2.tar.gz
+	sha256sums = fe2f2c7dc4b6e469e74230f69a587169483fb6edbca402bc37ee697a3515bd6d
+
+pkgname = katifetch
