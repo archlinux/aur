@@ -1,76 +1,89 @@
-# Maintainer: Alex Curtis <AlexDotJDotCurtisAtProtonDotMe>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Alex Curtis <AlexDotJDotCurtisAtProtonDotMe>
+pkgname=('limo' 'limo-docs')
 pkgbase=limo
-pkgname=("${pkgbase}" "${pkgbase}-docs")
+_app_id="io.github.${pkgbase}_app.$pkgbase"
 pkgver=1.2.2
-pkgrel=1
-pkgdesc="General video game mod manager with LOOT and Nexus Mods integration"
+pkgrel=2
+pkgdesc="A simple Qt based mod manager"
 arch=('x86_64')
-url="https://github.com/limo-app/${pkgbase}"
-license=('GPL-3.0-only')
-_depends=(
-	'cpr'
-	'gcc-libs'
-	'glibc'
-	'hicolor-icon-theme'
-	'jsoncpp'
-	'libarchive'
-	'libloot'
-	'libunrar'
-	'lz4'
-	'openssl'
-	'pugixml'
-	'qt5-base'
-	'zlib'
-	'zstd'
+url="https://github.com/limo-app/limo"
+license=('GPL-3.0-or-later')
+depends=(
+  'cpr'
+  'curl'
+  'hicolor-icon-theme'
+  'jsoncpp'
+  'libarchive'
+  'libloot'
+  'libunrar'
+  'lz4'
+  'openssl'
+  'pugixml'
+  'qt5-base'
+  'qt5-svg'
+  'xdg-utils'
+  'zlib'
+  'zstd'
 )
 makedepends=(
-	"${_depends[@]}"
-	'cmake'
-	'doxygen'
-	'graphviz'
-	'qt5-svg'
-	'zlib'
-	'zstd'
+  'cmake'
+  'doxygen'  # docs
+  'git'
+  'graphviz'  # docs
 )
-source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('7bbcecf499cf5095ac8c99fe7a3dfe89907db2e62bf56828f8357daaf3bf492f001b32503be59b9c32355bd55c9980794fe6c7afd10abbf36497ca9f06273dd3')
+checkdepends=('catch2')
+source=("git+https://github.com/limo-app/limo.git#tag=v$pkgver"
+        'libloot-compat.patch')
+sha256sums=('d9d9870d56ffef64400c40e19a358ed422ded57dd4d09cfec2b2b4dfb3a2f60b'
+            '4b3b21fa40c64c23c6e5ffd6a0408dcd073e5d1c13a750926bbb249423c579b1')
+
+prepare() {
+  cd "$pkgbase"
+
+  # Separate load list into two calls to preserve libloot compatibility
+  # https://github.com/limo-app/limo/issues/203
+  # https://github.com/limo-app/limo/pull/191 
+  patch -Np1 -i ../libloot-compat.patch
+}
 
 build() {
-	cd "${pkgbase}-${pkgver}"
-	
-	# Upstream instructs setting CMAKE_BUILD_TYPE=Release, but Arch Linux
-	# package guidelines recommend `None` instead.
-	# See https://wiki.archlinux.org/title/CMake_package_guidelines#CMake_undesired_behaviors
-	cmake \
-		-B build \
-		-DCMAKE_BUILD_TYPE:STRING=None \
-		-DCMAKE_INSTALL_PREFIX:PATH=/usr \
-		-DLIMO_INSTALL_PREFIX:PATH=/usr \
-		-DUSE_SYSTEM_LIBUNRAR:BOOL=ON \
-		-Wno-dev
-	cmake --build build
-	doxygen src/lmm_Doxyfile
+  cmake -B build -S "$pkgbase" \
+    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DLIMO_INSTALL_PREFIX='/usr' \
+    -DUSE_SYSTEM_LIBUNRAR='ON' \
+    -DBUILD_TESTING='OFF' \
+    -Wno-dev
+  cmake --build build
+
+  cd "$pkgbase"
+
+  # build documentation
+  doxygen src/lmm_Doxyfile
 }
 
-# Code common to both package_* functions
-_package() {
-	install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
+# 88% tests passed, 7 tests failed out of 60
+#check() {
+#  ctest --test-dir build --output-on-failure
+#}
 
 package_limo() {
-	depends=("${_depends[@]}")
-	cd "${pkgbase}-${pkgver}"
-	DESTDIR="${pkgdir}" cmake --install build
-	_package
+  DESTDIR="$pkgdir" cmake --install build
+
+  cd "$pkgbase"
+  install -Dm644 "flatpak/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
+  install -Dm644 resources/logo.png \
+    "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/${_app_id}.png"
+  install -Dm644 resources/logo_small.png \
+    "$pkgdir/usr/share/icons/hicolor/64x64/apps/${_app_id}.png"
 }
 
 package_limo-docs() {
-	pkgdesc="API documentation for Limo mod manager"
-	arch=('any')
-	cd "${pkgbase}-${pkgver}"
-	local _docpath="${pkgdir}/usr/share/doc/${pkgbase}"
-	install -dvm755 "${_docpath}"
-	mv -fvt "${_docpath}" doc/*
-	_package
+  pkgdesc+=" (documentation)"
+  depends=()
+
+  cd "$pkgbase"
+  install -d "$pkgdir/usr/share/doc/$pkgbase"
+  cp -r doc/* "$pkgdir/usr/share/doc/$pkgbase/"
 }

@@ -1,0 +1,24 @@
+From 474cee805196c9101f84c3be8abd5fce9a779407 Mon Sep 17 00:00:00 2001
+From: alekulyn <alekulyn@users.noreply.github.com>
+Date: Fri, 9 May 2025 19:51:42 +0900
+Subject: [PATCH] Separate load list into two calls to preserve libloot
+ compatiblity
+
+---
+ src/core/lootdeployer.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/core/lootdeployer.cpp b/src/core/lootdeployer.cpp
+index 81fd1e6..ccf8eda 100644
+--- a/src/core/lootdeployer.cpp
++++ b/src/core/lootdeployer.cpp
+@@ -186,7 +186,8 @@ void LootDeployer::sortModsByConflicts(std::optional<ProgressNode*> progress_nod
+   sfs::path prelude_path(dest_path_ / "prelude.yaml");
+   if(!sfs::exists(prelude_path))
+     prelude_path = "";
+-  loot_handle->GetDatabase().LoadLists(master_list_path, user_list_path, prelude_path);
++  loot_handle->GetDatabase().LoadMasterlistWithPrelude(master_list_path, prelude_path);
++  loot_handle->GetDatabase().LoadUserlist(user_list_path);
+   if(progress_node)
+     (*progress_node)->child(1).advance();
+ 

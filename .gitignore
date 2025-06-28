@@ -1,6 +1,10 @@
+# Ignore everything
 /*
-!/.gitignore
-!/.nvchecker.toml
-!/.SRCINFO
-!/LICENSE
-!/PKGBUILD
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!LICENSE
+!libloot-compat.patch
