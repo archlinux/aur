@@ -1,9 +1,9 @@
 # $Id: PKGBUILD 57440 2011-10-27 20:16:15Z lcarlier $
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
+# Contributor: Vedran Miletic <vedran AT miletic DOT net>
 
-
-pkgname=('python-mdtraj')
-pkgver=1.10.1
+pkgname=python-mdtraj
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='A modern, open library for the analysis of molecular dynamics trajectories'
 url='http://mdtraj.org/'
@@ -13,7 +13,7 @@ depends=('python-astunparse')
 makedepends=('python-versioneer' 'python-setuptools' 'cython')
 options=('!libtool')
 source=("https://github.com/SimTk/mdtraj/archive/${pkgver}.tar.gz")
-sha256sums=('7272a6c6aed8902ac43dce2bf503db39879289c07307300285cf3ecc0f213ca9')
+sha256sums=('fefca787f882d0716a7aeb01b4d8e30caddbd2be0b2893acfa7201c31d13c786')
 
 build() {
   msg2 "Building mdtraj"
@@ -36,4 +36,3 @@ package_python-mdtraj() {
   # Remove left over directories from distribute utils.
   find ${pkgdir} -type d -name "__pycache__" -exec rm -r {} \; -prune
 }
-
