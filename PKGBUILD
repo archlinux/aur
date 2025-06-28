@@ -3,6 +3,39 @@
 # Contributor: Leandro Britez
 # Contributor: Daniel YC Lin
 
+# Infrastructure to build with specific compiler due to issues with up to date GCC (see https://github.com/chenall/grub4dos/issues/444)
+_compiler=gcc    # Supported: 'gcc', 'clang'.
+#_compiler=clang  # Supported: 'gcc', 'clang'.
+#_gccver=14       # If not set or empty, use up to date.
+#_clangver=10     # If not set or empty, use up to date.
+case "${_compiler}" in
+  "gcc")
+    _CC=gcc
+    _CXX=g++
+    _compilermakedep="gcc"
+    if [ -n "${_gccver}" ]; then
+      _CC+="-${_gccver}"
+      _CXX+="-${_gccver}"
+      _compilermakedep+="${_gccver}"
+    fi
+  ;;
+  "clang")
+    _CC=clang
+    _CXX=clang++
+    _compilermakedep="clang"
+    if [ -n "${_clangver}" ]; then
+      _CC+="-${_clangver}"
+      _CXX+="-${_clangver}"
+      _compilermakedep+="${_clangver}"
+    fi
+  ;;
+  *)
+    error "PKGBUILD: Non-supported compiler '${_compiler}' set."
+    error "Aborting."
+    exit 1
+  ;;
+esac
+
 _pkgname=grub4dos-efi
 pkgname="${_pkgname}-git"
 pkgver=r767.20250510.b5c60c9
@@ -20,6 +53,8 @@ license=('GPL-2.0-only')
 backup=("boot/efi/grub4dos/menu.lst")
 makedepends=(
   'git'
+  "${_compilermakedep}"
+  "clang"
   'nasm'
   'upx'
 )
@@ -39,6 +74,7 @@ conflicts=(
   "${_pkgname}"
 )
 options=('!strip' '!buildflags' '!makeflags' '!lto')
+# options+=('!strip' '!lto')
 
 source=(
   # "${_pkgname}-dos::git+https://github.com/chenall/grub4dos.git" # This fails to build.
@@ -60,6 +96,8 @@ sha256sums=(
 
 
 prepare() {
+  export CC="${_CC}"
+  export CXX="${_CXX}"
 
   cd "${srcdir}/${_pkgname}-efi"
   local _efipatch
@@ -179,13 +217,18 @@ _build_x86_64-efi() {
 }
 
 build() {
+  export CC="${_CC}"
+  export CXX="${_CXX}"
+
   unset CFLAGS
   unset CFLAGS
   unset CXXFLAGS
   unset LDFLGAS
   unset CPPFLAGS
   temp_flags=(`grep -E '^CFLAGS=.+' /etc/makepkg.conf | cut -d '"' -f 2`)
-  for i in ${temp_flags[@]};do [ "$i" != "-fstack-protector" ] && CFLAGS+="$i ";done
+  for i in ${temp_flags[@]}; do
+   [ "$i" != "-fstack-protector" ] && CFLAGS+="$i ";
+  done
   CXXFLAGS=("`grep -E '^CXXFLAGS=.+' /etc/makepkg.conf | cut -d '"' -f 2`")
   LDFLAGS=("`grep -E '^LDFLAGS=.+' /etc/makepkg.conf | cut -d '"' -f 2`")
   CPPFLAGS=("`grep -E '^CPPFLAGS=.+' /etc/makepkg.conf | cut -d '"' -f 2`")
@@ -237,6 +280,9 @@ _package_common() {
 }
 
 package() {
+  export CC="${_CC}"
+  export CXX="${_CXX}"
+
   case "$CARCH" in
     'i386'|'i486'|'i586'|'i686')
       msg2 "Packaging i386-efi ..."
