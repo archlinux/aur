@@ -1,6 +1,6 @@
 # Maintainer:  <none>
-# Contributor: Martin Dünkelmann <nc-duenkekl3@netcologne.de> (https://aur.archlinux.org/account/MartinX3)
 # Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: Martin Dünkelmann <nc-duenkekl3@netcologne.de> (https://aur.archlinux.org/account/MartinX3)
 
 ## The download URL/ filename does not change with version update. Need to check filenames inside downloaded ZIP file, or front webpage, for version.
 _upstreamlistingurl='https://www.kyoceradocumentsolutions.eu/en/support/downloads.name-L2V1L2VuL21mcC9FQ09TWVNNNDEzMklETg==.html'
