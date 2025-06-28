@@ -16,8 +16,8 @@ sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
             '0385dbeb9c6f5485c323a61786fa8e2680a44838cf216582d385231bd1a9bad6'
             'a81395915fd97e3fc0139bd5b8f5fa7f9a0b45209a9b0def067a001b4da274de')
-depends=(glibc zlib)
-makedepends=(gcc pkgconf diffutils nasm
+depends=(glibc)
+makedepends=(gcc diffutils nasm
   patch
   sed
 )
@@ -61,9 +61,7 @@ build() {
   gcc $LTOFLAGS -shared $LDFLAGS -Wl,--no-as-needed \
     -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
     -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avutil_version \
-    -lm $(pkgconf --libs zlib) \
-    -Wl,-Bsymbolic \
-    -o $_so
+    -lm -Wl,-Bsymbolic -o $_so
 }
 
 package(){
