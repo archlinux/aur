@@ -17,10 +17,7 @@ sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             '0385dbeb9c6f5485c323a61786fa8e2680a44838cf216582d385231bd1a9bad6'
             'a81395915fd97e3fc0139bd5b8f5fa7f9a0b45209a9b0def067a001b4da274de')
 depends=(glibc)
-makedepends=(gcc diffutils nasm
-  patch
-  sed
-)
+makedepends=(gcc diffutils nasm patch sed)
 optdepends=(electron{34..36}": replace ${_so}")
 conflicts=(vivaldi-ffmpeg-codecs opera{,-developer,-beta}-ffmpeg-codecs{,-bin})
 provides=("${conflicts[@]}")
@@ -29,7 +26,7 @@ prepare() {
   cd ffmpeg-$_ffver
   patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
   patch -Np1 -i ../aom.patch
-  # Use native opus not in allowed_demuxers
+  # Use native opus not in kAllowedAudioCodecs
   sed -i '/^ *\.p\.name *=.*/c\.p.name="libopus",' libavcodec/opus/dec.c
 }
 
@@ -56,7 +53,6 @@ build() {
     --enable-{pic,asm,hardcoded-tables} # https://www.ffmpeg.org/platform.html#toc-Advanced-linking-configuration
 
   make install
-
   cd ../release
   gcc $LTOFLAGS -shared $LDFLAGS -Wl,--no-as-needed \
     -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
@@ -65,7 +61,7 @@ build() {
 }
 
 package(){
-  install -Dm644 release/$_so "${pkgdir}"/usr/lib/$_so # system lib
+  install -Dm644 release/$_so "${pkgdir}"/usr/lib/$_so
   install -d "${pkgdir}"/opt/vivaldi
   ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.7.4
   # Opera has strange LD_PRELOAD
