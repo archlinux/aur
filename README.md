@@ -19,7 +19,7 @@
   <a href="https://nazdridoy.github.io/ngpt/installation/#android-termux"><img src="https://img.shields.io/badge/Android-Termux-blue?logo=android" alt="Android"></a>
 </p> 
 
-🤖 nGPT, A Swiss army knife for LLMs: A fast, lightweight CLI and interactive chat tool that brings the power of any OpenAI-compatible LLM (OpenAI, Ollama, Groq, Claude, Gemini, etc.) straight to your terminal. rewrite texts or refine code, craft git commit messages, generate and run OS-aware shell commands, seamlessly switching between single-shot prompts and an interactive chat when you need back-and-forth assistance.
+🤖 **nGPT** - A lightning-fast CLI tool that brings any OpenAI-compatible LLM (OpenAI, Ollama, Groq, Claude, Gemini) directly to your terminal. Generate code, craft git commits, execute shell commands, rewrite text, and chat interactively, all with seamless provider switching and real-time streaming.
 
 
 ![ngpt-i](https://raw.githubusercontent.com/nazdridoy/ngpt/main/previews/ngpt-i.png)
@@ -262,7 +262,7 @@ usage: ngpt [-h] [-v] [--api-key API_KEY] [--base-url BASE_URL] [--model MODEL] 
             [--analyses-chunk-size ANALYSES_CHUNK_SIZE] [--max-msg-lines MAX_MSG_LINES]
             [--max-recursion-depth MAX_RECURSION_DEPTH] [--humanize] [-i | -s | -c | -t | -r | -g]
 
-nGPT - Interact with AI language models via OpenAI-compatible APIs
+nGPT - AI-powered terminal toolkit for code, commits, commands & chat
 
 Global Options::
 
