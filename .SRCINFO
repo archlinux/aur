@@ -1,7 +1,7 @@
 pkgbase = cpptools-debug-bin
 	pkgdesc = Debug adapter extraced from vscode-cpptools
 	pkgver = 1.26.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Microsoft/vscode-cpptools
 	arch = x86_64
 	arch = armv7h
@@ -9,11 +9,11 @@ pkgbase = cpptools-debug-bin
 	license = LicenseRef-custom
 	provides = cpptools-debug
 	conflicts = cpptools-debug
-	source_x86_64 = cpptools-debug-bin-1.26.3-1-x86_64.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.26.3/cpptools-linux-x64.vsix
-	b2sums_x86_64 = 0aedc6efce20f35286db8dd8d20d1876774c6e488b003be81d4a3c78618590ec4a7bf593fdd5f3cf781dd18cf75b408a557df2e576f968291ac753fae21f4518
-	source_armv7h = cpptools-debug-bin-1.26.3-1-armv7h.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.26.3/cpptools-linux-arm32.vsix
+	source_x86_64 = cpptools-debug-bin-1.26.3-2-x86_64.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.26.3/cpptools-linux-x64.vsix
+	b2sums_x86_64 = b5a2e0514d1bd64f48a10e53d77d40b8b27c65168bb47d02842c93d1ee232f0238e2cb713b34f1e59613d9300c1b4ffcf2e1cbae2af64a4cb895d6ffd169d46f
+	source_armv7h = cpptools-debug-bin-1.26.3-2-armv7h.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.26.3/cpptools-linux-arm32.vsix
 	b2sums_armv7h = 1072e36d31a1bf5be5a9779292098b1c8528d25dd8dd12981792eded21f7a810a4ea5c74262884cfc491179976e8e190ac76ca7038ad23ac1b9e5e3c4011f1d1
-	source_aarch64 = cpptools-debug-bin-1.26.3-1-aarch64.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.26.3/cpptools-linux-arm64.vsix
+	source_aarch64 = cpptools-debug-bin-1.26.3-2-aarch64.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.26.3/cpptools-linux-arm64.vsix
 	b2sums_aarch64 = defc17e8ed2f9b366b5f85821bf92f1043805c904dff51af947c17fd34b7d5bf528479d7452b745cd055912797fb66b0acb9a720ca64bc4e4fe85f34902ac9f8
 
 pkgname = cpptools-debug-bin
