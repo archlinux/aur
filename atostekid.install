@@ -25,10 +25,31 @@ is_update_from() {
     esac
 }
 
+filter_installed_packages() {
+    pacman -Qq "$@" 2>&1 | sed -n "s/^error: package '\([a-z0-9@._+-]\+\)' was not found$/\1/p"
+}
+
 check_pcscd_status() {
     if ! systemctl --quiet is-active pcscd.socket 2>/dev/null; then
         note "${pkgname} requires that the PC/SC Smart Card Daemon systemd socket (pcscd.socket) is active. Please ensure it is started before launching ${pkgname}."
     fi
+}
+
+recommend_optional_packages() {
+    local optional_packages
+    local uninstalled_optional_packages
+    local desktop="${XDG_CURRENT_DESKTOP:-}"
+    case ${desktop,,} in
+        gnome)
+            optional_packages+=("libappindicator-gtk3" "gnome-shell-extension-appindicator")
+            readarray -t uninstalled_optional_packages < <(filter_installed_packages "${optional_packages[@]}")
+            if [[ "${#uninstalled_optional_packages[@]}" -gt 0 ]]; then
+                note "On ${desktop}, ${pkgname} relies on the optional packages: ${uninstalled_optional_packages[*]}. Please consider installing them."
+            fi
+            ;;
+        *)
+            ;;
+    esac
 }
 
 # Remove certs that were installed to system trust store and filesystem in
@@ -61,11 +82,12 @@ deprecate_certificates() {
 
 post_install() {
     check_pcscd_status
+    recommend_optional_packages
     note "Many features of ${pkgname} require user configuration. Please review the official documentation in /usr/share/doc/atostekid/. You may also wish to check the Arch Wiki: https://wiki.archlinux.org/title/Special:Search?search=${pkgname}"
 }
 
 post_upgrade() {
-    new_version="${1}"
+    # new_version="${1}"
     old_version="${2}"
     if is_update_from "${old_version}" 4.3.1.0-2; then
         deprecate_certificates
