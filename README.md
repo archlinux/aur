@@ -12,7 +12,7 @@
 - View routing tables (including custom ones).
 - how advanced routing rules.
 - Get detailed route resolution to a specific destination.
-- Add and ➖ remove routes (requires root).
+- Add and remove routes (requires root).
 - List available network interfaces and IP addresses.
 - Terminal colorized output for readability.
 - Packaged as a full CLI tool.
