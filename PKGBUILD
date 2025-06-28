@@ -11,6 +11,7 @@ provides=('nbm-color-codes-preview')
 conflicts=('netbeans-plugin-color-codes-preview')
 depends=('netbeans>=12')
 install='.install'
+sha1sums=('823eaaf28d5855e5a8f57a4f87ac30d658a6ee19')
 
 package () {
   cd "$srcdir"

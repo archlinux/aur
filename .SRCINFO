@@ -10,5 +10,6 @@ pkgbase = netbeans-plugin-color-codes-preview-bin
 	provides = nbm-color-codes-preview
 	conflicts = netbeans-plugin-color-codes-preview
 	source = https://plugins.netbeans.apache.org/catalogue/download/233/netbeans-color-codes-preview-0.13.4.nbm
+	sha1sums = 823eaaf28d5855e5a8f57a4f87ac30d658a6ee19
 
 pkgname = netbeans-plugin-color-codes-preview-bin
