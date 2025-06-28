@@ -9,7 +9,7 @@ arch=(any)
 conflicts=('google-tsunami-security-scanner')
 url="https://github.com/google/tsunami-security-scanner"
 license=('Apache')
-makedepends=("git")
+makedepends=("git" "gradle")
 depends=('nmap>=7.80' 'ncrack>=0.7' 'java-runtime=21')
 source=("git+${url}.git")
 
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
     cd ${srcdir}/${_pkgname}
-    ./gradlew shadowJar
+    gradle shadowJar
 }
 package() {
     appdir="${pkgdir}/opt/${_pkgname}"

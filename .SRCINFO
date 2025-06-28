@@ -6,6 +6,7 @@ pkgbase = google-tsunami-security-scanner-git
 	arch = any
 	license = Apache
 	makedepends = git
+	makedepends = gradle
 	depends = nmap>=7.80
 	depends = ncrack>=0.7
 	depends = java-runtime=21
