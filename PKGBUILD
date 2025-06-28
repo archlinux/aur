@@ -1,6 +1,6 @@
 # Maintainer: Vincent Post <cent@spline.de>
 pkgname=xivlauncher-git
-pkgver=1.1.2.r0.g5dba444
+pkgver=1.2.1.r0.g43ed53b
 pkgrel=7
 epoch=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)"
