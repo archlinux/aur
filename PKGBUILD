@@ -1,7 +1,7 @@
 pkgname=pmcl-bin
 realver=3.6.dev-24646f9
 pkgver=3.6.dev_24646f9
-pkgrel=1
+pkgrel=2
 pkgdesc='Play! Minecraft Launcher: A free Minecraft JE Launcher'
 url='https://pmcl.fun'
 arch=('any')

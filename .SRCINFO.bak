@@ -1,7 +1,7 @@
 pkgbase = pmcl-bin
 	pkgdesc = Play! Minecraft Launcher: A free Minecraft JE Launcher
 	pkgver = 3.6.dev_24646f9
-	pkgrel = 2
+	pkgrel = 1
 	url = https://pmcl.fun
 	arch = any
 	license = GPL-3.0

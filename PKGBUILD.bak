@@ -8,9 +8,12 @@ arch=('any')
 license=('GPL-3.0')
 depends=('jre14-openjdk')
 source=("https://github.com/xqzi/PMCL/releases/download/latest/PMCL-$realver.jar")
+#noextract=('*')
 
 build () {
   cd "$srcdir"
+  rm -rf ./*
+  mv ../PMCL-$realver.jar .
   mkdir -p usr/share/pmcl
   mkdir -p usr/libexec
   mkdir -p usr/bin
@@ -24,7 +27,7 @@ EOF
 }
 
 package () {
-  mv "$srcdir/*" "$pkgdir"
+  mv "$srcdir"/* "$pkgdir"
   cd "$pkgdir"
   chmod +x usr/libexec/startPMCL
   chmod +x usr/bin/pmcl
