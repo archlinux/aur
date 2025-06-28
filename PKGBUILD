@@ -1,7 +1,7 @@
 # Maintainer: Koutheir Attouchi <koutheir at gmail dot com>
 _github_user_name='sevaa'
 pkgname=dwex
-pkgver=4.51
+pkgver=4.53
 pkgrel=1
 pkgdesc='GUI viewer for DWARF debug information'
 arch=('x86_64')
@@ -18,7 +18,7 @@ install=
 source=("https://github.com/${_github_user_name}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz" \
         "${pkgname}.png" "${pkgname}.desktop")
 noextract=()
-sha256sums=(0b5000a279ae1d3e1168f0ef8d7b546be9e4d2069c564e7fb18fc0defb5ffe6f \
+sha256sums=(ff4aa070fd5de7127b63996f609cf46e1fcded6f324914c6d8cf2ab518caa75d \
             d92d16891381310a4b18cc8ae59a1a0ac99a07ca80599a7e3c003970622ba03f \
             155036828925419fe6ab40d600d5e5ada249e1b47095d17bddf7aa694a0cdb6d)
 validpgpkeys=()
