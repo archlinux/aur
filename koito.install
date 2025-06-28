@@ -1,0 +1,18 @@
+post_install() {
+  cat <<'EOF'
+NOTE: Before starting Koito, complete these steps:
+
+  1) Set up your PostgreSQL database and user.
+     (e.g. create the \`koitodb\` database and a role with access.)
+
+  2) Edit /etc/koito.env to configure:
+       • KOITO_DATABASE_URL
+       • KOITO_ALLOWED_HOSTS
+
+  3) Reload systemd and enable/start the service:
+       # systemctl daemon-reload
+       # systemctl enable --now koito.service
+
+Enjoy Koito!
+EOF
+}
