@@ -1,7 +1,7 @@
 # Maintainer: Alessandro Bernardello <aleberna at erine dot eu>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=zenta
-pkgver=0.3.1
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="mindfulness for terminal users "
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'riscv64')
@@ -11,7 +11,7 @@ depends=("glibc")
 makedepends=("go")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/e6a5/zenta/archive/refs/tags/v$pkgver.tar.gz"
 )
-b2sums=('102fe03c0c28a0499d15fb98db58ecf998e96c96fdd287d57ed23f2fbfeb17ae0b396408380b432722e596c80fec81817c1036e148a2125eea80d8d02bb37c43')
+b2sums=('711263a79f647971ee6bd3cc9a0e30b68e8bbef68787a3d6237d6155089086c0357ed2d64c6dcc47f9dfd0c9b13a5d6aa0ce363c6dc488697b82ec5ef664b5c8')
 
 build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
