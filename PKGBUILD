@@ -1,7 +1,7 @@
 # Maintainer: Look <notkool@protonmail.com>
 # Maintainer: hyknn <hyknn@protonmail.com>
 pkgname=miru-bin
-pkgver=6.4.5
+pkgver=6.4.7
 pkgrel=1
 pkgdesc="Bittorrent streaming software for cats"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source_x86_64=(
     "https://github.com/hayase-app/ui/releases/download/v${pkgver}/linux-${_pkgname}-${pkgver}-linux.deb"
 )
 sha512sums_x86_64=(
-    'e680d65b92f4ffeda5716791a312414e5633ba537236caf80ea3c53aa42cb00127c85a397472e9bde1cdd03b9a419fa908e8e2210c32511cfab731062328548c'
+    'fbee4f58f358f60bb86f0dc93f60739d2f9a64ba4c50d66967f080ecb7e0434b5304b4e6903cd996af10c12d70ba525039240aeaefb4808e0968aed2b2c3262e'
 )
 
 package() {
