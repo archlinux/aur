@@ -1,0 +1,19 @@
+pkgbase = brooklynn-git
+	pkgdesc = Brooklynn - A minimal tiling window manager
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/FedGuy699/Brooklynn
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = gcc
+	depends = xorg-server
+	depends = libx11
+	depends = libxext
+	depends = libxrandr
+	provides = brooklynn
+	conflicts = brooklynn
+	source = git+https://github.com/FedGuy699/Brooklynn.git
+	md5sums = SKIP
+
+pkgname = brooklynn-git
