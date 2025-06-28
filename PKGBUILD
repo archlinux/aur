@@ -1,12 +1,13 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
 
-pkgname=azuredatastudio-bin
 _pkgname=azuredatastudio
+pkgname="${_pkgname}-bin"
+# renovate: datasource=github-releases depName=microsoft/azuredatastudio
 pkgver=1.52.0
 pkgrel=1
 pkgdesc="A data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW. (official prebuilt version)"
 arch=('x86_64')
-url="https://github.com/Microsoft/azuredatastudio"
+url="https://github.com/microsoft/azuredatastudio"
 license=('custom: microsoft')
 depends=('gtk3'
          'libsecret'
