@@ -1,0 +1,24 @@
+pkgbase = teamspeak6
+	pkgdesc = TeamSpeak 6 client (beta)
+	pkgver = 6.0.0_beta2
+	pkgrel = 1
+	url = https://www.teamspeak.com/
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = fuse2
+	depends = libxcb
+	depends = libx11
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxrandr
+	depends = libxext
+	depends = libxfixes
+	depends = libxkbcommon
+	depends = gtk3
+	depends = nss
+	depends = at-spi2-core
+	source = teamspeak-client-6.0.0_beta2.tar.gz::https://files.teamspeak-services.com/pre_releases/client/6.0.0-beta2/teamspeak-client.tar.gz
+	sha256sums = de334fbf7b90d91ced475a785d034b520e4856bbd6fdd71db6a5dd88624a552b
+
+pkgname = teamspeak6
