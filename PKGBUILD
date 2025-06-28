@@ -1,7 +1,7 @@
 # Maintainer: Erik Reider <erik.reider@protonmail.com>
 pkgname="swayfx"
-pkgver=0.5.1
-pkgrel=3
+pkgver=0.5.3
+pkgrel=4
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
 makedepends=(
@@ -22,9 +22,9 @@ depends=(
         "libxkbcommon.so"
         "pango"
         "pcre2"
-        "scenefx0.3"
+        "scenefx0.4"
         "ttf-font"
-        "wlroots0.18"
+        "wlroots0.19"
 )
 optdepends=(
         "brightnessctl: Brightness adjustment tool used in the default configuration"
@@ -50,12 +50,11 @@ source=("swayfx-${pkgver}.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz"
         50-systemd-user.conf
         sway-portals.conf)
 sha512sums=(
-        "a057e660d1ab885d181c61d02fac82c2ffe784b772bff03676dbeaa3355b1b3fb0c809162fdb1a5b34fec5379ba580b91f99586a4d1b046e7ded82d62835f8b7"
+        "SKIP"
         "d5f9aadbb4bbef067c31d4c8c14dad220eb6f3e559e9157e20e1e3d47faf2f77b9a15e52519c3ffc53dc8a5202cb28757b81a4b3b0cc5dd50a4ddc49e03fe06e"
         "790741df028822bf4d83170dea57e1c63f7d7938cf31969e4cd347b0fc07330322b603c9ec0091b7a3f425132bed9dee6f261074cc273555120858beaaaf5da1")
 provides=("sway" "swayfx" "wayland-compositor")
 conflicts=("sway" "swayfx" "swayfx-git")
-options=(debug)
 install=sway.install
 
 build() {
