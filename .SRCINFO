@@ -1,6 +1,6 @@
 pkgbase = tithon
 	pkgdesc = Modern IRC client
-	pkgver = 0.0.27
+	pkgver = 0.0.28
 	pkgrel = 1
 	url = https://github.com/greboid/tithon
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = tithon
 	depends = electron
 	depends = glibc
 	options = !debug
-	source = git+https://github.com/greboid/tithon.git#tag=v0.0.27
+	source = git+https://github.com/greboid/tithon.git#tag=v0.0.28
 	source = launcher.sh
-	sha256sums = f51065abc722484a8dd6e6f7b80d72502fd310a3b1272ab7cc1df96b206357c9
+	sha256sums = b642a84e8f23c0a605326ce9fcba6431069511080367ebe42b79879232a1c427
 	sha256sums = 96f891aa77f7374c9d40689add1ec8f5402915a08a70d820725d026fa8ec0f29
 
 pkgname = tithon
