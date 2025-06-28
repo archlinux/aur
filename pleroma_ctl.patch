@@ -1,0 +1,113 @@
+diff --git a/rel/files/bin/pleroma_ctl b/rel/files/bin/pleroma_ctl
+index 42fa06a53..6b3b3acf0 100755
+--- a/rel/files/bin/pleroma_ctl
++++ b/rel/files/bin/pleroma_ctl
+@@ -1,106 +1,9 @@
+ #!/bin/sh
+ # XXX: This should be removed when elixir's releases get custom command support
+ 
+-detect_flavour() {
+-	machine_type=$(uname -m)
+-	if [ ${machine_type} = 'aarch64' ] ; then
+-		arch='arm64'
+-	elif [ ${machine_type} = 'x86_64' ] ; then
+-		arch='amd64'
+-		if getconf GNU_LIBC_VERSION >/dev/null; then
+-			libc_postfix=""
+-		elif [ "$(ldd 2>&1 | head -c 9)" = "musl libc" ]; then
+-			libc_postfix="-musl"
+-		elif [ "$(find /lib/libc.musl* | wc -l)" ]; then
+-			libc_postfix="-musl"
+-		else
+-			echo "Unsupported libc" >&2
+-			exit 1
+-		fi
+-	else
+-		echo "Could not detect your architecture please pass them via --flavour"
+-		exit 1
+-    fi
+-
+-    echo "$arch$libc_postfix"
+-}
+-detect_branch() {
+-	version="$(cut -d' ' -f2 <"$RELEASE_ROOT"/releases/start_erl.data)"
+-	# Expected format: major.minor.patch_version(-number_of_commits_ahead_of_tag-gcommit_hash).branch
+-	branch="$(echo "$version" | cut -d'.' -f 4)"
+-	if [ "$branch" = "develop" ]; then
+-		echo "develop"
+-	elif [ "$branch" = "" ]; then
+-		echo "stable"
+-	else
+-		# Note: branch name in version is of SemVer format and may only contain [0-9a-zA-Z-] symbols —
+-		#   if supporting releases for more branches, need to ensure they contain only these symbols.
+-		echo "Can't detect the branch automatically, please specify it by using the --branch option." >&2
+-		exit 1
+-	fi
+-}
+ update() {
+-	set -e
+-	NO_RM=false
+-
+-	while echo "$1" | grep "^-" >/dev/null; do
+-		case "$1" in
+-		--zip-url)
+-			FULL_URI="$2"
+-			shift 2
+-			;;
+-		--no-rm)
+-			NO_RM=true
+-			shift
+-			;;
+-		--flavour)
+-			FLAVOUR="$2"
+-			shift 2
+-			;;
+-		--branch)
+-			BRANCH="$2"
+-			shift 2
+-			;;
+-		--tmp-dir)
+-			TMP_DIR="$2"
+-			shift 2
+-			;;
+-		-*)
+-			echo "invalid option: $1" 1>&2
+-			shift
+-			;;
+-		esac
+-	done
+-
+-	RELEASE_ROOT=$(dirname "$SCRIPTPATH")
+-	uri="https://akkoma-updates.s3-website.fr-par.scw.cloud"
+-	project_id="2"
+-	project_branch="${BRANCH:-$(detect_branch)}"
+-	flavour="${FLAVOUR:-$(detect_flavour)}"
+-	tmp="${TMP_DIR:-/tmp}"
+-	artifact="$tmp/pleroma.zip"
+-	full_uri="${FULL_URI:-${uri}/${project_branch}/akkoma-${flavour}}.zip"
+-	echo "Downloading the artifact from ${full_uri} to ${artifact}"
+-	curl "$full_uri" -o "${artifact}"
+-	echo "Unpacking ${artifact} to ${tmp}"
+-	unzip -q "$artifact" -d "$tmp"
+-    echo "Backing up erlang cookie"
+-    erlang_cookie=$(cat $RELEASE_ROOT/releases/COOKIE)
+-    echo "Cookie: $erlang_cookie"
+-	echo "Copying files over to $RELEASE_ROOT"
+-	if [ "$NO_RM" = false ]; then
+-		echo "Removing files from the previous release"
+-		rm -r "${RELEASE_ROOT:-?}"/*
+-	fi
+-	cp -rf "$tmp/release"/* "$RELEASE_ROOT"
+-	echo "Removing temporary files"
+-	rm -r "$tmp/release"
+-	rm "$artifact"
+-    echo "Restoring erlang cookie"
+-    echo $erlang_cookie > $RELEASE_ROOT/releases/COOKIE
+-	echo "Done! Please refer to the changelog/release notes for changes and update instructions"
+-    echo "You probably also want to update your frontend!"
+-	set +e
++    echo "Sorry, no upgrades via pleroma_ctl, as this is a package install"
++    exit 1
+ }
+ 
+ if [ -z "$1" ] || [ "$1" = "help" ]; then
