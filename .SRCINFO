@@ -1,0 +1,20 @@
+# Maintainer: Odin Vex <https://aur.archlinux.org/account/OdinVex/>
+# Contributor: None
+
+pkgbase = hid-asus-mouse-dkms-git
+	pkgdesc = HID driver for ASUS ROG & TUF mice providing generation of keyboard events.
+	pkgver = r13.9a23175
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/kyokenn/hid-asus-mouse
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	depends = dkms
+	source = hid-asus-mouse-dkms-git::git+https://github.com/kyokenn/hid-asus-mouse.git
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 9afd2a0d689508db3b41b646766ce7901541653d18c932a32717c5eb2358d26e
+
+pkgname = hid-asus-mouse-dkms-git
