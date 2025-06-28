@@ -1,0 +1,25 @@
+pkgbase = aws-lc
+	pkgdesc = general-purpose cryptographic library maintained by the AWS Cryptography team for AWS
+	pkgver = 1.54.0
+	pkgrel = 1
+	url = https://github.com/aws/aws-lc
+	arch = x86_64
+	license = MIT
+	license = ISC
+	license = Apache-2.0
+	license = LicenseRef-SSLeay-License
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = go
+	makedepends = perl
+	depends = glibc
+	depends = bash
+	depends = gcc-libs
+	optdepends = libunwind: For extra tests
+	optdepends = clang: Alternative for gcc (gcc preferred by upstream)
+	source = https://github.com/aws/aws-lc/archive/refs/tags/v1.54.0.tar.gz
+	validpgpkeys = 968479a1aff927e37d1a566bb5690eeebb952194
+	b2sums = 73d2935f2b1d98ed55dc3631108528c05fb3c5dfa9b6d2e76037a989332cb58c9ddc1d8a8b1f20cf95ccf0881c6bcadbfca62e07b1061ca29a9f67b4dd8aa0b7
+
+pkgname = aws-lc

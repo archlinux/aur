@@ -1,0 +1,4 @@
+[aws-lc]
+source = "github"
+github = "aws/aws-lc"
+use_latest_release = true
