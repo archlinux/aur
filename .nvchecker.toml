@@ -1,4 +1,3 @@
 [lib32-libproxy]
-source = "github"
-github = "libproxy/libproxy"
-use_max_tag = true
+source = "git"
+git = "https://github.com/libproxy/libproxy.git"
