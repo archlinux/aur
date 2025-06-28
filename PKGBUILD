@@ -1,6 +1,6 @@
 # Maintainer: Matthias Mailänder <matthias@mailaender.name>
 pkgname=openhv
-pkgver=20250627
+pkgver=20250628
 pkgrel=1
 pkgdesc="An open-source pixel-art science-fiction real-time-strategy game."
 arch=('any')
