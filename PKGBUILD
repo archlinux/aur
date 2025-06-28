@@ -3,7 +3,7 @@
 
 pkgname=sweet-gtk-theme-dark
 _pkgname=Sweet-Dark
-pkgver=5.0
+pkgver=6.0
 pkgrel=1
 pkgdesc="Light and dark colorful Gtk3.20+ theme"
 arch=('any')
