@@ -3,7 +3,7 @@
 
 pkgname=sweet-gtk-theme
 _pkgname=Sweet
-pkgver=5.0
+pkgver=6.0
 pkgrel=1
 pkgdesc="Light and dark colorful Gtk3.20+ theme"
 arch=('any')
@@ -11,9 +11,9 @@ url='https://github.com/EliverLara/Sweet'
 license=('GPL3')
 conflicts=('sweet-theme')
 makedepends=('git')
-_commit=858e3e4a8df55ee17af38ee16214cd7cd370ac3e
+_commit=7d80a1646e93ede3752fc53138909204cb98b882
 source=(git+$url.git#commit=$_commit)
-sha256sums=('bc442861036851e613795d3fd94a52f49dfc8cee57f1220801e863f41425058e')
+sha256sums=('3a48f5abffa845c4339c331cce8db4b5013041b582cb8d955f1d4278a579c20f')
 
 prepare() {
   # Clean out some unneeded files to make installation a little more straightforward
@@ -50,5 +50,5 @@ package() {
   install -Dm644 -t "${pkgdir}"/usr/share/themes/$_pkgname/metacity-1 metacity-1/*
 
   # xfwm
-  install -Dm644 -t "${pkgdir}"/usr/share/themes/$_pkgname/xfwm4 xfwm4/*
+  # install -Dm644 -t "${pkgdir}"/usr/share/themes/$_pkgname/xfwm4 xfwm4/*
 }
