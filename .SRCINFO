@@ -1,7 +1,7 @@
 pkgbase = vrpn
 	pkgdesc = Virtual Reality Peripheral Network library and tools
 	pkgver = 7.35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vrpn.github.io/
 	arch = x86_64
 	license = Boost
