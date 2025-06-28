@@ -1,0 +1,25 @@
+pkgbase = lightning-image-viewer-git
+	pkgdesc = Fast and lightweight desktop image viewer
+	pkgver = 0.2.0.r0.gb50c855
+	pkgrel = 1
+	url = https://github.com/shatsky/lightning-image-viewer/
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = gcc
+	depends = glibc
+	depends = libexif
+	depends = hicolor-icon-theme
+	depends = sdl3
+	depends = sdl3_image
+	provides = lightning-image-viewer
+	conflicts = lightning-image-viewer
+	conflicts = lightning-image-viewer-bin
+	options = !emptydirs
+	source = lightning-image-viewer::git+https://github.com/shatsky/lightning-image-viewer.git
+	b2sums = SKIP
+
+pkgname = lightning-image-viewer-git
