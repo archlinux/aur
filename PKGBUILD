@@ -2,8 +2,8 @@
 # Contributor: j.r <j.r@jugendhacker.de>
 # Contributor: Matthew Murray <matt@mattmurr.xyz>
 pkgname=python-validity
-pkgver=0.14
-pkgrel=4
+pkgver=0.15
+pkgrel=1
 pkgdesc="Validity fingerprint sensor driver"
 arch=(any)
 license=(MIT)
@@ -17,7 +17,8 @@ source=(
   "$pkgname-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz"
   python3-validity-suspend-hotfix.service 
 )
-md5sums=('3fe3078341979ab82cdeb2b7a38f180a' 'SKIP')
+md5sums=('7134839860dea1caafa5ae5024536385'
+         'cf8c944df027bbb349c56710c9755cbe')
 install=$pkgname.install
 
 build() {
