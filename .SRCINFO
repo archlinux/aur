@@ -22,6 +22,7 @@ pkgbase = ananicy-cpp-git
 	depends = systemd
 	depends = systemd-libs
 	depends = zlib
+	depends = pcre2
 	optdepends = ananicy-rules-git: community rules
 	optdepends = ananicy-rules: Rules based for ananicy-cpp
 	provides = ananicy-cpp

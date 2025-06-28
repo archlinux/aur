@@ -19,6 +19,7 @@ depends=(
   systemd
   systemd-libs
   zlib
+  pcre2
 )
 makedepends=(
   bpf
@@ -52,7 +53,8 @@ build() {
         -DUSE_EXTERNAL_JSON=ON \
         -DUSE_EXTERNAL_FMTLIB=ON \
         -DENABLE_SYSTEMD=ON \
-        -DUSE_BPF_PROC_IMPL=ON
+        -DUSE_BPF_PROC_IMPL=ON \
+        -DENABLE_REGEX_SUPPORT=ON
 
   cmake --build build --target ananicy-cpp
 }
