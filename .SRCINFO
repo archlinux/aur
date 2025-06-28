@@ -1,10 +1,14 @@
 pkgbase = fortunafetch
-	pkgdesc = Fancy ASCII system info fetch script like neofetch
-	pkgver = 1.0
+	pkgdesc = THE BEST FETCH IN THE WORLD OF ALL EXISTING. 100% FASTER THAN FASTFETCH AND NEOFETCH. PROVEN BY SCIENTISTS. pkgver = 1.0
 	pkgrel = 1
-	url = https://example.com
+	url = https://github.com/alexskid/fortunafetch
 	arch = any
 	license = MIT
+	depends = xorg-xrandr
+	depends = lsb-release
+	depends = pciutils
+	depends = inetutils
+	depends = procps-ng
 	source = fortunafetch
 	md5sums = SKIP
 

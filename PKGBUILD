@@ -3,7 +3,7 @@
 pkgname=fortunafetch
 pkgver=1.0
 pkgrel=1
-pkgdesc="Fancy ASCII system info fetch script like neofetch"
+pkgdesc="THE BEST FETCH IN THE WORLD OF ALL EXISTING. 100% FASTER THAN FASTFETCH AND NEOFETCH. PROVEN BY SCIENTISTS."
 arch=('any')
 url="https://github.com/alexskid/fortunafetch"  # Рекомендую заменить на GitHub или другой реальный URL
 license=('MIT')
