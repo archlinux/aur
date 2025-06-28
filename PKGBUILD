@@ -1,7 +1,7 @@
 
 pkgname=chromium-ffmpeg-codecs-git
 pkgver=7.2.r119684.g670089304a
-pkgrel=3
+pkgrel=4
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M138+ (non vendored ${_so})"
 arch=('x86_64')
@@ -31,12 +31,12 @@ prepare() {
 
 build() {
   cd ffmpeg
-  # See https://github.com/chromium/chromium/blob/main/ and build subset of
+  # https://github.com/chromium/chromium/blob/main/ Build subset of
   #  allowed_demuxers at media/filters/ffmpeg_glue.cc webm is subset of matroska
   #  kAllowedAudioCodecs at media/ffmpeg/ffmpeg_common.cc
   # native opus is not allowed by Chromium. But it works by unknown reason.
   # swresample is used by native opus
-  #sed -i '/^ *\.p\.name *=.*/c\.p.name="libopus",' libavcodec/opus/dec.c is unneeded
+  #sed -i '/^ *\.p\.name *=.*/c\.p.name="libopus",' libavcodec/opus/dec.c ?
   #  GetAllowedVideoDecoders at media/ffmpeg/ffmpeg_common.cc
   #  Allowed parser?
 
@@ -59,9 +59,8 @@ build() {
 
   cd ../release
   gcc $LTOFLAGS -shared $LDFLAGS -Wl,--no-as-needed  \
-    -Wl,--whole-archive \
-      lib/lib{avcodec,avformat,avutil}.a \
-    -Wl,--no-whole-archive lib/libswresample.a \
+    -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
+    -Wl,--no-whole-archive lib/lib{avutil,swresample}.a \
     -lm $(pkgconf --libs zlib) \
     -Wl,-Bsymbolic \
     -o $_so
