@@ -2,7 +2,7 @@
 
 pkgname=mutter-fix_meta_frame_native_kms_update
 pkgver=48.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Window manager for GNOME with issue fix: https://gitlab.gnome.org/GNOME/mutter/-/issues/4183"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -92,7 +92,7 @@ source=(
 )
 
 sha256sums=(
-  "8462709e22ab56e1b9a86232f63fdb6f0fb504883041e43f2d89d60e4766f6b5"
+  "6ca74f09b516a822e35dd5bfc3df4b15160bb368074024870908515b7c93449d"
   "ebe771e60943547279fbf29acb6aea6346fc20df6388252f71bf2bf679d3a7a8"
   "d8680bc5c8724b8cdaca10434e950a2e4684cec000581e7bd179fa4cb384e3f2"
 )

@@ -1,19 +1,53 @@
+From 243e60a25047f2693d6336763972777c15f1c9b6 Mon Sep 17 00:00:00 2001
+From: Daniel van Vugt <daniel.van.vugt@canonical.com>
+Date: Sat, 28 Jun 2025 11:02:26 +0800
+Subject: [PATCH] onscreen/native: Avoid orphaning any updates via
+ superseded_frame
+
+They should still be posted when the display eventually turns back on.
+
+The orphaned updates were likely to be KMS property settings, and
+maybe mode sets? Either way, it's not good to lose them.
+---
+ src/backends/native/meta-onscreen-native.c | 23 ++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+diff --git a/src/backends/native/meta-onscreen-native.c b/src/backends/native/meta-onscreen-native.c
+index d91cd6b6dc..015c7ac859 100644
 --- a/src/backends/native/meta-onscreen-native.c
 +++ b/src/backends/native/meta-onscreen-native.c
-@@ -1640,9 +1640,13 @@ maybe_post_next_frame (CoglOnscreen *onscreen)
-   power_save_mode = meta_monitor_manager_get_power_save_mode (monitor_manager);
-   if (power_save_mode != META_POWER_SAVE_ON)
+@@ -1446,9 +1446,32 @@ assign_next_frame (MetaOnscreenNative *onscreen_native,
+ 
+   if (onscreen_native->next_frame != NULL)
      {
--      meta_renderer_native_queue_power_save_page_flip (renderer_native,
--                                                       onscreen);
--      return;
-+      frame_native = meta_frame_native_from_frame (onscreen_native->next_frame);
-+      if (!meta_frame_native_has_kms_update (frame_native))
++      MetaFrameNative *superseded_frame_native;
++      MetaKmsUpdate *delayed_update;
++
+       clear_superseded_frame (onscreen);
+       onscreen_native->superseded_frame =
+         g_steal_pointer (&onscreen_native->next_frame);
++      superseded_frame_native =
++        meta_frame_native_from_frame (onscreen_native->superseded_frame);
++      delayed_update =
++        meta_frame_native_steal_kms_update (superseded_frame_native);
++      if (delayed_update)
 +        {
-+          meta_renderer_native_queue_power_save_page_flip (renderer_native,
-+                                                           onscreen);
-+          return;
++          MetaKmsCrtc *kms_crtc =
++            meta_crtc_kms_get_kms_crtc (META_CRTC_KMS (onscreen_native->crtc));
++          MetaKmsDevice *kms_device =
++            meta_kms_crtc_get_device (kms_crtc);
++          MetaFrameNative *next_frame_native =
++            meta_frame_native_from_frame (frame);
++          MetaKmsUpdate *next_update;
++
++          next_update =
++            meta_frame_native_ensure_kms_update (next_frame_native,
++                                                 kms_device);
++          meta_kms_update_merge_from (next_update, delayed_update);
++          meta_kms_update_free (delayed_update);
 +        }
      }
  
-   frame = g_steal_pointer (&onscreen_native->next_frame);
+   onscreen_native->next_frame = clutter_frame_ref (frame);
+-- 
+GitLab
