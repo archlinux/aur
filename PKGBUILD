@@ -1,7 +1,8 @@
 # Maintainer: c4 
 pkgname=lsr-iouring-git
 _pkgname=lsr
-pkgver=0.2.0.r19.g2f8e1f0
+_zig_cache=$(zig env | jq .global_cache_dir | tr -d '"')
+pkgver=1.0.0.r1.g0c4dc41
 pkgrel=1
 pkgdesc="ls but with io_uring"
 arch=('x86_64')
@@ -11,7 +12,6 @@ license=('MIT')
 makedepends=('zig' 'git')
 optdepends=(
 'anyzig: lets you run any version of zig'
-'anyzig-symlinks: symlink anyzig to zig'
 )
 
 _pkgsrc="$_pkgname"
@@ -22,10 +22,7 @@ prepare() {
   cd "$_pkgsrc"
   # PACKAGING.md -> build.zig.zon
   for i in $(grep '\.url' build.zig.zon | sed -E 's&^.* = "(\S+)".*$&\1&'); do
-    zig fetch --global-cache-dir $HOME/.cache/zig "$i"
-  done
-  for i in $(grep '\.url' $HOME/.cache/zig/p/ourio-0.0.0-*/build.zig.zon | sed -E 's&^.* = "(\S+)".*$&\1&'); do
-    zig fetch --global-cache-dir $HOME/.cache/zig "$i"
+    zig fetch --global-cache-dir "$_zig_cache" "$i"
   done
 }
 
@@ -44,8 +41,8 @@ build() {
     --summary all
     --prefix /usr
     --search-prefix /usr
-    --global-cache-dir $HOME/.cache/zig
-    --system $HOME/.cache/zig/p
+    --global-cache-dir "$_zig_cache"
+    --system "$_zig_cache""/p"
     -Dtarget=native-native-gnu
     -Dcpu=native
     -Doptimize=ReleaseSmall
