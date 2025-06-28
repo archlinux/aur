@@ -38,7 +38,7 @@ _opt_altcommand=0
 
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.2.0pre9.2.r1482.g4daa04c8d
+pkgver=2.2.0pre9.2.r1579.ge22fbc4a3
 pkgrel=1
 _pkgver="${pkgver%%[a-z]*}"
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
@@ -167,7 +167,9 @@ _fd11='fd11_https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributio
 _fd12='fd12_https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributions/1.2/repos'
 _gnu='gnu_https://www.ibiblio.org/pub/micro/pc-stuff/freedos/gnuish'
 _gnu='gnu_https://mirror.math.princeton.edu/pub/freeDOS/gnuish'
-_gnu2='gnu_https://ftp.sun.ac.za/ftp/pub/mirrors/freedos/gnuish'
+#_gnu2='gnu_https://ftp.sun.ac.za/ftp/pub/mirrors/freedos/gnuish' # bad SSL/TLS cert according to curl, works in Firefox
+#_gnu2='gnu_https://mirror.math.princeton.edu/pub/freeDOS/gnuish' # no permission
+_gnu2='gnu_https://ftp.sunet.se/mirror/archive/ftp.sunet.se/pub/simtelnet/gnu/gnuish'
 _extras=(
   # Extras originally found in dosemu-freedos-1.0-bin.tgz
   "${_fd10}/bwbasicx.zip" # Bywater Basic Ted A. Campbell

@@ -1,6 +1,6 @@
 pkgbase = dosemu2-git
 	pkgdesc = Virtual machine that allows you to run DOS programs under Linux
-	pkgver = 2.2.0pre9.2.r1482.g4daa04c8d
+	pkgver = 2.2.0pre9.2.r1579.ge22fbc4a3
 	pkgrel = 1
 	url = https://github.com/dosemu2/dosemu2
 	arch = i686
@@ -78,7 +78,7 @@ pkgbase = dosemu2-git
 	source = fd10_wcdx.zip::https://www.ibiblio.org//pub/micro/pc-stuff/freedos/files/distributions/1.0/pkgs/wcdx.zip
 	source = gnu_diff23x.zip::https://mirror.math.princeton.edu/pub/freeDOS/gnuish/dos_only/diff23x.zip
 	source = gnu_fut312bx.zip::https://mirror.math.princeton.edu/pub/freeDOS/gnuish/dos_only/fut312bx.zip
-	source = gnu_tut111ax.zip::https://ftp.sun.ac.za/ftp/pub/mirrors/freedos/gnuish/dos_only/tut111ax.zip
+	source = gnu_tut111ax.zip::https://ftp.sunet.se/mirror/archive/ftp.sunet.se/pub/simtelnet/gnu/gnuish/dos_only/tut111ax.zip
 	source = gnu_grep20ax.zip::https://mirror.math.princeton.edu/pub/freeDOS/gnuish/dos_only/grep20ax.zip
 	source = gnu_find32.zip::https://mirror.math.princeton.edu/pub/freeDOS/gnuish/find32.zip
 	source = gnu_gzip124x.zip::https://mirror.math.princeton.edu/pub/freeDOS/gnuish/gzip124x.zip
