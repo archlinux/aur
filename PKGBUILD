@@ -1,53 +1,57 @@
-# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
+# Maintainer: AlphaLynx <alphalynx@protonmail.com>
+# Contributor: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 # Contributor: Shayne Hartford <shayneehartford@gmail.com>
 
-_pkgname=wootility
-pkgname=${_pkgname}-appimage
-pkgver=4.7.4
+pkgname=wootility-appimage
+_name=${pkgname%-appimage}
+pkgver=5.0.6
 pkgrel=1
-pkgdesc='Utility for configuring Wooting keyboards (binary AppImage version)'
-arch=('x86_64' 'x86_64_v3')
-url='https://wooting.io/wootility'
+pkgdesc='Utility for configuring Wooting keyboards'
+arch=('x86_64')
+url="https://wooting.io/$_name"
 license=('unknown')
-depends=('fuse2')
-makedepends=('util-linux' 'findutils')
-provides=("${_pkgname}" "${_pkgname}-lekker")
-conflicts=("${_pkgname}")
-options=(!strip)
-_appimage="${_pkgname}-lekker-${pkgver}.AppImage"
-install=$pkgname.install
-source=("https://s3.eu-west-2.amazonaws.com/wooting-update/wootility-lekker-linux-latest/${_appimage}"
+depends=('fuse2' 'hicolor-icon-theme' 'zlib')
+provides=("$_name")
+conflicts=("$_name")
+options=('!strip')
+install=$_name.install
+_appimage="$_name-$pkgver.AppImage"
+source=("$_appimage::https://api.wooting.io/public/wootility/download?os=linux&version=$pkgver"
         '70-wooting.rules')
-b2sums=('feb075137ec8b8778893c06c808032376978c8bca04a4c551c4bbdd15ace3ce532298be53fb1903c28b6c87e90328675a9bd77ba9eaa588d0148cbe0df421cb9'
+noextract=("$_appimage")
+b2sums=('01f4997054be96dcbee8bbb6d4f68874d23bb1507898337e4e4165c6c417f183cca947b4d7fb98e2500a4c85011e95b1d2d45c993aa1949bb5122452d97367d9'
         '80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1')
 
 prepare() {
-    # Copying AppImage in case $SRCDEST is mounted with noexec
-    cp ${_appimage} ${_appimage}.copy
-    chmod +x ${_appimage}.copy
-    ./${_appimage}.copy --appimage-extract ${_pkgname}-lekker.desktop
-    ./${_appimage}.copy --appimage-extract ${_pkgname}-lekker.png
-    ./${_appimage}.copy --appimage-extract usr/share/icons
-    rm ${_appimage}.copy
-    find squashfs-root/ \! -type d -exec rename ${_pkgname}-lekker ${_pkgname} \{\} \;
-    find squashfs-root/ -type l -exec rename --symlink ${_pkgname}-lekker ${_pkgname} \{\} \;
+    chmod +x "$_appimage"
+    ./"$_appimage" --appimage-extract
 }
 
 build() {
-    sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" squashfs-root/${_pkgname}.desktop
-    sed -i -E "s|Name=.*$|Name=Wootility|" squashfs-root/${_pkgname}.desktop
-    sed -i -E "s|^Icon=.*$|Icon=${_pkgname}|" squashfs-root/${_pkgname}.desktop
+    # Adjust .desktop so it will work outside of AppImage container
+    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/$_name|"\
+        "squashfs-root/$_name.desktop"
+    # Fix permissions; .AppImage permissions are 700 for all directories
+    chmod -R a-x+rX squashfs-root/usr
 }
 
 package() {
-    install -Dpm755 "${_appimage}" "${pkgdir}/opt/${_pkgname}/${_appimage}"
-    install -d "${pkgdir}/usr/bin"
-    ln -s "../../opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
+    # AppImage
+    install -Dm755 "$srcdir/$_appimage" "$pkgdir/opt/$_name/$_appimage"
 
     # Install desktop entry and icon
-    install -Dpm644 "squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dpm644 "squashfs-root/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+    install -Dm644 "squashfs-root/$_name.desktop" "$pkgdir/usr/share/applications/$_name.desktop"
+
+    # Icon images
+    install -dm755 "$pkgdir/usr/share/"
+    cp -a "$srcdir/squashfs-root/usr/share/icons" "$pkgdir/usr/share/"
+
+    # Symlink executable
+    install -dm755 "$pkgdir/usr/bin/"
+    ln -s "/opt/$_name/$_appimage" "$pkgdir/usr/bin/$_name"
 
     # Install udev rules
-    install -Dpm644 "70-wooting.rules" "${pkgdir}/usr/lib/udev/rules.d/70-${_pkgname}.rules"
+    install -Dm644 "70-wooting.rules" "$pkgdir/usr/lib/udev/rules.d/70-$_name.rules"
 }
+
+# vim: set ts=4 sw=4 sts=4 et:

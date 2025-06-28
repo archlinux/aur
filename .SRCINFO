@@ -1,22 +1,21 @@
 pkgbase = wootility-appimage
-	pkgdesc = Utility for configuring Wooting keyboards (binary AppImage version)
-	pkgver = 4.7.4
+	pkgdesc = Utility for configuring Wooting keyboards
+	pkgver = 5.0.6
 	pkgrel = 1
 	url = https://wooting.io/wootility
-	install = wootility-appimage.install
+	install = wootility.install
 	arch = x86_64
-	arch = x86_64_v3
 	license = unknown
-	makedepends = util-linux
-	makedepends = findutils
 	depends = fuse2
+	depends = hicolor-icon-theme
+	depends = zlib
 	provides = wootility
-	provides = wootility-lekker
 	conflicts = wootility
+	noextract = wootility-5.0.6.AppImage
 	options = !strip
-	source = https://s3.eu-west-2.amazonaws.com/wooting-update/wootility-lekker-linux-latest/wootility-lekker-4.7.4.AppImage
+	source = wootility-5.0.6.AppImage::https://api.wooting.io/public/wootility/download?os=linux&version=5.0.6
 	source = 70-wooting.rules
-	b2sums = feb075137ec8b8778893c06c808032376978c8bca04a4c551c4bbdd15ace3ce532298be53fb1903c28b6c87e90328675a9bd77ba9eaa588d0148cbe0df421cb9
+	b2sums = 01f4997054be96dcbee8bbb6d4f68874d23bb1507898337e4e4165c6c417f183cca947b4d7fb98e2500a4c85011e95b1d2d45c993aa1949bb5122452d97367d9
 	b2sums = 80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1
 
 pkgname = wootility-appimage

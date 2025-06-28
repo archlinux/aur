@@ -1,8 +1,8 @@
 *
 !.gitignore
+!.nvchecker.toml
 !.SRCINFO
 !PKGBUILD
 !*.rules
 !*.install
 !*.service
-!.nvchecker.toml
