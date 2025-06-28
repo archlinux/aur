@@ -9,6 +9,7 @@ pkgbase = koito
 	makedepends = git
 	makedepends = go
 	makedepends = npm
+	makedepends = yarn
 	makedepends = nodejs>=16
 	depends = libvips
 	optdepends = postgresql: database storage backend

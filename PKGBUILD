@@ -11,7 +11,7 @@ license=('MIT')
 depends=('libvips')
 install=koito.install
 optdepends=('postgresql: database storage backend')
-makedepends=('git' 'go' 'npm' 'nodejs>=16')
+makedepends=('git' 'go' 'npm' 'yarn' 'nodejs>=16')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/gabehf/Koito/archive/refs/tags/v$pkgver.tar.gz"
   "koito.service"
