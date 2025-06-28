@@ -13,8 +13,8 @@ _pkgbase=gdal
 provides=('gdal=3.10.3')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.10.3
-pkgrel=4
+pkgver=3.11.0
+pkgrel=1
 pkgdesc="A translator library for raster and vector geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=(x86_64)
 url="https://gdal.org/"
@@ -32,17 +32,8 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
              # armadillo basisu brunsli lerc qb3 rasterlite2 tiledb
              # ogdi
 changelog=$_pkgbase.changelog
-source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
-        fix_build_with_poppler_25.05.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/gdal/-/raw/803a02bee29a842e0a635d215ce5db141baf2c91/fix_build_with_poppler_25.05.patch)
-b2sums=('deb9af3034b86d1b74a348b56cb8fec6a9ccdfa57dade0d1bbd02ab952c6fff2f4673c8f9f77843687fff54b3d507817c8e43640e8007f1da0b39909ddafa9ac'
-        '44581620c56f8fe435a54c3b0428d70c175a7ba27d6976f5ab840a444be8ca76108688977da36fdcad78b82006a8d1ced1129d754358335ef350eddacc50cb01')
-
-prepare() {
-  cd $_pkgbase-$pkgver
-  # Backported patch to fix build with poppler 25.05.0
-  # See https://github.com/OSGeo/gdal/commit/a689e2189ff0a464f3150ed8b2dd5a3cc1194012
-  patch -Np1 -i "$srcdir"/fix_build_with_poppler_25.05.patch
-}
+source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
+b2sums=('b8dc12c349f88d98f11b8e4699d017f375766736319cf7fbc10633743ccf27d006e3b44a6da1e04e6cce07768ca379c22f4d68e9b7a8c939e8d347ed840bddee')
 
 build() {
   opt_libs=""
