@@ -10,12 +10,12 @@ url="https://github.com/artym/arch-app-center"
 license=('MIT')
 depends=('electron' 'pacman' 'yay')
 makedepends=('npm' 'nodejs' 'typescript')
-# Use git source for local development
-source=("git+file://${PWD}#commit=$(git rev-parse HEAD 2>/dev/null || echo HEAD)")
+# Use GitHub source for AUR
+source=("git+https://github.com/artym/arch-app-center.git")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/Arch-App-Center"
+  cd "$srcdir/arch-app-center"
   # Install npm dependencies
   npm install
   # Build TypeScript to JavaScript
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/Arch-App-Center"
+  cd "$srcdir/arch-app-center"
   
   # Create necessary directories
   install -dm755 "$pkgdir/usr/lib/$pkgname"

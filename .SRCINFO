@@ -11,7 +11,7 @@ pkgbase = arch-app-center
 	depends = electron
 	depends = pacman
 	depends = yay
-	source = git+file:///home/artym/Arch-App-Center#commit=3337efd1faa9831465027791e5987653a8b616c4
+	source = git+https://github.com/artym/arch-app-center.git
 	sha256sums = SKIP
 
 pkgname = arch-app-center
