@@ -2,7 +2,7 @@
 
 pkgname=opera-developer
 pkgver=121.0.5572.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and secure web browser and Internet suite - developer stream'
 arch=('x86_64')
 url='https://www.opera.com/computer'
@@ -20,11 +20,11 @@ depends=(
     'shared-mime-info' 
     'hicolor-icon-theme'
     'upower'
+)
+optdepends=(
+    'opera-developer-ffmpeg-codecs-bin: additional support for proprietary codecs'
     'chromium-ffmpeg-codecs'
 )
-#optdepends=(
-#    'opera-developer-ffmpeg-codecs-bin: additional support for proprietary codecs'
-#)
 source=(
     "https://get.geo.opera.com/pub/${pkgname}/${pkgver}/linux/${pkgname}_${pkgver}_amd64.deb"
     "opera"  
