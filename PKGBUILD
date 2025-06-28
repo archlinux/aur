@@ -7,7 +7,7 @@
 
 pkgname=akkoma
 pkgver=3.15.2
-pkgrel=1
+pkgrel=2
 _erlangver=26.0.2
 _elixirver=1.15.4
 pkgdesc='faster-paced fork of Pleroma'
@@ -27,7 +27,7 @@ source=('akkoma.sysusers'
 	'pleroma_ctl.patch'
         "git+${url}.git#tag=v$pkgver")
 sha256sums=('712bc7d7bb1c1a719e57ceb55a82f33479de5db9a2d5a128b13ec646cb85ddd4'
-            'c571f76d2933509d208223310d490191560e4c5256cbd7e05b19eb4101af1eb4'
+            'c3eb1099f605f84640fbc95d86594030d5b7886b90cf3408cfd38dd42bb0b82a'
             '4905a5b08a317366693a6b9e6580977e48dcc4932eef6b181de644fd3db62ef2'
             '16966b8c405892a36e00acf9ecdec6710362fa3659c02e90e844a09403ac6869'
             'f5c31b0448e4a057660f28fcb87f5e7937893cee5911431d0558fba92cda143e')
@@ -76,7 +76,7 @@ package() {
 
     mkdir -p "$pkgdir/opt/akkoma" "$pkgdir/usr/bin"
     cp -r "$pkgname/release"/* "$pkgdir/opt/akkoma"
-    chmod -R 0750 "$pkgdir/opt/akkoma"
+    chmod 0750 "$pkgdir/opt/akkoma"
     ln -s /opt/akkoma/bin/pleroma_ctl "$pkgdir/usr/bin/pleroma_ctl"
 }
 
