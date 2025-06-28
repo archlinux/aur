@@ -11,6 +11,7 @@ license=('MIT')
 depends=('libvips')
 install=koito.install
 optdepends=('postgresql: database storage backend')
+backup=('etc/koito.env')
 makedepends=('git' 'go' 'npm' 'yarn' 'nodejs>=16')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/gabehf/Koito/archive/refs/tags/v$pkgver.tar.gz"
@@ -18,7 +19,7 @@ source=(
   "koito.env"
 )
 sha256sums=('0ac5a73a31b966e53c828b62917806656003e3e0c6c8cdffa300f89f6bc6ff1e'
-            'ceec472335c79861db3c75dc025539d820d5222e8805e7fa3ced320fe0ddf46d'
+            '4c55ced36786308592bd1262f9e173f175e1d9762d61a18af0bdd9e54d629e98'
             'e001fae2ecb86bfc5425f4ca2a1c4bcee7522a63406cc1e218a901770197474d')
 
 build() {
@@ -36,6 +37,11 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
 
   install -Dm755 koito "$pkgdir"/usr/bin/koito
+
+  install -d "$pkgdir/usr/share/koito"
+  cp -a assets db client \
+    "$pkgdir/usr/share/koito/"
+
   install -Dm0640 ../koito.env "$pkgdir"/etc/koito.env
   install -Dm0644 ../koito.service "$pkgdir"/usr/lib/systemd/system/koito.service
 }

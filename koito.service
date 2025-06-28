@@ -1,6 +1,7 @@
 [Unit]
 Description=Koito ListenBrainz Scrobbler
-After=network.target
+After=network.target network-online.target postgresql.service
+Wants=network-online.target postgresql.service
 
 [Install]
 WantedBy=multi-user.target
@@ -12,6 +13,7 @@ RuntimeDirectory=koito
 RuntimeDirectoryMode=0755
 StateDirectory=koito
 StateDirectoryMode=0755
+WorkingDirectory=/usr/share/koito
 EnvironmentFile=/etc/koito.env
 ExecStart=/usr/bin/koito
 Restart=on-failure

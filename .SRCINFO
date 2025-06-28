@@ -13,11 +13,12 @@ pkgbase = koito
 	makedepends = nodejs>=16
 	depends = libvips
 	optdepends = postgresql: database storage backend
+	backup = etc/koito.env
 	source = koito-0.0.12.tar.gz::https://github.com/gabehf/Koito/archive/refs/tags/v0.0.12.tar.gz
 	source = koito.service
 	source = koito.env
 	sha256sums = 0ac5a73a31b966e53c828b62917806656003e3e0c6c8cdffa300f89f6bc6ff1e
-	sha256sums = ceec472335c79861db3c75dc025539d820d5222e8805e7fa3ced320fe0ddf46d
+	sha256sums = 4c55ced36786308592bd1262f9e173f175e1d9762d61a18af0bdd9e54d629e98
 	sha256sums = e001fae2ecb86bfc5425f4ca2a1c4bcee7522a63406cc1e218a901770197474d
 
 pkgname = koito
