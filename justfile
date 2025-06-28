@@ -5,4 +5,4 @@ publish tagname:
   makepkg --printsrcinfo > .SRCINFO
   git add .
   git commit -m 'v{{tagname}}'
-  run git push
+  git push
