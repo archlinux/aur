@@ -4,9 +4,9 @@
 _name=aiomax
 pkgname=python-$_name-git
 
-pkgver=2.4.0.r5.g2bbf5b1
+pkgver=2.7.1.r0.gff6ab54
 
-pkgrel=2
+pkgrel=1
 pkgdesc="The asynchronous library for Max (newest git version)"
 arch=('any')
 url="https://github.com/dpnspn/aiomax"
@@ -20,6 +20,10 @@ conflicts=(python-aiomax)
 pkgver() {
   cd "$_name"
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	git -C "${srcdir}/${_name}" clean -dfx
 }
 
 build() {
