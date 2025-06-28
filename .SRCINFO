@@ -1,13 +1,13 @@
 pkgbase = rbackup
 	pkgdesc = Fast, cross-platform, multithreaded incremental backup tool (rsync/robocopy-like) written in Rust
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/umpire274/rbackup
 	arch = x86_64
 	license = MIT
 	provides = rbackup
 	conflicts = rbackup
-	source = rbackup-0.2.6.tar.gz::https://github.com/umpire274/rbackup/releases/download/v0.2.6/rbackup-0.2.6-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = SKIP
+	source = rbackup-0.2.7.tar.gz::https://github.com/umpire274/rbackup/releases/download/v0.2.7/rbackup-0.2.7-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 60c23196cc8331601d219360d8262ded4616fb6e8a0ceb9ae586e21c9302bb1b
 
 pkgname = rbackup
