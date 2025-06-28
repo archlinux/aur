@@ -1,0 +1,21 @@
+pkgbase = euphonica-git
+	pkgdesc = Libadwaita MPD client with visualiser, wikis and synced lyrics
+	pkgver = 0.94.1.r320
+	pkgrel = 1
+	url = https://github.com/htkhiem/euphonica
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = cargo
+	makedepends = clang
+	depends = libadwaita
+	depends = libpipewire
+	depends = sqlite
+	provides = euphonica
+	conflicts = euphonica
+	options = !lto
+	source = git+https://github.com/htkhiem/euphonica.git
+	sha256sums = SKIP
+
+pkgname = euphonica-git
