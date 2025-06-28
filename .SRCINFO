@@ -13,7 +13,6 @@ pkgbase = chromium-ffmpeg-codecs-git
 	makedepends = patch
 	makedepends = sed
 	depends = glibc
-	depends = zlib
 	optdepends = chromium-ffmpeg-codecs: for Chromium M136-
 	provides = vivaldi-snapshot-ffmpeg-codecs
 	conflicts = vivaldi-snapshot-ffmpeg-codecs
