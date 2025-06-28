@@ -1,0 +1,16 @@
+pkgbase = box-git
+	pkgdesc = Create a box around incoming text
+	pkgver = 0.2.0.r0.gc22cfad
+	pkgrel = 1
+	url = https://github.com/AlphaLynx0/box
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = box
+	conflicts = box
+	source = git+https://github.com/AlphaLynx0/box
+	sha256sums = SKIP
+
+pkgname = box-git
