@@ -1,13 +1,13 @@
 pkgbase = mineplacktodo
 	pkgdesc = Mineplack ToDo app
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/wizardstream/MineplackToDo
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = https://github.com/wizardstream/MineplackToDo/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 5d3fa356a679c4f1ac4f1e697f750a7acaa4de2ce376146a60f0aa3dca468fc7
+	source = https://github.com/wizardstream/MineplackToDo/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = f25a6280227ead0053780a5acce217fe0e3a0af5047ad2921407e89c86d7e5db
 
 pkgname = mineplacktodo
