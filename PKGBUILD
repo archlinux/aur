@@ -1,12 +1,14 @@
+# Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 # Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
-
-pkgname=setcolors-git
+_pkgname="setcolors"
+pkgname="${_pkgname}-git"
 pkgdesc="Allows you to set the linux VT101 default color palette"
 license=('MIT')
 url="https://github.com/evanpurkhiser/linux-vt-setcolors"
-pkgver=62.4e1686f
+pkgver=1.0.0.r7.g1dccf7c
 pkgrel=1
-
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 depends=('glibc')
@@ -15,12 +17,12 @@ arch=('i686' 'x86_64')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
 	cd "$srcdir/$pkgname"
-	make
+	make CFLAGS="$CFLAGS $LDFLAGS"
 }
 
 package() {
