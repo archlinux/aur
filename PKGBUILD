@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/xeyossr/hypr-windowrulex"
 license=('GPL3')
 depends=()
-makedepends=('python' 'python-pip' 'python-virtualenv' 'upx')
+makedepends=('python' 'python-pip' 'python-virtualenv' 'upx' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
