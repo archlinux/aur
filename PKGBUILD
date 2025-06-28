@@ -1,9 +1,29 @@
-# Maintainer:  Martin Dünkelmann <nc-duenkekl3@netcologne.de> (https://aur.archlinux.org/account/MartinX3)
+# Maintainer:  <none>
+# Contributor: Martin Dünkelmann <nc-duenkekl3@netcologne.de> (https://aur.archlinux.org/account/MartinX3)
 # Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
-# Maintainer:  Martin Dünkelmann <nc-duenkekl3@netcologne.de> (https://aur.archlinux.org/account/MartinX3)
+
+## The download URL/ filename does not change with version update. Need to check filenames inside downloaded ZIP file, or front webpage, for version.
+_upstreamlistingurl='https://www.kyoceradocumentsolutions.eu/en/support/downloads.name-L2V1L2VuL21mcC9FQ09TWVNNNDEzMklETg==.html'
+#_upstreamsourcedownloadpath='https://www.kyoceradocumentsolutions.de/content/download-center/de/drivers/all'
+_upstreamsourcedownloadpath='https://www.kyoceradocumentsolutions.eu/content/download-center/eu/drivers/all/'
+_upstreamsourcefilename='SANE_Driver_zip.download.zip'
+_get_pkgver() {
+  local _debarch
+  case "${CARCH}" in
+    'i386'|'i486'|'i586'|'i686')
+      _debarch=i386
+    ;;
+    'x86_64')
+      _debarch=amd64
+    ;;
+  esac
+  printf '%s\n' "  >> Getting upstream software version for architecture '${CARCH}' ..." > /dev/stderr
+  _ver="$(curl -L "${_upstreamlistingurl}" 2>/dev/null| grep -E "SANE Driver \([0-9\.]+\)" | head -n1 | sed -E 's|^.*SANE Driver \(([0-9.]+)\).*$|\1|')"
+  printf '%s' "${_ver}"
+}
 
 pkgname=kyocera-sane
-pkgver=2.1.4406
+pkgver="$(_get_pkgver)"
 pkgrel=1
 pkgdesc='Kyocera sane scanner support package for many Kyocera printers.'
 arch=(
@@ -14,7 +34,7 @@ arch=(
   'x86_64'
 )
 url='https://www.kyocera.com/'
-license=('custom')
+license=('LicenseRef-proprietary')
 depends=(
   'freeimage'
   'gcc-libs'
@@ -27,25 +47,27 @@ depends=(
 )
 makedepends=()
 source=(
-  'https://www.kyoceradocumentsolutions.de/content/download-center/de/drivers/all/SANE_Driver_zip.download.zip'
+  "${pkgname}-${pkgver}_SANE-Driver.zip::${_upstreamsourcedownloadpath}/${_upstreamsourcefilename}"
   'README.txt'
 )
 sha256sums=(
-  '6729c68ab90a1e8f4edef3fc4a35942e965cbded11d4d51b7a897bc98eb02fae'
+  '3076b7ae5e48564568ab7c660da3c77d6059b3fe96056f4df2a38544b579f8ab'
   '945f922065e8278d2ec6e0c1e8ce6851834359cd02ff85534fa3d7baccec6ffe'
 )
 
 prepare() {
     cd "${srcdir}"
     mkdir -p build
+    local _debarch
     case "${CARCH}" in
       'i386'|'i486'|'i586'|'i686')
-        bsdtar xvf "${pkgname}_${pkgver}_i386.deb"
+        _debarch=i386
       ;;
-      'x86_64')
-        bsdtar xvf "${pkgname}_${pkgver}_amd64.deb"
+     'x86_64')
+        _debarch=amd64
       ;;
     esac
+    bsdtar xvf "${pkgname}_${pkgver}_${_debarch}.deb"
     bsdtar xvf "${srcdir}/data.tar.xz" -C "${srcdir}/build"
 }
 
