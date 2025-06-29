@@ -6,23 +6,43 @@
 # Contributor: Artem Klevtsov <a.a.klevtsov@gmail.com>
 
 pkgname=lantern-bin
-pkgver=7.9.7
+pkgver=8.3.3
 pkgrel=1
 pkgdesc="A censorship circumvention tool that delivers fast, reliable, and secure access to the open internet"
 arch=('x86_64')
 url="https://lantern.io"
 license=('Apache-2.0')
-depends=('bash' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator')
+depends=('at-spi2-core'
+         'ayatana-ido'
+         'cairo'
+         'curl'
+         'fontconfig'
+         'gcc-libs'
+         'gdk-pixbuf2'
+         'glib2'
+         'glibc'
+         'gst-plugins-base-libs'
+         'gstreamer'
+         'gtk3'
+         'harfbuzz'
+         'hicolor-icon-theme'
+         'libayatana-appindicator'
+         'libayatana-indicator'
+         'libdbusmenu-glib'
+         'libepoxy'
+         'libsoup3'
+         'pango'
+         'webkit2gtk-4.1'
+         'zlib')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-options=('!docs')
-_commit=aca2a684b302c426e840ba5e43370bafe83fc854
-source=("${pkgname}-${pkgver}.deb::https://github.com/getlantern/lantern-binaries/raw/${_commit}/lantern-installer-64-bit.deb"
-        "${pkgname%-bin}.service")
-sha256sums=('3fd5ed499a23f2bb647fd23f45948ece65feac3305b4ebd9959811a92d62527b'
-            'fdece37945be10c00210bbde7b4058c356ef1df0554bd963fcddd12990ff930b')
+_commit=241c37b1e8a8bdaae964a18773dc093671588678
+source=("https://github.com/getlantern/lantern-binaries/raw/${_commit}/lantern-installer-${pkgver}-64-bit.deb")
+sha256sums=('294ca6e03192d1ad128b786d11a878be9154917ba06baf52365482a14621ad02')
 
 package() {
-    bsdtar -xf data.tar.gz -C "${pkgdir}"
-    install -Dm644 "${pkgname%-bin}.service" -t "${pkgdir}/usr/lib/systemd/user"
+    bsdtar -xf data.tar.zst -C "${pkgdir}"
+    mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/bin"
+    mv "${pkgdir}/usr/share/Lantern" "${pkgdir}/opt"
+    ln -sf /opt/Lantern/Lantern "${pkgdir}/usr/bin/Lantern"
 }
