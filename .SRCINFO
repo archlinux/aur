@@ -1,13 +1,16 @@
 pkgbase = pom
-	pkgdesc = Display the phase of the moon.
-	pkgver = 0.14
+	pkgdesc = A feature-rich command-line Pomodoro timer written in Go
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = http://search.cpan.org/dist/ppt/bin/pom
-	arch = any
-	license = GPL2
-	depends = perl
-	source = http://search.cpan.org/CPAN/authors/id/C/CW/CWEST/ppt-0.14.tar.gz
-	sha512sums = 3df3faa027002bfa2e9b774a9ca112d12ae01cb1142208ae6ffcd38b96bba03e73d76c38e6f0f93901ad1b54a99f4c09478718edcf7eab1b5c0a51f61051d467
+	url = https://github.com/flack/pom
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = libnotify
+	depends = pulseaudio
+	source = git+https://github.com/flack/pom.git#tag=v1.0.0
+	sha256sums = SKIP
 
 pkgname = pom
-
