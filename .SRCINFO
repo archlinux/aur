@@ -1,7 +1,7 @@
 pkgbase = aws-lc
 	pkgdesc = general-purpose cryptographic library maintained by the AWS Cryptography team for AWS
 	pkgver = 1.54.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aws/aws-lc
 	arch = x86_64
 	license = MIT
@@ -19,7 +19,9 @@ pkgbase = aws-lc
 	optdepends = libunwind: For extra tests
 	optdepends = clang: Alternative for gcc (gcc preferred by upstream)
 	source = https://github.com/aws/aws-lc/archive/refs/tags/v1.54.0.tar.gz
+	source = Patch01-Change-openssl-name-in-c_rehash.patch
 	validpgpkeys = 968479a1aff927e37d1a566bb5690eeebb952194
 	b2sums = 73d2935f2b1d98ed55dc3631108528c05fb3c5dfa9b6d2e76037a989332cb58c9ddc1d8a8b1f20cf95ccf0881c6bcadbfca62e07b1061ca29a9f67b4dd8aa0b7
+	b2sums = a3fcbaff046afd235e081c9636333091dad6f796185a43787981d637dd283f517de97d984386f8c3741ef4a31a945e0ff76093c26df2bd35ad96bdc5d66f1522
 
 pkgname = aws-lc

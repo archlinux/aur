@@ -2,7 +2,7 @@
 
 pkgname=aws-lc
 pkgver=1.54.0
-pkgrel=2
+pkgrel=3
 pkgdesc='general-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
 license=('MIT' 'ISC' 'Apache-2.0' 'LicenseRef-SSLeay-License')
@@ -24,9 +24,18 @@ optdepends=(
   'clang: Alternative for gcc (gcc preferred by upstream)'
 )
 arch=('x86_64')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('73d2935f2b1d98ed55dc3631108528c05fb3c5dfa9b6d2e76037a989332cb58c9ddc1d8a8b1f20cf95ccf0881c6bcadbfca62e07b1061ca29a9f67b4dd8aa0b7')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
+	"Patch01-Change-openssl-name-in-c_rehash.patch"
+)
+b2sums=('73d2935f2b1d98ed55dc3631108528c05fb3c5dfa9b6d2e76037a989332cb58c9ddc1d8a8b1f20cf95ccf0881c6bcadbfca62e07b1061ca29a9f67b4dd8aa0b7'
+        'a3fcbaff046afd235e081c9636333091dad6f796185a43787981d637dd283f517de97d984386f8c3741ef4a31a945e0ff76093c26df2bd35ad96bdc5d66f1522')
 validpgpkeys=(968479a1aff927e37d1a566bb5690eeebb952194) # GitHub key
+
+prepare() {
+    cd ${pkgname}-${pkgver}
+
+    patch -p1 -i ../Patch01-Change-openssl-name-in-c_rehash.patch
+}
 
 build() {
     cd ${pkgname}-${pkgver}
