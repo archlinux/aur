@@ -13,14 +13,8 @@ if [[ ! -e $TYPORA_PLUGIN_CONFIG_HOME ]]; then
   mkdir -p $TYPORA_PLUGIN_CONFIG_HOME
 fi
 
-if [[ ! -f $TYPORA_PLUGIN_CONFIG_HOME/settings.user.toml ]]; then
-  cp /usr/share/typora/resources/plugin/global/settings/settings.user.toml $TYPORA_PLUGIN_CONFIG_HOME/
-fi
-
-if [[ ! -f $TYPORA_PLUGIN_CONFIG_HOME/custom_plugin.user.toml ]]; then
-  cp /usr/share/typora/resources/plugin/global/settings/custom_plugin.user.toml $TYPORA_PLUGIN_CONFIG_HOME/
-fi
-
+# typora-plugin copy user configs
+(cd /usr/share/typora/resources/plugin/bin/ && bash ./typora-plugin.sh )
 
 # Launch
 exec /usr/share/typora/Typora "$@" $TYPORA_USER_FLAGS
