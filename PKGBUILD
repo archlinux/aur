@@ -1,4 +1,5 @@
-# Maintainer: Ivan Batrakov <blackfan321 at disroot dot org>
+# Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
+# Contributor: Ivan Batrakov <blackfan321 at disroot dot org>
 # Contributor: Junker
 
 
