@@ -1,14 +1,1 @@
-pkgbase = dotpusher
-	pkgdesc = Declarative dotfiles manager using Git and JSON state tracking
-	pkgver = 0.1.1
-	pkgrel = 1
-	url = https://github.com/maarutan/dotpusher
-	arch = x86_64
-	license = MIT
-	makedepends = python
-	makedepends = pyinstaller
-	options = !debug
-	source = dotpusher.zip::https://github.com/maarutan/dotpusher/releases/download/v0.1.1/dotpusher.zip
-	sha256sums = 5b2fbac3d15381e037718299b1e093b872a3d805e4d459760e023396aa695c8b
-
-pkgname = dotpusher
+[33m : [31m[4m❯[0m[33m <- [0m
