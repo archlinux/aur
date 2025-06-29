@@ -6,7 +6,7 @@ _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M138+ (non vendored ${_so})"
 arch=('x86_64')
 url="https://git.ffmpeg.org/ffmpeg"
-license=('GPL-2.0-or-later')
+license=('GPL-3.0-or-later')
 source=(https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch)
 sha256sums=('f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
 depends=(glibc)
@@ -28,7 +28,7 @@ build() {
   # Use part of https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
   # libavcodec/parser_list.c ?
   ./configure \
-    --enable-gpl \
+    --enable-{gpl,version3} \
     --disable-{all,autodetect,programs,doc,iconv,network,symver} \
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
