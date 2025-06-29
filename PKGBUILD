@@ -3,13 +3,13 @@
 
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
-pkgver='1.2.86'
+pkgver='1.2.87'
 pkgrel='1'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
 license=('AGPL3')
-depends=('csdr-luarvique>=0.18.29' 'python-csdr-luarvique>=0.18.29' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools' 'python-distutils-extra' 'aprs-symbols')
+depends=('python-csdr-luarvique>=0.18.33' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools' 'python-distutils-extra')
 install="${pkgname}".install
 optdepends=(
     # decoding
@@ -44,6 +44,7 @@ optdepends=(
     'python-paho-mqtt: send decoded signal data to an MQTT broker for further processing by third-party applications'
     'hamlib: synchronize frequency and modulation with external transceivers'
     'lame: to compress recorded audio into MP3 format'
+    'aprs-symbols: display APRS symbols'
 
     # device support
     'soapyrtlsdr: provides additional support for rtl-sdr devices, such as the direct sampling mod'
@@ -73,7 +74,7 @@ source=(
     'openwebrx-plus.tmpfiles'
 )
 sha256sums=(
-    'ad62043e0a22592c1151688f4e738d917bb04447571c688a80c32f87ce4c802b'
+    'b0cbea8e776612bcd059ade6b02aeb754355bf37876a779ef10ab7c215deb3b1'
     '4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997'
     'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade'
 )

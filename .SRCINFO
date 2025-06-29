@@ -1,18 +1,16 @@
 pkgbase = openwebrx-plus
 	pkgdesc = Open source, multi-user SDR receiver software with a web interface
-	pkgver = 1.2.86
+	pkgver = 1.2.87
 	pkgrel = 1
 	url = https://luarvique.github.io/ppa/
 	install = openwebrx-plus.install
 	arch = any
 	license = AGPL3
-	depends = csdr-luarvique>=0.18.29
-	depends = python-csdr-luarvique>=0.18.29
+	depends = python-csdr-luarvique>=0.18.33
 	depends = rtl-sdr
 	depends = owrx_connector-luarvique
 	depends = python-setuptools
 	depends = python-distutils-extra
-	depends = aprs-symbols
 	optdepends = python-digiham: use digital voice modes
 	optdepends = codecserver: decode audio data from digital voice modes using the AMBE codec, leagally trustworthy
 	optdepends = codecserver-softmbe: use LEGALLY DUBIOUS codecs to decode digital voice modes using the AMBE codec
@@ -43,6 +41,7 @@ pkgbase = openwebrx-plus
 	optdepends = python-paho-mqtt: send decoded signal data to an MQTT broker for further processing by third-party applications
 	optdepends = hamlib: synchronize frequency and modulation with external transceivers
 	optdepends = lame: to compress recorded audio into MP3 format
+	optdepends = aprs-symbols: display APRS symbols
 	optdepends = soapyrtlsdr: provides additional support for rtl-sdr devices, such as the direct sampling mod
 	optdepends = soapysdrplay: interfacing with SDRPlay devices
 	optdepends = soapymiri-git: interfacing with Mirics-based hardware (MSi001 + MSi2500)
@@ -59,10 +58,10 @@ pkgbase = openwebrx-plus
 	optdepends = soapysddc: interfacing with SDDC SDR devices such as the RX666, RX888, HF103, etc
 	provides = openwebrx
 	conflicts = openwebrx
-	source = openwebrx-plus-1.2.86.tar.gz::https://github.com/luarvique/openwebrx/archive/1.2.86.tar.gz
+	source = openwebrx-plus-1.2.87.tar.gz::https://github.com/luarvique/openwebrx/archive/1.2.87.tar.gz
 	source = openwebrx-plus.sysusers
 	source = openwebrx-plus.tmpfiles
-	sha256sums = 58378d4142d53109eeaf38afb0a41adb1fde73d8ae9367dafc3f8ccf83a574d0
+	sha256sums = ad62043e0a22592c1151688f4e738d917bb04447571c688a80c32f87ce4c802b
 	sha256sums = 4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997
 	sha256sums = eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade
 
