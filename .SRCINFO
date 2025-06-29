@@ -1,7 +1,7 @@
 pkgbase = gz-physics8
 	pkgdesc = Abstract physics interface designed to support simulation and rapid development of robot applications.
-	pkgver = 8.1.0
-	pkgrel = 2
+	pkgver = 8.2.0
+	pkgrel = 1
 	url = https://github.com/gazebosim/gz-physics
 	arch = any
 	license = Apache-2.0
@@ -17,7 +17,7 @@ pkgbase = gz-physics8
 	depends = bullet
 	depends = libdart
 	provides = gz-physics=8
-	source = https://github.com/gazebosim/gz-physics/archive/gz-physics8_8.1.0.tar.gz
-	sha256sums = 61eeda1dd504a8feee6b095700d8ae37e83087611c12abf9fc873084e2f765f9
+	source = https://github.com/gazebosim/gz-physics/archive/gz-physics8_8.2.0.tar.gz
+	sha256sums = 7d77231b8f787f6c5a63e1fe768b16275c8e44bdcd1bbeccbbfc2300c7f86d57
 
 pkgname = gz-physics8

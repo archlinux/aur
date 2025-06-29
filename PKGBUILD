@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-physics8
-pkgver=8.1.0
-pkgrel=2
+pkgver=8.2.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Abstract physics interface designed to support simulation and rapid development of robot applications."
@@ -30,7 +30,7 @@ optdepends=(
 )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('61eeda1dd504a8feee6b095700d8ae37e83087611c12abf9fc873084e2f765f9')
+sha256sums=('7d77231b8f787f6c5a63e1fe768b16275c8e44bdcd1bbeccbbfc2300c7f86d57')
 
 _build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
 
