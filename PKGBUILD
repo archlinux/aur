@@ -17,7 +17,7 @@ sha1sums=('9d0df4145af91ab4bb6a32ed987f9d1bf4e62301')
 build() {
   cd "${srcdir}"/${pkgname}
 
-  bash -- ./configure --prefix=/usr --sysconfdir=/etc --mandir=/usr/share/man --disable-termidx
+  bash -- ./configure CFLAGS="$CFLAGS -std=gnu11" --prefix=/usr --sysconfdir=/etc --mandir=/usr/share/man --disable-termidx
   make
 }
 
