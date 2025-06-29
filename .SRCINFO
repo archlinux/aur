@@ -7,6 +7,7 @@ pkgbase = kmp3-git
 	arch = aarch64
 	license = MIT
 	makedepends = git
+	makedepends = cmake
 	depends = ffmpeg
 	depends = libpipewire
 	depends = chafa
