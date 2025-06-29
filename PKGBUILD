@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-sensors9
-pkgver=9.1.0
-pkgrel=2
+pkgver=9.2.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Provides numerous sensor models designed to generate realistic data from simulation environments."
@@ -25,7 +25,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('b3c016f0af242b8bba3a24a630acde21d37c298a8f20b39a308582ea315fc12a')
+sha256sums=('455d20d320ba741de0e38da320408afcdfe2f109e00de911b4cce200913cefaa')
 
 _build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
 
