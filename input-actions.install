@@ -1,0 +1,7 @@
+post_upgrade() {
+  echo "Package was renamed to inputactions-kwin instead"
+}
+
+post_install() {
+  echo "This package was renamed. Use inputactions-kwin instead"
+}
