@@ -1,5 +1,5 @@
 pkgbase = inter-doom-git
-	pkgver = 8.r777
+	pkgver = 8.2.r44
 	pkgrel = 1
 	url = https://github.com/JNechaevsky/international-doom
 	arch = i686
@@ -14,9 +14,7 @@ pkgbase = inter-doom-git
 	depends = libsamplerate
 	depends = fluidsynth
 	source = git+https://github.com/JNechaevsky/international-doom.git
-	source = 001_install_rule.patch
 	b2sums = SKIP
-	b2sums = 653663f4e6ea5c26b85553bb9a50fce166973471ced0a7cd874bdb6dcad99a21b0d0c3084cb36ca34218c784c8f9611bcbba75ffbc53aeb59a7ecbbe8090f080
 
 pkgname = inter-doom-git
 	pkgdesc = Small, functional and simple Doom source port, created with help, efforts and bits of code from people around the world (git version)

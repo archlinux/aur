@@ -1,21 +1,21 @@
 # Maintainer: Leonid Murin (Dasperal) <Dasperal1 at gmail dot com>
 pkgbase=inter-doom-git
 pkgname=('inter-doom-git' 'inter-heretic-git' 'inter-hexen-git')
-pkgver=8.r777
+pkgver=8.2.r44
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JNechaevsky/international-doom"
 license=('GPL-2.0-only')
 depends=('sdl2>=2.0.18' 'sdl2_mixer>=2.0.2' 'sdl2_net>=2.0.0' 'libsamplerate' 'fluidsynth')
 makedepends=(cmake)
-source=("git+https://github.com/JNechaevsky/international-doom.git"
-        001_install_rule.patch)
-b2sums=('SKIP'
-        '653663f4e6ea5c26b85553bb9a50fce166973471ced0a7cd874bdb6dcad99a21b0d0c3084cb36ca34218c784c8f9611bcbba75ffbc53aeb59a7ecbbe8090f080')
+source=("git+https://github.com/JNechaevsky/international-doom.git")
+b2sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/international-doom"
-    printf "8.r%s" "$(git rev-list --count HEAD)"
+    tag=$(git describe --tags --abbrev=0)
+    rev=$(git rev-list "${tag}.." --count)
+    printf "%s.r%s" "$tag" "$rev"
 }
 
 prepare() {
@@ -31,7 +31,6 @@ prepare() {
 }
 
 build() {
-    # Upstream forces `-O2` for 'Release' build type
     cmake -S "international-doom" -B "build" \
     -D CMAKE_BUILD_TYPE="Release" \
     -D CMAKE_C_FLAGS_RELEASE="-O2 -DNDEBUG" \
@@ -49,6 +48,8 @@ package_inter-doom-git() {
     rm "${pkgdir}/usr/bin/inter-heretic"
     rm "${pkgdir}/usr/bin/inter-hexen"
     install -Dm644 "international-doom/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "international-doom/data/doom.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/inter-doom.png"
+    install -Dm644 "international-doom/data/doom.desktop" "${pkgdir}/usr/share/applications/inter-doom.desktop"
 }
 
 package_inter-heretic-git() {
@@ -61,6 +62,8 @@ package_inter-heretic-git() {
     rm "${pkgdir}/usr/bin/inter-doom"
     rm "${pkgdir}/usr/bin/inter-hexen"
     install -Dm644 "international-doom/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "international-doom/data/heretic.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/inter-heretic.png"
+    install -Dm644 "international-doom/data/heretic.desktop" "${pkgdir}/usr/share/applications/inter-heretic.desktop"
 }
 
 package_inter-hexen-git() {
@@ -73,4 +76,6 @@ package_inter-hexen-git() {
     rm "${pkgdir}/usr/bin/inter-doom"
     rm "${pkgdir}/usr/bin/inter-heretic"
     install -Dm644 "international-doom/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "international-doom/data/hexen.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/inter-hexen.png"
+    install -Dm644 "international-doom/data/hexen.desktop" "${pkgdir}/usr/share/applications/inter-hexen.desktop"
 }
