@@ -1,13 +1,14 @@
 pkgbase = mydict-git
 	pkgdesc = Simple & fast dictionary application powered by ODict
-	pkgver = r42.ba6265f
+	pkgver = r53.21e0578
 	pkgrel = 1
 	url = https://github.com/jaxvanyang/mydict
 	arch = x86_64
-	license = MIT
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = just
 	makedepends = cargo
+	depends = glibc
 	depends = gcc-libs
 	depends = bzip2
 	depends = libxkbcommon
