@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=an-anime-game-launcher
 pkgver=3.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 arch=('x86_64')
 url="https://github.com/an-anime-team/an-anime-game-launcher"
 license=('GPL-3.0-only')
 depends=('gtk4' 'libadwaita' 'glibc' 'hicolor-icon-theme' 'gcc-libs' 'glib2'
-	 'pango' 'xz' 'bzip2' 'cairo' '7zip')
+	 'pango' 'xz' 'bzip2' 'cairo' '7zip' 'openssl')
 makedepends=('cargo')
 optdepends=(
 	 'mangohud: FPS Overlay'
@@ -27,7 +27,7 @@ build() {
     	export RUSTUP_TOOLCHAIN=stable
     	export CARGO_TARGET_DIR=target
 	export CFLAGS+=" -ffat-lto-objects"
-    	cargo build --frozen --release --target-dir target
+	cargo build --frozen --release --all-features
 }
 
 package() {
