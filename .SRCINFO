@@ -12,4 +12,7 @@ pkgbase = craftos-pc-bin
 	options = !strip
 	source = craftos2-2.8.3.tar.gz::https://github.com/MCJack123/craftos2/archive/v2.8.3.tar.gz
 	source = CraftOS-PC_2.8.3.AppImage::https://github.com/MCJack123/craftos2/releases/download/v2.8.3/CraftOS-PC.x86_64.AppImage
+	sha256sums = 01982222596e84eaff52d60e3d4d45dd151986df04c3b6d96d296917108239d9
+	sha256sums = f25536c7a05f67827fe44573ff65627cbe595e13c75815ef86a4e1f3bd33a88c
+
 pkgname = craftos-pc-bin

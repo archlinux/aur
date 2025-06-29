@@ -22,7 +22,7 @@ changelog=
 source=("craftos2-${pkgver}.tar.gz::https://github.com/MCJack123/craftos2/archive/v${pkgver}.tar.gz"
         "CraftOS-PC_${pkgver}.AppImage::https://github.com/MCJack123/craftos2/releases/download/v${pkgver}/CraftOS-PC.x86_64.AppImage")
 noextract=('CraftOS-PC.x86_64.AppImage')
-sha256sums=('01982222596e84eaff52d60e3d4d45dd151986df04c3b6d96d296917108239d9' '0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('01982222596e84eaff52d60e3d4d45dd151986df04c3b6d96d296917108239d9' 'f25536c7a05f67827fe44573ff65627cbe595e13c75815ef86a4e1f3bd33a88c')
 validpgpkeys=()
 
 prepare() {
