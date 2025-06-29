@@ -12,6 +12,7 @@ pkgbase = museeks-bin
 	depends = nss
 	depends = alsa-lib
 	depends = ttf-font
+	depends = webkit2gtk-4.1
 	provides = museeks
 	conflicts = museeks
 	conflicts = museeks-git
