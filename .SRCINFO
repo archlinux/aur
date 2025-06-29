@@ -1,13 +1,13 @@
 pkgbase = goonsh
-	pkgdesc = A simple custom shell (goonsh)
-	pkgver = 1.0
+	pkgdesc = a joke fr
+	pkgver = 1.0.0
 	pkgrel = 1
+	url = https://github.com/DriftFe/goonsh
 	arch = x86_64
-	license = MIT
-	makedepends = gcc
-	makedepends = make
-	depends = readline
-	source = goonsh.cpp
-	b2sums = SKIP
+	license = GPL3
+	depends = gcc
+	depends = glibc
+	source = https://raw.githubusercontent.com/DriftFe/goonsh/main/goonsh.cpp
+	sha256sums = SKIP
 
 pkgname = goonsh

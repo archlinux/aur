@@ -1,17 +1,16 @@
 pkgname=goonsh
-pkgver=1.0
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="A simple custom shell (goonsh)"
+pkgdesc="a joke fr"
 arch=('x86_64')
-license=('MIT')
-depends=('readline')
-makedepends=('gcc' 'make')
-source=(goonsh.cpp)
-b2sums=('SKIP')
+url="https://github.com/DriftFe/goonsh"
+license=('GPL3')
+depends=('gcc' 'glibc')
+source=("https://raw.githubusercontent.com/DriftFe/goonsh/main/goonsh.cpp")
+sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir"
-  g++ -O2 -o goonsh goonsh.cpp -lreadline
+  g++ goonsh.cpp -o goonsh -lreadline    
 }
 
 package() {
