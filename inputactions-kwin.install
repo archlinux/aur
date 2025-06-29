@@ -1,0 +1,3 @@
+post_install() {
+  echo "Some features need additional setup: https://github.com/taj-ny/InputActions?tab=readme-ov-file#additional-setup-optional"
+}
