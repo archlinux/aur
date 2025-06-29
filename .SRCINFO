@@ -1,7 +1,12 @@
 pkgbase = modsecurity-crs
 	pkgdesc = OWASP ModSecurity Core Rule Set
+<<<<<<< HEAD
 	pkgver = 4.16.0
 	pkgrel = 1
+=======
+	pkgver = 4.15.0
+	pkgrel = 2
+>>>>>>> cbcdbc8878a8894be3eb42febee563c4268f7240
 	url = https://github.com/coreruleset/coreruleset
 	install = modsecurity-crs.install
 	arch = any
@@ -19,8 +24,14 @@ pkgbase = modsecurity-crs
 	source = https://github.com/coreruleset/coreruleset/archive/refs/tags/v4.16.0.tar.gz
 	source = https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/modsecurity.conf-recommended
 	source = https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/unicode.mapping
+<<<<<<< HEAD
 	sha512sums = bf20300bdceb745ba7d52b6fd16978e49ecc1eac7a42add8c069b5526fedb6a15583c0d861ebfcf93fdfb1c646aad814aca55a2297c8712f4473881a302af370
 	sha512sums = 9b1b839132019c1d29466e773d3e7efa5ec7bc17aba12a4845c419f5396cddc0587934d5e4848bbd9b949026d288899e0df12b5db8e1f355ac92146b7cace226
 	sha512sums = da4a211a1791e4fc68b7cf18917c892d72fd6e1c22b312a21ae21ff8fba25365a9efeee4a9a00352ada25b3b0f6226e844f7f9bbedbcb7ab6424349841c3d42e
+=======
+	b2sums = c9d42f9a2741bd43b58b7f074c5ff176eec5d435947b645125f3f0abb186c934b54b93f3e04f0d7919723ebf31384bc1f5b80e1aa2a6e493d8f289d773dcd980
+	b2sums = SKIP
+	b2sums = SKIP
+>>>>>>> cbcdbc8878a8894be3eb42febee563c4268f7240
 
 pkgname = modsecurity-crs

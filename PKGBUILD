@@ -16,9 +16,9 @@ optdepends=("geoip-database: for coutry-based rules"
 source=("https://github.com/coreruleset/coreruleset/archive/refs/tags/v$pkgver.tar.gz"
         "https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/modsecurity.conf-recommended"
         "https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/unicode.mapping")
-sha512sums=('bf20300bdceb745ba7d52b6fd16978e49ecc1eac7a42add8c069b5526fedb6a15583c0d861ebfcf93fdfb1c646aad814aca55a2297c8712f4473881a302af370'
-            '9b1b839132019c1d29466e773d3e7efa5ec7bc17aba12a4845c419f5396cddc0587934d5e4848bbd9b949026d288899e0df12b5db8e1f355ac92146b7cace226'
-            'da4a211a1791e4fc68b7cf18917c892d72fd6e1c22b312a21ae21ff8fba25365a9efeee4a9a00352ada25b3b0f6226e844f7f9bbedbcb7ab6424349841c3d42e')
+b2sums=('6803922fcae519b4e820d2c56f31c17c86832468c74386e498f40c2f76570c11bf43c5820a32c4c143108d72be193474a10a1e26ffcdd79f45c3546526ee25db'
+        '378937cb32877e1bb22a2e08389da144be8004233e6d77c917c848ecfba5897cae85bd5c921e5a8eefb14a12b07050e6cd642c485351d25b6e9e8aef9ab84c1f'
+        '81760f570952b472dcdd3a5b5a2214136e21d1a1cdf65b6d16c615ef4ac6df056b37eebe9ce1f175aa72c664fa7405b1e6edc57847e64511cc64d969ad4490e7')
 backup=("etc/modsecurity/modsecurity.conf"
         "etc/modsecurity/crs/crs-setup.conf"
         "etc/modsecurity/crs/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf"
