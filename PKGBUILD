@@ -6,22 +6,26 @@ arch=('x86_64')
 url="https://github.com/SteamClientHomebrew/Millennium"
 license=('MIT')
 depends=('git' 'steam')
-makedepends=('npm' 'curl' 'zip' 'unzip' 'tar' 'cmake' 'ninja' 'lib32-gcc-libs' 'pnpm')
+makedepends=('npm' 'curl' 'zip' 'unzip' 'tar' 'cmake' 'ninja' 'lib32-gcc-libs')
 depends_x86_64=('python-i686-bin')
 source=("git+$url.git#commit=243c38bfb97da997546a7267f7846eff19f6545c")
 sha256sums=('SKIP')
 options=(!debug)
 install=millennium.install
 
+pre_install() {
+    if ! command -v pnpm &> /dev/null; then
+        echo "pnpm is required but not found. Install it via npm OR pacman:"
+        echo "  pacman -S pnpm "
+        echo "  npm install -g pnpm"
+        exit 1
+    fi
+}
+
 prepare() {
     cd "Millennium"
     echo -e "\e[1m\e[92m==>\e[0m \e[1mCloning submodules...\e[0m"
     git submodule update --init --recursive
-}
-
-pkgver() {
-    cd "Millennium"
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
