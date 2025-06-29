@@ -1,0 +1,465 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import json
+import argparse
+import subprocess
+import time
+import threading
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
+import hashlib
+
+try:
+    import curses
+    CURSES_AVAILABLE = True
+except ImportError:
+    CURSES_AVAILABLE = False
+
+class DisplayManager:
+    def __init__(self):
+        self.config_dir = Path.home() / '.config' / 'display-profiles'
+        self.config_file = self.config_dir / 'profiles.json'
+        self.config_dir.mkdir(parents=True, exist_ok=True)
+        self.profiles = self.load_profiles()
+        
+    def load_profiles(self) -> Dict:
+        if self.config_file.exists():
+            try:
+                with open(self.config_file, 'r') as f:
+                    return json.load(f)
+            except (json.JSONDecodeError, IOError):
+                return {}
+        return {}
+    
+    def save_profiles(self):
+        try:
+            with open(self.config_file, 'w') as f:
+                json.dump(self.profiles, f, indent=2)
+        except IOError as e:
+            print(f"Error saving profiles: {e}")
+
+    def run_command(self, cmd: List[str]) -> Tuple[bool, str]:
+        try:
+            result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+            return True, result.stdout
+        except subprocess.CalledProcessError as e:
+            return False, e.stderr
+        except FileNotFoundError:
+            return False, f"Command not found: {cmd[0]}"
+    
+    def get_xrandr_info(self) -> Tuple[bool, str]:
+        return self.run_command(['xrandr', '--query'])
+    
+    def get_kscreen_info(self) -> Tuple[bool, str]:
+        return self.run_command(['kscreen-doctor', '-o'])
+    
+    def detect_displays(self) -> Dict[str, List[str]]:
+        displays = {'xrandr': [], 'kscreen': []}
+        
+        success, output = self.get_xrandr_info()
+        if success:
+            for line in output.split('\n'):
+                if ' connected' in line:
+                    display_name = line.split()[0]
+                    displays['xrandr'].append(display_name)
+        
+        success, output = self.get_kscreen_info()
+        if success:
+            for line in output.split('\n'):
+                if 'Output:' in line:
+                    parts = line.split()
+                    if len(parts) >= 2:
+                        displays['kscreen'].append(parts[1])
+        
+        return displays
+    
+    def get_display_signature(self) -> str:
+        displays = self.detect_displays()
+        display_list = sorted(displays['xrandr'] + displays['kscreen'])
+        signature = hashlib.md5('|'.join(display_list).encode()).hexdigest()[:8]
+        return signature
+    
+    def save_current_profile(self, name: str, backend: str = 'auto') -> bool:
+        if backend == 'auto':
+            xrandr_success, xrandr_config = self.get_xrandr_info()
+            kscreen_success, kscreen_config = self.get_kscreen_info()
+            
+            if xrandr_success:
+                backend = 'xrandr'
+                config = xrandr_config
+            elif kscreen_success:
+                backend = 'kscreen'
+                config = kscreen_config
+            else:
+                return False
+        elif backend == 'xrandr':
+            success, config = self.get_xrandr_info()
+            if not success:
+                return False
+        elif backend == 'kscreen':
+            success, config = self.get_kscreen_info()
+            if not success:
+                return False
+        else:
+            return False
+        
+        signature = self.get_display_signature()
+        
+        self.profiles[name] = {
+            'backend': backend,
+            'config': config,
+            'signature': signature,
+            'displays': self.detect_displays()
+        }
+        
+        self.save_profiles()
+        return True
+    
+    def apply_profile(self, name: str) -> bool:
+        if name not in self.profiles:
+            return False
+        
+        profile = self.profiles[name]
+        backend = profile['backend']
+        
+        if backend == 'xrandr':
+            return self.apply_xrandr_profile(profile)
+        elif backend == 'kscreen':
+            return self.apply_kscreen_profile(profile)
+        
+        return False
+    
+    def apply_xrandr_profile(self, profile: Dict) -> bool:
+        config_lines = profile['config'].split('\n')
+        cmd = ['xrandr']
+        
+        for line in config_lines:
+            if ' connected' in line:
+                parts = line.split()
+                display_name = parts[0]
+                
+                if 'primary' in line:
+                    cmd.extend(['--output', display_name, '--primary'])
+                else:
+                    cmd.extend(['--output', display_name])
+
+                if len(parts) > 2 and 'x' in parts[2]:
+                    resolution_info = parts[2]
+                    if '+' in resolution_info:
+                        res_parts = resolution_info.split('+')
+                        resolution = res_parts[0]
+                        if 'x' in resolution:
+                            cmd.extend(['--mode', resolution])
+                        if len(res_parts) >= 3:
+                            cmd.extend(['--pos', f"{res_parts[1]}x{res_parts[2]}"])
+        
+        success, output = self.run_command(cmd)
+        return success
+    
+    def apply_kscreen_profile(self, profile: Dict) -> bool:
+        success, _ = self.run_command(['kscreen-doctor'])
+        return success
+    
+    def list_profiles(self) -> List[str]:
+        return list(self.profiles.keys())
+    
+    def delete_profile(self, name: str) -> bool:
+        if name in self.profiles:
+            del self.profiles[name]
+            self.save_profiles()
+            return True
+        return False
+    
+    def auto_switch_profile(self) -> Optional[str]:
+        current_signature = self.get_display_signature()
+        
+        for name, profile in self.profiles.items():
+            if profile.get('signature') == current_signature:
+                if self.apply_profile(name):
+                    return name
+        return None
+
+class DisplayProfilesCLI:
+    def __init__(self):
+        self.manager = DisplayManager()
+
+    def cmd_list(self, args):
+        profiles = self.manager.list_profiles()
+        if not profiles:
+            print("No profiles saved.")
+            return
+        
+        print("Saved profiles:")
+        for name in profiles:
+            profile = self.manager.profiles[name]
+            backend = profile.get('backend', 'unknown')
+            signature = profile.get('signature', 'none')
+            print(f"  {name} ({backend}) [{signature}]")
+
+    def cmd_save(self, args):
+        if self.manager.save_current_profile(args.name, args.backend):
+            print(f"Profile '{args.name}' saved successfully.")
+        else:
+            print(f"Failed to save profile '{args.name}'.")
+
+    def cmd_apply(self, args):
+        if self.manager.apply_profile(args.name):
+            print(f"Profile '{args.name}' applied successfully.")
+        else:
+            print(f"Failed to apply profile '{args.name}'.")
+
+    def cmd_delete(self, args):
+        if self.manager.delete_profile(args.name):
+            print(f"Profile '{args.name}' deleted.")
+        else:
+            print(f"Profile '{args.name}' not found.")
+
+    def cmd_detect(self, args):
+        displays = self.manager.detect_displays()
+        signature = self.manager.get_display_signature()
+        
+        print(f"Display signature: {signature}")
+        print("Connected displays:")
+        
+        if displays['xrandr']:
+            print("  xrandr:", ', '.join(displays['xrandr']))
+        
+        if displays['kscreen']:
+            print("  kscreen:", ', '.join(displays['kscreen']))
+
+    def cmd_auto(self, args):
+        if args.daemon:
+            self.run_auto_daemon()
+        else:
+            profile = self.manager.auto_switch_profile()
+            if profile:
+                print(f"Auto-switched to profile: {profile}")
+            else:
+                print("No matching profile found for current display configuration.")
+
+    def run_auto_daemon(self):
+        print("Starting auto-switch daemon...")
+        last_signature = self.manager.get_display_signature()
+        
+        try:
+            while True:
+                time.sleep(2)  
+                current_signature = self.manager.get_display_signature()
+                
+                if current_signature != last_signature:
+                    print(f"Display change detected: {last_signature} -> {current_signature}")
+                    profile = self.manager.auto_switch_profile()
+                    if profile:
+                        print(f"Auto-switched to profile: {profile}")
+                    last_signature = current_signature
+                    
+        except KeyboardInterrupt:
+            print("\nDaemon stopped.")
+
+class DisplayProfilesTUI:
+    def __init__(self):
+        self.manager = DisplayManager()
+    
+    def run(self, stdscr):
+        curses.curs_set(0) 
+        stdscr.keypad(True)
+        
+        current_selection = 0
+        profiles = []
+        
+        while True:
+            stdscr.clear()
+            profiles = self.manager.list_profiles()
+            
+            stdscr.addstr(0, 0, "Display Profiles Manager", curses.A_BOLD)
+            stdscr.addstr(1, 0, "=" * 40)
+            
+            options = [
+                "List Profiles",
+                "Save Current Profile",
+                "Apply Profile",
+                "Delete Profile", 
+                "Detect Displays",
+                "Auto Switch",
+                "Exit"
+            ]
+            
+            for i, option in enumerate(options):
+                if i == current_selection:
+                    stdscr.addstr(3 + i, 2, f"> {option}", curses.A_REVERSE)
+                else:
+                    stdscr.addstr(3 + i, 2, f"  {option}")
+
+            if profiles:
+                stdscr.addstr(12, 0, "Saved Profiles:", curses.A_BOLD)
+                for i, name in enumerate(profiles):
+                    profile = self.manager.profiles[name]
+                    backend = profile.get('backend', 'unknown')
+                    stdscr.addstr(13 + i, 2, f"{name} ({backend})")
+            
+            height, width = stdscr.getmaxyx()
+            if height > 1:
+                stdscr.addstr(height - 1, 0, "Use arrow keys to navigate, Enter to select, 'q' to quit")
+            stdscr.refresh()
+            
+            key = stdscr.getch()
+            
+            if key == ord('q'):
+                break
+            elif key == curses.KEY_UP:
+                current_selection = max(0, current_selection - 1)
+            elif key == curses.KEY_DOWN:
+                current_selection = min(len(options) - 1, current_selection + 1)
+            elif key == curses.KEY_ENTER or key == 10:
+                self.handle_selection(stdscr, current_selection, options)
+    
+    def handle_selection(self, stdscr, selection, options):
+        if selection == 0:  
+            profiles = self.manager.list_profiles()
+            if not profiles:
+                self.show_message(stdscr, "No profiles saved.")
+            else:
+                lines = []
+                for name in profiles:
+                    profile = self.manager.profiles[name]
+                    backend = profile.get('backend', 'unknown')
+                    signature = profile.get('signature', 'none')
+                    lines.append(f"{name} ({backend}) [{signature}]")
+                self.show_message(stdscr, "\n".join(lines))
+        elif selection == 1:  
+            name = self.get_input(stdscr, "Enter profile name: ")
+            if name:
+                if self.manager.save_current_profile(name):
+                    self.show_message(stdscr, f"Profile '{name}' saved!")
+                else:
+                    self.show_message(stdscr, "Failed to save profile")
+        elif selection == 2:  
+            profiles = self.manager.list_profiles()
+            if profiles:
+                profile = self.select_from_list(stdscr, "Select profile to apply:", profiles)
+                if profile:
+                    if self.manager.apply_profile(profile):
+                        self.show_message(stdscr, f"Profile '{profile}' applied!")
+                    else:
+                        self.show_message(stdscr, "Failed to apply profile")
+            else:
+                self.show_message(stdscr, "No profiles available")
+        elif selection == 3: 
+            profiles = self.manager.list_profiles()
+            if profiles:
+                profile = self.select_from_list(stdscr, "Select profile to delete:", profiles)
+                if profile:
+                    if self.manager.delete_profile(profile):
+                        self.show_message(stdscr, f"Profile '{profile}' deleted!")
+                    else:
+                        self.show_message(stdscr, "Failed to delete profile")
+            else:
+                self.show_message(stdscr, "No profiles available")
+        elif selection == 4:  
+            displays = self.manager.detect_displays()
+            signature = self.manager.get_display_signature()
+            msg = f"Signature: {signature}\\n"
+            if displays['xrandr']:
+                msg += f"xrandr: {', '.join(displays['xrandr'])}\\n"
+            if displays['kscreen']:
+                msg += f"kscreen: {', '.join(displays['kscreen'])}"
+            self.show_message(stdscr, msg)
+        elif selection == 5: 
+            profile = self.manager.auto_switch_profile()
+            if profile:
+                self.show_message(stdscr, f"Auto-switched to: {profile}")
+            else:
+                self.show_message(stdscr, "No matching profile found")
+        elif selection == 6: 
+            return
+    
+    def get_input(self, stdscr, prompt):
+        curses.echo()
+        stdscr.addstr(22, 0, prompt)
+        stdscr.refresh()
+        text = stdscr.getstr(22, len(prompt)).decode('utf-8')
+        curses.noecho()
+        return text
+    
+    def select_from_list(self, stdscr, prompt, items):
+        selection = 0
+        while True:
+            stdscr.clear()
+            stdscr.addstr(0, 0, prompt, curses.A_BOLD)
+            
+            for i, item in enumerate(items):
+                if i == selection:
+                    stdscr.addstr(2 + i, 2, f"> {item}", curses.A_REVERSE)
+                else:
+                    stdscr.addstr(2 + i, 2, f"  {item}")
+            
+            stdscr.addstr(len(items) + 4, 0, "Enter to select, 'q' to cancel")
+            stdscr.refresh()
+            
+            key = stdscr.getch()
+            if key == ord('q'):
+                return None
+            elif key == curses.KEY_UP:
+                selection = max(0, selection - 1)
+            elif key == curses.KEY_DOWN:
+                selection = min(len(items) - 1, selection + 1)
+            elif key == curses.KEY_ENTER or key == 10:
+                return items[selection]
+    
+    def show_message(self, stdscr, message):
+        stdscr.clear()
+        lines = message.split('\\n')
+        for i, line in enumerate(lines):
+            stdscr.addstr(2 + i, 2, line)
+        stdscr.addstr(len(lines) + 4, 2, "Press any key to continue...")
+        stdscr.refresh()
+        stdscr.getch()
+
+def main():
+    parser = argparse.ArgumentParser(description='Display Profiles Manager')
+    parser.add_argument('--tui', action='store_true', help='Run in TUI mode')
+    
+    subparsers = parser.add_subparsers(dest='command', help='Available commands')
+    
+    subparsers.add_parser('list', help='List saved profiles')
+    
+    save_parser = subparsers.add_parser('save', help='Save current display configuration')
+    save_parser.add_argument('name', help='Profile name')
+    save_parser.add_argument('--backend', choices=['auto', 'xrandr', 'kscreen'], 
+                           default='auto', help='Backend to use')
+    
+    apply_parser = subparsers.add_parser('apply', help='Apply saved profile')
+    apply_parser.add_argument('name', help='Profile name')
+    
+    delete_parser = subparsers.add_parser('delete', help='Delete saved profile')
+    delete_parser.add_argument('name', help='Profile name')
+    
+    subparsers.add_parser('detect', help='Detect connected displays')
+    
+    auto_parser = subparsers.add_parser('auto', help='Auto-switch profile')
+    auto_parser.add_argument('--daemon', action='store_true', 
+                           help='Run as daemon, monitoring for changes')
+    
+    args = parser.parse_args()
+    
+    if args.tui:
+        if not CURSES_AVAILABLE:
+            print("Error: curses not available. Install python3-curses package.")
+            sys.exit(1)
+        
+        tui = DisplayProfilesTUI()
+        curses.wrapper(tui.run)
+    elif args.command:
+        cli = DisplayProfilesCLI()
+        cmd_method = getattr(cli, f'cmd_{args.command}', None)
+        if cmd_method:
+            cmd_method(args)
+        else:
+            parser.print_help()
+    else:
+        parser.print_help()
+
+if __name__ == '__main__':
+    main()
