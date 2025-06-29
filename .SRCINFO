@@ -1,6 +1,6 @@
 pkgbase = inter-heretic
 	pkgdesc = Small, functional and simple Heretic source port, created with help, efforts and bits of code from people around the world
-	pkgver = 8.1
+	pkgver = 8.2
 	pkgrel = 1
 	url = https://github.com/JNechaevsky/international-doom
 	arch = i686
@@ -16,9 +16,9 @@ pkgbase = inter-heretic
 	depends = fluidsynth
 	optdepends = heretic1-wad: Heretic shareware game data
 	conflicts = inter-heretic-git
-	source = inter-heretic-8.1.tar.gz::https://github.com/JNechaevsky/international-doom/archive/refs/tags/8.1.tar.gz
+	source = inter-heretic-8.2.tar.gz::https://github.com/JNechaevsky/international-doom/archive/refs/tags/8.2.tar.gz
 	source = 001_install_rule.patch
-	b2sums = 058c6cf6d1afde57a7b8a628006aee1359fb85e975777f675517cd83fbe809fd160003122189f6effba1f6fb53c7ec78a767823d1298eddb4e5d569a2702a160
-	b2sums = 192d399a83f8e5428909f8100eaab6df52da4e22ef1f0fcb171b38b7287a700c891b3f8bab83ba57691b7ab0af74c86973c67eb22831ab566f1ce4a7bbec7591
+	b2sums = 87c596d96a18c0643eb69a318e259fa36458ec6bb1aa9e735aa9721400854400d339535ba51f9597724bc0721d3e50c96c2e6595ba9ada99fb9c173a09782736
+	b2sums = 5cb1da155e244d310b8dd1fab0af319d659e4181ea2a65081c047a2fbeb09d9f9c113ee6d9b8bf70ffbd4b1cd6124135e63298c6991ac847abb4d1d4aa7e27d1
 
 pkgname = inter-heretic
