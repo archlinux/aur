@@ -1,4 +1,6 @@
 # Maintainer: Mihkel Tõnnov <mihhkel-at-gmail-dot-com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+# Contributor: Mihkel Tõnnov <mihhkel-at-gmail-dot-com>
 # Contributor: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 # Contributor: Evert Vorster <evorster-at-gmail-dot-com>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
@@ -6,58 +8,51 @@
 # Contributor: Maël Kerbiriou <mael.kerbiriou-at-free-dot-fr>
 
 pkgname=amarok-git
-pkgver=2.9.71.r377.g9d74990
-pkgrel=1
+pkgver=3.2.82.r5.gf3da000
+pkgrel=2
 pkgdesc="The powerful music player for KDE"
-arch=("i686" "x86_64")
-url="http://amarok.kde.org"
-license=("GPL2" "LGPL2.1" "FDL")
-depends=("threadweaver5" "qt5-webengine" "phonon-qt5" "qt5-declarative" "qt5-script"
-         "kcmutils5" "knewstuff5" "ktexteditor5" "kdnssd5" "kirigami2"
-         "mariadb" "libmariadbclient" "fftw" "liblastfm-qt5" "ffmpeg"  "taglib>=2.0" "libofa")
-makedepends=("git" "extra-cmake-modules" "kdoctools5" "gdk-pixbuf2" "knotifyconfig5"
-             "libmtp" "libgpod" "loudmouth" "libmygpo-qt5" "qt5-tools")
+arch=(x86_64)
+url="https://apps.kde.org/amarok/"
+license=(GPL-2.0-or-later)
+depends=(threadweaver qt6-webengine qt6-declarative #knewstuff phonon-qt6 
+         kcmutils ktexteditor kdnssd kirigami2 kstatusnotifieritem ktextwidgets
+         mariadb libmariadbclient fftw ffmpeg taglib libofa qt6-tools gstreamer gst-plugins-base-libs
+
+         # namcap implicit depends
+         qt6-5compat kiconthemes ki18n qt6-svg gcc-libs kcompletion kitemviews kwidgetsaddons solid karchive kcrash
+         kdbusaddons kconfigwidgets kpackage kcodecs knotifications hicolor-icon-theme kxmlgui qt6-base kconfig
+         kcoreaddons kglobalaccel kirigami kwindowsystem kguiaddons glibc kio kcolorscheme)
+makedepends=(git extra-cmake-modules kdoctools gdk-pixbuf2 knotifyconfig vulkan-headers
+             libmtp loudmouth)
 optdepends=("libmtp: support for portable media devices"
-            "ifuse: support for Apple iPod Touch and iPhone"
-            "libgpod: support for Apple iPod audio devices"
             "loudmouth: backend needed by mp3tunes for syncing"
-            "libmygpo-qt5: gpodder.net Internet Service"
-            "taglib-extras: taglib plugins for Audible and RealMedia files"
-            "gmock: tests")
-conflicts=("amarok" "taglib-extras<1.0.1-8")
-provides=("amarok")
+            )
+conflicts=(amarok)
+provides=(amarok)
 source=("git+https://invent.kde.org/multimedia/amarok.git")
 sha512sums=("SKIP")
 
 pkgver() {
-    cd "$srcdir/amarok"
-    set -o pipefail
-    git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  # Taglib-extras were removed and then re-added to optdepends (after fixing its build against taglib 2.0), so better warn if anyone still has the old version installed
-  if [[ $(pacman -Q taglib-extras 2>&1 | cut -d ' ' -f 2) < "1.0.1-8" ]]; then
-    echo "You have an old version of 'taglib-extras' installed. This will break the build - please uninstall it or update to 1.0.1-8 from AUR."
-    return 1
-  fi
-
-  cd "${srcdir}/amarok"
-  # patch -Np1 -i "${srcdir}/Patch.diff"
-  mkdir -p "${srcdir}/build"
+  cd "amarok"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/build"
-    cmake "${srcdir}/amarok" \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DBUILD_TESTING=OFF \
-        -DCMAKE_BUILD_TYPE=Release
-    make
+  local _flags=(
+    -DWITH_GPODDER=OFF
+    -DWITH_IPOD=OFF
+    -DWITH_LASTFM=OFF
+    -DBUILD_TESTING=OFF
+  )
+
+  cmake -B build -S "amarok" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
+
+  cmake --build build
 }
 
-package(){
-    cd "${srcdir}/build"
-    make "DESTDIR=${pkgdir}" install
+package() {
+  DESTDIR="${pkgdir}" cmake --install build
 }
