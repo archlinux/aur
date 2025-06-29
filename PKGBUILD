@@ -2,7 +2,7 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=fortunafetch
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="THE BEST FETCH IN THE WORLD OF ALL EXISTING. 100% FASTER THAN FASTFETCH AND NEOFETCH. PROVEN BY SCIENTISTS.( The following project is a meme and was made for fun dont take it seriously )"
 arch=('any')
 url="https://github.com/alexskid/fortunafetch"  # Рекомендую заменить на GitHub или другой реальный URL
