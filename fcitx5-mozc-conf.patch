@@ -101,9 +101,9 @@ index 000000000..ccb01743d
 +# 入力メソッドの言語を使用してテキストを表示する
 +UseInputMethodLanguageToDisplayText=True
 +# テーマ
-+Theme=plasma
++Theme=default-dark
 +# ダークテーマ
-+DarkTheme=plasma
++DarkTheme=default-dark
 +# システムのライト/ダーク配色に従う
 +UseDarkTheme=True
 +# テーマとデスクトップでサポートされている場合は、システムのアクセントカラーに従う
