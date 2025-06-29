@@ -25,13 +25,11 @@ prepare() {
 
 build() {
   cd ffmpeg
-  # See https://github.com/chromium/chromium/blob/main/ Build subset of
-  #  allowed_demuxers at media/filters/ffmpeg_glue.cc webm is subset of matroska
-  #  kAllowedAudioCodecs and GetAllowedVideoDecoders at media/ffmpeg/ffmpeg_common.cc
-  #  Allowed parser?
+  # Use part of https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
+  # libavcodec/parser_list.c ?
   ./configure \
     --enable-gpl \
-    --disable-{all,autodetect,programs,doc,iconv,network} \
+    --disable-{all,autodetect,programs,doc,iconv,network,symver} \
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
     --enable-protocol=file \
