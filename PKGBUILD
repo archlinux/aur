@@ -1,7 +1,7 @@
 # Maintainer: Maxr1998 <aur@maxr1998.de>
 pkgname=alistral
 _reponame=Alistral
-pkgver=0.5.10
+pkgver=0.5.12
 pkgrel=1
 pkgdesc="Power tools for Listenbrainz"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs' 'openssl' 'bzip2' 'xz')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RustyNova016/$_reponame/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('54cad4cc986240614d14e1e3916998888f4fbfd95720ac8fb878f6bbe0239126396c340d16e5ba0342282c9940a7bd9ff8993be4e5001ddcb67ae16f88f6113a')
+b2sums=('453ddf6bdd97f9e37fadc0dd0e518ff8472ab68a37c321c4d4fa161b4f57d67cab009ee76dca4a77138f28277d6461576f5c2511b8a7f18b526839dbbdd06584')
 
 prepare() {
     cd "$_reponame-$pkgver"
