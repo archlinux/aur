@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=anndata
-_pkgver=0.7.5.6
+_pkgver=0.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
 pkgrel=1
@@ -12,6 +12,8 @@ license=('MIT')
 depends=(
   r
   r-assertthat
+  r-cli
+  r-lifecycle
   r-r6
   r-reticulate
 )
@@ -22,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b19603fdd983a44bbad2313b0a618bf73b8dbbae4962f869c3c848c7078931e0')
+sha256sums=('4656521ae59ddad1387a2ffdcf5f37091d7c401603fcbc7b453b5517da392f35')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
