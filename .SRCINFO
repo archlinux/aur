@@ -13,7 +13,7 @@ pkgbase = garuda-rani
 	depends = curl
 	depends = electron36
 	depends = pacman-contrib
-	depends = garuda-libs
+	depends = garuda-libs>=1.6.0
 	depends = garuda-update
 	optdepends = paru: show pending AUR updates
 	optdepends = meld: compare pacdiff files via a GUI on GTK systems
@@ -25,7 +25,7 @@ pkgbase = garuda-rani
 	options = !strip
 	options = !emptydirs
 	options = !debug
-	source = git+https://gitlab.com/garuda-linux/applications/rani.git#commit=a1902a84e3482c1516ca5121b967bf975ed34698
+	source = git+https://gitlab.com/garuda-linux/applications/rani.git#commit=beec8bfc3bc01bd744c38a2c03b2cac43a29858d
 	sha256sums = SKIP
 
 pkgname = garuda-rani

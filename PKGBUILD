@@ -2,14 +2,14 @@
 
 pkgname=garuda-rani
 pkgver="3.0.0"
-_commit='a1902a84e3482c1516ca5121b967bf975ed34698'
+_commit='beec8bfc3bc01bd744c38a2c03b2cac43a29858d'
 pkgrel=1
 _electronversion=36
 pkgdesc="Garuda's Reliable Assistant for Native Installations"
 arch=('any')
 url="https://gitlab.com/garuda-linux/applications/rani"
 license=('GPL-3.0-or-later')
-depends=('bash' 'curl' "electron${_electronversion}" 'pacman-contrib' 'garuda-libs' 'garuda-update')
+depends=('bash' 'curl' "electron${_electronversion}" 'pacman-contrib' 'garuda-libs>=1.6.0' 'garuda-update')
 makedepends=('git' 'base-devel' 'nodejs-lts-jod' 'pnpm')
 optdepends=('paru: show pending AUR updates'
   'meld: compare pacdiff files via a GUI on GTK systems'
@@ -60,4 +60,5 @@ package() {
   install -Dm644 "${srcdir}/rani/assets/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 "${srcdir}/rani/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 "${srcdir}/rani/assets/images/garuda-purple.svg" "${pkgdir}/usr/share/icons/${pkgname}.svg"
+  install -Dm644 "${srcdir}/rani/assets/images/garuda-purple.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 }
