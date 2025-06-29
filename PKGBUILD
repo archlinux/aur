@@ -4,7 +4,7 @@
 
 pkgname=python-gymnasium
 _name=${pkgname#python-}
-pkgver=1.1.1
+pkgver=1.2.0
 _pkgver=v${pkgver}
 pkgrel=1
 pkgdesc="A standard API for single-agent reinforcement learning environments, with popular reference environments and related utilities (formerly Gym)"
@@ -21,7 +21,7 @@ optdepends=('python-pygame: environment rendering, required for many provided en
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Farama-Foundation/Gymnasium/${_pkgver}/LICENSE")
-sha256sums=('8bd9ea9bdef32c950a444ff36afc785e1d81051ec32d30435058953c20d2456d'
+sha256sums=('344e87561012558f603880baf264ebc97f8a5c997a957b0c9f910281145534b0'
     '7dacaa9772e856aee6943b32ef663d3634d91d72ec7bbc74d136943673f91e18')
 
 build() {
