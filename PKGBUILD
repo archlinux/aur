@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=troff-git
 pkgver=r86.e91fb98
-pkgrel=1
+pkgrel=2
 pkgdesc='A port of Plan9 troff tools to Linux, contains troff, tr2ps (dpost), eqn, tbl, pic, and grap.'
 arch=('i686' 'x86_64')
 url='http://repo.or.cz/w/troff.git'
@@ -37,6 +37,7 @@ fi
 prepare() {
 	cd "$srcdir/$pkgname"
 	sed -i "s@/root/troff/home@$tbase@" conf.mk
+	for i in troff tr2ps eqn tbl pic grap refer; do cd $i; sed -i 's/CFLAGS = /&-std=c99 -fpermissive /' Makefile; cd ../; done
 }
 
 build() {
