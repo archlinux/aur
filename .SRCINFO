@@ -1,6 +1,6 @@
 pkgbase = caelestia-shell-git
 	pkgdesc = The desktop shell for the Caelestia dotfiles
-	pkgver = r733.956e706
+	pkgver = r803.0d7804f
 	pkgrel = 1
 	url = https://github.com/caelestia-dots/shell
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = caelestia-shell-git
 	depends = bluez-utils
 	depends = lm_sensors
 	depends = fish
-	depends = curl
 	depends = aubio
 	depends = libpipewire
 	depends = glibc
