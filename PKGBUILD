@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=cfspeedtest
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial CLI for speed.cloudflare.com"
 arch=('x86_64' 'aarch64')
 url="https://github.com/code-inflation/cfspeedtest"
@@ -22,7 +22,7 @@ build() {
     	export RUSTUP_TOOLCHAIN=stable
     	export CARGO_TARGET_DIR=target
 	export CFLAGS+=" -ffat-lto-objects"
-    	cargo build --frozen --release --target-dir target
+	cargo build --frozen --release --all-features
 }
 
 package() {
