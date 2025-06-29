@@ -2,7 +2,7 @@
 
 pkgname=aws-lc
 pkgver=1.54.0
-pkgrel=1
+pkgrel=2
 pkgdesc='general-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
 license=('MIT' 'ISC' 'Apache-2.0' 'LicenseRef-SSLeay-License')
@@ -36,18 +36,17 @@ build() {
     CFLAGS+=" -Wno-error=maybe-uninitialized"
 #    CFLAGS+=" -Wno-error=uninitialized"
     
-    # 1.) Read 2.1.2 https://wiki.archlinux.org/title/CMake_package_guidelines
-    # 2.) CMake does not respect ASFLAGs set in /etc/makepkg.conf, so we have to set CMAKE_ASM_FLAGS here.
+    # CMake does not respect ASFLAGs set in /etc/makepkg.conf, so we have to set CMAKE_ASM_FLAGS here.
     cmake -B build \
 	  -GNinja \
 	  -DCMAKE_BUILD_TYPE=RelWithAssert \
 	  -DCMAKE_ASM_FLAGS="${CMAKE_ASM_FLAGS} -fcf-protection=full" \
 	  -DBUILD_SHARED_LIBS=ON \
-	  -DCMAKE_INSTALL_PREFIX=../aws-lc \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
 	  -DCMAKE_INSTALL_SBINDIR:PATH=bin \
-	  -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib/aws-lc \
-	  -DCMAKE_INSTALL_INCLUDEDIR:PATH=/usr/include/aws-lc \
+	  -DCMAKE_INSTALL_LIBDIR:PATH=lib/aws-lc \
+	  -DCMAKE_INSTALL_INCLUDEDIR:PATH=include/aws-lc \
+	  -DCMAKE_INSTALL_RPATH=/usr/lib/aws-lc \
 	  -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
     ninja -C build -j $(nproc)
