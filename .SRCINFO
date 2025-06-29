@@ -1,7 +1,7 @@
 pkgbase = python-collada
 	pkgdesc = A python COLLADA library
-	pkgver = 0.9
-	pkgrel = 2
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://github.com/pycollada/pycollada
 	arch = any
 	license = BSD-3-Clause
@@ -15,7 +15,7 @@ pkgbase = python-collada
 	depends = python-numpy
 	depends = python-pillow
 	depends = python-setuptools
-	source = python-collada-0.9.tar.gz::https://github.com/pycollada/pycollada/archive/v0.9.tar.gz
-	sha256sums = bb40e7a69dba1656255fbd70088a9a86e9480410e5f6b6642c301b37789462ce
+	source = python-collada-0.9.1.tar.gz::https://github.com/pycollada/pycollada/archive/v0.9.1.tar.gz
+	sha256sums = cbeef93354a47827aa3cdffcb218b1fcb7bd7e81c02c417d475842e36b4dd3bd
 
 pkgname = python-collada

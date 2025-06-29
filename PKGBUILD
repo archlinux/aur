@@ -5,8 +5,8 @@
 
 pkgname=python-collada
 _pkgname=pycollada
-pkgver=0.9
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="A python COLLADA library"
 arch=(any)
 url="https://github.com/pycollada/pycollada"
@@ -28,7 +28,7 @@ checkdepends=(python-pytest)
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('bb40e7a69dba1656255fbd70088a9a86e9480410e5f6b6642c301b37789462ce')
+sha256sums=('cbeef93354a47827aa3cdffcb218b1fcb7bd7e81c02c417d475842e36b4dd3bd')
 
 build() {
   cd "$_pkgname-$pkgver"
