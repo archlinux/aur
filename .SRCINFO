@@ -1,6 +1,6 @@
 pkgbase = rnp
 	pkgdesc = High performance C++ OpenPGP library derived from NetPGP
-	pkgver = 0.17.1
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/rnpgp/rnp
 	arch = i686
@@ -15,9 +15,9 @@ pkgbase = rnp
 	depends = glibc
 	depends = json-c
 	depends = zlib
-	source = rnp-0.17.1.tar.gz::https://github.com/rnpgp/rnp/archive/v0.17.1.tar.gz
-	source = sexpp-0.8.7.tar.gz::https://github.com/rnpgp/sexpp/archive/refs/tags/v0.8.7.tar.gz
-	b2sums = 279cd5c669b469112066c4754a9a5a5c9fbe3ba225be4f85bc507aad9f29cfa166f90cb3dfe83ea8e29964fdfbbf926438fb36bb345da494ed7f70586fa8d7b6
-	b2sums = 1b7d45f00769b54c152c25e3befe73db628b8db880ed8b14cc3e1b4c07f90859d2994cbc3a03cad7dfdcc2a20ec4df4263bd04b17ef27f1d3a96e46e6d214923
+	source = rnp-0.18.0.tar.gz::https://github.com/rnpgp/rnp/archive/v0.18.0.tar.gz
+	source = sexpp-0.9.2.tar.gz::https://github.com/rnpgp/sexpp/archive/refs/tags/v0.9.2.tar.gz
+	b2sums = db4c3c7f4313e71e3cbcc42727f9de498a472c895476553e4cca9ce4de92129b9c0a1f46583b741b916c492bc0107697636a05451d60738764b0dcc388bbd88e
+	b2sums = 9a0b06178186b6ee2ea5fd9d2ff80ca1d62ea5e27ba1f99cc01d38f611e1336d672b6130f77d7e149116a1cdad670b0e50c395c25b08af7ab40769ba5f143184
 
 pkgname = rnp

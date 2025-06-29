@@ -1,9 +1,9 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=rnp
 pkgdesc='High performance C++ OpenPGP library derived from NetPGP'
-pkgver=0.17.1
+pkgver=0.18.0
 pkgrel=1
-_sexpp_version='0.8.7'
+_sexpp_version='0.9.2'
 url=https://github.com/rnpgp/rnp
 license=('BSD-2-Clause AND BSD-3-Clause AND Apache-2.0 AND MIT')
 arch=(i686 x86_64)
@@ -11,8 +11,8 @@ makedepends=(cmake pkgconf asciidoctor)
 depends=(botan bzip2 gcc-libs glibc json-c zlib)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "sexpp-$_sexpp_version.tar.gz::https://github.com/rnpgp/sexpp/archive/refs/tags/v$_sexpp_version.tar.gz")
-b2sums=('279cd5c669b469112066c4754a9a5a5c9fbe3ba225be4f85bc507aad9f29cfa166f90cb3dfe83ea8e29964fdfbbf926438fb36bb345da494ed7f70586fa8d7b6'
-        '1b7d45f00769b54c152c25e3befe73db628b8db880ed8b14cc3e1b4c07f90859d2994cbc3a03cad7dfdcc2a20ec4df4263bd04b17ef27f1d3a96e46e6d214923')
+b2sums=('db4c3c7f4313e71e3cbcc42727f9de498a472c895476553e4cca9ce4de92129b9c0a1f46583b741b916c492bc0107697636a05451d60738764b0dcc388bbd88e'
+        '9a0b06178186b6ee2ea5fd9d2ff80ca1d62ea5e27ba1f99cc01d38f611e1336d672b6130f77d7e149116a1cdad670b0e50c395c25b08af7ab40769ba5f143184')
 
 prepare ()
 {
