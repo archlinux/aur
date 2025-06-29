@@ -1,6 +1,6 @@
 pkgbase = inter-hexen
 	pkgdesc = Small, functional and simple Hexen source port, created with help, efforts and bits of code from people around the world
-	pkgver = 8.1
+	pkgver = 8.2
 	pkgrel = 1
 	url = https://github.com/JNechaevsky/international-doom
 	arch = i686
@@ -16,9 +16,9 @@ pkgbase = inter-hexen
 	depends = fluidsynth
 	optdepends = hexen1-wad: Hexen demo game data
 	conflicts = inter-hexen-git
-	source = inter-hexen-8.1.tar.gz::https://github.com/JNechaevsky/international-doom/archive/refs/tags/8.1.tar.gz
+	source = inter-hexen-8.2.tar.gz::https://github.com/JNechaevsky/international-doom/archive/refs/tags/8.2.tar.gz
 	source = 001_install_rule.patch
-	b2sums = 058c6cf6d1afde57a7b8a628006aee1359fb85e975777f675517cd83fbe809fd160003122189f6effba1f6fb53c7ec78a767823d1298eddb4e5d569a2702a160
-	b2sums = 6b3f8abe9aeee223e2020de2fa55c63f36827dcaffa1c1f86a16df68919c232da512744b90ecea799f4d899ee5f435bd5a18f6432c9872b0aaf126183fce8dd4
+	b2sums = 87c596d96a18c0643eb69a318e259fa36458ec6bb1aa9e735aa9721400854400d339535ba51f9597724bc0721d3e50c96c2e6595ba9ada99fb9c173a09782736
+	b2sums = 1007bef14a04e672c091af687c6c93d555dfffcaf346100d066b280b8a1334b8e585121c89eb9f78fb1f6fa610f7fae5e6d0d13c3f6a2088119b7c116c703434
 
 pkgname = inter-hexen
