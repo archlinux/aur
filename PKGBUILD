@@ -33,8 +33,6 @@ prepare() {
 build() {
   cd ffmpeg-$_ffver
   # Use part of https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
-  # libavcodec/parser_list.c ?
-
   ./configure \
     --enable-{gpl,version3} \
     --disable-{all,autodetect,programs,doc,iconv,network,symver} \
@@ -44,7 +42,7 @@ build() {
     --enable-protocol=file \
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
-    --enable-parser=vorbis,flac,mp3,aac,opus,mov \
+    --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
     --extra-cflags="$LTOFLAGS" \
     --prefix="${srcdir}"/release \
     --enable-{pic,asm,hardcoded-tables} # https://www.ffmpeg.org/platform.html#toc-Advanced-linking-configuration
