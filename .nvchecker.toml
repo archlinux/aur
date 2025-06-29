@@ -1,0 +1,4 @@
+[osu]
+source = 'regex'
+url = 'https://osu.ppy.sh/home/changelog/stable40'
+regex = 'Stable ([0-9]+)'

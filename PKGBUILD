@@ -3,10 +3,6 @@
 # Contributor: Rodney van den Velden <rodney@dfagaming.nl>
 # shellcheck shell=bash disable=SC2034,SC2154
 #
-# Update procedure: if the checksum changed, bump $pkgver to $(date +%Y%m%d)
-#
-# If you want to be listed as a co-maintainer, write a comment
-#
 # https://github.com/ppy/osu is only for lazer, use the osu-lazer AUR package instead
 
 pkgname='osu'
@@ -21,10 +17,10 @@ depends=('lib32-gnutls' 'umu-launcher' 'lib32-libxcomposite' 'lib32-gst-plugins-
 makedepends=('icoutils')
 optdepends=('pipewire-pulse: low-latency audio backend')
 source=("${pkgname}-installer-${pkgver}.exe::https://m1.ppy.sh/r/osu!install.exe"
-        "${pkgname}-terms-${_terms_commit}.md::https://raw.githubusercontent.com/ppy/osu-wiki/${_terms_commit}/wiki/Legal/Terms/en.md"
-        "${pkgname}.sh"
-        "${pkgname}.desktop"
-        "${pkgname}.xml")
+  "${pkgname}-terms-${_terms_commit}.md::https://raw.githubusercontent.com/ppy/osu-wiki/${_terms_commit}/wiki/Legal/Terms/en.md"
+  "${pkgname}.sh"
+  "${pkgname}.desktop"
+  "${pkgname}.xml")
 sha256sums=('dbdb5d005b854a5c8435240274af701fd40f55b17089a690a7781c5b0461e7f6'
             '0fc6b18923db85b82fa5da1cb40ccc8c0ffcaf65ee7e325af8969baa150a9fd2'
             'c96c4dc32356784f6100b201ec74d8f71b6959019624619177fb67790c7a8b2d'
@@ -32,20 +28,20 @@ sha256sums=('dbdb5d005b854a5c8435240274af701fd40f55b17089a690a7781c5b0461e7f6'
             '030fb176a43f6cc3306c48123bbdeea6643ef4d0014f369b2bb16d5772feb076')
 
 build() {
-	wrestool -x -t 3 -n 4 -R -o 'osu-stable.png' "${pkgname}-installer-${pkgver}.exe"
-	wrestool -x -t 3 -n 15 -R -o 'osu-importable.png' "${pkgname}-installer-${pkgver}.exe"
+  wrestool -x -t 3 -n 4 -R -o 'osu-stable.png' "${pkgname}-installer-${pkgver}.exe"
+  wrestool -x -t 3 -n 15 -R -o 'osu-importable.png' "${pkgname}-installer-${pkgver}.exe"
 }
 
 package() {
-	install -D -m 755 "${pkgname}.sh" "${pkgdir}/usr/bin/osu-stable"
-	install -D -m 644 "${pkgname}-installer-${pkgver}.exe" "${pkgdir}/usr/share/${pkgname}/osu-stable-installer.exe"
-	install -D -m 644 "${pkgname}-terms-${_terms_commit}.md" "${pkgdir}/usr/share/licenses/${pkgname}/osu-terms.md"
-	install -D -m 644 "${pkgname}.xml" "${pkgdir}/usr/share/mime/packages/osu-stable.xml"
-	install -D -m 644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/sh.ppy.osu.stable.desktop"
-	install -D -m 644 'osu-stable.png' "${pkgdir}/usr/share/icons/hicolor/256x256/apps/osu-stable.png"
-	install -D -m 644 'osu-importable.png' "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes/application-x-osu-importable.png"
-	# Add copyright notice as a text file
-	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-	echo "https://osu.ppy.sh/legal/en/Copyright" > "${pkgdir}/usr/share/licenses/${pkgname}/copyright"  
+  install -D -m 755 "${pkgname}.sh" "${pkgdir}/usr/bin/osu-stable"
+  install -D -m 644 "${pkgname}-installer-${pkgver}.exe" "${pkgdir}/usr/share/${pkgname}/osu-stable-installer.exe"
+  install -D -m 644 "${pkgname}-terms-${_terms_commit}.md" "${pkgdir}/usr/share/licenses/${pkgname}/osu-terms.md"
+  install -D -m 644 "${pkgname}.xml" "${pkgdir}/usr/share/mime/packages/osu-stable.xml"
+  install -D -m 644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/sh.ppy.osu.stable.desktop"
+  install -D -m 644 'osu-stable.png' "${pkgdir}/usr/share/icons/hicolor/256x256/apps/osu-stable.png"
+  install -D -m 644 'osu-importable.png' "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes/application-x-osu-importable.png"
+  # Add copyright notice as a text file
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  echo "https://osu.ppy.sh/legal/en/Copyright" >"${pkgdir}/usr/share/licenses/${pkgname}/copyright"
 }
 # vim:set ts=2 sw=2 et:
