@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python')
 makedepends=('unzip')
 source=("dotpusher.zip::https://github.com/maarutan/dotpusher/releases/download/v${pkgver}/dotpusher.zip")
-sha256sums=('SKIP')
+sha256sums=('74a1b1bf2b7b46cda8fa851098bfa5b8e1700344f22d1ae4644a877170e05c38')
 
 package() {
     cd "$srcdir" || exit

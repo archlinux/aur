@@ -8,6 +8,6 @@ pkgbase = dotpusher
 	makedepends = unzip
 	depends = python
 	source = dotpusher.zip::https://github.com/maarutan/dotpusher/releases/download/v0.1.1/dotpusher.zip
-	sha256sums = SKIP
+	sha256sums = 74a1b1bf2b7b46cda8fa851098bfa5b8e1700344f22d1ae4644a877170e05c38
 
 pkgname = dotpusher
