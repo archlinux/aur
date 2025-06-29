@@ -1,15 +1,15 @@
 pkgname=mewe
 _pkgname=Mewe
-pkgver=1.0.7.aurpatch
-pkgrel=2
+pkgver=1.0.8
+pkgrel=1
 pkgdesc="Unofficial Mewe desktop application."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/mewedesktop"
 license=('GPL')
-depends=('libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
+depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('db1cfaf98e7ea0b028ef1b77e9e5d2331e6bd2353ab987bc321743e4496c4bcf')
+sha256sums=('994de70ce2f260e95ebebc5a85930d5f56b5568e55fb591350526127463dfd33')
 
 
 package() {
@@ -24,6 +24,7 @@ package() {
 
     # Link to binary  
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    ln -s /usr/bin/libelectronmeta "$pkgdir/opt/$_pkgname/electron"
     ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
 
     # Desktop Entry
