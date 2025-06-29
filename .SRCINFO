@@ -5,14 +5,12 @@ pkgbase = turso-git
 	url = https://github.com/tursodatabase/turso
 	arch = x86_64
 	license = MIT
-	makedepends = gcc14
 	makedepends = cargo
 	makedepends = libgit2
 	makedepends = mimalloc
 	makedepends = oniguruma
 	provides = turso
 	conflicts = turso
-	options = !lto
 	source = git+https://github.com/tursodatabase/turso
 	b2sums = SKIP
 
