@@ -1,21 +1,26 @@
 pkgname=dotpusher
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Dotpusher is a declarative method for synchronizing local files or directories with remote ones using git."
+pkgdesc="Declarative dotfiles manager using Git and JSON state tracking"
 arch=('any')
 url="https://github.com/maarutan/dotpusher"
 license=('MIT')
-depends=('python')
-makedepends=('pyinstaller')
-source=("https://github.com/maarutan/dotpusher/archive/refs/tags/v${pkgver}.tar.gz")
+depends=()
+makedepends=('python' 'pyinstaller')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/maarutan/dotpusher/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/dotpusher-$pkgver"
-    pyinstaller --onefile --name dotpusher main.py
+    if command -v pyinstaller >/dev/null 2>&1; then
+        pyinstaller --onefile --name=dotpusher main.py
+    else
+        echo ":: warning: pyinstaller not found — fallback to raw script"
+        install -Dm755 main.py dist/dotpusher
+    fi
 }
 
+
 package() {
-    install -Dm755 "$srcdir/dotpusher-$pkgver/dist/dotpusher" "$pkgdir/usr/bin/dotpusher"
+    install -Dm755 "dist/dotpusher" "$pkgdir/usr/bin/dotpusher"
 }
 

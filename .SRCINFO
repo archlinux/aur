@@ -1,13 +1,13 @@
 pkgbase = dotpusher
-	pkgdesc = Dotpusher is a declarative method for synchronizing local files or directories with remote ones using git.
+	pkgdesc = Declarative dotfiles manager using Git and JSON state tracking
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/maarutan/dotpusher
 	arch = any
 	license = MIT
+	makedepends = python
 	makedepends = pyinstaller
-	depends = python
-	source = https://github.com/maarutan/dotpusher/archive/refs/tags/v0.1.0.tar.gz
+	source = dotpusher-0.1.0.tar.gz::https://github.com/maarutan/dotpusher/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = dotpusher
