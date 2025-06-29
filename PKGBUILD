@@ -2,8 +2,8 @@
 
 pkgname=hqplayer-embedded-sse
 _debpkgname=hqplayer-embedded
-_debpkgver=5.13.1-38intel
-pkgver=5.13.1
+_debpkgver=5.13.2-39intel
+pkgver=5.13.2
 pkgrel=1
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
@@ -17,7 +17,7 @@ source=("https://www.signalyst.com/bins/hqplayerd/noble/hqplayerd_"$_debpkgver"_
         'hqplayerd.service'
         'hqplayerd_user.service'
         )
-sha256sums=('b75bc89d988977446bc01dfd0b8a717254dfbafe9d10df606bd05510b658069f'
+sha256sums=('40f561ef82a9395f5a5a76e2cbb6f7c44c7a5583c89dbe59db4962a256fd2397'
             '9aa79c67c22924c02b2c43cacbd3fac21dd9abbd146819ce46fe2b34f0193ef0'
             '5d4194a704979b3ff92482e155769460906745a66e759142eba33a2226f9cb3a')
 install=${pkgname}.install
