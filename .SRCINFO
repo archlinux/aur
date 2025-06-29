@@ -1,14 +1,14 @@
 pkgbase = openstarbound
 	pkgdesc = OpenStarbound Client (requires original Starbound game assets)
-	pkgver = 0.1.12
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/OpenStarbound/OpenStarbound
 	arch = x86_64
 	license = custom
 	depends = glibc
-	source = openstarbound-0.1.12.zip::https://github.com/OpenStarbound/OpenStarbound/releases/download/v0.1.12/OpenStarbound-Linux-Clang-Client.zip
+	source = openstarbound-0.1.13.zip::https://github.com/OpenStarbound/OpenStarbound/releases/download/v0.1.13/OpenStarbound-Linux-Clang-Client.zip
 	source = starbound.png
-	sha256sums = ee338d9cc9d8fcb060075fb3afab703a8fa329c38004f381134f5464893438cc
+	sha256sums = 99c4d1e1fbc8920ceaf7ccb5a2979d167feebc758283b64b0e6273620a178ece
 	sha256sums = c9c86ce8ee065e3a96e25778eb1212bf559affeef61c51f0ec4b2cad76ec9193
 
 pkgname = openstarbound
