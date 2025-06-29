@@ -1,13 +1,13 @@
 pkgbase = wem
 	pkgdesc = Wine Environment Manager: A CLI tool for managing wine "envs" or prefixes.
-	pkgver = 0.9.5
+	pkgver = 0.10.0
 	pkgrel = 1
-	url = https://git.sr.ht/~hristoast/wem
+	url = https://gitlab.com/hristoast/wem
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = go
 	depends = glibc
-	source = wem-0.9.5.tar.gz::https://git.sr.ht/~hristoast/wem/archive/0.9.5.tar.gz
-	sha512sums = 06288099ea8281fe571a8cc6ba09427cc45fc344116b3c7d0de3a5da7bc6cb6d908838c82e31183f9e58f09baea5b97ff3df272be0603405793731bd9e14d90b
+	source = wem-0.10.0.tar.gz::https://gitlab.com/hristoast/wem/-/archive/0.10.0/wem-0.10.0.tar.gz
+	sha512sums = dfc6f1e4cdfaa75151cd749a944b6753d690c6ef1f9ea97cda510e6959dbbd982f676ccab787dccc9ed8b7336253c69c3c29ed9f9118952027b3dc7cb59a82da
 
 pkgname = wem
