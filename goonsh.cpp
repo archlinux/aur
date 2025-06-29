@@ -224,6 +224,7 @@ std::string find_suggestion(const char* input) {
     HIST_ENTRY** hist = history_list();
     if (!hist) return "";
     std::string prefix = input ? input : "";
+    if (prefix.empty()) return "";
     for (int i = history_length - 1; i >= 0; --i) {
         std::string h = hist[i]->line;
         if (h.find(prefix) == 0 && h != prefix) {
@@ -243,6 +244,12 @@ void goonsh_redisplay() {
         // Print suggestion in gray
         printf("\033[90m%s\033[0m", suggestion.c_str());
         // Restore cursor
+        printf("\033[u");
+        fflush(stdout);
+    } else if (current_suggestion.length() > 0) {
+        // Clear previous suggestion if input is now empty or no suggestion
+        printf("\033[s");
+        for (size_t i = 0; i < current_suggestion.length(); ++i) putchar(' ');
         printf("\033[u");
         fflush(stdout);
     }
