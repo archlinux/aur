@@ -1,0 +1,16 @@
+pkgbase = plasma6-applets-plasma-audio-visualizer
+	pkgdesc = Audio visualizer widget powered by CAVA for the KDE Plasma Desktop
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/luisbocanegra/plasma-audio-visualizer
+	arch = any
+	license = GPL3
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	depends = python
+	depends = python-websockets
+	depends = qt6-websockets
+	source = plasma-audio-visualizer-0.3.0.tar.gz::https://github.com/luisbocanegra/plasma-audio-visualizer/archive/v0.3.0/plasma-audio-visualizer-0.3.0.tar.gz
+	sha256sums = 9160e8f4b7929a6a7d8a104920429eccd2fe5a9c3e674f47b36f663654429ca1
+
+pkgname = plasma6-applets-plasma-audio-visualizer
