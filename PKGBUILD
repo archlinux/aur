@@ -10,7 +10,7 @@ license=("GPL3")
 depends=("qt6-base" "fftw" "libsamplerate")
 makedepends=("cmake")
 conflicts=("liblastfm-qt6")
-provides=("liblastfm")
+provides=("liblastfm-qt6")
 source=("git+https://github.com/Mazhoon/liblastfm.git")
 sha512sums=("SKIP")
 
