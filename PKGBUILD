@@ -1,6 +1,6 @@
 pkgname=googlekeep
 _pkgname=GoogleKeep
-pkgver=1.0.10
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Unnofficial Google Keep desktop application"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'gtk4' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('a37bc2a0c22f4b303c36b2ccf48930d8811289b5be06ffdc697185b70bc10c9f')
+sha256sums=('11af62861819e0f3caa7a92dffb3b2c0ead5f0944188093757529d6dd767320f')
 
 package() {
     cd "$srcdir/application-$pkgver"
