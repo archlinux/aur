@@ -32,22 +32,19 @@ prepare() {
 
 build() {
   cd ffmpeg-$_ffver
-  # See https://github.com/chromium/chromium/blob/main/ and build subset of
-  #  allowed_demuxers at media/filters/ffmpeg_glue.cc webm is subset of matroska
-  #  kAllowedAudioCodecs and GetAllowedVideoDecoders at media/ffmpeg/ffmpeg_common.cc
-  #  Allowed parser?
-  # They are kept for long time. So $pkgname should be usable for any Chromiums...
+  # Use part of https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
+  # libavcodec/parser_list.c ?
 
   ./configure \
     --enable-gpl \
-    --disable-{all,autodetect,programs,doc,iconv,network} \
+    --disable-{all,autodetect,programs,doc,iconv,network,symver} \
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
+    --enable-swresample \
     --enable-protocol=file \
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=vorbis,flac,mp3,aac,opus,mov \
-    --enable-swresample \
     --extra-cflags="$LTOFLAGS" \
     --prefix="${srcdir}"/release \
     --enable-{pic,asm,hardcoded-tables} # https://www.ffmpeg.org/platform.html#toc-Advanced-linking-configuration
