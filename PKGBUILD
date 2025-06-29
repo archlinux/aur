@@ -4,8 +4,8 @@
 
 
 pkgname=plasma6-wallpapers-wallpaper-engine-git
-pkgver=0.5.4.r102.ged58dd8
-pkgrel=4
+pkgver=0.5.4.r108.g9e60b36
+pkgrel=1
 pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine"
 arch=('x86_64')
 url="https://github.com/catsout/wallpaper-engine-kde-plugin"
@@ -23,8 +23,7 @@ source=("${pkgname}::git+${url}.git#branch=main"
         "git+https://github.com/KhronosGroup/SPIRV-Reflect.git"
         "Eigen::git+https://gitlab.com/libeigen/eigen.git"
         "git+https://github.com/mackron/miniaudio.git"
-        "git+https://github.com/google/googletest.git"
-        "devicePixelRatio-change.diff::https://github.com/catsout/wallpaper-scene-renderer/pull/11.diff")
+        "git+https://github.com/google/googletest.git")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -32,8 +31,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'e0f9c2f5a0add2ac4643b3a740a8cb80070edcd1639f8f0a6ca586e3723dc6ec')
+            'SKIP')
 
 prepare(){
     declare -ra modules=("${srcdir}/${pkgname}" "${srcdir}/${pkgname}/src/backend_scene"
@@ -47,17 +45,8 @@ prepare(){
             repo=$(basename "${module}")
             git config "submodule.${module}.url" "file://${srcdir}/${repo}"
         done
-        git -c protocol.file.allow=always submodule update
+        git -c protocol.file.allow=always submodule update --remote
     done
-
-    # CMake 3.1 compatibility has been dropped by CMake
-    sed -i "1 s/3.1/3.5/" "${srcdir}/${pkgname}/src/backend_scene/third_party/SPIRV-Reflect/CMakeLists.txt"
-
-    # GCC 15 changes
-    sed -i "/#include <stack>/ a #include <cstdint>" "${srcdir}/${pkgname}/src/backend_scene/third_party/glslang/SPIRV/SpvBuilder.h"
-
-    # Fix non-100% global zoom
-    patch -Np1 -d "${srcdir}/${pkgname}/src/backend_scene" -i "${srcdir}/devicePixelRatio-change.diff"
 }
 pkgver(){
     cd "${srcdir}/${pkgname}"
