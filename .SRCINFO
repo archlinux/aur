@@ -1,0 +1,18 @@
+pkgbase = kmp3-git
+	pkgdesc = Easy music in the terminal.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/korei999/kmp3.git
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = ffmpeg
+	depends = libpipewire
+	depends = chafa
+	depends = glib2
+	depends = systemd-libs
+	source = git+https://github.com/korei999/kmp3.git
+	sha256sums = SKIP
+
+pkgname = kmp3-git
