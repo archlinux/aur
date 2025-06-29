@@ -1,0 +1,16 @@
+pkgbase = sound-encode
+	pkgdesc = A fast and minimal CLI tool to encode files as .wav
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/valaxiar/sound-encode
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = git+https://github.com/valaxiar/sound-encode.git#branch=master
+	sha256sums = SKIP
+
+pkgname = sound-encode
