@@ -1,0 +1,19 @@
+pkgbase = turso-git
+	pkgdesc = Turso Database is an in-process SQL database, compatible with SQLite.
+	pkgver = 0.1.0.pre.2.r31.g0e9ee4b8
+	pkgrel = 1
+	url = https://github.com/tursodatabase/turso
+	arch = x86_64
+	license = MIT
+	makedepends = gcc14
+	makedepends = cargo
+	makedepends = libgit2
+	makedepends = mimalloc
+	makedepends = oniguruma
+	provides = turso
+	conflicts = turso
+	options = !lto
+	source = git+https://github.com/tursodatabase/turso
+	b2sums = SKIP
+
+pkgname = turso-git
