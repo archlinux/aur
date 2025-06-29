@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/alexskid/fortunafetch"  # Рекомендую заменить на GitHub или другой реальный URL
 license=('GPL 3.0')
 depends=('xorg-xrandr' 'lsb-release' 'pciutils' 'inetutils' 'procps-ng')  # нужные зависимости
-source=("$pkgname")
+source=("$pkgname".sh)
 md5sums=('SKIP')
 
 package() {

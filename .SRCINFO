@@ -10,7 +10,7 @@ pkgbase = fortunafetch
 	depends = pciutils
 	depends = inetutils
 	depends = procps-ng
-	source = fortunafetch
+	source = fortunafetch.sh
 	md5sums = SKIP
 
 pkgname = fortunafetch
