@@ -8,7 +8,7 @@ license=('MIT')
 depends=()
 makedepends=('python' 'pyinstaller')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/maarutan/dotpusher/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f8a4c3f9549eec56d03eb21ae4b45177aa876543738acf6567a1b032f350ab0e')
+sha256sums=('3f579072692fc0e0eaa64f3dcbe7feaca5bdecb682fb1f60d5d43816e31d3c41')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
