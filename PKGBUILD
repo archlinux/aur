@@ -1,5 +1,5 @@
 pkgname=atar
-pkgver=0.1.24
+pkgver=0.1.25
 pkgrel=1
 pkgdesc="Ephemeral Terraform runner: applies on start, auto-destroys on exit or failure."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ depends=('glibc')
 makedepends=('rust')
 
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/x71c9/$pkgname/tar.gz/refs/tags/v$pkgver")
-sha256sums=("e846216c4c6fcafefa4b7eb6594e6d99a289427299cc149fc5a7ad059b4b2eee")
+sha256sums=("11ba4548a1a9bee7f36afbc9a8ed1ab869d30186a5e5a9d0e02c04e57ff3d641")
 
 prepare() {
   cd "$pkgname-$pkgver"
