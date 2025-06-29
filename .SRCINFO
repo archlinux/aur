@@ -1,0 +1,17 @@
+pkgbase = liblastfm-qt6-git
+	pkgdesc = A Qt C++ library for the Last.fm webservices (Qt6 port)
+	pkgver = 1.2.0.r81e8f9d
+	pkgrel = 1
+	url = https://github.com/Mazhoon/liblastfm/
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = qt6-base
+	depends = fftw
+	depends = libsamplerate
+	provides = liblastfm
+	conflicts = liblastfm-qt6
+	source = git+https://github.com/Mazhoon/liblastfm.git
+	sha512sums = SKIP
+
+pkgname = liblastfm-qt6-git
