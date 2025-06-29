@@ -6,4 +6,4 @@
 !keys/
 !keys/pgp/
 !keys/pgp/*
-!.patch
+!*.patch
