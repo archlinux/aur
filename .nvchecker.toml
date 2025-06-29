@@ -1,0 +1,5 @@
+[rnp]
+source = "github"
+github = "rnpgp/rnp"
+use_max_tag = true
+prefix = "v"
