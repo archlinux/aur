@@ -1,6 +1,5 @@
 # Maintainer: Mihkel Tõnnov <mihhkel-at-gmail-dot-com>
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
-# Contributor: Mihkel Tõnnov <mihhkel-at-gmail-dot-com>
 # Contributor: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 # Contributor: Evert Vorster <evorster-at-gmail-dot-com>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
@@ -14,7 +13,7 @@ pkgdesc="The powerful music player for KDE"
 arch=(x86_64)
 url="https://apps.kde.org/amarok/"
 license=(GPL-2.0-or-later)
-depends=(threadweaver qt6-webengine qt6-declarative #knewstuff phonon-qt6 
+depends=(threadweaver qt6-webengine qt6-declarative
          kcmutils ktexteditor kdnssd kirigami2 kstatusnotifieritem ktextwidgets
          mariadb libmariadbclient fftw ffmpeg taglib libofa qt6-tools gstreamer gst-plugins-base-libs
 
