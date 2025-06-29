@@ -1,5 +1,5 @@
 pkgname=lcm
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Lightweight Communications and Marshalling"
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,7 +12,9 @@ optdepends=(
 )
 makedepends=(cmake java-environment)
 source=(https://github.com/lcm-proj/lcm/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('a19800c1ac79b7725f26fd1e2e5abedcfcbe1b197a8a48860dd50a7b3e3af658286fe7dd3a1e3c69920eccf2a73185c90bf1cd6cf0f05a405abfa9d8f33eae4c')
+sha512sums=(
+c3772d8fae308755af86197e491014e61c947d6befef0641b34735728e478be946b7e2f0012c548caad3570f4a49821a6033e22e2a39c3219b3b7fd1746ab77b
+)
 
 
 build() {
