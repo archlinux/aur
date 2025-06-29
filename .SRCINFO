@@ -1,7 +1,7 @@
 pkgbase = voice2json-git
 	pkgdesc = Command-line tools for speech and intent recognition on Linux. Self contained venv
 	pkgver = 2.1.r12.g03996c9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/synesthesiam/voice2json
 	arch = x86_64
 	license = MIT

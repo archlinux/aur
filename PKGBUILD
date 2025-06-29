@@ -1,6 +1,6 @@
 # Maintainer: Javier Domingo Cansino <javierdo1@gmail.com>
 pkgname=voice2json-git
-pkgrel=2
+pkgrel=3
 pkgver=2.1.r12.g03996c9
 pkgdesc="Command-line tools for speech and intent recognition on Linux. Self contained venv"
 arch=('x86_64')
@@ -61,6 +61,11 @@ package() {
 	find "$pkgdir/usr/share/voice2json/venv" -name "*.json" -type f -exec sed -i "s|$srcdir/${pkgname%-git}|/usr/share/voice2json|g" {} \;
 	find "$pkgdir/usr/share/voice2json/venv/bin" -type f -exec sed -i "s|$pkgdir||g" {} \;
 	
+	# Install voice2json source code
+	install -dm755 "$pkgdir/usr/share/voice2json"
+	cp -r voice2json "$pkgdir/usr/share/voice2json/"
+	cp VERSION "$pkgdir/usr/share/voice2json/"
+	
 	# Install voice2json data files
 	install -dm755 "$pkgdir/usr/share/voice2json/etc"
 	cp -r etc/* "$pkgdir/usr/share/voice2json/etc/"
@@ -69,7 +74,7 @@ package() {
 	install -Dm755 /dev/stdin "$pkgdir/usr/bin/voice2json" << 'EOF'
 #!/bin/bash
 export VOICE2JSON_PROFILES_DIR="/usr/share/voice2json/etc/profiles"
-exec /usr/share/voice2json/venv/bin/python -m voice2json "$@"
+exec /usr/share/voice2json/venv/bin/python -m voice2json --base-directory /usr/share/voice2json "$@"
 EOF
 	
 	# Install license
