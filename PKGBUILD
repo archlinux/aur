@@ -48,7 +48,7 @@ prepare() {
   HOME="${srcdir}/.electron-gyp"
   mkdir -p "${srcdir}/.electron-gyp"
   sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-  NODE_ENV=development pnpm -r install
+  NODE_ENV=development pnpm -r install --shamefully-hoist
 }
 
 build() {
