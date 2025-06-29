@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/korei999/kmp3.git"
 license=('MIT')
 depends=('ffmpeg' 'libpipewire' 'chafa' 'glib2' 'systemd-libs')
-makedepends=('git')
+makedepends=('git' 'cmake')
 # optdepends=('chafa: for image display support'
 #             'systemd-libs: for mpris-dbus support')
 # conflicts=('kmp3')
