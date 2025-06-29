@@ -1,7 +1,7 @@
 # Maintainer: Hanashiko <hlichisper@gmail.com>
 pkgname=sshtool
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive SSH session manager with GPG-encrypted config support"
 arch=('any')
 utl="https://github.com/hanashiko/sshtool.git"
@@ -19,4 +19,6 @@ sha256sums=('f49bdf34fdb3de65370ed0c7d52ee612f92184e14de6c7ffadb9087ac8921277'
 
 package() {
     install -Dm755 "$srcdir/sshtool" "$pkgdir/usr/bin/sshtool"
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

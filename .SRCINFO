@@ -1,7 +1,7 @@
 pkgbase = sshtool
 	pkgdesc = Interactive SSH session manager with GPG-encrypted config support
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = MIT
 	depends = python
