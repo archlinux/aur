@@ -2,7 +2,7 @@
 
 _name=mwparserfromhell
 pkgname=python-mwparserfromhell-git
-pkgver=0.6.6.r7.g5f57d2e
+pkgver=0.7.0.r18.gfd1b08c
 pkgrel=1
 pkgdesc="A Python parser for MediaWiki wikicode"
 arch=(x86_64)
@@ -17,6 +17,7 @@ makedepends=(
   python-build
   python-installer
   python-setuptools
+  python-setuptools-scm
   python-wheel
 )
 checkdepends=(
@@ -36,6 +37,8 @@ pkgver() {
 
 build() {
   cd $_name
+  # avoid error with c23 https://github.com/earwig/mwparserfromhell/issues/340
+  CFLAGS+=" -std=gnu17"
   python -m build --wheel --no-isolation
 }
 
