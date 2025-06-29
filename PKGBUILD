@@ -2,14 +2,15 @@
 
 _pkgname="nchat"
 pkgname="${_pkgname}-git"
-pkgver=4.50.r41.g9ebe018
-pkgrel=1
+pkgver=5.8.4.r2.g98ec3c4
+pkgrel=2
 pkgdesc="console-based chat client with support for Telegram"
 url="https://github.com/d99kris/nchat"
 license=('MIT')
 arch=('x86_64')
 
 depends=(
+  'file'
   'ncurses'
   'openssl'
   'sqlite'

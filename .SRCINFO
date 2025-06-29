@@ -1,7 +1,7 @@
 pkgbase = nchat-git
 	pkgdesc = console-based chat client with support for Telegram
-	pkgver = 4.50.r41.g9ebe018
-	pkgrel = 1
+	pkgver = 5.8.4.r2.g98ec3c4
+	pkgrel = 2
 	url = https://github.com/d99kris/nchat
 	arch = x86_64
 	license = MIT
@@ -10,11 +10,12 @@ pkgbase = nchat-git
 	makedepends = go
 	makedepends = gperf
 	makedepends = ninja
+	depends = file
 	depends = ncurses
 	depends = openssl
 	depends = sqlite
 	depends = zlib
-	provides = nchat=4.50
+	provides = nchat=5.8.4
 	conflicts = nchat
 	source = nchat::git+https://github.com/d99kris/nchat.git
 	sha256sums = SKIP
