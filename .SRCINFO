@@ -1,6 +1,6 @@
 pkgbase = git-quick-stats
 	pkgdesc = Simple and efficient way to access various statistics in git repository
-	pkgver = 2.6.2
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/git-quick-stats/git-quick-stats
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = git-quick-stats
 	depends = util-linux
 	provides = git-quick-stats
 	conflicts = git-quick-stats
-	source = git-quick-stats::git+https://github.com/git-quick-stats/git-quick-stats#tag=2.6.2
-	sha256sums = 0000138849aa488d1c13baabcea76a51e988a07dccefaef9c7e0541943f4452b
+	source = git-quick-stats::git+https://github.com/git-quick-stats/git-quick-stats#tag=2.7.0
+	sha256sums = 7892e8611a3f39dcecdb767ce6189b69319b1ca38b161c8e9dcfa309e9759c0c
 
 pkgname = git-quick-stats
