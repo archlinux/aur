@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=anime-games-launcher
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal linux launcher for anime games"
 arch=('x86_64')
 url="https://github.com/an-anime-team/anime-games-launcher"
@@ -27,7 +27,7 @@ build() {
     	export RUSTUP_TOOLCHAIN=stable
     	export CARGO_TARGET_DIR=target
 	export CFLAGS+=" -ffat-lto-objects"
-    	cargo build --frozen --release --target-dir target
+	cargo build --frozen --release --all-features
 }
 
 package() {
