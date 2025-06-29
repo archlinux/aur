@@ -2,7 +2,7 @@
 # Maintainer: Henry Graham <henry)dot(arch)at(hgrahamcs)dot(com(>
 
 pkgname=edmarketconnector
-pkgver=5.12.2
+pkgver=5.13.1
 pkgrel=1
 pkgdesc='Downloads commodity market and other station data from the game Elite: Dangerous for use with all popular online and offline trading tools'
 arch=('x86_64')
@@ -11,19 +11,18 @@ license=('GPL2')
 provides=('edmarketconnector')
 conflicts=('edmarketconnector')
 depends=('tk' 'python-certifi' 'python-requests' 'python-watchdog' 'python-semantic-version')
-source=("https://github.com/EDCD/EDMarketConnector/releases/download/Release%2F${pkgver}/EDMarketConnector-release-${pkgver}.tar.gz" 
-        "edmarketconnector.sh"
-	"edmarketconnector.desktop")
-sha256sums=('12e207b0c0df5419d69bf4eae7a5062afac4095df470aab1cf40ae71d5d6994c'
+source=("https://github.com/EDCD/EDMarketConnector/releases/download/Release%2F${pkgver}/EDMarketConnector-release-${pkgver}.tar.gz"
+  "edmarketconnector.sh"
+  "edmarketconnector.desktop")
+sha256sums=('085698a6cde2594b7ec6a4888b8405fc65546a66347c6413dfddfd84ad8ac1ce'
             '7be0528d56edfcb444c4a7ba7a18e85296571e7558906c90fe6520c03206242c'
             '5f755b86b1b5a3f879be6555cce0c2628006195b95f10fb48df4b1d1d8af6900')
 
 package() {
-   mkdir -p ${pkgdir}/usr/lib/edmarketconnector
-   mkdir -p ${pkgdir}/usr/bin/
-   mkdir -p ${pkgdir}/usr/share/applications
-   cp ${srcdir}/EDMarketConnector/* ${pkgdir}/usr/lib/edmarketconnector -r
-   install -m755 edmarketconnector.sh ${pkgdir}/usr/bin/edmarketconnector.sh
-   install -m644 edmarketconnector.desktop ${pkgdir}/usr/share/applications/edmarketconnector.desktop
+  mkdir -p ${pkgdir}/usr/lib/edmarketconnector
+  mkdir -p ${pkgdir}/usr/bin/
+  mkdir -p ${pkgdir}/usr/share/applications
+  cp ${srcdir}/EDMarketConnector/* ${pkgdir}/usr/lib/edmarketconnector -r
+  install -m755 edmarketconnector.sh ${pkgdir}/usr/bin/edmarketconnector.sh
+  install -m644 edmarketconnector.desktop ${pkgdir}/usr/share/applications/edmarketconnector.desktop
 }
-
