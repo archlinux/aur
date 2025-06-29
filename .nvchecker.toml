@@ -1,0 +1,3 @@
+[ckbcomp]
+source = "git"
+git = "https://salsa.debian.org/installer-team/console-setup.git"
