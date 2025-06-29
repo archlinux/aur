@@ -619,7 +619,7 @@ index c41cb6258642c..5093788960a78 100644
 GitLab
 
 
-From e313def57d421708f8060b5f81ec97152a4ed3fb Mon Sep 17 00:00:00 2001
+From 56244af6edea8631a062928afca557b2ac26d420 Mon Sep 17 00:00:00 2001
 From: Natalie Vock <natalie.vock@gmx.de>
 Date: Tue, 19 Dec 2023 21:10:41 +0100
 Subject: [PATCH 05/11] nir,aco: Add ds_bvh_stack_rtn
@@ -737,7 +737,7 @@ index 12465a4d4254b..40dbf9f0087bd 100644
           }
           case Format::EXP: {
 diff --git a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
-index 9b9f30880197b..814c25bd0e8a2 100644
+index 9b9f30880197b..e69b64206bf80 100644
 --- a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
 +++ b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
 @@ -3961,6 +3961,37 @@ pops_await_overlapped_waves(isel_context* ctx)
@@ -761,7 +761,7 @@ index 9b9f30880197b..814c25bd0e8a2 100644
 +   Temp dst = get_ssa_temp(ctx, &instr->def);
 +   Temp stack_addr = as_vgpr(ctx, get_ssa_temp(ctx, instr->src[0].ssa));
 +   Temp last_node = as_vgpr(ctx, get_ssa_temp(ctx, instr->src[1].ssa));
-+   Temp intersection_result = get_ssa_temp(ctx, instr->src[2].ssa);
++   Temp intersection_result = as_vgpr(ctx, get_ssa_temp(ctx, instr->src[2].ssa));
 +
 +   Temp dst_stack_addr = bld.tmp(v1);
 +   Temp dst_node_pointer = bld.tmp(v1);
@@ -831,7 +831,7 @@ index e88f6390f9c4d..f113a61b2e55c 100644
 GitLab
 
 
-From 9c50176c25621a6ca04133e11d27dccf7c42e5b6 Mon Sep 17 00:00:00 2001
+From 62b578f0bdf7d47122bace8bc742d1c0f03cca64 Mon Sep 17 00:00:00 2001
 From: Natalie Vock <natalie.vock@gmx.de>
 Date: Wed, 20 Dec 2023 00:33:14 +0100
 Subject: [PATCH 06/11] radv/rt: Use ds_bvh_stack_rtn
@@ -839,11 +839,11 @@ Subject: [PATCH 06/11] radv/rt: Use ds_bvh_stack_rtn
 Improves Quake 2 RTX performance by 5% on RDNA3.
 ---
  src/amd/vulkan/bvh/bvh.h                      |   2 +
- .../vulkan/nir/radv_nir_lower_ray_queries.c   |  30 ++-
- src/amd/vulkan/nir/radv_nir_rt_common.c       | 243 ++++++++++++------
- src/amd/vulkan/nir/radv_nir_rt_common.h       |   7 +
+ .../vulkan/nir/radv_nir_lower_ray_queries.c   |  34 ++-
+ src/amd/vulkan/nir/radv_nir_rt_common.c       | 259 +++++++++++++-----
+ src/amd/vulkan/nir/radv_nir_rt_common.h       |   9 +
  src/amd/vulkan/nir/radv_nir_rt_shader.c       |  39 ++-
- 5 files changed, 228 insertions(+), 93 deletions(-)
+ 5 files changed, 250 insertions(+), 93 deletions(-)
 
 diff --git a/src/amd/vulkan/bvh/bvh.h b/src/amd/vulkan/bvh/bvh.h
 index 07ad8190b77b9..3307b8e7af7b2 100644
@@ -859,7 +859,7 @@ index 07ad8190b77b9..3307b8e7af7b2 100644
  /* GFX12 */
  
 diff --git a/src/amd/vulkan/nir/radv_nir_lower_ray_queries.c b/src/amd/vulkan/nir/radv_nir_lower_ray_queries.c
-index 2dc30e5a47425..0b4790fdc146d 100644
+index 2dc30e5a47425..ecc3cef3b24bc 100644
 --- a/src/amd/vulkan/nir/radv_nir_lower_ray_queries.c
 +++ b/src/amd/vulkan/nir/radv_nir_lower_ray_queries.c
 @@ -279,10 +279,18 @@ lower_rq_initialize(nir_builder *b, nir_intrinsic_instr *instr, struct ray_query
@@ -885,7 +885,39 @@ index 2dc30e5a47425..0b4790fdc146d 100644
     } else {
        rq_store(b, rq, trav_stack, nir_imm_int(b, 0));
        rq_store(b, rq, trav_stack_low_watermark, nir_imm_int(b, 0));
-@@ -518,10 +526,16 @@ lower_rq_proceed(nir_builder *b, nir_intrinsic_instr *instr, struct ray_query_va
+@@ -387,6 +395,7 @@ lower_rq_load(struct radv_device *device, nir_builder *b, nir_intrinsic_instr *i
+ }
+ 
+ struct traversal_data {
++   const struct radv_device *device;
+    struct ray_query_vars *vars;
+    nir_deref_instr *rq;
+ };
+@@ -404,6 +413,7 @@ handle_candidate_aabb(nir_builder *b, struct radv_leaf_intersection *intersectio
+    isec_store(b, candidate, opaque, intersection->opaque);
+    isec_store(b, candidate, intersection_type, nir_imm_int(b, intersection_type_aabb));
+ 
++   radv_build_leaf_stack_pop(data->device, b, args);
+    nir_jump(b, nir_jump_break);
+ }
+ 
+@@ -430,6 +440,7 @@ handle_candidate_triangle(nir_builder *b, struct radv_triangle_intersection *int
+    }
+    nir_push_else(b, NULL);
+    {
++      radv_build_leaf_stack_pop(data->device, b, args);
+       nir_jump(b, nir_jump_break);
+    }
+    nir_pop_if(b, NULL);
+@@ -496,6 +507,7 @@ lower_rq_proceed(nir_builder *b, nir_intrinsic_instr *instr, struct ray_query_va
+    };
+ 
+    struct traversal_data data = {
++      .device = device,
+       .vars = vars,
+       .rq = rq,
+    };
+@@ -518,10 +530,16 @@ lower_rq_proceed(nir_builder *b, nir_intrinsic_instr *instr, struct ray_query_va
     };
  
     if (vars->shared_stack) {
@@ -907,7 +939,7 @@ index 2dc30e5a47425..0b4790fdc146d 100644
        args.stack_stride = 1;
        args.stack_base = 0;
 diff --git a/src/amd/vulkan/nir/radv_nir_rt_common.c b/src/amd/vulkan/nir/radv_nir_rt_common.c
-index 5093788960a78..29e7befb45923 100644
+index 5093788960a78..b49f94b173283 100644
 --- a/src/amd/vulkan/nir/radv_nir_rt_common.c
 +++ b/src/amd/vulkan/nir/radv_nir_rt_common.c
 @@ -11,6 +11,41 @@
@@ -952,7 +984,7 @@ index 5093788960a78..29e7befb45923 100644
  static void
  nir_sort_hit_pair(nir_builder *b, nir_variable *var_distances, nir_variable *var_indices, uint32_t chan_1,
                    uint32_t chan_2)
-@@ -671,12 +706,36 @@ radv_test_flag(nir_builder *b, const struct radv_ray_traversal_args *args, uint3
+@@ -671,12 +706,52 @@ radv_test_flag(nir_builder *b, const struct radv_ray_traversal_args *args, uint3
     return set ? result : nir_inot(b, result);
  }
  
@@ -978,6 +1010,22 @@ index 5093788960a78..29e7befb45923 100644
 +   nir_pop_if(b, NULL);
 +}
 +
++void
++radv_build_leaf_stack_pop(const struct radv_device *device, nir_builder *b, const struct radv_ray_traversal_args *args)
++{
++   const struct radv_physical_device *pdev = radv_device_physical(device);
++   if (!args->use_bvh_stack_rtn)
++      return;
++
++   nir_def *stack_result;
++   stack_result = nir_bvh_stack_rtn_amd(
++      b, 32, nir_load_deref(b, args->vars.stack), nir_imm_int(b, RADV_BVH_STACK_TERMINAL_NODE),
++      nir_imm_ivec4(b, RADV_BVH_INVALID_NODE, RADV_BVH_INVALID_NODE, RADV_BVH_INVALID_NODE, RADV_BVH_INVALID_NODE),
++      .stack_size = args->stack_entries);
++   nir_store_deref(b, args->vars.stack, nir_channel(b, stack_result, 0), 0x1);
++   nir_store_deref(b, args->vars.current_node, nir_channel(b, stack_result, 1), 0x1);
++}
++
  nir_def *
  radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struct radv_ray_traversal_args *args)
  {
@@ -989,7 +1037,7 @@ index 5093788960a78..29e7befb45923 100644
  
     struct radv_ray_flags ray_flags = {
        .force_opaque = radv_test_flag(b, args, SpvRayFlagsOpaqueKHRMask, true),
-@@ -695,38 +754,42 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+@@ -695,38 +770,42 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
  
     nir_push_loop(b);
     {
@@ -1055,7 +1103,7 @@ index 5093788960a78..29e7befb45923 100644
              nir_def *prev = nir_load_deref(b, args->vars.previous_node);
              nir_def *bvh_addr = build_node_to_addr(device, b, nir_load_deref(b, args->vars.bvh_base), true);
  
-@@ -741,13 +804,15 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+@@ -741,13 +820,15 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
           }
           nir_push_else(b, NULL);
           {
@@ -1078,7 +1126,7 @@ index 5093788960a78..29e7befb45923 100644
              nir_store_deref(b, args->vars.previous_node, nir_imm_int(b, RADV_BVH_INVALID_NODE), 0x1);
           }
           nir_pop_if(b, NULL);
-@@ -759,19 +824,24 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+@@ -759,19 +840,24 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
        nir_pop_if(b, NULL);
  
        nir_def *bvh_node = nir_load_deref(b, args->vars.current_node);
@@ -1107,7 +1155,7 @@ index 5093788960a78..29e7befb45923 100644
        }
  
        nir_push_if(b, nir_test_mask(b, bvh_node, BITFIELD64_BIT(ffs(radv_bvh_node_box16) - 1)));
-@@ -806,16 +876,25 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+@@ -806,16 +892,25 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
                    nir_def *instance_and_mask = nir_channel(b, instance_data, 2);
                    nir_push_if(b, nir_ult(b, nir_iand(b, instance_and_mask, args->cull_mask), nir_imm_int(b, 1 << 24)));
                    {
@@ -1136,7 +1184,7 @@ index 5093788960a78..29e7befb45923 100644
                 nir_store_deref(b, args->vars.instance_bottom_node, nir_imm_int(b, RADV_BVH_ROOT_NODE), 1);
                 nir_store_deref(b, args->vars.instance_top_node, bvh_node, 1);
  
-@@ -823,13 +902,17 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+@@ -823,13 +918,17 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
                 nir_store_deref(b, args->vars.origin, nir_build_vec3_mat_mult(b, args->origin, wto_matrix, true), 7);
                 nir_store_deref(b, args->vars.dir, nir_build_vec3_mat_mult(b, args->dir, wto_matrix, false), 7);
                 nir_store_deref(b, args->vars.inv_dir, nir_fdiv(b, vec3ones, nir_load_deref(b, args->vars.dir)), 7);
@@ -1156,7 +1204,7 @@ index 5093788960a78..29e7befb45923 100644
                 /* If we didn't run the intrinsic cause the hardware didn't support it,
                  * emulate ray/box intersection here */
                 result = intersect_ray_amd_software_box(
-@@ -838,49 +921,55 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+@@ -838,49 +937,55 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
              }
  
              /* box */
@@ -1246,7 +1294,7 @@ index 5093788960a78..29e7befb45923 100644
              /* If we didn't run the intrinsic cause the hardware didn't support it,
               * emulate ray/tri intersection here */
              result = intersect_ray_amd_software_tri(
-@@ -896,6 +985,14 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+@@ -896,6 +1001,14 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
           iteration_instance_count = nir_iadd_imm(b, iteration_instance_count, 1);
           nir_store_deref(b, args->vars.iteration_instance_count, iteration_instance_count, 0x1);
        }
@@ -1262,7 +1310,7 @@ index 5093788960a78..29e7befb45923 100644
     nir_pop_loop(b, NULL);
  
 diff --git a/src/amd/vulkan/nir/radv_nir_rt_common.h b/src/amd/vulkan/nir/radv_nir_rt_common.h
-index aaef6ca72cd15..f5c5818bded1c 100644
+index aaef6ca72cd15..b9cfc9ce2510a 100644
 --- a/src/amd/vulkan/nir/radv_nir_rt_common.h
 +++ b/src/amd/vulkan/nir/radv_nir_rt_common.h
 @@ -13,6 +13,12 @@
@@ -1286,6 +1334,15 @@ index aaef6ca72cd15..f5c5818bded1c 100644
     radv_rt_stack_store_cb stack_store_cb;
     radv_rt_stack_load_cb stack_load_cb;
  
+@@ -145,6 +152,8 @@ struct radv_ray_traversal_args {
+  * or any real node, to ensure we never exit an instance when we're not in one. */
+ #define RADV_BVH_NO_INSTANCE_ROOT 0xfffffffeu
+ 
++void radv_build_leaf_stack_pop(const struct radv_device *device, nir_builder *b, const struct radv_ray_traversal_args *args);
++
+ /* Builds the ray traversal loop and returns whether traversal is incomplete, similar to
+  * rayQueryProceedEXT. Traversal will only be considered incomplete, if one of the specified
+  * callbacks breaks out of the traversal loop.
 diff --git a/src/amd/vulkan/nir/radv_nir_rt_shader.c b/src/amd/vulkan/nir/radv_nir_rt_shader.c
 index 086726052ecc2..1d9d97586d142 100644
 --- a/src/amd/vulkan/nir/radv_nir_rt_shader.c
@@ -1375,7 +1432,7 @@ index 086726052ecc2..1d9d97586d142 100644
 GitLab
 
 
-From ead2db1c1e23fe0a5a4aad4d2656ef1f4858f8ed Mon Sep 17 00:00:00 2001
+From da59ecd8c78b383eb2a1263210dcbac8abc3e05e Mon Sep 17 00:00:00 2001
 From: Natalie Vock <natalie.vock@gmx.de>
 Date: Thu, 27 Mar 2025 18:45:45 +0100
 Subject: [PATCH 07/11] aco,nir: Add support for GFX12
@@ -1435,7 +1492,7 @@ index 19ca6f41403aa..ce9a849f91ac5 100644
                  instr->opcode == aco_opcode::ds_read2_b32 ||
                  instr->opcode == aco_opcode::ds_write2_b64 ||
 diff --git a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
-index 814c25bd0e8a2..63a991b70a704 100644
+index e69b64206bf80..7e3f915bc31c2 100644
 --- a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
 +++ b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
 @@ -3992,6 +3992,22 @@ void emit_ds_bvh_stack_push4_pop1_rtn(isel_context *ctx, nir_intrinsic_instr *in
@@ -1447,7 +1504,7 @@ index 814c25bd0e8a2..63a991b70a704 100644
 +   Temp dst = get_ssa_temp(ctx, &instr->def);
 +   Temp stack_addr = as_vgpr(ctx, get_ssa_temp(ctx, instr->src[0].ssa));
 +   Temp last_node = as_vgpr(ctx, get_ssa_temp(ctx, instr->src[1].ssa));
-+   Temp intersection_result = get_ssa_temp(ctx, instr->src[2].ssa);
++   Temp intersection_result = as_vgpr(ctx, get_ssa_temp(ctx, instr->src[2].ssa));
 +
 +   Temp dst_stack_addr = bld.tmp(v1);
 +   Temp dst_node_pointer = bld.tmp(v1);
@@ -1475,15 +1532,15 @@ index 814c25bd0e8a2..63a991b70a704 100644
 GitLab
 
 
-From 40a6e692e736d487319fe5027d220335e6289b50 Mon Sep 17 00:00:00 2001
+From a4d3daa3c79f0693ee89683b8adc9e14b297ae53 Mon Sep 17 00:00:00 2001
 From: Natalie Vock <natalie.vock@gmx.de>
 Date: Thu, 27 Mar 2025 18:47:43 +0100
 Subject: [PATCH 08/11] radv/rt: Use ds_bvh_stack_push8_pop1_rtn_b32
 
 ---
  src/amd/vulkan/bvh/bvh.h                |  14 +-
- src/amd/vulkan/nir/radv_nir_rt_common.c | 213 +++++++++++++++---------
- 2 files changed, 146 insertions(+), 81 deletions(-)
+ src/amd/vulkan/nir/radv_nir_rt_common.c | 229 +++++++++++++++---------
+ 2 files changed, 158 insertions(+), 85 deletions(-)
 
 diff --git a/src/amd/vulkan/bvh/bvh.h b/src/amd/vulkan/bvh/bvh.h
 index 3307b8e7af7b2..5a5b5bf7976b2 100644
@@ -1512,7 +1569,7 @@ index 3307b8e7af7b2..5a5b5bf7976b2 100644
  /* GFX12 */
  
 diff --git a/src/amd/vulkan/nir/radv_nir_rt_common.c b/src/amd/vulkan/nir/radv_nir_rt_common.c
-index 29e7befb45923..d79f773fcd309 100644
+index b49f94b173283..59f76aaf1035b 100644
 --- a/src/amd/vulkan/nir/radv_nir_rt_common.c
 +++ b/src/amd/vulkan/nir/radv_nir_rt_common.c
 @@ -14,7 +14,9 @@ static nir_def *build_node_to_addr(struct radv_device *device, nir_builder *b, n
@@ -1548,7 +1605,30 @@ index 29e7befb45923..d79f773fcd309 100644
        nir_store_deref(b, args->vars.previous_node, nir_load_deref(b, args->vars.instance_top_node), 1);
        nir_store_deref(b, args->vars.instance_bottom_node, nir_imm_int(b, RADV_BVH_NO_INSTANCE_ROOT), 1);
  
-@@ -763,7 +769,7 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+@@ -736,10 +742,18 @@ radv_build_leaf_stack_pop(const struct radv_device *device, nir_builder *b, cons
+       return;
+ 
+    nir_def *stack_result;
+-   stack_result = nir_bvh_stack_rtn_amd(
+-      b, 32, nir_load_deref(b, args->vars.stack), nir_imm_int(b, RADV_BVH_STACK_TERMINAL_NODE),
+-      nir_imm_ivec4(b, RADV_BVH_INVALID_NODE, RADV_BVH_INVALID_NODE, RADV_BVH_INVALID_NODE, RADV_BVH_INVALID_NODE),
+-      .stack_size = args->stack_entries);
++   if (radv_use_bvh8(pdev)) {
++      nir_def *invalid = nir_imm_int(b, RADV_BVH_INVALID_NODE);
++      nir_def *dummy_result = nir_vec8(b, invalid, invalid, invalid, invalid, invalid, invalid, invalid,
++                                       nir_imm_int(b, RADV_BVH_STACK_SKIP_0_TO_7));
++      stack_result = nir_bvh_stack_rtn_amd(b, 32, nir_load_deref(b, args->vars.stack), invalid, dummy_result,
++                                                    .stack_size = args->stack_entries);
++   } else {
++      stack_result = nir_bvh_stack_rtn_amd(
++         b, 32, nir_load_deref(b, args->vars.stack), nir_imm_int(b, RADV_BVH_STACK_TERMINAL_NODE),
++         nir_imm_ivec4(b, RADV_BVH_INVALID_NODE, RADV_BVH_INVALID_NODE, RADV_BVH_INVALID_NODE, RADV_BVH_INVALID_NODE),
++         .stack_size = args->stack_entries);
++   }
+    nir_store_deref(b, args->vars.stack, nir_channel(b, stack_result, 0), 0x1);
+    nir_store_deref(b, args->vars.current_node, nir_channel(b, stack_result, 1), 0x1);
+ }
+@@ -779,7 +793,7 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
              nir_jump(b, nir_jump_break);
           }
           nir_pop_if(b, NULL);
@@ -1557,7 +1637,7 @@ index 29e7befb45923..d79f773fcd309 100644
        }
  
        nir_push_if(b, nir_ieq_imm(b, nir_load_deref(b, args->vars.current_node), RADV_BVH_INVALID_NODE));
-@@ -777,7 +783,7 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
+@@ -793,7 +807,7 @@ radv_build_ray_traversal(struct radv_device *device, nir_builder *b, const struc
                 nir_jump(b, nir_jump_break);
              }
              nir_pop_if(b, NULL);
@@ -1566,7 +1646,7 @@ index 29e7befb45923..d79f773fcd309 100644
           }
  
           nir_def *overflow_cond = nir_ige(b, nir_load_deref(b, args->vars.stack_low_watermark), nir_load_deref(b, args->vars.stack));
-@@ -1006,6 +1012,7 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+@@ -1022,6 +1036,7 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
  
     nir_variable *incomplete = nir_local_variable_create(b->impl, glsl_bool_type(), "incomplete");
     nir_store_var(b, incomplete, nir_imm_true(b), 0x1);
@@ -1574,7 +1654,7 @@ index 29e7befb45923..d79f773fcd309 100644
  
     struct radv_ray_flags ray_flags = {
        .force_opaque = radv_test_flag(b, args, SpvRayFlagsOpaqueKHRMask, true),
-@@ -1023,36 +1030,39 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+@@ -1039,36 +1054,39 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
  
     nir_push_loop(b);
     {
@@ -1636,7 +1716,7 @@ index 29e7befb45923..d79f773fcd309 100644
           {
              nir_def *prev = nir_load_deref(b, args->vars.previous_node);
              nir_def *bvh_addr = build_node_to_addr(device, b, nir_load_deref(b, args->vars.bvh_base), true);
-@@ -1068,13 +1078,15 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+@@ -1084,13 +1102,15 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
           }
           nir_push_else(b, NULL);
           {
@@ -1658,7 +1738,7 @@ index 29e7befb45923..d79f773fcd309 100644
              nir_store_deref(b, args->vars.previous_node, nir_imm_int(b, RADV_BVH_INVALID_NODE), 0x1);
           }
           nir_pop_if(b, NULL);
-@@ -1097,6 +1109,7 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+@@ -1113,6 +1133,7 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
           nir_bvh8_intersect_ray_amd(b, 32, desc, nir_unpack_64_2x32(b, nir_load_deref(b, args->vars.bvh_base)),
                                      nir_ishr_imm(b, args->cull_mask, 24), nir_load_deref(b, args->vars.tmax),
                                      nir_load_deref(b, args->vars.origin), nir_load_deref(b, args->vars.dir), bvh_node);
@@ -1666,7 +1746,7 @@ index 29e7befb45923..d79f773fcd309 100644
        nir_store_deref(b, args->vars.origin, nir_channels(b, result, 0x7 << 10), 0x7);
        nir_store_deref(b, args->vars.dir, nir_channels(b, result, 0x7 << 13), 0x7);
  
-@@ -1112,64 +1125,89 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+@@ -1128,64 +1149,89 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
  
              nir_def *next_node = nir_iand_imm(b, nir_channel(b, result, 7), 0xff);
              nir_push_if(b, nir_ieq_imm(b, next_node, 0xff));
@@ -1803,7 +1883,7 @@ index 29e7befb45923..d79f773fcd309 100644
           }
           nir_pop_if(b, NULL);
        }
-@@ -1188,6 +1226,11 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+@@ -1204,6 +1250,11 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
              nir_pop_if(b, NULL);
           }
           nir_pop_if(b, NULL);
@@ -1815,7 +1895,7 @@ index 29e7befb45923..d79f773fcd309 100644
        }
        nir_pop_if(b, NULL);
  
-@@ -1196,6 +1239,16 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
+@@ -1212,6 +1263,16 @@ radv_build_ray_traversal_gfx12(struct radv_device *device, nir_builder *b, const
           iteration_instance_count = nir_iadd_imm(b, iteration_instance_count, 1);
           nir_store_deref(b, args->vars.iteration_instance_count, iteration_instance_count, 0x1);
        }
@@ -1836,7 +1916,7 @@ index 29e7befb45923..d79f773fcd309 100644
 GitLab
 
 
-From d48d072f8e54984e64689a5e419692af1c5db0bf Mon Sep 17 00:00:00 2001
+From 9f28cc55e1d86877967b374f5a09eacfc1453a6b Mon Sep 17 00:00:00 2001
 From: Natalie Vock <natalie.vock@gmx.de>
 Date: Mon, 14 Apr 2025 23:01:04 +0200
 Subject: [PATCH 09/11] aco/assembler: Support vector-aligned operands on DS
@@ -1874,7 +1954,7 @@ index 172704915ba38..186a1f1546f0b 100644
 GitLab
 
 
-From 4a72a2c1b464433cc8f7af06179b9801b2775708 Mon Sep 17 00:00:00 2001
+From 67a013d3eade00453ba84ca608e1fcc5347b23b4 Mon Sep 17 00:00:00 2001
 From: Natalie Vock <natalie.vock@gmx.de>
 Date: Mon, 14 Apr 2025 23:03:11 +0200
 Subject: [PATCH 10/11] aco/ra: Add affinities for DS vector-aligned operands
@@ -1906,7 +1986,7 @@ index 9a38e2987c353..545f9006d8ed4 100644
 GitLab
 
 
-From b3aa15d018cab5028267ee9bc5f6f62dfe1d060f Mon Sep 17 00:00:00 2001
+From 916c15386bdd1e69dc4606bb545be15195e7a6d2 Mon Sep 17 00:00:00 2001
 From: Natalie Vock <natalie.vock@gmx.de>
 Date: Mon, 14 Apr 2025 23:24:30 +0200
 Subject: [PATCH 11/11] aco/isel: Use vector-aligned operands for
@@ -1917,7 +1997,7 @@ Subject: [PATCH 11/11] aco/isel: Use vector-aligned operands for
  1 file changed, 12 insertions(+), 3 deletions(-)
 
 diff --git a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
-index 63a991b70a704..fdecfa7675596 100644
+index 7e3f915bc31c2..9da0ec199f8c5 100644
 --- a/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
 +++ b/src/amd/compiler/instruction_selection/aco_select_nir_intrinsics.cpp
 @@ -4001,9 +4001,18 @@ void emit_ds_bvh_stack_push8_pop1_rtn(isel_context *ctx, nir_intrinsic_instr *in
