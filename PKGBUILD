@@ -10,7 +10,7 @@
 
 _pack=bim
 pkgname=octave-${_pack}
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="Package for solving Diffusion Advection Reaction (DAR) Partial Differential Equations"
 arch=(any)
@@ -26,7 +26,7 @@ install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
 source=("${_archive}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=("${_archive}")
-sha512sums=('a628d78c3017911366f0c05fe3a54d92f328b4c30d4cc4d8ce74e160f53019388d0ca3d26b21a4efdf4434f2d6c604274dc0d0ae9cf75dd17873eaed1d5afbf3')
+sha512sums=('12082e82d4e7ecf4a6df86be2dc956bfa479f328a3c8fd5ea5fa9a18f05abf6ba840a3147156c653b40c120a133624dbf178e51f2883cc01d5c1fbb368c64507')
 
 _octave_run() {
   octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
