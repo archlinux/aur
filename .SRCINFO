@@ -5,9 +5,8 @@ pkgbase = dotpusher
 	url = https://github.com/maarutan/dotpusher
 	arch = x86_64
 	license = MIT
-	makedepends = pyinstaller
+	makedepends = unzip
 	depends = python
-	options = !debug
 	source = dotpusher.zip::https://github.com/maarutan/dotpusher/releases/download/v0.1.1/dotpusher.zip
 	sha256sums = SKIP
 
