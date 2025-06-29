@@ -12,5 +12,5 @@ source=("$pkgname".sh)
 md5sums=('SKIP')
 
 package() {
-  install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 }
