@@ -1,0 +1,13 @@
+pkgbase = goonsh
+	pkgdesc = A simple custom shell (goonsh)
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = readline
+	source = goonsh.cpp
+	b2sums = SKIP
+
+pkgname = goonsh
