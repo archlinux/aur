@@ -1,6 +1,6 @@
 pkgbase = nbtworkbench-git
 	pkgdesc = A modern NBT (Minecraft's Named Binary Tags) Editor written in Rust.
-	pkgver = 1.6.2.r19.g113a590
+	pkgver = 1.6.2.r27.g6660f94
 	pkgrel = 1
 	url = https://github.com/RealRTTV/nbtworkbench
 	arch = x86_64

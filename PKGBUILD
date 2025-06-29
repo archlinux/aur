@@ -10,7 +10,7 @@ export RUSTC_BOOTSTRAP=1
 
 _pkgname="nbtworkbench"
 pkgname="$_pkgname-git"
-pkgver=1.6.2.r19.g113a590
+pkgver=1.6.2.r27.g6660f94
 pkgrel=1
 pkgdesc="A modern NBT (Minecraft's Named Binary Tags) Editor written in Rust."
 url='https://github.com/RealRTTV/nbtworkbench'
@@ -47,9 +47,6 @@ prepare() {
 
   # warn instead of error
   sed -E -e 's&\b(deny|forbid)\(&warn(&' -i src/main.rs
-
-  # fix reorder test
-  sed -E 's&(\[1, 2, 3\].*\[2, 0, 1\].*)\[3, 1, 2\]&\1[2, 3, 1]&' -i src/util.rs
 
   # continue
   cargo update
