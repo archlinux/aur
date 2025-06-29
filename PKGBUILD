@@ -3,13 +3,13 @@
 
 pkgname='openwebrx-plus-git'
 _pkgname='openwebrx'
-pkgver=1.2.83.r0.g96115dca
+pkgver=1.2.87.r0.g3fb45243
 pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
 license=('AGPL3')
-depends=('csdr-luarvique>=0.18.29' 'python-csdr-luarvique>=0.18.29' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools' 'python-distutils-extra' 'aprs-symbols')
+depends=('python-csdr-luarvique>=0.18.33' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools' 'python-distutils-extra')
 install=openwebrx-plus.install
 optdepends=(
     # decoding
@@ -44,6 +44,7 @@ optdepends=(
     'python-paho-mqtt: send decoded signal data to an MQTT broker for further processing by third-party applications'
     'hamlib: synchronize frequency and modulation with external transceivers'
     'lame: to compress recorded audio into MP3 format'
+    'aprs-symbols: display APRS symbols'
 
     # device support
     'soapyrtlsdr: provides additional support for rtl-sdr devices, such as the direct sampling mod'
@@ -84,9 +85,10 @@ conflicts=('openwebrx' 'openwebrx-plus')
 pkgver() {
     cd "$srcdir/$_pkgname"
     # use git tag or fall back to number of revisions
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
 
