@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-bin
 pkgver=2.8.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++ (AppImage binary)"
 arch=('x86_64')
