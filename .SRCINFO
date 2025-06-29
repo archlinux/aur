@@ -1,0 +1,19 @@
+pkgbase = display-profiles
+	pkgdesc = TUI/CLI tool for managing and auto-switching display configurations via xrandr and kscreen-doctor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Hanashiko/display-profiles
+	arch = any
+	license = MIT
+	depends = python
+	depends = ncurses
+	provides = display-profiles
+	conflicts = display-profiles
+	source = display-profiles
+	source = LICENSE
+	source = README.md
+	sha256sums = 9335addf978b591161950b8ab4dbbf6ce38c6a42c143aa35a6ed3641bd8f3c59
+	sha256sums = 97ad9eb02154bcf1ea19abb6b529506eb0b20df9f0aefb8b11b87af1b2c4f884
+	sha256sums = bb4446afcbda34f8392a7bb50e6fc2ca2d54186bab9504676e040691a612afb7
+
+pkgname = display-profiles
