@@ -1,7 +1,7 @@
-# Maintainer: Agustin Borgna <hello[at]aborgna.com.ar>
+# Contributor: Agustin Borgna <hello[at]aborgna.com.ar>
 
 pkgname=mmenu
-pkgver=r7.81130ed
+pkgver=r11.cd2ac79
 pkgrel=1
 pkgdesc="A dmenu wrapper which works like dmenu_run, but evaluates math you give it too"
 arch=('any')
@@ -10,7 +10,7 @@ license=('unknown')
 depends=('dmenu' 'python' 'xsel')
 makedepends=('git')
 
-source=('git://github.com/mortie/mmenu.git')
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
