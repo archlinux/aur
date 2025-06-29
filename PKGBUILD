@@ -6,7 +6,7 @@
 pkgname="anime-games-launcher-git"
 _pkgname="${pkgname%-git}"
 pkgver=2.0.0.r1.g80ddc2d
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal linux launcher for anime games"
 arch=("x86_64")
 url="https://github.com/an-anime-team/anime-games-launcher"
@@ -49,7 +49,7 @@ build() {
   export CARGO_TARGET_DIR=target
   export CFLAGS+=" -ffat-lto-objects"
   export CXXFLAGS+=" -ffat-lto-objects"
-  cargo build --frozen --release --target-dir target
+  cargo build --frozen --release --all-features
 }
 
 package() {

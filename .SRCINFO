@@ -1,7 +1,7 @@
 pkgbase = anime-games-launcher-git
 	pkgdesc = Universal linux launcher for anime games
 	pkgver = 2.0.0.r1.g80ddc2d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/an-anime-team/anime-games-launcher
 	arch = x86_64
 	license = GPL-3.0-only
