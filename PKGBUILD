@@ -8,13 +8,14 @@ provides=("python-fasttext")
 conflicts=("python-fasttext")
 
 pkgver=0.9.2
-pkgrel=6
+pkgrel=7
 
 arch=("x86_64")
 license=("BSD-3-Clause")
 
 makedepends=("python-setuptools")
 depends=("pybind11" "python-numpy" "python-scipy" "python-pytorch")
+options=("!debug")
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/facebookresearch/fastText/archive/v${pkgver}.tar.gz"
