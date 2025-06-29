@@ -1,25 +1,18 @@
-# Maintainer: m1kc (Max Musatov) <m1kc@yandex.ru>
+# Contributor: m1kc (Max Musatov) <m1kc@yandex.ru>
 
 pkgname="track-o-bot-git"
 _pkgname="track-o-bot"
-pkgver=0.2.1.r518.ga6d45ab
+pkgver=0.2.1.r521.gc470cd8
 pkgrel=1
-pkgdesc="Track-o-Bot is a small, easy-to-use app which automatically tracks your Hearthstone matches. No packet sniffing, just parsing HS logs."
-arch=('i686' 'x86_64')
+pkgdesc="The friendly Hearthstone Tracker (Linux port)"
+arch=('x86_64')
 url="https://github.com/BOSSoNe0013/track-o-bot"
-license=('LGPL')
-groups=()
+license=('LGPL-2.1-or-later')
 depends=("qt5-base" "hicolor-icon-theme" "qt5-x11extras")
 makedepends=('git')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
 install="track-o-bot.install"
-source=('git://github.com/BOSSoNe0013/track-o-bot.git')
-noextract=()
-md5sums=('SKIP')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"

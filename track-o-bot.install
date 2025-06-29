@@ -1,6 +1,6 @@
 #!/bin/sh
 
-hsnote() {
+post_install() {
 	echo ""
 	echo "FURTHER CONFIGURATION IS NEEDED!"
 	echo "Create folder named .Hearthstone in your home directory."
@@ -15,24 +15,3 @@ hsnote() {
 	echo "before proceeding."
 	echo ""
 }
-
-upd() {
-	gtk-update-icon-cache
-	update-desktop-database -q
-	update-mime-database usr/share/mime
-}
-
-post_install() {
-	upd
-	hsnote
-}
-
-post_upgrade() {
-	upd
-}
-
-post_remove () {
-	upd
-}
-
-
