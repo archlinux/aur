@@ -2,8 +2,8 @@
 
 pkgname=hid-fanatecff-dkms
 _pkgname="${pkgname%-*}"
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc='Driver to support force feedback and load cells for the FANATEC controller ecosystem'
 arch=(any)
 url="https://github.com/gotzl/hid-fanatecff"
