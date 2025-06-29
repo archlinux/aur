@@ -3,7 +3,7 @@
 
 pkgname=dnglab-git
 _pkgname=dnglab
-pkgver=0.5.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A camera RAW to DNG file format converter."
 arch=(any)
@@ -11,6 +11,7 @@ url="https://github.com/dnglab/dnglab"
 license=(GPL2)
 depends=()
 makedepends=(git rust)
+provides=($_pkgname)
 
 source=("git+https://github.com/dnglab/dnglab.git")
 sha256sums=('SKIP')
