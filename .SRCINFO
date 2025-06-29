@@ -7,7 +7,8 @@ pkgbase = dotpusher
 	license = MIT
 	makedepends = python
 	makedepends = pyinstaller
-	source = dotpusher-0.1.0.tar.gz::https://github.com/maarutan/dotpusher/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 3f579072692fc0e0eaa64f3dcbe7feaca5bdecb682fb1f60d5d43816e31d3c41
+	options = !debug
+	source = dotpusher.zip::https://github.com/maarutan/dotpusher/archive/refs/tags/v0.1.0.zip
+	sha256sums = a328234aa9a959ccc1a78b004ab76beff1395e046e3b9acb2a7e77e7c07971dc
 
 pkgname = dotpusher
