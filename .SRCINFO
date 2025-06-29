@@ -1,7 +1,7 @@
 pkgbase = ytsub-bin
 	pkgdesc = A subscriptions only TUI Youtube client
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sarowish/ytsub
 	arch = x86_64
 	license = GPL-3.0-only
@@ -11,6 +11,6 @@ pkgbase = ytsub-bin
 	provides = ytsub
 	conflicts = ytsub
 	source = https://github.com/sarowish/ytsub/releases/download/v0.5.0/ytsub-0.5.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 1a3b78ead7d4026f49d56a763e425bb5689f570a4be030b838170a75ddd59709
+	sha256sums = ed9eea0cbf57eb73be3161e0bc90937bac5ced3d1f3252ccd61da475369bf44b
 
 pkgname = ytsub-bin
