@@ -13,7 +13,7 @@ pkgbase = garuda-rani-git
 	depends = curl
 	depends = electron36
 	depends = pacman-contrib
-	depends = garuda-libs
+	depends = garuda-libs>=1.6.0
 	depends = garuda-update
 	optdepends = paru: show pending AUR updates
 	optdepends = meld: compare pacdiff files via a GUI on GTK systems
