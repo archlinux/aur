@@ -1,0 +1,11 @@
+pkgbase = bootdev-local
+	pkgdesc = Get paid boot.dev Courses offline
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Wraient/bootdev-local
+	arch = x86_64
+	license = GPL
+	source = bootdev-local::https://github.com/Wraient/boot.dev-local/releases/latest/download/main
+	sha256sums = SKIP
+
+pkgname = bootdev-local
