@@ -34,7 +34,7 @@ sha256sums=(
 
 package(){
   # Extract package data
-  ar -x "${srcdir}/${pkgname}_${pkgver}.deb"
+  ar -x "${_pkgname}-${pkgver}_linux_amd64.deb"
   tar -xJ -f "${srcdir}/data.tar.xz" -C "${pkgdir}"
 
   # Generate .desktop file
