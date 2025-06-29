@@ -9,7 +9,7 @@ url="https://github.com/kaniini/slabbed-or-not"
 license=('MIT')
 depends=('glibc')
 makedepends=('git')
-source=('git://github.com/kaniini/slabbed-or-not.git#tag=0.2')
+source=('git+https://github.com/kaniini/slabbed-or-not.git#tag=0.2')
 md5sums=('SKIP') # skip git source checksum
 
 
