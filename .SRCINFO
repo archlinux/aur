@@ -1,6 +1,6 @@
 pkgbase = limine-dracut-support
 	pkgdesc = Install kernel for the Limine bootloader.
-	pkgver = 1.17.2
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-entry-tool
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = limine-dracut-support
 	conflicts = limine-dracut-support-git
 	conflicts = limine-entry-tool
 	backup = etc/limine-entry-tool.conf
-	source = limine-entry-tool-1.17.2.tar.gz::https://gitlab.com/Zesko/limine-entry-tool/-/archive/1.17.2/limine-entry-tool-1.17.2.tar.gz
-	sha256sums = e2ab0330b0492a47455e57169788e870d7389fd53f113182b8ef3f680795c304
+	source = limine-entry-tool-1.18.0.tar.gz::https://gitlab.com/Zesko/limine-entry-tool/-/archive/1.18.0/limine-entry-tool-1.18.0.tar.gz
+	sha256sums = ba877a8b59c274573afd50690bd4801329cfbb6276563a375430035951b67d95
 
 pkgname = limine-dracut-support
