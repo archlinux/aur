@@ -6,7 +6,7 @@ _pkgname=typora
 _typora_ver=1.10.8
 _pkgver_x86_64="$_typora_ver"
 _pkgver_aarch64="$_typora_ver"
-_plugin_ver=1.14.11
+_plugin_ver=1.14.12
 pkgver=${_typora_ver}+plugin+${_plugin_ver}
 pkgrel=4
 pkgdesc="A minimal markdown editor and reader. with obgnail/typora_plugin plugin."
@@ -27,20 +27,18 @@ backups=(
 _filename="${_pkgname}_${_typora_ver}_amd64.deb"
 source=(
     "$_pkgname.sh"
-    "https://github.com/obgnail/typora_plugin/archive/refs/tags/${_plugin_ver}.tar.gz")
+    "https://github.com/obgnail/typora_plugin/releases/download/${_plugin_ver}/typora-plugin@v${_plugin_ver}.zip")
 _urlbase="https://download.typora.io/linux/typora_"
 source_x86_64=("${_urlbase}${_pkgver_x86_64}_amd64.deb")
 source_aarch64=("${_urlbase}${_pkgver_aarch64}_arm64.deb")
 sha512sums=(
     'cef3ff9a45fd493d4add5a64ab9a429a92a4014f2d51c35cc14b27f14a0dd3703bc95a1d2a75b8227333b152237915fa4ac8b11699a3d4b53ccb14e9edba6cf6'
-    '45a3330ddd1d410fd3fae0a6a2a181b72bb71b9a64fa051d947ee7ed99291160f9cc8d31db1172f89896753d22d1be3ea8704587643983a4f5636a0f475f86c6')
+    '416913e3835355cce16da2c01ac7398cf0eb430072d6895c40f830fc87b48197a1aeb5513c07a2257b7627f9e89d1c01b9add0c7953189c5830c0bb4f4f9f300')
 sha512sums_x86_64=('dc08b3077388a9168854da0306b32d3153bda6df25c6aa21c061adc6cc8447a42e4368ddcc5ec24cb8b5906cb5342d096ff8efa550e8cd2eeed3683c3fcfb466')
 sha512sums_aarch64=('8fe1e248820516b3a6067e71aa3f811d59b7f95658674d6d3777fff4886c80b9404fca737465176b3e38c7623d85221e16f060ec2bbfbf764a17d9142c60ef5e')
 
 _patch_plugin() {
-  tar xvf ${_plugin_ver}.tar.gz -C "$pkgdir/"
-  mv $pkgdir/typora_plugin-${_plugin_ver}/plugin $pkgdir/usr/share/typora/resources/
-  rm -rf $pkgdir/typora_plugin-${_plugin_ver}
+  cp -r $srcdir/plugin $pkgdir/usr/share/typora/resources/
   cd $pkgdir/usr/share/typora/resources/plugin/bin/
   bash install_linux.sh
 }
