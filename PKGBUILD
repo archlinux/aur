@@ -1,8 +1,7 @@
 # Maintainer: Graham King <grking.email@gmail.com>
 pkgname=nim-stable
 pkgver=2.2.4
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc="Nim programming language. This packages tracks the latest stable release."
 arch=(x86_64)
 url="https://nim-lang.org/"
@@ -23,28 +22,21 @@ optdepends=(
   'python-unidecode: regenerate unidecode data'
 )
 provides=(
-  nim
-  nimble
+  "nim=$pkgver"
 )
 conflicts=(
   nim
-  nimble
 )
-replaces=()
 backup=(
   'etc/nim/nim.cfg'
 )
 options=(debug !strip)
-install=
-changelog=
 source=(
   "https://nim-lang.org/download/nim-$pkgver.tar.xz"
 )
-noextract=()
 sha256sums=(
   'f82b419750fcce561f3f897a0486b180186845d76fb5d99f248ce166108189c7'
 )
-validpgpkeys=()
 
 prepare() {
   cd "nim-$pkgver"
