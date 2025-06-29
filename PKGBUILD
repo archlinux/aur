@@ -2,16 +2,16 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=wem
-pkgver=0.9.5
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='Wine Environment Manager: A CLI tool for managing wine "envs" or prefixes.'
 arch=('x86_64')
-url='https://git.sr.ht/~hristoast/wem'
-license=('GPL3')
+url='https://gitlab.com/hristoast/wem'
+license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha512sums=('06288099ea8281fe571a8cc6ba09427cc45fc344116b3c7d0de3a5da7bc6cb6d908838c82e31183f9e58f09baea5b97ff3df272be0603405793731bd9e14d90b')
+source=("$pkgname-$pkgver.tar.gz::$url/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('748c72493ba6aec147629678d1d13f815123919ab28d28b5916d600f73b16d1bd7ea028887a1129dc832d75a7ec88e56a29dc6c6b41e9e8d06d28bf2ba024e30')
 
 build() {
     ## From Go package guidelines
@@ -23,7 +23,7 @@ build() {
     export GOFLAGS="-buildmode=pie -buildvcs=false -trimpath -mod=readonly -modcacherw"
 
     cd "$pkgname-$pkgver"
-    go build -ldflags="-linkmode=external -X 'git.sr.ht/~hristoast/wem/cfg.WemVersion=${pkgver}_${pkgrel}'" -o wem ./cmd/wem
+    go build -ldflags="-linkmode=external -X 'gitlab.com/hristoast/wem/cfg.WemVersion=${pkgver}_${pkgrel}'" -o wem ./cmd/wem
 }
 
 package() {
