@@ -1,7 +1,7 @@
 # Maintainer: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
 
 pkgname=av1an-git
-pkgver=r2396.1c4878e
+pkgver=r2424.b3f8b2f
 pkgrel=1
 pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
 arch=('x86_64')
@@ -14,8 +14,12 @@ optdepends=('svt-av1: SVT-AV1 encoder support'
   'libvpx: vpx encoder support'
   'vmaf: VMAF calculation support'
   'mkvtoolnix-cli: mkvmerge support'
-  'ffms2'
-  'vapoursynth-plugin-lsmashsource')
+  'ffms2: Vapoursynth source filter'
+  'vapoursynth-plugin-lsmashsource: Vapoursynth source filter'
+  'vapoursynth-plugin-vszip: Metrics support'
+  'vapoursynth-plugin-vship-cuda: GPU accelerated metrics (NVIDIA)'
+  'vapoursynth-plugin-vship-amd: GPU accelerated metrics (AMD GPU)'
+)
 provides=('av1an')
 conflicts=('av1an')
 source=("git+https://github.com/master-of-zen/Av1an.git")
