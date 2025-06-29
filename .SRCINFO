@@ -1,0 +1,14 @@
+pkgbase = goignis-git
+	pkgdesc = An optional, high-performance CLI for the Ignis widget framework
+	pkgver = 0.1.0.r0.g11cb083
+	pkgrel = 1
+	url = https://github.com/ignis-sh/goignis
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = goignis
+	conflicts = goignis
+	source = git+https://github.com/ignis-sh/goignis
+	sha256sums = SKIP
+
+pkgname = goignis-git
