@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-server
-pkgver=25.6
+pkgver=25.6.1
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
@@ -44,7 +44,7 @@ optdepends=(
 )
 provides=("openxr-runtime")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6d2ac06dc180483c04fd939237c13ded7940ac859c5075e4b0d7cf9c540d9f98')
+sha256sums=('60cbf11b6cfae8aebecb11499ef05baf5a67af2a98552ce123d8afccc3d8b4d7')
 install=$pkgname.install
 
 build() {
