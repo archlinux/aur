@@ -1,20 +1,25 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgname=aylurs-gtk-shell-git
 _pkgname=ags
-pkgver=2.3.0.r58.g5ee4f3c
-pkgrel=1
+pkgver=2.3.0.r61.g8633971
+pkgrel=2
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
 url="https://github.com/Aylur/ags"
 license=('GPL-3.0-only')
 makedepends=('git' 'meson' 'go')
 depends=('gjs'
+         'gtk4-layer-shell'
          'gobject-introspection'
+         'libastal-io'
+         'libastal-4'
+         'npm'
         )
-optdepends=('libastal-meta'
-            'blueprint-compiler'
-            'dart-sass'
-            'npm'
+optdepends=('libastal-meta: provides all astal libs, needed for eg bluetooth, audio, etc'
+            'blueprint-compiler: required to define widgets using blueprint'
+            'dart-sass: requred for compilation of scss to css'
+            'gtk-layer-shell: required when using gtk3'
+            'libastal: required when using gtk3'
            )
 source=(
   "git+${url}.git"
