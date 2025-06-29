@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=rockchip-mpp
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 epoch=1
 pkgdesc='Rockchip Media Process Platform (MPP)'
@@ -11,9 +11,12 @@ license=('Apache-2.0' 'MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cmake')
 source=("https://github.com/rockchip-linux/mpp/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c8cc854ecdb72c09f087acaf2288d05f2173d0331720a00984ce5b1562d89afd')
+sha256sums=('c07e5ad49b80533856772f92b73bffc87078ad2a9446498ffdc1e38ea04488f8')
 
 build() {
+    # fix build with gcc 15
+    export CFLAGS+=' -Wno-error=incompatible-pointer-types'
+    
     cmake -B build -S "mpp-${pkgver}" \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
