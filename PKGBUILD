@@ -2,21 +2,25 @@
 # Contributor: Federico Cinelli <cinelli.federico@gmail.com>
 
 pkgname=ninja-ide-git
-pkgver=20210526
+pkgver=20240226
 pkgrel=1
 pkgdesc="Cross-platform IDE focused on Python application development"
 arch=('any')
 url="http://ninja-ide.org"
-license=('GPL3')
-depends=('python-pyqt5' 'qt5-declarative' 'python-pycodestyle' 'python-pyflakes' 'python-jedi')
+license=('GPL-3.0-or-later')
+depends=('python-pyqt5' 'qt6-declarative' 'python-pycodestyle' 'python-pyflakes' 'python-jedi' 'python-pyinotify')
 makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest')
 source=("git+https://github.com/ninja-ide/ninja-ide.git#branch=develop"
         "setup.py"
-        "MANIFEST.in")
+        "MANIFEST.in"
+        "python3.13-from-2024-pr.patch"
+        "additional-cast-to-int.patch")
 sha256sums=('SKIP'
             '8c719614480f88061ca16db999b761334fd468715dbdd60bdc89ac3d47067fff'
-            '0341af903c8947afaba84555054edf80f1177ad22fc0a17be1c6c9d94536498a')
+            '0341af903c8947afaba84555054edf80f1177ad22fc0a17be1c6c9d94536498a'
+            'ba2d338886e31759ecfc43ee2148003dcc40264a6eb1959d5648236b887f4092'
+            '932ecfabc11ce98c2f87d4acec2f2967612a0d568f7d53f48af21bfa82f3c1ac')
 
 pkgver() {
   cd ninja-ide
@@ -48,6 +52,10 @@ prepare() {
   sed -e "s/from ninja_ide.dependencies.pyflakes_mod/from pyflakes/" \
       -i ninja_ide/gui/editor/checkers/errors_checker.py
   rm -rf ninja_ide/dependencies/pyflakes_mod/
+
+  # https://github.com/ninja-ide/ninja-ide/pull/2147
+  patch -p1 -i "$srcdir"/python3.13-from-2024-pr.patch
+  patch -p1 -i "$srcdir"/additional-cast-to-int.patch
 }
 
 build () {

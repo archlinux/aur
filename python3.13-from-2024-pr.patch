@@ -1,0 +1,358 @@
+From 328520d0e35d8db836ff66ec2203298876e16f21 Mon Sep 17 00:00:00 2001
+From: Benjamin Moran <benmoran@protonmail.com>
+Date: Tue, 5 Nov 2024 19:45:54 +0900
+Subject: [PATCH] Replace usage of `collections.Callable` with
+ `collections.abc.Callable`. Cast multiple values to int to prevent QT
+ crashes.
+
+---
+ ninja_ide/gui/central_widget.py                  |  3 +--
+ ninja_ide/gui/editor/base.py                     | 11 +++++------
+ ninja_ide/gui/editor/base_editor.py              |  5 ++---
+ ninja_ide/gui/editor/extensions/__init__.py      | 13 ++++++++-----
+ ninja_ide/gui/editor/extensions/margin_line.py   |  2 +-
+ ninja_ide/gui/editor/highlighter.py              |  3 ++-
+ ninja_ide/gui/editor/neditable.py                |  2 +-
+ ninja_ide/gui/editor/scrollbar.py                |  9 ++++-----
+ .../gui/editor/side_area/line_number_widget.py   |  9 +++------
+ ninja_ide/gui/explorer/explorer_container.py     |  2 +-
+ ninja_ide/gui/ide.py                             |  4 ++--
+ ninja_ide/gui/main_panel/combo_editor.py         |  6 ++----
+ ninja_ide/gui/tools_dock/tools_dock.py           | 16 ++++------------
+ ninja_ide/intellisensei/intellisense_registry.py |  2 +-
+ ninja_ide/tools/ui_tools.py                      |  4 ++--
+ 15 files changed, 39 insertions(+), 52 deletions(-)
+
+diff --git a/ninja_ide/gui/central_widget.py b/ninja_ide/gui/central_widget.py
+index 28b17fc73..40cbf98da 100644
+--- a/ninja_ide/gui/central_widget.py
++++ b/ninja_ide/gui/central_widget.py
+@@ -140,8 +140,7 @@ def showEvent(self, event):
+         lateral_visible = qsettings.value(
+             "window/central/lateral_visible", True, type=bool)
+         if height_size is None:
+-            self._splitter_inside.setSizes([(self.height() / 3) * 2,
+-                                           self.height() / 3])
++            self._splitter_inside.setSizes([(self.height() // 3) * 2, self.height() // 3])
+         else:
+             self._splitter_inside.restoreState(height_size)
+         if width_size is None:
+diff --git a/ninja_ide/gui/editor/base.py b/ninja_ide/gui/editor/base.py
+index 4faaa7dda..178022702 100644
+--- a/ninja_ide/gui/editor/base.py
++++ b/ninja_ide/gui/editor/base.py
+@@ -48,7 +48,7 @@ def cursor_position(self):
+         """Get or set the current cursor position"""
+ 
+         cursor = self.textCursor()
+-        return (cursor.blockNumber(), cursor.columnNumber())
++        return cursor.blockNumber(), cursor.columnNumber()
+ 
+     @cursor_position.setter
+     def cursor_position(self, position):
+@@ -56,8 +56,7 @@ def cursor_position(self, position):
+         line = min(line, self.line_count() - 1)
+         column = min(column, len(self.line_text(line)))
+         cursor = QTextCursor(self.document().findBlockByNumber(line))
+-        cursor.setPosition(cursor.block().position() + column,
+-                           QTextCursor.MoveAnchor)
++        cursor.setPosition(cursor.block().position() + column, QTextCursor.MoveAnchor)
+         self.setTextCursor(cursor)
+ 
+     @property
+@@ -281,8 +280,7 @@ def _update_visible_blocks(self):
+ 
+         block = self.firstVisibleBlock()
+         block_number = block.blockNumber()
+-        top = self.blockBoundingGeometry(block).translated(
+-            self.contentOffset()).top()
++        top = self.blockBoundingGeometry(block).translated(self.contentOffset()).top()
+         bottom = top + self.blockBoundingRect(block).height()
+         editor_height = self.height()
+         while block.isValid():
+@@ -290,7 +288,8 @@ def _update_visible_blocks(self):
+             if not visible:
+                 break
+             if block.isVisible():
+-                append((top, block_number, block))
++                # These are consumed as int:
++                append((int(top), int(block_number), block))
+             block = block.next()
+             top = bottom
+             bottom = top + self.blockBoundingRect(block).height()
+diff --git a/ninja_ide/gui/editor/base_editor.py b/ninja_ide/gui/editor/base_editor.py
+index 6627d2416..7489c5fb7 100644
+--- a/ninja_ide/gui/editor/base_editor.py
++++ b/ninja_ide/gui/editor/base_editor.py
+@@ -105,8 +105,7 @@ def __apply_style(self):
+         palette.setColor(palette.Base, self._background_color)
+         palette.setColor(palette.Text, self._foreground_color)
+         palette.setColor(palette.HighlightedText, self._selection_color)
+-        palette.setColor(palette.Highlight,
+-                         self._selection_background_color)
++        palette.setColor(palette.Highlight, self._selection_background_color)
+         self.setPalette(palette)
+ 
+     def paintEvent(self, event):
+@@ -130,7 +129,7 @@ def _update_visible_blocks(self):
+             if not visible:
+                 break
+             if block.isVisible():
+-                append((top, block_number, block))
++                append((int(top), int(block_number), block))
+             block = block.next()
+             top = bottom
+             bottom = top + self.blockBoundingRect(block).height()
+diff --git a/ninja_ide/gui/editor/extensions/__init__.py b/ninja_ide/gui/editor/extensions/__init__.py
+index 183e7a60c..bd672affe 100644
+--- a/ninja_ide/gui/editor/extensions/__init__.py
++++ b/ninja_ide/gui/editor/extensions/__init__.py
+@@ -15,7 +15,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with NINJA-IDE; If not, see <http://www.gnu.org/licenses/>.
+ import os
+-import imp
++import importlib
++import importlib.machinery
++
+ from ninja_ide import resources
+ 
+ 
+@@ -74,11 +76,12 @@ def shutdown(self):
+ 
+ 
+ def discover_all(extensions_dir='.'):
+-    extensions_dir = os.path.join(resources.PRJ_PATH,
+-                                  "gui", "editor", "extensions")
++    extensions_dir = os.path.join(resources.PRJ_PATH, "gui", "editor", "extensions")
+     for filename in os.listdir(extensions_dir):
+         module_name, ext = os.path.splitext(filename)
+         if ext == '.py' and not filename.startswith('__'):
+-            _file, path, descr = imp.find_module(module_name, [extensions_dir])
++            # _file, path, descr = imp.find_module(module_name, [extensions_dir])
++            _file, path, descr = importlib.machinery.PathFinder().find_spec(module_name, [extensions_dir])
+             if _file:
+-                imp.load_module(module_name, _file, path, descr)
++                loader = importlib.machinery.SourceFileLoader(module_name, filename)
++                loader.load_module()
+diff --git a/ninja_ide/gui/editor/extensions/margin_line.py b/ninja_ide/gui/editor/extensions/margin_line.py
+index fdbc28950..198f44bdf 100644
+--- a/ninja_ide/gui/editor/extensions/margin_line.py
++++ b/ninja_ide/gui/editor/extensions/margin_line.py
+@@ -85,7 +85,7 @@ def draw(self):
+         metrics = QFontMetricsF(self._neditor.font())
+         doc_margin = self._neditor.document().documentMargin()
+         offset = self._neditor.contentOffset().x() + doc_margin
+-        x = round(metrics.width(' ') * self.__position) + offset
++        x = round(metrics.width(' ') * self.__position) + int(offset)
+         if self.__background:
+             width = self._neditor.viewport().width() - x
+             rect = QRect(x, 0, width, self._neditor.height())
+diff --git a/ninja_ide/gui/editor/highlighter.py b/ninja_ide/gui/editor/highlighter.py
+index deff38f27..1397ffb2f 100644
+--- a/ninja_ide/gui/editor/highlighter.py
++++ b/ninja_ide/gui/editor/highlighter.py
+@@ -316,7 +316,8 @@ def build_highlighter(language, force=False):
+         scanners = {}
+         for scanner in syntax_structure.get("scanner"):
+             name = scanner.get("partition_name")
+-            scanners[name] = Scanner(scanner.get("tokens"))
++            # TODO: fix Scanner `re` issue
++            # scanners[name] = Scanner(scanner.get("tokens"))
+         syntax = Syntax(part_scanner, scanners)
+         syntax.build_context()
+         syntax_registry.register_syntax(language, syntax)
+diff --git a/ninja_ide/gui/editor/neditable.py b/ninja_ide/gui/editor/neditable.py
+index 3f7f3564c..2c3cb3a2c 100644
+--- a/ninja_ide/gui/editor/neditable.py
++++ b/ninja_ide/gui/editor/neditable.py
+@@ -229,5 +229,5 @@ def update_checkers_display(self):
+         for items in self.registered_checkers:
+             checker, _, _ = items
+             func = getattr(checker, 'refresh_display', None)
+-            if isinstance(func, collections.Callable):
++            if isinstance(func, collections.abc.Callable):
+                 func()
+diff --git a/ninja_ide/gui/editor/scrollbar.py b/ninja_ide/gui/editor/scrollbar.py
+index a2284e46e..724523741 100644
+--- a/ninja_ide/gui/editor/scrollbar.py
++++ b/ninja_ide/gui/editor/scrollbar.py
+@@ -62,18 +62,17 @@ def paintEvent(self, event):
+         rect = self._nscrollbar.overlay_rect()
+         sb_range = self._nscrollbar.get_scrollbar_range()
+         sb_range = max(self.visible_range, sb_range)
+-        result_width = rect.width() / 3
++        result_width = rect.width() // 3
+         result_height = min(rect.height() / sb_range + 1, 4)
+         x = rect.center().x() - 1
+-        offset = rect.height() / sb_range * self.range_offset
+-        vertical_margin = ((rect.height() / sb_range) - result_height) / 2
++        offset = rect.height() // sb_range * self.range_offset
++        vertical_margin = ((rect.height() / sb_range) - result_height) // 2
+ 
+         painter = QPainter(self)
+ 
+         for lineno in self.cache.keys():
+             marker = self.cache[lineno]
+-            top = rect.top() + offset + vertical_margin + \
+-                marker.position / sb_range * rect.height()
++            top = int(rect.top() + offset + vertical_margin + marker.position / sb_range * rect.height())
+             painter.fillRect(
+                 x,
+                 top,
+diff --git a/ninja_ide/gui/editor/side_area/line_number_widget.py b/ninja_ide/gui/editor/side_area/line_number_widget.py
+index 914fee3ea..9e3769237 100644
+--- a/ninja_ide/gui/editor/side_area/line_number_widget.py
++++ b/ninja_ide/gui/editor/side_area/line_number_widget.py
+@@ -61,15 +61,12 @@ def paintEvent(self, event):
+         # Draw visible blocks
+         for top, line, block in self._neditor.visible_blocks:
+             # Set bold to current line and selected lines
+-            if ((has_sel and sel_start <= line <= sel_end) or
+-                    (not has_sel and current_line == line)):
+-                painter.fillRect(
+-                    QRect(0, top, self.width(), height), self._color_selected)
++            if (has_sel and sel_start <= line <= sel_end) or (not has_sel and current_line == line):
++                painter.fillRect(QRect(0, top, self.width(), height), self._color_selected)
+             else:
+                 painter.setPen(pen)
+                 painter.setFont(font)
+-            painter.drawText(self.LEFT_MARGIN, top, width, height,
+-                             Qt.AlignRight, str(line + 1))
++            painter.drawText(self.LEFT_MARGIN, top, width, height, Qt.AlignRight, str(line + 1))
+ 
+     def __calculate_width(self):
+         digits = len(str(max(1, self._neditor.blockCount())))
+diff --git a/ninja_ide/gui/explorer/explorer_container.py b/ninja_ide/gui/explorer/explorer_container.py
+index 021ebe7fe..cecf90d44 100644
+--- a/ninja_ide/gui/explorer/explorer_container.py
++++ b/ninja_ide/gui/explorer/explorer_container.py
+@@ -200,7 +200,7 @@ def add_tab(self, tabname, obj, icon=None, widget_index=0):
+         else:
+             self.widget(widget_index).addTab(obj, tabname)
+         func = getattr(obj, 'install_tab', None)
+-        if isinstance(func, collections.Callable):
++        if isinstance(func, collections.abc.Callable):
+             func()
+ 
+     def rotate_tab_position(self):
+diff --git a/ninja_ide/gui/ide.py b/ninja_ide/gui/ide.py
+index e04580110..435de028b 100644
+--- a/ninja_ide/gui/ide.py
++++ b/ninja_ide/gui/ide.py
+@@ -246,7 +246,7 @@ def install_service(self, service_name):
+ 
+         obj = IDE.__IDESERVICES.get(service_name, None)
+         func = getattr(obj, 'install', None)
+-        if isinstance(func, collections.Callable):
++        if isinstance(func, collections.abc.Callable):
+             func()
+         self._connect_signals()
+ 
+@@ -282,7 +282,7 @@ def _connect_signals(self):
+                     connection['target'], None)
+                 slot = connection['slot']
+                 signal_name = connection['signal_name']
+-                if target and isinstance(slot, collections.Callable):
++                if target and isinstance(slot, collections.abc.Callable):
+                     # FIXME:
+                     sl = getattr(target, signal_name, None)
+ 
+diff --git a/ninja_ide/gui/main_panel/combo_editor.py b/ninja_ide/gui/main_panel/combo_editor.py
+index 7eb818df5..89663cf4a 100644
+--- a/ninja_ide/gui/main_panel/combo_editor.py
++++ b/ninja_ide/gui/main_panel/combo_editor.py
+@@ -497,14 +497,12 @@ def __init__(self, main_combo=False):
+         self.lbl_position = QLabel()
+         self.lbl_position.setObjectName("position")
+         self.lbl_position.setText(self._pos_text % (0, 0))
+-        margin = self.style().pixelMetric(
+-            QStyle.PM_LayoutHorizontalSpacing) / 2
++        margin = self.style().pixelMetric(QStyle.PM_LayoutHorizontalSpacing) // 2
+         self.lbl_position.setContentsMargins(margin, 0, margin, 0)
+         self.lbl_position.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+         hbox.addWidget(self.lbl_position)
+         self.btn_close = QPushButton()
+-        self.btn_close.setIcon(
+-            self.style().standardIcon(QStyle.SP_DialogCloseButton))
++        self.btn_close.setIcon(self.style().standardIcon(QStyle.SP_DialogCloseButton))
+ 
+         if main_combo:
+             self.btn_close.setObjectName('close_button_combo')
+diff --git a/ninja_ide/gui/tools_dock/tools_dock.py b/ninja_ide/gui/tools_dock/tools_dock.py
+index a55625db1..e9226037e 100644
+--- a/ninja_ide/gui/tools_dock/tools_dock.py
++++ b/ninja_ide/gui/tools_dock/tools_dock.py
+@@ -228,7 +228,7 @@ def kill_application(self):
+     def add_widget(self, display_name, obj):
+         self._stack_widgets.addWidget(obj)
+         func = getattr(obj, "install_widget", None)
+-        if isinstance(func, collections.Callable):
++        if isinstance(func, collections.abc.Callable):
+             func()
+ 
+     def on_button_triggered(self):
+@@ -350,25 +350,17 @@ def paintEvent(self, event):
+         if self._number is None:
+             painter = QPainter(self)
+             fm = self.fontMetrics()
+-            base_line = (self.height() - fm.height()) / 2 + fm.ascent()
+             painter.drawText(event.rect(), Qt.AlignCenter, self._text)
+         else:
+             fm = self.fontMetrics()
+-            base_line = (self.height() - fm.height()) / 2 + fm.ascent()
++            base_line = (self.height() - fm.height()) // 2 + fm.ascent()
+             number_width = fm.width(self._number)
+ 
+             painter = QPainter(self)
+             # Draw shortcut number
+-            painter.drawText(
+-                (15 - number_width) / 2,
+-                base_line,
+-                self._number
+-            )
++            painter.drawText((15 - number_width) // 2, base_line, self._number)
+             # Draw display name of tool button
+-            painter.drawText(
+-                18,
+-                base_line,
+-                fm.elidedText(self._text, Qt.ElideRight, self.width()))
++            painter.drawText(18, base_line, fm.elidedText(self._text, Qt.ElideRight, self.width()))
+ 
+     def sizeHint(self):
+         self.ensurePolished()
+diff --git a/ninja_ide/intellisensei/intellisense_registry.py b/ninja_ide/intellisensei/intellisense_registry.py
+index 0f8c1f7d0..539c445fa 100644
+--- a/ninja_ide/intellisensei/intellisense_registry.py
++++ b/ninja_ide/intellisensei/intellisense_registry.py
+@@ -18,7 +18,7 @@
+ import time
+ import abc
+ from collections import namedtuple
+-from collections import Callable
++from collections.abc import Callable
+ 
+ from PyQt5.QtCore import QObject
+ from PyQt5.QtCore import QThread
+diff --git a/ninja_ide/tools/ui_tools.py b/ninja_ide/tools/ui_tools.py
+index 8158a79a4..3c5baf478 100644
+--- a/ninja_ide/tools/ui_tools.py
++++ b/ninja_ide/tools/ui_tools.py
+@@ -900,7 +900,7 @@ def install_shortcuts(obj, actions, ide):
+                     continue
+                 shortcut = QShortcut(short(short_key), ide)
+             shortcut.setContext(Qt.ApplicationShortcut)
+-            if isinstance(func, collections.Callable):
++            if isinstance(func, collections.abc.Callable):
+                 shortcut.activated.connect(func)
+         if action_data:
+             is_menu = action_data.get('is_menu', False)
+@@ -938,7 +938,7 @@ def install_shortcuts(obj, actions, ide):
+             elif keysequence and not is_menu:
+                 item_ui.setShortcut(short(keysequence))
+                 item_ui.setShortcutContext(Qt.ApplicationShortcut)
+-            if isinstance(func, collections.Callable) and not is_menu:
++            if isinstance(func, collections.abc.Callable) and not is_menu:
+                 item_ui.triggered.connect(lambda _, func=func: func())
+             if section and section[0] is not None and weight:
+                 ide.register_menuitem(item_ui, section, weight)

@@ -1,0 +1,19 @@
+diff -r -u a/ninja_ide/gui/editor/extensions/line_highlighter.py b/ninja_ide/gui/editor/extensions/line_highlighter.py
+--- a/ninja_ide/gui/editor/extensions/line_highlighter.py	2025-06-29 16:02:46.256263504 +0200
++++ b/ninja_ide/gui/editor/extensions/line_highlighter.py	2025-06-29 15:51:00.539961227 +0200
+@@ -91,11 +91,11 @@
+         line_rect = line.naturalTextRect().translated(co.x(), top)
+         painter = QPainter(self._neditor.viewport())
+         painter.setPen(QPen(self.__background, 1))
+-        painter.drawLine(line_rect.x(), line_rect.y(), self._neditor.width(),
+-                         line_rect.y())
++        painter.drawLine(int(line_rect.x()), int(line_rect.y()), int(self._neditor.width()),
++                         int(line_rect.y()))
+         height = self._neditor.fontMetrics().height()
+-        painter.drawLine(line_rect.x(), line_rect.y() + height,
+-                         self._neditor.width(), line_rect.y() + height)
++        painter.drawLine(int(line_rect.x()), int(line_rect.y() + height),
++                         int(self._neditor.width()), int(line_rect.y() + height))
+ 
+     def _highlight(self):
+         self._neditor.extra_selections.remove("current_line")
