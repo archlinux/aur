@@ -1,6 +1,6 @@
 #Maintainer: Noble Eugene <nobleeugene2005@gmail.com>
 pkgname="yin-git"
-pkgver="0.11"
+pkgver="0.12"
 pkgrel=1
 pkgdesc="Efficient wayland wallpaper daemon for images, gifs and videos"
 arch=("x86_64")
@@ -11,6 +11,6 @@ sha256sums=("SKIP")
 
 package() {
 	cd $srcdir/yin
-	zig build 
+	zig build --release=fast
 	install -d -m 755 "$pkgdir/usr/bin" && cp zig-out/bin/* "$pkgdir/usr/bin"
 }
