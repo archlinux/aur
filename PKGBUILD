@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=the-honkers-railway-launcher
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Honkers Railway launcher for Linux with automatic patching and telemetry disabling"
 arch=('x86_64')
 url="https://github.com/an-anime-team/the-honkers-railway-launcher"
 license=('GPL-3.0-only')
 depends=('gtk4' 'libadwaita' 'glibc' 'hicolor-icon-theme' 'gcc-libs' 'glib2'
-	 'pango' 'xz' 'bzip2' 'cairo' 'p7zip')
+	 'pango' 'xz' 'bzip2' 'cairo' 'p7zip' 'wayland')
 makedepends=('cargo')
 optdepends=(
 	 'mangohud: FPS Overlay'
@@ -27,7 +27,7 @@ build() {
     	export RUSTUP_TOOLCHAIN=stable
     	export CARGO_TARGET_DIR=target
 	export CFLAGS+=" -ffat-lto-objects"
-    	cargo build --frozen --release --target-dir target
+	cargo build --frozen --release --all-features
 }
 
 package() {
