@@ -1,6 +1,6 @@
 # Maintainer: Leonid Murin (Dasperal) <Dasperal1 at gmail dot com>
 pkgname=inter-doom
-pkgver=8.1
+pkgver=8.2
 pkgrel=1
 pkgdesc="Small, functional and simple Doom source port, created with help, efforts and bits of code from people around the world"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,8 +12,8 @@ optdepends=('doom1-wad: Doom shareware game data')
 conflicts=('inter-doom-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/JNechaevsky/international-doom/archive/refs/tags/${pkgver}.tar.gz"
         001_install_rule.patch)
-b2sums=('058c6cf6d1afde57a7b8a628006aee1359fb85e975777f675517cd83fbe809fd160003122189f6effba1f6fb53c7ec78a767823d1298eddb4e5d569a2702a160'
-        '431d360f7a6fe903fdae293d4bd217d90a6153e7f8093d313e4ce7e1be36a0abe535e3333fb21467d1d5c4ade6055ab268a25585f267566345c20fb6d3381979')
+b2sums=('87c596d96a18c0643eb69a318e259fa36458ec6bb1aa9e735aa9721400854400d339535ba51f9597724bc0721d3e50c96c2e6595ba9ada99fb9c173a09782736'
+        'a36374d1e2a2f59a767f317431986e23406a7af8105c7c86f3061c3a40fdc46535e1349e91155e127a5f6f86ce782c62ccee474f7cba28434ea5cfaa6d1ee6e6')
 
 prepare() {
   cd "international-doom-${pkgver}"
@@ -39,4 +39,6 @@ package() {
     DESTDIR="${pkgdir}" cmake --install build
     mv "${pkgdir}/usr/bin/inter-setup" "${pkgdir}/usr/bin/inter-doom-setup"
     install -Dm644 "international-doom-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "international-doom-${pkgver}/data/doom.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/inter-doom.png"
+    install -Dm644 "international-doom-${pkgver}/data/doom.desktop" "${pkgdir}/usr/share/applications/inter-doom.desktop"
 }
