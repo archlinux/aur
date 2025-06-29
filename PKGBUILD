@@ -1,16 +1,16 @@
 # Maintainer: Bartek Kryza <bkryza at gmail dot com>
 
 pkgname=clang-uml
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Customizable automatic UML diagram generator for C++ based on Clang."
 url="https://github.com/bkryza/clang-uml"
 license=('Apache-2.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bkryza/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('7dfe913b75b311b8f464bb4caad2b441764ac6db64fb6a7a9c04756b0af521d320f5b035785d00f370987947ec34fdf4ba2fc2ca47847ec7175c1394ffe66c97')
+sha512sums=('cd55114749d3fa274a70fa58a896c44d2777b66df9c0c69e7c8d6069dd640117cf920251a87d77bbd0dc751145ab74ddaa34dc028b9f0363a9797b80e6c0f1d9')
 arch=('x86_64')
-depends=("clang<20.0" gcc-libs glibc "llvm-libs<20.0" yaml-cpp)
-makedepends=("cmake" "llvm<20.0" "ninja")
+depends=("clang<22.0" gcc-libs glibc "llvm-libs<22.0" yaml-cpp)
+makedepends=("cmake" "llvm<22.0" "ninja")
 
 build() {
   rm -rf build
