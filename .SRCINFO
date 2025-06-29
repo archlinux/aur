@@ -1,11 +1,10 @@
 pkgbase = input-actions
 	pkgdesc = Mouse and touchpad gestures for Plasma 6 Wayland (deprecated package)
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/taj-ny/InputActions
 	install = input-actions.install
 	arch = x86_64
 	license = GPL-3.0-or-later
-	depends = inputactions
 
 pkgname = input-actions
