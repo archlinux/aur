@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=pineflash
 pkgver=0.5.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool to flash ironos to the pinecil soldering iron and possibly other pine64 devices in the future"
 arch=('x86_64')
 url="https://github.com/Spagett1/PineFlash"
@@ -23,7 +23,7 @@ build() {
 	export CARGO_TARGET_DIR=target
 	export CFLAGS+=" -ffat-lto-objects"
 	export CXXFLAGS+=" -ffat-lto-ojbects"
-	cargo build --frozen --release --target-dir target
+	cargo build --frozen --release --all-features
 }
 
 package() {
