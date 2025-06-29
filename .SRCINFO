@@ -1,12 +1,13 @@
 pkgbase = dnglab-git
 	pkgdesc = A camera RAW to DNG file format converter.
-	pkgver = 0.5.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/dnglab/dnglab
 	arch = any
 	license = GPL2
 	makedepends = git
 	makedepends = rust
+	provides = dnglab
 	source = git+https://github.com/dnglab/dnglab.git
 	sha256sums = SKIP
 
