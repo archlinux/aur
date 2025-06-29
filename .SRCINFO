@@ -1,6 +1,6 @@
 pkgbase = turso
 	pkgdesc = Turso Database is an in-process SQL database, compatible with SQLite.
-	pkgver = 0.0.22
+	pkgver = 0.1.0_pre.2
 	pkgrel = 1
 	url = https://github.com/tursodatabase/turso
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = turso
 	makedepends = mimalloc
 	makedepends = oniguruma
 	options = !lto
-	source = turso-0.0.22.tar.gz::https://github.com/tursodatabase/turso/releases/download/v0.0.22/source.tar.gz
-	sha256sums = e94bd5849eb82f55db606ab8c9d3bb5928050166698807689b654657370530ad
+	source = turso-0.1.0_pre.2.tar.gz::https://github.com/tursodatabase/turso/releases/download/v0.1.0-pre.2/source.tar.gz
+	sha256sums = c20bacc51d8ea633159924c3572069991393d23a342dd21599abda65f8ea7ce9
 
 pkgname = turso
