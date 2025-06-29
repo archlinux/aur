@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=sleepy-launcher
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sleepy game launcher for Linux with telemetry disabling"
 arch=(x86_64)
 url="https://github.com/an-anime-team/sleepy-launcher"
@@ -27,7 +27,7 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	export CFLAGS+=" -ffat-lto-objects"
-	cargo build --frozen --release --target-dir target
+	cargo build --frozen --release --all-features
 }
 
 package() {
