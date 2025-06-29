@@ -1,15 +1,17 @@
 # Maintainer: Michael Langer <laminarlade at t-online DOT de>
 pkgname=gradia
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Make your screenshots ready for the world."
 arch=('x86_64')
 url="https://github.com/AlexanderVanhee/Gradia"
 license=('GPL-3.0-only')
 depends=(
-    'gtk4'
+    'glib2'
+    'gtk4>=4.12.0'
+    'libadwaita>=1.5.0'
     'python'
-    'python-gobject'
+    'python-gobject>=3.48.0'
     'python-pillow'
     'python-pillow-avif-plugin'
 )
