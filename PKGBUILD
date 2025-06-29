@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 pkgname="fennel-ls"
 pkgrel=1
-pkgver=0.1.3
+pkgver=0.2.1
 pkgdesc="Language Server for Fennel"
 arch=("any")
 url="https://sr.ht/~xerool/fennel-ls"
@@ -9,7 +9,7 @@ license=("MIT")
 depends=("lua")
 makedepends=("make" "git")
 source=("https://git.sr.ht/~xerool/${pkgname}/archive/${pkgver}.tar.gz")
-b2sums=("983cffedb7cec3f44c20ee7d5686901189eb7beb2302bc285f9f82143fd354bf3c65645548dbd58364f3c2c57d7bef305679baa6f344f819f6c0cfd45ab0cb6d")
+b2sums=('fab8201c50088d2517d2086e15402ce90ef9d6b4ae1dfdeff9c22cf48b25dd69581e1d9242e649b2cc037fd1493eeb9dbe3461d5ecc0bf9c79bd966c9fe08d08')
 conflicts=("${pkgname}-git")
 
 build() {
