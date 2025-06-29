@@ -1,13 +1,14 @@
 pkgbase = stl-thumb-git
 	pkgdesc = A fast lightweight thumbnail generator for STL files
 	pkgver = 238.6f4dd55
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/unlimitedbacon/stl-thumb.git
 	arch = i386
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = git
+	makedepends = cmake
 	depends = libgl
 	provides = stl-thumb
 	conflicts = stl-thumb
