@@ -1,6 +1,6 @@
 pkgbase = pattern-renamer
 	pkgdesc = CLI to rename terms/words in a project or normal folders with multiple different patterns
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 2
 	url = https://github.com/alissonbk/pattern-renamer
 	arch = any
