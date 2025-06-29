@@ -2,7 +2,7 @@
 # AUR package for cyberghostvpn-gui
 
 pkgname=cyberghostvpn-gui
-pkgver=1.0.2   # Update with the latest release version
+pkgver=1.0.3   # Update with the latest release version
 pkgrel=4
 pkgdesc="A GUI for CyberGhost VPN"
 arch=('x86_64')
