@@ -6,15 +6,15 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=amarok
-pkgver=3.2.81
-pkgrel=2
+pkgver=3.2.82
+pkgrel=1
 pkgdesc="The powerful music player for KDE"
 arch=(x86_64)
 url="https://apps.kde.org/amarok/"
 license=(GPL-2.0-or-later)
-depends=(threadweaver qt6-webengine phonon-qt6 qt6-declarative
-         kcmutils knewstuff ktexteditor kdnssd kirigami2 kstatusnotifieritem ktextwidgets
-         mariadb libmariadbclient fftw ffmpeg taglib libofa qt6-tools
+depends=(threadweaver qt6-webengine qt6-declarative #knewstuff phonon-qt6
+         kcmutils ktexteditor kdnssd kirigami2 kstatusnotifieritem ktextwidgets
+         mariadb libmariadbclient fftw ffmpeg taglib libofa qt6-tools gstreamer gst-plugins-base-libs
 
          # namcap implicit depends
          qt6-5compat kiconthemes ki18n qt6-svg gcc-libs kcompletion kitemviews kwidgetsaddons solid karchive kcrash
@@ -27,7 +27,7 @@ optdepends=("libmtp: support for portable media devices"
             #"taglib-extras: taglib plugins for Audible and RealMedia files"
             )
 source=("https://invent.kde.org/multimedia/amarok/-/archive/v${pkgver}/amarok-v${pkgver}.tar.gz")
-sha256sums=('aadb2a7fc120952a4219c70a4789396e3a86cf08d4c5131fb8abe1a0f18cfda5')
+sha256sums=('6e1f4dc51e918ecc632f566b423859d3dc92ca49c808d7fd6b1352fa8e2d6a29')
 
 build() {
   local _flags=(
