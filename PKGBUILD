@@ -3,8 +3,8 @@
 
 pkgname=aurdex
 pkgver=0.0.3
-pkgrel=1
-pkgdesc="terminal interface for browsing AUR package metadata with GIT exploration"
+pkgrel=2
+pkgdesc="terminal interface for browsing AUR package metadata with GIT and comment views"
 arch=(any)
 url="https://github.com/envolution/aurdex"
 license=(Apache-2.0)
@@ -16,6 +16,7 @@ depends=(
   python-pygit2
   python-appdirs
   python-httpx
+  python-beautifulsoup
 )
 makedepends=(
   python-build
