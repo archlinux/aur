@@ -11,19 +11,28 @@ makedepends=('go' 'git')
 source=("git+https://github.com/Flack74/pom.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
+prepare() {
+    cd "$pkgname"
+    mkdir -p build/
+}
+
 build() {
     cd "$pkgname"
-    go build \
-        -trimpath \
-        -buildmode=pie \
-        -mod=readonly \
-        -modcacherw \
-        -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X pom/cmd.version=v${pkgver} -X pom/cmd.buildDate=$(date +%Y-%m-%d_%H:%M:%S)"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    
+    # Ensure we're using Go modules
+    export GO111MODULE=on
+    go mod download
+    go build -o build/pom
 }
 
 package() {
     cd "$pkgname"
-    install -Dm755 pom "$pkgdir/usr/bin/pom"
+    install -Dm755 build/pom "$pkgdir/usr/bin/pom"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 packaging/man/pom.1 "$pkgdir/usr/share/man/man1/pom.1"
