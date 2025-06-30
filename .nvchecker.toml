@@ -1,0 +1,8 @@
+[qt5-datavis3d]
+source = 'github'
+github = 'qt/qtdatavis3d'
+use_max_tag = true
+include_regex = 'v5\.[0-9.]+-lts-lgpl'
+prefix = 'v'
+from_pattern = '-lts-lgpl'
+to_pattern = ''
