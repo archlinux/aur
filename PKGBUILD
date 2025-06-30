@@ -1,6 +1,6 @@
 # Maintainer: Timothy Heironimus <timothyheironimus6@gmail.com>
 pkgname=tailsdvd-git
-pkgver=UNKNOWN
+pkgver=git
 pkgrel=1
 #epoch=
 pkgdesc="Simple iso creator and burner"
