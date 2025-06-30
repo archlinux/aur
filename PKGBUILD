@@ -2,7 +2,7 @@
 # Contributor: Kevin Schmidt <kevin.patrick.schmidt@googlemail.com>
 
 pkgname=openwrt-devel
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc='Metapackage to pull dependencies required to build OpenWrt'
 arch=(any)
@@ -17,6 +17,5 @@ optdepends=(
   help2man
   intltool
   perl-extutils-makemaker
-  'python-setuptools: required from compiling some packages'
-  'python-elftools: compiling uboot for arm'
+  'python-setuptools: compiling u-boot'
 )
