@@ -2,7 +2,7 @@
 
 _pkgname=lutris-gamepad-ui
 pkgname=$_pkgname-git
-pkgver=0.1.3.r29.gb6c6da0
+pkgver=0.1.5.r8.gb10ab0d
 pkgrel=1
 pkgdesc="A simple, TV-friendly, gamepad-navigable frontend for Lutris"
 arch=('x86_64')
@@ -33,6 +33,7 @@ package() {
     install -vDm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 
     install -vDm644 "$_pkgname/electron.js" "$pkgdir/usr/lib/$_pkgname/electron.js"
+    install -vDm644 "$_pkgname/electron_preload.js" "$pkgdir/usr/lib/$_pkgname/electron_preload.js"
 
     cp -rp "$_pkgname/dist" "$pkgdir/usr/lib/$_pkgname/dist"
     cp -rp "$_pkgname/node_modules" "$pkgdir/usr/lib/$_pkgname/node_modules"
