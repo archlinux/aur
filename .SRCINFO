@@ -1,0 +1,18 @@
+pkgbase = python-gmssl
+	pkgdesc = Python crypto for sm2/sm3/sm4
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = https://github.com/py-gmssl/py-gmssl
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-pycryptodomex
+	source = python-gmssl::git+https://github.com/py-gmssl/py-gmssl#tag=4072cbb917d6b36a06f1216d6f403f45d791edf8
+	sha512sums = SKIP
+
+pkgname = python-gmssl
