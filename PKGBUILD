@@ -9,7 +9,7 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=r10473.24f85398f
+pkgver=r11002.cdabad3d0
 pkgrel=1
 epoch=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
@@ -91,7 +91,9 @@ prepare() {
 }
 
 package() {
-  # NOTE: These are the font families that already exist in the [extra] repo.
+  # NOTE: These are the font families that already exist in the [extra] repo
+  #       or should not be installed by this package, due to user reports 
+  #       of system instability.
   declare -A omitted_font_families=(
     [anonymous-pro]=1
     [arimo]=1
@@ -99,6 +101,7 @@ package() {
     [cantarell]=1
     [carlito]=1
     [cousine]=1
+    [dai-banna-sil]=1
     [fira-sans]=1
     [fira-mono]=1
     [inconsolata]=1
