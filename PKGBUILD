@@ -3,7 +3,7 @@
 # Contributor: duxet <duxetlg@gmail.com>
 pkgname=k3s-1.33-bin
 pkgver=1.33.2+k3s1
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
 license=('Apache')
@@ -33,9 +33,9 @@ source_aarch64=(
 md5sums=('2c98ae8a95712a68f1f280fae7dc81cc'
          'c05e139fcdf93434640618c6237892b7'
          '958f9ca03f5ccfb71b52f90ca02cc2c8')
-md5sums_x86_64=('a718dac81f23a64b8b7c795451950f71')
-md5sums_armv7h=('c3c55f856a223be7e85477ffd813bcf1')
-md5sums_aarch64=('c1fb2cf73badb6e27eb2135406aeb3ac')
+md5sums_x86_64=('2d3c6d9ebba261f956d26873f919007d')
+md5sums_armv7h=('0b3fcc8c03686458e4902cd1a0305fb5')
+md5sums_aarch64=('96cfcfe974f887e5cd06acf3bd0b7aa4')
 
 
 
