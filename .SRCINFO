@@ -1,6 +1,6 @@
 pkgbase = imessage-exporter
 	pkgdesc = Export iMessage data and run diagnostics
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/ReagentX/imessage-exporter
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = imessage-exporter
 	depends = gcc-libs
 	optdepends = imagemagick: image conversion support
 	optdepends = ffmpeg: audio and video conversion support
-	source = imessage-exporter-3.0.0.tar.gz::https://github.com/ReagentX/imessage-exporter/archive/3.0.0.tar.gz
-	sha512sums = 823703d77719a7e41ec52da35b33da68c165338d7fbfb23a9e0cd54043e023272fb97d40d0342a98733bc1897abb517af5a75bec4fab805016d1f2618c72fa62
+	source = imessage-exporter-3.0.1.tar.gz::https://github.com/ReagentX/imessage-exporter/archive/3.0.1.tar.gz
+	sha512sums = cf2225e66fe2a7ecda7e0ee3478e52d63ca9860883e75f019ce54455bc8c8ca56e9db235ffe9019f5df3c470f939b025f5a4f44cf9ee394e29bd293e5ab6061c
 
 pkgname = imessage-exporter
