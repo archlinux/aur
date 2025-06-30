@@ -7,7 +7,7 @@ _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium-s (non vendored ${_so})"
 arch=('x86_64')
 url='https://ffmpeg.org/'
-license=('GPL-3.0-or-later')
+license=('LGPL2.1')
 source=(${url}releases/ffmpeg-${_ffver}.tar.xz aom.patch
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 off-other-ffmpeg.hook on-other-ffmpeg.install)
@@ -35,7 +35,6 @@ build() {
   cd ffmpeg-$_ffver
   # Use part of https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
   ./configure \
-    --enable-{gpl,version3} \
     --disable-{all,autodetect,programs,doc,iconv,network,symver} \
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
