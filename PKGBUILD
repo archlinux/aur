@@ -1,20 +1,21 @@
-# Maintainer: Lancelot OWCZARCZAK <lancelot@owczarczak.fr>
+# Maintainer: Paarush Senthilkumar <paarushsk at gmail dot com>
+# Contributor: Lancelot OWCZARCZAK <lancelot@owczarczak.fr>
 
 pkgname=inochi-session
-pkgver=0.8.4
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="Application that allows streaming with Inochi2D puppets"
 arch=('x86_64')
 url='https://inochi2d.com/'
-license=('custom')
+license=('BSD-2-Clause')
 provides=('cimgui.so')
 depends=(dbus freetype2 gcc-libs sdl2 glibc)
 source=(
-		"https://github.com/Inochi2D/inochi-session/releases/download/v$pkgver/inochi-session-linux-x86_64.zip"
-		"https://github.com/Inochi2D/inochi-session/archive/refs/tags/v$pkgver.zip"
-		)
-
-sha512sums=("84f7078b6b5827b391fabc74dbbca9f9e7c0d2be5b69ed063859ef9f4e9b269933e692e01e150947eac48a1a0fcbde986868a3806d669f9c3c33694a6973d9c3" "6293a10be202c6ce40f8688335cb2b853b37b999f0417f771927722c1356ff250c90fe4d9b36643a98c5d75a3bee33b1a751779c9cc2224a6617f7a6da09eb36")
+	"https://github.com/Inochi2D/inochi-session/releases/download/v$pkgver/inochi-session-linux.zip"
+	"https://raw.githubusercontent.com/Inochi2D/inochi-session/refs/tags/v$pkgver/LICENSE"
+)
+sha512sums=('129a9bd8b017778902dc94ccb58faf344236231526e305003283ced1778849bba787561ed73101ce20099dfdcc4a44e69164e808dacbf863d2fd4bd12aadad08'
+            '44f274eead9606bd0674049debf99dedfcddcf670e8aa04d62d40a474905d63441feefc66451a2a202a1b7d2775cc1db070d3dee746220ef2b9bb006060e900e')
 
 package() {
 	cd "$srcdir"
@@ -25,6 +26,5 @@ package() {
 	install -m 644 -D LICENSE-Lua "$pkgdir/usr/share/licenses/inochi-session/LICENSE-Lua"
 	install -m 644 -D LICENSE-Spout2 "$pkgdir/usr/share/licenses/inochi-session/LICENSE-Spout2"
 	install -m 644 -D MaterialIcons-LICENSE "$pkgdir/usr/share/licenses/inochi-session/MaterialIcons-LICENSE"
-	cd "$srcdir/$pkgname-$pkgver"
 	install -m 644 -D LICENSE "$pkgdir/usr/share/licenses/inochi-session/LICENSE"
 }
