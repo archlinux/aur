@@ -1,7 +1,7 @@
 # Maintainer: Flack <puspendrachawlax@gmail.com>
 pkgname=pom
 pkgver=1.0.1
-pkgrel=27
+pkgrel=28
 pkgdesc="A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts"
 arch=("x86_64" "aarch64")
 url="https://github.com/Flack74/pom"
@@ -69,10 +69,33 @@ go mod vendor
 
 # Fix imports in vendor directory
 find vendor -type f -name "*.go" -exec sed -i 's|"pom/|"github.com/Flack74/pom/|g' {} +
+
+# Create a temporary workspace for building
+mkdir -p "${srcdir}/build"
+cp -r . "${srcdir}/build/"
+cd "${srcdir}/build"
+
+# Initialize a new module in the build directory
+cat > go.mod << EOF
+module github.com/Flack74/pom
+
+go 1.21
+
+require (
+github.com/spf13/cobra v1.9.1
+golang.org/x/term v0.32.0
+)
+EOF
+
+# Fix imports in all Go files
+find . -type f -name "*.go" -exec sed -i 's|"pom/|"github.com/Flack74/pom/|g' {} +
+
+# Initialize and update modules
+go mod tidy
 }
 
 build() {
-cd "${srcdir}/${pkgname}"
+cd "${srcdir}/build"
 export CGO_CPPFLAGS="${CPPFLAGS}"
 export CGO_CFLAGS="${CFLAGS}"
 export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -85,11 +108,11 @@ export GOPATH="${srcdir}/gopath"
 export PATH="${GOPATH}/bin:${PATH}"
 
 # Build with vendored dependencies
-go build -mod=vendor -o build/pom ./cmd/pom.go
+go build -o build/pom ./cmd/pom.go
 }
 
 package() {
-cd "${srcdir}/${pkgname}"
+cd "${srcdir}/build"
 install -Dm755 build/pom "$pkgdir/usr/bin/pom"
 install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
