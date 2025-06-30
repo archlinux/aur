@@ -1,31 +1,32 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=snd-hdspe-dkms
-pkgver=1.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='A linux kernel module for RME HDSPe sound cards and extension modules'
 url='https://github.com/Schroedingers-Cat/snd-hdspe'
 arch=('any')
 license=('GPL-3.0-or-later')
 depends=('dkms')
-provides=("snd-hdspe=${pkgver}-${pkgrel}")
-
+provides=("snd-hdspe=${pkgver}")
 source=(
-  "https://github.com/Schroedingers-Cat/snd-hdspe/archive/refs/heads/support-v6.2.zip"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/Schroedingers-Cat/snd-hdspe/archive/refs/tags/v${pkgver}.tar.gz"
   "dkms.conf"
 )
-sha256sums=('5b71f139406177d674e8dd1370cf36f7096bc417fb29464d59fc57b8f3990c45'
-            '483e544884808f5e3c5e8fd22c12eef3297479c4db67909e85714dbe5d5771cd')
-
-_sourcedir="snd-hdspe-support-v6.2"
+sha256sums=('e7a4217c0f848c06d3d22d36b9ddc9feedc71f7ea419a003829e36de334a40dd'
+            '6a135481ba649e0a853b3d68334cb93f869d195495f367c516138b6e7203db6f')
 
 package() {
-  cd "$srcdir/$_sourcedir"
-  install -Dm644 Makefile "$pkgdir/usr/src/snd-hdspe-${pkgver}/Makefile"
-  install -Dm644 "$srcdir/dkms.conf" "$pkgdir/usr/src/snd-hdspe-${pkgver}/dkms.conf"
-  install -Dm644 sound/pci/hdsp/Makefile "$pkgdir/usr/src/snd-hdspe-${pkgver}/sound/pci/hdsp/Makefile"
-  install -Dm644 sound/pci/hdsp/hdspe/Makefile "$pkgdir/usr/src/snd-hdspe-${pkgver}/sound/pci/hdsp/hdspe/Makefile"
-  install -Dm644 sound/pci/hdsp/hdspe/*.{c,h} -t "$pkgdir/usr/src/snd-hdspe-${pkgver}/sound/pci/hdsp/hdspe"
+  cd "$srcdir/snd-hdspe-${pkgver}"
+
+  install -Dm644 Makefile "$pkgdir/usr/src/${pkgname}-${pkgver}/Makefile"
+  install -Dm644 "$srcdir/dkms.conf" "$pkgdir/usr/src/${pkgname}-${pkgver}/dkms.conf"
+  install -Dm644 sound/pci/hdsp/Makefile "$pkgdir/usr/src/${pkgname}-${pkgver}/sound/pci/hdsp/Makefile"
+  install -Dm644 sound/pci/hdsp/hdspe/Makefile "$pkgdir/usr/src/${pkgname}-${pkgver}/sound/pci/hdsp/hdspe/Makefile"
+  install -Dm644 sound/pci/hdsp/hdspe/*.{c,h} -t "$pkgdir/usr/src/${pkgname}-${pkgver}/sound/pci/hdsp/hdspe"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README" 
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE" 
+  cp -r doc "$pkgdir/usr/share/doc/${pkgname}/" 
 }
 
 # vim: ts=2 sw=2 et:
