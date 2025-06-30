@@ -1,7 +1,7 @@
 pkgbase = hacki
 	pkgdesc = A Hacker News reader.
-	pkgver = 2.9.7
-	pkgrel = 2
+	pkgver = 2.11.0
+	pkgrel = 1
 	url = https://github.com/Livinglist/Hacki
 	arch = x86_64
 	license = GPL-3.0-only
@@ -15,7 +15,7 @@ pkgbase = hacki
 	depends = gstreamer
 	depends = gst-plugins-base-libs
 	depends = libsecret
-	source = git+https://github.com/Livinglist/Hacki.git#tag=v2.9.7
-	sha256sums = eb0f5c3f7fce5cb981d0f87a1023e0e6d27b4314bd7166e4e65977efeb90f3b9
+	source = git+https://github.com/Livinglist/Hacki.git#tag=v2.11.0
+	sha256sums = 55b946af1296a6866811f751952add305fe40b87a280cb076bec713cfb10af19
 
 pkgname = hacki

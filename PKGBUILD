@@ -5,8 +5,8 @@
 _pkgname='hacki'
 pkgname=${_pkgname}
 _pkgreponame='Hacki'
-pkgver=2.9.7
-pkgrel=2
+pkgver=2.11.0
+pkgrel=1
 pkgdesc='A Hacker News reader.'
 url='https://github.com/Livinglist/Hacki'
 arch=('x86_64')
@@ -18,21 +18,22 @@ depends=(
 	'libsecret')
 makedepends=('fvm' 'git' 'patchelf' 'cmake' 'ninja' 'clang')
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('eb0f5c3f7fce5cb981d0f87a1023e0e6d27b4314bd7166e4e65977efeb90f3b9')
+sha256sums=('55b946af1296a6866811f751952add305fe40b87a280cb076bec713cfb10af19')
 
 _srcdir="${_pkgreponame}"
-_engine_version=3.27.3
+_engine_version=3.32.5
 
 prepare() {
 	cd "${_srcdir}"
-	sed -i \
-		-e 's/flutter_slidable: ^3.0.0/flutter_slidable: ^3.1.2/' \
-		-e 's/flutter_secure_storage: ^9.2.2/flutter_secure_storage: ^9.2.4/' \
-		'pubspec.yaml'
+	#sed -i \
+	#	-e 's/flutter_slidable: ^3.0.0/flutter_slidable: ^3.1.2/' \
+	#	-e 's/flutter_secure_storage: ^9.2.2/flutter_secure_storage: ^9.2.4/' \
+	#	'pubspec.yaml'
 }
 
 build() {
 	export FVM_CACHE_PATH="$SRCDEST/fvm-cache"
+	export CXXFLAGS+=' -Wno-error=deprecated-literal-operator'
 
 	cd "${_srcdir}"
 	fvm install "$_engine_version"
