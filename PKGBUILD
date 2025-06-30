@@ -11,12 +11,12 @@ pkgname=(
   ppsspp-git
   ppsspp-assets-git
 )
-pkgver=1.18.1.r1606.f573b0c72c
+pkgver=1.19.2.r189.1f2b4de6c1
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64 aarch64)
 url=https://www.ppsspp.org/
-license=(GPL2)
+license=(GPL-2.0-or-later)
 makedepends=(
   clang
   cmake
