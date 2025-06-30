@@ -1,7 +1,7 @@
 # Maintainer: Brycen Granville <brycengranville@outlook.com>
 pkgbase=snapx
 pkgname=(snapx snapx-ui)
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Screenshot tool that handles images, text, and video (fork of ShareX)"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgbase"
-    ver=$(./build.sh --version | grep -Eo '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]+)?(\+[0-9A-Za-z.]+)?$')
-    echo "${ver//+/.}"
+    ./build.sh --version | grep -Eo '^[0-9]+\.[0-9]+\.[0-9]+'
 }
 
 build() {
