@@ -16,7 +16,7 @@ _generic_release=false
 ## real pkgrel is the eval one
 pkgver=10.11.w0.s3e94d12
 pkgrel=1
-eval pkgrel=1
+eval pkgrel=2
 
 ################################################################################################################################
 ################################################################################################################################
@@ -38,7 +38,7 @@ _disabled_staging=(winedevice-Default_Drivers dsound-EAX ntdll-Junction_Points m
                    # dsound-EAX causes crashing in osu! with compat. mode enabled
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="06-27-2025-cad35b3c-3e94d124"
+_patchbase_tag="06-30-2025-cad35b3c-3e94d124"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -245,12 +245,12 @@ _set_vars() {
     if [[ "${_use_mingw}" =~ (llvm|bundled*) ]]; then
       makedepends+=(llvm-mingw-w64-toolchain)
       if [ "${_llvm_mingw_path}" = "." ]; then
-        if [ -f "/opt/llvm-mingw/bin/clang" ]; then
-          _llvm_mingw_path="/opt/llvm-mingw/bin"
+        if [ -f "/opt/llvm-mingw/llvm-mingw-ucrt/bin/clang" ]; then
+          _llvm_mingw_path="/opt/llvm-mingw/llvm-mingw-ucrt/bin"
         elif [ -f "/opt/llvm-mingw/llvm-mingw-msvcrt/bin/clang" ]; then
           _llvm_mingw_path="/opt/llvm-mingw/llvm-mingw-msvcrt/bin"
         else
-          _llvm_mingw_path="/opt/llvm-mingw/llvm-mingw-ucrt/bin"
+          _llvm_mingw_path="/opt/llvm-mingw/bin"
         fi
       fi
       if [ -x "${_llvm_mingw_path}/i686-w64-mingw32-clang" ]; then
