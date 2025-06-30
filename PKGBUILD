@@ -2,29 +2,29 @@
 
 _pkgname="vault-unseal"
 pkgname="${_pkgname}-bin"
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Auto-unseal utility for Hashicorp Vault"
-arch=('x86_64' 'aarch64' 'armv6h')
+arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/lrstanley/${_pkgname}"
 license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("README-${pkgver}.md::${url}/raw/refs/tags/v${pkgver}/README.md"
-        "LICENSE-${pkgver}::${url}/raw/refs/tags/v${pkgver}/LICENSE")
-source_x86_64=("${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64")
+source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
+        "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
 source_aarch64=("${_pkgsrc}-aarch64::${url}/releases/download/v${pkgver}/${_pkgname}_linux_arm64")
-source_armv6h=("${_pkgsrc}-armv6h::${url}/releases/download/v${pkgver}/${_pkgname}_linux_armv6")
-sha256sums=('fd2a1771c0ddae0927a8fc438d90f317845daec3e33b02a545b0550415c647df'
+source_armv7h=("${_pkgsrc}-armv7h::${url}/releases/download/v${pkgver}/${_pkgname}_linux_armv6")
+source_x86_64=("${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64")
+sha256sums=('3179b4dd52a5d1aadab46b0b58fa303c006cdd832cf4b746c3f80120dffb6539'
             '22d93750efb7875342ea064b53b257af2ab534d304e3bf613e968edf018799eb')
-sha256sums_x86_64=('541cd82761a452c8c498737f285ea7ead912c1408f7d84631b3aa2433eb6a659')
-sha256sums_aarch64=('99a7620e521488edc7edac3db9852b2167460c3eca36fc85f9eb3cae7f7b135a')
-sha256sums_armv6h=('9dd42d4c25c867cd7b910ae02743c3f6f3c7f9c4822a127249bcd521d0313617')
+sha256sums_aarch64=('85b92ad85ad6aa9ff4501bf772ada6a81228d5bff25ab2bfe40fc5cf0c0bed52')
+sha256sums_armv7h=('78b9312e1b6a83157f159457efdcbc32ca650edc46748254435d17b4414208fe')
+sha256sums_x86_64=('f6e2ee07a4e10e73b9518a6d45e22ff68797c8a78dbedc7df5789dc279b60284')
 
 package() {
   cd "${srcdir}"
-  install -vDm755 "${_pkgsrc}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -vDm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "LICENSE-${pkgver}"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm755 "${_pkgsrc}-${CARCH}"  "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "${_pkgsrc}-LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
