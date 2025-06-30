@@ -1,0 +1,20 @@
+pkgbase = sonyheadphonesclient
+	pkgdesc = Desktop client recreating the functionality of the Sony Headphones app (XM3/XM4)
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/Plutoberth/SonyHeadphonesClient
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = bluez-libs
+	depends = dbus
+	depends = glew
+	depends = glfw
+	depends = libglvnd
+	conflicts = sonyheadphonesclient-bin
+	source = sonyheadphonesclient::git+https://github.com/Plutoberth/SonyHeadphonesClient.git#commit=b961e43d2cea5ce0b1a0a7fa8e010c858684d1e0
+	sha256sums = SKIP
+
+pkgname = sonyheadphonesclient
