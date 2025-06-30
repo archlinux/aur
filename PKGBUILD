@@ -4,7 +4,7 @@
 
 pkgname=openlist-bin
 _pkgname=${pkgname%-bin}
-pkgver=4.0.4
+pkgver=4.0.5
 pkgrel=1
 pkgdesc="A new AList Fork to Anti Trust Crisis"
 arch=("aarch64" "x86_64")
@@ -23,8 +23,8 @@ sha256sums=('4bc1ccc08f17f5c9ce0fe7fc600ea9d5e1b034d52a776244c627bc13a3fa401d'
             '9259caae294aebb88e0e25f83074e090f3581556c05548544739edf88c028537'
             'fe9c68aa8a6a27477049c839cb5818ba3ddbd88c6813dd2eacea73da70807905'
             'e4f341a876f43b551b67b730aa93dc3a8d2e5f6863ca234852a4389aa64c0aca')
-sha256sums_aarch64=('19c929dd70ab8a0d5dca683eafda9299401e3df6ea5d5e42c1d3b387df9597c3')
-sha256sums_x86_64=('1c68bb38cc0531b05a1b1749baeb1eb099842dce768091c3943ba48a0a5c3dd4')
+sha256sums_aarch64=('a118d053b8779b6069ad95ba218616e18efe4e752933f0af2b3677955a294aa3')
+sha256sums_x86_64=('029a2f5e80a31016a0319dff5d7826eff4668502f3c0f5c06f181713b9a070e2')
 
 package() {
     install -Dm755 openlist ${pkgdir}/usr/bin/openlist
