@@ -1,0 +1,18 @@
+[Unit]
+Description=Opera VPN proxy
+Documentation=https://github.com/Snawoot/opera-proxy
+After=network.target network-online.target
+Requires=network-online.target
+
+[Service]
+EnvironmentFile=/etc/default/opera-proxy
+DynamicUser=yes
+ExecStart=/usr/bin/opera-proxy $OPTIONS
+TimeoutStopSec=5s
+LimitNOFILE=1048576
+LimitNPROC=512
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=default.target
