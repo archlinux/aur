@@ -4,7 +4,7 @@
 
 _pkgname=uutils-coreutils
 pkgname=${_pkgname}-git
-pkgver=0.1.0.r251.g3b225aa
+pkgver=0.1.0.r541.g97041c9
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url='https://github.com/uutils/coreutils'
@@ -21,8 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --long --tags --abbrev=7 \
-    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 export RUSTONIG_DYNAMIC_LIBONIG=1
@@ -36,7 +35,7 @@ export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) ${RUSTFLAGS} --remap-
 package() {
   cd $_pkgname
   make install DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROFILE=release MULTICALL=y \
-    PROG_PREFIX=uu- SKIP_UTILS="runcon chcon" # Avoid SELinux bug for build
+    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/uu-coreutils SKIP_UTILS="runcon chcon" # Avoid SELinux bug for build
   # for $PATH
   _uu="$pkgdir"/usr/bin/uu-coreutils
   install -d "$pkgdir"/usr/lib/uu-coreutils
