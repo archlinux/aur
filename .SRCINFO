@@ -1,0 +1,13 @@
+pkgbase = tailsdvd-git
+	pkgdesc = Simple iso creator and burner
+	pkgver = UNKNOWN
+	pkgrel = 1
+	url = https://github.com/tails1154/tailsdvd
+	arch = x86_64
+	license = GPL
+	depends = cdrtools
+	depends = tk
+	depends = python3
+	source = tailsdvd-git::git+https://github.com/tails1154/tailsdvd
+
+pkgname = tailsdvd-git
