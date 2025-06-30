@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Inochi Session
+Comment=Application that allows streaming with Inochi2D puppets
+Icon=inochi-session
+Exec=/usr/bin/inochi-session
+Terminal=false
+Type=Application
+Categories=Application;
+StartupNotify=true
