@@ -1,9 +1,9 @@
 pkgbase = zenmonitor3-git
 	pkgdesc = A monitoring software for AMD Zen-based CPUs, now with Zen 3 support!
-	pkgver = r90.a09f0b2
-	pkgrel = 2
-	epoch = 2
-	url = https://git.unnamed.website/zenmonitor3
+	pkgver = r94.1e1ceec
+	pkgrel = 1
+	epoch = 3
+	url = https://github.com/detiam/zenmonitor3
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = zenmonitor3-git
 	conflicts = zenmonitor
 	conflicts = zenmonitor-git
 	conflicts = zenmonitor3
-	source = git+https://git.unnamed.website/zenmonitor3
+	source = git+https://github.com/detiam/zenmonitor3
 	sha512sums = SKIP
 
 pkgname = zenmonitor3-git
