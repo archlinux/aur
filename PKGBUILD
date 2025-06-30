@@ -1,7 +1,7 @@
 # Maintainer: Flack <puspendrachawlax@gmail.com>
 pkgname=pom
 pkgver=1.0.1
-pkgrel=14
+pkgrel=15
 pkgdesc="A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts"
 arch=("x86_64" "aarch64")
 url="https://github.com/Flack74/pom"
@@ -39,6 +39,13 @@ EOF
 
 # Initialize and update modules
 go mod tidy
+
+# Create temporary workspace
+mkdir -p "${srcdir}/workspace/github.com/Flack74"
+ln -sf "${srcdir}/${pkgname}" "${srcdir}/workspace/github.com/Flack74/pom"
+export GOWORK="${srcdir}/workspace/go.work"
+echo "go 1.21" > "${GOWORK}"
+echo "use ." >> "${GOWORK}"
 }
 
 build() {
