@@ -1,7 +1,7 @@
 # Maintainer: Flack <puspendrachawlax@gmail.com>
 pkgname=pom
 pkgver=1.0.1
-pkgrel=11
+pkgrel=12
 pkgdesc="A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts"
 arch=("x86_64" "aarch64")
 url="https://github.com/Flack74/pom"
@@ -21,13 +21,13 @@ prepare() {
     
     # Create a new module with correct path
     rm -f go.mod go.sum
-    go mod init pom
+    go mod init github.com/Flack74/pom
     
     # Fix imports in all Go files
-    find . -type f -name "*.go" -exec sed -i 's|"pom/|"pom/|g' {} +
+    find . -type f -name "*.go" -exec sed -i 's|"pom/|"github.com/Flack74/pom/|g' {} +
 
 # Add replace directive
-echo "replace pom => ./" >> go.mod
+echo "replace github.com/Flack74/pom => ./" >> go.mod
 
 # Initialize and update modules
 go mod tidy
