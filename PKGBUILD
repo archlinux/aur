@@ -23,10 +23,10 @@ sha256sums=('c4ace67054888cdaecaf282c6cf05ea6784b6f02c400c34d312cf7b609a5dd9a'
             'SKIP')
 
 declare -A _submods
-_submods['citeproc/data/schema']='schema'
-source+=(schema::git+https://github.com/citation-style-language/schema.git)
-_submods['citeproc/data/locales']='locales'
-source+=(locales::git+https://github.com/citation-style-language/locales.git)
+_submods['citeproc/data/schema']='csl-schema'
+source+=(csl-schema::git+https://github.com/citation-style-language/schema.git)
+_submods['citeproc/data/locales']='csl-locales'
+source+=(csl-locales::git+https://github.com/citation-style-language/locales.git)
 
 prepare() {
     cd "$pkgname"

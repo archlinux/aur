@@ -16,8 +16,8 @@ pkgbase = python-citeproc-py
 	depends = python
 	depends = python-lxml
 	source = python-citeproc-py::git+https://github.com/brechtm/citeproc-py.git#tag=v0.8.2
-	source = schema::git+https://github.com/citation-style-language/schema.git
-	source = locales::git+https://github.com/citation-style-language/locales.git
+	source = csl-schema::git+https://github.com/citation-style-language/schema.git
+	source = csl-locales::git+https://github.com/citation-style-language/locales.git
 	sha256sums = c4ace67054888cdaecaf282c6cf05ea6784b6f02c400c34d312cf7b609a5dd9a
 	sha256sums = SKIP
 	sha256sums = SKIP
