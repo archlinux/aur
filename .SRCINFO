@@ -1,5 +1,5 @@
 pkgbase = sonyheadphonesclient-bluetooth
-	pkgdesc = A fork of SonyHeadphonesClient with support for Sony Bluetooth/TWS/XM5+ devices
+	pkgdesc = Desktop client recreating the functionality of the Sony Headphones app (Bluetooth/TWS/XM5+)
 	pkgver = 1.3.17
 	pkgrel = 1
 	url = https://github.com/mos9527/SonyHeadphonesClient
