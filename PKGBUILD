@@ -2,7 +2,7 @@
 
 _name=("protoc-gen-grpc-gateway" "protoc-gen-openapiv2")
 pkgname="grpc-gateway"
-pkgver=2.26.3
+pkgver=2.27.1
 pkgrel=1
 pkgdesc="gRPC to JSON proxy generator following the gRPC HTTP spec"
 arch=('aarch64' 'x86_64')
@@ -14,22 +14,31 @@ makedepends=('go')
 provides=("${_name[@]}")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('264f12df71a1419576869a994a728e07f0a3ba8b991aff21b40433026229651f')
+sha256sums=('918792ce31a184a2cab577d871bd15edb81546afbb33cb50ed139a8cdd52629b')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
+  go mod download -x
+  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
+  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+
   mkdir -p "build"
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  cd "${srcdir}/${_pkgsrc}"
   for _binary in "${_name[@]}"; do
-    go build -o ./"build/${_binary}" ./"${_binary}"
+    go build -v -o ./"build/${_binary}" ./"${_binary}"
   done
 }
 
