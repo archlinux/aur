@@ -1,6 +1,6 @@
 pkgbase = blocky
 	pkgdesc = Fast and lightweight DNS proxy as ad-blocker
-	pkgver = 0.25
+	pkgver = 0.26.2
 	pkgrel = 1
 	url = https://github.com/0xERR0R/blocky
 	install = blocky.install
@@ -12,7 +12,7 @@ pkgbase = blocky
 	makedepends = go
 	depends = glibc
 	backup = etc/blocky.yml
-	source = blocky-0.25.tar.gz::https://github.com/0xERR0R/blocky/archive/v0.25.tar.gz
+	source = blocky-0.26.2.tar.gz::https://github.com/0xERR0R/blocky/archive/v0.26.2.tar.gz
 	source = blocky.service
 	source = blocky.sysusers
 	source = blocky.yml
