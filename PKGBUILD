@@ -33,7 +33,7 @@ source_aarch64=(
 md5sums=('2c98ae8a95712a68f1f280fae7dc81cc'
          'c05e139fcdf93434640618c6237892b7'
          '958f9ca03f5ccfb71b52f90ca02cc2c8')
-md5sums_x86_64=('8042cdfd25befcb95ff478770cb701a6')
+md5sums_x86_64=('a718dac81f23a64b8b7c795451950f71')
 md5sums_armv7h=('c3c55f856a223be7e85477ffd813bcf1')
 md5sums_aarch64=('c1fb2cf73badb6e27eb2135406aeb3ac')
 
