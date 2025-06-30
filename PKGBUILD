@@ -1,7 +1,7 @@
 # Maintainer: Flack <puspendrachawlax@gmail.com>
 pkgname=pom
 pkgver=1.0.1
-pkgrel=25
+pkgrel=26
 pkgdesc="A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts"
 arch=("x86_64" "aarch64")
 url="https://github.com/Flack74/pom"
@@ -63,6 +63,9 @@ golang.org/x/term v0.32.0
 
 replace github.com/Flack74/pom => ./
 EOF
+
+# Create vendor directory
+go mod vendor
 }
 
 build() {
@@ -79,7 +82,6 @@ export GOPATH="${srcdir}/gopath"
 export PATH="${GOPATH}/bin:${PATH}"
 
 # Build with vendored dependencies
-go mod vendor
 go build -mod=vendor -o build/pom ./cmd/pom.go
 }
 
