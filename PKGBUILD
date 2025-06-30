@@ -10,12 +10,13 @@ url='https://ffmpeg.org/'
 license=('GPL-3.0-or-later')
 source=(${url}releases/ffmpeg-${_ffver}.tar.xz aom.patch
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
-{off,on}-other-ffmpeg.hook)
+off-other-ffmpeg.hook on-other-ffmpeg.install)
+install=on-other-ffmpeg.install
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             '0a4693424f173c4c4d0f1853189d1bd422dcc08f512cc33af3d2acf1e2483e8c'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
             '0385dbeb9c6f5485c323a61786fa8e2680a44838cf216582d385231bd1a9bad6'
-            'a81395915fd97e3fc0139bd5b8f5fa7f9a0b45209a9b0def067a001b4da274de')
+            '28744d069c956fb5def82163fbaed06c1d5b7f718c9451ed82a4af039124255e')
 depends=(glibc)
 makedepends=(gcc diffutils nasm patch sed)
 optdepends=(electron{34..36}": replace ${_so}")
@@ -59,5 +60,5 @@ package(){
   install -d "${pkgdir}"/opt/vivaldi
   ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.7.4
   # Opera has strange LD_PRELOAD
-  install -Dm644 {off,on}-other-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
+  install -Dm644 off-other-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
