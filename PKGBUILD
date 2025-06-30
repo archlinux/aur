@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Ruziczka <aur@sebastianruziczka.de>
 pkgname=looksyk-desktop
 _pkgnameshort=looksyk
-pkgver=1.10.4
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="A markdown centric, fast and local personal knowledge platform"
 arch=("x86_64")
@@ -53,7 +53,7 @@ package() {
 
 	cp -r "frontend/looksyk/dist/looksyk/browser/" "${pkgdir}/usr/share/${_pkgnameshort}/static/"
 	install -D -m644 "application-wrapper/Looksyk/out/looksyk-linux-x64/resources/app.asar" "${pkgdir}/usr/share/${_pkgnameshort}/app.asar"
-	install -D -m644 "icon/Looksyk-scaled.png" "${pkgdir}/usr/share/${_pkgnameshort}/icon.png"
+	install -D -m644 "icon/Looksyk_256.png" "${pkgdir}/usr/share/${_pkgnameshort}/icon.png"
 
 	install -D -m644 "application-wrapper/Looksyk.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
