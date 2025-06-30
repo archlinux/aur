@@ -2,7 +2,7 @@
 
 _name=mwparserfromhell
 pkgname=python-mwparserfromhell-git
-pkgver=0.7.0.r18.gfd1b08c
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A Python parser for MediaWiki wikicode"
 arch=(x86_64)
@@ -37,8 +37,6 @@ pkgver() {
 
 build() {
   cd $_name
-  # avoid error with c23 https://github.com/earwig/mwparserfromhell/issues/340
-  CFLAGS+=" -std=gnu17"
   python -m build --wheel --no-isolation
 }
 
