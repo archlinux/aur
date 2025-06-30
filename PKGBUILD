@@ -1,7 +1,7 @@
 # Maintainer: Flack <puspendrachawlax@gmail.com>
 pkgname=pom
 pkgver=1.0.1
-pkgrel=13
+pkgrel=14
 pkgdesc="A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts"
 arch=("x86_64" "aarch64")
 url="https://github.com/Flack74/pom"
@@ -29,11 +29,16 @@ prepare() {
 # Add replace directive
 echo "replace github.com/Flack74/pom => ./" >> go.mod
 
+# Add required dependencies
+cat >> go.mod << EOF
+require (
+github.com/spf13/cobra v1.9.1
+golang.org/x/term v0.32.0
+)
+EOF
+
 # Initialize and update modules
 go mod tidy
-
-# Verify module setup
-go list -m all
 }
 
 build() {
