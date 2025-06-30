@@ -1,7 +1,7 @@
 pkgbase = pom
 	pkgdesc = A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts
 	pkgver = 1.0.1
-	pkgrel = 31
+	pkgrel = 32
 	url = https://github.com/Flack74/pom
 	arch = x86_64
 	arch = aarch64
