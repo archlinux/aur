@@ -31,8 +31,6 @@ notify-send "Mailpit upgrade" "Ready to install"
 
 makepkg -s
 
-sudo systemctl restart mailpit.service
-
 git add .SRCINFO
 git add PKGBUILD
 git commit -m "pump to $latest"
