@@ -1,6 +1,6 @@
 pkgbase = labymodlauncher-appimage
 	pkgdesc = A launcher for LabyMod, a Minecraft client that adds a bunch of useful features
-	pkgver = 2.1.10
+	pkgver = 2.1.12
 	pkgrel = 1
 	url = https://www.labymod.net
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = labymodlauncher-appimage
 	replaces = labymod-appimage
 	options = !strip
 	options = !debug
-	source_x86_64 = labymodlauncher-2.1.10-x86_64.AppImage::https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-2.1.10.AppImage
-	b2sums_x86_64 = 6986ff9ce0c41602fb2599f86fa880e6eaf16732e57af1bdb436216a70eaed4af1fe178c0bd50469459680af00245199b1f56d1a76365a08c1c0e482f2838d88
+	source_x86_64 = labymodlauncher-2.1.12-x86_64.AppImage::https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-2.1.12.AppImage
+	b2sums_x86_64 = 7d674fd12280de813fdca96beb49eae753fa19acc3ce5df544d6d49d06d798ce8700c78498c5cf2654d6274f371394a99b56cc193903f1473ce55004a633a749
 
 pkgname = labymodlauncher-appimage

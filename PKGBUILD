@@ -4,7 +4,7 @@
 
 _pkgname="labymodlauncher"
 pkgname="${_pkgname}-appimage"
-pkgver=2.1.10
+pkgver=2.1.12
 pkgrel=1
 pkgdesc="A launcher for LabyMod, a Minecraft client that adds a bunch of useful features"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=("${_pkgname}" 'labymod-appimage')
 replaces=('labymod-appimage')
 _pkgsrc="${_pkgname}-${pkgver}"
 source_x86_64=("${_pkgsrc}-x86_64.AppImage::https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-${pkgver}.AppImage")
-b2sums_x86_64=('6986ff9ce0c41602fb2599f86fa880e6eaf16732e57af1bdb436216a70eaed4af1fe178c0bd50469459680af00245199b1f56d1a76365a08c1c0e482f2838d88')
+b2sums_x86_64=('7d674fd12280de813fdca96beb49eae753fa19acc3ce5df544d6d49d06d798ce8700c78498c5cf2654d6274f371394a99b56cc193903f1473ce55004a633a749')
 options=('!strip' '!debug')
 
 prepare() {
