@@ -3,7 +3,7 @@
 # Contributor: ChatGPT (OpenAI) <https://openai.com> — assisted with Git configuration, and packaging guidance.
 
 pkgname='audiokit-kde'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="KDE audio utility suite that extends Dolphin context menus with format conversion, etc."
 arch=('any')
@@ -25,7 +25,7 @@ package() {
   cd "$srcdir" || return 1
 
   # Install scripts
-  install -Dm755 "$srcdir/AudioKit-KDE/src/audiokit-wma2flac"            "$pkgdir/usr/bin/audiokit-wma2flac"
+  install -Dm755 "$srcdir/AudioKit-KDE/src/audiokit-2flac"            "$pkgdir/usr/bin/audiokit-2flac"
 
   # Install .desktop file
   install -Dm644 "$srcdir/AudioKit-KDE/audiokit.desktop" "$pkgdir/usr/share/kio/servicemenus/audiokit.desktop"
