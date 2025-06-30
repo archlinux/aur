@@ -1,7 +1,7 @@
 # shellcheck disable=SC2034,SC2148,SC2128,SC2154,SC2164
 # Maintainer: javalsai <javalsai@proton.me>
 pkgname=lidm-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 depends=('pam')
 pkgdesc="A fully colorful customizable TUI display manager made in C. (release binary)"
@@ -16,7 +16,7 @@ source=(
     "lidm.1::https://raw.githubusercontent.com/javalsai/lidm/v$pkgver/assets/man/lidm.1"
     "lidm-config.5::https://raw.githubusercontent.com/javalsai/lidm/v$pkgver/assets/man/lidm-config.5"
 )
-sha256sums=('7bc64f0f10994c062ea80ea2c6ee9d45828567b448e170fb3e7af4111ce1c2dc'
+sha256sums=('c4e82ae2c08c223ef417edca50f86f516e3f9154339f67110c87d01855673fcf'
             'a8d29e220c23b48b5cd3aac0c0e395e90a9d6c9ca9c9c35a45ad6f3df5f55542'
             '7f2fb91f55088be1a9b1c93ecf5d6c1e437f369b56df2eacc9d10b00c93c39f8'
             '5dbe088ce29c95a400080190560d4308c10519a953e83d2d5020dfdf47dd830f')
