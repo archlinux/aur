@@ -1,8 +1,8 @@
 # Maintainer: Brycen Granville <brycengranville@outlook.com>
 pkgbase=snapx
 pkgname=(snapx snapx-ui)
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Screenshot tool that handles images, text, and video (fork of ShareX)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/BrycensRanch/SnapX"
@@ -12,11 +12,16 @@ makedepends=(
     'dotnet-sdk>=9.0'
     'clang'
     'zlib'
-    'curl'
 )
 
 source=("$pkgbase::git+https://github.com/BrycensRanch/SnapX.git")
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "$pkgbase"
+    ver=$(./build.sh --version | grep -Eo '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]+)?(\+[0-9A-Za-z.]+)?$')
+    echo "${ver//+/.}"
+}
 
 build() {
     cd "$pkgbase"
@@ -42,15 +47,15 @@ package_snapx() {
         'libxrandr'
         'libxcb'
         'dbus'
-        'vlc'
         'xdg-utils'
     )
 
     cd "$pkgbase"
     ./build.sh install --prefix /usr --dest-dir "${pkgdir}" --skip compile
     rm -f "${pkgdir}/usr/bin/snapx-ui"
-    rm -f "${pkgdir}/usr/bin/libSkiaSharp.so"
-    rm -f "${pkgdir}/usr/bin/libHarfBuzzSharp.so"
+    rm -f "${pkgdir}/usr/lib/snapx/snapx-ui"
+    rm -f "${pkgdir}/usr/lib/snapx/libSkiaSharp.so"
+    rm -f "${pkgdir}/usr/lib/snapx/libHarfBuzzSharp.so"
 }
 
 package_snapx-ui() {
@@ -63,6 +68,6 @@ package_snapx-ui() {
     # Keep the files only for Avalonia UI
     rm -rf "${pkgdir}/usr/share"
     rm -f "${pkgdir}/usr/bin/snapx"
-    rm -f "${pkgdir}/usr/bin/libe_sqlite3.so"
-
+    rm -f "${pkgdir}/usr/lib/snapx/snapx"
+    rm -f "${pkgdir}/usr/lib/snapx/libe_sqlite3.so"
 }
