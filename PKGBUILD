@@ -4,8 +4,8 @@
 # Contributor : Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 pkgname=whalebird-bin
 _pkgname=Whalebird
-pkgver=6.2.2
-_electronversion=34
+pkgver=6.2.3
+_electronversion=36
 pkgrel=1
 pkgdesc="Single-column Fediverse client for desktop.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -21,8 +21,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('653cc708e22f8d868da096295328adf031d8243dd216394d07f17f0eb29ca677'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('6e6813295e68ab8d229684e2bb5c2c677f70a050add1b500c3913a10b3424275'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -31,7 +35,8 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    _get_electron_version
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
