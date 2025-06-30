@@ -1,7 +1,7 @@
 # Maintainer: Flack <puspendrachawlax@gmail.com>
 pkgname=pom
 pkgver=1.0.1
-pkgrel=15
+pkgrel=16
 pkgdesc="A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts"
 arch=("x86_64" "aarch64")
 url="https://github.com/Flack74/pom"
@@ -26,9 +26,6 @@ prepare() {
     # Fix imports in all Go files
     find . -type f -name "*.go" -exec sed -i 's|"pom/|"github.com/Flack74/pom/|g' {} +
 
-# Add replace directive
-echo "replace github.com/Flack74/pom => ./" >> go.mod
-
 # Add required dependencies
 cat >> go.mod << EOF
 require (
@@ -43,13 +40,13 @@ go mod tidy
 # Create temporary workspace
 mkdir -p "${srcdir}/workspace/github.com/Flack74"
 ln -sf "${srcdir}/${pkgname}" "${srcdir}/workspace/github.com/Flack74/pom"
-export GOWORK="${srcdir}/workspace/go.work"
-echo "go 1.21" > "${GOWORK}"
-echo "use ." >> "${GOWORK}"
+cd "${srcdir}/workspace"
+echo "go 1.21" > go.work
+echo "use github.com/Flack74/pom" >> go.work
 }
 
 build() {
-cd "$pkgname"
+cd "${srcdir}/workspace/github.com/Flack74/pom"
 export CGO_CPPFLAGS="${CPPFLAGS}"
 export CGO_CFLAGS="${CFLAGS}"
 export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -63,7 +60,7 @@ go build -o build/pom ./cmd/pom.go
 }
 
 package() {
-cd "$pkgname"
+cd "${srcdir}/workspace/github.com/Flack74/pom"
 install -Dm755 build/pom "$pkgdir/usr/bin/pom"
 install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
