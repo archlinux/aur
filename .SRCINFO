@@ -1,0 +1,21 @@
+pkgbase = sonyheadphonesclient-bluetooth
+	pkgdesc = A fork of SonyHeadphonesClient with support for Sony Bluetooth/TWS/XM5+ devices
+	pkgver = 1.3.17
+	pkgrel = 1
+	url = https://github.com/mos9527/SonyHeadphonesClient
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = libxcursor
+	makedepends = libxkbcommon
+	makedepends = ninja
+	makedepends = wayland
+	makedepends = xorg-xinput
+	depends = bluez-libs
+	depends = dbus
+	depends = libglvnd
+	source = sonyheadphonesclient-bluetooth::git+https://github.com/mos9527/SonyHeadphonesClient.git#tag=1.3.17
+	sha256sums = SKIP
+
+pkgname = sonyheadphonesclient-bluetooth
