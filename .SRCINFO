@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-gu-in
 	pkgdesc = Gujarati (India) language pack for Firefox Nightly
-	pkgver = 142.0a1.20250629.212254
+	pkgver = 142.0a1.20250630.093946
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-gu-in
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-gu-IN-142.0a1.20250629.212254.xpi
-	source = firefox-nightly-i18n-gu-IN-142.0a1.20250629.212254.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-142.0a1.gu-IN.langpack.xpi
-	sha256sums = 1b99d1c46a1a77a1b868cd1dca78b049545ff5fd84fde1d06aa2f175ee299270
+	noextract = firefox-nightly-i18n-gu-IN-142.0a1.20250630.093946.xpi
+	source = firefox-nightly-i18n-gu-IN-142.0a1.20250630.093946.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-142.0a1.gu-IN.langpack.xpi
+	sha256sums = bc5c37a8532bc158b995e2984b401d6329beacca81a85b8ad52b0011c856d3e1
 
 pkgname = firefox-nightly-i18n-gu-in
