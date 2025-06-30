@@ -10,11 +10,12 @@ case "${XMODIFIERS}" in
 esac
 export QT_IM_MODULE
 
+# 以下bug已经在 kde plasma 6.3.90 版本之后修复
 # https://bugs.kde.org/show_bug.cgi?id=469273
-if [ "${XDG_SESSION_DESKTOP}" = "KDE" ] || [ "${XDG_SESSION_DESKTOP}" = "plasma" ] && [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
-    XwaylandClientsScale=$(kreadconfig${KDE_SESSION_VERSION} --group KScreen --key XwaylandClientsScale)
-    [ "${XwaylandClientsScale:-true}" = "true" ] && unset QT_AUTO_SCREEN_SCALE_FACTOR
-fi
+# if [ "${XDG_SESSION_DESKTOP}" = "KDE" ] || [ "${XDG_SESSION_DESKTOP}" = "plasma" ] && [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
+#     XwaylandClientsScale=$(kreadconfig${KDE_SESSION_VERSION} --group KScreen --key XwaylandClientsScale)
+#     [ "${XwaylandClientsScale:-true}" = "true" ] && unset QT_AUTO_SCREEN_SCALE_FACTOR
+# fi
 : ${QT_AUTO_SCREEN_SCALE_FACTOR:=1}
 export QT_AUTO_SCREEN_SCALE_FACTOR
 
