@@ -2,7 +2,7 @@
 
 pkgname=fensterchef
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Ratpoison inspired window manager for X11'
 arch=(any)
 url=https://github.com/fensterchef/fensterchef

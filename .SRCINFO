@@ -1,7 +1,7 @@
 pkgbase = fensterchef
 	pkgdesc = Ratpoison inspired window manager for X11
 	pkgver = 2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fensterchef/fensterchef
 	arch = any
 	license = MIT
