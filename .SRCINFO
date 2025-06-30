@@ -1,6 +1,6 @@
 pkgbase = r-karyoploter
 	pkgdesc = Plot customizable linear genomes displaying arbitrary data
-	pkgver = 1.33.0
+	pkgver = 1.34.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/karyoploteR
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = r-karyoploter
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
 	optdepends = r-txdb.mmusculus.ucsc.mm10.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/karyoploteR_1.33.0.tar.gz
-	sha256sums = cf015923b8fd3a03c420b651f62943682091b8f933b0153b2ebb188950e66661
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/karyoploteR_1.34.2.tar.gz
+	sha256sums = 7771de68160fa4e5279307a0e59300c7247897e8d893784305b36c07bee70c59
 
 pkgname = r-karyoploter
