@@ -4,13 +4,13 @@
 
 _name=gdbgui
 pkgname=python-$_name
-pkgver=0.15.2.0
+pkgver=0.15.3.0
 pkgrel=3
 pkgdesc="Browser-based frontend to gdb. Debug C, C++, Go, or Rust."
 arch=('any')
 url='https://www.gdbgui.com'
 license=('GPL')
-depends=('python>=3.6'
+depends=('python>=3.13'
          'python-brotli'
          'python-gevent'
          'python-gevent-websocket'
@@ -22,12 +22,11 @@ depends=('python>=3.6'
 makedepends=(python-build python-installer python-setuptools python-wheel yarn)
 checkdepends=(python-greenlet python-nox python-pytest python-pytest-cov)
 source=("https://github.com/cs01/gdbgui/archive/$pkgver.tar.gz")
-b2sums=('ffdce1923aead7d5cf202aa6954bbedcfa55cb27351b7635dd9636a8b398e4d9d8baa1c59789ba47e80ae581fa6510cae2017d0639cc7f9137d8ce5e0324172b')
+b2sums=('06015f5a5d6d51d83eace9be492869898a4f35cc43c4e99459cc42490b5b66a3beea8123b7afb3aa4edd2ed7f47652abcc368f625c43337d7676e079b3120faa')
 
 prepare() {
     cd $_name-$pkgver
     yarn install # download dependencies
-    sed -i 's/greenlet==3.0.0/greenlet/g' requirements.txt # greenlet 3.0.0 uses features removed from Python 3.11
 }
 
 build() {
