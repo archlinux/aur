@@ -1,7 +1,7 @@
 # Maintainer: Flack <puspendrachawlax@gmail.com>
 pkgname=pom
 pkgver=1.0.1
-pkgrel=18
+pkgrel=19
 pkgdesc="A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts"
 arch=("x86_64" "aarch64")
 url="https://github.com/Flack74/pom"
@@ -49,10 +49,23 @@ echo "use github.com/Flack74/pom" >> go.work
 # Copy source files to GOPATH
 mkdir -p "${GOPATH}/src/github.com/Flack74"
 cp -r "${srcdir}/${pkgname}" "${GOPATH}/src/github.com/Flack74/pom"
+
+# Create a temporary module for local development
+cd "${srcdir}/${pkgname}"
+cat > go.mod << EOF
+module github.com/Flack74/pom
+
+go 1.21
+
+require (
+github.com/spf13/cobra v1.9.1
+golang.org/x/term v0.32.0
+)
+EOF
 }
 
 build() {
-cd "${GOPATH}/src/github.com/Flack74/pom"
+cd "${srcdir}/${pkgname}"
 export CGO_CPPFLAGS="${CPPFLAGS}"
 export CGO_CFLAGS="${CFLAGS}"
 export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -66,7 +79,7 @@ go build -o build/pom ./cmd/pom.go
 }
 
 package() {
-cd "${GOPATH}/src/github.com/Flack74/pom"
+cd "${srcdir}/${pkgname}"
 install -Dm755 build/pom "$pkgdir/usr/bin/pom"
 install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
