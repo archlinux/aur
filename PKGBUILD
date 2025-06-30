@@ -7,7 +7,7 @@
 pkgname=nhiicc
 epoch=1
 pkgver=20240710.1
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url='https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mEventesting.htm'
 license=(custom)
@@ -22,6 +22,7 @@ source=("CMS_mNHIICC_Setup-$pkgver.Linux.zip"::"https://cloudicweb.nhi.gov.tw/cl
         nhiicc.service
         nhiicc.rules
         regen-certs.sh)
+noextract=("CMS_mNHIICC_Setup-$pkgver.Linux.zip")
 # See https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mEventesting.htm for MD5 sums
 md5sums=('3bbad14d8ce82a504811319e06c3cdac'
          '3a7ba068b49eab2edca614ea2495e706'
@@ -30,7 +31,7 @@ md5sums=('3bbad14d8ce82a504811319e06c3cdac'
 install=nhiicc.install
 
 prepare() {
-  tar xf mLNHIICC_Setup.${pkgver}.tar.xz
+  bsdtar xOf CMS_mNHIICC_Setup-${pkgver}.Linux.zip | bsdtar x
 
   # Delete insecure RUNPATH
   patchelf --remove-rpath mLNHIICC_Setup/x64/mLNHIICC
