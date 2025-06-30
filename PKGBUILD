@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vutronmusic
 _pkgname=VutronMusic
-pkgver=1.9.0
+pkgver=2.0.0
 _electronversion=34
 _nodeversion=22
 pkgrel=1
@@ -24,8 +24,8 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('cb9e972551dff91bceb85dd23e919f5b6f121e234fc2237ebbdb5911d91da3d9'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('c61859ba40dc22c88eef01ecd36b4bd6a38282f5baf76a9fc04b4a406a17f00f'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -78,10 +78,12 @@ build() {
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run build:pre
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config=buildAssets/builder/config.js
+    rm -rf "${srcdir}/${pkgname}-${pkgver}/release/linux-"*/resources/app.asar.unpacked/node_modules/font-list/libs/{darwin,win32}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/release/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/buildAssets/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
