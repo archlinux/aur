@@ -1,10 +1,10 @@
 # Maintainer: Guoyi <kuoi@bioarchlinux.org>
 
 _pkgname=ggtangle
-_pkgver=0.0.6
+_pkgver=0.0.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=2
+pkgrel=1
 pkgdesc='Draw Network with Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -28,8 +28,8 @@ optdepends=(
   r-scatterpie
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d93ad9bf8d3f5c11c7d6ca6cbde7832a')
-b2sums=('1e4e6efb170206c49aaadbf806c5f0260ef447c391bbcc131d4f288a0db7ddd718a863f5e228a77a022da79df6b370d529bdd497d6ba8a843ce39dc46a6dff6a')
+md5sums=('f635d0efe86220e4ff68ab35f7e4068b')
+b2sums=('fcfde3ed847d7e825acac06d1a417101f648a80c18cb5e24c661b27e7d9a892eb12572497e1359b8ab327b8f93928ca191c63b6f45f446afa90a195e10e64854')
 
 build() {
   mkdir build
