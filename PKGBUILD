@@ -1,6 +1,6 @@
 # Maintainer: Lander
 pkgname=rmfakecloud
-pkgver=0.0.24
+pkgver=0.0.25
 pkgrel=1
 pkgdesc="host your own cloud for the remarkable"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "rmfakecloud.conf"
 )
 sha256sums=(
-  '30d5cdb9a62ca48474d9554fa2adf82c309f6ebd60ecce63e31290a765804158'
+  'c9b7b8e51c1d8bea835fd74232062a2da3db60589b34e6823c1507ff2d72e8c8'
   '5f5ba109ab19df8f00bae6300f0f7028a7995f2b54d0505e703dd5f04d83468a'
   'f992a133142f9706e700531fc23ea7eb8ba7f2bfda97626bcccd121e06610a10'
 )
