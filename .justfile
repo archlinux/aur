@@ -10,12 +10,6 @@ jq := require("jq")
 vercmp := require("vercmp")
 makepkg := require("makepkg")
 
-tag := `
-  gh release list --repo MystenLabs/sui --exclude-pre-releases --exclude-drafts --json tagName | \
-  jq -re --arg network 'testnet' '.[] | .tagName | select(. | startswith($network))' | \
-  head -1
-  `
-
 bump:
   #!/bin/sh
   set -e
@@ -23,7 +17,14 @@ bump:
   current="$(grep 'pkgver=' PKGBUILD | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')"
   echo "Current version: $current"
 
-  latest="$(echo '{{tag}}' | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')"
+  tag="$(
+    gh release list --repo MystenLabs/sui --exclude-pre-releases --exclude-drafts --json tagName | \
+    jq -re --arg network 'testnet' '.[] | .tagName | select(. | startswith($network))' | \
+    head -1
+  )"
+  echo "Latest tag: $tag"
+
+  latest="$(echo "$tag" | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')"
 
   if [ "$(vercmp "$current" "$latest")" -ne "-1" ]; then
     echo "No version bump needed"
