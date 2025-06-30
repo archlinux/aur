@@ -1,6 +1,6 @@
 pkgbase = termpicker
 	pkgdesc = A color picker for the terminal
-	pkgver = 1.3.9
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/ChausseBenjamin/termpicker
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = termpicker
 	optdepends = xsel: clipboard support on X11
 	provides = termpicker
 	options = !debug
-	source = termpicker-v1.3.9.tar.gz::https://github.com/ChausseBenjamin/termpicker/releases/download/v1.3.9/termpicker_Linux_x86_64.tar.gz
-	sha256sums = 880a960adaf4183c2f0aa3eb254a6c2812c926816192d9575d90b012684ac65b
+	source = termpicker-v1.4.0.tar.gz::https://github.com/ChausseBenjamin/termpicker/releases/download/v1.4.0/termpicker_Linux_x86_64.tar.gz
+	sha256sums = 090f08e1425a1759f26a83b38009352aec90c16e79b003b4c2444ce446c68a2d
 
 pkgname = termpicker

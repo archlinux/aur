@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Chausse <benjamin@chausse.xyz>
 pkgname='termpicker'
-pkgver=1.3.9
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A color picker for the terminal"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
 )
 
 
-sha256sums=('880a960adaf4183c2f0aa3eb254a6c2812c926816192d9575d90b012684ac65b')
+sha256sums=('090f08e1425a1759f26a83b38009352aec90c16e79b003b4c2444ce446c68a2d')
 
 
 package() {
