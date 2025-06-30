@@ -1,21 +1,18 @@
-# Maintainer: katt <magunasu.b97@gmail.com>
+# Maintainer: JL2210 <larrowe.semaj11@gmail.com>
 
 pkgname=bmfdec-git
-pkgver=r49.abb99dc
+pkgver=r50.c7b72f6
 pkgrel=1
-pkgdesc='Decompile binary MOF file (BMF) from WMI buffer (git master)'
+pkgdesc="Decompile binary MOF file (BMF) from WMI buffer (git master)"
 arch=(x86_64)
-url=https://github.com/pali/bmfdec
-license=(GPL2)
-depends=(glibc)
+url="https://github.com/pali/bmfdec"
+license=('GPL-2.0-only')
+depends=('glibc')
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+"${url}".git)
-md5sums=('SKIP')
-
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname%-git}"
@@ -23,9 +20,9 @@ pkgver() {
 }
 
 build() {
-	make -C ${pkgname%-git}
+	make -C "${pkgname%-git}"
 }
 
 package() {
-	install -Dm755 -t "${pkgdir}/usr/bin" ${pkgname%-git}/bmf{2mof,dec,parse}
+	install -Dm755 -t "${pkgdir}/usr/bin" "${pkgname%-git}"/bmf{2mof,dec,parse}
 }
