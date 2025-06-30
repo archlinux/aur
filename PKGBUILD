@@ -1,7 +1,7 @@
 # Maintainer: Flack <puspendrachawlax@gmail.com>
 pkgname=pom
 pkgver=1.0.1
-pkgrel=17
+pkgrel=18
 pkgdesc="A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts"
 arch=("x86_64" "aarch64")
 url="https://github.com/Flack74/pom"
@@ -32,6 +32,8 @@ require (
 github.com/spf13/cobra v1.9.1
 golang.org/x/term v0.32.0
 )
+
+replace github.com/Flack74/pom => ./
 EOF
 
 # Initialize and update modules
