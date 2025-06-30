@@ -1,6 +1,6 @@
 pkgbase = gamescope-nvidia-git
 	pkgdesc = SteamOS session compositing window manager (NVIDIA patch)
-	pkgver = 3.16.9.r0.g5d25b665
+	pkgver = 3.16.14.r2.g81e40911
 	pkgrel = 1
 	url = https://github.com/sharkautarch/gamescope/tree/nvidia-fix
 	install = gamescope.install
@@ -41,18 +41,16 @@ pkgbase = gamescope-nvidia-git
 	source = gamescope::git+https://github.com/ValveSoftware/gamescope.git
 	source = subprojects|glm::git+https://github.com/g-truc/glm.git#commit=0af55ccecd98d4e5a8d1fad7de25ba429d60e863
 	source = subprojects|stb::git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9
-	source = reverts-bd722f7.patch
 	source = thirdparty|SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers/#commit=d790ced752b5bfc06b6988baadef6eb2d16bdf96
 	source = subprojects|vkroots::git+https://github.com/Joshua-Ashton/vkroots#commit=5106d8a0df95de66cc58dc1ea37e69c99afc9540
-	source = subprojects|openvr::git+https://github.com/ValveSoftware/openvr.git#commit=ebd425331229365dc3ec42d1bb8b2cc3c2332f81
+	source = subprojects|openvr::git+https://github.com/ValveSoftware/openvr.git#commit=ff87f683f41fe26cc9353dd9d9d7028357fd8e1a
 	source = src|reshade::git+https://github.com/Joshua-Ashton/reshade#commit=696b14cd6006ae9ca174e6164450619ace043283
 	source = subprojects|libdisplay-info::git+https://gitlab.freedesktop.org/emersion/libdisplay-info#commit=66b802d05b374cd8f388dc6ad1e7ae4f08cb3300
 	source = subprojects|libliftoff::git+https://gitlab.freedesktop.org/emersion/libliftoff.git#commit=8b08dc1c14fd019cc90ddabe34ad16596b0691f4
-	source = subprojects|wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=4bc5333a2cbba0b0b88559f281dbde04b849e6ef
+	source = subprojects|wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=54e844748029d4874e14d0c086d50092c04c8899
 	sha512sums = SKIP
 	sha512sums = 16c0f045f0d0e223278d9cf3267a297eb33c30c773e67c5e863fb435cb24ff76cc886152e42f20dd759cd001398c8fb0bdfa2d7b1515a9ee0ac96c1741fa6eaa
 	sha512sums = 53ff8f7a4ae987b84398bf6b35bccb5aec5337d4e57660f599776eb62f692aa40be671e2c456f24de16c07d27272431b807ca3fd4a97d297bb2a8f35c3df665f
-	sha512sums = 52a7c6670c2ceb2110b1a374db152abf8697e731665ceed9b651f94f95300579d6488c931a29c11d08bf2dc11af5859b0189757a6ebcc4ec494d10c65a088b27
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
