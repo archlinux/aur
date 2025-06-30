@@ -32,15 +32,14 @@ package() {
   
   #setting python3 branch
   cd "${srcdir}/${pkgname}"
-  git checkout ${_branch}
+  git checkout ${_git_branch}
 
   #cp node server and node updater
   cd "${srcdir}"
-  cp -R --no-dereference --preserve=mode,links -v * "${pkgdir}/opt/${pkgname}"
-  ln -s /opt/ethoscope-node/scripts/ethoscope_updater "${pkgdir}/opt/"
+  cp -R --no-dereference --preserve=mode,links -v * "${pkgdir}/opt/ethoscope"
   
   #changing the remote GIT source to local BARE created during installation
-  cd "${pkgdir}/opt/${pkgname}"
+  cd "${pkgdir}/opt/ethoscope"
   git remote set-url origin /srv/git/ethoscope.git
   
   # Install service files as symbolic links

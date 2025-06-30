@@ -10,13 +10,13 @@ post_install() {
     git config --system --add safe.directory /srv/git/ethoscope.git
 
     #echo "changing the remote GIT source to local BARE created during installation"
-    cd /opt/ethoscope-node
+    cd /opt/ethoscope
     git remote set-url origin /srv/git/ethoscope.git
     git checkout dev
     
     #installing python modules
-    cd /opt/ethoscope-node/node_src/ && python setup.py develop
-    cd /opt/ethoscope-node/src/ &&  python setup.py develop
+    cd /opt/ethoscope/src/node/ && pip install -e . --break-system-packages
+    cd /opt/ethoscope/src/ethoscope && pip install -e . --break-system-packages  
     
     echo "enabling NODE specific systemd service files"
     systemctl enable ethoscope_node.service ethoscope_update_node.service ethoscope_backup.service ethoscope_video_backup.service 
@@ -42,14 +42,14 @@ post_install() {
 # arg 2:  the old package version
 post_upgrade() {
     echo "changing the remote GIT source to local BARE created during installation"
-    cd /opt/ethoscope-node
+    cd /opt/ethoscope
     git remote set-url origin /srv/git/ethoscope.git
 
     #setting branch
     git checkout dev
 
-    cd /opt/ethoscope-node/node_src/ && python setup.py develop
-    cd /opt/ethoscope-node/src/ &&  python setup.py develop
+    cd /opt/ethoscope/src/node && pip install -e . --break-system-packages
+    cd /opt/ethoscope/src/ethoscope && pip install -e . --break-system-packages
 }
 
 # arg 1:  the old package version
@@ -65,7 +65,6 @@ pre_remove() {
 # arg 1:  the old package version
 post_remove() {
     #removes the git directorie just in case
-    rm -rf /opt/ethoscope-node
-    rm -rf /opt/ethoscope-updater
+    rm -rf /opt/ethoscope
     rm -rf /srv/git/ethoscope.git
 }
