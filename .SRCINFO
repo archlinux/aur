@@ -10,7 +10,7 @@ pkgbase = pom
 	makedepends = git
 	depends = libnotify
 	depends = pulseaudio
-	source = git+https://github.com/Flack74/Pom.git#tag=v1.0.0
+	source = git+https://github.com/Flack74/pom.git#tag=v1.0.0
 	sha256sums = SKIP
 
 pkgname = pom

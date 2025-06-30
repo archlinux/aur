@@ -8,7 +8,7 @@ url="https://github.com/Flack74/Pom"
 license=('MIT')
 depends=('libnotify' 'pulseaudio')
 makedepends=('go' 'git')
-source=("git+https://github.com/Flack74/Pom.git#tag=v${pkgver}")
+source=("git+https://github.com/Flack74/pom.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
