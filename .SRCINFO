@@ -1,7 +1,7 @@
 pkgbase = powertabeditor
 	pkgdesc = Guitar tablature viewer and editor
-	pkgver = 2.0.21
-	pkgrel = 2
+	pkgver = 2.0.22
+	pkgrel = 1
 	url = https://powertab.github.io/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -18,7 +18,7 @@ pkgbase = powertabeditor
 	depends = qt6-base
 	optdepends = timidity++: MIDI playback support
 	optdepends = fluidsynth: MIDI playback support
-	source = https://github.com/powertab/powertabeditor/archive/refs/tags/2.0.21.tar.gz
-	sha256sums = 15064f0a7d96ada9ecbb905f6f599690f16dde0b515128dab70ec60adba5612e
+	source = https://github.com/powertab/powertabeditor/archive/refs/tags/2.0.22.tar.gz
+	sha256sums = ccbdc16dab08be390e7bc386676a4cd581ebcc2c2cf4b72534e6649448de55bc
 
 pkgname = powertabeditor
