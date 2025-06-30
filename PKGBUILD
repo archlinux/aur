@@ -1,7 +1,7 @@
 # Maintainer: Flack <puspendrachawlax@gmail.com>
 pkgname=pom
 pkgver=1.0.1
-pkgrel=12
+pkgrel=13
 pkgdesc="A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts"
 arch=("x86_64" "aarch64")
 url="https://github.com/Flack74/pom"
@@ -31,6 +31,9 @@ echo "replace github.com/Flack74/pom => ./" >> go.mod
 
 # Initialize and update modules
 go mod tidy
+
+# Verify module setup
+go list -m all
 }
 
 build() {
@@ -44,7 +47,7 @@ export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readon
 # Ensure we're using Go modules
 export GO111MODULE=on
 go mod download
-go build -o build/pom
+go build -o build/pom ./cmd/pom.go
 }
 
 package() {
