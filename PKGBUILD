@@ -1,30 +1,39 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="vault-unseal"
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Auto-unseal utility for Hashicorp Vault"
-arch=('x86_64' 'aarch64' 'armv6h')
+arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/lrstanley/${pkgname}"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('786fc8037376c7f3e1ac8c44927d97713ab15c7148146ae9cbd890fb0dd1d261')
+sha256sums=('29fc48e895527db804502ef2364316a89ef8a74cd1826d69b4198f1d25200f8e')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
+  go mod download -x
+  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
+  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+
   mkdir -p "build"
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  cd "${srcdir}/${_pkgsrc}"
   go build -v -o "build/${pkgname}" .
 }
 

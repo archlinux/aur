@@ -1,15 +1,15 @@
 pkgbase = vault-unseal
 	pkgdesc = Auto-unseal utility for Hashicorp Vault
-	pkgver = 0.7.0
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/lrstanley/vault-unseal
-	arch = x86_64
 	arch = aarch64
-	arch = armv6h
+	arch = armv7h
+	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = vault-unseal-0.7.0.tar.gz::https://github.com/lrstanley/vault-unseal/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = 786fc8037376c7f3e1ac8c44927d97713ab15c7148146ae9cbd890fb0dd1d261
+	source = vault-unseal-0.7.2.tar.gz::https://github.com/lrstanley/vault-unseal/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = 29fc48e895527db804502ef2364316a89ef8a74cd1826d69b4198f1d25200f8e
 
 pkgname = vault-unseal
