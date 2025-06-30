@@ -8,9 +8,10 @@ pkgdesc='Add codecs to Operas and vivaldi-snapshot'
 arch=('x86_64')
 url='https://chromium.googlesource.com/chromium/third_party/ffmpeg'
 license=('LGPL2.1')
-source=({off,on}-opera-bundled-ffmpeg.hook)
+source=(off-opera-bundled-ffmpeg.hook on-opera-ff.install)
+install=on-opera-ff.install
 sha256sums=('08bf8603cb7b1dfe69ca28b4843c29cc96fd1faf01b37f123f2194ac33ff47a4'
-            '530e7a0c919c1cd9ae703b3c28a013556d93eb98f4968127581111ad7830aa3e')
+            'f243a58140022f927515cba982a2286894159eb0f5ea84992e904872007db820')
 depends=(vivaldi-ffmpeg-codecs)
 conflicts=(opera-{,developer-,beta-}ffmpeg-codecs{,-bin} chromium-ffmpeg-codecs)
 provides=("${conflicts[@]}")
@@ -20,5 +21,5 @@ package() {
   # install -d "$pkgdir/opt/vivaldi-snapshot"
   # ln -sf /opt/vivaldi/libffmpeg.so.$_viva "$pkgdir"/opt/vivaldi-snapshot/libffmpeg.so.7.5
   # Opera has strange LD_PRELOAD
-  install -Dm644 {off,on}-opera-bundled-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
+  install -Dm644 off-opera-bundled-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
