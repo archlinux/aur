@@ -1,7 +1,7 @@
 # Maintainer: Flack <puspendrachawlax@gmail.com>
 pkgname=pom
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts"
 arch=("x86_64" "aarch64")
 url="https://github.com/Flack74/pom"
@@ -14,10 +14,15 @@ sha256sums=("SKIP")
 prepare() {
     cd "$pkgname"
     mkdir -p build/
-    # Fix module path
+    # Fix module path in go files
     find . -type f -name "*.go" -exec sed -i 's|"pom/|"github.com/Flack74/pom/|g' {} +
-# Ensure module name is correct in go.mod
-sed -i 's|module github.com/Flack74/Pom|module github.com/Flack74/pom|g' go.mod
+# Fix module name in go.mod
+echo "module github.com/Flack74/pom" > go.mod.new
+echo "" >> go.mod.new
+sed '1d' go.mod >> go.mod.new
+mv go.mod.new go.mod
+# Initialize and update modules
+go mod tidy
 }
 
 build() {
@@ -30,7 +35,6 @@ export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readon
 
 # Ensure we're using Go modules
 export GO111MODULE=on
-go mod tidy
 go mod download
 go build -o build/pom
 }
