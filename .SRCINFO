@@ -4,14 +4,9 @@ pkgbase = libxml2-2.9
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
 	arch = x86_64
-	arch = aarch64
-	arch = arm
-	arch = armv7h
-	arch = i686
-	arch = pentium4
-	arch = powerpc
 	license = custom:MIT
 	makedepends = python
+	makedepends = sed
 	depends = icu
 	depends = ncurses
 	depends = readline
@@ -41,8 +36,6 @@ pkgbase = libxml2-2.9
 pkgname = libxml2-2.9
 	optdepends = python2: Python 2 bindings
 	optdepends = python: Python bindings
-	provides = libxml2=2.9.10
-	provides = libxml2.so=2.9.10
 
 pkgname = libxml2-2.9-docs
 	pkgdesc = XML C parser and toolkit (documentation)
