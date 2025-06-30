@@ -61,6 +61,7 @@ pkgbase = amarok-git
 	depends = kcolorscheme
 	optdepends = libmtp: support for portable media devices
 	optdepends = loudmouth: backend needed by mp3tunes for syncing
+	optdepends = liblastfm-qt6: Last.fm service
 	provides = amarok
 	conflicts = amarok
 	source = git+https://invent.kde.org/multimedia/amarok.git

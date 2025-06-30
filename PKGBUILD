@@ -25,6 +25,7 @@ makedepends=(git extra-cmake-modules kdoctools gdk-pixbuf2 knotifyconfig vulkan-
              libmtp loudmouth)
 optdepends=("libmtp: support for portable media devices"
             "loudmouth: backend needed by mp3tunes for syncing"
+            "liblastfm-qt6: Last.fm service"
             )
 conflicts=(amarok)
 provides=(amarok)
@@ -40,7 +41,6 @@ build() {
   local _flags=(
     -DWITH_GPODDER=OFF
     -DWITH_IPOD=OFF
-    -DWITH_LASTFM=OFF
     -DBUILD_TESTING=OFF
   )
 
