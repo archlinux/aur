@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-soifunc
 	pkgdesc = Plugin for Vapoursynth: soifunc
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/shssoichiro/soifunc
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = vapoursynth-plugin-soifunc
 	optdepends = vapoursynth-plugin-bm3dcuda-cpu: BM3D support, CPU version
 	optdepends = vapoursynth-plugin-dfttest2: dfttest support, GPU version
 	optdepends = vapoursynth-plugin-dfttest2-cpu: dfttest support, CPU version
-	source = https://files.pythonhosted.org/packages/38/2a/efe4b2e4bda629cedb7c1524d242395ab8460d6c744dfea5d5cf34d00663/soifunc-0.10.0-py3-none-any.whl
-	sha256sums = c9ba660b07912f4f2ba53fd9f61a1a77452a09760fe3fc61c013e3923a9439ca
+	source = https://files.pythonhosted.org/packages/3a/ec/f147f07b1a22f9a8156c2caed5f71dfe19901355d3fafcd69bc0dce018ab/soifunc-0.10.1-py3-none-any.whl
+	sha256sums = 7805ea3a0aa5767611026657198e105b3683214db1654fb9c2200768eb2ff130
 
 pkgname = vapoursynth-plugin-soifunc
