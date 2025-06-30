@@ -5,7 +5,7 @@
 pkgname=pfusp-bin
 pkgver=2.2.2
 pkgvernodots=222
-pkgrel=1
+pkgrel=2
 pkgdesc='Fujitsu SP series Image Scanner Driver for SANE'
 url='http://imagescanner.fujitsu.com/global/dl/'
 arch=('x86_64')
