@@ -3,13 +3,13 @@
 # Contributor: ChatGPT (OpenAI) <https://openai.com> — assisted with Git configuration, and packaging guidance.
 
 pkgname='audiokit-kde'
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="KDE audio utility suite that extends Dolphin context menus with format conversion, etc."
 arch=('any')
 url="https://github.com/TomB16/AudioKit-KDE"
 license=('MIT')
-depends=('ffmpeg')  # Add any runtime deps here
+depends=('ffmpeg' 'flacon' 'tempered-git')  # Add any runtime deps here
 makedepends=('git')
 source=("git+https://github.com/TomB16/AudioKit-KDE.git#branch=main")  # Fetch from GitHub repo
 sha256sums=('SKIP')  # Don't need this when using Git as source
