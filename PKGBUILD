@@ -3,7 +3,7 @@
 # Contributor: duxet <duxetlg@gmail.com>
 pkgname=k3s-1.33-bin
 pkgver=1.33.2+k3s1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
 license=('Apache')
