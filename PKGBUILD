@@ -7,7 +7,7 @@
 # Contributor: Felix Schindler <aur dot felixschindler dot net>
 # Contributor: Lucas H. Gabrielli <heitzmann@gmail.com>
 pkgname=slepc
-pkgver=3.23.1
+pkgver=3.23.2
 pkgrel=1
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=(x86_64)
@@ -19,7 +19,7 @@ makedepends=(gcc-fortran cython python-setuptools)
 provides=('slepc4py')
 install=${pkgname}.install
 source=(${url}/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
-md5sums=('fe40ac5cd967044f9d2317a12482e797')
+md5sums=('66134fb1a1ee6de329e3c7c9e53574a7')
 
 build() {
   # get SLEPC_DIR
@@ -68,19 +68,11 @@ package() {
   export SLEPC_DIR=${_install_dir}
   unset PETSC_ARCH
 
-  sed -i "s#${pkgdir}##g" "${_dest_dir}/include/slepcconf.h"
-  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/pkgconfig/SLEPc.pc"
-  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/modules/${pkgname}/${pkgver}"
-  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/configure-hash"
   sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepc_rules"
   sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepc_rules_doc.mk"
   sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepc_rules_util.mk"
   sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepc_variables"
-  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepcrules"
-  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepcvariables"
-  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/uninstall.py"
-  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc4py/lib/slepc.cfg"
-  sed -i "s#${_build_dir}#${_install_dir}#g" "${_dest_dir}/lib/slepc/conf/uninstall.py"
+  sed -i "s#${pkgdir}##g" "${_dest_dir}/src/binding/slepc4py/src/slepc4py/lib/slepc.cfg"
 
   # remove logs containing references to the build dir
   rm -f "${_dest_dir}/lib/slepc/conf/configure.log"
