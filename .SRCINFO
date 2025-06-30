@@ -8,7 +8,7 @@ pkgbase = git-commit-helper
 	makedepends = rust
 	makedepends = cargo
 	depends = git
-	source = git-commit-helper-0.5.3.tar.gz::https://github.com/zccrs/git-commit-helper/archive/97e04a7955d500c74c7b3db8cbea406c1f7177a2.tar.gz
-	sha256sums = dfc1eff828c12c1241d01c9e4f981d64ffe11c279b7e19312b33d5a54580435f
+	source = git-commit-helper-0.5.3.tar.gz::https://github.com/zccrs/git-commit-helper/archive/4e4f833d21152e639094451e320cc16725081a0b.tar.gz
+	sha256sums = fc49b997f6e268e9b037efbc9631c6e30b9878f548a00d17d8f9729a8b2c2072
 
 pkgname = git-commit-helper

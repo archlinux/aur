@@ -9,11 +9,11 @@ depends=('git')
 makedepends=('rust' 'cargo')
 
 # 直接使用当前目录作为源
-source=("$pkgname-$pkgver.tar.gz::https://github.com/zccrs/git-commit-helper/archive/97e04a7955d500c74c7b3db8cbea406c1f7177a2.tar.gz")
-sha256sums=('dfc1eff828c12c1241d01c9e4f981d64ffe11c279b7e19312b33d5a54580435f')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/zccrs/git-commit-helper/archive/4e4f833d21152e639094451e320cc16725081a0b.tar.gz")
+sha256sums=('fc49b997f6e268e9b037efbc9631c6e30b9878f548a00d17d8f9729a8b2c2072')
 
 pkgver() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-${commit_hash}"
     # 尝试获取最新的 git tag 版本号（去除 v 前缀）
     local tag_ver=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' || echo "")
     if [ -n "$tag_ver" ]; then
@@ -26,25 +26,25 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-${commit_hash}"
     export CARGO_HOME="$srcdir/cargo-home"
     cargo fetch --locked || true
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-${commit_hash}"
     export CARGO_HOME="$srcdir/cargo-home"
     RUSTUP_TOOLCHAIN=stable cargo build --release
 }
 
 check() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-${commit_hash}"
     export CARGO_HOME="$srcdir/cargo-home"
     RUSTUP_TOOLCHAIN=stable cargo test --release || true
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-${commit_hash}"
 
     # 创建必要的目录
     mkdir -p "$pkgdir/usr/bin"
