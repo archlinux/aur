@@ -1,6 +1,6 @@
 pkgbase = tailsdvd-git
 	pkgdesc = Simple iso creator and burner
-	pkgver = UNKNOWN
+	pkgver = git
 	pkgrel = 1
 	url = https://github.com/tails1154/tailsdvd
 	arch = x86_64
