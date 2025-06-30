@@ -9,8 +9,8 @@ depends=('git')
 makedepends=('rust' 'cargo')
 
 # 直接使用当前目录作为源
-source=("$pkgname-$pkgver.tar.gz::https://github.com/zccrs/git-commit-helper/archive/4e4f833d21152e639094451e320cc16725081a0b.tar.gz")
-sha256sums=('fc49b997f6e268e9b037efbc9631c6e30b9878f548a00d17d8f9729a8b2c2072')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/zccrs/git-commit-helper/archive/41c122ac8861f78b7825cf908a5a2e288d4158bd.tar.gz")
+sha256sums=('ae08de019155777bf340c86a2847cea1a92deaf7f332ae9ed7edca2c662b9e02')
 
 pkgver() {
     cd "$srcdir/$pkgname-${commit_hash}"
