@@ -2,7 +2,7 @@
 # Maintainer: vcalv
 
 pkgname=mergiraf-bin
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A syntax-aware git merge driver for a growing collection of programming languages and file formats"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
   "GOVERNANCE::https://codeberg.org/mergiraf/mergiraf/raw/tag/v${pkgver}/GOVERNANCE.md"
   "README::https://codeberg.org/mergiraf/mergiraf/raw/tag/v${pkgver}/README.md"
 )
-sha512sums=('8c7134b7dbf75dc73826460929e1129a13df97e478f9316f0fc7a9201683e4c873a99fe977f9d08a1f4e66ae574a9c1c78e143b62ed4755d8613417a94b6dbe6'
+sha512sums=('f14f1867a6983cfdceee56483f1fcc86139270683cd2c06b97e0481f18f8e824f2b0d003457c5ff2dd3b0f74d965d3909451cefc3086226cde1e3c52c19270e9'
             '900ef9b1d0e1435fb3aad32f035edf8890538292ebb3104af2feb386fb25df134ed0172a0ec542b2c25ff69a39ae62b34ad17e01b3522067a7328abb25aa4fff'
             '489ba698e7507e38c60c4bcb902000a04a0988e6a22084ce5229c23294f78cf0d39d27e3fcfd9fe2e352d1ba835ae9cfc86308b4e3c87f657c4115fe5a39f03c'
             '763410b7d192c424563dcaef2e97ffaa4038536001ca68cec98f836d2ae247f587ce7fb204bdfcf13332e7f573f19b8bacf7edd0c011304a00d4e668710bb3c0')
