@@ -1,0 +1,60 @@
+--- pug-1.3/src/pug.sh	2025-06-29 22:54:55.597386659 -0400
++++ pug-1.3/src/pug.sh	2025-06-29 23:51:36.571174761 -0400
+@@ -26,10 +26,8 @@
+     GIST_NAT=$(pacman -Qqen | gist -p -f "${PACMANFILE}" -d 'Pacman package list.')
+     GIST_AUR=$(pacman -Qqem | gist -p -f "${AURFILE}" -d 'AUR package list.')
+ 
+-    echo "GIST_NAT=${GIST_NAT}" | \
+-        sed 's/https:\/\/gist.github.com\///g' > "${pkgdir}/etc/pug";
+-    echo "GIST_AUR=${GIST_AUR}" | \
+-        sed 's/https:\/\/gist.github.com\///g' >> "${pkgdir}/etc/pug";
++    echo "GIST_NAT=${GIST_NAT##*/}" > "/etc/pug"
++    echo "GIST_AUR=${GIST_AUR##*/}" >> "/etc/pug"
+ 
+     echo "    [ ${cyan}${GIST_NAT}${white} ]"
+     echo "    [ ${cyan}${GIST_AUR}${white} ]"
+@@ -91,20 +89,26 @@
+ 
+ pug() {
+     PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+-
+-    if [ -n "${1}" ] && [ ! -d "${1}" ]; then
+-        echo "${bold}${red}:: ${white}${1}: package directory not found.${normal}"
+-        exit 1
++    
++    if ! printf '%s\n' "$@" | grep -q -- '--from-hook'; then
++        if [ -n "${1}" ] && [ ! -d "${1}" ]; then
++            echo "${bold}${red}:: ${white}${1}: package directory not found.${normal}"
++            exit 1
++        fi
+     fi
+-
++    
+     pkgdir="${1}"
+ 
+     test -r ${pkgdir}/etc/pug && . ${pkgdir}/etc/pug
+ 
+     # Determine if fresh install is needed
+     if test -z "${GIST_NAT}" || test -z "${GIST_AUR}"; then
+-        echo "${bold}${cyan}::${white} Pug: fresh install is needed.${normal}"
+-        pug_install "${pkgdir}"
++        if printf '%s\n' "$@" | grep -q -- '--from-hook'; then
++            echo "${bold}${cyan}::${white} Pug: fresh install is needed - run ${green}sudo /usr/bin/pug.sh ${normal}"
++        else
++            echo "${bold}${cyan}::${white} Pug: fresh install is needed.${normal}"
++            pug_install "${pkgdir}"
++        fi
+     else
+         IS_FAKEROOT=false
+         if echo "${LD_LIBRARY_PATH}" | grep libfakeroot > /dev/null; then
+@@ -115,5 +119,9 @@
+         fi
+     fi
+ }
++if [ "$(id -u)" -eq 0 ]; then
++    pug "$@"
++else
++    echo "${bold}${cyan}::${white} Pug: cannot run as a normal user - it must be run with sudo"
++fi
+ 
+-pug "$@"
