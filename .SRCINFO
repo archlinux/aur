@@ -1,0 +1,11 @@
+pkgbase = cubems
+	pkgdesc = A replacement master server for Cube (2001)
+	pkgver = r12.a710781
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = base-devel
+	source = git+https://github.com/EvelynMakesThings/CubeMS.git
+	sha256sums = SKIP
+
+pkgname = cubems
