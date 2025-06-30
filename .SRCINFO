@@ -1,0 +1,12 @@
+pkgbase = git-commit-helper
+	pkgdesc = 一个帮助规范 git commit message 的工具
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/zccrs/git-commit-helper
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = git
+
+pkgname = git-commit-helper
