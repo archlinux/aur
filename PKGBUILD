@@ -3,7 +3,7 @@
 
 pkgname=cyberghostvpn-gui
 pkgver=1.0.3   # Update with the latest release version
-pkgrel=5
+pkgrel=6
 pkgdesc="A GUI for CyberGhost VPN"
 arch=('x86_64')
 url="https://github.com/picharly/cyberghostvpn-gui"
@@ -13,7 +13,7 @@ makedepends=()
 source=("https://github.com/picharly/cyberghostvpn-gui/releases/download/${pkgver}/cyberghostvpn-gui_linux_amd64_${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/picharly/cyberghostvpn-gui/refs/heads/main/extras/cyberghostvpn-gui.desktop"
         "https://raw.githubusercontent.com/picharly/cyberghostvpn-gui/refs/heads/main/extras/cyberghostvpn-gui.png")
-sha256sums=('8bfe8b0810e508283a67560d8e629c7ff2171c3c6888bae781fa7d7266ea901a'
+sha256sums=('8af482fc8650a4801d0f818f367576ebfde82a9175804d6ca8e11e4daff44170'
             '1df2b448a5e5386162ea8a467ead6987f17cd3220538e7c0b8891335168296fb'
             'a9d8cd955a0435741d460145918532295a44e1dfc2c1dab10c6f88cddd438980')  # Use 'SKIP' for GitHub releases, because they might change
 
