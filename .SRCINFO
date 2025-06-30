@@ -1,7 +1,7 @@
 pkgbase = pfusp-bin
 	pkgdesc = Fujitsu SP series Image Scanner Driver for SANE
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://imagescanner.fujitsu.com/global/dl/
 	arch = x86_64
 	license = custom

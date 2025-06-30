@@ -13,7 +13,7 @@ license=('custom')
 depends=('sane')
 
 source=("https://origin.pfultd.com/downloads/IMAGE/driver/ubuntu/${pkgvernodots}/pfusp-ubuntu_${pkgver}_amd64.deb"        
-        pfusp.pdf::"http://origin.pfultd.com/downloads/IMAGE/driver/ubuntu/${pkgvernodots}/P2U3-0210-04ENZ0.pdf"
+        pfusp.pdf::"http://origin.pfultd.com/downloads/IMAGE/driver/ubuntu/221/P2U3-0210-04ENZ0.pdf"
         60-pfusp.rules
         pfusp
         pfusp.conf        
