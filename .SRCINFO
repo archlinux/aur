@@ -1,0 +1,12 @@
+pkgbase = ttf-belgrad
+	pkgdesc = A font based on futura, with some added Art Nouveau elements.
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = OFL
+	source = https://dl.dafont.com/dl/?f=belgrad
+	source = https://openfontlicense.org/documents/OFL.txt
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = ttf-belgrad
