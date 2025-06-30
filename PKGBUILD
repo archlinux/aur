@@ -3,35 +3,31 @@
 
 pkgname='spdk'
 pkgver=25.05
-pkgrel=1
+pkgrel=2
 pkgdesc='libraries for high performance storage IO'
 arch=('x86_64')
 license=('BSD-3-Clause')
 url='https://spdk.io/'
-conflicts=('isa-l_crypto') # TODO: bundled version is used now. Switch to using AUR package after it will be upgraded
-depends=('dpdk' 'fuse3' 'isa-l' 'libaio' 'liburing')
+depends=('dpdk' 'fuse3' 'isa-l' 'isa-l_crypto' 'libaio' 'liburing')
 optdepends=('python-configshell-fb' 'python-grpcio' 'python-ipaddress' 'python-pyparsing') # for spdk-cli and spdk-rpc
 makedepends=('patchelf')
 
 source=(
   "https://github.com/spdk/spdk/archive/refs/tags/v${pkgver}.tar.gz"
-  'https://github.com/intel/isa-l_crypto/archive/refs/tags/v2.25.0.tar.gz'
   'p1.patch'
   'p2.patch'
 )
 
 b2sums=(
   '4d7b53ccdbd7715480b0276b8329c9e51a47a454c71d2143e56e1acfa2be80bab2ef28b4f77dfc0aca8047e887f2f1c19c084230c43e101bf2124cf443ec95b0'
-  '18328b404a2686718fc8cf9bc596816e4521ec85440e8aad2bb40d32eabc606807617fc08c2790c4bb0a0b84648fa9820a4a6c19ac6a3cbbbc2cd96bddfd1eb9'
-  '74fe7f254268766b8b38020e0efbaeb6d3585d03980517d3a5a8d8a0bccc3691dd0acea8807a2e9a913fa3c7957330cc25278da23f1c54a357da2787796e31c4'
-  '80ed9a3e7f8644b78ea754ca6768c0521a9e4998dbef2e2a2a5dce43b6d4792c62ebe852d7fbe4fba85867c00200e5278f539a37601aeda656041a04a58ae5ca'
+  'f8ae75b1de783858184518d6ebc2ae704705375975a6bff59af7859a2baa9a7fdc3c8c62dde39da3fc51664a977b5de4d7251b0b15ab18dd3be7a43d250b7bdc'
+  '5387487e1dbaf90e7c1297e6fee35b29c2c57f2c4e5f4ca521dec1ba86e822813971c468ff3f27fa1df4b407575faf88d3d5540b300da5faf54ffe45f50022c6'
 )
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cp -r ../isa-l_crypto-2.25.0/* './isa-l-crypto/'
   sed -i 's/isa-l\/include/isa-l/' lib/util/crc16.c lib/util/crc64.c lib/util/crc_internal.h lib/util/xor.c
-  sed -i 's/\.\.\/isa-l\/include/isa-l/' lib/accel/accel_sw.c
+  sed -i -e 's/\.\.\/isa-l\/include/isa-l/' -e 's/\.\.\/isa-l-crypto\/include/isa-l_crypto/' lib/accel/accel_sw.c
   patch configure ../../p1.patch
   patch Makefile ../../p2.patch
 }
@@ -54,5 +50,5 @@ package() {
   chmod +x "${pkgdir}/usr/bin/spdk-setup"
 
   install -Dm644 'scripts/bash-completion/spdk' "${pkgdir}/usr/share/bash-completion/completions/spdk"
-  install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" 'LICENSE'
 }

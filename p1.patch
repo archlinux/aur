@@ -1,4 +1,5 @@
-1234,1237c1234,1235
+1244,1248c1244,1245
+< 	# make sure the submodule is initialized
 < 	if [ ! -f "$rootdir"/isa-l/autogen.sh ]; then
 < 		echo "ISA-L is required but was not found, please init the submodule with:"
 < 		echo "  git submodule update --init"
@@ -6,7 +7,11 @@
 ---
 > 	if [[ ! -d /usr/include/isa-l ]]; then
 > 		echo "ISA-L is required but was not found"
-1269,1288c1267
+1268,1270d1264
+< 		elif lt "$ver" 2.34; then
+< 			#For gas v2.24~v2.34, sve2 instructions are not supported. To workaround it, sve2 optimization should be disabled
+< 			ISAL_CRYPTO_OPTS+=("--disable-sve2")
+1280,1299c1274
 < if [[ "${CONFIG[ISAL]}" = "y" ]]; then
 < 	cd $rootdir/isa-l
 < 	ISAL_LOG=$rootdir/.spdk-isal.log
@@ -29,3 +34,29 @@
 < else
 ---
 > if [[ "${CONFIG[ISAL]}" = "n" ]]; then
+1309,1312c1284,1285
+< 	if [ ! -f "$rootdir"/isa-l-crypto/autogen.sh ]; then
+< 		echo "ISA-L-crypto is required but was not found, please init the submodule with:"
+< 		echo "  git submodule update --init"
+< 		echo "and then re-run this script."
+---
+> 	if [[ ! -d /usr/include/isa-l_crypto ]]; then
+> 		echo "ISA-L_crypto is required but was not found"
+1315,1331d1287
+< 
+< 	cd $rootdir/isa-l-crypto
+< 	ISAL_CRYPTO_LOG=$rootdir/.spdk-isal-crypto.log
+< 	if [[ -n "${CONFIG[CROSS_PREFIX]}" ]]; then
+< 		ISAL_CRYPTO_OPTS+=("--host=${CONFIG[CROSS_PREFIX]}")
+< 	fi
+< 	if [[ "${CONFIG[SHARED]}" = "y" ]]; then
+< 		ISAL_CRYPTO_OPTS+=("--enable-shared=yes")
+< 	else
+< 		ISAL_CRYPTO_OPTS+=("--enable-shared=no")
+< 	fi
+< 	ISAL_CRYPTO_OPTS+=("--prefix=${CONFIG[PREFIX]}")
+< 	echo -n "Configuring ISA-L-crypto (logfile: $ISAL_CRYPTO_LOG)..."
+< 	./autogen.sh &> $ISAL_CRYPTO_LOG
+< 	./configure CFLAGS="-fPIC -g -O2 -fuse-ld=$LD_TYPE -Wno-unused-command-line-argument" "${ISAL_CRYPTO_OPTS[@]}" >> $ISAL_CRYPTO_LOG 2>&1
+< 	echo "done."
+< 	cd $rootdir
