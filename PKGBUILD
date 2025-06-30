@@ -85,7 +85,6 @@ source=(
     'mesa::git+https://gitlab.freedesktop.org/DadSchoorse/mesa.git#branch=radv-fsr4-exts'
     'LICENSE'
 
-	'34918.patch'
 	'35269.patch'
 	'35445.patch'
 	# '35533.patch'
@@ -94,7 +93,6 @@ source=(
 sha256sums=('SKIP'
             '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2'
 
-            '5d32608ee4018326dc8218c65afbd92a4a2d1f0104dedbd234a274adb13a6f0f'
             '16a35df523b60f92925badbc9e6fbd8fb3dde5561234483d4dca1815e1089746'
             'a5ecf3cc01a9602eb7aada966064a73f75e9681f74947fd8aa9f3ea3a23e7e0d'
 
