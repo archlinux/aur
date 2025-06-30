@@ -15,9 +15,7 @@ provides=("vrpn")
 conflicts=("vrpn-git")
 makedepends=('cmake')
 
-# https://github.com/vrpn/vrpn/archive/refs/tags/v07.36.zip
-# https://github.com/vrpn/vrpn/archive/refs/tags/v07.36.zip
-# source=("https://github.com/vrpn/vrpn/releases/download/version_0${pkgver}/vrpn_0${pkgver}.zip")
+# tag source
 source=("https://github.com/vrpn/vrpn/archive/refs/tags/v0${pkgver}.zip")
 
 sha512sums=('b3531e30b18baff9429685de0df2ebefdd3831e42a3a904be9757e20ca3e92f5a2e0169f9f2ee68f9c75f91102baac5d23d1f350c6733b103b53a69009f05692')
