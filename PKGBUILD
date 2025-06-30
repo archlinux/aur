@@ -10,7 +10,7 @@ license=('mit')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://www.lideying.cn/resource/xj-gomoku/"$pkgname"_"$pkgver"_arm64.deb")
+source=("https://www.lideying.cn/resource/xj-gomoku/"$pkgname"_"$pkgver"_amd64.deb")
 sha256sums=('d32e6809b99a8f1c135adf5bb82f1bef173c0d14fefaf597be7bcae6dcc5d59a')
 package() {
 
