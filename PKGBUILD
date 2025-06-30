@@ -3,7 +3,7 @@
 _pkgname=discord-bot-client
 
 pkgname="${_pkgname}"-appimage
-pkgver=3.7.0
+pkgver=3.7.2
 pkgrel=1
 pkgdesc="A patched version of discord, with bot login & Vencord support"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source_x86_64=("${_appimage}::https://github.com/aiko-chan-ai/DiscordBotClient/r
                "https://raw.githubusercontent.com/aiko-chan-ai/DiscordBotClient/refs/tags/v${pkgver}/LICENSE"
               )
 noextract=("${_appimage}")
-sha256sums_x86_64=('113927b30606495a882bacaf4c7d32ecf6f73abf4f8ca8f9c72ef562ad4808bb'
+sha256sums_x86_64=('960c8357ebe381401c0dfab56ae9ee3268de9e78dac7e23dfde67aca2af64262'
                    '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 prepare() {
