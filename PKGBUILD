@@ -2,10 +2,10 @@
 pkgname=sonyheadphonesclient-bluetooth-bin
 _pkgname=sonyheadphonesclient-bluetooth
 pkgver=1.3.17
-pkgrel=5
+pkgrel=6
 provides=("sonyheadphonesclient-bluetooth")
 conflicts=("sonyheadphonesclient-bluetooth")
-pkgdesc="A fork of SonyHeadphonesClient with support for Sony Bluetooth/TWS/XM5+ devices"
+pkgdesc="Desktop client recreating the functionality of the Sony Headphones app (Bluetooth/TWS/XM5+)"
 arch=("x86_64")
 url="https://github.com/mos9527/SonyHeadphonesClient"
 license=('MIT')
