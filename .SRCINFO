@@ -1,6 +1,6 @@
 pkgbase = extrae
 	pkgdesc = Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).
-	pkgver = 4.2.15.20250502
+	pkgver = 4.3.0.20250630
 	pkgrel = 1
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = extrae
 	depends = libxml2
 	depends = zlib
 	depends = python
-	source = https://github.com/bsc-performance-tools/extrae/archive/4.2.15.tar.gz
-	source = extrae-issue-27-fix-pie-address-translation.patch
+	source = https://github.com/bsc-performance-tools/extrae/archive/4.3.0.tar.gz
+	source = https://github.com/bsc-performance-tools/libaddr2line/archive/70b1ab0087acf35d5825b2341b2b03cb3cce3e24.tar.gz
 	source = extrae-Fix-make-DESTDIR-.-install-for-Extrae-4.0.2.patch
 	source = extrae-Fix-references-to-the-build-directory.patch
-	sha512sums = 3013b2efabb621958c66922af32a8534914c52e2f44e0b4ca70a696c0efb47c350a64d0f840408207a4adebc1681df19b90a64f912217d7a690eece6bc6f451d
-	sha512sums = ce6e5f3994118783fd1e05de7336782e4df4eaf3b2a277174ea536b0d391f418cb36682c1e1b3adee3b4d2aa07f25af58998525c79d0567f7afa88dda048c413
+	sha512sums = a546316132d186179ceeb32294edd601e7cb147f3decf43c342cfa1ede926f30e818b52f91367240f1f8e454140d941f5d321f28e7d35a2b7a8d22875a2c5417
+	sha512sums = 32f564d56e68606b69b262fc055c317aa5986482ccd84cd150fd037d01d0575bd5d70a0fd1fda9f3cd281af70e06472c50ead66e9f6a83f329b305256e9a7dff
 	sha512sums = e90d108ac4531d68ba8bced44db71139cb7b4273f97ec994582150eb9d4f71960c525c1b3ad2fac95d678f91494b5299bfb00513a0a58cc5b6d916eb930af2d5
 	sha512sums = a5085d4e974a98cb6266502e06bd2b5a45e213f7d322e8f6cffccbaf92a7f414641b6e6578f87f76dbbb3e4f89b3c268dc33e813c13ea5512e52d1b241317f2a
 

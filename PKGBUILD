@@ -1,26 +1,27 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
-pkgver='4.2.15.20250502'
+pkgver='4.3.0.20250630'
+libaddr2line_commit=70b1ab0087acf35d5825b2341b2b03cb3cce3e24
 pkgrel='1'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
 depends=(openmpi libunwind papi libxml2 zlib python)
 source=("https://github.com/bsc-performance-tools/$pkgname/archive/${pkgver%.*}.tar.gz"
-        extrae-issue-27-fix-pie-address-translation.patch
+        "https://github.com/bsc-performance-tools/libaddr2line/archive/${libaddr2line_commit}.tar.gz"
         extrae-Fix-make-DESTDIR-.-install-for-Extrae-4.0.2.patch
         extrae-Fix-references-to-the-build-directory.patch)
-sha512sums=(3013b2efabb621958c66922af32a8534914c52e2f44e0b4ca70a696c0efb47c350a64d0f840408207a4adebc1681df19b90a64f912217d7a690eece6bc6f451d
-            ce6e5f3994118783fd1e05de7336782e4df4eaf3b2a277174ea536b0d391f418cb36682c1e1b3adee3b4d2aa07f25af58998525c79d0567f7afa88dda048c413
+sha512sums=(a546316132d186179ceeb32294edd601e7cb147f3decf43c342cfa1ede926f30e818b52f91367240f1f8e454140d941f5d321f28e7d35a2b7a8d22875a2c5417
+            32f564d56e68606b69b262fc055c317aa5986482ccd84cd150fd037d01d0575bd5d70a0fd1fda9f3cd281af70e06472c50ead66e9f6a83f329b305256e9a7dff
             e90d108ac4531d68ba8bced44db71139cb7b4273f97ec994582150eb9d4f71960c525c1b3ad2fac95d678f91494b5299bfb00513a0a58cc5b6d916eb930af2d5
             a5085d4e974a98cb6266502e06bd2b5a45e213f7d322e8f6cffccbaf92a7f414641b6e6578f87f76dbbb3e4f89b3c268dc33e813c13ea5512e52d1b241317f2a)
 
 prepare() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
 
-	# Upstream issue: https://github.com/bsc-performance-tools/extrae/issues/27
-	patch -Np1 -i "$srcdir/extrae-issue-27-fix-pie-address-translation.patch"
+	rm -df libaddr2line
+	ln -s "../libaddr2line-${libaddr2line_commit}/" libaddr2line
 
 	patch -Np1 -i "$srcdir/extrae-Fix-make-DESTDIR-.-install-for-Extrae-4.0.2.patch"
 	patch -Np1 -i "$srcdir/extrae-Fix-references-to-the-build-directory.patch"
@@ -54,6 +55,9 @@ build() {
 	#       (thanks to @teleportex on AUR for the report and fix suggestion)
 	./configure \
 		--prefix=/usr \
+		--with-binutils=/usr \
+		--with-binutils-headers=/usr/include \
+		--with-binutils-libs=/usr/lib \
 		--with-mpi=/usr \
 		--with-mpi-libs=/usr/lib \
 		--with-mpi-headers=/usr/include/openmpi \
