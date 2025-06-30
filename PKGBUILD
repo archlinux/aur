@@ -1,7 +1,7 @@
 # Maintainer: Flack <puspendrachawlax@gmail.com>
 pkgname=pom
 pkgver=1.0.1
-pkgrel=21
+pkgrel=22
 pkgdesc="A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts"
 arch=("x86_64" "aarch64")
 url="https://github.com/Flack74/pom"
@@ -30,8 +30,6 @@ require (
     github.com/spf13/cobra v1.9.1
     golang.org/x/term v0.32.0
 )
-
-replace github.com/Flack74/pom => ./
 EOF
     
     # Fix imports in all Go files
@@ -39,10 +37,34 @@ EOF
 
 # Initialize and update modules
 go mod tidy
+
+# Create temporary workspace
+mkdir -p "${srcdir}/workspace/github.com/Flack74"
+ln -sf "${srcdir}/${pkgname}" "${srcdir}/workspace/github.com/Flack74/pom"
+cd "${srcdir}/workspace"
+echo "go 1.21" > go.work
+echo "use github.com/Flack74/pom" >> go.work
+
+# Copy source files to GOPATH
+mkdir -p "${GOPATH}/src/github.com/Flack74"
+cp -r "${srcdir}/${pkgname}" "${GOPATH}/src/github.com/Flack74/pom"
+
+# Create a temporary module for local development
+cd "${srcdir}/${pkgname}"
+cat > go.mod << EOF
+module github.com/Flack74/pom
+
+go 1.21
+
+require (
+github.com/spf13/cobra v1.9.1
+golang.org/x/term v0.32.0
+)
+EOF
 }
 
 build() {
-cd "$pkgname"
+cd "${srcdir}/${pkgname}"
 export CGO_CPPFLAGS="${CPPFLAGS}"
 export CGO_CFLAGS="${CFLAGS}"
 export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -51,12 +73,16 @@ export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readon
 
 # Ensure we're using Go modules
 export GO111MODULE=on
-go mod download
-go build -o build/pom ./cmd/pom.go
+export GOPATH="${srcdir}/gopath"
+export PATH="${GOPATH}/bin:${PATH}"
+
+# Build with vendored dependencies
+go mod vendor
+go build -mod=vendor -o build/pom ./cmd/pom.go
 }
 
 package() {
-cd "$pkgname"
+cd "${srcdir}/${pkgname}"
 install -Dm755 build/pom "$pkgdir/usr/bin/pom"
 install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
