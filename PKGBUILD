@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=emsmediasystem-bin
 _pkgname=EMS.Media.System
-pkgver=6.1.3
-_electronversion=37
+pkgver=6.1.4
+_electronversion=34
 pkgrel=1
 pkgdesc="An Electron-based media presentation tool that provides a dual-window approach to media playback,allows users to control media presentation from a management window.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -22,8 +22,12 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5057e2bbf55e7919ac6c7f4251734d045b4df42044d58bdca9752d7e1b12c064'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('0f12a7fc3f328a88114e15bcccf3e8069407d3075b46a0b4fbb3153abe96fb95'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -36,20 +40,15 @@ prepare() {
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Audio;/AudioVideo;/g
     " "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
-    rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/@julusian/freetype2/prebuilds/"{*-darwin-*,*-win32-*}
-    case "${CARCH}" in
-        aarch64)
-            rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/@julusian/freetype2/prebuilds/"{freetype2-linux-arm,*-x64-*}
-            ;;
-        x86_64)
-            rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/@julusian/freetype2/prebuilds/freetype2-linux-arm"*
-            ;;
-    esac
+    rm -rf \
+        "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/@julusian/freetype2/prebuilds/"{*-darwin-*,*-win32-*} \
+        "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/@julusian/freetype2/prebuilds/freetype2-linux-arm"*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
