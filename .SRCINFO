@@ -1,7 +1,7 @@
 pkgbase = libstirshaken
 	pkgdesc = STIR-Shaken authentication and verification library
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/signalwire/libstirshaken
 	arch = x86_64
 	license = MIT
@@ -16,8 +16,8 @@ pkgbase = libstirshaken
 	makedepends = pkg-config
 	depends = curl
 	depends = glibc
-	depends = libjwt
-	depends = libks
+	depends = libjwt2
+	depends = libks2
 	depends = openssl
 	source = git+https://github.com/signalwire/libstirshaken.git#commit=cb6ede40b3ce12ab76e370186a14dc141839ef07
 	sha256sums = 3b4eece0fbfa91c050b825d17053935013e7e72f83503829dd05d7a507793346
