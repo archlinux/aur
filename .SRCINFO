@@ -1,8 +1,8 @@
 pkgbase = walker-bin
 license = MIT
 pkgdesc = wayland application runner
-pkgver = 0.12.23
-pkgrel = 2
+pkgver = 0.12.24
+pkgrel = 1
 depends = gtk4-layer-shell
 depends = libvips
 depends = ffmpeg
@@ -13,6 +13,6 @@ arch = x86_64
 provides = walker
 conflicts = walker
 source_x86_64 = https://github.com/abenz1267/walker/releases/download/v0.12.23.gz
-sha256sums_x86_64 = f1c6f8b0e576398767b1064eb04a24ed3bd86b8ce5241e5cffe418090778d322
+sha256sums_x86_64 = ec996ffa62ebe213f956bf08faed48d46a604f50f1242880d63cf5a921c718a0
 
 pkgname = walker-bin
