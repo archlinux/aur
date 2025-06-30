@@ -1,6 +1,6 @@
 pkgbase = libreoffice-extension-h2orestart
 	pkgdesc = LibreOffice extension that import hwp and hwpx file and present in odt format
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/ebandal/H2Orestart
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = libreoffice-extension-h2orestart
 	depends = libreoffice
 	depends = java-runtime-headless
 	conflicts = libreoffice-extension-hwp2odt
-	noextract = H2Orestart-0.7.3.oxt
-	source = H2Orestart-0.7.3.oxt::https://github.com/ebandal/H2Orestart/releases/download/v0.7.3/H2Orestart.oxt
-	sha512sums = c88b4efdd3df2faec92521abe0c9474f04e544770c0e590e915a976f32e7f43372a87bb82c69999c27df851f6f8688b2e2bde0f8cd3beefc4219d4c5b045585a
+	noextract = H2Orestart-0.7.4.oxt
+	source = H2Orestart-0.7.4.oxt::https://github.com/ebandal/H2Orestart/releases/download/v0.7.4/H2Orestart.oxt
+	sha512sums = b2ad90a4847d1eb14bbeb6db5468d9f3e62bb2f8df2958ece579f5b98e21f05cc94b0dfb3bcf4179ae7780015e09c768fac7429250a95d77bae273a2901b6ca8
 
 pkgname = libreoffice-extension-h2orestart
