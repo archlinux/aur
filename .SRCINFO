@@ -1,15 +1,15 @@
 pkgbase = tinytotp-bin
 	pkgdesc = A Totp Client.(Prebuilt version)
-	pkgver = 4.6.1
+	pkgver = 4.6.3
 	pkgrel = 1
 	url = https://github.com/kryptonbutterfly/TinyTotp
 	arch = x86_64
 	license = Apache-2.0
 	depends = xdg-utils
 	depends = java-runtime>=18
-	provides = tinytotp=4.6.1
+	provides = tinytotp=4.6.3
 	conflicts = tinytotp
-	source = tinytotp-4.6.1.deb::https://github.com/kryptonbutterfly/TinyTotp/releases/download/v4.6.1/TinyTotp-4.6.1.deb
-	sha256sums = 3c4e1ce2168f8cc49ae638964bad779f57686c6588d5a385a17d9c0b53eea80e
+	source = tinytotp-4.6.3.deb::https://github.com/kryptonbutterfly/TinyTotp/releases/download/v4.6.3/TinyTotp-4.6.3.deb
+	sha256sums = f08cff5dbee3ba462dc6baf6e4c4c9b42266471f01478336333839810d1095df
 
 pkgname = tinytotp-bin
