@@ -1,0 +1,5 @@
+[wlmaker]
+source = "github"
+github = "phkaeser/wlmaker"
+use_max_tag = true
+prefix = "v"
