@@ -6,7 +6,7 @@ _vlcver=3.0.21
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=20
+pkgrel=21
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64' 'aarch64')
@@ -99,7 +99,6 @@ makedepends=(
   libshout
   libsoxr
   libssh2
-  libtar
   "libtheora>=$_libtheoraver"
   libtiger
   "libupnp>=$_libupnpver"
@@ -158,7 +157,6 @@ sha512sums=('cb1af76c8056648c331d7e6e0680d161ed1849eb635987504f45eae02531e9b4326
 prepare() {
   cd ${_name}-${_vlcver}
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
-  sed -e 's|-Werror-implicit-function-declaration||g' -i configure
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
   local src
@@ -179,7 +177,10 @@ prepare() {
   #sed -i 's/CUCUL_COLOR/CACA/g' modules/video_output/caca.c
 
   # live555: fix build with versions >= 2024.11.28
-  sed -i 's/char             event_/EventLoopWatchVariable event_/g' -i modules/access/live555.cpp 
+  sed -i 's/char             event_/EventLoopWatchVariable event_/g' -i modules/access/live555.cpp
+
+  # opus_header: fix channel mapping family 1 parsing 
+  sed -i 's/channel_mapping == 2/channel_mapping <= 2/g' -i modules/codec/opus_header.c
 
   autoreconf -vf
 }
@@ -234,7 +235,6 @@ build() {
     --enable-kwallet
     --enable-libass
     --enable-libmpeg2
-    --enable-libtar
     --disable-libva # Incompatible with FFmpeg 5+
     --enable-libxml2
     --enable-lirc
@@ -353,7 +353,6 @@ package_vlc-luajit() {
     libmpeg2
     libproxy
     libsecret
-    libtar
     "libupnp>=$_libupnpver"
     # libva : Non-functional in VLC 3 if FFmpeg 5 or later, only VLC 4 supports it
     libvlc-luajit
