@@ -1,6 +1,6 @@
 pkgbase = zivid-studio
 	pkgdesc = Defining the Future of 3D Machine Vision
-	pkgver = 2.15.0+5fcc365b_1
+	pkgver = 2.16.0+46cdaba6_1
 	pkgrel = 1
 	url = https://www.zivid.com
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = zivid-studio
 	license = custom
 	depends = zivid
 	options = !strip
-	source = https://downloads.zivid.com/sdk/releases/2.15.0+5fcc365b-1/u20/zivid-studio_2.15.0+5fcc365b-1_amd64.deb
-	sha256sums = 8030a7be92d112ab4cfdd1c6d658db62db3c5fb6dfb917ab4a55ed72e294490b
+	source = https://downloads.zivid.com/sdk/releases/2.16.0+46cdaba6-1/u20/zivid-studio_2.16.0+46cdaba6-1_amd64.deb
+	sha256sums = 58269dd84fe275fb3144e0a87f03b96cc24e3691c00edcc995b6694c5839791b
 
 pkgname = zivid-studio
