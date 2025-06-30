@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jlivertool-bin
-pkgver=2.4.1
+pkgver=2.4.2
 _electronversion=35
 pkgrel=1
 pkgdesc="Bilibili 弹幕机.(Prebuilt version.Use system-wide electron)"
@@ -19,9 +19,13 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/Xinrea/JLiverTool/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7794210b8af152d9271ed47154dd782fed37c54611ae3dcf9bf3a54b770f4fa0'
-            '70ab3290cbc33e7a72b59ac9ad08548c688d885e7b6326b3edc7a17f8ca54d39'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('4beee8b771a3d4a459de250aace9396c9c6f96da4d2e8ea1bb7a7053c50c5be9'
+            '5d86e387ac33cf32eee9c968d38483a30567690b843c3768b35fe4bc55b455a8'
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -30,6 +34,7 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     rm -rf \
         "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/bufferutil/prebuilds/"{darwin-*,win32-*} \
