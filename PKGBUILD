@@ -1,7 +1,7 @@
 # Maintainer: Pierre Chapuis <arch@catwell.info>
 
 pkgname="minijinja-cli-bin"
-pkgver=2.10.2
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Command-line utility for the MiniJinja template engine"
 arch=(x86_64 aarch64)
@@ -13,10 +13,10 @@ conflicts=(minijinja-cli)
 _archive="minijinja-cli-$CARCH-unknown-linux-gnu"
 
 source_x86_64=("$pkgname-$pkgver.src.tar.xz::$url/releases/download/$pkgver/$_archive.tar.xz")
-sha256sums_x86_64=("690c7f074a22ccc470746c215c40c41bc31d6214292ad4d24055ecd5b75732f2")
+sha256sums_x86_64=("08c739a059edb025ad8b724d35531f12c9df56664f39070100c7475715450522")
 
 source_aarch64=("$pkgname-$pkgver.src.tar.xz::$url/releases/download/$pkgver/$_archive.tar.xz")
-sha256sums_aarch64=("be0bd7219250b0b66d93fb72340624b6d1468623b8853f33d9b6a202cb425932")
+sha256sums_aarch64=("eaf1b2526b1b25c74b43b591ec5e399b80893fef78ed29e6cad4a9899fa03a62")
 
 package () {
     cd "$_archive"
