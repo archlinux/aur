@@ -1,6 +1,14 @@
 --- pug-1.3/src/pug.sh	2025-06-29 22:54:55.597386659 -0400
-+++ pug-1.3/src/pug.sh	2025-06-29 23:51:36.571174761 -0400
-@@ -26,10 +26,8 @@
++++ pug-1.3/src/pug.sh	2025-06-30 02:33:45.869113536 -0400
+@@ -9,6 +9,7 @@
+ 
+ PACMANFILE='pacman-list.pkg'
+ AURFILE='aur-list.pkg'
++pkgdir="" # since we skipped interactive install, this is intentionally blank
+ 
+ pug_install() {
+     echo "${bold}${green}==>${white} Authentification on Github..."
+@@ -26,10 +27,8 @@
      GIST_NAT=$(pacman -Qqen | gist -p -f "${PACMANFILE}" -d 'Pacman package list.')
      GIST_AUR=$(pacman -Qqem | gist -p -f "${AURFILE}" -d 'AUR package list.')
  
@@ -13,7 +21,7 @@
  
      echo "    [ ${cyan}${GIST_NAT}${white} ]"
      echo "    [ ${cyan}${GIST_AUR}${white} ]"
-@@ -91,20 +89,26 @@
+@@ -91,20 +90,26 @@
  
  pug() {
      PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
@@ -29,8 +37,9 @@
 +        fi
      fi
 -
+-    pkgdir="${1}"
 +    
-     pkgdir="${1}"
++    # pkgdir="${1}"
  
      test -r ${pkgdir}/etc/pug && . ${pkgdir}/etc/pug
  
@@ -47,7 +56,7 @@
      else
          IS_FAKEROOT=false
          if echo "${LD_LIBRARY_PATH}" | grep libfakeroot > /dev/null; then
-@@ -115,5 +119,9 @@
+@@ -115,5 +120,9 @@
          fi
      fi
  }

@@ -1,7 +1,7 @@
 pkgbase = pug
 	pkgdesc = synchronize Pacman and AUR installed package lists into Gists.
 	pkgver = 1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Ventto/pug
 	arch = x86_64
 	arch = i686
@@ -13,6 +13,6 @@ pkgbase = pug
 	source = pug-1.3.tar.gz::https://github.com/Ventto/pug/archive/v1.3.tar.gz
 	source = disable_interaction_on_hook.patch
 	sha256sums = eb70f1c95defd8d5862e891b345db9da81ce90600a6bca17cce5fbea384a0b71
-	sha256sums = c85346125e9b1a58fb60288569b9b5ac2f986013e8855bfa77ab5d95e4286b51
+	sha256sums = 7be1ab2c7701f1cf41b6385e79946cfd12401c91cbfcdd5b826fbf41e8117f8a
 
 pkgname = pug

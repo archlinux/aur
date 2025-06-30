@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=pug
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='synchronize Pacman and AUR installed package lists into Gists.'
 arch=('x86_64' 'i686')
 license=('LicenseRef-NoLicense')
@@ -15,7 +15,7 @@ source=(
   disable_interaction_on_hook.patch
 )
 sha256sums=('eb70f1c95defd8d5862e891b345db9da81ce90600a6bca17cce5fbea384a0b71'
-            'c85346125e9b1a58fb60288569b9b5ac2f986013e8855bfa77ab5d95e4286b51')
+            '7be1ab2c7701f1cf41b6385e79946cfd12401c91cbfcdd5b826fbf41e8117f8a')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
