@@ -2,8 +2,8 @@
 # Maintainer: RoiArthurB
 # Contributor: RoiArthurB
 pkgname=gama-platform
-pkgver='2025.6.3'
-pkgrel=3
+pkgver='2025.06.3'
+pkgrel=4
 pkgdesc="GAMA is a modeling and simulation development environment for building spatially explicit agent-based simulations."
 arch=('x86_64')
 url="https://gama-platform.org"
