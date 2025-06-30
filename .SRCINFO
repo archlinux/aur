@@ -18,6 +18,6 @@ pkgbase = xj-gomoku
 	options = !strip
 	options = !emptydirs
 	source = https://www.lideying.cn/resource/xj-gomoku/xj-gomoku_1.0.0_arm64.deb
-	sha256sums = d32e6809b99a8f1c135adf5bb82f1bef173c0d14fefaf597be7bcae6dcc5d59a
+	sha256sums = 7f0f14843f0bd517fe1cc438a28c69611b2c4848ac5a33511b6df9b828dfa668
 
 pkgname = xj-gomoku

@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://www.lideying.cn/resource/xj-gomoku/"$pkgname"_"$pkgver"_amd64.deb")
-sha256sums=('d32e6809b99a8f1c135adf5bb82f1bef173c0d14fefaf597be7bcae6dcc5d59a')
+sha256sums=('7f0f14843f0bd517fe1cc438a28c69611b2c4848ac5a33511b6df9b828dfa668')
 package() {
 
   # Extract package data
