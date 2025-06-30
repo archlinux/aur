@@ -1,14 +1,14 @@
 # Maintainer: Neurognostic <neurognostic@astranetics.com>
 _pipname=curl_cffi
 pkgname=python-${_pipname//_/-}
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.11.4
+pkgrel=1
 pkgdesc='Python FFI binding for curl-impersonate'
 arch=(x86_64)
 url='https://github.com/lexiforest/curl_cffi'
 license=(MIT)
 depends=(
-	libcurl-impersonate-chrome
+	libcurl-impersonate
 	python
 	python-certifi
 	python-cffi
@@ -18,7 +18,6 @@ depends=(
 )
 optdepends=('python-orjson: for speed and memory optimized JSON parsing')
 makedepends=(
-	gcc13
 	python-build
 	python-installer
 	python-setuptools
@@ -31,8 +30,8 @@ source=(
 	use-system-libs.patch
 )
 sha256sums=(
-	'e6d7aefd659a614bebaafd8a895d160b65429ce49a7460c99014424a04ac30f3'
-	'fa5e5a7fd0afa676775e8977e7dd7f29b8dfc9276eb271de127abf3f8f7289dd'
+	'064ecab44c0571aaf47ad18a97200130f9e05bf7668fe3a2ff8633276fcbbb3c'
+	'0f2471e6168f62685b44bcc6d3f234bb959e3933bbaeb3429e2d2407220285a4'
 )
 
 prepare() {
@@ -43,9 +42,6 @@ prepare() {
 
 build() {
 	cd $_pipname-$pkgver
-	# TODO: remove gcc13 from makedepends when upstream gets resolved
-	# https://github.com/lexiforest/curl_cffi/issues/473
-	export CC=gcc-13 CXX=g++-13
 	python -m build --wheel --no-isolation
 }
 

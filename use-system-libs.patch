@@ -1,8 +1,8 @@
 diff --git c/scripts/build.py w/scripts/build.py
-index e21085c..74a964d 100644
+index e203c7b..3d16f9a 100644
 --- c/scripts/build.py
 +++ w/scripts/build.py
-@@ -1,12 +1,4 @@
+@@ -1,144 +1,12 @@
 -import json
 -import os
 -import platform
@@ -15,10 +15,10 @@ index e21085c..74a964d 100644
  
  from cffi import FFI
  
-@@ -14,128 +6,8 @@ from cffi import FFI
- __version__ = "1.0.0"
+ # this is the upstream libcurl-impersonate version
+ __version__ = "1.0.3"
  
- 
+-
 -def detect_arch():
 -    with open(Path(__file__).parent.parent / "libs.json") as f:
 -        archs = json.loads(f.read())
@@ -124,6 +124,9 @@ index e21085c..74a964d 100644
 -            "zlib",
 -            "ssl",
 -            "nghttp2",
+-            "nghttp3",
+-            "ngtcp2",
+-            "ngtcp2_crypto_boringssl",
 -            "crypto",
 -            "brotlienc",
 -            "brotlidec",
@@ -144,7 +147,7 @@ index e21085c..74a964d 100644
  
  
  ffibuilder.set_source(
-@@ -144,9 +16,9 @@ ffibuilder.set_source(
+@@ -147,9 +15,9 @@ ffibuilder.set_source(
          #include "shim.h"
      """,
      # FIXME from `curl-impersonate`
@@ -157,7 +160,7 @@ index e21085c..74a964d 100644
      source_extension=".c",
      include_dirs=[
          str(root_dir / "include"),
-@@ -155,10 +27,8 @@ ffibuilder.set_source(
+@@ -158,10 +26,8 @@ ffibuilder.set_source(
      sources=[
          str(root_dir / "ffi/shim.c"),
      ],
@@ -170,7 +173,7 @@ index e21085c..74a964d 100644
  )
  
  with open(root_dir / "ffi/cdef.c") as f:
-@@ -167,4 +37,4 @@ with open(root_dir / "ffi/cdef.c") as f:
+@@ -170,4 +36,4 @@ with open(root_dir / "ffi/cdef.c") as f:
  
  
  if __name__ == "__main__":
