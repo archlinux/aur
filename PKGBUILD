@@ -2,7 +2,7 @@
 
 pkgname=ros2-kilted-base
 pkgver=2025.05.23
-pkgrel=2
+pkgrel=3
 _rosdist="Kilted Kaiju"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -55,7 +55,8 @@ sha256sums=('79ab777f61b6928933d02c4560f3a6ce00edb0b57521947a450170fb1b03b567'
 
 # Uncomment this if zenoh/transport_tls is needed in zenoh_cpp_vendor
 # TODO: find a way to disable LTO for only the zenoh_cpp_vendor package
-#options=(!lto)
+#options=(!debug !lto)
+options=(!debug)
 
 prepare() {
     # Clone the repos

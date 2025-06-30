@@ -1,7 +1,7 @@
 pkgbase = ros2-kilted-base
 	pkgdesc = A set of software libraries and tools for building robot applications (Kilted Kaiju, base variant)
 	pkgver = 2025.05.23
-	pkgrel = 2
+	pkgrel = 3
 	url = https://index.ros.org/p/ros_base/#kilted
 	arch = any
 	license = Apache-2.0
@@ -27,6 +27,7 @@ pkgbase = ros2-kilted-base
 	depends = tinyxml2
 	depends = yaml-cpp
 	conflicts = ros2-kilted
+	options = !debug
 	source = https://github.com/ros2/ros2/archive/release-kilted-20250523.tar.gz
 	source = ros2-variants-0.12.0.tar.gz::https://github.com/ros2/variants/archive/0.12.0.tar.gz
 	source = console_bridge_vendor_cmake4.patch
