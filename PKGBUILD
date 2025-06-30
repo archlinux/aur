@@ -2,8 +2,8 @@
 # based on vrpn-git: David Runge <dave@sleepmap.de>
 
 pkgname=vrpn
-pkgver=7.35
-pkgrel=2
+pkgver=7.36
+pkgrel=1
 _pkg=${pkgname}
 
 pkgdesc='Virtual Reality Peripheral Network library and tools'
@@ -15,21 +15,29 @@ provides=("vrpn")
 conflicts=("vrpn-git")
 makedepends=('cmake')
 
-source=("https://github.com/vrpn/vrpn/releases/download/version_0${pkgver}/vrpn_0${pkgver}.zip")
+# https://github.com/vrpn/vrpn/archive/refs/tags/v07.36.zip
+# https://github.com/vrpn/vrpn/archive/refs/tags/v07.36.zip
+# source=("https://github.com/vrpn/vrpn/releases/download/version_0${pkgver}/vrpn_0${pkgver}.zip")
+source=("https://github.com/vrpn/vrpn/archive/refs/tags/v0${pkgver}.zip")
 
-sha512sums=('3a91f82ccfb3f990fbcdbb24471d96d74435bdbfa917d9be469481709279e2b7acbf5eca389adab376cdc92bf8fc48d17fc746c7a3ede8ff408b26c362868f39')
+sha512sums=('b3531e30b18baff9429685de0df2ebefdd3831e42a3a904be9757e20ca3e92f5a2e0169f9f2ee68f9c75f91102baac5d23d1f350c6733b103b53a69009f05692')
 
 build(){
-  cd ${_pkg}
+    export CFLAGS+=" ${CPPFLAGS}"
+    export CXXFLAGS+=" ${CPPFLAGS}"
 
   # vrpn requires an out-of-source build
-  cd "${srcdir}/vrpn"
-  mkdir -p build && cd build
+  # cd "${srcdir}/vrpn"
+  # mkdir -p build && cd build
 
-  cmake .. \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-    -DCMAKE_INSTALL_PREFIX=/usr/ \
-    -DCMAKE_BUILD_TYPE=Release \
+  #
+  # Configure
+  #
+  cmake -B build \
+    -S "${_pkg}-0${pkgver}/" \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.12 \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_BUILD_TYPE='None' \
     -DBUILD_TESTING=OFF \
     -DVRPN_BUILD_CLIENTS=ON \
     -DVRPN_BUILD_CLIENT_LIBRARY=ON \
@@ -51,7 +59,7 @@ build(){
     -DVRPN_USE_DEV_INPUT=ON \
     -DVRPN_USE_FREESPACE=OFF \
     -DVRPN_USE_GHOST=OFF \
-    -DVRPN_USE_GPM_MOUSE=ON \
+    -DVRPN_USE_GPM_MOUSE=OFF \
     -DVRPN_USE_HDAPI=OFF \
     -DVRPN_USE_HID=ON \
     -DVRPN_USE_JOYLIN=ON \
@@ -71,15 +79,21 @@ build(){
     -DVRPN_USE_USDIGITAL=OFF \
     -DVRPN_USE_VIEWPOINT=OFF \
     -DVRPN_USE_WIIUSE=OFF
+
 #    -DOVR_ROOT_DIR=/usr/include/ovr-$(pkg-config --modversion libovr)/ \
 #    -DVRPN_USE_OVR=OFF \
 
-  make
+#
+# Build
+#
+
+    make -C build
+
 }
 
 package() {
 
-  cd "${srcdir}/vrpn/build"
+  cd "${srcdir}/build"
   make DESTDIR="${pkgdir}" install
 
   # configuration

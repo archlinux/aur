@@ -1,7 +1,7 @@
 pkgbase = vrpn
 	pkgdesc = Virtual Reality Peripheral Network library and tools
-	pkgver = 7.35
-	pkgrel = 2
+	pkgver = 7.36
+	pkgrel = 1
 	url = https://vrpn.github.io/
 	arch = x86_64
 	license = Boost
@@ -11,7 +11,7 @@ pkgbase = vrpn
 	depends = libusb
 	provides = vrpn
 	conflicts = vrpn-git
-	source = https://github.com/vrpn/vrpn/releases/download/version_07.35/vrpn_07.35.zip
-	sha512sums = 06b74a40b0fb215d4238148517705d0075235823c0941154d14dd660ba25af19
+	source = https://github.com/vrpn/vrpn/archive/refs/tags/v07.36.zip
+	sha512sums = b3531e30b18baff9429685de0df2ebefdd3831e42a3a904be9757e20ca3e92f5a2e0169f9f2ee68f9c75f91102baac5d23d1f350c6733b103b53a69009f05692
 
 pkgname = vrpn
