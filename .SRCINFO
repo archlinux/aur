@@ -1,6 +1,6 @@
 pkgbase = odict-bin
 	pkgdesc = Lightning-fast dictionary file format and toolchain
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://odict.org
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = odict-bin
 	depends = glibc
 	provides = odict
 	conflicts = odict
-	source = odict-cli-x86_64-unknown-linux-gnu-2.7.0.tar.xz::https://github.com/TheOpenDictionary/odict/releases/download/cli%2Fv2.7.0/odict-cli-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = 30e064ff423934352a9aefab27c07cceb8525a68b411fa6bf5e69d86aa2d462b
+	source = odict-cli-x86_64-unknown-linux-gnu-2.8.0.tar.xz::https://github.com/TheOpenDictionary/odict/releases/download/cli%2Fv2.8.0/odict-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = e8e15a03f866b30db9b9d6830205f5565b2cc3dabf633c21c5a1eef4c320bdc5
 
 pkgname = odict-bin
