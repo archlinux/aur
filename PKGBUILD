@@ -1,7 +1,7 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=kh-melonmix-bin
 pkgver=0.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A fork of MelonDS, focused on remastering Kingdom Hearts: 358/2 Days and Re:coded"
 arch=(x86_64)
 url="https://github.com/vitor251093/KHMelonMix"
@@ -35,11 +35,6 @@ cp -r * $pkgdir/opt/Kingdom\ Hearts\ Melon\ Mix
 # removing the symlinked zip file and icon for the game, as well as the shell scripts because i dont use em anyways
 cd $pkgdir/opt/Kingdom\ Hearts\ Melon\ Mix/
 rm *.png *.zip *.sh
-
-# this is for the kh-melonmix-owndir command
- echo "#!/bin/sh
-
- chown -R $USER /opt/Kingdom\ Hearts\ Melon\ Mix" >>"$pkgdir/usr/bin/kh-melonmix-owndir"
 
 # making all the .desktop files for whatever application launcher you use
 echo "[Desktop Entry]
