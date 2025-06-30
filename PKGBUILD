@@ -1,7 +1,7 @@
 # Maintainer: Flack <puspendrachawlax@gmail.com>
 pkgname=pom
 pkgver=1.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts"
 arch=("x86_64" "aarch64")
 url="https://github.com/Flack74/pom"
@@ -18,7 +18,11 @@ prepare() {
     # Set up Go environment
     export GOPATH="${srcdir}/gopath"
     export PATH="${GOPATH}/bin:${PATH}"
-    mkdir -p "${GOPATH}"
+    mkdir -p "${GOPATH}/src/github.com/Flack74"
+    
+    # Create symlink for correct module path
+    ln -sf "${srcdir}/${pkgname}" "${GOPATH}/src/github.com/Flack74/pom"
+    cd "${GOPATH}/src/github.com/Flack74/pom"
     
     # Create a new module with correct path
     rm -f go.mod go.sum
@@ -32,14 +36,12 @@ go mod tidy
 }
 
 build() {
-cd "$pkgname"
+cd "${GOPATH}/src/github.com/Flack74/pom"
 export CGO_CPPFLAGS="${CPPFLAGS}"
 export CGO_CFLAGS="${CFLAGS}"
 export CGO_CXXFLAGS="${CXXFLAGS}"
 export CGO_LDFLAGS="${LDFLAGS}"
 export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-export GOPATH="${srcdir}/gopath"
-export PATH="${GOPATH}/bin:${PATH}"
 
 # Ensure we're using Go modules
 export GO111MODULE=on
@@ -48,7 +50,7 @@ go build -o build/pom
 }
 
 package() {
-cd "$pkgname"
+cd "${GOPATH}/src/github.com/Flack74/pom"
 install -Dm755 build/pom "$pkgdir/usr/bin/pom"
 install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
