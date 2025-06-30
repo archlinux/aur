@@ -4,21 +4,22 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A feature-rich command-line Pomodoro timer written in Go"
 arch=('x86_64' 'aarch64')
-url="https://github.com/flack/pom"
+url="https://github.com/Flack74/Pom"
 license=('MIT')
 depends=('libnotify' 'pulseaudio')
 makedepends=('go' 'git')
-source=("git+https://github.com/flack/pom.git#tag=v${pkgver}")
+source=("git+https://github.com/Flack74/Pom.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
     cd "$pkgname"
-    go build \
-        -trimpath \
-        -buildmode=pie \
-        -mod=readonly \
-        -modcacherw \
-        -ldflags "-linkmode external -extldflags \"${LDFLAGS}\""
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    
+    go build -o pom
 }
 
 package() {
