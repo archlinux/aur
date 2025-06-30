@@ -10,6 +10,7 @@ pkgbase = pom
 	makedepends = git
 	depends = libnotify
 	depends = pulseaudio
+	depends = zenity
 	source = git+https://github.com/Flack74/pom.git#tag=v1.0.1
 	sha256sums = SKIP
 

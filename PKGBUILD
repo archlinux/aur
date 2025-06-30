@@ -1,4 +1,4 @@
-# Maintainer: Flack74 <puspendrachawlax@gmail.com>
+# Maintainer: Flack <puspendrachawlax@gmail.com>
 pkgname=pom
 pkgver=1.0.1
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="A feature-rich command-line Pomodoro timer written in Go"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Flack74/pom"
 license=('MIT')
-depends=('libnotify' 'pulseaudio')
+depends=('libnotify' 'pulseaudio' 'zenity')
 makedepends=('go' 'git')
 source=("git+https://github.com/Flack74/pom.git#tag=v${pkgver}")
 sha256sums=('SKIP')
