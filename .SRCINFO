@@ -1,6 +1,6 @@
 pkgbase = discord-netflix
 	pkgdesc = An updated and improved version from the original Discord-Netflix from Nirewen.
-	pkgver = 1.1.16
+	pkgver = 1.1.17
 	pkgrel = 3
 	url = https://discord.gg/kbf8EjpxbU
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = discord-netflix
 	depends = nss
 	depends = alsa-lib
 	conflicts = discord-netflix
-	source = discord-netflix-1.1.16::git+https://github.com/V0l-D/Discord-Netflix#tag=v1.1.16
-	sha256sums = 83f3b92aa97fead0c42c863787af0adec49e456958d817cda74f0a157529b468
+	source = discord-netflix-1.1.17::git+https://github.com/V0l-D/Discord-Netflix#tag=v1.1.17
+	sha256sums = 39b7abc49a9b0ad7e8f50ded65f04f19efa1dd14423baf6218c87b8abea99227
 
 pkgname = discord-netflix

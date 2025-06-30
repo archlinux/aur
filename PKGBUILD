@@ -2,8 +2,8 @@
 _appname=netflix
 pkgname="discord-${_appname}"
 _pkgname=Discord-Netflix
-pkgver=1.1.16
-_electronversion=30.0.1
+pkgver=1.1.17
+_electronversion=37
 _nodeversion=20
 pkgrel=3
 pkgdesc="An updated and improved version from the original Discord-Netflix from Nirewen."
@@ -28,7 +28,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
 )
-sha256sums=('83f3b92aa97fead0c42c863787af0adec49e456958d817cda74f0a157529b468')
+sha256sums=('39b7abc49a9b0ad7e8f50ded65f04f19efa1dd14423baf6218c87b8abea99227')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -36,9 +36,14 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    _ensure_local_nvm
-    gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _ensure_local_nvm
+    gendesk -f -n -q \
+        --pkgname="${pkgname}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname} --no-sandbox %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     HOME="${srcdir}/.electron-gyp"
     {
@@ -61,6 +66,6 @@ package() {
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/* "${pkgdir}/usr/lib/${pkgname}"
     ln -sf "/usr/lib/${pkgname}/${_appname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
