@@ -1,7 +1,7 @@
 pkgbase = cyberghostvpn-gui
 	pkgdesc = A GUI for CyberGhost VPN
 	pkgver = 1.0.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/picharly/cyberghostvpn-gui
 	arch = x86_64
 	license = MIT
