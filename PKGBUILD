@@ -2,7 +2,7 @@
 _pkgbase=local-ai
 _pkgname=LocalAI
 pkgname="${_pkgbase}-cublas"
-pkgver=3.0.0 # renovate: datasource=github-tags depName=mudler/LocalAI
+pkgver=3.1.1 # renovate: datasource=github-tags depName=mudler/LocalAI
 pkgrel=1
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with NVIDIA CUDA optimizations)"
 arch=('x86_64')
@@ -74,7 +74,7 @@ package() {
     "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
 
-sha256sums=('dfe1cc4fee4f7116b2a40300e2c3b31c0244a91ef42b8af625bcc79b49f59172'
+sha256sums=('00e88b6fbbac638c9b1b3d1f46a70ac774d17e0e04e17880cbc463e98d403600'
   '8e530e32d96d02c01192c987e8bffaf0bb67db34bf999fccdfa8d0777789233b'
   '90e042d0f5885b63a6aa4db7f87d6b931956f6c9b022407593466f61f6973312'
   '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
