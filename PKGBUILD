@@ -3,7 +3,7 @@
 # Contributor: duxet <duxetlg@gmail.com>
 pkgname=k3s-1.33-bin
 pkgver=1.33.2+k3s1
-pkgrel=3
+pkgrel=4
 pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
 license=('Apache')
@@ -30,13 +30,12 @@ source_armv7h=(
 source_aarch64=(
   "k3s-${pkgver}-aarch64::https://github.com/k3s-io/k3s/releases/download/v${pkgver}/k3s-arm64"
 )
-md5sums=('2c98ae8a95712a68f1f280fae7dc81cc'
-         'c05e139fcdf93434640618c6237892b7'
-         '958f9ca03f5ccfb71b52f90ca02cc2c8')
-md5sums_x86_64=('2d3c6d9ebba261f956d26873f919007d')
-md5sums_armv7h=('0b3fcc8c03686458e4902cd1a0305fb5')
-md5sums_aarch64=('96cfcfe974f887e5cd06acf3bd0b7aa4')
-
+sha256sums=('c24735658b766d4e270380181e3ecd537a8e9dce9cb96673f39170b6798ed659'
+            'cde96553e9609791cd9fe1ff33482e33c4cfec22761f7766f5c278a9ce2ec679'
+            'a09747c9541cd22df97adcabc44c09d97a4305a9d976e9bf8191849cb1ce30b6')
+sha256sums_x86_64=('7b30f8d40f0e3f01c10fa7f0a2242c8d87e5b6e54bd57e8eb3e2e6ce29129ddb')
+sha256sums_armv7h=('4f5175d4128699713e24f2dfa1095cd332d3fb251864934fc63e9ce23986d2c1')
+sha256sums_aarch64=('e93ae83fd28a5ffc83511a1f40f1185b07b00d82fb621cc1f300811eda59918c')
 
 
 package() {
