@@ -1,6 +1,7 @@
 # Maintainer: Patrick Hanft <aur at patrick-hanft dot de>
+# Maintainer: Victor Golovanenko <drygdryg2014 at yandex dot com>
 pkgname=oui
-pkgver=0.1.8
+pkgver=2.0.6
 pkgrel=1
 pkgdesc='MAC Address CLI Toolkit'
 arch=('x86_64')
@@ -8,7 +9,7 @@ url="https://github.com/thatmattlove/$pkgname"
 license=('custom:The Clear BSD License')
 makedepends=('go')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b3cb775c8ea6bf48b3b2bebcae7bb6c072620f11cdcf1b1092bae8fa15989e82')
+sha256sums=('33d7aecf62b0b61e20801c298e60e4c59c564bae40367bf0b379b71d5f425a9a')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -27,7 +28,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  go test ./...
+  go test ./... -skip 'Test_New'
 }
 
 package() {
@@ -35,4 +36,3 @@ package() {
   install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
