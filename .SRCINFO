@@ -1,0 +1,25 @@
+pkgbase = termpicker-bin
+	pkgdesc = A color picker for the terminal
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/ChausseBenjamin/termpicker
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = Beerware
+	optdepends = wl-clipboard: clipboard support on wayland
+	optdepends = xsel: clipboard support on X11
+	provides = termpicker
+	conflicts = termpicker
+	source = LICENSE-1.4.0::https://raw.githubusercontent.com/ChausseBenjamin/termpicker/v1.4.0/LICENSE
+	source = README-1.4.0.md::https://raw.githubusercontent.com/ChausseBenjamin/termpicker/v1.4.0/README.md
+	sha256sums = bf9abdea4e804279ff552c3d4f25d3dc82463760f999bf2b26960f8788debad8
+	sha256sums = 6b1afa4aaa6bcab0229dd31b8fc0d08b9962453200d02ed3bde2302b11a5d411
+	source_x86_64 = https://github.com/ChausseBenjamin/termpicker/releases/download/v1.4.0/termpicker_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 090f08e1425a1759f26a83b38009352aec90c16e79b003b4c2444ce446c68a2d
+	source_i686 = https://github.com/ChausseBenjamin/termpicker/releases/download/v1.4.0/termpicker_Linux_i386.tar.gz
+	sha256sums_i686 = fb3d059282b09a29a7d95ad6501c2ac9b826c8bd1147c95ea7a581fa52b94bce
+	source_aarch64 = https://github.com/ChausseBenjamin/termpicker/releases/download/v1.4.0/termpicker_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 366c558410969e08226b02ed5b4a87fb38327fb9f5f19b9ee5921d613cfaf439
+
+pkgname = termpicker-bin
