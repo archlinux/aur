@@ -1,7 +1,7 @@
 # Maintainer: Guoyi <kuoi@bioarchlinux.org>
 
 _pkgname=rbiom
-_pkgver=2.2.0
+_pkgver=2.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
 pkgrel=1
@@ -50,8 +50,8 @@ optdepends=(
   r-uwot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cb7fbb3835196aba1f8675d0e1be7479')
-b2sums=('2eefb6f04b2c98583264abfadb37ce23fd3f4535b902657740ddd7e2e0099657d4e2e00f7167be2813ba5723190d9345a100892d24259ef4f59c78531627be28')
+md5sums=('4019d8fb29d501a32362419b88320dc8')
+b2sums=('16caaabed0e975e1ac0038cc15c0939b4b1a23ac0d372dfa21a94a1557482d86e800e37aaa855681ff29f9f6e60767a900a6d8ec07edf10e4f45c7ecd685a7f1')
 
 build() {
   mkdir build
