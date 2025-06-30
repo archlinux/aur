@@ -1,5 +1,5 @@
---- vrc-get-gui-v1.1.1/vrc-get-gui/Tauri.toml	2025-06-22 02:01:57.000000000 +0900
-+++ vrc-get-gui-v1.1.1-patched/vrc-get-gui/Tauri.toml	2025-06-22 12:55:26.667804018 +0900
+--- vrc-get-gui-v1.1.2-patched/vrc-get-gui/Tauri.toml	2025-06-30 16:10:58.312827953 +0900
++++ vrc-get-gui-v1.1.2/vrc-get-gui/Tauri.toml	2025-06-30 16:11:17.682821820 +0900
 @@ -34,8 +34,6 @@
  resources = []
  publisher = "anatawa12"
