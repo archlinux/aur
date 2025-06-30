@@ -28,7 +28,7 @@ package() {
     _installdir=usr/local/cyberghostvpn-gui
 
     # Copy the uncompressed binary to /usr/sbin/
-    install -Dm 755 "${srcdir}/bin/cyberghostvpn-gui_linux_amd64_${pkgver}" "$pkgdir/${_installdir}/cyberghostvpn-gui"
+    install -Dm 755 "${srcdir}/cyberghostvpn-gui_linux_amd64_${pkgver}" "$pkgdir/${_installdir}/cyberghostvpn-gui"
 
     # Copy the .desktop file
     install -Dm 644 "${srcdir}/cyberghostvpn-gui.desktop" "$pkgdir/usr/share/applications/cyberghostvpn-gui.desktop"
