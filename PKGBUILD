@@ -1,9 +1,9 @@
 # Creator and maintainer: Giorgio Gilestro <giorgio at gilest.ro>
 
 pkgname=ethoscope-device
-pkgver=r1702.g1c43fc3
-pkgrel=6
-pkgdesc="A platform from monitoring animal behaviour in real time from a raspberry pi - Device version"
+pkgver=r2231.gbf320832
+pkgrel=1
+pkgdesc="A platform for monitoring animal behaviour in real time from a raspberry pi - Device version"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
 license=('GPL3')
@@ -32,22 +32,20 @@ package() {
   cd "${srcdir}/${pkgname}"
   git checkout dev
 
-  #cp node server and node updater
+  #copy ethoscope source to /opt/ethoscope
   cd "${srcdir}"
-  cp -R --no-dereference --preserve=mode,links -v * "${pkgdir}/opt/${pkgname}"
-  ln -s /opt/ethoscope-device/scripts/ethoscope_updater "${pkgdir}/opt/"
-
+  cp -R --no-dereference --preserve=mode,links -v "${pkgname}" "${pkgdir}/opt/ethoscope"
+  
   #changing the remote GIT source to local BARE created during installation
-  cd "${pkgdir}/opt/${pkgname}"
+  cd "${pkgdir}/opt/ethoscope"
   git remote set-url origin git://node/ethoscope.git
 
-  #install service files
-  cd "${srcdir}"/"${pkgname}"/scripts/
-  install -D --mode=0755 ethoscope_device.service ethoscope_listener.service ethoscope_GPIO_listener.service "${pkgdir}/usr/lib/systemd/system/"
-
-  cd "${srcdir}"/"${pkgname}"/scripts/ethoscope_updater/
-  install -D --mode=0755 ethoscope_update.service "${pkgdir}/usr/lib/systemd/system/"
-
+  #install service files as symbolic links
+  cd "${pkgdir}/usr/lib/systemd/system/"
+  ln -s /opt/ethoscope/scripts/ethoscope_device.service ethoscope_device.service
+  ln -s /opt/ethoscope/scripts/ethoscope_listener.service ethoscope_listener.service
+  ln -s /opt/ethoscope/scripts/ethoscope_GPIO_listener.service ethoscope_GPIO_listener.service
+  ln -s /opt/ethoscope/scripts/ethoscope_updater/ethoscope_update.service ethoscope_update.service
 }
 
 
