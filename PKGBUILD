@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box-bin
 _pkgname=Pandora-Box
-pkgver=1.0.13
+pkgver=1.0.14
 _electronversion=36
 pkgrel=1
 pkgdesc="A Simple Mihomo GUI.(Prebuilt version.Use system-wide electron)"
@@ -23,8 +23,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/linux-arm64-rpm.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/linux-amd64-rpm.zip")
 sha256sums=('f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
-sha256sums_aarch64=('24cd482dcbcafe786e7499f9d32e4ebcb8e8f75f828fa333176e166aa084881a')
-sha256sums_x86_64=('b9aadad076d410ff96ce98317700dc4191277054e64736d47dce3315c7b4d890')
+sha256sums_aarch64=('34792842ee51eb6f81c9d06619ede8d814f345a3dfcd1db6a85e5590ca8e3c40')
+sha256sums_x86_64=('555ef2c1c6682b58a7b212620d11bb009e3ccbb1f83e9b4acee3b33d9ba8401f')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/usr/lib/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
