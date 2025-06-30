@@ -1,7 +1,7 @@
 # Maintainer: Flack <puspendrachawlax@gmail.com>
 pkgname=pom
 pkgver=1.0.1
-pkgrel=30
+pkgrel=31
 pkgdesc="A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts"
 arch=("x86_64" "aarch64")
 url="https://github.com/Flack74/pom"
@@ -42,6 +42,20 @@ go mod tidy
 
 # Create vendor directory
 go mod vendor
+
+# Fix imports in vendor directory
+find vendor -type f -name "*.go" -exec sed -i 's|"pom/|"github.com/Flack74/pom/|g' {} +
+
+# Create temporary workspace
+mkdir -p "${srcdir}/workspace/github.com/Flack74"
+ln -sf "${srcdir}/${pkgname}" "${srcdir}/workspace/github.com/Flack74/pom"
+cd "${srcdir}/workspace"
+echo "go 1.21" > go.work
+echo "use github.com/Flack74/pom" >> go.work
+
+# Copy source files to GOPATH
+mkdir -p "${GOPATH}/src/github.com/Flack74"
+cp -r "${srcdir}/${pkgname}" "${GOPATH}/src/github.com/Flack74/pom"
 }
 
 build() {
