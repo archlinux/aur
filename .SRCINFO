@@ -1,7 +1,7 @@
 pkgbase = kh-melonmix-bin
 	pkgdesc = A fork of MelonDS, focused on remastering Kingdom Hearts: 358/2 Days and Re:coded
 	pkgver = 0.6.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vitor251093/KHMelonMix
 	install = kh-melonmix.install
 	arch = x86_64

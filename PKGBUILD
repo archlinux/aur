@@ -1,7 +1,7 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=kh-melonmix-bin
 pkgver=0.6.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A fork of MelonDS, focused on remastering Kingdom Hearts: 358/2 Days and Re:coded"
 arch=(x86_64)
 url="https://github.com/vitor251093/KHMelonMix"
@@ -46,7 +46,6 @@ echo "[Desktop Entry]
 	Type=Application
 	Icon=kh-melonmix
 	Categories=Game;" >>"$pkgdir/usr/share/applications/kh-melonmix.desktop"
- chmod +x $pkgdir/usr/bin/kh-melonmix-owndir
 echo "[Desktop Entry]
 	Name=Kingdom Hearts: 358/2 Days Melon Mix
 	GenericName=KH Melon Mix (DS Emulator)
