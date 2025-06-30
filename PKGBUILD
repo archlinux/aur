@@ -7,11 +7,11 @@ pkgdesc="gomoku"
 arch=('any')
 url="https://gitee.com/xiaojinpro/xj-gomoku.git#branch=online"
 license=('mit')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://www.lideying.cn/resource/xj-gomoku/"$pkgname"_"$pkgver"_arm64.deb")
-sha256sums=('1ceb4f6c97ebe96c92f18fd98dcd74a4e244d00312d7427435fa20ec0acaae17')
+sha256sums=('d32e6809b99a8f1c135adf5bb82f1bef173c0d14fefaf597be7bcae6dcc5d59a')
 package() {
 
   # Extract package data

@@ -14,10 +14,10 @@ pkgbase = xj-gomoku
 	depends = hicolor-icon-theme
 	depends = libsoup
 	depends = pango
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
 	source = https://www.lideying.cn/resource/xj-gomoku/xj-gomoku_1.0.0_arm64.deb
-	sha256sums = 1ceb4f6c97ebe96c92f18fd98dcd74a4e244d00312d7427435fa20ec0acaae17
+	sha256sums = d32e6809b99a8f1c135adf5bb82f1bef173c0d14fefaf597be7bcae6dcc5d59a
 
 pkgname = xj-gomoku
