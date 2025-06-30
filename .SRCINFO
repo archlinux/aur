@@ -1,10 +1,14 @@
 pkgbase = oui
 	pkgdesc = MAC Address CLI Toolkit
 	pkgver = 2.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thatmattlove/oui
 	arch = x86_64
-	license = custom:The Clear BSD License
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = BSD-3-Clause-Clear
 	makedepends = go
 	source = https://github.com/thatmattlove/oui/archive/refs/tags/v2.0.6.tar.gz
 	sha256sums = 33d7aecf62b0b61e20801c298e60e4c59c564bae40367bf0b379b71d5f425a9a

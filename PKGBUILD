@@ -2,11 +2,11 @@
 # Maintainer: Victor Golovanenko <drygdryg2014 at yandex dot com>
 pkgname=oui
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='MAC Address CLI Toolkit'
-arch=('x86_64')
+arch=(x86_64 i686 pentium4 armv7h aarch64)
 url="https://github.com/thatmattlove/$pkgname"
-license=('custom:The Clear BSD License')
+license=('BSD-3-Clause-Clear')
 makedepends=('go')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('33d7aecf62b0b61e20801c298e60e4c59c564bae40367bf0b379b71d5f425a9a')
@@ -23,6 +23,9 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  if [[ "$CARCH" == "i686" ]]; then
+  	export GO386=softfloat
+  fi
   go build -o build
 }
 
