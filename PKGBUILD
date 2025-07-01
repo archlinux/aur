@@ -4,7 +4,7 @@ _name=libassert
 _author=jeremy-rifkin
 
 pkgname=${_name}
-pkgver=2.1.5
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="The most over-engineered C++ assertion library"
 arch=('x86_64')
