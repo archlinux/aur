@@ -1,106 +1,61 @@
 # Maintainer: Flack <puspendrachawlax@gmail.com>
 pkgname=pom
-pkgver=1.0.1
-pkgrel=32
+pkgver=1.0.2
+pkgrel=4
 pkgdesc="A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts"
-arch=("x86_64" "aarch64")
 url="https://github.com/Flack74/pom"
+arch=("x86_64" "aarch64")
 license=("MIT")
 depends=("libnotify" "pulseaudio" "zenity")
 makedepends=("go" "git")
-source=("git+https://github.com/Flack74/pom.git#tag=v${pkgver}")
-sha256sums=("SKIP")
-
-prepare() {
-    cd "$pkgname"
-    mkdir -p build/
-    
-    # Set up Go environment
-    export GOPATH="${srcdir}/gopath"
-    export PATH="${GOPATH}/bin:${PATH}"
-    
-    # Create a new module with correct path
-    rm -f go.mod go.sum
-    cat > go.mod << EOF
-module github.com/Flack74/pom
-
-go 1.21
-
-require (
-    github.com/spf13/cobra v1.9.1
-    golang.org/x/term v0.32.0
-)
-
-replace github.com/Flack74/pom => ./
-EOF
-    
-    # Fix imports in all Go files
-    find . -type f -name "*.go" -exec sed -i 's|"pom/|"github.com/Flack74/pom/|g' {} +
-
-# Initialize and update modules
-go mod tidy
-
-# Create vendor directory
-go mod vendor
-
-# Fix imports in vendor directory
-find vendor -type f -name "*.go" -exec sed -i 's|"pom/|"github.com/Flack74/pom/|g' {} +
-
-# Create temporary workspace
-mkdir -p "${srcdir}/workspace/github.com/Flack74"
-ln -sf "${srcdir}/${pkgname}" "${srcdir}/workspace/github.com/Flack74/pom"
-cd "${srcdir}/workspace"
-echo "go 1.21" > go.work
-echo "use github.com/Flack74/pom" >> go.work
-
-# Copy source files to GOPATH
-mkdir -p "${GOPATH}/src/github.com/Flack74"
-cp -r "${srcdir}/${pkgname}" "${GOPATH}/src/github.com/Flack74/pom"
-
-# Create a temporary module for local development
-cd "${srcdir}/${pkgname}"
-cat > go.mod << EOF
-module github.com/Flack74/pom
-
-go 1.21
-
-require (
-github.com/spf13/cobra v1.9.1
-golang.org/x/term v0.32.0
-)
-
-replace github.com/Flack74/pom => ./
-EOF
-
-# Create vendor directory
-go mod vendor
-
-# Fix imports in vendor directory
-find vendor -type f -name "*.go" -exec sed -i 's|"pom/|"github.com/Flack74/pom/|g' {} +
-}
 
 build() {
-cd "$pkgname"
-export CGO_CPPFLAGS="${CPPFLAGS}"
-export CGO_CFLAGS="${CFLAGS}"
-export CGO_CXXFLAGS="${CXXFLAGS}"
-export CGO_LDFLAGS="${LDFLAGS}"
-export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    # Use absolute paths to handle spaces
+    local _builddir="${startdir}"
+    
+    # Set up Go environment
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    export GO111MODULE=on
+    export GOCACHE="${_builddir}/.cache/go-build"
+    export GOMODCACHE="${_builddir}/.cache/go-mod"
 
-# Ensure we're using Go modules
-export GO111MODULE=on
-export GOPATH="${srcdir}/gopath"
-export PATH="${GOPATH}/bin:${PATH}"
+    _builddate=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+    _commit=$(git -C "${_builddir}" rev-parse --short HEAD 2>/dev/null || echo "unknown")
 
-# Build with vendored dependencies
-go build -mod=vendor -o build/pom ./cmd/pom.go
+    cd "${_builddir}"
+
+    # Build the binary
+    go build -v \
+        -ldflags="-linkmode=external \
+                  -X 'main.version=${pkgver}' \
+                  -X 'main.buildDate=${_builddate}' \
+                  -X 'main.gitCommit=${_commit}'" \
+        -o pom
 }
 
 package() {
-cd "$pkgname"
-install -Dm755 build/pom "$pkgdir/usr/bin/pom"
-install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-install -Dm644 packaging/man/pom.1 "$pkgdir/usr/share/man/man1/pom.1"
-gzip -9 "$pkgdir/usr/share/man/man1/pom.1"
+    local _builddir="${startdir}"
+    cd "${_builddir}"
+
+    # Create directories
+    install -dm755 "${pkgdir}/usr/bin"
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
+    install -dm755 "${pkgdir}/usr/share/man/man1"
+
+    # Install binary and documentation
+    install -Dm755 pom "${pkgdir}/usr/bin/pom"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "packaging/man/pom.1" "${pkgdir}/usr/share/man/man1/pom.1"
 }
+
+# check() {
+#     local _builddir="${startdir}"
+#     cd "${_builddir}"
+#     go test -v ./...
+# }
