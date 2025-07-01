@@ -1,0 +1,24 @@
+pkgbase = qtel-svxlink
+	pkgdesc = Qtel: a Qt-based EchoLink client for Linux, from the official SvxLink project
+	pkgver = 25.05.1
+	pkgrel = 1
+	url = https://github.com/sm0svx/svxlink
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	depends = qt5-base
+	depends = alsa-lib
+	depends = libsigc++
+	depends = libsamplerate
+	depends = gsm
+	depends = libx11
+	provides = qtel
+	conflicts = qtel
+	conflicts = qtel-git
+	conflicts = svxlink
+	source = https://github.com/sm0svx/svxlink/archive/refs/tags/25.05.1.zip
+	sha256sums = SKIP
+
+pkgname = qtel-svxlink
