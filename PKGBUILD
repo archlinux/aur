@@ -18,9 +18,10 @@ source=("${pkgname}"
   'http://swhv.oma.be/download/JHelioviewer_4_7_3_x86_64.rpm'
 )
 
-md5sums=('87626bac378d9bd6999f29e5d96fb778'
+md5sums=(
+	'843337bcd3c49e7f24c98383640c7070'
 	'4cdedcd67c7371762d4ad17b7ce91a32'
-	'97ac9c4a6168e64746c2e69b5e1e94ce'
+	'87626bac378d9bd6999f29e5d96fb778'
          )
 
 package() {
