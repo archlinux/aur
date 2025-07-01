@@ -27,7 +27,7 @@ sha256sums=('fa8dc29dfe6d42760d693436771146dab8cb1a98d17222ad6778c8d5ba1f3def')
 
 package() {
     # 安装二进制文件
-    install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/local/bin/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     # 安装服务文件
     install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/etc/systemd/system/${pkgname}.service"
 }
