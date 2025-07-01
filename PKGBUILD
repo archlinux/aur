@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=suricata-nfqueue
 _pkgname=suricata
-pkgver=7.0.8
+pkgver=7.0.10
 pkgrel=1
 pkgdesc="A high performance Network IDS, IPS and Network Security Monitoring engine"
 arch=('i686' 'x86_64')
@@ -22,11 +22,11 @@ backup=('etc/suricata/suricata.yaml'
         'etc/suricata/threshold.config')
 source=(https://www.openinfosecfoundation.org/download/${_pkgname}-${pkgver}.tar.gz{,.sig}
         suricata-update.{service,timer})
-validpgpkeys=('B36FDAF2607E10E8FFA89E5E2BA9C98CCDF1E93A') # Open Information Security Foundation
-sha256sums=('492928c622e170bd9c45d3530bc2b1033c5582dc18085c436fceafb62829d3ce'
+sha256sums=('197f925ea701bdcb4a15aca024b06546b002674cd958b58958f29a5bb214d759'
             'SKIP'
             '57505c464d30623c9d6611ca4b5d08a580c0116b20a4280f39c3720a3f369a92'
             '330c93e72a02f4f80972ab1641ee550b32cfdc2f40c78331294bcc009af06d71')
+validpgpkeys=('B36FDAF2607E10E8FFA89E5E2BA9C98CCDF1E93A') # Open Information Security Foundation
 
 build() {
 #  export RUSTUP_TOOLCHAIN=1.52.0 # Use rustup and toolchain version to get build to complete
