@@ -1,0 +1,11 @@
+[Unit]
+Description=Discord rich presence integration for MPRIS.
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/discord-mpris-rs
+EnvironmentFile=%h/.config/discord-mpris-rs/.env
+
+[Install]
+WantedBy=default.target
