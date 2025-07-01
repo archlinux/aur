@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=6.1.0
+Name=Trace Compass
+Comment=Trace and log analysis
+Exec=tracecompass
+Icon=tracecompass
+Terminal=false
+Categories=Development;
+StartupNotify=true

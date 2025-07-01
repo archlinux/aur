@@ -1,0 +1,16 @@
+pkgbase = tracecompass-bin
+	pkgdesc = Eclipse Trace Compass is an open source application to solve performance and reliability issues by reading and analyzing traces and logs of a system
+	pkgver = 11.0.0
+	pkgrel = 1
+	url = https://eclipse.dev/tracecompass/
+	arch = x86_64
+	license = EPL
+	depends = java-environment>=17
+	source = https://download.eclipse.org/tracecompass/releases/11.0.0/rcp/trace-compass-11.0.0-20250613-0813-linux.gtk.x86_64.tar.gz
+	source = tracecompass.desktop
+	source = tracecompass.png
+	sha512sums = d540d4b90ce5b63557a07b6921eb1997e910d038b7994ccd67b49b9540d91a84b56257d2527018743945a2f6ddcfea0ab814050e652ec9f923e8400a6f453ccf
+	sha512sums = e41300da10039c53c1bf8d6bb59af18161a924e9fd0ae2d1e5da60921d6ee0107a8cdbb2e00c0b80950a2e0876a34ee832c2e9b7b659d365d4575adfa47f010d
+	sha512sums = 467081161c839ff938ee0aac14b663e6d85cdd7431d3560e49babc14b7a779ff619692cefc991265abbb259652d2e112c1fd4d4f44765530d2f18f08387ab9c1
+
+pkgname = tracecompass-bin
