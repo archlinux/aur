@@ -2,12 +2,12 @@
 
 _name=pytr
 pkgname="python-$_name-git"
-pkgver=0.3.0.r0.g3280e88
+pkgver=0.4.2.r1.g9b49e3f
 pkgrel=1
 pkgdesc='This is a library for the private API of the Trade Republic online brokerage.'
 arch=('any')
 url="https://github.com/pytr-org/pytr"
-makedepends=('python-setuptools')
+makedepends=('python-hatchling' 'python-hatch-babel')
 license=('MIT')
 provides=("python-${_name}")
 conflicts=("python-${_name}")
@@ -16,7 +16,7 @@ depends=(
   'python-packaging' 'python-ecdsa' 'python-coloredlogs' 'python-certifi'
   )
 source=("${_name}::git+${url}.git")
-sha512sums=(SKIP)
+sha256sums=(SKIP)
 
 pkgver() {
   cd "${_name}"
@@ -29,16 +29,12 @@ pkgver() {
 }
 
 build() {
-  cd "$_name"
-  python -m build --wheel --skip-dependency-check --no-isolation
-}
-
-check() {
-  cd "$_name"
-  python -m pytest
+  cd "${srcdir}/${_name}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_name"
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+	cd "${srcdir}/${_name}"
+    version=$(python -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])')
+	python -m installer --destdir="${pkgdir}" "dist/${_name}-${version}-py3-none-any.whl"
 }
