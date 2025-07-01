@@ -18,7 +18,7 @@ sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             '0385dbeb9c6f5485c323a61786fa8e2680a44838cf216582d385231bd1a9bad6'
             '28744d069c956fb5def82163fbaed06c1d5b7f718c9451ed82a4af039124255e')
 depends=(glibc)
-makedepends=(gcc diffutils nasm patch sed)
+makedepends=(diffutils gcc make nasm patch sed)
 optdepends=(electron{34..36}": replace ${_so}")
 conflicts=(vivaldi-ffmpeg-codecs opera{,-developer,-beta}-ffmpeg-codecs{,-bin})
 provides=("${conflicts[@]}")
