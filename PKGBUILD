@@ -1,6 +1,4 @@
 # Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
-# Contributor: gigas002 <gigas002@pm.me>
-
 pkgname=carbonyl-git
 _pkgname=carbonyl
 pkgver=r88.ab80a27
