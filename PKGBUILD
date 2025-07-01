@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=mvfst
-pkgver=2025.06.23.00
+pkgver=2025.06.30.00
 pkgrel=1
 pkgdesc="An implementation of the QUIC transport protocol"
 arch=(x86_64)
@@ -70,7 +70,7 @@ provides=(
   libmvfst_transport_settings_functions.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('22beec6c3d1d466bededa8dae7f8e4785bdd23d3f40b9cae2cc9df998479f481')
+sha256sums=('93a9a1900169d450dd7b208de1c434ffe731de7e5d051a5f69f349eb9a570c05')
 
 prepare() {
   cd $pkgname-$pkgver
