@@ -1,5 +1,5 @@
 pkgbase = v4l2loopback-obs-dkms
-	pkgdesc = v4l2-loopback device
+	pkgdesc = v4l2-loopback backport compatible with obs-studio
 	pkgver = 0.13.3.r0.g488e918
 	pkgrel = 1
 	url = https://github.com/ticpu/v4l2loopback-obs.git
