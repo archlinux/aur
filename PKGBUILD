@@ -12,7 +12,7 @@ makedepends=("go>=1.24")
 
 prepare() {
     mkdir -p "$srcdir/$pkgname-build"
-    cp -r "$startdir"/../pom-cli/* "$srcdir/$pkgname-build/"
+    cp -r "$startdir"/../pom/* "$srcdir/$pkgname-build/"
     cd "$srcdir/$pkgname-build"
 }
 
