@@ -1,7 +1,7 @@
 #Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 
 pkgname=tldx
-pkgver=1.1.1
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Domain Availability Research Tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=(
   'git'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brandonyoungdev/tldx/archive/v${pkgver}.tar.gz")
-sha256sums=('52a28c89881dfbd907113101e7180eee82bc72ceb1ceb7e56f20e96a887b4ead')
+sha256sums=('5bc6836e033ae63187b17e523e808cfd8bb6525715163fdc158bf85f36a2b834')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
