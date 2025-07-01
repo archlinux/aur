@@ -1,16 +1,16 @@
 pkgbase = grpcurl-bin
 	pkgdesc = Like cURL, but for gRPC: Command-line tool for interacting with gRPC servers
 	pkgver = 1.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fullstorydev/grpcurl
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	provides = grpcurl
-	conflicts = grpcurl-git
-	source_x86_64 = grpcurl-bin-1.9.3-x86_64.tar.gz::https://github.com/fullstorydev/grpcurl/releases/download/v1.9.3/grpcurl_1.9.3_linux_x86_64.tar.gz
+	conflicts = grpcurl
+	source_x86_64 = grpcurl-1.9.3-x86_64.tar.gz::https://github.com/fullstorydev/grpcurl/releases/download/v1.9.3/grpcurl_1.9.3_linux_x86_64.tar.gz
 	sha256sums_x86_64 = a926b62a85787ccf73ef8736b3ae554f1242e39d92bb8767a79d6dd23b11d1d5
-	source_aarch64 = grpcurl-bin-1.9.3-aarch64.tar.gz::https://github.com/fullstorydev/grpcurl/releases/download/v1.9.3/grpcurl_1.9.3_linux_arm64.tar.gz
+	source_aarch64 = grpcurl-1.9.3-aarch64.tar.gz::https://github.com/fullstorydev/grpcurl/releases/download/v1.9.3/grpcurl_1.9.3_linux_arm64.tar.gz
 	sha256sums_aarch64 = b20a00c1cb82ab81ec32696766d4076e99b4cb5ca0823a71767ba64dbea0f263
 
 pkgname = grpcurl-bin
