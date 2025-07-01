@@ -5,8 +5,10 @@ pkgbase = pom
 	url = https://github.com/Flack74/pom
 	arch = x86_64
 	license = MIT
-	makedepends = go>=1.24
+	makedepends = go
+	makedepends = git
 	depends = pulseaudio
 	source = git+https://github.com/Flack74/pom.git#tag=v1.0.2
+	sha256sums = SKIP
 
 pkgname = pom
