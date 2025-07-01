@@ -1,0 +1,19 @@
+[Unit]
+Description=Open Source Airtable Alternative
+After=network.target
+
+[Service]
+Delegate=true
+Type=exec
+KillMode=process
+## for more information, visit
+## https://nocodb.com/docs/self-hosting/environment-variables
+Environment="NC_DB=pg://host.docker.internal:5432?u=postgres&p=PASSWORD&d=db_name"
+Environment="NC_AUTH_JWT_SECRET=SOME_UUID"
+Environment="NC_TOOL_DIR=/var/lib/nocodb/"
+Environment="NC_PUBLIC_URL=https://example.com:8080"
+#Environment="NC_REDIS_URL=redis://:SOME@redis:6379/0"
+
+ExecStart=/usr/bin/nocodb
+WorkingDirectory=/usr/share/nocodb/packages/nocodb
+Restart=on-failure
