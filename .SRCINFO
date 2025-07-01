@@ -1,0 +1,16 @@
+pkgbase = brother-dcpl2640dw
+	pkgdesc = Brother DCP-L2640DW lpr driver and CUPS wrapper
+	pkgver = 4.1.0_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadend.aspx?c=us&lang=en&prod=dcpl2640dw_us_as&os=128&dlid=dlf106024_000&flang=4&type3=10283
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom:brother
+	depends = cups
+	optdepends = brscan5: scanner support.
+	optdepends = brscan-skey: scanner key tool.
+	source = https://download.brother.com/welcome/dlf106025/dcpl2640dwpdrv-4.1.0-1.i386.rpm
+	sha256sums = 0b476e240296deeb0c8135ad0105233f6b93522fa3a4ae85088a175ed3463992
+
+pkgname = brother-dcpl2640dw
