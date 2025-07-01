@@ -1,5 +1,7 @@
 # Maintainer: SuicideCatt <random.cat.from.internet@gmail.com>
 
+options=(!debug !strip)
+
 pkgname=msdf-atlas-gen-git
 pkgver=1.3.r3.g30b6f4f
 pkgrel=1
