@@ -1,23 +1,23 @@
 pkgbase = einstein
 	pkgdesc = Remake of old DOS game Sherlock which was inspired by Albert Einstein's puzzle
-	pkgver = 2.0
-	pkgrel = 6
-	url = https://github.com/lksj/einstein-puzzle
-	changelog = ChangeLog
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/jordan-evens/einstein-puzzle
 	arch = i686
 	arch = x86_64
-	license = GPL
-	checkdepends = sharutils
+	license = GPL-2.0-only
 	makedepends = git
-	makedepends = ttf-dejavu
 	depends = sdl_ttf
+	depends = glibc
+	depends = zlib
+	depends = sdl12-compat
 	depends = sdl_mixer
-	depends = xorg-server
-	source = git+https://github.com/lksj/einstein-puzzle.git
+	depends = freetype2
+	source = git+https://github.com/jordan-evens/einstein-puzzle.git#commit=0b7a6c7896dd431cedd54ba696a190b8919f4bc3
 	source = einstein.desktop
 	source = einstein.png
-	md5sums = SKIP
-	md5sums = 4da7f4b1b17f7385ef2cb14fc6326997
+	md5sums = 6cf2e0d66362700e295327a101b4cfff
+	md5sums = f9a54dfbf5650414808af28003666b9b
 	md5sums = 81b58f2e3c61c0b50716992a30f2d4cc
 
 pkgname = einstein
