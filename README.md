@@ -39,9 +39,13 @@ pom start                    # Basic session
 pom profile use work         # Use work profile
 pom insights suggest         # Get AI recommendations
 
-# Web interface
-pom web                      # Start on port 8080
-# Open http://localhost:8080 in browser
+# Web interface (daemon mode recommended)
+pom web -d                   # Background daemon mode
+pom web -d -p 3000          # Custom port
+pom web                     # Foreground mode
+
+# Access: http://localhost:8080
+# Stop daemon: pkill pom
 ```
 
 ## Dependencies

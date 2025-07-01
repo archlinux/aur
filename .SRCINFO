@@ -1,6 +1,6 @@
 pkgbase = pom
 	pkgdesc = Advanced Pomodoro timer with daemon web UI, CLI controls via browser, AI insights, and plugin system. Zero dependencies.
-	pkgver = 2.1.8
+	pkgver = 2.1.9
 	pkgrel = 1
 	url = https://github.com/Flack74/pom
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pom
 	makedepends = git
 	optdepends = pulseaudio: for sound notifications
 	optdepends = pipewire-pulse: for sound notifications (pipewire users)
-	source = git+https://github.com/Flack74/pom.git#tag=v2.1.8
+	source = git+https://github.com/Flack74/pom.git#tag=v2.1.9
 	sha256sums = SKIP
 
 pkgname = pom
