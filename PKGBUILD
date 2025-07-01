@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=fb303
-pkgver=2025.06.23.00
+pkgver=2025.06.30.00
 pkgrel=1
 pkgdesc="thrift functions that provide a mechanism for querying information from a service"
 arch=(x86_64)
@@ -31,7 +31,7 @@ provides=(
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 pass-thrift-include-to-python.patch::https://patch-diff.githubusercontent.com/raw/facebook/fb303/pull/68.patch)
-sha256sums=('664e2d74f1b3d9cd2251e705f66d55c6779337fabfeb6e41e109337416bc7ebb'
+sha256sums=('b8c4d8593d0fe450f2d590d9a4296cdc425bb9150328d804b1bacf27817cd572'
             '89ccb751f778b43d1eb4804eee1c041a5f9d8626d82034564300ee2bd4e731d9')
 
 prepare() {
