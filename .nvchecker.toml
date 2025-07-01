@@ -1,0 +1,4 @@
+[cvise-git]
+source = "git"
+git = "https://github.com/marxin/cvise.git"
+prefix = "v"
