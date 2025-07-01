@@ -1,6 +1,6 @@
 # Maintainer: melqtx <melqtx@proton.me>
 pkgname=yt-snip
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Fast YouTube video/audio downloader and trimmer - a yt-dlp wrapper"
 arch=('x86_64' 'i686')
