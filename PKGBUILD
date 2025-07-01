@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ubports-installer-bin
-pkgver=0.11.1
+pkgver=0.11.2
 _electronversion=33
 pkgrel=1
 pkgdesc="A simple tool to install Ubuntu Touch on UBports devices.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('372b22fded4264f184bc1388ccc1436e7e0298e67d1c99a2f9e2aeff51d30020'
+sha256sums=('aebc8a1fc14d998f16e774ff8f126c76a6133dc3bd8f9284d32c117329b4b177'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}.bin" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
