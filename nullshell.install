@@ -1,3 +1,5 @@
+#!/bin/sh
+
 post_install() {
 	grep -qe '^/bin/nullshell$' etc/shells || echo '/bin/nullshell' >> etc/shells
 	grep -qe '^/usr/bin/nullshell$' etc/shells || echo '/usr/bin/nullshell' >> etc/shells
