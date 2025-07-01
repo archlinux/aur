@@ -1,0 +1,14 @@
+pkgbase = mattermost-plugin-collabora
+	pkgdesc = integrate Collabora Online so that users can view or edit files directly in the chat
+	pkgver = 1.2.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/CollaboraOnline/collabora-mattermost
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = jq
+	options = !strip
+	source = https://github.com/CollaboraOnline/collabora-mattermost/releases/download/1.2.0/com.collaboraonline.mattermost-1.2.0.tar.gz
+	sha256sums = 43254a7ace04d0327895458ec72627f29eec192c7cfbbb0bf9071e4475229705
+
+pkgname = mattermost-plugin-collabora
