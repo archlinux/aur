@@ -1,0 +1,241 @@
+diff --git a/src/control_osc.cpp b/src/control_osc.cpp
+index 3fd4d6d..04637d4 100644
+--- a/src/control_osc.cpp
++++ b/src/control_osc.cpp
+@@ -145,88 +145,88 @@ ControlOSC::register_callbacks()
+ 
+ 
+ 		/* add method that will match the path /quit with no args */
+-		lo_server_add_method(serv, "/quit", "", ControlOSC::_quit_handler, this);
++		lo_server_add_method(serv, "/quit", "", (lo_method_handler) ControlOSC::_quit_handler, this);
+ 
+ 		// add ping handler:  s:returl s:retpath [useid]
+-		lo_server_add_method(serv, "/ping", "ss", ControlOSC::_ping_handler, this);
+-		lo_server_add_method(serv, "/ping", "ssi", ControlOSC::_ping_handler, this);
++		lo_server_add_method(serv, "/ping", "ss", (lo_method_handler) ControlOSC::_ping_handler, this);
++		lo_server_add_method(serv, "/ping", "ssi", (lo_method_handler) ControlOSC::_ping_handler, this);
+ 
+ 		// add loop add handler:  i:channels  i:bytes_per_channel
+-		lo_server_add_method(serv, "/loop_add", "if", ControlOSC::_loop_add_handler, this);
+-		lo_server_add_method(serv, "/loop_add", "ifi", ControlOSC::_loop_add_handler, this);
++		lo_server_add_method(serv, "/loop_add", "if", (lo_method_handler) ControlOSC::_loop_add_handler, this);
++		lo_server_add_method(serv, "/loop_add", "ifi", (lo_method_handler) ControlOSC::_loop_add_handler, this);
+ 
+ 		// load session:  s:filename  s:returl  s:retpath
+-		lo_server_add_method(serv, "/load_session", "sss", ControlOSC::_load_session_handler, this);
++		lo_server_add_method(serv, "/load_session", "sss", (lo_method_handler) ControlOSC::_load_session_handler, this);
+ 
+ 		// save session:  s:filename  s:returl  s:retpath (i:write_audio)
+-		lo_server_add_method(serv, "/save_session", "sss", ControlOSC::_save_session_handler, this);
+-		lo_server_add_method(serv, "/save_session", "sssi", ControlOSC::_save_session_handler, this);
++		lo_server_add_method(serv, "/save_session", "sss", (lo_method_handler) ControlOSC::_save_session_handler, this);
++		lo_server_add_method(serv, "/save_session", "sssi", (lo_method_handler) ControlOSC::_save_session_handler, this);
+ 		
+ 		// add loop del handler:  i:index 
+-		lo_server_add_method(serv, "/loop_del", "i", ControlOSC::_loop_del_handler, this);
++		lo_server_add_method(serv, "/loop_del", "i", (lo_method_handler) ControlOSC::_loop_del_handler, this);
+ 
+ 		// un/register config handler:  s:returl  s:retpath
+-		lo_server_add_method(serv, "/register", "ss", ControlOSC::_register_config_handler, this);
+-		lo_server_add_method(serv, "/unregister", "ss", ControlOSC::_unregister_config_handler, this);
++		lo_server_add_method(serv, "/register", "ss", (lo_method_handler) ControlOSC::_register_config_handler, this);
++		lo_server_add_method(serv, "/unregister", "ss", (lo_method_handler) ControlOSC::_unregister_config_handler, this);
+ 
+-		lo_server_add_method(serv, "/set", "sf", ControlOSC::_global_set_handler, this);
+-		lo_server_add_method(serv, "/get", "sss", ControlOSC::_global_get_handler, this);
++		lo_server_add_method(serv, "/set", "sf", (lo_method_handler) ControlOSC::_global_set_handler, this);
++		lo_server_add_method(serv, "/get", "sss", (lo_method_handler) ControlOSC::_global_get_handler, this);
+ 
+ 		// un/register_update args= s:ctrl s:returl s:retpath
+-		lo_server_add_method(serv, "/register_update", "sss", ControlOSC::_global_register_update_handler, this);
+-		lo_server_add_method(serv, "/unregister_update", "sss", ControlOSC::_global_unregister_update_handler, this);
+-		lo_server_add_method(serv, "/register_auto_update", "siss", ControlOSC::_global_register_auto_update_handler, this);
+-		lo_server_add_method(serv, "/unregister_auto_update", "sss", ControlOSC::_global_unregister_auto_update_handler, this);
++		lo_server_add_method(serv, "/register_update", "sss", (lo_method_handler) ControlOSC::_global_register_update_handler, this);
++		lo_server_add_method(serv, "/unregister_update", "sss", (lo_method_handler) ControlOSC::_global_unregister_update_handler, this);
++		lo_server_add_method(serv, "/register_auto_update", "siss", (lo_method_handler) ControlOSC::_global_register_auto_update_handler, this);
++		lo_server_add_method(serv, "/unregister_auto_update", "sss", (lo_method_handler) ControlOSC::_global_unregister_auto_update_handler, this);
+ 
+ 
+ 		// certain RT global ctrls
+-		lo_server_add_method(serv, "/sl/-2/set", "sf", ControlOSC::_set_handler, new CommandInfo(this, -2, Event::type_global_control_change));
++		lo_server_add_method(serv, "/sl/-2/set", "sf", (lo_method_handler) ControlOSC::_set_handler, new CommandInfo(this, -2, Event::type_global_control_change));
+ 
+ 		// get all midi bindings:  s:returl s:retpath
+-		lo_server_add_method(serv, "/get_all_midi_bindings", "ss", ControlOSC::_midi_binding_handler,
++		lo_server_add_method(serv, "/get_all_midi_bindings", "ss", (lo_method_handler) ControlOSC::_midi_binding_handler,
+ 				     new MidiBindCommand(this, MidiBindCommand::GetAllBinding));
+ 
+ 		// remove a specific midi binding:  s:binding_serialization s:options
+-		lo_server_add_method(serv, "/remove_midi_binding", "ss", ControlOSC::_midi_binding_handler,
++		lo_server_add_method(serv, "/remove_midi_binding", "ss", (lo_method_handler) ControlOSC::_midi_binding_handler,
+ 				     new MidiBindCommand(this, MidiBindCommand::RemoveBinding));
+ 
+ 		// add a specific midi binding:  s:binding_serialization s:options
+-		lo_server_add_method(serv, "/add_midi_binding", "ss", ControlOSC::_midi_binding_handler,
++		lo_server_add_method(serv, "/add_midi_binding", "ss", (lo_method_handler) ControlOSC::_midi_binding_handler,
+ 				     new MidiBindCommand(this, MidiBindCommand::AddBinding));
+ 
+ 		// clear all bindings
+-		lo_server_add_method(serv, "/clear_midi_bindings", "", ControlOSC::_midi_binding_handler,
++		lo_server_add_method(serv, "/clear_midi_bindings", "", (lo_method_handler) ControlOSC::_midi_binding_handler,
+ 				     new MidiBindCommand(this, MidiBindCommand::ClearAllBindings));
+ 		
+ 		// load bindings from file:  s:binding_filename s:options
+-		lo_server_add_method(serv, "/load_midi_bindings", "ss", ControlOSC::_midi_binding_handler,
++		lo_server_add_method(serv, "/load_midi_bindings", "ss", (lo_method_handler) ControlOSC::_midi_binding_handler,
+ 				     new MidiBindCommand(this, MidiBindCommand::LoadBindings));
+ 
+ 		// save bindings to file:  s:binding_filename s:options
+-		lo_server_add_method(serv, "/save_midi_bindings", "ss", ControlOSC::_midi_binding_handler,
++		lo_server_add_method(serv, "/save_midi_bindings", "ss", (lo_method_handler) ControlOSC::_midi_binding_handler,
+ 				     new MidiBindCommand(this, MidiBindCommand::SaveBindings));
+ 
+ 		// learn midi binding:  s:binding_serialization s:options  s:returl s:retpath
+-		lo_server_add_method(serv, "/learn_midi_binding", "ssss", ControlOSC::_midi_binding_handler,
++		lo_server_add_method(serv, "/learn_midi_binding", "ssss", (lo_method_handler) ControlOSC::_midi_binding_handler,
+ 				     new MidiBindCommand(this, MidiBindCommand::LearnBinding));
+ 
+ 		// return next midi event in a binding serialization:  s:returl  s:retpath
+-		lo_server_add_method(serv, "/get_next_midi_event", "ss", ControlOSC::_midi_binding_handler,
++		lo_server_add_method(serv, "/get_next_midi_event", "ss", (lo_method_handler) ControlOSC::_midi_binding_handler,
+ 				     new MidiBindCommand(this, MidiBindCommand::GetNextMidi));
+ 
+ 		// cancel learn or get next midi event in a binding serialization:  s:returl  s:retpath
+-		lo_server_add_method(serv, "/cancel_midi_learn", "ss", ControlOSC::_midi_binding_handler,
++		lo_server_add_method(serv, "/cancel_midi_learn", "ss", (lo_method_handler) ControlOSC::_midi_binding_handler,
+ 				     new MidiBindCommand(this, MidiBindCommand::CancelLearn));
+ 
+ 		// cancel learn or get next midi event in a binding serialization:  s:returl  s:retpath
+-		lo_server_add_method(serv, "/cancel_get_next_midi", "ss", ControlOSC::_midi_binding_handler,
++		lo_server_add_method(serv, "/cancel_get_next_midi", "ss", (lo_method_handler) ControlOSC::_midi_binding_handler,
+ 				     new MidiBindCommand(this, MidiBindCommand::CancelGetNext));
+ 		
+ 		
+ 		// MIDI clock
+-		lo_server_add_method(serv, "/sl/midi_start", NULL, ControlOSC::_midi_start_handler, this);
+-		lo_server_add_method(serv, "/sl/midi_stop", NULL, ControlOSC::_midi_stop_handler, this);
+-		lo_server_add_method(serv, "/sl/midi_tick", NULL, ControlOSC::_midi_tick_handler, this);
++		lo_server_add_method(serv, "/sl/midi_start", NULL, (lo_method_handler) ControlOSC::_midi_start_handler, this);
++		lo_server_add_method(serv, "/sl/midi_stop", NULL, (lo_method_handler) ControlOSC::_midi_stop_handler, this);
++		lo_server_add_method(serv, "/sl/midi_tick", NULL, (lo_method_handler) ControlOSC::_midi_tick_handler, this);
+ 	
+ 	}
+ }
+@@ -310,52 +310,52 @@ ControlOSC::on_loop_added (int instance, bool sendupdate)
+ 		serv = srvs[i];
+ 		
+ 		snprintf(tmpstr, sizeof(tmpstr), "/sl/%d/down", instance);
+-		lo_server_add_method(serv, tmpstr, "s", ControlOSC::_updown_handler, new CommandInfo(this, instance, Event::type_cmd_down));
++		lo_server_add_method(serv, tmpstr, "s", (lo_method_handler) ControlOSC::_updown_handler, new CommandInfo(this, instance, Event::type_cmd_down));
+ 	
+ 		snprintf(tmpstr, sizeof(tmpstr), "/sl/%d/up", instance);
+-		lo_server_add_method(serv, tmpstr, "s", ControlOSC::_updown_handler, new CommandInfo(this, instance, Event::type_cmd_up));
++		lo_server_add_method(serv, tmpstr, "s", (lo_method_handler) ControlOSC::_updown_handler, new CommandInfo(this, instance, Event::type_cmd_up));
+ 
+ 		snprintf(tmpstr, sizeof(tmpstr), "/sl/%d/hit", instance);
+-		lo_server_add_method(serv, tmpstr, "s", ControlOSC::_updown_handler, new CommandInfo(this, instance, Event::type_cmd_hit));
++		lo_server_add_method(serv, tmpstr, "s", (lo_method_handler) ControlOSC::_updown_handler, new CommandInfo(this, instance, Event::type_cmd_hit));
+ 		
+ 		snprintf(tmpstr, sizeof(tmpstr), "/sl/%d/upforce", instance);
+-		lo_server_add_method(serv, tmpstr, "s", ControlOSC::_updown_handler, new CommandInfo(this, instance, Event::type_cmd_upforce));
++		lo_server_add_method(serv, tmpstr, "s", (lo_method_handler) ControlOSC::_updown_handler, new CommandInfo(this, instance, Event::type_cmd_upforce));
+ 		
+ 		snprintf(tmpstr, sizeof(tmpstr), "/sl/%d/set", instance);
+-		lo_server_add_method(serv, tmpstr, "sf", ControlOSC::_set_handler, new CommandInfo(this, instance, Event::type_control_change));
++		lo_server_add_method(serv, tmpstr, "sf", (lo_method_handler) ControlOSC::_set_handler, new CommandInfo(this, instance, Event::type_control_change));
+ 	
+ 		snprintf(tmpstr, sizeof(tmpstr), "/sl/%d/get", instance);
+-		lo_server_add_method(serv, tmpstr, "sss", ControlOSC::_get_handler, new CommandInfo(this, instance, Event::type_control_request));
++		lo_server_add_method(serv, tmpstr, "sss", (lo_method_handler) ControlOSC::_get_handler, new CommandInfo(this, instance, Event::type_control_request));
+ 
+ 		snprintf(tmpstr, sizeof(tmpstr), "/sl/%d/set_prop", instance);
+-		lo_server_add_method(serv, tmpstr, "ss", ControlOSC::_set_prop_handler, new CommandInfo(this, instance, Event::type_control_change));
++		lo_server_add_method(serv, tmpstr, "ss", (lo_method_handler) ControlOSC::_set_prop_handler, new CommandInfo(this, instance, Event::type_control_change));
+ 
+ 		snprintf(tmpstr, sizeof(tmpstr), "/sl/%d/get_prop", instance);
+-		lo_server_add_method(serv, tmpstr, "sss", ControlOSC::_get_prop_handler, new CommandInfo(this, instance, Event::type_control_request));
++		lo_server_add_method(serv, tmpstr, "sss", (lo_method_handler) ControlOSC::_get_prop_handler, new CommandInfo(this, instance, Event::type_control_request));
+ 
+ 		// load loop:  s:filename  s:returl  s:retpath
+ 		snprintf(tmpstr, sizeof(tmpstr), "/sl/%d/load_loop", instance);
+-		lo_server_add_method(serv, tmpstr, "sss", ControlOSC::_loadloop_handler, new CommandInfo(this, instance, Event::type_control_request));
++		lo_server_add_method(serv, tmpstr, "sss", (lo_method_handler) ControlOSC::_loadloop_handler, new CommandInfo(this, instance, Event::type_control_request));
+ 
+ 		// save loop:  s:filename  s:format s:endian s:returl  s:retpath
+ 		snprintf(tmpstr, sizeof(tmpstr), "/sl/%d/save_loop", instance);
+-		lo_server_add_method(serv, tmpstr, "sssss", ControlOSC::_saveloop_handler, new CommandInfo(this, instance, Event::type_control_request));
++		lo_server_add_method(serv, tmpstr, "sssss", (lo_method_handler) ControlOSC::_saveloop_handler, new CommandInfo(this, instance, Event::type_control_request));
+ 	
+ 		// register_update args= s:ctrl s:returl s:retpath
+ 		snprintf(tmpstr, sizeof(tmpstr), "/sl/%d/register_update", instance);
+-		lo_server_add_method(serv, tmpstr, "sss", ControlOSC::_register_update_handler, new CommandInfo(this, instance, Event::type_control_request));
++		lo_server_add_method(serv, tmpstr, "sss", (lo_method_handler) ControlOSC::_register_update_handler, new CommandInfo(this, instance, Event::type_control_request));
+ 
+ 		// unregister_update args= s:ctrl s:returl s:retpath
+ 		snprintf(tmpstr, sizeof(tmpstr), "/sl/%d/unregister_update", instance);
+-		lo_server_add_method(serv, tmpstr, "sss", ControlOSC::_unregister_update_handler, new CommandInfo(this, instance, Event::type_control_request));
++		lo_server_add_method(serv, tmpstr, "sss", (lo_method_handler) ControlOSC::_unregister_update_handler, new CommandInfo(this, instance, Event::type_control_request));
+ 
+ 		// register_audo_update args= s:ctrl i:millisec s:returl s:retpath
+ 		snprintf(tmpstr, sizeof(tmpstr), "/sl/%d/register_auto_update", instance);
+-		lo_server_add_method(serv, tmpstr, "siss", ControlOSC::_register_auto_update_handler, new CommandInfo(this, instance, Event::type_control_request));
++		lo_server_add_method(serv, tmpstr, "siss", (lo_method_handler) ControlOSC::_register_auto_update_handler, new CommandInfo(this, instance, Event::type_control_request));
+ 
+ 		// unregister_auto_update args= s:ctrl s:returl s:retpath
+ 		snprintf(tmpstr, sizeof(tmpstr), "/sl/%d/unregister_auto_update", instance);
+-		lo_server_add_method(serv, tmpstr, "sss", ControlOSC::_unregister_auto_update_handler, new CommandInfo(this, instance, Event::type_control_request));
++		lo_server_add_method(serv, tmpstr, "sss", (lo_method_handler) ControlOSC::_unregister_auto_update_handler, new CommandInfo(this, instance, Event::type_control_request));
+ 
+ 	}
+ 
+diff --git a/src/gui/loop_control.cpp b/src/gui/loop_control.cpp
+index 858046c..5508289 100644
+--- a/src/gui/loop_control.cpp
++++ b/src/gui/loop_control.cpp
+@@ -193,20 +193,20 @@ LoopControl::LoopControl (const wxString & rcdir)
+ 	cerr << "slgui: our URL is " << _our_url << endl;
+ 	
+ 	/* add handler for control param callbacks, first is loop index , 2nd arg ctrl string, 3nd arg value */
+-	lo_server_add_method(_osc_server, "/ctrl", "isf", LoopControl::_control_handler, this);
+-	lo_server_add_method(_osc_server, "/prop", "iss", LoopControl::_property_handler, this);
++	lo_server_add_method(_osc_server, "/ctrl", "isf", (lo_method_handler) LoopControl::_control_handler, this);
++	lo_server_add_method(_osc_server, "/prop", "iss", (lo_method_handler) LoopControl::_property_handler, this);
+ 
+ 	// pingack expects: s:engine_url s:version i:loopcount
+-	lo_server_add_method(_osc_server, "/pingack", "ssi", LoopControl::_pingack_handler, this);
+-	lo_server_add_method(_osc_server, "/pingack", "ssii", LoopControl::_pingack_handler, this);
++	lo_server_add_method(_osc_server, "/pingack", "ssi", (lo_method_handler) LoopControl::_pingack_handler, this);
++	lo_server_add_method(_osc_server, "/pingack", "ssii", (lo_method_handler) LoopControl::_pingack_handler, this);
+ 
+-	lo_server_add_method(_osc_server, "/alive_resp", "ssi", LoopControl::_alive_handler, this);
+-	lo_server_add_method(_osc_server, "/alive_resp", "ssii", LoopControl::_alive_handler, this);
++	lo_server_add_method(_osc_server, "/alive_resp", "ssi", (lo_method_handler) LoopControl::_alive_handler, this);
++	lo_server_add_method(_osc_server, "/alive_resp", "ssii", (lo_method_handler) LoopControl::_alive_handler, this);
+ 
+-	lo_server_add_method(_osc_server, "/error", "ss", LoopControl::_error_handler, this);
++	lo_server_add_method(_osc_server, "/error", "ss", (lo_method_handler) LoopControl::_error_handler, this);
+ 	
+ 	/* add handler for recving midi bindings, s:status s:serialized binding */
+-	lo_server_add_method(_osc_server, "/recv_midi_bindings", "ss", LoopControl::_midi_binding_handler, this);
++	lo_server_add_method(_osc_server, "/recv_midi_bindings", "ss", (lo_method_handler) LoopControl::_midi_binding_handler, this);
+ 	
+ 	_pingack = false;
+ 	_waiting = 0;
+diff --git a/src/slconsole.cpp b/src/slconsole.cpp
+index 3c6a1db..8197f5d 100644
+--- a/src/slconsole.cpp
++++ b/src/slconsole.cpp
+@@ -418,10 +418,10 @@ int main(int argc, char *argv[])
+     our_url = lo_server_get_url (osc_server);
+     
+     /* add handler for control param callbacks, first arg ctrl string, 2nd arg value */
+-    lo_server_add_method(osc_server, "/ctrl", "isf", ctrl_handler, NULL);
++    lo_server_add_method(osc_server, "/ctrl", "isf", (lo_method_handler) ctrl_handler, NULL);
+ 
+     // pingack expects: s:engine_url s:version i:loopcount
+-    lo_server_add_method(osc_server, "/pingack", "ssi", pingack_handler, NULL);
++    lo_server_add_method(osc_server, "/pingack", "ssi", (lo_method_handler) pingack_handler, NULL);
+     
+     // start up our thread
+     pthread_create (&osc_thread, NULL, osc_receiver, NULL);
