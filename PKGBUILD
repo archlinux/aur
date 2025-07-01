@@ -2,7 +2,7 @@
 
 pkgname=kazumi-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕"
 arch=('x86_64')
@@ -13,8 +13,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Predidit/Kazumi/releases/download/${pkgver}/Kazumi_linux_${pkgver}_amd64.tar.gz"
 	"https://raw.githubusercontent.com/Predidit/Kazumi/refs/tags/${pkgver}/assets/linux/io.github.Predidit.Kazumi.desktop")
-sha256sums=('25086003002caf5897135709059859d1b14d53f15dce8e7179b322c8095eb919'
-            '2024035bbf80ee51f17f4ea0c4799b0763e06c7ad8ac49ef8efc8d860bc65f43')
+sha256sums=('SKIP'
+            'SKIP')
 
 package() {
     install -d "${pkgdir}/opt/Kazumi" "${pkgdir}/usr/bin"
