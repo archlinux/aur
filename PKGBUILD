@@ -4,18 +4,18 @@
 
 pkgname=mjpg-streamer-git
 epoch=1
-pkgver=1.0.1.r0.g4585331
-pkgrel=1
+pkgver=1.0.1.r1.g44a278f
+pkgrel=2
 pkgdesc="Stream mjpeg frames from a webcam via http"
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
+arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/jacksonliam/mjpg-streamer"
-license=(GPL2)
+license=(GPL-2.0-only)
 depends=(protobuf-c zeromq sdl12-compat libgphoto2 v4l-utils)
 makedepends=(git cmake python-numpy)
 provides=(mjpg-streamer)
 conflicts=(mjpg-streamer)
 source=("git+https://github.com/LMBernardo/mjpg-streamer.git")
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 export LDFLAGS="-Wl,-O1,--sort-common,--no-as-needed,-z,relro,-z,now"
 export CFLAGS="-fcommon"
@@ -37,6 +37,7 @@ build() {
     -DPLUGIN_INPUT_OPENCV=OFF \
     -DENABLE_HTTP_MANAGEMENT=ON \
     -DWXP_COMPAT=ON \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE=release
 }
 
