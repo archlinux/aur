@@ -2,7 +2,7 @@
 pkgname=6curl
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Quick downloader"
+pkgdesc="Quick gui downloader"
 arch=('x86_64')
 depends=('curl>=8.0.0')
 url="https://github.com/hyx-web/$pkgname/"
