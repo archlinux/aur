@@ -3,7 +3,7 @@
 
 pkgname=opensurge
 pkgver=0.6.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Surge is a fun 2D retro platformer inspired by Sonic games, and a game creation system.'
 arch=('i686' 'x86_64' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/alemart/opensurge"
@@ -21,7 +21,8 @@ build() {
     cmake -DCMAKE_BUILD_TYPE="Release" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DGAME_BINDIR="/usr/bin" \
-        -S . -B build
+        -S . -B build \
+        -DCMAKE_POLICY_VERSION_MINIMUM=4.0
 
     cmake --build build
 }
