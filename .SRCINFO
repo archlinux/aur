@@ -1,13 +1,14 @@
 pkgbase = framework-system
 	pkgdesc = Tool to interact with the framework system
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FrameworkComputer/framework-system
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cargo
 	makedepends = pkg-config
+	makedepends = jq
 	depends = libusb
 	depends = gcc-libs
 	depends = glibc

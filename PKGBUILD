@@ -3,7 +3,7 @@
 
 pkgname=framework-system
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='Tool to interact with the framework system'
 url='https://github.com/FrameworkComputer/framework-system'
@@ -18,6 +18,7 @@ makedepends=(
 	"git"
 	"cargo"
 	"pkg-config"
+	"jq"
 )
 OPTIONS=(!lto)
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
@@ -30,6 +31,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/framework_tool"
+	TARGET_DIR="$(cargo metadata --format-version 1 --no-deps | jq -r '.target_directory')"
+	install -Dm0755 -t "${pkgdir}/usr/bin/" "${TARGET_DIR}/release/framework_tool"
 	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "LICENSE.md"
 }
