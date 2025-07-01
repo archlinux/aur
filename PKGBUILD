@@ -1,10 +1,3 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# https://github.com/Matteo842/SaveState/archive/refs/tags/1.4.1.tar.gz
-
 # Maintainer: Juliette Cordor <me@cordor.dev>
 pkgname=savestate-bin
 pkgver=1.4.2c
