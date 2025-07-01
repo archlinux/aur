@@ -1,11 +1,11 @@
 pkgbase = gwmct
-	pkgdesc = A simple terminal for Wayland(And X)
+	pkgdesc = A simple terminal for Wayland (and X)
 	pkgver = 1.2
-	pkgrel = 1.0
+	pkgrel = 1
 	url = https://github.com/0xEcoder/gwmct
 	arch = x86_64
 	license = GPL3
-	source = gwmct-1.2.tar.gz
+	source = https://github.com/0xEcoder/gwmct-aur/releases/download/AUR/gwmct-1.2.tar.gz
 	sha256sums = f7e78c947454e384f211c271e36d9d0192b1c0e3c0d43117f1116824e6710e40
 
 pkgname = gwmct
