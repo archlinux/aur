@@ -4,14 +4,15 @@
 pkgname=qt5-3d
 _basever=5.15.17
 pkgver=5.15.17
-pkgrel=1
+pkgrel=2
 _commit=73c1dda553f338c5a3b9ebbfd0e7de114f0c93dc
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='C++ and QML APIs for easy inclusion of 3D graphics'
-depends=('qt5-declarative' 'assimp')
-makedepends=('git' 'vulkan-headers')
+depends=('qt5-base' 'qt5-declarative')
+makedepends=('git' 'vulkan-headers' 'assimp')
+optdepends=('assimp: assimp import plugin')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
