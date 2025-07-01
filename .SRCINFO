@@ -3,6 +3,7 @@ pkgbase = rtl8852cu-dkms-morrownr-git
 	pkgver = 20240701
 	pkgrel = 1
 	url = https://github.com/9M2PJU/rtl8852cu-20240510-aur
+	install = rtl8852cu.install
 	arch = x86_64
 	license = GPL
 	makedepends = git

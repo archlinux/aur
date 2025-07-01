@@ -1,0 +1,11 @@
+# rtl8852cu.install
+post_install() {
+    echo -e "\n\033[1;34m:: rtl8852cu-dkms-morrownr-git installed successfully! \033[0m"
+    echo -e "\033[1;32m::\033[0m"
+    echo -e "\033[1;32m:: ➜  The kernel module has been built and installed via DKMS.\033[0m"
+    echo -e "\033[1;32m:: ➜  Please \033[1;31mREBOOT\033[0m your system to load the driver properly."
+    echo -e "\033[1;32m::\033[0m"
+    echo -e "\033[1;33m:: Thanks to morrownr for the awesome driver.\033[0m"
+    echo -e "\033[1;33m:: Maintained by 9M2PJU — \033[4;36mhttps://hamradio.my\033[0m"
+    echo -e "\033[1;32m:: 73 from 9M2PJU, https://hamradio.my\033[0m\n"
+}

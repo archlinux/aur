@@ -14,6 +14,7 @@ provides=('rtl8852cu')
 conflicts=('rtl8852cu')
 source=("git+${url}.git")
 md5sums=('SKIP')
+install=rtl8852cu.install
 
 pkgver() {
   date +%Y%m%d
