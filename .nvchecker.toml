@@ -1,0 +1,5 @@
+[ksql]
+source = "htmlparser"
+is_xml = true
+url = "https://kristaps.bsd.lv/ksql/atom.xml"
+xpath = '/*[name()="feed"]/*[name()="entry"]/*[name()="title"]/text()'
