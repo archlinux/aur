@@ -1,11 +1,11 @@
 pkgbase = ck3-tiger-bin
 	pkgdesc = Checks game mod files for common mistakes and warns about them.
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
-	url = https://github.com/amtep/ck3-tiger
+	url = https://github.com/amtep/tiger
 	arch = x86_64
 	license = GPL3
-	source = https://github.com/amtep/ck3-tiger/releases/download/v1.9.0/ck3-tiger-linux-v1.9.0.tar.gz
-	sha256sums = 2bf4b9d0c7d4461e7d13a6ffdd7e54c8040c9486562cbdc5de53462562c7dcae
+	source = https://github.com/amtep/tiger/releases/download/v1.9.1/ck3-tiger-linux-v1.9.1.tar.gz
+	sha256sums = 0dc8528e255ef62f5b59925f266b7d7003e5732a2f3054d475b87b26f22189ba
 
 pkgname = ck3-tiger-bin
