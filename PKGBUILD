@@ -2,7 +2,7 @@
 
 pkgname=pom
 pkgver=1.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts."
 arch=("x86_64")
 url="https://github.com/Flack74/pom"
