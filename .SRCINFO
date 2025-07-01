@@ -1,16 +1,18 @@
 pkgbase = rtl8852cu-dkms-morrownr-git
-	pkgdesc = Realtek RTL8852CU DKMS driver from morrownr, maintained by 9M2PJU
-	pkgver = 20240701
-	pkgrel = 2
+	pkgdesc = Realtek RTL8852CU WiFi driver (DKMS, morrownr's fork, git version)
+	pkgver = 20250701
+	pkgrel = 1
 	url = https://github.com/9M2PJU/rtl8852cu-20240510-aur
 	install = rtl8852cu.install
 	arch = x86_64
-	license = GPL
+	license = MIT
 	makedepends = git
 	depends = dkms
-	provides = rtl8852cu
-	conflicts = rtl8852cu
-	source = git+https://github.com/9M2PJU/rtl8852cu-20240510-aur.git
+	provides = rtl8852cu-dkms
+	conflicts = rtl8852cu-dkms
+	source = rtl8852cu-dkms-morrownr-git::git+https://github.com/9M2PJU/rtl8852cu-20240510-aur.git
+	source = rtl8852cu.install
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = rtl8852cu-dkms-morrownr-git
