@@ -5,6 +5,8 @@ pkgbase = pw-lat
 	url = https://github.com/MatiM72737/pw-lat
 	arch = x86_64
 	license = MIT
+	depends = pipewire
+	depends = pipewire-jack
 	source = https://github.com/MatiM72737/pw-lat/releases/download/v0.1.0/pw-lat-x86_64.tar.gz
 	sha256sums = d6d81cabdcd9163befc31c20175a7610ae83b87950f9d4b86315133d6827f143
 
