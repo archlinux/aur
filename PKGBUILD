@@ -31,7 +31,21 @@ package(){
 
   # Modify files
   cd "${pkgdir}"
-  ln -s bytedance-feishu-${_pkgtyp} usr/bin/feishu
+  cat << EOF > usr/bin/feishu
+#!/bin/bash
+
+XDG_CONFIG_HOME=\${XDG_CONFIG_HOME:-~/.config}
+
+# Allow users to override command-line options
+if [[ -f \$XDG_CONFIG_HOME/feishu-flags.conf ]]; then
+    FEISHU_USER_FLAGS="\$(grep -v '^#' \$XDG_CONFIG_HOME/feishu-flags.conf)"
+fi
+
+# Launch
+exec /usr/bin/bytedance-feishu-${_pkgtyp} \$FEISHU_USER_FLAGS "\$@"
+EOF
+
+  chmod +x usr/bin/feishu
 
   sed -i "s/bytedance-feishu-${_pkgtyp}/feishu/g" "${pkgdir}/usr/share/applications/bytedance-feishu.desktop"
   sed -i 's/StartupNotify=true/StartupNotify=true\nStartupWMClass=feishu/g' "${pkgdir}/usr/share/applications/bytedance-feishu.desktop"

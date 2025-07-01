@@ -50,6 +50,8 @@ post_install() {
   }
 
   remove_udev_symlinks
+
+  note "Custom flags should be put directly in: ~/.config/feishu-flags.conf"
 }
 
 post_upgrade() {
