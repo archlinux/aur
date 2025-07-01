@@ -1,6 +1,4 @@
 # Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
-# Contributor: gigas002 <gigas002@pm.me>
-
 pkgname=carbonyl
 pkgver=0.0.3
 pkgrel=1
