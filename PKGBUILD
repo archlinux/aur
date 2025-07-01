@@ -34,6 +34,7 @@ prepare() {
 build() {
   cd ffmpeg-$_ffver
   # Use part of https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
+  # Use some flags at https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/BUILD.gn
   ./configure \
     --disable-{all,autodetect,programs,doc,iconv,network,symver} \
     --enable-static --disable-shared \
@@ -42,7 +43,7 @@ build() {
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
-    --extra-cflags="$LTOFLAGS" \
+    --extra-cflags="-fno-math-errno -fno-signed-zeros ${LTOFLAGS}" \
     --prefix="${srcdir}"/release \
     --enable-{pic,asm,hardcoded-tables} # https://www.ffmpeg.org/platform.html#toc-Advanced-linking-configuration
 
