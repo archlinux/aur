@@ -1,5 +1,4 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
+# This is an example PKGBUILD file. Use this as a start to creating your own, # and remove these comments. For more information, see 'man PKGBUILD'.
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
@@ -23,13 +22,12 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz")
+source=("https://github.com/0xEcoder/gwmct-aur/releases/download/AUR/gwmct-1.2.tar.gz")
 noextract=()
 sha256sums=(f7e78c947454e384f211c271e36d9d0192b1c0e3c0d43117f1116824e6710e40)
 validpgpkeys=()
 package() {
 	mkdir -p "$HOME/$pkgname/src"
-	tar xf "$HOME/$pkgname/gwmct-1.2.tar.gz" "$HOME/$pkgname/src"
 	cd "$HOME/$pkgname/src/$pkgname/"
 	make DESTDIR="$destdir/" build install
 }
