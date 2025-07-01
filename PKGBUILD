@@ -3,7 +3,7 @@
 pkgname=rtl8852cu-dkms-morrownr-git
 _pkgbase=rtl8852cu
 pkgver=20240701
-pkgrel=1
+pkgrel=2
 pkgdesc="Realtek RTL8852CU DKMS driver from morrownr, maintained by 9M2PJU"
 arch=('x86_64')
 url="https://github.com/9M2PJU/rtl8852cu-20240510-aur"
