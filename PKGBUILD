@@ -6,7 +6,7 @@ _pkgname=scratch3
 conflicts=("scratch3")
 pkgver=3.29.1
 pkgrel=2
-pkgdesc="Scratch 3.0 as a self-contained desktop application"
+pkgdesc="Scratch 3.0 as a self-contained electron desktop application"
 arch=("x86_64" "i686" "aarch64" "arm7h")
 url="https://scratch.mit.edu"
 license=("custom:BSD-3-Clause")
@@ -20,7 +20,7 @@ source=("https://downloads.scratch.mit.edu/desktop/Scratch%20$pkgver%20Setup.exe
         "${_pkgname}.xml")
 noextract=("Scratch%20$pkgver%20Setup.exe")
 sha256sums=('dfca2f1a842aea69a2b0a22ca66fa7852f86259e3da4f576f8ae7fa16f1e9134'
-            '8d7c41e0bba6db4070714002851a5d16edc08f3918ed8badb510b4ce9246da8f'
+            '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
             '0f4f25e55b988e45a2f240487c35b18c96bbbce0f6be60bbe204b33f6d77d6da'
             '1445107a18b05cee3db8d6cd59e57b9a0468f70d9aceffefd0a1f24196f8b2da'
             '86c8e16d9316dcbe21c19928381a498f5198708cae0ed25bfa3c09371d02deaf')
