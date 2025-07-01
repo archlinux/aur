@@ -24,7 +24,7 @@ sha256sums_aarch64=('89a9657b8cd70af731ebca4e4c643b76ae8c58dd3bcf36c77af4ab3f0e8
 sha256sums_armv7h=('4d54bd88967541143704eb35126e9b6247ba851d34b65bfe3857fa8c6445a00f')
 
 source=("${_pkgname}.service")
-sha256sums=('fa8dc29dfe6d42760d693436771146dab8cb1a98d17222ad6778c8d5ba1f3def')
+sha256sums=('5e5b86f12a7e58dce8af34e5a631bc0b822910f030234aa463424441841e7c39')
 
 package() {
     # 安装二进制文件
