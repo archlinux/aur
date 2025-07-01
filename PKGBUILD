@@ -1,7 +1,7 @@
 # Maintainer: Flack74 <puspendrachawlax@gmail.com>
 
 pkgname=pom
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Advanced Pomodoro timer with CLI and Web UI, featuring AI insights, multi-profiles, and plugin system."
 arch=("x86_64")
