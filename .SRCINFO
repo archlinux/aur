@@ -1,6 +1,6 @@
 pkgbase = filezilla-server-bin
 	pkgdesc = A simple FTP, FTPS or SFTP server
-	pkgver = 1.10.2
+	pkgver = 1.10.3
 	pkgrel = 1
 	url = https://filezilla-project.org/download.php?type=server
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = filezilla-server-bin
 	provides = filezilla-server
 	conflicts = filezilla-server
 	options = !strip
-	source = https://sourceforge.net/projects/fabiololix-os-archive/files/src/FileZilla_Server_1.10.2_x86_64-linux-gnu.deb
-	sha512sums = b15ec074559933fe0d23eb7bad02269e7c0bb3fdec16c71d6d5d86a199c80bbb3ab27e4d241550d07be479881a22f12d8849daa31e8fc5a4383fc05e56e7c6db
+	source = https://sourceforge.net/projects/fabiololix-os-archive/files/src/FileZilla_Server_1.10.3_x86_64-linux-gnu.deb
+	sha512sums = 4e84304dfcb18a46be780962b0d0297265015347052b9adbe7257fac4ba42100ebb08777213a1da618e444219590e56f8bd33f5e7a0b6260fe359bcc58ebcd8a
 
 pkgname = filezilla-server-bin
