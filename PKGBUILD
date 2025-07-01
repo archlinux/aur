@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname="geargrafx"
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="PC Engine / TurboGrafx-16 emulator and debugger"
 url="https://github.com/drhelius/Geargrafx"
@@ -13,7 +13,7 @@ source=(
     "geargrafx.desktop"
 )
 sha256sums=(
-    "345300ed490bc91b64921a064c4ccd525ce8475d478416973045648f85569929"
+    "11158733f14ad8f064e4e55e172c74592c7f40a7534ca654e48acd1cac4147ff"
     "14e9061980e38d4fb8d42b559a640f4a65352269f56751c55eeff1fa1e8fd3bd"
 )
 
