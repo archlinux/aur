@@ -1,14 +1,14 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=ollama-rocm-git
-pkgver=0.9.2.r2.g8bcb312
+pkgver=0.9.4.rc3.r0.g44b17d2bfa00
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
 arch=(x86_64)
 url='https://github.com/ollama/ollama'
 license=(MIT)
 conflicts=(ollama)
-provides=("ollama-rocm=${pkgver%%.r*}")
+provides=("ollama=${pkgver%%.r*}")
 depends=(comgr gcc-libs "hip-runtime-amd>=6.3.2" hipblas hsa-rocr libdrm libelf numactl rocblas rocsolver rocsparse)
 optdepends=('rocm-smi-lib: monitor GPU usage with rocm-smi' 'amdgpu_top: tool that shows AMD GPU utilization')
 makedepends=(git gcc-libs "go>=1.23" "hip-runtime-amd>=6.3.2" hipblas hipblas-common hsa-rocr libdrm libelf numactl rocblas rocm-hip-sdk rocm-opencl-sdk rocsolver rocsparse)
@@ -23,7 +23,7 @@ b2sums=('SKIP'
 
 pkgver() {
   cd ollama
-  git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=12 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -34,6 +34,12 @@ prepare() {
 
 build() {
   export CMAKE_CUDA_COMPILER="/tmp"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOPATH="${srcdir}"
+  export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw '-ldflags=-linkmode=external -X=github.com/ollama/ollama/version.Version=${pkgver} -X=github.com/ollama/ollama/server.mode=release'"
 
   cd ollama
 
@@ -42,7 +48,7 @@ build() {
   #   https://rocm.docs.amd.com/en/docs-6.4.0/reference/gpu-arch-specs.html
   # this config is set to mainstream cards RX6000 - RX7000 (including workstation cards)
   # there is no official RX9000 support yet (gfx1200,gfx1201), but they will build
-  cmake -B build -DAMDGPU_TARGETS="gfx1030;gfx1100;gfx1101;gfx1102;gfx1200;gfx1201" -Wno-dev
+  cmake -B build -DAMDGPU_TARGETS="gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102;gfx1200;gfx1201" -Wno-dev
   cmake --build build --config Release
   go build .
 }
