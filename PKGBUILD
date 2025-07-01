@@ -2,7 +2,7 @@
 
 pkgname='cosmic-ext-extra-sessions-niri-git'
 pkgver=r3.66e0657
-pkgrel=2
+pkgrel=3
 pkgdesc='Alternative session for running the COSMIC desktop with Niri as the compositor'
 arch=('x86_64')
 url='https://github.com/Drakulix/cosmic-ext-extra-sessions'
@@ -21,6 +21,8 @@ prepare() {
     git submodule update --init
     # Bugfix to make installing in pkgdir work
     sed -i 's/: _install/: (_install rootdir prefix)/g' justfile
+    # Point to /usr folder instead of /usr/local
+    sed -i 's%/usr/local%/usr%g' niri/cosmic-ext-niri.desktop
 }
 
 build() {
