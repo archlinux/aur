@@ -1,6 +1,6 @@
 pkgbase = python-pyroma
 	pkgdesc = Test your project's packaging friendliness
-	pkgver = 4.2
+	pkgver = 4.3
 	pkgrel = 1
 	url = https://github.com/regebro/pyroma
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-pyroma
 	depends = python-build
 	depends = python-packaging
 	options = !emptydirs
-	source = pyroma-4.2.tar.gz::https://github.com/regebro/pyroma/archive/refs/tags/4.2.tar.gz
-	sha256sums = 06b3c288345e6c0b4c98269d1ad6dfc2807d87fcda3131af682850bb4c9d6db7
+	source = pyroma-4.3.tar.gz::https://github.com/regebro/pyroma/archive/refs/tags/4.3.tar.gz
+	sha256sums = ac1225ed2adce20843689cebfdb0cfaac749fd9ea4bc2bf30e620e0e33a016ef
 
 pkgname = python-pyroma
