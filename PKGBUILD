@@ -7,13 +7,13 @@
 pkgname=kmscube-git
 _pkgname=${pkgname%-*}
 pkgver=a
-pkgrel=2
+pkgrel=3
 pkgdesc="example gl app using kms/gbm"
 arch=('i686' 'x86_64')
 url="https://cgit.freedesktop.org/mesa/kmscube/"
 license=('custom')
 depends=('mesa' 'libpng' 'gst-plugins-base-libs')
-makedepends=('git')
+makedepends=('git' 'meson' 'ninja')
 source=("git://anongit.freedesktop.org/mesa/kmscube")
 md5sums=('SKIP')
 
