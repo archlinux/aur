@@ -1,2 +1,11 @@
+# sources
 /kicad/
 /kicad-i18n/
+/kicad-nightly/
+
+# makepkg build files
+/src/
+/pkg/
+
+# built packages
+/*.pkg.tar*

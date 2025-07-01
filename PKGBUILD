@@ -3,104 +3,153 @@
 
 pkgname=kicad-nightly
 pkgver=9.99.0_1899_g5df676c1d0
-pkgrel=1
+pkgrel=2
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
-url='http://kicad.org/'
-license=('GPL')
-depends=('wxwidgets-gtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'ngspice' 'opencascade' 'python-wxpython' 'unixodbc')
-makedepends=('git' 'cmake' 'zlib' 'mesa' 'boost' 'swig' 'ninja' 'tar' 'gzip')
-options=('!strip')
+url='https://kicad.org/'
+license=('GPL-3.0-or-later')
+depends=('curl' 'glew' 'glm' 'ngspice' 'opencascade' 'python' 'python-wxpython' 'wxwidgets-gtk3' 'unixodbc' 'libgit2' 'boost-libs' 'nng' 'protobuf' )
+makedepends=('git' 'cmake' 'ninja' 'mesa' 'boost' 'swig')
 optdepends=(
 	'kicad-library-nightly: for footprints and symbols'
 	'kicad-library-3d-nightly: for 3d models of components'
 )
+options=('!strip')
 source=(
-	'git+https://gitlab.com/kicad/code/kicad.git'#commit=5df676c1d0
-	'kicad-nightly.env'
-	'no-metadata-translation.patch'
+	"$pkgname::git+https://gitlab.com/kicad/code/kicad.git"#commit=84fd260fc0
+	'kicad-nightly-wrapper.sh'
+	'fix-version-string.patch'
 )
 sha256sums=(
 	'SKIP'
-	'fce26af6b9c181a99197bfc9bc6c778561ad55a375480f4d0d73bb34078b5d18'
-	'649b1b0e541f22a49f1934a6173266cabde984a97fba583c3b75dd41940b86f8'
+    '4b29df3e5f2c976d0786a3fd80f332fb4f9597aec75872a655dc15beeccd9a21'
+    'e512fac78720eb31d5a89f9ce4447f33a0a733388e9a8f55db81ca38fb030e07'
 )
 
 prepare()
 {
-	cd "$srcdir/kicad"
+	cd "$pkgname"
 
-	# override default icons with nightly ones
-	cp -r resources/linux/icons-nightly/hicolor/* resources/linux/icons/hicolor/
+	# Prevent "dirty" suffix on version string
+ 	patch -p1 -i "$srcdir/fix-version-string.patch"
 
-	# prevent translation of metadata files
-	patch -p0 -i ../no-metadata-translation.patch
+	# Override default icons with nightly ones
+	cp -p -r resources/linux/icons-nightly/hicolor/* resources/linux/icons/hicolor/
 }
 
 build()
 {
-	cd "$srcdir/kicad"
+	cd "$pkgname"
 
-	rm -rf build
-	mkdir build
-	cd build
-	cmake .. -G Ninja \
+	local _pkgprefix="/usr/lib/$pkgname"
+	local _pkglibdir="/usr/lib/$pkgname/lib"
+	local _pkgdatadir="/usr/share/$pkgname"
+	local _pkgdocdir="/usr/share/doc/$pkgname"
+
+	cmake \
+		-B build \
+		-S . \
+		-G Ninja \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX=/usr/lib/kicad-nightly \
-		-DCMAKE_INSTALL_DATADIR=/usr/share/kicad-nightly \
-		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/kicad-nightly \
-		-DCMAKE_INSTALL_LIBDIR=/usr/lib/kicad-nightly/lib \
-		-DCMAKE_EXECUTABLE_SUFFIX=-nightly \
-		-DKICAD_USE_OCC=ON \
-		-DKICAD_USE_EGL=ON \
+		-DCMAKE_INSTALL_PREFIX=$_pkgprefix \
+		-DCMAKE_INSTALL_LIBDIR=$_pkglibdir \
+		-DCMAKE_INSTALL_DATADIR=$_pkgdatadir \
+		-DCMAKE_INSTALL_DOCDIR=$_pkgdocdir \
+		-DKICAD_DATA=$_pkgdatadir \
+		-DKICAD_DOCS=$_pkgdocdir \
+		-DKICAD_IPC_API=ON \
 		-DKICAD_SCRIPTING_WXPYTHON=ON \
+		-DKICAD_USE_EGL=ON \
+    	-DKICAD_USE_BUNDLED_GLEW=OFF \
 		-DKICAD_BUILD_I18N=ON \
-		-DKICAD_DATA=/usr/share/kicad-nightly \
+    	-DKICAD_I18N_UNIX_STRICT_PATH=ON \
+    	-DKICAD_INSTALL_DEMOS=ON \
+    	-DKICAD_BUILD_QA_TESTS=OFF \
 		-Wno-dev
-	ninja
+
+	cmake --build build
 }
 
 package()
 {
-	cd "$srcdir/kicad/build"
+	cd "$pkgname"
 
-	DESTDIR="$pkgdir" ninja install
+	local _pkgprefix="/usr/lib/$pkgname"
+	local _pkglibdir="/usr/lib/$pkgname/lib"
+	local _pkgdatadir="/usr/share/$pkgname"
 
-	mkdir -p "$pkgdir/usr/share/applications"
-	programs=$(ls "$pkgdir/usr/share/kicad-nightly/applications" | sed -s 's/\.desktop//g')
-	for prog in $programs; do
-		sed -i \
-			-e 's/^Exec=\([^ ]*\)\(.*\)$/Exec=\1-nightly\2/g' \
-			-e 's/^Icon=\(.*\)$/Icon=\1-nightly/g' \
-			-e 's/^Name=\(.*\)$/Name=\1 nightly/g' \
-			"$pkgdir/usr/share/kicad-nightly/applications/$prog.desktop"
-		ln -sv "../kicad-nightly/applications/$prog.desktop" \
-			"$pkgdir/usr/share/applications/${prog}-nightly.desktop"
-	done
+	DESTDIR="$pkgdir" cmake --install build
 
-	cd "$srcdir"
-	mkdir -p "$pkgdir/usr/share/kicad-nightly"
-	cp kicad-nightly.env "$pkgdir/usr/share/kicad-nightly/kicad-nightly.env"
-
+	# Wrapper scripts
 	mkdir -p "$pkgdir/usr/bin"
-	(cd "$pkgdir/usr/lib/kicad-nightly/bin" && ls | grep -v '\.kiface') | while read prog; do
-		cat > "$pkgdir/usr/bin/$prog-nightly" <<EOF
-#!/bin/sh
-. /usr/share/kicad-nightly/kicad-nightly.env
-exec /usr/lib/kicad-nightly/bin/$prog "\$@"
-EOF
-		chmod +x "$pkgdir/usr/bin/$prog-nightly"
-	done
+	ls -1 "$pkgdir/$_pkgprefix/bin/" | grep -v -F '.kiface' | \
+		while read application; do
+			local _application="$_pkgprefix/bin/$application"
+			local wrapper="$pkgdir/usr/bin/$application-nightly"
+			cp -p "$srcdir/kicad-nightly-wrapper.sh" "$wrapper"
+			sed -i \
+				-e "s/@LD_LIBRARY_PATH@/${_pkglibdir//\//\\\/}/g" \
+				-e "s/@KICAD_PATH@/${_pkgdatadir//\//\\\/}/g" \
+				-e "s/@APPLICATION@/${_application//\//\\\/}/g" \
+				"$wrapper"
+		done
 
-	icons=$(find $pkgdir/usr/share/kicad-nightly/icons/ -type f -name kicad.*)
-	for icon in $icons; do
-		path=${icon%/*}
-		relpath=${path##*/kicad-nightly/}
-		basename=${icon##*/}
-		extension=${basename##*.}
-		filename=${basename%.*}
+	# Icons
+	ls -1 "$pkgdir/$_pkgdatadir/icons/hicolor/" | \
+		while read size; do
+			local icon_dir="$pkgdir/$_pkgdatadir/icons/hicolor/$size"
+			local dest_dir="$pkgdir/usr/share/icons/hicolor/$size"
+			mkdir -p "$dest_dir/apps" "$dest_dir/mimetypes"
+			ls -1 "$icon_dir/apps/" | \
+				while read icon; do
+					mv "$icon_dir/apps/$icon" \
+					   "$dest_dir/apps/${icon%%.*}-nightly.${icon##*.}"
+				done
+        	ls -1 "$icon_dir/mimetypes" | grep 'kicad' | \
+				while read icon; do
+					mv "$icon_dir/mimetypes/$icon" \
+					   "$dest_dir/mimetypes/${icon%%%%kicad*}kicad-nightly${icon#*kicad}"
+				done
+		done
 
-		mkdir -p "$pkgdir/usr/share/$relpath"
-		mv "$icon" "$pkgdir/usr/share/$relpath/$filename-nightly.$extension"
-	done
+	# MIME files
+	mkdir -p "$pkgdir/usr/share/mime/packages"
+	ls -1 "$pkgdir/$_pkgdatadir/mime/packages/" | \
+		while read mimefile; do
+			sed -i \
+				-e 's/weight="[0-9]*"/weight="0"/g' \
+				-e 's/priority="[0-9]*"/priority="0"/g' \
+	    		-e 's/application-x-kicad/application-x-kicad-nightly/g' \
+				"$pkgdir/$_pkgdatadir/mime/packages/${mimefile}"
+			mv "$pkgdir/$_pkgdatadir/mime/packages/${mimefile}" \
+			   "$pkgdir/usr/share/mime/packages/${mimefile%%.*}-nightly.${mimefile##*.}"
+		done
+
+	# Application launchers
+	mkdir -p "$pkgdir/usr/share/applications"
+	ls -1 "$pkgdir/$_pkgdatadir/applications/" | grep -F '.desktop' | \
+    	while read launcher; do
+			sed -i \
+				-e 's/^Name\(.*\)=\([^(]*\)$/Name\1=\2 nightly/g' \
+				-e 's/^Name\(.*\)=\(.*\)\( (.*\)$/Name\1=\2 nightly\3/g' \
+				-e 's/^Icon=\(.*\)$/Icon=\1-nightly/g' \
+				-e 's/^Exec=\([^ ]*\)\(.*\)$/Exec=\1-nightly\2/g' \
+				-e 's/^StartupWMClass=\([^ ]*\)\(.*\)$/StartupWMClass=\1-nightly\2/g' \
+				"$pkgdir/$_pkgdatadir/applications/$launcher"
+			mv "$pkgdir/$_pkgdatadir/applications/$launcher" \
+			   "$pkgdir/usr/share/applications/${launcher%.*}-nightly.desktop"
+    	done
+
+	# AppStream metainfo file
+	mkdir -p "$pkgdir/usr/share/metainfo"
+	sed -i \
+	    -e 's/\(<id>.\+\)\(<\/id>\)$/\1_nightly\2/g' \
+	    -e 's/\(<name.*>.\+\)\(<\/name>\)$/\1 Nightly\2/g' \
+	    -e 's/\(<launchable.*>\).\+\(<\/launchable>\)$/\1org.kicad.kicad-nightly.desktop\2/g' \
+	    -e 's/\(<binary>.\+\)\(<\/binary>\)$/\1-nightly\2/g' \
+	    "$pkgdir/$_pkgdatadir/metainfo/org.kicad.kicad.metainfo.xml"
+	mv "$pkgdir/$_pkgdatadir/metainfo/org.kicad.kicad.metainfo.xml" \
+	   "$pkgdir/usr/share/metainfo/org.kicad.kicad_nightly.metainfo.xml"
+
+	# TODO: locales?
 }
