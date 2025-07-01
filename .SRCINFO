@@ -7,7 +7,5 @@ pkgbase = pom
 	license = MIT
 	makedepends = go>=1.24
 	depends = pulseaudio
-	source = pom-1.0.2.tar.gz::https://github.com/Flack74/pom/archive/v1.0.2.tar.gz
-	sha256sums = SKIP
 
 pkgname = pom
