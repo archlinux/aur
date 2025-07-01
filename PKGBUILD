@@ -33,8 +33,4 @@ package() {
   cd "${pkgname}" || return
   cp -dr --no-preserve='ownership' ./ \
     "${pkgdir}/usr/src/${_pkgbase}/${pkgver}/"
-
-  # Temporary until upstream adds preprocessors for kernels under 6.15
-  sed -e "s/del_timer(/timer_delete(/g" \
-    -i "${pkgdir}/usr/src/${_pkgbase}/${pkgver}/hid-asus-mouse.c"
 }
