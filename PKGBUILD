@@ -3,7 +3,7 @@
 _gituser=p0n1
 pkgname=epub_to_audiobook
 pkgdesc="command-line tool to convert EPUB ebooks into audiobooks"
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 #epoch=1
 arch=("any")
@@ -36,7 +36,7 @@ source=(
 	run.sh
 	run_ui.sh
 )
-sha512sums=('d5b92fa222b2c95c37c48a4cb46c351475c8746fc783deb8d19d7d9c8da613a2333b9554501722e239c2debf79f9977158faed30fe5da43fcf595497a161cacb'
+sha512sums=('d5bb15a57f3be2f0b88a0b0440e49ea849a1d075312cebb61c2fede3d52e1344159e36ff7231bc41e468fdcb124b28263fa4b0084242f4ada939136408a0e430'
             'fb715e3fdc5c18d8c72d9493b345f1b1562528fb745767b9dcaf01bcebb1e5d4edde93b4da30c0078db3b57e859b40b67309763736545f9c0b0307fe778b8cba'
             'e65affd982fc1de2d6603b8680dc09e91e7b63f10955db8c2ab22abb88cd205dee3fbf4e7542ad55ced1627fa7ff40d8a4b0bb0146432bf81e8b393ed3496013')
 
