@@ -1,0 +1,5 @@
+[openradtool]
+source = "htmlparser"
+is_xml = true
+url = "https://kristaps.bsd.lv/openradtool/atom.xml"
+xpath = '/*[name()="feed"]/*[name()="entry"]/*[name()="title"]/text()'
