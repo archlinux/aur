@@ -1,5 +1,5 @@
 pkgname=opentrace
-pkgver=1.4.3.0
+pkgver=1.4.4.0
 pkgrel=1
 pkgdesc="A cross-platform GUI wrapper for NextTrace. Bringing you the familiar traceroute experience."
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPL3')
 depends=('nexttrace' 'dotnet-runtime')
 makedepends=('dotnet-sdk')
 source=("https://github.com/Archeb/opentrace/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1ec370a2f20c4e0426ded2c10cafeaa9309f3a3f13668791cea67bb312a5aaef')
+sha256sums=('600038d6510e6d2610cc88059491ec611d81e27e7065204b9032891c43595d31')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
