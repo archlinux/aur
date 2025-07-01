@@ -1,0 +1,26 @@
+pkgbase = nocodb
+	pkgdesc = The Open Source Airtable Alternative
+	pkgver = 0.263.8
+	pkgrel = 2
+	url = https://nocodb.com
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = pnpm
+	makedepends = node-gyp
+	makedepends = python
+	makedepends = libvips
+	makedepends = dasel
+	depends = nodejs
+	optdepends = postgresql: recommended database
+	optdepends = litestream
+	optdepends = mariadb-lts
+	optdepends = valkey
+	options = !debug
+	options = !strip
+	source = git+https://github.com/nocodb/nocodb.git#branch=master
+	source = nocodb.proto
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nocodb
