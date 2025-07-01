@@ -3,8 +3,8 @@
 # Contributor: Kim Scarborough <sluggo@unknown.nu>
 
 pkgname=cantata-qt6
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.3.1
+pkgrel=1
 pkgdesc="Qt6 graphical client for Music Player Daemon (MPD), nullobsi fork"
 arch=(x86_64 i686 aarch64 armv7h)
 url="https://github.com/nullobsi/cantata"
@@ -31,15 +31,8 @@ optdepends=('perl-uri: Dynamic playlist'
             'mpd: Playback')
 provides=(cantata)
 conflicts=(cantata)
-source=("cantata-nullobsi::git+https://github.com/nullobsi/cantata.git#tag=v${pkgver}"
-        "https://github.com/FabioLolix/AUR-artifacts/raw/master/cantata-QRegularExpression.patch")
-sha256sums=('43bd3de862b73e80e8258c27c263dd92b90bfa7f97bc8ce846a91a965fdf0690'
-            '553c27ca42e7bbd09ce7f63dfa747df06826c5ef8c3ddab4ac3f925f00e5f2fb')
-
-prepare() {
-  cd "cantata-nullobsi"
-  patch -Np1 -i ../cantata-QRegularExpression.patch
-}
+source=("cantata-nullobsi::git+https://github.com/nullobsi/cantata.git#tag=v${pkgver}")
+sha256sums=('c282fd13610e6521696a9caaa5772952b16a9ff2a64192fdc379d9074ebdb96c')
 
 build() {
   cmake -B build -S "cantata-nullobsi" -Wno-dev \
