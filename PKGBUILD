@@ -1,20 +1,39 @@
 # Maintainers: arraen, thadah
 pkgname="synergy3-bin"
 pkgver="3.3.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
 license=('unknown')
 arch=("x86_64")
-source_x86_64=("https://symless.com/synergy/synergy/api/download/synergy-$pkgver-linux-noble-x64.deb")
-sha256sums_x86_64=("820618be6878fb1bd35d11c79411fe51cba550b89cb9a9b3c26ef64cb7f1d68f")
-
+source=("landing.html::https://symless.com/synergy/download/package/synergy-personal-v3/ubuntu-24.04/synergy-${pkgver}-linux-noble-x64.deb")
+sha256sums=('SKIP')
 conflicts=('synergy' 'synergy1-bin' 'synergy-git' 'synergy-1.6' 'synergy2-bin' 'synergy3-bin' 'synergy3-beta-bin')
 depends=('openssl' 'alsa-lib' 'libei' 'libnotify' 'nss' 'qt6-base' 'libxkbfile' 'libappindicator-gtk3' 'libayatana-appindicator')
 optdepends=()
 options=("!strip")
 
+# Since Synergy API now requires a token, we need to enter the landing page and scrape it to download the deb file
+prepare() {
+  local html_file="${srcdir}/landing.html"
+  local token
+  token=$(grep -oP '(?<=\\\"token\\\":\\\")[^\\\"]+' "$html_file" | head -n1)
+
+  if [[ -z "$token" ]]; then
+    echo "Failed to extract token from landing page"
+    exit 1
+  fi
+
+  rm -f "$html_file"
+
+  local download_url="https://symless.com/synergy/api/download/synergy-$pkgver-linux-noble-x64.deb?token=$token"
+
+  echo "Downloading from tokenized URL: $download_url"
+  curl -L -s -o "${srcdir}/synergy-$pkgver-linux-noble-x64.deb" "$download_url"
+}
+
 package() {
+  bsdtar -xf "${srcdir}/synergy-${pkgver}-linux-noble-x64.deb" -C "${srcdir}/"
   bsdtar -xf "${srcdir}/data.tar.bz2" -C "${pkgdir}/"
 
   # Install binaries and create symlinks
