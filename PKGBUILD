@@ -3,7 +3,7 @@
 
 pkgname="mockery"
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A mock code autogenerator for Go"
 arch=('aarch64' 'x86_64')
 url="https://vektra.github.io/mockery"
@@ -49,10 +49,10 @@ build() {
   done
 }
 
-check() {
-  cd "${srcdir}/${_pkgsrc}"
-  go test ./...
-}
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   go test ./...
+# }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"

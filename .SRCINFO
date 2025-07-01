@@ -1,7 +1,7 @@
 pkgbase = mockery
 	pkgdesc = A mock code autogenerator for Go
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vektra.github.io/mockery
 	arch = aarch64
 	arch = x86_64
