@@ -1,5 +1,6 @@
 syntax: glob
 
+/NOTES.md
 /src/
 /pkg/
 /*.tar.gz
