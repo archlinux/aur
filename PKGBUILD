@@ -1,5 +1,4 @@
-# Maintainer: Kyle Guarco <kyleguarco55@gmail.com>
-
+# Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
 _pkgname=berry
 pkgname=berry-git
 _pkgver=e5bcb3
