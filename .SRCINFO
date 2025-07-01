@@ -1,6 +1,6 @@
 pkgbase = magewell-pro-capture-dkms
 	pkgdesc = Driver for Magewell Pro Capture Family
-	pkgver = 1.3.4418
+	pkgver = 1.3.4420
 	pkgrel = 1
 	url = https://www.magewell.com/downloads/pro-capture#/driver/linux-x86
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = magewell-pro-capture-dkms
 	depends = dkms
 	depends = alsa-lib
 	conflicts = magewell-pro-capture
-	source = https://www.magewell.com/files/drivers/ProCaptureForLinux_1.3.4418.tar.gz
-	sha256sums = 654a8990046168ca3d6993ad50c11d88711b12ad749493ba3241a31039dfc758
+	source = https://www.magewell.com/files/support/ProCaptureForLinux_1.3.4420.tar.gz
+	sha256sums = 697f2f868bac410e3c40f81f2e311219b070dba7a00c1e3a0264a4aee51a3398
 
 pkgname = magewell-pro-capture-dkms
