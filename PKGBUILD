@@ -1,5 +1,5 @@
 pkgname=goonsh
-pkgver=2.0.1
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="a joke fr"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 build() {
-  g++ goonsh.cpp utils.cpp history.cpp config.cpp completion.cpp -o goonsh -lreadline
+  g++ -std=c++17 -Wall -g *.cpp -lreadline -o goonsh
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = goonsh
 	pkgdesc = a joke fr
-	pkgver = 2.0.1
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://github.com/DriftFe/goonsh
 	arch = x86_64
