@@ -10,7 +10,7 @@ source=("https://github.com/0xEcoder/gwmct-aur/releases/download/AUR/gwmct-${pkg
 sha256sums=('f7e78c947454e384f211c271e36d9d0192b1c0e3c0d43117f1116824e6710e40')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   make build
 }
 
