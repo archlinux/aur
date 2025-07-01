@@ -5,6 +5,7 @@ pkgdesc="pw-lat is small rust program which allow to simple change pipewire-jack
 arch=('x86_64')
 url="https://github.com/MatiM72737/pw-lat"
 license=('MIT')
+depends=('pipewire' 'pipewire-jack')
 source=("https://github.com/MatiM72737/pw-lat/releases/download/v${pkgver}/pw-lat-x86_64.tar.gz")
 sha256sums=('d6d81cabdcd9163befc31c20175a7610ae83b87950f9d4b86315133d6827f143')
 
