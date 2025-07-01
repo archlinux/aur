@@ -1,6 +1,6 @@
 # Maintainer: Jörg Hettwer <jh_gitlab@gmx-topmail.de>
 pkgname='g15ctrld'
-pkgver=1.6.8
+pkgver=1.6.9
 pkgrel=1
 pkgdesc="A new daemon controlling the G15 Logitech Gaming Keyboard for x11 and
 wayland"
@@ -50,6 +50,7 @@ package() {
     install -Dm755 "$srcdir/g15ctrld/lcdproc.conf" "$pkgdir/etc/lcdproc.conf.pacnew"
 
 
+    install -Dm755 "$srcdir/g15ctrld/LCDd-menue" "$pkgdir/usr/bin/LCDd-menu"
     # Install g15ctrld
     cd "$srcdir/g15ctrld"
 

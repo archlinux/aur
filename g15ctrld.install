@@ -19,6 +19,7 @@ post_install() {
     echo "** sudo systemctl enable --now lcdproc                                 **"
     echo "** sudo systemctl enable --now g15ctrld                                **"
     echo "** sudo systemctl enable --now ydotoold                                **"
+    echo "** sudo cp /usr/bin/LCDd-menu /usr/bin/LCDd                            **"
     echo "** sudo shutdown -r now                                                **"
     echo "*************************************************************************"
 
