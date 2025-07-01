@@ -10,7 +10,7 @@ license=('LGPL2.1')
 source=(https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch)
 sha256sums=('f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
 depends=(glibc)
-makedepends=(gcc diffutils nasm git patch sed)
+makedepends=(diffutils gcc make nasm patch sed git)
 conflicts=(vivaldi-snapshot-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 
@@ -26,6 +26,7 @@ prepare() {
 build() {
   cd ffmpeg
   # Use part of https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
+  # Use some flags at https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/BUILD.gn
   ./configure \
     --disable-{all,autodetect,programs,doc,iconv,network,symver} \
     --enable-static --disable-shared \
@@ -34,13 +35,13 @@ build() {
     --enable-demuxer=ogg,matroska,webm,wav,flac,mp3,mov,aac \
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
-    --extra-cflags="${LTOFLAGS}" \
+    --extra-cflags="-fno-math-errno -fno-signed-zeros ${LTOFLAGS}" \
     --prefix="${srcdir}"/release \
     --enable-{pic,asm,hardcoded-tables} # https://www.ffmpeg.org/platform.html#toc-Advanced-linking-configuration
 
   make install
   cd ../release
-  gcc $LTOFLAGS -shared $LDFLAGS -Wl,--no-as-needed  \
+  gcc $LTOFLAGS -shared $LDFLAGS -Wl,--no-as-needed \
     -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
     -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avutil_version \
     -lm -Wl,-Bsymbolic -o $_so
