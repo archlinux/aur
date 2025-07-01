@@ -1,6 +1,6 @@
 pkgbase = chunkcleaner
 	pkgdesc = Minecraft tool to automatically delete unused chunks/region based on the time played in them.
-	pkgver = 0.0.10
+	pkgver = 0.0.12
 	pkgrel = 1
 	url = https://github.com/zeroBzeroT/ChunkCleaner
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = chunkcleaner
 	makedepends = git
 	depends = glibc
 	provides = chunkcleaner
-	source = git+https://github.com/zeroBzeroT/ChunkCleaner.git#tag=cfd1e75ecc484dc1233cd7dedd00dc7365ddf7ad
-	sha256sums = SKIP
+	source = git+https://github.com/zeroBzeroT/ChunkCleaner.git#tag=0.0.12
+	sha256sums = 0e253b0f209058a1bc5a82daf0c675b55845156dbf4b53a4c8272e9345213cbc
 
 pkgname = chunkcleaner

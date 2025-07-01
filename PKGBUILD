@@ -1,6 +1,7 @@
+# Maintainer: Kimiblock Moe
+
 pkgname=chunkcleaner
-pkgver=0.0.10
-_tag=cfd1e75ecc484dc1233cd7dedd00dc7365ddf7ad
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="Minecraft tool to automatically delete unused chunks/region based on the time played in them."
 arch=("any")
@@ -10,8 +11,8 @@ depends=("glibc")
 makedepends=("go" "git")
 backup=()
 provides=("chunkcleaner")
-source=("git+https://github.com/zeroBzeroT/ChunkCleaner.git#tag=${_tag}")
-sha256sums=('SKIP')
+source=("git+https://github.com/zeroBzeroT/ChunkCleaner.git#tag=${pkgver}")
+sha256sums=('0e253b0f209058a1bc5a82daf0c675b55845156dbf4b53a4c8272e9345213cbc')
 
 function pkgver() {
 	cd "${srcdir}/ChunkCleaner"
@@ -35,4 +36,3 @@ function check() {
 function package() {
 	install -Dm755 "${srcdir}/ChunkCleaner/chunkCleaner" "${pkgdir}/usr/bin/chunkcleaner"
 }
-
