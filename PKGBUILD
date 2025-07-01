@@ -4,7 +4,7 @@ _name=cpptrace
 _author=jeremy-rifkin
 
 pkgname=${_name}
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Simple, portable, and self-contained stacktrace library for C++11 and newer"
 arch=('any')
