@@ -1,6 +1,6 @@
 pkgbase = safetyhook
 	pkgdesc = C++23 procedure hooking library.
-	pkgver = 0.6.7
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = https://github.com/cursey/safetyhook
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = safetyhook
 	makedepends = cmake
 	makedepends = doxygen
 	depends = zydis
-	source = https://github.com/cursey/safetyhook/archive/v0.6.7/safetyhook-v0.6.7.tar.gz
-	sha256sums = 05e66f9a1ac85249f590149a146e74fd946950cfe0c82917e5a4ec178e9e212a
+	source = https://github.com/cursey/safetyhook/archive/v0.6.8/safetyhook-v0.6.8.tar.gz
+	sha256sums = 7e210eef04a59f980df3843ead06d67a87ab54326f7939b59ca82e1071c619a0
 
 pkgname = safetyhook
