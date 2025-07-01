@@ -3,17 +3,18 @@
 
 pkgname=mindforger
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Thinking notebook and Markdown IDE. Search, browse, view and edit your Markdown files. Get as much as possible from knowledge in your remarks"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
-url="https://www.mindforger.com/"
-license=(GPL2)
-depends=(qt5-base qt5-webkit zlib hunspell)
+url="https://github.com/dvorka/mindforger"
+license=(GPL-2.0-or-later)
+depends=(qt5-base qt5-webkit zlib hunspell glibc gcc-libs
+         libicuuc.so)
 makedepends=(git cmake)
 source=("git+https://github.com/dvorka/mindforger.git#tag=${pkgver}"
         "git+https://github.com/dvorka/mindforger-repository.git"
         "mindforger-cmark::git+https://github.com/dvorka/cmark.git")
-sha256sums=('SKIP'
+sha256sums=('68ef84c0bee6e7c1640e183cf2dafd993a3f29f29dd05d68763415e5735a979a'
             'SKIP'
             'SKIP')
 
@@ -28,7 +29,7 @@ prepare() {
 build() {
   mkdir -p "$srcdir/$pkgname"/deps/cmark-gfm/build
   cd "$srcdir/$pkgname"/deps/cmark-gfm/build
-  cmake -DCMARK_TESTS=OFF -DCMARK_SHARED=OFF -Wno-dev ..
+  cmake -DCMARK_TESTS=OFF -DCMARK_SHARED=OFF -Wno-dev -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
   cmake --build .
 
   cd "$srcdir/$pkgname"

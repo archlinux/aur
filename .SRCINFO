@@ -1,25 +1,28 @@
 pkgbase = mindforger
 	pkgdesc = Thinking notebook and Markdown IDE. Search, browse, view and edit your Markdown files. Get as much as possible from knowledge in your remarks
 	pkgver = 2.0.0
-	pkgrel = 1
-	url = https://www.mindforger.com/
+	pkgrel = 2
+	url = https://github.com/dvorka/mindforger
 	arch = x86_64
 	arch = i686
 	arch = arm
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = cmake
 	depends = qt5-base
 	depends = qt5-webkit
 	depends = zlib
 	depends = hunspell
+	depends = glibc
+	depends = gcc-libs
+	depends = libicuuc.so
 	source = git+https://github.com/dvorka/mindforger.git#tag=2.0.0
 	source = git+https://github.com/dvorka/mindforger-repository.git
 	source = mindforger-cmark::git+https://github.com/dvorka/cmark.git
-	sha256sums = SKIP
+	sha256sums = 68ef84c0bee6e7c1640e183cf2dafd993a3f29f29dd05d68763415e5735a979a
 	sha256sums = SKIP
 	sha256sums = SKIP
 
