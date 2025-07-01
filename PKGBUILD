@@ -4,7 +4,7 @@ _pkgbase="xlibre-server"
 _pkgname=("${_pkgbase}"{,-bootstrap,-common,-devel,-xephyr,-xnest,-xvfb})
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgname[@]/%/-git}")
-pkgver=25.0.0.0.r0.40dc3b641
+pkgver=25.0.0.2.r3.6c2f17a5e
 pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://github.com/x11libre/xserver"
@@ -79,9 +79,9 @@ package_xlibre-server-git() {
            "${_pkgbase}-common-git=${pkgver}-${pkgrel}") # FS#52949
   # see xlibre-server*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xlibre-server-devel pkg
-  provides=({xlibre,xorg}"-server=${pkgver%%.r*}" 'X-ABI-VIDEODRV_VERSION=28.0' 'X-ABI-XINPUT_VERSION=26.0' 'X-ABI-EXTENSION_VERSION=11.0' 'x-server')
+  provides=("${_pkgbase}=${pkgver%%.r*}" 'X-ABI-VIDEODRV_VERSION=28.0' 'X-ABI-XINPUT_VERSION=26.0' 'X-ABI-EXTENSION_VERSION=11.0' 'x-server') # {xlibre,xorg}"-server=${pkgver%%.r*}"
   conflicts=({xlibre,xorg}'-server' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
-  replaces=('glamor-egl' 'xf86-video-modesetting' 'xlibre-server-bootstrap')
+  replaces=('xlibre-server-bootstrap') # 'glamor-egl' 'xf86-video-modesetting'
   options=('emptydirs')
   install="${_pkgbase}.install"
 
@@ -106,13 +106,13 @@ package_xlibre-server-bootstrap-git() {
            'libunwind' 'libxau' 'libxcvt' 'libxdmcp' 'libxfont2'
            'libxshmfence>=1.1' 'nettle' 'pixman>=0.27.2' 'sh'
            'systemd-libs>=209'
-           "xlibre-server-common-git=${pkgver}-${pkgrel}") # FS#52949
+           "${_pkgbase}-common-git=${pkgver}-${pkgrel}") # FS#52949
   # see xlibre-server*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xlibre-server-devel pkg
-  provides=({xlibre,xorg}"-server=${pkgver%%.r*}" "xlibre-server-bootstrap=${pkgver%%.r*}" 'x-server'
+  provides=("${_pkgbase}"{,-bootstrap}"=${pkgver%%.r*}" 'x-server' # {xlibre,xorg}"-server=${pkgver%%.r*}" "xlibre-server-bootstrap=${pkgver%%.r*}"
             'X-ABI-VIDEODRV_VERSION=28.0' 'X-ABI-XINPUT_VERSION=26.0' 'X-ABI-EXTENSION_VERSION=11.0')
   conflicts=({xlibre,xorg}'-server' 'xlibre-server-bootstrap' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
-  replaces=('glamor-egl' 'xf86-video-modesetting')
+  # replaces=('glamor-egl' 'xf86-video-modesetting')
   options=('emptydirs')
   install="${_pkgbase}.install"
 
@@ -135,7 +135,7 @@ package_xlibre-server-common-git() {
   pkgdesc="XLibre server common files"
   arch=('any')
   depends=('xkeyboard-config' 'xorg-setxkbmap' 'xorg-xkbcomp')
-  provides=({xlibre,xorg}"-server-common=${pkgver%%.r*}")
+  provides=("${_pkgbase}-common=${pkgver%%.r*}") # {xlibre,xorg}"-server-common=${pkgver%%.r*}"
   conflicts=({xlibre,xorg}'-server-common')
 
   cd "${srcdir}"
@@ -153,7 +153,7 @@ package_xlibre-server-devel-git() {
   arch=('any')
   depends=('libpciaccess' 'mesa' 'pixman>=0.27.2' 'xorgproto>=7.0.31'
            'xorg-util-macros') # not technically required but almost every Xorg pkg needs it to build
-  provides=({xlibre,xorg}"-server-devel=${pkgver%%.r*}")
+  provides=("${_pkgbase}-devel=${pkgver%%.r*}") # {xlibre,xorg}"-server-devel=${pkgver%%.r*}"
   conflicts=({xlibre,xorg}'-server-devel')
 
   cd "${srcdir}"
@@ -169,7 +169,7 @@ package_xlibre-server-xephyr-git() {
            'systemd-libs>=209' 'xcb-util' 'xcb-util-image' 'xcb-util-keysyms'
            'xcb-util-renderutil' 'xcb-util-wm'
            "xlibre-server-common-git=${pkgver}-${pkgrel}")
-  provides=({xlibre,xorg}"-server-xephyr=${pkgver%%.r*}")
+  provides=("${_pkgbase}-xephyr=${pkgver%%.r*}") # {xlibre,xorg}"-server-xephyr=${pkgver%%.r*}"
   conflicts=({xlibre,xorg}'-server-xephyr')
 
   cd "${srcdir}"
@@ -183,7 +183,7 @@ package_xlibre-server-xnest-git() {
   depends=('glibc' 'libtirpc' 'libunwind' 'libx11' 'libxau' 'libxdmcp'
            'libxext' 'libxfont2' 'nettle' 'pixman>=0.27.2'
            'systemd-libs>=209' "xlibre-server-common-git=${pkgver}-${pkgrel}")
-  provides=({xlibre,xorg}"-server-xnest=${pkgver%%.r*}")
+  provides=("${_pkgbase}-xnest=${pkgver%%.r*}") # {xlibre,xorg}"-server-xnest=${pkgver%%.r*}"
   conflicts=({xlibre,xorg}'-server-xnest')
 
   cd "${srcdir}"
@@ -198,7 +198,7 @@ package_xlibre-server-xvfb-git() {
   depends=('glibc' 'libgl' 'libtirpc' 'libunwind' 'libxau' 'libxdmcp'
            'libxfont2' 'nettle' 'pixman' 'sh' 'systemd-libs>=209'
            "xlibre-server-common-git=${pkgver}-${pkgrel}" 'xorg-xauth')
-  provides=({xlibre,xorg}"-server-xvfb=${pkgver%%.r*}")
+  provides=("${_pkgbase}-xvfb=${pkgver%%.r*}") # {xlibre,xorg}"-server-xvfb=${pkgver%%.r*}"
   conflicts=({xlibre,xorg}'-server-xvfb')
 
   cd "${srcdir}"
