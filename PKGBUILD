@@ -2,13 +2,13 @@
 
 pkgdesc='GTK theme for the Budgie and Cinnamon desktops'
 pkgname=marwaita-gtk-theme
-pkgver=20.3.1
+pkgver=23
 pkgrel=1
 url=https://github.com/darkomarko42/Marwaita
 arch=(any)
 license=(GPL-3.0-only)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('e4d5f78b288ff7d5daefbc0f4157976501a332f1faf371ff1e93b3147565e9b077c414c82e9393d5c0038404e9d1594f03766b194ff7901807b7f6c2da9f5a02')
+b2sums=('1a564bd5ee224e6c3f47b00b5fc995b703991bdadb8b67299690fd83f8e940ca0721e5f9ce6e7f37974636de4103c49f6cffbe29c1bb45749217c6924d3e67a2')
 
 build () {
 	msg2 'Nothing to build'
@@ -17,5 +17,5 @@ build () {
 package () {
 	cd "Marwaita-$pkgver"
 	install -dm755 "$pkgdir/usr/share/themes"
-	cp -pr Marwaita{,-s}{,-{Alt,Dark,Mix}} "$pkgdir/usr/share/themes"
+	cp -pr Marwaita{,-s}{,-{Alt,Dark}} "$pkgdir/usr/share/themes"
 }
