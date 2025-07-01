@@ -11,6 +11,7 @@ depends=("pulseaudio")
 makedepends=("go>=1.24")
 source=("git+https://github.com/Flack74/pom.git#tag=v$pkgver")
 
+
 prepare() {
     mkdir -p "$srcdir/$pkgname-build"
     cp -r "$startdir"/../pom/* "$srcdir/$pkgname-build/"
