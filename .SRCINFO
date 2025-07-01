@@ -9,8 +9,8 @@ pkgbase = fzur-git
 	depends = fzf
 	depends = git
 	depends = jq
-	provides = fzur-git
-	conflicts = fzur-git
+	provides = fzur
+	conflicts = fzur
 	source = git+https://github.com/Samq64/fzur.git
 	sha256sums = SKIP
 

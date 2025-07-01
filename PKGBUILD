@@ -8,8 +8,8 @@ arch=('any')
 url="https://github.com/Samq64/fzur"
 license=('MIT')
 depends=('curl' 'fzf' 'git' 'jq')
-provides=("${pkgname%-VCS}")
-conflicts=("${pkgname%-VCS}")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Samq64/fzur.git')
 sha256sums=('SKIP')
 
