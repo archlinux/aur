@@ -1,29 +1,29 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=nullshell
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
-pkgdesc="do nothing but print keep alive characters, can be used for login shell"
-arch=('i686' 'x86_64')
-makedepends=('markdown')
-url="https://github.com/eworm-de/nullshell"
+pkgdesc='do nothing but print keep alive characters, can be used for login shell'
+arch=('x86_64')
+makedepends=('discount')
+url='https://github.com/eworm-de/nullshell'
 conflicts=('nullshell-git')
-license=('GPL')
+license=('GPL-3.0-or-later')
 install=nullshell.install
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
 source=("https://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('18a1bc47fef86781b7fa044ecb62d4ce22fe00ae3fdd6613bd977c4a6c3f07df'
+sha256sums=('bc38dced05acf3dafc58b75d9bf1f8a27abed2beb1543b8b2d39b820041357f1'
             'SKIP')
 
 build() {
-	cd ${pkgname}-${pkgver}/
+  cd ${pkgname}-${pkgver}/
 
-	make
+  make
 }
 
 package() {
-	cd ${pkgname}-${pkgver}/
+  cd ${pkgname}-${pkgver}/
 
-	make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
 }
 
