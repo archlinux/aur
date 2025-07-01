@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=alist
-pkgver=3.45.0
+pkgver=3.45.1
 _web_pkgver=3.45.0
 pkgrel=1
 pkgdesc="File list program that supports multiple storage"
