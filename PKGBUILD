@@ -2,7 +2,7 @@
 
 pkgname=python-colorful
 _name=${pkgname#python-}
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="Terminal string styling done right, in Python"
 arch=('any')
@@ -12,12 +12,12 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 checkdepends=('python-pytest')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('b56d5c01db1dac4898308ea889edcb113fbee3e6ec5df4bacffd61d5241b5b8d')
+sha256sums=('c5452179b56601c178b03d468a5326cc1fe37d9be81d24d0d6bdab36c4b93ad8')
 
 prepare() {
   cd "$_name-$pkgver"
   sed -i '1,3d' setup.cfg
-  sed -i 's/value\.s/value.value/' setup.py
+  sed -i '/License ::/d' setup.py
 }
 
 build() {
@@ -33,6 +33,5 @@ check() {
 package() {
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
-
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
