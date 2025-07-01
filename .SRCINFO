@@ -1,17 +1,15 @@
 pkgbase = pom
 	pkgdesc = Advanced Pomodoro timer with CLI and Web UI, featuring AI insights, multi-profiles, and plugin system.
-	pkgver = 2.1.4
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://github.com/Flack74/pom
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
-	makedepends = nodejs
-	makedepends = npm
 	optdepends = pulseaudio: for sound notifications
 	optdepends = pipewire-pulse: for sound notifications (pipewire users)
-	source = git+https://github.com/Flack74/pom.git#tag=v2.1.4
+	source = git+https://github.com/Flack74/pom.git#tag=v2.1.5
 	sha256sums = SKIP
 
 pkgname = pom

@@ -19,7 +19,7 @@ makepkg -si
 
 ## Features
 
-- 🌐 **Web UI** with Galactic Flux theme
+- 🌐 **Web UI** with Galactic Flux theme (pure HTML/JS)
 - 👥 **Multi-profiles** (work, study, quick, custom)
 - 🧠 **AI suggestions** based on performance
 - 📅 **Calendar heatmap** view
@@ -27,6 +27,7 @@ makepkg -si
 - 🔄 **Cloud sync** (GitHub/Dropbox)
 - 🧩 **Plugin system** for automation
 - 🔐 **Privacy mode** with zero logging
+- 🚀 **Zero dependencies** - works instantly
 
 ## Quick Start
 
