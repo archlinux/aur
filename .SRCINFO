@@ -1,6 +1,6 @@
 pkgbase = qtel-svxlink-git
 	pkgdesc = Qtel (EchoLink client) built from the latest official SvxLink Git repository
-	pkgver = 25.05.1.r0.gHEAD
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/sm0svx/svxlink
 	arch = x86_64

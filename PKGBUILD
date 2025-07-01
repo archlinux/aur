@@ -2,7 +2,7 @@
 
 pkgname=qtel-svxlink-git
 _pkgname=svxlink
-pkgver=25.05.1.r0.g$(git rev-parse --short HEAD 2>/dev/null || echo "HEAD")
+pkgver=0
 pkgrel=1
 pkgdesc="Qtel (EchoLink client) built from the latest official SvxLink Git repository"
 arch=('x86_64')
