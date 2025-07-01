@@ -1,0 +1,12 @@
+pkgbase = maxflow
+	pkgdesc = Software for computing mincut/maxflow in a graph
+	pkgver = 3.0.5
+	pkgrel = 1
+	url = https://github.com/gerddie/maxflow
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	source = maxflow-3.0.5.tar.gz::https://github.com/gerddie/maxflow/archive/refs/tags/3.0.5.tar.gz
+	md5sums = 4354e9a5cb02a97d424c89f07683f30e
+
+pkgname = maxflow
