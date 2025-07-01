@@ -1,7 +1,7 @@
 pkgbase = sunshine
 	pkgdesc = A self-hosted GameStream host for Moonlight
-	pkgver = 2025.122.141614
-	pkgrel = 9
+	pkgver = 2025.628.4510
+	pkgrel = 1
 	url = https://github.com/LizardByte/Sunshine
 	install = sunshine.install
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = sunshine
 	depends = wayland
 	optdepends = intel-media-driver: Intel GPU encoding support
 	optdepends = libva-mesa-driver: AMD GPU encoding support
-	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=64544e7960f5141f71438d72e5dedad81c03729c
+	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=65f14e1003f831e776c170621bd06d8292f65155
 	source = eidheim.simple-web-server::git+https://gitlab.com/eidheim/Simple-Web-Server.git
 	source = games-on-whales.inputtino::git+https://github.com/games-on-whales/inputtino.git
 	source = google.googletest::git+https://github.com/google/googletest.git
