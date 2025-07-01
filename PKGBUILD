@@ -5,9 +5,9 @@
 pkgbase=flutter
 _group=flutter
 groups=("$_group")
-pkgver=3.32.4
+pkgver=3.32.5
 _dartver=(3.8.0 3.9.0)
-_enginever=8cd19e509d6bece8ccd74aef027c4ca947363095
+_enginever=dd93de6fb1776398bf586cbd477deade1391c7e4
 _materialfontsver=3012db47f3130e62f7cc0beabff968a33cbec8d8
 _gradlewver=fd5c1f2c013565a3bea56ada6df9d2b8e96d56aa
 _flutterarch=$(echo "$CARCH" | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
@@ -40,7 +40,7 @@ source=(
   "opt-in-analytics.patch"
 )
 
-sha256sums=('f711ea78131030c6ccc31a7bb1d091a9e9a651ee4781389c4d3cd5f526d02275'
+sha256sums=('22adbc5935e24125deeb9fa37cb90b2530df64765eb89ba76febfac3c5e0253e'
             '1a04bc4aaf6ed3e8810d0a441b7365bc5fd0b8d0d40da1632d22635a0c327824'
             'e41d25d8cba8b0bb51ee0b20cb6b730bfb2c491d67c669ab8e3550d60b37fb5c'
             'b4c104129eb57e7e3edca2e23376b8b034de2d466189bdc1c3e2a304506889a3'
