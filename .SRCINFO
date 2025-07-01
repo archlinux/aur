@@ -1,7 +1,7 @@
 pkgbase = xlibre-video-amdgpu
 	pkgdesc = XLibre amdgpu video driver
 	pkgver = 23.0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/X11Libre/xf86-video-amdgpu
 	arch = aarch64
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = xlibre-video-amdgpu
 	depends = libdrm>=2.4.121
 	depends = mesa
 	depends = systemd-libs
-	provides = xf86-video-amdgpu
 	conflicts = xf86-video-amdgpu
 	conflicts = xorg-server<1.20.0
 	conflicts = X-ABI-VIDEODRV_VERSION<28
