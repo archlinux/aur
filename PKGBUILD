@@ -1,46 +1,51 @@
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 # Contributor: jmcb <joelsgp@protonmail.com>
 # Contributor: Jonas DOREL <jonas at dorel dot me>
 
 pkgname=python-prospector
 _name=prospector
-pkgver=1.10.2
+pkgver=1.17.2
 pkgrel=1
 pkgdesc="Python static analysis tool"
 url="https://github.com/PyCQA/prospector/"
-depends=('python-pylint'
-         'python-pylint-celery'
-         'python-pylint-django'
-         'python-pylint-plugin-utils'
-         'python-pylint-flask'
-         'python-requirements-detector'
-         'python-yaml'
-         'python-mccabe'
-         'python-pyflakes'
-         'python-pycodestyle'
-         'python-pep8-naming'
-         'python-pydocstyle'
-         'python-dodgy'
-         'python-toml'
-         'python-setoptconf'
-         'python-gitpython'
-         'python-packaging')
-optdepends=('python-bandit: security linter'
+depends=('python')
+optdepends=('bandit: security linter'
             'mypy: optional type checking'
             'python-pyroma: check setup.py'
-            'python-vulture: find dead code')
+            'vulture: find dead code'
+            'python-ruff: python linter'
+            'pyright: python type checker')
 makedepends=('python-poetry'
              'python-wheel')
-license=('GPL2')
+license=('GPL-2.0-only')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('cc8f09e79bdd32247edddf05b666940e88ad96338a84f5717b1e8c0678337821')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_name}-dev/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('ae7cfb27aa907272c4c8e24509dec8c89c8f12e2445df907b47a695a52d027ee')
 
 build() {
-    cd "$_name-$pkgver"
-    python -m build --wheel --no-isolation
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_name-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+	depends+=(
+		'python-pylint'
+		'python-pylint-celery'
+		'python-pylint-django'
+		'python-requirements-detector'
+		'python-yaml'
+		'python-mccabe'
+		'python-pyflakes'
+		'python-pycodestyle'
+		'python-pep8-naming'
+		'python-pydocstyle'
+		'python-dodgy'
+		'python-toml'
+		'python-setoptconf'
+		'python-gitpython'
+		'python-packaging'
+		'python-flake8')
+
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
