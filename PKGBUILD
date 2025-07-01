@@ -4,11 +4,11 @@
 # Official Documentation: https://actualbudget.org/docs/install/
 _npmscope=@actual-app
 _npmpkg=sync-server
-_npmver=25.6.1
+_npmver=25.7.0
 
 pkgname=actual-server
 pkgver=${_npmver//-/_}
-pkgrel=2
+pkgrel=1
 pkgdesc="Actual Budget server used for syncing across devices. Includes the web client."
 arch=(x86_64)
 url="https://actualbudget.org"
@@ -26,7 +26,7 @@ source=(
 )
 noextract=("${pkgname}-${pkgver}.tar.gz")
 sha256sums=(
-    'd592a6c435decca23a1b3e8dc5723e83b8928196b85ac34aba7ff2345125b35e' # tgz
+    '26387e20240bc44dbc4ac6fb156b5290c784033deb19e339d27af630ed9b525d' # tgz
     '7359980edd568ddbaaef2a2d8c60fab277cb7f5d09372f72f8f1e0ee61df62f7' # service
     '041744d6403aa2cdf18a09d0e82d005203d11d56795c6738fbc4f9b0cccb2c12' # sysusers
     '8112d19ee07f43c8cd100796bb4b995f45f4304d5c78cfa21b6750c04a82b194' # tmpfiles
