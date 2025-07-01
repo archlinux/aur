@@ -3,7 +3,7 @@
 _pkgname=openimageio
 pkgname=mingw-w64-${_pkgname}
 pkgver=3.0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for reading and writing images, including classes, utilities, and applications (mingw-w64)'
 url='http://www.openimageio.org/'
 license=('BSD-3-Clause')
@@ -51,10 +51,12 @@ _flags=(
 	-DSTOP_ON_WARNING=OFF
 	-DOIIO_INTERNALIZE_FMT=OFF )
 
-#prepare() {
-#	cd "${_srcdir}"
+prepare() {
+	cd "${_srcdir}"
+	sed -i 's/int hystride/std::size_t hystride/' 'src/heif.imageio/heifoutput.cpp'
+	sed -i 's/int ystride/std::size_t ystride/' 'src/heif.imageio/heifinput.cpp'
 #	sed -i 's/os.path.join(OIIO_BUILD_ROOT, "bin", app)/os.path.join(OIIO_BUILD_ROOT, "bin", app, ".exe")/' 'testsuite/runtest.py'
-#}
+}
 
 build() {
 	for _arch in ${_architectures}; do
