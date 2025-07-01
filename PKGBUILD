@@ -1,7 +1,7 @@
 # Maintainer: Flack74 <puspendrachawlax@gmail.com>
 
 pkgname=pom
-pkgver=2.1.5
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="Advanced Pomodoro timer with CLI and Web UI, featuring AI insights, multi-profiles, and plugin system."
 arch=("x86_64")
@@ -17,7 +17,14 @@ build() {
     cd "$srcdir/pom"
     export CGO_ENABLED=0
     export GO111MODULE=on
-    go build -ldflags "-s -w" -o pom .
+    
+    # Get build info
+    VERSION=$(git describe --tags --always --dirty 2>/dev/null || echo "v$pkgver")
+    BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+    GIT_COMMIT=$(git rev-parse HEAD 2>/dev/null || echo "unknown")
+    
+    # Build with version info
+    go build -ldflags "-s -w -X github.com/Flack74/pom/cmd.version=$VERSION -X github.com/Flack74/pom/cmd.buildDate=$BUILD_DATE -X github.com/Flack74/pom/cmd.gitCommit=$GIT_COMMIT" -o pom .
 }
 
 package() {
