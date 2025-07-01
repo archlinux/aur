@@ -1,1 +1,11 @@
+pkgbase = 6curl
+	pkgdesc = Quick downloader
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hyx-web/6curl/
+	arch = x86_64
+	depends = curl>=8.0.0
+	source = https://github.com/hyx-web/6curl/archive/refs/heads/main.zip
+	sha256sums = SKIP
 
+pkgname = 6curl
