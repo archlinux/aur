@@ -1,0 +1,21 @@
+pkgbase = carbonyl
+	pkgdesc = Chromium-based browser built to run in a terminal
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/fathyb/carbonyl
+	arch = x86_64
+	license = BSD
+	makedepends = npm
+	depends = nss
+	depends = alsa-lib
+	depends = expat
+	depends = nspr
+	depends = glibc
+	depends = gcc-libs
+	options = !strip
+	source = v0.0.3.tar.gz::https://github.com/fathyb/carbonyl/archive/v0.0.3.tar.gz
+	source = carbonyl.sh
+	sha256sums = bf421b9498a084a7cf2238a574d37d31b498d3e271fdb3dcf466e7ed6c80013d
+	sha256sums = 07d6361edfa45d58a2d81e527f1a976fef9ba5417daa0ff8b4acfdfc95f8032e
+
+pkgname = carbonyl
