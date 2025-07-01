@@ -6,7 +6,7 @@
 # Maintainer: maksim Kononykhin <kononelder@gmail.com>
 pkgname=trackpointsound
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="adds the ability to play sound when you touch a trackpoint"
 arch=("x86_64")

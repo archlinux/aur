@@ -1,7 +1,7 @@
 pkgbase = trackpointsound
 	pkgdesc = adds the ability to play sound when you touch a trackpoint
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/WindowsKonon1337/TrackPointSound
 	arch = x86_64
 	license = MIT
