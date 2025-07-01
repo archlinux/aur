@@ -3,7 +3,7 @@
 
 pkgname=surgescript
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='SurgeScript is a scripting language for games.'
 arch=('i686' 'x86_64' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/alemart/surgescript'
@@ -25,7 +25,8 @@ build() {
 
     cmake -DCMAKE_BUILD_TYPE="Release" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
-        -S . -B build
+        -S . -B build \
+        -DCMAKE_POLICY_VERSION_MINIMUM=4.0
 
     cmake --build build
 }
