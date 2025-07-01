@@ -12,11 +12,11 @@ depends=('dkms')
 makedepends=('git')
 provides=('rtl8852cu-dkms')
 conflicts=('rtl8852cu-dkms')
-source=(
-  "${pkgname}::git+${url}.git"
-  '90-rtl8852cu-morrownr.hook'
-)
-md5sums=('SKIP' 'SKIP')
+source=("${pkgname}::git+${url}.git"
+        "rtl8852cu.install"
+        "90-rtl8852cu-morrownr.hook")
+md5sums=('SKIP' 'SKIP' 'SKIP')
+install=rtl8852cu.install
 
 pkgver() {
   date +%Y%m%d
@@ -25,15 +25,14 @@ pkgver() {
 package() {
   local moddir="${pkgdir}/usr/src/rtl8852cu-${pkgver}"
 
-  # Install DKMS source
+  # Copy driver source to DKMS dir
   install -d "${moddir}"
   cp -r "${srcdir}/${pkgname}"/* "${moddir}/"
   find "${moddir}" -type d -exec chmod 755 {} +
   find "${moddir}" -type f -exec chmod 644 {} +
-  chmod +x "${moddir}"/*.sh
-  chmod +x "${moddir}/dkms.conf"
+  chmod +x "${moddir}"/*.sh "${moddir}/dkms.conf"
 
-  # Install pacman post-transaction hook
+  # Install pacman post-install hook
   install -Dm644 "${srcdir}/90-rtl8852cu-morrownr.hook" \
     "${pkgdir}/usr/share/libalpm/hooks/90-rtl8852cu-morrownr.hook"
 }
