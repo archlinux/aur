@@ -2,7 +2,7 @@
 
 pkgbase=xguipro
 pkgname=(xguipro-gtk3)
-pkgver=0.9.22
+pkgver=0.9.24
 pkgrel=1
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=($CARCH)
@@ -61,7 +61,7 @@ install=
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz"
     #         "001-fix.patch::https://github.com/HVML/xGUI-Pro/commit/a6e4022fa599e5e98d92d8d2feb56fe689e16f1a.patch"
 )
-sha256sums=('df60ccf6f7a9c2ea703998c797733633bb33429b81c759862b412f59b5ae0f79')
+sha256sums=('ced3d9999d08387f815ffd7f6d255c9a17aece9baa8ca5e7b90451a4f380cb75')
 
 prepare() {
     install -Dm644 /dev/stdin ${srcdir}/xguipro.csh <<EOF
