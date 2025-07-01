@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atlassify-git
 _pkgname=Atlassify
-pkgver=1.19.0.r2.g33cc54f
-_electronversion=36
+pkgver=1.20.0.r0.g63ff484
+_electronversion=37
 _nodeversion=24
 pkgrel=1
 pkgdesc="Atlassian notifications on your menu bar.(Use system-wide electron)"
