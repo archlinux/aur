@@ -1,6 +1,6 @@
 pkgbase = ensmallen
 	pkgdesc = Flexible C++ header library for efficient mathematical optimization
-	pkgver = 2.22.1
+	pkgver = 2.22.2
 	pkgrel = 1
 	url = https://ensmallen.org/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ensmallen
 	makedepends = openmp
 	makedepends = armadillo
 	makedepends = lapack
-	source = https://ensmallen.org/files/ensmallen-2.22.1.tar.gz
-	sha256sums = daf53fe96783043ca33151a3851d054a826fab8d9a173e6bcbbedd4a7eabf5b1
+	source = https://ensmallen.org/files/ensmallen-2.22.2.tar.gz
+	sha256sums = da9ce4bdd07f2c8d950e3797456da3152dfa5d1b0f5987a489fbe224f52e7e4f
 
 pkgname = ensmallen
