@@ -3,7 +3,7 @@
 # Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
 
 pkgname=albert
-pkgver=0.29.4
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
@@ -34,11 +34,15 @@ build() {
     -DBUILD_PLUGIN_DATETIME=ON \
     -DBUILD_PLUGIN_DEBUG=OFF \
     -DBUILD_PLUGIN_DICTIONARY=ON \
+    -DBUILD_PLUGIN_DOCS=OFF \
     -DBUILD_PLUGIN_FILES=ON \
+    -DBUILD_PLUGIN_GITHUB=ON \
     -DBUILD_PLUGIN_HASH=ON \
+    -DBUILD_PLUGIN_MEDIAREMOTE=ON \
     -DBUILD_PLUGIN_PATH=ON \
     -DBUILD_PLUGIN_PYTHON=ON \
     -DBUILD_PLUGIN_SNIPPETS=ON \
+    -DBUILD_PLUGIN_SPOTIFY=ON \
     -DBUILD_PLUGIN_SSH=ON \
     -DBUILD_PLUGIN_SYSTEM=ON \
     -DBUILD_PLUGIN_TIMER=ON \
@@ -46,7 +50,8 @@ build() {
     -DBUILD_PLUGIN_URLHANDLER=ON \
     -DBUILD_PLUGIN_VPN=ON \
     -DBUILD_PLUGIN_WEBSEARCH=ON \
-    -DBUILD_PLUGIN_WIDGETSBOXMODEL=ON
+    -DBUILD_PLUGIN_WIDGETSBOXMODEL=ON \
+    -DBUILD_PLUGIN_WIDGETSBOXMODEL-QSS=ON
 
   make
 }
@@ -59,4 +64,4 @@ package() {
   install -Dm644 "$srcdir/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=('dbcde31843fe31d81e80519846d991106cc1edc60f7e8ff037850120143ce6d766be1aa71a2fa6e2c1003b185d425c51c735387728dd527cbb53dcb4766947ed')
+sha512sums=('3fdfe63217277b0a96aa2bd79b1151eea8c2fcf2fec8ad9ee6f7b9111e415876482344e7b5125b5a0ddbe1ce6ca5087fae7f6ec650419285e68a240a6524dfc8')
