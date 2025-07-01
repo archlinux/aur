@@ -16,7 +16,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 build() {
   cd cpptrace-${pkgver}
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -B build-${_arch} -DCPPTRACE_GET_SYMBOLS_WITH_LIBDWARF=OFF -DCPPTRACE_GET_SYMBOLS_WITH_LIBBACKTRACE=ON .
+    ${_arch}-cmake -B build-${_arch} -DCPPTRACE_GET_SYMBOLS_WITH_LIBDWARF=OFF -DCPPTRACE_GET_SYMBOLS_WITH_LIBBACKTRACE=ON -DCMAKE_UNITY_BUILD=ON .
     make -C build-${_arch}
   done
 }
