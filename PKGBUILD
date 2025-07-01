@@ -1,4 +1,4 @@
-# Maintainer: 9M2PJU <9m2pju at hamradio dot my>
+# Maintainer: 9M2PJU <9m2pju@hamradio.my>
 # Contributor: morrownr (upstream developer)
 
 pkgname=rtl8852cu-dkms-morrownr-git
@@ -12,10 +12,11 @@ depends=('dkms')
 makedepends=('git')
 provides=('rtl8852cu-dkms')
 conflicts=('rtl8852cu-dkms')
-source=("${pkgname}::git+https://github.com/9M2PJU/rtl8852cu-20240510-aur.git"
-        'rtl8852cu.install')
+source=(
+  "${pkgname}::git+${url}.git"
+  '90-rtl8852cu-morrownr.hook'
+)
 md5sums=('SKIP' 'SKIP')
-install=rtl8852cu.install
 
 pkgver() {
   date +%Y%m%d
@@ -24,10 +25,15 @@ pkgver() {
 package() {
   local moddir="${pkgdir}/usr/src/rtl8852cu-${pkgver}"
 
+  # Install DKMS source
   install -d "${moddir}"
   cp -r "${srcdir}/${pkgname}"/* "${moddir}/"
   find "${moddir}" -type d -exec chmod 755 {} +
   find "${moddir}" -type f -exec chmod 644 {} +
   chmod +x "${moddir}"/*.sh
   chmod +x "${moddir}/dkms.conf"
+
+  # Install pacman post-transaction hook
+  install -Dm644 "${srcdir}/90-rtl8852cu-morrownr.hook" \
+    "${pkgdir}/usr/share/libalpm/hooks/90-rtl8852cu-morrownr.hook"
 }

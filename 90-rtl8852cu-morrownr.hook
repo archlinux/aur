@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = rtl8852cu-dkms-morrownr-git
+
+[Action]
+Description = Showing post-install message for rtl8852cu-dkms-morrownr-git
+When = PostTransaction
+Exec = /bin/sh -c '[[ "$1" == "Install" || "$1" == "Upgrade" ]] && echo -e "\n:: The rtl8852cu kernel module (morrownr\'s git version) has been installed via DKMS.\n:: Please reboot your system to enable the driver.\n:: Thanks to morrownr.\n:: 73 from 9M2PJU, https://hamradio.my\n" || true' -- %OPERATION%
