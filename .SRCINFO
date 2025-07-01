@@ -1,6 +1,6 @@
 pkgbase = unicode-git
 	pkgdesc = Display unicode character properties on the command line
-	pkgver = 2.9.r36.gfbe96d9
+	pkgver = 2.9.r41.g7df103e
 	pkgrel = 1
 	url = https://github.com/garabik/unicode
 	arch = any

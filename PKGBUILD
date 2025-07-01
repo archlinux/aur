@@ -4,7 +4,7 @@
 
 _pkgname='unicode'
 pkgname="${_pkgname}-git"
-pkgver=2.9.r36.gfbe96d9
+pkgver=2.9.r41.g7df103e
 pkgrel=1
 pkgdesc='Display unicode character properties on the command line'
 url='https://github.com/garabik/unicode'
@@ -35,4 +35,5 @@ build() {
 package() {
   cd "${_pkgname}"
   python setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 unicode.1 -t "$pkgdir"/usr/share/man/man1/
 }
