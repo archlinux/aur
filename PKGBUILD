@@ -5,10 +5,10 @@ pkgver=1.9.0
 pkgrel=1
 pkgdesc="Checks game mod files for common mistakes and warns about them."
 arch=('x86_64')
-url="https://github.com/amtep/ck3-tiger"
+url="https://github.com/amtep/tiger"
 license=('GPL3')
 depends=()
-source=("https://github.com/amtep/ck3-tiger/releases/download/v${pkgver}/${_basename}-linux-v${pkgver}.tar.gz")
+source=("https://github.com/amtep/tiger/releases/download/v${pkgver}/${_basename}-linux-v${pkgver}.tar.gz")
 sha256sums=('2bf4b9d0c7d4461e7d13a6ffdd7e54c8040c9486562cbdc5de53462562c7dcae')
 
 package() {
