@@ -50,7 +50,7 @@ package() {
     install -Dm755 "$srcdir/g15ctrld/lcdproc.conf" "$pkgdir/etc/lcdproc.conf.pacnew"
 
 
-    install -Dm755 "$srcdir/g15ctrld/LCDd-menue" "$pkgdir/usr/bin/LCDd-menu"
+    install -Dm755 "$srcdir/g15ctrld/LCDd-menu" "$pkgdir/usr/bin/LCDd-menu"
     # Install g15ctrld
     cd "$srcdir/g15ctrld"
 
