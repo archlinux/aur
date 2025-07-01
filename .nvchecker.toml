@@ -1,0 +1,4 @@
+[alttab]
+source = 'git'
+git = 'https://github.com/sagb/alttab.git'
+prefix = 'v'

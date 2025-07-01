@@ -6,7 +6,7 @@ pkgbase = alttab
 	arch = x86_64
 	arch = i686
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = git
@@ -18,7 +18,7 @@ pkgbase = alttab
 	depends = libpng
 	depends = uthash
 	depends = libxpm
-	source = https://github.com/sagb/alttab/archive/refs/tags/v1.7.1.tar.gz
-	sha256sums = 0926b12cc0ad9f63a6242ede3b0f9cae6f30f61ccb050740df55bfb6f531f303
+	source = git+https://github.com/sagb/alttab.git#commit=739d9a7d4286fc06be1c75be8525404f6ec9d04a
+	sha256sums = f14b5b32612609e9693f76282c82f8ff4464b8ee399185677c94d34421160dd6
 
 pkgname = alttab
