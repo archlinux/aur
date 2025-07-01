@@ -2,7 +2,7 @@
 
 _name=xformers
 pkgname=python-${_name}
-pkgver=0.0.29.post3
+pkgver=0.0.31
 pkgrel=1
 pkgdesc="Transformers building blocks, supporting a composable construction"
 arch=('any')
@@ -19,11 +19,11 @@ ninja
 )
 source=(
 	"$pkgname-$pkgver.tar.gz::\
-https://files.pythonhosted.org/packages/c1/fd/e9201fbee6a1a6d7a9c67c24a256ad4c2377bc67a634f7dbeaea23bd668a/\
+https://files.pythonhosted.org/packages/33/35/91c172a57681e1c03de5ad1ca654dc87c282279b941052ed04e616ae5bcd/\
 xformers-${pkgver}.tar.gz"
 )
 
-sha256sums=('0b77c67ecc3c9fdd8a0e4399e675adf12e2ff40285e00974cca2d09108157f60')
+sha256sums=('3fccb159c6327c13fc1b08f8b963c2779ca526e2e50755dee9bcc1bac67d20c6')
 
 build() {
 	cd "${_name}-${pkgver}"
@@ -34,7 +34,7 @@ build() {
 	# from incorrectly using a parent git checkout info.
 	# https://github.com/pypa/build/issues/384#issuecomment-947675975
 	GIT_CEILING_DIRECTORIES="${PWD}/.." \
-	NVCC_CCBIN='/usr/bin/g++-13' \
+	NVCC_CCBIN='/usr/bin/g++-14' \
 	CFLAGS='-DGLOG_USE_GLOG_EXPORT' \
 	CCFLAGS='-DGLOG_USE_GLOG_EXPORT' \
 	NVCC_APPEND_FLAGS='-DGLOG_USE_GLOG_EXPORT' \
