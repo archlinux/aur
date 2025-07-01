@@ -1,7 +1,7 @@
 # Maintainer: CosmicHorror <CosmicHorrorDev@pm.me>
 
 pkgname=cargo-chef
-pkgver=0.1.71
+pkgver=0.1.72
 pkgrel=1
 pkgdesc='A cargo-subcommand to speed up Rust Docker builds using Docker layer caching'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(APACHE MIT)
 depends=(gcc-libs)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('5c5eb0d2e14fafa6544a874ad38d90c9f68c16dcccf39d06924c83c8d03458a04655db0fea6ba3722c90ec4e125565c54066791f85533b2e8a257f51e0c9b3d3')
+b2sums=('2c0b893894d2c85f03b68a9eb0ee8a9728a0f87cc20ad17752e60ef0550b4179e509954a3561d4a1fa00a67fcd940e97328bb0b5af83946268e8e0666edcf1e3')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
