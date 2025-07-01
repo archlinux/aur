@@ -3,7 +3,7 @@
 
 pkgname=openlist
 pkgver=4.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A new AList Fork to Anti Trust Crisis"
 arch=($CARCH)
 url="https://github.com/OpenListTeam/OpenList"
@@ -43,27 +43,27 @@ build() {
     export GO111MODULE=on
     export GOPROXY=https://goproxy.cn,direct
     cd "${srcdir}/$pkgname"
-    #     rm -rf public/dist && mkdir -p public/dist
-    #     echo "Downloading frontend assets..."
-    #     frontend_url=$(curl -fsSL --max-time 10 -H "Accept: application/vnd.github.v3+json" \
-    #         "https://api.github.com/repos/OpenListTeam/OpenList-Frontend/releases" |
-    #         jq -r 'map(select(.prerelease)) | first | .tag_name')
-    #     if [ "$frontend_url" != "null" ] && [ -n "$frontend_url" ]; then
-    #         asset_url=$(curl -fsSL --max-time 10 -H "Accept: application/vnd.github.v3+json" \
-    #             "https://api.github.com/repos/OpenListTeam/OpenList-Frontend/releases/tags/$frontend_url" |
-    #             jq -r '.assets[].browser_download_url' |
-    #             grep "openlist-frontend-dist" |
-    #             grep "\.tar\.gz$" | head -1)
-    #         if [ -n "$asset_url" ]; then
-    #             curl -fsSL "$asset_url" | tar zxvf - -C public/dist
-    #         else
-    #             echo "Error: Could not find frontend assets package"
-    #             exit 1
-    #         fi
-    #     else
-    #         echo "Error: Could not get frontend version info"
-    #         exit 1
-    #     fi
+    rm -rf public/dist && mkdir -p public/dist
+    echo "Downloading frontend assets..."
+    frontend_url=$(curl -fsSL --max-time 10 -H "Accept: application/vnd.github.v3+json" \
+        "https://api.github.com/repos/OpenListTeam/OpenList-Frontend/releases" |
+        jq -r 'map(select(.prerelease)) | first | .tag_name')
+    if [ "$frontend_url" != "null" ] && [ -n "$frontend_url" ]; then
+        asset_url=$(curl -fsSL --max-time 10 -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/OpenListTeam/OpenList-Frontend/releases/tags/$frontend_url" |
+            jq -r '.assets[].browser_download_url' |
+            grep "openlist-frontend-dist" |
+            grep "\.tar\.gz$" | head -1)
+        if [ -n "$asset_url" ]; then
+            curl -fsSL "$asset_url" | tar zxvf - -C public/dist
+        else
+            echo "Error: Could not find frontend assets package"
+            exit 1
+        fi
+    else
+        echo "Error: Could not get frontend version info"
+        exit 1
+    fi
     echo "Building OpenList..."
     go build -o ../openlist \
         -ldflags="--extldflags '-static -fpic' -w -s \

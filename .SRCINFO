@@ -1,7 +1,7 @@
 pkgbase = openlist
 	pkgdesc = A new AList Fork to Anti Trust Crisis
 	pkgver = 4.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenListTeam/OpenList
 	install = openlist.install
 	arch = x86_64
