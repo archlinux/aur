@@ -1,5 +1,5 @@
 pkgbase = scratch3-bin
-	pkgdesc = Scratch 3.0 as a self-contained desktop application
+	pkgdesc = Scratch 3.0 as a self-contained electron desktop application
 	pkgver = 3.29.1
 	pkgrel = 2
 	url = https://scratch.mit.edu
