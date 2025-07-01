@@ -12,10 +12,8 @@ makedepends=("go>=1.24")
 
 prepare() {
     mkdir -p "$srcdir/$pkgname-build"
-    cp -r "$startdir"/* "$srcdir/$pkgname-build/"
+    cp -r "$startdir/cmd" "$startdir/config" "$startdir/logs" "$startdir/main.go" "$startdir/go.mod" "$startdir/go.sum" "$srcdir/$pkgname-build/"
     cd "$srcdir/$pkgname-build"
-    go mod init github.com/Flack74/pom
-    go mod tidy
 }
 
 build() {
@@ -32,6 +30,6 @@ build() {
 package() {
     cd "$srcdir/$pkgname-build"
     install -Dm755 pom "$pkgdir/usr/bin/pom"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 packaging/man/pom.1 "$pkgdir/usr/share/man/man1/pom.1"
+    install -Dm644 "$startdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$startdir/packaging/man/pom.1" "$pkgdir/usr/share/man/man1/pom.1"
 }
