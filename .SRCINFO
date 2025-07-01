@@ -1,7 +1,7 @@
 pkgbase = melodfy-bin
 	pkgdesc = Melodfy✨: AI-Powered Piano Audio to MIDI Converter 🎶
-	pkgver = v1.0.0+24
-	pkgrel = 2
+	pkgver = v1.0.0+29
+	pkgrel = 1
 	url = https://github.com/HemantKArya/Melodfy
 	install = melodfy.install
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = melodfy-bin
 	depends = wine
 	options = !strip
 	source = melodfy
-	source = melodfy-bin-v1.0.0+24.zip::https://github.com/HemantKArya/Melodfy/releases/download/v1.0.0+24/Melodfy_Windows_Build_24.zip
+	source = melodfy-bin-v1.0.0+29.zip::https://github.com/HemantKArya/Melodfy/releases/download/v1.0.0+29/Melodfy_Windows_Build_29.zip
 	source = melodfy.desktop
 	source = melodfy.png
 	sha256sums = e9c53373e2bc70df9a75cc2c051268f791b564a29b52c0c7d2953abaed0b3a55
-	sha256sums = 778d871abdb9578320fbf2df0974033b1a3aa2ae97d603cb797129efc304c805
+	sha256sums = a33ebd4dbf34b105f7f22a60b2340e4e0a5391d1ed108f7a0da50117c604df29
 	sha256sums = 973d3628e0c42263d90a9eb9f1c056d0a13919fc3b6493f063f41c4716ad6b00
 	sha256sums = 80a180b3b4a8545f9187795f60ec2c0c7c14fac68187aacb15a5c7dffd67966d
 

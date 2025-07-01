@@ -1,26 +1,25 @@
 # Maintainer: Uģis Ģērmanis <ugis@germanis.lv>
 _name=melodfy
 pkgname=${_name}-bin
-_year=24
-pkgver=v1.0.0+${_year}
-pkgrel=2
+_build=29
+pkgver=v1.0.0+${_build}
+pkgrel=1
 pkgdesc="Melodfy✨: AI-Powered Piano Audio to MIDI Converter 🎶"
 arch=('x86_64')
 url="https://github.com/HemantKArya/Melodfy"
 license=('MIT')
 depends=(wine)
 source=("${_name}"
-        "${pkgname}-${pkgver}.zip::https://github.com/HemantKArya/${_name^}/releases/download/${pkgver}/${_name^}_Windows_Build_${_year}.zip"
+        "${pkgname}-${pkgver}.zip::https://github.com/HemantKArya/${_name^}/releases/download/${pkgver}/${_name^}_Windows_Build_${_build}.zip"
         "${_name}.desktop"
         "${_name}.png"
         )
 options=(!strip)
 install="${_name}.install"
 sha256sums=('e9c53373e2bc70df9a75cc2c051268f791b564a29b52c0c7d2953abaed0b3a55'
-            '778d871abdb9578320fbf2df0974033b1a3aa2ae97d603cb797129efc304c805'
+            'a33ebd4dbf34b105f7f22a60b2340e4e0a5391d1ed108f7a0da50117c604df29'
             '973d3628e0c42263d90a9eb9f1c056d0a13919fc3b6493f063f41c4716ad6b00'
             '80a180b3b4a8545f9187795f60ec2c0c7c14fac68187aacb15a5c7dffd67966d')
-
 
 package() {
   install -d -m755 "${pkgdir}/usr/share/${_name}"
