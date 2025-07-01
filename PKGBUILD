@@ -1,11 +1,11 @@
 pkgname=brooklynn-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Brooklynn - A minimal tiling window manager"
 arch=('x86_64')
 url="https://github.com/FedGuy699/Brooklynn"
 license=('custom')
-depends=('xorg-server' 'libx11' 'libxext' 'libxrandr')
+depends=('xorg-server' 'libx11' 'libxext' 'libxrandr' 'freetype2')
 makedepends=('git' 'gcc')
 provides=('brooklynn')
 conflicts=('brooklynn')
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/Brooklynn"
-  g++ -std=c++17 -Wall -Wextra -O2 brooklynn.cpp -o brooklynn -lX11 -lXrandr
+  g++ -o brooklynn brooklynn.cpp config.cpp launch.cpp monitor.cpp window.cpp lock.cpp -lX11 -lXrandr -lXft -I/usr/include/freetype2 -lpam
 }
 
 package() {
