@@ -1,7 +1,7 @@
 pkgbase = qt5-quick3d
 	pkgdesc = Qt module and API for defining 3D content in Qt Quick
 	pkgver = 5.15.17+kde+r1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt5
