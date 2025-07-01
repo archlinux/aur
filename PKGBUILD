@@ -3,8 +3,8 @@
 
 pkgname='treegrep-bin'
 _pkgname="${pkgname/-bin}"
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Frontend for ripgrep that presents results in a tree format (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/4imothy/treegrep'
@@ -25,6 +25,14 @@ source_x86_64=(
   "$_license" "$_readme"
 )
 
+build() {
+  cd "$_pkgname-$CARCH-$_linux"
+
+  for _shell in bash fish zsh; do
+    ./tgrep --completions "$_shell" > "_completions.$_shell"
+  done
+}
+
 package() {
   install -vDm0644 "README-$pkgver.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -vDm0644 "LICENSE-$pkgver"   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -34,26 +42,22 @@ package() {
   install -vDm0755 -t "$pkgdir/usr/bin/" tgrep
 
   # Bash
-  install -vDm0644 completions/tgrep.bash \
+  install -vDm0644 _completions.bash \
     "$pkgdir/usr/share/bash-completion/completions/tgrep"
   # Fish
-  install -vDm0644 completions/tgrep.fish \
+  install -vDm0644 _completions.fish \
     "$pkgdir/usr/share/fish/vendor_completions.d/tgrep.fish"
   # Zsh
-  install -vDm0644 completions/_tgrep \
+  install -vDm0644 _completions.zsh  \
     "$pkgdir/usr/share/zsh/site-functions/_tgrep"
-  # Elvish
-  # FIXME: Does anyone know the proper location for Elvish completions?
-  install -vDm0644 completions/tgrep.elv \
-    "$pkgdir/usr/share/elvish/lib/completions-tgrep.elv"
 }
 
 sha256sums_aarch64=(
-  '0b44847b274eac3a6551d3853f1034b6ce51c794f137ade45dd1b6bf54febd09'
+  '369b30f0cb3c417ab17d30fec7bddd30374270ad5e9a896f30f3817bc9817a91'
   'SKIP' 'SKIP'  # Skip to my Lou!
 )
 sha256sums_x86_64=(
-  '664178a26003d7ffcdff42807faf6d55e62162f5b3a4ab233c82614931ca4c78'
+  '744af404a5d40486995995bc6b4753ee70e686c1cea354a047b0458dc2c8f071'
   'SKIP' 'SKIP'  # Skip to my Lou!
 )
 
