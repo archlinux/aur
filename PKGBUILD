@@ -3,13 +3,12 @@
 
 pkgname=newsraft
 pkgver=0.31
-pkgrel=1
-pkgdesc='Feed reader with ncurses user interface'
+pkgrel=2
+pkgdesc='Feed reader with text-based user interface'
 url='https://codeberg.org/newsraft/newsraft'
 arch=('x86_64')
 license=('ISC')
 depends=(
-	'ncurses'
 	'sqlite'
 	'curl'
 	'expat'
