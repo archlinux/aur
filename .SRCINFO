@@ -1,0 +1,18 @@
+pkgbase = v4l2loopback-obs-dkms
+	pkgdesc = v4l2-loopback device
+	pkgver = 0.13.3.r0.g488e918
+	pkgrel = 1
+	url = https://github.com/ticpu/v4l2loopback-obs.git
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = help2man
+	depends = dkms
+	provides = v4l2loopback-dkms
+	conflicts = v4l2loopback-dkms
+	conflicts = v4l2loopback-obs-dkms-git
+	source = git+https://github.com/ticpu/v4l2loopback-obs.git?signed#tag=v0.13.3.r0.g488e918
+	validpgpkeys = E5998E49DC9E1DCFDB9B46EC77EBA10790CFFCCD
+	sha512sums = SKIP
+
+pkgname = v4l2loopback-obs-dkms
