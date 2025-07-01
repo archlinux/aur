@@ -8,8 +8,7 @@ url="https://github.com/khairul169/garage-webui"
 arch=("any")
 license=('MIT')
 provides=('garage-webui')
-depends=('garage-bin')
-install=garage-webui.install
+depends=('garage')
 arches=('x86_64' 'i686' 'aarch64' 'armv7h' )
 
 source_x86_64=("$pkgname::https://github.com/khairul169/garage-webui/releases/download/1.0.9/garage-webui-v1.0.9-linux-amd64")

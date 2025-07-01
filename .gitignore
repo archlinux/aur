@@ -1,0 +1,6 @@
+.idea
+*
+!.SRCINFO
+!.gitignore
+!PKGBUILD
+!garage-webui.service
