@@ -7,7 +7,7 @@ index d0b6d74..6c988df 100644
  NotifyAccess=all
  LimitNOFILE=8192
 -ExecStart=/usr/bin/salt-api
-+ExecStart=/opt/salt/bin/salt-api
++ExecStart=/opt/salt/salt-api
  TimeoutStopSec=3
  
  [Install]
@@ -20,7 +20,7 @@ index 377c87a..f9978bd 100644
  Type=notify
  NotifyAccess=all
 -ExecStart=/usr/bin/salt-master
-+ExecStart=/opt/salt/bin/salt-master
++ExecStart=/opt/salt/salt-master
  
  [Install]
  WantedBy=multi-user.target
@@ -33,7 +33,7 @@ index 69aff18..047a508 100644
  NotifyAccess=all
  LimitNOFILE=8192
 -ExecStart=/usr/bin/salt-minion
-+ExecStart=/opt/salt/bin/salt-minion
++ExecStart=/opt/salt/salt-minion
  
  [Install]
  WantedBy=multi-user.target
@@ -46,7 +46,7 @@ index 1eebc88..8a07384 100644
  
  [Service]
 -ExecStart=/usr/bin/salt-proxy --proxyid=%i
-+ExecStart=/opt/salt/bin/salt-proxy --proxyid=%i
++ExecStart=/opt/salt/salt-proxy --proxyid=%i
  Type=simple
  Restart=on-failure
  RestartSec=5s
@@ -59,7 +59,7 @@ index ed403d5..a59d3ac 100644
  NotifyAccess=all
  LimitNOFILE=8192
 -ExecStart=/usr/bin/salt-syndic
-+ExecStart=/opt/salt/bin/salt-syndic
++ExecStart=/opt/salt/salt-syndic
  
  [Install]
  WantedBy=multi-user.target

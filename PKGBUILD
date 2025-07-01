@@ -6,27 +6,15 @@
 #  - Set env var SALT_ADDITIONAL_PIP_PACKAGES for additional onedir pip packages.
 #    Example: SALT_ADDITIONAL_PIP_PACKAGES='gitpython pynacl' makepkg
 #    The additional packages are listed in the package description.
-#  - To build the onedir environment with dynamic requirements (effectively meaning latest
-#    compatible version of dependencies), set the env var SALT_DYNAMIC_REQUIREMENTS=1.
-#    By default, the package is built using the static requirements file shipped by upstream.
-#    Static requirements have been the default since PKGBUILD 3007.1-5.
 #  - makepkg will complain about packaging issues because the .pyc files (python bytecode)
 #    contain the absolute path of the resource during the build, meaning $srcdir references
 #    are found in the final build. This does not appear to cause any real issues.
 #
-# Security notice: The package build process fetches resources not listed explicitly.
-#  - Python dependencies included in the final package are fetched from pypi.
-#  - The relenv distribution (binary) is fetched from the official saltstack repos.
-#    https://repo.saltproject.io/relenv/0.16.0/build/3.10.14-x86_64-linux-gnu.tar.xz
-#    This download is not verified!
-#    Unfortunately, it appears relenv cannot be forced to use a manually downloaded
-#    and validated distribution.
-#
 
 pkgname=salt-onedir
 provides=('salt')
-pkgver=3007.1
-pkgrel=5
+pkgver=3007.5
+pkgrel=1
 pkgdesc="Central system and configuration manager (onedir installation +[${SALT_ADDITIONAL_PIP_PACKAGES}])"
 arch=('x86_64' 'aarch64')
 url='http://saltstack.org/'
@@ -34,91 +22,63 @@ license=('Apache-2.0')
 replaces=('salt-zmq' 'salt-raet')
 conflicts=('salt-zmq' 'salt-raet' 'salt')
 depends=()
-makedepends=('python-pip' 'python-virtualenv' 'patchelf' 'rsync')
+makedepends=('rsync')
 optdepends=('dmidecode: decode SMBIOS/DMI tables')
 backup=('etc/logrotate.d/salt'
         'etc/salt/master'
         'etc/salt/minion')
-source=("https://github.com/saltstack/salt/releases/download/v${pkgver}/salt-${pkgver}.tar.gz"
+# The source tarball is downloaded because we need various files from pkg/common that are not included in the onedir tarball
+source=("https://packages.broadcom.com/artifactory/saltproject-generic/onedir/${pkgver}/salt-${pkgver}-onedir-linux-x86_64.tar.xz"
+        "https://github.com/saltstack/salt/releases/download/v${pkgver}/salt-${pkgver}.tar.gz"
         salt.logrotate
         0000-services.patch)
-sha256sums=('b933ac4cb3e4b1118b46dada55c9cc6bdc6f0f94b4c92877aec44b25c6a28c9a'
+sha256sums=('d20759d2970ec8daeff7c9a5866cf874a08fdd65190f7c9b26d8e942204f7e8a'
+            '7f572e039059f1a597ba10a9bdc81dcc2375a49c49106581988f506039b3dda5'
             'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
-            '7619465e571469e5a08cd507d3d49e0e003256d79a1ada61971edecad0149ea8')
+            '6eb7d8840c40da7070167d3c742e7337c45f80d639fb7ef72f196fcaa2843469')
+
 
 prepare() {
-  cd "${srcdir}/salt-${pkgver}"
+  # Extracted salt source tarball
+  saltsrc="${srcdir}/salt-${pkgver}"
+  cd "${saltsrc}"
+
   # patch services to run /opt/salt/bin/* binaries directly
   # not strictly required as we symlink into /usr/bin
   patch -Np1 -i ../0000-services.patch
 }
 
 build() {
-  # Directory in which the onedir package will be build
-  onedir="${srcdir}/salt-onedir"
-  # Directory in which the venv for relenv itself will live
-  venvdir="${srcdir}/build-venv"
-  # makepkg does not seem to clean those, hence repeated builds fail...
-  [[ -d ${onedir} ]] && rm -rf "${onedir}"
-  [[ -d ${venvdir} ]] && rm -rf "${venvdir}"
-  # virutal env in which we will install relenv
-  # this virutalenv is only required for the build process
-  # not included in the package!
-  virtualenv -p python3 "${venvdir}"
-  source "${venvdir}"/bin/activate
-  pip install relenv==0.18.0
-  # fetch the relenv distribution
-  # this unfortunately writes to ${HOME}/.local/relenv/build
-  relenv fetch --python=3.10.15
-  # create the relenv environment into which we will install Salt
-  relenv create "${onedir}"
-  deactivate
-
-  # Upgrade the pip version in the relenv environment
-  # For some reason, the default relenv pip version (23.0.1) fails
-  # to install Salt's dependencies into the package.
-  "${onedir}"/bin/pip3 install --upgrade pip==24.3.1
-
-  # Install salt into the relenv environment
-  # Note: This must be an absolute path, otherwise pip interprets it as pkg name
-  if [[ -z $SALT_DYNAMIC_REQUIREMENTS ]]; then
-    USE_STATIC_REQUIREMENTS=1
-  fi
-  USE_STATIC_REQUIREMENTS=${USE_STATIC_REQUIREMENTS} \
-    "${onedir}"/bin/pip3 install "${srcdir}/salt-${pkgver}"
+  # Extracted salt-onedir tarball
+  onedir="${srcdir}/salt"
 
   # Add additional python deps for Salt
   if [[ -n ${SALT_ADDITIONAL_PIP_PACKAGES} ]]; then
     "${onedir}"/bin/pip3 install ${SALT_ADDITIONAL_PIP_PACKAGES}
   fi
-
-  # Patch the relenv binaries because they use a relative path
-  # The original works but looks terrible in the process tree
-  cd "${onedir}/bin"
-  while IFS= read -r -d '' executable; do
-    if [[ $(file -b --mime-type "${executable}") == 'text/x-shellscript' ]]; then
-      echo "Patching '${executable}'"
-      sed  -i 's#^"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"#"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"#' \
-              "${executable}"
-    fi
-  done < <(find . -type f -executable -print0)
 }
 
 package() {
+  # Extracted salt-onedir tarball
+  onedir="${srcdir}/salt"
+  # Extracted salt source tarball
+  saltsrc="${srcdir}/salt-${pkgver}"
+
   # Copy over our onedir package
   mkdir "${pkgdir}"/opt
-  rsync -a "${srcdir}"/salt-onedir/ "${pkgdir}"/opt/salt
+  rsync -a "${onedir}/" "${pkgdir}"/opt/salt
 
   # Create relative symlinks in /usr/bin for all relevant binaries
   # These will link into the /opt/salt/bin directory
   mkdir "${pkgdir}"/usr/bin -p
-  for bin in "${pkgdir}"/opt/salt/bin/{salt,spm}*; do
+  for bin in "${pkgdir}"/opt/salt/{salt,spm}*; do
     ln -sr "${bin}" "${pkgdir}"/usr/bin
   done
 
   install -Dm644 salt.logrotate "$pkgdir"/etc/logrotate.d/salt
 
-  cd salt-$pkgver
+  # Install various files from the source tarball into the package
+  cd "${saltsrc}"
 
   # default config
   install -v -Dm644 conf/master "$pkgdir/etc/salt/master"
@@ -130,7 +90,9 @@ package() {
   done
 
   # completions
-  install -v -Dm644 pkg/common/salt.bash "$pkgdir/usr/share/bash-completion/completions/salt"
+  # For some reason there is no more pkg/common/salt.bash
+  # The rpm one has the same content.
+  install -v -Dm644 pkg/rpm/salt.bash "$pkgdir/usr/share/bash-completion/completions/salt"
   install -v -Dm644 pkg/common/salt.zsh "$pkgdir/usr/share/zsh/site-functions/_salt"
   install -v -Dm644 -t "$pkgdir/usr/share/fish/vendor_completions.d" pkg/common/fish-completions/*
 }
