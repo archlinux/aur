@@ -1,18 +1,24 @@
 pkgbase = nekoray-bin
 	pkgdesc = Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
-	pkgver = 4.3.5
-	pkgrel = 1
-	url = https://github.com/Mahdi-zarei/nekoray/
-	install = nekoray-bin.install
+	pkgver = 4.0.1
+	pkgrel = 3
+	url = https://github.com/MatsuriDayo/nekoray
 	arch = x86_64
 	license = GPL 3.0
-	depends = desktop-file-utils
+	depends = qt5-base>=5.15
+	depends = qt5-svg
+	depends = qt5-x11extras
+	depends = sing-geosite-db
+	depends = sing-geoip-db
 	provides = nekobox
 	conflicts = nekoray-git
 	conflicts = nekoray
-	source = nekoray-bin-4.3.5.deb::https://github.com/Mahdi-zarei/nekoray//releases/download/4.3.5/nekoray-4.3.5-2025-05-16-debian-x64.deb
+	conflicts = nekoray-mahdi-zarei-bin
+	source = nekoray-bin-4.0.1.zip::https://github.com/MatsuriDayo/nekoray/releases/download/4.0.1/nekoray-4.0.1-2024-12-12-linux64.zip
+	source = nekoray.desktop
 	source = nekoray.sh
-	sha256sums = 5683ea7e81fb0e4a3c2470775eb14e59bb991ea44d16988a8fa5213f95c977a3
-	sha256sums = dbff73d83aebc9ce438b172a66bb787392a27f092b444ccd99cec18e1e91c914
+	sha256sums = 703a0ee452f8ea031bb54144c9460af9afeb84110da34420c338f134346e7ca5
+	sha256sums = 1d2fb122bc4a2ce526b923e25731071e6e3c5016f0796ea08fc2ac13cd0c1356
+	sha256sums = afeddf3fd70fbfb3af5d80aab86279daadca14eaa3413cd8fd34796eace08367
 
 pkgname = nekoray-bin
