@@ -1,4 +1,5 @@
-# Maintainer: Kyle Guarco <kyleguarco55@gmail.com
+# Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
+# Contributor: Kyle Guarco <kyleguarco55@gmail.com
 pkgname="berry"
 pkgver=0.1.13
 pkgrel=1
