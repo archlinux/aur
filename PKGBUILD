@@ -2,11 +2,11 @@
 
 pkgname='cosmic-ext-extra-sessions-niri-git'
 pkgver=r3.66e0657
-pkgrel=1
+pkgrel=2
 pkgdesc='Alternative session for running the COSMIC desktop with Niri as the compositor'
 arch=('x86_64')
 url='https://github.com/Drakulix/cosmic-ext-extra-sessions'
-depends=('cosmic-session')
+depends=('cosmic-session' 'niri')
 makedepends=('just')
 source=("git+$url.git")
 sha256sums=('SKIP')
@@ -30,5 +30,5 @@ build() {
 
 package() {
     cd cosmic-ext-extra-sessions
-    just install-niri $pkgdir
+    just install-niri $pkgdir '/usr'
 }
