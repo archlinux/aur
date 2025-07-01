@@ -1,13 +1,13 @@
 pkgbase = trmt
 	pkgdesc = 2D Turing machine (turmite) for your terminal
-	pkgver = 0.4.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/cenonym/trmt
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
 	depends = gcc-libs
-	source = trmt-0.4.1.tar.gz::https://github.com/cenonym/trmt/archive/v0.4.1.tar.gz
-	sha256sums = 72176b680329b27adcbfec413a0edb8819fdff48bd2111df3bd9bb9c769fa637
+	source = trmt-0.6.0.tar.gz::https://github.com/cenonym/trmt/archive/v0.6.0.tar.gz
+	sha256sums = 572b22086a22f991b9cb696fb54a3000672a05a9dbdaabfab91cba1b03337d59
 
 pkgname = trmt
