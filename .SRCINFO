@@ -9,7 +9,7 @@ pkgbase = trackpointsound
 	makedepends = base-devel
 	makedepends = systemd
 	makedepends = git
-	depends = sfml
+	depends = sfml<3
 	source = https://github.com/WindowsKonon1337/TrackPointSound.git
 	sha256sums = SKIP
 
