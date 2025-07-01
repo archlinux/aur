@@ -1,25 +1,24 @@
-# Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Tomislav Ivek <tomislav.ivek@gmail.com>
 
-pkgname=('python-node-semver')
-pkgver=0.8.1
-pkgrel=2
+pkgname='python-node-semver'
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="python version of node-semver"
 arch=('any')
-url="https://github.com/podhmo/python-node-semver"
+url="https://github.com/podhmo/${pkgname}"
 license=('MIT')
 depends=('python')
-conflicts=('python-semver')
-makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/podhmo/python-node-semver/archive/$pkgver.tar.gz")
-sha512sums=('5a988755ed97aa1ba9b97595738200821787c2cc71f40198cffdc22c4b823fe132668946ecc3f0fb66d6c33fe0ec7bdcfa9c9794e3d382b38f8551d15d4af5e6')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/podhmo/${pkgname}/archive/$pkgver.tar.gz")
+sha512sums=('1ac32e271cf2b574ffbdf3c37aa5a13493ab03dbaa539b50614e9f91adea1078e0bee0451ae400b456e83de0493942ea209d7dd9aec4ab90a3e9753ba1c80082')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --optimize=1 --root=${pkgdir}
-  install -D -m644 "$srcdir/$pkgname-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  python -m installer --destdir="$pkgdir" 'dist/'*.whl
 }
