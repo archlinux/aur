@@ -3,13 +3,13 @@
 
 pkgname=qt5-webkit-git
 pkgver=5.212.0.alpha4.r188.g756e1c8f23dc
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url='https://github.com/qtwebkit/qtwebkit'
 license=(LGPL-2.1-only)
 pkgdesc='Classes for a WebKit2 based implementation and a new QML API'
 depends=(qt5-location qt5-sensors qt5-webchannel libwebp libxcomposite gst-plugins-base hyphen woff2
-         libicuuc.so libicui18n.so
+         libicuuc.so libicui18n.so libxml2.so
 
          # namcap implicit depends
          glibc gcc-libs glib2 zlib libx11 sqlite gst-plugins-base-libs libjpeg-turbo icu libpng gstreamer libxml2
