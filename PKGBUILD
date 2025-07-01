@@ -1,4 +1,4 @@
-q# Maintainer: 9M2PJU <9m2pju at hamradio dot my>
+# Maintainer: 9M2PJU <9m2pju at hamradio dot my>
 
 pkgname=rtl8852cu-dkms-morrownr-git
 _pkgbase=rtl8852cu
