@@ -1,13 +1,13 @@
 pkgbase = pom
-pkgdesc = A CLI Pomodoro timer application
-pkgver = 1.0.2
-pkgrel = 4
-url = https://github.com/Flack74/pom
-arch = x86_64
-license = MIT
-makedepends = go>=1.24
-depends = pulseaudio
-source = pom-1.0.2.tar.gz::https://github.com/Flack74/pom/archive/v1.0.2.tar.gz
-sha256sums = SKIP
+	pkgdesc = A CLI Pomodoro timer application
+	pkgver = 1.0.2
+	pkgrel = 4
+	url = https://github.com/Flack74/pom
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.24
+	depends = pulseaudio
+	source = pom-1.0.2.tar.gz::https://github.com/Flack74/pom/archive/v1.0.2.tar.gz
+	sha256sums = SKIP
 
 pkgname = pom
