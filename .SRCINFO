@@ -1,0 +1,15 @@
+pkgbase = nvcards
+	pkgdesc = Card-based note-taking application with local database file
+	pkgver = 0.29.0
+	pkgrel = 1
+	url = https://gitlab.com/nacl42/nvcards
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	options = !lto
+	options = !debug
+	source = nvcards-0.29.0.tar.bz2::https://gitlab.com/nacl42/nvcards/-/archive/v0.29.0/nvcards-v0.29.0.tar.bz2
+	sha256sums = SKIP
+
+pkgname = nvcards
