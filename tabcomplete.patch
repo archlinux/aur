@@ -1,0 +1,11 @@
+--- histedit.c.orig	2020-06-03 04:19:23.000000000 +0300
++++ histedit.c	2025-07-01 14:25:59.202931897 +0300
+@@ -132,6 +132,8 @@
+ 				el_set(el, EL_EDITOR, "vi");
+ 			else if (Eflag)
+ 				el_set(el, EL_EDITOR, "emacs");
++			el_set(el, EL_ADDFN, "ed-complete", "Complete argument", _el_fn_complete);
++			el_set(el, EL_BIND, "^I", "ed-complete", NULL);
+ 			el_source(el, NULL);
+ 		}
+ 	} else {

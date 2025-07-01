@@ -18,6 +18,10 @@ sha512sums=('13bd262be0089260cbd13530a9cf34690c0abeb2f1920eb5e61be7951b716f9f335
 build(){
 	cd "dash-$pkgver"
 	./configure --with-libedit
+	(
+		cd src
+		patch <../../../tabcomplete.patch
+	)
 	make
 }
 
