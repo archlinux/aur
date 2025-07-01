@@ -3,7 +3,7 @@
 pkgname=garage-webui-bin
 _pkgname=garage-webui
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Garage去中心化的存储服务的前端UI界面。"
 url="https://github.com/khairul169/garage-webui"
 arch=("any")
@@ -28,7 +28,7 @@ sha256sums=('fa8dc29dfe6d42760d693436771146dab8cb1a98d17222ad6778c8d5ba1f3def')
 
 package() {
     # 安装二进制文件
-    install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/local/bin/${_pkgname}"
+    install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     # 安装服务文件
     install -Dm644 "${srcdir}/${_pkgname}.service" "${pkgdir}/etc/systemd/system/${_pkgname}.service"
 }
