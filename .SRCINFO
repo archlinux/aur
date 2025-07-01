@@ -1,6 +1,6 @@
 pkgbase = r-topgo
 	pkgdesc = Enrichment Analysis for Gene Ontology
-	pkgver = 2.59.0
+	pkgver = 2.60.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/topGO
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-topgo
 	optdepends = r-multtest
 	optdepends = r-rgraphviz
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/topGO_2.59.0.tar.gz
-	sha256sums = b8ffeebd5f94551507fa2ba6b226f83c828bb7b2045adc84d107e82f27d6b008
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/topGO_2.60.1.tar.gz
+	sha256sums = 0e056ac041a321f91c9857f04ec2db390d35eebf05bfaeb0db17b943fe812e15
 
 pkgname = r-topgo

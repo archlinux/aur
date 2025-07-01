@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=topGO
-_pkgver=2.59.0
+_pkgver=2.60.1
 pkgname=r-${_pkgname,,}
-pkgver=2.59.0
+pkgver=2.60.1
 pkgrel=1
 pkgdesc='Enrichment Analysis for Gene Ontology'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b8ffeebd5f94551507fa2ba6b226f83c828bb7b2045adc84d107e82f27d6b008')
+sha256sums=('0e056ac041a321f91c9857f04ec2db390d35eebf05bfaeb0db17b943fe812e15')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
