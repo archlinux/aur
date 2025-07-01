@@ -1,9 +1,9 @@
 # Maintainer: Flack74 <puspendrachawlax@gmail.com>
 
 pkgname=pom
-pkgver=2.1.7
+pkgver=2.1.8
 pkgrel=1
-pkgdesc="Advanced Pomodoro timer with embedded Web UI, AI insights, multi-profiles, and plugin system. Zero dependencies."
+pkgdesc="Advanced Pomodoro timer with daemon web UI, CLI controls via browser, AI insights, and plugin system. Zero dependencies."
 arch=("x86_64")
 url="https://github.com/Flack74/pom"
 license=("MIT")
