@@ -1,7 +1,7 @@
 pkgbase = tari-universe-appimage
 	pkgdesc = Tari desktop wallet
 	pkgver = 1.2.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tari.com/
 	arch = x86_64
 	depends = fuse2

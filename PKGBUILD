@@ -2,7 +2,7 @@
 
 pkgname=tari-universe-appimage
 pkgver=1.2.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Tari desktop wallet"
 provides=('tari_universe')
 conflicts=('tari_universe')
@@ -23,7 +23,7 @@ prepare() {
   rm -rf squashfs-root
   chmod +x ${_filename}
   ./${_filename} --appimage-extract
-  sed -i -e "s|Exec=.\+|Exec=env APPIMAGELAUNCHER_DISABLE=1 DESKTOPINTEGRATION=0 LD_PRELOAD=/usr/lib/libwayland-client.so.0 /usr/bin/tari_universe.AppImage %U|" squashfs-root/${_desktop_name}
+  sed -i -e "s|Exec=.\+|Exec=sh -c 'env APPIMAGELAUNCHER_DISABLE=1 DESKTOPINTEGRATION=0 LD_PRELOAD=\"/usr/lib/libwayland-client.so.0 \$HOME/.cache/com.tari.universe/binaries/tor-binaries/mainnet/14.5.1/tor/libevent-2.1.so.7\" /usr/bin/tari_universe.AppImage %U'|" squashfs-root/${_desktop_name}
   sed -i -e "s|Name=.\+|Name=Tari Universe|" squashfs-root/${_desktop_name}
 }
 
