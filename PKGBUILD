@@ -1,14 +1,14 @@
 # Maintainer: Angelo Theodorou <encelo at gmail dot com>
 
 pkgname=tracy-git
-pkgver=v0.11.0.r43.g60042d19
+pkgver=v0.12.2.r4.g7388a476
 pkgrel=1
 pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
 url="https://github.com/wolfpld/tracy"
 license=('BSD-3-Clause')
-depends=('wayland' 'libglvnd' 'libxkbcommon' 'freetype2' 'dbus' 'hicolor-icon-theme' 'intel-tbb' 'capstone')
-makedepends=('pkgconf' 'git' 'cmake' 'wayland-protocols')
+depends=('wayland' 'libglvnd' 'libxkbcommon' 'freetype2' 'dbus' 'hicolor-icon-theme')
+makedepends=('pkgconf' 'git' 'cmake')
 optdepends=('xdg-desktop-portal: file dialogs')
 options=('!lto')
 provides=('tracy')
@@ -29,15 +29,15 @@ build() {
 
   cmake -S . -B build -D CMAKE_BUILD_TYPE=Release
   make -C build
-  cmake -S capture -B capture/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
+  cmake -S capture -B capture/build -D CMAKE_BUILD_TYPE=Release
   make -C capture/build
-  cmake -S csvexport -B csvexport/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
+  cmake -S csvexport -B csvexport/build -D CMAKE_BUILD_TYPE=Release
   make -C csvexport/build
-  cmake -S import -B import/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
+  cmake -S import -B import/build -D CMAKE_BUILD_TYPE=Release
   make -C import/build
-  cmake -S profiler -B profiler/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
+  cmake -S profiler -B profiler/build -D CMAKE_BUILD_TYPE=Release
   make -C profiler/build
-  cmake -S update -B update/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
+  cmake -S update -B update/build -D CMAKE_BUILD_TYPE=Release
   make -C update/build
 }
 
