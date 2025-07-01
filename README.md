@@ -39,9 +39,10 @@ pom start                    # Basic session
 pom profile use work         # Use work profile
 pom insights suggest         # Get AI recommendations
 
-# Web interface (daemon mode recommended)
-pom web -d                   # Background daemon mode
-pom web -d -p 3000          # Custom port
+# Web interface (true daemon recommended)
+nohup pom web &              # True background daemon
+nohup pom web -p 3000 &     # Custom port
+pom web -d                  # Shows daemon instructions
 pom web                     # Foreground mode
 
 # Access: http://localhost:8080
