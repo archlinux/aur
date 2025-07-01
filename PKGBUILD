@@ -2,8 +2,8 @@
 folder_name="lucidglyph"
 
 pkgname=("lucidglyph")
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 arch=('any')
 description='Carefully tuned adjustments designed to improve font rendering on Linux systems packaged for Arch Linux. It is patched to install the package globally and deal with an individual file at `/etc/environment.d` file, unlike the original that manually patches `/etc/environment` file directly.'
 source=(
