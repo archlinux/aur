@@ -1,7 +1,7 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=pragtical
-pkgver=3.5.2
+pkgver=3.6.0
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -9,15 +9,15 @@ url="https://github.com/pragtical/pragtical"
 license=('MIT')
 depends=(
   # Editor Dependencies
-  'luajit' 'sdl2' 'freetype2' 'pcre2' 'uchardet' 'hicolor-icon-theme'
+  'luajit' 'sdl2' 'libiconv' 'freetype2' 'pcre2' 'uchardet' 'hicolor-icon-theme'
   # Plugin Manager Dependencies
-  'lua' 'zlib' 'mbedtls2' 'libgit2' 'libzip'
+  'lua' 'zlib' 'mbedtls' 'libgit2' 'libzip' 'xz'
 )
-makedepends=('meson>=0.58')
+makedepends=('meson>=0.63')
 source=(
   "https://github.com/pragtical/pragtical/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('95050aaa879f05c5ca765d53cfa547b1e1967a60e9a10e8c92bb63d473f51d48')
+sha256sums=('b68c7069dcf7ef0e36d6473a106568f153b727de15a96ddbe73e305cecdccc86')
 
 build() {
   cd "pragtical-$pkgver"
