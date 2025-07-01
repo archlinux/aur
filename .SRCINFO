@@ -1,0 +1,17 @@
+pkgbase = fzur-git
+	pkgdesc = An fzf AUR helper
+	pkgver = r41.1b8d24e
+	pkgrel = 1
+	url = https://github.com/Samq64/fzur
+	arch = any
+	license = MIT
+	depends = curl
+	depends = fzf
+	depends = git
+	depends = jq
+	provides = fzur-git
+	conflicts = fzur-git
+	source = git+https://github.com/Samq64/fzur.git
+	sha256sums = SKIP
+
+pkgname = fzur-git
