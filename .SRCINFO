@@ -1,7 +1,7 @@
 pkgbase = xlibre-video-ati
 	pkgdesc = XLibre ati video driver
 	pkgver = 22.0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/X11Libre/xf86-video-ati
 	arch = aarch64
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = xlibre-video-ati
 	depends = libpciaccess>=0.8
 	depends = mesa
 	depends = systemd-libs
-	provides = xf86-video-ati
 	conflicts = xf86-video-ati
 	conflicts = xorg-server<21.1.1
 	conflicts = X-ABI-VIDEODRV_VERSION<28
