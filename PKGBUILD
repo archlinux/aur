@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=handbook-bin
 _pkgname=Handbook
-pkgver=0.23.0
+pkgver=0.23.1
 _electronversion=36
 pkgrel=1
 pkgdesc="Create small, movable, and easily concealable windows for quick use.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ECRomaneli/Handbook/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c3f7ad059d1a81109845a4691d7719454abd368c6b61b715e1289d1269bf131f'
+sha256sums=('16a0249c1bb517087d3c5abbec3d12e76ef1ca3f5999c5041039566f1262d506'
             'f95781392d074cd6a4f9de8e5ea6625bee7df3678dc98be6c56358ee527a18c8'
             'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
