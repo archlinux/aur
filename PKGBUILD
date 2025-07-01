@@ -18,11 +18,14 @@ build() {
 }
 
 package() {
-  install -Dm 755 "${pkgname}-${pkgver}/ghorg" "${pkgdir}/usr/bin/ghorg"
+  install -Dm 755 "$pkgname-$pkgver/ghorg" "$pkgdir/usr/bin/ghorg"
 
-  # Populate bash and zsh completions
-  install -dm 755 "${pkgdir}/usr/share/bash-completion/completions"
-  install -dm 755 "${pkgdir}/usr/share/zsh/site-functions"
-  "${pkgdir}/usr/bin/ghorg" completion bash > "${pkgdir}/usr/share/bash-completion/completions/ghorg"
-  "${pkgdir}/usr/bin/ghorg" completion zsh >  "${pkgdir}/usr/share/zsh/site-functions/_ghorg"
+  install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
+  "$pkgdir/usr/bin/$pkgname" completion bash > "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+
+  install -dm 755 "$pkgdir/usr/share/zsh/site-functions"
+  "$pkgdir/usr/bin/$pkgname" completion zsh >  "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+
+  install -dm 755 "$pkgdir/usr/share/fish/completions"
+  "$pkgdir/usr/bin/$pkgname" completion fish > "$pkgdir/usr/share/fish/completions/$pkgname.fish"
 }
