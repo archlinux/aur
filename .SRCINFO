@@ -1,7 +1,7 @@
 pkgbase = xlibre-input-synaptics
 	pkgdesc = XLibre Synaptics driver for notebook touchpads
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/X11Libre/xf86-input-synaptics
 	install = xlibre-input-synaptics.install
 	arch = aarch64
@@ -16,14 +16,11 @@ pkgbase = xlibre-input-synaptics
 	depends = libx11
 	depends = libxi
 	depends = libxtst
-	provides = xf86-input-synaptics
-	provides = synaptics
 	conflicts = xf86-input-synaptics
 	conflicts = synaptics
 	conflicts = xorg-server<21.1.2
 	conflicts = X-ABI-XINPUT_VERSION<26
 	conflicts = X-ABI-XINPUT_VERSION>=27
-	replaces = synaptics
 	source = xf86-input-synaptics-xf86-input-synaptics-1.10.0.tar.gz::https://github.com/X11Libre/xf86-input-synaptics/archive/refs/tags/xf86-input-synaptics-1.10.0.tar.gz
 	b2sums = d8079db5ca672c449d23972ffbe238c081cfcad3bee3cd9a9d7851b9efd2f841ad0b05eb3e6c9d6be4081187988fa4eabc4ef5fb88889af53a5aa2440312b1ff
 
