@@ -1,0 +1,4 @@
+[marwaita-gtk-theme]
+source = "github"
+github = "darkomarko42/Marwaita"
+use_max_tag = true
