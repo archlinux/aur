@@ -1,6 +1,6 @@
 pkgbase = morewaita-icon-theme
 	pkgdesc = An expanded Adwaita-styled companion icon theme with extra icons for popular apps to complement Gnome Shell's original icons. AUR package maintained by upstream developer.
-	pkgver = 48.2
+	pkgver = 48.3
 	pkgrel = 1
 	url = https://github.com/somepaulo/MoreWaita
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = morewaita-icon-theme
 	conflicts = morewaita
 	conflicts = morewaita-git
 	replaces = morewaita
-	source = git+https://github.com/somepaulo/MoreWaita#commit=50cfa41560974c5c86c0e623e5df98e5bfb95264
+	source = git+https://github.com/somepaulo/MoreWaita#commit=a79e8977c70052e6f6089be7d37b91f74b8e5ed3
 	md5sums = SKIP
 
 pkgname = morewaita-icon-theme
