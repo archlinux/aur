@@ -1,12 +1,13 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
-# Maintainer: Xiaoxu Guo <ftiasch0@gmail.com>
-# Maintainer: László Várady <laszlo.varady93@gmail.com>
+# Maintainer: envolution
+# Contributor: Carl Smedstad <carsme@archlinux.org>
+# Contributor: Xiaoxu Guo <ftiasch0@gmail.com>
+# Contributor: László Várady <laszlo.varady93@gmail.com>
 # Contributor: envolution
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=folly
-pkgver=2025.06.23.00
+pkgver=2025.06.30.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -55,20 +56,25 @@ source=(
   "git+https://github.com/facebook/folly.git#tag=v${pkgver}"
   "fix-cmake-find-glog.patch"
   "fix-setup-py-for-python-extensions.patch"
+  "fix-cython-build.patch"
+  "fix-executor-noexcept.patch"
 )
-sha256sums=('e6e9071fcdd511fec6c14262def2f396fec690d1a8df31c5ec8fac1465bde20c'
+sha256sums=('40b43ef4895f6a82697577b049daec0cb48e2281cef341ca10c2ce09a4be9624'
             'c4b66347a9db6ddedb516e2a778a7a37e26a4280ce2c0c9fdbac11d8c8190c55'
-            'a4701d37451bec6063ce5b5efc29f67ac6cc030fda699dac56d81e6064c0d7b5')
+            'a4701d37451bec6063ce5b5efc29f67ac6cc030fda699dac56d81e6064c0d7b5'
+            '52ae2232a3488aaf2894d98d626c9c04d88cd8d948e99a680ab07edd9ad1f3f1'
+            'b3595e5cd45d4ef5d485549693c11c97b3b53766d06869821b40ad214c61bec2')
 
 prepare() {
   cd $pkgname
-  # this causes cmake installtion issues with executor_api.h not being generated
-  git revert --no-edit d136fac18aa1dfb07779d8e40b4ffe367b8f7c1a
-
   # todo: convert this to a sed command as they likely won't fix this any time soon
   patch --forward --strip=1 --input="$srcdir/fix-cmake-find-glog.patch"
   # possibly not needed due to cmake add_definition...LOG_USE_GLOG_EXPORT below
   patch --forward --strip=1 --input="$srcdir/fix-setup-py-for-python-extensions.patch"
+  # fix cmake's expectations due to upstream changes not reflected in install scripts
+  patch --forward --strip=1 --input="$srcdir/fix-cython-build.patch"
+  # fix a noexcept requirement in executor
+  patch --forward --strip=1 --input="$srcdir/fix-executor-noexcept.patch"
 
   # Remove test with compilation error
   sed -i '/heap_vector_types_test/d' CMakeLists.txt
@@ -108,7 +114,7 @@ build() {
     -DPACKAGE_VERSION="$pkgver" \
     -DCMAKE_CXX_FLAGS="-mpopcnt -mbmi -mbmi2 -ltbb" \
     -DPYTHON_PACKAGE_INSTALL_DIR=$pkgdir/usr \
-    -DCMAKE_CXX_STANDARD=20 \
+    -DCMAKE_CXX_STANDARD=17 \
     -Wno-dev
   cmake --build build
 }
@@ -138,6 +144,22 @@ check() {
     singleton_thread_local_test.SingletonThreadLocalDeathTest.Overload
     singleton_thread_local_test.ThreadLocal.DependencyTest
     fbstring_test.FBString.testAllClauses
+    memory_mallctl_helper_test.MallctlHelperTest.valid_read
+    memory_mallctl_helper_test.MallctlHelperTest.invalid_read
+    memory_mallctl_helper_test.MallctlHelperTest.valid_write
+    memory_mallctl_helper_test.MallctlHelperTest.invalid_write
+    memory_mallctl_helper_test.MallctlHelperTest.valid_read_write
+    memory_mallctl_helper_test.MallctlHelperTest.invalid_read_write
+    memory_mallctl_helper_test.MallctlHelperTest.valid_call
+    memory_mallctl_helper_test.MallctlHelperTest.invalid_call
+    memory_mallctl_helper_test.MallctlHelperTest.read_write_cache_init
+    memory_mallctl_helper_test.MallctlHelperTest.read_cache_init
+    memory_mallctl_helper_test.MallctlHelperTest.write_cache_init
+    memory_mallctl_helper_test.MallctlHelperTest.call_cache_init
+    memory_mallctl_helper_test.MallctlHelperTest.valid_read_via_cache
+    memory_mallctl_helper_test.MallctlHelperTest.valid_write_via_cache
+    memory_mallctl_helper_test.MallctlHelperTest.valid_read_write_via_cache
+    memory_mallctl_helper_test.MallctlHelperTest.valid_call_via_cache
   )
   local skipped_tests_pattern="${skipped_tests[0]}$(printf '|%s' "${skipped_tests[@]:1}")"
   ctest --test-dir build --output-on-failure -E "$skipped_tests_pattern"
