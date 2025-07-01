@@ -1,0 +1,11 @@
+pkgbase = pw-lat
+	pkgdesc = pw-lat is small rust program which allow to simple change pipewire-jack rate and quantum while apps are running
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MatiM72737/pw-lat
+	arch = x86_64
+	license = MIT
+	source = https://github.com/MatiM72737/pw-lat/releases/download/v0.1.0/pw-lat-x86_64.tar.gz
+	sha256sums = d6d81cabdcd9163befc31c20175a7610ae83b87950f9d4b86315133d6827f143
+
+pkgname = pw-lat
