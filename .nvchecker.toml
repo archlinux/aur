@@ -1,0 +1,6 @@
+[recoil]
+source = "htmlparser"
+url = "https://recoil.sourceforge.net/contact.html"
+xpath = '/html/body//a[starts-with(text(), "recoil-")]'
+from_pattern = 'recoil-([0-9\.]+)\.tar\.gz'
+to_pattern = '\1'
