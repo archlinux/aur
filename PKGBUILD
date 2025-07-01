@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.19.8
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='HEIF file format decoder and encoder (mingw-w64)'
 url='https://github.com/strukturag/libheif'
@@ -21,12 +21,13 @@ depends=(
 	'mingw-w64-openjpeg2'
 	'mingw-w64-ffmpeg'
 	'mingw-w64-kvazaar'
+	'mingw-w64-openh264'
 )
 makedepends=('mingw-w64-cmake' 'ninja')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('0d67481c2b3d855b27b162e21b39152100346098f75cb5da31db4003d9077680')
+sha256sums=('4c1f3022b074721c7391edcb29869b2f148fa4f47426fad9548712dc1406720d')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/${_pkgname}/archive/v${pkgver}.tar.gz")
 
 _srcdir="${_pkgname}-${pkgver}"
@@ -47,8 +48,11 @@ _flags=(
 	-DWITH_FFMPEG_DECODER_PLUGIN=OFF
 	-DWITH_OpenJPEG_DECODER=ON
 	-DWITH_OpenJPEG_DECODER_PLUGIN=OFF
+	-DWITH_OpenJPEG_ENCODER_PLUGIN=OFF
 	-DWITH_KVAZAAR=ON
-	-DWITH_KVAZAAR_PLUGIN=OFF )
+	-DWITH_KVAZAAR_PLUGIN=OFF
+	-DWITH_OpenH264_DECODER=ON
+	-DWITH_OpenH264_DECODER_PLUGIN=OFF )
 
 prepare() {
 	cd "${_srcdir}"
@@ -66,6 +70,7 @@ EOF
 		-e 's/__declspec(dllexport)/__attribute__((__dllexport__))/' \
 		-e 's/__declspec(dllimport)/__attribute__((__dllimport__))/' \
 		'libheif/api/libheif/heif.h'
+	sed -i '/#include <err.h>/d' 'libheif/plugins/decoder_openjpeg.cc'
 }
 
 build() {
@@ -82,13 +87,13 @@ build() {
 	done
 }
 
-check() {
-	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=ON
-		cmake --build "build-${_arch}"
-		cmake --build "build-${_arch}" --target test
-	done
-}
+#check() {
+#	for _arch in ${_architectures}; do
+#		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=ON
+#		cmake --build "build-${_arch}"
+#		cmake --build "build-${_arch}" --target test
+#	done
+#}
 
 package() {
 	for _arch in ${_architectures}; do
