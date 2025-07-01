@@ -1,9 +1,9 @@
 # Maintainer: Flack74 <puspendrachawlax@gmail.com>
 
 pkgname=pom
-pkgver=1.0.2
-pkgrel=5
-pkgdesc="A beautiful and feature-rich CLI Pomodoro timer with notifications and sound alerts."
+pkgver=2.1.0
+pkgrel=1
+pkgdesc="Advanced Pomodoro timer with CLI and Web UI, featuring AI insights, multi-profiles, and plugin system."
 arch=("x86_64")
 url="https://github.com/Flack74/pom"
 license=("MIT")
