@@ -1,7 +1,9 @@
 # Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
+# Contributor: gigas002 <gigas002@pm.me>
+
 pkgname=carbonyl
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium-based browser built to run in a terminal"
 arch=('x86_64')
 url="https://github.com/fathyb/carbonyl"
@@ -16,7 +18,7 @@ sha256sums=('bf421b9498a084a7cf2238a574d37d31b498d3e271fdb3dcf466e7ed6c80013d'
 
 build() {
   cd "$pkgname-$pkgver"
-  npm install $pkgname
+  npm install --cache "${srcdir}/npm-cache" $pkgname
 }
 
 
