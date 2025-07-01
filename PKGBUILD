@@ -9,8 +9,8 @@ license=('MIT')
 depends=('bash' 'curl' 'openssl')
 optdepends=('pass: for password storing')
 makedepends=('scdoc')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f8b126f2b1656da1104daa286f34b23f7115071f6f3a7af05a68008209a53973')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('f40987ced45705473d47130d766222c84398f420bf193181b150e239bcb55319')
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make DESTDIR=$pkgdir prefix=/usr install > /dev/null 2>&1

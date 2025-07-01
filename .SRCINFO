@@ -10,7 +10,7 @@ pkgbase = tunet-bash
 	depends = curl
 	depends = openssl
 	optdepends = pass: for password storing
-	source = tunet-bash-1.2.8.tar.gz::https://github.com/adamanteye/tunet-bash/archive/refs/tags/v1.2.8.tar.gz
-	sha256sums = f8b126f2b1656da1104daa286f34b23f7115071f6f3a7af05a68008209a53973
+	source = tunet-bash-1.2.8.tar.gz::https://github.com/adamanteye/tunet-bash/archive/refs/tags/1.2.8.tar.gz
+	sha256sums = f40987ced45705473d47130d766222c84398f420bf193181b150e239bcb55319
 
 pkgname = tunet-bash
