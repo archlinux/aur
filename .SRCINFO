@@ -1,7 +1,7 @@
 pkgbase = qt5-webkit
 	pkgdesc = Classes for a WebKit2 based implementation and a new QML API
 	pkgver = 5.212.0alpha4
-	pkgrel = 27
+	pkgrel = 28
 	url = https://github.com/qtwebkit/qtwebkit
 	arch = x86_64
 	arch = aarch64
@@ -23,6 +23,7 @@ pkgbase = qt5-webkit
 	depends = woff2
 	depends = libicuuc.so
 	depends = libicui18n.so
+	depends = libxml2.so
 	depends = glibc
 	depends = gcc-libs
 	depends = glib2
