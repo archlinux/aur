@@ -7,7 +7,8 @@ pkgbase = pom
 	license = MIT
 	makedepends = go
 	makedepends = git
-	depends = pulseaudio
+	optdepends = pulseaudio: for sound notifications
+	optdepends = pipewire-pulse: for sound notifications (pipewire users)
 	source = git+https://github.com/Flack74/pom.git#tag=v1.0.2
 	sha256sums = SKIP
 
