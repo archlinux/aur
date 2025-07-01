@@ -3,7 +3,7 @@
 
 _pyname=pyroma
 pkgname=python-${_pyname}
-pkgver=4.3
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="Test your project's packaging friendliness"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python' 'python-docutils' 'python-requests' 'python-pygments'
 makedepends=('python-installer' 'python-wheel')
 options=(!emptydirs)
 source=("${_pyname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('ac1225ed2adce20843689cebfdb0cfaac749fd9ea4bc2bf30e620e0e33a016ef')
+sha256sums=('499f0dce1184de737dc96b6f8102cb34dbdeef261cbc5f063057da4e068bf981')
 
 _srcdir="${_pyname}-${pkgver}"
 
