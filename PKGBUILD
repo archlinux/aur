@@ -1,7 +1,7 @@
 # Maintainer: SuicideCatt <random.cat.from.internet@gmail.com>
 
 pkgname=msdf-atlas-gen-git
-pkgver=1.3.r0.gc27de59
+pkgver=1.3.r3.g30b6f4f
 pkgrel=1
 pkgdesc="MSDF font atlas generator"
 url=https://github.com/Chlumsky/msdf-atlas-gen
