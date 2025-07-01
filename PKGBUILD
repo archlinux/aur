@@ -1,13 +1,13 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=firefox-portable
-pkgver=1
+pkgver=1.11.103
 pkgrel=1
 epoch=1
 pkgdesc="Firefox sandboxed by portable"
 arch=('any')
 url="https://github.com/Kraftland/portable"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 groups=()
 options=(!debug !strip)
 depends=("firefox" "portable")
@@ -25,8 +25,8 @@ source=(
 )
 
 
-md5sums=('597ed377e0dedb86ebaac5b02dfd6665'
-         '75fde252c9b657dc5cc202944cdc13ec'
+md5sums=('c4a91aae851117c60742624c1b64a7c9'
+         'e9286af04e5d107b38523c92f9c68c76'
          '2f74e3e788705621db286bb25fcabdee')
 
 function package() {
@@ -36,7 +36,7 @@ function package() {
 		"${pkgdir}/usr/bin/firefox-portable"
 	install -Dm644 "firefox.desktop" "${pkgdir}/usr/share/applications/org.mozilla.firefox.desktop"
 	install -d "${pkgdir}/usr/share/libalpm/hooks"
-	
+
 	echo '''[Action]
 When = PostTransaction
 Exec = /usr/bin/ln "-sfr" "/usr/bin/firefox-portable" "/usr/bin/firefox"

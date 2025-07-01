@@ -1,11 +1,11 @@
 pkgbase = firefox-portable
 	pkgdesc = Firefox sandboxed by portable
-	pkgver = 1
+	pkgver = 1.11.103
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Kraftland/portable
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = firefox
 	depends = portable
 	options = !debug
@@ -13,8 +13,8 @@ pkgbase = firefox-portable
 	source = portable-config
 	source = firefox.sh
 	source = firefox.desktop
-	md5sums = b7bfb2dd051fa5eb46091fc33457634f
-	md5sums = 75fde252c9b657dc5cc202944cdc13ec
+	md5sums = c4a91aae851117c60742624c1b64a7c9
+	md5sums = e9286af04e5d107b38523c92f9c68c76
 	md5sums = 2f74e3e788705621db286bb25fcabdee
 
 pkgname = firefox-portable
