@@ -1,0 +1,6 @@
+#Type   Path                               Mode    User       Group      Age     Argument
+d       /var/lib/openlist                  0755    openlist   openlist   -       -
+d       /var/log/openlist                  0755    openlist   openlist   -       -
+d       /var/cache/openlist                0755    openlist   openlist   -       -
+d       /etc/openlist                      0755    openlist   openlist   -       -
+L       /etc/openlist/config.json          0644    openlist   openlist   -       /var/lib/openlist/config.json
