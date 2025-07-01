@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bookget
-pkgver=25.0601
+pkgver=25.0701
 pkgrel=1
 pkgdesc="bookget 数字图书馆下载工具，目前支持约 50+ 个数字图书馆。"
 arch=($CARCH)
@@ -16,11 +16,11 @@ makedepends=(
     git
     go
 )
-backup=(etc/bookget/config.yaml)
+backup=()
 options=('!strip' '!debug')
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('4480da69ab1e3f6fb80081e8caaa2c3fbdfd0117a480b528c26d7ae47c5de2b3')
+sha256sums=('7f1b9ad1ffd7f269468e0b9d877be10c4b219ae381787cf25241e185ec7db7c7')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
@@ -45,5 +45,4 @@ package() {
 
     install -Dm755 build/${pkgname} -t ${pkgdir}/usr/bin/
     install -Dm0644 "${srcdir}/${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -Dm0644 "${srcdir}/${pkgname}/config.yaml" -t "${pkgdir}/etc/${pkgname}/"
 }
