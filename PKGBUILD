@@ -1,6 +1,8 @@
 # Maintainer: Maki <maki@hotmilk.space>
 # Maintainer: SuicideCatt <random.cat.from.internet@gmail.com>
 
+options=(!debug !strip)
+
 pkgname=msdfgen-git
 pkgver=1.12.1.r4.ge3ced1e
 pkgrel=1

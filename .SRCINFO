@@ -15,6 +15,8 @@ pkgbase = msdfgen-git
 	depends = zlib
 	provides = msdfgen=1.12.1.r4.ge3ced1e
 	conflicts = msdfgen
+	options = !debug
+	options = !strip
 	source = msdfgen-git::git+https://github.com/Chlumsky/msdfgen.git
 	sha256sums = SKIP
 
