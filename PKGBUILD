@@ -7,7 +7,7 @@ fi
 
 _pkgname="pcsx2"
 pkgname="$_pkgname-latest-bin"
-pkgver=2.3.350
+pkgver=2.5.24
 pkgrel=1
 pkgdesc="PlayStation 2 emulator"
 url="https://github.com/PCSX2/pcsx2"
@@ -67,9 +67,10 @@ package() {
   # rpath
   patchelf --force-rpath --set-rpath "/opt/$_pkgname/usr/lib" "$pkgdir/opt/$_pkgname/usr/bin/pcsx2-qt"
 
-  # symlink
+  # symlinks
   install -dm755 "$pkgdir/usr/bin"
   ln -srf "$pkgdir/opt/$_pkgname/usr/bin/pcsx2-qt" "$pkgdir/usr/bin/$_pkgname"
+  ln -srf "$pkgdir/opt/$_pkgname/usr/bin/pcsx2-qt" "$pkgdir/usr/bin/$_pkgname-qt"
 
   # icon
   install -Dm644 "$_pkgname.png" -t "$pkgdir/usr/share/pixmaps/"
