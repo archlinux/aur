@@ -1,7 +1,7 @@
 # Maintainer: Kruemmelbande  (kai.scheufen@gmail.com)
 # Contributor: Kruemmelbande
 pkgname=slimevr-beta-bin
-pkgver=0.16.0rc2
+pkgver=0.16.0
 pkgrel=1
 epoch=1
 pkgdesc="SlimeVR FBT software beta version"
@@ -14,22 +14,17 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
 source_x86_64=(
-  "https://github.com/SlimeVR/SlimeVR-Server/releases/download/v0.16.0-rc.2/SlimeVR-amd64.deb"
-  "99-slimedongle.rules"
+  "https://github.com/SlimeVR/SlimeVR-Server/releases/download/v0.16.0/SlimeVR-amd64.deb"
 )
 
 sha512sums_x86_64=(
-  '0fcf88f349608e32bba91c9e3a55d188e65a9542f9d4156ef30c022013d8969ffc3af623370d9f1e71611f5b3fb582966607282cafbfeeac194a531f64e1420d'
-  '2e8d5967177bac379e9b02112f0eafe35346f08403913c81fad68c7583876c8475f5811b0c8bd7351dd9580f065aa25bb59427f4182c81c929cbc6d3c24d17ef'
+  '8cdfb8a05f726a0d771707566bb69c4d9df2b85fbc748ce9fab751a6fdb252547bfdad531a1d0b90ad4fdcd087bb683197e2e88fe3d39a26286295c9003b49c1'
 )
 
 package() {
 
   # Extract package data
   tar -xz -f data.tar.gz -C "${pkgdir}"
-
-  #Install udev rules
-  install -Dm644 "${srcdir}/99-slimedongle.rules" "${pkgdir}/usr/lib/udev/rules.d/99-slimedongle.rules"
 
   rm "${startdir}/SlimeVR-amd64.deb"
 }
