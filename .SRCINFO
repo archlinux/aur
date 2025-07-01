@@ -5,6 +5,7 @@ pkgbase = 6curl
 	url = https://github.com/hyx-web/6curl/
 	arch = x86_64
 	depends = curl>=8.0.0
+	depends = libx11
 	source = https://github.com/hyx-web/6curl/archive/refs/heads/main.zip
 	sha256sums = SKIP
 
