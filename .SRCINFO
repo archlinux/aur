@@ -1,6 +1,6 @@
 pkgbase = candy-git
 	pkgdesc = A simple networking tool
-	pkgver = 6.0.0.r0.g0907031
+	pkgver = 6.0.5.r1.g3179695
 	pkgrel = 1
 	url = https://github.com/lanthora/candy
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = candy-git
 	makedepends = pkgconf
 	makedepends = gcc
 	makedepends = git
+	makedepends = nlohmann-json
 	depends = fmt
 	depends = glibc
 	depends = gcc-libs
