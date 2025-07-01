@@ -1,5 +1,5 @@
 pkgname=dotpusher
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Declarative dotfiles manager using Git and JSON state tracking"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python')
 makedepends=('unzip')
 source=("dotpusher.zip::https://github.com/maarutan/dotpusher/releases/download/v${pkgver}/dotpusher.zip")
-sha256sums=('74a1b1bf2b7b46cda8fa851098bfa5b8e1700344f22d1ae4644a877170e05c38')
+sha256sums=('03703670f305d90baed2a51cf45f4344a7b49f3faa500a8d367f565a618b9c11')
 
 package() {
     cd "$srcdir" || exit
