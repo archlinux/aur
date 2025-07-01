@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk
-pkgver=3.16.4.sk1
+pkgver=3.16.ba123
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -50,10 +50,10 @@ makedepends=(
     vulkan-headers
     wayland-protocols
 )
-_tag=3.16.4-sk1
+_tag=3.16.ba123
 source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
     "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
-    "git+https://github.com/Joshua-Ashton/wlroots.git"
+    "git+https://github.com/bazzite-org/wlroots.git"
     "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
     "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
     "git+https://github.com/Joshua-Ashton/vkroots.git"
@@ -63,15 +63,15 @@ source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
     "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
 )
 
-b2sums=('SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP')
+b2sums=('e268e73c6fb20f5cbb97935917ad5d908bb53c83b6b2b59a7eb687207a84a75ff9cd677446748cae0fbba4ca06f7ecd6b9547f0161749e41d54b7cceda40bd04'
+        'db31478999287cc5b08cc7d98d1daa43a27b339b3ad975269710bd719d30e9f1cf5ee240ee7e2a8d8551f20fa46da14acd669cb207b26a18d79b360e718ff55b'
+        'SKIP'
+        'SKIP'
+        'ca268553bc3dacb5bd19553702cd454ea78ed97ab39d4397c5abf9a27d32633b63e0f7f7bf567b56066e6ecd979275330e629ba202a6d7721f0cd8166cd110dd'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
