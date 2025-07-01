@@ -1,10 +1,10 @@
 # Maintainer: Jo De Boeck <deboeck.jo@gmail.com>
 
 pkgname=big-launcher-git
-pkgver=1ca5420
+pkgver=51ada9c
 pkgrel=1
 makedepends=('cmake' 'libarchive')
-depends=('sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'spdlog' 'fmt' 'libwebp' 'harfbuzz' 'libinih' 'libxml2')
+depends=('sdl3' 'sdl3_image' 'sdl3_ttf' 'libinih' 'harfbuzz' 'spdlog' 'fmt' 'libxml2')
 provides=('big-launcher')
 conflicts=('big-launcher')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
