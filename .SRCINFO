@@ -1,7 +1,7 @@
 pkgbase = carbonyl-git
 	pkgdesc = Chromium-based browser built to run in a terminal
 	pkgver = r88.ab80a27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fathyb/carbonyl
 	arch = x86_64
 	license = BSD
