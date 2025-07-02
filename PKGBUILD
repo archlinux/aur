@@ -1,17 +1,17 @@
-# Maintainer: Bipin Kumar  <bipin@ccmb.res.in>
+# Maintainer: Bipin Kumar  <kbipinkumar@pm.me>
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=vcfanno
-pkgver=0.3.5
-pkgrel=2
+pkgver=0.3.6
+pkgrel=1
 pkgdesc="Annotate a VCF with other VCFs/BEDs/tabixed files http://dx.doi.org/10.5281/zenodo.49500"
 arch=('x86_64')
 url='https://github.com/brentp/vcfanno'
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/brentp/vcfanno/archive/refs/tags/v0.3.5.tar.gz)
-sha256sums=('4f32add17525fc306eb80d213adbfac751a976f9b92ede9ee4c25428837743da')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/brentp/vcfanno/archive/refs/tags/v${pkgver}.tar.gz)
+sha256sums=('58833437f8f0923c82e6b8eed2800b23c27cd1e18d12fdfe99732e8b106689f6')
 
 prepare(){
   cd "$pkgname-$pkgver"
