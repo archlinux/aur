@@ -22,6 +22,7 @@ pkgbase = ags-hyprpanel-git
 	depends = gtksourceview3
 	depends = libsoup3
 	depends = aylurs-gtk-shell
+	depends = libastal-gjs
 	optdepends = python: GPU usage tracking (NVidia only)
 	optdepends = python-gpustat: GPU usage tracking (NVidia only)
 	optdepends = python-pywal: Pywal hook for wallpapers
