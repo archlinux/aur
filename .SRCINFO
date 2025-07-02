@@ -1,7 +1,7 @@
 pkgbase = python-cudf
 	pkgdesc = cuDF - GPU DataFrame Library
 	pkgver = 25.06.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rapidsai/cudf
 	arch = x86_64
 	license = Apache-2.0
@@ -26,3 +26,15 @@ pkgbase = python-cudf
 	sha256sums = 72618631b71f51c4d0773f6964bb9bfe3a92ba0ebe5351fd7baedb56f833fcfa
 
 pkgname = python-cudf
+
+pkgname = python-dask-cudf
+	depends = cuda
+	depends = python
+	depends = libcudf
+	depends = python-pylibcudf
+	depends = python-cupy
+	depends = python-nvtx
+	depends = python-pynvjitlink
+	depends = python-pyarrow
+	depends = python-cudf
+	depends = python-dask-cuda

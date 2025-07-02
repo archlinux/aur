@@ -1,8 +1,9 @@
 # Maintainer: crl <crl18039102576@126.com>
 
-pkgname=python-cudf
+pkgbase=python-cudf
+pkgname=(python-cudf python-dask-cudf)
 pkgver=25.06.00
-pkgrel=1
+pkgrel=2
 pkgdesc="cuDF - GPU DataFrame Library"
 url="https://github.com/rapidsai/cudf"
 arch=('x86_64')
@@ -26,9 +27,18 @@ build() {
     cd "$srcdir/cudf-$pkgver/python/cudf"
     export CCCL_DIR="/opt/cuda/lib/cmake"
     python -m build --wheel --no-isolation --skip-dependency-check
+
+    cd "$srcdir/cudf-$pkgver/python/dask_cudf"
+    python -m build --wheel --no-isolation --skip-dependency-check
 }
 
-package() {
+package_python-cudf() {
     cd "$srcdir/cudf-$pkgver/python/cudf"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+}
+
+package_python-dask-cudf() {
+    depends+=(python-cudf python-dask-cuda)
+    cd "$srcdir/cudf-$pkgver/python/dask_cudf"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
