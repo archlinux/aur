@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=wine-staging-git
-pkgver=10.10.r0.gc37f9f50
+pkgver=10.11.r0.g3e94d124
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('x86_64')
@@ -44,11 +44,11 @@ makedepends=(
     'libxinerama'
     'libxxf86vm'
     'mesa'
-    'mesa-libgl'
     'mingw-w64-gcc'
     'opencl-headers'
     'opencl-icd-loader'
     'perl'
+    'pcsclite'
     'samba'
     'sane'
     'sdl2'
@@ -73,6 +73,7 @@ optdepends=(
     'libxinerama'
     'opencl-icd-loader'
     'perl'
+    'pcsclite'
     'samba'
     'sane'
     'sdl2'
@@ -80,7 +81,7 @@ optdepends=(
     'vulkan-icd-loader'
     'wine-gecko'
     'wine-mono')
-options=('staticlibs' '!lto')
+options=('!lto')
 install="${pkgname}.install"
 provides=("wine-staging=${pkgver}" "wine=${pkgver%%.r*}" 'wine-wow64')
 conflicts=('wine' 'wine-wow64')
@@ -116,8 +117,6 @@ pkgver() {
 }
 
 build() {
-    export CFLAGS+=' -ffat-lto-objects'
-    
     # apply flags for cross-compilation
     export CROSSCFLAGS="${CFLAGS/-Werror=format-security/} -g"
     export CROSSCXXFLAGS="${CXXFLAGS/-Werror=format-security/} -g"
@@ -127,10 +126,7 @@ build() {
     ../wine/configure \
         --prefix='/usr' \
         --libdir='/usr/lib' \
-        --with-x \
-        --with-wayland \
-        --with-gstreamer \
-        --with-freetype \
+        --disable-tests \
         --enable-archs="${CARCH},i386"
     make
 }

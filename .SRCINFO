@@ -1,6 +1,6 @@
 pkgbase = wine-staging-git
 	pkgdesc = A compatibility layer for running Windows programs (staging branch, git version)
-	pkgver = 10.10.r0.gc37f9f50
+	pkgver = 10.11.r0.g3e94d124
 	pkgrel = 1
 	url = https://www.wine-staging.com/
 	install = wine-staging-git.install
@@ -23,11 +23,11 @@ pkgbase = wine-staging-git
 	makedepends = libxinerama
 	makedepends = libxxf86vm
 	makedepends = mesa
-	makedepends = mesa-libgl
 	makedepends = mingw-w64-gcc
 	makedepends = opencl-headers
 	makedepends = opencl-icd-loader
 	makedepends = perl
+	makedepends = pcsclite
 	makedepends = samba
 	makedepends = sane
 	makedepends = sdl2
@@ -69,6 +69,7 @@ pkgbase = wine-staging-git
 	optdepends = libxinerama
 	optdepends = opencl-icd-loader
 	optdepends = perl
+	optdepends = pcsclite
 	optdepends = samba
 	optdepends = sane
 	optdepends = sdl2
@@ -76,12 +77,11 @@ pkgbase = wine-staging-git
 	optdepends = vulkan-icd-loader
 	optdepends = wine-gecko
 	optdepends = wine-mono
-	provides = wine-staging=10.10.r0.gc37f9f50
-	provides = wine=10.10
+	provides = wine-staging=10.11.r0.g3e94d124
+	provides = wine=10.11
 	provides = wine-wow64
 	conflicts = wine
 	conflicts = wine-wow64
-	options = staticlibs
 	options = !lto
 	source = git+https://gitlab.winehq.org/wine/wine-staging.git
 	source = git+https://gitlab.winehq.org/wine/wine.git
