@@ -1,0 +1,19 @@
+pkgbase = freetakserver-git
+	pkgdesc = Situational Awareness Server compatible with TAK clients (ATAK, WinTAK, ITAK)
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/FreeTAKTeam/FreeTakServer
+	arch = any
+	license = EPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-flask
+	depends = python-lxml
+	depends = python-tabulate
+	depends = python-sqlalchemy
+	depends = python-flask-sqlalchemy
+	source = freetakserver-git::git+https://github.com/FreeTAKTeam/FreeTakServer.git
+	md5sums = SKIP
+
+pkgname = freetakserver-git
