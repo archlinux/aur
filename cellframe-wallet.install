@@ -6,7 +6,6 @@ pre_upgrade() {
     fi
 }
 
-
 post_install() {
     if [ -d /opt/cellframe-node/var/lib/wallet/ ]; then
         chmod -R a+rw /opt/cellframe-node/var/lib/wallet/
