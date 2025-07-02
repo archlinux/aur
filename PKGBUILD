@@ -32,9 +32,9 @@ source_aarch64=(${_common_download_url}-arm64.deb)
 source_armv7h=(${_common_download_url}-armhf.deb)
 
 sha256sums=('ef93d32f46b31818ffea85959f5ac67353df2c4da351b273108765b80c7f080d')
-sha256sums_x86_64=('66d8843a0bc61aff40ac688426ec688aa626f3ddcfe132b141450398bdb4d12c')
-sha256sums_aarch64=('08a2bd9a0179ba32c087cf13383785cf8cbf357ea35590c012677e89031a2198')
-sha256sums_armv7h=('1521db327e6e733bbb42fa911d47e25ad72668389fac5512023a73fc2b2a6e94')
+sha256sums_x86_64=('72a38403a283f0e406dd17fd50c77157a74834c3a7ca9f48279d3e7bf5800c9e')
+sha256sums_aarch64=('612bfe875e6988a689b0c22d76e1bc83a0927c53c915b9582bf6e41595afbba8')
+sha256sums_armv7h=('b02d39db11f3f95ce7274212de86b7f69afdf2c60a5eef8536daaa6e605446b1')
 package() {
     tar xf data.tar.xz -C "${pkgdir}"
     install -d "${pkgdir}/opt/${_pkgname}"
