@@ -1,12 +1,13 @@
 pkgbase = gobypass403-bin
 	pkgdesc = A Go tool to bypass 403 Forbidden errors
 	pkgver = 0.8.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/slicingmelon/gobypass403
 	arch = x86_64
 	license = MIT
-	depends = go
-	source = https://github.com/slicingmelon/gobypass403/releases/download/v0.8.4/gobypass403_0.8.4_linux-amd64
-	sha256sums = 77de9cf875559f2f183690c4cb12477858adc872f020c12f7d371f2bd1efde0f
+	source = https://github.com/slicingmelon/gobypass403/releases/download/v0.8.4/gobypass403_0.8.4_linux_amd64
+	source = https://raw.githubusercontent.com/slicingmelon/gobypass403/refs/tags/v0.8.4/LICENSE
+	sha256sums = 9a2665b956ac4a70b7f872529f9449ffffe007c197ec0a45a07b6be1caec1db2
+	sha256sums = fc493b56b5bba910e7912c418dc191fd6a7b91fd23b5d5273bebca6343f2cb84
 
 pkgname = gobypass403-bin
