@@ -4,7 +4,7 @@
 if [[ "${AUR_BUILD}" == "1" ]]; then
   # AUR git package configuration
   pkgname=system-bridge-git
-  pkgver=r0.0.0.0
+  pkgver=0.0.0
   pkgrel=1
   pkgdesc="A bridge for your systems (git version)"
   makedepends=('git' 'go' 'bun-bin')
@@ -25,6 +25,7 @@ fi
 arch=('x86_64')
 url="https://github.com/timmo001/system-bridge"
 license=('Apache-2.0')
+keywords=('system-bridge' 'automation' 'home-assistant' 'api' 'websocket')
 depends=('libx11' 'libxtst' 'libxkbcommon' 'libxkbcommon-x11')
 provides=('system-bridge')
 
@@ -53,7 +54,14 @@ build() {
     make build_client
     
     # Build Go application
-    local version="5.0.0-dev+$(git rev-parse --short HEAD)"
+    local version
+    if [[ -f "$srcdir/../VERSION" ]]; then
+      version=$(cat "$srcdir/../VERSION")
+    elif [[ -f "$srcdir/VERSION" ]]; then
+      version=$(cat "$srcdir/VERSION")
+    else
+      version="5.0.0-dev+$(git rev-parse --short HEAD)"
+    fi
     go build -v -ldflags="-X 'github.com/timmo001/system-bridge/version.Version=${version}'" -o "system-bridge" .
   fi
 }
