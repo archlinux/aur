@@ -1,5 +1,6 @@
+# shellcheck disable=SC2034,SC2154,SC2164,SC2148
 # Maintainer: honjow
-# shellcheck disable=SC2034
+
 pkgname=sk-chos-addon
 _basename=sk-chos-tool
 _reponame=sk-chos-config
