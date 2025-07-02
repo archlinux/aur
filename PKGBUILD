@@ -15,8 +15,8 @@ install=on-other-ffmpeg.install
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             '0a4693424f173c4c4d0f1853189d1bd422dcc08f512cc33af3d2acf1e2483e8c'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
-            'cb229264daa95c54396a215b9bd43561d1295ca24c0211777ce2c1a50c313b47'
-            '9fe03a5e707a78bceb0ea9ebb8ad95c73f816bb52062701c17d1679df6667bdd')
+            'b1ce487b6fcdfacb388f2608a7884b6516c742629904698f61218ba16b8c09e5'
+            '91e858e7d826a09c0563725d2705d00bd58f7ded321858453462c60bfc34afdc')
 depends=(glibc)
 makedepends=(diffutils gcc make nasm patch sed)
 optdepends=({electron{28..36},nwjs}': replace ffmpeg')
