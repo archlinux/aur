@@ -1,12 +1,14 @@
 pkgbase = graillon-free
 	pkgdesc = Graillon-free LV2 and VST3 vocal plugin from Auburn Sounds
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.auburnsounds.com/products/Graillon.html
 	arch = x86_64
+	groups = pro-audio
+	groups = vst3-plugins
 	license = custom
+	depends = glibc
 	source = https://www.auburnsounds.com/downloads/Graillon-FREE-3.1.1.zip
-	sha512sums = 3c32747da640f90840da12b12c14bd269f4da1963938116adbefc69c2488afbfb0c0315bd09fc3bc56ce034d4e36f3770dd5b659f98e5a4cea2d339382db265a
-	sha512sums = a3c168d3605190b7de36707a42d1450a22bd0d0b50b52bb4e0a8b169c1035f04f58dca8227d8557f9f0cc574d18323780efa035fd6cd57c3bb35d69a3c517937
+	sha512sums = ec35ce1179f793991965699c8bba613184a8297b8ca71d79f0bd3a508ed9b931fbdf773a34db587120d855dc21e3af2ed999fe010ad1a1e53c0a494a423bd2dd
 
 pkgname = graillon-free
