@@ -1,5 +1,5 @@
 pkgname=goonsh
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="a joke fr"
 arch=('x86_64')
