@@ -23,7 +23,7 @@ depends=(
     'libsoup3'
     # aur:
     'aylurs-gtk-shell'
-    'libastal-gjs'
+    'libastal-gjs-git'
 )
 makedepends=(
     'meson'
