@@ -1,6 +1,6 @@
 pkgbase = flang
 	pkgdesc = ground-up implementation of a Fortran front end written in modern C++
-	pkgver = 20.1.6
+	pkgver = 20.1.7
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = x86_64
@@ -10,19 +10,19 @@ pkgbase = flang
 	makedepends = clang
 	makedepends = llvm
 	depends = mlir>=20
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.6/flang-20.1.6.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.6/flang-20.1.6.src.tar.xz.sig
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.6/cmake-20.1.6.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.6/cmake-20.1.6.src.tar.xz.sig
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.6/clang-20.1.6.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.6/clang-20.1.6.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.7/flang-20.1.7.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.7/flang-20.1.7.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.7/cmake-20.1.7.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.7/cmake-20.1.7.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.7/clang-20.1.7.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.7/clang-20.1.7.src.tar.xz.sig
 	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
 	validpgpkeys = D574BD5D1D0E98895E3BF90044F2485E45D59042
-	sha256sums = fc3e745ca0d72a339abc67982c6cef365ab452435e06cb7ad519d502a112cd54
+	sha256sums = 130155310158854349ad0c9abc018d3567744baacc88794bac6871adb660a94c
 	sha256sums = SKIP
-	sha256sums = b4b3efa5d5b01b3f211f1ba326bb6f0c318331f828202d332c95b7f30fca5f8c
+	sha256sums = afdab526c9b337a4eacbb401685beb98a18fb576037ecfaa93171d4c644fe791
 	sha256sums = SKIP
-	sha256sums = 49a16d6b6878a6bdd9ead2d31ffb94c792675607471afa40096fbd48b3cbab66
+	sha256sums = cb74965a2481008ae405419357a55fda2df6fa3aee262a0a9293a558532a29ae
 	sha256sums = SKIP
 
 pkgname = flang
