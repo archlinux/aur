@@ -1,5 +1,5 @@
 pkgname=('mingw-w64-llvm')
-pkgver=20.1.6
+pkgver=20.1.7
 pkgrel=1
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (mingw-w64)"
 arch=('any')
@@ -11,9 +11,9 @@ options=('!strip' '!buildflags' 'staticlibs')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/llvm-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig})
-sha256sums=('f09e304ca98bb809f492ec34f94f587361b4b0d06ed783fb3a41e7fb218e47a1'
+sha256sums=('10b62d003f16afbd1a5ee0aa6397704c13d9a12a2562103998a8c1eff4a0f1ea'
             'SKIP'
-            'b4b3efa5d5b01b3f211f1ba326bb6f0c318331f828202d332c95b7f30fca5f8c'
+            'afdab526c9b337a4eacbb401685beb98a18fb576037ecfaa93171d4c644fe791'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
               'D574BD5D1D0E98895E3BF90044F2485E45D59042') # Tobias Hieta <tobias@hieta.se>
