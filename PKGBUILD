@@ -1,14 +1,13 @@
 # Maintainer: Frederick Price <fprice@pricemail.ca>
 pkgname=graillon-free
 pkgver=3.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Graillon-free LV2 and VST3 vocal plugin from Auburn Sounds"
 arch=('x86_64')
 url="https://www.auburnsounds.com/products/Graillon.html"
 license=('custom')
 groups=('pro-audio' 'vst3-plugins')
 depends=('glibc')
-# depends=('openssl' 'zlib')
 # https://www.auburnsounds.com/downloads/Graillon-FREE-3.1.1.zip
 source=("https://www.auburnsounds.com/downloads/Graillon-FREE-${pkgver}.zip")
 sha512sums=('ec35ce1179f793991965699c8bba613184a8297b8ca71d79f0bd3a508ed9b931fbdf773a34db587120d855dc21e3af2ed999fe010ad1a1e53c0a494a423bd2dd')
