@@ -1,6 +1,6 @@
 pkgbase = chadtop
 	pkgdesc = tui process and resource monitor
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/ethanrutt/chadtop/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = chadtop
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = chadtop-0.1.0.tar.gz::https://github.com/ethanrutt/chadtop/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = ff0eb2f82b6ac3c6c6299a162c575e0ab116ff51d7f7230f78475ea3242e47eb
+	source = chadtop-0.1.1.tar.gz::https://github.com/ethanrutt/chadtop/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = cae92bbb36730dc266abf06ccf80daf35b75d43cb734e3b98587f7a82fd74a45
 
 pkgname = chadtop

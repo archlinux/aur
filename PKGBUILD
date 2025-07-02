@@ -1,6 +1,6 @@
 # Maintainer: ethanrutt <ethan.rutt2032@gmail.com>
 pkgname=chadtop
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="tui process and resource monitor"
 arch=('any')
@@ -10,7 +10,7 @@ depends=("gcc-libs")
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ethanrutt/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 options=(!lto)
-sha256sums=('ff0eb2f82b6ac3c6c6299a162c575e0ab116ff51d7f7230f78475ea3242e47eb')
+sha256sums=('cae92bbb36730dc266abf06ccf80daf35b75d43cb734e3b98587f7a82fd74a45')
 
 build() {
   cd "$pkgname-$pkgver"
