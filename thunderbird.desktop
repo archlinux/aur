@@ -169,3 +169,4 @@ Exec=env _portableConfig=org.mozilla.thunderbird portable -- -addressbook
 
 [Desktop Action OpenHome]
 Name=Open Thunderbird Home
+Exec=env _portableConfig=org.mozilla.thunderbird portable --actions opendir
