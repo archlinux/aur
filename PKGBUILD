@@ -6,7 +6,7 @@ pkgdesc="Fast Ramer–Douglas–Peucker and Visvalingam-Whyatt line simplificati
 algorithms"
 url="https://github.com/urschrei/rdp"
 license=("MIT")
-pkgver=0.13.0
+pkgver=0.13.5
 pkgrel=1
 
 arch=("i686" "x86_64")
@@ -15,8 +15,7 @@ makedepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/urschrei/rdp/archive/refs/tags/v${pkgver}.tar.gz")
-
-b2sums=("85f521ff93757b1fd3efff6979745d929882a45af5bd82984923a8f35ec837a77db8dde3c39dd87fed945e1d53c70d72229f0834a28dae406de627993bd6d448")
+b2sums=("9997b7d54ec09f698c52d9ef402f7d2d21d05ef27225c70d54cd4270c0544e360685056b148dfa3a8ab1199f36692ae149c246b3ce3413912cf63ff4c07c7a35")
 
 prepare() {
     cd ${srcdir}/${_pkgname}-${pkgver}
