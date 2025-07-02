@@ -1,6 +1,6 @@
 pkgbase = b-em-git
 	pkgdesc = BBC Micro emulator - git version
-	pkgver = r2084.abcb999
+	pkgver = r2122.40246d4
 	pkgrel = 1
 	url = http://b-em.bbcmicro.com/
 	arch = x86_64
