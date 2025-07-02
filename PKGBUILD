@@ -1,5 +1,4 @@
 pkgname=brooklynn-git
-pkgver=1.0.1
 pkgrel=1
 pkgdesc="Brooklynn - A minimal tiling window manager"
 arch=('x86_64')
@@ -16,6 +15,7 @@ pkgver() {
   cd "$srcdir/Brooklynn"
   echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
+
 
 build() {
   cd "$srcdir/Brooklynn"
