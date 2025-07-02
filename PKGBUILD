@@ -22,7 +22,7 @@ optdepends=('qt5-wayland: zoomus.conf xwayland=false'
 options=(!strip emptydirs)
 #_cefver=137.0.7151.121
 #No good way to get mahor ver of CEF
-#strings '/tmp/makepkg/zoom-system-qt/pkg/zoom-system-qt-cef/opt/zoom/cef/libcef.so' | grep -E 'Chromium|[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'
+#strings 'libcef.so' | grep -E 'Chromium|[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'
 source=("zoom_orig-${pkgver}.pkg.tar.xz::${url}client/${pkgver}/zoom_x86_64.pkg.tar.xz"
 #"cef-${_cefver}.tar.bz2::https://cef-builds.spotifycdn.com/cef_binary_137.0.19%2Bg8a1c4ce%2Bchromium-${_cefver}_linux64_minimal.tar.bz2"
 )
@@ -59,7 +59,7 @@ package_zoom-system-qt() {
 }
 
 package_zoom-system-qt-cef(){
-  pkgdesc='CEF for vebview of ${_pkgbase}'
+  pkgdesc="CEF for vebview of ${_pkgbase}"
   depends+=(sqlite)
   optdepends=(vulkan-driver)
   # Prebuilt libcef.so is not stripped which fills BUILDDIR
