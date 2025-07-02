@@ -1,7 +1,7 @@
 pkgbase = nps
 	pkgdesc = A lightweight, high-performance intranet penetration proxy with web UI
 	pkgver = 0.29.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/djylb/nps
 	install = .INSTALL
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = nps
 	source = nps-0.29.31.tar.gz::https://github.com/djylb/nps/archive/refs/tags/v0.29.31.tar.gz
 	source = npc.service
 	source = nps.service
-	sha256sums = 00894d5aeb0ddfb49aa8e7a4ca92bba65331a94a0c983fa3ced90cd8759537ad
+	sha256sums = 32e0846df6fbe0ca2856f4c5288298b7dbe38a9e457dd7861e1eb720919873d6
 	sha256sums = c668c61dc1d61f87c75430277c4962e71860ab066d3acaaab578b811b781b33e
 	sha256sums = da9a34b86e9d9f42c0fb57f23b887de89d9de0d7c6a0f6fb34d6741755d35237
 
