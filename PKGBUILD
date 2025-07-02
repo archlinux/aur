@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=vorbis-tools-git
-pkgver=1.4.2.r0.g7168723
-pkgrel=2
+pkgver=1.4.3.r12.gcfc497a
+pkgrel=1
 pkgdesc="Command-line tools for creating and playing Ogg Vorbis files"
 arch=('i686' 'x86_64')
 url="https://xiph.org/vorbis/"
@@ -11,17 +11,9 @@ depends=('gcc-libs' 'libao.so' 'libcurl.so' 'libFLAC.so' 'libvorbis.so' 'libvorb
 makedepends=('git' 'curl' 'flac' 'libao' 'libvorbis')
 provides=("vorbis-tools=$pkgver")
 conflicts=('vorbis-tools')
-source=("git+https://gitlab.xiph.org/xiph/vorbis-tools.git"
-        "0001-include-utf8.h-for-utf8_decode.patch::https://github.com/xiph/vorbis-tools/pull/33/commits/8a645f78b45ae7e370c0dc2a52d0f2612aa6110b.patch")
-sha256sums=('SKIP'
-            'cd119e66d6ba91604bb18275f339a2e4467cf2e11756a29584a533b95bb60865')
+source=("git+https://gitlab.xiph.org/xiph/vorbis-tools.git")
+sha256sums=('SKIP')
 
-
-prepare() {
-  cd "vorbis-tools"
-
-  patch -Np1 -i "$srcdir/0001-include-utf8.h-for-utf8_decode.patch"
-}
 
 pkgver() {
   cd "vorbis-tools"
