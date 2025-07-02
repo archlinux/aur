@@ -2,13 +2,13 @@
 
 pkgname=xmrig-cuda
 pkgver=6.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA CUDA plugin for XMRig miner.'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-cuda'
-depends=('xmrig>=6.17.0' 'cuda>=12.5')
+depends=('xmrig>=6.17.0' 'cuda<12.9')
 optdepends=('monero: wallet')
-makedepends=('cmake' 'openssl' 'cuda>=12.5')
+makedepends=('cmake' 'openssl' 'cuda<12.9')
 license=('GPL-3.0-or-later')
 source=("${url}/archive/v${pkgver}.tar.gz"
         'fix-compile.patch')
@@ -24,7 +24,7 @@ prepare () {
 build() {
   cd "${pkgname}-${pkgver}"
 
-  cmake -DCMAKE_POLICY_DEFAULT_CMP0146=OLD -DCMAKE_CXX_FLAGS="-ffat-lto-objects" -DCMAKE_C_COMPILER=/usr/bin/gcc-13 -DCMAKE_CXX_COMPILER=/usr/bin/g++-13 -S . -B build
+  cmake -DCMAKE_POLICY_DEFAULT_CMP0146=OLD -DCMAKE_CXX_FLAGS="-ffat-lto-objects" -DCMAKE_C_COMPILER=${NVCC_CCBIN/g++/gcc} -DCMAKE_CXX_COMPILER=${NVCC_CCBIN} -S . -B build
   cmake --build build
 }
 
