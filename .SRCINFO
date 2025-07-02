@@ -1,0 +1,14 @@
+pkgbase = comm-line
+	pkgdesc = A terminal-based peer-to-peer chat application written in Python
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/murugnn/comm-line.git
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-colorama
+	depends = python-pyfiglet
+	source = comm-line.py
+	sha256sums = SKIP
+
+pkgname = comm-line
