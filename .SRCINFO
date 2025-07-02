@@ -1,6 +1,6 @@
 pkgbase = zoom-system-qt
 	pkgver = 6.5.3.2773
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zoom.us/
 	arch = x86_64
 	license = LicenseRef-zoom
@@ -16,10 +16,14 @@ pkgbase = zoom-system-qt
 	optdepends = qt5-imageformats: Unused?
 	optdepends = qt5-remoteobjects: Unused?
 	optdepends = zoom-system-qt-cef: zoomus.conf disableCef=false
+	noextract = cef-137.0.7151.121.tar.bz2
+	noextract = zoom-system-qt-6.5.3.2773-2-x86_64.pkg.tar.zst
+	noextract = zoom-system-qt-cef-6.5.3.2773-2-x86_64.pkg.tar.zst
+	noextract = zoom_orig-6.5.3.2773.pkg.tar.xz
 	options = !strip
 	options = emptydirs
-	source = zoom-origin-6.5.3.2773.pkg.tar.xz::https://zoom.us/client/6.5.3.2773/zoom_x86_64.pkg.tar.xz
-	b2sums = aab928a89ecbab1317fa2fc4c0b01d9c0aff2ecf42890336a9cd863e93cf92c40f7c1617df32469502b159a22b3bcc663351b060de1fa7aec58889a517346a89
+	source = zoom_orig-6.5.3.2773.pkg.tar.xz::https://zoom.us/client/6.5.3.2773/zoom_x86_64.pkg.tar.xz
+	sha512sums = b20d11c7ffb9d664181ebbe1920956394355d51f3feef6d22c00ed29da1c0ff6c0759514644eab9ce95a94796e6b6e75fadae7186271d1b1ea5b919c99c85360
 
 pkgname = zoom-system-qt
 	pkgdesc = Zoom Workspace client on system runtime
@@ -38,9 +42,7 @@ pkgname = zoom-system-qt
 	conflicts = zoom
 
 pkgname = zoom-system-qt-cef
-	pkgdesc = Webview for zoom-system-qt
+	pkgdesc = CEF for vebview of ${_pkgbase}
 	depends = vivaldi-ffmpeg-codecs
-	depends = zoom-system-qt
-	depends = chromium
 	depends = sqlite
 	optdepends = vulkan-driver

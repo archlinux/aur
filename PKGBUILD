@@ -8,7 +8,7 @@
 pkgbase=zoom-system-qt
 pkgname=(${pkgbase}{,-cef} )
 pkgver=6.5.3.2773
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('LicenseRef-zoom')
 url="https://zoom.us/"
@@ -20,10 +20,20 @@ optdepends=('qt5-wayland: zoomus.conf xwayland=false'
   'qt5-'{3d,x11extras,multimedia,imageformats,remoteobjects}': Unused?'
   ${pkgbase}-cef': zoomus.conf disableCef=false')
 options=(!strip emptydirs)
-source=("zoom-origin-${pkgver}.pkg.tar.xz::${url}client/${pkgver}/zoom_x86_64.pkg.tar.xz")
-b2sums=('aab928a89ecbab1317fa2fc4c0b01d9c0aff2ecf42890336a9cd863e93cf92c40f7c1617df32469502b159a22b3bcc663351b060de1fa7aec58889a517346a89')
+#_cefver=137.0.7151.121
+#No good way to get mahor ver of CEF
+#strings '/tmp/makepkg/zoom-system-qt/pkg/zoom-system-qt-cef/opt/zoom/cef/libcef.so' | grep -E 'Chromium|[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'
+source=("zoom_orig-${pkgver}.pkg.tar.xz::${url}client/${pkgver}/zoom_x86_64.pkg.tar.xz"
+#"cef-${_cefver}.tar.bz2::https://cef-builds.spotifycdn.com/cef_binary_137.0.19%2Bg8a1c4ce%2Bchromium-${_cefver}_linux64_minimal.tar.bz2"
+)
+noextract=(*.tar*) # for small BUILDDIR
+sha512sums=('b20d11c7ffb9d664181ebbe1920956394355d51f3feef6d22c00ed29da1c0ff6c0759514644eab9ce95a94796e6b6e75fadae7186271d1b1ea5b919c99c85360')
+build() {
+  bsdtar -xf zoom_orig-$pkgver.pkg.tar.xz \
+    --exclude opt/zoom/cef --exclude opt/zoom/Qt --exclude opt/zoom/translations --exclude opt/zoom/qt.conf \
+    --exclude opt/zoom/libOpenCL.so* --exclude opt/zoom/libmpg123.so*
+  install -d opt/zoom/Qt/lib # for ZoomWebviewHost
 
-build() {	
   ln -sf /usr/share/pixmaps/Zoom.png usr/share/pixmaps/*-zoom.png
   cd opt/zoom
   #Remove Qt5 symbol ver and insecure RPATH
@@ -31,22 +41,12 @@ build() {
     do patchelf --remove-rpath $b $(nm -D "$b"|grep @Qt_5|sed 's/@Qt_5.*//;s/^\s*U/--clear-symbol-version/'|tr '\n' ' ')
   done
   #Replace bundled libs
-  rm -r lib{OpenCL,mpg123}.so* translations Qt qt.conf
   for f in libav{codec,format,util}* libswresample*
     do ln -svf /opt/vivaldi/libffmpeg.so* $f
   done
-  mkdir -p Qt/lib # for ZoomWebviewHost
-  ln -sf /usr/lib/libquazip1-qt5.so libquazip.so
+  ln -sf /usr/lib/libquazip1-qt5.so libquazip.so*
   # dlopen-ed libs are hard to replace.
   # libdvf=libpng+libjpeg+glew+zlib+? onednn~libmkldll? libclDNN~openvino?
-
-  cd cef #Updating CEF(https://cef-builds.spotifycdn.com/index.html) seems impossible. ABI?
-  mv locales/en-US.pak .;rm -r locales/*;mv en-US.pak locales # for ZoomWebviewHost
-  ln -sf /opt/vivaldi/libffmpeg.so.7.4 libffmpeg.so*
-  rm -r libsqlite3.so*
-  for f in chrome-sandbox *.{pak,dat,json} lib{EGL,GLESv2,vulkan,vk_swiftshader}.so*
-    do ln -sf {/usr/lib/chromium/,}$f
-  done
 }
 
 package_zoom-system-qt() {
@@ -56,14 +56,17 @@ package_zoom-system-qt() {
   conflicts=(zoom)
   pkgdesc="Zoom Workspace client on system runtime"
   mv opt usr "$pkgdir" # breaks --repackage
-  mv "$pkgdir"/opt/zoom/cef "$srcdir"
-  install -d "$pkgdir"/opt/zoom/cef
 }
 
 package_zoom-system-qt-cef(){
-  pkgdesc="Webview for zoom-system-qt"
-  depends+=(${pkgbase} chromium sqlite)
+  pkgdesc='CEF for vebview of ${_pkgbase}'
+  depends+=(sqlite)
   optdepends=(vulkan-driver)
-  install -d "$pkgdir"/opt/zoom
-  mv cef "$pkgdir"/opt/zoom
+  # Prebuilt libcef.so is not stripped which fills BUILDDIR
+  cd "$pkgdir"
+  bsdtar -xf "$srcdir"/zoom_orig-${pkgver}.pkg.tar.xz \
+    --exclude opt/zoom/cef/libsqlite3.so* --exclude opt/zoom/cef/locales opt/zoom/cef
+  bsdtar -xf "$srcdir"/zoom_orig-${pkgver}.pkg.tar.xz opt/zoom/cef/locales/en-US.pak
+  ln -sf /opt/vivaldi/libffmpeg.so* opt/zoom/cef/libffmpeg.so*
+  echo Please add SUID to /opt/zoom/cef/chrome-sandbox if your kernel does not have namespace sandbox.
 }
