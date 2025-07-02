@@ -1,0 +1,16 @@
+pkgbase = python-morethemes
+	pkgdesc = More themes for matplotlib
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/JosephBARBIERDARNAL/morethemes
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	depends = python-matplotlib
+	depends = python-pyfonts
+	source = morethemes-0.4.0.tar.gz::https://github.com/JosephBARBIERDARNAL/morethemes/archive/v0.4.0.tar.gz
+	sha512sums = b6ef5e573ac81f0be2931ec2b1c897d1c240994285647a9267288c108da353aaf1dc50a96f012bec58b44b9e9b897b5ec87faf4579ad4821eff0a726d006db30
+
+pkgname = python-morethemes

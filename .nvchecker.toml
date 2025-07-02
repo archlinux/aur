@@ -1,0 +1,5 @@
+[python-morethemes]
+source = "github"
+github = "JosephBARBIERDARNAL/morethemes"
+use_latest_release = "true"
+prefix = "v"
