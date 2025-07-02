@@ -5,13 +5,13 @@
 
 pkgname=nftables-git
 epoch=1
-pkgver=1.0.9.r255.gaa44b61a
+pkgver=1.1.3.r76.g01acf253
 pkgrel=1
 pkgdesc='Netfilter tables userspace tools'
 arch=('x86_64')
 url='https://netfilter.org/projects/nftables/'
 license=('GPL-2.0-only')
-depends=('libmnl' 'libnftnl' 'gmp' 'readline' 'ncurses' 'jansson')
+depends=('libmnl' 'libnftnl-git' 'gmp' 'readline' 'ncurses' 'jansson')
 optdepends=('python: Python bindings')
 makedepends=('asciidoc' 'git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 backup=('etc/nftables.conf')
