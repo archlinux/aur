@@ -16,10 +16,15 @@ pkgbase = gcc7
 	makedepends = flex
 	options = !emptydirs
 	options = !lto
+	options = !buildflags
 	source = https://gcc.gnu.org/pub/gcc/releases/gcc-7.5.0/gcc-7.5.0.tar.xz
 	source = https://gcc.gnu.org/pub/gcc/infrastructure/isl-0.18.tar.bz2
 	source = bz84080.patch
 	source = libsanitizer.patch
+	md5sums = 79cb8a65d44dfc8a2402b46395535c9a
+	md5sums = 11436d6b205e516635b666090b94ab32
+	md5sums = 2853e8169933470cae2feca1eeb639dd
+	md5sums = aceca259826ccfae106299bbf18fa154
 	sha256sums = b81946e7f01f90528a1f7352ab08cc602b9ccc05d4e44da4bd501c5a189ee661
 	sha256sums = 6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b
 	sha256sums = bce05807443558db55f0d6b4dae37a678ea1bb3388b541c876fe3d110e3717e7
@@ -32,6 +37,7 @@ pkgname = gcc7
 	depends = libmpc
 	options = !emptydirs
 	options = !lto
+	options = !buildflags
 	options = staticlibs
 
 pkgname = gcc7-libs
@@ -39,6 +45,7 @@ pkgname = gcc7-libs
 	depends = glibc>=2.27
 	options = !emptydirs
 	options = !lto
+	options = !buildflags
 	options = !strip
 
 pkgname = gcc7-fortran

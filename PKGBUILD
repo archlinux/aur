@@ -1,4 +1,5 @@
-# Maintainer: David (ReyJamonico) < david at rjamo dot dev >
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Maintainer: David (ReyJamonico) < david at rjamo dot dev >
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Konstantin Gizdov <arch@kge.pw>
@@ -20,11 +21,15 @@ arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='http://gcc.gnu.org'
 makedepends=(binutils libmpc doxygen python subversion flex)
-options=(!emptydirs !lto)
+options=(!emptydirs !lto !buildflags)
 source=(https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz
         https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2
         bz84080.patch
         libsanitizer.patch)
+md5sums=('79cb8a65d44dfc8a2402b46395535c9a'
+         '11436d6b205e516635b666090b94ab32'
+         '2853e8169933470cae2feca1eeb639dd'
+         'aceca259826ccfae106299bbf18fa154')
 sha256sums=('b81946e7f01f90528a1f7352ab08cc602b9ccc05d4e44da4bd501c5a189ee661'
             '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
             'bce05807443558db55f0d6b4dae37a678ea1bb3388b541c876fe3d110e3717e7'
