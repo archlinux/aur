@@ -1,6 +1,6 @@
 pkgbase = claude-code-router
 	pkgdesc = This is a tool for routing Claude Code requests to different models, and you can customize any request.
-	pkgver = 1.0.9
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://github.com/musistudio/claude-code-router
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = claude-code-router
 	makedepends = npm
 	depends = nodejs
 	depends = claude-code
-	noextract = claude-code-router-1.0.9.tgz
-	source = https://registry.npmjs.org/@musistudio/claude-code-router/-/claude-code-router-1.0.9.tgz
-	b2sums = 6ba2150fda1377a490b2e934e84513305c0cf6d85dd3caf83bdb632652dd1151c0ae13cdb1fd136d3ec9feceb795e13df7c5d39ada3cb6cc458c913a867e913e
+	noextract = claude-code-router-1.0.11.tgz
+	source = https://registry.npmjs.org/@musistudio/claude-code-router/-/claude-code-router-1.0.11.tgz
+	b2sums = f2ed51a0a903fffcaf0453a5b2cbf01df99e6a24918b315c67512b871bd3fbf8f9cbcc9f384fda7064eb98bc60e60e39a18cc6559dd9a5030f066658767a0fdf
 
 pkgname = claude-code-router
