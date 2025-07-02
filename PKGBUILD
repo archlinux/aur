@@ -6,8 +6,9 @@
 
 pkgname=discord-bwrap
 _pkgname=Discord
-pkgver=0.0.95
+pkgver=0.0.100
 pkgrel=1
+epoch=1
 pkgdesc="All-in-one voice and text chat for gamers. Sandboxed for privacy."
 arch=('x86_64')
 url='https://discord.com'
@@ -22,10 +23,16 @@ source=("https://dl.discordapp.net/apps/linux/$pkgver/discord-$pkgver.tar.gz"
         "portable-config"
         "discord.sh"
         "discord.desktop")
-sha512sums=('062125c0d331580f0bc7e34fb1b52926a2a3431e08939062738d2895a37e2836dad3e1f6a330d1d0fd3151859248061b3bf7da5ed4107932654ed44efbf57965'
-            '9c06d75a25f1f4a7027d8d4191603cdccb7c1b626995b697106410204840e4dd23f157e7b313a763579d666ff839004d676032e289ca594e25d94be611c9ad66'
-            '491f74c7235be0697f12ff97084fbaaec9185d397eb10d7803e7ca47b5b75d782113aa6855359d7517ff1d130d1f71ba7107cc64ecec34b3576dee1ea9faf3b4'
+sha512sums=('1e7840dcc132b21f2f6acd8e6715b81883d9c1093e719c7768bdd74526e9e5dd3e0125dce4efcbd53a95bd71b06723b91cbc2c58682ee1973759102e03b0621e'
+            '8a94548591a27f3d710b3f74c34a641131dc439f981f0f1e9dbd7a8fc8dfe3e29204ff0d6b87cd565bfebbbdb7190b631b1177df34958047acbafe5b483ef9e9'
+            'a881db4d5f76c8f2f869b0565e6e757b0c462341d2911b24aa8da67e21dbe739fc38ede18486d42a179644a8389355654408d7947ffd6ef0052a4360fb15d91f'
             '2bbac6cd293e231ae93b0f58eecd6a6217b8299d2dbbe2d06a329297fa353506f6e90070aef363445ebd863c0d302bebb7d4af48a4858c25c1ef9b3924feb53b')
+
+function prepare() {
+	echo '''{
+  "SKIP_HOST_UPDATE": true
+}''' >"${srcdir}/skip-update.json"
+}
 
 package() {
   depends=('libnotify' 'libxss' 'nspr' 'nss' 'gtk3' "portable")
@@ -46,8 +53,7 @@ package() {
   install -d "$pkgdir"/usr/share/icons/hicolor/256x256/apps
   ln -s /opt/discord/discord.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/discord.png
 
-#  install -Dm644 LICENSE-$pkgver.html "$pkgdir"/usr/share/licenses/discord/LICENSE.html
-#  install -Dm644 OSS-LICENSES-$pkgver.html "$pkgdir"/usr/share/licenses/discord/OSS-LICENSES.html
   install -Dm644 portable-config "${pkgdir}/usr/lib/portable/info/com.discord.app/config"
   install -Dm755 discord.sh "${pkgdir}/usr/bin/Discord"
+  install -Dm644 "${srcdir}/skip-update.json" "${pkgdir}/usr/share/discord-bwrap/settings.json"
 }

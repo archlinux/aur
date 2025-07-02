@@ -1,10 +1,16 @@
 #!/usr/bin/bash
 
-if [ ${XDG_SESSION_TYPE} = wayland ]; then
-	export launchTarget="/opt/discord/Discord --disable-setuid-sandbox --no-sandbox $@ --ozone-platform-hint=auto --wayland-text-input-version=3"
-else
-	export launchTarget="/opt/discord/Discord --disable-setuid-sandbox --no-sandbox $@"
-fi
+function sourceXDG() {
+	if [[ ! "${XDG_DATA_HOME}" ]]; then
+		export XDG_DATA_HOME="${HOME}/.local/share"
+	fi
+}
+
+sourceXDG
+install \
+	-vDm755 \
+	/usr/share/discord-bwrap/settings.json \
+	"${XDG_DATA_HOME}/Discord_Data/.config/discord/settings.json"
 
 export _portalConfig=/usr/lib/portable/info/com.discord.app/config
 
