@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-openssl
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (Android, aarch64)
-	pkgver = 3.5.0
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://www.openssl.org
 	arch = any
@@ -15,11 +15,11 @@ pkgbase = android-aarch64-openssl
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/openssl/openssl/releases/download/openssl-3.5.0/openssl-3.5.0.tar.gz
-	source = https://github.com/openssl/openssl/releases/download/openssl-3.5.0/openssl-3.5.0.tar.gz.asc
+	source = https://github.com/openssl/openssl/releases/download/openssl-3.5.1/openssl-3.5.1.tar.gz
+	source = https://github.com/openssl/openssl/releases/download/openssl-3.5.1/openssl-3.5.1.tar.gz.asc
 	validpgpkeys = EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5
 	validpgpkeys = BA5473A2B0587B07FB27CF2D216094DFD0CB81EF
-	sha256sums = 344d0a79f1a9b08029b0744e2cc401a43f9c90acd1044d09a530b4885a8e9fc0
+	sha256sums = 529043b15cffa5f36077a4d0af83f3de399807181d607441d734196d889b641f
 	sha256sums = SKIP
 
 pkgname = android-aarch64-openssl
