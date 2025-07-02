@@ -1,0 +1,8 @@
+post_install() {
+  cat <<EOF
+✅ Qtel svxlink has been installed.
+
+🧒 73 de 9M2PJU
+   https://hamradio.my
+EOF
+}
