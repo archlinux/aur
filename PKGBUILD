@@ -7,15 +7,15 @@
 
 # the source package must be downloaded manually
 # this can be done by going to the link here:
-# https://www.modartt.com/download?file=pianoteq_stage_linux_v841.7z
+# https://www.modartt.com/download?file=pianoteq_stage_linux_v843.7z
 # The downloaded files must be placed in the appropriate directory
 # - makepkg: The same directory as this PKGBUILD
 # - yay: /home/<user>/.cache/yay/pianoteq-stage
 # - paru: /home/<user>/.cache/paru/clone/pianoteq-stage/ 
 
 pkgname=pianoteq-stage
-pkgver=8.4.1
-pkgrel=2
+pkgver=8.4.3
+pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=(x86_64 aarch64 armv7h)
 url="https://www.pianoteq.com/pianoteq"
@@ -50,8 +50,8 @@ fi
 
 source=("local://pianoteq_stage_linux_v${pkgver//./}.7z"
   'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-b2sums=('d981a40c51b8272301eb4d2c165d8a6a6bf507c8b58fb849fce14be0ae01f6aa2663a3d210c48c6d9859f5635b6caf546d058784c42d2d7cb9a693995f010598'
-  'bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d')
+b2sums=('c78a40cfbc433d79c2d6ea6fbe63d86c7644816f536904939b5c9687810cf86a08ff2d647205e930acc265bf9b8773c20795960c085c11b1d95e93af264e63e7'
+        'bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d')
 
 prepare() {
   gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='pianoteq 8' --exec="\"$_name\"" --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
