@@ -1,0 +1,15 @@
+pkgbase = epson-inkjet-printer-px-20000
+	pkgdesc = Epson inkjet printer driver (PX-20000)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/man/linux/escp.html
+	arch = i686
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = glibc
+	provides = libEpson_PX_20000.so
+	source = https://download.ebz.epson.net/dsc/f/01/00/01/58/20/053a8ba7e8d47d9ed71d8d7512fefdd160c09865/epson-px-20000-1.0.0-1lsb3.2.src.rpm
+	sha256sums = bf3e22c15dcfc5c19bf8567d2ed6f2c611f71702a1787159e0b0bf0b2c3ad0f3
+
+pkgname = epson-inkjet-printer-px-20000
