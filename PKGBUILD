@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ignition-startup
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Manage startup apps and scripts"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
 )
 source=("git+https://github.com/flattool/ignition.git#tag=$pkgver"
         'git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git')
-sha256sums=('a2f7216c92ea907ac2db7409e1c0717fcb29c887ad103108bfa4476f7fb60117'
+sha256sums=('2873c46756bc51a538907174de8e659408f5dd05c0e0080e7e0c89206f386749'
             'SKIP')
 
 prepare() {
