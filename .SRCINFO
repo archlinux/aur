@@ -1,0 +1,14 @@
+pkgbase = r2d2
+	pkgdesc = The R2D2 programming language CLI written in Go
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ArturC03/r2d2-cli
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = deno
+	source = git+https://github.com/ArturC03/r2d2-cli.git
+	md5sums = SKIP
+
+pkgname = r2d2
