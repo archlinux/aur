@@ -1,6 +1,6 @@
 # Maintainer: Yukari Hafner <shinmera@tymoon.eu>
 pkgname=markless
-pkgver=1.2.0
+pkgver=1.2.9
 pkgrel=1
 epoch=0
 pkgdesc="Allows translating from and to Markless structured text files."
@@ -10,9 +10,9 @@ license=('zlib' 'BSD')
 groups=()
 options=("!strip")
 makedepends=('sbcl')
-source=("https://github.com/shirakumo/cl-markless/archive/$pkgver.tar.gz"
+source=("https://github.com/shirakumo/cl-markless/archive/v$pkgver.tar.gz"
        "https://beta.quicklisp.org/quicklisp.lisp")
-b2sums=('b4342d4711be20b8ead856bbd9e4d17903309f89ba2e2bed48cd7b17eb5951bd24df327356b31057c8d7ae0bacafc91d125243b50fecc6f515e64e300e4b47b4'
+b2sums=('ad5d79dd3f0a5a95c0ed8eba47700a16c3f37eafd76480ab529ac3bd8da78d20e9b1d984ca2ae5448c0b023d10be16efdd7c40bc219f91cf5d9a45fab885b0ea'
         '57d0d29e08d77176fea4f01e644fc11bdb96e9efbd132cbb9720192d3b47599f5ce3c6e0307b44c33add06bd70c28004b8efb8968f1d9deb881a2db4ac615772')
 
 prepare() {
@@ -41,5 +41,5 @@ build() {
 
 package() {
     mkdir -p "$pkgdir/usr/bin/"
-    cp "cl-markless-$pkgver/standalone/cl-markless" "$pkgdir/usr/bin/markless"
+    cp "cl-markless-$pkgver/standalone/cl-markless.run" "$pkgdir/usr/bin/markless"
 }
