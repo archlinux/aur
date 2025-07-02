@@ -76,6 +76,7 @@ b2sums=('SKIP'
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+install=gamescope.install
 
 prepare() {
     cd $_pkgname

@@ -3,6 +3,7 @@ pkgbase = gamescope-sk-git
 	pkgver = 3.15.9.r24.geb74150
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/gamescope
+	install = gamescope.install
 	arch = x86_64
 	license = BSD
 	makedepends = benchmark
