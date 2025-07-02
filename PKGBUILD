@@ -9,7 +9,7 @@ license=('MIT')
 arch=('x86_64')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source_x86_64=("$pkgname-$pkgver.tar.xz::$url/releases/download/v${pkgver/_/-}/${_pkgname}_cli-x86_64-unknown-linux-gnu.tar.xz")
+source_x86_64=("$pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/${_pkgname}_cli-x86_64-unknown-linux-gnu.tar.xz")
 sha256sums_x86_64=('33a82e949fbecf1df557ed94b19f4b4a91a380bb028f9086318b5469ec6a58f2')
 
 package() {
