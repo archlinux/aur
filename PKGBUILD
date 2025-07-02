@@ -6,7 +6,7 @@ pkgver=4.1.0_1
 pkgrel=1
 pkgdesc="Brother DCP-L2640DW lpr driver and CUPS wrapper"
 arch=('i686' 'x86_64')
-url="https://support.brother.com/g/b/downloadend.aspx?c=us&lang=en&prod=dcpl2640dw_us_as&os=128&dlid=dlf106024_000&flang=4&type3=10283"
+url="https://support.brother.com/g/b/downloadend.aspx?c=us&lang=en&prod=dcpl2640dw_us_as&os=127&dlid=dlf106025_000&flang=4&type3=10282"
 
 license=('GPL2' 'custom:brother')
 depends=('cups')
