@@ -1,0 +1,22 @@
+pkgbase = aviator
+	pkgdesc = Your Video Copilot: AV1/OPUS Video Encoder
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/gianni-rosato/aviator
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = python-setuptools
+	depends = ffmpeg
+	depends = gtk4
+	depends = libadwaita
+	depends = python-ffmpeg-progress-yield
+	depends = python-gobject
+	depends = svt-av1
+	provides = aviator
+	conflicts = aviator
+	source = git+https://github.com/gianni-rosato/aviator.git#tag=0.6.0
+	sha512sums = b70bdd33d7849cd7035154d2e11e501f7133d9a6569ca2846b5428a354bb268560e184ebbf057952ae3fb1a02caecada1c9c41f4dc8c59268b19772c3b260717
+
+pkgname = aviator
