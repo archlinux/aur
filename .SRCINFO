@@ -42,7 +42,7 @@ pkgname = zoom-system-qt
 	conflicts = zoom
 
 pkgname = zoom-system-qt-cef
-	pkgdesc = CEF for vebview of
+	pkgdesc = CEF for vebview of zoom-system-qt
 	depends = vivaldi-ffmpeg-codecs
 	depends = sqlite
 	optdepends = vulkan-driver

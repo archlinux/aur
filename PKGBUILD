@@ -59,7 +59,7 @@ package_zoom-system-qt() {
 }
 
 package_zoom-system-qt-cef(){
-  pkgdesc="CEF for vebview of ${_pkgbase}"
+  pkgdesc="CEF for vebview of ${pkgbase}"
   depends+=(sqlite)
   optdepends=(vulkan-driver)
   # Prebuilt libcef.so is not stripped which fills BUILDDIR
