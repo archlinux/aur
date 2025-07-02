@@ -1,5 +1,5 @@
 pkgname=brooklynn-git
-pkgver=r21.g4c61636  # you can update this dynamically in pkgver() if you want
+pkgver=r22.gfe276bc  # you can update this dynamically in pkgver() if you want
 pkgrel=1
 pkgdesc="Brooklynn - A minimal tiling window manager"
 arch=('x86_64')
@@ -19,8 +19,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/Brooklynn"
-  g++ -o brooklynn brooklynn.cpp config.cpp launch.cpp monitor.cpp window.cpp lock.cpp paper.cpp \
-      -lX11 -lXrandr -lXft -I/usr/include/freetype2 -lpam
+  make
 }
 
 package() {

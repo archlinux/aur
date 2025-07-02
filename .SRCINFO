@@ -1,6 +1,6 @@
 pkgbase = brooklynn-git
 	pkgdesc = Brooklynn - A minimal tiling window manager
-	pkgver = r21.g4c61636
+	pkgver = r22.gfe276bc
 	pkgrel = 1
 	url = https://github.com/FedGuy699/Brooklynn
 	arch = x86_64
