@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
         "$pkgname.service")
 sha256sums=('efc4a0edb018d5f8b4a410602297156ba8ebaefe6437f076bd3f04156e2b8865'
-            '5fd5b275586d995d3de3627009eb958b19fd8ce13ec39d7a04b9b948f9befc5b')
+            '8a390a7cf929c1cde607cb06ebd1a1bd85a5b09cf6e82d8833102a22925e64d4')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
