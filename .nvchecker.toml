@@ -1,0 +1,4 @@
+[parlatype]
+source = "git"
+git = "https://github.com/gkarsay/parlatype.git"
+prefix = "v"

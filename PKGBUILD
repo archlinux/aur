@@ -3,8 +3,8 @@
 
 _pkgname="parlatype"
 pkgname="$_pkgname"
-pkgver=4.2
-pkgrel=2
+pkgver=4.3
+pkgrel=1
 pkgdesc="GNOME audio player for transcription"
 url="https://github.com/gkarsay/parlatype"
 license=('GPL-3.0-or-later')
@@ -26,7 +26,7 @@ optdepends=(
 
 _pkgsrc="$pkgname-$pkgver"
 source=("https://github.com/gkarsay/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('1d1e0aaac795249ab95ca393a17a99d9f721d7a99905acadc794eb16f8f5b538')
+sha256sums=('b942ec53d93cf823ebbbe9153c7b5855f404d4ac4680881dc921f490ec59dda7')
 
 build() {
   arch-meson "$_pkgsrc" build
