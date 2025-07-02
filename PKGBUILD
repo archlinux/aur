@@ -23,7 +23,7 @@ optdepends=(
 makedepends=()  # no build‐time deps, binaries ship pre‐built
 
 source=(
-  "Replay-${pkgver}.deb::https://github.com/KylerianHD/replay-bin/releases/tag/${pkgver}/download/Replay-${pkgver}.deb"
+  "Replay-${pkgver}.deb::https://github.com/KylerianHD/replay-bin/releases/download/${pkgver}/Replay-${pkgver}.deb"
 )
 sha256sums=('5d3cc65ae2f8fcdd794afbc244dc162e7c14af615b51dab96d4760a1f0620571')
 

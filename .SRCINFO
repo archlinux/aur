@@ -15,7 +15,7 @@ pkgbase = replay-bin
 	depends = util-linux-libs
 	depends = libsecret
 	optdepends = libappindicator3-1: A library to allow applications to export a menu into the panel. Based on KSNI it also works in KDE and will fallback to generic Systray support.
-	source = Replay-7.3.3.deb::https://github.com/KylerianHD/replay-bin/releases/tag/7.3.3/download/Replay-7.3.3.deb
+	source = Replay-7.3.3.deb::https://github.com/KylerianHD/replay-bin/releases/download/7.3.3/Replay-7.3.3.deb
 	sha256sums = 5d3cc65ae2f8fcdd794afbc244dc162e7c14af615b51dab96d4760a1f0620571
 
 pkgname = replay-bin
