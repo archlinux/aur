@@ -1,0 +1,16 @@
+pkgbase = gawk-awkl-git
+	pkgdesc = Awk's well-kempt library. Collection of modules to augment gawk functionality
+	pkgver = 0
+	pkgrel = 1
+	url = https://codeberg.org/tplasdio/awkl
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = make
+	depends = gawk
+	source = git+https://codeberg.org/tplasdio/awkl
+	md5sums = SKIP
+
+pkgname = gawk-awkl-git
