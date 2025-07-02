@@ -8,3 +8,20 @@ post_install() {
 	 >  https://github.com/eworm-de/pacredir#usage
 	EOM
 }
+
+post_upgrade() {
+  # return if old package version greater 0.5...
+  (( $(vercmp $2 '0.5') > 0 )) && return
+
+  # upgrade from pre-0.5 version, avahi service names changed
+  cat <<-EOM
+	 > This upgrade from pacredir $2 to pacredir $1 changes avahi service
+	 > names. Make sure to update all your installations for compatibility.
+	 > The services will be restarted post transaction.
+	EOM
+
+  # mark for restart
+  for UNIT in pac{redir,serve}.service; do
+    systemctl set-property --runtime "${UNIT}" Markers=needs-restart
+  done
+}
