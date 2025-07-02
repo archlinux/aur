@@ -41,4 +41,4 @@ pkgname = python-cugraph
 	depends = python-dask-cuda
 	depends = python-pylibcudf
 	depends = python-rmm
-	depends = python-dask-raft
+	depends = python-raft-dask

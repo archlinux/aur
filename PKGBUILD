@@ -64,7 +64,8 @@ package_python-pylibcugraph() {
 }
 
 package_python-cugraph() {
-    depends+=('python' 'cugraph' 'python-pylibcugraph' 'python-dask-cudf' 'python-dask-cuda' 'python-pylibcudf' 'python-rmm' 'python-dask-raft')
+    depends+=('python' 'cugraph' 'python-pylibcugraph' 'python-dask-cudf' 'python-dask-cuda'
+        'python-pylibcudf' 'python-rmm' 'python-raft-dask')
     cd "$srcdir/$pkgbase-$pkgver/python/cugraph"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
