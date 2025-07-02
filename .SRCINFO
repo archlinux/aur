@@ -1,9 +1,9 @@
-pkgbase = davinci-resolve
+pkgbase = davinci-resolve-community
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
 	pkgver = 20.0.1
 	pkgrel = 1
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
-	install = davinci-resolve.install
+	install = davinci-resolve-community.install
 	arch = x86_64
 	license = LicenseRef-Commercial
 	makedepends = libarchive
@@ -40,4 +40,4 @@ pkgbase = davinci-resolve
 	sha256sums = 604c49212b643baaf2ca181304b2e2a04401c3084dc90664fa87b6d2ad2ad3f1
 	sha256sums = f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8
 
-pkgname = davinci-resolve
+pkgname = davinci-resolve-community
