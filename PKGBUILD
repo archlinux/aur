@@ -1,64 +1,108 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Conditional PKGBUILD - works for both binary (CI/CD) and source (AUR) builds
+# Set AUR_BUILD=1 environment variable for AUR source builds
 
-# The following guidelines are specific to BZR, GIT, HG and SVN packages.
-# Other VCS sources are not natively supported by makepkg yet.
+if [[ "${AUR_BUILD}" == "1" ]]; then
+  # AUR git package configuration
+  pkgname=system-bridge-git
+  pkgver=r0.0.0.0
+  pkgrel=1
+  pkgdesc="A bridge between your systems (git version)"
+  makedepends=('git' 'go' 'bun-bin')
+  source=("$pkgname::git+https://github.com/timmo001/system-bridge.git")
+  md5sums=('SKIP')
+else
+  # Binary package configuration (CI/CD)
+  pkgname=system-bridge
+  pkgver=${ARCH_PKGVER}
+  pkgrel=1
+  pkgdesc="A bridge between your systems"
+  source=('system-bridge' 'system-bridge.desktop' 'system-bridge.svg' 'system-bridge-16.png' 'system-bridge-32.png' 'system-bridge-48.png' 'system-bridge-128.png' 'system-bridge-256.png' 'system-bridge-512.png' 'LICENSE')
+fi
 
-# Maintainer: Bradley Nelson <bradleynelson102@gmail.com>
-pkgname=system-bridge-git
-gitname=system-bridge
-pkgver=v2.2.1.r4.g89f9466
-pkgrel=1
-pkgdesc="A bridge for your systems"
-arch=('any')
-url="https://system-bridge.timmo.dev/"
-license=('MIT')
-groups=()
-depends=()
-makedepends=(git yarn) # 'bzr', 'git', 'mercurial' or 'subversion'
-provides=("${pkgname%-git}")
-conflicts=("system-bridge" "system-bridge-bin")
-replaces=()
-backup=()
-options=()
-install=
-source=("git://github.com/timmo001/${gitname}" system-bridge.desktop)
-noextract=()
-md5sums=('SKIP' '3f8b60172f0a2d5699767b1baac8e670')
+# Common configuration
+arch=('x86_64')
+url="https://github.com/timmo001/system-bridge"
+license=('Apache-2.0')
+depends=('libx11' 'libxtst' 'libxkbcommon' 'libxkbcommon-x11')
+provides=('system-bridge')
+conflicts=('system-bridge')
 
+# AUR-specific functions
 pkgver() {
-	cd "$srcdir/${gitname}"
-	git describe --long --tags| sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd "$srcdir/${gitname}"
-	yarn install:all
+  if [[ "${AUR_BUILD}" == "1" ]]; then
+    if [[ -d "$pkgname" ]]; then
+      cd "$pkgname"
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    else
+      # Fallback for when source dir doesn't exist (e.g., during --printsrcinfo)
+      echo "r0.0.0.0"
+    fi
+  fi
 }
 
 build() {
-	cd "$srcdir/${gitname}"
-	yarn package
+  if [[ "${AUR_BUILD}" == "1" ]]; then
+    cd "$pkgname"
+    
+    # Use the same build process as your Makefile
+    export STATIC_EXPORT=true
+    export CGO_ENABLED=1
+    
+    # Build web client
+    make build_client
+    
+    # Build Go application
+    local version="5.0.0-dev+$(git rev-parse --short HEAD)"
+    go build -v -ldflags="-X 'github.com/timmo001/system-bridge/version.Version=${version}'" -o "system-bridge" .
+  fi
 }
 
 package() {
-	cd "$srcdir/${gitname}"
-	mkdir -p "${pkgdir}"/usr/local/share/system-bridge
-	pwd
-	echo "${pkgdir}"
-	install -Dm755 ./LICENSE "${pkgdir}"/usr/share/licenses/system-bridge/LICENSE
-	install -Dm755 ./out/system-bridge "${pkgdir}"/usr/local/share/system-bridge/system-bridge
-	install -Dm755 ./out/system-bridge-circle.ico "${pkgdir}"/usr/local/share/system-bridge/system-bridge-circle.ico
-	install -Dm755 ./out/system-bridge-circle.png "${pkgdir}"/usr/local/share/system-bridge/system-bridge-circle.png
-	install -Dm755 ./out/system-bridge-tray "${pkgdir}"/usr/local/share/system-bridge/system-bridge-tray
-	install -Dm755 ./out/xdg-open "${pkgdir}"/usr/local/share/system-bridge/xdg-open
-	install -Dm755 ./out/traybin/tray_linux_release "${pkgdir}"/usr/local/share/system-bridge/traybin/tray_linux_release
-	install -Dm755 $srcdir/system-bridge.desktop $pkgdir/usr/share/applications/system-bridge.desktop 
-}
+  # Create directories
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/applications"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -dm755 "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+  install -dm755 "$pkgdir/usr/share/icons/hicolor/16x16/apps"
+  install -dm755 "$pkgdir/usr/share/icons/hicolor/32x32/apps"
+  install -dm755 "$pkgdir/usr/share/icons/hicolor/48x48/apps"
+  install -dm755 "$pkgdir/usr/share/icons/hicolor/128x128/apps"
+  install -dm755 "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+  install -dm755 "$pkgdir/usr/share/icons/hicolor/512x512/apps"
 
-# check() {
-# 	cd "$srcdir/${pkgname%-git}"
-# 	yarn test
-# }
+  if [[ "${AUR_BUILD}" == "1" ]]; then
+    # AUR source build - files are in the git repo directory
+    cd "$srcdir/$pkgname"
+    
+    # Install binary (built in build() function)
+    install -Dm755 system-bridge "$pkgdir/usr/bin/system-bridge"
+
+    # Install files from repo
+    install -Dm644 .scripts/linux/system-bridge.desktop "$pkgdir/usr/share/applications/system-bridge.desktop"
+    install -Dm644 .resources/system-bridge-dimmed.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/system-bridge.svg"
+    install -Dm644 .resources/system-bridge-dimmed-16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/system-bridge.png"
+    install -Dm644 .resources/system-bridge-dimmed-32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/system-bridge.png"
+    install -Dm644 .resources/system-bridge-dimmed-48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/system-bridge.png"
+    install -Dm644 .resources/system-bridge-dimmed-128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/system-bridge.png"
+    install -Dm644 .resources/system-bridge-dimmed-256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/system-bridge.png"
+    install -Dm644 .resources/system-bridge-dimmed-512.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/system-bridge.png"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  else
+    # Binary build - files are copied to srcdir by create-arch.sh
+    cd "$srcdir"
+    
+    # Install binary
+    install -Dm755 system-bridge "$pkgdir/usr/bin/system-bridge"
+
+    # Install desktop file and assets
+    install -Dm644 system-bridge.desktop "$pkgdir/usr/share/applications/system-bridge.desktop"
+    install -Dm644 system-bridge.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/system-bridge.svg"
+    install -Dm644 system-bridge-16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/system-bridge.png"
+    install -Dm644 system-bridge-32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/system-bridge.png"
+    install -Dm644 system-bridge-48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/system-bridge.png"
+    install -Dm644 system-bridge-128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/system-bridge.png"
+    install -Dm644 system-bridge-256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/system-bridge.png"
+    install -Dm644 system-bridge-512.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/system-bridge.png"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  fi
+}
