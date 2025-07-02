@@ -9,7 +9,14 @@ Target=opera-developer
 Target=electron36
 Target=electron35
 Target=electron34
+Target=electron33
+Target=electron32
+Target=electron31
+Target=electron30
+Target=electron29
+Target=electron28
+Target=nwjs
 
 [Action]
 When=PostTransaction
-Exec=/usr/bin/bash -c 'chmod a-r /usr/lib/{opera{,-beta,-developer},electron{34..36}}/libffmpeg.so 2>/dev/null||:'
+Exec=/usr/bin/bash -c 'chmod a-r /{usr/lib/{opera{,-beta,-developer},electron{28..36}},opt/{vivaldi,nwjs}/lib}/libffmpeg.so 2>/dev/null||:'
