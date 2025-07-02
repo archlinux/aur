@@ -1,6 +1,6 @@
 # Maintainer: Yukari Hafner <shinmera@tymoon.eu>
 pkgname=libsf3
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 epoch=0
 pkgdesc="C library to parse Simple File Format Family (SF3) files"
@@ -11,7 +11,7 @@ groups=()
 options=()
 makedepends=('doxygen' 'cmake')
 source=("https://github.com/Shirakumo/$pkgname/archive/$pkgver.tar.gz")
-b2sums=('90cdde4e7e5344053cb8b23232daa68864ba891dcedfc22003f434f8c063f8dd84cfa74cdcf335311e4c0a0334205fc25a07bb545120c0623aa3ad071aabfd71')
+b2sums=('59aac59a25d50942f3363f200a9b4affd338bad93c377e97dcde0ed339a01c935ab8c919f62b1f508dab485aa22f242200fe370c448efd5f9ffc4c4f11adbf61')
 
 prepare() {
     cd "$pkgname-$pkgver"
