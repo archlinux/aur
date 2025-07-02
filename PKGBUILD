@@ -5,15 +5,16 @@
 _name="Pianoteq 8"
 pkgname=pianoteq
 pkgver=8.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Physical modelling piano instrument as a standalone program, VST2 and LV2 plugin"
 arch=(aarch64 armv7h x86_64)
 url='https://www.modartt.com/pianoteq'
 license=(LicenseRef-EULA)
-depends=(freetype2 gcc-libs glibc libglvnd ttf-font)
+groups=(lv2-plugins pro-audio vst-plugins)
+depends=(alsa-lib freetype2 gcc-libs glibc libglvnd ttf-font)
 makedepends=(gendesk)
 optdepends=(
-  'jack: for using the JACK backend'
+  'jack: JACK support for stand-alone application'
   'lv2-host: for loading the LV2 plugin'
   'vst-host: for loading the VST2 plugin'
 )
@@ -28,11 +29,11 @@ sha256sums=('ef6795f9dde3c116494ace88e1ed39e59ad1fddbe787001a33adde644400b4e8'
 
 prepare() {
   gendesk -f -n \
-    --pkgname "$pkgname" \
-    --pkgdesc "$pkgdesc" \
-    --name='Pianoteq 8' \
-    --exec='pianoteq8' \
-    --categories 'Audio;AudioVideo;AudioVideoEditing;Midi;Music;Sequencer;'
+    --pkgname="$pkgname" \
+    --pkgdesc="$pkgdesc" \
+    --name="$_name" \
+    --exec="${pkgname}${pkgver%%.*}" \
+    --categories='Audio;AudioVideo;AudioVideoEditing;Midi;Music;Sequencer;'
 }
 
 package() {
