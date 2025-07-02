@@ -1,6 +1,6 @@
 pkgbase = gamescope-sk
 	pkgdesc = SteamOS session compositing window manager
-	pkgver = 3.16.ba123.f1
+	pkgver = 3.16.ba123.f2
 	pkgrel = 1
 	url = https://github.com/3003n/gamescope
 	install = gamescope.install
@@ -48,7 +48,7 @@ pkgbase = gamescope-sk
 	depends = xorg-server-xwayland
 	provides = gamescope
 	conflicts = gamescope
-	source = git+https://github.com/3003n/gamescope.git#tag=3.16.ba123.f1
+	source = git+https://github.com/3003n/gamescope.git#tag=3.16.ba123.f2
 	source = git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a
 	source = git+https://github.com/bazzite-org/wlroots.git
 	source = git+https://gitlab.freedesktop.org/emersion/libliftoff.git
@@ -57,7 +57,7 @@ pkgbase = gamescope-sk
 	source = git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git
 	source = git+https://github.com/Joshua-Ashton/reshade.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
-	b2sums = 711b9d1e267cf0a26459d245cfc6273321edeb5f56226a099449bc0d64525f15df34993e580058e620ef6a875527c93687c081fb8d7283afee27fd0975d69c50
+	b2sums = d43457037faf5962eecdce4f33eb6609b2150ba3d607e80ee68ed1276bae5a982a29382e7ad7e51c52c650779c8c701949102ca32924df5d021b394898a2496d
 	b2sums = db31478999287cc5b08cc7d98d1daa43a27b339b3ad975269710bd719d30e9f1cf5ee240ee7e2a8d8551f20fa46da14acd669cb207b26a18d79b360e718ff55b
 	b2sums = SKIP
 	b2sums = SKIP
