@@ -1,6 +1,6 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=quik
-pkgver=12.4.0
+pkgver=12.5.0
 pkgrel=1
 stratver=3.0.5
 trustver=2.10.0
@@ -12,7 +12,7 @@ noextract=('keygen.zip')
 depends=('wine')
 
 source=(
-"https://arqatech.com/upload/iblock/149/quik_${pkgver}_upd.zip"
+"https://arqatech.com/upload/iblock/0de/quik_${pkgver}_upd.zip"
 "ftp://ftp.quik.ru/public/updates/10.2/StratVolat_${stratver}_upd.zip"
 #"ftp://ftp.quik.ru/public/updates/11.2/TrustManager_${trustver}_upd.zip"
 #"ftp://ftp.quik.ru/public/updates/10.2/BTrading_${btradever}_upd.zip"
@@ -25,7 +25,7 @@ source=(
 "ip.cfg"
 )
 sha256sums=(
-'d4e1ffea61080ecb9d99a78566c59871a42e94d9c3ad3eda73cebcf7bcd9b174' # quik_12.4.0_upd.zip
+'f5b49d7be5020be2e385c1d353fbd991d158da93c204cdec38908afd11814592' # quik_12.5.0_upd.zip
 'd32095309cd7359f4078a74179d8ae42e013e3fd3ad75837f0fa3941e7091b75' # StratVolat 3.0.5
 #'ff4dd52e56fabe8c06730daca770a92312338303bc06b58d417105d44c5a0869' # TrustManager
 #'0f6724e6666c379cf9a1f53aa627f4b0c56fded2d7e3fbf3704d6526066fa8e3' # BasketTrading
