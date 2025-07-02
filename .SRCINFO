@@ -1,0 +1,23 @@
+pkgbase = electrum-ltc-appimage
+	pkgdesc = Litecoin wallet (AppImage)
+	pkgver = 4.2.2.1
+	pkgrel = 1
+	url = https://electrum-ltc.org/
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = zlib
+	depends = hicolor-icon-theme
+	optdepends = libxss: for screen saver suspension
+	optdepends = gconf: for storing application preferences
+	provides = electrum-ltc
+	conflicts = electrum-ltc
+	conflicts = electrum-ltc-git
+	options = !strip
+	source = https://electrum-ltc.org/download/electrum-ltc-4.2.2.1-x86_64.AppImage
+	source = https://electrum-ltc.org/download/electrum-ltc-4.2.2.1-x86_64.AppImage.asc
+	validpgpkeys = CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA
+	sha256sums = 8c27621f87a51baf5b3a492696606a5b55c72b6a9804e3baa8f161cd7cc5d8f5
+	sha256sums = 91719dd7b7b2f6e28766137a50430b755423d99bbc48876d9c73b67325574765
+
+pkgname = electrum-ltc-appimage

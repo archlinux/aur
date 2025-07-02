@@ -1,0 +1,4 @@
+[electrum-ltc-appimage]
+source = "regex"
+url = "https://electrum-ltc.org/"
+regex = 'electrum-ltc-([0-9]+\.[0-9]+\.[0-9]+(?:\.[0-9]+)?)-x86_64\.AppImage'
