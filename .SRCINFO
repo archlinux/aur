@@ -10,7 +10,6 @@ pkgbase = qtel-svxlink-git
 	makedepends = git
 	makedepends = make
 	makedepends = gcc
-	makedepends = qt5-tools
 	depends = qt5-base
 	depends = alsa-lib
 	depends = libsigc++
