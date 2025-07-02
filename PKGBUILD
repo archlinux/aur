@@ -3,26 +3,26 @@
 # Contributor: Simon Thorpe <simon@hivetechnology.com.au>
 
 pkgname=pianoteq-standard-trial-bin
-pkgver=8.4.1
+pkgver=8.4.3
 pkgrel=1
 _name="Pianoteq ${pkgver%%.*}"
 pkgdesc='Physical modelling piano instrument standalone program, VST2 and LV2 plugin. STANDARD trial version'
-arch=(x86_64 armv7h aarch64)
+arch=(aarch64 armv7h x86_64)
 url="https://www.modartt.com/pianoteq"
-license=(custom)
+license=(LicenseRef-EULA)
 groups=(lv2-plugins pro-audio vst-plugins)
-depends=(alsa-lib libx11)
+depends=(alsa-lib freetype2 gcc-libs glibc libglvnd ttf-font)
 makedepends=(gendesk)
 optdepends=(
-    'jack: JACK support for stand-alone application'
-    'lv2-host: for loading the LV2 plugin'
-    'vst-host: for loading the VST2 plugin'
+  'jack: JACK support for stand-alone application'
+  'lv2-host: for loading the LV2 plugin'
+  'vst-host: for loading the VST2 plugin'
 )
 provides=(${pkgname%-*})
 conflicts=(${pkgname%-*} pianoteq-standard-bin)
 source=("local://pianoteq_linux_trial_v${pkgver//./}.7z"
         'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-sha256sums=('113a7f67eea5771217c81e6083bee91f8ad28c58b8cd80ec8783dba640f35fa0'
+sha256sums=('3f97fe799715ff2d7ed16f393d1be9cfd09e8cbc06626bd174f72f6d73a2213c'
             '94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 
 prepare() {
@@ -33,10 +33,11 @@ prepare() {
     --pkgdesc="$pkgdesc" \
     --name="$_name" \
     --exec="\"$_name\"" \
-    --categories 'Audio;AudioVideo;AudioVideoEditing;Midi;Music;Sequencer;'
+    --categories='Audio;AudioVideo;AudioVideoEditing;Midi;Music;Sequencer;'
 }
 
 package() {
+  depends+=(libfreetype.so libasound.so)
   cd "$_name"
 
   # Define architecture specific directory:
