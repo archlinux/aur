@@ -2,7 +2,7 @@
 
 pkgname=nexusmods-app-bin
 _pkgname=nexusmods-app
-pkgver=0.12.3
+pkgver=0.13.4
 pkgrel=1
 _fullver=${pkgver}-${pkgrel}
 pkgdesc="A mod installer, creator and manager for all your popular games."
@@ -19,7 +19,7 @@ source=("https://github.com/Nexus-Mods/NexusMods.App/releases/download/v${pkgver
 	"${pkgname}-${pkgver}.desktop::https://github.com/Nexus-Mods/NexusMods.App/raw/v${pkgver}/src/NexusMods.App/com.nexusmods.app.desktop"
 	"nexusmods-app-bin.install")
 
-sha256sums=('672c18e8a2a455ac2752ce26b658da0b3f2b468cc0fa3810cf837c0284713c67'
+sha256sums=('dd162e0fc8a76ed24038c1be9288efab778524bca10275f22c5719de825d99b2'
             '5a22eccfb001eacbf2756f2e21fa371dbafd9e84b20bb6a484d781bde33089cb'
             '32dbc2977aaba2d5013a2534462da9d4c2534c3d2ef4391505bcd6a287ae8925'
             '4bac4c5db66d92ebb80285ecc2c4ec5fb4d738d68ad5bde10f6058cfbf03a445')
@@ -36,6 +36,7 @@ prepare() {
 	bsdtar -xf "${srcdir}/NexusMods.App-${pkgver}-1.linux-x64.zip" -C "${_pkgname}"
 	chmod +x nexusmods-app/NexusMods.App
 	sed -i 's^${INSTALL_EXEC}^/opt/nexusmods-app/NexusMods.App^g' ${pkgname}-${pkgver}.desktop
+	sed -i 's^${INSTALL_TRYEXEC}^/opt/nexusmods-app/NexusMods.App^g' ${pkgname}-${pkgver}.desktop
 }
 
 package() {
