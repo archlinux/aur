@@ -1,0 +1,7 @@
+generated-by = makedeb
+pkgbase = koca
+pkgname = koca
+pkgdesc = A package manager for making packages
+pkgrel = 1
+pkgver = 0.0.1
+arch = any
