@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/usr/bin/discord-mpris-rs
-EnvironmentFile=%h/.config/discord-mpris-rs/.env
+EnvironmentFile=/usr/share/discord-mpris-rs/.env
 
 [Install]
 WantedBy=default.target
