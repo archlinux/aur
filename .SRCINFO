@@ -7,7 +7,6 @@ pkgbase = gobypass403-bin
 	license = MIT
 	depends = go
 	source = https://github.com/slicingmelon/gobypass403/releases/download/v0.8.4/gobypass403_0.8.4_linux-amd64
-	source = https://raw.githubusercontent.com/slicingmelon/gobypass403/main/LICENSE
 	sha256sums = 77de9cf875559f2f183690c4cb12477858adc872f020c12f7d371f2bd1efde0f
 
 pkgname = gobypass403-bin

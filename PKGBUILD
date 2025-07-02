@@ -7,14 +7,10 @@ arch=('x86_64')
 url="https://github.com/slicingmelon/gobypass403"
 license=('MIT')
 depends=('go')
-source=(
-    "https://github.com/slicingmelon/gobypass403/releases/download/v${pkgver}/gobypass403_${pkgver}_linux-amd64"
-    "https://raw.githubusercontent.com/slicingmelon/gobypass403/main/LICENSE"
-)
+source=("https://github.com/slicingmelon/gobypass403/releases/download/v${pkgver}/gobypass403_${pkgver}_linux-amd64")
 sha256sums=('77de9cf875559f2f183690c4cb12477858adc872f020c12f7d371f2bd1efde0f')
 
 
 package() {
     install -Dm755 "$srcdir/gobypass403_${pkgver}_linux-amd64" "$pkgdir/usr/bin/gobypass403"
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
