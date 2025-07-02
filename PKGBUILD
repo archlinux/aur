@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=wlr-which-key
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Keymap manager for wlroots-based compositors"
 arch=(x86_64)
@@ -18,8 +18,8 @@ depends=(
 makedepends=(rust)
 options=(!debug)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('28296e97adafa463897f5e9f33714f659c8c7c999e1fd8736d6200af09c253df3692ebbb34905cabcb99048d3960cfc8ccfc843466dc7f587eff27c1caaef4c2')
-b2sums=('6d56385bb085ecf6360d2f1bd1946c3ec145948a14281ddf319f7763d299ac07f5ba57508040bafb716a964ef030d7e0b507a13000f6c4268e3591410675c3cc')
+sha512sums=('980ebfd33dd7e20aa314c81972d6497ca7592265b2574c6f6c33ad0404f6008406c36edb7dedb076c370ba1591fc70b46ca61d6014fa067c99ddd05af54bcb89')
+b2sums=('fa6a0c1ba976134becf5061e7a599db9b56e8f13ee608da6f7769e767cff9906bb4e697280d9d27e38790a94d964568ca1fd5a899e92b59e14ee1e6c3f5203cd')
 
 prepare() {
   cd $pkgname-$pkgver
