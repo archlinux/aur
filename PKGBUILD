@@ -2,7 +2,7 @@
 pkgname=chromium-ffmpeg-codecs
 _ffver=7.1.1
 pkgver=${_ffver}.m136_119
-pkgrel=3
+pkgrel=4
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium-s (non vendored ${_so})"
 arch=('x86_64')
@@ -15,11 +15,11 @@ install=on-other-ffmpeg.install
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             '0a4693424f173c4c4d0f1853189d1bd422dcc08f512cc33af3d2acf1e2483e8c'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
-            '0385dbeb9c6f5485c323a61786fa8e2680a44838cf216582d385231bd1a9bad6'
-            '28744d069c956fb5def82163fbaed06c1d5b7f718c9451ed82a4af039124255e')
+            'f5b93f01aa478011df98d76cbc1b855282963584854cd5221c8ec5d544756ed4'
+            '9fe03a5e707a78bceb0ea9ebb8ad95c73f816bb52062701c17d1679df6667bdd')
 depends=(glibc)
 makedepends=(diffutils gcc make nasm patch sed)
-optdepends=(electron{34..36}": replace ${_so}")
+optdepends=({electron{28..36},nwjs}": replace ${_so}")
 conflicts=(vivaldi-ffmpeg-codecs opera{,-developer,-beta}-ffmpeg-codecs{,-bin})
 provides=("${conflicts[@]}")
 
