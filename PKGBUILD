@@ -1,7 +1,7 @@
 # Maintainer: insmtr <insmtr@insmtr.cn>
 
 pkgname=python-colcon-cargo
-pkgver=r62.ec2b28b
+pkgver=dev
 pkgrel=1
 pkgdesc='An extension for colcon-core to support Rust projects built with Cargo'
 arch=('any')
