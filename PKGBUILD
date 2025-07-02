@@ -2,7 +2,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=grain-bin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A modern web staple. A new language that puts academic language features to work"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('grain')
 conflicts=('grain')
 depends=('gcc-libs')
 source_x86_64=("grain-$pkgver::$url/releases/download/grain-v$pkgver/grain-linux-x64")
-sha256sums_x86_64=('4df389f04077c080e29a88d79a4168db8ed6f78b9d23ea0857985c0bddfbd778')
+sha256sums_x86_64=('5a6a8bbb59a0ad077b4b889fab2577d4cf12d026225cfa51e47c807329406880')
 options=(!strip)
 
 package() {
