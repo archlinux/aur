@@ -1,6 +1,6 @@
 pkgbase = python-colcon-cargo
 	pkgdesc = An extension for colcon-core to support Rust projects built with Cargo
-	pkgver = r62.ec2b28b
+	pkgver = dev
 	pkgrel = 1
 	url = https://github.com/colcon/colcon-cargo
 	arch = any
