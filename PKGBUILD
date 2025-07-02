@@ -1,7 +1,7 @@
 # Maintainer: Ilyess Bachiri <ae767c5e-13d3-460e-8b0e-03929616d9ad@anonaddy.me>
 pkgname=otoclone
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Automatic backup utility"
 arch=("x86_64")
 url="https://github.com/bilyes/otoclone"
