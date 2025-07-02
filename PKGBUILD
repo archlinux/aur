@@ -4,7 +4,7 @@
 # Maintainer: Miguel Revilla Rodríguez <yo at miguelrevilla.com>
 
 pkgname=scribus-svn
-pkgver=26453
+pkgver=26933
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -23,8 +23,7 @@ depends=(	boost-libs
 			libcdr
 			libcups
 			libfreehand
-			libjpeg
-			libjxl
+			libjpeg-turbo
 			libmspub
 			libpagemaker
 			libpng
@@ -39,6 +38,7 @@ depends=(	boost-libs
 			podofo
 			poppler
 			python
+			python-pillow
 			qt6-5compat
 			qt6-base
 			qt6-declarative
@@ -70,6 +70,7 @@ prepare() {
 build() {
   cd ${_svnmod}/Scribus
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+  	-DHAVE_PYTHON=ON \
 	-DWANT_GRAPHICSMAGICK:BOOL=YES \
 	-DCMAKE_LIBRARY_PATH:PATH=/usr/lib/qt6 \
 	-DCMAKE_SKIP_RPATH=ON \
@@ -78,7 +79,8 @@ build() {
 	-DWANT_SVNVERSION:BOOL=YES \
 	-DWANT_CPP20:BOOL=YES \
 	-DWANT_CPP20=ON \
-	-DWITH_PODOFO=ON
+	-DWITH_PODOFO=ON \
+	-DWANT_DISTROBUILD=ON
 
   make
 }
