@@ -1,0 +1,20 @@
+--- src/ucxx-0.44.00/python/ucxx/CMakeLists.txt	2025-06-06 01:35:01.000000000 +0800
++++ src/ucxx-0.44.00/python/ucxx/CMakeLists.txt.new	2025-07-02 19:01:04.135627107 +0800
+@@ -25,10 +25,16 @@
+ )
+ 
+ option(FIND_UCXX_PYTHON
+-       "Search for existing UCXX Python library installations before defaulting to local files" OFF
++	"Search for existing UCXX Python library installations before defaulting to local files" ON
+ )
+ option(UCXX_BUILD_TESTS "Configure CMake to build Cython tests" OFF)
+ 
++
++find_package(CCCL REQUIRED)
++find_package(nvtx3 REQUIRED)
++find_package(rapids_logger REQUIRED)
++find_package(rmm REQUIRED)
++
+ # If the user requested it we attempt to find UCXX.
+ if(FIND_UCXX_PYTHON)
+   find_package(ucx REQUIRED)

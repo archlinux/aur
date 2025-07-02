@@ -1,0 +1,14 @@
+--- src/ucxx-0.44.00/cpp/CMakeLists.txt	2025-06-06 01:35:01.000000000 +0800
++++ src/ucxx-0.44.00/cpp/CMakeLists.txt.new	2025-07-02 17:04:23.748211677 +0800
+@@ -107,7 +107,10 @@
+ rapids_cpm_init()
+ # find rmm
+ if(UCXX_ENABLE_RMM)
+-  include(cmake/thirdparty/get_rmm.cmake)
++  find_package(CCCL REQUIRED)
++  find_package(rapids_logger REQUIRED)
++  find_package(nvtx3 REQUIRED)
++  find_package(rmm REQUIRED)
+ endif()
+ # find or install GoogleTest
+ if(BUILD_TESTS)

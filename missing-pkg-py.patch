@@ -1,0 +1,12 @@
+--- src/ucxx-0.44.00/cpp/python/CMakeLists.txt.new	2025-07-02 17:16:09.281485189 +0800
++++ src/ucxx-0.44.00/cpp/python/CMakeLists.txt	2025-07-02 17:16:53.554451684 +0800
+@@ -39,6 +39,9 @@
+ include(../cmake/thirdparty/get_rmm.cmake)
+ 
+ if(FIND_UCXX_CPP)
++  find_package(CCCL REQUIRED)
++  find_package(nvtx3 REQUIRED)
++  find_package(rapids_logger REQUIRED)
+   rapids_find_package(
+     ucxx REQUIRED
+     BUILD_EXPORT_SET ucxx-python-exports

@@ -1,0 +1,33 @@
+pkgbase = ucxx
+	pkgdesc = UCXX is an object-oriented C++ interface for UCX, with native support for Python bindings.
+	pkgver = 0.44.00
+	pkgrel = 1
+	url = https://github.com/rapidsai/ucxx
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cuda
+	makedepends = python-setuptools
+	makedepends = cmake
+	makedepends = python-scikit-build-core
+	makedepends = python-rapids-build-backend
+	makedepends = ninja
+	makedepends = cython
+	depends = rmm
+	source = https://github.com/rapidsai/ucxx/archive/refs/tags/v0.44.00.tar.gz
+	source = system-lib.patch
+	source = missing-pkg.patch
+	source = missing-pkg-py.patch
+	sha256sums = 79a1f343185f1d4bd0a8d721f53b6b3864cb4c6dfca0909cb6bbb6dea31337e5
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ucxx
+
+pkgname = python-ucxx
+	depends = rmm
+	depends = python
+	depends = python-rmm
+	depends = python-numpy
+	depends = python-pynvml
+	depends = ucxx
