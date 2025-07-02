@@ -1,7 +1,7 @@
 pkgbase = i2p-bin
 	pkgdesc = A distributed anonymous network (pre-compiled binary)
 	pkgver = 2.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://geti2p.net
 	install = i2p.install
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = i2p-bin
 	source = chromium-i2p.sh
 	validpgpkeys = 2D3D2D03910C6504C1210C65EE60C0C8EE7256A8
 	validpgpkeys = 70D2060738BEF80523ACAFF7D75C03B39B5E14E1
-	sha256sums = f4474ca98914f18fce1a4ce37a6b3cd080499919e4202a29b8eae51798f0c7c1
+	sha256sums = fee438e9f42345eeef3f5255842bbcf725eb01f1f84589791a525cd45143555b
 	sha256sums = SKIP
 	sha256sums = 925d931aae2bd03c08555536b1c836654a72cc4acfd9f440f1ad43958ba2108d
 	sha256sums = 644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876

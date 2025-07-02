@@ -3,7 +3,7 @@
 
 pkgname=i2p-bin
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
 url="https://geti2p.net"
 license=('GPL2')
@@ -31,7 +31,7 @@ source=("${_url}/i2pinstall_${pkgver}.jar"{,.sig}
         'i2prouter.service' 'i2p.tmpfiles' 'wrapper.config' 'router.config'
         'i2prouter.bash' 'i2prouter.sh' 'chromium-i2p.sh')
 
-sha256sums=('f4474ca98914f18fce1a4ce37a6b3cd080499919e4202a29b8eae51798f0c7c1'
+sha256sums=('fee438e9f42345eeef3f5255842bbcf725eb01f1f84589791a525cd45143555b'
             'SKIP'
             '925d931aae2bd03c08555536b1c836654a72cc4acfd9f440f1ad43958ba2108d'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
