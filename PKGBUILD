@@ -4,7 +4,7 @@
 : ${_use_sodeps:=true}
 
 : ${_use_cuda:=false} # nvenc
-: ${_cuda_gcc_version:=$(LC_ALL=C pacman -Si cuda | grep -Po '^Depends On\s*:.*\bgcc\K[0-9]+\b')}
+: ${_cuda_gcc_version:=$(LC_ALL=C pacman -Si cuda | grep -Pom1 '^Depends On\s*:.*\bgcc\K[0-9]+\b')}
 
 : ${_commit=65f14e1003f831e776c170621bd06d8292f65155}
 
