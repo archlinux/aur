@@ -1,0 +1,14 @@
+pkgbase = python-colcon-ros-cargo
+	pkgdesc = Build cargo projects with colcon
+	pkgver = dev
+	pkgrel = 1
+	url = https://github.com/colcon/colcon-ros-cargo
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	depends = python
+	depends = python-setuptools
+	source = python-colcon-ros-cargo::git+https://github.com/colcon/colcon-ros-cargo
+	sha256sums = SKIP
+
+pkgname = python-colcon-ros-cargo
