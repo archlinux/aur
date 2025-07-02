@@ -1,5 +1,5 @@
 pkgbase = thunderbird-portable
-	pkgdesc = Firefox sandboxed by portable
+	pkgdesc = Thunderbird sandboxed by portable
 	pkgver = 139.0.2
 	pkgrel = 1
 	epoch = 1
