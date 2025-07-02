@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=lcevcdec-git
-pkgver=3.3.8.r0.gcf10f6b
+pkgver=4.0.0.r0.g49183ed
 pkgrel=1
 pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC) (git version)'
 arch=('x86_64')
@@ -20,17 +20,14 @@ provides=('lcevcdec')
 conflicts=('lcevcdec')
 options=('!emptydirs')
 source=('git+https://github.com/v-novaltd/LCEVCdec.git'
-        '010-lcevcdec-fix-pkgconfig-libs.patch'
-        '020-lcevcdec-disable-avx.patch')
+        '010-lcevcdec-disable-avx.patch')
 sha256sums=('SKIP'
-            'd83048231b01d41a42ef7c57bdbeb6cd2d33e050032eebf4cc2edb1d8d9a3a38'
             '71145584cce87ac54b98a7b2a2904c6c1f213ac3dc6dffe6b6653b599f395d76')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
 prepare() {
-    patch -d LCEVCdec -Np1 -i "${srcdir}/010-lcevcdec-fix-pkgconfig-libs.patch"
-    patch -d LCEVCdec -Np1 -i "${srcdir}/020-lcevcdec-disable-avx.patch"
+    patch -d LCEVCdec -Np1 -i "${srcdir}/010-lcevcdec-disable-avx.patch"
 }
 
 pkgver() {
@@ -43,10 +40,10 @@ build() {
     cmake -B build -S LCEVCdec \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DVN_CORE_AVX2:BOOL='OFF' \
-        -DVN_CORE_SSE:BOOL='OFF' \
+        -DVN_SDK_AVX2:BOOL='OFF' \
         -DVN_SDK_EXECUTABLES:BOOL='OFF' \
         -DVN_SDK_SAMPLE_SOURCE:BOOL='OFF' \
+        -DVN_SDK_SSE:BOOL='OFF' \
         -DVN_SDK_UNIT_TESTS:BOOL='OFF' \
         -Wno-dev
     cmake --build build
@@ -57,5 +54,4 @@ package() {
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
     mv "${pkgdir}/usr/share/doc/LCEVCdec_SDK/licenses"/{COPYING,LICENSE.md} "${pkgdir}/usr/share/licenses/${pkgname}"
     rm "${pkgdir}/usr/share/doc/LCEVCdec_SDK/README.md"
-    rm -r "${pkgdir}/usr/share/doc/LCEVCdec_SDK/src"
 }
