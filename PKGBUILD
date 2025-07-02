@@ -3,7 +3,7 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=10.10.r0.g885446556ce
+pkgver=10.11.r72.g54238a0646c
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('x86_64')
@@ -42,7 +42,6 @@ makedepends=(
     'libxinerama'
     'libxxf86vm'
     'mesa'
-    'mesa-libgl'
     'mingw-w64-gcc'
     'opencl-headers'
     'opencl-icd-loader'
@@ -83,7 +82,7 @@ optdepends=(
     'v4l-utils'
     'wine-gecko'
     'wine-mono')
-options=('staticlibs' '!lto')
+options=('!lto')
 install="${pkgname}.install"
 provides=("wine=${pkgver}" "bin32-wine=${pkgver}" "wine-wow64=${pkgver}")
 conflicts=('wine' 'bin32-wine' 'wine-wow64')
@@ -104,8 +103,6 @@ pkgver() {
 }
 
 build() {
-    export CFLAGS+=' -ffat-lto-objects'
-    
     # apply flags for cross-compilation
     export CROSSCFLAGS="${CFLAGS/-Werror=format-security/} -g"
     export CROSSCXXFLAGS="${CXXFLAGS/-Werror=format-security/} -g"
@@ -115,10 +112,7 @@ build() {
     ../wine/configure \
         --prefix='/usr' \
         --libdir='/usr/lib' \
-        --with-x \
-        --with-wayland \
-        --with-gstreamer \
-        --with-freetype \
+        --disable-tests \
         --enable-archs="${CARCH},i386"
     make
 }

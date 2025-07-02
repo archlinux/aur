@@ -1,6 +1,6 @@
 pkgbase = wine-git
 	pkgdesc = A compatibility layer for running Windows programs (git version)
-	pkgver = 10.10.r0.g885446556ce
+	pkgver = 10.11.r72.g54238a0646c
 	pkgrel = 1
 	url = https://www.winehq.org/
 	install = wine-git.install
@@ -20,7 +20,6 @@ pkgbase = wine-git
 	makedepends = libxinerama
 	makedepends = libxxf86vm
 	makedepends = mesa
-	makedepends = mesa-libgl
 	makedepends = mingw-w64-gcc
 	makedepends = opencl-headers
 	makedepends = opencl-icd-loader
@@ -77,14 +76,13 @@ pkgbase = wine-git
 	optdepends = v4l-utils
 	optdepends = wine-gecko
 	optdepends = wine-mono
-	provides = wine=10.10.r0.g885446556ce
-	provides = bin32-wine=10.10.r0.g885446556ce
-	provides = wine-wow64=10.10.r0.g885446556ce
+	provides = wine=10.11.r72.g54238a0646c
+	provides = bin32-wine=10.11.r72.g54238a0646c
+	provides = wine-wow64=10.11.r72.g54238a0646c
 	conflicts = wine
 	conflicts = bin32-wine
 	conflicts = wine-wow64
 	replaces = bin32-wine
-	options = staticlibs
 	options = !lto
 	source = git+https://gitlab.winehq.org/wine/wine.git
 	source = 30-win32-aliases.conf
