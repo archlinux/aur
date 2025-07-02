@@ -2,7 +2,7 @@
 
 pkgbase="xlibre-server"
 pkgname=("${pkgbase}"{,-bootstrap,-common,-devel,-xephyr,-xnest,-xvfb})
-pkgver=25.0.0.2
+pkgver=25.0.0.3
 pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://github.com/x11libre/xserver"
@@ -22,7 +22,7 @@ options=('!emptydirs')
 _pkgsrc="xserver-xlibre-xserver-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/xlibre-xserver-${pkgver}.tar.gz"
         "xvfb-run"{,.1}) # with updates from FC master
-b2sums=('8c55508b24dc324fb0afdb8ec50cd51c4aa5a271309aba6cf2c834e0abb8728a70bb761f29e6cd2c81afdea2529efa5d7c8fad21320060696f88c34f177b32f3'
+b2sums=('23acc5d23561d33d99da84dce03184347acbf6b4bb1a5d2fa5dbd2a9981fb5d85a954fdce1bb63c344533a09209c7361899f637d6873f6e0541172716c0b4d9e'
         '58c48ed893be841d14d3a09c9e1092a6da7bcb7fb773e1bf634c50a12e51ea3ad4aeba3843164a2834ee9f8ea95a7bca8b3ce8196a5328ce782724c082cb416f'
         '0e3738e099ee2b958df3e5a5adbdfcbd1150ad64645fdae70d74b50123c3f3d43f9f95f5e4bac82bf5c72b3deb978655b8c3177d37de0bd0a2a6e0e343863511')
 
