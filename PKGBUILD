@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 # Contributor: Guillaume Hayot <ghayot@postblue.info>
 pkgname=parlatype-libreoffice-extension
-pkgver=4.2
+pkgver=4.3
 pkgrel=1
 pkgdesc="Parlatype LibreOffice Extension"
 arch=('any')

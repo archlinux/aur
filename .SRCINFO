@@ -1,6 +1,6 @@
 pkgbase = parlatype-libreoffice-extension
 	pkgdesc = Parlatype LibreOffice Extension
-	pkgver = 4.2
+	pkgver = 4.3
 	pkgrel = 1
 	url = https://github.com/gkarsay/parlatype-libreoffice-extension/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = parlatype-libreoffice-extension
 	makedepends = appstream-glib
 	depends = libreoffice
 	depends = parlatype
-	source = https://github.com/gkarsay/parlatype-libreoffice-extension/releases/download/v4.2/parlatype-libreoffice-extension-4.2.tar.gz
+	source = https://github.com/gkarsay/parlatype-libreoffice-extension/releases/download/v4.3/parlatype-libreoffice-extension-4.3.tar.gz
 	b2sums = 870291e91166814bbf653adc78f72b494241b0806afdb388a250f94c9fbcaf2cd692c9d986701d8fac59d90f7ff3068ee00d393ab6de077c135288a830ff4c8c
 
 pkgname = parlatype-libreoffice-extension
