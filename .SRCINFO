@@ -1,6 +1,6 @@
 pkgbase = grafito
 	pkgdesc = A linux logs web frontend
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://grafito.ralsina.me
 	install = install
@@ -9,9 +9,9 @@ pkgbase = grafito
 	license = MIT
 	makedepends = crystal
 	makedepends = shards
-	source = grafito-0.10.0.tar.gz::https://github.com/ralsina/grafito/archive/refs/tags/v0.10.0.tar.gz
+	source = grafito-0.10.1.tar.gz::https://github.com/ralsina/grafito/archive/refs/tags/v0.10.1.tar.gz
 	source = grafito.service
-	sha256sums = 2063d7672a08fcb6557928b2e516c1e31833445c7337d4a512758d7d93ab540c
+	sha256sums = a689b9a7c2a7f23166ea66888712a55353c744f89533ac01b0af6e76f2f5d07d
 	sha256sums = 811bf1c965009017d9dfc3d6a3a62018fce8c5343ba4a37aa71c248ac255815b
 
 pkgname = grafito
