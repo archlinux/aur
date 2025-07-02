@@ -7,7 +7,9 @@ pkgdesc="Add codecs to Chromium M138+ (non vendored ${_so})"
 arch=('x86_64')
 url="https://git.ffmpeg.org/ffmpeg"
 license=('LGPL2.1')
-source=(https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch)
+source=(https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
+# ffmpeg.sigs::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT
+)
 sha256sums=('f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
 depends=(glibc)
 makedepends=(diffutils gcc make nasm patch sed git)
@@ -24,6 +26,7 @@ prepare() {
 }
 
 build() {
+  # _symbols=$(base64 -d ffmpeg.sigs| grep -oE '\bav[a-z0-9_]*\s*\(' - | sed 's/(//' | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
   cd ffmpeg
   # Use part of https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
   # Use some flags at https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/BUILD.gn
