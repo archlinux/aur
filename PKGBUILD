@@ -45,7 +45,7 @@ if [ ! -f ${_sourcefile} ]; then
   echo ""
   echo "Operation Aborted"
   echo ""
-  return 1
+  exit 1
 fi
 
 source=("local://pianoteq_stage_linux_v${pkgver//./}.7z"
