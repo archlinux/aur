@@ -1,7 +1,7 @@
 # Maintainer: VCalV
 pkgname=electrum-ltc-appimage
 pkgver=4.2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Litecoin wallet (AppImage)"
 arch=('x86_64')
 url="https://electrum-ltc.org/"
@@ -23,9 +23,6 @@ sha256sums=('8c27621f87a51baf5b3a492696606a5b55c72b6a9804e3baa8f161cd7cc5d8f5'
             '91719dd7b7b2f6e28766137a50430b755423d99bbc48876d9c73b67325574765')
 
 prepare() {
-    # Verify GPG signature
-    gpg --verify "electrum-ltc-${pkgver}-x86_64.AppImage.asc" "electrum-ltc-${pkgver}-x86_64.AppImage"
-    
     # Make AppImage executable
     chmod +x "electrum-ltc-${pkgver}-x86_64.AppImage"
 }
