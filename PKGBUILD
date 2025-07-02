@@ -7,9 +7,9 @@
 
 pkgname=libmodsecurity2
 _name=modsecurity
-pkgver=2.9.10
+pkgver=2.9.11
 pkgrel=1
-pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx, v2 branch'
+pkgdesc='Cross platform web application firewall module for Apache httpd (v2)'
 arch=('x86_64')
 url='https://github.com/owasp-modsecurity/ModSecurity/tree/v2/master'
 license=('Apache-2.0')
@@ -35,7 +35,7 @@ conflicts=("libmodsecurity")
 source=(
   "https://github.com/owasp-modsecurity/ModSecurity/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz" 
 )
-sha256sums=('081cda52975494139922fa4b54f474fed8a6db4b7f586cb0d3aeec635f7a4d53')
+sha256sums=('1fe16eb96b6093f062cef73ec8b7ae481a59813766d49a7f5e4d1b85900e239e')
 
 prepare() {
   cd "${srcdir}/${_name}-v${pkgver}"
@@ -46,7 +46,6 @@ build() {
   cd "${srcdir}/${_name}-v${pkgver}"
   ./configure \
     --prefix=/usr \
-    --enable-standalone-module \
     --enable-htaccess-config
   # https://tracker.debian.org/media/packages/m/modsecurity-apache/rules-2.9.1-2
   echo "Fixing libtool for hardcoded_into_libs"
@@ -58,13 +57,14 @@ build() {
   sed -i 's#LUA_VERSION_NUM == 502 || LUA_VERSION_NUM == 503#LUA_VERSION_NUM == 502 || LUA_VERSION_NUM == 503 || LUA_VERSION_NUM == 504#' "apache2/msc_lua.c"
   sed -ri 's/We are only tested under Lua 5.0, 5.1, 5.2, or 5.3./We are only tested under Lua 5.0, 5.1, 5.2, or 5.3 (and faking 5.4)./' "apache2/msc_lua.c"
   make
-  echo "Stripping shared objects"
+  echo "Stripping unneeded symbols from shared objects"
   find ./ -name '*.so' -exec strip --strip-unneeded {} \+
 }
 
 package() {
   cd "${srcdir}/${_name}-v${pkgver}"
   make DESTDIR="${pkgdir}" install
-  mkdir -p "${pkgdir}/usr/lib/httpd/modules"
-  cp "${pkgdir}/usr/lib/mod_security2.so" "${pkgdir}/usr/lib/httpd/modules/mod_security2.so"
+  echo "Adding prefix to bin files"
+  cd "${pkgdir}/usr/bin"
+  for f in * ; do mv -- "$f" "mod_security2_$f" ; done
 }
