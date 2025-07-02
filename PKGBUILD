@@ -1,6 +1,6 @@
 # Maintainer: MostlyK <bruvistrue93@gmail.com>
 pkgname=gemini
-pkgver=0.1.5
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Gemini CLI: A command-line AI workflow tool by Google"
 arch=('any')
