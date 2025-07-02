@@ -1,0 +1,16 @@
+pkgbase = libsf3
+	pkgdesc = C library to parse Simple File Format Family (SF3) files
+	pkgver = 1.0
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/shirakumo/libsf3
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = zlib
+	makedepends = doxygen
+	makedepends = cmake
+	source = https://github.com/Shirakumo/libsf3/archive/1.0.tar.gz
+	b2sums = 90cdde4e7e5344053cb8b23232daa68864ba891dcedfc22003f434f8c063f8dd84cfa74cdcf335311e4c0a0334205fc25a07bb545120c0623aa3ad071aabfd71
+
+pkgname = libsf3
