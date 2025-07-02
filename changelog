@@ -1,3 +1,16 @@
+2025-07-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.1.7.8-1:
+    ASF now uses WebProxy configuration property also in websocket Steam CM connections, previously only web-based ones were affected (@JustArchi).
+    Added WebProxy, WebProxyUsername and WebProxyPassword bot-specific configuration properties (@JustArchi #3436).
+    Added new rmlicense command for licenses removal, as well as its IPC and Bot.Actions variants (@JustArchi #3434).
+    Added Steam Summer Sale 2025 to built-in blacklist (@nolddor #3437).
+    addlicense command no longer accepts invalid types, i.e. other than a/app and s/sub, previously they were mapped to sub implicitly (@JustArchi).
+    Fixed ASF not always saving persistent databases upon some specific changes (@JustArchi).
+    Fixed MarkReceivedMessagesAsRead and MarkBotMessagesAsRead sometimes skipping valid messages to mark (@JustArchi).
+    Fixed ASF not resetting temporary login/password upon failure to log in, it'll now happen when it determines that login is (permanently) impossible with provided details (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2025-05-30 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.1.6.7-1:
     Added new DisableIncomingTradesParsing BotBehaviour setting (@JustArchi #3428).
