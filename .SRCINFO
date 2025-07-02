@@ -1,6 +1,6 @@
 pkgbase = system76-power
 	pkgdesc = System76 Power Management
-	pkgver = 1.2.4
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-power
 	install = system76-power.install
@@ -14,9 +14,9 @@ pkgbase = system76-power
 	optdepends = system76-acpi-dkms: only needed for systems using open firmware with kernels <5.16
 	optdepends = system76-dkms: needed for systems using proprietary firmware
 	provides = power-profiles-daemon
-	source = system76-power-1.2.4.tar.gz::https://github.com/pop-os/system76-power/archive/1.2.4.tar.gz
+	source = system76-power-1.2.6.tar.gz::https://github.com/pop-os/system76-power/archive/1.2.6.tar.gz
 	source = use-mkinitcpio.patch
-	sha256sums = ab27688b22256006b2ca12cbaf41c99abd17213fe33f4e7c1ed41e1ac05613b7
+	sha256sums = 28a5eba1b8ff5fef5e0b2629b71a8290e7c1b9ffb7bb09f584c621bd1df39de4
 	sha256sums = bae03d96faea0f7ea80cb1cc5d4f2f97804509db378aaacb3e1d08cd38e05765
 
 pkgname = system76-power

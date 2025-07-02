@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: tleydxdy <shironeko(at)waifu(dot)club>
 pkgname=system76-power
-pkgver=1.2.4
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ provides=('power-profiles-daemon')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'use-mkinitcpio.patch')
-sha256sums=('ab27688b22256006b2ca12cbaf41c99abd17213fe33f4e7c1ed41e1ac05613b7'
+sha256sums=('28a5eba1b8ff5fef5e0b2629b71a8290e7c1b9ffb7bb09f584c621bd1df39de4'
             'bae03d96faea0f7ea80cb1cc5d4f2f97804509db378aaacb3e1d08cd38e05765')
 
 prepare() {
