@@ -1,0 +1,13 @@
+pkgbase = soundfont-sso-sfz
+	pkgdesc = The Sonatina Symphonic Orchestra by Mattias Westlund. (SFZ format)
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://github.com/peastman/sso
+	arch = any
+	groups = soundfonts
+	license = CC-Sampling-Plus-1.0
+	optdepends = linuxsampler: for playing SFZ instruments
+	source = https://github.com/peastman/sso/archive/refs/tags/v4.0.tar.gz
+	md5sums = 2c87cb754b6fab6f34566123cc3e74bb
+
+pkgname = soundfont-sso-sfz
