@@ -1,0 +1,6 @@
+*.tar.zst*
+pkg/
+src/
+rustup.sh
+firedragon.psd
+firedragon.desktop
