@@ -7,7 +7,7 @@
 
 pkgbase=zoom-system-qt
 pkgname=(${pkgbase}{,-cef} )
-pkgver=6.5.1.2550
+pkgver=6.5.3.2773
 pkgrel=1
 arch=('x86_64')
 license=('LicenseRef-zoom')
@@ -21,7 +21,7 @@ optdepends=('qt5-wayland: zoomus.conf xwayland=false'
   ${pkgbase}-cef': zoomus.conf disableCef=false')
 options=(!strip emptydirs)
 source=("zoom-origin-${pkgver}.pkg.tar.xz::${url}client/${pkgver}/zoom_x86_64.pkg.tar.xz")
-b2sums=('e22e5ba3f9af26a63a1ffe76e04ed3250894c55679edc5aecbb71fbf1a212e61757e773ff533d869de0bccce747d926887aa997553cf0d12bf0e843e8c9b19e8')
+b2sums=('aab928a89ecbab1317fa2fc4c0b01d9c0aff2ecf42890336a9cd863e93cf92c40f7c1617df32469502b159a22b3bcc663351b060de1fa7aec58889a517346a89')
 
 build() {	
   ln -sf /usr/share/pixmaps/Zoom.png usr/share/pixmaps/*-zoom.png
@@ -56,7 +56,7 @@ package_zoom-system-qt() {
   conflicts=(zoom)
   pkgdesc="Zoom Workspace client on system runtime"
   mv opt usr "$pkgdir" # breaks --repackage
-  mv "$pkgdir"/opt/zoom/{ZoomWebviewHost,cef} .
+  mv "$pkgdir"/opt/zoom/cef "$srcdir"
 }
 
 package_zoom-system-qt-cef(){
@@ -64,5 +64,5 @@ package_zoom-system-qt-cef(){
   depends+=(${pkgbase} chromium sqlite)
   optdepends=(vulkan-driver)
   install -d "$pkgdir"/opt/zoom
-  mv ZoomWebviewHost cef "$pkgdir"/opt/zoom
+  mv cef "$pkgdir"/opt/zoom
 }
