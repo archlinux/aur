@@ -75,6 +75,7 @@ b2sums=('e268e73c6fb20f5cbb97935917ad5d908bb53c83b6b2b59a7eb687207a84a75ff9cd677
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+install=gamescope.install
 
 prepare() {
     cd "$srcdir/$_pkgname"

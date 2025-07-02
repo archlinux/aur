@@ -3,6 +3,7 @@ pkgbase = gamescope-sk
 	pkgver = 3.16.ba123
 	pkgrel = 1
 	url = https://github.com/3003n/gamescope
+	install = gamescope.install
 	arch = x86_64
 	license = BSD
 	makedepends = benchmark
