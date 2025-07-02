@@ -112,16 +112,16 @@ ngpt -i
 # /exit     - Exit the session (also 'exit', 'quit', 'bye' without '/')
 
 # Return response without streaming
-ngpt --display-mode no-stream "Tell me about quantum computing"
+ngpt --plaintext "Tell me about quantum computing"
 
 # Generate code
 ngpt --code "function to calculate the Fibonacci sequence"
 
-# Generate code with syntax highlighting
-ngpt --code --display-mode prettify "function to calculate the Fibonacci sequence"
+# Generate code with real-time syntax highlighting (default)
+ngpt --code "function to calculate the Fibonacci sequence"
 
-# Generate code with real-time syntax highlighting
-ngpt --code --display-mode stream-prettify "function to calculate the Fibonacci sequence"
+# Generate code without streaming or markdown rendering
+ngpt --code --plaintext "function to calculate the Fibonacci sequence"
 
 # Generate and execute shell commands
 ngpt --shell "list all files in the current directory"
@@ -182,14 +182,11 @@ ngpt -g --log commit_log.txt
 # Use interactive multiline editor to enter text to rewrite
 ngpt -r
 
-# Display markdown responses with beautiful formatting
-ngpt --display-mode prettify "Explain markdown syntax with examples"
+# Display markdown responses with real-time formatting (default)
+ngpt "Explain markdown syntax with examples"
 
-# Display markdown responses with real-time formatting
-ngpt --display-mode stream-prettify "Explain markdown syntax with examples"
-
-# Use a specific markdown renderer
-ngpt --display-mode prettify --renderer=rich "Create a markdown table"
+# Display responses without markdown rendering
+ngpt --plaintext "Explain markdown syntax with examples"
 
 # Use multiline editor for complex prompts
 ngpt --text
@@ -210,8 +207,8 @@ cat README.md | ngpt --pipe "Summarize this document: {}"
 ngpt --provider Groq "Explain quantum computing"
 
 # Compare outputs from different providers
-ngpt --provider OpenAI "Explain quantum physics" > openai_response.txt
-ngpt --provider Ollama "Explain quantum physics" > ollama_response.txt
+ngpt --provider OpenAI --plaintext "Explain quantum physics" > openai_response.txt
+ngpt --provider Ollama --plaintext "Explain quantum physics" > ollama_response.txt
 
 # Show all API configurations
 ngpt --show-config --all
@@ -256,12 +253,10 @@ For more examples and detailed usage, visit the [CLI Usage Guide](https://nazdri
 usage: ngpt [-h] [-v] [--api-key API_KEY] [--base-url BASE_URL] [--model MODEL] [--web-search] [--pipe]
             [--temperature TEMPERATURE] [--top_p TOP_P] [--max_tokens MAX_TOKENS] [--log [FILE]]
             [--preprompt PREPROMPT | --role ROLE] [--config [CONFIG]] [--config-index CONFIG_INDEX]
-            [--provider PROVIDER] [--remove] [--show-config] [--all] [--list-models] [--list-renderers]
-            [--cli-config [COMMAND ...]] [--role-config [ACTION ...]]
-            [--display-mode {no-stream,prettify,stream-prettify}] [--renderer {auto,rich,glow}] [--language LANGUAGE]
-            [--rec-chunk] [--diff [FILE]] [--chunk-size CHUNK_SIZE] [--analyses-chunk-size ANALYSES_CHUNK_SIZE]
-            [--max-msg-lines MAX_MSG_LINES] [--max-recursion-depth MAX_RECURSION_DEPTH] [--humanize] [-i | -s | -c |
-            -t | -r | -g]
+            [--provider PROVIDER] [--remove] [--show-config] [--all] [--list-models] [--cli-config [COMMAND ...]]
+            [--role-config [ACTION ...]] [--plaintext] [--language LANGUAGE] [--rec-chunk] [--diff [FILE]]
+            [--chunk-size CHUNK_SIZE] [--analyses-chunk-size ANALYSES_CHUNK_SIZE] [--max-msg-lines MAX_MSG_LINES]
+            [--max-recursion-depth MAX_RECURSION_DEPTH] [--humanize] [-i | -s | -c | -t | -r | -g]
             [prompt]
 
 nGPT - AI-powered terminal toolkit for code, commits, commands & chat
@@ -290,7 +285,6 @@ Global Options::
 --preprompt PREPROMPT               Set custom system prompt to control AI behavior
 --role ROLE                         Use a predefined role to set system prompt (mutually exclusive with
                                     --preprompt)
---renderer {auto,rich,glow}         Select which markdown renderer to use with display modes that support markdown
 
 Configuration Options::
 
@@ -303,15 +297,12 @@ Configuration Options::
 --show-config                       Show the current configuration(s) and exit
 --all                               Show details for all configurations (requires --show-config)
 --list-models                       List all available models for the current configuration and exit
---list-renderers                    Show available markdown renderers for use with --display-mode prettify
 --cli-config [COMMAND ...]          Manage CLI configuration (set, get, unset, list, help)
 --role-config [ACTION ...]          Manage custom roles (help, create, show, edit, list, remove) [role_name]
 
 Output Display Options::
 
---display-mode {no-stream,prettify,stream-prettify}
-                                    Set display mode: no-stream (plain text), prettify (formatted non-streaming),
-                                    stream-prettify (live markdown)
+--plaintext                         Disable streaming and markdown rendering (plain text output)
 
 Code Mode Options::
 
@@ -425,12 +416,10 @@ CLI Configuration Help:
   Available options:
     General options (all modes):
       config-index - Type: int (default: 0)
-      display-mode - Type: str (default: None)
       log - Type: str (default: None)
       max_tokens - Type: int (default: None)
       preprompt - Type: str (default: None)
       provider - Type: str (default: None)
-      renderer - Type: str (default: auto)
       temperature - Type: float (default: 0.7)
       top_p - Type: float (default: 1.0)
       web-search - Type: bool (default: False)
@@ -449,8 +438,6 @@ CLI Configuration Help:
   Example usage:
     ngpt --cli-config set language java        - Set default language to java for code generation
     ngpt --cli-config set temperature 0.9      - Set default temperature to 0.9
-    ngpt --cli-config set display-mode no-stream - Disable streaming by default
-    ngpt --cli-config set display-mode prettify  - Enable markdown formatting by default
     ngpt --cli-config set recursive-chunk true - Enable recursive chunking for git commit messages
     ngpt --cli-config set diff /path/to/file.diff - Set default diff file for git commit messages
     ngpt --cli-config get temperature          - Check the current temperature setting
@@ -561,10 +548,10 @@ Let's see nGPT in action! Here are some practical ways you can use it every day:
 ngpt "Explain the difference between threads and processes in Python"
 
 # Generate code with real-time syntax highlighting
-ngpt --code --display-mode stream-prettify "Write a Python function to reverse a linked list"
+ngpt --code "Write a Python function to reverse a linked list"
 ```
 
-With the `--code` flag, nGPT gives you clean code without explanations or markdown, just what you need to copy and paste into your project. The `--display-mode` parameter shows real-time syntax highlighting as the code comes in.
+With the `--code` flag, nGPT gives you clean code without explanations or markdown, just what you need to copy and paste into your project. By default, it shows real-time syntax highlighting as the code comes in.
 
 #### Shell Command Generation (OS-Aware)
 
