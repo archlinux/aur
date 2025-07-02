@@ -1,11 +1,10 @@
-# shellcheck disable=SC2034,SC2154,SC2164,SC2148
 # Maintainer: honjow
-
+# shellcheck disable=SC2034
 pkgname=sk-chos-addon
 _basename=sk-chos-tool
 _reponame=sk-chos-config
 _pkgname=${pkgname}
-pkgver=1.60.0
+pkgver=1.60.1
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -38,8 +37,8 @@ conflicts=(sk-chos-addon-git)
 replaces=(sk-chos-addon-git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v${pkgver}.tar.gz"
         "amd_s2idle.py::https://web.git.kernel.org/pub/scm/linux/kernel/git/superm1/amd-debug-tools.git/plain/amd_s2idle.py")
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('c21c65fd8294c452618aad52173d9097f93d3ce53280c7b2ff7134e719458738'
+            '8e0b681a447a1be88d4e68226844b65e2c04d97431cdef40bbeebb8bb379ff2a')
 options=(!strip)
 backup=('etc/sk-chos-tool/github_cdn.conf')
 install=sk-chos-addon.install

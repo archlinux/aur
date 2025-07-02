@@ -1,6 +1,6 @@
 pkgbase = sk-chos-addon
 	pkgdesc = Addon for sk-chimeros
-	pkgver = 1.60.0
+	pkgver = 1.60.1
 	pkgrel = 1
 	url = https://github.com/honjow/sk-chos-config.git
 	install = sk-chos-addon.install
@@ -29,9 +29,9 @@ pkgbase = sk-chos-addon
 	replaces = sk-chos-addon-git
 	options = !strip
 	backup = etc/sk-chos-tool/github_cdn.conf
-	source = sk-chos-addon-1.60.0.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v1.60.0.tar.gz
+	source = sk-chos-addon-1.60.1.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v1.60.1.tar.gz
 	source = amd_s2idle.py::https://web.git.kernel.org/pub/scm/linux/kernel/git/superm1/amd-debug-tools.git/plain/amd_s2idle.py
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = c21c65fd8294c452618aad52173d9097f93d3ce53280c7b2ff7134e719458738
+	sha256sums = 8e0b681a447a1be88d4e68226844b65e2c04d97431cdef40bbeebb8bb379ff2a
 
 pkgname = sk-chos-addon
