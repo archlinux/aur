@@ -2,7 +2,7 @@
 
 pkgname=ft-bin
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Tunnel TCP connections through a file"
 arch=('x86_64' 'aarch64')
 url="https://github.com/fiddyschmitt/File-Tunnel"
