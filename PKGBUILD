@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-bravado
-pkgver=11.1.0
+pkgver=12.0.1
 pkgrel=1
 pkgdesc="Python client library for Swagger 2.0 services"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python-bravado-core' 'python-msgpack' 'python-dateutil' 'python-yaml' 'python-requests' 'python-six' 'python-simplejson' 'python-monotonic' 'python-typing_extensions')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Yelp/bravado/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('05e6edaf1f02e850e7a607fae77c6c7f')
+md5sums=('f17b166e5e1d4cdb849ca095a51dc4ac')
 
 build() {
   cd "$srcdir"/bravado-$pkgver
