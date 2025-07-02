@@ -1,19 +1,19 @@
 pkgbase = convcommitlint-bin
 	pkgdesc = A simple, opinionated, yet usable linter for conventional commits, written in Go.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/coolapso/convcommitlint
 	license = MIT
 	conflicts = convcommitlint
 	provides = convcommitlint
 	arch = aarch64
-	source_aarch64 = https://github.com/coolapso/convcommitlint/releases/download/v0.2.0/convcommitlint_0.2.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 71d99ecd54ce961f26955e045f9a6af60de90226b2e7cda98889807c09815b6c
+	source_aarch64 = https://github.com/coolapso/convcommitlint/releases/download/v0.3.0/convcommitlint_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ff3bb042750eb68595153ffa1b9136a5ee064a2bf7845a351ef340a860c75fe7
 	arch = i686
-	source_i686 = https://github.com/coolapso/convcommitlint/releases/download/v0.2.0/convcommitlint_0.2.0_linux_386.tar.gz
-	sha256sums_i686 = 581cfd0ead588d1303db8af0a4295250df900ffd285b25c3f684f2c495cddaa3
+	source_i686 = https://github.com/coolapso/convcommitlint/releases/download/v0.3.0/convcommitlint_0.3.0_linux_386.tar.gz
+	sha256sums_i686 = c1637dc85c1d8e9d5aac707f2c4b4fedcce787639286d687424dfca23db7cda9
 	arch = x86_64
-	source_x86_64 = https://github.com/coolapso/convcommitlint/releases/download/v0.2.0/convcommitlint_0.2.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = dcf42ad9f875dca287b3935a6ae29016cca29a666dbfb9877db146b24a4c58ed
+	source_x86_64 = https://github.com/coolapso/convcommitlint/releases/download/v0.3.0/convcommitlint_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 825b92ad91a2351b5080c0d5c69926920b1cf7b3389aac28521a1d9bb1878140
 	
 pkgname = convcommitlint-bin
