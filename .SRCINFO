@@ -1,6 +1,6 @@
 pkgbase = lib32-mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 25.2.0_devel.206777.7bfb51a7e6f.d41d8cd
+	pkgver = 25.2.0_devel.207920.b61e6b9748c.d41d8cd
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = lib32-mesa-git
 	makedepends = lib32-libxrandr
 	makedepends = python-packaging
 	makedepends = python-pyaml
-	makedepends = lib32-llvm=1:20.1.7
+	makedepends = lib32-llvm=1:20.1.6
 	makedepends = lib32-spirv-llvm-translator
 	makedepends = lib32-spirv-tools
 	depends = mesa-git
@@ -42,7 +42,7 @@ pkgbase = lib32-mesa-git
 	depends = lib32-glibc
 	depends = lib32-spirv-tools
 	depends = lib32-clang
-	depends = lib32-llvm-libs=1:20.1.7
+	depends = lib32-llvm-libs=1:20.1.6
 	depends = lib32-spirv-llvm-translator
 	depends = lib32-spirv-tools
 	optdepends = opengl-man-pages: for the OpenGL API man pages
