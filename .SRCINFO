@@ -1,7 +1,7 @@
 pkgbase = nvcards
 	pkgdesc = Card-based note-taking application with local database file (sqlite database with egui frontend)
 	pkgver = 0.29.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/nacl42/nvcards
 	arch = x86_64
 	license = MIT

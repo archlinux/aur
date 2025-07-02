@@ -1,7 +1,7 @@
 # Maintainer: rocksalt
 pkgname=nvcards
 pkgver=0.29.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Card-based note-taking application with local database file (sqlite database with egui frontend)"
 arch=('x86_64')
 url="https://gitlab.com/nacl42/nvcards"
@@ -39,6 +39,6 @@ package() {
     install -Dm0644 resources/linux/nvcards.png "$pkgdir/usr/share/pixmaps/nvcards.png"
     install -Dm0644 resources/linux/nvcards.desktop "$pkgdir/usr/share/applications/nvcards.desktop"
     install -Dm0644 resources/linux/nvcards.1 "$pkgdir/usr/share/man/man1/nvcards.1"
-	install -Dm0644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
-	install -Dm0644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+    install -Dm0644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
+    install -Dm0644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
 }
