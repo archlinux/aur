@@ -17,7 +17,7 @@ pkgbase = lib32-mesa-git
 	makedepends = lib32-libxrandr
 	makedepends = python-packaging
 	makedepends = python-pyaml
-	makedepends = lib32-llvm=1:20.1.6
+	makedepends = lib32-llvm=1:20.1.7
 	makedepends = lib32-spirv-llvm-translator
 	makedepends = lib32-spirv-tools
 	depends = mesa-git
@@ -42,7 +42,7 @@ pkgbase = lib32-mesa-git
 	depends = lib32-glibc
 	depends = lib32-spirv-tools
 	depends = lib32-clang
-	depends = lib32-llvm-libs=1:20.1.6
+	depends = lib32-llvm-libs=1:20.1.7
 	depends = lib32-spirv-llvm-translator
 	depends = lib32-spirv-tools
 	optdepends = opengl-man-pages: for the OpenGL API man pages
