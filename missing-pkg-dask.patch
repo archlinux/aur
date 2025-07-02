@@ -1,0 +1,19 @@
+--- src/raft-25.06.00/python/raft-dask/CMakeLists.txt	2025-06-06 03:23:44.000000000 +0800
++++ src/raft-25.06.00/python/raft-dask/CMakeLists.txt.new	2025-07-02 19:11:19.277731899 +0800
+@@ -25,10 +25,15 @@
+   LANGUAGES CXX CUDA
+ )
+ 
++find_package(nvtx3 REQUIRED)
++find_package(rapids_logger REQUIRED)
++find_package(rmm REQUIRED)
++
++
+ rapids_cpm_init()
+ # Once https://github.com/rapidsai/ucxx/issues/173 is resolved we can remove this.
+ find_package(ucx REQUIRED)
+-include(cmake/thirdparty/get_ucxx.cmake)
++find_package(ucxx REQUIRED)
+ 
+ # why these components:
+ #

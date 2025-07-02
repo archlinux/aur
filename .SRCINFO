@@ -1,7 +1,7 @@
 pkgbase = libraft
 	pkgdesc = RAFT contains fundamental widely-used algorithms and primitives for machine learning and information retrieval. The algorithms are CUDA-accelerated and form building blocks for more easily writing high performance applications.
 	pkgver = 25.06.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rapidsai/raft
 	arch = x86_64
 	license = Apache-2.0
@@ -19,10 +19,12 @@ pkgbase = libraft
 	source = cython-fix.patch
 	source = system-lib.patch
 	source = missing-pkg.patch
+	source = missing-pkg-dask.patch
 	sha256sums = 5bef9bf52c56f7efb0f120130bd1d6d493ee144f1f7328e02f0f70d5d5f2a33b
 	sha256sums = 46a2f4263449606a650e6285bf9caa8f9ce236275431ce72545e1eca3332583a
 	sha256sums = b9441e008af77d3d197b1d699abd25eefc7656c78bd53da42b21b5f0504e2e69
 	sha256sums = 816ee0a489622a0f56cc479fabf20c79ef36eb81673d1da7fd0a649e372ff613
+	sha256sums = SKIP
 
 pkgname = libraft
 
@@ -34,3 +36,13 @@ pkgname = python-pylibraft
 	depends = python-rmm
 	depends = python-numpy
 	depends = python-cuda
+
+pkgname = python-raft-dask
+	depends = cuda
+	depends = rmm
+	depends = libraft
+	depends = python
+	depends = python-dask-cuda
+	depends = openucx
+	depends = python-pylibraft
+	depends = ucxx
