@@ -1,6 +1,6 @@
 pkgbase = gemini
 	pkgdesc = Gemini CLI: A command-line AI workflow tool by Google
-	pkgver = 0.1.7
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/google-gemini/gemini-cli
 	arch = any
