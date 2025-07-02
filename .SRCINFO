@@ -1,13 +1,13 @@
 pkgbase = tmplgen
 	pkgdesc = Basic text template generator
 	pkgver = 0.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.sr.ht/~rycwo/tmplgen
 	arch = x86_64
 	license = custom:WTFPL
 	makedepends = git
 	makedepends = go
 	source = https://git.sr.ht/~rycwo/tmplgen/archive/0.1.1.tar.gz
-	sha256sums = 1ed8ba57316431ecf4ece6cac09c387aca7c70b04d9c996181eaaf9357ae19b8
+	sha256sums = b83ecc8fae24963ad7604bf7533e3842c79617aca5184ca7c512d35eca7a9435
 
 pkgname = tmplgen

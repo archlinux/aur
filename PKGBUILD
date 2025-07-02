@@ -2,14 +2,14 @@
 
 pkgname=tmplgen
 pkgver="0.1.1"
-pkgrel=3
-pkgdesc="Basic text template generator"
+pkgrel=4
+pkgdesc="Text template generator"
 arch=("x86_64")
 url="https://git.sr.ht/~rycwo/tmplgen"
 license=(""custom:WTFPL"")
 makedepends=("git" "go")
 source=("https://git.sr.ht/~rycwo/tmplgen/archive/""$pkgver"".tar.gz")
-sha256sums=('1ed8ba57316431ecf4ece6cac09c387aca7c70b04d9c996181eaaf9357ae19b8')
+sha256sums=('b83ecc8fae24963ad7604bf7533e3842c79617aca5184ca7c512d35eca7a9435')
 
 build() {
 	cd "$srcdir""/tmplgen-""$pkgver"
