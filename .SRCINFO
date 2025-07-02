@@ -1,6 +1,6 @@
 pkgbase = proton-shim
 	pkgdesc = Easily run programs and scripts inside Steam game prefixes
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://gitlab.com/Wisher/ProtonShim
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = proton-shim
 	depends = file
 	depends = sed
 	depends = sudo
-	depends = steam
+	optdepends = steam: (required) a steam installation is required, be it a package, flatpak, or otherwise
 	optdepends = proton-ge-custom-bin: optional proton variant support
-	source = proton-shim-2.5.0.tar.gz::https://gitlab.com/api/v4/projects/71058782/packages/generic/release/2.5.0/proton-shim-2.5.0.tar.gz
-	sha256sums = 2516aa4e2f9de16e4424381afdfdd68a8a35f314a19f9d6e6b67fe3b4e64abf2
+	source = proton-shim-2.5.1.tar.gz::https://gitlab.com/api/v4/projects/71058782/packages/generic/release/2.5.1/proton-shim-2.5.1.tar.gz
+	sha256sums = 968396e765f0631fce43684b1d985a5de9d21ce4bba5121801469dfeccf382fe
 
 pkgname = proton-shim
