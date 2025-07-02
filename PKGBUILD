@@ -1,6 +1,6 @@
 # Maintainer: Sergey Mezentsev <thebits@yandex.ru>
 pkgname=ydb
-pkgver=2.20.0
+pkgver=2.22.1
 pkgrel=1
 pkgdesc="Yandex Database CLI"
 license=('unknown')
