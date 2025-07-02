@@ -1,7 +1,7 @@
 pkgbase = nvcards
-	pkgdesc = Card-based note-taking application with local database file
+	pkgdesc = Card-based note-taking application with local database file (sqlite database with egui frontend)
 	pkgver = 0.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/nacl42/nvcards
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,6 @@ pkgbase = nvcards
 	options = !lto
 	options = !debug
 	source = nvcards-0.29.0.tar.bz2::https://gitlab.com/nacl42/nvcards/-/archive/v0.29.0/nvcards-v0.29.0.tar.bz2
-	sha256sums = SKIP
+	sha256sums = 6927d10cad8f6753a3a8b32233f022c9d009fb49eb41ac7dd18c0cd223ff6428
 
 pkgname = nvcards
