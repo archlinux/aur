@@ -1,10 +1,4 @@
-
-vhd2vl
-
-src
-pkg
-
-*.tar
-*.gz
-*.xz
-
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
