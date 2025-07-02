@@ -1,114 +1,43 @@
-# Gaia Sky 3.6.8 – Release Notes
+# Gaia Sky 3.6.9 -- Release notes
 
-**Gaia Sky 3.6.8** brings a major UI refresh, significant performance improvements, and many new features and bug fixes.
+ This new version brings some exciting features, like motion trails for star and particle groups, a new Turkish translation, and a new API (v2), and fixes some bugs.
 
----
-
-## New Features & Improvements
-
-### User Interface
-- Major UI overhaul: consolidated fonts, updated themes, removed deprecated components.
-- Improved visual quality: increased padding and higher image resolution in UI.
-- Switched to Inter as the default label font.
-- Panels in the main UI now expand when the mouse hovers over the buttons.
-- Welcome window enhancements:
-  - Displays the list of enabled datasets.
-  - New "Recommended Datasets" option for one-click download and launch.
-  - Updated background image.
-
-### Usability Enhancements
-- Time and calendar:
-  - Julian date tab added to date/time dialog.
-  - Time zone support improved; system-default time zone now used.
-- Dialogs remember the last opened tab (e.g. Preferences, About).
-- New star texture selector added to Preferences.
-- New object debug tool available via the debug panel—inspect and edit component fields.
-- Pointer coordinates display disabled by default (can be re-enabled in Preferences).
-- Console output:
-  - Messages and full log can now be copied to the clipboard.
-- Bookmark improvements:
-  - Bookmarks can now include camera position, orientation, time, and settings.
-  - Bookmark information dialog added (accessible via right-click).
-  - Empty folder bookmarks are removed automatically.
-  - Bookmark operations persist immediately.
-  - Invalid characters are now restricted in bookmark and folder names.
-
-### API & Scripting
-- Added:
-  - `setCameraDirectionEquatorial()` and `setCameraDirectionGalactic()`
-  - Enhanced `goToObjectSmooth()` with solid angle and sync options
-- Stars and particles now support a new shading style: `default` or `twinkle`.
-- Added Thiele-Innes conversion script, and support in the Gaia NSS processor.
-
----
+## Features
+- Add motion trail effect, which stretches stars and particles in the velocity direction. Can be toggled off in the settings.
+- Add Turkish translation, contributed by Erdem Uygun.
+- Migrate go-to-object operation in the camera info pane to use the smooth transitions API, which creates seamless, bumpy-free rides between two camera states.
+- Add a new API v2, which re-names and re-organizes the single access pont we had in the previous API into several modules grouped by function. It also improves documentation and standardizes function and parameter names when possible.
+- Adapt REST server and console to also accept APIv2 calls.
+- Add new setting to enable and disable notification messages, and add checkbox to preferences window. Notifications are off by default. Fixes [#847](https://codeberg.org/gaiasky/gaiasky/issues/847).
+- Update monospace fonts to include all supported characters, now using Liberation Mono.
+- Add missing characters to font files to ready them for the Turkish translation.
+- Left and right trigger buttons (LT, RT) in gamepads to control slider values in gamepad GUI.
+- Update default lens flare shader.
+- Add `generateIndex` attribute to particle sets, so that the index can be omitted for sets that do not need it (which is most of them).
 
 ## Bug Fixes
-
-- Fixed incorrect formatting of uptime duration.
-- Julian vs Gregorian calendar automatically selected based on date.
-- Fixed layout issues in Preferences and other dialogs.
-- UI components:
-  - Image button alignment corrected.
-  - Anchoring of the top info interface improved to prevent jitter.
-  - First UI text size adjusted.
-- Fixed crash when setting data directory to a root drive in Windows ([#825](https://codeberg.org/gaiasky/gaiasky/issues/825)).
-- Fixed crash due to early resolution of `attitudeindicator.png` path when changing data directory ([#795](https://codeberg.org/gaiasky/gaiasky/issues/795)).
-- Improved orbit rendering:
-  - Constant true anomaly spacing used for high-eccentricity orbits.
-  - Better handling of edge cases in Keplerian-to-Cartesian conversion.
-- Reused GZipped file streams no longer break on non-gzipped JSON files.
-- Context menu in bookmarks pane now positioned correctly.
-- Error window layout made consistent.
-- Visibility dialog now properly handles 'Invisible' object types.
-
----
+- Fix issues with upper- and lower-case conversions not using the correct locale.
+- Star glow effect flickers due to using a different method to render the billboard depending on whether the effect is active or not.
+- Big bugfix campaign in scripting. Went over all scripting tests and fixed all bugs so that all of them run fine.
+- Add missing `"` character to fonts, fix custom and messages interfaces' computation of position coordinates.
+- Dataset highlight API call not working properly.
+- Use concurrent set as collections in event manager to avoid concurrent modification exceptions.
+- Proper motions produce index out of bounds due to incorrect computation of maximum number of arrows.
+- Correct many instances where the wrong locale is used to convert strings to upper and/or lower case. Enable star name localization for the index and labels.
+- Properly scale camera mouse scroll and drag operations with the current frame rate.
+- Disable OpenAL system.
+- Use `RGBA16F` float format for the lens flare ping-pong buffer, otherwise AMD APUs show banding artifacts. Fixes [#846](https://codeberg.org/gaiasky/gaiasky/issues/846).
 
 ## Performance Improvements
-
-- Replaced `Apfloat` with `Quadruple`: faster 128-bit floating point math with adequate precision.
-- Reduced short-lived object allocations in many systems.
-- Major speed-up in label rendering via task refactoring.
-- Star size factors now cached instead of recalculated per frame.
-- Internal maps replaced with faster, boxing-free versions.
-- Half-precision (16-bit) floats now used for non-critical star/particle magnitudes.
-- Particle updates split over multiple frames to reduce frame drops.
-- Old particle and variable record types unified into a compact, immutable `Particle` record.
-- `PointCloudData` reimplemented using records with a more compact memory footprint.
-
----
+- Use `GL_RGB16F` instead of `GL_RGBA16F` format (omitting the alpha channel) for internal post-processing effects buffers (lens flare, bloom, etc.). This saves some VRAM, especially useful in integrated graphics.
+- Set a default value of 0.4 scale for the lens flare effect to minimize fill rate and make the ping-pong pass much faster.
 
 ## Code Refactoring
-
-- Removed duplicate star/particle index arrays.
-- Replaced boxed integers with primitives.
-- Top-K particle sorting now uses a priority queue.
-- All shader files renamed to use the `.glsl` extension.
-
----
+- Harmonize and consolidate star and particle set creation methods under the same class.
 
 ## Build System
-
-- Upgraded to libGDX 1.13.5.
-- Default builds now use JRE 24 with Generational ZGC for lower latency.
-- Java source compatibility updated from 17 to 20.
-- Gradle upgraded to 8.13.
-- Install4j AUR package URL updated to `gaiasky.space`.
-- Added test infrastructure:
-  - Includes tests for Keplerian-to-Cartesian conversions.
-  - Enabled JUnit dependencies.
-- `gdx-tools` moved to compile-only dependency.
-- Enabled logging for Gradle test runs.
-
----
+- Add `--sun-misc-unsafe-memory-access=allow` to launch VM options to prevent logging unsafe operation access in LWJGL3.
+- Disable OptFlowCam export option for keyframes in Flatpak in order to avoid Python dependencies.
 
 ## Documentation
-
-- Improved descriptions for many fields in the attribute map JSON file.
-
----
-
-## Merge Requests
-
-- Merged `quadruple` branch (128-bit math support).
-- Merged `particle-update-refactor` branch (particle update system overhaul).
-
+- Add new APIv2 package-level documentation.
