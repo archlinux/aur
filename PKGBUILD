@@ -1,22 +1,26 @@
 # Maintainer: Danct12 <WkdGdVkzUXhNa0JrYVhOeWIyOTBMbTl5WndvPQo=>
 pkgname=isle-portable-git
-pkgver=r2115.822a6a33
+pkgver=r2160.ba14b482
 pkgrel=1
 pkgdesc="Portable version of LEGO Island based on decompilation effort"
 arch=(x86_64 armv7h aarch64)
 url="https://github.com/isledecomp/isle-portable"
-license=('custom:Proprietary')
+license=('LGPL-3.0-or-later')
 install="$pkgname.install"
 depends=('iniparser' 'mesa' 'qt6-base' 'sdl3')
 makedepends=('cmake' 'git' 'python')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
-    'isle-portable::git+https://github.com/isledecomp/isle-portable.git'
-    'isleportable.desktop'
+    'git+https://github.com/isledecomp/isle-portable.git'
+    'git+https://github.com/ocornut/imgui'
+    'git+https://github.com/mackron/miniaudio'
+    'foxtacles-libsmacker::git+https://github.com/foxtacles/libsmacker'
 )
 sha256sums=('SKIP'
-            '4f6c79a77b2cf4d2464db71ca95048289ca3e188d575d8dd84849635b299fd9e')
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
@@ -25,7 +29,13 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/${pkgname%-git}"
-    git submodule update --init
+    git submodule init
+
+    git config submodule.imgui.url "$srcdir/imgui"
+    git config submodule.3rdparty/miniaudio.url "$srcdir/miniaudio"
+    git config submodule.3rdparty/libsmacker.url "$srcdir/foxtacles-libsmacker"
+
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -41,14 +51,4 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-
-    # Change the binary filename to something that makes more sense
-    mv "$pkgdir"/usr/bin/{isle,lego-isle}
-    mv "$pkgdir"/usr/bin/{config,lego-isle-config}
-
-    # Create desktop entry
-    install -Dm644 "${pkgname%-git}"/CONFIG/res/lego1.png \
-        "$pkgdir"/usr/share/icons/hicolor/32x32/apps/legoisle.png
-    install -Dm644 "$srcdir"/isleportable.desktop \
-        "$pkgdir"/usr/share/applications/isleportable.desktop
 }

@@ -3,7 +3,7 @@ post_install() {
 
 LEGO Island will not run without game files.
 
-Run the config app "lego-isle-config" and set disk/media path
+Run the config app "isle-config" and set disk path
 to your game files location before running the game.
 
 EOF
