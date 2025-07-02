@@ -1,18 +1,28 @@
-# Maintainer: Naglis Jonaitis <naglis@mailbox.org>
+# Maintainer: Echo J. <aidas957 at gmail dot com>
+# Contributor: Naglis Jonaitis <naglis@mailbox.org>
 # Developer: Softemia <info@softemia.lt>
+
 pkgname=mcard-toolbox
-pkgver=1.3.4.0
+pkgver=1.4.0.0
 pkgrel=1
-pkgdesc="mCard Toolbox"
-url="https://softemia.lt/downloads/"
-arch=('x86_64' 'aarch64')
-license=('custom')
-depends=('pcsclite>=1.5' 'qt5-base')
-source_x86_64=("https://softemia.lt/wp-content/uploads/2023/07/$pkgname-amd64-$pkgver.deb")
-source_aarch64=("https://softemia.lt/wp-content/uploads/2023/07/$pkgname-arm64-$pkgver.deb")
-sha256sums_x86_64=('607fceb3b5598f988d6a4b8a882b46df32452a704e213c9145467a39e280291f')
-sha256sums_aarch64=('9d87e68e62726034b76b8a53a8134eb0c3b084f8fca5626c8422611a9de112a0')
+pkgdesc="mCard Toolbox by Softemia (required for current Lithuanian ID cards)"
+url="https://www.nsc.vrm.lt/downloads.htm"
+arch=('x86_64')
+license=('LicenseRef-Softemia') # The included license file only says the software is copyright by Softemia
+license+=('BSL-1.0') # License for included Boost/CryptoPP code
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'openjpeg2' 'pcsclite' 'qt5-base')
+makedepends=('patchelf')
+source=("https://www.nsc.vrm.lt/files/Toolbox_LT-${pkgver}.zip")
+sha256sums=('35b4a289484731f1ca86f3447816706a5ccb1c8344c6805b3a452c206d0e20d7')
 
 package() {
-  bsdtar xf "data.tar.xz" -C "${pkgdir}"
+   # Unpack the actual Fedora package contents
+   bsdtar xf "${pkgname}-${pkgver}"-*fc*.rpm -C "${pkgdir}"
+
+   # Move the license file to the correct place
+   install -Dm644 "${pkgdir}/usr/share/${pkgname}/license.rtf" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+   rm -r "${pkgdir}/usr/share/${pkgname}"
+
+   # Remove problematic RUNPATH entry
+   patchelf --remove-rpath "${pkgdir}/usr/bin/${pkgname}"
 }
