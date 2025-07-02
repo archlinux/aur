@@ -2,8 +2,8 @@
 
 pkgbase='juicity'
 pkgname=(${pkgbase}-{client,server})
-pkgver=0.4.3
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='A quic-based proxy protocol and implementation, inspired by tuic.'
 url='https://github.com/juicity/juicity'
 license=('AGPL-3.0-only')
@@ -13,7 +13,7 @@ makedepends=('go')
 
 source=("${pkgbase}-${pkgver}-full-src.zip"::"${url}/releases/download/v${pkgver}/${pkgbase}-full-src.zip")
 
-b2sums=('28a63a5117695d32a07042b87e0e0bf89d2922fa1c7904374ee602bf32a14534ec89dc3c5ce09ea7f135bf97b3b42a7206eb1a229b8f4f8fbe8432224727ee5a')
+b2sums=('0b5b676ceccb2d518797f13818e6bca5f317b93724e2a76603d3e769e90a6cfe5952fbbe6c456dd3477acbc6a8fca3005300556122688a98800b13b4f1eb07bd')
 
 prepare() {
   mkdir -v "${srcdir}/build"
