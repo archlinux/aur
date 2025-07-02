@@ -2,7 +2,7 @@
 pkgname=turso
 # This can be changed back to 'turso' after the next release
 _old_pkgname=limbo
-pkgver=0.1.0_pre.2
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Turso Database is an in-process SQL database, compatible with SQLite.'
 url='https://github.com/tursodatabase/turso'
@@ -10,7 +10,7 @@ license=('MIT')
 arch=('x86_64')
 makedepends=(cargo libgit2 mimalloc oniguruma)
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver/_/-}/source.tar.gz")
-sha256sums=('c20bacc51d8ea633159924c3572069991393d23a342dd21599abda65f8ea7ce9')
+sha256sums=('b204e5947a19db976e775728f2197bbe30290728d6454b94505e9332357febee')
 
 prepare() {
     cd "${pkgname}_cli-${pkgver/_/-}"
