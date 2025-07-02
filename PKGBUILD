@@ -6,17 +6,19 @@ if [[ "${AUR_BUILD}" == "1" ]]; then
   pkgname=system-bridge-git
   pkgver=r0.0.0.0
   pkgrel=1
-  pkgdesc="A bridge between your systems (git version)"
+  pkgdesc="A bridge for your systems (git version)"
   makedepends=('git' 'go' 'bun-bin')
-  source=("$pkgname::git+https://github.com/timmo001/system-bridge.git")
-  md5sums=('SKIP')
+  source=("$pkgname::git+https://github.com/timmo001/system-bridge.git" "VERSION")
+  md5sums=('SKIP' 'SKIP')
+  conflicts=('system-bridge')
 else
   # Binary package configuration (CI/CD)
   pkgname=system-bridge
   pkgver=${ARCH_PKGVER}
   pkgrel=1
-  pkgdesc="A bridge between your systems"
+  pkgdesc="A bridge for your systems"
   source=('system-bridge' 'system-bridge.desktop' 'system-bridge.svg' 'system-bridge-16.png' 'system-bridge-32.png' 'system-bridge-48.png' 'system-bridge-128.png' 'system-bridge-256.png' 'system-bridge-512.png' 'LICENSE')
+  conflicts=('system-bridge-git')
 fi
 
 # Common configuration
@@ -25,14 +27,13 @@ url="https://github.com/timmo001/system-bridge"
 license=('Apache-2.0')
 depends=('libx11' 'libxtst' 'libxkbcommon' 'libxkbcommon-x11')
 provides=('system-bridge')
-conflicts=('system-bridge')
 
 # AUR-specific functions
 pkgver() {
   if [[ "${AUR_BUILD}" == "1" ]]; then
-    if [[ -d "$pkgname" ]]; then
-      cd "$pkgname"
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    if [[ -f "$srcdir/VERSION" ]]; then
+      local ver=$(cat "$srcdir/VERSION")
+      echo "${ver//+/_}"
     else
       # Fallback for when source dir doesn't exist (e.g., during --printsrcinfo)
       echo "r0.0.0.0"
