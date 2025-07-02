@@ -4,7 +4,7 @@
 
 _base=chatterbot
 pkgname=python-${_base}
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="A machine learning, conversational dialog engine for creating chatbots."
 arch=('any')
@@ -15,8 +15,8 @@ checkdepends=('python-sphinx' 'python-nose' 'flake8' 'python-huggingface-hub')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz"::${url}/archive/refs/tags/${pkgver}.tar.gz
   "fix-license-definition.patch")
-sha512sums=('09b55900145ec84fe908f9a75d11569826257d845de795d812b8d585e32c36d95950ba518a0a3a159df556379272e216bf0a250e7dfe6cc435f9fe686d46cc7e'
-            '4d7aa747de58e5efab6fbb843989a700e1ae088cb2948f0c7a99d583d6dae197fe0349a8d8d4bf8bb8a935a65670026d0aeec97d25670df5b3fd1adbdd77d297')
+b2sums=('a7422f8495d3acd63357aa32f02cc52bbf2cc057be907eec1697c6689d296d3d90a9909b709a4861ca15a187d4f4b581afec66281eb6d7a841a63fc9aefed7b3'
+        'b462f15681623843c3be69ab596634b6959bcc9a61986cf881762a1ff51b1a0da9a3c8c684adce37a941c9185d66a0d2865bce5da6e7fa65e4f41f0082dbc887')
 
 prepare() {
   cd "ChatterBot-${pkgver}"
