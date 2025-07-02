@@ -1,14 +1,16 @@
 pkgbase = qtel-svxlink-git
 	pkgdesc = Qtel (EchoLink client) built from the latest official SvxLink Git repository
-	pkgver = 0
+	pkgver = 25.05.1.9.r928cd878
 	pkgrel = 1
 	url = https://github.com/sm0svx/svxlink
+	install = qtel-svxlink-git.install
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = git
 	makedepends = make
 	makedepends = gcc
+	makedepends = qt5-tools
 	depends = qt5-base
 	depends = alsa-lib
 	depends = libsigc++
