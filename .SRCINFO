@@ -1,0 +1,16 @@
+pkgbase = gsettings-qt6
+	pkgdesc = Qml bindings for GSettings
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/ubports/development/core/gsettings-qt
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = cmake-extras
+	depends = qt6-declarative
+	source = https://gitlab.com/ubports/development/core/gsettings-qt/-/archive/v1.0.0/gsettings-qt-v1.0.0.tar.bz2
+	sha256sums = 8471bc586727ab6b47ce0b04563d834608489765f1a2a833fdcc5e04f9dfb070
+
+pkgname = gsettings-qt6
