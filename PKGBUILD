@@ -1,7 +1,7 @@
 # Maintainer: Choi Madeleine gankiann.niu@gmail.com
 
 pkgname=discord-mpris-rs
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Discord Rich Presence for MPRIS media players'
 license=('0BSD')
@@ -9,7 +9,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
         "$pkgname.service")
-sha256sums=('efc4a0edb018d5f8b4a410602297156ba8ebaefe6437f076bd3f04156e2b8865'
+sha256sums=('4195d127878dd8c8761e93fe2a2a2730243823c0430ec2916df73a58d1f68390'
             '8a390a7cf929c1cde607cb06ebd1a1bd85a5b09cf6e82d8833102a22925e64d4')
 
 prepare() {
