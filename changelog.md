@@ -1,4 +1,10 @@
-## XIV-Proton 10-4 Latest
+## XIV-Proton Latest
+
+Updated to GE-Proton10-8. 
+更新至 GE-Proton10-8。
+具体版本更改情况参照：https://github.com/GloriousEggroll/proton-ge-custom/releases
+
+## XIV-Proton 10-4 
 
 Updated to GE-Proton10-4. For use with XIVLauncher-RB in Proton mode.
 更新至 GE-Proton10-4。用于 Proton 模式下的 XIVLauncher-RB。

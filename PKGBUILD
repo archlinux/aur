@@ -11,7 +11,7 @@
 ## pkginfo
 pkgdesc='Proton-GE兼容层，附带额外补丁：ntsync。Proton-GE with additional patches: ntsync.'
 pkgname=proton-xiv-bin
-pkgver=XIV_Proton10_4
+pkgver=XIV_Proton10_8
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -76,7 +76,7 @@ source=("${_pkgver}_${pkgrel}-ntsync.tar.xz::${url}/releases/download/${_pkgver}
   'user_settings.py'
   'launcher.sh'
   'pam_limits.conf')
-sha512sums=('4c3d65fb6b3396516edb66f44f3820df18a5499289e193cc38ba667be41ee4550000aa93dfaf034e5ee05ed3a70db35e95999ce9d0edee23167464f783334041'
+sha512sums=('7e7af92e1f08c9c37d44854da1f9301d0128f3e80cfa5a91f0494fa1a723bbe1fe92e77d62bbb2e1ab0e8e3b7060250611737fa653ecc5d4caec9664761c8307'
             '7c1a535d6dc33dbcd9de5605d4ec5b3cd38096d0d09de31c46037b3cbbbac8d4d64c24709b487ba3bd343eddae2b53d4f7b83559193381c09bc5961b9d7d75c2'
             '78ede6d50f9c43407da511c8b37dcf60aae2ddbd461c0081f0d0ce3de08ace3a84dee86e9253acbac829b47c5818ef4e1a354ccb05feaa9853ce279dc3f903fd'
             '60bcb1ad899d108fca9c6267321d11871feae96b696e44607ef533becc6decb493e93cbe699382e8163ad83f35cfa003a059499c37278f31afeba4700be6e356')
