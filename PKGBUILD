@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/Dealer-s-Choice/dealers_choice"
 license=('MIT')
 depends=('glibc' 'sdl2' 'sdl2_ttf' 'sdl2_image' 'sdl2_net' 'protobuf-c')
-makedepends=('meson' 'ninja')
+makedepends=('cmake' 'meson' 'ninja')
 optdepends=('canfigger')
 
 source=("https://github.com/Dealer-s-Choice/dealers_choice/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
