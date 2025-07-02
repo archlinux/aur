@@ -16,8 +16,7 @@ Target=electron30
 Target=electron29
 Target=electron28
 Target=nwjs
-Target=vivaldi
 
 [Action]
 When=PostTransaction
-Exec=/usr/bin/bash -c 'chmod a-r /{usr/lib/{opera{,-beta,-developer},electron{28..36}},opt/{vivaldi,nwjs}/lib}/libffmpeg.so 2>/dev/null||:'
+Exec=/usr/bin/bash -c 'chmod a-r /{usr/lib/{opera{,-beta,-developer},electron{28..36}},opt/nwjs/lib}/libffmpeg.so 2>/dev/null||:'

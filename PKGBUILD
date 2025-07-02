@@ -2,7 +2,7 @@
 pkgname=chromium-ffmpeg-codecs
 _ffver=7.1.1
 pkgver=${_ffver}.m136_119
-pkgrel=4
+pkgrel=5
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium-s (non vendored ${_so})"
 arch=('x86_64')
@@ -57,8 +57,8 @@ build() {
 
 package(){
   install -Dm644 release/$_so "${pkgdir}"/usr/lib/$_so
-  #install -d "${pkgdir}"/opt/vivaldi
-  #ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.7.4
+  install -d "${pkgdir}"/opt/vivaldi
+  ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.7.4
   # Opera has strange LD_PRELOAD
   install -Dm644 off-other-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
