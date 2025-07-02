@@ -1,0 +1,23 @@
+post_install() {
+  cat <<EOF
+✅ Pat has been installed.
+
+🔧 To configure it:
+   pat configure
+
+This opens or creates:
+   ~/.config/pat/config.json
+
+🌐 To launch the Web UI:
+   pat http --listen=:8080
+
+Then open your browser to:
+   http://localhost:8080
+
+📚 More commands:
+   pat help
+
+📄 Official docs:
+   https://getpat.io
+EOF
+}

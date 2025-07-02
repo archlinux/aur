@@ -1,0 +1,16 @@
+pkgbase = pat-git
+	pkgdesc = Cross-platform Winlink client with Web UI (git version)
+	pkgver = 0.13.1.r134.gabc1234
+	pkgrel = 1
+	url = https://github.com/la5nta/pat
+	install = pat-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = pat
+	conflicts = pat
+	source = git+https://github.com/la5nta/pat.git
+	sha256sums = SKIP
+
+pkgname = pat-git
