@@ -4,7 +4,7 @@
 # Contributor: Maciek Marciniak <mm2pl at kotmisia.pl>
 
 pkgname=obs-studio-with-websockets
-pkgver=31.0.3
+pkgver=31.0.4
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=('libfdk-aac: FDK AAC codec support'
             'v4l2loopback-dkms: virtual camera support')
 options=("!debug")
 source=($pkgname-$pkgver.tar.gz::https://github.com/tbocek/obs-source-all/releases/download/$pkgver/obs-studio-$pkgver.tar.gz)
-sha256sums=('33ebe473820a462dc7e189dc816970dac69338ecf3ba58863dcc20ca411e0607')
+sha256sums=('18da9b28e7d441d8d93458dfa8bc0b66350caf44414c544fc26f16d0f0a7b8ae')
 provides=('obs-studio')
 
 build() {
