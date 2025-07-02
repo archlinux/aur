@@ -1,15 +1,20 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=termusic-git
-pkgver=0.9.1.r180.gd82806c
+pkgver=0.11.0.r5.gea2a761
 pkgrel=1
 pkgdesc='Music Player TUI written in Rust'
 arch=(x86_64)
 url=https://github.com/tramhao/termusic
 license=(GPL-3.0-or-later MIT)
-depends=(dbus gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly gstreamer mpv protobuf soundtouch ueberzug) # alsa-lib libmpv.so
+depends=(
+  dbus gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good
+  gst-plugins-ugly gstreamerlibsixel mpv protobuf soundtouch ueberzug) # alsa-lib libmpv.so
 makedepends=(cargo clang git)
-optdepends=('emoji-font: display emojis' 'ffmpeg: extract audio by downloader' 'yt-dlp: download files')
+optdepends=(
+  'emoji-font: display emojis'
+  'ffmpeg: extract audio by downloader'
+  'yt-dlp: download files')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!lto)
