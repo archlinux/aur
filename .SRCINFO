@@ -1,6 +1,6 @@
 pkgbase = git-gl
 	pkgdesc = GitLab's version of Git
-	pkgver = 2.45.2.gl1
+	pkgver = 2.49.0.gl2
 	pkgrel = 1
 	url = https://gitlab.com/gitlab-org/git
 	install = git.install
@@ -36,7 +36,7 @@ pkgbase = git-gl
 	optdepends = libsecret: libsecret credential helper
 	provides = git
 	conflicts = git
-	source = git+https://gitlab.com/gitlab-org/git.git#tag=v2.45.2.gl1
+	source = git+https://gitlab.com/gitlab-org/git.git#tag=v2.49.0.gl2
 	source = git-daemon@.service
 	source = git-daemon.socket
 	source = git-sysusers.conf
