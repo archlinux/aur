@@ -1,6 +1,6 @@
 pkgbase = python-seleniumbase
 	pkgdesc = A complete web automation framework for end-to-end testing
-	pkgver = 4.39.5
+	pkgver = 4.39.6
 	pkgrel = 1
 	url = https://seleniumbase.io
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-seleniumbase
 	depends = python-pyotp
 	depends = python-markdown-it-py
 	depends = python-rich
-	source = SeleniumBase-4.39.5.tar.gz::https://github.com/seleniumbase/SeleniumBase/archive/v4.39.5.tar.gz
-	sha512sums = 08b19eac94210e435d273eb019358db7a63435b0e6828783e81b41d85fe264b33909777750a04cf5dc06dd23df11045f115ae2763de59e977c54482ac3244819
+	source = SeleniumBase-4.39.6.tar.gz::https://github.com/seleniumbase/SeleniumBase/archive/v4.39.6.tar.gz
+	sha512sums = 1c1eb37fc772fe2274ac21f319d60a67c00c6c4b9e3de5138433140a19be0988147261f4f1c2b68c8ced5d04a38eab5b3f143e111c5ee6b55b5956e41c350c62
 
 pkgname = python-seleniumbase
