@@ -2,17 +2,17 @@
 # Maintainer: Denilson <denilsonsa@gmail.com>
 # Maintainer: oech3
 pkgname=soundfonts-aur-meta
-pkgver=20250529 # do not let $(date -u +"%Y%m%d")
+pkgver=20250530 # do not let $(date -u +"%Y%m%d")
 pkgrel=1
 pkgdesc="Meta package depending on all avaiable soundfonts"
 arch=('any')
 conflicts=(soundfont-opl3-fm-128m) # duplicated and cloudflare issue?
-optdepends=('soundfont-ensembles: on wrong install path')
+optdepends=(soundfont-{ensembles,sso-sfz}:' wrong install path')
 depends=(
-  # From official repository:
+  # Official repository
   'freepats-general-midi' # GM
   'soundfont-fluid'
-  # From AUR:
+  # AUR
   'freepats-ydp-grand-piano' # Yamaha Disklavier Pro grand piano
   'soundfont-arachno' # GM+GS
   'soundfont-fatboy' # GM+GS
