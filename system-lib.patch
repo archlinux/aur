@@ -1,0 +1,32 @@
+--- src/cugraph-25.06.00/cpp/CMakeLists.txt	2025-06-06 04:20:22.000000000 +0800
++++ src/cugraph-25.06.00/cpp/CMakeLists.txt.new	2025-07-02 16:49:41.464862949 +0800
+@@ -123,12 +123,12 @@
+ 
+ # Need CCCL, then rmm, then cuCollections, then RAFT.
+ # This ensures that libraries can be overridden for testing.
+-include(cmake/thirdparty/get_cccl.cmake)
+-include(${rapids-cmake-dir}/cpm/rmm.cmake)
+-rapids_cpm_rmm(BUILD_EXPORT_SET cugraph-exports)
+-include(${rapids-cmake-dir}/cpm/cuco.cmake)
+-rapids_cpm_cuco(BUILD_EXPORT_SET cugraph-exports INSTALL_EXPORT_SET cugraph-exports)
+-include(cmake/thirdparty/get_raft.cmake)
++
++find_package(CCCL REQUIRED)
++find_package(cuco REQUIRED)
++find_package(nvtx3 REQUIRED)
++find_package(rmm REQUIRED)
++find_package(raft REQUIRED)
+ 
+ if (BUILD_CUGRAPH_MTMG_TESTS)
+     if(NOT TARGET ucx::ucp)
+@@ -497,6 +497,10 @@
+         rmm::rmm
+         raft::raft
+         $<BUILD_LOCAL_INTERFACE:CUDA::toolkit>
++	CUDA::cublas
++	CUDA::curand
++	CUDA::cusolver
++	CUDA::cusparse
+     PRIVATE
+         ${COMPILED_RAFT_LIB}
+         cuco::cuco

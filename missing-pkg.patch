@@ -1,0 +1,14 @@
+--- src/cugraph-25.06.00/python/pylibcugraph/CMakeLists.txt	2025-06-06 04:20:22.000000000 +0800
++++ src/cugraph-25.06.00/python/pylibcugraph/CMakeLists.txt.new	2025-07-02 16:39:59.623427201 +0800
+@@ -27,6 +27,11 @@
+   LANGUAGES CXX CUDA
+ )
+ 
++find_package(CCCL REQUIRED)
++find_package(nvtx3 REQUIRED)
++find_package(rapids_logger REQUIRED)
++find_package(rmm REQUIRED)
++find_package(raft REQUIRED)
+ find_package(cugraph "${RAPIDS_VERSION}" REQUIRED)
+ 
+ include(rapids-cython-core)

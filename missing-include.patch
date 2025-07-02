@@ -1,0 +1,10 @@
+--- src/cugraph-25.06.00/cpp/src/c_api/resource_handle.hpp	2025-06-06 04:20:22.000000000 +0800
++++ src/cugraph-25.06.00/cpp/src/c_api/resource_handle.hpp.new	2025-07-02 16:35:40.076406461 +0800
+@@ -15,6 +15,7 @@
+  */
+ #pragma once
+ 
++#include <cstdint>
+ #include <raft/core/handle.hpp>
+ 
+ namespace cugraph {

@@ -1,0 +1,44 @@
+pkgbase = cugraph
+	pkgdesc = cuGraph - RAPIDS Graph Analytics Library
+	pkgver = 25.06.00
+	pkgrel = 1
+	url = https://github.com/rapidsai/cugraph
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cuda
+	makedepends = python-setuptools
+	makedepends = cmake
+	makedepends = python-scikit-build-core
+	makedepends = python-rapids-build-backend
+	makedepends = ninja
+	makedepends = cython
+	depends = cuda
+	depends = libraft
+	source = https://github.com/rapidsai/cugraph/archive/refs/tags/v25.06.00.tar.gz
+	source = system-lib.patch
+	source = missing-include.patch
+	source = missing-pkg.patch
+	sha256sums = 40a6df1b3f33b892ebab6e276d9e1a6b7797eb61420cdce52c0b9890710fb130
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cugraph
+
+pkgname = python-pylibcugraph
+	depends = cuda
+	depends = libraft
+	depends = python
+	depends = cugraph
+
+pkgname = python-cugraph
+	depends = cuda
+	depends = libraft
+	depends = python
+	depends = cugraph
+	depends = python-pylibcugraph
+	depends = python-dask-cudf
+	depends = python-dask-cuda
+	depends = python-pylibcudf
+	depends = python-rmm
+	depends = python-dask-raft
