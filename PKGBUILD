@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Frysztak <sebastian at frysztak dot dev>
 pkgname=libbgcode
-pkgver=r219.5347c33
+pkgver=r228.5041c09
 pkgrel=1
 pkgdesc="Prusa Block & Binary G-code reader / writer / converter"
 url="https://github.com/prusa3d/libbgcode"
@@ -18,6 +18,7 @@ pkgver() {
 build() {
   cd "$pkgname"
 
+  CMAKE_POLICY_VERSION_MINIMUM=3.5 \
   cmake --preset default \
     -DLibBGCode_BUILD_DEPS=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \

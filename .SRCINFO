@@ -1,6 +1,6 @@
 pkgbase = libbgcode
 	pkgdesc = Prusa Block & Binary G-code reader / writer / converter
-	pkgver = r219.5347c33
+	pkgver = r228.5041c09
 	pkgrel = 1
 	url = https://github.com/prusa3d/libbgcode
 	arch = x86_64
