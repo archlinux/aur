@@ -16,6 +16,7 @@ Target=electron30
 Target=electron29
 Target=electron28
 Target=nwjs
+Target=vivaldi
 
 [Action]
 When=PostTransaction
