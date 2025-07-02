@@ -1,6 +1,6 @@
 pkgbase = json-log-viewer
 	pkgdesc = Interactive viewer for JSON logs.
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/hedhyw/json-log-viewer
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = json-log-viewer
 	makedepends = git
 	depends = glibc
 	options = !lto
-	source = git+https://github.com/hedhyw/json-log-viewer#tag=v1.4.0
-	sha256sums = ef8d37ce0d024129183adfa62ab98883f234761fda5c15aa52dc57681a0f55b3
+	source = git+https://github.com/hedhyw/json-log-viewer#tag=v1.5.0
+	sha256sums = d043e6085efd6403cc0c1361c0ae0aeeec3f20b9697a709a7d29118de22fdabb
 
 pkgname = json-log-viewer
