@@ -1,0 +1,4 @@
+[python-pyfonts]
+source = "github"
+github = "JosephBARBIERDARNAL/pyfonts"
+use_latest_release = "true"
