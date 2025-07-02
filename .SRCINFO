@@ -1,7 +1,7 @@
 pkgbase = psrecord
 	pkgdesc = Record and plot the CPU and memory activity of a process.
-	pkgver = 1.2
-	pkgrel = 3
+	pkgver = 1.4
+	pkgrel = 1
 	url = https://github.com/astrofrog/psrecord
 	arch = any
 	license = BSD
@@ -10,8 +10,7 @@ pkgbase = psrecord
 	makedepends = python-setuptools
 	depends = python-psutil
 	optdepends = python-matplotlib: to generate plots of the data
-	source = psrecord-1.2.tar.gz::https://github.com/astrofrog/psrecord/archive/v1.2.tar.gz
-	b2sums = c4bf7c0c92030c07273fb76a192fb175e46e448ebdb761d16bf01c01d06183947fe1a76178baaa79d58728dc9b2b1c3793f69f6e7a9fa51b029f9df5e9a521aa
+	source = psrecord-1.4.tar.gz::https://github.com/astrofrog/psrecord/archive/v1.4.tar.gz
+	b2sums = 70868e0f3af86b6138c9f7effa95590bce08743adecb30aaafa128c0062d709cb8579004d5c587c326048f32aeeae5bd6993df72c0fa6adcbddd8415bc325f9e
 
 pkgname = psrecord
-
