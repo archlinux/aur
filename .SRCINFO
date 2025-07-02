@@ -1,6 +1,6 @@
 pkgbase = distroshelf-git
 	pkgdesc = A GUI for Distrobox Containers
-	pkgver = r139.g8d7ed3f
+	pkgver = r192.g34eeb8e
 	pkgrel = 1
 	url = https://github.com/ranfdev/DistroShelf
 	arch = x86_64
