@@ -44,5 +44,6 @@ pkgname = zoom-system-qt
 pkgname = zoom-system-qt-cef
 	pkgdesc = CEF for vebview of zoom-system-qt
 	depends = vivaldi-ffmpeg-codecs
+	depends = zoom-system-qt
 	depends = sqlite
 	optdepends = vulkan-driver
