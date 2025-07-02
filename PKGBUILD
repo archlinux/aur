@@ -57,6 +57,7 @@ package_zoom-system-qt() {
   pkgdesc="Zoom Workspace client on system runtime"
   mv opt usr "$pkgdir" # breaks --repackage
   mv "$pkgdir"/opt/zoom/cef "$srcdir"
+  install -d "$pkgdir"/opt/zoom/cef
 }
 
 package_zoom-system-qt-cef(){
