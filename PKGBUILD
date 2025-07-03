@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=typesense-dashboard-bin
 _pkgname=Typesense-Dashboard
-pkgver=2.0.5
-_electronversion=35
+pkgver=2.1.0
+_electronversion=37
 pkgrel=1
 pkgdesc="A Typesense Dashboard to manage and browse collections.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -22,9 +22,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/bfritscher/typesense-dashboard/v${pkgver}/public/icons/favicon-128x128.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('fec17c3d4267cc6338c00a05d1edefe9f601e63d3da369464bf303490107612a'
+sha256sums=('15f427282fb90a68cf36e19e734a270a74c63c44390c0dec09008e1d5799895f'
             'ce61a0d27e9167938ce2083e1391de1ee514b40d8a0f5c3602a7a04f449f6779'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/dist/electron/Packaged/${_pkgname}-linux-x64/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -39,6 +43,7 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${_pkgname} %U"
+    _get_electron_version
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
