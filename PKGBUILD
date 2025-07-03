@@ -1,20 +1,31 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Chris Tam <lchris314 at gmail dot com>
 # Contributor: Daniel Micay <danielmicay at gmail dotcom>
 # Contributor: David Herrmann <dh.herrmann@googlemail dot com>
 
 pkgname=kmscon
-pkgver=9.0.0
+pkgver=9.1.0
 pkgrel=1
 pkgdesc='Terminal emulator based on Kernel Mode Setting (KMS)'
 arch=('x86_64')
 url='https://github.com/Aetf/kmscon/'
 license=('MIT')
-depends=('systemd' 'libdrm' 'mesa' 'libgl' 'pango' 'libxkbcommon'
-         'xkeyboard-config' 'libtsm')
-makedepends=('libxslt' 'docbook-xsl' 'linux-api-headers' 'meson')
-source=("https://github.com/Aetf/kmscon/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('48be605bd874260d9bd7a59e82421ceacf875e4a2c5dba9c62d7f0359df694b6')
+depends=(
+    'bash'
+    'glibc'
+    'glib2'
+    'libdrm'
+    'libgl'
+    'libtsm'
+    'libxkbcommon'
+    'mesa'
+    'pango'
+    'pixman'
+    'systemd-libs'
+)
+makedepends=('check' 'libxslt' 'docbook-xsl' 'linux-api-headers' 'meson')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Aetf/kmscon/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('56427c29cb581db22f7ebf76bc8678dc8948700cce39b60be001a88d1d297beb')
 
 build() {
   meson setup build $pkgname-$pkgver \
@@ -27,6 +38,4 @@ build() {
 package() {
   meson install -C build --destdir="$pkgdir"
   install -Dm644 $pkgname-$pkgver/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-#  install -d "$pkgdir/usr/lib/systemd/system"
-#  cp docs/kmscon{,vt@}.service "$pkgdir/usr/lib/systemd/system/"
 }
