@@ -2,7 +2,7 @@
 
 _pkgname="sonyheadphonesclient-bluetooth"
 pkgname="$_pkgname"
-pkgver=1.3.17
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Desktop client recreating the functionality of the Sony Headphones app (Bluetooth/TWS/XM5+)"
 url="https://github.com/mos9527/SonyHeadphonesClient"
