@@ -27,6 +27,9 @@ sed -E "s#(_tag=).*#\1$VERSION#" -i PKGBUILD
 
 jq -c -r '.[] | [ "printf", "\n# %s\n\n%s\n\n__________\n", .name, .body ] | @sh' < releases.json | bash > CHANGELOG
 
+rm -r src pkg SlimeVR-amd64.appimage
+
+updpkgsums
 makepkg -sf
 updpkgsums
 makepkg --printsrcinfo > .SRCINFO
