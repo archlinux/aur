@@ -1,6 +1,6 @@
 pkgbase = spotx-git
 	pkgdesc = SpotX Bash Script | Block all audio, banner & video ads | Block logging
-	pkgver = r191+g181fd7fc8
+	pkgver = r195+ga0df4fcaa
 	pkgrel = 1
 	url = https://github.com/SpotX-Official/SpotX-Bash
 	arch = any
