@@ -36,7 +36,9 @@ pkgbase = libjxl
 
 pkgname = libjxl
 	depends = brotli
+	depends = gcc-libs
 	depends = giflib
+	depends = glibc
 	depends = gperftools
 	depends = highway
 	depends = libjpeg-turbo

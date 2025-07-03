@@ -91,7 +91,9 @@ check() {
 package_libjxl() {
     depends=(
         'brotli'
+        'gcc-libs'
         'giflib'
+        'glibc'
         'gperftools'
         'highway'
         'libjpeg-turbo'
