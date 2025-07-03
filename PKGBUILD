@@ -3,7 +3,7 @@
 
 _pkgname=chromadb
 pkgname="python-${_pkgname}"
-pkgver=1.0.13
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="the AI-native open-source embedding database"
 arch=("any")
@@ -13,7 +13,7 @@ depends=(python-bcrypt python-build python-chroma-hnswlib python-fastapi python-
 makedepends=('python-build' 'python-installer' 'python-maturin' 'python-setuptools' 'python-setuptools-scm')
 options=(!lto)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('b1377809d34bae6375a890683a5395116b7ab9bd241203cc5a7b1633783d39295a3314d2a861ac4ffacc9b036c49ace2a296d432a1fac526a4c9bc1e0d759db9')
+b2sums=('89f132950e1444473d3a204962573583b6503ed082c6131e85a067172fd51f671392e4d134608144c3fbeaa0c1f30b50ad37915e97d76862c82a37b86bb3fec2')
 
 build() {
     cd "${_pkgname}-${pkgver}"
