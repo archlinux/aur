@@ -13,7 +13,7 @@ conflicts=('helion-git' 'helion-bin')
 source=("https://github.com/Helion-Engine/Helion/archive/refs/tags/${pkgver}.tar.gz" "helion.desktop" "helion.ico")
 sha256sums=('303391cbbba2688ae9697bc6688b2139e15bc8e9deaa2f23df39f17893a2aa69' 'dd02c430e093c2cfcdfaedfc316975af8ac47883676a05c26ac0a22a6f1b9c6b' '9590d5b920d2350a9f4ed8311f3195e619ebb168841e7d783cb652d142182c82')
 build() {
-	cd "Helion${pkgver}/Client"
+	cd "Helion-${pkgver}/Client"
 	dotnet publish  \
 		-c Release \
 		-r linux-x64 \
@@ -21,13 +21,13 @@ build() {
 		-p:AOT=true
 }
 package() {
-	cd "Helion/Publish/linux-x64_AOT/"
+	cd "Helion-${pkgver}/Publish/linux-x64_AOT/"
 	#There might be a better way of going about this, but right now this works.
 	mkdir -m=644 -p "$pkgdir"/opt/Helion/SoundFonts
 	install -Dm755 ./Helion "$pkgdir"/opt/Helion/
 	install -Dm644 ./assets.pk3 "$pkgdir"/opt/Helion/
 	install -Dm644 ./libfluidsynth.so.3 "$pkgdir"/opt/Helion/
-	install -Dm644 ./libglfw.so.3 "$pkgdir"/opt/Helion/
+	install -Dm644 ./libglfw.so.3.3 "$pkgdir"/opt/Helion/
 	install -Dm644 ./libSDL2.so "$pkgdir"/opt/Helion/
 	install -Dm644 ./libzmusic.so "$pkgdir"/opt/Helion/
 	install -Dm644 ./README.md "$pkgdir"/opt/Helion/
