@@ -1,7 +1,7 @@
 pkgbase = zenta-git
 	pkgdesc = Mindfulness for terminal users (development version)
 	pkgver = 1.0.0.r0.g0538490
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/e6a5/zenta
 	arch = aarch64
 	arch = armv7h

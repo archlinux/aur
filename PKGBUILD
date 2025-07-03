@@ -6,7 +6,7 @@
 pkgname='zenta-git'
 _pkgname="${pkgname/-git}"
 pkgver=1.0.0.r0.g0538490
-pkgrel=2
+pkgrel=3
 pkgdesc='Mindfulness for terminal users (development version)'
 arch=('aarch64' 'armv7h' 'i686' 'riscv64' 'x86_64')
 url='https://github.com/e6a5/zenta'
@@ -22,7 +22,7 @@ prepare() {
   cd "$_pkgname"
 
   git clean -dfx
-  mkdir -vp build
+  mkdir -p build
   go mod tidy
 }
 
