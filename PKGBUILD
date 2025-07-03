@@ -9,10 +9,11 @@ pkgrel=1
 pkgdesc="minipro GUI for TL866 programmer"
 arch=("i686" "x86_64")
 url="https://github.com/wd5gnr/qtl866"
-license=("GPL3")
+license=("GPL-3.0-only")
 build=("qmake")
 depends=("qt5-base")
-conflict=("qtl866")
+provides=("qtl866")
+conflicts=("qtl866")
 source=("git+https://github.com/wd5gnr/qtl866.git")
 md5sums=('SKIP')
 
