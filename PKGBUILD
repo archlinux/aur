@@ -28,8 +28,8 @@ prepare() {
 build() {
   # _symbols=$(base64 -d ffmpeg.sigs| grep -oE '\bav[a-z0-9_]*\s*\(' - | sed 's/(//' | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
   cd ffmpeg
-  # Use part of https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
-  # Use some flags at https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/BUILD.gn
+  # https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/
+  # chromium/config/Chrome/linux/x64/ BUILD.gn
   # Why disable error-resilience faan iamf?
   ./configure \
     --disable-{all,autodetect,doc,iconv,network,symver} \
@@ -42,13 +42,13 @@ build() {
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
     --extra-cflags="-fno-math-errno -fno-signed-zeros ${LTOFLAGS}" \
     --prefix="${srcdir}"/release \
-    --enable-{pic,asm,hardcoded-tables} # https://www.ffmpeg.org/platform.html#toc-Advanced-linking-configuration
+    --enable-{pic,asm,hardcoded-tables}
 
   make install
   cd ../release
   gcc $LTOFLAGS -shared $LDFLAGS \
     -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
-    -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avutil_version \
+    -Wl,--no-whole-archive lib/lib{avutil,swresample}.a \
     -lm -Wl,-Bsymbolic -o $_so
 }
 
