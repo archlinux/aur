@@ -1,0 +1,26 @@
+pkgbase = qlever-git
+	pkgdesc = SPARQL engine
+	pkgver = r2427.618fcede1
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/ad-freiburg/qlever
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = boost
+	depends = zstd
+	depends = openssl
+	depends = glibc
+	depends = gcc-libs
+	depends = boost-libs
+	depends = jemalloc
+	depends = icu
+	provides = qlever=r2427.618fcede1
+	conflicts = qlever
+	source = qlever::git+https://github.com/ad-freiburg/qlever.git
+	sha256sums = SKIP
+
+pkgname = qlever-git
