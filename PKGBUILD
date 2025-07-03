@@ -8,7 +8,7 @@ url="https://github.com/marcusziade/pomme"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marcusziade/pomme/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marcusziade/pomme/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {

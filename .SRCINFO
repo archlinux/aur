@@ -9,7 +9,7 @@ pkgbase = pomme
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = pomme-2.0.0.tar.gz::https://github.com/marcusziade/pomme/archive/v2.0.0.tar.gz
+	source = pomme-2.0.0.tar.gz::https://github.com/marcusziade/pomme/archive/2.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = pomme
