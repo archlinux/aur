@@ -4,7 +4,7 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=Tauon
-pkgver=8.1.1
+pkgver=8.1.2
 pkgrel=1
 _kissfftver=131.1.0
 _miniaudiocommit=4a5b74bef029b3592c54b6048650ee5f972c1a48
@@ -74,7 +74,7 @@ source=(
 	"miniaudio-${_miniaudiocommit}.tar.gz::https://github.com/mackron/miniaudio/archive/${_miniaudiocommit}.tar.gz"
 )
 
-sha256sums=('a81c5f77705399f40ecb40ffe5cad13058767863ba6c5ffe327eb0054df3a9fc'
+sha256sums=('9a4c86ff46904b843b298782a2a6af26863ecab45d927987340357ba92d097c6'
             '76c1aac87ddb7258f34b08a13f0eebf9e53afa299857568346aa5c82bcafaf1a'
             'aacb63f571608210e69c5562eb8a9e3d1cb936bdee7a2eb8ffbc40f63888d8e8')
 
