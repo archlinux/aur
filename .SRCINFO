@@ -1,6 +1,6 @@
 pkgbase = zenta
 	pkgdesc = mindfulness for terminal users
-	pkgver = 0.3.5
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/e6a5/zenta
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = zenta
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = zenta-0.3.5.tar.gz::https://github.com/e6a5/zenta/archive/refs/tags/v0.3.5.tar.gz
-	b2sums = 711263a79f647971ee6bd3cc9a0e30b68e8bbef68787a3d6237d6155089086c0357ed2d64c6dcc47f9dfd0c9b13a5d6aa0ce363c6dc488697b82ec5ef664b5c8
+	source = zenta-1.0.0.tar.gz::https://github.com/e6a5/zenta/archive/refs/tags/v1.0.0.tar.gz
+	b2sums = e1a53831064175bf09bf8a558a865008f0b324ee66dd260a70d11fb3f9295ce34145c136f67686acfad3b92d29cbb761e3d517d7261f717234f4e3e726f95a47
 
 pkgname = zenta
