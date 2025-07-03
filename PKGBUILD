@@ -3,7 +3,7 @@
 _pkgname=sdrpp-brown
 pkgname="$_pkgname-git"
 pkgver=v1.1709823358.r414.ec20cc23
-pkgrel=1
+pkgrel=2
 pkgdesc="SDR++Brown (fork), is not the original bloat-free SDR software"
 arch=(x86_64)
 url="https://github.com/sannysanoff/SDRPlusPlusBrown"
@@ -34,4 +34,12 @@ build() {
 
 package() {
 	make -C build DESTDIR="$pkgdir" install
+	rm $pkgdir/usr/bin/itpp-config
+	rm -rf $pkgdir/usr/include/itpp/
+	rm $pkgdir/usr/include/mbelib.h
+	rm $pkgdir/usr/lib/libitpp_static.a
+	rm $pkgdir/usr/lib/libmbe*
+	rm -rf $pkgdir/usr/lib/pkgconfig
+	rm -rf $pkgdir/usr/share/itpp
+	rm -rf $pkgdir/usr/share/man
 }

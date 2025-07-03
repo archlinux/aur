@@ -1,7 +1,7 @@
 pkgbase = sdrpp-brown-git
 	pkgdesc = SDR++Brown (fork), is not the original bloat-free SDR software
 	pkgver = v1.1709823358.r414.ec20cc23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sannysanoff/SDRPlusPlusBrown
 	arch = x86_64
 	license = GPL-3.0-or-later
