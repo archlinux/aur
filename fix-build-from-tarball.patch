@@ -1,4 +1,4 @@
-From b3ebdeb87304995366b6e6354f487d4b6d100538 Mon Sep 17 00:00:00 2001
+From 10b658f29d52c5db91c2b4913f997b4bdc49aa71 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 16:28:05 +0100
 Subject: [PATCH 1/4] chore: remove declaration that does nothing
@@ -8,10 +8,10 @@ Subject: [PATCH 1/4] chore: remove declaration that does nothing
  1 file changed, 3 deletions(-)
 
 diff --git a/pyproject.toml b/pyproject.toml
-index f7b25eee..5154c915 100644
+index e92d278d..51dcb860 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -34,9 +34,6 @@ help = { file = "requirements/requirements-help.txt" }
+@@ -33,9 +33,6 @@ help = { file = "requirements/requirements-help.txt" }
  browser = { file = "requirements/requirements-browser.txt" }
  playwright = { file = "requirements/requirements-playwright.txt" }
  
@@ -22,10 +22,10 @@ index f7b25eee..5154c915 100644
  include = ["aider"]
  
 -- 
-2.48.1
+2.50.0
 
 
-From 81b6f4b1c6d58d372a6ff23a000dd210d58731b2 Mon Sep 17 00:00:00 2001
+From 6e9310808131fa33164401327825210dfe684a6f Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 16:28:51 +0100
 Subject: [PATCH 2/4] fix: include subpackages in distribution
@@ -47,10 +47,10 @@ part of the distribution.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/pyproject.toml b/pyproject.toml
-index 5154c915..d2630ba5 100644
+index 51dcb860..9dccaf87 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -35,7 +35,7 @@ browser = { file = "requirements/requirements-browser.txt" }
+@@ -34,7 +34,7 @@ browser = { file = "requirements/requirements-browser.txt" }
  playwright = { file = "requirements/requirements-playwright.txt" }
  
  [tool.setuptools.packages.find]
@@ -60,10 +60,10 @@ index 5154c915..d2630ba5 100644
  [build-system]
  requires = ["setuptools>=68", "setuptools_scm[toml]>=8"]
 -- 
-2.48.1
+2.50.0
 
 
-From cb60f84b816ef1beb6e17e096765607f6386d3ab Mon Sep 17 00:00:00 2001
+From 5ff2d4bcd7545a8f92c5b6d7ccf07e3074e9dfc8 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 16:34:57 +0100
 Subject: [PATCH 3/4] fix: include tree-sitter files in distribution
@@ -76,10 +76,10 @@ a Git worktree or a source tarball.
  1 file changed, 3 insertions(+)
 
 diff --git a/pyproject.toml b/pyproject.toml
-index d2630ba5..66bbd013 100644
+index 9dccaf87..2aed85ec 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -37,6 +37,9 @@ playwright = { file = "requirements/requirements-playwright.txt" }
+@@ -36,6 +36,9 @@ playwright = { file = "requirements/requirements-playwright.txt" }
  [tool.setuptools.packages.find]
  include = ["aider", "aider.*"]
  
@@ -90,10 +90,10 @@ index d2630ba5..66bbd013 100644
  requires = ["setuptools>=68", "setuptools_scm[toml]>=8"]
  build-backend = "setuptools.build_meta"
 -- 
-2.48.1
+2.50.0
 
 
-From 29a726b669ecab789369a199adec7aeabb403ace Mon Sep 17 00:00:00 2001
+From dd939bc2fc3962db6f10a91235b40b35cdc0102a Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 16:36:58 +0100
 Subject: [PATCH 4/4] fix: include all files in `aider.resources`
@@ -105,10 +105,10 @@ files, should be included in a distribution.
  1 file changed, 1 insertion(+)
 
 diff --git a/pyproject.toml b/pyproject.toml
-index 66bbd013..a6611ddd 100644
+index 2aed85ec..6fc37e87 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -39,6 +39,7 @@ include = ["aider", "aider.*"]
+@@ -38,6 +38,7 @@ include = ["aider", "aider.*"]
  
  [tool.setuptools.package-data]
  "*" = ["*.scm"]
@@ -117,5 +117,5 @@ index 66bbd013..a6611ddd 100644
  [build-system]
  requires = ["setuptools>=68", "setuptools_scm[toml]>=8"]
 -- 
-2.48.1
+2.50.0
 

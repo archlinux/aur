@@ -1,14 +1,14 @@
-From 49089f00dee6f26b1e1804e8e2678fa90e1907a6 Mon Sep 17 00:00:00 2001
+From aaeb0d24a5d284b2e4ec5e7474f98e1abc5e0328 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
-Date: Thu, 27 Mar 2025 22:05:25 +0100
+Date: Thu, 3 Jul 2025 14:00:47 +0200
 Subject: [PATCH 1/3] Arch-Linux-specific: install optdeps via pacman
 
 ---
- aider/scrape.py | 43 +++++++++++++++----------------------------
- 1 file changed, 15 insertions(+), 28 deletions(-)
+ aider/scrape.py | 42 +++++++++++++++++-------------------------
+ 1 file changed, 17 insertions(+), 25 deletions(-)
 
 diff --git a/aider/scrape.py b/aider/scrape.py
-index 3d5cfa86..1159581a 100755
+index 3d5cfa86..05100044 100755
 --- a/aider/scrape.py
 +++ b/aider/scrape.py
 @@ -18,9 +18,9 @@ def check_env():
@@ -16,31 +16,33 @@ index 3d5cfa86..1159581a 100755
          from playwright.sync_api import sync_playwright
  
 -        has_pip = True
-+        has_playwright = True
++        has_python_package = True
      except ImportError:
 -        has_pip = False
-+        has_playwright = False
++        has_python_package = False
  
      try:
          with sync_playwright() as p:
-@@ -29,50 +29,37 @@ def check_env():
+@@ -29,50 +29,42 @@ def check_env():
      except Exception:
          has_chromium = False
  
 -    return has_pip, has_chromium
--
--
--def has_playwright():
++    return has_python_package, has_chromium
+ 
+ 
+ def has_playwright():
 -    has_pip, has_chromium = check_env()
 -    return has_pip and has_chromium
-+    return has_playwright, has_chromium
++    has_python_package, has_chromium = check_env()
++    return has_python_package and has_chromium
  
  
  def install_playwright(io):
 -    has_pip, has_chromium = check_env()
 -    if has_pip and has_chromium:
-+    has_playwright, has_chromium = check_env()
-+    if has_playwright and has_chromium:
++    has_python_package, has_chromium = check_env()
++    if has_python_package and has_chromium:
          return True
  
 -    pip_cmd = utils.get_pip_install(["aider-chat[playwright]"])
@@ -51,7 +53,7 @@ index 3d5cfa86..1159581a 100755
 -    if not has_pip:
 -        cmds += " ".join(pip_cmd) + "\n"
 +    packages = []
-+    if not has_playwright:
++    if not has_python_package:
 +        packages.append("python-playwright")
      if not has_chromium:
 -        cmds += " ".join(chromium_cmd) + "\n"
@@ -88,12 +90,12 @@ index 3d5cfa86..1159581a 100755
  
  
 -- 
-2.49.0
+2.50.0
 
 
-From 9981c2aad65dc7dceea4f891d3e293cba6f81747 Mon Sep 17 00:00:00 2001
+From 7eda134890b34ba945aae48480c76bb4a14cfe9d Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
-Date: Mon, 10 Mar 2025 14:43:05 +0100
+Date: Thu, 3 Jul 2025 14:01:26 +0200
 Subject: [PATCH 2/3] Arch-Linux-specific: use system Chromium
 
 ---
@@ -101,7 +103,7 @@ Subject: [PATCH 2/3] Arch-Linux-specific: use system Chromium
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/aider/scrape.py b/aider/scrape.py
-index 1159581a..1fc85aa7 100755
+index 05100044..bb885daf 100755
 --- a/aider/scrape.py
 +++ b/aider/scrape.py
 @@ -24,7 +24,7 @@ def check_env():
@@ -113,7 +115,7 @@ index 1159581a..1fc85aa7 100755
              has_chromium = True
      except Exception:
          has_chromium = False
-@@ -135,7 +135,7 @@ class Scraper:
+@@ -140,7 +140,7 @@ class Scraper:
  
          with sync_playwright() as p:
              try:
@@ -123,48 +125,48 @@ index 1159581a..1fc85aa7 100755
                  self.playwright_available = False
                  self.print_error(str(e))
 -- 
-2.49.0
+2.50.0
 
 
-From 62ed6cfa15f1bf6c2a1d7c0d2a4a0cd929ed83cd Mon Sep 17 00:00:00 2001
+From d6eca11df043a79ff97cac75162626039e834f13 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
-Date: Thu, 27 Mar 2025 22:06:15 +0100
+Date: Thu, 3 Jul 2025 14:02:06 +0200
 Subject: [PATCH 3/3] Arch-Linux-specific: install boto3 via pacman
 
 ---
- aider/models.py |  6 +++---
+ aider/models.py |  6 ++----
  aider/utils.py  | 32 ++++++++++++++++++++++++++++++++
- 2 files changed, 35 insertions(+), 3 deletions(-)
+ 2 files changed, 34 insertions(+), 4 deletions(-)
 
 diff --git a/aider/models.py b/aider/models.py
-index d69ae2d5..9c4b59c7 100644
+index ae76f034..27a483dd 100644
 --- a/aider/models.py
 +++ b/aider/models.py
-@@ -18,7 +18,7 @@ from PIL import Image
- from aider.dump import dump  # noqa: F401
+@@ -21,7 +21,7 @@ from aider.dump import dump  # noqa: F401
  from aider.llm import litellm
+ from aider.openrouter import OpenRouterModelManager
  from aider.sendchat import ensure_alternating_roles, sanity_check_messages
 -from aider.utils import check_pip_install_extra
 +from aider.utils import check_archlinux_package, check_pip_install_extra
  
  RETRY_TIMEOUT = 60
  
-@@ -1081,8 +1081,8 @@ def check_for_dependencies(io, model_name):
+@@ -1167,9 +1167,7 @@ def check_for_dependencies(io, model_name):
      """
      # Check if this is a Bedrock model and ensure boto3 is installed
      if model_name.startswith("bedrock/"):
 -        check_pip_install_extra(
 -            io, "boto3", "AWS Bedrock models require the boto3 package.", ["boto3"]
-+        check_archlinux_package(
-+            io, "boto3", "python-boto3"
-         )
+-        )
++        check_archlinux_package(io, "boto3", "python-boto3")
  
      # Check if this is a Vertex AI model and ensure google-cloud-aiplatform is installed
+     elif model_name.startswith("vertex_ai/"):
 diff --git a/aider/utils.py b/aider/utils.py
-index 80cb0f38..6d791e0d 100644
+index 834ffa19..a58fde66 100644
 --- a/aider/utils.py
 +++ b/aider/utils.py
-@@ -474,6 +474,38 @@ def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_update=Fal
+@@ -332,6 +332,38 @@ def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_update=Fal
      print(printable_shell_command(cmd))
  
  
@@ -204,5 +206,5 @@ index 80cb0f38..6d791e0d 100644
      """
      Convert a list of command arguments to a properly shell-escaped string.
 -- 
-2.49.0
+2.50.0
 
