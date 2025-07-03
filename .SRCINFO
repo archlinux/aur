@@ -1,6 +1,6 @@
 pkgbase = zenta-bin
 	pkgdesc = mindfulness for terminal users
-	pkgver = 0.3.5
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/e6a5/zenta
 	arch = x86_64
@@ -8,9 +8,11 @@ pkgbase = zenta-bin
 	license = MIT
 	provides = zenta
 	conflicts = zenta
-	source_x86_64 = https://github.com/e6a5/zenta/releases/download/v0.3.5/zenta-v0.3.5-linux-amd64.tar.gz
-	b2sums_x86_64 = 41ecf7c4e219fdffe3314b20489da438994896784a1888b77f7bb9d59a25946db05347f5212925eb105740c3f1e57c3f3edb56d602bee89cdd804579c94624c0
-	source_aarch64 = https://github.com/e6a5/zenta/releases/download/v0.3.5/zenta-v0.3.5-linux-arm64.tar.gz
-	b2sums_aarch64 = 04a3709050465af357c30ac5c8229c3a992b283895e7dadffdbefe5c575cfe5cf4bd279fcf6ef6ab5fad3d10595c1a1efb9f2f42654fb206d10f18a1e68159f8
+	source = zenta-LICENSE::https://raw.githubusercontent.com/e6a5/zenta/refs/tags/v1.0.0/LICENSE
+	b2sums = e7384d51cd8451dd6b68452f767374895b5371ce4cd7fb8607095af8415bc3621d70c0ab9756858d87ff58b24537f35ebaec97ce3bfd89192a303cc92bc78063
+	source_x86_64 = https://github.com/e6a5/zenta/releases/download/v1.0.0/zenta-v1.0.0-linux-amd64.tar.gz
+	b2sums_x86_64 = dc1d34f939e48fa0c55095c950c38de879f901961958214e3e7ad777188153833c83f4547c0e828c215e1ed5022e8bc85c1846c1b4e317b444de7076c56d5f7d
+	source_aarch64 = https://github.com/e6a5/zenta/releases/download/v1.0.0/zenta-v1.0.0-linux-arm64.tar.gz
+	b2sums_aarch64 = 3d4077c4fbb76e520b6ca205a7f10fefa8e0f076365e8630a9faa660918fb2978507f3e154944970ea7acb86214865d47899026c7c1ef15426a34be64c98d544
 
 pkgname = zenta-bin
