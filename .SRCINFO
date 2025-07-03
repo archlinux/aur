@@ -1,6 +1,6 @@
 pkgbase = abracadabra
 	pkgdesc = Abraca DAB radio: DAB/DAB+ Software Defined Radio (SDR)
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/KejPi/AbracaDABra
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = abracadabra
 	depends = rtl-sdr
 	depends = qcustomplot-qt6
 	optdepends = airspy: support for AirSpy devices
+	optdepends = libfdk-aac: support for Fraunhofer AAC codec library
 	optdepends = soapysdr: support for SopaySDR vendor neutral and platform independent SDR support library
 	optdepends = soapyairspy: Soapy SDR plugin for Airspy
 	optdepends = soapybladerf: Soapy SDR plugin for bladeRF
@@ -32,7 +33,7 @@ pkgbase = abracadabra
 	optdepends = soapysdrplay: Soapy SDR plugin for SDR Play
 	provides = abracadabra
 	conflicts = abracadabra
-	source = AbracaDABra-3.2.0.tar.gz::https://github.com/KejPi/AbracaDABra/archive/refs/tags/v3.2.0.tar.gz
-	sha256sums = ad71fd52b487d9aeeb399bf0324f9d851d19991ee88f7bec814e1345397fe9ed
+	source = AbracaDABra-3.3.0.tar.gz::https://github.com/KejPi/AbracaDABra/archive/refs/tags/v3.3.0.tar.gz
+	sha256sums = cf05ff84390a60a2cdf47e83ac1580b46401e60951eff889c0779b015831ed2e
 
 pkgname = abracadabra

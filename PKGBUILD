@@ -2,7 +2,7 @@
 
 pkgname=abracadabra
 _appname=AbracaDABra
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Abraca DAB radio: DAB/DAB+ Software Defined Radio (SDR)"
 arch=("x86_64" "aarch64")
@@ -10,6 +10,7 @@ url="https://github.com/KejPi/${_appname}"
 license=("MIT")
 depends=("faad2" "mpg123" "portaudio" "qt6-multimedia" "qt6-svg" "qt6-imageformats" "qt6-location" "qt6-positioning" "rtl-sdr" "qcustomplot-qt6")
 optdepends=("airspy: support for AirSpy devices"
+	    "libfdk-aac: support for Fraunhofer AAC codec library" 
             "soapysdr: support for SopaySDR vendor neutral and platform independent SDR support library" 
 	    "soapyairspy: Soapy SDR plugin for Airspy" 
 	    "soapybladerf: Soapy SDR plugin for bladeRF" 
@@ -22,13 +23,12 @@ makedepends=("cmake" "gcc" "qt6-tools" "qt6-translations" "qcustomplot")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${_appname}-${pkgver}.tar.gz::https://github.com/KejPi/${_appname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("ad71fd52b487d9aeeb399bf0324f9d851d19991ee88f7bec814e1345397fe9ed")
-
+sha256sums=("cf05ff84390a60a2cdf47e83ac1580b46401e60951eff889c0779b015831ed2e")
 
 build() {
   mkdir -p "${srcdir}/${_appname}-${pkgver}/build"
   cd "${srcdir}/${_appname}-${pkgver}/build"
-  cmake "${srcdir}/${_appname}-${pkgver}" -DSOAPYSDR=ON -DAIRSPY=ON -DUSE_SYSTEM_QCUSTOMPLOT=ON -DPROJECT_VERSION_RELEASE=ON 
+  cmake "${srcdir}/${_appname}-${pkgver}" -DSOAPYSDR=ON -DAIRSPY=ON -DUSE_FDKAAC=ON -DUSE_SYSTEM_QCUSTOMPLOT=ON -DPROJECT_VERSION_RELEASE=ON 
   make
 }
 
