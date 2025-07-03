@@ -1,8 +1,8 @@
 # Maintainer: myt <myt@qq.com>
 
 pkgname=plasma-weather-plus
-pkgver=4.0
-pkgrel=2
+pkgver=4.1
+pkgrel=1
 epoch=1
 pkgdesc='plasma天气插件'
 arch=('any')
