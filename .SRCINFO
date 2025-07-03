@@ -1,0 +1,16 @@
+pkgbase = hare-adwaita-git
+	pkgdesc = Hare bindings for libadwaita
+	pkgver = r1.995ebdf
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/hare-adwaita
+	arch = x86_64
+	arch = aarch64
+	license = MPL2
+	makedepends = git
+	depends = hare
+	depends = hare-gi
+	depends = libadwaita
+	source = hare-adwaita::git+https://git.sr.ht/~sircmpwn/hare-adwaita
+	sha256sums = SKIP
+
+pkgname = hare-adwaita-git
