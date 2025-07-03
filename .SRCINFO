@@ -1,0 +1,24 @@
+pkgbase = helion
+	pkgdesc = A modern Doom FPS engine, made with C# and GPU usage in mind
+	pkgver = 0.9.7.0
+	pkgrel = 1
+	url = https://github.com/Helion-Engine/Helion
+	arch = x86_64
+	license = GPL3
+	makedepends = dotnet-runtime
+	makedepends = clang
+	depends = openal
+	depends = fluidsynth
+	depends = sdl2
+	depends = glfw
+	depends = zmusic>=1.1.8
+	conflicts = helion-git
+	conflicts = helion-bin
+	source = https://github.com/Helion-Engine/Helion/archive/refs/tags/0.9.7.0.tar.gz
+	source = helion.desktop
+	source = helion.ico
+	sha256sums = 303391cbbba2688ae9697bc6688b2139e15bc8e9deaa2f23df39f17893a2aa69
+	sha256sums = dd02c430e093c2cfcdfaedfc316975af8ac47883676a05c26ac0a22a6f1b9c6b
+	sha256sums = 9590d5b920d2350a9f4ed8311f3195e619ebb168841e7d783cb652d142182c82
+
+pkgname = helion
