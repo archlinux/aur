@@ -1,6 +1,6 @@
 pkgbase = hollama-bin
 	pkgdesc = A minimal web-UI for talking to Ollama servers.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.34.0
+	pkgver = 0.35.0
 	pkgrel = 1
 	url = https://hollama.fernando.is/
 	arch = x86_64
@@ -8,18 +8,17 @@ pkgbase = hollama-bin
 	makedepends = gendesk
 	depends = electron31
 	depends = ollama
-	depends = nodejs
 	depends = libvips
-	provides = hollama=0.34.0
+	provides = hollama=0.35.0
 	conflicts = hollama
 	options = !emptydirs
-	source = hollama-0.34.0.tar.gz::https://github.com/fmaclen/hollama/releases/download/0.34.0/Hollama_0.34.0-linux-x64.tar.gz
-	source = hollama-0.34.0.png::https://raw.githubusercontent.com/fmaclen/hollama/0.34.0/static/favicon.png
-	source = LICENSE-0.34.0::https://raw.githubusercontent.com/fmaclen/hollama/0.34.0/LICENSE
+	source = hollama-0.35.0.tar.gz::https://github.com/fmaclen/hollama/releases/download/0.35.0/Hollama_0.35.0-linux-x64.tar.gz
+	source = hollama-0.35.0.png::https://raw.githubusercontent.com/fmaclen/hollama/0.35.0/static/favicon.png
+	source = LICENSE-0.35.0::https://raw.githubusercontent.com/fmaclen/hollama/0.35.0/LICENSE
 	source = hollama.sh
-	sha256sums = ac680d2f860d72dfdca4a6310bba58cb381c4058615c03cd1951323c34e6c667
+	sha256sums = edd5e61745704a76e475186373e8da92e1c909572e8c08a2c3a24436994982c1
 	sha256sums = 9e4e274319c0c5716601c69a701adce095b2248d7d314c2b4b1973f0ad4c4a20
 	sha256sums = 03ecf7aebc7db58685a433f3a0a126e1ac5329fb8a72f3af981957363a6362e6
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = hollama-bin

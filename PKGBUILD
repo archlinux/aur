@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hollama-bin
 _pkgname=Hollama
-pkgver=0.34.0
+pkgver=0.35.0
 _electronversion=31
 pkgrel=1
 pkgdesc="A minimal web-UI for talking to Ollama servers.(Prebuilt version.Use system-wide electron)"
@@ -14,7 +14,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'ollama'
-    'nodejs'
     'libvips'
 )
 makedepends=(
@@ -29,10 +28,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/fmaclen/hollama/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ac680d2f860d72dfdca4a6310bba58cb381c4058615c03cd1951323c34e6c667'
+sha256sums=('edd5e61745704a76e475186373e8da92e1c909572e8c08a2c3a24436994982c1'
             '9e4e274319c0c5716601c69a701adce095b2248d7d314c2b4b1973f0ad4c4a20'
             '03ecf7aebc7db58685a433f3a0a126e1ac5329fb8a72f3af981957363a6362e6'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/${_pkgname}_${pkgver}-linux-x64/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -47,6 +50,7 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-bin} %U"
+    _get_electron_version
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
