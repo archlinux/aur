@@ -3,7 +3,7 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 _pkgname=eden
 pkgname=$_pkgname-git
-pkgver=0.0.2.r96.g2e6a289
+pkgver=0.0.2.r126.ga002730
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -102,6 +102,7 @@ build() {
 		-DYUZU_USE_EXTERNAL_VULKAN_UTILITY_LIBRARIES=OFF \
 		-DYUZU_USE_BUNDLED_FFMPEG=ON \
 		-DYUZU_USE_BUNDLED_VCPKG=OFF \
+		-DYUZU_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=OFF \
 		-DYUZU_USE_BUNDLED_SDL2=OFF \
 		-DYUZU_USE_EXTERNAL_SDL2=OFF \
 		-DYUZU_USE_BUNDLED_QT=OFF \
