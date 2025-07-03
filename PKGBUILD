@@ -1,5 +1,5 @@
 pkgname=qobuz-player
-pkgver=0.3.0
+pkgver=0.3.0.1
 pkgrel=1
 pkgdesc="High resolution audio player backed by Qobuz"
 arch=('x86_64')
@@ -8,19 +8,19 @@ license=('GPL-3')
 conflicts=('qobuz-player-git')
 depends=(gstreamer)
 makedepends=(cargo)
-source=("qobuz-player-${pkgver}.tar.gz::https://github.com/SofusA/qobuz-player/archive/refs/tags/v${pkgver}-fix.tar.gz")
-sha256sums=('0d2d8d89531ba8d7b1ddfd8afdaa61d7bd08b88f9fa5fa310ad106f2aaa07867')
+source=("qobuz-player-${pkgver}.tar.gz::https://github.com/SofusA/qobuz-player/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('50d40996b34cc26dd544e4104b43828a14349f065325049ddb85a977aa8da627')
 options=('!lto')
 
 prepare() {
-    cd ${pkgname}-${pkgver}-fix
+    cd ${pkgname}-${pkgver}
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     
 }
 
 build() {
-    cd ${pkgname}-${pkgver}-fix
+    cd ${pkgname}-${pkgver}
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     #refuses to work with clang
@@ -32,6 +32,6 @@ build() {
 }
 
 package() {
-    cd ${pkgname}-${pkgver}-fix
+    cd ${pkgname}-${pkgver}
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
