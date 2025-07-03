@@ -2,7 +2,7 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=zesarux-git
-pkgver=ZEsarUX.12.1.Beta1.r1.g64882f3
+pkgver=ZEsarUX.12.1.Beta1.r18.g1930e24
 _ver=12.1
 pkgrel=1
 epoch=3
