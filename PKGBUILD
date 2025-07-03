@@ -1,7 +1,7 @@
 # Maintainer: Jisu-Woniu <jswn@jswn9945.xyz>
 _pkgname=typstyle
 pkgname=$_pkgname-bin
-pkgver=0.13.11
+pkgver=0.13.13
 pkgrel=1
 pkgdesc="Beautiful and reliable typst code formatter"
 arch=("aarch64" "x86_64" "armv7h")
@@ -14,9 +14,9 @@ conflicts=("$_pkgname")
 source_aarch64=("$_pkgname-aarch64-$pkgver::$url/releases/download/v$pkgver/$_pkgname-aarch64-unknown-linux-gnu")
 source_armv7h=("$_pkgname-armv7h-$pkgver::$url/releases/download/v$pkgver/$_pkgname-arm-unknown-linux-gnueabihf")
 source_x86_64=("$_pkgname-x86_64-$pkgver::$url/releases/download/v$pkgver/$_pkgname-x86_64-unknown-linux-gnu")
-sha256sums_aarch64=('dbe5f8c1bd37275f900c5a05c91c6f863ec1f3e75efdade51fc0869c46e9d839')
-sha256sums_x86_64=('92a3c38a0021282a099637406234962a624f37d4ca5a65d97bb845ede9e036a4')
-sha256sums_armv7h=('a5da6c1a848e91f9eb7588885adb895f2e9380b675bcc3c54ce4ddab455ce827')
+sha256sums_aarch64=('aea5adf4dd604e69df7f5ff91b6fb8781496b818dc56f73d2605171370ac0bfc')
+sha256sums_x86_64=('447566532968a62be0fdc9e09721e0cf74d4fe36335c1abb62d8b9e9ce073beb')
+sha256sums_armv7h=('43182ef63e511a4c46d950c7c7b4fe027e649a59c505375b50bac09b49bd3085')
 
 package() {
 	install -Dm755 "$_pkgname-$CARCH-$pkgver" "$pkgdir/usr/bin/$_pkgname"
