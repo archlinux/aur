@@ -8,7 +8,7 @@ pkgbase = autosubsync-bin
 	provides = autosubsync
 	source = https://github.com/denizsafak/AutoSubSync/releases/download/v6.0/AutoSubSync-v6.0-linux-amd64.tar.gz
 	source = autosubsync.desktop
-	sha256sums = 92975e12e845e41a007b91916fa9316572a1484675b37d8c5960e73baa6bdd39
+	sha256sums = 790b53892d1310b8a367121caee030b4c2eeddfaa0cd3cea1df4847e94581e07
 	sha256sums = f5ad7e8cc84efe46566e1ceb73de2f202188583c0d4116f4c21aa75f43f5b855
 
 pkgname = autosubsync-bin
