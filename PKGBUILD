@@ -1,9 +1,10 @@
+# Maintainer: insmtr <insmtr@insmtr.cn>
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 # Contributor: marauder <abhinav.kssk@gmail.com>
 pkgname=ignition-tools-1
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tools for the Gazebo libraries"
 arch=('any')
 url="https://gazebosim.org/libs/tools"

@@ -1,7 +1,7 @@
 pkgbase = ignition-tools-1
 	pkgdesc = Command line tools for the Gazebo libraries
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gazebosim.org/libs/tools
 	arch = any
 	license = Apache
