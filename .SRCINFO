@@ -1,0 +1,18 @@
+pkgbase = berrydash
+	pkgdesc = A simple game where you catch berries with a leaderboard system and more.
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://berrydash.lncvrt.xyz/
+	arch = x86_64
+	license = GPL3
+	makedepends = unzip
+	options = !strip
+	options = !debug
+	source = https://github.com/BerryDash/source/releases/download/1.5.2/Berry-Dash-1.5.2-linux.zip
+	source = berrydash.desktop
+	source = berrydash.png
+	sha256sums = 702d1c46c69724528797ea46d5279fb260e1c2b8fb64a5c75a2112926ebe2d30
+	sha256sums = a27dae1b8f41d289c04ce9ede426e4938be5ba882cd51d57fee35718ecea2829
+	sha256sums = eac907c8d88390f89d7c1ed56532781c78b750faad07664e1967d8634593a383
+
+pkgname = berrydash
