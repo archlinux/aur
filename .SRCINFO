@@ -25,3 +25,4 @@ pkgname = windutils-meta
 	depends = gum
 	depends = iwdtui
 	depends = syssertui
+	provides = windutils
