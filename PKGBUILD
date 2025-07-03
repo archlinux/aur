@@ -24,7 +24,7 @@ source=(
 )
 sha256sums=('15f427282fb90a68cf36e19e734a270a74c63c44390c0dec09008e1d5799895f'
             'ce61a0d27e9167938ce2083e1391de1ee514b40d8a0f5c3602a7a04f449f6779'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/dist/electron/Packaged/${_pkgname}-linux-x64/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
