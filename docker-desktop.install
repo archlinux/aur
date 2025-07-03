@@ -1,46 +1,77 @@
 #!/bin/bash
 
+post_install_upgrade() {
+    echo 'Enabling use of privileged ports by Docker Desktop'
+    setcap cap_net_bind_service,cap_sys_resource=+ep /opt/docker-desktop/bin/com.docker.backend || echo 'Error: Docker Desktop will not be able to bind to privileged ports'
+
+    if [ -z "$(cat /etc/hosts | sed -n 's/^\(127.0.0.1[[:blank:]]\{1,\}kubernetes.docker.internal\)$/\1/p')" ]; then
+        echo $'# Added by Docker Desktop\n# To allow the same kube context to work on the host and the container:\n127.0.0.1	kubernetes.docker.internal\n# End of section' >> /etc/hosts
+        echo 'kubernetes.docker.internal added to /etc/hosts'
+    else
+        echo 'kubernetes.docker.internal already in /etc/hosts'
+    fi
+
+    [ -f /usr/local/bin/docker ] || ln -s /usr/bin/docker /usr/local/bin/docker
+    [ -f /usr/local/bin/compose-bridge ] || ln -sf /opt/docker-desktop/bin/compose-bridge /usr/local/bin/compose-bridge
+
+    update-desktop-database
+}
+
 post_install() {
-    exec_all systemctl --user --now enable docker-desktop
+    post_install_upgrade
 
     # Enable file sharing (https://docs.docker.com/desktop/faqs/linuxfaqs/#how-do-i-enable-file-sharing)
-    TMP_SCRIPT=$(mktemp)
-    cat > $TMP_SCRIPT <<EOF
-grep -q "\$USER" /etc/subuid || (echo "\$USER:100000:65536" | sudo tee -a /etc/subuid)
-grep -q "\$USER" /etc/subgid || (echo "\$USER:100000:65536" | sudo tee -a /etc/subgid)
-EOF
+    for user in $(loginctl --no-legend list-users | awk '{print $2}'); do
+        grep -q "^${user}:" /etc/subuid || echo "${user}:100000:65536" | tee -a /etc/subuid
+        grep -q "^${user}:" /etc/subgid || echo "${user}:100000:65536" | tee -a /etc/subgid
+    done
 
-    chmod 755 $TMP_SCRIPT
-    exec_all sh $TMP_SCRIPT
-    rm -f $TMP_SCRIPT
+    if [ -d /run/systemd/system ]; then
+        echo "Enabling and starting docker-desktop for all logged-in users"
+        loginctl --no-legend list-users | awk '{print $1}' | while read -r uid; do
+            systemctl --user --machine="${uid}@.host" --now enable docker-desktop
+        done
+    fi
+}
+
+pre_upgrade() {
+    if [ -d /run/systemd/system ]; then
+        echo "Stopping docker-desktop for users who have it enabled"
+        loginctl list-users --no-legend | awk '{print $1}' | while read -r uid; do
+            if systemctl --user --machine="${uid}@.host" is-enabled --quiet docker-desktop; then
+                systemctl --user --machine="${uid}@.host" stop docker-desktop
+            fi
+        done
+    fi
+}
+
+post_upgrade() {
+    post_install_upgrade
+
+    if [ -d /run/systemd/system ]; then
+        echo "Restarting docker-desktop for users who previously had it enabled"
+        loginctl list-users --no-legend | awk '{print $1}' | while read -r uid; do
+            if systemctl --user --machine="${uid}@.host" is-enabled --quiet docker-desktop; then
+                systemctl --user --machine="${uid}@.host" start docker-desktop
+            fi
+        done
+    fi
 }
 
 pre_remove() {
-    exec_all systemctl --user --now disable docker-desktop
+    if [ -d /run/systemd/system ]; then
+        echo "Stopping docker-desktop for logged in users"
+        loginctl --no-legend list-users | awk '{print $1}' | while read -r uid; do
+            systemctl --user --machine="${uid}@.host" --now disable docker-desktop
+        done
+    fi
 }
 
 post_remove() {
-    exec_all systemctl --user daemon-reload
-}
-
-post_upgrade () {
-    exec_all systemctl --user daemon-reload
-    exec_all systemctl --user restart docker-desktop
-}
-
-sudo_exec() {
-    local cmd="${*:2}"
-    local dbus_addr="unix:path=/run/user/$(id --user $1)/bus"
-    local sudo_cmd="sudo -u ${1} DBUS_SESSION_BUS_ADDRESS=${dbus_addr}"
-
-    ${sudo_cmd} ${cmd}
-}
-
-exec_all () {
-    local command="${*}"
-    local users; readarray -t users <<< "$(loginctl --no-legend list-users | awk '{print $2;}')"
-
-    for user in "${users[@]}"; do
-	sudo_exec "${user}" "${command}"
-    done
+    if [ -d /run/systemd/system ]; then
+        echo "Reloading systemd daemon"
+        loginctl --no-legend list-users | awk '{print $1}' | while read -r uid; do
+            systemctl --user --machine="${uid}@.host" daemon-reload
+        done
+    fi
 }
