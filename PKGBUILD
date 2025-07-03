@@ -21,6 +21,7 @@ depends=(
   'knewstuff'
   'kparts'
   'kuserfeedback'
+  'phonon-qt6'
   'plasma-activities'
 )
 makedepends=(

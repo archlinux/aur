@@ -16,6 +16,7 @@ pkgbase = dolphin-tabopts
 	depends = knewstuff
 	depends = kparts
 	depends = kuserfeedback
+	depends = phonon-qt6
 	depends = plasma-activities
 	optdepends = ffmpegthumbs: video thumbnails
 	optdepends = kde-cli-tools: for editing file type options
