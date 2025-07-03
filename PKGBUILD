@@ -5,14 +5,14 @@
 
 pkgname=lilo
 pkgver=24.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A bootloader for Linux"
 arch=('i486' 'i686' 'pentium4' 'x86_64')
 url="https://web.archive.org/web/20160627071029/https://lilo.alioth.debian.org/"
 license=('BSD')
 backup=('etc/lilo.conf')
 depends=('device-mapper' 'coreutils')
-makedepends=('bin86' 'sharutils')
+makedepends=('bin86' 'bcc86' 'sharutils')
 optdepends=('perl: to use keytab-lilo')
 install=lilo.install
 options=('!makeflags')
@@ -46,17 +46,17 @@ md5sums=('fe5e8c9754cee342b958b5fcbbb6eb51'
 
 prepare(){
   cd "${srcdir}/${pkgname}-${pkgver}"
-  pwd
-  patch -Np1 -i ../01_makefile-adds.patch
-  patch -Np1 -i ../03_keytab-lilo.8-debian-based.patch
-  patch -Np1 -i ../05_readme.disk-change.patch
-  patch -Np1 -i ../06_notinteractive.patch
-  patch -Np1 -i ../08_small-typos-in-manpages.patch
-  patch -Np1 -i ../09_fix-manpage-lilo-conf-5.patch
-  patch -Np1 -i ../10_fix-manpage-lilo-conf-5.patch
-  patch -Np1 -i ../11_fix-gcc-10.patch
-  patch -Np1 -i ../12_add-nvme-support.patch
-  patch -Np1 -i ../13_check-for-__GLIBC__.patch
+
+  patch -Np1 -i "${srcdir}/01_makefile-adds.patch"
+  patch -Np1 -i "${srcdir}/03_keytab-lilo.8-debian-based.patch"
+  patch -Np1 -i "${srcdir}/05_readme.disk-change.patch"
+  patch -Np1 -i "${srcdir}/06_notinteractive.patch"
+  patch -Np1 -i "${srcdir}/08_small-typos-in-manpages.patch"
+  patch -Np1 -i "${srcdir}/09_fix-manpage-lilo-conf-5.patch"
+  patch -Np1 -i "${srcdir}/10_fix-manpage-lilo-conf-5.patch"
+  patch -Np1 -i "${srcdir}/11_fix-gcc-10.patch"
+  patch -Np1 -i "${srcdir}/12_add-nvme-support.patch"
+  patch -Np1 -i "${srcdir}/13_check-for-__GLIBC__.patch"
 }
 
 build() {
@@ -64,7 +64,7 @@ build() {
   export LC_ALL=C
 
   sed -i -e 's/strip lilo.static/strip lilo.static || true/' src/Makefile
-  make all
+  make CFLAGS=-std=gnu99 all
 }
 
 package() {
@@ -92,4 +92,3 @@ package() {
   rm -rf "${pkgdir}"/boot/*.bmp
   rm -rf "${pkgdir}"/boot/*.dat
 }
-
