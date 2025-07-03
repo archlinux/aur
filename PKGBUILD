@@ -2,7 +2,7 @@
 
 pkgname=deepin-daemon-git
 _pkgname=deepin-daemon
-pkgver=6.0.43.r3.g36a1edc9
+pkgver=6.1.41.r3.g93fcceb0f
 pkgrel=1
 pkgdesc='Daemon handling the DDE session settings'
 arch=('x86_64' 'aarch64')
@@ -62,12 +62,8 @@ conflicts=($_pkgname)
 provides=($_pkgname)
 groups=('deepin-git')
 install="$pkgname.install"
-source=("$pkgname::git+https://github.com/linuxdeepin/dde-daemon"
-        dde-daemon.patch
-        'deepin-daemon.sysusers')
-sha512sums=('SKIP'
-            'fb62b918a6d35c591d405084c46510522f78e350928f9b875a324d464ef6cc30ee3cea87ba444cd3edc4658e1e6eaeaf84bd28036ea1ad5a7e8aba6544f05c8c'
-            '808c02d4fec4cbbb01119bbb10499090199e738b7dd72c28a57dde098eef6132723f3434c151f79e21d9f788c7f7bae8046573ac93ba917afe0e803fbffa6d5a')
+source=("$pkgname::git+https://github.com/linuxdeepin/dde-daemon")
+sha512sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -76,15 +72,12 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  patch -p1 -i ../dde-daemon.patch
   rm -rf system/uadp
   rm -rf session/uadpagent
 
   # https://github.com/linuxdeepin/developer-center/discussions/3327
-  sed -i 's#/usr/libexec#/usr/lib#' keybinding/shortcuts/system_shortcut.go
+  # sed -i 's#/usr/libexec#/usr/lib#' keybinding/shortcuts/system_shortcut.go
   sed -i 's#${PREFIX}/libexec/#${PREFIX}/lib/#;s#${DESTDIR}/lib#${DESTDIR}${PREFIX}/lib#' Makefile
-
-  sed -i 's|/etc/os-version|/etc/uos-version|' keybinding/shortcuts/shortcut_manager.go
 }
 
 build() {
@@ -103,8 +96,5 @@ build() {
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" PAM_MODULE_DIR=usr/lib/security install
-
-  install -Dm644 misc/systemd/services/* "$pkgdir/usr/lib/systemd/user/"
-  install -Dm644 ../deepin-daemon.sysusers "$pkgdir/usr/lib/sysusers.d/deepin-daemon.conf"
 }
 
