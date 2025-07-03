@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.patch
+!google-cloud-cli.sh
+!*.install

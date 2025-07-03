@@ -2,9 +2,9 @@
 arguments=("$@")
 
 for ((i = 0; i < ${#arguments[@]}; ++i)); do
-	if [ -f "${arguments[$i]}" ] && [[ "${arguments[$i]}" == /* ]]; then
-		arguments[$i]="file://${arguments[$i]}"
-	fi
+  if [ -f "${arguments[$i]}" ] && [[ "${arguments[$i]}" == /* ]]; then
+    arguments[$i]="file://${arguments[$i]}"
+  fi
 done
 
-exec /usr/bin/mono /usr/share/keepass/KPScript.exe "${arguments[@]}"
+exec mono --verify-all /usr/share/keepass/KPScript.exe "${arguments[@]}"

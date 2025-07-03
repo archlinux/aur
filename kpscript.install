@@ -1,0 +1,11 @@
+# post_remove() {
+# }
+
+post_install() {
+  # post_remove
+  mono --aot -O=all usr/share/keepass/KPScript.exe &> /dev/null
+}
+
+post_upgrade() {
+  post_install
+}
