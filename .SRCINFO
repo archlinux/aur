@@ -1,6 +1,6 @@
 pkgbase = rime-wanxiang-dict-cn-nightly
 	pkgdesc = 万象中文词库
-	pkgver = 8.5.1+r20250703.135312
+	pkgver = 8.5.2+r20250703.222622
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/amzxyz/rime_wanxiang
@@ -11,9 +11,9 @@ pkgbase = rime-wanxiang-dict-cn-nightly
 	makedepends = librime
 	makedepends = rime-prelude
 	makedepends = rime-essay
-	provides = rime-wanxiang-dict-cn=8.5.1
+	provides = rime-wanxiang-dict-cn=8.5.2
 	replaces = rime-wanxiang-dict-cn
-	source = schema-8.5.1.zip::https://github.com/amzxyz/rime_wanxiang/releases/download/v8.5.1/rime-wanxiang-base.zip
+	source = schema-8.5.2.zip::https://github.com/amzxyz/rime_wanxiang/releases/download/v8.5.2/rime-wanxiang-base.zip
 	source = https://github.com/amzxyz/rime_wanxiang/releases/download/dict-nightly/9-base-zh-dicts.zip
 	b2sums = SKIP
 	b2sums = 379098083f8ca822831383c77ebd74168b376192aec7c73c58bc32822991fd6977e73e50101604ad5c2f21bd0286cd0aff71c6120bb1a692e399d882c48ea290
