@@ -1,18 +1,18 @@
 pkgname=ffplayout-git
-pkgver=0.24.4
+pkgver=0.25.3
 pkgrel=1
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
 url="https://github.com/ffplayout/ffplayout"
 license=('GPL-3.0')
 depends=(
-    'ffmpeg-ffplayout'
+    'ffmpeg'
     'sudo'
 )
 makedepends=(
     'rustup'
     'musl'
-    'nodejs-lts-hydrogen'
+    'nodejs-lts-jod'
     'npm'
     'pandoc'
     'git'
@@ -58,8 +58,8 @@ build() {
     
     # Frontend build steps
     cd frontend
-    npm run generate
-    cp -vr .output/public "${srcdir}/${pkgname}/public"
+    npm run build
+    cp -vr dist "${srcdir}/${pkgname}/public"
     
     # man docs
     cd "${srcdir}/${pkgname}"
