@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pakeplus-bin
 _pkgname=PakePlus
-pkgver=0.6.3
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Turn any webpage into a desktop app and mobile app with Rust.(Prebuilt version)利用 Rust 轻松构建轻量级(仅5M)多端桌面应用和多端手机应用"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${_pkgname}-v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Sjj1024/PakePlus/${_pkgname}-v${pkgver}/LICENSE"
 )
-sha256sums=('25288d082595b6d6654bd1793d439f2040539363439766d71827770cd3c74c34'
+sha256sums=('68ec4ed21c8533f73e3fb0b8454295bb709f7de680b1b9ab1d7dad5d3f0be524'
             '2476bac4e033612ada3dfc61bae1166c1f5b90b58194f89c594eba3d8a408abf')
 prepare() {
     sed -i -e "
