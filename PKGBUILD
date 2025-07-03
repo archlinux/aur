@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=repmis
-_pkgver=0.5
+_pkgver=0.5.1
 pkgname=r-${_pkgname,,}
-pkgver=0.5
-pkgrel=4
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='Miscellaneous Tools for Reproducible Research'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-xlsx
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('65a5d32349baceb68e8761f3d585cb8450c5f22b2373a5005dd21341f592b57c')
+sha256sums=('371f8e08f61a2f71d0b1582f170535f8b92b1ea66c328ddb02b1bf984e283f1d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
