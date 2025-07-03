@@ -1,0 +1,16 @@
+pkgbase = bcc86
+	pkgdesc = Bruce's C Compiler. Extension for bin86 AUR package.
+	pkgver = 0.16.21
+	pkgrel = 1
+	url = https://github.com/lkundrak/dev86
+	arch = i486
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = GPL 2.0
+	source = git+https://github.com/lkundrak/dev86.git#branch=master
+	source = http://deb.debian.org/debian/pool/main/l/linux86/linux86_0.16.21-2.debian.tar.xz
+	md5sums = SKIP
+	md5sums = fef49f3d300265670f836bd31366af0a
+
+pkgname = bcc86
