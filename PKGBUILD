@@ -1,12 +1,13 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: lod <aur@cyber-anlage.de>
+
 pkgname=spacecontrol
 pkgver=2.9.3
 pkgrel=1
-pkgdesc="SpaceControl 3D Mouse Driver for Linux"
+pkgdesc="SpaceControl 3D Mouse Driver for Linux, creates a virtual device compatible with spacenavd for broad system use."
 arch=('x86_64')
 url="https://spacecontrol.de"
 license=('LicenseRef-SpaceControl-EULA')
-depends=(bash gcc-libs glibc hicolor-icon-theme java-runtime libx11 libxtst python python-evdev sh)
+depends=(bash gcc-libs glibc hicolor-icon-theme java-runtime libx11 libxtst python python-evdev sh spacenavd)
 makedepends=(git)
 options=('!debug' '!emptydirs')
 source=(https://spacecontrol.de/download/drivers/SpaceControl_Driver_293_LNX64_setup.sh
@@ -41,21 +42,21 @@ package() {
   install -Dm755 ../sc_daemon.sh "$pkgdir/usr/bin/sc_daemon"
   install -Dm755 ../sc_gui.sh "$pkgdir/usr/bin/sc_gui"
   
-  cp -r {cfgs,lib} "$pkgdir"/usr/lib/$pkgname/
+  cp -r {cfgs,lib} "$pkgdir/usr/lib/$pkgname/"
   
   cp -r doc/* "$pkgdir/usr/share/doc/$pkgname/"
   ln -s "../../share/doc/$pkgname" "$pkgdir/usr/lib/spacecontrol/doc"
 
-  install -Dm644 lib/libspc_ctrl_64.so.2.9.2 "$pkgdir"/usr/lib/$pkgname/lib/libspc_ctrl.so
-  install -Dm644 ../99-spacecontrol-usb-ftdi-unbind.rules "$pkgdir"/usr/lib/udev/rules.d/
-  install -Dm644 ../SpaceControl-Panel.desktop "$pkgdir"/usr/share/applications/
-  install -Dm644 src/pics/sc512.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/spacecontrol.png
+  install -Dm644 lib/libspc_ctrl_64.so.2.9.2 "$pkgdir/usr/lib/$pkgname/lib/libspc_ctrl.so"
+  install -Dm644 ../99-spacecontrol-usb-ftdi-unbind.rules "$pkgdir/usr/lib/udev/rules.d/"
+  install -Dm644 ../SpaceControl-Panel.desktop "$pkgdir/usr/share/applications/"
+  install -Dm644 src/pics/sc512.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/spacecontrol.png"
   
   install -Dm644 doc/license_en.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.en"
   install -Dm644 doc/license_de.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.de"
   
-  install -Dm644 ../sc-daemon.service $pkgdir/usr/lib/systemd/user/sc-daemon.service
+  install -Dm644 ../sc-daemon.service "$pkgdir/usr/lib/systemd/user/sc-daemon.service"
   
-  install -Dm755 ../SpaceBridge/SpaceBridge.py "$pkgdir"/usr/lib/spacecontrol/spacebridge.py
-  install -Dm644 ../SpaceBridge/spacebridge.service $pkgdir/usr/lib/systemd/user/spacebridge.service
+  install -Dm755 ../SpaceBridge/SpaceBridge.py "$pkgdir/usr/lib/spacecontrol/spacebridge.py"
+  install -Dm644 ../SpaceBridge/spacebridge.service "$pkgdir/usr/lib/systemd/user/spacebridge.service"
 }
