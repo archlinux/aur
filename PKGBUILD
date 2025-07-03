@@ -3,7 +3,7 @@ _pkgname=gourou
 pkgname="${_pkgname}-appimage"
 pkgver=0.8.7
 __appimagename="libgourou_utils-${pkgver}-x86_64.AppImage"
-pkgrel=3
+pkgrel=4
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files (no dependencies)"
 arch=('x86_64')
 license=('LGPL-3.0-only')
@@ -44,7 +44,7 @@ package() {
 
 	# create symlinks for executables
 	for cmd in acsmdownloader adept_activate adept_remove adept_loan_mgt; do
-		ln -rs  "${__appimages}/${__appimagename}" "${pkgdir}/usr/bin/${cmd}"
+		ln -s "/opt/${_pkgname}/${__appimagename}" "${pkgdir}/usr/bin/${cmd}"
 	done
 
 	install -Dm444 "${__squashfs}"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
