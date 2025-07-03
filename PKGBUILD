@@ -1,8 +1,8 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=sonyheadphonesclient-bluetooth-bin
 _pkgname=sonyheadphonesclient-bluetooth
-pkgver=1.3.17
-pkgrel=6
+pkgver=1.4.1
+pkgrel=1
 provides=("sonyheadphonesclient-bluetooth")
 conflicts=("sonyheadphonesclient-bluetooth")
 pkgdesc="Desktop client recreating the functionality of the Sony Headphones app (Bluetooth/TWS/XM5+)"
@@ -15,7 +15,7 @@ source=(
   "LICENSE-$pkgver"::"$url/raw/refs/tags/$pkgver/LICENSE"
 )
 sha256sums=(
-  '1347765accb405b674d89374c481566d2aefb12032348de2d34ee9e1256f53c4'
+  "bdf2c39d1853a2f7166e4d513ba7923165b11e79ab96a8df48cace8f1e246663"
   '0b3db3e11db69b6d0de551cb7d9a56cc65be7f8fd912bcf6bae61ba57df36c34'
 )
 
