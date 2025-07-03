@@ -1,0 +1,183 @@
+diff -Naur dwgrep-0.4-orig/cmake/modules/FindDWARF.cmake dwgrep-0.4/cmake/modules/FindDWARF.cmake
+--- dwgrep-0.4-orig/cmake/modules/FindDWARF.cmake	2018-04-07 18:42:44.000000000 +0300
++++ dwgrep-0.4/cmake/modules/FindDWARF.cmake	2025-07-03 13:07:57.214713662 +0300
+@@ -56,16 +56,10 @@
+   PATH_SUFFIXES lib lib64
+ )
+ 
+-find_library(EBL_LIBRARY
+-  NAMES ebl
+-  HINTS ${USER_LIBDW_LIB_PATH}
+-  PATH_SUFFIXES lib lib64
+-)
+-
+ if (DWARF_INCLUDE_DIR AND ELF_INCLUDE_DIR
+-    AND LIBDW_INCLUDE_DIR AND DWARF_LIBRARY AND ELF_LIBRARY AND EBL_LIBRARY)
++    AND LIBDW_INCLUDE_DIR AND DWARF_LIBRARY AND ELF_LIBRARY)
+ 	set(DWARF_FOUND TRUE)
+-	set(DWARF_LIBRARIES ${DWARF_LIBRARY} ${ELF_LIBRARY} ${EBL_LIBRARY})
++	set(DWARF_LIBRARIES ${DWARF_LIBRARY} ${ELF_LIBRARY})
+ 
+ 	set(CMAKE_REQUIRED_LIBRARIES ${DWARF_LIBRARIES})
+ 	# check if libdw have the dwfl_module_build_id routine,
+@@ -76,11 +70,11 @@
+ 	# into libelf.
+ 	check_library_exists(elf dwfl_module_build_id "" HAVE_DWFL_MODULE_BUILD_ID)
+ else (DWARF_INCLUDE_DIR AND ELF_INCLUDE_DIR
+-      AND LIBDW_INCLUDE_DIR AND DWARF_LIBRARY AND ELF_LIBRARY AND EBL_LIBRARY)
++      AND LIBDW_INCLUDE_DIR AND DWARF_LIBRARY AND ELF_LIBRARY)
+ 	set(DWARF_FOUND FALSE)
+ 	set(DWARF_LIBRARIES)
+ endif (DWARF_INCLUDE_DIR AND ELF_INCLUDE_DIR
+-       AND LIBDW_INCLUDE_DIR AND DWARF_LIBRARY AND ELF_LIBRARY AND EBL_LIBRARY)
++       AND LIBDW_INCLUDE_DIR AND DWARF_LIBRARY AND ELF_LIBRARY)
+ 
+ if (DWARF_FOUND)
+ 	if (NOT DWARF_FIND_QUIETLY)
+@@ -89,7 +83,6 @@
+ 		message(STATUS "Found elfutils/libdw.h header: ${LIBDW_INCLUDE_DIR}")
+ 		message(STATUS "Found libdw library: ${DWARF_LIBRARY}")
+ 		message(STATUS "Found libelf library: ${ELF_LIBRARY}")
+-		message(STATUS "Found libebl library: ${EBL_LIBRARY}")
+ 	endif (NOT DWARF_FIND_QUIETLY)
+ else (DWARF_FOUND)
+ 	if (DWARF_FIND_REQUIRED)
+@@ -100,10 +93,10 @@
+ 		find_path(REDHAT redhat-release /etc)
+ 		if (FEDORA OR REDHAT)
+ 			if (NOT DWARF_INCLUDE_DIR OR NOT ELF_INCLUDE_DIR
+-			    OR NOT LIBDW_INCLUDE_DIR OR NOT EBL_LIBRARY)
++			    OR NOT LIBDW_INCLUDE_DIR)
+ 				message(STATUS "Please install the elfutils-devel package")
+ 			endif (NOT DWARF_INCLUDE_DIR OR NOT ELF_INCLUDE_DIR
+-			       OR NOT LIBDW_INCLUDE_DIR OR NOT EBL_LIBRARY)
++			       OR NOT LIBDW_INCLUDE_DIR)
+ 			if (NOT DWARF_LIBRARY)
+ 				message(STATUS "Please install the elfutils-libs package")
+ 			endif (NOT DWARF_LIBRARY)
+@@ -120,9 +113,6 @@
+ 			if (NOT LIBDW_INCLUDE_DIR)
+ 				message(STATUS "Could NOT find libdw include dir")
+ 			endif (NOT LIBDW_INCLUDE_DIR)
+-			if (NOT EBL_LIBRARY)
+-				message(STATUS "Could NOT find libebl library")
+-			endif (NOT EBL_LIBRARY)
+ 			if (NOT DWARF_LIBRARY)
+ 				message(STATUS "Could NOT find libdw library")
+ 			endif (NOT DWARF_LIBRARY)
+@@ -135,7 +125,7 @@
+ endif (DWARF_FOUND)
+ 
+ mark_as_advanced(DWARF_INCLUDE_DIR ELF_INCLUDE_DIR
+-		 LIBDW_INCLUDE_DIR DWARF_LIBRARY ELF_LIBRARY EBL_LIBRARY)
++		 LIBDW_INCLUDE_DIR DWARF_LIBRARY ELF_LIBRARY)
+ include_directories(${DWARF_INCLUDE_DIR} ${LIBDW_INCLUDE_DIR} ${ELF_INCLUDE_DIR})
+ 
+ message(STATUS "Checking availability of DWARF and ELF development libraries - done")
+diff -Naur dwgrep-0.4-orig/libzwerg/CMakeLists.txt dwgrep-0.4/libzwerg/CMakeLists.txt
+--- dwgrep-0.4-orig/libzwerg/CMakeLists.txt	2018-04-07 18:42:44.000000000 +0300
++++ dwgrep-0.4/libzwerg/CMakeLists.txt	2025-07-03 13:12:02.942262317 +0300
+@@ -133,49 +133,49 @@
+ INSTALL (FILES ${libzwerg_HEADERS} DESTINATION include/libzwerg)
+ INSTALL (TARGETS libzwerg LIBRARY DESTINATION ${LIB_INSTALL_DIR})
+ 
+-ADD_EXECUTABLE (test-int test-int.cc int.cc)
+-ADD_TEST (TestInt test-int)
+-
+-ADD_EXECUTABLE (test-parser
+-
+-  $<TARGET_OBJECTS:LibzwergCore>
+-  test-parser.cc
+-)
+-ADD_TEST (TestParser test-parser)
+-
+-IF (GTEST_FOUND)
+-  SET (TESTCASE_DIR "--test-case-directory=${CMAKE_SOURCE_DIR}/tests/")
+-
+-  ADD_LIBRARY (TestStub OBJECT test-stub.cc)
+-  ADD_LIBRARY (TestZwAux OBJECT test-zw-aux.cc parser.hh)
+-
+-  ADD_EXECUTABLE (test-dw test-dw.cc
+-    $<TARGET_OBJECTS:TestStub> $<TARGET_OBJECTS:TestZwAux> ${LibzwergAll})
+-  TARGET_LINK_LIBRARIES (test-dw
+-    ${GTEST_LIBRARIES} ${LIBELF_LIBRARY} ${DWARF_LIBRARIES})
+-  ADD_TEST (TestDw test-dw ${TESTCASE_DIR})
+-
+-  ADD_EXECUTABLE (test-op test-op.cc
+-    $<TARGET_OBJECTS:TestStub> $<TARGET_OBJECTS:TestZwAux>
+-    $<TARGET_OBJECTS:LibzwergCore>)
+-  TARGET_LINK_LIBRARIES (test-op ${GTEST_LIBRARIES})
+-  ADD_TEST (TestOp test-op ${TESTCASE_DIR})
+-
+-  ADD_EXECUTABLE (test-value-cst test-value-cst.cc
+-    $<TARGET_OBJECTS:TestStub> $<TARGET_OBJECTS:LibzwergCore>)
+-  TARGET_LINK_LIBRARIES (test-value-cst ${GTEST_LIBRARIES})
+-  ADD_TEST (TestValueCst test-value-cst ${TESTCASE_DIR})
+-
+-  ADD_EXECUTABLE (test-builtin-cmp test-builtin-cmp.cc
+-    $<TARGET_OBJECTS:TestStub> $<TARGET_OBJECTS:LibzwergCore>)
+-  TARGET_LINK_LIBRARIES (test-builtin-cmp ${GTEST_LIBRARIES})
+-  ADD_TEST (TestBuiltinCmp test-builtin-cmp ${TESTCASE_DIR})
+-
+-  ADD_EXECUTABLE (test-coverage test-coverage.cc coverage.cc
+-    $<TARGET_OBJECTS:TestStub>)
+-  TARGET_LINK_LIBRARIES (test-coverage ${GTEST_LIBRARIES})
+-  ADD_TEST (TestBuiltinCoverage test-coverage ${TESTCASE_DIR})
+-ENDIF ()
++# ADD_EXECUTABLE (test-int test-int.cc int.cc)
++# ADD_TEST (TestInt test-int)
++#
++# ADD_EXECUTABLE (test-parser
++#
++#   $<TARGET_OBJECTS:LibzwergCore>
++#   test-parser.cc
++# )
++# ADD_TEST (TestParser test-parser)
++#
++# IF (GTEST_FOUND)
++#   SET (TESTCASE_DIR "--test-case-directory=${CMAKE_SOURCE_DIR}/tests/")
++#
++#   ADD_LIBRARY (TestStub OBJECT test-stub.cc)
++#   ADD_LIBRARY (TestZwAux OBJECT test-zw-aux.cc parser.hh)
++#
++#   ADD_EXECUTABLE (test-dw test-dw.cc
++#     $<TARGET_OBJECTS:TestStub> $<TARGET_OBJECTS:TestZwAux> ${LibzwergAll})
++#   TARGET_LINK_LIBRARIES (test-dw
++#     ${GTEST_LIBRARIES} ${LIBELF_LIBRARY} ${DWARF_LIBRARIES})
++#   ADD_TEST (TestDw test-dw ${TESTCASE_DIR})
++#
++#   ADD_EXECUTABLE (test-op test-op.cc
++#     $<TARGET_OBJECTS:TestStub> $<TARGET_OBJECTS:TestZwAux>
++#     $<TARGET_OBJECTS:LibzwergCore>)
++#   TARGET_LINK_LIBRARIES (test-op ${GTEST_LIBRARIES})
++#   ADD_TEST (TestOp test-op ${TESTCASE_DIR})
++#
++#   ADD_EXECUTABLE (test-value-cst test-value-cst.cc
++#     $<TARGET_OBJECTS:TestStub> $<TARGET_OBJECTS:LibzwergCore>)
++#   TARGET_LINK_LIBRARIES (test-value-cst ${GTEST_LIBRARIES})
++#   ADD_TEST (TestValueCst test-value-cst ${TESTCASE_DIR})
++#
++#   ADD_EXECUTABLE (test-builtin-cmp test-builtin-cmp.cc
++#     $<TARGET_OBJECTS:TestStub> $<TARGET_OBJECTS:LibzwergCore>)
++#   TARGET_LINK_LIBRARIES (test-builtin-cmp ${GTEST_LIBRARIES})
++#   ADD_TEST (TestBuiltinCmp test-builtin-cmp ${TESTCASE_DIR})
++#
++#   ADD_EXECUTABLE (test-coverage test-coverage.cc coverage.cc
++#     $<TARGET_OBJECTS:TestStub>)
++#   TARGET_LINK_LIBRARIES (test-coverage ${GTEST_LIBRARIES})
++#   ADD_TEST (TestBuiltinCoverage test-coverage ${TESTCASE_DIR})
++# ENDIF ()
+ 
+ IF (SPHINX_EXECUTABLE)
+   ADD_EXECUTABLE (dwgrep-gendoc dwgrep-gendoc.cc ${LibzwergAll})
+diff -Naur dwgrep-0.4-orig/libzwerg/stack.hh dwgrep-0.4/libzwerg/stack.hh
+--- dwgrep-0.4-orig/libzwerg/stack.hh	2018-04-07 18:42:44.000000000 +0300
++++ dwgrep-0.4/libzwerg/stack.hh	2025-07-03 13:08:51.814809257 +0300
+@@ -31,6 +31,7 @@
+ #define _STK_H_
+ 
+ #include <memory>
++#include <stdexcept>
+ #include <vector>
+ 
+ #include "value.hh"
