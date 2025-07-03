@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=QSSTV
-Comment=Slow-Scan TV (SSTV) for amateur radio
+GenericName=Slow Scan TV
+Comment=Receive and transmit SSTV and DSSTV
 Exec=qsstv
 Icon=qsstv
 Terminal=false
