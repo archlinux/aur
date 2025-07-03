@@ -55,6 +55,8 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5.0' \
+        -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO' \
+        -DJPEGXL_ENABLE_AVX512:BOOL='true' \
         -DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
         -DJPEGXL_ENABLE_EXAMPLES:BOOL='false' \
         -DJPEGXL_ENABLE_FUZZERS:BOOL='false' \
@@ -65,8 +67,6 @@ build() {
         -DJPEGXL_FORCE_SYSTEM_BROTLI:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='true' \
-        -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO' \
-        -DJPEGXL_ENABLE_AVX512:BOOL='true' \
         -DJPEGXL_INSTALL_JARDIR='/usr/share/java' \
         -Wno-dev
     cmake --build build
