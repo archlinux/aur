@@ -3,7 +3,7 @@
 _pkgorg=camunda
 _pkgname=$_pkgorg-modeler
 pkgname=$_pkgname-bin
-pkgver=5.36.1
+pkgver=5.37.0
 pkgrel=1
 pkgdesc="An integrated modeling solution for BPMN, DMN and Forms based on bpmn.io"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
 	"https://github.com/$_pkgorg/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x64.tar.gz"
 	"$_pkgname.install"
 	"$_pkgname.sh")
-b2sums=('43bb060b26fc8ec4003889d3b2dad584e9099fa97bf96daf116afeaf19a1265bd286fa694e0d3b2337024645b76508d0bf64d2ce59ee253ffc1dbaa1287c2b40'
+b2sums=('72c0bfb9ac44afe60ffe46b51ccc3b31fda6fd2994f856fd969804659f7634785aa18362a2b20458133e49c66c08f1e9f60b555ee8d5e5d77be8d3544fd84da2'
         '67491c423c4513c78a01c47cffd0e28287a18913fd7c7b39278d0eeba6203432a84f5db221e9d3c2e755b42fa9a5063c246644c07dcaedc0b0c3f0af2777d604'
         'e2d15fa4996ba95fb29fabaafb57efc0bca02d5d073b25bd453e9f72aa4ca7f02ebe4454c711e26559940ca3e24422c2361a900a9b39c9c42e6cb22547a042a2')
 
