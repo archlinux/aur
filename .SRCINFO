@@ -9,7 +9,7 @@ pkgbase = igscraper
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = igscraper-2.0.1.tar.gz::https://github.com/marcusziade/igscraper/archive/v2.0.1.tar.gz
+	source = igscraper-2.0.1.tar.gz::https://github.com/marcusziade/igscraper/archive/2.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = igscraper
