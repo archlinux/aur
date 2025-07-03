@@ -10,6 +10,7 @@ pkgbase = hare-adwaita-git
 	depends = hare
 	depends = hare-gi
 	depends = libadwaita
+	provides = hare-adwaita
 	source = hare-adwaita::git+https://git.sr.ht/~sircmpwn/hare-adwaita
 	sha256sums = SKIP
 

@@ -5,6 +5,7 @@ pkgver=r1.995ebdf
 pkgrel=1
 license=("MPL2")
 pkgdesc="Hare bindings for libadwaita"
+provides=("hare-adwaita")
 makedepends=(
 	"git"
 )
