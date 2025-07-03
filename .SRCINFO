@@ -1,0 +1,15 @@
+pkgbase = pomme
+	pkgdesc = Beautiful App Store Connect CLI for sales reports, analytics, and reviews
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/marcusziade/pomme
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = pomme-2.0.0.tar.gz::https://github.com/marcusziade/pomme/archive/v2.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = pomme
