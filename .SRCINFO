@@ -1,6 +1,6 @@
 pkgbase = ffplayout
 	pkgdesc = 24/7 playout based on rust and ffmpeg
-	pkgver = 0.24.4
+	pkgver = 0.25.3
 	pkgrel = 1
 	url = https://github.com/ffplayout/ffplayout
 	install = ffplayout.install
@@ -8,11 +8,11 @@ pkgbase = ffplayout
 	license = GPL-3.0
 	makedepends = rustup
 	makedepends = musl
-	makedepends = nodejs-lts-hydrogen
+	makedepends = nodejs-lts-jod
 	makedepends = npm
 	makedepends = pandoc
 	makedepends = git
-	depends = ffmpeg-ffplayout
+	depends = ffmpeg
 	depends = sudo
 	provides = ffplayout
 	conflicts = ffplayout-git
@@ -21,9 +21,9 @@ pkgbase = ffplayout
 	replaces = ffplayout-unstable-git
 	backup = etc/ffplayout/ffplayout.toml
 	backup = etc/ffplayout/advanced.toml
-	source = ffplayout-0.24.4::git+https://github.com/ffplayout/ffplayout.git#tag=v0.24.4
+	source = ffplayout-0.25.3::git+https://github.com/ffplayout/ffplayout.git#tag=v0.25.3
 	source = ffplayout.install
-	sha256sums = 88e395862c355a8dc619cbce5f582a690b81debe2780e8d1e7ecc5226def2a0d
+	sha256sums = 8ae92210440de37f12f063ee385891187b8a7222a5d25658299aaa5815ea58b2
 	sha256sums = eaaf8977a2b657abdc3273f024ffdd8ccfc2e462f5fdaa1535144c8ff84a813d
 
 pkgname = ffplayout
