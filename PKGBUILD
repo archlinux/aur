@@ -1,8 +1,8 @@
 # Maintainer: Edward Pacman <edward at edward-p dot xyz>
 
 pkgname=wimboot-bin
-pkgver=2.7.6
-pkgrel=3
+pkgver=2.8.0
+pkgrel=1
 pkgdesc="iPXE kernel to boot wim images from network for both UEFI and BIOS system"
 arch=(any)
 url="https://github.com/ipxe/wimboot"
@@ -16,8 +16,8 @@ source=(
   "wimboot::https://github.com/ipxe/wimboot/releases/download/v${pkgver}/wimboot"
   "wimboot.i386::https://github.com/ipxe/wimboot/releases/download/v${pkgver}/wimboot.i386"
   )
-sha256sums=('111a6d1cc6a2a2f7b458d81efeb9c5b3f93f7751a0e79371c049555bb474fc85'
-            '1c21a014c2d2794696e145e1666baa38672e2f11183a1be6c0398ac29b0f1bfc')
+sha256sums=('74d4bf3d09386ccbbe907d9db59030f8cd8c88f7b4ccb799d386f31def11b3fe'
+            '3cdb8b2415f166366df111e507a2151bb3652a90291cc8e824c57c0374bdd54e')
 
 package() {
 	cd "$srcdir"
