@@ -23,7 +23,7 @@ conflicts=('linuxqq' 'linuxqq-nt-bwrap')
 
 source_x86_64=("${_Pkgname}-${pkgver}-x86_64.AppImage::${_image_url_x86_64}")
 source_aarch64=("${_Pkgname}-${pkgver}-aarch64.AppImage::${_image_url_aarch64}")
-sha256sums_x86_64=('2c5c5afa55068718916b236b79905582196648f840725c1dcab2f07a6c0c9c28')
+sha256sums_x86_64=('a65360af49b2198d715a49557954da8e79bde4673df0e8249f283ca2bab6ad43')
 sha256sums_aarch64=('09166cbc4d763d6cc8689aee555fcf4353d705f550bf14fdbb5b4fd6db664f95')
 
 _appimage="${_Pkgname}-${pkgver}-${CARCH}.AppImage"
