@@ -7,7 +7,7 @@ _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M136- (non vendored ${_so})"
 arch=('x86_64')
 url='https://ffmpeg.org/'
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 source=(${url}releases/ffmpeg-${_ffver}.tar.xz aom.patch
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 off-other-ffmpeg.hook on-other-ffmpeg.install)
