@@ -1,6 +1,6 @@
 pkgbase = thunderbird-bin
 	pkgdesc = Standalone Mail/News reader - binary version
-	pkgver = 139.0.2
+	pkgver = 140.0
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird
 	install = thunderbird-bin.install
@@ -17,7 +17,7 @@ pkgbase = thunderbird-bin
 	optdepends = hunspell: Spell checking
 	optdepends = hyphen: Hyphenation
 	optdepends = libcanberra: Sound support
-	provides = thunderbird=139.0.2
+	provides = thunderbird=140.0
 	conflicts = thunderbird
 	options = !strip
 	options = !debug
@@ -26,11 +26,11 @@ pkgbase = thunderbird-bin
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha512sums = 6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737
 	sha512sums = aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5
-	source_x86_64 = thunderbird-139.0.2-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/139.0.2/linux-x86_64/en-US/thunderbird-139.0.2.tar.xz
-	sha512sums_x86_64 = 845ec38dac2ecf28007ed13eaa5f60ef89447572a4a20b7ac42f8f07344f67fbb549bcaa40a6c7d0448983fff1913c266bff32763176b6b448d9a1cc4bc28ba1
-	source_pentium4 = thunderbird-139.0.2-pentium4.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/139.0.2/linux-i686/en-US/thunderbird-139.0.2.tar.xz
-	sha512sums_pentium4 = 1c98473fb2c8d449689c19122d44c2e722a25a4f78cc8865bead3cdea382dcc050a33822865c66166751d7c69cdcda2a41e9e4f01a4677a88ce9aa037f700bb5
-	source_i686 = thunderbird-139.0.2-i686.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/139.0.2/linux-i686/en-US/thunderbird-139.0.2.tar.xz
-	sha512sums_i686 = 1c98473fb2c8d449689c19122d44c2e722a25a4f78cc8865bead3cdea382dcc050a33822865c66166751d7c69cdcda2a41e9e4f01a4677a88ce9aa037f700bb5
+	source_x86_64 = thunderbird-140.0-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/140.0/linux-x86_64/en-US/thunderbird-140.0.tar.xz
+	sha512sums_x86_64 = 6814c8c32c8c2c3298bdfbf945fc9ba4cd35029fa8a5844a1159f4da9dba24939deff90b7271ecc345b836f9ac1cf6088d36eeec092de4127ec9f33cd756dba5
+	source_pentium4 = thunderbird-140.0-pentium4.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/140.0/linux-i686/en-US/thunderbird-140.0.tar.xz
+	sha512sums_pentium4 = 2011b66e017f808f1aa2fd0c052a4c98d8f8762ce6925d2e32be51645749cc367e0262696368b3f61115b1454e21242e476f3d94fdccf235a10465e049540460
+	source_i686 = thunderbird-140.0-i686.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/140.0/linux-i686/en-US/thunderbird-140.0.tar.xz
+	sha512sums_i686 = 2011b66e017f808f1aa2fd0c052a4c98d8f8762ce6925d2e32be51645749cc367e0262696368b3f61115b1454e21242e476f3d94fdccf235a10465e049540460
 
 pkgname = thunderbird-bin
