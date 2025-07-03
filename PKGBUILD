@@ -8,10 +8,23 @@ pkgdesc='JPEG XL image format reference implementation'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD-3-Clause')
-makedepends=('git' 'cmake' 'brotli' 'gdk-pixbuf2' 'giflib'
-             'gperftools' 'highway' 'libjpeg-turbo' 'libpng'
-             'gtest' 'java-environment' 'python' 'asciidoc' 'doxygen'
-             'graphviz' 'xdg-utils')
+makedepends=(
+    'asciidoc'
+    'brotli'
+    'cmake'
+    'doxygen'
+    'gdk-pixbuf2'
+    'giflib'
+    'git'
+    'gperftools'
+    'graphviz'
+    'gtest'
+    'highway'
+    'java-environment'
+    'libjpeg-turbo'
+    'libpng'
+    'python'
+    'xdg-utils')
 source=("git+https://github.com/libjxl/libjxl.git#tag=v${pkgver}"
         'git+https://github.com/mm2/Little-CMS.git'
         'git+https://github.com/webmproject/sjpeg.git'
@@ -76,10 +89,20 @@ check() {
 }
 
 package_libjxl() {
-    depends=('brotli' 'giflib' 'gperftools' 'highway' 'libjpeg-turbo' 'libpng')
-    optdepends=('gdk-pixbuf2: for gdk-pixbuf loader'
-                'java-runtime: for JNI bindings')
-    provides=('libjxl.so' 'libjxl_cms.so' 'libjxl_threads.so')
+    depends=(
+        'brotli'
+        'giflib'
+        'gperftools'
+        'highway'
+        'libjpeg-turbo'
+        'libpng')
+    optdepends=(
+        'gdk-pixbuf2: for gdk-pixbuf loader'
+        'java-runtime: for JNI bindings')
+    provides=(
+        'libjxl.so'
+        'libjxl_cms.so'
+        'libjxl_threads.so')
     
     DESTDIR="$pkgdir" cmake --install build
     install -D -m644 libjxl/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
