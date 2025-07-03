@@ -12,4 +12,3 @@ pkgname = windutils
 	pkgdesc = A collection of TUIs made with gum for popular CLIs. Currently providing TUIs for: iwd, systemctl
 	depends = gum
 	depends = iwd
-	depends = systemctl
