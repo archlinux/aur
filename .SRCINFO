@@ -7,7 +7,9 @@ pkgbase = bcc86
 	arch = i686
 	arch = pentium4
 	arch = x86_64
-	license = GPL 2.0
+	license = GPL
+	depends = glibc
+	optdepends = bin86: for assembling, linking, and other remaining features
 	source = git+https://github.com/lkundrak/dev86.git#branch=master
 	source = http://deb.debian.org/debian/pool/main/l/linux86/linux86_0.16.21-2.debian.tar.xz
 	md5sums = SKIP

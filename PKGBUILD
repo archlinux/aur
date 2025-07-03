@@ -6,7 +6,9 @@ pkgrel=1
 pkgdesc="Bruce's C Compiler. Extension for bin86 AUR package."
 arch=('i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/lkundrak/dev86"
-license=('GPL 2.0')
+license=('GPL')
+depends=('glibc')
+optdepends=('bin86: for assembling, linking, and other remaining features')
 source=("git+${url}.git#branch=master"
         "http://deb.debian.org/debian/pool/main/l/linux86/linux86_${pkgver}-2.debian.tar.xz")
 md5sums=('SKIP'
