@@ -2,9 +2,9 @@
 pkgname=chromium-ffmpeg-codecs
 _ffver=7.1.1
 pkgver=${_ffver}.m136_119
-pkgrel=5
+pkgrel=6
 _so=libffmpeg.so
-pkgdesc="Add codecs to Chromium-s (non vendored ${_so})"
+pkgdesc="Add codecs to Chromium M136- (non vendored ${_so})"
 arch=('x86_64')
 url='https://ffmpeg.org/'
 license=('LGPL2.1')
@@ -20,7 +20,7 @@ sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
 depends=(glibc)
 makedepends=(diffutils gcc make nasm patch sed)
 optdepends=({electron{28..36},nwjs}': replace ffmpeg')
-conflicts=(vivaldi-ffmpeg-codecs opera{,-developer,-beta}-ffmpeg-codecs{,-bin})
+conflicts=(opera{,-developer,-beta}-ffmpeg-codecs{,-bin})
 provides=("${conflicts[@]}")
 
 prepare() {
@@ -35,8 +35,10 @@ build() {
   cd ffmpeg-$_ffver
   # Use part of https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
   # Use some flags at https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/BUILD.gn
+  # Why --{disable-error-resilience,faan}?
   ./configure \
-    --disable-{all,autodetect,programs,doc,iconv,network,symver} \
+    --disable-{all,autodetect,doc,iconv,network,symver} \
+    --disable-{error-resilience,faan} \
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
     --enable-swresample \
@@ -49,7 +51,7 @@ build() {
 
   make install
   cd ../release
-  gcc $LTOFLAGS -shared $LDFLAGS -Wl,--no-as-needed \
+  gcc $LTOFLAGS -shared $LDFLAGS \
     -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
     -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avutil_version \
     -lm -Wl,-Bsymbolic -o $_so
@@ -57,8 +59,8 @@ build() {
 
 package(){
   install -Dm644 release/$_so "${pkgdir}"/usr/lib/$_so
-  install -d "${pkgdir}"/opt/vivaldi
-  ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.7.4
+  #install -d "${pkgdir}"/opt/vivaldi
+  #ln -sf /usr/lib/$_so "$pkgdir"/opt/vivaldi/${_so}.7.4
   # Opera has strange LD_PRELOAD
   install -Dm644 off-other-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
