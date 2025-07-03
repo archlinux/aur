@@ -1,11 +1,11 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 pkgname=nifskope-bin
-pkgver=2.0.dev11+20250530
+pkgver=2.0.dev11_20250630
 pkgrel=1
 pkgdesc="Fork of NifSkope 2.0.dev9 with many fixes and improvements."
 arch=('x86_64')
 url="https://github.com/fo76utils/nifskope"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('qt6-imageformats')
 makedepends=()
 checkdepends=()
@@ -13,7 +13,7 @@ optdepends=(
     'qt6-tools'
 )
 provides=('nifskope')
-source=("${url}/releases/download/v${pkgver//+/-}/NifSkope_2_0_2025-05-30-linuxqt6_x64.7z"
+source=("${url}/releases/download/v${pkgver//_/-}/NifSkope_2_0_2025-06-30-linuxqt6_x64.7z"
     "${url}/blob/develop/res/nifskope.png?raw=true"
     "NifSkope.desktop"
     "vnd.gamebryo-nif.xml"
