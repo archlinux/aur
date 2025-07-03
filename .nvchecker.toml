@@ -1,0 +1,4 @@
+[dwgrep]
+source = "github"
+github = "pmachata/dwgrep"
+use_max_tag = true
