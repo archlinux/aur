@@ -1,0 +1,5 @@
+[python-pyccel]
+source = "github"
+github = "pyccel/pyccel"
+use_latest_release = "true"
+prefix = "v"
