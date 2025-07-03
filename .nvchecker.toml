@@ -2,5 +2,5 @@
 source = "htmlparser"
 url = "https://frippery.org/make/"
 xpath = '/html/body//a[starts-with(@href, "pdpmake-")]'
-from_pattern = 'pdpmake-([0-9\.]+)\.tgz'
+from_pattern = '.*pdpmake-([0-9\.]+)\.tgz.*'
 to_pattern = '\1'
