@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=gog-rail-route
-pkgver=2.3.20
+pkgver=2.3.21
 pkgrel=1
 pkgdesc='Design and automate your own railway network. GOG version.'
 _shortname="${pkgname#gog-}"
@@ -29,11 +29,9 @@ source=(
   "${_shortname}.bash"
 )
 
-sha512sums=(
-  'adccfb7db516d9fd6463ba65e82e7c7d3342fb36a8519fd83be3c3304a78a689afbbc8c247692b8ed81c3b15f2ee7b2e30c05dd44457b902d13f9c1a19be6e55'
-  '2ca22352d18d7409cd68a47434d499c0f01fccff998ed890e893cad284eae2cc798d1c3fdb2a669642feb87fda5b5ac2f934b6afd59fec5b277b6e8f999c197b'
-  'aadace0dcf1f13359966cae76dde2b125187480501d2ac6d6569327ecece78f91f881bf74c207703a63477de86b7d537aa40b553d73e8d7aa79fef2e13376d8a'
-)
+sha512sums=('3a63d112151910fb19bece723f4e0224a6e21fa2470b6b647763e28a847b29d4b2f06f7aa28041881ced91e747117ac61525ddd77af1db335815a56c2a0ac684'
+            '2ca22352d18d7409cd68a47434d499c0f01fccff998ed890e893cad284eae2cc798d1c3fdb2a669642feb87fda5b5ac2f934b6afd59fec5b277b6e8f999c197b'
+            'aadace0dcf1f13359966cae76dde2b125187480501d2ac6d6569327ecece78f91f881bf74c207703a63477de86b7d537aa40b553d73e8d7aa79fef2e13376d8a')
 
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 PKGEXT=.pkg.tar
