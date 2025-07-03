@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=BiLiBiLi_DanMu_Crawling
+Icon=BiLiBiLi_DanMu_Crawling
+Exec=/opt/BiLiBiLi_DanMu_Crawling/app
+Type=Application
+Categories=Utility;
+Keywords=bili;dan;

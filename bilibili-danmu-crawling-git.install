@@ -21,8 +21,7 @@ function func_write_log()
 
 ## arg 1:  the new package version
 post_install() {
-	func_write_log "软件配置目录：/etc/bilibili-danmu-crawling" "g"
-	func_write_log "软件输出目录：/opt/bilibili-danmu-crawling/_internal/output" "y"
+	func_write_log "软件输出目录：/opt/BiLiBiLi_DanMu_Crawling/output" "y"
 	func_write_log "请自行将其链接至用户目录" "y"
-	func_write_log "软件输出目录与配置文件目录均为775权限，您设备上的任意用户均可访问/修改" "g"
+	func_write_log "软件输出目录为777权限，您设备上的任意用户均可访问或修改" "g"
 }
