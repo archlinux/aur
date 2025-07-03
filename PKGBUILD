@@ -30,7 +30,7 @@ prepare() {
 
     sed -i \
         -e "s/^Version=.*/Version=${pkgver}/" \
-        -e "s|^Icon=.*|Icon=/usr/icon/test.svg|" \
+        -e "s|^Icon=.*|Icon=/usr/share/icons/hicolor/scalable/apps/tauno-plotter.svg|" \
         snap/gui/Tauno-Serial-Plotter.desktop
 
     sed -i '
