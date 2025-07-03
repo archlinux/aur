@@ -2,33 +2,36 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.11.1.r189.g798512a9
+pkgver=0.11.1.r321.g3d0a160d
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD-3-Clause')
-makedepends=('git' 'cmake' 'brotli' 'gdk-pixbuf2' 'giflib'
-             'gperftools' 'highway' 'libjpeg-turbo' 'libpng'
-             'gtest' 'java-environment' 'python' 'asciidoc' 'doxygen'
-             'graphviz' 'xdg-utils')
+makedepends=(
+    'asciidoc'
+    'brotli'
+    'cmake'
+    'doxygen'
+    'gdk-pixbuf2'
+    'giflib'
+    'git'
+    'gperftools'
+    'graphviz'
+    'gtest'
+    'highway'
+    'java-environment'
+    'libjpeg-turbo'
+    'libpng'
+    'python'
+    'xdg-utils')
 source=('git+https://github.com/libjxl/libjxl.git'
-        'git+https://github.com/google/brotli.git'
         'git+https://github.com/mm2/Little-CMS.git'
-        'git+https://github.com/google/googletest.git'
         'git+https://github.com/webmproject/sjpeg.git'
         'git+https://skia.googlesource.com/skcms.git'
-        'git+https://github.com/google/highway.git'
-        'git+https://github.com/glennrp/libpng.git'
-        'git+https://github.com/madler/zlib.git'
         'libjxl-testdata'::'git+https://github.com/libjxl/testdata.git'
         'git+https://github.com/libjpeg-turbo/libjpeg-turbo.git')
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -37,11 +40,19 @@ sha256sums=('SKIP'
 
 prepare() {
     git -C libjxl submodule init
+    
     local _submodule
-    for _submodule in brotli googletest sjpeg skcms highway libpng zlib libjpeg-turbo
+    
+    for _submodule in libjpeg-turbo sjpeg skcms
     do
         git -C libjxl config --local "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule}"
     done
+    
+    for _submodule in brotli googletest highway libpng zlib
+    do
+        git -C libjxl config --local "submodule.third_party/${_submodule}.update" none
+    done
+    
     git -C libjxl config --local submodule.third_party/lcms.url "${srcdir}/Little-CMS"
     git -C libjxl config --local submodule.third_party/testdata.url "${srcdir}/libjxl-testdata"
     git -C libjxl -c protocol.file.allow='always' submodule update
@@ -61,6 +72,8 @@ build() {
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO' \
+        -DJPEGXL_ENABLE_AVX512:BOOL='true' \
         -DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
         -DJPEGXL_ENABLE_EXAMPLES:BOOL='false' \
         -DJPEGXL_ENABLE_FUZZERS:BOOL='false' \
@@ -71,7 +84,6 @@ build() {
         -DJPEGXL_FORCE_SYSTEM_BROTLI:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='true' \
-        -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO' \
         -DJPEGXL_INSTALL_JARDIR='/usr/share/java' \
         -Wno-dev
     cmake --build build
@@ -83,10 +95,22 @@ check() {
 }
 
 package_libjxl-git() {
-    depends=('brotli' 'giflib' 'gperftools' 'highway' 'libjpeg-turbo' 'libpng')
-    optdepends=('gdk-pixbuf2: for gdk-pixbuf loader'
-                'java-runtime: for JNI bindings')
-    provides=('libjxl' 'libjpeg-xl-git' 'libjxl.so' 'libjxl_threads.so')
+    depends=(
+        'brotli'
+        'gcc-libs'
+        'giflib'
+        'glibc'
+        'gperftools'
+        'highway'
+        'libjpeg-turbo'
+        'libpng')
+    optdepends=(
+        'gdk-pixbuf2: for gdk-pixbuf loader'
+        'java-runtime: for JNI bindings')
+    provides=('libjxl' 'libjpeg-xl-git'
+        'libjxl.so'
+        'libjxl_cms.so'
+        'libjxl_threads.so')
     conflicts=('libjxl' 'libjpeg-xl-git')
     replaces=('libjpeg-xl-git')
     
