@@ -1,0 +1,27 @@
+pkgbase = deepin-pdfium-git
+	pkgdesc = Development library for pdf on Deepin
+	pkgver = 1.5.3.r3.g1518dd6
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/deepin-pdfium
+	arch = x86_64
+	groups = deepin-git
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = openjpeg2
+	depends = libchardet
+	depends = lcms2
+	depends = libjpeg-turbo
+	depends = icu
+	depends = zlib
+	depends = gcc-libs
+	depends = freetype2
+	provides = deepin-pdfium
+	conflicts = deepin-pdfium
+	source = git+https://github.com/linuxdeepin/deepin-pdfium
+	sha512sums = SKIP
+
+pkgname = deepin-pdfium-git
