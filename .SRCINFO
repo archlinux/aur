@@ -1,13 +1,13 @@
 pkgbase = porter-cli
 	pkgdesc = CLI for Porter.dev, a Kubernetes powered PaaS that runs in your own cloud.
-	pkgver = 0.61.0
+	pkgver = 0.62.0
 	pkgrel = 1
 	url = https://www.porter.run/
 	arch = x86_64
 	license = custom:porter
-	source = https://github.com/porter-dev/releases/releases/download/v0.61.0/porter_0.61.0_linux_amd64
-	source = https://github.com/porter-dev/releases/releases/download/v0.61.0/docker-credential-porter_0.61.0_linux_amd64
-	sha256sums = 36c255b70bb0bb030f4ae8eabc5af8caebb21608af06dd71cd0ddd9eb7a34cef
-	sha256sums = 9576d68b99b99bcd2d05281799e9d267a9add13e9b944366e7e160b65549d390
+	source = https://github.com/porter-dev/releases/releases/download/v0.62.0/porter_0.62.0_linux_amd64
+	source = https://github.com/porter-dev/releases/releases/download/v0.62.0/docker-credential-porter_0.62.0_linux_amd64
+	sha256sums = c7f8519c321cde61c2de10c275b129caeae27dc772c337b3775a27f80c8f9d42
+	sha256sums = 5687cd92e9310880adcf87c1948ef8805429d259fee6e2fbda8bfc43b7f8994a
 
 pkgname = porter-cli
