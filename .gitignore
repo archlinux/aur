@@ -1,0 +1,5 @@
+# Exclude everything by default
+*
+# Include the .gitignore file itself
+!.gitignore
+

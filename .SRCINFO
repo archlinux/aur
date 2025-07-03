@@ -1,0 +1,18 @@
+pkgbase = libsral
+	pkgdesc = A Screen Reader Abstraction Library
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/m1maker/sral
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = libx11
+	makedepends = libspeechd
+	depends = gcc-libs
+	depends = libspeechd
+	depends = libx11
+	source = https://github.com/m1maker/sral/archive/refs/tags/0.3-Stable.tar.gz
+	sha256sums = 31b5e6b43fbeecbe9701dee9fab485ca6090575293562ebeb17e5b8ae30f85b8
+
+pkgname = libsral
