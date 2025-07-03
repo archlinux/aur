@@ -1,6 +1,6 @@
 pkgbase = heroku-cli-bin
 	pkgdesc = CLI to Manage Heroku apps with forced auto-update removed. Packaged before release to save time and bandwidth.
-	pkgver = 10.10.1
+	pkgver = 10.11.0
 	pkgrel = 1
 	url = https://devcenter.heroku.com/articles/heroku-cli
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = heroku-cli-bin
 	conflicts = heroku-toolbelt
 	conflicts = ruby-heroku
 	options = !strip
-	source = https://github.com/ChloeColman/heroku-cli-bin/raw/7071103450594213c958c6236b5a536358a200c5/heroku-cli-bin-v10.10.1-1.tar.xz
-	sha256sums = 4849617161bcc2cfa56a6cefc524c217f790b09782c3633afd42f85bce8b4000
-	sha512sums = c5f1385dab70f8bc9aafa053c7d6c26b9c75aaa92670a9e01de3f8cfe23729e0874c33cb42d9362f4f37a06a59d9d8ab31f3170d5d5fca151bfa3695cecdaceb
+	source = https://github.com/ChloeColman/heroku-cli-bin/raw/9d1cde86d87d860e07cbc662a216dcb2c52223e1/heroku-cli-bin-v10.11.0-1.tar.xz
+	sha256sums = b57b1371bc73bffc6ce2e1b03784ee8000505a09a78b093c490b071a86584c95
+	sha512sums = d7698d1ec8661365a65c29ec06c02268a757dd20409ba62a61e62a9b5fcb4796d455b7870ed834eecc6459f0d349abac10c25e441ca3c20d45130d99e3e2c34c
 
 pkgname = heroku-cli-bin
