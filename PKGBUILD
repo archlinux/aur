@@ -3,7 +3,7 @@
 pkgbase=python-ezpadova
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="A python package that allows you to download PADOVA isochrones directly from website"
 arch=('any')
@@ -21,10 +21,13 @@ makedepends=('python-setuptools-scm>=6.2'
              'python-pandas'
              'python-scipy'
              'python-pytest')  # wheel required by new setuptools
-#checkdepends=('python-pytest-xdist')   # pandas, requests <- scipy, bs4 <- pydata <- book-theme already in makedepends
+#checkdepends=('python-pytest-xdist'
+##              'python-requests'
+#              'python-beautifulsoup4'
+#             )   # pandas, requests <- scipy, bs4 <- pydata <- book-theme already in makedepends
 #source=("https://github.com/mfouesneau/ezpadova/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://github.com/mfouesneau/ezpadova/archive/refs/tags/v.${pkgver}.tar.gz")
-md5sums=('91d70192616a62da838afa203ac1d1b9')
+md5sums=('78cf2f1a4256e1d4f95f7d79cd7b9ba8')
 
 build() {
 #   cd ${srcdir}/${_pyname}-${pkgver}
