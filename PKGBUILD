@@ -60,7 +60,7 @@ build() {
         -DWINE_LIBRARY=/usr/lib32/wine \
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         ..
-  #make
+  #actually aknowledge other defaults
   cmake --build .
 }
 
