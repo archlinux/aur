@@ -3,7 +3,7 @@
 # Contributor: Gerard Ribugent <ribugent <at> gmail <dot> com>
 _projectname='azure-core'
 pkgname="python-$_projectname"
-pkgver='1.34.0'
+pkgver='1.35.0'
 pkgrel='1'
 pkgdesc='Microsoft Azure Core Shared Client Library for Python'
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python>=3.9.0' 'python-aiohttp>=3.0.0' 'python-requests>=2.21.0' 'python-typing_extensions>=4.6.0')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${_projectname}_$pkgver.tar.gz")
-b2sums=('0e509dc6d049b9dda224dbef378e07fd1496f47c5846b09f3c87dce8e7335d6aca963e02fcc0edf01862883f562a13da17c2a01a32d7011365063fa4f893bedd')
+b2sums=('a2e4423aba2f04c2460f757be2bf2bdf7c0e510fda7d710798ba5024490e1e4da99ada7e2a3425ee3b0c34af7ba925f93350a4b6f9777d14b04d8b11d30fc7c3')
 
 _sourcedirectory="azure-sdk-for-python-${_projectname}_$pkgver/sdk/core/$_projectname"
 
