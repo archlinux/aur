@@ -9,7 +9,7 @@
 # Contributor: Marijan Smetko <msmetko@msmetko.xyz>
 
 pkgname=android-studio-canary
-pkgver=2025.1.2.7
+pkgver=2025.1.2.8
 pkgrel=1
 pkgdesc="The Official Android IDE (Canary branch)"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ optdepends=('gtk2: GTK+ look and feel'
 options=('!strip')
 source=("https://redirector.gvt1.com/edgedl/android/studio/ide-zips/$pkgver/android-studio-$pkgver-linux.tar.gz"
         "$pkgname.desktop")
-sha256sums=('c0d041bdda1f57a90bfc2f8940d3f3f74617cd1a96623918689181e071c7e8be'
+sha256sums=('a7bb08ada47931b16aaf6b2f0f518a47bd48d14d540cc926016e0f0078d6c83e'
             '12ff377490cff386ba7b3ab9c94adfc2ca99515fdfad4773813268217dcd56b7')
 
 if [ "$CARCH" = "i686" ]; then
