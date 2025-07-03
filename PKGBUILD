@@ -30,8 +30,10 @@ build() {
   cd ffmpeg
   # Use part of https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
   # Use some flags at https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/BUILD.gn
+  # Why --{disable-error-resilience,faan}?
   ./configure \
-    --disable-{all,autodetect,programs,doc,iconv,network,symver} \
+    --disable-{all,autodetect,doc,iconv,network,symver} \
+    --disable-{error-resilience,faan} \
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
     --enable-swresample \
@@ -44,7 +46,7 @@ build() {
 
   make install
   cd ../release
-  gcc $LTOFLAGS -shared $LDFLAGS -Wl,--no-as-needed \
+  gcc $LTOFLAGS -shared $LDFLAGS \
     -Wl,--whole-archive lib/lib{avcodec,avformat}.a \
     -Wl,--no-whole-archive lib/lib{avutil,swresample}.a -Wl,-u,avutil_version \
     -lm -Wl,-Bsymbolic -o $_so
