@@ -1,0 +1,17 @@
+pkgbase = igscraper-git
+	pkgdesc = A powerful Instagram photo downloader with cyberpunk aesthetics, built in Go (git version)
+	pkgver = 2.0.1.r0.gcd55bcb
+	pkgrel = 1
+	url = https://github.com/marcusziade/igscraper
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = igscraper
+	conflicts = igscraper
+	source = igscraper-git::git+https://github.com/marcusziade/igscraper.git
+	sha256sums = SKIP
+
+pkgname = igscraper-git
