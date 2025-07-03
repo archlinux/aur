@@ -5,10 +5,10 @@
 
 _pkgname='ov'
 pkgname="${_pkgname}-git"
-pkgver=0.42.0.r0.gfc39e14
-pkgrel=3
+pkgver=0.42.1.r0.g63d9143
+pkgrel=2
 epoch=1
-pkgdesc='Feature-rich terminal-based text pager (built from latest git commit)'
+pkgdesc='Feature-rich terminal-based text pager (development version)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/noborus/ov'
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -31,7 +31,6 @@ prepare() {
   cd "$_pkgname"
 
   git clean -dfx
-
   mkdir -vp build
   go mod tidy
 }
