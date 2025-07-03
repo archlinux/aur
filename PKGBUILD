@@ -3,7 +3,7 @@
 pkgname=deepin-control-center-git
 _pkgname=deepin-control-center
 sourcename=dde-control-center
-pkgver=6.0.76.2.r43.gfe51971ef
+pkgver=6.1.33.r0.gc944ab000
 pkgrel=1
 pkgdesc='New control center for linux deepin'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,6 @@ license=('GPL3')
 depends=(
     'deepin-account-faces'
     'libpwquality'
-    'startdde'
     'deepin-daemon'
     'deepin-qt-dbus-factory'
     'deepin-pw-check'
@@ -56,13 +55,12 @@ pkgver() {
 
 build() {
   cd $sourcename
-  cmake -B build -GNinja -DDISABLE_SYS_UPDATE=YES \
-                -DDISABLE_RECOVERY=YES \
-                -DDISABLE_ACTIVATOR=YES \
-                -DCMAKE_INSTALL_PREFIX=/usr \
-                -DCMAKE_INSTALL_LIBDIR=lib \
-                -DDISABLE_AUTHENTICATION=ON \
-                -DBUILD_DCC_OLD=OFF
+  cmake -B build -GNinja \
+      -DDISABLE_SYS_UPDATE=YES \
+      -DDISABLE_AUTHENTICATION=YES \
+      -DDISABLE_PRIVACY_PLUGIN=YES \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_LIBDIR=lib
   cmake --build build
 }
 
