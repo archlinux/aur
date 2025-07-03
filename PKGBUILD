@@ -6,7 +6,7 @@ pkgdesc="Based Black Music Player"
 arch=(x86_64)
 url="https://github.com/dgrisham/bbmp"
 license=('GPL')
-source=("https://github.com/dgrisham/bbmp/releases/download/${pkgver}/bbmp")
+source=("https://grish.haus/bin/bbmp/${pkgver}/bbmp")
 depends=()
 sha256sums=('7f455328abb1719e75d569864bf339bbe107953a87a88fdd0e1a545a2ea88760')
 
