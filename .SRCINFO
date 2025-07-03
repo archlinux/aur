@@ -1,0 +1,18 @@
+pkgbase = gawk-libc-git
+	pkgdesc = C standard library bindings for gawk
+	pkgver = 0
+	pkgrel = 1
+	url = https://codeberg.org/tplasdio/gawk-libc
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = make
+	depends = gawk
+	depends = glibc
+	depends = libxcrypt
+	source = git+https://codeberg.org/tplasdio/gawk-libc
+	md5sums = SKIP
+
+pkgname = gawk-libc-git
