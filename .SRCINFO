@@ -1,0 +1,20 @@
+pkgbase = runit-service
+	pkgdesc = A custom tool to manage runit services.
+	pkgver = a0.2.1
+	pkgrel = 1
+	url = https://gitlab.com/SimplyCEO/runit-service
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL-2.0-or-later
+	makedepends = make
+	makedepends = gcc
+	makedepends = clang
+	makedepends = tcc
+	depends = runit
+	replaces = runit-service
+	source = runit-service-a0.2.1.tar.gz::https://gitlab.com/SimplyCEO/runit-service/-/archive/a0.2.1/runit-service-a0.2.1.tar.gz
+	sha256sums = 4123e60265743f2f72bc0ec51990b17808ea26100ae16ad6a4f5f9f5cace7213
+
+pkgname = runit-service
