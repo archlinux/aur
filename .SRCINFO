@@ -1,7 +1,7 @@
 pkgbase = borked3ds-appimage
 	pkgdesc = An experimental Nintendo 3DS Emulator based off of Citra
 	pkgver = 2025.03.11
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Borked3DS/Borked3DS
 	arch = x86_64
 	license = GPL-2.0-only
