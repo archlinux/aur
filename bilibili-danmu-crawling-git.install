@@ -21,7 +21,6 @@ function func_write_log()
 
 ## arg 1:  the new package version
 post_install() {
-	func_write_log "软件输出目录：/opt/BiLiBiLi_DanMu_Crawling/output" "y"
-	func_write_log "请自行将其链接至用户目录" "y"
-	func_write_log "软件输出目录为777权限，您设备上的任意用户均可访问或修改" "g"
+	func_write_log "弹幕输出位于 ~/Downloads/BiLiBiLi_DanMu_Crawling/output/ 下" "g"
+	func_write_log "若需要修改，请自行更改 /usr/share/applications/BiLiBiLi_DanMu_Crawling.desktop" "y"
 }
