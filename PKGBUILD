@@ -12,13 +12,13 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marcusziade/pomme/archi
 sha256sums=('SKIP')
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/Pomme-${pkgver}"
     # Create go module directory
     mkdir -p build
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/Pomme-${pkgver}"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -30,12 +30,12 @@ build() {
 }
 
 check() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/Pomme-${pkgver}"
     go test ./...
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/Pomme-${pkgver}"
     
     # Install binary
     install -Dm755 build/pomme "${pkgdir}/usr/bin/pomme"
