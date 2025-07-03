@@ -1,5 +1,5 @@
-pkgbase = cabal-install-bin
-	pkgdesc = The command-line interface for Cabal and Hackage.
+pkgbase = cabal-install-static
+	pkgdesc = The command-line interface for Cabal and Hackage - static build.
 	pkgver = 3.14.2.0
 	pkgrel = 1
 	url = https://www.haskell.org/cabal
@@ -14,4 +14,4 @@ pkgbase = cabal-install-bin
 	sha256sums = 9b73b3f67b3af49b4076088325d3c1c4c7d77be31a310395f401d72a8ddeaba8
 	sha256sums = e8a13d7542040aad321465a576514267a753d02808a98ab17751243c131c7bdb
 
-pkgname = cabal-install-bin
+pkgname = cabal-install-static
