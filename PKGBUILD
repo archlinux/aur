@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
-pkgver=1.7.13
-_electronversion=36
+pkgver=1.7.14
+_electronversion=37
 pkgrel=1
 pkgdesc="Desktop app for ente Photos.(Prebuilt version)"
 arch=(
@@ -15,13 +15,16 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'nodejs'
     'ffmpeg'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.pacman")
-sha256sums_aarch64=('d182689b8a2d543bf7d2b4ed7bdcc5f99d5023f75c9ac7409603b8f6a4fa7131')
-sha256sums_x86_64=('e9e63cffe90f468a7e69470589883a61853e483e4024561553959486ff7529bd')
+sha256sums_aarch64=('f8cb513510366f2a607796d377f85018d018860966ec8f1fe9c3798259e21a5f')
+sha256sums_x86_64=('3270932818b1969068ad0679c414b978e43e0a63915562601a4deefd44675c4e')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/\/opt\/${_pkgname}\/${_pkgname}/${pkgname%-bin}/g
@@ -29,6 +32,7 @@ prepare() {
         s/Photography/Graphics/g
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     sed -i "s/io.${_pkgname}.photos/${pkgname%-bin}/g" "${srcdir}/opt/${_pkgname}/resources/io.${_pkgname}.photos.appdata.xml"
+    _get_electron_version
     _file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome_crashpad_handler chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
         libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
     for _files in "${_file_list[@]}";do
