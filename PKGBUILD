@@ -5,8 +5,8 @@
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
 _appname=SiYuan
-pkgver=3.1.32
-_electronversion=35
+pkgver=3.2.0
+_electronversion=37
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -29,9 +29,13 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb")
-sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('221f792ed4566a0ada609f2b4f20a9443c3ec08be88321f7cfc080ce562e3d76')
-sha256sums_x86_64=('b467a07af6c07eeb5ab4117fc7e6f221f373200db5f0543f0afe9907aec797cb')
+sha256sums=('f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums_aarch64=('401a1c46243e2811957977781249ae9ec0145b0be42180c89f9b5f4c4f32df05')
+sha256sums_x86_64=('9fa93590e9116865dd2e8ee12940c4f852c3aede4df7c3bc3f7355b2a57ee76b')
+_get_electron_version() {
+    _electronversion="$(strings "${srcdir}/opt/${_appname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -41,6 +45,7 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${_appname}\/${_pkgname}/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
