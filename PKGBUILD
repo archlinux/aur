@@ -13,22 +13,12 @@ makedepends=('git' 'cmake' 'brotli' 'gdk-pixbuf2' 'giflib'
              'gtest' 'java-environment' 'python' 'asciidoc' 'doxygen'
              'graphviz' 'xdg-utils')
 source=("git+https://github.com/libjxl/libjxl.git#tag=v${pkgver}"
-        'git+https://github.com/google/brotli.git'
         'git+https://github.com/mm2/Little-CMS.git'
-        'git+https://github.com/google/googletest.git'
         'git+https://github.com/webmproject/sjpeg.git'
         'git+https://skia.googlesource.com/skcms.git'
-        'git+https://github.com/google/highway.git'
-        'git+https://github.com/glennrp/libpng.git'
-        'git+https://github.com/madler/zlib.git'
         'libjxl-testdata'::'git+https://github.com/libjxl/testdata.git'
         'git+https://github.com/libjpeg-turbo/libjpeg-turbo.git')
 sha256sums=('6420adcb5ccd23547eed91feb38ac9d7bdaac77def7183776e00699880148e3e'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -37,11 +27,19 @@ sha256sums=('6420adcb5ccd23547eed91feb38ac9d7bdaac77def7183776e00699880148e3e'
 
 prepare() {
     git -C libjxl submodule init
+    
     local _submodule
-    for _submodule in brotli googletest sjpeg skcms highway libpng zlib libjpeg-turbo
+    
+    for _submodule in libjpeg-turbo sjpeg skcms
     do
         git -C libjxl config --local "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule}"
     done
+    
+    for _submodule in brotli googletest highway libpng zlib
+    do
+        git -C libjxl config --local "submodule.third_party/${_submodule}.update" none
+    done
+    
     git -C libjxl config --local submodule.third_party/lcms.url "${srcdir}/Little-CMS"
     git -C libjxl config --local submodule.third_party/testdata.url "${srcdir}/libjxl-testdata"
     git -C libjxl -c protocol.file.allow='always' submodule update
