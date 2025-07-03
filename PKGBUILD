@@ -30,10 +30,10 @@ build() {
   cd ffmpeg
   # Use part of https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/config/Chrome/linux/x64/
   # Use some flags at https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/BUILD.gn
-  # Why --{disable-error-resilience,faan}?
+  # Why disable error-resilience faan iamf?
   ./configure \
     --disable-{all,autodetect,doc,iconv,network,symver} \
-    --disable-{error-resilience,faan} \
+    --disable-{error-resilience,faan,iamf} \
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
     --enable-swresample \
