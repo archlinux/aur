@@ -13,6 +13,7 @@ license=(BSD-3-Clause)
 depends=(
 	lib32-glibc
 	aom
+	lib32-gcc-libs
 )
 makedepends=(
 	cmake

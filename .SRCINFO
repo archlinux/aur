@@ -10,6 +10,7 @@ pkgbase = lib32-aom
 	makedepends = yasm
 	depends = lib32-glibc
 	depends = aom
+	depends = lib32-gcc-libs
 	source = https://storage.googleapis.com/aom-releases/libaom-3.12.0.tar.gz
 	source = https://storage.googleapis.com/aom-releases/libaom-3.12.0.tar.gz.asc
 	validpgpkeys = B002F08B74A148DAA01F7123A48E86DB0B830498
