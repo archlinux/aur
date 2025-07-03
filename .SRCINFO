@@ -1,7 +1,7 @@
 pkgbase = soundfont-sm64
 	pkgdesc = Super Mario 64 soundfont for MIDI playback made by PablosCorner
 	pkgver = 2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.smwcentral.net/?p=viewthread&t=88116
 	arch = any
 	makedepends = megatools
