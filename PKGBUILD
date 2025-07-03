@@ -1,7 +1,7 @@
 
 pkgname=chromium-ffmpeg-codecs-git
 pkgver=7.2.r119684.g670089304a
-pkgrel=4
+pkgrel=5
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium M138+ (non vendored ${_so})"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/m
 sha256sums=('f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40')
 depends=(glibc)
 makedepends=(diffutils gcc make nasm patch sed git)
-conflicts=(vivaldi-snapshot-ffmpeg-codecs)
+conflicts=(vivaldi{,-snapshot}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 
 prepare() {
@@ -54,8 +54,9 @@ build() {
 
 package(){
   install -Dm644 release/$_so "${pkgdir}"/usr/lib/${pkgname}/$_so
-  install -d "${pkgdir}"/opt/vivaldi-snapshot
+  install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
   for n in 7.5 7.6 7.7 7.8 7.9 8.0; do
+    ln -svf /usr/lib/${pkgname}/$_so "$pkgdir"/opt/vivaldi/${_so}.$n
     ln -svf /usr/lib/${pkgname}/$_so "$pkgdir"/opt/vivaldi-snapshot/${_so}.$n
   done
 }
