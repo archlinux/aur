@@ -3,7 +3,7 @@
 
 pkgname=debootstrap-pureos
 _gitpkgname="${pkgname%-pureos}"
-pkgver=1.0.134pureos1
+pkgver=1.0.141pureos1
 pkgrel=1
 pkgdesc='Bootstrap a basic Debian system. Custom version, required to build PureOS.'
 arch=('any')
@@ -19,10 +19,8 @@ source=(
   'arch-detect.patch'
 )
 
-sha512sums=(
-  '3d9d59f659a55295608db860ba48a6355107ed687eaee4f0505ccc0fc350aa3278d4f4c9caff6dc9ff7d5df072fa5ef759f6ac5533fd9e6f5bd7d9c79cdeccbf'
-  'd70a9d096d1692f71970cc818515bd783a6031bfe2d2857134eabf6fd36e4137152ebafa8e2d4ae7c8cb442c8532cd4192715b286e38b4d947b0b467e9ed54a5'
-)
+sha512sums=('c78e112fb768b828b336cb0573fa0efa987627169bf438c8b721349128897a300f0365d61f1a6d12343ea7957c21fda7a4b4cfdd0c899c461a94cddab60f9eed'
+            'd70a9d096d1692f71970cc818515bd783a6031bfe2d2857134eabf6fd36e4137152ebafa8e2d4ae7c8cb442c8532cd4192715b286e38b4d947b0b467e9ed54a5')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
