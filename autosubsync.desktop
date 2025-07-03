@@ -2,7 +2,7 @@
 Name=AutoSubsync
 Comment=Sync subtitles automatically
 Exec=autosubsync
-Icon=/opt/autosubsync/_internal/icon.ico
+Icon=/opt/autosubsync/_internal/assets/icon.ico
 Terminal=false
 Type=Application
 Categories=Video;
