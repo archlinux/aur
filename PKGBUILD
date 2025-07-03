@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-insiders-bin
 _pkgname=visual-studio-code-insiders
-pkgver=1751433761
+pkgver=1751520059
 pkgrel=1
 pkgdesc="Visual Studio Code Insiders (vscode): Editor for building and debugging modern web and cloud applications (official binary version)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -26,17 +26,17 @@ source=(code-${pkgver}.desktop.in::https://raw.githubusercontent.com/microsoft/v
         code-${pkgver}-url-handler.desktop.in::https://raw.githubusercontent.com/microsoft/vscode/master/resources/linux/code-url-handler.desktop
         code-${pkgver}-workspace.xml.in::https://raw.githubusercontent.com/microsoft/vscode/master/resources/linux/code-workspace.xml
         ${_pkgname}-bin.sh)
-source_x86_64=(code_x64_1751433761.tar.gz::https://vscode.download.prss.microsoft.com/dbazure/download/insider/6e855004c713d9c2610091ab7eb68b677830087f/code-insider-x64-1751433761.tar.gz)
-source_aarch64=(code_arm64_1751433762.tar.gz::https://vscode.download.prss.microsoft.com/dbazure/download/insider/6e855004c713d9c2610091ab7eb68b677830087f/code-insider-arm64-1751433762.tar.gz)
-source_armv7h=(code_armhf_1751433764.tar.gz::https://vscode.download.prss.microsoft.com/dbazure/download/insider/6e855004c713d9c2610091ab7eb68b677830087f/code-insider-armhf-1751433764.tar.gz)
+source_x86_64=(code_x64_1751520059.tar.gz::https://vscode.download.prss.microsoft.com/dbazure/download/insider/00fa27eb04ccacc24fe3eaf36371d1b326c1760c/code-insider-x64-1751520059.tar.gz)
+source_aarch64=(code_arm64_1751520052.tar.gz::https://vscode.download.prss.microsoft.com/dbazure/download/insider/00fa27eb04ccacc24fe3eaf36371d1b326c1760c/code-insider-arm64-1751520052.tar.gz)
+source_armv7h=(code_armhf_1751520048.tar.gz::https://vscode.download.prss.microsoft.com/dbazure/download/insider/00fa27eb04ccacc24fe3eaf36371d1b326c1760c/code-insider-armhf-1751520048.tar.gz)
 
 sha256sums=('2f1782b30c4e040efff655fd9cf477930c5a0c81ddae27749b0cbb922c1d248e'
             'c361efa7e02fcad759ed80d2fbab67877f33219b981578af6fffaf18aeb12d9b'
             '3af748dd6578a1775e8eb7248ba397b7e11840df2ea6ee234ff76fee3dc306cf'
             '4ba4e7bb90c05089a2aed7e1fbfade57f6878aebe8c3166c82dcaefc45141372')
-sha256sums_x86_64=('9f9d1fd2c54648382f591b6572eaa739d6d14d1b99e878bcc207f0676e6d40f3')
-sha256sums_aarch64=('bff8a95ccc8864b2e9ae4accb6c1d82b4e2979144889592c1df212d5775cc702')
-sha256sums_armv7h=('bf6846bacf1d09604220dcf60d6733546caa41b5ff1fd0027579f29a02f1e2e3')
+sha256sums_x86_64=('0e152782ae7d2d48965a53271231e5c6b46c45b0873fda4fcb4dfeafd5aebf25')
+sha256sums_aarch64=('6dfed00182006f738d27a95bd5b1509f757f6a08ab0744c71ac649fdfe867c4f')
+sha256sums_armv7h=('0d0733d77f41838ef86147dea77ac5e3abc9b32e2eb772e714e6dcafa991e671')
 
 _set_meta_info() {
   sed 's/@@NAME_LONG@@/Visual Studio Code Insiders/g' "$1" |\
