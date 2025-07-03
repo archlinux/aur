@@ -2,7 +2,7 @@
 # Maintainer: Carlos Becker <carlos@charm.sh>
 
 pkgname='mods-bin'
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='AI on the command line'
 url='https://charm.sh/'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('mods')
 conflicts=('mods')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.7.0/mods_1.7.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('84e5d2e58e4861565cd14b4cc0c43fdc45426a3656811b999716d9d9d5b47086')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.8.0/mods_1.8.0_Linux_arm64.tar.gz")
+sha256sums_aarch64=('a565fd4b51d0a046f38f32b989fb6a245e5087b0f1c3dc76f5b05ea2721d5077')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.7.0/mods_1.7.0_Linux_arm.tar.gz")
-sha256sums_armv7h=('86ed5bc8d8863e3b014f2d540b3b35174c0fea0e0ce2bb59122931e0b47730d6')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.8.0/mods_1.8.0_Linux_arm.tar.gz")
+sha256sums_armv7h=('3a0382cccd4a43339bb3ca9441461d42fe2057cc4742b21f4239f2a6eae97fef')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.7.0/mods_1.7.0_Linux_i386.tar.gz")
-sha256sums_i686=('49f6600b59d9140e5acc096d7ec1e18cacd88639526f24aa9f9ea2bf350b63bb')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.8.0/mods_1.8.0_Linux_i386.tar.gz")
+sha256sums_i686=('708d27fdccc3afe98cf054d2097b91e260123d373ecc07e92cba085d763bc456')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.7.0/mods_1.7.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('b62acd6f4c628f59b5177bfa52b37bce2b6c8508f45a0a6deb1690bc71a2c2da')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.8.0/mods_1.8.0_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('06312a833be1296622a3be5c45dc3c034f2f83df61f158abdcc62b704d7a923f')
 
 package() {
   cd "${srcdir}/mods_${pkgver}_Linux_${CARCH}"
