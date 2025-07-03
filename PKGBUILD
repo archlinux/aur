@@ -3,6 +3,8 @@
 # Contributor: SoftwareRat <jaguar5018@gmail.com>
 # Contributor: Michael Herzberg <{firstname}@{firstinitial}{lastname}.de>
 
+: ${_ffmpeg:=ffmpeg}
+
 _pkgname="moonlight-qt"
 pkgname="$_pkgname-git"
 pkgver=6.1.0.r78.g1dbdcb5
@@ -13,7 +15,7 @@ license=('GPL-3.0-or-later')
 arch=('aarch64' 'x86_64')
 
 depends=(
-  'ffmpeg'
+  "$_ffmpeg"
   'qt6-base'
   'qt6-declarative'
   'qt6-svg'
@@ -110,6 +112,8 @@ prepare() {
 }
 
 build() {
+  [ "$_ffmpeg" != "ffmpeg" ] && export PKG_CONFIG_PATH="/usr/lib/$_ffmpeg/pkgconfig/"
+
   cd "$_pkgsrc"
   qmake6 'moonlight-qt.pro' PREFIX='/usr'
   make
