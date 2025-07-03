@@ -30,12 +30,12 @@ source_armv7h=(
 source_aarch64=(
   "k3s-${pkgver}-aarch64::https://github.com/k3s-io/k3s/releases/download/v${pkgver}/k3s-arm64"
 )
-md5sums=('2c98ae8a95712a68f1f280fae7dc81cc'
-         'c05e139fcdf93434640618c6237892b7'
-         '958f9ca03f5ccfb71b52f90ca02cc2c8')
-md5sums_x86_64=('15b988f1ec8706667047e2cf358a1cad')
-md5sums_armv7h=('7948461e3517c440c031843b3d156c2e')
-md5sums_aarch64=('bbf8f037e9315c627ea9c631be40d8c5')
+sha256sums=('c24735658b766d4e270380181e3ecd537a8e9dce9cb96673f39170b6798ed659'
+            'cde96553e9609791cd9fe1ff33482e33c4cfec22761f7766f5c278a9ce2ec679'
+            'a09747c9541cd22df97adcabc44c09d97a4305a9d976e9bf8191849cb1ce30b6')
+sha256sums_x86_64=('12924a877b5fdf8c8813ce57c5e529aaaac0d7ebdc4b3ab4c5ba76aa2a1acc93')
+sha256sums_armv7h=('949aee6b0f55de697bc5e26339524e83b23b784c8d20f3881f409f05a8cddf26')
+sha256sums_aarch64=('5b31cbc94c7e708d29f55aafd78d08796f9e592489f248f8e2ad7737f789cad1')
 
 
 
