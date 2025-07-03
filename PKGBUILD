@@ -1,6 +1,6 @@
 pkgbase=aeolus-next
 pkgname=( ${pkgbase}-{clap,lv2,standalone,vst3}-bin )
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 url="https://github.com/Archie3d/aeolus_plugin"
 license=('GPL')
@@ -14,10 +14,10 @@ source=("${url}/releases/download/v${pkgver}/Aeolus-clap-linux-${pkgver}.zip"
 		"${url}/releases/download/v${pkgver}/Aeolus-vst3-linux-${pkgver}.zip"
 		"aeolus-next.png"
 		"Aeolus Next.desktop")
-sha256sums=('b3e98c3a1a4e874ab984b74827921a6d4dd3612db30e4bd636640afd01d43552'
-            '16e2caffb439b82fd9fc6e1e0ed4defd1f165eec657ad853708e800c1bf5d595'
-            'c64104d9eb7ed3d5697ffb2ec7ac6612e7da219484e46143ce724e700cc09770'
-            '35a37b9f9bd539b6854fe16eb0d77d76ef6fad6a7dfbc885c5b13d468eed48eb'
+sha256sums=('498170149337c7d2ce19783156522d3bf489f811c2a61b7323b64071882cc370'
+            'dad29d9b6a20a1e13364bd6cffd66a1bb20f2319842cc818d44ae3d89f8ae06c'
+            'f2a16cf6b4c0d3997893fd7f20e9d9508473a94abbb0970d8da5eda6e614ca4f'
+            '1746f87c18d705c42e9a878467d436f97e007b4312bae92910cf0da91e262670'
             '4d2df74407d2f2fd7489bc8cd22d3fb644cdc16f4ac6a52eae1ec26ac0666417'
             '84457ab146c11fa03f53a6924495c15d2df276d4a60d7fa0320596b3611c16d3')
 
