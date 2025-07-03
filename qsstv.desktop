@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=QSSTV
+Comment=Slow-Scan TV (SSTV) for amateur radio
+Exec=qsstv
+Icon=qsstv
+Terminal=false
+Type=Application
+Categories=AudioVideo;HamRadio;

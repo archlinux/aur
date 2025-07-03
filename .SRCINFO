@@ -1,0 +1,25 @@
+pkgbase = qsstv-9m2pju-git
+	pkgdesc = Amateur Radio Slow-Scan TV (SSTV) and Digital SSTV (DSSTV) software for Qt
+	pkgver = r72.g85d9219
+	pkgrel = 1
+	url = https://github.com/ON4QZ/QSSTV
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = libpulse
+	depends = v4l-utils
+	depends = hamlib
+	depends = fftw
+	depends = openjpeg2
+	depends = alsa-lib
+	provides = qsstv
+	conflicts = qsstv
+	conflicts = qsstv-git
+	source = git+https://github.com/ON4QZ/QSSTV.git
+	source = qsstv.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = qsstv-9m2pju-git
