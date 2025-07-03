@@ -1,0 +1,14 @@
+pkgbase = tauno-serial-plotter-bin
+	pkgdesc = Serial Plotter for Arduino and other embedded devices.
+	pkgver = 1.19.4
+	pkgrel = 17
+	url = https://github.com/taunoe/tauno-serial-plotter
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0
+	depends = python-pyqt5
+	depends = python-pyqtgraph
+	source = tauno-serial-plotter-bin-1.19.4.tar.gz::https://github.com/taunoe/tauno-serial-plotter/archive/refs/tags/v1.19.4.tar.gz
+	sha256sums = 4ab6d3bcdbb7c84667409f304cfc9f6e0d5ef77b10b7bd78fce8fae07d459363
+
+pkgname = tauno-serial-plotter-bin
