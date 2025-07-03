@@ -1,5 +1,6 @@
 # Maintainer: notscripter <grx8x0mfy@mozmail.com>
 pkgname=tauno-serial-plotter-bin
+_pkgname=tauno-serial-plotter
 pkgver=1.19.4
 pkgrel=17
 epoch=
@@ -25,7 +26,7 @@ sha256sums=(4ab6d3bcdbb7c84667409f304cfc9f6e0d5ef77b10b7bd78fce8fae07d459363)
 validpgpkeys=()
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname-$pkgver"
     install -Dm644 snap/gui/Tauno-Serial-Plotter.desktop "${pkgdir}/usr/share/applications/tauno_serial_plotter.desktop"
     install -Dm644 snap/gui/tauno-plotter.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/tauno-plotter.svg"
     install -Dm755 src/tauno-serial-plotter.py "${pkgdir}/usr/bin/tauno-serial-plotter"
