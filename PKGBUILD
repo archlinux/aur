@@ -1,37 +1,39 @@
-# Maintainer: fossdd <fossdd@pwned.life>
+# Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=hiprompt-gtk-git
-_pkgname=${pkgname%-git}
-pkgver=r2.705ec83
+_pkgname=hiprompt-gtk
+pkgver=r28.4f4c1fd
 pkgrel=1
-pkgdesc='Legacy GTK3 prompter for Himitsu, do not use'
-url='https://sr.ht/~sircmpwn/himitsu'
-license=(GPL-3.0)
-arch=(x86_64)
-depends=()
-makedepends=(meson make clang gtk-layer-shell gtk3)
-conflicts=(hiprompt-gtk-py-git)
-provides=(hiprompt-gtk)
-source=("git+https://git.sr.ht/~sircmpwn/hiprompt-gtk")
-sha256sums=('SKIP')
+license=("GPL3")
+pkgdesc=" GTK4 prompter for Himitsu "
+makedepends=(
+	"git"
+	"hare"
+	"hare-gi"
+	"hare-adwaita"
+	"hare-gtk4-layer-shell"
+)
+
+depends=(
+	"himitsu"
+)
+
+arch=("x86_64" "aarch64")
+url="https://git.sr.ht/~sircmpwn/hiprompt-gtk"
+source=("${_pkgname}::git+https://git.sr.ht/~sircmpwn/hiprompt-gtk")
 
 pkgver() {
-  cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/$_pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$_pkgname"
-  meson --prefix=/usr --buildtype=plain . build
-  meson compile -C build
-}
-
-check() {
-  cd "$_pkgname"
-  meson test -C build
+	cd "$srcdir/$_pkgname"
+	make
 }
 
 package() {
-  cd "$_pkgname/build"
-  install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  #meson install -C build --destdir "$pkgdir"
+	cd "$srcdir/$_pkgname"
+	make DESTDIR="$pkgdir" PREFIX=/usr install
 }
+
+sha256sums=('SKIP')
