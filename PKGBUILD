@@ -5,6 +5,7 @@ pkgver=r1.dd7dd93
 pkgrel=1
 license=("MPL2")
 pkgdesc="Hare bindings for libgtk4-layer-shell"
+provides=("hare-gtk4-layer-shell")
 makedepends=(
 	"git"
 )

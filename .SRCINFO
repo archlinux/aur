@@ -10,6 +10,7 @@ pkgbase = hare-gtk4-layer-shell-git
 	depends = hare
 	depends = hare-gi
 	depends = gtk4-layer-shell
+	provides = hare-gtk4-layer-shell
 	source = hare-gtk4-layer-shell::git+https://git.sr.ht/~sircmpwn/hare-gtk4-layer-shell
 	sha256sums = SKIP
 
