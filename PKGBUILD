@@ -8,7 +8,7 @@
 _name=lmms
 pkgname=lmms-git
 pkgver=1.3.0.alpha.1.r857.gbbdfeff5e
-pkgrel=1
+pkgrel=2
 pkgdesc='The Linux MultiMedia Studio.'
 arch=('x86_64')
 url="https://lmms.io"
