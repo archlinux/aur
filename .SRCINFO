@@ -1,0 +1,15 @@
+pkgbase = cargo-ament-build
+	pkgdesc = Cargo plugin wrapper around cargo build for ament and ROS 2 tools
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/ros2-rust/cargo-ament-build
+	arch = any
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	options = !debug
+	source = cargo-ament-build::git+https://github.com/ros2-rust/cargo-ament-build.git#tag=v0.1.9
+	sha256sums = SKIP
+
+pkgname = cargo-ament-build
