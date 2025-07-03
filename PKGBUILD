@@ -2,7 +2,7 @@
 # Contributor: Ciro Scognamiglio <ciro.scognamiglio88 at gmail dot com>
 
 pkgname='bzr-player'
-pkgver='2.0.80'
+pkgver='2.0.81'
 pkgrel='1'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('hicolor-icon-theme' 'qt6-base' 'qt6-svg' 'qt-advanced-docking-system')
 makedepends=('cmake' 'dos2unix' 'gendesk' 'libglvnd' 'ninja' 'patchutils' 'qt6-declarative' 'sdl2-compat'
   'vulkan-headers')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aargirakis/BZRPlayer/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c7b1e36a48184649dd2347348d2dcc62cfb806e236fbcf5fa1286c805212900f')
+sha256sums=('dfb6add5df5cf18d976fae5f275d9fdee544c6bac0396137b26d9d5fe20205e3')
 
 build() {
   # workaround for making plugin_furnace.so & plugin_protrekkr.so work:
@@ -36,8 +36,7 @@ package() {
   done
 
   install -Dm644 "BZRPlayer-${pkgver}/src/inst/x-bzr-player.xml" "$pkgdir/usr/share/mime/packages/x-bzr-player.xml"
-  mapfile -t mime_types_supported < <(sed -n "\|mime_types_supported=(| , \|)|{p; \|)|q}" "BZRPlayer-${pkgver}/src/inst/bzr2-wine_setup.sh" |
-    sed -e 's:mime_types_supported=(::g' -e 's:)::g' -e 's: :\n:g' | sed '/^[[:space:]]*$/d')
+  mapfile -t mime_types_supported <"BZRPlayer-${pkgver}/src/inst/supported_mime_types"
 
   for mime_type in "${mime_types_supported[@]}"; do
     desktop_entry_mime_types="$desktop_entry_mime_types$mime_type;"
