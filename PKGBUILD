@@ -3,9 +3,8 @@
 
 pkgbase=libreoffice-dev-i18n
 
-_pkgnamefmt=LibreOffice
-_pkgver=25.2.4.3
-pkgver=25.2.4.3
+_pkgnamefmt=LibreOfficeDev
+pkgver=25.8.0.0.beta1
 pkgrel=1
 #_basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
 
@@ -160,7 +159,7 @@ prepare() {
     [[ $_pkg -eq 0 ]] && continue
   
     echo ${_locale} " unpacking..."
-    cd "${srcdir}"/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_${_locale}/RPMS
+    cd "${srcdir}"/${_pkgnamefmt}_${pkgver}_Linux_x86-64_rpm_langpack_${_locale}/RPMS
 
     # remove dictionaries if shipped - we ship them now in separate packages
     rm -vf *-dict-*.rpm || /bin/true
@@ -171,7 +170,7 @@ prepare() {
 
     # the helppack rpm goes also into the langpack dir
     if (( $_helppack )); then
-      bsdtar -x -f "${srcdir}"/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_helppack_${_locale}/RPMS/*.rpm
+      bsdtar -x -f "${srcdir}"/${_pkgnamefmt}_${pkgver}_Linux_x86-64_rpm_helppack_${_locale}/RPMS/*.rpm
     fi
   done
 }
@@ -180,7 +179,7 @@ _package() {
   pkgdesc="$2 language pack for LibreOffice Dev"
   depends=("libreoffice-dev-bin>=$( cut -f1-4 -d'.' <<< ${pkgver} )")
 
-  cd "$srcdir"/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_$1/RPMS
+  cd "$srcdir"/${_pkgnamefmt}_${pkgver}_Linux_x86-64_rpm_langpack_$1/RPMS
   cp -R opt "$pkgdir"
   chown root:root -R "$pkgdir"
 }
@@ -203,11 +202,11 @@ for _lang in "${_languages[@]}"; do
   _pkgname=libreoffice-dev-${_locale,,}
 
   pkgname+=($_pkgname)
-  source+=(${_url}/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_${_locale}.tar.gz) #{,.asc})
+  source+=(${_url}/${_pkgnamefmt}_${pkgver}_Linux_x86-64_rpm_langpack_${_locale}.tar.gz) #{,.asc})
   sha256sums+=('SKIP') # 'SKIP')
 
   if (( $_helppack )); then
-    source+=(${_url}/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_helppack_${_locale}.tar.gz) #{,.asc})
+    source+=(${_url}/${_pkgnamefmt}_${pkgver}_Linux_x86-64_rpm_helppack_${_locale}.tar.gz) #{,.asc})
     sha256sums+=('SKIP') # 'SKIP')
   fi
 
