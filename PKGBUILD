@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rocketchat-desktop-git
 _pkgname=Rocket.Chat
-pkgver=4.6.0.r0.g641e69b
-_electronversion=34
+pkgver=4.7.1.r0.gfef5f6c
+_electronversion=37
 _nodeversion=22
 pkgrel=1
 pkgdesc="The Ultimate Open Source WebChat Platform.(Use system-wide electron)"
@@ -32,7 +32,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
