@@ -3,7 +3,7 @@
 
 _base=dj-database-url
 pkgname=python-${_base}
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 arch=('any')
 pkgdesc="Use Database URLs in your Django Application"
@@ -12,7 +12,7 @@ license=('BSD-3-Clause')
 depends=(python-django)
 makedepends=(python-setuptools)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('107499d7c4590e4b94265db03535e5ec5019ea35229dedd913a0aa9b81257184787b0a8f9a59751c94479a2b4ffcb5ba52c439425eabd5b4cd6c1ccbaa806f03')
+sha512sums=('73290a47e1af47cc310f1eac3a4b1a13cf7d135bbe4a9c929774f880fb48f260fd4aa03e2e4cef242bae0064b7202906ab672b4ed6cee377a8661c395785823c')
 
 build() {
   cd "${_base}-${pkgver}"
