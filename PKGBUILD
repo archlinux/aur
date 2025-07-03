@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=firestorm-bin
-pkgver=7.1.11.76496
-pkgrel=2
+pkgver=7.1.13.78266
+pkgrel=1
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life."
 url="http://www.firestormviewer.org/"
 license=('GPL')
@@ -26,7 +26,7 @@ tardir="Phoenix-Firestorm-Releasex64_AVX2-${pkgver//./-}"
 source=("https://downloads.firestormviewer.org/release/linux/${tardir}.tar.xz"
         firestorm.desktop
         firestorm.launcher)
-b2sums=('9ed9cce096b107521c8156c7639b283d056bd9eb3705c451b3fac0b25d2bcff0aa46adfd579b58f9aae50b2290e72e43316dd83d104fdfaed155803d7d903fd9'
+b2sums=('772596a788cf9dea314946aac3e18b25b86c839f1784b401f933a5d2adba52e5fb4f927abe79d8ed4a1d83a99dfb6ec901d1df0147f428001d0cc75f594c1558'
         'd9343e4f93fc549fa3dc98bef3bfcd96ffae11e0fbdcc0ef604312e5fa1e0b5217a44e0988dac24fe2ce556c2737322ac66c8cc026aee471d2263743c4287f30'
         '5b9342aa587e12bd03e8abd24e5d2d9c53cdddee949409045d20931b572d317de23c1eaea6efabe67683ca435bde428c0ab0706760eff0acf9b301f42abe38c4')
 
