@@ -1,6 +1,6 @@
 pkgbase = extraterm-bin
 	pkgdesc = The swiss army chainsaw of terminal emulators.(Prebuilt versrion)
-	pkgver = 0.81.2
+	pkgver = 0.81.3
 	pkgrel = 1
 	url = https://extraterm.org/
 	arch = x86_64
@@ -8,17 +8,16 @@ pkgbase = extraterm-bin
 	depends = libdrm
 	depends = krb5
 	depends = xcb-util-cursor
-	depends = nodejs
 	depends = at-spi2-core
 	depends = gtk3
 	depends = xcb-util-keysyms
 	depends = qt6-base
 	depends = xcb-util-wm
 	depends = libxkbcommon-x11
-	provides = extraterm=0.81.2
+	provides = extraterm=0.81.3
 	conflicts = extraterm
 	options = !strip
-	source = extraterm-0.81.2-x86_64.AppImage::https://github.com/sedwards2009/extraterm/releases/download/v0.81.2/ExtratermQt-0.81.2.glibc2.34-x86_64.AppImage
-	sha256sums = c1f5f51f08ff9e4b8e1a6081900b14a1b0f5ba1f295195fb12ce169cc4b93c66
+	source = extraterm-0.81.3-x86_64.AppImage::https://github.com/sedwards2009/extraterm/releases/download/v0.81.3/ExtratermQt-0.81.3.glibc2.34-x86_64.AppImage
+	sha256sums = 1541433e560ad088dd29a284f37b931613ca6460694536ce8c8c9de6ecd2f5bb
 
 pkgname = extraterm-bin
