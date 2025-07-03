@@ -1,6 +1,6 @@
 # Maintainer: Chris Watson <cawatson1993@gmail.com>
 
-pkgver=1.10.5
+pkgver=1.10.6
 pkgbase=windsurf
 pkgname=(windsurf{,-electron-latest})
 pkgrel=1
@@ -25,7 +25,7 @@ options=('!strip') # for sing of ext ?
 makedepends=(tar sed desktop-file-utils) # tar is faster than bsdtar.
 source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb"
 		"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
-sha256sums=('3291f1afd8ceef2730e92db0c97ffc68be9709074124fe6ac4e3e905f9590ae8'
+sha256sums=('3ae7991b5333f23c7e0c8960572f152a35aaf524415a6ebf4a13c42614c9b65f'
             '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
 build() {
 	tar -xf "data.tar.xz" --exclude 'usr/share/windsurf/[^r]*' --exclude 'usr/share/windsurf/*.pak'
