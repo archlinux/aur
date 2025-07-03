@@ -7,7 +7,13 @@ pkgdesc='redirect pacman requests, assisted by avahi service discovery - git che
 arch=('x86_64')
 url='https://github.com/eworm-de/pacredir'
 license=('GPL-3.0-or-later')
-depends=('systemd-libs' 'avahi' 'curl' 'iniparser' 'darkhttpd' 'libmicrohttpd' 'sh')
+depends=('avahi' 'libavahi-client.so' 'libavahi-common.so'
+         'curl' 'libcurl.so'
+         'darkhttpd'
+         'iniparser' 'libiniparser.so'
+         'libmicrohttpd' 'libmicrohttpd.so'
+         'sh'
+         'systemd-libs' 'libsystemd.so')
 makedepends=('git' 'systemd' 'discount')
 provides=('pacredir')
 conflicts=('pacredir')
