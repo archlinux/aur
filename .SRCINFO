@@ -1,0 +1,16 @@
+pkgbase = cargo-ament-build-bin
+	pkgdesc = Cargo plugin wrapper around cargo build for ament and ROS 2 tools
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/ros2-rust/cargo-ament-build
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = cargo-ament-build
+	options = !debug
+	source_x86_64 = cargo-ament-build-0.1.9-x86_64.tar.gz::https://github.com/ros2-rust/cargo-ament-build/releases/download/v0.1.9/cargo-ament-build-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 0396cc33de2fd45269ab674cf4877dfd60a689dc67b7b7a45b6193adb9a2e00d
+	source_aarch64 = cargo-ament-build-0.1.9-aarch64.tar.gz::https://github.com/ros2-rust/cargo-ament-build/releases/download/v0.1.9/cargo-ament-build-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 3ea9c830be688baaaa898b5667778efcbbde7dcd392b28b0429d62ac1802dd34
+
+pkgname = cargo-ament-build-bin
