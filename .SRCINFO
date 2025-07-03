@@ -1,6 +1,6 @@
 pkgbase = lmms-git
 	pkgdesc = The Linux MultiMedia Studio.
-	pkgver = 1.3.0.alpha.1.r236.g20baf96db
+	pkgver = 1.3.0.alpha.1.r857.gbbdfeff5e
 	pkgrel = 1
 	url = https://lmms.io
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = lmms-git
 	depends = lame
 	depends = libgig
 	depends = qt5-x11extras
-	depends = sdl
+	depends = sdl2
 	depends = stk
 	optdepends = pulseaudio: pulseaudio support
 	optdepends = wine: VST plugin support
