@@ -3,7 +3,7 @@
 # Author: LostRuins (concedo), YellowRoseCx
 
 pkgname=koboldcpp-hipblas
-_pkgver=1.94.2
+_pkgver=1.95.1
 pkgver=$_pkgver.yr0
 _git_pkgver=$pkgver-ROCm
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     'koboldcpp.desktop'
     'koboldcpp.png'
 )
-sha256sums=('c13b2cb2f12f44b35d31337063ac7387289a672d228e0d644a0483ce06ee33a4'
+sha256sums=('9fa34a66b20e4c3966cbea3a2ce44d7e974b4edd3b01cecfc09347565580e8fc'
             'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
             'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54')
 
