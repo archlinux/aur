@@ -4,12 +4,12 @@ _pkgname='IMSProg'
 depends=('libusb>=1.0.20' 'qt5-base' 'wget' 'zenity')
 makedepends=('cmake>=3.10.0', 'qt5-tools')
 url="https://github.com/bigbigmdm/$pkgname"
-pkgver='1.6.1'
+pkgver='1.6.2'
 pkgrel='1'
 arch=('x86_64')
 license=('GPL-3.0-only')
 pkgdesc='I2C, SPI and MicroWire EEPROM/flash chip programmer for CH341a devices.'
-b2sums=('1a758b006e0b710d078ce292d60e7949210ed61c56383de5e348fbe176349c56b30a52250d406a3a20422db77d5b23e70285a95769d79793176751b44340514b')
+b2sums=('897a0554dc1720c0aad4e58a7331e2f4516e50b817b6910572237e62c633833896909386c9da7d1f9d36c61f44b3caed235c88fc566a4c48ab8c113b78688dc6')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 
 _srcprefix="$_pkgname-$pkgver/$_pkgname"
