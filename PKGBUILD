@@ -12,8 +12,7 @@ provides=('qsstv')
 conflicts=('qsstv' 'qsstv-git')
 source=("git+https://github.com/ON4QZ/QSSTV.git"
         "qsstv.desktop")
-md5sums=('SKIP'
-         'SKIP')
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "$srcdir/QSSTV"
@@ -23,18 +22,15 @@ pkgver() {
 build() {
   cd "$srcdir/QSSTV"
 
-  mkdir -p build
-  cd build
-
-  qmake-qt5 PREFIX=/usr ..
+  qmake-qt5 PREFIX=/usr
   make
 }
 
 package() {
-  cd "$srcdir/QSSTV/build"
+  cd "$srcdir/QSSTV"
 
   make INSTALL_ROOT="$pkgdir" install
 
   install -Dm644 "$srcdir/qsstv.desktop" "$pkgdir/usr/share/applications/qsstv.desktop"
-  install -Dm644 "$srcdir/QSSTV/src/icons/qsstv.png" "$pkgdir/usr/share/pixmaps/qsstv.png"
+  install -Dm644 "src/icons/qsstv.png" "$pkgdir/usr/share/pixmaps/qsstv.png"
 }
