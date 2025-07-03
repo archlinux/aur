@@ -1,6 +1,6 @@
 pkgbase = phantom-editor-bin
 	pkgdesc = Phantom is a lightweight terminal-based text editor written in Rust
-	pkgver = 1.2.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/0xGingi/phantom
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = phantom-editor-bin
 	depends = gcc-libs
 	provides = phantom-editor
 	conflicts = phantom-editor
-	source = https://github.com/0xgingi/phantom/releases/download/v1.2.1/phantom
+	source = https://github.com/0xgingi/phantom/releases/download/v2.0.0/phantom
 	md5sums = SKIP
 
 pkgname = phantom-editor-bin
