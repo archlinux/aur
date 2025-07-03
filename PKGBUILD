@@ -24,6 +24,7 @@ depends=(
     # aur:
     'aylurs-gtk-shell-git'
     'libastal-gjs-git'
+    'libastal-meta'
 )
 makedepends=(
     'meson'
