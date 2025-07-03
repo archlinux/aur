@@ -1,0 +1,2 @@
+# Prevent kernel from binding ftdi_sio to the SpaceController device
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ENV{DEVTYPE}=="usb_interface", ACTION=="add", RUN+="/bin/sh -c 'INTERFACE_DEVPATH=$(basename %p); echo -n $INTERFACE_DEVPATH > /sys/bus/usb/drivers/ftdi_sio/unbind'"

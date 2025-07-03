@@ -1,0 +1,13 @@
+[Unit]
+Description=SpaceControl Daemon (User)
+After=default.target
+
+[Service]
+ExecStart=/usr/bin/sc_daemon
+Restart=on-failure
+WorkingDirectory=/usr/lib/spacecontrol
+Environment=LD_LIBRARY_PATH=/usr/lib/spacecontrol
+#Environment=HOME=%h
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=SpaceControl Panel
+Comment=GUI for the SpaceControl driver
+Terminal=false
+GenericName=3D Controller Configuration
+Categories=Utility;Settings;
+Exec=sc_gui
+Icon=spacecontrol.png
+StartupNotify=true
