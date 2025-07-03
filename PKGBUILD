@@ -1,8 +1,8 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=lightlyshaders-git
-pkgver=3.0.0.r1.g42ba6df
-pkgrel=2
+pkgver=3.0.0.r2.g64bd1a9
+pkgrel=1
 pkgdesc="Round corners and outline effect for KWin"
 arch=(x86_64)
 url="https://github.com/a-parhom/LightlyShaders"
