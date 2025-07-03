@@ -1,7 +1,7 @@
 # Maintainer: Daniel Micay <danielmicay@gmail.com>
 # Contributor: David Herrmann <dh.herrmann@gmail.com>
 pkgname=libtsm
-pkgver=4.0.2
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Terminal-emulator State Machine'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('cmake' 'libxkbcommon')
 options=(!libtool)
 source=("https://github.com/Aetf/libtsm/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ce51be564872d3e6a35fadab1f74b8804f72d8a92c0f378ca384155134d154e5')
+sha256sums=('879a166a07aed63146ffe3e2afe803c0c3e22f264db0f1fa6fdb44687adeeef8')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
