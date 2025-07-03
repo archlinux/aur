@@ -1,7 +1,7 @@
 pkgbase = sdformat-9
 	pkgdesc = SDF Converter for gazebo
 	pkgver = 9.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sdformat.org/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sdformat-9
 	makedepends = doxygen
 	makedepends = ignition-cmake=2
 	makedepends = ignition-tools=1
-	makedepends = ruby
+	makedepends = ruby2.7
 	makedepends = ruby-rexml
 	depends = boost
 	depends = tinyxml
