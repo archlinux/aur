@@ -5,7 +5,7 @@
 
 pkgname='zenta-git'
 _pkgname="${pkgname/-git}"
-pkgver=0.3.5.r4.g1955c52
+pkgver=1.0.0.r0.g0538490
 pkgrel=1
 pkgdesc='Mindfulness for terminal users (development version)'
 arch=('aarch64' 'armv7h' 'i686' 'riscv64' 'x86_64')
