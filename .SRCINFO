@@ -1,6 +1,6 @@
 pkgbase = converse
 	pkgdesc = Desktop app to chat and create tasks with various LLMs.(Use system-wide electron)
-	pkgver = 0.2.0
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/louisdecharson/converse
 	arch = any
@@ -13,9 +13,10 @@ pkgbase = converse
 	makedepends = git
 	makedepends = libicns
 	depends = electron33
-	source = converse-0.2.0::git+https://github.com/louisdecharson/converse.git#tag=v0.2.0
+	depends = python
+	source = converse-0.2.3::git+https://github.com/louisdecharson/converse.git#tag=v0.2.3
 	source = converse.sh
-	sha256sums = 3817d10c524146b0fc4e40f96a122d9a057d50ecc36ca4320235cb79ac794b87
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = c19fcb2281c35e4f1fc63092d0da4e40e8f235f5885ab97d303547f4b3feb2c1
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = converse
