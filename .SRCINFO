@@ -1,6 +1,6 @@
 pkgbase = candy
 	pkgdesc = A simple networking tool
-	pkgver = 6.0.5
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://github.com/lanthora/candy
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = candy
 	depends = spdlog
 	depends = poco
 	backup = etc/candy.cfg
-	source = candy-6.0.5.tar.gz::https://github.com/lanthora/candy/archive/refs/tags/v6.0.5.tar.gz
-	sha256sums = 15949bf108d09e8b72bd5b0ece0e553278f9de8e53e8a4e8b9ef4e38b26c731c
+	source = candy-6.1.0.tar.gz::https://github.com/lanthora/candy/archive/refs/tags/v6.1.0.tar.gz
+	sha256sums = 8ca38de704539c1ef71455c9d76cd3b65b45cd5923f4a1f1779e90969a18659c
 
 pkgname = candy
