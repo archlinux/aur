@@ -22,7 +22,7 @@ depends=(
     'gtksourceview3'
     'libsoup3'
     # aur:
-    'aylurs-gtk-shell'
+    'aylurs-gtk-shell-git'
     'libastal-gjs-git'
 )
 makedepends=(
