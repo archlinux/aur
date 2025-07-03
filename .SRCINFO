@@ -1,6 +1,6 @@
 pkgbase = fastflix-bin
 	pkgdesc = Simple and friendly GUI for encoding videos
-	pkgver = 5.12.0
+	pkgver = 5.12.1
 	pkgrel = 1
 	url = https://github.com/cdgriffith/FastFlix
 	arch = x86_64
@@ -17,12 +17,12 @@ pkgbase = fastflix-bin
 	provides = FastFlix
 	conflicts = FastFlix
 	source = FastFlix.desktop
-	source = README-5.12.0.md::https://raw.githubusercontent.com/cdgriffith/FastFlix/5.12.0/README.md
-	source = FastFlix-5.12.0.ico::https://raw.githubusercontent.com/cdgriffith/FastFlix/5.12.0/fastflix/data/icon.ico
+	source = README-5.12.1.md::https://raw.githubusercontent.com/cdgriffith/FastFlix/5.12.1/README.md
+	source = FastFlix-5.12.1.ico::https://raw.githubusercontent.com/cdgriffith/FastFlix/5.12.1/fastflix/data/icon.ico
 	sha256sums = cbcb6f228b858a69a860aa6a3283f0f4293e1246485566d20f60a93030f1f847
 	sha256sums = 416f7c9e5a6bc4d2dc3b61c95bc873bc6561d2ac601c305e91dd7a35d3225325
 	sha256sums = ec9dbf695018bd84490fb27b39d1cc04d5339b91863595e78306164ec5688880
-	source_x86_64 = https://github.com/cdgriffith/FastFlix/releases/download/5.12.0/FastFlix_5.12.0_ubuntu-24.04_x86_64.zip
-	sha256sums_x86_64 = 09856fc0803cce63a0ced5d94fa5079761d61fd9f236ace3c5f261e8840b3e73
+	source_x86_64 = https://github.com/cdgriffith/FastFlix/releases/download/5.12.1/FastFlix_5.12.1_ubuntu-24.04_x86_64.zip
+	sha256sums_x86_64 = afa35dc5748940e0cb119b556d65b2b6779552a092ec4227d265efec1c12d39b
 
 pkgname = fastflix-bin
