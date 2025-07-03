@@ -26,7 +26,7 @@ package_windutils-meta() {
     depends=('gum' 'iwdtui' 'syssertui')
     groups=('windutils')
     provides=('windutils')
-    install -d "$pkgdir"
+    install -Dm755 /dev/null "$pkgdir/usr/share/licenses/windutils-meta/DUMMY"
     # install -Dm755 "$srcdir/syssertui.sh" "$pkgdir/usr/bin/syssertui"
     # install -Dm755 "$srcdir/iwdtui.sh" "$pkgdir/usr/bin/iwdtui"
     #install -Dm664 "$srcdir/syssertui.1" "$pkgdir/usr/share/man/man1/syssertui.1"
