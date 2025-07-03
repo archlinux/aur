@@ -5,6 +5,7 @@ pkgver=r39.eac0271
 pkgrel=1
 license=("MPL2")
 pkgdesc="GObject Introspection code generator for Hare"
+provides=("hare-gi")
 makedepends=(
 	"git"
 )

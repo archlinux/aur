@@ -11,6 +11,7 @@ pkgbase = hare-gi-git
 	depends = gtk3
 	depends = gtk4
 	depends = gobject-introspection
+	provides = hare-gi
 	source = hare-gi::git+https://git.sr.ht/~yerinalexey/hare-gi
 	sha256sums = SKIP
 
