@@ -1,5 +1,5 @@
 [Unit]
-Description=Discord rich presence integration for MPRIS.
+Description=Discord rich presence integration for MPRIS
 After=network.target
 
 [Service]

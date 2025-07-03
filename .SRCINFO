@@ -1,6 +1,6 @@
 pkgbase = discord-mpris-rs
 	pkgdesc = Discord Rich Presence for MPRIS media players
-	pkgver = 0.1.1
+	pkgver = 0.2.4
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = discord-mpris-rs
 	arch = armv7h
 	license = 0BSD
 	makedepends = cargo
-	source = discord-mpris-rs-0.1.1.tar.gz::https://static.crates.io/crates/discord-mpris-rs/discord-mpris-rs-0.1.1.crate
+	source = discord-mpris-rs-0.2.4.tar.gz::https://static.crates.io/crates/discord-mpris-rs/discord-mpris-rs-0.2.4.crate
 	source = discord-mpris-rs.service
-	sha256sums = ac4f6496314bf0048ce7366aaacb253cc7bdcb51360582330d8cd558ae9a2e19
-	sha256sums = 5fd5b275586d995d3de3627009eb958b19fd8ce13ec39d7a04b9b948f9befc5b
+	sha256sums = de2f1f5d38600c4e3dfdfa1ecc17c347c4a1aaedef9fc401e6bd0afe9ed059ea
+	sha256sums = e252382eddb4f306557e73f6324b97dd893c1965ee549d88e64cb127c4f7edb4
 
 pkgname = discord-mpris-rs
