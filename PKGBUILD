@@ -26,14 +26,19 @@ sha256sums=(4ab6d3bcdbb7c84667409f304cfc9f6e0d5ef77b10b7bd78fce8fae07d459363)
 validpgpkeys=()
 
 prepare() {
-    cd "$_pkgname-$pkgver/src"
+    cd "$_pkgname-$pkgver"
+
+    sed -i \
+        -e "s/^Version=.*/Version=${pkgver}/" \
+        -e "s|^Icon=.*|Icon=/usr/icon/test.svg|" \
+        snap/gui/Tauno-Serial-Plotter.desktop
 
     sed -i '
-s|icon_logo = os.path.join(os.path.dirname(__file__), .icons/tauno-plotter.svg.)|icon_logo = '\''/usr/share/icons/hicolor/scalable/apps/tauno-plotter.svg'\''|;
-s|icon_minus = os.path.join(os.path.dirname(__file__), .icons/minus.svg.)|icon_minus = '\''/usr/share/icons/hicolor/scalable/apps/tauno-plotter-minus.svg'\''|;
-s|icon_plus = os.path.join(os.path.dirname(__file__), .icons/plus.svg.)|icon_plus = '\''/usr/share/icons/hicolor/scalable/apps/tauno-plotter-plus.svg'\''|;
-s|icon_arrow_down = os.path.join(os.path.dirname(__file__), .icons/arrow_down.svg.)|icon_arrow_down = '\''/usr/share/icons/hicolor/scalable/apps/tauno-plotter-arrow-down.svg'\''|;
-' tauno-serial-plotter.py
+    s|icon_logo = os.path.join(os.path.dirname(__file__), .icons/tauno-plotter.svg.)|icon_logo = '\''/usr/share/icons/hicolor/scalable/apps/tauno-plotter.svg'\''|;
+    s|icon_minus = os.path.join(os.path.dirname(__file__), .icons/minus.svg.)|icon_minus = '\''/usr/share/icons/hicolor/scalable/apps/tauno-plotter-minus.svg'\''|;
+    s|icon_plus = os.path.join(os.path.dirname(__file__), .icons/plus.svg.)|icon_plus = '\''/usr/share/icons/hicolor/scalable/apps/tauno-plotter-plus.svg'\''|;
+    s|icon_arrow_down = os.path.join(os.path.dirname(__file__), .icons/arrow_down.svg.)|icon_arrow_down = '\''/usr/share/icons/hicolor/scalable/apps/tauno-plotter-arrow-down.svg'\''|;
+    ' src/tauno-serial-plotter.py
 
 }
 
