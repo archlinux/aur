@@ -7,7 +7,6 @@ pkgbase = windutils
 	source = syssertui.sh
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = SKIP
 
 pkgname = iwdtui
 	pkgdesc = A TUI made with gum for iwd.

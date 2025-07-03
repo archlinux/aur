@@ -5,7 +5,7 @@ pkgrel=1
 arch=('any')
 license=('MIT')
 source=('iwdtui.sh' 'syssertui.sh')
-md5sums=('SKIP' 'SKIP' 'SKIP')  # or use actual checksums
+md5sums=('SKIP' 'SKIP')  # or use actual checksums
 
 package_iwdtui() {
     pkgdesc="A TUI made with gum for iwd."
