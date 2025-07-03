@@ -1,14 +1,14 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=q2rtx-data
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="Additional data for q2rtx"
 arch=(any)
 url="https://github.com/NVIDIA/Q2RTX"
 license=(custom)
 source=("https://github.com/NVIDIA/Q2RTX/releases/download/v${pkgver}/q2rtx-${pkgver}-linux.tar.gz")
-sha256sums=('7309ad2f2d062275c651a5c0fc0552427682215a8099472e4778cb61517290f3')
+sha256sums=('7467a33056d8c98f9abef6bfdb02a6a2904a311ec669c59a68241cf588f93222')
 
 package() {
   cd q2rtx
