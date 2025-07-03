@@ -1,0 +1,15 @@
+pkgbase = ttf-osifont
+	pkgdesc = Free TrueType font for CAD projects
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hikikomori82/osifont
+	arch = any
+	license = GPL-3.0-with-font-exception
+	source = https://github.com/hikikomori82/osifont/raw/c54cd3ede4fc3257ef5a6904c215f82e24372735/osifont.ttf
+	source = https://github.com/hikikomori82/osifont/raw/c54cd3ede4fc3257ef5a6904c215f82e24372735/osifont-italic.ttf
+	source = https://github.com/hikikomori82/osifont/raw/c54cd3ede4fc3257ef5a6904c215f82e24372735/README.md
+	sha256sums = c25475f0596cac572adde4a52bcff276a7d7e53fd9a47e8bada9023d68b3e6e2
+	sha256sums = b42f97241fd3b84c2c1a74e5c9efd1582c6a2bac8d6198dad8b2d862cdf72f67
+	sha256sums = SKIP
+
+pkgname = ttf-osifont
