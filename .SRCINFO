@@ -30,7 +30,7 @@ pkgbase = ladybird-git
 	options = !staticlibs
 	options = !emptydirs
 	source = git+https://github.com/LadybirdBrowser/ladybird
-	source = git+https://github.com/microsoft/vcpkg.git#commit=2d1eb6affae7b2ef01c0312514d7218113dd5d25
+	source = git+https://github.com/microsoft/vcpkg.git#commit=a7ef72790b3f4a6c1f940503e418f71380ac94a7
 	source = ladybird.desktop
 	source = hb-fc-whole-archive.patch
 	sha256sums = SKIP

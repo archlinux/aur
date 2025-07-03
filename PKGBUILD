@@ -17,7 +17,7 @@ makedepends=(autoconf-archive automake cmake git nasm ninja tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
   "git+$url"
-  "git+https://github.com/microsoft/vcpkg.git#commit=2d1eb6affae7b2ef01c0312514d7218113dd5d25" # 2025-06-25 (vcpkg.json:builtin-baseline)
+  "git+https://github.com/microsoft/vcpkg.git#commit=a7ef72790b3f4a6c1f940503e418f71380ac94a7" # 2025-07-02 (vcpkg.json:builtin-baseline)
   "ladybird.desktop"
   "hb-fc-whole-archive.patch"
 )
