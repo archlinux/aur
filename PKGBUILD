@@ -2,12 +2,12 @@
 pkgname=ezchlog-git
 _pkgname=${pkgname%-git}
 pkgver=v1.0.2.r0.22d2311
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy git branch friendly changelogs"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://gitlab.com/jrdasm/ezchlog"
 license=('MIT')
-makedepends=('git' 'cargo' 'upx')
+makedepends=('git' 'cargo')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url")
@@ -22,7 +22,7 @@ build() {
 	cd "$srcdir/$_pkgname"
   sed -i '/^Python version$/,/^Add a changelog$/{/^Add a changelog$/!d}' README.md
 	cargo build --locked --release
-  upx --lzma --best -o $_pkgname target/release/$_pkgname
+  mv target/release/$_pkgname $_pkgname
 }
 
 package() {
