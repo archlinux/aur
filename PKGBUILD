@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=piano-trainer-bin
 _pkgname='Piano Trainer'
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Memorize piano scales with ease! A piano practice program w/ MIDI support. Consider it an interactive reference manual 🎹.(Prebuilt version)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/app-v${pkgver}/${_pkgname// /.}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/ZaneH/piano-trainer/app-v${pkgver}/LICENSE.md"
 )
-sha256sums=('755e866142dd661f02036f58d0483909b58a98b009db6c86484f8b8e004ed726'
+sha256sums=('5be653b591a79dbd7a1cb74fd5fde5b24b08626cbef41d097cfc8fd72dac4449'
             '9ee23e6aeb912ca1dfaec2ea622574c59e3bd279ccf6af59d96fdd4a326ad289')
 prepare() {
     sed -i -e "
