@@ -2,64 +2,64 @@
 
 _basename=aom
 pkgname=(
-    lib32-aom
+	lib32-aom
 )
-pkgver=3.9.0
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="Alliance for Open Media video codec (32-bit)"
 url="https://aomedia.org/"
 arch=(x86_64)
 license=(BSD-3-Clause)
 depends=(
-    lib32-glibc
-    aom
+	lib32-glibc
+	aom
 )
 makedepends=(
-    cmake
-    ninja
-    yasm
+	cmake
+	ninja
+	yasm
 )
 source=(
-    https://storage.googleapis.com/aom-releases/libaom-$pkgver.tar.gz{,.asc}
+	https://storage.googleapis.com/aom-releases/libaom-$pkgver.tar.gz{,.asc}
 )
-b2sums=('4c68b58f6a8e347ee912e309a030804c4a3cc99714e2aaf127add63222df3056c7cf4b6c50f4861557b0892739035149b5e002e25272882eff55cde5d9b745b7'
+b2sums=('fd38ccfcc7cb43099fad9842cc3bfb13d7e421bd9def4cc9660217d50a09f0b9e064b69b780791329971cce67518475d9760c3ccc1fa9052805b46c32ee9e225'
         'SKIP')
 validpgpkeys=(
-    B002F08B74A148DAA01F7123A48E86DB0B830498 # AOMedia release signing key <av1-discuss@aomedia.org>
+	B002F08B74A148DAA01F7123A48E86DB0B830498 # AOMedia release signing key <av1-discuss@aomedia.org>
 )
 
 prepare() {
-    cd libaom-$pkgver
+	cd libaom-$pkgver
 }
 
 build() {
-    local cmake_options=(
-        # Upstream would like Release, adding -O3 and removing assertions
-        # https://gitlab.archlinux.org/archlinux/packaging/packages/aom/-/issues/1
-        -D CMAKE_BUILD_TYPE=Release
-        -D CMAKE_INSTALL_PREFIX=/usr
-        -D CMAKE_INSTALL_LIBDIR=lib32
-        -D CMAKE_BUILD_TYPE=None
-        -D BUILD_SHARED_LIBS=1
-        -D ENABLE_TESTS=0
-        -D ENABLE_DOCS=0
-    )
+	local cmake_options=(
+		# Upstream would like Release, adding -O3 and removing assertions
+		# https://gitlab.archlinux.org/archlinux/packaging/packages/aom/-/issues/1
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_INSTALL_PREFIX=/usr
+		-D CMAKE_INSTALL_LIBDIR=lib32
+		-D CMAKE_BUILD_TYPE=None
+		-D BUILD_SHARED_LIBS=1
+		-D ENABLE_TESTS=0
+		-D ENABLE_DOCS=0
+	)
 
-    export CC='gcc -m32'
-    export CXX='g++ -m32'
-    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+	export CC='gcc -m32'
+	export CXX='g++ -m32'
+	export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-    cmake -S libaom-$pkgver -B build -G Ninja "${cmake_options[@]}"
+	cmake -S libaom-$pkgver -B build -G Ninja "${cmake_options[@]}"
 
-    cmake --build build
+	cmake --build build
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 
-    install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 libaom-$pkgver/{LICENSE,PATENTS}
+	install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 libaom-$pkgver/{LICENSE,PATENTS}
 
-    cd "$pkgdir/usr"
+	cd "$pkgdir/usr"
 
-    rm -r bin include
+	rm -r bin include
 }

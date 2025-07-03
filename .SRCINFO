@@ -1,6 +1,6 @@
 pkgbase = lib32-aom
 	pkgdesc = Alliance for Open Media video codec (32-bit)
-	pkgver = 3.9.0
+	pkgver = 3.12.0
 	pkgrel = 1
 	url = https://aomedia.org/
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = lib32-aom
 	makedepends = yasm
 	depends = lib32-glibc
 	depends = aom
-	source = https://storage.googleapis.com/aom-releases/libaom-3.9.0.tar.gz
-	source = https://storage.googleapis.com/aom-releases/libaom-3.9.0.tar.gz.asc
+	source = https://storage.googleapis.com/aom-releases/libaom-3.12.0.tar.gz
+	source = https://storage.googleapis.com/aom-releases/libaom-3.12.0.tar.gz.asc
 	validpgpkeys = B002F08B74A148DAA01F7123A48E86DB0B830498
-	b2sums = 4c68b58f6a8e347ee912e309a030804c4a3cc99714e2aaf127add63222df3056c7cf4b6c50f4861557b0892739035149b5e002e25272882eff55cde5d9b745b7
+	b2sums = fd38ccfcc7cb43099fad9842cc3bfb13d7e421bd9def4cc9660217d50a09f0b9e064b69b780791329971cce67518475d9760c3ccc1fa9052805b46c32ee9e225
 	b2sums = SKIP
 
 pkgname = lib32-aom
