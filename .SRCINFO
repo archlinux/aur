@@ -14,6 +14,7 @@ pkgbase = millennium
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = lib32-gcc-libs
+	makedepends = pnpm
 	depends = git
 	depends = steam
 	options = !debug
