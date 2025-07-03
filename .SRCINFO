@@ -1,0 +1,20 @@
+pkgbase = himitsu-secret-service
+	pkgdesc = Himitsu secret-service implementation
+	pkgver = r237.12792b3
+	pkgrel = 1
+	url = https://git.sr.ht/~apreiml/himitsu-secret-service
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = himitsu
+	optdepends = systemd
+	provides = org.freedesktop.secrets
+	source = himitsu-secret-service::git+https://git.sr.ht/~apreiml/himitsu-secret-service
+	source = hisecrets-agent.service
+	sha256sums = SKIP
+	sha256sums = 294f7798cc571d35329205c174453d412ca56991e2dfaa1e2172c2a72d3e63d0
+
+pkgname = himitsu-secret-service
