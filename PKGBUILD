@@ -11,13 +11,13 @@ license=(custom)
 url="https://www.runescape.com/"
 depends=(
     cairo       # libcairo2
-        libcairo.so=2
+        #libcairo.so=2
     gcc-libs    # libgcc1
     gdk-pixbuf2 # libgdk-pixbuf2.0-0
-        libgdk_pixbuf-2.0.so=0
+        #libgdk_pixbuf-2.0.so=0
     glib2       # libglib2.0-0
-        libglib-2.0.so=0
-        libgobject-2.0.so=0
+        #libglib-2.0.so=0
+        #libgobject-2.0.so=0
     glibc       # libc6
         #ld-linux-x86-64.so=2
         #libc.so=6
@@ -25,13 +25,13 @@ depends=(
         #libm.so=6
         #libpthread.so=0
     gtk2        # libgtk2.0-0
-        libgdk-x11-2.0.so=0
-        libgtk-x11-2.0.so=0
+        #libgdk-x11-2.0.so=0
+        #libgtk-x11-2.0.so=0
     libcap      # libcap2-bin
         #libcap.so=2
     libglvnd    # libopengl0, libegl1
-        libOpenGL.so=0
-        libEGL.so=1
+        #libOpenGL.so=0
+        #libEGL.so=1
     libsm       # libsm6
         #libSM.so=6
     libx11      # libx11-6
@@ -39,11 +39,11 @@ depends=(
     libxxf86vm  # libxxf86vm1
         #libXxf86vm.so=1
     openssl-1.1 # libssl1.1
-        libcrypto.so=1.1
-        libssl.so=1.1
+        #libcrypto.so=1.1
+        #libssl.so=1.1
     pango       # libpango-1.0-0, libpangocairo-1.0-0
-        libpango-1.0.so=0
-        libpangocairo-1.0.so=0
+        #libpango-1.0.so=0
+        #libpangocairo-1.0.so=0
     sdl2        # libsdl2-2.0-0
     zlib        # zlib1g
         #libz.so=1
