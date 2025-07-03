@@ -1,31 +1,21 @@
 # Maintainer: kinker31<dp223171@gmail.com>
 pkgname=helion-git
 pkgver=0.9.6.1.r129.g664657f
-pkgrel=6
-pkgdesc="A modern Doom FPS engine, made with C# and GPU usage in mind"
+pkgrel=1
+pkgdesc="A modern Doom FPS engine, made with C# and GPU usage in mind (git version)"
 arch=('x86_64')
 url="https://github.com/Helion-Engine/Helion"
 license=('GPL3')
-
 # Might be a good idea investigating if we can ignore most of the dependencies or not.
-depends=(openal
-		fluidsynth
-		sdl2
-		glfw
-		'zmusic>=1.1.8')
-
+depends=('openal' 'fluidsynth' 'sdl2' 'glfw' 'zmusic>=1.1.8')
 makedepends=('dotnet-runtime' 'clang')
-conflicts=('helion')
-source=("git+https://github.com/Helion-Engine/Helion"
-		"helion.desktop"
-		"helion.ico")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
-
+conflicts=('helion' 'helion-bin')
+source=("git+https://github.com/Helion-Engine/Helion" "helion.desktop" "helion.ico")
+sha256sums=('SKIP' 'dd02c430e093c2cfcdfaedfc316975af8ac47883676a05c26ac0a22a6f1b9c6b' '9590d5b920d2350a9f4ed8311f3195e619ebb168841e7d783cb652d142182c82')
 pkgver() {
   cd "Helion"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 build() {
 	cd "Helion/Client"
 	dotnet publish  \
@@ -34,17 +24,14 @@ build() {
 		-p:SelfContainedRelease=true \
 		-p:AOT=true
 }
-
 package() {
 	cd "Helion/Publish/linux-x64_AOT/"
-	
-	# Helion doesn't check for native Linux directories at the moment, so /opt will have to do.
 	#There might be a better way of going about this, but right now this works.
 	mkdir -m=644 -p "$pkgdir"/opt/Helion/SoundFonts
 	install -Dm755 ./Helion "$pkgdir"/opt/Helion/
 	install -Dm644 ./assets.pk3 "$pkgdir"/opt/Helion/
 	install -Dm644 ./libfluidsynth.so.3 "$pkgdir"/opt/Helion/
-	install -Dm644 ./libglfw.so.3.3 "$pkgdir"/opt/Helion/
+	install -Dm644 ./libglfw.so.3 "$pkgdir"/opt/Helion/
 	install -Dm644 ./libSDL2.so "$pkgdir"/opt/Helion/
 	install -Dm644 ./libzmusic.so "$pkgdir"/opt/Helion/
 	install -Dm644 ./README.md "$pkgdir"/opt/Helion/

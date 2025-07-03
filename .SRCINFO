@@ -1,7 +1,7 @@
 pkgbase = helion-git
-	pkgdesc = A modern Doom FPS engine, made with C# and GPU usage in mind
+	pkgdesc = A modern Doom FPS engine, made with C# and GPU usage in mind (git version)
 	pkgver = 0.9.6.1.r129.g664657f
-	pkgrel = 6
+	pkgrel = 1
 	url = https://github.com/Helion-Engine/Helion
 	arch = x86_64
 	license = GPL3
@@ -13,11 +13,12 @@ pkgbase = helion-git
 	depends = glfw
 	depends = zmusic>=1.1.8
 	conflicts = helion
+	conflicts = helion-bin
 	source = git+https://github.com/Helion-Engine/Helion
 	source = helion.desktop
 	source = helion.ico
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = dd02c430e093c2cfcdfaedfc316975af8ac47883676a05c26ac0a22a6f1b9c6b
+	sha256sums = 9590d5b920d2350a9f4ed8311f3195e619ebb168841e7d783cb652d142182c82
 
 pkgname = helion-git
