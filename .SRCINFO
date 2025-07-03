@@ -26,7 +26,7 @@ pkgbase = darkly
 	depends = kwindowsystem5
 	options = !emptydirs
 	options = !debug
-	source = darkly.git::git+https://github.com/Bali10050/darkly.git#tag=v0.5.21
-	sha256sums = 3c23203cbfca02f8db1219605471dc94f0a8d517542c2f9d6c405121aa730df1
+	source = https://github.com/Bali10050/darkly/archive/refs/tags/v0.5.21.tar.gz
+	sha256sums = bf3bd01d078850101182a7147e92300880ac6b21d5c1f35434d256e72d716524
 
 pkgname = darkly

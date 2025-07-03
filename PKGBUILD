@@ -4,6 +4,7 @@
 
 # basic info
 pkgname="darkly"
+_gitname="Darkly"
 pkgver=0.5.21
 pkgrel=1
 pkgdesc="Fork of Lightly (A modern style for Qt applications)"
@@ -22,11 +23,11 @@ makedepends=(
 options=(!emptydirs !debug)
 
 source=(
-    "${pkgname}.git::git+${url}.git#tag=v${pkgver//_/-}"
+    "${url}/archive/refs/tags/v0.5.21.tar.gz"
 )
 
 sha256sums=(
-  '3c23203cbfca02f8db1219605471dc94f0a8d517542c2f9d6c405121aa730df1'
+  'bf3bd01d078850101182a7147e92300880ac6b21d5c1f35434d256e72d716524'
 )
 
 # KF6/Qt6
@@ -55,19 +56,10 @@ depends_kf5=(
 
 depends=("${depends_kf6[@]}" "${depends_kf5[@]}")
 
-pkgver() {
-  cd "$srcdir/$pkgname.git"
-  git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/$pkgname.git"
-}
-
 build() (
   local cmake_options=(
     -B $build_dir
-    -S "$pkgname.git"
+    -S "$_gitname-${pkgver}"
     -DBUILD_TESTING=OFF
     -Wno-dev
   )
