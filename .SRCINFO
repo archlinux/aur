@@ -1,0 +1,13 @@
+pkgbase = vinyl-papers
+	pkgdesc = Paper selection utility for Vinyl
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://tvoygit.ru/vi_is_lonely/vinyl
+	arch = any
+	license = MIT
+	makedepends = dub
+	makedepends = ldc
+	depends = gtk3
+	depends = imagemagick
+
+pkgname = vinyl-papers
