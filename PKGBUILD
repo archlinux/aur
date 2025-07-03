@@ -38,7 +38,7 @@ build() {
   # Why --{disable-error-resilience,faan}?
   ./configure \
     --disable-{all,autodetect,doc,iconv,network,symver} \
-    --disable-{error-resilience,faan} \
+    --disable-{error-resilience,faan,iamf} \
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
     --enable-swresample \
