@@ -1,7 +1,7 @@
 pkgbase = squawk-cli
 	pkgdesc = Linter for PostgreSQL, focused on migrations
 	pkgver = 2.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://squawkhq.com/
 	arch = x86_64
 	license = Apache-2.0 OR MIT

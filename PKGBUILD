@@ -4,7 +4,7 @@
 _pkgname=squawk
 pkgname="${_pkgname}-cli"
 pkgver=2.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linter for PostgreSQL, focused on migrations"
 arch=(
 	x86_64
@@ -55,7 +55,11 @@ build() {
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
 
-	cargo build --frozen --release --all-features
+	cargo build \
+		--all-features \
+		--bin "${_pkgname}" \
+		--frozen \
+		--release
 }
 
 check() {
@@ -63,7 +67,10 @@ check() {
 
 	export RUSTUP_TOOLCHAIN=stable
 
-	cargo test --frozen --all-features
+	cargo test \
+		--all-features \
+		--bin "${_pkgname}" \
+		--frozen
 }
 
 package() {
