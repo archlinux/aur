@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MsBackendMassbank
-_pkgver=1.16.0
+_pkgver=1.16.1
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc='Mass Spectrometry Data Backend for MassBank record Files'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ddea59d41617a4266e0b53dc0ca9206bfaba31c093811eb65e09bf9190a3d6f6')
+sha256sums=('7170d23db0e4a3a650dc2b2854d331038fe560f506f55ef195032336551de80c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
