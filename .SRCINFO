@@ -1,0 +1,22 @@
+pkgbase = p2ascii
+	pkgdesc = Image to ASCII converter using OpenCV
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Hugana/p2ascii
+	arch = any
+	license = MIT
+	depends = python
+	depends = opencv
+	depends = numpy
+	source = p2ascii.py::https://raw.githubusercontent.com/Hugana/p2ascii/main/p2ascii.py
+	source = edgesASCII.png::https://raw.githubusercontent.com/Hugana/p2ascii/main/Images/edgesASCII.png
+	source = edgesASCII-Transparent.png::https://raw.githubusercontent.com/Hugana/p2ascii/main/Images/edgesASCII-Transparent.png
+	source = 1x0 8x8 2.png::https://raw.githubusercontent.com/Hugana/p2ascii/main/Images/1x0%208x8%202.png
+	source = 1x0 8x8 2-Transparent.png::https://raw.githubusercontent.com/Hugana/p2ascii/main/Images/1x0%208x8%202-Transparent.png
+	sha256sums = f3f05c482fab3fc066e61f2b850ec273abde5310f252fb857782547899bc4c1d
+	sha256sums = 1f1bb49dee041e658b6210edf4a1a365105add547bc825a1ce51eda91a2bcefe
+	sha256sums = eb51cc804857a5ca77db3096ed1d17342a424baf37df947d173e86794ca37303
+	sha256sums = 50d6368a764efb78d60a3611af0e92ef536843a01a511ba824a150446feef23b
+	sha256sums = d38e38a153f854e11ac5778030966394c1132fcdd3a9a910445b2e8548437b4c
+
+pkgname = p2ascii
