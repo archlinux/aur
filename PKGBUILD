@@ -10,7 +10,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-gtest
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 arch=('any')
 pkgdesc="Google Test - C++ testing utility (Android ${_android_arch})"
@@ -27,7 +27,7 @@ provides=("android-${_android_arch}-gmock")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/google/googletest/archive/v${pkgver}.tar.gz"
         '0001-gtest-version.patch')
-md5sums=('9a75eb2ac97300cdb8b65b1a5833f411'
+md5sums=('b6f100bc2a5853a48046aa168ececf84'
          '4b2b6493b95389d3428470eb3f904df6')
 
 prepare() {
