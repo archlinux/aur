@@ -1,0 +1,17 @@
+pkgbase = fcitx5-boshiamy
+	pkgdesc = A Boshiamy (嘸蝦米) input method engine for Fcitx 5.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hhschen/fcitx5-boshiamy
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = extra-cmake-modules
+	makedepends = cmake
+	depends = fcitx5
+	depends = fcitx5-chinese-addons
+	conflicts = fcitx5-table-extra
+	source = fcitx5-boshiamy-1.0.0.tar.gz::https://github.com/hhschen/fcitx5-boshiamy/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = dd6900ef41f1ef065ecff96db88c2304c46ffda8174b87e4d558de55cbefabdc
+
+pkgname = fcitx5-boshiamy
