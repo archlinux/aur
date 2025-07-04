@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-fontconfig
 	pkgdesc = A library for configuring and customizing font access (Android x86-64)
-	pkgver = 2.16.2
+	pkgver = 2.17.1
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/fontconfig/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = android-x86-64-fontconfig
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gitlab.freedesktop.org/fontconfig/fontconfig/-/archive/2.16.2/fontconfig-2.16.2.tar.gz
-	md5sums = e492dc2cf41fdb1e34ef3c8707bf740c
+	source = https://gitlab.freedesktop.org/fontconfig/fontconfig/-/archive/2.17.1/fontconfig-2.17.1.tar.gz
+	md5sums = 1a1f5336105e5b80f36dce7dabe04d1a
 
 pkgname = android-x86-64-fontconfig
