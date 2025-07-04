@@ -1,10 +1,11 @@
 pkgbase = pcc-libs-git
 	pkgdesc = Libraries for the Portable C Compiler.
 	pkgver = 20230806
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/PortableCC/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	makedepends = git
 	provides = pcc-libs

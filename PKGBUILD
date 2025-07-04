@@ -3,9 +3,9 @@
 
 pkgname=pcc-libs-git
 pkgver=20230806
-pkgrel=3
+pkgrel=4
 pkgdesc="Libraries for the Portable C Compiler."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/PortableCC/"
 license=('custom')
 provides=(pcc-libs)
