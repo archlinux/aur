@@ -1,5 +1,5 @@
 pkgname=brooklynn-git
-pkgver=r22.gfe276bc  # you can update this dynamically in pkgver() if you want
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Brooklynn - A minimal tiling window manager"
 arch=('x86_64')
