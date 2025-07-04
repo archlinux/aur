@@ -1,51 +1,45 @@
 # Maintainer: 9M2PJU <9m2pju@hamradio.my>
-
 pkgname=not1mm-9m2pju-git
-_pkgname=not1mm
-pkgver=r2188.05119a4
+pkgver=0.0.0
 pkgrel=1
-pkgdesc="Ham Radio Contest Logger - Blatant ripoff of N1MM - Git version (uses Python venv)"
+pkgdesc="Not1MM - Amateur radio contest logger (latest git version)"
 arch=('any')
-url="https://github.com/mbridak/not1mm"
 license=('GPL3')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-virtualenv')
-depends=('bash')
+url="https://github.com/mbridak/not1mm"
+depends=(
+  'python' 'python-pyqt5' 'python-pyqt6' 'python-requests' 'python-dicttoxml' 'python-xmltodict'
+  'python-psutil' 'python-sounddevice' 'python-soundfile' 'python-numpy' 'python-notctyparser'
+  'python-pyserial' 'python-appdata' 'python-gobject' 'python-thefuzz' 'python-levenshtein'
+  'gtk4' 'hamradio-menus'
+)
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('hamlib' 'flrig')
 provides=('not1mm')
-conflicts=('not1mm' 'not1mm-git')
-source=("$_pkgname::git+$url.git"
-        "$pkgname.install")
-install="$pkgname.install"
-sha256sums=('SKIP'
-            'SKIP')
+conflicts=('not1mm')
+source=("git+$url.git")
+sha256sums=('SKIP')
+install=not1mm-9m2pju-git.install
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  git clean -fdx
+}
 
 build() {
-  cd "$srcdir/$_pkgname"
-
-  python -m venv venv
-  source venv/bin/activate
-  python -m pip install --upgrade pip
-  python -m pip install .
-  deactivate
+  cd "$srcdir/$pkgname"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # Install to /opt
-  install -d "$pkgdir/opt/$_pkgname"
-  cp -a venv "$pkgdir/opt/$_pkgname/venv"
-
-  # Symlink launcher
-  install -d "$pkgdir/usr/bin"
-  cat > "$pkgdir/usr/bin/not1mm" <<EOF
-#!/bin/bash
-source /opt/$_pkgname/venv/bin/activate
-exec python -m not1mm "\$@"
-EOF
-  chmod +x "$pkgdir/usr/bin/not1mm"
-
-  # Desktop integration
-  install -Dm644 "not1mm/data/k6gte-not1mm.desktop" "$pkgdir/usr/share/applications/k6gte-not1mm.desktop"
-  install -Dm644 "not1mm/data/k6gte.not1mm-128.png" "$pkgdir/usr/share/pixmaps/k6gte-not1mm.png"
+  # Desktop icon
+  install -Dm755 "not1mm/data/k6gte-not1mm.desktop" "$pkgdir/usr/share/applications/k6gte-not1mm.desktop"
+  install -Dm755 "not1mm/data/k6gte.not1mm-128.png" "$pkgdir/usr/share/pixmaps/k6gte-not1mm.png"
 }
