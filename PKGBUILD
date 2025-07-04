@@ -4,7 +4,7 @@
 
 pkgname=alda-bin
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A music programming language for musicians'
 arch=('i686' 'x86_64')
 url='https://github.com/alda-lang/alda'
