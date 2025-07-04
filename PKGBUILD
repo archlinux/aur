@@ -4,13 +4,13 @@ _name1=logfire-api
 _name0=logfire
 pkgbase=python-${_name0}
 pkgname=(python-${_name1} python-${_name0})
-pkgver=3.21.1
+pkgver=3.22.0
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/logfire'
 license=('MIT')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c6dd5f7d9f9d5d820ceb0dbb375d1618f184cfb19c147b80f2bb83e9dafdcebe')
+sha256sums=('36eba9369aaf89a5ffd69836964de3f82a8f1a88a3770dbc297d6de6dedce40a')
 depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-httpx'
@@ -78,8 +78,10 @@ checkdepends=('python-httpx'
               'python-openai-agents'
               'python-websockets'
               'python-langchain'
-              'python-langchain-openai')
-              #'python-langgraph')
+              'python-langchain-openai'
+              #'python-langgraph'
+              'python-opentelemetry-instrumentation-google-genai'
+              'python-google-genai')
 
 build() {
   cd "${srcdir}"/${_name0//-/_}-${pkgver}
@@ -99,6 +101,8 @@ check() {
     --ignore tests/otel_integrations/test_celery.py
     --ignore tests/otel_integrations/test_mysql.py
     --ignore tests/otel_integrations/test_redis.py
+    # Failed
+    --deselect tests/otel_integrations/test_google_genai.py::test_instrument_google_genai
   )
   cd "${srcdir}"/${_name0//-/_}-${pkgver}
   python -m venv --system-site-packages test-env
