@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-decklink
 pkgver=7.1.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('x86_64')
@@ -129,6 +129,9 @@ prepare() {
 build() {
     cd "ffmpeg-${pkgver}"
     printf '%s\n' '  -> Running ffmpeg configure script...'
+    
+    # fix build with v4l2-utils 1.30 with gcc 14 and later
+    export CFLAGS+=' -Wno-error=incompatible-pointer-types'
     
     ./configure \
         --prefix='/usr' \
