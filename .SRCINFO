@@ -7,7 +7,6 @@ pkgbase = fcitx5-boshiamy
 	license = GPL
 	makedepends = boost
 	makedepends = extra-cmake-modules
-	makedepends = cmake
 	depends = fcitx5
 	depends = fcitx5-chinese-addons
 	conflicts = fcitx5-table-extra
