@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-libaec
 	pkgdesc = Adaptive Entropy Coding library (Android x86-64)
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://gitlab.dkrz.de/k202009/libaec
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = android-x86-64-libaec
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gitlab.dkrz.de/k202009/libaec/-/archive/v1.1.3/libaec-v1.1.3.tar.bz2
-	md5sums = 9e2f718be47a108e3495b36dfd4c17cc
+	source = https://gitlab.dkrz.de/k202009/libaec/-/archive/v1.1.4/libaec-v1.1.4.tar.bz2
+	md5sums = f4da1452e4060850ee3a1b50d2a4829c
 
 pkgname = android-x86-64-libaec
