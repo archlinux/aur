@@ -3,8 +3,8 @@
 
 pkgname=flow-browser-bin
 _pkgname=Flow
-pkgver=0.8.1
-_electronversion=35
+pkgver=0.8.2
+_electronversion=36
 pkgrel=1
 pkgdesc="A modern, tabbed web browser with Chrome extension support—built on Electron.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('81ac7f7facc1fbbfb7cb0e0c18c8f2019b38188609c9f05888c920342b8d0397'
+sha256sums=('9694c38a8bfa8b28456024797ec4b5f57a6170db5f6e460e588ed783cfba0616'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -30,8 +30,12 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/Name=Flow/Name=Flow Browser/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/Icon=flow-browser/Icon=\/usr\/share\/pixmaps\/flow-browser.png/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
+
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
