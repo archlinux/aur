@@ -1,16 +1,16 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=procmon
-pkgver=2.0
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc="Trace syscall activity tool"
 arch=('x86_64')
-url="https://github.com/Sysinternals/ProcMon-for-Linux"
+url="https://github.com/microsoft/ProcMon-for-Linux"
 license=('MIT')
-depends=('glibc' 'clang' 'libedit' 'libelf' 'ncurses' 'sysinternalsebpf' 'zlib' 'zstd')
-makedepends=('cmake' 'llvm' 'sqlite')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Sysinternals/ProcMon-for-Linux/archive/refs/tags/$pkgver.0.0.tar.gz")
-sha256sums=('1967dc1e378263902a14408468506d7e39f6a4fedbb38b8c48fb2b2d94f56496')
+depends=('gcc-libs' 'libedit' 'libelf' 'ncurses' 'sysinternalsebpf' 'zlib' 'zstd')
+makedepends=('cmake' 'clang' 'sqlite')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/microsoft/ProcMon-for-Linux/archive/refs/tags/$pkgver.0.0.tar.gz")
+sha256sums=('d3601fcbaa08199959054bb83f69874e6e8ce8b137b5724575c64da5cfecbf5b')
 
 
 build() {
@@ -28,6 +28,6 @@ build() {
 package() {
   cd "ProcMon-for-Linux-$pkgver.0.0"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  install -Dm644 "_build"/{getsyscalls,procmon} -t "$pkgdir/usr/bin"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/procmon"
 }
