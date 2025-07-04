@@ -8,14 +8,14 @@
 
 _pkgname="musicpod"
 pkgname="$_pkgname"
-pkgver=2.12.0
+pkgver=2.13.0
 pkgrel=1
-_flutterver=3.29.2
+_flutterver=3.32.2
 pkgdesc="Music, radio, television and podcast player"
 url="https://github.com/ubuntu-flutter-community/musicpod"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
-depends=(glibc glib2 mpv cairo gdk-pixbuf2 pango libepoxy fontconfig at-spi2-core gtk3 gcc-libs)
+depends=(glibc glib2 mpv cairo gdk-pixbuf2 pango libepoxy fontconfig at-spi2-core gtk3 gcc-libs alsa-lib)
 makedepends=(
   'clang'
   'cmake'
@@ -31,7 +31,7 @@ _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
 provides=("${_pkgname}")
-sha256sums=('fb70928722bb4bb59a9841b63df67c2fc6b769d93aedd35e89d17cc1043db930')
+sha256sums=('3986c2c31bdc7310176b90000ca0e982490b6706622cb087a12ee85bc2548cd7')
 
 build() {
   export FVM_CACHE_PATH="$SRCDEST/fvm-cache"
