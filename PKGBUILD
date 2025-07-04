@@ -4,7 +4,7 @@
 
 pkgname=sdformat-9
 pkgver=9.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="SDF Converter for gazebo"
 arch=('i686' 'x86_64')
 url="http://sdformat.org/"
@@ -19,7 +19,7 @@ _dir="sdformat-sdformat9_${pkgver}"
 
 prepare() {
   cd "$srcdir/${_dir}"
-  sed -i 's|find_program(RUBY ruby)|set(RUBY "/usr/bin/ruby-2.7")|g' cmake/SearchForStuff.cmake
+  sed -i 's|find_program(RUBY ruby)|find_program(RUBY ruby-2.7)|g' cmake/SearchForStuff.cmake
 }
 
 build() {
