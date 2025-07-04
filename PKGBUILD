@@ -6,7 +6,7 @@ _plugins=(anthropic assemblyai aws azure baseten bey bithuman cartesia clova dee
 pkgbase=python-${_name0}
 pkgname=(python-${_name0} ${_plugins[@]/#/python-${_name1}-})
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 _plugins_pkgdesc=('Agent Framework plugin for services from Anthropic.'
           'Agent Framework plugin for AssemblyAI.'
           'LiveKit Agents Plugin for services from AWS.'

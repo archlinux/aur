@@ -1,6 +1,6 @@
 pkgbase = python-livekit-agents
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/livekit/agents
 	arch = x86_64
 	arch = aarch64
