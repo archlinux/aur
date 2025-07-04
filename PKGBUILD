@@ -1,7 +1,7 @@
 # Maintainer: rzhli <tayuebuliuhen@gmail.com>
 # Contributor: skychan <diufanshu@gmail.com>
 
-pkgname='FTNN_desktop'
+pkgname='ftnn_desktop'
 pkgver='15.22.12108'
 pkgrel=1
 pkgdesc="FTNN 富途牛牛桌面版（官方 .deb 封装）"
