@@ -1,10 +1,10 @@
 pkgbase = vegastrike-engine-release-git
 	pkgdesc = A spaceflight simulator in massive universe
-	pkgver = 0.8.1.beta2.r59.g837ed6069
+	pkgver = 0.9.1.r0.gf648e2c99
 	pkgrel = 1
 	url = https://www.vega-strike.org/
 	arch = x86_64
-	license = GPL2
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
@@ -26,7 +26,9 @@ pkgbase = vegastrike-engine-release-git
 	depends = libjpeg-turbo
 	provides = vegastrike-engine
 	conflicts = vegastrike-engine
-	source = git+https://github.com/vegastrike/Vega-Strike-Engine-Source#branch=0.8.x
+	source = git+https://github.com/vegastrike/Vega-Strike-Engine-Source#branch=0.9.x
+	source = vegastrike-engine-Add-missing-header.patch
 	sha256sums = SKIP
+	sha256sums = beb8280fcf695de4d420ea271d3bfff0d9780127bc2c13b8b9cc5fd6deb4038d
 
 pkgname = vegastrike-engine-release-git
