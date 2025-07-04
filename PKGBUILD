@@ -1,7 +1,7 @@
 # Maintainer: Austin Haedicke <austin.haedicke@gmail.com>
 
 pkgname=dnd-tools
-pkgver=r36.baefb9e
+pkgver=r38.faa09f6
 pkgrel=1
 pkgdesc='Interactive CLI tools for Dungeons and Dragons 5e'
 depends=('python')
