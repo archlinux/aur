@@ -1,14 +1,14 @@
 pkgbase = ejoffe-spr-bin
 	pkgdesc = Tool to easily manage stacks of pull requests on GitHub
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ejoffe/spr
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = ejoffe-spr-bin-0.15.1-1-x86_64.tar.gz::https://github.com/ejoffe/spr/releases/download/v0.15.1/spr_linux_x86_64.tar.gz
+	source_x86_64 = ejoffe-spr-bin-0.15.1-2-x86_64.tar.gz::https://github.com/ejoffe/spr/releases/download/v0.15.1/spr_linux_x86_64.tar.gz
 	sha256sums_x86_64 = 358bd1fabaa22974a3d1a4e15776ee39885d571effb2a47f9db7f92c0756e55f
-	source_aarch64 = ejoffe-spr-bin-0.15.1-1-aarch64.tar.gz::https://github.com/ejoffe/spr/releases/download/v0.15.1/spr_linux_arm64.tar.gz
+	source_aarch64 = ejoffe-spr-bin-0.15.1-2-aarch64.tar.gz::https://github.com/ejoffe/spr/releases/download/v0.15.1/spr_linux_arm64.tar.gz
 	sha256sums_aarch64 = fadbdbbbf392dc55c260a34e01d1a6e7f4e2652556309ea625d35631af9ff481
 
 pkgname = ejoffe-spr-bin
