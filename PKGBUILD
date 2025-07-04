@@ -3,7 +3,7 @@
 # Co-Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 _pkgname=firedragon
-_pkgver=12.0.0-beta.14
+_pkgver=12.0.0-beta.15
 
 pkgname=${_pkgname}-beta-bin
 pkgver=${_pkgver//-/_}
@@ -61,9 +61,9 @@ sha256sums=(
   '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
 )
 source_x86_64=(firedragon-v${_pkgver}-linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v${_pkgver}/downloads/firedragon-linux-x64.tar.xz)
-sha256sums_x86_64=('a5ebeb3c686b85afe19ca9d2efc777aed676c6d01031e189ca481fbe7ba686cb')
+sha256sums_x86_64=('6fc93f0c0fc7245b8c668d7e3a6cfa7f35ce42870cb82cc45005da702bf69282')
 source_aarch64=(firedragon-v${_pkgver}-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v${_pkgver}/downloads/firedragon-linux-arm64.tar.xz)
-sha256sums_aarch64=('666618ca829c1ed2243a3edd895d7ad218b90c13c50699c55756209186efc0be')
+sha256sums_aarch64=('1cf7aba34fde646bd5c3f23bf5b47fab10a28f6a4b50823608356d81e88dc5d9')
 
 package() {
   cd "${srcdir}/${_pkgname}"

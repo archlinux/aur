@@ -1,6 +1,6 @@
 pkgbase = firedragon-beta-bin
 	pkgdesc = Floorp fork build using custom branding and settings
-	pkgver = 12.0.0_beta.14
+	pkgver = 12.0.0_beta.15
 	pkgrel = 1
 	epoch = 1
 	url = https://firedragon.garudalinux.org
@@ -38,12 +38,12 @@ pkgbase = firedragon-beta-bin
 	backup = usr/lib/firedragon/firedragon.cfg
 	backup = usr/lib/firedragon/distribution/policies.json
 	source = firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
-	source = https://gitlab.com/garuda-linux/firedragon/firedragon12/-/raw/v12.0.0-beta.14/assets/firedragon.desktop
+	source = https://gitlab.com/garuda-linux/firedragon/firedragon12/-/raw/v12.0.0-beta.15/assets/firedragon.desktop
 	sha256sums = 61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0
 	sha256sums = 53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560
-	source_x86_64 = firedragon-v12.0.0-beta.14-linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.14/downloads/firedragon-linux-x64.tar.xz
-	sha256sums_x86_64 = a5ebeb3c686b85afe19ca9d2efc777aed676c6d01031e189ca481fbe7ba686cb
-	source_aarch64 = firedragon-v12.0.0-beta.14-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.14/downloads/firedragon-linux-arm64.tar.xz
-	sha256sums_aarch64 = 666618ca829c1ed2243a3edd895d7ad218b90c13c50699c55756209186efc0be
+	source_x86_64 = firedragon-v12.0.0-beta.15-linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.15/downloads/firedragon-linux-x64.tar.xz
+	sha256sums_x86_64 = 6fc93f0c0fc7245b8c668d7e3a6cfa7f35ce42870cb82cc45005da702bf69282
+	source_aarch64 = firedragon-v12.0.0-beta.15-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.15/downloads/firedragon-linux-arm64.tar.xz
+	sha256sums_aarch64 = 1cf7aba34fde646bd5c3f23bf5b47fab10a28f6a4b50823608356d81e88dc5d9
 
 pkgname = firedragon-beta-bin
