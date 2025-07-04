@@ -2,7 +2,7 @@
 
 _name=python-pygithub
 pkgname="$_name-git"
-pkgver=v2.3.0.r1.g60136105
+pkgver=v2.6.0.r35.gb4092b5d
 pkgrel=1
 pkgdesc="Use the full Github API v3"
 arch=('any')
@@ -10,7 +10,7 @@ license=('LGPL')
 url="https://github.com/PyGithub/PyGithub"
 provides=('python-pygithub')
 conflicts=('python-pygithub')
-depends=('python-deprecated' 'python-pyjwt' 'python-requests' 'python-pynacl')
+depends=('python-pynacl' 'python-requests' 'python-pyjwt' 'python-typing_extensions' 'python-urllib3')
 makedepends=('python-setuptools-scm')
 checkdepends=('python-pytest' 'python-cryptography' 'python-httpretty' 'python-parameterized')
 source=("${_name}::git+${url}.git")
@@ -28,6 +28,7 @@ pkgver() {
 
 build() {
   cd "$_name"
+  rm -rf 'dist' 'build' '.eggs' '.cache' # clean up previous builds
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
