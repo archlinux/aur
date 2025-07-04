@@ -1,6 +1,6 @@
 pkgbase = ngpt
 	pkgdesc = A lightning-fast AI-powered CLI toolkit for terminal productivity. Generate code, craft git commits, execute shell commands, and chat with any OpenAI-compatible LLM (OpenAI, Ollama, Groq, Claude, Gemini) directly from your terminal.
-	pkgver = 6.3.0
+	pkgver = 6.3.2
 	pkgrel = 1
 	url = https://github.com/nazdridoy/ngpt
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = ngpt
 	depends = python-pyperclip>=1.8.0
 	depends = python-beautifulsoup4>=4.12.0
 	options = !debug
-	source = ngpt-6.3.0.tar.gz::https://github.com/nazdridoy/ngpt/archive/v6.3.0.tar.gz
-	sha256sums = 8f00d08dd30e0d5b3c8472692b8f9b140f14d5d985dbd365c843cbd4e17ca846
+	source = ngpt-6.3.2.tar.gz::https://github.com/nazdridoy/ngpt/archive/v6.3.2.tar.gz
+	sha256sums = 37cef36ed93d604d9f656047cbd8c1f549d289029a796e0601c1d849f5f2b22c
 
 pkgname = ngpt
