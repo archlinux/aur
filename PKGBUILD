@@ -4,7 +4,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libffi
-pkgver=3.4.8
+pkgver=3.5.1
 pkgrel=1
 arch=('any')
 pkgdesc="Portable foreign function interface library (Android ${_android_arch})"
@@ -17,7 +17,7 @@ url="http://sourceware.org/libffi"
 source=("https://github.com/libffi/libffi/releases/download/v${pkgver}/libffi-${pkgver}.tar.gz"
         '0001-Fix-missing-declaration.patch'
         '0002-Force-x86-compile.patch')
-md5sums=('ba5fc49d57d13b9e6cecd0c78d76688b'
+md5sums=('a67b82e7ec069f15cd81c23ced5049f4'
          'b8307ef703dd12d25acfd998d005e9b2'
          'fe386b633751ef1f9474e54610add89e')
 
