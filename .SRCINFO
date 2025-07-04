@@ -1,8 +1,9 @@
 pkgbase = not1mm-9m2pju-git
-	pkgdesc = Not1MM != N1MM, An amateur radio contest logger for Linux.
+	pkgdesc = Not1MM != N1MM, An amateur radio contest logger for Linux. Git version.
 	pkgver = r2188.05119a4
 	pkgrel = 1
 	url = https://github.com/mbridak/not1mm
+	install = not1mm-9m2pju-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -31,8 +32,7 @@ pkgbase = not1mm-9m2pju-git
 	optdepends = flrig
 	provides = not1mm
 	conflicts = not1mm
-	source = not1mm::git+https://github.com/mbridak/not1mm.git
+	source = not1mm-9m2pju-git::git+https://github.com/mbridak/not1mm.git
 	sha256sums = SKIP
-	install = not1mm-9m2pju-git.install
 
 pkgname = not1mm-9m2pju-git
