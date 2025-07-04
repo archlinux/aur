@@ -3,15 +3,15 @@
 # thanks to txtsd <aur.archlinux@ihavea.quest> for contributing some parts of the PKGBUILD code
 
 pkgname=openmw-git
-pkgver=0.48.0.r5496.g8471cfb576
+pkgver=0.49.0.r172.g1a08565a20
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.openmw.org"
-license=(' 	GPL-3.0-or-later' 'MIT' 'custom')
+license=('GPL-3.0-or-later' 'MIT' 'custom')
 # openmw doesn't work with ffmpeg 7 , only reliable solution for now is to use ffmpeg4.4 instead
 # see https://gitlab.com/OpenMW/openmw/-/issues/8035 and https://gitlab.com/OpenMW/openmw/-/issues/7182
-depends=('openal' 'openscenegraph-openmw-git' 'mygui-openmw' 'bullet-dp' 'qt6-base' 'qt6-svg' 'ffmpeg4.4' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp' 'sqlite')
+depends=('openal' 'openscenegraph-openmw-git' 'mygui-openmw' 'bullet-dp' 'qt6-base' 'qt6-svg' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp' 'sqlite')
 makedepends=('git' 'cmake' 'boost' 'debugedit' 'qt6-tools')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
@@ -47,14 +47,13 @@ pkgver() {
 
 build() {
 
-  # Use Workaround for ffmpeg4.4 from https://gitlab.com/OpenMW/openmw/-/issues/6631#note_848732223
-  export PKG_CONFIG_LIBDIR='/usr/lib/ffmpeg4.4/pkgconfig/'
   cmake \
         -B _build \
         -S "${srcdir}/${pkgname%-git}"  \
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D CMAKE_BUILD_TYPE=RelWithDebInfo \
         -D OPENMW_USE_SYSTEM_RECASTNAVIGATION=ON \
+        -D OPENMW_USE_SYSTEM_MYGUI=ON \
         -D LICDIR=/usr/share/licenses/${pkgname}
   make -C _build
 }

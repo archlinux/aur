@@ -1,6 +1,6 @@
 pkgbase = openmw-git
 	pkgdesc = An open-source engine reimplementation for the role-playing game Morrowind.
-	pkgver = 0.48.0.r5496.g8471cfb576
+	pkgver = 0.49.0.r172.g1a08565a20
 	pkgrel = 1
 	url = http://www.openmw.org
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = openmw-git
 	depends = bullet-dp
 	depends = qt6-base
 	depends = qt6-svg
-	depends = ffmpeg4.4
+	depends = ffmpeg
 	depends = sdl2
 	depends = unshield
 	depends = libxt
