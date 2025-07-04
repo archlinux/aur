@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-libffi
 	pkgdesc = Portable foreign function interface library (Android armv7a-eabi)
-	pkgver = 3.4.8
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = http://sourceware.org/libffi
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = android-armv7a-eabi-libffi
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/libffi/libffi/releases/download/v3.4.8/libffi-3.4.8.tar.gz
+	source = https://github.com/libffi/libffi/releases/download/v3.5.1/libffi-3.5.1.tar.gz
 	source = 0001-Fix-missing-declaration.patch
 	source = 0002-Force-x86-compile.patch
-	md5sums = ba5fc49d57d13b9e6cecd0c78d76688b
+	md5sums = a67b82e7ec069f15cd81c23ced5049f4
 	md5sums = b8307ef703dd12d25acfd998d005e9b2
 	md5sums = fe386b633751ef1f9474e54610add89e
 
