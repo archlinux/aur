@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-harfbuzz
 	pkgdesc = OpenType text shaping engine (Android aarch64)
-	pkgver = 11.2.0
+	pkgver = 11.2.1
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/HarfBuzz
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = android-aarch64-harfbuzz
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/harfbuzz/harfbuzz/archive/refs/tags/11.2.0.tar.gz
-	md5sums = 70d60955e542a00fd8bc1f406c7d199f
+	source = https://github.com/harfbuzz/harfbuzz/archive/refs/tags/11.2.1.tar.gz
+	md5sums = d286c7ba7d7a4c1c59a5579dbcec1a1d
 
 pkgname = android-aarch64-harfbuzz
 
