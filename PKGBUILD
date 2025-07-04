@@ -2,7 +2,7 @@
 # Contributor: erk <v at erk dot io>
 
 pkgname=vnote
-pkgver=3.18.2
+pkgver=3.19.2
 pkgrel=1
 pkgdesc="A Vim-inspired note-taking application, especially for Markdown."
 arch=(x86_64 i686 armv7h aarch64)
@@ -16,7 +16,7 @@ source=("git+https://github.com/vnotex/vnote.git#tag=v${pkgver}"
         "vnotex-syntax-highlighting::git+https://github.com/vnotex/syntax-highlighting"
         "vnotex-hunspell::git+https://github.com/vnotex/hunspell"
         "vnotex-sonnet::git+https://github.com/vnotex/sonnet")
-sha256sums=('623af002789e033614eb4b06a53c8b7c2713bfc185930a1ad9dfa69b73dd34f3'
+sha256sums=('f83648b7416d01f492913ecb6738afe757e69bc2210c4ad8529e5b24550b42e7'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -24,7 +24,7 @@ sha256sums=('623af002789e033614eb4b06a53c8b7c2713bfc185930a1ad9dfa69b73dd34f3'
             'SKIP')
 
 prepare() {
-  cd "${pkgname}"
+  cd "vnote"
 
   git submodule init
   git config 'submodule.libs/vtextedit.url' "${srcdir}/vnotex-vtextedit"
@@ -45,6 +45,7 @@ build() {
   export LDFLAGS="-fuse-ld=lld"
 
   cmake -B build -S "vnote" -Wno-dev \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DUSE_LD_GOLD=OFF \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
