@@ -1,10 +1,13 @@
-# Maintainer: 9M2PJU <9m2pju@hamradio.my>
+# Maintainer: not_anonymous <nmlibertarian@gmail.com>
+# Contributor: f4iey <f4iey@f4iey.fr>
+# Submitter: not_anonymous <nmlibertarian@gmail.com>
+
 pkgname=not1mm-9m2pju-git
 pkgver=0.0.0
 pkgrel=1
-pkgdesc="Not1MM - Amateur radio contest logger (latest git version)"
+pkgdesc="Ham Radio Contest Logger - Latest from official GitHub (9M2PJU custom)"
+license=('GPL-3.0-only')
 arch=('any')
-license=('GPL3')
 url="https://github.com/mbridak/not1mm"
 depends=(
   'python' 'python-pyqt5' 'python-pyqt6' 'python-requests' 'python-dicttoxml' 'python-xmltodict'
@@ -16,27 +19,27 @@ makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('hamlib' 'flrig')
 provides=('not1mm')
 conflicts=('not1mm')
-source=("git+$url.git")
+
+source=("git+https://github.com/mbridak/not1mm.git")
 sha256sums=('SKIP')
-install=not1mm-9m2pju-git.install
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  cd "$srcdir/not1mm"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/not1mm"
   git clean -fdx
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/not1mm"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/not1mm"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   # Desktop icon
