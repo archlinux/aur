@@ -1,24 +1,25 @@
-# Maintainer: Luca Contini <jkd[dot]luca[at]gmail[dot]com>
+# Maintainer: KozaKrisz <hello@kozakrisz.dev>
 
-# If you do not trust the source of installation, you can navigate to
-# https://sites.google.com/site/davidtv/ and download from there.
-# The MD5 sum provided is for pac-4.5.5.7-all.deb [Nov 4, 2015]
-# Thanks to:
-# nicebloom
-# marties
-# roepi
+_pkgname=pacmanager
+pkgname=${_pkgname}-bin
+pkgver=0.1.0             
+pkgrel=1
+pkgdesc="This application provides a user-friendly graphical interface for managing both official Arch Linux packages via pacman and AUR (Arch User Repository) packages via yay."
+arch=('x86_64')
+url="https://github.com/KriszKecskes/pacmanager"
+license=('custom')       
+depends=('gtk3' 'webkit2gtk' 'libayatana-appindicator' 'openssl-1.1') 
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 
-pkgname=pacmanager-bin
-pkgver=4.5.5.7
-pkgrel=2
-arch=('any')
-license=('GPL3')
-pkgdesc="Perl Auto Connector PAC Manager"
-url="https://sites.google.com/site/davidtv/"
-depends=('perl-gnome2-gconf' 'glade-perl' 'openssh' 'perl-crypt-blowfish' 'perl-gnome2-vte' 'perl-expect' 'perl-crypt-rijndael' 'perl-gtk2-ex-simple-list' 'perl-io-stty' 'perl-io-tty' 'perl-net-arp' 'perl-yaml' 'perl-crypt-cbc' 'perl-gtk2-unique' 'perl-socket6' 'uuid')
-source=("https://drive.google.com/uc?export=download&id=0B4jA_htRqlMbY2p6aThBUWxjOTg")
-md5sums=('814be8e0e5bafb91bea034f21ac4317c')
+source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
+
+# A letöltött fájl sértetlenségét ellenőrző checksum.
+# Ezt minden verzióváltáskor frissíteni kell!
+# Generálása: `sha256sum a_fájl_neve` vagy `updpkgsums` paranccsal.
+sha256sums=('aeaee7e5841da84687472a62665b9f0f4dfa24afe6da3c343264eb0745f2add8')
 
 package() {
-    tar -C "${pkgdir}" -xvJf "${srcdir}/data.tar.xz"
+  bsdtar -x -f "${srcdir}/${_pkgname}-${pkgver}.deb" -C "${srcdir}"
+  bsdtar -x -f "${srcdir}/data.tar."* -C "${pkgdir}"
 }
