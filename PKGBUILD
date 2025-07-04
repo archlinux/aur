@@ -2,47 +2,53 @@
 # Contributor: Evert Vorster <evorster@gmail.com>
 
 pkgname=vegastrike-engine
-pkgver=0.8.0
+pkgver=0.9.1
 pkgrel=2
 pkgdesc="A spaceflight simulator in massive universe"
 arch=(x86_64)
 url="https://www.vega-strike.org/"
-license=(GPL2)
+license=(GPL-3.0-or-later)
 depends=(boost-libs python freeglut gtk3 libvorbis openal sdl glu
 
          # namcap implicit depends
          glibc gcc-libs glib2 zlib libpng libglvnd expat libjpeg-turbo)
-makedepends=(git cmake boost gcc12 lsb-release)
+makedepends=(git cmake boost gtest)
 source=("git+https://github.com/vegastrike/Vega-Strike-Engine-Source#tag=v${pkgver}"
-        "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/vegastrike-delete-include-eval.h.patch"
-        "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/vegastrike-std-cerr-fix.patch")
-sha256sums=('SKIP'
-            '6f2f6ea1fef1710e7bc696bc0bb7b30749d48949090ddcf7f60d6d9db78c699b'
-            '792561d17407c684e5d05656bdd75d57f9d736b852c461dd2338c765b2fa6521')
+		vegastrike-engine-Add-missing-header.patch)
+sha256sums=('602cb322ba7ffa07885e00631892083592ecad8d9687d136734029187dd2dce5'
+            'beb8280fcf695de4d420ea271d3bfff0d9780127bc2c13b8b9cc5fd6deb4038d')
 
-prepare(){
+prepare() {
   cd Vega-Strike-Engine-Source
-  patch -Np1 -i ../vegastrike-delete-include-eval.h.patch
-  patch -Np1 -i ../vegastrike-std-cerr-fix.patch
+  patch -Np1 -i ../vegastrike-engine-Add-missing-header.patch
 }
 
 build(){
   # buildtype None, enable ffmpeg, ogre will fail, not supported
   # https://github.com/vegastrike/Vega-Strike-Engine-Source/issues/777#issuecomment-1763235378
 
-  export CC=/usr/bin/gcc-12 CXX=/usr/bin/g++-12
+  local _flags=(
+    #-DINSTALL_GTEST=ON  #fail to build using system's gtest
+    -DUSE_GTEST=ON
+	-DENABLE_PIE=ON
+  )
+
   cmake -B build -S "Vega-Strike-Engine-Source/engine" -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
 
   cmake --build build
 }
 
+check() {
+  ctest --test-dir build --output-on-failure
+}
+
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  # remove bundled gtest,gmock
   rm -rf ${pkgdir}/usr/include
   rm -rf ${pkgdir}/usr/lib
 }
-
-# lsb-release as makedepends avoid issue if dpkg is installed, recognized as Debian.
-# Don't happen the same if rpm-tools is intalled

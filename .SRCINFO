@@ -1,15 +1,14 @@
 pkgbase = vegastrike-engine
 	pkgdesc = A spaceflight simulator in massive universe
-	pkgver = 0.8.0
+	pkgver = 0.9.1
 	pkgrel = 2
 	url = https://www.vega-strike.org/
 	arch = x86_64
-	license = GPL2
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
-	makedepends = gcc12
-	makedepends = lsb-release
+	makedepends = gtest
 	depends = boost-libs
 	depends = python
 	depends = freeglut
@@ -26,11 +25,9 @@ pkgbase = vegastrike-engine
 	depends = libglvnd
 	depends = expat
 	depends = libjpeg-turbo
-	source = git+https://github.com/vegastrike/Vega-Strike-Engine-Source#tag=v0.8.0
-	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/vegastrike-delete-include-eval.h.patch
-	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/vegastrike-std-cerr-fix.patch
-	sha256sums = SKIP
-	sha256sums = 6f2f6ea1fef1710e7bc696bc0bb7b30749d48949090ddcf7f60d6d9db78c699b
-	sha256sums = 792561d17407c684e5d05656bdd75d57f9d736b852c461dd2338c765b2fa6521
+	source = git+https://github.com/vegastrike/Vega-Strike-Engine-Source#tag=v0.9.1
+	source = vegastrike-engine-Add-missing-header.patch
+	sha256sums = 602cb322ba7ffa07885e00631892083592ecad8d9687d136734029187dd2dce5
+	sha256sums = beb8280fcf695de4d420ea271d3bfff0d9780127bc2c13b8b9cc5fd6deb4038d
 
 pkgname = vegastrike-engine

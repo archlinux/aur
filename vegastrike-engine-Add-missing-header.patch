@@ -1,0 +1,24 @@
+From 3fbf023fe3e2c0d385ba2ebb03cc684facf7d5b8 Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Fri, 4 Jul 2025 22:36:28 +0200
+Subject: [PATCH] Add missing header
+
+---
+ engine/src/gfx/aligned.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/engine/src/gfx/aligned.h b/engine/src/gfx/aligned.h
+index b5a83f7c5..191965e15 100644
+--- a/engine/src/gfx/aligned.h
++++ b/engine/src/gfx/aligned.h
+@@ -29,6 +29,7 @@
+ 
+ #include <memory>
+ #include <cstddef>
++#include <cstdint>
+ 
+ #if defined(__cpp_lib_assume_aligned)
+     #define __alpn(x,a) std::assume_aligned<a>(x)
+-- 
+2.50.0
+
