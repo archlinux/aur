@@ -1,6 +1,6 @@
 post_install() {
   echo ":: not1mm-9m2pju-git installed successfully!"
   echo ":: Run it using the 'not1mm' command."
-  echo ":: Make sure required Python dependencies like 'python-appdata' and 'python-notctyparser' are installed."
-  echo ":: 73 de 9M2PJU https://hamradio.my"
+  echo ":: All config/data will now be saved in ~/.local/share/not1mm"
+  echo ":: 73 de 9M2PJU – https://hamradio.my"
 }
