@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.21.1.r715.g83ba34076
+pkgver=1.21.1.r1014.g6bc55d65b
 pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
@@ -19,8 +19,8 @@ source=('git+https://github.com/ipxe/ipxe.git'
 	'chain-default.ipxe'
 	'chain-default-3928.ipxe')
 sha256sums=('SKIP'
-            '58dd2e1b797574527020684e5b61fc5e9ef034bef4cea5ec8ecf06b6958fdc12'
-            '3ac105ce4a8cacd8888386f8270ecb9d470b1f6edde18a4c15cec613954f0ee8'
+            'e861a6f98c299a59fdbda38af69234b8fa61f8a4921ee339ab42dc6fdf6dee1a'
+            '380e25716b197f8cb1621be0ba15f6f8884c0956690d03fa8945180b3bf241a6'
             'ead8e9b386206bc0e95838a6e074c218e038cd3fa1ca5cff2b73e34b40d5552f'
             'f7ec78e26671f4df90d89440d8b2a69473c15cb6b25dda32c773023378fec42a'
             'e26a54b4e99816b34baebcb7a15d99d57c9395c9689ffbae2329cc675248f9b9')
