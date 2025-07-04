@@ -2,7 +2,7 @@
 
 pkgname=platypush
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -27,6 +27,7 @@ depends=(
     'python-setuptools'
     'python-sqlalchemy'
     'python-tornado'
+    'python-watchdog'
     'python-websocket-client'
     'python-websockets'
     'python-yaml'
@@ -92,7 +93,6 @@ optdepends=(
     'python-todoist-python: Todoist integration'
 	'python-twilio: Twilio integration'
 	'python-vlc: VLC integration'
-	'python-watchdog: File monitor support'
     'python-weasyprint: PDF generation support'
     'yt-dlp: Support for downloading/streaming YouTube videos, as well as other video platforms'
 )
