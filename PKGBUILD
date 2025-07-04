@@ -3,7 +3,7 @@
 _name=google-genai
 pkgname=python-${_name}
 pkgver=1.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GenAI Python SDK."
 arch=('any')
 url='https://github.com/googleapis/python-genai'
@@ -14,6 +14,17 @@ depends=('python' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pyd
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-twine' 'python-packaging' 'python-pkginfo')
 checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-cov' 'python-mcp')
 optdepends=('python-aiohttp: aiohttp')
+
+prepare(){
+  cd "${srcdir}"/${pkgname//google-/}-${pkgver}
+  sed -i "s/'post'/'POST'/g" ${_name//-//}/tokens.py
+  sed -i "s/'post'/'POST'/g" ${_name//-//}/batches.py
+  sed -i "s/'post'/'POST'/g" ${_name//-//}/caches.py
+  sed -i "s/'post'/'POST'/g" ${_name//-//}/models.py
+  sed -i "s/'post'/'POST'/g" ${_name//-//}/files.py
+  sed -i "s/'post'/'POST'/g" ${_name//-//}/tunings.py
+  sed -i "s/'post'/'POST'/g" ${_name//-//}/operations.py
+}
 
 build() {
   cd "${srcdir}"/${pkgname//google-/}-${pkgver}
