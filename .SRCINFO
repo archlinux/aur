@@ -1,0 +1,18 @@
+pkgbase = plasma6-applets-wunderground
+	pkgdesc = Plasmoid for displaying weather information from Wunderground decentralized stations
+	pkgver = 3.4.3
+	pkgrel = 1
+	arch = any
+	license = GPL-2.0-or-later
+	depends = libplasma>6
+	depends = qt6-5compat
+	depends = kirigami
+	depends = ksvg
+	depends = qt6-declarative
+	depends = kdeclarative
+	depends = kquickcharts
+	depends = kcmutils
+	source = git+https://github.com/k-donn/plasmoid-wunderground.git#tag=v3.4.3
+	sha256sums = 8642cc04dfbb2514a8d568392b9c8e8d82d40882f121eaf37f411d1ee957c125
+
+pkgname = plasma6-applets-wunderground
