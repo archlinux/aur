@@ -3,7 +3,7 @@
 
 _name=aiomax
 pkgname=python-$_name-autotest
-pkgver=2.7.4.6
+pkgver=2.7.4.7
 pkgrel=1
 pkgdesc="Asynchronous framework for Max Bot API"
 arch=('any')
