@@ -2,7 +2,7 @@
 
 pkgname=garnet-bin
 _pkgname=${pkgname/-bin/}
-pkgver=1.0.74 # datasource=github-releases depName=microsoft/garnet
+pkgver=1.0.75 # datasource=github-releases depName=microsoft/garnet
 pkgrel=1
 pkgdesc='A high-performance cache-store from Microsoft Research'
 url='https://microsoft.github.io/garnet'
@@ -15,13 +15,13 @@ depends=("dotnet-runtime-9.0" "gcc-libs" "glibc" "libaio")
 
 source=(
 	"garnet-${pkgver}.tar.xz::https://github.com/microsoft/${_pkgname}/releases/download/v${pkgver}/linux-x64-based.tar.xz"
-	"garnet-server.service::https://aur.archlinux.org/cgit/aur.git/plain/garnet-server.service?h=garnet" # jiri.pospisil's service
-	"https://raw.githubusercontent.com/microsoft/garnet/refs/tags/v${pkgver}/LICENSE"
+	"LICENSE-${pkgver}::https://raw.githubusercontent.com/microsoft/garnet/refs/tags/v${pkgver}/LICENSE"
+	"garnet-server.service"
 )
 
-sha256sums=('fe4ca7767081bf48156929da7480e9baf4d25283007a89a6239ab9c23cbb16b1'
-            '0c16f0124c3c962e4fac1241cc1b1d86f61600758a4ff3846cd00a580e76cfdf'
-            'c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383')
+sha256sums=('f919974c2c37741c5b6529459e37bcf45ea1d07847941e0a8a60e4baf6b5446a'
+            'c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383'
+            'a536b51496a330d8faa8f00fea134177d6e48f404663211db876af5adc7e6470')
 
 package() {
 
@@ -34,8 +34,7 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	ln -sr "$pkgdir/usr/lib/garnet/GarnetServer" "$pkgdir/usr/bin/GarnetServer"
 
-	sed -ie "s/network-online/network/g" "garnet-server.service"
 	install -Dm644 -t "$pkgdir/usr/lib/systemd/system" "garnet-server.service"
 
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

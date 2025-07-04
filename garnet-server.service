@@ -1,0 +1,38 @@
+# source: https://aur.archlinux.org/cgit/aur.git/tree/garnet-server.service?h=garnet
+
+[Unit]
+Description=A high-performance cache-store from Microsoft Research
+Documentation=https://microsoft.github.io/garnet/docs
+
+# network-online.target will increase startup time
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+Restart=on-failure
+RestartSec=5
+ExecStart=/usr/bin/GarnetServer --config-import-path /etc/garnet/garnet-server.conf
+ConfigurationDirectory=garnet
+WorkingDirectory=/usr/lib/garnet
+RuntimeDirectory=garnet-server
+StateDirectory=garnet-server
+LogsDirectory=garnet-server
+
+NoNewPrivileges=yes
+PrivateDevices=yes
+ProtectHome=yes
+LockPersonality=yes
+ProtectProc=invisible
+ProtectControlGroups=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+
+[Install]
+WantedBy=multi-user.target
