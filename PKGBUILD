@@ -2,7 +2,7 @@
 
 pkgname=procmon-git
 pkgver=2.1.0.0.r0.gc5f8271
-pkgrel=2
+pkgrel=3
 pkgdesc="Trace syscall activity tool"
 arch=('x86_64')
 url="https://github.com/microsoft/ProcMon-for-Linux"
@@ -33,13 +33,13 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "ProcMon-for-Linux"
 
-  #make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
