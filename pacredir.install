@@ -10,10 +10,10 @@ post_install() {
 }
 
 post_upgrade() {
-  # return if old package version greater 0.5...
-  (( $(vercmp $2 '0.5') > 0 )) && return
+  # return if old package version greater 0.6...
+  (( $(vercmp $2 '0.6') > 0 )) && return
 
-  # upgrade from pre-0.5 version, avahi service names changed
+  # upgrade from pre-0.6 version, avahi service names changed
   cat <<-EOM
 	 > This upgrade from pacredir $2 to pacredir $1 changes avahi service
 	 > names. Make sure to update all your installations for compatibility.

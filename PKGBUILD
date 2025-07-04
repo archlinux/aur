@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=pacredir-git
-pkgver=0.5.0.r0.gde04ce4
-pkgrel=2
+pkgver=0.6.0.r0.ge5aa168
+pkgrel=1
 pkgdesc='redirect pacman requests, assisted by avahi service discovery - git checkout'
 arch=('x86_64')
 url='https://github.com/eworm-de/pacredir'
