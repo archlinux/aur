@@ -5,7 +5,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libarchive
-pkgver=3.7.9
+pkgver=3.8.1
 pkgrel=1
 arch=('any')
 pkgdesc="Multi-format archive and compression library (Android ${_android_arch})"
@@ -21,7 +21,7 @@ depends=("android-${_android_arch}-bzip2"
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libarchive/libarchive/releases/download/v${pkgver}/libarchive-${pkgver}.tar.xz")
-md5sums=('e378aeb163d8c81745665dddd81116ef')
+md5sums=('80fd1a7acc4da7c7d4a5f9f96df6e3ff')
 
 build() {
     cd "${srcdir}/libarchive-${pkgver}"
