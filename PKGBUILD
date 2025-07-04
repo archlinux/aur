@@ -2,7 +2,7 @@
 
 pkgname=sysinternalsebpf
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Sysinternals EBPF"
 arch=('i686' 'x86_64')
 url="https://github.com/microsoft/SysinternalsEBPF"
@@ -28,18 +28,18 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
-  make -C "_build"
+  cmake --build "_build"
 }
 
 check() {
   cd "SysinternalsEBPF-$pkgver.0.0"
 
-  #make -C "_build" test
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "SysinternalsEBPF-$pkgver.0.0"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/sysinternalsebpf"
 }
