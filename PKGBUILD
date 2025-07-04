@@ -1,7 +1,7 @@
 # Maintainer: Matthias Kunnen <matthias.kunnen@gmail.com>
 # shellcheck disable=SC2034,SC2164
 pkgname=opn
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Open files with the chosen application from the terminal'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7l' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -33,7 +33,7 @@ source=("$pkgname::git+$url?signed#tag=v$pkgver")
 #
 # If you want to make sure that these checksums match the source code, clone the repo and use:
 # GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_SYSTEM=/dev/null git -c core.abbrev=no archive --format tar v$pkgver | b2sum
-b2sums=('b337ff05373901eebae2088500b424afc706b88d181fd5a05b57cf699a16e3f1eac839829c517c3362868c9123947a3f5243696094d7db2701314faf170503d6')
+b2sums=('490231089b5c17d347bbf3083d17ba2b01930643eb1655372a126911a32d1e34540e73b3bd1108e3ccc8008a481c9931910e81e2fcd2988d09f3a4f2c43461e0')
 
 # Get the key from:
 # 1. The aur source under keys/pgp with gpg --import keys/pgp/*.asc
