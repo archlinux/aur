@@ -2,14 +2,14 @@
 # Contributor:  Philip Goto <philip.goto@gmail.com>
 
 pkgname=popsicle-git
-pkgver=1.3.1.r10.g2b88960
-pkgrel=1
+pkgver=1.3.3.r10.ge79acac
+pkgrel=2
 pkgdesc="Linux utility for flashing multiple USB devices in parallel, written in Rust"
 url="https://github.com/pop-os/popsicle"
 arch=(x86_64 i686 aarch64 armv7h)
 license=(MIT)
 depends=(gtk3)
-makedepends=(git cargo clang help2man xorgproto)
+makedepends=(git cargo clang help2man)
 provides=(popsicle)
 conflicts=(popsicle)
 source=("git+https://github.com/pop-os/popsicle.git")
@@ -22,7 +22,9 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  make
+  export RUSTUP_TOOLCHAIN=stable
+  make vendor
+  RUST_BACKTRACE=1 make VENDORED=1
 }
 
 package() { 
