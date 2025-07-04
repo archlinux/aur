@@ -2,13 +2,22 @@
 
 pkgname=zluda
 pkgver=4
-pkgrel=1
+pkgrel=2
 pkgdesc='A drop-in replacement for CUDA on non-NVIDIA GPUs'
 arch=('x86_64')
 url='https://github.com/vosen/ZLUDA/'
-license=('Apache-2.0' 'MIT')
-depends=('cargo' 'comgr' 'hip-runtime-amd')
-makedepends=('git' 'cmake' 'ninja' 'python')
+license=('Apache-2.0 OR MIT')
+depends=(
+    'cargo'
+    'comgr'
+    'gcc-libs'
+    'glibc'
+    'hip-runtime-amd')
+makedepends=(
+    'git'
+    'cmake'
+    'ninja'
+    'python')
 conflicts=('nvidia-utils')
 source=("git+https://github.com/vosen/ZLUDA.git#tag=v${pkgver}"
         'git+https://github.com/llvm/llvm-project.git')
@@ -22,6 +31,10 @@ prepare() {
     
     export RUSTUP_TOOLCHAIN='stable'
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path='ZLUDA/Cargo.toml'
+    
+    # llvm: fix build with gcc 15
+    # https://github.com/llvm/llvm-project/commit/7e44305041d96b064c197216b931ae3917a34ac1
+    git -C ZLUDA/ext/llvm-project cherry-pick --no-commit 7e44305041d96b064c197216b931ae3917a34ac1
 }
 
 build() {
