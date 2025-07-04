@@ -4,7 +4,7 @@
 
 pkgname=alda
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A music programming language for musicians'
 arch=('x86_64')
 url='https://github.com/alda-lang/alda'
@@ -23,7 +23,7 @@ build() {
   cd "$pkgname"-release-"$pkgver"
   ( # Go build for Client
     cd client
-    CGO_ENABLED=1 # The alda repository appears to use go everything afaik, so disabling this should have no effect other than making sure that irrelevant compiler flags for C and C++ are ignored (e.g. CGO_CXXFLAGS)
+    CGO_ENABLED=0 # The alda repository appears to use go everything afaik, so disabling this should have no effect other than making sure that irrelevant compiler flags for C and C++ are ignored (e.g. CGO_CXXFLAGS)
 
     export GOFLAGS="-buildmode=pie -modcacherw -trimpath -ldflags=-w"
     go generate
@@ -42,9 +42,11 @@ package() {
   install -Dv "client/target/$pkgname" -t "$pkgdir/usr/bin/" # installed as 755
   # By default, the alda package has a shell script that self-executes and becomes a jar, but, to be more arch-centric, we install the jar separately into its proper place
   install -Dvm644 player/build/libs/alda-player-fat.jar -T "$pkgdir/usr/share/java/alda/alda-player.jar"
-  temp_dir=$(mktemp -d)
-  mv doc/doc_zh_cn "$temp_dir" # The chinese translation folder gave me major headaches because `install` couldn't handle a dir
+
+  mkdir -p "$pkgdir/usr/share/doc/$pkgname/doc_zh_cn"
+  install -Dvm644 doc/doc_zh_cn/* "$pkgdir/usr/share/doc/$pkgname/doc_zh_cn/"
+  rm -r doc/doc_zh_cn # The chinese translation folder gave me major headaches because `install` couldn't handle a dir
+
   install -Dvm644 doc/* -t "$pkgdir/usr/share/doc/$pkgname/"
-  cp -r "$temp_dir/doc_zh_cn" "$pkgdir/usr/share/doc/$pkgname/"
 
 }
