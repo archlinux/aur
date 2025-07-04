@@ -1,8 +1,9 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: anjvw <ber762631@gmail.com>
 
 _pkgname="candy"
 pkgname="${_pkgname}-bin"
-pkgver=6.0.4
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="A simple networking tool"
 arch=('aarch64' 'armv7h' 'loong64' 'riscv64' 'x86_64')
@@ -21,11 +22,11 @@ source_riscv64=("${_pkgsrc}-riscv64.tar.gz::${url}/releases/download/v${pkgver}/
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}+linux_x86_64.tar.gz")
 sha256sums=('80e9eace4c80dc740e9d17d64ce2cc5f9b8ca41b057bfe8c2c31e849f8f7aeb5'
             '7abc3e1f887be8cf25e77d95486a22a7b6d62f368e864785d995138db7220dcf')
-sha256sums_aarch64=('5d38d801d2f551aee9b54f2fae1df4c0caa9aa93775b11d66782f55843119df4')
-sha256sums_armv7h=('cd462cf49815953c3761e1b00243508d47e52113e086969291af5de1e87228d0')
-sha256sums_loong64=('baba65a85ac07b5689422d53109caf708f99499b972b2eab18801b7e5c2af79a')
-sha256sums_riscv64=('1eecbd1817077fc2af488e4381f560e0526c966f2f19ec15b9e58b8468c58a04')
-sha256sums_x86_64=('29ae1a776c6f5deeba285c294893222c056f8fb0af8cc17e19be749674ec3c0a')
+sha256sums_aarch64=('75e0d95d218015146c586571f719e9c3c1d42c2b4331daf002afea906e0ee98c')
+sha256sums_armv7h=('c50abb4c2a5cfc4ecea9aaf8c90702b6f9b9aff4c5de82dc6179f0144e406a33')
+sha256sums_loong64=('9eb1f7f6e8c94015e99a9804a56116d183f0c928269068d892865c99c84685ca')
+sha256sums_riscv64=('f40075a7818c60a51f829766a26492c8b104b0a8405dc492ef41fa2dc7dd3f6d')
+sha256sums_x86_64=('931dd83e243528fda7acd1a2870de4e30c87f0c8fcb8a648e7a6210759639bcc')
 
 package() {
   cd "${srcdir}"
