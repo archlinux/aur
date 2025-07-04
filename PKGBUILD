@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='cloudflare-ddns-bin'
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Sync a Cloudflare DNS record with your current public IP address'
 url='https://github.com/gabe565/cloudflare-ddns'
@@ -11,14 +11,14 @@ license=('Apache2')
 provides=('cloudflare-ddns')
 conflicts=('cloudflare-ddns')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/cloudflare-ddns/releases/download/v0.3.0/cloudflare-ddns_0.3.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('0a451db1ed2f3c6a49926da04f6379deffe3fbd75cfc865aad5a806da3c14df8')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/cloudflare-ddns/releases/download/v0.3.1/cloudflare-ddns_0.3.1_linux_arm64.tar.gz")
+sha256sums_aarch64=('f72e336854a73b45c39585ec4fadc14f1441a517d1e2b4c08ad3bad143dddffb')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/cloudflare-ddns/releases/download/v0.3.0/cloudflare-ddns_0.3.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('e075543d69f02aa6962d160dfad2edc2533d11ac1394e6cf07992ada63603072')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/cloudflare-ddns/releases/download/v0.3.1/cloudflare-ddns_0.3.1_linux_armv7.tar.gz")
+sha256sums_armv7h=('75fed06a33e9e54233ecb1cefb583cad5333885dcaaf4c6e83c56a75e20d724c')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/cloudflare-ddns/releases/download/v0.3.0/cloudflare-ddns_0.3.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('55be145985f003083676c7f5878add768f58011d13cdb600d7ca3f0202b8784d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/cloudflare-ddns/releases/download/v0.3.1/cloudflare-ddns_0.3.1_linux_amd64.tar.gz")
+sha256sums_x86_64=('7b8acec00861abfe341e9d670a1a2dbc25549cc00621672a601946f38734d145')
 
 package() {
   # bin
