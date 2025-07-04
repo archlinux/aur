@@ -1,13 +1,13 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 _UpstreamPkgName=FastFlix
 pkgname=${_UpstreamPkgName,,}
-pkgver=5.12.0
+pkgver=5.12.2
 pkgrel=1
 pkgdesc="Simple and friendly GUI for encoding videos"
 arch=('x86_64')
 url="https://github.com/cdgriffith/$_UpstreamPkgName"
 license=('MIT')
-makedepends=('git' 'python' 'icoutils')
+makedepends=('git' 'python' 'icoutils' 'uv')
 depends=('zlib' 'ffmpeg')
 optdepends=('nvenc: hardware accelerated encoding on NVIDIA cards'
 	    'x265: encoding to H265/HEVC'
@@ -15,27 +15,19 @@ optdepends=('nvenc: hardware accelerated encoding on NVIDIA cards'
             'rav1e: encoding to AV1'
 	    'libwebp: encoding to WebP')
 source=(git+${url}.git#tag=${pkgver}
-	py-version-updates.patch
         FastFlix.desktop)
-sha256sums=('d5e69295c9060d453fee530b941e9ff0aca906b714d13c105dc7a2d214e77b33'
-            '84b987f4941a7755eb3aa9415f1004c65a90f4cdfd19b41fbdd8b85be083e55c'
+sha256sums=('af48433c64ac03984a463973a5d7970008b84dc97dc2e570d030d0c12f9a3d61'
             'cbcb6f228b858a69a860aa6a3283f0f4293e1246485566d20f60a93030f1f847')
 
-prepare() {
-	cd $_UpstreamPkgName
-	patch --forward --strip=1 --input="${srcdir}/py-version-updates.patch"
-}
+#prepare() {
+#	cd $_UpstreamPkgName
+#	patch --forward --strip=1 --input="${srcdir}/py-version-updates.patch"
+#}
 
 build() {
 	cd ${_UpstreamPkgName}
-	python -m venv venv
-	source ./venv/bin/activate
-	python -m pip install --upgrade pip setuptools --ignore-installed
-	pip install .
-	pip install .[develop]
-	cp $(python -c "import iso639; print(iso639.mapping.TABLE_PATH)") iso-639-3.tab
-	cp $(python -c "import iso639; print(iso639.mapping.MAPPING_PATH)") iso-639-3.json
-	pyinstaller FastFlix_Nix_OneFile.spec
+	uv sync --frozen
+	uv run pyinstaller FastFlix_Nix_OneFile.spec
 	# convert icon.ico to png for desktop file
 	icotool --extract --index=1 -o FastFlix.png fastflix/data/icon.ico
 }

@@ -1,6 +1,6 @@
 pkgbase = fastflix
 	pkgdesc = Simple and friendly GUI for encoding videos
-	pkgver = 5.12.0
+	pkgver = 5.12.2
 	pkgrel = 1
 	url = https://github.com/cdgriffith/FastFlix
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = fastflix
 	makedepends = git
 	makedepends = python
 	makedepends = icoutils
+	makedepends = uv
 	depends = zlib
 	depends = ffmpeg
 	optdepends = nvenc: hardware accelerated encoding on NVIDIA cards
@@ -15,11 +16,9 @@ pkgbase = fastflix
 	optdepends = x264: encoding to H264/AVC
 	optdepends = rav1e: encoding to AV1
 	optdepends = libwebp: encoding to WebP
-	source = git+https://github.com/cdgriffith/FastFlix.git#tag=5.12.0
-	source = py-version-updates.patch
+	source = git+https://github.com/cdgriffith/FastFlix.git#tag=5.12.2
 	source = FastFlix.desktop
-	sha256sums = d5e69295c9060d453fee530b941e9ff0aca906b714d13c105dc7a2d214e77b33
-	sha256sums = 84b987f4941a7755eb3aa9415f1004c65a90f4cdfd19b41fbdd8b85be083e55c
+	sha256sums = af48433c64ac03984a463973a5d7970008b84dc97dc2e570d030d0c12f9a3d61
 	sha256sums = cbcb6f228b858a69a860aa6a3283f0f4293e1246485566d20f60a93030f1f847
 
 pkgname = fastflix
