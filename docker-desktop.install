@@ -36,11 +36,9 @@ post_install() {
 
 pre_upgrade() {
     if [ -d /run/systemd/system ]; then
-        echo "Stopping docker-desktop for users who have it enabled"
+        echo "Stopping docker-desktop for all users"
         loginctl list-users --no-legend | awk '{print $1}' | while read -r uid; do
-            if systemctl --user --machine="${uid}@.host" is-enabled --quiet docker-desktop; then
-                systemctl --user --machine="${uid}@.host" stop docker-desktop
-            fi
+            systemctl --user --machine="${uid}@.host" stop docker-desktop
         done
     fi
 }

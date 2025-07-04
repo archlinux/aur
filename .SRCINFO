@@ -1,27 +1,27 @@
 pkgbase = docker-desktop
 	pkgdesc = Docker Desktop is an easy-to-install application that enables you to locally build and share containerized applications and microservices.
-	pkgver = 4.43.0
+	pkgver = 4.43.1
 	pkgrel = 1
 	url = https://www.docker.com/products/docker-desktop/
 	install = docker-desktop.install
 	arch = x86_64
 	license = custom: Docker Agreement
 	makedepends = w3m
-	depends = docker>=24.0.6
-	depends = curl
+	depends = docker>=28.3.0
+	depends = curl>=8.5.0
 	depends = qemu>=8.0.4
-	depends = libseccomp
-	depends = libcap-ng
+	depends = libseccomp>=2.5.5
+	depends = libcap-ng>=0.8.4
 	depends = pass
 	depends = desktop-file-utils
 	depends = gtk3
 	depends = libx11
-	depends = shadow
+	depends = shadow>=4.14.2
 	provides = docker-compose
 	provides = docker-buildx
 	conflicts = docker-compose
 	conflicts = docker-buildx
-	source = docker-desktop-4.43.0-x86_64.tar.zst::https://desktop.docker.com/linux/main/amd64/198134/docker-desktop-x86_64.pkg.tar.zst
-	sha256sums = 2f1f3b736fa7aa80072b1ef33eb158bf79cfc707c1f1c6d353b6feb3ec9f146a
+	source = docker-desktop-4.43.1-x86_64.tar.zst::https://desktop.docker.com/linux/main/amd64/198352/docker-desktop-x86_64.pkg.tar.zst
+	sha256sums = 7aac82ca673db4ac7fa99e213a6283d89ad8f129d07773c3d4c028e3a6349bc8
 
 pkgname = docker-desktop
