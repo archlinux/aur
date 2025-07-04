@@ -1,0 +1,13 @@
+pkgbase = python-torchac
+	pkgdesc = fast arithmetic coding for pytorch
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/fab-jul/torchac
+	arch = any
+	license = GPL3
+	makedepends = python-installer
+	depends = python-pytorch
+	source = https://files.pythonhosted.org/packages/py3/t/torchac/torchac-0.9.3-py3-none-any.whl
+	sha256sums = ab4eedbe230c677ff076e07142ce611c6a76185723c0f41bd014e6893678f5c9
+
+pkgname = python-torchac

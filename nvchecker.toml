@@ -1,0 +1,3 @@
+[torchac]
+source = "pypi"
+pypi = "torchac"
