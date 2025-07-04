@@ -2,17 +2,21 @@
 
 _name=guidata
 pkgname="python-${_name}"
-pkgver=3.9.0
+pkgver=3.11.0
 pkgrel=1
-pkgdesc="Python library generating graphical user interfaces for easy dataset editing and display"
+pkgdesc="guidata: Automatic GUI generation for easy dataset editing and display with Python"
 arch=("any")
 url="https://github.com/PlotPyStack/${_name}"
 license=("BSD-3-Clause")
-depends=(python-qtpy python-pyqt5-datavisualization python-pyqt5-webengine python-h5py python-pandas python-matplotlib python-beautifulsoup4 python-sphinx python-setuptools python-pytest)
+depends=(python python-h5py python-numpy python-qtpy python-requests python-tomli python-pandas python-beautifulsoup4 python-pillow python-matplotlib)
 makedepends=(python-build python-installer python-wheel python-pydantic)
-optdepends=("spyder: GUI-based test launcher, dict/array editor")
+optdepends=(
+  "spyder: GUI-based test launcher, dict/array editor"
+  "python-sphinx: for building documentation"
+  "python-pytest: for running tests"
+)
 source=("$_name-$pkgver.tar.gz::https://github.com/PlotPyStack/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("3ff6526869b8b40f4251b7b385c48fa5769b785a4f8ab79b9d6da07a57254354")
+sha256sums=("67bda5fffa9cbcde869bd61056ab6b9b40f146ae68eaa617354300449989e8c8")
 
 build() {
   cd "${_name}-${pkgver}"
