@@ -1,7 +1,7 @@
 # shellcheck disable=SC2034,SC2148,SC2128,SC2154,SC2164
 # Maintainer: javalsai <javalsai@proton.me>
 pkgname=lidm
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 depends=('pam')
 makedepends=('git' 'gcc')
@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/javalsai/lidm"
 license=('GPL')
 source=("tarball.tar.gz::https://github.com/javalsai/lidm/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('915dc5acce413d5d32bb52c6f9980661a389a0939a49ac31bc250b2d162a5479')
+sha256sums=('0dffded5fcef45cb45fe88358b0cba8de04f614e323a9c6e4162f84b6e3a50b6')
 
 build() {
     tar -xzf "tarball.tar.gz"
