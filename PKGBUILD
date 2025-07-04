@@ -6,7 +6,7 @@ pkgdesc="Image to ASCII converter using OpenCV"
 arch=('any')
 url="https://github.com/Hugana/p2ascii"
 license=('MIT')
-depends=('python' 'opencv' 'numpy')
+depends=('python' 'opencv' 'python-numpy')
 source=(
   "p2ascii.py::https://raw.githubusercontent.com/Hugana/p2ascii/main/p2ascii.py"
   "edgesASCII.png::https://raw.githubusercontent.com/Hugana/p2ascii/main/Images/edgesASCII.png"
