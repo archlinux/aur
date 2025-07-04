@@ -9,7 +9,7 @@ pkgrel=1
 groups=("tango-controls")
 pkgdesc="This is the Tango CORBA IDL file."
 arch=("any")
-url="https://www.tango-controls.org/"
+url="https://gitlab.com/tango-controls/tango-idl"
 license=("GPL-3.0-or-later")
 makedepends=("cmake>=3.7")
 conflicts=("tango-idl-git")
