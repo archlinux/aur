@@ -26,7 +26,7 @@ depends=(
 makedepends=('binwalk' '7zip')
 install="${pkgname}.install"
 
-source=("installerLin-offline-1.0.20-98-ga6f39b7-x64" # download from https://cryptopro.ru/sites/default/files/private/ngate/1.0.22/clients/desktop/installerLin-offline-1.0.20-98-ga6f39b7-x64
+source=("installerLin-offline-1.0.20-98-ga6f39b7-x64::local://installerLin-offline-1.0.20-98-ga6f39b7-x64" # download from https://cryptopro.ru/sites/default/files/private/ngate/1.0.22/clients/desktop/installerLin-offline-1.0.20-98-ga6f39b7-x64
         "cpro-ngate.service"
         "ngateclient.desktop"
         "cpro-ngate.install")
