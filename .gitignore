@@ -1,5 +1,7 @@
 /*
+!/.github
 !/.gitignore
-!/PKGBUILD
 !/.SRCINFO
 !/godot-beta.desktop
+!/PKGBUILD
+!/PKGBUILD.template

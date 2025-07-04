@@ -1,13 +1,15 @@
 pkgname=godot-beta-bin
 pkgver=4.5beta2
 pkgrel=1
-pkgdesc="Godot Engine 4.5 Beta - Prebuilt binary from GitHub"
+pkgdesc="Godot Engine Beta - Prebuilt binary from GitHub"
 arch=('x86_64')
 url="https://godotengine.org"
 license=('MIT')
 depends=('glibc')
-source=("https://github.com/godotengine/godot-builds/releases/download/4.5-beta2/Godot_v4.5-beta2_linux.x86_64.zip")
-sha256sums=('SKIP')  # You can replace SKIP with the real checksum if you want
+source=("https://github.com/godotengine/godot-builds/releases/download/4.5-beta2/Godot_v4.5-beta2_linux.x86_64.zip"
+        "godot-beta.desktop")
+sha256sums=('SKIP'  # or actual checksum for the zip
+            'SKIP') # or actual checksum for the desktop file
 
 package() {
     install -dm755 "$pkgdir/opt/godot-beta"
