@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=CryptoPro NGate
+Name[ru]=КриптоПро NGate
+Comment=CryptoPro NGate VPN client
+Comment[ru]=VPN клиент КриптоПро NGate
+Type=Application
+Categories=Network
+Terminal=false
+Exec=/opt/cprongate/ngateclient
+Icon=/opt/cprongate/ngate_logo_256x256.png

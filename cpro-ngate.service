@@ -1,0 +1,12 @@
+[Unit]
+Description=TUN/TAP device access for CryptoPro NGate VPN client
+After=network.target
+
+[Service]
+ExecStart=/opt/cprongate/ngatetun -D
+Restart=always
+Type=forking
+PIDFile=/var/run/ngatetun.pid
+
+[Install]
+WantedBy=multi-user.target

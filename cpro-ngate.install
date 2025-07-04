@@ -1,0 +1,17 @@
+post_install() {
+  echo "Enabling and starting ngatetun.service..."
+  systemctl daemon-reload
+  systemctl enable --now ngatetun.service
+}
+
+post_upgrade() {
+  if systemctl is-active -q ngatetun.service; then
+    echo "Restarting ngatetun.service..."
+    systemctl restart ngatetun.service
+  fi
+}
+
+pre_remove() {
+  echo "Stopping and disabling ngatetun.service..."
+  systemctl disable --now ngatetun.service
+}
