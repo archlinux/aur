@@ -2,8 +2,8 @@
 
 pkgname=bqm
 _gemname=$pkgname
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.5.2
+pkgrel=1
 pkgdesc='Download BloudHound query lists, deduplicate entries and merge them in one file.'
 arch=('any')
 url='https://github.com/noraj/bqm'
@@ -13,7 +13,7 @@ options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 #source=("https://github.com/noraj/$pkgname/archive/v$pkgver.tar.gz")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('9be53a87a60a695fb3444da3dbdb5e0b76e0308ef9bb142579873f03b87198237f7650b1c40c876fbccbec877bf18d76433aad0cd0445c542f294409caf0857d')
+b2sums=('f2ac2b8dc3511b6fa3c4cc51a3616d462cbbbe42b57aabbda0eae5438281500515241c0ba57b681ab99d193d00a2f12d697cc90f48ce07dc1351928a3098c94d')
 
 package() {
   _gemdir="$(ruby -e'puts Gem.default_dir')"
