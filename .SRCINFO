@@ -1,5 +1,5 @@
 pkgbase = p2ascii
-	pkgdesc = Image to ASCII converter using OpenCV
+	pkgdesc = Image to ASCII converter using OpenCV. Can convert to text and to image
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Hugana/p2ascii
