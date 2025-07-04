@@ -2,8 +2,8 @@
 
 pkgname=python-ncls
 _module=${pkgname#python-}
-pkgver=0.0.68
-pkgrel=2
+pkgver=0.0.70
+pkgrel=1
 pkgdesc="A wrapper for the nested containment list data structure. http://dx.doi.org/10.1093/bioinformatics/btz615"
 arch=('x86_64')
 url="https://github.com/biocore-ntnu/ncls"
@@ -26,7 +26,7 @@ options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz"
         "LICENSE"
         "cython3.patch")
-sha256sums=('81aaa5abb123bb21797ed2f8ef921e20222db14a3ecbc61ccf447532f2b7ba93'
+sha256sums=('7d16634a8f57fa79659e9ae7e5cc6edd1e02d5acb0eb57128dbed03e9f4fdd9c'
             '48186409eb1721726d28884f40346a8380a893e95a50bef75584e2e9c2d4fcd5'
             '80fbdf0c5c2a805c953df3c359d84e63bc801d14457ad5b8a6c140250ccec7d2')
 
