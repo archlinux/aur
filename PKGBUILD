@@ -217,7 +217,7 @@ livekit-plugins(){
             depends=(${_plugins_depends[i]})
             optdepends=(${_plugins__optdepends[i]})
             cd \"\${srcdir}\"/${_name0//livekit-/}-${_name0}-${pkgver}/${_name1}/${_name1}-${_plugins[i]}
-            python -m installer --destdir=\"$pkgdir\" dist/*.whl
+            python -m installer --destdir=\"\$pkgdir\" dist/*.whl
           }"
   done
 }
