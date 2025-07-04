@@ -1,7 +1,7 @@
 # Maintainer: Dominik Csapak <dominik.csapak@gmail.com>
 # Maintainer: Thomas Lamprecht <thomas@lamprecht.org>
 pkgname=proxmox-backup-client
-pkgver=3.3.4
+pkgver=4.0pre
 pkgrel=1
 pkgdesc="Client for Proxmox Backup Server"
 arch=('x86_64' 'aarch64')
@@ -16,24 +16,19 @@ depends=(
 makedepends=('cargo' 'clang' 'git' 'llvm' 'patchelf' 'python-docutils' 'python-sphinx')
 options=(!lto)
 source=(
-    "$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
-    "proxmox::git://git.proxmox.com/git/proxmox.git#commit=b82e51f15a6d90b1442dd3a085ce9525c01631b6"
+    #"$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
+    "$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#commit=caa1f134f17c206361ebd55d806817a80f9532bb"
+    "proxmox::git://git.proxmox.com/git/proxmox.git#commit=d1c1cba2e637f755fb688f4c2a50288f17cc8de1"
     "proxmox-fuse::git://git.proxmox.com/git/proxmox-fuse.git"
     "pxar::git://git.proxmox.com/git/pxar.git"
     "pathpatterns::git://git.proxmox.com/git/pathpatterns.git"
-    "h2::git+https://github.com/hyperium/h2.git#tag=v0.4.7"
     "0001-re-route-dependencies-not-available-on-crates.io-to-.patch"
     "0002-docs-drop-all-but-client-man-pages.patch"
-    "0003-cargo-downgrade-http-to-0.2.12.patch"
-    "0004-cargo-use-local-patched-h2-dependency.patch"
     "elf-strip-unused-dependencies.sh"
 )
 # either a git repo or tracked by this git repo, so not much gained by encoding
 # checksums here in this git repo
 sha512sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -55,8 +50,6 @@ prepare() {
 
   _apply 0001-re-route-dependencies-not-available-on-crates.io-to-.patch
   _apply 0002-docs-drop-all-but-client-man-pages.patch
-  (cd "${srcdir}/h2"; _apply 0003-cargo-downgrade-http-to-0.2.12.patch)
-  _apply 0004-cargo-use-local-patched-h2-dependency.patch
 
   # fetch all in prepare to allow build() to be run offline
   cargo fetch --target "$CARCH-unknown-linux-gnu"

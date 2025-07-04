@@ -9,7 +9,7 @@ Signed-off-by: Thomas Lamprecht <thomas@lamprecht.org>
  1 file changed, 27 insertions(+), 119 deletions(-)
 
 diff --git a/Cargo.toml b/Cargo.toml
-index d14f320a..27fec0ef 100644
+index 4b1671ea..086de77a 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -41,8 +41,6 @@ members = [
@@ -21,30 +21,29 @@ index d14f320a..27fec0ef 100644
  
      "pxar-bin",
  ]
-@@ -111,7 +109,6 @@ pbs-tools = { path = "pbs-tools" }
+@@ -112,7 +110,6 @@ pbs-tools = { path = "pbs-tools" }
  # regular crates
  anyhow = "1.0"
  async-trait = "0.1.56"
 -apt-pkg-native = "0.3.2"
- base64 = "0.13"
  bitflags = "2.4"
  bytes = "1.0"
+ cidr = "0.3"
 @@ -125,7 +122,6 @@ flate2 = "1.0"
  foreign-types = "0.3"
  futures = "0.3"
  h2 = { version = "0.4", features = [ "stream" ] }
 -handlebars = "3.0"
  hex = "0.4.3"
- hyper = { version = "0.14", features = [ "full" ] }
- libc = "0.2"
-@@ -160,138 +156,50 @@ xdg = "2.2"
- zstd = { version = "0.12", features = [ "bindgen" ] }
- zstd-safe = "6.0"
+ hickory-resolver = { version = "0.24.1", default-features = false, features = [ "system-config", "tokio-runtime" ] }
+ http-body-util = "0.1"
+@@ -162,141 +158,51 @@ xdg = "2.2"
+ zstd = "0.13"
+ zstd-safe = "7"
  
 -[dependencies]
 -anyhow.workspace = true
 -async-trait.workspace = true
--base64.workspace = true
 -bytes.workspace = true
 -cidr.workspace = true
 -const_format.workspace = true
@@ -54,7 +53,9 @@ index d14f320a..27fec0ef 100644
 -futures.workspace = true
 -h2.workspace = true
 -hex.workspace = true
+-http-body-util.workspace = true
 -hyper.workspace = true
+-hyper-util = { workspace = true, features = ["server", "server-auto", "server-graceful"] }
 -libc.workspace = true
 -log.workspace = true
 -nix.workspace = true
@@ -87,10 +88,11 @@ index d14f320a..27fec0ef 100644
 -proxmox-apt-api-types.workspace = true
 -proxmox-async.workspace = true
 -proxmox-auth-api = { workspace = true, features = [ "api", "pam-authenticator" ] }
+-proxmox-base64.workspace = true
 -proxmox-compression.workspace = true
 -proxmox-config-digest.workspace = true
 -proxmox-daemon.workspace = true
--proxmox-http = { workspace = true, features = [ "client-trait", "proxmox-async", "rate-limited-stream" ] } # pbs-client doesn't use these
+-proxmox-http = { workspace = true, features = [ "body", "client-trait", "proxmox-async", "rate-limited-stream" ] } # pbs-client doesn't use these
 -proxmox-human-byte.workspace = true
 -proxmox-io.workspace = true
 -proxmox-lang.workspace = true
@@ -141,12 +143,14 @@ index d14f320a..27fec0ef 100644
 -#proxmox-apt-api-types = { path = "../proxmox/proxmox-apt-api-types" }
 -#proxmox-async = { path = "../proxmox/proxmox-async" }
 -#proxmox-auth-api = { path = "../proxmox/proxmox-auth-api" }
+-#proxmox-base64 = { path = "../proxmox/proxmox-base64" }
 -#proxmox-borrow = { path = "../proxmox/proxmox-borrow" }
 -#proxmox-compression = { path = "../proxmox/proxmox-compression" }
 -#proxmox-config-digest = { path = "../proxmox/proxmox-config-digest" }
 +proxmox-apt-api-types = { path = "../proxmox/proxmox-apt-api-types" }
 +proxmox-async = { path = "../proxmox/proxmox-async" }
 +proxmox-auth-api = { path = "../proxmox/proxmox-auth-api" }
++proxmox-base64 = { path = "../proxmox/proxmox-base64" }
 +proxmox-borrow = { path = "../proxmox/proxmox-borrow" }
 +proxmox-compression = { path = "../proxmox/proxmox-compression" }
 +proxmox-config-digest = { path = "../proxmox/proxmox-config-digest" }
