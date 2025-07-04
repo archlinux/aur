@@ -1,0 +1,14 @@
+pkgbase = enc-dec-uricomp
+	pkgdesc = Provides encodeuricomponent <<< 'url' and decodeuricomponent <<< 'url' binaries
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://gitverse.ru/naierchou/mybible-module-mgb
+	arch = any
+	license = GPL-3
+	makedepends = go
+	provides = enc-dec-uricomp
+	conflicts = enc-dec-uricomp
+	source = git+https://gitverse.ru/naierchou/enc-dec-uricomp.git
+	sha256sums = SKIP
+
+pkgname = enc-dec-uricomp
