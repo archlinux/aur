@@ -1,0 +1,13 @@
+pkgbase = whoamio
+	pkgdesc = A universal IO process/file analyzer with Rouger personality mode
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Zamanhuseyinli/whoamio
+	arch = any
+	license = AGPL2
+	makedepends = shc
+	makedepends = curl
+	source = whoamio.sh::https://raw.githubusercontent.com/Zamanhuseyinli/whoamio/main/whoamio.sh
+	sha256sums = SKIP
+
+pkgname = whoamio
