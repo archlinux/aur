@@ -6,7 +6,7 @@ _plugins=(anthropic assemblyai aws azure baseten bey bithuman cartesia clova dee
 pkgbase=python-${_name0}
 pkgname=(python-${_name0} ${_plugins[@]/#/python-${_name1}-})
 pkgver=1.1.5
-pkgrel=2
+pkgrel=3
 _plugins_pkgdesc=('Agent Framework plugin for services from Anthropic.'
           'Agent Framework plugin for AssemblyAI.'
           'LiveKit Agents Plugin for services from AWS.'
@@ -110,10 +110,10 @@ _plugins__optdepends=(""
                       ""
                       "")
 arch=('x86_64' 'aarch64')
-url='https://github.com/livekit/agents'
+_repo='https://github.com/livekit/agents'
 license=('Apache-2.0')
-source=("${url}/archive/refs/tags/${_name0}@${pkgver}.tar.gz"
-        "${url}/raw/refs/tags/${_name0}@${pkgver}/${_name1}/${_name1}-silero/${_name1//-//}/silero/resources/silero_vad.onnx")
+source=("${_repo}/archive/refs/tags/${_name0}@${pkgver}.tar.gz"
+        "${_repo}/raw/refs/tags/${_name0}@${pkgver}/${_name1}/${_name1}-silero/${_name1//-//}/silero/resources/silero_vad.onnx")
 sha256sums=('a3a6631e23125a6c11f51fef5bf74f6ab7b1a31bbb7e5547b5fe49018664dbdb'
             '6b99cbfd39246b6706f98ec13c7c50c6b299181f2474fa05cbc8046acc274396')
 depends=('python')
@@ -213,7 +213,7 @@ livekit-plugins(){
   for ((i=0; i<${#_plugins[@]}; i++)); do
     eval "package_python-${_name1}-${_plugins[i]}() {
             pkgdesc=\"${_plugins_pkgdesc[i]}\"
-            url=\"${urls}\"/tree/main/${_name1}/${_name1}-${_plugins[i]}
+            url=\"${_repo}\"/tree/main/${_name1}/${_name1}-${_plugins[i]}
             depends=(${_plugins_depends[i]})
             optdepends=(${_plugins__optdepends[i]})
             cd \"\${srcdir}\"/${_name0//livekit-/}-${_name0}-${pkgver}/${_name1}/${_name1}-${_plugins[i]}
