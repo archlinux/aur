@@ -1,20 +1,25 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sysinternalsebpf-git
-pkgver=1.4.0.0.r0.gf8c8bd2
-pkgrel=2
+pkgver=1.5.0.0.r1.g5cf432b
+pkgrel=1
 pkgdesc="Sysinternals EBPF"
 arch=('i686' 'x86_64')
-url="https://github.com/Sysinternals/SysinternalsEBPF"
+url="https://github.com/microsoft/SysinternalsEBPF"
 license=('LGPL-2.1-or-later')
-depends=('glibc' 'libelf' 'zstd')
+depends=('glibc' 'json-glib' 'libelf' 'zstd')
 makedepends=('git' 'clang' 'cmake')
 provides=("sysinternalsebpf=$pkgver")
 conflicts=('sysinternalsebpf')
-options=('staticlibs')
-source=("git+https://github.com/Sysinternals/SysinternalsEBPF.git")
+source=("git+https://github.com/microsoft/SysinternalsEBPF.git")
 sha256sums=('SKIP')
 
+
+prepare() {
+  cd "SysinternalsEBPF"
+
+  sed -i 's/LIBRARY DESTINATION lib/LIBRARY DESTINATION/;s/-Werror//' "CMakeLists.txt"
+}
 
 pkgver() {
   cd "SysinternalsEBPF"

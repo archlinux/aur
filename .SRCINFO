@@ -1,8 +1,8 @@
 pkgbase = sysinternalsebpf-git
 	pkgdesc = Sysinternals EBPF
-	pkgver = 1.4.0.0.r0.gf8c8bd2
-	pkgrel = 2
-	url = https://github.com/Sysinternals/SysinternalsEBPF
+	pkgver = 1.5.0.0.r1.g5cf432b
+	pkgrel = 1
+	url = https://github.com/microsoft/SysinternalsEBPF
 	arch = i686
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -10,12 +10,12 @@ pkgbase = sysinternalsebpf-git
 	makedepends = clang
 	makedepends = cmake
 	depends = glibc
+	depends = json-glib
 	depends = libelf
 	depends = zstd
-	provides = sysinternalsebpf=1.4.0.0.r0.gf8c8bd2
+	provides = sysinternalsebpf=1.5.0.0.r1.g5cf432b
 	conflicts = sysinternalsebpf
-	options = staticlibs
-	source = git+https://github.com/Sysinternals/SysinternalsEBPF.git
+	source = git+https://github.com/microsoft/SysinternalsEBPF.git
 	sha256sums = SKIP
 
 pkgname = sysinternalsebpf-git
