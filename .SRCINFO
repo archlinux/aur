@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-hwloc
 	pkgdesc = Portable Hardware Locality is a portable abstraction of hierarchical architectures (Android x86-64)
-	pkgver = 2.12.0
+	pkgver = 2.12.1
 	pkgrel = 1
 	url = https://www.open-mpi.org/projects/hwloc/
 	arch = any
@@ -21,9 +21,9 @@ pkgbase = android-x86-64-hwloc
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://www.open-mpi.org/software/hwloc/v2.12/downloads/hwloc-2.12.0.tar.bz2
+	source = https://www.open-mpi.org/software/hwloc/v2.12/downloads/hwloc-2.12.1.tar.bz2
 	source = 0001-Added-missing-macros.patch
-	md5sums = 584b9171de01805cb281d801621b9f4d
+	md5sums = 7ec782f344f8e9ef1a49222aa97449cb
 	md5sums = 540c7ecb4997cfcd37d4d9b450b21dcf
 
 pkgname = android-x86-64-hwloc
