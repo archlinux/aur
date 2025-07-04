@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=opencascade-git
-pkgver=8.0.0.rc1.r0.g7aa85582ad
+pkgver=8.0.0.rc1.r33.g22d437b771
 pkgrel=1
 pkgdesc="An object-oriented C++ class library designed for rapid production of sophisticated domain-specific CAD/CAM/CAE applications."
 arch=(x86_64)
@@ -54,7 +54,7 @@ build() {
   cmake -B build_dir -S occt -W no-dev -G Ninja \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX='/usr' \
-    -D INSTALL_DIR_CMAKE=/usr/lib/cmake/opencascade \
+    -D INSTALL_DIR_CMAKE=lib/cmake/opencascade \
     -D BUILD_WITH_DEBUG=OFF \
     -D BUILD_RELEASE_DISABLE_EXCEPTIONS=OFF \
     -D USE_FFMPEG=OFF \
