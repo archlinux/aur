@@ -1,58 +1,51 @@
 # Maintainer: 9M2PJU <9m2pju@hamradio.my>
 
 pkgname=not1mm-9m2pju-git
+_pkgname=not1mm
 pkgver=r2188.05119a4
 pkgrel=1
-pkgdesc="Ham Radio Contest Logger - Not1MM (latest from git)"
+pkgdesc="Ham Radio Contest Logger - Blatant ripoff of N1MM - Git version (uses Python venv)"
 arch=('any')
 url="https://github.com/mbridak/not1mm"
-license=('GPL-3.0-only')
-provides=('not1mm')
-conflicts=('not1mm')
-install=${pkgname}.install
-depends=(
-  'python'
-  'python-pyqt5'
-  'python-pyqt6'
-  'python-requests'
-  'python-dicttoxml'
-  'python-xmltodict'
-  'python-psutil'
-  'python-sounddevice'
-  'python-soundfile'
-  'python-numpy'
-  'python-notctyparser'
-  'python-pyserial'
-  'python-appdata'
-  'python-gobject'
-  'python-thefuzz'
-  'python-levenshtein'
-  'gtk4'
-  'hamradio-menus'
-)
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+license=('GPL3')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-virtualenv')
+depends=('bash')
 optdepends=('hamlib' 'flrig')
-source=("${pkgname}::git+https://github.com/mbridak/not1mm.git")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$pkgname"
-  git clean -dfx
-}
+provides=('not1mm')
+conflicts=('not1mm' 'not1mm-git')
+source=("$_pkgname::git+$url.git"
+        "$pkgname.install")
+install="$pkgname.install"
+sha256sums=('SKIP'
+            'SKIP')
 
 build() {
-  cd "$srcdir/$pkgname"
-  python -m build --wheel --no-isolation
+  cd "$srcdir/$_pkgname"
+
+  python -m venv venv
+  source venv/bin/activate
+  python -m pip install --upgrade pip
+  python -m pip install .
+  deactivate
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm755 "not1mm/data/k6gte-not1mm.desktop" "$pkgdir/usr/share/applications/k6gte-not1mm.desktop"
-  install -Dm755 "not1mm/data/k6gte.not1mm-128.png" "$pkgdir/usr/share/pixmaps/k6gte-not1mm.png"
+  cd "$srcdir/$_pkgname"
+
+  # Install to /opt
+  install -d "$pkgdir/opt/$_pkgname"
+  cp -a venv "$pkgdir/opt/$_pkgname/venv"
+
+  # Symlink launcher
+  install -d "$pkgdir/usr/bin"
+  cat > "$pkgdir/usr/bin/not1mm" <<EOF
+#!/bin/bash
+source /opt/$_pkgname/venv/bin/activate
+exec python -m not1mm "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/not1mm"
+
+  # Desktop integration
+  install -Dm644 "not1mm/data/k6gte-not1mm.desktop" "$pkgdir/usr/share/applications/k6gte-not1mm.desktop"
+  install -Dm644 "not1mm/data/k6gte.not1mm-128.png" "$pkgdir/usr/share/pixmaps/k6gte-not1mm.png"
 }
