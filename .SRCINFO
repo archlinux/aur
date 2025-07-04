@@ -1,8 +1,8 @@
 pkgbase = whoamio
-	pkgdesc = A universal IO process/file analyzer with Rouger personality mode
+	pkgdesc = Unix shell tool whomaio which io stat data can be accessed directly how to search files with a-z and 1-9 numbered algorithms and a minimal set of tools to perform iostat tests
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/Zamanhuseyinli/whoamio
+	url = https://azccriminal.space/tools/tools.html
 	arch = any
 	license = AGPL2
 	makedepends = shc
