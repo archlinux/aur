@@ -1,6 +1,6 @@
 pkgbase = lumen-git
 	pkgdesc = Instant AI Git Commit message, Git changes summary from the CLI (no API key required)
-	pkgver = v1.8.0.r2.g020be51
+	pkgver = v1.9.0.r3.gd3d067c
 	pkgrel = 1
 	url = https://github.com/jnsahaj/lumen
 	arch = x86_64
