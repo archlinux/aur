@@ -1,16 +1,16 @@
-# Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Contributor: Butui Hu <hot123tea123@gmail.com>
 
 _pkgname=aioice
 pkgname=python-aioice
-pkgver=0.9.0
-pkgrel=3
+pkgver=0.10.1
+pkgrel=1
 pkgdesc='asyncio-based Interactive Connectivity Establishment (RFC 5245)'
 arch=('any')
 url='https://github.com/aiortc/aioice'
 license=('BSD-3-Clause')
 depends=(
   python-dnspython
-  python-netifaces
+  python-ifaddr
 )
 makedepends=(
   python-build
@@ -20,7 +20,7 @@ makedepends=(
 )
 
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/aiortc/aioice/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('977669c80e93492743694630b3428a4fc617419381245b0a7b5527de8035b3103cbf92196f16734c69b5a11cd63d61242600af99eff61661890e3a79269f0087')
+sha512sums=('1beaf09517c9918bce0e5f32c1ff7fd08a1a7ff90af49e1525f5bd4cb875f96522a72e022c5e6da5067671b9f3c09159e8f441374b53a31f659d194f3d75e2da')
 
 build() {
   cd "${_pkgname}-${pkgver}"
