@@ -1,6 +1,6 @@
 pkgbase = sirc
 	pkgdesc = IRC client with ssl
-	pkgver = 1.18
+	pkgver = 1.19
 	pkgrel = 0
 	url = https://github.com/colin-i/irc-ssl
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = sirc
 	makedepends = gtk3
 	depends = openssl
 	depends = gtk3
-	source = sirc-1.18-0.tar.gz::https://github.com/colin-i/irc-ssl/archive/sirc-1.18-0.tar.gz
-	sha256sums = 27c1dc55031edcd9be8bf493d699f3e2055c25a5852d9c3abae87cac9cd2dbf1
+	source = sirc-1.19-0.tar.gz::https://github.com/colin-i/irc-ssl/archive/sirc-1.19-0.tar.gz
+	sha256sums = 0998863114791a20387006f0dcf9e68813e0b82d330f0c8b13846b95e4211ffa
 
 pkgname = sirc
