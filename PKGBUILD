@@ -13,7 +13,7 @@ _pkgver=11.28.0-2
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Floorp fork build using custom branding and settings"
 url='https://firedragon.garudalinux.org'
@@ -168,7 +168,6 @@ ac_add_options --enable-strip
 
 # Optimization
 ac_add_options --enable-optimize=-O3
-ac_add_options --enable-lto=cross,full
 ac_add_options OPT_LEVEL="3"
 ac_add_options RUSTC_OPT_LEVEL="3"
 
