@@ -39,6 +39,7 @@ pkgdesc="Ham Radio Contest Logger (Not1MM fork) - Git version"
 arch=('any')
 url="https://github.com/mbridak/not1mm"
 license=('GPL3')
+install=not1mm-9m2pju-git.install
 depends=(
   'python'
   'python-pyqt5'
