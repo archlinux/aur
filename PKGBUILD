@@ -3,7 +3,7 @@
 
 pkgname=napcatqq-git
 _pkgname=NapCatQQ
-pkgver=r4168.2c76102f
+pkgver=r4177.d9617407
 pkgrel=1
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64'
@@ -26,9 +26,11 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$_pkgname"
+    cd "${srcdir}/${_pkgname}"
     # 删除转发消息深度限制
     find . -name "SendMsg.ts" -exec sed -i '/if (dp >= 3) {/,/}/d' {} \;
+    # 修改卡片消息返回值
+    find . -name "element.ts" -exec sed -i "s/return '\[卡片消息\]';/return '\[聊天记录\]';/g" {} \;
 }
 
 build() {
