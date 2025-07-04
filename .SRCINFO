@@ -1,6 +1,6 @@
 pkgbase = kdeconnect-no-mdns
 	pkgdesc = Adds communication between KDE and your smartphone. Version without MDNS support, for KDE bug 487719.
-	pkgver = 25.04.2
+	pkgver = 25.04.3
 	pkgrel = 1
 	url = https://kdeconnect.kde.org/
 	arch = x86_64
@@ -54,12 +54,11 @@ pkgbase = kdeconnect-no-mdns
 	optdepends = sshfs: remote filesystem browser
 	provides = kdeconnect
 	conflicts = kdeconnect
-	source = https://download.kde.org/stable/release-service/25.04.2/src/kdeconnect-kde-25.04.2.tar.xz
-	source = https://download.kde.org/stable/release-service/25.04.2/src/kdeconnect-kde-25.04.2.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/25.04.3/src/kdeconnect-kde-25.04.3.tar.xz
+	source = https://download.kde.org/stable/release-service/25.04.3/src/kdeconnect-kde-25.04.3.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 4c65e473a57e4e1ffc999838adb5b1aa01a85534b0e46997ab42abda17ccd1b5
-	sha256sums = SKIP
+	sha256sums = c44994e896e17be19fb93173143a8c1196e6d064d3b0d897d4172b9b48bde342
 
 pkgname = kdeconnect-no-mdns
