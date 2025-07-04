@@ -12,7 +12,7 @@ optdepends=(
     'flatpak: For flatpak update checks'
 )
 source=("git+https://github.com/JakubCzarnota/paf-notify.git#tag=v${pkgver}")
-md5sums=('skip')
+md5sums=('SKIP')
 
 package() {
     # Python source files
