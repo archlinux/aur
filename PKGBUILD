@@ -1,14 +1,22 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=zluda-git
-pkgver=4.r1.gecd61a8
+pkgver=4.r37.gef0c4af
 pkgrel=1
 pkgdesc='A drop-in replacement for CUDA on non-NVIDIA (git version)'
 arch=('x86_64')
 url='https://github.com/vosen/ZLUDA/'
-license=('Apache-2.0' 'MIT')
-depends=('cargo' 'comgr' 'hip-runtime-amd')
-makedepends=('git' 'cmake' 'ninja' 'python')
+license=('Apache-2.0 OR MIT')
+depends=(
+    'cargo'
+    'gcc-libs'
+    'glibc'
+    'hip-runtime-amd')
+makedepends=(
+    'git'
+    'cmake'
+    'ninja'
+    'python')
 provides=('zluda')
 conflicts=('zluda' 'nvidia-utils')
 source=('git+https://github.com/vosen/ZLUDA.git'
@@ -23,10 +31,14 @@ prepare() {
     
     export RUSTUP_TOOLCHAIN='stable'
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path='ZLUDA/Cargo.toml'
+    
+    # llvm: fix build with gcc 15
+    # https://github.com/llvm/llvm-project/commit/7e44305041d96b064c197216b931ae3917a34ac1
+    git -C ZLUDA/ext/llvm-project cherry-pick --no-commit 7e44305041d96b064c197216b931ae3917a34ac1
 }
 
 pkgver() {
-    git -C ZLUDA describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git -C ZLUDA describe --long --tags --abbrev='7' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
