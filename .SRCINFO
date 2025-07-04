@@ -1,7 +1,7 @@
 pkgbase = swiss-army-knife-hs
 	pkgdesc = A collection of powerful but useful small tools.
-	pkgver = 0.1.0.4
-	pkgrel = 4
+	pkgver = 1.0.0.0
+	pkgrel = 5
 	url = https://github.com/flajann2/swiss-army-knife-hs
 	arch = x86_64
 	license = MIT

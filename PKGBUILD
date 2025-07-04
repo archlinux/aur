@@ -1,7 +1,7 @@
 # Maintainer: Fred Mitchell <fred.mitchell@atomlogik.de>
 pkgname=swiss-army-knife-hs
-pkgver=0.1.0.4
-pkgrel=4
+pkgver=1.0.0.0
+pkgrel=5
 pkgdesc="A collection of powerful but useful small tools."
 arch=('x86_64')
 url="https://github.com/flajann2/swiss-army-knife-hs"
@@ -21,6 +21,6 @@ package() {
     cd "$srcdir/$pkgname"
     mkdir -p "$pkgdir/usr/bin"
     cabal install --overwrite-policy=always
-    install -Dm755 $(find . -path "*/sak/build/sak/*" -name sak -type f) "$pkgdir/usr/bin/sak"
+    install -Dm755 $(find . -path "*/dist-newstyle/build/*" -name sak -type f) "$pkgdir/usr/bin/sak"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
