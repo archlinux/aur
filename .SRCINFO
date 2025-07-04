@@ -1,7 +1,7 @@
 pkgbase = cxt
 	pkgdesc = A command-line tool that aggregates file and directory contents into your clipboard, perfect for providing project context to AI chatbots
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vaibhav-mattoo/cxt
 	arch = x86_64
 	arch = aarch64
