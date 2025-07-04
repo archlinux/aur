@@ -28,6 +28,7 @@ pkgver() {
 build() {
   cmake -B build -S "${srcdir}/${_gitname}" \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_CXX_FLAGS=-fext-numeric-literals \
         -DDISABLE_WERROR=TRUE \
         -Wno-dev
