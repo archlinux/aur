@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-pinyin-sougou-dict-git
 _pkgname=sougouscel
-pkgver=20250105.r15.g2489001
+pkgver=20250603.r5.g749f1b3
 pkgrel=1
 pkgdesc="Fcitx5-pinyin搜狗官网词库全部词量"
 arch=('any')

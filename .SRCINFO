@@ -1,6 +1,6 @@
 pkgbase = fcitx5-pinyin-sougou-dict-git
 	pkgdesc = Fcitx5-pinyin搜狗官网词库全部词量
-	pkgver = 20250105.r15.g2489001
+	pkgver = 20250603.r5.g749f1b3
 	pkgrel = 1
 	url = https://pinyin.sogou.com/dict/
 	arch = any
