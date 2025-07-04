@@ -2,9 +2,9 @@
 #
 # shellcheck shell=bash disable=SC2034 disable=SC2154 disable=SC2164
 
-_commit=dab7b4455e897c2dd1fa3e9711654880c4f90237
+_commit=71904a7e407ab326a467bf9942222c6d01049f9f
 pkgname=radicle-desktop
-pkgver='0.5.0'
+pkgver='0.6.0'
 pkgrel='1'
 pkgdesc='Radicle desktop app'
 arch=('x86_64')
