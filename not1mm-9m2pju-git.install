@@ -1,6 +1,7 @@
 post_install() {
   echo ":: not1mm-9m2pju-git installed successfully!"
-  echo ":: Run it using the 'not1mm' command."
-  echo ":: Data will be stored in ~/.local/share/not1mm"
-  echo ":: 73 de 9M2PJU https://hamradio.my"
+  echo ":: Run it with the 'not1mm' command."
+  echo ":: If you experience permission errors, the app may be trying to write to system folders."
+  echo ":: All runtime data will be stored in ~/.local/share/not1mm"
+  echo ":: 73 de 9M2PJU – https://hamradio.my"
 }
