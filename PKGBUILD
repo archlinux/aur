@@ -6,7 +6,7 @@
 
 _gitname='pulseview'
 pkgname="${_gitname}-git"
-pkgver=0.3.0.r1170.g32ca7966
+pkgver=0.3.0.r1172.ge2fe9dfb
 pkgrel=1
 pkgdesc="A Qt based logic analyzer GUI for sigrok. (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -16,7 +16,8 @@ depends=('libsigrok-git' 'libsigrokdecode-git' 'qt5-base' 'boost-libs' 'qt5-svg'
 makedepends=('git' 'cmake' 'boost' 'qt5-tools')
 conflicts=("${_gitname}")
 provides=("${_gitname}")
-source=("git://sigrok.org/${_gitname}")
+#source=("git://sigrok.org/${_gitname}") unreachable at this moment (2025/07/04)
+source=("git+https://github.com/sigrokproject/${_gitname}")
 md5sums=('SKIP')
 
 pkgver() {
