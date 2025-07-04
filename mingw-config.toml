@@ -1,4 +1,4 @@
-change-id = 138986
+change-id = 140732
 
 [llvm]
 download-ci-llvm = false
@@ -26,7 +26,7 @@ prefix = "@PREFIX@"
 
 [rust]
 download-rustc = false
-codegen-units = 0
+codegen-units = 1
 codegen-units-std = 1
 channel = "stable"
 dist-src = false
