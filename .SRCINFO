@@ -1,6 +1,6 @@
-pkgbase = skia-git
-	pkgdesc = A complete 2D graphic library for drawing Text, Geometries, and Images.
-	pkgver = r74476.5b56d9a916
+pkgbase = skia-static
+	pkgdesc = A complete 2D graphic library for drawing Text, Geometries, and Images; Static build.
+	pkgver = 129
 	pkgrel = 1
 	url = https://github.com/google/skia
 	arch = x86_64
@@ -24,5 +24,7 @@ pkgbase = skia-git
 	depends = glibc
 	provides = skia
 	conflicts = skia
+	source = skia.pc
+	sha256sums = SKIP
 
-pkgname = skia-git
+pkgname = skia-static
