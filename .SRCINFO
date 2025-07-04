@@ -1,6 +1,6 @@
 pkgbase = ocompiler
 	pkgdesc = O language compiler
-	pkgver = 5+235
+	pkgver = 5+236
 	pkgrel = 0
 	url = https://github.com/colin-i/o
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = ocompiler
 	makedepends = lib32-glibc
 	makedepends = bc
 	depends = lib32-glibc
-	source = ocompiler-5+235-0.tar.gz::https://github.com/colin-i/o/archive/ocompiler-5+235-0.tar.gz
-	source = obj.txt.gz::https://github.com/colin-i/o/releases/download/ocompiler-5+235-0/obj.txt.gz
-	sha256sums = 94b085c27bf1aa10431b02e07ba7703ddfd7ea675bf53ccc412d0cf0d9d6c4bf
-	sha256sums = d4aac88fb73e127bc7cfe5c3bad62cd29450ceb99855dedbfdf2373ca2d20dd9
+	source = ocompiler-5+236-0.tar.gz::https://github.com/colin-i/o/archive/ocompiler-5+236-0.tar.gz
+	source = obj.txt.gz::https://github.com/colin-i/o/releases/download/ocompiler-5+236-0/obj.txt.gz
+	sha256sums = f8e71c319c49f8654f05dd4900e316c2c125ff616cadbffbc047cc00989b5979
+	sha256sums = aa3256fcd80553e5679499444383c7dcd4e498f34ac448330fabe7fe09b497fb
 
 pkgname = ocompiler
