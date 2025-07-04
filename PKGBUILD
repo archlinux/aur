@@ -2,14 +2,14 @@
 
 _name=google-genai
 pkgname=python-${_name}
-pkgver=1.23.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
 url='https://github.com/googleapis/python-genai'
 license=('Apache-2.0')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ac84ac0ed24f84756ce931daeea8beef464f769cc17544f805e81fe50fa6c4ab')
+sha256sums=('5adf3a7d58dc53f97addf38a4218df05a2b200980f274c3a01a03464e51f4bd0')
 depends=('python' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pydantic' 'python-requests' 'python-tenacity' 'python-websockets' 'python-typing_extensions')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-twine' 'python-packaging' 'python-pkginfo')
 checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-cov' 'python-mcp')
