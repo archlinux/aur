@@ -7,7 +7,7 @@
 
 pkgname=aws-lc
 pkgver=1.55.0
-pkgrel=1
+pkgrel=2
 pkgdesc='general-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
 license=('MIT' 'ISC' 'Apache-2.0' 'LicenseRef-SSLeay-License')

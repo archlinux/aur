@@ -1,7 +1,7 @@
 pkgbase = aws-lc
 	pkgdesc = general-purpose cryptographic library maintained by the AWS Cryptography team for AWS
 	pkgver = 1.55.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aws/aws-lc
 	arch = x86_64
 	license = MIT
