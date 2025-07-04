@@ -2,7 +2,7 @@
 pkgname=p2ascii
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Image to ASCII converter using OpenCV. Can convert to text and to image"
+pkgdesc="Image to ASCII art converter with optional color and edge-based rendering"
 arch=('any')
 url="https://github.com/Hugana/p2ascii"
 license=('MIT')
