@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-libarchive
 	pkgdesc = Multi-format archive and compression library (Android riscv64)
-	pkgver = 3.7.9
+	pkgver = 3.8.1
 	pkgrel = 1
 	url = https://libarchive.org/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = android-riscv64-libarchive
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/libarchive/libarchive/releases/download/v3.7.9/libarchive-3.7.9.tar.xz
-	md5sums = e378aeb163d8c81745665dddd81116ef
+	source = https://github.com/libarchive/libarchive/releases/download/v3.8.1/libarchive-3.8.1.tar.xz
+	md5sums = 80fd1a7acc4da7c7d4a5f9f96df6e3ff
 
 pkgname = android-riscv64-libarchive
