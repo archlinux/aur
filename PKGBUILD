@@ -1,8 +1,9 @@
 # Maintainer: Jakub Czarnota <jakub.czarnota@protonmail.com>
 pkgname=paf-notify
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Notifies about pacman, AUR, and flatpak updates"
+url="https://github.com/JakubCzarnota/paf-notify"
 arch=('any')
 license=('MIT')
 depends=('bash' 'python' 'python-gobject' 'libnotify' 'pacman-contrib')

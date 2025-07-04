@@ -1,7 +1,8 @@
 pkgbase = paf-notify
 	pkgdesc = Notifies about pacman, AUR, and flatpak updates
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
+	url = https://github.com/JakubCzarnota/paf-notify
 	arch = any
 	license = MIT
 	depends = bash
@@ -12,7 +13,7 @@ pkgbase = paf-notify
 	optdepends = yay: AUR helper (used by default)
 	optdepends = paru: Alternative AUR helper
 	optdepends = flatpak: For flatpak update checks
-	source = git+https://github.com/JakubCzarnota/paf-notify.git#tag=v1.0.0
+	source = git+https://github.com/JakubCzarnota/paf-notify.git#tag=v1.0.1
 	md5sums = SKIP
 
 pkgname = paf-notify
