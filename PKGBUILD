@@ -2,9 +2,8 @@
 
 pkgbase=python-ccdproc
 _pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}")
-#"python-${_pyname}-doc")
-pkgver=2.4.3
+pkgname=("python-${_pyname}" "python-${_pyname}-doc")
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Affiliated package for the AstroPy package for basic data reductions of CCD images"
 arch=('any')
@@ -12,16 +11,15 @@ url="http://ccdproc.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-hatch-vcs'
              'python-build'
-             'python-installer')
-#             'python-sphinx-astropy'
-#             'python-matplotlib'
-#             'python-astropy'
-#             'python-scipy'
+             'python-installer'
+             'python-sphinx-astropy'
+             'python-matplotlib'
+             'python-astropy'
+             'python-scipy'
+             'graphviz')
 ##            'python-scikit-image'
 ##            'python-astroscrappy'
 ##            'python-reproject'
-#             'graphviz'
-#            )
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
               'python-pytest-remotedata'
@@ -31,14 +29,20 @@ checkdepends=('python-pytest-astropy-header'
               'python-reproject'
               'python-memory-profiler') # psutil required by memory-profiler
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-        'fix-underline-length.patch')
-md5sums=('5f1de7714bc02e03e427d65611ab4e7a'
-         '11f3272eabb39ed4acc2b08125573ba6')
+        "${pkgver}-CHANGES.rst::https://github.com/astropy/ccdproc/raw/refs/tags/${pkgver}/CHANGES.rst"
+        "${pkgver}-CITATION.rst::https://github.com/astropy/ccdproc/raw/refs/tags/${pkgver}/CITATION.rst"
+        "${pkgver}-CODE_OF_CONDUCT.rst::https://github.com/astropy/ccdproc/raw/refs/tags/${pkgver}/CODE_OF_CONDUCT.rst")
+#       'fix-underline-length.patch')
+md5sums=('8dc76c1729c09af4f11672db34333dd1'
+         '2fdb0db02e2180465ce79943ff0a9c46'
+         'd32eebebfa65d99d19cc22c2b928c93c'
+         'a35d0182f210d708ec29f9f73918be43')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    patch -Np1 -i "${srcdir}/fix-underline-length.patch"
+#   patch -Np1 -i "${srcdir}/fix-underline-length.patch"
+    for rts in ${srcdir}/${pkgver}-*.rst; do ln -rs ${rts} ${rts##*-}; done
 }
 
 build() {
@@ -46,7 +50,7 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-#   PYTHONPATH="../build/lib" make -C docs html
+    PYTHONPATH=".." make -C docs html
 }
 
 check() {
@@ -66,12 +70,12 @@ package_python-ccdproc() {
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
-#package_python-ccdproc-doc() {
-#    pkgdesc="Documentation for Python CCDPROC module"
-#    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
-#
-#    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../licenses/*
-#    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.rst
-#    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
-#    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
-#}
+package_python-ccdproc-doc() {
+    pkgdesc="Documentation for Python CCDPROC module"
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../licenses/*
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.rst
+    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+}

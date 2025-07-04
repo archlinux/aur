@@ -1,6 +1,6 @@
 pkgbase = python-ccdproc
 	pkgdesc = Affiliated package for the AstroPy package for basic data reductions of CCD images
-	pkgver = 2.4.3
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = http://ccdproc.readthedocs.io
 	arch = any
@@ -15,10 +15,19 @@ pkgbase = python-ccdproc
 	makedepends = python-hatch-vcs
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/c/ccdproc/ccdproc-2.4.3.tar.gz
-	source = fix-underline-length.patch
-	md5sums = 5f1de7714bc02e03e427d65611ab4e7a
-	md5sums = 11f3272eabb39ed4acc2b08125573ba6
+	makedepends = python-sphinx-astropy
+	makedepends = python-matplotlib
+	makedepends = python-astropy
+	makedepends = python-scipy
+	makedepends = graphviz
+	source = https://files.pythonhosted.org/packages/source/c/ccdproc/ccdproc-2.5.0.tar.gz
+	source = 2.5.0-CHANGES.rst::https://github.com/astropy/ccdproc/raw/refs/tags/2.5.0/CHANGES.rst
+	source = 2.5.0-CITATION.rst::https://github.com/astropy/ccdproc/raw/refs/tags/2.5.0/CITATION.rst
+	source = 2.5.0-CODE_OF_CONDUCT.rst::https://github.com/astropy/ccdproc/raw/refs/tags/2.5.0/CODE_OF_CONDUCT.rst
+	md5sums = 8dc76c1729c09af4f11672db34333dd1
+	md5sums = 2fdb0db02e2180465ce79943ff0a9c46
+	md5sums = d32eebebfa65d99d19cc22c2b928c93c
+	md5sums = a35d0182f210d708ec29f9f73918be43
 
 pkgname = python-ccdproc
 	depends = python>=3.8
@@ -28,3 +37,6 @@ pkgname = python-ccdproc
 	depends = python-astroscrappy>=1.1.0
 	depends = python-reproject>=0.7
 	optdepends = python-ccdproc-doc: Documentation for CCDPROC
+
+pkgname = python-ccdproc-doc
+	pkgdesc = Documentation for Python CCDPROC module
