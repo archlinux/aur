@@ -2,7 +2,7 @@
 
 pkgname=python-iterutils
 _name=${pkgname//-/_}
-pkgver=0.2.4
+pkgver=0.2.4.1
 pkgrel=1
 epoch=
 pkgdesc="Python another itertools."
@@ -26,7 +26,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('33bc80a34fee6893f6fefecf16132de7918d6442aaa20f1ba17fef93a4313c0b')
+sha256sums=('7ed2311b639cad7c746a6b27f10ed2ea8a0d6bb1d70519bbcf078ab1390ed44b')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
