@@ -4,8 +4,8 @@
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 
-pkgver=21.1.16
-pkgrel=1
+pkgver=21.1.18
+pkgrel=2
 arch=('x86_64')
 license=('LicenseRef-Adobe-Display-PostScript'
          'BSD-3-Clause'
@@ -39,7 +39,7 @@ validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF'  # Peter Hutterer (Who-
               '67DC86F2623FC5FD4BB5225D14706DBE1E4B4540'  # Olivier Fourdan <fourdan@xfce.org>
               'FD0004A26EADFE43A4C3F249C6F7AE200374452D' # Povilas Kanapickas <povilas@radix.lt>
               '3BB639E56F861FA2E86505690FDD682D974CA72A') # Matt Turner <mattst88@gmail.com>
-sha512sums=('9280c9d0f5eea65c8666a7936c8d193db5edb6eac946b5c00b218388ef07b6e153422167ed25ca6ad1c21e5f4aceeee4b11f49a7279b221bb3587d0647679277'
+sha512sums=('7677bb9585e44f5cfeba955514152ae8232841db402e833696b841c9620662a9f11dcf1d1a6b7392a6e22489607048b022b9c22c9c544703cd76e520cdb01e11'
             '672375cb5028ba9cda286e317d17bd8c9a9039483e7f79c21f223fd08ba07655729e9f59a082f4b8f5d8de45a77a9e9affce1002fb8c6657e26ef1a490654e49'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22'
             'c3b541c7ac95c94f682577cacedc06e79427003a870cde844056a7662087873b59dc06933552bb867b16fc0387f8a061672df780454769f26aa3e53b13a94edf')
@@ -71,6 +71,7 @@ build() {
     -D dtrace=false \
     -D systemd_logind=true \
     -D suid_wrapper=true \
+    -D linux_acpi=false \
     -D xkb_dir=/usr/share/X11/xkb \
     -D xkb_output_dir=/var/lib/xkb \
     -D libunwind=true
