@@ -1,0 +1,18 @@
+pkgbase = paf-notify
+	pkgdesc = Notify about pacman, AUR, and flatpak updates
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = bash
+	depends = python
+	depends = python-gobject
+	depends = libnotify
+	depends = pacman-contrib
+	optdepends = yay: AUR helper (used by default)
+	optdepends = paru: Alternative AUR helper
+	optdepends = flatpak: For flatpak update checks
+	source = git+https://github.com/JakubCzarnota/paf-notify.git#tag=v1.0.0
+	md5sums = 7a52d701fba1ca27f33caa65be7902cf
+
+pkgname = paf-notify
