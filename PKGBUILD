@@ -1,5 +1,5 @@
 pkgname=finkyo-bin
-pkgver=0.5.1.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="file server"
 arch=('x86_64' 'aarch64')
@@ -7,8 +7,8 @@ url="https://github.com/quantulr/finkyo"
 license=('MIT')
 source_x86_64=(finkyo-$pkgver-x86_64::https://github.com/quantulr/finkyo/releases/download/v${pkgver}/finkyo-linux-amd64)
 source_aarch64=(finkyo-$pkgver-aarch64::https://github.com/quantulr/finkyo/releases/download/v${pkgver}/finkyo-linux-aarch64)
-sha512sums_x86_64=('8bf7dea40d400ff8c0247beee65840f7664d26a8eed210b17a245901df7cbdf51ace02953d1302a0bd52063cfe22c46ba9052a24926cccd1333b76c86291e766')
-sha512sums_aarch64=('3728e99a9777db27f3552cef1e90702226d7f9fb8456a6ab198a0b7b8a578089c2c387db9fe8c6fc131bf6b0b36defed35eb52b24bbd953ade09f76953c56c60')
+sha512sums_x86_64=('6fed01fde2f182c7fc3d41e31182d26670d6d7293dc64f74596456fd3b8e41f0eab98be75d470136774bbf906428ebb188faf58507c861e0b9ee06228d22edc9')
+sha512sums_aarch64=('001a102c68bb7728eb1f47fada580a6350eeec41076ade3c82c837f5be9d0344a99ff2b9d46e64ad4277626c874a98970cae7762a9e6bdba79e05b376dee4b8d')
 
 package() {
   cd "$srcdir/"
