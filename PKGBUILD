@@ -12,7 +12,7 @@ optdepends=(
     'flatpak: For flatpak update checks'
 )
 source=("git+https://github.com/JakubCzarnota/paf-notify.git#tag=v${pkgver}")
-md5sums=('7a52d701fba1ca27f33caa65be7902cf')
+md5sums=('3696ee9182e7d9c675b614068c588c1b')
 
 package() {
     # Python source files
