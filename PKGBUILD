@@ -1,15 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=procmon-git
-pkgver=2.0.0.0.r0.g1524451
+pkgver=2.1.0.0.r0.gc5f8271
 pkgrel=1
 pkgdesc="Trace syscall activity tool"
 arch=('x86_64')
 url="https://github.com/Sysinternals/ProcMon-for-Linux"
 license=('MIT')
-depends=('glibc' 'clang' 'libedit' 'libelf' 'ncurses' 'sysinternalsebpf' 'zlib' 'zstd')
-makedepends=('git' 'cmake' 'llvm' 'sqlite')
-checkdepends=('iperf3' 'netperf')
+depends=('gcc-libs' 'libedit' 'libelf' 'ncurses' 'sysinternalsebpf' 'zlib' 'zstd')
+makedepends=('git' 'cmake' 'clang' 'sqlite')
 provides=("procmon=$pkgver")
 conflicts=('procmon')
 source=("git+https://github.com/Sysinternals/ProcMon-for-Linux.git")
@@ -46,6 +45,6 @@ check() {
 package() {
   cd "ProcMon-for-Linux"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  install -Dm644 "_build"/{getsyscalls,procmon} -t "$pkgdir/usr/bin"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/procmon"
 }
