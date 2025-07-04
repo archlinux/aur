@@ -1,0 +1,18 @@
+pkgbase = autojump-rs-git
+	pkgdesc = A faster way to navigate your filesystem from the command line
+	pkgver = 0.5.1.r14.g65abf11
+	pkgrel = 1
+	url = https://github.com/xen0n/autojump-rs
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python
+	makedepends = cargo
+	provides = autojump
+	conflicts = autojump
+	source = git+https://github.com/xen0n/autojump-rs.git
+	source = autojump-22.5.3.tar.gz::https://github.com/wting/autojump/archive/refs/tags/release-v22.5.3.tar.gz
+	sha256sums = SKIP
+	sha256sums = 00daf3698e17ac3ac788d529877c03ee80c3790472a85d0ed063ac3a354c37b1
+
+pkgname = autojump-rs-git
