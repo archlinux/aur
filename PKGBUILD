@@ -2,10 +2,10 @@
 #
 # mantainer: Muflone http://www.muflone.com/contacts/english/
 # contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=c22a897110d53ca795c0e76adef927ac9dbafe27
+_commit=6a97dcba488732c38229c7fae3d81e4e673fb55a
 pkgname=penguins-eggs
 pkgver=10.1.1
-pkgrel=24
+pkgrel=25
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
 url="https://penguins-eggs.net"
@@ -35,8 +35,8 @@ depends=(
  'python'
  'rsync'
  'squashfs-tools'
- 'syslinux'
  'sshfs'
+ 'syslinux'
  'wget'
  'xdg-utils' 
 )
