@@ -2,7 +2,7 @@
 #              Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=scorep
-pkgver=9.0
+pkgver=9.1
 pkgrel=1
 pkgdesc="Highly scalable and easy-to-use tool suite for profiling, event tracing, and online analysis of HPC applications."
 arch=('i686' 'x86_64')
@@ -12,17 +12,10 @@ depends=('cubew>=4.9' 'cubelib>=4.9' 'openmpi' 'otf2>=3.1.1' 'opari2>=2.0.9' 'go
 options=('staticlibs')
 source=(
 	http://perftools.pages.jsc.fz-juelich.de/cicd/${pkgname}/tags/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz
-	#scorep-update-fake-gmp-header.patch
 )
 sha256sums=(
-	'5d0a5db4cc6f31c30ae03c7e6f6245e83667b0ff38a7041ffe8b2e8e581e0997'
-	#'36601285a46cafc35f3f821e884e1936e72442b084338d6d068308ff07d9d188'
+	'a6593716e62c751937f3be78782bf09b3737a68c46cdbeabec7cff80d2fdc7c8'
 )
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  #patch -Np1 < ${srcdir}/scorep-update-fake-gmp-header.patch
-}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
