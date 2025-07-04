@@ -2,7 +2,7 @@ pkgbase = python-pymca5
 	pkgdesc = Mapping and X-Ray Fluorescence Analysis
 	pkgver = 5.9.4
 	pkgrel = 1
-	url = http://www.silx.org/doc/PyMca/dev/
+	url = https://github.com/silx-kit/pymca
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
@@ -22,7 +22,7 @@ pkgbase = python-pymca5
 	depends = python-opengl
 	depends = python-qtconsole
 	depends = python-pyqt5-webengine
-	source = pymca-5.9.4.tar.gz::https://github.com/vasole/pymca/archive/refs/tags/v5.9.4.tar.gz
+	source = pymca-5.9.4.tar.gz::https://github.com/silx-kit/pymca/archive/refs/tags/v5.9.4.tar.gz
 	sha256sums = 36dfc2421a1087cc65c612f3b8c5e53e43b0ef12e2830cacd3c8d0b5f7052752
 
 pkgname = python-pymca5
