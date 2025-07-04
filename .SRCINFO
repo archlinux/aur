@@ -1,0 +1,14 @@
+pkgbase = FTNN_desktop
+	pkgdesc = FTNN 富途牛牛桌面版（官方 .deb 封装）
+	pkgver = 15.22.12108
+	pkgrel = 1
+	url = https://www.futunn.com/
+	arch = x86_64
+	license = unknown
+	depends = glibc
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	source = https://softwaredownload.futunn.com/FTNN_desktop_15.22.12108_amd64.deb
+	sha256sums = SKIP
+
+pkgname = FTNN_desktop
