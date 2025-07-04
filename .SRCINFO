@@ -1,7 +1,7 @@
 pkgbase = firedragon-catppuccin
 	pkgdesc = Floorp fork build using custom branding and settings
 	pkgver = 11.28.0_2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://firedragon.garudalinux.org
 	arch = x86_64
