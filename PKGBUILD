@@ -13,14 +13,20 @@ md5sums=('SKIP')
 
 build() {
    cd "$srcdir/$pkgname"
-   cabal configure
+
+   echo "**** $HOME **** $srcdir ****"
+   mkdir -p "$HOME/.cabal"
+   cabal configure \
+         --prefix=/usr \
+         --extra-lib-dirs=/usr/lib \
+         --extra-include-dirs=/usr/include
    cabal build 
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    mkdir -p "$pkgdir/usr/bin"
-    cabal install --overwrite-policy=always
-    install -Dm755 $(find . -path "*/dist-newstyle/build/*" -name sak -type f) "$pkgdir/usr/bin/sak"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+   cd "$srcdir/$pkgname"
+   mkdir -p "$pkgdir/usr/bin"
+   cabal install --overwrite-policy=always
+   install -Dm755 $(find . -path "*/dist-newstyle/build/*" -name sak -type f) "$pkgdir/usr/bin/sak"
+   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
