@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-curl
 	pkgdesc = An URL retrival utility and library (Android riscv64)
-	pkgver = 8.13.0
+	pkgver = 8.14.1
 	pkgrel = 1
 	url = https://curl.haxx.se
 	arch = any
@@ -20,9 +20,9 @@ pkgbase = android-riscv64-curl
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://curl.haxx.se/download/curl-8.13.0.tar.bz2
+	source = https://curl.haxx.se/download/curl-8.14.1.tar.bz2
 	source = 0002-nghttp2-static.patch
-	md5sums = 34f58f1581fc3ccf44b262f64cef978e
+	md5sums = bf683fcf55bed4c5bf66ca57ab99a96b
 	md5sums = 83548784e93f008c64aea899a0905a07
 
 pkgname = android-riscv64-curl

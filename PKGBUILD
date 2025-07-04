@@ -6,7 +6,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-curl
-pkgver=8.13.0
+pkgver=8.14.1
 pkgrel=1
 arch=('any')
 pkgdesc="An URL retrival utility and library (Android ${_android_arch})"
@@ -26,7 +26,7 @@ makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/download/curl-${pkgver}.tar.bz2"
         "0002-nghttp2-static.patch")
-md5sums=('34f58f1581fc3ccf44b262f64cef978e'
+md5sums=('bf683fcf55bed4c5bf66ca57ab99a96b'
          '83548784e93f008c64aea899a0905a07')
 
 prepare() {
