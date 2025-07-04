@@ -8,7 +8,7 @@ url="https://github.com/marcusziade/StarCraftKit"
 license=('MIT')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/marcusziade/StarCraftKit/releases/download/$pkgver/starcraft-cli-linux.tar.gz")
-sha256sums=('779c284af32db630c7b6cfcf9ff643935919c01ed494741d9cab275acad18815')
+sha256sums=('aca263217d5fed300e4c7bea4dc721e69bd142068210ac4642351b1cc4223da9')
 
 package() {
     cd "$srcdir"
