@@ -1,14 +1,24 @@
 pkgbase = not1mm-9m2pju-git
+<<<<<<< HEAD
 	pkgdesc = Unofficial Arch Linux AUR package for Not1MM - Ham Radio audio tool
 	pkgver = r1.abcdef
 	pkgrel = 1
 	url = https://github.com/mbridak/not1mm
 	arch = any
 	license = MIT
+=======
+	pkgdesc = Ham Radio Contest Logger (Not1MM fork) - Git version
+	pkgver = r2188.05119a4
+	pkgrel = 1
+	url = https://github.com/mbridak/not1mm
+	arch = any
+	license = GPL3
+>>>>>>> ac3a8f8 (Initial AUR release of not1mm-9m2pju-git)
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+<<<<<<< HEAD
 	makedepends = python-setuptools
 	depends = python
 	depends = python-numpy
@@ -22,5 +32,31 @@ pkgbase = not1mm-9m2pju-git
 	conflicts = not1mm
 	source = not1mm-9m2pju-git::git+https://github.com/mbridak/not1mm.git
 	md5sums = SKIP
+=======
+	depends = python
+	depends = python-pyqt5
+	depends = python-pyqt6
+	depends = python-requests
+	depends = python-dicttoxml
+	depends = python-xmltodict
+	depends = python-psutil
+	depends = python-sounddevice
+	depends = python-soundfile
+	depends = python-numpy
+	depends = python-notctyparser
+	depends = python-pyserial
+	depends = python-appdata
+	depends = python-gobject
+	depends = python-thefuzz
+	depends = python-levenshtein
+	depends = gtk4
+	depends = hamradio-menus
+	optdepends = hamlib
+	optdepends = flrig
+	provides = not1mm
+	conflicts = not1mm
+	source = git+https://github.com/mbridak/not1mm.git
+	sha256sums = SKIP
+>>>>>>> ac3a8f8 (Initial AUR release of not1mm-9m2pju-git)
 
 pkgname = not1mm-9m2pju-git
