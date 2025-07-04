@@ -1,5 +1,5 @@
 pkgbase = paf-notify
-	pkgdesc = Notify about pacman, AUR, and flatpak updates
+	pkgdesc = Notifies about pacman, AUR, and flatpak updates
 	pkgver = 1.0.0
 	pkgrel = 1
 	arch = any
