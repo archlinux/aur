@@ -1,7 +1,7 @@
 # Maintainer: Evan Burkey <evan@burkey.co>
 pkgname=epochcli
-pkgver=1.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 epoch=
 pkgdesc="Updater and launcher for Project Epoch"
 arch=('x86_64')
@@ -15,13 +15,11 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-source=("git+https://git.burkey.co/eburk/epochcli#commit=134d70e29b3b19365e2ccdd879c2421b9fb5dfac") 
+source=("git+https://git.burkey.co/eburk/epochcli#commit=af8a2dbd1e67b224f38d9b3d64e7c5e6dd6b322c") 
 noextract=()
 sha256sums=("SKIP")
 
 build() {
-	msg "Building the bee binaries"
-	msg2 "using gopath $GOPATH"
 	pushd epochcli
 	go build
 }
