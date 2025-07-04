@@ -21,6 +21,6 @@ b2sums_x86_64=('6be830b6b54f594f3042d47238e26e057b717bbaa08077f0cf5851f6e4de0962
 b2sums_i686=('1cd828cd7b2c3f84f231b1caf4660d1535ca68d67e192352ae82087c24bd8225d5a0fa876219ee92a81c10263a59381672ababce03ef4412a34ebb678e9c37f9')
 
 package() {
-  install -Dv "alda-$pkgver-$CARCH" "$pkgdir/usr/bin/"
-  install -Dv "alda-player-$pkgver" "$pkgdir/usr/bin/"
+  install -Dv "alda-$pkgver-$CARCH" "$pkgdir/usr/bin/alda"
+  install -Dv "alda-player-$pkgver" "$pkgdir/usr/bin/alda-player"
 }
