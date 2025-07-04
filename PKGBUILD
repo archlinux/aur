@@ -1,7 +1,7 @@
 # Maintainer: xiliuya <xiliuya@aliyun.com>
 
 pkgname=ntloader-git
-pkgver=3.0.6.r0.gec501ba
+pkgver=latest.r0.g0862447
 pkgrel=1
 pkgdesc="Windows NT6+ loader for grub2 and grub4dos."
 arch=('x86_64')
@@ -11,10 +11,9 @@ makedepends=('git' 'gcc' 'binutils' 'zlib' 'make' 'mingw-w64-gcc' 'aarch64-linux
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!strip !buildflags)
-source=("$pkgname::git+$url" install.sh gcc15.patch)
+source=("$pkgname::git+$url" install.sh)
 sha256sums=('SKIP' 
-            '4449abfd66efeac3d8ce87d1fed95ef8da165f19e67a7dea01a64f3bc8719b05'
-            '8ca705e6ef0be7dd431edbb6a29c1d82fbf389fd7fa434e1c4a417efb19933fe')
+            '4449abfd66efeac3d8ce87d1fed95ef8da165f19e67a7dea01a64f3bc8719b05')
 
 pkgver() {
 	cd "$pkgname"
@@ -24,8 +23,6 @@ pkgver() {
 build() {
     echo $(pwd)
 	cd "$pkgname"
-    echo "applay patch"
-    git apply ../gcc15.patch
     echo "Build NTloader"
     make 
     # We need mingw-w64-gcc depend for build
