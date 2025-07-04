@@ -3,7 +3,7 @@
 
 pkgname=superproductivity
 _name=super-productivity
-pkgver=13.1.5
+pkgver=14.0.3
 pkgrel=1
 pkgdesc="An advanced todo list app with timeboxing and time tracking capabilities"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('nvm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johannesjo/super-productivity/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('d4d83e6bac170ef7b7efca37e60943c4431d3998ea04aa3a73401755ef2c8c42'
+sha256sums=('3138e8d779761ca93fc7748413cfe3c282dc538f7784d7e7bad94f886af25abd'
             'a8945d93cacbe189b538da601b3f6ace0588c3b126236e763e8f2010005513bb'
             'f9ca69e16223b3dcfa0d8ae9dbbff231255482d85f0d72ddcc5033dac890741e')
 
@@ -40,8 +40,8 @@ build() {
 
 package() {
     cd "${_name}-${pkgver}"
-    install -Dm644 app-builds/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r app-builds/linux-unpacked/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 .tmp/app-builds/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r .tmp/app-builds/linux-unpacked/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     for i in 16 32 48 64 128 256 512 1024; do
