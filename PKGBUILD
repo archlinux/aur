@@ -2,7 +2,7 @@
 
 pkgname=python-dupan
 _name=${pkgname//-/_}
-pkgver=0.0.2.0.1
+pkgver=0.0.2.1
 pkgrel=1
 epoch=
 pkgdesc="Python wrapper for baidu webdisk <https://pan.baidu.com>."
@@ -29,7 +29,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('70de11dd28b9f18e16bf9c10d9c5d1ec0a0d9cd99d006cbc7c349c9958aa3ecf')
+sha256sums=('615fe6306f4955e66e4c2bfa4a845df07050470f23f2848c4a29605af5845a66')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
