@@ -2,7 +2,7 @@
 # Contributor: erk <v at erk dot io>
 
 pkgname=vnote-git
-pkgver=3.18.2.r0.g5e4a6fa7
+pkgver=3.19.2.r0.g856d2597
 pkgrel=1
 pkgdesc="A Vim-inspired note-taking application, especially for Markdown."
 arch=(x86_64 i686 armv7h aarch64)
@@ -54,6 +54,7 @@ build() {
   export LDFLAGS="-fuse-ld=lld"
 
   cmake -B build -S "vnote" -Wno-dev \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DUSE_LD_GOLD=OFF \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
