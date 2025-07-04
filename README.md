@@ -45,7 +45,7 @@
 - 🎭 **System Prompts**: Customize model behavior with custom system prompts
 - 🤖 **Custom Roles**: Create and use reusable AI roles for specialized tasks
 - 📃 **Conversation Logging**: Save your conversations to text files for later reference
-- 💾 **Session Management**: Save, load, and list interactive chat sessions.
+- 💾 **Session Management**: Save, load, and list interactive chat sessions with advanced session manager
 - 🔌 **Modular Architecture**: Well-structured codebase with clean separation of concerns
 - 🔄 **Provider Switching**: Easily switch between different LLM providers with a single parameter
 - 🚀 **Performance Optimized**: Fast response times and minimal resource usage
@@ -106,10 +106,14 @@ ngpt -i
 # Inside interactive mode, you can use commands like:
 # /help     - Show help menu
 # /save     - Save the current session
-# /load     - Load a previous session
 # /sessions - List saved sessions
 # /clear    - Clear the conversation
 # /exit     - Exit the session (also 'exit', 'quit', 'bye' without '/')
+
+# Keyboard shortcuts:
+# Ctrl+E    - Open multiline editor for complex inputs
+# Ctrl+C    - Exit the session
+# ↑/↓       - Navigate command history
 
 # Return response without streaming
 ngpt --plaintext "Tell me about quantum computing"
@@ -253,7 +257,7 @@ For more examples and detailed usage, visit the [CLI Usage Guide](https://nazdri
 usage: ngpt [-h] [-v] [--api-key API_KEY] [--base-url BASE_URL] [--model MODEL] [--web-search] [--pipe]
             [--temperature TEMPERATURE] [--top_p TOP_P] [--max_tokens MAX_TOKENS] [--log [FILE]]
             [--preprompt PREPROMPT | --role ROLE] [--config [CONFIG]] [--config-index CONFIG_INDEX]
-            [--provider PROVIDER] [--remove] [--show-config] [--all] [--list-models] [--cli-config [COMMAND ...]]
+            [--provider PROVIDER] [--remove] [--show-config] [--list-models] [--cli-config [COMMAND ...]]
             [--role-config [ACTION ...]] [--plaintext] [--language LANGUAGE] [--rec-chunk] [--diff [FILE]]
             [--chunk-size CHUNK_SIZE] [--analyses-chunk-size ANALYSES_CHUNK_SIZE] [--max-msg-lines MAX_MSG_LINES]
             [--max-recursion-depth MAX_RECURSION_DEPTH] [--humanize] [-i | -s | -c | -t | -r | -g]
@@ -295,7 +299,6 @@ Configuration Options::
 --remove                            Remove the configuration at the specified index (requires --config and
                                     --config-index or --provider)
 --show-config                       Show the current configuration(s) and exit
---all                               Show details for all configurations (requires --show-config)
 --list-models                       List all available models for the current configuration and exit
 --cli-config [COMMAND ...]          Manage CLI configuration (set, get, unset, list, help)
 --role-config [ACTION ...]          Manage custom roles (help, create, show, edit, list, remove) [role_name]
