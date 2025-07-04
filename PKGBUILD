@@ -3,7 +3,7 @@
 # Maintainer: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.62.2
+pkgver=1.63.1
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
@@ -14,7 +14,7 @@ license=('EPL2')
 #depends=('nodejs>=20.17.0' 'nss' 'gtk3' 'libxss' 'libxkbfile')
 depends=('nodejs-lts-jod' 'nss' 'gtk3' 'libxss' 'libxkbfile' 'ripgrep')
 makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
-             'gcc' 'make' 'node-gyp' 'npm' 'pkgconf' 'python-setuptools' 'yarn')
+             'gcc' 'git' 'make' 'node-gyp' 'npm' 'pkgconf' 'python-setuptools' 'yarn')
 optdepends=('git: git support' 'libsecret: keytar support')
 options=(!debug !strip)
 
@@ -32,7 +32,7 @@ source=(
 )
 sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
             '590086824e60c5a7f6b8796f876b6a3ad0521ab252ed739206a46bc94543b762'
-            'cf6c0c21b6b63c1899116e07890586a4f111c58dc3638014fe1a533a75d141ff'
+            '483fcae47b362668e9f5b5c1499554fd45a9b8b12fbc05bc0f273a86eb11f4d8'
             'f43cc8aaf4738166acdf4e54817ad7e9c031c4dacf23eb8496f9edae33b3f1d0'
             '76f48bbc421d298113c73cee628c9d0fd8b14381590d871928f4f0bd87e812ce'
             'd9712e3b79a98d7b1d5fd64d709daa806be6944c3f0cebf22879cd0e3c08ce06'
