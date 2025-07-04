@@ -1,8 +1,8 @@
 # Maintainer: ARKye03 <rafa03-dev@proton.me>
 
 pkgname=icon-browser-git
-pkgver=r14.036b062 # Can't be empty, will be set dynamically
-pkgrel=2
+pkgver=r19.68c7343 # Can't be empty, will be set dynamically
+pkgrel=1
 pkgdesc="Browse system installed icon themes"
 arch=(x86_64)
 license=('MIT')
@@ -11,6 +11,7 @@ depends=(
 	gtk4
 	glib2
 	gjs
+	libadwaita
 )
 makedepends=(
 	git
@@ -20,7 +21,6 @@ makedepends=(
 	npm
 	esbuild
 	desktop-file-utils
-	libadwaita
 )
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')

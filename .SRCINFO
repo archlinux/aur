@@ -1,7 +1,7 @@
 pkgbase = icon-browser-git
 	pkgdesc = Browse system installed icon themes
-	pkgver = r14.036b062
-	pkgrel = 2
+	pkgver = r19.68c7343
+	pkgrel = 1
 	url = https://github.com/Aylur/icon-browser
 	arch = x86_64
 	license = MIT
@@ -12,10 +12,10 @@ pkgbase = icon-browser-git
 	makedepends = npm
 	makedepends = esbuild
 	makedepends = desktop-file-utils
-	makedepends = libadwaita
 	depends = gtk4
 	depends = glib2
 	depends = gjs
+	depends = libadwaita
 	source = icon-browser-git::git+https://github.com/Aylur/icon-browser
 	sha256sums = SKIP
 
