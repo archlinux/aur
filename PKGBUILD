@@ -7,7 +7,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 BUILDFLAG="USE_OPENMP=1 USE_THREAD=1 USE_TLS=1 DYNAMIC_ARCH=1 CROSS=1 HOSTCC=gcc"
 
 pkgname=mingw-w64-openblas-lapack
-pkgver=0.3.29
+pkgver=0.3.30
 pkgrel=1
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD (mingw-w64)"
 arch=('any')
@@ -28,7 +28,7 @@ conflicts=('mingw-w64-openblas'
            'mingw-w64-lapacke')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("${_pkgname}-v${pkgver}.tar.gz::https://github.com/OpenMathLib/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('38240eee1b29e2bde47ebb5d61160207dc68668a54cac62c076bb5032013b1eb')
+sha256sums=('27342cff518646afb4c2b976d809102e368957974c250a25ccc965e53063c95d')
 
 prepare() {
   cd ${srcdir}
