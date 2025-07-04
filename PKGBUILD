@@ -1,8 +1,8 @@
 # Maintainer: Korialo <korialo001[at]gmail[dot]com>
 _pkgname=pysubs2
 pkgname=python-pysubs2-git
-pkgver=1.7.3.r2.g04837a4
-pkgrel=4
+pkgver=1.8.0.r2.g27000af
+pkgrel=1
 pkgdesc="A Python library for editing subtitle files"
 arch=('any')
 url="https://github.com/tkarabela/pysubs2"
@@ -13,7 +13,7 @@ makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setu
 checkdepends=('python-pytest' 'python-pytest-ruff' 'python-pytest-mypy' 'python-pytest-timeout')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
-provides=('python-pysubs2=1.7.3')
+provides=("python-pysubs2=${pkgver%%.r*}")
 conflicts=('python-pysubs2')
 
 pkgver() {
