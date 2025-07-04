@@ -3,9 +3,9 @@
 
 pkgname=pcc-git
 pkgver=20250608
-pkgrel=1
+pkgrel=2
 pkgdesc="A Portable C Compiler."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/PortableCC/"
 license=('custom')
 makedepends=('bison' 'flex' 'git')
