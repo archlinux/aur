@@ -1,6 +1,4 @@
-# Maintainer: not_anonymous <nmlibertarian@gmail.com>
-# Contributor: f4iey <f4iey@f4iey.fr>
-# Submitter: not_anonymous <nmlibertarian@gmail.com>
+# Maintainer: 9M2PJU <9m2pju@hamradio.my>
 
 pkgname=not1mm-9m2pju-git
 pkgver=0.0.0
