@@ -2,16 +2,16 @@
 
 pkgname=procmon-git
 pkgver=2.1.0.0.r0.gc5f8271
-pkgrel=1
+pkgrel=2
 pkgdesc="Trace syscall activity tool"
 arch=('x86_64')
-url="https://github.com/Sysinternals/ProcMon-for-Linux"
+url="https://github.com/microsoft/ProcMon-for-Linux"
 license=('MIT')
 depends=('gcc-libs' 'libedit' 'libelf' 'ncurses' 'sysinternalsebpf' 'zlib' 'zstd')
 makedepends=('git' 'cmake' 'clang' 'sqlite')
 provides=("procmon=$pkgver")
 conflicts=('procmon')
-source=("git+https://github.com/Sysinternals/ProcMon-for-Linux.git")
+source=("git+https://github.com/microsoft/ProcMon-for-Linux.git")
 sha256sums=('SKIP')
 
 
