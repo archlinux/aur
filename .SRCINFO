@@ -1,7 +1,7 @@
 pkgbase = python-valkey-git
 	pkgdesc = Valkey Python client based on a fork of redis-py (built from latest git commit)
 	pkgver = 6.1.1b2.r0.g46bb06e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/valkey-io/valkey-py
 	arch = any
 	license = MIT
