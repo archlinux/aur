@@ -1,6 +1,5 @@
 post_install() {
   echo "not1mm-9m2pju-git installed successfully!"
   echo "Run with the command: not1mm"
-  echo "This package installs Python dependencies in its own venv."
   echo "73 de 9M2PJU https://hamradio.my"
 }
