@@ -1,22 +1,19 @@
 pkgbase = neoplayer-bin
 	pkgdesc = A module player built with Electron.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.1.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/lucmsilva651/NeoPlayer
 	arch = x86_64
 	license = BSD-3-Clause
-	makedepends = gendesk
-	depends = electron36
-	provides = neoplayer=1.1.0
+	depends = electron37
+	provides = neoplayer=1.3.0
 	conflicts = neoplayer
 	options = !emptydirs
-	source = neoplayer-1.1.0.zip::https://github.com/lucmsilva651/NeoPlayer/releases/download/v1.1.0/linux-build.zip
-	source = neoplayer-1.1.0.png::https://raw.githubusercontent.com/lucmsilva651/NeoPlayer/v1.1.0/app/icons/png/512x512.png
-	source = LICENSE-1.1.0.txt::https://raw.githubusercontent.com/lucmsilva651/NeoPlayer/v1.1.0/LICENSE.txt
+	source = neoplayer-1.3.0.zip::https://github.com/lucmsilva651/NeoPlayer/releases/download/v1.3.0/neoplayer-linux.zip
+	source = neoplayer-1.3.0.png::https://raw.githubusercontent.com/lucmsilva651/NeoPlayer/v1.3.0/src/assets/icons/png/512x512.png
 	source = neoplayer.sh
-	sha256sums = e1014cc46c8c34eef46777372050e8ac59ccfdfaf9ac47d6ab13f2cd1a4bfb32
+	sha256sums = 06528225391635133317c31b2fca7639d41320f967ac92ddbc79492ef06f5c8f
 	sha256sums = 833d907571bd88c4b9c11751ccfeb7b6d501aa646d2b57a082f9b9723e2999f9
-	sha256sums = ec821629b10d9213f7dd7d57f7f33a6a3083dc26da59ccbd6fd8b6ea132d3aff
 	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = neoplayer-bin
