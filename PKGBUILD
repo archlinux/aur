@@ -4,7 +4,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libaec
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Adaptive Entropy Coding library (Android ${_android_arch})"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/-/archive/v${pkgver}/libaec-v${pkgver}.tar.bz2")
-md5sums=('9e2f718be47a108e3495b36dfd4c17cc')
+md5sums=('f4da1452e4060850ee3a1b50d2a4829c')
 
 build() {
     cd "${srcdir}/libaec-v${pkgver}"
@@ -34,6 +34,5 @@ package() {
     make -C build DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
-    mv "${pkgdir}/${ANDROID_PREFIX}/cmake" "${pkgdir}/${ANDROID_PREFIX_LIB}/cmake"
     install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
