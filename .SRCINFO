@@ -1,6 +1,6 @@
 pkgbase = atv-remote-bin
 	pkgdesc = A simple app to allow you to control an Apple TV from your desktop.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.4.4
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/jklewa/atv-desktop-remote
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = atv-remote-bin
 	depends = electron33
 	depends = python
 	depends = python-websockets
-	provides = atv-remote=1.4.4
+	provides = atv-remote=1.4.5
 	conflicts = atv-remote
-	source = atv-remote-1.4.4.AppImage::https://github.com/jklewa/atv-desktop-remote/releases/download/v1.4.4/ATV-Remote-1.4.4.AppImage
-	source = LICENSE-1.4.4::https://raw.githubusercontent.com/jklewa/atv-desktop-remote/v1.4.4/LICENSE
+	source = atv-remote-1.4.5-x86_64.AppImage::https://github.com/jklewa/atv-desktop-remote/releases/download/v1.4.5/ATV-Remote-1.4.5.AppImage
+	source = LICENSE-1.4.5::https://raw.githubusercontent.com/jklewa/atv-desktop-remote/v1.4.5/LICENSE
 	source = atv-remote.sh
-	sha256sums = c8f45d6a237c26a4017cb20b5f7296ad46b4b5ed5fdaf44c4551e237ad340742
+	sha256sums = beeb9ec57f04fb18e2d25e36069adf55d68376516a42a8950dce51859b2764c9
 	sha256sums = cc59293cf57cbc07ad2dd7fa94553da43bc493503b6387742274b999afdb9369
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = atv-remote-bin
