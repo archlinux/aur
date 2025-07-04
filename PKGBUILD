@@ -1,7 +1,7 @@
 # Maintainer: Wojciech Szaranski <wojciech.szaranski@gmail.com>
 pkgname=ejoffe-spr-bin
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to easily manage stacks of pull requests on GitHub"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ejoffe/spr"
@@ -17,4 +17,5 @@ package() {
     mkdir -p "$pkgdir"/usr/bin
     install -m755 "$srcdir"/git-spr  "$pkgdir"/usr/bin/git-spr
     install -m755 "$srcdir"/git-amend  "$pkgdir"/usr/bin/git-amend
+    install -m755 "$srcdir"/spr_reword_helper "$pkgdir"/usr/bin/spr_reword_helper
 }
