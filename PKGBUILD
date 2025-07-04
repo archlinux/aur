@@ -2,7 +2,7 @@
 
 pkgname=python-pyjtagtools
 _name=${pkgname#python-}
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="JTAG tools for PyFtdi and QEMU"
 arch=(any)
@@ -22,7 +22,7 @@ checkdepends=(
 )
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
 # source=(https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl)
-sha512sums=('95c158c859b154525b380fad9d54d3016b9673f6313b964931482d113655ce476e0f3456335b0132a2429188f8945b125cf6d56d7774c6f463e9d2117295957c')
+sha512sums=('cc8915fcc9ff9d795d01d63fb708f0ae7d033d58ed160ecd07e4576e7a96e49bfedaba67f0b6198e3ee916092d5a5a7f8f722a3730e6e9c068371870963629b5')
 
 build() {
   cd $_name-$pkgver
