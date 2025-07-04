@@ -4,7 +4,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libdrm
-pkgver=2.4.124
+pkgver=2.4.125
 pkgrel=1
 arch=('any')
 pkgdesc="Userspace interface to kernel DRM services (Android ${_android_arch})"
@@ -16,7 +16,7 @@ makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://dri.freedesktop.org/libdrm/libdrm-${pkgver}.tar.xz"
         '0001-Disable-open_memstream.patch')
-md5sums=('78f7f7ee6aff711696d4b34465b40728'
+md5sums=('3baec8e685510892b3355a7074baa874'
          'f7835471a1b6ec93215dc61339dfb117')
 
 prepare() {
