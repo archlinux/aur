@@ -1,4 +1,4 @@
-pkgbase = ftnn_desktop
+pkgbase = ftnn-desktop
 	pkgdesc = FTNN 富途牛牛桌面版（官方 .deb 封装）
 	pkgver = 15.22.12108
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = ftnn_desktop
 	source = https://softwaredownload.futunn.com/FTNN_desktop_15.22.12108_amd64.deb
 	sha256sums = SKIP
 
-pkgname = ftnn_desktop
+pkgname = ftnn-desktop
