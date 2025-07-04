@@ -2,7 +2,7 @@
 pkgname=paf-notify
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Notify about pacman, AUR, and flatpak updates"
+pkgdesc="Notifies about pacman, AUR, and flatpak updates"
 arch=('any')
 license=('MIT')
 depends=('bash' 'python' 'python-gobject' 'libnotify' 'pacman-contrib')
