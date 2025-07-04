@@ -11,6 +11,7 @@ pkgbase = rmlint
 	checkdepends = python-psutil
 	checkdepends = btrfs-progs
 	checkdepends = patchelf
+	checkdepends = man-db
 	checkdepends = dash
 	makedepends = scons
 	makedepends = python-sphinx

@@ -37,6 +37,7 @@ checkdepends=(
   python-psutil
   btrfs-progs
   patchelf
+  man-db
   dash
 )
 
