@@ -1,0 +1,32 @@
+# AUR package build artifacts
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.pkg.tar.gz
+pkg/
+src/
+
+# Git clone directory (source code)
+kded_rotation/
+
+# Build artifacts
+*.o
+*.so
+*.a
+build/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Editor files
+*~
+.#*
+\#*#
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

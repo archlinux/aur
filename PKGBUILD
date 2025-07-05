@@ -21,6 +21,10 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+  # Fix CMakeLists.txt for newer CMake versions
+  cd "$srcdir/$_gitname"
+  sed -i '1s/^project.*$/cmake_minimum_required(VERSION 3.5 FATAL_ERROR)\n\nproject(kded_rotation)/' CMakeLists.txt
+  sed -i '/^cmake_minimum_required(VERSION 2.8.12/d' CMakeLists.txt
 }
 
 build() {
