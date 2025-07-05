@@ -1,7 +1,7 @@
 pkgbase = dxvk-mingw
 	pkgdesc = Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version
-	pkgver = 2.6.2
-	pkgrel = 3
+	pkgver = 2.7
+	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
 	license = zlib/libpng
@@ -11,15 +11,15 @@ pkgbase = dxvk-mingw
 	makedepends = git
 	makedepends = mingw-w64-gcc
 	provides = dxvk
-	provides = dxvk=2.6.2
+	provides = dxvk=2.7
 	conflicts = dxvk
 	options = !lto
 	options = !staticlibs
-	source = git+https://github.com/doitsujin/dxvk.git#tag=v2.6.2
+	source = git+https://github.com/doitsujin/dxvk.git#tag=v2.7
 	source = dxvk-extraopts.patch
 	source = setup_dxvk.sh
 	source = setup_dxvk
-	sha256sums = dc81a505bc887f7bcf42e04538e79f4a090119b9d0907452d4bcfd28a819fa9e
+	sha256sums = aab98d6d4e7dd591bccc2d550478bdccef5e885357516fd55e5bede9edd3f29c
 	sha256sums = bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362
 	sha256sums = b562e8dc9539ef3cd1554c6679eef10aacf21103403d7390a141a41ae146b7a6
 	sha256sums = c1f6a18b03d1612b60f8081428f00cfac5e66315fe9d42719f01cf5564deeeff
