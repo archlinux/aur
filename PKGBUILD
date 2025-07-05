@@ -2,18 +2,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-env'
-pkgver='1.087'
+pkgver='1.088'
 pkgrel='1'
 pkgdesc="test the environment"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl>=5.008')
 makedepends=()
 url='https://metacpan.org/release/Test-Env'
-source=("https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/Test-Env-$pkgver.tar.gz")
-md5sums=('a8ad8c479bce613660b96979ece44787')
-sha512sums=('5e45162076fa8d2383d49f8ce6cf36bf2422a2191c344df22d3b7d0a8c364a81563dc805157660d36d2f75993b93c5f7d465498ede9402115a20486e8590fd39')
+source=("http://search.cpan.org/CPAN/authors/id/B/BR/BRIANDFOY/Test-Env-$pkgver.tar.gz")
+md5sums=('8cf574a2f0093bd124bd692ceeff192c')
+sha512sums=('eb7aed8d6ced395ba3c3e6f7b39741a111e4e6b41c95997f2a33942ce3913e23fb540e482833a56a2cac9dd91d2aa9904acc3a54aef31f2f5fa158ec92246918')
 _distdir="Test-Env-$pkgver"
 
 build() {
