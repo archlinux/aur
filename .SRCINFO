@@ -1,0 +1,13 @@
+pkgbase = musm
+	pkgdesc = A simple music player with minimal UI
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/walmstudio/musm
+	arch = x86_64
+	license = GPL
+	depends = mpv
+	depends = ffmpeg
+	source = https://github.com/walmstudio/musm/releases/download/v1.0/musm-1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = musm
