@@ -2,6 +2,7 @@ pkgbase = sshtool
 	pkgdesc = Interactive SSH session manager with GPG-encrypted config support
 	pkgver = 0.1.0
 	pkgrel = 2
+	url = https://github.com/hanashiko/sshtool.git
 	arch = any
 	license = MIT
 	depends = python
