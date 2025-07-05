@@ -4,7 +4,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libtpms
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 arch=('any')
 pkgdesc="Library providing a software emulation of a Trusted Platform Module (TPM 1.2 and TPM 2.0) (Android ${_android_arch})"
@@ -15,7 +15,7 @@ depends=("android-${_android_arch}-openssl")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/stefanberger/libtpms/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('f00d71ff14c96cea0824d07c649c7a31')
+md5sums=('05c5c0aec50f4afe7de0724d3bf7eb2e')
 
 prepare() {
     cd "${srcdir}/libtpms-${pkgver}"
