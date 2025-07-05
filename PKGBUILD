@@ -2,7 +2,7 @@
 
 pkgname=file-cpp-git 
 pkgver=r12.fcb5eca
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ wrapper library around std::fstream"
 arch=(any)
 url="https://github.com/weqeqq/file-cpp"
@@ -22,7 +22,7 @@ pkgver() {
 build() {
   cd "$srcdir/file-cpp"
 
-  cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DFILE_BUILD_TESTS=OFF
+  cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DFILE_BUILD_TESTS=OFF -DBUILD_SHARED_LIBS=ON
   cmake --build build 
 }
 
