@@ -20,7 +20,7 @@ sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
 depends=(glibc)
 makedepends=(nasm
 diffutils gcc make patch sed) # base-devel
-optdepends=({electron{28..36},nwjs}': replace ffmpeg')
+optdepends=({electron{28..36},nwjs,slimjet}': replace ffmpeg')
 conflicts=(opera{,-developer,-beta}-ffmpeg-codecs{,-bin})
 provides=("${conflicts[@]}")
 
