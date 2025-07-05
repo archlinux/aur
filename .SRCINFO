@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-libssh
 	pkgdesc = Library for accessing ssh client services through C libraries (Android riscv64)
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://www.libssh.org/
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = android-riscv64-libssh
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://www.libssh.org/files/0.11/libssh-0.11.1.tar.xz
+	source = https://www.libssh.org/files/0.11/libssh-0.11.2.tar.xz
 	source = 0001-Fix-static-lib.patch
 	source = 0002-Disable-getifaddrs.patch
-	md5sums = 93e6fe0c9effb216a48b8b6bc1e4a576
+	md5sums = 7e9afb4cf63abbcd8bc448124dfdf3fa
 	md5sums = 66588a420aac9c580c31018a5b1c78cf
 	md5sums = 063230102f24f4bcb8aea86575e00def
 
