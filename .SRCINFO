@@ -1,6 +1,6 @@
 pkgbase = cosu-trainer-bin
 	pkgdesc = Change various parameters of an osu! map easily
-	pkgver = 0.14
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://github.com/hwsmm/cosutrainer
 	install = cosu-trainer.install
@@ -8,10 +8,10 @@ pkgbase = cosu-trainer-bin
 	license = GPL-3.0-only
 	depends = fuse2
 	options = !strip
-	source = https://github.com/hwsmm/cosutrainer/releases/download/0.14/cosu-trainer-bin.tar.zst
+	source = https://github.com/hwsmm/cosutrainer/releases/download/0.15/cosu-trainer-bin.tar.zst
 	source = cosu-trainer.desktop::https://raw.githubusercontent.com/hwsmm/cosutrainer/700306f4f97cbfe895b23f1955409f9c4be8f5b7/docs/cosu-trainer.desktop
 	source = cosu-trainer.png::https://raw.githubusercontent.com/hwsmm/cosutrainer/700306f4f97cbfe895b23f1955409f9c4be8f5b7/docs/cosutrainer.png
-	sha256sums = 62cbce151f1d7793fd27f3c77e2f760e28e62b004b418f074d766f4c1f730d24
+	sha256sums = db1c149d4c302d3a0a84f3cb6e207c76f69caef9fc6e463478d3bb82855172d5
 	sha256sums = 8cded7c0156155f0afe57062f7d7c522cb1a13f4829c4b0680e3f02deaf10c3a
 	sha256sums = e0c20261b51c196c8eeab2a9622650a803e71144b91395f9a239521bd44acdba
 
