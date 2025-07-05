@@ -1,6 +1,6 @@
 pkgname="sunfalo"
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatic screen color temperature daemon for Hyprland using hyprsunset"
 url="https://codeberg.org/tomkoid/sunfalo"
 arch=('any')
@@ -25,5 +25,5 @@ package() {
   install -Dm755 "${pkgname}/sunfalo" "${pkgdir}/usr/bin/sunfalo"
 
   # example config
-  install -Dm755 "${pkgname}/sunfalo.example.toml" "${pkgdir}/etc/default/sunfalo"
+  install -Dm644 "${pkgname}/sunfalo.example.toml" "${pkgdir}/etc/default/sunfalo"
 }

@@ -1,7 +1,7 @@
 pkgbase = sunfalo
 	pkgdesc = Automatic screen color temperature daemon for Hyprland using hyprsunset
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/tomkoid/sunfalo
 	arch = any
 	license = MIT
