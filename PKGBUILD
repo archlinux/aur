@@ -3,7 +3,7 @@
 pkgname=nueclipse
 _pkgname=NuEclipse
 pkgver=1.02.029
-pkgrel=1
+pkgrel=2
 pkgdesc="Ecipse base C/C++ IDE for Nuvoton Microcontroller"
 arch=('x86_64')
 url="https://www.nuvoton.com"
@@ -32,7 +32,7 @@ package() {
     install -D /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
 #!/bin/bash
 export ECLIPSE_HOME=/usr/share/$pkgname
-exec \$ECLIPSE_HOME/eclipse "\$@"
+GDK_BACKEND=x11 exec \$ECLIPSE_HOME/eclipse "\$@"
 END
 
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<END
@@ -40,7 +40,7 @@ END
 Name=NuEclipse
 Comment=Embedded C/C++ IDE for Nuvoton Microcontroller
 Icon=/usr/share/$pkgname/icon.xpm
-Exec=/usr/share/$pkgname/eclipse
+Exec=$pkgname
 Terminal=false
 Type=Application
 Categories=Development;IDE;Java;
