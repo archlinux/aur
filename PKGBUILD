@@ -15,8 +15,8 @@ sha256sums=('3e6b7818c1b8ab761a11df1d47782638dd24b2a79beb6fd1edff5faf5b470f86'
 package() {
 	echo "  -> Extracting the data.tar.xz..."
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
-	mkdir -p ${pkgdir}/usr/share/licenses/hintcontrol/
-	cp LICENSE ${pkgdir}/usr/share/licenses/hintcontrol/
+	mkdir -p ${pkgdir}/usr/share/licenses/hintcontrol-bin/
+	cp LICENSE ${pkgdir}/usr/share/licenses/hintcontrol-bin/
 	rm -r "${pkgdir}/etc" # unneeded apt sources
 }
 
