@@ -1,7 +1,7 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=owntone-server
 pkgver=28.12
-pkgrel=1
+pkgrel=2
 pkgdesc='iTunes-compatible media server (fka forked-daapd) (rewrite of mt-daapd)'
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/owntone/owntone-server"
@@ -17,7 +17,7 @@ sha256sums=('c4d795d25a93e9f391feb70807472589810465684281e67cb5c77f9225eb1f0b'
 
 build() {
   cd "$srcdir/owntone-server-$pkgver"
-  autoreconf -i
+  autoreconf -fvi -I /usr/share/gettext/m4
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-itunes --enable-chromecast --enable-lastfm --with-libwebsockets --sbindir=/usr/bin LDFLAGS="-Wl,--allow-multiple-definition"
   make
 }

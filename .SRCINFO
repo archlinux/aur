@@ -1,7 +1,7 @@
 pkgbase = owntone-server
 	pkgdesc = iTunes-compatible media server (fka forked-daapd) (rewrite of mt-daapd)
 	pkgver = 28.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/owntone/owntone-server
 	install = owntone.install
 	arch = armv7h
