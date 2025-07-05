@@ -1,6 +1,6 @@
 pkgbase = funkwhale-venv
 	pkgdesc = A community-driven project that lets you listen and share music and audio within a decentralized, open network.
-	pkgver = 1.3.3
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://funkwhale.audio/
 	install = funkwhale-venv.install
@@ -15,7 +15,7 @@ pkgbase = funkwhale-venv
 	depends = libsasl
 	depends = postgresql
 	depends = redis
-	depends = python
+	depends = python311
 	optdepends = apache: to use the Apache web server
 	optdepends = certbot-apache: for the server to be accessible from outside
 	optdepends = mod_xsendfile: needed if Apache server is used
@@ -23,10 +23,10 @@ pkgbase = funkwhale-venv
 	provides = funkwhale
 	conflicts = funkwhale
 	options = !strip
-	source = funkwhale-1.3.3-api.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.3.3/download?job=build_api
-	source = funkwhale-1.3.3-front.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.3.3/download?job=build_front
-	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.3.3/deploy/funkwhale_proxy.conf
-	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.3.3/deploy/nginx.template
+	source = funkwhale-1.4.1-api.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.4.1/download?job=build_api
+	source = funkwhale-1.4.1-front.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.4.1/download?job=build_front
+	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.4.1/deploy/funkwhale_proxy.conf
+	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.4.1/deploy/nginx.template
 	source = funkwhale.target
 	source = funkwhale-beat.service
 	source = funkwhale-server.service
@@ -34,8 +34,8 @@ pkgbase = funkwhale-venv
 	source = apache-funkwhale.conf
 	source = env-template
 	source = funkwhale_manage
-	sha256sums = 1c2906d968089a796752f9444dd777146d5f71c4af3d2f083740759c2ef656fa
-	sha256sums = d0339c4e428a53e444a0c4c9416d7586bacd0fcf1e4d0dbeb48b90473c5ad2bc
+	sha256sums = 795faf2f233fbc9e77a3a6eed224c1413b5ed4edda390f363afc0c022479ec73
+	sha256sums = f6d654a6f8d4cfbb1c59d86959d942529d49a1cdff0c77014645327c769105e0
 	sha256sums = 2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2
 	sha256sums = 9e72558dee732c6783c597f5cb61e89ad346d4d3810d94f83afba2db580fb089
 	sha256sums = 5c821649d81d2d3a9aa52d872953696d5ae336906329a1c1b68871ce9c82fa59
