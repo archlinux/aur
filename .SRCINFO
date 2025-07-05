@@ -1,0 +1,12 @@
+pkgbase = xfsrtray
+	pkgdesc = A floating and customizable system tray for Linux
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/Byson94/xfsrtray
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	source = git+https://github.com/Byson94/xfsrtray.git
+	sha256sums = SKIP
+
+pkgname = xfsrtray
