@@ -3,7 +3,7 @@
 _basename='hyprfreeze'
 pkgname="$_basename-git"
 pkgver=1.1.2.r2.6b67416
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to suspend a game process (and other programs) in Hyprland"
 arch=('any')
 url="https://github.com/Zerodya/hyprfreeze"
@@ -14,11 +14,6 @@ provides=("$_basename")
 conflicts=("$_basename")
 source=("git+$url")
 md5sums=('SKIP')
-
-pkgver() {
-    cd "$_basename"
-    git describe --long --tags | sed -e 's/^v//' -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
-}
 
 package() {
     cd "$_basename"
