@@ -9,7 +9,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-onetbb
-pkgver=2022.1.0
+pkgver=2022.2.0
 pkgrel=1
 arch=('any')
 pkgdesc="High level abstract threading library (oneAPI Threading Building Blocks) (Android ${_android_arch})"
@@ -20,7 +20,7 @@ depends=("android-${_android_arch}-hwloc")
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/oneapi-src/oneTBB/archive/v${pkgver}/onetbb-${pkgver}.tar.gz")
-md5sums=('cce28e6cb1ceae14a93848990c98cb6b')
+md5sums=('dd62f06431c9dfd274498afa4deba8f5')
 
 prepare() {
     cd "${srcdir}/oneTBB-${pkgver}"
