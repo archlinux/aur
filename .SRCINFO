@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-ocl-icd
 	pkgdesc = OpenCL ICD Bindings (Android x86-64)
-	pkgver = 2.3.2
-	pkgrel = 2
+	pkgver = 2.3.3
+	pkgrel = 1
 	url = https://github.com/OCL-dev/ocl-icd
 	arch = any
 	groups = android-ocl-icd
@@ -19,7 +19,7 @@ pkgbase = android-x86-64-ocl-icd
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/OCL-dev/ocl-icd/archive/v2.3.2.tar.gz
-	md5sums = e711262803e68de3d32620789942f209
+	source = https://github.com/OCL-dev/ocl-icd/archive/v2.3.3.tar.gz
+	md5sums = 8f00257866d84b8b9631c4df6c47ec95
 
 pkgname = android-x86-64-ocl-icd
