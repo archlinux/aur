@@ -1,0 +1,13 @@
+# Package build files
+pkg/
+src/
+wayback/
+*.pkg.tar.zst
+*.pkg.tar.xz
+
+# Backup files
+*~
+*.bak
+
+# Log files
+*.log 

@@ -1,0 +1,20 @@
+pkgbase = wayback-x-compatibility-layer-git
+	pkgdesc = Experimental X11 compatibility layer for Wayland
+	pkgver = test
+	pkgrel = 1
+	url = https://github.com/kaniini/wayback
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols>=1.14
+	depends = wayland
+	depends = libxkbcommon
+	depends = wlroots0.19
+	provides = wayback
+	conflicts = wayback
+	source = git+https://github.com/kaniini/wayback.git
+	sha256sums = SKIP
+
+pkgname = wayback-x-compatibility-layer-git
