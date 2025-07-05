@@ -1,5 +1,5 @@
 diff --git a/src/dynlink/dune b/src/dynlink/dune
-index 3714cef..72db257 100644
+index 3714cef2..72db257d 100644
 --- a/src/dynlink/dune
 +++ b/src/dynlink/dune
 @@ -9,11 +9,3 @@
@@ -16,7 +16,7 @@ index 3714cef..72db257 100644
 -)
 diff --git a/src/dynlink/lin_tests.ml b/src/dynlink/lin_tests.ml
 deleted file mode 100644
-index 7e81981..0000000
+index 7e81981d..00000000
 --- a/src/dynlink/lin_tests.ml
 +++ /dev/null
 @@ -1,41 +0,0 @@
