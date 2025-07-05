@@ -1,7 +1,7 @@
 # Maintainer: xiliuya <xiliuya@aliyun.com>
 
 pkgname=ntloader-git
-pkgver=latest.r0.g0862447
+pkgver=3.0.6.r0.gec501ba
 pkgrel=1
 pkgdesc="Windows NT6+ loader for grub2 and grub4dos."
 arch=('x86_64')
@@ -17,7 +17,10 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$pkgname"
-	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+    git describe --long --tags --abbrev=7 HEAD^ \
+        | sed "s/latest/$(git tag --sort=creatordate \
+        | tail -n 2 | head -n 1)/g" \
+        | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
