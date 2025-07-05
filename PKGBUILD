@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppxlib'
 pkgname="ocaml-$_projectname"
-pkgver='0.35.0'
+pkgver='0.36.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='Utilities for working with Jane Street AST constructs'
@@ -16,7 +16,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	'remove-stdlib-shims-dep.diff'
 )
-b2sums=('1b54092827733bb1f7325a956d86d07eaacb1f358780db33a0b9270f3696492276b2a772b007a89320a186bce774f3ea5a4aa54d827a4b2e502422b77fa1347f'
+b2sums=('ed63e4b7ed077974015ddd237de1ee97b32763f4e3d48d46773b9ed02e3786e846919fae9d78bf45cf7eacb588faa39d2c8b115f2f743dfa716f7804ba45c0a0'
         '5fd7037dfe4cc3f250fa42cc2fc84427a36394f04a6fef646856c7e9bf2a918b36eebfd204741a26a8a89215bf304410b6f74e060305d9b25ce0bdc6e277f463')
 
 _sourcedirectory="$_projectname-$pkgver"
@@ -41,12 +41,8 @@ build() {
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
-
-	for _folder in "$pkgdir/usr/share/doc/"*; do
-		mv "$_folder" "$pkgdir/usr/share/doc/ocaml-$(basename "$_folder")"
-	done
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc/ocaml' --mandir '/usr/share/man' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/MIT"
+	ln -sf "/usr/share/doc/ocaml/$_projectname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
