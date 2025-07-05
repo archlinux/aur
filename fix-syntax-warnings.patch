@@ -1,0 +1,121 @@
+--- a/ropper/arch.py
++++ b/ropper/arch.py
+@@ -244,9 +244,9 @@ class ArchitectureX86(Architecture):
+ 
+     def _initCategories(self):
+         self._categories = {
+-                gadget.Category.STACK_PIVOT : (('^sub (?P<dst>.sp), (?P<src>[x0-9a-fA-F]+)$','^add (?P<dst>.sp), (?P<src>[x0-9a-fA-F]+)$','^mov (?P<dst>.sp), .+ ptr \[(?P<src>...)\]$','^mov (?P<dst>.sp), (?P<src>...)$','^xchg (?P<dst>.sp), (?P<src>...)$','^xchg (?P<dst>...), (?P<src>.sp)$','ret.+'),('push','mov','call','jmp')),
+-                gadget.Category.LOAD_MEM : (('mov (?P<dst>...), .+ ptr \[(?P<src>...)\]',),('push','mov','call','jmp')),
+-                gadget.Category.WRITE_MEM : (('^mov .+ ptr \[(?P<dst>...)\], (?P<src>...)$',),('push','mov','call','jmp')),
++                gadget.Category.STACK_PIVOT : ((r'^sub (?P<dst>.sp), (?P<src>[x0-9a-fA-F]+)$',r'^add (?P<dst>.sp), (?P<src>[x0-9a-fA-F]+)$',r'^mov (?P<dst>.sp), .+ ptr \[(?P<src>...)\]$',r'^mov (?P<dst>.sp), (?P<src>...)$',r'^xchg (?P<dst>.sp), (?P<src>...)$',r'^xchg (?P<dst>...), (?P<src>.sp)$','ret.+'),('push','mov','call','jmp')),
++                gadget.Category.LOAD_MEM : ((r'mov (?P<dst>...), .+ ptr \[(?P<src>...)\]',),('push','mov','call','jmp')),
++                gadget.Category.WRITE_MEM : ((r'^mov .+ ptr \[(?P<dst>...)\], (?P<src>...)$',),('push','mov','call','jmp')),
+                 gadget.Category.LOAD_REG : (('pop (?P<dst>...)',),('push','mov','call','jmp')),
+                 gadget.Category.JMP : (('^jmp (?P<dst>...)$',),()),
+                 gadget.Category.CALL : (('^call (?P<dst>...)$',),('push','mov','call','jmp')),
+@@ -294,9 +294,9 @@ class ArchitectureX86_64(ArchitectureX86):
+ 
+     def _initCategories(self):
+         self._categories = {
+-                gadget.Category.STACK_PIVOT : (('^mov (?P<dst>.sp), .+ ptr \[(?P<src>...)\]$','^mov (?P<dst>.sp), (?P<src>...)$','^xchg (?P<dst>.sp), (?P<src>...)$','^xchg (?P<dst>...), (?P<src>.sp)$','ret.+'),('push','mov','call','jmp')),
+-                gadget.Category.LOAD_MEM : (('mov (?P<dst>r..), .+ ptr \[(?P<src>r..)\]',),('push','mov','call','jmp')),
+-                gadget.Category.WRITE_MEM : (('^mov .+ ptr \[(?P<dst>r..)\], (?P<src>r..)$',),('push','mov','call','jmp')),
++                gadget.Category.STACK_PIVOT : ((r'^mov (?P<dst>.sp), .+ ptr \[(?P<src>...)\]$','^mov (?P<dst>.sp), (?P<src>...)$','^xchg (?P<dst>.sp), (?P<src>...)$','^xchg (?P<dst>...), (?P<src>.sp)$','ret.+'),('push','mov','call','jmp')),
++                gadget.Category.LOAD_MEM : ((r'mov (?P<dst>r..), .+ ptr \[(?P<src>r..)\]',),('push','mov','call','jmp')),
++                gadget.Category.WRITE_MEM : ((r'^mov .+ ptr \[(?P<dst>r..)\], (?P<src>r..)$',),('push','mov','call','jmp')),
+                 gadget.Category.LOAD_REG : (('pop (?P<dst>r..)',),('push','mov','call','jmp')),
+                 gadget.Category.JMP : (('^jmp (?P<dst>r..)$',),()),
+                 gadget.Category.CALL : (('^call (?P<dst>r..)$',),('push','mov','call','jmp')),
+diff --git a/ropper/console.py b/ropper/console.py
+index 1f75e78..0553b3a 100644
+--- a/ropper/console.py
++++ b/ropper/console.py
+@@ -736,7 +736,7 @@ nx\t- Clears the NX-Flag (ELF|PE)"""
+         if len(text) == 0:
+             self.help_search()
+             return
+-        match = re.match('/\d+/', text)
++        match = re.match(r'/\d+/', text)
+         qual = None
+         if match:
+             qual = int(match.group(0)[1:-1])
+diff --git a/ropper/rop.py b/ropper/rop.py
+index 5e43a2c..87145cd 100644
+--- a/ropper/rop.py
++++ b/ropper/rop.py
+@@ -164,7 +164,7 @@ class Ropper(object):
+             if opcode.find(b) % 2 == 0:
+                 opcode = opcode.replace(b,b'%s%s' % (hexlify(b'\\'),b))
+ 
+-        m = re.search(b'\?', opcode)
++        m = re.search(rb'\?', opcode)
+         while m:
+             if m.start() % 2 == 0:
+                 char = opcode[m.start()+1]
+@@ -184,7 +184,7 @@ class Ropper(object):
+ 
+                 opcode = opcode[:m.start()-1] + hexlify(b'['+pack('B',start)+b'-'+pack('B',end)+b']') + opcode[m.start()+1:]
+ 
+-            m = re.search(b'\?', opcode)
++            m = re.search(rb'\?', opcode)
+         try:
+ 
+             opcode = unhexlify(opcode)
+diff --git a/ropper/search.py b/ropper/search.py
+index 3c9aada..60460fd 100644
+--- a/ropper/search.py
++++ b/ropper/search.py
+@@ -43,7 +43,7 @@ import sys
+ 
+ class Searcher(object):
+ 
+-    CONSTRAINT_REGEX = '(\[?[a-zA-Z0-9]+\]?)([\+\*\-=/])?=(\[?[a-zA-Z0-9]+\]?)$'
++    CONSTRAINT_REGEX = r'(\[?[a-zA-Z0-9]+\]?)([\+\*\-=/])?=(\[?[a-zA-Z0-9]+\]?)$'
+ 
+     def prepareFilter(self, filter):
+         filter = filter.replace('\\','\\\\')
+@@ -257,6 +257,6 @@ class SearcherMIPS(Searcher):
+ 
+     def prepareFilter(self, filter):
+         filter = super(SearcherMIPS, self).prepareFilter(filter)
+-        filter = filter.replace('$','\$')
++        filter = filter.replace('$',r'\$')
+ 
+         return filter
+diff --git a/ropper/z3helper.py b/ropper/z3helper.py
+index 55d1afd..a62160b 100644
+--- a/ropper/z3helper.py
++++ b/ropper/z3helper.py
+@@ -43,8 +43,8 @@ class ConstraintCompiler(object):
+ 
+     NUMBER_REGEX = '(-?[0-9]+)'
+     REG_REGEX = '(?P<{}>[a-zA-Z0-9]+)'
+-    ADJUST_REGEX = '([\\+\-\*/=]=)'
+-    ASSIGNMENT_REGEX = '('+REG_REGEX.format('reg_dst_1') + ' *' + ADJUST_REGEX + ' *('+NUMBER_REGEX+'|'+REG_REGEX.format('reg_src_1')+'|(\[)'+REG_REGEX.format('reg_src_2')+'(\])))'
++    ADJUST_REGEX = r'([\\+\-\*/=]=)'
++    ASSIGNMENT_REGEX = '('+REG_REGEX.format('reg_dst_1') + ' *' + ADJUST_REGEX + ' *('+NUMBER_REGEX+'|'+REG_REGEX.format('reg_src_1')+r'|(\[)'+REG_REGEX.format('reg_src_2')+r'(\])))'
+     POP_REGEX = '((pop) +'+REG_REGEX.format('reg_dst_2')+')'
+     CONSTRAINT_REGEX = '(' + ASSIGNMENT_REGEX + '|' + POP_REGEX + ')'
+ 
+diff --git a/testcases/test_general.py b/testcases/test_general.py
+index 263c1d4..597d90d 100644
+--- a/testcases/test_general.py
++++ b/testcases/test_general.py
+@@ -84,7 +84,7 @@ class GeneralTests(unittest.TestCase):
+ 
+         if version_info.major == 3 and version_info.minor >= 2:
+             # Wrong question mark position
+-            with self.assertRaisesRegex(RopperError,'A \? for the highest 4 bit of a byte is not supported.*'):
++            with self.assertRaisesRegex(RopperError,r'A \? for the highest 4 bit of a byte is not supported.*'):
+                 self.rs.searchOpcode('ff?4')
+             # Wrong lengh
+             with self.assertRaisesRegex(RopperError,'The length of the opcode has to be a multiple of two'):
+@@ -94,7 +94,7 @@ class GeneralTests(unittest.TestCase):
+                 self.rs.searchOpcode('ff4r')
+         else:
+             # Wrong question mark position
+-            with self.assertRaisesRegexp(RopperError,'A \? for the highest 4 bit of a byte is not supported.*'):
++            with self.assertRaisesRegexp(RopperError,r'A \? for the highest 4 bit of a byte is not supported.*'):
+                 self.rs.searchOpcode('ff?4')
+             # Wrong lengh
+             with self.assertRaisesRegexp(RopperError,'The length of the opcode has to be a multiple of two'):

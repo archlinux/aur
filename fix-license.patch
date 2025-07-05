@@ -1,0 +1,16 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -18,12 +18,11 @@ maintainers = [
+     {name = "Sascha Schirra", email = "sashs@scoding.de"},
+ ]
+ readme = "README.md"
+-license = {text = "BSD"}
++license = "BSD-3-Clause"
+ classifiers = [
+     "Topic :: Security",
+     "Environment :: Console",
+     "Operating System :: OS Independent",
+-    "License :: OSI Approved :: BSD License",
+     "Programming Language :: Python",
+     "Intended Audience :: Developers",
+ ]
