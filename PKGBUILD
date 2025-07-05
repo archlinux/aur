@@ -15,19 +15,19 @@ source=("git+https://git.jabber.space/devs/profanity.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}"/${pkgname%-git}
+  cd "${srcdir}/profanity"
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 build() {
-  cd "${srcdir}"/${pkgname%-git}
+  cd "${srcdir}/profanity"
   ./bootstrap.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}"/${pkgname%-git}
+  cd "${srcdir}/profanity"
   make DESTDIR="$pkgdir" install
 }
 
