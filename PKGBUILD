@@ -1,6 +1,6 @@
 # Maintainer: Byson94 <byson94wastaken@gmail.com>
 pkgname=xfsrtray
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A floating and customizable system tray for Linux"
 arch=('x86_64')
