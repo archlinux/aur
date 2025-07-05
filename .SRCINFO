@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_tydi
 	pkgdesc = Let expressions, inferring pattern type from expression
-	pkgver = 0.17.0
-	pkgrel = 3
+	pkgver = 0.17.1
+	pkgrel = 1
 	url = https://github.com/janestreet/ppx_tydi
 	arch = x86_64
 	arch = aarch64
@@ -9,10 +9,10 @@ pkgbase = ocaml-ppx_tydi
 	makedepends = dune>=3.11.0
 	depends = ocaml>=5.1.0
 	depends = ocaml-base>=0.17.0
-	depends = ocaml-ppxlib>=0.28.0
+	depends = ocaml-ppxlib>=0.36.0
 	depends = zstd
 	options = !strip
-	source = ocaml-ppx_tydi-0.17.0.tar.gz::https://github.com/janestreet/ppx_tydi/archive/v0.17.0.tar.gz
-	b2sums = dd2a9070723373e0100a8124f627e739557e178251a8531539c30d40db4afd9b2f40e00b92733362614866b3c9ca8d7f5424d7da3a294c9f2a83eda206ceadb6
+	source = ocaml-ppx_tydi-0.17.1.tar.gz::https://github.com/janestreet/ppx_tydi/archive/v0.17.1.tar.gz
+	b2sums = 8f7cb408b1dc03be136a3a02f4974bdf5083cd7023cce3171828e0f091cd982a6e778fba8c3c8d58980d28d1f2df8c3e3a7a146dd568551adf318d06f7b87759
 
 pkgname = ocaml-ppx_tydi
