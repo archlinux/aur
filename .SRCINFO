@@ -1,6 +1,6 @@
 pkgbase = python-llama-cpp
 	pkgdesc = Python bindings for llama.cpp
-	pkgver = 0.3.10
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://github.com/abetlen/llama-cpp-python
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = python-llama-cpp
 	optdepends = python-pydantic-settings
 	optdepends = python-sse-starlette
 	optdepends = python-pyaml
-	source = https://files.pythonhosted.org/packages/source/l/llama-cpp-python/llama_cpp_python-0.3.10.tar.gz
-	sha256sums = 1b462da846f3f8b176f36a06767af32146d456cbae057b09ab03656b40d170df
+	source = https://files.pythonhosted.org/packages/source/l/llama-cpp-python/llama_cpp_python-0.3.11.tar.gz
+	sha256sums = b32fd06a7d19c7e25e8f920e5451fda99a99682648576848e4dc1c6d60af686d
 
 pkgname = python-llama-cpp
