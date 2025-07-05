@@ -1,0 +1,146 @@
+diff --git a/dune-project b/dune-project
+index 0decfd1b..5b0e4674 100644
+--- a/dune-project
++++ b/dune-project
+@@ -24,13 +24,13 @@
+ )
+  (depends
+   (ocaml
+-   (>= 4.04))
++   (>= 4.08))
+   (tyxml (= :version))
+   (tyxml-syntax (= :version))
+   (alcotest :with-test)
+   (reason :with-test)
+   (ppxlib
+-   (>= 0.18))))
++   (>= 0.36))))
+ 
+ (package
+  (name tyxml-ppx)
+@@ -46,24 +46,24 @@
+ )
+  (depends
+   (ocaml
+-   (>= 4.04))
++   (>= 4.08))
+   (tyxml (= :version))
+   (tyxml-syntax (= :version))
+   (alcotest :with-test)
+   (markup
+    (>= 0.7.2))
+   (ppxlib
+-   (>= 0.18))))
++   (>= 0.36))))
+ 
+ (package
+  (name tyxml-syntax)
+  (synopsis "Common layer for the JSX and PPX syntaxes for Tyxml")
+  (depends
+   (ocaml
+-   (>= 4.03))
++   (>= 4.08))
+   (alcotest :with-test)
+   (ppxlib
+-   (>= 0.18))
++   (>= 0.36))
+   (re
+    (>= 1.5.0))
+   (uutf
+@@ -76,7 +76,7 @@
+    "TyXML provides a set of convenient combinators that uses the OCaml type system to ensure the validity of the generated documents. TyXML can be used with any representation of HTML and SVG: the textual one, provided directly by this package, or DOM trees (`js_of_ocaml-tyxml`) virtual DOM (`virtual-dom`) and reactive or replicated trees (`eliom`). You can also create your own representation and use it to instantiate a new set of combinators.")
+  (depends
+   (ocaml
+-   (>= 4.03))
++   (>= 4.08))
+   (alcotest :with-test)
+   (re
+    (>= 1.5.0))
+diff --git a/ppx/tyxml_ppx.ml b/ppx/tyxml_ppx.ml
+index 5319c123..51cc450a 100644
+--- a/ppx/tyxml_ppx.ml
++++ b/ppx/tyxml_ppx.ml
+@@ -378,12 +378,12 @@ let markup_cases ~lang ~modname cases =
+ let rec markup_function ~lang ~modname e =
+   let loc = e.pexp_loc in
+   match e.pexp_desc with
+-  | Pexp_fun (label,def,pat,content) ->
++  | Pexp_function (params, constraint_, (Pfunction_body content)) ->
+     let content = markup_function ~lang ~modname content in
+-    {e with pexp_desc = Pexp_fun (label,def,pat,content)}
+-  | Pexp_function cases ->
++    {e with pexp_desc = Pexp_function (params, constraint_, (Pfunction_body content))}
++  | Pexp_function (params, constraint_, (Pfunction_cases (cases, loc, attr))) ->
+     let cases = markup_cases ~lang ~modname cases in
+-    {e with pexp_desc = Pexp_function cases}
++    {e with pexp_desc = Pexp_function (params, constraint_, (Pfunction_cases (cases, loc, attr)))}
+   | _ ->
+     markup_to_expr_with_implementation lang modname loc @@
+     application_to_list e
+diff --git a/tyxml-jsx.opam b/tyxml-jsx.opam
+index 05babce7..8a4124b5 100644
+--- a/tyxml-jsx.opam
++++ b/tyxml-jsx.opam
+@@ -18,12 +18,12 @@ doc: "https://ocsigen.org/tyxml/latest/manual/intro"
+ bug-reports: "https://github.com/ocsigen/tyxml/issues"
+ depends: [
+   "dune" {>= "2.7"}
+-  "ocaml" {>= "4.04"}
++  "ocaml" {>= "4.08"}
+   "tyxml" {= version}
+   "tyxml-syntax" {= version}
+   "alcotest" {with-test}
+   "reason" {with-test}
+-  "ppxlib" {>= "0.18"}
++  "ppxlib" {>= "0.36"}
+   "odoc" {with-doc}
+ ]
+ build: [
+diff --git a/tyxml-ppx.opam b/tyxml-ppx.opam
+index 3b97f528..4be03be2 100644
+--- a/tyxml-ppx.opam
++++ b/tyxml-ppx.opam
+@@ -18,12 +18,12 @@ doc: "https://ocsigen.org/tyxml/latest/manual/intro"
+ bug-reports: "https://github.com/ocsigen/tyxml/issues"
+ depends: [
+   "dune" {>= "2.7"}
+-  "ocaml" {>= "4.04"}
++  "ocaml" {>= "4.08"}
+   "tyxml" {= version}
+   "tyxml-syntax" {= version}
+   "alcotest" {with-test}
+   "markup" {>= "0.7.2"}
+-  "ppxlib" {>= "0.18"}
++  "ppxlib" {>= "0.36"}
+   "odoc" {with-doc}
+ ]
+ build: [
+diff --git a/tyxml-syntax.opam b/tyxml-syntax.opam
+index 5c04ead8..9d7c8f8b 100644
+--- a/tyxml-syntax.opam
++++ b/tyxml-syntax.opam
+@@ -9,9 +9,9 @@ doc: "https://ocsigen.org/tyxml/latest/manual/intro"
+ bug-reports: "https://github.com/ocsigen/tyxml/issues"
+ depends: [
+   "dune" {>= "2.7"}
+-  "ocaml" {>= "4.04"}
++  "ocaml" {>= "4.08"}
+   "alcotest" {with-test}
+-  "ppxlib" {>= "0.18"}
++  "ppxlib" {>= "0.36"}
+   "re" {>= "1.5.0"}
+   "uutf" {>= "1.0.0"}
+   "odoc" {with-doc}
+diff --git a/tyxml.opam b/tyxml.opam
+index d6384fd8..6fb114a0 100644
+--- a/tyxml.opam
++++ b/tyxml.opam
+@@ -11,7 +11,7 @@ doc: "https://ocsigen.org/tyxml/latest/manual/intro"
+ bug-reports: "https://github.com/ocsigen/tyxml/issues"
+ depends: [
+   "dune" {>= "2.7"}
+-  "ocaml" {>= "4.04"}
++  "ocaml" {>= "4.08"}
+   "alcotest" {with-test}
+   "re" {>= "1.5.0"}
+   "seq"
