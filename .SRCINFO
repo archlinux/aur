@@ -1,6 +1,6 @@
 pkgbase = hub-young
 	pkgdesc = La piattaforma facile, gratuita e innovativa per la didattica digitale.
-	pkgver = 7.0.376
+	pkgver = 7.2.385
 	pkgrel = 1
 	url = https://www.hubscuola.it/download-app
 	arch = x86_64
@@ -16,6 +16,6 @@ pkgbase = hub-young
 	optdepends = mupdf: a pdf viewer
 	options = !strip
 	source = https://bce.mondadorieducation.it/media_educar/contenuti/appdilettura/younglinux.zip
-	sha256sums = bcd081714849bbb6c636ac10c8c81a55fc32135cceaba47d0a5fa8791529fca5
+	sha256sums = 1b5163fa7b6e54b36368b78658d3821b040632cc0b469ed4bd379cf0b3ac0e54
 
 pkgname = hub-young
