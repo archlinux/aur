@@ -5,7 +5,7 @@ pkgname=("lucidglyph")
 pkgver=0.11.1
 pkgrel=1
 arch=('any')
-pkgdesc='Carefully tuned adjustments designed to improve font rendering on Linux systems packaged for Arch Linux. It is patched to install the package globally and deal with an individual file at `/etc/environment.d` file, unlike the original that manually patches `/etc/environment` file directly.'
+pkgdesc='Carefully tuned adjustments designed to improve font rendering on Linux systems packaged for Arch Linux.'
 source=(
   "$folder_name::git+https://github.com/maximilionus/lucidglyph#tag=v$pkgver"
   "0001-allow-changing-uninstall-file-absolute-path.patch"
