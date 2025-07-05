@@ -1,7 +1,7 @@
 pkgbase = gozen
 	pkgdesc = A minimalistic video editor
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VoylinsGamedevJourney/GoZen
 	arch = x86_64
 	license = GPL3
@@ -17,6 +17,7 @@ pkgbase = gozen
 	depends = ffmpeg>=6.1
 	optdepends = x264: for H.264 encoding support via FFmpeg
 	optdepends = x265: for H.265/HEVC encoding support via FFmpeg
+	conflicts = gozen-git
 	options = !debug
 	source = git+https://github.com/VoylinsGamedevJourney/GoZen.git#tag=v0.3-alpha
 	source = godot-editor.zip::https://github.com/godotengine/godot-builds/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux.x86_64.zip
