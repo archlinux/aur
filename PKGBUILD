@@ -15,6 +15,13 @@ md5sums=('SKIP')
 prepare() {
     cd "$srcdir"
     export HOME="$srcdir"
+    export BOOTSTRAP_HASKELL_NONINTERACTIVE=1
+    export BOOTSTRAP_HASKELL_NO_UPGRADE=1
+    export BOOTSTRAP_HASKELL_MINIMAL=1
+    export BOOTSTRAP_HASKELL_GHC_VERSION=9.10.1
+    export BOOTSTRAP_HASKELL_CABAL_VERSION=1.14
+    export BOOTSTRAP_HASKELL_INSTALL_NO_STACK=1
+    export BOOTSTRAP_HASKELL_INSTALL_NO_STACK_HOOK=1
 
     curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
     source "$srcdir/.ghcup/env"
