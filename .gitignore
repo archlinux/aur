@@ -1,0 +1,9 @@
+*
+# dev tools
+!.gitignore
+!.nvchecker.toml
+!.shellcheckrc
+# actual package
+!PKGBUILD
+!*.patch
+!.SRCINFO

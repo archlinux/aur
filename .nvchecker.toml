@@ -1,0 +1,5 @@
+[intel-sgx-psw-bin]
+source = "github"
+github = "intel/linux-sgx"
+use_max_release = true
+prefix = "sgx_"
