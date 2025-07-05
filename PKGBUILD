@@ -4,7 +4,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-nettle
-pkgver=3.10.1
+pkgver=3.10.2
 pkgrel=1
 pkgdesc="A low-level cryptographic library (Android ${_android_arch})"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://ftp.gnu.org/gnu/nettle/nettle-${pkgver}.tar.gz"
         '0001-Unversioned-libs.patch')
-md5sums=('c3dc1729cfa65fcabe2023dfbff60beb'
+md5sums=('b28bcbf6f045ff007940a9401673600d'
          '604ae2c58164024fbe4debc2aa6eb6cc')
 
 prepare() {

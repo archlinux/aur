@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-nettle
 	pkgdesc = A low-level cryptographic library (Android armv7a-eabi)
-	pkgver = 3.10.1
+	pkgver = 3.10.2
 	pkgrel = 1
 	url = http://www.lysator.liu.se/~nisse/nettle
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = android-armv7a-eabi-nettle
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/nettle/nettle-3.10.1.tar.gz
+	source = https://ftp.gnu.org/gnu/nettle/nettle-3.10.2.tar.gz
 	source = 0001-Unversioned-libs.patch
-	md5sums = c3dc1729cfa65fcabe2023dfbff60beb
+	md5sums = b28bcbf6f045ff007940a9401673600d
 	md5sums = 604ae2c58164024fbe4debc2aa6eb6cc
 
 pkgname = android-armv7a-eabi-nettle
