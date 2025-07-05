@@ -13,7 +13,7 @@ depends=('mpv' 'gtk3' 'libappindicator-gtk3' 'nss' 'openssl' 'gcc-libs' 'nodejs'
          'glib2' 'hicolor-icon-theme' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage'
          'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'mesa' 'nspr' 'pango'
          'systemd-libs')
-makedepends=('cargo' 'git' 'clang' 'binutils' 'cmake' 'nasm' 'perl' 'pkg-config' 'patchelf' 'licenses')
+makedepends=('cargo' 'git' 'clang' 'binutils' 'cmake' 'pkg-config' 'patchelf' 'licenses')
 
 provides=('stremio-linux-shell' 'stremio')
 conflicts=('stremio' 'stremio-linux-shell')
