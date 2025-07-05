@@ -1,7 +1,7 @@
 # Maintainer: Neil Simpson <neilsimp1@gmail.com>
 
 pkgname=ffapp
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="ffapp is a simple tool for creating and managing Firefox web apps"
 arch=("any")
@@ -11,7 +11,7 @@ depends=("python"
 	"python-requests")
 source=("https://gitlab.com/neilsimp1/ffapp/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
 	"ffapp.sh")
-sha256sums=("170bf5d7ce8f60d072b6c40ccd5d42dadb9ddecf280c280ede7ce53f16b3ec50"
+sha256sums=("aea958cc778d9f66213ebbe7df664af2c774036e353651357de8658e4a460bdf"
 	"f6836e872ee684ab42f3fd1ef5affc68923d4716eba0dc6bfdbc0854ae1c9dff")
 
 package() {
