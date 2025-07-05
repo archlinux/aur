@@ -13,7 +13,7 @@ source=(
         "git+https://github.com/greboid/tithon.git#tag=v${pkgver}"
         "launcher.sh"
        )
-sha256sums=('e050c63ca6dc7e6d66cdb5d155f3e865ebb3ea04c8b1dbfcceb759fa0cd2bd17'
+sha256sums=('ab24c101dd4d83d7137e41f2dd4a22c34f429b2451681cdd141f114eccfd5556'
             '96f891aa77f7374c9d40689add1ec8f5402915a08a70d820725d026fa8ec0f29')
 
 prepare() {
