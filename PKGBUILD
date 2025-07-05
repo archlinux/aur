@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppx_globalize'
 pkgname="ocaml-$_projectname"
-pkgver='0.17.0'
-pkgrel='3'
+pkgver='0.17.2'
+pkgrel='1'
 pkgdesc='A ppx rewriter that generates functions to copy local values to the global heap'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-ppxlib_jane>=0.17.0' 'ocaml-ppxlib>=0.28.0')
+depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-ppxlib_jane>=0.17.0' 'ocaml-ppxlib>=0.36.0')
 makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('8b849b260ef3527cc3db9a35cabb46c08b5f4c3fa9eaa204a807fc7e12407241d5edf9f834fecd6304c3e271a573edbeba3a6fe60c482e84173f14bf4060a7b3')
+b2sums=('c30de96b912869169699b2ee12c82922016acff79934a9f921c9fb5cbfdeaa05ad7bc6f18fa1f58207f2faad8fe4c30e24670817357ddd96befbdf3db58bc367')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -22,12 +22,8 @@ build() {
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
-
-	for _folder in "$pkgdir/usr/share/doc/"*; do
-		mv "$_folder" "$pkgdir/usr/share/doc/ocaml-$(basename "$_folder")"
-	done
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc/ocaml' --mandir '/usr/share/man' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/MIT"
+	ln -sf "/usr/share/doc/ocaml/$_projectname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
