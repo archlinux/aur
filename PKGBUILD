@@ -6,7 +6,7 @@ pkgdesc="A collection of powerful but useful small tools."
 arch=('x86_64')
 url="https://github.com/flajann2/swiss-army-knife-hs"
 license=('MIT')
-depends=('gmp' 'libffi' 'ghc' 'glibc')
+depends=('ghc' 'glibc')
 makedepends=('wget' 'xz' 'git' 'ghc-libs' 'cabal-install')
 source=("$pkgname::git+https://github.com/flajann2/swiss-army-knife-hs.git")
 
@@ -36,7 +36,6 @@ build() {
    ghc --version
    cabal --version
 
-   echo "**** $HOME **** $srcdir ****"
    cabal update
    mkdir -p "$HOME/.cabal"
    cabal configure \
