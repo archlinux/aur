@@ -1,4 +1,7 @@
 [epub_to_audiobook]
-source = "git"
-git = "https://github.com/p0n1/epub_to_audiobook.git"
+source = "github"
+github = "p0n1/epub_to_audiobook"
 prefix = "v"
+use_release_name=true
+use_latest_release=true
+include_prereleases=false
