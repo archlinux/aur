@@ -2,9 +2,10 @@ pkgbase = steam-big-picture-session
 	pkgdesc = A Wayland compositor for Steam Big Picture mode
 	pkgver = 0.0.1
 	pkgrel = 1
+	url = https://github.com/Aethar01/steam-big-picture-session
 	arch = any
 	license = NONE
-	source = git+https://github.com/Aethar/steam-big-picture-session.git
+	source = git+https://github.com/Aethar01/steam-big-picture-session.git
 	sha256sums = SKIP
 
 pkgname = steam-big-picture-session
