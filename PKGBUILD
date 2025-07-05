@@ -2,18 +2,18 @@
 pkgname=axmud
 _relname="Axmud"
 _relpkg="Games-$_relname"
-pkgver=1.3.019
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="GTK3 Multi-User Dungeon (MUD) client"
 arch=('any')
 url="https://axmud.sourceforge.io/"
-license=('GPL3' 'LGPL3')
-depends=('perl-archive-extract' 'perl-archive-zip' 'perl-file-copy-recursive' 'perl-file-homedir' 'perl-file-sharedir' 'perl-file-sharedir-install' 'perl-goocanvas2' 'perl-gtk3' 'perl-math-round' 'perl-io-socket-inet6' 'perl-io-socket-ssl' 'perl-ipc-run' 'perl-json' 'perl-net-openssh' 'perl-path-tiny' 'perl-regexp-ipv6' 'perl-x11-wmctrl')
+license=('GPL-3.0-only' 'LGPL-3.0-only')
+depends=('perl')
 optdepends=('sox' 'timidity++')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://downloads.sourceforge.net/project/$pkgname/$_relname-$pkgver/$_relpkg-$pkgver.tar.gz")
 
-sha256sums=('0919325465652ed001c9b3427e5f6ed75d7f7996495658fa2616c7285e3a0c82')
+sha256sums=('3a4213f1e3ee8bd762f55305a671aa9514d282e84f658890f214732719321bbb')
 
 build() {
   cd "$srcdir/$_relpkg-$pkgver"
