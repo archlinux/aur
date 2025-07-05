@@ -9,7 +9,7 @@ license=('GPL')
 depends=()
 makedepends=('cargo')
 source=("https://github.com/Byson94/xfsrtray/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fc474faf99cd7d1fdcb2667bce63aaa56519a3027a7797e2de37dd4f9eb5b8d8')
+sha256sums=('4ced7c5288f46cf658922c849cf6bc0016151be7771f3a8fa75501c6ecbd71a5')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
