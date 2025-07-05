@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_bench
 	pkgdesc = Syntax extension for writing in-line benchmarks in ocaml code
-	pkgver = 0.17.0
-	pkgrel = 3
+	pkgver = 0.17.1
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/ppx_bench
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = ocaml-ppx_bench
 	makedepends = dune>=3.11.0
 	depends = ocaml>=5.1.0
 	depends = ocaml-ppx_inline_test>=0.17.0
-	depends = ocaml-ppxlib>=0.28.0
+	depends = ocaml-ppxlib>=0.36.0
 	depends = zstd
 	options = !strip
-	source = ocaml-ppx_bench-0.17.0.tar.gz::https://github.com/janestreet/ppx_bench/archive/v0.17.0.tar.gz
-	b2sums = 8a8d3f6b6f898b88b6af68e8f4049f27ccaa9ee8ea0843399df9ddc4c2b0ea6d1026619ddfc12518bb736c90e0fbbba135fb1ef245763f3b768f5f829e398e16
+	source = ocaml-ppx_bench-0.17.1.tar.gz::https://github.com/janestreet/ppx_bench/archive/v0.17.1.tar.gz
+	b2sums = 240d65f0b090c4a8ca1938aeb0e34c1a6926fa2fbb0452582ab1b5de2a17a798f67ab404c3f1cd9a9d5edde0b6a70a520f94563005f1b43639dd08f31d15b536
 
 pkgname = ocaml-ppx_bench
