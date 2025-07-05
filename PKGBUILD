@@ -1,7 +1,7 @@
 # Maintainer: Michael Thies <mail@mhthies.de>
 
 pkgname=justbuild
-pkgver='1.4.3'
+pkgver='1.6.0'
 pkgrel=1
 pkgdesc="A generic build system supporting multi-repository builds"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'gcc-libs' 'fmt' 'openssl' 'zlib' 're2' 'c-ares' 'grpc' 'abseil
 makedepends=('clang' 'binutils' 'wget' 'cli11' 'nlohmann-json' 'pandoc')
 conflicts=('just' 'just-git' 'just-js')
 source=("justbuild-${pkgver}.tar.gz::https://github.com/just-buildsystem/justbuild/archive/v${pkgver}.tar.gz")
-sha256sums=('4456e2a734abb57b137c5378be9b63916ee7407d85b05305edead885746c0e90')
+sha256sums=('babd24ea014c6c2987eccf90f65b15787e0cd8db72ec73ac57d9584737a251a1')
 
 build() {
     cd "${srcdir}/justbuild-${pkgver}"
