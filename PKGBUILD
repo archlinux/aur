@@ -1,14 +1,14 @@
 # Maintainer: foi <foi@live.ru>
 
 pkgname=bird3-bin
-pkgver=3.1.0
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="BIRD Internet Routing Daemon"
 arch=('x86_64')
 url="https://pkg.labs.nic.cz/doc/?project=bird"
 license=('GNU General Public License')
 conflicts=('bird')
-sha256sums=('9b0f69f77c038e1394ce37e31862c6146e94df0c462435669f02d82be611c95d')
+sha256sums=('57804c45426bd9f1e6492d06b56322b8e0927363239607cb73a29e68bc6d8b9d')
 source=("https://pkg.labs.nic.cz/bird3/pool/main/b/bird3/bird3_${pkgver}-cznic.1~bookworm_amd64.deb")
 backup=("etc/bird" "etc/bird/bird.conf" "etc/bird/envvars")
 
