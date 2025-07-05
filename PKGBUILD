@@ -1,73 +1,115 @@
-# Maintainer: Marcos M. Raimundo <marcosmrai@gmail.com>
-# Maintainer: Patrick Klein <patrick@libklein.com>
+# Maintainer:  Marcos M. Raimundo <marcosmrai@gmail.com>
+# Maintainer:  Patrick Klein <patrick@libklein.com>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-pkgname=gurobi
+pkgbase="gurobi"
+pkgname=({,java-,r-}"${pkgbase}")
 pkgver=12.0.2
-pkgrel=1
+_pkgver="${pkgver%.*}"
+pkgrel=2
 pkgdesc="State-of-the-art solver for mathematical programming"
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url="https://www.gurobi.com/products/gurobi-optimizer"
-license=('custom')
-depends=('python>=3.11')
-optdepends=(
-  'python-gurobipy: Gurobi python interface support'
-  'gcc: C/C++ programming interfaces support'
-  'java-environment: Java programming interface support'
-  'mono: .NET programming interface support'
-  'matlab: MATLAB programming interface support, versions 2008b onwards'
-)
-source=(
-  "https://packages.gurobi.com/${pkgver:0:4}/gurobi${pkgver}_linux64.tar.gz"
-  "gurobi.sh"
-  "gurobi_setup.m"
-)
-md5sums=(
-  'a29179c21aa02c511df847a28e4561a2'
-  '1f34712dbc8df686d987b6bf129811fd'
-  'fde2cef01f075e2d28188576a2639b34')
+license=('custom:Gurobi EULA')
+makedepends=('r')
+_pkgsrc="${pkgbase}${pkgver//./}" # "${pkgbase}-${pkgver}"
+source=("${pkgbase}.sh")
+source_aarch64=("${pkgbase}-${pkgver}-aarch64.tar.gz::https://packages.gurobi.com/${_pkgver}/${pkgname}${pkgver}_armlinux64.tar.gz")
+source_x86_64=("${pkgbase}-${pkgver}-x86_64.tar.gz::https://packages.gurobi.com/${_pkgver}/${pkgname}${pkgver}_linux64.tar.gz")
+md5sums=('1f34712dbc8df686d987b6bf129811fd')
+md5sums_aarch64=('4b27456406bfa57eefb29a64b10b21ee')
+md5sums_x86_64=('a29179c21aa02c511df847a28e4561a2')
+b2sums=('1e78921a5fe8c04a73ac595f80c8116919fd3174c946715ca836c375950785b5b13e5dbb8c6b1356ed6b4b993a0a2efcbc0ad458cfe2563d9945a5a7678381d0')
+b2sums_aarch64=('20c96e062e218bac2939b4f1ddc2781c3278104dc05b000c478521179d2c220396168298106a006468bb642141cbbb70bb37b721024ea5bbecec1c9ea7064fa8')
+b2sums_x86_64=('437fef3e89dff4fc64d6b9ef181fdf4cee432eeaba1b062b83dc1a076ce2a9de62d43dd0d375f334142ebee2a91cd640a1249412f011fc8a4f9c2d3f639de44d')
+
+if [ "${CARCH}" = 'aarch64' ]; then
+  _arch=armlinux64
+elif [ "${CARCH}" = 'x86_64' ]; then
+  _arch=linux64
+else _arch=DUMMY; fi
 
 prepare() {
-  cd "$srcdir/${pkgname}${pkgver//./}/linux64/"
-
-  rm -r examples/build/
-  # Remove python version distributed with gurobi
-  rm -rf bin/python3.11
-  rm -rf lib/python3.11
+  cd "${srcdir}/${_pkgsrc}/${_arch}"
+  # Remove Python version distributed with Gurobi
+  find . -name 'python3.*' -exec rm -rf "{}" +
 
   # Adapt cross-platform scripts to Arch Linux
-  cp ${srcdir}/gurobi.sh bin/
-  cp ${srcdir}/gurobi_setup.m matlab/
+  cp "${srcdir}/${pkgname}.sh" ./bin/
+}
+
+build() {
+  cd "${srcdir}/${_pkgsrc}/${_arch}/src/build"
+  make C++FLAGS="${CXXFLAGS} -fPIC"
+
+  cd "${srcdir}/${_pkgsrc}/${_arch}/R"
+  mkdir -p "build"
+  R CMD INSTALL "${pkgbase}"*.tar.gz -l ./"build"
 }
 
 package_gurobi() {
-  install=${pkgname}.install
+  depends=('glibc' 'sh')
+  optdepends=("java-${pkgbase}: Java bindings"
+    "matlab-${pkgbase}: MATLAB bindings"
+    'python-gurobipy: Python bindings, interactive shell'
+    "r-${pkgbase}: R bindings")
+  provides=("lib${pkgbase}.so")
+  install="${pkgbase}.install"
 
-  cd "$srcdir/${pkgname}${pkgver//./}/linux64/"
+  cd "${srcdir}/${_pkgsrc}/${_arch}"
+  find "bin" -type f -exec \
+    install -vDm755 "{}" "${pkgdir}/usr/{}" \;
+  find "include" -type f -name '*.h' -exec \
+    install -vDm644 "{}" "${pkgdir}/usr/{}" \;
 
-  # License
-  install -D -m644 EULA.pdf "${pkgdir}/usr/share/licenses/${pkgname}/EULA.pdf"
+  install -vdm755 "${pkgdir}/usr/lib"
+  find "lib" -type f,l -name 'lib*.so*' -exec \
+    cp -vaP "{}" "${pkgdir}/usr/{}" \;
 
-  # Binaries and related files
-  install -Dt "${pkgdir}/usr/bin/" bin/*
-  # Gurobi interactive shell
-  install -D lib/gurobi.py "${pkgdir}/usr/lib/${pkgname}/gurobi.py"
+  install -vDm755 "lib/${pkgbase}.py" "${pkgdir}/usr/lib/${pkgbase}/${pkgbase}.py"
+  install -vDm644 "EULA.pdf" "${pkgdir}/usr/share/licenses/${pkgbase}/EULA.pdf"
 
-  # Examples
-  mkdir -p "${pkgdir}/usr/share/doc/${pkgname}/examples/"
-  cp -rT examples/ "${pkgdir}/usr/share/doc/${pkgname}/examples/"
+  cd "${srcdir}/${_pkgsrc}/${_arch}/src/build"
+  install -vDm644 "libgurobi_c++.a" "${pkgdir}/usr/lib/libgurobi_g++8.5.a"
 
-  # Headers
-  install -Dm644 -t "${pkgdir}/usr/include/" include/*.h
+  cd "${srcdir}/${_pkgsrc}/${_arch}/examples"
+  find "build" "c" "c#" "c++" "data" "python" "vb" -type f -exec \
+    install -vDm644 "{}" "${pkgdir}/usr/share/doc/${pkgbase}/examples/{}" \;
 
-  # Programming interfaces
-  install -Dt "${pkgdir}/usr/lib/" lib/*.so*
-  install -Dm644 -t "${pkgdir}/usr/lib/" lib/*.a
-  ln -sf ./libgurobi.so.${pkgver} "${pkgdir}/usr/lib/libgurobi.so"
-  ln -sf ./libgurobi.so.${pkgver} "${pkgdir}/usr/lib/libgurobi$(echo $pkgver | sed 's/\.//g').so"
-  ln -sf ./libgurobi_g++8.5.a "${pkgdir}/usr/lib/libgurobi_c++.a"
+  cd "${pkgdir}/usr/lib"
+  for lib in lib*.so.*; do
+    ln -vsf "${lib}" "${lib%.[0-9]*.[0-9]*.[0-9]*}"
+    ln -vsf "${lib}" "${lib%.[0-9]*.[0-9]*}"
+  done
 
-  install -D -m644 lib/gurobi.jar "${pkgdir}/usr/share/java/${pkgname}/gurobi.jar"
+  ln -vsf "libgurobi_g++8.5.a" "libgurobi_c++.a"
+  ln -vsf "libgurobi.so.${pkgver}" "libgurobi${pkgver//./}.so"
+}
 
-  install -Dt "${pkgdir}/usr/lib/${pkgname}/matlab/" matlab/*.mexa64
-  install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}/matlab/" matlab/*.m
+package_java-gurobi() {
+  pkgdesc+=" (Java bindings)"
+  arch=('any')
+  depends=("${pkgbase}=${pkgver}-${pkgrel}" 'java-runtime<=21' 'java-runtime>=8')
+
+  cd "${srcdir}/${_pkgsrc}/${_arch}/lib"
+  find . -type f -name '*.jar' -exec \
+    install -vDm644 "{}" "${pkgdir}/usr/share/java/${pkgbase}/{}" \;
+
+  cd "${srcdir}/${_pkgsrc}/${_arch}/examples"
+  find "java" -type f -exec \
+    install -vDm644 "{}" "${pkgdir}/usr/share/doc/${pkgbase}/examples/{}" \;
+}
+
+package_r-gurobi() {
+  pkgdesc+=" (R bindings)"
+  license+=('LGPL-2.1-only')
+  depends=("${pkgbase}=${pkgver}-${pkgrel}" 'glibc' 'r>=4.5' 'r-slam>=0.1.9')
+
+  cd "${srcdir}/${_pkgsrc}/${_arch}/R"
+  install -vdm755 "${pkgdir}/usr/lib/R/library"
+  cp -va --no-preserve=ownership "build"/* "${pkgdir}/usr/lib/R/library"
+
+  cd "${srcdir}/${_pkgsrc}/${_arch}/examples"
+  find "R" -type f -exec \
+    install -vDm644 "{}" "${pkgdir}/usr/share/doc/${pkgbase}/examples/{}" \;
 }

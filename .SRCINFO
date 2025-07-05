@@ -1,22 +1,44 @@
 pkgbase = gurobi
 	pkgdesc = State-of-the-art solver for mathematical programming
 	pkgver = 12.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gurobi.com/products/gurobi-optimizer
+	arch = aarch64
 	arch = x86_64
-	license = custom
-	depends = python>=3.11
-	optdepends = python-gurobipy: Gurobi python interface support
-	optdepends = gcc: C/C++ programming interfaces support
-	optdepends = java-environment: Java programming interface support
-	optdepends = mono: .NET programming interface support
-	optdepends = matlab: MATLAB programming interface support, versions 2008b onwards
-	source = https://packages.gurobi.com/12.0/gurobi12.0.2_linux64.tar.gz
+	license = custom:Gurobi EULA
+	makedepends = r
 	source = gurobi.sh
-	source = gurobi_setup.m
-	md5sums = e56f0813a6869d55475e417dd22cdbbf
 	md5sums = 1f34712dbc8df686d987b6bf129811fd
-	md5sums = fde2cef01f075e2d28188576a2639b34
+	b2sums = 1e78921a5fe8c04a73ac595f80c8116919fd3174c946715ca836c375950785b5b13e5dbb8c6b1356ed6b4b993a0a2efcbc0ad458cfe2563d9945a5a7678381d0
+	source_aarch64 = gurobi-12.0.2-aarch64.tar.gz::https://packages.gurobi.com/12.0/gurobi12.0.2_armlinux64.tar.gz
+	md5sums_aarch64 = 4b27456406bfa57eefb29a64b10b21ee
+	b2sums_aarch64 = 20c96e062e218bac2939b4f1ddc2781c3278104dc05b000c478521179d2c220396168298106a006468bb642141cbbb70bb37b721024ea5bbecec1c9ea7064fa8
+	source_x86_64 = gurobi-12.0.2-x86_64.tar.gz::https://packages.gurobi.com/12.0/gurobi12.0.2_linux64.tar.gz
+	md5sums_x86_64 = a29179c21aa02c511df847a28e4561a2
+	b2sums_x86_64 = 437fef3e89dff4fc64d6b9ef181fdf4cee432eeaba1b062b83dc1a076ce2a9de62d43dd0d375f334142ebee2a91cd640a1249412f011fc8a4f9c2d3f639de44d
 
 pkgname = gurobi
 	install = gurobi.install
+	depends = glibc
+	depends = sh
+	optdepends = java-gurobi: Java bindings
+	optdepends = matlab-gurobi: MATLAB bindings
+	optdepends = python-gurobipy: Python bindings, interactive shell
+	optdepends = r-gurobi: R bindings
+	provides = libgurobi.so
+
+pkgname = java-gurobi
+	pkgdesc = State-of-the-art solver for mathematical programming (Java bindings)
+	arch = any
+	depends = gurobi=12.0.2-2
+	depends = java-runtime<=21
+	depends = java-runtime>=8
+
+pkgname = r-gurobi
+	pkgdesc = State-of-the-art solver for mathematical programming (R bindings)
+	license = custom:Gurobi EULA
+	license = LGPL-2.1-only
+	depends = gurobi=12.0.2-2
+	depends = glibc
+	depends = r>=4.5
+	depends = r-slam>=0.1.9
