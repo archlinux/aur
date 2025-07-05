@@ -1,7 +1,7 @@
 pkgbase = file-cpp-git
 	pkgdesc = C++ wrapper library around std::fstream
 	pkgver = r12.fcb5eca
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/weqeqq/file-cpp
 	arch = any
 	license = MIT
