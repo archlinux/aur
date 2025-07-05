@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-libxkbcommon
 	pkgdesc = Keymap handling library for toolkits and window systems (Android x86-64)
-	pkgver = 1.9.2
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://xkbcommon.org/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = android-x86-64-libxkbcommon
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-1.9.2.tar.gz
-	md5sums = 8e0bddfa125c11839bc1a2c0ef6f9db8
+	source = https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-1.10.0.tar.gz
+	md5sums = fff567d6841b9127477c303f1e8deb22
 
 pkgname = android-x86-64-libxkbcommon
