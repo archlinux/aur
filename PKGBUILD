@@ -3,7 +3,7 @@
 _author=backslash-app
 _basename=backslash
 pkgname=${_basename}-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A lightning-fast command launcher that helps you launch commands, run apps, and streamline your workflow—all while embracing the quirky spirit of Linux!"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('desktop-file-utils' 'gtk2' 'hicolor-icon-theme' 'libtiff' 'libpng' 'li
 optdepends=('perl: Fetching stock market info for the emStocks plugin'
             'htmldoc: Rendering HTML documents')
 source=("https://github.com/${_author}/${_basename}/releases/download/v${pkgver}/${_basename}_${pkgver}_amd64.deb")
-sha256sums=('d9e134624a3b3baba9d32f3504af6c3ae2d958e80781533c105f67a19967a47c')
+sha256sums=('21657e00351fff8071211ff602b601f26582019ced340682620e2dc2c00fa02c')
 
 package() {
     cd "${pkgdir}"
