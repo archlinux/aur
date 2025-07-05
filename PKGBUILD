@@ -3,10 +3,10 @@
 pkgname=nueclipse
 _pkgname=NuEclipse
 pkgver=1.02.029
-pkgrel=2
+pkgrel=3
 pkgdesc="Ecipse base C/C++ IDE for Nuvoton Microcontroller"
 arch=('x86_64')
-url="https://www.nuvoton.com"
+url="https://www.nuvoton.com/tool-and-software/ide-and-compiler/"
 license=('custom')
 groups=()
 depends=("gtk2" "arm-none-eabi-gcc" "arm-none-eabi-newlib" "arm-none-eabi-gdb")

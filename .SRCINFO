@@ -1,8 +1,8 @@
 pkgbase = nueclipse
 	pkgdesc = Ecipse base C/C++ IDE for Nuvoton Microcontroller
 	pkgver = 1.02.029
-	pkgrel = 2
-	url = https://www.nuvoton.com
+	pkgrel = 3
+	url = https://www.nuvoton.com/tool-and-software/ide-and-compiler/
 	arch = x86_64
 	license = custom
 	depends = gtk2
