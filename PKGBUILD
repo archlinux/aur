@@ -2,7 +2,7 @@
 
 _pkgname=3dslicer
 pkgname=3dslicer-git
-pkgver=5.8.1.r184.cd62f821c9
+pkgver=5.8.1.r324.8a9fd675f0
 pkgrel=1
 pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research'
 arch=('x86_64')
@@ -31,7 +31,8 @@ depends=(
   libxfixes
   libxrender
   openssl
-  rapidjson
+  # not work with system rapidjson
+  #rapidjson
   qt5-base
   qt5-declarative
   qt5-multimedia
@@ -114,7 +115,7 @@ build() {
     -DSlicer_USE_SYSTEM_OpenSSL=ON \
     -DSlicer_USE_SYSTEM_PCRE=OFF \
     -DSlicer_USE_SYSTEM_QT=ON \
-    -DSlicer_USE_SYSTEM_RapidJSON=ON \
+    -DSlicer_USE_SYSTEM_RapidJSON=OFF \
     -DSlicer_USE_SYSTEM_SimpleITK=OFF \
     -DSlicer_USE_SYSTEM_SlicerExecutionModel=OFF \
     -DSlicer_USE_SYSTEM_Swig=OFF \
