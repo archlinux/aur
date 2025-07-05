@@ -1,6 +1,6 @@
 pkgbase = wayback-x-compatibility-layer-git
 	pkgdesc = Experimental X11 compatibility layer for Wayland
-	pkgver = test
+	pkgver = r25.f141d5a
 	pkgrel = 1
 	url = https://github.com/kaniini/wayback
 	arch = x86_64

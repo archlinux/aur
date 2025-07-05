@@ -1,6 +1,6 @@
 # Maintainer: OpenSource Guy <osguy@duck.com>
 pkgname=wayback-x-compatibility-layer-git
-pkgver=test
+pkgver=r25.f141d5a
 pkgrel=1
 pkgdesc="Experimental X11 compatibility layer for Wayland"
 arch=('x86_64')
