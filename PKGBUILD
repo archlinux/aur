@@ -2,13 +2,13 @@
 # Contributor: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=autojump-rs-bin
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A faster way to navigate your filesystem from the command line (in Rust)"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/xen0n/autojump-rs"
 license=('GPL3')
-conflicts=('autojump' 'autojump-rs' 'autojump-rs-git')
-provides=('autojump')
+conflicts=('autojump' 'autojump-rs')
+provides=('autojump' 'autojump-rs')
 depends=()
 makedepends=('python>=3.8')
 options=()
