@@ -2,9 +2,9 @@
 
 pkgname=python-mariadb-connector
 pkgver=1.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python DB API 2.0 compliant API for access to MariaDB and MySQL databases'
-arch=('any')
+arch=('x86_64')
 url="https://mariadb.com/kb/en/mariadb-connector-python/"
 license=('LGPL')
 depends=('python>=3.9.0' 'mariadb-connector-c')
