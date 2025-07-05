@@ -3,7 +3,7 @@
 
 pkgname=abdownloadmanager-bin
 _pkgname=ABDownloadManager
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="A Download Manager that speeds up your downloads"
 arch=("x86_64")
@@ -15,7 +15,7 @@ conflicts=("abdownloadmanager")
 options=(!debug)
 source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux_x64.tar.gz"
         "${_pkgname}.desktop")
-sha256sums=("9f262cef463eba8ae3a662b6d29c48bcc8fd8930c722d6c737617fb4811de28b"
+sha256sums=("2de8f0b36272728910b544d46165d7410275c3afc2cc4d3e9e391dfcba94dc70"
             "233bc90afae18aa215b47850a1ded67e653c7123845f2bddb0334873e8d21036")
 
 package() {
