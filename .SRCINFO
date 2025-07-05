@@ -1,7 +1,7 @@
 pkgbase = hollama-bin
 	pkgdesc = A minimal web-UI for talking to Ollama servers.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.35.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hollama.fernando.is/
 	arch = x86_64
 	license = MIT
