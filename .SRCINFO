@@ -1,7 +1,7 @@
 pkgbase = rmlint
 	pkgdesc = remove duplicates and other lint (without-gui)
 	pkgver = 2.10.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/sahib/rmlint
 	arch = i686
 	arch = x86_64
@@ -18,6 +18,8 @@ pkgbase = rmlint
 	checkdepends = dash
 	makedepends = scons
 	makedepends = gettext
+	makedepends = python-sphinx
+	makedepends = python-sphinx-bootstrap-theme
 	depends = glib2
 	depends = glibc
 	depends = libelf

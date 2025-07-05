@@ -6,7 +6,7 @@
  
 pkgname=rmlint
 pkgver=2.10.3
-pkgrel=6
+pkgrel=7
 pkgdesc="remove duplicates and other lint (without-gui)"
 arch=('i686' 'x86_64')
 url="https://github.com/sahib/rmlint"
@@ -23,6 +23,8 @@ depends=(
 makedepends=(
   scons
   gettext
+  python-sphinx
+  python-sphinx-bootstrap-theme
 )
 
 checkdepends=(
