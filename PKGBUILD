@@ -2,7 +2,7 @@
 
 _pkgname=pacmanager
 pkgname=${_pkgname}-bin
-pkgver=0.1.2             
+pkgver=0.1.3             
 pkgrel=1
 pkgdesc="This application provides a user-friendly graphical interface for managing both official Arch Linux packages via pacman and AUR (Arch User Repository) packages via yay."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 
-sha256sums=('5aa7bae417c4272d61d8e9c6db890c4914e50831d7f13d48e2ba0ed0583bdaa8')
+sha256sums=('1f3c7761c3e176fcfa9ae82d43ace69a37591adfc1e26a9a1c38f3e7b19543cb')
 
 package() {
   bsdtar -x -f "${srcdir}/${_pkgname}-${pkgver}.deb" -C "${srcdir}"
