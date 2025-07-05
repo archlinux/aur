@@ -54,9 +54,23 @@ build() {
 }
 
 package() {
-   cd "$srcdir/$pkgname"
-   mkdir -p "$pkgdir/usr/bin"
-   cabal install --overwrite-policy=always
-   install -Dm755 $(find . -path "*/dist-newstyle/build/*" -name sak -type f) "$pkgdir/usr/bin/sak"
-   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir/$pkgname-$pkgver"
+    
+    # Install the binary
+    cabal install --installdir="$pkgdir/usr/bin" --install-method=copy
+    
+    # Alternative approach if the above doesn't work:
+    # cabal configure --prefix=/usr --destdir="$pkgdir"
+    # cabal build
+    # cabal copy --destdir="$pkgdir"
+    
+    # Install documentation if available
+    if [[ -f README.org ]]; then
+        install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.org"
+    fi
+    
+    # Install license if available
+    if [[ -f LICENSE ]]; then
+        install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    fi
 }
