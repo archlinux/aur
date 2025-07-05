@@ -15,10 +15,10 @@ sha256sums=('00daf3698e17ac3ac788d529877c03ee80c3790472a85d0ed063ac3a354c37b1')
 package() {
   cd $pkgname-release-v$pkgver
   ./install.py --destdir "$pkgdir" --prefix 'usr/' --zshshare 'usr/share/zsh/site-functions'
-  
+
   install -d "$pkgdir"/etc/fish/conf.d
   mv "$pkgdir"/usr/share/autojump/$pkgname.fish "$pkgdir"/etc/fish/conf.d
-  
+
   rm -f "$pkgdir"/usr/share/autojump/icon.png
 
   # FS#43762
