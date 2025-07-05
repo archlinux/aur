@@ -1,9 +1,9 @@
-
-# Maintainer: BadBoy <luckmelove2@gmail.com>
+# Maintainer: Okabe Zero-Link (okbzl). Email: okabezerolink@gmail.com
+# Contributor: BadBoy <luckmelove2@gmail.com>
 #
 pkgname='terabox-bin'
 _pkgname="$(echo $pkgname |cut -d - -f 1 | tr 'tb' 'TB')"
-pkgver='1.40.0'
+pkgver='1.41.1'
 pkgrel='1'
 pkgdesc='Baidu netdisc international version'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
 # DEB package
 source=("https://data.nephobox.com/issue/terabox/Linux/${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 
-sha256sums=('50d950622f2b17bdbd04e836e590b9650092456204719eb3341e8a337bef8b44')
+sha256sums=('4874596d34d8ba777efcba4e692c6bbae995a4847267e32eeef076cc54bf2fff')
 
 options=(!strip)
 
