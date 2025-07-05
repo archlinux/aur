@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-uuid6
 _name=${pkgname#python-}
-pkgver=2025.0.0
+pkgver=2025.0.1
 pkgrel=1
 pkgdesc="New time-based UUID formats which are suited for use as a database key"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(
   'python-wheel'
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('3b7e6a21faaedb1099c8cd43ff9eb3eea0effd6709f3495a9507a4cabe894f24')
+sha256sums=('84fe5f9928d5116d5a82bcfe6bed5c4428f815d3ffbd63d4ded3838ac0c20903')
 
 build() {
   cd "$_name-python-$pkgver"
