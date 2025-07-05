@@ -1,7 +1,7 @@
 pkgbase = kazumi
 	pkgdesc = 基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕
 	pkgver = 1.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Predidit/Kazumi
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -12,6 +12,7 @@ pkgbase = kazumi
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = libayatana-appindicator
+	depends = xdg-user-dirs
 	depends = alsa-lib
 	depends = libvdpau
 	depends = libpulse
