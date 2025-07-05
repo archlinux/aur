@@ -68,11 +68,55 @@ package() {
         cd $(find . -maxdepth 1 -type d -name "*$pkgname*" | head -1)
     fi
     
-    # Install the binary - find the actual executable
-    find dist-newstyle -name "sak" -type f -executable -exec install -Dm755 {} "$pkgdir/usr/bin/sak" \;
+    # Debug: Show what's in the build directory
+    echo "Looking for executable in dist-newstyle:"
+    find dist-newstyle -name "*sak*" -type f 2>/dev/null || echo "No sak executable found in dist-newstyle"
     
-    # Alternative: Install using cabal (if the find method doesn't work)
-    # cabal install --installdir="$pkgdir/usr/bin" --install-method=copy
+    # Method 1: Try to find and install the executable directly
+    local exe_path=$(find dist-newstyle -name "sak" -type f -executable 2>/dev/null | head -1)
+    if [[ -n "$exe_path" ]]; then
+        echo "Found executable at: $exe_path"
+        install -Dm755 "$exe_path" "$pkgdir/usr/bin/sak"
+    else
+        echo "Method 1 failed, trying cabal install method..."
+        
+        # Method 2: Use cabal install
+        mkdir -p "$pkgdir/usr/bin"
+        cabal install --installdir="$pkgdir/usr/bin" --install-method=copy --overwrite-policy=always
+        
+        # Check if it was installed
+        if [[ ! -f "$pkgdir/usr/bin/sak" ]]; then
+            echo "Method 2 failed, trying cabal copy method..."
+            
+            # Method 3: Use cabal copy with destdir
+            cabal copy --destdir="$pkgdir"
+            
+            # If still not found, try to locate it manually
+            if [[ ! -f "$pkgdir/usr/bin/sak" ]]; then
+                echo "Searching for any sak executable in the entire build tree:"
+                find . -name "*sak*" -type f -executable 2>/dev/null
+                
+                # Try alternative common locations
+                local alt_exe=$(find . -name "sak" -type f -executable 2>/dev/null | head -1)
+                if [[ -n "$alt_exe" ]]; then
+                    echo "Found alternative executable at: $alt_exe"
+                    install -Dm755 "$alt_exe" "$pkgdir/usr/bin/sak"
+                else
+                    echo "ERROR: Could not find sak executable anywhere!"
+                    exit 1
+                fi
+            fi
+        fi
+    fi
+    
+    # Verify installation
+    if [[ -f "$pkgdir/usr/bin/sak" ]]; then
+        echo "Successfully installed sak to $pkgdir/usr/bin/sak"
+        ls -la "$pkgdir/usr/bin/sak"
+    else
+        echo "ERROR: sak was not installed to $pkgdir/usr/bin/sak"
+        exit 1
+    fi
     
     # Install documentation if available
     if [[ -f README.md ]]; then
