@@ -14,6 +14,7 @@ md5sums=('SKIP')
 
 prepare() {
     cd "$srcdir"
+    export HOME="$srcdir"
 
     curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
     source "$srcdir/.ghcup/env"
