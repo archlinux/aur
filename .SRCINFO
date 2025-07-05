@@ -15,6 +15,7 @@ pkgbase = scilab
 	makedepends = ocaml-num
 	makedepends = pcre
 	makedepends = pkgconf
+	makedepends = rapidjson
 	makedepends = time
 	makedepends = tk
 	depends = arpack

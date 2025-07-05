@@ -26,6 +26,7 @@ makedepends=(ant
   ocaml-num
   pcre
   pkgconf
+  rapidjson
   time
   tk
 )
