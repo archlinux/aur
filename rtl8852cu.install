@@ -1,7 +1,0 @@
-post_install() {
-    echo ":: Logging install message to journalctl"
-    /usr/bin/systemd-cat -t rtl8852cu-install echo ":: The rtl8852cu kernel module (morrownr git version) has been installed via DKMS.
-:: Reboot your system to load the driver.
-:: Thanks to morrownr.
-:: 73 from 9M2PJU, https://hamradio.my"
-}

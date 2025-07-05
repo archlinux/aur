@@ -13,10 +13,9 @@ makedepends=('git')
 provides=('rtl8852cu-dkms')
 conflicts=('rtl8852cu-dkms')
 source=("${pkgname}::git+${url}.git"
-        "rtl8852cu.install"
+        "rtl8852cu-dkms-morrownr-git.install"
         "90-rtl8852cu-morrownr.hook")
 md5sums=('SKIP' 'SKIP' 'SKIP')
-install=rtl8852cu.install
 
 pkgver() {
   date +%Y%m%d

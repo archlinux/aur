@@ -1,0 +1,5 @@
+post_install() {
+    echo ":: Reboot your system to load the driver."
+    echo ":: Thanks to morrownr."
+    echo ":: 73 from 9M2PJU — https://hamradio.my"
+}

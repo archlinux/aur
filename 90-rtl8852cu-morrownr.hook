@@ -5,9 +5,6 @@ Type = Package
 Target = rtl8852cu-dkms-morrownr-git
 
 [Action]
-Description = Showing rtl8852cu install message...
+Description = Showing rtl8852cu driver install message...
 When = PostTransaction
-Exec = /usr/bin/systemd-cat -t rtl8852cu-install echo ":: The rtl8852cu kernel module (morrownr git version) has been installed via DKMS.
-:: Reboot your system to load the driver.
-:: Thanks to morrownr.
-:: 73 from 9M2PJU, https://hamradio.my"
+Exec = /bin/sh -c 'echo ":: The rtl8852cu kernel module (morrownr git version) has been installed."; echo ":: Reboot your system to load the driver."; echo ":: Thanks to morrownr."; echo ":: 73 from 9M2PJU, https://hamradio.my"'
