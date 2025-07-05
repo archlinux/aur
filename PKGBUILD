@@ -15,10 +15,11 @@ install=on-other-ffmpeg.install
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             '0a4693424f173c4c4d0f1853189d1bd422dcc08f512cc33af3d2acf1e2483e8c'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
-            'b1ce487b6fcdfacb388f2608a7884b6516c742629904698f61218ba16b8c09e5'
-            '91e858e7d826a09c0563725d2705d00bd58f7ded321858453462c60bfc34afdc')
+            '8098a4b44b6f756ebb420fd88cc60fb60dfc27a40e2586925ddb2c59e97a1e41'
+            'b42efa9a14ee2e24037984da45c2717ddf8dad2fd132e2d19d932b8ea6bf96c9')
 depends=(glibc)
-makedepends=(diffutils gcc make nasm patch sed)
+makedepends=(nasm
+diffutils gcc make patch sed) # base-devel
 optdepends=({electron{28..36},nwjs}': replace ffmpeg')
 conflicts=(opera{,-developer,-beta}-ffmpeg-codecs{,-bin})
 provides=("${conflicts[@]}")
