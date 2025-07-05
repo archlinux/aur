@@ -1,0 +1,79 @@
+#!/bin/bash
+
+post_install() {
+    echo "==> Setting up hypremoji for Hyprland..."
+
+    # Function to run command as the real user
+    run_as_user() {
+        local cmd="$1"
+        if [[ -n "$SUDO_USER" ]]; then
+            # Run as the user who used sudo
+            sudo -u "$SUDO_USER" bash -c "$cmd"
+        else
+            # Run normally
+            bash -c "$cmd"
+        fi
+    }
+
+    get_user_home() {
+        if [[ -n "$SUDO_USER" ]]; then
+            echo "/home/$SUDO_USER"
+        else
+            echo "$HOME"
+        fi
+    }
+
+    find_config_file() {
+        local user_home=$(get_user_home)
+        local file_name="hyprland.conf"
+        local config_file=""
+        local possible_paths=(
+            "$user_home/.config/hypr/$file_name"
+            "${XDG_CONFIG_HOME:-$user_home/.config}/hypr/$file_name"
+        )
+        
+        # Try to find the configuration file
+        for path in "${possible_paths[@]}"; do
+            if [[ -f "$path" ]]; then
+                config_file="$path"
+                break
+            fi
+        done
+        
+        echo "$config_file"
+    }
+
+    config_file=$(find_config_file)
+    
+    if [[ -z "$config_file" ]]; then
+        echo "    -> Could not find Hyprland configuration file."
+        echo "    -> You can configure it manually by running:"
+        echo "       /usr/share/hypremoji/setting_in_hyprland_config.sh ~/.config/hypr/hyprland.conf"
+        echo ""
+        echo "==> Installation complete"
+        echo "    -> Run 'hypremoji' to open the emoji picker"
+        return 0
+    fi
+    
+    echo "    -> Configuration file found: $config_file"
+    
+    # Run the configuration script as the real user
+    local script_path="/usr/share/hypremoji/setting_in_hyprland_config.sh"
+    local config_cmd="'$script_path' '$config_file'"
+
+    echo "    -> Applying configuration as user..."
+    if run_as_user "$config_cmd"; then
+        echo "    -> Configuration applied successfully"
+        echo "    -> Reloading Hyprland configuration..."
+        
+        echo "    -> Use Super + . to open hypremoji"
+    else
+        echo "    -> Error applying configuration automatically"
+        echo "    -> You can configure it manually by running:"
+        echo "       $script_path $config_file"
+    fi
+    
+    echo ""
+    echo "==> Installation complete"
+    echo "    -> Run 'hypremoji' to open the emoji picker"
+}

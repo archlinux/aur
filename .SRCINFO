@@ -1,0 +1,20 @@
+pkgbase = hypremoji
+	pkgdesc = A modern emoji picker for Hyprland, written in Rust + GTK4
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Musagy/hypremoji
+	install = hypremoji.install
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = gtk4
+	depends = noto-fonts-emoji
+	depends = wl-clipboard
+	depends = hyprland
+	provides = hypremoji
+	conflicts = hypremoji
+	options = !debug
+	source = hypremoji::git+https://github.com/Musagy/hypremoji
+	sha256sums = SKIP
+
+pkgname = hypremoji
