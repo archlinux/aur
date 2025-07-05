@@ -1,7 +1,7 @@
 pkgbase = rmlint
 	pkgdesc = remove duplicates and other lint (without-gui)
 	pkgver = 2.10.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/sahib/rmlint
 	arch = i686
 	arch = x86_64

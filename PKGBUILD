@@ -6,7 +6,7 @@
  
 pkgname=rmlint
 pkgver=2.10.3
-pkgrel=5
+pkgrel=6
 pkgdesc="remove duplicates and other lint (without-gui)"
 arch=('i686' 'x86_64')
 url="https://github.com/sahib/rmlint"
@@ -60,7 +60,7 @@ check() {
     cp ./rmlint ./rmlint.backup
     # Set rpath for tests that require the library to be 'installed'
     patchelf --set-rpath '$ORIGIN' ./rmlint
-    LD_LIBRARY_PATH="${PWD}:$LD_LIBRARY_PATH" scons test
+    LD_LIBRARY_PATH="${PWD}:$LD_LIBRARY_PATH" pytest tests -k 'not slow'
     # restore original binary
     mv ./rmlint.backup ./rmlint
 }
