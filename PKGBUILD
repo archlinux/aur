@@ -1,14 +1,15 @@
 # Maintainer: Mike Pento <mjpento@verizon.net>
+
 pkgname=axmud
 _relname="Axmud"
 _relpkg="Games-$_relname"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK3 Multi-User Dungeon (MUD) client"
 arch=('any')
 url="https://axmud.sourceforge.io/"
 license=('GPL-3.0-only' 'LGPL-3.0-only')
-depends=('perl')
+depends=('perl' 'perl-archive-extract' 'perl-archive-zip' 'perl-file-copy-recursive' 'perl-file-homedir' 'perl-file-sharedir' 'perl-file-sharedir-install' 'perl-goocanvas2' 'perl-gtk3' 'perl-math-round' 'perl-io-socket-inet6' 'perl-io-socket-ssl' 'perl-ipc-run' 'perl-json' 'perl-net-openssh' 'perl-path-tiny' 'perl-regexp-ipv6' 'perl-x11-wmctrl')
 optdepends=('sox' 'timidity++')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://downloads.sourceforge.net/project/$pkgname/$_relname-$pkgver/$_relpkg-$pkgver.tar.gz")
