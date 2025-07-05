@@ -1,19 +1,23 @@
 # Maintainer:F43nd1r <support@faendir.com>
 
 pkgname=plasma-remotecontrollers-git
-pkgver=5.27.80
-pkgrel=1
+pkgver=r512.0510b3e
+pkgrel=0
 pkgdesc='Translate various input device events into keyboard and pointer events'
 arch=(x86_64)
-url='https://plasma-bigscreen.org/'
+url='https://invent.kde.org/plasma-bigscreen/plasma-remotecontrollers'
 license=(GPL2)
-provides=('plasma-remotecontrollers')
-conflicts=('plasma-remotecontrollers')
-depends=(plasma-workspace)
+conflicts=(plasma-remotecontrollers)
+depends=(plasma-workspace plasma-bigscreen)
 makedepends=(extra-cmake-modules plasma-wayland-protocols libcec)
 optdepends=('libcec: TV remotes support')
 source=(git+https://invent.kde.org/plasma-bigscreen/plasma-remotecontrollers.git)
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 build() {
   cmake -B build -S plasma-remotecontrollers \
