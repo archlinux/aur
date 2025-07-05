@@ -1,0 +1,17 @@
+pkgbase = wayle-git
+	pkgdesc = A highly configurable Wayland panel/bar. (early development)
+	pkgver = r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Jas-SinghFSU/wayle
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = gtk4
+	provides = wayle
+	conflicts = wayle
+	source = wayle::git+https://github.com/Jas-SinghFSU/wayle.git
+	sha256sums = SKIP
+
+pkgname = wayle-git
