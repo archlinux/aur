@@ -1,7 +1,7 @@
 pkgbase = openkj
 	pkgdesc = Open KJ - Cross-platform open source karaoke hosting software
 	pkgver = 2.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openkj.org/
 	install = openkj.install
 	arch = i686
@@ -16,6 +16,8 @@ pkgbase = openkj
 	provides = openkj=2.0.8
 	conflicts = openkj-git
 	source = openkj-2.0.8.tar.gz::https://github.com/OpenKJ/OpenKJ/archive/refs/tags/v2.0.8-release.tar.gz
+	source = spdlog-1.9.2.tar.gz::https://github.com/gabime/spdlog/archive/refs/tags/v1.9.2.tar.gz
 	sha256sums = 8a24f58e31f4a0abd5e4d0d6703940e96d00305baa57c24aa6ca727bcf6d1fd5
+	sha256sums = 6fff9215f5cb81760be4cc16d033526d1080427d236e86d70bb02994f85e3d38
 
 pkgname = openkj
