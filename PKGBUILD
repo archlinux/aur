@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-cmudict
-pkgver=1.0.32
+pkgver=1.0.33
 pkgrel=1
 pkgdesc="A versioned python wrapper package for cmudict"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(
 )
 source=("git+https://github.com/prosegrinder/python-cmudict.git#tag=v$pkgver"
         'git+https://github.com/cmusphinx/cmudict.git')
-sha256sums=('c5d5fdbbdedbc44961f59d2269fb842f817f9acfed1e4f616a81a6e7723e87c8'
+sha256sums=('e75f66c27953b202d907f45cb9d0ac22d968b8fb0fe7ed97454acb77a920d45f'
             'SKIP')
 
 prepare() {
