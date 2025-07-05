@@ -4,11 +4,11 @@
 # Contributor: zhangkaizhao <zhangkaizhao at gmail dot com>
 pkgname=dooble-bin
 _pkgname=Dooble
-pkgver=2024.12.31
-pkgrel=2
+pkgver=2025.07.04
+pkgrel=1
 pkgdesc="Web browser based on QtWebEngine.(Prebuilt version)"
 arch=(
-    'aarch64'
+    #'aarch64'
     'x86_64'
 )
 url="https://textbrowser.github.io/dooble"
@@ -21,7 +21,6 @@ depends=(
     'cairo'
     'freetype2'
     'gdk-pixbuf2'
-    'gpgme'
     'gtk3'
     'libcups'
     'libdrm'
@@ -77,12 +76,11 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/textbrowser/dooble/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}_arm64.deb")
+#source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}_amd64.deb")
 sha256sums=('c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd'
             '062f45de85a166d6ad01bf85eb58916b420c52ac122c55e7ed8668defb11c030')
-sha256sums_aarch64=('4c14ddba9390d462473dfbed19746cc5c3dc97a56ba1ae360f716c37cf17e1aa')
-sha256sums_x86_64=('d078fb98bc59af988a3d97ef68cabc6eae366278045a188ba25718027f09f008')
+sha256sums_x86_64=('a6ffd3d5897c1bb0e736c2fd6703f2d626ad1b50d53bc57cdfb7a7b3c984868e')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
