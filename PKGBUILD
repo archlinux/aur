@@ -1,7 +1,7 @@
 # Maintainer: Antti <antti@antti.codes>
 
 pkgname=modrinth-app
-pkgver=0.9.5
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
@@ -26,7 +26,7 @@ source=(
     "modrinth-app"
     "modrinth-file-extensions.xml"
 )
-sha256sums=('cbc79757460fb13c7776dd2c9e4efc761504055c013c968cb2e802169b20b168'
+sha256sums=('81e4ac81189494de4b4287634b206c6b366fad7055d31067a663815cbc042472'
             '3ac2484618a0b10a979f7ce37fb97e748609bfb3bcccda5018a583e12ac0dbda'
             '288f48cb6f917293382ad5da0be31c578ac19c24655072b572bf14008a8054f6'
             'e0b3eab49465709ed5053dc1fa4206071ab32657d25bd1f9c01850d696715cff')
