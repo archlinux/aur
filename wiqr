@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import subprocess
+import configparser
+import qrcode
+import questionary
+CONNECTION_DIR = "/etc/NetworkManager/system-connections/"
+
+def list_connections():
+    files = os.listdir(CONNECTION_DIR)
+    return [f for f in files if f.endswith(".nmconnection")]
+
+def choose_connection():
+    connections = list_connections()
+    if not connections:
+        print("No saved Wi-Fi connections found.")
+        sys.exit(1)
+
+    # Build display names for selection (strip .nmconnection)
+    display_map = {
+        c.replace(".nmconnection", ""): c for c in connections
+    }
+
+    choice = questionary.select(
+        "Select a Wi-Fi network:",
+        choices=list(display_map.keys())
+    ).ask()
+
+    if not choice:
+        print("No selection made.")
+        sys.exit(1)
+
+    return display_map[choice]
+
+
+def parse_nmconnection(file):
+    path = os.path.join(CONNECTION_DIR, file)
+    
+    if not os.access(path, os.R_OK):
+        print(f"Need sudo access to read: {path}")
+        subprocess.run(["sudo", "chmod", "o+r", path])  # temp read permission
+    
+    config = configparser.ConfigParser()
+    config.read(path)
+
+    ssid = config["wifi"]["ssid"]
+    psk = config["wifi-security"].get("psk", "")
+    security = config["wifi-security"].get("key-mgmt", "WPA")
+
+    return ssid, psk, security
+
+def generate_qr(ssid, password, security):
+    wifi_string = f"WIFI:T:{security};S:{ssid};P:{password};;"
+    qr = qrcode.QRCode()
+    qr.add_data(wifi_string)
+    qr.make()
+    qr.print_ascii()
+
+def main():
+    # Relaunch with sudo if not already root
+    if os.geteuid() != 0:
+        os.execvp("sudo", ["sudo", sys.executable] + sys.argv)
+
+    # We're now running as root
+    file = choose_connection()
+    ssid, psk, security = parse_nmconnection(file)
+    print("            " + f"SSID: {ssid}")
+    generate_qr(ssid, psk, security)
+
+if __name__ == "__main__":
+    main()
+
