@@ -1,0 +1,5 @@
+src/
+pkg/
+mcjoin-*.tar.gz
+mcjoin-*-x86_64.pkg.tar
+
