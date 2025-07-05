@@ -1,10 +1,11 @@
 pkgbase = python-pykdtree
 	pkgdesc = Fast kd-tree implementation with OpenMP-enabled queries
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/storpipfugl/pykdtree
 	arch = x86_64
 	license = LGPL-3.0-only
+	checkdepends = mypy
 	checkdepends = python-pytest
 	makedepends = cython
 	makedepends = python-build
@@ -14,7 +15,7 @@ pkgbase = python-pykdtree
 	depends = gcc-libs
 	depends = glibc
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/p/pykdtree/pykdtree-1.4.1.tar.gz
-	sha256sums = 10848ff6ac7332b68e65bf8c2e89667b6b62b075aad272347744a69bf1c8ad7e
+	source = https://files.pythonhosted.org/packages/source/p/pykdtree/pykdtree-1.4.2.tar.gz
+	sha256sums = bd2b967a16a5510efa873ee52d959d0d821389cc749bb51673ae68316eeb65f5
 
 pkgname = python-pykdtree
