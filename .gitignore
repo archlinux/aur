@@ -1,0 +1,12 @@
+# makepkg build artifacts
+src/
+pkg/
+*.pkg.tar.*
+*.log
+
+# Git clone directory
+curl_cffi/
+
+# Backup files
+*.bak
+*~
