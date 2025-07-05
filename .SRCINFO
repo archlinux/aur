@@ -1,7 +1,7 @@
 pkgbase = steam-big-picture-session
 	pkgdesc = A gamescope session for Steam Big Picture mode straight from the display manager
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Aethar01/steam-big-picture-session
 	arch = any
 	license = NONE
