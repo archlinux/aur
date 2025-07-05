@@ -1,0 +1,25 @@
+pkgbase = jabber-space
+	pkgdesc = A console based jabber client.
+	pkgver = 7544.f636090f
+	pkgrel = 1
+	url = https://jabber.space/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf-archive
+	depends = curl
+	depends = expat
+	depends = libgcrypt
+	depends = libnotify
+	depends = libotr
+	depends = libxss
+	depends = libsignal-protocol-c
+	depends = gpgme
+	depends = libstrophe-git
+	provides = profanity
+	conflicts = profanity
+	source = git+https://git.jabber.space/devs/profanity.git#branch=master
+	sha256sums = SKIP
+
+pkgname = jabber-space
