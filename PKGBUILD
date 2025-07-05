@@ -1,7 +1,7 @@
 # Maintainer: max.bra <max dot bra at alice dot it>
 
 pkgname=hub-kids
-pkgver=7.0.376
+pkgver=7.2.385
 pkgrel=1
 pkgdesc="La piattaforma facile, gratuita e innovativa per la didattica digitale."
 arch=('x86_64')
@@ -22,7 +22,7 @@ options=(!strip)
 _debname=HUB-Kids.deb
 
 source=(https://bce.mondadorieducation.it/media_educar/contenuti/appdilettura/kidslinux.zip)
-sha256sums=('6d235f2659dcffa0244eb6d7c2c422aff99f9325e17e9fb3fa2b0a8c33ce39b0')
+sha256sums=('6576a5f73856880a97ad0d5de55492cba2f225fd138240da32b7cb73463f41ea')
 
 prepare() {
   cd "$srcdir"
