@@ -2,14 +2,14 @@
 
 pkgname=termusic-git
 pkgver=0.11.0.r5.gea2a761
-pkgrel=1
+pkgrel=2
 pkgdesc='Music Player TUI written in Rust'
 arch=(x86_64)
 url=https://github.com/tramhao/termusic
 license=(GPL-3.0-or-later MIT)
 depends=(
-  dbus gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good
-  gst-plugins-ugly gstreamerlibsixel mpv protobuf soundtouch ueberzug) # alsa-lib libmpv.so
+  dbus gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly gstreamer
+  libsixel mpv protobuf soundtouch ueberzug) # alsa-lib libmpv.so
 makedepends=(cargo clang git)
 optdepends=(
   'emoji-font: display emojis'
@@ -38,13 +38,13 @@ prepare() {
 build() {
   export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
   cd $pkgname
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release --all-features # --features=cover,gst
 }
 
 check() {
   export RUSTUP_TOOLCHAIN=stable
   cd $pkgname
-  cargo test --frozen --all-features
+  cargo test --frozen --all-features # --features=cover,gst
 }
 
 package() {
