@@ -1,7 +1,7 @@
 pkgbase = tubeamp-designer-git
 	pkgdesc = Standalone software guitar processor, editor of *.tapf profile files for tubeAmp (KPP) and guitar amp profiler.
-	pkgver = 1.2.r0.g227b034
-	pkgrel = 1
+	pkgver = 1.2.1.r1.gadefa84
+	pkgrel = 2
 	url = https://github.com/olegkapitonov/tubeAmp-Designer
 	arch = x86_64
 	license = GPL3
@@ -24,7 +24,8 @@ pkgbase = tubeamp-designer-git
 	provides = tubeamp-designer
 	conflicts = tubeamp-designer
 	source = tubeamp-designer::git+https://github.com/olegkapitonov/tubeAmp-Designer
+	source = meson06.diff::https://github.com/robinrosenberger/tubeAmp-Designer/commit/4cffb3cffbde4ba3bca0a5a01e568402426f58ec.diff
 	md5sums = SKIP
+	md5sums = 4a660b7ef6028826b45185b9dc6ef835
 
 pkgname = tubeamp-designer-git
-
