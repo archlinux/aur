@@ -2,8 +2,8 @@
 
 pkgname=steam-big-picture-session
 pkgver=0.0.1
-pkgrel=1
-pkgdesc="A Wayland compositor for Steam Big Picture mode"
+pkgrel=2
+pkgdesc="A gamescope session for Steam Big Picture mode straight from the display manager"
 arch=(any)
 url="https://github.com/Aethar01/steam-big-picture-session"
 license=('NONE')
