@@ -1,7 +1,7 @@
 # Maintainer: Kruemmelbande  (kai.scheufen@gmail.com)
 # Contributor: Kruemmelbande
 pkgname=slimevr-beta-bin
-pkgver=0.16.0
+pkgver=0.16.1rc1
 pkgrel=3
 epoch=1
 pkgdesc="SlimeVR FBT software beta version"
@@ -14,19 +14,21 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
 source_x86_64=(
-  "https://github.com/SlimeVR/SlimeVR-Server/releases/download/v0.16.0/SlimeVR-amd64.deb"
-  "https://github.com/SlimeVR/SlimeVR-Server/raw/b978eaf3f15e8f26ecddb912079d3788f6d26f44/gui/src-tauri/69-slimevr-devices.rules"
+  "https://github.com/SlimeVR/SlimeVR-Server/releases/download/v0.16.1-rc.1/SlimeVR-amd64.deb"
 )
 
 sha512sums_x86_64=(
-  '8cdfb8a05f726a0d771707566bb69c4d9df2b85fbc748ce9fab751a6fdb252547bfdad531a1d0b90ad4fdcd087bb683197e2e88fe3d39a26286295c9003b49c1'
-  ''a79ec51763ea2ee66fce15482bfa62deb6e254e75aac4999e1df3688027ad1d191cd8fa3e9ef4d64138b5097f50bf1f7f20f4e13dede5ce42a515a3f77af29ab
+  '1103ce83a2c2756354165b0b2b0218fd303eb829d533b1c0bde4fa55ce51598310042fcc08a677dfd7548e88b1c4c16f8447a6a4b2801cb252a2d8e6602c2d55'
 )
 
 package() {
 
   # Extract package data
   tar -xz -f data.tar.gz -C "${pkgdir}"
-
+  mkdir -p "${pkgdir}/usr/lib/udev/rules.d/"
+  mv "${pkgdir}/lib/udev/rules.d/69-slimevr.rules" "${pkgdir}/usr/lib/udev/rules.d/"
+  rmdir "${pkgdir}/lib/udev/rules.d/"
+  rmdir "${pkgdir}/lib/udev/"
+  rmdir "${pkgdir}/lib/"
   rm "${startdir}/SlimeVR-amd64.deb"
 }
