@@ -1,16 +1,15 @@
 pkgbase = sudo-rs-symlink
-	pkgdesc = Swap system sudo with -rs for compability for very few apps
-	pkgver = 0.2.6
-	pkgrel = 4
+	pkgdesc = (Avoid if app supports PATH) swap sudo with -rs
+	pkgver = 0.2.7
+	pkgrel = 1
 	url = https://github.com/trifectatechfoundation/sudo-rs
 	arch = any
 	license = Apache-2.0 AND MIT
 	depends = sudo-rs
 	provides = sudo
 	conflicts = sudo
-	backup = etc/sudoers
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/sudo/-/raw/main/sudo.pam
-	source = sudoers
+	source = sudoers-rs
 	sha256sums = d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2
 	sha256sums = a17090feee1f91b1205074dc1c542957a08dca7f432bbaa43586b6e70f0858fd
 
