@@ -1,17 +1,16 @@
 pkgbase = nerimity-desktop-bin
 	pkgdesc = A modern and sleek chat app.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.6.3
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://nerimity.com
 	arch = x86_64
 	license = ISC
 	depends = electron37
-	depends = nodejs
-	provides = nerimity-desktop=1.6.3
+	provides = nerimity-desktop=1.6.4
 	conflicts = nerimity-desktop
-	source = nerimity-desktop-1.6.3.deb::https://github.com/Nerimity/nerimity-desktop/releases/download/v1.6.3/nerimity-desktop_1.6.3_amd64.deb
+	source = nerimity-desktop-1.6.4.deb::https://github.com/Nerimity/nerimity-desktop/releases/download/v1.6.4/nerimity-desktop_1.6.4_amd64.deb
 	source = nerimity-desktop.sh
-	sha256sums = 8a966c3f40d53313e474d5c5d91924ed0a66fcf487794a563bd131df793f491d
+	sha256sums = ef4d706eb082797955763dbbe450fa5037b3dc6c325538897fde530dc5a6840a
 	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
 
 pkgname = nerimity-desktop-bin
