@@ -1,7 +1,7 @@
 pkgbase = lucidglyph
-	pkgver = 0.11.0
-	pkgrel = 2
 	pkgdesc = Carefully tuned adjustments designed to improve font rendering on Linux systems packaged for Arch Linux. It is patched to install the package globally and deal with an individual file at `/etc/environment.d` file, unlike the original that manually patches `/etc/environment` file directly.
+	pkgver = 0.11.1
+	pkgrel = 1
 	url = https://github.com/maximilionus/lucidglyph
 	arch = any
 	license = GPL-3.0
@@ -9,7 +9,7 @@ pkgbase = lucidglyph
 	depends = fontconfig
 	depends = pam
 	depends = freetype2
-	source = lucidglyph::git+https://github.com/maximilionus/lucidglyph#tag=v0.11.0
+	source = lucidglyph::git+https://github.com/maximilionus/lucidglyph#tag=v0.11.1
 	source = 0001-allow-changing-uninstall-file-absolute-path.patch
 	source = 0002-allow-changing-absolute-environment-file-destination.patch
 	validpgpkeys = B7E510C142B88F4B
