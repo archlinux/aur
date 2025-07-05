@@ -6,35 +6,32 @@
  
 pkgname=rmlint
 pkgver=2.10.3
-pkgrel=4
-pkgdesc="remove duplicates and other lint - includes gui (shredder)"
+pkgrel=5
+pkgdesc="remove duplicates and other lint (without-gui)"
 arch=('i686' 'x86_64')
 url="https://github.com/sahib/rmlint"
 license=('GPL-3.0-only')
-provides=(rmlint-shredder)
 depends=(
   glib2
+  glibc
   libelf
+  python
   json-glib
-  python-gobject
-  python-cairo
-  gtksourceview4
-  librsvg
   util-linux-libs
 )
 
 makedepends=(
   scons
-  python-sphinx
-  python-sphinx-bootstrap-theme
-  python-setuptools
   gettext
 )
 
 checkdepends=(
+  python-psutil
   python-pytest
   python-xattr
-  python-psutil
+  python-pygal
+  python-tests
+  python-utils
   btrfs-progs
   patchelf
   man-db
@@ -54,8 +51,7 @@ build() {
 	  [[ $MAKEFLAGS =~ -j[[:space:]]*([0-9]+) ]] &&
     _jval="${BASH_REMATCH[1]}" || _jval=1
     cd "${srcdir}/${pkgname}-${pkgver}"
-    scons config
-    scons -j${_jval} VERBOSE=1 DEBUG=1 --prefix=${pkgdir}/usr --actual-prefix=/usr
+    scons -j${_jval} DEBUG=1 --prefix=${pkgdir}/usr --actual-prefix=/usr --without-gui
 }
 
 check() {
@@ -64,15 +60,14 @@ check() {
     cp ./rmlint ./rmlint.backup
     # Set rpath for tests that require the library to be 'installed'
     patchelf --set-rpath '$ORIGIN' ./rmlint
-    # run tests - we use pytest instead of scons because scons test removes our rpath
-    LD_LIBRARY_PATH="${PWD}:$LD_LIBRARY_PATH" pytest tests -k 'not slow'
+    LD_LIBRARY_PATH="${PWD}:$LD_LIBRARY_PATH" scons test
     # restore original binary
     mv ./rmlint.backup ./rmlint
 }
  
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    scons DEBUG=1 --prefix=${pkgdir}/usr install --actual-prefix=/usr
+    scons DEBUG=1 --prefix=${pkgdir}/usr install --actual-prefix=/usr --without-gui
     find "$pkgdir" -type f -name gschemas.compiled -delete
 }
 # vim:set ts=2 sw=2 et:
