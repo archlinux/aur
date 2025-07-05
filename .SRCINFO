@@ -9,7 +9,6 @@ pkgbase = justbuild
 	makedepends = binutils
 	makedepends = wget
 	makedepends = cli11
-	makedepends = microsoft-gsl
 	makedepends = nlohmann-json
 	makedepends = pandoc
 	depends = glibc
@@ -30,8 +29,6 @@ pkgbase = justbuild
 	conflicts = just-git
 	conflicts = just-js
 	source = justbuild-1.4.3.tar.gz::https://github.com/just-buildsystem/justbuild/archive/v1.4.3.tar.gz
-	source = gsl.pc
 	sha256sums = 4456e2a734abb57b137c5378be9b63916ee7407d85b05305edead885746c0e90
-	sha256sums = c08f3e53356b1b258bb195ae0c2437f53269d7751d94800a46f75a3465346afe
 
 pkgname = justbuild

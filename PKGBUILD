@@ -8,12 +8,10 @@ arch=('x86_64')
 url="https://github.com/just-buildsystem/justbuild"
 license=('Apache-2.0')
 depends=('glibc' 'gcc-libs' 'fmt' 'openssl' 'zlib' 're2' 'c-ares' 'grpc' 'abseil-cpp' 'curl' 'python' 'protobuf' 'libarchive' 'libgit2')
-makedepends=('clang' 'binutils' 'wget' 'cli11' 'microsoft-gsl' 'nlohmann-json' 'pandoc')
+makedepends=('clang' 'binutils' 'wget' 'cli11' 'nlohmann-json' 'pandoc')
 conflicts=('just' 'just-git' 'just-js')
-source=("justbuild-${pkgver}.tar.gz::https://github.com/just-buildsystem/justbuild/archive/v${pkgver}.tar.gz"
-        "gsl.pc")
-sha256sums=('4456e2a734abb57b137c5378be9b63916ee7407d85b05305edead885746c0e90'
-            'c08f3e53356b1b258bb195ae0c2437f53269d7751d94800a46f75a3465346afe')
+source=("justbuild-${pkgver}.tar.gz::https://github.com/just-buildsystem/justbuild/archive/v${pkgver}.tar.gz")
+sha256sums=('4456e2a734abb57b137c5378be9b63916ee7407d85b05305edead885746c0e90')
 
 build() {
     cd "${srcdir}/justbuild-${pkgver}"
@@ -27,7 +25,7 @@ build() {
             PKG_CONFIG_PATH="${srcdir}"\
             PACKAGE=YES\
             LOCALBASE=/usr\
-            NON_LOCAL_DEPS='["bazel_remote_apis", "google_apis"]'\
+            NON_LOCAL_DEPS='["bazel_remote_apis", "google_apis", "com_github_microsoft_gsl"]'\
         python3 ./bin/bootstrap.py . ${srcdir}/build
 
     # Build compiled just-mr
