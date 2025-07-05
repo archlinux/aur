@@ -1,18 +1,18 @@
-# Maintainer: Dan Panzarella <alsoelp@gmail.com>
+# Maintainer: Mike Pento <mjpento@gmail.com>
+# Contributor: Dan Panzarella <alsoelp@gmail.com>
 
 pkgname=gtk-engine-unico
-pkgrel=1
+pkgrel=2
 pkgver=1.0.2
 pkgdesc="New GTK+ 3.0 theming engine by Andrea Cimitan"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/unico"
-license=('GPL')
+license=('GPL-3.0-only')
 makedepends=("gnome-common")
-depends=("gtk3")
+depends=('gtk3' 'glib2' 'glibc' 'cairo' 'harfbuzz' 'zlib' 'at-spi2-core' 'gdk-pixbuf2' 'pango')
 source=("http://launchpad.net/unico/1.0/$pkgver/+download/${pkgname#gtk-engine-}-$pkgver.tar.gz")
 md5sums=('19fb3ecc36d4d13b4a76e26a4ebd6412')
-options=(!libtool)
-
+options+=(!libtool !debug)
 
 build() {
   cd ${srcdir}/${pkgname#gtk-engine-}-$pkgver
