@@ -19,8 +19,8 @@ pkgname=(
   'superiotool'
 )
 pkgbase=coreboot-utils
-pkgver=24.05
-pkgrel=4
+pkgver=25.06
+pkgrel=1
 pkgdesc="Tools and utilities to work with coreboot firmware"
 url="https://www.coreboot.org"
 license=('GPL-2.0-only')
@@ -42,7 +42,7 @@ makedepends=(
 #  'meson'  # coreboot-configurator
 )
 source=("https://coreboot.org/releases/coreboot-$pkgver.tar.xz"{,.sig})
-sha256sums=('e22afdbac40068ba687fd975f03f6b958599a32e70f539d9d0c74d16a63d7cea'
+sha256sums=('53ec8b4d187196e812e23d27ec251aeb8d09e194ab737509ec664c8fb904d459'
             'SKIP')
 validpgpkeys=('574CE6F6855CFDEB7D368E9D19796C2B3E4F7DF7') # Martin Roth (coreboot developer) <martin@coreboot.org>
 
