@@ -10,12 +10,15 @@
 : ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=false}
 
+: ${_build_lto:=false}
+: ${_build_system_libs:=true}
+
 : ${_commit:=fcfc71a7cac7b300f8325404767887a45adb031d}
 
 _pkgname="floorp"
 pkgname="$_pkgname"
 pkgver=11.28.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 arch=('x86_64')
@@ -27,6 +30,7 @@ depends=(
   gtk3
   libevent
   libjpeg
+  libpulse
   libvpx.so
   libwebp.so
   libxss
@@ -144,8 +148,6 @@ prepare() {
   # prepare api keys
   cp "floorp/apis"/api-*-key ./
 
-
-
   # configure
   cat > ../mozconfig << END
 ac_add_options --enable-application=browser
@@ -155,7 +157,6 @@ mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
-ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-wasm-simd
 ac_add_options --enable-linker=lld
@@ -183,15 +184,6 @@ ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/api-mozilla-key
 ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/api-google-location-service-key
 ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/api-google-safe-browsing-key
 
-# System Libraries
-ac_add_options --with-system-jpeg
-ac_add_options --with-system-libevent
-ac_add_options --with-system-libvpx
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
-ac_add_options --with-system-webp
-ac_add_options --with-system-zlib
-
 # Features
 ac_add_options --enable-alsa
 ac_add_options --enable-av1
@@ -199,6 +191,7 @@ ac_add_options --enable-eme=widevine
 ac_add_options --enable-jack
 ac_add_options --enable-jxl
 ac_add_options --enable-proxy-bypass-protection
+ac_add_options --enable-pulseaudio
 ac_add_options --enable-sandbox
 ac_add_options --enable-unverified-updates
 ac_add_options --enable-webrtc
@@ -221,6 +214,11 @@ ac_add_options --enable-strip
 ac_add_options --enable-install-strip
 export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
+# Optimization
+ac_add_options --enable-optimize
+ac_add_options OPT_LEVEL="2"
+ac_add_options RUSTC_OPT_LEVEL="2"
+
 # Other
 export AR=llvm-ar
 export CC=clang
@@ -228,6 +226,24 @@ export CXX=clang++
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
 END
+
+  if [[ "${_build_system_libs::1}" == "t" ]]; then
+    cat >> ../mozconfig << END
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-webp
+ac_add_options --with-system-zlib
+END
+  fi
+
+  if [[ "${_build_lto::1}" == "t" ]]; then
+    cat >> ../mozconfig << END
+ac_add_options --enable-lto=cross,full
+END
+  fi
 
   local src
   for src in "${source[@]}"; do
@@ -243,6 +259,8 @@ END
 
 build() (
   cd "$_pkgsrc"
+
+  export RUSTUP_TOOLCHAIN=stable
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
   [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
@@ -347,7 +365,6 @@ END
     if [[ -s merged.profdata ]]; then
       stat -c "Profile data found (%s bytes)" merged.profdata
       cat >> .mozconfig - << END
-ac_add_options --enable-lto=cross,full
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 END
