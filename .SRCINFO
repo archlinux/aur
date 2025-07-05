@@ -1,13 +1,13 @@
 pkgbase = grizzly-bin
 	pkgdesc = A utility for managing Jsonnet dashboards against the Grafana API
-	pkgver = 0.6.1
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/grafana/grizzly
 	arch = x86_64
 	license = Apache-2.0
 	conflicts = grizzly
 	noextract = grr-linux-amd64
-	source = https://github.com/grafana/grizzly/releases/download/v0.6.1/grr-linux-amd64
-	sha256sums = 55ffef45fcdf67786c9bd96a5f09df3d9ad7d8b63c29207a449d0914c8534244
+	source = https://github.com/grafana/grizzly/releases/download/v0.7.1/grr-linux-amd64
+	sha256sums = d708850daf00234281e328f551be7a0daf1de43acdf485d2700444d9c50e5d6e
 
 pkgname = grizzly-bin
