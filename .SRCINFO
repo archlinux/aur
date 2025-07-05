@@ -5,6 +5,8 @@ pkgbase = steam-big-picture-session
 	url = https://github.com/Aethar01/steam-big-picture-session
 	arch = any
 	license = NONE
+	depends = gamescope
+	depends = steam
 	source = git+https://github.com/Aethar01/steam-big-picture-session.git
 	sha256sums = SKIP
 

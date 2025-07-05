@@ -8,6 +8,7 @@ arch=(any)
 url="https://github.com/Aethar01/steam-big-picture-session"
 license=('NONE')
 source=("git+${url}.git")
+depends=('gamescope' 'steam')
 sha256sums=('SKIP')
 
 package() {
