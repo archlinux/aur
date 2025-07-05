@@ -110,5 +110,5 @@ package() {
   cd "${pkgname%%-*}-${pkgver}"
   install -d "${pkgdir}/etc/pam.d"
   make install_prefix="${pkgdir}" install
-  install -Dm0644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm0644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
