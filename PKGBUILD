@@ -3,7 +3,7 @@
 # Contributor: Robert Kubosz <kubosz.robert@gmail.com>
 _base=abjad
 pkgname=python-${_base}
-pkgver=3.25
+pkgver=3.26
 pkgrel=1
 pkgdesc="Python API for building LilyPond files"
 arch=(any)
@@ -17,7 +17,7 @@ optdepends=('graphviz: creates rhythm-trees graphs and other tree structures'
   'timidity++: playback generated MIDI files')
 checkdepends=(python-pytest)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('6da303dfcfe1dfbe89df056003e457dfce45f1947ab4ddeccb129323573fc844bdaa3b85f8ddffd19a8a0cae4500609b6b6c1b23e465bcd9e689e2eca0e4ecb9')
+sha512sums=('e121d26e22cfe64f6ccf8a7045f551f731c1cf71150c88ec8ec6de9542a916164ac41d9b1941901cecb397d4a5e14da36fd9546acac274e1e2bd5f1f1cd87f77')
 # validpgpkeys=('EF80D3D6F5926FC997919D6A27A5BE0A6ADE7F36') ## Trevor Baca
 
 build() {
