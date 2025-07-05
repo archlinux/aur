@@ -2,7 +2,7 @@
 
 pkgname=autojump
 pkgver=22.5.3
-pkgrel=10
+pkgrel=11
 pkgdesc="A faster way to navigate your filesystem from the command line"
 arch=(any)
 url="https://github.com/wting/autojump"
@@ -14,22 +14,21 @@ sha256sums=('00daf3698e17ac3ac788d529877c03ee80c3790472a85d0ed063ac3a354c37b1')
 
 package() {
   cd $pkgname-release-v$pkgver
-  ./install.py --destdir "${pkgdir}" --prefix 'usr/' --zshshare 'usr/share/zsh/site-functions'
+  ./install.py --destdir "$pkgdir" --prefix 'usr/' --zshshare 'usr/share/zsh/site-functions'
+  
+  install -d "$pkgdir"/etc/fish/conf.d
+  mv "$pkgdir"/usr/share/autojump/$pkgname.fish "$pkgdir"/etc/fish/conf.d
+  
+  rm -f "$pkgdir"/usr/share/autojump/icon.png
+
+  # FS#43762
+  sed -i -e '27,31d' -i -e 's|local/||' "$pkgdir/etc/profile.d/$pkgname.sh"
 
   # FS#60929
   local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   install -d "$pkgdir/$_site_packages"
   mv $pkgdir/usr/bin/*.py "${pkgdir}/$_site_packages"
-  python -m compileall -d /usr/lib "${pkgdir}/usr/lib"
-  python -O -m compileall -d /usr/lib "${pkgdir}/usr/lib"
-
-  rm -f "$pkgdir"/usr/share/autojump/icon.png
-
-  # FS#49601
-  install -d "$pkgdir"/usr/share/fish/completions
-  mv "${pkgdir}"/usr/share/autojump/$pkgname.fish "$pkgdir"/usr/share/fish/completions
-
-  # FS#43762
-  sed -i -e '27,31d' -i -e 's|local/||' "${pkgdir}/etc/profile.d/$pkgname.sh"
+  python -m compileall -d /usr/lib "$pkgdir/usr/lib"
+  python -O -m compileall -d /usr/lib "$pkgdir/usr/lib"
 }
 # vim:set ts=4 sw=4 et:
