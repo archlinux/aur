@@ -1,6 +1,6 @@
 # Maintainer: Byson94 <byson94wastaken@gmail.com>
 pkgname=xfsrtray
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A floating and customizable system tray for Linux"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=()
 makedepends=('cargo')
 source=("https://github.com/Byson94/xfsrtray/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4ced7c5288f46cf658922c849cf6bc0016151be7771f3a8fa75501c6ecbd71a5')
+sha256sums=('689b7da73eb26bc28a435638bd3afa93f8db350c0690a7ef240e67727d2212e9')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
