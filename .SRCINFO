@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_expect
 	pkgdesc = Cram like framework for OCaml
-	pkgver = 0.17.2
-	pkgrel = 2
+	pkgver = 0.17.3
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/ppx_expect
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = ocaml-ppx_expect
 	depends = ocaml-ppx_here>=0.17.0
 	depends = ocaml-ppx_inline_test>=0.17.0
 	depends = ocaml-stdio>=0.17.0
-	depends = ocaml-ppxlib>=0.28.0
+	depends = ocaml-ppxlib>=0.36.0
 	depends = zstd
 	options = !strip
-	source = ocaml-ppx_expect-0.17.2.tar.gz::https://github.com/janestreet/ppx_expect/archive/v0.17.2.tar.gz
-	b2sums = 4f9937cfd52f966ea8cfbd5626e315f12e3a461df1a2e840d185515a5b11789c3ee9b19778850254b9bc7e2b8b114f694d48f73f498c123f8d2a7d3c30a17736
+	source = ocaml-ppx_expect-0.17.3.tar.gz::https://github.com/janestreet/ppx_expect/archive/v0.17.3.tar.gz
+	b2sums = 8a92dd674b864826c9094ed8be44343c8c1c14b0bc29c0a4e6a400094a126ff5097493677b31d9465c0afee46623e07832d5704423a540e3e0fb4582677c0d53
 
 pkgname = ocaml-ppx_expect
