@@ -2,8 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-moose'
-pkgver='2.2207'
-pkgrel='3'
+pkgver='2.4000'
+pkgrel='1'
 pkgdesc="A postmodern object system for Perl 5"
 arch=('x86_64' 'aarch64')
 license=('Artistic-1.0')
@@ -13,8 +13,8 @@ makedepends=()
 checkdepends=('perl-test-fatal>=0.001' 'perl-test-needs>=0.002010')
 url='https://metacpan.org/release/Moose'
 source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Moose-$pkgver.tar.gz")
-md5sums=('7d1750069538c97d4a611170076425ef')
-sha512sums=('bc0efe3b9c7fea8ef6bb2976d2ec677250f998b3d8513a7fca59a10291f8ff5f13dd5e1d49d036071d93b5caa19685b704ef3588aa9307cda40ec5ba15b6985a')
+md5sums=('3623f7f05aac55e70daa208a42e67228')
+sha512sums=('facae305a538ce55cad1aa1b420a5a2ba7a6f2de502257fe84094ce1d2f91c8f297318e404c1bc236ce6ef2800bac9bb782191061925505c970fb6e38ff1ab87')
 _distdir="Moose-$pkgver"
 
 build() {
