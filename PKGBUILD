@@ -2,9 +2,8 @@
 
 pkgname=autojump-rs-git
 _pkgname=autojump-rs
-_autojump_ver=22.5.3
 pkgver=0.5.1.r14.g65abf11
-pkgrel=1
+pkgrel=2
 pkgdesc="A faster way to navigate your filesystem from the command line"
 arch=(any)
 url="https://github.com/xen0n/autojump-rs"
@@ -13,13 +12,13 @@ makedepends=(git python cargo)
 conflicts=(autojump)
 provides=(autojump)
 source=('git+https://github.com/xen0n/autojump-rs.git'
-         autojump-$_autojump_ver.tar.gz::https://github.com/wting/autojump/archive/refs/tags/release-v$_autojump_ver.tar.gz)
+  autojump.1)
 sha256sums=('SKIP'
-            '00daf3698e17ac3ac788d529877c03ee80c3790472a85d0ed063ac3a354c37b1')
+            '836284d4b5ef0e75e70537138bc2449c07d339a9fea106dd57adde3278510cae')
 
 pkgver() {
-    cd $_pkgname
-    git describe --long --tags | sed 's/^release\-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $_pkgname
+  git describe --long --tags | sed 's/^release\-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -34,23 +33,19 @@ check () {
 }
 
 package() {
-  cd ${_pkgname/-rs}-release-v$_autojump_ver
+  install -Dm755 "$srcdir"/$_pkgname/target/release/${_pkgname/-rs} "$pkgdir"/usr/bin/${_pkgname/-rs}
 
-  ./install.py --prefix 'usr/' --destdir "$pkgdir" --zshshare 'usr/share/zsh/site-functions'
+  install -d "$pkgdir"/etc/fish/conf.d
+  install -d "$pkgdir"/etc/profile.d
+  install -d "$pkgdir"/usr/share/autojump
+  install -d "$pkgdir"/usr/share/zsh/site-functions
+  install -d "$pkgdir"/usr/share/man/man1
 
-   # remove python built bin and use rust build one
-   rm "$pkgdir"/usr/bin/${_pkgname/-rs}*
-   rm "$pkgdir"/usr/share/autojump/icon.png
-
-   install -Dm755 "$srcdir"/$_pkgname/target/release/${_pkgname/-rs} "$pkgdir"/usr/bin/${_pkgname/-rs}
-
-   # FS#43762
-   sed -i -e '27,31d' -i -e 's|local/||' "$pkgdir"/etc/profile.d/${_pkgname/-rs}.sh
-
-   # FS#49601
-   install -d "$pkgdir"/usr/share/fish/completions
-   mv "$pkgdir"/usr/share/${_pkgname/-rs}/${_pkgname/-rs}.fish "$pkgdir"/usr/share/fish/completions
+  install -p -m644 $_pkgname/integrations/${_pkgname/-rs}.bash "$pkgdir"/usr/share/${_pkgname/-rs}
+  install -p -m644 $_pkgname/integrations/${_pkgname/-rs}.fish "$pkgdir"/etc/fish/conf.d
+  sed -e '27,31d' -e 's|local/||' <$_pkgname/integrations/${_pkgname/-rs}.sh > "$pkgdir"/etc/profile.d/${_pkgname/-rs}.sh
+  install -p -m644 $_pkgname/integrations/${_pkgname/-rs}.zsh "$pkgdir"/usr/share/${_pkgname/-rs}
+  install -p -m644 $_pkgname/integrations/_j "$pkgdir"/usr/share/zsh/site-functions
+  install -p -m644 "$srcdir"/${_pkgname/-rs}.1 "$pkgdir"/usr/share/man/man1
 }
-
-
 # vim:set ts=4 sw=4 et:
