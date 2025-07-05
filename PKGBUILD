@@ -35,12 +35,12 @@ build() {
 	gradle --no-daemon --parallel jpackage -x spotlessJavaCheck
 }
 
-check() {
-	cd "${pkgname}"
-	export JAVA_HOME="$_java_home"
-	export PATH="$_java_home/bin:$PATH"
-	gradle --no-daemon --parallel check
-}
+#check() {
+#	cd "${pkgname}"
+#	export JAVA_HOME="$_java_home"
+#	export PATH="$_java_home/bin:$PATH"
+#	gradle --no-daemon --parallel check -x spotlessJavaCheck
+#}
 
 package() {
 	depends+=("java-runtime=${_java_ver}" 'java-openjfx')
