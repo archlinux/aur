@@ -1,0 +1,19 @@
+pkgbase = qsf-git
+	pkgdesc = small and fast bayesian spam filter (git version)
+	pkgver = r16.6d4bd1f
+	pkgrel = 1
+	url = https://www.ivarch.com/programs/qsf/
+	arch = i686
+	arch = x86_64
+	license = Artistic-2.0
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gettext
+	depends = gdbm
+	provides = qsf
+	conflicts = qsf
+	source = qsf::git+https://codeberg.org/ivarch/qsf.git
+	sha512sums = SKIP
+
+pkgname = qsf-git
