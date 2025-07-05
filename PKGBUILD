@@ -4,8 +4,8 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-pciutils
-pkgver=3.13.0
-pkgrel=2
+pkgver=3.14.0
+pkgrel=1
 arch=('any')
 pkgdesc="PCI bus configuration space access library and tools (Android ${_android_arch})"
 license=('GPL2')
@@ -18,7 +18,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://mj.ucw.cz/download/linux/pci/pciutils-${pkgver}.tar.gz"{,.sign}
         '0001-Do-not-use-lresolv.patch'
         '0002-Disable-ecam.patch')
-md5sums=('1edb865de7a2de84e67508911010091b'
+md5sums=('f70cf2da9377cb484802e291ea60115d'
          'SKIP'
          '71920d728978bc6654864ed7d7cd9c2d'
          '3cfc5313fd307fb054d5e1d03c374bb1')
