@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_sexp_conv
 	pkgdesc = Generation of S-expression conversion functions from type definitions
-	pkgver = 0.17.0
-	pkgrel = 3
+	pkgver = 0.17.1
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/ppx_sexp_conv
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = ocaml-ppx_sexp_conv
 	depends = ocaml-base>=0.17.0
 	depends = ocaml-ppxlib_jane>=0.17.0
 	depends = ocaml-sexplib0>=0.17.0
-	depends = ocaml-ppxlib>=0.28.0
+	depends = ocaml-ppxlib>=0.36.0
 	options = !strip
-	source = ocaml-ppx_sexp_conv-0.17.0.tar.gz::https://github.com/janestreet/ppx_sexp_conv/archive/v0.17.0.tar.gz
-	b2sums = e4ce4df4becd93b2f5ccd7e356042e59acbe8ce334e163fafb2f984725688a52162719a82caa2cfd47bf00262ac6067abdaa3d057e0abddb9b624e0a6ae1776d
+	source = ocaml-ppx_sexp_conv-0.17.1.tar.gz::https://github.com/janestreet/ppx_sexp_conv/archive/v0.17.1.tar.gz
+	b2sums = a66d8487e7a19009fda6687a8a112906a79245f3f2a70f76c7e1fbde91f7337af7ac57f2ed2ff1001f788ab9782df89c87b337bcd88348756327abd4fb6dc149
 
 pkgname = ocaml-ppx_sexp_conv
