@@ -35,7 +35,7 @@ prepare() {
 }
 
 build() {
-   cd "$srcdir/$pkgname"
+   cd "$srcdir/$pkgname-$pkgver"
    
    source "$srcdir/.ghcup/env"
    export HOME="$srcdir"
