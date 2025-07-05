@@ -39,12 +39,15 @@ package() {
 	# we run this install script just to have config + systemd services in place
 	./install.sh \
 		--dest-dir "${pkgdir}" \
+		--effective-installation-dir "${pkgdir}/usr/bin" \
+		--python-prefix-dir "/usr" \
 		--prefix-dir "/usr" \
 		--sysconf-dir "/etc" \
 		--no-ectool \
 		--no-pip-install \
 		--no-pre-uninstall \
 		--no-post-install \
+		--no-sudo
 
 	python -m installer --destdir "${pkgdir}" "$srcdir"/*.whl
 	rm "$srcdir"/*.whl
