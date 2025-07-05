@@ -5,8 +5,8 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-ocl-icd
-pkgver=2.3.2
-pkgrel=2
+pkgver=2.3.3
+pkgrel=1
 arch=('any')
 pkgdesc="OpenCL ICD Bindings (Android ${_android_arch})"
 url="https://github.com/OCL-dev/ocl-icd"
@@ -23,7 +23,7 @@ replaces=("android-${_android_arch}-libcl")
 optdepends=("android-${_android_arch}-opencl-driver: packaged opencl driver")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/OCL-dev/ocl-icd/archive/v${pkgver}.tar.gz")
-md5sums=('e711262803e68de3d32620789942f209')
+md5sums=('8f00257866d84b8b9631c4df6c47ec95')
 
 prepare() {
     cd "${srcdir}/ocl-icd-${pkgver}"
