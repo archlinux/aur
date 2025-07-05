@@ -7,8 +7,9 @@ pkgrel=1
 pkgdesc="Companion application for Huami Devices and the Pinetime Infinitime"
 arch=('x86_64' 'aarch64')
 url="https://github.com/piggz/harbour-amazfish"
-provides=('amazfish')
-license=('AGPL3')
+provides=("${pkgname}" "amazfish")
+conflicts=("${pkgname}" "amazfish")
+license=('GPL-3.0-only')
 depends=(
 	'qt5-base'
 	'karchive5'
@@ -20,9 +21,8 @@ depends=(
 	'nemo-qml-plugin-dbus'
 	'kirigami2'
 	'bluez-qt5'
-	'cmake'
 )
-makedepends=('git')
+makedepends=('git' 'cmake')
 source=("https://github.com/piggz/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('bce645f146c33e4f636bb4250f82cbe8c30f9fbd1dce58261a520c52789ab100d710b0b5234a2479c64e2caa22c392d5b00b8b326ddb105e3692dcfab8bb490a')
 
