@@ -1,7 +1,7 @@
 pkgbase = python-aiomax-autotest
 	pkgdesc = Asynchronous framework for Max Bot API
 	pkgver = 2.7.4.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/n0n1m/aiomax
 	arch = any
 	license = MIT
@@ -9,10 +9,11 @@ pkgbase = python-aiomax-autotest
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = python-setuptools-git-versioning
 	depends = python3
 	depends = python-aiohttp
 	conflicts = python-aiomax-git
-	source = aiomax::https://codeload.github.com/n0n1m/aiomax/tar.gz/refs/tags/2.7.4.9
+	source = aiomax-2.7.4.9::https://codeload.github.com/n0n1m/aiomax/tar.gz/refs/tags/2.7.4.9
 	sha256sums = 60e4a8f9660c47f31c3c1830fdcfb7f2d9a0a5746fa342381daea85a60c55f77
 
 pkgname = python-aiomax-autotest
