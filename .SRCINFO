@@ -1,4 +1,4 @@
-pkgbase = xfsrtray
+pkgbase = xfsrtray-git
 	pkgdesc = A floating and customizable system tray for Linux
 	pkgver = 1.0.2
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = xfsrtray
 	source = git+https://github.com/Byson94/xfsrtray.git
 	sha256sums = SKIP
 
-pkgname = xfsrtray
+pkgname = xfsrtray-git
