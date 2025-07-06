@@ -1,8 +1,22 @@
 post_install() {
-  echo "==> aprsc-9m2pju-git installed!"
-  echo "==> Config: /opt/aprsc/etc/aprsc.conf"
-  echo "==> To start the service: sudo systemctl enable --now aprsc.service"
+  echo "==> aprsc has been installed in /opt/aprsc"
+  echo
+  echo "==> IMPORTANT: Please review and edit the configuration file:"
+  echo "   /opt/aprsc/etc/aprsc.conf"
+  echo
+  echo "==> To run aprsc as your current user:"
+  echo "   sudo chown -R \$(whoami):\$(whoami) /opt/aprsc"
+  echo
+  echo "==> To run aprsc manually:"
+  echo "   aprsc -f /opt/aprsc/etc/aprsc.conf"
+  echo
+  echo "==> To run aprsc as a user systemd service:"
+  echo "   systemctl --user daemon-reexec"
+  echo "   systemctl --user daemon-reload"
+  echo "   systemctl --user enable --now aprsc.service"
+  echo
   echo "==> Web UI: http://localhost:14501/"
+  echo
   echo "==> Full README: https://github.com/9M2PJU/aprsc-9m2pju-git"
   echo
   echo "📦 Thanks to hessu (https://github.com/hessu/aprsc) and the Arch Linux AUR community!"
