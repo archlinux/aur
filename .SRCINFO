@@ -1,6 +1,6 @@
 pkgbase = kh-melonmix-bin
 	pkgdesc = A fork of MelonDS, focused on remastering Kingdom Hearts: 358/2 Days and Re:coded
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://github.com/vitor251093/KHMelonMix
 	install = kh-melonmix.install
@@ -14,7 +14,7 @@ pkgbase = kh-melonmix-bin
 	depends = enet
 	depends = sdl2-compat
 	depends = flac1.3
-	source = melonmix-0.6.5.zip::https://github.com/vitor251093/KHMelonMix/releases/download/v0.6.5/MelonMix-ubuntu-x86_64.zip
+	source = melonmix-0.6.6.zip::https://github.com/vitor251093/KHMelonMix/releases/download/v0.6.6/MelonMix-ubuntu-x86_64.zip
 	source = https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/icon/melon_256x256.png
 	source = https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/khDaysMM.png
 	source = https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/khCodedMM.png
