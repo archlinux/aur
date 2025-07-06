@@ -6,14 +6,14 @@
 
 _locale='is'
 pkgname=palemoon-i18n-is
-pkgver=33.6.0
+pkgver=33.8.0
 pkgrel=1
 pkgdesc="Icelandic language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL-2.0')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('bafd1f49362678456590fe4543f39ba4cf9fd6c61b69054fc1679704d8e5c9d1')
+sha256sums=('9cfb558336671ae191a7399f6389a03ae1e037f39c20e8936101bf15fcb54efe')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
