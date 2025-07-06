@@ -13,7 +13,7 @@ https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/i
 https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/khDaysMM.png
 https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/khCodedMM.png
 )
-sha256sums=("3ed23e623a39b542af5535b92cf898627d9b6f28df177d9ab39c78bf835c0e1b"
+sha256sums=("721bb7fe3452283adf445d165653537381c0eaebfa1e7def4a22f5f24a54d83b"
 SKIP
 SKIP
 SKIP
