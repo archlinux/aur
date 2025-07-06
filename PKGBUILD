@@ -16,7 +16,7 @@ _gitname=TIC-80
 
 source=("git+https://github.com/nesbox/$_gitname.git" 'get_version.cmake')
 sha256sums=('SKIP'
-            '69761ffaffb278dfefdcbd60e1dca7403c8f4f2573a27e639a0b41663168bef5')
+            '4ab65f4733179a551a928a9e757ae6eab1681a6369ea3aa571d258ea1189697a')
 
 pkgver() {
     cd "$srcdir/$_gitname"
