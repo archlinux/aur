@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64-git
-pkgver=1.0.17.r1.gaf5f2924
+pkgver=1.0.20.r1.g5dcfd72b
 pkgrel=1
 pkgdesc='A Nintendo64 emulator (git version)'
 arch=('x86_64')
@@ -46,6 +46,8 @@ makedepends=(
     'libxrender'
     'libxss'
     'libxtst'
+    'lld'
+    'llvm'
     'mesa'
     'sndio'
     'systemd-libs'
@@ -73,14 +75,24 @@ pkgver() {
 }
 
 build() {
+    export CC='clang'
+    export CXX='clang++'
+    export AR='llvm-ar'
+    export RANLIB='llvm-ranlib'
     export CFLAGS+=' -ffat-lto-objects'
+    export RUSTFLAGS+=' -Clinker=clang -Clink-arg=-fuse-ld=lld'
     export RUSTUP_TOOLCHAIN='stable'
     export CARGO_TARGET_DIR='gopher64/target'
     cargo build --release --frozen --manifest-path='gopher64/Cargo.toml'
 }
 
 check() {
+    export CC='clang'
+    export CXX='clang++'
+    export AR='llvm-ar'
+    export RANLIB='llvm-ranlib'
     export CFLAGS+=' -ffat-lto-objects'
+    export RUSTFLAGS+=' -Clinker=clang -Clink-arg=-fuse-ld=lld'
     export RUSTUP_TOOLCHAIN='stable'
     export CARGO_TARGET_DIR='gopher64/target'
     cargo test --frozen --manifest-path='gopher64/Cargo.toml'
