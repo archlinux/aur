@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.8.48
+pkgver=0.8.92
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=(x86_64)
@@ -43,11 +43,11 @@ install=$pkgname.install
 source=(
 	"$pkgname::git+https://github.com/xemu-project/xemu.git#tag=v$pkgver"
 )
-b2sums=('76d4c5b71acc9816edae5f95e98b44c8ca03eb8f2e541525da1ea92be4bdf81cf3509fd192ac5d2149167f18ab1a51cbce2e2f2265456dacb7e959ae996d4274')
+b2sums=('aa78d7d5f14452bb83c62d1065ba0c391915d652eade8a693fd41cfd6e9da95cea95d093631c665c50e4e6ce69e17e798f4c21f8cb89f5c247bc9a52786ecc06')
 
 prepare() {
 	cd $pkgname
-	echo method=cmake | tee -a subprojects/{SPIRV-Reflect,VulkanMemoryAllocator,glslang,nv2a_vsh_cpu,volk}.wrap
+	sed -i '/\[wrap-/a method=cmake' subprojects/{SPIRV-Reflect,VulkanMemoryAllocator,glslang,nv2a_vsh_cpu,volk}.wrap
 	meson subprojects download
 	mkdir -p ../build
 	python scripts/gen-license.py > XEMU_LICENSE
