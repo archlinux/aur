@@ -1,0 +1,23 @@
+pkgbase = gnome-tuner
+	pkgdesc = Extensible control center for GNOME
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://altlinux.space/alt-gnome/tuner
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = vala
+	depends = libadwaita
+	depends = libgee
+	depends = libpeas-2
+	optdepends = tuner-gdm: GNOME Display Manager settings
+	optdepends = tuner-panel: Panel mode switcher
+	optdepends = tuner-tweaks: Extra GNOME settings
+	provides = libtuner-1.so
+	source = git+https://altlinux.space/alt-gnome/tuner.git#tag=0.4.0
+	sha256sums = 7c064c37c4c60e9428f50cce306c686aaab7e4e9f010f169b2ba970f8f82caf6
+
+pkgname = gnome-tuner
