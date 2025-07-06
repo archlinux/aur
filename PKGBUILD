@@ -1,5 +1,5 @@
 pkgname="sunfalo"
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Automatic screen color temperature daemon for Hyprland using hyprsunset"
 url="https://codeberg.org/tomkoid/sunfalo"
@@ -7,7 +7,7 @@ arch=('any')
 makedepends=("go")
 license=("MIT")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/tomkoid/sunfalo/archive/${pkgver}.tar.gz")
-sha512sums=("ac39f6c070203342b667674519dbc65d275a0b07e4d09f0771a14618e01fecf5f808fa76cd53faceed56975ac73b6ff3ef86f64f9df9b9b53d385e361ec352ff")
+sha512sums=("8b87d3406d795ad985a54855522865e3f03caa3a4f18fe7b3e827e64de2f2a15304c9e32f9c6c31e76daf32c7af7cf10cd96cd845d15e42ba8dc1c642344fe29")
 
 build() {
   export GOPATH="$srcdir"/gopath
