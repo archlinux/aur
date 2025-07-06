@@ -1,6 +1,6 @@
 *
 !.SRCINFO
 !PKGBUILD
-!iqmol.png
-!iqmol.desktop
+!*.png
+!*.desktop
 !*.patch

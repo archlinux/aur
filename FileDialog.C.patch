@@ -1,0 +1,20 @@
+--- src/IQmol3-3.2.0/src/Util/FileDialog.C	2025-06-10 21:23:43.000000000 +1000
++++ FileDialog.C	2025-07-06 19:16:33.799928866 +1000
+@@ -48,7 +48,7 @@
+     }
+ #else
+    fileName = QFileDialog::getSaveFileName(parent, caption, dir, filter, 
+-      selectedfilter, options);
++      selectedFilter, options);
+ #endif
+    return fileName;
+ }
+@@ -103,7 +103,7 @@
+     }
+ #else
+    fileName = QFileDialog::getOpenFileName( parent, caption, dir, filter,
+-      selectedFilter, options)
++      selectedFilter, options);
+ #endif
+ 
+     return fileName;

@@ -1,5 +1,5 @@
---- /home/michael/src/IQmol3-old/src/Main/IQmolApplication.C	2024-09-11 21:18:30.949682698 +1000
-+++ /home/michael/src/IQmol3/src/Main/IQmolApplication.C	2024-09-12 17:31:03.500418805 +1000
+--- src/IQmol3-3.2.0/src/Main/IQmolApplication.C	2024-09-11 21:18:30.949682698 +1000
++++ src/IQmol3-3.2.0/src/Main/IQmolApplication.C	2024-09-12 17:31:03.500418805 +1000
 @@ -121,7 +121,7 @@
     // version of OpenBabel
     QString env(qgetenv("BABEL_LIBDIR"));

@@ -1,0 +1,10 @@
+--- src/IQmol3-3.2.0/src/CMakeLists.txt	2025-06-10 21:23:43.000000000 +1000
++++ CMakeLists.txt	2025-07-06 19:37:52.691155887 +1000
+@@ -12,6 +12,7 @@
+ add_subdirectory(Process)
+ add_subdirectory(Viewer)
+ add_subdirectory(Fortran)
++add_subdirectory(Amber)
+ 
+ add_dependencies(Process Configurator)
+ add_dependencies(Grid Configurator)
