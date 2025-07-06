@@ -4,7 +4,7 @@
 
 # Maintainer: Azat Khuzhin <a3at.mail@gmail.com>
 pkgname=chdig-bin
-pkgver=25.6.1
+pkgver=25.6.2
 pkgrel=1
 pkgdesc="Dig into ClickHouse with TUI interface (binaries for latest stable version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "https://github.com/azat/chdig/releases/download/v$pkgver/chdig-$pkgver-1-x86_64.pkg.tar.zst"
 )
 sha256sums=(
-    '08ca9cc6320118507ac5a957cd5390ea954a4663b462aabb031b101bf4aaa6f2'
+    '43e94894dfb9598b8b31614b21e99131679f7b927afab5ed2224822aee2d841f'
 )
 
 package() {
