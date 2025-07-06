@@ -1,6 +1,6 @@
 # Maintainer: Chizuru-Kagurazaka <chizuru-mtf@outlook.com>
 # Maintainer: bilibili_xiaok <the_xiaok@qq.com>
-# Maintainer: Vova-K <v1mkss.m@gmail.com>
+# Maintainer: Volodia Kraplich <v1mkss.m@gmail.com>
 
 pkgname=xmcl-launcher
 pkgver=0.51.1
@@ -15,6 +15,7 @@ optdepends=('jre8-openjdk: Minimum requirement for launching older game versions
 'jre11-openjdk: Recommended Java version for launching versions 1.12-1.17'
 'jre17-openjdk: Recommended Java version for launching version 1.17 and above'
 'jre21-openjdk: Recommended Java version for launching version 1.20.5+ and above')
+makedepends=('curl', 'libarchive')
 
 package() {
     cd "$srcdir"

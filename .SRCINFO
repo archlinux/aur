@@ -5,6 +5,7 @@ pkgbase = xmcl-launcher
 	url = https://xmcl.app/
 	arch = x86_64
 	arch = aarch64
+	makedepends = curl libarchive
 	license = MIT
 	optdepends = jre8-openjdk: Minimum requirement for launching older game versions
 	optdepends = jre11-openjdk: Recommended Java version for launching versions 1.12-1.17
