@@ -1,13 +1,13 @@
 pkgbase = palemoon-i18n-gl
 	pkgdesc = Galician language pack for Pale Moon browser
-	pkgver = 33.6.0
+	pkgver = 33.8.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL-2.0
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-gl-33.6.0.xpi
-	source = palemoon-i18n-gl-33.6.0.xpi::https://addons.palemoon.org/?component=download&version=33.6.0&id=langpack-gl@palemoon.org
-	sha256sums = b121b28c698edc9e58feb924a8cdb46d0261f09c0f01dad0cda04b2bcd49fc2e
+	noextract = palemoon-i18n-gl-33.8.0.xpi
+	source = palemoon-i18n-gl-33.8.0.xpi::https://addons.palemoon.org/?component=download&version=33.8.0&id=langpack-gl@palemoon.org
+	sha256sums = af8295e2a579c42436ab14ea28f369864a582d1ca605123164d0a37ddb9813d4
 
 pkgname = palemoon-i18n-gl
