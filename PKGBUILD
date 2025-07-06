@@ -2,14 +2,14 @@
 
 _locale='fa'
 pkgname=palemoon-i18n-fa
-pkgver=33.6.0
+pkgver=33.8.0
 pkgrel=1
 pkgdesc="Persian language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL-2.0')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('ef9a2087b3e93e8ce968a636e4c6c7c2e231f9936a86af2c6e38718d880699dc')
+sha256sums=('33a7c7924adf89c307cb374587b21b72d3adc0216e2fa9087904d10b400c124f')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
