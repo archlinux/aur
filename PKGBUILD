@@ -48,7 +48,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20250424.r0.g393d0c54cae3
+pkgver=20250704.r0.g26ffb3d6f02c
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -75,10 +75,10 @@ makedepends=(
   git
 )
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
-        0001-zen_add_disallow_unprivileged_clone_newuser.patch
-        0002-defaut-maximum-amount-aslr-bits.patch
-        0003-skip-simpledrm-nvidia.patch
         config)
+
+sha512sums=('SKIP'
+            '3ec45a0d7820126eeb31212aeadbc1d7e672082c9a7c9084ba0a088f85e63d45021d92b403ced7ec156776d830d06427711a81de7cdf3c129a07c2a357519909')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -313,9 +313,3 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-
-sha512sums=('SKIP'
-            '7da6449710f23cbc2da2fdfcda45886dd1236bf29328f9e5ff7bb17dbe4213e5ae1d3d9f0df7ef64eeb8321e38f71da23d80bdde865359ea01e40e950ef5dfba'
-            'a6bfcb3e9a0ece10aefc22094cb6ce892cbb1bd8be4bd0c3b154605b8d76ed8da754031c07d33d46bdc7afe7f57fe863d61ab501f245c778271281e56ac38cf8'
-            'c80c012db7dc8cc0cbd14bb6c08da9da28c5c72c5cd2835b936be300e1e73aeb02b7618ef1276f54ff6547c53ac9599e11fc8a48b0a51c2f7e2ee35bfa3ea49b'
-            '3ec45a0d7820126eeb31212aeadbc1d7e672082c9a7c9084ba0a088f85e63d45021d92b403ced7ec156776d830d06427711a81de7cdf3c129a07c2a357519909')
