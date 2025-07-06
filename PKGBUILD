@@ -1,46 +1,30 @@
 # Maintainer: 9M2PJU <9m2pju@hamradio.my>
-pkgname=aprsc-9m2pju-git
-pkgver=r1886.a4efaa5
+pkgname=not1mm-9m2pju-git
+pkgver=r123.abcdef0  # placeholder; will be auto-generated
 pkgrel=1
-pkgdesc="APRS-IS software RX/TX iGate and server with multi-threading, written in C. Git version."
-arch=('x86_64')
-url="https://github.com/hessu/aprsc"
-license=('custom:BSD')
-depends=('libevent' 'openssl' 'lksctp-tools' 'libcap')
-makedepends=('git' 'gcc' 'make')
-optdepends=('protobuf-c: optional protocol buffer support')
-provides=('aprsc')
-conflicts=('aprsc')
-backup=('opt/aprsc/etc/aprsc.conf')
-install=aprsc-9m2pju-git.install
-
-source=(
-  "git+https://github.com/hessu/aprsc.git"
-  "aprsc.service"
-  "aprsc.sysusers"
-  "aprsc.tmpfiles"
-)
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+pkgdesc="Unofficial git build of not1mm - Notion-style TUI Markdown Editor"
+arch=('any')
+url="https://github.com/mbridak/not1mm"
+license=('MIT')
+depends=('python' 'python-rich' 'python-appdirs' 'python-notctyparser' 'python-appdata')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+provides=('not1mm')
+conflicts=('not1mm')
+install=not1mm-9m2pju-git.install
+source=("$pkgname::git+https://github.com/mbridak/not1mm.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/aprsc"
+  cd "$srcdir/$pkgname"
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/aprsc/src"
-  ./configure
-  make
+  cd "$srcdir/$pkgname"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/aprsc/src"
-  make DESTDIR="$pkgdir" install
-
-  # Install systemd unit
-  install -Dm644 "$srcdir/aprsc.service" "$pkgdir/usr/lib/systemd/system/aprsc.service"
-
-  # Install sysusers and tmpfiles
-  install -Dm644 "$srcdir/aprsc.sysusers" "$pkgdir/usr/lib/sysusers.d/aprsc.conf"
-  install -Dm644 "$srcdir/aprsc.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/aprsc.conf"
+  cd "$srcdir/$pkgname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
