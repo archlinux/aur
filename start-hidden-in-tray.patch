@@ -1,15 +1,15 @@
 diff --git a/build/main.js b/build/main.js
-index 252236c..2cf4ec1 100644
+index 0f0bbf9..85cf2be 100644
 --- a/build/main.js
 +++ b/build/main.js
-@@ -3079,10 +3079,14 @@
+@@ -3105,10 +3105,14 @@
                    finalMinSize[1],
-                 );
+                 ));
              }
--            isDev(external_electron_namespaceObject.app)
+-            (isDev(external_electron_namespaceObject.app)
 -              ? this.window.showInactive()
 -              : this.window.show(),
--              this.thumbar.init();
+-              this.thumbar.init());
 +            if (!process.argv.some(arg => arg === '--start-in-tray')) {
 +              isDev(external_electron_namespaceObject.app)
 +                ? this.window.showInactive()
@@ -19,5 +19,5 @@ index 252236c..2cf4ec1 100644
 +              this.window.hide();
 +            }
            }),
-           this.appService.enableDevMode();
+           this.appService.enableDevMode());
        }
