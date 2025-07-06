@@ -8,8 +8,10 @@ url="https://github.com/Byson94/xfsrtray"
 license=('GPL')
 depends=()
 makedepends=('cargo')
+provides=('xfsrtray')
+conflicts=('xfsrtray-bin' 'xfsrtray-git')
 source=("https://github.com/Byson94/xfsrtray/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('689b7da73eb26bc28a435638bd3afa93f8db350c0690a7ef240e67727d2212e9')
+sha256sums=('5e75750964b38be52c4694f8475c05e0d49bdbe936b3fac913ddca175dbd15f0')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
