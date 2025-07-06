@@ -1,7 +1,7 @@
 # Maintainer: n0vella <n0vella@outlook.com>
 # This PKGBUILD compiles and installs the latest tag of the git repository
 pkgname=cardo
-pkgver=1.9.3
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Cardo podcast client"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!lto') # https://github.com/toeverything/AFFiNE/issues/6280#issuecomme
 provides=("cardo")
 conflicts=("cardo")
 source=("https://github.com/cardo-podcast/cardo/archive/refs/tags/$pkgver.tar.gz" 'cardo.desktop')
-sha256sums=('888886b38e5dc2219e75f2e22f059848a822169340e0c94da8e1df88456bd9ec195c9'
+sha256sums=('6b38e5dc2219e75f2e22f059848a822169340e0c94da8e1df88456bd9ec195c9'
             '9d9b2d1bb6643f5940085e9df3f7853203f4b70a3ac1a94972284f565849f62b')
 
 

@@ -1,6 +1,6 @@
 pkgbase = cardo
 	pkgdesc = Cardo podcast client
-	pkgver = 1.9.3
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://github.com/cardo-podcast/cardo/
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = cardo
 	provides = cardo
 	conflicts = cardo
 	options = !lto
-	source = https://github.com/cardo-podcast/cardo/archive/refs/tags/1.9.3.tar.gz
+	source = https://github.com/cardo-podcast/cardo/archive/refs/tags/1.11.1.tar.gz
 	source = cardo.desktop
-	sha256sums = 6b38e5dc2219e75f2e22f059848a822169340e0c94da8e1df88456bd9ec195c9
+	sha256sums = e5567aba46db09ca6d8c30b571f8d23d7b130824529c98b6b3388eaa950a6356
 	sha256sums = 9d9b2d1bb6643f5940085e9df3f7853203f4b70a3ac1a94972284f565849f62b
 
 pkgname = cardo
